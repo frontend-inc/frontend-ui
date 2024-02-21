@@ -1,7 +1,7 @@
 
 import React, { useContext } from 'react'
 import { Grid, Box } from '@mui/material'
-import { ProductCardVert } from '../../../components/shopify'
+import { ProductCard } from '../../../components/shopify'
 import { useRouter } from 'next/router'
 import { useSegment } from '../../../hooks/addons'
 import { Product } from 'frontend-shopify'
@@ -36,7 +36,7 @@ const ProductGrid: React.FC<ProductGridProps> = (props) => {
 		md = 4,
 		lg = 4,
 		xl = 4,
-		productComponent: ProductComponent = ProductCardVert,
+		productComponent: ProductComponent = ProductCard,
     buttonText = 'Add to cart',
 		enableBorder = false,
 		enableAddToCart,

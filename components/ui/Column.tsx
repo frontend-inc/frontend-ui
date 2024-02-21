@@ -34,8 +34,8 @@ const Column: React.FC<ColumnProps> = (props) => {
             },
             gap,
             py,
-            px: Number(py) > 0 ? 2 : 0,
-            bgcolor,
+            px: Number(py) > 0 ? 2 : `0px !important`,
+            bgcolor
           }}
           maxWidth={maxWidth}
         >

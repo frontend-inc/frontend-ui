@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Button, Box, Stack, Typography } from '@mui/material'
 import { truncate } from '../../../helpers'
-import { PRODUCT_CARD_VERT_HEIGHT } from '../../../constants/index'
+import { PRODUCT_CARD_HEIGHT } from '../../../constants/index'
 import { Product } from 'frontend-shopify'
 import { formatCurrency } from 'frontend-shopify'
 import SwipeableProductImages from './images/SwipeableProductImages'
-import { ProductModal, AddToCartButton } from '../../../components/shopify'
-import { OkendoStarRating } from '../../../components/addons'
+import { ProductModal, AddToCartButton } from '..'
+import { OkendoStarRating } from '../../addons'
 
 type ProductCardProps = {
 	product: Product
@@ -22,11 +22,11 @@ type ProductCardProps = {
 	buttonVariant?: 'contained' | 'outlined' | 'text'
 }
 
-const ProductCardVert: React.FC<ProductCardProps> = (props) => {
+const ProductCard: React.FC<ProductCardProps> = (props) => {
 	const {
 		product,
 		handleClick,
-		height = PRODUCT_CARD_VERT_HEIGHT,
+		height = PRODUCT_CARD_HEIGHT,
 		enableBorder = false,
 		enableAddToCart = false,
 		enableQuantity = false,
@@ -66,10 +66,13 @@ const ProductCardVert: React.FC<ProductCardProps> = (props) => {
 					...(enableBorder && sx.contentBorder),
 				}}
 			>
-				<Box sx={{ 
+				<Stack
+          spacing={0.5}
+          direction="column" 
+          sx={{ 
             ...sx.text,
             ...(enableOkendoStarRating && sx.textWithReviews),
-        }}>
+          }}>
 					<Typography color="textPrimary" variant="subtitle1">
 						{truncate(product?.title)}
 					</Typography>
@@ -77,7 +80,7 @@ const ProductCardVert: React.FC<ProductCardProps> = (props) => {
 					<Typography color="textSecondary" variant="body2">
 						{formatCurrency(product?.priceRange?.minVariantPrice?.amount)}
 					</Typography>
-				</Box>
+				</Stack>
 				<Stack spacing={1} direction="column">
 					{enableAddToCart && (
 						<AddToCartButton
@@ -114,7 +117,7 @@ const ProductCardVert: React.FC<ProductCardProps> = (props) => {
 	)
 }
 
-export default ProductCardVert
+export default ProductCard
 
 const sx = {
 	root: {

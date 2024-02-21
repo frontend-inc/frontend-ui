@@ -4,8 +4,8 @@ import SwipeableViews from 'react-swipeable-views'
 import { TouchableOpacity } from '../../../../components'
 import { Box, Stack, MobileStepper } from '@mui/material'
 import { 
-  PRODUCT_CARD_VERT_HEIGHT,
-  PRODUCT_CARD_VERT_WIDTH,
+  PRODUCT_CARD_HEIGHT,
+  PRODUCT_CARD_WIDTH,
 } from '../../../../constants/index'
 import { shopifyResizeImage } from 'frontend-shopify'
 
@@ -24,8 +24,8 @@ const SwipeableProductImages: React.FC<SwipeableProductImagesProps> = (
 
 	const { 
     product, 
-    height=PRODUCT_CARD_VERT_HEIGHT, 
-    width=PRODUCT_CARD_VERT_WIDTH, 
+    height=PRODUCT_CARD_HEIGHT, 
+    width=PRODUCT_CARD_WIDTH, 
     handleClick,
     objectFit='cover', 
     responsiveHeight=false,

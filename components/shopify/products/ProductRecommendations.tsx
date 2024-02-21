@@ -3,7 +3,6 @@ import { useProducts } from 'frontend-shopify'
 import { Typography } from '@mui/material'
 import {
 	ProductGrid,
-	ProductList,
 	ProductCarousel,
 } from '../../../components/shopify'
 import { Box } from '@mui/material'
@@ -11,7 +10,7 @@ import { Box } from '@mui/material'
 type ProductRecommendationsProps = {
 	handle?: string | string[]
 	editing?: boolean
-	layout?: 'list' | 'grid' | 'carousel'
+	layout?: 'grid' | 'carousel'
 	title?: string
 	perPage?: string
 	productComponent?: React.FC<any>
@@ -81,20 +80,6 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 				<Typography mb={2} color="textPrimary" variant="h6">
 					{title}
 				</Typography>
-			)}
-			{layout == 'list' && (
-				<ProductList
-					editing={editing}
-					loading={loading}
-					products={similarProducts}
-					productComponent={productComponent}
-					enableBorder={enableBorder}
-					enableAddToCart={enableAddToCart}
-					enableQuantity={enableQuantity}
-					enableQuickShop={enableQuickShop}
-          enableOkendoStarRating={enableOkendoStarRating}
-          buttonText={buttonText}
-				/>
 			)}
 			{layout == 'grid' && (
 				<ProductGrid

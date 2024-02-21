@@ -3,7 +3,6 @@ import { Box, Typography, Stack } from '@mui/material'
 import { useCollections } from 'frontend-shopify'
 import {
 	ProductFilters,
-	ProductList,
 	ProductGrid,
 	ProductCarousel,
 	ProductSort,
@@ -13,7 +12,7 @@ import { ProductCollectionSortKey } from 'frontend-shopify'
 type ProductCollectionProps = {
 	title?: string
 	editing?: boolean
-	layout?: 'list' | 'grid' | 'carousel'
+	layout?: 'grid' | 'carousel'
 	handle: string | string[]
 	productComponent?: React.FC<any>
 	colorOptions?: string[]
@@ -170,19 +169,6 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 					)}
 				</Box>
 			</Stack>
-			{layout == 'list' && (
-				<ProductList
-					editing={editing}
-					loading={loading}
-					products={products}
-					productComponent={productComponent}
-					enableBorder={enableBorder}
-					enableAddToCart={enableAddToCart}
-					enableQuickShop={enableQuickShop}
-					enableQuantity={enableQuantity}
-          enableOkendoStarRating={enableOkendoStarRating}
-				/>
-			)}
 			{layout == 'grid' && (
 				<ProductGrid
 					editing={editing}

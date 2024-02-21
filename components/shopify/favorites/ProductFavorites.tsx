@@ -5,7 +5,6 @@ import {
 } from '../..'
 import {
 	ProductGrid,
-	ProductList,
 	ProductCarousel,
 } from '..'
 import { Box, Typography } from '@mui/material'
@@ -13,7 +12,7 @@ import { useFavorites } from 'frontend-shopify'
 
 type FavoritesProps = {
 	editing?: boolean
-	layout?: 'list' | 'grid' | 'carousel'
+	layout?: 'grid' | 'carousel'
 	title?: string
 	perPage?: string
 	productComponent?: React.FC<any>
@@ -54,18 +53,6 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 				<Typography mb={1} color="textPrimary" variant="h6">
 					{title}
 				</Typography>
-			)}
-			{layout == 'list' && (
-				<ProductList
-					editing={editing}
-					products={favorites}
-					productComponent={productComponent}
-					enableBorder={enableBorder}
-					enableAddToCart={enableAddToCart}
-					enableQuantity={enableQuantity}
-					enableQuickShop={enableQuickShop}
-          buttonText={buttonText}
-				/>
 			)}
 			{layout == 'grid' && (
 				<ProductGrid

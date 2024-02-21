@@ -5,7 +5,6 @@ import {
 } from '../../../components'
 import {
 	ProductGrid,
-	ProductList,
 	ProductCarousel,
 } from '../../../components/shopify'
 import { Box, Typography } from '@mui/material'
@@ -54,18 +53,6 @@ const RecentlyViewed: React.FC<RecentlyViewedProps> = (props) => {
 				<Typography mb={1} color="textPrimary" variant="h6">
 					{title}
 				</Typography>
-			)}
-			{layout == 'list' && (
-				<ProductList
-					editing={editing}
-					products={products}
-					productComponent={productComponent}
-					enableBorder={enableBorder}
-					enableAddToCart={enableAddToCart}
-					enableQuantity={enableQuantity}
-					enableQuickShop={enableQuickShop}
-          buttonText={buttonText}
-				/>
 			)}
 			{layout == 'grid' && (
 				<ProductGrid

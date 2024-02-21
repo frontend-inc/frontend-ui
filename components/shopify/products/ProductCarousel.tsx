@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useSegment } from '../../../hooks/addons'
 import { Box } from '@mui/material'
-import { ProductCardVert } from '../../../components/shopify'
+import { ProductCard } from '../../../components/shopify'
 import { useRouter } from 'next/router'
 import { Carousel } from '../../../components'
 import { Product } from 'frontend-shopify'
@@ -27,7 +27,7 @@ const ProductCarousel: React.FC<ProductCarouselProps> = (props) => {
 	const {
 		editing = false,		
 		products,
-		productComponent: ProductComponent = ProductCardVert,
+		productComponent: ProductComponent = ProductCard,
     buttonText = 'Add to cart',
 		autoPlay = false,
 		arrows = false,

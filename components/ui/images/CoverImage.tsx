@@ -124,6 +124,8 @@ export default CoverImage
 
 const sx = {
 	root: {
+    p: 0,
+    width: '100%',
 		position: 'relative',
 	},
 	stack: {
