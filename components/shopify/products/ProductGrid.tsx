@@ -59,16 +59,16 @@ const ProductGrid: React.FC<ProductGridProps> = (props) => {
 			{products?.map((product) => (
 				<Grid item xs={xs} sm={sm} md={md} lg={lg} xl={xl} key={product?.id}>
           <Box sx={ sx.item } key={product?.id}>
-					<ProductComponent
-						product={product}
-						handleClick={() => handleClick(product)}
-						enableBorder={enableBorder}
-						enableAddToCart={enableAddToCart}
-						enableQuickShop={enableQuickShop}
-						enableQuantity={enableQuantity}
-            enableOkendoStarRating={enableOkendoStarRating}
-            buttonText={buttonText}
-					/>
+            <ProductComponent
+              product={product}
+              handleClick={() => handleClick(product)}
+              enableBorder={enableBorder}
+              enableAddToCart={enableAddToCart}
+              enableQuickShop={enableQuickShop}
+              enableQuantity={enableQuantity}
+              enableOkendoStarRating={enableOkendoStarRating}
+              buttonText={buttonText}
+            />
           </Box>
 				</Grid>
 			))}
@@ -80,6 +80,6 @@ export default ProductGrid
 
 const sx = {
   item: {
-    p: 0.5
+    p: 1
   }
 }

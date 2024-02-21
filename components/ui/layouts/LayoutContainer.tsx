@@ -49,7 +49,6 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
     <Box sx={ sx.layout }>
       <Notifications notifications={notifications} />
       <Box
-        //@ts-ignore
         sx={{
           ...sx.root,          
           ...(!topNav && sx.sideNav),
@@ -70,7 +69,6 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
           </ModeTheme>
         )}
         <Box
-          //@ts-ignore
           sx={{
             ...sx.content,
             ...(enableHeader && topNav && sx.contentHeader),
@@ -111,7 +109,7 @@ const sx = {
 		height: '100vh',
     pt: {
       sm: 0,
-      xs: '64px',
+      xs: '60px',
     }
 	},
 	content: {
@@ -119,10 +117,6 @@ const sx = {
 		flexDirection: 'column',
 		width: '100%',
 		minHeight: '100%',
-    overflowY: 'scroll',
-		'&::-webkit-scrollbar': {
-			display: 'none',
-		},
 	},
   contentHeader: {    
     pt: '60px',
@@ -131,6 +125,10 @@ const sx = {
 		width: {
 			sm: 'calc(100% - 280px)',
 			xs: '100%',
+		},
+    overflowY: 'scroll',
+		'&::-webkit-scrollbar': {
+			display: 'none',
 		},
 	},
 	contentTopNav: {

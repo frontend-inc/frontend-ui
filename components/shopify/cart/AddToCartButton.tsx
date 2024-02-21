@@ -91,7 +91,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = (props) => {
           handleChange={handleSellingPlanChange}
         />
       )}
-      <Stack direction="row" spacing={0.5}>
+      <Stack direction="row" spacing={1}>
         {enableQuantity && (
           <QuantitySelector
             size={size}

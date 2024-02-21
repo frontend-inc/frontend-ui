@@ -36,7 +36,7 @@ const CoverImage: React.FC<CoverImageProps> = (props) => {
 		description,
 		buttonText,
 		handleClick,
-		image = null,
+		image,
 		height = 400,
 		objectFit = 'cover',
 		alt = 'image',
@@ -137,7 +137,6 @@ const sx = {
 		alignItems: 'center',
 	},
 	content: {
-    p: 1,
 		maxWidth: '540px',
 	},
 }

@@ -65,3 +65,8 @@ export const resize = (src, { width, height, transform = 'fill' }) => {
 export const imageFromVideoUrl = (url) => {
 	return url?.replace(/mp4|mpeg|ogg|mkv|mov/i, 'jpg')
 }
+
+export const scrollTo = (domId) => {
+  const elem = document.getElementById(domId)
+  elem?.scrollIntoView({ behavior: 'smooth' })
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Box, Stack, Typography } from '@mui/material'
-import { truncate } from '../../../helpers'
+import { scrollTo, truncate } from '../../../helpers'
 import { PRODUCT_CARD_HEIGHT } from '../../../constants/index'
 import { Product } from 'frontend-shopify'
 import { formatCurrency } from 'frontend-shopify'
@@ -43,7 +43,8 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 	}
 
 	const handleItemClick = () => {
-		if (handleClick) {
+		if (handleClick) {    
+      window.scrollTo({ top: 0, behavior: 'smooth' })
 			handleClick()
 		}
 	}
@@ -130,10 +131,10 @@ const sx = {
 		borderColor: 'divider',
 	},
 	text: {
-		height: '60px',
+		height: '80px',
 	},
   textWithReviews: {
-    height: '90px',  
+    height: '110px',  
   },
 	contentBorder: {
 		p: 1,
