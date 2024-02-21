@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Button, Box, Stack, Typography } from '@mui/material'
-import { scrollTo, truncate } from '../../../helpers'
+import { truncate } from '../../../helpers'
 import { PRODUCT_CARD_HEIGHT } from '../../../constants/index'
 import { Product } from 'frontend-shopify'
+import { ShopContext } from 'frontend-shopify'
 import { formatCurrency } from 'frontend-shopify'
 import SwipeableProductImages from './images/SwipeableProductImages'
 import { ProductModal, AddToCartButton } from '..'
@@ -37,6 +38,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 	} = props || {}
 
 	const [open, setOpen] = useState(false)
+  const { setSearchOpen } = useContext(ShopContext) as any
 
 	const handleQuickShop = () => {
 		setOpen(true)
@@ -45,6 +47,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 	const handleItemClick = () => {
 		if (handleClick) {    
       window.scrollTo({ top: 0, behavior: 'smooth' })
+      setSearchOpen(false)
 			handleClick()
 		}
 	}

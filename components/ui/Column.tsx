@@ -37,6 +37,7 @@ const Column: React.FC<ColumnProps> = (props) => {
             px: Number(py) > 0 ? 2 : `0px !important`,
             bgcolor,
           }}
+          //@ts-ignore
           maxWidth={maxWidth}
         >
           {children}
