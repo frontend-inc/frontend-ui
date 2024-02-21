@@ -13,7 +13,7 @@ const AccordionItem: React.FC<AccordionProps> = (props) => {
 	const { title, description, image } = props
 
 	return (
-		<Accordion elevation={0}>
+		<Accordion sx={ sx.root } elevation={0}>
 			<AccordionSummary expandIcon={<ExpandMore />}>
 				<Typography variant="subtitle1">{title}</Typography>
 			</AccordionSummary>
@@ -27,3 +27,11 @@ const AccordionItem: React.FC<AccordionProps> = (props) => {
 }
 
 export default AccordionItem
+
+const sx = {
+  root: {
+    borderTop: '1px solid',
+    borderColor: 'divider',
+    my: '0px !important'
+  }
+}

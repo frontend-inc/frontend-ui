@@ -5,6 +5,7 @@ import {
 	ProductInfo,
 	ProductImages,
 	ProductVariantSelector,
+  ProductMetafields,
   TrackRecentlyViewed,
 } from '../../../components/shopify'
 import { useProducts, useProductDetails, MetafieldIdentifier } from 'frontend-shopify'
@@ -46,12 +47,11 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = (props) => {
     product 
   })  
 
-  useEffect(() => {
-    console.log("Metafields", metafields)
-    if(handle){
-      findProduct(String(handle))
+  useEffect(() => {    
+    if(handle){      
+      findProduct(String(handle), metafields)
     }
-  }, [handle, metafields])
+  }, [handle])
 
 	return (
     <Stack spacing={0} direction="row" sx={sx.container}>
@@ -83,7 +83,13 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = (props) => {
             enableSubscription={enableSubscription}
             enableFavorites={enableFavorites}
             label={buttonText}
-          />             
+          />      
+          { metafields && (
+            <ProductMetafields 
+              product={product}
+              metafields={metafields}
+            />
+          )}       
           <TrackRecentlyViewed product={product} /> 
         </Stack>
       </Box>

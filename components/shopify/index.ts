@@ -63,8 +63,12 @@ export { default as SwipeableProductImages } from './products/images/SwipeablePr
 export { default as ProductImages } from './products/images/ProductImages'
 export { default as ProductImageCarousel } from './products/images/ProductImageCarousel'
 export { default as ProductImageThumbnails } from './products/images/ProductImageThumbnails'
+export { default as ProductMetafields } from './products/ProductMetafields'
 export { default as ProductModal } from './products/ProductModal'
 export { default as ProductRecommendations } from './products/ProductRecommendations'
+
+// Metafields 
+export { default as RichText } from './metafields/RichText'
 
 // Context
 export { default as ShopifyStore } from './store/ShopifyStore'
