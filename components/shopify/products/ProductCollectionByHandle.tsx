@@ -5,7 +5,7 @@ import { useCollections } from 'frontend-shopify'
 type ProductCollectionByHandleProps = {
 	editing?: boolean
 	enableTitle?: boolean
-	layout?: 'list' | 'grid' | 'carousel'
+	layout?: 'grid' | 'carousel'
 	handle: string | string[]
 	productComponent?: React.FC<any>
 	colorOptions?: string[]
