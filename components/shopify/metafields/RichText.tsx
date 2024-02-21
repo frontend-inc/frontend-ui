@@ -2,13 +2,12 @@ import React from 'react';
 import { Typography, List, ListItem, ListItemText, Link } from '@mui/material';
 
 type RichTextProps = {
-  value: any;
-  scoped?: boolean | string;
+  value: string
 };
 
 const RichText: React.FC<RichTextProps> = (props) => {
-  let { value, scoped } = props
-  if (typeof value === 'string' || value instanceof String) {
+  let { value } = props
+  if (typeof value === 'string') {
     value = JSON.parse(value);
   }
 
@@ -17,7 +16,7 @@ const RichText: React.FC<RichTextProps> = (props) => {
 
     if (value.type === 'root' && value.children?.length > 0) {
       return (
-        <div className={scoped === true ? 'rte' : (scoped || '')}>
+        <div>
           {value.children.map((child, index) => rendervalue(child, inList))}
         </div>
       );
@@ -33,6 +32,7 @@ const RichText: React.FC<RichTextProps> = (props) => {
       case 'paragraph':
         return <Typography my={1} key={key} variant="body1">{rendervalue(el.children, inList)}</Typography>;
       case 'heading':
+        // @ts-ignore
         return <Typography key={key} variant={`h${el.level}`}>{rendervalue(el.children, inList)}</Typography>;
       case 'list':
         return (
