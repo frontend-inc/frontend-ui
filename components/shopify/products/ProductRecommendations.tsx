@@ -77,7 +77,7 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 	return (
 		<Box sx={sx.root}>
 			{title && (
-				<Typography mb={2} color="textPrimary" variant="h6">
+				<Typography color="textPrimary" variant="h6">
 					{title}
 				</Typography>
 			)}

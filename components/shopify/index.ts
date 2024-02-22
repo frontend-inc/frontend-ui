@@ -68,7 +68,9 @@ export { default as ProductModal } from './products/ProductModal'
 export { default as ProductRecommendations } from './products/ProductRecommendations'
 
 // Metafields 
-export { default as RichText } from './metafields/RichText'
+export { default as Metafields } from './products/metafields/Metafields'
+export { default as MetafieldRichText } from './products/metafields/MetafieldRichText'
+export { default as MetafieldProducts } from './products/metafields/MetafieldProducts'
 
 // Context
 export { default as ShopifyStore } from './store/ShopifyStore'

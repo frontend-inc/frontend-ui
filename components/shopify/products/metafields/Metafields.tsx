@@ -12,8 +12,9 @@ import {
   Box,
   Typography,
 } from '@mui/material'
-import { MetafieldRichText } from '../../shopify'
-import { Icon } from '../../ui'
+import { MetafieldRichText } from '../../../shopify'
+import { Icon } from '../../../ui'
+import { useProducts } from 'frontend-shopify'
 
 const PLAIN_TEXT_TYPES = [
   'single_line_text_field',
@@ -30,25 +31,36 @@ const SUPPORTED_METAFIELD_TYPES = [
 ]
 
 type ProductMetafieldsProps = {
-  product: Product
+  handle: string
   metafields: MetafieldIdentifier[]
 }
 
 const ProductMetafields: React.FC<ProductMetafieldsProps> = (props) => {
 
-  const { product, metafields } = props
+  const { 
+    handle,    
+    metafields 
+  } = props
 
+  const { product, findProduct } = useProducts()
+
+  useEffect(() => {
+    if(handle && metafields){
+      findProduct(handle, metafields)
+    }
+  }, [handle, metafields])
+
+  if(!product || !metafields) return null;
   return (
     <Box sx={ sx.root }>
-      { metafields?.map((metafield, index) => { 
-
+      { product && metafields?.map((metafield, index) => { 
         const type = getMetafieldType(product, metafield.key)
         const value = getMetafieldValue(product, metafield.key)
         if(!value) return null
         if(!SUPPORTED_METAFIELD_TYPES.includes(type)) return null;
         return(        
         <Accordion sx={ sx.accordion } elevation={0}>
-          <AccordionSummary expandIcon={<Icon name="ChevronDown" />}>
+          <AccordionSummary expandIcon={<Icon name="Plus" />}>
             <Typography variant="subtitle2">
               { metafield.label }
             </Typography>
