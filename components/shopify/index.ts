@@ -69,6 +69,7 @@ export { default as ProductRecommendations } from './products/ProductRecommendat
 
 // Metafields 
 export { default as Metafields } from './products/metafields/Metafields'
+export { default as MetafieldImage } from './products/metafields/MetafieldImage'
 export { default as MetafieldRichText } from './products/metafields/MetafieldRichText'
 export { default as MetafieldProducts } from './products/metafields/MetafieldProducts'
 

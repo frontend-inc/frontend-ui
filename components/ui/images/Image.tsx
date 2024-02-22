@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { NoImage } from '../../../components'
 import { Box, useTheme } from '@mui/material'
 import NextImage from 'next/image'
@@ -42,10 +42,7 @@ const Image: React.FC<ImageProps> = (props) => {
 					...sx.afterBase,
 					...(enableOverlay && sx.overlay),
 					...(!enableOverlay && enableGradient && sx.gradient),
-					...(!enableOverlay &&
-						!disableBorderRadius &&
-						enableGradient &&
-						sx.gradientBorderRadius),
+					...(!enableOverlay && !disableBorderRadius && enableGradient && sx.gradientBorderRadius),
 					...(enableBorder && sx.border),
 					bgcolor,
 					opacity,
@@ -62,8 +59,7 @@ const Image: React.FC<ImageProps> = (props) => {
 						height: `${height}px`,
 						minHeight: `${height}px`,
 						objectFit,
-						borderRadius:
-							!disableBorderRadius && `${theme.shape.borderRadius}px`,
+						borderRadius: !disableBorderRadius && `${theme.shape.borderRadius}px`,
 					}}
 					layout={'responsive'}
 				/>
@@ -78,6 +74,7 @@ export default Image
 
 const sx = {
 	root: {
+    position: 'relative',
 		width: '100%',
 		display: 'flex',
 		alignItems: 'center',
@@ -108,8 +105,5 @@ const sx = {
 	border: {
 		border: '1px solid',
 		borderColor: 'divider',
-	},
-	image: {
-		objectFit: 'cover',
 	},
 }
