@@ -1,28 +1,28 @@
 export const typography = {
 	h1: {
 		fontFamily: 'Inter',
-		fontWeight: 500,
-		fontSize: 54,
+		fontWeight: 600,
+		fontSize: 40,
 		lineHeight: '1.1em',
 		'@media (max-width:600px)': {
-			fontSize: 36,
+			fontSize: 34,
 		},
 	},
 	h2: {
 		fontFamily: 'Inter',
 		fontWeight: 500,
-		fontSize: 44,
+		fontSize: 40,
 		'@media (max-width:600px)': {
-			fontSize: 32,
+			fontSize: 34,
 		},
 	},
 	h3: {
 		fontFamily: 'Inter',
 		fontWeight: 500,
 		textIndent: 0,
-		fontSize: 36,
+		fontSize: 40,
 		'@media (max-width:600px)': {
-			fontSize: 26,
+			fontSize: 34,
 		},
 		lineHeight: '1.3em',
 	},
@@ -46,8 +46,8 @@ export const typography = {
 	},
 	subtitle1: {
 		fontFamily: 'Inter',
-		fontSize: 18,
-		fontWeight: 500,
+		fontSize: 16,
+		fontWeight: 600,
 		lineHeight: '1.5em',
 		textTransform: 'none',
 	},
@@ -60,10 +60,10 @@ export const typography = {
 	body1: {
 		fontFamily: 'Inter',
 		textTransform: 'none',
-		fontWeight: 400,
-		fontSize: 15,
+		fontWeight: 500,
+		fontSize: 14,
 		'@media (max-width:600px)': {
-			fontSize: 16,
+			fontSize: 15,
 		},
 	},
 	body2: {
