@@ -26,9 +26,9 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 		bgcolor,
 		headerFont = 'Inter',
 		bodyFont = 'Roboto',
-		borderRadius = 0,
+		borderRadius,
 		mobile,
-		offset = 0,
+		offset,
 	} = props || {}
 
 	const { theme, setTheme } = useTheme({

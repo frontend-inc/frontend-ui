@@ -2,16 +2,16 @@ export const typography = {
 	h1: {
 		fontFamily: 'Inter',
 		fontWeight: 600,
-		fontSize: 40,
+		fontSize: 64,
 		lineHeight: '1.1em',
 		'@media (max-width:600px)': {
-			fontSize: 34,
+			fontSize: 40,
 		},
 	},
 	h2: {
 		fontFamily: 'Inter',
 		fontWeight: 500,
-		fontSize: 40,
+		fontSize: 48,
 		'@media (max-width:600px)': {
 			fontSize: 34,
 		},

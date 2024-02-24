@@ -32,7 +32,7 @@ const CoverImage: React.FC<CoverImageProps> = (props) => {
 	const {
 		editing = false,
 		title,
-		textVariant = 'h1',
+		textVariant = 'h3',
 		description,
 		buttonText,
 		handleClick,
@@ -42,7 +42,7 @@ const CoverImage: React.FC<CoverImageProps> = (props) => {
 		alt = 'image',
 		enableGradient = false,
 		enableOverlay = false,
-		opacity = 0.5,
+		opacity = 0.65,
 		alignItems = 'center',
 		bgcolor = '#FFFFFF',
 		href,
@@ -77,7 +77,7 @@ const CoverImage: React.FC<CoverImageProps> = (props) => {
 			>
 				<Stack
 					direction="column"
-					spacing={2}
+					spacing={1}
 					alignItems={alignItems}
 					sx={sx.content}
 				>

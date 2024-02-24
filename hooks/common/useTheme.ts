@@ -143,6 +143,7 @@ const useTheme = (props: ThemeProps) => {
     }
 
     if(Number(borderRadius) >= 0){
+      console.log('borderRadius', borderRadius)
       shape = {
         ...shape,
         borderRadius: Number(borderRadius),
