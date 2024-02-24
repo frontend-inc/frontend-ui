@@ -104,7 +104,7 @@ const CoverImage: React.FC<CoverImageProps> = (props) => {
 						</Typography>
 					)}
 					{buttonText && (
-						<Box>
+						<Box py={2}>
 							<Button
 								size="large"
 								onClick={handleItemClick}
