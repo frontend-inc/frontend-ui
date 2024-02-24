@@ -91,97 +91,97 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 
 	return (
     <Box sx={ sx.root }>      
-    <Button 
-      sx={ sx.button }
-      fullWidth
-      variant="outlined"
-      color="secondary"
-      endIcon={
-        <Stack direction='row' spacing={0}>
-          <Tooltip title={ value }>
-            <IconButton>
-              { value ? (
-              <Box
-                sx={{
-                  ...sx.color,	
-                  bgcolor: value,
-                }}
-              />
-              ):(
-                <TransparentColor 
-                  value={value}
-                  handleClick={ openMenu }
+      <Button 
+        sx={ sx.button }
+        fullWidth
+        variant="outlined"
+        color="secondary"
+        endIcon={
+          <Stack direction='row' spacing={0}>
+            <Tooltip title={ value }>
+              <IconButton>
+                { value ? (
+                <Box
+                  sx={{
+                    ...sx.color,	
+                    bgcolor: value,
+                  }}
                 />
-              )}
+                ):(
+                  <TransparentColor 
+                    value={value}
+                    handleClick={ openMenu }
+                  />
+                )}
+              </IconButton>
+            </Tooltip>  
+            <IconButton size="small">
+              <Icon name="ChevronDown" size={20} />
             </IconButton>
-          </Tooltip>  
-          <IconButton size="small">
-            <Icon name="ChevronDown" size={20} />
-          </IconButton>
-        </Stack>          
-      }
-      onClick={openMenu}>          
-      Choose color
-    </Button>      
-    <Popup 
-      open={open}
-      anchorEl={anchorEl}
-      handleClose={closeMenu}
-    >
-		<Stack spacing={2} direction="column" sx={sx.root}>
-			<Box sx={sx.grid}>
-				{MUI_COLORS.map((color) => (
-					<Box
-						sx={{
-							...sx.color,
-							...(hex == COLORS[color][tone] && sx.selected),
-							bgcolor: COLORS[color][tone],
-						}}
-						onClick={() => handleColorChange(color)}
-					/>
-				))}
-				{HEX_COLORS.map((hexColor) => (
-					<Box
-						sx={{
-							...sx.color,
-							...(hex == hexColor && sx.selected),
-							bgcolor: hexColor,
-						}}
-						onClick={() => handleHexColorChange(hexColor)}
-					/>
-				))}
-        <TransparentColor 
-          value={hex}
-          handleClick={() => handleHexColorChange('')}
-        />        
-			</Box>
-      {!disableTone && (
-				<Stack spacing={0} sx={sx.slider}>
-					<Typography variant="caption" color="textSecondary">
-						Color tone
-					</Typography>
-					<Slider
-						aria-label="Tone"
-						defaultValue={[100, 900]}
-						valueLabelDisplay="auto"
-						onChange={handleToneChange}
-						step={100}
-						min={100}
-						max={900}
-						value={tone}
-					/>
-				</Stack>
-			)}
-      <Box sx={sx.input}>
-        <TextInput 
-          name={name}
-          value={text}
-          handleChange={handleTextChange}
-        />
-      </Box>
-		</Stack>
-  </Popup>
-</Box>
+          </Stack>          
+        }
+        onClick={openMenu}>          
+        Choose color
+      </Button>      
+      <Popup 
+        open={open}
+        anchorEl={anchorEl}
+        handleClose={closeMenu}
+      >
+      <Stack spacing={2} direction="column" sx={sx.root}>
+        <Box sx={sx.grid}>
+          {MUI_COLORS.map((color) => (
+            <Box
+              sx={{
+                ...sx.color,
+                ...(hex == COLORS[color][tone] && sx.selected),
+                bgcolor: COLORS[color][tone],
+              }}
+              onClick={() => handleColorChange(color)}
+            />
+          ))}
+          {HEX_COLORS.map((hexColor) => (
+            <Box
+              sx={{
+                ...sx.color,
+                ...(hex == hexColor && sx.selected),
+                bgcolor: hexColor,
+              }}
+              onClick={() => handleHexColorChange(hexColor)}
+            />
+          ))}
+          <TransparentColor 
+            value={hex}
+            handleClick={() => handleHexColorChange('')}
+          />        
+        </Box>
+        {!disableTone && (
+          <Stack spacing={0} sx={sx.slider}>
+            <Typography variant="caption" color="textSecondary">
+              Color tone
+            </Typography>
+            <Slider
+              aria-label="Tone"
+              defaultValue={[100, 900]}
+              valueLabelDisplay="auto"
+              onChange={handleToneChange}
+              step={100}
+              min={100}
+              max={900}
+              value={tone}
+            />
+          </Stack>
+        )}
+        <Box sx={sx.input}>
+          <TextInput 
+            name={name}
+            value={text}
+            handleChange={handleTextChange}
+          />
+        </Box>
+      </Stack>
+    </Popup>
+  </Box>
 	)
 }
 
@@ -189,17 +189,19 @@ export default ColorInput
 
 const sx = {
 	root: {
-		width: '100%',
-		mb: 2,
+		width: '100%',		
 	},
   button: {
     py: 0,
     justifyContent: 'space-between',
+    border: '1px solid',
+		borderColor: 'divider',
+		bgcolor: 'background.paper',
   },
 	grid: {
 		display: 'grid',
 		gridTemplateColumns: 'repeat(7, 1fr)',
-		gap: '5px',
+		gap: '4px',
 	},
 	slider: {
 		width: '100%',
