@@ -98,6 +98,7 @@ const ProductFilterButton: React.FC<ProductFilterButtonProps> = (props) => {
 	return (
 		<>
 			<Button
+        sx={ sx.button }
 				onClick={handleClick}
 				variant="text"
 				color="secondary"
@@ -185,3 +186,9 @@ const ProductFilterButton: React.FC<ProductFilterButtonProps> = (props) => {
 }
 
 export default ProductFilterButton
+
+const sx = {
+  button: {
+    color: 'text.secondary'
+  }
+}

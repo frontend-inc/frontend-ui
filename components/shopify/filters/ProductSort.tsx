@@ -35,7 +35,6 @@ const ProductSortButton: React.FC<ProductSortButtonProps> = (props) => {
 				<Button
 					sx={sx.button}
 					variant="text"
-					color="secondary"
 					onClick={handleOpen}
 					endIcon={
 						reverse === true ? (
@@ -68,6 +67,7 @@ export default ProductSortButton
 
 const sx = {
 	button: {
+    color: 'text.secondary',
 		borderRight: 'none',
 		'&:hover': {
 			borderRight: 'none',

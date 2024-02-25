@@ -51,7 +51,7 @@ const sx = {
     '& .MuiPopover-paper': {
       border: '1px solid',
       borderColor: 'divider',
-      borderRadius: theme => theme.shape.borderRadius,
+      borderRadius: theme => `${theme.shape.borderRadius}px`,
     }
   },
 	content: {
