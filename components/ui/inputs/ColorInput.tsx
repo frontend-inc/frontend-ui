@@ -54,6 +54,7 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 
 	const handleHexColorChange = (hexColor) => {
 		setHex(hexColor)
+    closeMenu()
 	}
 
   const handleTextChange = (ev) => {
