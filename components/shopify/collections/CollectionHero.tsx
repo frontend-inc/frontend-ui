@@ -18,7 +18,7 @@ type CollectionHeroProps = {
 	enableGradient?: boolean
 	enableOverlay?: boolean
 	opacity?: number
-	bgcolor?: string
+	overlayColor?: string
 	href?: string
 }
 
@@ -35,7 +35,7 @@ const CollectionHero: React.FC<CollectionHeroProps> = (props) => {
 		enableOverlay = false,
 		opacity = 0.5,
 		alignItems = 'center',
-		bgcolor = '#FFFFFF',    
+		overlayColor = '#000000',    
 		href,
 	} = props
 
@@ -54,7 +54,7 @@ const CollectionHero: React.FC<CollectionHeroProps> = (props) => {
       enableOverlay={enableOverlay}
       enableGradient={enableGradient}
       opacity={opacity}
-      bgcolor={bgcolor}
+      overlayColor={overlayColor}
       height={height}
       textVariant={textVariant}
       title={collection?.title}
