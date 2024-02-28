@@ -22,7 +22,7 @@ type CoverImageCarouselProps = {
 	enableOverlay?: boolean
 	enableGradient?: boolean
 	enableBorder?: boolean
-	bgcolor?: string
+	overlayColor?: string
 	opacity?: number
 	alignItems?: 'flex-start' | 'center' | 'flex-end'
 }
@@ -42,7 +42,7 @@ const CoverImageCarousel: React.FC<CoverImageCarouselProps> = (props) => {
 		enableGradient = false,
 		autoPlay = false,
 		height,
-		bgcolor = '#000000',
+		overlayColor = '#000000',
 		alignItems = 'center',
 	} = props
 
@@ -106,7 +106,7 @@ const CoverImageCarousel: React.FC<CoverImageCarouselProps> = (props) => {
 					enableGradient={enableGradient}
 					opacity={opacity}
 					handleClick={() => handleClick(coverImage)}
-					bgcolor={bgcolor}
+					overlayColor={overlayColor}
 					alignItems={alignItems}
 				/>
 			))}
