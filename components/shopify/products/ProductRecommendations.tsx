@@ -20,6 +20,7 @@ type ProductRecommendationsProps = {
 	enableQuickShop?: boolean
   enableOkendoStarRating?: boolean
   buttonText?: string
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 }
 
 const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
@@ -37,7 +38,8 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 		enableAddToCart,
 		enableQuantity,
 		enableQuickShop,
-    enableOkendoStarRating
+    enableOkendoStarRating,
+    maxWidth
 	} = props || {}
 
 	const [similarProducts, setSimilarProducts] = useState<any>()
@@ -114,6 +116,6 @@ export default ProductRecommendations
 
 const sx = {
 	root: {
-		width: '100%',
+		width: '100%'
 	},
 }

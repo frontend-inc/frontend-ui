@@ -27,6 +27,7 @@ const TransparentColor: React.FC<TransparentColorProps> = (props) => {
 }
 
 type ColorInputProps = {
+  label?: string
 	name: string
 	value: string
 	handleChange: (e: SyntheticEvent) => void
@@ -35,7 +36,7 @@ type ColorInputProps = {
 }
 
 const ColorInput: React.FC<ColorInputProps> = (props) => {
-	const { name, value, disableTone = false, handleChange } = props
+	const { label, name, value, disableTone = false, handleChange } = props
 
 	const [tone, setTone] = useState(500)
   const [color, setColor] = useState(null)
@@ -44,7 +45,7 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 
   const { open, anchorEl, openMenu, closeMenu } = useMenu()
 
-	const handleToneChange = (event, newTone) => {
+	const handleToneChange = (ev, newTone) => {
 		setTone(newTone)    
 	}
 
@@ -91,7 +92,12 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
   }, [hex])
 
 	return (
-    <Box sx={ sx.root }>      
+    <Box sx={ sx.root }>  
+      { label && (
+        <Typography variant="caption" color="textSecondary">
+          { label }
+        </Typography>
+      )}    
       <Button 
         sx={ sx.button }
         fullWidth

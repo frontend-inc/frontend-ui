@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { AppContext } from '../../../context'
 import { Box, Button, Stack, Typography } from '@mui/material'
 import { Image, TouchableOpacity } from '../../../components'
@@ -46,6 +46,10 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 		enableGradient = false,
 	} = props || {}
 
+  const [textAlign, setTextAlign] = useState('center')
+  const [justifyContent, setJustifyContent] = useState('center')
+  const [direction, setDirection] = useState('row')
+
 	const router = useRouter()
 
 	const handleItemClick = () => {		
@@ -56,8 +60,18 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 		}
 	}
 
-	const direction =
-		flexDirection == 'row' || flexDirection == 'row-reverse' ? 'row' : 'column'
+
+  useEffect(() => {
+    if(flexDirection == 'row' || flexDirection == 'row-reverse') {
+      setTextAlign('left')
+      setDirection('row')
+      setJustifyContent('center')
+    }else{
+      setTextAlign('center')
+      setDirection('column')
+      setJustifyContent('flex-start')      
+    }
+  }, [flexDirection])
 
 	return (
 		<Box
@@ -105,49 +119,72 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 						},
 					}}
 				>
-					<Stack sx={ sx.textContent } spacing={2}>
-						<Box>
-              {label && (
-								<Typography color="primary" sx={ sx.label } variant="caption">
-									{label}
-								</Typography>
-							)}
-							<Typography
-								sx={{
-                  ...sx.title,
-									textAlign: direction == 'row' ? 'left' : 'center',
-								}}								
-								variant={textVariant}                
-							>
-								{title}
-							</Typography>
-							<Typography								
-								variant="body2"
-								sx={{
-									...sx.description,
-									textAlign: direction == 'row' ? 'left' : 'center',
-								}}
-							>
-								{truncate(description, 160)}
-							</Typography>
-              {buttonText && (
-                <Box
-                  sx={{
-                    ...sx.actions,
-                    justifyContent: direction == 'row' ? 'flex-start' : 'center',
-                  }}
+					<Stack 
+            spacing={0}
+            sx={{ 
+              ...sx.textContent, 
+              justifyContent: {
+                sm: justifyContent,
+                xs: 'center'
+              } 
+            }}             
+            >					
+            {label && (
+              <Typography 
+                color="primary" 
+                sx={{ 
+                  ...sx.label, 
+                  textAlign: {
+                    sm: textAlign,
+                    xs: 'center'
+                  } 
+                }} 
+                variant="caption"
+              >
+                {label}
+              </Typography>
+            )}
+            <Typography
+              sx={{
+                ...sx.title,
+                textAlign: {
+                  sm: textAlign,
+                  xs: 'center'
+                } 
+              }}								
+              variant={textVariant}                
+            >
+              {title}
+            </Typography>
+            <Typography								
+              variant="body2"
+              sx={{
+                ...sx.description,
+                textAlign: {
+                  sm: textAlign,
+                  xs: 'center'
+                } 
+              }}
+            >
+              {truncate(description, 160)}
+            </Typography>
+            {buttonText && (
+              <Box
+                sx={{
+                  ...sx.actions,                    
+                  justifyContent: direction == 'row' ? 'flex-start' : 'center',
+                }}
+              >
+                <Button
+                  size="large"
+                  variant="contained"
+                  color="primary"
+                  onClick={handleItemClick}
                 >
-                  <Button
-                    size="large"
-                    variant="contained"
-                    color="primary"
-                    onClick={handleItemClick}
-                  >
-                    {buttonText}
-                  </Button>
-                </Box>
-              )}
-						</Box>
+                  {buttonText}
+                </Button>
+              </Box>
+            )}
 					</Stack>
 				</Box>
 			</Box>
@@ -159,6 +196,7 @@ export default FeaturedCard
 
 const sx = {
 	root: {
+    width: "100%",
 		display: 'flex',
 		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 	},
@@ -196,20 +234,20 @@ const sx = {
   textContent: {
     p: 2,
 		display: 'flex',
-    justifyContent: 'flex-start',
-		alignItems: 'flex-start',
 		height: '100%',
 		width: '100%',
   },
   label: {
+    width: '100%',
     color: 'primary.main'
   },
   title: {
+    width: '100%',
     color: 'text.primary',
     my: 1
   },
 	description: {
-    color: 'text.secondary',
-		maxWidth: '480px',
+    width: '100%',
+    color: 'text.secondary',		
 	},
 }

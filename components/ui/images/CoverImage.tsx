@@ -21,7 +21,7 @@ type CoverImageProps = {
 	enableGradient?: boolean
 	enableOverlay?: boolean
 	opacity?: number
-	bgcolor?: string
+	overlayColor?: string
 	href?: string
 }
 
@@ -44,7 +44,7 @@ const CoverImage: React.FC<CoverImageProps> = (props) => {
 		enableOverlay = false,
 		opacity = 0.65,
 		alignItems = 'center',
-		bgcolor = '#FFFFFF',
+		overlayColor = '#FFFFFF',
 		href,
 	} = props
 
@@ -64,7 +64,7 @@ const CoverImage: React.FC<CoverImageProps> = (props) => {
 				height={height}
 				objectFit={objectFit}
 				disableBorderRadius
-				bgcolor={bgcolor}
+				bgcolor={overlayColor}
 				enableGradient={enableGradient}
 				enableOverlay={enableOverlay}
 				opacity={opacity}

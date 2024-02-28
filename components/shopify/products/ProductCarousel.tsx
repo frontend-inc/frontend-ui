@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useSegment } from '../../../hooks/addons'
 import { Box } from '@mui/material'
 import { ProductCard } from '../../../components/shopify'
 import { useRouter } from 'next/router'
 import { Carousel } from '../../../components'
 import { Product } from 'frontend-shopify'
-import { AppContext } from '../../../context'
+import { ThemeContext, AppContext } from '../../../context'
 
 type ProductCarouselProps = {
 	editing?: boolean
@@ -16,6 +16,7 @@ type ProductCarouselProps = {
 	autoPlay?: boolean
 	arrows?: boolean
 	showDots?: boolean
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuickShop?: boolean
@@ -27,6 +28,7 @@ const ProductCarousel: React.FC<ProductCarouselProps> = (props) => {
 	const {
 		editing = false,		
 		products,
+    maxWidth,
 		productComponent: ProductComponent = ProductCard,
     buttonText = 'Add to cart',
 		autoPlay = false,
@@ -51,31 +53,38 @@ const ProductCarousel: React.FC<ProductCarouselProps> = (props) => {
 	}
 
 	return (
-		<Carousel autoPlay={autoPlay} arrows={arrows} showDots={showDots}>
-			{products?.map((product) => (
-				<Box sx={sx.item} key={product.id}>
-					<ProductComponent
-						product={product}
-						handleClick={() => handleClick(product)}
-            buttonText={buttonText}
-						enableBorder={enableBorder}
-						enableAddToCart={enableAddToCart}
-						enableQuickShop={enableQuickShop}
-						enableQuantity={enableQuantity}
-            enableOkendoStarRating={enableOkendoStarRating}
-					/>
-				</Box>
-			))}
-		</Carousel>
+    <Box sx={sx.root}>
+      <Carousel 
+        editing={editing}
+        autoPlay={autoPlay} 
+        arrows={arrows} 
+        showDots={showDots}
+      >
+        {products?.map((product) => (
+          <Box sx={sx.item} key={product.id}>
+            <ProductComponent
+              product={product}
+              handleClick={() => handleClick(product)}
+              buttonText={buttonText}
+              enableBorder={enableBorder}
+              enableAddToCart={enableAddToCart}
+              enableQuickShop={enableQuickShop}
+              enableQuantity={enableQuantity}
+              enableOkendoStarRating={enableOkendoStarRating}
+            />
+          </Box>
+        ))}
+      </Carousel>
+    </Box>
 	)
 }
 
 export default ProductCarousel
 
 const sx = {
-	carousel: {
-		width: '900px',
-	},
+  root: {
+    maxWidth: '100%',
+  },
 	item: {
 		px: '10px',
 		pb: 4,

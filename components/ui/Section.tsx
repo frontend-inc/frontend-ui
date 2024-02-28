@@ -1,27 +1,46 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { Box, Container } from '@mui/material'
 
 type SectionProps = {
 	children: React.ReactNode
-	bgcolor?: string
-	p?: number
-	styles?: any
-}
+  bgcolor?: string
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
+  py?: number
+}  
 
 const Section: React.FC<SectionProps> = (props) => {
-	const { children, bgcolor, p = 4, styles = {} } = props
+	
+  const { children, bgcolor, maxWidth, py=4 } = props
 
 	return (
-		<Box
-			sx={{
-				bgcolor,
-				p: p,
-				...styles,
-			}}
-		>
-			{children}
-		</Box>
+		<Box 
+      sx={{
+        bgcolor,
+        ...sx.root,          
+      }}
+    >
+    <Container 
+      disableGutters={ !maxWidth }
+      maxWidth={maxWidth || false}
+      sx={{
+        py,
+        px: py > 0 ? 2 : 0,
+      }}
+    >
+      { children }
+    </Container>
+  </Box>
 	)
 }
 
 export default Section
+
+const sx = {
+  root: {
+		width: '100%',
+		overflowX: 'scroll',
+		'&::-webkit-scrollbar': {
+			display: 'none',
+		},
+	},  
+}
