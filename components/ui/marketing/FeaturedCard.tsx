@@ -172,7 +172,10 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
               <Box
                 sx={{
                   ...sx.actions,                    
-                  justifyContent: direction == 'row' ? 'flex-start' : 'center',
+                  justifyContent: {
+                    sm: direction == 'row' ? 'flex-start' : 'center',
+                    xs: 'center'
+                  }
                 }}
               >
                 <Button
