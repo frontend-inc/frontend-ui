@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react'
-import { useResource } from 'frontend-js'
+import React from 'react'
 import { Stack } from '@mui/material'
-import { Icon, GridView, ListView, Placeholder } from '../../../components'
+import { Icon, Placeholder } from '../../../components'
 import Logo from './Logo'
 import { Typography } from '@mui/material'
 
 type LogosProps = {
 	title?: string
-	url: string
-	layout: 'grid' | 'carousel'
+  images?: Record<string, any>[]
 	editing?: boolean
-	perPage?: number
-	query?: any
 	buttonText?: string
 	autoPlay?: boolean
 	arrows?: boolean
@@ -23,54 +19,32 @@ type LogosProps = {
 const Logos: React.FC<LogosProps> = (props) => {
 	const {
 		title,
-		layout = 'grid',
-		url,
-		query: defaultQuery = {},
-		perPage = 20,
+		images=[],
 		editing,
-	} = props
-
-	const { loading, findMany, resources } = useResource({
-		url,
-	})
-
-	useEffect(() => {
-		if (url && perPage) {
-			findMany({
-				...defaultQuery,
-				per_page: perPage,
-			})
-		}
-	}, [url, perPage])
+    ...rest 
+	} = props 
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
 			<Typography variant="caption" sx={sx.caption}>
 				{title}
 			</Typography>
-			{layout == 'grid' && (
-				<GridView
-					editing={editing}
-					loading={loading}
-					items={resources}
-					component={Logo}
-				/>
-			)}
-			{layout == 'carousel' && (
-				<ListView
-					flexDirection="row"
-					justifyContent="center"
-					spacing={4}
-					editing={editing}
-					items={resources}
-					component={Logo}
-				/>
-			)}
-			{!loading && resources?.length === 0 && (
+      <Stack direction="row" spacing={1} sx={ sx.imagesContainer }>
+        { images?.map((image, index) => (
+          <Logo 
+            key={index} 
+            title="Logo"
+            image={image?.src} 
+            height={50}
+            width={120}
+          />
+        ))}
+      </Stack>
+			{ images?.length === 0 && (
 				<Placeholder
-					icon={<Icon name="Search" />}
-					title="No results found"
-					description="Try adjusting your search or filters"
+					icon={<Icon name="Camera" />}
+					title="No images found"
+					description="Images will appear here"
 				/>
 			)}
 		</Stack>

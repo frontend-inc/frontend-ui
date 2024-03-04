@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 const Logo: React.FC<CardProps> = (props) => {
 	const {
-		title,
+		title='',
 		image = '',
 		height = LOGO_HEIGHT,
 		width = LOGO_WIDTH,

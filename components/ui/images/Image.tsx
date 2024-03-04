@@ -37,7 +37,7 @@ const Image: React.FC<ImageProps> = (props) => {
 			sx={{
 				...sx.root,
 				height: `${height}px`,
-				borderRadius: !disableBorderRadius && `${theme.shape.borderRadius}px`,
+				borderRadius: !disableBorderRadius && theme.shape.borderRadius,
 				'&::after': {
 					...sx.afterBase,
 					...(enableOverlay && sx.overlay),
@@ -59,7 +59,7 @@ const Image: React.FC<ImageProps> = (props) => {
 						height: `${height}px`,
 						minHeight: `${height}px`,
 						objectFit,
-						borderRadius: !disableBorderRadius && `${theme.shape.borderRadius}px`,
+						borderRadius: !disableBorderRadius ? theme.shape.borderRadius : 0,
 					}}
 					layout={'responsive'}
 				/>

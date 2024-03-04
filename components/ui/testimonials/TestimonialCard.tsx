@@ -1,87 +1,58 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../../../context/core'
+import React from 'react'
 import { Avatar, Box, Stack, Typography } from '@mui/material'
-import { TouchableOpacity } from '../../../components'
 import { truncate } from '../../../helpers'
-import { useRouter } from 'next/router'
-import {
-	TESTIMONIAL_CARD_HEIGHT,
-	TESTIMONIAL_AVATAR_HEIGHT,
-	TESTIMONIAL_AVATAR_WIDTH,
-  TESTIMONIAL_CARD_WIDTH,
-} from '../../../constants/index'
 import { FormatQuote } from '@mui/icons-material'
-import { CardProps } from '../../../types'
+import { StarBorderOutlined, Star } from '@mui/icons-material'
+import Rating from '@mui/material/Rating'
 
-const TestimonialCard: React.FC<CardProps> = (props) => {
-	const { clientUrl } = useContext(AppContext) as any
+type TestimonialProps = {
+  author: string
+  text: string
+  rating: number
+  image: string
+  height?: number
+  width?: number  
+}
+
+const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 	const {
-		label,
-		title,
-		description,
-		image = '',
-		href,
-		handleClick,
-		height = TESTIMONIAL_AVATAR_HEIGHT,
-		width = TESTIMONIAL_AVATAR_WIDTH,
-		textVariant = 'subtitle2',
-		enableBorder = false,
-		enableGradient = false,
+		author,
+    text,
+    rating=5,
+    image='',				
 	} = props || {}
-
-	const router = useRouter()
-
-	const handleItemClick = () => {
-		if (handleClick) {
-			handleClick()
-		} else if (href) {
-			router.push(`${clientUrl}${href}`)
-		}
-	}
 
 	return (
 		<Box
-			sx={{
-				...sx.root,
-				...(enableBorder && sx.rootBorder),				
-        minWidth: TESTIMONIAL_CARD_WIDTH
-			}}
+			sx={sx.root}
 		>
 			<Stack 
-        spacing={2} 
-        sx={{ 
-          ...sx.content,  
-          minHeight: TESTIMONIAL_CARD_HEIGHT,        
-        }}
+        spacing={0} 
+        sx={ sx.content }
       >
-				{description && (
-					<Box>
-						<Typography variant={textVariant} color="text.primary">
-							<FormatQuote sx={sx.quote}></FormatQuote>
-							{truncate(description, 240)}
-						</Typography>
-					</Box>
-				)}
+      <Box sx={ sx.testimonial }>
+        {rating && (
+          <Rating
+            readOnly              
+            value={parseInt(rating)}
+            icon={<Star sx={sx.rating} />}
+            emptyIcon={<StarBorderOutlined sx={sx.emptyRating} />}
+          />
+        )}
+        {text && (
+          <Typography sx={ sx.text } variant={'subtitle2'} color="text.primary">
+            <FormatQuote sx={sx.quote}></FormatQuote>
+            {truncate(text, 240)}
+          </Typography>      
+        )}
+      </Box>
 			<Stack direction="row" spacing={2} sx={sx.author}>
-				<Box
-					sx={{
-						height: height,
-						width,
-						...(enableGradient && sx.gradient),
-					}}
-				>
-					<TouchableOpacity handleClick={handleItemClick}>
-						<Avatar
-							src={image}
-							sx={{
-								height,
-								width,
-							}}
-						/>
-					</TouchableOpacity>
-				</Box>
-				<Typography sx={sx.name} variant="caption" color="textSecondary">
-					{truncate(title)}
+        <Avatar
+          src={image}
+          sx={ sx.avatar }
+        />
+				<Typography sx={sx.author} variant="caption" color="textSecondary">
+					{truncate(author)}
 				</Typography>
 			</Stack>
       </Stack>
@@ -93,11 +64,12 @@ export default TestimonialCard
 
 const sx = {
 	root: {
+    width: '300px',
 		position: 'relative',
 		display: 'flex',
 		flexDirection: 'column',
-		alignItems: 'center',
-		justifyContent: 'center',
+		alignItems: 'flex-end',
+		justifyContent: 'flex-end',
 	},
 	gradient: {
 		'&::after': {
@@ -129,17 +101,33 @@ const sx = {
       xs: 'space-around'
     },
     alignItems: 'center',
-    height: '100%'
+    height: '100%',
 	},
+  avatar: {
+    height: 64,
+    width: 64,
+  },
 	author: {
 		color: 'text.secondary',
 		alignItems: 'center',
 		minHeight: '44px',
 	},
-	name: {
-		color: 'text.secondary',
-	},
+  text: {
+    textAlign: 'center'
+  },
+  testimonial: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    my: 2
+  },
 	quote: {
 		transform: 'rotateY(180deg)',
+	},
+  rating: {
+		color: 'primary.main',
+	},
+	emptyRating: {
+		color: 'text.secondary',
 	},
 }

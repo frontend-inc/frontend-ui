@@ -5,6 +5,7 @@ import { InputProps, SyntheticEvent } from '../../../types'
 import { StarBorderOutlined, Star } from '@mui/icons-material'
 
 type RatingInputProps = InputProps & {
+  name?: string
 	readOnly?: boolean
 	disableBorder?: boolean
 	size?: 'small' | 'medium' | 'large'
