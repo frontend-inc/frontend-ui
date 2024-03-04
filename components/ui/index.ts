@@ -86,7 +86,6 @@ export { default as Favorites } from './favorites/Favorites'
 
 // Collections
 export { default as Accordion } from './accordions/Accordion'
-export { default as AccordionHasMany } from './accordions/AccordionHasMany'
 export { default as Collection } from './lists/Collection'
 export { default as CollectionHasMany } from './lists/CollectionHasMany'
 export { default as CarouselView } from './lists/CarouselView'

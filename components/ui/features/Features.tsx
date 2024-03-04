@@ -10,12 +10,11 @@ type FeaturesProps = {
     description?: string
     filled?: boolean
   }[]
-  filled?: boolean
 }
 
 const Features: React.FC<FeaturesProps> = (props) => {
 
-  const { title, filled, features } = props || {}
+  const { title, features } = props || {}
 
   return(
     <Grid container spacing={0}>
@@ -31,7 +30,6 @@ const Features: React.FC<FeaturesProps> = (props) => {
               icon={ feature?.icon }
               title={ feature?.title }
               description={ feature?.description }
-              filled={ filled }
             />
           </Box>
         </Grid>

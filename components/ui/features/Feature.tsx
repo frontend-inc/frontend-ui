@@ -6,7 +6,6 @@ type FeatureProps = {
   icon?: string 
   title?: string
   description?: string
-  filled?: boolean
 }
 
 const Feature: React.FC<FeatureProps> = (props) => {
