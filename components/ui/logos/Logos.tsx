@@ -29,7 +29,7 @@ const Logos: React.FC<LogosProps> = (props) => {
 			<Typography variant="caption" sx={sx.caption}>
 				{title}
 			</Typography>
-      <Stack direction="row" spacing={1} sx={ sx.imagesContainer }>
+      <Stack direction="row" spacing={1}>
         { images?.map((image, index) => (
           <Logo 
             key={index} 

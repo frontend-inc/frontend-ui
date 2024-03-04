@@ -34,7 +34,7 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
         {rating && (
           <Rating
             readOnly              
-            value={parseInt(rating)}
+            value={rating}
             icon={<Star sx={sx.rating} />}
             emptyIcon={<StarBorderOutlined sx={sx.emptyRating} />}
           />
