@@ -1,8 +1,10 @@
 import React from 'react'
-import { Box, Container } from '@mui/material'
+import { Box, Container, Typography } from '@mui/material'
 
 type SectionProps = {
 	children: React.ReactNode
+  title?: string
+  textAlign?: 'left' | 'center'
   bgcolor?: string
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
   py?: number
@@ -10,7 +12,7 @@ type SectionProps = {
 
 const Section: React.FC<SectionProps> = (props) => {
 	
-  const { children, bgcolor, maxWidth, py=4 } = props
+  const { children, title, textAlign='left', bgcolor, maxWidth, py=4 } = props
 
 	return (
 		<Box 
@@ -27,6 +29,18 @@ const Section: React.FC<SectionProps> = (props) => {
         px: py > 0 ? 2 : 0,
       }}
     >
+      { title && (
+        <Typography 
+          sx={{ 
+            ...sx.title,
+            textAlign 
+          }} 
+          variant="h6" 
+          color="textPrimary"
+        >
+          {title}
+        </Typography>
+      )}
       { children }
     </Container>
   </Box>
@@ -43,4 +57,7 @@ const sx = {
 			display: 'none',
 		},
 	},  
+  title: {
+    width: "100%"
+  }
 }

@@ -24,11 +24,9 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-			<Stack direction="row" justifyContent={'space-between'} spacing={1}>
-				<Typography variant="h6" color="textPrimary">
-					{title}
-				</Typography>
-			</Stack>
+      <Typography sx={ sx.title } variant="h6" color="textPrimary">
+        {title}
+      </Typography>
       <Stack direction={{ sm: 'row', xs: 'column' }} sx={ sx.testimonials } spacing={4}>
         { testimonials?.map((testimonial, i) => (
           <TestimonialCard 
@@ -57,6 +55,9 @@ const sx = {
 	root: {
 		width: '100%',
 	},
+  title: {
+    textAlign: 'center'
+  },
   testimonials: {
     overflowX: 'scroll',
     '&::-webkit-scrollbar': {

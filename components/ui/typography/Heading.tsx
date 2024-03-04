@@ -1,58 +1,57 @@
 import React from 'react'
-import { Box, Stack, Typography } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 
 type HeadingProps = {
-	text: string
-	variant?:
-		| 'h1'
-		| 'h2'
-		| 'h3'
-		| 'h4'
-		| 'h5'
-		| 'h6'
-		| 'subtitle1'
-		| 'subtitle2'
-		| 'body1'
-		| 'body2'
-		| 'caption'
-		| 'button'
-		| 'overline'
-		| undefined
-	color?: string
-	description?: string
-	flexDirection?: 'row' | 'column' | 'row-reverse' | 'column-reverse'
-	textAlign?: 'left' | 'center' | 'right' | 'justify' | undefined
+  label?: string
+	title?: string
+	subtitle?: string
+	textAlign?: 'left' | 'center' 
 }
 
 const Heading: React.FC<HeadingProps> = (props) => {
-	const {
-		text,
-		description,
-		variant = 'body1',
-		color = 'text.primary',
+	
+  const {
+    label,
+		title,
+		subtitle,
 		textAlign,
 	} = props || {}
 
 	return (
 		<Stack sx={sx.stack} direction={'column'} spacing={1}>
-			<Typography
-				variant={variant}
-				color={color}
-				style={{
-					textAlign,
-				}}
-			>
-				{text}
-			</Typography>
-			<Typography
-				variant="body1"
-				color={'text.secondary'}
-				style={{
-					textAlign,
-				}}
-			>
-				{description}
-			</Typography>
+      {label && (
+        <Typography 
+          color="primary" 
+          sx={sx.label} 
+          variant="caption"
+        >
+          {label}
+        </Typography>
+      )}
+      { title && (
+        <Typography
+          variant='h6'
+          color='text.primary'
+          style={{
+            ...sx.text,
+            textAlign,
+          }}
+        >
+          {title}
+        </Typography>
+      )}
+      { subtitle && (
+        <Typography
+          variant="body1"
+          color='text.secondary'
+          style={{
+            ...sx.text,
+            textAlign,
+          }}
+        >
+          {subtitle}
+        </Typography>
+      )}
 		</Stack>
 	)
 }
@@ -63,7 +62,11 @@ const sx = {
 	stack: {
 		width: '100%',
 	},
-	content: {
+  label: {
+    color: 'primary.main',    
+  },
+  text: {
+    width: "100%",
 		maxWidth: '600px',
 	},
 }

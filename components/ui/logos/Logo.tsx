@@ -5,7 +5,8 @@ import { CardProps } from '../../../types'
 import Image from 'next/image'
 
 const Logo: React.FC<CardProps> = (props) => {
-	const {
+	
+  const {
 		title='',
 		image = '',
 		height = LOGO_HEIGHT,

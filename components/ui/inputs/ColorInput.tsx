@@ -14,15 +14,17 @@ type TransparentColorProps = {
 const TransparentColor: React.FC<TransparentColorProps> = (props) => {
   const { value, handleClick } = props 
   return(
-    <Box
-      sx={{
-        ...sx.color,
-        ...sx.transparent,
-        ...(value == '' && sx.selected),		
-        bgcolor: '#FFF',					
-      }}
-      onClick={handleClick}
-    />
+    <Tooltip title="Transparent">
+      <Box
+        sx={{
+          ...sx.color,
+          ...sx.transparent,
+          ...(value == '' && sx.selected),		
+          bgcolor: '#FFF',					
+        }}
+        onClick={handleClick}
+      />
+    </Tooltip>
   )
 }
 
@@ -36,7 +38,14 @@ type ColorInputProps = {
 }
 
 const ColorInput: React.FC<ColorInputProps> = (props) => {
-	const { label, name, value, disableTone = false, handleChange } = props
+	
+  const { 
+    label, 
+    name, 
+    value, 
+    disableTone = false, 
+    handleChange 
+  } = props
 
 	const [tone, setTone] = useState(500)
   const [color, setColor] = useState(null)
@@ -76,11 +85,11 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 	}, [value])
 
   useEffect(() => {
-		if (color && tone) {
+		if (color) {
       const hexColor = COLORS[color][tone]
       setHex(hexColor)
 		}
-	}, [color, tone])
+	}, [color])
 
   useEffect(() => {
     handleChange({
@@ -137,40 +146,45 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
       >
       <Stack spacing={2} direction="column" sx={sx.root}>
         <Box sx={sx.grid}>
-          {MUI_COLORS.map((color) => (
-            <Box
-              sx={{
-                ...sx.color,
-                ...(hex == COLORS[color][tone] && sx.selected),
-                bgcolor: COLORS[color][tone],
-              }}
-              onClick={() => handleColorChange(color)}
-            />
-          ))}
           {HEX_COLORS.map((hexColor) => (
-            <Box
-              sx={{
-                ...sx.color,
-                ...(hex == hexColor && sx.selected),
-                bgcolor: hexColor,
-              }}
-              onClick={() => handleHexColorChange(hexColor)}
-            />
+            <Tooltip title={ hexColor.label }>
+              <Box
+                sx={{
+                  ...sx.color,
+                  ...(hex == hexColor?.value && sx.selected),
+                  bgcolor: hexColor?.value,
+                }}
+                onClick={() => handleHexColorChange(hexColor?.value)}
+              />
+            </Tooltip>
           ))}
           <TransparentColor 
             value={hex}
             handleClick={() => handleHexColorChange('')}
           />        
         </Box>
+        <Box sx={sx.grid}>
+          {MUI_COLORS.map((color) => (
+            <Tooltip title={color} key={color}>
+              <Box
+                sx={{
+                  ...sx.color,
+                  ...(hex == COLORS[color][tone] && sx.selected),
+                  bgcolor: COLORS[color][tone],
+                }}
+                onClick={() => handleColorChange(color)}
+              />
+            </Tooltip>
+          ))}
+          </Box>
         {!disableTone && (
           <Stack spacing={0} sx={sx.slider}>
             <Typography variant="caption" color="textSecondary">
               Color tone
             </Typography>
             <Slider
-              aria-label="Tone"
+              aria-label="Color tone"
               defaultValue={[100, 900]}
-              valueLabelDisplay="auto"
               onChange={handleToneChange}
               step={100}
               min={100}
