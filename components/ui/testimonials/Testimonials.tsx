@@ -29,7 +29,7 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 					{title}
 				</Typography>
 			</Stack>
-      <Stack direction="row" justifyContent={'space-between'} spacing={1}>
+      <Stack direction={{ sm: 'row', xs: 'column' }} sx={ sx.testimonials } spacing={4}>
         { testimonials?.map((testimonial, i) => (
           <TestimonialCard 
             key={i}
@@ -57,4 +57,14 @@ const sx = {
 	root: {
 		width: '100%',
 	},
+  testimonials: {
+    overflowX: 'scroll',
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
+    justifyContent: {
+      sm: 'center',
+      xs: 'flex-start'
+    }
+  }
 }

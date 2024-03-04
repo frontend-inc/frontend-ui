@@ -31,14 +31,16 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
         sx={ sx.content }
       >
       <Box sx={ sx.testimonial }>
-        {rating && (
-          <Rating
-            readOnly              
-            value={rating}
-            icon={<Star sx={sx.rating} />}
-            emptyIcon={<StarBorderOutlined sx={sx.emptyRating} />}
-          />
-        )}
+        <Box sx={ sx.ratingContainer }>
+          {rating && (
+            <Rating
+              readOnly              
+              value={rating}
+              icon={<Star sx={sx.rating} />}
+              emptyIcon={<StarBorderOutlined sx={sx.emptyRating} />}
+            />
+          )}
+        </Box>
         {text && (
           <Typography sx={ sx.text } variant={'subtitle2'} color="text.primary">
             <FormatQuote sx={sx.quote}></FormatQuote>
@@ -46,14 +48,16 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
           </Typography>      
         )}
       </Box>
-			<Stack direction="row" spacing={2} sx={sx.author}>
+			<Stack direction="column" spacing={1} sx={sx.author}>
+        { author && (
+        <Typography sx={sx.author} variant="caption" color="textSecondary">
+					&mdash; {author}
+				</Typography>
+        )}
         <Avatar
           src={image}
           sx={ sx.avatar }
         />
-				<Typography sx={sx.author} variant="caption" color="textSecondary">
-					{truncate(author)}
-				</Typography>
 			</Stack>
       </Stack>
 		</Box>
@@ -64,11 +68,14 @@ export default TestimonialCard
 
 const sx = {
 	root: {
-    width: '300px',
+    width: {
+      sm: '300px',
+      xs: '100%'
+    },
 		position: 'relative',
 		display: 'flex',
 		flexDirection: 'column',
-		alignItems: 'flex-end',
+		alignItems: 'center',
 		justifyContent: 'flex-end',
 	},
 	gradient: {
@@ -88,12 +95,6 @@ const sx = {
 		borderColor: 'grey.300',
 		p: 1,
 		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
-	},
-	title: {
-		textAlign: 'center',
-	},
-	label: {
-		textAlign: 'center',
 	},
 	content: {
 		justifyContent: {
@@ -127,6 +128,9 @@ const sx = {
   rating: {
 		color: 'primary.main',
 	},
+  ratingContainer: {
+    height: 26
+  },
 	emptyRating: {
 		color: 'text.secondary',
 	},

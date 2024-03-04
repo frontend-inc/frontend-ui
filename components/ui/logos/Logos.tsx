@@ -29,7 +29,7 @@ const Logos: React.FC<LogosProps> = (props) => {
 			<Typography variant="caption" sx={sx.caption}>
 				{title}
 			</Typography>
-      <Stack direction="row" spacing={1}>
+      <Stack sx={ sx.logos } direction="row" spacing={1}>
         { images?.map((image, index) => (
           <Logo 
             key={index} 
@@ -63,4 +63,14 @@ const sx = {
 		color: 'text.primary',
 		textAlign: 'center',
 	},
+  logos: {
+    overflowX: 'scroll',
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
+    justifyContent: {
+      sm: 'center',
+      xs: 'flex-start'
+    }
+  }
 }
