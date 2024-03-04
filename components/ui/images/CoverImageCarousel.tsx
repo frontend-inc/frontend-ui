@@ -1,27 +1,28 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { useResource } from 'frontend-js'
+import React, { useContext, useState } from 'react'
 import { AppContext } from '../../../context'
 import SwipeableViews from 'react-swipeable-views'
-import { CoverImage } from '../../../components'
+import { CoverImage, Icon } from '../../../components'
 import { useRouter } from 'next/router'
 import { autoPlay } from 'react-swipeable-views-utils'
+import { Box, IconButton } from '@mui/material'
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
 type CoverImageCarouselProps = {
-	url: string
-	fields?: any
+  items: {
+    title?: string
+    description?: string
+    image?: string
+    buttonText?: string
+    url?: string
+  }[]
 	editing?: boolean
-	height?: number
-	perPage?: number
-	query?: any
-	buttonText?: string
-	navigateUrl: any
 	autoPlay?: boolean
 	arrows?: boolean
 	showDots?: boolean
 	enableOverlay?: boolean
 	enableGradient?: boolean
 	enableBorder?: boolean
+  enableArrows?: boolean
 	overlayColor?: string
 	opacity?: number
 	alignItems?: 'flex-start' | 'center' | 'flex-end'
@@ -32,16 +33,12 @@ const CoverImageCarousel: React.FC<CoverImageCarouselProps> = (props) => {
 
 	const {
 		editing = false,
-		url,
-		navigateUrl,
-		query: defaultQuery = {},
-		perPage = 20,
-		buttonText,
+    items=[],
 		enableOverlay = false,
 		opacity = 0.5,
 		enableGradient = false,
+    enableArrows = false,
 		autoPlay = false,
-		height,
 		overlayColor = '#000000',
 		alignItems = 'center',
 	} = props
@@ -49,69 +46,96 @@ const CoverImageCarousel: React.FC<CoverImageCarouselProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const [activeStep, setActiveStep] = useState(0)
-	const [maxSteps, setMaxSteps] = useState(0)
 
 	const handleStepChange = (step: number) => {
 		setActiveStep(step)
 	}
 
-	const { findMany, resources } = useResource({
-		url,
-	})
-
 	const handleClick = (item) => {
-		if (!editing && clientUrl && navigateUrl && item?.handle) {
+		if (!editing && item?.url) {
 			window.scrollTo({
 				top: 0,
 				behavior: 'smooth',
 			})
-			router.push(`${clientUrl}${navigateUrl}/${item?.handle}`)
+			router.push(`${clientUrl}${item?.url}`)
 		}
 	}
 
-	useEffect(() => {
-		if (url && defaultQuery && perPage) {
-			findMany({
-				...defaultQuery,
-				per_page: perPage,
-			})
-		}
-	}, [url, defaultQuery, perPage])
+  const handlePrev = () => {
+    if(activeStep === 0) {
+      setActiveStep(items.length - 1)
+    }else{
+      setActiveStep((prevActiveStep) => prevActiveStep - 1)    
+    }    
+  }
 
-	useEffect(() => {
-		if (resources) {
-			setMaxSteps(resources?.length)
-		}
-	}, [resources])
+  const handleNext = () => {
+    if(activeStep === items.length - 1) {
+      setActiveStep(0)
+    }else{
+      setActiveStep((prevActiveStep) => prevActiveStep + 1)
+    }
+  }
 
 	const SwipeableComponent = autoPlay ? AutoPlaySwipeableViews : SwipeableViews
 
 	return (
-		<SwipeableComponent
-			axis={'x'}
-			index={activeStep}
-			onChangeIndex={handleStepChange}
-			enableMouseEvents
-		>
-			{resources?.map((coverImage, index) => (
-				<CoverImage
-					key={index}
-					editing={editing}
-					title={coverImage?.title}
-					description={coverImage?.description}
-					image={coverImage?.image?.url}
-					height={height}
-					buttonText={buttonText}
-					enableOverlay={enableOverlay}
-					enableGradient={enableGradient}
-					opacity={opacity}
-					handleClick={() => handleClick(coverImage)}
-					overlayColor={overlayColor}
-					alignItems={alignItems}
-				/>
-			))}
-		</SwipeableComponent>
+    <Box sx={ sx.root }>
+      <SwipeableComponent
+        axis={'x'}
+        index={activeStep}
+        onChangeIndex={handleStepChange}
+        enableMouseEvents
+      >
+        {items?.map((item, index) => (
+          <CoverImage
+            key={index}
+            editing={editing}
+            title={item?.title}
+            description={item?.description}
+            image={item?.image}					
+            buttonText={item?.buttonText}
+            enableOverlay={enableOverlay}
+            enableGradient={enableGradient}
+            opacity={opacity}
+            handleClick={() => handleClick(item)}
+            overlayColor={overlayColor}
+            alignItems={alignItems}
+          />
+        ))}
+      </SwipeableComponent>
+      { enableArrows && (
+        <Box sx={ sx.actions }>
+          <IconButton 
+            onClick={handlePrev}
+          >
+            <Icon name="ChevronLeft" size={32} />
+          </IconButton>
+          <IconButton 
+            onClick={handleNext}
+          >
+            <Icon name="ChevronRight"  size={32} />
+          </IconButton>
+        </Box>
+      )}
+    </Box>
 	)
 }
 
 export default CoverImageCarousel
+
+const sx = {
+  root: {
+    width: '100%',
+    position: 'relative'
+  },
+  actions: {  
+    position: 'absolute',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '100%',
+    zIndex: 1  
+  }
+}

@@ -25,6 +25,7 @@ const Section: React.FC<SectionProps> = (props) => {
       disableGutters={ !maxWidth }
       maxWidth={maxWidth || false}
       sx={{
+        ...sx.container,
         py,
         px: py > 0 ? 2 : 0,
       }}
@@ -51,12 +52,15 @@ export default Section
 
 const sx = {
   root: {
-		width: '100%',
+    width: '100%'
+	},  
+  container: {
+    width: '100%',
 		overflowX: 'scroll',
 		'&::-webkit-scrollbar': {
 			display: 'none',
 		},
-	},  
+  },
   title: {
     width: "100%"
   }
