@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon } from 'frontend-ui/components'
+import { Icon } from '../../../components'
 import { Stack, Avatar, Typography } from '@mui/material'
 
 type FeatureProps = {
