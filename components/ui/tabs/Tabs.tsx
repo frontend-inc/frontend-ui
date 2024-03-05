@@ -55,7 +55,6 @@ const Tabs: React.FC<TabsProps> = (props) => {
         onChange={handleChange}
         color="secondary"
         sx={{ 
-          ...sx.tabs,
           ...(orientation === 'vertical' && sx.verticalTabs ) 
         }}
       >    
