@@ -7,9 +7,7 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
 type SwipeableProps = {
   children: React.ReactNode[]
-	editing?: boolean
-	autoPlay?: boolean
-	enableGradient?: boolean
+	enableAutoPlay?: boolean
   enableArrows?: boolean
 }
 
@@ -18,7 +16,7 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
 	const {
     children=[],
     enableArrows = false,
-		autoPlay = false,
+		enableAutoPlay = false,
 	} = props
 
 	const [activeStep, setActiveStep] = useState(0)
@@ -43,7 +41,9 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
     }
   }
 
-	const SwipeableComponent = autoPlay ? AutoPlaySwipeableViews : SwipeableViews
+	const SwipeableComponent = enableAutoPlay ? 
+    AutoPlaySwipeableViews : 
+    SwipeableViews
 
 	return (
     <Box sx={ sx.root }>

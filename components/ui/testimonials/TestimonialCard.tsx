@@ -10,8 +10,7 @@ type TestimonialProps = {
   text: string
   rating: number
   image: string
-  height?: number
-  width?: number  
+  size: 'small' | 'large' 
 }
 
 const TestimonialCard: React.FC<TestimonialProps> = (props) => {
@@ -19,7 +18,8 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 		author,
     text,
     rating=5,
-    image='',				
+    image='',			
+    size='small'	
 	} = props || {}
 
 	return (
@@ -42,7 +42,7 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
           )}
         </Box>
         {text && (
-          <Typography sx={ sx.text } variant={'subtitle2'} color="text.primary">
+          <Typography sx={ sx.text } variant={size == 'small' ? 'subtitle2' : 'h6'} color="text.primary">
             <FormatQuote sx={sx.quote}></FormatQuote>
             {truncate(text, 240)}
           </Typography>      
@@ -50,9 +50,9 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
       </Box>
 			<Stack direction="column" spacing={1} sx={sx.author}>
         { author && (
-        <Typography sx={sx.author} variant="caption" color="textSecondary">
-					&mdash; {author}
-				</Typography>
+          <Typography sx={sx.author} variant={size == 'small' ? 'caption' : 'body1'} color="text.secondary">
+            &mdash; {author}
+          </Typography>
         )}
         <Avatar
           src={image}
@@ -68,10 +68,6 @@ export default TestimonialCard
 
 const sx = {
 	root: {
-    width: {
-      sm: '300px',
-      xs: '100%'
-    },
 		position: 'relative',
 		display: 'flex',
 		flexDirection: 'column',
@@ -97,6 +93,11 @@ const sx = {
 		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 	},
 	content: {
+    width: '100%',
+    maxWidth: {
+      sm: '600px',
+      xs: '100%'
+    },
 		justifyContent: {
       sm: 'space-between',
       xs: 'space-around'

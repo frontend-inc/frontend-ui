@@ -1,54 +1,46 @@
 import React from 'react'
-import { Grid, Box, Stack } from '@mui/material'
-import {
-	Icon,
-	Placeholder,
-} from '../../../components'
-import TestimonialCard from './TestimonialCard'
+import { Box } from '@mui/material'
+import TestimonialsGrid from './TestimonialsGrid'
+import SwipeableTestimonials from './SwipeableTestimonials'
 import { Typography } from '@mui/material'
 
 type TestimonialsProps = {
 	title?: string
+  layout?: 'grid' | 'carousel'
   testimonials: Record<string, any>[]
-	autoPlay?: boolean
-	arrows?: boolean
-	showDots?: boolean
+	enableAutoPlay?: boolean
+	enableArrows?: boolean	
 }
 
 const Testimonials: React.FC<TestimonialsProps> = (props) => {
 
   const {
 		title,
+    layout='grid',
+    enableArrows,
+    enableAutoPlay,
     testimonials=[],
 	} = props
 
 	return (
 		<Box sx={sx.root}>
-      <Typography sx={ sx.title } variant="h6" color="textPrimary">
-        {title}
-      </Typography>
-      <Grid container spacing={0}>
-        { testimonials?.map((testimonial, i) => (
-          <Grid item key={i} xs={12} sm={6} md={4}>
-            <Box sx={ sx.item }>
-              <TestimonialCard 
-                key={i}
-                image={testimonial.avatar}        
-                author={testimonial.author}
-                rating={testimonial.rating}
-                text={testimonial.text}          
-              />
-            </Box>
-          </Grid>
-        ))}
-      </Grid>
-			{testimonials?.length === 0 && (
-				<Placeholder
-					icon={<Icon name="Star" />}
-					title="No testimonials yet."
-					description="Testimonials will appear here."
-				/>
-			)}
+      { title && (
+        <Typography sx={ sx.title } variant="h6" color="textPrimary">
+          {title}
+        </Typography>
+      )}
+      { layout == 'grid' && (
+        <TestimonialsGrid
+          testimonials={testimonials}
+        />      
+      )}
+      { layout == 'carousel' && (
+        <SwipeableTestimonials 
+          enableAutoPlay={enableAutoPlay}
+          enableArrows={enableArrows}
+          testimonials={testimonials}
+        />      
+      )}
 		</Box>
 	)
 }

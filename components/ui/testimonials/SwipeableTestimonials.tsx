@@ -5,43 +5,39 @@ import {
 	Placeholder,
   Swipeable
 } from '../../../components'
-import SwipeableTestimonialCard from './SwipeableTestimonialCard'
+import TestimonialCard from './TestimonialCard'
 import { Typography } from '@mui/material'
 
-type TestimonialsProps = {
-	title?: string
+type SwipeableTestimonialsProps = {
   testimonials: Record<string, any>[]
-	autoPlay?: boolean
-	arrows?: boolean
-	showDots?: boolean
+	enableAutoPlay?: boolean
+	enableArrows?: boolean	
 }
 
-const Testimonials: React.FC<TestimonialsProps> = (props) => {
+const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
 
   const {
-		title,
-    autoPlay=false,
+    enableAutoPlay=false,
     enableArrows=false,
     testimonials=[],
 	} = props
 
 	return (
-		<Box sx={sx.root}>
-      <Typography sx={ sx.title } variant="h6" color="textPrimary">
-        {title}
-      </Typography>
+		<Box>
       <Swipeable 
-        autoPlay={autoPlay}
+        enableAutoPlay={enableAutoPlay}
         enableArrows={enableArrows}
       >
         { testimonials?.map((testimonial, i) => (
-          <SwipeableTestimonialCard 
-            key={i}
-            image={testimonial.avatar}        
-            author={testimonial.author}
-            rating={testimonial.rating}
-            text={testimonial.text}          
-          />
+          <Box sx={ sx.item } key={i}>
+            <TestimonialCard 
+              size='large'
+              image={testimonial.avatar}        
+              author={testimonial.author}
+              rating={testimonial.rating}
+              text={testimonial.text}          
+            />
+          </Box>
         ))}
       </Swipeable>
 			{testimonials?.length === 0 && (
@@ -55,38 +51,16 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 	)
 }
 
-export default Testimonials
+export default SwipeableTestimonials
 
 const sx = {
-	root: {
-    display: 'flex',
-    flexDirection: 'column',
-    maxWidth: '100%',
-    overflowX: 'scroll',
-    '&::-webkit-scrollbar': {
-      display: 'none',
-    },
-	},
-  title: {
-    textAlign: 'center'
-  },
   item: {
     p: 2,
     height: "100%",
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     alignItems: 'center',
   },
-  testimonials: {
-    overflowX: 'scroll',
-    '&::-webkit-scrollbar': {
-      display: 'none',
-    },
-    justifyContent: {
-      sm: 'center',
-      xs: 'flex-start'
-    }
-  }
 }
