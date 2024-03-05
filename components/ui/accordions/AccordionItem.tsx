@@ -1,8 +1,7 @@
 import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
-import { Icon } from '../../../components'
-import Image from 'next/image'
+import { Icon, Text } from '../../../components'
 
 type AccordionProps = {
 	title: string
@@ -41,9 +40,9 @@ const AccordionItem: React.FC<AccordionProps> = (props) => {
               />
             </Box>
           )}
-          <Typography variant="body1" color="textSecondary">
+          <Text variant="body1" color="textSecondary">
             {description}
-          </Typography>
+          </Text>
         </Stack>
 			</AccordionDetails>
 		</Accordion>

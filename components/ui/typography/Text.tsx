@@ -2,7 +2,7 @@ import React from 'react'
 import { Typography } from '@mui/material'
 
 type TextProps = {
-	text: string
+	children: string
 	variant?:
 		| 'h1'
 		| 'h2'
@@ -23,23 +23,32 @@ type TextProps = {
 }
 
 const Text: React.FC<TextProps> = (props) => {
-	const {
-		text,
+	
+  const {
+		children,
 		variant = 'body1',
 		color = 'text.primary',
 		textAlign,
 	} = props || {}
+
 	return (
 		<Typography
 			variant={variant}
 			color={color}
-			style={{
+			sx={{
+        ...sx.root,
 				textAlign,
 			}}
 		>
-			{text}
+			{children}
 		</Typography>
 	)
 }
 
 export default Text
+
+const sx = {
+  root: {
+    whiteSpace: 'pre-wrap',
+  }
+}
