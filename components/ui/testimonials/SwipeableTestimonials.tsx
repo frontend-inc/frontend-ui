@@ -3,8 +3,9 @@ import { Grid, Box, Stack } from '@mui/material'
 import {
 	Icon,
 	Placeholder,
+  Swipeable
 } from '../../../components'
-import TestimonialCard from './TestimonialCard'
+import SwipeableTestimonialCard from './SwipeableTestimonialCard'
 import { Typography } from '@mui/material'
 
 type TestimonialsProps = {
@@ -19,6 +20,8 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 
   const {
 		title,
+    autoPlay=false,
+    enableArrows=false,
     testimonials=[],
 	} = props
 
@@ -27,21 +30,20 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
       <Typography sx={ sx.title } variant="h6" color="textPrimary">
         {title}
       </Typography>
-      <Grid container spacing={0}>
+      <Swipeable 
+        autoPlay={autoPlay}
+        enableArrows={enableArrows}
+      >
         { testimonials?.map((testimonial, i) => (
-          <Grid item key={i} xs={12} sm={6} md={4}>
-            <Box sx={ sx.item }>
-              <TestimonialCard 
-                key={i}
-                image={testimonial.avatar}        
-                author={testimonial.author}
-                rating={testimonial.rating}
-                text={testimonial.text}          
-              />
-            </Box>
-          </Grid>
+          <SwipeableTestimonialCard 
+            key={i}
+            image={testimonial.avatar}        
+            author={testimonial.author}
+            rating={testimonial.rating}
+            text={testimonial.text}          
+          />
         ))}
-      </Grid>
+      </Swipeable>
 			{testimonials?.length === 0 && (
 				<Placeholder
 					icon={<Icon name="Star" />}
