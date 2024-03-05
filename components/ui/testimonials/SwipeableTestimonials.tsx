@@ -59,7 +59,6 @@ export default Testimonials
 
 const sx = {
 	root: {
-    border: '1px solid red',
     display: 'flex',
     flexDirection: 'column',
     maxWidth: '100%',
