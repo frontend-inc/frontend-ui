@@ -15,6 +15,7 @@ type TabsProps = {
     description: string
     image?: string
   }[]
+  fullWidth?: boolean
 	editing?: boolean
 }
 
