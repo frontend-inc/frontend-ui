@@ -42,11 +42,13 @@ const Tabs: React.FC<TabsProps> = (props) => {
       direction={ orientation === 'vertical' ? 'row' : 'column' } 
       sx={sx.root}
     >
+      { title && (
 			<Stack direction="row" justifyContent={'space-between'} spacing={1}>
 				<Typography variant="h6" sx={ sx.title } color="textPrimary">
 					{title}
 				</Typography>
 			</Stack>   
+      )}
       <MuiTabs 
         centered
         orientation={ orientation }
