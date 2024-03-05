@@ -229,6 +229,7 @@ export { default as Logo } from './images/Logo'
 export { default as VideoModal } from './video/VideoModal'
 export { default as VideoPlayer } from './video/VideoPlayer'
 export { default as TextModal } from './TextModal'
+export { default as Swipeable } from './swipeable/Swipeable'
 
 //Field components
 export { default as Field } from './fields/Field'

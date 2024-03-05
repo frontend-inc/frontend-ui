@@ -20,6 +20,7 @@ const TabItem: React.FC<TabItemProps> = (props) => {
           xs: 'column-reverse'
         }} 
         spacing={2}
+        sx={ sx.root }
       >
         { image && (
           <Box sx={ sx.imageContainer }>
@@ -50,14 +51,15 @@ const TabItem: React.FC<TabItemProps> = (props) => {
 export default TabItem
 
 const sx = {
-  root: {},
+  root: {
+    px: 2
+  },
   imageContainer: {
     width: 256,
     height: 256,
     overflow: 'hidden'
   },
   content: {
-    p: 1,
     width: '100%'
   }
 }
