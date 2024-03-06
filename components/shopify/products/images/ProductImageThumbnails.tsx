@@ -22,11 +22,11 @@ const Thumbnail: React.FC<ThumbnailProps> = (props) => {
         }}
       >
         <CardActionArea
-            sx={{ 
-              p: 0       
-            }}
-            onClick={() => handleClick(image)}
-          >
+          sx={{ 
+            p: 0       
+          }}
+          onClick={() => handleClick(image)}
+        >
         <Image
           src={image.url}
           width={96}
@@ -133,6 +133,7 @@ const sx = {
 		'&:hover': {
 			opacity: 0.8,
 		},
+    overflow: 'hidden'
 	},
 	activeThumbnail: {
     border: '2px solid',
