@@ -12,8 +12,7 @@ type CoverImageCarouselProps = {
     url?: string
   }[]
 	editing?: boolean
-	autoPlay?: boolean
-	arrows?: boolean
+	enableAutoPlay?: boolean
 	showDots?: boolean
 	enableOverlay?: boolean
 	enableGradient?: boolean
@@ -34,7 +33,7 @@ const CoverImageCarousel: React.FC<CoverImageCarouselProps> = (props) => {
 		opacity = 0.5,
 		enableGradient = false,
     enableArrows = false,
-		autoPlay = false,
+		enableAutoPlay = false,
 		overlayColor = '#000000',
 		alignItems = 'center',
 	} = props
@@ -53,7 +52,7 @@ const CoverImageCarousel: React.FC<CoverImageCarouselProps> = (props) => {
 
 	return (
     <Swipeable        
-      autoPlay={autoPlay}
+      enableAutoPlay={enableAutoPlay}
       enableArrows={enableArrows}        
     >
       {items?.map((item, index) => (
