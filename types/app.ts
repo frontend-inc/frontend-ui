@@ -1,8 +1,10 @@
-export type Link = {
-  name: string 
-  path: string    
+export type MenuLink = {
+	label: string
+	path: string
+  url?: string
+	icon?: string
   position: number
-  sublinks: Link[]
+  children?: MenuLink[]
 }
 
 export type Notification = {

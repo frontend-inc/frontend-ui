@@ -77,7 +77,7 @@ export { default as ProfileImage } from './profiles/ProfileImage'
 
 // Layouts
 export { default as Footer } from './layouts/Footer'
-export { default as Header } from './layouts/Header'
+export { default as Header } from './header/Header'
 export { default as LayoutContainer } from './layouts/LayoutContainer'
 export { default as LayoutEmpty } from './layouts/LayoutEmpty'
 export { default as LayoutLoader } from './layouts/LayoutLoader'

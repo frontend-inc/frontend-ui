@@ -1,11 +1,7 @@
 import React, { useState } from 'react'
 
-type UseMenuProps = {
-	anchorRef?: React.RefObject<any>
-}
 
-const useMenu = (props?: UseMenuProps) => {
-	const { anchorRef } = props || {}
+const useMenu = (anchorRef?: React.RefObject<any>) => {
 
 	const [open, setOpen] = useState(false)
 	const [anchorEl, setAnchorEl] = useState(null)
