@@ -53,7 +53,7 @@ const SortableList: React.FC<SortableListProps> = (props) => {
 							{...provided.droppableProps}
 							ref={provided.innerRef}
 						>
-							{sorted.map((item, index) => (
+							{sorted?.map((item, index) => (
 								<Draggable
 									key={item.id}
 									draggableId={String(item?.id)}
@@ -69,7 +69,6 @@ const SortableList: React.FC<SortableListProps> = (props) => {
 												...(snapshot.isDragging && sx.isDragging),
 											}}
 										>
-                      { console.log("222IsDragging", snapshot.isDragging) }
 											{renderItem({
 													...item,
 													isDragging: snapshot.isDragging,

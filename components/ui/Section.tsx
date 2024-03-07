@@ -52,7 +52,8 @@ export default Section
 
 const sx = {
   root: {
-    width: '100%'
+    width: '100%',
+    minHeight: '60px'
 	},  
   container: {
     width: '100%',
