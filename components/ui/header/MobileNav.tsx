@@ -7,9 +7,18 @@ import {
 	IconButton,
 } from '@mui/material'
 import {  Logo, Icon } from '../..'
-import { MenuItem } from '../..'
 import { SearchButton, CartButton } from '../../shopify'
 import { AppContext } from '../../../context'
+
+type MenuItem = {
+	name: string
+	path: string
+  url?: string
+	icon?: string  
+  position: number
+  parent_id?: number | null
+  children?: MenuItem[]
+}
 
 type MobileNavProps = {
 	editing?: boolean

@@ -10,7 +10,7 @@ const AuthButton: React.FC = () => {
 	const router = useRouter()
 
 	const { logout, fetchMe, currentUser } = useAuth()
-	const { open, anchorEl, closeMenu, toggleMenu } = useMenu({})
+	const { open, anchorEl, closeMenu, toggleMenu } = useMenu()
 
 	const { clientUrl } = useContext(AppContext)
 

@@ -1,7 +1,6 @@
 import React from 'react' 
 import { 
   Button, 
-  IconButton,
   Menu,
   MenuItem,
   Typography,
@@ -9,17 +8,18 @@ import {
 import { Icon } from '../..'
 import { useMenu } from '../../../hooks'
 
-type MenuItem = {
-	label: string
+type MenuLink = {
+	name: string
 	path: string
   url?: string
 	icon?: string
+  parent_id?: number | null
   position: number
-  children: MenuItem[]
+  children?: MenuLink[]
 }
 
 type SubmenuItem = {
-  menuItem: MenuItem
+  menuItem: MenuLink
   handleClick: () => void
 }
 
@@ -28,18 +28,20 @@ const DesktopSubmenuItem: React.FC<SubmenuItem> = (props) => {
   const { menuItem, handleClick } = props 
 
   return(
-    <MenuItem>
+    <MenuItem
+      // @ts-ignore 
+      onClick={() => handleClick(menuItem.path)}
+    >
       <Typography variant="button" color="text.primary">
-        { menuItem.label }
+        { menuItem.name }
       </Typography>
     </MenuItem>
   )
 }
 
 type DesktopMenuItemProps = {
-  menuItem: MenuItem  
-  handleClick: (path: string) => void
-  showIcons?: boolean
+  menuItem: MenuLink  
+  handleClick: () => void
 }
 
 const DesktopMenuItem: React.FC<DesktopMenuItemProps> = (props) => {
@@ -47,7 +49,6 @@ const DesktopMenuItem: React.FC<DesktopMenuItemProps> = (props) => {
   const {
     menuItem,
     handleClick,
-    showIcons = true,
   } = props
 
   const { children } = menuItem
@@ -58,6 +59,7 @@ const DesktopMenuItem: React.FC<DesktopMenuItemProps> = (props) => {
     if(children?.length > 0) {
       openMenu(ev)
     }else{
+      //@ts-ignore
       handleClick(menuItem.path)
     }
   }
@@ -77,7 +79,7 @@ const DesktopMenuItem: React.FC<DesktopMenuItemProps> = (props) => {
         )
       }  
     >
-      {menuItem.label}
+      {menuItem.name}
     </Button>
       <Menu 
         open={open}
@@ -92,7 +94,6 @@ const DesktopMenuItem: React.FC<DesktopMenuItemProps> = (props) => {
             key={index}
             menuItem={child}
             handleClick={handleClick}
-            showIcons={showIcons}
           />
         ))}
       </Menu>

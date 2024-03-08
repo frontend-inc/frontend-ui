@@ -8,18 +8,21 @@ import {
 } from '../../../components'
 import { Notification } from '../../../types'
 
+type MenuItem = {
+	name: string
+	path: string
+  url?: string
+	icon?: string
+  position: number
+  children?: MenuItem[]
+}
+
 type LayoutContainerProps = {
 	position?: 'fixed' | 'absolute' | 'relative'
-	mode?: 'accent' | 'light' | 'dark'
-	showIcons?: boolean
-	showLabels?: boolean
+	mode?: 'accent' | 'light' | 'dark'		
 	topNav?: boolean
 	handleClick: (item: any) => void
-	menuItems: {
-    label: string
-    path: string
-    icon?: string  
-  }[]
+	menuItems: MenuItem[]
   notifications: Notification[]
 	children: ReactNode
   editing?: boolean
@@ -33,7 +36,6 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 		children,
     editing=false,
 		mode = 'accent',
-		showIcons = true,		
 		topNav = false,
 		handleClick,
 		menuItems,
@@ -58,8 +60,7 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
           <ModeTheme mode={mode}>
             <Header			
               editing={editing}	
-              topNav={topNav}
-              showIcons={showIcons}
+              topNav={topNav}              
               menuItems={menuItems}
               enableNotifications={enableNotifications}
               handleClick={handleClick}

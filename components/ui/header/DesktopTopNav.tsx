@@ -14,7 +14,7 @@ import { HEADER_LOGO_HEIGHT, HEADER_LOGO_WIDTH } from '../../../constants/index'
 import DesktopMenuItem from './DesktopMenuItem'
 
 type MenuItem = {
-	label: string
+	name: string
 	path: string
   url?: string
 	icon?: string  
@@ -34,7 +34,6 @@ type DesktopNavProps = {
   enableNotifications?: boolean
 	handleClick: (path: string) => void
 	position?: 'fixed' | 'relative' | 'absolute'
-	showIcons?: boolean
 }
 
 const DesktopTopNav = (props: DesktopNavProps) => {
@@ -50,8 +49,7 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 		enableAuth = false,
 		enableShopify = false,
     enableNotifications = false,
-		position = 'absolute',
-		showIcons = true,
+		position = 'absolute'		
 	} = props
 
 	return (
@@ -80,8 +78,7 @@ const DesktopTopNav = (props: DesktopNavProps) => {
                 <DesktopMenuItem 
                   key={index}
                   menuItem={menuItem}
-                  handleClick={() => handleClick(menuItem.path)}
-                  showIcons={showIcons}
+                  handleClick={() => handleClick(menuItem.path)}                  
                 />
 							))}
 						</Box>
@@ -94,7 +91,7 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 							)}
 							{enableShopify && (
 								<>
-                	<ShopifyAuth editing={editing} />
+                	<ShopifyAuth />
 									<SearchButton editing={editing} />
 									<CartButton editing={editing} />
 								</>

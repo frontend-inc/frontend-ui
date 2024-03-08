@@ -9,20 +9,19 @@ import DesktopTopNav from './DesktopTopNav'
 import DesktopSideNav from './DesktopSideNav'
 
 type MenuItem = {
-	label: string
+	name: string
 	path: string
   url?: string
-	icon?: string
+	icon?: string  
   position: number
+  parent_id?: number | null
   children?: MenuItem[]
 }
 
 type HeaderProps = {
 	editing?: boolean
-	position?: 'fixed' | 'relative' | 'absolute'
 	topNav?: boolean
 	mode?: 'accent' | 'light' | 'dark'
-	showIcons?: boolean
 	logo?: string
 	enableAuth?: boolean
 	enableShopify?: boolean
@@ -42,7 +41,6 @@ const Header: React.FC<HeaderProps> = (props) => {
 		enableAuth = false,
 		enableShopify = false,
     enableNotifications = false,
-		showIcons,
 	} = props
 
 	return (
@@ -61,7 +59,6 @@ const Header: React.FC<HeaderProps> = (props) => {
           enableNotifications={enableNotifications}
           menuItems={menuItems}
           handleClick={handleClick}
-          showIcons={showIcons}
         />
       ) : (
         <DesktopSideNav
@@ -72,7 +69,6 @@ const Header: React.FC<HeaderProps> = (props) => {
           enableNotifications={enableNotifications}
           menuItems={menuItems}
           handleClick={handleClick}
-          showIcons={showIcons}
         />
       )}
       <MobileNav
@@ -82,7 +78,6 @@ const Header: React.FC<HeaderProps> = (props) => {
         enableNotifications={enableNotifications}
         menuItems={menuItems}
         handleClick={handleClick}
-        showIcons={showIcons}        
       />
       <MobileDrawer
         editing={editing}
@@ -90,7 +85,6 @@ const Header: React.FC<HeaderProps> = (props) => {
         enableShopify={enableShopify}
         menuItems={menuItems}
         handleClick={handleClick}
-        showIcons={showIcons}
       />
     </Box>
 	)

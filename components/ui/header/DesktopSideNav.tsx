@@ -11,7 +11,7 @@ import { AppContext } from '../../../context'
 import { HEADER_LOGO_HEIGHT, HEADER_LOGO_WIDTH } from '../../../constants/index'
 
 type MenuItem = {
-	label: string
+	name: string
 	path: string
   url?: string
 	icon?: string
@@ -29,8 +29,7 @@ type DesktopNavProps = {
 	enableShopify?: boolean
   enableNotifications?: boolean
 	handleClick: (path: string) => void
-	position?: 'fixed' | 'relative' | 'absolute'
-	showIcons?: boolean
+	position?: 'fixed' | 'relative' | 'absolute'	
 }
 
 const DesktopSideNav = (props: DesktopNavProps) => {
@@ -44,8 +43,7 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 		handleClick,
 		enableAuth = false,
 		enableShopify = false,
-    enableNotifications = false,
-		showIcons = true,
+    enableNotifications = false		
 	} = props
 
 	return (
@@ -72,30 +70,25 @@ const DesktopSideNav = (props: DesktopNavProps) => {
                 sx={sx.menuButton}
                 key={index}
                 onClick={() => handleClick(menuItem.path)}
-                startIcon={showIcons && <Icon size={24} name={menuItem.icon} />}
               >
-                {menuItem.label}
+                {menuItem.name}
               </Button>
             ))}
             {enableShopify && (
               <>
-                <SearchButton showLabel showIcon={showIcons} editing={editing} />
-                <CartButton showLabel showIcon={showIcons} editing={editing} />
+                <SearchButton editing={editing} />
+                <CartButton editing={editing} />
               </>
             )}
           </Stack>          
           {(enableAuth || enableShopify) && (
             <Box sx={ sx.divider }>
               { enableShopify && (
-                <ShopifyAuth 
-                  showLabel 
-                  editing={editing} 
-                />              
+                <ShopifyAuth />              
               )}
               { enableAuth && (
                 <AuthButton
-                  showLabel
-                  showIcon={showIcons}
+                  showLabel                  
                   editing={editing}
                   myAccountUrl={`${clientUrl}/my-account`}
                 />

@@ -11,7 +11,7 @@ const AuthAvatarButton: React.FC = () => {
 	const router = useRouter()
 
 	const { logout, customer } = useAuth()
-	const { open, anchorEl, closeMenu, toggleMenu } = useMenu({})
+	const { open, anchorEl, closeMenu, toggleMenu } = useMenu()
 
 	const { clientUrl } = useContext(AppContext)
 

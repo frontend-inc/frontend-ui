@@ -6,12 +6,10 @@ import { Icon } from '../../../components'
 
 type SearchButtonProps = {
 	editing?: boolean
-	showIcon?: boolean
-	showLabel?: boolean
 }
 
 const SearchButton: React.FC<SearchButtonProps> = (props) => {
-	const { showLabel = false, showIcon = true, editing = false } = props
+	const { editing = false } = props
 	const { toggleSearch } = useContext(ShopContext) as any
   const { setMenuOpen  } = useContext(AppContext)
 
@@ -23,23 +21,9 @@ const SearchButton: React.FC<SearchButtonProps> = (props) => {
 	}
 
 	return (
-		<>
-			{!showLabel && (
-				<IconButton sx={sx.root} onClick={handleToggleSearch}>
-					<Icon name="Search" size={24} />
-				</IconButton>
-			)}
-			{showLabel && (
-				<Button
-					fullWidth
-					sx={sx.button}
-					onClick={handleToggleSearch}
-					startIcon={showIcon && <Icon name="Search" size={24} />}
-				>
-					Search
-				</Button>
-			)}
-		</>
+    <IconButton sx={sx.root} onClick={handleToggleSearch}>
+      <Icon name="Search" size={24} />
+    </IconButton>
 	)
 }
 

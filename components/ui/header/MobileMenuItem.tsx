@@ -1,7 +1,6 @@
 import React, { useState } from 'react' 
 import { 
   Collapse,
-  MenuItem,
   List,
   ListItem,
   ListItemButton,
@@ -13,36 +12,31 @@ import { Icon } from '../..'
 import { Add } from '@mui/icons-material'
 
 type MenuItem = {
-	label: string
+	name: string
 	path: string
   url?: string
-	icon?: string
+	icon?: string  
   position: number
-  children: MenuItem[]
+  parent_id?: number | null
+  children?: MenuItem[]
 }
 
 type SubmenuItem = {
   menuItem: MenuItem
-  showIcons?: boolean
-  handleClick: () => void
+  handleClick: (path: string) => void
 }
 
 const MobileSubmenuItem: React.FC<SubmenuItem> = (props) => {
 
-  const { showIcons=false, menuItem, handleClick } = props 
+  const { menuItem, handleClick } = props 
 
   return(
     <ListItem 
       sx={ sx.subLink }
       disablePadding>
-      <ListItemButton       
+      <ListItemButton               
         onClick={() => handleClick(menuItem.path)}
     >
-      { showIcons && menuItem?.icon && (
-        <ListItemIcon>
-          <Icon size={24} name={menuItem.icon} />
-        </ListItemIcon>
-      )}
       <ListItemText 
         primary={            
           <Typography variant="button" color="text.primary">
@@ -58,7 +52,6 @@ const MobileSubmenuItem: React.FC<SubmenuItem> = (props) => {
 type MobileMenuItemProps = {
   menuItem: MenuItem  
   handleClick: (path: string) => void
-  showIcons?: boolean
 }
 
 const MobileMenuItem: React.FC<MobileMenuItemProps> = (props) => {
@@ -66,13 +59,12 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = (props) => {
   const {
     menuItem,
     handleClick,
-    showIcons = true,
   } = props
 
   const { children } = menuItem
   const [open, setOpen] = useState(false)
   
-  const handleMenuClick = () => {
+  const handleMenuClick = (menuItem: MenuItem) => {
     if(children?.length > 0) {
       setOpen(!open)
     }else{
@@ -115,7 +107,6 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = (props) => {
             key={index}
             menuItem={child}
             handleClick={handleClick}
-            showIcons={showIcons}
           />
         ))}
       </List>

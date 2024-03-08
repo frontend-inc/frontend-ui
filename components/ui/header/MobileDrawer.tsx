@@ -13,7 +13,7 @@ import { AppContext } from '../../../context'
 import MobileMenuItem from './MobileMenuItem'
 
 type MenuItem = {
-	label: string
+	name: string
 	path: string
   url?: string
 	icon?: string  
@@ -26,7 +26,6 @@ type MobileDrawerProps = {
 	editing?: boolean
 	menuItems?: MenuItem[]
 	handleClick: (path: string) => void	
-	showIcons?: boolean
 	enableAuth?: boolean
   enableShopify?: boolean
 }
@@ -41,7 +40,6 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 		handleClick,
 		enableAuth,
     enableShopify,
-		showIcons,
 	} = props
 
 	const handleMenuClick = (path: string) => {
@@ -67,17 +65,14 @@ const MobileDrawer = (props: MobileDrawerProps) => {
               key={index}
               menuItem={menuItem}
               handleClick={handleMenuClick}
-              showIcons={showIcons}
             />
           ))}
           {enableShopify && (
             <>
               <SearchListItemButton 
-                showIcon={showIcons} 
                 editing={editing} 
               />
               <CartListItemButton 
-                showIcon={showIcons} 
                 editing={editing} 
               />
             </>
@@ -92,7 +87,6 @@ const MobileDrawer = (props: MobileDrawerProps) => {
             )}
             { enableAuth && (
               <AuthButton
-                showIcon={showIcons}
                 editing={editing}
                 myAccountUrl={`${clientUrl}/my-account`}
               />
