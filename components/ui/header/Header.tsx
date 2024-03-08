@@ -1,7 +1,5 @@
 import React, { useContext } from 'react'
-import {
-	Box,
-} from '@mui/material'
+import { Box } from '@mui/material'
 import { AppContext } from '../../../context'
 import MobileDrawer from './MobileDrawer'
 import MobileNav from './MobileNav'
@@ -18,7 +16,7 @@ type HeaderProps = {
 	enableShopify?: boolean
   enableNotifications?: boolean
 	bgcolor?: string
-	MenuLinks?: MenuLink[] 
+	menuItems: MenuLink[] 
 	handleClick: (path: string) => void
 }
 
@@ -27,7 +25,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 	const {
 		topNav = false,
 		editing = false,
-		MenuLinks,
+		menuItems,
 		handleClick,
 		enableAuth = false,
 		enableShopify = false,
@@ -48,7 +46,7 @@ const Header: React.FC<HeaderProps> = (props) => {
           enableAuth={enableAuth}
           enableShopify={enableShopify}
           enableNotifications={enableNotifications}
-          MenuLinks={MenuLinks}
+          menuItems={menuItems}
           handleClick={handleClick}
         />
       ) : (
@@ -58,7 +56,7 @@ const Header: React.FC<HeaderProps> = (props) => {
           enableAuth={enableAuth}
           enableShopify={enableShopify}
           enableNotifications={enableNotifications}
-          MenuLinks={MenuLinks}
+          menuItems={menuItems}
           handleClick={handleClick}
         />
       )}
@@ -67,14 +65,14 @@ const Header: React.FC<HeaderProps> = (props) => {
         logo={logo}          
         enableShopify={enableShopify}
         enableNotifications={enableNotifications}
-        MenuLinks={MenuLinks}
+        menuItems={menuItems}
         handleClick={handleClick}
       />
       <MobileDrawer
         editing={editing}
         enableAuth={enableAuth}
         enableShopify={enableShopify}
-        MenuLinks={MenuLinks}
+        menuItems={menuItems}
         handleClick={handleClick}
       />
     </Box>

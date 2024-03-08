@@ -7,22 +7,14 @@ import {
   Notifications 
 } from '../../../components'
 import { Notification } from '../../../types'
-
-type MenuItem = {
-	name: string
-	path: string
-  url?: string
-	icon?: string
-  position: number
-  children?: MenuItem[]
-}
+import { MenuLink } from '../../..'
 
 type LayoutContainerProps = {
 	position?: 'fixed' | 'absolute' | 'relative'
 	mode?: 'accent' | 'light' | 'dark'		
 	topNav?: boolean
 	handleClick: (item: any) => void
-	menuItems: MenuItem[]
+	menuItems: MenuLink[]
   notifications: Notification[]
 	children: ReactNode
   editing?: boolean
