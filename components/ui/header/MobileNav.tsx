@@ -9,29 +9,19 @@ import {
 import {  Logo, Icon } from '../..'
 import { SearchButton, CartButton } from '../../shopify'
 import { AppContext } from '../../../context'
-
-type MenuItem = {
-	name: string
-	path: string
-  url?: string
-	icon?: string  
-  position: number
-  parent_id?: number | null
-  children?: MenuItem[]
-}
+import { MenuLink } from '../../..'
 
 type MobileNavProps = {
 	editing?: boolean
 	logo?: string
 	logoWidth?: number
 	logoHeight?: number
-	menuItems?: MenuItem[]
+	menuItems?: MenuLink[]
 	enableAuth?: boolean
 	enableShopify?: boolean
   enableNotifications?: boolean
 	handleClick: (path: string) => void
 	position?: 'fixed' | 'relative' | 'absolute'
-	showIcons?: boolean
 }
 
 const MobileNav = (props: MobileNavProps) => {
@@ -57,7 +47,7 @@ const MobileNav = (props: MobileNavProps) => {
         position={'absolute'} 
         elevation={0}
       >
-				<Toolbar sx={ sx.toolbar }>
+				<Toolbar>
 					<Box sx={sx.desktopTopNav}>
 						<Box sx={sx.leftMenu}>
 							<IconButton onClick={() => (setMenuOpen(true))}>
@@ -89,23 +79,6 @@ const MobileNav = (props: MobileNavProps) => {
 export default MobileNav
 
 const sx = {
-  root: {
-		width: '100%',
-		display: 'flex',
-		flexDirection: 'row',
-		overflow: 'hidden',
-    bgcolor: 'background.default', 
-  },
-  rootSideNav: {       
-    width: {
-			sm: '280px',
-			xs: '100%',
-		},
-		minWidth: {
-			sm: '280px',
-			xs: '100%',
-		},
-  },
   appBar: {
     position: 'absolute',
 		zIndex: theme => theme.zIndex.appBar,      
@@ -115,7 +88,6 @@ const sx = {
     position: 'absolute',
     top: 40,
   },
-  toolbar: {},
   notifications: {
     top: '50px'
   },
@@ -147,18 +119,6 @@ const sx = {
     p: 2,		
     height: '100%',
   },
-  desktopSideNavNotifications: {
-    height: 'calc(100% - 40px)',
-  },
-  desktopSideNavEditor: {
-    height: 'calc(100% - 140px)',
-  },
-  desktopSideNavEditorNotifications: {
-    height: 'calc(100% - 180px)',
-  },
-	desktopSideMenuItems: {		
-    height: '100%',
-	},
 	leftMenu: {
 		width: '200px',
     height: '60px',
@@ -182,30 +142,5 @@ const sx = {
 		alignItems: 'center',
 		justifyContent: 'flex-end',
     height: '60px',
-	},
-	menuButton: {
-		justifyContent: 'flex-start',
-		bgcolor: 'background.default',
-		color: 'text.primary',
-	},
-  mobileMenu: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    height: '100%',
-    minHeight: 'calc(100vh - 70px)',
-    width: {
-			xs: '100%',
-			sm: '320px',
-		},
-  },
-	mobileMenuItems: {		
-    width: '100%'
-	},
-  divider: {
-    width: "100%",
-    borderTop: '1px solid',
-    borderColor: 'divider',
-    pt: 1.5
-  }
+	},  
 }

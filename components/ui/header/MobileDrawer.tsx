@@ -11,20 +11,12 @@ import {
 } from '../../shopify'
 import { AppContext } from '../../../context'
 import MobileMenuItem from './MobileMenuItem'
+import { MenuLink } from '../../..'
 
-type MenuItem = {
-	name: string
-	path: string
-  url?: string
-	icon?: string  
-  position: number
-  parent_id?: number | null
-  children?: MenuItem[]
-}
 
 type MobileDrawerProps = {
 	editing?: boolean
-	menuItems?: MenuItem[]
+	menuItems?: MenuLink[]
 	handleClick: (path: string) => void	
 	enableAuth?: boolean
   enableShopify?: boolean

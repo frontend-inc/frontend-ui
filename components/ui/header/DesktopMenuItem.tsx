@@ -7,16 +7,7 @@ import {
 } from '@mui/material'
 import { Icon } from '../..'
 import { useMenu } from '../../../hooks'
-
-type MenuLink = {
-	name: string
-	path: string
-  url?: string
-	icon?: string
-  parent_id?: number | null
-  position: number
-  children?: MenuLink[]
-}
+import { MenuLink } from '../../..'
 
 type SubmenuItem = {
   menuItem: MenuLink

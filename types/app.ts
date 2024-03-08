@@ -1,10 +1,11 @@
 export type MenuLink = {
-	label: string
+	name: string
 	path: string
   url?: string
 	icon?: string
   position: number
-  children?: MenuLink[]
+  parent_id?: number | null
+  children: MenuLink[] | []
 }
 
 export type Notification = {

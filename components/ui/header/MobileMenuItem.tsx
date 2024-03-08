@@ -4,25 +4,15 @@ import {
   List,
   ListItem,
   ListItemButton,
-  ListItemIcon,
   ListItemText,
   Typography
 } from '@mui/material'
-import { Icon } from '../..'
 import { Add } from '@mui/icons-material'
+import { MenuLink } from '../../..'
 
-type MenuItem = {
-	name: string
-	path: string
-  url?: string
-	icon?: string  
-  position: number
-  parent_id?: number | null
-  children?: MenuItem[]
-}
 
 type SubmenuItem = {
-  menuItem: MenuItem
+  menuItem: MenuLink
   handleClick: (path: string) => void
 }
 
@@ -50,7 +40,7 @@ const MobileSubmenuItem: React.FC<SubmenuItem> = (props) => {
 }
 
 type MobileMenuItemProps = {
-  menuItem: MenuItem  
+  menuItem: MenuLink  
   handleClick: (path: string) => void
 }
 
@@ -64,7 +54,7 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = (props) => {
   const { children } = menuItem
   const [open, setOpen] = useState(false)
   
-  const handleMenuClick = (menuItem: MenuItem) => {
+  const handleMenuClick = (menuItem: MenuLink) => {
     if(children?.length > 0) {
       setOpen(!open)
     }else{
