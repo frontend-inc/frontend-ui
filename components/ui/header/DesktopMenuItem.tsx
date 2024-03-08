@@ -1,6 +1,13 @@
 import React from 'react' 
-import { Button } from '@mui/material'
+import { 
+  Button, 
+  IconButton,
+  Menu,
+  MenuItem,
+  Typography,
+} from '@mui/material'
 import { Icon } from '../..'
+import { useMenu } from '../../../hooks'
 
 type MenuItem = {
 	label: string
@@ -8,7 +15,25 @@ type MenuItem = {
   url?: string
 	icon?: string
   position: number
-  children?: MenuItem[]
+  children: MenuItem[]
+}
+
+type SubmenuItem = {
+  menuItem: MenuItem
+  handleClick: () => void
+}
+
+const DesktopSubmenuItem: React.FC<SubmenuItem> = (props) => {
+
+  const { menuItem, handleClick } = props 
+
+  return(
+    <MenuItem>
+      <Typography variant="button" color="text.primary">
+        { menuItem.label }
+      </Typography>
+    </MenuItem>
+  )
 }
 
 type DesktopMenuItemProps = {
@@ -25,27 +50,72 @@ const DesktopMenuItem: React.FC<DesktopMenuItemProps> = (props) => {
     showIcons = true,
   } = props
 
+  const { children } = menuItem
+
+  const { open, openMenu, closeMenu, anchorEl } = useMenu()
+
+  const handleMenuClick = (ev) => {
+    if(children?.length > 0) {
+      openMenu(ev)
+    }else{
+      handleClick(menuItem.path)
+    }
+  }
+  
+  const handleMouseLeave = () => {
+    closeMenu()
+  }
+
   return(
+    <>
     <Button
       sx={sx.menuButton}
-      onClick={() => handleClick(menuItem.path)}
-      startIcon={
-        showIcons && menuItem?.icon && (
-          <Icon size={24} name={menuItem.icon} />
+      onClick={ handleMenuClick }
+      endIcon={
+        children?.length > 0 && (
+          <Icon size={24} name="ChevronDown" />
         )
-      }
+      }  
     >
       {menuItem.label}
     </Button>
+      <Menu 
+        open={open}
+        anchorEl={anchorEl}
+        onClose={closeMenu}
+        MenuListProps={{
+          onMouseLeave: handleMouseLeave,
+        }}
+      >      
+        {children?.map((child, index) => (
+          <DesktopSubmenuItem
+            key={index}
+            menuItem={child}
+            handleClick={handleClick}
+            showIcons={showIcons}
+          />
+        ))}
+      </Menu>
+    </>
   )
 }
 
 export default DesktopMenuItem
 
 const sx = {
+  buttonGroup: {
+    borderRight: 'none !important'
+  },
   menuButton: {
+    cursor: 'pointer',
 		justifyContent: 'flex-start',
 		bgcolor: 'background.default',
-		color: 'text.primary',
-	}
+		color: 'text.primary',    
+    borderRight: 'none !important'
+	},
+  iconButton: {
+    '&:hover': {
+      bgcolor: 'transparent'
+    }
+  }
 }

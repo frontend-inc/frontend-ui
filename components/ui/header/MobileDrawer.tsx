@@ -1,18 +1,30 @@
 import React, { useContext } from 'react'
 import {
-	Stack,
-	AppBar,
-	Button,
+	List,
 	Box,
 } from '@mui/material'
-import { AuthButton, Icon, Drawer, Link } from '../..'
-import { ShopifyAuth, SearchButton, CartButton } from '../../shopify'
+import { AuthButton, Drawer } from '../..'
+import { 
+  ShopifyListItemAuth, 
+  SearchListItemButton, 
+  CartListItemButton 
+} from '../../shopify'
 import { AppContext } from '../../../context'
+import MobileMenuItem from './MobileMenuItem'
 
+type MenuItem = {
+	label: string
+	path: string
+  url?: string
+	icon?: string  
+  position: number
+  parent_id?: number | null
+  children?: MenuItem[]
+}
 
 type MobileDrawerProps = {
 	editing?: boolean
-	menuItems?: Link[]
+	menuItems?: MenuItem[]
 	handleClick: (path: string) => void	
 	showIcons?: boolean
 	enableAuth?: boolean
@@ -47,35 +59,39 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 			styles={sx.drawer}
 		>
       <Box sx={ sx.mobileMenu }>
-        <Stack spacing={1} direction="column" sx={sx.mobileMenuItems}>
-          {menuItems?.map((menuItem, index) => (
-            <Button
-              sx={sx.menuButton}
+        <List sx={sx.mobileMenuItems}>
+          {menuItems
+            ?.filter(menuItem => menuItem.parent_id == null)
+            ?.map((menuItem, index) => (
+            <MobileMenuItem
               key={index}
-              onClick={() => handleMenuClick(menuItem.path)}
-              startIcon={showIcons && <Icon size={24} name={menuItem.icon} />}
-            >
-              {menuItem.label}
-            </Button>
+              menuItem={menuItem}
+              handleClick={handleMenuClick}
+              showIcons={showIcons}
+            />
           ))}
           {enableShopify && (
             <>
-              <SearchButton showLabel showIcon={showIcons} editing={editing} />
-              <CartButton showLabel showIcon={showIcons} editing={editing} />
+              <SearchListItemButton 
+                showIcon={showIcons} 
+                editing={editing} 
+              />
+              <CartListItemButton 
+                showIcon={showIcons} 
+                editing={editing} 
+              />
             </>
           )}
-        </Stack>
+        </List>
         {(enableAuth || enableShopify) && (
           <Box sx={ sx.divider }>
             { enableShopify && (
-              <ShopifyAuth 
-                showLabel 
+              <ShopifyListItemAuth 
                 editing={editing} 
               />              
             )}
             { enableAuth && (
               <AuthButton
-                showLabel
                 showIcon={showIcons}
                 editing={editing}
                 myAccountUrl={`${clientUrl}/my-account`}

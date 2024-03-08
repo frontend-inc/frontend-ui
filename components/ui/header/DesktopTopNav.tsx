@@ -17,8 +17,9 @@ type MenuItem = {
 	label: string
 	path: string
   url?: string
-	icon?: string
+	icon?: string  
   position: number
+  parent_id?: number | null
   children?: MenuItem[]
 }
 
@@ -73,7 +74,9 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 							/>
 						</Box>
 						<Box sx={sx.centerMenu}>
-							{menuItems?.map((menuItem, index) => (
+							{menuItems
+                ?.filter(menuItem => menuItem.parent_id == null)
+                ?.map((menuItem, index) => (
                 <DesktopMenuItem 
                   key={index}
                   menuItem={menuItem}

@@ -1,17 +1,24 @@
 import React from 'react'
-import { Button, IconButton } from '@mui/material'
+import { 
+  ListItem, 
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Typography
+} from '@mui/material'
 import { useShop } from 'frontend-shopify'
-import { Icon } from '../../../components'
+import { Icon } from '../..'
 import { useRouter } from 'next/router'
 
 type ShopifyAuthProps = {
+  editing?: boolean
   customerUrl?: string
 }
 
-const ShopifyAuth: React.FC<ShopifyAuthProps> = (props) => {
+const ShopifyListItemAuth: React.FC<ShopifyAuthProps> = (props) => {
 
   const router = useRouter()
-  const {  customerUrl } = props || {}
+  const { editing=false, customerUrl } = props || {}
 
   const { findShop } = useShop()
 
@@ -33,18 +40,25 @@ const ShopifyAuth: React.FC<ShopifyAuthProps> = (props) => {
   }
 
   return(
-    <IconButton onClick={handleClick}>
-      <Icon name="User" size={24} />
-    </IconButton>
+    <ListItem 
+      disablePadding
+      disableGutters
+    >
+      <ListItemButton 
+        onClick={ handleClick }
+      >
+        <ListItemIcon>
+          <Icon name="User" size={24} />
+        </ListItemIcon>
+        <ListItemText primary={
+          <Typography variant="button" color="text.primary">
+            My Account
+          </Typography>
+        }
+        />
+      </ListItemButton>
+    </ListItem>    
   )      
 }
 
-export default ShopifyAuth
-
-const sx = {
-  button: {
-    width: '100%',
-		color: 'text.primary',
-		justifyContent: 'flex-start',
-  }
-}
+export default ShopifyListItemAuth

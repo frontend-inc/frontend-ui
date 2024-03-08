@@ -51,7 +51,7 @@ const MobileNav = (props: MobileNavProps) => {
 				<Toolbar sx={ sx.toolbar }>
 					<Box sx={sx.desktopTopNav}>
 						<Box sx={sx.leftMenu}>
-							<IconButton onClick={() => (!editing ? setMenuOpen(true) : null)}>
+							<IconButton onClick={() => (setMenuOpen(true))}>
 								<Icon name="Menu" size={24} />
 							</IconButton>
 						</Box>
