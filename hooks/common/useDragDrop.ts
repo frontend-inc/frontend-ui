@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 
 type UseDragDropProps = {
 	columns: any[]
-	children: any[]
+	children?: any[]
 }
 
 const useDragDrop = (props: UseDragDropProps) => {
-	const [columns, setColumns] = useState(props.children)
+  const { children } = props
+	const [columns, setColumns] = useState(children)
 
 	const reorder = (items, startIndex, endIndex) => {
 		const [removed] = items.splice(startIndex, 1)
