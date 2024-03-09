@@ -36,8 +36,9 @@ const RichText: React.FC<RichTextProps> = (props) => {
 					</Typography>
 				)
 			case 'heading':
-				// @ts-ignore
+				
 				return (
+          // @ts-ignore
 					<Typography key={key} variant={`h${el.level}`}>
 						{rendervalue(el.children, inList)}
 					</Typography>
