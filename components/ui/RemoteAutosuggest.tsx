@@ -3,7 +3,7 @@ import { useResource } from 'frontend-js'
 import { Autosuggest } from '../../components'
 import { ErrorText } from '../../components'
 import { useError } from '../../hooks'
-import { Option } from 'frontend-ui/types'
+import { Option } from '../../types'
 
 type RemoteAutosuggestProps = {
 	errors?: any
