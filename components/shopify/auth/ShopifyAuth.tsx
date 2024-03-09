@@ -1,17 +1,71 @@
 import React from 'react'
-import { Button, IconButton } from '@mui/material'
+import { IconButton } from '@mui/material'
+import {
+  ListItem,
+  ListItemText,
+  ListItemButton,
+  Typography
+} from '@mui/material'
 import { useShop } from 'frontend-shopify'
 import { Icon } from '../../../components'
 import { useRouter } from 'next/router'
 
+type DesktopShopifyAuthButtonProps = {  
+  handleClick: () => void
+}
+
+const DesktopShopifyAuthButton: React.FC<DesktopShopifyAuthButtonProps> = (props) => {
+  
+  const { 
+    handleClick
+  } = props
+  
+  return (
+    <IconButton onClick={handleClick}>
+      <Icon name="User" size={24} />
+    </IconButton>
+	)
+}
+
+type MobileShopifyAuthButtonProps = {
+  handleClick: () => void
+}
+
+const MobileShopifyAuthButton: React.FC<MobileShopifyAuthButtonProps> = (props) => {
+  
+  const { 
+    handleClick
+  } = props
+  
+  return (
+		<ListItem   
+      disablePadding
+      disableGutters
+    >
+      <ListItemButton 
+        onClick={ handleClick }
+      >
+        <ListItemText 
+          primary={
+            <Typography variant="button" color="text.primary">
+              My Account 
+            </Typography>            
+          }
+        />					
+      </ListItemButton>
+		</ListItem>
+	)
+}
+
 type ShopifyAuthProps = {
   customerUrl?: string
+  variant?: 'desktop' | 'mobile'
 }
 
 const ShopifyAuth: React.FC<ShopifyAuthProps> = (props) => {
 
   const router = useRouter()
-  const {  customerUrl } = props || {}
+  const { variant='desktop', customerUrl } = props || {}
 
   const { findShop } = useShop()
 
@@ -33,18 +87,14 @@ const ShopifyAuth: React.FC<ShopifyAuthProps> = (props) => {
   }
 
   return(
-    <IconButton onClick={handleClick}>
-      <Icon name="User" size={24} />
-    </IconButton>
+    variant == 'desktop' ?
+      <DesktopShopifyAuthButton
+        handleClick={handleClick}
+      /> : 
+      <MobileShopifyAuthButton
+        handleClick={handleClick}
+      />    
   )      
 }
 
 export default ShopifyAuth
-
-const sx = {
-  button: {
-    width: '100%',
-		color: 'text.primary',
-		justifyContent: 'flex-start',
-  }
-}

@@ -5,9 +5,9 @@ import {
   MenuItem,
   Typography,
 } from '@mui/material'
-import { Icon } from '../..'
 import { useMenu } from '../../../hooks'
 import { MenuLink } from '../../..'
+import { ExpandMore } from '@mui/icons-material'
 
 type SubmenuItem = {
   menuItem: MenuLink
@@ -61,17 +61,22 @@ const DesktopMenuItem: React.FC<DesktopMenuItemProps> = (props) => {
 
   return(
     <>
-    <Button
-      sx={sx.menuButton}
-      onClick={ handleMenuClick }
-      endIcon={
-        children?.length > 0 && (
-          <Icon size={24} name="ChevronDown" />
-        )
-      }  
-    >
-      {menuItem.name}
-    </Button>
+      <Button
+        sx={sx.menuButton}
+        onClick={ handleMenuClick }
+        endIcon={
+          children?.length > 0 && (
+            <ExpandMore 
+              sx={{ 
+                ...sx.icon,
+                ...(open && sx.rotateIcon)
+              }}
+            />
+          )
+        }  
+      >
+        {menuItem.name}
+      </Button>
       <Menu 
         open={open}
         anchorEl={anchorEl}
@@ -109,5 +114,11 @@ const sx = {
     '&:hover': {
       bgcolor: 'transparent'
     }
-  }
+  },
+  icon: {
+    transition: 'transform 0.2s ease-in-out',
+  },
+  rotateIcon: {
+    transform: 'rotate(-180deg)',
+  },
 }

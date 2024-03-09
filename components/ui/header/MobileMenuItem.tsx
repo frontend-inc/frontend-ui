@@ -1,13 +1,14 @@
 import React, { useState } from 'react' 
 import { 
   Collapse,
+  IconButton,
   List,
   ListItem,
   ListItemButton,
   ListItemText,
   Typography
 } from '@mui/material'
-import { Add } from '@mui/icons-material'
+import { ExpandMore } from '@mui/icons-material'
 import { MenuLink } from '../../..'
 
 
@@ -69,12 +70,16 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = (props) => {
         disableGutters
         secondaryAction={ 
           children?.length > 0 && (
-              <Add 
+            <IconButton 
+              onClick={() => handleMenuClick(menuItem) }
+            >
+              <ExpandMore 
                 sx={{ 
                   ...sx.icon,
                   ...(open && sx.rotateIcon )
                 }}
               />
+            </IconButton>
           )  
         }
       >
@@ -109,10 +114,10 @@ export default MobileMenuItem
 
 const sx = {
   icon: {
-    transition: 'transform 0.3s ease-in-out',
+    transition: 'transform 0.2s ease-in-out',
   },
   rotateIcon: {
-    transform: 'rotate(90deg)',
+    transform: 'rotate(-180deg)',
   },
   subLink: {
     pl: 3,

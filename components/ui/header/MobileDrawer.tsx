@@ -5,9 +5,9 @@ import {
 } from '@mui/material'
 import { AuthButton, Drawer } from '../..'
 import { 
-  ShopifyListItemAuth, 
-  SearchListItemButton, 
-  CartListItemButton 
+  ShopifyAuth, 
+  SearchButton, 
+  CartButton 
 } from '../../shopify'
 import { AppContext } from '../../../context'
 import MobileMenuItem from './MobileMenuItem'
@@ -61,10 +61,12 @@ const MobileDrawer = (props: MobileDrawerProps) => {
           ))}
           {enableShopify && (
             <>
-              <SearchListItemButton 
+              <SearchButton 
+                variant="mobile"
                 editing={editing} 
               />
-              <CartListItemButton 
+              <CartButton 
+                variant='mobile'
                 editing={editing} 
               />
             </>
@@ -73,8 +75,8 @@ const MobileDrawer = (props: MobileDrawerProps) => {
         {(enableAuth || enableShopify) && (
           <Box sx={ sx.divider }>
             { enableShopify && (
-              <ShopifyListItemAuth 
-                editing={editing} 
+              <ShopifyAuth 
+                variant="mobile"
               />              
             )}
             { enableAuth && (
