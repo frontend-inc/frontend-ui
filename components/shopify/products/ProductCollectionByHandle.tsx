@@ -25,7 +25,7 @@ type ProductCollectionByHandleProps = {
 	enableAddToCart?: boolean
 	enableQuickShop?: boolean
 	enableQuantity?: boolean
-  enableOkendoStarRating?: boolean
+	enableOkendoStarRating?: boolean
 }
 
 const ProductCollectionByHandle: React.FC<ProductCollectionByHandleProps> = (
@@ -54,7 +54,7 @@ const ProductCollectionByHandle: React.FC<ProductCollectionByHandleProps> = (
 		enableAddToCart = false,
 		enableQuickShop = false,
 		enableQuantity = false,
-    enableOkendoStarRating = false
+		enableOkendoStarRating = false,
 	} = props
 
 	const { loading, collection, findCollection } = useCollections()
@@ -89,7 +89,7 @@ const ProductCollectionByHandle: React.FC<ProductCollectionByHandleProps> = (
 			enableAddToCart={enableAddToCart}
 			enableQuickShop={enableQuickShop}
 			enableQuantity={enableQuantity}
-      enableOkendoStarRating={enableOkendoStarRating}
+			enableOkendoStarRating={enableOkendoStarRating}
 		/>
 	)
 }

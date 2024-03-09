@@ -37,24 +37,24 @@ const GridView: React.FC<GridViewProps> = (props) => {
 	} = props
 
 	return (
-		<Grid container spacing={0}> 
+		<Grid container spacing={0}>
 			{items?.map((item, index) => (
 				<Grid item xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
-          <Box sx={ sx.item } key={item?.id}>
-            <Component
-              key={index}
-              title={item?.title}
-              description={item?.description}
-              image={item?.image?.url}
-              video={item?.video?.url}
-              editing={editing}
-              buttonText={buttonText}
-              handleClick={() => handleClick(item)}
-              enableBorder={enableBorder}
-              enableGradient={enableGradient}
-              enableOverlay={enableOverlay}
-            />
-          </Box>
+					<Box sx={sx.item} key={item?.id}>
+						<Component
+							key={index}
+							title={item?.title}
+							description={item?.description}
+							image={item?.image?.url}
+							video={item?.video?.url}
+							editing={editing}
+							buttonText={buttonText}
+							handleClick={() => handleClick(item)}
+							enableBorder={enableBorder}
+							enableGradient={enableGradient}
+							enableOverlay={enableOverlay}
+						/>
+					</Box>
 				</Grid>
 			))}
 		</Grid>
@@ -64,7 +64,7 @@ const GridView: React.FC<GridViewProps> = (props) => {
 export default GridView
 
 const sx = {
-  item: {
-    p: 0.5
-  }
+	item: {
+		p: 0.5,
+	},
 }

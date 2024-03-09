@@ -8,7 +8,7 @@ export type AttachmentInputProps = {
 	value: any
 	handleRemove: (name: string) => void
 	variant?: 'image' | 'file'
-  objectFit?: 'contain' | 'cover'
+	objectFit?: 'contain' | 'cover'
 	size?: number
 }
 

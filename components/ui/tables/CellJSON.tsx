@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-	CellExpand,
-	CellString,
-	CellStringExpanded,
-} from '../../../components'
+import { CellExpand, CellString, CellStringExpanded } from '../../../components'
 
 type CellJSONProps = {
 	value: any

@@ -31,12 +31,12 @@ const CloudinaryImage: React.FC<CloudinaryImageProps> = (props) => {
 	const isImageOrVideo = IMAGE_OR_VIDEO_FORMATS.includes(fileExtension)
 
 	return isImageOrVideo ? (
-		<Image 
-      src={resizedImageUrl} 
-      height={height} 
-      //@ts-ignore
-      width={width} 
-    />
+		<Image
+			src={resizedImageUrl}
+			height={height}
+			//@ts-ignore
+			width={width}
+		/>
 	) : (
 		<FileIcon size={20} />
 	)

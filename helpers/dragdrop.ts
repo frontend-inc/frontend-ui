@@ -3,7 +3,7 @@ export const reorder = (items, startIndex, endIndex) => {
 	const [removed] = result.splice(startIndex, 1)
 	result.splice(endIndex, 0, removed)
 	let sorted = result.map((item, index) => ({
-    //@ts-ignore
+		//@ts-ignore
 		...item,
 		position: index,
 	}))

@@ -5,9 +5,8 @@ import { CardProps } from '../../../types'
 import Image from 'next/image'
 
 const Logo: React.FC<CardProps> = (props) => {
-	
-  const {
-		title='',
+	const {
+		title = '',
 		image = '',
 		height = LOGO_HEIGHT,
 		width = LOGO_WIDTH,
@@ -16,7 +15,7 @@ const Logo: React.FC<CardProps> = (props) => {
 	return (
 		<Box
 			sx={{
-        ...sx.root,
+				...sx.root,
 				height: `${height}px`,
 				width: `${width}px`,
 				minWidth: `${width}px`,
@@ -40,7 +39,7 @@ const Logo: React.FC<CardProps> = (props) => {
 export default Logo
 
 const sx = {
-  root: {
-    p: 0.5
-  }
+	root: {
+		p: 0.5,
+	},
 }

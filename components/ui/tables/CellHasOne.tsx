@@ -11,12 +11,9 @@ const CellHasOne: React.FC<CellHasOneProps> = (props) => {
 	const { value, handleClick } = props
 
 	return (
-		<CellButton 
-      handleClick={handleClick} 
-      icon={<RepeatOne />} 
-    >
-      { value }
-    </CellButton>  
+		<CellButton handleClick={handleClick} icon={<RepeatOne />}>
+			{value}
+		</CellButton>
 	)
 }
 

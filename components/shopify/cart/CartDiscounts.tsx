@@ -6,15 +6,12 @@ import { TextInput, IconLoader } from '../../../components'
 const CartDiscountCodeInput: React.FC = () => {
 	const [discountCode, setDiscountCode] = useState<string | null>(null)
 
-	const {
-		loading,
-		cartApplyDiscountCode,
-	} = useCart()
+	const { loading, cartApplyDiscountCode } = useCart()
 
 	const handleSubmit = async () => {
 		if (discountCode?.length > 0) {
 			await cartApplyDiscountCode(discountCode)
-      setDiscountCode('')
+			setDiscountCode('')
 		}
 	}
 
@@ -34,7 +31,9 @@ const CartDiscountCodeInput: React.FC = () => {
 					onClick={handleSubmit}
 					color="secondary"
 					variant="contained"
-					endIcon={<IconLoader color="secondary.contrastText" loading={loading} />}
+					endIcon={
+						<IconLoader color="secondary.contrastText" loading={loading} />
+					}
 				>
 					Apply
 				</Button>

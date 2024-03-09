@@ -42,7 +42,10 @@ const Image: React.FC<ImageProps> = (props) => {
 					...sx.afterBase,
 					...(enableOverlay && sx.overlay),
 					...(!enableOverlay && enableGradient && sx.gradient),
-					...(!enableOverlay && !disableBorderRadius && enableGradient && sx.gradientBorderRadius),
+					...(!enableOverlay &&
+						!disableBorderRadius &&
+						enableGradient &&
+						sx.gradientBorderRadius),
 					...(enableBorder && sx.border),
 					bgcolor,
 					opacity,
@@ -59,7 +62,9 @@ const Image: React.FC<ImageProps> = (props) => {
 						height: `${height}px`,
 						minHeight: `${height}px`,
 						objectFit,
-						borderRadius: !disableBorderRadius ? `${theme.shape.borderRadius}px` : 0,
+						borderRadius: !disableBorderRadius
+							? `${theme.shape.borderRadius}px`
+							: 0,
 					}}
 					layout={'responsive'}
 				/>
@@ -74,7 +79,7 @@ export default Image
 
 const sx = {
 	root: {
-    position: 'relative',
+		position: 'relative',
 		width: '100%',
 		display: 'flex',
 		alignItems: 'center',

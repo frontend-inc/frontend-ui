@@ -3,7 +3,7 @@ import { muiTheme as defaultTheme } from '../../theme'
 import { buildMuiPalette } from '../../helpers'
 
 type ThemeProps = {
-  muiTheme?: any
+	muiTheme?: any
 	primaryColor?: string
 	bgcolor?: string
 	borderRadius?: number
@@ -15,7 +15,7 @@ type ThemeProps = {
 
 const useTheme = (props: ThemeProps) => {
 	const {
-    muiTheme=defaultTheme,
+		muiTheme = defaultTheme,
 		primaryColor,
 		bgcolor,
 		borderRadius,
@@ -28,16 +28,15 @@ const useTheme = (props: ThemeProps) => {
 	const [theme, setTheme] = useState(muiTheme)
 
 	useEffect(() => {
+		let newTheme = { ...theme }
+		if (muiTheme) {
+			newTheme = muiTheme
+		}
 
-    let newTheme = { ...theme }
-    if(muiTheme){
-      newTheme = muiTheme 
-    }
-
-    let breakpoints = { ...newTheme.breakpoints }
-    let palette = { ...newTheme.palette }
-    let typography = { ...newTheme.typography }
-    let shape = { ...newTheme.shape }
+		let breakpoints = { ...newTheme.breakpoints }
+		let palette = { ...newTheme.palette }
+		let typography = { ...newTheme.typography }
+		let shape = { ...newTheme.shape }
 
 		if (offset > 0) {
 			breakpoints = {
@@ -61,24 +60,24 @@ const useTheme = (props: ThemeProps) => {
 					xl: 5000,
 				},
 			}
-		} 
+		}
 
 		if (primaryColor) {
 			palette = {
-        ...palette,
-        primary: {
-          ...palette.primary,
-          // @ts-ignore
-          main: primaryColor,
-        },
-      }        
-    }
+				...palette,
+				primary: {
+					...palette.primary,
+					// @ts-ignore
+					main: primaryColor,
+				},
+			}
+		}
 
-    if(bgcolor){
-      palette = buildMuiPalette(palette, bgcolor)
-    }
+		if (bgcolor) {
+			palette = buildMuiPalette(palette, bgcolor)
+		}
 
-    if (headerFont) {
+		if (headerFont) {
 			typography = {
 				...typography,
 				h1: {
@@ -104,70 +103,69 @@ const useTheme = (props: ThemeProps) => {
 				h6: {
 					...typography.h6,
 					fontFamily: headerFont,
-				}
-      }
-    }
+				},
+			}
+		}
 
-    if(bodyFont){
-      typography = {
-        ...typography,
-        subtitle1: {
+		if (bodyFont) {
+			typography = {
+				...typography,
+				subtitle1: {
 					...typography.subtitle1,
 					fontFamily: bodyFont,
 				},
 				subtitle2: {
 					...typography.subtitle2,
 					fontFamily: bodyFont,
-				},			
-        body1: {
-          ...typography.body1,
-          fontFamily: bodyFont,
-        },
-        body2: {
-          ...typography.body2,
-          fontFamily: bodyFont,
-        },
-        button: {
-          ...typography.button,
-          fontFamily: bodyFont,
-        },
-        caption: {
-          ...typography.caption,
-          fontFamily: bodyFont,
-        },
-        overline: {
-          ...typography.overline,
-          fontFamily: bodyFont,
-        },
-      }
-    }
+				},
+				body1: {
+					...typography.body1,
+					fontFamily: bodyFont,
+				},
+				body2: {
+					...typography.body2,
+					fontFamily: bodyFont,
+				},
+				button: {
+					...typography.button,
+					fontFamily: bodyFont,
+				},
+				caption: {
+					...typography.caption,
+					fontFamily: bodyFont,
+				},
+				overline: {
+					...typography.overline,
+					fontFamily: bodyFont,
+				},
+			}
+		}
 
-    if(Number(borderRadius) >= 0){
-      console.log('borderRadius', borderRadius)
-      shape = {
-        ...shape,
-        borderRadius: Number(borderRadius),
-      }
-    }
+		if (Number(borderRadius) >= 0) {
+			console.log('borderRadius', borderRadius)
+			shape = {
+				...shape,
+				borderRadius: Number(borderRadius),
+			}
+		}
 
 		setTheme({
 			...theme,
-      palette,
+			palette,
 			breakpoints,
-      typography,
-      shape 
+			typography,
+			shape,
 		})
-
 	}, [
-    offset, 
-    mobile, 
-    primaryColor, 
-    bgcolor, 
-    headerFont, 
-    bodyFont,
-    borderRadius,
-    muiTheme 
-  ])
+		offset,
+		mobile,
+		primaryColor,
+		bgcolor,
+		headerFont,
+		bodyFont,
+		borderRadius,
+		muiTheme,
+	])
 
 	return {
 		theme,

@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-	NewPasswordForm,
-	AuthScreen,
-	LayoutLoader,
-} from '../../../components'
+import { NewPasswordForm, AuthScreen, LayoutLoader } from '../../../components'
 import { useAuth } from 'frontend-js'
 
 import { useRouter } from 'next/router'
@@ -27,7 +23,7 @@ const NewPassword: React.FC<NewPasswordProps> = (props) => {
 
 	const { errors, loading, user, handleChange, updateMe } = useAuth()
 
-  const handleSubmit = async () => {
+	const handleSubmit = async () => {
 		let resp = await updateMe(user)
 		if (resp?.id) {
 			router.push(redirectUrl)

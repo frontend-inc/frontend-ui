@@ -25,7 +25,7 @@ const VideoModal: React.FC<VideoModalProps> = (props) => {
 		enableDownload = false,
 	} = props
 
-  const { theme } = useContext(ThemeContext)
+	const { theme } = useContext(ThemeContext)
 
 	const { showAlertSuccess } = useAlerts()
 
@@ -44,10 +44,7 @@ const VideoModal: React.FC<VideoModalProps> = (props) => {
 	}
 
 	return (
-		<ThemeProvider 
-      muiTheme={ theme }
-      bgcolor="#000000"
-    >
+		<ThemeProvider muiTheme={theme} bgcolor="#000000">
 			<Modal
 				fullScreen
 				open={open}

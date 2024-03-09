@@ -44,7 +44,7 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
 				style={style}
 				startIcon={icon && icon}
 			>
-				{label}				
+				{label}
 			</Button>
 		</ListItem>
 	)

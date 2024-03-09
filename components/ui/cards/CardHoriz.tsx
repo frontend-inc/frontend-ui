@@ -29,7 +29,7 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 
 	const router = useRouter()
 
-	const handleItemClick = () => {		
+	const handleItemClick = () => {
 		if (handleClick) {
 			return handleClick()
 		} else if (href) {
@@ -42,7 +42,7 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 			sx={{
 				...sx.root,
 				...(enableBorder && sx.rootBorder),
-        width: '100%'				
+				width: '100%',
 			}}
 		>
 			<Stack flexDirection="row">

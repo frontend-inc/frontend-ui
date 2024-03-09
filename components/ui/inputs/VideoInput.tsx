@@ -5,27 +5,26 @@ import { TextInput } from '../..'
 import { Search } from 'lucide-react'
 
 type VideoInputProps = {
-  name: string
-  label: string
-  value: string
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  handleBrowse: (name: string) => void
-  placeholder?: string
-  errors?: string
+	name: string
+	label: string
+	value: string
+	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+	handleBrowse: (name: string) => void
+	placeholder?: string
+	errors?: string
 }
 
 const VideoInput: React.FC<VideoInputProps> = (props) => {
+	const {
+		name,
+		label,
+		value,
+		handleChange,
+		handleBrowse,
+		placeholder,
+		errors,
+	} = props
 
-  const {
-    name,
-    label,
-    value,
-    handleChange,
-    handleBrowse,
-    placeholder,
-    errors
-  } = props
-  
 	return (
 		<Box>
 			<CellVideo value={value} />

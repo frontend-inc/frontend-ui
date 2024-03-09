@@ -21,7 +21,7 @@ const InStockFilter: React.FC<InStockFilterProps> = (props) => {
 
 	return (
 		<CheckboxFilterList
-      // @ts-ignore
+			// @ts-ignore
 			options={[{ label: 'In-stock', value: true }]}
 			values={values}
 			handleClick={handleClick}

@@ -8,76 +8,75 @@ import {
 	ListItemButton,
 	Typography,
 	Radio,
-  Hidden
+	Hidden,
 } from '@mui/material'
 import { Icon, Popup, Drawer } from '../..'
 import { SORT_DIRECTIONS } from '../../../../constants/index'
 import FilterInput from '../filters/FilterInput'
 
 type SortFieldsProps = {
-  fields: any[]
-  sortBy: string
-  sortDirection: 'asc' | 'desc'
-  handleSortBy: (sortBy: string) => void
-  handleSortDirection: (sortDirection: 'asc' | 'desc') => void
+	fields: any[]
+	sortBy: string
+	sortDirection: 'asc' | 'desc'
+	handleSortBy: (sortBy: string) => void
+	handleSortDirection: (sortDirection: 'asc' | 'desc') => void
 }
 
 const SortFields: React.FC<SortFieldsProps> = (props) => {
+	const { fields, sortBy, sortDirection, handleSortBy, handleSortDirection } =
+		props
 
-  const { fields, sortBy, sortDirection, handleSortBy, handleSortDirection } = props
-
-  return(
-    <>
-      <FilterInput label="Sort by">
-        {fields?.map((field: any) => (
-          <ListItem disablePadding disableGutters sx={sx.listItem}>
-            <ListItemButton
-              sx={sx.listItemButton}
-              disableRipple
-              onClick={() => handleSortBy(field?.name)}
-            >
-              <ListItemIcon sx={sx.listItemIcon}>
-                <Radio
-                  checked={sortBy == field?.name}
-                  onChange={() => handleSortBy(field?.name)}
-                />
-              </ListItemIcon>
-              <ListItemText
-                primary={
-                  <Typography variant="button">{field?.name}</Typography>
-                }
-              />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </FilterInput>
-      <FilterInput label="Direction">
-        {SORT_DIRECTIONS.map((direction, i) => (
-          <ListItem disablePadding key={i} sx={sx.listItem}>
-            <ListItemButton
-              sx={sx.listItemButton}
-              disableRipple
-              onClick={() => handleSortDirection(direction?.value)}
-            >
-              <ListItemIcon sx={sx.listItemIcon}>
-                <Radio
-                  checked={sortDirection == direction?.value}
-                  onChange={() => handleSortDirection(direction?.value)}
-                />
-              </ListItemIcon>
-              <ListItemText
-                primary={
-                  <Typography variant="button">{direction?.label}</Typography>
-                }
-              />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </FilterInput>
-    </>
-  )
+	return (
+		<>
+			<FilterInput label="Sort by">
+				{fields?.map((field: any) => (
+					<ListItem disablePadding disableGutters sx={sx.listItem}>
+						<ListItemButton
+							sx={sx.listItemButton}
+							disableRipple
+							onClick={() => handleSortBy(field?.name)}
+						>
+							<ListItemIcon sx={sx.listItemIcon}>
+								<Radio
+									checked={sortBy == field?.name}
+									onChange={() => handleSortBy(field?.name)}
+								/>
+							</ListItemIcon>
+							<ListItemText
+								primary={
+									<Typography variant="button">{field?.name}</Typography>
+								}
+							/>
+						</ListItemButton>
+					</ListItem>
+				))}
+			</FilterInput>
+			<FilterInput label="Direction">
+				{SORT_DIRECTIONS.map((direction, i) => (
+					<ListItem disablePadding key={i} sx={sx.listItem}>
+						<ListItemButton
+							sx={sx.listItemButton}
+							disableRipple
+							onClick={() => handleSortDirection(direction?.value)}
+						>
+							<ListItemIcon sx={sx.listItemIcon}>
+								<Radio
+									checked={sortDirection == direction?.value}
+									onChange={() => handleSortDirection(direction?.value)}
+								/>
+							</ListItemIcon>
+							<ListItemText
+								primary={
+									<Typography variant="button">{direction?.label}</Typography>
+								}
+							/>
+						</ListItemButton>
+					</ListItem>
+				))}
+			</FilterInput>
+		</>
+	)
 }
-
 
 type SortButtonProps = {
 	fields: any[]
@@ -121,38 +120,38 @@ const SortButton: React.FC<SortButtonProps> = (props) => {
 					Sort {sortBy == 'id' ? 'by' : sortBy}
 				</Button>
 			</ButtonGroup>
-      <Hidden smDown>
-        <Popup
-          p={1}
-          anchorEl={anchorEl}
-          open={showModal}
-          handleClose={handleCloseModal}
-        >
-          <SortFields 
-            fields={fields}
-            sortBy={sortBy}
-            sortDirection={sortDirection}
-            handleSortBy={handleSortBy}
-            handleSortDirection={handleSortDirection}
-          />
-        </Popup>
-      </Hidden>
-      <Hidden smUp>
-        <Drawer
-          title="Sort"
-          open={showModal}
-          handleClose={handleCloseModal}
-          anchor={'right'}
-        >
-          <SortFields 
-            fields={fields}
-            sortBy={sortBy}
-            sortDirection={sortDirection}
-            handleSortBy={handleSortBy}
-            handleSortDirection={handleSortDirection}
-          />
-        </Drawer>
-      </Hidden>
+			<Hidden smDown>
+				<Popup
+					p={1}
+					anchorEl={anchorEl}
+					open={showModal}
+					handleClose={handleCloseModal}
+				>
+					<SortFields
+						fields={fields}
+						sortBy={sortBy}
+						sortDirection={sortDirection}
+						handleSortBy={handleSortBy}
+						handleSortDirection={handleSortDirection}
+					/>
+				</Popup>
+			</Hidden>
+			<Hidden smUp>
+				<Drawer
+					title="Sort"
+					open={showModal}
+					handleClose={handleCloseModal}
+					anchor={'right'}
+				>
+					<SortFields
+						fields={fields}
+						sortBy={sortBy}
+						sortDirection={sortDirection}
+						handleSortBy={handleSortBy}
+						handleSortDirection={handleSortDirection}
+					/>
+				</Drawer>
+			</Hidden>
 		</>
 	)
 }
@@ -161,7 +160,7 @@ export default SortButton
 
 const sx = {
 	button: {
-    color: 'text.secondary',
+		color: 'text.secondary',
 		borderRight: 'none',
 		'&:hover': {
 			borderRight: 'none',

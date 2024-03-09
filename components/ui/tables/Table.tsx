@@ -24,8 +24,8 @@ type TableProps = {
 	handleEdit?: (row: any) => void
 	handleEditSelected?: (items: any[]) => void
 	handleDelete?: (items: any[]) => void
-  handlePublish?: (items: any[]) => void
-  handleUnpublish?: (items: any[]) => void
+	handlePublish?: (items: any[]) => void
+	handleUnpublish?: (items: any[]) => void
 	secondaryActions?: React.ReactNode
 	page?: number
 	perPage?: number
@@ -107,9 +107,7 @@ const Table: React.FC<TableProps> = (props) => {
 	}
 
 	return (
-		<Box
-			sx={sx.root}
-		>
+		<Box sx={sx.root}>
 			<TableToolbar
 				loading={loading}
 				query={query}

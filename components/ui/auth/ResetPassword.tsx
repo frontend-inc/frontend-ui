@@ -28,7 +28,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = (props) => {
 
 	const { loading, errors, user, handleChange, resetPassword } = useAuth()
 
-  const handleSubmit = async () => {
+	const handleSubmit = async () => {
 		let resp = await resetPassword(
 			user?.email,
 			user?.password,

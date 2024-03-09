@@ -55,8 +55,8 @@ const TableView: React.FC<TableViewProps> = (props) => {
 		})
 	}
 
-	const handleSort = (field) => {    
-    let sortDirection = query?.sort_by || 'desc'
+	const handleSort = (field) => {
+		let sortDirection = query?.sort_by || 'desc'
 		if (field?.name == activeField?.name) {
 			if (query?.sort_direction == 'asc') {
 				sortDirection = 'desc'
@@ -67,7 +67,7 @@ const TableView: React.FC<TableViewProps> = (props) => {
 		findMany({
 			...query,
 			sort_by: field.name,
-      //@ts-ignore
+			//@ts-ignore
 			sort_direction: sortDirection,
 		})
 		setActiveField(field)

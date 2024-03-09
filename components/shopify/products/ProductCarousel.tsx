@@ -12,25 +12,25 @@ type ProductCarouselProps = {
 	loading?: boolean
 	products: Product[]
 	productComponent?: React.FC<any>
-  buttonText?: string
+	buttonText?: string
 	autoPlay?: boolean
 	arrows?: boolean
 	showDots?: boolean
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
+	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuickShop?: boolean
 	enableQuantity?: boolean
-  enableOkendoStarRating?: boolean
+	enableOkendoStarRating?: boolean
 }
 
 const ProductCarousel: React.FC<ProductCarouselProps> = (props) => {
 	const {
-		editing = false,		
+		editing = false,
 		products,
-    maxWidth,
+		maxWidth,
 		productComponent: ProductComponent = ProductCard,
-    buttonText = 'Add to cart',
+		buttonText = 'Add to cart',
 		autoPlay = false,
 		arrows = false,
 		showDots = true,
@@ -38,7 +38,7 @@ const ProductCarousel: React.FC<ProductCarouselProps> = (props) => {
 		enableAddToCart,
 		enableQuickShop,
 		enableQuantity = false,
-    enableOkendoStarRating
+		enableOkendoStarRating,
 	} = props
 
 	const { clientUrl } = useContext(AppContext)
@@ -47,44 +47,44 @@ const ProductCarousel: React.FC<ProductCarouselProps> = (props) => {
 	const { trackProductClicked } = useSegment()
 
 	const handleClick = (product) => {
-		if (!editing) trackProductClicked(product);
+		if (!editing) trackProductClicked(product)
 		const url = `${clientUrl}/products/${product?.handle}`
 		router.push(url)
 	}
 
 	return (
-    <Box sx={sx.root}>
-      <Carousel 
-        editing={editing}
-        autoPlay={autoPlay} 
-        arrows={arrows} 
-        showDots={showDots}
-      >
-        {products?.map((product) => (
-          <Box sx={sx.item} key={product.id}>
-            <ProductComponent
-              product={product}
-              handleClick={() => handleClick(product)}
-              buttonText={buttonText}
-              enableBorder={enableBorder}
-              enableAddToCart={enableAddToCart}
-              enableQuickShop={enableQuickShop}
-              enableQuantity={enableQuantity}
-              enableOkendoStarRating={enableOkendoStarRating}
-            />
-          </Box>
-        ))}
-      </Carousel>
-    </Box>
+		<Box sx={sx.root}>
+			<Carousel
+				editing={editing}
+				autoPlay={autoPlay}
+				arrows={arrows}
+				showDots={showDots}
+			>
+				{products?.map((product) => (
+					<Box sx={sx.item} key={product.id}>
+						<ProductComponent
+							product={product}
+							handleClick={() => handleClick(product)}
+							buttonText={buttonText}
+							enableBorder={enableBorder}
+							enableAddToCart={enableAddToCart}
+							enableQuickShop={enableQuickShop}
+							enableQuantity={enableQuantity}
+							enableOkendoStarRating={enableOkendoStarRating}
+						/>
+					</Box>
+				))}
+			</Carousel>
+		</Box>
 	)
 }
 
 export default ProductCarousel
 
 const sx = {
-  root: {
-    maxWidth: '100%',
-  },
+	root: {
+		maxWidth: '100%',
+	},
 	item: {
 		px: '10px',
 		pb: 4,

@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react'
-import {
-  CoverImage
-} from '../../../components'
+import { CoverImage } from '../../../components'
 import { useCollections } from 'frontend-shopify'
 import { TypographyVariants } from '../../../types'
 
 type CollectionHeroProps = {
-  handle: string
+	handle: string
 	editing?: boolean
 	textVariant?: TypographyVariants
 	height?: number
@@ -24,8 +22,8 @@ type CollectionHeroProps = {
 
 const CollectionHero: React.FC<CollectionHeroProps> = (props) => {
 	const {
-    handle,
-    editing = false,
+		handle,
+		editing = false,
 		textVariant = 'h3',
 		handleClick,
 		height = 400,
@@ -35,7 +33,7 @@ const CollectionHero: React.FC<CollectionHeroProps> = (props) => {
 		enableOverlay = false,
 		opacity = 0.5,
 		alignItems = 'center',
-		overlayColor = '#000000',    
+		overlayColor = '#000000',
 		href,
 	} = props
 
@@ -49,23 +47,23 @@ const CollectionHero: React.FC<CollectionHeroProps> = (props) => {
 
 	if (!collection) return null
 	return (
-		<CoverImage 
-      editing={editing}
-      enableOverlay={enableOverlay}
-      enableGradient={enableGradient}
-      opacity={opacity}
-      overlayColor={overlayColor}
-      height={height}
-      textVariant={textVariant}
-      title={collection?.title}
-      description={collection?.description}
-      image={collection?.image?.url}
-      objectFit={objectFit}
-      alt={alt}
-      alignItems={alignItems}
-      href={href}
-      handleClick={handleClick}
-    />
+		<CoverImage
+			editing={editing}
+			enableOverlay={enableOverlay}
+			enableGradient={enableGradient}
+			opacity={opacity}
+			overlayColor={overlayColor}
+			height={height}
+			textVariant={textVariant}
+			title={collection?.title}
+			description={collection?.description}
+			image={collection?.image?.url}
+			objectFit={objectFit}
+			alt={alt}
+			alignItems={alignItems}
+			href={href}
+			handleClick={handleClick}
+		/>
 	)
 }
 

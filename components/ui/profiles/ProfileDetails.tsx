@@ -12,8 +12,7 @@ type ProfileDetailsProps = {
 }
 
 const ProfileDetails: React.FC<ProfileDetailsProps> = (props) => {
-	const { src, disableRing, actions, title, description, label } =
-		props
+	const { src, disableRing, actions, title, description, label } = props
 
 	return (
 		<Stack direction={{ sm: 'row', xs: 'column' }} spacing={2}>
@@ -21,11 +20,7 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = (props) => {
 				<ProfileImage disableRing={disableRing} src={src} size={200} />
 			</Box>
 			<Box sx={sx.details}>
-				<ProfileInfo
-					title={title}
-					description={description}
-					label={label}
-				/>
+				<ProfileInfo title={title} description={description} label={label} />
 				{actions && actions}
 			</Box>
 		</Stack>

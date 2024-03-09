@@ -46,22 +46,21 @@ const Cell: React.FC<CellProps> = (props) => {
 			)}
 
 			{field.variant === 'video' && (
-        
-				<CellVideo 
-          value={value} 
-          //@ts-ignore
-          handleClick={handleClick} 
-        />
+				<CellVideo
+					value={value}
+					//@ts-ignore
+					handleClick={handleClick}
+				/>
 			)}
 
 			{field.variant === 'json' && <CellJSON value={value} />}
 
 			{field.variant === 'url' && (
-				<CellLink 
-          value={value}
-          //@ts-ignore
-          handleClick={handleClick} 
-        />
+				<CellLink
+					value={value}
+					//@ts-ignore
+					handleClick={handleClick}
+				/>
 			)}
 
 			{field.variant === 'rating' && <CellRating value={value} />}

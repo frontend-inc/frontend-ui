@@ -21,10 +21,8 @@ const Addresses: React.FC<AddressesProps> = (props) => {
 
 	const { clientUrl } = useContext(AppContext)
 
-	const {
-		title = 'Customer Addresses',
-		subtitle = 'Manage your addresses',
-	} = props || {}
+	const { title = 'Customer Addresses', subtitle = 'Manage your addresses' } =
+		props || {}
 
 	const { loading, addresses, deleteCustomerAddress, findCustomerAddresses } =
 		useAddresses()

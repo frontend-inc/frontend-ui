@@ -9,7 +9,7 @@ type ProductDescriptionProps = {
 
 const ProductDescription: React.FC<ProductDescriptionProps> = (props) => {
 	const { product, color = 'text.secondary' } = props
-	
+
 	return (
 		<Typography variant="body2" color={color} sx={sx.description}>
 			{product?.description}

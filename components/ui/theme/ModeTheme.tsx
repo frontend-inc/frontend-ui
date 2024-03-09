@@ -2,12 +2,12 @@ import React, { useContext, useState, useEffect } from 'react'
 import { ThemeContext, ThemeProvider } from '../../../context'
 
 type ModeThemeProps = {
-  mode?: 'light' | 'dark' | 'accent'
-  children?: React.ReactNode
+	mode?: 'light' | 'dark' | 'accent'
+	children?: React.ReactNode
 }
 
-const ModeTheme: React.FC<ModeThemeProps> = (props) => {  
-  const { mode="light"} = props || {}  
+const ModeTheme: React.FC<ModeThemeProps> = (props) => {
+	const { mode = 'light' } = props || {}
 	const { theme } = useContext(ThemeContext)
 	const [bgcolor, setBgcolor] = useState('#ffffff')
 
@@ -22,19 +22,16 @@ const ModeTheme: React.FC<ModeThemeProps> = (props) => {
 					break
 				case 'accent':
 					setBgcolor(theme?.palette?.primary?.main)
-					break          
+					break
 			}
 		}
-	}, [mode, theme])  
-  
-  return (
-    <ThemeProvider 
-      muiTheme={theme}
-      bgcolor={bgcolor}
-    >
-      {props.children}
-    </ThemeProvider>
-  )
+	}, [mode, theme])
+
+	return (
+		<ThemeProvider muiTheme={theme} bgcolor={bgcolor}>
+			{props.children}
+		</ThemeProvider>
+	)
 }
 
 export default ModeTheme

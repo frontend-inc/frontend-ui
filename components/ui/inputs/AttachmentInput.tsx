@@ -10,14 +10,21 @@ const IMAGE_WIDTH = 140
 type RenderAttachmentProps = {
 	src: string
 	size?: number
-  objectFit?: 'cover' | 'contain'
+	objectFit?: 'cover' | 'contain'
 	onDelete: () => void
 	variant: 'image' | 'file'
 	alt?: string
 }
 
 const RenderAttachment: React.FC<RenderAttachmentProps> = (props) => {
-	const { src, objectFit='cover', size, onDelete, variant = 'file', alt = '' } = props
+	const {
+		src,
+		objectFit = 'cover',
+		size,
+		onDelete,
+		variant = 'file',
+		alt = '',
+	} = props
 
 	return (
 		<Box sx={sx.root}>
@@ -62,7 +69,7 @@ const AttachmentInput: React.FC<AttachmentInputProps> = (props) => {
 		handleRemove,
 		variant = 'file',
 		size = IMAGE_WIDTH,
-    objectFit='cover'
+		objectFit = 'cover',
 	} = props
 
 	const [src, setSrc] = useState()
@@ -104,7 +111,7 @@ const AttachmentInput: React.FC<AttachmentInputProps> = (props) => {
 					variant={variant}
 					src={attachment.url}
 					size={size}
-          objectFit={objectFit}
+					objectFit={objectFit}
 					onDelete={() => handleDelete(name)}
 				/>
 			)}
@@ -113,7 +120,7 @@ const AttachmentInput: React.FC<AttachmentInputProps> = (props) => {
 					src={src}
 					size={size}
 					variant={variant}
-          objectFit={objectFit}
+					objectFit={objectFit}
 					onDelete={onRemove}
 				/>
 			)}

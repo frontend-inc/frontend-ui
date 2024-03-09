@@ -25,7 +25,7 @@ const OneTimePassword: React.FC<OneTimePasswordProps> = (props) => {
 	const router = useRouter()
 
 	const { errors, loading, user, handleChange, sendOneTimePassword } = useAuth()
-  
+
 	const handleSubmit = async () => {
 		let resp = await sendOneTimePassword({
 			...user,

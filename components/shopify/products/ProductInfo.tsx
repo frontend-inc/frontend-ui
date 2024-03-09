@@ -6,22 +6,21 @@ import { ProductDescription } from '../../../components/shopify'
 import { OkendoStarRating } from '../../../components/addons'
 
 type ProductDetailsProps = {
-  product?: Product
-  price?: number
-  compareAtPrice?: number
+	product?: Product
+	price?: number
+	compareAtPrice?: number
 	disableCompareAtPrice?: boolean
-  enableOkendoStarRating?: boolean
+	enableOkendoStarRating?: boolean
 }
 
 const ProductDetails: React.FC<ProductDetailsProps> = (props) => {
-	
-  const { 
-    product,
-    price,
-    compareAtPrice,
-    disableCompareAtPrice = false,
-    enableOkendoStarRating = false 
-  } = props	
+	const {
+		product,
+		price,
+		compareAtPrice,
+		disableCompareAtPrice = false,
+		enableOkendoStarRating = false,
+	} = props
 
 	if (!product) return null
 	return (
@@ -29,18 +28,14 @@ const ProductDetails: React.FC<ProductDetailsProps> = (props) => {
 			<Typography color="text.primary" variant="h3">
 				{product.title}
 			</Typography>
-      { enableOkendoStarRating && (
-        <OkendoStarRating product={product} />
-      )}
+			{enableOkendoStarRating && <OkendoStarRating product={product} />}
 			<Typography color="text.primary" variant="body2" sx={sx.price}>
 				{price && formatCurrency(price)}
 				{!disableCompareAtPrice && compareAtPrice && (
 					<span>{formatCurrency(compareAtPrice)}</span>
 				)}
 			</Typography>
-			<ProductDescription 
-        product={product}
-      />
+			<ProductDescription product={product} />
 		</Stack>
 	)
 }

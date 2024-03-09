@@ -1,10 +1,5 @@
 import React, { useContext } from 'react'
-import {
-	Stack,
-	Button,
-	Box,
-	Hidden,
-} from '@mui/material'
+import { Stack, Button, Box, Hidden } from '@mui/material'
 import { AuthButton, Logo, Icon } from '../..'
 import { ShopifyAuth, SearchButton, CartButton } from '../../shopify'
 import { AppContext } from '../../../context'
@@ -19,9 +14,9 @@ type DesktopNavProps = {
 	menuItems?: MenuLink[]
 	enableAuth?: boolean
 	enableShopify?: boolean
-  enableNotifications?: boolean
+	enableNotifications?: boolean
 	handleClick: (path: string) => void
-	position?: 'fixed' | 'relative' | 'absolute'	
+	position?: 'fixed' | 'relative' | 'absolute'
 }
 
 const DesktopSideNav = (props: DesktopNavProps) => {
@@ -35,59 +30,57 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 		handleClick,
 		enableAuth = false,
 		enableShopify = false,
-    enableNotifications = false		
+		enableNotifications = false,
 	} = props
 
 	return (
 		<Hidden smDown>
 			<Box sx={sx.sideNav}>
-        <Stack 
-          sx={{ 
-            ...sx.desktopSideNav, 
-            ...(enableNotifications && sx.desktopSideNavNotifications),
-            ...(editing && sx.desktopSideNavEditor),
-            ...(editing && enableNotifications && sx.desktopSideNavEditorNotifications)
-          }} 
-          direction="column" spacing={2}>
-          <Stack sx={sx.desktopSideMenuItems} direction="column" spacing={2}>
-            <Box sx={sx.centerMenu}>
-              <Logo
-                src={logo}
-                width={logoWidth}
-                height={logoHeight}
-              />
-            </Box>
-            {menuItems?.map((menuItem, index) => (
-              <Button
-                sx={sx.menuButton}
-                key={index}
-                onClick={() => handleClick(menuItem.path)}
-              >
-                {menuItem.name}
-              </Button>
-            ))}
-            {enableShopify && (
-              <>
-                <SearchButton editing={editing} />
-                <CartButton editing={editing} />
-              </>
-            )}
-          </Stack>          
-          {(enableAuth || enableShopify) && (
-            <Box sx={ sx.divider }>
-              { enableShopify && (
-                <ShopifyAuth />              
-              )}
-              { enableAuth && (
-                <AuthButton
-                  showLabel                  
-                  editing={editing}
-                  myAccountUrl={`${clientUrl}/my-account`}
-                />
-              )}
-            </Box>
-          )}
-        </Stack>
+				<Stack
+					sx={{
+						...sx.desktopSideNav,
+						...(enableNotifications && sx.desktopSideNavNotifications),
+						...(editing && sx.desktopSideNavEditor),
+						...(editing &&
+							enableNotifications &&
+							sx.desktopSideNavEditorNotifications),
+					}}
+					direction="column"
+					spacing={2}
+				>
+					<Stack sx={sx.desktopSideMenuItems} direction="column" spacing={2}>
+						<Box sx={sx.centerMenu}>
+							<Logo src={logo} width={logoWidth} height={logoHeight} />
+						</Box>
+						{menuItems?.map((menuItem, index) => (
+							<Button
+								sx={sx.menuButton}
+								key={index}
+								onClick={() => handleClick(menuItem.path)}
+							>
+								{menuItem.name}
+							</Button>
+						))}
+						{enableShopify && (
+							<>
+								<SearchButton editing={editing} />
+								<CartButton editing={editing} />
+							</>
+						)}
+					</Stack>
+					{(enableAuth || enableShopify) && (
+						<Box sx={sx.divider}>
+							{enableShopify && <ShopifyAuth />}
+							{enableAuth && (
+								<AuthButton
+									showLabel
+									editing={editing}
+									myAccountUrl={`${clientUrl}/my-account`}
+								/>
+							)}
+						</Box>
+					)}
+				</Stack>
 			</Box>
 		</Hidden>
 	)
@@ -96,8 +89,8 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 export default DesktopSideNav
 
 const sx = {
-	sideNav: {  
-    height: '100%',      
+	sideNav: {
+		height: '100%',
 		width: {
 			sm: '280px',
 			xs: '100%',
@@ -108,43 +101,43 @@ const sx = {
 		},
 		position: 'relative',
 		borderRight: '1px solid',
-		borderColor: 'divider',    
+		borderColor: 'divider',
 	},
-  desktopSideNav: {
-    justifyContent: 'space-between',
-    width: '280px',
-    p: 2,		
-    height: '100%',
-  },
-  desktopSideNavNotifications: {
-    height: 'calc(100% - 40px)',
-  },
-  desktopSideNavEditor: {
-    height: 'calc(100% - 140px)',
-  },
-  desktopSideNavEditorNotifications: {
-    height: 'calc(100% - 180px)',
-  },
-	desktopSideMenuItems: {		
-    height: '100%',
+	desktopSideNav: {
+		justifyContent: 'space-between',
+		width: '280px',
+		p: 2,
+		height: '100%',
 	},
-  centerMenu: {
+	desktopSideNavNotifications: {
+		height: 'calc(100% - 40px)',
+	},
+	desktopSideNavEditor: {
+		height: 'calc(100% - 140px)',
+	},
+	desktopSideNavEditorNotifications: {
+		height: 'calc(100% - 180px)',
+	},
+	desktopSideMenuItems: {
+		height: '100%',
+	},
+	centerMenu: {
 		display: 'flex',
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
-		width: '100%',    
-    height: '60px',
+		width: '100%',
+		height: '60px',
 	},
 	menuButton: {
 		justifyContent: 'flex-start',
 		bgcolor: 'background.default',
 		color: 'text.primary',
 	},
-  divider: {
-    width: "100%",
-    borderTop: '1px solid',
-    borderColor: 'divider',
-    pt: 1.5
-  }
+	divider: {
+		width: '100%',
+		borderTop: '1px solid',
+		borderColor: 'divider',
+		pt: 1.5,
+	},
 }

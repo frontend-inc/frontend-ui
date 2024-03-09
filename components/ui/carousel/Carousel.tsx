@@ -10,7 +10,7 @@ import { muiTheme } from '../../../theme'
 // import 'react-multi-carousel/lib/styles.css'
 
 type CarouselProps = {
-  editing?: boolean
+	editing?: boolean
 	children: React.ReactNode
 	autoPlay?: boolean
 	arrows?: boolean
@@ -24,7 +24,7 @@ const ReactCarousel: React.FC<CarouselProps> = (props) => {
 	const [responsive, setResponsive] = useState<any>(null)
 
 	const {
-    editing = false,
+		editing = false,
 		children,
 		autoPlay = false,
 		arrows = false,
@@ -32,43 +32,43 @@ const ReactCarousel: React.FC<CarouselProps> = (props) => {
 		styles = {},
 	} = props
 
-  const { breakpoint } = useResponsive()
+	const { breakpoint } = useResponsive()
 
-  const [width, setWidth] = useState<number | undefined>(960)
+	const [width, setWidth] = useState<number | undefined>(960)
 
 	useEffect(() => {
-    //@ts-ignore
-		setResponsive(getCarouselResponsive(theme))    
+		//@ts-ignore
+		setResponsive(getCarouselResponsive(theme))
 	}, [theme?.breakpoints])
 
-  useEffect(() => {
-    switch(breakpoint){
-      case 'sm': 
-        setWidth(muiTheme?.breakpoints.values.sm)
-        break
-      case 'md':
-        setWidth(muiTheme?.breakpoints.values.md)
-        break
-      case 'lg':
-        setWidth(muiTheme?.breakpoints.values.lg)
-        break
-      case 'xl':
-        setWidth(muiTheme?.breakpoints.values.xl)
-        break
-      case null:
-        setWidth(muiTheme?.breakpoints.values.xl)
-        break
-      default:
-        setWidth(muiTheme?.breakpoints.values.md)
-        break
-    }
-  }, [breakpoint])
+	useEffect(() => {
+		switch (breakpoint) {
+			case 'sm':
+				setWidth(muiTheme?.breakpoints.values.sm)
+				break
+			case 'md':
+				setWidth(muiTheme?.breakpoints.values.md)
+				break
+			case 'lg':
+				setWidth(muiTheme?.breakpoints.values.lg)
+				break
+			case 'xl':
+				setWidth(muiTheme?.breakpoints.values.xl)
+				break
+			case null:
+				setWidth(muiTheme?.breakpoints.values.xl)
+				break
+			default:
+				setWidth(muiTheme?.breakpoints.values.md)
+				break
+		}
+	}, [breakpoint])
 
 	return (
 		<Box
 			sx={{
 				...sx.root,
-        maxWidth: editing ? (width - 320) : width,
+				maxWidth: editing ? width - 320 : width,
 				...(styles && styles),
 			}}
 		>

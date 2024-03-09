@@ -41,7 +41,7 @@ const AddressItem: React.FC<AddressItemProps> = (props) => {
 			<ListItemButton onClick={() => handleClick(address?.id)} sx={sx.item}>
 				<ListItemText
 					primary={
-						<Typography gutterBottom variant="subtitle1">              
+						<Typography gutterBottom variant="subtitle1">
 							{address?.firstName} {address?.lastName}
 						</Typography>
 					}

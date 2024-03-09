@@ -23,8 +23,7 @@ type TextProps = {
 }
 
 const Text: React.FC<TextProps> = (props) => {
-	
-  const {
+	const {
 		children,
 		variant = 'body1',
 		color = 'text.primary',
@@ -36,7 +35,7 @@ const Text: React.FC<TextProps> = (props) => {
 			variant={variant}
 			color={color}
 			sx={{
-        ...sx.root,
+				...sx.root,
 				textAlign,
 			}}
 		>
@@ -48,7 +47,7 @@ const Text: React.FC<TextProps> = (props) => {
 export default Text
 
 const sx = {
-  root: {
-    whiteSpace: 'pre-wrap',
-  }
+	root: {
+		whiteSpace: 'pre-wrap',
+	},
 }

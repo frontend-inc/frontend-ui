@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useProducts } from 'frontend-shopify'
 import { Typography } from '@mui/material'
-import {
-	ProductGrid,
-	ProductCarousel,
-} from '../../../components/shopify'
+import { ProductGrid, ProductCarousel } from '../../../components/shopify'
 import { Box } from '@mui/material'
 
 type ProductRecommendationsProps = {
@@ -18,9 +15,9 @@ type ProductRecommendationsProps = {
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
 	enableQuickShop?: boolean
-  enableOkendoStarRating?: boolean
-  buttonText?: string
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
+	enableOkendoStarRating?: boolean
+	buttonText?: string
+	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 }
 
 const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
@@ -34,12 +31,12 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 		perPage = 12,
 		productComponent,
 		enableBorder = false,
-    buttonText = 'Add to cart',
+		buttonText = 'Add to cart',
 		enableAddToCart,
 		enableQuantity,
 		enableQuickShop,
-    enableOkendoStarRating,
-    maxWidth
+		enableOkendoStarRating,
+		maxWidth,
 	} = props || {}
 
 	const [similarProducts, setSimilarProducts] = useState<any>()
@@ -93,8 +90,8 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 					enableAddToCart={enableAddToCart}
 					enableQuantity={enableQuantity}
 					enableQuickShop={enableQuickShop}
-          enableOkendoStarRating={enableOkendoStarRating}
-          buttonText={buttonText}
+					enableOkendoStarRating={enableOkendoStarRating}
+					buttonText={buttonText}
 				/>
 			)}
 			{layout == 'carousel' && (
@@ -104,8 +101,8 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 					products={similarProducts}
 					productComponent={productComponent}
 					enableBorder={enableBorder}
-          enableOkendoStarRating={enableOkendoStarRating}
-          buttonText={buttonText}
+					enableOkendoStarRating={enableOkendoStarRating}
+					buttonText={buttonText}
 				/>
 			)}
 		</Box>
@@ -116,6 +113,6 @@ export default ProductRecommendations
 
 const sx = {
 	root: {
-		width: '100%'
+		width: '100%',
 	},
 }

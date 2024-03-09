@@ -60,7 +60,7 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 			<Stack
 				sx={{
 					...sx.stack,
-					...(direction == "row" && !multiline && sx.stackVertical),
+					...(direction == 'row' && !multiline && sx.stackVertical),
 				}}
 				direction={direction}
 				spacing={1}

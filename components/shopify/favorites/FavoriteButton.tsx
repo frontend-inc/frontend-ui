@@ -10,13 +10,10 @@ type FavoriteButtonProps = {
 
 const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 	const { product } = props
-	
-	const { 
-    toggleFavorite,
-    isFavorite,
-  } = useFavorites({
-    product
-  })
+
+	const { toggleFavorite, isFavorite } = useFavorites({
+		product,
+	})
 
 	const handleClick = async () => {
 		toggleFavorite()
@@ -24,10 +21,10 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 
 	return (
 		<Button
-      size="large"
+			size="large"
 			onClick={handleClick}
 			sx={{
-				...sx.button,        
+				...sx.button,
 				...(isFavorite && sx.favorited),
 			}}
 		>
@@ -43,9 +40,9 @@ export default FavoriteButton
 
 const sx = {
 	button: {
-    minWidth: '44px',
-    p: 0,
-    borderRadius: theme => `${theme.shape.borderRadius}px`,
+		minWidth: '44px',
+		p: 0,
+		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 		bgcolor: 'tertiary.main',
 		'&:hover': {
 			bgcolor: 'tertiary.main',

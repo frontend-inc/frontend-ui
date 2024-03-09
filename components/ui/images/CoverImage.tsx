@@ -48,7 +48,7 @@ const CoverImage: React.FC<CoverImageProps> = (props) => {
 		href,
 	} = props
 
-	const handleItemClick = () => {		
+	const handleItemClick = () => {
 		if (handleClick) {
 			return handleClick()
 		} else if (href) {
@@ -124,8 +124,8 @@ export default CoverImage
 
 const sx = {
 	root: {
-    p: 0,
-    width: '100%',
+		p: 0,
+		width: '100%',
 		position: 'relative',
 	},
 	stack: {

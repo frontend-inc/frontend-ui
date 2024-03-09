@@ -16,10 +16,8 @@ const ShopifyCustomerOrders: React.FC<ShopifyCustomerOrdersProps> = (props) => {
 
 	const { clientUrl } = useContext(AppContext)
 
-	const {
-		title = 'Customer Orders',
-		subtitle = 'Manage your orders',
-	} = props || {}
+	const { title = 'Customer Orders', subtitle = 'Manage your orders' } =
+		props || {}
 
 	const { loading, orders, findCustomerOrders } = useOrders()
 

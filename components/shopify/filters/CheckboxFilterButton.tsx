@@ -56,7 +56,7 @@ const CheckboxFilterButton: React.FC<CheckboxFilterButtonProps> = (props) => {
 				<CheckboxFilterList
 					options={options}
 					values={values}
-          // @ts-ignore
+					// @ts-ignore
 					handleClick={handleMenuItemClick}
 				/>
 			</Popover>

@@ -7,12 +7,12 @@ export const isEmptyObject = (object) => {
 }
 
 export const buildOptions = (items, key, value) => {
-	if (!items) return null;	
-	let list = items?.data || items	
-	return list.map(item => ({
-    value: item[key],
-    label: item[value],
-  }))		
+	if (!items) return null
+	let list = items?.data || items
+	return list.map((item) => ({
+		value: item[key],
+		label: item[value],
+	}))
 }
 
 export const truncate = (str, length = 60) => {
@@ -37,7 +37,7 @@ export const groupBy = (arr, name) => {
 	const grouped = {}
 
 	arr.forEach((item) => {
-    if(!item || !item[name]) return;
+		if (!item || !item[name]) return
 		const groupBy = item[name]
 
 		if (!grouped[groupBy]) {
@@ -67,6 +67,6 @@ export const imageFromVideoUrl = (url) => {
 }
 
 export const scrollTo = (domId) => {
-  const elem = document.getElementById(domId)
-  elem?.scrollIntoView({ behavior: 'smooth' })
+	const elem = document.getElementById(domId)
+	elem?.scrollIntoView({ behavior: 'smooth' })
 }

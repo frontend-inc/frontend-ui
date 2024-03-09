@@ -6,41 +6,36 @@ import { Typography } from '@mui/material'
 
 type TestimonialsProps = {
 	title?: string
-  layout?: 'grid' | 'carousel'
-  testimonials: Record<string, any>[]
+	layout?: 'grid' | 'carousel'
+	testimonials: Record<string, any>[]
 	enableAutoPlay?: boolean
-	enableArrows?: boolean	
+	enableArrows?: boolean
 }
 
 const Testimonials: React.FC<TestimonialsProps> = (props) => {
-
-  const {
+	const {
 		title,
-    layout='grid',
-    enableArrows,
-    enableAutoPlay,
-    testimonials=[],
+		layout = 'grid',
+		enableArrows,
+		enableAutoPlay,
+		testimonials = [],
 	} = props
 
 	return (
 		<Box sx={sx.root}>
-      { title && (
-        <Typography sx={ sx.title } variant="h6" color="textPrimary">
-          {title}
-        </Typography>
-      )}
-      { layout == 'grid' && (
-        <TestimonialsGrid
-          testimonials={testimonials}
-        />      
-      )}
-      { layout == 'carousel' && (
-        <SwipeableTestimonials 
-          enableAutoPlay={enableAutoPlay}
-          enableArrows={enableArrows}
-          testimonials={testimonials}
-        />      
-      )}
+			{title && (
+				<Typography sx={sx.title} variant="h6" color="textPrimary">
+					{title}
+				</Typography>
+			)}
+			{layout == 'grid' && <TestimonialsGrid testimonials={testimonials} />}
+			{layout == 'carousel' && (
+				<SwipeableTestimonials
+					enableAutoPlay={enableAutoPlay}
+					enableArrows={enableArrows}
+					testimonials={testimonials}
+				/>
+			)}
 		</Box>
 	)
 }
@@ -49,34 +44,34 @@ export default Testimonials
 
 const sx = {
 	root: {
-    display: 'flex',
-    flexDirection: 'column',
-    maxWidth: '100%',
-    overflowX: 'scroll',
-    '&::-webkit-scrollbar': {
-      display: 'none',
-    },
+		display: 'flex',
+		flexDirection: 'column',
+		maxWidth: '100%',
+		overflowX: 'scroll',
+		'&::-webkit-scrollbar': {
+			display: 'none',
+		},
 	},
-  title: {
-    textAlign: 'center'
-  },
-  item: {
-    p: 2,
-    height: "100%",
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  testimonials: {
-    overflowX: 'scroll',
-    '&::-webkit-scrollbar': {
-      display: 'none',
-    },
-    justifyContent: {
-      sm: 'center',
-      xs: 'flex-start'
-    }
-  }
+	title: {
+		textAlign: 'center',
+	},
+	item: {
+		p: 2,
+		height: '100%',
+		width: '100%',
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'flex-end',
+		alignItems: 'center',
+	},
+	testimonials: {
+		overflowX: 'scroll',
+		'&::-webkit-scrollbar': {
+			display: 'none',
+		},
+		justifyContent: {
+			sm: 'center',
+			xs: 'flex-start',
+		},
+	},
 }

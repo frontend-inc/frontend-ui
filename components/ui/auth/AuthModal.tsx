@@ -104,12 +104,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 	return (
 		<Modal open={authOpen} handleClose={() => setAuthOpen(false)} p={4}>
 			<Box sx={sx.logo}>
-        <Image 
-          src={logo} 
-          alt="Logo"
-          height={48}
-          width={48}
-        />
+				<Image src={logo} alt="Logo" height={48} width={48} />
 			</Box>
 			<Tabs
 				variant="fullWidth"

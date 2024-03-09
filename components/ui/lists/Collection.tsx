@@ -95,7 +95,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		})
 	}
 
-	const handleSortDirection = (sortDirection:'asc' | 'desc') => {
+	const handleSortDirection = (sortDirection: 'asc' | 'desc') => {
 		findMany({
 			...query,
 			sort_direction: sortDirection,
@@ -185,7 +185,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 				loading={loading}
 				buttonText={buttonText}
 				handleClick={handleClick}
-        //@ts-ignore
+				//@ts-ignore
 				autoPlay={autoPlay}
 				arrows={arrows}
 				showDots={showDots}

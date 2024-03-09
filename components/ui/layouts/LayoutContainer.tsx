@@ -1,90 +1,88 @@
 import React, { ReactNode } from 'react'
 import { Box } from '@mui/material'
-import { 
-  LayoutScroll, 
-  ModeTheme, 
-  Header, 
-  Notifications 
+import {
+	LayoutScroll,
+	ModeTheme,
+	Header,
+	Notifications,
 } from '../../../components'
 import { Notification } from '../../../types'
 import { MenuLink } from '../../..'
 
 type LayoutContainerProps = {
 	position?: 'fixed' | 'absolute' | 'relative'
-	mode?: 'accent' | 'light' | 'dark'		
+	mode?: 'accent' | 'light' | 'dark'
 	topNav?: boolean
 	handleClick: (item: any) => void
 	menuItems: MenuLink[]
-  notifications: Notification[]
+	notifications: Notification[]
 	children: ReactNode
-  editing?: boolean
+	editing?: boolean
 	enableAuth?: boolean
 	enableHeader?: boolean
-	enableShopify?: boolean  
+	enableShopify?: boolean
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 	const {
 		children,
-    editing=false,
+		editing = false,
 		mode = 'accent',
 		topNav = false,
 		handleClick,
 		menuItems,
-    notifications,
+		notifications,
 		enableAuth = false,
 		enableHeader = false,
 		enableShopify = false,
 	} = props
 
-  const enableNotifications = notifications?.length > 0
+	const enableNotifications = notifications?.length > 0
 
 	return (
-    <Box sx={ sx.layout }>
-      <Notifications notifications={notifications} />
-      <Box
-        sx={{
-          ...sx.root,          
-          ...(!topNav && sx.sideNav),
-        }}
-      >
-        {enableHeader && (
-          <ModeTheme mode={mode}>
-            <Header			
-              editing={editing}	
-              topNav={topNav}              
-              menuItems={menuItems}
-              enableNotifications={enableNotifications}
-              handleClick={handleClick}
-              enableAuth={enableAuth}
-              enableShopify={enableShopify}
-            />
-          </ModeTheme>
-        )}
-        <Box
-          sx={{
-            ...sx.content,
-            ...(enableHeader && topNav && sx.contentHeader),
-            ...(topNav ? sx.contentTopNav : sx.contentSideNav),
-          }}
-        >
-          <LayoutScroll>
-            {children}
-          </LayoutScroll>
-        </Box>
-      </Box>
-    </Box>
+		<Box sx={sx.layout}>
+			<Notifications notifications={notifications} />
+			<Box
+				sx={{
+					...sx.root,
+					...(!topNav && sx.sideNav),
+				}}
+			>
+				{enableHeader && (
+					<ModeTheme mode={mode}>
+						<Header
+							editing={editing}
+							topNav={topNav}
+							menuItems={menuItems}
+							enableNotifications={enableNotifications}
+							handleClick={handleClick}
+							enableAuth={enableAuth}
+							enableShopify={enableShopify}
+						/>
+					</ModeTheme>
+				)}
+				<Box
+					sx={{
+						...sx.content,
+						...(enableHeader && topNav && sx.contentHeader),
+						...(topNav ? sx.contentTopNav : sx.contentSideNav),
+					}}
+				>
+					<LayoutScroll>{children}</LayoutScroll>
+				</Box>
+			</Box>
+		</Box>
 	)
 }
 
 export default LayoutContainer
 
 const sx = {
-  layout: {
-    width: '100%',
-    height: '100%',
-  },
-	root: { 
+	layout: {
+		width: '100%',
+		height: '100%',
+	},
+	root: {
 		width: '100%',
 		height: '100%',
 		'&::-webkit-scrollbar': {
@@ -100,10 +98,10 @@ const sx = {
 			xs: 'column',
 		},
 		height: '100vh',
-    pt: {
-      sm: 0,
-      xs: '60px',
-    }
+		pt: {
+			sm: 0,
+			xs: '60px',
+		},
 	},
 	content: {
 		display: 'flex',
@@ -111,20 +109,20 @@ const sx = {
 		width: '100%',
 		minHeight: '100%',
 	},
-  contentHeader: {    
-    pt: '60px',
-  },
+	contentHeader: {
+		pt: '60px',
+	},
 	contentSideNav: {
 		width: {
 			sm: 'calc(100% - 280px)',
 			xs: '100%',
 		},
-    overflowY: 'scroll',
+		overflowY: 'scroll',
 		'&::-webkit-scrollbar': {
 			display: 'none',
 		},
 	},
 	contentTopNav: {
-		minHeight: 'calc(100% - 60px)',    
+		minHeight: 'calc(100% - 60px)',
 	},
 }

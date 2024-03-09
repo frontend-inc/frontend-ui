@@ -2,8 +2,7 @@ import React, { useContext } from 'react'
 import { AppContext } from '../../context'
 
 const useApp = () => {
-
-  const {
+	const {
 		app,
 		setApp,
 		logo,
@@ -17,11 +16,11 @@ const useApp = () => {
 		loading,
 		loaded,
 		setLoaded,
-		setLoading
+		setLoading,
 	} = useContext(AppContext)
 
-  return {
-    app,
+	return {
+		app,
 		setApp,
 		logo,
 		clientUrl,
@@ -34,8 +33,8 @@ const useApp = () => {
 		loading,
 		loaded,
 		setLoaded,
-		setLoading
-  }
+		setLoading,
+	}
 }
 
 export default useApp

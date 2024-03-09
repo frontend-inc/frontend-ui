@@ -70,7 +70,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 	const {
 		errors,
 		value,
-		direction = "column",
+		direction = 'column',
 		options,
 		label,
 		name,

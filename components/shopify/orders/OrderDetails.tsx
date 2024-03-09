@@ -62,12 +62,11 @@ const OrderDetails: React.FC<OrderDetailsProps> = (props) => {
 						Shipping Details
 					</Typography>
 					<List>
-						<AddressItem 
-              disableActions 
-              //@ts-ignore
-              address={
-                shippingAddress
-              } />
+						<AddressItem
+							disableActions
+							//@ts-ignore
+							address={shippingAddress}
+						/>
 					</List>
 				</>
 			)}

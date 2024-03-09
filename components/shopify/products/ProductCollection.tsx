@@ -32,7 +32,7 @@ type ProductCollectionProps = {
 	enableAddToCart?: boolean
 	enableQuickShop?: boolean
 	enableQuantity?: boolean
-  enableOkendoStarRating?: boolean
+	enableOkendoStarRating?: boolean
 }
 
 const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
@@ -59,7 +59,7 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 		enableAddToCart = false,
 		enableQuickShop = false,
 		enableQuantity = false,
-    enableOkendoStarRating = false,
+		enableOkendoStarRating = false,
 	} = props
 
 	const [query, setQuery] = useState<Record<string, any>>({})
@@ -179,7 +179,7 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 					enableAddToCart={enableAddToCart}
 					enableQuickShop={enableQuickShop}
 					enableQuantity={enableQuantity}
-          enableOkendoStarRating={enableOkendoStarRating}
+					enableOkendoStarRating={enableOkendoStarRating}
 				/>
 			)}
 			{layout == 'carousel' && (
@@ -195,7 +195,7 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 					enableAddToCart={enableAddToCart}
 					enableQuickShop={enableQuickShop}
 					enableQuantity={enableQuantity}
-          enableOkendoStarRating={enableOkendoStarRating}
+					enableOkendoStarRating={enableOkendoStarRating}
 				/>
 			)}
 		</Stack>

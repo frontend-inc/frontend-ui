@@ -1,7 +1,7 @@
 export const sx = {
 	inputBase: {
 		p: 0,
-    color: 'text.secondary',
+		color: 'text.secondary',
 		width: '100%',
 		'& input, & .MuiInputBase-inputMultiline': {
 			WebkitAppearance: 'none',
@@ -13,7 +13,7 @@ export const sx = {
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
 			bgcolor: 'background.default',
 			border: '1px solid',
-      borderColor: 'divider',
+			borderColor: 'divider',
 			m: '1px',
 			//boxShadow: `0 1px 3px 0 rgb(120 120 175 / 20%)`,
 			'&:focus': {

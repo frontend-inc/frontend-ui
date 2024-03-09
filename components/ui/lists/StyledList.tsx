@@ -27,7 +27,7 @@ type StyledListProps = {
 	buttonText?: string
 	enableBorder?: boolean
 	enableGradient?: boolean
-  enableOverlay?: boolean
+	enableOverlay?: boolean
 	emptyTitle?: string
 	emptyDescription?: string
 	emptyIcon?: string
@@ -43,7 +43,7 @@ const StyledList: React.FC<StyledListProps> = (props) => {
 		buttonText,
 		enableBorder = false,
 		enableGradient = false,
-    enableOverlay = false,
+		enableOverlay = false,
 		emptyTitle = 'No results found',
 		emptyDescription = 'Try adjusting your search or filters',
 		emptyIcon = 'Search',
@@ -89,7 +89,7 @@ const StyledList: React.FC<StyledListProps> = (props) => {
 							component={component}
 							enableBorder={enableBorder}
 							enableGradient={enableGradient}
-              enableOverlay={enableOverlay}
+							enableOverlay={enableOverlay}
 						/>
 					)}
 					{layout == 'grid' && (
@@ -101,7 +101,7 @@ const StyledList: React.FC<StyledListProps> = (props) => {
 							component={component}
 							enableBorder={enableBorder}
 							enableGradient={enableGradient}
-              enableOverlay={enableOverlay}
+							enableOverlay={enableOverlay}
 						/>
 					)}
 					{layout == 'carousel' && (
@@ -110,11 +110,11 @@ const StyledList: React.FC<StyledListProps> = (props) => {
 							editing={editing}
 							items={resources}
 							handleClick={handleClick}
-							buttonText={buttonText}            
-              component={component}
+							buttonText={buttonText}
+							component={component}
 							enableBorder={enableBorder}
 							enableGradient={enableGradient}
-              enableOverlay={enableOverlay}
+							enableOverlay={enableOverlay}
 						/>
 					)}
 				</>

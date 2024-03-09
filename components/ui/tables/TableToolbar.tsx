@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { SearchInput } from '../../../components'
-import {
-	Stack,
-	Box,
-	IconButton,
-	Hidden,
-	Badge,
-	Button,
-} from '@mui/material'
+import { Stack, Box, IconButton, Hidden, Badge, Button } from '@mui/material'
 import { FilterList } from '@mui/icons-material'
 import { Edit, Trash } from 'lucide-react'
 import { FilterButton } from '../../../components'

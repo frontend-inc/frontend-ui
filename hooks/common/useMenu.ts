@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 
-
 const useMenu = (anchorRef?: React.RefObject<any>) => {
-
 	const [open, setOpen] = useState(false)
 	const [anchorEl, setAnchorEl] = useState(null)
 

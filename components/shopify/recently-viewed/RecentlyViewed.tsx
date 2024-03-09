@@ -1,12 +1,6 @@
 import React from 'react'
-import { 
-  Icon,
-  Placeholder
-} from '../../../components'
-import {
-	ProductGrid,
-	ProductCarousel,
-} from '../../../components/shopify'
+import { Icon, Placeholder } from '../../../components'
+import { ProductGrid, ProductCarousel } from '../../../components/shopify'
 import { Box, Typography } from '@mui/material'
 import { useRecentlyViewed } from 'frontend-shopify'
 
@@ -20,32 +14,29 @@ type RecentlyViewedProps = {
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
 	enableQuickShop?: boolean
-  buttonText?: string
-  emptyIcon?: string
-  emptyTitle?: string
-  emptyDescription?: string
+	buttonText?: string
+	emptyIcon?: string
+	emptyTitle?: string
+	emptyDescription?: string
 }
 
 const RecentlyViewed: React.FC<RecentlyViewedProps> = (props) => {
-
-  const {
+	const {
 		editing = false,
 		layout = 'grid',
 		title = 'RecentlyViewed',
 		productComponent,
 		enableBorder = false,
-    buttonText = 'Add to cart',
+		buttonText = 'Add to cart',
 		enableAddToCart,
 		enableQuantity,
 		enableQuickShop,
-    emptyIcon='Shirt',
-    emptyTitle='No recently viewed',
-    emptyDescription= 'You have no recently viewed products'
+		emptyIcon = 'Shirt',
+		emptyTitle = 'No recently viewed',
+		emptyDescription = 'You have no recently viewed products',
 	} = props || {}
 
-	const { 
-    products 
-  } = useRecentlyViewed()
+	const { products } = useRecentlyViewed()
 
 	return (
 		<Box sx={sx.root}>
@@ -63,7 +54,7 @@ const RecentlyViewed: React.FC<RecentlyViewedProps> = (props) => {
 					enableAddToCart={enableAddToCart}
 					enableQuantity={enableQuantity}
 					enableQuickShop={enableQuickShop}
-          buttonText={buttonText}
+					buttonText={buttonText}
 				/>
 			)}
 			{layout == 'carousel' && (
@@ -72,10 +63,10 @@ const RecentlyViewed: React.FC<RecentlyViewedProps> = (props) => {
 					products={products}
 					productComponent={productComponent}
 					enableBorder={enableBorder}
-          buttonText={buttonText}
+					buttonText={buttonText}
 				/>
 			)}
-      {products?.length === 0 && (
+			{products?.length === 0 && (
 				<Placeholder
 					icon={<Icon name={emptyIcon} />}
 					title={emptyTitle}

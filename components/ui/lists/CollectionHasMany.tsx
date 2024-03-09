@@ -105,7 +105,7 @@ const CollectionHasMany: React.FC<CollectionHasManyProps> = (props) => {
 			loading={loading}
 			buttonText={buttonText}
 			handleClick={handleClick}
-      //@ts-ignore
+			//@ts-ignore
 			autoPlay={autoPlay}
 			arrows={arrows}
 			showDots={showDots}

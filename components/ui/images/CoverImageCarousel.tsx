@@ -1,23 +1,23 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
-import {Swipeable, CoverImage } from '../../../components'
+import { Swipeable, CoverImage } from '../../../components'
 import { useRouter } from 'next/router'
 
 type CoverImageCarouselProps = {
-  items: {
-    title?: string
-    description?: string
-    image?: string
-    buttonText?: string
-    url?: string
-  }[]
+	items: {
+		title?: string
+		description?: string
+		image?: string
+		buttonText?: string
+		url?: string
+	}[]
 	editing?: boolean
 	enableAutoPlay?: boolean
 	showDots?: boolean
 	enableOverlay?: boolean
 	enableGradient?: boolean
 	enableBorder?: boolean
-  enableArrows?: boolean
+	enableArrows?: boolean
 	overlayColor?: string
 	opacity?: number
 	alignItems?: 'flex-start' | 'center' | 'flex-end'
@@ -28,11 +28,11 @@ const CoverImageCarousel: React.FC<CoverImageCarouselProps> = (props) => {
 
 	const {
 		editing = false,
-    items=[],
+		items = [],
 		enableOverlay = false,
 		opacity = 0.5,
 		enableGradient = false,
-    enableArrows = false,
+		enableArrows = false,
 		enableAutoPlay = false,
 		overlayColor = '#000000',
 		alignItems = 'center',
@@ -51,27 +51,24 @@ const CoverImageCarousel: React.FC<CoverImageCarouselProps> = (props) => {
 	}
 
 	return (
-    <Swipeable        
-      enableAutoPlay={enableAutoPlay}
-      enableArrows={enableArrows}        
-    >
-      {items?.map((item, index) => (
-        <CoverImage
-          key={index}
-          editing={editing}
-          title={item?.title}
-          description={item?.description}
-          image={item?.image}					
-          buttonText={item?.buttonText}
-          enableOverlay={enableOverlay}
-          enableGradient={enableGradient}
-          opacity={opacity}
-          handleClick={() => handleClick(item)}
-          overlayColor={overlayColor}
-          alignItems={alignItems}
-        />
-      ))}
-    </Swipeable>      
+		<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
+			{items?.map((item, index) => (
+				<CoverImage
+					key={index}
+					editing={editing}
+					title={item?.title}
+					description={item?.description}
+					image={item?.image}
+					buttonText={item?.buttonText}
+					enableOverlay={enableOverlay}
+					enableGradient={enableGradient}
+					opacity={opacity}
+					handleClick={() => handleClick(item)}
+					overlayColor={overlayColor}
+					alignItems={alignItems}
+				/>
+			))}
+		</Swipeable>
 	)
 }
 

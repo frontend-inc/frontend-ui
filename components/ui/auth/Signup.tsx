@@ -13,7 +13,6 @@ type SignupProps = {
 }
 
 const Signup: React.FC<SignupProps> = (props) => {
-  
 	const {
 		redirectUrl,
 		loginUrl,
@@ -21,9 +20,9 @@ const Signup: React.FC<SignupProps> = (props) => {
 		subtitle = 'Register your account',
 		authConfig = {},
 	} = props
-  
-  const router = useRouter()
-  
+
+	const router = useRouter()
+
 	const { loading, errors, user, handleChange, signup } = useAuth()
 
 	const handleSubmit = async () => {

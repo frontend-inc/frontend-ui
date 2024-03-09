@@ -67,7 +67,7 @@ export { default as ProductMetafields } from './products/ProductMetafields'
 export { default as ProductModal } from './products/ProductModal'
 export { default as ProductRecommendations } from './products/ProductRecommendations'
 
-// Metafields 
+// Metafields
 export { default as Metafields } from './products/metafields/Metafields'
 export { default as MetafieldImage } from './products/metafields/MetafieldImage'
 export { default as MetafieldRichText } from './products/metafields/MetafieldRichText'
@@ -78,7 +78,7 @@ export { default as MetafieldVideo } from './products/metafields/MetafieldVideo'
 export { default as ShopifyStore } from './store/ShopifyStore'
 export { default as ShopifyProduct } from './products/ShopifyProduct'
 
-// Favorites 
+// Favorites
 export { default as ProductFavorites } from './favorites/ProductFavorites'
 export { default as FavoriteButton } from './favorites/FavoriteButton'
 

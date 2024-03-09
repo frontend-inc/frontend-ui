@@ -21,10 +21,8 @@ const Address: React.FC<AddressProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const [showDeleteModal, setShowDeleteModal] = useState(false)
 
-	const {		
-		title = 'Customer Addresses',
-		subtitle = 'Manage your addresses',
-	} = props || {}
+	const { title = 'Customer Addresses', subtitle = 'Manage your addresses' } =
+		props || {}
 
 	const {
 		loading,

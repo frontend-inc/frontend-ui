@@ -1,12 +1,6 @@
 import React from 'react'
-import { 
-  Icon,
-  Placeholder
-} from '../..'
-import {
-	ProductGrid,
-	ProductCarousel,
-} from '..'
+import { Icon, Placeholder } from '../..'
+import { ProductGrid, ProductCarousel } from '..'
 import { Box, Typography } from '@mui/material'
 import { useFavorites } from 'frontend-shopify'
 
@@ -20,32 +14,29 @@ type FavoritesProps = {
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
 	enableQuickShop?: boolean
-  buttonText?: string
-  emptyIcon?: string
-  emptyTitle?: string
-  emptyDescription?: string
+	buttonText?: string
+	emptyIcon?: string
+	emptyTitle?: string
+	emptyDescription?: string
 }
 
 const Favorites: React.FC<FavoritesProps> = (props) => {
-
-  const {
+	const {
 		editing = false,
 		layout = 'grid',
 		title = 'Favorites',
 		productComponent,
 		enableBorder = false,
-    buttonText = 'Add to cart',
+		buttonText = 'Add to cart',
 		enableAddToCart,
 		enableQuantity,
 		enableQuickShop,
-    emptyIcon='Heart',
-    emptyTitle='No favorites',
-    emptyDescription= 'You have no favorites yet'
+		emptyIcon = 'Heart',
+		emptyTitle = 'No favorites',
+		emptyDescription = 'You have no favorites yet',
 	} = props || {}
 
-	const { 
-    favorites 
-  } = useFavorites()
+	const { favorites } = useFavorites()
 
 	return (
 		<Box sx={sx.root}>
@@ -63,7 +54,7 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 					enableAddToCart={enableAddToCart}
 					enableQuantity={enableQuantity}
 					enableQuickShop={enableQuickShop}
-          buttonText={buttonText}
+					buttonText={buttonText}
 				/>
 			)}
 			{layout == 'carousel' && (
@@ -72,10 +63,10 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 					products={favorites}
 					productComponent={productComponent}
 					enableBorder={enableBorder}
-          buttonText={buttonText}
+					buttonText={buttonText}
 				/>
 			)}
-      {favorites?.length === 0 && (
+			{favorites?.length === 0 && (
 				<Placeholder
 					icon={<Icon name={emptyIcon} />}
 					title={emptyTitle}

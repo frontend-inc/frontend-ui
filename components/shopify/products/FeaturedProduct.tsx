@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { AddToCartButton, QuickShopButton } from '../../../components/shopify'
 import { Button, Box, Stack, Typography } from '@mui/material'
 import { truncate } from '../../../helpers'
-import { FEATURED_CARD_HEIGHT, FEATURED_CARD_WIDTH } from '../../../constants/index'
+import {
+	FEATURED_CARD_HEIGHT,
+	FEATURED_CARD_WIDTH,
+} from '../../../constants/index'
 import SwipeableProductImages from './images/SwipeableProductImages'
 import { formatCurrency } from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'

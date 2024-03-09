@@ -20,12 +20,7 @@ type FilterInputProps = {
 }
 
 const FilterInput: React.FC<FilterInputProps> = (props) => {
-	const {
-		label,
-		children,
-		enableBorder,
-		closed = false,
-	} = props
+	const { label, children, enableBorder, closed = false } = props
 
 	const [open, setOpen] = useState(!closed)
 	const handleToggleClick = () => {
@@ -106,7 +101,7 @@ const sx = {
 		lineHeight: '1em',
 	},
 	icon: {
-    color: "text.secondary",
+		color: 'text.secondary',
 		transition: 'transform 0.3s ease-in-out',
 	},
 	expandMore: {

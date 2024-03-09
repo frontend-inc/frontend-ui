@@ -9,31 +9,24 @@ type CustomerProps = {
 }
 
 const Customer: React.FC<CustomerProps> = (props) => {
-	const {
-		title = 'Customer details',
-		subtitle = 'Update your account',
-	} = props || {}
+	const { title = 'Customer details', subtitle = 'Update your account' } =
+		props || {}
+
+	const { errors, loading, customer, findCustomer, updateCustomer } =
+		useCustomers()
 
 	const {
-		errors,
-		loading,    
-		customer,    
-		findCustomer,
-		updateCustomer,
-	} = useCustomers()
+		customer: authCustomer,
+		setCustomer: setAuthCustomer,
+		handleChange,
+		accessToken,
+	} = useAuth()
 
-  const { 
-    customer: authCustomer,
-    setCustomer: setAuthCustomer,
-    handleChange,
-    accessToken 
-  } = useAuth()
-
-  useEffect(() => {
-    if(customer){
-      setAuthCustomer(customer)
-    }
-  }, [customer])
+	useEffect(() => {
+		if (customer) {
+			setAuthCustomer(customer)
+		}
+	}, [customer])
 
 	const handleSubmit = async () => {
 		await updateCustomer(accessToken, {

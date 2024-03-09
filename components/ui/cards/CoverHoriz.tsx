@@ -36,10 +36,7 @@ const CoverHoriz: React.FC<CardProps> = (props) => {
 	}
 
 	return (
-		<Stack
-			sx={sx.root}
-			spacing={1}
-		>
+		<Stack sx={sx.root} spacing={1}>
 			<TouchableOpacity handleClick={handleItemClick}>
 				<Image
 					src={image}
@@ -88,7 +85,7 @@ export default CoverHoriz
 
 const sx = {
 	root: {
-    width: "100%",
+		width: '100%',
 		position: 'relative',
 		flexDirection: 'column',
 		overflow: 'hidden',

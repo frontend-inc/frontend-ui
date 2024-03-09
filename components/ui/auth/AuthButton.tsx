@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react'
 import { Button, Typography, Box, IconButton } from '@mui/material'
-import { useMenu} from '../../../hooks'
+import { useMenu } from '../../../hooks'
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
-import { Icon,  AuthAvatar, AuthMenu } from '../../../components'
+import { Icon, AuthAvatar, AuthMenu } from '../../../components'
 import { AppContext } from '../../../context'
 
 type AuthButtonProps = {
@@ -78,29 +78,25 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 			) : (
 				<>
 					{currentUser ? (
-						<Button              
+						<Button
 							sx={sx.button}
-              onClick={toggleMenu}
+							onClick={toggleMenu}
 							startIcon={showIcon && <AuthAvatar />}
-              endIcon={
-                <Box>
-                  <Icon name="MoreVertical" size={20} />
-                </Box>
-              }
+							endIcon={
+								<Box>
+									<Icon name="MoreVertical" size={20} />
+								</Box>
+							}
 						>
-							<Typography variant="button" sx={ sx.username }>
-                {currentUser?.username}
-              </Typography>
+							<Typography variant="button" sx={sx.username}>
+								{currentUser?.username}
+							</Typography>
 						</Button>
 					) : (
 						<Button
 							sx={sx.button}
 							onClick={handleLogin}
-							startIcon={
-								showIcon && (
-									<Icon name="User" size={24} />
-								)
-							}
+							startIcon={showIcon && <Icon name="User" size={24} />}
 						>
 							Login
 						</Button>
@@ -133,12 +129,12 @@ const sx = {
 		color: 'text.primary',
 	},
 	button: {
-    width: '100%',
+		width: '100%',
 		color: 'text.primary',
 		justifyContent: 'flex-start',
 	},
-  username: {
-    width: '100%',
-    textAlign: 'left',
-  }
+	username: {
+		width: '100%',
+		textAlign: 'left',
+	},
 }

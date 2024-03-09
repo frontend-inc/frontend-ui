@@ -67,7 +67,7 @@ export default ProductSortButton
 
 const sx = {
 	button: {
-    color: 'text.secondary',
+		color: 'text.secondary',
 		borderRight: 'none',
 		'&:hover': {
 			borderRight: 'none',

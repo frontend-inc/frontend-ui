@@ -44,7 +44,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 				<ButtonGroup>
 					<Button
 						sx={{
-              ...sx.button,
+							...sx.button,
 							...(filters?.length > 0 && sx.hideBorder),
 						}}
 						variant="text"
@@ -61,38 +61,34 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 					</Button>
 				</ButtonGroup>
 			</Badge>
-      <Hidden smDown>
-        <Popup p={1} anchorEl={anchorEl} open={open} handleClose={handleClose}>
-          <Stack spacing={2}>
-            {fields?.map((field, index) => (
-              <FilterField
-                key={index}
-                filters={filters}
-                field={field}
-                handleFilter={handleFilter}
-              />
-            ))}
-          </Stack>
-        </Popup>
-      </Hidden>
-      <Hidden smUp>
-        <Drawer 
-          open={open}
-          handleClose={handleClose}
-          title="Search"
-        >
-          <Stack spacing={2}>
-            {fields?.map((field, index) => (
-              <FilterField
-                key={index}
-                filters={filters}
-                field={field}
-                handleFilter={handleFilter}
-              />
-            ))}
-          </Stack>
-        </Drawer>
-      </Hidden>
+			<Hidden smDown>
+				<Popup p={1} anchorEl={anchorEl} open={open} handleClose={handleClose}>
+					<Stack spacing={2}>
+						{fields?.map((field, index) => (
+							<FilterField
+								key={index}
+								filters={filters}
+								field={field}
+								handleFilter={handleFilter}
+							/>
+						))}
+					</Stack>
+				</Popup>
+			</Hidden>
+			<Hidden smUp>
+				<Drawer open={open} handleClose={handleClose} title="Search">
+					<Stack spacing={2}>
+						{fields?.map((field, index) => (
+							<FilterField
+								key={index}
+								filters={filters}
+								field={field}
+								handleFilter={handleFilter}
+							/>
+						))}
+					</Stack>
+				</Drawer>
+			</Hidden>
 		</>
 	)
 }
@@ -100,9 +96,9 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 export default FilterButton
 
 const sx = {
-  button: {
-    color: 'text.secondary'
-  },
+	button: {
+		color: 'text.secondary',
+	},
 	hideBorder: {
 		borderRight: 'none',
 		'&:hover': {
@@ -125,5 +121,5 @@ const sx = {
 			xs: '270px',
 			sm: '360px',
 		},
-	}
+	},
 }

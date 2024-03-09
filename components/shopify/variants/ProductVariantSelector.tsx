@@ -4,13 +4,14 @@ import ColorVariantOptions from './ColorVariantOptions'
 import { Product } from 'frontend-shopify'
 
 type ProductVariantSelectorProps = {
-  product: Product
-  selectedOptions: any
-  handleOptionChange: any
+	product: Product
+	selectedOptions: any
+	handleOptionChange: any
 }
 
-const ProductVariantSelector: React.FC<ProductVariantSelectorProps> = (props) => {
-
+const ProductVariantSelector: React.FC<ProductVariantSelectorProps> = (
+	props
+) => {
 	const { product, selectedOptions, handleOptionChange } = props
 
 	const productOption = (optionName) => {
@@ -26,8 +27,8 @@ const ProductVariantSelector: React.FC<ProductVariantSelectorProps> = (props) =>
 				if (!option) return null
 				return optionName == 'Color' ? (
 					<ColorVariantOptions
-            key={optionName}
-            product={product}
+						key={optionName}
+						product={product}
 						name={'Color'}
 						values={option?.values}
 						selected={selectedOptions['Color']}
@@ -35,7 +36,7 @@ const ProductVariantSelector: React.FC<ProductVariantSelectorProps> = (props) =>
 					/>
 				) : (
 					<ProductVariantOptions
-            key={optionName}
+						key={optionName}
 						name={option?.name}
 						values={option?.values}
 						selected={selectedOptions[option?.name]}

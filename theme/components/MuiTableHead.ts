@@ -4,7 +4,7 @@ export default {
 	styleOverrides: {
 		root: {
 			width: '100%',
-      // @ts-ignore
+			// @ts-ignore
 			bgcolor: palette.primary.contrastText,
 		},
 	},

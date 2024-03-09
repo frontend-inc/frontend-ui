@@ -1,5 +1,9 @@
 import React from 'react'
-import { ShopProvider, ProductProvider, CollectionProvider } from 'frontend-shopify'
+import {
+	ShopProvider,
+	ProductProvider,
+	CollectionProvider,
+} from 'frontend-shopify'
 import { Cart, SearchModal } from '../../../components/shopify'
 
 type ShopifyStoreProps = {
@@ -11,13 +15,7 @@ type ShopifyStoreProps = {
 }
 
 const ShopifyStore: React.FC<ShopifyStoreProps> = (props) => {
-	const {
-		children,
-		logo,
-		domain,
-		shopUrl,
-		storefrontAccessToken,
-	} = props
+	const { children, logo, domain, shopUrl, storefrontAccessToken } = props
 
 	return (
 		<ShopProvider
@@ -26,11 +24,11 @@ const ShopifyStore: React.FC<ShopifyStoreProps> = (props) => {
 			shopUrl={shopUrl}
 			storefrontAccessToken={storefrontAccessToken}
 		>
-      <Cart />
-      <SearchModal />
-      <ProductProvider>
-        <CollectionProvider>{children}</CollectionProvider>
-      </ProductProvider>
+			<Cart />
+			<SearchModal />
+			<ProductProvider>
+				<CollectionProvider>{children}</CollectionProvider>
+			</ProductProvider>
 		</ShopProvider>
 	)
 }

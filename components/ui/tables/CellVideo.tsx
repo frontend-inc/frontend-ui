@@ -14,12 +14,12 @@ const CellVideo: React.FC<CellVideoProps> = (props) => {
 	if (!value) return <NoImage height={size} width={size} />
 	return (
 		<Button sx={sx.root} onClick={handleClick}>
-			<Image 
-        src={imageFromVideoUrl(value)} 
-        // @ts-ignore
-        width={size} 
-        height={size} 
-      />
+			<Image
+				src={imageFromVideoUrl(value)}
+				// @ts-ignore
+				width={size}
+				height={size}
+			/>
 		</Button>
 	)
 }

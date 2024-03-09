@@ -5,7 +5,7 @@ import { Stack, Box, Typography } from '@mui/material'
 type CartTextProps = {
 	label: string
 	value: string
-  icon?: string
+	icon?: string
 }
 
 const CartText: React.FC<CartTextProps> = (props) => {
@@ -16,14 +16,12 @@ const CartText: React.FC<CartTextProps> = (props) => {
 			<Typography variant="body1" sx={sx.label}>
 				{label}
 			</Typography>
-      <Stack spacing={0.5} direction="row">
-        <Typography variant="body1" sx={sx.value}>
-          {value}
-        </Typography>
-        { icon && (
-          <Icon name={icon} size={20} />
-        )}
-      </Stack>
+			<Stack spacing={0.5} direction="row">
+				<Typography variant="body1" sx={sx.value}>
+					{value}
+				</Typography>
+				{icon && <Icon name={icon} size={20} />}
+			</Stack>
 		</Box>
 	)
 }

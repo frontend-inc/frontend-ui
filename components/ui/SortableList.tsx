@@ -69,7 +69,8 @@ const SortableList: React.FC<SortableListProps> = (props) => {
 												...(snapshot.isDragging && sx.isDragging),
 											}}
 										>
-											{renderItem({
+											{renderItem(
+												{
 													...item,
 													isDragging: snapshot.isDragging,
 												},

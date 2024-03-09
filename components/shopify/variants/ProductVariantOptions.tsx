@@ -14,9 +14,9 @@ const ProductVariantOptions: React.FC<ProductVariantOptionsProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-			<Typography sx={ sx.title } variant="subtitle2" color="text.primary">
-        Select {name}
-      </Typography>
+			<Typography sx={sx.title} variant="subtitle2" color="text.primary">
+				Select {name}
+			</Typography>
 			<Box sx={sx.options}>
 				{values?.map((value) => (
 					<OptionButton
@@ -49,7 +49,7 @@ const sx = {
 		flexWrap: 'wrap',
 		gap: '10px',
 	},
-  title: {
-    mb: 1
-  }
+	title: {
+		mb: 1,
+	},
 }

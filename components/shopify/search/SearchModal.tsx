@@ -22,10 +22,12 @@ const SearchModal: React.FC = () => {
 	const MIN_ANALYTICS_CHARS = 5
 
 	const { trackProductsSearched } = useSegment()
-	const { setMenuOpen, searchOpen, setSearchOpen } = useContext(ShopContext) as any
+	const { setMenuOpen, searchOpen, setSearchOpen } = useContext(
+		ShopContext
+	) as any
 
 	const [expanded, setExpanded] = useState(false)
-	const [keywords, setKeywords] = useState('')	
+	const [keywords, setKeywords] = useState('')
 
 	const { loading, products, setProducts, searchProducts } = useProducts()
 
@@ -49,7 +51,7 @@ const SearchModal: React.FC = () => {
 		}
 		setExpanded(true)
 		searchProducts({ query: keywords })
-	}  
+	}
 
 	useEffect(() => {
 		if (keywords?.length > 0) {
@@ -92,9 +94,7 @@ const SearchModal: React.FC = () => {
 						</Box>
 					</Stack>
 				</AppBar>
-				<Container 
-          maxWidth="md"
-        >
+				<Container maxWidth="md">
 					<ProductGrid
 						loading={loading}
 						products={products}
@@ -102,7 +102,7 @@ const SearchModal: React.FC = () => {
 						sm={12}
 						md={6}
 						lg={6}
-						xl={6}            
+						xl={6}
 					/>
 					{keywords?.length > 0 && !loading && products?.length == 0 && (
 						<Placeholder

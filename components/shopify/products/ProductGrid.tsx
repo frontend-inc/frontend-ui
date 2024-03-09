@@ -1,4 +1,3 @@
-
 import React, { useContext } from 'react'
 import { Grid, Box } from '@mui/material'
 import { ProductCard } from '../../../components/shopify'
@@ -9,20 +8,20 @@ import { AppContext } from '../../../context'
 
 type ProductGridProps = {
 	editing?: boolean
-  loading?: boolean
-	products: Product[]	
+	loading?: boolean
+	products: Product[]
 	xs?: number
 	sm?: number
 	md?: number
 	lg?: number
 	xl?: number
 	productComponent?: React.FC<any>
-  buttonText?: string
+	buttonText?: string
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuickShop?: boolean
 	enableQuantity?: boolean
-  enableOkendoStarRating?: boolean
+	enableOkendoStarRating?: boolean
 }
 
 const ProductGrid: React.FC<ProductGridProps> = (props) => {
@@ -37,19 +36,19 @@ const ProductGrid: React.FC<ProductGridProps> = (props) => {
 		lg = 4,
 		xl = 4,
 		productComponent: ProductComponent = ProductCard,
-    buttonText = 'Add to cart',
+		buttonText = 'Add to cart',
 		enableBorder = false,
 		enableAddToCart,
 		enableQuickShop,
 		enableQuantity,
-    enableOkendoStarRating
+		enableOkendoStarRating,
 	} = props
 
 	const router = useRouter()
 	const { trackProductClicked } = useSegment()
 
 	const handleClick = (product) => {
-		if (!editing) trackProductClicked(product);
+		if (!editing) trackProductClicked(product)
 		const url = `${clientUrl}/products/${product?.handle}`
 		router.push(url)
 	}
@@ -58,18 +57,18 @@ const ProductGrid: React.FC<ProductGridProps> = (props) => {
 		<Grid container spacing={0}>
 			{products?.map((product) => (
 				<Grid item xs={xs} sm={sm} md={md} lg={lg} xl={xl} key={product?.id}>
-          <Box sx={ sx.item } key={product?.id}>
-            <ProductComponent
-              product={product}
-              handleClick={() => handleClick(product)}
-              enableBorder={enableBorder}
-              enableAddToCart={enableAddToCart}
-              enableQuickShop={enableQuickShop}
-              enableQuantity={enableQuantity}
-              enableOkendoStarRating={enableOkendoStarRating}
-              buttonText={buttonText}
-            />
-          </Box>
+					<Box sx={sx.item} key={product?.id}>
+						<ProductComponent
+							product={product}
+							handleClick={() => handleClick(product)}
+							enableBorder={enableBorder}
+							enableAddToCart={enableAddToCart}
+							enableQuickShop={enableQuickShop}
+							enableQuantity={enableQuantity}
+							enableOkendoStarRating={enableOkendoStarRating}
+							buttonText={buttonText}
+						/>
+					</Box>
 				</Grid>
 			))}
 		</Grid>
@@ -79,7 +78,7 @@ const ProductGrid: React.FC<ProductGridProps> = (props) => {
 export default ProductGrid
 
 const sx = {
-  item: {
-    p: 1
-  }
+	item: {
+		p: 1,
+	},
 }

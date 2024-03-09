@@ -29,7 +29,7 @@ const Popup: React.FC<PopupProps> = (props) => {
 				vertical: 'bottom',
 				horizontal: 'left',
 			}}
-      sx={ sx.root }
+			sx={sx.root}
 		>
 			<Box
 				sx={{
@@ -47,13 +47,13 @@ const Popup: React.FC<PopupProps> = (props) => {
 export default Popup
 
 const sx = {
-  root: {
-    '& .MuiPopover-paper': {
-      border: '1px solid',
-      borderColor: 'divider',
-      borderRadius: theme => `${theme.shape.borderRadius}px`,
-    }
-  },
+	root: {
+		'& .MuiPopover-paper': {
+			border: '1px solid',
+			borderColor: 'divider',
+			borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		},
+	},
 	content: {
 		maxHeight: '520px',
 		maxWidth: '520px',

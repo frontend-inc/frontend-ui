@@ -43,8 +43,7 @@ const AlertModal: React.FC<AlertModalProps> = (props) => {
 		>
 			{!loading && (
 				<Placeholder
-					icon={
-            <AlertCircle color={theme?.palette?.text.primary} />}
+					icon={<AlertCircle color={theme?.palette?.text.primary} />}
 					title={title}
 					description={description}
 				/>

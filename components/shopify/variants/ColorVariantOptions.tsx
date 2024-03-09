@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { findVariantByColor } from 'frontend-shopify'
 
 type ColorVariantsOptionsProps = {
-  product: Product
+	product: Product
 	name: string
 	values: any
 	selected: string
@@ -23,7 +23,7 @@ const ColorVariantsOptions: React.FC<ColorVariantsOptionsProps> = (props) => {
 					let variant = findVariantByColor(product, value)
 					return (
 						<Button
-              key={value}
+							key={value}
 							sx={{
 								...sx.button,
 								...(selected === value && sx.activeButton),

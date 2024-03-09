@@ -14,9 +14,9 @@ type HeaderProps = {
 	logo?: string
 	enableAuth?: boolean
 	enableShopify?: boolean
-  enableNotifications?: boolean
+	enableNotifications?: boolean
 	bgcolor?: string
-	menuItems: MenuLink[] 
+	menuItems: MenuLink[]
 	handleClick: (path: string) => void
 }
 
@@ -29,68 +29,68 @@ const Header: React.FC<HeaderProps> = (props) => {
 		handleClick,
 		enableAuth = false,
 		enableShopify = false,
-    enableNotifications = false,
+		enableNotifications = false,
 	} = props
 
 	return (
-    <Box
-      sx={{ 
-        ...sx.root, 
-        ...(!topNav  && sx.rootSideNav) 
-      }}
-    >
-      {topNav ? (
-        <DesktopTopNav
-          editing={editing}
-          logo={logo}
-          enableAuth={enableAuth}
-          enableShopify={enableShopify}
-          enableNotifications={enableNotifications}
-          menuItems={menuItems}
-          handleClick={handleClick}
-        />
-      ) : (
-        <DesktopSideNav
-          editing={editing}
-          logo={logo}
-          enableAuth={enableAuth}
-          enableShopify={enableShopify}
-          enableNotifications={enableNotifications}
-          menuItems={menuItems}
-          handleClick={handleClick}
-        />
-      )}
-      <MobileNav
-        editing={editing}
-        logo={logo}          
-        enableShopify={enableShopify}
-        enableNotifications={enableNotifications}
-        menuItems={menuItems}
-        handleClick={handleClick}
-      />
-      <MobileDrawer
-        editing={editing}
-        enableAuth={enableAuth}
-        enableShopify={enableShopify}
-        menuItems={menuItems}
-        handleClick={handleClick}
-      />
-    </Box>
+		<Box
+			sx={{
+				...sx.root,
+				...(!topNav && sx.rootSideNav),
+			}}
+		>
+			{topNav ? (
+				<DesktopTopNav
+					editing={editing}
+					logo={logo}
+					enableAuth={enableAuth}
+					enableShopify={enableShopify}
+					enableNotifications={enableNotifications}
+					menuItems={menuItems}
+					handleClick={handleClick}
+				/>
+			) : (
+				<DesktopSideNav
+					editing={editing}
+					logo={logo}
+					enableAuth={enableAuth}
+					enableShopify={enableShopify}
+					enableNotifications={enableNotifications}
+					menuItems={menuItems}
+					handleClick={handleClick}
+				/>
+			)}
+			<MobileNav
+				editing={editing}
+				logo={logo}
+				enableShopify={enableShopify}
+				enableNotifications={enableNotifications}
+				menuItems={menuItems}
+				handleClick={handleClick}
+			/>
+			<MobileDrawer
+				editing={editing}
+				enableAuth={enableAuth}
+				enableShopify={enableShopify}
+				menuItems={menuItems}
+				handleClick={handleClick}
+			/>
+		</Box>
 	)
 }
 
 export default Header
 
 const sx = {
-  root: {
+	root: {
 		width: '100%',
 		display: 'flex',
 		flexDirection: 'row',
 		overflow: 'hidden',
-    bgcolor: 'background.default', 
-  },
-  rootSideNav: {       
-    width: {
+		bgcolor: 'background.default',
+	},
+	rootSideNav: {
+		width: {
 			sm: '280px',
 			xs: '100%',
 		},
@@ -98,5 +98,5 @@ const sx = {
 			sm: '280px',
 			xs: '100%',
 		},
-  },
+	},
 }

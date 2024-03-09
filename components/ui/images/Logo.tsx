@@ -25,7 +25,7 @@ const Logo: React.FC<LogoProps> = (props) => {
 				minHeight: `${height}px`,
 				objectFit: 'contain',
 				borderRadius: theme.shape.borderRadius,
-			}}			
+			}}
 		/>
 	) : (
 		<EmptyImage height={height} />

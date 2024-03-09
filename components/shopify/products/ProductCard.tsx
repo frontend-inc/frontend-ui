@@ -19,7 +19,7 @@ type ProductCardProps = {
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
 	enableQuickShop?: boolean
-  enableOkendoStarRating?: boolean
+	enableOkendoStarRating?: boolean
 	buttonVariant?: 'contained' | 'outlined' | 'text'
 }
 
@@ -32,22 +32,22 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 		enableAddToCart = false,
 		enableQuantity = false,
 		enableQuickShop = false,
-    enableOkendoStarRating = false,
+		enableOkendoStarRating = false,
 		buttonVariant = 'contained',
 		buttonText,
 	} = props || {}
 
 	const [open, setOpen] = useState(false)
-  const { setSearchOpen } = useContext(ShopContext) as any
+	const { setSearchOpen } = useContext(ShopContext) as any
 
 	const handleQuickShop = () => {
 		setOpen(true)
 	}
 
 	const handleItemClick = () => {
-		if (handleClick) {    
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      setSearchOpen(false)
+		if (handleClick) {
+			window.scrollTo({ top: 0, behavior: 'smooth' })
+			setSearchOpen(false)
 			handleClick()
 		}
 	}
@@ -71,16 +71,17 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 				}}
 			>
 				<Stack
-          spacing={0.5}
-          direction="column" 
-          sx={{ 
-            ...sx.text,
-            ...(enableOkendoStarRating && sx.textWithReviews),
-          }}>
+					spacing={0.5}
+					direction="column"
+					sx={{
+						...sx.text,
+						...(enableOkendoStarRating && sx.textWithReviews),
+					}}
+				>
 					<Typography color="textPrimary" variant="subtitle1">
 						{truncate(product?.title)}
 					</Typography>
-          { enableOkendoStarRating && <OkendoStarRating product={product} /> }          
+					{enableOkendoStarRating && <OkendoStarRating product={product} />}
 					<Typography color="textSecondary" variant="body2">
 						{formatCurrency(product?.priceRange?.minVariantPrice?.amount)}
 					</Typography>
@@ -90,9 +91,9 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 						<AddToCartButton
 							product={product}
 							variant={
-                //@ts-ignore
-                product?.variants?.edges[0]?.node
-              }
+								//@ts-ignore
+								product?.variants?.edges[0]?.node
+							}
 							label={buttonText}
 							enableQuantity={enableQuantity}
 							buttonVariant={buttonVariant}
@@ -136,9 +137,9 @@ const sx = {
 	text: {
 		height: '80px',
 	},
-  textWithReviews: {
-    height: '110px',  
-  },
+	textWithReviews: {
+		height: '110px',
+	},
 	contentBorder: {
 		p: 1,
 		pt: 0,

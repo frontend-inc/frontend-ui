@@ -27,10 +27,10 @@ const OrderItem: React.FC<OrderItemProps> = (props) => {
 					<Image
 						alt={order?.name}
 						src={
-              //@ts-ignore
-              order?.lineItems?.edges[0]?.node?.variant?.image?.url
-            }
-            //@ts-ignore
+							//@ts-ignore
+							order?.lineItems?.edges[0]?.node?.variant?.image?.url
+						}
+						//@ts-ignore
 						width={64}
 						height={64}
 					/>

@@ -12,8 +12,7 @@ type ProductModalProps = {
 }
 
 const ProductModal: React.FC<ProductModalProps> = (props) => {
-	
-  const {
+	const {
 		handle,
 		enableQuantity,
 		open = false,

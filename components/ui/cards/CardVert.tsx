@@ -94,7 +94,7 @@ export default CardVert
 
 const sx = {
 	root: {
-    width: '100%',
+		width: '100%',
 		bgcolor: 'background.main',
 	},
 	rootBorder: {
@@ -104,7 +104,7 @@ const sx = {
 		overflow: 'hidden',
 	},
 	imageContainer: {
-    width: "100%",
+		width: '100%',
 		position: 'relative',
 		flexDirection: 'column',
 		overflow: 'hidden',

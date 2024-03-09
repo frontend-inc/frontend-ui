@@ -26,11 +26,7 @@ const FilterPopup: React.FC<FilterPopupProps> = (props) => {
 	} = props
 
 	return (
-		<Popup
-			anchorEl={anchorEl}
-			open={open}
-			handleClose={handleClose}			
-		>
+		<Popup anchorEl={anchorEl} open={open} handleClose={handleClose}>
 			<FilterForm
 				query={query}
 				fields={fields}

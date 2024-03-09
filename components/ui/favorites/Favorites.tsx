@@ -19,7 +19,7 @@ type FavoritesProps = {
 	buttonText?: string
 	enableBorder?: boolean
 	enableGradient?: boolean
-  enableOverlay?: boolean
+	enableOverlay?: boolean
 }
 
 const Favorites: React.FC<FavoritesProps> = (props) => {
@@ -36,7 +36,7 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 		query: defaultQuery = null,
 		enableBorder = false,
 		enableGradient = false,
-    enableOverlay = false,
+		enableOverlay = false,
 	} = props
 
 	const router = useRouter()
@@ -86,7 +86,7 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 			handleClick={handleClick}
 			enableBorder={enableBorder}
 			enableGradient={enableGradient}
-      enableOverlay={enableOverlay}
+			enableOverlay={enableOverlay}
 			emptyTitle="No favorites found"
 			emptyDescription="Try adding some favorites"
 			emptyIcon="Bookmark"

@@ -20,4 +20,3 @@ export const muiTheme = {
 	shape,
 	spacing,
 }
-

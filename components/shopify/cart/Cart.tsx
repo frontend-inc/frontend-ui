@@ -16,9 +16,9 @@ type CartProps = {
 }
 
 interface ShopContextType {
-  cart: any;  // replace CartType with the actual type of your cart
-  cartOpen: () => void
-  toggleCart: () => void
+	cart: any // replace CartType with the actual type of your cart
+	cartOpen: () => void
+	toggleCart: () => void
 }
 
 const Cart: React.FC<CartProps> = (props) => {
@@ -27,7 +27,7 @@ const Cart: React.FC<CartProps> = (props) => {
 	const { trackCartViewed } = useSegment()
 
 	const { cartOpen, toggleCart } = useContext(ShopContext) as any
-  const { cart } = useCart()
+	const { cart } = useCart()
 
 	useEffect(() => {
 		if (cartOpen && cart) {

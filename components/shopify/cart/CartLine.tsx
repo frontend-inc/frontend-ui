@@ -53,25 +53,20 @@ const CartLine: React.FC<CartLineProps> = (props) => {
 	const { trackRemoveFromCart } = useSegment()
 	const { loading, cartLineRemove, cartLineUpdate } = useCart()
 	const { shopUrl, setCartOpen } = useContext(ShopContext) as any
-	
-  const { 
-    id, 
-    quantity, 
-    merchandise, 
-    sellingPlanAllocation 
-  } = line || {}
 
-  const [price, setPrice] = useState(null)
-  const [compareAtPrice, setCompareAtPrice] = useState(null)
+	const { id, quantity, merchandise, sellingPlanAllocation } = line || {}
+
+	const [price, setPrice] = useState(null)
+	const [compareAtPrice, setCompareAtPrice] = useState(null)
 
 	const {
-    //@ts-ignore
+		//@ts-ignore
 		product,
 		price: { amount },
-    //@ts-ignore
-    compareAtPrice: compareAtAmount,
-		image: { url }
-	} = merchandise || {} 
+		//@ts-ignore
+		compareAtPrice: compareAtAmount,
+		image: { url },
+	} = merchandise || {}
 
 	const handleUpdateQuantity = async (quantity) => {
 		await cartLineUpdate({ id, quantity })
@@ -90,8 +85,8 @@ const CartLine: React.FC<CartLineProps> = (props) => {
 	}
 
 	const handleRemoveLineItem = async (event) => {
-    event.stopPropagation()
-    await cartLineRemove(id)	
+		event.stopPropagation()
+		await cartLineRemove(id)
 		trackRemoveFromCart({
 			quantity,
 			variant: merchandise,
@@ -104,15 +99,17 @@ const CartLine: React.FC<CartLineProps> = (props) => {
 		setCartOpen(false)
 	}
 
-  useEffect(() => {
-    if (sellingPlanAllocation?.priceAdjustments?.length > 0) {
-      setPrice(sellingPlanAllocation.priceAdjustments[0].price.amount)
-      setCompareAtPrice(sellingPlanAllocation.priceAdjustments[0].compareAtPrice.amount)
-    } else {
-      setPrice(amount)
-      setCompareAtPrice(compareAtAmount?.amount)
-    }
-  }, [price, sellingPlanAllocation])
+	useEffect(() => {
+		if (sellingPlanAllocation?.priceAdjustments?.length > 0) {
+			setPrice(sellingPlanAllocation.priceAdjustments[0].price.amount)
+			setCompareAtPrice(
+				sellingPlanAllocation.priceAdjustments[0].compareAtPrice.amount
+			)
+		} else {
+			setPrice(amount)
+			setCompareAtPrice(compareAtAmount?.amount)
+		}
+	}, [price, sellingPlanAllocation])
 
 	return (
 		<ListItem
@@ -122,9 +119,9 @@ const CartLine: React.FC<CartLineProps> = (props) => {
 				...(loading && sx.loading),
 			}}
 			secondaryAction={
-        <IconButton onClick={handleRemoveLineItem} size="small">
-          <Icon name="X" size={20} />
-        </IconButton>
+				<IconButton onClick={handleRemoveLineItem} size="small">
+					<Icon name="X" size={20} />
+				</IconButton>
 			}
 		>
 			<ListItemIcon sx={sx.listItemIcon}>
@@ -132,9 +129,9 @@ const CartLine: React.FC<CartLineProps> = (props) => {
 					<TouchableOpacity handleClick={handleClick}>
 						<Image
 							alt={
-                //@ts-ignore
-                line?.merchandise?.product?.title
-              }
+								//@ts-ignore
+								line?.merchandise?.product?.title
+							}
 							src={url}
 							height={96}
 							width={96}
@@ -144,36 +141,34 @@ const CartLine: React.FC<CartLineProps> = (props) => {
 			</ListItemIcon>
 			<ListItemText
 				primary={
-          //@ts-ignore
-          line?.merchandise?.product?.title
-        }
+					//@ts-ignore
+					line?.merchandise?.product?.title
+				}
 				secondary={
 					<Stack spacing={0.5}>
 						<Typography variant="body2">
-							{line
-                ?.merchandise
-                ?.selectedOptions
-                ?.filter((option) => option.name != 'Title')
-                ?.map((option, i) => option.value)
+							{line?.merchandise?.selectedOptions
+								?.filter((option) => option.name != 'Title')
+								?.map((option, i) => option.value)
 								.join(' / ')}
 						</Typography>
-            { sellingPlanAllocation?.sellingPlan && (
-              <Typography variant="body2" sx={ sx.subscription }>
-                { sellingPlanAllocation?.sellingPlan?.name }
-              </Typography>
-            )}
-            <Stack direction="row" spacing={1}>
-              <Typography variant="body2">
-                {price == 0 ? 'Free' : formatCurrency(price)}{' '}
-              </Typography>
-            </Stack>
-            <Box>
-              <CartQuantityInput
-                quantity={quantity}
-                handleAddQuantity={handleAddQuantity}
-                handleRemoveQuantity={handleRemoveQuantity}
-              />
-            </Box>
+						{sellingPlanAllocation?.sellingPlan && (
+							<Typography variant="body2" sx={sx.subscription}>
+								{sellingPlanAllocation?.sellingPlan?.name}
+							</Typography>
+						)}
+						<Stack direction="row" spacing={1}>
+							<Typography variant="body2">
+								{price == 0 ? 'Free' : formatCurrency(price)}{' '}
+							</Typography>
+						</Stack>
+						<Box>
+							<CartQuantityInput
+								quantity={quantity}
+								handleAddQuantity={handleAddQuantity}
+								handleRemoveQuantity={handleRemoveQuantity}
+							/>
+						</Box>
 					</Stack>
 				}
 			/>
@@ -201,24 +196,24 @@ const sx = {
 	button: {
 		px: 0,
 		color: 'text.primary',
-		border: 'none',    
+		border: 'none',
 		'&:hover': {
 			border: 'none',
 		},
 		fontSize: (theme) => theme.typography.overline.fontSize,
 	},
-  subscription: {
-    fontStyle: 'italic',
-  },
-  compareAtPrice: {
-    textDecoration: 'line-through',
-    color: 'text.secondary',
-    opacity: 0.6,
-    fontSize: 12
-  },
-  secondaryAction: {
-    height: '100%',
-    alignItems: 'flex-end',
-    justifyContent: 'space-between',
-  }
+	subscription: {
+		fontStyle: 'italic',
+	},
+	compareAtPrice: {
+		textDecoration: 'line-through',
+		color: 'text.secondary',
+		opacity: 0.6,
+		fontSize: 12,
+	},
+	secondaryAction: {
+		height: '100%',
+		alignItems: 'flex-end',
+		justifyContent: 'space-between',
+	},
 }

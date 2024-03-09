@@ -10,12 +10,9 @@ type CellHasManyProps = {
 const CellHasMany: React.FC<CellHasManyProps> = (props) => {
 	const { value, handleClick } = props
 	return (
-		<CellButton 
-      handleClick={handleClick} 
-      icon={<ForkRight />} 
-    >
-      { value }
-    </CellButton>
+		<CellButton handleClick={handleClick} icon={<ForkRight />}>
+			{value}
+		</CellButton>
 	)
 }
 
