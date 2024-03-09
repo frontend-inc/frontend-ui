@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Box, Stack } from '@mui/material'
 import { Icon, Placeholder } from '../../../components'
 import { Tabs as MuiTabs, Tab as MuiTab, Typography } from '@mui/material'
-import Tab from './TabItem'
+import TabContent from './TabContent'
 
 type TabsProps = {
 	title?: string
@@ -48,11 +48,11 @@ const Tabs: React.FC<TabsProps> = (props) => {
 			<MuiTabs
 				centered
 				orientation={orientation}
-				variant={fullWidth ? 'fullWidth' : 'standard'}
 				value={currentTab}
 				onChange={handleChange}
-				color="secondary"
+				color="primary"
 				sx={{
+          ...sx.tabs,
 					...(orientation === 'vertical' && sx.verticalTabs),
 				}}
 			>
@@ -69,14 +69,14 @@ const Tabs: React.FC<TabsProps> = (props) => {
 										color={currentTab === i ? 'primary.main' : 'text.primary'}
 									/>
 								</Box>
-							) : null
+							) : ''
 						}
 						iconPosition="start"
 					/>
 				))}
 			</MuiTabs>
 			{items?.map((item, i) => (
-				<Tab
+				<TabContent
 					key={i}
 					active={i == currentTab}
 					title={item?.title}
@@ -101,6 +101,15 @@ const sx = {
 	root: {
 		width: '100%',
 	},
+  tabs: {
+    color: 'text.primary',
+    '& .MuiButtonBase-root': {
+      color: 'text.primary',
+    },
+    '& .MuiButtonBase-root.Mui-selected': {
+      color: 'text.primary'
+    }
+  },
 	title: {
 		width: '100%',
 		textAlign: 'center',

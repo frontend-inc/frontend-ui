@@ -18,7 +18,6 @@ type RemoteAutosuggestProps = {
 	imageField?: string
 	direction?: 'row' | 'column'
 	defaultQuery?: Record<string, any>
-	defaultOptions?: Option[]
 }
 
 const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
@@ -34,7 +33,6 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		placeholder = 'Search',
 		defaultQuery = null,
 		direction = 'column',
-		defaultOptions = [],
 	} = props
 
 	const { error, clearError } = useError({
@@ -72,10 +70,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 				label: resource[displayField],
 				value: resource[valueParam],
 			}))
-			setOptions({
-				..._options,
-				...defaultOptions,
-			})
+			setOptions(_options)
 		}
 	}, [resources])
 
