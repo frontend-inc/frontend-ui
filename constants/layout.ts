@@ -1,8 +1,8 @@
 export const LOGO_HEIGHT = 60
 export const LOGO_WIDTH = 120
 
-export const HEADER_LOGO_HEIGHT = 32
-export const HEADER_LOGO_WIDTH = 120
+export const HEADER_LOGO_HEIGHT = 40
+export const HEADER_LOGO_WIDTH = 80
 
 export const CARD_VERT_HEIGHT = 240
 export const CARD_VERT_WIDTH = 240
