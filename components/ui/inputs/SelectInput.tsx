@@ -1,8 +1,8 @@
 import React from 'react'
 import { FormControl, Stack, Select, MenuItem, Typography } from '@mui/material'
-import { SelectInputProps } from '../../../types'
+import { SelectInputPropsType } from '../../..'
 
-const SelectInput: React.FC<SelectInputProps> = (props) => {
+const SelectInput: React.FC<SelectInputPropsType> = (props) => {
 	const {
 		label,
 		direction = 'column',

@@ -38,7 +38,7 @@ const ArrayItemInput: React.FC<ArrayItemInputProps> = (props) => {
 	)
 }
 
-const ArrayListInput: React.FC<InputProps> = (props) => {
+const ArrayListInput: React.FC<InputPropsType> = (props) => {
 	const { name, label, value: values = [], handleChange } = props
 
 	const handleAddClick = () => {

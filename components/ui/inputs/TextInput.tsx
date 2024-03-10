@@ -3,10 +3,10 @@ import { Stack, FormControl, InputBase, Typography } from '@mui/material'
 import { ErrorText } from '../../../components'
 import { sx } from './styles'
 import { useError } from '../../../hooks'
-import { TextInputProps } from '../../../types'
+import { TextInputPropsType } from '../../../types'
 import { useDebounce } from 'use-debounce'
 
-const TextInput: React.FC<TextInputProps> = (props) => {
+const TextInput: React.FC<TextInputPropsType> = (props) => {
 	const {
 		label,
 		type,
