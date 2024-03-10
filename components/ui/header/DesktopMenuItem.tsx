@@ -1,8 +1,19 @@
-import React from 'react'
-import { Button, Menu, MenuItem, Typography } from '@mui/material'
+import React, { useContext } from 'react'
+import { AppContext } from '../../../context'
+import { 
+  CircularProgress, 
+  Box, 
+  Divider, 
+  Button, 
+  Menu, 
+  MenuItem, 
+  Typography 
+} from '@mui/material'
 import { useMenu } from '../../../hooks'
 import { MenuLink } from '../../..'
 import { ExpandMore } from '@mui/icons-material'
+import { useCollections } from 'frontend-shopify'
+import { useRouter } from 'next/router'
 
 type SubmenuItem = {
 	menuItem: MenuLink
@@ -30,16 +41,36 @@ type DesktopMenuItemProps = {
 }
 
 const DesktopMenuItem: React.FC<DesktopMenuItemProps> = (props) => {
+
+  const router = useRouter()
+  const { clientUrl } = useContext(AppContext)
+
 	const { menuItem, handleClick } = props
 
-	const { children } = menuItem
+	const { children, shopify_collection } = menuItem
+  
+  const { loading, products, findCollection } = useCollections()
 
 	const { open, openMenu, closeMenu, anchorEl } = useMenu()
 
+  const handleCollectionClick = () => {
+    router.push(`${clientUrl}/collections/${shopify_collection}`)
+  }
+
+  const handleProductClick = (product) => {
+    router.push(`${clientUrl}/products/${product.handle}`)
+  }
+
 	const handleMenuClick = (ev) => {
 		if (children?.length > 0) {
-			openMenu(ev)
-		} else {
+			openMenu(ev)      
+      if(menuItem?.shopify_collection){
+        findCollection(menuItem.shopify_collection)
+      }
+    } else if(shopify_collection){
+      openMenu(ev)      
+      findCollection(shopify_collection)
+    } else {
 			//@ts-ignore
 			handleClick(menuItem.path)
 		}
@@ -47,7 +78,7 @@ const DesktopMenuItem: React.FC<DesktopMenuItemProps> = (props) => {
 
 	const handleMouseLeave = () => {
 		closeMenu()
-	}
+	}  
 
 	return (
 		<>
@@ -55,7 +86,7 @@ const DesktopMenuItem: React.FC<DesktopMenuItemProps> = (props) => {
 				sx={sx.menuButton}
 				onClick={handleMenuClick}
 				endIcon={
-					children?.length > 0 && (
+					(children?.length > 0 || shopify_collection) && (
 						<ExpandMore
 							sx={{
 								...sx.icon,
@@ -76,12 +107,37 @@ const DesktopMenuItem: React.FC<DesktopMenuItemProps> = (props) => {
 				}}
 			>
 				{children?.map((child, index) => (
-					<DesktopSubmenuItem
-						key={index}
-						menuItem={child}
-						handleClick={handleClick}
-					/>
+					<MenuItem
+            //@ts-ignore
+            onClick={() => handleClick(child.path)}
+          >
+            <Typography variant="button" color="text.primary">
+              {child.name}
+            </Typography>
+          </MenuItem>        
 				))}
+        { loading && (
+          <Box sx={ sx.loading }>
+            <CircularProgress size={30} />
+          </Box>
+        )}
+        { products?.slice(0,5)?.map((product, i) => (
+          <MenuItem key={i} onClick={() => handleProductClick(product)}>
+            <Typography variant="button" color="text.primary">
+              {product.title}
+            </Typography>
+          </MenuItem>
+        ))}
+        { products?.length > 5 && (
+          <>
+            <Divider /> 
+            <MenuItem onClick={handleCollectionClick}>
+              <Typography variant="button" color="text.primary">
+                See All
+              </Typography>
+            </MenuItem>
+          </> 
+        )}
 			</Menu>
 		</>
 	)
@@ -111,4 +167,10 @@ const sx = {
 	rotateIcon: {
 		transform: 'rotate(-180deg)',
 	},
+  loading: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    p: 2
+  }
 }

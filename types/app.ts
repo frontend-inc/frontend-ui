@@ -5,6 +5,7 @@ export type MenuLink = {
 	icon?: string
 	position: number
 	parent_id?: number | null
+  shopify_collection?: string
 	children: MenuLink[] | []
 }
 
