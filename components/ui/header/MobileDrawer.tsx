@@ -6,8 +6,8 @@ import { AppContext } from '../../../context'
 import SideNavMenuItem from './SideNavMenuItem'
 import { MenuLink } from '../../..'
 
-type MobileDrawerProps = {
-	editing?: boolean
+type MobileDrawerProps = {  
+	editing?: boolean  
 	menuItems?: MenuLink[]
 	handleClick: (path: string) => void
 	enableAuth?: boolean

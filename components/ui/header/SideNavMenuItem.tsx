@@ -91,7 +91,6 @@ const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 	return (
 		<>
 			<ListItem
-        sx={ sx.listItem }
 				disablePadding
 				disableGutters
 				secondaryAction={

@@ -70,7 +70,6 @@ const Header: React.FC<HeaderProps> = (props) => {
 			/>
 			<MobileDrawer
 				editing={editing}
-        logo={logo}
         enableAuth={enableAuth}
         enableShopify={enableShopify}
         menuItems={menuItems}
