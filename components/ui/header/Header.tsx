@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Box } from '@mui/material'
 import { AppContext } from '../../../context'
 import MobileDrawer from './MobileDrawer'
-import MobileNav from './MobileNav'
+import MobileNav from './MobileTopNav'
 import DesktopTopNav from './DesktopTopNav'
 import DesktopSideNav from './DesktopSideNav'
 import { MenuLink } from '../../..'
@@ -70,10 +70,11 @@ const Header: React.FC<HeaderProps> = (props) => {
 			/>
 			<MobileDrawer
 				editing={editing}
-				enableAuth={enableAuth}
-				enableShopify={enableShopify}
-				menuItems={menuItems}
-				handleClick={handleClick}
+        logo={logo}
+        enableAuth={enableAuth}
+        enableShopify={enableShopify}
+        menuItems={menuItems}
+        handleClick={handleClick}
 			/>
 		</Box>
 	)

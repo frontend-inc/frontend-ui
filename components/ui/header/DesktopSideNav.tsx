@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
-import { Stack, Button, Box, Hidden } from '@mui/material'
-import { AuthButton, Logo, Icon } from '../..'
+import { Stack, List, Box, Hidden } from '@mui/material'
+import { AuthButton, Logo } from '../..'
 import { ShopifyAuth, SearchButton, CartButton } from '../../shopify'
 import { AppContext } from '../../../context'
 import { HEADER_LOGO_HEIGHT, HEADER_LOGO_WIDTH } from '../../../constants/index'
 import { MenuLink } from '../../..'
+import MobileMenuItem from './MobileMenuItem'
 
 type DesktopNavProps = {
 	editing?: boolean
@@ -52,25 +53,35 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 						<Box sx={sx.centerMenu}>
 							<Logo src={logo} width={logoWidth} height={logoHeight} />
 						</Box>
-						{menuItems?.map((menuItem, index) => (
-							<Button
-								sx={sx.menuButton}
-								key={index}
-								onClick={() => handleClick(menuItem.path)}
-							>
-								{menuItem.name}
-							</Button>
-						))}
+            <List>
+						{menuItems
+						  ?.filter((menuItem) => menuItem.parent_id == null)
+						  ?.map((menuItem, index) => (
+							  <MobileMenuItem
+								  key={index}
+								  menuItem={menuItem}
+								  handleClick={handleClick}
+							  />
+						  ))}
 						{enableShopify && (
 							<>
-								<SearchButton editing={editing} />
-								<CartButton editing={editing} />
+								<SearchButton 
+                  variant="sideNav"
+                  editing={editing} 
+                />
+								<CartButton 
+                  variant="sideNav"
+                  editing={editing} 
+                />
 							</>
 						)}
+            </List>
 					</Stack>
 					{(enableAuth || enableShopify) && (
 						<Box sx={sx.divider}>
-							{enableShopify && <ShopifyAuth />}
+							{enableShopify && 
+                <ShopifyAuth variant="sideNav" />
+              }
 							{enableAuth && (
 								<AuthButton
 									showLabel

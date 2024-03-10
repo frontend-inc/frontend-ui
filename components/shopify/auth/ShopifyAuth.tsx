@@ -10,11 +10,11 @@ import { useShop } from 'frontend-shopify'
 import { Icon } from '../../../components'
 import { useRouter } from 'next/router'
 
-type DesktopShopifyAuthButtonProps = {
+type TopNavShopifyAuthButtonProps = {
 	handleClick: () => void
 }
 
-const DesktopShopifyAuthButton: React.FC<DesktopShopifyAuthButtonProps> = (
+const TopNavShopifyAuthButton: React.FC<TopNavShopifyAuthButtonProps> = (
 	props
 ) => {
 	const { handleClick } = props
@@ -26,11 +26,11 @@ const DesktopShopifyAuthButton: React.FC<DesktopShopifyAuthButtonProps> = (
 	)
 }
 
-type MobileShopifyAuthButtonProps = {
+type SideNavShopifyAuthButtonProps = {
 	handleClick: () => void
 }
 
-const MobileShopifyAuthButton: React.FC<MobileShopifyAuthButtonProps> = (
+const SideNavShopifyAuthButton: React.FC<SideNavShopifyAuthButtonProps> = (
 	props
 ) => {
 	const { handleClick } = props
@@ -52,7 +52,7 @@ const MobileShopifyAuthButton: React.FC<MobileShopifyAuthButtonProps> = (
 
 type ShopifyAuthProps = {
 	customerUrl?: string
-	variant?: 'desktop' | 'mobile'
+	variant?: 'topNav' | 'sideNav'
 }
 
 const ShopifyAuth: React.FC<ShopifyAuthProps> = (props) => {
@@ -80,10 +80,10 @@ const ShopifyAuth: React.FC<ShopifyAuthProps> = (props) => {
 		}
 	}
 
-	return variant == 'desktop' ? (
-		<DesktopShopifyAuthButton handleClick={handleClick} />
+	return variant == 'topNav' ? (
+		<TopNavShopifyAuthButton handleClick={handleClick} />
 	) : (
-		<MobileShopifyAuthButton handleClick={handleClick} />
+		<SideNavShopifyAuthButton handleClick={handleClick} />
 	)
 }
 

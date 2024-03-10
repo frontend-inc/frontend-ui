@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Box, Fade, Popover } from '@mui/material'
+import React from 'react'
+import { Box, Popover, PopoverOrigin } from '@mui/material'
 
 type PopupProps = {
 	open: boolean
@@ -8,9 +8,12 @@ type PopupProps = {
 	children: any
 	disablePadding?: boolean
 	p?: number
+  anchorOrigin?: PopoverOrigin
+  transformOrigin?: PopoverOrigin
 }
 
 const Popup: React.FC<PopupProps> = (props) => {
+
 	const {
 		open,
 		handleClose,
@@ -18,6 +21,14 @@ const Popup: React.FC<PopupProps> = (props) => {
 		children,
 		disablePadding = false,
 		p = 2,
+    anchorOrigin={
+      vertical: 'bottom',
+      horizontal: 'left'
+    },
+    transformOrigin={
+      vertical: 'top',
+      horizontal: 'left'
+    }
 	} = props || {}
 
 	return (
@@ -25,10 +36,8 @@ const Popup: React.FC<PopupProps> = (props) => {
 			open={open}
 			anchorEl={anchorEl}
 			onClose={handleClose}
-			anchorOrigin={{
-				vertical: 'bottom',
-				horizontal: 'left',
-			}}
+			anchorOrigin={anchorOrigin}
+      transformOrigin={transformOrigin}
 			sx={sx.root}
 		>
 			<Box

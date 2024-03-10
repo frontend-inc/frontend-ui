@@ -10,13 +10,13 @@ import { ShopContext } from 'frontend-shopify'
 import { AppContext } from '../../../context'
 import { Icon } from '../../../components'
 
-type MobileCartButtonProps = {
+type SideNavCartButtonProps = {
 	label?: string
 	totalQuantity: number
 	handleClick: () => void
 }
 
-const MobileCartButton: React.FC<MobileCartButtonProps> = (props) => {
+const SideNavCartButton: React.FC<SideNavCartButtonProps> = (props) => {
 	const { label = 'Cart', totalQuantity, handleClick } = props
 
 	return (
@@ -44,13 +44,13 @@ const MobileCartButton: React.FC<MobileCartButtonProps> = (props) => {
 	)
 }
 
-type DesktopCartButtonProps = {
+type TopNavCartButtonProps = {
 	icon?: string
 	totalQuantity: number
 	handleClick: () => void
 }
 
-const DesktopCartButton: React.FC<DesktopCartButtonProps> = (props) => {
+const TopNavCartButton: React.FC<TopNavCartButtonProps> = (props) => {
 	const { icon = 'ShoppingCart', totalQuantity, handleClick } = props
 
 	return (
@@ -64,7 +64,7 @@ const DesktopCartButton: React.FC<DesktopCartButtonProps> = (props) => {
 
 type CartButtonProps = {
 	icon?: string
-	variant?: 'desktop' | 'mobile'
+	variant?: 'topNav' | 'sideNav'
 	editing?: boolean
 	label?: string
 }
@@ -87,14 +87,14 @@ const CartButton: React.FC<CartButtonProps> = (props) => {
 		}
 	}
 
-	return variant == 'desktop' ? (
-		<DesktopCartButton
+	return variant == 'topNav' ? (
+		<TopNavCartButton
 			icon={icon}
 			handleClick={handleCartClick}
 			totalQuantity={cart?.totalQuantity}
 		/>
 	) : (
-		<MobileCartButton
+		<SideNavCartButton
 			label={label}
 			handleClick={handleCartClick}
 			totalQuantity={cart?.totalQuantity}

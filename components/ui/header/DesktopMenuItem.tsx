@@ -108,6 +108,14 @@ const DesktopMenuItem: React.FC<DesktopMenuItemProps> = (props) => {
 				MenuListProps={{
 					onMouseLeave: handleMouseLeave,
 				}}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center'
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center'
+        }}
 			>
 				{children?.map((child, index) => (
 					<MenuItem

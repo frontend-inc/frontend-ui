@@ -33,8 +33,8 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 			anchor="left"
 			styles={sx.drawer}
 		>
-			<Box sx={sx.mobileMenu}>
-				<List sx={sx.mobileMenuItems}>
+			<Box sx={sx.sideNavMenu}>
+				<List sx={sx.sideNavMenuItems}>
 					{menuItems
 						?.filter((menuItem) => menuItem.parent_id == null)
 						?.map((menuItem, index) => (
@@ -44,16 +44,22 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 								handleClick={handleMenuClick}
 							/>
 						))}
-					{enableShopify && (
-						<>
-							<SearchButton variant="mobile" editing={editing} />
-							<CartButton variant="mobile" editing={editing} />
-						</>
-					)}
-				</List>
+            {enableShopify && (
+              <>
+                <SearchButton 
+                  variant="sideNav" 
+                  editing={editing} 
+                />
+                <CartButton 
+                  variant="sideNav" 
+                  editing={editing} 
+                />
+              </>
+            )}
+          </List>
 				{(enableAuth || enableShopify) && (
 					<Box sx={sx.divider}>
-						{enableShopify && <ShopifyAuth variant="mobile" />}
+						{enableShopify && <ShopifyAuth variant="sideNav" />}
 						{enableAuth && (
 							<AuthButton
 								editing={editing}
@@ -78,7 +84,7 @@ const sx = {
 		bgcolor: 'background.default',
 		color: 'text.primary',
 	},
-	mobileMenu: {
+	sideNavMenu: {
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
@@ -89,7 +95,7 @@ const sx = {
 			sm: '320px',
 		},
 	},
-	mobileMenuItems: {
+	sideNavMenuItems: {
 		width: '100%',
 	},
 	divider: {

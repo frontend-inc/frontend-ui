@@ -10,11 +10,11 @@ import { ShopContext } from 'frontend-shopify'
 import { AppContext } from '../../../context'
 import { Icon } from '../../../components'
 
-type DesktopSearchButtonProps = {
+type TopNavSearchButtonProps = {
 	handleClick: () => void
 }
 
-const DesktopSearchButton: React.FC<DesktopSearchButtonProps> = (props) => {
+const TopNavSearchButton: React.FC<TopNavSearchButtonProps> = (props) => {
 	const { handleClick } = props
 
 	return (
@@ -24,11 +24,11 @@ const DesktopSearchButton: React.FC<DesktopSearchButtonProps> = (props) => {
 	)
 }
 
-type MobileSearchButtonProps = {
+type SideNavSearchButtonProps = {
 	handleClick: () => void
 }
 
-const MobileSearchButton: React.FC<MobileSearchButtonProps> = (props) => {
+const SideNavSearchButton: React.FC<SideNavSearchButtonProps> = (props) => {
 	const { handleClick } = props
 
 	return (
@@ -48,7 +48,7 @@ const MobileSearchButton: React.FC<MobileSearchButtonProps> = (props) => {
 
 type SearchButtonProps = {
 	editing?: boolean
-	variant?: 'desktop' | 'mobile'
+	variant?: 'topNav' | 'sideNav'
 }
 
 const SearchButton: React.FC<SearchButtonProps> = (props) => {
@@ -63,10 +63,10 @@ const SearchButton: React.FC<SearchButtonProps> = (props) => {
 		}
 	}
 
-	return variant == 'desktop' ? (
-		<DesktopSearchButton handleClick={handleToggleSearch} />
+	return variant == 'topNav' ? (
+		<TopNavSearchButton handleClick={handleToggleSearch} />
 	) : (
-		<MobileSearchButton handleClick={handleToggleSearch} />
+		<SideNavSearchButton handleClick={handleToggleSearch} />
 	)
 }
 
