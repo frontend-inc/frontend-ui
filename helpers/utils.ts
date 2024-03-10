@@ -70,3 +70,11 @@ export const scrollTo = (domId) => {
 	const elem = document.getElementById(domId)
 	elem?.scrollIntoView({ behavior: 'smooth' })
 }
+
+
+export const formatCurrency = (amount, currency = 'USD') => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency,
+  }).format(amount)
+}

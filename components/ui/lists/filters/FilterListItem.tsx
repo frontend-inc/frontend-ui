@@ -7,7 +7,7 @@ import {
 	ListItemText,
 	Checkbox,
 } from '@mui/material'
-import { Option } from '../../../../types'
+import { OptionType } from '../../../../types'
 
 type FilterListItemProps = {
 	label?: string

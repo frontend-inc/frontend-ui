@@ -7,23 +7,27 @@ import {
   Button 
 } from '@mui/material'
 import PriceCard from './PriceCard'
-import { Price } from '../../..'
+import { PriceType } from '../../..'
 
 type PricesProps = {
-  prices: Price[]
+  title?: string
+  prices: PriceType[]
 }
 
 const Prices: React.FC<PricesProps> = (props) => {
 
   const { 
+    title,
     prices 
   } = props 
 
   return(
     <Box>
-      <Typography variant="h6" color="textPrimary">
-        Prices
+      { title && (
+      <Typography sx={ sx.title } variant="h6" color="textPrimary">
+        { title }
       </Typography>
+      )}
       <Stack direction="row" spacing={1}>
         {prices.map((price, index) => (
           <PriceCard 
@@ -37,3 +41,11 @@ const Prices: React.FC<PricesProps> = (props) => {
 }
 
 export default Prices
+
+const sx = {
+  title: {
+    width: "100%",
+    textAlign: 'center',
+    mb: 2
+  }
+}

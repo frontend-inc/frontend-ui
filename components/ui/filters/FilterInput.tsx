@@ -12,7 +12,7 @@ import {
 } from '../../../constants/index'
 import { Box, IconButton, Typography } from '@mui/material'
 import { TextInput, Autosuggest, ArrayInput } from '../../../components'
-import { Option, FilterOption, SyntheticEvent } from '../../../types'
+import { OptionType, FilterOption, SyntheticEvent } from '../../../types'
 import { X } from 'lucide-react'
 
 type FieldOption = FilterOption & {

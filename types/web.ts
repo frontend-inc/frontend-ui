@@ -26,6 +26,7 @@ export type PriceType = {
   title: string  
   price: number
   features: string   
-  url: string
+  disabledFeatures: string
   buttonText: string
+  url: string
 }

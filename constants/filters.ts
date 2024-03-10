@@ -1,4 +1,4 @@
-import { Option } from '../types'
+import { OptionType } from '../types'
 
 type SortDirectionOption = {
 	label: string

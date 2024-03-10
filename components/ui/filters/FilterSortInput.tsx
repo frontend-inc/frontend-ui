@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 import { Autosuggest } from '../../../components'
-import { Option } from '../../../types'
+import { OptionType } from '../../../types'
 
 type FilterSortProps = {
 	label: string
