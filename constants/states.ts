@@ -1,4 +1,4 @@
-import { Option } from '../types'
+import { OptionType } from '../types'
 
 export const STATES: OptionType[] = [
 	{ value: 'Alabama', label: 'Alabama' },

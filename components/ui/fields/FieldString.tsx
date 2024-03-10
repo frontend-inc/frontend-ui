@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography } from '@mui/material'
 import { FieldWrapper } from '../../../components'
-import { TypographyVariants } from '../../../types'
+import { TypographyVariantsType } from '../../../types'
 
 type FieldStringProps = {
 	value: string

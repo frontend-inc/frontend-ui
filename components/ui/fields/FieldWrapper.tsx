@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
-import { TypographyVariants } from '../../../types'
+import { TypographyVariantsType } from '../../../types'
 
 type FieldWrapperProps = {
 	variant?: TypographyVariantsType

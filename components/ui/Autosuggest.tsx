@@ -11,7 +11,7 @@ import {
 import { useError } from '../../hooks'
 import { Icon, ErrorText } from '../../components'
 import Autocomplete from '@mui/material/Autocomplete'
-import { SyntheticEvent } from '../../types'
+import { SyntheticEventType } from '../../types'
 import Image from 'next/image'
 
 type AutocompleteOptionProps = {

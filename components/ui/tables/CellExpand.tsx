@@ -1,6 +1,6 @@
 import React, { memo, useRef, useState, useEffect } from 'react'
 import { Box, Popper, Paper, Typography } from '@mui/material'
-import { TypographyVariants } from '../../../types'
+import { TypographyVariantsType } from '../../../types'
 
 type CellExpandProps = {
 	cell: React.ReactNode

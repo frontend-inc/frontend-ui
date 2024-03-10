@@ -6,7 +6,7 @@ import {
 	Box,
 	InputAdornment,
 } from '@mui/material'
-import { SyntheticEvent } from '../../../types'
+import { SyntheticEventType } from '../../../types'
 
 type NumberRangeInputProps = {
 	label?: string

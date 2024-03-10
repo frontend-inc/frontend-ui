@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { CoverImage } from '../../../components'
 import { useCollections } from 'frontend-shopify'
-import { TypographyVariants } from '../../../types'
+import { TypographyVariantsType } from '../../../types'
 
 type CollectionHeroProps = {
 	handle: string

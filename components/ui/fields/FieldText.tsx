@@ -1,6 +1,6 @@
 import React from 'react'
 import { FieldString } from '../../../components'
-import { TypographyVariants } from '../../../types'
+import { TypographyVariantsType } from '../../../types'
 
 type FieldTextProps = {
 	value?: any

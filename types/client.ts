@@ -1,4 +1,4 @@
-import { Option } from '../types'
+import { OptionType } from '../types'
 
 export type ConfigParams = {
 	collection?: string
@@ -106,7 +106,7 @@ export type FilterOperatorType =
 
 export type FilterWhereType = 'AND' | 'OR'
 
-export type FilterOption = {
+export type FilterOptionType = {
 	where: FilterWhereType
 	field: string
 	operator: FilterOperatorType

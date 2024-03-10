@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Box, Typography, InputBase } from '@mui/material'
 import { sx as inputSx } from './styles'
 import { useDebounce } from 'use-debounce'
-import { SyntheticEvent } from '../../../types'
+import { SyntheticEventType } from '../../../types'
 
 type SearchInputProps = {
 	name?: string

@@ -3,7 +3,7 @@ import { Box, Stack, Typography, Button } from '@mui/material'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 import { AppContext } from '../../../context'
-import { TypographyVariants } from '../../../types'
+import { TypographyVariantsType } from '../../../types'
 
 type CallToActionProps = {
 	label?: string

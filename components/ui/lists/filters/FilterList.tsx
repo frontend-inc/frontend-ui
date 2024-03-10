@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import FilterInput from './FilterInput'
 import FilterListItem from './FilterListItem'
 import {
-	FilterOperator,
-	FilterWhere,
-	FilterOption,
-	Option,
+	FilterOperatorType,
+	FilterWhereType,
+	FilterOptionType,
+	OptionType,
 } from '../../../../types'
 
 type FilterListProps = {
@@ -14,7 +14,7 @@ type FilterListProps = {
 	operator?: FilterOperatorType
 	options?: OptionType[]
 	values?: any
-	handleClick: (filter: FetchOptionType) => void
+	handleClick: (filter: FilterOptionType) => void
 	label?: string
 	icon?: React.ReactNode
 	enableBorder?: boolean
@@ -69,40 +69,3 @@ const FilterList: React.FC<FilterListProps> = (props) => {
 }
 
 export default FilterList
-
-const sx = {
-	root: {
-		width: '100%',
-		minWidth: '280px',
-	},
-	padding: {
-		px: 1,
-	},
-	listItem: {
-		borderRadius: (theme) => theme.shape.borderRadius,
-		height: '40px',
-	},
-	listItemButton: {
-		borderRadius: (theme) => theme.shape.borderRadius,
-		height: '40px',
-	},
-	listItemIcon: {
-		minWidth: '40px',
-		width: '40px',
-	},
-	label: {
-		py: 0,
-		color: 'text.secondary',
-		lineHeight: '1em',
-	},
-	icon: {
-		transition: 'transform 0.3s ease-in-out',
-	},
-	expandMore: {
-		transform: 'rotate(90deg)',
-	},
-	borderTop: {
-		borderTop: '1px solid',
-		borderColor: 'divider',
-	},
-}

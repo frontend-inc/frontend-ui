@@ -8,7 +8,7 @@ import {
 	SwitchInput,
 	TextInput,
 } from '../../../components'
-import { SyntheticEvent } from '../../../types'
+import { SyntheticEventType } from '../../../types'
 
 type FormInputProps = {
 	variant: any

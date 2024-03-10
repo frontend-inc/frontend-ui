@@ -4,7 +4,7 @@ import { Box, Button, Stack, Typography } from '@mui/material'
 import { Image, TouchableOpacity } from '../../../components'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
-import { TypographyVariants } from '../../../types'
+import { TypographyVariantsType } from '../../../types'
 import { FEATURED_CARD_HEIGHT } from '../../../constants/index'
 
 export type FeaturedCardProps = {

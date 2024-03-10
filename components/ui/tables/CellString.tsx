@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography } from '@mui/material'
 import { truncate } from '../../../helpers'
-import { TypographyVariants } from '../../../types'
+import { TypographyVariantsType } from '../../../types'
 
 type CellStringProps = {
 	value: string

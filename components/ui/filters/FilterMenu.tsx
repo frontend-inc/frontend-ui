@@ -3,7 +3,7 @@ import { Box, Button, Fade, Popover, Typography } from '@mui/material'
 import FilterForm from './FilterForm'
 import { FilterList } from '@mui/icons-material'
 import { Search } from 'lucide-react'
-import { SyntheticEvent } from '../../../types'
+import { SyntheticEventType } from '../../../types'
 
 type FilterMenuProps = {
 	open: boolean

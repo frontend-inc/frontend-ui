@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Box, Stack, Typography, Button } from '@mui/material'
 import { Image } from '../../../components'
 import { useRouter } from 'next/router'
-import { TypographyVariants } from '../../../types'
+import { TypographyVariantsType } from '../../../types'
 import { AppContext } from '../../../context'
 
 type CoverImageProps = {

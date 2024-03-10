@@ -10,7 +10,7 @@ import {
 } from '@mui/material'
 import * as COLORS from '@mui/material/colors'
 import { Popup, Icon, TextInput } from '../../../components'
-import { SyntheticEvent } from '../../../types'
+import { SyntheticEventType } from '../../../types'
 import { useMenu } from '../../../hooks'
 import { MUI_COLORS, HEX_COLORS } from '../../../constants/index'
 

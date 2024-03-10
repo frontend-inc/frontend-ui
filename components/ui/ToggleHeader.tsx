@@ -10,7 +10,7 @@ import {
 	ListItemIcon,
 } from '@mui/material'
 import { ChevronRight } from '@mui/icons-material'
-import { TypographyVariants } from '../../types'
+import { TypographyVariantsType } from '../../types'
 
 type ListExpandableProps = {
 	expandable?: boolean

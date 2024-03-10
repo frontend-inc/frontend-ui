@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Typography, Slider } from '@mui/material'
-import { SyntheticEvent } from '../../../types'
+import { SyntheticEventType } from '../../../types'
 
 type NumberSliderInputProps = {
 	label?: string
