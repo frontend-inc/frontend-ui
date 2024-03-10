@@ -9,6 +9,7 @@ import {
 import { ShopContext } from 'frontend-shopify'
 import { AppContext } from '../../../context'
 import { Icon } from '../../../components'
+import { useAlerts } from '../../../hooks'
 
 type TopNavSearchButtonProps = {
 	handleClick: () => void
@@ -52,7 +53,8 @@ type SearchButtonProps = {
 }
 
 const SearchButton: React.FC<SearchButtonProps> = (props) => {
-	const { variant = 'desktop', editing = false } = props
+	const { variant = 'topNav', editing = false } = props
+  const { showAlertError } = useAlerts()
 	const { toggleSearch } = useContext(ShopContext) as any
 	const { setMenuOpen } = useContext(AppContext)
 
@@ -60,7 +62,9 @@ const SearchButton: React.FC<SearchButtonProps> = (props) => {
 		if (!editing) {
 			setMenuOpen(false)
 			toggleSearch()
-		}
+		}else{
+      showAlertError("Search is disabled while editing.")
+    }
 	}
 
 	return variant == 'topNav' ? (

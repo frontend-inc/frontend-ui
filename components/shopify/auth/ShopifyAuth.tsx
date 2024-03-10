@@ -57,7 +57,7 @@ type ShopifyAuthProps = {
 
 const ShopifyAuth: React.FC<ShopifyAuthProps> = (props) => {
 	const router = useRouter()
-	const { variant = 'desktop', customerUrl } = props || {}
+	const { variant = 'topNav', customerUrl } = props || {}
 
 	const { findShop } = useShop()
 

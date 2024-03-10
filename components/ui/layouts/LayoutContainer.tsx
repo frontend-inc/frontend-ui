@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import { Box } from '@mui/material'
 import {
+  Alert,
 	LayoutScroll,
 	ModeTheme,
 	Header,
@@ -41,6 +42,7 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 
 	return (
 		<Box sx={sx.layout}>
+      <Alert />
 			<Notifications notifications={notifications} />
 			<Box
 				sx={{

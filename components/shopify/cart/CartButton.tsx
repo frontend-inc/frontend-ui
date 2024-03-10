@@ -71,10 +71,9 @@ type CartButtonProps = {
 
 const CartButton: React.FC<CartButtonProps> = (props) => {
 	const {
-		variant = 'desktop',
+		variant = 'topNav',
 		label = 'Cart',
 		icon = 'ShoppingCart',
-		editing = false,
 	} = props
 
 	const { cart, toggleCart } = useContext(ShopContext) as any
@@ -82,9 +81,7 @@ const CartButton: React.FC<CartButtonProps> = (props) => {
 
 	const handleCartClick = () => {
 		setMenuOpen(false)
-		if (!editing) {
-			toggleCart()
-		}
+		toggleCart()
 	}
 
 	return variant == 'topNav' ? (
