@@ -3,7 +3,7 @@ import { List, Box } from '@mui/material'
 import { AuthButton, Drawer } from '../..'
 import { ShopifyAuth, SearchButton, CartButton } from '../../shopify'
 import { AppContext } from '../../../context'
-import MobileMenuItem from './MobileMenuItem'
+import SideNavMenuItem from './SideNavMenuItem'
 import { MenuLink } from '../../..'
 
 type MobileDrawerProps = {
@@ -20,10 +20,8 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 	const { editing, menuItems, handleClick, enableAuth, enableShopify } = props
 
 	const handleMenuClick = (path: string) => {
-		if (!editing) {
-			setMenuOpen(false)
-			handleClick(path)
-		}
+		setMenuOpen(false)
+		handleClick(path)
 	}
 
 	return (
@@ -38,7 +36,7 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 					{menuItems
 						?.filter((menuItem) => menuItem.parent_id == null)
 						?.map((menuItem, index) => (
-							<MobileMenuItem
+							<SideNavMenuItem
 								key={index}
 								menuItem={menuItem}
 								handleClick={handleMenuClick}

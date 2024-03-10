@@ -4,7 +4,7 @@ import { AuthButton, Logo, Icon } from '../..'
 import { ShopifyAuth, SearchButton, CartButton } from '../../shopify'
 import { AppContext } from '../../../context'
 import { HEADER_LOGO_HEIGHT, HEADER_LOGO_WIDTH } from '../../../constants/index'
-import DesktopMenuItem from './DesktopMenuItem'
+import TopNavMenuItem from './TopNavMenuItem'
 import { MenuLink } from '../../..'
 
 type DesktopNavProps = {
@@ -54,7 +54,7 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 							{menuItems
 								?.filter((menuItem) => menuItem.parent_id == null)
 								?.map((menuItem, index) => (
-									<DesktopMenuItem
+									<TopNavMenuItem
 										key={index}
 										menuItem={menuItem}
 										handleClick={() => handleClick(menuItem.path)}

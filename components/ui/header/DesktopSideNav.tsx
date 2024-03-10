@@ -5,7 +5,7 @@ import { ShopifyAuth, SearchButton, CartButton } from '../../shopify'
 import { AppContext } from '../../../context'
 import { HEADER_LOGO_HEIGHT, HEADER_LOGO_WIDTH } from '../../../constants/index'
 import { MenuLink } from '../../..'
-import MobileMenuItem from './MobileMenuItem'
+import SideNavMenuItem from './SideNavMenuItem'
 
 type DesktopNavProps = {
 	editing?: boolean
@@ -57,7 +57,7 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 						{menuItems
 						  ?.filter((menuItem) => menuItem.parent_id == null)
 						  ?.map((menuItem, index) => (
-							  <MobileMenuItem
+							  <SideNavMenuItem
 								  key={index}
 								  menuItem={menuItem}
 								  handleClick={handleClick}

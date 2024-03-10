@@ -20,7 +20,7 @@ type SubmenuItem = {
 	handleClick: (path: string) => void
 }
 
-const DesktopSubmenuItem: React.FC<SubmenuItem> = (props) => {
+const TopNavSubmenuItem: React.FC<SubmenuItem> = (props) => {
 	const { menuItem, handleClick } = props
 
 	return (
@@ -35,12 +35,12 @@ const DesktopSubmenuItem: React.FC<SubmenuItem> = (props) => {
 	)
 }
 
-type DesktopMenuItemProps = {
+type TopNavMenuItemProps = {
 	menuItem: MenuLink
-	handleClick: () => void
+	handleClick: (path: string) => void
 }
 
-const DesktopMenuItem: React.FC<DesktopMenuItemProps> = (props) => {
+const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 
   const router = useRouter()
   const { clientUrl } = useContext(AppContext)
@@ -64,19 +64,15 @@ const DesktopMenuItem: React.FC<DesktopMenuItemProps> = (props) => {
   }
 
 	const handleMenuClick = (ev) => {
-		if (children?.length > 0) {
+		if(children?.length > 0 || shopify_collection) {
 			openMenu(ev)      
-      if(menuItem?.shopify_collection){
-        findCollection(menuItem.shopify_collection)
-      }
-    } else if(shopify_collection){
-      openMenu(ev)      
-      findCollection(shopify_collection)
-    } else {
-			//@ts-ignore
+    }else{      
       closeMenu()
-			handleClick(menuItem.path)
-		}
+      handleClick(menuItem.path)      
+    }
+    if(shopify_collection && !products){      
+      findCollection(shopify_collection)
+    }         
 	}
 
 	const handleMouseLeave = () => {
@@ -154,7 +150,7 @@ const DesktopMenuItem: React.FC<DesktopMenuItemProps> = (props) => {
 	)
 }
 
-export default DesktopMenuItem
+export default TopNavMenuItem
 
 const sx = {
 	buttonGroup: {
