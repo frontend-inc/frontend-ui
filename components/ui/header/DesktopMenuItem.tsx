@@ -17,7 +17,7 @@ import { useRouter } from 'next/router'
 
 type SubmenuItem = {
 	menuItem: MenuLink
-	handleClick: () => void
+	handleClick: (path: string) => void
 }
 
 const DesktopSubmenuItem: React.FC<SubmenuItem> = (props) => {
@@ -55,10 +55,12 @@ const DesktopMenuItem: React.FC<DesktopMenuItemProps> = (props) => {
 
   const handleCollectionClick = () => {
     router.push(`${clientUrl}/collections/${shopify_collection}`)
+    closeMenu()
   }
 
   const handleProductClick = (product) => {
     router.push(`${clientUrl}/products/${product.handle}`)
+    closeMenu()
   }
 
 	const handleMenuClick = (ev) => {
@@ -72,6 +74,7 @@ const DesktopMenuItem: React.FC<DesktopMenuItemProps> = (props) => {
       findCollection(shopify_collection)
     } else {
 			//@ts-ignore
+      closeMenu()
 			handleClick(menuItem.path)
 		}
 	}
