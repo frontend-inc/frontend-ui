@@ -1,6 +1,6 @@
 import React from 'react'
 import FilterList from './FilterList'
-import { FilterOption } from '../../../../types'
+import { FilterOptionType } from '../../../../types'
 
 type FilterButtonProps = {
 	field?: any

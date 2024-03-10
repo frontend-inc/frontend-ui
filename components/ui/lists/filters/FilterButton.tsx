@@ -3,7 +3,7 @@ import { Hidden, Badge, ButtonGroup, Button, Stack } from '@mui/material'
 import { Popup, Drawer, ButtonLoader } from '../../../../components'
 import { FilterList as FilterIcon } from '@mui/icons-material'
 import FilterField from './FilterField'
-import { FilterOption } from '../../../../types'
+import { FilterOptionType } from '../../../..'
 
 type FilterButtonProps = {
 	filters?: FilterOptionType[]

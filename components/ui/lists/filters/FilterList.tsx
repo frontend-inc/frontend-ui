@@ -9,7 +9,7 @@ import {
 } from '../../../../types'
 
 type FilterListProps = {
-	name?: string
+	name: string
 	where?: FilterWhereType
 	operator?: FilterOperatorType
 	options?: OptionType[]

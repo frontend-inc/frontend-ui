@@ -3,7 +3,7 @@ import { useResource } from 'frontend-js'
 import { Autosuggest } from '../../components'
 import { ErrorText } from '../../components'
 import { useError } from '../../hooks'
-import { OptionType } from '../../types'
+import { OptionType, SyntheticEventType } from '../../types'
 
 type RemoteAutosuggestProps = {
 	errors?: any
@@ -12,7 +12,7 @@ type RemoteAutosuggestProps = {
 	name: string
 	url: string
 	displayField?: string
-	handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+	handleChange?: (event: SyntheticEventType) => void
 	valueParam?: string
 	placeholder?: string
 	imageField?: string
@@ -45,8 +45,8 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		name: name,
 	})
 
-	const [option, setOption] = useState<Option | {}>({})
-	const [options, setOptions] = useState<Option[]>([])
+	const [option, setOption] = useState<OptionType | {}>({})
+	const [options, setOptions] = useState<OptionType[]>([])
 
 	const handleInputChange = (newValue) => {
 		if (error) clearError()
