@@ -1,4 +1,4 @@
-export type MuiColors =
+export type MuiColorsType =
 	| 'indigo'
 	| 'blue'
 	| 'lightBlue'
@@ -18,7 +18,7 @@ export type MuiColors =
 	| 'purple'
 	| 'deepPurple'
 
-export type MuiColorTone =
+export type MuiColorToneType =
 	| '50'
 	| '100'
 	| '200'

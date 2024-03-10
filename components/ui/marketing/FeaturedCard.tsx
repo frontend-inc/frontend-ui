@@ -14,7 +14,7 @@ export type FeaturedCardProps = {
 	description?: string
 	image?: string
 	buttonText?: string
-	textVariant?: TypographyVariants
+	textVariant?: TypographyVariantsType
 	size?: number
 	href?: string
 	height?: number

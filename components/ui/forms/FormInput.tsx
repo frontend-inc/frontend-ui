@@ -17,7 +17,7 @@ type FormInputProps = {
 	errors?: any
 	value?: any | any[]
 	placeholder?: string
-	handleChange?: (e: SyntheticEvent) => void
+	handleChange?: (e: SyntheticEventType) => void
 	handleRemove?: (name: string) => void
 }
 

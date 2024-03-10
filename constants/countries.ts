@@ -1,6 +1,6 @@
 import { Option } from '../types'
 
-export const COUNTRIES: Option[] = [
+export const COUNTRIES: OptionType[] = [
 	{ value: 'AF', label: 'Afghanistan' },
 	{ value: 'AL', label: 'Albania' },
 	{ value: 'DZ', label: 'Algeria' },

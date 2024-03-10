@@ -7,9 +7,8 @@ import {
 	ListItemIcon,
 	ListItemText,
 } from '@mui/material'
-import { User } from 'lucide-react'
 
-type User = {
+type UserAvatarType = {
 	name: string
 	avatar: {
 		url: string
@@ -17,7 +16,7 @@ type User = {
 }
 
 type UserAvatarProps = {
-	user: User
+	user: UserAvatarType
 	label?: string
 	handleClick?: () => void
 }

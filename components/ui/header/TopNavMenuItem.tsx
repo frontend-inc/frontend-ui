@@ -16,7 +16,7 @@ import { useCollections } from 'frontend-shopify'
 import { useRouter } from 'next/router'
 
 type SubmenuItem = {
-	menuItem: MenuLink
+	menuItem: MenuLinkType
 	handleClick: (path: string) => void
 }
 
@@ -36,7 +36,7 @@ const TopNavSubmenuItem: React.FC<SubmenuItem> = (props) => {
 }
 
 type TopNavMenuItemProps = {
-	menuItem: MenuLink
+	menuItem: MenuLinkType
 	handleClick: (path: string) => void
 }
 

@@ -12,7 +12,7 @@ type NumberRangeInputProps = {
 	label?: string
 	name: string
 	value?: number[]
-	handleChange: (value: SyntheticEvent) => void
+	handleChange: (value: SyntheticEventType) => void
 	currency?: string
 }
 

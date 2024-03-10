@@ -8,7 +8,7 @@ import { MenuLink } from '../../..'
 
 type MobileDrawerProps = {  
 	editing?: boolean  
-	menuItems?: MenuLink[]
+	menuItems?: MenuLinkType[]
 	handleClick: (path: string) => void
 	enableAuth?: boolean
 	enableShopify?: boolean

@@ -18,7 +18,7 @@ export const NUMBER_AND_STRING_FIELDS: String[] = [
 	...STRING_FIELDS,
 ]
 
-export const WHERE_OPTIONS: Option[] = [
+export const WHERE_OPTIONS: OptionType[] = [
 	{ label: 'and', value: 'AND' },
 	{ label: 'or', value: 'OR' },
 ]
@@ -28,19 +28,19 @@ export const SORT_DIRECTIONS: SortDirectionOption[] = [
 	{ label: 'Decreasing', value: 'desc' },
 ]
 
-export const BOOLEAN_OPTIONS: Option[] = [
+export const BOOLEAN_OPTIONS: OptionType[] = [
 	{ label: 'true', value: 'true' },
 	{ label: 'false', value: 'false' },
 ]
 
-export const EQUAL_OPERATOR: Option[] = [{ label: '=', value: 'eq' }]
+export const EQUAL_OPERATOR: OptionType[] = [{ label: '=', value: 'eq' }]
 
-export const TEXT_FILTER_OPERATORS: Option[] = [
+export const TEXT_FILTER_OPERATORS: OptionType[] = [
 	{ label: '=', value: 'eq' },
 	{ label: '!=', value: 'neq' },
 ]
 
-export const NUMBER_FILTER_OPERATORS: Option[] = [
+export const NUMBER_FILTER_OPERATORS: OptionType[] = [
 	{ label: '>', value: 'gt' },
 	{ label: '>=', value: 'gte' },
 	{ label: '=', value: 'eq' },
@@ -51,19 +51,19 @@ export const NUMBER_FILTER_OPERATORS: Option[] = [
 	{ label: 'not in', value: 'nin' },
 ]
 
-export const DATE_FILTER_OPERATORS: Option[] = [
+export const DATE_FILTER_OPERATORS: OptionType[] = [
 	{ label: '>', value: 'gt' },
 	{ label: '<', value: 'lt' },
 	{ label: 'after', value: 'gte' },
 	{ label: 'before', value: 'lte' },
 ]
 
-export const BOOLEAN_FILTER_OPERATORS: Option[] = [
+export const BOOLEAN_FILTER_OPERATORS: OptionType[] = [
 	{ label: '=', value: 'eq' },
 	{ label: '!=', value: 'neq' },
 ]
 
-export const DATE_RANGE_OPTIONS: Option[] = [
+export const DATE_RANGE_OPTIONS: OptionType[] = [
 	{ label: 'Yesterday', value: '1_day_ago' },
 	{ label: '7 days ago', value: '7_days_ago' },
 	{ label: '14 days ago', value: '14_days_ago' },

@@ -13,7 +13,7 @@ type CheckboxGroupInputProps = {
 	name: string
 	label: string
 	value?: string[]
-	options: Option[]
+	options: OptionType[]
 	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 

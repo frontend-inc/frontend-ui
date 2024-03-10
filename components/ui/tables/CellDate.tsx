@@ -5,7 +5,7 @@ import moment from 'moment'
 
 type CellDateProps = {
 	value: string
-	variant?: TypographyVariants
+	variant?: TypographyVariantsType
 }
 const CellDate: React.FC<CellDateProps> = (props) => {
 	const { value, variant = 'caption' } = props

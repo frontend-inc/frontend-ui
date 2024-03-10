@@ -1,4 +1,4 @@
-import { Storage } from '../types'
+import { StorageType } from '../types'
 
 export type User = {
 	id?: number
@@ -6,5 +6,5 @@ export type User = {
 	last_name?: string
 	email: string
 	token?: string
-	image?: Storage
+	image?: StorageType
 }

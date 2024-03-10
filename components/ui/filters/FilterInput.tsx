@@ -21,9 +21,9 @@ type FieldOption = FilterOption & {
 
 type FilterFieldProps = {
 	index: number
-	filter: FilterOption
+	filter: FetchOptionType
 	fieldOptions: FieldOption[]
-	handleChange: (e: SyntheticEvent, index: number) => void
+	handleChange: (e: SyntheticEventType, index: number) => void
 	handleRemove: (index: number) => void
 }
 
@@ -31,7 +31,7 @@ const FilterFieldWrapper: React.FC<FilterFieldProps> = (props) => {
 	const { index, filter, fieldOptions, handleChange, handleRemove } = props
 
 	let field
-	let operatorOptions: Option[] = []
+	let operatorOptions: OptionType[] = []
 
 	if (filter.field) {
 		field = fieldOptions.find((f) => f.value == filter.field)

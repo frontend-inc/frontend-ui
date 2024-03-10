@@ -6,7 +6,7 @@ type FieldTextProps = {
 	value?: any
 	label?: string
 	placeholder?: string
-	variant?: TypographyVariants
+	variant?: TypographyVariantsType
 	color?: string
 	rest?: any
 }

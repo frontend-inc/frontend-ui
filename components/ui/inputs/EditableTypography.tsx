@@ -5,7 +5,7 @@ import { SyntheticEvent } from '../../../types'
 type EditableTypographyProps = {
 	variant: any
 	name: string
-	handleChange: (e: SyntheticEvent) => void
+	handleChange: (e: SyntheticEventType) => void
 	children: string
 	text: string
 }

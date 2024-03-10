@@ -19,7 +19,7 @@ type ListExpandableProps = {
 	children: any
 	enableBorder?: boolean
 	closed?: boolean
-	variant?: TypographyVariants
+	variant?: TypographyVariantsType
 }
 
 const ListExpandable: React.FC<ListExpandableProps> = (props) => {

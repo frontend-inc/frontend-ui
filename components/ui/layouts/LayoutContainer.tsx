@@ -7,7 +7,7 @@ import {
 	Header,
 	Notifications,
 } from '../../../components'
-import { Notification } from '../../../types'
+import { NotificationType } from '../../../types'
 import { MenuLink } from '../../..'
 
 type LayoutContainerProps = {
@@ -15,8 +15,8 @@ type LayoutContainerProps = {
 	mode?: 'accent' | 'light' | 'dark'
 	topNav?: boolean
 	handleClick: (item: any) => void
-	menuItems: MenuLink[]
-	notifications: Notification[]
+	menuItems: MenuLinkType[]
+	notifications: NotificationType[]
 	children: ReactNode
 	editing?: boolean
 	enableAuth?: boolean

@@ -23,7 +23,7 @@ type ArrayInputProps = {
 	name: string
 	options?: any[]
 	placeholder?: string
-	handleChange: (e: SyntheticEvent) => void
+	handleChange: (e: SyntheticEventType) => void
 	freeSolo?: boolean
 }
 

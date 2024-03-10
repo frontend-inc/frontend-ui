@@ -5,7 +5,7 @@ import { Option } from '../../../types'
 
 type FilterSortProps = {
 	label: string
-	fieldOptions: Option[]
+	fieldOptions: OptionType[]
 	sortBy?: string
 	sortDirection?: 'asc' | 'desc'
 	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void

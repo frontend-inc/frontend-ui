@@ -6,7 +6,7 @@ import { TypographyVariants } from '../../../types'
 type CollectionHeroProps = {
 	handle: string
 	editing?: boolean
-	textVariant?: TypographyVariants
+	textVariant?: TypographyVariantsType
 	height?: number
 	width?: number
 	objectFit?: 'cover' | 'contain'

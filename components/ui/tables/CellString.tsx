@@ -5,7 +5,7 @@ import { TypographyVariants } from '../../../types'
 
 type CellStringProps = {
 	value: string
-	variant?: TypographyVariants
+	variant?: TypographyVariantsType
 }
 
 const CellString: React.FC<CellStringProps> = (props) => {

@@ -15,7 +15,7 @@ type FormFieldProps = {
 	field: any
 	errors?: any
 	value?: any | any[]
-	handleChange?: (e: SyntheticEvent) => void
+	handleChange?: (e: SyntheticEventType) => void
 	handleRemove?: (name: string) => void
 }
 

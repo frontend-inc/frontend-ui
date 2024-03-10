@@ -8,7 +8,7 @@ type JSONInputProps = {
 	name: string
 	label?: string
 	placeholder?: string
-	handleChange: (e: SyntheticEvent) => void
+	handleChange: (e: SyntheticEventType) => void
 }
 
 const JSONInput: React.FC<JSONInputProps> = (props) => {

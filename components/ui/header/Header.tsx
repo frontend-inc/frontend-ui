@@ -16,7 +16,7 @@ type HeaderProps = {
 	enableShopify?: boolean
 	enableNotifications?: boolean
 	bgcolor?: string
-	menuItems: MenuLink[]
+	menuItems: MenuLinkType[]
 	handleClick: (path: string) => void
 }
 

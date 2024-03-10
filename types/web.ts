@@ -21,3 +21,11 @@ export type CardProps = {
 	enableOverlay?: boolean
 	icon?: string
 }
+
+export type PriceType = {
+  title: string  
+  price: number
+  features: string   
+  url: string
+  buttonText: string
+}

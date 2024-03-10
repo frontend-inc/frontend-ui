@@ -61,7 +61,7 @@ type AutosuggestProps = {
 	name: string
 	placeholder?: string
 	multiselect?: boolean
-	handleChange: (e: SyntheticEvent) => void
+	handleChange: (e: SyntheticEventType) => void
 	handleInputChange?: (value: string) => void
 	freeSolo?: boolean
 }

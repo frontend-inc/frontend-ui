@@ -46,7 +46,7 @@ const SublinkMenuItem: React.FC<SublinkMenuItemProps> = (props) => {
 }
 
 type SideNavMenuItemProps = {
-	menuItem: MenuLink
+	menuItem: MenuLinkType
 	handleClick: (path: string) => void
 }
 

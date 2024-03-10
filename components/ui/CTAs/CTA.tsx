@@ -10,7 +10,7 @@ type CallToActionProps = {
 	title: string
 	description: string
 	buttonText?: string
-	textVariant?: TypographyVariants
+	textVariant?: TypographyVariantsType
 	href?: string
 	handleClick?: () => void
 	direction?: string

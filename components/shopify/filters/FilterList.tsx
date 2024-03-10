@@ -21,7 +21,7 @@ type FilterListProps = {
 	enableBorder?: boolean
 	disablePadding?: boolean
 	closed?: boolean
-	variant?: TypographyVariants
+	variant?: TypographyVariantsType
 }
 
 const FilterList: React.FC<FilterListProps> = (props) => {

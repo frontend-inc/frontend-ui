@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material'
 import { TypographyVariants } from '../../../types'
 
 type FieldWrapperProps = {
-	variant?: TypographyVariants
+	variant?: TypographyVariantsType
 	flexDirection?: 'row' | 'column'
 	label?: string
 	color?: string

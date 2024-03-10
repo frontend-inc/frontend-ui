@@ -1,4 +1,4 @@
-export type MenuLink = {
+export type MenuLinkType = {
 	name: string
 	path: string
 	url?: string
@@ -6,10 +6,10 @@ export type MenuLink = {
 	position: number
 	parent_id?: number | null
   shopify_collection?: string
-	children: MenuLink[] | []
+	children: MenuLinkType[] | []
 }
 
-export type Notification = {
+export type NotificationType = {
 	text: string
 	path?: string
 	position: number

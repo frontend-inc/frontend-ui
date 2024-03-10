@@ -5,7 +5,7 @@ import { TypographyVariants } from '../../../types'
 
 type FieldStringProps = {
 	value: string
-	variant?: TypographyVariants
+	variant?: TypographyVariantsType
 	label?: string
 	color?: string
 	placeholder?: string

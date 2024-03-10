@@ -10,7 +10,7 @@ type FilterMenuProps = {
 	anchorEl: HTMLElement | null
 	fields: any
 	query: any
-	handleChange: (ev: SyntheticEvent) => void
+	handleChange: (ev: SyntheticEventType) => void
 	handleClearFilters: () => void
 	handleSearch: () => void
 }

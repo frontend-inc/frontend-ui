@@ -10,11 +10,11 @@ import {
 
 type FilterListProps = {
 	name?: string
-	where?: FilterWhere
-	operator?: FilterOperator
-	options?: Option[]
+	where?: FilterWhereType
+	operator?: FilterOperatorType
+	options?: OptionType[]
 	values?: any
-	handleClick: (filter: FilterOption) => void
+	handleClick: (filter: FetchOptionType) => void
 	label?: string
 	icon?: React.ReactNode
 	enableBorder?: boolean

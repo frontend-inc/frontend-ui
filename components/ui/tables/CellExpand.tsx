@@ -6,7 +6,7 @@ type CellExpandProps = {
 	cell: React.ReactNode
 	cellExpanded: React.ReactNode
 	width?: number
-	variant?: TypographyVariants
+	variant?: TypographyVariantsType
 }
 
 const CellExpand: React.FC<CellExpandProps> = memo(function GridCellExpand(

@@ -40,7 +40,7 @@ type ColorInputProps = {
 	label?: string
 	name: string
 	value: string
-	handleChange: (e: SyntheticEvent) => void
+	handleChange: (e: SyntheticEventType) => void
 	errors?: any
 	disableTone?: boolean
 }

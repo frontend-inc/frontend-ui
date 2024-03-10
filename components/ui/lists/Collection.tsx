@@ -128,7 +128,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		})
 	}
 
-	const handleFilter = (filter: FilterOption) => {
+	const handleFilter = (filter: FetchOptionType) => {
 		handleAddFilter(filter)
 	}
 

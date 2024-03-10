@@ -11,7 +11,7 @@ import { Option } from '../../../../types'
 
 type FilterListItemProps = {
 	label?: string
-	option: Option
+	option: OptionType
 	values?: any
 	handleClick: () => void
 }

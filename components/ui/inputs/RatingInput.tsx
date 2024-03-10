@@ -11,7 +11,7 @@ type RatingInputProps = InputProps & {
 	size?: 'small' | 'medium' | 'large'
 	label?: string
 	value?: number
-	handleChange?: (e: SyntheticEvent) => void
+	handleChange?: (e: SyntheticEventType) => void
 }
 
 const RatingInput: React.FC<RatingInputProps> = (props) => {

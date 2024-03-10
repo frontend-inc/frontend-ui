@@ -8,7 +8,7 @@ export type ImageContentType =
 	| 'heic'
 export type VideoContentType = 'mp4' | 'webm' | 'ogg' | 'mov' | 'm4v'
 
-export type Storage = {
+export type StorageType = {
 	url: string
 	height?: number
 	width?: number

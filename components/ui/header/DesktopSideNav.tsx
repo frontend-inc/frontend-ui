@@ -12,7 +12,7 @@ type DesktopNavProps = {
 	logo?: string
 	logoWidth?: number
 	logoHeight?: number
-	menuItems?: MenuLink[]
+	menuItems?: MenuLinkType[]
 	enableAuth?: boolean
 	enableShopify?: boolean
 	enableNotifications?: boolean

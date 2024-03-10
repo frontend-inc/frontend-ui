@@ -7,7 +7,7 @@ import { AppContext } from '../../../context'
 
 type CoverImageProps = {
 	editing?: boolean
-	textVariant?: TypographyVariants
+	textVariant?: TypographyVariantsType
 	title?: string
 	description?: string
 	buttonText?: string
