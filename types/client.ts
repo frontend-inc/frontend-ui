@@ -5,7 +5,7 @@ export type ConfigParams = {
 	path?: string
 }
 
-export type FetchOptionType = {
+export type FilterOptionType = {
 	method: string
 	headers: Record<string, any>
 	body: any
@@ -114,7 +114,7 @@ export type FilterOptionType = {
 }
 
 export type SearchFilterInputProps = {
-	filter?: FetchOptionType
+	filter?: FilterOptionType
 	field?: string
 	label?: string
 	where?: FilterWhereType

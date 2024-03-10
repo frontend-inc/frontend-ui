@@ -29,3 +29,41 @@ export type TypographyVariantsType =
 	| 'button'
 	| 'caption'
 	| 'overline'
+
+export type AttachmentInputProps = {
+	errors?: any
+	name: string
+	label?: string
+	handleChange: (e: SyntheticEventType) => void
+	value: any
+	handleRemove: (name: string) => void
+	variant?: 'image' | 'file'
+	objectFit?: 'contain' | 'cover'
+	size?: number
+}
+
+export type InputPropsType = {
+	errors?: any
+	value?: any
+	name: string
+	label?: string
+	placeholder?: string
+	handleChange: (e: SyntheticEventType) => void
+	disabled?: boolean
+	options?: OptionType[]
+	direction?: 'row' | 'column'
+	styles?: any
+}
+
+export type TextInputPropsType = InputPropsType & {
+	direction?: 'row' | 'column'
+	type?: string
+	margin?: 'dense' | 'none'
+	multiline?: boolean
+	rows?: number
+}
+
+export type SelectInputPropsType = InputPropsType & {
+	options: OptionType[]
+}
+

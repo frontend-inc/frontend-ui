@@ -3,7 +3,7 @@ import { AppBar, Box, Hidden, Toolbar, IconButton } from '@mui/material'
 import { Logo, Icon } from '../..'
 import { SearchButton, CartButton } from '../../shopify'
 import { AppContext } from '../../../context'
-import { MenuLink } from '../../..'
+import { MenuLinkType } from '../../..'
 
 type MobileNavProps = {
 	editing?: boolean

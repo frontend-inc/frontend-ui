@@ -8,7 +8,7 @@ import {
 	Notifications,
 } from '../../../components'
 import { NotificationType } from '../../../types'
-import { MenuLinkType } from '../../..'
+import { MenuLinkTypeType } from '../../..'
 
 type LayoutContainerProps = {
 	position?: 'fixed' | 'absolute' | 'relative'

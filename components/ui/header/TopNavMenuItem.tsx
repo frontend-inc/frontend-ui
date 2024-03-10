@@ -10,7 +10,7 @@ import {
   Typography 
 } from '@mui/material'
 import { useMenu } from '../../../hooks'
-import { MenuLink } from '../../..'
+import { MenuLinkType } from '../../..'
 import { ExpandMore } from '@mui/icons-material'
 import { useCollections } from 'frontend-shopify'
 import { useRouter } from 'next/router'

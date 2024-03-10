@@ -12,16 +12,16 @@ import {
 } from '../../../constants/index'
 import { Box, IconButton, Typography } from '@mui/material'
 import { TextInput, Autosuggest, ArrayInput } from '../../../components'
-import { OptionType, FilterOption, SyntheticEvent } from '../../../types'
+import { OptionType, FilterOptionType, SyntheticEventType } from '../../../types'
 import { X } from 'lucide-react'
 
-type FieldOption = FilterOption & {
+type FieldOption = FilterOptionType & {
 	db_type: string
 }
 
 type FilterFieldProps = {
 	index: number
-	filter: FetchOptionType
+	filter: FilterOptionType
 	fieldOptions: FieldOption[]
 	handleChange: (e: SyntheticEventType, index: number) => void
 	handleRemove: (index: number) => void

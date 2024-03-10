@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Typography, Box, Stack, IconButton, Button } from '@mui/material'
-import { InputProps } from '../../../types'
+import { InputPropsType } from '../../../types'
 import { X, Plus } from 'lucide-react'
 import { TextInput } from '../../../components'
 

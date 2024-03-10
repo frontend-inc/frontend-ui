@@ -1,10 +1,10 @@
 import React from 'react'
 import { Box, alpha, Typography } from '@mui/material'
 import Rating from '@mui/material/Rating'
-import { InputProps, SyntheticEvent } from '../../../types'
+import { InputPropsType, SyntheticEventType } from '../../../types'
 import { StarBorderOutlined, Star } from '@mui/icons-material'
 
-type RatingInputProps = InputProps & {
+type RatingInputProps = InputPropsType & {
 	name?: string
 	readOnly?: boolean
 	disableBorder?: boolean

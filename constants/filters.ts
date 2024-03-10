@@ -80,7 +80,7 @@ export const DATE_RANGE_OPTIONS: OptionType[] = [
 	{ label: 'Next year', value: 'next_year' },
 ]
 
-export const FILTER_OPERATORS: Record<string, Option[]> = {
+export const FILTER_OPERATORS: Record<string, OptionType[]> = {
 	integer: NUMBER_FILTER_OPERATORS,
 	float: NUMBER_FILTER_OPERATORS,
 	string: TEXT_FILTER_OPERATORS,

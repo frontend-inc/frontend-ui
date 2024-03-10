@@ -6,10 +6,10 @@ import FilterField from './FilterField'
 import { FilterOption } from '../../../../types'
 
 type FilterButtonProps = {
-	filters?: FetchOptionType[]
+	filters?: FilterOptionType[]
 	loading?: boolean
 	fields?: any
-	handleFilter: (filter: FetchOptionType) => void
+	handleFilter: (filter: FilterOptionType) => void
 	handleClear: () => void
 }
 

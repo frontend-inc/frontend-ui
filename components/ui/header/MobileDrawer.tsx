@@ -4,7 +4,7 @@ import { AuthButton, Drawer } from '../..'
 import { ShopifyAuth, SearchButton, CartButton } from '../../shopify'
 import { AppContext } from '../../../context'
 import SideNavMenuItem from './SideNavMenuItem'
-import { MenuLink } from '../../..'
+import { MenuLinkType } from '../../..'
 
 type MobileDrawerProps = {  
 	editing?: boolean  

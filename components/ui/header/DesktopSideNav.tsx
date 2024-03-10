@@ -4,7 +4,7 @@ import { AuthButton, Logo } from '../..'
 import { ShopifyAuth, SearchButton, CartButton } from '../../shopify'
 import { AppContext } from '../../../context'
 import { HEADER_LOGO_HEIGHT, HEADER_LOGO_WIDTH } from '../../../constants/index'
-import { MenuLink } from '../../..'
+import { MenuLinkType } from '../../..'
 import SideNavMenuItem from './SideNavMenuItem'
 
 type DesktopNavProps = {

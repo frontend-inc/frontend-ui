@@ -5,7 +5,7 @@ import { ShopifyAuth, SearchButton, CartButton } from '../../shopify'
 import { AppContext } from '../../../context'
 import { HEADER_LOGO_HEIGHT, HEADER_LOGO_WIDTH } from '../../../constants/index'
 import TopNavMenuItem from './TopNavMenuItem'
-import { MenuLink } from '../../..'
+import { MenuLinkType } from '../../..'
 
 type DesktopNavProps = {
 	editing?: boolean

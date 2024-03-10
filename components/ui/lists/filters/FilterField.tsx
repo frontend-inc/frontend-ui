@@ -4,8 +4,8 @@ import { FilterOption } from '../../../../types'
 
 type FilterButtonProps = {
 	field?: any
-	filters?: FetchOptionType[]
-	handleFilter: (filter: FetchOptionType) => void
+	filters?: FilterOptionType[]
+	handleFilter: (filter: FilterOptionType) => void
 }
 
 const FilterField: React.FC<FilterButtonProps> = (props) => {
