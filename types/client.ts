@@ -5,7 +5,7 @@ export type ConfigParams = {
 	path?: string
 }
 
-export type FilterOptionType = {
+export type FetchOptionType = {
 	method: string
 	headers: Record<string, any>
 	body: any
