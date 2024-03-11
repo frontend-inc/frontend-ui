@@ -19,39 +19,39 @@ const Section: React.FC<SectionProps> = (props) => {
 		maxWidth,
 		py = 4,
 	} = props
-
+  
 	return (
-		<Box
-			sx={{
-				bgcolor,
-				...sx.root,
-			}}
-		>
-			<Container
-				disableGutters={!maxWidth}
-				maxWidth={maxWidth || false}
-				sx={{
-					...sx.container,
-					py,
-					px: py > 0 ? 2 : 0,
-				}}
-			>
-				{title && (
-					<Typography
-						sx={{
-							...sx.title,
-							textAlign,
-						}}
-						variant="h6"
-						color="textPrimary"
-					>
-						{title}
-					</Typography>
-				)}
-				{children}
-			</Container>
-		</Box>
-	)
+      <Box
+        sx={{
+          bgcolor,
+          ...sx.root,
+        }}
+      >
+        <Container
+          disableGutters={!maxWidth}
+          maxWidth={maxWidth || false}
+          sx={{
+            ...sx.container,
+            py,
+            px: py > 0 ? 2 : 0,
+          }}
+        >
+          {title && (
+            <Typography
+              sx={{
+                ...sx.title,
+                textAlign,
+              }}
+              variant="h6"
+              color="textPrimary"
+            >
+              {title}
+            </Typography>
+          )}
+          {children}
+        </Container>
+      </Box>
+)
 }
 
 export default Section

@@ -12,6 +12,7 @@ import {
 import { useMenu } from '../../../hooks'
 import { MenuLinkType } from '../../..'
 import { ExpandMore } from '@mui/icons-material'
+import { Icon } from '../..'
 import { useCollections } from 'frontend-shopify'
 import { useRouter } from 'next/router'
 
@@ -86,12 +87,14 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 				onClick={handleMenuClick}
 				endIcon={
 					(children?.length > 0 || shopify_collection) && (
-						<ExpandMore
+						<Box
 							sx={{
 								...sx.icon,
 								...(open && sx.rotateIcon),
 							}}
-						/>
+						>
+              <Icon name="ChevronDown" />
+            </Box>
 					)
 				}
 			>
@@ -169,6 +172,10 @@ const sx = {
 		},
 	},
 	icon: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'text.primary',
 		transition: 'transform 0.2s ease-in-out',
 	},
 	rotateIcon: {

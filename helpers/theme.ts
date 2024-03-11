@@ -23,7 +23,9 @@ export const buildMuiPalette = (palette, bgcolor) => {
 			secondary: secondaryText,
 		},
 		tertiary: {
+      light: lighten(neutral, 0.2),
 			main: neutral,
+      dark: darken(neutral, 0.2)
 		},
 	}
 

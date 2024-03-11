@@ -25,7 +25,8 @@ type LayoutContainerProps = {
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
-	const {
+	
+  const {
 		children,
 		editing = false,
 		mode = 'accent',

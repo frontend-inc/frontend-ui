@@ -101,6 +101,9 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 					products={similarProducts}
 					productComponent={productComponent}
 					enableBorder={enableBorder}
+          enableAddToCart={enableAddToCart}
+          enableQuantity={enableQuantity}
+          enableQuickShop={enableQuickShop}
 					enableOkendoStarRating={enableOkendoStarRating}
 					buttonText={buttonText}
 				/>

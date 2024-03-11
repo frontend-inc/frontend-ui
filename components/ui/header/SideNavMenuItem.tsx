@@ -9,13 +9,12 @@ import {
 	ListItemText,
 	Typography,
   CircularProgress, 
-  Box, 
-  Divider, 
-  MenuItem, 
+  Box,   
 } from '@mui/material'
 import { useMenu } from '../../../hooks'
 import { MenuLinkType } from '../../..'
 import { ExpandMore } from '@mui/icons-material'
+import { Icon } from '../..'
 import { useCollections } from 'frontend-shopify'
 import { useRouter } from 'next/router'
 
@@ -95,13 +94,13 @@ const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 				disableGutters
 				secondaryAction={
 					(children?.length > 0 || shopify_collection) && (
-						<IconButton onClick={() => handleMenuClick(menuItem)}>
-							<ExpandMore
-								sx={{
-									...sx.icon,
-									...(open && sx.rotateIcon),
-								}}
-							/>
+						<IconButton 
+              sx={{
+                ...sx.icon,
+                ...(open && sx.rotateIcon),
+              }}
+              onClick={() => handleMenuClick(menuItem)}>
+              <Icon name="ChevronDown" />							
 						</IconButton>
 					)
 				}
