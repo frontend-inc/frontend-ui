@@ -40,35 +40,12 @@ const ReactCarousel: React.FC<CarouselProps> = (props) => {
 		//@ts-ignore
 		setResponsive(getCarouselResponsive(theme))
 	}, [theme?.breakpoints])
-
-	useEffect(() => {
-		switch (breakpoint) {
-			case 'sm':
-				setWidth(muiTheme?.breakpoints.values.sm)
-				break
-			case 'md':
-				setWidth(muiTheme?.breakpoints.values.md)
-				break
-			case 'lg':
-				setWidth(muiTheme?.breakpoints.values.lg)
-				break
-			case 'xl':
-				setWidth(muiTheme?.breakpoints.values.xl)
-				break
-			case null:
-				setWidth(muiTheme?.breakpoints.values.xl)
-				break
-			default:
-				setWidth(muiTheme?.breakpoints.values.md)
-				break
-		}
-	}, [breakpoint])
-
+	
 	return (
 		<Box
 			sx={{
 				...sx.root,
-				maxWidth: editing ? width - 320 : width,
+				...(editing && sx.rootEditor),
 				...(styles && styles),
 			}}
 		>
@@ -96,4 +73,7 @@ const sx = {
 	root: {
 		width: '100%',
 	},
+  rootEditor: {
+    maxWidth: `calc(100vw - 520px)`
+  }
 }
