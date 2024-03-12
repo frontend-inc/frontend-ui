@@ -1,7 +1,3 @@
-export const PAPER_ALPHA = 0.9
-export const DIVIDER_ALPHA = 0.25
-export const SECONDARY_TEXT_ALPHA = 0.9
-
 export const MUI_COLORS = [
 	'red',
 	'pink',

@@ -26,7 +26,7 @@ export const palette = {
 	},
 	text: {
 		primary: '#000000',
-		secondary: COLORS.grey[900],
+		secondary: COLORS.grey[800],
 	},
 	background: {
 		default: '#FFFFFF',

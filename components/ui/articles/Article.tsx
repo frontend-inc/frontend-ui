@@ -5,7 +5,8 @@ import {
   Typography,
 } from '@mui/material'
 import { Image } from '../..'
-import { DocumentType } from '../../..'
+import { DocumentType } from '../../../types'
+import moment from 'moment'
 
 type ArticleProps = {
   resource: DocumentType
@@ -16,15 +17,16 @@ const Article: React.FC<ArticleProps> = (props) => {
   const { resource } = props || {}
   const { title, image, description, data } = resource || {}
   const { published_at } = data || {}
-
   return (
-    <Stack sx={ sx.root } spacing={6}>      
-      <Typography color='text.primary' variant="h3" sx={ sx.title }>
-        {title}
-      </Typography>
-      <Typography color='text.primary' variant="caption" sx={ sx.title }>
-        { published_at }
-      </Typography>
+    <Stack sx={ sx.root } spacing={7}>    
+      <Stack spacing={3} sx={ sx.header }>  
+        <Typography color='text.primary' variant="h3">
+          {title}
+        </Typography>
+        <Typography color='text.secondary' variant="caption">
+          { moment(published_at).format('MMMM D, YYYY') }
+        </Typography>
+      </Stack>
       <Image 
         src={image?.url}
         alt={title}
@@ -47,7 +49,7 @@ const sx = {
     justifyContent: 'flex-start',
     alignItems: 'center',    
   },
-  title : {
+  header : {
     maxWidth: 500,
     width: '100%',
     textAlign: 'center',
@@ -55,16 +57,15 @@ const sx = {
   content: {
     width: '100%',
     maxWidth: {
-      sm: 400,
+      sm: 500,
       xs: '100%'
     },
   },
   text: {
-    maxWidth: {
-      sm: 400,
-      xs: '100%'
-    },
     width: '100%',
     whiteSpace: 'pre-line',
+  },
+  caption: {
+    color: 'text.secondary',
   }
 }
