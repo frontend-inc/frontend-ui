@@ -5,32 +5,31 @@ import {
   Typography,
 } from '@mui/material'
 import { Image } from '../..'
+import { DocumentType } from '../../..'
 
 type ArticleProps = {
-  resource: {
-    title: string  
-    image: {
-      url: string
-    }
-    description: string
-  }  
+  resource: DocumentType
 }
 
 const Article: React.FC<ArticleProps> = (props) => {
 
   const { resource } = props || {}
-  const { title, image, description } = resource || {}
+  const { title, image, description, data } = resource || {}
+  const { published_at } = data || {}
 
   return (
-    <Stack sx={ sx.root } spacing={2}>      
-      <Typography color='text.primary' variant="h5" sx={ sx.title }>
+    <Stack sx={ sx.root } spacing={6}>      
+      <Typography color='text.primary' variant="h3" sx={ sx.title }>
         {title}
       </Typography>
-        <Image 
-          src={image?.url}
-          alt={title}
-          height={400}
-        />
+      <Typography color='text.primary' variant="caption" sx={ sx.title }>
+        { published_at }
+      </Typography>
+      <Image 
+        src={image?.url}
+        alt={title}
+        height={400}
+      />
       <Box sx={ sx.content }>
         <Typography variant="body1" color='text.primary' sx={ sx.text }>
           {description}
@@ -49,6 +48,7 @@ const sx = {
     alignItems: 'center',    
   },
   title : {
+    maxWidth: 500,
     width: '100%',
     textAlign: 'center',
   },

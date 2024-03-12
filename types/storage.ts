@@ -6,6 +6,7 @@ export type ImageContentType =
 	| 'bmp'
 	| 'webp'
 	| 'heic'
+  
 export type VideoContentType = 'mp4' | 'webm' | 'ogg' | 'mov' | 'm4v'
 
 export type StorageType = {
@@ -15,7 +16,7 @@ export type StorageType = {
 	content_type?: string
 }
 
-export type Attachment = {
+export type AttachmentType = {
 	id: number
 	filename?: string
 	url: string
@@ -29,10 +30,10 @@ export type Attachment = {
 	created_at?: string
 }
 
-export type Image = Attachment & {
+export type ImageType = AttachmentType & {
 	content_type: ImageContentType
 }
 
-export type Video = Attachment & {
+export type VideoType = AttachmentType & {
 	content_type: VideoContentType
 }
