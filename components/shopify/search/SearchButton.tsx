@@ -48,23 +48,17 @@ const SideNavSearchButton: React.FC<SideNavSearchButtonProps> = (props) => {
 }
 
 type SearchButtonProps = {
-	editing?: boolean
 	variant?: 'topNav' | 'sideNav'
 }
 
 const SearchButton: React.FC<SearchButtonProps> = (props) => {
-	const { variant = 'topNav', editing = false } = props
-  const { showAlertError } = useAlerts()
+	const { variant = 'topNav' } = props
 	const { toggleSearch } = useContext(ShopContext) as any
 	const { setMenuOpen } = useContext(AppContext)
 
 	const handleToggleSearch = () => {
-		if (!editing) {
-			setMenuOpen(false)
-			toggleSearch()
-		}else{
-      showAlertError("Search is disabled while editing.")
-    }
+    setMenuOpen(false)
+    toggleSearch()
 	}
 
 	return variant == 'topNav' ? (

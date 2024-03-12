@@ -1,5 +1,6 @@
 export { default as Accordion } from './accordions/Accordion'
 export { default as AccordionItem } from './accordions/AccordionItem'
+export { default as Article } from './articles/Article'
 export { default as Avatar } from './avatars/Avatar'
 export { default as AvatarChip } from './cards/AvatarChip'
 export { default as AvatarHoriz } from './cards/AvatarHoriz'

@@ -28,7 +28,7 @@ export const typography = {
 	},
 	h4: {
 		fontFamily: 'Inter',
-		fontSize: 32,
+		fontSize: 26,
 		fontWeight: 500,
 		'@media (max-width:600px)': {
 			fontSize: 20,
@@ -37,12 +37,12 @@ export const typography = {
 	h5: {
 		fontFamily: 'Inter',
 		fontWeight: 500,
-		fontSize: 28,
+		fontSize: 22,
 	},
 	h6: {
 		fontFamily: 'Inter',
 		fontWeight: 500,
-		fontSize: 24,
+		fontSize: 18,
 	},
 	subtitle1: {
 		fontFamily: 'Inter',

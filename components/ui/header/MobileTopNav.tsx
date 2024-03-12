@@ -53,8 +53,8 @@ const MobileNav = (props: MobileNavProps) => {
 						<Box sx={sx.rightMenu}>
 							{enableShopify && (
 								<>
-									<SearchButton editing={editing} />
-									<CartButton editing={editing} />
+									<SearchButton />
+									<CartButton />
 								</>
 							)}
 						</Box>

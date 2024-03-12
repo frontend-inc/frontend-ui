@@ -46,11 +46,9 @@ const MobileDrawer = (props: MobileDrawerProps) => {
               <>
                 <SearchButton 
                   variant="sideNav" 
-                  editing={editing} 
                 />
                 <CartButton 
                   variant="sideNav" 
-                  editing={editing} 
                 />
               </>
             )}
