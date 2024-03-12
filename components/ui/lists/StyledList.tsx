@@ -16,10 +16,11 @@ import {
 	ImageVert,
 	ImageHoriz,
 } from '../../../components'
+import { DocumentType } from '../../../types'
 
 type StyledListProps = {
 	loading?: boolean
-	resources: any[]
+	resources: DocumentType[]
 	layout?: 'list' | 'grid' | 'carousel'
 	style?: 'card' | 'avatar' | 'image' | 'cover' | 'chip'
 	handleClick?: (item: any) => void

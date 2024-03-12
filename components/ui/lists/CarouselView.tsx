@@ -1,9 +1,10 @@
 import React from 'react'
 import { Box } from '@mui/material'
 import { Carousel, CardVert } from '../../../components'
+import { DocumentType } from '../../../types'
 
 type CarouselViewProps = {
-	items: any[]
+	items: DocumentType[]
 	editing?: boolean
 	defaultQuery?: any
 	buttonText?: string

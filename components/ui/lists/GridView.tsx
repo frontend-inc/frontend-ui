@@ -1,10 +1,11 @@
 import React from 'react'
 import { Box, Grid } from '@mui/material'
 import { CardVert } from '../../../components'
+import { DocumentType } from '../../../types'
 
 type GridViewProps = {
 	loading?: boolean
-	items: any[]
+	items: DocumentType[]
 	editing?: boolean
 	buttonText?: string
 	handleClick?: (item: any) => void

@@ -1,11 +1,12 @@
 import React from 'react'
 import { Stack } from '@mui/material'
 import { CardHoriz } from '../../../components'
+import { DocumentType } from '../../../types'
 
 type ListViewProps = {
 	loading?: boolean
 	editing?: boolean
-	items: any[]
+	items: DocumentType[]
 	handleClick?: (item: any) => void
 	flexDirection?: 'row' | 'column'
 	component?: any
