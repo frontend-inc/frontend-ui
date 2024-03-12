@@ -4,7 +4,7 @@ import {
   Box,
   Typography,
 } from '@mui/material'
-import { Image } from 'frontend-ui/components'
+import { Image } from '../..'
 
 type ArticleProps = {
   resource: {
