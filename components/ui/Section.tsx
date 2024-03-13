@@ -1,5 +1,6 @@
-import React from 'react'
-import { Box, Container, Typography } from '@mui/material'
+import React, { useEffect, useState } from 'react'
+import { Box, Typography } from '@mui/material'
+import { muiTheme } from '../../theme'
 
 type SectionProps = {
 	children: React.ReactNode
@@ -8,32 +9,53 @@ type SectionProps = {
 	bgcolor?: string
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 	py?: number
+  px?: number
 }
 
 const Section: React.FC<SectionProps> = (props) => {
-	const {
+	
+  const {
 		children,
 		title,
 		textAlign = 'left',
 		bgcolor,
 		maxWidth,
 		py = 4,
+    px = 2,
 	} = props
   
+  const [width, setWidth] = useState<string | number>(muiTheme.breakpoints.values.md)
+
+  // Since breakpoints are modified to  
+  // to compensate for the extra width of the Editor 
+  // we need to adjust the width of the Section component manually
+  useEffect(() => {    
+    switch(maxWidth){
+      case "sm":
+        setWidth(muiTheme.breakpoints.values.sm)
+        break
+      case "md":
+        setWidth(muiTheme.breakpoints.values.md)
+        break
+      default: 
+        setWidth('100%')
+        break;
+    }    
+  }, [maxWidth])
+
 	return (
       <Box
         sx={{
-          bgcolor,
-          ...sx.root,
+          ...sx.root,          
+          bgcolor
         }}
       >
-        <Container
-          disableGutters={!maxWidth}
-          maxWidth={maxWidth || false}
+        <Box           
           sx={{
             ...sx.container,
             py,
-            px: py > 0 ? 2 : 0,
+            px,
+            maxWidth: width, 
           }}
         >
           {title && (
@@ -49,7 +71,7 @@ const Section: React.FC<SectionProps> = (props) => {
             </Typography>
           )}
           {children}
-        </Container>
+        </Box>
       </Box>
 )
 }
@@ -60,6 +82,10 @@ const sx = {
 	root: {
 		width: '100%',
 		minHeight: '60px',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
 	},
 	container: {
 		width: '100%',

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Box } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 import { Field } from '../..'
 import { flattenDocument } from '../../../helpers'
 
@@ -31,23 +31,28 @@ const Details: React.FC<DetailsProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-      <Box sx={sx.content}>
+      <Grid container spacing={1}>
         {document && fields.map((field, i) => (
-          <Box 
+          <Grid  
             key={i}
-            sx={{
-              ...sx.item,              
-              ...(enableBorder && sx.itemBorder),
-              ...(FULL_WIDTH_VARIANTS.includes(field?.variant) && sx.itemFullWidth)
-            }}
+            item 
+            xs={12}
+            sm={FULL_WIDTH_VARIANTS.includes(field?.variant) ? 12 : 4}            
           >
+            <Box  
+              sx={{
+                ...sx.item,
+                ...(enableBorder && sx.itemBorder),
+              }}
+            >
             <Field
               field={field} 
               document={document} 
             />
-          </Box>
+            </Box>
+          </Grid>
         ))}
-      </Box>
+      </Grid>
 		</Box>
 	)
 }
@@ -57,27 +62,14 @@ export default Details
 const sx = {
 	root: {
 		width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
 	},
-  content: {
+  item: { 
+    p: 2,   
     width: '100%',
-    maxWidth: 800,
-    display: 'grid',
-    gridTemplateColumns: {
-      md: '1fr 1fr 1fr',
-      xs: '1fr'
-    },
-    gap: '16px'
-  },
-  item: {    
-    width: '100%',
-    gridColumn: 'span 1',
     borderRadius: theme => `${theme.shape.borderRadius}px`,
+    minHeight: 110
   },
   itemBorder: {    
-    p: 2,
     border: '1px solid',
     borderColor: 'divider',
     bgcolor: 'primary.contrastText',    
