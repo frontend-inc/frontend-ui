@@ -3,8 +3,6 @@
 export { default as Article } from './articles/Article'
 export { default as Collection } from './collections/Collection'
 export { default as CollectionCarousel } from './collections/CollectionCarousel'
-export { default as CollectionGrid } from './collections/CollectionGrid'
-export { default as CollectionList } from './collections/CollectionList'
 export { default as CollectionHasMany } from './collections/CollectionHasMany'
 export { default as CarouselView } from './collections/CarouselView'
 export { default as CarouselViewSkeleton } from './collections/CarouselViewSkeleton'

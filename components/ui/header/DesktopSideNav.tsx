@@ -10,7 +10,7 @@ import SideNavMenuItem from './SideNavMenuItem'
 
 type DesktopNavProps = {
 	editing?: boolean
-	logo?: string
+	logo: string
 	logoWidth?: number
 	logoHeight?: number
 	menuItems?: MenuLinkType[]
@@ -52,7 +52,10 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 				>
 					<Stack sx={sx.desktopSideMenuItems} direction="column" spacing={2}>
 						<Box sx={sx.centerMenu}>
-							<Logo src={logo} width={logoWidth} height={logoHeight} />
+							<Logo 
+                handleClick={() => handleClick('/')}
+                src={logo} 
+                width={logoWidth} height={logoHeight} />
 						</Box>
             <List>
 						{menuItems

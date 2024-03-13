@@ -10,7 +10,7 @@ type LogoProps = {
 	src: string
 	width?: number
 	height?: number
-	handleClick: () => void
+	handleClick: (path: string) => void
 }
 
 const Logo: React.FC<LogoProps> = (props) => {
@@ -22,6 +22,7 @@ const Logo: React.FC<LogoProps> = (props) => {
 	} = props || {}
 
 	return (
+    // @ts-ignore
 		<Button disableRipple sx={sx.root} onClick={handleClick}>
 			{src?.length > 1 ? (
 				<Image

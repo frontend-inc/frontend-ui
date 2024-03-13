@@ -13,11 +13,10 @@ import {
 	AvatarVert,
 	AvatarHoriz,
 } from '../..'
-import { DocumentType } from '../../../types'
 
 type StyledListProps = {
 	loading?: boolean
-	resources: DocumentType[]
+	resources: any
 	layout?: 'list' | 'grid' | 'carousel'
 	style?: 'card' | 'avatar' | 'image' | 'cover' | 'chip'
 	handleClick?: (item: any) => void

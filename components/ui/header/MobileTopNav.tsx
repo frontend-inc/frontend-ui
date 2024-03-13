@@ -8,7 +8,7 @@ import Logo from './Logo'
 
 type MobileNavProps = {
 	editing?: boolean
-	logo?: string
+	logo: string
 	logoWidth?: number
 	logoHeight?: number
 	menuItems?: MenuLinkType[]
@@ -27,6 +27,7 @@ const MobileNav = (props: MobileNavProps) => {
 		logo,
 		logoWidth = 120,
 		logoHeight = 50,
+    handleClick,
 		enableShopify = false,
 		enableNotifications = false,
 	} = props
@@ -49,7 +50,12 @@ const MobileNav = (props: MobileNavProps) => {
 							</IconButton>
 						</Box>
 						<Box sx={sx.centerMenu}>
-							<Logo src={logo} width={logoWidth} height={logoHeight - 20} />
+							<Logo 
+                handleClick={() => handleClick('/')}
+                src={logo} 
+                width={logoWidth} 
+                height={logoHeight - 20} 
+              />
 						</Box>
 						<Box sx={sx.rightMenu}>
 							{enableShopify && (
