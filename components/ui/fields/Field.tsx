@@ -13,7 +13,6 @@ import {
 	FieldText,
 	FieldVideo,
 } from '../../../components'
-import { getDocumentValue } from '../../../helpers'
 
 type FieldProps = {
 	field?: any
@@ -23,7 +22,7 @@ type FieldProps = {
 const Field: React.FC<FieldProps> = (props) => {
 	const { field, document } = props
 	const { variant, label } = field
-	let value = getDocumentValue(document, field)
+	let value = document[field?.name]
 	if (!value) return null
 	return (
 		<>
@@ -36,6 +35,7 @@ const Field: React.FC<FieldProps> = (props) => {
 			{variant === 'url' && <FieldURL label={label} value={value} />}
 			{variant === 'rating' && <FieldRating label={label} value={value} />}
 			{variant === 'text' && <FieldText label={label} value={value} />}
+      {variant === 'number' && <FieldText label={label} value={value} />}
 			{variant === 'array' && <FieldArray label={label} value={value} />}
 			{variant === 'string' && <FieldString label={label} value={value} />}
 			{variant === 'price' && <FieldPrice label={label} value={value} />}

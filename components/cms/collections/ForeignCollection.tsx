@@ -61,7 +61,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	useEffect(() => {
 		if (resource && field && foreignUrl) {      
       const documents = filterDocumentLinks(resource, field?.foreign_content_type)
-			const documentIds = documents.map((document) => document.id)
+			const documentIds = documents?.map((document) => document.id)
 			findMany({
 				...query,
 				...defaultQuery,

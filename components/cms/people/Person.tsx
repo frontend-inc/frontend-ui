@@ -33,7 +33,7 @@ const Person: React.FC<PersonProps> = (props) => {
           />    
         </Avatar>     
         <Stack spacing={2} sx={ sx.content }>  
-          <Typography color='text.primary' variant="h6">
+          <Typography color='text.primary' variant="h4">
             {title}
           </Typography>   
           <Box>

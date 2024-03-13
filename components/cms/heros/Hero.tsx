@@ -26,13 +26,13 @@ const Hero: React.FC<HeroProps> = (props) => {
   return (
     <Box sx={ sx.root }>
       <Stack sx={ sx.container } direction={{ md: "row", xs: "column" }} spacing={4}>            
-          <Image  
-            src={image?.url}
-            alt={title}
-            height={ 256 }
-          />    
+        <Image  
+          src={image?.url}
+          alt={title}
+          height={ 256 }
+        />    
         <Stack spacing={2} sx={ sx.content }>  
-          <Typography color='text.primary' variant="h6">
+          <Typography color='text.primary' variant="h4">
             {title}
           </Typography>   
           <Box>
