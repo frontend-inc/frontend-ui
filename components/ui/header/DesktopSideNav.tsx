@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Stack, List, Box, Hidden } from '@mui/material'
-import { AuthButton, Logo } from '../..'
+import { AuthButton } from '../..'
+import Logo from './Logo'
 import { ShopifyAuth, SearchButton, CartButton } from '../../shopify'
 import { AppContext } from '../../../context'
 import { HEADER_LOGO_HEIGHT, HEADER_LOGO_WIDTH } from '../../../constants/index'

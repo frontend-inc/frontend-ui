@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
-import { Stack, AppBar, Button, Box, Hidden, Toolbar } from '@mui/material'
-import { AuthButton, Logo, Icon } from '../..'
+import { AppBar, Box, Hidden, Toolbar } from '@mui/material'
+import { AuthButton } from '../..'
+import Logo from './Logo'
 import { ShopifyAuth, SearchButton, CartButton } from '../../shopify'
 import { AppContext } from '../../../context'
 import { HEADER_LOGO_HEIGHT, HEADER_LOGO_WIDTH } from '../../../constants/index'
@@ -48,7 +49,12 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 				<Toolbar>
 					<Box sx={sx.desktopTopNav}>
 						<Box sx={sx.leftMenu}>
-							<Logo src={logo} width={logoWidth} height={logoHeight} />
+							<Logo 
+                src={logo} 
+                width={logoWidth} 
+                height={logoHeight} 
+                handleClick={() => handleClick('/')}
+              />
 						</Box>
 						<Box sx={sx.centerMenu}>
 							{menuItems

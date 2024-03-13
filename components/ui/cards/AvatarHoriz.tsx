@@ -9,10 +9,6 @@ import {
 	Typography,
 } from '@mui/material'
 import { truncate } from '../../../helpers'
-import {
-	AVATAR_HORIZ_HEIGHT,
-	AVATAR_HORIZ_WIDTH,
-} from '../../../constants/index'
 import { CardProps } from '../../../types'
 
 const AvatarHoriz: React.FC<CardProps> = (props) => {
@@ -21,8 +17,8 @@ const AvatarHoriz: React.FC<CardProps> = (props) => {
 		description,
 		textVariant = 'body1',
 		image,
-		height = AVATAR_HORIZ_HEIGHT,
-		width = AVATAR_HORIZ_WIDTH,
+		height = 128,
+		width = 128,
 		handleClick,
 		enableBorder = false,
 		enableGradient = false,
@@ -31,6 +27,7 @@ const AvatarHoriz: React.FC<CardProps> = (props) => {
 
 	return (
 		<List
+      disablePadding
 			sx={{
 				...sx.listItem,
 				...(enableBorder && sx.rootBorder),
@@ -63,8 +60,8 @@ const AvatarHoriz: React.FC<CardProps> = (props) => {
 							</Typography>
 						}
 						secondary={
-							<Typography variant="body2" color="text.secondary">
-								{truncate(description, 30)}
+							<Typography variant="body2" color="text.secondary" sx={ sx.description }>
+								{truncate(description, 80)}
 							</Typography>
 						}
 					/>
@@ -115,4 +112,7 @@ const sx = {
 		height: '64px',
 		width: '64px',
 	},
+  description: {
+    maxWidth: 320
+  }
 }

@@ -59,7 +59,9 @@ const AvatarVert: React.FC<CardProps> = (props) => {
 							height,
 							width,
 						}}
-					/>
+					>
+            <Box />
+          </Avatar>
 				</TouchableOpacity>
 			</Box>
 			<Stack spacing={1}>

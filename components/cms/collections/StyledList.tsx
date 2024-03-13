@@ -12,9 +12,6 @@ import {
 	CoverHoriz,
 	AvatarVert,
 	AvatarHoriz,
-	AvatarChip,
-	ImageVert,
-	ImageHoriz,
 } from '../..'
 import { DocumentType } from '../../../types'
 
@@ -55,23 +52,17 @@ const StyledList: React.FC<StyledListProps> = (props) => {
 		list: {
 			card: CardHoriz,
 			avatar: AvatarHoriz,
-			image: ImageHoriz,
 			cover: CoverHoriz,
-			chip: AvatarChip,
 		},
 		grid: {
 			card: CardVert,
 			avatar: AvatarVert,
-			image: ImageVert,
 			cover: CoverVert,
-			chip: AvatarChip,
 		},
 		carousel: {
 			card: CardVert,
 			avatar: AvatarVert,
-			image: ImageVert,
 			cover: CoverVert,
-			chip: AvatarChip,
 		},
 	}
 
@@ -106,8 +97,7 @@ const StyledList: React.FC<StyledListProps> = (props) => {
 						/>
 					)}
 					{layout == 'carousel' && (
-						<ListView
-							flexDirection="row"
+						<CarouselView
 							editing={editing}
 							items={resources}
 							handleClick={handleClick}

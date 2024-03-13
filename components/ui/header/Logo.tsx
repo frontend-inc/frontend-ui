@@ -1,13 +1,13 @@
 import React from 'react'
 import { Button } from '@mui/material'
 import Image from 'next/image'
-import EmptyImage from './NoImage'
+import EmptyImage from '../NoImage'
 
 const LOGO_WIDTH = 100
 const LOGO_HEIGHT = 50
 
 type LogoProps = {
-	src?: string
+	src: string
 	width?: number
 	height?: number
 	handleClick: () => void

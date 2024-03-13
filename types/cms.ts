@@ -12,6 +12,7 @@ export type DocumentLinkType = {
 
 
 export type DocumentType = {
+  id?: number
   user_id?: number 
   user?: UserType    
   handle: string 

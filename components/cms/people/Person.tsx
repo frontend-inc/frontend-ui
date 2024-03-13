@@ -4,11 +4,8 @@ import {
   Box,
   Link,
   Stack,
-  Container,
   Typography,
-  Collapse,
 } from '@mui/material'
-import { Image } from '../..'
 import { DocumentType } from '../../../types'
 
 type PersonProps = {
@@ -24,6 +21,7 @@ const Person: React.FC<PersonProps> = (props) => {
   const { title, image, description } = resource || {}
   const [open, setOpen] = useState(false)
 
+  if(!resource) return null;
   return (
     <Box sx={ sx.root }>
       <Stack sx={ sx.container } direction={{ md: "row", xs: "column" }} spacing={4}>            

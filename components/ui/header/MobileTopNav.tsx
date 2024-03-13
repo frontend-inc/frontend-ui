@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import { AppBar, Box, Hidden, Toolbar, IconButton } from '@mui/material'
-import { Logo, Icon } from '../..'
+import { Icon } from '../..'
 import { SearchButton, CartButton } from '../../shopify'
 import { AppContext } from '../../../context'
 import { MenuLinkType } from '../../..'
+import Logo from './Logo'
 
 type MobileNavProps = {
 	editing?: boolean
