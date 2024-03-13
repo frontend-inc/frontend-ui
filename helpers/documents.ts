@@ -27,3 +27,11 @@ export const flattenDocument = (resource) => {
 		...data,
 	}
 }
+
+export const filterDocumentLinks = (document, contentType) => {
+		let documents = document?.document_links
+			?.filter((d) => d?.target?.content_type === contentType)
+			?.map((d) => d.target)
+		return documents
+}
+

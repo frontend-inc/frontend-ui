@@ -6,16 +6,14 @@ import {
 	ListFilterButton,
 	ListSortButton,
 	SearchInput,
-	Carousel,
-	LoadMore,
-  CardVert
+	Heading,
+	LoadMore,  
 } from '../..'
-import { Typography } from '@mui/material'
 import { AppContext } from '../../../context'
 import { TITLE_SORT, PRICE_SORT } from '../../../constants/index'
 import { FilterOptionType } from '../../../types'
 import { useRouter } from 'next/router'
-import CollectionCard from './CollectionCard'
+import { CollectionList } from '../../../components'
 
 type CollectionProps = {
 	title?: string
@@ -141,9 +139,9 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	return (
 		<Stack spacing={1} sx={sx.root}>
 			<Stack direction="row" justifyContent={'space-between'} spacing={1}>
-				<Typography variant="h5" color="textPrimary">
-					{title}
-				</Typography>
+        <Heading 
+          title={title}
+        />
 				<Box>
 					{enableFilters && (
 						<ListFilterButton
@@ -173,29 +171,16 @@ const Collection: React.FC<CollectionProps> = (props) => {
 					handleChange={handleChange}
 					handleSearch={handleSearch}
 				/>
-			)}      
-      <Box 
-        sx={{ 
-          ...sx.content,
-          ...(layout == 'grid' ? sx.grid : sx.list )
-        }}
-      >
-        { resources?.map((resource, index) => (
-          <CollectionCard 
-            key={index}
-            layout={layout}
-            style={style}
-            title={resource?.title}
-            image={resource?.image?.url}
-            video={resource?.video?.url}
-            description={resource?.description}
-            buttonText={buttonText}
-            handleClick={() => handleClick(resource) }
-            enableBorder={enableBorder}
-            enableGradient={enableGradient}            
-          />
-        ))}
-      </Box>
+			)}   
+      <CollectionList 
+        layout={ layout }
+        style={ style }
+        resources={ resources }
+        handleClick={ handleClick }
+        buttonText={ buttonText }
+        enableBorder={ enableBorder }
+        enableGradient={ enableGradient }
+      />         
       {enableLoadMore && (
 				<LoadMore
 					page={page}

@@ -2,20 +2,23 @@ import React, { useState, useEffect, useContext } from 'react'
 import { AppContext } from '../../../context'
 import { useResource } from 'frontend-js'
 import { useRouter } from 'next/router'
-import { StyledList } from '../..'
-import { getDocumentValue } from '../../../helpers'
+import { filterDocumentLinks } from '../../../helpers'
+import { CollectionList } from '../../../components'
+import { Heading } from '../..'
+import { Box } from '@mui/material'
 
 type CollectionHasManyProps = {
-	layout?: 'list' | 'grid' | 'carousel'
-	style?: 'card' | 'avatar' | 'image' | 'cover' | 'chip'
+  title: string
+	layout?: 'list' | 'grid'
+	style?: 'card' | 'avatar' | 'cover' 
 	field: any
+  resource: any 
 	url: string
 	handle: string
 	navigateUrl?: any
 	foreignUrl?: string
 	perPage?: number
 	query?: any
-	editing?: boolean
 	buttonText?: string
 	autoPlay?: boolean
 	arrows?: boolean
@@ -26,57 +29,37 @@ type CollectionHasManyProps = {
 
 const CollectionHasMany: React.FC<CollectionHasManyProps> = (props) => {
 	const {
+    title,
+    field,	
+    resource,
 		layout = 'list',
-		style = 'card',
-		field,
-		url,
+		style = 'card',			
 		foreignUrl,
 		navigateUrl,
-		handle,
 		perPage = 5,
-		editing = false,
 		buttonText,
 		query: defaultQuery = null,
-		autoPlay = false,
-		arrows = false,
-		showDots = true,
 		enableBorder = false,
 		enableGradient = false,
 	} = props
 
 	const router = useRouter()
-	const [documents, setDocuments] = useState<any[]>([])
 
 	const { clientUrl } = useContext(AppContext)
 
-	const { resource, findOne } = useResource({
-		url,
-	})
-
-	const { loading, query, resources, findMany } = useResource({
+	const { query, resources, findMany } = useResource({
 		url: foreignUrl,
 	})
 
 	const handleClick = (item) => {
-		if (!editing && clientUrl && navigateUrl && item?.handle) {
+		if (clientUrl && navigateUrl && item?.handle) {
 			router.push(`${clientUrl}${navigateUrl}/${item?.handle}`)
 		}
 	}
 
 	useEffect(() => {
-		if (handle) {
-			findOne(handle)
-		}
-	}, [handle])
-
-	useEffect(() => {
-		if (resource && field) {
-			setDocuments(getDocumentValue(resource, field))
-		}
-	}, [resource, field])
-
-	useEffect(() => {
-		if (foreignUrl && documents) {
+		if (resource && field && foreignUrl) {      
+      const documents = filterDocumentLinks(resource, field?.foreign_content_type)
 			const documentIds = documents.map((document) => document.id)
 			findMany({
 				...query,
@@ -94,24 +77,21 @@ const CollectionHasMany: React.FC<CollectionHasManyProps> = (props) => {
 				page: 1,
 			})
 		}
-	}, [documents, foreignUrl, defaultQuery])
+	}, [resource, field, foreignUrl])
 
 	return (
-		<StyledList
-			resources={resources}
-			layout={layout}
-			style={style}
-			editing={editing}
-			loading={loading}
-			buttonText={buttonText}
-			handleClick={handleClick}
-			//@ts-ignore
-			autoPlay={autoPlay}
-			arrows={arrows}
-			showDots={showDots}
-			enableBorder={enableBorder}
-			enableGradient={enableGradient}
-		/>
+  <Box sx={ sx.root }>
+    <Heading title={ title } />
+    <CollectionList 
+      layout={ layout }
+      style={ style }
+      resources={ resources }
+      handleClick={ handleClick }
+      buttonText={ buttonText }
+      enableBorder={ enableBorder }
+      enableGradient={ enableGradient }
+    />         
+  </Box>
 	)
 }
 
@@ -121,4 +101,23 @@ const sx = {
 	root: {
 		width: '100%',
 	},
+  content: {
+    width: '100%'
+  },
+  list: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px'
+  },
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: {
+      md: '1fr 1fr 1fr',
+      xs: '1fr',
+    },
+    gap: '16px'
+  },
+  item: {
+    p: 2
+  }
 }
