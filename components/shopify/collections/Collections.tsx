@@ -53,7 +53,7 @@ const Collections: React.FC<CollectionProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-			<Typography variant="h6" color="textPrimary">
+			<Typography variant="h5" color="textPrimary">
 				{title}
 			</Typography>
 			<StyledList

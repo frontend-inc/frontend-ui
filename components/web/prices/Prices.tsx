@@ -24,7 +24,7 @@ const Prices: React.FC<PricesProps> = (props) => {
   return(
     <Box>
       { title && (
-      <Typography sx={ sx.title } variant="h6" color="textPrimary">
+      <Typography sx={ sx.title } variant="h5" color="textPrimary">
         { title }
       </Typography>
       )}

@@ -4,8 +4,6 @@ import { Box, Button, Stack, Typography } from '@mui/material'
 import { Image, TouchableOpacity } from '../..'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
-import { TypographyVariantsType } from '../../../types'
-import { FEATURED_CARD_HEIGHT } from '../../../constants/index'
 
 export type FeaturedCardProps = {
 	editing?: boolean
@@ -14,7 +12,6 @@ export type FeaturedCardProps = {
 	description?: string
 	image?: string
 	buttonText?: string
-	textVariant?: TypographyVariantsType
 	size?: number
 	href?: string
 	height?: number
@@ -35,11 +32,9 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 		title,
 		description,
 		image = '',
-		href,
-		height = FEATURED_CARD_HEIGHT,
+		href,		
 		buttonText,
 		flexDirection = 'row',
-		textVariant = 'h3',
 		handleClick,
 		objectFit = 'cover',
 		enableBorder = false,
@@ -100,7 +95,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 					<TouchableOpacity handleClick={handleItemClick}>
 						<Image
 							src={image}
-							height={height}
+							height={320}
 							objectFit={objectFit}
 							alt={title}
 							enableGradient={enableGradient}
@@ -128,21 +123,6 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 							},
 						}}
 					>
-						{label && (
-							<Typography
-								color="primary"
-								sx={{
-									...sx.label,
-									textAlign: {
-										sm: textAlign,
-										xs: 'center',
-									},
-								}}
-								variant="caption"
-							>
-								{label}
-							</Typography>
-						)}
 						<Typography
 							sx={{
 								...sx.title,
@@ -151,7 +131,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 									xs: 'center',
 								},
 							}}
-							variant={textVariant}
+							variant={'h4'}
 						>
 							{title}
 						</Typography>
@@ -238,10 +218,6 @@ const sx = {
 		display: 'flex',
 		height: '100%',
 		width: '100%',
-	},
-	label: {
-		width: '100%',
-		color: 'primary.main',
 	},
 	title: {
 		width: '100%',

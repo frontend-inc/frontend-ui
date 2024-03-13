@@ -29,19 +29,19 @@ export const typography = {
 	h4: {
 		fontFamily: 'Inter',
 		fontSize: 26,
-		fontWeight: 500,
+		fontWeight: 700,
 		'@media (max-width:600px)': {
 			fontSize: 20,
 		},
 	},
 	h5: {
 		fontFamily: 'Inter',
-		fontWeight: 500,
-		fontSize: 22,
+		fontWeight: 600,
+		fontSize: 20,
 	},
 	h6: {
 		fontFamily: 'Inter',
-		fontWeight: 500,
+		fontWeight: 600,
 		fontSize: 18,
 	},
 	subtitle1: {

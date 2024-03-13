@@ -41,7 +41,7 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			{title && (
-				<Typography mb={1} color="textPrimary" variant="h6">
+				<Typography mb={1} color="textPrimary" variant="h5">
 					{title}
 				</Typography>
 			)}

@@ -19,7 +19,7 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 	return (
 		<Stack spacing={1} sx={sx.root}>
 			<Stack direction="row" justifyContent={'space-between'} spacing={1}>
-				<Typography variant="h6" sx={sx.title} color="textPrimary">
+				<Typography variant="h5" sx={sx.title} color="textPrimary">
 					{title}
 				</Typography>
 			</Stack>

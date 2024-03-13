@@ -20,8 +20,9 @@ import CollectionCard from './CollectionCard'
 type CollectionProps = {
 	title?: string
 	url: string
-	layout: 'list' | 'grid' 
-	style: 'avatar' | 'card' | 'cover'
+	layout: 'list' | 'grid' | 'carousel'
+	style: 'card' | 'avatar' | 'image' | 'cover'
+  renderItem: (resource: any, index: number) => React.ReactNode
 	fields?: any
 	editing?: boolean
 	enableInfiniteLoad?: boolean
@@ -35,6 +36,9 @@ type CollectionProps = {
 	enableSortPrice?: boolean
 	secondaryActions?: React.ReactNode
 	buttonText?: string
+	autoPlay?: boolean
+	arrows?: boolean
+	showDots?: boolean
 	enableBorder?: boolean
 	enableGradient?: boolean
 }
@@ -47,7 +51,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	const {
 		title,
 		layout = 'grid',
-    style = 'card',
+    renderItem,
 		url,
 		fields,
 		query: defaultQuery = {},
@@ -60,8 +64,11 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		enableLoadMore = true,
 		navigateUrl,
 		buttonText,
+		autoPlay = false,
+		arrows = false,
+		showDots = true,
 		enableBorder = false,
-		enableGradient = false    
+		enableGradient = false,
 	} = props
 
 	const { loading, query, findMany, resources, page, numPages, loadMore } =
@@ -180,11 +187,11 @@ const Collection: React.FC<CollectionProps> = (props) => {
           ...(layout == 'grid' ? sx.grid : sx.list )
         }}
       >
-        { resources?.map((resource, index) => (
+        { resources?.map((resource, i) => (
           <CollectionCard 
-            key={index}
             layout={layout}
             style={style}
+            key={index}
             title={resource?.title}
             image={resource?.image?.url}
             video={resource?.video?.url}
@@ -192,7 +199,8 @@ const Collection: React.FC<CollectionProps> = (props) => {
             buttonText={buttonText}
             handleClick={() => handleClick(resource) }
             enableBorder={enableBorder}
-            enableGradient={enableGradient}            
+            enableGradient={enableGradient}
+            enableOverlay={enableOverlay}
           />
         ))}
       </Box>
@@ -214,14 +222,6 @@ const sx = {
 	root: {
 		width: '100%',
 	},
-  content: {
-    width: '100%'
-  },
-  list: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '16px'
-  },
   grid: {
     display: 'grid',
     gridTemplateColumns: {

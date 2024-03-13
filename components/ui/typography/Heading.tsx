@@ -20,7 +20,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 			)}
 			{title && (
 				<Typography
-					variant="h6"
+					variant="h5"
 					color="text.primary"
 					style={{
 						...sx.text,

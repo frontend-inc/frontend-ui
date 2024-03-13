@@ -24,7 +24,7 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			{title && (
-				<Typography sx={sx.title} variant="h6" color="textPrimary">
+				<Typography sx={sx.title} variant="h5" color="textPrimary">
 					{title}
 				</Typography>
 			)}

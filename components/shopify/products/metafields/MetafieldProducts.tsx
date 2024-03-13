@@ -37,7 +37,7 @@ const MetafieldProducts: React.FC<MetafieldProductsProps> = (props) => {
 	return (
 		<>
 			{title && (
-				<Typography color="textPrimary" variant="h6">
+				<Typography color="textPrimary" variant="h5">
 					{title}
 				</Typography>
 			)}

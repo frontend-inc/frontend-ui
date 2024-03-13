@@ -15,7 +15,7 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 		description,
 		image = '',
 		href,
-		height = 128,
+		height = 180,
 		buttonText,
 		textVariant = 'subtitle1',
 		handleClick,
@@ -57,7 +57,7 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 						/>
 					</TouchableOpacity>
 				</Box>
-				<Stack spacing={2} sx={sx.content}>
+				<Stack spacing={1} sx={sx.content}>
 					<Box>
 						<Typography color="textPrimary" variant={textVariant}>
 							{truncate(title)}
@@ -78,7 +78,7 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 					{buttonText && (
 						<Box>
 							<Button
-								variant="outlined"
+								sx={ sx.button }
 								color="secondary"
 								onClick={handleItemClick}
 							>
@@ -119,7 +119,7 @@ const sx = {
 	},
 	image: {
 		mr: 2,
-		width: 120,
+		width: 180,
 		height: '100%',
 	},
 	content: {
@@ -130,4 +130,11 @@ const sx = {
 	description: {
 		maxWidth: '320px',
 	},
+  button: {
+    color: 'text.primary',
+    bgcolor: 'tertiary.main',
+    '&:hover': {
+      bgcolor: 'tertiary.dark',
+    }
+  }
 }

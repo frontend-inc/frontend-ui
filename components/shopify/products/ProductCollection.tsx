@@ -136,7 +136,7 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 	return (
 		<Stack spacing={2}>
 			<Stack direction="row" spacing={1} justifyContent={'space-between'}>
-				<Typography variant="h6" color="text.primary">
+				<Typography variant="h5" color="text.primary">
 					{title}
 				</Typography>
 				<Box>

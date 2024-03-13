@@ -42,7 +42,7 @@ const Section: React.FC<SectionProps> = (props) => {
                 ...sx.title,
                 textAlign,
               }}
-              variant="h6"
+              variant="h5"
               color="textPrimary"
             >
               {title}

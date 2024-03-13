@@ -18,7 +18,7 @@ const Features: React.FC<FeaturesProps> = (props) => {
 	return (
 		<Grid container spacing={0}>
 			{title && (
-				<Typography color="text.primary" variant="h6" sx={sx.title}>
+				<Typography color="text.primary" variant="h5" sx={sx.title}>
 					{title}
 				</Typography>
 			)}

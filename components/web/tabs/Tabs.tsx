@@ -40,7 +40,7 @@ const Tabs: React.FC<TabsProps> = (props) => {
 		>
 			{title && (
 				<Stack direction="row" justifyContent={'space-between'} spacing={1}>
-					<Typography variant="h6" sx={sx.title} color="textPrimary">
+					<Typography variant="h5" sx={sx.title} color="textPrimary">
 						{title}
 					</Typography>
 				</Stack>
