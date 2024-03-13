@@ -1,13 +1,10 @@
 import React from 'react'
 import {
   Stack,
-  Box,
-  Grid,
-  Typography,
-  Button 
 } from '@mui/material'
 import PriceCard from './PriceCard'
 import { PriceType } from '../../..'
+import { Heading } from '../../../components'
 
 type PricesProps = {
   title?: string
@@ -22,11 +19,12 @@ const Prices: React.FC<PricesProps> = (props) => {
   } = props 
 
   return(
-    <Box>
+    <Stack spacing={2}>
       { title && (
-      <Typography sx={ sx.title } variant="h5" color="textPrimary">
-        { title }
-      </Typography>
+        <Heading 
+          title={title } 
+          textAlign='center'
+        />      
       )}
       <Stack direction="row" spacing={1}>
         {prices.map((price, index) => (
@@ -36,16 +34,8 @@ const Prices: React.FC<PricesProps> = (props) => {
           />
         ))}
       </Stack>
-    </Box>
+    </Stack>
   )
 }
 
 export default Prices
-
-const sx = {
-  title: {
-    width: "100%",
-    textAlign: 'center',
-    mb: 2
-  }
-}

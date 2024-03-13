@@ -23,7 +23,9 @@ const Field: React.FC<FieldProps> = (props) => {
 	const { field, document } = props
 	const { variant, label } = field
 	let value = document[field?.name]
-	if (!value) return null
+	if (!value){
+    value = '-'
+  }
 	return (
 		<>
 			{variant === 'boolean' && <FieldBoolean label={label} value={value} />}

@@ -1,15 +1,23 @@
 import React from 'react'
 import { Stack, Typography } from '@mui/material'
+import { TypographyVariantsType } from '@frontend-mui/types'
 
 type HeadingProps = {
 	label?: string
 	title?: string
 	subtitle?: string
 	textAlign?: 'left' | 'center'
+  textVariant?: TypographyVariantsType
 }
 
 const Heading: React.FC<HeadingProps> = (props) => {
-	const { label, title, subtitle, textAlign } = props || {}
+	const { 
+    label, 
+    title, 
+    subtitle, 
+    textAlign, 
+    textVariant = 'h6'
+  } = props || {}
 
 	return (
 		<Stack sx={sx.stack} direction={'column'} spacing={1}>
@@ -20,7 +28,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 			)}
 			{title && (
 				<Typography
-					variant="h6"
+					variant={ textVariant }
 					color="text.primary"
 					style={{
 						...sx.text,
@@ -58,6 +66,5 @@ const sx = {
 	},
 	text: {
 		width: '100%',
-		maxWidth: '600px',
 	},
 }

@@ -8,7 +8,6 @@ type FeaturesProps = {
 		icon?: any
 		title?: string
 		description?: string
-		filled?: boolean
 	}[]
 }
 

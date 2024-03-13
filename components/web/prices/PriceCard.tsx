@@ -30,10 +30,10 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
   return(
     <Box sx={ sx.root }>
       <Stack sx={ sx.content } direction="column" spacing={1}>
-        <Typography variant="subtitle1" color="text.primary">
+        <Typography variant="body1" color="text.secondary">
           { price.title }
         </Typography>
-        <Typography variant="h6" color="text.primary">
+        <Typography variant="h5" color="text.primary">
           { price.price }
         </Typography>
         <Divider />

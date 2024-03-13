@@ -6,20 +6,15 @@ import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 
 export type FeaturedCardProps = {
-	editing?: boolean
-	label?: string
 	title?: string
 	description?: string
 	image?: string
 	buttonText?: string
-	size?: number
 	href?: string
-	height?: number
-	width?: number
-	flexDirection?: 'row' | 'column' | 'row-reverse' | 'column-reverse'
+	flexDirection?: 'row' | 'row-reverse'
 	handleClick?: () => void
 	objectFit?: 'cover' | 'contain'
-	responsive?: boolean
+  enableOverlay?: boolean
 	enableBorder?: boolean
 	enableGradient?: boolean
 }
@@ -27,8 +22,6 @@ export type FeaturedCardProps = {
 const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
-		editing = false,
-		label,
 		title,
 		description,
 		image = '',
@@ -37,13 +30,10 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 		flexDirection = 'row',
 		handleClick,
 		objectFit = 'cover',
+    enableOverlay = false,
 		enableBorder = false,
 		enableGradient = false,
 	} = props || {}
-
-	const [textAlign, setTextAlign] = useState('center')
-	const [justifyContent, setJustifyContent] = useState('center')
-	const [direction, setDirection] = useState('row')
 
 	const router = useRouter()
 
@@ -54,18 +44,6 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 			router.push(`${clientUrl}${href}`)
 		}
 	}
-
-	useEffect(() => {
-		if (flexDirection == 'row' || flexDirection == 'row-reverse') {
-			setTextAlign('left')
-			setDirection('row')
-			setJustifyContent('center')
-		} else {
-			setTextAlign('center')
-			setDirection('column')
-			setJustifyContent('flex-start')
-		}
-	}, [flexDirection])
 
 	return (
 		<Box
@@ -84,13 +62,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 				}}
 			>
 				<Box
-					sx={{
-						...sx.image,
-						width: {
-							xs: '100%',
-							sm: direction == 'row' ? '50%' : '100%',
-						},
-					}}
+					sx={sx.image}
 				>
 					<TouchableOpacity handleClick={handleItemClick}>
 						<Image
@@ -98,65 +70,31 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 							height={320}
 							objectFit={objectFit}
 							alt={title}
+              enableOverlay={enableOverlay}
 							enableGradient={enableGradient}
 							disableBorderRadius={enableBorder}
 						/>
 					</TouchableOpacity>
 				</Box>
-				<Box
-					sx={{
-						...sx.content,
-						justifyContent: direction == 'row' ? 'flex-start' : 'center',
-						width: {
-							sm: direction == 'row' ? '50%' : '100%',
-							xs: '100%',
-						},
-					}}
-				>
+				<Box sx={ sx.content}>
 					<Stack
 						spacing={0}
-						sx={{
-							...sx.textContent,
-							justifyContent: {
-								sm: justifyContent,
-								xs: 'center',
-							},
-						}}
+						sx={ sx.textContent }
 					>
 						<Typography
-							sx={{
-								...sx.title,
-								textAlign: {
-									sm: textAlign,
-									xs: 'center',
-								},
-							}}
+							sx={sx.title}
 							variant={'h4'}
 						>
 							{title}
 						</Typography>
 						<Typography
 							variant="body2"
-							sx={{
-								...sx.description,
-								textAlign: {
-									sm: textAlign,
-									xs: 'center',
-								},
-							}}
+							sx={sx.description}
 						>
 							{truncate(description, 160)}
 						</Typography>
 						{buttonText && (
-							<Box
-								sx={{
-									...sx.actions,
-									justifyContent: {
-										sm: direction == 'row' ? 'flex-start' : 'center',
-										xs: 'center',
-									},
-								}}
-							>
+							<Box sx={sx.actions}>
 								<Button
 									size="large"
 									variant="contained"
@@ -199,23 +137,37 @@ const sx = {
 		justifyContent: 'center',
 		alignItems: 'center',
 		height: '100%',
-		width: '100%',
+		width: {
+      xs: '100%',
+      sm: '50%',
+    }
 	},
 	actions: {
 		mt: 2,
 		display: 'flex',
+    justifyContent: {
+      sm: 'flex-start',
+      xs: 'center',
+    },
 		width: '100%',
 	},
 	content: {
 		display: 'flex',
-		justifyContent: 'center',
+		justifyContent: {
+      sm: 'flex-start',
+      xs: 'center',
+    },
+    width: {
+      sm: '50%',
+      xs: '100%',
+    },
 		alignItems: 'center',
 		height: '100%',
-		width: '100%',
 	},
 	textContent: {
 		p: 2,
 		display: 'flex',
+    justifyContent: 'center',
 		height: '100%',
 		width: '100%',
 	},
@@ -223,9 +175,17 @@ const sx = {
 		width: '100%',
 		color: 'text.primary',
 		my: 1,
+    textAlign: {
+      sm: 'left',
+      xs: 'center',
+    },
 	},
 	description: {
 		width: '100%',
 		color: 'text.secondary',
+    textAlign: {
+      sm: 'left',
+      xs: 'center',
+    },
 	},
 }

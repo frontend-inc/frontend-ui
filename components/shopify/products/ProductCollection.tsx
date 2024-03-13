@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Typography, Stack } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 import { useCollections } from 'frontend-shopify'
 import {
 	ProductFilters,
@@ -7,6 +7,7 @@ import {
 	ProductCarousel,
 	ProductSort,
 } from '../../../components/shopify'
+import { Heading } from '../../../components'
 import { ProductCollectionSortKey } from 'frontend-shopify'
 
 type ProductCollectionProps = {
@@ -136,9 +137,7 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 	return (
 		<Stack spacing={2}>
 			<Stack direction="row" spacing={1} justifyContent={'space-between'}>
-				<Typography variant="h5" color="text.primary">
-					{title}
-				</Typography>
+        <Heading title={ title } />				
 				<Box>
 					{enableFilters && (
 						<ProductFilters
