@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   Avatar,
   Box,
@@ -12,7 +12,6 @@ type PersonProps = {
   resource: DocumentType
 }
 
-
 const Person: React.FC<PersonProps> = (props) => {
 
   const MAX_CHARS = 500 
@@ -21,18 +20,21 @@ const Person: React.FC<PersonProps> = (props) => {
   const { title, image, description } = resource || {}
   const [open, setOpen] = useState(false)
 
-  if(!resource) return null;
   return (
     <Box sx={ sx.root }>
       <Stack sx={ sx.container } direction={{ md: "row", xs: "column" }} spacing={4}>            
-        <Avatar sx={ sx.avatarContainer }>
-          <Avatar  
-            src={image?.url}
-            alt={title}
-            sx={ sx.avatar }
-          />    
-          <Box />
-        </Avatar>     
+        { resource?.image?.url && (
+          <Avatar sx={ sx.avatarContainer }>
+            <Avatar  
+              src={image?.url}
+              alt={title}
+              sx={ sx.avatar }
+            >
+              <Box />
+            </Avatar>    
+            <Box />
+          </Avatar>  
+        )}           
         <Stack spacing={2} sx={ sx.content }>  
           <Typography color='text.primary' variant="h4">
             {title}

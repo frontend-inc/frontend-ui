@@ -71,15 +71,16 @@ const sx = {
     },
     gap: '16px'
   },
-  item: {
+  item: {    
     width: '100%',
     gridColumn: 'span 1',
     borderRadius: theme => `${theme.shape.borderRadius}px`,
   },
-  itemBorder: {
+  itemBorder: {    
     p: 2,
     border: '1px solid',
-    borderColor: 'divider'    
+    borderColor: 'divider',
+    bgcolor: 'primary.contrastText',    
   },    
   itemFullWidth: {
     gridColumn: 'span 3'
