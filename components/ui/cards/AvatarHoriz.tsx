@@ -1,6 +1,7 @@
 import React from 'react'
 import {
 	Avatar,
+  Box,
 	List,
 	ListItem,
 	ListItemButton,
@@ -51,7 +52,9 @@ const AvatarHoriz: React.FC<CardProps> = (props) => {
 							}}
 							src={image}
 							alt={title}
-						/>
+						>
+              <Box />
+            </Avatar>
 					</ListItemIcon>
 					<ListItemText
 						primary={

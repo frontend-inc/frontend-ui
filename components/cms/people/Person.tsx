@@ -31,6 +31,7 @@ const Person: React.FC<PersonProps> = (props) => {
             alt={title}
             sx={ sx.avatar }
           />    
+          <Box />
         </Avatar>     
         <Stack spacing={2} sx={ sx.content }>  
           <Typography color='text.primary' variant="h4">
