@@ -107,7 +107,7 @@ const sx = {
 	},
 	rootBorder: {
 		border: '1px solid',
-		borderColor: 'grey.300',
+		borderColor: 'divider',
 		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 	},
 	avatar: {

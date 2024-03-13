@@ -95,7 +95,6 @@ export default CardVert
 const sx = {
 	root: {
 		width: '100%',
-		bgcolor: 'background.main',
 	},
 	rootBorder: {
 		border: '1px solid',

@@ -126,7 +126,7 @@ const sx = {
 	},
 	rootBorder: {
 		border: '1px solid',
-		borderColor: 'grey.300',
+		borderColor: 'divider',
 		p: 1,
 		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 	},
