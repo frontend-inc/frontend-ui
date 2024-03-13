@@ -3,11 +3,11 @@ import { AppContext } from '../../../context'
 import { useResource } from 'frontend-js'
 import { useRouter } from 'next/router'
 import { filterDocumentLinks } from '../../../helpers'
-import { CollectionList } from '../../../components'
+import { CollectionList } from '../..'
 import { Heading } from '../..'
 import { Box } from '@mui/material'
 
-type CollectionHasManyProps = {
+type ForeignCollectionProps = {
   title: string
 	layout?: 'list' | 'grid'
 	style?: 'card' | 'avatar' | 'cover' 
@@ -27,8 +27,9 @@ type CollectionHasManyProps = {
 	enableGradient?: boolean
 }
 
-const CollectionHasMany: React.FC<CollectionHasManyProps> = (props) => {
-	const {
+const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
+	
+  const {
     title,
     field,	
     resource,
@@ -95,7 +96,7 @@ const CollectionHasMany: React.FC<CollectionHasManyProps> = (props) => {
 	)
 }
 
-export default CollectionHasMany
+export default ForeignCollection
 
 const sx = {
 	root: {

@@ -6,14 +6,15 @@ import {
   Stack,
   Typography,
 } from '@mui/material'
+import { Image } from '../../../components'
 import { DocumentType } from '../../../types'
 
-type PersonProps = {
+type HeroProps = {
   resource: DocumentType
 }
 
 
-const Person: React.FC<PersonProps> = (props) => {
+const Hero: React.FC<HeroProps> = (props) => {
 
   const MAX_CHARS = 500 
 
@@ -25,13 +26,11 @@ const Person: React.FC<PersonProps> = (props) => {
   return (
     <Box sx={ sx.root }>
       <Stack sx={ sx.container } direction={{ md: "row", xs: "column" }} spacing={4}>            
-        <Avatar sx={ sx.avatarContainer }>
-          <Avatar  
+          <Image  
             src={image?.url}
             alt={title}
-            sx={ sx.avatar }
+            height={ 256 }
           />    
-        </Avatar>     
         <Stack spacing={2} sx={ sx.content }>  
           <Typography color='text.primary' variant="h6">
             {title}
@@ -61,7 +60,7 @@ const Person: React.FC<PersonProps> = (props) => {
   )
 }
 
-export default Person
+export default Hero
 
 const sx = {
   root: {
@@ -78,7 +77,7 @@ const sx = {
       xs: 'center',
     }
   },
-  avatar: {
+  image: {
     height: {
       sm: 256,
       xs: 180,
@@ -87,17 +86,6 @@ const sx = {
       sm: 256,
       xs: 180,
     }
-  },
-  avatarContainer: {
-    height: {
-      sm: 260,
-      xs: 184,
-    },
-    width: {
-      sm: 260,
-      xs: 184,
-    },
-    bgcolor: 'primary.contrastText'
   },
   header : {
     width: '100%',

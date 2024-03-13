@@ -7,7 +7,7 @@ import FormField from './FormField'
 import { SYSTEM_FIELDS } from '../../../constants/index'
 import { get } from 'lodash'
 
-type FormProps = {
+type ForeignFormProps = {
 	handle: string
 	url: string
 	foreignUrl?: string
@@ -17,7 +17,7 @@ type FormProps = {
 	children?: React.ReactElement[]
 }
 
-const FormHasMany: React.FC<FormProps> = (props) => {
+const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 	const {
 		handle,
 		buttonText = 'Submit',
@@ -132,7 +132,7 @@ const FormHasMany: React.FC<FormProps> = (props) => {
 	)
 }
 
-export default FormHasMany
+export default ForeignForm
 
 const sx = {
 	root: {

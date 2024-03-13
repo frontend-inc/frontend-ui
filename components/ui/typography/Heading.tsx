@@ -20,7 +20,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 			)}
 			{title && (
 				<Typography
-					variant="h5"
+					variant="h6"
 					color="text.primary"
 					style={{
 						...sx.text,
@@ -51,6 +51,7 @@ export default Heading
 const sx = {
 	stack: {
 		width: '100%',
+    mb: 2
 	},
 	label: {
 		color: 'primary.main',
