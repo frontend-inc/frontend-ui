@@ -1,10 +1,10 @@
 import React from 'react'
 import { Icon, Placeholder } from '../..'
-import { ProductGrid } from '..'
+import { ProductCarousel } from '..'
 import { Box, Typography } from '@mui/material'
 import { useFavorites } from 'frontend-shopify'
 
-type ProductFavoritesProps = {
+type ProductFavoritesCarouselProps = {
 	editing?: boolean
 	title?: string
 	perPage?: string
@@ -12,13 +12,13 @@ type ProductFavoritesProps = {
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
 	enableQuickShop?: boolean
-	buttonText?: string
-	emptyIcon?: string
-	emptyTitle?: string
-	emptyDescription?: string
+	buttonText?: string	
+  enableAutoPlay?: boolean
+  enableArrows?: boolean
+  enableDots?: boolean
 }
 
-const ProductFavorites: React.FC<ProductFavoritesProps> = (props) => {
+const ProductFavoritesCarousel: React.FC<ProductFavoritesCarouselProps> = (props) => {
 	const {
 		editing = false,
 		title = 'Favorites',
@@ -27,9 +27,10 @@ const ProductFavorites: React.FC<ProductFavoritesProps> = (props) => {
 		enableAddToCart,
 		enableQuantity,
 		enableQuickShop,
-		emptyIcon = 'Heart',
-		emptyTitle = 'No favorites',
-		emptyDescription = 'You have no favorites yet',
+		
+    enableAutoPlay = false,
+    enableArrows = false,
+    enableDots = true,
 	} = props || {}
 
 	const { favorites } = useFavorites()
@@ -41,7 +42,7 @@ const ProductFavorites: React.FC<ProductFavoritesProps> = (props) => {
 					{title}
 				</Typography>
 			)}
-      <ProductGrid
+      <ProductCarousel
         editing={editing}
         products={favorites}
         enableBorder={enableBorder}
@@ -49,19 +50,22 @@ const ProductFavorites: React.FC<ProductFavoritesProps> = (props) => {
         enableQuantity={enableQuantity}
         enableQuickShop={enableQuickShop}
         buttonText={buttonText}
+        enableAutoPlay={enableAutoPlay}
+        enableArrows={enableArrows}
+        enableDots={enableDots}
       />			
 			{favorites?.length === 0 && (
 				<Placeholder
-					icon={<Icon name={emptyIcon} />}
-					title={emptyTitle}
-					description={emptyDescription}
+					icon={<Icon name={'Heart'} />}
+					title={'No favorites'}
+					description={'You have no favorites yet'}
 				/>
 			)}
 		</Box>
 	)
 }
 
-export default ProductFavorites
+export default ProductFavoritesCarousel
 
 const sx = {
 	root: {

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Button, Stack } from '@mui/material'
-import { Customer } from 'frontend-shopify'
+import { CustomerType } from 'frontend-shopify'
 import { TextInput, IconLoader } from '../../../components'
 
 type CustomerFormProps = {
 	loading: boolean
-	customer: Customer
+	customer: CustomerType
 	handleChange: any
 	handleSubmit: any
 }

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Button, Stack } from '@mui/material'
 import { TextInput } from '../..'
-import { Customer } from 'frontend-shopify'
+import { CustomerType } from 'frontend-shopify'
 
 type ForgotPasswordFormProps = {
 	errors: any
-	customer: Customer
+	customer: CustomerType
 	handleChange: (e: any) => void
 	handleSubmit: () => void
 	handleLogin?: () => void

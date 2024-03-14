@@ -10,11 +10,11 @@ import {
 	SubscriptionSelector,
 } from '../../../components/shopify'
 import { ShopContext } from 'frontend-shopify'
-import { Product, ProductVariant } from 'frontend-shopify'
+import { ProductType, ProductVariantType } from 'frontend-shopify'
 
 type AddToCartButtonProps = {
-	product: Product
-	variant: ProductVariant
+	product: ProductType
+	variant: ProductVariantType
 	buttonVariant?: 'contained' | 'outlined' | 'text'
 	label?: string
 	enableQuantity?: boolean

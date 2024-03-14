@@ -18,7 +18,7 @@ import Image from 'next/image'
 import { Icon, TouchableOpacity } from '../../../components'
 import { formatCurrency } from 'frontend-shopify'
 import { useRouter } from 'next/router'
-import { CartLine } from 'frontend-shopify'
+import { CartLineType } from 'frontend-shopify'
 
 type CartQuantityInputProps = {
 	quantity: number
@@ -43,7 +43,7 @@ const CartQuantityInput: React.FC<CartQuantityInputProps> = (props) => {
 }
 
 type CartLineProps = {
-	line: CartLine
+	line: CartLineType
 }
 
 const CartLine: React.FC<CartLineProps> = (props) => {

@@ -11,13 +11,13 @@ import {
 import {
 	useProducts,
 	useProductDetails,
-	MetafieldIdentifier,
+	MetafieldIdentifierType,
 } from 'frontend-shopify'
 
 type ProductDetailPageProps = {
 	handle: string | string[]
 	buttonText?: string
-	metafields?: MetafieldIdentifier[]
+	metafields?: MetafieldIdentifierType[]
 	enableQuantity?: boolean
 	enableFavorites?: boolean
 	enableSubscription?: boolean

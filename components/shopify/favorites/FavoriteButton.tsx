@@ -2,10 +2,10 @@ import React from 'react'
 import { Button } from '@mui/material'
 import { Icon } from '../../../components'
 import { useFavorites } from 'frontend-shopify'
-import { Product } from 'frontend-shopify'
+import { ProductType } from 'frontend-shopify'
 
 type FavoriteButtonProps = {
-	product: Product
+	product: ProductType
 }
 
 const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {

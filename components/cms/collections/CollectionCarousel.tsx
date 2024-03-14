@@ -75,9 +75,9 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
         {title}
       </Typography>				    
       <Carousel 
-        showDots={enableDots}
-        autoPlay={enableAutoPlay}
-        arrows={enableArrows}
+        enableDots={enableDots}
+        enableAutoPlay={enableAutoPlay}
+        enableArrows={enableArrows}
       >
         { resources?.map((resource, index) => (
           <CollectionCard 

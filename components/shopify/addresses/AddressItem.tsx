@@ -7,13 +7,13 @@ import {
 	MenuItem,
 } from '@mui/material'
 import { MenuButton } from '../../../components'
-import { Address } from 'frontend-shopify'
+import { AddressType } from 'frontend-shopify'
 
 type AddressItemProps = {
-	address: Address
+	address: AddressType
 	handleClick?: (id: string) => void
 	handleEdit?: (id: string) => void
-	handleDelete?: (address: Address) => void
+	handleDelete?: (address: AddressType) => void
 	disableActions?: boolean
 }
 

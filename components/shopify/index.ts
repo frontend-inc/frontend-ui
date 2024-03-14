@@ -12,16 +12,6 @@ export { default as CheckoutButton } from './cart/CheckoutButton'
 export { default as QuickShopButton } from './cart/QuickShopButton'
 export { default as SubscriptionSelector } from './subscription/SubscriptionSelector'
 
-// Filters
-export { default as ColorFilters } from './filters/options/ColorFilters'
-export { default as SizeFilters } from './filters/options/SizeFilters'
-export { default as StyleFilters } from './filters/options/StyleFilters'
-export { default as MaterialFilters } from './filters/options/MaterialFilters'
-export { default as VendorFilters } from './filters/options/VendorFilters'
-export { default as TagFilters } from './filters/options/TagFilters'
-export { default as ProductTypeFilters } from './filters/options/ProductTypeFilters'
-export { default as InStockFilter } from './filters/options/InStockFilter'
-
 export { default as ProductSort } from './filters/ProductSort'
 export { default as ProductFilters } from './filters/ProductFilters'
 export { default as ProductFiltersList } from './filters/ProductFiltersList'
@@ -82,8 +72,9 @@ export { default as ShopifyStore } from './store/ShopifyStore'
 export { default as ShopifyProduct } from './products/ShopifyProduct'
 
 // Favorites
-export { default as ProductFavorites } from './favorites/ProductFavorites'
 export { default as FavoriteButton } from './favorites/FavoriteButton'
+export { default as ProductFavorites } from './favorites/ProductFavorites'
+export { default as ProductFavoritesCarousel } from './favorites/ProductFavoritesCarousel'
 
 // Recently viewed
 export { default as RecentlyViewed } from './recently-viewed/RecentlyViewed'
