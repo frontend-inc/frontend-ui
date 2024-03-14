@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Stack } from '@mui/material'
-import { useCollections } from 'frontend-shopify'
+import { useCollections, useSearchFilters } from 'frontend-shopify'
 import {
-	ProductFilters,
 	ProductGrid,
-	ProductCarousel,
 	ProductSort,
+  ProductFilters,
 } from '../../../components/shopify'
 import { Heading } from '../../../components'
-import { ProductCollectionSortKey } from 'frontend-shopify'
+import { SHOPIFY_COLLECTION_FILTERS } from '../../../constants'
+import { 
+  SearchFilterType 
+} from 'frontend-shopify'
 
 type ProductCollectionProps = {
 	title?: string
@@ -16,19 +18,9 @@ type ProductCollectionProps = {
 	layout?: 'grid' | 'carousel'
 	handle: string | string[]
 	productComponent?: React.FC<any>
-	colorOptions?: string[]
-	sizeOptions?: string[]
-	styleOptions?: string[]
-	materialOptions?: string[]
-	vendorOptions?: string[]
-	productTypeOptions?: string[]
-	tagOptions?: string[]
-	inStockFilter?: boolean
+  options: SearchFilterType[]
 	enableFilters?: boolean
 	enableSort?: boolean
-	autoPlay?: boolean
-	arrows?: boolean
-	showDots?: boolean
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuickShop?: boolean
@@ -40,22 +32,10 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 	const {
 		title,
 		handle,
-		layout = 'grid',
 		editing = false,
-		inStockFilter,
-		productComponent,
-		colorOptions,
-		sizeOptions,
-		styleOptions,
-		materialOptions,
-		vendorOptions,
-		productTypeOptions,
-		tagOptions,
-		enableFilters = false,
+    options=[],		
+    enableFilters = false,
 		enableSort = false,
-		autoPlay = false,
-		arrows = false,
-		showDots = true,
 		enableBorder = false,
 		enableAddToCart = false,
 		enableQuickShop = false,
@@ -64,58 +44,58 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 	} = props
 
 	const [query, setQuery] = useState<Record<string, any>>({})
-	const [sortKey, setSortKey] =
-		useState<ProductCollectionSortKey>('COLLECTION_DEFAULT')
+	const [sortKey, setSortKey] = useState('COLLECTION_DEFAULT')
 	const [reverse, setReverse] = useState(false)
 
 	const {
 		loading,
 		products,
 		findCollection,
-		filters,
-		filterVariantOption,
-		filterInStock,
-		filterVendor,
-		filterProductType,
-		filterTag,
 	} = useCollections()
+
+  const {		
+		filters,
+		handleFilter,
+    handleFilterArray,		
+	} = useSearchFilters()
 
 	const handleSortClick = (sortKey, reverse = false) => {
 		setSortKey(sortKey)
 		setReverse(reverse)
 	}
 
-	const handleFilterColor = (value: string) => {
-		filterVariantOption('color', value)
-	}
+  // Shopify Storefront API docs
+  // https://shopify.dev/docs/custom-storefronts/building-with-the-storefront-api/products-collections/filter-products
+  function formatFilters(filters) {
+    const query = [];        
+    filters.forEach(filter => {
+      let queryFilter = {}
+      switch (filter.name) {
+        case 'tag':
+          queryFilter['tag'] = filter.value;          
+        break;
+      case 'product_type':
+        queryFilter['productType'] = filter.value;                  
+        break;
+      case 'vendor':
+        queryFilter['vendor'] = filter.value;                  
+        break;
+      case 'available':
+        queryFilter['vendor'] = filter.value === 'true';                          
+        break;
+      default:
+        queryFilter = {
+          variantOption: {
+            name: filter.name,
+            value: filter.value
+          }
+        }
+      }
+      query.push(queryFilter)
+    });
 
-	const handleFilterSize = (value: string) => {
-		filterVariantOption('size', value)
-	}
-
-	const handleFilterStyle = (value: string) => {
-		filterVariantOption('style', value)
-	}
-
-	const handleFilterMaterial = (value: string) => {
-		filterVariantOption('material', value)
-	}
-
-	const handleFilterInStock = () => {
-		filterInStock()
-	}
-
-	const handleFilterTag = (value: string) => {
-		filterTag(value)
-	}
-
-	const handleFilterVendor = (value: string) => {
-		filterVendor(value)
-	}
-
-	const handleFilterProductType = (value: string) => {
-		filterProductType(value)
-	}
+    return query;
+  }
 
 	useEffect(() => {
 		if (query) {
@@ -125,38 +105,26 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 
 	useEffect(() => {
 		if (handle) {
+      let searchFilters = formatFilters(filters)
 			findCollection(handle, {
 				...query,
 				sortKey,
 				reverse,
-				filters,
+				filters: searchFilters,
 			})
 		}
 	}, [handle, filters, sortKey, reverse])
 
 	return (
-		<Stack spacing={2}>
-			<Stack direction="row" spacing={1} justifyContent={'space-between'}>
-        <Heading title={ title } />				
-				<Box>
+		<Stack spacing={2}>			
+      <Heading title={ title } />				
+			<Stack direction="row" spacing={1}>
 					{enableFilters && (
 						<ProductFilters
 							filters={filters}
-							colorOptions={colorOptions}
-							sizeOptions={sizeOptions}
-							styleOptions={styleOptions}
-							materialOptions={materialOptions}
-							vendorOptions={vendorOptions}
-							tagOptions={tagOptions}
-							productTypeOptions={productTypeOptions}
-							handleFilterColor={handleFilterColor}
-							handleFilterSize={handleFilterSize}
-							handleFilterStyle={handleFilterStyle}
-							handleFilterMaterial={handleFilterMaterial}
-							handleFilterInStock={handleFilterInStock}
-							handleFilterVendor={handleFilterVendor}
-							handleFilterProductType={handleFilterProductType}
-							handleFilterTag={handleFilterTag}
+              options={options}
+							handleFilter={ handleFilter }
+              handleFilterArray={ handleFilterArray }
 						/>
 					)}
 					{enableSort && (
@@ -166,37 +134,17 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 							handleClick={handleSortClick}
 						/>
 					)}
-				</Box>
 			</Stack>
-			{layout == 'grid' && (
-				<ProductGrid
-					editing={editing}
-					loading={loading}
-					products={products}
-					productComponent={productComponent}
-					enableBorder={enableBorder}
-					enableAddToCart={enableAddToCart}
-					enableQuickShop={enableQuickShop}
-					enableQuantity={enableQuantity}
-					enableOkendoStarRating={enableOkendoStarRating}
-				/>
-			)}
-			{layout == 'carousel' && (
-				<ProductCarousel
-					editing={editing}
-					loading={loading}
-					products={products}
-					productComponent={productComponent}
-					autoPlay={autoPlay}
-					arrows={arrows}
-					showDots={showDots}
-					enableBorder={enableBorder}
-					enableAddToCart={enableAddToCart}
-					enableQuickShop={enableQuickShop}
-					enableQuantity={enableQuantity}
-					enableOkendoStarRating={enableOkendoStarRating}
-				/>
-			)}
+      <ProductGrid
+        editing={editing}
+        loading={loading}
+        products={products}					
+        enableBorder={enableBorder}
+        enableAddToCart={enableAddToCart}
+        enableQuickShop={enableQuickShop}
+        enableQuantity={enableQuantity}
+        enableOkendoStarRating={enableOkendoStarRating}
+      />
 		</Stack>
 	)
 }

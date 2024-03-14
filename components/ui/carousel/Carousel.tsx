@@ -12,9 +12,9 @@ import { muiTheme } from '../../../theme'
 type CarouselProps = {
 	editing?: boolean
 	children: React.ReactNode
-	autoPlay?: boolean
-	arrows?: boolean
-	showDots?: boolean
+	enableAutoPlay?: boolean
+	enableArrows?: boolean
+	enableDots?: boolean
 	responsive?: any
 	styles?: any
 }
@@ -26,9 +26,9 @@ const ReactCarousel: React.FC<CarouselProps> = (props) => {
 	const {
 		editing = false,
 		children,
-		autoPlay = false,
-		arrows = false,
-		showDots = true,
+		enableAutoPlay = false,
+		enableArrows = false,
+		enableDots = true,
 		styles = {},
 	} = props
 
@@ -55,9 +55,9 @@ const ReactCarousel: React.FC<CarouselProps> = (props) => {
 					swipeable
 					draggable
 					infinite
-					autoPlay={autoPlay}
-					arrows={arrows}
-					showDots={showDots}
+					autoPlay={enableAutoPlay}
+					arrows={enableArrows}
+					showDots={enableDots}
 					customDot={<CarouselDot />}
 				>
 					{children}

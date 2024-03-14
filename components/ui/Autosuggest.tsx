@@ -120,9 +120,11 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 				direction={direction}
 				spacing={1}
 			>
-				<Typography variant="caption" color="textSecondary" sx={sx.label}>
-					{label}
-				</Typography>
+        { label && (
+          <Typography variant="caption" color="textSecondary" sx={sx.label}>
+            {label}
+          </Typography>
+        )}
 				<Autocomplete
 					freeSolo={freeSolo}
 					multiple={multiselect}

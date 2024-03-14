@@ -68,10 +68,6 @@ const sx= {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    transition: 'all 0.3s',
-    '&:hover': {
-      boxShadow: '0 0 10px 0 rgba(0,0,0,0.3)'
-    }
   },
   content: {
     minHeight: 300

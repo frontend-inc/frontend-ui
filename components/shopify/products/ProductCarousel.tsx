@@ -1,21 +1,20 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import { useSegment } from '../../../hooks/addons'
 import { Box } from '@mui/material'
 import { ProductCard } from '../../../components/shopify'
 import { useRouter } from 'next/router'
 import { Carousel } from '../../../components'
 import { Product } from 'frontend-shopify'
-import { ThemeContext, AppContext } from '../../../context'
+import { AppContext } from '../../../context'
 
 type ProductCarouselProps = {
 	editing?: boolean
 	loading?: boolean
 	products: Product[]
-	productComponent?: React.FC<any>
 	buttonText?: string
-	autoPlay?: boolean
-	arrows?: boolean
-	showDots?: boolean
+	enableAutoPlay?: boolean
+	enableArrows?: boolean
+	enableDots?: boolean
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 	enableBorder?: boolean
 	enableAddToCart?: boolean
@@ -28,12 +27,10 @@ const ProductCarousel: React.FC<ProductCarouselProps> = (props) => {
 	const {
 		editing = false,
 		products,
-		maxWidth,
-		productComponent: ProductComponent = ProductCard,
 		buttonText = 'Add to cart',
-		autoPlay = false,
-		arrows = false,
-		showDots = true,
+		enableAutoPlay = false,
+		enableArrows = false,
+		enableDots = true,
 		enableBorder = false,
 		enableAddToCart,
 		enableQuickShop,
@@ -55,14 +52,13 @@ const ProductCarousel: React.FC<ProductCarouselProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			<Carousel
-				editing={editing}
-				autoPlay={autoPlay}
-				arrows={arrows}
-				showDots={showDots}
+				enableAutoPlay={enableAutoPlay}
+				enableArrows={enableArrows}
+				enableDots={enableDots}
 			>
 				{products?.map((product) => (
 					<Box sx={sx.item} key={product.id}>
-						<ProductComponent
+						<ProductCard
 							product={product}
 							handleClick={() => handleClick(product)}
 							buttonText={buttonText}

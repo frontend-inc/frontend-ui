@@ -22,7 +22,7 @@ type CollectionCarouselProps = {
 	enableAutoPlay?: boolean
 	enableArrows?: boolean
   enableBorder?: boolean
-	enableShowDots?: boolean
+	enableDots?: boolean
 	enableGradient?: boolean
 }
 
@@ -41,7 +41,7 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 		buttonText,
 		enableAutoPlay = false,
 		enableArrows = false,
-		enableShowDots = true,
+		enableDots = true,
 		enableBorder = false,
 		enableGradient = false,
 	} = props
@@ -75,7 +75,7 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
         {title}
       </Typography>				    
       <Carousel 
-        showDots={enableShowDots}
+        showDots={enableDots}
         autoPlay={enableAutoPlay}
         arrows={enableArrows}
       >

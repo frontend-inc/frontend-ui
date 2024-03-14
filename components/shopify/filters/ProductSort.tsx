@@ -65,13 +65,14 @@ const ProductSortButton: React.FC<ProductSortButtonProps> = (props) => {
 
 export default ProductSortButton
 
-const sx = {
+const sx = {    
 	button: {
-		color: 'text.secondary',
-		borderRight: 'none',
-		'&:hover': {
-			borderRight: 'none',
-		},
+    color: 'text.primary',
+    borderRight: 'none',
+    bgcolor: 'tertiary.main',
+    '&:hover': {
+      bgcolor: 'tertiary.light'
+    },
 	},
 	secondaryButton: {
 		width: '20px',

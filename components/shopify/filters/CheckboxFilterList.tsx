@@ -1,35 +1,55 @@
 import React from 'react'
 import {
-	Box,
+	Box,  
 	MenuItem,
 	Typography,
+  List,
+  ListItem,
+  ListItemButton,
 	ListItemIcon,
 	ListItemText,
 	Checkbox,
 } from '@mui/material'
+import { SearchFilterType } from 'frontend-shopify'
 
 type CheckboxFilterListProps = {
-	options: string[]
-	values?: any
-	handleClick: (value: string | number) => void
+  filters: SearchFilterType[]
+	options: SearchFilterType[]	
+	handleClick: (filter: SearchFilterType) => void
 }
 
 const CheckboxFilterList: React.FC<CheckboxFilterListProps> = (props) => {
-	const { values = [], options, handleClick } = props
+	const { filters = [], options = [], handleClick } = props
+  let values = filters.map(f => f.value)
 	return (
-		<Box>
+		<List disablePadding>
 			{options?.map((option, index) => (
-				<MenuItem key={index} onClick={() => handleClick(option)}>
+				<ListItem disablePadding key={index}>
+          <ListItemButton sx={ sx.listItemButton } onClick={() => handleClick(option)}>
 					<ListItemIcon>
-						<Checkbox checked={values?.includes(option)} color="primary" />
+						<Checkbox checked={values?.includes(option.value)} color="primary" />
 					</ListItemIcon>
 					<ListItemText
-						primary={<Typography variant="button">{option}</Typography>}
+						primary={
+              <Typography 
+                variant="button" 
+                color='text.primary'
+              >
+                {option.value}
+              </Typography>
+            }
 					/>
-				</MenuItem>
+          </ListItemButton>
+				</ListItem>
 			))}
-		</Box>
+		</List>
 	)
 }
 
 export default CheckboxFilterList
+
+const sx = {
+  listItemButton: {
+    py: 0
+  }
+}

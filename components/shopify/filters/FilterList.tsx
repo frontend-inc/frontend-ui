@@ -75,7 +75,7 @@ const FilterList: React.FC<FilterListProps> = (props) => {
 					>
 						<ListItemText
 							primary={
-								<Typography sx={sx.label} variant={variant}>
+								<Typography sx={sx.label} variant={variant} color='text.primary'>
 									{label} {count > 0 && `(${count})`}
 								</Typography>
 							}
@@ -95,17 +95,16 @@ export default FilterList
 const sx = {
 	root: {
 		width: '100%',
-		minWidth: '280px',
 	},
 	padding: {
 		px: 1,
 	},
 	listItem: {
-		borderRadius: (theme) => theme.shape.borderRadius,
+		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 		height: '40px',
 	},
 	listItemButton: {
-		borderRadius: (theme) => theme.shape.borderRadius,
+    borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 		height: '40px',
 	},
 	listItemIcon: {

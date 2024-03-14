@@ -21,7 +21,7 @@ const SizeFilters: React.FC<SizeFiltersProps> = (props) => {
 	}, [filters])
 
 	return (
-		<CheckboxFilterList
+		<CheckboxFilterList      
 			options={options}
 			values={values}
 			handleClick={handleClick}

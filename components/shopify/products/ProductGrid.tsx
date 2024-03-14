@@ -15,7 +15,6 @@ type ProductGridProps = {
 	md?: number
 	lg?: number
 	xl?: number
-	productComponent?: React.FC<any>
 	buttonText?: string
 	enableBorder?: boolean
 	enableAddToCart?: boolean
@@ -34,8 +33,7 @@ const ProductGrid: React.FC<ProductGridProps> = (props) => {
 		sm = 6,
 		md = 4,
 		lg = 4,
-		xl = 4,
-		productComponent: ProductComponent = ProductCard,
+		xl = 3,		
 		buttonText = 'Add to cart',
 		enableBorder = false,
 		enableAddToCart,
@@ -58,7 +56,7 @@ const ProductGrid: React.FC<ProductGridProps> = (props) => {
 			{products?.map((product) => (
 				<Grid item xs={xs} sm={sm} md={md} lg={lg} xl={xl} key={product?.id}>
 					<Box sx={sx.item} key={product?.id}>
-						<ProductComponent
+						<ProductCard
 							product={product}
 							handleClick={() => handleClick(product)}
 							enableBorder={enableBorder}
