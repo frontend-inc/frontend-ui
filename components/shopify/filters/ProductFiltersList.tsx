@@ -24,7 +24,7 @@ const ProductFiltersList: React.FC<ProductFiltersListProps> = (props) => {
   } = props
 
 	return (
-    <Stack spacing={1}>
+    <Stack spacing={0}>
       { SHOPIFY_SEARCH_FILTERS.map((filterType, i) => {
         let currentFilters = filters?.filter(f => f.name == filterType.value)
         let currentOptions = options?.filter(f => f.name == filterType.value)

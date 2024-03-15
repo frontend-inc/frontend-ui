@@ -3,7 +3,7 @@ import { Box, Stack } from '@mui/material'
 import { ProductSortKeyType, useCollections, useSearchFilters } from 'frontend-shopify'
 import {
 	ProductGrid,
-	ProductSort,
+	ProductSortButton,
   ProductFilters,
 } from '../../../components/shopify'
 import { Heading } from '../../../components'
@@ -126,7 +126,7 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
           />
         )}
         {enableSort && (
-          <ProductSort
+          <ProductSortButton
             sortKey={sortKey}
             reverse={reverse}
             handleClick={handleSortClick}

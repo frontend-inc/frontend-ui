@@ -1,71 +1,71 @@
-import React, { useState } from 'react'
-import { Box, Button, Popover } from '@mui/material'
-import { ExpandLess, ExpandMore } from '@mui/icons-material'
+import React from 'react'
+import { Drawer, Popup } from '../..'
+import { useMenu } from '../../../hooks'
+import { Button, Hidden } from '@mui/material'
+import { ListFilter } from 'lucide-react'
+import ProductFiltersList from './ProductFiltersList'
+import { SearchFilterType } from 'frontend-shopify'
 
 type ProductFilterButtonProps = {
-	label: string
-	count?: number
-	children: any
-	anchorVertical?: any
-	anchorHorizontal?: any
+	filters: SearchFilterType[]	
+  options: SearchFilterType[]  
+	handleFilter: (filter: SearchFilterType) => void
+  handleFilterArray: (filter: SearchFilterType) => void  
 }
 
 const ProductFilterButton: React.FC<ProductFilterButtonProps> = (props) => {
+
+  const { open, toggleMenu, closeMenu, anchorEl} = useMenu()
+
 	const {
-		label,
-		count = 0,
-		children,
-		anchorVertical = 'bottom',
-		anchorHorizontal = 'left',
-	} = props || {}
-
-	const [anchorEl, setAnchorEl] = useState(null)
-	const open = Boolean(anchorEl)
-
-	const handleButtonClick = (event) => {
-		setAnchorEl(event.currentTarget)
-	}
-
-	const handleClose = () => {
-		setAnchorEl(null)
-	}
+		filters = [],		
+    options=[],
+    handleFilter,
+    handleFilterArray,    
+  } = props
 
 	return (
-		<Box>
+		<>
 			<Button
-				variant="text"
+				sx={sx.button}
+				onClick={toggleMenu}
 				color="secondary"
-				onClick={handleButtonClick}
-				endIcon={open ? <ExpandLess /> : <ExpandMore />}
+				startIcon={<ListFilter />}
 			>
-				{label} {count > 0 && `(${count})`}
+				Filter
 			</Button>
-			<Popover
-				id="ProductFilter-menu"
-				anchorEl={anchorEl}
-				open={open}
-				onClose={handleClose}
-				anchorOrigin={{
-					vertical: anchorVertical,
-					horizontal: anchorHorizontal,
-				}}
-				//@ts-ignore
-				slots={{ paper: { sx: sx.paper } }}
-				sx={sx.popover}
-			>
-				{children}
-			</Popover>
-		</Box>
+      <Hidden smDown>
+        <Popup anchorEl={anchorEl} open={open} handleClose={closeMenu} p={1}>
+          <ProductFiltersList 
+            filters={filters}
+            options={options}
+            handleFilter={handleFilter}
+            handleFilterArray={handleFilterArray}          
+          />
+        </Popup>
+      </Hidden>
+      <Hidden smUp>
+        <Drawer anchorEl={anchorEl} open={open} handleClose={closeMenu} p={1}>
+          <ProductFiltersList 
+            filters={filters}
+            options={options}
+            handleFilter={handleFilter}
+            handleFilterArray={handleFilterArray}          
+          />
+        </Drawer>
+      </Hidden>
+		</>
 	)
 }
 
 export default ProductFilterButton
 
 const sx = {
-	paper: {},
-	popover: {
-		'& .MuiPopover-paper': {
-			minWidth: '180px',
-		},
+	button: {
+		color: 'text.primary',
+    bgcolor: 'tertiary.main',
+    '&:hover': {
+      bgcolor: 'tertiary.light'
+    }
 	},
 }

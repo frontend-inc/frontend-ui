@@ -1,18 +1,22 @@
 import React, { useState } from 'react'
 import { Box, Button, Popover } from '@mui/material'
 import { ExpandLess, ExpandMore } from '@mui/icons-material'
-import PriceRangeInput from './PriceRangeInput'
 
-type PriceFilterButtonProps = {
-	value: any
-	handleChange: any
+type PopupButtonProps = {
 	label: string
-	minPrice: number
-	maxPrice: number
+	count?: number
+	children: any
+	anchorVertical?: any
+	anchorHorizontal?: any
 }
 
-const PriceFilterButton: React.FC<PriceFilterButtonProps> = (props) => {
-	const { value, handleChange, label, minPrice, maxPrice } = props || {}
+const PopupButton: React.FC<PopupButtonProps> = (props) => {
+	const {
+		label,
+		children,
+		anchorVertical = 'bottom',
+		anchorHorizontal = 'left',
+	} = props || {}
 
 	const [anchorEl, setAnchorEl] = useState(null)
 	const open = Boolean(anchorEl)
@@ -28,34 +32,39 @@ const PriceFilterButton: React.FC<PriceFilterButtonProps> = (props) => {
 	return (
 		<Box>
 			<Button
-				id="filter-button"
-				aria-controls="filter-menu"
-				aria-haspopup="true"
-				aria-expanded={open ? 'true' : undefined}
+				variant="text"
+				color="secondary"
 				onClick={handleButtonClick}
 				endIcon={open ? <ExpandLess /> : <ExpandMore />}
 			>
 				{label}
 			</Button>
 			<Popover
-				id="filter-menu"
+				id="ProductFilter-menu"
 				anchorEl={anchorEl}
 				open={open}
 				onClose={handleClose}
 				anchorOrigin={{
-					vertical: 'bottom',
-					horizontal: 'left',
+					vertical: anchorVertical,
+					horizontal: anchorHorizontal,
 				}}
+				//@ts-ignore
+				slots={{ paper: { sx: sx.paper } }}
+				sx={sx.popover}
 			>
-				<PriceRangeInput
-					handleChange={handleChange}
-					minPrice={minPrice}
-					maxPrice={maxPrice}
-					value={value}
-				/>
+				{children}
 			</Popover>
 		</Box>
 	)
 }
 
-export default PriceFilterButton
+export default PopupButton
+
+const sx = {
+	paper: {},
+	popover: {
+		'& .MuiPopover-paper': {
+			minWidth: '180px',
+		},
+	},
+}

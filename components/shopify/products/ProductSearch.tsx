@@ -1,10 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { SearchFilterType, useProducts, useSearchFilters } from 'frontend-shopify'
+import { ProductSortKeyType } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
 import { useRouter } from 'next/router'
-import { Box, Grid, Hidden } from '@mui/material'
+import { Box, Grid, Stack, Typography } from '@mui/material'
 import { SearchInput, Placeholder } from '../..'
-import { ProductGrid, ProductSearchFilters } from '..'
+import { ProductSortButton, ProductGrid, ProductSearchFilters } from '..'
 import LoadMore from '../search/LoadMore'
 import { AppContext } from '../../../context'
 
@@ -63,7 +64,7 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 		searchProducts,
 	} = useProducts()
 
-  const [sortKey, setSortKey] = useState('COLLECTION_DEFAULT')
+  const [sortKey, setSortKey] = useState<ProductSortKeyType>('COLLECTION_DEFAULT')
   const [reverse, setReverse] = useState(false)
 
   const {
@@ -116,6 +117,16 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
+      <Stack direction={{ xs: 'column', sm: 'row'}} sx={ sx.header } spacing={1}>                  
+        <Typography variant="h6" color="text.primary">
+          { title }
+        </Typography>          
+        <ProductSortButton           
+          sortKey={sortKey}
+          reverse={reverse}
+          handleClick={handleSortClick}
+        />        
+      </Stack>
       <Grid container spacing={2}>
         { enableFilters && (
           <Grid item xs={12} sm={12} md={3}>
@@ -183,4 +194,14 @@ const sx = {
 	searchInput: {
 		mb: 2,
 	},
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    mb: 1,
+    ml: {
+      sm: 2.5,
+      xs: 0 
+    }
+  }
 }

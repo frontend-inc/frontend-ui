@@ -25,7 +25,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = (props) => {
 	if (!product) return null
 	return (
 		<Stack spacing={1}>
-			<Typography color="text.primary" variant="h3">
+			<Typography color="text.primary" variant="h5">
 				{product.title}
 			</Typography>
 			{enableOkendoStarRating && <OkendoStarRating product={product} />}

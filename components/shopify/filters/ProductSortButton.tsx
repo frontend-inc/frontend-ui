@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Popup } from '../..'
 import SortList from './SortList'
-import { ButtonGroup, Button } from '@mui/material'
+import { ButtonGroup, Button, Hidden } from '@mui/material'
 import { COLLECTION_SORT_OPTIONS } from 'frontend-shopify'
 import { ProductSortKeyType } from 'frontend-shopify'
-import { ArrowUpward, ArrowDownward } from '@mui/icons-material'
+import { Icon, Drawer } from '../..'
 
 type ProductSortButtonProps = {
 	sortKey?: ProductSortKeyType
@@ -32,17 +32,13 @@ const ProductSortButton: React.FC<ProductSortButtonProps> = (props) => {
 
 	return (
 		<>
-			<ButtonGroup>
+			<ButtonGroup sx={ sx.buttonGroup }>
 				<Button
 					sx={sx.button}
 					variant="text"
 					onClick={handleOpen}
 					endIcon={
-						reverse === true ? (
-							<ArrowDownward sx={sx.icon} />
-						) : (
-							<ArrowUpward sx={sx.icon} />
-						)
+						<Icon name="ArrowDownUp" size={20} />
 					}
 				>
 					{
@@ -51,15 +47,28 @@ const ProductSortButton: React.FC<ProductSortButtonProps> = (props) => {
 					}
 				</Button>
 			</ButtonGroup>
-			<Popup anchorEl={anchorEl} open={open} handleClose={handleClose} p={1}>
-				<SortList
-					enableIcons
-					value={sortKey}
-					reverse={reverse}
-					options={COLLECTION_SORT_OPTIONS}
-					handleClick={handleSortClick}
-				/>
-			</Popup>
+      <Hidden smDown>
+        <Popup anchorEl={anchorEl} open={open} handleClose={handleClose} p={1}>
+          <SortList
+            enableIcons
+            value={sortKey}
+            reverse={reverse}
+            options={COLLECTION_SORT_OPTIONS}
+            handleClick={handleSortClick}
+          />
+        </Popup>
+      </Hidden>
+      <Hidden smUp>
+        <Drawer anchor="right" anchorEl={anchorEl} open={open} handleClose={handleClose} p={1}>
+          <SortList
+            enableIcons
+            value={sortKey}
+            reverse={reverse}
+            options={COLLECTION_SORT_OPTIONS}
+            handleClick={handleSortClick}
+          />
+        </Drawer>
+      </Hidden>
 		</>
 	)
 }
@@ -67,7 +76,17 @@ const ProductSortButton: React.FC<ProductSortButtonProps> = (props) => {
 export default ProductSortButton
 
 const sx = {    
-	button: {
+  buttonGroup: {
+    width: {
+      sm: 'auto',
+      xs: '100%'
+    },
+  },
+	button: {    
+    width: {
+      sm: 'auto',
+      xs: '100%'
+    },
     color: 'text.primary',
     borderRight: 'none',
     bgcolor: 'tertiary.main',
