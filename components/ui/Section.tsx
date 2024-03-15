@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Typography } from '@mui/material'
+import { Fade, Box, Typography } from '@mui/material'
 import { muiTheme } from '../../theme'
 
 type SectionProps = {
@@ -44,6 +44,7 @@ const Section: React.FC<SectionProps> = (props) => {
   }, [maxWidth])
 
 	return (
+    <Fade in={true} timeout={1000}>
       <Box
         sx={{
           ...sx.root,          
@@ -73,6 +74,7 @@ const Section: React.FC<SectionProps> = (props) => {
           {children}
         </Box>
       </Box>
+    </Fade>
 )
 }
 

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Button, Box, Stack, Typography } from '@mui/material'
+import { Fade, Button, Box, Stack, Typography } from '@mui/material'
 import { truncate } from '../../../helpers'
 import { PRODUCT_CARD_HEIGHT } from '../../../constants/index'
 import { ProductType } from 'frontend-shopify'
