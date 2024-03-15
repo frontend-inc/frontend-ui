@@ -85,7 +85,6 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 					editing={editing}
 					loading={loading}
 					products={similarProducts}
-					productComponent={productComponent}
 					enableBorder={enableBorder}
 					enableAddToCart={enableAddToCart}
 					enableQuantity={enableQuantity}

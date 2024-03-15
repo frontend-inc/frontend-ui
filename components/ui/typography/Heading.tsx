@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack, Typography } from '@mui/material'
-import { TypographyVariantsType } from '@frontend-mui/types'
+import { TypographyVariantsType } from '../../../types'
 
 type HeadingProps = {
 	label?: string

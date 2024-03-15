@@ -7,7 +7,6 @@ import {
   ProductFilters,
 } from '../../../components/shopify'
 import { Heading } from '../../../components'
-import { SHOPIFY_COLLECTION_FILTERS } from '../../../constants'
 import { 
   SearchFilterType 
 } from 'frontend-shopify'
@@ -15,7 +14,6 @@ import {
 type ProductCollectionProps = {
 	title?: string
 	editing?: boolean
-	layout?: 'grid' | 'carousel'
 	handle: string | string[]
 	productComponent?: React.FC<any>
   options: SearchFilterType[]
@@ -29,7 +27,8 @@ type ProductCollectionProps = {
 }
 
 const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
-	const {
+	
+  const {
 		title,
 		handle,
 		editing = false,
@@ -119,21 +118,21 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 		<Stack spacing={2}>			
       <Heading title={ title } />				
 			<Stack direction="row" spacing={1}>
-					{enableFilters && (
-						<ProductFilters
-							filters={filters}
-              options={options}
-							handleFilter={ handleFilter }
-              handleFilterArray={ handleFilterArray }
-						/>
-					)}
-					{enableSort && (
-						<ProductSort
-							sortKey={sortKey}
-							reverse={reverse}
-							handleClick={handleSortClick}
-						/>
-					)}
+        {enableFilters && (
+          <ProductFilters
+            filters={filters}
+            options={options}
+            handleFilter={ handleFilter }
+            handleFilterArray={ handleFilterArray }
+          />
+        )}
+        {enableSort && (
+          <ProductSort
+            sortKey={sortKey}
+            reverse={reverse}
+            handleClick={handleSortClick}
+          />
+        )}
 			</Stack>
       <ProductGrid
         editing={editing}

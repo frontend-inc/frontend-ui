@@ -1,7 +1,7 @@
 import React from 'react'
 import { Stack, Box, CardActionArea } from '@mui/material'
 //import Zoom from 'react-medium-image-zoom'
-import { Image as ProductImage } from 'frontend-shopify'
+import { Image } from 'frontend-shopify'
 import Image from 'next/image'
 
 type ThumbnailProps = {

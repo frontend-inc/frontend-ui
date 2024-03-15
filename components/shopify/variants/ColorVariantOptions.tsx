@@ -1,11 +1,11 @@
 import React from 'react'
 import { Box, Button } from '@mui/material'
-import { Product } from 'frontend-shopify'
+import { ProductType } from 'frontend-shopify'
 import Image from 'next/image'
 import { findVariantByColor } from 'frontend-shopify'
 
 type ColorVariantsOptionsProps = {
-	product: Product
+	product: ProductType
 	name: string
 	values: any
 	selected: string

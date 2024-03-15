@@ -9,6 +9,9 @@ type FeaturedProps = {
 		icon?: any
 		title?: string
 		description?: string
+    image?: string
+    buttonText?: string
+    url?: string
 	}[]
   enableGradient?: boolean
   enableOverlay?: boolean

@@ -1,12 +1,12 @@
 import React from 'react'
-import { Product } from 'frontend-shopify'
+import { ProductType } from 'frontend-shopify'
 import { Stack, Typography } from '@mui/material'
 import { formatCurrency } from 'frontend-shopify'
 import { ProductDescription } from '../../../components/shopify'
 import { OkendoStarRating } from '../../../components/addons'
 
 type ProductDetailsProps = {
-	product?: Product
+	product?: ProductType
 	price?: number
 	compareAtPrice?: number
 	disableCompareAtPrice?: boolean

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Typography } from '@mui/material'
-import { Product } from 'frontend-shopify'
+import { ProductType } from 'frontend-shopify'
 
 type ProductDescriptionProps = {
-	product?: Product
+	product?: ProductType
 	color?: string
 }
 

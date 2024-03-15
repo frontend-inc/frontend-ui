@@ -4,26 +4,27 @@ import { IMAGE_CAROUSEL_RESPONSIVE } from '../../../constants/index'
 
 type CarouselImageProps = {
 	children: React.ReactNode
-	autoPlay?: boolean
-	arrows?: boolean
-	showDots?: boolean
+	enableAutoPlay?: boolean
+	enableArrows?: boolean
+	enableDots?: boolean
 	responsive?: any
 }
 
 const CarouselImage: React.FC<CarouselImageProps> = (props) => {
 	const {
 		children,
-		arrows = false,
-		showDots = true,
+    enableAutoPlay = false,
+		enableArrows = false,
+		enableDots = true,
 		responsive = IMAGE_CAROUSEL_RESPONSIVE,
 	} = props
 
 	return (
 		<Carousel
-			autoPlay={false}
+			enableAutoPlay={enableAutoPlay}
 			responsive={responsive}
-			arrows={arrows}
-			showDots={showDots}
+			enableArrows={enableArrows}
+			enableDots={enableDots}
 		>
 			{children}
 		</Carousel>

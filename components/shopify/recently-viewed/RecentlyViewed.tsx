@@ -9,7 +9,6 @@ type RecentlyViewedProps = {
 	layout?: 'grid' | 'carousel'
 	title?: string
 	perPage?: string
-	productComponent?: React.FC<any>
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
@@ -25,7 +24,6 @@ const RecentlyViewed: React.FC<RecentlyViewedProps> = (props) => {
 		editing = false,
 		layout = 'grid',
 		title = 'RecentlyViewed',
-		productComponent,
 		enableBorder = false,
 		buttonText = 'Add to cart',
 		enableAddToCart,
@@ -49,7 +47,6 @@ const RecentlyViewed: React.FC<RecentlyViewedProps> = (props) => {
 				<ProductGrid
 					editing={editing}
 					products={products}
-					productComponent={productComponent}
 					enableBorder={enableBorder}
 					enableAddToCart={enableAddToCart}
 					enableQuantity={enableQuantity}
@@ -60,8 +57,7 @@ const RecentlyViewed: React.FC<RecentlyViewedProps> = (props) => {
 			{layout == 'carousel' && (
 				<ProductCarousel
 					editing={editing}
-					products={products}
-					productComponent={productComponent}
+					products={products}					
 					enableBorder={enableBorder}
 					buttonText={buttonText}
 				/>

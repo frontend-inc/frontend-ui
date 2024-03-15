@@ -1,11 +1,11 @@
 import React, { useEffect, useContext } from 'react'
 import { ProductContext } from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'
-import { Product } from 'frontend-shopify'
+import { ProductType } from 'frontend-shopify'
 
 type ShopifyProductPageProps = {
 	handle?: string | string[]
-	product?: Product
+	product?: ProductType
 	children: any
 }
 
