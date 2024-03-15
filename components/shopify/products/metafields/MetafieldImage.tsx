@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { MetafieldIdentifier, getMetafieldImage } from 'frontend-shopify'
-import { Box } from '@mui/material'
+import { MetafieldIdentifierType, getMetafieldImage } from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'
-import Image from 'next/image'
 
 type MetafieldImageProps = {
 	handle: string
-	metafield: MetafieldIdentifier
+	metafield: MetafieldIdentifierType
 	height: number
 	objectFit?: 'cover' | 'contain'
 	bgcolor?: string

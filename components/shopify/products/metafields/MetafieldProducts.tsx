@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Typography } from '@mui/material'
 import { ProductGrid, ProductCarousel } from '../../../shopify'
 import {
-	MetafieldIdentifier,
-	Product,
+	MetafieldIdentifierType,
+	ProductType,
 	getMetafieldReferences,
 } from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'
@@ -12,14 +12,14 @@ type MetafieldProductsProps = {
 	title?: string
 	layout?: 'grid' | 'carousel'
 	handle: string
-	metafield: MetafieldIdentifier
+	metafield: MetafieldIdentifierType
 }
 
 const MetafieldProducts: React.FC<MetafieldProductsProps> = (props) => {
 	const { title, handle, layout = 'grid', metafield, ...rest } = props
 
 	const { loading, product, findProduct } = useProducts()
-	const [products, setProducts] = useState<Product[] | null>(null)
+	const [products, setProducts] = useState<ProductType[] | null>(null)
 
 	useEffect(() => {
 		if (handle && metafield) {

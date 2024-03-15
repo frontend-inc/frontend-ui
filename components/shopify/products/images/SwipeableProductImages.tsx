@@ -10,7 +10,7 @@ import {
 import { shopifyResizeImage } from 'frontend-shopify'
 
 type SwipeableProductImagesProps = {
-	product: Product
+	product: ProductType
 	height?: number
 	width?: number
 	handleClick?: () => void

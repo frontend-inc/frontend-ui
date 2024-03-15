@@ -4,13 +4,13 @@ import { Box } from '@mui/material'
 import { ProductCard } from '../../../components/shopify'
 import { useRouter } from 'next/router'
 import { Carousel } from '../../../components'
-import { Product } from 'frontend-shopify'
+import { ProductType } from 'frontend-shopify'
 import { AppContext } from '../../../context'
 
 type ProductCarouselProps = {
 	editing?: boolean
 	loading?: boolean
-	products: Product[]
+	products: ProductType[]
 	buttonText?: string
 	enableAutoPlay?: boolean
 	enableArrows?: boolean

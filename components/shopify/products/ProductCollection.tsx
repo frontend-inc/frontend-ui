@@ -15,7 +15,6 @@ type ProductCollectionProps = {
 	title?: string
 	editing?: boolean
 	handle: string | string[]
-	productComponent?: React.FC<any>
   options: SearchFilterType[]
 	enableFilters?: boolean
 	enableSort?: boolean

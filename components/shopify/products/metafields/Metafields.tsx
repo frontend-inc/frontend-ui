@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import {
 	getMetafieldValue,
 	getMetafieldType,
-	MetafieldIdentifier,
-	Product,
+	MetafieldIdentifierType,
 } from 'frontend-shopify'
 import {
 	Accordion,
@@ -17,14 +16,11 @@ import { Icon } from '../../../ui'
 import { useProducts } from 'frontend-shopify'
 
 const PLAIN_TEXT_TYPES = ['single_line_text_field', 'multi_line_text_field']
-
 const RICH_TEXT_TYPES = ['rich_text_field']
-
-const SUPPORTED_METAFIELD_TYPES = [...PLAIN_TEXT_TYPES, ...RICH_TEXT_TYPES]
 
 type ProductMetafieldsProps = {
 	handle: string
-	metafields: MetafieldIdentifier[]
+	metafields: MetafieldIdentifierType[]
 }
 
 const ProductMetafields: React.FC<ProductMetafieldsProps> = (props) => {

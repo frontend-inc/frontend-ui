@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { Button, Box, Stack, Typography } from '@mui/material'
 import { truncate } from '../../../helpers'
 import { PRODUCT_CARD_HEIGHT } from '../../../constants/index'
-import { Product } from 'frontend-shopify'
+import { ProductType } from 'frontend-shopify'
 import { ShopContext } from 'frontend-shopify'
 import { formatCurrency } from 'frontend-shopify'
 import SwipeableProductImages from './images/SwipeableProductImages'
@@ -10,7 +10,7 @@ import { ProductModal, AddToCartButton } from '..'
 import { OkendoStarRating } from '../../addons'
 
 type ProductCardProps = {
-	product: Product
+	product: ProductType
 	handleClick?: () => void
 	buttonText?: string
 	height?: number
@@ -44,7 +44,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 		setOpen(true)
 	}
 
-	const handleItemClick = () => {
+const handleItemClick = () => {
 		if (handleClick) {
 			window.scrollTo({ top: 0, behavior: 'smooth' })
 			setSearchOpen(false)

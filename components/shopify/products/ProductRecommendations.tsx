@@ -10,7 +10,6 @@ type ProductRecommendationsProps = {
 	layout?: 'grid' | 'carousel'
 	title?: string
 	perPage?: string
-	productComponent?: React.FC<any>
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
@@ -29,7 +28,6 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 		layout = 'grid',
 		title = 'Similar products',
 		perPage = 12,
-		productComponent,
 		enableBorder = false,
 		buttonText = 'Add to cart',
 		enableAddToCart,
@@ -97,8 +95,7 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 				<ProductCarousel
 					editing={editing}
 					loading={loading}
-					products={similarProducts}
-					productComponent={productComponent}
+					products={similarProducts}					
 					enableBorder={enableBorder}
           enableAddToCart={enableAddToCart}
           enableQuantity={enableQuantity}
