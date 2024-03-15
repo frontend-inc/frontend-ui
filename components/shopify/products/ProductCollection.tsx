@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Stack } from '@mui/material'
-import { useCollections, useSearchFilters } from 'frontend-shopify'
+import { ProductSortKeyType, useCollections, useSearchFilters } from 'frontend-shopify'
 import {
 	ProductGrid,
 	ProductSort,
@@ -42,7 +42,7 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 	} = props
 
 	const [query, setQuery] = useState<Record<string, any>>({})
-	const [sortKey, setSortKey] = useState('COLLECTION_DEFAULT')
+	const [sortKey, setSortKey] = useState<ProductSortKeyType>('COLLECTION_DEFAULT')
 	const [reverse, setReverse] = useState(false)
 
 	const {
