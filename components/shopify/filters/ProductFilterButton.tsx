@@ -62,6 +62,10 @@ export default ProductFilterButton
 
 const sx = {
 	button: {
+    width: {
+      sm: 'auto',
+      xs: '100%'
+    },
 		color: 'text.primary',
     bgcolor: 'tertiary.main',
     '&:hover': {

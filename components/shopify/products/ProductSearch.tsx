@@ -45,9 +45,9 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 	const router = useRouter()
 	const { trackProductsSearched } = useSegment()
 
-  let { page_id: pageId, handle: query } = router.query
-
-	if (query == 'index' || query == undefined) query = ''
+  let { page_id: pageId, handle } = router.query  
+	if (handle == 'index' || handle == undefined) handle = '';
+  const [query, setQuery] = useState(handle)
 
 	const [keywords, setKeywords] = useState(String(query).toLowerCase())
 	const first = PER_PAGE
@@ -115,6 +115,10 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 		}
 	}, [query, filters])
 
+  useEffect(() => {
+    setQuery(handle)
+  }, [handle])
+
 	return (
 		<Box sx={sx.root}>
       <Stack direction={{ xs: 'column', sm: 'row'}} sx={ sx.header } spacing={1}>                  
@@ -156,7 +160,7 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
             <ProductGrid 
               loading={loading} 
               products={products} 
-              xs={6}
+              xs={12}
               sm={6}
               md={enableFilters ? 6 : 4}
               lg={4}

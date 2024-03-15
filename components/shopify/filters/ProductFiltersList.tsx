@@ -30,7 +30,10 @@ const ProductFiltersList: React.FC<ProductFiltersListProps> = (props) => {
         let currentOptions = options?.filter(f => f.name == filterType.value)
         if(currentOptions.length == 0) return null;
         return(
-          <FilterList label={ filterType.label } count={currentFilters.length}>
+          <FilterList 
+            label={ filterType.label } 
+            count={currentFilters.length}
+          >
             <CheckboxFilterList
               filters={currentFilters}
               options={currentOptions}
