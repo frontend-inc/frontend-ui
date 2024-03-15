@@ -6,7 +6,7 @@ import FeaturedCard from './FeaturedCard'
 type FeaturedProps = {
 	title?: string
 	featured: {
-		icon?: any
+		icon?: string
 		title?: string
 		description?: string
     image?: string

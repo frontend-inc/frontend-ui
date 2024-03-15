@@ -3,13 +3,16 @@ import {
 	FilterList,
   CheckboxFilterList,
 } from '..'
-import { SearchFilterType } from 'frontend-shopify'
+import { 
+  SearchFilterType, 
+  SearchFilterOptionType 
+} from 'frontend-shopify'
 import { Stack } from '@mui/material'
 import { SHOPIFY_SEARCH_FILTERS } from '../../../constants'
 
 type ProductFiltersListProps = {
 	filters: SearchFilterType[]
-	options: SearchFilterType[]  
+	options: SearchFilterOptionType[]  
   handleFilter: (filter: SearchFilterType) => void
   handleFilterArray: (filter: SearchFilterType) => void
 }
@@ -26,17 +29,17 @@ const ProductFiltersList: React.FC<ProductFiltersListProps> = (props) => {
 	return (
     <Stack spacing={0}>
       { SHOPIFY_SEARCH_FILTERS.map((filterType, i) => {
-        let currentFilters = filters?.filter(f => f.name == filterType.value)
-        let currentOptions = options?.filter(f => f.name == filterType.value)
-        if(currentOptions.length == 0) return null;
+        let activeFilters = filters?.filter(f => f.name == filterType.value)        
+        let option = options?.find(o => o.name == filterType.value)        
+        if(!option) return null;
         return(
           <FilterList 
             label={ filterType.label } 
-            count={currentFilters.length}
+            count={ activeFilters.length}
           >
             <CheckboxFilterList
-              filters={currentFilters}
-              options={currentOptions}
+              filters={activeFilters}
+              option={option}
               handleClick={
                 filterType.array ? handleFilterArray : handleFilter 
               }

@@ -16,9 +16,11 @@ type CollectionCardProps = {
   video?: string
   description: string
   buttonText?: string
+  href?: string
   handleClick: () => void
   enableBorder?: boolean
   enableGradient?: boolean
+  enableOverlay?: boolean
 }
 
 const CollectionCard: React.FC<CollectionCardProps> = (props) => {

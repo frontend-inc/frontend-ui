@@ -1,13 +1,13 @@
 import React from 'react'
 import ProductFiltersList from './ProductFiltersList'
-import { SearchFilterType } from 'frontend-shopify'
+import { SearchFilterType, SearchFilterOptionType } from 'frontend-shopify'
 import { Button, Hidden } from '@mui/material'
 import { Icon, Drawer } from '../..'
 import { useMenu } from '../../../hooks'
 
 type ProductFilterButtonProps = {
 	filters: SearchFilterType[]
-  options: SearchFilterType[]  
+  options: SearchFilterOptionType[]  
 	handleFilter: (filter: SearchFilterType) => void	
   handleFilterArray: (filter: SearchFilterType) => void	
 }

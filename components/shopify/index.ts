@@ -13,7 +13,7 @@ export { default as QuickShopButton } from './cart/QuickShopButton'
 export { default as SubscriptionSelector } from './subscription/SubscriptionSelector'
 
 export { default as ProductSortButton } from './filters/ProductSortButton'
-export { default as ProductFilters } from './filters/ProductFilterButton'
+export { default as ProductFilterButton } from './filters/ProductFilterButton'
 export { default as ProductFiltersList } from './filters/ProductFiltersList'
 export { default as ProductSearchFilters } from './filters/ProductSearchFilters'
 export { default as FilterList } from './filters/FilterList'

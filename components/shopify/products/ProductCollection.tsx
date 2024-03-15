@@ -4,18 +4,18 @@ import { ProductSortKeyType, useCollections, useSearchFilters } from 'frontend-s
 import {
 	ProductGrid,
 	ProductSortButton,
-  ProductFilters,
+  ProductFilterButton,
 } from '../../../components/shopify'
 import { Heading } from '../../../components'
 import { 
-  SearchFilterType 
+  SearchFilterOptionType
 } from 'frontend-shopify'
 
 type ProductCollectionProps = {
 	title?: string
 	editing?: boolean
 	handle: string | string[]
-  options: SearchFilterType[]
+  options: SearchFilterOptionType[]
 	enableFilters?: boolean
 	enableSort?: boolean
 	enableBorder?: boolean
@@ -118,7 +118,7 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
       <Heading title={ title } />				
 			<Stack direction="row" spacing={1}>
         {enableFilters && (
-          <ProductFilters
+          <ProductFilterButton
             filters={filters}
             options={options}
             handleFilter={ handleFilter }

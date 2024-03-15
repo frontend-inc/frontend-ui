@@ -10,24 +10,37 @@ import {
 	ListItemText,
 	Checkbox,
 } from '@mui/material'
-import { SearchFilterType } from 'frontend-shopify'
+import { 
+  SearchFilterOptionType,
+  SearchFilterType, 
+} from 'frontend-shopify'
 
 type CheckboxFilterListProps = {
+  name: string
   filters: SearchFilterType[]
-	options: SearchFilterType[]	
+	option: SearchFilterOptionType
 	handleClick: (filter: SearchFilterType) => void
 }
 
 const CheckboxFilterList: React.FC<CheckboxFilterListProps> = (props) => {
-	const { filters = [], options = [], handleClick } = props
+	const { filters = [], option, handleClick } = props
   let values = filters.map(f => f.value)
+
+  const handleFilterClick = (value) => {
+    handleClick({
+      name: option.name,
+      value: value
+    })
+  } 
+
+  if(!option || !(typeof option?.value == 'object')) return null;
 	return (
 		<List disablePadding>
-			{options?.map((option, index) => (
+			{option?.value?.map((option, index) => (
 				<ListItem disablePadding key={index}>
-          <ListItemButton sx={ sx.listItemButton } onClick={() => handleClick(option)}>
+          <ListItemButton sx={ sx.listItemButton } onClick={() => handleFilterClick(option) }>
 					<ListItemIcon>
-						<Checkbox checked={values?.includes(option.value)} color="primary" />
+						<Checkbox checked={values?.includes(option)} color="primary" />
 					</ListItemIcon>
 					<ListItemText
 						primary={
@@ -35,7 +48,7 @@ const CheckboxFilterList: React.FC<CheckboxFilterListProps> = (props) => {
                 variant="button" 
                 color='text.primary'
               >
-                {option.value}
+                {option}
               </Typography>
             }
 					/>

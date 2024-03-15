@@ -4,11 +4,14 @@ import { useMenu } from '../../../hooks'
 import { Button, Hidden } from '@mui/material'
 import { ListFilter } from 'lucide-react'
 import ProductFiltersList from './ProductFiltersList'
-import { SearchFilterType } from 'frontend-shopify'
+import { 
+  SearchFilterType, 
+  SearchFilterOptionType 
+} from 'frontend-shopify'
 
 type ProductFilterButtonProps = {
 	filters: SearchFilterType[]	
-  options: SearchFilterType[]  
+  options: SearchFilterOptionType[]  
 	handleFilter: (filter: SearchFilterType) => void
   handleFilterArray: (filter: SearchFilterType) => void  
 }
@@ -45,7 +48,7 @@ const ProductFilterButton: React.FC<ProductFilterButtonProps> = (props) => {
         </Popup>
       </Hidden>
       <Hidden smUp>
-        <Drawer anchorEl={anchorEl} open={open} handleClose={closeMenu} p={1}>
+        <Drawer open={open} handleClose={closeMenu} p={1}>
           <ProductFiltersList 
             filters={filters}
             options={options}
