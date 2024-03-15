@@ -39,21 +39,3 @@ const MobileFilterDrawer: React.FC<MobileFilterDrawerProps> = (props) => {
 }
 
 export default MobileFilterDrawer
-
-const sx = {
-	root: {},
-	mobileDrawer: {
-		width: {
-			xs: '270px',
-			sm: '360px',
-		},
-	},
-	title: {
-		ml: 2,
-		mb: 0,
-		p: 0,
-	},
-	heading: {
-		mt: 4,
-	},
-}

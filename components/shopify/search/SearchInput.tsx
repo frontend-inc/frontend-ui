@@ -9,7 +9,7 @@ type SearchInputProps = {
 	placeholder?: string
 }
 
-const ProductSearchInput: React.FC<SearchInputProps> = (props) => {
+const SearchInput: React.FC<SearchInputProps> = (props) => {
 	const {
 		value,
 		handleChange,
@@ -39,7 +39,7 @@ const ProductSearchInput: React.FC<SearchInputProps> = (props) => {
 	)
 }
 
-export default ProductSearchInput
+export default SearchInput
 
 const sx = {
 	root: {

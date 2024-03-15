@@ -4,8 +4,6 @@ import { Box } from '@mui/material'
 import { getCarouselResponsive } from '../../../helpers'
 import { useTheme } from '@mui/material/styles'
 import CarouselDot from './CarouselDot'
-import { useResponsive } from '../../../hooks'
-import { muiTheme } from '../../../theme'
 // Note: required global CSS import from _app or app/layout.tsx
 // import 'react-multi-carousel/lib/styles.css'
 
@@ -32,10 +30,6 @@ const ReactCarousel: React.FC<CarouselProps> = (props) => {
 		styles = {},
 	} = props
 
-	const { breakpoint } = useResponsive()
-
-	const [width, setWidth] = useState<number | undefined>(960)
-
 	useEffect(() => {
 		//@ts-ignore
 		setResponsive(getCarouselResponsive(theme))
@@ -45,7 +39,6 @@ const ReactCarousel: React.FC<CarouselProps> = (props) => {
 		<Box
 			sx={{
 				...sx.root,
-				...(editing && sx.rootEditor),
 				...(styles && styles),
 			}}
 		>
@@ -73,7 +66,4 @@ const sx = {
 	root: {
 		width: '100%',
 	},
-  rootEditor: {
-    maxWidth: `calc(100vw - 520px)`
-  }
 }

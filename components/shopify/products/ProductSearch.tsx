@@ -2,10 +2,10 @@ import React, { useState, useContext, useEffect } from 'react'
 import { SearchFilterType, useProducts, useSearchFilters } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
 import { useRouter } from 'next/router'
-import { Box, Grid } from '@mui/material'
+import { Box, Grid, Hidden } from '@mui/material'
 import { SearchInput, Placeholder } from '../..'
 import { ProductGrid, ProductSearchFilters } from '..'
-import LoadMore from './LoadMore'
+import LoadMore from '../search/LoadMore'
 import { AppContext } from '../../../context'
 
 const PER_PAGE = 48
@@ -29,7 +29,6 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 
   const {
 		title,
-		handle,
 		editing = false,
     options,		
     enableFilters = false,
@@ -118,15 +117,15 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
       <Grid container spacing={2}>
-      { enableFilters && (
-        <Grid item xs={12} sm={12} md={3}>
-          <ProductSearchFilters 
-            filters={ filters }
-            options={ options }            
-            handleFilter={ handleFilter }
-            handleFilterArray={ handleFilterArray }            
-          />
-        </Grid>
+        { enableFilters && (
+          <Grid item xs={12} sm={12} md={3}>
+            <ProductSearchFilters 
+              filters={ filters }
+              options={ options }            
+              handleFilter={ handleFilter }
+              handleFilterArray={ handleFilterArray }            
+            />
+          </Grid>
         )}
         <Grid item 
           xs={12} 
@@ -146,6 +145,10 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
             <ProductGrid 
               loading={loading} 
               products={products} 
+              xs={6}
+              sm={6}
+              md={enableFilters ? 6 : 4}
+              lg={4}
               enableBorder={enableBorder}
               enableAddToCart={enableAddToCart}
               enableQuickShop={enableQuickShop}

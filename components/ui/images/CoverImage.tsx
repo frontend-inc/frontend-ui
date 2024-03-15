@@ -2,12 +2,10 @@ import React, { useContext } from 'react'
 import { Box, Stack, Typography, Button } from '@mui/material'
 import { Image } from '../../../components'
 import { useRouter } from 'next/router'
-import { TypographyVariantsType } from '../../../types'
 import { AppContext } from '../../../context'
 
 type CoverImageProps = {
 	editing?: boolean
-	textVariant?: TypographyVariantsType
 	title?: string
 	description?: string
 	buttonText?: string
@@ -30,9 +28,7 @@ const CoverImage: React.FC<CoverImageProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const {
-		editing = false,
 		title,
-		textVariant = 'h3',
 		description,
 		buttonText,
 		handleClick,
@@ -83,7 +79,7 @@ const CoverImage: React.FC<CoverImageProps> = (props) => {
 				>
 					{title && (
 						<Typography
-							variant={textVariant}
+							variant={'h4'}
 							color="text.primary"
 							sx={{
 								textAlign: alignItems === 'center' ? 'center' : 'left',
@@ -94,7 +90,7 @@ const CoverImage: React.FC<CoverImageProps> = (props) => {
 					)}
 					{description && (
 						<Typography
-							variant="subtitle1"
+							variant="body1"
 							color="text.primary"
 							sx={{
 								textAlign: alignItems === 'center' ? 'center' : 'left',

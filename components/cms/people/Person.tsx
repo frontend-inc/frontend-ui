@@ -67,13 +67,14 @@ const Person: React.FC<PersonProps> = (props) => {
 export default Person
 
 const sx = {
-  root: {
+  root: {    
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',    
   },
   container: {
+    width: '100%',
     justifyContent: 'flex-start',
     alignItems: {
       md: 'flex-start',    
@@ -107,10 +108,6 @@ const sx = {
   },
   content: {
     width: '100%',
-    maxWidth: {
-      sm: 500,
-      xs: '100%'
-    },
   },
   text: {
     width: '100%',

@@ -83,7 +83,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 					>
 						<Typography
 							sx={sx.title}
-							variant={'h4'}
+							variant={'h6'}
 						>
 							{title}
 						</Typography>

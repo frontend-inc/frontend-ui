@@ -21,9 +21,9 @@ const FilterForm: React.FC<FilterFormProps> = (props) => {
 	const { query, fields, handleChange, handleSearch, handleClearFilters } =
 		props
 
-	const [filterOptions, setFilterOptions] = useState([])
-	const [sortOptions, setSortOptions] = useState([])
-	const [activeFilters, setActiveFilters] = useState([])
+	const [filterOptions, setFilterOptions] = useState<Record<string, any>[]>([])
+	const [sortOptions, setSortOptions] = useState<Record<string, any>[]>([])
+	const [activeFilters, setActiveFilters] = useState<Record<string, any>[]>([])
 
 	let defaultFilter = {
 		where: 'AND',
