@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Product } from 'frontend-shopify'
+import { ProductType } from 'frontend-shopify'
 import SwipeableViews from 'react-swipeable-views'
 import { TouchableOpacity } from '../../../../components'
 import { Box, Stack, MobileStepper } from '@mui/material'
@@ -41,10 +41,10 @@ const SwipeableProductImages: React.FC<SwipeableProductImagesProps> = (
 	return (
 		<Stack
 			sx={{
-				...sx.root,
+        ...sx.root,
 				height: !responsiveHeight && `${height}px`,
 				minHeight: `${height}px`,
-				minWidth: !responsiveHeight && `${width}px`,
+				minWidth: !responsiveHeight && `${width}px`,        
 			}}
 			direction="column"
 		>

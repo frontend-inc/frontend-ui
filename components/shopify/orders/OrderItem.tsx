@@ -10,10 +10,10 @@ import {
 import { Image } from '../../../components'
 import { formatCurrency } from 'frontend-shopify'
 import moment from 'moment'
-import { Order } from 'frontend-shopify'
+import { OrderType } from 'frontend-shopify'
 
 type OrderItemProps = {
-	order: Order
+	order: OrderType
 	handleClick: any
 }
 

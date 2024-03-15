@@ -3,11 +3,11 @@ import { Popup } from '../..'
 import SortList from './SortList'
 import { ButtonGroup, Button } from '@mui/material'
 import { COLLECTION_SORT_OPTIONS } from 'frontend-shopify'
-import { ProductCollectionSortKey } from 'frontend-shopify'
+import { ProductSortKeyType } from 'frontend-shopify'
 import { ArrowUpward, ArrowDownward } from '@mui/icons-material'
 
 type ProductSortButtonProps = {
-	sortKey?: ProductCollectionSortKey
+	sortKey?: ProductSortKeyType
 	reverse?: boolean
 	handleClick: any
 }
@@ -22,6 +22,7 @@ const ProductSortButton: React.FC<ProductSortButtonProps> = (props) => {
 		setAnchorEl(ev.currentTarget)
 		setOpen(!open)
 	}
+  
 	const handleClose = () => setOpen(false)
 
 	const handleSortClick = (sortKey, reverse) => {

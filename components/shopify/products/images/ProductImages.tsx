@@ -5,13 +5,13 @@ import {
 	SwipeableProductImages,
 } from '../../../../components/shopify'
 import { PDP_IMAGE_HEIGHT } from '../../../../constants/index'
-import { Product, Image } from 'frontend-shopify'
+import { ProductType, ImageType } from 'frontend-shopify'
 
 type ProductImagesProps = {
-	product: Product
-	image: Image
-	images: Image[]
-	handleClick: (img: Image) => void
+	product: ProductType
+	image: ImageType
+	images: ImageType[]
+	handleClick: (img: ImageType) => void
 }
 
 const ProductImages: React.FC<ProductImagesProps> = (props) => {

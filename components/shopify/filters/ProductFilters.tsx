@@ -11,12 +11,7 @@ type ProductFilterButtonProps = {
 	filters: SearchFilterType[]	
   options: SearchFilterType[]  
 	handleFilter: (filter: SearchFilterType) => void
-  handleFilterArray: (filter: SearchFilterType) => void
-  filterOptions: { 
-    label: string
-    name: string
-    value: string | number    
-  }[]
+  handleFilterArray: (filter: SearchFilterType) => void  
 }
 
 const ProductFilterButton: React.FC<ProductFilterButtonProps> = (props) => {
@@ -27,8 +22,7 @@ const ProductFilterButton: React.FC<ProductFilterButtonProps> = (props) => {
 		filters = [],		
     options=[],
     handleFilter,
-    handleFilterArray,
-    filterOptions=SHOPIFY_SEARCH_FILTERS 	
+    handleFilterArray,    
   } = props
 
 	return (
@@ -46,8 +40,7 @@ const ProductFilterButton: React.FC<ProductFilterButtonProps> = (props) => {
           filters={filters}
           options={options}
           handleFilter={handleFilter}
-          handleFilterArray={handleFilterArray}
-          filterOptions={filterOptions}
+          handleFilterArray={handleFilterArray}          
         />
 			</Popup>
 		</>

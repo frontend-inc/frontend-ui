@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { Stack, Box, Button, List, Typography } from '@mui/material'
 import { AddressItem, OrderLineItem } from '../../../components/shopify'
 import { formatCurrency } from 'frontend-shopify'
-import { Order, OrderLineItem as OrderLineItemType } from 'frontend-shopify'
+import { OrderType, OrderLineItemType } from 'frontend-shopify'
 import { ExternalLink } from 'lucide-react'
 import { useRouter } from 'next/router'
 
 type OrderDetailsProps = {
 	styles?: object
-	order: Order
+	order: OrderType
 	supportUrl?: string
 }
 

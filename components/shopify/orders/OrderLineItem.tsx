@@ -8,10 +8,10 @@ import {
 } from '@mui/material'
 import { formatCurrency } from 'frontend-shopify'
 import { Image } from '../../../components'
-import { OrderLineItem } from 'frontend-shopify'
+import { OrderLineItemType } from 'frontend-shopify'
 
 type OrderLineItemProps = {
-	lineItem: OrderLineItem
+	lineItem: OrderLineItemType
 }
 
 const OrderLineItem: React.FC<OrderLineItemProps> = (props) => {
