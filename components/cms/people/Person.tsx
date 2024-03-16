@@ -7,6 +7,7 @@ import {
   Typography,
 } from '@mui/material'
 import { DocumentType } from '../../../types'
+import { SocialLink } from '../..'
 
 type PersonProps = {
   resource: DocumentType
@@ -23,6 +24,7 @@ const Person: React.FC<PersonProps> = (props) => {
   return (
     <Box sx={ sx.root }>
       <Stack sx={ sx.container } direction={{ md: "row", xs: "column" }} spacing={4}>            
+        <Stack direction="column">
         { resource?.image?.url && (
           <Avatar sx={ sx.avatarContainer }>
             <Avatar  
@@ -34,11 +36,20 @@ const Person: React.FC<PersonProps> = (props) => {
             </Avatar>    
             <Box />
           </Avatar>  
-        )}           
+        )}              
+        </Stack>
         <Stack spacing={2} sx={ sx.content }>  
           <Typography color='text.primary' variant="h4">
             {title}
-          </Typography>   
+          </Typography>  
+          <Stack direction="row" spacing={0} sx={ sx.socialLinks }>
+            { resource?.data?.facebook && <SocialLink provider="facebook" url={ resource?.data?.facebook } /> }
+            { resource?.data?.instagram && <SocialLink provider="instagram" url={ resource?.data?.instagram } /> }
+            { resource?.data?.linked && <SocialLink provider="linkedin" url={ resource?.data?.linkedin } />  }
+            { resource?.data?.twitter && <SocialLink provider="twitter" url={ resource?.data?.twitter } />  }
+            { resource?.data?.youtube && <SocialLink provider="youtube" url={ resource?.data?.youtube } />  }
+            { resource?.data?.blog && <SocialLink provider="blog" url={ resource?.data?.blog } /> }
+          </Stack>      
           <Box>
             { open ? (
               <Typography variant="body1" color='text.primary' sx={ sx.text }>
@@ -119,5 +130,11 @@ const sx = {
   link: {
     cursor: 'pointer',
     color: 'text.secondary'
+  },
+  socialLinks: {
+    width: '100%',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    
   }
 }
