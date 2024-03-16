@@ -38,9 +38,10 @@ const GiftUp: React.FC<GiftUpProps> = (props) => {
     return () => {
       let allScripts = document.getElementsByTagName('script')
       for (let i = 0; i < allScripts.length; i++) {
-        if (allScripts[i].src.includes('gift-up.js')) {
+        const script = allScripts[i]
+        if (script?.src?.includes('gift-up.js')) {
           //@ts-ignore
-          script.parentNode.removeChild(script)
+          script?.parentNode?.removeChild(script)
         }
       }
     }
