@@ -48,7 +48,7 @@ const ProductFilterButton: React.FC<ProductFilterButtonProps> = (props) => {
         </Popup>
       </Hidden>
       <Hidden smUp>
-        <Drawer open={open} handleClose={closeMenu} p={1}>
+        <Drawer open={open} handleClose={closeMenu}>
           <ProductFiltersList 
             filters={filters}
             options={options}

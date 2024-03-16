@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { SearchFilterType, useProducts, useSearchFilters } from 'frontend-shopify'
+import { SearchFilterOptionType, useProducts, useSearchFilters } from 'frontend-shopify'
 import { ProductSortKeyType } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
 import { useRouter } from 'next/router'
@@ -15,7 +15,7 @@ type ProductSearchProps = {
 	title?: string
 	editing?: boolean	
 	handle: string | string[]
-	options?: SearchFilterType[]
+	options?: SearchFilterOptionType[]
 	inStockFilter?: boolean
 	enableFilters?: boolean
   enableSort?: boolean

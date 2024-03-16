@@ -16,7 +16,6 @@ import {
 } from 'frontend-shopify'
 
 type CheckboxFilterListProps = {
-  name: string
   filters: SearchFilterType[]
 	option: SearchFilterOptionType
 	handleClick: (filter: SearchFilterType) => void

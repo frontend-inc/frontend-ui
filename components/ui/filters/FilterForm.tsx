@@ -8,6 +8,7 @@ import {
 	FilterKeywordsInput,
 	FilterSortInput,
 } from '../../../components'
+import { OptionType } from '../../../types'
 
 type FilterFormProps = {
 	query: any
@@ -22,7 +23,7 @@ const FilterForm: React.FC<FilterFormProps> = (props) => {
 		props
 
 	const [filterOptions, setFilterOptions] = useState<Record<string, any>[]>([])
-	const [sortOptions, setSortOptions] = useState<Record<string, any>[]>([])
+	const [sortOptions, setSortOptions] = useState<OptionType[]>([])
 	const [activeFilters, setActiveFilters] = useState<Record<string, any>[]>([])
 
 	let defaultFilter = {
