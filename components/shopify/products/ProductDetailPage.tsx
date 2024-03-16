@@ -8,14 +8,14 @@ import {
 	ProductMetafields,
 	TrackRecentlyViewed,
 } from '../../../components/shopify'
-import {
-	useProducts,
+import {	
 	useProductDetails,
 	MetafieldIdentifierType,
+  ProductType,
 } from 'frontend-shopify'
 
 type ProductDetailPageProps = {
-	handle: string | string[]
+	shopifyProduct: ProductType
 	buttonText?: string
 	metafields?: MetafieldIdentifierType[]
 	enableQuantity?: boolean
@@ -26,7 +26,7 @@ type ProductDetailPageProps = {
 
 const ProductDetailPage: React.FC<ProductDetailPageProps> = (props) => {
 	const {
-		handle,
+		shopifyProduct: product,
 		buttonText,
 		metafields,
 		enableQuantity = true,
@@ -34,9 +34,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = (props) => {
 		enableFavorites,
 		enableOkendoStarRating,
 	} = props
-
-	const { product, findProduct } = useProducts()
-
+  
 	const {
 		price,
 		compareAtPrice,
@@ -50,11 +48,12 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = (props) => {
 		product,
 	})
 
+  /*
 	useEffect(() => {
 		if (handle) {
 			findProduct(String(handle), metafields)
 		}
-	}, [handle])
+	}, [handle]) */
 
 	return (
 		<Stack spacing={0} direction="row" sx={sx.container}>
