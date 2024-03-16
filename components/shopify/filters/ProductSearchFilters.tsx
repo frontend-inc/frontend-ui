@@ -44,8 +44,7 @@ const ProductSearchFilters: React.FC<ProductFilterButtonProps> = (props) => {
         </Button>
         <Drawer           
           open={open} 
-          handleClose={closeMenu} 
-          p={1}
+          handleClose={closeMenu}           
           anchorEl={anchorEl} 
           anchor="right"
         >
