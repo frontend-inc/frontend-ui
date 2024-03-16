@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 import ReactLottiePlayer from 'react-lottie-player'
 
 type LottieProps = {
@@ -15,8 +14,9 @@ const Lottie: React.FC<LottieProps> = (props) => {
 
 	const fetchLottie = async () => {
 		setLoading(true)
-		let resp = await axios.get(src)
-		setData(resp.data)
+		let resp = await fetch(src)
+    resp = await resp.json()
+		setData(resp)
 		setLoading(false)
 	}
 
