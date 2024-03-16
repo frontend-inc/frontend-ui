@@ -45,7 +45,6 @@ const ProductSearchFilters: React.FC<ProductFilterButtonProps> = (props) => {
         <Drawer           
           open={open} 
           handleClose={closeMenu}           
-          anchorEl={anchorEl} 
           anchor="right"
         >
           <ProductFiltersList 
