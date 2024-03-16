@@ -33,7 +33,6 @@ export { default as OrderDetails } from './orders/OrderDetails'
 // Search
 export { default as SearchButton } from './search/SearchButton'
 export { default as SearchModal } from './search/SearchModal'
-export { default as SearchInput } from './search/SearchInput'
 export { default as ProductVariantSelector } from './variants/ProductVariantSelector'
 
 // Collections

@@ -59,7 +59,7 @@ const ProductSortButton: React.FC<ProductSortButtonProps> = (props) => {
         </Popup>
       </Hidden>
       <Hidden smUp>
-        <Drawer anchor="right" anchorEl={anchorEl} open={open} handleClose={handleClose} p={1}>
+        <Drawer anchor="right" open={open} handleClose={handleClose} p={1}>
           <SortList
             enableIcons
             value={sortKey}

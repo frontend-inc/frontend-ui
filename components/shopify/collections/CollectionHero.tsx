@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react'
 import { CoverImage } from '../../../components'
 import { useCollections } from 'frontend-shopify'
-import { TypographyVariantsType } from '../../../types'
 
 type CollectionHeroProps = {
 	handle: string
 	editing?: boolean
-	textVariant?: TypographyVariantsType
 	height?: number
 	width?: number
 	objectFit?: 'cover' | 'contain'
@@ -24,7 +22,6 @@ const CollectionHero: React.FC<CollectionHeroProps> = (props) => {
 	const {
 		handle,
 		editing = false,
-		textVariant = 'h3',
 		handleClick,
 		height = 400,
 		objectFit = 'cover',
@@ -54,7 +51,6 @@ const CollectionHero: React.FC<CollectionHeroProps> = (props) => {
 			opacity={opacity}
 			overlayColor={overlayColor}
 			height={height}
-			textVariant={textVariant}
 			title={collection?.title}
 			description={collection?.description}
 			image={collection?.image?.url}
