@@ -115,7 +115,7 @@ const handleItemClick = () => {
 			<ProductModal
 				open={open}
 				handleClose={() => setOpen(false)}
-				handle={product?.handle}
+				shopifyProduct={product}
 				enableQuantity={enableQuantity}
 				buttonText={buttonText}
 			/>

@@ -1,19 +1,19 @@
 import React from 'react'
 import { Modal } from '../../../components'
 import { ProductDetailPage } from '../../../components/shopify'
-import { ProductProvider } from 'frontend-shopify'
+import { ProductProvider, ProductType } from 'frontend-shopify'
 
 type ProductModalProps = {
-	handle: string
+	shopifyProduct: ProductType
 	enableQuantity?: boolean
 	open?: boolean
 	buttonText?: string
-	handleClose?: () => void
+	handleClose: () => void
 }
 
 const ProductModal: React.FC<ProductModalProps> = (props) => {
 	const {
-		handle,
+		shopifyProduct,
 		enableQuantity,
 		open = false,
 		handleClose,
@@ -24,7 +24,7 @@ const ProductModal: React.FC<ProductModalProps> = (props) => {
 		<Modal open={open} handleClose={handleClose} maxWidth={'sm'}>
 			<ProductProvider>
 				<ProductDetailPage
-					handle={handle}
+					shopifyProduct={shopifyProduct}
 					enableQuantity={enableQuantity}
 					buttonText={buttonText}
 				/>

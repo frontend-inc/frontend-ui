@@ -42,7 +42,7 @@ const QuickShop: React.FC<QuickShopProps> = (props) => {
 			<ProductModal
 				open={open}
 				handleClose={() => setOpen(false)}
-				handle={product?.handle}
+				shopifyProduct={product}
 				enableQuantity={enableQuantity}
 				buttonText={buttonText}
 			/>
