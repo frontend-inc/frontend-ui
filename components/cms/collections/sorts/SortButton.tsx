@@ -12,7 +12,7 @@ import {
 } from '@mui/material'
 import { Icon, Popup, Drawer } from '../../../ui'
 import { SORT_DIRECTIONS } from '../../../../constants/index'
-import FilterInput from '../filters/FilterInput'
+import FilterInput from '../filters/FilterWrapper'
 
 type SortFieldsProps = {
 	fields: any[]

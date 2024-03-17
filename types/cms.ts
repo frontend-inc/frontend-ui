@@ -32,4 +32,3 @@ export type DocumentType = {
   document_links: DocumentLinkType[]
   links: DocumentType[]
 }
-

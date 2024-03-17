@@ -1,12 +1,12 @@
+import { is } from 'immutable'
 import React, { useState, useEffect } from 'react'
 
 type UseFiltersProps = {
 	query?: any
-	handleSubmit?: any
 }
 
 const useFilters = (props: UseFiltersProps) => {
-	const { query, handleSubmit } = props || {}
+	const { query } = props || {}
 
 	const [showFilterModal, setShowFilterModal] = useState(false)
 
@@ -27,30 +27,40 @@ const useFilters = (props: UseFiltersProps) => {
 		return foundFilter
 	}
 
+  const compareValues = (a, b) => {
+    if (Array.isArray(a) && Array.isArray(b)){
+      return a.sort().join(',') === b.sort().join(',')
+    }    
+    return a === b
+  }
+
+  const findDuplicateFilterIndex = (filters, filter) => {
+    return filters.findIndex((f) => (
+        f.field === filter.field &&
+        f.operator === filter.operator &&
+        f.where === filter.where &&
+        compareValues(f.value, filter.value)
+      ))
+  }
+
+  const findDuplicateFilter = (filters, filter) => {
+    return filters.find((f) => (
+        f.field === filter.field &&
+        f.operator === filter.operator &&
+        f.where === filter.where &&
+        compareValues(f.value, filter.value)
+      ))
+  }
+
 	const handleAddFilter = (filter) => {
-		let updatedFilters = []
-		if (
-			activeFilters?.find(
-				({ field, where, operator, value }) =>
-					field == filter?.field &&
-					where == filter?.where &&
-					operator == filter?.operator &&
-					value == filter?.value
-			)
-		) {
-			updatedFilters = activeFilters?.filter(
-				({ field, where, operator, value }) =>
-					!(
-						field == filter?.field &&
-						where == filter?.where &&
-						operator == filter?.operator &&
-						value == filter?.value
-					)
-			)
+		let updatedFilters = [ ...activeFilters ]
+    let duplicateIndex = findDuplicateFilterIndex(activeFilters, filter)
+		if (duplicateIndex > -1){
+			updatedFilters = updatedFilters?.filter((f, index) => index !== duplicateIndex)	
 		} else {
-			updatedFilters = [...activeFilters, filter]
+      //@ts-ignore 
+			updatedFilters = [...updatedFilters, filter]
 		}
-		handleFilterSearch(updatedFilters)
 		setActiveFilters(updatedFilters)
 	}
 
@@ -63,8 +73,7 @@ const useFilters = (props: UseFiltersProps) => {
 		)
 	}
 
-	const handleFilterSearch = (activeFilters) => {
-		// Convert the filter array into a searchable query object
+	const buildQueryFilters = (activeFilters) => {
 		let filters = {}
 		activeFilters
 			.filter((filter) => !isBlank(filter?.value))
@@ -86,16 +95,7 @@ const useFilters = (props: UseFiltersProps) => {
 				}
 			})
 
-		let searchQuery = {
-			page: 1,
-			keywords: query?.keywords || '',
-			per_page: query?.per_page || 20,
-			sort_by: query?.sort_by || 'id',
-			sort_direction: query?.sort_direction || 'desc',
-			filters: filters,
-		}
-		handleSubmit && handleSubmit(searchQuery)
-		setShowFilterModal(false)
+		return filters
 	}
 
 	// Convert the query object into an array of filter options
@@ -107,11 +107,12 @@ const useFilters = (props: UseFiltersProps) => {
 					let field = Object.keys(filter)[0]
 					let operator = Object.keys(filter[field])[0]
 					let value = filter[field][operator]
+          //@ts-ignore
 					formattedFilters.push({
-						where: where,
-						field: field,
-						operator: operator,
-						value: value,
+						where,
+						field,
+						operator,
+						value,
 					})
 				})
 			})
@@ -126,6 +127,7 @@ const useFilters = (props: UseFiltersProps) => {
 		}
 	}, [query])
 
+
 	return {
 		filter,
 		findFilter,
@@ -133,9 +135,12 @@ const useFilters = (props: UseFiltersProps) => {
 		setShowFilterModal,
 		handleOpenFilterModal,
 		handleCloseFilterModal,
-		handleAddFilter,
+		handleAddFilter,  
 		activeFilters,
 		setActiveFilters,
+    findDuplicateFilter,
+    findDuplicateFilterIndex,
+    buildQueryFilters
 	}
 }
 

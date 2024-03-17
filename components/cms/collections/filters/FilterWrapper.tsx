@@ -10,7 +10,7 @@ import {
 } from '@mui/material'
 import { ChevronRight } from '@mui/icons-material'
 
-type FilterInputProps = {
+type FilterWrapperProps = {
 	children: React.ReactNode
 	label?: string
 	icon?: React.ReactNode
@@ -19,7 +19,7 @@ type FilterInputProps = {
 	closed?: boolean
 }
 
-const FilterInput: React.FC<FilterInputProps> = (props) => {
+const FilterWrapper: React.FC<FilterWrapperProps> = (props) => {
 	const { label, children, enableBorder, closed = false } = props
 
 	const [open, setOpen] = useState(!closed)
@@ -73,7 +73,7 @@ const FilterInput: React.FC<FilterInputProps> = (props) => {
 	)
 }
 
-export default FilterInput
+export default FilterWrapper
 
 const sx = {
 	root: {

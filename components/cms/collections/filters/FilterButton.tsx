@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import { Hidden, Badge, ButtonGroup, Button, Stack } from '@mui/material'
+import { Hidden, Badge, ButtonGroup, Button } from '@mui/material'
 import { Popup, Drawer, ButtonLoader } from '../../..'
 import { FilterList as FilterIcon } from '@mui/icons-material'
-import FilterField from './FilterField'
-import { FilterOptionType } from '../../../..'
+import FilterList from './FilterList'
+import { FilterOptionType, SearchFilterOptionType } from '../../../..'
 
 type FilterButtonProps = {
 	filters?: FilterOptionType[]
 	loading?: boolean
-	fields?: any
+	filterOptions?: SearchFilterOptionType[]
 	handleFilter: (filter: FilterOptionType) => void
 	handleClear: () => void
 }
@@ -17,7 +17,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 	const {
 		loading = false,
 		filters = [],
-		fields = [],
+		filterOptions = [],
 		handleFilter,
 	} = props || {}
 
@@ -63,30 +63,20 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 			</Badge>
 			<Hidden smDown>
 				<Popup p={1} anchorEl={anchorEl} open={open} handleClose={handleClose}>
-					<Stack spacing={2}>
-						{fields?.map((field, index) => (
-							<FilterField
-								key={index}
-								filters={filters}
-								field={field}
-								handleFilter={handleFilter}
-							/>
-						))}
-					</Stack>
+          <FilterList 
+            filters={filters}
+            filterOptions={filterOptions}
+            handleFilter={handleFilter}              
+          />          					
 				</Popup>
 			</Hidden>
 			<Hidden smUp>
-				<Drawer open={open} handleClose={handleClose} title="Search">
-					<Stack spacing={2}>
-						{fields?.map((field, index) => (
-							<FilterField
-								key={index}
-								filters={filters}
-								field={field}
-								handleFilter={handleFilter}
-							/>
-						))}
-					</Stack>
+				<Drawer open={open} handleClose={handleClose} title="Search">					
+          <FilterList 
+            filters={filters}
+            filterOptions={filterOptions}
+            handleFilter={handleFilter}              
+          />          										
 				</Drawer>
 			</Hidden>
 		</>
@@ -98,6 +88,10 @@ export default FilterButton
 const sx = {
 	button: {
 		color: 'text.secondary',
+    bgcolor: 'tertiary.main',
+    '&:hover': {
+      bgcolor: 'tertiary.dark',
+    },
 	},
 	hideBorder: {
 		borderRight: 'none',

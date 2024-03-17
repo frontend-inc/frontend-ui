@@ -89,6 +89,7 @@ export type FilterOperatorType =
 	| 'lte'
 	| 'in'
 	| 'nin'
+  | 'btw'
 	| '1_day_ago'
 	| '7_days_ago'
 	| '14_days_ago'

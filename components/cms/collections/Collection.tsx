@@ -14,23 +14,24 @@ import { TITLE_SORT, PRICE_SORT } from '../../../constants/index'
 import { FilterOptionType } from '../../../types'
 import { useRouter } from 'next/router'
 import { CollectionList } from '../../../components'
+import { SearchFilterOptionType } from '../../../types'
 
 type CollectionProps = {
 	title?: string
 	url: string
 	layout: 'list' | 'grid' 
 	style: 'avatar' | 'card' | 'cover'
-	fields?: any
 	editing?: boolean
 	enableInfiniteLoad?: boolean
 	enableLoadMore?: boolean
 	navigateUrl: any
 	perPage?: number
 	query?: any
+  filterOptions?: SearchFilterOptionType[]
+  sortOptions?: string[]
 	enableSearch?: boolean
 	enableFilters?: boolean
-	enableSortTitle?: boolean
-	enableSortPrice?: boolean
+  enableSort?: boolean
 	secondaryActions?: React.ReactNode
 	buttonText?: string
 	enableBorder?: boolean
@@ -47,13 +48,13 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		layout = 'grid',
     style = 'card',
 		url,
-		fields,
+		filterOptions=[],
+    sortOptions=[],
 		query: defaultQuery = {},
 		perPage = 20,
 		enableSearch = false,
 		enableFilters = false,
-		enableSortTitle = false,
-		enableSortPrice = false,
+    enableSort = false,
 		enableInfiniteLoad = false,
 		enableLoadMore = true,
 		navigateUrl,
@@ -97,9 +98,13 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		})
 	}
 
-	const { activeFilters, setActiveFilters, handleAddFilter } = useFilters({
+	const {     
+    activeFilters, 
+    setActiveFilters, 
+    handleAddFilter,
+    buildQueryFilters
+  } = useFilters({
 		query,
-		handleSubmit: findMany,
 	})
 
 	// Filter methods
@@ -114,7 +119,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	}
 
 	const handleFilter = (filter: FilterOptionType) => {
-		handleAddFilter(filter)
+    handleAddFilter(filter)
 	}
 
   const handleClick = (item) => {
@@ -138,32 +143,34 @@ const Collection: React.FC<CollectionProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-			<Stack direction="row" justifyContent={'space-between'} spacing={1}>
+			<Stack direction="column" spacing={1}>
         <Heading 
           title={title}
         />
-				<Box>
+				<Stack direction="column" spacing={1}>
 					{enableFilters && (
-						<CollectionFilterButton
-							fields={fields}
-							filters={activeFilters}
-							handleFilter={handleFilter}
-							handleClear={handleClearFilters}
-						/>
+            <Box>
+              <CollectionFilterButton							
+                filters={activeFilters}              
+                handleFilter={handleFilter}
+                handleClear={handleClearFilters}
+                filterOptions={filterOptions}
+              />
+            </Box>
 					)}
-					{(enableSortTitle || enableSortPrice) && (
+					{enableSort && (
 						<ListSortButton
 							sortBy={query?.sort_by}
-							sortDirection={query?.sort_direction}
-							fields={[
-								...((enableSortTitle && [TITLE_SORT]) || []),
-								...((enableSortPrice && [PRICE_SORT]) || []),
-							]}
+							sortDirection={query?.sort_direction}							
+              sortOptions={[
+                TITLE_SORT,
+                PRICE_SORT 
+              ]}
 							handleSortBy={handleSortBy}
 							handleSortDirection={handleSortDirection}
 						/>
 					)}
-				</Box>
+				</Stack>
       </Stack>
 			{enableSearch && (
 				<SearchInput

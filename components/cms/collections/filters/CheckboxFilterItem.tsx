@@ -9,31 +9,38 @@ import {
 } from '@mui/material'
 import { OptionType } from '../../../../types'
 
-type FilterListItemProps = {
+type CheckboxFilterItemProps = {
 	label?: string
 	option: OptionType
 	values?: any
 	handleClick: () => void
 }
 
-const FilterListItem: React.FC<FilterListItemProps> = (props) => {
+const CheckboxFilterItem: React.FC<CheckboxFilterItemProps> = (props) => {
 	const { values = [], option, handleClick } = props
 
 	return (
 		<ListItem disableGutters disablePadding>
 			<ListItemButton sx={sx.listItemButton} onClick={handleClick}>
 				<ListItemIcon>
-					<Checkbox checked={values.includes(option.value)} color="primary" />
+					<Checkbox 
+            checked={values.includes(option.value)} 
+            color="primary" 
+          />
 				</ListItemIcon>
 				<ListItemText
-					primary={<Typography variant="button">{option?.label}</Typography>}
+					primary={
+            <Typography variant="button">
+              {option?.label}
+            </Typography>
+          }
 				/>
 			</ListItemButton>
 		</ListItem>
 	)
 }
 
-export default FilterListItem
+export default CheckboxFilterItem
 
 const sx = {
 	listItemButton: {
