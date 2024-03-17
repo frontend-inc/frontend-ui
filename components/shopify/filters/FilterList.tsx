@@ -94,6 +94,7 @@ export default FilterList
 
 const sx = {
 	root: {
+    minWidth: 90,
 		width: '100%',
     borderBottom: "1px solid",
     borderColor: "divider",

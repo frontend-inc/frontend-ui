@@ -1,13 +1,14 @@
 import React from 'react'
 import ProductFiltersList from './ProductFiltersList'
-import { SearchFilterType, SearchFilterOptionType } from 'frontend-shopify'
+import { SearchFilterType, SearchFilterOptionType, PriceOptionType } from 'frontend-shopify'
 import { Button, Hidden } from '@mui/material'
 import { Icon, Drawer } from '../..'
 import { useMenu } from '../../../hooks'
 
 type ProductFilterButtonProps = {
 	filters: SearchFilterType[]
-  options: SearchFilterOptionType[]  
+  options?: SearchFilterOptionType[]  
+  priceOptions?: PriceOptionType[]
 	handleFilter: (filter: SearchFilterType) => void	
   handleFilterArray: (filter: SearchFilterType) => void	
 }
@@ -17,6 +18,7 @@ const ProductSearchFilters: React.FC<ProductFilterButtonProps> = (props) => {
 	const {
 		filters = [],
     options = [],
+    priceOptions=[],
 		handleFilter,
 		handleFilterArray		
 	} = props
@@ -28,7 +30,8 @@ const ProductSearchFilters: React.FC<ProductFilterButtonProps> = (props) => {
       <Hidden smDown>
         <ProductFiltersList 
           filters={filters}
-          options={ options }      
+          options={ options } 
+          priceOptions={ priceOptions }     
           handleFilter={handleFilter}
           handleFilterArray={handleFilterArray}      
         />
@@ -50,6 +53,7 @@ const ProductSearchFilters: React.FC<ProductFilterButtonProps> = (props) => {
           <ProductFiltersList 
             filters={filters}
             options={options}
+            priceOptions={priceOptions}
             handleFilter={handleFilter}
             handleFilterArray={handleFilterArray}          
           />

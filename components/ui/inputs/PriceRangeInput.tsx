@@ -4,8 +4,8 @@ import {
 	FormControl,
 	Typography,
 	Box,
+	InputAdornment,
 } from '@mui/material'
-import { TextInput } from '../../../components'
 import { SyntheticEventType } from '../../../types'
 
 type NumberRangeInputProps = {
@@ -16,17 +16,19 @@ type NumberRangeInputProps = {
     max: number
   }
 	handleChange: (value: SyntheticEventType) => void
+	currency?: string
 }
 
 const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 	const {
 		value = { 
-      min: null, 
-      max: null 
+      min: 0, 
+      max: 0 
     },
 		name,
 		label,
-		handleChange
+		handleChange,
+		currency = '',
 	} = props || {}
 
 	const handleMinChange = (ev) => {
@@ -62,21 +64,38 @@ const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 					{label}
 				</Typography>
 			)}
-			<Box sx={sx.inputs}>				
-        <TextInput 
-          type="number"
-          name="min"
-          handleChange={handleMinChange}
-          value={value?.min}
-          placeholder="Min"
-        />				
-				<TextInput 
-          type="number"
-          name="max"
-          handleChange={handleMaxChange}
-          value={value?.max}
-          placeholder="Max"
-        />				
+			<Box sx={sx.inputs}>
+				<FormControl variant="standard">
+					<Input
+						type="number"
+						onChange={handleMinChange}
+						value={value?.min}
+						startAdornment={
+							<InputAdornment position="start">
+								<Typography color="textPrimary" variant="body2">
+									{currency}
+								</Typography>
+							</InputAdornment>
+						}
+					/>
+				</FormControl>
+				<Box sx={sx.to}>
+					<Typography variant="body2">to</Typography>
+				</Box>
+				<FormControl variant="standard">
+					<Input
+						type="number"
+						value={value?.max}
+						onChange={handleMaxChange}
+						startAdornment={
+							<InputAdornment sx={sx.inputAdornment} position="start">
+								<Typography color="textPrimary" variant="body2">
+									{currency}
+								</Typography>
+							</InputAdornment>
+						}
+					/>
+				</FormControl>
 			</Box>
 		</Box>
 	)

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Box, Button, Popover } from '@mui/material'
 import { ExpandLess, ExpandMore } from '@mui/icons-material'
-import CheckboxFilterList from './CheckboxFilterList'
+import CheckboxFilterList from './CheckboxGroupInput'
 
 type CheckboxFilterButtonProps = {
 	values: any

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { SearchFilterOptionType, useProducts, useSearchFilters } from 'frontend-shopify'
+import { PriceOptionType, SearchFilterOptionType, useProducts, useSearchFilters } from 'frontend-shopify'
 import { ProductSortKeyType } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
 import { useRouter } from 'next/router'
@@ -16,6 +16,7 @@ type ProductSearchProps = {
 	editing?: boolean	
 	handle: string | string[]
 	options?: SearchFilterOptionType[]
+  priceOptions?: PriceOptionType[]
 	inStockFilter?: boolean
 	enableFilters?: boolean
   enableSort?: boolean
@@ -32,6 +33,7 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 		title,
 		editing = false,
     options,		
+    priceOptions,
     enableFilters = false,
 		enableSort = false,
 		enableBorder = false,
@@ -71,7 +73,8 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
     filters,    
     handleFilter,
     handleFilterArray,
-    buildFilterQuery,
+    formatProductFilters,
+    formatQueryFilters,
   } = useSearchFilters()
 
 	const handleChange = (ev) => {
@@ -104,14 +107,14 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 	useEffect(() => {
 		if (query?.length > 0 || filters?.length > 0) {
 			let searchKeywords = decodeURI(String(query)).split('-')?.join(' ')
-			let filterQuery = buildFilterQuery(filters)
+      let filterQuery = formatQueryFilters(filters)
 			searchProducts({
-				query: `${searchKeywords} ${filterQuery}`,
+				query: `${searchKeywords} ${filterQuery}`
 			})
 		} else {
-			findProducts({
+      findProducts({
 				first: 20,
-			})      
+			})
 		}
 	}, [query, filters])
 
@@ -136,7 +139,8 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
           <Grid item xs={12} sm={12} md={3}>
             <ProductSearchFilters 
               filters={ filters }
-              options={ options }            
+              options={ options }  
+              priceOptions={ priceOptions }          
               handleFilter={ handleFilter }
               handleFilterArray={ handleFilterArray }            
             />

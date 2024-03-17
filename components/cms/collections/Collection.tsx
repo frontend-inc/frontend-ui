@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
-import { Box, Grid, Stack } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 import {
-	ListFilterButton,
+	CollectionFilterButton,
 	ListSortButton,
 	SearchInput,
 	Heading,
@@ -144,7 +144,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
         />
 				<Box>
 					{enableFilters && (
-						<ListFilterButton
+						<CollectionFilterButton
 							fields={fields}
 							filters={activeFilters}
 							handleFilter={handleFilter}

@@ -13,9 +13,11 @@ const RadioInput: React.FC<SelectInputPropsType> = (props) => {
 
 	return (
 		<FormControl fullWidth component="fieldset">
-			<Typography variant="caption" color="text.secondary" gutterBottom>
-				{label}
-			</Typography>
+      { label && (
+        <Typography variant="caption" color="text.secondary" gutterBottom>
+          {label}
+        </Typography>
+      )}
 			<RadioGroup name={name} value={String(value)} onChange={handleChange}>
 				{options?.map((option, idx) => (
 					<FormControlLabel

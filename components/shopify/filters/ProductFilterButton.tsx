@@ -6,12 +6,14 @@ import { ListFilter } from 'lucide-react'
 import ProductFiltersList from './ProductFiltersList'
 import { 
   SearchFilterType, 
-  SearchFilterOptionType 
+  SearchFilterOptionType, 
+  PriceOptionType
 } from 'frontend-shopify'
 
 type ProductFilterButtonProps = {
 	filters: SearchFilterType[]	
   options: SearchFilterOptionType[]  
+  priceOptions: PriceOptionType[]
 	handleFilter: (filter: SearchFilterType) => void
   handleFilterArray: (filter: SearchFilterType) => void  
 }
@@ -23,6 +25,7 @@ const ProductFilterButton: React.FC<ProductFilterButtonProps> = (props) => {
 	const {
 		filters = [],		
     options=[],
+    priceOptions=[],
     handleFilter,
     handleFilterArray,    
   } = props
@@ -42,6 +45,7 @@ const ProductFilterButton: React.FC<ProductFilterButtonProps> = (props) => {
           <ProductFiltersList 
             filters={filters}
             options={options}
+            priceOptions={priceOptions}
             handleFilter={handleFilter}
             handleFilterArray={handleFilterArray}          
           />
@@ -52,6 +56,7 @@ const ProductFilterButton: React.FC<ProductFilterButtonProps> = (props) => {
           <ProductFiltersList 
             filters={filters}
             options={options}
+            priceOptions={priceOptions}
             handleFilter={handleFilter}
             handleFilterArray={handleFilterArray}          
           />

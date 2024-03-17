@@ -32,6 +32,7 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 		handle,
 		editing = false,
     options=[],		
+    priceOptions=[],
     enableFilters = false,
 		enableSort = false,
 		enableBorder = false,
@@ -55,45 +56,13 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 		filters,
 		handleFilter,
     handleFilterArray,		
+    formatProductFilters,
 	} = useSearchFilters()
 
 	const handleSortClick = (sortKey, reverse = false) => {
 		setSortKey(sortKey)
 		setReverse(reverse)
 	}
-
-  // Shopify Storefront API docs
-  // https://shopify.dev/docs/custom-storefronts/building-with-the-storefront-api/products-collections/filter-products
-  function formatFilters(filters) {
-    const query = [];        
-    filters.forEach(filter => {
-      let queryFilter = {}
-      switch (filter.name) {
-        case 'tag':
-          queryFilter['tag'] = filter.value;          
-        break;
-      case 'product_type':
-        queryFilter['productType'] = filter.value;                  
-        break;
-      case 'vendor':
-        queryFilter['vendor'] = filter.value;                  
-        break;
-      case 'available':
-        queryFilter['vendor'] = filter.value === 'true';                          
-        break;
-      default:
-        queryFilter = {
-          variantOption: {
-            name: filter.name,
-            value: filter.value
-          }
-        }
-      }
-      query.push(queryFilter)
-    });
-
-    return query;
-  }
 
 	useEffect(() => {
 		if (query) {
@@ -103,12 +72,12 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 
 	useEffect(() => {
 		if (handle) {
-      let searchFilters = formatFilters(filters)
+      let productFilters = formatProductFilters(filters)
 			findCollection(handle, {
 				...query,
 				sortKey,
 				reverse,
-				filters: searchFilters,
+				filters: productFilters,
 			})
 		}
 	}, [handle, filters, sortKey, reverse])
@@ -121,6 +90,7 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
           <ProductFilterButton
             filters={filters}
             options={options}
+            priceOptions={priceOptions}
             handleFilter={ handleFilter }
             handleFilterArray={ handleFilterArray }
           />

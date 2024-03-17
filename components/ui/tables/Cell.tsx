@@ -64,7 +64,7 @@ const Cell: React.FC<CellProps> = (props) => {
 			)}
 
 			{field.variant === 'rating' && <CellRating value={value} />}
-
+			{field.variant === 'number' && <CellString value={value} />}
 			{field.variant === 'text' && <CellText value={value} />}
 			{field.variant === 'price' && <CellPrice value={value} />}
 			{field.variant === 'shopify_product' && <CellText value={value} />}

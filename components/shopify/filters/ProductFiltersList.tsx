@@ -5,14 +5,17 @@ import {
 } from '..'
 import { 
   SearchFilterType, 
-  SearchFilterOptionType 
+  SearchFilterOptionType, 
+  PriceOptionType
 } from 'frontend-shopify'
 import { Stack } from '@mui/material'
 import { SHOPIFY_SEARCH_FILTERS } from '../../../constants'
+import RadioPriceRangeInput from './RadioPriceRangeInput'
 
 type ProductFiltersListProps = {
 	filters: SearchFilterType[]
 	options: SearchFilterOptionType[]  
+  priceOptions: PriceOptionType[]
   handleFilter: (filter: SearchFilterType) => void
   handleFilterArray: (filter: SearchFilterType) => void
 }
@@ -22,6 +25,7 @@ const ProductFiltersList: React.FC<ProductFiltersListProps> = (props) => {
 	const {
 		filters=[],
     options=[],
+    priceOptions=[],
     handleFilter,
     handleFilterArray,    
   } = props
@@ -47,6 +51,15 @@ const ProductFiltersList: React.FC<ProductFiltersListProps> = (props) => {
           </FilterList>
         )
       })}
+      { priceOptions?.length > 0 && (
+        <FilterList label="Price">
+          <RadioPriceRangeInput
+            filters={filters}
+            options={ priceOptions }
+            handleClick={ handleFilter }
+          />
+        </FilterList>
+      )}
     </Stack>
 	)
 }
