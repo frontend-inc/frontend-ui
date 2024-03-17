@@ -121,7 +121,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 				spacing={1}
 			>
         { label && (
-          <Typography variant="caption" color="textSecondary" sx={sx.label}>
+          <Typography variant="caption" color="text.secondary" sx={sx.label}>
             {label}
           </Typography>
         )}
@@ -193,6 +193,7 @@ const sx: any = {
 			appearance: 'none',
 			p: 1,
 			height: 20,
+      color: 'text.secondary',
 			borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 			fontSize: (theme) => theme.typography.body2.fontSize,
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
