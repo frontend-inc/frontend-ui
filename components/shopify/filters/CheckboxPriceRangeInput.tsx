@@ -9,7 +9,7 @@ import {
 	ListItemText,	
 } from '@mui/material'
 import { 
-  PriceOptionType,  
+  SearchFilterOptionType,  
   SearchFilterType, 
 } from 'frontend-shopify'
 import { formatCurrency } from 'frontend-shopify'
