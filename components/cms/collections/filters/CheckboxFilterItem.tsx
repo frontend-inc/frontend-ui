@@ -30,7 +30,7 @@ const CheckboxFilterItem: React.FC<CheckboxFilterItemProps> = (props) => {
 				</ListItemIcon>
 				<ListItemText
 					primary={
-            <Typography variant="button">
+            <Typography color='text.primary' variant="button">
               {option?.label}
             </Typography>
           }

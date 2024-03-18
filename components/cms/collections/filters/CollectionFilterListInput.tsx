@@ -6,13 +6,13 @@ import {
 import CheckboxFilter from './CheckboxFilter'
 import CheckboxNumberRangeFilter from './CheckboxNumberRangeFilter'
 
-type FilterButtonProps = {
+type CollectionFilterListInputProps = {
 	filters: FilterOptionType[]
   filterOption: SearchFilterOptionType
 	handleFilter: (filter: FilterOptionType) => void
 }
 
-const FilterInput: React.FC<FilterButtonProps> = (props) => {
+const CollectionFilterListInput: React.FC<CollectionFilterListInputProps> = (props) => {
 	const { filterOption, filters = [], handleFilter } = props || {}
 
 	const findFilterValues = (fieldName, filters) => {
@@ -51,4 +51,4 @@ const FilterInput: React.FC<FilterButtonProps> = (props) => {
 	)
 }
 
-export default FilterInput
+export default CollectionFilterListInput

@@ -78,8 +78,9 @@ export default FilterWrapper
 const sx = {
 	root: {
 		width: '100%',
-		minWidth: '280px',
+		minWidth: 200,
 		my: 0,
+  
 	},
 	listItem: {
 		borderRadius: (theme) => `${theme.shape.borderRadius}px`,

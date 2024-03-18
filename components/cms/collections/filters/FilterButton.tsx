@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Hidden, Badge, ButtonGroup, Button } from '@mui/material'
 import { Popup, Drawer, ButtonLoader } from '../../..'
 import { FilterList as FilterIcon } from '@mui/icons-material'
-import FilterList from './FilterList'
+import FilterList from './CollectionFilterList'
 import { FilterOptionType, SearchFilterOptionType } from '../../../..'
 
 type FilterButtonProps = {

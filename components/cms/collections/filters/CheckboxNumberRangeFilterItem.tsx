@@ -60,10 +60,10 @@ const CheckboxNumberRangeFilterItem: React.FC<CheckboxNumberRangeFilterItemProps
 				<ListItemText
 					primary={
             enableCurrency ? 
-            <Typography variant="button">
+            <Typography color='text.primary' variant="button">
               {formatCurrency(option?.min, 0)} - {formatCurrency(option?.max, 0)}
             </Typography> :  
-            <Typography variant="button">
+            <Typography color='text.primary' variant="button">
               {option?.min} - {option?.max}
             </Typography>
           }

@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
-import { Box, Stack } from '@mui/material'
+import { Grid, Box, Stack } from '@mui/material'
 import {
 	CollectionFilterButton,
 	ListSortButton,
@@ -14,6 +14,7 @@ import { TITLE_SORT, PRICE_SORT } from '../../../constants/index'
 import { FilterOptionType } from '../../../types'
 import { useRouter } from 'next/router'
 import { CollectionList } from '../../../components'
+import CollectionSearchFilters from './filters/CollectionSearchFilters'
 import { SearchFilterOptionType } from '../../../types'
 
 type CollectionProps = {
@@ -27,6 +28,7 @@ type CollectionProps = {
 	navigateUrl: any
 	perPage?: number
 	query?: any
+  filterAnchor?: 'left' | 'top' 
   filterOptions?: SearchFilterOptionType[]
   sortOptions?: string[]
 	enableSearch?: boolean
@@ -48,6 +50,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		layout = 'grid',
     style = 'card',
 		url,
+    filterAnchor='left',
 		filterOptions=[],
     sortOptions=[],
 		query: defaultQuery = {},
@@ -157,7 +160,14 @@ const Collection: React.FC<CollectionProps> = (props) => {
           title={title}
         />
 				<Stack direction="column" spacing={1}>
-					{enableFilters && (
+          {enableSearch && (
+            <SearchInput
+              value={keywords}
+              handleChange={handleChange}
+              handleSearch={handleSearch}
+            />
+          )}   
+					{enableFilters && filterAnchor == 'top' && (
             <Box>
               <CollectionFilterButton							
                 filters={activeFilters}              
@@ -180,23 +190,31 @@ const Collection: React.FC<CollectionProps> = (props) => {
 						/>
 					)}
 				</Stack>
-      </Stack>
-			{enableSearch && (
-				<SearchInput
-					value={keywords}
-					handleChange={handleChange}
-					handleSearch={handleSearch}
-				/>
-			)}   
-      <CollectionList 
-        layout={ layout }
-        style={ style }
-        resources={ resources }
-        handleClick={ handleClick }
-        buttonText={ buttonText }
-        enableBorder={ enableBorder }
-        enableGradient={ enableGradient }
-      />         
+      </Stack>      
+      <Grid container spacing={0}>
+        { enableFilters && filterAnchor == 'left'  && (
+          <Grid item xs={12} sm={4}>
+            <Box sx={ sx.filtersContainer }>
+              <CollectionSearchFilters 
+                filters={activeFilters}
+                filterOptions={filterOptions}
+                handleFilter={handleFilter}              
+              />          
+            </Box>					
+          </Grid>
+        )}
+        <Grid item xs={12} sm={ enableFilters && filterAnchor == 'left' ? 8 : 12}>
+          <CollectionList 
+            layout={ layout }
+            style={ style }
+            resources={ resources }
+            handleClick={ handleClick }
+            buttonText={ buttonText }
+            enableBorder={ enableBorder }
+            enableGradient={ enableGradient }
+          />   
+        </Grid>
+      </Grid>      
       {enableLoadMore && (
 				<LoadMore
 					page={page}
@@ -233,5 +251,15 @@ const sx = {
   },
   item: {
     p: 2
+  },
+  filtersContainer: {
+    mr: {
+      sm: 2,
+      xs: 0
+    },
+    mb: {
+      sm: 0,
+      xs: 2  
+    },
   }
 }
