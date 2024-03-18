@@ -10,11 +10,12 @@ import {
 	LoadMore,  
 } from '../..'
 import { AppContext } from '../../../context'
-import { FilterOptionType, OptionType } from '../../../types'
+import { FilterOptionType } from '../../../types'
 import { useRouter } from 'next/router'
 import { CollectionList } from '../../../components'
 import CollectionSearchFilters from './filters/CollectionSearchFilters'
 import { SearchFilterOptionType } from '../../../types'
+import { SortOptionType } from '../../../types'
 
 type CollectionProps = {
 	title?: string
@@ -29,7 +30,7 @@ type CollectionProps = {
 	query?: any
   filterAnchor?: 'left' | 'top' 
   filterOptions?: SearchFilterOptionType[]
-  sortOptions?: string[]
+  sortOptions?: SortOptionType[]
 	enableSearch?: boolean
 	enableFilters?: boolean
   enableSorting?: boolean

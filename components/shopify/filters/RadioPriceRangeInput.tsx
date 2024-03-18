@@ -16,8 +16,8 @@ import { RadioButtonUnchecked, RadioButtonChecked } from '@mui/icons-material'
 
 type RadioOptionProps = {
   priceOption: PriceOptionType
-  values: string | number | PriceOptionType[]
-  handleClick: (filter: SearchFilterType) => void
+  values: PriceOptionType[]
+  handleClick: (filter: PriceOptionType) => void
 }
 
 const RadioOption: React.FC<RadioOptionProps> = (props) => {
@@ -25,7 +25,10 @@ const RadioOption: React.FC<RadioOptionProps> = (props) => {
   const { priceOption, values, handleClick } = props
   return(
     <ListItem disablePadding>
-      <ListItemButton sx={ sx.listItemButton } onClick={() => handleClick(priceOption) }>
+      <ListItemButton 
+        sx={ sx.listItemButton } 
+        onClick={() => handleClick(priceOption) }
+      >
       <ListItemIcon>
         { values?.includes(priceOption) ? 
           <RadioButtonChecked /> : 
@@ -64,14 +67,15 @@ const RadioPriceRangeInput: React.FC<RadioPriceRangeInputProps> = (props) => {
     })
   } 
 
-  if(!options?.length > 0) return null;
+  if(options?.length == 0) return null;
 	return (
 		<List disablePadding>
 			{options?.map((priceOption, index) => (
         <RadioOption 
           key={index} 
-          priceOption={priceOption} 
+          // @ts-ignore
           values={values} 
+          priceOption={priceOption} 
           handleFilterClick={handleFilterClick}
         />				
 			))}

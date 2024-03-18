@@ -9,7 +9,7 @@ import {
 	ListItemText,	
 } from '@mui/material'
 import { 
-  SearchFilterOptionType,  
+  PriceOptionType,  
   SearchFilterType, 
 } from 'frontend-shopify'
 import { formatCurrency } from 'frontend-shopify'
@@ -31,7 +31,7 @@ const CheckboxPriceRangeInput: React.FC<CheckboxPriceRangeInputProps> = (props) 
     })
   } 
 
-  if(!options?.length > 0) return null;
+  if(options?.length == 0) return null;
 	return (
 		<List disablePadding>
 			{options?.map((priceOption, index) => (

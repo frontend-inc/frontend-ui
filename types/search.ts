@@ -16,3 +16,8 @@ export type SearchFilterOptionType = {
       max: number 
     }[]  
 }
+
+export type SortOptionType = {
+  field: string 
+  label: string 
+}

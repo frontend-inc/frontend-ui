@@ -11,12 +11,10 @@ import {
 } from '@mui/material'
 import { SORT_DIRECTIONS } from '../../../../constants/index'
 import FilterInput from '../filters/FilterWrapper'
+import { SortOptionType } from '../../../../types'
 
 type SortListProps = {
-	sortOptions: {
-    label: string 
-    field: string 
-  }[]
+	sortOptions: SortOptionType[]
 	sortBy: string
 	sortDirection: 'asc' | 'desc'
 	handleSortBy: (sortBy: string) => void

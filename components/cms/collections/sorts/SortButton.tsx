@@ -6,9 +6,10 @@ import {
 } from '@mui/material'
 import { Icon, Popup, Drawer } from '../../../ui'
 import SortList from './SortList'
+import { SortOptionType } from '../../../../types'
 
 type SortButtonProps = {
-	sortOptions: any[]
+	sortOptions: SortOptionType[]
 	sortBy: string
 	sortDirection: 'asc' | 'desc'
 	handleSortBy: (sortBy: string) => void
@@ -25,7 +26,7 @@ const SortButton: React.FC<SortButtonProps> = (props) => {
     handleSortDirection 
   } = props
 
-  const [selected, setSelected] = useState<{ field: string, label: string }>({})
+  const [selected, setSelected] = useState<SortOptionType>(null)
 
 	const [showModal, setShowModal] = useState(false)
 	const [anchorEl, setAnchorEl] = useState(null)

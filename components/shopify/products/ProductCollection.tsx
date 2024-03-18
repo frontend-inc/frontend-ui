@@ -8,6 +8,7 @@ import {
 } from '../../../components/shopify'
 import { Heading } from '../../../components'
 import { 
+  PriceOptionType,
   SearchFilterOptionType
 } from 'frontend-shopify'
 
@@ -16,6 +17,7 @@ type ProductCollectionProps = {
 	editing?: boolean
 	handle: string | string[]
   options: SearchFilterOptionType[]
+  priceOptions: PriceOptionType[]
 	enableFilters?: boolean
 	enableSort?: boolean
 	enableBorder?: boolean
