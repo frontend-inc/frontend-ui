@@ -3,7 +3,7 @@ import { useResource } from 'frontend-js'
 import { Autosuggest } from '../../components'
 import { ErrorText } from '../../components'
 import { useError } from '../../hooks'
-import { OptionType, SyntheticEventType } from '../../types'
+import { OptionType, QueryParamsType, SyntheticEventType } from '../../types'
 
 type RemoteAutosuggestProps = {
 	errors?: any
@@ -12,12 +12,13 @@ type RemoteAutosuggestProps = {
 	name: string
 	url: string
 	displayField?: string
-	handleChange?: (event: SyntheticEventType) => void
+	handleChange: (event: SyntheticEventType) => void
 	valueParam?: string
 	placeholder?: string
 	imageField?: string
 	direction?: 'row' | 'column'
-	defaultQuery?: Record<string, any>
+	defaultQuery?: QueryParamsType
+  defaultOptions?: OptionType[]
 }
 
 const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
@@ -33,6 +34,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		placeholder = 'Search',
 		defaultQuery = null,
 		direction = 'column',
+    defaultOptions=[]
 	} = props
 
 	const { error, clearError } = useError({
@@ -50,35 +52,40 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 
 	const handleInputChange = (newValue) => {
 		if (error) clearError()
-		findOptions(newValue)
+		findOption(newValue)
 	}
 
-	const findOptions = async (value) => {
-		if (!value || resources?.length == 0) return null
-		let resource = resources.find((r: any) => r[valueParam] == value)
-		if (resource) {
-			setOption({
-				label: resource[displayField],
-				value: resource[valueParam],
-			})
-		}
+  const formatResources = (resources) => {
+    return resources.map(resource => ({
+      label: resource[displayField],
+      value: resource[valueParam]
+    }))
+  }
+
+	const findOption = async (value) => {
+		if (!value) return null    
+    if(options?.length > 0){
+		  let matchOption = options.find((option: OptionType) => option.value == value)    
+      if(matchOption){
+        setOption(matchOption)
+      } 
+    }    
 	}
 
 	useEffect(() => {
-		if (resources) {
-			let _options = resources?.map((resource) => ({
-				label: resource[displayField],
-				value: resource[valueParam],
-			}))
-			setOptions(_options)
+		if (resources || defaultOptions) {			
+			setOptions([
+        ...formatResources(resources),
+        ...defaultOptions 
+      ])
 		}
-	}, [resources])
+	}, [resources, defaultOptions])
 
 	useEffect(() => {
-		if (value && resources?.length > 0) {
-			findOptions(value)
+		if (value) {
+			findOption(value)
 		}
-	}, [resources?.length, value])
+	}, [value])
 
 	useEffect(() => {
 		if (url) {

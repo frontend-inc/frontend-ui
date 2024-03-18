@@ -1,94 +1,32 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
 	ButtonGroup,
-	Button,
-	ListItem,
-	ListItemIcon,
-	ListItemText,
-	ListItemButton,
-	Typography,
-	Radio,
+	Button,	
 	Hidden,
 } from '@mui/material'
+import { OptionType } from '../../../../types'
 import { Icon, Popup, Drawer } from '../../../ui'
-import { SORT_DIRECTIONS } from '../../../../constants/index'
-import FilterInput from '../filters/FilterWrapper'
-
-type SortFieldsProps = {
-	fields: any[]
-	sortBy: string
-	sortDirection: 'asc' | 'desc'
-	handleSortBy: (sortBy: string) => void
-	handleSortDirection: (sortDirection: 'asc' | 'desc') => void
-}
-
-const SortFields: React.FC<SortFieldsProps> = (props) => {
-	const { fields, sortBy, sortDirection, handleSortBy, handleSortDirection } =
-		props
-
-	return (
-		<>
-			<FilterInput label="Sort by">
-				{fields?.map((field: any) => (
-					<ListItem disablePadding disableGutters sx={sx.listItem}>
-						<ListItemButton
-							sx={sx.listItemButton}
-							disableRipple
-							onClick={() => handleSortBy(field?.name)}
-						>
-							<ListItemIcon sx={sx.listItemIcon}>
-								<Radio
-									checked={sortBy == field?.name}
-									onChange={() => handleSortBy(field?.name)}
-								/>
-							</ListItemIcon>
-							<ListItemText
-								primary={
-									<Typography variant="button">{field?.name}</Typography>
-								}
-							/>
-						</ListItemButton>
-					</ListItem>
-				))}
-			</FilterInput>
-			<FilterInput label="Direction">
-				{SORT_DIRECTIONS.map((direction, i) => (
-					<ListItem disablePadding key={i} sx={sx.listItem}>
-						<ListItemButton
-							sx={sx.listItemButton}
-							disableRipple
-							onClick={() => handleSortDirection(direction?.value)}
-						>
-							<ListItemIcon sx={sx.listItemIcon}>
-								<Radio
-									checked={sortDirection == direction?.value}
-									onChange={() => handleSortDirection(direction?.value)}
-								/>
-							</ListItemIcon>
-							<ListItemText
-								primary={
-									<Typography variant="button">{direction?.label}</Typography>
-								}
-							/>
-						</ListItemButton>
-					</ListItem>
-				))}
-			</FilterInput>
-		</>
-	)
-}
+import SortList from './SortList'
 
 type SortButtonProps = {
-	fields: any[]
-	sortBy: string
+	sortOptions: any[]
+	sortBy: OptionType
 	sortDirection: 'asc' | 'desc'
 	handleSortBy: (sortBy: string) => void
 	handleSortDirection: (sortDirection: 'asc' | 'desc') => void
 }
 
 const SortButton: React.FC<SortButtonProps> = (props) => {
-	const { fields, sortBy, sortDirection, handleSortBy, handleSortDirection } =
-		props
+
+	const { 
+    sortOptions, 
+    sortBy, 
+    sortDirection, 
+    handleSortBy, 
+    handleSortDirection 
+  } = props
+
+  const [selected, setSelected] = useState('')
 
 	const [showModal, setShowModal] = useState(false)
 	const [anchorEl, setAnchorEl] = useState(null)
@@ -102,24 +40,24 @@ const SortButton: React.FC<SortButtonProps> = (props) => {
 		setShowModal(false)
 	}
 
+  useEffect(() => {
+    if(sortOptions?.length > 0 && sortBy){
+      setSelected(sortOptions.find(option => option.field == sortBy))
+    }
+  }, [sortOptions, sortBy])
+
 	return (
 		<>
-			<ButtonGroup>
-				<Button
-					sx={sx.button}
-					variant="text"
-					onClick={handleOpenModal}
-					endIcon={
-						sortDirection == 'asc' ? (
-							<Icon name="ArrowUp" size={20} />
-						) : (
-							<Icon name="ArrowDown" size={20} />
-						)
-					}
-				>
-					Sort {sortBy == 'id' ? 'by' : sortBy}
-				</Button>
-			</ButtonGroup>
+      <Button
+        sx={sx.button}
+        variant="text"
+        onClick={handleOpenModal}
+        endIcon={
+          <Icon name={ sortDirection == 'asc' ? "ArrowUp" : "ArrowDown" } color='text.secondary' size={20} />
+        }
+      >
+        { selected ? selected?.label : 'Sort' }
+      </Button>
 			<Hidden smDown>
 				<Popup
 					p={1}
@@ -127,8 +65,8 @@ const SortButton: React.FC<SortButtonProps> = (props) => {
 					open={showModal}
 					handleClose={handleCloseModal}
 				>
-					<SortFields
-						fields={fields}
+					<SortList
+						sortOptions={sortOptions}
 						sortBy={sortBy}
 						sortDirection={sortDirection}
 						handleSortBy={handleSortBy}
@@ -143,8 +81,8 @@ const SortButton: React.FC<SortButtonProps> = (props) => {
 					handleClose={handleCloseModal}
 					anchor={'right'}
 				>
-					<SortFields
-						fields={fields}
+					<SortList
+						sortOptions={sortOptions}
 						sortBy={sortBy}
 						sortDirection={sortDirection}
 						handleSortBy={handleSortBy}
@@ -161,29 +99,14 @@ export default SortButton
 const sx = {
 	button: {
 		color: 'text.secondary',
+    bgcolor: 'tertiary.main',    
 		borderRight: 'none',
 		'&:hover': {
 			borderRight: 'none',
 		},
-	},
-	listItem: {
-		py: 0,
-	},
-	listItemButton: {
-		p: 0,
-	},
-	listItemIcon: {
-		minWidth: '32px',
-	},
-	sortDirectionButton: {
-		width: '32px',
-		borderLeft: 'none',
-		'&:hover': {
-			borderLeft: 'none',
-		},
-	},
-	icon: {
-		height: '20px',
-		width: '20px',
-	},
+    width: {
+      sm: 'auto',
+      xs: '100%'
+    }
+	}	
 }

@@ -41,7 +41,6 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 					horizontal: 'right',
 				}}
 			>
-				<ButtonGroup>
 					<Button
 						sx={{
 							...sx.button,
@@ -59,7 +58,6 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 					>
 						Filters
 					</Button>
-				</ButtonGroup>
 			</Badge>
 			<Hidden smDown>
 				<Popup p={1} anchorEl={anchorEl} open={open} handleClose={handleClose}>
@@ -92,6 +90,10 @@ const sx = {
     '&:hover': {
       bgcolor: 'tertiary.dark',
     },
+    width: {
+      sm: '100%',
+      xs: '100%',
+    }
 	},
 	hideBorder: {
 		borderRight: 'none',

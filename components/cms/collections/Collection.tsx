@@ -4,14 +4,13 @@ import { useResource } from 'frontend-js'
 import { Grid, Box, Stack } from '@mui/material'
 import {
 	CollectionFilterButton,
-	ListSortButton,
+	SortButton,
 	SearchInput,
 	Heading,
 	LoadMore,  
 } from '../..'
 import { AppContext } from '../../../context'
-import { TITLE_SORT, PRICE_SORT } from '../../../constants/index'
-import { FilterOptionType } from '../../../types'
+import { FilterOptionType, OptionType } from '../../../types'
 import { useRouter } from 'next/router'
 import { CollectionList } from '../../../components'
 import CollectionSearchFilters from './filters/CollectionSearchFilters'
@@ -33,7 +32,7 @@ type CollectionProps = {
   sortOptions?: string[]
 	enableSearch?: boolean
 	enableFilters?: boolean
-  enableSort?: boolean
+  enableSorting?: boolean
 	secondaryActions?: React.ReactNode
 	buttonText?: string
 	enableBorder?: boolean
@@ -57,7 +56,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		perPage = 20,
 		enableSearch = false,
 		enableFilters = false,
-    enableSort = false,
+    enableSorting = false,
 		enableInfiniteLoad = false,
 		enableLoadMore = true,
 		navigateUrl,
@@ -87,7 +86,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		})
 	}
 
-	const handleSortBy = (sortBy: string) => {
+	const handleSortBy = (sortBy: string) => {    
 		findMany({
 			...query,
 			sort_by: sortBy,
@@ -151,15 +150,14 @@ const Collection: React.FC<CollectionProps> = (props) => {
       page: 1,
       per_page: perPage,
     })
-}, [activeFilters?.length])
+  }, [activeFilters?.length])
 
-	return (
+return (
 		<Stack spacing={1} sx={sx.root}>
 			<Stack direction="column" spacing={1}>
         <Heading 
           title={title}
         />
-				<Stack direction="column" spacing={1}>
           {enableSearch && (
             <SearchInput
               value={keywords}
@@ -167,24 +165,20 @@ const Collection: React.FC<CollectionProps> = (props) => {
               handleSearch={handleSearch}
             />
           )}   
+        <Stack direction={{ xs: 'column', sm: 'row' }} sx={ sx.sortFilterActions } spacing={1}>
 					{enableFilters && filterAnchor == 'top' && (
-            <Box>
-              <CollectionFilterButton							
-                filters={activeFilters}              
-                handleFilter={handleFilter}
-                handleClear={handleClearFilters}
-                filterOptions={filterOptions}
-              />
-            </Box>
+            <CollectionFilterButton							
+              filters={activeFilters}              
+              handleFilter={handleFilter}
+              handleClear={handleClearFilters}
+              filterOptions={filterOptions}
+            />
 					)}
-					{enableSort && (
-						<ListSortButton
+					{enableSorting && (
+						<SortButton
 							sortBy={query?.sort_by}
 							sortDirection={query?.sort_direction}							
-              sortOptions={[
-                TITLE_SORT,
-                PRICE_SORT 
-              ]}
+              sortOptions={sortOptions}
 							handleSortBy={handleSortBy}
 							handleSortDirection={handleSortDirection}
 						/>
@@ -266,5 +260,8 @@ const sx = {
       sm: 0,
       xs: 2  
     },
+  },
+  sortFilterActions: {
+    justifyContent: 'flex-end',
   }
 }

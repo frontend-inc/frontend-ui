@@ -111,19 +111,4 @@ export const SORTABLE_TYPES: String[] = [
 	'url',
 ]
 
-export const TITLE_SORT = {
-	label: 'Title',
-	name: 'title',
-}
-
-export const PRICE_SORT = {
-	label: 'Price',
-	name: 'price',
-}
-
-export const START_DATE_SORT = {
-	label: 'Date',
-	name: 'start_date',
-}
-
 export const SEARCH_FILTER_TYPES: String[] = ['boolean', 'rating', 'select']
