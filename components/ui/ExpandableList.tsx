@@ -10,7 +10,7 @@ import {
 } from '@mui/material'
 import { ChevronRight } from '@mui/icons-material'
 
-type FilterWrapperProps = {
+type ExpandableListProps = {
 	children: React.ReactNode
 	label?: string
 	icon?: React.ReactNode
@@ -19,7 +19,7 @@ type FilterWrapperProps = {
 	closed?: boolean
 }
 
-const FilterWrapper: React.FC<FilterWrapperProps> = (props) => {
+const ExpandableList: React.FC<ExpandableListProps> = (props) => {
 	const { label, children, enableBorder, closed = false } = props
 
 	const [open, setOpen] = useState(!closed)
@@ -73,7 +73,7 @@ const FilterWrapper: React.FC<FilterWrapperProps> = (props) => {
 	)
 }
 
-export default FilterWrapper
+export default ExpandableList
 
 const sx = {
 	root: {

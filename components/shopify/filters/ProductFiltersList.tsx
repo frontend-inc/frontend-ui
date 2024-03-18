@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-	FilterList,
   CheckboxFilterList,
 } from '..'
 import { 
@@ -11,6 +10,7 @@ import {
 import { Stack } from '@mui/material'
 import { SHOPIFY_SEARCH_FILTERS } from '../../../constants'
 import RadioPriceRangeInput from './RadioPriceRangeInput'
+import { ExpandableList } from '../../../components'
 
 type ProductFiltersListProps = {
 	filters: SearchFilterType[]
@@ -37,9 +37,8 @@ const ProductFiltersList: React.FC<ProductFiltersListProps> = (props) => {
         let option = options?.find(o => o.name == filterType.value)        
         if(!option) return null;
         return(
-          <FilterList 
+          <ExpandableList 
             label={ filterType.label } 
-            count={ activeFilters.length}
           >
             <CheckboxFilterList
               filters={activeFilters}
@@ -48,17 +47,17 @@ const ProductFiltersList: React.FC<ProductFiltersListProps> = (props) => {
                 filterType.array ? handleFilterArray : handleFilter 
               }
             />
-          </FilterList>
+          </ExpandableList>
         )
       })}
       { priceOptions?.length > 0 && (
-        <FilterList label="Price">
+        <ExpandableList label="Price">
           <RadioPriceRangeInput
             filters={filters}
             options={ priceOptions }
             handleClick={ handleFilter }
           />
-        </FilterList>
+        </ExpandableList>
       )}
     </Stack>
 	)

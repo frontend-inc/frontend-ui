@@ -82,10 +82,10 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 	}, [resources, defaultOptions])
 
 	useEffect(() => {
-		if (value) {
+		if (value && resources && resources.length > 0) {
 			findOption(value)
 		}
-	}, [value])
+	}, [value, resources, defaultOptions, url])
 
 	useEffect(() => {
 		if (url) {

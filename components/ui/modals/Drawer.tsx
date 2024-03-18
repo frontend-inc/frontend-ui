@@ -8,7 +8,7 @@ type DrawerProps = {
 	loading?: boolean
 	title?: string
 	anchor?: 'left' | 'right' | 'top' | 'bottom'
-	handleClose?: () => void
+	handleClose: () => void
 	actions?: any
 	children: React.ReactNode
 	closeIcon?: string
@@ -57,7 +57,7 @@ const Drawer: React.FC<DrawerProps> = (props) => {
 				}}
 			>
 				<Box sx={sx.header}>
-					<Box sx={sx.actions}>
+					<Box sx={sx.headerAction}>
 						{anchor == 'right' && (
 							<IconButton onClick={handleClose}>
 								<Icon color="text.primary" name={closeIcon} />
@@ -65,10 +65,9 @@ const Drawer: React.FC<DrawerProps> = (props) => {
 						)}
 					</Box>
 					<Box>
-						<Typography variant="subtitle1">{title}</Typography>
+						<Typography variant="body1">{title}</Typography>
 					</Box>
-					<Box sx={sx.actions}>
-						{actions}
+					<Box sx={sx.headerAction}>
 						{anchor != 'right' && (
 							<IconButton onClick={handleClose}>
 								<Icon color="text.primary" name={closeIcon} />
@@ -84,6 +83,11 @@ const Drawer: React.FC<DrawerProps> = (props) => {
 				>
 					{children}
 				</Box>
+        { actions && (
+        <Box sx={ sx.actions }>
+          {actions}
+        </Box>
+        )}
 			</Box>
 		</SwipeableDrawer>
 	)
@@ -95,9 +99,9 @@ const sx = {
 	root: {
 		width: {
 			xs: '100vw',
-			md: '420px',
+			md: '320px',
 		},
-		maxWidth: '420px',
+		maxWidth: '320px',
 	},
 	fullWidth: {
 		width: '100vw',
@@ -112,20 +116,30 @@ const sx = {
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		height: 50,
+    borderBottom: '1px solid',
+    borderColor: 'divider',
+    mb: 2,
 	},
+  headerAction: {
+    minWidth: '40px'
+  },
 	button: {
 		border: '1px solid',
 		borderColor: 'divider',
 		boxShadow: `rgb(0 0 0 / 5%) 0px 2px 4px !important`,
 	},
 	actions: {
-		my: 2,
-		mr: 2,
-		minWidth: '40px',
-		display: 'flex',
-		flexDirecton: 'row',
-		alignItems: 'center',
-		gap: '0 10px',
+    bgcolor: 'background.paper',
+		position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: '100%',
+    height: '60px',
+    borderTop: '1px solid',
+    borderColor: 'divider',
+    display: 'flex',
+    flexDirection: 'row',
+    p: 1
 	},
 	paper: {
 		zIndex: `9999 !important`,
@@ -133,8 +147,14 @@ const sx = {
 	},
 	content: {
 		width: '100%',
+    maxHeight: 'calc(100vh - 120px)',
+    overflowY: 'scroll',
+    '&::-webkit-scrollbar': {
+      display: 'none'
+    },
+    pb: 4,
 	},
 	contentPadding: {
-		px: 2,
+		px: 3,
 	},
 }

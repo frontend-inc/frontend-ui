@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import FilterWrapper from './FilterWrapper'
 import CheckboxFilterItem from './CheckboxFilterItem'
 import {
 	FilterOperatorType,
@@ -7,6 +6,7 @@ import {
 	FilterOptionType,
 	OptionType,
 } from '../../../../types'
+import { ExpandableList } from '../../../../components'
 
 type CheckboxFilterProps = {
 	name: string
@@ -35,7 +35,7 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 	} = props
 
 	return (
-		<FilterWrapper
+		<ExpandableList
 			label={label}
 			enableBorder={enableBorder}
 			disablePadding={disablePadding}
@@ -56,7 +56,7 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 					}
 				/>
 			))}
-		</FilterWrapper>
+		</ExpandableList>
 	)
 }
 

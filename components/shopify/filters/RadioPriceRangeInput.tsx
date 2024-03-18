@@ -14,13 +14,13 @@ import {
 import { formatCurrency } from 'frontend-shopify'
 import { RadioButtonUnchecked, RadioButtonChecked } from '@mui/icons-material'
 
-type RadioOptionProps = {
+type RadioPriceRangeOptionProps = {
   priceOption: PriceOptionType
   values: PriceOptionType[]
   handleClick: (filter: PriceOptionType) => void
 }
 
-const RadioOption: React.FC<RadioOptionProps> = (props) => {
+const RadioPriceRangeOption: React.FC<RadioPriceRangeOptionProps> = (props) => {
 
   const { priceOption, values, handleClick } = props
   return(
@@ -71,12 +71,12 @@ const RadioPriceRangeInput: React.FC<RadioPriceRangeInputProps> = (props) => {
 	return (
 		<List disablePadding>
 			{options?.map((priceOption, index) => (
-        <RadioOption 
+        <RadioPriceRangeOption 
           key={index} 
           // @ts-ignore
           values={values} 
           priceOption={priceOption} 
-          handleFilterClick={handleFilterClick}
+          handleClick={handleFilterClick}
         />				
 			))}
 		</List>

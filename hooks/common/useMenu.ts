@@ -4,8 +4,10 @@ const useMenu = (anchorRef?: React.RefObject<any>) => {
 	const [open, setOpen] = useState(false)
 	const [anchorEl, setAnchorEl] = useState(null)
 
-	const toggleMenu = (e: any) => {
-		setAnchorEl(e.currentTarget)
+	const toggleMenu = (ev?: any) => {
+    if(ev){
+      setAnchorEl(ev.currentTarget)
+    }		
 		setOpen(!open)
 	}
 
@@ -13,8 +15,10 @@ const useMenu = (anchorRef?: React.RefObject<any>) => {
 		setOpen(false)
 	}
 
-	const openMenu = (e) => {
-		setAnchorEl(anchorRef ? anchorRef.current : e.currentTarget)
+	const openMenu = (ev?: any) => {
+    if(ev){
+      setAnchorEl(anchorRef ? anchorRef.current : ev.currentTarget)
+    }		
 		setOpen(true)
 	}
 

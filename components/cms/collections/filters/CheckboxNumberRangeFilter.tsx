@@ -1,11 +1,11 @@
 import React from 'react'
-import FilterWrapper from './FilterWrapper'
 import CheckboxNumberRangeFilterItem from './CheckboxNumberRangeFilterItem'
 import {
 	FilterOperatorType,
 	FilterWhereType,
 	FilterOptionType,
 } from '../../../../types'
+import { ExpandableList } from '../../../../components'
 
 type CheckboxNumberRangeFilterProps = {
 	name: string
@@ -37,7 +37,7 @@ const CheckboxNumberRangeFilter: React.FC<CheckboxNumberRangeFilterProps> = (pro
 	} = props
 
 	return (
-		<FilterWrapper
+		<ExpandableList
 			label={label}
 			enableBorder={enableBorder}
 			disablePadding={disablePadding}
@@ -64,7 +64,7 @@ const CheckboxNumberRangeFilter: React.FC<CheckboxNumberRangeFilterProps> = (pro
             }					
 				/>
 			))}
-		</FilterWrapper>
+		</ExpandableList>
 	)
 }
 

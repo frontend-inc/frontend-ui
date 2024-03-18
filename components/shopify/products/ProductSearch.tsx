@@ -8,6 +8,7 @@ import { SearchInput, Placeholder } from '../..'
 import { ProductSortButton, ProductGrid, ProductSearchFilters } from '..'
 import LoadMore from '../search/LoadMore'
 import { AppContext } from '../../../context'
+import { Heading } from '../..'
 
 const PER_PAGE = 48
 
@@ -35,7 +36,7 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
     options,		
     priceOptions,
     enableFilters = false,
-		enableSort = false,
+		enableSorting = false,
 		enableBorder = false,
 		enableAddToCart = false,
 		enableQuickShop = false,
@@ -125,14 +126,16 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
       <Stack direction={{ xs: 'column', sm: 'row'}} sx={ sx.header } spacing={1}>                  
-        <Typography variant="h6" color="text.primary">
-          { title }
-        </Typography>          
-        <ProductSortButton           
-          sortKey={sortKey}
-          reverse={reverse}
-          handleClick={handleSortClick}
-        />        
+        { title  && (
+          <Heading title={ title } />
+        )}
+        { enableSorting && (
+          <ProductSortButton           
+            sortKey={sortKey}
+            reverse={reverse}
+            handleClick={handleSortClick}
+          />        
+        )}
       </Stack>
       <Grid container spacing={2}>
         { enableFilters && (
@@ -208,7 +211,7 @@ const sx = {
     alignItems: 'center',
     mb: 1,
     ml: {
-      sm: 2.5,
+      sm: 1,
       xs: 0 
     }
   }
