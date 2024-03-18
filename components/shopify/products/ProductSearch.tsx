@@ -20,7 +20,7 @@ type ProductSearchProps = {
   priceOptions?: PriceOptionType[]
 	inStockFilter?: boolean
 	enableFilters?: boolean
-  enableSort?: boolean
+  enableSorting?: boolean
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuickShop?: boolean
