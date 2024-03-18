@@ -141,6 +141,15 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		}
 	}, [url, defaultQuery, perPage])
 
+  useEffect(() => {
+    findMany({
+      ...query,
+      filters: buildQueryFilters(activeFilters),
+      page: 1,
+      per_page: perPage,
+    })
+}, [activeFilters?.length])
+
 	return (
 		<Stack spacing={1} sx={sx.root}>
 			<Stack direction="column" spacing={1}>
