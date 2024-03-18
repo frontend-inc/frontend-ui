@@ -4,7 +4,6 @@ import { Box, Button, Stack, Typography } from '@mui/material'
 import { Image, TouchableOpacity } from '../../../components'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
-import { CARD_HORIZ_HEIGHT } from '../../../constants/index'
 import { CardProps } from '../../../types'
 
 const CardHoriz: React.FC<CardProps> = (props) => {
@@ -123,7 +122,7 @@ const sx = {
 		height: '100%',
 	},
 	content: {
-		justifyContent: 'center',
+		justifyContent: 'flex-start',
 		alignItems: 'flex-start',
 		height: '100%',
 	},

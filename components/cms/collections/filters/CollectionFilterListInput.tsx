@@ -4,7 +4,9 @@ import {
   SearchFilterOptionType 
 } from '../../../../types'
 import CheckboxFilter from './CheckboxFilter'
+import CheckboxBooleanFilter from './CheckboxBooleanFilter'
 import CheckboxNumberRangeFilter from './CheckboxNumberRangeFilter'
+import CheckboxRatingsFilter from './CheckboxRatingsFilter'
 
 type CollectionFilterListInputProps = {
 	filters: FilterOptionType[]
@@ -22,7 +24,16 @@ const CollectionFilterListInput: React.FC<CollectionFilterListInputProps> = (pro
 
 	return (
 		<>
-			{filterOption.variant == 'multi_select' && (
+      {filterOption.variant == 'boolean' && (
+				<CheckboxBooleanFilter 
+					name={filterOption?.field}
+					label={filterOption?.label}
+					values={findFilterValues(filterOption?.field, filters)}					
+					handleClick={handleFilter}
+				/>
+			)}
+
+			{filterOption.variant == 'multiple_choice' && (
 				<CheckboxFilter
 					name={filterOption?.field}
 					label={filterOption?.label}
@@ -44,6 +55,15 @@ const CollectionFilterListInput: React.FC<CollectionFilterListInputProps> = (pro
 						min: option.min,
 						max: option.max,
 					}))}
+					handleClick={handleFilter}
+				/>
+			)}
+
+      {filterOption.variant == 'ratings' && (
+				<CheckboxRatingsFilter 
+					name={filterOption?.field}
+					label={filterOption?.label}
+					values={findFilterValues(filterOption?.field, filters)}					
 					handleClick={handleFilter}
 				/>
 			)}

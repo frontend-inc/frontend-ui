@@ -36,7 +36,7 @@ const TextInput: React.FC<TextInputPropsType> = (props) => {
 		setText(e.target.value)
 	}
 
-	const [debouncedChanged] = useDebounce(handleInputChange, 2000)
+	const [debouncedChanged] = useDebounce(handleInputChange, 3000)
 
 	useEffect(() => {
 		if (debouncedValue !== value) {

@@ -1,9 +1,10 @@
 export type SearchFilterVariantType = 
-  'select' |
-  'multi_select' |
+  'single_choice' |
+  'multiple_choice' |
   'boolean' |
   'number_range' |
-  'price_range'
+  'price_range' | 
+  'ratings'
 
 export type SearchFilterOptionType = {
   label: string
