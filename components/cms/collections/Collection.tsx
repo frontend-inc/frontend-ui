@@ -193,7 +193,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
       </Stack>      
       <Grid container spacing={0}>
         { enableFilters && filterAnchor == 'left'  && (
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} sm={4} lg={3}>
             <Box sx={ sx.filtersContainer }>
               <CollectionSearchFilters 
                 filters={activeFilters}
@@ -203,7 +203,12 @@ const Collection: React.FC<CollectionProps> = (props) => {
             </Box>					
           </Grid>
         )}
-        <Grid item xs={12} sm={ enableFilters && filterAnchor == 'left' ? 8 : 12}>
+        <Grid 
+          item 
+          xs={12} 
+          sm={ enableFilters && filterAnchor == 'left' ? 8 : 12}
+          lg={ enableFilters && filterAnchor == 'left' ? 9 : 12}
+        >
           <CollectionList 
             layout={ layout }
             style={ style }
