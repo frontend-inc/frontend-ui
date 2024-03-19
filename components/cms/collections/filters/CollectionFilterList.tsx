@@ -11,8 +11,8 @@ type CollectionFilterListProps = {
 const CollectionFilterList: React.FC<CollectionFilterListProps> = (props) => {
   
   const { 
-    filters, 
-    filterOptions, 
+    filters=[], 
+    filterOptions=[], 
     handleFilter 
   } = props || {};
 

@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
-import { Grid, Box, Stack } from '@mui/material'
+import { CircularProgress, Grid, Box, Stack } from '@mui/material'
 import {
 	CollectionFilterButton,
 	SortButton,
@@ -16,6 +16,7 @@ import { CollectionList } from '../../../components'
 import CollectionSearchFilters from './filters/CollectionSearchFilters'
 import { SearchFilterOptionType } from '../../../types'
 import { SortOptionType } from '../../../types'
+import { useDelayedLoading } from '../../../hooks'
 
 type CollectionProps = {
 	title?: string
@@ -135,6 +136,13 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		}
 	}
 
+  const {
+    loading: delayedLoading,
+  } = useDelayedLoading({
+    loading,
+    delay: 250
+  })
+
 	useEffect(() => {
 		if (url && defaultQuery && perPage) {
 			findMany({
@@ -145,12 +153,14 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	}, [url, defaultQuery, perPage])
 
   useEffect(() => {
-    findMany({
-      ...query,
-      filters: buildQueryFilters(activeFilters),
-      page: 1,
-      per_page: perPage,
-    })
+    if(activeFilters?.length >= 0){
+      findMany({
+        ...query,
+        filters: buildQueryFilters(activeFilters),
+        page: 1,
+        per_page: perPage,
+      })
+    }
   }, [activeFilters?.length])
 
 return (
@@ -159,13 +169,13 @@ return (
         <Heading 
           title={title}
         />
-          {enableSearch && (
-            <SearchInput
-              value={keywords}
-              handleChange={handleChange}
-              handleSearch={handleSearch}
-            />
-          )}   
+        {enableSearch && (
+          <SearchInput
+            value={keywords}
+            handleChange={handleChange}
+            handleSearch={handleSearch}
+          />
+        )}   
         <Stack direction={{ xs: 'column', sm: 'row' }} sx={ sx.sortFilterActions } spacing={1}>
 					{enableFilters && filterAnchor == 'top' && (
             <CollectionFilterButton							
@@ -204,15 +214,17 @@ return (
           sm={ enableFilters && filterAnchor == 'left' ? 8 : 12}
           lg={ enableFilters && filterAnchor == 'left' ? 9 : 12}
         >
-          <CollectionList 
-            layout={ layout }
-            style={ style }
-            resources={ resources }
-            handleClick={ handleClick }
-            buttonText={ buttonText }
-            enableBorder={ enableBorder }
-            enableGradient={ enableGradient }
-          />   
+          <Box sx={{ ...(delayedLoading && sx.loading) }}>
+            <CollectionList 
+              layout={ layout }
+              style={ style }
+              resources={ resources }
+              handleClick={ handleClick }
+              buttonText={ buttonText }
+              enableBorder={ enableBorder }
+              enableGradient={ enableGradient }
+            />   
+          </Box>
         </Grid>
       </Grid>      
       {enableLoadMore && (
@@ -264,5 +276,11 @@ const sx = {
   },
   sortFilterActions: {
     justifyContent: 'flex-end',
+  },
+  loading: {
+    opacity: 0.7
+  },
+  circularProgress: {
+    color: 'primary.main'
   }
 }

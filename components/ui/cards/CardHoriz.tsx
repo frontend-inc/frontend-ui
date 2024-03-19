@@ -14,7 +14,7 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 		description,
 		image = '',
 		href,
-		height = 180,
+		height = 140,
 		buttonText,
 		textVariant = 'subtitle1',
 		handleClick,
@@ -118,10 +118,11 @@ const sx = {
 	},
 	image: {
 		mr: 2,
-		width: 180,
+		width: 140,
 		height: '100%',
 	},
 	content: {
+    py: 1,
 		justifyContent: 'flex-start',
 		alignItems: 'flex-start',
 		height: '100%',
