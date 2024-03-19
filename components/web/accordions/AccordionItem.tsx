@@ -19,31 +19,9 @@ const AccordionItem: React.FC<AccordionProps> = (props) => {
 				<Typography variant="subtitle1">{title}</Typography>
 			</AccordionSummary>
 			<AccordionDetails sx={sx.accordionDetails}>
-				<Stack
-					direction={{
-						sm: 'row',
-						xs: 'column',
-					}}
-					spacing={2}
-				>
-					{image && (
-						<Box sx={sx.imageContainer}>
-							<img
-								alt={title}
-								src={image}
-								height={256}
-								width={256}
-								style={{
-									width: '100%',
-									objectFit: 'contain',
-								}}
-							/>
-						</Box>
-					)}
-					<Text variant="body1" color="textSecondary">
-						{description}
-					</Text>
-				</Stack>
+        <Text variant="body1" color="text.primary">
+          {description}
+        </Text>
 			</AccordionDetails>
 		</Accordion>
 	)
