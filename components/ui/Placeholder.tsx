@@ -1,8 +1,9 @@
 import React from 'react'
 import { Stack, Box, Avatar, Typography } from '@mui/material'
+import { Icon } from '../../components'
 
 type PlaceholderProps = {
-	icon?: any
+	icon?: string
 	title?: string
 	description?: string
 	actions?: any
@@ -29,7 +30,7 @@ const Placeholder: React.FC<PlaceholderProps> = (props) => {
 						...(enableAvatarBorder && sx.avatarBorder),
 					}}
 				>
-					{icon}
+					<Icon name={icon} size={20} color="text.secondary" />
 				</Avatar>
 			)}
 			<Stack>
@@ -70,7 +71,7 @@ const sx = {
 	avatar: {
 		height: '50px',
 		width: '50px',
-		bgcolor: 'background.paper',
+		bgcolor: 'tertiary.main',
 	},
 	avatarBorder: {
 		border: '2px solid',

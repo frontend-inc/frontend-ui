@@ -29,9 +29,6 @@ const RecentlyViewed: React.FC<RecentlyViewedProps> = (props) => {
 		enableAddToCart,
 		enableQuantity,
 		enableQuickShop,
-		emptyIcon = 'Shirt',
-		emptyTitle = 'No recently viewed',
-		emptyDescription = 'You have no recently viewed products',
 	} = props || {}
 
 	const { products } = useRecentlyViewed()
@@ -64,9 +61,9 @@ const RecentlyViewed: React.FC<RecentlyViewedProps> = (props) => {
 			)}
 			{products?.length === 0 && (
 				<Placeholder
-					icon={<Icon name={emptyIcon} />}
-					title={emptyTitle}
-					description={emptyDescription}
+					icon={'ShoppingCart'}
+					title={'No recently viewed'}
+					description={'You have no recently viewed products.'}
 				/>
 			)}
 		</Box>

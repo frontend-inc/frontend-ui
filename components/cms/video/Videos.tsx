@@ -112,7 +112,7 @@ const Videos: React.FC<VideosProps> = (props) => {
 			)}
 			{!loading && resources?.length === 0 && (
 				<Placeholder
-					icon={<Icon name="Video" />}
+					icon={'Video'}
 					title="No videos found"
 					description="Try adjusting your search or filters"
 				/>

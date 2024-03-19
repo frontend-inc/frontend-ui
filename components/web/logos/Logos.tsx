@@ -37,7 +37,7 @@ const Logos: React.FC<LogosProps> = (props) => {
 			</Stack>
 			{images?.length === 0 && (
 				<Placeholder
-					icon={<Icon name="Camera" />}
+					icon={'Camera'}
 					title="No images found"
 					description="Images will appear here"
 				/>

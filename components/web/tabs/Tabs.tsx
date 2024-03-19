@@ -86,7 +86,7 @@ const Tabs: React.FC<TabsProps> = (props) => {
 			))}
 			{items?.length === 0 && (
 				<Placeholder
-					icon={<Icon name="Search" />}
+					icon={'Search'}
 					title="No content"
 					description="Your content will appear here."
 				/>

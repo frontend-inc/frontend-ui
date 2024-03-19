@@ -155,6 +155,6 @@ const sx = {
     pb: 4,
 	},
 	contentPadding: {
-		px: 3,
+		px: 2,
 	},
 }

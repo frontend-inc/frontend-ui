@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
-import { CircularProgress, Grid, Box, Stack } from '@mui/material'
+import { Grid, Box, Stack } from '@mui/material'
 import {
 	CollectionFilterButton,
 	SortButton,
@@ -12,7 +12,7 @@ import {
 import { AppContext } from '../../../context'
 import { FilterOptionType } from '../../../types'
 import { useRouter } from 'next/router'
-import { CollectionList } from '../../../components'
+import { CollectionList, Placeholder } from '../../../components'
 import CollectionSearchFilters from './filters/CollectionSearchFilters'
 import { SearchFilterOptionType } from '../../../types'
 import { SortOptionType } from '../../../types'
@@ -225,6 +225,13 @@ return (
               enableGradient={ enableGradient }
             />   
           </Box>
+          { !loading && resources.length == 0 && (
+            <Placeholder 
+              icon="Search"
+              title="No results found"
+              description="Try adjusting your search or filters"
+            />
+          )}
         </Grid>
       </Grid>      
       {enableLoadMore && (

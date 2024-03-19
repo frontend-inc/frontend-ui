@@ -106,7 +106,7 @@ const Form: React.FC<FormProps> = (props) => {
 	) : (
 		<Placeholder
 			enableBorder
-			icon={<Check size={32} />}
+			icon={'Check'}
 			title="Success"
 			description="Your form has been submitted"
 			actions={

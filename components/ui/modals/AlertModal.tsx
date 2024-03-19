@@ -1,7 +1,6 @@
 import React from 'react'
-import { Button, useTheme } from '@mui/material'
+import { Button } from '@mui/material'
 import { ButtonLoader, Placeholder, Modal } from '../../../components'
-import { AlertCircle } from 'lucide-react'
 
 type AlertModalProps = {
 	loading?: boolean
@@ -22,8 +21,6 @@ const AlertModal: React.FC<AlertModalProps> = (props) => {
 		handleConfirm,
 	} = props
 
-	const theme = useTheme()
-
 	return (
 		<Modal
 			open={open}
@@ -43,7 +40,7 @@ const AlertModal: React.FC<AlertModalProps> = (props) => {
 		>
 			{!loading && (
 				<Placeholder
-					icon={<AlertCircle color={theme?.palette?.text.primary} />}
+					icon={'CircleAlert'}
 					title={title}
 					description={description}
 				/>
@@ -53,16 +50,3 @@ const AlertModal: React.FC<AlertModalProps> = (props) => {
 }
 
 export default AlertModal
-
-const sx = {
-	content: {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	icon: {
-		color: 'icon',
-		height: 32,
-		width: 32,
-	},
-}

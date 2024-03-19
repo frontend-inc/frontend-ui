@@ -181,6 +181,7 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 
           {!loading && (!products || products?.length == 0) && (
             <Placeholder
+              icon="Search"
               title="No search results"
               description="Try another search term"
             />

@@ -111,7 +111,7 @@ const StyledList: React.FC<StyledListProps> = (props) => {
 			)}
 			{!loading && resources?.length === 0 && (
 				<Placeholder
-					icon={<Icon name={emptyIcon} />}
+					icon={emptyIcon}
 					title={emptyTitle}
 					description={emptyDescription}
 				/>

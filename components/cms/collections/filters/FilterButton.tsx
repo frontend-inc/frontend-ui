@@ -60,7 +60,20 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 					</Button>
 			</Badge>
 			<Hidden smDown>
-				<Popup p={1} anchorEl={anchorEl} open={open} handleClose={handleClose}>
+				<Popup 
+          p={1} 
+          anchorEl={anchorEl} 
+          open={open} 
+          handleClose={handleClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right'
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right'
+          }}  
+        >
           <FilterList 
             filters={filters}
             filterOptions={filterOptions}

@@ -3,7 +3,7 @@ import { Placeholder } from '../../../components'
 import { Box } from '@mui/material'
 
 type LayoutEmptyProps = {
-	icon: React.ReactNode
+	icon: string
 	title: string
 	description?: string
 }

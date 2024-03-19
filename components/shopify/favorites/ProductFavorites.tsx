@@ -13,9 +13,6 @@ type ProductFavoritesProps = {
 	enableQuantity?: boolean
 	enableQuickShop?: boolean
 	buttonText?: string
-	emptyIcon?: string
-	emptyTitle?: string
-	emptyDescription?: string
 }
 
 const ProductFavorites: React.FC<ProductFavoritesProps> = (props) => {
@@ -27,9 +24,6 @@ const ProductFavorites: React.FC<ProductFavoritesProps> = (props) => {
 		enableAddToCart,
 		enableQuantity,
 		enableQuickShop,
-		emptyIcon = 'Heart',
-		emptyTitle = 'No favorites',
-		emptyDescription = 'You have no favorites yet',
 	} = props || {}
 
 	const { favorites } = useFavorites()
@@ -52,9 +46,9 @@ const ProductFavorites: React.FC<ProductFavoritesProps> = (props) => {
       />			
 			{favorites?.length === 0 && (
 				<Placeholder
-					icon={<Icon name={emptyIcon} />}
-					title={emptyTitle}
-					description={emptyDescription}
+					icon={"Heart"}
+					title={'No favorites'}
+					description={"You have no favorites yet."}
 				/>
 			)}
 		</Box>

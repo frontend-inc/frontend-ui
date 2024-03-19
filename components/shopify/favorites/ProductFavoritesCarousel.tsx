@@ -56,7 +56,7 @@ const ProductFavoritesCarousel: React.FC<ProductFavoritesCarouselProps> = (props
       />			
 			{favorites?.length === 0 && (
 				<Placeholder
-					icon={<Icon name={'Heart'} />}
+					icon={'Heart'}
 					title={'No favorites'}
 					description={'You have no favorites yet'}
 				/>

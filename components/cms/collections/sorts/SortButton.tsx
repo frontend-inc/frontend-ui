@@ -64,6 +64,14 @@ const SortButton: React.FC<SortButtonProps> = (props) => {
 					anchorEl={anchorEl}
 					open={showModal}
 					handleClose={handleCloseModal}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right'
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right'
+          }}      
 				>
 					<SortList
 						sortOptions={sortOptions}
