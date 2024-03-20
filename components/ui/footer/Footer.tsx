@@ -35,41 +35,40 @@ const Footer: React.FC<FooterProps> = (props) => {
 
 	return (
 		<Stack sx={sx.root} spacing={1} direction="column">        
-        <Grid container spacing={0}>
-          <Grid xs={12} sm={3}>
+      <Box sx={ sx.container }>
+        <Box sx={ sx.left }>
           <Box sx={ sx.logoContainer }>
-            <Box sx={ sx.logo }>
-              <Image  
-                src={logo} 
-                width={180} 
-                height={60} 
-                alt={'logo'}
-                layout="responsive"
-              />    
-            </Box>
+            <Image 
+              src={ logo }
+              alt={ name }
+              width={120}
+              height={120}
+            />
           </Box>
-        </Grid>
-        <Grid xs={12} sm={9}>
-        <Box sx={sx.grid}>
-          { menuItems?.map((menuItem, i) => (          
-            <FooterLinks  
-              key={i}
-              menuItem={ menuItem }
-              handleClick={ handleClick }
-            />            
-          ))}
         </Box>
-      </Grid>
-      </Grid>
+        <Box sx={ sx.gridContainer }>        
+          <Box sx={sx.grid}>
+            { menuItems?.map((menuItem, i) => (          
+              <FooterLinks  
+                key={i}
+                menuItem={ menuItem }
+                handleClick={ handleClick }
+              />            
+            ))}
+          </Box>
+        </Box>
+          <Box sx={ sx.right }>
+          </Box>
+      </Box>
       <Stack direction="column" spacing={1} sx={ sx.footerLinks }>
-        <Box sx={ sx.socialUrls }>          
-            { facebook && <SocialLink provider="facebook" url={ facebook } /> }
-            { instagram && <SocialLink provider="instagram" url={ instagram } /> }
-            { linkedin && <SocialLink provider="linkedin" url={ linkedin } />  }
-            { twitter && <SocialLink provider="twitter" url={ twitter } />  }
-            { youtube && <SocialLink provider="youtube" url={ youtube } />  }              
-            { tiktok && <SocialLink provider="tiktok" url={ tiktok } />  }          
-        </Box>
+        <Stack direction="row" spacing={0} sx={ sx.socialUrls }>          
+          { facebook && <SocialLink provider="facebook" url={ facebook } /> }
+          { instagram && <SocialLink provider="instagram" url={ instagram } /> }
+          { linkedin && <SocialLink provider="linkedin" url={ linkedin } />  }
+          { twitter && <SocialLink provider="twitter" url={ twitter } />  }
+          { youtube && <SocialLink provider="youtube" url={ youtube } />  }              
+          { tiktok && <SocialLink provider="tiktok" url={ tiktok } />  }          
+        </Stack>
         <Box
           sx={ sx.copyright }
         >
@@ -100,21 +99,45 @@ const sx = {
     height: 120,
     width: 120
   },
+  container: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: {
+      xs: 'column',
+      sm: 'row'
+    },    
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',    
+  },	
+  left: {
+    p: 2,
+    width: 240
+  },
+  right: {
+    p: 2,
+    width: 240
+  },
   logoContainer: {
-    px: 4,
-    py: 2,
+    px: 1,
     width: '100%',
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',    
   },	
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: {
-      xs: 'repeat(2, 1fr)',      
-      md: 'repeat(4, 1fr)',
-    },
+  gridContainer: {
+    mt: 2,
     width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',    
+  },	
+  grid: {
+    px: 2,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    flexWrap: 'wrap',
   },
   copyright: {    
     width: '100%',
@@ -123,10 +146,6 @@ const sx = {
     alignItems: 'center',    
   },
   socialUrls: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',    
     py: 1,    
   },
   divider: {

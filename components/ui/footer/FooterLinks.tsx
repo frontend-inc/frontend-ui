@@ -56,9 +56,8 @@ const sx = {
     bgcolor: 'transparent',
   },
   list: {
-    mt: 3,
     minWidth: {
-      sm: 120,
+      sm: 150,
       xs: '100%'
     }
   }  
