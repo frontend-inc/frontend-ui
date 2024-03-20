@@ -73,8 +73,7 @@ const Footer: React.FC<FooterProps> = (props) => {
         <Box
           sx={ sx.copyright }
         >
-          <Typography
-            sx={sx.link}					
+          <Typography            
             variant={'body2'}
             color="text.secondary"
           >
