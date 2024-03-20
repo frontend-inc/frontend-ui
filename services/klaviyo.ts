@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 export const subscribe = async ({ apiKey, listId, email }) => {
   try {
     let body = JSON.stringify({
@@ -24,14 +22,3 @@ export const subscribe = async ({ apiKey, listId, email }) => {
   }  
 }
 
-export const lookup = async (listId, email) => {
-  try {
-    let resp = await axios.post(`https://a.klaviyo.com/api/v2/list/${listId}/get-members`, {
-      api_key: KLAVIYO_API_KEY,
-      emails: [email]
-    })
-    return resp?.data
-  }catch(e){
-    console.log("Error", e)
-  }  
-}
