@@ -61,7 +61,6 @@ const Footer: React.FC<FooterProps> = (props) => {
         </Box>
       </Grid>
       </Grid>
-      <Container maxWidth="lg">
         <Box sx={ sx.socialUrls }>          
             { facebook && <SocialLink provider="facebook" url={ facebook } /> }
             { instagram && <SocialLink provider="instagram" url={ instagram } /> }
@@ -81,7 +80,6 @@ const Footer: React.FC<FooterProps> = (props) => {
             &copy; copyright { moment().format('YYYY')} { name }
           </Typography>				
         </Box>
-      </Container>
 		</Stack>
 	)
 }
@@ -120,15 +118,13 @@ const sx = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    mb: 2
+    pb: 4
   },
   socialUrls: {
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',    
-    borderTop: '1px solid',
-    borderColor: 'divider',
-    py: 1
+    py: 1,    
   },
 }
