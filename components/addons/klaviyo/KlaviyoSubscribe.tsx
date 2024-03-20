@@ -1,16 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import { Stack, Box, Button } from '@mui/material'
-import { TextInput, ButtonLoader } from '../..'
-import { useAlerts, useKlaviyo } from '../../../hooks'
+import React, { useState } from 'react'
+import { Stack, Button } from '@mui/material'
+import { Heading, TextInput, ButtonLoader } from '../..'
+import { useKlaviyo } from '../../../hooks'
 
 type KlaviyoSubscribeProps = {
 	listId: string
   apiKey: string
   buttonText?: string
+  title?: string
+  description?: string
 }
 
 const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
-	const { listId, apiKey, buttonText='Subscribe' } = props || {}
+	const { 
+    listId, 
+    apiKey, 
+    buttonText='Subscribe',
+    title,
+    description 
+  } = props || {}
 
   const {
     loading,
@@ -38,7 +46,14 @@ const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
 
 	if(!listId || !apiKey) return null
 	return (
-		<Box sx={sx.root}>
+		<Stack direction="column" spacing={2} sx={sx.root}>
+      { (title || description) && (
+        <Heading 
+          title={ title } 
+          description={ description }
+          textAlign='center'
+        />
+      )}
       <Stack direction="row" spacing={0} sx={ sx.form }>
         <TextInput 
           direction="row"
@@ -57,7 +72,7 @@ const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
           { loading ? <ButtonLoader loading={loading} /> : `${buttonText}` }
         </Button>
       </Stack>
-		</Box>
+		</Stack>
 	)
 }
 

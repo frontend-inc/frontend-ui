@@ -5,7 +5,7 @@ import { TypographyVariantsType } from '../../../types'
 type HeadingProps = {
 	label?: string
 	title?: string
-	subtitle?: string
+	description?: string
 	textAlign?: 'left' | 'center'
   textVariant?: TypographyVariantsType
 }
@@ -14,7 +14,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 	const { 
     label, 
     title, 
-    subtitle, 
+    description, 
     textAlign, 
     textVariant = 'h6'
   } = props || {}
@@ -38,7 +38,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 					{title}
 				</Typography>
 			)}
-			{subtitle && (
+			{description && (
 				<Typography
 					variant="body1"
 					color="text.secondary"
@@ -47,7 +47,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 						textAlign,
 					}}
 				>
-					{subtitle}
+					{description}
 				</Typography>
 			)}
 		</Stack>

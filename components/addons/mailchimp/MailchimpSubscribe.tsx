@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { Stack, Box, Button } from '@mui/material'
-import { TextInput, ButtonLoader } from '../..'
+import { Heading, TextInput, ButtonLoader } from '../..'
 import { useMailChimpForm } from "use-mailchimp-form";
 import { useAlerts } from '../../../hooks'
 
 type MailchimpEmbedProps = {
+  title?: string
+  description?: string
 	formId: string
   buttonText?: string
 }
 
 const MailchimpEmbed: React.FC<MailchimpEmbedProps> = (props) => {
-	const { formId, buttonText='Subscribe' } = props || {}
+	
+  const { 
+    title, 
+    description, 
+    formId, 
+    buttonText="Subscribe"
+  } = props || {}
 
   const {
     loading,
@@ -25,6 +33,12 @@ const MailchimpEmbed: React.FC<MailchimpEmbedProps> = (props) => {
   const [email, setEmail] = useState('')
   
   const handleFormSubmit = async () => {
+    if(!email || !email?.includes('@')){
+      return showAlertSuccess("Please enter a valid email");
+    }
+    if(!formId){
+      return showAlertSuccess("Please enter a mailchimp form ID");
+    }
     handleSubmit({
       EMAIL: email
     })
@@ -40,9 +54,15 @@ const MailchimpEmbed: React.FC<MailchimpEmbedProps> = (props) => {
     }
   }, [message])
 
-	if(!formId) return null
 	return (
-		<Box sx={sx.root}>
+		<Stack direction="column" spacing={2} sx={sx.root}>
+      { (title || description) && (
+        <Heading 
+          title={ title }
+          description={ description }
+          textAlign='center'
+        />
+      )}
       <Stack direction="row" spacing={0} sx={ sx.form }>
         <TextInput 
           direction="row"
@@ -61,7 +81,7 @@ const MailchimpEmbed: React.FC<MailchimpEmbedProps> = (props) => {
           { loading ? <ButtonLoader loading={loading} /> : `${buttonText}` }
         </Button>
       </Stack>
-		</Box>
+		</Stack>
 	)
 }
 
