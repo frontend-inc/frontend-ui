@@ -19,7 +19,8 @@ const FooterLinks: React.FC<FooterLinksProps> = (props) => {
   const { children } = menuItem || {}
 
   return(
-    <List      
+    <List    
+      sx={ sx.list }  
       component="nav"
       subheader={
         <ListSubheader sx={ sx.listSubheader}>
@@ -53,5 +54,12 @@ export default FooterLinks
 const sx = {
   listSubheader: {
     bgcolor: 'background.default',
-  }
+  },
+  list: {
+    mt: 3,
+    minWidth: {
+      sm: 120,
+      xs: '100%'
+    }
+  }  
 }

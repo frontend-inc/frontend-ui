@@ -134,7 +134,6 @@ const sx = {
   socialUrls: {
     width: '100%',
     justifyContent: 'flex-start',
-    alignItems: 'center',
-    
+    alignItems: 'center',  
   }
 }

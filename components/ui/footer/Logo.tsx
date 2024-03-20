@@ -46,10 +46,7 @@ const Logo: React.FC<LogoProps> = (props) => {
 export default Logo
 
 const sx = {
-	root: {
-		width: '100%',
-		minHeight: 'auto',
-		minWidth: 'auto',
+	root: {		
 		'&:hover': {
 			background: 'transparent',
 		},

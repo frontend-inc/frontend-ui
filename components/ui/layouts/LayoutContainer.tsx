@@ -18,12 +18,17 @@ type LayoutContainerProps = {
 	handleClick: (item: any) => void
 	headerLinks: MenuLinkType[]
   footerLinks: MenuLinkType[]
-  socialUrls: string[]
 	notifications: NotificationType[]
 	children: ReactNode
 	editing?: boolean
 	enableAuth?: boolean
 	enableShopify?: boolean
+  facebook?: string
+  instagram?: string
+  linkedin?: string
+  twitter?: string
+  youtube?: string
+  tiktok?: string
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
@@ -36,10 +41,15 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 		handleClick,
 		headerLinks,
     footerLinks,
-    socialUrls,
 		notifications,
 		enableAuth = false,
 		enableShopify = false,
+    facebook,
+    instagram,
+    linkedin,
+    twitter,
+    youtube,
+    tiktok
 	} = props
 
 	const enableNotifications = notifications?.length > 0
@@ -77,8 +87,13 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
             <ModeTheme mode={mode}>
               <Footer
                 menuItems={footerLinks}   
-                socialUrls={ socialUrls }             
                 handleClick={handleClick}
+                facebook={facebook}
+                instagram={instagram}
+                linkedin={linkedin}
+                twitter={twitter}
+                youtube={youtube}  
+                tiktok={tiktok}              
               />
             </ModeTheme>
           </LayoutScroll>
