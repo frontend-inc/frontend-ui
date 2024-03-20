@@ -26,9 +26,8 @@ const useKlaviyo = (params: UseKlaviyoParams ) => {
           'Content-Type': 'application/json'
         },
         body: body
-      })  
-      const jsonResp = await resp.json()
-      return jsonResp
+      })         
+      return resp?.json()
     }catch(e){      
       console.log("Error", e)
     }finally{

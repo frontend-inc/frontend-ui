@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Stack, Button } from '@mui/material'
 import { Heading, TextInput, ButtonLoader } from '../..'
-import { useKlaviyo } from '../../../hooks'
+import { useAlerts, useKlaviyo } from '../../../hooks'
 
 type KlaviyoSubscribeProps = {
 	listId: string
@@ -20,6 +20,11 @@ const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
     description 
   } = props || {}
 
+  const { 
+    showAlertError, 
+    showAlertSuccess 
+  } = useAlerts()
+
   const {
     loading,
     handleSubmit
@@ -30,11 +35,21 @@ const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
   const [email, setEmail] = useState('')
   
   const handleFormSubmit = async () => {
+    if(!email || !email?.includes('@')){
+      return showAlertError("Please enter a valid email");
+    }
+    if(!listId){
+      return showAlertError("Please enter a klaviyo list ID");
+    }
+    if(!apiKey){
+      return showAlertError("Please enter your public klaviyo API key");
+    }
     try{
-      let resp = await handleSubmit({
+      await handleSubmit({
         email,
         listId
       })      
+      showAlertSuccess("You have been subscribed to our newsletter!");
     }catch(e){
       console.log("Error", e)
     }
@@ -44,7 +59,6 @@ const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
     setEmail(ev.target.value)
   }
 
-	if(!listId || !apiKey) return null
 	return (
 		<Stack direction="column" spacing={2} sx={sx.root}>
       { (title || description) && (

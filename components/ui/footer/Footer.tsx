@@ -61,6 +61,7 @@ const Footer: React.FC<FooterProps> = (props) => {
         </Box>
       </Grid>
       </Grid>
+      <Stack direction="column" spacing={1} sx={ sx.footerLinks }>
         <Box sx={ sx.socialUrls }>          
             { facebook && <SocialLink provider="facebook" url={ facebook } /> }
             { instagram && <SocialLink provider="instagram" url={ instagram } /> }
@@ -80,6 +81,7 @@ const Footer: React.FC<FooterProps> = (props) => {
             &copy; copyright { moment().format('YYYY')} { name }
           </Typography>				
         </Box>
+      </Stack>
 		</Stack>
 	)
 }
@@ -91,7 +93,9 @@ const sx = {
 		width: '100%',
 		justifyContent: 'center',
 		alignItems: 'center',
-		bgcolor: 'background.default',    
+		bgcolor: 'background.default', 
+    borderTop: '1px solid',
+    borderColor: 'divider',   
 	},
   logo: {   
     height: 120,
@@ -113,12 +117,11 @@ const sx = {
     },
     width: '100%',
   },
-  copyright: {
+  copyright: {    
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
-    pb: 4
+    alignItems: 'center',    
   },
   socialUrls: {
     width: '100%',
@@ -127,4 +130,17 @@ const sx = {
     alignItems: 'center',    
     py: 1,    
   },
+  divider: {
+    borderTop: '1px solid',
+    borderColor: 'divider',
+    width: '96%',
+  },
+  footerLinks: {
+    px: 4,    
+    display: 'flex',
+    direction: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    pb: 4  
+  }
 }

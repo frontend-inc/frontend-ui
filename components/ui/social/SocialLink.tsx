@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { IconButton } from '@mui/material'
-import { Icon } from '../..'
+import { SocialIcon } from 'react-social-icons'
+import { useTheme } from '@mui/material/styles'
+import { ThemeContext } from '../../../context'
 
 type SocialLinkProps = {
   provider: 'facebook' | 
@@ -16,55 +18,76 @@ type SocialLinkProps = {
 const SocialLink: React.FC<SocialLinkProps> = (props) => {
   const { provider, url } = props || {}  
   
-  const handleClick = () => {  
-    if(url.includes('http') || url.includes('www')){
-      window.open(url, '_blank')
-      return
-    } 
+
+  const formatUrl = (username: string) => {
     switch(provider) {
       case 'facebook':
-        window.open(`https://www.facebook.com/${url}`, '_blank')
+        return `https://www.facebook.com/${url}`
         break
       case 'instagram':
-        window.open(`https://www.instagram.com/${url}`, '_blank')
+        return `https://www.instagram.com/${url}`
         break
       case 'linkedin':
-        window.open(`https://www.linkedin.com/in/${url}`, '_blank')
+        return `https://www.linkedin.com/in/${url}`
         break
       case 'twitter':
-        window.open(`https://www.twitter.com/${url}`, '_blank')
+        return `https://www.twitter.com/${url}`
         break
       case 'youtube':
-        window.open(`https://www.youtube.com/${url}`, '_blank')
+        return `https://www.youtube.com/${url}`
         break
       case 'tiktok':
-        window.open(`https://www.tiktok.com/${url}`, '_blank')
+        return `https://www.tiktok.com/${url}`
         break
       default:
         break
     }
+  }
+
+  const handleClick = () => {  
+    if(url.includes('http') || url.includes('www')){
+      window.open(url, '_blank')
+      return
+    }else{
+      window.open(formatUrl(url), '_blank')
+    }     
   }        
 
-  if(!url) return null;
+  const [fgColor, setFgColor] = useState('white')
+  const [bgColor, setBgColor] = useState('black')
+  const { theme } = useContext(ThemeContext)
+
+  useEffect(() => {
+    if(theme){
+      setFgColor(theme.palette.text.main)
+      setBgColor('#222222')
+    }
+  }, [theme])
+
   return (
     <IconButton onClick={handleClick}>
       { provider === 'facebook' && (
-        <Icon name="Facebook" size={20} />
+        <SocialIcon network="facebook" bgColor={ bgColor } style={ styles } />
       )}
       { provider === 'instagram' && (
-        <Icon name="Instagram" size={20} />
+        <SocialIcon network="instagram" bgColor={ bgColor } style={ styles } />
       )}
       { provider === 'linkedin' && (
-        <Icon name="Linkedin" size={20} />
+        <SocialIcon network="linkedin" bgColor={ bgColor } style={ styles } />
       )}
       { provider === 'twitter' && (
-        <Icon name="Twitter" size={20} />
+        <SocialIcon network="twitter" bgColor={ bgColor } style={ styles } />
       )}
       { provider === 'youtube' && (
-        <Icon name="Youtube" size={20} />
+        <SocialIcon network="youtube" bgColor={ bgColor } style={ styles } />
       )}
     </IconButton>
   )
 }
 
 export default SocialLink
+
+const styles = {
+  height: 32,
+  width: 32
+}

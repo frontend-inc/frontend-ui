@@ -53,7 +53,7 @@ export default FooterLinks
 
 const sx = {
   listSubheader: {
-    bgcolor: 'background.default',
+    bgcolor: 'transparent',
   },
   list: {
     mt: 3,
