@@ -10,9 +10,7 @@ import { MenuLinkType } from '../../..'
 
 type DesktopNavProps = {
 	editing?: boolean
-	logo?: string
-	logoWidth?: number
-	logoHeight?: number
+	logo: string
 	menuItems?: MenuLinkType[]
 	enableAuth?: boolean
 	enableShopify?: boolean
@@ -27,8 +25,6 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 		editing,
 		logo,
 		menuItems,
-		logoWidth = HEADER_LOGO_WIDTH,
-		logoHeight = HEADER_LOGO_HEIGHT,
 		handleClick,
 		enableAuth = false,
 		enableShopify = false,
@@ -51,8 +47,8 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 						<Box sx={sx.leftMenu}>
 							<Logo 
                 src={logo} 
-                width={logoWidth} 
-                height={logoHeight} 
+                width={120} 
+                height={40} 
                 handleClick={() => handleClick('/')}
               />
 						</Box>

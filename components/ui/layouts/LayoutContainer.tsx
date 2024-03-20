@@ -5,6 +5,7 @@ import {
 	LayoutScroll,
 	ModeTheme,
 	Header,
+  Footer,
 	Notifications,
 } from '../../../components'
 import { NotificationType } from '../../../types'
@@ -15,12 +16,13 @@ type LayoutContainerProps = {
 	mode?: 'accent' | 'light' | 'dark'
 	topNav?: boolean
 	handleClick: (item: any) => void
-	menuItems: MenuLinkType[]
+	headerLinks: MenuLinkType[]
+  footerLinks: MenuLinkType[]
+  socialUrls: string[]
 	notifications: NotificationType[]
 	children: ReactNode
 	editing?: boolean
 	enableAuth?: boolean
-	enableHeader?: boolean
 	enableShopify?: boolean
 }
 
@@ -32,10 +34,11 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 		mode = 'accent',
 		topNav = false,
 		handleClick,
-		menuItems,
+		headerLinks,
+    footerLinks,
+    socialUrls,
 		notifications,
 		enableAuth = false,
-		enableHeader = false,
 		enableShopify = false,
 	} = props
 
@@ -51,27 +54,34 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 					...(!topNav && sx.sideNav),
 				}}
 			>
-				{enableHeader && (
-					<ModeTheme mode={mode}>
-						<Header
-							editing={editing}
-							topNav={topNav}
-							menuItems={menuItems}
-							enableNotifications={enableNotifications}
-							handleClick={handleClick}
-							enableAuth={enableAuth}
-							enableShopify={enableShopify}
-						/>
-					</ModeTheme>
-				)}
+        <ModeTheme mode={mode}>
+          <Header
+            editing={editing}
+            topNav={topNav}
+            menuItems={headerLinks}
+            enableNotifications={enableNotifications}
+            handleClick={handleClick}
+            enableAuth={enableAuth}
+            enableShopify={enableShopify}
+          />
+        </ModeTheme>
 				<Box
 					sx={{
 						...sx.content,
-						...(enableHeader && topNav && sx.contentHeader),
+						...(topNav && sx.contentHeader),
 						...(topNav ? sx.contentTopNav : sx.contentSideNav),
 					}}
 				>
-					<LayoutScroll>{children}</LayoutScroll>
+					<LayoutScroll>
+            {children}
+            <ModeTheme mode={mode}>
+              <Footer
+                menuItems={footerLinks}   
+                socialUrls={ socialUrls }             
+                handleClick={handleClick}
+              />
+            </ModeTheme>
+          </LayoutScroll>
 				</Box>
 			</Box>
 		</Box>

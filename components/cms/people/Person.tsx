@@ -42,7 +42,7 @@ const Person: React.FC<PersonProps> = (props) => {
           <Typography color='text.primary' variant="h4">
             {title}
           </Typography>  
-          <Stack direction="row" spacing={0} sx={ sx.socialLinks }>
+          <Stack direction="row" spacing={0} sx={ sx.socialUrls }>
             { resource?.data?.facebook && <SocialLink provider="facebook" url={ resource?.data?.facebook } /> }
             { resource?.data?.instagram && <SocialLink provider="instagram" url={ resource?.data?.instagram } /> }
             { resource?.data?.linked && <SocialLink provider="linkedin" url={ resource?.data?.linkedin } />  }
@@ -131,7 +131,7 @@ const sx = {
     cursor: 'pointer',
     color: 'text.secondary'
   },
-  socialLinks: {
+  socialUrls: {
     width: '100%',
     justifyContent: 'flex-start',
     alignItems: 'center',

@@ -5,10 +5,11 @@ type AppProviderProps = {
 	clientUrl?: string
 	children: React.ReactNode
 	logo?: any
+  name: string
 }
 
 const AppProvider = (props: AppProviderProps) => {
-	const { children, clientUrl, logo } = props || {}
+	const { children, clientUrl, name, logo } = props || {}
 
 	const [alert, setAlert] = useState()
 	const [loading, setLoading] = useState(false)
@@ -20,6 +21,7 @@ const AppProvider = (props: AppProviderProps) => {
 	const [app, setApp] = useState<any>()
 
 	const value = {
+    name,
 		app,
 		setApp,
 
