@@ -29,7 +29,7 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 					{title}
 				</Typography>
 			)}
-			{layout == 'grid' && <TestimonialsGrid testimonials={testimonials} />}
+			{layout == 'grid' && <TestimonialsGrid testimonials={items} />}
 			{layout == 'carousel' && (
 				<SwipeableTestimonials
 					enableAutoPlay={enableAutoPlay}
