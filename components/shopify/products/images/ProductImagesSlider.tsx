@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack, Box, CardActionArea } from '@mui/material'
-//import Zoom from 'react-medium-image-zoom'
+import Zoom from 'react-medium-image-zoom'
 import { ImageType } from 'frontend-shopify'
 import Image from 'next/image'
 
@@ -69,16 +69,17 @@ const ProductImageSlider: React.FC<ProductImageSliderProps> = (props) => {
 				}}
 			>
 				{image?.url && (
-					<Image
-						src={image?.url}
-						alt={image?.altText}
-						height={height}
-						width={width}
-						layout="responsive"
-						style={{
-							objectFit: 'contain',
-						}}
-					/>
+          <Zoom>
+            <img
+              src={image?.url}
+              alt={image?.altText}
+              height={height}
+              width={width}						
+              style={{
+                objectFit: 'contain',
+              }}
+            />
+          </Zoom>
 				)}
 			</Box>
 			<Stack direction="row" spacing={1} sx={sx.thumbnails}>

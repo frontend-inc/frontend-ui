@@ -1,7 +1,7 @@
 import React from 'react'
 import { Hidden } from '@mui/material'
 import {
-	ProductImageThumbnails,
+	ProductImagesSlider,
 	SwipeableProductImages,
 } from '../../../../components/shopify'
 import { PDP_IMAGE_HEIGHT } from '../../../../constants/index'
@@ -20,7 +20,7 @@ const ProductImages: React.FC<ProductImagesProps> = (props) => {
 	return (
 		<>
 			<Hidden smDown>
-				<ProductImageThumbnails
+				<ProductImagesSlider
 					image={image}
 					images={images}
 					handleClick={handleClick}
