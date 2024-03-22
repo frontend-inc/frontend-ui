@@ -65,7 +65,7 @@ const CTA: React.FC<CallToActionProps> = (props) => {
 						</Button>
 					</Box>
 				)}
-			</Stack>
+			</Stack>      
 		</Box>
 	)
 }

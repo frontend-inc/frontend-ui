@@ -1,11 +1,11 @@
 import React from 'react'
 import { Box, Stack } from '@mui/material'
-import { Heading } from '../../../components'
+import { Heading, Placeholder } from '../../../components'
 import FeaturedCard from './FeaturedCard'
 
 type FeaturedProps = {
 	title?: string
-	featured: {
+	items: {
 		icon?: string
 		title?: string
 		description?: string
@@ -21,7 +21,7 @@ type FeaturedProps = {
 const Featured: React.FC<FeaturedProps> = (props) => {
 	const { 
     title, 
-    featured,
+    items,
     enableBorder,
     enableGradient,
     enableOverlay,
@@ -33,7 +33,7 @@ const Featured: React.FC<FeaturedProps> = (props) => {
 				<Heading title={ title } />
 			)}
       <Stack spacing={4}>
-        {featured?.map((item, i) => (
+        {items?.map((item, i) => (
           <FeaturedCard
             title={item?.title}
             description={item?.description}
@@ -47,6 +47,13 @@ const Featured: React.FC<FeaturedProps> = (props) => {
           />
         ))}
       </Stack>
+      { items?.length == 0 && (
+        <Placeholder 
+          icon='Search'
+          title="No content" 
+          description="Your content will appear here."
+        />
+      )}
 		</Box>
 	)
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack } from '@mui/material'
-import { Icon, AccordionItem, Placeholder } from '../..'
+import { AccordionItem, Placeholder } from '../..'
 import { Typography } from '@mui/material'
 
 type AccordionProps = {
@@ -30,14 +30,14 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 					description={item?.description}
 					image={item?.image}
 				/>
-			))}
-			{items?.length === 0 && (
-				<Placeholder
-					icon={'Search'}
-					title="No content"
-					description="Your content will appear here."
-				/>
-			)}
+			))}			
+      { items?.length == 0 && (
+        <Placeholder 
+          icon='Search'
+          title="No content" 
+          description="Your content will appear here."
+        />
+      )}
 		</Stack>
 	)
 }

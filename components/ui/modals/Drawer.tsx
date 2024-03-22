@@ -158,6 +158,6 @@ const sx = {
     maxHeight: 'calc(100vh - 120px)',
   },
 	contentPadding: {
-		px: 2,
+		p: 2,
 	},
 }

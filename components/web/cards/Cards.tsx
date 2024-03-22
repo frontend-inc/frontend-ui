@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Grid, Stack } from '@mui/material'
-import { Heading, CollectionCard } from '../../../components'
+import { Heading, CollectionCard, Placeholder } from '../../../components'
 import { useRouter } from 'next/router'
 
 type CardType = {		
@@ -84,6 +84,13 @@ const Cards: React.FC<CardsProps> = (props) => {
             </Grid>
           ))}
 		  </Grid>
+    )}
+    { items?.length == 0 && (
+     <Placeholder 
+        icon='Search'
+        title="No content yet." 
+        description="Your content will appear here."
+      />
     )}
   </Box>
 	)

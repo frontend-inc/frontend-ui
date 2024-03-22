@@ -4,18 +4,18 @@ import {
 } from '@mui/material'
 import PriceCard from './PriceCard'
 import { PriceType } from '../../..'
-import { Heading } from '../../../components'
+import { Heading, Placeholder } from '../../../components'
 
 type PricesProps = {
   title?: string
-  prices: PriceType[]
+  items: PriceType[]
 }
 
 const Prices: React.FC<PricesProps> = (props) => {
 
   const { 
     title,
-    prices 
+    items
   } = props 
 
   return(
@@ -27,13 +27,20 @@ const Prices: React.FC<PricesProps> = (props) => {
         />      
       )}
       <Stack direction="row" spacing={1}>
-        {prices.map((price, index) => (
+        {items.map((item, index) => (
           <PriceCard 
             key={ index }
-            price={ price }
+            price={ item }
           />
         ))}
       </Stack>
+      {items?.length === 0 && (
+				<Placeholder
+					icon='Search'
+					title="No content"
+					description="Your content will appear here."
+				/>
+			)}
     </Stack>
   )
 }

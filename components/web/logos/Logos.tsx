@@ -6,7 +6,10 @@ import { Typography } from '@mui/material'
 
 type LogosProps = {
 	title?: string
-	images?: Record<string, any>[]
+	item?: {
+    src: string 
+    alt?: string
+  }[]
 	editing?: boolean
 	buttonText?: string
 	autoPlay?: boolean
@@ -17,7 +20,7 @@ type LogosProps = {
 }
 
 const Logos: React.FC<LogosProps> = (props) => {
-	const { title, images = [], editing, ...rest } = props
+	const { title, items = [], editing, ...rest } = props
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
@@ -25,21 +28,21 @@ const Logos: React.FC<LogosProps> = (props) => {
 				{title}
 			</Typography>
 			<Stack sx={sx.logos} direction="row" spacing={1}>
-				{images?.map((image, index) => (
+				{items?.map((item, index) => (
 					<Logo
 						key={index}
 						title="Logo"
-						image={image?.src}
+						image={item?.src}
 						height={50}
 						width={120}
 					/>
 				))}
 			</Stack>
-			{images?.length === 0 && (
+			{items?.length === 0 && (
 				<Placeholder
-					icon={'Camera'}
-					title="No images found"
-					description="Images will appear here"
+					icon='Search'
+					title="No logos"
+					description="Logos will appear here"
 				/>
 			)}
 		</Stack>

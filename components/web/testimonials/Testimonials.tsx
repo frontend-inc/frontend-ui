@@ -3,11 +3,12 @@ import { Box } from '@mui/material'
 import TestimonialsGrid from './TestimonialsGrid'
 import SwipeableTestimonials from './SwipeableTestimonials'
 import { Typography } from '@mui/material'
+import { Placeholder } from '../..'
 
 type TestimonialsProps = {
 	title?: string
 	layout?: 'grid' | 'carousel'
-	testimonials: Record<string, any>[]
+	items: Record<string, any>[]
 	enableAutoPlay?: boolean
 	enableArrows?: boolean
 }
@@ -18,7 +19,7 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 		layout = 'grid',
 		enableArrows,
 		enableAutoPlay,
-		testimonials = [],
+		items = [],
 	} = props
 
 	return (
@@ -33,9 +34,16 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 				<SwipeableTestimonials
 					enableAutoPlay={enableAutoPlay}
 					enableArrows={enableArrows}
-					testimonials={testimonials}
+					testimonials={items}
 				/>
 			)}
+      { items?.length == 0 && ( 
+       <Placeholder 
+          icon='Star'
+          title="No content"
+          description="Your content will appear here."
+        /> 
+      )}
 		</Box>
 	)
 }

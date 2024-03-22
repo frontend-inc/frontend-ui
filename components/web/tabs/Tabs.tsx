@@ -13,8 +13,7 @@ type TabsProps = {
 		title: string
 		description: string
 		image?: string
-	}[]
-	fullWidth?: boolean
+	}[]	
 	editing?: boolean
 }
 
@@ -24,8 +23,7 @@ const Tabs: React.FC<TabsProps> = (props) => {
 	const {
 		title,
 		items = [],
-		orientation = 'vertical',
-		fullWidth = false,
+		orientation = 'vertical',		
 	} = props
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -86,7 +84,7 @@ const Tabs: React.FC<TabsProps> = (props) => {
 			))}
 			{items?.length === 0 && (
 				<Placeholder
-					icon={'Search'}
+					icon='Search'
 					title="No content"
 					description="Your content will appear here."
 				/>

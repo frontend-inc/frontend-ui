@@ -1,10 +1,11 @@
 import React from 'react'
 import { Box, Grid, Typography } from '@mui/material'
 import Feature from './Feature'
+import { Placeholder } from '../..'
 
 type FeaturesProps = {
 	title?: string
-	features: {
+	items: {
 		icon?: any
 		title?: string
 		description?: string
@@ -12,27 +13,36 @@ type FeaturesProps = {
 }
 
 const Features: React.FC<FeaturesProps> = (props) => {
-	const { title, features } = props || {}
+	const { title, items } = props || {}
 
 	return (
-		<Grid container spacing={0}>
-			{title && (
-				<Typography color="text.primary" variant="h5" sx={sx.title}>
-					{title}
-				</Typography>
-			)}
-			{features.map((feature, i) => (
-				<Grid item xs={12} sm={4} md={4} key={i}>
-					<Box sx={sx.item}>
-						<Feature
-							icon={feature?.icon}
-							title={feature?.title}
-							description={feature?.description}
-						/>
-					</Box>
-				</Grid>
-			))}
-		</Grid>
+    <>
+      <Grid container spacing={0}>
+        {title && (
+          <Typography color="text.primary" variant="h5" sx={sx.title}>
+            {title}
+          </Typography>
+        )}
+        {items.map((item, i) => (
+          <Grid item xs={12} sm={4} md={4} key={i}>
+            <Box sx={sx.item}>
+              <Feature
+                icon={item?.icon}
+                title={item?.title}
+                description={item?.description}
+              />
+            </Box>
+          </Grid>
+        ))}
+      </Grid>
+      { items?.length == 0 && (
+        <Placeholder 
+          icon='Search'
+          title="No content"
+          description="Your content will appear here."
+        />      
+      )}
+    </>
 	)
 }
 
