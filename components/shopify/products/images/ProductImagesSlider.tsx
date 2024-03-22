@@ -63,19 +63,16 @@ const ProductImageSlider: React.FC<ProductImageSliderProps> = (props) => {
 	return (
 		<Stack direction="column" spacing={0} sx={sx.root}>
 			<Box
-				sx={{
-					...sx.image,
-					width: '100%',
-				}}
+				sx={sx.image}
 			>
 				{image?.url && (
           <Zoom>
             <img
               src={image?.url}
-              alt={image?.altText}
-              height={height}
-              width={width}						
+              alt={image?.altText}              					
               style={{
+                height: '100%',
+                width: '100%',
                 objectFit: 'contain',
               }}
             />
@@ -104,10 +101,9 @@ const sx = {
 	image: {
 		display: 'flex',
 		justifyContent: 'center',
-		alignItems: 'flex-start',
-		width: '100%',
-		maxWidth: '100vw',
-		height: '100%',
+		alignItems: 'flex-start',		
+    overflow: 'hidden',
+    border: '1px solid red'
 	},
 	thumbnails: {
 		mt: 1,
