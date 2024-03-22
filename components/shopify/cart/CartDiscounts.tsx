@@ -4,7 +4,7 @@ import { Button, Stack } from '@mui/material'
 import { TextInput, IconLoader } from '../../../components'
 
 const CartDiscountCodeInput: React.FC = () => {
-	const [discountCode, setDiscountCode] = useState<string | null>(null)
+	const [discountCode, setDiscountCode] = useState<string | null>([])
 
 	const { loading, cartApplyDiscountCode } = useCart()
 
@@ -19,18 +19,19 @@ const CartDiscountCodeInput: React.FC = () => {
 
 	return (
 		<Stack>
-			<Stack direction="row" spacing={0} sx={sx.input}>
+			<Stack direction="row" spacing={0}>
 				<TextInput
 					name="discountCode"
 					value={discountCode}
 					handleChange={handleChange}
 					placeholder="Enter discount code"
+          styles={ sx.input }
 				/>
-				<Button
-					size="small"
+				<Button					
 					onClick={handleSubmit}
 					color="secondary"
 					variant="contained"
+          sx={ sx.button }
 					endIcon={
 						<IconLoader color="secondary.contrastText" loading={loading} />
 					}
@@ -45,9 +46,6 @@ const CartDiscountCodeInput: React.FC = () => {
 export default CartDiscountCodeInput
 
 const sx = {
-	input: {
-		alignItems: 'center',
-	},
 	removeCodes: {
 		display: 'flex',
 		justifyContent: 'flex-start',
@@ -56,4 +54,13 @@ const sx = {
 	clearButton: {
 		color: 'text.secondary',
 	},
+  input: {
+    '& .MuiInputBase-input': {
+      borderRadius: theme => `${theme.shape.borderRadius}px 0 0 ${theme.shape.borderRadius}px`,
+    }
+  },
+  button: {    
+    fontSize: 13,
+    borderRadius: theme => `0 ${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0`,
+  }
 }

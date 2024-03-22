@@ -101,9 +101,7 @@ const sx = {
 	image: {
 		display: 'flex',
 		justifyContent: 'center',
-		alignItems: 'flex-start',		
-    overflow: 'hidden',
-    border: '1px solid red'
+		alignItems: 'flex-start',		    
 	},
 	thumbnails: {
 		mt: 1,
