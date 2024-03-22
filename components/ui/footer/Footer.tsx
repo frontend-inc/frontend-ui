@@ -38,12 +38,17 @@ const Footer: React.FC<FooterProps> = (props) => {
       <Box sx={ sx.container }>
         <Box sx={ sx.left }>
           <Box sx={ sx.logoContainer }>
+            { logo && (
             <Image 
               src={ logo }
               alt={ name }
               width={120}
               height={120}
+              style={{
+                objectFit: 'contain'
+              }}
             />
+            )}
           </Box>
         </Box>
         <Box sx={ sx.gridContainer }>        

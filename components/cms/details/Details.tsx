@@ -67,12 +67,11 @@ const sx = {
     p: 2,   
     width: '100%',
     borderRadius: theme => `${theme.shape.borderRadius}px`,
-    minHeight: 110
+    minHeight: 110,
   },
   itemBorder: {    
     border: '1px solid',
     borderColor: 'divider',
-    bgcolor: 'primary.contrastText',    
   },    
   itemFullWidth: {
     gridColumn: 'span 3'

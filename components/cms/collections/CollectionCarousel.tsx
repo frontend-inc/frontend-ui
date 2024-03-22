@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { useResource } from 'frontend-js'
-import { Stack } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 import {
 	Carousel,
 } from '../..'
@@ -80,19 +80,20 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
         enableArrows={enableArrows}
       >
         { resources?.map((resource, index) => (
-          <CollectionCard 
-            key={index}
-            layout={'grid'}
-            style={style}
-            title={resource?.title}
-            image={resource?.image?.url}
-            video={resource?.video?.url}
-            description={resource?.description}
-            buttonText={buttonText}
-            handleClick={() => handleClick(resource) }
-            enableBorder={enableBorder}
-            enableGradient={enableGradient}
-          />
+          <Box key={index} sx={sx.item}>
+            <CollectionCard             
+              layout={'grid'}
+              style={style}
+              title={resource?.title}
+              image={resource?.image?.url}
+              video={resource?.video?.url}
+              description={resource?.description}
+              buttonText={buttonText}
+              handleClick={() => handleClick(resource) }
+              enableBorder={enableBorder}
+              enableGradient={enableGradient}
+            />
+          </Box>
         ))}
       </Carousel>      
 		</Stack>

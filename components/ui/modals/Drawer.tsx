@@ -78,6 +78,7 @@ const Drawer: React.FC<DrawerProps> = (props) => {
 				<Box
 					sx={{
 						...sx.content,
+            ...(actions && sx.contentActions),
 						...(!disablePadding && sx.contentPadding),
 					}}
 				>
@@ -117,8 +118,7 @@ const sx = {
 		justifyContent: 'space-between',
 		height: 50,
     borderBottom: '1px solid',
-    borderColor: 'divider',
-    mb: 2,
+    borderColor: 'divider',    
 	},
   headerAction: {
     minWidth: '40px'
@@ -147,13 +147,16 @@ const sx = {
 	},
 	content: {
 		width: '100%',
-    maxHeight: 'calc(100vh - 120px)',
     overflowY: 'scroll',
     '&::-webkit-scrollbar': {
       display: 'none'
     },
+    maxHeight: 'calc(100vh - 60px)',
     pb: 4,
 	},
+  contentActions: {
+    maxHeight: 'calc(100vh - 120px)',
+  },
 	contentPadding: {
 		px: 2,
 	},

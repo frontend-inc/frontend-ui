@@ -73,25 +73,25 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (resources || defaultOptions) {			
+		if (resources) {			
 			setOptions([
         ...formatResources(resources),
         ...defaultOptions 
       ])
 		}
-	}, [resources, defaultOptions])
+	}, [resources])
 
 	useEffect(() => {
 		if (value && resources && resources.length > 0) {
 			findOption(value)
 		}
-	}, [value, resources, defaultOptions, url])
+	}, [value, resources, url])
 
 	useEffect(() => {
 		if (url) {
 			findMany(defaultQuery)
 		}
-	}, [url, defaultQuery])
+	}, [url])
 
 	return (
 		<>
