@@ -1,12 +1,12 @@
 import React from 'react'
 import { Stack } from '@mui/material'
-import { Icon, Placeholder } from '../..'
+import { Placeholder } from '../..'
 import Logo from './Logo'
 import { Typography } from '@mui/material'
 
 type LogosProps = {
 	title?: string
-	item?: {
+	items?: {
     src: string 
     alt?: string
   }[]
