@@ -19,9 +19,9 @@ const AccordionItem: React.FC<AccordionProps> = (props) => {
 				<Typography variant="subtitle1">{title}</Typography>
 			</AccordionSummary>
 			<AccordionDetails sx={sx.accordionDetails}>
-        <Text variant="body1" color="text.primary">
-          {description}
-        </Text>
+				<Text variant="body1" color="text.primary">
+					{description}
+				</Text>
 			</AccordionDetails>
 		</Accordion>
 	)

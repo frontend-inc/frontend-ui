@@ -70,11 +70,7 @@ type CartButtonProps = {
 }
 
 const CartButton: React.FC<CartButtonProps> = (props) => {
-	const {
-		variant = 'topNav',
-		label = 'Cart',
-		icon = 'ShoppingCart',
-	} = props
+	const { variant = 'topNav', label = 'Cart', icon = 'ShoppingCart' } = props
 
 	const { cart, toggleCart } = useContext(ShopContext) as any
 	const { setMenuOpen } = useContext(AppContext)

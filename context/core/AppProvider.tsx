@@ -5,7 +5,7 @@ type AppProviderProps = {
 	clientUrl?: string
 	children: React.ReactNode
 	logo?: any
-  name: string
+	name: string
 }
 
 const AppProvider = (props: AppProviderProps) => {
@@ -21,7 +21,7 @@ const AppProvider = (props: AppProviderProps) => {
 	const [app, setApp] = useState<any>()
 
 	const value = {
-    name,
+		name,
 		app,
 		setApp,
 

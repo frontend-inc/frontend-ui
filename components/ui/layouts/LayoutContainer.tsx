@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react'
 import { Box } from '@mui/material'
 import {
-  Alert,
+	Alert,
 	LayoutScroll,
 	ModeTheme,
 	Header,
-  Footer,
+	Footer,
 	Notifications,
 } from '../../../components'
 import { NotificationType } from '../../../types'
@@ -17,46 +17,45 @@ type LayoutContainerProps = {
 	topNav?: boolean
 	handleClick: (item: any) => void
 	headerLinks: MenuLinkType[]
-  footerLinks: MenuLinkType[]
+	footerLinks: MenuLinkType[]
 	notifications: NotificationType[]
 	children: ReactNode
 	editing?: boolean
 	enableAuth?: boolean
 	enableShopify?: boolean
-  facebook?: string
-  instagram?: string
-  linkedin?: string
-  twitter?: string
-  youtube?: string
-  tiktok?: string
+	facebook?: string
+	instagram?: string
+	linkedin?: string
+	twitter?: string
+	youtube?: string
+	tiktok?: string
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
-	
-  const {
+	const {
 		children,
 		editing = false,
 		mode = 'accent',
 		topNav = false,
 		handleClick,
 		headerLinks,
-    footerLinks,
+		footerLinks,
 		notifications,
 		enableAuth = false,
 		enableShopify = false,
-    facebook,
-    instagram,
-    linkedin,
-    twitter,
-    youtube,
-    tiktok
+		facebook,
+		instagram,
+		linkedin,
+		twitter,
+		youtube,
+		tiktok,
 	} = props
 
 	const enableNotifications = notifications?.length > 0
 
 	return (
 		<Box sx={sx.layout}>
-      <Alert />
+			<Alert />
 			<Notifications notifications={notifications} />
 			<Box
 				sx={{
@@ -64,17 +63,17 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 					...(!topNav && sx.sideNav),
 				}}
 			>
-        <ModeTheme mode={mode}>
-          <Header
-            editing={editing}
-            topNav={topNav}
-            menuItems={headerLinks}
-            enableNotifications={enableNotifications}
-            handleClick={handleClick}
-            enableAuth={enableAuth}
-            enableShopify={enableShopify}
-          />
-        </ModeTheme>
+				<ModeTheme mode={mode}>
+					<Header
+						editing={editing}
+						topNav={topNav}
+						menuItems={headerLinks}
+						enableNotifications={enableNotifications}
+						handleClick={handleClick}
+						enableAuth={enableAuth}
+						enableShopify={enableShopify}
+					/>
+				</ModeTheme>
 				<Box
 					sx={{
 						...sx.content,
@@ -83,20 +82,20 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 					}}
 				>
 					<LayoutScroll>
-            {children}
-            <ModeTheme mode={mode}>
-              <Footer
-                menuItems={footerLinks}   
-                handleClick={handleClick}
-                facebook={facebook}
-                instagram={instagram}
-                linkedin={linkedin}
-                twitter={twitter}
-                youtube={youtube}  
-                tiktok={tiktok}              
-              />
-            </ModeTheme>
-          </LayoutScroll>
+						{children}
+						<ModeTheme mode={mode}>
+							<Footer
+								menuItems={footerLinks}
+								handleClick={handleClick}
+								facebook={facebook}
+								instagram={instagram}
+								linkedin={linkedin}
+								twitter={twitter}
+								youtube={youtube}
+								tiktok={tiktok}
+							/>
+						</ModeTheme>
+					</LayoutScroll>
 				</Box>
 			</Box>
 		</Box>

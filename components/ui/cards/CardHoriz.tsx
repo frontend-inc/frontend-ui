@@ -77,7 +77,7 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 					{buttonText && (
 						<Box>
 							<Button
-								sx={ sx.button }
+								sx={sx.button}
 								color="secondary"
 								onClick={handleItemClick}
 							>
@@ -122,7 +122,7 @@ const sx = {
 		height: '100%',
 	},
 	content: {
-    py: 1,
+		py: 1,
 		justifyContent: 'flex-start',
 		alignItems: 'flex-start',
 		height: '100%',
@@ -130,11 +130,11 @@ const sx = {
 	description: {
 		maxWidth: '320px',
 	},
-  button: {
-    color: 'text.primary',
-    bgcolor: 'tertiary.main',
-    '&:hover': {
-      bgcolor: 'tertiary.dark',
-    }
-  }
+	button: {
+		color: 'text.primary',
+		bgcolor: 'tertiary.main',
+		'&:hover': {
+			bgcolor: 'tertiary.dark',
+		},
+	},
 }

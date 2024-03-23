@@ -8,8 +8,8 @@ import {
 	ListItemButton,
 	ListItemText,
 	Typography,
-  CircularProgress, 
-  Box,   
+	CircularProgress,
+	Box,
 } from '@mui/material'
 import { useMenu } from '../../../hooks'
 import { MenuLinkType } from '../../..'
@@ -19,29 +19,25 @@ import { useCollections } from 'frontend-shopify'
 import { useRouter } from 'next/router'
 
 type SublinkMenuItemProps = {
-  label: string
-  handleClick: () => void
+	label: string
+	handleClick: () => void
 }
 
-const SublinkMenuItem: React.FC<SublinkMenuItemProps> = (props) => {  
-
-  const { label, handleClick } = props 
-  return(
-    <ListItem       
-      sx={sx.subLink} 
-      disablePadding              
-    >
-      <ListItemButton onClick={handleClick}>
-        <ListItemText
-          primary={
-            <Typography variant="button" color="text.primary">
-              { label }
-            </Typography>
-          }
-        />
-      </ListItemButton>
-    </ListItem>
-  )
+const SublinkMenuItem: React.FC<SublinkMenuItemProps> = (props) => {
+	const { label, handleClick } = props
+	return (
+		<ListItem sx={sx.subLink} disablePadding>
+			<ListItemButton onClick={handleClick}>
+				<ListItemText
+					primary={
+						<Typography variant="button" color="text.primary">
+							{label}
+						</Typography>
+					}
+				/>
+			</ListItemButton>
+		</ListItem>
+	)
 }
 
 type SideNavMenuItemProps = {
@@ -50,41 +46,41 @@ type SideNavMenuItemProps = {
 }
 
 const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
-  const router = useRouter()
-  const { setMenuOpen, clientUrl } = useContext(AppContext)
+	const router = useRouter()
+	const { setMenuOpen, clientUrl } = useContext(AppContext)
 
-  const { menuItem, handleClick } = props    
+	const { menuItem, handleClick } = props
 
-  const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(false)
 
-  const { children, shopify_collection } = menuItem  
-  const { loading, products, findCollection } = useCollections()
+	const { children, shopify_collection } = menuItem
+	const { loading, products, findCollection } = useCollections()
 
-  const handleCollectionClick = () => {
-    router.push(`${clientUrl}/collections/${shopify_collection}`)
-    setOpen(false)
-    setMenuOpen(false)
-  }
+	const handleCollectionClick = () => {
+		router.push(`${clientUrl}/collections/${shopify_collection}`)
+		setOpen(false)
+		setMenuOpen(false)
+	}
 
-  const handleProductClick = (product) => {
-    router.push(`${clientUrl}/products/${product.handle}`)
-    setMenuOpen(false)
-  }
+	const handleProductClick = (product) => {
+		router.push(`${clientUrl}/products/${product.handle}`)
+		setMenuOpen(false)
+	}
 
-  const handleMenuItemClick = (menuItem) => {
-    setMenuOpen(false)
-    handleClick(menuItem?.path)    
-  }
+	const handleMenuItemClick = (menuItem) => {
+		setMenuOpen(false)
+		handleClick(menuItem?.path)
+	}
 
 	const handleMenuClick = (ev) => {
 		if (children?.length > 0 || shopify_collection) {
-			setOpen(!open) 
-    }else{
-      handleMenuItemClick(menuItem)
-    } 
-    if(shopify_collection && !open && !products){    
-      findCollection(shopify_collection)      
-    }    
+			setOpen(!open)
+		} else {
+			handleMenuItemClick(menuItem)
+		}
+		if (shopify_collection && !open && !products) {
+			findCollection(shopify_collection)
+		}
 	}
 
 	return (
@@ -94,13 +90,14 @@ const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 				disableGutters
 				secondaryAction={
 					(children?.length > 0 || shopify_collection) && (
-						<IconButton 
-              sx={{
-                ...sx.icon,
-                ...(open && sx.rotateIcon),
-              }}
-              onClick={() => handleMenuClick(menuItem)}>
-              <Icon name="ChevronDown" />							
+						<IconButton
+							sx={{
+								...sx.icon,
+								...(open && sx.rotateIcon),
+							}}
+							onClick={() => handleMenuClick(menuItem)}
+						>
+							<Icon name="ChevronDown" />
 						</IconButton>
 					)
 				}
@@ -118,29 +115,29 @@ const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 			<Collapse in={open}>
 				<List>
 					{children?.map((child, index) => (
-						<SublinkMenuItem 
-              key={ index }
-              label={ child.name }
-              handleClick={() => handleMenuItemClick(child) }              
-            />              
+						<SublinkMenuItem
+							key={index}
+							label={child.name}
+							handleClick={() => handleMenuItemClick(child)}
+						/>
 					))}
-          { loading && (
-          <Box sx={ sx.loading }>
-            <CircularProgress size={30} />
-          </Box>
-        )}
-        { products?.slice(0,5)?.map((product, i) => (
-          <SublinkMenuItem 
-            label={ product.title }
-            handleClick={() => handleProductClick(product) }
-          />
-        ))}
-        { products?.length > 5 && (
-          <SublinkMenuItem
-            label="See all"
-            handleClick={ handleCollectionClick }
-          />           
-        )}
+					{loading && (
+						<Box sx={sx.loading}>
+							<CircularProgress size={30} />
+						</Box>
+					)}
+					{products?.slice(0, 5)?.map((product, i) => (
+						<SublinkMenuItem
+							label={product.title}
+							handleClick={() => handleProductClick(product)}
+						/>
+					))}
+					{products?.length > 5 && (
+						<SublinkMenuItem
+							label="See all"
+							handleClick={handleCollectionClick}
+						/>
+					)}
 				</List>
 			</Collapse>
 		</>
@@ -159,10 +156,10 @@ const sx = {
 	subLink: {
 		pl: 1,
 	},
-  loading: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    p: 2
-  }
+	loading: {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		p: 2,
+	},
 }

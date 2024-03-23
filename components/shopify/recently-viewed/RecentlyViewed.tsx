@@ -54,7 +54,7 @@ const RecentlyViewed: React.FC<RecentlyViewedProps> = (props) => {
 			{layout == 'carousel' && (
 				<ProductCarousel
 					editing={editing}
-					products={products}					
+					products={products}
 					enableBorder={enableBorder}
 					buttonText={buttonText}
 				/>

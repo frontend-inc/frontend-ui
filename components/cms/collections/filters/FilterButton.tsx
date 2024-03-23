@@ -41,53 +41,53 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 					horizontal: 'right',
 				}}
 			>
-					<Button
-						sx={{
-							...sx.button,
-							...(filters?.length > 0 && sx.hideBorder),
-						}}
-						variant="text"
-						startIcon={
-							loading ? (
-								<ButtonLoader loading={loading} />
-							) : (
-								<FilterIcon sx={sx.icon} />
-							)
-						}
-						onClick={handleClick}
-					>
-						Filters
-					</Button>
+				<Button
+					sx={{
+						...sx.button,
+						...(filters?.length > 0 && sx.hideBorder),
+					}}
+					variant="text"
+					startIcon={
+						loading ? (
+							<ButtonLoader loading={loading} />
+						) : (
+							<FilterIcon sx={sx.icon} />
+						)
+					}
+					onClick={handleClick}
+				>
+					Filters
+				</Button>
 			</Badge>
 			<Hidden smDown>
-				<Popup 
-          p={1} 
-          anchorEl={anchorEl} 
-          open={open} 
-          handleClose={handleClose}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'right'
-          }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'right'
-          }}  
-        >
-          <FilterList 
-            filters={filters}
-            filterOptions={filterOptions}
-            handleFilter={handleFilter}              
-          />          					
+				<Popup
+					p={1}
+					anchorEl={anchorEl}
+					open={open}
+					handleClose={handleClose}
+					anchorOrigin={{
+						vertical: 'bottom',
+						horizontal: 'right',
+					}}
+					transformOrigin={{
+						vertical: 'top',
+						horizontal: 'right',
+					}}
+				>
+					<FilterList
+						filters={filters}
+						filterOptions={filterOptions}
+						handleFilter={handleFilter}
+					/>
 				</Popup>
 			</Hidden>
 			<Hidden smUp>
-				<Drawer open={open} handleClose={handleClose} title="Search">					
-          <FilterList 
-            filters={filters}
-            filterOptions={filterOptions}
-            handleFilter={handleFilter}              
-          />          										
+				<Drawer open={open} handleClose={handleClose} title="Search">
+					<FilterList
+						filters={filters}
+						filterOptions={filterOptions}
+						handleFilter={handleFilter}
+					/>
 				</Drawer>
 			</Hidden>
 		</>
@@ -99,14 +99,14 @@ export default FilterButton
 const sx = {
 	button: {
 		color: 'text.secondary',
-    bgcolor: 'tertiary.main',
-    '&:hover': {
-      bgcolor: 'tertiary.dark',
-    },
-    width: {
-      sm: '100%',
-      xs: '100%',
-    }
+		bgcolor: 'tertiary.main',
+		'&:hover': {
+			bgcolor: 'tertiary.dark',
+		},
+		width: {
+			sm: '100%',
+			xs: '100%',
+		},
 	},
 	hideBorder: {
 		borderRight: 'none',

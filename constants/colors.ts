@@ -51,9 +51,8 @@ export const MUI_COLOR_VARIANTS = [
 	{ label: 'Shade 5', variant: 'shade5' },
 ]
 
-export const HEX_COLORS = [  
+export const HEX_COLORS = [
 	{ label: 'White', value: '#FFFFFF' },
-  { label: 'Grey', value: '#FAFAFA' },
-	{ label: 'Black', value: '#000000' },  
-  
+	{ label: 'Grey', value: '#FAFAFA' },
+	{ label: 'Black', value: '#000000' },
 ]

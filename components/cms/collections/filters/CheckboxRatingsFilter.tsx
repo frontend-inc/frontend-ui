@@ -31,13 +31,13 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 		closed = false,
 	} = props
 
-  let RATING_OPTIONS = [
-    { label: '5 Star', value: 5 },
-    { label: '4 Stars', value: 4 },
-    { label: '3 Stars', value: 3 },
-    { label: '2 Stars', value: 2 },
-    { label: '1 Stars', value: 1 }
-  ]
+	let RATING_OPTIONS = [
+		{ label: '5 Star', value: 5 },
+		{ label: '4 Stars', value: 4 },
+		{ label: '3 Stars', value: 3 },
+		{ label: '2 Stars', value: 2 },
+		{ label: '1 Stars', value: 1 },
+	]
 
 	return (
 		<ExpandableList

@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Stack } from '@mui/material'
-import { ProductSortKeyType, useCollections, useSearchFilters } from 'frontend-shopify'
+import {
+	ProductSortKeyType,
+	useCollections,
+	useSearchFilters,
+} from 'frontend-shopify'
 import {
 	ProductGrid,
 	ProductSortButton,
-  ProductFilterButton,
+	ProductFilterButton,
 } from '../../../components/shopify'
 import { Heading } from '../../../components'
-import { 
-  PriceOptionType,
-  SearchFilterOptionType
-} from 'frontend-shopify'
+import { PriceOptionType, SearchFilterOptionType } from 'frontend-shopify'
 
 type ProductCollectionProps = {
 	title?: string
 	editing?: boolean
 	handle: string | string[]
-  options: SearchFilterOptionType[]
-  priceOptions: PriceOptionType[]
+	options: SearchFilterOptionType[]
+	priceOptions: PriceOptionType[]
 	enableFilters?: boolean
 	enableSort?: boolean
 	enableBorder?: boolean
@@ -28,14 +29,13 @@ type ProductCollectionProps = {
 }
 
 const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
-	
-  const {
+	const {
 		title,
 		handle,
 		editing = false,
-    options=[],		
-    priceOptions=[],
-    enableFilters = false,
+		options = [],
+		priceOptions = [],
+		enableFilters = false,
 		enableSort = false,
 		enableBorder = false,
 		enableAddToCart = false,
@@ -45,21 +45,14 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 	} = props
 
 	const [query, setQuery] = useState<Record<string, any>>({})
-	const [sortKey, setSortKey] = useState<ProductSortKeyType>('COLLECTION_DEFAULT')
+	const [sortKey, setSortKey] =
+		useState<ProductSortKeyType>('COLLECTION_DEFAULT')
 	const [reverse, setReverse] = useState(false)
 
-	const {
-		loading,
-		products,
-		findCollection,
-	} = useCollections()
+	const { loading, products, findCollection } = useCollections()
 
-  const {		
-		filters,
-		handleFilter,
-    handleFilterArray,		
-    formatProductFilters,
-	} = useSearchFilters()
+	const { filters, handleFilter, handleFilterArray, formatProductFilters } =
+		useSearchFilters()
 
 	const handleSortClick = (sortKey, reverse = false) => {
 		setSortKey(sortKey)
@@ -74,7 +67,7 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 
 	useEffect(() => {
 		if (handle) {
-      let productFilters = formatProductFilters(filters)
+			let productFilters = formatProductFilters(filters)
 			findCollection(handle, {
 				...query,
 				sortKey,
@@ -85,36 +78,36 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 	}, [handle, filters, sortKey, reverse])
 
 	return (
-		<Stack spacing={2}>			
-      <Heading title={ title } />				
+		<Stack spacing={2}>
+			<Heading title={title} />
 			<Stack direction="row" spacing={1}>
-        {enableFilters && (
-          <ProductFilterButton
-            filters={filters}
-            options={options}
-            priceOptions={priceOptions}
-            handleFilter={ handleFilter }
-            handleFilterArray={ handleFilterArray }
-          />
-        )}
-        {enableSort && (
-          <ProductSortButton
-            sortKey={sortKey}
-            reverse={reverse}
-            handleClick={handleSortClick}
-          />
-        )}
+				{enableFilters && (
+					<ProductFilterButton
+						filters={filters}
+						options={options}
+						priceOptions={priceOptions}
+						handleFilter={handleFilter}
+						handleFilterArray={handleFilterArray}
+					/>
+				)}
+				{enableSort && (
+					<ProductSortButton
+						sortKey={sortKey}
+						reverse={reverse}
+						handleClick={handleSortClick}
+					/>
+				)}
 			</Stack>
-      <ProductGrid
-        editing={editing}
-        loading={loading}
-        products={products}					
-        enableBorder={enableBorder}
-        enableAddToCart={enableAddToCart}
-        enableQuickShop={enableQuickShop}
-        enableQuantity={enableQuantity}
-        enableOkendoStarRating={enableOkendoStarRating}
-      />
+			<ProductGrid
+				editing={editing}
+				loading={loading}
+				products={products}
+				enableBorder={enableBorder}
+				enableAddToCart={enableAddToCart}
+				enableQuickShop={enableQuickShop}
+				enableQuantity={enableQuantity}
+				enableOkendoStarRating={enableOkendoStarRating}
+			/>
 		</Stack>
 	)
 }

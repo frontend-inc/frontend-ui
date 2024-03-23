@@ -33,7 +33,7 @@ const ProductGrid: React.FC<ProductGridProps> = (props) => {
 		sm = 6,
 		md = 4,
 		lg = 4,
-		xl = 3,		
+		xl = 3,
 		buttonText = 'Add to cart',
 		enableBorder = false,
 		enableAddToCart,

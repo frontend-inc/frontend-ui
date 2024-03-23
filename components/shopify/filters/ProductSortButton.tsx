@@ -22,7 +22,7 @@ const ProductSortButton: React.FC<ProductSortButtonProps> = (props) => {
 		setAnchorEl(ev.currentTarget)
 		setOpen(!open)
 	}
-  
+
 	const handleClose = () => setOpen(false)
 
 	const handleSortClick = (sortKey, reverse) => {
@@ -32,14 +32,12 @@ const ProductSortButton: React.FC<ProductSortButtonProps> = (props) => {
 
 	return (
 		<>
-			<ButtonGroup sx={ sx.buttonGroup }>
+			<ButtonGroup sx={sx.buttonGroup}>
 				<Button
 					sx={sx.button}
 					variant="text"
 					onClick={handleOpen}
-					endIcon={
-						<Icon name="ArrowDownUp" size={20} />
-					}
+					endIcon={<Icon name="ArrowDownUp" size={20} />}
 				>
 					{
 						COLLECTION_SORT_OPTIONS.find((option) => option.value === sortKey)
@@ -47,52 +45,52 @@ const ProductSortButton: React.FC<ProductSortButtonProps> = (props) => {
 					}
 				</Button>
 			</ButtonGroup>
-      <Hidden smDown>
-        <Popup anchorEl={anchorEl} open={open} handleClose={handleClose} p={1}>
-          <SortList
-            enableIcons
-            value={sortKey}
-            reverse={reverse}
-            options={COLLECTION_SORT_OPTIONS}
-            handleClick={handleSortClick}
-          />
-        </Popup>
-      </Hidden>
-      <Hidden smUp>
-        <Drawer anchor="right" open={open} handleClose={handleClose}>
-          <SortList
-            enableIcons
-            value={sortKey}
-            reverse={reverse}
-            options={COLLECTION_SORT_OPTIONS}
-            handleClick={handleSortClick}
-          />
-        </Drawer>
-      </Hidden>
+			<Hidden smDown>
+				<Popup anchorEl={anchorEl} open={open} handleClose={handleClose} p={1}>
+					<SortList
+						enableIcons
+						value={sortKey}
+						reverse={reverse}
+						options={COLLECTION_SORT_OPTIONS}
+						handleClick={handleSortClick}
+					/>
+				</Popup>
+			</Hidden>
+			<Hidden smUp>
+				<Drawer anchor="right" open={open} handleClose={handleClose}>
+					<SortList
+						enableIcons
+						value={sortKey}
+						reverse={reverse}
+						options={COLLECTION_SORT_OPTIONS}
+						handleClick={handleSortClick}
+					/>
+				</Drawer>
+			</Hidden>
 		</>
 	)
 }
 
 export default ProductSortButton
 
-const sx = {    
-  buttonGroup: {
-    width: {
-      sm: 'auto',
-      xs: '100%'
-    },
-  },
-	button: {    
-    width: {
-      sm: 'auto',
-      xs: '100%'
-    },
-    color: 'text.primary',
-    borderRight: 'none',
-    bgcolor: 'tertiary.main',
-    '&:hover': {
-      bgcolor: 'tertiary.light'
-    },
+const sx = {
+	buttonGroup: {
+		width: {
+			sm: 'auto',
+			xs: '100%',
+		},
+	},
+	button: {
+		width: {
+			sm: 'auto',
+			xs: '100%',
+		},
+		color: 'text.primary',
+		borderRight: 'none',
+		bgcolor: 'tertiary.main',
+		'&:hover': {
+			bgcolor: 'tertiary.light',
+		},
 	},
 	secondaryButton: {
 		width: '20px',

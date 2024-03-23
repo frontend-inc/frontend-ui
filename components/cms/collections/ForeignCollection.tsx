@@ -8,11 +8,11 @@ import { Heading } from '../..'
 import { Box } from '@mui/material'
 
 type ForeignCollectionProps = {
-  title: string
+	title: string
 	layout?: 'list' | 'grid'
-	style?: 'card' | 'avatar' | 'cover' 
+	style?: 'card' | 'avatar' | 'cover'
 	field: any
-  resource: any 
+	resource: any
 	url: string
 	handle: string
 	navigateUrl?: any
@@ -28,13 +28,12 @@ type ForeignCollectionProps = {
 }
 
 const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
-	
-  const {
-    title,
-    field,	
-    resource,
+	const {
+		title,
+		field,
+		resource,
 		layout = 'list',
-		style = 'card',			
+		style = 'card',
 		foreignUrl,
 		navigateUrl,
 		perPage = 5,
@@ -59,8 +58,11 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (resource && field && foreignUrl) {      
-      const documents = filterDocumentLinks(resource, field?.foreign_content_type)
+		if (resource && field && foreignUrl) {
+			const documents = filterDocumentLinks(
+				resource,
+				field?.foreign_content_type
+			)
 			const documentIds = documents?.map((document) => document.id)
 			findMany({
 				...query,
@@ -81,18 +83,18 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	}, [resource, field, foreignUrl])
 
 	return (
-  <Box sx={ sx.root }>
-    <Heading title={ title } />
-    <CollectionList 
-      layout={ layout }
-      style={ style }
-      resources={ resources }
-      handleClick={ handleClick }
-      buttonText={ buttonText }
-      enableBorder={ enableBorder }
-      enableGradient={ enableGradient }
-    />         
-  </Box>
+		<Box sx={sx.root}>
+			<Heading title={title} />
+			<CollectionList
+				layout={layout}
+				style={style}
+				resources={resources}
+				handleClick={handleClick}
+				buttonText={buttonText}
+				enableBorder={enableBorder}
+				enableGradient={enableGradient}
+			/>
+		</Box>
 	)
 }
 
@@ -102,23 +104,23 @@ const sx = {
 	root: {
 		width: '100%',
 	},
-  content: {
-    width: '100%'
-  },
-  list: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '16px'
-  },
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: {
-      md: '1fr 1fr 1fr',
-      xs: '1fr',
-    },
-    gap: '16px'
-  },
-  item: {
-    p: 2
-  }
+	content: {
+		width: '100%',
+	},
+	list: {
+		display: 'flex',
+		flexDirection: 'column',
+		gap: '16px',
+	},
+	grid: {
+		display: 'grid',
+		gridTemplateColumns: {
+			md: '1fr 1fr 1fr',
+			xs: '1fr',
+		},
+		gap: '16px',
+	},
+	item: {
+		p: 2,
+	},
 }

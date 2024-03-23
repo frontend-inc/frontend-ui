@@ -8,12 +8,11 @@ type PopupProps = {
 	children: any
 	disablePadding?: boolean
 	p?: number
-  anchorOrigin?: PopoverOrigin
-  transformOrigin?: PopoverOrigin
+	anchorOrigin?: PopoverOrigin
+	transformOrigin?: PopoverOrigin
 }
 
 const Popup: React.FC<PopupProps> = (props) => {
-
 	const {
 		open,
 		handleClose,
@@ -21,14 +20,14 @@ const Popup: React.FC<PopupProps> = (props) => {
 		children,
 		disablePadding = false,
 		p = 2,
-    anchorOrigin={
-      vertical: 'bottom',
-      horizontal: 'left'
-    },
-    transformOrigin={
-      vertical: 'top',
-      horizontal: 'left'
-    }
+		anchorOrigin = {
+			vertical: 'bottom',
+			horizontal: 'left',
+		},
+		transformOrigin = {
+			vertical: 'top',
+			horizontal: 'left',
+		},
 	} = props || {}
 
 	return (
@@ -37,7 +36,7 @@ const Popup: React.FC<PopupProps> = (props) => {
 			anchorEl={anchorEl}
 			onClose={handleClose}
 			anchorOrigin={anchorOrigin}
-      transformOrigin={transformOrigin}
+			transformOrigin={transformOrigin}
 			sx={sx.root}
 		>
 			<Box

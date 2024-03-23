@@ -30,14 +30,14 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 					description={item?.description}
 					image={item?.image}
 				/>
-			))}			
-      { items?.length == 0 && (
-        <Placeholder 
-          icon='Search'
-          title="No content" 
-          description="Your content will appear here."
-        />
-      )}
+			))}
+			{items?.length == 0 && (
+				<Placeholder
+					icon="Search"
+					title="No content"
+					description="Your content will appear here."
+				/>
+			)}
 		</Stack>
 	)
 }

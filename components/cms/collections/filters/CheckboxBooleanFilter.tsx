@@ -33,9 +33,7 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 		closed = false,
 	} = props
 
-  const BOOLEAN_OPTIONS = [
-    {label: 'True', value: true},    
-  ]
+	const BOOLEAN_OPTIONS = [{ label: 'True', value: true }]
 
 	return (
 		<ExpandableList

@@ -4,7 +4,7 @@ import { Box } from '@mui/material'
 
 type LayoutEmptyProps = {
 	icon?: string
-  color?: string
+	color?: string
 	title: string
 	description?: string
 }
@@ -13,12 +13,12 @@ const LayoutEmpty: React.FC<LayoutEmptyProps> = (props) => {
 	const { icon, color, title, description } = props || {}
 	return (
 		<Box sx={sx.placeholder}>
-			<Placeholder 
-        icon={icon} 
-        color={color}
-        title={title} 
-        description={description} 
-      />
+			<Placeholder
+				icon={icon}
+				color={color}
+				title={title}
+				description={description}
+			/>
 		</Box>
 	)
 }

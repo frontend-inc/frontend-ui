@@ -20,8 +20,7 @@ type GridViewProps = {
 }
 
 const GridView: React.FC<GridViewProps> = (props) => {
-	
-  const {
+	const {
 		items,
 		editing,
 		buttonText,

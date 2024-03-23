@@ -25,13 +25,13 @@ const CartDiscountCodeInput: React.FC = () => {
 					value={discountCode}
 					handleChange={handleChange}
 					placeholder="Enter discount code"
-          styles={ sx.input }
+					styles={sx.input}
 				/>
-				<Button					
+				<Button
 					onClick={handleSubmit}
 					color="secondary"
 					variant="contained"
-          sx={ sx.button }
+					sx={sx.button}
 					endIcon={
 						<IconLoader color="secondary.contrastText" loading={loading} />
 					}
@@ -54,13 +54,15 @@ const sx = {
 	clearButton: {
 		color: 'text.secondary',
 	},
-  input: {
-    '& .MuiInputBase-input': {
-      borderRadius: theme => `${theme.shape.borderRadius}px 0 0 ${theme.shape.borderRadius}px`,
-    }
-  },
-  button: {    
-    fontSize: 13,
-    borderRadius: theme => `0 ${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0`,
-  }
+	input: {
+		'& .MuiInputBase-input': {
+			borderRadius: (theme) =>
+				`${theme.shape.borderRadius}px 0 0 ${theme.shape.borderRadius}px`,
+		},
+	},
+	button: {
+		fontSize: 13,
+		borderRadius: (theme) =>
+			`0 ${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0`,
+	},
 }

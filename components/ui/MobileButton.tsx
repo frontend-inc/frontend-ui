@@ -7,11 +7,18 @@ type MobileButtonProps = {
 	variant?: 'text' | 'outlined' | 'contained'
 	color?: 'primary' | 'secondary'
 	children: React.ReactNode
-  sx?: any
+	sx?: any
 }
 
 const MobileButton: React.FC<MobileButtonProps> = (props) => {
-	const { sx={}, startIcon, onClick, color = 'primary', children, variant } = props
+	const {
+		sx = {},
+		startIcon,
+		onClick,
+		color = 'primary',
+		children,
+		variant,
+	} = props
 
 	return (
 		<>
@@ -21,7 +28,7 @@ const MobileButton: React.FC<MobileButtonProps> = (props) => {
 					color={color}
 					startIcon={startIcon}
 					onClick={onClick}
-          sx={ sx }
+					sx={sx}
 				>
 					{children}
 				</Button>

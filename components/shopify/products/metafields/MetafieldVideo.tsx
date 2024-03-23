@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { MetafieldIdentifierType, getMetafieldReference } from 'frontend-shopify'
+import {
+	MetafieldIdentifierType,
+	getMetafieldReference,
+} from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'
 
 type MetafieldVideoProps = {

@@ -1,4 +1,3 @@
-
 export { default as Avatar } from './avatars/Avatar'
 export { default as AvatarChip } from './cards/AvatarChip'
 export { default as AvatarHoriz } from './cards/AvatarHoriz'
@@ -65,7 +64,6 @@ export { default as UserMenu } from './UserMenu'
 export { default as ProfileDetails } from './profiles/ProfileDetails'
 export { default as ProfileInfo } from './profiles/ProfileInfo'
 export { default as ProfileImage } from './profiles/ProfileImage'
-
 
 // Layouts
 export { default as Footer } from './footer/Footer'

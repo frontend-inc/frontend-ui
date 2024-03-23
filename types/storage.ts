@@ -6,7 +6,7 @@ export type ImageContentType =
 	| 'bmp'
 	| 'webp'
 	| 'heic'
-  
+
 export type VideoContentType = 'mp4' | 'webm' | 'ogg' | 'mov' | 'm4v'
 
 export type StorageType = {

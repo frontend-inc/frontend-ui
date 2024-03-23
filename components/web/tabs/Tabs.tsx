@@ -13,18 +13,14 @@ type TabsProps = {
 		title: string
 		description: string
 		image?: string
-	}[]	
+	}[]
 	editing?: boolean
 }
 
 const Tabs: React.FC<TabsProps> = (props) => {
 	const [currentTab, setCurrentTab] = useState(0)
 
-	const {
-		title,
-		items = [],
-		orientation = 'vertical',		
-	} = props
+	const { title, items = [], orientation = 'vertical' } = props
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
 		setCurrentTab(newValue)
@@ -50,7 +46,7 @@ const Tabs: React.FC<TabsProps> = (props) => {
 				onChange={handleChange}
 				color="primary"
 				sx={{
-          ...sx.tabs,
+					...sx.tabs,
 					...(orientation === 'vertical' && sx.verticalTabs),
 				}}
 			>
@@ -67,7 +63,9 @@ const Tabs: React.FC<TabsProps> = (props) => {
 										color={currentTab === i ? 'primary.main' : 'text.primary'}
 									/>
 								</Box>
-							) : ''
+							) : (
+								''
+							)
 						}
 						iconPosition="start"
 					/>
@@ -84,7 +82,7 @@ const Tabs: React.FC<TabsProps> = (props) => {
 			))}
 			{items?.length === 0 && (
 				<Placeholder
-					icon='Search'
+					icon="Search"
 					title="No content"
 					description="Your content will appear here."
 				/>
@@ -99,15 +97,15 @@ const sx = {
 	root: {
 		width: '100%',
 	},
-  tabs: {
-    color: 'text.primary',
-    '& .MuiButtonBase-root': {
-      color: 'text.primary',
-    },
-    '& .MuiButtonBase-root.Mui-selected': {
-      color: 'text.primary'
-    }
-  },
+	tabs: {
+		color: 'text.primary',
+		'& .MuiButtonBase-root': {
+			color: 'text.primary',
+		},
+		'& .MuiButtonBase-root.Mui-selected': {
+			color: 'text.primary',
+		},
+	},
 	title: {
 		width: '100%',
 		textAlign: 'center',

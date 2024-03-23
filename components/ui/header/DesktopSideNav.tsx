@@ -52,39 +52,34 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 				>
 					<Stack sx={sx.desktopSideMenuItems} direction="column" spacing={2}>
 						<Box sx={sx.centerMenu}>
-							<Logo 
-                handleClick={() => handleClick('/')}
-                src={logo} 
-                width={logoWidth} height={logoHeight} />
+							<Logo
+								handleClick={() => handleClick('/')}
+								src={logo}
+								width={logoWidth}
+								height={logoHeight}
+							/>
 						</Box>
-            <List>
-						{menuItems
-						  ?.filter((menuItem) => menuItem.parent_id == null)
-						  ?.map((menuItem, index) => (
-							  <SideNavMenuItem
-								  key={index}
-								  menuItem={menuItem}
-								  handleClick={handleClick}
-							  />
-						  ))}
-						{enableShopify && (
-							<>
-								<SearchButton 
-                  variant="sideNav"
-                />
-								<CartButton 
-                  variant="sideNav"
-                  editing={editing} 
-                />
-							</>
-						)}
-            </List>
+						<List>
+							{menuItems
+								?.filter((menuItem) => menuItem.parent_id == null)
+								?.map((menuItem, index) => (
+									<SideNavMenuItem
+										key={index}
+										menuItem={menuItem}
+										handleClick={handleClick}
+									/>
+								))}
+							{enableShopify && (
+								<>
+									<SearchButton variant="sideNav" />
+									<CartButton variant="sideNav" editing={editing} />
+								</>
+							)}
+						</List>
 					</Stack>
 					{(enableAuth || enableShopify) && (
 						<Box sx={sx.divider}>
-							{enableShopify && 
-                <ShopifyAuth variant="sideNav" />
-              }
+							{enableShopify && <ShopifyAuth variant="sideNav" />}
 							{enableAuth && (
 								<AuthButton
 									showLabel

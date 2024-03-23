@@ -53,4 +53,3 @@ const ImageInput: React.FC<ImageInputProps> = (props) => {
 }
 
 export default ImageInput
-

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {
-	Paper,	
+	Paper,
 	Stack,
 	ListItem,
 	ListItemIcon,
@@ -109,70 +109,70 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 		}
 	}, [value, options])
 
-	return (		
-    <Stack
-      sx={{
-        ...sx.stack,
-        ...(direction == 'row' && sx.stackVertical),
-      }}
-      direction={direction}
-      spacing={1}
-    >
-      { label && (
-        <Typography variant="caption" color="text.secondary" sx={sx.label}>
-          {label}
-        </Typography>
-      )}
-      <Autocomplete
-        freeSolo={freeSolo}
-        multiple={multiselect}
-        disableCloseOnSelect={multiselect}
-        sx={{
-          ...sx.autocomplete,
-          paper: sx.paper,
-          option: sx.option,
-          popperDisablePortal: sx.popperDisablePortal,
-        }}
-        value={selected}
-        onChange={(event, newValue) => {
-          handleOnChange(event, newValue)
-        }}
-        onInputChange={(event, newInputValue) => {
-          handleInputChange && handleInputChange(newInputValue)
-        }}
-        noOptionsText="No options"
-        clearOnBlur
-        handleHomeEndKeys
-        options={options}
-        //@ts-ignore
-        getOptionLabel={(option) => option?.label || ''}
-        //@ts-ignore
-        getOptionSelected={(
-          option: Record<string, any>,
-          value: Record<string, any>
-        ) => option?.value == value?.value}
-        renderOption={(props, option) => (
-          <AutocompleteOption {...props} option={option} />
-        )}
-        PaperComponent={AutocompletePaper}
-        renderInput={(params) => (
-          <InputBase
-            placeholder={placeholder}
-            ref={params.InputProps.ref}
-            inputProps={{
-              ...params.inputProps,
-              autoComplete: 'off',
-            }}
-            sx={{
-              ...sx.inputBase,
-              //@ts-ignore
-              ...(error && sx.inputError),
-            }}
-          />
-        )}
-      />
-      <ErrorText error={error} />
-    </Stack>
+	return (
+		<Stack
+			sx={{
+				...sx.stack,
+				...(direction == 'row' && sx.stackVertical),
+			}}
+			direction={direction}
+			spacing={1}
+		>
+			{label && (
+				<Typography variant="caption" color="text.secondary" sx={sx.label}>
+					{label}
+				</Typography>
+			)}
+			<Autocomplete
+				freeSolo={freeSolo}
+				multiple={multiselect}
+				disableCloseOnSelect={multiselect}
+				sx={{
+					...sx.autocomplete,
+					paper: sx.paper,
+					option: sx.option,
+					popperDisablePortal: sx.popperDisablePortal,
+				}}
+				value={selected}
+				onChange={(event, newValue) => {
+					handleOnChange(event, newValue)
+				}}
+				onInputChange={(event, newInputValue) => {
+					handleInputChange && handleInputChange(newInputValue)
+				}}
+				noOptionsText="No options"
+				clearOnBlur
+				handleHomeEndKeys
+				options={options}
+				//@ts-ignore
+				getOptionLabel={(option) => option?.label || ''}
+				//@ts-ignore
+				getOptionSelected={(
+					option: Record<string, any>,
+					value: Record<string, any>
+				) => option?.value == value?.value}
+				renderOption={(props, option) => (
+					<AutocompleteOption {...props} option={option} />
+				)}
+				PaperComponent={AutocompletePaper}
+				renderInput={(params) => (
+					<InputBase
+						placeholder={placeholder}
+						ref={params.InputProps.ref}
+						inputProps={{
+							...params.inputProps,
+							autoComplete: 'off',
+						}}
+						sx={{
+							...sx.inputBase,
+							//@ts-ignore
+							...(error && sx.inputError),
+						}}
+					/>
+				)}
+			/>
+			<ErrorText error={error} />
+		</Stack>
 	)
 }
 
@@ -190,7 +190,7 @@ const sx: any = {
 			appearance: 'none',
 			p: 1,
 			height: 20,
-      color: 'text.secondary',
+			color: 'text.secondary',
 			borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 			fontSize: (theme) => theme.typography.body2.fontSize,
 			fontFamily: (theme) => theme.typography.body2.fontFamily,

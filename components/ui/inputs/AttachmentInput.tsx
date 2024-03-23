@@ -25,7 +25,7 @@ const RenderAttachment: React.FC<RenderAttachmentProps> = (props) => {
 		variant = 'file',
 		alt = '',
 	} = props
-
+  
 	return (
 		<Box sx={sx.root}>
 			{variant == 'image' && (

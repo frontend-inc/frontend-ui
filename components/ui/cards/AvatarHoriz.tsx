@@ -1,7 +1,7 @@
 import React from 'react'
 import {
 	Avatar,
-  Box,
+	Box,
 	List,
 	ListItem,
 	ListItemButton,
@@ -28,7 +28,7 @@ const AvatarHoriz: React.FC<CardProps> = (props) => {
 
 	return (
 		<List
-      disablePadding
+			disablePadding
 			sx={{
 				...sx.listItem,
 				...(enableBorder && sx.rootBorder),
@@ -53,8 +53,8 @@ const AvatarHoriz: React.FC<CardProps> = (props) => {
 							src={image}
 							alt={title}
 						>
-              <Box />
-            </Avatar>
+							<Box />
+						</Avatar>
 					</ListItemIcon>
 					<ListItemText
 						primary={
@@ -63,7 +63,11 @@ const AvatarHoriz: React.FC<CardProps> = (props) => {
 							</Typography>
 						}
 						secondary={
-							<Typography variant="body2" color="text.secondary" sx={ sx.description }>
+							<Typography
+								variant="body2"
+								color="text.secondary"
+								sx={sx.description}
+							>
 								{truncate(description, 80)}
 							</Typography>
 						}
@@ -115,7 +119,7 @@ const sx = {
 		height: '64px',
 		width: '64px',
 	},
-  description: {
-    maxWidth: 320
-  }
+	description: {
+		maxWidth: 320,
+	},
 }

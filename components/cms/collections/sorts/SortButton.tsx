@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {
-	ButtonGroup,
-	Button,	
-	Hidden,
-} from '@mui/material'
+import { ButtonGroup, Button, Hidden } from '@mui/material'
 import { Icon, Popup, Drawer } from '../../../ui'
 import SortList from './SortList'
 import { SortOptionType } from '../../../../types'
@@ -17,16 +13,15 @@ type SortButtonProps = {
 }
 
 const SortButton: React.FC<SortButtonProps> = (props) => {
+	const {
+		sortOptions,
+		sortBy,
+		sortDirection,
+		handleSortBy,
+		handleSortDirection,
+	} = props
 
-	const { 
-    sortOptions, 
-    sortBy, 
-    sortDirection, 
-    handleSortBy, 
-    handleSortDirection 
-  } = props
-
-  const [selected, setSelected] = useState<SortOptionType>(null)
+	const [selected, setSelected] = useState<SortOptionType>(null)
 
 	const [showModal, setShowModal] = useState(false)
 	const [anchorEl, setAnchorEl] = useState(null)
@@ -40,38 +35,42 @@ const SortButton: React.FC<SortButtonProps> = (props) => {
 		setShowModal(false)
 	}
 
-  useEffect(() => {
-    if(sortOptions?.length > 0 && sortBy){
-      setSelected(sortOptions.find(option => option.field == sortBy))
-    }
-  }, [sortOptions, sortBy])
+	useEffect(() => {
+		if (sortOptions?.length > 0 && sortBy) {
+			setSelected(sortOptions.find((option) => option.field == sortBy))
+		}
+	}, [sortOptions, sortBy])
 
 	return (
 		<>
-      <Button
-        sx={sx.button}
-        variant="text"
-        onClick={handleOpenModal}
-        endIcon={
-          <Icon name={ sortDirection == 'asc' ? "ArrowUp" : "ArrowDown" } color='text.secondary' size={20} />
-        }
-      >
-        { selected?.label ? selected?.label : 'Sort' }
-      </Button>
+			<Button
+				sx={sx.button}
+				variant="text"
+				onClick={handleOpenModal}
+				endIcon={
+					<Icon
+						name={sortDirection == 'asc' ? 'ArrowUp' : 'ArrowDown'}
+						color="text.secondary"
+						size={20}
+					/>
+				}
+			>
+				{selected?.label ? selected?.label : 'Sort'}
+			</Button>
 			<Hidden smDown>
 				<Popup
 					p={1}
 					anchorEl={anchorEl}
 					open={showModal}
 					handleClose={handleCloseModal}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'right'
-          }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'right'
-          }}      
+					anchorOrigin={{
+						vertical: 'bottom',
+						horizontal: 'right',
+					}}
+					transformOrigin={{
+						vertical: 'top',
+						horizontal: 'right',
+					}}
 				>
 					<SortList
 						sortOptions={sortOptions}
@@ -107,14 +106,14 @@ export default SortButton
 const sx = {
 	button: {
 		color: 'text.secondary',
-    bgcolor: 'tertiary.main',    
+		bgcolor: 'tertiary.main',
 		borderRight: 'none',
 		'&:hover': {
 			borderRight: 'none',
 		},
-    width: {
-      sm: 'auto',
-      xs: '100%'
-    }
-	}	
+		width: {
+			sm: 'auto',
+			xs: '100%',
+		},
+	},
 }

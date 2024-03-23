@@ -37,13 +37,13 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 					testimonials={items}
 				/>
 			)}
-      { items?.length == 0 && ( 
-       <Placeholder 
-          icon='Star'
-          title="No content"
-          description="Your content will appear here."
-        /> 
-      )}
+			{items?.length == 0 && (
+				<Placeholder
+					icon="Star"
+					title="No content"
+					description="Your content will appear here."
+				/>
+			)}
 		</Box>
 	)
 }

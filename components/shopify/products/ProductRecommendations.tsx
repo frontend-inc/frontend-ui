@@ -95,11 +95,11 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 				<ProductCarousel
 					editing={editing}
 					loading={loading}
-					products={similarProducts}					
+					products={similarProducts}
 					enableBorder={enableBorder}
-          enableAddToCart={enableAddToCart}
-          enableQuantity={enableQuantity}
-          enableQuickShop={enableQuickShop}
+					enableAddToCart={enableAddToCart}
+					enableQuantity={enableQuantity}
+					enableQuickShop={enableQuickShop}
 					enableOkendoStarRating={enableOkendoStarRating}
 					buttonText={buttonText}
 				/>

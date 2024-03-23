@@ -44,7 +44,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 		setOpen(true)
 	}
 
-const handleItemClick = () => {
+	const handleItemClick = () => {
 		if (handleClick) {
 			window.scrollTo({ top: 0, behavior: 'smooth' })
 			setSearchOpen(false)
@@ -101,8 +101,8 @@ const handleItemClick = () => {
 						/>
 					)}
 					{enableQuickShop && (
-						<Button    
-              sx={ sx.quickShopButton }          
+						<Button
+							sx={sx.quickShopButton}
 							variant={enableAddToCart ? 'text' : 'contained'}
 							color="secondary"
 							onClick={handleQuickShop}
@@ -151,8 +151,8 @@ const sx = {
 	description: {
 		maxWidth: '320px',
 	},
-  quickShopButton: {
-    bgcolor: 'tertiary.main',
-    color: 'text.primary',
-  }
+	quickShopButton: {
+		bgcolor: 'tertiary.main',
+		color: 'text.primary',
+	},
 }

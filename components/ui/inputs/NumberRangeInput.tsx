@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-	Input,
-	FormControl,
-	Typography,
-	Box,
-} from '@mui/material'
+import { Input, FormControl, Typography, Box } from '@mui/material'
 import { TextInput } from '../../../components'
 import { SyntheticEventType } from '../../../types'
 
@@ -12,21 +7,21 @@ type NumberRangeInputProps = {
 	label?: string
 	name: string
 	value?: {
-    min: number
-    max: number
-  }
+		min: number
+		max: number
+	}
 	handleChange: (value: SyntheticEventType) => void
 }
 
 const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 	const {
-		value = { 
-      min: null, 
-      max: null 
-    },
+		value = {
+			min: null,
+			max: null,
+		},
 		name,
 		label,
-		handleChange
+		handleChange,
 	} = props || {}
 
 	const handleMinChange = (ev) => {
@@ -34,10 +29,10 @@ const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 		handleChange({
 			target: {
 				name: name,
-				value: { 
-          ...value,
-          min 
-        },
+				value: {
+					...value,
+					min,
+				},
 			},
 		})
 	}
@@ -47,10 +42,10 @@ const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 		handleChange({
 			target: {
 				name: name,
-				value: { 
-          ...value,
-          max 
-        },
+				value: {
+					...value,
+					max,
+				},
 			},
 		})
 	}
@@ -62,21 +57,21 @@ const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 					{label}
 				</Typography>
 			)}
-			<Box sx={sx.inputs}>				
-        <TextInput 
-          type="number"
-          name="min"
-          handleChange={handleMinChange}
-          value={value?.min}
-          placeholder="Min"
-        />				
-				<TextInput 
-          type="number"
-          name="max"
-          handleChange={handleMaxChange}
-          value={value?.max}
-          placeholder="Max"
-        />				
+			<Box sx={sx.inputs}>
+				<TextInput
+					type="number"
+					name="min"
+					handleChange={handleMinChange}
+					value={value?.min}
+					placeholder="Min"
+				/>
+				<TextInput
+					type="number"
+					name="max"
+					handleChange={handleMaxChange}
+					value={value?.max}
+					placeholder="Max"
+				/>
 			</Box>
 		</Box>
 	)

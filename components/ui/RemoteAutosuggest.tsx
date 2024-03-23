@@ -18,7 +18,7 @@ type RemoteAutosuggestProps = {
 	imageField?: string
 	direction?: 'row' | 'column'
 	defaultQuery?: QueryParamsType
-  defaultOptions?: OptionType[]
+	defaultOptions?: OptionType[]
 }
 
 const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
@@ -34,7 +34,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		placeholder = 'Search',
 		defaultQuery = null,
 		direction = 'column',
-    defaultOptions=[]
+		defaultOptions = [],
 	} = props
 
 	const { error, clearError } = useError({
@@ -55,29 +55,28 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		findOption(newValue)
 	}
 
-  const formatResources = (resources) => {
-    return resources.map(resource => ({
-      label: resource[displayField],
-      value: resource[valueParam]
-    }))
-  }
+	const formatResources = (resources) => {
+		return resources.map((resource) => ({
+			label: resource[displayField],
+			value: resource[valueParam],
+		}))
+	}
 
 	const findOption = async (value) => {
-		if (!value) return null    
-    if(options?.length > 0){
-		  let matchOption = options.find((option: OptionType) => option.value == value)    
-      if(matchOption){
-        setOption(matchOption)
-      } 
-    }    
+		if (!value) return null
+		if (options?.length > 0) {
+			let matchOption = options.find(
+				(option: OptionType) => option.value == value
+			)
+			if (matchOption) {
+				setOption(matchOption)
+			}
+		}
 	}
 
 	useEffect(() => {
-		if (resources) {			
-			setOptions([
-        ...formatResources(resources),
-        ...defaultOptions 
-      ])
+		if (resources) {
+			setOptions([...formatResources(resources), ...defaultOptions])
 		}
 	}, [resources])
 

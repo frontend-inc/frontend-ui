@@ -41,10 +41,10 @@ const SwipeableProductImages: React.FC<SwipeableProductImagesProps> = (
 	return (
 		<Stack
 			sx={{
-        ...sx.root,
+				...sx.root,
 				height: !responsiveHeight && `${height}px`,
 				minHeight: `${height}px`,
-				minWidth: !responsiveHeight && `${width}px`,        
+				minWidth: !responsiveHeight && `${width}px`,
 			}}
 			direction="column"
 		>

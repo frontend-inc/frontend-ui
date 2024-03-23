@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
-import { 
-  CircularProgress, 
-  Box, 
-  Divider, 
-  Button, 
-  Menu, 
-  MenuItem, 
-  Typography 
+import {
+	CircularProgress,
+	Box,
+	Divider,
+	Button,
+	Menu,
+	MenuItem,
+	Typography,
 } from '@mui/material'
 import { useMenu } from '../../../hooks'
 import { MenuLinkType } from '../../..'
@@ -42,43 +42,42 @@ type TopNavMenuItemProps = {
 }
 
 const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
-
-  const router = useRouter()
-  const { clientUrl } = useContext(AppContext)
+	const router = useRouter()
+	const { clientUrl } = useContext(AppContext)
 
 	const { menuItem, handleClick } = props
 
 	const { children, shopify_collection } = menuItem
-  
-  const { loading, products, findCollection } = useCollections()
+
+	const { loading, products, findCollection } = useCollections()
 
 	const { open, openMenu, closeMenu, anchorEl } = useMenu()
 
-  const handleCollectionClick = () => {
-    router.push(`${clientUrl}/collections/${shopify_collection}`)
-    closeMenu()
-  }
+	const handleCollectionClick = () => {
+		router.push(`${clientUrl}/collections/${shopify_collection}`)
+		closeMenu()
+	}
 
-  const handleProductClick = (product) => {
-    router.push(`${clientUrl}/products/${product.handle}`)
-    closeMenu()
-  }
+	const handleProductClick = (product) => {
+		router.push(`${clientUrl}/products/${product.handle}`)
+		closeMenu()
+	}
 
 	const handleMenuClick = (ev) => {
-		if(children?.length > 0 || shopify_collection) {
-			openMenu(ev)      
-    }else{      
-      closeMenu()
-      handleClick(menuItem.path)      
-    }
-    if(shopify_collection && !products){      
-      findCollection(shopify_collection)
-    }         
+		if (children?.length > 0 || shopify_collection) {
+			openMenu(ev)
+		} else {
+			closeMenu()
+			handleClick(menuItem.path)
+		}
+		if (shopify_collection && !products) {
+			findCollection(shopify_collection)
+		}
 	}
 
 	const handleMouseLeave = () => {
 		closeMenu()
-	}  
+	}
 
 	return (
 		<>
@@ -93,8 +92,8 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 								...(open && sx.rotateIcon),
 							}}
 						>
-              <Icon name="ChevronDown" />
-            </Box>
+							<Icon name="ChevronDown" />
+						</Box>
 					)
 				}
 			>
@@ -107,47 +106,47 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 				MenuListProps={{
 					onMouseLeave: handleMouseLeave,
 				}}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center'
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center'
-        }}
+				anchorOrigin={{
+					vertical: 'bottom',
+					horizontal: 'center',
+				}}
+				transformOrigin={{
+					vertical: 'top',
+					horizontal: 'center',
+				}}
 			>
 				{children?.map((child, index) => (
 					<MenuItem
-            //@ts-ignore
-            onClick={() => handleClick(child.path)}
-          >
-            <Typography variant="button" color="text.primary">
-              {child.name}
-            </Typography>
-          </MenuItem>        
+						//@ts-ignore
+						onClick={() => handleClick(child.path)}
+					>
+						<Typography variant="button" color="text.primary">
+							{child.name}
+						</Typography>
+					</MenuItem>
 				))}
-        { loading && (
-          <Box sx={ sx.loading }>
-            <CircularProgress size={30} />
-          </Box>
-        )}
-        { products?.slice(0,5)?.map((product, i) => (
-          <MenuItem key={i} onClick={() => handleProductClick(product)}>
-            <Typography variant="button" color="text.primary">
-              {product.title}
-            </Typography>
-          </MenuItem>
-        ))}
-        { products?.length > 5 && (
-          <>
-            <Divider /> 
-            <MenuItem onClick={handleCollectionClick}>
-              <Typography variant="button" color="text.primary">
-                See All
-              </Typography>
-            </MenuItem>
-          </> 
-        )}
+				{loading && (
+					<Box sx={sx.loading}>
+						<CircularProgress size={30} />
+					</Box>
+				)}
+				{products?.slice(0, 5)?.map((product, i) => (
+					<MenuItem key={i} onClick={() => handleProductClick(product)}>
+						<Typography variant="button" color="text.primary">
+							{product.title}
+						</Typography>
+					</MenuItem>
+				))}
+				{products?.length > 5 && (
+					<>
+						<Divider />
+						<MenuItem onClick={handleCollectionClick}>
+							<Typography variant="button" color="text.primary">
+								See All
+							</Typography>
+						</MenuItem>
+					</>
+				)}
 			</Menu>
 		</>
 	)
@@ -172,19 +171,19 @@ const sx = {
 		},
 	},
 	icon: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'text.primary',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		color: 'text.primary',
 		transition: 'transform 0.2s ease-in-out',
 	},
 	rotateIcon: {
 		transform: 'rotate(-180deg)',
 	},
-  loading: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    p: 2
-  }
+	loading: {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		p: 2,
+	},
 }

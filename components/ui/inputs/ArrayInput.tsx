@@ -112,7 +112,7 @@ export const sx = {
 			p: '4px',
 			fontSize: (theme) => theme.typography.body2.fontSize,
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
-			borderRadius: (theme) => theme.shape.borderRadius,
+			borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 			bgcolor: 'background.paper',
 			border: (theme) => `1px solid ${theme.palette.divider}`,
 			transition: '0.5s',

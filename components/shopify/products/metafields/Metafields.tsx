@@ -39,15 +39,13 @@ const ProductMetafields: React.FC<ProductMetafieldsProps> = (props) => {
 		<Box sx={sx.root}>
 			{product &&
 				metafields?.map((metafield, index) => {
-          const { label, key } = metafield 
+					const { label, key } = metafield
 					const type = getMetafieldType(product, key)
 					const value = getMetafieldValue(product, key)
 					return (
 						<Accordion sx={sx.accordion} elevation={0}>
 							<AccordionSummary expandIcon={<Icon name="Plus" />}>
-								<Typography variant="subtitle2">
-                  {label}
-                </Typography>
+								<Typography variant="subtitle2">{label}</Typography>
 							</AccordionSummary>
 							<AccordionDetails>
 								{PLAIN_TEXT_TYPES.includes(type) && (
@@ -58,11 +56,11 @@ const ProductMetafields: React.FC<ProductMetafieldsProps> = (props) => {
 								{RICH_TEXT_TYPES.includes(type) && (
 									<MetafieldRichText value={value} />
 								)}
-                { !value && (
-                  <Typography variant="body1" color="textSecondary">
-                    Information coming soon.
-                  </Typography>
-                )}
+								{!value && (
+									<Typography variant="body1" color="textSecondary">
+										Information coming soon.
+									</Typography>
+								)}
 							</AccordionDetails>
 						</Accordion>
 					)

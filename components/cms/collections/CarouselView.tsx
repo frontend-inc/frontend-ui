@@ -9,7 +9,7 @@ type CarouselViewProps = {
 	defaultQuery?: any
 	buttonText?: string
 	handleClick?: (item: any) => void
-  component?: React.FC<any>
+	component?: React.FC<any>
 	enableAutoPlay?: boolean
 	enableArrows?: boolean
 	enableDots?: boolean
@@ -24,7 +24,7 @@ const CarouselView: React.FC<CarouselViewProps> = (props) => {
 		editing,
 		buttonText,
 		handleClick,
-    component: Component = CardVert,
+		component: Component = CardVert,
 		enableAutoPlay = false,
 		enableArrows = false,
 		enableDots = true,
@@ -34,11 +34,11 @@ const CarouselView: React.FC<CarouselViewProps> = (props) => {
 	} = props
 
 	return (
-		<Carousel 
-      enableAutoPlay={enableAutoPlay} 
-      enableArrows={enableArrows} 
-      enableDots={enableDots}
-      >
+		<Carousel
+			enableAutoPlay={enableAutoPlay}
+			enableArrows={enableArrows}
+			enableDots={enableDots}
+		>
 			{items?.map((item, index) => (
 				<Box sx={sx.item}>
 					<Component

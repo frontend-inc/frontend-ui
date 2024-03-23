@@ -7,17 +7,17 @@ type HeadingProps = {
 	title?: string
 	description?: string
 	textAlign?: 'left' | 'center'
-  textVariant?: TypographyVariantsType
+	textVariant?: TypographyVariantsType
 }
 
 const Heading: React.FC<HeadingProps> = (props) => {
-	const { 
-    label, 
-    title, 
-    description, 
-    textAlign, 
-    textVariant = 'h6'
-  } = props || {}
+	const {
+		label,
+		title,
+		description,
+		textAlign,
+		textVariant = 'h6',
+	} = props || {}
 
 	return (
 		<Stack sx={sx.stack} direction={'column'} spacing={1}>
@@ -28,7 +28,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 			)}
 			{title && (
 				<Typography
-					variant={ textVariant }
+					variant={textVariant}
 					color="text.primary"
 					style={{
 						...sx.text,
@@ -59,7 +59,7 @@ export default Heading
 const sx = {
 	stack: {
 		width: '100%',
-    mb: 2
+		mb: 2,
 	},
 	label: {
 		color: 'primary.main',

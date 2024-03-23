@@ -22,8 +22,13 @@ type SortListProps = {
 }
 
 const SortList: React.FC<SortListProps> = (props) => {
-	const { sortOptions, sortBy, sortDirection, handleSortBy, handleSortDirection } =
-		props
+	const {
+		sortOptions,
+		sortBy,
+		sortDirection,
+		handleSortBy,
+		handleSortDirection,
+	} = props
 
 	return (
 		<>
@@ -66,7 +71,9 @@ const SortList: React.FC<SortListProps> = (props) => {
 							</ListItemIcon>
 							<ListItemText
 								primary={
-									<Typography color="text.primary" variant="button">{direction?.label}</Typography>
+									<Typography color="text.primary" variant="button">
+										{direction?.label}
+									</Typography>
 								}
 							/>
 						</ListItemButton>

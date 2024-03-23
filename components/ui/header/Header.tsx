@@ -70,10 +70,10 @@ const Header: React.FC<HeaderProps> = (props) => {
 			/>
 			<MobileDrawer
 				editing={editing}
-        enableAuth={enableAuth}
-        enableShopify={enableShopify}
-        menuItems={menuItems}
-        handleClick={handleClick}
+				enableAuth={enableAuth}
+				enableShopify={enableShopify}
+				menuItems={menuItems}
+				handleClick={handleClick}
 			/>
 		</Box>
 	)

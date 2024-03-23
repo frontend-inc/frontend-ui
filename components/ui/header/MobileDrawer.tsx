@@ -6,8 +6,8 @@ import { AppContext } from '../../../context'
 import SideNavMenuItem from './SideNavMenuItem'
 import { MenuLinkType } from '../../..'
 
-type MobileDrawerProps = {  
-	editing?: boolean  
+type MobileDrawerProps = {
+	editing?: boolean
 	menuItems?: MenuLinkType[]
 	handleClick: (path: string) => void
 	enableAuth?: boolean
@@ -42,17 +42,13 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 								handleClick={handleMenuClick}
 							/>
 						))}
-            {enableShopify && (
-              <>
-                <SearchButton 
-                  variant="sideNav" 
-                />
-                <CartButton 
-                  variant="sideNav" 
-                />
-              </>
-            )}
-          </List>
+					{enableShopify && (
+						<>
+							<SearchButton variant="sideNav" />
+							<CartButton variant="sideNav" />
+						</>
+					)}
+				</List>
 				{(enableAuth || enableShopify) && (
 					<Box sx={sx.divider}>
 						{enableShopify && <ShopifyAuth variant="sideNav" />}

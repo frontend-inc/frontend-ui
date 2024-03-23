@@ -1,8 +1,5 @@
 import React from 'react'
-import { 
-  FilterOptionType, 
-  SearchFilterOptionType 
-} from '../../../../types'
+import { FilterOptionType, SearchFilterOptionType } from '../../../../types'
 import CheckboxFilter from './CheckboxFilter'
 import CheckboxBooleanFilter from './CheckboxBooleanFilter'
 import CheckboxNumberRangeFilter from './CheckboxNumberRangeFilter'
@@ -10,11 +7,13 @@ import CheckboxRatingsFilter from './CheckboxRatingsFilter'
 
 type CollectionFilterListInputProps = {
 	filters: FilterOptionType[]
-  filterOption: SearchFilterOptionType
+	filterOption: SearchFilterOptionType
 	handleFilter: (filter: FilterOptionType) => void
 }
 
-const CollectionFilterListInput: React.FC<CollectionFilterListInputProps> = (props) => {
+const CollectionFilterListInput: React.FC<CollectionFilterListInputProps> = (
+	props
+) => {
 	const { filterOption, filters = [], handleFilter } = props || {}
 
 	const findFilterValues = (fieldName, filters) => {
@@ -24,11 +23,11 @@ const CollectionFilterListInput: React.FC<CollectionFilterListInputProps> = (pro
 
 	return (
 		<>
-      {filterOption.variant == 'boolean' && (
-				<CheckboxBooleanFilter 
+			{filterOption.variant == 'boolean' && (
+				<CheckboxBooleanFilter
 					name={filterOption?.field}
 					label={filterOption?.label}
-					values={findFilterValues(filterOption?.field, filters)}					
+					values={findFilterValues(filterOption?.field, filters)}
 					handleClick={handleFilter}
 				/>
 			)}
@@ -46,7 +45,7 @@ const CollectionFilterListInput: React.FC<CollectionFilterListInputProps> = (pro
 				/>
 			)}
 
-      {filterOption.variant == 'number_range' && (
+			{filterOption.variant == 'number_range' && (
 				<CheckboxNumberRangeFilter
 					name={filterOption?.field}
 					label={filterOption?.label}
@@ -59,11 +58,11 @@ const CollectionFilterListInput: React.FC<CollectionFilterListInputProps> = (pro
 				/>
 			)}
 
-      {filterOption.variant == 'ratings' && (
-				<CheckboxRatingsFilter 
+			{filterOption.variant == 'ratings' && (
+				<CheckboxRatingsFilter
 					name={filterOption?.field}
 					label={filterOption?.label}
-					values={findFilterValues(filterOption?.field, filters)}					
+					values={findFilterValues(filterOption?.field, filters)}
 					handleClick={handleFilter}
 				/>
 			)}

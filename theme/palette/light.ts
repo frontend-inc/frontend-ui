@@ -25,10 +25,10 @@ export default {
 		link: '#1E2124',
 	},
 	icon: '#787A82',
-	background: {    
+	background: {
 		default: '#FFFFFF',
 		paper: '#343842',
-		fill: '#fcfcfc'		
+		fill: '#fcfcfc',
 	},
 	active: {
 		hover: '#FAFBFF',

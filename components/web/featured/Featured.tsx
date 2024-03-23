@@ -9,51 +9,44 @@ type FeaturedProps = {
 		icon?: string
 		title?: string
 		description?: string
-    image?: string
-    buttonText?: string
-    url?: string
+		image?: string
+		buttonText?: string
+		url?: string
 	}[]
-  enableGradient?: boolean
-  enableOverlay?: boolean
-  enableBorder?: boolean
+	enableGradient?: boolean
+	enableOverlay?: boolean
+	enableBorder?: boolean
 }
 
 const Featured: React.FC<FeaturedProps> = (props) => {
-	const { 
-    title, 
-    items,
-    enableBorder,
-    enableGradient,
-    enableOverlay,
-  } = props || {}
+	const { title, items, enableBorder, enableGradient, enableOverlay } =
+		props || {}
 
 	return (
 		<Box>
-			{title && (
-				<Heading title={ title } />
+			{title && <Heading title={title} textAlign='center' />}
+			<Stack spacing={4}>
+				{items?.map((item, i) => (
+					<FeaturedCard
+						title={item?.title}
+						description={item?.description}
+						image={item?.image}
+						buttonText={item?.buttonText}
+						href={item?.url}
+						flexDirection={i % 2 === 0 ? 'row' : 'row-reverse'}
+						enableBorder={enableBorder}
+						enableGradient={enableGradient}
+						enableOverlay={enableOverlay}
+					/>
+				))}
+			</Stack>
+			{items?.length == 0 && (
+				<Placeholder
+					icon="Search"
+					title="No content"
+					description="Your content will appear here."
+				/>
 			)}
-      <Stack spacing={4}>
-        {items?.map((item, i) => (
-          <FeaturedCard
-            title={item?.title}
-            description={item?.description}
-            image={item?.image}
-            buttonText={item?.buttonText}
-            href={item?.url}
-            flexDirection={ i % 2 === 0 ? 'row' : 'row-reverse'}
-            enableBorder={enableBorder}
-            enableGradient={enableGradient}
-            enableOverlay={enableOverlay}
-          />
-        ))}
-      </Stack>
-      { items?.length == 0 && (
-        <Placeholder 
-          icon='Search'
-          title="No content" 
-          description="Your content will appear here."
-        />
-      )}
 		</Box>
 	)
 }

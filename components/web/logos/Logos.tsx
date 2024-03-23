@@ -7,9 +7,9 @@ import { Typography } from '@mui/material'
 type LogosProps = {
 	title?: string
 	items?: {
-    src: string 
-    alt?: string
-  }[]
+		image: string
+		title?: string
+	}[]
 	editing?: boolean
 	buttonText?: string
 	autoPlay?: boolean
@@ -32,15 +32,15 @@ const Logos: React.FC<LogosProps> = (props) => {
 					<Logo
 						key={index}
 						title="Logo"
-						image={item?.src}
-						height={50}
+						image={item?.image}
+						height={60}
 						width={120}
 					/>
 				))}
 			</Stack>
 			{items?.length === 0 && (
 				<Placeholder
-					icon='Search'
+					icon="Search"
 					title="No logos"
 					description="Logos will appear here"
 				/>

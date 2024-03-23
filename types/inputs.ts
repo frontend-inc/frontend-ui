@@ -66,4 +66,3 @@ export type TextInputPropsType = InputPropsType & {
 export type SelectInputPropsType = InputPropsType & {
 	options: OptionType[]
 }
-

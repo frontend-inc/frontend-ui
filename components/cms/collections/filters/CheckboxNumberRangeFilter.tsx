@@ -12,9 +12,9 @@ type CheckboxNumberRangeFilterProps = {
 	where?: FilterWhereType
 	operator?: FilterOperatorType
 	options?: {
-    min: string | number 
-    max: string | number 
-  }[]
+		min: string | number
+		max: string | number
+	}[]
 	values?: any
 	handleClick: (filter: FilterOptionType) => void
 	label?: string
@@ -24,7 +24,9 @@ type CheckboxNumberRangeFilterProps = {
 	closed?: boolean
 }
 
-const CheckboxNumberRangeFilter: React.FC<CheckboxNumberRangeFilterProps> = (props) => {
+const CheckboxNumberRangeFilter: React.FC<CheckboxNumberRangeFilterProps> = (
+	props
+) => {
 	const {
 		label,
 		name,
@@ -48,20 +50,20 @@ const CheckboxNumberRangeFilter: React.FC<CheckboxNumberRangeFilterProps> = (pro
 					key={index}
 					values={values}
 					option={{
-            min: parseFloat(String(option.min)),
-            max: parseFloat(String(option.max))
-          }}
+						min: parseFloat(String(option.min)),
+						max: parseFloat(String(option.max)),
+					}}
 					handleClick={() =>
 						handleClick({
-                field: name,
-                operator: 'btw',
-                where: 'OR',
-                value: [
-                  parseFloat(String(option.min)), 
-                  parseFloat(String(option.max))
-                ]
-              })            
-            }					
+							field: name,
+							operator: 'btw',
+							where: 'OR',
+							value: [
+								parseFloat(String(option.min)),
+								parseFloat(String(option.max)),
+							],
+						})
+					}
 				/>
 			))}
 		</ExpandableList>

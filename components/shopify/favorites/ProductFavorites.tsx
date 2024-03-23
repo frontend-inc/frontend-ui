@@ -35,20 +35,20 @@ const ProductFavorites: React.FC<ProductFavoritesProps> = (props) => {
 					{title}
 				</Typography>
 			)}
-      <ProductGrid
-        editing={editing}
-        products={favorites}
-        enableBorder={enableBorder}
-        enableAddToCart={enableAddToCart}
-        enableQuantity={enableQuantity}
-        enableQuickShop={enableQuickShop}
-        buttonText={buttonText}
-      />			
+			<ProductGrid
+				editing={editing}
+				products={favorites}
+				enableBorder={enableBorder}
+				enableAddToCart={enableAddToCart}
+				enableQuantity={enableQuantity}
+				enableQuickShop={enableQuickShop}
+				buttonText={buttonText}
+			/>
 			{favorites?.length === 0 && (
 				<Placeholder
-					icon={"Heart"}
+					icon={'Heart'}
 					title={'No favorites'}
-					description={"You have no favorites yet."}
+					description={'You have no favorites yet.'}
 				/>
 			)}
 		</Box>

@@ -7,7 +7,7 @@ type PlaceholderProps = {
 	title?: string
 	description?: string
 	actions?: any
-  color?: string
+	color?: string
 	enableBorder?: boolean
 	enableAvatarBorder?: boolean
 }
@@ -18,15 +18,13 @@ const Placeholder: React.FC<PlaceholderProps> = (props) => {
 		title,
 		description,
 		actions,
-    color='text.secondary',
+		color = 'text.secondary',
 		enableBorder = false,
 	} = props
 
 	return (
 		<Stack spacing={1} sx={{ ...sx.root, ...(enableBorder && sx.border) }}>
-			{icon && (
-				<Icon name={icon} size={24} color={ color } />
-			)}
+			{icon && <Icon name={icon} size={24} color={color} />}
 			<Stack>
 				<Typography sx={sx.title} variant="button">
 					{title}

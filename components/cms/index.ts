@@ -1,4 +1,3 @@
-
 // CMS
 export { default as Article } from './articles/Article'
 export { default as Collection } from './collections/Collection'

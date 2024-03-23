@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import { CoverImage } from '../../../components'
+import { CoverImage } from '../..'
 import { useCollections } from 'frontend-shopify'
 
-type CollectionHeroProps = {
+type CollectionCoverImageProps = {
 	handle: string
 	editing?: boolean
 	height?: number
@@ -18,7 +18,7 @@ type CollectionHeroProps = {
 	href?: string
 }
 
-const CollectionHero: React.FC<CollectionHeroProps> = (props) => {
+const CollectionCoverImage: React.FC<CollectionCoverImageProps> = (props) => {
 	const {
 		handle,
 		editing = false,
@@ -63,4 +63,4 @@ const CollectionHero: React.FC<CollectionHeroProps> = (props) => {
 	)
 }
 
-export default CollectionHero
+export default CollectionCoverImage

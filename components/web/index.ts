@@ -1,4 +1,4 @@
-// Web 
+// Web
 export { default as Accordion } from './accordions/Accordion'
 export { default as AccordionItem } from './accordions/AccordionItem'
 export { default as Cards } from './cards/Cards'

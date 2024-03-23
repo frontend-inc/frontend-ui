@@ -14,11 +14,11 @@ const Lottie: React.FC<LottieProps> = (props) => {
 
 	const fetchLottie = async () => {
 		setLoading(true)
-    // @ts-ignore
-		let resp = await fetch(src)?.json()    
-    if(resp){
-      setData(resp)
-    }		
+		// @ts-ignore
+		let resp = await fetch(src)?.json()
+		if (resp) {
+			setData(resp)
+		}
 		setLoading(false)
 	}
 

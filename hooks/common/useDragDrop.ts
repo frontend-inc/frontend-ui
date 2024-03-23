@@ -6,7 +6,7 @@ type UseDragDropProps = {
 }
 
 const useDragDrop = (props: UseDragDropProps) => {
-  const { children } = props
+	const { children } = props
 	const [columns, setColumns] = useState(children)
 
 	const reorder = (items, startIndex, endIndex) => {

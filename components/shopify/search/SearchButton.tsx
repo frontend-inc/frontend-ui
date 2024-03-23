@@ -57,8 +57,8 @@ const SearchButton: React.FC<SearchButtonProps> = (props) => {
 	const { setMenuOpen } = useContext(AppContext)
 
 	const handleToggleSearch = () => {
-    setMenuOpen(false)
-    toggleSearch()
+		setMenuOpen(false)
+		toggleSearch()
 	}
 
 	return variant == 'topNav' ? (

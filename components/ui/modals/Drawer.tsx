@@ -78,17 +78,13 @@ const Drawer: React.FC<DrawerProps> = (props) => {
 				<Box
 					sx={{
 						...sx.content,
-            ...(actions && sx.contentActions),
+						...(actions && sx.contentActions),
 						...(!disablePadding && sx.contentPadding),
 					}}
 				>
 					{children}
 				</Box>
-        { actions && (
-        <Box sx={ sx.actions }>
-          {actions}
-        </Box>
-        )}
+				{actions && <Box sx={sx.actions}>{actions}</Box>}
 			</Box>
 		</SwipeableDrawer>
 	)
@@ -117,29 +113,29 @@ const sx = {
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		height: 50,
-    borderBottom: '1px solid',
-    borderColor: 'divider',    
+		borderBottom: '1px solid',
+		borderColor: 'divider',
 	},
-  headerAction: {
-    minWidth: '40px'
-  },
+	headerAction: {
+		minWidth: '40px',
+	},
 	button: {
 		border: '1px solid',
 		borderColor: 'divider',
 		boxShadow: `rgb(0 0 0 / 5%) 0px 2px 4px !important`,
 	},
 	actions: {
-    bgcolor: 'background.paper',
+		bgcolor: 'background.paper',
 		position: 'absolute',
-    bottom: 0,
-    left: 0,
-    width: '100%',
-    height: '60px',
-    borderTop: '1px solid',
-    borderColor: 'divider',
-    display: 'flex',
-    flexDirection: 'row',
-    p: 1
+		bottom: 0,
+		left: 0,
+		width: '100%',
+		height: '60px',
+		borderTop: '1px solid',
+		borderColor: 'divider',
+		display: 'flex',
+		flexDirection: 'row',
+		p: 1,
 	},
 	paper: {
 		zIndex: `9999 !important`,
@@ -147,16 +143,16 @@ const sx = {
 	},
 	content: {
 		width: '100%',
-    overflowY: 'scroll',
-    '&::-webkit-scrollbar': {
-      display: 'none'
-    },
-    maxHeight: 'calc(100vh - 60px)',
-    pb: 4,
+		overflowY: 'scroll',
+		'&::-webkit-scrollbar': {
+			display: 'none',
+		},
+		maxHeight: 'calc(100vh - 60px)',
+		pb: 4,
 	},
-  contentActions: {
-    maxHeight: 'calc(100vh - 120px)',
-  },
+	contentActions: {
+		maxHeight: 'calc(100vh - 120px)',
+	},
 	contentPadding: {
 		p: 2,
 	},

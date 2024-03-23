@@ -7,7 +7,7 @@ export const buildMuiPalette = (palette, bgcolor) => {
 	const primaryText = contrast > 4.5 ? '#000000' : '#FFFFFF'
 	const secondaryText = alpha(primaryText, 0.7)
 	const neutral = contrast > 4.5 ? '#EEEEEE' : '#222222'
-  const fill = contrast > 4.5 ? '#fcfcfc' : '#111111'
+	const fill = contrast > 4.5 ? '#fcfcfc' : '#111111'
 	const divider = contrast > 4.5 ? darken(bgcolor, 0.1) : lighten(bgcolor, 0.2)
 
 	let muiPalette = {
@@ -16,7 +16,7 @@ export const buildMuiPalette = (palette, bgcolor) => {
 			default: bgcolor,
 			main: bgcolor,
 			paper: paper,
-      fill: fill
+			fill: fill,
 		},
 		divider: divider,
 		text: {
@@ -24,9 +24,9 @@ export const buildMuiPalette = (palette, bgcolor) => {
 			secondary: secondaryText,
 		},
 		tertiary: {
-      light: lighten(neutral, 0.2),
+			light: lighten(neutral, 0.2),
 			main: neutral,
-      dark: darken(neutral, 0.2)
+			dark: darken(neutral, 0.2),
 		},
 	}
 

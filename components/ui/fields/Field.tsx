@@ -23,9 +23,9 @@ const Field: React.FC<FieldProps> = (props) => {
 	const { field, document } = props
 	const { variant, label } = field
 	let value = document[field?.name]
-	if (!value){
-    value = '-'
-  }
+	if (!value) {
+		value = '-'
+	}
 	return (
 		<>
 			{variant === 'boolean' && <FieldBoolean label={label} value={value} />}
@@ -37,7 +37,7 @@ const Field: React.FC<FieldProps> = (props) => {
 			{variant === 'url' && <FieldURL label={label} value={value} />}
 			{variant === 'rating' && <FieldRating label={label} value={value} />}
 			{variant === 'text' && <FieldText label={label} value={value} />}
-      {variant === 'number' && <FieldText label={label} value={value} />}
+			{variant === 'number' && <FieldText label={label} value={value} />}
 			{variant === 'array' && <FieldArray label={label} value={value} />}
 			{variant === 'string' && <FieldString label={label} value={value} />}
 			{variant === 'price' && <FieldPrice label={label} value={value} />}

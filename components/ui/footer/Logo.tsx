@@ -22,7 +22,7 @@ const Logo: React.FC<LogoProps> = (props) => {
 	} = props || {}
 
 	return (
-    // @ts-ignore
+		// @ts-ignore
 		<Button disableRipple sx={sx.root} onClick={handleClick}>
 			{src?.length > 1 ? (
 				<Image
@@ -46,7 +46,7 @@ const Logo: React.FC<LogoProps> = (props) => {
 export default Logo
 
 const sx = {
-	root: {		
+	root: {
 		'&:hover': {
 			background: 'transparent',
 		},

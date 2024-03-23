@@ -1,57 +1,54 @@
 import React from 'react'
 import {
-	Box,  
+	Box,
 	MenuItem,
 	Typography,
-  List,
-  ListItem,
-  ListItemButton,
+	List,
+	ListItem,
+	ListItemButton,
 	ListItemIcon,
 	ListItemText,
 	Checkbox,
 } from '@mui/material'
-import { 
-  SearchFilterOptionType,
-  SearchFilterType, 
-} from 'frontend-shopify'
+import { SearchFilterOptionType, SearchFilterType } from 'frontend-shopify'
 
 type CheckboxFilterListProps = {
-  filters: SearchFilterType[]
+	filters: SearchFilterType[]
 	option: SearchFilterOptionType
 	handleClick: (filter: SearchFilterType) => void
 }
 
 const CheckboxFilterList: React.FC<CheckboxFilterListProps> = (props) => {
 	const { filters = [], option, handleClick } = props
-  let values = filters.map(f => f.value)
+	let values = filters.map((f) => f.value)
 
-  const handleFilterClick = (value) => {
-    handleClick({
-      name: option.name,
-      value: value
-    })
-  } 
+	const handleFilterClick = (value) => {
+		handleClick({
+			name: option.name,
+			value: value,
+		})
+	}
 
-  if(!option || !(typeof option?.value == 'object')) return null;
+	if (!option || !(typeof option?.value == 'object')) return null
 	return (
 		<List disablePadding>
 			{option?.value?.map((option, index) => (
 				<ListItem disablePadding key={index}>
-          <ListItemButton sx={ sx.listItemButton } onClick={() => handleFilterClick(option) }>
-					<ListItemIcon>
-						<Checkbox checked={values?.includes(option)} color="primary" />
-					</ListItemIcon>
-					<ListItemText
-						primary={
-              <Typography 
-                variant="button" 
-                color='text.primary'
-              >
-                {option}
-              </Typography>
-            }
-					/>
-          </ListItemButton>
+					<ListItemButton
+						sx={sx.listItemButton}
+						onClick={() => handleFilterClick(option)}
+					>
+						<ListItemIcon>
+							<Checkbox checked={values?.includes(option)} color="primary" />
+						</ListItemIcon>
+						<ListItemText
+							primary={
+								<Typography variant="button" color="text.primary">
+									{option}
+								</Typography>
+							}
+						/>
+					</ListItemButton>
 				</ListItem>
 			))}
 		</List>
@@ -61,7 +58,7 @@ const CheckboxFilterList: React.FC<CheckboxFilterListProps> = (props) => {
 export default CheckboxFilterList
 
 const sx = {
-  listItemButton: {
-    py: 0
-  }
+	listItemButton: {
+		py: 0,
+	},
 }

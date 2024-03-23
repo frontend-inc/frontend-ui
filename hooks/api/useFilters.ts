@@ -27,38 +27,42 @@ const useFilters = (props: UseFiltersProps) => {
 		return foundFilter
 	}
 
-  const compareValues = (a, b) => {
-    if (Array.isArray(a) && Array.isArray(b)){
-      return a.sort().join(',') === b.sort().join(',')
-    }    
-    return a === b
-  }
+	const compareValues = (a, b) => {
+		if (Array.isArray(a) && Array.isArray(b)) {
+			return a.sort().join(',') === b.sort().join(',')
+		}
+		return a === b
+	}
 
-  const findDuplicateFilterIndex = (filters, filter) => {
-    return filters.findIndex((f) => (
-        f.field === filter.field &&
-        f.operator === filter.operator &&
-        f.where === filter.where &&
-        compareValues(f.value, filter.value)
-      ))
-  }
+	const findDuplicateFilterIndex = (filters, filter) => {
+		return filters.findIndex(
+			(f) =>
+				f.field === filter.field &&
+				f.operator === filter.operator &&
+				f.where === filter.where &&
+				compareValues(f.value, filter.value)
+		)
+	}
 
-  const findDuplicateFilter = (filters, filter) => {
-    return filters.find((f) => (
-        f.field === filter.field &&
-        f.operator === filter.operator &&
-        f.where === filter.where &&
-        compareValues(f.value, filter.value)
-      ))
-  }
+	const findDuplicateFilter = (filters, filter) => {
+		return filters.find(
+			(f) =>
+				f.field === filter.field &&
+				f.operator === filter.operator &&
+				f.where === filter.where &&
+				compareValues(f.value, filter.value)
+		)
+	}
 
 	const handleAddFilter = (filter) => {
-		let updatedFilters = [ ...activeFilters ]
-    let duplicateIndex = findDuplicateFilterIndex(activeFilters, filter)
-		if (duplicateIndex > -1){
-			updatedFilters = updatedFilters?.filter((f, index) => index !== duplicateIndex)	
+		let updatedFilters = [...activeFilters]
+		let duplicateIndex = findDuplicateFilterIndex(activeFilters, filter)
+		if (duplicateIndex > -1) {
+			updatedFilters = updatedFilters?.filter(
+				(f, index) => index !== duplicateIndex
+			)
 		} else {
-      //@ts-ignore 
+			//@ts-ignore
 			updatedFilters = [...updatedFilters, filter]
 		}
 		setActiveFilters(updatedFilters)
@@ -107,7 +111,7 @@ const useFilters = (props: UseFiltersProps) => {
 					let field = Object.keys(filter)[0]
 					let operator = Object.keys(filter[field])[0]
 					let value = filter[field][operator]
-          //@ts-ignore
+					//@ts-ignore
 					formattedFilters.push({
 						where,
 						field,
@@ -127,7 +131,6 @@ const useFilters = (props: UseFiltersProps) => {
 		}
 	}, [query])
 
-
 	return {
 		filter,
 		findFilter,
@@ -135,12 +138,12 @@ const useFilters = (props: UseFiltersProps) => {
 		setShowFilterModal,
 		handleOpenFilterModal,
 		handleCloseFilterModal,
-		handleAddFilter,  
+		handleAddFilter,
 		activeFilters,
 		setActiveFilters,
-    findDuplicateFilter,
-    findDuplicateFilterIndex,
-    buildQueryFilters
+		findDuplicateFilter,
+		findDuplicateFilterIndex,
+		buildQueryFilters,
 	}
 }
 

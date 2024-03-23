@@ -9,48 +9,39 @@ import {
 } from '../..'
 
 type CollectionCardProps = {
-	layout: 'list' | 'grid' 
+	layout: 'list' | 'grid'
 	style: 'card' | 'avatar' | 'cover'
-  title?: string
-  image?: string 
-  video?: string
-  description: string
-  buttonText?: string
-  href?: string
-  handleClick: () => void
-  enableBorder?: boolean
-  enableGradient?: boolean
-  enableOverlay?: boolean
+	title?: string
+	image?: string
+	video?: string
+	description: string
+	buttonText?: string
+	href?: string
+	handleClick: () => void
+	enableBorder?: boolean
+	enableGradient?: boolean
+	enableOverlay?: boolean
 }
 
 const CollectionCard: React.FC<CollectionCardProps> = (props) => {
-	
-  const {
-		layout = 'list',
-		style = 'card',
-    ...rest 
-  } = props
+	const { layout = 'list', style = 'card', ...rest } = props
 
 	const COMPONENTS = {
 		list: {
 			card: CardHoriz,
 			avatar: AvatarHoriz,
-			cover: CoverHoriz
+			cover: CoverHoriz,
 		},
 		grid: {
 			card: CardVert,
 			avatar: AvatarVert,
-      cover: CoverVert
-		}
+			cover: CoverVert,
+		},
 	}
 
 	let Component = COMPONENTS[layout][style] || CardVert
 
-	return (
-		<Component 
-      { ...rest }
-    />
-	)
+	return <Component {...rest} />
 }
 
-export default CollectionCard 
+export default CollectionCard

@@ -14,7 +14,7 @@ export type FeaturedCardProps = {
 	flexDirection?: 'row' | 'row-reverse'
 	handleClick?: () => void
 	objectFit?: 'cover' | 'contain'
-  enableOverlay?: boolean
+	enableOverlay?: boolean
 	enableBorder?: boolean
 	enableGradient?: boolean
 }
@@ -25,12 +25,12 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 		title,
 		description,
 		image = '',
-		href,		
+		href,
 		buttonText,
 		flexDirection = 'row',
 		handleClick,
 		objectFit = 'cover',
-    enableOverlay = false,
+		enableOverlay = false,
 		enableBorder = false,
 		enableGradient = false,
 	} = props || {}
@@ -61,36 +61,25 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 					},
 				}}
 			>
-				<Box
-					sx={sx.image}
-				>
+				<Box sx={sx.image}>
 					<TouchableOpacity handleClick={handleItemClick}>
 						<Image
 							src={image}
 							height={320}
 							objectFit={objectFit}
 							alt={title}
-              enableOverlay={enableOverlay}
+							enableOverlay={enableOverlay}
 							enableGradient={enableGradient}
 							disableBorderRadius={enableBorder}
 						/>
 					</TouchableOpacity>
 				</Box>
-				<Box sx={ sx.content}>
-					<Stack
-						spacing={0}
-						sx={ sx.textContent }
-					>
-						<Typography
-							sx={sx.title}
-							variant={'h6'}
-						>
+				<Box sx={sx.content}>
+					<Stack spacing={0} sx={sx.textContent}>
+						<Typography sx={sx.title} variant={'h6'}>
 							{title}
 						</Typography>
-						<Typography
-							variant="body2"
-							sx={sx.description}
-						>
+						<Typography variant="body2" sx={sx.description}>
 							{truncate(description, 160)}
 						</Typography>
 						{buttonText && (
@@ -138,36 +127,36 @@ const sx = {
 		alignItems: 'center',
 		height: '100%',
 		width: {
-      xs: '100%',
-      sm: '50%',
-    }
+			xs: '100%',
+			sm: '50%',
+		},
 	},
 	actions: {
 		mt: 2,
 		display: 'flex',
-    justifyContent: {
-      sm: 'flex-start',
-      xs: 'center',
-    },
+		justifyContent: {
+			sm: 'flex-start',
+			xs: 'center',
+		},
 		width: '100%',
 	},
 	content: {
 		display: 'flex',
 		justifyContent: {
-      sm: 'flex-start',
-      xs: 'center',
-    },
-    width: {
-      sm: '50%',
-      xs: '100%',
-    },
+			sm: 'flex-start',
+			xs: 'center',
+		},
+		width: {
+			sm: '50%',
+			xs: '100%',
+		},
 		alignItems: 'center',
 		height: '100%',
 	},
 	textContent: {
 		p: 2,
 		display: 'flex',
-    justifyContent: 'center',
+		justifyContent: 'center',
 		height: '100%',
 		width: '100%',
 	},
@@ -175,17 +164,17 @@ const sx = {
 		width: '100%',
 		color: 'text.primary',
 		my: 1,
-    textAlign: {
-      sm: 'left',
-      xs: 'center',
-    },
+		textAlign: {
+			sm: 'left',
+			xs: 'center',
+		},
 	},
 	description: {
 		width: '100%',
 		color: 'text.secondary',
-    textAlign: {
-      sm: 'left',
-      xs: 'center',
-    },
+		textAlign: {
+			sm: 'left',
+			xs: 'center',
+		},
 	},
 }

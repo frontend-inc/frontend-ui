@@ -27,7 +27,7 @@ const MobileNav = (props: MobileNavProps) => {
 		logo,
 		logoWidth = 120,
 		logoHeight = 50,
-    handleClick,
+		handleClick,
 		enableShopify = false,
 		enableNotifications = false,
 	} = props
@@ -50,12 +50,12 @@ const MobileNav = (props: MobileNavProps) => {
 							</IconButton>
 						</Box>
 						<Box sx={sx.centerMenu}>
-							<Logo 
-                handleClick={() => handleClick('/')}
-                src={logo} 
-                width={logoWidth} 
-                height={logoHeight - 20} 
-              />
+							<Logo
+								handleClick={() => handleClick('/')}
+								src={logo}
+								width={logoWidth}
+								height={logoHeight - 20}
+							/>
 						</Box>
 						<Box sx={sx.rightMenu}>
 							{enableShopify && (

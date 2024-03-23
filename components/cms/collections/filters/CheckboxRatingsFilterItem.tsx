@@ -6,7 +6,7 @@ import {
 	ListItemIcon,
 	ListItemText,
 	Checkbox,
-  Rating,
+	Rating,
 } from '@mui/material'
 import { OptionType } from '../../../../types'
 
@@ -17,27 +17,26 @@ type CheckboxRatingsFilterItemProps = {
 	handleClick: () => void
 }
 
-const CheckboxRatingsFilterItem: React.FC<CheckboxRatingsFilterItemProps> = (props) => {
+const CheckboxRatingsFilterItem: React.FC<CheckboxRatingsFilterItemProps> = (
+	props
+) => {
 	const { values = [], option, handleClick } = props
 
 	return (
 		<ListItem disableGutters disablePadding>
 			<ListItemButton sx={sx.listItemButton} onClick={handleClick}>
 				<ListItemIcon>
-					<Checkbox 
-            checked={values.includes(option.value)} 
-            color="primary" 
-          />
+					<Checkbox checked={values.includes(option.value)} color="primary" />
 				</ListItemIcon>
 				<ListItemText
 					primary={
-            <Rating 
-              readOnly 
-              size="small"
-              sx={ sx.rating } 
-              value={ Number(option?.value) } 
-            />
-          }
+						<Rating
+							readOnly
+							size="small"
+							sx={sx.rating}
+							value={Number(option?.value)}
+						/>
+					}
 				/>
 			</ListItemButton>
 		</ListItem>
@@ -50,7 +49,7 @@ const sx = {
 	listItemButton: {
 		p: 0,
 	},
-  rating: {
-    color: 'primary.main'
-  }
+	rating: {
+		color: 'primary.main',
+	},
 }

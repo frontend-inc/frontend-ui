@@ -77,13 +77,11 @@ const sx = {
 	emptyRating: {
 		color: 'text.secondary',
 	},
-	border: {
-		pt: 1,
-		pr: 2,
-		pb: 0.5,
-		pl: 2,
+	border: {		
+    p: 1,
+    pb: 0.5,
 		bgcolor: 'background.paper',
-		borderRadius: (theme) => theme.shape.borderRadius,
+		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 		border: '1px solid',
 		borderColor: 'divider',
 		boxShadow: `rgb(0 0 0 / 5%) 0px 2px 4px !important`,

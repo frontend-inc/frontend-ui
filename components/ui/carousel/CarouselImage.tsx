@@ -13,7 +13,7 @@ type CarouselImageProps = {
 const CarouselImage: React.FC<CarouselImageProps> = (props) => {
 	const {
 		children,
-    enableAutoPlay = false,
+		enableAutoPlay = false,
 		enableArrows = false,
 		enableDots = true,
 		responsive = IMAGE_CAROUSEL_RESPONSIVE,

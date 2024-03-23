@@ -12,13 +12,15 @@ type ProductFavoritesCarouselProps = {
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
 	enableQuickShop?: boolean
-	buttonText?: string	
-  enableAutoPlay?: boolean
-  enableArrows?: boolean
-  enableDots?: boolean
+	buttonText?: string
+	enableAutoPlay?: boolean
+	enableArrows?: boolean
+	enableDots?: boolean
 }
 
-const ProductFavoritesCarousel: React.FC<ProductFavoritesCarouselProps> = (props) => {
+const ProductFavoritesCarousel: React.FC<ProductFavoritesCarouselProps> = (
+	props
+) => {
 	const {
 		editing = false,
 		title = 'Favorites',
@@ -27,10 +29,10 @@ const ProductFavoritesCarousel: React.FC<ProductFavoritesCarouselProps> = (props
 		enableAddToCart,
 		enableQuantity,
 		enableQuickShop,
-		
-    enableAutoPlay = false,
-    enableArrows = false,
-    enableDots = true,
+
+		enableAutoPlay = false,
+		enableArrows = false,
+		enableDots = true,
 	} = props || {}
 
 	const { favorites } = useFavorites()
@@ -42,18 +44,18 @@ const ProductFavoritesCarousel: React.FC<ProductFavoritesCarouselProps> = (props
 					{title}
 				</Typography>
 			)}
-      <ProductCarousel
-        editing={editing}
-        products={favorites}
-        enableBorder={enableBorder}
-        enableAddToCart={enableAddToCart}
-        enableQuantity={enableQuantity}
-        enableQuickShop={enableQuickShop}
-        buttonText={buttonText}
-        enableAutoPlay={enableAutoPlay}
-        enableArrows={enableArrows}
-        enableDots={enableDots}
-      />			
+			<ProductCarousel
+				editing={editing}
+				products={favorites}
+				enableBorder={enableBorder}
+				enableAddToCart={enableAddToCart}
+				enableQuantity={enableQuantity}
+				enableQuickShop={enableQuickShop}
+				buttonText={buttonText}
+				enableAutoPlay={enableAutoPlay}
+				enableArrows={enableArrows}
+				enableDots={enableDots}
+			/>
 			{favorites?.length === 0 && (
 				<Placeholder
 					icon={'Heart'}

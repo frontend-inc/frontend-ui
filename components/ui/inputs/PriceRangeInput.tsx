@@ -12,19 +12,19 @@ type NumberRangeInputProps = {
 	label?: string
 	name: string
 	value?: {
-    min: number
-    max: number
-  }
+		min: number
+		max: number
+	}
 	handleChange: (value: SyntheticEventType) => void
 	currency?: string
 }
 
 const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 	const {
-		value = { 
-      min: 0, 
-      max: 0 
-    },
+		value = {
+			min: 0,
+			max: 0,
+		},
 		name,
 		label,
 		handleChange,
@@ -36,10 +36,10 @@ const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 		handleChange({
 			target: {
 				name: name,
-				value: { 
-          ...value,
-          min 
-        },
+				value: {
+					...value,
+					min,
+				},
 			},
 		})
 	}
@@ -49,10 +49,10 @@ const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 		handleChange({
 			target: {
 				name: name,
-				value: { 
-          ...value,
-          max 
-        },
+				value: {
+					...value,
+					max,
+				},
 			},
 		})
 	}

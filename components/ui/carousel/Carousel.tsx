@@ -34,7 +34,7 @@ const ReactCarousel: React.FC<CarouselProps> = (props) => {
 		//@ts-ignore
 		setResponsive(getCarouselResponsive(theme))
 	}, [theme?.breakpoints])
-	
+
 	return (
 		<Box
 			sx={{

@@ -45,12 +45,12 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 				<Toolbar>
 					<Box sx={sx.desktopTopNav}>
 						<Box sx={sx.leftMenu}>
-							<Logo 
-                src={logo} 
-                width={120} 
-                height={40} 
-                handleClick={() => handleClick('/')}
-              />
+							<Logo
+								src={logo}
+								width={120}
+								height={40}
+								handleClick={() => handleClick('/')}
+							/>
 						</Box>
 						<Box sx={sx.centerMenu}>
 							{menuItems

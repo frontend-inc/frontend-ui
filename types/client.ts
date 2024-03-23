@@ -11,7 +11,6 @@ export type FetchOptionType = {
 	body: any
 }
 
-
 export type OperatorType =
 	| 'asc'
 	| 'desc'
@@ -89,7 +88,7 @@ export type FilterOperatorType =
 	| 'lte'
 	| 'in'
 	| 'nin'
-  | 'btw'
+	| 'btw'
 	| '1_day_ago'
 	| '7_days_ago'
 	| '14_days_ago'

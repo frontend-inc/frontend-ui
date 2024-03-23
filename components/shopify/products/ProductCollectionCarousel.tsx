@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Stack } from '@mui/material'
 import { useCollections, useSearchFilters } from 'frontend-shopify'
-import {
-	ProductCarousel,
-} from '../../../components/shopify'
+import { ProductCarousel } from '../../../components/shopify'
 import { Heading } from '../../../components'
 
 type ProductCollectionCarouselProps = {
@@ -20,14 +18,16 @@ type ProductCollectionCarouselProps = {
 	enableOkendoStarRating?: boolean
 }
 
-const ProductCollectionCarousel: React.FC<ProductCollectionCarouselProps> = (props) => {
+const ProductCollectionCarousel: React.FC<ProductCollectionCarouselProps> = (
+	props
+) => {
 	const {
 		title,
 		handle,
 		editing = false,
-    enableAutoPlay = false,
-    enableArrows = false,
-    enableDots = false,
+		enableAutoPlay = false,
+		enableArrows = false,
+		enableDots = false,
 		enableBorder = false,
 		enableAddToCart = false,
 		enableQuickShop = false,
@@ -35,11 +35,7 @@ const ProductCollectionCarousel: React.FC<ProductCollectionCarouselProps> = (pro
 		enableOkendoStarRating = false,
 	} = props
 
-	const {
-		loading,
-		products,
-		findCollection,
-	} = useCollections()
+	const { loading, products, findCollection } = useCollections()
 
 	useEffect(() => {
 		if (handle) {
@@ -49,20 +45,20 @@ const ProductCollectionCarousel: React.FC<ProductCollectionCarouselProps> = (pro
 
 	return (
 		<Stack spacing={2}>
-      <Heading title={ title } />								
-      <ProductCarousel
-        editing={editing}
-        loading={loading}
-        products={products}
-        enableAutoPlay={enableAutoPlay}
-        enableArrows={enableArrows}
-        enableDots={enableDots}
-        enableBorder={enableBorder}
-        enableAddToCart={enableAddToCart}
-        enableQuickShop={enableQuickShop}
-        enableQuantity={enableQuantity}
-        enableOkendoStarRating={enableOkendoStarRating}
-      />
+			<Heading title={title} />
+			<ProductCarousel
+				editing={editing}
+				loading={loading}
+				products={products}
+				enableAutoPlay={enableAutoPlay}
+				enableArrows={enableArrows}
+				enableDots={enableDots}
+				enableBorder={enableBorder}
+				enableAddToCart={enableAddToCart}
+				enableQuickShop={enableQuickShop}
+				enableQuantity={enableQuantity}
+				enableOkendoStarRating={enableOkendoStarRating}
+			/>
 		</Stack>
 	)
 }
