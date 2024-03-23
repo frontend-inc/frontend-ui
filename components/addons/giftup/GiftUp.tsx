@@ -14,8 +14,9 @@ const GiftUp: React.FC<GiftUpProps> = (props) => {
 			script.async = true
 
 			script.onload = () => {
-				//@ts-ignore
+        //@ts-ignore				
 				window.giftup =
+          //@ts-ignore
 					window.giftup ||
 					function () {
 						//@ts-ignore
