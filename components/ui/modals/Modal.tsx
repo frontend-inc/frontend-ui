@@ -22,7 +22,7 @@ type ModalProps = {
 	children?: any
 	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | false
 	secondaryActions?: any
-	p?: number
+	disablePadding?: boolean
 	fullScreen?: boolean
 	enableCancel?: boolean
 	hideBackdrop?: boolean
@@ -39,7 +39,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 		children,
 		maxWidth,
 		secondaryActions,
-		p = 1,
+    disablePadding=false,		
 		fullScreen,
 		enableCancel = false,
 		hideBackdrop = false,
@@ -72,7 +72,11 @@ const Modal: React.FC<ModalProps> = (props) => {
 					)}
 				</Box>
 			</DialogTitle>
-			<DialogContent sx={{ ...sx.dialogContent, p: p }}>
+			<DialogContent 
+        sx={{ 
+          ...sx.dialogContent, 
+          ...(disablePadding && sx.disablePadding )
+        }}>
 				{subtitle && (
 					<Typography variant="body1" mt={1}>
 						{subtitle}
@@ -114,12 +118,16 @@ const sx = {
 		justifyContent: 'space-between',
 	},
 	dialogContent: {
+    p: 2,
 		height: '100%',
 		bgcolor: 'background.default',
 	},
 	dialogActions: {
 		bgcolor: 'background.default',
 	},
+  disablePadding: {
+    p: 0,
+  },
 	secondaryActions: {
 		display: 'flex',
 		flexDirection: 'row',

@@ -66,7 +66,7 @@ const TextInput: React.FC<TextInputPropsType> = (props) => {
 				spacing={1}
 			>
 				{label && (
-					<Typography sx={sx.label} variant="caption" color="textSecondary">
+					<Typography sx={sx.label} variant="caption" color="text.secondary">
 						{label}
 					</Typography>
 				)}
