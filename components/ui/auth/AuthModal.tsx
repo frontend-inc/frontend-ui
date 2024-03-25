@@ -24,7 +24,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 
 	const { authOpen, setAuthOpen } = useContext(AppContext)
 
-	const { logo, disableUsername = false } = props || {}
+	const { logo } = props || {}
 
 	const {
 		errors,
@@ -102,7 +102,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 	}, [authOpen])
 
 	return (
-		<Modal open={authOpen} handleClose={() => setAuthOpen(false)} p={4}>
+		<Modal open={authOpen} handleClose={() => setAuthOpen(false)} disablePadding>
 			<Box sx={sx.logo}>
 				<Image src={logo} alt="Logo" height={48} width={48} />
 			</Box>

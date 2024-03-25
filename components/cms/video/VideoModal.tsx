@@ -50,7 +50,6 @@ const VideoModal: React.FC<VideoModalProps> = (props) => {
 				open={open}
 				handleClose={handleClose}
 				maxWidth="md"
-				p={0}
 				title={title}
 				actions={
 					<>

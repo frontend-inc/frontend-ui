@@ -17,8 +17,7 @@ const TextModal: React.FC<TextModalProps> = (props) => {
 			open={open}
 			handleClose={handleClose}
 			title={title}
-			maxWidth="md"
-			p={2}
+			maxWidth="md"			
 		>
 			<Typography my={2} variant="body2" sx={sx.text}>
 				{text}

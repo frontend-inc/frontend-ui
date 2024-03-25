@@ -32,7 +32,7 @@ const ImageModal: React.FC<ImageModalProps> = (props) => {
 			handleClose={handleClose}
 			title={title}
 			maxWidth="md"
-			p={0}
+			disablePadding
 			actions={
 				<>
 					<Button onClick={handleCopyUrlClick}>Copy URL</Button>
