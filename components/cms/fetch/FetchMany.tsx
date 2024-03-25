@@ -1,14 +1,19 @@
 import React, { useEffect } from 'react'
-import { useResourceContext } from 'frontend-js'
+import { QueryParamsType, useResourceContext } from 'frontend-js'
 
 type FetchManyProps = {
 	url: string
 	children: any
-	defaultQuery: Record<string, any>
+	defaultQuery: QueryParamsType
 }
 
 const FetchMany: React.FC<FetchManyProps> = (props) => {
-	const { children, url, defaultQuery = {} } = props
+	const { children, url, defaultQuery = {
+    sort_by: 'id',
+    sort_direction: 'desc',
+    per_page: 20,
+    page: 1
+  } } = props
 
 	const { findMany } = useResourceContext({
 		url,

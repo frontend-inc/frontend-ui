@@ -115,6 +115,8 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		setActiveFilters([])
 		findMany({
 			filters: {},
+      sort_by: 'id',
+      sort_direction: 'desc',
 			keywords: '',
 			page: 1,
 			per_page: perPage,

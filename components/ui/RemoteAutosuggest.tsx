@@ -32,7 +32,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		handleChange,
 		valueParam = 'id',
 		placeholder = 'Search',
-		defaultQuery = null,
+		defaultQuery = {},
 		direction = 'column',
 		defaultOptions = [],
 	} = props
@@ -88,6 +88,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 
 	useEffect(() => {
 		if (url) {
+      //@ts-ignore
 			findMany(defaultQuery)
 		}
 	}, [url])

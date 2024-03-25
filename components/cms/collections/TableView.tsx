@@ -51,6 +51,8 @@ const TableView: React.FC<TableViewProps> = (props) => {
 		findMany({
 			...query,
 			filters: {},
+      sort_by: 'id',
+      sort_direction: 'desc',
 			keywords: '',
 		})
 	}
