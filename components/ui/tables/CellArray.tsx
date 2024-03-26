@@ -31,7 +31,7 @@ const CellArray: React.FC<CellArrayProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-			{visibleTags.map((value, index) => (
+			{visibleTags?.map((value, index) => (
 				<Label key={index} label={value} />
 			))}
 			{!open && (

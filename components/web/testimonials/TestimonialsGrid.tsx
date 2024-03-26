@@ -5,16 +5,16 @@ import TestimonialCard from './TestimonialCard'
 
 type TestimonialsGridProps = {
 	size?: 'small' | 'large'
-	testimonials: Record<string, any>[]
+	items: Record<string, any>[]
 }
 
 const TestimonialsGrid: React.FC<TestimonialsGridProps> = (props) => {
-	const { size = 'small', testimonials = [] } = props
+	const { size = 'small', items = [] } = props
 
 	return (
 		<Box sx={sx.root}>
 			<Grid container spacing={0}>
-				{testimonials?.map((testimonial, i) => (
+				{items?.map((testimonial, i) => (
 					<Grid item key={i} xs={12} sm={6} md={4}>
 						<Box sx={sx.item}>
 							<TestimonialCard
@@ -29,7 +29,7 @@ const TestimonialsGrid: React.FC<TestimonialsGridProps> = (props) => {
 					</Grid>
 				))}
 			</Grid>
-			{testimonials?.length === 0 && (
+			{items?.length === 0 && (
 				<Placeholder
 					icon={'Rating'}
 					title="No testimonials yet."

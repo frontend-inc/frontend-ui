@@ -4,7 +4,7 @@ import { Placeholder, Swipeable } from '../..'
 import TestimonialCard from './TestimonialCard'
 
 type SwipeableTestimonialsProps = {
-	testimonials: Record<string, any>[]
+	items: Record<string, any>[]
 	enableAutoPlay?: boolean
 	enableArrows?: boolean
 }
@@ -13,13 +13,13 @@ const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
 	const {
 		enableAutoPlay = false,
 		enableArrows = false,
-		testimonials = [],
+		items = [],
 	} = props
 
 	return (
 		<Box>
 			<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
-				{testimonials?.map((testimonial, i) => (
+				{items?.map((testimonial, i) => (
 					<Box sx={sx.item} key={i}>
 						<TestimonialCard
 							size="large"
@@ -31,7 +31,7 @@ const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
 					</Box>
 				))}
 			</Swipeable>
-			{testimonials?.length === 0 && (
+			{items?.length === 0 && (
 				<Placeholder
 					icon={'Star'}
 					title="No testimonials yet."
