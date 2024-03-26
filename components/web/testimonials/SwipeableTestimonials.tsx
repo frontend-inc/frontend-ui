@@ -1,8 +1,7 @@
 import React from 'react'
-import { Grid, Box, Stack } from '@mui/material'
-import { Icon, Placeholder, Swipeable } from '../..'
+import { Box } from '@mui/material'
+import { Placeholder, Swipeable } from '../..'
 import TestimonialCard from './TestimonialCard'
-import { Typography } from '@mui/material'
 
 type SwipeableTestimonialsProps = {
 	testimonials: Record<string, any>[]
@@ -24,10 +23,10 @@ const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
 					<Box sx={sx.item} key={i}>
 						<TestimonialCard
 							size="large"
-							image={testimonial.avatar}
-							author={testimonial.author}
+							image={testimonial.image}
+							author={testimonial.title}
 							rating={testimonial.rating}
-							text={testimonial.text}
+							text={testimonial.description}
 						/>
 					</Box>
 				))}

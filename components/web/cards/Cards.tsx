@@ -64,7 +64,7 @@ const Cards: React.FC<CardsProps> = (props) => {
 			)}
 			{layout == 'grid' && (
 				<Grid container spacing={2}>
-					{items.map((card, i) => (
+					{items?.map((card, i) => (
 						<Grid item xs={12} sm={4} md={4} key={i}>
 							<CollectionCard
 								layout={layout}

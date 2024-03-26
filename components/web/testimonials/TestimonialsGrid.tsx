@@ -20,10 +20,10 @@ const TestimonialsGrid: React.FC<TestimonialsGridProps> = (props) => {
 							<TestimonialCard
 								key={i}
 								size={size}
-								image={testimonial.avatar}
-								author={testimonial.author}
+								image={testimonial.image}
+								author={testimonial.title}
 								rating={testimonial.rating}
-								text={testimonial.text}
+								text={testimonial.description}
 							/>
 						</Box>
 					</Grid>
