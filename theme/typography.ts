@@ -46,22 +46,22 @@ export const typography = {
 	},
 	subtitle1: {
 		fontFamily: 'Inter',
-		fontSize: 16,
+		fontSize: 17,
 		fontWeight: 600,
 		lineHeight: '1.5em',
 		textTransform: 'none',
 	},
 	subtitle2: {
 		fontFamily: 'Inter',
-		fontWeight: 500,
+		fontWeight: 400,
 		fontSize: 16,
 		lineHeight: '1.5em',
 	},
 	body1: {
 		fontFamily: 'Inter',
 		textTransform: 'none',
-		fontWeight: 500,
-		fontSize: 14,
+		fontWeight: 400,
+		fontSize: 15,
 		'@media (max-width:600px)': {
 			fontSize: 15,
 		},
@@ -70,7 +70,7 @@ export const typography = {
 		fontFamily: 'Inter',
 		textTransform: 'none',
 		fontWeight: 400,
-		fontSize: 14,
+		fontSize: 15,
 		'@media (max-width:600px)': {
 			fontSize: 16,
 		},
