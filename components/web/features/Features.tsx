@@ -23,7 +23,7 @@ const Features: React.FC<FeaturesProps> = (props) => {
 						{title}
 					</Typography>
 				)}
-				{items.map((item, i) => (
+				{items?.map((item, i) => (
 					<Grid item xs={12} sm={4} md={4} key={i}>
 						<Box sx={sx.item}>
 							<Feature
