@@ -20,9 +20,9 @@ const Heading: React.FC<HeadingProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Stack sx={sx.stack} direction={'column'} spacing={1}>
+		<Stack sx={sx.stack} direction={'column'} spacing={0}>
 			{label && (
-				<Typography color="primary" sx={sx.label} variant="caption">
+				<Typography color="text.secondary" variant="caption">
 					{label}
 				</Typography>
 			)}
@@ -59,10 +59,7 @@ export default Heading
 const sx = {
 	stack: {
 		width: '100%',
-		mb: 2,
-	},
-	label: {
-		color: 'primary.main',
+		pb: 3
 	},
 	text: {
 		width: '100%',

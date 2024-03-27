@@ -14,7 +14,7 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 		description,
 		image = '',
 		href,
-		height = 140,
+		height = 180,
 		buttonText,
 		textVariant = 'subtitle1',
 		handleClick,
@@ -42,7 +42,7 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 				width: '100%',
 			}}
 		>
-			<Stack flexDirection="row">
+			<Stack spacing={1} flexDirection={{ xs: 'column', sm: 'row'}}>
 				<Box sx={sx.image}>
 					<TouchableOpacity handleClick={handleItemClick}>
 						<Image
@@ -62,7 +62,7 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 							{truncate(title)}
 						</Typography>
 						<Typography
-							color="textSecondary"
+							color="text.secondary"
 							variant="body2"
 							sx={sx.description}
 						>
@@ -117,15 +117,25 @@ const sx = {
 		borderColor: 'divider',
 	},
 	image: {
-		mr: 2,
-		width: 140,
+    pr: {
+      sm: 2,
+      xs: 0
+    },
+    mr: {
+      sm: 2,
+      xs: 0 
+    },
+		width: {
+      sm: 220,
+      xs: '100%',
+    },
 		height: '100%',
 	},
 	content: {
-		py: 1,
 		justifyContent: 'flex-start',
 		alignItems: 'flex-start',
 		height: '100%',
+    py: 1,    
 	},
 	description: {
 		maxWidth: '320px',

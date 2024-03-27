@@ -33,7 +33,7 @@ const CoverImage: React.FC<CoverImageProps> = (props) => {
 		buttonText,
 		handleClick,
 		image,
-		height = 400,
+		height = 520,
 		objectFit = 'cover',
 		alt = 'image',
 		enableGradient = false,
@@ -79,7 +79,7 @@ const CoverImage: React.FC<CoverImageProps> = (props) => {
 				>
 					{title && (
 						<Typography
-							variant={'h4'}
+							variant={'h3'}
 							color="text.primary"
 							sx={{
 								textAlign: alignItems === 'center' ? 'center' : 'left',
@@ -90,7 +90,7 @@ const CoverImage: React.FC<CoverImageProps> = (props) => {
 					)}
 					{description && (
 						<Typography
-							variant="body1"
+							variant="subtitle1"
 							color="text.primary"
 							sx={{
 								textAlign: alignItems === 'center' ? 'center' : 'left',

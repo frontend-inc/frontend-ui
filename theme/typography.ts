@@ -1,6 +1,6 @@
 export const typography = {
 	h1: {
-		fontFamily: 'Inter',
+		fontFamily: 'Instrument Sans',
 		fontWeight: 600,
 		fontSize: 64,
 		lineHeight: '1.1em',
@@ -9,7 +9,7 @@ export const typography = {
 		},
 	},
 	h2: {
-		fontFamily: 'Inter',
+		fontFamily: 'Instrument Sans',
 		fontWeight: 500,
 		fontSize: 48,
 		'@media (max-width:600px)': {
@@ -17,8 +17,8 @@ export const typography = {
 		},
 	},
 	h3: {
-		fontFamily: 'Inter',
-		fontWeight: 700,
+		fontFamily: 'Instrument Sans',
+		fontWeight: 600,
 		textIndent: 0,
 		fontSize: 40,
 		'@media (max-width:600px)': {
@@ -27,34 +27,34 @@ export const typography = {
 		lineHeight: '1.3em',
 	},
 	h4: {
-		fontFamily: 'Inter',
-		fontSize: 26,
+		fontFamily: 'Instrument Sans',
+		fontSize: 28,
 		fontWeight: 700,
 		'@media (max-width:600px)': {
 			fontSize: 20,
 		},
 	},
 	h5: {
-		fontFamily: 'Inter',
-		fontWeight: 600,
-		fontSize: 20,
+		fontFamily: 'Instrument Sans',
+		fontWeight: 500,
+		fontSize: 26,
 	},
 	h6: {
-		fontFamily: 'Inter',
-		fontWeight: 600,
-		fontSize: 18,
+		fontFamily: 'Instrument Sans',
+		fontWeight: 500,
+		fontSize: 24,
 	},
 	subtitle1: {
 		fontFamily: 'Inter',
-		fontSize: 17,
-		fontWeight: 600,
+		fontSize: 20,
+		fontWeight: 500,
 		lineHeight: '1.5em',
 		textTransform: 'none',
 	},
 	subtitle2: {
 		fontFamily: 'Inter',
-		fontWeight: 400,
-		fontSize: 16,
+		fontWeight: 500,
+		fontSize: 17,
 		lineHeight: '1.5em',
 	},
 	body1: {
@@ -83,8 +83,8 @@ export const typography = {
 	},
 	caption: {
 		fontFamily: 'Inter',
-		fontWeight: 600,
-		fontSize: 14,
+		fontWeight: 500,
+		fontSize: 15,
 		letterSpacing: 'auto',
 	},
 	overline: {

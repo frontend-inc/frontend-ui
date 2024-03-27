@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react'
-import { TextInput, Placeholder } from '../../../components'
+import { SearchInput, TextInput, Placeholder } from '../../../components'
 import { ProductGrid } from '../../../components/shopify'
 import {
 	AppBar,
@@ -80,7 +80,7 @@ const SearchModal: React.FC = () => {
 					<Stack sx={sx.searchContainer} direction="row" spacing={1}>
 						<Box sx={sx.spacer}></Box>
 						<Box sx={sx.searchInput}>
-							<TextInput
+							<SearchInput
 								name="keywords"
 								value={keywords}
 								handleChange={handleChange}

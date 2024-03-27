@@ -17,7 +17,7 @@ const Feature: React.FC<FeatureProps> = (props) => {
 					<Icon name={icon} color="primary.contrastText" size={24} />
 				</Avatar>
 			)}
-			<Stack direction="column" spacing={0}>
+			<Stack direction="column" spacing={1}>
 				<Typography sx={sx.text} color="text.primary" variant="subtitle1">
 					{title}
 				</Typography>

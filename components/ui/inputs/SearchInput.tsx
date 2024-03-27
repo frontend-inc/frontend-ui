@@ -58,8 +58,8 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
 			)}
 			<InputBase
 				sx={{
-					...sx.inputBase,
 					...inputSx.inputBase,
+          ...sx.inputBase,
 					...styles,
 				}}
 				type="text"
@@ -88,5 +88,10 @@ const sx = {
 	},
 	inputBase: {
 		minWidth: '165px',
+    '& input, & .MuiInputBase-inputMultiline': {			
+      ...inputSx.inputBase['& input, & .MuiInputBase-inputMultiline'],
+			fontSize: (theme) => theme.typography.subtitle1.fontSize,
+			fontFamily: (theme) => theme.typography.subtitle1.fontFamily,
+    }
 	},
 }

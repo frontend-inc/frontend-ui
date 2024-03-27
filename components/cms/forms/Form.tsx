@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useResource } from 'frontend-js'
-import { Stack, Button } from '@mui/material'
+import { Stack, Box, Button } from '@mui/material'
 import { ButtonLoader, Placeholder } from '../..'
 import FormField from './FormField'
+import { Heading } from '../../../components'
 import { SYSTEM_FIELDS } from '../../../constants/index'
 import { get } from 'lodash'
 
 type FormProps = {
 	handle: string
+  title?: string
 	url: string
 	buttonText?: string
 	variant?: 'contained' | 'outlined' | 'text'
@@ -16,7 +18,7 @@ type FormProps = {
 }
 
 const Form: React.FC<FormProps> = (props) => {
-	const { handle, buttonText, variant, fields, url } = props
+	const { handle, buttonText='Submit', title, fields, url } = props
 
 	const [submitted, setSubmitted] = useState(false)
 
@@ -72,8 +74,13 @@ const Form: React.FC<FormProps> = (props) => {
 			findOne(handle)
 		}
 	}, [handle])
-
-	return !submitted ? (
+  
+	return(
+  !submitted ? (
+  <Box sx={ sx.root }>
+    { title && (
+      <Heading title={title} />
+    )}
 		<Stack spacing={1} sx={sx.root}>
 			{fields?.map((field, index) =>
 				SYSTEM_FIELDS.includes(field.name) ? (
@@ -100,9 +107,10 @@ const Form: React.FC<FormProps> = (props) => {
 				disabled={loading}
 				endIcon={<ButtonLoader color="primary" loading={loading} />}
 			>
-				{buttonText ? buttonText : 'Submit'}
+				{buttonText}
 			</Button>
 		</Stack>
+  </Box>
 	) : (
 		<Placeholder
 			enableBorder
@@ -116,6 +124,7 @@ const Form: React.FC<FormProps> = (props) => {
 			}
 		/>
 	)
+  )
 }
 
 export default Form

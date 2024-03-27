@@ -60,7 +60,7 @@ const sx = {
 	list: {
 		display: 'flex',
 		flexDirection: 'column',
-		gap: '16px',
+		gap: '24px',
 	},
 	grid: {
 		display: 'grid',
@@ -68,6 +68,6 @@ const sx = {
 			md: '1fr 1fr 1fr',
 			xs: '1fr',
 		},
-		gap: '16px',
+		gap: '24px',
 	},
 }

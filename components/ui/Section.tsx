@@ -19,8 +19,8 @@ const Section: React.FC<SectionProps> = (props) => {
 		textAlign = 'left',
 		bgcolor,
 		maxWidth,
-		py = 4,
-		px = 2,
+		py = 6,
+		px = 3,
 	} = props
 
 	const [width, setWidth] = useState<string | number>(
