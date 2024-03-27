@@ -19,10 +19,10 @@ type FeaturedProps = {
 }
 
 const Featured: React.FC<FeaturedProps> = (props) => {
-	const { title, items, enableBorder, enableGradient, enableOverlay } =
+	const { title, items=[], enableBorder, enableGradient, enableOverlay } =
 		props || {}
-
-	return (
+  
+  return (
 		<Box>
 			{title && <Heading title={title} textAlign='center' />}
 			<Stack spacing={4}>
@@ -42,9 +42,9 @@ const Featured: React.FC<FeaturedProps> = (props) => {
 			</Stack>
 			{items?.length == 0 && (
 				<Placeholder
-					icon="Search"
-					title="No content"
-					description="Your content will appear here."
+					icon="LayoutList"
+					title="No featured content."
+					description="Your featured content will appear here."
 				/>
 			)}
 		</Box>

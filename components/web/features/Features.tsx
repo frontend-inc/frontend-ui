@@ -13,7 +13,7 @@ type FeaturesProps = {
 }
 
 const Features: React.FC<FeaturesProps> = (props) => {
-	const { title, items } = props || {}
+	const { title, items=[] } = props || {}
 
 	return (
 		<>
@@ -37,9 +37,9 @@ const Features: React.FC<FeaturesProps> = (props) => {
 			</Grid>
 			{items?.length == 0 && (
 				<Placeholder
-					icon="Search"
-					title="No content"
-					description="Your content will appear here."
+					icon="Zap"
+					title="No features"
+					description="Your features will appear here."
 				/>
 			)}
 		</>

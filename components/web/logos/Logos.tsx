@@ -40,7 +40,7 @@ const Logos: React.FC<LogosProps> = (props) => {
 			</Stack>
 			{items?.length === 0 && (
 				<Placeholder
-					icon="Search"
+					icon="Image"
 					title="No logos"
 					description="Logos will appear here"
 				/>

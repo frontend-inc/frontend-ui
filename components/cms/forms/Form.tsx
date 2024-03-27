@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useResource } from 'frontend-js'
 import { Stack, Button } from '@mui/material'
 import { ButtonLoader, Placeholder } from '../..'
-import { Check } from 'lucide-react'
 import FormField from './FormField'
 import { SYSTEM_FIELDS } from '../../../constants/index'
 import { get } from 'lodash'
@@ -95,7 +94,8 @@ const Form: React.FC<FormProps> = (props) => {
 				)
 			)}
 			<Button
-				variant={variant}
+        size="large"
+				variant='contained'
 				onClick={handleSubmit}
 				disabled={loading}
 				endIcon={<ButtonLoader color="primary" loading={loading} />}
@@ -124,4 +124,7 @@ const sx = {
 	root: {
 		width: '100%',
 	},
+  button: {
+    mt: 2
+  }
 }

@@ -76,6 +76,7 @@ export default MobileNav
 
 const sx = {
 	appBar: {
+    height: 64,
 		position: 'absolute',
 		zIndex: (theme) => theme.zIndex.appBar,
 		bgcolor: 'background.default',

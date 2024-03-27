@@ -7,6 +7,7 @@ export const SYSTEM_FIELDS = [
 	'title',
 	'description',
 	'handle',
+  'label',
 	'shopify_handle',
 	'published',
 	'locale',

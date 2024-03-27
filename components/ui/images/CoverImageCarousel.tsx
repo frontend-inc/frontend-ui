@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
-import { Swipeable, CoverImage } from '../../../components'
+import { Swipeable, CoverImage, Placeholder } from '../../../components'
 import { useRouter } from 'next/router'
 
 type CoverImageCarouselProps = {
@@ -51,6 +51,7 @@ const CoverImageCarousel: React.FC<CoverImageCarouselProps> = (props) => {
 	}
 
 	return (
+    <>
 		<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
 			{items?.map((item, index) => (
 				<CoverImage
@@ -69,6 +70,14 @@ const CoverImageCarousel: React.FC<CoverImageCarouselProps> = (props) => {
 				/>
 			))}
 		</Swipeable>
+    { items?.length === 0 && (
+      <Placeholder 
+        icon="Image"
+        title="No cover images"
+        description="Cover images will appear here."  
+      />
+    )}
+    </>
 	)
 }
 

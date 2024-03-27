@@ -24,9 +24,7 @@ type CollectionCardProps = {
 }
 
 const CollectionCard: React.FC<CollectionCardProps> = (props) => {
-	const { ...rest } = props
-  const layout = 'list'
-  const style = 'card'
+	const { layout = 'list', style = 'card', ...rest } = props
 
 	const COMPONENTS = {
 		list: {
