@@ -22,7 +22,6 @@ const Accordion: React.FC<AccordionProps> = (props) => {
           <Heading title={ title } />
         )}				
 			</Stack>
-      <Accordion sx={sx.root} elevation={0}>
 			{items?.map((item, i) => (
 				<AccordionItem
 					key={i}
@@ -31,7 +30,6 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 					image={item?.image}
 				/>
 			))}
-      </Accordion>
 			{items?.length == 0 && (
 				<Placeholder
 					icon="Search"
