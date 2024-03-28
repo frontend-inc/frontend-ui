@@ -11,9 +11,7 @@ import {
 	CircularProgress,
 	Box,
 } from '@mui/material'
-import { useMenu } from '../../../hooks'
 import { MenuLinkType } from '../../..'
-import { ExpandMore } from '@mui/icons-material'
 import { Icon } from '../..'
 import { useCollections } from 'frontend-shopify'
 import { useRouter } from 'next/router'
@@ -30,7 +28,7 @@ const SublinkMenuItem: React.FC<SublinkMenuItemProps> = (props) => {
 			<ListItemButton onClick={handleClick}>
 				<ListItemText
 					primary={
-						<Typography variant="button" color="text.primary">
+						<Typography variant="subtitle2" color="text.primary">
 							{label}
 						</Typography>
 					}
@@ -105,7 +103,7 @@ const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 				<ListItemButton onClick={() => handleMenuClick(menuItem)}>
 					<ListItemText
 						primary={
-							<Typography variant="button" color="text.primary">
+							<Typography variant="subtitle2" color="text.primary">
 								{menuItem.name}
 							</Typography>
 						}

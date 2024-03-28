@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Stack, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
 import { Icon, Text } from '../..'
 
@@ -35,6 +35,7 @@ const sx = {
 		borderTop: '1px solid',
 		borderColor: 'divider',
 		my: '0px !important',
+    py: 1
 	},
 	imageContainer: {
 		width: 256,

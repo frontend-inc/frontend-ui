@@ -96,9 +96,9 @@ const sx = {
 	root: {
 		width: {
 			xs: '100vw',
-			md: '320px',
+			md: '360px',
 		},
-		maxWidth: '320px',
+		maxWidth: '360px',
 	},
 	fullWidth: {
 		width: '100vw',

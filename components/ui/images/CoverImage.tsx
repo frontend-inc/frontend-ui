@@ -90,7 +90,7 @@ const CoverImage: React.FC<CoverImageProps> = (props) => {
 					)}
 					{description && (
 						<Typography
-							variant="subtitle1"
+							variant="subtitle2"
 							color="text.primary"
 							sx={{
 								textAlign: alignItems === 'center' ? 'center' : 'left',

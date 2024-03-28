@@ -1,7 +1,7 @@
 export const typography = {
 	h1: {
 		fontFamily: 'Instrument Sans',
-		fontWeight: 600,
+		fontWeight: 500,
 		fontSize: 64,
 		lineHeight: '1.1em',
 		'@media (max-width:600px)': {
@@ -18,7 +18,7 @@ export const typography = {
 	},
 	h3: {
 		fontFamily: 'Instrument Sans',
-		fontWeight: 600,
+		fontWeight: 500,
 		textIndent: 0,
 		fontSize: 40,
 		'@media (max-width:600px)': {
@@ -29,7 +29,7 @@ export const typography = {
 	h4: {
 		fontFamily: 'Instrument Sans',
 		fontSize: 28,
-		fontWeight: 700,
+		fontWeight: 500,
 		'@media (max-width:600px)': {
 			fontSize: 20,
 		},

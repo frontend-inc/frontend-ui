@@ -1,7 +1,6 @@
 import React from 'react'
 import { Stack } from '@mui/material'
-import { AccordionItem, Placeholder } from '../..'
-import { Typography } from '@mui/material'
+import { AccordionItem, Placeholder, Heading } from '../../../components'
 
 type AccordionProps = {
 	title?: string
@@ -19,10 +18,11 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 	return (
 		<Stack spacing={1} sx={sx.root}>
 			<Stack direction="row" justifyContent={'space-between'} spacing={1}>
-				<Typography variant="h5" sx={sx.title} color="textPrimary">
-					{title}
-				</Typography>
+        { title && (
+          <Heading title={ title } />
+        )}				
 			</Stack>
+      <Accordion sx={sx.root} elevation={0}>
 			{items?.map((item, i) => (
 				<AccordionItem
 					key={i}
@@ -31,6 +31,7 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 					image={item?.image}
 				/>
 			))}
+      </Accordion>
 			{items?.length == 0 && (
 				<Placeholder
 					icon="Search"

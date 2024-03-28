@@ -34,7 +34,7 @@ const SideNavCartButton: React.FC<SideNavCartButtonProps> = (props) => {
 			<ListItemButton onClick={handleClick}>
 				<ListItemText
 					primary={
-						<Typography variant="button" color="text.primary">
+						<Typography variant="subtitle2" color="text.primary">
 							{label}
 						</Typography>
 					}

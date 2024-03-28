@@ -37,7 +37,7 @@ const SideNavSearchButton: React.FC<SideNavSearchButtonProps> = (props) => {
 			<ListItemButton onClick={handleClick}>
 				<ListItemText
 					primary={
-						<Typography variant="button" color="text.primary">
+						<Typography variant="subtitle2" color="text.primary">
 							Search
 						</Typography>
 					}

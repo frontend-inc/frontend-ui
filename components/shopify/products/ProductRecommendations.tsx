@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useProducts } from 'frontend-shopify'
-import { Typography } from '@mui/material'
 import { ProductGrid, ProductCarousel } from '../../../components/shopify'
+import { Heading } from '../../../components'
 import { Box } from '@mui/material'
 
 type ProductRecommendationsProps = {
@@ -74,9 +74,7 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 	return (
 		<Box sx={sx.root}>
 			{title && (
-				<Typography color="textPrimary" variant="h5">
-					{title}
-				</Typography>
+				<Heading title={ title } />
 			)}
 			{layout == 'grid' && (
 				<ProductGrid

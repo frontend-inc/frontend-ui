@@ -16,7 +16,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		title,
 		description,
 		textAlign,
-		textVariant = 'h6',
+		textVariant = 'h4',
 	} = props || {}
 
 	return (
@@ -59,7 +59,7 @@ export default Heading
 const sx = {
 	stack: {
 		width: '100%',
-		pb: 3
+		pb: 4
 	},
 	text: {
 		width: '100%',
