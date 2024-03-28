@@ -60,18 +60,20 @@ export default DropZone
 
 const sx = {
 	dropZone: {
-		m: 0,
+		m: '1px',
 		p: 2,
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
 		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
-		border: '1px solid',
+		border: '2px solid',
 		borderColor: 'divider',
 		bgcolor: 'background.paper',
 		textAlign: 'center',
 		'&:hover': {
+      m: 0,
+      border: '3px solid',
 			cursor: 'pointer',
 			borderColor: 'primary.main',
 		},

@@ -113,12 +113,12 @@ const Form: React.FC<FormProps> = (props) => {
   </Box>
 	) : (
 		<Placeholder
-			enableBorder
-			icon={'Check'}
+			icon={'CheckCircle'}
 			title="Success"
 			description="Your form has been submitted"
 			actions={
-				<Button variant="outlined" onClick={() => setSubmitted(false)}>
+				<Button 
+          variant="contained" onClick={() => setSubmitted(false)}>
 					Done
 				</Button>
 			}

@@ -15,7 +15,6 @@ export const sx = {
 			border: '2px solid',
 			borderColor: 'divider',
 			m: '1px',
-			boxShadow: `0 1px 3px 0 rgb(120 120 175 / 20%)`,
 			'&:focus': {
 				m: '0px',
 				boxShadow: `none`,

@@ -23,25 +23,30 @@ const Placeholder: React.FC<PlaceholderProps> = (props) => {
 	} = props
 
 	return (
-		<Stack spacing={1} sx={{ ...sx.root, ...(enableBorder && sx.border) }}>
-			{icon && <Icon name={icon} size={24} color={color} />}
-			<Stack>
-				<Typography sx={sx.title} variant="button">
+		<Box 
+      sx={{ 
+      ...sx.root, 
+      ...(enableBorder && sx.border) 
+      }}
+    >
+			<Stack spacing={1} alignItems="center">
+        {icon && <Icon name={icon} size={24} color={color} />}
+				<Typography sx={sx.title} variant="subtitle2">
 					{title}
 				</Typography>
-				<Typography sx={sx.description} variant="body2" color="textSecondary">
+				<Typography sx={sx.description} variant="body1" color="textSecondary">
 					{description}
 				</Typography>
 				{actions && <Box sx={sx.actions}>{actions}</Box>}
 			</Stack>
-		</Stack>
+		</Box>
 	)
 }
 export default Placeholder
 
 const sx = {
 	root: {
-		p: 2,
+		p: 4,
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
