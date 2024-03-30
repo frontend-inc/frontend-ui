@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAlerts } from '../../../hooks'
 import { Modal } from '../../../components'
-import { Box, Button } from '@mui/material'
+import { Box, Button, CircularProgress } from '@mui/material'
 import copy from 'copy-to-clipboard'
 import Image from 'next/image'
 
@@ -48,6 +48,7 @@ const ImageModal: React.FC<ImageModalProps> = (props) => {
 					src={image?.url}
 					height={image?.height || 500}
 					width={image?.width || 500}
+          placeholder="blur"
 					style={{
 						width: '100%',
 						objectFit: 'contain',

@@ -25,7 +25,7 @@ const Featured: React.FC<FeaturedProps> = (props) => {
   return (
 		<Box>
 			{title && <Heading title={title} textAlign='center' />}
-			<Stack spacing={4}>
+			<Stack spacing={6}>
 				{items?.map((item, i) => (
 					<FeaturedCard
 						title={item?.title}

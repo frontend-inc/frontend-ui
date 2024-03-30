@@ -30,10 +30,7 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
 				<Divider />
 				<Typography variant="body1" color="text.primary" sx={sx.features}>
 					{price.features}
-				</Typography>
-				<Typography variant="body1" color="text.secondary" sx={sx.nonFeatures}>
-					{price.disabledFeatures}
-				</Typography>
+				</Typography>				
 			</Stack>
 			<Button
 				onClick={handleClick}
@@ -67,11 +64,5 @@ const sx = {
 		whiteSpace: 'pre-line',
 		color: 'text.primary',
 		mb: 0,
-	},
-	nonFeatures: {
-		mt: 0,
-		whiteSpace: 'pre-line',
-		textDecoration: 'line-through',
-		color: 'text.secondary',
-	},
+	},	
 }
