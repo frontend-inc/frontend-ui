@@ -7,7 +7,6 @@ type CollectionCoverImageProps = {
 	editing?: boolean
 	height?: number
 	width?: number
-	objectFit?: 'cover' | 'contain'
 	alignItems?: 'flex-start' | 'center' | 'flex-end'
 	alt?: string
 	handleClick?: () => void
@@ -23,8 +22,7 @@ const CollectionCoverImage: React.FC<CollectionCoverImageProps> = (props) => {
 		shopifyCollection,
 		editing = false,
 		handleClick,
-		height = 400,
-		objectFit = 'cover',
+		height = 400,		
 		alt = 'image',
 		enableGradient = false,
 		enableOverlay = false,
@@ -45,8 +43,7 @@ const CollectionCoverImage: React.FC<CollectionCoverImageProps> = (props) => {
 			height={height}
 			title={shopifyCollection?.title}
 			description={shopifyCollection?.description}
-			image={shopifyCollection?.image?.url}
-			objectFit={objectFit}
+			image={shopifyCollection?.image?.url}			
 			alt={alt}
 			alignItems={alignItems}
 			href={href}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Box } from '@mui/material'
 import { useGoogleLogin } from '@react-oauth/google';
-import { useAuth } from 'frontend-js/hooks'
+import { useAuth } from 'frontend-js'
 import { ButtonLoader } from '../../../components'
 
 const GoogleIcon = `
