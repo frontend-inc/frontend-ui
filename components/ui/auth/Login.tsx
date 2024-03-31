@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { LoginForm, AuthScreen, LayoutLoader } from '../../../components'
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
-import { GoogleLogin } from '@react-oauth/google';
 
 type LoginProps = {
 	redirectUrl: string
@@ -36,6 +35,10 @@ const Login: React.FC<LoginProps> = (props) => {
 		}
 	}
 
+  const handleGoogleSuccess = () => {
+    router.push(redirectUrl)
+  }
+
 	const handleSignup = () => {
 		router.push(signupUrl)
 	}
@@ -52,7 +55,6 @@ const Login: React.FC<LoginProps> = (props) => {
 		<LayoutLoader loading={loading}>
 			<AuthScreen title={title} subtitle={subtitle}>
 				<LoginForm
-          enableGoogle={enableGoogle}
 					errors={errors}
 					loading={loading}
 					user={user}          
@@ -61,6 +63,8 @@ const Login: React.FC<LoginProps> = (props) => {
 					handleOneTimePassword={oneTimePasswordUrl && handleOneTimePassword}
 					handleSignup={signupUrl && handleSignup}
 					handleForgotPassword={forgotPasswordUrl && handleForgotPassword}
+          enableGoogle={enableGoogle}
+          handleGoogleSuccess={ handleGoogleSuccess }
 				/>
 			</AuthScreen>
 		</LayoutLoader>

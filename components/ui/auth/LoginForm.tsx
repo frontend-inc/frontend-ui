@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Divider, Stack } from '@mui/material'
-import { TextInput, IconLoader } from '../../../components'
-import { GoogleLogin } from '@react-oauth/google';
+import { GoogleLoginButton, TextInput, IconLoader } from '../../../components'
 
 type LoginFormProps = {
 	errors?: any
@@ -13,6 +12,7 @@ type LoginFormProps = {
 	handleForgotPassword: () => void
 	handleSignup: () => void
 	handleOneTimePassword?: () => void
+  handleGoogleSuccess?: () => void
 }
 
 const LoginForm: React.FC<LoginFormProps> = (props) => {
@@ -25,24 +25,18 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 		handleForgotPassword,
 		handleSignup,
 		handleOneTimePassword,
-    enableGoogle=false 
+    enableGoogle=false,
+    handleGoogleSuccess 
 	} = props
 
 	return (
-		<Stack spacing={1}>
+		<Stack sx={ sx.root } spacing={2} divider={ <Divider />}>
       { enableGoogle && (
-        <>
-       <GoogleLogin
-        onSuccess={credentialResponse => {
-            console.log(credentialResponse);
-          }}
-          onError={() => {
-            console.log('Login Failed');
-          }}
-        />
-        <Divider />
-        </>      
+          <GoogleLoginButton 
+            handleSuccess={handleGoogleSuccess}          
+          />
       )}
+      <Stack spacing={1}>
 			<TextInput
 				errors={errors}
 				name="email"
@@ -60,6 +54,7 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 			/>
 			<Button
 				fullWidth
+        size="large"
 				color="primary"
 				onClick={handleSubmit}
 				variant="contained"
@@ -88,12 +83,16 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 				</Button>
 			)}
 		</Stack>
+    </Stack>
 	)
 }
 
 export default LoginForm
 
 const sx = {
+  root: {
+    mt: 2
+  },
 	button: {
 		color: 'text.primary',
 	},
