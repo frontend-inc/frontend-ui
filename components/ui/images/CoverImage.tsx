@@ -12,7 +12,6 @@ type CoverImageProps = {
 	image?: string
 	height?: number
 	width?: number
-	objectFit?: 'cover' | 'contain'
 	alignItems?: 'flex-start' | 'center' | 'flex-end'
 	alt?: string
 	handleClick?: () => void
@@ -34,7 +33,6 @@ const CoverImage: React.FC<CoverImageProps> = (props) => {
 		handleClick,
 		image,
 		height = 520,
-		objectFit = 'cover',
 		alt = 'image',
 		enableGradient = false,
 		enableOverlay = false,
@@ -58,7 +56,7 @@ const CoverImage: React.FC<CoverImageProps> = (props) => {
 				src={image}
 				alt={alt}
 				height={height}
-				objectFit={objectFit}
+				objectFit={'cover'}
 				disableBorderRadius
 				bgcolor={overlayColor}
 				enableGradient={enableGradient}
