@@ -1,5 +1,5 @@
 import React from 'react'
-import { Badge, Box, Menu, MenuItem } from '@mui/material'
+import { Divider, Badge, Box, Menu, MenuItem } from '@mui/material'
 
 type UserMenuProps = {
 	open: boolean
@@ -15,6 +15,7 @@ const UserMenu: React.FC<UserMenuProps> = (props) => {
 	return (
 		<Menu open={open} onClose={toggleMenu} anchorEl={anchorEl}>
 			<MenuItem onClick={() => handleClick('/my-account')}>My Account</MenuItem>
+      <Divider />
 			<MenuItem onClick={handleLogoutClick}>
 				<Badge
 					color="success"

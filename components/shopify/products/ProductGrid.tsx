@@ -47,7 +47,7 @@ const ProductGrid: React.FC<ProductGridProps> = (props) => {
 
 	const handleClick = (product) => {        
 		if (!editing) trackProductClicked(product)
-		const url = `${clientUrl}/products/${product?.handle}`
+		const url = `${clientUrl}/products/${product?.handle}`    
 		router.push(url)
 	}
 

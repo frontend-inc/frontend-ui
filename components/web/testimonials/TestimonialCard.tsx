@@ -33,7 +33,7 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 					{text && (
 						<Typography
 							sx={sx.text}
-							variant={'subtitle2'}
+							variant={'subtitle1'}
 							color="text.primary"
 						>
 							<FormatQuote sx={sx.quote}></FormatQuote>

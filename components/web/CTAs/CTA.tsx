@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Box, Stack, Typography, Button } from '@mui/material'
 import { truncate } from '../../../helpers'
+import { Heading } from '../..'
 import { useRouter } from 'next/router'
 import { AppContext } from '../../../context'
 import { TypographyVariantsType } from '../../../types'
@@ -18,7 +19,8 @@ type CallToActionProps = {
 
 // Call To Action
 const CTA: React.FC<CallToActionProps> = (props) => {
-	const {
+	
+  const {
 		label,
 		title,
 		description,
@@ -41,18 +43,13 @@ const CTA: React.FC<CallToActionProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-			<Stack sx={sx.content} direction="column" spacing={0}>
-				{label && (
-					<Typography color="primary" sx={sx.label} variant="caption">
-						{label}
-					</Typography>
-				)}
-				<Typography sx={sx.title} variant={textVariant}>
-					{title}
-				</Typography>
-				<Typography variant="body2" sx={sx.description}>
-					{truncate(description, 160)}
-				</Typography>
+			<Stack sx={sx.content} direction="column" spacing={1}>
+      <Heading 
+        label={label} 
+        title={title}         
+        description={description}
+        textAlign='center'
+      />      
 				{buttonText && (
 					<Box sx={sx.actions}>
 						<Button
@@ -79,8 +76,7 @@ const sx = {
 	content: {
 		width: '100%',
 	},
-	label: {
-		color: 'primary.main',
+	label: {		
 		textAlign: 'center',
 	},
 	title: {

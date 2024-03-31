@@ -19,6 +19,7 @@ import { SortOptionType } from '../../../types'
 import { useDelayedLoading } from '../../../hooks'
 
 type CollectionProps = {
+  label?: string
 	title?: string
 	url: string
 	layout: 'list' | 'grid'
@@ -46,6 +47,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const {
+    label,
 		title,
 		layout = 'grid',
 		style = 'card',
@@ -165,7 +167,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	return (
 		<Stack spacing={1} sx={sx.root}>
 			<Stack direction="column" spacing={1}>
-				<Heading title={title} />
+				<Heading label={label} title={title} />
 				{enableSearch && (
 					<SearchInput
 						value={keywords}

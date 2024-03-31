@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { CoverImage } from '../..'
-import { useCollections } from 'frontend-shopify'
+import { CollectionType } from 'frontend-shopify'
 
 type CollectionCoverImageProps = {
-	handle: string
+	shopifyCollection: CollectionType
 	editing?: boolean
 	height?: number
 	width?: number
@@ -20,7 +20,7 @@ type CollectionCoverImageProps = {
 
 const CollectionCoverImage: React.FC<CollectionCoverImageProps> = (props) => {
 	const {
-		handle,
+		shopifyCollection,
 		editing = false,
 		handleClick,
 		height = 400,
@@ -34,15 +34,7 @@ const CollectionCoverImage: React.FC<CollectionCoverImageProps> = (props) => {
 		href,
 	} = props
 
-	const { collection, findCollection } = useCollections()
-
-	useEffect(() => {
-		if (handle) {
-			findCollection(handle)
-		}
-	}, [handle])
-
-	if (!collection) return null
+	if (!shopifyCollection) return null
 	return (
 		<CoverImage
 			editing={editing}
@@ -51,9 +43,9 @@ const CollectionCoverImage: React.FC<CollectionCoverImageProps> = (props) => {
 			opacity={opacity}
 			overlayColor={overlayColor}
 			height={height}
-			title={collection?.title}
-			description={collection?.description}
-			image={collection?.image?.url}
+			title={shopifyCollection?.title}
+			description={shopifyCollection?.description}
+			image={shopifyCollection?.image?.url}
 			objectFit={objectFit}
 			alt={alt}
 			alignItems={alignItems}

@@ -137,7 +137,7 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 				}
 				onClick={openMenu}
 			>
-				Choose color
+				Color
 			</Button>
 			<Popup open={open} anchorEl={anchorEl} handleClose={closeMenu}>
 				<Stack spacing={2} direction="column" sx={sx.root}>
@@ -224,7 +224,8 @@ const sx = {
 		width: '100%',
 	},
 	color: {
-		border: '2px solid transparent',
+		border: '2px solid',
+    borderColor: 'divider',
 		borderRadius: '8px',
 		height: '32px',
 		width: '32px',

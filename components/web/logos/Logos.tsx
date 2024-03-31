@@ -2,10 +2,11 @@ import React from 'react'
 import { Stack } from '@mui/material'
 import { Placeholder } from '../..'
 import Logo from './Logo'
-import { Typography } from '@mui/material'
+import { Heading } from '../..'
 
 type LogosProps = {
-	title?: string
+  title?: string
+	label?: string
 	items?: {
 		image: string
 		title?: string
@@ -20,13 +21,15 @@ type LogosProps = {
 }
 
 const Logos: React.FC<LogosProps> = (props) => {
-	const { title, items = [], editing, ...rest } = props
+	const { title, label, items = [], editing, ...rest } = props
 
 	return (
-		<Stack spacing={1} sx={sx.root}>
-			<Typography variant="caption" sx={sx.caption}>
-				{title}
-			</Typography>
+		<Stack spacing={0} sx={sx.root}>
+      <Heading 
+        title={title} 
+        label={label} 
+        textAlign='center'
+      />      
 			<Stack sx={sx.logos} direction="row" spacing={1}>
 				{items?.map((item, index) => (
 					<Logo
@@ -57,8 +60,7 @@ const sx = {
 		p: 2,
 		bgcolor: 'background.main',
 	},
-	caption: {
-		color: 'text.primary',
+	label: {		
 		textAlign: 'center',
 	},
 	logos: {

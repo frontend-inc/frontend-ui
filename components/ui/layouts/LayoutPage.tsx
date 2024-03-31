@@ -3,11 +3,6 @@ import { LayoutLoader } from '../../../components'
 import { Box } from '@mui/material'
 
 type LayoutPageProps = {
-	title: string
-	actions?: React.ReactNode
-	secondaryActions?: React.ReactNode
-	menuItems?: any[]
-	activeItem?: string
 	loading?: boolean
 	disableGutters?: boolean
 	children: React.ReactNode
