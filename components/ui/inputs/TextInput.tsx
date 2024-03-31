@@ -8,7 +8,6 @@ import { useDebounce } from 'use-debounce'
 
 const TextInput: React.FC<TextInputPropsType> = (props) => {
 	const {
-    id,
 		label,
 		type,
 		name,
@@ -72,7 +71,6 @@ const TextInput: React.FC<TextInputPropsType> = (props) => {
 					</Typography>
 				)}
 				<InputBase
-          id={id}
 					rows={rows}
 					error={error ? true : false}
 					sx={{
