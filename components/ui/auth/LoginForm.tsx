@@ -1,11 +1,13 @@
 import React from 'react'
-import { Button, Stack } from '@mui/material'
+import { Button, Divider, Stack } from '@mui/material'
 import { TextInput, IconLoader } from '../../../components'
+import { GoogleLogin } from '@react-oauth/google';
 
 type LoginFormProps = {
 	errors?: any
 	loading?: boolean
 	user: any
+  enableGoogle?: boolean
 	handleChange: (ev: any) => void
 	handleSubmit: () => void
 	handleForgotPassword: () => void
@@ -23,10 +25,24 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 		handleForgotPassword,
 		handleSignup,
 		handleOneTimePassword,
+    enableGoogle=false 
 	} = props
 
 	return (
 		<Stack spacing={1}>
+      { enableGoogle && (
+        <>
+       <GoogleLogin
+        onSuccess={credentialResponse => {
+            console.log(credentialResponse);
+          }}
+          onError={() => {
+            console.log('Login Failed');
+          }}
+        />
+        <Divider />
+        </>      
+      )}
 			<TextInput
 				errors={errors}
 				name="email"
