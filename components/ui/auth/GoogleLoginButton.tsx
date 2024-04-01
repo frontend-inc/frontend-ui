@@ -70,8 +70,6 @@ const sx = {
     position: 'relative'
   },
   icon: {
-    position: 'absolute',
-    top: 10,
-    left: '25%'
+    mb: '-6px'
   }
 }
