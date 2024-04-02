@@ -15,7 +15,7 @@ type FormFieldProps = {
 	field: any
 	errors?: any
 	value?: any | any[]
-	handleChange?: (e: SyntheticEventType) => void
+	handleChange: (e: SyntheticEventType) => void
 	handleRemove?: (name: string) => void
 }
 
@@ -133,6 +133,17 @@ const FormField: React.FC<FormFieldProps> = (props) => {
 					value={value}
 					handleChange={handleChange}
 					handleRemove={handleRemove}
+				/>
+			)}
+      {variant === 'price' && (
+				<TextInput
+          type='number'
+					errors={errors}
+					label={label}
+					name={name}
+					value={value}
+					handleChange={handleChange}
+					placeholder={placeholder}
 				/>
 			)}
 			{variant === 'json' && (

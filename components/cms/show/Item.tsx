@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { Avatar, Box, Link, Stack, Typography } from '@mui/material'
-import { Image } from '../../../components'
+import { Box, Link, Stack, Typography } from '@mui/material'
+import { Image } from '../..'
 import { DocumentType } from '../../../types'
 
-type HeroProps = {
+type ItemProps = {
 	resource: DocumentType
 }
 
-const Hero: React.FC<HeroProps> = (props) => {
+const Item: React.FC<ItemProps> = (props) => {
 	const MAX_CHARS = 500
 
 	const { resource } = props || {}
@@ -49,7 +49,7 @@ const Hero: React.FC<HeroProps> = (props) => {
 	)
 }
 
-export default Hero
+export default Item
 
 const sx = {
 	root: {

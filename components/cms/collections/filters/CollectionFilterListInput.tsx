@@ -4,6 +4,7 @@ import CheckboxFilter from './CheckboxFilter'
 import CheckboxBooleanFilter from './CheckboxBooleanFilter'
 import CheckboxNumberRangeFilter from './CheckboxNumberRangeFilter'
 import CheckboxRatingsFilter from './CheckboxRatingsFilter'
+import CheckboxPriceRangeFilter from './CheckboxPriceRangeFilter'
 
 type CollectionFilterListInputProps = {
 	filters: FilterOptionType[]
@@ -47,6 +48,19 @@ const CollectionFilterListInput: React.FC<CollectionFilterListInputProps> = (
 
 			{filterOption.variant == 'number_range' && (
 				<CheckboxNumberRangeFilter
+					name={filterOption?.field}
+					label={filterOption?.label}
+					values={findFilterValues(filterOption?.field, filters)}
+					options={filterOption.options?.map((option) => ({
+						min: option.min,
+						max: option.max,
+					}))}
+					handleClick={handleFilter}
+				/>
+			)}
+
+      {filterOption.variant == 'price_range' && (
+				<CheckboxPriceRangeFilter
 					name={filterOption?.field}
 					label={filterOption?.label}
 					values={findFilterValues(filterOption?.field, filters)}

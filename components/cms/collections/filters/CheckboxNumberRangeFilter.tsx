@@ -20,6 +20,7 @@ type CheckboxNumberRangeFilterProps = {
 	label?: string
 	icon?: React.ReactNode
 	enableBorder?: boolean
+  enableCurrency?: boolean
 	disablePadding?: boolean
 	closed?: boolean
 }
@@ -34,6 +35,7 @@ const CheckboxNumberRangeFilter: React.FC<CheckboxNumberRangeFilterProps> = (
 		values,
 		handleClick,
 		enableBorder,
+    enableCurrency,
 		disablePadding = false,
 		closed = false,
 	} = props
@@ -48,6 +50,7 @@ const CheckboxNumberRangeFilter: React.FC<CheckboxNumberRangeFilterProps> = (
 			{options?.map((option, index) => (
 				<CheckboxNumberRangeFilterItem
 					key={index}
+          enableCurrency={enableCurrency}
 					values={values}
 					option={{
 						min: parseFloat(String(option.min)),
