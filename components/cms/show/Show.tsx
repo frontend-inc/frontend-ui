@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { Stack } from '@mui/material'
 import { DocumentType } from '../../../types'
 import Article from './Article'
 import Item from './Item'
@@ -24,7 +24,7 @@ const Show: React.FC<ShowProps> = (props) => {
   } = props || {}	
 
 	return (
-		<Box sx={ sx.root }>
+		<Stack direction="column" spacing={4} sx={ sx.root }>
       { style == 'item' && (
         <Item resource={ resource } />
       )}
@@ -35,12 +35,12 @@ const Show: React.FC<ShowProps> = (props) => {
         <Person resource={ resource } />
       )}
       <Details 
-        fields={ fields } 
         url={ url }
+        fields={ fields } 
         resource={ resource }
         enableBorder={ enableBorder }
       />
-    </Box>
+    </Stack>
 	)
 }
 
