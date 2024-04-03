@@ -3,7 +3,7 @@ import { AppContext } from '../../../context'
 import { useResource } from 'frontend-js'
 import { useRouter } from 'next/router'
 import { filterDocumentLinks } from '../../../helpers'
-import { CollectionList } from '../..'
+import { LoadMore, CollectionList } from '../..'
 import { Heading } from '../..'
 import { Box } from '@mui/material'
 
@@ -20,11 +20,9 @@ type ForeignCollectionProps = {
 	perPage?: number
 	query?: any
 	buttonText?: string
-	autoPlay?: boolean
-	arrows?: boolean
-	showDots?: boolean
 	enableBorder?: boolean
 	enableGradient?: boolean
+  enableLoadMore?: boolean
 }
 
 const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
@@ -41,13 +39,22 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		query: defaultQuery = null,
 		enableBorder = false,
 		enableGradient = false,
+    enableLoadMore = true,
 	} = props
 
 	const router = useRouter()
 
 	const { clientUrl } = useContext(AppContext)
 
-	const { query, resources, findMany } = useResource({
+	const { 
+    loading,
+    query, 
+    resources, 
+    findMany,
+    page,
+    numPages,
+    loadMore,     
+  } = useResource({
 		url: foreignUrl,
 	})
 
@@ -94,6 +101,13 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 				enableBorder={enableBorder}
 				enableGradient={enableGradient}
 			/>
+      {enableLoadMore && (
+				<LoadMore
+					page={page}
+					numPages={numPages}
+					loadMore={loadMore}
+				/>
+			)}
 		</Box>
 	)
 }

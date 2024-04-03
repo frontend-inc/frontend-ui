@@ -11,7 +11,7 @@ type LoadMoreProps = {
 }
 
 const LoadMore: React.FC<LoadMoreProps> = (props) => {
-	const { enableInfiniteLoad = true, page = 1, numPages = 1, loadMore } = props
+	const { enableInfiniteLoad = false, page = 1, numPages = 1, loadMore } = props
 
 	return (
 		<Box sx={sx.root}>
@@ -19,8 +19,8 @@ const LoadMore: React.FC<LoadMoreProps> = (props) => {
 				<>
 					{enableInfiniteLoad && <Waypoint onEnter={loadMore} />}
 					<Button
-						color="secondary"
-						variant="contained"
+            sx={ sx.loadMore }
+						color="primary"
 						onClick={loadMore}
 						endIcon={<ExpandMore />}
 					>
@@ -41,4 +41,10 @@ const sx = {
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
+  loadMore: {
+    color: 'text.secondary',
+    bgcolor: 'tertiary.main',
+    '&:hover': {
+    },
+  }
 }
