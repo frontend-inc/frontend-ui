@@ -29,7 +29,9 @@ const SortableListItem: React.FC<SortableListItemProps> = (props) => {
 export default SortableListItem
 
 const sx = {
-	item: {},
+	item: {
+    position: 'static !important',
+  },
 	icon: {
 		color: 'text.secondary',
 	},

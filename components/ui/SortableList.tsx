@@ -55,8 +55,8 @@ const SortableList: React.FC<SortableListProps> = (props) => {
 						>
 							{sorted?.map((item, index) => (
 								<Draggable
-									key={item.id}
-									draggableId={String(item?.id)}
+									key={item?.id || index}
+									draggableId={String(item?.id || index)}
 									index={index}
 								>
 									{(provided, snapshot) => (
