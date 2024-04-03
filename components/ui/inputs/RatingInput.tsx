@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, alpha, Typography } from '@mui/material'
+import { Stack, Box, alpha, Typography } from '@mui/material'
 import Rating from '@mui/material/Rating'
 import { InputPropsType, SyntheticEventType } from '../../../types'
 import { StarBorderOutlined, Star } from '@mui/icons-material'
@@ -11,6 +11,7 @@ type RatingInputProps = InputPropsType & {
 	size?: 'small' | 'medium' | 'large'
 	label?: string
 	value?: number
+  direction?: 'row' | 'column'
 	handleChange?: (e: SyntheticEventType) => void
 }
 
@@ -22,6 +23,7 @@ const RatingInput: React.FC<RatingInputProps> = (props) => {
 		handleChange,
 		disableBorder = false,
 		readOnly = false,
+    direction="column",
 		size,
 	} = props
 
@@ -35,9 +37,16 @@ const RatingInput: React.FC<RatingInputProps> = (props) => {
 	}
 
 	return (
-		<Box>
+    <Stack
+      sx={{
+        ...sx.stack,
+        ...(direction == 'row' && sx.stackVertical),
+      }}
+      direction={direction}
+      spacing={1}
+    >
 			{label && (
-				<Typography variant="caption" color="textSecondary">
+				<Typography sx={ sx.label } variant="caption" color="textSecondary">
 					{label}
 				</Typography>
 			)}
@@ -57,7 +66,7 @@ const RatingInput: React.FC<RatingInputProps> = (props) => {
 					emptyIcon={<StarBorderOutlined sx={sx.emptyRating} />}
 				/>
 			</Box>
-		</Box>
+		</Stack>
 	)
 }
 
@@ -65,6 +74,7 @@ export default RatingInput
 
 const sx = {
 	input: {
+    width: '100%',
 		fontSize: 15,
 		'&:focus': {
 			boxShadow: `${alpha('#999999', 0.25)} 0 0 0 0.2rem`,
@@ -85,5 +95,16 @@ const sx = {
 		border: '1px solid',
 		borderColor: 'divider',
 		boxShadow: `rgb(0 0 0 / 5%) 0px 2px 4px !important`,
+	},
+  label: {
+    width: '100px',
+    mb: 0
+  },
+  stack: {
+    width: '100%',
+		alignItems: 'flex-start',
+	},
+	stackVertical: {
+		alignItems: 'center',
 	},
 }

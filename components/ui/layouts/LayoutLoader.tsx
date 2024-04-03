@@ -31,7 +31,7 @@ const sx = {
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
-    bgcolor: 'transparent',
+    bgcolor: 'transparent !important',
 		zIndex: (theme) => theme.zIndex.drawer + 1,
 	},
 	progress: {

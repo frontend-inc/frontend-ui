@@ -32,9 +32,9 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 	return (
 		<Stack sx={ sx.root } spacing={2} divider={ <Divider />}>
       { enableGoogle && (
-          <GoogleLoginButton 
-            handleSuccess={handleGoogleSuccess}          
-          />
+        <GoogleLoginButton 
+          handleSuccess={handleGoogleSuccess}          
+        />
       )}
       <Stack spacing={1}>
 			<TextInput

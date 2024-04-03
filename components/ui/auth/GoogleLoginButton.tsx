@@ -52,6 +52,8 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = (props) => {
         handleLogin 
       }
       startIcon={
+        loading ?
+        <ButtonLoader color='secondary.contrastText' loading={loading} /> :
         <Box 
           sx={ sx.icon }
           dangerouslySetInnerHTML={{ __html: GoogleIcon }} 

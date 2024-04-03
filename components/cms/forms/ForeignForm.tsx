@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import { useResource } from 'frontend-js'
-import { Stack, Button } from '@mui/material'
+import { Stack, Box, Button } from '@mui/material'
 import { ButtonLoader, Placeholder } from '../..'
-import { Check } from 'lucide-react'
 import FormField from './FormField'
+import { Heading } from '../../../components'
 import { SYSTEM_FIELDS } from '../../../constants/index'
 import { get } from 'lodash'
 
 type ForeignFormProps = {
 	handle: string
+  title?: string
+  label?: string
 	url: string
 	foreignUrl?: string
 	buttonText?: string
@@ -20,6 +22,8 @@ type ForeignFormProps = {
 const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 	const {
 		handle,
+    title,
+    label,
 		buttonText = 'Submit',
 		variant = 'contained',
 		fields,
@@ -85,7 +89,14 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 	}
 
 	return !submitted ? (
-		<Stack spacing={1} sx={sx.root}>
+    <Box sx={ sx.root }>
+      { (title || label) && (
+      <Heading 
+        label={ label }
+        title={ title }        
+      /> 
+      )}
+		<Stack spacing={1} sx={sx.form}>
 			{fields?.map((field) =>
 				SYSTEM_FIELDS.includes(field.name) ? (
 					<FormField
@@ -113,6 +124,7 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 				{buttonText}
 			</Button>
 		</Stack>
+  </Box>
 	) : (
 		<Placeholder
 			enableBorder
@@ -122,13 +134,13 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 			actions={
 				<Button
 					color="secondary"
-					variant="outlined"
+					variant="contained"
 					onClick={() => setSubmitted(false)}
 				>
 					Done
 				</Button>
 			}
-		/>
+		/>      
 	)
 }
 
@@ -138,4 +150,7 @@ const sx = {
 	root: {
 		width: '100%',
 	},
+  form: {
+    width: '100%',
+  }
 }
