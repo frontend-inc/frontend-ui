@@ -1,3 +1,4 @@
+export * from './actions'
 export * from './carousel'
 export * from './colors'
 export * from './countries'

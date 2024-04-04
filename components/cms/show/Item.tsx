@@ -59,6 +59,7 @@ const sx = {
 		alignItems: 'center',
 	},
 	container: {
+    width: '100%',
 		justifyContent: 'flex-start',
 		alignItems: {
 			md: 'flex-start',
