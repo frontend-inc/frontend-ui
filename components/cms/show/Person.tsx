@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Avatar, Box, Link, Stack, Typography } from '@mui/material'
-import { ActionType, DocumentType } from '../../../types'
+import { ActionType } from '../../../types'
 import { Actions, SocialLink } from '../../../components'
 
 type PersonProps = {
   actions?: ActionType[]
-	resource: DocumentType
+	resource: any
 }
 
 const Person: React.FC<PersonProps> = (props) => {
