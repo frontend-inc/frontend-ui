@@ -1,15 +1,16 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
-import { Image } from '../..'
-import { DocumentType } from '../../../types'
+import { Actions, Image } from '../../../components'
+import { ActionType, DocumentType } from '../../../types'
 import moment from 'moment'
 
 type ArticleProps = {
-	resource: DocumentType
+  actions?: ActionType[]
+	resource: DocumentType  
 }
 
 const Article: React.FC<ArticleProps> = (props) => {
-	const { resource } = props || {}
+	const { actions, resource } = props || {}
 	const { title, image, description, data } = resource || {}
 	const { published_at } = data || {}
 	return (
@@ -28,6 +29,12 @@ const Article: React.FC<ArticleProps> = (props) => {
 					{description}
 				</Typography>
 			</Box>
+      { actions && (
+        <Actions 
+          actions={ actions }
+          resource={ resource }
+        />
+      )}
 		</Stack>
 	)
 }

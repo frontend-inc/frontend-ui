@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
-import { Image } from '../..'
-import { DocumentType } from '../../../types'
+import { Actions, Image } from '../../../components'
+import { ActionType, DocumentType } from '../../../types'
 
 type ItemProps = {
 	resource: DocumentType
+  actions?: ActionType[]
 }
 
 const Item: React.FC<ItemProps> = (props) => {
 	const MAX_CHARS = 500
 
-	const { resource } = props || {}
+	const { actions, resource } = props || {}
 	const { title, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
 
@@ -43,6 +44,12 @@ const Item: React.FC<ItemProps> = (props) => {
 							</Link>
 						)}
 					</Box>
+          { actions && (
+            <Actions 
+              actions={ actions } 
+              resource={ resource }
+            />
+          )}
 				</Stack>
 			</Stack>
 		</Box>

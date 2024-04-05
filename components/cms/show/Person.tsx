@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import { Avatar, Box, Link, Stack, Typography } from '@mui/material'
-import { DocumentType } from '../../../types'
-import { SocialLink } from '../..'
+import { ActionType, DocumentType } from '../../../types'
+import { Actions, SocialLink } from '../../../components'
 
 type PersonProps = {
+  actions?: ActionType[]
 	resource: DocumentType
 }
 
 const Person: React.FC<PersonProps> = (props) => {
 	const MAX_CHARS = 500
 
-	const { resource } = props || {}
+	const { actions, resource } = props || {}
+
+  const { data: { facebook, instagram, linkedin, twitter, youtube, blog } } = resource || { data: {}} 
 	const { title, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
 
@@ -22,42 +25,42 @@ const Person: React.FC<PersonProps> = (props) => {
 				spacing={4}
 			>
 				<Stack direction="column">
-					{resource?.image?.url && (
-						<Avatar sx={sx.avatarContainer}>
-							<Avatar src={image?.url} alt={title} sx={sx.avatar}>
-								<Box />
-							</Avatar>
-							<Box />
-						</Avatar>
-					)}
+          <Avatar sx={sx.avatarContainer}>
+            <Avatar src={image?.url} alt={title} sx={sx.avatar}>
+              <Box />
+            </Avatar>
+            <Box />
+          </Avatar>
 				</Stack>
 				<Stack spacing={2} sx={sx.content}>
 					<Typography color="text.primary" variant="h4">
 						{title}
 					</Typography>
-					<Stack direction="row" spacing={0} sx={sx.socialUrls}>
-						{resource?.data?.facebook && (
-							<SocialLink provider="facebook" url={resource?.data?.facebook} />
-						)}
-						{resource?.data?.instagram && (
-							<SocialLink
-								provider="instagram"
-								url={resource?.data?.instagram}
-							/>
-						)}
-						{resource?.data?.linked && (
-							<SocialLink provider="linkedin" url={resource?.data?.linkedin} />
-						)}
-						{resource?.data?.twitter && (
-							<SocialLink provider="twitter" url={resource?.data?.twitter} />
-						)}
-						{resource?.data?.youtube && (
-							<SocialLink provider="youtube" url={resource?.data?.youtube} />
-						)}
-						{resource?.data?.blog && (
-							<SocialLink provider="blog" url={resource?.data?.blog} />
-						)}
-					</Stack>
+          { facebook || instagram || linkedin || twitter || youtube || blog && (
+            <Stack direction="row" spacing={0} sx={sx.socialUrls}>
+              {facebook && (
+                <SocialLink provider="facebook" url={facebook} />
+              )}
+              {instagram && (
+                <SocialLink
+                  provider="instagram"
+                  url={instagram}
+                />
+              )}
+              {linkedin && (
+                <SocialLink provider="linkedin" url={linkedin} />
+              )}
+              {twitter && (
+                <SocialLink provider="twitter" url={twitter} />
+              )}
+              {youtube && (
+                <SocialLink provider="youtube" url={youtube} />
+              )}
+              {blog && (
+                <SocialLink provider="blog" url={blog} />
+              )}
+            </Stack>
+          )}
 					<Box>
 						{open ? (
 							<Typography variant="body1" color="text.primary" sx={sx.text}>
@@ -74,6 +77,12 @@ const Person: React.FC<PersonProps> = (props) => {
 							</Link>
 						)}
 					</Box>
+          { actions && (
+            <Actions 
+              actions={ actions } 
+              resource={resource} 
+            />
+          )}
 				</Stack>
 			</Stack>
 		</Box>
@@ -110,13 +119,12 @@ const sx = {
 	avatarContainer: {
 		height: {
 			sm: 260,
-			xs: 184,
+			xs: 180,
 		},
 		width: {
 			sm: 260,
-			xs: 184,
+			xs: 180,
 		},
-		bgcolor: 'primary.contrastText',
 	},
 	header: {
 		width: '100%',
@@ -140,5 +148,5 @@ const sx = {
 		width: '100%',
 		justifyContent: 'flex-start',
 		alignItems: 'center',
-	},
+	},  
 }

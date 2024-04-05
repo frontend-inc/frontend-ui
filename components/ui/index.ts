@@ -1,3 +1,5 @@
+export { default as Actions } from './actions/Actions'
+export { default as ActionButton } from './actions/ActionButton'
 export { default as Avatar } from './avatars/Avatar'
 export { default as AvatarChip } from './cards/AvatarChip'
 export { default as AvatarHoriz } from './cards/AvatarHoriz'
