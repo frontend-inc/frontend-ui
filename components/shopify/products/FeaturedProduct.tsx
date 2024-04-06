@@ -106,7 +106,7 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = (props) => {
 							<QuickShopButton
 								size="large"
 								product={product}
-								buttonVariant={enableAddToCart ? 'text' : 'contained'}
+								color={enableAddToCart ? 'secondary' : 'primary'}
 								buttonText={buttonText}
 								quickShopButtonText={quickShopButtonText}
 							/>

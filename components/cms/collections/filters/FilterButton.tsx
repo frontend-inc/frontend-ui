@@ -46,7 +46,8 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 						...sx.button,
 						...(filters?.length > 0 && sx.hideBorder),
 					}}
-					variant="text"
+          color="secondary"
+					variant="contained"
 					startIcon={
 						loading ? (
 							<ButtonLoader loading={loading} />
@@ -98,11 +99,6 @@ export default FilterButton
 
 const sx = {
 	button: {
-		color: 'text.secondary',
-		bgcolor: 'tertiary.main',
-		'&:hover': {
-			bgcolor: 'tertiary.dark',
-		},
 		width: {
 			sm: '100%',
 			xs: '100%',

@@ -35,6 +35,7 @@ const ProductFilterButton: React.FC<ProductFilterButtonProps> = (props) => {
 				sx={sx.button}
 				onClick={toggleMenu}
 				color="secondary"
+        variant="contained"
 				startIcon={<ListFilter />}
 			>
 				Filter
@@ -72,11 +73,6 @@ const sx = {
 		width: {
 			sm: 'auto',
 			xs: '100%',
-		},
-		color: 'text.primary',
-		bgcolor: 'tertiary.main',
-		'&:hover': {
-			bgcolor: 'tertiary.light',
 		},
 	},
 }

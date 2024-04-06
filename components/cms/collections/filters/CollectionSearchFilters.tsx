@@ -28,9 +28,9 @@ const CollectionSearchFilters: React.FC<CollectionFilterListProps> = (
 			</Hidden>
 			<Hidden smUp>
 				<Button
-					sx={sx.button}
 					onClick={toggleMenu}
-					variant="text"
+          color="secondary"
+					variant="contained"
 					startIcon={<Icon name="SlidersHorizontal" size={20} />}
 				>
 					Filters
@@ -52,10 +52,5 @@ export default CollectionSearchFilters
 const sx = {
 	button: {
 		width: '100%',
-		color: 'text.primary',
-		bgcolor: 'tertiary.main',
-		'&:hover': {
-			bgcolor: 'tertiary.dark',
-		},
 	},
 }

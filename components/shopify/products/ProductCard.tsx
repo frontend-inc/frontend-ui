@@ -102,9 +102,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 					)}
 					{enableQuickShop && (
 						<Button
-							sx={sx.quickShopButton}
-							variant={enableAddToCart ? 'text' : 'contained'}
-							color="secondary"
+							color={ enableAddToCart ? 'primary' : 'secondary'}
 							onClick={handleQuickShop}
 						>
 							Quick Shop
@@ -150,9 +148,5 @@ const sx = {
 	},
 	description: {
 		maxWidth: '320px',
-	},
-	quickShopButton: {
-		bgcolor: 'tertiary.main',
-		color: 'text.primary',
 	},
 }

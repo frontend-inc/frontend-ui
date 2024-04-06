@@ -15,8 +15,9 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = (props) => {
 
 	return (
 		<ButtonGroup
+      variant="contained"      
+      color="secondary"
 			sx={{
-				...sx.buttonGroup,
 				...(size == 'small' && sx.buttonGroupSmall),
 			}}
 		>
@@ -34,9 +35,6 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = (props) => {
 export default QuantitySelector
 
 const sx = {
-	buttonGroup: {
-		bgcolor: 'tertiary.main',
-	},
 	buttonGroupSmall: {
 		height: '40px',
 		'& .MuiButton-root': {
@@ -47,9 +45,6 @@ const sx = {
 		px: 0,
 		width: '100%',
 		color: 'text.primary',
-		border: 'none',
-		'&:hover': {
-			border: 'none',
-		},
+		border: 'none !important',		
 	},
 }

@@ -2,20 +2,20 @@ import React, { useState } from 'react'
 import { ProductModal } from '../../../components/shopify'
 import { Button } from '@mui/material'
 
-type QuickShopProps = {
+type QuickShopButtonProps = {
 	size?: 'small' | 'medium' | 'large'
-	buttonVariant?: 'contained' | 'outlined' | 'text'
+	color?: 'primary' | 'secondary' 
 	buttonText?: string
 	quickShopButtonText?: string
 	product?: any
 	enableQuantity?: boolean
 }
 
-const QuickShop: React.FC<QuickShopProps> = (props) => {
+const QuickShopButton: React.FC<QuickShopButtonProps> = (props) => {
 	const {
 		size,
 		product,
-		buttonVariant = 'text',
+    color="secondary",
 		buttonText = 'Add to Cart',
 		quickShopButtonText = 'Quick Shop',
 		enableQuantity = false,
@@ -29,12 +29,10 @@ const QuickShop: React.FC<QuickShopProps> = (props) => {
 
 	return (
 		<>
-			<Button
-				sx={{
-					...(buttonVariant == 'text' && sx.buttonText),
-				}}
+			<Button				
 				size={size}
-				variant={buttonVariant}
+        color={ color }
+				variant='contained'
 				onClick={handleQuickShop}
 			>
 				{quickShopButtonText}
@@ -50,10 +48,5 @@ const QuickShop: React.FC<QuickShopProps> = (props) => {
 	)
 }
 
-export default QuickShop
+export default QuickShopButton
 
-const sx = {
-	buttonText: {
-		bgcolor: 'tertiary.main',
-	},
-}

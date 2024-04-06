@@ -30,7 +30,10 @@ const CartQuantityInput: React.FC<CartQuantityInputProps> = (props) => {
 	const { quantity, handleAddQuantity, handleRemoveQuantity } = props
 
 	return (
-		<ButtonGroup sx={sx.buttonGroup}>
+		<ButtonGroup 
+      color="secondary"
+      variant="contained"
+      sx={sx.buttonGroup}>
 			<Button sx={sx.button} onClick={handleRemoveQuantity}>
 				<Icon name="Minus" size={16} />
 			</Button>
@@ -187,7 +190,7 @@ const sx = {
 		mr: 2,
 	},
 	buttonGroup: {
-		bgcolor: 'tertiary.main',
+    boxShadow: 'none',    
 		height: '28px',
 		'& .MuiButton-root': {
 			minWidth: '28px',
@@ -196,10 +199,7 @@ const sx = {
 	button: {
 		px: 0,
 		color: 'text.primary',
-		border: 'none',
-		'&:hover': {
-			border: 'none',
-		},
+		border: 'none !important',
 		fontSize: (theme) => theme.typography.overline.fontSize,
 	},
 	subscription: {

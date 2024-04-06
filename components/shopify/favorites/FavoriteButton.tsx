@@ -23,14 +23,15 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 		<Button
 			size="large"
 			onClick={handleClick}
+      variant="contained"
+      color={ isFavorite ? 'primary' : 'secondary'}
 			sx={{
 				...sx.button,
-				...(isFavorite && sx.favorited),
 			}}
 		>
 			<Icon
 				name="Heart"
-				color={isFavorite ? 'primary.contrastText' : 'text.primary'}
+				color={isFavorite ? 'primary.contrastText' : 'secondary.contrastText'}
 			/>
 		</Button>
 	)
@@ -43,15 +44,5 @@ const sx = {
 		minWidth: '44px',
 		p: 0,
 		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
-		bgcolor: 'tertiary.main',
-		'&:hover': {
-			bgcolor: 'tertiary.main',
-		},
-	},
-	favorited: {
-		bgcolor: 'primary.main',
-		'&:hover': {
-			bgcolor: 'primary.dark',
-		},
 	},
 }

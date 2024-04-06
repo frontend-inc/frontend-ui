@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Button } from '@mui/material'
 import { Waypoint } from 'react-waypoint'
 import { ExpandMore } from '@mui/icons-material'
+import { Icon } from '../../../components'
 
 type LoadMoreProps = {
 	enableInfiniteLoad?: boolean
@@ -19,10 +20,10 @@ const LoadMore: React.FC<LoadMoreProps> = (props) => {
 				<>
 					{enableInfiniteLoad && <Waypoint onEnter={loadMore} />}
 					<Button
-            sx={ sx.loadMore }
-						color="primary"
+						color="secondary"
+            variant="contained"
 						onClick={loadMore}
-						endIcon={<ExpandMore />}
+						endIcon={<Icon name="ChevronDown" />}
 					>
 						Load More
 					</Button>
@@ -41,10 +42,4 @@ const sx = {
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
-  loadMore: {
-    color: 'text.secondary',
-    bgcolor: 'tertiary.main',
-    '&:hover': {
-    },
-  }
 }

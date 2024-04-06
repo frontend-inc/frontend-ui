@@ -5,10 +5,8 @@ export const palette = {
 		main: COLORS.indigo[500],
 	},
 	secondary: {
-		main: COLORS.grey[900],
-	},
-	tertiary: {
 		main: COLORS.grey[200],
+    contrastText: COLORS.grey[800],
 	},
 	accent: {
 		main: COLORS.grey[900],

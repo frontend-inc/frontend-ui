@@ -76,7 +76,11 @@ const CardVert: React.FC<CardProps> = (props) => {
 				</Stack>
 				{buttonText && (
 					<Box>
-						<Button sx={sx.button} color="secondary" onClick={handleItemClick}>
+						<Button 
+              color="secondary" 
+              variant="contained"
+              onClick={handleItemClick}
+            >
 							{buttonText}
 						</Button>
 					</Box>
@@ -127,12 +131,5 @@ const sx = {
 	},
 	description: {
 		maxWidth: '320px',
-	},
-	button: {
-		color: 'text.primary',
-		bgcolor: 'tertiary.main',
-		'&:hover': {
-			bgcolor: 'tertiary.dark',
-		},
 	},
 }

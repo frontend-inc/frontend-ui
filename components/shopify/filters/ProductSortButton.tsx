@@ -35,7 +35,8 @@ const ProductSortButton: React.FC<ProductSortButtonProps> = (props) => {
 			<ButtonGroup sx={sx.buttonGroup}>
 				<Button
 					sx={sx.button}
-					variant="text"
+					variant="contained"
+          color="secondary"
 					onClick={handleOpen}
 					endIcon={<Icon name="ArrowDownUp" size={20} />}
 				>
@@ -85,22 +86,6 @@ const sx = {
 			sm: 'auto',
 			xs: '100%',
 		},
-		color: 'text.primary',
 		borderRight: 'none',
-		bgcolor: 'tertiary.main',
-		'&:hover': {
-			bgcolor: 'tertiary.light',
-		},
-	},
-	secondaryButton: {
-		width: '20px',
-		borderLeft: 'none',
-		'&:hover': {
-			borderLeft: 'none',
-		},
-	},
-	icon: {
-		height: '20px',
-		width: '20px',
 	},
 }
