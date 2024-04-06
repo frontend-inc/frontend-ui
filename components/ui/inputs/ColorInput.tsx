@@ -60,7 +60,8 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 	}
 
 	const handleColorChange = (color) => {
-		setColor(color)
+    const hexColor = COLORS[color][tone]
+    setHex(hexColor)
 		closeMenu()
 	}
 
@@ -85,13 +86,6 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 			setText(value)
 		}
 	}, [value])
-
-	useEffect(() => {
-		if (color) {
-			const hexColor = COLORS[color][tone]
-			setHex(hexColor)
-		}
-	}, [color])
 
 	useEffect(() => {
 		handleChange({
