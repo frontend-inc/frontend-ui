@@ -10,14 +10,13 @@ import {
 	DATE_RANGE_OPTIONS,
 	FILTER_OPERATORS,
 } from '../../../constants/index'
-import { Box, IconButton, Typography } from '@mui/material'
-import { TextInput, Autosuggest, ArrayInput } from '../../../components'
+import { Stack, Box, IconButton, Typography } from '@mui/material'
+import { Icon, TextInput, Autosuggest, ArrayInput } from '../../../components'
 import {
 	OptionType,
 	FilterOptionType,
 	SyntheticEventType,
 } from '../../../types'
-import { X } from 'lucide-react'
 
 type FieldOption = FilterOptionType & {
 	db_type: string
@@ -84,7 +83,7 @@ const FilterFieldWrapper: React.FC<FilterFieldProps> = (props) => {
 			)}
 			<Box>
 				<IconButton size="small" onClick={() => handleRemove(index)}>
-					<X size={20} />
+					<Icon name="X" size={20} />
 				</IconButton>
 			</Box>
 			<Box sx={sx.inputSpacer} />
@@ -199,6 +198,7 @@ const sx = {
 	inputFilter: {
 		gridColumn: 'span 1',
 		minWidth: '100px',
+    mr: '5px'
 	},
 	inputOperator: {
 		gridColumn: 'span 1',
