@@ -155,9 +155,6 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 export default TopNavMenuItem
 
 const sx = {
-	buttonGroup: {
-		borderRight: 'none !important',
-	},
 	menuButton: {
 		cursor: 'pointer',
 		justifyContent: 'flex-start',

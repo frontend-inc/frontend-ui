@@ -190,7 +190,6 @@ const sx = {
 		mr: 2,
 	},
 	buttonGroup: {
-    boxShadow: 'none',    
 		height: '28px',
 		'& .MuiButton-root': {
 			minWidth: '28px',

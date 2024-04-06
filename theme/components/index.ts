@@ -1,6 +1,7 @@
 import MuiAccordian from './MuiAccordian'
 import MuiAutocomplete from './MuiAutocomplete'
 import MuiButton from './MuiButton'
+import MuiButtonGroup from './MuiButtonGroup'
 import MuiCardActions from './MuiCardActions'
 import MuiCardContent from './MuiCardContent'
 import MuiCardHeader from './MuiCardHeader'
@@ -27,6 +28,7 @@ export default {
 	MuiAccordian,
 	MuiAutocomplete,
 	MuiButton,
+  MuiButtonGroup,
 	MuiCardActions,
 	MuiCardContent,
 	MuiCardHeader,
