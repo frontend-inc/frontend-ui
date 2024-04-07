@@ -85,7 +85,7 @@ const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 				disablePadding
 				disableGutters
 				secondaryAction={
-					(children?.length > 0 || shopify_collection) && (
+					(children?.length > 0 || menuItem?.link_type == 'shopify_collection') && (
 						<IconButton
 							sx={{
 								...sx.icon,
@@ -114,7 +114,7 @@ const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 						<SublinkMenuItem
 							key={index}
 							label={child.name}
-							handleClick={() => handleMenuItemClick(child)}
+							handleClick={() => handleMenuClick(child)}
 						/>
 					))}
 					{loading && (

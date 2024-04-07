@@ -29,12 +29,7 @@ const useTheme = (props: ThemeProps) => {
 	const [theme, setTheme] = useState(muiTheme)
 
 	useEffect(() => {
-    let newTheme = {
-      palette: {},
-      breakpoints: {},
-      typography: {},
-      shape: {}
-    }
+    let newTheme: any = {}
     if(muiTheme){
       newTheme = muiTheme
     }else{
