@@ -18,11 +18,21 @@ export type MenuLinkType = {
 	children: MenuLinkType[] | []
 }
 
+export type NotificationTypes = 
+  'text' | 
+  'page' | 
+  'document' | 
+  'shopify_collection' | 
+  'shopify_product' |
+  'url'   
+
 export type NotificationType = {
 	text: string
 	path?: string
+  url?: string
 	position: number
-	buttonText?: string
-	discountCode?: string
-	copyToClipboard?: boolean
+  notification_type: NotificationTypes
+	page_id?: number
+	collection_id?: number
+	document_id?: number
 }

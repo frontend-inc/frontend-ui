@@ -9,15 +9,10 @@ import {
 import { useClickOrDrag } from '../../../hooks'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
+import { NotificationType } from '../../../types'
 
 type NotificationProps = {
-	notification: {
-		text: string
-		path: string
-		url?: string
-		position: number
-		notification_type: string
-	}
+	notification: NotificationType
 }
 
 const Notification: React.FC<NotificationProps> = (props) => {
