@@ -47,7 +47,6 @@ const Table: React.FC<TableProps> = (props) => {
 
 	const {
 		loading,
-		enableBorder = true,
 
 		fields,
 		rows,

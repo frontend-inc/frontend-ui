@@ -42,7 +42,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 					/>
 				</TableCell>
 			)}
-			{(enableEdit && handleEdit) (
+			{enableEdit && (
 				<TableCell align="center">
 					<IconButton
 						onClick={() => handleEdit(row)}
