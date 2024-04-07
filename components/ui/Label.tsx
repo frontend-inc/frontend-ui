@@ -26,12 +26,12 @@ export default Label
 
 const sx = {
 	chip: {
-		color: 'text.primary',
+    bgcolor: 'secondary.main',
+		color: 'secondary.contrastText',
 		characterSpacing: '1em',
 		fontWeight: 500,
 		fontFamily: (theme) => theme.typography.fontFamily.caption,
-		letterSpacing: '0.05em',
-		bgcolor: 'background.paper',
+		letterSpacing: '0.05em',		
 		cursor: 'pointer',
 	},
 }

@@ -32,12 +32,12 @@ type TableProps = {
 	numPages?: number
 	totalCount?: number
 	query: any
-	handleQueryChange?: (e: any) => void
-	handleKeywordChange?: (e: any) => void
-	handleClearQuery?: () => void
+	handleQueryChange: (e: any) => void
+	handleKeywordChange: (e: any) => void
+	handleClearQuery: () => void
 	handlePaginate?: (e: any, page: number) => void
 	handleSearch?: (keywords: any) => void
-	handleKeywordSearch?: (keywords: string) => void
+	handleKeywordSearch: (keywords: string) => void
 	handleSort?: (e: any) => void
 	styles?: any
 }

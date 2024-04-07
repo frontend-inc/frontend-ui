@@ -49,7 +49,7 @@ const Notification: React.FC<NotificationProps> = (props) => {
 			>
 				<ListItemText
 					primary={
-						<Typography variant="body2" sx={sx.text}>
+						<Typography color='primary.contrastText' variant="body2" sx={sx.text}>
 							{text}
 						</Typography>
 					}

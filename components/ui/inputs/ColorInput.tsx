@@ -113,7 +113,7 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 			<Button
 				sx={sx.button}
 				fullWidth
-				variant="outlined"
+				variant="contained"
 				color="secondary"
 				endIcon={
 					<Stack direction="row" spacing={0}>
@@ -214,6 +214,7 @@ const sx = {
 		justifyContent: 'space-between',
 		border: '1px solid',
 		borderColor: 'divider',
+    color: 'text.primary',
 		bgcolor: 'background.paper',
 		fontSize: (theme) => theme.typography.body1.fontSize,
 		fontWeight: (theme) => theme.typography.body1.fontWeight,

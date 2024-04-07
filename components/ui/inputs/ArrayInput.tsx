@@ -58,7 +58,7 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 
 	return (
 		<FormControl fullWidth>
-			<Typography variant="caption" color="textSecondary">
+			<Typography variant="caption" color="text.secondary">
 				{label}
 			</Typography>
 			{value && (
@@ -110,13 +110,13 @@ export const sx = {
 	textField: {
 		'& .MuiOutlinedInput-root': {
 			p: '4px',
+      color: 'text.secondary',
 			fontSize: (theme) => theme.typography.body2.fontSize,
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
 			borderRadius: (theme) => `${theme.shape.borderRadius}px`,
-			bgcolor: 'background.paper',
+			bgcolor: 'background.default',
 			border: (theme) => `1px solid ${theme.palette.divider}`,
-			transition: '0.5s',
-			boxShadow: `rgb(0 0 0 / 5%) 0px 2px 4px !important`,
+			//boxShadow: `rgb(0 0 0 / 5%) 0px 2px 4px !important`,
 			width: '100%',
 			'& fieldset': {
 				border: `1px solid transparent`,
@@ -141,7 +141,7 @@ export const sx = {
 	icon: {
 		height: 20,
 		width: 20,
-		color: '#888',
+		color: 'text.primary',
 	},
 	popper: {
 		fontWeight: (theme) => theme.typography.body2.fontWeight,

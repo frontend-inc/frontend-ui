@@ -2,6 +2,7 @@ export default {
 	defaultProps: {
 		disableRipple: true,
 		border: 'none !important',
+    disableElevation: true
 	},
 	styleOverrides: {
 		root: {
@@ -15,16 +16,8 @@ export default {
 			height: '50px',
 		},
 		outlined: {
-			boxShadow: 'none',
-			'&:hover': {
-				boxShadow: 'none',
-			},
 		},
 		contained: {
-			boxShadow: 'none',
-			'&:hover': {
-				boxShadow: 'none',
-			},
 		},
 	},
 }

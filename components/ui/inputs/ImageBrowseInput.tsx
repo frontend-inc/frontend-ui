@@ -1,7 +1,6 @@
 import React from 'react'
 import { Box, Button } from '@mui/material'
-import { TextInput, EmptyImage } from '../../../components'
-import { Search } from 'lucide-react'
+import { Icon, TextInput, EmptyImage } from '../../../components'
 import Image from 'next/image'
 
 type ImageInputProps = {
@@ -42,9 +41,10 @@ const ImageInput: React.FC<ImageInputProps> = (props) => {
 			/>
 			<Button
 				size="small"
-				variant="outlined"
+				variant="contained"
+        color="secondary"
 				onClick={() => handleBrowse(name)}
-				startIcon={<Search />}
+				startIcon={<Icon name="Search" />}
 			>
 				Browse
 			</Button>

@@ -88,7 +88,7 @@ const sx = {
 		justifyContent: 'center',
 		overflow: 'hidden',
 	},
-	borderRadius: {
+	borderRadius: {    
 		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 	},
 	afterBase: {

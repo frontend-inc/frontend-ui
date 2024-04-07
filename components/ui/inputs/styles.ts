@@ -8,7 +8,7 @@ export const sx = {
 			MozAppearance: 'none',
 			appearance: 'none',
 			p: 1,
-			borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+			borderRadius: (theme) => theme.shape.borderRadius,
 			fontSize: (theme) => theme.typography.body2.fontSize,
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
 			bgcolor: 'background.default',
