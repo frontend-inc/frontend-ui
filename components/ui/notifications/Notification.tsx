@@ -20,7 +20,7 @@ const Notification: React.FC<NotificationProps> = (props) => {
 
 	const { notification } = props || {}
 
-	const { text, path, url, position, notification_type } = notification || {}
+	const { text, path, url, notification_type } = notification || {}
 
 	const { clientUrl } = useContext(AppContext)
 
