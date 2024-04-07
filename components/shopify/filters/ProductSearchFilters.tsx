@@ -44,7 +44,7 @@ const ProductSearchFilters: React.FC<ProductFilterButtonProps> = (props) => {
 					sx={sx.button}
 					onClick={toggleMenu}
 					variant="contained"
-          color="secondary"
+					color="secondary"
 					startIcon={<Icon name="SlidersHorizontal" size={20} />}
 				>
 					Filters

@@ -48,7 +48,7 @@ const ImageModal: React.FC<ImageModalProps> = (props) => {
 					src={image?.url}
 					height={image?.height || 500}
 					width={image?.width || 500}
-          placeholder="blur"
+					placeholder="blur"
 					style={{
 						width: '100%',
 						objectFit: 'contain',

@@ -15,8 +15,8 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = (props) => {
 
 	return (
 		<ButtonGroup
-      variant="contained"      
-      color="secondary"
+			variant="contained"
+			color="secondary"
 			sx={{
 				...(size == 'small' && sx.buttonGroupSmall),
 			}}
@@ -45,6 +45,6 @@ const sx = {
 		px: 0,
 		width: '100%',
 		color: 'text.primary',
-		border: 'none !important',		
+		border: 'none !important',
 	},
 }

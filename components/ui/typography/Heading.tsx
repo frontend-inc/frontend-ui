@@ -22,13 +22,13 @@ const Heading: React.FC<HeadingProps> = (props) => {
 	return (
 		<Stack sx={sx.stack} direction={'column'} spacing={1}>
 			{label && (
-				<Typography 
-          color="text.secondary" 
-          variant="caption"
-          sx={{
-            textAlign
-          }}
-        >
+				<Typography
+					color="text.secondary"
+					variant="caption"
+					sx={{
+						textAlign,
+					}}
+				>
 					{label}
 				</Typography>
 			)}
@@ -66,14 +66,14 @@ const sx = {
 	stack: {
 		width: '100%',
 		pb: 4,
-    justifyContent: 'center',
-    alignItems: 'center',
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
-  title: {
+	title: {
 		width: '100%',
 	},
 	text: {
 		width: '100%',
-    maxWidth: '600px',
+		maxWidth: '600px',
 	},
 }

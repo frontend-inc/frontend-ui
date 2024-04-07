@@ -25,8 +25,7 @@ type ProductDetailPageProps = {
 }
 
 const ProductDetailPage: React.FC<ProductDetailPageProps> = (props) => {
-	
-  const {
+	const {
 		shopifyProduct: product,
 		buttonText,
 		metafields,
@@ -49,7 +48,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = (props) => {
 		product,
 	})
 
-  return (
+	return (
 		<Stack spacing={0} direction="row" sx={sx.container}>
 			<Box sx={sx.left}>
 				<ProductImages

@@ -4,7 +4,7 @@ import { ActionType } from '../../../types'
 import { Actions, SocialLink } from '../../../components'
 
 type PersonProps = {
-  actions?: ActionType[]
+	actions?: ActionType[]
 	resource: any
 }
 
@@ -13,7 +13,9 @@ const Person: React.FC<PersonProps> = (props) => {
 
 	const { actions, resource } = props || {}
 
-  const { data: { facebook, instagram, linkedin, twitter, youtube, blog } } = resource || { data: {}} 
+	const {
+		data: { facebook, instagram, linkedin, twitter, youtube, blog },
+	} = resource || { data: {} }
 	const { title, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
 
@@ -25,42 +27,34 @@ const Person: React.FC<PersonProps> = (props) => {
 				spacing={4}
 			>
 				<Stack direction="column">
-          <Avatar sx={sx.avatarContainer}>
-            <Avatar src={image?.url} alt={title} sx={sx.avatar}>
-              <Box />
-            </Avatar>
-            <Box />
-          </Avatar>
+					<Avatar sx={sx.avatarContainer}>
+						<Avatar src={image?.url} alt={title} sx={sx.avatar}>
+							<Box />
+						</Avatar>
+						<Box />
+					</Avatar>
 				</Stack>
 				<Stack spacing={2} sx={sx.content}>
 					<Typography color="text.primary" variant="h4">
 						{title}
 					</Typography>
-          { facebook || instagram || linkedin || twitter || youtube || blog && (
-            <Stack direction="row" spacing={0} sx={sx.socialUrls}>
-              {facebook && (
-                <SocialLink provider="facebook" url={facebook} />
-              )}
-              {instagram && (
-                <SocialLink
-                  provider="instagram"
-                  url={instagram}
-                />
-              )}
-              {linkedin && (
-                <SocialLink provider="linkedin" url={linkedin} />
-              )}
-              {twitter && (
-                <SocialLink provider="twitter" url={twitter} />
-              )}
-              {youtube && (
-                <SocialLink provider="youtube" url={youtube} />
-              )}
-              {blog && (
-                <SocialLink provider="blog" url={blog} />
-              )}
-            </Stack>
-          )}
+					{facebook ||
+						instagram ||
+						linkedin ||
+						twitter ||
+						youtube ||
+						(blog && (
+							<Stack direction="row" spacing={0} sx={sx.socialUrls}>
+								{facebook && <SocialLink provider="facebook" url={facebook} />}
+								{instagram && (
+									<SocialLink provider="instagram" url={instagram} />
+								)}
+								{linkedin && <SocialLink provider="linkedin" url={linkedin} />}
+								{twitter && <SocialLink provider="twitter" url={twitter} />}
+								{youtube && <SocialLink provider="youtube" url={youtube} />}
+								{blog && <SocialLink provider="blog" url={blog} />}
+							</Stack>
+						))}
 					<Box>
 						{open ? (
 							<Typography variant="body1" color="text.primary" sx={sx.text}>
@@ -77,12 +71,7 @@ const Person: React.FC<PersonProps> = (props) => {
 							</Link>
 						)}
 					</Box>
-          { actions && (
-            <Actions 
-              actions={ actions } 
-              resource={resource} 
-            />
-          )}
+					{actions && <Actions actions={actions} resource={resource} />}
 				</Stack>
 			</Stack>
 		</Box>
@@ -148,5 +137,5 @@ const sx = {
 		width: '100%',
 		justifyContent: 'flex-start',
 		alignItems: 'center',
-	},  
+	},
 }

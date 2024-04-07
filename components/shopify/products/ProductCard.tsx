@@ -102,7 +102,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 					)}
 					{enableQuickShop && (
 						<Button
-							color={ enableAddToCart ? 'primary' : 'secondary'}
+							color={enableAddToCart ? 'primary' : 'secondary'}
 							onClick={handleQuickShop}
 						>
 							Quick Shop

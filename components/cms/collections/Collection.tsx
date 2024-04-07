@@ -19,7 +19,7 @@ import { SortOptionType } from '../../../types'
 import { useDelayedLoading } from '../../../hooks'
 
 type CollectionProps = {
-  label?: string
+	label?: string
 	title?: string
 	url: string
 	layout: 'list' | 'grid'
@@ -47,7 +47,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const {
-    label,
+		label,
 		title,
 		layout = 'grid',
 		style = 'card',
@@ -117,8 +117,8 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		setActiveFilters([])
 		findMany({
 			filters: {},
-      sort_by: 'id',
-      sort_direction: 'desc',
+			sort_by: 'id',
+			sort_direction: 'desc',
 			keywords: '',
 			page: 1,
 			per_page: perPage,

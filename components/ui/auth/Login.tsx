@@ -10,8 +10,8 @@ type LoginProps = {
 	forgotPasswordUrl?: string
 	signupUrl?: string
 	oneTimePasswordUrl?: string
-	disableUsername?: boolean,
-  enableGoogle?: boolean,
+	disableUsername?: boolean
+	enableGoogle?: boolean
 }
 
 const Login: React.FC<LoginProps> = (props) => {
@@ -22,7 +22,7 @@ const Login: React.FC<LoginProps> = (props) => {
 		forgotPasswordUrl,
 		signupUrl,
 		oneTimePasswordUrl,
-    enableGoogle=false
+		enableGoogle = false,
 	} = props || {}
 
 	const router = useRouter()
@@ -35,9 +35,9 @@ const Login: React.FC<LoginProps> = (props) => {
 		}
 	}
 
-  const handleGoogleSuccess = () => {
-    router.push(redirectUrl)
-  }
+	const handleGoogleSuccess = () => {
+		router.push(redirectUrl)
+	}
 
 	const handleSignup = () => {
 		router.push(signupUrl)
@@ -57,14 +57,14 @@ const Login: React.FC<LoginProps> = (props) => {
 				<LoginForm
 					errors={errors}
 					loading={loading}
-					user={user}          
+					user={user}
 					handleChange={handleChange}
 					handleSubmit={handleSubmit}
 					handleOneTimePassword={oneTimePasswordUrl && handleOneTimePassword}
 					handleSignup={signupUrl && handleSignup}
 					handleForgotPassword={forgotPasswordUrl && handleForgotPassword}
-          enableGoogle={enableGoogle}
-          handleGoogleSuccess={ handleGoogleSuccess }
+					enableGoogle={enableGoogle}
+					handleGoogleSuccess={handleGoogleSuccess}
 				/>
 			</AuthScreen>
 		</LayoutLoader>

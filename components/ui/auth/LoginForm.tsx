@@ -6,13 +6,13 @@ type LoginFormProps = {
 	errors?: any
 	loading?: boolean
 	user: any
-  enableGoogle?: boolean
+	enableGoogle?: boolean
 	handleChange: (ev: any) => void
 	handleSubmit: () => void
 	handleForgotPassword: () => void
 	handleSignup: () => void
 	handleOneTimePassword?: () => void
-  handleGoogleSuccess?: () => void
+	handleGoogleSuccess?: () => void
 }
 
 const LoginForm: React.FC<LoginFormProps> = (props) => {
@@ -25,74 +25,72 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 		handleForgotPassword,
 		handleSignup,
 		handleOneTimePassword,
-    enableGoogle=false,
-    handleGoogleSuccess 
+		enableGoogle = false,
+		handleGoogleSuccess,
 	} = props
 
 	return (
-		<Stack sx={ sx.root } spacing={2} divider={ <Divider />}>
-      { enableGoogle && (
-        <GoogleLoginButton 
-          handleSuccess={handleGoogleSuccess}          
-        />
-      )}
-      <Stack spacing={1}>
-			<TextInput
-				errors={errors}
-				name="email"
-				value={user?.email}
-				placeholder="Email"
-				handleChange={handleChange}
-			/>
-			<TextInput
-				errors={errors}
-				name="password"
-				value={user?.password}
-				type="password"
-				placeholder="Password"
-				handleChange={handleChange}
-			/>
-			<Button
-				fullWidth
-        size="large"
-				color="primary"
-				onClick={handleSubmit}
-				variant="contained"
-				endIcon={<IconLoader loading={loading} />}
-			>
-				Sign In
-			</Button>
-			{handleSignup && (
+		<Stack sx={sx.root} spacing={2} divider={<Divider />}>
+			{enableGoogle && (
+				<GoogleLoginButton handleSuccess={handleGoogleSuccess} />
+			)}
+			<Stack spacing={1}>
+				<TextInput
+					errors={errors}
+					name="email"
+					value={user?.email}
+					placeholder="Email"
+					handleChange={handleChange}
+				/>
+				<TextInput
+					errors={errors}
+					name="password"
+					value={user?.password}
+					type="password"
+					placeholder="Password"
+					handleChange={handleChange}
+				/>
 				<Button
 					fullWidth
+					size="large"
 					color="primary"
-					variant="outlined"
-					onClick={handleSignup}
+					onClick={handleSubmit}
+					variant="contained"
+					endIcon={<IconLoader loading={loading} />}
 				>
-					No account? Sign up
+					Sign In
 				</Button>
-			)}
-			{handleForgotPassword && (
-				<Button fullWidth color="primary" onClick={handleForgotPassword}>
-					Forgot password?
-				</Button>
-			)}
-			{handleOneTimePassword && (
-				<Button fullWidth color="primary" onClick={handleOneTimePassword}>
-					One-time password
-				</Button>
-			)}
+				{handleSignup && (
+					<Button
+						fullWidth
+						color="primary"
+						variant="outlined"
+						onClick={handleSignup}
+					>
+						No account? Sign up
+					</Button>
+				)}
+				{handleForgotPassword && (
+					<Button fullWidth color="primary" onClick={handleForgotPassword}>
+						Forgot password?
+					</Button>
+				)}
+				{handleOneTimePassword && (
+					<Button fullWidth color="primary" onClick={handleOneTimePassword}>
+						One-time password
+					</Button>
+				)}
+			</Stack>
 		</Stack>
-    </Stack>
 	)
 }
 
 export default LoginForm
 
 const sx = {
-  root: {
-    mt: 2
-  },
+	root: {
+		mt: 2,
+	},
 	button: {
 		color: 'text.primary',
 	},

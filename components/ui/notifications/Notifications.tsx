@@ -26,14 +26,7 @@ const Notifications: React.FC<NotificationProps> = (props) => {
 				enableMouseEvents
 			>
 				{notifications?.map((notification, i) => (
-					<Notification
-						key={i}
-						text={notification.text}
-						buttonText={notification.buttonText}
-						path={notification.path}
-						discountCode={notification.discountCode}
-						copyToClipboard={notification.copyToClipboard}
-					/>
+					<Notification key={i} notification={notification} />
 				))}
 			</SwipeableViews>
 		</List>

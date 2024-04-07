@@ -23,14 +23,14 @@ const Placeholder: React.FC<PlaceholderProps> = (props) => {
 	} = props
 
 	return (
-		<Box 
-      sx={{ 
-      ...sx.root, 
-      ...(enableBorder && sx.border) 
-      }}
-    >
+		<Box
+			sx={{
+				...sx.root,
+				...(enableBorder && sx.border),
+			}}
+		>
 			<Stack spacing={1} alignItems="center">
-        {icon && <Icon name={icon} size={24} color={color} />}
+				{icon && <Icon name={icon} size={24} color={color} />}
 				<Typography sx={sx.title} variant="subtitle2">
 					{title}
 				</Typography>

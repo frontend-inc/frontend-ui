@@ -29,17 +29,15 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 					{title}
 				</Typography>
 			)}
-			{layout == 'carousel'? (
+			{layout == 'carousel' ? (
 				<SwipeableTestimonials
-          items={items}
+					items={items}
 					enableAutoPlay={enableAutoPlay}
 					enableArrows={enableArrows}
 				/>
-			):(
-      <TestimonialsGrid 
-        items={items} 
-        />
-      )}
+			) : (
+				<TestimonialsGrid items={items} />
+			)}
 			{items?.length == 0 && (
 				<Placeholder
 					icon="Star"

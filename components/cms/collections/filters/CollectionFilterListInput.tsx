@@ -59,7 +59,7 @@ const CollectionFilterListInput: React.FC<CollectionFilterListInputProps> = (
 				/>
 			)}
 
-      {filterOption.variant == 'price_range' && (
+			{filterOption.variant == 'price_range' && (
 				<CheckboxPriceRangeFilter
 					name={filterOption?.field}
 					label={filterOption?.label}

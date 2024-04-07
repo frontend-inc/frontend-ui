@@ -8,12 +8,16 @@ type FetchManyProps = {
 }
 
 const FetchMany: React.FC<FetchManyProps> = (props) => {
-	const { children, url, defaultQuery = {
-    sort_by: 'id',
-    sort_direction: 'desc',
-    per_page: 20,
-    page: 1
-  } } = props
+	const {
+		children,
+		url,
+		defaultQuery = {
+			sort_by: 'id',
+			sort_direction: 'desc',
+			per_page: 20,
+			page: 1,
+		},
+	} = props
 
 	const { findMany } = useResourceContext({
 		url,

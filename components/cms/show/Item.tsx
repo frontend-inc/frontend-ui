@@ -5,7 +5,7 @@ import { ActionType, DocumentType } from '../../../types'
 
 type ItemProps = {
 	resource: DocumentType
-  actions?: ActionType[]
+	actions?: ActionType[]
 }
 
 const Item: React.FC<ItemProps> = (props) => {
@@ -44,12 +44,7 @@ const Item: React.FC<ItemProps> = (props) => {
 							</Link>
 						)}
 					</Box>
-          { actions && (
-            <Actions 
-              actions={ actions } 
-              resource={ resource }
-            />
-          )}
+					{actions && <Actions actions={actions} resource={resource} />}
 				</Stack>
 			</Stack>
 		</Box>
@@ -66,7 +61,7 @@ const sx = {
 		alignItems: 'center',
 	},
 	container: {
-    width: '100%',
+		width: '100%',
 		justifyContent: 'flex-start',
 		alignItems: {
 			md: 'flex-start',

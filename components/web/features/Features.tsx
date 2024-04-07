@@ -13,7 +13,7 @@ type FeaturesProps = {
 }
 
 const Features: React.FC<FeaturesProps> = (props) => {
-	const { title, items=[] } = props || {}
+	const { title, items = [] } = props || {}
 
 	return (
 		<>

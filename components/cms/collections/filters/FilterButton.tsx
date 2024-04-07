@@ -46,7 +46,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 						...sx.button,
 						...(filters?.length > 0 && sx.hideBorder),
 					}}
-          color="secondary"
+					color="secondary"
 					variant="contained"
 					startIcon={
 						loading ? (

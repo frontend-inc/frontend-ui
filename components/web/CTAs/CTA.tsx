@@ -18,8 +18,7 @@ type CallToActionProps = {
 
 // Call To Action
 const CTA: React.FC<CallToActionProps> = (props) => {
-	
-  const {
+	const {
 		label,
 		title,
 		description,
@@ -43,33 +42,25 @@ const CTA: React.FC<CallToActionProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			<Stack sx={sx.content} direction="column" spacing={1}>
-			{label && (
-				<Typography 
-          color="text.secondary" 
-          variant="caption"
-          sx={sx.label}
-        >
-					{label}
-				</Typography>
-			)}
-			{title && (
-				<Typography
-					variant={'h3'}
-					color="text.primary"
-					sx={ sx.title }
-				>
-					{title}
-				</Typography>
-			)}
-			{description && (
-				<Typography
-					variant="subtitle2"
-					color="text.secondary"
-					sx={sx.description}
-				>
-					{description}
-				</Typography>
-			)}
+				{label && (
+					<Typography color="text.secondary" variant="caption" sx={sx.label}>
+						{label}
+					</Typography>
+				)}
+				{title && (
+					<Typography variant={'h3'} color="text.primary" sx={sx.title}>
+						{title}
+					</Typography>
+				)}
+				{description && (
+					<Typography
+						variant="subtitle2"
+						color="text.secondary"
+						sx={sx.description}
+					>
+						{description}
+					</Typography>
+				)}
 				{buttonText && (
 					<Box sx={sx.actions}>
 						<Button
@@ -95,9 +86,9 @@ const sx = {
 	},
 	content: {
 		width: '100%',
-    alignItems: 'center',
+		alignItems: 'center',
 	},
-	label: {		
+	label: {
 		textAlign: 'center',
 	},
 	title: {
@@ -107,7 +98,7 @@ const sx = {
 	description: {
 		color: 'text.secondary',
 		textAlign: 'center',
-    maxWidth: '600px'
+		maxWidth: '600px',
 	},
 	actions: {
 		mt: 2,

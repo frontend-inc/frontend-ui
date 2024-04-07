@@ -36,7 +36,7 @@ const ProductSortButton: React.FC<ProductSortButtonProps> = (props) => {
 				<Button
 					sx={sx.button}
 					variant="contained"
-          color="secondary"
+					color="secondary"
 					onClick={handleOpen}
 					endIcon={<Icon name="ArrowDownUp" size={20} />}
 				>

@@ -1,18 +1,17 @@
-export type MenuLinkTypes =  
-  'dropdown' |
-  'link' | 
-  'sublink' | 
-  'shopify_collection' |
-  'shopify_product' |  
-  'url' 
-  
+export type MenuLinkTypes =
+	| 'dropdown'
+	| 'link'
+	| 'sublink'
+	| 'shopify_collection'
+	| 'shopify_product'
+	| 'url'
 
 export type MenuLinkType = {
 	name: string
 	path: string
 	url?: string
 	icon?: string
-  link_type?: MenuLinkTypes
+	link_type?: MenuLinkTypes
 	position: number
 	parent_id?: number | null
 	shopify_collection?: string

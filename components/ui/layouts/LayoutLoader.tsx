@@ -27,11 +27,11 @@ export default LayoutLoader
 
 const sx = {
 	backdrop: {
-    height: '4px',
+		height: '4px',
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
-    bgcolor: 'transparent !important',
+		bgcolor: 'transparent !important',
 		zIndex: (theme) => theme.zIndex.drawer + 1,
 	},
 	progress: {

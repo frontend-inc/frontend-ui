@@ -21,7 +21,7 @@ const LoadMore: React.FC<LoadMoreProps> = (props) => {
 					{enableInfiniteLoad && <Waypoint onEnter={loadMore} />}
 					<Button
 						color="secondary"
-            variant="contained"
+						variant="contained"
 						onClick={loadMore}
 						endIcon={<Icon name="ChevronDown" />}
 					>

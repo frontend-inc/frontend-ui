@@ -6,7 +6,7 @@ export const palette = {
 	},
 	secondary: {
 		main: COLORS.grey[200],
-    contrastText: COLORS.grey[800],
+		contrastText: COLORS.grey[800],
 	},
 	accent: {
 		main: COLORS.grey[900],

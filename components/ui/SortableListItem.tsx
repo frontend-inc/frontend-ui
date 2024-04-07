@@ -30,8 +30,8 @@ export default SortableListItem
 
 const sx = {
 	item: {
-    position: 'static !important',
-  },
+		position: 'static !important',
+	},
 	icon: {
 		color: 'text.secondary',
 	},

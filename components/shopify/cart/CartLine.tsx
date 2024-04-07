@@ -30,10 +30,7 @@ const CartQuantityInput: React.FC<CartQuantityInputProps> = (props) => {
 	const { quantity, handleAddQuantity, handleRemoveQuantity } = props
 
 	return (
-		<ButtonGroup 
-      color="secondary"
-      variant="contained"
-      sx={sx.buttonGroup}>
+		<ButtonGroup color="secondary" variant="contained" sx={sx.buttonGroup}>
 			<Button sx={sx.button} onClick={handleRemoveQuantity}>
 				<Icon name="Minus" size={16} />
 			</Button>

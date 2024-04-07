@@ -1,7 +1,7 @@
 export default {
 	defaultProps: {
 		disableRipple: true,
-    border: 'none !important'
+		border: 'none !important',
 	},
 	styleOverrides: {
 		root: {

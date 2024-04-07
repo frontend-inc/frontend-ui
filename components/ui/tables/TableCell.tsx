@@ -33,8 +33,8 @@ const sx = {
 		px: 1,
 		minWidth: '100px',
 		bgcolor: 'background.paper',
-    borderBottom: '1px solid',
-    borderColor: 'divider'
+		borderBottom: '1px solid',
+		borderColor: 'divider',
 	},
 	header: {
 		p: 0,

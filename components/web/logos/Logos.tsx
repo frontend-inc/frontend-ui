@@ -5,7 +5,7 @@ import Logo from './Logo'
 import { Heading } from '../..'
 
 type LogosProps = {
-  title?: string
+	title?: string
 	label?: string
 	items?: {
 		image: string
@@ -25,11 +25,7 @@ const Logos: React.FC<LogosProps> = (props) => {
 
 	return (
 		<Stack spacing={0} sx={sx.root}>
-      <Heading 
-        title={title} 
-        label={label} 
-        textAlign='center'
-      />      
+			<Heading title={title} label={label} textAlign="center" />
 			<Stack sx={sx.logos} direction="row" spacing={1}>
 				{items?.map((item, index) => (
 					<Logo
@@ -60,7 +56,7 @@ const sx = {
 		p: 2,
 		bgcolor: 'background.main',
 	},
-	label: {		
+	label: {
 		textAlign: 'center',
 	},
 	logos: {

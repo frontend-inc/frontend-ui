@@ -51,33 +51,33 @@ const CoverImageCarousel: React.FC<CoverImageCarouselProps> = (props) => {
 	}
 
 	return (
-    <>
-		<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
-			{items?.map((item, index) => (
-				<CoverImage
-					key={index}
-					editing={editing}
-					title={item?.title}
-					description={item?.description}
-					image={item?.image}
-					buttonText={item?.buttonText}
-					enableOverlay={enableOverlay}
-					enableGradient={enableGradient}
-					opacity={opacity}
-					handleClick={() => handleClick(item)}
-					overlayColor={overlayColor}
-					alignItems={alignItems}
+		<>
+			<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
+				{items?.map((item, index) => (
+					<CoverImage
+						key={index}
+						editing={editing}
+						title={item?.title}
+						description={item?.description}
+						image={item?.image}
+						buttonText={item?.buttonText}
+						enableOverlay={enableOverlay}
+						enableGradient={enableGradient}
+						opacity={opacity}
+						handleClick={() => handleClick(item)}
+						overlayColor={overlayColor}
+						alignItems={alignItems}
+					/>
+				))}
+			</Swipeable>
+			{items?.length === 0 && (
+				<Placeholder
+					icon="Image"
+					title="No cover images"
+					description="Cover images will appear here."
 				/>
-			))}
-		</Swipeable>
-    { items?.length === 0 && (
-      <Placeholder 
-        icon="Image"
-        title="No cover images"
-        description="Cover images will appear here."  
-      />
-    )}
-    </>
+			)}
+		</>
 	)
 }
 

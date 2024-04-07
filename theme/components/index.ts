@@ -28,7 +28,7 @@ export default {
 	MuiAccordian,
 	MuiAutocomplete,
 	MuiButton,
-  MuiButtonGroup,
+	MuiButtonGroup,
 	MuiCardActions,
 	MuiCardContent,
 	MuiCardHeader,

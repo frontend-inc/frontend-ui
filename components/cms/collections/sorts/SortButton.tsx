@@ -45,7 +45,7 @@ const SortButton: React.FC<SortButtonProps> = (props) => {
 		<>
 			<Button
 				sx={sx.button}
-        color="secondary"
+				color="secondary"
 				variant="contained"
 				onClick={handleOpenModal}
 				endIcon={

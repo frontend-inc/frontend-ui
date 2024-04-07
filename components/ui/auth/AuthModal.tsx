@@ -102,7 +102,11 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 	}, [authOpen])
 
 	return (
-		<Modal open={authOpen} handleClose={() => setAuthOpen(false)} disablePadding>
+		<Modal
+			open={authOpen}
+			handleClose={() => setAuthOpen(false)}
+			disablePadding
+		>
 			<Box sx={sx.logo}>
 				<Image src={logo} alt="Logo" height={48} width={48} />
 			</Box>

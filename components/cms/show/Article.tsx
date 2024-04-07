@@ -5,8 +5,8 @@ import { ActionType, DocumentType } from '../../../types'
 import moment from 'moment'
 
 type ArticleProps = {
-  actions?: ActionType[]
-	resource: DocumentType  
+	actions?: ActionType[]
+	resource: DocumentType
 }
 
 const Article: React.FC<ArticleProps> = (props) => {
@@ -29,12 +29,7 @@ const Article: React.FC<ArticleProps> = (props) => {
 					{description}
 				</Typography>
 			</Box>
-      { actions && (
-        <Actions 
-          actions={ actions }
-          resource={ resource }
-        />
-      )}
+			{actions && <Actions actions={actions} resource={resource} />}
 		</Stack>
 	)
 }

@@ -9,7 +9,7 @@ import { get } from 'lodash'
 
 type FormProps = {
 	handle: string
-  title?: string
+	title?: string
 	url: string
 	buttonText?: string
 	variant?: 'contained' | 'outlined' | 'text'
@@ -18,7 +18,7 @@ type FormProps = {
 }
 
 const Form: React.FC<FormProps> = (props) => {
-	const { handle, buttonText='Submit', title, fields, url } = props
+	const { handle, buttonText = 'Submit', title, fields, url } = props
 
 	const [submitted, setSubmitted] = useState(false)
 
@@ -74,57 +74,52 @@ const Form: React.FC<FormProps> = (props) => {
 			findOne(handle)
 		}
 	}, [handle])
-  
-	return(
-  !submitted ? (
-  <Box sx={ sx.root }>
-    { title && (
-      <Heading title={title} />
-    )}
-		<Stack spacing={1} sx={sx.root}>
-			{fields?.map((field, index) =>
-				SYSTEM_FIELDS.includes(field.name) ? (
-					<FormField
-						key={field.id}
-						field={field}
-						value={get(resource, field.name)}
-						handleChange={handleChange}
-						handleRemove={handleRemove}
-					/>
-				) : (
-					<FormField
-						key={field.id}
-						field={field}
-						value={get(resource?.data, field.name)}
-						handleChange={handleDataChange}
-					/>
-				)
-			)}
-			<Button
-        size="large"
-				variant='contained'
-				onClick={handleSubmit}
-				disabled={loading}
-				endIcon={<ButtonLoader color="primary" loading={loading} />}
-			>
-				{buttonText}
-			</Button>
-		</Stack>
-  </Box>
+
+	return !submitted ? (
+		<Box sx={sx.root}>
+			{title && <Heading title={title} />}
+			<Stack spacing={1} sx={sx.root}>
+				{fields?.map((field, index) =>
+					SYSTEM_FIELDS.includes(field.name) ? (
+						<FormField
+							key={field.id}
+							field={field}
+							value={get(resource, field.name)}
+							handleChange={handleChange}
+							handleRemove={handleRemove}
+						/>
+					) : (
+						<FormField
+							key={field.id}
+							field={field}
+							value={get(resource?.data, field.name)}
+							handleChange={handleDataChange}
+						/>
+					)
+				)}
+				<Button
+					size="large"
+					variant="contained"
+					onClick={handleSubmit}
+					disabled={loading}
+					endIcon={<ButtonLoader color="primary" loading={loading} />}
+				>
+					{buttonText}
+				</Button>
+			</Stack>
+		</Box>
 	) : (
 		<Placeholder
 			icon={'CheckCircle'}
 			title="Success"
 			description="Your form has been submitted"
 			actions={
-				<Button 
-          variant="contained" onClick={() => setSubmitted(false)}>
+				<Button variant="contained" onClick={() => setSubmitted(false)}>
 					Done
 				</Button>
 			}
 		/>
 	)
-  )
 }
 
 export default Form
@@ -133,7 +128,7 @@ const sx = {
 	root: {
 		width: '100%',
 	},
-  button: {
-    mt: 2
-  }
+	button: {
+		mt: 2,
+	},
 }

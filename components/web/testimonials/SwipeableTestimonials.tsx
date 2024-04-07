@@ -10,11 +10,7 @@ type SwipeableTestimonialsProps = {
 }
 
 const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
-	const {
-		enableAutoPlay = false,
-		enableArrows = false,
-		items = [],
-	} = props
+	const { enableAutoPlay = false, enableArrows = false, items = [] } = props
 
 	return (
 		<Box>

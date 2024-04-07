@@ -22,7 +22,7 @@ type ForeignCollectionProps = {
 	buttonText?: string
 	enableBorder?: boolean
 	enableGradient?: boolean
-  enableLoadMore?: boolean
+	enableLoadMore?: boolean
 }
 
 const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
@@ -39,24 +39,17 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		query: defaultQuery = null,
 		enableBorder = false,
 		enableGradient = false,
-    enableLoadMore = true,
+		enableLoadMore = true,
 	} = props
 
 	const router = useRouter()
 
 	const { clientUrl } = useContext(AppContext)
 
-	const { 
-    loading,
-    query, 
-    resources, 
-    findMany,
-    page,
-    numPages,
-    loadMore,     
-  } = useResource({
-		url: foreignUrl,
-	})
+	const { loading, query, resources, findMany, page, numPages, loadMore } =
+		useResource({
+			url: foreignUrl,
+		})
 
 	const handleClick = (item) => {
 		if (clientUrl && navigateUrl && item?.handle) {
@@ -101,12 +94,8 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 				enableBorder={enableBorder}
 				enableGradient={enableGradient}
 			/>
-      {enableLoadMore && (
-				<LoadMore
-					page={page}
-					numPages={numPages}
-					loadMore={loadMore}
-				/>
+			{enableLoadMore && (
+				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
 			)}
 		</Box>
 	)

@@ -14,9 +14,9 @@ const SubscriptionSelector: React.FC<SubscriptionSelectorProps> = (props) => {
 	const [sellingPlans, setSellingPlans] = useState<any>(null)
 
 	useEffect(() => {
-		if (product) {			
+		if (product) {
 			const subscriptions =
-        // @ts-ignore 
+				// @ts-ignore
 				product?.sellingPlanGroups?.edges[0]?.node?.sellingPlans?.edges //@ts-ignore
 					?.map(({ node }) => node)
 			setSellingPlans(subscriptions)

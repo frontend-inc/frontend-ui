@@ -4,7 +4,7 @@ import { Button } from '@mui/material'
 
 type QuickShopButtonProps = {
 	size?: 'small' | 'medium' | 'large'
-	color?: 'primary' | 'secondary' 
+	color?: 'primary' | 'secondary'
 	buttonText?: string
 	quickShopButtonText?: string
 	product?: any
@@ -15,7 +15,7 @@ const QuickShopButton: React.FC<QuickShopButtonProps> = (props) => {
 	const {
 		size,
 		product,
-    color="secondary",
+		color = 'secondary',
 		buttonText = 'Add to Cart',
 		quickShopButtonText = 'Quick Shop',
 		enableQuantity = false,
@@ -29,10 +29,10 @@ const QuickShopButton: React.FC<QuickShopButtonProps> = (props) => {
 
 	return (
 		<>
-			<Button				
+			<Button
 				size={size}
-        color={ color }
-				variant='contained'
+				color={color}
+				variant="contained"
 				onClick={handleQuickShop}
 			>
 				{quickShopButtonText}
@@ -49,4 +49,3 @@ const QuickShopButton: React.FC<QuickShopButtonProps> = (props) => {
 }
 
 export default QuickShopButton
-

@@ -72,8 +72,8 @@ const sx = {
 		bgcolor: 'background.paper',
 		textAlign: 'center',
 		'&:hover': {
-      m: 0,
-      border: '3px solid',
+			m: 0,
+			border: '3px solid',
 			cursor: 'pointer',
 			borderColor: 'primary.main',
 		},

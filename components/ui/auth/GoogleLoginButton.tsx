@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Box } from '@mui/material'
-import { useGoogleLogin } from '@react-oauth/google';
+import { useGoogleLogin } from '@react-oauth/google'
 import { useAuth } from 'frontend-js'
 import { ButtonLoader } from '../../../components'
 
@@ -9,69 +9,67 @@ const GoogleIcon = `
 `
 
 type OAuthCredentialsType = {
-  access_token: string 
-  refresh_token?: string
-  expires_in?: number
+	access_token: string
+	refresh_token?: string
+	expires_in?: number
 }
 
 type GoogleLoginButtonProps = {
-  handleSuccess?: () => void
+	handleSuccess?: () => void
 }
 
 const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = (props) => {
-  const { handleSuccess } = props 
-  const { loading, googleLogin } = useAuth()
-  const [OAuthCredentials, setOAuthCredentials] = useState<OAuthCredentialsType>(null);
+	const { handleSuccess } = props
+	const { loading, googleLogin } = useAuth()
+	const [OAuthCredentials, setOAuthCredentials] =
+		useState<OAuthCredentialsType>(null)
 
-  const handleLogin = useGoogleLogin({
-    onSuccess: (codeResponse) => setOAuthCredentials(codeResponse),
-    onError: (error) => console.log('Login Failed:', error)
-  });
+	const handleLogin = useGoogleLogin({
+		onSuccess: (codeResponse) => setOAuthCredentials(codeResponse),
+		onError: (error) => console.log('Login Failed:', error),
+	})
 
-  const handleGoogleLogin = async (accessToken) => {
-    let resp = await googleLogin(accessToken)    
-    if(resp?.id && handleSuccess){
-      handleSuccess()
-    }
-  }
+	const handleGoogleLogin = async (accessToken) => {
+		let resp = await googleLogin(accessToken)
+		if (resp?.id && handleSuccess) {
+			handleSuccess()
+		}
+	}
 
-  useEffect(() => {
-    if(OAuthCredentials){
-      handleGoogleLogin(OAuthCredentials?.access_token)
-    }
-  }, [OAuthCredentials])
+	useEffect(() => {
+		if (OAuthCredentials) {
+			handleGoogleLogin(OAuthCredentials?.access_token)
+		}
+	}, [OAuthCredentials])
 
-  return (
-    //@ts-ignore 
-    <Button
-      sx={ sx.button }
-      size="large"
-      variant="contained"
-      color="secondary"
-      onClick={ 
-        handleLogin 
-      }
-      startIcon={
-        loading ?
-        <ButtonLoader color='secondary.contrastText' loading={loading} /> :
-        <Box 
-          sx={ sx.icon }
-          dangerouslySetInnerHTML={{ __html: GoogleIcon }} 
-        />        
-      }
-    >
-      Sign In with Google
-    </Button>
-  )
+	return (
+		//@ts-ignore
+		<Button
+			sx={sx.button}
+			size="large"
+			variant="contained"
+			color="secondary"
+			onClick={handleLogin}
+			startIcon={
+				loading ? (
+					<ButtonLoader color="secondary.contrastText" loading={loading} />
+				) : (
+					<Box sx={sx.icon} dangerouslySetInnerHTML={{ __html: GoogleIcon }} />
+				)
+			}
+		>
+			Sign In with Google
+		</Button>
+	)
 }
 
-export default GoogleLoginButton 
+export default GoogleLoginButton
 
 const sx = {
-  button: {
-    position: 'relative'
-  },
-  icon: {
-    mb: '-6px'
-  }
+	button: {
+		position: 'relative',
+	},
+	icon: {
+		mb: '-6px',
+	},
 }

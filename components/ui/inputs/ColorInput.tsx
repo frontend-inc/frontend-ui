@@ -38,7 +38,7 @@ const TransparentColor: React.FC<TransparentColorProps> = (props) => {
 
 type ColorInputProps = {
 	label?: string
-  placeholder?: string
+	placeholder?: string
 	name: string
 	value: string
 	handleChange: (e: SyntheticEventType) => void
@@ -47,7 +47,14 @@ type ColorInputProps = {
 }
 
 const ColorInput: React.FC<ColorInputProps> = (props) => {
-	const { label, name, value, placeholder="Color", disableTone = false, handleChange } = props
+	const {
+		label,
+		name,
+		value,
+		placeholder = 'Color',
+		disableTone = false,
+		handleChange,
+	} = props
 
 	const [tone, setTone] = useState(500)
 	const [hex, setHex] = useState(value || '')
@@ -60,8 +67,8 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 	}
 
 	const handleColorChange = (color) => {
-    const hexColor = COLORS[color][tone]
-    setHex(hexColor)
+		const hexColor = COLORS[color][tone]
+		setHex(hexColor)
 		closeMenu()
 	}
 
@@ -131,7 +138,7 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 				}
 				onClick={openMenu}
 			>
-				{ placeholder }
+				{placeholder}
 			</Button>
 			<Popup open={open} anchorEl={anchorEl} handleClose={closeMenu}>
 				<Stack spacing={2} direction="column" sx={sx.root}>
@@ -208,8 +215,8 @@ const sx = {
 		border: '1px solid',
 		borderColor: 'divider',
 		bgcolor: 'background.paper',
-    fontSize: theme => theme.typography.body1.fontSize,
-    fontWeight: theme => theme.typography.body1.fontWeight,
+		fontSize: (theme) => theme.typography.body1.fontSize,
+		fontWeight: (theme) => theme.typography.body1.fontWeight,
 	},
 	grid: {
 		display: 'grid',
@@ -221,7 +228,7 @@ const sx = {
 	},
 	color: {
 		border: '2px solid',
-    borderColor: 'divider',
+		borderColor: 'divider',
 		borderRadius: '8px',
 		height: '32px',
 		width: '32px',

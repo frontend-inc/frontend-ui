@@ -47,11 +47,11 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 			openMenu(ev)
 		} else {
 			closeMenu()
-      if(menuItem?.link_type == 'url'){
-        window.open(menuItem.url, '_blank')  
-      }else{
-        handleClick(menuItem.path)
-      }			
+			if (menuItem?.link_type == 'url') {
+				window.open(menuItem.url, '_blank')
+			} else {
+				handleClick(menuItem.path)
+			}
 		}
 		if (shopify_collection && !products) {
 			findCollection(shopify_collection)

@@ -26,13 +26,7 @@ type CheckboxPriceRangeFilterProps = {
 const CheckboxPriceRangeFilter: React.FC<CheckboxPriceRangeFilterProps> = (
 	props
 ) => {
-	
-	return (
-		<CheckboxNumberRangeFilter
-      { ...props }
-      enableCurrency 
-    />
-	)
+	return <CheckboxNumberRangeFilter {...props} enableCurrency />
 }
 
 export default CheckboxPriceRangeFilter

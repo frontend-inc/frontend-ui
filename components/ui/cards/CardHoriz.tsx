@@ -42,7 +42,7 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 				width: '100%',
 			}}
 		>
-			<Stack spacing={1} flexDirection={{ xs: 'column', sm: 'row'}}>
+			<Stack spacing={1} flexDirection={{ xs: 'column', sm: 'row' }}>
 				<Box sx={sx.image}>
 					<TouchableOpacity handleClick={handleItemClick}>
 						<Image
@@ -77,7 +77,7 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 					{buttonText && (
 						<Box>
 							<Button
-                variant="contained"
+								variant="contained"
 								color="secondary"
 								onClick={handleItemClick}
 							>
@@ -117,25 +117,25 @@ const sx = {
 		borderColor: 'divider',
 	},
 	image: {
-    pr: {
-      sm: 2,
-      xs: 0
-    },
-    mr: {
-      sm: 2,
-      xs: 0 
-    },
+		pr: {
+			sm: 2,
+			xs: 0,
+		},
+		mr: {
+			sm: 2,
+			xs: 0,
+		},
 		width: {
-      sm: 220,
-      xs: '100%',
-    },
+			sm: 220,
+			xs: '100%',
+		},
 		height: '100%',
 	},
 	content: {
 		justifyContent: 'flex-start',
 		alignItems: 'flex-start',
 		height: '100%',
-    py: 1,    
+		py: 1,
 	},
 	description: {
 		maxWidth: '320px',

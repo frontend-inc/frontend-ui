@@ -15,7 +15,7 @@ const UserMenu: React.FC<UserMenuProps> = (props) => {
 	return (
 		<Menu open={open} onClose={toggleMenu} anchorEl={anchorEl}>
 			<MenuItem onClick={() => handleClick('/my-account')}>My Account</MenuItem>
-      <Divider />
+			<Divider />
 			<MenuItem onClick={handleLogoutClick}>
 				<Badge
 					color="success"

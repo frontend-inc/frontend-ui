@@ -29,7 +29,7 @@ const CollectionSearchFilters: React.FC<CollectionFilterListProps> = (
 			<Hidden smUp>
 				<Button
 					onClick={toggleMenu}
-          color="secondary"
+					color="secondary"
 					variant="contained"
 					startIcon={<Icon name="SlidersHorizontal" size={20} />}
 				>

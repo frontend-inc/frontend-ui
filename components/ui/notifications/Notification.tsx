@@ -6,49 +6,51 @@ import {
 	Typography,
 	Button,
 } from '@mui/material'
-import copy from 'copy-to-clipboard'
-import { useAlerts } from '../../../hooks'
+import { useClickOrDrag } from '../../../hooks'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
 
 type NotificationProps = {
-	text: string
-	buttonText?: string
-	path?: string
-	discountCode?: string
-	copyToClipboard?: boolean
+	notification: {
+		text: string
+		path: string
+		url?: string
+		position: number
+		notification_type: string
+	}
 }
 
 const Notification: React.FC<NotificationProps> = (props) => {
 	const router = useRouter()
 
-	const {
-		text,
-		buttonText = 'View details',
-		path,
-		discountCode,
-		copyToClipboard,
-	} = props
+	const { notification } = props || {}
 
-	const { showAlertSuccess } = useAlerts()
+	const { text, path, url, position, notification_type } = notification || {}
 
 	const { clientUrl } = useContext(AppContext)
 
 	const handleClick = () => {
-		if (copyToClipboard) {
-			copy(discountCode)
-			showAlertSuccess('Discount code copied to clipboard')
-		} else if (path) {
-			router.push(`${clientUrl}/${path}`)
+		switch (notification_type) {
+			case 'url':
+				window.open(url, '_blank')
+				break
+			case 'page':
+			case 'document':
+				router.push(`${clientUrl}${path}`)
+				break
 		}
 	}
+
+	const { onMouseDown, onMouseUp } = useClickOrDrag({
+		onClick: handleClick,
+	})
 
 	return (
 		<ListItem sx={sx.root}>
 			<ListItemButton
-				disableRipple
 				sx={sx.listItemButton}
-				onClick={handleClick}
+				onMouseDown={onMouseDown}
+				onMouseUp={onMouseUp}
 			>
 				<ListItemText
 					primary={

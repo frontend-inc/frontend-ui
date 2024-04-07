@@ -23,8 +23,8 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 		<Button
 			size="large"
 			onClick={handleClick}
-      variant="contained"
-      color={ isFavorite ? 'primary' : 'secondary'}
+			variant="contained"
+			color={isFavorite ? 'primary' : 'secondary'}
 			sx={{
 				...sx.button,
 			}}

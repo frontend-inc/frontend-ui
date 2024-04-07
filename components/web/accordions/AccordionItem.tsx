@@ -35,7 +35,7 @@ const sx = {
 		borderTop: '1px solid',
 		borderColor: 'divider',
 		my: '0px !important',
-    py: 1
+		py: 1,
 	},
 	imageContainer: {
 		width: 256,

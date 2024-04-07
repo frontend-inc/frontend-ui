@@ -51,7 +51,7 @@ const sx = {
 		height: '40px',
 		border: '1px solid',
 		borderColor: 'divider',
-		bgcolor: 'background.default',    
+		bgcolor: 'background.default',
 		'.MuiSvgIcon-root ': {
 			fill: (theme) => theme.palette.text.secondary,
 		},

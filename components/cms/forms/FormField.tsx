@@ -135,9 +135,9 @@ const FormField: React.FC<FormFieldProps> = (props) => {
 					handleRemove={handleRemove}
 				/>
 			)}
-      {variant === 'price' && (
+			{variant === 'price' && (
 				<TextInput
-          type='number'
+					type="number"
 					errors={errors}
 					label={label}
 					name={name}

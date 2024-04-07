@@ -73,9 +73,7 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 
 	return (
 		<Box sx={sx.root}>
-			{title && (
-				<Heading title={ title } />
-			)}
+			{title && <Heading title={title} />}
 			{layout == 'grid' && (
 				<ProductGrid
 					editing={editing}

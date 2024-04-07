@@ -76,11 +76,11 @@ const CardVert: React.FC<CardProps> = (props) => {
 				</Stack>
 				{buttonText && (
 					<Box>
-						<Button 
-              color="secondary" 
-              variant="contained"
-              onClick={handleItemClick}
-            >
+						<Button
+							color="secondary"
+							variant="contained"
+							onClick={handleItemClick}
+						>
 							{buttonText}
 						</Button>
 					</Box>

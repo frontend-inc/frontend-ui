@@ -9,8 +9,8 @@ import { get } from 'lodash'
 
 type ForeignFormProps = {
 	handle: string
-  title?: string
-  label?: string
+	title?: string
+	label?: string
 	url: string
 	foreignUrl?: string
 	buttonText?: string
@@ -22,8 +22,8 @@ type ForeignFormProps = {
 const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 	const {
 		handle,
-    title,
-    label,
+		title,
+		label,
 		buttonText = 'Submit',
 		variant = 'contained',
 		fields,
@@ -89,42 +89,37 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 	}
 
 	return !submitted ? (
-    <Box sx={ sx.root }>
-      { (title || label) && (
-      <Heading 
-        label={ label }
-        title={ title }        
-      /> 
-      )}
-		<Stack spacing={1} sx={sx.form}>
-			{fields?.map((field) =>
-				SYSTEM_FIELDS.includes(field.name) ? (
-					<FormField
-						key={field.id}
-						field={field}
-						value={get(resource, field.name)}
-						handleChange={handleChange}
-						handleRemove={handleRemove}
-					/>
-				) : (
-					<FormField
-						key={field.id}
-						field={field}
-						value={get(resource?.data, field.name)}
-						handleChange={handleDataChange}
-					/>
-				)
-			)}
-			<Button
-				variant={variant}
-				onClick={handleSubmit}
-				disabled={loading}
-				endIcon={<ButtonLoader color="primary" loading={foreignLoading} />}
-			>
-				{buttonText}
-			</Button>
-		</Stack>
-  </Box>
+		<Box sx={sx.root}>
+			{(title || label) && <Heading label={label} title={title} />}
+			<Stack spacing={1} sx={sx.form}>
+				{fields?.map((field) =>
+					SYSTEM_FIELDS.includes(field.name) ? (
+						<FormField
+							key={field.id}
+							field={field}
+							value={get(resource, field.name)}
+							handleChange={handleChange}
+							handleRemove={handleRemove}
+						/>
+					) : (
+						<FormField
+							key={field.id}
+							field={field}
+							value={get(resource?.data, field.name)}
+							handleChange={handleDataChange}
+						/>
+					)
+				)}
+				<Button
+					variant={variant}
+					onClick={handleSubmit}
+					disabled={loading}
+					endIcon={<ButtonLoader color="primary" loading={foreignLoading} />}
+				>
+					{buttonText}
+				</Button>
+			</Stack>
+		</Box>
 	) : (
 		<Placeholder
 			enableBorder
@@ -140,7 +135,7 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 					Done
 				</Button>
 			}
-		/>      
+		/>
 	)
 }
 
@@ -150,7 +145,7 @@ const sx = {
 	root: {
 		width: '100%',
 	},
-  form: {
-    width: '100%',
-  }
+	form: {
+		width: '100%',
+	},
 }

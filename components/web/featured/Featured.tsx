@@ -19,12 +19,17 @@ type FeaturedProps = {
 }
 
 const Featured: React.FC<FeaturedProps> = (props) => {
-	const { title, items=[], enableBorder, enableGradient, enableOverlay } =
-		props || {}
-  
-  return (
+	const {
+		title,
+		items = [],
+		enableBorder,
+		enableGradient,
+		enableOverlay,
+	} = props || {}
+
+	return (
 		<Box>
-			{title && <Heading title={title} textAlign='center' />}
+			{title && <Heading title={title} textAlign="center" />}
 			<Stack spacing={6}>
 				{items?.map((item, i) => (
 					<FeaturedCard

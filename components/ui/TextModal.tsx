@@ -13,12 +13,7 @@ const TextModal: React.FC<TextModalProps> = (props) => {
 	const { open, text, title = 'Preview', handleClose } = props
 
 	return (
-		<Modal
-			open={open}
-			handleClose={handleClose}
-			title={title}
-			maxWidth="md"			
-		>
+		<Modal open={open} handleClose={handleClose} title={title} maxWidth="md">
 			<Typography my={2} variant="body2" sx={sx.text}>
 				{text}
 			</Typography>

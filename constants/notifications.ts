@@ -1,14 +1,14 @@
-const DEFAULT_LINK_OPTIONS = [
-	{ value: 'dropdown', label: 'Dropdown', icon: 'Folder' },
+const DEFAULT_NOTIFICATION_OPTIONS = [
+	{ value: 'text', label: 'Text', icon: 'Text' },
 	{ value: 'page', label: 'Page', icon: 'StickyNote' },
 	{ value: 'url', label: 'URL', icon: 'ExternalLink' },
 	{ value: 'document', label: 'Document', icon: 'Database' },
 ]
 
-export const LINK_OPTIONS = {
-	default: DEFAULT_LINK_OPTIONS,
+export const NOTIFICATION_OPTIONS = {
+	default: DEFAULT_NOTIFICATION_OPTIONS,
 	shopify: [
-		...DEFAULT_LINK_OPTIONS,
+		...DEFAULT_NOTIFICATION_OPTIONS,
 		{
 			value: 'shopify_collection',
 			label: 'Shopify Collection',

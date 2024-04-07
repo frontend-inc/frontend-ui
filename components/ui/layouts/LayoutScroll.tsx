@@ -15,7 +15,7 @@ const LayoutScroll: React.FC<LayoutScrollProps> = (props) => {
 			ref={ref && ref}
 			sx={{
 				...sx.root,
-        p: p,
+				p: p,
 			}}
 		>
 			{children}

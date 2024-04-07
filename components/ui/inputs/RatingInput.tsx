@@ -11,7 +11,7 @@ type RatingInputProps = InputPropsType & {
 	size?: 'small' | 'medium' | 'large'
 	label?: string
 	value?: number
-  direction?: 'row' | 'column'
+	direction?: 'row' | 'column'
 	handleChange?: (e: SyntheticEventType) => void
 }
 
@@ -23,7 +23,7 @@ const RatingInput: React.FC<RatingInputProps> = (props) => {
 		handleChange,
 		disableBorder = false,
 		readOnly = false,
-    direction="column",
+		direction = 'column',
 		size,
 	} = props
 
@@ -37,16 +37,16 @@ const RatingInput: React.FC<RatingInputProps> = (props) => {
 	}
 
 	return (
-    <Stack
-      sx={{
-        ...sx.stack,
-        ...(direction == 'row' && sx.stackVertical),
-      }}
-      direction={direction}
-      spacing={1}
-    >
+		<Stack
+			sx={{
+				...sx.stack,
+				...(direction == 'row' && sx.stackVertical),
+			}}
+			direction={direction}
+			spacing={1}
+		>
 			{label && (
-				<Typography sx={ sx.label } variant="caption" color="textSecondary">
+				<Typography sx={sx.label} variant="caption" color="textSecondary">
 					{label}
 				</Typography>
 			)}
@@ -74,7 +74,7 @@ export default RatingInput
 
 const sx = {
 	input: {
-    width: '100%',
+		width: '100%',
 		fontSize: 15,
 		'&:focus': {
 			boxShadow: `${alpha('#999999', 0.25)} 0 0 0 0.2rem`,
@@ -87,21 +87,21 @@ const sx = {
 	emptyRating: {
 		color: 'text.secondary',
 	},
-	border: {		
-    p: 1,
-    pb: 0.5,
+	border: {
+		p: 1,
+		pb: 0.5,
 		bgcolor: 'background.paper',
 		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 		border: '1px solid',
 		borderColor: 'divider',
 		boxShadow: `rgb(0 0 0 / 5%) 0px 2px 4px !important`,
 	},
-  label: {
-    width: '100px',
-    mb: 0
-  },
-  stack: {
-    width: '100%',
+	label: {
+		width: '100px',
+		mb: 0,
+	},
+	stack: {
+		width: '100%',
 		alignItems: 'flex-start',
 	},
 	stackVertical: {

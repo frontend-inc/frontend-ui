@@ -18,9 +18,7 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 	return (
 		<Stack spacing={1} sx={sx.root}>
 			<Stack direction="row" justifyContent={'space-between'} spacing={1}>
-        { title && (
-          <Heading title={ title } />
-        )}				
+				{title && <Heading title={title} />}
 			</Stack>
 			{items?.map((item, i) => (
 				<AccordionItem

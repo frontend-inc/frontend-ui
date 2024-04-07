@@ -6,7 +6,7 @@ import NextImage from 'next/image'
 type ImageProps = {
 	src?: string
 	height: number
-  width?: number
+	width?: number
 	objectFit?: 'cover' | 'contain'
 	alt?: string
 	bgcolor?: string
@@ -20,8 +20,8 @@ type ImageProps = {
 const Image: React.FC<ImageProps> = (props) => {
 	const {
 		src = null,
-		height,   
-    width, 
+		height,
+		width,
 		objectFit = 'cover',
 		enableBorder = false,
 		alt = 'image',
@@ -34,7 +34,7 @@ const Image: React.FC<ImageProps> = (props) => {
 
 	const theme = useTheme()
 
-  return (
+	return (
 		<Box
 			sx={{
 				...sx.root,
@@ -43,7 +43,7 @@ const Image: React.FC<ImageProps> = (props) => {
 					...sx.afterBase,
 					...(enableOverlay && sx.overlay),
 					...(!enableOverlay && enableGradient && sx.gradient),
-          ...(!disableBorderRadius && sx.borderRadius),          
+					...(!disableBorderRadius && sx.borderRadius),
 					...(!enableOverlay &&
 						!disableBorderRadius &&
 						enableGradient &&
@@ -62,10 +62,12 @@ const Image: React.FC<ImageProps> = (props) => {
 					width={1600}
 					style={{
 						height: `${height}px`,
-            width: width ? `min(${width}px, 100vw)` : '100%',              
+						width: width ? `min(${width}px, 100vw)` : '100%',
 						minHeight: `${height}px`,
 						objectFit,
-            borderRadius: !disableBorderRadius ? `${theme.shape.borderRadius}px` : '0px',
+						borderRadius: !disableBorderRadius
+							? `${theme.shape.borderRadius}px`
+							: '0px',
 					}}
 				/>
 			) : (
@@ -85,10 +87,10 @@ const sx = {
 		alignItems: 'center',
 		justifyContent: 'center',
 		overflow: 'hidden',
-	},  
-  borderRadius: {
-    borderRadius: theme => `${theme.shape.borderRadius}px`,
-  },
+	},
+	borderRadius: {
+		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+	},
 	afterBase: {
 		content: '""',
 		position: 'absolute',
