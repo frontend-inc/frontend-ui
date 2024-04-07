@@ -33,5 +33,6 @@ const sx = {
 		fontFamily: (theme) => theme.typography.fontFamily.caption,
 		letterSpacing: '0.05em',		
 		cursor: 'pointer',
+    borderRadius: theme => `${theme.shape.borderRadius}px`,
 	},
 }

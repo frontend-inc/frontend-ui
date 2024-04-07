@@ -137,7 +137,7 @@ const sx = {
 		minHeight: '100%',
 	},
 	contentHeader: {
-		pt: '64px',
+		pt: '68px',
 	},
 	contentSideNav: {
 		width: {

@@ -218,6 +218,10 @@ const sx = {
 		bgcolor: 'background.paper',
 		fontSize: (theme) => theme.typography.body1.fontSize,
 		fontWeight: (theme) => theme.typography.body1.fontWeight,
+    '&:hover': {
+      bgcolor: 'background.paper',
+      borderColor: 'primary.main'
+    }
 	},
 	grid: {
 		display: 'grid',
