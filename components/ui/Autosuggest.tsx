@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import {
 	Paper,
 	Stack,
+  IconButton,
 	ListItem,
 	ListItemIcon,
 	Typography,
 	InputBase,
+  InputAdornment
 } from '@mui/material'
 import { useError } from '../../hooks'
 import { Icon, ErrorText } from '../../components'
@@ -62,6 +64,7 @@ type AutosuggestProps = {
 	multiselect?: boolean
 	handleChange: (e: SyntheticEventType) => void
 	handleInputChange?: (value: string) => void
+  handleClear?: () => void
 	freeSolo?: boolean
 }
 
@@ -77,6 +80,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 		multiselect = false,
 		handleChange,
 		handleInputChange,
+    handleClear,
 		freeSolo = false,
 	} = props
 
@@ -100,6 +104,13 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 			},
 		})
 	}
+
+  const handleInputClear = () => {
+    if(handleClear){
+      setSelected({ label: '', value: null })
+      handleClear()
+    }
+  }
 
 	useEffect(() => {
 		if (typeof value != 'object') {
@@ -168,6 +179,15 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 							//@ts-ignore
 							...(error && sx.inputError),
 						}}
+            endAdornment={
+              handleClear && (
+              <InputAdornment position="start">
+                <IconButton onClick={ handleInputClear } size="small">
+                  <Icon name="X" size={20} />
+                </IconButton>
+              </InputAdornment>
+              )
+            }
 					/>
 				)}
 			/>

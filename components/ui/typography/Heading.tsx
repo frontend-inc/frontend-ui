@@ -37,7 +37,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 					variant={textVariant}
 					color="text.primary"
 					style={{
-						...sx.text,
+						...sx.title,
 						textAlign,
 					}}
 				>
@@ -65,9 +65,15 @@ export default Heading
 const sx = {
 	stack: {
 		width: '100%',
-		pb: 4
+		pb: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+	},
+  title: {
+		width: '100%',
 	},
 	text: {
 		width: '100%',
+    maxWidth: '600px',
 	},
 }

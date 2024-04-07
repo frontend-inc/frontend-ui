@@ -38,6 +38,7 @@ const TransparentColor: React.FC<TransparentColorProps> = (props) => {
 
 type ColorInputProps = {
 	label?: string
+  placeholder?: string
 	name: string
 	value: string
 	handleChange: (e: SyntheticEventType) => void
@@ -46,10 +47,9 @@ type ColorInputProps = {
 }
 
 const ColorInput: React.FC<ColorInputProps> = (props) => {
-	const { label, name, value, disableTone = false, handleChange } = props
+	const { label, name, value, placeholder="Color", disableTone = false, handleChange } = props
 
 	const [tone, setTone] = useState(500)
-	const [color, setColor] = useState(null)
 	const [hex, setHex] = useState(value || '')
 	const [text, setText] = useState(value || '')
 
@@ -97,7 +97,7 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 	}, [hex])
 
 	return (
-		<Box sx={sx.root}>
+		<Stack direction="column" spacing={1} sx={sx.root}>
 			{label && (
 				<Typography variant="caption" color="textSecondary">
 					{label}
@@ -131,7 +131,7 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 				}
 				onClick={openMenu}
 			>
-				Color
+				{ placeholder }
 			</Button>
 			<Popup open={open} anchorEl={anchorEl} handleClose={closeMenu}>
 				<Stack spacing={2} direction="column" sx={sx.root}>
@@ -192,7 +192,7 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 					</Box>
 				</Stack>
 			</Popup>
-		</Box>
+		</Stack>
 	)
 }
 
@@ -208,6 +208,8 @@ const sx = {
 		border: '1px solid',
 		borderColor: 'divider',
 		bgcolor: 'background.paper',
+    fontSize: theme => theme.typography.body1.fontSize,
+    fontWeight: theme => theme.typography.body1.fontWeight,
 	},
 	grid: {
 		display: 'grid',

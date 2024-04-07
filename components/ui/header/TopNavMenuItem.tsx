@@ -11,30 +11,9 @@ import {
 } from '@mui/material'
 import { useMenu } from '../../../hooks'
 import { MenuLinkType } from '../../..'
-import { ExpandMore } from '@mui/icons-material'
-import { Icon } from '../..'
+import { Icon } from '../../../components'
 import { useCollections } from 'frontend-shopify'
 import { useRouter } from 'next/router'
-
-type SubmenuItem = {
-	menuItem: MenuLinkType
-	handleClick: (path: string) => void
-}
-
-const TopNavSubmenuItem: React.FC<SubmenuItem> = (props) => {
-	const { menuItem, handleClick } = props
-
-	return (
-		<MenuItem
-			// @ts-ignore
-			onClick={() => handleClick(menuItem.path)}
-		>
-			<Typography variant="button" color="text.primary">
-				{menuItem.name}
-			</Typography>
-		</MenuItem>
-	)
-}
 
 type TopNavMenuItemProps = {
 	menuItem: MenuLinkType
@@ -68,7 +47,11 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 			openMenu(ev)
 		} else {
 			closeMenu()
-			handleClick(menuItem.path)
+      if(menuItem?.link_type == 'url'){
+        window.open(menuItem.url, '_blank')  
+      }else{
+        handleClick(menuItem.path)
+      }			
 		}
 		if (shopify_collection && !products) {
 			findCollection(shopify_collection)

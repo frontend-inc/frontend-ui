@@ -13,6 +13,7 @@ type RemoteAutosuggestProps = {
 	url: string
 	displayField?: string
 	handleChange: (event: SyntheticEventType) => void
+  handleClear?: () => void
 	valueParam?: string
 	placeholder?: string
 	imageField?: string
@@ -30,6 +31,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		url,
 		displayField = 'title',
 		handleChange,
+    handleClear,
 		valueParam = 'id',
 		placeholder = 'Search',
 		defaultQuery = {},
@@ -95,16 +97,19 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 
 	return (
 		<>
-			<Autosuggest
-				direction={direction}
-				label={label}
-				name={name}
-				value={option}
-				options={options}
-				placeholder={placeholder}
-				handleChange={handleChange}
-				handleInputChange={handleInputChange}
-			/>
+      { options?.length > 0 && (
+        <Autosuggest
+          direction={direction}
+          label={label}
+          name={name}
+          value={option}
+          options={options}
+          placeholder={placeholder}
+          handleChange={handleChange}
+          handleInputChange={handleInputChange}
+          handleClear={handleClear}
+        />
+      )}
 			<ErrorText error={error} />
 		</>
 	)

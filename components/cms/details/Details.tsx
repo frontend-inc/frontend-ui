@@ -26,7 +26,7 @@ const Details: React.FC<DetailsProps> = (props) => {
 		<Box sx={sx.root}>
 			<Grid container spacing={1}>
 				{document &&
-					fields.map((field, i) => (
+					fields?.map((field, i) => (
 						<Grid
 							key={i}
 							item

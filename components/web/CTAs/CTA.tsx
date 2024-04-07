@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { Box, Stack, Typography, Button } from '@mui/material'
-import { truncate } from '../../../helpers'
 import { Heading } from '../..'
 import { useRouter } from 'next/router'
 import { AppContext } from '../../../context'
@@ -44,12 +43,33 @@ const CTA: React.FC<CallToActionProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			<Stack sx={sx.content} direction="column" spacing={1}>
-      <Heading 
-        label={label} 
-        title={title}         
-        description={description}
-        textAlign='center'
-      />      
+			{label && (
+				<Typography 
+          color="text.secondary" 
+          variant="caption"
+          sx={sx.label}
+        >
+					{label}
+				</Typography>
+			)}
+			{title && (
+				<Typography
+					variant={'h3'}
+					color="text.primary"
+					sx={ sx.title }
+				>
+					{title}
+				</Typography>
+			)}
+			{description && (
+				<Typography
+					variant="subtitle2"
+					color="text.secondary"
+					sx={sx.description}
+				>
+					{description}
+				</Typography>
+			)}
 				{buttonText && (
 					<Box sx={sx.actions}>
 						<Button
@@ -75,6 +95,7 @@ const sx = {
 	},
 	content: {
 		width: '100%',
+    alignItems: 'center',
 	},
 	label: {		
 		textAlign: 'center',
@@ -86,6 +107,7 @@ const sx = {
 	description: {
 		color: 'text.secondary',
 		textAlign: 'center',
+    maxWidth: '600px'
 	},
 	actions: {
 		mt: 2,

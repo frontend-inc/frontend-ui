@@ -6,7 +6,7 @@ import NextImage from 'next/image'
 type ImageProps = {
 	src?: string
 	height: number
-  width: number
+  width?: number
 	objectFit?: 'cover' | 'contain'
 	alt?: string
 	bgcolor?: string

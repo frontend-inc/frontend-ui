@@ -31,13 +31,6 @@ const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
 					</Box>
 				))}
 			</Swipeable>
-			{items?.length === 0 && (
-				<Placeholder
-					icon={'Star'}
-					title="No testimonials yet."
-					description="Testimonials will appear here."
-				/>
-			)}
 		</Box>
 	)
 }

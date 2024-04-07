@@ -31,9 +31,9 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 			)}
 			{layout == 'carousel'? (
 				<SwipeableTestimonials
+          items={items}
 					enableAutoPlay={enableAutoPlay}
 					enableArrows={enableArrows}
-					items={items}
 				/>
 			):(
       <TestimonialsGrid 
@@ -43,8 +43,8 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 			{items?.length == 0 && (
 				<Placeholder
 					icon="Star"
-					title="No content"
-					description="Your content will appear here."
+					title="No testimonials yet."
+					description="Your testimonials will appear here."
 				/>
 			)}
 		</Box>

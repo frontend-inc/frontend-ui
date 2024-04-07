@@ -29,13 +29,6 @@ const TestimonialsGrid: React.FC<TestimonialsGridProps> = (props) => {
 					</Grid>
 				))}
 			</Grid>
-			{items?.length === 0 && (
-				<Placeholder
-					icon={'Rating'}
-					title="No testimonials yet."
-					description="Testimonials will appear here."
-				/>
-			)}
 		</Box>
 	)
 }
