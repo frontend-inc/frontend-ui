@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
 import { Actions, Image } from '../../../components'
 import { ActionType, DocumentType } from '../../../types'
-import { ThemeContext } from '../../../context'
 
 type ItemProps = {
 	resource: DocumentType
@@ -15,8 +14,6 @@ const Item: React.FC<ItemProps> = (props) => {
 	const { actions, resource } = props || {}
 	const { title, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
-
-  const { theme } = useContext(ThemeContext)
 
 	if (!resource) return null
 	return (
