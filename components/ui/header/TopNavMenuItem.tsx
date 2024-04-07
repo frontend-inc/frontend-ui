@@ -22,7 +22,6 @@ type TopNavMenuItemProps = {
 
 const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
 
 	const { menuItem, handleClick } = props
 

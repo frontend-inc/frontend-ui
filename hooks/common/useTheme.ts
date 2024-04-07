@@ -28,7 +28,7 @@ const useTheme = (props: ThemeProps) => {
 	const [theme, setTheme] = useState(muiTheme)
 
 	useEffect(() => {
-    let newTheme = {}
+    let newTheme: any = {}
     if(muiTheme){
       newTheme = muiTheme
     }else{

@@ -45,40 +45,38 @@ type SideNavMenuItemProps = {
 
 const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 	const router = useRouter()
-	const { setMenuOpen, clientUrl } = useContext(AppContext)
 
 	const { menuItem, handleClick } = props
 
 	const [open, setOpen] = useState(false)
 
-	const { children, shopify_collection } = menuItem
+	const { children } = menuItem
 	const { loading, products, findCollection } = useCollections()
 
 	const handleCollectionClick = () => {
-		router.push(`${clientUrl}/collections/${shopify_collection}`)
+		router.push(`/collections/${menuItem?.shopify_handle}`)
 		setOpen(false)
-		setMenuOpen(false)
 	}
 
 	const handleProductClick = (product) => {
-		router.push(`${clientUrl}/products/${product.handle}`)
-		setMenuOpen(false)
+		router.push(`/products/${menuItem?.shopify_handle}`)
+		setOpen(false)
 	}
 
-	const handleMenuItemClick = (menuItem) => {
-		setMenuOpen(false)
-		handleClick(menuItem?.path)
-	}
-
-	const handleMenuClick = (ev) => {
-		if (children?.length > 0 || shopify_collection) {
-			setOpen(!open)
-		} else {
-			handleMenuItemClick(menuItem)
-		}
-		if (shopify_collection && !open && !products) {
-			findCollection(shopify_collection)
-		}
+	const handleMenuClick = () => {
+		if (children?.length > 0) {
+			setOpen(false)
+      return 
+		} 
+    if (menuItem?.link_type == 'shopify_collection') {
+			setOpen(false)
+      findCollection(menuItem?.shopify_handle)
+      return 
+		} else if (menuItem?.link_type == 'url') {
+      window.open(menuItem.url, '_blank')
+    } else {
+      handleClick(menuItem.path)
+    }
 	}
 
 	return (
