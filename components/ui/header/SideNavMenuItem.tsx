@@ -63,7 +63,7 @@ const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 		setOpen(false)
 	}
 
-	const handleMenuClick = () => {
+	const handleMenuClick = (menuItem) => {
 		if (children?.length > 0) {
 			setOpen(false)
       return 

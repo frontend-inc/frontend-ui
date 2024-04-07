@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { muiTheme as defaultTheme } from '../../theme'
 import { buildMuiPalette } from '../../helpers'
+import { Theme } from '@mui/material'
 
 type ThemeProps = {
 	muiTheme?: any
@@ -28,7 +29,12 @@ const useTheme = (props: ThemeProps) => {
 	const [theme, setTheme] = useState(muiTheme)
 
 	useEffect(() => {
-    let newTheme: any = {}
+    let newTheme = {
+      palette: {},
+      breakpoints: {},
+      typography: {},
+      shape: {}
+    }
     if(muiTheme){
       newTheme = muiTheme
     }else{
