@@ -42,7 +42,7 @@ const Drawer: React.FC<DrawerProps> = (props) => {
 			anchor={anchor}
 			onOpen={handleClose}
 			onClose={handleClose}
-			hideBackdrop={hideBackdrop}
+			hideBackdrop={hideBackdrop}      
 			PaperProps={{
 				sx: {
 					...sx.paper,

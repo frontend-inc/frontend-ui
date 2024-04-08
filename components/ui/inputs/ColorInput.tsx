@@ -234,7 +234,7 @@ const sx = {
 	color: {
 		border: '2px solid',
 		borderColor: 'divider',
-		borderRadius: '8px',
+		borderRadius: 1,
 		height: '32px',
 		width: '32px',
 		transition: 'all 0.3s ease',

@@ -1,5 +1,5 @@
 const DEFAULT_NOTIFICATION_OPTIONS = [
-	{ value: 'text', label: 'Text', icon: 'Text' },
+	{ value: 'text', label: 'Text', icon: 'CircleAlert' },
 	{ value: 'page', label: 'Page', icon: 'StickyNote' },
 	{ value: 'url', label: 'URL', icon: 'ExternalLink' },
 	{ value: 'document', label: 'Document', icon: 'Database' },

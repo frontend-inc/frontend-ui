@@ -29,7 +29,7 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 
 	const { loading, products, findCollection } = useCollections()
 
-	const { open, openMenu, closeMenu, anchorEl } = useMenu()
+	const { open, openMenu, closeMenu, anchorEl, toggleMenu } = useMenu()
 
 	const handleCollectionClick = () => {
 		router.push(`/collections/${menuItem?.shopify_handle}`)
@@ -41,9 +41,9 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 		closeMenu()
 	}
 
-	const handleMenuClick = (ev) => {
-		if (children?.length > 0) {
-			openMenu(ev)
+	const handleMenuClick = (ev, menuItem) => {
+		if (menuItem?.children.length > 0) {
+			toggleMenu(ev)
       return 
 		} 
     if (menuItem?.link_type == 'shopify_collection') {
@@ -51,8 +51,10 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
       findCollection(menuItem?.shopify_handle)
       return 
 		} else if (menuItem?.link_type == 'url') {
+      closeMenu()
       window.open(menuItem.url, '_blank')
     } else {
+      closeMenu()
       handleClick(menuItem.path)
     }
 	}
@@ -65,7 +67,7 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 		<>
 			<Button
 				sx={sx.menuButton}
-				onClick={handleMenuClick}
+				onClick={(ev) => handleMenuClick(ev, menuItem)}
 				endIcon={
 					(children?.length > 0 || menuItem?.link_type == 'shopify_collection') && (
 						<Box
@@ -101,7 +103,7 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 					<MenuItem
             key={index}
 						//@ts-ignore
-						onClick={() => handleClick(child.path)}
+						onClick={(ev) => handleMenuClick(ev, child)}
 					>
 						<Typography variant="button" color="text.primary">
 							{child.name}

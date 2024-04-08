@@ -259,7 +259,7 @@ const sx: any = {
 
 const styles = {
 	image: {
-		borderRadius: 8,
+		borderRadius: 1,
 		objectFit: 'cover',
 		marginRight: '0px',
 	},

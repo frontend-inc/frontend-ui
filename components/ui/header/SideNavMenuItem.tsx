@@ -64,8 +64,8 @@ const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 	}
 
 	const handleMenuClick = (menuItem) => {
-		if (children?.length > 0) {
-			setOpen(false)
+		if (menuItem?.children?.length > 0) {
+			setOpen(!open)
       return 
 		} 
     if (menuItem?.link_type == 'shopify_collection') {

@@ -34,7 +34,10 @@ const sx = {
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
-		backgroundColor: 'grey.100',
+    border: '1px solid',
+    borderColor: 'divider',
+    borderRadius: theme => theme.shape.borderRadius,
+		backgroundColor: 'background.paper',
 	},
 	icon: {
 		color: 'divider',

@@ -42,7 +42,7 @@ const sx = {
 		top: 0,
 		left: 0,
 		p: 0,
-		height: '36px',
+		height: 44,
 		zIndex: (theme) => theme.zIndex.drawer - 1,
 	},
 	item: {

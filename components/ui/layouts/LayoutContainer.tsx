@@ -77,7 +77,6 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 				<Box
 					sx={{
 						...sx.content,
-						...(topNav && sx.contentHeader),
 						...(topNav ? sx.contentTopNav : sx.contentSideNav),
 					}}
 				>
@@ -136,9 +135,6 @@ const sx = {
 		width: '100%',
 		minHeight: '100%',
 	},
-	contentHeader: {
-		pt: '68px',
-	},
 	contentSideNav: {
 		width: {
 			sm: 'calc(100% - 280px)',
@@ -147,9 +143,11 @@ const sx = {
 		overflowY: 'scroll',
 		'&::-webkit-scrollbar': {
 			display: 'none',
-		},
+		},    
+		height: 'calc(100% - 60px)',
 	},
 	contentTopNav: {
-		minHeight: 'calc(100% - 64px)',
+    pt: '60px',
+		minHeight: 'calc(100% - 60px)',
 	},
 }
