@@ -26,8 +26,8 @@ export default Label
 
 const sx = {
 	chip: {
-    bgcolor: 'secondary.main',
-		color: 'secondary.contrastText',
+    bgcolor: 'background.paper',
+		color: 'text.secondary',
 		characterSpacing: '1em',
 		fontWeight: 500,
 		fontFamily: (theme) => theme.typography.fontFamily.caption,

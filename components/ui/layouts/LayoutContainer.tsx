@@ -114,7 +114,6 @@ const sx = {
 		'&::-webkit-scrollbar': {
 			display: 'none',
 		},
-		minHeight: '100%',
 		bgcolor: 'background.default',
 	},
 	sideNav: {
@@ -123,7 +122,6 @@ const sx = {
 			sm: 'row',
 			xs: 'column',
 		},
-		height: '100vh',
 		pt: {
 			sm: 0,
 			xs: '60px',
@@ -133,7 +131,6 @@ const sx = {
 		display: 'flex',
 		flexDirection: 'column',
 		width: '100%',
-		minHeight: '100%',
 	},
 	contentSideNav: {
 		width: {
@@ -144,7 +141,6 @@ const sx = {
 		'&::-webkit-scrollbar': {
 			display: 'none',
 		},    
-		height: 'calc(100% - 60px)',
 	},
 	contentTopNav: {
     pt: '60px',

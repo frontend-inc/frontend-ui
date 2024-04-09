@@ -6,16 +6,26 @@ type LayoutPageProps = {
 	loading?: boolean
 	disableGutters?: boolean
 	children: React.ReactNode
+  contentOffset?: number
 }
 
 const LayoutPage: React.FC<LayoutPageProps> = (props) => {
-	const { children, disableGutters = false, loading = false } = props
+	const { 
+    children, 
+    disableGutters = false, 
+    loading = false,
+    contentOffset = 200 
+  } = props
 
 	return (
 		<LayoutLoader loading={loading}>
 			<Box
 				sx={{
 					...sx.content,
+          minHeight: {
+            sm: `calc(100vh - ${contentOffset}px)`,
+            xs: '100vh'
+          },
 					...(disableGutters && sx.disableGutters),
 				}}
 			>
@@ -31,7 +41,6 @@ const sx = {
 	content: {
 		width: '100%',
 		bgcolor: 'background.default',
-		minHeight: 'calc(100vh - 60px)',
 	},
 	disableGutters: {
 		py: 0,
