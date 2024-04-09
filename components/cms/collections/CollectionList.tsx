@@ -13,7 +13,8 @@ type CollectionListProps = {
 }
 
 const CollectionList: React.FC<CollectionListProps> = (props) => {
-	const {
+	
+  const {
 		resources,
 		handleClick,
 		layout = 'grid',

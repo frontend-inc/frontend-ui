@@ -54,6 +54,7 @@ const AvatarVert: React.FC<CardProps> = (props) => {
 					<Avatar
 						src={image}
 						sx={{
+              ...sx.avatar,
 							...(enableGradient && sx.gradient),
 							...(enableOverlay && sx.overlay),
 							height,
@@ -100,6 +101,9 @@ const sx = {
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
+  avatar: {
+    backgroundImage: 'linear-gradient(45deg, #999999,#DDDDDD,#FAFAFA)'
+  },
 	gradient: {
 		'&::after': {
 			content: '""',

@@ -23,12 +23,6 @@ const NoImage: React.FC<NoImageProps> = (props) => {
 				width: width ? `${width}px` : '100%',
 			}}
 		>
-      <Image 
-        src={EmptyImage}
-        height={400}
-        width={400}
-        alt="Missing Image"
-      />
 		</Box>
 	)
 }
@@ -42,7 +36,7 @@ const sx = {
 		justifyContent: 'center',
     border: '1px solid',
     borderColor: 'divider',
-		bgcolor: '#EAEAEA',
+		backgroundImage: 'linear-gradient(45deg, #999999,#DDDDDD,#FAFAFA)'
 	},
 	icon: {
 		color: 'divider',
