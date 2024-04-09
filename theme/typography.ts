@@ -45,14 +45,14 @@ export const typography = {
 		fontSize: 24,
 	},
 	subtitle1: {
-		fontFamily: 'Inter',
+		fontFamily: 'Instrument Sans',
 		fontSize: 20,
 		fontWeight: 500,
 		lineHeight: '1.5em',
 		textTransform: 'none',
 	},
 	subtitle2: {
-		fontFamily: 'Inter',
+		fontFamily: 'Instrument Sans',
 		fontWeight: 500,
 		fontSize: 17,
 		lineHeight: '1.5em',

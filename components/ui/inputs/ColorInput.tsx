@@ -234,11 +234,11 @@ const sx = {
 	color: {
 		border: '2px solid',
 		borderColor: 'divider',
-		borderRadius: 1,
+		borderRadius: '8px',
 		height: '32px',
 		width: '32px',
 		transition: 'all 0.3s ease',
-		cursor: 'pointer',
+		cursor: 'pointer',    
 		'&:hover': {
 			transform: 'scale(1.1)',
 		},

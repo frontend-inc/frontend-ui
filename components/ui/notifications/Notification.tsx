@@ -74,7 +74,13 @@ const sx = {
 		},
 	},
 	text: {
+    textWrap: 'nowrap',
 		textAlign: 'center',
+    overflowX: 'scroll',
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
+    
 	},
 	listItemButton: {},
 }

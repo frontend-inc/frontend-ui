@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import { Image as ImageIcon } from '@mui/icons-material'
+import Image from 'next/image'
+import EmptyImage from 'assets/empty-image.svg'
 
 type NoImageProps = {
 	height?: number
@@ -22,7 +23,12 @@ const NoImage: React.FC<NoImageProps> = (props) => {
 				width: width ? `${width}px` : '100%',
 			}}
 		>
-			<ImageIcon sx={sx.icon} />
+      <Image 
+        src={EmptyImage}
+        height={400}
+        width={400}
+        alt="Missing Image"
+      />
 		</Box>
 	)
 }
@@ -36,14 +42,13 @@ const sx = {
 		justifyContent: 'center',
     border: '1px solid',
     borderColor: 'divider',
-    borderRadius: theme => theme.shape.borderRadius,
-		backgroundColor: 'background.paper',
+		bgcolor: '#EAEAEA',
 	},
 	icon: {
 		color: 'divider',
 	},
 	rounded: {
-		borderRadius: (theme) => theme.shape.borderRadius,
+    borderRadius: theme => `${theme.shape.borderRadius}px`,
 	},
 	enableBorder: {
 		border: '1px solid',
