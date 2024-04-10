@@ -8,11 +8,8 @@ export default {
 			whiteSpace: 'nowrap',
 		},
 		sizeSmall: {
-			height: '42px',
-			minWidth: '36px',
 		},
 		sizeLarge: {
-			height: '50px',
 		},
 		outlined: {
 		},
