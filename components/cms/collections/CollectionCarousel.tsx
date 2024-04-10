@@ -7,7 +7,7 @@ import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
 import CollectionCard from './CollectionCard'
 
-type CollectionCarouselProps = {
+export type CollectionCarouselProps = {
 	title?: string
 	url: string
 	style: 'card' | 'avatar' | 'cover'

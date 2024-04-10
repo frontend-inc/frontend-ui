@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Avatar, Box, Link, Stack, Typography } from '@mui/material'
 import { ActionType } from '../../../types'
-import { Actions, SocialLink } from '../../../components'
+import { Actions, SocialLink } from '../..'
 
 type PersonProps = {
 	actions?: ActionType[]

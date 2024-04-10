@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Stack, Box, Button } from '@mui/material'
-import { Heading, TextInput, ButtonLoader } from '../..'
+import { Stack, Button } from '@mui/material'
+import { TextInput, ButtonLoader } from '../..'
 import { useMailChimpForm } from 'use-mailchimp-form'
 import { useAlerts } from '../../../hooks'
 
-type MailchimpEmbedProps = {
-	title?: string
-	description?: string
+export type MailchimpSubscribeProps = {
 	formId: string
 	buttonText?: string
 }
 
-const MailchimpEmbed: React.FC<MailchimpEmbedProps> = (props) => {
-	const { title, description, formId, buttonText = 'Subscribe' } = props || {}
+const MailchimpSubscribe: React.FC<MailchimpSubscribeProps> = (props) => {
+	const { formId, buttonText = 'Subscribe' } = props || {}
 
 	const { loading, error, success, message, handleSubmit } =
 		useMailChimpForm(formId)
@@ -45,9 +43,6 @@ const MailchimpEmbed: React.FC<MailchimpEmbedProps> = (props) => {
 
 	return (
 		<Stack direction="column" spacing={2} sx={sx.root}>
-			{(title || description) && (
-				<Heading title={title} description={description} textAlign="center" />
-			)}
 			<Stack direction="row" spacing={0} sx={sx.form}>
 				<TextInput
 					direction="row"
@@ -70,7 +65,7 @@ const MailchimpEmbed: React.FC<MailchimpEmbedProps> = (props) => {
 	)
 }
 
-export default MailchimpEmbed
+export default MailchimpSubscribe
 
 const sx = {
 	root: {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
-import { Actions, Image } from '../../../components'
+import { Actions, Image } from '../..'
 import { ActionType, DocumentType } from '../../../types'
 
 type ItemProps = {

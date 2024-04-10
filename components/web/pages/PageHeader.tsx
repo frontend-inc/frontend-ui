@@ -1,9 +1,9 @@
 import React from 'react'
 import { Stack, Box } from '@mui/material'
 import { ActionType } from '../../../types'
-import { Heading, Actions } from '../../../components'
+import { Heading, Actions } from '../..'
 
-type PageHeaderProps = {
+export type PageHeaderProps = {
   label?: string
 	title?: string 
   description?: string
@@ -29,7 +29,10 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 
 	return (
     <Stack 
-      direction="row" 
+      direction={{
+        xs: 'column',
+        sm: 'row'
+      }}         
       spacing={1} 
       sx={{ 
         ...sx.root,
@@ -68,5 +71,6 @@ const sx = {
     display: 'flex',    
     alignItems: 'center',
     justifyContent: 'flex-end',
+    py: 1
   }
 }

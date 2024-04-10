@@ -15,7 +15,6 @@ export { default as CardVert } from './cards/CardVert'
 export { default as CardHoriz } from './cards/CardHoriz'
 export { default as CoverVert } from './cards/CoverVert'
 export { default as CoverHoriz } from './cards/CoverHoriz'
-export { default as CoverImageCarousel } from './images/CoverImageCarousel'
 export { default as Column } from './Column'
 export { default as Carousel } from './carousel/Carousel'
 export { default as CarouselDot } from './carousel/CarouselDot'
@@ -66,7 +65,6 @@ export { default as UserMenu } from './UserMenu'
 export { default as ProfileDetails } from './profiles/ProfileDetails'
 export { default as ProfileInfo } from './profiles/ProfileInfo'
 export { default as ProfileImage } from './profiles/ProfileImage'
-export { default as PageHeader } from './pages/PageHeader'
 
 // Layouts
 export { default as Footer } from './footer/Footer'
@@ -180,7 +178,6 @@ export { default as SortedDescIcon } from './tables/SortedDescIcon'
 export { default as Pagination } from './Pagination'
 
 // Media
-export { default as CoverImage } from './images/CoverImage'
 export { default as EmptyImage } from './images/EmptyImage'
 export { default as Image } from './images/Image'
 export { default as ImageHoriz } from './cards/ImageHoriz'

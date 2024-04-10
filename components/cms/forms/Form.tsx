@@ -3,15 +3,11 @@ import { useResource } from 'frontend-js'
 import { Stack, Box, Button } from '@mui/material'
 import { ButtonLoader, Placeholder } from '../..'
 import FormField from './FormField'
-import { Heading } from '../../../components'
 import { SYSTEM_FIELDS } from '../../../constants/index'
 import { get } from 'lodash'
 
-type FormProps = {
-	handle: string
-	title?: string
-  description?: string
-  label?: string
+export type FormProps = {
+	handle: string	
 	url: string
 	buttonText?: string
 	variant?: 'contained' | 'outlined' | 'text'
@@ -20,7 +16,7 @@ type FormProps = {
 }
 
 const Form: React.FC<FormProps> = (props) => {
-	const { handle, title, description, label, buttonText = 'Submit', fields, url } = props
+	const { handle, buttonText = 'Submit', fields, url } = props
 
 	const [submitted, setSubmitted] = useState(false)
 
@@ -79,12 +75,6 @@ const Form: React.FC<FormProps> = (props) => {
 
 	return !submitted ? (
 		<Box sx={sx.root}>
-			<Heading 
-        label={label}
-        title={title} 
-        description={description}
-        textAlign='left'
-      />      
 			<Stack spacing={1} sx={sx.root}>
 				{fields?.map((field, index) =>
 					SYSTEM_FIELDS.includes(field.name) ? (

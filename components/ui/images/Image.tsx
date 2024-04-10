@@ -3,7 +3,7 @@ import { NoImage } from '../../../components'
 import { Box, useTheme } from '@mui/material'
 import NextImage from 'next/image'
 
-type ImageProps = {
+export type ImageProps = {
 	src?: string
 	height: number
 	width?: number

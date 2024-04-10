@@ -1,6 +1,6 @@
 import React from 'react'
 
-type GorgiasContactFormProps = {
+export type GorgiasContactFormProps = {
 	src?: string
 }
 

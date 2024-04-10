@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Typography } from '@mui/material'
 import { ProductGrid, ProductCarousel } from '../../../shopify'
 import {
 	MetafieldIdentifierType,
@@ -8,15 +7,14 @@ import {
 } from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'
 
-type MetafieldProductsProps = {
-	title?: string
+export type MetafieldProductsProps = {	
 	layout?: 'grid' | 'carousel'
 	handle: string
 	metafield: MetafieldIdentifierType
 }
 
 const MetafieldProducts: React.FC<MetafieldProductsProps> = (props) => {
-	const { title, handle, layout = 'grid', metafield, ...rest } = props
+	const { handle, layout = 'grid', metafield, ...rest } = props
 
 	const { loading, product, findProduct } = useProducts()
 	const [products, setProducts] = useState<ProductType[] | null>(null)
@@ -35,21 +33,14 @@ const MetafieldProducts: React.FC<MetafieldProductsProps> = (props) => {
 
 	if (!products) return null
 	return (
-		<>
-			{title && (
-				<Typography color="textPrimary" variant="h5">
-					{title}
-				</Typography>
-			)}
-			{products && (
-				<>
-					{layout == 'grid' && <ProductGrid products={products} {...rest} />}
-					{layout == 'carousel' && (
-						<ProductCarousel products={products} {...rest} />
-					)}
-				</>
-			)}
-		</>
+    <>
+      {layout == 'grid' && (
+        <ProductGrid products={products} {...rest} />
+      )}
+      {layout == 'carousel' && (
+        <ProductCarousel products={products} {...rest} />
+      )}
+    </>
 	)
 }
 

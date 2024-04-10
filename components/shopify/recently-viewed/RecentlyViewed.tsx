@@ -1,13 +1,12 @@
 import React from 'react'
-import { Icon, Placeholder } from '../../../components'
+import { Placeholder } from '../../../components'
 import { ProductGrid, ProductCarousel } from '../../../components/shopify'
-import { Box, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import { useRecentlyViewed } from 'frontend-shopify'
 
-type RecentlyViewedProps = {
+export type RecentlyViewedProps = {
 	editing?: boolean
 	layout?: 'grid' | 'carousel'
-	title?: string
 	perPage?: string
 	enableBorder?: boolean
 	enableAddToCart?: boolean
@@ -23,7 +22,6 @@ const RecentlyViewed: React.FC<RecentlyViewedProps> = (props) => {
 	const {
 		editing = false,
 		layout = 'grid',
-		title = 'RecentlyViewed',
 		enableBorder = false,
 		buttonText = 'Add to cart',
 		enableAddToCart,
@@ -35,11 +33,6 @@ const RecentlyViewed: React.FC<RecentlyViewedProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-			{title && (
-				<Typography mb={1} color="textPrimary" variant="h6">
-					{title}
-				</Typography>
-			)}
 			{layout == 'grid' && (
 				<ProductGrid
 					editing={editing}

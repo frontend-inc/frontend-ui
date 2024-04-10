@@ -34,22 +34,22 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			>
 				{resources?.map((resource, index) => (
         <CollectionCard
-						key={index}
-						layout={layout}
-						style={style}
-            label={resource?.label}
-						title={resource?.title}
-						image={resource?.image?.url}
-						video={resource?.video?.url}
-						description={resource?.description}
-						buttonText={buttonText}
-						handleClick={() => handleClick(resource)}
-						enableBorder={enableBorder}
-						enableGradient={enableGradient}
-					/>
-				))}
-			</Box>
-		</Stack>
+          key={index}
+          layout={layout}
+          style={style}
+          label={resource?.label}
+          title={resource?.title}
+          image={resource?.image?.url}
+          video={resource?.video?.url}
+          description={resource?.description}
+          buttonText={buttonText}
+          handleClick={() => handleClick(resource)}
+          enableBorder={enableBorder}
+          enableGradient={enableGradient}
+        />
+      ))}
+		</Box>
+	</Stack>
 	)
 }
 

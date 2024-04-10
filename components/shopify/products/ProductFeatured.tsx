@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { AddToCartButton, QuickShopButton } from '../../../components/shopify'
-import { Button, Box, Stack, Typography } from '@mui/material'
+import React, { useEffect } from 'react'
+import { AddToCartButton, QuickShopButton } from '..'
+import { Box, Stack, Typography } from '@mui/material'
 import { truncate } from '../../../helpers'
-import {
-	FEATURED_CARD_HEIGHT,
-	FEATURED_CARD_WIDTH,
-} from '../../../constants/index'
 import SwipeableProductImages from './images/SwipeableProductImages'
 import { formatCurrency } from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'
 
-type FeaturedProductProps = {
+export type ProductFeaturedProps = {
 	handle: string
 	flexDirection?: 'row' | 'row-reverse'
 	handleClick?: () => void
@@ -24,12 +20,12 @@ type FeaturedProductProps = {
 	enableQuickShop?: boolean
 }
 
-const FeaturedProduct: React.FC<FeaturedProductProps> = (props) => {
+const ProductFeatured: React.FC<ProductFeaturedProps> = (props) => {
 	const {
 		handle,
 		flexDirection = 'row',
-		height = FEATURED_CARD_HEIGHT,
-		width = FEATURED_CARD_WIDTH,
+		height = 360,
+		width = 360,
 		buttonText = 'Add to Cart',
 		quickShopButtonText = 'Quick Shop',
 		handleClick,
@@ -118,7 +114,7 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = (props) => {
 	)
 }
 
-export default FeaturedProduct
+export default ProductFeatured
 
 const sx = {
 	root: {

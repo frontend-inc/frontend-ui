@@ -10,11 +10,9 @@ import {
 	ProductSortButton,
 	ProductFilterButton,
 } from '../../../components/shopify'
-import { Heading } from '../../../components'
 import { PriceOptionType, SearchFilterOptionType } from 'frontend-shopify'
 
-type ProductCollectionProps = {
-	title?: string
+export type ProductCollectionProps = {	
 	editing?: boolean
 	handle: string | string[]
 	options: SearchFilterOptionType[]
@@ -30,7 +28,6 @@ type ProductCollectionProps = {
 
 const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 	const {
-		title,
 		handle,
 		editing = false,
 		options = [],
@@ -79,7 +76,6 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 
 	return (
 		<Stack spacing={2}>
-			<Heading title={title} />
 			<Stack direction="row" spacing={1}>
 				{enableFilters && (
 					<ProductFilterButton

@@ -2,7 +2,7 @@ import React from 'react'
 import Script from 'next/script'
 import { Box } from '@mui/material'
 
-type TypeformProps = {
+export type TypeformProps = {
 	typeformId?: string
 	justifyContent?: string
 }

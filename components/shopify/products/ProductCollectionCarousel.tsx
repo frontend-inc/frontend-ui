@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Stack } from '@mui/material'
-import { useCollections, useSearchFilters } from 'frontend-shopify'
+import { useCollections } from 'frontend-shopify'
 import { ProductCarousel } from '../../../components/shopify'
-import { Heading } from '../../../components'
 
-type ProductCollectionCarouselProps = {
+export type ProductCollectionCarouselProps = {
 	title?: string
 	editing?: boolean
 	handle: string | string[]
@@ -22,7 +21,6 @@ const ProductCollectionCarousel: React.FC<ProductCollectionCarouselProps> = (
 	props
 ) => {
 	const {
-		title,
 		handle,
 		editing = false,
 		enableAutoPlay = false,
@@ -45,7 +43,6 @@ const ProductCollectionCarousel: React.FC<ProductCollectionCarouselProps> = (
 
 	return (
 		<Stack spacing={2}>
-			<Heading title={title} />
 			<ProductCarousel
 				editing={editing}
 				loading={loading}

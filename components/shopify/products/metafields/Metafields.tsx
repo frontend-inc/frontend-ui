@@ -18,7 +18,7 @@ import { useProducts } from 'frontend-shopify'
 const PLAIN_TEXT_TYPES = ['single_line_text_field', 'multi_line_text_field']
 const RICH_TEXT_TYPES = ['rich_text_field']
 
-type ProductMetafieldsProps = {
+export type ProductMetafieldsProps = {
 	handle: string
 	metafields: MetafieldIdentifierType[]
 }

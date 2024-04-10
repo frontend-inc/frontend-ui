@@ -13,12 +13,10 @@ import { SearchInput, Placeholder } from '../..'
 import { ProductSortButton, ProductGrid, ProductSearchFilters } from '..'
 import LoadMore from '../search/LoadMore'
 import { AppContext } from '../../../context'
-import { Heading } from '../..'
 
 const PER_PAGE = 48
 
-type ProductSearchProps = {
-	title?: string
+export type ProductSearchProps = {
 	editing?: boolean
 	handle: string | string[]
 	options?: SearchFilterOptionType[]
@@ -35,7 +33,6 @@ type ProductSearchProps = {
 
 const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 	const {
-		title,
 		editing = false,
 		options,
 		priceOptions,
@@ -130,7 +127,6 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			<Stack direction={{ xs: 'column', sm: 'row' }} sx={sx.header} spacing={1}>
-				{title && <Heading title={title} />}
 				{enableSorting && (
 					<ProductSortButton
 						sortKey={sortKey}

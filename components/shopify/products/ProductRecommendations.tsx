@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useProducts } from 'frontend-shopify'
 import { ProductGrid, ProductCarousel } from '../../../components/shopify'
-import { Heading } from '../../../components'
 import { Box } from '@mui/material'
 
-type ProductRecommendationsProps = {
+export type ProductRecommendationsProps = {
 	handle?: string | string[]
 	editing?: boolean
-	layout?: 'grid' | 'carousel'
-	title?: string
+	layout?: 'grid' | 'carousel'	
 	perPage?: string
 	enableBorder?: boolean
 	enableAddToCart?: boolean
@@ -26,7 +24,6 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 		handle,
 		editing = false,
 		layout = 'grid',
-		title = 'Similar products',
 		perPage = 12,
 		enableBorder = false,
 		buttonText = 'Add to cart',
@@ -73,7 +70,6 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 
 	return (
 		<Box sx={sx.root}>
-			{title && <Heading title={title} />}
 			{layout == 'grid' && (
 				<ProductGrid
 					editing={editing}

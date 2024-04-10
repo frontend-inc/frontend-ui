@@ -7,14 +7,14 @@ import {
 	ProductVariantSelector,
 	ProductMetafields,
 	TrackRecentlyViewed,
-} from '../../../components/shopify'
+} from '..'
 import {
 	useProductDetails,
 	MetafieldIdentifierType,
 	ProductType,
 } from 'frontend-shopify'
 
-type ProductDetailPageProps = {
+export type ProductDetailsProps = {
 	shopifyProduct: ProductType
 	buttonText?: string
 	metafields?: MetafieldIdentifierType[]
@@ -24,7 +24,7 @@ type ProductDetailPageProps = {
 	enableOkendoStarRating?: boolean
 }
 
-const ProductDetailPage: React.FC<ProductDetailPageProps> = (props) => {
+const ProductDetails: React.FC<ProductDetailsProps> = (props) => {
 	const {
 		shopifyProduct: product,
 		buttonText,
@@ -89,7 +89,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = (props) => {
 	)
 }
 
-export default ProductDetailPage
+export default ProductDetails
 
 const sx = {
 	container: {

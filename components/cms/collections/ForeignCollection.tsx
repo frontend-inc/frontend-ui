@@ -3,12 +3,10 @@ import { AppContext } from '../../../context'
 import { useResource } from 'frontend-js'
 import { useRouter } from 'next/router'
 import { filterDocumentLinks } from '../../../helpers'
-import { LoadMore, CollectionList } from '../..'
-import { Heading } from '../..'
+import { LoadMore, CollectionList } from '../../../components'
 import { Box } from '@mui/material'
 
-type ForeignCollectionProps = {
-	title: string
+export type ForeignCollectionProps = {
 	layout?: 'list' | 'grid'
 	style?: 'card' | 'avatar' | 'cover'
 	field: any
@@ -27,7 +25,6 @@ type ForeignCollectionProps = {
 
 const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	const {
-		title,
 		field,
 		resource,
 		layout = 'list',
@@ -84,7 +81,6 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-			<Heading title={title} />
 			<CollectionList
 				layout={layout}
 				style={style}

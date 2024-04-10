@@ -3,11 +3,11 @@ import { AppContext } from '../../../context'
 import { useResource } from 'frontend-js'
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
-import { StyledList } from '../..'
+import { CollectionList } from '../../../components'
 
 type FavoritesProps = {
-	layout?: 'list' | 'grid' | 'carousel'
-	style?: 'card' | 'avatar' | 'image' | 'cover' | 'chip'
+	layout?: 'list' | 'grid' 
+	style?: 'card' | 'avatar' | 'cover' 
 	field: any
 	url: string
 	handle: string
@@ -76,7 +76,7 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 	}, [currentUser, url, defaultQuery])
 
 	return (
-		<StyledList
+		<CollectionList
 			resources={resources}
 			layout={layout}
 			style={style}

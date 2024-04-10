@@ -6,22 +6,18 @@ import {
 	CollectionFilterButton,
 	SortButton,
 	SearchInput,
-	Heading,
 	LoadMore,
 } from '../..'
 import { AppContext } from '../../../context'
 import { FilterOptionType } from '../../../types'
 import { useRouter } from 'next/router'
-import { CollectionList, Placeholder } from '../../../components'
+import { CollectionList, Placeholder } from '../..'
 import CollectionSearchFilters from './filters/CollectionSearchFilters'
 import { SearchFilterOptionType } from '../../../types'
 import { SortOptionType } from '../../../types'
 import { useDelayedLoading } from '../../../hooks'
 
-type CollectionProps = {
-	label?: string
-	title?: string
-  description?: string
+export type CollectionProps = {
 	url: string
 	layout: 'list' | 'grid'
 	style: 'avatar' | 'card' | 'cover'
@@ -48,9 +44,6 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const {
-		label,
-		title,
-    description,
 		layout = 'grid',
 		style = 'card',
 		url,
@@ -169,12 +162,6 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	return (
 		<Stack spacing={1} sx={sx.root}>
 			<Stack direction="column" spacing={1}>
-				<Heading 
-          label={label} 
-          title={title} 
-          description={description}
-          textAlign='left'
-        />
 				{enableSearch && (
 					<SearchInput
 						value={keywords}

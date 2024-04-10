@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Fade, Box, Typography } from '@mui/material'
+import { Fade, Box } from '@mui/material'
 import { muiTheme } from '../../theme'
 
 type SectionProps = {
 	children: React.ReactNode
-	title?: string
-	textAlign?: 'left' | 'center'
 	bgcolor?: string
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 	py?: number
@@ -15,8 +13,6 @@ type SectionProps = {
 const Section: React.FC<SectionProps> = (props) => {
 	const {
 		children,
-		title,
-		textAlign = 'left',
 		bgcolor,
 		maxWidth,
 		py = 6,
@@ -59,19 +55,7 @@ const Section: React.FC<SectionProps> = (props) => {
 						px,
 						maxWidth: width,
 					}}
-				>
-					{title && (
-						<Typography
-							sx={{
-								...sx.title,
-								textAlign,
-							}}
-							variant="h5"
-							color="textPrimary"
-						>
-							{title}
-						</Typography>
-					)}
+				>				
 					{children}
 				</Box>
 			</Box>

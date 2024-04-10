@@ -1,12 +1,11 @@
 import React from 'react'
-import { Icon, Placeholder } from '../..'
+import { Placeholder } from '../..'
 import { ProductGrid } from '..'
-import { Box, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import { useFavorites } from 'frontend-shopify'
 
-type ProductFavoritesProps = {
-	editing?: boolean
-	title?: string
+export type ProductFavoritesProps = {
+	editing?: boolean	
 	perPage?: string
 	enableBorder?: boolean
 	enableAddToCart?: boolean
@@ -18,7 +17,6 @@ type ProductFavoritesProps = {
 const ProductFavorites: React.FC<ProductFavoritesProps> = (props) => {
 	const {
 		editing = false,
-		title = 'Favorites',
 		enableBorder = false,
 		buttonText = 'Add to cart',
 		enableAddToCart,
@@ -30,11 +28,6 @@ const ProductFavorites: React.FC<ProductFavoritesProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-			{title && (
-				<Typography mb={1} color="textPrimary" variant="h5">
-					{title}
-				</Typography>
-			)}
 			<ProductGrid
 				editing={editing}
 				products={favorites}

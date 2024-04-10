@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-type GiftUpProps = {
+export type GiftUpProps = {
 	id: string
 }
 

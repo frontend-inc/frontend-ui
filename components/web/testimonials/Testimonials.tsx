@@ -2,10 +2,9 @@ import React from 'react'
 import { Box } from '@mui/material'
 import TestimonialsGrid from './TestimonialsGrid'
 import SwipeableTestimonials from './SwipeableTestimonials'
-import { Typography } from '@mui/material'
 import { Placeholder } from '../..'
 
-type TestimonialsProps = {
+export type TestimonialsProps = {
 	layout?: 'grid' | 'carousel'
 	items: Record<string, any>[]
 	enableAutoPlay?: boolean

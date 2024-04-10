@@ -28,6 +28,8 @@ const ActionButton: React.FC<ActionProps> = (props) => {
 
 	return (
 		<Button 
+      fullWidth
+      sx={ sx.button }
       startIcon={ 
         icon && (
           <Icon 
@@ -46,3 +48,12 @@ const ActionButton: React.FC<ActionProps> = (props) => {
 }
 
 export default ActionButton
+
+const sx = {
+  button: {
+    width: {
+      sm: 'auto',
+      xs: '100%'
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useResource } from 'frontend-js'
 import { Stack } from '@mui/material'
-import { Icon, GridView, ListView, Placeholder } from '../..'
+import { CollectionList, Placeholder } from '../../../components'
 import VideoVert from './VideoVert'
 import VideoHoriz from './VideoHoriz'
 import VideoStory from './VideoStory'
@@ -10,8 +10,8 @@ import { Typography } from '@mui/material'
 type VideosProps = {
 	title?: string
 	url: string
-	layout: 'list' | 'grid' | 'carousel'
-	style: 'cover' | 'story'
+	layout: 'list' | 'grid' 
+	style: 'cover' 
 	editing?: boolean
 	perPage?: number
 	query?: any
@@ -72,44 +72,17 @@ const Videos: React.FC<VideosProps> = (props) => {
 			<Typography variant="h5" color="text.primary">
 				{title}
 			</Typography>
-			{layout == 'grid' && (
-				<GridView
-					editing={editing}
-					loading={loading}
-					items={resources}
-					component={component}
-					enableBorder={enableBorder}
-					enableGradient={enableGradient}
-					enableOverlay={enableOverlay}
-					handleClick={handleClick}
-				/>
-			)}
-			{layout == 'list' && (
-				<ListView
-					spacing={2}
-					editing={editing}
-					items={resources}
-					component={component}
-					enableBorder={enableBorder}
-					enableGradient={enableGradient}
-					enableOverlay={enableOverlay}
-					handleClick={handleClick}
-				/>
-			)}
-			{layout == 'carousel' && (
-				<ListView
-					flexDirection="row"
-					justifyContent="center"
-					spacing={4}
-					editing={editing}
-					items={resources}
-					component={component}
-					enableBorder={enableBorder}
-					enableGradient={enableGradient}
-					enableOverlay={enableOverlay}
-					handleClick={handleClick}
-				/>
-			)}
+      <CollectionList 
+        layout={layout}
+        style={style}
+        loading={loading}
+        resources={resources}
+        component={component}
+        enableBorder={enableBorder}
+        enableGradient={enableGradient}
+        enableOverlay={enableOverlay}
+        handleClick={handleClick}
+      />			
 			{!loading && resources?.length === 0 && (
 				<Placeholder
 					icon={'Video'}

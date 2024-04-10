@@ -4,7 +4,7 @@ import { Icon, Placeholder } from '../../../components'
 import { Tabs as MuiTabs, Tab as MuiTab } from '@mui/material'
 import TabContent from './TabContent'
 
-type TabsProps = {
+export type TabsProps = {
 	orientation?: 'horizontal' | 'vertical'
 	items?: {
 		icon?: string

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
-import { Swipeable, CoverImage, Placeholder } from '../../../components'
+import { Swipeable, CoverImage, Placeholder } from '../..'
 import { useRouter } from 'next/router'
 
-type CoverImageCarouselProps = {
+export type CoverImageCarouselProps = {
 	items: {
 		title?: string
 		description?: string

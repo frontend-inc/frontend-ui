@@ -1,9 +1,8 @@
 import React from 'react'
 import { Stack } from '@mui/material'
-import { AccordionItem, Placeholder, Heading } from '../../../components'
+import { AccordionItem, Placeholder } from '../../../components'
 
-type AccordionProps = {
-	title?: string
+export type AccordionProps = {	
 	items?: {
 		title: string
 		description: string
@@ -13,13 +12,10 @@ type AccordionProps = {
 }
 
 const Accordion: React.FC<AccordionProps> = (props) => {
-	const { title, items = [] } = props
+	const { items = [] } = props
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-			<Stack direction="row" justifyContent={'space-between'} spacing={1}>
-				{title && <Heading title={title} />}
-			</Stack>
 			{items?.map((item, i) => (
 				<AccordionItem
 					key={i}

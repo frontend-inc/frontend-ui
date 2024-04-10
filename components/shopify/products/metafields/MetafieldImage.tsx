@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { MetafieldIdentifierType, getMetafieldImage } from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'
 
-type MetafieldImageProps = {
+export type MetafieldImageProps = {
 	handle: string
 	metafield: MetafieldIdentifierType
 	height: number

@@ -5,7 +5,7 @@ import {
 } from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'
 
-type MetafieldVideoProps = {
+export type MetafieldVideoProps = {
 	handle: string
 	metafield: MetafieldIdentifierType
 	height?: number

@@ -6,7 +6,7 @@ import Item from './Item'
 import Person from './Person'
 import Details from '../details/Details'
 
-type ShowProps = {
+export type ShowProps = {
 	style: 'article' | 'person' | 'item'
 	fields: any[]
 	url: string

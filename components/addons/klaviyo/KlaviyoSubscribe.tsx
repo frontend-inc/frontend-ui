@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import { Stack, Button } from '@mui/material'
-import { Heading, TextInput, ButtonLoader } from '../..'
+import { TextInput, ButtonLoader } from '../..'
 import { useAlerts, useKlaviyo } from '../../../hooks'
 
-type KlaviyoSubscribeProps = {
+export type KlaviyoSubscribeProps = {
 	listId: string
 	apiKey: string
-	buttonText?: string
-	title?: string
-	description?: string
+	buttonText?: string	
 }
 
 const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
@@ -16,8 +14,6 @@ const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
 		listId,
 		apiKey,
 		buttonText = 'Subscribe',
-		title,
-		description,
 	} = props || {}
 
 	const { showAlertError, showAlertSuccess } = useAlerts()
@@ -55,9 +51,6 @@ const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
 
 	return (
 		<Stack direction="column" spacing={2} sx={sx.root}>
-			{(title || description) && (
-				<Heading title={title} description={description} textAlign="center" />
-			)}
 			<Stack direction="row" spacing={0} sx={sx.form}>
 				<TextInput
 					direction="row"

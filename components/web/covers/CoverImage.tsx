@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { Box, Stack, Typography, Button } from '@mui/material'
-import { Image } from '../../../components'
+import { Image } from '../..'
 import { useRouter } from 'next/router'
 import { AppContext } from '../../../context'
 
-type CoverImageProps = {
+export type CoverImageProps = {
 	editing?: boolean
 	title?: string
 	description?: string

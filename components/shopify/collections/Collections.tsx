@@ -1,15 +1,14 @@
 import React, { useEffect, useContext } from 'react'
 import { useCollections } from 'frontend-shopify'
-import { StyledList } from '../../../components'
-import { Stack, Typography } from '@mui/material'
+import { CollectionList } from '../../../components'
+import { Stack } from '@mui/material'
 import { ShopContext } from 'frontend-shopify'
 import { useRouter } from 'next/router'
 
-type CollectionProps = {
-	title?: string
+export type CollectionsProps = {
 	editing?: boolean
-	layout?: 'grid' | 'list' | 'carousel'
-	style?: 'card' | 'list' | 'avatar' | 'cover'
+	layout?: 'grid' | 'list' 
+	style?: 'card' | 'avatar' | 'cover'
 	perPage?: number
 	buttonText?: string
 	autoPlay?: boolean
@@ -19,11 +18,9 @@ type CollectionProps = {
 	enableGradient?: boolean
 }
 
-const Collections: React.FC<CollectionProps> = (props) => {
+const Collections: React.FC<CollectionsProps> = (props) => {
 	const {
-		title,
 		editing = false,
-		perPage = 20,
 		layout = 'grid',
 		style = 'card',
 		buttonText,
@@ -53,15 +50,10 @@ const Collections: React.FC<CollectionProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-			<Typography variant="h5" color="textPrimary">
-				{title}
-			</Typography>
-			<StyledList
+			<CollectionList 
 				layout={layout}
-				//@ts-ignore
 				style={style}
 				resources={collections}
-				editing={editing}
 				loading={loading}
 				items={collections}
 				buttonText={buttonText}

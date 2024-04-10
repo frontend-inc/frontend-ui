@@ -4,7 +4,7 @@ import PriceCard from './PriceCard'
 import { PriceType } from '../../..'
 import { Placeholder } from '../../../components'
 
-type PricesProps = {
+export type PricesProps = {
 	items: PriceType[]
 }
 

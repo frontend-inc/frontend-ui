@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Grid, Stack } from '@mui/material'
-import { Heading, CollectionCard, Placeholder } from '../../../components'
+import { CollectionCard, Placeholder } from '../../../components'
 import { useRouter } from 'next/router'
 
 type CardType = {
@@ -10,7 +10,7 @@ type CardType = {
 	url?: string
 }
 
-type CardsProps = {
+export type CardsProps = {
 	layout?: 'grid' | 'list'
 	style?: 'avatar' | 'card' | 'cover'
 	items: CardType[]

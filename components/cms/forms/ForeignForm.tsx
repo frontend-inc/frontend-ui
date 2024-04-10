@@ -3,14 +3,11 @@ import { useResource } from 'frontend-js'
 import { Stack, Box, Button } from '@mui/material'
 import { ButtonLoader, Placeholder } from '../..'
 import FormField from './FormField'
-import { Heading } from '../../../components'
 import { SYSTEM_FIELDS } from '../../../constants/index'
 import { get } from 'lodash'
 
-type ForeignFormProps = {
+export type ForeignFormProps = {
 	handle: string
-	title?: string
-	label?: string
 	url: string
 	foreignUrl?: string
 	buttonText?: string
@@ -22,8 +19,6 @@ type ForeignFormProps = {
 const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 	const {
 		handle,
-		title,
-		label,
 		buttonText = 'Submit',
 		variant = 'contained',
 		fields,
@@ -90,7 +85,6 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 
 	return !submitted ? (
 		<Box sx={sx.root}>
-			{(title || label) && <Heading label={label} title={title} />}
 			<Stack spacing={1} sx={sx.form}>
 				{fields?.map((field) =>
 					SYSTEM_FIELDS.includes(field.name) ? (

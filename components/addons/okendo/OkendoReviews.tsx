@@ -3,7 +3,7 @@ import { getShopifyIdFromGid } from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'
 import Head from 'next/head'
 
-type OkendoReviewsProps = {
+export type OkendoReviewsProps = {
 	handle: string | string[]
 	subscriberId: string
 }

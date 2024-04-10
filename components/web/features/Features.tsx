@@ -3,7 +3,7 @@ import { Box, Grid } from '@mui/material'
 import Feature from './Feature'
 import { Placeholder } from '../../../components'
 
-type FeaturesProps = {
+export type FeaturesProps = {
 	items: {
 		icon?: any
 		title?: string

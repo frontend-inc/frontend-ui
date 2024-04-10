@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { AppContext } from '../../../context'
 import { TypographyVariantsType } from '../../../types'
 
-type CallToActionProps = {
+export type CTAProps = {
 	label?: string
 	title: string
 	description: string
@@ -17,7 +17,7 @@ type CallToActionProps = {
 }
 
 // Call To Action
-const CTA: React.FC<CallToActionProps> = (props) => {
+const CTA: React.FC<CTAProps> = (props) => {
 	const {
 		label,
 		title,

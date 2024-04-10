@@ -25,7 +25,10 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		<Stack 
       sx={{
         ...sx.stack,
-        alignItems: textAlign === 'center' ? 'center' : 'flex-start',
+        alignItems: { 
+          sm: textAlign === 'center' ? 'center' : 'flex-start',
+          xs: 'center'
+        }
       }} 
       direction={'column'} 
       spacing={1}
@@ -37,9 +40,12 @@ const Heading: React.FC<HeadingProps> = (props) => {
 				<Typography
 					variant={textVariant}
 					color="text.primary"
-					style={{
+					sx={{
 						...sx.title,
-						textAlign,
+						textAlign: {
+              sm: textAlign,
+              xs: 'center'
+            },
 					}}
 				>
 					{title}
@@ -49,9 +55,12 @@ const Heading: React.FC<HeadingProps> = (props) => {
         <Typography
           variant="body1"
           color="text.secondary"
-          style={{
+          sx={{
             ...sx.description,
-            textAlign,
+            textAlign: {
+              sm: textAlign,
+              xs: 'center'
+            },
           }}
         >
           {description}

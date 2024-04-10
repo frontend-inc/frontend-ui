@@ -1,9 +1,9 @@
 import React from 'react'
 import { Box, Button } from '@mui/material'
 
+// Reference:
 // https://help.klaviyo.com/hc/en-us/articles/4418052317339
-
-type KlaviyoButtonProps = {
+export type KlaviyoButtonProps = {
 	formId?: string
 	justifyContent?: string
 	buttonText?: string
