@@ -211,7 +211,7 @@ const sx: any = {
 			p: 1,
 			height: 20,
 			color: 'text.secondary',
-			borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+			borderRadius: 1,
 			fontSize: (theme) => theme.typography.body2.fontSize,
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
 			bgcolor: 'background.paper',

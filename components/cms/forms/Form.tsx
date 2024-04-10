@@ -10,6 +10,8 @@ import { get } from 'lodash'
 type FormProps = {
 	handle: string
 	title?: string
+  description?: string
+  label?: string
 	url: string
 	buttonText?: string
 	variant?: 'contained' | 'outlined' | 'text'
@@ -18,7 +20,7 @@ type FormProps = {
 }
 
 const Form: React.FC<FormProps> = (props) => {
-	const { handle, buttonText = 'Submit', title, fields, url } = props
+	const { handle, title, description, label, buttonText = 'Submit', fields, url } = props
 
 	const [submitted, setSubmitted] = useState(false)
 
@@ -77,7 +79,12 @@ const Form: React.FC<FormProps> = (props) => {
 
 	return !submitted ? (
 		<Box sx={sx.root}>
-			{title && <Heading title={title} />}
+			<Heading 
+        label={label}
+        title={title} 
+        description={description}
+        textAlign='left'
+      />      
 			<Stack spacing={1} sx={sx.root}>
 				{fields?.map((field, index) =>
 					SYSTEM_FIELDS.includes(field.name) ? (
@@ -98,7 +105,7 @@ const Form: React.FC<FormProps> = (props) => {
 					)
 				)}
 				<Button
-					size="large"
+					size="large"P
 					variant="contained"
 					onClick={handleSubmit}
 					disabled={loading}

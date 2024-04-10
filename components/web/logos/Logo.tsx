@@ -2,7 +2,8 @@ import React from 'react'
 import { Box } from '@mui/material'
 import { LOGO_HEIGHT, LOGO_WIDTH } from '../../../constants/index'
 import { CardProps } from '../../../types'
-import Image from 'next/image'
+import { Image } from '../../../components'
+
 
 const Logo: React.FC<CardProps> = (props) => {
 	const {
@@ -27,10 +28,6 @@ const Logo: React.FC<CardProps> = (props) => {
 				width={width}
 				src={image}
 				alt={title}
-				style={{
-					width: '100%',
-					objectFit: 'contain',
-				}}
 			/>
 		</Box>
 	)

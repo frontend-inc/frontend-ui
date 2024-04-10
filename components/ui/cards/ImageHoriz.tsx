@@ -57,7 +57,7 @@ const sx = {
 		position: 'relative',
 		flexDirection: 'column',
 		overflow: 'hidden',
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 1,
 	},
 	gradient: {
 		'&::after': {

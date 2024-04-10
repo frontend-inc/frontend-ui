@@ -1,11 +1,8 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
-import { Container, Box, Grid, Stack, Typography } from '@mui/material'
+import { Box, Button, Divider, Stack, Typography } from '@mui/material'
 import { MenuLinkType } from '../../../types'
-import FooterLinks from './FooterLinks'
 import { SocialLink } from '../..'
-import Logo from './Logo'
-import Image from 'next/image'
 import moment from 'moment'
 
 type FooterProps = {
@@ -36,33 +33,18 @@ const Footer: React.FC<FooterProps> = (props) => {
 	return (
 		<Stack sx={sx.root} spacing={1} direction="column">
 			<Box sx={sx.container}>
-				<Box sx={sx.left}>
-					<Box sx={sx.logoContainer}>
-						{logo && (
-							<Image
-								src={logo}
-								alt={name}
-								width={120}
-								height={120}
-								style={{
-									objectFit: 'contain',
-								}}
-							/>
-						)}
-					</Box>
-				</Box>
 				<Box sx={sx.gridContainer}>
-					<Box sx={sx.grid}>
+					<Stack direction="row" divider={ <Divider /> } spacing={2}>
 						{menuItems?.map((menuItem, i) => (
-							<FooterLinks
-								key={i}
-								menuItem={menuItem}
-								handleClick={handleClick}
-							/>
+							<Button
+								key={i}								
+								handleClick={() => handleClick(menuItem)}              
+							>
+                { menuItem?.label }
+              </Button>
 						))}
-					</Box>
+					</Stack>
 				</Box>
-				<Box sx={sx.right}></Box>
 			</Box>
 			<Stack direction="column" spacing={1} sx={sx.footerLinks}>
 				<Stack direction="row" spacing={0} sx={sx.socialUrls}>

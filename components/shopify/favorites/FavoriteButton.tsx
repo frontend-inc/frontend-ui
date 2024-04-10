@@ -43,6 +43,6 @@ const sx = {
 	button: {
 		minWidth: '44px',
 		p: 0,
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 1,
 	},
 }

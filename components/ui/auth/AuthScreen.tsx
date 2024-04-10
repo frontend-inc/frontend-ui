@@ -73,7 +73,7 @@ const sx = {
 		},
 		border: '1px solid',
 		borderColor: 'divider',
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 1,
 		bgcolor: 'background.paper',
 	},
 }

@@ -11,7 +11,6 @@ type ImageProps = {
 	alt?: string
 	bgcolor?: string
 	opacity?: number
-	enableBorder?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
 	disableBorderRadius?: boolean
@@ -23,7 +22,6 @@ const Image: React.FC<ImageProps> = (props) => {
 		height,
 		width,
 		objectFit = 'cover',
-		enableBorder = false,
 		alt = 'image',
 		bgcolor = '#000000',
 		opacity = 0.5,
@@ -48,9 +46,8 @@ const Image: React.FC<ImageProps> = (props) => {
 						!disableBorderRadius &&
 						enableGradient &&
 						sx.gradientBorderRadius),
-					...(enableBorder && sx.border),
 					bgcolor,
-					opacity,
+					opacity
 				},
 			}}
 		>
@@ -89,7 +86,7 @@ const sx = {
 		overflow: 'hidden',
 	},
 	borderRadius: {    
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 1,
 	},
 	afterBase: {
 		content: '""',
@@ -110,7 +107,7 @@ const sx = {
 	gradientBorderRadius: {
 		height: '50%',
 		background: 'linear-gradient(to top, rgb(0,0,0,1.0), transparent)',
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 1,
 	},
 	border: {
 		border: '1px solid',

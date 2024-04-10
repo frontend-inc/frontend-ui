@@ -84,7 +84,7 @@ export const typography = {
 	caption: {
 		fontFamily: 'Inter',
 		fontWeight: 500,
-		fontSize: 15,
+		fontSize: 14,
 		letterSpacing: 'auto',
 	},
 	overline: {

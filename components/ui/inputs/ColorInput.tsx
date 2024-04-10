@@ -20,7 +20,7 @@ type TransparentColorProps = {
 }
 
 const TransparentColor: React.FC<TransparentColorProps> = (props) => {
-	const { value, handleClick } = props
+	const { value='Ban', handleClick } = props
 	return (
 		<Tooltip title="Transparent">
 			<Box

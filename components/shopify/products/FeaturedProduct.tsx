@@ -124,7 +124,7 @@ const sx = {
 	root: {
 		display: 'flex',
 		flexDirection: 'row',
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 1,
 		overflow: 'hidden',
 	},
 	rootBorder: {

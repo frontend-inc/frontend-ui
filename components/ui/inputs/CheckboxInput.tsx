@@ -10,7 +10,7 @@ type CheckboxInputProps = {
 	disableBorder?: boolean
 }
 
-const CheckboxInput = (props) => {
+const CheckboxInput: React.FC<CheckboxInputProps> = (props) => {
 	const {
 		name,
 		value,
@@ -31,7 +31,7 @@ const CheckboxInput = (props) => {
 	}
 
 	return (
-		<Box>
+		<Box sx={ sx.root }>
 			<Typography variant="caption" color="textSecondary">
 				{label}
 			</Typography>
@@ -64,6 +64,9 @@ const CheckboxInput = (props) => {
 export default CheckboxInput
 
 const sx = {
+  root: {
+    width: '100%'
+  },
 	input: {
 		display: 'flex',
 		direction: 'column',
@@ -76,6 +79,6 @@ const sx = {
 		pr: 2,
 		pb: 0.5,
 		pl: 2,
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 1,
 	},
 }

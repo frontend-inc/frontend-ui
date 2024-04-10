@@ -119,7 +119,7 @@ const sx = {
 		width: '100px',
 		height: '100px',
 		border: '2px solid transparent',
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 1,
 		'&:hover': {
 			opacity: 0.8,
 		},

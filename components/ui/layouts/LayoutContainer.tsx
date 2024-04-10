@@ -82,18 +82,16 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 				>
 					<LayoutScroll>
 						{children}
-						<ModeTheme mode={mode}>
-							<Footer
-								menuItems={footerLinks}
-								handleClick={handleClick}
-								facebook={facebook}
-								instagram={instagram}
-								linkedin={linkedin}
-								twitter={twitter}
-								youtube={youtube}
-								tiktok={tiktok}
-							/>
-						</ModeTheme>
+            <Footer
+              menuItems={footerLinks}
+              handleClick={handleClick}
+              facebook={facebook}
+              instagram={instagram}
+              linkedin={linkedin}
+              twitter={twitter}
+              youtube={youtube}
+              tiktok={tiktok}
+            />
 					</LayoutScroll>
 				</Box>
 			</Box>

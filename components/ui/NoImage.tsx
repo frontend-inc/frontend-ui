@@ -42,7 +42,7 @@ const sx = {
 		color: 'divider',
 	},
 	rounded: {
-    borderRadius: theme => `${theme.shape.borderRadius}px`,
+    borderRadius: 1,
 	},
 	enableBorder: {
 		border: '1px solid',

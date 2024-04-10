@@ -1,6 +1,7 @@
 import React from 'react'
 import { Stack, Typography } from '@mui/material'
 import { TypographyVariantsType } from '../../../types'
+import { Label } from '../../../components'
 
 type HeadingProps = {
 	label?: string
@@ -15,22 +16,22 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		label,
 		title,
 		description,
-		textAlign,
+		textAlign='center',
 		textVariant = 'h4',
 	} = props || {}
 
+  if(!title && !description && !label) return null
 	return (
-		<Stack sx={sx.stack} direction={'column'} spacing={1}>
+		<Stack 
+      sx={{
+        ...sx.stack,
+        alignItems: textAlign === 'center' ? 'center' : 'flex-start',
+      }} 
+      direction={'column'} 
+      spacing={1}
+    >
 			{label && (
-				<Typography
-					color="text.secondary"
-					variant="caption"
-					sx={{
-						textAlign,
-					}}
-				>
-					{label}
-				</Typography>
+        <Label label={ label } />								
 			)}
 			{title && (
 				<Typography
@@ -45,16 +46,16 @@ const Heading: React.FC<HeadingProps> = (props) => {
 				</Typography>
 			)}
 			{description && (
-				<Typography
-					variant="body1"
-					color="text.secondary"
-					style={{
-						...sx.text,
-						textAlign,
-					}}
-				>
-					{description}
-				</Typography>
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          style={{
+            ...sx.description,
+            textAlign,
+          }}
+        >
+          {description}
+        </Typography>
 			)}
 		</Stack>
 	)
@@ -69,11 +70,11 @@ const sx = {
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
+
 	title: {
 		width: '100%',
 	},
-	text: {
+	description: {
 		width: '100%',
-		maxWidth: '600px',
 	},
 }

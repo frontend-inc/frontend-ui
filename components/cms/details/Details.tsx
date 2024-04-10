@@ -57,7 +57,7 @@ const sx = {
 	item: {
 		p: 2,
 		width: '100%',
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 1,
 		minHeight: 110,
 	},
 	itemBorder: {

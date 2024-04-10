@@ -106,7 +106,7 @@ const FormField: React.FC<FormFieldProps> = (props) => {
 					label={label}
 					name={name}
 					value={value}
-					options={field.options.map((option) => ({
+					options={field?.options?.map((option) => ({
 						label: option,
 						value: option,
 					}))}

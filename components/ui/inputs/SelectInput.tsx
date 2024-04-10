@@ -63,7 +63,7 @@ const sx = {
 		'&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
 			border: 0,
 		},
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 1,
 	},
 	label: {
 		mb: 0,

@@ -107,14 +107,14 @@ const sx = {
 	root: {
 		width: '100%',
 		display: 'flex',
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 1,
 	},
 	imageContainer: {
 		width: '100%',
 		position: 'relative',
 		display: 'flex',
 		flexDirection: 'row',
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 1,
 		overflow: 'hidden',
 	},
 	rootBorder: {

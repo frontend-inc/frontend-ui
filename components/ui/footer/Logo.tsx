@@ -3,8 +3,8 @@ import { Button } from '@mui/material'
 import Image from 'next/image'
 import EmptyImage from '../NoImage'
 
-const LOGO_WIDTH = 100
-const LOGO_HEIGHT = 50
+const LOGO_WIDTH = 160
+const LOGO_HEIGHT = 60
 
 type LogoProps = {
 	src: string

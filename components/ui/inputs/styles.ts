@@ -7,8 +7,8 @@ export const sx = {
 			WebkitAppearance: 'none',
 			MozAppearance: 'none',
 			appearance: 'none',
-			p: 1,
-			borderRadius: (theme) => theme.shape.borderRadius,
+			p: 1,		
+      borderRadius: 1,	
 			fontSize: (theme) => theme.typography.body2.fontSize,
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
 			bgcolor: 'background.default',
@@ -26,7 +26,7 @@ export const sx = {
 	inputError: {
 		'& input, & .MuiInputBase-inputMultiline': {
 			p: 1,
-			borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+			borderRadius: 1,
 			border: '2px solid',
 			borderColor: 'error.main',
 		},

@@ -82,13 +82,13 @@ const sx = {
 		my: 0,
 	},
 	listItem: {
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 1,
 		height: '40px',
 	},
 	listItemButton: {
 		py: 0,
 		px: 1,
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 1,
 		height: '40px',
 	},
 	listItemIcon: {

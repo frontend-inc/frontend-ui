@@ -13,9 +13,8 @@ const CellButton: React.FC<CellButtonProps> = (props) => {
 	return (
 		<Box sx={sx.cell}>
 			<Button
-				fullWidth
 				color="secondary"
-				variant="outlined"
+				variant="contained"
 				sx={sx.button}
 				endIcon={icon && icon}
 				onClick={handleClick && handleClick}

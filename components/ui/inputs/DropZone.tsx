@@ -66,7 +66,7 @@ const sx = {
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 1,
 		border: '2px solid',
 		borderColor: 'divider',
 		bgcolor: 'background.paper',

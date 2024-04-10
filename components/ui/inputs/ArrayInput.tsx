@@ -1,7 +1,7 @@
 import React from 'react'
 import { useError } from '../../../hooks'
 import {
-	FormControl,
+	Stack,
 	Popper,
 	Typography,
 	Autocomplete,
@@ -24,6 +24,7 @@ type ArrayInputProps = {
 	options?: any[]
 	placeholder?: string
 	handleChange: (e: SyntheticEventType) => void
+  direction?: 'row' | 'column'
 	freeSolo?: boolean
 }
 
@@ -36,6 +37,7 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 		options,
 		placeholder,
 		handleChange,
+    direction="column", 
 		freeSolo = true,
 	} = props
 
@@ -56,9 +58,9 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 		})
 	}
 
-	return (
-		<FormControl fullWidth>
-			<Typography variant="caption" color="text.secondary">
+	return (		
+    <Stack sx={ sx.root } direction={direction} spacing={1}>
+			<Typography sx={ sx.label } variant="caption" color="text.secondary">
 				{label}
 			</Typography>
 			{value && (
@@ -99,7 +101,7 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 				/>
 			)}
 			<ErrorText error={error} />
-		</FormControl>
+		</Stack>
 	)
 }
 
@@ -113,7 +115,7 @@ export const sx = {
       color: 'text.secondary',
 			fontSize: (theme) => theme.typography.body2.fontSize,
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
-			borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+			borderRadius: 1,
 			bgcolor: 'background.default',
 			border: (theme) => `1px solid ${theme.palette.divider}`,
 			//boxShadow: `rgb(0 0 0 / 5%) 0px 2px 4px !important`,
@@ -150,4 +152,7 @@ export const sx = {
 	chip: {
 		pr: 0.5,
 	},
+  label: {
+    width: '100px',    
+  }
 }

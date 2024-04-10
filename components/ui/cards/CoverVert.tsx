@@ -94,7 +94,7 @@ const sx = {
 		flexDirection: 'column',
 		overflow: 'hidden',
 		width: '100%',
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 1,
 	},
 	cover: {
 		position: 'absolute',

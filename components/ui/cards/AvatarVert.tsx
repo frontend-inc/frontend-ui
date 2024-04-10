@@ -132,7 +132,7 @@ const sx = {
 		border: '1px solid',
 		borderColor: 'divider',
 		p: 1,
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 1,
 	},
 	title: {
 		textAlign: 'center',

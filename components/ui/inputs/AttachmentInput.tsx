@@ -147,7 +147,7 @@ const sx = {
 	image: {
 		p: 2,
 		mr: 1,
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 1,
 	},
 	iconButton: {
 		top: -15,

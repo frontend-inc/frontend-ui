@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react'
-import { AppContext } from '../../../context'
+import React, { useState } from 'react'
 import {
 	Collapse,
 	IconButton,
 	List,
 	ListItem,
+  ListItemIcon,
 	ListItemButton,
 	ListItemText,
 	Typography,
@@ -26,6 +26,7 @@ const SublinkMenuItem: React.FC<SublinkMenuItemProps> = (props) => {
 	return (
 		<ListItem sx={sx.subLink} disablePadding>
 			<ListItemButton onClick={handleClick}>
+        
 				<ListItemText
 					primary={
 						<Typography variant="subtitle2" color="text.primary">
@@ -99,6 +100,11 @@ const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 				}
 			>
 				<ListItemButton onClick={() => handleMenuClick(menuItem)}>
+          { menuItem?.icon && (
+            <ListItemIcon>
+              <Icon name={menuItem.icon} size={24} />
+            </ListItemIcon>
+          )}
 					<ListItemText
 						primary={
 							<Typography variant="subtitle2" color="text.primary">
