@@ -2,19 +2,17 @@ import React from 'react'
 import { Stack } from '@mui/material'
 import PriceCard from './PriceCard'
 import { PriceType } from '../../..'
-import { Heading, Placeholder } from '../../../components'
+import { Placeholder } from '../../../components'
 
 type PricesProps = {
-	title?: string
 	items: PriceType[]
 }
 
 const Prices: React.FC<PricesProps> = (props) => {
-	const { title, items } = props
+	const { items } = props
 
 	return (
 		<Stack spacing={2}>
-			{title && <Heading title={title} textAlign="center" />}
 			<Stack direction="row" spacing={1}>
 				{items.map((item, index) => (
 					<PriceCard key={index} price={item} />

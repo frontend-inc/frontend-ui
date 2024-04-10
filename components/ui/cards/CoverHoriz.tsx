@@ -20,7 +20,6 @@ const CoverHoriz: React.FC<CardProps> = (props) => {
 		textVariant = 'subtitle1',
 		objectFit = 'cover',
 		height = COVER_HORIZ_HEIGHT,
-		width = COVER_HORIZ_WIDTH,
 		enableGradient = false,
 		enableOverlay = false,
 	} = props || {}
@@ -93,8 +92,8 @@ const sx = {
 	},
 	cover: {
 		position: 'absolute',
-		bottom: '10px',
-		left: '10px',
+		bottom: '18px',
+		left: '24px',
 		zIndex: 1,
 	},
 	button: {

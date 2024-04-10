@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from '@mui/material'
 import { useActions } from '../../../hooks'
 import { ActionType } from '../../../types'
-import { Icon } from '../..'
+import { Icon } from '../../../components'
 
 type ActionProps = {
 	action: ActionType
@@ -27,7 +27,19 @@ const ActionButton: React.FC<ActionProps> = (props) => {
 	}
 
 	return (
-		<Button onClick={onClick} variant={variant} color={color} {...rest}>
+		<Button 
+      startIcon={ 
+        icon && (
+          <Icon 
+            name={icon} 
+            size={20} 
+            color={ 
+              color == 'primary' ? 'primary.contrastText' : 'secondary.contrastText'             
+            }
+          /> 
+        )
+      }
+      onClick={onClick} variant={variant} color={color} {...rest}>
 			{label}
 		</Button>
 	)

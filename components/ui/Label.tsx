@@ -25,8 +25,7 @@ const Label: React.FC<LabelProps> = (props) => {
 export default Label
 
 const sx = {
-	chip: {
-    opacity: 0.8,
+	chip: {    
     bgcolor: 'secondary.main',
 		color: 'secondary.contrastText',
 		characterSpacing: '1em',
@@ -35,5 +34,6 @@ const sx = {
 		letterSpacing: '0.05em',		
 		cursor: 'pointer',
     borderRadius: 1,
+    boxShadow: '1px 0px 0 0 rgba(0,0,0,0.1)',
 	},
 }

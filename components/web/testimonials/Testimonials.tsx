@@ -6,7 +6,6 @@ import { Typography } from '@mui/material'
 import { Placeholder } from '../..'
 
 type TestimonialsProps = {
-	title?: string
 	layout?: 'grid' | 'carousel'
 	items: Record<string, any>[]
 	enableAutoPlay?: boolean
@@ -15,7 +14,6 @@ type TestimonialsProps = {
 
 const Testimonials: React.FC<TestimonialsProps> = (props) => {
 	const {
-		title,
 		layout = 'grid',
 		enableArrows,
 		enableAutoPlay,
@@ -24,11 +22,6 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-			{title && (
-				<Typography sx={sx.title} variant="h5" color="textPrimary">
-					{title}
-				</Typography>
-			)}
 			{layout == 'carousel' ? (
 				<SwipeableTestimonials
 					items={items}

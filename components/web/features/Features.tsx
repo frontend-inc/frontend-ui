@@ -1,10 +1,9 @@
 import React from 'react'
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 import Feature from './Feature'
-import { Placeholder } from '../..'
+import { Placeholder } from '../../../components'
 
 type FeaturesProps = {
-	title?: string
 	items: {
 		icon?: any
 		title?: string
@@ -13,16 +12,11 @@ type FeaturesProps = {
 }
 
 const Features: React.FC<FeaturesProps> = (props) => {
-	const { title, items = [] } = props || {}
+	const { items = [] } = props || {}
 
 	return (
 		<>
 			<Grid container spacing={0}>
-				{title && (
-					<Typography color="text.primary" variant="h5" sx={sx.title}>
-						{title}
-					</Typography>
-				)}
 				{items?.map((item, i) => (
 					<Grid item xs={12} sm={4} md={4} key={i}>
 						<Box sx={sx.item}>

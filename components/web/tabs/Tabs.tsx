@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { Box, Stack } from '@mui/material'
-import { Icon, Placeholder } from '../..'
-import { Tabs as MuiTabs, Tab as MuiTab, Typography } from '@mui/material'
+import { Icon, Placeholder } from '../../../components'
+import { Tabs as MuiTabs, Tab as MuiTab } from '@mui/material'
 import TabContent from './TabContent'
 
 type TabsProps = {
-	title?: string
 	orientation?: 'horizontal' | 'vertical'
 	items?: {
 		icon?: string
@@ -20,7 +19,7 @@ type TabsProps = {
 const Tabs: React.FC<TabsProps> = (props) => {
 	const [currentTab, setCurrentTab] = useState(0)
 
-	const { title, items = [], orientation = 'vertical' } = props
+	const { items = [], orientation = 'vertical' } = props
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
 		setCurrentTab(newValue)
@@ -32,13 +31,6 @@ const Tabs: React.FC<TabsProps> = (props) => {
 			direction={orientation === 'vertical' ? 'row' : 'column'}
 			sx={sx.root}
 		>
-			{title && (
-				<Stack direction="row" justifyContent={'space-between'} spacing={1}>
-					<Typography variant="h5" sx={sx.title} color="textPrimary">
-						{title}
-					</Typography>
-				</Stack>
-			)}
 			<MuiTabs
 				centered
 				orientation={orientation}

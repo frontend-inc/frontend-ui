@@ -33,10 +33,11 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 				}}
 			>
 				{resources?.map((resource, index) => (
-					<CollectionCard
+        <CollectionCard
 						key={index}
 						layout={layout}
 						style={style}
+            label={resource?.label}
 						title={resource?.title}
 						image={resource?.image?.url}
 						video={resource?.video?.url}

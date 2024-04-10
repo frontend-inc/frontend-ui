@@ -66,6 +66,7 @@ export { default as UserMenu } from './UserMenu'
 export { default as ProfileDetails } from './profiles/ProfileDetails'
 export { default as ProfileInfo } from './profiles/ProfileInfo'
 export { default as ProfileImage } from './profiles/ProfileImage'
+export { default as PageHeader } from './pages/PageHeader'
 
 // Layouts
 export { default as Footer } from './footer/Footer'
@@ -73,7 +74,6 @@ export { default as Header } from './header/Header'
 export { default as LayoutContainer } from './layouts/LayoutContainer'
 export { default as LayoutEmpty } from './layouts/LayoutEmpty'
 export { default as LayoutLoader } from './layouts/LayoutLoader'
-export { default as LayoutPage } from './layouts/LayoutPage'
 export { default as LayoutScroll } from './layouts/LayoutScroll'
 
 // Theme

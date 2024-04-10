@@ -4,7 +4,6 @@ import { Heading, Placeholder } from '../../../components'
 import FeaturedCard from './FeaturedCard'
 
 type FeaturedProps = {
-	title?: string
 	items: {
 		icon?: string
 		title?: string
@@ -20,7 +19,6 @@ type FeaturedProps = {
 
 const Featured: React.FC<FeaturedProps> = (props) => {
 	const {
-		title,
 		items = [],
 		enableBorder,
 		enableGradient,
@@ -28,8 +26,7 @@ const Featured: React.FC<FeaturedProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Box>
-			{title && <Heading title={title} textAlign="center" />}
+		<Box>			
 			<Stack spacing={6}>
 				{items?.map((item, i) => (
 					<FeaturedCard

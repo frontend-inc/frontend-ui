@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
 import { Box, Button, Stack, Typography } from '@mui/material'
-import { Image, TouchableOpacity } from '../../../components'
+import { Label, Image, TouchableOpacity } from '../../../components'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../types'
@@ -39,10 +39,9 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 			sx={{
 				...sx.root,
 				...(enableBorder && sx.rootBorder),
-				width: '100%',
 			}}
 		>
-			<Stack spacing={1} flexDirection={{ xs: 'column', sm: 'row' }}>
+			<Stack sx={ sx.container } spacing={1} flexDirection={{ xs: 'column', sm: 'row' }}>
 				<Box sx={sx.image}>
 					<TouchableOpacity handleClick={handleItemClick}>
 						<Image
@@ -56,36 +55,41 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 						/>
 					</TouchableOpacity>
 				</Box>
-				<Stack spacing={1} sx={sx.content}>
-					<Box>
-						<Typography color="textPrimary" variant={textVariant}>
-							{truncate(title)}
-						</Typography>
-						<Typography
-							color="text.secondary"
-							variant="body2"
-							sx={sx.description}
-						>
-							{truncate(description, 80)}
-						</Typography>
-						{label && (
-							<Typography color="textSecondary" variant="caption">
-								{label}
-							</Typography>
-						)}
-					</Box>
-					{buttonText && (
-						<Box>
-							<Button
-								variant="contained"
-								color="secondary"
-								onClick={handleItemClick}
-							>
-								{buttonText}
-							</Button>
-						</Box>
-					)}
+				<Stack 
+          direction="column" 
+          spacing={1} 
+          sx={{ 
+            ...sx.content,
+            ...(enableBorder && sx.contentBorder)
+          }}>					
+          { label && (
+            <Label label={ label } />
+          )}
+          <Typography color="textPrimary" variant={textVariant}>
+            {truncate(title)}
+          </Typography>
+          <Typography
+            color="text.secondary"
+            variant="body2"
+            sx={sx.description}
+          >
+            {truncate(description, 80)}
+          </Typography>
 				</Stack>
+        {buttonText && (
+          <Box sx={{ 
+            ...sx.actions,
+            ...(enableBorder && sx.actionsBorder) 
+          }}>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={handleItemClick}
+            >
+              {buttonText}
+            </Button>
+          </Box>
+        )}
 			</Stack>
 		</Box>
 	)
@@ -95,7 +99,7 @@ export default CardHoriz
 
 const sx = {
 	root: {
-		position: 'relative',
+    width: '100%',
 		display: 'flex',
 		flexDirection: 'row',
 		borderRadius: 1,
@@ -116,6 +120,9 @@ const sx = {
 		border: '1px solid',
 		borderColor: 'divider',
 	},
+  container: {
+    width: "100%"
+  },
 	image: {
 		pr: {
 			sm: 2,
@@ -129,15 +136,41 @@ const sx = {
 			sm: 220,
 			xs: '100%',
 		},
+    minWidth: {
+      sm: 220,
+      xs: '100%',
+    },
 		height: '100%',
 	},
 	content: {
+    width: '100%',
 		justifyContent: 'flex-start',
 		alignItems: 'flex-start',
 		height: '100%',
-		py: 1,
+		py: {
+      sm: 0,
+      xs: 1,
+    }
 	},
+  contentBorder: {
+    p: 2
+  },
 	description: {
 		maxWidth: '320px',
 	},
+  actions: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: {
+      sm: 'flex-end',
+      xs: 'flex-start'
+    },
+  },
+  actionsBorder: {
+    px: 1,
+    pb: {
+      sm: 0,
+      xs: 1
+    },
+  }
 }

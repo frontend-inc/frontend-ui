@@ -29,6 +29,7 @@ type LayoutContainerProps = {
 	twitter?: string
 	youtube?: string
 	tiktok?: string
+  pageMargin?: number
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
@@ -49,6 +50,7 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 		twitter,
 		youtube,
 		tiktok,
+    pageMargin = 201,
 	} = props
 
 	const enableNotifications = notifications?.length > 0
@@ -77,11 +79,20 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 				<Box
 					sx={{
 						...sx.content,
-						...(topNav ? sx.contentTopNav : sx.contentSideNav),
+						...(topNav ? sx.contentTopNav : sx.contentSideNav),            
 					}}
 				>
 					<LayoutScroll>
-						{children}
+            <Box sx={{ 
+              ...sx.page,
+              minHeight: {
+                sm: `calc(100vh - ${pageMargin}px)`,
+                xs: '100vh'
+              },    
+            }}
+            >
+              {children}
+            </Box>
             <Footer
               menuItems={footerLinks}
               handleClick={handleClick}
@@ -143,5 +154,9 @@ const sx = {
 	contentTopNav: {
     pt: '60px',
 		minHeight: 'calc(100% - 60px)',
+	},
+  page: {
+		width: '100%',
+		bgcolor: 'background.default',
 	},
 }

@@ -21,6 +21,7 @@ import { useDelayedLoading } from '../../../hooks'
 type CollectionProps = {
 	label?: string
 	title?: string
+  description?: string
 	url: string
 	layout: 'list' | 'grid'
 	style: 'avatar' | 'card' | 'cover'
@@ -49,6 +50,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	const {
 		label,
 		title,
+    description,
 		layout = 'grid',
 		style = 'card',
 		url,
@@ -167,7 +169,12 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	return (
 		<Stack spacing={1} sx={sx.root}>
 			<Stack direction="column" spacing={1}>
-				<Heading label={label} title={title} />
+				<Heading 
+          label={label} 
+          title={title} 
+          description={description}
+          textAlign='left'
+        />
 				{enableSearch && (
 					<SearchInput
 						value={keywords}

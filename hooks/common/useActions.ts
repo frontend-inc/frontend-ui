@@ -21,7 +21,7 @@ const useActions = (params: UseActionParams) => {
 		switch (action?.name) {
 			case 'navigate':
 				let url = `${clientUrl}${action?.path}`
-				if (resource) {
+				if (resource?.handle) {
 					url = `${clientUrl}${action?.path}/${resource.handle}`
 				}
 				router.push(url)

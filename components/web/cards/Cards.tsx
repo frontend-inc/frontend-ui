@@ -4,7 +4,6 @@ import { Heading, CollectionCard, Placeholder } from '../../../components'
 import { useRouter } from 'next/router'
 
 type CardType = {
-	title: string
 	description: string
 	image: string
 	buttonText?: string
@@ -12,7 +11,6 @@ type CardType = {
 }
 
 type CardsProps = {
-	title?: string
 	layout?: 'grid' | 'list'
 	style?: 'avatar' | 'card' | 'cover'
 	items: CardType[]
@@ -25,7 +23,6 @@ const Cards: React.FC<CardsProps> = (props) => {
 	const router = useRouter()
 
 	const {
-		title,
 		layout = 'grid',
 		style = 'card',
 		items,
@@ -42,7 +39,6 @@ const Cards: React.FC<CardsProps> = (props) => {
 
 	return (
 		<Box>
-			{title && <Heading title={title} />}
 			{layout == 'list' && (
 				<Stack spacing={2}>
 					{items?.map((card, i) => (
@@ -50,6 +46,7 @@ const Cards: React.FC<CardsProps> = (props) => {
 							key={i}
 							layout={layout}
 							style={style}
+              label={card?.label}
 							title={card?.title}
 							description={card?.description}
 							image={card?.image}
@@ -69,6 +66,7 @@ const Cards: React.FC<CardsProps> = (props) => {
 							<CollectionCard
 								layout={layout}
 								style={style}
+                label={card?.label}
 								image={card?.image}
 								title={card?.title}
 								description={card?.description}
