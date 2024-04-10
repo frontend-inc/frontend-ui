@@ -53,9 +53,7 @@ const Collections: React.FC<CollectionsProps> = (props) => {
 			<CollectionList 
 				layout={layout}
 				style={style}
-				resources={collections}
-				loading={loading}
-				items={collections}
+				resources={collections}				
 				buttonText={buttonText}
 				handleClick={handleClick}
 				enableBorder={enableBorder}

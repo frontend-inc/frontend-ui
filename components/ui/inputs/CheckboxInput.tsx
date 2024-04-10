@@ -1,4 +1,5 @@
 import React from 'react'
+import { SyntheticEventType } from '../../../types'
 import { Checkbox, Box, FormControlLabel, Typography } from '@mui/material'
 
 type CheckboxInputProps = {
@@ -6,7 +7,7 @@ type CheckboxInputProps = {
 	value: boolean
 	placeholder: string
 	label: string
-	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+	handleChange: (e: SyntheticEventType ) => void
 	disableBorder?: boolean
 }
 

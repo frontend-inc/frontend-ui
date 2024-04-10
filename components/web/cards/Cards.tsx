@@ -4,6 +4,8 @@ import { CollectionCard, Placeholder } from '../../../components'
 import { useRouter } from 'next/router'
 
 type CardType = {
+  label?: string
+  title?: string
 	description: string
 	image: string
 	buttonText?: string

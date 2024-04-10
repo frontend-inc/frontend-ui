@@ -33,7 +33,6 @@ type TableProps = {
 	totalCount?: number
 	query: any
 	handleQueryChange: (e: any) => void
-	handleKeywordChange: (e: any) => void
 	handleClearQuery: () => void
 	handlePaginate?: (e: any, page: number) => void
 	handleSearch?: (keywords: any) => void

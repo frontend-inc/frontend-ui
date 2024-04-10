@@ -36,7 +36,6 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 		query: defaultQuery = null,
 		enableBorder = false,
 		enableGradient = false,
-		enableOverlay = false,
 	} = props
 
 	const router = useRouter()
@@ -80,16 +79,10 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 			resources={resources}
 			layout={layout}
 			style={style}
-			editing={editing}
-			loading={loading}
 			buttonText={buttonText}
 			handleClick={handleClick}
 			enableBorder={enableBorder}
 			enableGradient={enableGradient}
-			enableOverlay={enableOverlay}
-			emptyTitle="No favorites found"
-			emptyDescription="Try adding some favorites"
-			emptyIcon="Bookmark"
 		/>
 	)
 }
