@@ -212,7 +212,7 @@ const sx = {
 	button: {
 		py: 0,
 		justifyContent: 'space-between',
-		border: '1px solid',
+		border: '3px solid',
 		borderColor: 'divider',
     color: 'text.primary',
 		bgcolor: 'background.paper',

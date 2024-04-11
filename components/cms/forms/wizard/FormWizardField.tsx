@@ -1,5 +1,5 @@
-import React from 'react'
-import { Typography, Stack } from '@mui/material'
+import React, { useEffect, useState } from 'react'
+import { Fade, Typography, Stack } from '@mui/material'
 import FormField from '../FormField'
 import { SYSTEM_FIELDS } from '../../../../constants/index'
 import { get } from 'lodash'
@@ -15,6 +15,7 @@ export type FormWizardProps = {
   handleChange: (ev: any) => void
   handleRemove: (name: string) => void
   resource: any
+  fadeIn: boolean
   setResource: (resource: any) => void
 }
 
@@ -22,6 +23,7 @@ const FormWizardField: React.FC<FormWizardProps> = (props) => {
 	
   const { 
     field, 
+    fadeIn,
     resource, 
     setResource, 
     handleChange, 
@@ -41,7 +43,9 @@ const FormWizardField: React.FC<FormWizardProps> = (props) => {
 		}))
 	}
 
+
 	return( 
+  <Fade in={ fadeIn } timeout={ 350 } >
     <Stack direction="column" spacing={3}>
       <Stack direction="column" spacing={1}>
         <Typography sx={ sx.title } variant="h4" color="text.primary">
@@ -70,6 +74,7 @@ const FormWizardField: React.FC<FormWizardProps> = (props) => {
       </>
     )}
     </Stack>
+    </Fade>
 	)
 }
 

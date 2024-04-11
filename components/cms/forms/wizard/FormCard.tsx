@@ -29,7 +29,7 @@ const FormCard: React.FC<FormCardProps> = (props) => {
     <Stack direction="column" sx={ sx.root } spacing={2}>
       <Image 
         src={ image } 
-        height={280}
+        height={400}
       />
       <Typography variant="h4" color="text.primary">
         { title }

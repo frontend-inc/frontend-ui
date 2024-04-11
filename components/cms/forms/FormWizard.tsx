@@ -59,9 +59,11 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
   const [currentField, setCurrentField] = useState()
   const [currentStep, setCurrentStep] = useState(0)
   const [totalSteps, setTotalSteps] = useState(0)
+  const [fadeIn, setFadeIn] = useState(false)
 
   const handleStartClick = () => {
     setCurrentStep(1)
+    setFadeIn(true)
   }
 
   const handleResetForm = () => {
@@ -91,11 +93,15 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 	}
 
   const handleNextStep = () => {
+    setFadeIn(false)
     let nextStep = currentStep + 1
     if(nextStep > totalSteps){
       return
-    }
-    setCurrentStep(nextStep)
+    }    
+    setTimeout(() => {
+      setCurrentStep(nextStep)
+      setFadeIn(true)
+    }, 500)
   }
 
   const handlePrevStep = () => {
@@ -150,7 +156,8 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
           )}
           { currentStep > 0 && (
             <>
-              <FormWizardField 
+              <FormWizardField
+                fadeIn={ fadeIn } 
                 field={ currentField }
                 handleChange={ handleChange }
                 handleRemove={ handleRemove }
