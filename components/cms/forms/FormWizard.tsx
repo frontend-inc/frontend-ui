@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useResource } from 'frontend-js'
-import { Box, Button, LinearProgress } from '@mui/material'
-import { Placeholder } from '../..'
-import { Label } from '../../../components'
+import { Box } from '@mui/material'
+import FormWizardProgress from './wizard/FormWizardProgress'
 import FormCard from './wizard/FormCard'
 import FormWizardField from './wizard/FormWizardField'
 import FormWizardButtons from './wizard/FormWizardButtons'
@@ -126,17 +125,13 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
   }, [fields, currentStep])
 
 	return( 
-    <Box sx={ sx.root }>		
-      <LinearProgress 
-        sx={ sx.linearProgress }
-        variant="determinate"
-        value={ (currentStep / totalSteps) * 100 }
-      />     
-      <Box sx={ sx.label }>
-        <Label 
-          label={`Step ${currentStep} of ${totalSteps}`} 
-        />
-      </Box>     
+    <Box sx={ sx.root }>	
+      { currentStep > 0 && (
+        <FormWizardProgress 
+          currentStep={ currentStep }
+          totalSteps={ totalSteps }
+        /> 
+      )}	
       <Box 
         sx={{ 
           ...sx.form,
@@ -205,15 +200,8 @@ const sx = {
 	button: {
 		mt: 2,
 	},
-  linearProgress: {
-    width: '100%',
-    height: '10px'
-  },
   title: {
     textAlign: 'center',
     width: '100%'
-  },
-  label: {
-    m: 2
-  }
+  },  
 }

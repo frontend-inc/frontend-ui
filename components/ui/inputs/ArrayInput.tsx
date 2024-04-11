@@ -69,7 +69,7 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 					freeSolo={freeSolo}
 					defaultValue={value || []}
 					onChange={handleInputChange}
-					options={options || ['Enter value']}
+					options={options || []}
 					getOptionLabel={(option) => option}
 					PopperComponent={CustomPopper}
 					clearIcon={<X />}
@@ -108,9 +108,12 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 export default ArrayInput
 
 export const sx = {
-	root: {},
+	root: {
+    width: '100%',
+  },
 	textField: {
-		'& .MuiOutlinedInput-root': {
+		'& .MuiOutlinedInput-root': {            
+      minWidth: '230px',
 			p: '4px',
       color: 'text.secondary',
 			fontSize: (theme) => theme.typography.body2.fontSize,
@@ -131,6 +134,7 @@ export const sx = {
 			},
 		},
 		root: {
+      width: '100%',
 			height: 26,
 		},
 	},
@@ -153,6 +157,7 @@ export const sx = {
 		pr: 0.5,
 	},
   label: {
-    width: '100px',    
+    width: '100px',
+    minWidth: '100px',    
   }
 }
