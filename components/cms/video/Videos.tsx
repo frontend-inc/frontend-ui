@@ -2,16 +2,13 @@ import React, { useEffect } from 'react'
 import { useResource } from 'frontend-js'
 import { Stack } from '@mui/material'
 import { CollectionList, Placeholder } from '../../../components'
-import VideoVert from './VideoVert'
-import VideoHoriz from './VideoHoriz'
-import VideoStory from './VideoStory'
 import { Typography } from '@mui/material'
 
 type VideosProps = {
 	title?: string
 	url: string
 	layout: 'list' | 'grid' 
-	style: 'cover' 
+	style: 'card' | 'avatar' | 'cover' 
 	editing?: boolean
 	perPage?: number
 	query?: any
@@ -25,11 +22,10 @@ const Videos: React.FC<VideosProps> = (props) => {
 	const {
 		title,
 		layout = 'grid',
-		style = 'vert',
+		style = 'cover',
 		url,
 		query: defaultQuery = {},
 		perPage = 20,
-		editing,
 		enableOverlay,
 		enableGradient,
 		enableBorder,
@@ -40,23 +36,6 @@ const Videos: React.FC<VideosProps> = (props) => {
 	})
 
 	const handleClick = () => null
-
-	const COMPONENTS = {
-		grid: {
-			cover: VideoVert,
-			story: VideoStory,
-		},
-		carousel: {
-			cover: VideoVert,
-			story: VideoStory,
-		},
-		list: {
-			cover: VideoHoriz,
-			story: VideoStory,
-		},
-	}
-
-	let component = COMPONENTS[layout][style] || VideoVert
 
 	useEffect(() => {
 		if (url && defaultQuery && perPage) {
@@ -74,13 +53,10 @@ const Videos: React.FC<VideosProps> = (props) => {
 			</Typography>
       <CollectionList 
         layout={layout}
-        style={style}
-        loading={loading}
+        style={style}        
         resources={resources}
-        component={component}
         enableBorder={enableBorder}
         enableGradient={enableGradient}
-        enableOverlay={enableOverlay}
         handleClick={handleClick}
       />			
 			{!loading && resources?.length === 0 && (

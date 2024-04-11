@@ -95,7 +95,7 @@ const Form: React.FC<FormProps> = (props) => {
 					)
 				)}
 				<Button
-					size="large"P
+					size="large"
 					variant="contained"
 					onClick={handleSubmit}
 					disabled={loading}
