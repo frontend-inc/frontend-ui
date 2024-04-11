@@ -1,18 +1,18 @@
 import React from 'react'
 import { Button, Stack } from '@mui/material'
 import { Icon, ButtonLoader } from '../../../../components'
+import { SyntheticEventType } from '../../../../types'
 
-type WizardButtonsProps = {
+type FormWizardButtonsProps = {
   currentStep: number
   totalSteps: number
-  loading: boolean
   buttonText: string
   handleNextStep: () => void
   handlePrevStep: () => void
   handleSubmit: () => void
 }
 
-const FormWizardButtons: React.FC<WizardButtonsProps> = (props) => {
+const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 
   const {     
     buttonText,

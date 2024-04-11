@@ -74,7 +74,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		await removeAttachment(resource?.id, name)
 	}
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = async () => {
 		try {
 			let resp
 			if (resource?.id) {
