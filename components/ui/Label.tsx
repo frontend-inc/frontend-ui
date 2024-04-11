@@ -26,6 +26,7 @@ export default Label
 
 const sx = {
 	chip: {    
+    opacity: 0.8,
     bgcolor: 'secondary.main',
 		color: 'secondary.contrastText',
 		characterSpacing: '1em',
@@ -33,7 +34,7 @@ const sx = {
 		fontFamily: (theme) => theme.typography.fontFamily.caption,
 		letterSpacing: '0.05em',		
 		cursor: 'pointer',
-    borderRadius: 1,
+    borderRadius: '4px',
     boxShadow: '1px 0px 0 0 rgba(0,0,0,0.1)',
 	},
 }

@@ -79,7 +79,7 @@ const Form: React.FC<FormProps> = (props) => {
 				{fields?.map((field, index) =>
 					SYSTEM_FIELDS.includes(field.name) ? (
 						<FormField
-							key={field.id}
+							key={index}
 							field={field}
 							value={get(resource, field.name)}
 							handleChange={handleChange}
@@ -87,7 +87,7 @@ const Form: React.FC<FormProps> = (props) => {
 						/>
 					) : (
 						<FormField
-							key={field.id}
+							key={index}
 							field={field}
 							value={get(resource?.data, field.name)}
 							handleChange={handleDataChange}

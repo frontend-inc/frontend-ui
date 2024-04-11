@@ -99,7 +99,7 @@ export default DesktopSideNav
 
 const sx = {
 	sideNav: {
-		height: '100%',
+		height: '100vh',
 		width: {
 			sm: '280px',
 			xs: '100%',

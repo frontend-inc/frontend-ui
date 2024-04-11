@@ -50,8 +50,7 @@ const sx = {
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
-		alignItems: 'center',
-		height: '100%',
+		alignItems: 'center',		
 		width: '100%',
 	},
 	title: {
