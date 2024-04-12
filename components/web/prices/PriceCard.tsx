@@ -9,7 +9,7 @@ import {
   ListItem,
   ListItemText,    
 } from '@mui/material'
-import { PriceType } from '../../../components'
+import { PriceType } from '../../../types'
 import { useRouter } from 'next/router'
 
 type PriceCardProps = {

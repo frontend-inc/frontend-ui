@@ -41,7 +41,9 @@ export type CardProps = {
 export type PriceType = {
 	title: string
 	price: number
-	features: string[]	
+	features: {     
+    label: string
+  }[]	
 	buttonText: string
 	url: string
 }
