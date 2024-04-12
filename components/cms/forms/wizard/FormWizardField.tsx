@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Fade, Typography, Stack } from '@mui/material'
-import FormField from '../FormField'
+import FormField from '../FormFieldInput'
 import { SYSTEM_FIELDS } from '../../../../constants/index'
 import { get } from 'lodash'
 

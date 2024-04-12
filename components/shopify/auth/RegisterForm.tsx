@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack, Button } from '@mui/material'
-import { IconLoader, SwitchInput, TextInput } from '../..'
+import { IconLoading, SwitchInput, TextInput } from '../..'
 import { CustomerType } from 'frontend-shopify'
 
 type RegisterFormProps = {
@@ -59,7 +59,7 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
 				color="primary"
 				onClick={handleSubmit}
 				variant="contained"
-				startIcon={<IconLoader loading={loading} />}
+				startIcon={<IconLoading loading={loading} />}
 			>
 				Register
 			</Button>

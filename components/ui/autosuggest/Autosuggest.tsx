@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import {
+  Box,
 	Paper,
 	Stack,
+  CircularProgress,
 	IconButton,
 	ListItem,
 	ListItemIcon,
@@ -9,10 +11,10 @@ import {
 	InputBase,
 	InputAdornment,
 } from '@mui/material'
-import { useError } from '../../hooks'
-import { Icon, ErrorText } from '../../components'
+import { useError } from '../../../hooks'
+import { Icon, ErrorText } from '../..'
 import Autocomplete from '@mui/material/Autocomplete'
-import { SyntheticEventType } from '../../types'
+import { SyntheticEventType } from '../../../types'
 import Image from 'next/image'
 
 type AutocompleteOptionProps = {
@@ -54,6 +56,7 @@ const AutocompletePaper: React.FC<AutocompletePaperProps> = (props) => {
 }
 
 type AutosuggestProps = {
+  loading?: boolean
 	errors?: any
 	value?: any
 	direction?: 'row' | 'column'
@@ -75,6 +78,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 		direction = 'column',
 		options,
 		label,
+    loading=false,
 		name,
 		placeholder = 'Select',
 		multiselect = false,
@@ -120,6 +124,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 		}
 	}, [value, options])
 
+  if(!options?.length > 0) return null;
 	return (
 		<Stack
 			sx={{
@@ -134,69 +139,87 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 					{label}
 				</Typography>
 			)}
-			<Autocomplete
-				freeSolo={freeSolo}
-				multiple={multiselect}
-				disableCloseOnSelect={multiselect}
-				sx={{
-					...sx.autocomplete,
-					paper: sx.paper,
-					option: sx.option,
-					popperDisablePortal: sx.popperDisablePortal,
-				}}
-				value={selected}
-				onChange={(event, newValue) => {
-					handleOnChange(event, newValue)
-				}}
-				onInputChange={(event, newInputValue) => {
-					handleInputChange && handleInputChange(newInputValue)
-				}}
-				noOptionsText="No options"
-				clearOnBlur
-				handleHomeEndKeys
-				options={options}
-				//@ts-ignore
-				getOptionLabel={(option) => option?.label || ''}
-				//@ts-ignore
-				getOptionSelected={(
-					option: Record<string, any>,
-					value: Record<string, any>
-				) => option?.value == value?.value}
-				renderOption={(props, option) => (
-					<AutocompleteOption {...props} option={option} />
-				)}
-				PaperComponent={AutocompletePaper}
-				renderInput={(params) => (
-					<InputBase
-						placeholder={placeholder}
-						ref={params.InputProps.ref}
-						inputProps={{
-							...params.inputProps,
-							autoComplete: 'off',
-						}}
-						sx={{
-							...sx.inputBase,
-							//@ts-ignore
-							...(error && sx.inputError),
-						}}
-						endAdornment={
-							handleClear && (
-								<InputAdornment position="start">
-									<IconButton onClick={handleInputClear} size="small">
-										<Icon name="X" size={20} />
-									</IconButton>
-								</InputAdornment>
-							)
-						}
-					/>
-				)}
-			/>
+        <Autocomplete
+          freeSolo={freeSolo}
+          multiple={multiselect}
+          disableCloseOnSelect={multiselect}
+          sx={{
+            ...sx.autocomplete,
+            paper: sx.paper,
+            option: sx.option,
+            popperDisablePortal: sx.popperDisablePortal,
+          }}
+          value={selected}
+          onChange={(event, newValue) => {
+            handleOnChange(event, newValue)
+          }}
+          onInputChange={(event, newInputValue) => {
+            handleInputChange && handleInputChange(newInputValue)
+          }}
+          noOptionsText="No options"
+          clearOnBlur
+          handleHomeEndKeys
+          options={options}
+          //@ts-ignore
+          getOptionLabel={(option) => option?.label || ''}
+          //@ts-ignore
+          getOptionSelected={(
+            option: Record<string, any>,
+            value: Record<string, any>
+          ) => option?.value == value?.value}
+          renderOption={(props, option) => (
+            <AutocompleteOption {...props} option={option} />
+          )}
+          PaperComponent={AutocompletePaper}
+          renderInput={(params) => (
+            <InputBase
+              placeholder={placeholder}
+              ref={params.InputProps.ref}
+              inputProps={{
+                ...params.inputProps,
+                autoComplete: 'off',
+              }}
+              sx={{
+                ...sx.inputBase,
+                //@ts-ignore
+                ...(error && sx.inputError),
+              }}
+              endAdornment={
+                handleClear && (
+                  <InputAdornment position="start">
+                    <IconButton onClick={handleInputClear} size="small">
+                      <Icon name="X" size={20} />
+                    </IconButton>
+                  </InputAdornment>
+                )
+              }
+            />
+          )}
+        />
+        { loading && (
+          <Box sx={ sx.loaderContainer }>
+            <CircularProgress 
+              size={20} 
+              thickness={5}
+              disableShrink
+              sx={sx.circularProgress}
+            />
+          </Box>
+        )}
 			<ErrorText error={error} />
 		</Stack>
 	)
 }
 
 export default Autosuggest
+
+const styles = {
+	image: {
+		borderRadius: 1,
+		objectFit: 'cover',
+		marginRight: '0px',
+	},  
+}
 
 const sx: any = {
 	autocomplete: {
@@ -255,12 +278,14 @@ const sx: any = {
 	stackVertical: {
 		alignItems: 'center',
 	},
-}
-
-const styles = {
-	image: {
-		borderRadius: 1,
-		objectFit: 'cover',
-		marginRight: '0px',
-	},
+  loaderContainer: {
+    width: '100%',
+    height: '41px',
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  circularProgress: {    
+    color: 'text.secondary'
+  }
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Stack, Button } from '@mui/material'
-import { TextInput, ButtonLoader } from '../..'
+import { TextInput, IconLoading } from '../..'
 import { useMailChimpForm } from 'use-mailchimp-form'
 import { useAlerts } from '../../../hooks'
 
@@ -58,7 +58,7 @@ const MailchimpSubscribe: React.FC<MailchimpSubscribeProps> = (props) => {
 					color="secondary"
 					onClick={handleFormSubmit}
 				>
-					{loading ? <ButtonLoader loading={loading} /> : `${buttonText}`}
+					{loading ? <IconLoading loading={loading} /> : `${buttonText}`}
 				</Button>
 			</Stack>
 		</Stack>

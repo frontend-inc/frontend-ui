@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Stack } from '@mui/material'
-import { IconLoader, TextInput } from '../../../components'
+import { IconLoading, TextInput } from '../../../components'
 
 type ForgotPasswordFormProps = {
 	errors: any
@@ -29,7 +29,7 @@ const ForgotPasswordForm: React.FC<ForgotPasswordFormProps> = (props) => {
 				variant="contained"
 				color="primary"
 				onClick={handleSubmit}
-				startIcon={<IconLoader loading={loading} />}
+				startIcon={<IconLoading loading={loading} />}
 			>
 				Send Instructions
 			</Button>

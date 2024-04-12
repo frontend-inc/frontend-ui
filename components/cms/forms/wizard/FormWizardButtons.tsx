@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Stack } from '@mui/material'
-import { Icon, ButtonLoader } from '../../../../components'
+import { Icon, IconLoading } from '../../../../components'
 import { SyntheticEventType } from '../../../../types'
 
 type FormWizardButtonsProps = {

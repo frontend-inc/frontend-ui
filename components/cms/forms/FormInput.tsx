@@ -7,6 +7,8 @@ import {
 	RatingInput,
 	SwitchInput,
 	TextInput,
+  MultipleChoiceInput,
+  SingleChoiceInput
 } from '../..'
 import { SyntheticEventType } from '../../../types'
 
@@ -16,9 +18,10 @@ type FormInputProps = {
 	label?: string
 	errors?: any
 	value?: any | any[]
+  options: any
 	placeholder?: string
-	handleChange?: (e: SyntheticEventType) => void
-	handleRemove?: (name: string) => void
+	handleChange: (e: SyntheticEventType) => void
+	handleRemove: (name: string) => void
 }
 
 const FormInput: React.FC<FormInputProps> = (props) => {
@@ -28,6 +31,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		label,
 		errors,
 		value,
+    options,
 		placeholder,
 		handleChange,
 		handleRemove,
@@ -148,6 +152,15 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 					placeholder={placeholder}
 				/>
 			)}
+      { variant === 'multiple_choice' && (
+        <MultipleChoiceInput
+          label={label}
+          name={name}
+          value={value}
+          options={options}
+          handleChange={handleChange}
+        />
+      )}
 		</>
 	)
 }

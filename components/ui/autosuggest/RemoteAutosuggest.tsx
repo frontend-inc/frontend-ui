@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useResource } from 'frontend-js'
-import { Autosuggest } from '../../components'
-import { ErrorText } from '../../components'
-import { useError } from '../../hooks'
-import { OptionType, QueryParamsType, SyntheticEventType } from '../../types'
+import { Autosuggest } from '../..'
+import { ErrorText } from '../..'
+import { useError } from '../../../hooks'
+import { OptionType, QueryParamsType, SyntheticEventType } from '../../../types'
 
 type RemoteAutosuggestProps = {
 	errors?: any
@@ -44,7 +44,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		name: name,
 	})
 
-	const { resources, findMany } = useResource({
+	const { delayedLoading, resources, findMany } = useResource({
 		url: url,
 		name: name,
 	})
@@ -94,22 +94,21 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 			findMany(defaultQuery)
 		}
 	}, [url])
-
+  
 	return (
 		<>
-			{options?.length > 0 && (
-				<Autosuggest
-					direction={direction}
-					label={label}
-					name={name}
-					value={option}
-					options={options}
-					placeholder={placeholder}
-					handleChange={handleChange}
-					handleInputChange={handleInputChange}
-					handleClear={handleClear}
-				/>
-			)}
+      <Autosuggest
+        loading={delayedLoading}
+        direction={direction}
+        label={label}
+        name={name}
+        value={option}
+        options={options}
+        placeholder={placeholder}
+        handleChange={handleChange}
+        handleInputChange={handleInputChange}
+        handleClear={handleClear}
+      />
 			<ErrorText error={error} />
 		</>
 	)

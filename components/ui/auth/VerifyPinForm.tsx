@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Stack } from '@mui/material'
-import { IconLoader, TextInput } from '../../../components'
+import { IconLoading, TextInput } from '../../../components'
 
 type SendPinFormProps = {
 	errors: Record<string, any>
@@ -29,7 +29,7 @@ const SendPinForm: React.FC<SendPinFormProps> = (props) => {
 				variant="contained"
 				color="primary"
 				onClick={handleSubmit}
-				startIcon={<IconLoader loading={loading} />}
+				startIcon={<IconLoading loading={loading} />}
 			>
 				Verify Pin
 			</Button>

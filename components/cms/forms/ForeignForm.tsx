@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useResource } from 'frontend-js'
 import { Stack, Box, Button } from '@mui/material'
-import { ButtonLoader, Placeholder } from '../..'
-import FormField from './FormField'
+import { IconLoading, Placeholder } from '../..'
+import FormField from './FormFieldInput'
 import { SYSTEM_FIELDS } from '../../../constants/index'
 import { get } from 'lodash'
 
@@ -108,7 +108,7 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 					variant={variant}
 					onClick={handleSubmit}
 					disabled={loading}
-					endIcon={<ButtonLoader color="primary" loading={foreignLoading} />}
+					endIcon={<IconLoading color="primary" loading={foreignLoading} />}
 				>
 					{buttonText}
 				</Button>

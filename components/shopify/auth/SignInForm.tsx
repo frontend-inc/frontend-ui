@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Stack } from '@mui/material'
-import { TextInput, IconLoader } from '../..'
+import { TextInput, IconLoading } from '../..'
 import { CustomerType } from 'frontend-shopify'
 
 type SignInFormProps = {
@@ -46,7 +46,7 @@ const SignInForm: React.FC<SignInFormProps> = (props) => {
 				color="primary"
 				onClick={handleSubmit}
 				variant="contained"
-				endIcon={<IconLoader loading={loading} />}
+				endIcon={<IconLoading loading={loading} />}
 			>
 				Sign In
 			</Button>

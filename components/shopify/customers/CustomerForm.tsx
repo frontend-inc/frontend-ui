@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Stack } from '@mui/material'
 import { CustomerType } from 'frontend-shopify'
-import { TextInput, IconLoader } from '../../../components'
+import { TextInput, IconLoading } from '../../../components'
 
 type CustomerFormProps = {
 	loading: boolean
@@ -48,7 +48,7 @@ const CustomerForm: React.FC<CustomerFormProps> = (props) => {
 			/>
 			<Button
 				color="secondary"
-				endIcon={<IconLoader loading={loading} />}
+				endIcon={<IconLoading loading={loading} />}
 				variant="contained"
 				onClick={handleSubmit}
 			>

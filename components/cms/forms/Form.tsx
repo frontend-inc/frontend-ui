@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useResource } from 'frontend-js'
 import { Stack, Box, Button } from '@mui/material'
-import { ButtonLoader, Placeholder } from '../..'
-import FormField from './FormField'
+import { IconLoading, Placeholder } from '../..'
+import FormFieldInput from './FormFieldInput'
 import { SYSTEM_FIELDS } from '../../../constants/index'
 import { get } from 'lodash'
 
@@ -78,7 +78,7 @@ const Form: React.FC<FormProps> = (props) => {
 			<Stack spacing={1} sx={sx.root}>
 				{fields?.map((field, index) =>
 					SYSTEM_FIELDS.includes(field.name) ? (
-						<FormField
+						<FormFieldInput
 							key={index}
 							field={field}
 							value={get(resource, field.name)}
@@ -86,7 +86,7 @@ const Form: React.FC<FormProps> = (props) => {
 							handleRemove={handleRemove}
 						/>
 					) : (
-						<FormField
+						<FormFieldInput
 							key={index}
 							field={field}
 							value={get(resource?.data, field.name)}
@@ -99,7 +99,7 @@ const Form: React.FC<FormProps> = (props) => {
 					variant="contained"
 					onClick={handleSubmit}
 					disabled={loading}
-					endIcon={<ButtonLoader color="primary" loading={loading} />}
+					endIcon={<IconLoading color="primary" loading={loading} />}
 				>
 					{buttonText}
 				</Button>

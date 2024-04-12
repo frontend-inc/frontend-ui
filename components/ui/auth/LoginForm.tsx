@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Divider, Stack } from '@mui/material'
-import { GoogleLoginButton, TextInput, IconLoader } from '../../../components'
+import { GoogleLoginButton, TextInput, IconLoading } from '../../../components'
 
 type LoginFormProps = {
 	errors?: any
@@ -56,7 +56,7 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 					color="primary"
 					onClick={handleSubmit}
 					variant="contained"
-					endIcon={<IconLoader loading={loading} />}
+					endIcon={<IconLoading loading={loading} />}
 				>
 					Sign In
 				</Button>

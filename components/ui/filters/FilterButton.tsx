@@ -2,7 +2,7 @@ import React from 'react'
 import { ButtonGroup, Badge, Button } from '@mui/material'
 import { Clear } from '@mui/icons-material'
 import { ListFilter } from 'lucide-react'
-import ButtonLoader from '../ButtonLoader'
+import IconLoading from '../IconLoading'
 
 type FilterButtonProps = {
 	loading: boolean
@@ -38,7 +38,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 					color="secondary"
 					variant="contained"
 					startIcon={
-						loading ? <ButtonLoader loading={loading} /> : <ListFilter />
+						loading ? <IconLoading loading={loading} /> : <ListFilter />
 					}
 					onClick={handleClick}
 				>

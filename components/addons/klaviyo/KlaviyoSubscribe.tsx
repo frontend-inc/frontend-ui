@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Stack, Button } from '@mui/material'
-import { TextInput, ButtonLoader } from '../..'
+import { TextInput, IconLoading } from '../..'
 import { useAlerts, useKlaviyo } from '../../../hooks'
 
 export type KlaviyoSubscribeProps = {
@@ -66,7 +66,7 @@ const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
 					color="secondary"
 					onClick={handleFormSubmit}
 				>
-					{loading ? <ButtonLoader loading={loading} /> : `${buttonText}`}
+					{loading ? <IconLoading loading={loading} /> : `${buttonText}`}
 				</Button>
 			</Stack>
 		</Stack>

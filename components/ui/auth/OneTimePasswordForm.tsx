@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Stack } from '@mui/material'
-import { IconLoader, TextInput } from '../../../components'
+import { IconLoading, TextInput } from '../../../components'
 
 type OneTimePasswordFormProps = {
 	loading: boolean
@@ -29,7 +29,7 @@ const OneTimePasswordForm: React.FC<OneTimePasswordFormProps> = (props) => {
 				variant="contained"
 				color="primary"
 				onClick={handleSubmit}
-				endIcon={<IconLoader loading={loading} />}
+				endIcon={<IconLoading loading={loading} />}
 			>
 				Send One-Time Password
 			</Button>

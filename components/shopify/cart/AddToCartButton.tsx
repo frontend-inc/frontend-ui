@@ -3,7 +3,7 @@ import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
 import { useAlerts } from '../../../hooks'
 import { Stack, Button } from '@mui/material'
-import { IconLoader } from '../../../components'
+import { IconLoading } from '../../../components'
 import {
 	FavoriteButton,
 	QuantitySelector,
@@ -114,7 +114,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = (props) => {
 					variant={buttonVariant}
 					size={size}
 					startIcon={
-						<IconLoader
+						<IconLoading
 							color={
 								buttonVariant == 'contained'
 									? 'primary.contrastText'

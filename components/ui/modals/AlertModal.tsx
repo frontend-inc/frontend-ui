@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '@mui/material'
-import { ButtonLoader, Placeholder, Modal } from '../../../components'
+import { IconLoading, Placeholder, Modal } from '../../../components'
 
 type AlertModalProps = {
 	loading?: boolean
@@ -40,7 +40,7 @@ const AlertModal: React.FC<AlertModalProps> = (props) => {
 					variant="contained"
 					color="primary"
 					onClick={handleConfirm}
-					startIcon={<ButtonLoader loading={loading} />}
+					startIcon={<IconLoading loading={loading} />}
 				>
 					Confirm
 				</Button>

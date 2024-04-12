@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack, Button } from '@mui/material'
-import { IconLoader, TextInput } from '../../../components'
+import { IconLoading, TextInput } from '../../../components'
 
 type SignupFormProps = {
 	loading: boolean
@@ -68,7 +68,7 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 				color="primary"
 				onClick={handleSubmit}
 				variant="contained"
-				startIcon={<IconLoader loading={loading} />}
+				startIcon={<IconLoading loading={loading} />}
 			>
 				Register
 			</Button>

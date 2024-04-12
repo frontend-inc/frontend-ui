@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Hidden, Badge, ButtonGroup, Button } from '@mui/material'
-import { Popup, Drawer, ButtonLoader } from '../../..'
+import { Popup, Drawer, IconLoading } from '../../..'
 import { FilterList as FilterIcon } from '@mui/icons-material'
 import FilterList from './CollectionFilterList'
 import { FilterOptionType, SearchFilterOptionType } from '../../../..'
@@ -50,7 +50,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 					variant="contained"
 					startIcon={
 						loading ? (
-							<ButtonLoader loading={loading} />
+							<IconLoading loading={loading} />
 						) : (
 							<FilterIcon sx={sx.icon} />
 						)

@@ -1,33 +1,29 @@
 import React from 'react'
 import { CircularProgress } from '@mui/material'
 
-type IconLoaderProps = {
-	loading?: boolean
+type IconLoadingProps = {
+	loading: boolean
 	color?: string
 }
-
-const IconLoader: React.FC<IconLoaderProps> = (props) => {
+const IconLoading: React.FC<IconLoadingProps> = (props) => {
 	const { loading = false, color = 'primary.contrastText' } = props
 	if (!loading) return null
 	return (
 		<CircularProgress
 			size={20}
+			disableShrink
 			sx={{
-				...sx.root,
+				...sx.loader,
 				color,
 			}}
-			disableShrink
 		/>
 	)
 }
 
-export default IconLoader
+export default IconLoading
 
 const sx = {
-	root: {
+	loader: {
 		color: 'primary.contrastText',
-	},
-	outlined: {
-		color: 'primary.main',
 	},
 }

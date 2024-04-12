@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useCart } from 'frontend-shopify'
 import { Button, Stack } from '@mui/material'
-import { TextInput, IconLoader } from '../../../components'
+import { TextInput, IconLoading } from '../../../components'
 
 const CartDiscountCodeInput: React.FC = () => {
 	const [discountCode, setDiscountCode] = useState<string | null>(null)
@@ -33,7 +33,7 @@ const CartDiscountCodeInput: React.FC = () => {
 					variant="contained"
 					sx={sx.button}
 					endIcon={
-						<IconLoader color="secondary.contrastText" loading={loading} />
+						<IconLoading color="secondary.contrastText" loading={loading} />
 					}
 				>
 					Apply

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Stack } from '@mui/material'
-import { IconLoader, TextInput } from '../../../components'
+import { IconLoading, TextInput } from '../../../components'
 
 type ResetPasswordFormProps = {
 	loading: boolean
@@ -38,7 +38,7 @@ const ResetPasswordForm: React.FC<ResetPasswordFormProps> = (props) => {
 				variant="contained"
 				color="primary"
 				onClick={handleSubmit}
-				endIcon={<IconLoader loading={loading} />}
+				endIcon={<IconLoading loading={loading} />}
 			>
 				Save and Continue
 			</Button>
