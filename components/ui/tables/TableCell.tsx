@@ -50,7 +50,7 @@ const sx = {
       display: 'none',
     },
     whiteSpace: 'nowrap',
-    maxWidth: '200px'      
+    maxWidth: '240px'      
 	},  
   cellSmall: {
     minWidth: '40px',
