@@ -76,7 +76,7 @@ const MultipleChoiceInput: React.FC<MultipleChoiceInputProps> = (props) => {
           sx={ sx.list }
         >
           {options?.map((option, idx) => (
-						<SelectableListItem 
+						<SelectableListItem               
               key={ idx }
               title={ option.label }
               icon={ option.icon }

@@ -15,7 +15,7 @@ const CollectionSearchFilters: React.FC<CollectionFilterListProps> = (
 ) => {
 	const { filters = [], filterOptions = [], handleFilter } = props
 
-	const { open, toggleMenu, closeMenu, anchorEl } = useMenu()
+	const { open, toggleMenu, closeMenu } = useMenu()
 
 	return (
 		<>

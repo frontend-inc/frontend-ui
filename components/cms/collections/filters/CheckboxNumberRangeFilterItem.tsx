@@ -12,18 +12,18 @@ import { formatCurrency } from 'frontend-shopify'
 type CheckboxNumberRangeFilterItemProps = {
 	label?: string
 	option: {
+    label: string
 		min: number
 		max: number
 	}
 	values?: any
 	handleClick: () => void
-	enableCurrency?: boolean
 }
 
 const CheckboxNumberRangeFilterItem: React.FC<
 	CheckboxNumberRangeFilterItemProps
 > = (props) => {
-	const { values = [], option, enableCurrency = false, handleClick } = props
+	const { values = [], option, handleClick } = props
 	const [checked, setChecked] = useState(false)
 
 	// Compare an array of min / max values to see if they are equal
@@ -55,16 +55,9 @@ const CheckboxNumberRangeFilterItem: React.FC<
 				</ListItemIcon>
 				<ListItemText
 					primary={
-						enableCurrency ? (
-							<Typography color="text.primary" variant="button">
-								{formatCurrency(option?.min, 0)} -{' '}
-								{formatCurrency(option?.max, 0)}
-							</Typography>
-						) : (
-							<Typography color="text.primary" variant="button">
-								{option?.min} - {option?.max}
-							</Typography>
-						)
+            <Typography color="text.primary" variant="button">
+              { option.label }
+            </Typography>
 					}
 				/>
 			</ListItemButton>
