@@ -28,6 +28,7 @@ const CollectionSearchFilters: React.FC<CollectionFilterListProps> = (
 			</Hidden>
 			<Hidden smUp>
 				<Button
+          sx={sx.button}
 					onClick={toggleMenu}
 					color="secondary"
 					variant="contained"
@@ -51,6 +52,9 @@ export default CollectionSearchFilters
 
 const sx = {
 	button: {
-		width: '100%',
+		width: {
+      sm: 'auto',
+      xs: '100%',
+    }
 	},
 }

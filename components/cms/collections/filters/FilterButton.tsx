@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { Hidden, Badge, ButtonGroup, Button } from '@mui/material'
-import { Popup, Drawer, IconLoading } from '../../..'
-import { FilterList as FilterIcon } from '@mui/icons-material'
+import { Hidden, Badge, Button } from '@mui/material'
+import { Icon, Popup, Drawer, IconLoading } from '../../../../components'
 import FilterList from './CollectionFilterList'
 import { FilterOptionType, SearchFilterOptionType } from '../../../..'
 
@@ -52,7 +51,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 						loading ? (
 							<IconLoading loading={loading} />
 						) : (
-							<FilterIcon sx={sx.icon} />
+							<Icon name="SlidersHorizontal" size={20} />
 						)
 					}
 					onClick={handleClick}
@@ -116,10 +115,6 @@ const sx = {
 		'&:hover': {
 			borderLeft: 'none',
 		},
-	},
-	icon: {
-		height: 20,
-		width: 20,
 	},
 	mobileDrawer: {
 		width: {
