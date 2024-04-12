@@ -1,6 +1,15 @@
 import React from 'react'
-import { Stack, Box, Button, Divider, Typography } from '@mui/material'
-import { PriceType } from '../../..'
+import { 
+  Stack, 
+  Box, 
+  Button, 
+  Divider, 
+  Typography,
+  List,
+  ListItem,
+  ListItemText,    
+} from '@mui/material'
+import { PriceType } from '../../../components'
 import { useRouter } from 'next/router'
 
 type PriceCardProps = {
@@ -28,9 +37,18 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
 					{price.price}
 				</Typography>
 				<Divider />
-				<Typography variant="body1" color="text.primary" sx={sx.features}>
-					{price.features}
-				</Typography>
+        <List disablePadding>
+          { price?.features?.map((feature, i) => (
+            <ListItem key={i}>
+              <ListItemText primary={
+                <Typography variant="body1" color="text.primary">
+                  { feature?.label } 
+                </Typography>
+              }
+            />
+            </ListItem>
+          ))}
+        </List>				
 			</Stack>
 			<Button
 				onClick={handleClick}
