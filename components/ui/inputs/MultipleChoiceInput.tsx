@@ -1,5 +1,5 @@
-import React, { use, useState } from 'react'
-import { FormControl, List, Stack, Button, Typography } from '@mui/material'
+import React, { useEffect, useState } from 'react'
+import { FormControl, List, Stack, Typography } from '@mui/material'
 import { SelectableListItem } from '../../../components'
 
 export type MultipleChoiceInputProps = {
@@ -38,7 +38,7 @@ const MultipleChoiceInput: React.FC<MultipleChoiceInputProps> = (props) => {
 		}
 	}
 
-	useState(() => {
+	useEffect(() => {
     handleChange({
       target: {
         name,

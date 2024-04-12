@@ -38,6 +38,7 @@ export type CardProps = {
 }
 
 export type PriceType = {
+  label: string 
 	title: string
 	price: number
 	features: {
