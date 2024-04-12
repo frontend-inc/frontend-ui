@@ -83,6 +83,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			)}
 			{variant === 'number' && (
 				<TextInput
+          type="number"
 					errors={errors}
 					label={label}
 					name={name}
@@ -91,6 +92,19 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 					placeholder={placeholder}
 				/>
 			)}
+      
+      {variant === 'price' && (
+				<TextInput
+          type="number"
+					errors={errors}
+					label={label}
+					name={name}
+					value={value}
+					handleChange={handleChange}
+					placeholder={placeholder}
+				/>
+			)}
+
 			{variant === 'date' && (
 				<DateInput
 					errors={errors}
@@ -112,6 +126,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 					placeholder={placeholder}
 				/>
 			)}
+
 			{variant === 'select' && (
 				<ArrayInput
 					errors={errors}
@@ -122,6 +137,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 					placeholder={placeholder}
 				/>
 			)}
+
 			{variant === 'rating' && (
 				<RatingInput
 					errors={errors}
@@ -132,6 +148,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 					placeholder={placeholder}
 				/>
 			)}
+
 			{variant === 'image' && (
 				<ImageInput
 					errors={errors}
@@ -142,6 +159,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 					handleRemove={handleRemove}
 				/>
 			)}
+
 			{variant === 'json' && (
 				<JSONInput
 					errors={errors}
@@ -152,7 +170,18 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 					placeholder={placeholder}
 				/>
 			)}
+
 			{variant === 'multiple_choice' && (
+				<MultipleChoiceInput
+					label={label}
+					name={name}
+					value={value}
+					options={options}
+					handleChange={handleChange}
+				/>
+			)}
+
+      {variant === 'single_choice' && (
 				<MultipleChoiceInput
 					label={label}
 					name={name}
