@@ -81,7 +81,6 @@ const MultipleChoiceInput: React.FC<MultipleChoiceInputProps> = (props) => {
               title={ option.label }
               icon={ option.icon }
               image={ option.image }
-              value={ option.value }
               selected={ selected.find((i) => i === option.value) }
               handleClick={() => handleSelect(option?.value)}
             />						
