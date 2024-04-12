@@ -124,7 +124,6 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 		}
 	}, [value, options])
 
-  if(!options?.length > 0) return null;
 	return (
 		<Stack
 			sx={{
@@ -279,7 +278,7 @@ const sx: any = {
 		alignItems: 'center',
 	},
   loaderContainer: {
-    width: '100%',
+    width: '41px',
     height: '41px',
     display: 'flex',
     justifyContent: 'flex-start',
