@@ -7,8 +7,8 @@ import { Typography } from '@mui/material'
 type VideosProps = {
 	title?: string
 	url: string
-	layout: 'list' | 'grid' 
-	style: 'card' | 'avatar' | 'cover' 
+	layout: 'list' | 'grid'
+	style: 'card' | 'avatar' | 'cover'
 	editing?: boolean
 	perPage?: number
 	query?: any
@@ -51,14 +51,14 @@ const Videos: React.FC<VideosProps> = (props) => {
 			<Typography variant="h5" color="text.primary">
 				{title}
 			</Typography>
-      <CollectionList 
-        layout={layout}
-        style={style}        
-        resources={resources}
-        enableBorder={enableBorder}
-        enableGradient={enableGradient}
-        handleClick={handleClick}
-      />			
+			<CollectionList
+				layout={layout}
+				style={style}
+				resources={resources}
+				enableBorder={enableBorder}
+				enableGradient={enableGradient}
+				handleClick={handleClick}
+			/>
 			{!loading && resources?.length === 0 && (
 				<Placeholder
 					icon={'Video'}

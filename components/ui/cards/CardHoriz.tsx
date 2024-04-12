@@ -41,7 +41,11 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 				...(enableBorder && sx.rootBorder),
 			}}
 		>
-			<Stack sx={ sx.container } spacing={1} flexDirection={{ xs: 'column', sm: 'row' }}>
+			<Stack
+				sx={sx.container}
+				spacing={1}
+				flexDirection={{ xs: 'column', sm: 'row' }}
+			>
 				<Box sx={sx.image}>
 					<TouchableOpacity handleClick={handleItemClick}>
 						<Image
@@ -55,41 +59,42 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 						/>
 					</TouchableOpacity>
 				</Box>
-				<Stack 
-          direction="column" 
-          spacing={1} 
-          sx={{ 
-            ...sx.content,
-            ...(enableBorder && sx.contentBorder)
-          }}>					
-          { label && (
-            <Label label={ label } />
-          )}
-          <Typography color="textPrimary" variant={textVariant}>
-            {truncate(title)}
-          </Typography>
-          <Typography
-            color="text.secondary"
-            variant="body2"
-            sx={sx.description}
-          >
-            {truncate(description, 80)}
-          </Typography>
+				<Stack
+					direction="column"
+					spacing={1}
+					sx={{
+						...sx.content,
+						...(enableBorder && sx.contentBorder),
+					}}
+				>
+					{label && <Label label={label} />}
+					<Typography color="textPrimary" variant={textVariant}>
+						{truncate(title)}
+					</Typography>
+					<Typography
+						color="text.secondary"
+						variant="body2"
+						sx={sx.description}
+					>
+						{truncate(description, 80)}
+					</Typography>
 				</Stack>
-        {buttonText && (
-          <Box sx={{ 
-            ...sx.actions,
-            ...(enableBorder && sx.actionsBorder) 
-          }}>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={handleItemClick}
-            >
-              {buttonText}
-            </Button>
-          </Box>
-        )}
+				{buttonText && (
+					<Box
+						sx={{
+							...sx.actions,
+							...(enableBorder && sx.actionsBorder),
+						}}
+					>
+						<Button
+							variant="contained"
+							color="secondary"
+							onClick={handleItemClick}
+						>
+							{buttonText}
+						</Button>
+					</Box>
+				)}
 			</Stack>
 		</Box>
 	)
@@ -99,7 +104,7 @@ export default CardHoriz
 
 const sx = {
 	root: {
-    width: '100%',
+		width: '100%',
 		display: 'flex',
 		flexDirection: 'row',
 		borderRadius: 1,
@@ -120,9 +125,9 @@ const sx = {
 		border: '1px solid',
 		borderColor: 'divider',
 	},
-  container: {
-    width: "100%"
-  },
+	container: {
+		width: '100%',
+	},
 	image: {
 		pr: {
 			sm: 2,
@@ -136,41 +141,41 @@ const sx = {
 			sm: 220,
 			xs: '100%',
 		},
-    minWidth: {
-      sm: 220,
-      xs: '100%',
-    },
+		minWidth: {
+			sm: 220,
+			xs: '100%',
+		},
 		height: '100%',
 	},
 	content: {
-    width: '100%',
+		width: '100%',
 		justifyContent: 'flex-start',
 		alignItems: 'flex-start',
 		height: '100%',
 		py: {
-      sm: 0,
-      xs: 1,
-    }
+			sm: 0,
+			xs: 1,
+		},
 	},
-  contentBorder: {
-    p: 2
-  },
+	contentBorder: {
+		p: 2,
+	},
 	description: {
 		maxWidth: '320px',
 	},
-  actions: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: {
-      sm: 'flex-end',
-      xs: 'flex-start'
-    },
-  },
-  actionsBorder: {
-    px: 1,
-    pb: {
-      sm: 0,
-      xs: 1
-    },
-  }
+	actions: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: {
+			sm: 'flex-end',
+			xs: 'flex-start',
+		},
+	},
+	actionsBorder: {
+		px: 1,
+		pb: {
+			sm: 0,
+			xs: 1,
+		},
+	},
 }

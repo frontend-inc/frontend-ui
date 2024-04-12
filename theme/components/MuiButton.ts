@@ -1,19 +1,15 @@
 export default {
 	defaultProps: {
 		disableRipple: true,
-    disableElevation: true
+		disableElevation: true,
 	},
 	styleOverrides: {
 		root: {
 			whiteSpace: 'nowrap',
 		},
-		sizeSmall: {
-		},
-		sizeLarge: {
-		},
-		outlined: {
-		},
-		contained: {
-		},
+		sizeSmall: {},
+		sizeLarge: {},
+		outlined: {},
+		contained: {},
 	},
 }

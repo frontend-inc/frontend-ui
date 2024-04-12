@@ -12,12 +12,7 @@ export type TestimonialsProps = {
 }
 
 const Testimonials: React.FC<TestimonialsProps> = (props) => {
-	const {
-		layout = 'grid',
-		enableArrows,
-		enableAutoPlay,
-		items = [],
-	} = props
+	const { layout = 'grid', enableArrows, enableAutoPlay, items = [] } = props
 
 	return (
 		<Box sx={sx.root}>

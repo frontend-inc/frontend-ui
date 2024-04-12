@@ -16,11 +16,11 @@ const Logos: React.FC<LogosProps> = (props) => {
 
 	return (
 		<Stack spacing={0} sx={sx.root}>
-      { title && (
-        <Typography variant="body1" color='text.secondary' sx={ sx.title }>
-          { title }
-        </Typography>
-      )}
+			{title && (
+				<Typography variant="body1" color="text.secondary" sx={sx.title}>
+					{title}
+				</Typography>
+			)}
 			<Stack sx={sx.logos} direction="row" spacing={1}>
 				{items?.map((item, index) => (
 					<Logo
@@ -52,7 +52,7 @@ const sx = {
 		bgcolor: 'background.main',
 	},
 	title: {
-    width: '100%',
+		width: '100%',
 		textAlign: 'center',
 	},
 	logos: {

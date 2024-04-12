@@ -6,20 +6,20 @@ type FeatureProps = {
 	icon?: string
 	title?: string
 	description?: string
-  enableBorder?: boolean
+	enableBorder?: boolean
 }
 
 const Feature: React.FC<FeatureProps> = (props) => {
-	const { icon, title, description, enableBorder=false } = props || {}
+	const { icon, title, description, enableBorder = false } = props || {}
 	return (
-		<Stack 
-      direction="column" 
-      spacing={1} 
-      sx={{ 
-        ...sx.root,
-        ...(enableBorder && sx.enableBorder)
-      }}
-    >
+		<Stack
+			direction="column"
+			spacing={1}
+			sx={{
+				...sx.root,
+				...(enableBorder && sx.enableBorder),
+			}}
+		>
 			{icon && (
 				<Avatar sx={sx.avatar}>
 					<Icon name={icon} color="primary.contrastText" size={24} />
@@ -45,7 +45,7 @@ const sx = {
 		width: '100%',
 		justifyContent: 'center',
 		alignItems: 'center',
-    borderRadius: 1
+		borderRadius: 1,
 	},
 	avatar: {
 		bgcolor: 'primary.main',
@@ -66,8 +66,8 @@ const sx = {
 			color: 'primary.main',
 		},
 	},
-  enableBorder: {
-    border: '1px solid',
-    borderColor: 'divider'
-  }
+	enableBorder: {
+		border: '1px solid',
+		borderColor: 'divider',
+	},
 }

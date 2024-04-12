@@ -11,7 +11,7 @@ import {
 type CollectionCardProps = {
 	layout: 'list' | 'grid'
 	style: 'card' | 'avatar' | 'cover'
-  label?: string
+	label?: string
 	title?: string
 	image?: string
 	video?: string

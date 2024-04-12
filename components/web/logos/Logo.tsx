@@ -4,7 +4,6 @@ import { LOGO_HEIGHT, LOGO_WIDTH } from '../../../constants/index'
 import { CardProps } from '../../../types'
 import { Image } from '../../../components'
 
-
 const Logo: React.FC<CardProps> = (props) => {
 	const {
 		title = '',
@@ -23,12 +22,7 @@ const Logo: React.FC<CardProps> = (props) => {
 				minHeight: `${height}px`,
 			}}
 		>
-			<Image
-				height={height}
-				width={width}
-				src={image}
-				alt={title}
-			/>
+			<Image height={height} width={width} src={image} alt={title} />
 		</Box>
 	)
 }

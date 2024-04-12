@@ -5,7 +5,7 @@ import FormInput from './FormInput'
 type FormFieldInputProps = {
 	field: any
 	errors?: any
-	value?: any | any[]  
+	value?: any | any[]
 	handleChange: (e: SyntheticEventType) => void
 	handleRemove?: (name: string) => void
 }
@@ -13,26 +13,20 @@ type FormFieldInputProps = {
 const FormFieldInput: React.FC<FormFieldInputProps> = (props) => {
 	const { field, errors, value, handleChange, handleRemove } = props
 
-	const { 
-    name, 
-    label, 
-    placeholder, 
-    variant,
-    options  
-  } = field
+	const { name, label, placeholder, variant, options } = field
 
 	return (
-		<FormInput 
-      name={name}
-      label={label}
-      placeholder={placeholder}
-      variant={variant}
-      options={options}
-      value={value}
-      errors={errors}
-      handleChange={handleChange}
-      handleRemove={handleRemove}      
-    />
+		<FormInput
+			name={name}
+			label={label}
+			placeholder={placeholder}
+			variant={variant}
+			options={options}
+			value={value}
+			errors={errors}
+			handleChange={handleChange}
+			handleRemove={handleRemove}
+		/>
 	)
 }
 

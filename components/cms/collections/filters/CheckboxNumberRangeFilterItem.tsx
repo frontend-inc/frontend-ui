@@ -12,7 +12,7 @@ import { formatCurrency } from 'frontend-shopify'
 type CheckboxNumberRangeFilterItemProps = {
 	label?: string
 	option: {
-    label: string
+		label: string
 		min: number
 		max: number
 	}
@@ -55,9 +55,9 @@ const CheckboxNumberRangeFilterItem: React.FC<
 				</ListItemIcon>
 				<ListItemText
 					primary={
-            <Typography color="text.primary" variant="button">
-              { option.label }
-            </Typography>
+						<Typography color="text.primary" variant="button">
+							{option.label}
+						</Typography>
 					}
 				/>
 			</ListItemButton>

@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 
 export type CollectionsProps = {
 	editing?: boolean
-	layout?: 'grid' | 'list' 
+	layout?: 'grid' | 'list'
 	style?: 'card' | 'avatar' | 'cover'
 	perPage?: number
 	buttonText?: string
@@ -50,10 +50,10 @@ const Collections: React.FC<CollectionsProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-			<CollectionList 
+			<CollectionList
 				layout={layout}
 				style={style}
-				resources={collections}				
+				resources={collections}
 				buttonText={buttonText}
 				handleClick={handleClick}
 				enableBorder={enableBorder}

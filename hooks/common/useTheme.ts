@@ -29,13 +29,13 @@ const useTheme = (props: ThemeProps) => {
 	const [theme, setTheme] = useState(muiTheme)
 
 	useEffect(() => {
-    let newTheme: any = {}
-    if(muiTheme){
-      newTheme = muiTheme
-    }else{
-      newTheme = { ...theme }  
-    }
-		
+		let newTheme: any = {}
+		if (muiTheme) {
+			newTheme = muiTheme
+		} else {
+			newTheme = { ...theme }
+		}
+
 		let breakpoints = { ...newTheme.breakpoints }
 		let palette = { ...newTheme.palette }
 		let typography = { ...newTheme.typography }
@@ -107,14 +107,14 @@ const useTheme = (props: ThemeProps) => {
 					...typography.h6,
 					fontFamily: headerFont,
 				},
-        subtitle1: {
+				subtitle1: {
 					...typography.subtitle1,
 					fontFamily: headerFont,
 				},
 				subtitle2: {
 					...typography.subtitle2,
 					fontFamily: headerFont,
-				}
+				},
 			}
 		}
 
@@ -157,8 +157,7 @@ const useTheme = (props: ThemeProps) => {
 			breakpoints,
 			typography,
 			shape,
-		})    
-    
+		})
 	}, [
 		offset,
 		mobile,
@@ -167,7 +166,7 @@ const useTheme = (props: ThemeProps) => {
 		headerFont,
 		bodyFont,
 		borderRadius,
-    muiTheme
+		muiTheme,
 	])
 
 	return {

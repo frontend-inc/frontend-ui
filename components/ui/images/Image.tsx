@@ -47,7 +47,7 @@ const Image: React.FC<ImageProps> = (props) => {
 						enableGradient &&
 						sx.gradientBorderRadius),
 					bgcolor,
-					opacity
+					opacity,
 				},
 			}}
 		>
@@ -85,7 +85,7 @@ const sx = {
 		justifyContent: 'center',
 		overflow: 'hidden',
 	},
-	borderRadius: {    
+	borderRadius: {
 		borderRadius: 1,
 	},
 	afterBase: {

@@ -24,7 +24,7 @@ type ArrayInputProps = {
 	options?: any[]
 	placeholder?: string
 	handleChange: (e: SyntheticEventType) => void
-  direction?: 'row' | 'column'
+	direction?: 'row' | 'column'
 	freeSolo?: boolean
 }
 
@@ -37,7 +37,7 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 		options,
 		placeholder,
 		handleChange,
-    direction="column", 
+		direction = 'column',
 		freeSolo = true,
 	} = props
 
@@ -58,9 +58,9 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 		})
 	}
 
-	return (		
-    <Stack sx={ sx.root } direction={direction} spacing={1}>
-			<Typography sx={ sx.label } variant="caption" color="text.secondary">
+	return (
+		<Stack sx={sx.root} direction={direction} spacing={1}>
+			<Typography sx={sx.label} variant="caption" color="text.secondary">
 				{label}
 			</Typography>
 			{value && (
@@ -109,13 +109,13 @@ export default ArrayInput
 
 export const sx = {
 	root: {
-    width: '100%',
-  },
+		width: '100%',
+	},
 	textField: {
-		'& .MuiOutlinedInput-root': {            
-      minWidth: '230px',
+		'& .MuiOutlinedInput-root': {
+			minWidth: '230px',
 			p: '4px',
-      color: 'text.secondary',
+			color: 'text.secondary',
 			fontSize: (theme) => theme.typography.body2.fontSize,
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
 			borderRadius: 1,
@@ -134,7 +134,7 @@ export const sx = {
 			},
 		},
 		root: {
-      width: '100%',
+			width: '100%',
 			height: 26,
 		},
 	},
@@ -156,8 +156,8 @@ export const sx = {
 	chip: {
 		pr: 0.5,
 	},
-  label: {
-    width: '100px',
-    minWidth: '100px',    
-  }
+	label: {
+		width: '100px',
+		minWidth: '100px',
+	},
 }

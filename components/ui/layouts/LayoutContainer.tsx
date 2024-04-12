@@ -29,7 +29,7 @@ type LayoutContainerProps = {
 	twitter?: string
 	youtube?: string
 	tiktok?: string
-  pageMargin?: number
+	pageMargin?: number
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
@@ -50,7 +50,7 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 		twitter,
 		youtube,
 		tiktok,
-    pageMargin = 201,
+		pageMargin = 201,
 	} = props
 
 	const enableNotifications = notifications?.length > 0
@@ -79,30 +79,31 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 				<Box
 					sx={{
 						...sx.content,
-						...(topNav ? sx.contentTopNav : sx.contentSideNav),            
+						...(topNav ? sx.contentTopNav : sx.contentSideNav),
 					}}
 				>
 					<LayoutScroll>
-            <Box sx={{ 
-              ...sx.page,
-              minHeight: {
-                sm: `calc(100vh - ${pageMargin}px)`,
-                xs: '100vh'
-              },    
-            }}
-            >
-              {children}
-            </Box>
-            <Footer
-              menuItems={footerLinks}
-              handleClick={handleClick}
-              facebook={facebook}
-              instagram={instagram}
-              linkedin={linkedin}
-              twitter={twitter}
-              youtube={youtube}
-              tiktok={tiktok}
-            />
+						<Box
+							sx={{
+								...sx.page,
+								minHeight: {
+									sm: `calc(100vh - ${pageMargin}px)`,
+									xs: '100vh',
+								},
+							}}
+						>
+							{children}
+						</Box>
+						<Footer
+							menuItems={footerLinks}
+							handleClick={handleClick}
+							facebook={facebook}
+							instagram={instagram}
+							linkedin={linkedin}
+							twitter={twitter}
+							youtube={youtube}
+							tiktok={tiktok}
+						/>
 					</LayoutScroll>
 				</Box>
 			</Box>
@@ -146,18 +147,18 @@ const sx = {
 			sm: 'calc(100% - 280px)',
 			xs: '100%',
 		},
-    height: '100%',
-    maxHeight: '100vh',
+		height: '100%',
+		maxHeight: '100vh',
 		overflow: 'hidden',
 		'&::-webkit-scrollbar': {
 			display: 'none',
-		},    
+		},
 	},
 	contentTopNav: {
-    pt: '60px',
+		pt: '60px',
 		minHeight: 'calc(100% - 60px)',
 	},
-  page: {
+	page: {
 		width: '100%',
 		bgcolor: 'background.default',
 	},

@@ -3,8 +3,7 @@ import { palette } from '../../theme'
 
 export default {
 	styleOverrides: {
-		root: {
-		},
+		root: {},
 		deletable: {
 			'&:focus': {},
 		},

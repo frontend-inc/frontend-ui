@@ -44,19 +44,19 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 	const handleMenuClick = (ev, menuItem) => {
 		if (menuItem?.children.length > 0) {
 			toggleMenu(ev)
-      return 
-		} 
-    if (menuItem?.link_type == 'shopify_collection') {
+			return
+		}
+		if (menuItem?.link_type == 'shopify_collection') {
 			openMenu(ev)
-      findCollection(menuItem?.shopify_handle)
-      return 
+			findCollection(menuItem?.shopify_handle)
+			return
 		} else if (menuItem?.link_type == 'url') {
-      closeMenu()
-      window.open(menuItem.url, '_blank')
-    } else {
-      closeMenu()
-      handleClick(menuItem.path)
-    }
+			closeMenu()
+			window.open(menuItem.url, '_blank')
+		} else {
+			closeMenu()
+			handleClick(menuItem.path)
+		}
 	}
 
 	const handleMouseLeave = () => {
@@ -69,7 +69,8 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 				sx={sx.menuButton}
 				onClick={(ev) => handleMenuClick(ev, menuItem)}
 				endIcon={
-					(children?.length > 0 || menuItem?.link_type == 'shopify_collection') && (
+					(children?.length > 0 ||
+						menuItem?.link_type == 'shopify_collection') && (
 						<Box
 							sx={{
 								...sx.icon,
@@ -101,7 +102,7 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 			>
 				{children?.map((child, index) => (
 					<MenuItem
-            key={index}
+						key={index}
 						//@ts-ignore
 						onClick={(ev) => handleMenuClick(ev, child)}
 					>

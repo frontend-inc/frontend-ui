@@ -7,25 +7,13 @@ import { SectionProps } from '../../types'
 type WebCTAProps = SectionProps & CTAProps
 
 const WebCTA: React.FC<WebCTAProps> = (props) => {
+	const { bgcolor, py, px, maxWidth, ...rest } = props
 
-  const {
-    bgcolor,
-    py,
-    px,
-    maxWidth,
-    ...rest 
-  } = props 
-
-  return(
-    <Section 
-      bgcolor={bgcolor}
-      py={py}
-      px={px}
-      maxWidth={maxWidth}
-    >
-      <CTA {...rest} />
-    </Section>
-  )
+	return (
+		<Section bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
+			<CTA {...rest} />
+		</Section>
+	)
 }
 
 export default WebCTA

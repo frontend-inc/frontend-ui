@@ -25,16 +25,16 @@ const Label: React.FC<LabelProps> = (props) => {
 export default Label
 
 const sx = {
-	chip: {    
-    opacity: 0.8,
-    bgcolor: 'secondary.main',
+	chip: {
+		opacity: 0.8,
+		bgcolor: 'secondary.main',
 		color: 'secondary.contrastText',
 		characterSpacing: '1em',
 		fontWeight: 500,
 		fontFamily: (theme) => theme.typography.fontFamily.caption,
-		letterSpacing: '0.05em',		
+		letterSpacing: '0.05em',
 		cursor: 'pointer',
-    borderRadius: '4px',
-    boxShadow: '1px 0px 0 0 rgba(0,0,0,0.1)',
+		borderRadius: '4px',
+		boxShadow: '1px 0px 0 0 rgba(0,0,0,0.1)',
 	},
 }

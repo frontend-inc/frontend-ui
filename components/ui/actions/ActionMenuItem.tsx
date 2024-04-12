@@ -27,10 +27,7 @@ const ActionMenuItem: React.FC<ActionMenuItemProps> = (props) => {
 	}
 
 	return (
-    <MenuItem 
-      onClick={onClick}
-      {...rest}
-    >
+		<MenuItem onClick={onClick} {...rest}>
 			{label}
 		</MenuItem>
 	)

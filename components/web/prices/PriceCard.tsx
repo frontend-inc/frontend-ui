@@ -1,16 +1,17 @@
 import React from 'react'
-import { 
-  Stack, 
-  Box, 
-  Button, 
-  Divider, 
-  Typography,
-  List,
-  ListItem,
-  ListItemText,    
+import {
+	Stack,
+	Box,
+	Button,
+	Divider,
+	Typography,
+	List,
+	ListItem,
+	ListItemText,
 } from '@mui/material'
 import { PriceType } from '../../../types'
 import { useRouter } from 'next/router'
+import { Label } from '../../../components'
 
 type PriceCardProps = {
 	price: PriceType
@@ -30,6 +31,11 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			<Stack sx={sx.content} direction="column" spacing={1}>
+				{price?.label && (
+					<Box>
+						<Label label={price.label} />
+					</Box>
+				)}
 				<Typography variant="body1" color="text.secondary">
 					{price.title}
 				</Typography>
@@ -37,18 +43,19 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
 					{price.price}
 				</Typography>
 				<Divider />
-        <List disablePadding>
-          { price?.features?.map((feature, i) => (
-            <ListItem key={i}>
-              <ListItemText primary={
-                <Typography variant="body1" color="text.primary">
-                  { feature?.label } 
-                </Typography>
-              }
-            />
-            </ListItem>
-          ))}
-        </List>				
+				<List disablePadding>
+					{price?.features?.map((feature, i) => (
+						<ListItem key={i}>
+							<ListItemText
+								primary={
+									<Typography variant="body1" color="text.primary">
+										{feature?.label}
+									</Typography>
+								}
+							/>
+						</ListItem>
+					))}
+				</List>
 			</Stack>
 			<Button
 				onClick={handleClick}

@@ -6,8 +6,8 @@ import { useRouter } from 'next/router'
 import { CollectionList } from '../../../components'
 
 type FavoritesProps = {
-	layout?: 'list' | 'grid' 
-	style?: 'card' | 'avatar' | 'cover' 
+	layout?: 'list' | 'grid'
+	style?: 'card' | 'avatar' | 'cover'
 	field: any
 	url: string
 	handle: string

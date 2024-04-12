@@ -54,7 +54,7 @@ const ListView: React.FC<ListViewProps> = (props) => {
 			{items?.map((item, index) => (
 				<Component
 					key={index}
-          label={item?.label}
+					label={item?.label}
 					title={item?.title}
 					image={item?.image?.url}
 					video={item?.video?.url}

@@ -7,25 +7,13 @@ import { SectionProps } from '../../types'
 type WebCoverImageCarouselProps = SectionProps & CoverImageCarouselProps
 
 const WebCoverImageCarousel: React.FC<WebCoverImageCarouselProps> = (props) => {
+	const { bgcolor, py, px, maxWidth, ...rest } = props
 
-  const {
-    bgcolor,
-    py,
-    px,
-    maxWidth,
-    ...rest 
-  } = props 
-
-  return(
-    <Section 
-      bgcolor={bgcolor}
-      py={py}
-      px={px}
-      maxWidth={maxWidth}
-    >
-      <CoverImageCarousel {...rest} />
-    </Section>
-  )
+	return (
+		<Section bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
+			<CoverImageCarousel {...rest} />
+		</Section>
+	)
 }
 
 export default WebCoverImageCarousel

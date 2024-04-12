@@ -3,12 +3,21 @@ import { TextInput } from '../../../components'
 import { InputPropsType } from '../../../types'
 
 type NoSpaceInputPropsType = InputPropsType & {
-  joinChar?: string
+	joinChar?: string
 }
 
 const NoSpaceInput: React.FC<NoSpaceInputPropsType> = (props) => {
-	const { errors, joinChar='_', direction="column", value, name, label, placeholder, handleChange, disabled } =
-		props
+	const {
+		errors,
+		joinChar = '_',
+		direction = 'column',
+		value,
+		name,
+		label,
+		placeholder,
+		handleChange,
+		disabled,
+	} = props
 
 	const handleInputChange = (ev) => {
 		let { value } = ev.target
@@ -23,7 +32,7 @@ const NoSpaceInput: React.FC<NoSpaceInputPropsType> = (props) => {
 
 	return (
 		<TextInput
-      direction={direction}
+			direction={direction}
 			errors={errors}
 			value={value}
 			disabled={disabled}

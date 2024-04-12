@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-	Checkbox,
-	IconButton,
-	TableRow as MuiTableRow,
-} from '@mui/material'
+import { Checkbox, IconButton, TableRow as MuiTableRow } from '@mui/material'
 import { Icon, Cell, TableCell } from '../../../components'
 
 type TableRowProps = {
@@ -44,10 +40,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 			)}
 			{enableEdit && (
 				<TableCell align="center">
-					<IconButton
-						onClick={() => handleEdit(row)}
-						size="small"
-					>
+					<IconButton onClick={() => handleEdit(row)} size="small">
 						<Icon name="Edit" size={20} />
 					</IconButton>
 				</TableCell>

@@ -7,7 +7,7 @@ import { SYSTEM_FIELDS } from '../../../constants/index'
 import { get } from 'lodash'
 
 export type FormProps = {
-	handle: string	
+	handle: string
 	url: string
 	buttonText?: string
 	variant?: 'contained' | 'outlined' | 'text'

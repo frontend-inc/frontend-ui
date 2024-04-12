@@ -30,20 +30,16 @@ const Footer: React.FC<FooterProps> = (props) => {
 
 	const { logo, name } = useContext(AppContext)
 
-
 	return (
 		<Stack sx={sx.root} spacing={1} direction="column">
 			<Box sx={sx.container}>
 				<Box sx={sx.gridContainer}>
-					<Stack direction="row" divider={ <Divider /> } spacing={2}>
+					<Stack direction="row" divider={<Divider />} spacing={2}>
 						{menuItems?.map((menuItem, i) => (
-              //@ts-ignore
-							<Button
-								key={i}								
-								handleClick={() => handleClick(menuItem)}              
-							>
-                { menuItem?.name }
-              </Button>
+							//@ts-ignore
+							<Button key={i} handleClick={() => handleClick(menuItem)}>
+								{menuItem?.name}
+							</Button>
 						))}
 					</Stack>
 				</Box>

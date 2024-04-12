@@ -6,15 +6,11 @@ import { useAlerts, useKlaviyo } from '../../../hooks'
 export type KlaviyoSubscribeProps = {
 	listId: string
 	apiKey: string
-	buttonText?: string	
+	buttonText?: string
 }
 
 const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
-	const {
-		listId,
-		apiKey,
-		buttonText = 'Subscribe',
-	} = props || {}
+	const { listId, apiKey, buttonText = 'Subscribe' } = props || {}
 
 	const { showAlertError, showAlertSuccess } = useAlerts()
 

@@ -16,26 +16,24 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		label,
 		title,
 		description,
-		textAlign='left',
+		textAlign = 'left',
 		textVariant = 'h4',
 	} = props || {}
 
-  if(!title && !description && !label) return null
+	if (!title && !description && !label) return null
 	return (
-		<Stack 
-      sx={{
-        ...sx.stack,
-        alignItems: { 
-          sm: textAlign === 'center' ? 'center' : 'flex-start',
-          xs: 'center'
-        }
-      }} 
-      direction={'column'} 
-      spacing={1}
-    >
-			{label && (
-        <Label label={ label } />								
-			)}
+		<Stack
+			sx={{
+				...sx.stack,
+				alignItems: {
+					sm: textAlign === 'center' ? 'center' : 'flex-start',
+					xs: 'center',
+				},
+			}}
+			direction={'column'}
+			spacing={1}
+		>
+			{label && <Label label={label} />}
 			{title && (
 				<Typography
 					variant={textVariant}
@@ -43,28 +41,28 @@ const Heading: React.FC<HeadingProps> = (props) => {
 					sx={{
 						...sx.title,
 						textAlign: {
-              sm: textAlign,
-              xs: 'center'
-            },
+							sm: textAlign,
+							xs: 'center',
+						},
 					}}
 				>
 					{title}
 				</Typography>
 			)}
 			{description && (
-        <Typography
-          variant="body1"
-          color="text.secondary"
-          sx={{
-            ...sx.description,
-            textAlign: {
-              sm: textAlign,
-              xs: 'center'
-            },
-          }}
-        >
-          {description}
-        </Typography>
+				<Typography
+					variant="body1"
+					color="text.secondary"
+					sx={{
+						...sx.description,
+						textAlign: {
+							sm: textAlign,
+							xs: 'center',
+						},
+					}}
+				>
+					{description}
+				</Typography>
 			)}
 		</Stack>
 	)

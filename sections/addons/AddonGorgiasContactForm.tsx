@@ -4,29 +4,18 @@ import { GorgiasContactForm } from '../../components'
 import { GorgiasContactFormProps } from '../../components/addons/gorgias/GorgiasContactForm'
 import { SectionProps } from '../../types'
 
-type AddonGorgiasContactFormProps = SectionProps &   
-  GorgiasContactFormProps
+type AddonGorgiasContactFormProps = SectionProps & GorgiasContactFormProps
 
-const AddonGorgiasContactForm: React.FC<AddonGorgiasContactFormProps> = (props) => {
+const AddonGorgiasContactForm: React.FC<AddonGorgiasContactFormProps> = (
+	props
+) => {
+	const { bgcolor, py, px, maxWidth, ...rest } = props
 
-  const {
-    bgcolor,
-    py,
-    px,
-    maxWidth,
-    ...rest 
-  } = props 
-
-  return(
-    <Section 
-      bgcolor={bgcolor}
-      py={py}
-      px={px}
-      maxWidth={maxWidth}
-    >
-      <GorgiasContactForm {...rest} />
-    </Section>
-  )
+	return (
+		<Section bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
+			<GorgiasContactForm {...rest} />
+		</Section>
+	)
 }
 
 export default AddonGorgiasContactForm

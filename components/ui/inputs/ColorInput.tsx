@@ -20,7 +20,7 @@ type TransparentColorProps = {
 }
 
 const TransparentColor: React.FC<TransparentColorProps> = (props) => {
-	const { value='Ban', handleClick } = props
+	const { value = 'Ban', handleClick } = props
 	return (
 		<Tooltip title="Transparent">
 			<Box
@@ -214,14 +214,14 @@ const sx = {
 		justifyContent: 'space-between',
 		border: '3px solid',
 		borderColor: 'divider',
-    color: 'text.primary',
+		color: 'text.primary',
 		bgcolor: 'background.paper',
 		fontSize: (theme) => theme.typography.body1.fontSize,
 		fontWeight: (theme) => theme.typography.body1.fontWeight,
-    '&:hover': {
-      bgcolor: 'background.paper',
-      borderColor: 'primary.main'
-    }
+		'&:hover': {
+			bgcolor: 'background.paper',
+			borderColor: 'primary.main',
+		},
 	},
 	grid: {
 		display: 'grid',
@@ -238,7 +238,7 @@ const sx = {
 		height: '32px',
 		width: '32px',
 		transition: 'all 0.3s ease',
-		cursor: 'pointer',    
+		cursor: 'pointer',
 		'&:hover': {
 			transform: 'scale(1.1)',
 		},

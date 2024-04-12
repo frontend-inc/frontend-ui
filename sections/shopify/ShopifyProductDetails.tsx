@@ -4,29 +4,16 @@ import { ProductDetails } from '../../components/shopify'
 import { ProductDetailsProps } from '../../components/shopify/products/ProductDetails'
 import { SectionProps } from '../../types'
 
-type ShopifyPDPProps = SectionProps & 
-ProductDetailsProps
+type ShopifyPDPProps = SectionProps & ProductDetailsProps
 
 const ShopifyPDP: React.FC<ShopifyPDPProps> = (props) => {
+	const { bgcolor, py, px, maxWidth, ...rest } = props
 
-  const {
-    bgcolor,
-    py,
-    px,
-    maxWidth,
-    ...rest 
-  } = props 
-
-  return(
-    <Section 
-      bgcolor={bgcolor}
-      py={py}
-      px={px}
-      maxWidth={maxWidth}
-    >
-      <ProductDetails {...rest} />
-    </Section>
-  )
+	return (
+		<Section bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
+			<ProductDetails {...rest} />
+		</Section>
+	)
 }
 
 export default ShopifyPDP

@@ -49,7 +49,11 @@ const Notification: React.FC<NotificationProps> = (props) => {
 			>
 				<ListItemText
 					primary={
-						<Typography color='primary.contrastText' variant="body2" sx={sx.text}>
+						<Typography
+							color="primary.contrastText"
+							variant="body2"
+							sx={sx.text}
+						>
 							{text}
 						</Typography>
 					}
@@ -74,13 +78,12 @@ const sx = {
 		},
 	},
 	text: {
-    textWrap: 'nowrap',
+		textWrap: 'nowrap',
 		textAlign: 'center',
-    overflowX: 'scroll',
-    '&::-webkit-scrollbar': {
-      display: 'none',
-    },
-    
+		overflowX: 'scroll',
+		'&::-webkit-scrollbar': {
+			display: 'none',
+		},
 	},
 	listItemButton: {},
 }

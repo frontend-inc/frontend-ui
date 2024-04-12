@@ -27,21 +27,27 @@ const ActionButton: React.FC<ActionProps> = (props) => {
 	}
 
 	return (
-		<Button 
-      fullWidth
-      sx={ sx.button }
-      startIcon={ 
-        icon && (
-          <Icon 
-            name={icon} 
-            size={20} 
-            color={ 
-              color == 'primary' ? 'primary.contrastText' : 'secondary.contrastText'             
-            }
-          /> 
-        )
-      }
-      onClick={onClick} variant={variant} color={color} {...rest}>
+		<Button
+			fullWidth
+			sx={sx.button}
+			startIcon={
+				icon && (
+					<Icon
+						name={icon}
+						size={20}
+						color={
+							color == 'primary'
+								? 'primary.contrastText'
+								: 'secondary.contrastText'
+						}
+					/>
+				)
+			}
+			onClick={onClick}
+			variant={variant}
+			color={color}
+			{...rest}
+		>
 			{label}
 		</Button>
 	)
@@ -50,10 +56,10 @@ const ActionButton: React.FC<ActionProps> = (props) => {
 export default ActionButton
 
 const sx = {
-  button: {
-    width: {
-      sm: 'auto',
-      xs: '100%'
-    }
-  }
+	button: {
+		width: {
+			sm: 'auto',
+			xs: '100%',
+		},
+	},
 }

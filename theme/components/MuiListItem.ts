@@ -1,6 +1,5 @@
 export default {
 	styleOverrides: {
-		button: {
-		},
+		button: {},
 	},
 }

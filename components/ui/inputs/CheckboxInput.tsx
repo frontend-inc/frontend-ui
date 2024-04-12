@@ -7,7 +7,7 @@ type CheckboxInputProps = {
 	value: boolean
 	placeholder: string
 	label: string
-	handleChange: (e: SyntheticEventType ) => void
+	handleChange: (e: SyntheticEventType) => void
 	disableBorder?: boolean
 }
 
@@ -32,7 +32,7 @@ const CheckboxInput: React.FC<CheckboxInputProps> = (props) => {
 	}
 
 	return (
-		<Box sx={ sx.root }>
+		<Box sx={sx.root}>
 			<Typography variant="caption" color="textSecondary">
 				{label}
 			</Typography>
@@ -65,9 +65,9 @@ const CheckboxInput: React.FC<CheckboxInputProps> = (props) => {
 export default CheckboxInput
 
 const sx = {
-  root: {
-    width: '100%'
-  },
+	root: {
+		width: '100%',
+	},
 	input: {
 		display: 'flex',
 		direction: 'column',

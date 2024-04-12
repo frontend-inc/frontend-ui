@@ -81,7 +81,7 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 						<CollectionCard
 							layout={'grid'}
 							style={style}
-              label={resource?.label}
+							label={resource?.label}
 							title={resource?.title}
 							image={resource?.image?.url}
 							video={resource?.video?.url}

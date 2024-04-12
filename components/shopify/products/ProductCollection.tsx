@@ -12,7 +12,7 @@ import {
 } from '../../../components/shopify'
 import { PriceOptionType, SearchFilterOptionType } from 'frontend-shopify'
 
-export type ProductCollectionProps = {	
+export type ProductCollectionProps = {
 	editing?: boolean
 	handle: string | string[]
 	options: SearchFilterOptionType[]

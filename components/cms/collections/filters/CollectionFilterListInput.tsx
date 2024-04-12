@@ -37,7 +37,7 @@ const CollectionFilterListInput: React.FC<CollectionFilterListInputProps> = (
 					name={filterOption?.field}
 					label={filterOption?.label}
 					values={findFilterValues(filterOption?.field, filters)}
-          // @ts-ignore
+					// @ts-ignore
 					options={filterOption.options}
 					handleClick={handleFilter}
 				/>
@@ -48,10 +48,8 @@ const CollectionFilterListInput: React.FC<CollectionFilterListInputProps> = (
 					name={filterOption?.field}
 					label={filterOption?.label}
 					values={findFilterValues(filterOption?.field, filters)}
-          // @ts-ignore
-					options={            
-            filterOption.options
-          }
+					// @ts-ignore
+					options={filterOption.options}
 					handleClick={handleFilter}
 				/>
 			)}

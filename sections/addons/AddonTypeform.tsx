@@ -4,29 +4,16 @@ import { Typeform } from '../../components'
 import { TypeformProps } from '../../components/addons/typeform/Typeform'
 import { SectionProps } from '../../types'
 
-type AddonTypeformProps = SectionProps &   
-  TypeformProps
+type AddonTypeformProps = SectionProps & TypeformProps
 
 const AddonTypeform: React.FC<AddonTypeformProps> = (props) => {
+	const { bgcolor, py, px, maxWidth, ...rest } = props
 
-  const {
-    bgcolor,
-    py,
-    px,
-    maxWidth,
-    ...rest 
-  } = props 
-
-  return(
-    <Section 
-      bgcolor={bgcolor}
-      py={py}
-      px={px}
-      maxWidth={maxWidth}
-    >
-      <Typeform {...rest} />
-    </Section>
-  )
+	return (
+		<Section bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
+			<Typeform {...rest} />
+		</Section>
+	)
 }
 
 export default AddonTypeform

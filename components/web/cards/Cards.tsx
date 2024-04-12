@@ -4,8 +4,8 @@ import { CollectionCard, Placeholder } from '../../../components'
 import { useRouter } from 'next/router'
 
 type CardType = {
-  label?: string
-  title?: string
+	label?: string
+	title?: string
 	description: string
 	image: string
 	buttonText?: string
@@ -48,7 +48,7 @@ const Cards: React.FC<CardsProps> = (props) => {
 							key={i}
 							layout={layout}
 							style={style}
-              label={card?.label}
+							label={card?.label}
 							title={card?.title}
 							description={card?.description}
 							image={card?.image}
@@ -68,7 +68,7 @@ const Cards: React.FC<CardsProps> = (props) => {
 							<CollectionCard
 								layout={layout}
 								style={style}
-                label={card?.label}
+								label={card?.label}
 								image={card?.image}
 								title={card?.title}
 								description={card?.description}

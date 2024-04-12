@@ -94,21 +94,21 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 			findMany(defaultQuery)
 		}
 	}, [url])
-  
+
 	return (
 		<>
-      <Autosuggest
-        loading={delayedLoading}
-        direction={direction}
-        label={label}
-        name={name}
-        value={option}
-        options={options}
-        placeholder={placeholder}
-        handleChange={handleChange}
-        handleInputChange={handleInputChange}
-        handleClear={handleClear}
-      />
+			<Autosuggest
+				loading={delayedLoading}
+				direction={direction}
+				label={label}
+				name={name}
+				value={option}
+				options={options}
+				placeholder={placeholder}
+				handleChange={handleChange}
+				handleInputChange={handleInputChange}
+				handleClear={handleClear}
+			/>
 			<ErrorText error={error} />
 		</>
 	)

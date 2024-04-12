@@ -58,7 +58,7 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 									<TopNavMenuItem
 										key={index}
 										menuItem={menuItem}
-										handleClick={ handleClick }
+										handleClick={handleClick}
 									/>
 								))}
 						</Box>

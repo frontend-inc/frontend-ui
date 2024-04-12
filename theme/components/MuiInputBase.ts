@@ -3,7 +3,6 @@ import { palette } from '../palette'
 export default {
 	styleOverrides: {
 		root: {},
-		input: {
-		},
+		input: {},
 	},
 }

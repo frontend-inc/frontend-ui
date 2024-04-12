@@ -20,8 +20,7 @@ const NoImage: React.FC<NoImageProps> = (props) => {
 				height: height ? `${height}px` : '100%',
 				width: width ? `${width}px` : '100%',
 			}}
-		>
-		</Box>
+		></Box>
 	)
 }
 
@@ -32,15 +31,15 @@ const sx = {
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
-    border: '1px solid',
-    borderColor: 'divider',
-		backgroundImage: 'linear-gradient(45deg, #999999,#DDDDDD,#FAFAFA)'
+		border: '1px solid',
+		borderColor: 'divider',
+		backgroundImage: 'linear-gradient(45deg, #999999,#DDDDDD,#FAFAFA)',
 	},
 	icon: {
 		color: 'divider',
 	},
 	rounded: {
-    borderRadius: 1,
+		borderRadius: 1,
 	},
 	enableBorder: {
 		border: '1px solid',

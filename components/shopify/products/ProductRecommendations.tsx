@@ -6,7 +6,7 @@ import { Box } from '@mui/material'
 export type ProductRecommendationsProps = {
 	handle?: string | string[]
 	editing?: boolean
-	layout?: 'grid' | 'carousel'	
+	layout?: 'grid' | 'carousel'
 	perPage?: string
 	enableBorder?: boolean
 	enableAddToCart?: boolean

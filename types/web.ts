@@ -1,10 +1,10 @@
 import { TypographyVariant } from '@mui/material'
 
 export type HeadingProps = {
-  label?: string
-  title?: string
-  description?: string
-  textAlign?: 'left' | 'center'
+	label?: string
+	title?: string
+	description?: string
+	textAlign?: 'left' | 'center'
 }
 
 export type SectionProps = {
@@ -14,7 +14,6 @@ export type SectionProps = {
 	py?: number
 	px?: number
 }
-
 
 export type CardProps = {
 	editing?: boolean
@@ -41,9 +40,9 @@ export type CardProps = {
 export type PriceType = {
 	title: string
 	price: number
-	features: {     
-    label: string
-  }[]	
+	features: {
+		label: string
+	}[]
 	buttonText: string
 	url: string
 }

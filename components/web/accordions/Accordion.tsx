@@ -2,7 +2,7 @@ import React from 'react'
 import { Stack } from '@mui/material'
 import { AccordionItem, Placeholder } from '../../../components'
 
-export type AccordionProps = {	
+export type AccordionProps = {
 	items?: {
 		title: string
 		description: string

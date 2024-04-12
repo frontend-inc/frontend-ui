@@ -5,7 +5,7 @@ import { Box } from '@mui/material'
 import { useFavorites } from 'frontend-shopify'
 
 export type ProductFavoritesProps = {
-	editing?: boolean	
+	editing?: boolean
 	perPage?: string
 	enableBorder?: boolean
 	enableAddToCart?: boolean

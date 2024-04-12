@@ -1,8 +1,6 @@
 export default {
 	styleOverrides: {
-		root: {
-		},
-		notchedOutline: {
-		},
+		root: {},
+		notchedOutline: {},
 	},
 }

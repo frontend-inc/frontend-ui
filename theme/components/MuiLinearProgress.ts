@@ -1,7 +1,6 @@
 export default {
 	styleOverrides: {
-		root: {
-		},
+		root: {},
 		colorPrimary: {},
 	},
 }

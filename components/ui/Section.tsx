@@ -11,13 +11,7 @@ type SectionProps = {
 }
 
 const Section: React.FC<SectionProps> = (props) => {
-	const {
-		children,
-		bgcolor,
-		maxWidth,
-		py = 6,
-		px = 3,
-	} = props
+	const { children, bgcolor, maxWidth, py = 6, px = 3 } = props
 
 	const [width, setWidth] = useState<string | number>(
 		muiTheme.breakpoints.values.md
@@ -55,7 +49,7 @@ const Section: React.FC<SectionProps> = (props) => {
 						px,
 						maxWidth: width,
 					}}
-				>				
+				>
 					{children}
 				</Box>
 			</Box>

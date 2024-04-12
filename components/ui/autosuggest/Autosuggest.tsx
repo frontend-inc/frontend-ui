@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import {
-  Box,
+	Box,
 	Paper,
 	Stack,
-  CircularProgress,
+	CircularProgress,
 	IconButton,
 	ListItem,
 	ListItemIcon,
@@ -56,7 +56,7 @@ const AutocompletePaper: React.FC<AutocompletePaperProps> = (props) => {
 }
 
 type AutosuggestProps = {
-  loading?: boolean
+	loading?: boolean
 	errors?: any
 	value?: any
 	direction?: 'row' | 'column'
@@ -78,7 +78,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 		direction = 'column',
 		options,
 		label,
-    loading=false,
+		loading = false,
 		name,
 		placeholder = 'Select',
 		multiselect = false,
@@ -138,73 +138,73 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 					{label}
 				</Typography>
 			)}
-        <Autocomplete
-          freeSolo={freeSolo}
-          multiple={multiselect}
-          disableCloseOnSelect={multiselect}
-          sx={{
-            ...sx.autocomplete,
-            paper: sx.paper,
-            option: sx.option,
-            popperDisablePortal: sx.popperDisablePortal,
-          }}
-          value={selected}
-          onChange={(event, newValue) => {
-            handleOnChange(event, newValue)
-          }}
-          onInputChange={(event, newInputValue) => {
-            handleInputChange && handleInputChange(newInputValue)
-          }}
-          noOptionsText="No options"
-          clearOnBlur
-          handleHomeEndKeys
-          options={options}
-          //@ts-ignore
-          getOptionLabel={(option) => option?.label || ''}
-          //@ts-ignore
-          getOptionSelected={(
-            option: Record<string, any>,
-            value: Record<string, any>
-          ) => option?.value == value?.value}
-          renderOption={(props, option) => (
-            <AutocompleteOption {...props} option={option} />
-          )}
-          PaperComponent={AutocompletePaper}
-          renderInput={(params) => (
-            <InputBase
-              placeholder={placeholder}
-              ref={params.InputProps.ref}
-              inputProps={{
-                ...params.inputProps,
-                autoComplete: 'off',
-              }}
-              sx={{
-                ...sx.inputBase,
-                //@ts-ignore
-                ...(error && sx.inputError),
-              }}
-              endAdornment={
-                handleClear && (
-                  <InputAdornment position="start">
-                    <IconButton onClick={handleInputClear} size="small">
-                      <Icon name="X" size={20} />
-                    </IconButton>
-                  </InputAdornment>
-                )
-              }
-            />
-          )}
-        />
-        { loading && (
-          <Box sx={ sx.loaderContainer }>
-            <CircularProgress 
-              size={20} 
-              thickness={5}
-              disableShrink
-              sx={sx.circularProgress}
-            />
-          </Box>
-        )}
+			<Autocomplete
+				freeSolo={freeSolo}
+				multiple={multiselect}
+				disableCloseOnSelect={multiselect}
+				sx={{
+					...sx.autocomplete,
+					paper: sx.paper,
+					option: sx.option,
+					popperDisablePortal: sx.popperDisablePortal,
+				}}
+				value={selected}
+				onChange={(event, newValue) => {
+					handleOnChange(event, newValue)
+				}}
+				onInputChange={(event, newInputValue) => {
+					handleInputChange && handleInputChange(newInputValue)
+				}}
+				noOptionsText="No options"
+				clearOnBlur
+				handleHomeEndKeys
+				options={options}
+				//@ts-ignore
+				getOptionLabel={(option) => option?.label || ''}
+				//@ts-ignore
+				getOptionSelected={(
+					option: Record<string, any>,
+					value: Record<string, any>
+				) => option?.value == value?.value}
+				renderOption={(props, option) => (
+					<AutocompleteOption {...props} option={option} />
+				)}
+				PaperComponent={AutocompletePaper}
+				renderInput={(params) => (
+					<InputBase
+						placeholder={placeholder}
+						ref={params.InputProps.ref}
+						inputProps={{
+							...params.inputProps,
+							autoComplete: 'off',
+						}}
+						sx={{
+							...sx.inputBase,
+							//@ts-ignore
+							...(error && sx.inputError),
+						}}
+						endAdornment={
+							handleClear && (
+								<InputAdornment position="start">
+									<IconButton onClick={handleInputClear} size="small">
+										<Icon name="X" size={20} />
+									</IconButton>
+								</InputAdornment>
+							)
+						}
+					/>
+				)}
+			/>
+			{loading && (
+				<Box sx={sx.loaderContainer}>
+					<CircularProgress
+						size={20}
+						thickness={5}
+						disableShrink
+						sx={sx.circularProgress}
+					/>
+				</Box>
+			)}
 			<ErrorText error={error} />
 		</Stack>
 	)
@@ -217,7 +217,7 @@ const styles = {
 		borderRadius: 1,
 		objectFit: 'cover',
 		marginRight: '0px',
-	},  
+	},
 }
 
 const sx: any = {
@@ -277,14 +277,14 @@ const sx: any = {
 	stackVertical: {
 		alignItems: 'center',
 	},
-  loaderContainer: {
-    width: '41px',
-    height: '41px',
-    display: 'flex',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
-  circularProgress: {    
-    color: 'text.secondary'
-  }
+	loaderContainer: {
+		width: '41px',
+		height: '41px',
+		display: 'flex',
+		justifyContent: 'flex-start',
+		alignItems: 'center',
+	},
+	circularProgress: {
+		color: 'text.secondary',
+	},
 }

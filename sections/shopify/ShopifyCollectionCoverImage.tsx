@@ -4,29 +4,18 @@ import { CollectionCoverImage } from '../../components/shopify'
 import { CollectionCoverImageProps } from '../../components/shopify/collections/CollectionCoverImage'
 import { SectionProps } from '../../types'
 
-type ShopifyCollectionCoverImageProps = SectionProps & 
-  CollectionCoverImageProps
+type ShopifyCollectionCoverImageProps = SectionProps & CollectionCoverImageProps
 
-const ShopifyCollectionCoverImage: React.FC<ShopifyCollectionCoverImageProps> = (props) => {
+const ShopifyCollectionCoverImage: React.FC<
+	ShopifyCollectionCoverImageProps
+> = (props) => {
+	const { bgcolor, py, px, maxWidth, ...rest } = props
 
-  const {
-    bgcolor,
-    py,
-    px,
-    maxWidth,
-    ...rest 
-  } = props 
-
-  return(
-    <Section 
-      bgcolor={bgcolor}
-      py={py}
-      px={px}
-      maxWidth={maxWidth}
-    >
-      <CollectionCoverImage {...rest} />
-    </Section>
-  )
+	return (
+		<Section bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
+			<CollectionCoverImage {...rest} />
+		</Section>
+	)
 }
 
 export default ShopifyCollectionCoverImage

@@ -11,12 +11,12 @@ export type SearchFilterOptionType = {
 	field: string
 	variant: SearchFilterVariantType
 	options:
-    {
-      label: string
-      value: string | number    
-    }[]
 		| {
-        label: string
+				label: string
+				value: string | number
+		  }[]
+		| {
+				label: string
 				min: number
 				max: number
 		  }[]

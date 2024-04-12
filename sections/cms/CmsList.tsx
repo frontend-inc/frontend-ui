@@ -4,40 +4,32 @@ import { Collection } from '../../components'
 import { CollectionProps } from '../../components/cms/collections/Collection'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsListProps = SectionProps & 
-  HeadingProps & 
-  CollectionProps
+type CmsListProps = SectionProps & HeadingProps & CollectionProps
 
 const CmsList: React.FC<CmsListProps> = (props) => {
+	const {
+		label,
+		title,
+		description,
+		textAlign,
+		bgcolor,
+		py,
+		px,
+		maxWidth,
+		...rest
+	} = props
 
-  const {
-    label,
-    title,    
-    description,
-    textAlign,
-    bgcolor,
-    py,
-    px,
-    maxWidth,
-    ...rest 
-  } = props 
-
-  return(
-    <Section 
-      bgcolor={bgcolor}
-      py={py}
-      px={px}
-      maxWidth={maxWidth}
-    >
-      <Heading 
-        label={label}
-        title={title}
-        description={description}
-        textAlign={ textAlign }
-      />
-      <Collection {...rest} />
-    </Section>
-  )
+	return (
+		<Section bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
+			<Heading
+				label={label}
+				title={title}
+				description={description}
+				textAlign={textAlign}
+			/>
+			<Collection {...rest} />
+		</Section>
+	)
 }
 
 export default CmsList

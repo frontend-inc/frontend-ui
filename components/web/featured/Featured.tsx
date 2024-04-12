@@ -26,7 +26,7 @@ const Featured: React.FC<FeaturedProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Box>			
+		<Box>
 			<Stack spacing={6}>
 				{items?.map((item, i) => (
 					<FeaturedCard

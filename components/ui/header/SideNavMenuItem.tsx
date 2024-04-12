@@ -4,7 +4,7 @@ import {
 	IconButton,
 	List,
 	ListItem,
-  ListItemIcon,
+	ListItemIcon,
 	ListItemButton,
 	ListItemText,
 	Typography,
@@ -26,7 +26,6 @@ const SublinkMenuItem: React.FC<SublinkMenuItemProps> = (props) => {
 	return (
 		<ListItem sx={sx.subLink} disablePadding>
 			<ListItemButton onClick={handleClick}>
-        
 				<ListItemText
 					primary={
 						<Typography variant="subtitle2" color="text.primary">
@@ -67,17 +66,17 @@ const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 	const handleMenuClick = (menuItem) => {
 		if (menuItem?.children?.length > 0) {
 			setOpen(!open)
-      return 
-		} 
-    if (menuItem?.link_type == 'shopify_collection') {
+			return
+		}
+		if (menuItem?.link_type == 'shopify_collection') {
 			setOpen(false)
-      findCollection(menuItem?.shopify_handle)
-      return 
+			findCollection(menuItem?.shopify_handle)
+			return
 		} else if (menuItem?.link_type == 'url') {
-      window.open(menuItem.url, '_blank')
-    } else {
-      handleClick(menuItem.path)
-    }
+			window.open(menuItem.url, '_blank')
+		} else {
+			handleClick(menuItem.path)
+		}
 	}
 
 	return (
@@ -86,7 +85,8 @@ const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 				disablePadding
 				disableGutters
 				secondaryAction={
-					(children?.length > 0 || menuItem?.link_type == 'shopify_collection') && (
+					(children?.length > 0 ||
+						menuItem?.link_type == 'shopify_collection') && (
 						<IconButton
 							sx={{
 								...sx.icon,
@@ -100,11 +100,11 @@ const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 				}
 			>
 				<ListItemButton onClick={() => handleMenuClick(menuItem)}>
-          { menuItem?.icon && (
-            <ListItemIcon>
-              <Icon name={menuItem.icon} size={24} />
-            </ListItemIcon>
-          )}
+					{menuItem?.icon && (
+						<ListItemIcon>
+							<Icon name={menuItem.icon} size={24} />
+						</ListItemIcon>
+					)}
 					<ListItemText
 						primary={
 							<Typography variant="subtitle2" color="text.primary">

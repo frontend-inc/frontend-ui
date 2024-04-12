@@ -6,7 +6,7 @@ type AlertModalProps = {
 	loading?: boolean
 	title?: string
 	description?: string
-  icon?: string
+	icon?: string
 	open: boolean
 	handleClose: () => void
 	handleConfirm: any
@@ -17,7 +17,7 @@ const AlertModal: React.FC<AlertModalProps> = (props) => {
 		loading = false,
 		title = 'Please confirm or cancel this action.',
 		description = 'This action is not reversable.',
-    icon='CircleAlert',
+		icon = 'CircleAlert',
 		open,
 		handleClose,
 		handleConfirm,
@@ -28,32 +28,24 @@ const AlertModal: React.FC<AlertModalProps> = (props) => {
 			open={open}
 			loading={loading}
 			actions={
-        <>
-        <Button
-					variant="contained"
-					color="secondary"
-					onClick={handleClose}
-				>
-					Cancel
-				</Button>
-				<Button
-					variant="contained"
-					color="primary"
-					onClick={handleConfirm}
-					startIcon={<IconLoading loading={loading} />}
-				>
-					Confirm
-				</Button>
-        </>
+				<>
+					<Button variant="contained" color="secondary" onClick={handleClose}>
+						Cancel
+					</Button>
+					<Button
+						variant="contained"
+						color="primary"
+						onClick={handleConfirm}
+						startIcon={<IconLoading loading={loading} />}
+					>
+						Confirm
+					</Button>
+				</>
 			}
 			handleClose={handleClose}
 		>
 			{!loading && (
-				<Placeholder
-					icon={icon}
-					title={title}
-					description={description}
-				/>
+				<Placeholder icon={icon} title={title} description={description} />
 			)}
 		</Modal>
 	)
