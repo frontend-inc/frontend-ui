@@ -3,8 +3,8 @@ export type SearchFilterVariantType =
 	| 'multiple_choice'
 	| 'boolean'
 	| 'number_range'
-	| 'price_range'
-	| 'ratings'
+	| 'date_range'
+	| 'ratings_scale'
 
 export type SearchFilterOptionType = {
 	label: string
