@@ -20,12 +20,11 @@ const MultipleChoiceInput: React.FC<MultipleChoiceInputProps> = (props) => {
 		name,
 		value,
 		options,
-		buttonText = 'Submit',
 		handleChange,
 		multiSelect = true,
 	} = props
 
-	const [selected, setSelected] = useState([])
+	const [selected, setSelected] = useState(value || [])
 
 	const handleSelect = (item) => {
 		if (selected.find((i) => i === item)) {
@@ -39,14 +38,14 @@ const MultipleChoiceInput: React.FC<MultipleChoiceInputProps> = (props) => {
 		}
 	}
 
-	const handleSubmit = () => {
-		handleChange({
-			target: {
-				name,
-				value: multiSelect ? selected : selected[0],
-			},
-		})
-	}
+	useState(() => {
+    handleChange({
+      target: {
+        name,
+        value: selected,
+      },
+    })
+  }, [selected])
 
 	return (
 		<FormControl size="small" fullWidth variant="outlined">
@@ -73,9 +72,6 @@ const MultipleChoiceInput: React.FC<MultipleChoiceInputProps> = (props) => {
 						/>
 					))}
 				</List>
-				<Button onClick={handleSubmit} variant="contained" color="primary">
-					{buttonText}
-				</Button>
 			</Stack>
 		</FormControl>
 	)

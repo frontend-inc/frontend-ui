@@ -24,8 +24,6 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 		enableBorder = false,
 	} = props
 
-	console.log('ACTIONS', actions)
-
 	return (
 		<Stack
 			direction={{

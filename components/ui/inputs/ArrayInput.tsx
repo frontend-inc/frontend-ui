@@ -59,7 +59,7 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 	}
 
 	return (
-		<Stack sx={sx.root} direction={direction} spacing={1}>
+		<Stack sx={sx.root} direction={direction} spacing={0}>
 			<Typography sx={sx.label} variant="caption" color="text.secondary">
 				{label}
 			</Typography>
@@ -112,6 +112,7 @@ export const sx = {
 		width: '100%',
 	},
 	textField: {
+    my: 0,
 		'& .MuiOutlinedInput-root': {
 			minWidth: '230px',
 			p: '4px',
@@ -153,8 +154,8 @@ export const sx = {
 		fontWeight: (theme) => theme.typography.body2.fontWeight,
 		fontFamily: (theme) => theme.typography.body2.fontFamily,
 	},
-	chip: {
-		pr: 0.5,
+	chip: {		
+    borderRadius: '4px'
 	},
 	label: {
 		width: '100px',
