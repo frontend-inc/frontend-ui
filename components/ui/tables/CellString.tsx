@@ -1,6 +1,5 @@
 import React from 'react'
 import { Typography } from '@mui/material'
-import { truncate } from '../../../helpers'
 import { TypographyVariantsType } from '../../../types'
 
 type CellStringProps = {
@@ -12,7 +11,7 @@ const CellString: React.FC<CellStringProps> = (props) => {
 	const { value, variant = 'caption' } = props
 	return (
 		<Typography sx={sx.text} variant={variant}>
-			{truncate(value, 15)}
+			{value}
 		</Typography>
 	)
 }

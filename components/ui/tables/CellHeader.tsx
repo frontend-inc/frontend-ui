@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Typography } from '@mui/material'
-import { ExpandMore, ExpandLess } from '@mui/icons-material'
+import { Icon } from '../../../components'
 
 type CellHeaderProps = {
 	field: any
@@ -25,14 +25,13 @@ const CellHeader: React.FC<CellHeaderProps> = (props) => {
 	return (
 		<Button
 			disableRipple
-			fullWidth
-			sx={sx.sortButton}
+			fullWidth			
 			onClick={() => handleSort(field)}
 			endIcon={
 				active && (
 					<>
-						{sortDirection === 'asc' && <ExpandLess sx={sx.sortIcon} />}
-						{sortDirection === 'desc' && <ExpandMore sx={sx.sortIcon} />}
+						{sortDirection === 'asc' && <Icon name="ChevronUp" size={20} />}
+						{sortDirection === 'desc' && <Icon name="ChevronDown" size={20} />}
 					</>
 				)
 			}
@@ -48,14 +47,6 @@ export default CellHeader
 
 const sx = {
 	root: {},
-	button: {
-		py: 0,
-		px: 1,
-		display: 'flex',
-		alignItems: 'center',
-		textAlign: 'left',
-		cursor: 'pointer',
-	},
 	label: {
 		textTransform: 'lowercase',
 		fontWeight: 500,
@@ -65,20 +56,10 @@ const sx = {
 		color: 'primary.main',
 		height: 20,
 		width: 20,
-	},
-	sortButtonGroup: {
-		border: 'none',
-		borderColor: 'transparent',
-	},
+	},	
 	sortIcon: {
 		height: 20,
 		width: 20,
 		color: 'text.secondary',
-	},
-	sortIconButton: {
-		borderRight: '0px solid white !important',
-	},
-	sortButton: {
-		borderRight: '0px solid white !important',
-	},
+	},		
 }

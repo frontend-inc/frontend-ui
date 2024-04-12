@@ -30,7 +30,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 	return (
 		<MuiTableRow sx={sx.root} selected={selected}>
 			{enableSelect && (
-				<TableCell align={'center'} sticky>
+				<TableCell small align={'center'} sticky>
 					<Checkbox
 						checked={selected}
 						onChange={() => handleSelect(row)}
@@ -39,7 +39,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 				</TableCell>
 			)}
 			{enableEdit && (
-				<TableCell align="center">
+				<TableCell small align="center">
 					<IconButton onClick={() => handleEdit(row)} size="small">
 						<Icon name="Edit" size={20} />
 					</IconButton>

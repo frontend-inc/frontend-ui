@@ -8,7 +8,7 @@ type CellTextProps = {
 
 const CellText: React.FC<CellTextProps> = (props) => {
 	const { value } = props
-	return <CellString variant="body2" value={truncate(value, 20)} />
+	return <CellString variant="body2" value={truncate(value, 250)} />
 }
 
 export default CellText

@@ -5,20 +5,29 @@ type TableCellProps = {
 	align?: 'center' | 'left' | 'right'
 	children?: React.ReactNode
 	header?: boolean
-	sticky?: boolean
+	sticky?: boolean  
+  small?: boolean
 }
 
 const TableCell: React.FC<TableCellProps> = (props) => {
-	const { align = 'left', children, header = false, sticky = false } = props
+	const { 
+    align = 'left', 
+    children, 
+    header = false, 
+    sticky = false, 
+    small= false
+  } = props
 
 	return (
 		<MuiTableCell
 			align={align}
 			sx={{
-				...sx.root,
-				...(header && sx.header),
-				...(sticky && sx.stickyCell),
-				...(header && sticky && sx.stickyHeader),
+				...sx.root,				
+        ...(small && sx.cellSmall),
+        ...(sticky && sx.cellSticky),
+        ...(header && sx.cellHeader),        
+				...(header && sticky && sx.cellStickyHeader),
+        
 			}}
 		>
 			{children}
@@ -33,23 +42,31 @@ const sx = {
 		px: 1,
 		minWidth: '100px',
 		bgcolor: 'background.paper',
-		borderBottom: '1px solid',
+		borderBottom: '1px dotted',
+    borderRight: '1px dotted',
 		borderColor: 'divider',
+    overflowX: 'scroll',
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
+    whiteSpace: 'nowrap',
+    maxWidth: '200px'      
+	},  
+  cellSmall: {
+    minWidth: '40px',
+    width: '40px'
+  },
+  cellHeader: {
+    borderBottom: '3px solid',
+    zIndex: (theme) => theme.zIndex.modal - 2,
 	},
-	header: {
-		p: 0,
-		whiteSpace: 'nowrap',
-	},
-	stickyHeader: {
+	cellSticky: {
 		position: 'sticky',
-		left: 0,
-		minWidth: 40,
-		zIndex: (theme) => theme.zIndex.modal - 1,
-	},
-	stickyCell: {
-		zIndex: (theme) => theme.zIndex.modal - 2,
-		position: 'sticky',
-		left: 0,
-		minWidth: 40,
-	},
+		left: 0,		
+    borderRight: '3px solid',    
+		zIndex: (theme) => theme.zIndex.modal - 3,
+	},  
+  cellStickyHeader: {
+    zIndex: (theme) => theme.zIndex.modal - 1,
+  }
 }
