@@ -7,11 +7,13 @@ import FormWizardInput from './FormWizardInput'
 
 export type FormWizardProps = {
 	field: {
+    variant: string 
 		title: string
 		description: string
 		label: string
 		placeholder: string
 		name: string
+    options: any
 	}
 	handleChange: (ev: any) => void
 	handleRemove: (name: string) => void
