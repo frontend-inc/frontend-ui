@@ -1,6 +1,5 @@
 import React from 'react'
 import { CellButton } from '../../../components'
-import { CompareArrows } from '@mui/icons-material'
 
 type CellHABTMProps = {
 	value: string
@@ -15,7 +14,7 @@ const CellHABTM: React.FC<CellHABTMProps> = (props) => {
 	let text = `${links?.length || 0} ${field?.foreign_collection?.plural_name}`
 
 	return (
-		<CellButton handleClick={handleClick} icon={<CompareArrows />}>
+		<CellButton handleClick={handleClick} icon={'Database'}>
 			{text}
 		</CellButton>
 	)

@@ -1,9 +1,10 @@
 import React from 'react'
 import { Box, Button } from '@mui/material'
+import { Icon } from '../../../components'
 
 type CellButtonProps = {
 	children: string
-	icon?: React.ReactNode
+	icon: string
 	handleClick?: (value: any, row?: any, field?: any) => void
 }
 
@@ -13,10 +14,17 @@ const CellButton: React.FC<CellButtonProps> = (props) => {
 	return (
 		<Box sx={sx.cell}>
 			<Button
+        size="small"
 				color="secondary"
 				variant="contained"
 				sx={sx.button}
-				endIcon={icon && icon}
+				startIcon={
+          <Icon 
+            color='secondary.contrastText' 
+            name={icon} 
+            size={20} 
+          />
+        }
 				onClick={handleClick && handleClick}
 			>
 				{children}

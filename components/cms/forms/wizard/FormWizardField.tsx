@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Fade, Typography, Stack } from '@mui/material'
-import FormField from '../FormFieldInput'
-import { SYSTEM_FIELDS } from '../../../../constants/index'
+import FormInput from '../FormInput'
+import { flattenDocument } from '../../../../helpers'
 import { get } from 'lodash'
+import FormWizardInput from './FormWizardInput'
 
 export type FormWizardProps = {
 	field: {
@@ -18,6 +19,11 @@ export type FormWizardProps = {
 	fadeIn: boolean
 	setResource: (resource: any) => void
 }
+
+const WIZARD_FIELD_VARIENTS = [
+  'multiple_choice',
+  'single_choice',
+]
 
 const FormWizardField: React.FC<FormWizardProps> = (props) => {
 	const { field, fadeIn, resource, setResource, handleChange, handleRemove } =
@@ -53,17 +59,25 @@ const FormWizardField: React.FC<FormWizardProps> = (props) => {
 				</Stack>
 				{field && (
 					<>
-						{SYSTEM_FIELDS.includes(field.name) ? (
-							<FormField
-								field={field}
-								value={get(resource, field.name)}
+						{WIZARD_FIELD_VARIENTS.includes(field.variant) ? (
+							<FormWizardInput 
+								name={ field.name }
+                label={ field.label }
+                placeholder={ field.placeholder }
+                variant={ field.variant }
+                options={ field.options }                
+								value={get(flattenDocument(resource), field.name)}
 								handleChange={handleChange}
 								handleRemove={handleRemove}
 							/>
 						) : (
-							<FormField
-								field={field}
-								value={get(resource?.data, field.name)}
+							<FormInput
+                name={ field.name }
+                label={ field.label }
+                placeholder={ field.placeholder }
+                variant={ field.variant }
+                options={ field.options }                
+								value={get(flattenDocument(resource?.data), field.name)}
 								handleChange={handleDataChange}
 							/>
 						)}

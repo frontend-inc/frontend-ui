@@ -7,9 +7,7 @@ import {
 	RatingInput,
 	SwitchInput,
 	TextInput,
-	MultipleChoiceInput,
-	SingleChoiceInput,
-} from '../..'
+} from '../../../components'
 import { SyntheticEventType } from '../../../types'
 
 type FormInputProps = {
@@ -37,160 +35,50 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		handleRemove,
 	} = props
 
+  let componentMapper = {
+    "array": ArrayInput,
+    "string": TextInput,
+    "url": TextInput,
+    "text": TextInput,
+    "number": TextInput,
+    "price": TextInput,
+    "date": DateInput,
+    "datetime": DateInput,
+    "boolean": SwitchInput,
+    "select": ArrayInput,
+    "rating": RatingInput,
+    "image": ImageInput,
+    "json": JSONInput
+  }
+
+  let componentProps = {
+    "text": {
+      multiline: true,
+      rows: 6
+    },
+    "number": {
+      type: "number"
+    },
+    "price": {
+      type: "number"
+    },
+    "image": {
+      handleRemove
+    }
+  }
+
+  let InputComponent = componentMapper[variant]
+
 	return (
-		<>
-			{variant === 'array' && (
-				<ArrayInput
-					errors={errors}
-					label={label}
-					name={name}
-					value={value}
-					handleChange={handleChange}
-					placeholder={placeholder}
-				/>
-			)}
-			{variant === 'string' && (
-				<TextInput
-					errors={errors}
-					label={label}
-					name={name}
-					value={value}
-					handleChange={handleChange}
-					placeholder={placeholder}
-				/>
-			)}
-			{variant === 'url' && (
-				<TextInput
-					errors={errors}
-					label={label}
-					name={name}
-					value={value}
-					handleChange={handleChange}
-					placeholder={placeholder}
-				/>
-			)}
-			{variant === 'text' && (
-				<TextInput
-					multiline
-					rows={6}
-					errors={errors}
-					label={label}
-					name={name}
-					value={value}
-					handleChange={handleChange}
-					placeholder={placeholder}
-				/>
-			)}
-			{variant === 'number' && (
-				<TextInput
-          type="number"
-					errors={errors}
-					label={label}
-					name={name}
-					value={value}
-					handleChange={handleChange}
-					placeholder={placeholder}
-				/>
-			)}
-      
-      {variant === 'price' && (
-				<TextInput
-          type="number"
-					errors={errors}
-					label={label}
-					name={name}
-					value={value}
-					handleChange={handleChange}
-					placeholder={placeholder}
-				/>
-			)}
-
-			{variant === 'date' && (
-				<DateInput
-					errors={errors}
-					label={label}
-					name={name}
-					value={value}
-					handleChange={handleChange}
-					placeholder={placeholder}
-				/>
-			)}
-
-			{variant === 'boolean' && (
-				<SwitchInput
-					errors={errors}
-					label={label}
-					name={name}
-					value={value}
-					handleChange={handleChange}
-					placeholder={placeholder}
-				/>
-			)}
-
-			{variant === 'select' && (
-				<ArrayInput
-					errors={errors}
-					label={label}
-					name={name}
-					value={value}
-					handleChange={handleChange}
-					placeholder={placeholder}
-				/>
-			)}
-
-			{variant === 'rating' && (
-				<RatingInput
-					errors={errors}
-					label={label}
-					name={name}
-					value={value}
-					handleChange={handleChange}
-					placeholder={placeholder}
-				/>
-			)}
-
-			{variant === 'image' && (
-				<ImageInput
-					errors={errors}
-					label={label}
-					name={name}
-					value={value}
-					handleChange={handleChange}
-					handleRemove={handleRemove}
-				/>
-			)}
-
-			{variant === 'json' && (
-				<JSONInput
-					errors={errors}
-					label={label}
-					name={name}
-					value={value}
-					handleChange={handleChange}
-					placeholder={placeholder}
-				/>
-			)}
-
-			{variant === 'multiple_choice' && (
-				<MultipleChoiceInput
-					label={label}
-					name={name}
-					value={value}
-					options={options}
-					handleChange={handleChange}
-				/>
-			)}
-
-      {variant === 'single_choice' && (
-				<SingleChoiceInput
-					label={label}
-					name={name}
-					value={value}
-					options={options}
-					handleChange={handleChange}
-				/>
-			)}
-		</>
+    <InputComponent
+      errors={errors}
+      label={label}
+      name={name}
+      value={value}
+      handleChange={handleChange}
+      placeholder={placeholder}
+      { ...componentProps[variant] }
+    />			
 	)
 }
 

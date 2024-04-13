@@ -5,6 +5,14 @@ import {
 } from '../constants/index'
 import { get } from 'lodash'
 
+export const flattenDocument = (resource) => {
+  let { data, ...rest } = resource || {}
+  return {
+    ...rest,
+    ...data,
+  }
+}
+
 export const getDocumentValue = (document, field) => {
 	if (ATTACHMENT_FIELDS.includes(field?.variant)) {
 		return get(document, field?.name)?.url
@@ -17,14 +25,6 @@ export const getDocumentValue = (document, field) => {
 		return get(document, field?.name)
 	} else {
 		return get(document, `data.${field?.name}`)
-	}
-}
-
-export const flattenDocument = (resource) => {
-	let { data, ...rest } = resource || {}
-	return {
-		...rest,
-		...data,
 	}
 }
 

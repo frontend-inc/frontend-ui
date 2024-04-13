@@ -29,7 +29,6 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		handle,
 		fields,
 		url,
-
 		title,
 		description,
 		image,

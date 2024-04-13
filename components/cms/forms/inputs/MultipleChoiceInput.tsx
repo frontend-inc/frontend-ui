@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FormControl, List, Stack, Typography } from '@mui/material'
-import { SelectableListItem } from '../../../components'
+import { SelectableListItem } from '../../..'
 
 export type MultipleChoiceInputProps = {
 	label?: string
