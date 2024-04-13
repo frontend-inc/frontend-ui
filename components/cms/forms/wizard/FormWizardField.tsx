@@ -69,8 +69,7 @@ const FormWizardField: React.FC<FormWizardProps> = (props) => {
                 variant={ field.variant }
                 options={ field.options }                
 								value={get(flattenDocument(resource), field.name)}
-								handleChange={handleChange}
-								handleRemove={handleRemove}
+								handleChange={handleChange}								
 							/>
 						) : (
 							<FormInput
@@ -81,6 +80,7 @@ const FormWizardField: React.FC<FormWizardProps> = (props) => {
                 options={ field.options }                
 								value={get(flattenDocument(resource?.data), field.name)}
 								handleChange={handleDataChange}
+                handleRemove={handleRemove}
 							/>
 						)}
 					</>

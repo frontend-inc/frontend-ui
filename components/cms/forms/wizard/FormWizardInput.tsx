@@ -12,7 +12,6 @@ type FormInputProps = {
 	options: any
 	placeholder?: string
 	handleChange: (e: SyntheticEventType) => void
-	handleRemove: (name: string) => void
 }
 
 const FormInput: React.FC<FormInputProps> = (props) => {
