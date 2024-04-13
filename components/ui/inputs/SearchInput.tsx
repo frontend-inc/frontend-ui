@@ -9,8 +9,8 @@ type SearchInputProps = {
 	label?: string
 	value?: string
 	placeholder?: string
-	handleChange?: (e: SyntheticEventType) => void
-	handleSearch?: (keywords: string) => void
+	handleChange: (e: SyntheticEventType) => void
+	handleSearch: (keywords: string) => void
 	styles?: any
 }
 
