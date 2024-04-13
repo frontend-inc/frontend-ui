@@ -3,7 +3,7 @@ import { useResource } from 'frontend-js'
 import { Stack, Box, Button } from '@mui/material'
 import { IconLoading, Placeholder } from '../..'
 import FormFieldInput from './FormFieldInput'
-import { SYSTEM_FIELDS } from '../../../constants/index'
+import { flattenDocument } from '../../../helpers'
 import { get } from 'lodash'
 
 export type FormProps = {
@@ -76,24 +76,14 @@ const Form: React.FC<FormProps> = (props) => {
 	return !submitted ? (
 		<Box sx={sx.root}>
 			<Stack spacing={1} sx={sx.root}>
-				{fields?.map((field, index) =>
-					SYSTEM_FIELDS.includes(field.name) ? (
-						<FormFieldInput
-							key={index}
-							field={field}
-							value={get(resource, field.name)}
-							handleChange={handleChange}
-							handleRemove={handleRemove}
-						/>
-					) : (
-						<FormFieldInput
-							key={index}
-							field={field}
-							value={get(resource?.data, field.name)}
-							handleChange={handleDataChange}
-						/>
-					)
-				)}
+				{fields?.map((field, index) => (					
+          <FormFieldInput
+            key={index}
+            field={field}
+            value={get(flattenDocument(resource?.data), field.name)}
+            handleChange={handleDataChange}
+          />
+        ))}
 				<Button
 					size="large"
 					variant="contained"

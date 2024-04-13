@@ -23,8 +23,10 @@ export type FormWizardProps = {
 }
 
 const WIZARD_FIELD_VARIENTS = [
-  'multiple_choice',
+  'multiple_choice',  
+  'multiple_choice_images',
   'single_choice',
+  'single_choice_image',
 ]
 
 const FormWizardField: React.FC<FormWizardProps> = (props) => {

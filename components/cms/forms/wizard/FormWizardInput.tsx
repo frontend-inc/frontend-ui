@@ -1,7 +1,9 @@
 import React from 'react'
 import { SyntheticEventType } from '../../../../types'
 import MultipleChoiceInput from '../inputs/MultipleChoiceInput'
+import MultipleChoiceImagesInput from '../inputs/MultipleChoiceImagesInput'
 import SingleChoiceInput from '../inputs/SingleChoiceInput'
+import SingleChoiceImageInput from '../inputs/SingleChoiceImageInput'
 
 type FormInputProps = {
 	variant: any
@@ -28,7 +30,9 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 
   let componentMapper = {
     "single_choice": SingleChoiceInput,
-    "multiple_choice": MultipleChoiceInput
+    "multiple_choice": MultipleChoiceInput,
+    "single_choice_image": SingleChoiceImageInput,
+    "multiple_choice_images": MultipleChoiceImagesInput,
   }
 
   let InputComponent = componentMapper[variant]

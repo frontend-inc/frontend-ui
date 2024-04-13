@@ -13,8 +13,10 @@ export type FormWizardProps = {
 	variant?: 'contained' | 'outlined' | 'text'
 	fields: any[]
 	children?: React.ReactElement[]
-	title: string
-	description: string
+	startTitle: string
+	startDescription: string
+  startImage: string
+  startButtonText?: string
 	buttonText?: string
 	image: string
 	endTitle: string
@@ -29,10 +31,11 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		handle,
 		fields,
 		url,
-		title,
-		description,
-		image,
-		buttonText = 'Start',
+		startTitle,
+		startDescription,
+		startImage,
+    startButtonText='Start',
+		buttonText = 'Submit',
 		endTitle,
 		endDescription,
 		endImage,
@@ -144,10 +147,10 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 					<>
 						{currentStep == 0 && (
 							<FormCard
-								title={title}
-								description={description}
-								image={image}
-								buttonText={buttonText}
+								title={startTitle}
+								description={startDescription}
+								image={startImage}
+								buttonText={startButtonText}
 								handleClick={handleStartClick}
 							/>
 						)}
@@ -167,7 +170,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 									handleNextStep={handleNextStep}
 									handlePrevStep={handlePrevStep}
 									handleSubmit={handleSubmit}
-									buttonText={endButtonText}
+									buttonText={buttonText}
 								/>
 							</>
 						)}
@@ -177,7 +180,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 						title={endTitle}
 						description={endDescription}
 						image={endImage}
-						buttonText={'Done'}
+						buttonText={endButtonText}
 						handleClick={handleResetForm}
 					/>
 				)}
