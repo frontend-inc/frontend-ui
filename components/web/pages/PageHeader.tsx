@@ -1,13 +1,17 @@
 import React from 'react'
 import { Stack, Box } from '@mui/material'
 import { ActionType } from '../../../types'
-import { Heading, Actions } from '../..'
+import { Heading, Actions, Breadcrumbs } from '../../../components'
 
 export type PageHeaderProps = {
 	label?: string
 	title?: string
 	description?: string
-	breadcrumbs?: any
+	links: {
+    label: string
+    path: string 
+  }[]
+  maxLinks?: number
 	actions: ActionType[]
 	resource?: any
 	enableBorder?: boolean
@@ -18,34 +22,42 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 		label,
 		title,
 		description,
-		breadcrumbs,
+		links,
+    maxLinks=3,
 		actions,
 		resource,
 		enableBorder = false,
 	} = props
 
 	return (
-		<Stack
-			direction={{
-				xs: 'column',
-				sm: 'row',
-			}}
-			spacing={1}
-			sx={{
-				...sx.root,
-				...(enableBorder && sx.rootBorder),
-			}}
-		>
-			<Heading
-				label={label}
-				title={title}
-				description={description}
-				textAlign="left"
-			/>
-			<Box sx={sx.actions}>
-				<Actions actions={actions} resource={resource} />
-			</Box>
-		</Stack>
+    <Stack direction="column" spacing={4}>
+      <Breadcrumbs 
+        maxLinks={maxLinks} 
+        links={ links } 
+      />
+
+      <Stack
+        direction={{
+          xs: 'column',
+          sm: 'row',
+        }}
+        spacing={1}
+        sx={{
+          ...sx.root,
+          ...(enableBorder && sx.rootBorder),
+        }}
+      >
+        <Heading
+          label={label}
+          title={title}
+          description={description}
+          textAlign="left"
+        />
+        <Box sx={sx.actions}>
+          <Actions actions={actions} resource={resource} />
+        </Box>
+      </Stack>
+    </Stack>
 	)
 }
 
