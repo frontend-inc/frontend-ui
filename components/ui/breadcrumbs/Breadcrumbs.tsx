@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
-import { 
+import {
+  Box, 
   Breadcrumbs as MuiBreadcrumbs, 
   Link, 
-  Typography 
 } from '@mui/material'
 import { Icon } from '../../../components'
 
@@ -24,29 +24,34 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = (props) => {
 
   if(links.length === 0) return null;
   return (
-    <MuiBreadcrumbs 
-      maxItems={maxLinks} 
-      aria-label="breadcrumb"
-      separator={
-        <Icon color='text.secondary' name="ChevronRight" size={20} />
-      }
-    >
-      {links.map((link, index) => (
-        <Link 
-          sx={ sx.link }
-          key={index} 
-          href={`${clientUrl}${link?.path}`}
-        >
-          {link?.label}
-        </Link>
-      ))}
-    </MuiBreadcrumbs>
+    <Box sx={ sx.root }>
+      <MuiBreadcrumbs 
+        maxItems={maxLinks} 
+        aria-label="breadcrumb"
+        separator={
+          <Icon color='text.secondary' name="ChevronRight" size={20} />
+        }
+      >
+        {links.map((link, index) => (
+          <Link 
+            sx={ sx.link }
+            key={index} 
+            href={`${clientUrl}${link?.path}`}
+          >
+            {link?.label}
+          </Link>
+        ))}
+      </MuiBreadcrumbs>
+    </Box>
   )
 }
 
 export default Breadcrumbs
 
 const sx = {
+  root: {
+    py: 1
+  },
   link: {
     color: 'text.secondary',
     textDecoration: 'none',

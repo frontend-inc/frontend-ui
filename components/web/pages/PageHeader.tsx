@@ -30,7 +30,7 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 	} = props
 
 	return (
-    <Stack direction="column" spacing={4}>
+    <Stack sx={ sx.root } direction="column" spacing={3}>
       <Breadcrumbs 
         maxLinks={maxLinks} 
         links={ links } 
@@ -43,8 +43,8 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
         }}
         spacing={1}
         sx={{
-          ...sx.root,
-          ...(enableBorder && sx.rootBorder),
+          ...sx.content,
+          ...(enableBorder && sx.contentBorder),
         }}
       >
         <Heading
@@ -53,9 +53,11 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
           description={description}
           textAlign="left"
         />
+        { actions?.length > 0 && (
         <Box sx={sx.actions}>
           <Actions actions={actions} resource={resource} />
         </Box>
+        )}
       </Stack>
     </Stack>
 	)
@@ -64,12 +66,16 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 export default PageHeader
 
 const sx = {
-	root: {
+  root: {
+    pt: 2,
+    width: '100%',
+  },
+	content: {
 		justifyContent: 'space-between',
 		width: '100%',
 		bgcolor: 'background.default',
 	},
-	rootBorder: {
+	contentBorder: {
 		borderBottom: 1,
 		borderColor: 'divider',
 	},
