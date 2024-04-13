@@ -1,5 +1,5 @@
 import React from 'react'
-import { NewPasswordForm, AuthScreen, LayoutLoader } from '../../../components'
+import { NewPasswordForm, AuthScreen, Loader } from '../../../components'
 import { useAuth } from 'frontend-js'
 
 import { useRouter } from 'next/router'
@@ -35,7 +35,8 @@ const NewPassword: React.FC<NewPasswordProps> = (props) => {
 	}
 
 	return (
-		<LayoutLoader loading={loading}>
+    <>
+		  <Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<NewPasswordForm
 					loading={loading}
@@ -46,7 +47,7 @@ const NewPassword: React.FC<NewPasswordProps> = (props) => {
 					handleLogin={handleLogin}
 				/>
 			</AuthScreen>
-		</LayoutLoader>
+		</>
 	)
 }
 

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import {
 	ResetPasswordForm,
 	AuthScreen,
-	LayoutLoader,
+	Loader,
 } from '../../../components'
 import { useAuth } from 'frontend-js'
 
@@ -45,7 +45,8 @@ const ResetPassword: React.FC<ResetPasswordProps> = (props) => {
 	}
 
 	return (
-		<LayoutLoader loading={loading}>
+    <>
+		  <Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<ResetPasswordForm
 					loading={loading}
@@ -56,7 +57,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = (props) => {
 					handleLogin={handleLogin}
 				/>
 			</AuthScreen>
-		</LayoutLoader>
+		</>
 	)
 }
 

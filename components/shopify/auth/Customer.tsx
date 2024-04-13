@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { AuthScreen, LayoutLoader } from '../../../components'
+import { AuthScreen, Loader } from '../../../components'
 import { useAuth, useCustomers } from 'frontend-shopify'
 import { CustomerForm } from '../../../components/shopify'
 
@@ -45,7 +45,8 @@ const Customer: React.FC<CustomerProps> = (props) => {
 	}, [customer])
 
 	return (
-		<LayoutLoader loading={loading}>
+    <>
+		<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<CustomerForm
 					loading={loading}
@@ -54,7 +55,7 @@ const Customer: React.FC<CustomerProps> = (props) => {
 					handleSubmit={handleSubmit}
 				/>
 			</AuthScreen>
-		</LayoutLoader>
+		</>
 	)
 }
 

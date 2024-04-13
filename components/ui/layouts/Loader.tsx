@@ -2,20 +2,18 @@ import React from 'react'
 import { Backdrop, LinearProgress } from '@mui/material'
 import { useDelayedLoading } from '../../../hooks'
 
-type LayoutLoaderProps = {
+type LoaderProps = {
 	loading?: boolean
-	children: any
 	delay?: number
 }
 
-const LayoutLoader: React.FC<LayoutLoaderProps> = (props) => {
-	const { loading = true, delay = 500, children } = props
+const Loader: React.FC<LoaderProps> = (props) => {
+	const { loading = true, delay = 500 } = props
 
 	const { loading: easeLoading } = useDelayedLoading({
 		loading,
 		delay,
 	})
-	if (!easeLoading) return children
 	return (
 		<Backdrop open={easeLoading} sx={sx.backdrop}>
 			<LinearProgress color="primary" sx={sx.progress} />
@@ -23,16 +21,14 @@ const LayoutLoader: React.FC<LayoutLoaderProps> = (props) => {
 	)
 }
 
-export default LayoutLoader
+export default Loader
 
 const sx = {
 	backdrop: {
-		height: '4px',
 		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'center',
-		bgcolor: 'transparent !important',
-		zIndex: (theme) => theme.zIndex.drawer + 1,
+		justifyContent: 'flex-start',
+		alignItems: 'flex-start',		
+		zIndex: (theme) => theme.zIndex.modal + 1,
 	},
 	progress: {
 		height: '4px',

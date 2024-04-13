@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { AuthScreen, LayoutLoader } from '../../../components'
+import { AuthScreen, Loader } from '../../../components'
 import { useOrders } from 'frontend-shopify'
 import { OrderDetails } from '../../../components/shopify'
 import { useRouter } from 'next/router'
@@ -26,14 +26,15 @@ const ShopifyCustomerOrder: React.FC<ShopifyCustomerOrderProps> = (props) => {
 	}, [orderId])
 
 	return (
-		<LayoutLoader loading={loading}>
+    <>
+		  <Loader loading={loading} />
 			<AuthScreen
 				title={`Order ${order.name}`}
 				subtitle={moment(order?.processedAt).format('MMMM Do, YYYY')}
 			>
 				<OrderDetails order={order} />
 			</AuthScreen>
-		</LayoutLoader>
+		</>
 	)
 }
 

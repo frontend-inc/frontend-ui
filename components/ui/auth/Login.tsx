@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { LoginForm, AuthScreen, LayoutLoader } from '../../../components'
+import { LoginForm, AuthScreen, Loader } from '../../../components'
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
 
@@ -52,7 +52,8 @@ const Login: React.FC<LoginProps> = (props) => {
 	}
 
 	return (
-		<LayoutLoader loading={loading}>
+    <>
+		  <Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<LoginForm
 					errors={errors}
@@ -67,7 +68,7 @@ const Login: React.FC<LoginProps> = (props) => {
 					handleGoogleSuccess={handleGoogleSuccess}
 				/>
 			</AuthScreen>
-		</LayoutLoader>
+		</>
 	)
 }
 

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { AuthScreen, AlertModal, LayoutLoader } from '../../../components'
+import { AuthScreen, AlertModal, Loader } from '../../../components'
 import { Plus } from 'lucide-react'
 import { Button } from '@mui/material'
 import { useAddresses } from 'frontend-shopify'
@@ -58,7 +58,8 @@ const Addresses: React.FC<AddressesProps> = (props) => {
 	}, [addresses])
 
 	return (
-		<LayoutLoader loading={loading}>
+		  <>
+      <Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<AddressList
 					addresses={addresses}
@@ -80,7 +81,7 @@ const Addresses: React.FC<AddressesProps> = (props) => {
 					handleConfirm={handleDelete}
 				/>
 			</AuthScreen>
-		</LayoutLoader>
+		</>
 	)
 }
 

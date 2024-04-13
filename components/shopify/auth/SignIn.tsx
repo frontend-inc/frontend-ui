@@ -1,5 +1,5 @@
 import React from 'react'
-import { AuthScreen, LayoutLoader } from '../..'
+import { AuthScreen, Loader } from '../..'
 import { useAuth } from 'frontend-shopify'
 import { SignInForm } from '..'
 import { useRouter } from 'next/router'
@@ -41,7 +41,8 @@ const SignIn: React.FC<SignInProps> = (props) => {
 	}
 
 	return (
-		<LayoutLoader loading={loading}>
+		<>
+      <Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<SignInForm
 					errors={errors}
@@ -53,7 +54,7 @@ const SignIn: React.FC<SignInProps> = (props) => {
 					handleForgotPassword={forgotPasswordUrl && handleForgotPassword}
 				/>
 			</AuthScreen>
-		</LayoutLoader>
+		</>
 	)
 }
 

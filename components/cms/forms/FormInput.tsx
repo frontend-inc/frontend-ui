@@ -182,7 +182,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			)}
 
       {variant === 'single_choice' && (
-				<MultipleChoiceInput
+				<SingleChoiceInput
 					label={label}
 					name={name}
 					value={value}

@@ -178,7 +178,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 						title={endTitle}
 						description={endDescription}
 						image={endImage}
-						buttonText={endButtonText}
+						buttonText={'Done'}
 						handleClick={handleResetForm}
 					/>
 				)}

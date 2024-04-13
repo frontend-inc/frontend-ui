@@ -4,7 +4,7 @@ import {
 	VerifyPinForm,
 	VerifySendPinForm,
 	AuthScreen,
-	LayoutLoader,
+	Loader,
 } from '../../../components'
 import { useAuth } from 'frontend-js'
 
@@ -67,7 +67,8 @@ const VerifyPin: React.FC<VerifyPinProps> = (props) => {
 	}
 
 	return (
-		<LayoutLoader loading={loading}>
+    <>
+		  <Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				{!showVerifyPin ? (
 					<VerifySendPinForm
@@ -96,7 +97,7 @@ const VerifyPin: React.FC<VerifyPinProps> = (props) => {
 					</Button>
 				)}
 			</AuthScreen>
-		</LayoutLoader>
+		</>
 	)
 }
 

@@ -2,7 +2,7 @@ import React from 'react'
 import {
 	ForgotPasswordForm,
 	AuthScreen,
-	LayoutLoader,
+	Loader,
 } from '../../../components'
 import { useAlerts } from '../../../hooks'
 import { useAuth } from 'frontend-js'
@@ -38,7 +38,8 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (props) => {
 	}
 
 	return (
-		<LayoutLoader loading={loading}>
+		<>
+      <Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<ForgotPasswordForm
 					errors={errors}
@@ -48,7 +49,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (props) => {
 					handleLogin={handleLogin}
 				/>
 			</AuthScreen>
-		</LayoutLoader>
+		</>
 	)
 }
 

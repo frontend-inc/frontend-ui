@@ -1,5 +1,5 @@
 import React from 'react'
-import { AuthScreen, LayoutLoader } from '../..'
+import { AuthScreen, Loader } from '../..'
 import { ChangePasswordForm } from '..'
 import { useAuth } from 'frontend-shopify'
 import { useAlerts } from '../../../hooks'
@@ -40,7 +40,8 @@ const ChangePassword: React.FC<ChangePasswordProps> = (props) => {
 	}
 
 	return (
-		<LayoutLoader loading={loading}>
+    <>
+		  <Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<ChangePasswordForm
 					errors={errors}
@@ -50,7 +51,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = (props) => {
 					handleLogin={handleLogin}
 				/>
 			</AuthScreen>
-		</LayoutLoader>
+		</>
 	)
 }
 

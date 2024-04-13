@@ -1,5 +1,5 @@
 import React from 'react'
-import { AuthScreen, LayoutLoader } from '../../../components'
+import { AuthScreen, Loader } from '../../../components'
 import { useAuth } from 'frontend-js'
 
 import { OneTimePasswordForm } from '../../../components'
@@ -41,7 +41,8 @@ const OneTimePassword: React.FC<OneTimePasswordProps> = (props) => {
 	}
 
 	return (
-		<LayoutLoader loading={loading}>
+    <>
+		  <Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<OneTimePasswordForm
 					loading={loading}
@@ -52,7 +53,7 @@ const OneTimePassword: React.FC<OneTimePasswordProps> = (props) => {
 					handleLogin={handleLogin}
 				/>
 			</AuthScreen>
-		</LayoutLoader>
+		</>
 	)
 }
 

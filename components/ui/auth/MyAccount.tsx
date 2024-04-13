@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useAuth } from 'frontend-js'
-import { AuthScreen, LayoutLoader, MyAccountForm } from '../../../components'
+import { AuthScreen, Loader, MyAccountForm } from '../../../components'
 import { useRouter } from 'next/router'
 
 type MyAccountProps = {
@@ -43,7 +43,8 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 	}, [currentUser])
 
 	return (
-		<LayoutLoader loading={loading}>
+    <>
+		  <Loader loading={loading} />
 			{currentUser && (
 				<AuthScreen
 					title={`${currentUser?.first_name} ${currentUser?.last_name}`}
@@ -58,7 +59,7 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 					/>
 				</AuthScreen>
 			)}
-		</LayoutLoader>
+		</>
 	)
 }
 
