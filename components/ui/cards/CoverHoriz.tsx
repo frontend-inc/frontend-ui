@@ -38,6 +38,7 @@ const CoverHoriz: React.FC<CardProps> = (props) => {
 		<Stack sx={sx.root} spacing={1}>
 			<TouchableOpacity handleClick={handleItemClick}>
 				<Image
+          label={label}
 					src={image}
 					objectFit={objectFit}
 					alt={title}

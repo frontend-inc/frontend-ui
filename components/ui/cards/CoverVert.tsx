@@ -44,6 +44,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		>
 			<TouchableOpacity handleClick={handleItemClick}>
 				<Image
+          label={label}
 					src={image}
 					height={height}
 					objectFit={objectFit}

@@ -158,7 +158,7 @@ const sx = {
 		},
 	},
 	contentBorder: {
-		p: 2,
+		py: 2,
 	},
 	description: {
 		maxWidth: '320px',

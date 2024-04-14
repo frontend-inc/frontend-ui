@@ -70,7 +70,11 @@ const Image: React.FC<ImageProps> = (props) => {
 					}}
 				/>
 			) : (
-				<NoImage height={height} />
+				<NoImage 
+          height={height} 
+          width={width}
+          disableBorderRadius={disableBorderRadius}          
+        />
 			)}
       { label && (
         <Box sx={ sx.label }>

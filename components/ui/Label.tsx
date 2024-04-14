@@ -36,10 +36,11 @@ const sx = {
 		color: 'secondary.contrastText',
 		characterSpacing: '1em',
 		fontWeight: 500,
-		fontFamily: (theme) => theme.typography.fontFamily.caption,
+		fontFamily: (theme) => theme.typography.fontFamily.overline,
 		letterSpacing: '0.05em',
 		cursor: 'pointer',
 		borderRadius: '4px',
+    textTransform: 'uppercase',
 		boxShadow: '1px 0px 0 0 rgba(0,0,0,0.1)',
 	},
 }
