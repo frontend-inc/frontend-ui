@@ -66,7 +66,7 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 							{enableAuth && (
 								<AuthButton
 									editing={editing}
-									myAccountUrl={`${clientUrl}/my-account`}
+									myAccountUrl={`${clientUrl}/auth/my-account`}
 								/>
 							)}
 							{enableShopify && (

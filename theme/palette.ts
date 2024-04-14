@@ -2,7 +2,7 @@ import * as COLORS from '@mui/material/colors'
 
 export const palette = {
 	primary: {
-		main: COLORS.indigo[500],
+		main: COLORS.grey[900],
 	},
 	secondary: {
 		main: COLORS.grey[200],

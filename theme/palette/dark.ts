@@ -1,7 +1,7 @@
 export default {
 	primary: {
-		main: '#538BFF',
-		contrastText: '#ffffff',
+		main: '#FFFFFF',
+		contrastText: '#000000',
 	},
 	secondary: {
 		main: '#FFFFFF',

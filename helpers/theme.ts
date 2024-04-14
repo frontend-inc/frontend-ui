@@ -1,4 +1,4 @@
-import { alpha, lighten, darken, getContrastRatio } from '@mui/material'
+import { lighten, darken, getContrastRatio } from '@mui/material'
 
 export const buildMuiPalette = (palette, bgcolor) => {
 	const paper = lighten(bgcolor, 0.2)

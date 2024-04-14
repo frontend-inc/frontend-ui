@@ -25,7 +25,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 	const { logout, fetchMe, currentUser } = useAuth()
 	const { open, anchorEl, closeMenu, toggleMenu } = useMenu()
 
-	const { setAuthOpen } = useContext(AppContext)
+	const { clientUrl, setAuthOpen } = useContext(AppContext)
 
 	const handleLogin = () => {
 		setAuthOpen(true)
@@ -42,6 +42,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 	const handleLogout = () => {
 		closeMenu()
 		logout()
+    router.push(clientUrl)
 	}
 
 	const handleClick = (url) => {

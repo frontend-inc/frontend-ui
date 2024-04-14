@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { LoginForm, AuthScreen, Loader } from '../../../components'
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
