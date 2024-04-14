@@ -11,10 +11,8 @@ import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
 import { Tab, Tabs, Box } from '@mui/material'
 import { AppContext } from '../../../context'
-import Image from 'next/image'
 
 type AuthModalProps = {
-	logo: any
 	disableUsername?: boolean
 }
 
@@ -23,8 +21,6 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 	const { app_id: appId } = router.query
 
 	const { authOpen, setAuthOpen } = useContext(AppContext)
-
-	const { logo } = props || {}
 
 	const {
 		errors,
@@ -107,20 +103,15 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 			handleClose={() => setAuthOpen(false)}
 			disablePadding
 		>
-      { logo && (
-        <Box sx={sx.logo}>
-          <Image src={logo} alt="Logo" height={48} width={48} />
-        </Box>
-      )}
       <Box sx={ sx.tabsContainer }>
-			<Tabs
-				value={tab}
-				onChange={handleTabChange}
-				sx={sx.tabs}
-			>
-				<Tab label="Login" />
-				<Tab label="Register" />
-			</Tabs>
+        <Tabs
+          value={tab}
+          onChange={handleTabChange}
+          sx={sx.tabs}
+        >
+          <Tab label="Login" />
+          <Tab label="Register" />
+        </Tabs>
       </Box>
       <Box p={4} sx={ sx.content }>
 			{tab === 0 && (

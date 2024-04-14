@@ -107,8 +107,8 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 						/>
 					</LayoutScroll>
 				</Box>
-			</Box>
-      <AuthModal />
+			</Box>      
+      <AuthModal />      
 		</Box>
 	)
 }

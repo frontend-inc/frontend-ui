@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
 	Box,
 	Button,
@@ -11,6 +11,7 @@ import {
 } from '@mui/material'
 import { Icon, Loader } from '../../../components'
 import { useResponsive } from '../../../hooks'
+import { muiTheme } from '../../../theme'
 
 type ModalProps = {
 	open: boolean
@@ -37,7 +38,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 		subtitle,
 		actions,
 		children,
-		maxWidth,
+		maxWidth='sm',
 		secondaryActions,
 		disablePadding = false,
 		fullScreen,
@@ -45,13 +46,22 @@ const Modal: React.FC<ModalProps> = (props) => {
 		hideBackdrop = false,
 	} = props
 
-	const { isMobile } = useResponsive()
+	const { isMobile } = useResponsive()  
+
+
 
 	return (
 		<Dialog
-			sx={sx.root}
-			fullWidth
-			maxWidth={maxWidth || 'sm'}
+			sx={{ 
+        ...sx.root,
+        '& .MuiDialog-paper': {
+          maxWidth: {
+            sm: muiTheme.breakpoints.values[maxWidth],
+            xs: '100vw'
+          } 
+        }, 
+      }}
+			fullWidth			
 			fullScreen={isMobile || fullScreen === true ? true : false}
 			open={open}
 			onClose={handleClose}
@@ -103,7 +113,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 export default Modal
 
 const sx = {
-	root: {
+	root: {    
 		borderRadius: (theme) => theme.shape.borderRadius,
 	},
 	title: {},

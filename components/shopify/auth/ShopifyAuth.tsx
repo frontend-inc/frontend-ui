@@ -21,7 +21,7 @@ const TopNavShopifyAuthButton: React.FC<TopNavShopifyAuthButtonProps> = (
 
 	return (
 		<IconButton onClick={handleClick}>
-			<Icon name="User" size={24} />
+			<Icon name="ShoppingBag" size={24} />
 		</IconButton>
 	)
 }
@@ -41,7 +41,7 @@ const SideNavShopifyAuthButton: React.FC<SideNavShopifyAuthButtonProps> = (
 				<ListItemText
 					primary={
 						<Typography variant="button" color="text.primary">
-							My Account
+							My Orders
 						</Typography>
 					}
 				/>
