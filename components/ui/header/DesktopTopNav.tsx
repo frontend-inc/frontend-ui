@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AppBar, Box, Hidden, Toolbar } from '@mui/material'
-import { AuthButton } from '../..'
+import { AuthButton } from '../../../components'
 import Logo from './Logo'
 import { ShopifyAuth, SearchButton, CartButton } from '../../shopify'
 import { AppContext } from '../../../context'

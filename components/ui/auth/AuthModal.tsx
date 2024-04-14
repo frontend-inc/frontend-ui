@@ -107,18 +107,22 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 			handleClose={() => setAuthOpen(false)}
 			disablePadding
 		>
-			<Box sx={sx.logo}>
-				<Image src={logo} alt="Logo" height={48} width={48} />
-			</Box>
+      { logo && (
+        <Box sx={sx.logo}>
+          <Image src={logo} alt="Logo" height={48} width={48} />
+        </Box>
+      )}
+      <Box sx={ sx.tabsContainer }>
 			<Tabs
-				variant="fullWidth"
 				value={tab}
 				onChange={handleTabChange}
 				sx={sx.tabs}
 			>
 				<Tab label="Login" />
-				<Tab label="Sign Up" />
+				<Tab label="Register" />
 			</Tabs>
+      </Box>
+      <Box p={4} sx={ sx.content }>
 			{tab === 0 && (
 				<LoginForm
 					errors={errors}
@@ -169,6 +173,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 					handleSubmit={handleSubmit}
 				/>
 			)}
+      </Box>
 		</Modal>
 	)
 }
@@ -180,7 +185,12 @@ const sx = {
 		display: 'flex',
 		justifyContent: 'center',
 	},
-	tabs: {
-		mb: 2,
-	},
+  content: {
+    width: '100%',
+  },
+  tabsContainer: {
+    width: '100%',
+    display: 'flex',        
+		justifyContent: 'center',
+  }
 }

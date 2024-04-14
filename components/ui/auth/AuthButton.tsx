@@ -98,7 +98,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 							onClick={handleLogin}
 							startIcon={showIcon && <Icon name="User" size={24} />}
 						>
-							Login
+							Sign In
 						</Button>
 					)}
 				</>

@@ -3,11 +3,16 @@ import { Chip } from '@mui/material'
 
 type LabelProps = {
 	label?: string
+  color?: string
 	styles?: React.CSSProperties
 }
 
 const Label: React.FC<LabelProps> = (props) => {
-	const { label, styles } = props
+	const { 
+    label, 
+    color='secondary.main', 
+    styles 
+  } = props
 
 	if (!label) return null
 	return (
@@ -15,6 +20,7 @@ const Label: React.FC<LabelProps> = (props) => {
 			label={label}
 			sx={{
 				...sx.chip,
+        bgcolor: color,
 				...styles,
 			}}
 			size="small"
@@ -27,7 +33,6 @@ export default Label
 const sx = {
 	chip: {
 		opacity: 0.8,
-		bgcolor: 'secondary.main',
 		color: 'secondary.contrastText',
 		characterSpacing: '1em',
 		fontWeight: 500,
