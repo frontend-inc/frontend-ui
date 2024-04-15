@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../../context'
+import { AppContext } from '../../../../context'
 import { Avatar, Box, Button, Stack, Typography } from '@mui/material'
-import { TouchableOpacity } from '../../../components'
-import { truncate } from '../../../helpers'
+import { TouchableOpacity } from '../../..'
+import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
-import { AVATAR_VERT_HEIGHT, AVATAR_VERT_WIDTH } from '../../../constants/index'
-import { CardProps } from '../../../types'
+import { AVATAR_VERT_HEIGHT, AVATAR_VERT_WIDTH } from '../../../../constants/index'
+import { CardProps } from '../../../../types'
 
 const AvatarVert: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)

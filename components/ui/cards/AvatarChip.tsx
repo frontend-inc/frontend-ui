@@ -1,9 +1,9 @@
 import React from 'react'
-import AvatarHoriz from './AvatarHoriz'
+import ChipHoriz from './variants/ChipHoriz'
 import { CardProps } from '../../../types'
 
 const AvatarChip: React.FC<CardProps> = (props) => {
-	return <AvatarHoriz height={32} width={32} {...props} description={null} />
+	return <ChipHoriz {...props} />
 }
 
 export default AvatarChip

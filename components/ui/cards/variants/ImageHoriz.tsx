@@ -1,20 +1,20 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../../context'
-import { Image, TouchableOpacity } from '../../../components'
-import { useRouter } from 'next/router'
 import { Box } from '@mui/material'
-import { IMAGE_VERT_HEIGHT, IMAGE_VERT_WIDTH } from '../../../constants/index'
-import { CardProps } from '../../../types'
+import { AppContext } from '../../../../context'
+import { Image, TouchableOpacity } from '../../..'
+import { useRouter } from 'next/router'
+import { IMAGE_HORIZ_HEIGHT } from '../../../../constants/index'
+import { CardProps } from '../../../../types'
 
-const ImageVert: React.FC<CardProps> = (props) => {
+const ImageHoriz: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		title,
 		image = '',
 		href,
+		height = IMAGE_HORIZ_HEIGHT,
 		handleClick,
 		objectFit = 'cover',
-		height = IMAGE_VERT_HEIGHT,
 		enableGradient = false,
 		enableOverlay = false,
 	} = props || {}
@@ -23,14 +23,19 @@ const ImageVert: React.FC<CardProps> = (props) => {
 
 	const handleItemClick = () => {
 		if (handleClick) {
-			handleClick()
+			return handleClick()
 		} else if (href) {
 			router.push(`${clientUrl}${href}`)
 		}
 	}
 
 	return (
-		<Box sx={sx.root}>
+		<Box
+			sx={{
+				...sx.root,
+				...(enableGradient && sx.gradient),
+			}}
+		>
 			<TouchableOpacity handleClick={handleItemClick}>
 				<Image
 					src={image}
@@ -45,7 +50,7 @@ const ImageVert: React.FC<CardProps> = (props) => {
 	)
 }
 
-export default ImageVert
+export default ImageHoriz
 
 const sx = {
 	root: {

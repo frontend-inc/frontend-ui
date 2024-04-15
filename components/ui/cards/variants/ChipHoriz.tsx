@@ -9,17 +9,13 @@ import {
 	ListItemText,
 	Typography,
 } from '@mui/material'
-import { truncate } from '../../../helpers'
-import { CardProps } from '../../../types'
+import { CardProps } from '../../../../types'
 
-const AvatarHoriz: React.FC<CardProps> = (props) => {
+const ChipHoriz: React.FC<CardProps> = (props) => {
 	const {
 		title,
-		description,
 		textVariant = 'body1',
 		image,
-		height = 128,
-		width = 128,
 		handleClick,
 		enableBorder = false,
 		enableGradient = false,
@@ -36,9 +32,7 @@ const AvatarHoriz: React.FC<CardProps> = (props) => {
 		>
 			<ListItem disablePadding disableGutters>
 				<ListItemButton
-					sx={{
-						minHeight: height + 44,
-					}}
+					sx={sx.listItemButton}
 					onClick={handleClick && handleClick}
 				>
 					<ListItemIcon>
@@ -47,8 +41,6 @@ const AvatarHoriz: React.FC<CardProps> = (props) => {
 								...sx.avatar,
 								...(enableGradient && sx.gradient),
 								...(enableOverlay && sx.overlay),
-								height: `${height}px`,
-								width: `${width}px`,
 							}}
 							src={image}
 							alt={title}
@@ -62,15 +54,6 @@ const AvatarHoriz: React.FC<CardProps> = (props) => {
 								{title}
 							</Typography>
 						}
-						secondary={
-							<Typography
-								variant="body2"
-								color="text.secondary"
-								sx={sx.description}
-							>
-								{truncate(description, 80)}
-							</Typography>
-						}
 					/>
 				</ListItemButton>
 			</ListItem>
@@ -78,13 +61,16 @@ const AvatarHoriz: React.FC<CardProps> = (props) => {
 	)
 }
 
-export default AvatarHoriz
+export default ChipHoriz
 
 const sx = {
 	listItem: {
 		my: 0,
 		p: 0,
 	},
+  listItemButton: {
+    minHeight: 50
+  },
 	gradient: {
 		'&::after': {
 			content: '""',
@@ -116,11 +102,8 @@ const sx = {
 	},
 	avatar: {
 		mr: 2,
-		height: '64px',
-		width: '64px',
+		height: '32px',
+		width: '32px',
 		backgroundImage: 'linear-gradient(45deg, #999999,#DDDDDD,#FAFAFA)',
-	},
-	description: {
-		maxWidth: 320,
 	},
 }

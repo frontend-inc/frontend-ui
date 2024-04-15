@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../../context'
+import { AppContext } from '../../../../context'
 import { Box, Button, Stack, Typography } from '@mui/material'
-import { Label, Image, TouchableOpacity } from '../../../components'
-import { truncate } from '../../../helpers'
+import { Label, Image, TouchableOpacity } from '../../..'
+import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
-import { CardProps } from '../../../types'
+import { CardProps } from '../../../../types'
 
 const CardHoriz: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)

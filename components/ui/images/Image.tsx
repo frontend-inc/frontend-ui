@@ -125,8 +125,4 @@ const sx = {
 		background: 'linear-gradient(to top, rgb(0,0,0,1.0), transparent)',
 		borderRadius: 1,
 	},
-	border: {
-		border: '1px solid',
-		borderColor: 'divider',
-	},
 }

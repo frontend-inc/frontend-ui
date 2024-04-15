@@ -1,11 +1,9 @@
 import React from 'react'
 import {
-	CardVert,
-	CardHoriz,
-	CoverVert,
-	CoverHoriz,
-	AvatarVert,
-	AvatarHoriz,
+	Card,
+	Cover,
+  AvatarCard,
+  AvatarChip 
 } from '../..'
 
 type CollectionCardProps = {
@@ -25,24 +23,26 @@ type CollectionCardProps = {
 }
 
 const CollectionCard: React.FC<CollectionCardProps> = (props) => {
-	const { layout = 'list', style = 'card', ...rest } = props
+	const { 
+    layout = 'list', 
+    style = 'card', 
+    ...rest 
+  } = props
 
-	const COMPONENTS = {
-		list: {
-			card: CardHoriz,
-			avatar: AvatarHoriz,
-			cover: CoverHoriz,
-		},
-		grid: {
-			card: CardVert,
-			avatar: AvatarVert,
-			cover: CoverVert,
-		},
+	const COMPONENTS = {		
+    card: Card,
+    avatar: AvatarCard,
+    cover: Cover		
 	}
 
-	let Component = COMPONENTS[layout][style] || CardVert
+	let Component = COMPONENTS[style] || Card
 
-	return <Component {...rest} />
+	return (
+    <Component 
+      direction={ layout === 'list' ? 'column' : 'row'}
+      {...rest} 
+    />
+  )
 }
 
 export default CollectionCard
