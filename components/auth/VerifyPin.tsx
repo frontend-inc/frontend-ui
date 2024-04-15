@@ -5,7 +5,7 @@ import {
 	VerifySendPinForm,
 	AuthScreen,
 	Loader,
-} from '../../../components'
+} from '..'
 import { useAuth } from 'frontend-js'
 
 import { useRouter } from 'next/router'

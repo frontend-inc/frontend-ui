@@ -1,8 +1,8 @@
 import React from 'react'
-import { AuthScreen, Loader } from '../../../components'
+import { AuthScreen, Loader } from '..'
 import { useAuth } from 'frontend-js'
 
-import { OneTimePasswordForm } from '../../../components'
+import { OneTimePasswordForm } from '..'
 import { useRouter } from 'next/router'
 
 type OneTimePasswordProps = {

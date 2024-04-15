@@ -3,8 +3,8 @@ import {
 	ForgotPasswordForm,
 	AuthScreen,
 	Loader,
-} from '../../../components'
-import { useAlerts } from '../../../hooks'
+} from '..'
+import { useAlerts } from '../../hooks'
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
 

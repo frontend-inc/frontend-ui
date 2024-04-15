@@ -1,7 +1,7 @@
 import React from 'react'
 import { Paper, Box, Container, Typography } from '@mui/material'
 import Image from 'next/image'
-import { useApp } from '../../../hooks'
+import { useApp } from '../../hooks'
 
 type AuthScreenProps = {
 	title: string

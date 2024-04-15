@@ -1,18 +1,18 @@
 import React from 'react'
 import { Button, Stack } from '@mui/material'
-import { IconLoading, TextInput } from '../../../components'
+import { IconLoading, TextInput } from '..'
 
-type OneTimePasswordFormProps = {
-	loading: boolean
-	errors: Record<string, any>
-	user: Record<string, any>
-	handleChange: (ev: any) => void
+type ForgotPasswordFormProps = {
+	errors: any
+	loading?: boolean
+	user: any
+	handleChange: (e: any) => void
 	handleSubmit: () => void
 	handleLogin?: () => void
 }
 
-const OneTimePasswordForm: React.FC<OneTimePasswordFormProps> = (props) => {
-	const { loading, errors, user, handleChange, handleSubmit, handleLogin } =
+const ForgotPasswordForm: React.FC<ForgotPasswordFormProps> = (props) => {
+	const { errors, loading, user, handleChange, handleSubmit, handleLogin } =
 		props
 
 	return (
@@ -21,17 +21,17 @@ const OneTimePasswordForm: React.FC<OneTimePasswordFormProps> = (props) => {
 				errors={errors}
 				name="email"
 				value={user?.email}
-				handleChange={handleChange}
 				placeholder="Enter your email"
+				handleChange={handleChange}
 			/>
 			<Button
 				fullWidth
 				variant="contained"
 				color="primary"
 				onClick={handleSubmit}
-				endIcon={<IconLoading loading={loading} />}
+				startIcon={<IconLoading loading={loading} />}
 			>
-				Send One-Time Password
+				Send Instructions
 			</Button>
 			{handleLogin && (
 				<Button fullWidth color="primary" onClick={handleLogin}>
@@ -42,4 +42,4 @@ const OneTimePasswordForm: React.FC<OneTimePasswordFormProps> = (props) => {
 	)
 }
 
-export default OneTimePasswordForm
+export default ForgotPasswordForm

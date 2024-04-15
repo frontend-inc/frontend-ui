@@ -1,3 +1,4 @@
+export * from './auth'
 export * from './ui'
 export * from './addons'
 export * from './web'

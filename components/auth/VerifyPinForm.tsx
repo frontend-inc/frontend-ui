@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Stack } from '@mui/material'
-import { IconLoading, TextInput } from '../../../components'
+import { IconLoading, TextInput } from '..'
 
 type SendPinFormProps = {
 	errors: Record<string, any>

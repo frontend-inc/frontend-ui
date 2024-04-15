@@ -68,39 +68,8 @@ export { default as Loader } from './layouts/Loader'
 export { default as LayoutScroll } from './layouts/LayoutScroll'
 
 // Theme
-export { default as ModeTheme } from './theme/ModeTheme'
+export { default as ColorModeTheme } from './theme/ColorModeTheme'
 
-//Auth
-export { default as AuthAvatar } from './auth/AuthAvatar'
-export { default as AuthButton } from './auth/AuthButton'
-export { default as AuthIconButton } from './auth/AuthIconButton'
-export { default as AuthLayout } from './auth/AuthLayout'
-export { default as AuthMenu } from './auth/AuthMenu'
-export { default as AuthModal } from './auth/AuthModal'
-export { default as AuthScreen } from './auth/AuthScreen'
-export { default as AuthFromCookie } from './auth/AuthFromCookie'
-export { default as ForgotPassword } from './auth/ForgotPassword'
-export { default as ForgotPasswordForm } from './auth/ForgotPasswordForm'
-export { default as GoogleLoginButton } from './auth/GoogleLoginButton'
-export { default as Login } from './auth/Login'
-export { default as LoginForm } from './auth/LoginForm'
-export { default as MyAccount } from './auth/MyAccount'
-export { default as MyAccountForm } from './auth/MyAccountForm'
-export { default as NewPassword } from './auth/NewPassword'
-export { default as NewPasswordForm } from './auth/NewPasswordForm'
-export { default as OneTimePassword } from './auth/OneTimePassword'
-export { default as OneTimePasswordForm } from './auth/OneTimePasswordForm'
-export { default as OneTimePasswordVerify } from './auth/OneTimePasswordVerify'
-export { default as OneTimePasswordVerifyMessage } from './auth/OneTimePasswordVerifyMessage'
-export { default as ResetPassword } from './auth/ResetPassword'
-export { default as ResetPasswordForm } from './auth/ResetPasswordForm'
-export { default as Signup } from './auth/Signup'
-export { default as SignupForm } from './auth/SignupForm'
-export { default as VerifyPin } from './auth/VerifyPin'
-export { default as VerifyPinForm } from './auth/VerifyPinForm'
-export { default as VerifySendPinForm } from './auth/VerifySendPinForm'
-
-// Details
 
 // Inputs
 export { default as ArrayInput } from './inputs/ArrayInput'

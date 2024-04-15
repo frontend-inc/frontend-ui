@@ -6,11 +6,11 @@ import {
 	ForgotPasswordForm,
 	VerifyPinForm,
 	VerifySendPinForm,
-} from '../../../components'
+} from '..'
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
 import { Tab, Tabs, Box } from '@mui/material'
-import { AppContext } from '../../../context'
+import { AppContext } from '../../context'
 
 type AuthModalProps = {
 	disableUsername?: boolean

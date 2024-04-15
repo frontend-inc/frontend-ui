@@ -1,8 +1,8 @@
 import React from 'react'
 import { Button, Stack } from '@mui/material'
-import { IconLoading, TextInput } from '../../../components'
+import { IconLoading, TextInput } from '..'
 
-type NewPasswordFormProps = {
+type OneTimePasswordFormProps = {
 	loading: boolean
 	errors: Record<string, any>
 	user: Record<string, any>
@@ -11,7 +11,7 @@ type NewPasswordFormProps = {
 	handleLogin?: () => void
 }
 
-const NewPasswordForm: React.FC<NewPasswordFormProps> = (props) => {
+const OneTimePasswordForm: React.FC<OneTimePasswordFormProps> = (props) => {
 	const { loading, errors, user, handleChange, handleSubmit, handleLogin } =
 		props
 
@@ -19,19 +19,10 @@ const NewPasswordForm: React.FC<NewPasswordFormProps> = (props) => {
 		<Stack spacing={1}>
 			<TextInput
 				errors={errors}
-				name="password"
-				value={user?.password}
+				name="email"
+				value={user?.email}
 				handleChange={handleChange}
-				type="password"
-				placeholder="New password"
-			/>
-			<TextInput
-				errors={errors}
-				name="password_confirmation"
-				value={user?.password_confirmation}
-				handleChange={handleChange}
-				type="password"
-				placeholder="Confirm password"
+				placeholder="Enter your email"
 			/>
 			<Button
 				fullWidth
@@ -40,7 +31,7 @@ const NewPasswordForm: React.FC<NewPasswordFormProps> = (props) => {
 				onClick={handleSubmit}
 				endIcon={<IconLoading loading={loading} />}
 			>
-				Save and Continue
+				Send One-Time Password
 			</Button>
 			{handleLogin && (
 				<Button fullWidth color="primary" onClick={handleLogin}>
@@ -51,4 +42,4 @@ const NewPasswordForm: React.FC<NewPasswordFormProps> = (props) => {
 	)
 }
 
-export default NewPasswordForm
+export default OneTimePasswordForm

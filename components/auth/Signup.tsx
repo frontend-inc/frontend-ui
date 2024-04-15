@@ -1,5 +1,5 @@
 import React from 'react'
-import { AuthLayout, AuthScreen, SignupForm } from '../../../components'
+import { AuthLayout, AuthScreen, SignupForm } from '..'
 import { useAuth } from 'frontend-js'
 
 import { useRouter } from 'next/router'

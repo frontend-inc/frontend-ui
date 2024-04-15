@@ -3,7 +3,7 @@ import { Box } from '@mui/material'
 import {
 	Alert,
 	LayoutScroll,
-	ModeTheme,
+	ColorModeTheme,
 	Header,
 	Footer,
 	Notifications,
@@ -66,7 +66,7 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 					...(!topNav && sx.sideNav),
 				}}
 			>
-				<ModeTheme mode={mode}>
+				<ColorModeTheme mode={mode}>
 					<Header
 						editing={editing}
 						topNav={topNav}
@@ -76,7 +76,7 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 						enableAuth={enableAuth}
 						enableShopify={enableShopify}
 					/>
-				</ModeTheme>
+				</ColorModeTheme>
 				<Box
 					sx={{
 						...sx.content,

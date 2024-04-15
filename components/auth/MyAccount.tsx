@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useAuth } from 'frontend-js'
-import { AuthScreen, Loader, Label, MyAccountForm } from '../../../components'
+import { AuthScreen, Loader, Label, MyAccountForm } from '..'
 import { useRouter } from 'next/router'
 
 type MyAccountProps = {

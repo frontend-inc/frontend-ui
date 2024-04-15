@@ -3,7 +3,7 @@ import {
 	AuthScreen,
 	Loader,
 	OneTimePasswordVerifyMessage,
-} from '../../../components'
+} from '..'
 import { useAuth } from 'frontend-js'
 
 import { useRouter } from 'next/router'

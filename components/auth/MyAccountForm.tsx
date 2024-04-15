@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Box } from '@mui/material'
-import { ImageInput, TextInput, SwitchInput } from '../../../components'
+import { ImageInput, TextInput, SwitchInput } from '..'
 
 type AccountFormProps = {
 	user: any

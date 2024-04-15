@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Divider, Stack } from '@mui/material'
-import { GoogleLoginButton, TextInput, IconLoading } from '../../../components'
+import { GoogleLoginButton, TextInput, IconLoading } from '..'
 
 type LoginFormProps = {
 	errors?: any

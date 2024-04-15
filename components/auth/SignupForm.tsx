@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack, Button } from '@mui/material'
-import { IconLoading, TextInput } from '../../../components'
+import { IconLoading, TextInput } from '..'
 
 type SignupFormProps = {
 	loading: boolean
