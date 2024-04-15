@@ -63,7 +63,7 @@ const TextInput: React.FC<TextInputPropsType> = (props) => {
 					...(direction == 'row' && !multiline && sx.stackVertical),
 				}}
 				direction={direction}
-				spacing={1}
+				spacing={0.5}
 			>
 				{label && (
 					<Typography sx={sx.label} variant="caption" color="text.secondary">

@@ -25,7 +25,7 @@ const AuthScreen: React.FC<AuthScreenProps> = (props) => {
 					</Box>
 					<Box sx={sx.titles}>
 						<Typography variant="h4" sx={sx.title}>
-							{title}
+							{title} 
 						</Typography>
 						{subtitle && (
 							<Typography variant="body1" sx={sx.subtitle}>

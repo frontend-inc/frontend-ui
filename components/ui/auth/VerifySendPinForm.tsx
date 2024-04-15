@@ -17,6 +17,7 @@ const SendPinForm: React.FC<SendPinFormProps> = (props) => {
 		<Stack spacing={1}>
 			<TextInput
 				errors={errors}
+        label="Email"
 				name="email"
 				value={user?.email}
 				placeholder="Enter your email"

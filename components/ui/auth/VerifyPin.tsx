@@ -11,7 +11,7 @@ import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
 
 type VerifyPinProps = {
-	title?: string
+	title: string
 	subtitle?: string
 	redirectUrl: string
 	loginUrl: string

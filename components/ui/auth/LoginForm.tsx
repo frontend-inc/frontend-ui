@@ -34,9 +34,10 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 			{enableGoogle && (
 				<GoogleLoginButton handleSuccess={handleGoogleSuccess} />
 			)}
-			<Stack spacing={1}>
+			<Stack spacing={1.5}>
 				<TextInput
 					errors={errors}
+          label="Email"
 					name="email"
 					value={user?.email}
 					placeholder="Email"
@@ -44,6 +45,7 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 				/>
 				<TextInput
 					errors={errors}
+          label="Password"
 					name="password"
 					value={user?.password}
 					type="password"

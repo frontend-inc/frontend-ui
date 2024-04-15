@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, Box } from '@mui/material'
 import { ImageInput, TextInput, SwitchInput } from '../../../components'
-import { Check } from 'lucide-react'
 
 type AccountFormProps = {
 	user: any
@@ -49,7 +48,6 @@ const MyAccountForm: React.FC<AccountFormProps> = (props) => {
 			<Button
 				color="primary"
 				variant="contained"
-				startIcon={<Check />}
 				onClick={handleSubmit}
 			>
 				Save

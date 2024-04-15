@@ -54,6 +54,8 @@ const Modal: React.FC<ModalProps> = (props) => {
 		<Dialog
 			sx={{ 
         ...sx.root,
+        // Manually reset the maxWidth breakpoints 
+        // since these are modifed in the Editor
         '& .MuiDialog-paper': {
           maxWidth: {
             sm: muiTheme.breakpoints.values[maxWidth],
