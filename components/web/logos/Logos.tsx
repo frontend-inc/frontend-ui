@@ -22,7 +22,7 @@ const Logos: React.FC<LogosProps> = (props) => {
 					{title}
 				</Typography>
 			)}
-			<Stack sx={sx.logos} direction="row" spacing={1}>
+			<Stack sx={sx.logos} direction="row" spacing={4}>
 				{items?.map((item, index) => (
           <Box width={120} key={index}>
             <Image
