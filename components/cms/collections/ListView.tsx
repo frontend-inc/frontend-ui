@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack } from '@mui/material'
-import { CardHoriz } from '../..'
+import { Card } from '../..'
 
 type ListViewProps = {
 	loading?: boolean
@@ -30,7 +30,7 @@ const ListView: React.FC<ListViewProps> = (props) => {
 		handleClick,
 		buttonText,
 		flexDirection = 'column',
-		component: Component = CardHoriz,
+		component: Component = Card,
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,

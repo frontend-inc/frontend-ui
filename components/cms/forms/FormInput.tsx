@@ -56,6 +56,9 @@ const FormInput: React.FC<FormInputProps> = (props) => {
       multiline: true,
       rows: 6
     },
+    "select": {
+      options: options
+    },
     "number": {
       type: "number"
     },

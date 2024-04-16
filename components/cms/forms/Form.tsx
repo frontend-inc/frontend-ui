@@ -4,6 +4,7 @@ import { Stack, Box, Button } from '@mui/material'
 import { IconLoading, Placeholder } from '../..'
 import FormFieldInput from './FormFieldInput'
 import { flattenDocument } from '../../../helpers'
+import { SYSTEM_FIELDS } from '../../../constants'
 import { get } from 'lodash'
 
 export type FormProps = {
@@ -38,13 +39,20 @@ const Form: React.FC<FormProps> = (props) => {
 		const { name } = ev.target
 		const value =
 			ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
-		setResource((prev) => ({
-			...prev,
-			data: {
-				...prev.data,
-				[name]: value,
-			},
-		}))
+    if(SYSTEM_FIELDS.includes(name)){
+      setResource((prev) => ({
+        ...prev,
+        [name]: value 
+      }))
+    }else{
+      setResource((prev) => ({
+        ...prev,
+        data: {
+          ...prev.data,
+          [name]: value,
+        },
+      }))
+    }
 	}
 
 	const handleRemove = async (name) => {
@@ -80,8 +88,9 @@ const Form: React.FC<FormProps> = (props) => {
           <FormFieldInput
             key={index}
             field={field}
-            value={get(flattenDocument(resource?.data), field.name)}
+            value={get(flattenDocument(resource), field.name)}
             handleChange={handleDataChange}
+            handleRemove={handleRemove}
           />
         ))}
 				<Button

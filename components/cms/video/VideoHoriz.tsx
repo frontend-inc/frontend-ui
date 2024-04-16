@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { CoverHoriz, VideoModal } from '../..'
+import { Cover, VideoModal } from '../..'
 import { CardProps } from '../../../types'
 import { VIDEO_HORIZ_HEIGHT, VIDEO_HORIZ_WIDTH } from '../../../constants/index'
 
@@ -26,7 +26,8 @@ const VideoVert: React.FC<CardProps> = (props) => {
 	}
 
 	return !open ? (
-		<CoverHoriz
+		<Cover
+      direction="column"
 			title={title}
 			image={image}
 			handleClick={handleItemClick}

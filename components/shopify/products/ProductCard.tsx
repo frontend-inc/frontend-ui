@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react'
-import { Fade, Button, Box, Stack, Typography } from '@mui/material'
+import { Button, Box, Stack, Typography } from '@mui/material'
 import { truncate } from '../../../helpers'
-import { PRODUCT_CARD_HEIGHT } from '../../../constants/index'
 import { ProductType } from 'frontend-shopify'
 import { ShopContext } from 'frontend-shopify'
 import { formatCurrency } from 'frontend-shopify'
@@ -27,7 +26,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 	const {
 		product,
 		handleClick,
-		height = PRODUCT_CARD_HEIGHT,
+		height = 320,
 		enableBorder = false,
 		enableAddToCart = false,
 		enableQuantity = false,

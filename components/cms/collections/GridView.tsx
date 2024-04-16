@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Grid } from '@mui/material'
-import { CardVert } from '../..'
+import { Card } from '../..'
 
 type GridViewProps = {
 	loading?: boolean
@@ -30,7 +30,7 @@ const GridView: React.FC<GridViewProps> = (props) => {
 		md = 4,
 		lg = 4,
 		xl = 4,
-		component: Component = CardVert,
+		component: Component = Card,
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,

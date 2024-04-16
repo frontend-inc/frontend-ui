@@ -4,6 +4,7 @@ import { InputPropsType } from '../../../types'
 
 type NoSpaceInputPropsType = InputPropsType & {
 	joinChar?: string
+  disableLowerCase?: boolean
 }
 
 const NoSpaceInput: React.FC<NoSpaceInputPropsType> = (props) => {
@@ -17,11 +18,15 @@ const NoSpaceInput: React.FC<NoSpaceInputPropsType> = (props) => {
 		placeholder,
 		handleChange,
 		disabled,
+    disableLowerCase
 	} = props
 
 	const handleInputChange = (ev) => {
 		let { value } = ev.target
-		value = value.replace(' ', joinChar).toLowerCase()
+		value = value.replace(' ', joinChar)
+    if(!disableLowerCase){
+      value = value.toLowerCase()
+    }
 		handleChange({
 			target: {
 				name,
