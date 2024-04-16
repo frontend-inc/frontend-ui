@@ -60,7 +60,7 @@ const Section: React.FC<SectionProps> = (props) => {
 export default Section
 
 const sx = {
-	root: {
+	root: {    
 		width: '100%',
 		minHeight: '60px',
 		display: 'flex',
@@ -69,6 +69,7 @@ const sx = {
 		alignItems: 'center',
 	},
 	container: {
+    transition: 'all 0.3s ease-in-out',
 		width: '100%',
 		overflowX: 'scroll',
 		'&::-webkit-scrollbar': {

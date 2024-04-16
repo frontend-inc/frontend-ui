@@ -83,6 +83,7 @@ const sx = {
     maxWidth: '100%',
     display: 'grid',
     gridTemplateColumns: {
+      lg: 'repeat(4, 1fr)',
       md: '1fr 1fr 1fr',
       sm: '1fr 1fr',
       xs: '1fr',
