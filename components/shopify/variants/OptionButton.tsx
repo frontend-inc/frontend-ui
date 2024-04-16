@@ -20,8 +20,8 @@ const OptionButton: React.FC<OptionButtonProps> = (props) => {
 				...sx.button,
 				...(active && sx.active),
 			}}
-			variant={active ? 'contained' : 'outlined'}
-			color="primary"
+			variant="contained"
+			color={ active ? 'primary' : 'secondary' }
 			onClick={() => handleClick(name, value)}
 		>
 			{children}
