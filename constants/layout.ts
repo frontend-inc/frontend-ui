@@ -26,9 +26,6 @@ export const IMAGE_HORIZ_WIDTH = 960
 
 export const PDP_IMAGE_HEIGHT = 360
 
-export const PRODUCT_CARD_HEIGHT = 320
-export const PRODUCT_CARD_WIDTH = 320
-
 export const FEATURED_CARD_HEIGHT = 360
 export const FEATURED_CARD_WIDTH = 360
 

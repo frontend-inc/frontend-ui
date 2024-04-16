@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ProductType } from 'frontend-shopify'
 import SwipeableViews from 'react-swipeable-views'
-import { TouchableOpacity } from '../../../../components'
+import { Image, TouchableOpacity } from '../../../../components'
 import { Box, Stack, MobileStepper } from '@mui/material'
 import {
 	PRODUCT_CARD_HEIGHT,
@@ -13,9 +13,10 @@ type SwipeableProductImagesProps = {
 	product: ProductType
 	height?: number
 	width?: number
-	handleClick?: () => void
+	handleClick: () => void
 	objectFit?: 'contain' | 'cover'
 	responsiveHeight?: boolean
+  disableBorderRadius?: boolean
 }
 
 const SwipeableProductImages: React.FC<SwipeableProductImagesProps> = (
@@ -23,10 +24,10 @@ const SwipeableProductImages: React.FC<SwipeableProductImagesProps> = (
 ) => {
 	const {
 		product,
-		height = PRODUCT_CARD_HEIGHT,
-		width = PRODUCT_CARD_WIDTH,
-		handleClick,
+		height = 320,
+		handleClick,    
 		objectFit = 'cover',
+    disableBorderRadius = false,
 		responsiveHeight = false,
 	} = props
 
@@ -42,9 +43,12 @@ const SwipeableProductImages: React.FC<SwipeableProductImagesProps> = (
 		<Stack
 			sx={{
 				...sx.root,
-				height: !responsiveHeight && `${height}px`,
+				height: !responsiveHeight ? `${height}px` : null,
 				minHeight: `${height}px`,
-				minWidth: !responsiveHeight && `${width}px`,
+        width: { 
+          sm: '100%',
+          xs: "100%"
+        }        
 			}}
 			direction="column"
 		>
@@ -64,17 +68,15 @@ const SwipeableProductImages: React.FC<SwipeableProductImagesProps> = (
 							}}
 						>
 							<TouchableOpacity key={image.id} handleClick={handleClick}>
-								<img
+								<Image
 									src={shopifyResizeImage(image?.url, {
-										width: width * 2,
-										height: height * 2,
+										width: 600,
+										height: 600,
 									})}
 									alt={product?.title}
-									width={width}
 									height={height}
-									style={{
-										objectFit,
-									}}
+                  objectFit={ objectFit }
+                  disableBorderRadius={disableBorderRadius}
 								/>
 							</TouchableOpacity>
 						</Box>

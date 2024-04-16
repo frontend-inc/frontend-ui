@@ -136,7 +136,7 @@ const sx = {
 		},
 		pt: {
 			sm: 0,
-			xs: '60px',
+			xs: '64px',
 		},
 	},
 	content: {
@@ -157,8 +157,8 @@ const sx = {
 		},
 	},
 	contentTopNav: {
-		pt: '60px',
-		minHeight: 'calc(100% - 60px)',
+		pt: '64px',
+		minHeight: 'calc(100% - 64px)',
 	},
 	page: {
 		width: '100%',

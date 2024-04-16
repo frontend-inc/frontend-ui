@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
-import { Grid, Box } from '@mui/material'
+import { Box } from '@mui/material'
 import { ProductCard } from '../../../components/shopify'
 import { useRouter } from 'next/router'
 import { useSegment } from '../../../hooks/addons'
 import { ProductType } from 'frontend-shopify'
 import { AppContext } from '../../../context'
+import Grid from '@mui/material/Unstable_Grid2'
 
 type ProductGridProps = {
 	editing?: boolean
@@ -52,24 +53,22 @@ const ProductGrid: React.FC<ProductGridProps> = (props) => {
 	}
 
 	return (
-		<Grid container spacing={0}>
-			{products?.map((product) => (
-				<Grid item xs={xs} sm={sm} md={md} lg={lg} xl={xl} key={product?.id}>
-					<Box sx={sx.item} key={product?.id}>
-						<ProductCard
-							product={product}
-							handleClick={() => handleClick(product)}
-							enableBorder={enableBorder}
-							enableAddToCart={enableAddToCart}
-							enableQuickShop={enableQuickShop}
-							enableQuantity={enableQuantity}
-							enableOkendoStarRating={enableOkendoStarRating}
-							buttonText={buttonText}
-						/>
-					</Box>
-				</Grid>
-			))}
-		</Grid>
+		<Box sx={ sx.grid }>
+			{products?.map((product) => (				
+        <Box sx={sx.item} key={product?.id}>
+          <ProductCard
+            product={product}
+            handleClick={() => handleClick(product)}
+            enableBorder={enableBorder}
+            enableAddToCart={enableAddToCart}
+            enableQuickShop={enableQuickShop}
+            enableQuantity={enableQuantity}
+            enableOkendoStarRating={enableOkendoStarRating}
+            buttonText={buttonText}
+          />
+        </Box>
+      ))}
+		</Box>
 	)
 }
 
@@ -78,5 +77,15 @@ export default ProductGrid
 const sx = {
 	item: {
 		p: 1,
+    gridColumn: 'span 1'
 	},
+  grid: {
+    maxWidth: '100%',
+    display: 'grid',
+    gridTemplateColumns: {
+      md: '1fr 1fr 1fr',
+      sm: '1fr 1fr',
+      xs: '1fr',
+    }
+  }
 }

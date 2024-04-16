@@ -61,8 +61,11 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 		>
 			<SwipeableProductImages
 				product={product}
-				height={height}
+				height={height}        
 				handleClick={handleItemClick}
+        disableBorderRadius={ 
+          enableBorder ? true : false
+        }
 			/>
 			<Stack
 				spacing={1}
@@ -134,6 +137,7 @@ const sx = {
 		borderColor: 'divider',
 	},
 	text: {
+    py: 1,
 		height: '80px',
 	},
 	textWithReviews: {
