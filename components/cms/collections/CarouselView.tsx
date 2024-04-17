@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import { Carousel, CardVert } from '../..'
+import { Carousel, Card } from '../../../components'
 import { DocumentType } from '../../../types'
 
 type CarouselViewProps = {
@@ -24,7 +24,7 @@ const CarouselView: React.FC<CarouselViewProps> = (props) => {
 		editing,
 		buttonText,
 		handleClick,
-		component: Component = CardVert,
+		component: Component = Card,
 		enableAutoPlay = false,
 		enableArrows = false,
 		enableDots = true,
@@ -44,6 +44,7 @@ const CarouselView: React.FC<CarouselViewProps> = (props) => {
 					<Component
 						key={index}
 						editing={editing}
+            direction='row'
 						title={item?.title}
 						description={item?.description}
 						image={item?.image?.url}

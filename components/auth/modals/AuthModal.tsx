@@ -107,7 +107,6 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
         <Tabs
           value={tab}
           onChange={handleTabChange}
-          sx={sx.tabs}
         >
           <Tab label="Login" />
           <Tab label="Register" />

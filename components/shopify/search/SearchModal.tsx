@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react'
-import { SearchInput, TextInput, Placeholder } from '../../../components'
+import { Icon, SearchInput, Placeholder } from '../../../components'
 import { ProductGrid } from '../../../components/shopify'
 import {
 	AppBar,
@@ -12,13 +12,9 @@ import {
 import { ShopContext } from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
-import { X, Search } from 'lucide-react'
-import { useTheme } from '@mui/material/styles'
 
 const SearchModal: React.FC = () => {
 	// Minimum number of characters to track analytics
-
-	const theme = useTheme()
 	const MIN_ANALYTICS_CHARS = 5
 
 	const { trackProductsSearched } = useSegment()
@@ -45,7 +41,7 @@ const SearchModal: React.FC = () => {
 
 	const handleClear = () => setKeywords('')
 
-	const handleSearch = () => {
+	const handleSearch = (keywords) => {
 		if (keywords?.length >= MIN_ANALYTICS_CHARS) {
 			trackProductsSearched(keywords)
 		}
@@ -84,12 +80,13 @@ const SearchModal: React.FC = () => {
 								name="keywords"
 								value={keywords}
 								handleChange={handleChange}
+                handleSearch={handleSearch}
 								placeholder={'Search...'}
 							/>
 						</Box>
 						<Box sx={sx.spacer}>
 							<IconButton onClick={handleClose}>
-								<X size={24} color={theme.palette.text.primary} />
+								<Icon name="X" size={24} />
 							</IconButton>
 						</Box>
 					</Stack>

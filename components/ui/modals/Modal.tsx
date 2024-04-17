@@ -21,7 +21,7 @@ type ModalProps = {
 	subtitle?: string
 	actions?: any
 	children?: any
-	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | false
+	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' 
 	secondaryActions?: any
 	disablePadding?: boolean
 	fullScreen?: boolean

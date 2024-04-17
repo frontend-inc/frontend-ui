@@ -3,17 +3,13 @@ import { ProductType } from 'frontend-shopify'
 import SwipeableViews from 'react-swipeable-views'
 import { Image, TouchableOpacity } from '../../../../components'
 import { Box, Stack, MobileStepper } from '@mui/material'
-import {
-	PRODUCT_CARD_HEIGHT,
-	PRODUCT_CARD_WIDTH,
-} from '../../../../constants/index'
 import { shopifyResizeImage } from 'frontend-shopify'
 
 type SwipeableProductImagesProps = {
 	product: ProductType
 	height?: number
 	width?: number
-	handleClick: () => void
+	handleClick?: () => void
 	objectFit?: 'contain' | 'cover'
 	responsiveHeight?: boolean
   disableBorderRadius?: boolean

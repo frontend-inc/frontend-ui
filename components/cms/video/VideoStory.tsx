@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import { AvatarVert, VideoModal } from '../..'
+import { AvatarCard, VideoModal } from '../..'
 import { CardProps } from '../../../types'
 
 const VideoVert: React.FC<CardProps> = (props) => {
 	const {
-		editing,
 		label,
 		title,
 		image = '',
@@ -26,7 +25,9 @@ const VideoVert: React.FC<CardProps> = (props) => {
 	}
 
 	return !open ? (
-		<AvatarVert
+		<AvatarCard
+      direction="row"
+      label={label}
 			image={image}
 			handleClick={handleItemClick}
 			buttonText={buttonText}

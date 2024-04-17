@@ -49,12 +49,10 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 				<AuthScreen
 					title={`${currentUser?.first_name} ${currentUser?.last_name}`}
 					subtitle={
-            <Label label={
             currentUser?.username ? 
               `@${currentUser?.username}` :
               'Update account'
-            } />
-}
+          }
 				>
 					<MyAccountForm
 						user={user}
