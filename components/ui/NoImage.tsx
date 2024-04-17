@@ -39,7 +39,7 @@ const sx = {
 		backgroundImage: 'linear-gradient(45deg, #999999,#DDDDDD,#FAFAFA)',
 	},
   darkMode: {
-    backgroundImage: 'linear-gradient(45deg, #444444, #111111,#000000)'
+    backgroundImage: 'linear-gradient(45deg, #666666, #222222,#000000)'
   },
 	disableBorder: {
 		border: 'none',		

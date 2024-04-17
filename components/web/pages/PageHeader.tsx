@@ -30,9 +30,8 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 	} = props
 
 	return (
-		<Stack sx={sx.root} direction="column" spacing={3}>
+		<Stack sx={sx.root} direction="column" spacing={2}>
 			<Breadcrumbs maxLinks={maxLinks} links={links} />
-
 			<Stack
 				direction={{
 					xs: 'column',
@@ -78,8 +77,11 @@ const sx = {
 	},
 	actions: {
 		display: 'flex',
-		alignItems: 'center',
+		alignItems: 'flex-start',
 		justifyContent: 'flex-end',
-		py: 1,
+		pb: {
+      sm: 0,
+      xs: 1
+    }
 	},
 }

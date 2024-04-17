@@ -23,7 +23,7 @@ const Person: React.FC<PersonProps> = (props) => {
 		<Box sx={sx.root}>
 			<Stack
 				sx={sx.container}
-				direction={{ md: 'row', xs: 'column' }}
+				direction={{ sm: 'row', xs: 'column' }}
 				spacing={4}
 			>
 				<Stack direction="column">
@@ -95,7 +95,7 @@ const sx = {
 		width: '100%',
 		justifyContent: 'flex-start',
 		alignItems: {
-			md: 'flex-start',
+			sm: 'flex-start',
 			xs: 'center',
 		},
 	},
