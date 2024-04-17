@@ -11,8 +11,8 @@ type FieldImageProps = {
 }
 
 const FieldImage: React.FC<FieldImageProps> = (props) => {
-	const { value, objectFit = 'cover' } = props
-	return <Image src={value} height={IMAGE_HORIZ_HEIGHT} objectFit={objectFit} />
+	const { value, objectFit = 'cover' } = props  
+	return <Image src={value?.url || value } height={IMAGE_HORIZ_HEIGHT} objectFit={objectFit} />
 }
 
 export default FieldImage
