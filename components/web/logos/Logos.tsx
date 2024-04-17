@@ -23,17 +23,16 @@ const Logos: React.FC<LogosProps> = (props) => {
 			)}
 			<Stack sx={sx.logos} direction="row" spacing={4}>
 				{items?.map((item, index) => (
-					<Box width={120} key={index}>
-						<Image
-							key={index}
-							alt="Logo"
-							image={item?.image}
-							height={60}
-							width={120}
-							disableBorderRadius
-							enableBorder={false}
-						/>
-					</Box>
+          <Box width={120} key={index}>
+            <Image
+              key={index}
+              alt="Logo"
+              src={item?.image}
+              height={60}
+              width={120}
+              disableBorderRadius
+            />
+          </Box>
 				))}
 			</Stack>
 			{items?.length === 0 && (
