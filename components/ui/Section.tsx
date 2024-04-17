@@ -8,11 +8,11 @@ type SectionProps = {
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 	py?: number
 	px?: number
-  enableAnimation?: boolean
+  enableTransitions?: boolean
 }
 
 const Section: React.FC<SectionProps> = (props) => {
-	const { enableAnimation=false, children, bgcolor, maxWidth, py = 6, px = 3 } = props
+	const { enableTransitions=false, children, bgcolor, maxWidth, py = 6, px = 3 } = props
 
 	const [width, setWidth] = useState<string | number>(
 		muiTheme.breakpoints.values.md
@@ -46,7 +46,7 @@ const Section: React.FC<SectionProps> = (props) => {
 				<Box
 					sx={{
 						...sx.container,
-            ...(enableAnimation && sx.containerAnimated),
+            ...(enableTransitions && sx.containerTransitions),
 						py,
 						px,
 						maxWidth: width,
@@ -77,7 +77,7 @@ const sx = {
 			display: 'none',
 		},
 	},
-  containerAnimated: {
+  containerTransitions: {
     transition: 'all 0.3s ease-in-out',
   },
 	title: {

@@ -4,7 +4,7 @@ import { Box } from '@mui/material'
 type NoImageProps = {
 	height?: number
 	width?: number
-	border?: boolean,
+	enableBorder?: boolean,
   disableBorderRadius?: boolean,
 }
 

@@ -9,7 +9,7 @@ export type HeadingProps = {
 
 export type SectionProps = {
 	children: React.ReactNode
-  enableAnimation?: boolean
+  enableTransitions?: boolean
 	bgcolor?: string
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 	py?: number

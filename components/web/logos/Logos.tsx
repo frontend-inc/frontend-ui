@@ -1,7 +1,6 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
 import { Placeholder } from '../..'
-import Logo from './Logo'
 import { Image } from '../../../components'
 
 export type LogosProps = {
