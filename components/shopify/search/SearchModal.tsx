@@ -51,7 +51,7 @@ const SearchModal: React.FC = () => {
 
 	useEffect(() => {
 		if (keywords?.length > 0) {
-			handleSearch()
+			handleSearch(keywords)
 		} else {
 			setProducts(null)
 			setExpanded(false)

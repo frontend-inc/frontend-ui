@@ -27,11 +27,10 @@ const Logos: React.FC<LogosProps> = (props) => {
             <Image
               key={index}
               alt="Logo"
-              image={item?.image}
+              src={item?.image}
               height={60}
               width={120}
               disableBorderRadius
-              enableBorder={false}
             />
           </Box>
 				))}
