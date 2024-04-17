@@ -9,7 +9,7 @@ export type HeadingProps = {
 
 export type SectionProps = {
 	children: React.ReactNode
-  enableTransitions?: boolean
+	enableTransitions?: boolean
 	bgcolor?: string
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 	py?: number
@@ -18,7 +18,7 @@ export type SectionProps = {
 
 export type CardProps = {
 	editing?: boolean
-  direction?: 'row' | 'column'
+	direction?: 'row' | 'column'
 	label?: string
 	title?: string
 	description?: string
@@ -40,7 +40,7 @@ export type CardProps = {
 }
 
 export type PriceType = {
-  label: string 
+	label: string
 	title: string
 	price: number
 	features: {

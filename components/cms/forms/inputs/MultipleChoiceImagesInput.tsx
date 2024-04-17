@@ -2,7 +2,9 @@ import React from 'react'
 import MultipleChoiceInput from './MultipleChoiceInput'
 import { MultipleChoiceInputProps } from './MultipleChoiceInput'
 
-const MultipleChoiceImagesInput: React.FC<MultipleChoiceInputProps> = (props) => {
+const MultipleChoiceImagesInput: React.FC<MultipleChoiceInputProps> = (
+	props
+) => {
 	const {
 		label,
 		direction = 'column',
@@ -15,7 +17,7 @@ const MultipleChoiceImagesInput: React.FC<MultipleChoiceInputProps> = (props) =>
 	return (
 		<MultipleChoiceInput
 			multiSelect
-      layout="grid"
+			layout="grid"
 			direction={direction}
 			name={name}
 			label={label}

@@ -50,11 +50,11 @@ const CardVert: React.FC<CardProps> = (props) => {
 						height={height}
 						objectFit={objectFit}
 						alt={title}
-            label={ label }
+						label={label}
 						enableGradient={enableGradient}
 						disableBorderRadius={enableBorder}
 						enableOverlay={enableOverlay}
-					/>          
+					/>
 				</TouchableOpacity>
 			</Box>
 			<Stack
@@ -65,7 +65,7 @@ const CardVert: React.FC<CardProps> = (props) => {
 				}}
 			>
 				<Stack spacing={0}>
-					<Typography color="textPrimary" variant='subtitle2'>
+					<Typography color="textPrimary" variant="subtitle2">
 						{truncate(title)}
 					</Typography>
 				</Stack>

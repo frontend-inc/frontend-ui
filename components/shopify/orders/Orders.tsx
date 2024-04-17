@@ -35,8 +35,8 @@ const ShopifyCustomerOrders: React.FC<ShopifyCustomerOrdersProps> = (props) => {
 	}, [orders])
 
 	return (
-    <>
-		  <Loader loading={loading} />
+		<>
+			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<OrderList orders={orders} handleClick={handleClick} />
 			</AuthScreen>

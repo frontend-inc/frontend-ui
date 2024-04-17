@@ -1,9 +1,5 @@
 import React, { useEffect } from 'react'
-import {
-	ResetPasswordForm,
-	AuthScreen,
-	Loader,
-} from '../..'
+import { ResetPasswordForm, AuthScreen, Loader } from '../..'
 import { useAuth } from 'frontend-js'
 
 import { useRouter } from 'next/router'
@@ -45,8 +41,8 @@ const ResetPassword: React.FC<ResetPasswordProps> = (props) => {
 	}
 
 	return (
-    <>
-		  <Loader loading={loading} />
+		<>
+			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<ResetPasswordForm
 					loading={loading}

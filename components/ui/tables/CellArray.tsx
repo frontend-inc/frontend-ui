@@ -10,7 +10,7 @@ const CellArray: React.FC<CellArrayProps> = (props) => {
 	const { value } = props
 	const values = value?.length > 0 ? value : null
 
-  const MAX_TAGS = 2 
+	const MAX_TAGS = 2
 
 	const [open, setOpen] = useState(false)
 	const [visibleTags, setVisibleTags] = useState<string[]>([])
@@ -36,12 +36,10 @@ const CellArray: React.FC<CellArrayProps> = (props) => {
 			{visibleTags?.map((value, index) => (
 				<Label key={index} label={value} />
 			))}
-			{!open &&  visibleTags?.length > MAX_TAGS && (
-        <Button sx={ sx.button } onClick={handleToggleSeeAll}>
-          <Label             
-            label={`...`} 
-          />				
-        </Button> 				
+			{!open && visibleTags?.length > MAX_TAGS && (
+				<Button sx={sx.button} onClick={handleToggleSeeAll}>
+					<Label label={`...`} />
+				</Button>
 			)}
 		</Stack>
 	)

@@ -42,7 +42,7 @@ const SignIn: React.FC<SignInProps> = (props) => {
 
 	return (
 		<>
-      <Loader loading={loading} />
+			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<SignInForm
 					errors={errors}

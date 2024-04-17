@@ -10,7 +10,13 @@ const WebCoverImage: React.FC<WebCoverImageProps> = (props) => {
 	const { enableTransitions, bgcolor, py, px, maxWidth, ...rest } = props
 
 	return (
-		<Section enableTransitions={enableTransitions} bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
+		<Section
+			enableTransitions={enableTransitions}
+			bgcolor={bgcolor}
+			py={py}
+			px={px}
+			maxWidth={maxWidth}
+		>
 			<CoverImage {...rest} />
 		</Section>
 	)

@@ -44,7 +44,7 @@ const CarouselView: React.FC<CarouselViewProps> = (props) => {
 					<Component
 						key={index}
 						editing={editing}
-            direction='row'
+						direction="row"
 						title={item?.title}
 						description={item?.description}
 						image={item?.image?.url}

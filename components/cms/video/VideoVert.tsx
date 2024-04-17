@@ -30,7 +30,7 @@ const VideoVert: React.FC<CardProps> = (props) => {
 
 	return !open ? (
 		<Cover
-      direction="row"
+			direction="row"
 			title={title}
 			image={image}
 			handleClick={handleItemClick}

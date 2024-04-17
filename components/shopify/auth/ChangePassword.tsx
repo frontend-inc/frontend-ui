@@ -40,8 +40,8 @@ const ChangePassword: React.FC<ChangePasswordProps> = (props) => {
 	}
 
 	return (
-    <>
-		  <Loader loading={loading} />
+		<>
+			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<ChangePasswordForm
 					errors={errors}

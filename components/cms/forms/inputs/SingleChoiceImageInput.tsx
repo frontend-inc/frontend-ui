@@ -14,7 +14,7 @@ const SingleChoiceInput: React.FC<MultipleChoiceInputProps> = (props) => {
 
 	return (
 		<MultipleChoiceInput
-      layout="grid"
+			layout="grid"
 			multiSelect={false}
 			direction={direction}
 			name={name}

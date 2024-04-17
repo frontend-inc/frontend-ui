@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-	ForgotPasswordForm,
-	AuthScreen,
-	Loader,
-} from '../..'
+import { ForgotPasswordForm, AuthScreen, Loader } from '../..'
 import { useAlerts } from '../../../hooks'
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
@@ -39,7 +35,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (props) => {
 
 	return (
 		<>
-      <Loader loading={loading} />
+			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<ForgotPasswordForm
 					errors={errors}

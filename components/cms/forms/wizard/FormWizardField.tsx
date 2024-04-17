@@ -7,13 +7,13 @@ import FormWizardInput from './FormWizardInput'
 
 export type FormWizardProps = {
 	field: {
-    variant: string 
+		variant: string
 		title: string
 		description: string
 		label: string
 		placeholder: string
 		name: string
-    options: any
+		options: any
 	}
 	handleChange: (ev: any) => void
 	handleRemove: (name: string) => void
@@ -23,10 +23,10 @@ export type FormWizardProps = {
 }
 
 const WIZARD_FIELD_VARIENTS = [
-  'multiple_choice',  
-  'multiple_choice_images',
-  'single_choice',
-  'single_choice_image',
+	'multiple_choice',
+	'multiple_choice_images',
+	'single_choice',
+	'single_choice_image',
 ]
 
 const FormWizardField: React.FC<FormWizardProps> = (props) => {
@@ -64,25 +64,25 @@ const FormWizardField: React.FC<FormWizardProps> = (props) => {
 				{field && (
 					<>
 						{WIZARD_FIELD_VARIENTS.includes(field.variant) ? (
-							<FormWizardInput 
-								name={ field.name }
-                label={ field.label }
-                placeholder={ field.placeholder }
-                variant={ field.variant }
-                options={ field.options }                
+							<FormWizardInput
+								name={field.name}
+								label={field.label}
+								placeholder={field.placeholder}
+								variant={field.variant}
+								options={field.options}
 								value={get(flattenDocument(resource), field.name)}
-								handleChange={handleChange}								
+								handleChange={handleChange}
 							/>
 						) : (
 							<FormInput
-                name={ field.name }
-                label={ field.label }
-                placeholder={ field.placeholder }
-                variant={ field.variant }
-                options={ field.options }                
+								name={field.name}
+								label={field.label}
+								placeholder={field.placeholder}
+								variant={field.variant}
+								options={field.options}
 								value={get(flattenDocument(resource?.data), field.name)}
 								handleChange={handleDataChange}
-                handleRemove={handleRemove}
+								handleRemove={handleRemove}
 							/>
 						)}
 					</>

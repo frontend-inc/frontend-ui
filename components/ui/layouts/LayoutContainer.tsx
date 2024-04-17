@@ -7,7 +7,7 @@ import {
 	Header,
 	Footer,
 	Notifications,
-  AuthModal
+	AuthModal,
 } from '../../../components'
 import { NotificationType } from '../../../types'
 import { MenuLinkType } from '../../..'
@@ -107,8 +107,8 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 						/>
 					</LayoutScroll>
 				</Box>
-			</Box>      
-      <AuthModal />      
+			</Box>
+			<AuthModal />
 		</Box>
 	)
 }

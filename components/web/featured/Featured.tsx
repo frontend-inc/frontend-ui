@@ -30,7 +30,7 @@ const Featured: React.FC<FeaturedProps> = (props) => {
 			<Stack spacing={6}>
 				{items?.map((item, i) => (
 					<FeaturedCard
-            key={i}
+						key={i}
 						title={item?.title}
 						description={item?.description}
 						image={item?.image}

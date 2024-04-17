@@ -28,37 +28,36 @@ type CellProps = {
 const Cell: React.FC<CellProps> = (props) => {
 	let { field, row, value, handleClick } = props
 
-  const componentMapper = {
-    "array": CellArray,
-    "boolean": CellBoolean,
-    "date": CellDate,
-    "datetime": CellDate,
-    "image": CellImage,
-    "video": CellVideo,
-    "json": CellJSON,
-    "url": CellLink,
-    "rating": CellRating,
-    "number": CellString,
-    "text": CellText,
-    "price": CellPrice,
-    "shopify_product": CellText,
-    "shopify_collection": CellText,
-    "habtm": CellHABTM,
-    "string": CellString,
-    "select": CellEnum
-  }
+	const componentMapper = {
+		array: CellArray,
+		boolean: CellBoolean,
+		date: CellDate,
+		datetime: CellDate,
+		image: CellImage,
+		video: CellVideo,
+		json: CellJSON,
+		url: CellLink,
+		rating: CellRating,
+		number: CellString,
+		text: CellText,
+		price: CellPrice,
+		shopify_product: CellText,
+		shopify_collection: CellText,
+		habtm: CellHABTM,
+		string: CellString,
+		select: CellEnum,
+	}
 
-  const CellComponent = componentMapper[field.variant]
+	const CellComponent = componentMapper[field.variant]
 
 	return (
-    <CellComponent 
-      value={value} 
-      row={row} 
-      field={field} 
-      handleClick={handleClick}
-    />			
+		<CellComponent
+			value={value}
+			row={row}
+			field={field}
+			handleClick={handleClick}
+		/>
 	)
 }
 
 export default Cell
-

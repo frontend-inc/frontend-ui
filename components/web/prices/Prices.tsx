@@ -13,7 +13,7 @@ const Prices: React.FC<PricesProps> = (props) => {
 
 	return (
 		<Stack spacing={2}>
-			<Stack direction={{ sm: "row", xs: "column" }} spacing={1}>
+			<Stack direction={{ sm: 'row', xs: 'column' }} spacing={1}>
 				{items.map((item, index) => (
 					<PriceCard key={index} price={item} />
 				))}

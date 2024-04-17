@@ -36,7 +36,7 @@ const ImageView: React.FC<ImageViewProps> = (props) => {
 				<Grid item xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
 					<Component
 						key={index}
-            direction="row"
+						direction="row"
 						image={item?.image?.url}
 						editing={editing}
 						buttonText={buttonText}

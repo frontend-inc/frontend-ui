@@ -39,20 +39,20 @@ const Form: React.FC<FormProps> = (props) => {
 		const { name } = ev.target
 		const value =
 			ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
-    if(SYSTEM_FIELDS.includes(name)){
-      setResource((prev) => ({
-        ...prev,
-        [name]: value 
-      }))
-    }else{
-      setResource((prev) => ({
-        ...prev,
-        data: {
-          ...prev.data,
-          [name]: value,
-        },
-      }))
-    }
+		if (SYSTEM_FIELDS.includes(name)) {
+			setResource((prev) => ({
+				...prev,
+				[name]: value,
+			}))
+		} else {
+			setResource((prev) => ({
+				...prev,
+				data: {
+					...prev.data,
+					[name]: value,
+				},
+			}))
+		}
 	}
 
 	const handleRemove = async (name) => {
@@ -84,15 +84,15 @@ const Form: React.FC<FormProps> = (props) => {
 	return !submitted ? (
 		<Box sx={sx.root}>
 			<Stack spacing={1} sx={sx.root}>
-				{fields?.map((field, index) => (					
-          <FormFieldInput
-            key={index}
-            field={field}
-            value={get(flattenDocument(resource), field.name)}
-            handleChange={handleDataChange}
-            handleRemove={handleRemove}
-          />
-        ))}
+				{fields?.map((field, index) => (
+					<FormFieldInput
+						key={index}
+						field={field}
+						value={get(flattenDocument(resource), field.name)}
+						handleChange={handleDataChange}
+						handleRemove={handleRemove}
+					/>
+				))}
 				<Button
 					size="large"
 					variant="contained"

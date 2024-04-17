@@ -80,7 +80,7 @@ const SearchModal: React.FC = () => {
 								name="keywords"
 								value={keywords}
 								handleChange={handleChange}
-                handleSearch={handleSearch}
+								handleSearch={handleSearch}
 								placeholder={'Search...'}
 							/>
 						</Box>

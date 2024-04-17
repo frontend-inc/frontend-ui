@@ -25,7 +25,7 @@ const CellHeader: React.FC<CellHeaderProps> = (props) => {
 	return (
 		<Button
 			disableRipple
-			fullWidth			
+			fullWidth
 			onClick={() => handleSort(field)}
 			endIcon={
 				active && (
@@ -56,10 +56,10 @@ const sx = {
 		color: 'primary.main',
 		height: 20,
 		width: 20,
-	},	
+	},
 	sortIcon: {
 		height: 20,
 		width: 20,
 		color: 'text.secondary',
-	},		
+	},
 }

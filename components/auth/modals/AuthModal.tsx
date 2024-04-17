@@ -103,67 +103,64 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 			handleClose={() => setAuthOpen(false)}
 			disablePadding
 		>
-      <Box sx={ sx.tabsContainer }>
-        <Tabs
-          value={tab}
-          onChange={handleTabChange}
-        >
-          <Tab label="Login" />
-          <Tab label="Register" />
-        </Tabs>
-      </Box>
-      <Box p={4} sx={ sx.content }>
-			{tab === 0 && (
-				<LoginForm
-					errors={errors}
-					loading={loading}
-					user={user}
-					handleChange={handleChange}
-					handleSubmit={handleSubmit}
-					handleSignup={handleSignup}
-					handleForgotPassword={handleForgotPassword}
-				/>
-			)}
-			{tab === 1 && (
-				<SignupForm
-					errors={errors}
-					loading={loading}
-					user={user}
-					handleChange={handleChange}
-					handleSubmit={handleSubmit}
-					handleLogin={handleLogin}
-				/>
-			)}
-			{tab === 2 && (
-				<ForgotPasswordForm
-					errors={errors}
-					loading={loading}
-					user={user}
-					handleChange={handleChange}
-					handleSubmit={handleSubmit}
-					handleLogin={handleLogin}
-				/>
-			)}
-			{tab === 3 && (
-				<VerifyPinForm
-					errors={errors}
-					loading={loading}
-					user={user}
-					handleChange={handleChange}
-					handleSubmit={handleSubmit}
-					handleResendPin={handleResendPin}
-				/>
-			)}
-			{tab === 4 && (
-				<VerifySendPinForm
-					errors={errors}
-					loading={loading}
-					user={user}
-					handleChange={handleChange}
-					handleSubmit={handleSubmit}
-				/>
-			)}
-      </Box>
+			<Box sx={sx.tabsContainer}>
+				<Tabs value={tab} onChange={handleTabChange}>
+					<Tab label="Login" />
+					<Tab label="Register" />
+				</Tabs>
+			</Box>
+			<Box p={4} sx={sx.content}>
+				{tab === 0 && (
+					<LoginForm
+						errors={errors}
+						loading={loading}
+						user={user}
+						handleChange={handleChange}
+						handleSubmit={handleSubmit}
+						handleSignup={handleSignup}
+						handleForgotPassword={handleForgotPassword}
+					/>
+				)}
+				{tab === 1 && (
+					<SignupForm
+						errors={errors}
+						loading={loading}
+						user={user}
+						handleChange={handleChange}
+						handleSubmit={handleSubmit}
+						handleLogin={handleLogin}
+					/>
+				)}
+				{tab === 2 && (
+					<ForgotPasswordForm
+						errors={errors}
+						loading={loading}
+						user={user}
+						handleChange={handleChange}
+						handleSubmit={handleSubmit}
+						handleLogin={handleLogin}
+					/>
+				)}
+				{tab === 3 && (
+					<VerifyPinForm
+						errors={errors}
+						loading={loading}
+						user={user}
+						handleChange={handleChange}
+						handleSubmit={handleSubmit}
+						handleResendPin={handleResendPin}
+					/>
+				)}
+				{tab === 4 && (
+					<VerifySendPinForm
+						errors={errors}
+						loading={loading}
+						user={user}
+						handleChange={handleChange}
+						handleSubmit={handleSubmit}
+					/>
+				)}
+			</Box>
 		</Modal>
 	)
 }
@@ -175,12 +172,12 @@ const sx = {
 		display: 'flex',
 		justifyContent: 'center',
 	},
-  content: {
-    width: '100%',
-  },
-  tabsContainer: {
-    width: '100%',
-    display: 'flex',        
+	content: {
+		width: '100%',
+	},
+	tabsContainer: {
+		width: '100%',
+		display: 'flex',
 		justifyContent: 'center',
-  }
+	},
 }

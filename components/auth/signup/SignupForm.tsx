@@ -27,49 +27,49 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 		<Stack spacing={1.5}>
 			{!disableUsername && (
 				<TextInput
-          direction="column"
+					direction="column"
 					errors={errors}
 					name="username"
-          label="Username"
+					label="Username"
 					value={user?.username}
 					placeholder="Username"
 					handleChange={handleChange}
 				/>
 			)}
-      <Stack direction="row" spacing={1}>
-        <TextInput      
-          errors={errors}
-          direction="column"
-          name="first_name"
-          label="First name"
-          value={user?.first_name}
-          placeholder="First name"
-          handleChange={handleChange}
-        />
-        <TextInput      
-          errors={errors}
-          direction="column"
-          name="last_name"
-          label="Last name"
-          value={user?.last_name}
-          placeholder="Last name"
-          handleChange={handleChange}
-        />
-      </Stack>
+			<Stack direction="row" spacing={1}>
+				<TextInput
+					errors={errors}
+					direction="column"
+					name="first_name"
+					label="First name"
+					value={user?.first_name}
+					placeholder="First name"
+					handleChange={handleChange}
+				/>
+				<TextInput
+					errors={errors}
+					direction="column"
+					name="last_name"
+					label="Last name"
+					value={user?.last_name}
+					placeholder="Last name"
+					handleChange={handleChange}
+				/>
+			</Stack>
 			<TextInput
 				errors={errors}
-        direction="column"
+				direction="column"
 				name="email"
-        label="Email"
+				label="Email"
 				value={user?.email}
 				placeholder="Email"
 				handleChange={handleChange}
 			/>
 			<TextInput
 				errors={errors}
-        direction="column"
+				direction="column"
 				name="password"
-        label="Password"
+				label="Password"
 				value={user?.password}
 				type="password"
 				placeholder="Password"

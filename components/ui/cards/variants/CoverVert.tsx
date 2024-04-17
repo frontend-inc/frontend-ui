@@ -4,7 +4,10 @@ import { Box, Button, Stack, Typography } from '@mui/material'
 import { Image, Icon, TouchableOpacity } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
-import { COVER_VERT_HEIGHT, COVER_VERT_WIDTH } from '../../../../constants/index'
+import {
+	COVER_VERT_HEIGHT,
+	COVER_VERT_WIDTH,
+} from '../../../../constants/index'
 import { CardProps } from '../../../../types'
 
 const CoverVert: React.FC<CardProps> = (props) => {
@@ -44,7 +47,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		>
 			<TouchableOpacity handleClick={handleItemClick}>
 				<Image
-          label={label}
+					label={label}
 					src={image}
 					height={height}
 					objectFit={objectFit}

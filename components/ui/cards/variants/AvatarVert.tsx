@@ -4,7 +4,10 @@ import { Avatar, Box, Button, Stack, Typography } from '@mui/material'
 import { TouchableOpacity } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
-import { AVATAR_VERT_HEIGHT, AVATAR_VERT_WIDTH } from '../../../../constants/index'
+import {
+	AVATAR_VERT_HEIGHT,
+	AVATAR_VERT_WIDTH,
+} from '../../../../constants/index'
 import { CardProps } from '../../../../types'
 
 const AvatarVert: React.FC<CardProps> = (props) => {

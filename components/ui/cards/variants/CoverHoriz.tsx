@@ -4,7 +4,10 @@ import { Box, Button, Stack, Typography } from '@mui/material'
 import { Image, Icon, TouchableOpacity } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
-import { COVER_HORIZ_HEIGHT, COVER_HORIZ_WIDTH } from '../../../../constants/index'
+import {
+	COVER_HORIZ_HEIGHT,
+	COVER_HORIZ_WIDTH,
+} from '../../../../constants/index'
 import { CardProps } from '../../../../types'
 
 const CoverHoriz: React.FC<CardProps> = (props) => {
@@ -38,7 +41,7 @@ const CoverHoriz: React.FC<CardProps> = (props) => {
 		<Stack sx={sx.root} spacing={1}>
 			<TouchableOpacity handleClick={handleItemClick}>
 				<Image
-          label={label}
+					label={label}
 					src={image}
 					objectFit={objectFit}
 					alt={title}

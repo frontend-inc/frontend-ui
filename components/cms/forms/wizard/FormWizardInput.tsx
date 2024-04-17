@@ -28,25 +28,25 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		handleChange,
 	} = props
 
-  let componentMapper = {
-    "single_choice": SingleChoiceInput,
-    "multiple_choice": MultipleChoiceInput,
-    "single_choice_image": SingleChoiceImageInput,
-    "multiple_choice_images": MultipleChoiceImagesInput,
-  }
+	let componentMapper = {
+		single_choice: SingleChoiceInput,
+		multiple_choice: MultipleChoiceInput,
+		single_choice_image: SingleChoiceImageInput,
+		multiple_choice_images: MultipleChoiceImagesInput,
+	}
 
-  let InputComponent = componentMapper[variant]
+	let InputComponent = componentMapper[variant]
 
 	return (
-    <InputComponent
-      errors={errors}
-      label={label}
-      name={name}
-      value={value}
-      options={options}
-      handleChange={handleChange}
-      placeholder={placeholder}
-    />
+		<InputComponent
+			errors={errors}
+			label={label}
+			name={name}
+			value={value}
+			options={options}
+			handleChange={handleChange}
+			placeholder={placeholder}
+		/>
 	)
 }
 

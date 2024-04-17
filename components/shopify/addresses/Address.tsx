@@ -58,8 +58,8 @@ const Address: React.FC<AddressProps> = (props) => {
 	}, [addressId])
 
 	return (
-    <>
-		  <Loader loading={loading} />
+		<>
+			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<Stack spacing={1}>
 					<AddressForm address={address} handleChange={handleChange} />

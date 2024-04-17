@@ -4,9 +4,7 @@ import { ProfileForm } from '../../components'
 import { ProfileFormProps } from '../../components/auth/profiles/ProfileForm'
 import { SectionProps, HeadingProps } from '../../types'
 
-type AuthProfileFormProps = SectionProps & 
-  HeadingProps & 
-  ProfileFormProps
+type AuthProfileFormProps = SectionProps & HeadingProps & ProfileFormProps
 
 const AuthProfileForm: React.FC<AuthProfileFormProps> = (props) => {
 	const {

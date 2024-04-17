@@ -68,9 +68,9 @@ const sx = {
 		my: 0,
 		p: 0,
 	},
-  listItemButton: {
-    minHeight: 50
-  },
+	listItemButton: {
+		minHeight: 50,
+	},
 	gradient: {
 		'&::after': {
 			content: '""',

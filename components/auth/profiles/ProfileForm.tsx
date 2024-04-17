@@ -10,26 +10,21 @@ export type ProfileFormProps = {
 	buttonText?: string
 	variant?: 'contained' | 'outlined' | 'text'
 	fields: any[]
-  resource: any 
+	resource: any
 	children?: React.ReactElement[]
 }
 
 const ProfileForm: React.FC<ProfileFormProps> = (props) => {
-	
-  const { 
-    resource,
-    buttonText = 'Submit', 
-    fields,     
-  } = props
+	const { resource, buttonText = 'Submit', fields } = props
 
-  const { currentUser } = useAuth()
+	const { currentUser } = useAuth()
 
 	const [submitted, setSubmitted] = useState(false)
 
 	const {
 		loading,
-    delayedLoading,
-    resource: profile,
+		delayedLoading,
+		resource: profile,
 		setResource,
 		update,
 		removeAttachment,
@@ -41,21 +36,21 @@ const ProfileForm: React.FC<ProfileFormProps> = (props) => {
 	const handleDataChange = (ev) => {
 		const { name } = ev.target
 		const value =
-			ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value    
-      if(SYSTEM_FIELDS.includes(name)){
-        setResource((prev) => ({
-          ...prev,
-          [name]: value 
-        }))
-      }else{
-        setResource((prev) => ({
-          ...prev,
-          data: {
-            ...prev.data,
-            [name]: value,
-          },
-        }))
-      }  
+			ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
+		if (SYSTEM_FIELDS.includes(name)) {
+			setResource((prev) => ({
+				...prev,
+				[name]: value,
+			}))
+		} else {
+			setResource((prev) => ({
+				...prev,
+				data: {
+					...prev.data,
+					[name]: value,
+				},
+			}))
+		}
 	}
 
 	const handleRemove = async (name) => {
@@ -63,8 +58,8 @@ const ProfileForm: React.FC<ProfileFormProps> = (props) => {
 	}
 
 	const handleSubmit = async (e) => {
-		try {			
-			let resp = await update(profile)			
+		try {
+			let resp = await update(profile)
 			if (resp?.id) {
 				setSubmitted(true)
 			}
@@ -73,32 +68,30 @@ const ProfileForm: React.FC<ProfileFormProps> = (props) => {
 		}
 	}
 
-  useEffect(() => {
-    if(resource){
-      setResource({
-        ...resource 
-      })
-    }
-  }, [resource])
+	useEffect(() => {
+		if (resource) {
+			setResource({
+				...resource,
+			})
+		}
+	}, [resource])
 
-  if(!currentUser){
-    return (
-      <AuthRequired /> 
-    )
-  }  
+	if (!currentUser) {
+		return <AuthRequired />
+	}
 
-	return(
+	return (
 		<Box sx={sx.root}>
 			<Stack spacing={1} sx={sx.root}>
-				{fields?.map((field, index) => (					
-          <FormFieldInput
-            key={index}
-            field={field}
-            value={get(flattenDocument(profile), field.name)}
-            handleChange={handleDataChange}
-            handleRemove={handleRemove}
-          />
-        ))}
+				{fields?.map((field, index) => (
+					<FormFieldInput
+						key={index}
+						field={field}
+						value={get(flattenDocument(profile), field.name)}
+						handleChange={handleDataChange}
+						handleRemove={handleRemove}
+					/>
+				))}
 				<Button
 					size="large"
 					variant="contained"
@@ -110,7 +103,7 @@ const ProfileForm: React.FC<ProfileFormProps> = (props) => {
 				</Button>
 			</Stack>
 		</Box>
-  )
+	)
 }
 
 export default ProfileForm

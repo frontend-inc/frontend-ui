@@ -27,7 +27,7 @@ const sx = {
 	backdrop: {
 		flexDirection: 'column',
 		justifyContent: 'flex-start',
-		alignItems: 'flex-start',		
+		alignItems: 'flex-start',
 		zIndex: (theme) => theme.zIndex.modal + 1,
 	},
 	progress: {

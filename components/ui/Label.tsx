@@ -3,16 +3,12 @@ import { Chip } from '@mui/material'
 
 type LabelProps = {
 	label?: string
-  color?: string
+	color?: string
 	styles?: React.CSSProperties
 }
 
 const Label: React.FC<LabelProps> = (props) => {
-	const { 
-    label, 
-    color='secondary.main', 
-    styles 
-  } = props
+	const { label, color = 'secondary.main', styles } = props
 
 	if (!label) return null
 	return (
@@ -20,7 +16,7 @@ const Label: React.FC<LabelProps> = (props) => {
 			label={label}
 			sx={{
 				...sx.chip,
-        bgcolor: color,
+				bgcolor: color,
 				...styles,
 			}}
 			size="small"
@@ -40,7 +36,7 @@ const sx = {
 		letterSpacing: '0.05em',
 		cursor: 'pointer',
 		borderRadius: '4px',
-    textTransform: 'uppercase',
+		textTransform: 'uppercase',
 		boxShadow: '1px 0px 0 0 rgba(0,0,0,0.1)',
 	},
 }

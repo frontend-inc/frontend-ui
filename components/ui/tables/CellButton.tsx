@@ -14,17 +14,13 @@ const CellButton: React.FC<CellButtonProps> = (props) => {
 	return (
 		<Box sx={sx.cell}>
 			<Button
-        size="small"
+				size="small"
 				color="secondary"
 				variant="contained"
 				sx={sx.button}
 				startIcon={
-          <Icon 
-            color='secondary.contrastText' 
-            name={icon} 
-            size={20} 
-          />
-        }
+					<Icon color="secondary.contrastText" name={icon} size={20} />
+				}
 				onClick={handleClick && handleClick}
 			>
 				{children}

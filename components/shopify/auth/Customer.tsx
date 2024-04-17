@@ -45,8 +45,8 @@ const Customer: React.FC<CustomerProps> = (props) => {
 	}, [customer])
 
 	return (
-    <>
-		<Loader loading={loading} />
+		<>
+			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<CustomerForm
 					loading={loading}

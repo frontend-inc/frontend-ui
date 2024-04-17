@@ -53,21 +53,21 @@ const ProductGrid: React.FC<ProductGridProps> = (props) => {
 	}
 
 	return (
-		<Box sx={ sx.grid }>
-			{products?.map((product) => (				
-        <Box sx={sx.item} key={product?.id}>
-          <ProductCard
-            product={product}
-            handleClick={() => handleClick(product)}
-            enableBorder={enableBorder}
-            enableAddToCart={enableAddToCart}
-            enableQuickShop={enableQuickShop}
-            enableQuantity={enableQuantity}
-            enableOkendoStarRating={enableOkendoStarRating}
-            buttonText={buttonText}
-          />
-        </Box>
-      ))}
+		<Box sx={sx.grid}>
+			{products?.map((product) => (
+				<Box sx={sx.item} key={product?.id}>
+					<ProductCard
+						product={product}
+						handleClick={() => handleClick(product)}
+						enableBorder={enableBorder}
+						enableAddToCart={enableAddToCart}
+						enableQuickShop={enableQuickShop}
+						enableQuantity={enableQuantity}
+						enableOkendoStarRating={enableOkendoStarRating}
+						buttonText={buttonText}
+					/>
+				</Box>
+			))}
 		</Box>
 	)
 }
@@ -77,16 +77,16 @@ export default ProductGrid
 const sx = {
 	item: {
 		p: 1,
-    gridColumn: 'span 1'
+		gridColumn: 'span 1',
 	},
-  grid: {
-    maxWidth: '100%',
-    display: 'grid',
-    gridTemplateColumns: {
-      lg: 'repeat(4, 1fr)',
-      md: '1fr 1fr 1fr',
-      sm: '1fr 1fr',
-      xs: '1fr',
-    }
-  }
+	grid: {
+		maxWidth: '100%',
+		display: 'grid',
+		gridTemplateColumns: {
+			lg: 'repeat(4, 1fr)',
+			md: '1fr 1fr 1fr',
+			sm: '1fr 1fr',
+			xs: '1fr',
+		},
+	},
 }

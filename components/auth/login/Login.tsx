@@ -52,8 +52,8 @@ const Login: React.FC<LoginProps> = (props) => {
 	}
 
 	return (
-    <>
-		  <Loader loading={loading} />
+		<>
+			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<LoginForm
 					errors={errors}

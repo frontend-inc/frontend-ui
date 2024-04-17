@@ -15,8 +15,8 @@ export type FormWizardProps = {
 	children?: React.ReactElement[]
 	startTitle: string
 	startDescription: string
-  startImage: string
-  startButtonText?: string
+	startImage: string
+	startButtonText?: string
 	buttonText?: string
 	image: string
 	endTitle: string
@@ -34,7 +34,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		startTitle,
 		startDescription,
 		startImage,
-    startButtonText='Start',
+		startButtonText = 'Start',
 		buttonText = 'Submit',
 		endTitle,
 		endDescription,

@@ -28,5 +28,5 @@ export { default as VerifyPin } from './verify/VerifyPin'
 export { default as VerifyPinForm } from './verify/VerifyPinForm'
 export { default as VerifySendPinForm } from './verify/VerifySendPinForm'
 
-// Profiles 
+// Profiles
 export { default as ProfileForm } from './profiles/ProfileForm'

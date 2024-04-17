@@ -8,7 +8,7 @@ export type ImageProps = {
 	height: number
 	width?: number
 	objectFit?: 'cover' | 'contain'
-  label?: string
+	label?: string
 	alt?: string
 	bgcolor?: string
 	opacity?: number
@@ -24,7 +24,7 @@ const Image: React.FC<ImageProps> = (props) => {
 		width,
 		objectFit = 'cover',
 		alt = 'image',
-    label,
+		label,
 		bgcolor = '#000000',
 		opacity = 0.5,
 		enableOverlay = false,
@@ -70,17 +70,17 @@ const Image: React.FC<ImageProps> = (props) => {
 					}}
 				/>
 			) : (
-				<NoImage 
-          height={height} 
-          width={width}
-          disableBorderRadius={disableBorderRadius}          
-        />
+				<NoImage
+					height={height}
+					width={width}
+					disableBorderRadius={disableBorderRadius}
+				/>
 			)}
-      { label && (
-        <Box sx={ sx.label }>
-          <Label color='common.white' label={ label } />
-        </Box>
-      )}
+			{label && (
+				<Box sx={sx.label}>
+					<Label color="common.white" label={label} />
+				</Box>
+			)}
 		</Box>
 	)
 }
@@ -96,11 +96,11 @@ const sx = {
 		justifyContent: 'center',
 		overflow: 'hidden',
 	},
-  label: {
-    position: 'absolute',
-    right: 15,
-    top: 15
-  },
+	label: {
+		position: 'absolute',
+		right: 15,
+		top: 15,
+	},
 	borderRadius: {
 		borderRadius: 1,
 	},

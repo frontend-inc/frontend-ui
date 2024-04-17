@@ -12,7 +12,7 @@ type SwipeableProductImagesProps = {
 	handleClick?: () => void
 	objectFit?: 'contain' | 'cover'
 	responsiveHeight?: boolean
-  disableBorderRadius?: boolean
+	disableBorderRadius?: boolean
 }
 
 const SwipeableProductImages: React.FC<SwipeableProductImagesProps> = (
@@ -21,9 +21,9 @@ const SwipeableProductImages: React.FC<SwipeableProductImagesProps> = (
 	const {
 		product,
 		height = 320,
-		handleClick,    
+		handleClick,
 		objectFit = 'cover',
-    disableBorderRadius = false,
+		disableBorderRadius = false,
 		responsiveHeight = false,
 	} = props
 
@@ -41,10 +41,10 @@ const SwipeableProductImages: React.FC<SwipeableProductImagesProps> = (
 				...sx.root,
 				height: !responsiveHeight ? `${height}px` : null,
 				minHeight: `${height}px`,
-        width: { 
-          sm: '100%',
-          xs: "100%"
-        }        
+				width: {
+					sm: '100%',
+					xs: '100%',
+				},
 			}}
 			direction="column"
 		>
@@ -71,8 +71,8 @@ const SwipeableProductImages: React.FC<SwipeableProductImagesProps> = (
 									})}
 									alt={product?.title}
 									height={height}
-                  objectFit={ objectFit }
-                  disableBorderRadius={disableBorderRadius}
+									objectFit={objectFit}
+									disableBorderRadius={disableBorderRadius}
 								/>
 							</TouchableOpacity>
 						</Box>

@@ -112,7 +112,7 @@ export const sx = {
 		width: '100%',
 	},
 	textField: {
-    my: 0,
+		my: 0,
 		'& .MuiOutlinedInput-root': {
 			minWidth: '230px',
 			p: '4px',
@@ -154,8 +154,8 @@ export const sx = {
 		fontWeight: (theme) => theme.typography.body2.fontWeight,
 		fontFamily: (theme) => theme.typography.body2.fontFamily,
 	},
-	chip: {		
-    borderRadius: '4px'
+	chip: {
+		borderRadius: '4px',
 	},
 	label: {
 		width: '100px',

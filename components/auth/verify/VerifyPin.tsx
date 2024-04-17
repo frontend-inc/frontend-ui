@@ -1,11 +1,6 @@
 import React, { useState } from 'react'
 import { Button } from '@mui/material'
-import {
-	VerifyPinForm,
-	VerifySendPinForm,
-	AuthScreen,
-	Loader,
-} from '../..'
+import { VerifyPinForm, VerifySendPinForm, AuthScreen, Loader } from '../..'
 import { useAuth } from 'frontend-js'
 
 import { useRouter } from 'next/router'
@@ -67,8 +62,8 @@ const VerifyPin: React.FC<VerifyPinProps> = (props) => {
 	}
 
 	return (
-    <>
-		  <Loader loading={loading} />
+		<>
+			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				{!showVerifyPin ? (
 					<VerifySendPinForm

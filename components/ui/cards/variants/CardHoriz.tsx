@@ -49,7 +49,7 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 				<Box sx={sx.image}>
 					<TouchableOpacity handleClick={handleItemClick}>
 						<Image
-              label={label}
+							label={label}
 							src={image}
 							height={height}
 							objectFit={objectFit}
@@ -67,7 +67,7 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 						...sx.content,
 						...(enableBorder && sx.contentBorder),
 					}}
-				>					
+				>
 					<Typography color="textPrimary" variant={textVariant}>
 						{truncate(title)}
 					</Typography>
@@ -159,10 +159,10 @@ const sx = {
 	},
 	contentBorder: {
 		py: 2,
-    px: {
-      sm: 0,
-      xs: 2
-    }
+		px: {
+			sm: 0,
+			xs: 2,
+		},
 	},
 	description: {
 		maxWidth: '320px',

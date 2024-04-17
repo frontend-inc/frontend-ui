@@ -35,8 +35,8 @@ const NewPassword: React.FC<NewPasswordProps> = (props) => {
 	}
 
 	return (
-    <>
-		  <Loader loading={loading} />
+		<>
+			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<NewPasswordForm
 					loading={loading}

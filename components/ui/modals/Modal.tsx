@@ -21,7 +21,7 @@ type ModalProps = {
 	subtitle?: string
 	actions?: any
 	children?: any
-	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' 
+	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 	secondaryActions?: any
 	disablePadding?: boolean
 	fullScreen?: boolean
@@ -38,7 +38,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 		subtitle,
 		actions,
 		children,
-		maxWidth='sm',
+		maxWidth = 'sm',
 		secondaryActions,
 		disablePadding = false,
 		fullScreen,
@@ -46,24 +46,22 @@ const Modal: React.FC<ModalProps> = (props) => {
 		hideBackdrop = false,
 	} = props
 
-	const { isMobile } = useResponsive()  
-
-
+	const { isMobile } = useResponsive()
 
 	return (
 		<Dialog
-			sx={{ 
-        ...sx.root,
-        // Manually reset the maxWidth breakpoints 
-        // since these are modifed in the Editor
-        '& .MuiDialog-paper': {
-          maxWidth: {
-            sm: muiTheme.breakpoints.values[maxWidth],
-            xs: '100vw'
-          } 
-        }, 
-      }}
-			fullWidth			
+			sx={{
+				...sx.root,
+				// Manually reset the maxWidth breakpoints
+				// since these are modifed in the Editor
+				'& .MuiDialog-paper': {
+					maxWidth: {
+						sm: muiTheme.breakpoints.values[maxWidth],
+						xs: '100vw',
+					},
+				},
+			}}
+			fullWidth
 			fullScreen={isMobile || fullScreen === true ? true : false}
 			open={open}
 			onClose={handleClose}
@@ -115,7 +113,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 export default Modal
 
 const sx = {
-	root: {    
+	root: {
 		borderRadius: (theme) => theme.shape.borderRadius,
 	},
 	title: {},

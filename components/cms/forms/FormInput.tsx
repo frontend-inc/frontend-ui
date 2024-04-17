@@ -35,53 +35,53 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		handleRemove,
 	} = props
 
-  let componentMapper = {
-    "array": ArrayInput,
-    "string": TextInput,
-    "url": TextInput,
-    "text": TextInput,
-    "number": TextInput,
-    "price": TextInput,
-    "date": DateInput,
-    "datetime": DateInput,
-    "boolean": SwitchInput,
-    "select": ArrayInput,
-    "rating": RatingInput,
-    "image": ImageInput,
-    "json": JSONInput
-  }
+	let componentMapper = {
+		array: ArrayInput,
+		string: TextInput,
+		url: TextInput,
+		text: TextInput,
+		number: TextInput,
+		price: TextInput,
+		date: DateInput,
+		datetime: DateInput,
+		boolean: SwitchInput,
+		select: ArrayInput,
+		rating: RatingInput,
+		image: ImageInput,
+		json: JSONInput,
+	}
 
-  let componentProps = {
-    "text": {
-      multiline: true,
-      rows: 6
-    },
-    "select": {
-      options: options
-    },
-    "number": {
-      type: "number"
-    },
-    "price": {
-      type: "number"
-    },
-    "image": {
-      handleRemove
-    }
-  }
+	let componentProps = {
+		text: {
+			multiline: true,
+			rows: 6,
+		},
+		select: {
+			options: options,
+		},
+		number: {
+			type: 'number',
+		},
+		price: {
+			type: 'number',
+		},
+		image: {
+			handleRemove,
+		},
+	}
 
-  let InputComponent = componentMapper[variant]
+	let InputComponent = componentMapper[variant]
 
 	return (
-    <InputComponent
-      errors={errors}
-      label={label}
-      name={name}
-      value={value}
-      handleChange={handleChange}
-      placeholder={placeholder}
-      { ...componentProps[variant] }
-    />			
+		<InputComponent
+			errors={errors}
+			label={label}
+			name={name}
+			value={value}
+			handleChange={handleChange}
+			placeholder={placeholder}
+			{...componentProps[variant]}
+		/>
 	)
 }
 

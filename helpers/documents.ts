@@ -6,11 +6,11 @@ import {
 import { get } from 'lodash'
 
 export const flattenDocument = (resource) => {
-  let { data, ...rest } = resource || {}
-  return {
-    ...rest,
-    ...data,
-  }
+	let { data, ...rest } = resource || {}
+	return {
+		...rest,
+		...data,
+	}
 }
 
 export const getDocumentValue = (document, field) => {

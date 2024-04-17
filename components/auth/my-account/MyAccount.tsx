@@ -43,16 +43,16 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 	}, [currentUser])
 
 	return (
-    <>
-		  <Loader loading={loading} />
+		<>
+			<Loader loading={loading} />
 			{currentUser && (
 				<AuthScreen
 					title={`${currentUser?.first_name} ${currentUser?.last_name}`}
 					subtitle={
-            currentUser?.username ? 
-              `@${currentUser?.username}` :
-              'Update account'
-          }
+						currentUser?.username
+							? `@${currentUser?.username}`
+							: 'Update account'
+					}
 				>
 					<MyAccountForm
 						user={user}

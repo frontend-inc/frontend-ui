@@ -45,11 +45,7 @@ const MyAccountForm: React.FC<AccountFormProps> = (props) => {
 				name="accepts_marketing"
 				handleChange={handleChange}
 			/>
-			<Button
-				color="primary"
-				variant="contained"
-				onClick={handleSubmit}
-			>
+			<Button color="primary" variant="contained" onClick={handleSubmit}>
 				Save
 			</Button>
 			<Button color="primary" onClick={handleRedirect}>

@@ -29,11 +29,7 @@ const TableHeaders: React.FC<TableHeaderProps> = (props) => {
 		<TableHead>
 			<TableRow>
 				{enableSelect && (
-					<TableCell 
-            sticky 
-            header
-            small
-          >
+					<TableCell sticky header small>
 						<Checkbox
 							checked={checked}
 							onChange={handleSelectAll}
@@ -41,12 +37,7 @@ const TableHeaders: React.FC<TableHeaderProps> = (props) => {
 						/>
 					</TableCell>
 				)}
-				{enableEdit && (
-          <TableCell 
-            header 
-            small
-          />
-        )}
+				{enableEdit && <TableCell header small />}
 				{fields?.map((field, index) => (
 					<TableCell header key={index}>
 						<CellHeader

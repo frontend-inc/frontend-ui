@@ -19,13 +19,11 @@ const AuthScreen: React.FC<AuthScreenProps> = (props) => {
 			<Container maxWidth="sm">
 				<Paper elevation={0} sx={sx.paper}>
 					<Box sx={sx.logo}>
-            { logo && (
-						  <Image src={logo} alt="Logo" height={48} width={48} />
-            )}
+						{logo && <Image src={logo} alt="Logo" height={48} width={48} />}
 					</Box>
 					<Box sx={sx.titles}>
 						<Typography variant="h4" sx={sx.title}>
-							{title} 
+							{title}
 						</Typography>
 						{subtitle && (
 							<Typography variant="body1" sx={sx.subtitle}>

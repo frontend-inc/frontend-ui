@@ -42,7 +42,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 	const handleLogout = () => {
 		closeMenu()
 		logout()
-    router.push(clientUrl)
+		router.push(clientUrl)
 	}
 
 	const handleClick = (url) => {

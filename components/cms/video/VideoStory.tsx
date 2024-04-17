@@ -26,8 +26,8 @@ const VideoVert: React.FC<CardProps> = (props) => {
 
 	return !open ? (
 		<AvatarCard
-      direction="row"
-      label={label}
+			direction="row"
+			label={label}
 			image={image}
 			handleClick={handleItemClick}
 			buttonText={buttonText}

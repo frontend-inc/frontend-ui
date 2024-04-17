@@ -26,8 +26,8 @@ const ShopifyCustomerOrder: React.FC<ShopifyCustomerOrderProps> = (props) => {
 	}, [orderId])
 
 	return (
-    <>
-		  <Loader loading={loading} />
+		<>
+			<Loader loading={loading} />
 			<AuthScreen
 				title={`Order ${order.name}`}
 				subtitle={moment(order?.processedAt).format('MMMM Do, YYYY')}

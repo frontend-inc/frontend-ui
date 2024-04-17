@@ -58,8 +58,8 @@ const Addresses: React.FC<AddressesProps> = (props) => {
 	}, [addresses])
 
 	return (
-		  <>
-      <Loader loading={loading} />
+		<>
+			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<AddressList
 					addresses={addresses}
