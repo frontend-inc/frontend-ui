@@ -8,18 +8,31 @@ import { MenuButton } from '../../../components'
 type ActionsProps = {
 	actions: ActionType[]
 	resource: any
+  justifyContent?: 'flex-start' | 'center' | 'flex-end'
 }
 
 const Actions: React.FC<ActionsProps> = (props) => {
-	const { actions, resource } = props
+	const { actions, resource, justifyContent='center' } = props
 
 	return (
-		<Stack sx={sx.root} direction="row" spacing={1}>
-			<Stack sx={sx.buttons} direction={'row'} spacing={1}>
+		<Stack 
+      sx={{ 
+        ...sx.root,
+        justifyContent
+      }} 
+      direction="row" 
+      spacing={1}
+    >
+			<Stack 
+        sx={{ 
+          ...sx.buttons, 
+          justifyContent
+        }} 
+        direction={'row'} spacing={1}>
 				{actions?.slice(0, 2)?.map((action, index) => (
 					<ActionButton
 						key={index}
-						color={index == 0 ? 'primary' : 'secondary'}
+						color={action?.color || 'secondary'}
 						action={action}
 						resource={resource}
 					/>
@@ -41,10 +54,8 @@ export default Actions
 const sx = {
 	root: {
 		width: '100%',
-		justifyContent: 'center',
 	},
 	buttons: {
 		width: '100%',
-		justifyContent: 'center',
 	},
 }

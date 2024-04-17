@@ -71,8 +71,12 @@ const Person: React.FC<PersonProps> = (props) => {
 							</Link>
 						)}
 					</Box>
-					{actions && <Actions actions={actions} resource={resource} />}
 				</Stack>
+        {actions && <Actions 
+          actions={actions} 
+          resource={resource} 
+          justifyContent="flex-end"
+        />}
 			</Stack>
 		</Box>
 	)
@@ -97,21 +101,21 @@ const sx = {
 	},
 	avatar: {
 		height: {
-			sm: 256,
+			sm: 180,
 			xs: 180,
 		},
 		width: {
-			sm: 256,
+			sm: 180,
 			xs: 180,
 		},
 	},
 	avatarContainer: {
 		height: {
-			sm: 260,
+			sm: 180,
 			xs: 180,
 		},
 		width: {
-			sm: 260,
+			sm: 180,
 			xs: 180,
 		},
 	},
