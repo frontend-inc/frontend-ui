@@ -4,19 +4,21 @@ import { Box } from '@mui/material'
 type NoImageProps = {
 	height?: number
 	width?: number
-	enableBorder?: boolean
+  darkMode?: boolean	
+  disableBorder?: boolean
 	disableBorderRadius?: boolean
 }
 
 const NoImage: React.FC<NoImageProps> = (props) => {
-	const { height = 100, width, enableBorder, disableBorderRadius } = props
+	const { darkMode=false, height = 100, width, disableBorder, disableBorderRadius } = props
 
 	return (
 		<Box
 			sx={{
 				...sx.root,
-				...(enableBorder && sx.enableBorder),
+				...(disableBorder && sx.disableBorder),
 				...(disableBorderRadius && sx.disableBorderRadius),
+        ...(darkMode && sx.darkMode),
 				height: height ? `${height}px` : '100%',
 				width: width ? `${width}px` : '100%',
 			}}
@@ -36,9 +38,11 @@ const sx = {
 		borderRadius: 1,
 		backgroundImage: 'linear-gradient(45deg, #999999,#DDDDDD,#FAFAFA)',
 	},
-	enableBorder: {
-		border: '1px solid',
-		borderColor: 'divider',
+  darkMode: {
+    backgroundImage: 'linear-gradient(45deg, #444444, #111111,#000000)'
+  },
+	disableBorder: {
+		border: 'none',		
 	},
 	disableBorderRadius: {
 		borderRadius: 0,

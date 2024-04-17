@@ -14,6 +14,7 @@ export type ImageProps = {
 	opacity?: number
 	enableGradient?: boolean
 	enableOverlay?: boolean
+  disableBorder?: boolean
 	disableBorderRadius?: boolean
 }
 
@@ -29,6 +30,7 @@ const Image: React.FC<ImageProps> = (props) => {
 		opacity = 0.5,
 		enableOverlay = false,
 		enableGradient = false,
+    disableBorder = false,
 		disableBorderRadius = false,
 	} = props
 
@@ -69,10 +71,12 @@ const Image: React.FC<ImageProps> = (props) => {
 							: '0px',
 					}}
 				/>
-			) : (
+			) : (        
 				<NoImage
+          darkMode
 					height={height}
 					width={width}
+          disableBorder={disableBorder}
 					disableBorderRadius={disableBorderRadius}
 				/>
 			)}

@@ -12,9 +12,9 @@ type CellImageProps = {
 const CellImage: React.FC<CellImageProps> = (props) => {
 	const { value, size = 64 } = props
 	let src = imageFromVideoUrl(value)
-	if (!value) return <NoImage height={size} width={size} />
+	if (!value) return <NoImage darkMode height={size} width={size} />
 	return (
-		<Image
+		<Image      
 			src={src}
 			width={size}
 			height={size}
