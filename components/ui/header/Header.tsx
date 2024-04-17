@@ -5,7 +5,7 @@ import MobileDrawer from './MobileDrawer'
 import MobileNav from './MobileTopNav'
 import DesktopTopNav from './DesktopTopNav'
 import DesktopSideNav from './DesktopSideNav'
-import { MenuLinkType } from '../../..'
+import { MenuLinkType } from '../../../types'
 
 type HeaderProps = {
 	editing?: boolean

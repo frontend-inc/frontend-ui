@@ -4,7 +4,7 @@ import { IconLoading, TextInput } from '../..'
 
 type ForgotPasswordFormProps = {
 	errors: any
-	loading?: boolean
+	loading: boolean
 	user: any
 	handleChange: (e: any) => void
 	handleSubmit: () => void

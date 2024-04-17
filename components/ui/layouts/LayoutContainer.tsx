@@ -2,85 +2,48 @@ import React, { ReactNode } from 'react'
 import { Box } from '@mui/material'
 import {
 	Alert,
-	LayoutScroll,
-	ColorModeTheme,
-	Header,
-	Footer,
-	Notifications,
-	AuthModal,
+	LayoutScroll,  
 } from '../../../components'
+import { Notifications } from '../../../components'
 import { NotificationType } from '../../../types'
-import { MenuLinkType } from '../../..'
 
 type LayoutContainerProps = {
-	position?: 'fixed' | 'absolute' | 'relative'
-	mode?: 'accent' | 'light' | 'dark'
-	topNav?: boolean
 	handleClick: (item: any) => void
-	headerLinks: MenuLinkType[]
-	footerLinks: MenuLinkType[]
-	notifications: NotificationType[]
 	children: ReactNode
-	editing?: boolean
-	enableAuth?: boolean
-	enableShopify?: boolean
-	facebook?: string
-	instagram?: string
-	linkedin?: string
-	twitter?: string
-	youtube?: string
-	tiktok?: string
+  header?: ReactNode
+  footer?: ReactNode
+  enableSideNav?: boolean
+  notifications: NotificationType[]
 	pageMargin?: number
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 	const {
 		children,
-		editing = false,
-		mode = 'accent',
-		topNav = false,
-		handleClick,
-		headerLinks,
-		footerLinks,
-		notifications,
-		enableAuth = false,
-		enableShopify = false,
-		facebook,
-		instagram,
-		linkedin,
-		twitter,
-		youtube,
-		tiktok,
+    header,
+    footer,
+    notifications,
+		enableSideNav=false,
 		pageMargin = 201,
-	} = props
-
-	const enableNotifications = notifications?.length > 0
+	} = props	
 
 	return (
 		<Box sx={sx.layout}>
 			<Alert />
-			<Notifications notifications={notifications} />
+      { notifications?.length > 0 && (
+        <Notifications notifications={notifications} />
+      )}
 			<Box
 				sx={{
 					...sx.root,
-					...(!topNav && sx.sideNav),
+					...(enableSideNav && sx.sideNav),
 				}}
 			>
-				<ColorModeTheme mode={mode}>
-					<Header
-						editing={editing}
-						topNav={topNav}
-						menuItems={headerLinks}
-						enableNotifications={enableNotifications}
-						handleClick={handleClick}
-						enableAuth={enableAuth}
-						enableShopify={enableShopify}
-					/>
-				</ColorModeTheme>
+        { header }				
 				<Box
 					sx={{
 						...sx.content,
-						...(topNav ? sx.contentTopNav : sx.contentSideNav),
+						...(enableSideNav ? sx.contentSideNav : sx.contentTopNav),
 					}}
 				>
 					<LayoutScroll>
@@ -95,20 +58,10 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 						>
 							{children}
 						</Box>
-						<Footer
-							menuItems={footerLinks}
-							handleClick={handleClick}
-							facebook={facebook}
-							instagram={instagram}
-							linkedin={linkedin}
-							twitter={twitter}
-							youtube={youtube}
-							tiktok={tiktok}
-						/>
+            { footer }
 					</LayoutScroll>
 				</Box>
 			</Box>
-			<AuthModal />
 		</Box>
 	)
 }

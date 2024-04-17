@@ -27,6 +27,7 @@ type ModalProps = {
 	fullScreen?: boolean
 	enableCancel?: boolean
 	hideBackdrop?: boolean
+  disableClose?: boolean
 }
 
 const Modal: React.FC<ModalProps> = (props) => {
@@ -44,6 +45,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 		fullScreen,
 		enableCancel = false,
 		hideBackdrop = false,
+    disableClose = false,
 	} = props
 
 	const { isMobile } = useResponsive()
@@ -75,9 +77,11 @@ const Modal: React.FC<ModalProps> = (props) => {
 					{!loading && (
 						<Box sx={sx.secondaryActions}>
 							{secondaryActions && secondaryActions}
-							<IconButton onClick={handleClose}>
-								<Icon name="X" />
-							</IconButton>
+              { !disableClose && (
+                <IconButton onClick={handleClose}>
+                  <Icon name="X" />
+                </IconButton>
+              )}
 						</Box>
 					)}
 				</Box>

@@ -2,7 +2,7 @@ import React from 'react'
 import { ButtonGroup, Badge, Button } from '@mui/material'
 import { Clear } from '@mui/icons-material'
 import { ListFilter } from 'lucide-react'
-import IconLoading from '../IconLoading'
+import IconLoading from '../loaders/IconLoading'
 
 type FilterButtonProps = {
 	loading: boolean

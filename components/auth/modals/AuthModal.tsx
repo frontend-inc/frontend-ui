@@ -13,10 +13,15 @@ import { Tab, Tabs, Box } from '@mui/material'
 import { AppContext } from '../../../context'
 
 type AuthModalProps = {
-	disableUsername?: boolean
+	disableUsername?: boolean  
 }
 
 const AuthModal: React.FC<AuthModalProps> = (props) => {
+
+  const { 
+    disableUsername = false,
+  } = props 
+
 	const router = useRouter()
 	const { app_id: appId } = router.query
 
@@ -26,10 +31,10 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 		errors,
 		loading,
 		user,
+    currentUser,
 		handleChange,
 		login,
 		signup,
-		forgotPassword,
 		verifyPin,
 		sendPin,
 	} = useAuth()
@@ -40,54 +45,51 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 		setTab(newValue)
 	}
 
-	const handleSubmit = async () => {
-		let resp
-		switch (tab) {
-			case 0:
-				resp = await login(user)
-				break
-			case 1:
-				resp = await signup({
-					...user,
-					app_id: appId,
-				})
-				break
-			case 2:
-				await sendPin({
-					...user,
-					app_id: appId,
-				})
-				setTab(3)
-				break
-			case 3:
-				resp = await verifyPin(user?.email, user?.pin)
-				break
-			case 4:
-				resp = await sendPin({
-					...user,
-					app_id: appId,
-				})
-				setTab(3)
-				break
-		}
-		if (tab !== 4 && resp?.id) {
-			setAuthOpen(false)
-		}
-	}
+  const handleLogin = async () => {
+    let resp = await login(user)
+    if (resp?.id) {
+      setAuthOpen(false)
+    }
+  }
 
-	const handleSignup = () => {
+  const handleSignup = async () => {
+    let resp = await signup({
+      ...user,
+      app_id: appId,
+    })
+    if (resp?.id) {
+      setAuthOpen(false)
+    }
+  }
+
+  const handleSendPin = async () => {
+    await sendPin({
+      ...user,
+      app_id: appId,
+    })
+    setTab(3)
+  }
+
+  const handleVerifyPin = async () => {
+    let resp = await verifyPin(user?.email, user?.pin)
+    if (resp?.id) {
+      setAuthOpen(false)
+    }
+  }
+
+	const handleSignupClick = () => {
 		setTab(1)
 	}
 
-	const handleLogin = () => {
+	const handleLoginClick = () => {
 		setTab(0)
 	}
 
-	const handleForgotPassword = () => {
+	const handleForgotPasswordClick = () => {
 		setTab(2)
 	}
 
-	const handleResendPin = () => {
+	const handleResendPinClick = () => {
 		setTab(4)
 	}
 
@@ -116,19 +118,20 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 						loading={loading}
 						user={user}
 						handleChange={handleChange}
-						handleSubmit={handleSubmit}
-						handleSignup={handleSignup}
-						handleForgotPassword={handleForgotPassword}
+						handleSubmit={handleLogin}
+						handleSignup={handleSignupClick}
+						handleForgotPassword={handleForgotPasswordClick}
 					/>
 				)}
 				{tab === 1 && (
 					<SignupForm
+            disableUsername={disableUsername}
 						errors={errors}
 						loading={loading}
 						user={user}
 						handleChange={handleChange}
-						handleSubmit={handleSubmit}
-						handleLogin={handleLogin}
+						handleSubmit={handleSignup}
+						handleLogin={handleLoginClick}
 					/>
 				)}
 				{tab === 2 && (
@@ -137,8 +140,8 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 						loading={loading}
 						user={user}
 						handleChange={handleChange}
-						handleSubmit={handleSubmit}
-						handleLogin={handleLogin}
+						handleSubmit={handleSendPin}
+						handleLogin={handleLoginClick}
 					/>
 				)}
 				{tab === 3 && (
@@ -147,8 +150,8 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 						loading={loading}
 						user={user}
 						handleChange={handleChange}
-						handleSubmit={handleSubmit}
-						handleResendPin={handleResendPin}
+						handleSubmit={handleVerifyPin}
+						handleResendPin={handleResendPinClick}
 					/>
 				)}
 				{tab === 4 && (
@@ -157,7 +160,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 						loading={loading}
 						user={user}
 						handleChange={handleChange}
-						handleSubmit={handleSubmit}
+						handleSubmit={handleSendPin}
 					/>
 				)}
 			</Box>

@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import { User } from 'lucide-react'
 import { AppContext } from '../../../context'
 
-const AuthAvatarButton: React.FC = () => {
+const AuthButton: React.FC = () => {
 	const router = useRouter()
 
 	const { logout, customer } = useAuth()
@@ -46,7 +46,7 @@ const AuthAvatarButton: React.FC = () => {
 	)
 }
 
-export default AuthAvatarButton
+export default AuthButton
 
 const sx = {
 	button: {

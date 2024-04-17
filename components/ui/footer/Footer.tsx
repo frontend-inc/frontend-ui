@@ -32,7 +32,7 @@ const Footer: React.FC<FooterProps> = (props) => {
 
 	return (
 		<Stack sx={sx.root} spacing={1} direction="column">
-			<Box sx={sx.container}>
+			<Box id='footer' sx={sx.container}>
 				<Box sx={sx.gridContainer}>
 					<Stack direction="row" divider={<Divider />} spacing={2}>
 						{menuItems?.map((menuItem, i) => (
