@@ -53,34 +53,18 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 		}
 	}
 
-	const [fgColor, setFgColor] = useState('white')
 	const [bgColor, setBgColor] = useState('black')
 	const { theme } = useContext(ThemeContext)
 
 	useEffect(() => {
 		if (theme) {
-			setFgColor(theme.palette.text.main)
 			setBgColor('#222222')
 		}
 	}, [theme])
 
 	return (
-		<IconButton onClick={handleClick}>
-			{provider === 'facebook' && (
-				<SocialIcon network="facebook" bgColor={bgColor} style={styles} />
-			)}
-			{provider === 'instagram' && (
-				<SocialIcon network="instagram" bgColor={bgColor} style={styles} />
-			)}
-			{provider === 'linkedin' && (
-				<SocialIcon network="linkedin" bgColor={bgColor} style={styles} />
-			)}
-			{provider === 'twitter' && (
-				<SocialIcon network="twitter" bgColor={bgColor} style={styles} />
-			)}
-			{provider === 'youtube' && (
-				<SocialIcon network="youtube" bgColor={bgColor} style={styles} />
-			)}
+		<IconButton size="small" onClick={handleClick}>
+			<SocialIcon network={ provider } bgColor={bgColor} style={styles} />			
 		</IconButton>
 	)
 }

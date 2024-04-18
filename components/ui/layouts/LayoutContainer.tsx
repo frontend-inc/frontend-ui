@@ -18,7 +18,8 @@ type LayoutContainerProps = {
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
-	const {
+	
+  const {
 		children,
     header,
     footer,

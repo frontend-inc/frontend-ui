@@ -17,3 +17,12 @@ export const LINK_OPTIONS = {
 		{ value: 'shopify_product', label: 'Product', icon: 'Shirt' },
 	],
 }
+
+export const SOCIAL_LINK_PROVIDERS = [
+	{ value: 'Facebook', label: 'Facebook' },
+  { value: 'Twitter', label: 'Twitter' },
+  { value: 'Instagram', label: 'Instagram' },
+  { value: 'Linkedin', label: 'LinkedIn' },
+  { value: 'YouTube', label: 'YouTube' },
+  { value: 'TikTok', label: 'TikTok' }
+]

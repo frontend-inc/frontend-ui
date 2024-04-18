@@ -31,6 +31,9 @@ export const sx = {
 			borderColor: 'error.main',
 		},
 	},
+  inputContainer: {
+    width: '100%',
+  },
 	paper: {
 		bgcolor: 'background.paper',
 		mt: 1,
@@ -52,13 +55,16 @@ export const sx = {
 		position: 'relative',
 	},
 	label: {
-		mb: 0,
-		minWidth: '100px',
+		minWidth: '100px',    
 	},
-	stack: {
+	stack: {        
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
 		alignItems: 'flex-start',
 	},
 	stackVertical: {
+    justifyContent: 'flex-start',
 		alignItems: 'center',
 	},
 }

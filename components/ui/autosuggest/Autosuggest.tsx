@@ -266,7 +266,7 @@ const sx: any = {
 	},
 	label: {
 		mb: 0,
-		minWidth: '100px',
+		minWidth: '95px',
 	},
 	icon: {
 		marginRight: '10px',

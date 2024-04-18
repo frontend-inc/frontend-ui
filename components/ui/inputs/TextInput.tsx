@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Stack, FormControl, InputBase, Typography } from '@mui/material'
+import { Box, Stack, FormControl, InputBase, Typography } from '@mui/material'
 import { ErrorText } from '../../../components'
 import { sx } from './styles'
 import { useError } from '../../../hooks'
@@ -56,42 +56,42 @@ const TextInput: React.FC<TextInputPropsType> = (props) => {
 	}, [value])
 
 	return (
-		<FormControl fullWidth>
-			<Stack
-				sx={{
-					...sx.stack,
-					...(direction == 'row' && !multiline && sx.stackVertical),
-				}}
-				direction={direction}
-				spacing={0.5}
-			>
-				{label && (
-					<Typography sx={sx.label} variant="caption" color="text.secondary">
-						{label}
-					</Typography>
-				)}
-				<InputBase
-					rows={rows}
-					error={error ? true : false}
-					sx={{
-						...sx.inputBase,
-						...((error && sx.inputError) || {}),
-						...styles,
-					}}
-					multiline={multiline}
-					autoComplete="off"
-					fullWidth
-					type={type}
-					name={name}
-					margin={margin}
-					disabled={disabled}
-					placeholder={placeholder}
-					onChange={debouncedChanged}
-					value={text}
-				/>
-			</Stack>
-			<ErrorText error={error} />
-		</FormControl>
+    <Stack
+      sx={{
+        ...sx.stack,
+        ...(direction == 'row' && !multiline && sx.stackVertical),
+      }}
+      direction={direction}
+      spacing={0.5}
+    >
+      {label && (
+        <Typography sx={sx.label} variant="caption" color="text.secondary">
+          {label}
+        </Typography>
+      )}
+      <Box sx={ sx.inputContainer }>
+        <InputBase
+          rows={rows}
+          error={error ? true : false}
+          sx={{
+            ...sx.inputBase,
+            ...((error && sx.inputError) || {}),
+            ...styles,
+          }}
+          multiline={multiline}
+          autoComplete="off"
+          fullWidth
+          type={type}
+          name={name}
+          margin={margin}
+          disabled={disabled}
+          placeholder={placeholder}
+          onChange={debouncedChanged}
+          value={text}
+        />
+        <ErrorText error={error} />
+      </Box>
+    </Stack>
 	)
 }
 
