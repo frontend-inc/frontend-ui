@@ -59,7 +59,6 @@ export const sx = {
 	},
 	stack: {        
     display: 'flex',
-    flexDirection: 'row',
     justifyContent: 'flex-start',
 		alignItems: 'flex-start',
 	},

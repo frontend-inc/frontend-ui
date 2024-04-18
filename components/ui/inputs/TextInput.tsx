@@ -69,7 +69,6 @@ const TextInput: React.FC<TextInputPropsType> = (props) => {
           {label}
         </Typography>
       )}
-      <Box sx={ sx.inputContainer }>
         <InputBase
           rows={rows}
           error={error ? true : false}
@@ -90,7 +89,6 @@ const TextInput: React.FC<TextInputPropsType> = (props) => {
           value={text}
         />
         <ErrorText error={error} />
-      </Box>
     </Stack>
 	)
 }
