@@ -20,8 +20,6 @@ const Footer: React.FC<FooterProps> = (props) => {
 		socialLinks
 	} = props
 
-  console.log("Footer", socialLinks)
-
 	return (
 		<Stack sx={sx.root} spacing={1} direction="column">
       <Stack           

@@ -5,6 +5,27 @@ import {
 } from '../constants/index'
 import { get } from 'lodash'
 
+export const handleDocumentChange = (ev, resource) => {
+  const { name } = ev.target
+  const value = ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
+  let newResource = {
+    ...resource 
+  }
+  if (SYSTEM_FIELDS.includes(name)) {
+    newResource[name] = value
+  } else {
+    newResource = {
+      ...newResource,
+      data: {
+        ...newResource.data,
+        [name]: value,
+      },
+    }          
+  }
+  return newResource
+}
+
+
 export const flattenDocument = (resource) => {
 	let { data, ...rest } = resource || {}
 	return {

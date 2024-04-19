@@ -1,19 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Backdrop, LinearProgress } from '@mui/material'
 import { useDelayedLoading } from '../../../hooks'
+import { AppContext } from '@frontend-mui/context'
 
-type LoaderProps = {
+type ContextLoaderProps = {
 	loading?: boolean
 	delay?: number
 }
 
-const Loader: React.FC<LoaderProps> = (props) => {
-	const { loading = true, delay = 500 } = props
+const ContextLoader: React.FC<ContextLoaderProps> = (props) => {
+	
+  const { loading } = useContext(AppContext)
 
-	const { loading: easeLoading } = useDelayedLoading({
-		loading,
-		delay,
-	})
+  const { loading: easeLoading } = useDelayedLoading({
+    loading 
+  })
+
 	return (
 		<Backdrop open={easeLoading} sx={sx.backdrop}>
 			<LinearProgress color="primary" sx={sx.progress} />
@@ -21,7 +23,7 @@ const Loader: React.FC<LoaderProps> = (props) => {
 	)
 }
 
-export default Loader
+export default ContextLoader
 
 const sx = {
 	backdrop: {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, LinearProgress } from '@mui/material'
+import { Stack, CircularProgress } from '@mui/material'
 import { useDelayedLoading } from '../../../hooks'
 
 type LoaderProps = {
@@ -8,18 +8,17 @@ type LoaderProps = {
 }
 
 const Loader: React.FC<LoaderProps> = (props) => {
-	const { loading = true, delay = 500 } = props
+	const { loading } = props
 
-	const { loading: easeLoading } = useDelayedLoading({
-		loading,
-		delay,
-	})
-
-	if (!easeLoading) return null
+  if(!loading) return null;
 	return (
-		<Box sx={sx.root}>
-			<LinearProgress color="primary" sx={sx.progress} />
-		</Box>
+		<Stack direction="column" sx={ sx.root }>
+			<CircularProgress 
+        disableShrink
+        color="primary" 
+        size={40}
+      />
+		</Stack>
 	)
 }
 
@@ -27,18 +26,9 @@ export default Loader
 
 const sx = {
 	root: {
-		p: 6,
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		height: '100%',
-	},
-	progress: {
-		height: '4px',
-		width: '220px',
-		bgcolor: 'transparent',
-		color: 'primary.dark',
-		borderRadius: '4px',
-	},
+		height: 400,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+	}	
 }

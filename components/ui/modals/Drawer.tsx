@@ -65,7 +65,7 @@ const Drawer: React.FC<DrawerProps> = (props) => {
 						)}
 					</Box>
 					<Box>
-						<Typography variant="body1">{title}</Typography>
+						<Typography variant="subtitle1">{title}</Typography>
 					</Box>
 					<Box sx={sx.headerAction}>
 						{anchor != 'right' && (

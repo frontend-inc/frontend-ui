@@ -57,6 +57,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 				// Manually reset the maxWidth breakpoints
 				// since these are modifed in the Editor
 				'& .MuiDialog-paper': {
+          bgcolor: 'background.default',
 					maxWidth: {
 						sm: muiTheme.breakpoints.values[maxWidth],
 						xs: '100vw',
@@ -71,7 +72,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 		>
 			<DialogTitle sx={sx.dialogTitleContainer}>
 				<Box sx={sx.dialogTitleContent}>
-					<Typography variant="subtitle2" color="textPrimary" sx={sx.title}>
+					<Typography variant="h6" color="textPrimary" sx={sx.title}>
 						{title}
 					</Typography>
 					{!loading && (
@@ -122,8 +123,12 @@ const sx = {
 	},
 	title: {},
 	dialogTitleContainer: {
-		py: 0,
+		p: 0,
+    px: 1,
+    pl: 3,
 		bgcolor: 'background.default',
+    borderBottom: '1px solid',
+    borderColor: 'divider',
 	},
 	dialogTitleContent: {
 		height: '50px',
@@ -133,11 +138,12 @@ const sx = {
 		justifyContent: 'space-between',
 	},
 	dialogContent: {
-		p: 2,
+		my: 2,
 		height: '100%',
-		bgcolor: 'background.default',
 	},
 	dialogActions: {
+    borderTop: '1px solid',
+    borderColor: 'divider',
 		bgcolor: 'background.default',
 	},
 	disablePadding: {

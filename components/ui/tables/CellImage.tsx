@@ -1,7 +1,6 @@
 import React from 'react'
-import { NoImage } from '../../../components'
+import { Image } from '../../../components'
 import { imageFromVideoUrl } from '../../../helpers'
-import Image from 'next/image'
 
 type CellImageProps = {
 	value: string
@@ -11,18 +10,15 @@ type CellImageProps = {
 
 const CellImage: React.FC<CellImageProps> = (props) => {
 	const { value, size = 64 } = props
-	let src = imageFromVideoUrl(value)
-	if (!value) return <NoImage darkMode height={size} width={size} />
+	let src = imageFromVideoUrl(value)	
 	return (
-		<Image      
+		<Image     
+      disableBorder   
+      disableBorderRadius
 			src={src}
 			width={size}
 			height={size}
 			alt={'Image'}
-			quality={100}
-			style={{
-				objectFit: 'contain',
-			}}
 		/>
 	)
 }
