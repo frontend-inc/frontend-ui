@@ -98,7 +98,10 @@ const sx = {
 			xs: '100vw',
 			md: '380px',
 		},
-		maxWidth: '380px',
+		maxWidth: {
+      sm: '380px',
+      xs: '480px'
+    }
 	},
 	fullWidth: {
 		width: '100vw',
