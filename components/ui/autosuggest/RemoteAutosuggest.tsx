@@ -5,6 +5,7 @@ import { Autosuggest } from '../..'
 import { ErrorText } from '../..'
 import { useError } from '../../../hooks'
 import { OptionType, QueryParamsType, SyntheticEventType } from '../../../types'
+import { get } from 'lodash'
 
 type RemoteAutosuggestProps = {
 	errors?: any
@@ -31,6 +32,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		name,
 		url,
 		displayField = 'title',
+    imageField,
 		handleChange,
 		handleClear,
 		valueParam = 'id',
@@ -48,14 +50,13 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 	const { 
     delayedLoading, 
     resources, 
-    findOne,
     findMany 
   } = useResource({
 		url: url,
 		name: name,
 	})
 
-  const [option, setOption] = useState<OptionalType>(null)
+  const [option, setOption] = useState<OptionType>()
 	const [options, setOptions] = useState<OptionType[]>([])
 
 	const handleInputChange = (newValue) => {
@@ -67,6 +68,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		return resources.map((resource) => ({
 			label: resource[displayField],
 			value: resource[valueParam],
+      image: imageField ? get(resource, imageField) : null
 		}))
 	}
 
@@ -81,7 +83,6 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
     }
 	}
   
-
 	useEffect(() => {
 		if (resources) {
 			setOptions([...formatResources(resources), ...defaultOptions])
@@ -91,7 +92,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 	useEffect(() => {
 		if (value && resources?.length > 0) {
 			let resource = resources.find((resource) => resource[valueParam] == value)
-      if(resource){
+      if(resource){ 
         setOption({
           label: resource[displayField],
           value: resource[valueParam]

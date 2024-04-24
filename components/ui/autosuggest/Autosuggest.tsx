@@ -31,7 +31,7 @@ const AutocompleteOption: React.FC<AutocompleteOptionProps> = (props) => {
 				</ListItemIcon>
 			)}
 			{option?.image && (
-				<ListItemIcon>
+				<ListItemIcon sx={ sx.listItemIcon }>
 					<Image
 						src={option?.image}
 						alt={option?.label}
@@ -178,10 +178,10 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 							...(error && sx.inputError),
 						}}
 						endAdornment={
-							handleClear && (
-								<InputAdornment position="start">
+							(selected?.value && handleClear) && (
+								<InputAdornment position="start" sx={ sx.inputAdornment }>
 									<IconButton onClick={handleInputClear} size="small">
-										<Icon name="X" size={20} />
+										<Icon name="X" color='text.secondary' size={20} />
 									</IconButton>
 								</InputAdornment>
 							)
@@ -247,6 +247,7 @@ const sx: any = {
 	},
 	listItemIcon: {
 		minWidth: '32px',
+    mr: 1
 	},
 	label: {
 		mb: 0,
@@ -271,4 +272,8 @@ const sx: any = {
 	circularProgress: {
 		color: 'text.secondary',
 	},
+  inputAdornment: {
+    position: 'absolute',
+    right: 0
+  }
 }
