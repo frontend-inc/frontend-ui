@@ -115,15 +115,13 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 			handleClear()
 		}
 	}
-
-	useEffect(() => {
-		if (typeof value != 'object') {
-			setSelected(options.find((o) => o.value == value))
-		} else {
-			setSelected(value)
-		}
-	}, [value, options])
-
+  
+  useEffect(() => {
+    if(value){
+      setSelected(value)
+    }
+  }, [value])
+  
 	return (
 		<Stack
 			sx={{
@@ -162,10 +160,6 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 				//@ts-ignore
 				getOptionLabel={(option) => option?.label || ''}
 				//@ts-ignore
-				getOptionSelected={(
-					option: Record<string, any>,
-					value: Record<string, any>
-				) => option?.value == value?.value}
 				renderOption={(props, option) => (
 					<AutocompleteOption {...props} option={option} />
 				)}

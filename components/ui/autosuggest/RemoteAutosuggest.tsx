@@ -45,12 +45,17 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		name: name,
 	})
 
-	const { delayedLoading, resources, findMany } = useResource({
+	const { 
+    delayedLoading, 
+    resources, 
+    findOne,
+    findMany 
+  } = useResource({
 		url: url,
 		name: name,
 	})
 
-	const [option, setOption] = useState<OptionType | {}>({})
+  const [option, setOption] = useState<OptionalType>(null)
 	const [options, setOptions] = useState<OptionType[]>([])
 
 	const handleInputChange = (newValue) => {
@@ -67,15 +72,15 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 
 	const findOption = async (value) => {
 		if (!value) return null
-		if (options?.length > 0) {
-			let matchOption = options.find(
-				(option: OptionType) => option.value == value
-			)
-			if (matchOption) {
-				setOption(matchOption)
-			}
-		}
+		let resource = resources.find((resource) => resource[displayField] == value)
+    if(resource){    
+      setOption({
+        label: resource[displayField],
+        value: resource[valueParam]
+      })
+    }
 	}
+  
 
 	useEffect(() => {
 		if (resources) {
@@ -84,15 +89,24 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 	}, [resources])
 
 	useEffect(() => {
-		if (value && resources && resources.length > 0) {
-			findOption(value)
-		}
-	}, [value, resources, url])
+		if (value && resources?.length > 0) {
+			let resource = resources.find((resource) => resource[valueParam] == value)
+      if(resource){
+        setOption({
+          label: resource[displayField],
+          value: resource[valueParam]
+        })
+      }
+    }
+	}, [value, resources])
 
 	useEffect(() => {
 		if (url) {
 			//@ts-ignore
-			findMany(defaultQuery)
+			findMany({ 
+        ...defaultQuery,
+        per_page: 100
+      })
 		}
 	}, [url])
 
@@ -116,5 +130,3 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 }
 
 export default RemoteAutosuggest
-
-const sx = {}

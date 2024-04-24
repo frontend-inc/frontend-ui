@@ -119,7 +119,7 @@ const sx = {
 		},
 	},
 	content: {
-		height: '50px',
+		minHeight: '60px',
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',

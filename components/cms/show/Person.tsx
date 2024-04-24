@@ -12,10 +12,9 @@ const Person: React.FC<PersonProps> = (props) => {
 	const MAX_CHARS = 500
 
 	const { actions, resource } = props || {}
+	const { data } = resource || {}
+  const { facebook, instagram, linkedin, twitter, youtube, blog } = data || {}
 
-	const {
-		data: { facebook, instagram, linkedin, twitter, youtube, blog },
-	} = resource || { data: {} }
 	const { title, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
 
@@ -38,7 +37,7 @@ const Person: React.FC<PersonProps> = (props) => {
 					<Typography color="text.primary" variant="h4">
 						{title}
 					</Typography>
-					{facebook ||
+					{ facebook ||
 						instagram ||
 						linkedin ||
 						twitter ||

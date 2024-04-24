@@ -46,6 +46,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 		let resp = await login(user)
 		if (resp?.id) {
 			setAuthOpen(false)
+      window.location.reload()
 		}
 	}
 

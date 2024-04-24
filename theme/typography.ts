@@ -1,7 +1,7 @@
 export const typography = {
 	h1: {
 		fontFamily: 'Instrument Sans',
-		fontWeight: 500,
+		fontWeight: 700,
 		fontSize: 64,
 		lineHeight: '1.1em',
 		'@media (max-width:600px)': {
@@ -10,7 +10,7 @@ export const typography = {
 	},
 	h2: {
 		fontFamily: 'Instrument Sans',
-		fontWeight: 500,
+		fontWeight: 700,
 		fontSize: 48,
 		'@media (max-width:600px)': {
 			fontSize: 34,
@@ -18,7 +18,7 @@ export const typography = {
 	},
 	h3: {
 		fontFamily: 'Instrument Sans',
-		fontWeight: 500,
+		fontWeight: 700,
 		textIndent: 0,
 		fontSize: 40,
 		'@media (max-width:600px)': {
@@ -29,32 +29,32 @@ export const typography = {
 	h4: {
 		fontFamily: 'Instrument Sans',
 		fontSize: 28,
-		fontWeight: 500,
+		fontWeight: 700,
 		'@media (max-width:600px)': {
 			fontSize: 20,
 		},
 	},
 	h5: {
 		fontFamily: 'Instrument Sans',
-		fontWeight: 500,
+		fontWeight: 700,
 		fontSize: 26,
 	},
 	h6: {
 		fontFamily: 'Instrument Sans',
-		fontWeight: 500,
+		fontWeight: 700,
 		fontSize: 24,
 	},
 	subtitle1: {
 		fontFamily: 'Instrument Sans',
-		fontSize: 20,
-		fontWeight: 500,
+		fontSize: 18,
+		fontWeight: 600,
 		lineHeight: '1.5em',
 		textTransform: 'none',
 	},
 	subtitle2: {
 		fontFamily: 'Instrument Sans',
-		fontWeight: 500,
-		fontSize: 17,
+		fontWeight: 600,
+		fontSize: 16,
 		lineHeight: '1.5em',
 	},
 	body1: {
