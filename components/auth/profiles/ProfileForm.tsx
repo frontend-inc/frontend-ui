@@ -17,8 +17,6 @@ export type ProfileFormProps = {
 const ProfileForm: React.FC<ProfileFormProps> = (props) => {
 	const { resource, buttonText = 'Submit', fields } = props
 
-	const { currentUser } = useAuth()
-
 	const [submitted, setSubmitted] = useState(false)
 
 	const {
@@ -76,33 +74,31 @@ const ProfileForm: React.FC<ProfileFormProps> = (props) => {
 		}
 	}, [resource])
 
-	if (!currentUser) {
-		return <AuthRequired />
-	}
-
 	return (
-		<Box sx={sx.root}>
-			<Stack spacing={1} sx={sx.root}>
-				{fields?.map((field, index) => (
-					<FormFieldInput
-						key={index}
-						field={field}
-						value={get(flattenDocument(profile), field.name)}
-						handleChange={handleDataChange}
-						handleRemove={handleRemove}
-					/>
-				))}
-				<Button
-					size="large"
-					variant="contained"
-					onClick={handleSubmit}
-					disabled={delayedLoading}
-					endIcon={<IconLoading color="primary" loading={delayedLoading} />}
-				>
-					{buttonText}
-				</Button>
-			</Stack>
-		</Box>
+    <AuthRequired>
+      <Box sx={sx.root}>
+        <Stack spacing={1} sx={sx.root}>
+          {fields?.map((field, index) => (
+            <FormFieldInput
+              key={index}
+              field={field}
+              value={get(flattenDocument(profile), field.name)}
+              handleChange={handleDataChange}
+              handleRemove={handleRemove}
+            />
+          ))}
+          <Button
+            size="large"
+            variant="contained"
+            onClick={handleSubmit}
+            disabled={delayedLoading}
+            endIcon={<IconLoading color="primary" loading={delayedLoading} />}
+          >
+            {buttonText}
+          </Button>
+        </Stack>
+      </Box>
+    </AuthRequired>
 	)
 }
 

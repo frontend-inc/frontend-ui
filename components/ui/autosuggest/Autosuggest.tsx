@@ -117,10 +117,12 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 	}
   
   useEffect(() => {
-    if(value){
+    if(typeof value === 'object'){
       setSelected(value)
+    }else if(options?.length > 0){
+      setSelected(options.find((option) => option.value == value))
     }
-  }, [value])
+  }, [value, options])
   
 	return (
 		<Stack
@@ -136,6 +138,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 					{label}
 				</Typography>
 			)}
+      <Box sx={ sx.inputContainer }>
 			<Autocomplete
 				freeSolo={freeSolo}
 				multiple={multiselect}
@@ -190,6 +193,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 				)}
 			/>
 			<ErrorText error={error} />
+      </Box>
 		</Stack>
 	)
 }
@@ -236,6 +240,9 @@ const sx: any = {
 			borderRadius: (theme) => theme.shape.borderRadius,
 		},
 	},
+  inputContainer: {
+    width: '100%'
+  },
 	paper: {
 		bgcolor: 'background.paper',
 		color: 'text.primary',

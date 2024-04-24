@@ -56,6 +56,7 @@ const TextInput: React.FC<TextInputPropsType> = (props) => {
 	}, [value])
 
 	return (
+    <>
 		<Stack
 			sx={{
 				...sx.stack,
@@ -69,27 +70,30 @@ const TextInput: React.FC<TextInputPropsType> = (props) => {
 					{label}
 				</Typography>
 			)}
-			<InputBase
-				rows={rows}
-				error={error ? true : false}
-				sx={{
-					...sx.inputBase,
-					...((error && sx.inputError) || {}),
-					...styles,
-				}}
-				multiline={multiline}
-				autoComplete="off"
-				fullWidth
-				type={type}
-				name={name}
-				margin={margin}
-				disabled={disabled}
-				placeholder={placeholder}
-				onChange={debouncedChanged}
-				value={text}
-			/>
-			<ErrorText error={error} />
-		</Stack>
+      <Box sx={sx.inputContainer}>
+        <InputBase
+          rows={rows}
+          error={error ? true : false}
+          sx={{
+            ...sx.inputBase,
+            ...((error && sx.inputError) || {}),
+            ...styles,
+          }}
+          multiline={multiline}
+          autoComplete="off"
+          fullWidth
+          type={type}
+          name={name}
+          margin={margin}
+          disabled={disabled}
+          placeholder={placeholder}
+          onChange={debouncedChanged}
+          value={text}
+        />
+        <ErrorText error={error} />
+      </Box>
+		</Stack>    
+    </>
 	)
 }
 

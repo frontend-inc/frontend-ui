@@ -114,6 +114,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 	return (
 		<>
 			<Autosuggest
+        errors={errors}
 				loading={delayedLoading}
 				direction={direction}
 				label={label}
@@ -125,7 +126,6 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 				handleInputChange={handleInputChange}
 				handleClear={handleClear}
 			/>
-			<ErrorText error={error} />
 		</>
 	)
 }

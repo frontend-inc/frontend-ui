@@ -76,8 +76,8 @@ const Collection: React.FC<CollectionProps> = (props) => {
 
 	const handleSearch = (keywords: string) => {
 		findMany({
-			...defaultQuery,
 			...query,
+      ...defaultQuery,
 			keywords: keywords,
 			page: 1,
 			per_page: perPage,
@@ -110,8 +110,10 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	// Filter methods
 	const handleClearFilters = () => {
 		setActiveFilters([])
-		findMany({
-			filters: {},
+		findMany({      
+			filters: {
+        ...defaultQuery?.filters,
+      },
 			sort_by: 'id',
 			sort_direction: 'desc',
 			keywords: '',
@@ -149,14 +151,14 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	}, [url, perPage])
 
 	useEffect(() => {
-		console.log('ACTIVE FILTERS', activeFilters)
 		if (activeFilters) {
 			findMany({
 				...query,
-				filters: buildQueryFilters(activeFilters),
+        filters: buildQueryFilters(activeFilters),
+        ...defaultQuery,
 			})
 		}
-	}, [activeFilters?.length])
+	}, [activeFilters?.length, defaultQuery])
 
 	return (
 		<Stack spacing={1} sx={sx.root}>

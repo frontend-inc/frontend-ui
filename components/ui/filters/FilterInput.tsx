@@ -10,7 +10,7 @@ import {
 	DATE_RANGE_OPTIONS,
 	FILTER_OPERATORS,
 } from '../../../constants/index'
-import { Stack, Box, IconButton, Typography } from '@mui/material'
+import { Box, IconButton, Typography } from '@mui/material'
 import { Icon, TextInput, Autosuggest, ArrayInput } from '../../../components'
 import {
 	OptionType,

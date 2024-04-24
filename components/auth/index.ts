@@ -1,5 +1,6 @@
 export { default as AuthorizationModal } from './modals/AuthorizationModal'
 export { default as AuthorizationForm } from './authorization/AuthorizationForm'
+export { default as AuthCollection } from './collections/AuthCollection'
 export { default as AuthRequired } from './AuthRequired'
 export { default as AuthAvatar } from './avatars/AuthAvatar'
 export { default as AuthButton } from './buttons/AuthButton'

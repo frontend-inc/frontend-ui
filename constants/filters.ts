@@ -99,6 +99,8 @@ export const FILTERABLE_TYPES: String[] = [
 	'price',
 	'rating',
 	'select',
+  'string',
+  'text'
 ]
 
 export const SORTABLE_TYPES: String[] = [
