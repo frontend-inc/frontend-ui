@@ -6,7 +6,7 @@ import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 
 export type FeaturedCardProps = {
-  label?: string
+	label?: string
 	title?: string
 	description?: string
 	image?: string
@@ -23,7 +23,7 @@ export type FeaturedCardProps = {
 const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
-    label,
+		label,
 		title,
 		description,
 		image = '',
@@ -66,7 +66,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 				<Box sx={sx.image}>
 					<TouchableOpacity handleClick={handleItemClick}>
 						<Image
-              label={label}
+							label={label}
 							src={image}
 							height={320}
 							objectFit={objectFit}

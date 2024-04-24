@@ -6,9 +6,9 @@ import { CardProps } from '../../../types'
 const Cover: React.FC<CardProps> = (props) => {
 	const { direction } = props
 	switch (direction) {
-		case 'column':
-			return <CoverVert {...props} />
 		case 'row':
+			return <CoverVert {...props} />
+		case 'column':
 			return <CoverHoriz {...props} />
 		default:
 			return <CoverVert {...props} />

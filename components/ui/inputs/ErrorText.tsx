@@ -20,7 +20,7 @@ export default ErrorText
 
 const sx = {
 	root: {
-    pt: 1,
+		pt: 1,
 		color: 'error.main',
 		fontSize: '0.75rem',
 	},

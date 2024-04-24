@@ -1,41 +1,48 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
-import { Box, Link, Button, Divider, Stack, Typography, colors } from '@mui/material'
+import {
+	Box,
+	Link,
+	Button,
+	Divider,
+	Stack,
+	Typography,
+	colors,
+} from '@mui/material'
 import { MenuLinkType } from '../../../types'
 import { SocialLink } from '../..'
 
 type FooterProps = {
 	menuLinks?: MenuLinkType[]
-  socialLinks: {
-    name?: string
-    url?: string
-  }[]  
-  handleClick: (MenuItem: MenuLinkType) => void
+	socialLinks: {
+		name?: string
+		url?: string
+	}[]
+	handleClick: (MenuItem: MenuLinkType) => void
 }
 
 const Footer: React.FC<FooterProps> = (props) => {
-	const {
-		handleClick,
-		menuLinks,
-		socialLinks
-	} = props
+	const { handleClick, menuLinks, socialLinks } = props
 
 	return (
 		<Stack sx={sx.root} spacing={1} direction="column">
-      <Stack           
-        direction="row" divider={<Divider />} spacing={1}>
-        {menuLinks?.map((menuLink, i) => (
-          //@ts-ignore
-          <Link sx={ sx.link } key={i} handleClick={() => handleClick(menuLink)}>
-            {menuLink?.name}
-          </Link>
-        ))}
-      </Stack>
-      <Stack direction="row" spacing={0} sx={sx.socialUrls}>
-        { socialLinks?.map((link, i) => (
-          <SocialLink provider={ link?.name?.toLowerCase()} url={link?.url} key={i} />
-        ))}        
-      </Stack>
+			<Stack direction="row" divider={<Divider />} spacing={1}>
+				{menuLinks?.map((menuLink, i) => (
+					//@ts-ignore
+					<Link sx={sx.link} key={i} handleClick={() => handleClick(menuLink)}>
+						{menuLink?.name}
+					</Link>
+				))}
+			</Stack>
+			<Stack direction="row" spacing={0} sx={sx.socialUrls}>
+				{socialLinks?.map((link, i) => (
+					<SocialLink
+						provider={link?.name?.toLowerCase()}
+						url={link?.url}
+						key={i}
+					/>
+				))}
+			</Stack>
 		</Stack>
 	)
 }
@@ -44,7 +51,7 @@ export default Footer
 
 const sx = {
 	root: {
-    py: 2,
+		py: 2,
 		width: '100%',
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -67,9 +74,9 @@ const sx = {
 		borderColor: 'divider',
 		width: '96%',
 	},
-  link: {
-    color: 'text.secondary',
-    cursor: 'pointer',  
-    textDecoration: 'none',
-  }
+	link: {
+		color: 'text.secondary',
+		cursor: 'pointer',
+		textDecoration: 'none',
+	},
 }

@@ -2,9 +2,9 @@ import React from 'react'
 import { useApi, useResource } from 'frontend-js/hooks'
 
 const usePublicApp = () => {
-  const { api } = useApi()
-	
-  const {		
+	const { api } = useApi()
+
+	const {
 		loading,
 		loaded,
 		errors,

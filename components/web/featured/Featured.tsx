@@ -6,7 +6,7 @@ import FeaturedCard from './FeaturedCard'
 export type FeaturedProps = {
 	items: {
 		icon?: string
-    label?: string
+		label?: string
 		title?: string
 		description?: string
 		image?: string
@@ -32,7 +32,7 @@ const Featured: React.FC<FeaturedProps> = (props) => {
 				{items?.map((item, i) => (
 					<FeaturedCard
 						key={i}
-            label={item?.label}
+						label={item?.label}
 						title={item?.title}
 						description={item?.description}
 						image={item?.image}

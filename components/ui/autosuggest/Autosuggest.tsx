@@ -195,16 +195,6 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 					/>
 				)}
 			/>
-			{loading && (
-				<Box sx={sx.loaderContainer}>
-					<CircularProgress
-						size={20}
-						thickness={5}
-						disableShrink
-						sx={sx.circularProgress}
-					/>
-				</Box>
-			)}
 			<ErrorText error={error} />
 		</Stack>
 	)

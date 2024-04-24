@@ -149,12 +149,11 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	}, [url, perPage])
 
 	useEffect(() => {
-		if (activeFilters?.length >= 0) {
+		console.log('ACTIVE FILTERS', activeFilters)
+		if (activeFilters) {
 			findMany({
 				...query,
 				filters: buildQueryFilters(activeFilters),
-				page: 1,
-				per_page: perPage,
 			})
 		}
 	}, [activeFilters?.length])

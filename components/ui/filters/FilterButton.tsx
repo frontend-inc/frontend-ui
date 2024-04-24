@@ -38,7 +38,11 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 					color="secondary"
 					variant="contained"
 					startIcon={
-						loading ? <IconLoading color='secondary.contrastText' loading /> : <ListFilter />
+						loading ? (
+							<IconLoading color="secondary.contrastText" loading />
+						) : (
+							<ListFilter />
+						)
 					}
 					onClick={handleClick}
 				>

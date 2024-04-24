@@ -2,11 +2,11 @@ import React from 'react'
 import { Box, CircularProgress } from '@mui/material'
 
 type LoaderProps = {
- size?: number
+	size?: number
 }
 
 const Loader: React.FC<LoaderProps> = (props) => {
-	const { size=32 } = props
+	const { size = 32 } = props
 
 	return (
 		<Box sx={sx.root}>

@@ -57,15 +57,15 @@ const sx = {
 	},
 	cellHeader: {
 		borderBottom: '3px solid',
-		zIndex: (theme) => theme.zIndex.modal - 2,
+		zIndex: 1,
 	},
 	cellSticky: {
 		position: 'sticky',
 		left: 0,
 		borderRight: '3px solid',
-		zIndex: (theme) => theme.zIndex.modal - 3,
+		zIndex: 2,
 	},
 	cellStickyHeader: {
-		zIndex: (theme) => theme.zIndex.modal - 1,
+		zIndex: 3,
 	},
 }

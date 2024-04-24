@@ -2,7 +2,7 @@ import React from 'react'
 import {
 	Button,
 	Box,
-  Link,
+	Link,
 	List,
 	ListItem,
 	ListItemIcon,
@@ -28,18 +28,18 @@ const AuthorizeForm: React.FC<AuthorizeFormProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-      <Typography variant="h5" sx={sx.title}>
-        Do you authorize { app?.name } to access your account?
-      </Typography>
+			<Typography variant="h5" sx={sx.title}>
+				Do you authorize {app?.name} to access your account?
+			</Typography>
 			<Typography variant="body2" sx={sx.title}>
 				The following information will be shared with <span>{app?.name}</span>:
 			</Typography>
 			<List disablePadding>
 				{permissions.map((permission, index) => (
 					<ListItem disableGutters disablePadding key={index}>
-						<ListItemIcon sx={ sx.listItemIcon }>
+						<ListItemIcon sx={sx.listItemIcon}>
 							<Typography variant="body2">
-								<Icon name="CheckSquare" color='text.secondary' size={20} />
+								<Icon name="CheckSquare" color="text.secondary" size={20} />
 							</Typography>
 						</ListItemIcon>
 						<ListItemText primary={permission} />
@@ -57,8 +57,12 @@ const AuthorizeForm: React.FC<AuthorizeFormProps> = (props) => {
 			</Button>
 			<Box sx={sx.termsAndConditions}>
 				<Typography variant="caption">
-					By clicking "Continue" you agree to our <Link target="_blank" href='/terms-and-conditions'>Terms and Conditions</Link>.
-				</Typography>				
+					By clicking "Continue" you agree to our{' '}
+					<Link target="_blank" href="/terms-and-conditions">
+						Terms and Conditions
+					</Link>
+					.
+				</Typography>
 			</Box>
 		</Box>
 	)
@@ -82,7 +86,7 @@ const sx = {
 			fontWeight: 700,
 		},
 	},
-  listItemIcon: {
-    minWidth: 30
-  }
+	listItemIcon: {
+		minWidth: 30,
+	},
 }

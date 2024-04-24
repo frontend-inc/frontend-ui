@@ -13,14 +13,11 @@ import { Tab, Tabs, Box } from '@mui/material'
 import { AppContext } from '../../../context'
 
 type AuthModalProps = {
-	disableUsername?: boolean  
+	disableUsername?: boolean
 }
 
 const AuthModal: React.FC<AuthModalProps> = (props) => {
-
-  const { 
-    disableUsername = false,
-  } = props 
+	const { disableUsername = false } = props
 
 	const router = useRouter()
 	const { app_id: appId } = router.query
@@ -31,7 +28,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 		errors,
 		loading,
 		user,
-    currentUser,
+		currentUser,
 		handleChange,
 		login,
 		signup,
@@ -45,37 +42,37 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 		setTab(newValue)
 	}
 
-  const handleLogin = async () => {
-    let resp = await login(user)
-    if (resp?.id) {
-      setAuthOpen(false)
-    }
-  }
+	const handleLogin = async () => {
+		let resp = await login(user)
+		if (resp?.id) {
+			setAuthOpen(false)
+		}
+	}
 
-  const handleSignup = async () => {
-    let resp = await signup({
-      ...user,
-      app_id: appId,
-    })
-    if (resp?.id) {
-      setAuthOpen(false)
-    }
-  }
+	const handleSignup = async () => {
+		let resp = await signup({
+			...user,
+			app_id: appId,
+		})
+		if (resp?.id) {
+			setAuthOpen(false)
+		}
+	}
 
-  const handleSendPin = async () => {
-    await sendPin({
-      ...user,
-      app_id: appId,
-    })
-    setTab(3)
-  }
+	const handleSendPin = async () => {
+		await sendPin({
+			...user,
+			app_id: appId,
+		})
+		setTab(3)
+	}
 
-  const handleVerifyPin = async () => {
-    let resp = await verifyPin(user?.email, user?.pin)
-    if (resp?.id) {
-      setAuthOpen(false)
-    }
-  }
+	const handleVerifyPin = async () => {
+		let resp = await verifyPin(user?.email, user?.pin)
+		if (resp?.id) {
+			setAuthOpen(false)
+		}
+	}
 
 	const handleSignupClick = () => {
 		setTab(1)
@@ -125,7 +122,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 				)}
 				{tab === 1 && (
 					<SignupForm
-            disableUsername={disableUsername}
+						disableUsername={disableUsername}
 						errors={errors}
 						loading={loading}
 						user={user}

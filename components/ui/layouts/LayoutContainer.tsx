@@ -1,46 +1,42 @@
 import React, { ReactNode } from 'react'
 import { Box } from '@mui/material'
-import {
-	Alert,
-	LayoutScroll,  
-} from '../../../components'
+import { Alert, LayoutScroll } from '../../../components'
 import { Notifications } from '../../../components'
 import { NotificationType } from '../../../types'
 
 type LayoutContainerProps = {
 	handleClick: (item: any) => void
 	children: ReactNode
-  header?: ReactNode
-  footer?: ReactNode
-  enableSideNav?: boolean
-  notifications: NotificationType[]
+	header?: ReactNode
+	footer?: ReactNode
+	enableSideNav?: boolean
+	notifications: NotificationType[]
 	pageMargin?: number
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
-	
-  const {
+	const {
 		children,
-    header,
-    footer,
-    notifications,
-		enableSideNav=false,
+		header,
+		footer,
+		notifications,
+		enableSideNav = false,
 		pageMargin = 201,
-	} = props	
+	} = props
 
 	return (
 		<Box sx={sx.layout}>
 			<Alert />
-      { notifications?.length > 0 && (
-        <Notifications notifications={notifications} />
-      )}
+			{notifications?.length > 0 && (
+				<Notifications notifications={notifications} />
+			)}
 			<Box
 				sx={{
 					...sx.root,
 					...(enableSideNav && sx.sideNav),
 				}}
 			>
-        { header }				
+				{header}
 				<Box
 					sx={{
 						...sx.content,
@@ -59,7 +55,7 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 						>
 							{children}
 						</Box>
-            { footer }
+						{footer}
 					</LayoutScroll>
 				</Box>
 			</Box>

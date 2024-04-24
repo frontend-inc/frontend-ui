@@ -10,11 +10,11 @@ type CellImageProps = {
 
 const CellImage: React.FC<CellImageProps> = (props) => {
 	const { value, size = 64 } = props
-	let src = imageFromVideoUrl(value)	
+	let src = imageFromVideoUrl(value)
 	return (
-		<Image     
-      disableBorder   
-      disableBorderRadius
+		<Image
+			disableBorder
+			disableBorderRadius
 			src={src}
 			width={size}
 			height={size}

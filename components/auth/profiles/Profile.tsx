@@ -12,20 +12,11 @@ export type ProfileProps = {
 }
 
 const Profile: React.FC<ProfileProps> = (props) => {
-	const {
-    url,
-		fields,
-		enableBorder,
-		actions,
-		resource,
-	} = props || {}
+	const { url, fields, enableBorder, actions, resource } = props || {}
 
 	return (
 		<Stack direction="column" spacing={4} sx={sx.root}>
-			<Person 
-        resource={resource} 
-        actions={actions} 
-      />
+			<Person resource={resource} actions={actions} />
 			<Details
 				url={url}
 				fields={fields}

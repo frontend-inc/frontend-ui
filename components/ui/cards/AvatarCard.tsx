@@ -6,9 +6,9 @@ import { CardProps } from '../../../types'
 const AvatarCard: React.FC<CardProps> = (props) => {
 	const { direction } = props
 	switch (direction) {
-		case 'column':
-			return <AvatarVert {...props} />
 		case 'row':
+			return <AvatarVert {...props} />
+		case 'column':
 			return <AvatarHoriz {...props} />
 		default:
 			return <AvatarVert {...props} />

@@ -72,11 +72,13 @@ const Person: React.FC<PersonProps> = (props) => {
 						)}
 					</Box>
 				</Stack>
-        {actions && <Actions 
-          actions={actions} 
-          resource={resource} 
-          justifyContent="flex-end"
-        />}
+				{actions && (
+					<Actions
+						actions={actions}
+						resource={resource}
+						justifyContent="flex-end"
+					/>
+				)}
 			</Stack>
 		</Box>
 	)

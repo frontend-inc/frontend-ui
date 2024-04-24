@@ -56,40 +56,40 @@ const TextInput: React.FC<TextInputPropsType> = (props) => {
 	}, [value])
 
 	return (
-    <Stack
-      sx={{
-        ...sx.stack,
-        ...(direction == 'row' && !multiline && sx.stackVertical),
-      }}
-      direction={direction}
-      spacing={0.5}
-    >
-      {label && (
-        <Typography sx={sx.label} variant="caption" color="text.secondary">
-          {label}
-        </Typography>
-      )}
-        <InputBase
-          rows={rows}
-          error={error ? true : false}
-          sx={{
-            ...sx.inputBase,
-            ...((error && sx.inputError) || {}),
-            ...styles,
-          }}
-          multiline={multiline}
-          autoComplete="off"
-          fullWidth
-          type={type}
-          name={name}
-          margin={margin}
-          disabled={disabled}
-          placeholder={placeholder}
-          onChange={debouncedChanged}
-          value={text}
-        />
-        <ErrorText error={error} />
-    </Stack>
+		<Stack
+			sx={{
+				...sx.stack,
+				...(direction == 'row' && !multiline && sx.stackVertical),
+			}}
+			direction={direction}
+			spacing={0.5}
+		>
+			{label && (
+				<Typography sx={sx.label} variant="caption" color="text.secondary">
+					{label}
+				</Typography>
+			)}
+			<InputBase
+				rows={rows}
+				error={error ? true : false}
+				sx={{
+					...sx.inputBase,
+					...((error && sx.inputError) || {}),
+					...styles,
+				}}
+				multiline={multiline}
+				autoComplete="off"
+				fullWidth
+				type={type}
+				name={name}
+				margin={margin}
+				disabled={disabled}
+				placeholder={placeholder}
+				onChange={debouncedChanged}
+				value={text}
+			/>
+			<ErrorText error={error} />
+		</Stack>
 	)
 }
 

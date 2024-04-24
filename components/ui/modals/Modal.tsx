@@ -27,7 +27,7 @@ type ModalProps = {
 	fullScreen?: boolean
 	enableCancel?: boolean
 	hideBackdrop?: boolean
-  disableClose?: boolean
+	disableClose?: boolean
 }
 
 const Modal: React.FC<ModalProps> = (props) => {
@@ -45,7 +45,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 		fullScreen,
 		enableCancel = false,
 		hideBackdrop = false,
-    disableClose = false,
+		disableClose = false,
 	} = props
 
 	const { isMobile } = useResponsive()
@@ -57,7 +57,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 				// Manually reset the maxWidth breakpoints
 				// since these are modifed in the Editor
 				'& .MuiDialog-paper': {
-          bgcolor: 'background.default',
+					bgcolor: 'background.default',
 					maxWidth: {
 						sm: muiTheme.breakpoints.values[maxWidth],
 						xs: '100vw',
@@ -78,11 +78,11 @@ const Modal: React.FC<ModalProps> = (props) => {
 					{!loading && (
 						<Box sx={sx.secondaryActions}>
 							{secondaryActions && secondaryActions}
-              { !disableClose && (
-                <IconButton onClick={handleClose}>
-                  <Icon name="X" />
-                </IconButton>
-              )}
+							{!disableClose && (
+								<IconButton onClick={handleClose}>
+									<Icon name="X" />
+								</IconButton>
+							)}
 						</Box>
 					)}
 				</Box>
@@ -124,11 +124,11 @@ const sx = {
 	title: {},
 	dialogTitleContainer: {
 		p: 0,
-    px: 1,
-    pl: 3,
+		px: 1,
+		pl: 3,
 		bgcolor: 'background.default',
-    borderBottom: '1px solid',
-    borderColor: 'divider',
+		borderBottom: '1px solid',
+		borderColor: 'divider',
 	},
 	dialogTitleContent: {
 		height: '50px',
@@ -142,8 +142,8 @@ const sx = {
 		height: '100%',
 	},
 	dialogActions: {
-    borderTop: '1px solid',
-    borderColor: 'divider',
+		borderTop: '1px solid',
+		borderColor: 'divider',
 		bgcolor: 'background.default',
 	},
 	disablePadding: {

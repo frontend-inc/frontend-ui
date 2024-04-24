@@ -40,7 +40,7 @@ const Field: React.FC<FieldProps> = (props) => {
 			{variant === 'number' && <FieldText label={label} value={value} />}
 			{variant === 'array' && <FieldArray label={label} value={value} />}
 			{variant === 'string' && <FieldString label={label} value={value} />}
-      {variant === 'select' && <FieldString label={label} value={value} />}
+			{variant === 'select' && <FieldString label={label} value={value} />}
 			{variant === 'price' && <FieldPrice label={label} value={value} />}
 		</>
 	)

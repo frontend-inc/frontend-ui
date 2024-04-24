@@ -4,8 +4,8 @@ import { SignInButton, Placeholder } from '../../components'
 const AuthRequired: React.FC = () => {
 	return (
 		<Placeholder
-			title="Sign In"			
-      description="Please sign in to view this content."
+			title="Sign In"
+			description="Please sign in to view this content."
 			actions={<SignInButton buttonText="Login" />}
 		/>
 	)

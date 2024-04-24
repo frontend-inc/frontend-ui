@@ -80,8 +80,8 @@ const sx = {
 		alignItems: 'flex-start',
 		justifyContent: 'flex-end',
 		pb: {
-      sm: 0,
-      xs: 1
-    }
+			sm: 0,
+			xs: 1,
+		},
 	},
 }

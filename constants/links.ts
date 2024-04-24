@@ -20,9 +20,9 @@ export const LINK_OPTIONS = {
 
 export const SOCIAL_LINK_PROVIDERS = [
 	{ value: 'Facebook', label: 'Facebook' },
-  { value: 'Twitter', label: 'Twitter' },
-  { value: 'Instagram', label: 'Instagram' },
-  { value: 'Linkedin', label: 'LinkedIn' },
-  { value: 'YouTube', label: 'YouTube' },
-  { value: 'TikTok', label: 'TikTok' }
+	{ value: 'Twitter', label: 'Twitter' },
+	{ value: 'Instagram', label: 'Instagram' },
+	{ value: 'Linkedin', label: 'LinkedIn' },
+	{ value: 'YouTube', label: 'YouTube' },
+	{ value: 'TikTok', label: 'TikTok' },
 ]

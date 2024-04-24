@@ -6,9 +6,9 @@ import { CardProps } from '../../../types'
 const Card: React.FC<CardProps> = (props) => {
 	const { direction } = props
 	switch (direction) {
-		case 'column':
-			return <CardVert {...props} />
 		case 'row':
+			return <CardVert {...props} />
+		case 'column':
 			return <CardHoriz {...props} />
 		default:
 			return <CardVert {...props} />

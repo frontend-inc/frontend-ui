@@ -6,17 +6,17 @@ import { AppContext } from '../../../context'
 
 export type SignInButtonProps = {
 	showIcon?: boolean
-  color?: 'primary' | 'secondary'
-  buttonText?: string
+	color?: 'primary' | 'secondary'
+	buttonText?: string
 }
 
 const SignInButton: React.FC<SignInButtonProps> = (props) => {
 	const {
 		showIcon = true,
-    color='primary',
-    buttonText="Sign In"
+		color = 'primary',
+		buttonText = 'Sign In',
 	} = props || {}
-	
+
 	const { fetchMe, currentUser } = useAuth()
 
 	const { setAuthOpen } = useContext(AppContext)
@@ -31,26 +31,29 @@ const SignInButton: React.FC<SignInButtonProps> = (props) => {
 		}
 	}, [currentUser])
 
-  if(currentUser?.id) return null;
+	if (currentUser?.id) return null
 	return (
-    <Button
-      sx={sx.button}
-      variant="contained"
-      color={color}
-      onClick={handleLogin}
-      startIcon={showIcon && (
-        <Icon color={ 
-            color == "primary" ? 
-              'primary.contrastText' : 
-              'secondary.contrastText' 
-          } 
-          name="User" 
-          size={20} 
-        />
-      )}
-    >
-      { buttonText }
-    </Button>
+		<Button
+			sx={sx.button}
+			variant="contained"
+			color={color}
+			onClick={handleLogin}
+			startIcon={
+				showIcon && (
+					<Icon
+						color={
+							color == 'primary'
+								? 'primary.contrastText'
+								: 'secondary.contrastText'
+						}
+						name="User"
+						size={20}
+					/>
+				)
+			}
+		>
+			{buttonText}
+		</Button>
 	)
 }
 
@@ -60,5 +63,5 @@ const sx = {
 	button: {
 		width: '100%',
 		justifyContent: 'flex-start',
-	}
+	},
 }

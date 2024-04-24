@@ -42,7 +42,6 @@ const Drawer: React.FC<DrawerProps> = (props) => {
 			anchor={anchor}
 			onOpen={handleClose}
 			onClose={handleClose}
-			hideBackdrop={hideBackdrop}
 			PaperProps={{
 				sx: {
 					...sx.paper,
@@ -99,9 +98,9 @@ const sx = {
 			md: '380px',
 		},
 		maxWidth: {
-      sm: '380px',
-      xs: '480px'
-    }
+			sm: '380px',
+			xs: '480px',
+		},
 	},
 	fullWidth: {
 		width: '100vw',

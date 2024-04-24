@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Box } from '@mui/material'
 import { useResource } from 'frontend-js'
 import { Autosuggest } from '../..'
 import { ErrorText } from '../..'
@@ -115,3 +116,5 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 }
 
 export default RemoteAutosuggest
+
+const sx = {}

@@ -9,7 +9,7 @@ export type MenuLinkTypes =
 export type MenuLinkType = {
 	name: string
 	path: string
-	header?: boolean  
+	header?: boolean
 	url?: string
 	icon?: string
 	link_type?: MenuLinkTypes

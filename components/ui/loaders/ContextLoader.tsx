@@ -9,12 +9,11 @@ type ContextLoaderProps = {
 }
 
 const ContextLoader: React.FC<ContextLoaderProps> = (props) => {
-	
-  const { loading } = useContext(AppContext)
+	const { loading } = useContext(AppContext)
 
-  const { loading: easeLoading } = useDelayedLoading({
-    loading 
-  })
+	const { loading: easeLoading } = useDelayedLoading({
+		loading,
+	})
 
 	return (
 		<Backdrop open={easeLoading} sx={sx.backdrop}>
