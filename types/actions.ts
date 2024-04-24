@@ -3,7 +3,7 @@ export type ActionType = {
 	icon?: string
 	label: string
 	name: 'webhook' | 'navigate' | 'url'
-	color?: string
+	color?: 'primary' | 'secondary'
 	variant?: 'contained' | 'outlined' | 'text'
 	page_id?: number
 	component_id?: number

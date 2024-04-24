@@ -5,14 +5,7 @@ import { useTheme } from '@mui/material/styles'
 import { ThemeContext } from '../../../context'
 
 type SocialLinkProps = {
-	provider:
-		| 'facebook'
-		| 'instagram'
-		| 'linkedin'
-		| 'twitter'
-		| 'youtube'
-		| 'tiktok'
-		| 'blog'
+	provider: string 		
 	url: string
 }
 

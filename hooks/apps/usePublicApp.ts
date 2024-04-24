@@ -1,5 +1,5 @@
 import React from 'react'
-import { useApi, useResource } from 'frontend-js/hooks'
+import { useApi, useResource } from 'frontend-js'
 
 const usePublicApp = () => {
 	const { api } = useApi()
@@ -17,7 +17,7 @@ const usePublicApp = () => {
 		name: 'app',
 	})
 
-	const authorize = async (appId: string) => {
+	const authorize = async (appId: string) => {    
 		return await loadingWrapper(() =>
 			api.post(`/api/v1/apps/${appId}/authorize`)
 		)

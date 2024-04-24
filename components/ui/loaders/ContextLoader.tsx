@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Backdrop, LinearProgress } from '@mui/material'
 import { useDelayedLoading } from '../../../hooks'
-import { AppContext } from '@frontend-mui/context'
+import { AppContext } from '../../../context'
 
 type ContextLoaderProps = {
 	loading?: boolean

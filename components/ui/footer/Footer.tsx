@@ -1,22 +1,18 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
 import {
-	Box,
 	Link,
-	Button,
 	Divider,
 	Stack,
-	Typography,
-	colors,
 } from '@mui/material'
 import { MenuLinkType } from '../../../types'
 import { SocialLink } from '../..'
 
 type FooterProps = {
-	menuLinks?: MenuLinkType[]
+	menuLinks: MenuLinkType[]
 	socialLinks: {
-		name?: string
-		url?: string
+		name: string
+		url: string
 	}[]
 	handleClick: (MenuItem: MenuLinkType) => void
 }
@@ -34,12 +30,12 @@ const Footer: React.FC<FooterProps> = (props) => {
 					</Link>
 				))}
 			</Stack>
-			<Stack direction="row" spacing={0} sx={sx.socialUrls}>
+			<Stack direction="row" spacing={0}>
 				{socialLinks?.map((link, i) => (
 					<SocialLink
+            key={i}          
 						provider={link?.name?.toLowerCase()}
 						url={link?.url}
-						key={i}
 					/>
 				))}
 			</Stack>

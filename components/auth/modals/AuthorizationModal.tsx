@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react'
-import { AppContext } from '@frontend-mui/context'
+import { AppContext } from '../../../context'
 import { useAuthorized, usePublicApp } from '../../../hooks'
 import { Modal, AuthorizationForm } from '../../../components'
 
@@ -15,6 +15,7 @@ const AuthorizationModal: React.FC<AuthorizationModalProps> = (props) => {
 
 	const handleSubmit = async () => {
 		let resp = await authorize(app?.id)
+    //@ts-ignore 
 		if (resp?.id) {
 			setAuthorized(true)
 			setAuthorizationOpen(false)

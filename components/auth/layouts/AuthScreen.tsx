@@ -5,11 +5,12 @@ import { useApp } from '../../../hooks'
 
 type AuthScreenProps = {
 	title: string
+  subtitle?: string
 	children: React.ReactNode
 }
 
 const AuthScreen: React.FC<AuthScreenProps> = (props) => {
-	const { title, children } = props
+	const { title, subtitle, children } = props
 
 	const { logo } = useApp()
 
@@ -24,6 +25,11 @@ const AuthScreen: React.FC<AuthScreenProps> = (props) => {
 						<Typography variant="h4" sx={sx.title}>
 							{title}
 						</Typography>
+            { subtitle && (
+            <Typography variant="body1" color='text.secondary' sx={sx.subtitle}>
+							{subtitle}
+						</Typography>
+            )}
 					</Box>
 					{children}
 				</Paper>

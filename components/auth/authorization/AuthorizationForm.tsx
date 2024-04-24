@@ -9,7 +9,7 @@ import {
 	ListItemText,
 	Typography,
 } from '@mui/material'
-import { Icon, IconLoading } from 'frontend-ui/components'
+import { Icon, IconLoading } from '../../../components'
 
 type AuthorizeFormProps = {
 	loading?: boolean
