@@ -43,7 +43,10 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 	}
 
 	const handleLogin = async () => {
-		let resp = await login(user)
+		let resp = await login({
+      ...user,
+      app_id: appId
+    })
 		if (resp?.id) {
 			setAuthOpen(false)
       window.location.reload()
@@ -109,7 +112,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 					<Tab label="Register" />
 				</Tabs>
 			</Box>
-			<Box p={4} sx={sx.content}>
+			<Box px={4} sx={sx.content}>
 				{tab === 0 && (
 					<LoginForm
 						errors={errors}

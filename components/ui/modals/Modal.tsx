@@ -101,15 +101,20 @@ const Modal: React.FC<ModalProps> = (props) => {
 				<Loader loading={loading} />
 				{!loading && <Box sx={sx.content}>{children}</Box>}
 			</DialogContent>
+
 			{!loading && (
-				<DialogActions sx={sx.dialogActions}>
-					{enableCancel && (
-						<Button variant="contained" color="secondary" onClick={handleClose}>
-							Cancel
-						</Button>
-					)}
-					{actions && actions}
-				</DialogActions>
+        <>
+        {(enableCancel || actions) && (
+          <DialogActions sx={sx.dialogActions}>
+            {enableCancel && (
+              <Button variant="contained" color="secondary" onClick={handleClose}>
+                Cancel
+              </Button>
+            )}
+            {actions && actions}
+          </DialogActions>
+        )}
+        </>
 			)}
 		</Dialog>
 	)
