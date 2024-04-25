@@ -14,6 +14,7 @@ import {
 	CellPrice,
 	CellRating,
 	CellVideo,
+  CellUser
 } from '../../../components'
 
 type CellProps = {
@@ -44,6 +45,7 @@ const Cell: React.FC<CellProps> = (props) => {
 		habtm: CellHABTM,
 		string: CellString,
 		select: CellEnum,
+    user: CellUser 
 	}
 
 	const CellComponent = componentMapper[field.variant]

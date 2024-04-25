@@ -15,7 +15,14 @@ import {
 } from '@mui/material'
 import { Clear } from '@mui/icons-material'
 
-const Alert: React.FC = () => {
+export type AlertProps = {
+  anchorBottom?: boolean
+}
+
+const Alert: React.FC<AlertProps> = (props) => {
+
+  const { anchorBottom = false } = props 
+
 	const [open, setOpen] = useState(false)
 
 	const { alert, setAlert } = useContext(AppContext)
@@ -37,11 +44,24 @@ const Alert: React.FC = () => {
 
 	return (
 		<Fade in={open}>
-			<Slide direction="down" in={open}>
-				<Box width="100%" p={0} sx={sx.root}>
+			<Slide direction={ anchorBottom ? "up" : "down" } in={open}>
+				<Box 
+          width="100%" 
+          p={0} 
+          sx={{ 
+            ...sx.root,
+            ...(anchorBottom && sx.anchorBottom)
+          }}
+        >
 					<Paper elevation={4} sx={sx.alert}>
 						<List disablePadding>
-							<ListItem>
+							<ListItem
+                secondaryAction={
+                  <IconButton size="small" onClick={handleClose}>
+                    <Clear sx={sx.icon} />
+                  </IconButton>
+                }
+              >
 								<ListItemButton sx={sx.listItemButton} onClick={handleClose}>
 									<ListItemText
 										primary={
@@ -52,11 +72,6 @@ const Alert: React.FC = () => {
 									/>
 								</ListItemButton>
 							</ListItem>
-							<ListItemSecondaryAction>
-								<IconButton size="small" onClick={handleClose}>
-									<Clear sx={sx.icon} />
-								</IconButton>
-							</ListItemSecondaryAction>
 						</List>
 					</Paper>
 				</Box>
@@ -75,6 +90,10 @@ const sx = {
 		top: 30,
 		left: 0,
 	},
+  anchorBottom: {
+    top: 'auto',
+    bottom: 30,
+  },
 	alert: {
 		p: 0,
 		maxWidth: 500,

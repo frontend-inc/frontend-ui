@@ -1,3 +1,5 @@
+import { FieldType } from '../types'
+
 export const REFERENCE_FIELDS = ['habtm']
 
 export const ATTACHMENT_FIELDS = ['image', 'audio', 'video', 'attachment']
@@ -7,6 +9,7 @@ export const SYSTEM_FIELDS = [
 	'title',
 	'description',
 	'handle',
+  'user',
 	'label',
 	'shopify_handle',
 	'published',
@@ -20,4 +23,106 @@ export const SYSTEM_FIELDS = [
 	'file',
 	'lat',
 	'lng',
+]
+
+export const ID_FIELD: FieldType = {
+	label: 'ID',
+	variant: 'number',
+	db_type: 'integer',
+	name: 'id',
+	internal: true,
+	position: 0,
+	array: false,
+	visible: true,
+	editable: false,
+	reference: false,
+}
+
+export const HANDLE_FIELD: FieldType = {
+	label: 'Handle',
+	variant: 'string',
+	reference: false,
+	db_type: 'string',
+	name: 'handle',
+	position: 1,
+	array: false,
+	internal: true,
+	visible: true,
+	editable: true,
+}
+
+export const TITLE_FIELD: FieldType = {
+	label: 'Title',
+	variant: 'string',
+	reference: false,
+	db_type: 'string',
+	name: 'title',
+	position: 2,
+	array: false,
+	internal: true,
+	visible: true,
+	editable: true,
+}
+
+export const PUBLISHED_FIELD: FieldType = {
+	label: 'Published',
+	variant: 'boolean',
+	reference: false,
+	db_type: 'boolean',
+	name: 'published',
+	position: 3,
+	array: false,
+	internal: true,
+	visible: true,
+	editable: true,
+}
+
+export const LOCALE_FIELD: FieldType = {
+	label: 'locale',
+	variant: 'string',
+	reference: false,
+	db_type: 'string',
+	name: 'locale',
+	position: 4,
+	array: false,
+	internal: true,
+	visible: true,
+	editable: true,
+}
+
+export const TAGS_FIELD: FieldType = {
+	label: 'tags',
+	variant: 'array',
+	reference: false,
+	db_type: 'string',
+	name: 'tags',
+	position: 5,
+	array: true,
+	internal: true,
+	editable: true,
+	visible: false,
+}
+
+export const USER_FIELD: FieldType = {
+	label: 'User',
+	variant: 'user',
+	db_type: 'belongs_to',
+	name: 'user',
+	internal: true,
+	position: 6,
+	array: false,
+	visible: true,
+	editable: false,
+	reference: false,
+}
+
+
+export const DEFAULT_FIELDS: FieldType[] = [
+	ID_FIELD,
+	HANDLE_FIELD,
+	TITLE_FIELD,
+	PUBLISHED_FIELD,
+	LOCALE_FIELD,
+	TAGS_FIELD,
+  USER_FIELD
 ]

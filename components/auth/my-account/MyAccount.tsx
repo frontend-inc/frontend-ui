@@ -13,6 +13,7 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 
 	const {
 		loading,
+    delayedLoading,
 		user,
 		setUser,
 		currentUser,
@@ -44,7 +45,6 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 
 	return (
 		<>
-			<Loader loading={loading} />
 			{currentUser && (
 				<AuthScreen
 					title={`${currentUser?.first_name} ${currentUser?.last_name}`}
@@ -55,6 +55,7 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 					}
 				>
 					<MyAccountForm
+            loading={delayedLoading}
 						user={user}
 						handleChange={handleChange}
 						handleSubmit={handleSubmit}

@@ -19,12 +19,17 @@ const ProfileForm: React.FC<ProfileFormProps> = (props) => {
 
 	const [submitted, setSubmitted] = useState(false)
 
+  const { 
+    currentUser
+  } = useAuth()
+
 	const {
 		loading,
 		delayedLoading,
 		resource: profile,
 		setResource,
 		update,
+    create,
 		removeAttachment,
 	} = useResource({
 		name: 'profile',
@@ -57,7 +62,12 @@ const ProfileForm: React.FC<ProfileFormProps> = (props) => {
 
 	const handleSubmit = async (e) => {
 		try {
-			let resp = await update(profile)
+      let resp
+      if(profile?.id){
+        resp = await update(profile)
+      }else{
+        resp = await create(profile)
+      }      
 			if (resp?.id) {
 				setSubmitted(true)
 			}
@@ -67,6 +77,7 @@ const ProfileForm: React.FC<ProfileFormProps> = (props) => {
 	}
 
 	useEffect(() => {
+    console.log("Profile", resource)
 		if (resource) {
 			setResource({
 				...resource,
@@ -91,8 +102,7 @@ const ProfileForm: React.FC<ProfileFormProps> = (props) => {
             size="large"
             variant="contained"
             onClick={handleSubmit}
-            disabled={delayedLoading}
-            endIcon={<IconLoading color="primary" loading={delayedLoading} />}
+            endIcon={<IconLoading color="primary.contrastText" loading={delayedLoading} />}
           >
             {buttonText}
           </Button>

@@ -4,6 +4,7 @@ import {
 	LoginForm,
 	SignupForm,
 	ForgotPasswordForm,
+  ResetPasswordForm,
 	VerifyPinForm,
 	VerifySendPinForm,
 } from '../..'
@@ -28,12 +29,12 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 		errors,
 		loading,
 		user,
-		currentUser,
+		updateMe,    
 		handleChange,
 		login,
 		signup,
 		verifyPin,
-		sendPin,
+		sendPin,    
 	} = useAuth()
 
 	const [tab, setTab] = useState(0)
@@ -73,6 +74,16 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 
 	const handleVerifyPin = async () => {
 		let resp = await verifyPin(user?.email, user?.pin)
+		if (resp?.id) {
+			setTab(5)
+		}
+	}
+
+  const handleResetPassword = async () => {
+		let resp = await updateMe({
+			password: user?.password,
+			password_confirmation: user?.password_confirmation
+    })
 		if (resp?.id) {
 			setAuthOpen(false)
 		}
@@ -162,8 +173,19 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 						user={user}
 						handleChange={handleChange}
 						handleSubmit={handleSendPin}
+            handleLogin={ handleLoginClick }
 					/>
 				)}
+        { tab == 5 && (
+          <ResetPasswordForm
+            errors={errors }
+            loading={loading}
+            user={user}
+            handleChange={handleChange}
+            handleSubmit={handleResetPassword}
+            handleLogin={handleLogin}
+          />
+        )}
 			</Box>
 		</Modal>
 	)

@@ -18,6 +18,7 @@ const ForgotPasswordForm: React.FC<ForgotPasswordFormProps> = (props) => {
 	return (
 		<Stack spacing={1}>
 			<TextInput
+        label="Email"
 				errors={errors}
 				name="email"
 				value={user?.email}

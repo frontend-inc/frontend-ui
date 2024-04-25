@@ -47,6 +47,9 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 			)}
 			{fields?.map((field, index) => {
 				let value = row[field.name]
+        if(field?.name == 'user'){
+         console.log('value', field?.name, row)
+        }
 				return (
 					<TableCell key={index}>
 						<Cell

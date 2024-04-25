@@ -17,7 +17,6 @@ const Person: React.FC<PersonProps> = (props) => {
 
 	const { title, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
-
 	return (
 		<Box sx={sx.root}>
 			<Stack

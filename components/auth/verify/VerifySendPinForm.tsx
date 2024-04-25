@@ -8,14 +8,22 @@ type SendPinFormProps = {
 	user: Record<string, any>
 	handleChange: (ev: any) => void
 	handleSubmit: () => void
+  handleLogin: () => void
 }
 
 const SendPinForm: React.FC<SendPinFormProps> = (props) => {
-	const { errors, loading, user, handleChange, handleSubmit } = props
+	const { 
+    errors, 
+    loading, 
+    user, 
+    handleChange, 
+    handleSubmit,
+    handleLogin 
+  } = props
 
 	return (
 		<Stack spacing={1}>
-			<TextInput
+			<TextInput        
 				errors={errors}
 				label="Email"
 				name="email"
@@ -32,6 +40,11 @@ const SendPinForm: React.FC<SendPinFormProps> = (props) => {
 			>
 				Send Verification Pin
 			</Button>
+      { handleLogin && (
+        <Button fullWidth color="primary" onClick={handleLogin}>
+          Cancel 
+        </Button>
+      )}
 		</Stack>
 	)
 }

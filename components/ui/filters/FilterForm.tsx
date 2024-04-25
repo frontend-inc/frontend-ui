@@ -117,7 +117,7 @@ const FilterForm: React.FC<FilterFormProps> = (props) => {
 		return fields
 			.filter(filterFn)
 			.map((field) => ({
-				label: field.name,
+				label: field.label,
 				value: field.name,
 				variant: field.variant,
 				db_type: field.db_type,

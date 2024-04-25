@@ -1,8 +1,9 @@
 import React from 'react'
 import { Button, Box } from '@mui/material'
-import { ImageInput, TextInput, SwitchInput } from '../..'
+import { IconLoading, ImageInput, TextInput, SwitchInput } from '../../../components'
 
 type AccountFormProps = {
+  loading: boolean
 	user: any
 	handleChange: (ev: any) => void
 	handleSubmit: () => void
@@ -12,6 +13,7 @@ type AccountFormProps = {
 
 const MyAccountForm: React.FC<AccountFormProps> = (props) => {
 	const {
+    loading,
 		user,
 		handleSubmit,
 		handleChange,
@@ -45,7 +47,14 @@ const MyAccountForm: React.FC<AccountFormProps> = (props) => {
 				name="accepts_marketing"
 				handleChange={handleChange}
 			/>
-			<Button color="primary" variant="contained" onClick={handleSubmit}>
+			<Button
+        color="primary" 
+        variant="contained" 
+        onClick={handleSubmit}
+        startIcon={
+          <IconLoading loading={loading} />
+        }
+      >
 				Save
 			</Button>
 			<Button color="primary" onClick={handleRedirect}>
