@@ -1,4 +1,4 @@
-import { FieldType } from '../types'
+import { FieldBase } from '../types'
 
 export const REFERENCE_FIELDS = ['habtm']
 
@@ -25,7 +25,7 @@ export const SYSTEM_FIELDS = [
 	'lng',
 ]
 
-export const ID_FIELD: FieldType = {
+export const ID_FIELD: FieldBase = {
 	label: 'ID',
 	variant: 'number',
 	db_type: 'integer',
@@ -38,7 +38,7 @@ export const ID_FIELD: FieldType = {
 	reference: false,
 }
 
-export const HANDLE_FIELD: FieldType = {
+export const HANDLE_FIELD: FieldBase = {
 	label: 'Handle',
 	variant: 'string',
 	reference: false,
@@ -51,7 +51,7 @@ export const HANDLE_FIELD: FieldType = {
 	editable: true,
 }
 
-export const TITLE_FIELD: FieldType = {
+export const TITLE_FIELD: FieldBase = {
 	label: 'Title',
 	variant: 'string',
 	reference: false,
@@ -64,7 +64,7 @@ export const TITLE_FIELD: FieldType = {
 	editable: true,
 }
 
-export const PUBLISHED_FIELD: FieldType = {
+export const PUBLISHED_FIELD: FieldBase = {
 	label: 'Published',
 	variant: 'boolean',
 	reference: false,
@@ -77,7 +77,7 @@ export const PUBLISHED_FIELD: FieldType = {
 	editable: true,
 }
 
-export const LOCALE_FIELD: FieldType = {
+export const LOCALE_FIELD: FieldBase = {
 	label: 'locale',
 	variant: 'string',
 	reference: false,
@@ -90,7 +90,7 @@ export const LOCALE_FIELD: FieldType = {
 	editable: true,
 }
 
-export const TAGS_FIELD: FieldType = {
+export const TAGS_FIELD: FieldBase = {
 	label: 'tags',
 	variant: 'array',
 	reference: false,
@@ -103,7 +103,7 @@ export const TAGS_FIELD: FieldType = {
 	visible: false,
 }
 
-export const USER_FIELD: FieldType = {
+export const USER_FIELD: FieldBase = {
 	label: 'User',
 	variant: 'user',
 	db_type: 'belongs_to',
@@ -117,7 +117,7 @@ export const USER_FIELD: FieldType = {
 }
 
 
-export const DEFAULT_FIELDS: FieldType[] = [
+export const DEFAULT_FIELDS: FieldBase[] = [
 	ID_FIELD,
 	HANDLE_FIELD,
 	TITLE_FIELD,

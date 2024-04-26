@@ -75,13 +75,13 @@ export type FieldBase = {
 }
 
 export type FieldType = FieldBase & {
-	id: number
-	collection_id: number
+	id?: number
+	collection_id?: number
 	handle: boolean
-	title: string
+	title?: string
 	created_at: string
 	updated_at: string
-	foreign_key: boolean
+	foreign_key?: boolean
 	foreign_collection_id?: number
 	foreign_field_id?: number
 }

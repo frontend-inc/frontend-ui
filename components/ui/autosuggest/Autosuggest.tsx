@@ -3,7 +3,6 @@ import {
 	Box,
 	Paper,
 	Stack,
-	CircularProgress,
 	IconButton,
 	ListItem,
 	ListItemIcon,
@@ -202,7 +201,7 @@ export default Autosuggest
 
 const styles = {
 	image: {
-		borderRadius: 1,
+		borderRadius: '4px',
 		objectFit: 'cover',
 		marginRight: '0px',
 	},
