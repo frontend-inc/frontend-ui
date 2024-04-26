@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Box, Avatar, Typography } from '@mui/material'
+import { Stack, Box, Typography } from '@mui/material'
 import { Icon } from '../../components'
 
 type PlaceholderProps = {

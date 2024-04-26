@@ -77,7 +77,6 @@ const ProfileForm: React.FC<ProfileFormProps> = (props) => {
 	}
 
 	useEffect(() => {
-    console.log("Profile", resource)
 		if (resource) {
 			setResource({
 				...resource,

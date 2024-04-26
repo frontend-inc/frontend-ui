@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, IconButton, Menu } from '@mui/material'
-import { MoreHoriz } from '@mui/icons-material'
 import { useMenu } from '../../hooks'
+import { Icon } from '../../components'
 
 type MenuButtonProps = {
 	children: React.ReactNode
@@ -11,7 +11,7 @@ type MenuButtonProps = {
 }
 
 const MenuButton: React.FC<MenuButtonProps> = (props) => {
-	const { children, icon, selected = false, size = 'small' } = props
+	const { children, icon='EllipsisVertical', selected = false, size = 'small' } = props
 
 	const { open, anchorEl, closeMenu, toggleMenu } = useMenu()
 
@@ -22,16 +22,12 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
 
 	return (
 		<Box onClick={handleDefaultClick}>
-			<IconButton size={size} onClick={toggleMenu}>
-				{icon ? (
-					icon
-				) : (
-					<MoreHoriz
-						sx={{
-							color: selected ? 'primary.contrastText' : 'text.primary',
-						}}
-					/>
-				)}
+			<IconButton size={size} onClick={toggleMenu}>				
+        <Icon 
+          name={ icon }
+          size={20}
+          color={ selected ? 'primary.contrastText' : 'text.primary' }
+        />				
 			</IconButton>
 			<Menu open={open} anchorEl={anchorEl} onClose={closeMenu}>
 				{children}
