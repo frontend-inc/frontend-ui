@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
+  Box,
 	List,
 	ListItem,
 	ListItemText,
@@ -9,9 +10,11 @@ import {
 	Collapse,
 } from '@mui/material'
 import { ChevronRight } from '@mui/icons-material'
+import { getCookie, setCookie } from 'cookies-next'
 
 type ExpandableListProps = {
 	children: React.ReactNode
+  id?: string
 	label?: string
 	icon?: React.ReactNode
 	enableBorder?: boolean
@@ -20,12 +23,31 @@ type ExpandableListProps = {
 }
 
 const ExpandableList: React.FC<ExpandableListProps> = (props) => {
-	const { label, children, enableBorder, closed = false } = props
+	const { id, label, children, enableBorder } = props
 
-	const [open, setOpen] = useState(!closed)
+	const [open, setOpen] = useState(false)
 	const handleToggleClick = () => {
+    setMenuCookie(!open)
 		setOpen(!open)
 	}
+
+  const setMenuCookie = (value: boolean) => {
+		if (!id) return null
+		// @ts-ignore
+		let jsonCookie = JSON.parse(getCookie(`app-config`) || '{}')
+		jsonCookie[id] = value
+		setCookie(`app-config`, JSON.stringify(jsonCookie))
+	}
+
+	useEffect(() => {
+		if(id) {
+			let cookie = getCookie(`app-config`) || '{}'
+			// @ts-ignore
+			let jsonConfig = JSON.parse(cookie)
+			setOpen(jsonConfig[id])
+		}
+	}, [id])
+
 
 	return (
 		<List
@@ -67,7 +89,9 @@ const ExpandableList: React.FC<ExpandableListProps> = (props) => {
 				</ListItem>
 			)}
 			<Collapse in={open} timeout="auto" unmountOnExit>
-				{children}
+        <Box p={1}>
+				  {children}
+        </Box>
 			</Collapse>
 		</List>
 	)
@@ -80,6 +104,8 @@ const sx = {
 		width: '100%',
 		minWidth: 200,
 		my: 0,
+    borderTop: '1px solid',
+    borderColor: 'divider',
 	},
 	listItem: {
 		borderRadius: 1,

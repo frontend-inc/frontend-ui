@@ -57,13 +57,3 @@ const Featured: React.FC<FeaturedProps> = (props) => {
 }
 
 export default Featured
-
-const sx = {
-	title: {
-		width: '100%',
-		textAlign: 'center',
-	},
-	item: {
-		p: 2,
-	},
-}
