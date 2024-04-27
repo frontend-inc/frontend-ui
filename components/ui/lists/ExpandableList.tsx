@@ -23,7 +23,7 @@ type ExpandableListProps = {
 }
 
 const ExpandableList: React.FC<ExpandableListProps> = (props) => {
-	const { id, label, closed=false, children, enableBorder } = props
+	const { id, label, closed=false, children, enableBorder=true } = props
 
 	const [open, setOpen] = useState(!closed)
 	const handleToggleClick = () => {
@@ -89,7 +89,7 @@ const ExpandableList: React.FC<ExpandableListProps> = (props) => {
 				</ListItem>
 			)}
 			<Collapse in={open} timeout="auto" unmountOnExit>
-        <Box p={1}>
+        <Box px={1}>
 				  {children}
         </Box>
 			</Collapse>
@@ -103,9 +103,7 @@ const sx = {
 	root: {
 		width: '100%',
 		minWidth: 200,
-		my: 0,
-    borderTop: '1px solid',
-    borderColor: 'divider',
+		my: 0,    
 	},
 	listItem: {
 		borderRadius: 1,

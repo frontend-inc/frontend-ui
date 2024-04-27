@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Box, List } from '@mui/material'
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
+import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd'
 
 type SortableListProps = {
 	items: any[]
