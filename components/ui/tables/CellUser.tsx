@@ -17,15 +17,16 @@ const CellUser: React.FC<CellUserProps> = (props) => {
         size="small"
         color="secondary"
 				startIcon={
-          <UserAvatar 
-            src={ user?.avatar?.url }            
-          />
+          user?.avatar?.url &&
+            <UserAvatar 
+              src={ user?.avatar?.url }            
+            />
         }        
 			>					
        <Typography variant="caption">
-	          { user?.first_name } { user?.last_name }
-          </Typography>
-          </Button>
+	        { user?.first_name } { user?.last_name }
+        </Typography>
+      </Button>
 		</Box>
 	)
 }
