@@ -23,9 +23,9 @@ type ExpandableListProps = {
 }
 
 const ExpandableList: React.FC<ExpandableListProps> = (props) => {
-	const { id, label, children, enableBorder } = props
+	const { id, label, closed=false, children, enableBorder } = props
 
-	const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(!closed)
 	const handleToggleClick = () => {
     setMenuCookie(!open)
 		setOpen(!open)
