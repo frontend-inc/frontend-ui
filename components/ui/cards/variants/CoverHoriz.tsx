@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Box, Button, Stack, Typography } from '@mui/material'
-import { Image, Icon, TouchableOpacity } from '../../..'
+import { Image, Icon, TouchableOpacity, MenuButton } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
@@ -21,6 +21,10 @@ const CoverHoriz: React.FC<CardProps> = (props) => {
 		height = 240,
 		enableGradient = false,
 		enableOverlay = false,
+    enableEdit,
+    enableDelete,
+    handleEdit,
+    handleDelete,
 	} = props || {}
 
 	const router = useRouter()
@@ -63,6 +67,14 @@ const CoverHoriz: React.FC<CardProps> = (props) => {
 							</Typography>
 						)}
 					</Box>
+          {(enableEdit || enableDelete) && (
+            <MenuButton
+              icon='EllipsisVertical'
+              color='common.white'
+              handleEdit={ enableEdit ? handleEdit : undefined }
+              handleDelete={ enableDelete ? handleDelete : undefined }
+            />
+          )}
 				</Stack>
 				{buttonText && (
 					<Box>
@@ -91,6 +103,7 @@ const sx = {
 		borderRadius: 1,
 	},
 	cover: {
+    width: '100%',
 		position: 'absolute',
     left: 0,
     bottom: 0,
@@ -106,7 +119,8 @@ const sx = {
 		},
 	},
 	content: {
-    p: 2,
+    width: '100%',
+    p: 2,    
 		minHeight: '60px',
 		display: 'flex',
 		flexDirection: 'column',

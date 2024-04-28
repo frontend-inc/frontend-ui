@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Box, Button, Stack, Typography } from '@mui/material'
-import { Image, TouchableOpacity } from '../../..'
+import { Image, TouchableOpacity, MenuButton } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CARD_VERT_HEIGHT, CARD_VERT_WIDTH } from '../../../../constants/index'
@@ -21,6 +21,10 @@ const CardVert: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
+    enableEdit,
+    enableDelete,
+    handleEdit,
+    handleDelete,
 	} = props || {}
 
 	const router = useRouter()
@@ -64,10 +68,17 @@ const CardVert: React.FC<CardProps> = (props) => {
 					...(enableBorder && sx.contentBorder),
 				}}
 			>
-				<Stack spacing={0}>
-					<Typography color="textPrimary" variant="subtitle2">
+				<Stack sx={ sx.contentArea } direction="row" spacing={0}>
+					<Typography sx={ sx.title } color="textPrimary" variant="subtitle2">
 						{truncate(title)}
 					</Typography>
+          {(enableEdit || enableDelete) && (
+            <MenuButton
+              icon='EllipsisVertical'
+              handleEdit={ enableEdit ? handleEdit : undefined }
+              handleDelete={ enableDelete ? handleDelete : undefined }
+            />
+          )}
 				</Stack>
 				{buttonText && (
 					<Box>
@@ -115,13 +126,18 @@ const sx = {
 		},
 	},
 	content: {
+    width: '100%',
 		minHeight: '60px',
 	},
+  contentArea: {
+    width: '100%',
+  },
 	contentBorder: {
 		p: 1,
 		pt: 0,
 	},
 	title: {
+    width: '100%',
 		minHeight: '50px',
 	},
 	description: {

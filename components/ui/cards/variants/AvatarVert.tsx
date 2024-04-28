@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Avatar, Box, Button, Stack, Typography } from '@mui/material'
-import { TouchableOpacity } from '../../..'
+import { Label, TouchableOpacity, MenuButton } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import {
@@ -25,6 +25,10 @@ const AvatarVert: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
+    enableEdit,
+    enableDelete,
+    handleEdit,
+    handleDelete,
 	} = props || {}
 
 	const router = useRouter()
@@ -68,16 +72,20 @@ const AvatarVert: React.FC<CardProps> = (props) => {
 					</Avatar>
 				</TouchableOpacity>
 			</Box>
-			<Stack spacing={1}>
-				<Stack spacing={0}>
-					<Typography sx={sx.title} color="textPrimary" variant={textVariant}>
-						{truncate(title)}
-					</Typography>
-					{label && (
-						<Typography sx={sx.label} color="textSecondary" variant="caption">
-							{label}
-						</Typography>
-					)}
+			<Stack spacing={1} sx={ sx.contentArea }>
+				<Stack direction="row" sx={ sx.contentArea } spacing={0}>
+          <Stack sx={ sx.content }>
+            <Typography sx={sx.title} color="textPrimary" variant={textVariant}>
+              {truncate(title)}
+            </Typography>
+          </Stack> 
+          {(enableEdit || enableDelete) && (
+            <MenuButton
+              icon='EllipsisVertical'
+              handleEdit={ enableEdit ? handleEdit : undefined }
+              handleDelete={ enableDelete ? handleDelete : undefined }
+            />
+          )}
 				</Stack>
 				{buttonText && (
 					<Box>
@@ -138,9 +146,17 @@ const sx = {
 		borderRadius: 1,
 	},
 	title: {
+    width: '100%',
 		textAlign: 'center',
 	},
 	label: {
 		textAlign: 'center',
 	},
+  content: {
+    width: '100%',
+    alignItems: 'center'    
+  },
+  contentArea: {
+    width: '100%'
+  }
 }

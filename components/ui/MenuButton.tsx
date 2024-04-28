@@ -4,8 +4,8 @@ import { useMenu } from '../../hooks'
 import { Icon } from '../../components'
 
 type MenuButtonProps = {
-	children: React.ReactNode
-	icon?: 'string'
+	children?: React.ReactNode
+	icon?: string
   color?: string	
   enableIcons?: boolean
   handleEdit?: (item: any) => void

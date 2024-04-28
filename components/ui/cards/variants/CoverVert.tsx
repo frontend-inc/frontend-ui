@@ -77,10 +77,10 @@ const CoverVert: React.FC<CardProps> = (props) => {
             </Box>
             {(enableEdit || enableDelete) && (
               <MenuButton
-                icon={'EllipsisVertical'}
+                icon='EllipsisVertical'
                 color='common.white'
-                handleEdit={ handleEdit }
-                handleDelete={ handleDelete }
+                handleEdit={ enableEdit ? handleEdit : undefined }
+                handleDelete={ enableDelete ? handleDelete : undefined }
               />
             )}
             </Stack>

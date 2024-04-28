@@ -11,6 +11,7 @@ import {
 } from '@mui/material'
 import { truncate } from '../../../../helpers'
 import { CardProps } from '../../../../types'
+import { MenuButton } from '../../..'
 
 const AvatarHoriz: React.FC<CardProps> = (props) => {
 	const {
@@ -24,6 +25,10 @@ const AvatarHoriz: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
+    enableEdit,
+    enableDelete,
+    handleEdit,
+    handleDelete,
 	} = props
 
 	return (
@@ -34,7 +39,19 @@ const AvatarHoriz: React.FC<CardProps> = (props) => {
 				...(enableBorder && sx.rootBorder),
 			}}
 		>
-			<ListItem disablePadding disableGutters>
+			<ListItem 
+        disablePadding 
+        disableGutters
+        secondaryAction={
+          (enableEdit || enableDelete) && (
+            <MenuButton
+              icon='EllipsisVertical'
+              handleEdit={ enableEdit ? handleEdit : undefined }
+              handleDelete={ enableDelete ? handleDelete : undefined }
+            />
+          )
+        }
+      >
 				<ListItemButton
 					sx={{
 						minHeight: height + 44,
