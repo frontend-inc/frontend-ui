@@ -1,14 +1,14 @@
 import React from 'react'
 import { Button } from '@mui/material'
-import { Icon } from '../../../components'
+import { Icon } from '../..'
 import { useFavorites } from 'frontend-shopify'
 import { ProductType } from 'frontend-shopify'
 
-type FavoriteButtonProps = {
+type ProductFavoriteButtonProps = {
 	product: ProductType
 }
 
-const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
+const ProductFavoriteButton: React.FC<ProductFavoriteButtonProps> = (props) => {
 	const { product } = props
 
 	const { toggleFavorite, isFavorite } = useFavorites({
@@ -37,7 +37,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 	)
 }
 
-export default FavoriteButton
+export default ProductFavoriteButton
 
 const sx = {
 	button: {

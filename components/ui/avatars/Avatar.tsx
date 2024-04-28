@@ -1,24 +1,25 @@
 import React from 'react'
 import { Avatar } from '@mui/material'
-import { User } from 'lucide-react'
+import { Icon } from '../..'
 
 type UserAvatarProps = {
-	user: any
+	src: string
 	size?: number
 }
 
 const UserAvatar: React.FC<UserAvatarProps> = (props) => {
-	const { user, size = 32 } = props
+	const { src, size = 20 } = props	
 	return (
-		<Avatar
-			src={user?.avatar?.url}
-			sx={{
-				...sx.avatar,
-				height: `${size}px`,
-				width: `${size}px`,
-			}}
-		>
-			<User size={size} color="black" />
+		<Avatar 
+      variant="circular" 
+      src={src} 
+      sx={{ 
+        ...sx.avatar,
+        height: size + 10,
+        width: size + 10
+      }}
+    >
+			<Icon name="User" size={size} color='secondary.contrastText' />
 		</Avatar>
 	)
 }
@@ -27,8 +28,6 @@ export default UserAvatar
 
 const sx = {
 	avatar: {
-		height: '32px',
-		width: '32px',
-		bgcolor: 'background.paper',
+		bgcolor: 'secondary.main',
 	},
 }

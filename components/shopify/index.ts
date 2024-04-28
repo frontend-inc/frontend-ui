@@ -68,7 +68,7 @@ export { default as MetafieldVideo } from './products/metafields/MetafieldVideo'
 export { default as ShopifyStore } from './store/ShopifyStore'
 
 // Favorites
-export { default as FavoriteButton } from './favorites/FavoriteButton'
+export { default as ProductFavoriteButton } from './favorites/ProductFavoriteButton'
 export { default as ProductFavorites } from './favorites/ProductFavorites'
 export { default as ProductFavoritesCarousel } from './favorites/ProductFavoritesCarousel'
 

@@ -72,7 +72,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 		>
 			<DialogTitle sx={sx.dialogTitleContainer}>
 				<Box sx={sx.dialogTitleContent}>
-					<Typography variant="h6" color="textPrimary" sx={sx.title}>
+					<Typography variant="subtitle1" color="textPrimary" sx={sx.title}>
 						{title}
 					</Typography>
 					{!loading && (

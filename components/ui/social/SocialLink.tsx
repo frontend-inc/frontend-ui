@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { IconButton } from '@mui/material'
+//@ts-ignore
 import { SocialIcon } from 'react-social-icons'
-import { useTheme } from '@mui/material/styles'
 import { ThemeContext } from '../../../context'
 
 type SocialLinkProps = {
