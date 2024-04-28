@@ -4,10 +4,6 @@ import { Box, Button, Stack, Typography } from '@mui/material'
 import { Image, Icon, TouchableOpacity } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
-import {
-	COVER_VERT_HEIGHT,
-	COVER_VERT_WIDTH,
-} from '../../../../constants/index'
 import { CardProps } from '../../../../types'
 
 const CoverVert: React.FC<CardProps> = (props) => {
@@ -15,14 +11,14 @@ const CoverVert: React.FC<CardProps> = (props) => {
 	const {
 		label,
 		title,
+    description,
 		image = '',
 		href,
 		handleClick,
 		buttonText,
 		textVariant = 'subtitle1',
 		objectFit = 'cover',
-		height = COVER_VERT_HEIGHT,
-		width = COVER_VERT_WIDTH,
+		height = 320,
 		enableGradient = false,
 		enableOverlay = false,
 		icon,
@@ -65,11 +61,11 @@ const CoverVert: React.FC<CardProps> = (props) => {
 					)}
 					<Box sx={sx.content}>
 						<Typography color="common.white" variant={textVariant}>
-							{truncate(title, 40)}
+							{truncate(title, 60)}
 						</Typography>
-						{label && (
+						{description && (
 							<Typography color="common.white" variant="caption">
-								{label}
+								{truncate(description, 30)}
 							</Typography>
 						)}
 					</Box>
@@ -119,6 +115,7 @@ const sx = {
 		},
 	},
 	content: {
+    p: 1,
 		minHeight: '60px',
 		display: 'flex',
 		flexDirection: 'column',

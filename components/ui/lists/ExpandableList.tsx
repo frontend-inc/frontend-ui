@@ -27,7 +27,7 @@ const ExpandableList: React.FC<ExpandableListProps> = (props) => {
 
 	const [open, setOpen] = useState(!closed)
 	const handleToggleClick = () => {
-    setMenuCookie(!open)
+    //setMenuCookie(!open)
 		setOpen(!open)
 	}
 
@@ -39,12 +39,18 @@ const ExpandableList: React.FC<ExpandableListProps> = (props) => {
 		setCookie(`app-config`, JSON.stringify(jsonCookie))
 	}
 
+  const handleReadCookieState = (id) => {
+    let cookie = getCookie(`app-config`) || '{}'
+    // @ts-ignore
+    let jsonConfig = JSON.parse(cookie)
+    if(jsonConfig[id]= undefined) {
+      setOpen(jsonConfig[id]) 
+    }
+  }
+
 	useEffect(() => {
 		if(id) {
-			let cookie = getCookie(`app-config`) || '{}'
-			// @ts-ignore
-			let jsonConfig = JSON.parse(cookie)
-			setOpen(jsonConfig[id])
+			//handleReadCookieState(id)
 		}
 	}, [id])
 

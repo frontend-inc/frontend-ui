@@ -14,7 +14,8 @@ type AuthButtonProps = {
 }
 
 const AuthButton: React.FC<AuthButtonProps> = (props) => {
-	const {
+	
+  const {
 		showLabel = false,
 		showIcon = true,
 		editing = false,
@@ -72,7 +73,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 						</IconButton>
 					) : (
 						<IconButton onClick={handleLogin}>
-							<Icon name="User" size={24} />
+							<Icon color='primary.contrastText' name="User" size={24} />
 						</IconButton>
 					)}
 				</>

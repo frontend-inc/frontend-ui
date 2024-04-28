@@ -34,10 +34,10 @@ const AuthMenu: React.FC<AuthMenuProps> = (props) => {
 					<MenuItem onClick={handleMyAccount}>
 						<ListItemText
 							primary={
-								<Typography variant="body1">{currentUser?.username}</Typography>
+								<Typography variant="body1" color='text.primary'>{currentUser?.username}</Typography>
 							}
 							secondary={
-								<Typography variant="body2" color="textSecondary">
+								<Typography variant="body2" color='text.primary'>
 									{currentUser?.email}
 								</Typography>
 							}
