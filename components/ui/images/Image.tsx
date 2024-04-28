@@ -1,6 +1,7 @@
 import React from 'react'
 import { Label, NoImage } from '../../../components'
 import { Box, useTheme } from '@mui/material'
+import { truncate } from '../../../helpers'
 import NextImage from 'next/image'
 
 export type ImageProps = {
@@ -82,7 +83,7 @@ const Image: React.FC<ImageProps> = (props) => {
 			)}
 			{label && (
 				<Box sx={sx.label}>
-					<Label color="common.white" label={label} />
+					<Label color="common.white" label={truncate(label, 22)} />
 				</Box>
 			)}
 		</Box>

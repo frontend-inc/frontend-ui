@@ -41,7 +41,7 @@ const AuthButton: React.FC = () => {
 	return (
 		<>
 			<IconButton onClick={handleMenuClick}>
-				<UserAvatar src={currentUser?.avatar?.url} />
+				<UserAvatar user={currentUser} />
 			</IconButton>
 			<UserMenu
 				open={open}

@@ -14,7 +14,7 @@ import {
 import { UserAvatar } from '../../../components'
 import { useAuth } from 'frontend-js'
 import { useComments } from '../../../hooks'
-import { Icon } from 'frontend-ui/components'
+import { Icon } from '../../../components'
 import moment from 'moment'
 import CommentForm from './CommentForm'
 
@@ -31,7 +31,7 @@ type CommentProps = {
 
 const Comment: React.FC<CommentProps> = (props) => {
 	const { currentUser } = useAuth()
-
+  
 	const { 
     url, 
     handle, 
@@ -60,7 +60,7 @@ const Comment: React.FC<CommentProps> = (props) => {
 		handle,
 	})
 
-  const handleReply = (comment) => {
+  const handleReply = () => {
     setOpenComment(!openComment)
   }
 

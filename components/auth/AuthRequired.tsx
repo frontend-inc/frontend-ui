@@ -14,9 +14,9 @@ const AuthRequired: React.FC<AuthRequiredProps> = (props) => {
   if(currentUser?.id) return children;
 	return (
     <Placeholder
-      title="Sign In"
-      description="Please sign in to view this content."
-      actions={<SignInButton buttonText="Login" />}
+      title="Sign In required"
+      description="You must be logged in."
+      actions={<SignInButton />}
     />
 	)
 }

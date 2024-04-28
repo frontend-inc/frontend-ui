@@ -5,7 +5,7 @@ import { useAlerts } from '../../../hooks'
 import { Stack, Button } from '@mui/material'
 import { IconLoading } from '../../../components'
 import {
-	FavoriteButton,
+	ProductFavoriteButton,
 	QuantitySelector,
 	SubscriptionSelector,
 } from '../../../components/shopify'
@@ -126,7 +126,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = (props) => {
 				>
 					{label}
 				</Button>
-				{enableFavorites && <FavoriteButton product={product} />}
+				{enableFavorites && <ProductFavoriteButton product={product} />}
 			</Stack>
 		</Stack>
 	)

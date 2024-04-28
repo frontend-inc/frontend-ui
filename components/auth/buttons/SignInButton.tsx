@@ -12,7 +12,6 @@ export type SignInButtonProps = {
 
 const SignInButton: React.FC<SignInButtonProps> = (props) => {
 	const {
-		showIcon = true,
 		color = 'primary',
 		buttonText = 'Sign In',
 	} = props || {}
@@ -38,19 +37,6 @@ const SignInButton: React.FC<SignInButtonProps> = (props) => {
 			variant="contained"
 			color={color}
 			onClick={handleLogin}
-			startIcon={
-				showIcon && (
-					<Icon
-						color={
-							color == 'primary'
-								? 'primary.contrastText'
-								: 'secondary.contrastText'
-						}
-						name="User"
-						size={20}
-					/>
-				)
-			}
 		>
 			{buttonText}
 		</Button>

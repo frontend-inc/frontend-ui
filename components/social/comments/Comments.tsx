@@ -120,8 +120,12 @@ const Comments: React.FC<CommentsProps> = (props) => {
 					/>
 				))}
 			</List>
-			{!loading && comments?.length == 0 && (
-				<Placeholder title="Be the first to comment" />
+			{!loading && !openComment && comments?.length == 0 && (
+				<Placeholder 
+          icon="MessageSquare"
+          title="There are no comments." 
+          description='Be the first to leave a comment.'
+        />
 			)}
 			<LoadMore loadMore={loadMore} page={page} numPages={numPages} />
 			<AlertModal

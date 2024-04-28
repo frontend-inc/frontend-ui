@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { Form } from '../../components'
-import { FormProps } from '../../components/cms/forms/Form'
+import { CollectionForm } from '../../components'
+import { CollectionFormProps } from '../../components/cms/forms/CollectionForm'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsFormProps = SectionProps & HeadingProps & FormProps
+type CmsFormProps = SectionProps & HeadingProps & CollectionFormProps
 
 const CmsForm: React.FC<CmsFormProps> = (props) => {
 	const {
@@ -27,7 +27,7 @@ const CmsForm: React.FC<CmsFormProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<Form {...rest} />
+			<CollectionForm {...rest} />
 		</Section>
 	)
 }

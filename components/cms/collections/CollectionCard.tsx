@@ -12,13 +12,22 @@ type CollectionCardProps = {
 	buttonText?: string
 	href?: string
 	handleClick: () => void
+  handleEdit?: (item: any) => void
+  handleDelete?: (item: any) => void
 	enableBorder?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
+  enableEdit?: boolean
+  enableCreate?: boolean
+  enableDelete?: boolean
 }
 
 const CollectionCard: React.FC<CollectionCardProps> = (props) => {
-	const { layout = 'list', style = 'card', ...rest } = props
+	const { 
+    layout = 'list', 
+    style = 'card', 
+    ...rest 
+  } = props
 
 	const COMPONENTS = {
 		card: Card,

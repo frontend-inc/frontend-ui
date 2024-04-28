@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Box, Button, Stack, Typography } from '@mui/material'
-import { Image, Icon, TouchableOpacity } from '../../..'
+import { Image, Icon, TouchableOpacity, MenuButton } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
@@ -21,6 +21,10 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		height = 320,
 		enableGradient = false,
 		enableOverlay = false,
+    enableEdit,
+    enableDelete,
+    handleEdit,
+    handleDelete,
 		icon,
 	} = props || {}
 
@@ -60,15 +64,27 @@ const CoverVert: React.FC<CardProps> = (props) => {
 						</Box>
 					)}
 					<Box sx={sx.content}>
-						<Typography color="common.white" variant={textVariant}>
-							{truncate(title, 60)}
-						</Typography>
-						{description && (
-							<Typography color="common.white" variant="caption">
-								{truncate(description, 30)}
-							</Typography>
-						)}
-					</Box>
+            <Stack sx={ sx.contentContainer } direction="row" spacing={1}>
+            <Box>
+              <Typography color="common.white" variant={textVariant}>
+                {truncate(title, 60)}
+              </Typography>
+              {description && (
+                <Typography color="common.white" variant="caption">
+                  {truncate(description, 30)}
+                </Typography>
+              )}
+            </Box>
+            {(enableEdit || enableDelete) && (
+              <MenuButton
+                icon={'EllipsisVertical'}
+                color='common.white'
+                handleEdit={ handleEdit }
+                handleDelete={ handleDelete }
+              />
+            )}
+            </Stack>
+					</Box>          
 				</Stack>
 				{buttonText && (
 					<Box>
@@ -122,4 +138,8 @@ const sx = {
 		justifyContent: 'center',
 		alignItems: 'flex-start',
 	},
+  contentContainer: {
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+  }
 }

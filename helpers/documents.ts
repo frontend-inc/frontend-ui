@@ -50,8 +50,10 @@ export const getDocumentValue = (document, field) => {
 }
 
 export const filterDocumentLinks = (document, contentType) => {
-	let documents = document?.document_links
-		?.filter((d) => d?.target?.content_type === contentType)
-		?.map((d) => d.target)
+  if(!document?.document_links?.length > 0 || !contentType) return null;
+	let documents = document
+    ?.document_links
+		?.filter((docuLink) => docuLink?.target?.content_type == contentType)
+		?.map((docuLink) => docuLink?.target)
 	return documents
 }

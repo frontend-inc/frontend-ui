@@ -1,17 +1,26 @@
 import React from 'react'
-import { Box, IconButton, Menu } from '@mui/material'
+import { MenuItem, ListItemIcon, Box, IconButton, Menu } from '@mui/material'
 import { useMenu } from '../../hooks'
 import { Icon } from '../../components'
 
 type MenuButtonProps = {
 	children: React.ReactNode
 	icon?: 'string'
-	size?: 'small' | 'medium'
-	selected?: boolean
+  color?: string	
+  enableIcons?: boolean
+  handleEdit?: (item: any) => void
+  handleDelete?: (item: any) => void
 }
 
 const MenuButton: React.FC<MenuButtonProps> = (props) => {
-	const { children, icon='EllipsisVertical', selected = false, size = 'small' } = props
+	const { 
+    children, 
+    icon='Ellipsis', 
+    color,
+    enableIcons=false,
+    handleEdit,
+    handleDelete 
+  } = props
 
 	const { open, anchorEl, closeMenu, toggleMenu } = useMenu()
 
@@ -22,15 +31,35 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
 
 	return (
 		<Box onClick={handleDefaultClick}>
-			<IconButton size={size} onClick={toggleMenu}>				
+			<IconButton onClick={toggleMenu}>				
         <Icon 
           name={ icon }
           size={20}
-          color={ selected ? 'primary.contrastText' : 'text.primary' }
+          color={ color }
         />				
 			</IconButton>
 			<Menu open={open} anchorEl={anchorEl} onClose={closeMenu}>
 				{children}
+        { handleEdit && (
+          <MenuItem onClick={handleEdit}>
+            {enableIcons && (
+              <ListItemIcon>
+                <Icon name="Pencil" size={20} />
+              </ListItemIcon>
+            )}
+            Edit 
+          </MenuItem>
+        )}
+        { handleDelete && (
+          <MenuItem onClick={handleDelete}>
+            {enableIcons && (
+              <ListItemIcon>
+                <Icon name="Trash" size={20} />
+              </ListItemIcon>
+            )}
+            Delete
+          </MenuItem>
+        )}
 			</Menu>
 		</Box>
 	)

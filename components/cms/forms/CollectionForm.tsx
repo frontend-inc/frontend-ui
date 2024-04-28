@@ -1,46 +1,38 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useResource } from 'frontend-js'
 import { Box, Button } from '@mui/material'
-import { Form, Placeholder } from '../../../components'
+import { Placeholder } from '../..'
 import { flattenDocument } from '../../../helpers'
 import { SYSTEM_FIELDS } from '../../../constants'
+import { Form } from 'frontend-ui/components'
 
-export type ForeignFormProps = {
+export type CollectionFormProps = {
 	handle: string
 	url: string
-	foreignUrl?: string
 	buttonText?: string
 	variant?: 'contained' | 'outlined' | 'text'
 	fields: any[]
 	children?: React.ReactElement[]
 }
 
-const ForeignForm: React.FC<ForeignFormProps> = (props) => {
-	const {
-		handle,
-		buttonText = 'Submit',
-		fields,
-		url,
-		foreignUrl,
-	} = props
+const CollectionForm: React.FC<CollectionFormProps> = (props) => {
+	const { handle, buttonText = 'Submit', fields, url } = props
 
 	const [submitted, setSubmitted] = useState(false)
 
-	const { loading, addLinks } = useResource({
-		name: 'document',
-		url,
-	})
-
 	const {
+		loading,
     errors,
+		findOne,
 		resource,
 		setResource,
 		update,
 		create,
+		handleChange,
 		removeAttachment,
 	} = useResource({
 		name: 'document',
-		url: foreignUrl,
+		url,
 	})
 
 	const handleDataChange = (ev) => {
@@ -67,25 +59,27 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 		await removeAttachment(resource?.id, name)
 	}
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = async () => {
 		try {
 			let resp
-			let addResp
 			if (resource?.id) {
 				resp = await update(resource)
 			} else {
 				resp = await create(resource)
 			}
 			if (resp?.id) {
-				addResp = await addLinks(handle, [resp.id])
-				if (addResp?.id) {
-					setSubmitted(true)
-				}
+				setSubmitted(true)
 			}
 		} catch (err) {
 			console.log('Error', err)
 		}
 	}
+
+	useEffect(() => {
+		if (handle) {
+			findOne(handle)
+		}
+	}, [handle])
 
 	return !submitted ? (
 		<Box sx={sx.root}>
@@ -102,16 +96,11 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 		</Box>
 	) : (
 		<Placeholder
-			enableBorder
-			icon={'Check'}
+			icon={'CheckCircle'}
 			title="Success"
 			description="Your form has been submitted"
 			actions={
-				<Button
-					color="secondary"
-					variant="contained"
-					onClick={() => setSubmitted(false)}
-				>
+				<Button variant="contained" onClick={() => setSubmitted(false)}>
 					Done
 				</Button>
 			}
@@ -119,13 +108,13 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 	)
 }
 
-export default ForeignForm
+export default CollectionForm
 
 const sx = {
 	root: {
 		width: '100%',
 	},
-	form: {
-		width: '100%',
+	button: {
+		mt: 2,
 	},
 }
