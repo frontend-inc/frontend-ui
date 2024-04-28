@@ -4,10 +4,6 @@ import { Box, Button, Stack, Typography } from '@mui/material'
 import { Image, Icon, TouchableOpacity } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
-import {
-	COVER_HORIZ_HEIGHT,
-	COVER_HORIZ_WIDTH,
-} from '../../../../constants/index'
 import { CardProps } from '../../../../types'
 
 const CoverHoriz: React.FC<CardProps> = (props) => {
@@ -22,7 +18,7 @@ const CoverHoriz: React.FC<CardProps> = (props) => {
 		buttonText,
 		textVariant = 'subtitle1',
 		objectFit = 'cover',
-		height = COVER_HORIZ_HEIGHT,
+		height = 240,
 		enableGradient = false,
 		enableOverlay = false,
 	} = props || {}
@@ -96,8 +92,8 @@ const sx = {
 	},
 	cover: {
 		position: 'absolute',
-		bottom: '18px',
-		left: '24px',
+    left: 0,
+    bottom: 0,
 		zIndex: 1,
 	},
 	button: {
@@ -110,7 +106,8 @@ const sx = {
 		},
 	},
 	content: {
-		height: '50px',
+    p: 2,
+		minHeight: '60px',
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',

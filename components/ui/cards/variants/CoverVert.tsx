@@ -98,8 +98,8 @@ const sx = {
 	},
 	cover: {
 		position: 'absolute',
-		bottom: '10px',
-		left: '10px',
+		bottom: 0,
+		left: 0,
 		zIndex: 1,
 	},
 	description: {
@@ -115,7 +115,7 @@ const sx = {
 		},
 	},
 	content: {
-    p: 1,
+    p: 2,
 		minHeight: '60px',
 		display: 'flex',
 		flexDirection: 'column',
