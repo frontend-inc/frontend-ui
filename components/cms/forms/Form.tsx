@@ -12,7 +12,7 @@ export type FormProps = {
   resource: any 
   handleChange: (e: SyntheticEventType) => void
   handleRemove: (name: string) => void
-  handleSubmit: () => void 
+  handleSubmit?: () => void 
   buttonText?: string
 }
 

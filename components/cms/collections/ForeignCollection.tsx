@@ -9,9 +9,10 @@ import {
   CollectionList, 
   Form, 
   IconLoading,
-  AlertModal
+  AlertModal,
+  Icon
 } from '../../../components'
-import { Button, Box } from '@mui/material'
+import { Stack, Button, Box } from '@mui/material'
 import { SYSTEM_FIELDS } from '../../../constants'
 import { FieldType } from '../../../types'
 import { flattenDocument } from '../../../helpers'
@@ -45,6 +46,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		resource,
 		layout = 'list',
 		style = 'card',
+    url,
 		foreignUrl,
 		navigateUrl,
 		perPage = 5,
@@ -63,6 +65,11 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
   const [openModal, setOpenModal] = useState(false)
   const [openDeleteModal, setOpenDeleteModal] = useState(false)
 	const { clientUrl } = useContext(AppContext)
+
+	const { addLinks } = useResource({
+		name: 'document',
+		url,
+	})
 
 	const { 
     loading,
@@ -122,18 +129,25 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
   }
 
   const handleSubmit = async () => {
-    let resp 
-    if(_resource?.id){
-      resp = await update(_resource)
-    }else{
-      resp = await create(_resource)
-    }
-    if(resp?.id){
-      setOpenModal(false)
-      setResource({})
-      reloadMany()
-    }
-  }
+		try {
+			let resp
+			if (_resource?.id) {
+				resp = await update(_resource)
+			} else {
+				resp = await create(_resource)
+			}
+			if (resp?.id) {
+				let addResp = await addLinks(resource?.handle, [resp.id])
+				if (addResp?.id) {
+					setResource({})
+          setOpenModal(false)
+          await reloadMany()
+				}
+			}
+		} catch (err) {
+			console.log('Error', err)
+		}
+	}
 
   const handleDeleteClick = (item) => {
     setResource(item)
@@ -178,7 +192,21 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	}, [resource, field, foreignUrl])
 
 	return (
-		<Box sx={sx.root}>
+		<Stack direction="column" spacing={1} sx={sx.root}>
+      { enableCreate && (
+        <Box>
+          <Button 
+              color="secondary"
+              variant="contained"
+              onClick={ handleAdd }
+              startIcon={
+                <Icon name="Plus" size={20} />
+              }
+            >
+              Add 
+            </Button> 
+        </Box>
+      )}
 			<CollectionList
 				layout={layout}
 				style={style}
@@ -230,7 +258,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
         description="This action cannot be reversed."
         handleConfirm={ handleDelete }
       />
-		</Box>
+		</Stack>
 	)
 }
 
