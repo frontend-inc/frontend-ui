@@ -19,7 +19,7 @@ const CellUser: React.FC<CellUserProps> = (props) => {
 				startIcon={
           user?.avatar?.url &&
             <UserAvatar 
-              src={ user?.avatar?.url }            
+              user={ user }            
             />
         }        
 			>					

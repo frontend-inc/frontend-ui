@@ -11,7 +11,7 @@ const OnlineStatusAvatar: React.FC<OnlineStatusAvatarProps> = (props) => {
 
 	return (
 		<OnlineStatusBadge>
-			<UserAvatar src={user?.avatar?.url} size={size} />
+			<UserAvatar user={user} size={size} />
 		</OnlineStatusBadge>
 	)
 }
