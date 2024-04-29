@@ -6,7 +6,7 @@ import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
 
-const CardHoriz: React.FC<CardProps> = (props) => {
+const CardList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		label,
@@ -113,7 +113,7 @@ const CardHoriz: React.FC<CardProps> = (props) => {
 	)
 }
 
-export default CardHoriz
+export default CardList
 
 const sx = {
 	root: {

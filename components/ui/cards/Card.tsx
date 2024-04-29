@@ -1,18 +1,13 @@
 import React from 'react'
-import CardVert from './variants/CardVert'
-import CardHoriz from './variants/CardHoriz'
+import CardGrid from './variants/CardGrid'
+import CardList from './variants/CardList'
 import { CardProps } from '../../../types'
 
 const Card: React.FC<CardProps> = (props) => {
-	const { direction } = props
-	switch (direction) {
-		case 'row':
-			return <CardVert {...props} />
-		case 'column':
-			return <CardHoriz {...props} />
-		default:
-			return <CardVert {...props} />
-	}
+	const { variant } = props
+  return variant == 'list' ? 
+    <CardList {...props} /> : 
+    <CardGrid {...props} />  
 }
 
 export default Card

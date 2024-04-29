@@ -3,10 +3,6 @@ import { AppContext } from '../../../../context'
 import { Image, TouchableOpacity } from '../../..'
 import { useRouter } from 'next/router'
 import { Box } from '@mui/material'
-import {
-	IMAGE_VERT_HEIGHT,
-	IMAGE_VERT_WIDTH,
-} from '../../../../constants/index'
 import { CardProps } from '../../../../types'
 
 const ImageVert: React.FC<CardProps> = (props) => {
@@ -17,7 +13,7 @@ const ImageVert: React.FC<CardProps> = (props) => {
 		href,
 		handleClick,
 		objectFit = 'cover',
-		height = IMAGE_VERT_HEIGHT,
+		height = 320,
 		enableGradient = false,
 		enableOverlay = false,
 	} = props || {}

@@ -1,18 +1,15 @@
 import React from 'react'
-import AvatarVert from './variants/AvatarVert'
-import AvatarHoriz from './variants/AvatarHoriz'
+import AvatarGrid from './variants/AvatarGrid'
+import AvatarList from './variants/AvatarList'
 import { CardProps } from '../../../types'
 
 const AvatarCard: React.FC<CardProps> = (props) => {
-	const { direction } = props
-	switch (direction) {
-		case 'row':
-			return <AvatarVert {...props} />
-		case 'column':
-			return <AvatarHoriz {...props} />
-		default:
-			return <AvatarVert {...props} />
-	}
+	const { variant } = props
+  return(
+    variant == 'grid'?
+      <AvatarGrid {...props} /> : 
+      <AvatarList {...props} />
+  )	
 }
 
 export default AvatarCard

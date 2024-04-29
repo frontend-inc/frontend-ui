@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import { CARD_VERT_HEIGHT, CARD_VERT_WIDTH } from '../../../../constants/index'
 import { CardProps } from '../../../../types'
 
-const CardVert: React.FC<CardProps> = (props) => {
+const CardGrid: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		label,
@@ -96,7 +96,7 @@ const CardVert: React.FC<CardProps> = (props) => {
 	)
 }
 
-export default CardVert
+export default CardGrid
 
 const sx = {
 	root: {

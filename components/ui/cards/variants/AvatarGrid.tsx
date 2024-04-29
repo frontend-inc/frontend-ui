@@ -10,7 +10,7 @@ import {
 } from '../../../../constants/index'
 import { CardProps } from '../../../../types'
 
-const AvatarVert: React.FC<CardProps> = (props) => {
+const AvatarGrid: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		label,
@@ -103,7 +103,7 @@ const AvatarVert: React.FC<CardProps> = (props) => {
 	)
 }
 
-export default AvatarVert
+export default AvatarGrid
 
 const sx = {
 	root: {

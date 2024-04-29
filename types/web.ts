@@ -18,7 +18,7 @@ export type SectionProps = {
 
 export type CardProps = {
 	editing?: boolean
-	direction?: 'row' | 'column'
+	variant?: 'list' | 'grid'
 	label?: string
 	title?: string
 	description?: string

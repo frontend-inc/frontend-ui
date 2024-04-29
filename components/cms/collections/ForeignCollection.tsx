@@ -18,7 +18,7 @@ import { FieldType } from '../../../types'
 import { flattenDocument } from '../../../helpers'
 
 export type ForeignCollectionProps = {
-	layout?: 'list' | 'grid'
+	variant?: 'list' | 'grid'
 	style?: 'card' | 'avatar' | 'cover'
 	field: any
   fields: FieldType[]
@@ -44,7 +44,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		field,
     fields,
 		resource,
-		layout = 'list',
+		variant = 'list',
 		style = 'card',
     url,
 		foreignUrl,
@@ -218,7 +218,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
         </Box>
       )}
 			<CollectionList
-				layout={layout}
+				variant={variant}
 				style={style}
 				resources={resources}
 				handleClick={handleClick}

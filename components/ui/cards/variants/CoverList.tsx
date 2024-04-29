@@ -6,7 +6,7 @@ import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
 
-const CoverHoriz: React.FC<CardProps> = (props) => {
+const CoverList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		label,
@@ -92,7 +92,7 @@ const CoverHoriz: React.FC<CardProps> = (props) => {
 	)
 }
 
-export default CoverHoriz
+export default CoverList
 
 const sx = {
 	root: {

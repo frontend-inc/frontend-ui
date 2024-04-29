@@ -13,7 +13,7 @@ import { truncate } from '../../../../helpers'
 import { CardProps } from '../../../../types'
 import { MenuButton } from '../../..'
 
-const AvatarHoriz: React.FC<CardProps> = (props) => {
+const AvatarList: React.FC<CardProps> = (props) => {
 	const {
 		title,
 		description,
@@ -95,7 +95,7 @@ const AvatarHoriz: React.FC<CardProps> = (props) => {
 	)
 }
 
-export default AvatarHoriz
+export default AvatarList
 
 const sx = {
 	listItem: {

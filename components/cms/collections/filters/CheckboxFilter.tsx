@@ -17,7 +17,6 @@ type CheckboxFilterProps = {
 	handleClick: (filter: FilterOptionType) => void
 	label?: string
 	icon?: React.ReactNode
-	enableBorder?: boolean
 	disablePadding?: boolean
 	closed?: boolean
 }
@@ -29,7 +28,6 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 		options,
 		values,
 		handleClick,
-		enableBorder,
 		disablePadding = false,
 		closed = false,
 	} = props
@@ -37,7 +35,7 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 	return (
 		<ExpandableList
 			label={label}
-			enableBorder={enableBorder}
+			enableBorder={false}
 			disablePadding={disablePadding}
 			closed={closed}
 		>

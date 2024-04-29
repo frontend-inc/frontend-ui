@@ -1,18 +1,13 @@
 import React from 'react'
-import CoverVert from './variants/CoverVert'
-import CoverHoriz from './variants/CoverHoriz'
+import CoverGrid from './variants/CoverGrid'
+import CoverList from './variants/CoverList'
 import { CardProps } from '../../../types'
 
 const Cover: React.FC<CardProps> = (props) => {
-	const { direction } = props
-	switch (direction) {
-		case 'row':
-			return <CoverVert {...props} />
-		case 'column':
-			return <CoverHoriz {...props} />
-		default:
-			return <CoverVert {...props} />
-	}
+	const { variant } = props
+  return variant == 'list' ?
+    <CoverList {...props} /> :
+    <CoverGrid {...props} /> 	
 }
 
 export default Cover

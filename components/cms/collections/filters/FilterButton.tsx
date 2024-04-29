@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Hidden, Badge, Button } from '@mui/material'
 import { Icon, Popup, Drawer, IconLoading } from '../../../../components'
-import FilterList from './CollectionFilterList'
+import CollectionFilterList from './CollectionFilterList'
 import { FilterOptionType, SearchFilterOptionType } from '../../../..'
 
 type FilterButtonProps = {
@@ -74,7 +74,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 						horizontal: 'right',
 					}}
 				>
-					<FilterList
+					<CollectionFilterList
 						filters={filters}
 						filterOptions={filterOptions}
 						handleFilter={handleFilter}
@@ -83,7 +83,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 			</Hidden>
 			<Hidden smUp>
 				<Drawer open={open} handleClose={handleClose} title="Search">
-					<FilterList
+					<CollectionFilterList
 						filters={filters}
 						filterOptions={filterOptions}
 						handleFilter={handleFilter}

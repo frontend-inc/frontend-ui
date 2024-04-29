@@ -5,8 +5,8 @@ import { CollectionCard } from '../..'
 type CollectionListProps = {
 	resources: any
 	handleClick: (item: any) => void
-	layout: 'list' | 'grid'
-	style: 'card' | 'avatar' | 'cover'
+	variant: 'list' | 'grid'
+	style: 'card' | 'avatar' | 'cover' | 'chip'
 	buttonText?: string
 	enableBorder?: boolean
 	enableGradient?: boolean
@@ -23,7 +23,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		handleClick,
     handleEdit,
     handleDelete,
-		layout = 'grid',
+		variant = 'grid',
 		style = 'card',
 		buttonText,
 		enableBorder = false,
@@ -38,13 +38,14 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			<Box
 				sx={{
 					...sx.root,
-					...(layout == 'grid' ? sx.grid : sx.list),
+					...(variant == 'grid' ? sx.grid : sx.list),
+          ...(style == 'chip' && sx.listDense)
 				}}
 			>
 				{resources?.map((resource, index) => (
 					<CollectionCard
 						key={index}
-						layout={layout}
+						variant={variant}
 						style={style}
 						label={resource?.label}
 						title={resource?.title}
@@ -76,14 +77,17 @@ const sx = {
 	list: {
 		display: 'flex',
 		flexDirection: 'column',
-		gap: '24px',
+		gap: '16px',
 	},
+  listDense: {
+    gap: '8px'
+  },
 	grid: {
 		display: 'grid',
 		gridTemplateColumns: {
 			md: '1fr 1fr 1fr',
 			xs: '1fr',
 		},
-		gap: '24px',
+		gap: '16px',
 	},
 }

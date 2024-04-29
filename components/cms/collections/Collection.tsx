@@ -25,8 +25,8 @@ import { flattenDocument } from '../../../helpers'
 
 export type CollectionProps = {
 	url: string
-	layout: 'list' | 'grid'
-	style: 'avatar' | 'card' | 'cover'
+	variant: 'list' | 'grid'
+	style: 'avatar' | 'card' | 'cover' | 'chip'
 	editing?: boolean
 	enableInfiniteLoad?: boolean
 	enableLoadMore?: boolean
@@ -54,7 +54,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const {
-		layout = 'grid',
+		variant = 'grid',
 		style = 'card',
 		url,
     fields,
@@ -323,7 +323,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 				>
 					<Box sx={{ ...(delayedLoading && sx.loading) }}>
 						<CollectionList
-							layout={layout}
+							variant={variant}
 							style={style}
 							resources={resources}
 							handleClick={handleClick}

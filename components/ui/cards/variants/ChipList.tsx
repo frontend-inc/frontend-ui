@@ -2,6 +2,7 @@ import React from 'react'
 import {
 	Avatar,
 	Box,
+  Stack,
 	List,
 	ListItem,
 	ListItemButton,
@@ -9,28 +10,53 @@ import {
 	ListItemText,
 	Typography,
 } from '@mui/material'
+import { Label, MenuButton } from '../../../../components'
+import { truncate } from '../../../../helpers'
 import { CardProps } from '../../../../types'
 
-const ChipHoriz: React.FC<CardProps> = (props) => {
+const ChipList: React.FC<CardProps> = (props) => {
 	const {
+    label,
 		title,
-		textVariant = 'body1',
+    description,
 		image,
 		handleClick,
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
+    enableEdit,
+    enableDelete,
+    handleEdit,
+    handleDelete,
 	} = props
 
 	return (
 		<List
+      dense
 			disablePadding
 			sx={{
-				...sx.listItem,
+				...sx.root,
 				...(enableBorder && sx.rootBorder),
 			}}
 		>
-			<ListItem disablePadding disableGutters>
+			<ListItem 
+        disablePadding 
+        disableGutters
+        secondaryAction={
+          <Stack direction="row" spacing={1} sx={ sx.actions }>
+            { label && (
+              <Label label={label} />
+            )}
+            {(enableEdit || enableDelete) && (
+              <MenuButton
+                icon='EllipsisVertical'
+                handleEdit={ enableEdit ? handleEdit : undefined }
+                handleDelete={ enableDelete ? handleDelete : undefined }
+              />
+            )}
+          </Stack>
+        }  
+      >
 				<ListItemButton
 					sx={sx.listItemButton}
 					onClick={handleClick && handleClick}
@@ -50,8 +76,13 @@ const ChipHoriz: React.FC<CardProps> = (props) => {
 					</ListItemIcon>
 					<ListItemText
 						primary={
-							<Typography variant={textVariant} color="text.primary">
+							<Typography variant='body1' color="text.primary">
 								{title}
+							</Typography>
+						}
+            secondary={
+							<Typography variant='body2' color="text.secondary">
+								{truncate(description)}
 							</Typography>
 						}
 					/>
@@ -61,10 +92,10 @@ const ChipHoriz: React.FC<CardProps> = (props) => {
 	)
 }
 
-export default ChipHoriz
+export default ChipList
 
 const sx = {
-	listItem: {
+	root: {
 		my: 0,
 		p: 0,
 	},
@@ -106,4 +137,7 @@ const sx = {
 		width: '32px',
 		backgroundImage: 'linear-gradient(45deg, #999999,#DDDDDD,#FAFAFA)',
 	},
+  actions: {
+    px: 1
+  }
 }

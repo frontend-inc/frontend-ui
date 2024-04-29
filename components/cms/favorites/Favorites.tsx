@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { CollectionList } from '../../../components'
 
 type FavoritesProps = {
-	layout?: 'list' | 'grid'
+	variant?: 'list' | 'grid'
 	style?: 'card' | 'avatar' | 'cover'
 	field: any
 	url: string
@@ -26,7 +26,7 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 	const { currentUser } = useAuth()
 
 	const {
-		layout = 'list',
+		variant = 'list',
 		style = 'card',
 		url,
 		navigateUrl,
@@ -77,7 +77,7 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 	return (
 		<CollectionList
 			resources={resources}
-			layout={layout}
+			variant={variant}
 			style={style}
 			buttonText={buttonText}
 			handleClick={handleClick}
