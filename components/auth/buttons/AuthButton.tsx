@@ -90,7 +90,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 								</Box>
 							}
 						>
-							<Typography variant="button" sx={sx.username}>
+							<Typography variant="button" color='text.primary' sx={sx.username}>
 								{currentUser?.username}
 							</Typography>
 						</Button>

@@ -54,6 +54,7 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 						{enableShopify && <ShopifyAuth variant="sideNav" />}
 						{enableAuth && (
 							<AuthButton
+                showLabel
 								editing={editing}
 								myAccountUrl={`${clientUrl}/auth/my-account`}
 							/>
