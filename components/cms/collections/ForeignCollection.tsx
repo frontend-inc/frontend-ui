@@ -206,15 +206,15 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
       { enableCreate && (
         <Box>
           <Button 
-              color="secondary"
-              variant="contained"
-              onClick={ handleAdd }
-              startIcon={
-                <Icon name="Plus" size={20} />
-              }
-            >
-              Add 
-            </Button> 
+            color="secondary"
+            variant="contained"
+            onClick={ handleAdd }
+            startIcon={
+              <Icon name="Plus" size={20} />
+            }
+          >
+            Add 
+          </Button> 
         </Box>
       )}
 			<CollectionList

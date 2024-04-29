@@ -4,7 +4,7 @@ import { Box, Button } from '@mui/material'
 import { Placeholder } from '../..'
 import { flattenDocument } from '../../../helpers'
 import { SYSTEM_FIELDS } from '../../../constants'
-import { Form } from 'frontend-ui/components'
+import { Form } from '../../../components'
 
 export type CollectionFormProps = {
 	handle: string

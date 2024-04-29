@@ -1,5 +1,5 @@
 import React from 'react'
-import { FieldWrapper, UserAvatar } from '../../../components'
+import { FieldWrapper, Avatar } from '../../../components'
 
 type FieldAvatarProps = {
 	value?: any
@@ -13,7 +13,7 @@ const FieldAvatar: React.FC<FieldAvatarProps> = (props) => {
 	const { value, label, size = 32, ...rest } = props
 	return (
 		<FieldWrapper label={label} {...rest}>
-			<UserAvatar src={value} />
+			<Avatar src={value} />
 		</FieldWrapper>
 	)
 }

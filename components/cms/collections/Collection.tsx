@@ -93,7 +93,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
     query, 
     findMany, 
     reloadMany,    
-    addLinks,
+    removeAttachment,
     page, 
     numPages, 
     loadMore 

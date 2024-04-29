@@ -11,7 +11,7 @@ import {
 	ListItemText,
 } from '@mui/material'
 import { useAlerts } from '../../../hooks'
-import { Modal, Icon, SocialIcon } from '../..'
+import { Modal, Icon, SocialLink } from '../..'
 import copy from 'copy-to-clipboard'
 
 type ShareButtonProps = {
@@ -83,11 +83,7 @@ const ShareButton: React.FC<ShareButtonProps> = (props) => {
 								onClick={(ev) => handleShareClick(platform.value)}
 							>
 								<ListItemIcon>
-									<SocialIcon
-										platform={platform.value}
-										handleClick={() => handleShareClick(platform.value)}
-										size={24}
-									/>
+									<SocialLink provider={platform.value} />
 								</ListItemIcon>
 								<ListItemText
 									primary={

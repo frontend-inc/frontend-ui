@@ -2,7 +2,8 @@ import React, { useEffect, useState, useContext } from 'react'
 import { IconButton } from '@mui/material'
 import { Icon } from '../..'
 import { isFavorited } from '../../../helpers'
-import { useAuth, useAlerts, useSocial } from 'frontend-js'
+import { useAuth } from 'frontend-js'
+import { useAlerts, useSocial } from '../../../hooks'
 import { AppContext } from '../../../context'
 
 type FavoriteButtonProps = {
