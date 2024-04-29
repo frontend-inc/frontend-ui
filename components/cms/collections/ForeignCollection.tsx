@@ -77,6 +77,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
     query, 
     resource: _resource,
     setResource,
+    setResources,
     update,
     create,
     destroy,
@@ -135,14 +136,16 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 				resp = await update(_resource)
 			} else {
 				resp = await create(_resource)
+        if (resp?.id) {
+          await addLinks(resource?.handle, [resp.id])                    
+        }
 			}
-			if (resp?.id) {
-				let addResp = await addLinks(resource?.handle, [resp.id])
-				if (addResp?.id) {
-					setResource({})
-          setOpenModal(false)
-          await reloadMany()
-				}
+			if(resp?.id) {
+        setResource({})
+        setOpenModal(false)
+        let documentIds = getDocumentIds()
+        documentIds.push(resp.id)
+        handleLoadDocuments(documentIds)
 			}
 		} catch (err) {
 			console.log('Error', err)
@@ -166,28 +169,35 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		await removeAttachment(resource?.id, name)
 	}
 
+  const getDocumentIds = () => {
+    return filterDocumentLinks(
+      resource,
+      field?.foreign_content_type
+    )?.map((link) => link?.id)    
+  }
+
+  const handleLoadDocuments = async (documentIds) => {
+    findMany({
+      ...query,
+      ...defaultQuery,
+      filters: {
+        AND: [
+          {
+            id: {
+              in: documentIds,
+            },
+          },
+        ],
+      },
+      per_page: perPage,
+      page: 1,
+    })
+  }
+
 	useEffect(() => {    
 		if (resource && field && foreignUrl) {
-			const documents = filterDocumentLinks(
-				resource,
-				field?.foreign_content_type
-			)
-			const documentIds = documents?.map((document) => document.id)
-			findMany({
-				...query,
-				...defaultQuery,
-				filters: {
-					AND: [
-						{
-							id: {
-								in: documentIds,
-							},
-						},
-					],
-				},
-				per_page: perPage,
-				page: 1,
-			})
+      const documentIds = getDocumentIds()
+			handleLoadDocuments(documentIds)
 		}
 	}, [resource, field, foreignUrl])
 
