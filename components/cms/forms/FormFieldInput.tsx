@@ -17,13 +17,13 @@ const FormFieldInput: React.FC<FormFieldInputProps> = (props) => {
 
 	return (
 		<FormInput
+      errors={errors}
 			name={name}
 			label={label}
 			placeholder={placeholder}
 			variant={variant}
 			options={options}
 			value={value}
-			errors={errors}
 			handleChange={handleChange}
 			handleRemove={handleRemove}
 		/>

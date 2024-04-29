@@ -57,7 +57,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 				/>
 			</TouchableOpacity>
 			<Stack spacing={1} sx={sx.cover}>
-				<Stack spacing={1} direction={'row'} alignItems="center">
+				<Stack sx={ sx.fullWidth } spacing={1} direction={'row'} alignItems="center">
 					{icon && (
 						<Box>
 							<Icon size={20} name={icon} color="common.white" />
@@ -65,7 +65,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 					)}
 					<Box sx={sx.content}>
             <Stack sx={ sx.contentContainer } direction="row" spacing={1}>
-            <Box>
+            <Box sx={sx.fullWidth }>
               <Typography color="common.white" variant={textVariant}>
                 {truncate(title, 60)}
               </Typography>
@@ -113,6 +113,7 @@ const sx = {
 		borderRadius: 1,
 	},
 	cover: {
+    width: '100%',
 		position: 'absolute',
 		bottom: 0,
 		left: 0,
@@ -130,15 +131,20 @@ const sx = {
 			opacity: 0.9,
 		},
 	},
+  fullWidth: {    
+    width: '100%',
+  },
 	content: {
-    p: 2,
+    p: 2,    
+    width: '100%',
 		minHeight: '60px',
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'flex-start',
 	},
-  contentContainer: {
+  contentContainer: {  
+    width: '100%',  
     justifyContent: 'space-between',
     alignItems: 'flex-end',
   }
