@@ -25,17 +25,28 @@ const Show: React.FC<ShowProps> = (props) => {
 		resource,
 	} = props || {}
 
+  const components = {
+    "item": Item,
+    "article": Article,
+    "person": Person
+  }
+
+  const Component = components[style]
+
 	return (
-		<Stack direction="column" spacing={4} sx={sx.root}>
-			{style == 'item' && <Item resource={resource} actions={actions} />}
-			{style == 'article' && <Article resource={resource} actions={actions} />}
-			{style == 'person' && <Person resource={resource} actions={actions} />}
-			<Details
-				url={url}
-				fields={fields}
-				resource={resource}
-				enableBorder={enableBorder}
-			/>
+		<Stack direction="column" spacing={2} sx={sx.root}>
+      <Component
+        resource={resource}
+        actions={actions}
+      />			
+      { fields?.length > 0 && (
+        <Details
+          url={url}
+          fields={fields}
+          resource={resource}
+          enableBorder={enableBorder}
+        />
+      )}
 		</Stack>
 	)
 }

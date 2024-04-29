@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Avatar, Box, Link, Stack, Typography } from '@mui/material'
 import { ActionType } from '../../../types'
-import { Actions, SocialLink } from '../..'
+import { Image, Actions, SocialLink } from '../../../components'
 
 type PersonProps = {
 	actions?: ActionType[]
@@ -15,22 +15,25 @@ const Person: React.FC<PersonProps> = (props) => {
 	const { data } = resource || {}
   const { facebook, instagram, linkedin, twitter, youtube, blog } = data || {}
 
-	const { title, image, description } = resource || {}
+	const { label, title, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
 	return (
 		<Box sx={sx.root}>
 			<Stack
-				sx={sx.container}
+				sx={{
+          ...sx.container
+        }}
 				direction={{ sm: 'row', xs: 'column' }}
 				spacing={4}
 			>
 				<Stack direction="column">
-					<Avatar sx={sx.avatarContainer}>
-						<Avatar src={image?.url} alt={title} sx={sx.avatar}>
-							<Box />
-						</Avatar>
-						<Box />
-					</Avatar>
+					<Image 
+            height={320}
+            width={320}
+            src={image?.url} 
+            alt={title}  
+            label={ label }
+          />
 				</Stack>
 				<Stack spacing={2} sx={sx.content}>
 					<Typography color="text.primary" variant="h4">
@@ -71,11 +74,13 @@ const Person: React.FC<PersonProps> = (props) => {
 					</Box>
 				</Stack>
 				{actions && (
-					<Actions
-						actions={actions}
-						resource={resource}
-						justifyContent="flex-end"
-					/>
+          <Box p={2}>
+            <Actions
+              actions={actions}
+              resource={resource}
+              justifyContent="flex-end"
+            />
+          </Box>
 				)}
 			</Stack>
 		</Box>
@@ -90,6 +95,9 @@ const sx = {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
+    border: '1px solid',
+    borderColor: 'divider',
+    borderRadius: theme => `${theme.shape.borderRadius}px`,
 	},
 	container: {
 		width: '100%',
@@ -124,6 +132,7 @@ const sx = {
 		textAlign: 'center',
 	},
 	content: {
+    p: 2,
 		width: '100%',
 	},
 	text: {

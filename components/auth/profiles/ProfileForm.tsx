@@ -19,12 +19,7 @@ const ProfileForm: React.FC<ProfileFormProps> = (props) => {
 
 	const [submitted, setSubmitted] = useState(false)
 
-  const { 
-    currentUser
-  } = useAuth()
-
 	const {
-		loading,
 		delayedLoading,
 		resource: profile,
 		setResource,
@@ -32,7 +27,7 @@ const ProfileForm: React.FC<ProfileFormProps> = (props) => {
     create,
 		removeAttachment,
 	} = useResource({
-		name: 'profile',
+		name: 'document',
 		url: `/api/v1/cms/profiles`,
 	})
 
@@ -60,7 +55,7 @@ const ProfileForm: React.FC<ProfileFormProps> = (props) => {
 		await removeAttachment(resource?.id, name)
 	}
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = async () => {
 		try {
       let resp
       if(profile?.id){
