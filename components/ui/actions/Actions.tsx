@@ -33,9 +33,8 @@ const Actions: React.FC<ActionsProps> = (props) => {
 			>
 				{actions?.slice(0, 2)?.map((action, index) => (
 					<ActionButton
-						key={index}
-						color={action?.color || 'secondary'}
-						action={action}
+						key={index}						
+            action={action}            
 						resource={resource}
 					/>
 				))}

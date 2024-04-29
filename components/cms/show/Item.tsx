@@ -1,30 +1,48 @@
 import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
-import { Actions, Image } from '../..'
-import { ActionType, DocumentType } from '../../../types'
+import { ActionButton, Actions, Image } from '../../../components'
+import { ActionType } from '../../../types'
 
 type ItemProps = {
-	resource: DocumentType
-	actions?: ActionType[]
+	resource: any
+	actions: ActionType[]
+  enableBorder?: boolean
+  enableEdit?: boolean
 }
 
 const Item: React.FC<ItemProps> = (props) => {
 	const MAX_CHARS = 500
 
-	const { actions, resource } = props || {}
+	const { actions, resource, enableBorder, enableEdit, handleEdit } = props || {}
 	const { title, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
 
 	if (!resource) return null
 	return (
-		<Box sx={sx.root}>
+		<Box 
+      sx={{
+        ...sx.root,
+        ...(enableBorder && sx.rootBorder)
+      }}
+    >
 			<Stack
 				sx={sx.container}
 				direction={{ md: 'row', xs: 'column' }}
 				spacing={4}
 			>
-				<Image src={image?.url} alt={title} height={256} />
-				<Stack spacing={2} sx={sx.content}>
+				<Image 
+          src={image?.url} 
+          alt={title} 
+          height={256} 
+          disableBorderRadius={enableBorder}
+        />
+				<Stack 
+          spacing={2} 
+          sx={{ 
+            ...sx.content,
+            ...(enableBorder && sx.contentBorder)
+          }}
+        >
 					<Typography color="text.primary" variant="h4">
 						{title}
 					</Typography>
@@ -43,9 +61,23 @@ const Item: React.FC<ItemProps> = (props) => {
 								{open ? 'See less' : '... See all'}
 							</Link>
 						)}
-					</Box>
-					{actions && <Actions actions={actions} resource={resource} />}
+					</Box>          
 				</Stack>
+        {(actions || enableEdit) && (
+        <Box 
+          sx={{ 
+            ...sx.actions, 
+            ...(enableBorder && sx.actionsBorder)
+          }}>
+          { enableEdit && (
+            <ActionButton 
+              resource={resource} 
+              action={{ label: 'Edit', color: 'secondary', name: 'click', onClick: handleEdit }} 
+            /> 
+          )}
+          <Actions actions={actions} resource={resource} />
+        </Box>
+        )}
 			</Stack>
 		</Box>
 	)
@@ -60,6 +92,12 @@ const sx = {
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
+  rootBorder: {
+    overflow: 'hidden',
+    borderRadius: theme => `${theme.shape.borderRadius}px`,
+    border: '1px solid',
+    borderColor: 'divider'
+  },
 	container: {
 		width: '100%',
 		justifyContent: 'flex-start',
@@ -89,6 +127,9 @@ const sx = {
 			xs: '100%',
 		},
 	},
+  contentBorder: {
+    p: 2,
+  },
 	text: {
 		width: '100%',
 		whiteSpace: 'pre-line',
@@ -100,4 +141,10 @@ const sx = {
 		cursor: 'pointer',
 		color: 'text.secondary',
 	},
+  actions: {
+    p: 0,
+  },
+  actionsBorder: {
+    p: 1
+  }
 }

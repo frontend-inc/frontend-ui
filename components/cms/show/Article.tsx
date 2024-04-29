@@ -1,12 +1,12 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
 import { Actions, Image } from '../..'
-import { ActionType, DocumentType } from '../../../types'
+import { ActionType } from '../../../types'
 import moment from 'moment'
 
 type ArticleProps = {
 	actions?: ActionType[]
-	resource: DocumentType
+	resource: any
 }
 
 const Article: React.FC<ArticleProps> = (props) => {

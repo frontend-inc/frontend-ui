@@ -26,6 +26,9 @@ const useActions = (params: UseActionParams) => {
 				}
 				router.push(url)
 				break
+      case 'click': 
+        action?.onClick && action.onClick(ev)
+        break      
 			case 'url':
 				window.open(action?.path, '_blank')
 				break

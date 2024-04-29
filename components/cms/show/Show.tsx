@@ -1,29 +1,68 @@
-import React from 'react'
-import { Stack } from '@mui/material'
-import { ActionType, DocumentType } from '../../../types'
+import React, { useState, useEffect } from 'react'
+import { Button, Stack } from '@mui/material'
+import { ActionType, DocumentType, FieldType } from '../../../types'
 import Article from './Article'
 import Item from './Item'
 import Person from './Person'
 import Details from '../details/Details'
+import { Drawer, Form, IconLoading } from '../../../components'
+import { useDocuments } from 'frontend-js'
 
 export type ShowProps = {
 	style: 'article' | 'person' | 'item'
-	fields: any[]
+	fields: FieldType[]
+  displayFields: FieldType[]
 	url: string
 	enableBorder?: boolean
 	actions?: ActionType[]
-	resource: DocumentType
+	resource: any
+  enableEdit?: boolean  
 }
 
 const Show: React.FC<ShowProps> = (props) => {
 	const {
 		style = 'item',
 		fields,
+    displayFields,
 		url,
 		enableBorder,
 		actions,
 		resource,
+    enableEdit,    
 	} = props || {}
+
+  const {
+    loading,
+    errors,
+    update,
+    resource: _resource,
+    setResource,
+    handleRemove,
+    handleDataChange,
+  } = useDocuments({
+    collection: resource?.content_type 
+  })
+
+  useEffect(() => {
+    setResource(resource)  
+  }, [resource])
+  
+  const [openModal, setOpenModal] = useState(false)
+
+  const handleEdit = () => {    
+    setOpenModal(true)
+  }
+
+  const handleSubmit = async () => {
+    try {
+      let resp = await update(_resource) 
+      if(resp){
+        setOpenModal(false)
+      }
+    }catch(e){
+      console.error(e)
+    }
+  }
 
   const components = {
     "item": Item,
@@ -36,17 +75,47 @@ const Show: React.FC<ShowProps> = (props) => {
 	return (
 		<Stack direction="column" spacing={2} sx={sx.root}>
       <Component
-        resource={resource}
+        resource={_resource}
         actions={actions}
+        enableBorder={enableBorder}
+        enableEdit={enableEdit}
+        handleEdit={handleEdit}        
       />			
-      { fields?.length > 0 && (
+      { displayFields?.length > 0 && (
         <Details
           url={url}
-          fields={fields}
+          fields={displayFields}
           resource={resource}
           enableBorder={enableBorder}
         />
       )}
+      <Drawer 
+        open={ openModal }
+        handleClose={() => setOpenModal(false) }
+        title={ resource?.id ? 'Edit' : 'Add' }
+        actions={
+          <Button 
+            fullWidth 
+            variant="contained"
+            color="primary"
+            onClick={ handleSubmit }
+            startIcon={ 
+              <IconLoading loading={ loading } />
+            }
+            >
+            { resource?.id ? 'Update' : 'Save' }
+          </Button>      
+        }
+      >
+        <Form  
+          loading={ loading }
+          errors={errors}
+          fields={ fields }
+          resource={ _resource }
+          handleChange={ handleDataChange }
+          handleRemove={ handleRemove }          
+        />
+      </Drawer>
 		</Stack>
 	)
 }

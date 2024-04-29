@@ -6,14 +6,12 @@ import { Icon } from '../../../components'
 
 type ActionProps = {
 	action: ActionType
-	variant?: 'text' | 'outlined' | 'contained'
-	color?: 'primary' | 'secondary'
 	resource: any
 	rest?: any
 }
 
 const ActionButton: React.FC<ActionProps> = (props) => {
-	const { color, variant = 'contained', action, resource, ...rest } = props
+	const { action, resource, ...rest } = props
 
 	const { icon, label = 'View' } = action || {}
 
@@ -36,7 +34,7 @@ const ActionButton: React.FC<ActionProps> = (props) => {
 						name={icon}
 						size={20}
 						color={
-							color == 'primary'
+							action?.color == 'primary'
 								? 'primary.contrastText'
 								: 'secondary.contrastText'
 						}
@@ -44,8 +42,8 @@ const ActionButton: React.FC<ActionProps> = (props) => {
 				)
 			}
 			onClick={onClick}
-			variant={variant}
-			color={color}
+			variant={action?.variant || 'contained'}
+			color={action?.color || 'secondary'}
 			{...rest}
 		>
 			{label}

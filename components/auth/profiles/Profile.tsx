@@ -1,29 +1,31 @@
 import React from 'react'
-import { Stack } from '@mui/material'
-import { ActionType, DocumentType } from '../../../types'
-import { AuthRequired, Person, Details } from '../../../components'
+import { ActionType, DocumentType, FieldType } from '../../../types'
+import { AuthRequired, Show } from '../../../components'
 
 export type ProfileProps = {
-	fields: any[]
+	displayFields: FieldType[]
+  fields: FieldType[]
 	url: string
-	enableBorder?: boolean
 	actions?: ActionType[]
 	resource: DocumentType
+  enableBorder?: boolean
+  enableEdit?: boolean
 }
 
 const Profile: React.FC<ProfileProps> = (props) => {
-	const { url, fields, enableBorder, actions, resource } = props || {}
+	const { url, fields, displayFields, enableBorder, enableEdit, actions, resource } = props || {}
 	return (
     <AuthRequired>
-      <Stack direction="column" spacing={4} sx={sx.root}>
-        <Person resource={resource} actions={actions} />
-        <Details
-          url={url}
-          fields={fields}
-          resource={resource}
-          enableBorder={enableBorder}
-        />
-      </Stack>
+      <Show 
+        style='person'
+        url={url}
+        resource={resource}
+        actions={actions}
+        fields={fields}        
+        displayFields={displayFields}
+        enableBorder={enableBorder}
+        enableEdit={enableEdit}
+      />
     </AuthRequired> 
 	)
 }

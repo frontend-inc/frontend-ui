@@ -1,40 +1,43 @@
 import React, { useState } from 'react'
-import { Avatar, Box, Link, Stack, Typography } from '@mui/material'
+import { Button, Box, Link, Stack, Typography } from '@mui/material'
 import { ActionType } from '../../../types'
-import { Image, Actions, SocialLink } from '../../../components'
+import { Image, ActionButton, Actions, SocialLink } from '../../../components'
 
 type PersonProps = {
 	actions?: ActionType[]
 	resource: any
+  enableBorder?: boolean
+  enableEdit?: boolean
+  handleEdit?: () => void
 }
 
 const Person: React.FC<PersonProps> = (props) => {
 	const MAX_CHARS = 500
 
-	const { actions, resource } = props || {}
+	const { actions, resource, enableBorder, enableEdit, handleEdit } = props || {}
 	const { data } = resource || {}
   const { facebook, instagram, linkedin, twitter, youtube, blog } = data || {}
 
 	const { label, title, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
 	return (
-		<Box sx={sx.root}>
+		<Box 
+      sx={{
+        ...sx.root,
+        ...(enableBorder && sx.rootBorder)
+      }}>
 			<Stack
-				sx={{
-          ...sx.container
-        }}
+				sx={sx.container}
 				direction={{ sm: 'row', xs: 'column' }}
 				spacing={4}
 			>
-				<Stack direction="column">
-					<Image 
-            height={320}
-            width={320}
-            src={image?.url} 
-            alt={title}  
-            label={ label }
-          />
-				</Stack>
+        <Image 
+          height={360}
+          src={image?.url} 
+          alt={title}  
+          label={ label }
+          disableBorderRadius={enableBorder}
+        />
 				<Stack spacing={2} sx={sx.content}>
 					<Typography color="text.primary" variant="h4">
 						{title}
@@ -73,8 +76,14 @@ const Person: React.FC<PersonProps> = (props) => {
 						)}
 					</Box>
 				</Stack>
-				{actions && (
+				{(actions || enableEdit) && (
           <Box p={2}>
+            { enableEdit && (
+              <ActionButton 
+                resource={resource} 
+                action={{ label: 'Edit', color: 'secondary', name: 'click', onClick: handleEdit }} 
+              /> 
+            )}
             <Actions
               actions={actions}
               resource={resource}
@@ -95,10 +104,14 @@ const sx = {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-    border: '1px solid',
-    borderColor: 'divider',
     borderRadius: theme => `${theme.shape.borderRadius}px`,
 	},
+  rootBorder: {
+    overflow: 'hidden',
+    borderRadius: theme => `${theme.shape.borderRadius}px`,
+    border: '1px solid',
+    borderColor: 'divider',
+  },
 	container: {
 		width: '100%',
 		justifyContent: 'flex-start',
