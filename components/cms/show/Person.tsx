@@ -23,20 +23,16 @@ const Person: React.FC<ShowItemProps> = (props) => {
 				direction={{ sm: 'row', xs: 'column' }}
 				spacing={4}
 			>
-        <Avatar 
-          sx={{
-            height: 360,
-            width: 360 
-          }}
-        >
-        <Image 
-          height={360}
-          src={image?.url} 
-          alt={title}  
-          disableBorderRadius={enableBorder}
-        />
-        </Avatar>
-				<Stack spacing={2} sx={sx.content}>
+        <Box sx={ sx.imageContainer }>
+          <Image 
+            label={label}
+            height={240}
+            src={image?.url} 
+            alt={title}  
+            disableBorderRadius={enableBorder}
+          />
+        </Box>
+				<Stack spacing={2} sx={{ ...sx.content, ...(enableBorder && sx.contentBorder )}}>
 					<Typography color="text.primary" variant="h4">
 						{title}
 					</Typography>
@@ -75,7 +71,7 @@ const Person: React.FC<ShowItemProps> = (props) => {
 					</Box>
 				</Stack>
 				{(actions || enableEdit) && (
-          <Box>
+          <Box p={ enableBorder ? 1 : 0}>
             { enableEdit && (
               <ActionButton 
                 resource={resource} 
@@ -105,7 +101,6 @@ const sx = {
     borderRadius: theme => `${theme.shape.borderRadius}px`,
 	},
   rootBorder: {
-    p: 2,
     overflow: 'hidden',
     borderRadius: theme => `${theme.shape.borderRadius}px`,
     border: '1px solid',
@@ -118,27 +113,19 @@ const sx = {
 			sm: 'flex-start',
 			xs: 'center',
 		},
-	},
-	avatar: {
-		height: {
-			sm: 180,
-			xs: 180,
-		},
-		width: {
-			sm: 180,
-			xs: 180,
-		},
-	},
-	avatarContainer: {
-		height: {
-			sm: 180,
-			xs: 180,
-		},
-		width: {
-			sm: 180,
-			xs: 180,
-		},
-	},
+	},  	
+  imageContainer: {
+    width: "100%",
+    height: "100%",
+    maxHeight: {
+      sm: 240,
+      xs: 240
+    },
+    maxWidth: {
+      sm: 240,
+      xs: '100%'
+    }
+  },
 	header: {
 		width: '100%',
 		textAlign: 'center',
@@ -146,6 +133,9 @@ const sx = {
 	content: {
 		width: '100%',
 	},
+  contentBorder: {
+    p: 2,
+  },
 	text: {
 		width: '100%',
 		whiteSpace: 'pre-line',

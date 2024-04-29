@@ -16,9 +16,7 @@ import { CardProps } from '../../../../types'
 
 const ChipList: React.FC<CardProps> = (props) => {
 	const {
-    label,
 		title,
-    description,
 		image,
 		handleClick,
 		enableBorder = false,
@@ -53,24 +51,26 @@ const ChipList: React.FC<CardProps> = (props) => {
             )}
           </Stack>
         }  
-      >
+      >        
 				<ListItemButton
 					sx={sx.listItemButton}
 					onClick={handleClick && handleClick}
 				>
-					<ListItemIcon>
-						<Avatar
-							sx={{
-								...sx.avatar,
-								...(enableGradient && sx.gradient),
-								...(enableOverlay && sx.overlay),
-							}}
-							src={image}
-							alt={title}
-						>
-							<Box />
-						</Avatar>
-					</ListItemIcon>
+          { image && (
+            <ListItemIcon>
+              <Avatar
+                sx={{
+                  ...sx.avatar,
+                  ...(enableGradient && sx.gradient),
+                  ...(enableOverlay && sx.overlay),
+                }}
+                src={image}
+                alt={title}
+              >
+                <Box />
+              </Avatar>
+            </ListItemIcon>
+          )}
 					<ListItemText
 						primary={
 							<Typography variant='body1' color="text.primary">

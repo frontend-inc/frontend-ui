@@ -61,6 +61,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 					sx={sx.listItemButton}
 					onClick={handleClick && handleClick}
 				>
+          { image && (
 					<ListItemIcon>
 						<Avatar
 							sx={{
@@ -74,6 +75,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 							<Box />
 						</Avatar>
 					</ListItemIcon>
+          )}
 					<ListItemText
 						primary={
 							<Typography variant='body1' color="text.primary">
@@ -132,7 +134,7 @@ const sx = {
 		borderRadius: 1,
 	},
 	avatar: {
-		mr: 2,
+		mr: 1,
 		height: '32px',
 		width: '32px',
 		backgroundImage: 'linear-gradient(45deg, #999999,#DDDDDD,#FAFAFA)',
