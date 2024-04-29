@@ -1,20 +1,21 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
-import { Actions, Image } from '../..'
-import { ActionType } from '../../../types'
+import { Actions, ActionButton, Image } from '../..'
 import moment from 'moment'
+import { ShowItemProps } from './Show'
 
-type ArticleProps = {
-	actions?: ActionType[]
-	resource: any
-}
-
-const Article: React.FC<ArticleProps> = (props) => {
-	const { actions, resource } = props || {}
-	const { title, image, description, data } = resource || {}
+const Article: React.FC<ShowItemProps> = (props) => {
+	const { actions, resource, enableBorder, enableEdit, handleEdit } = props || {}
+	const { label, title, image, description, data } = resource || {}
 	const { published_at } = data || {}
 	return (
-		<Stack sx={sx.root} spacing={7}>
+		<Stack 
+      sx={{
+        ...sx.root,
+        ...(enableBorder && sx.rootBorder)
+      }} 
+      spacing={7}
+    >
 			<Stack spacing={3} sx={sx.header}>
 				<Typography color="text.primary" variant="h3">
 					{title}
@@ -22,14 +23,29 @@ const Article: React.FC<ArticleProps> = (props) => {
 				<Typography color="text.secondary" variant="caption">
 					{moment(published_at).format('MMMM D, YYYY')}
 				</Typography>
+        {(actions || enableEdit) && (
+        <Box px={2}>
+          { enableEdit && (
+            <ActionButton 
+              resource={resource} 
+              action={{ label: 'Edit', color: 'secondary', name: 'click', onClick: handleEdit }} 
+            /> 
+          )}
+          <Actions actions={actions} resource={resource} />
+        </Box> 
+        )}
 			</Stack>
-			<Image src={image?.url} alt={title} height={400} />
+			<Image 
+        src={image?.url} 
+        alt={title} height={400} 
+        label={label}
+        disableBorderRadius={enableBorder}
+      />
 			<Box sx={sx.content}>
 				<Typography variant="body1" color="text.primary" sx={sx.text}>
 					{description}
 				</Typography>
 			</Box>
-			{actions && <Actions actions={actions} resource={resource} />}
 		</Stack>
 	)
 }
@@ -42,6 +58,11 @@ const sx = {
 		justifyContent: 'flex-start',
 		alignItems: 'center',
 	},
+  rootBorder: {
+    py: 2,
+    border: '1px solid',
+    borderColor: 'divider',
+  },
 	header: {
 		maxWidth: 500,
 		width: '100%',

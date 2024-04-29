@@ -1,17 +1,9 @@
 import React, { useState } from 'react'
-import { Button, Box, Link, Stack, Typography } from '@mui/material'
-import { ActionType } from '../../../types'
+import { Avatar, Box, Link, Stack, Typography } from '@mui/material'
 import { Image, ActionButton, Actions, SocialLink } from '../../../components'
+import { ShowItemProps } from './Show'
 
-type PersonProps = {
-	actions?: ActionType[]
-	resource: any
-  enableBorder?: boolean
-  enableEdit?: boolean
-  handleEdit?: () => void
-}
-
-const Person: React.FC<PersonProps> = (props) => {
+const Person: React.FC<ShowItemProps> = (props) => {
 	const MAX_CHARS = 500
 
 	const { actions, resource, enableBorder, enableEdit, handleEdit } = props || {}
@@ -31,13 +23,19 @@ const Person: React.FC<PersonProps> = (props) => {
 				direction={{ sm: 'row', xs: 'column' }}
 				spacing={4}
 			>
+        <Avatar 
+          sx={{
+            height: 360,
+            width: 360 
+          }}
+        >
         <Image 
           height={360}
           src={image?.url} 
           alt={title}  
-          label={ label }
           disableBorderRadius={enableBorder}
         />
+        </Avatar>
 				<Stack spacing={2} sx={sx.content}>
 					<Typography color="text.primary" variant="h4">
 						{title}
@@ -77,7 +75,7 @@ const Person: React.FC<PersonProps> = (props) => {
 					</Box>
 				</Stack>
 				{(actions || enableEdit) && (
-          <Box p={2}>
+          <Box>
             { enableEdit && (
               <ActionButton 
                 resource={resource} 
@@ -107,6 +105,7 @@ const sx = {
     borderRadius: theme => `${theme.shape.borderRadius}px`,
 	},
   rootBorder: {
+    p: 2,
     overflow: 'hidden',
     borderRadius: theme => `${theme.shape.borderRadius}px`,
     border: '1px solid',
@@ -145,7 +144,6 @@ const sx = {
 		textAlign: 'center',
 	},
 	content: {
-    p: 2,
 		width: '100%',
 	},
 	text: {

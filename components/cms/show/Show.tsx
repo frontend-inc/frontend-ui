@@ -8,8 +8,7 @@ import Details from '../details/Details'
 import { Drawer, Form, IconLoading } from '../../../components'
 import { useDocuments } from 'frontend-js'
 
-export type ShowProps = {
-	style: 'article' | 'person' | 'item'
+export type ShowItemProps = {
 	fields: FieldType[]
   displayFields: FieldType[]
 	url: string
@@ -17,6 +16,11 @@ export type ShowProps = {
 	actions?: ActionType[]
 	resource: any
   enableEdit?: boolean  
+  handleEdit?: () => void
+}
+
+export type ShowProps = ShowItemProps & {
+	style: 'article' | 'person' | 'item'
 }
 
 const Show: React.FC<ShowProps> = (props) => {

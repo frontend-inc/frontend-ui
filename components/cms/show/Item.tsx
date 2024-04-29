@@ -1,20 +1,13 @@
 import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
 import { ActionButton, Actions, Image } from '../../../components'
-import { ActionType } from '../../../types'
+import { ShowItemProps } from './Show'
 
-type ItemProps = {
-	resource: any
-	actions: ActionType[]
-  enableBorder?: boolean
-  enableEdit?: boolean
-}
-
-const Item: React.FC<ItemProps> = (props) => {
+const Item: React.FC<ShowItemProps> = (props) => {
 	const MAX_CHARS = 500
 
 	const { actions, resource, enableBorder, enableEdit, handleEdit } = props || {}
-	const { title, image, description } = resource || {}
+	const { label, title, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
 
 	if (!resource) return null
@@ -33,7 +26,8 @@ const Item: React.FC<ItemProps> = (props) => {
 				<Image 
           src={image?.url} 
           alt={title} 
-          height={256} 
+          height={360} 
+          label={label}
           disableBorderRadius={enableBorder}
         />
 				<Stack 
