@@ -13,7 +13,7 @@ type CardType = {
 }
 
 export type CardsProps = {
-	layout?: 'grid' | 'list'
+	variant?: 'grid' | 'list'
 	style?: 'avatar' | 'card' | 'cover'
 	items: CardType[]
 	enableBorder?: boolean
@@ -25,7 +25,7 @@ const Cards: React.FC<CardsProps> = (props) => {
 	const router = useRouter()
 
 	const {
-		layout = 'grid',
+		variant = 'grid',
 		style = 'card',
 		items,
 		enableBorder,
@@ -41,12 +41,12 @@ const Cards: React.FC<CardsProps> = (props) => {
 
 	return (
 		<Box>
-			{layout == 'list' && (
+			{variant == 'list' && (
 				<Stack spacing={2}>
 					{items?.map((card, i) => (
 						<CollectionCard
 							key={i}
-							layout={layout}
+							variant={variant}
 							style={style}
 							label={card?.label}
 							title={card?.title}
@@ -61,12 +61,12 @@ const Cards: React.FC<CardsProps> = (props) => {
 					))}
 				</Stack>
 			)}
-			{layout == 'grid' && (
+			{variant == 'grid' && (
 				<Grid container spacing={2}>
 					{items?.map((card, i) => (
 						<Grid item xs={12} sm={4} md={4} key={i}>
 							<CollectionCard
-								layout={layout}
+								variant={variant}
 								style={style}
 								label={card?.label}
 								image={card?.image}

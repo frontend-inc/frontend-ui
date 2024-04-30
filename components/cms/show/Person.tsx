@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Avatar, Box, Link, Stack, Typography } from '@mui/material'
+import { Box, Link, Stack, Typography } from '@mui/material'
 import { Image, ActionButton, Actions, SocialLink } from '../../../components'
 import { ShowItemProps } from './Show'
 

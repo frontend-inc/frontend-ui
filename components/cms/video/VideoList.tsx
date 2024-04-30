@@ -1,19 +1,22 @@
 import React, { useState } from 'react'
 import { Cover, VideoModal } from '../..'
 import { CardProps } from '../../../types'
-import { VIDEO_HORIZ_HEIGHT, VIDEO_HORIZ_WIDTH } from '../../../constants/index'
+import { VIDEO_VERT_HEIGHT, VIDEO_VERT_WIDTH } from '../../../constants/index'
 
 const VideoVert: React.FC<CardProps> = (props) => {
 	const {
 		editing,
+		label,
 		title,
 		image = '',
 		video = '',
+		href,
+		handleClick,
 		buttonText,
 		textVariant = 'subtitle1',
 		objectFit = 'cover',
-		height = VIDEO_HORIZ_HEIGHT,
-		width = VIDEO_HORIZ_WIDTH,
+		height = VIDEO_VERT_HEIGHT,
+		width = VIDEO_VERT_WIDTH,
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
@@ -27,7 +30,7 @@ const VideoVert: React.FC<CardProps> = (props) => {
 
 	return !open ? (
 		<Cover
-			direction="column"
+			variant="grid"
 			title={title}
 			image={image}
 			handleClick={handleItemClick}
@@ -43,12 +46,19 @@ const VideoVert: React.FC<CardProps> = (props) => {
 		/>
 	) : (
 		<VideoModal
+			open={open}
 			title={title}
 			src={video}
-			open={open}
 			handleClose={() => setOpen(false)}
 		/>
 	)
 }
 
 export default VideoVert
+
+const sx = {
+	video: {
+		width: '100%',
+		height: '100%',
+	},
+}

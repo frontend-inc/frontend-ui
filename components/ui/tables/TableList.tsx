@@ -5,7 +5,7 @@ import {
 	TableHeaders,
 	TableRow,
 	Pagination,
-} from 'frontend-ui/components'
+} from '../../../components'
 
 type TableProps = {
   title?: string
