@@ -1,11 +1,7 @@
 import React, { useState } from 'react'
-import { Box, TableBody } from '@mui/material'
 import {
-	TableContainer,
-	TableHeaders,
+  TableList,
 	TableToolbar,
-	TableRow,
-	Pagination,
 	FilterPopup,
 } from '../../../components'
 import { useSelected } from '../../../hooks'
@@ -14,7 +10,6 @@ type TableProps = {
 	loading: boolean
 	fields: Array<any>
 	rows: Array<any>
-	enableBorder?: boolean
 	enableSearch?: boolean
 	enableFilters?: boolean
 	enableSelect?: boolean
@@ -30,6 +25,7 @@ type TableProps = {
 	page?: number
 	perPage?: number
 	numPages?: number
+  numResults?: number
 	totalCount?: number
 	query: any
 	handleQueryChange: (e: any) => void
@@ -37,7 +33,9 @@ type TableProps = {
 	handlePaginate?: (e: any, page: number) => void
 	handleSearch?: (keywords: any) => void
 	handleKeywordSearch: (keywords: string) => void
-	handleSort?: (e: any) => void
+	handleSort?: (field: any) => void
+  enableBorder?: boolean
+  disableBorderRadius?: boolean
 	styles?: any
 }
 
@@ -69,9 +67,13 @@ const Table: React.FC<TableProps> = (props) => {
 		handleSort,
 
 		page = 1,
-		numPages = 1,
-		totalCount = 0,
-		handlePaginate,
+    perPage = 10,
+		numPages,
+    numResults,
+		totalCount,
+
+    enableBorder = false,
+    disableBorderRadius = false,
 		styles = {},
 	} = props
 
@@ -105,57 +107,47 @@ const Table: React.FC<TableProps> = (props) => {
 	}
 
 	return (
-		<Box sx={sx.root}>
-			<TableToolbar
-				loading={loading}
-				query={query}
-				selected={selected}
-				handleKeywordSearch={handleKeywordSearch}
-				handleKeywordChange={handleKeywordChange}
-				handleFilter={handleFilterClick}
-				handleClearQuery={handleClearQuery}
-				enableEdit={enableEdit}
-				enableDelete={enableDelete}
-				handleDelete={handleDelete}
-				handleEdit={handleEditSelected}
-				handlePublish={handlePublish}
-				handleUnpublish={handleUnpublish}
-				secondaryActions={secondaryActions}
-			/>
-			<TableContainer styles={styles}>
-				<TableHeaders
-					enableEdit={enableEdit}
-					enableSelect={enableSelect}
-					fields={fields}
-					sortBy={query?.sort_by}
-					sortDirection={query?.sort_direction}
-					checked={selected?.length > 0 && selected?.length === rows?.length}
-					handleSort={handleSort}
-					handleSelectAll={handleSelectAll}
-				/>
-				<TableBody>
-					{rows?.map((row) => (
-						<TableRow
-							key={row?.id}
-							row={row}
-							fields={fields}
-							selectedIds={selectedIds}
-							enableSelect={enableSelect}
-							enableEdit={enableEdit}
-							handleClick={handleClick}
-							handleEdit={handleEdit}
-							handleSelect={handleSelect}
-						/>
-					))}
-				</TableBody>
-			</TableContainer>
-			<Pagination
-				page={page}
-				numPages={numPages}
-				totalCount={totalCount}
-				loading={loading}
-				handlePaginate={handlePaginate}
-			/>
+    <>
+      <TableList
+        enableBorder={enableBorder}
+        disableBorderRadius={disableBorderRadius}
+        query={query}
+        toolbar={
+          <TableToolbar
+            loading={loading}
+            query={query}
+            selected={selected}
+            handleKeywordSearch={handleKeywordSearch}
+            handleKeywordChange={handleKeywordChange}
+            handleFilter={handleFilterClick}
+            handleClearQuery={handleClearQuery}
+            enableEdit={enableEdit}
+            enableDelete={enableDelete}
+            handleDelete={handleDelete}
+            handleEdit={handleEditSelected}
+            handlePublish={handlePublish}
+            handleUnpublish={handleUnpublish}
+            secondaryActions={secondaryActions}
+          />  
+        }
+        fields={fields}
+        rows={rows}
+        enableEdit={enableEdit}
+        enableSelect={enableSelect}
+        selected={selected}
+        selectedIds={selectedIds}
+        handleClick={handleClick}
+        handleEdit={handleEdit}
+        handleSelect={handleSelect}
+        handleSort={handleSort}
+        handleSelectAll={handleSelectAll}
+        page={page}
+        perPage={perPage}
+        numPages={numPages}
+        numResults={numResults}
+        totalCount={totalCount}
+        styles={styles}
+      />
 			<FilterPopup
 				open={showFilters}
 				anchorEl={anchorEl}
@@ -166,17 +158,8 @@ const Table: React.FC<TableProps> = (props) => {
 				handleChange={handleQueryChange}
 				handleClearFilters={handleClearQuery}
 			/>
-		</Box>
+		</>
 	)
 }
 
 export default Table
-
-const sx = {
-	root: {
-		bgcolor: 'background.paper',
-		borderRadius: (theme) => theme.shape.borderRadius,
-		border: '1px solid',
-		borderColor: 'divider',
-	},
-}

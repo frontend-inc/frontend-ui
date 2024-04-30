@@ -85,7 +85,7 @@ const AttachmentInput: React.FC<AttachmentInputProps> = (props) => {
 	}
 
 	const onRemove = async () => {
-		if (!attachment?.url) {
+		if (!attachment) {
 			handleChange({
 				target: {
 					name: name,
@@ -106,16 +106,16 @@ const AttachmentInput: React.FC<AttachmentInputProps> = (props) => {
 			<Typography variant="caption" color="textSecondary">
 				{label}
 			</Typography>
-			{attachment?.url && (
+			{attachment && (
 				<RenderAttachment
 					variant={variant}
-					src={attachment.url}
+					src={attachment}
 					size={size}
 					objectFit={objectFit}
 					onDelete={() => handleDelete(name)}
 				/>
 			)}
-			{!attachment?.url && src && (
+			{!attachment && src && (
 				<RenderAttachment
 					src={src}
 					size={size}
@@ -124,7 +124,7 @@ const AttachmentInput: React.FC<AttachmentInputProps> = (props) => {
 					onDelete={onRemove}
 				/>
 			)}
-			{!attachment?.url && !src && (
+			{!attachment && !src && (
 				<DropZone onDrop={onDrop} label={'Upload attachment'} />
 			)}
 		</Box>

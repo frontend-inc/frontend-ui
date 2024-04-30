@@ -26,9 +26,16 @@ export const handleDocumentChange = (ev, resource) => {
 	return newResource
 }
 
+export const flattenDocuments = (resources) => {
+  return resources.map((resource) => flattenDocument(resource))
+}
+
 export const flattenDocument = (resource) => {
-	let { data, ...rest } = resource || {}
+	let { data, image, video, file, ...rest } = resource || {}
 	return {
+    image: image?.url,
+    video: video?.url,
+    file: file?.url,
 		...rest,
 		...data,
 	}

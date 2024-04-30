@@ -41,11 +41,15 @@ const Show: React.FC<ShowProps> = (props) => {
     update,
     resource: _resource,
     setResource,
-    handleRemove,
+    removeAttachment,
     handleDataChange,
   } = useDocuments({
     collection: resource?.content_type 
   })
+
+  const handleRemove = async (name) => {
+		await removeAttachment(_resource?.id, name)
+	}
 
   useEffect(() => {
     setResource(resource)  

@@ -9,6 +9,7 @@ type TableHeaderProps = {
 	checked?: boolean
 	enableSelect?: boolean
 	enableEdit?: boolean
+  enableDelete?: boolean
 	handleSort: (e: any) => void
 	handleSelectAll?: (e: any) => void
 }
@@ -21,6 +22,7 @@ const TableHeaders: React.FC<TableHeaderProps> = (props) => {
 		sortDirection = 'asc',
 		enableSelect = false,
 		enableEdit = false,
+    enableDelete = false,
 		handleSort,
 		handleSelectAll,
 	} = props
@@ -37,7 +39,7 @@ const TableHeaders: React.FC<TableHeaderProps> = (props) => {
 						/>
 					</TableCell>
 				)}
-				{enableEdit && <TableCell header small />}
+				{(enableEdit || enableDelete) && <TableCell header small />}
 				{fields?.map((field, index) => (
 					<TableCell header key={index}>
 						<CellHeader

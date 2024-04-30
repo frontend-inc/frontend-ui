@@ -2,7 +2,7 @@ import { FieldBase } from '../types'
 
 export const REFERENCE_FIELDS = ['habtm']
 
-export const ATTACHMENT_FIELDS = ['image', 'audio', 'video', 'attachment']
+export const ATTACHMENT_FIELDS = ['image', 'video', 'file']
 
 export const SYSTEM_FIELDS = [
 	'id',

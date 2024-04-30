@@ -33,8 +33,9 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 	return (
 		<>
 			<Badge
+        sx={ sx.badge }
 				badgeContent={filters?.length}
-				color="secondary"
+				color="primary"
 				anchorOrigin={{
 					vertical: 'top',
 					horizontal: 'right',
@@ -51,7 +52,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 						loading ? (
 							<IconLoading loading={loading} />
 						) : (
-							<Icon name="SlidersHorizontal" size={20} />
+							<Icon name="SlidersHorizontal" color='secondary.contrastText' size={20} />
 						)
 					}
 					onClick={handleClick}
@@ -122,4 +123,7 @@ const sx = {
 			sm: '360px',
 		},
 	},
+  badge: {
+    width: '100%',
+  }
 }

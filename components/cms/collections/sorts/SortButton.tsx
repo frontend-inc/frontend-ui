@@ -51,7 +51,7 @@ const SortButton: React.FC<SortButtonProps> = (props) => {
 				endIcon={
 					<Icon
 						name={sortDirection == 'asc' ? 'ArrowUp' : 'ArrowDown'}
-						color="text.secondary"
+						color="secondary.contrastText"
 						size={20}
 					/>
 				}

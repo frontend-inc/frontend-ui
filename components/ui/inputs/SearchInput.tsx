@@ -90,8 +90,8 @@ const sx = {
 		minWidth: '165px',
 		'& input, & .MuiInputBase-inputMultiline': {
 			...inputSx.inputBase['& input, & .MuiInputBase-inputMultiline'],
-			fontSize: (theme) => theme.typography.subtitle1.fontSize,
-			fontFamily: (theme) => theme.typography.subtitle1.fontFamily,
+			fontSize: (theme) => theme.typography.subtitle2.fontSize,
+			fontFamily: (theme) => theme.typography.subtitle2.fontFamily,
 		},
 	},
 }

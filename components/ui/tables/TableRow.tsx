@@ -1,14 +1,16 @@
 import React from 'react'
-import { Checkbox, IconButton, TableRow as MuiTableRow } from '@mui/material'
-import { Icon, Cell, TableCell } from '../../../components'
+import { Stack, Button, Checkbox, TableRow as MuiTableRow } from '@mui/material'
+import { Cell, TableCell } from '../../../components'
 
 type TableRowProps = {
 	row: any
 	fields: Array<any>
 	enableEdit?: boolean
+  enableDelete?: boolean
 	enableSelect?: boolean
 	handleClick?: (value: any, row: any, field: any) => void
 	handleEdit?: (item: any) => void
+  handleDelete?: (item: any) => void
 	selectedIds?: Array<any>
 	handleSelect?: (item: any) => void
 }
@@ -18,9 +20,11 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 		row,
 		fields,
 		enableEdit = false,
+    enableDelete = false,
 		enableSelect = false,
 		handleClick,
 		handleEdit,
+    handleDelete,
 		selectedIds,
 		handleSelect,
 	} = props
@@ -38,15 +42,34 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 					/>
 				</TableCell>
 			)}
-			{enableEdit && (
+			{(enableEdit || enableDelete) && (
 				<TableCell small align="center">
-					<IconButton onClick={() => handleEdit(row)} size="small">
-						<Icon name="Edit" size={20} />
-					</IconButton>
+          <Stack direction="row" spacing={1}>
+          { enableEdit && (
+            <Button 
+              size='small'
+              variant='contained'
+              color='secondary'
+              onClick={() => handleEdit(row)}
+            >
+              Edit
+            </Button>				
+          )}	
+          { enableDelete && (
+            <Button 
+              size='small'
+              variant='contained'
+              color='secondary'
+              onClick={() => handleDelete(row)}
+            >
+              Delete 
+            </Button>				
+          )}
+          </Stack>
 				</TableCell>
 			)}
 			{fields?.map((field, index) => {
-				let value = row[field.name]
+        let value = row[field.name]
 				return (
 					<TableCell key={index}>
 						<Cell

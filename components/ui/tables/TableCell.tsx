@@ -40,7 +40,7 @@ const sx = {
 	root: {
 		px: 1,
 		minWidth: '100px',
-		bgcolor: 'background.paper',
+		bgcolor: 'background.default',
 		borderBottom: '1px dotted',
 		borderRight: '1px dotted',
 		borderColor: 'divider',
@@ -58,6 +58,7 @@ const sx = {
 	cellHeader: {
 		borderBottom: '3px solid',
 		zIndex: 1,
+    p: 0,
 	},
 	cellSticky: {
 		position: 'sticky',
