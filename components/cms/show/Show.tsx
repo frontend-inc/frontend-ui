@@ -9,9 +9,6 @@ import { Drawer, Form, IconLoading } from '../../../components'
 import { useDocuments, flattenDocument } from 'frontend-js'
 
 export type ShowItemProps = {
-	fields: FieldType[]
-  displayFields: FieldType[]
-	url: string
 	enableBorder?: boolean
 	actions?: ActionType[]
 	resource: any
@@ -20,6 +17,9 @@ export type ShowItemProps = {
 }
 
 export type ShowProps = ShowItemProps & {
+  fields: FieldType[]
+  displayFields: FieldType[]
+	url: string
 	style: 'article' | 'person' | 'item'
 }
 

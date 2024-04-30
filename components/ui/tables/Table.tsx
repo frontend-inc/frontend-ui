@@ -71,7 +71,7 @@ const Table: React.FC<TableProps> = (props) => {
 		numPages,
     numResults,
 		totalCount,
-
+    handlePaginate,
     enableBorder = false,
     disableBorderRadius = false,
 		styles = {},
@@ -109,6 +109,7 @@ const Table: React.FC<TableProps> = (props) => {
 	return (
     <>
       <TableList
+        loading={loading}        
         enableBorder={enableBorder}
         disableBorderRadius={disableBorderRadius}
         query={query}
@@ -146,6 +147,7 @@ const Table: React.FC<TableProps> = (props) => {
         numPages={numPages}
         numResults={numResults}
         totalCount={totalCount}
+        handlePaginate={handlePaginate}
         styles={styles}
       />
 			<FilterPopup

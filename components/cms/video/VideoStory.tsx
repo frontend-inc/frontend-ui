@@ -9,7 +9,6 @@ const VideoVert: React.FC<CardProps> = (props) => {
 		image = '',
 		video = '',
 		buttonText,
-		textVariant = 'subtitle1',
 		objectFit = 'cover',
 		height = 80,
 		width = 80,
@@ -26,12 +25,11 @@ const VideoVert: React.FC<CardProps> = (props) => {
 
 	return !open ? (
 		<AvatarCard
-			direction="row"
+			variant="grid"
 			label={label}
 			image={image}
 			handleClick={handleItemClick}
 			buttonText={buttonText}
-			textVariant={textVariant}
 			objectFit={objectFit}
 			height={height}
 			width={width}

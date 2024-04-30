@@ -79,7 +79,7 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 				{resources?.map((resource, index) => (
 					<Box key={index} sx={sx.item}>
 						<CollectionCard
-							layout={'grid'}
+							variant='grid'
 							style={style}
 							label={resource?.label}
 							title={resource?.title}
