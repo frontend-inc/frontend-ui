@@ -6,7 +6,7 @@ import Item from './Item'
 import Person from './Person'
 import Details from '../details/Details'
 import { Drawer, Form, IconLoading } from '../../../components'
-import { useDocuments } from 'frontend-js'
+import { useDocuments, flattenDocument } from 'frontend-js'
 
 export type ShowItemProps = {
 	fields: FieldType[]
@@ -119,7 +119,7 @@ const Show: React.FC<ShowProps> = (props) => {
           loading={ loading }
           errors={errors}
           fields={ fields }
-          resource={ _resource }
+          resource={ flattenDocument(_resource) }
           handleChange={ handleDataChange }
           handleRemove={ handleRemove }          
         />

@@ -1,23 +1,25 @@
 import React, { useState } from 'react'
 import { Hidden, Badge, Button } from '@mui/material'
-import { Icon, Popup, Drawer, IconLoading } from '../../../../components'
+import { Icon, Popup, Drawer, IconLoading } from '../../..'
 import CollectionFilterList from './CollectionFilterList'
 import { FilterOptionType, SearchFilterOptionType } from '../../../..'
 
-type FilterButtonProps = {
+type CollectionFilterButtonProps = {
 	filters?: FilterOptionType[]
 	loading?: boolean
 	filterOptions?: SearchFilterOptionType[]
+  disableFilterCount?: boolean
 	handleFilter: (filter: FilterOptionType) => void
 	handleClear: () => void
 }
 
-const FilterButton: React.FC<FilterButtonProps> = (props) => {
+const CollectionFilterButton: React.FC<CollectionFilterButtonProps> = (props) => {
 	const {
 		loading = false,
 		filters = [],
 		filterOptions = [],
 		handleFilter,
+    disableFilterCount=false
 	} = props || {}
 
 	const [open, setOpen] = useState(false)
@@ -34,7 +36,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 		<>
 			<Badge
         sx={ sx.badge }
-				badgeContent={filters?.length}
+				badgeContent={disableFilterCount ? 0 : filters?.length}
 				color="primary"
 				anchorOrigin={{
 					vertical: 'top',
@@ -95,7 +97,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 	)
 }
 
-export default FilterButton
+export default CollectionFilterButton
 
 const sx = {
 	button: {

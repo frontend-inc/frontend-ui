@@ -77,7 +77,6 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
     query, 
     resource: _resource,
     setResource,
-    setResources,
     update,
     create,
     destroy,

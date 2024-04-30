@@ -1,6 +1,7 @@
 export { default as CmsCarousel } from './CmsCarousel'
 export { default as CmsForm } from './CmsForm'
 export { default as CmsFormWizard } from './CmsFormWizard'
+export { default as CmsForeignTable } from './CmsForeignTable'
 export { default as CmsForeignForm } from './CmsForeignForm'
 export { default as CmsForeignList } from './CmsForeignList'
 export { default as CmsList } from './CmsList'

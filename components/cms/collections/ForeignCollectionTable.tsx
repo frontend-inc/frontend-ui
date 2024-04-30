@@ -10,7 +10,7 @@ import {
 	CollectionFilterButton,
 	SearchInput,
   IconLoading
-} from '../../../components'
+} from '../..'
 import { AppContext } from '../../../context'
 import { FieldType, FilterOptionType } from '../../../types'
 import { useRouter } from 'next/router'
@@ -18,10 +18,11 @@ import { Placeholder } from '../..'
 import CollectionSearchFilters from './filters/CollectionSearchFilters'
 import { SYSTEM_FIELDS } from '../../../constants'
 import { flattenDocument, flattenDocuments } from '../../../helpers'
-import { TableList } from '../../../components'
+import { TableList } from '../..'
 import { CollectionProps } from './Collection'
+import { filterDocumentLinks } from '../../../helpers'
 
-export type CollectionTableProps = CollectionProps & {
+export type ForeignCollectionTableProps = CollectionProps & {
 	headers: {
     name: string
     label: string 
@@ -30,13 +31,16 @@ export type CollectionTableProps = CollectionProps & {
   }[]	
 }
 
-const CollectionTable: React.FC<CollectionTableProps> = (props) => {
+const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) => {
 	
   const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
 	const {
+    resource,
+    field,
 		url,
+    foreignUrl,
     fields,
     headers,
 		filterAnchor = 'left',
@@ -46,7 +50,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		enableSearch = false,
 		enableFilters = false,
 		navigateUrl,
-		enableBorder = false,    
+		enableBorder = false,
     enableEdit=false,
     enableCreate=false,
     enableDelete=false
@@ -64,7 +68,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
     loading, 
     delayedLoading,
     errors,
-    resource,
+    resource: _resource,
     resources, 
     setResource,
     update,
@@ -81,7 +85,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
     paginate,
   } = useResource({
     name: 'document',
-    url: url,
+    url: foreignUrl
   })
 
 	const [keywords, setKeywords] = useState('')
@@ -105,7 +109,10 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
   }
 
   const handleSort = (field: FieldType) => {
-    let sortBy = field?.name
+    handleSortBy(field?.name)
+  }
+
+	const handleSortBy = (sortBy: string) => {
     let sortDir = query?.sort_direction 
     if(sortBy == query?.sort_by){
       sortDir = query?.sort_direction == 'asc' ? 'desc' : 'asc'
@@ -115,13 +122,13 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 			sort_by: sortBy,
       sort_direction: sortDir 
 		})
-  }
+	}
 
 	const {
 		activeFilters,
 		setActiveFilters,
 		handleAddFilter,
-		buildQueryFilters,
+    buildQueryFilters
 	} = useFilters({
 		query,
 	})
@@ -188,10 +195,16 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
   const handleSubmit = async () => {
 		try {
 			let resp
-			if (resource?.id) {
-				resp = await update(resource)
+			if (_resource?.id) {
+				resp = await update(_resource)
 			} else {
-				resp = await create(resource)
+				resp = await create(_resource)
+        if(resp?.id){
+          await addLinks(resource?.handle, [resp.id])                              
+          let documentIds = getDocumentIds()
+          documentIds.push(resp.id)
+          handleLoadDocuments(documentIds)
+        }        
 			}
 			if(resp?.id) {
         setResource({})
@@ -209,29 +222,47 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
   }
 
   const handleDelete = async () => {
-    await destroy(resource?.id)
+    await destroy(_resource?.id)
     setOpenDeleteModal(false)
     setOpenModal(false)
     setResource({})
-    reloadMany()
+    let documentIds = getDocumentIds()
+    documentIds = documentIds.filter((id) => id !== _resource?.id)
+    handleLoadDocuments(documentIds)
   }
 
   const handleRemove = async (name) => {
 		await removeAttachment(resource?.id, name)
 	}
 
-	useEffect(() => {
-		if (activeFilters && url && perPage) {
-			findMany({
-				...query,
-        filters: buildQueryFilters(activeFilters),
-        ...defaultQuery,
-        per_page: perPage,
-			})
-		}
-	}, [activeFilters?.length, defaultQuery, perPage,url])
-
   const [rows, setRows] = useState([])
+
+  const getDocumentIds = () => {
+    return filterDocumentLinks(
+      resource,
+      field?.foreign_content_type
+    )?.map((link) => link?.id)    
+  }
+
+  const handleLoadDocuments = async (documentIds) => {
+    let activeFilterQuery = buildQueryFilters(activeFilters)    
+    let filterQuery = {
+      ...query,
+      ...defaultQuery,
+      filters: {        
+        AND: [
+          {
+            id: {
+              in: documentIds,
+            },
+          },
+        ],
+      },
+      per_page: perPage,
+      page: 1,
+    }
+    findMany(filterQuery)
+  }  
 
   useEffect(() => {
     if(resources?.length >= 0){
@@ -239,6 +270,14 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
       setRows(flatten)
     }    
   }, [resources])
+
+  useEffect(() => {    
+		if (resource && field && foreignUrl) {
+      const documentIds = getDocumentIds()
+			handleLoadDocuments(documentIds)
+		}
+	}, [resource, field, foreignUrl])
+
 
   return (
   <Stack spacing={1} sx={sx.root}>    
@@ -278,6 +317,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
                 {enableFilters && filterAnchor == 'top' && (
                   <Box sx={ sx.fullWidth }>
                     <CollectionFilterButton
+                      disableFilterCount={false}
                       filters={activeFilters}
                       handleFilter={handleFilter}
                       handleClear={handleClearFilters}
@@ -326,7 +366,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
       <Drawer 
         open={ openModal }
         handleClose={() => setOpenModal(false) }
-        title={ resource?.id ? 'Edit' : 'Add' }
+        title={ _resource?.id ? 'Edit' : 'Add' }
         actions={
           <Button 
             fullWidth 
@@ -337,7 +377,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
               <IconLoading loading={ loading } />
             }
             >
-            { resource?.id ? 'Update' : 'Save' }
+            { _resource?.id ? 'Update' : 'Save' }
           </Button>      
         }
       >
@@ -345,7 +385,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
           loading={ loading }
           errors={errors}
           fields={ fields }
-          resource={ flattenDocument(resource) }
+          resource={ flattenDocument(_resource) }
           handleChange={ handleDataChange }
           handleRemove={ handleRemove }          
         />
@@ -361,7 +401,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	)
 }
 
-export default CollectionTable
+export default ForeignCollectionTable
 
 const sx = {
 	root: {
