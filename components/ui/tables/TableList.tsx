@@ -1,5 +1,11 @@
 import React from 'react'
-import { Box, TableBody, Typography } from '@mui/material'
+import { 
+  Box, 
+  TableBody, 
+  Typography,
+  TableRow as MuiTableRow, 
+  TableCell as MuiTableCell  
+} from '@mui/material'
 import {
 	TableContainer,
 	TableHeaders,
@@ -112,6 +118,17 @@ const TableList: React.FC<TableProps> = (props) => {
 							handleSelect={handleSelect}
 						/>
 					))}
+          { !loading && rows?.length == 0 && (
+            <MuiTableRow>
+              <MuiTableCell colSpan={fields.length + 1}>
+                <Placeholder
+                  icon="Search"
+                  title="No results found"
+                  description="Try changing your search query."
+                />
+              </MuiTableCell>
+            </MuiTableRow>
+          )}
 				</TableBody>
 			</TableContainer>
 			<Pagination
