@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
-import { Button, Grid, Box, Stack } from '@mui/material'
+import { Button, Collapse, Grid, Box, Stack } from '@mui/material'
 import {
   Form,
   Drawer,
@@ -27,6 +27,7 @@ export type CollectionProps = {
 	url: string  
 	variant: 'list' | 'grid'
 	style: 'avatar' | 'card' | 'cover' | 'chip'
+  layout?: 'drawer' | 'inline'
 	editing?: boolean
 	enableInfiniteLoad?: boolean
 	enableLoadMore?: boolean
@@ -56,6 +57,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	const {
 		variant = 'grid',
 		style = 'card',
+    layout='drawer',
 		url,
     fields,
 		filterAnchor = 'left',
@@ -322,6 +324,32 @@ const Collection: React.FC<CollectionProps> = (props) => {
 					lg={enableFilters && filterAnchor == 'left' ? 9 : 12}
 				>
 					<Box sx={{ ...(delayedLoading && sx.loading) }}>
+            { layout == 'inline' && (
+              <Collapse in={ openModal }>
+                <Stack direction='column' sx={ sx.form } spacing={1}>
+                  <Form  
+                    loading={ loading }
+                    errors={errors}
+                    fields={ fields }
+                    resource={ flattenDocument(resource) }
+                    handleChange={ handleDataChange }
+                    handleRemove={ handleRemove }          
+                  />
+                  <Button 
+                    fullWidth 
+                    variant="contained"
+                    color="primary"
+                    onClick={ handleSubmit }
+                    startIcon={ 
+                      <IconLoading loading={ loading } />
+                    }
+                    >
+                    { resource?.id ? 'Update' : 'Save' }
+                  </Button>      
+                </Stack>
+              </Collapse>
+            )}
+
 						<CollectionList
 							variant={variant}
 							style={style}
@@ -354,33 +382,35 @@ const Collection: React.FC<CollectionProps> = (props) => {
 					enableInfiniteLoad={enableInfiniteLoad}
 				/>
 			)}
-      <Drawer 
-        open={ openModal }
-        handleClose={() => setOpenModal(false) }
-        title={ resource?.id ? 'Edit' : 'Add' }
-        actions={
-          <Button 
-            fullWidth 
-            variant="contained"
-            color="primary"
-            onClick={ handleSubmit }
-            startIcon={ 
-              <IconLoading loading={ loading } />
-            }
-            >
-            { resource?.id ? 'Update' : 'Save' }
-          </Button>      
-        }
-      >
-        <Form  
-          loading={ loading }
-          errors={errors}
-          fields={ fields }
-          resource={ flattenDocument(resource) }
-          handleChange={ handleDataChange }
-          handleRemove={ handleRemove }          
-        />
-      </Drawer>
+      { layout == 'drawer' && (
+        <Drawer 
+          open={ openModal }
+          handleClose={() => setOpenModal(false) }
+          title={ resource?.id ? 'Edit' : 'Add' }
+          actions={
+            <Button 
+              fullWidth 
+              variant="contained"
+              color="primary"
+              onClick={ handleSubmit }
+              startIcon={ 
+                <IconLoading loading={ loading } />
+              }
+              >
+              { resource?.id ? 'Update' : 'Save' }
+            </Button>      
+          }
+        >
+          <Form  
+            loading={ loading }
+            errors={errors}
+            fields={ fields }
+            resource={ flattenDocument(resource) }
+            handleChange={ handleDataChange }
+            handleRemove={ handleRemove }          
+          />
+        </Drawer>
+      )}
       <AlertModal 
         open={ openDeleteModal }
         handleClose={ () => setOpenDeleteModal(false) }

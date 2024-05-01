@@ -167,7 +167,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
   }
 
   const handleRemove = async (name) => {
-		await removeAttachment(resource?.id, name)
+		await removeAttachment(_resource?.id, name)
 	}
 
   const getDocumentIds = () => {

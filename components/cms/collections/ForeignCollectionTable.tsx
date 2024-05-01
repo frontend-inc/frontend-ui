@@ -234,7 +234,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
   }
 
   const handleRemove = async (name) => {
-		await removeAttachment(resource?.id, name)
+		await removeAttachment(_resource?.id, name)
 	}
 
   const [rows, setRows] = useState([])
