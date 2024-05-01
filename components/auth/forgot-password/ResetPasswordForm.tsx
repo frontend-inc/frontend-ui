@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Button, Stack } from '@mui/material'
 import { IconLoading, TextInput } from '../../../components'
 import { useAuth } from 'frontend-js'
+import { getCookie } from 'cookies-next'
 
 type ResetPasswordFormProps = {
 	loading: boolean
@@ -16,13 +17,13 @@ const ResetPasswordForm: React.FC<ResetPasswordFormProps> = (props) => {
 	const { loading, errors, user, handleChange, handleSubmit, handleLogin } =
 		props
 
-  const { fetchMe } = useAuth()
+  const { token, setToken, authenticated, authCookie } = useAuth()
 
   useEffect(() => {
-    if(user?.id){
-      fetchMe()
-    }
-  }, [user?.id])
+    console.log('authenticated', authenticated, token, authCookie)
+    let cookie = getCookie(authCookie)
+    console.log('cookie', cookie)
+  }, [token, authenticated, authCookie])
 
 	return (
 		<Stack spacing={1}>

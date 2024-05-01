@@ -49,7 +49,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
     url,
 		foreignUrl,
 		navigateUrl,
-		perPage = 5,
+		perPage = 10,
 		buttonText,
 		query: defaultQuery = null,
 		enableBorder = false,
@@ -131,20 +131,20 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
   const handleSubmit = async () => {
 		try {
 			let resp
+      let documentIds = getDocumentIds()        
 			if (_resource?.id) {
 				resp = await update(_resource)
 			} else {
 				resp = await create(_resource)
         if (resp?.id) {
-          await addLinks(resource?.handle, [resp.id])                    
+          await addLinks(resource?.handle, [resp.id])                              
+          documentIds.push(resp.id)
         }
 			}
-			if(resp?.id) {
-        setResource({})
-        setOpenModal(false)
-        let documentIds = getDocumentIds()
-        documentIds.push(resp.id)
+			if(resp?.id) {        
         handleLoadDocuments(documentIds)
+        setResource({})
+        setOpenModal(false)        
 			}
 		} catch (err) {
 			console.log('Error', err)
@@ -172,10 +172,13 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
     return filterDocumentLinks(
       resource,
       field?.foreign_content_type
-    )?.map((link) => link?.id)    
+    )?.map((link) => link?.id) || []   
   }
 
   const handleLoadDocuments = async (documentIds) => {
+    if(documentIds.length === 0) {
+      return
+    }
     findMany({
       ...query,
       ...defaultQuery,

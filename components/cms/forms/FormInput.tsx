@@ -52,7 +52,10 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		json: JSONInput,
 	}
 
-	let componentProps = {
+	let inputProps = {
+    array: {
+      value: value || []
+    },
 		text: {
 			multiline: true,
 			rows: 6,
@@ -78,10 +81,10 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			errors={errors}
 			label={label}
 			name={name}
-			value={value}
+			value={value || ''}
 			handleChange={handleChange}
 			placeholder={placeholder}
-			{...componentProps[variant]}
+			{...inputProps[variant]}
 		/>
 	)
 }

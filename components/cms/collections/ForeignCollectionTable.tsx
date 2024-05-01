@@ -197,18 +197,18 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
   const handleSubmit = async () => {
 		try {
 			let resp
+      let documentIds = getDocumentIds()
 			if (_resource?.id) {
 				resp = await update(_resource)
 			} else {
 				resp = await create(_resource)
         if(resp?.id){
-          await addLinks(resource?.handle, [resp.id])                              
-          let documentIds = getDocumentIds()
+          await addLinks(resource?.handle, [resp.id])                                        
           documentIds.push(resp.id)
-          handleLoadDocuments(documentIds)
         }        
 			}
-			if(resp?.id) {
+			if(resp?.id) {        
+        handleLoadDocuments(documentIds)
         setResource({})
         setOpenModal(false)
         reloadMany()
@@ -247,7 +247,9 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
   }
 
   const handleLoadDocuments = async (documentIds) => {
-    let activeFilterQuery = buildQueryFilters(activeFilters)    
+    if(documentIds.length === 0) {
+      return
+    }
     let filterQuery = {
       ...query,
       ...defaultQuery,

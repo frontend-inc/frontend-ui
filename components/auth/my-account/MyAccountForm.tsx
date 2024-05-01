@@ -7,8 +7,8 @@ type AccountFormProps = {
 	user: any
 	handleChange: (ev: any) => void
 	handleSubmit: () => void
-	handleRedirect: () => void
 	handleDeleteAvatar: () => void
+  handleLogout: () => void
 }
 
 const MyAccountForm: React.FC<AccountFormProps> = (props) => {
@@ -17,7 +17,7 @@ const MyAccountForm: React.FC<AccountFormProps> = (props) => {
 		user,
 		handleSubmit,
 		handleChange,
-		handleRedirect,
+		handleLogout,
 		handleDeleteAvatar,
 	} = props
 
@@ -57,8 +57,8 @@ const MyAccountForm: React.FC<AccountFormProps> = (props) => {
       >
 				Save
 			</Button>
-			<Button color="primary" onClick={handleRedirect}>
-				Go back
+			<Button color="secondary" variant='contained' onClick={handleLogout}>
+				Logout 
 			</Button>
 		</Box>
 	)

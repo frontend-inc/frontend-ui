@@ -17,7 +17,7 @@ const Section: React.FC<SectionProps> = (props) => {
 		children,
 		bgcolor,
 		maxWidth,
-		py = 6,
+		py = 4,
 		px = 3,
 	} = props
 

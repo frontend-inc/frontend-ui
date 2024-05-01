@@ -10,7 +10,6 @@ type AuthButtonProps = {
 	showLabel?: boolean
 	showIcon?: boolean
 	editing?: boolean
-	myAccountUrl?: string
 }
 
 const AuthButton: React.FC<AuthButtonProps> = (props) => {
@@ -19,25 +18,27 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 		showLabel = false,
 		showIcon = true,
 		editing = false,
-		myAccountUrl,
 	} = props || {}
 
 	const router = useRouter()
 	const { logout, fetchMe, currentUser } = useAuth()
 	const { open, anchorEl, closeMenu, toggleMenu } = useMenu()
 
-	const { clientUrl, setAuthOpen } = useContext(AppContext)
+	const { clientUrl, setAuthOpen, setMyAccountOpen } = useContext(AppContext)
 
 	const handleLogin = () => {
 		setAuthOpen(true)
+    closeMenu()
 	}
 
 	const handleSignup = () => {
 		setAuthOpen(true)
+    closeMenu()
 	}
 
 	const handleMyAccount = () => {
-		handleClick(myAccountUrl)
+		setMyAccountOpen(true)
+    closeMenu()
 	}
 
 	const handleLogout = () => {
