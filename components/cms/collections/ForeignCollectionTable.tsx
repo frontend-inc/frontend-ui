@@ -10,7 +10,7 @@ import {
 	CollectionFilterButton,
 	SearchInput,
   IconLoading
-} from '../..'
+} from '../../../components'
 import { AppContext } from '../../../context'
 import { FieldType, FilterOptionType } from '../../../types'
 import { useRouter } from 'next/router'
@@ -23,6 +23,9 @@ import { CollectionProps } from './Collection'
 import { filterDocumentLinks } from '../../../helpers'
 
 export type ForeignCollectionTableProps = CollectionProps & {
+  resource: any 
+  field: FieldType
+  foreignUrl?: string
 	headers: {
     name: string
     label: string 

@@ -84,4 +84,5 @@ export type FieldType = FieldBase & {
 	foreign_key?: boolean
 	foreign_collection_id?: number
 	foreign_field_id?: number
+  foreign_content_type?: string
 }
