@@ -4,7 +4,7 @@ import { useResource } from 'frontend-js'
 import { useRouter } from 'next/router'
 import { filterDocumentLinks } from '../../../helpers'
 import { 
-  Drawer, 
+  Drawer,   
   LoadMore, 
   CollectionList, 
   Form, 
@@ -12,7 +12,7 @@ import {
   AlertModal,
   Icon
 } from '../../../components'
-import { Stack, Button, Box } from '@mui/material'
+import { Stack, Collapse, Button, Box } from '@mui/material'
 import { SYSTEM_FIELDS } from '../../../constants'
 import { FieldType } from '../../../types'
 import { flattenDocument } from '../../../helpers'
@@ -24,6 +24,7 @@ export type ForeignCollectionProps = {
   fields: FieldType[]
 	resource: any
 	url: string
+  layout?: 'drawer' | 'inline'
 	handle: string
 	navigateUrl?: any
 	foreignUrl?: string
@@ -44,6 +45,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		field,
     fields,
 		resource,
+    layout='drawer',
 		variant = 'list',
 		style = 'card',
     url,
@@ -120,7 +122,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 
   const handleAdd = () => {
     setResource({})
-    setOpenModal(true)
+    setOpenModal(!openModal)
   }
 
   const handleEdit = (item) => {
@@ -219,6 +221,31 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
           </Button> 
         </Box>
       )}
+       { layout == 'inline' && (
+        <Collapse in={ openModal }>
+          <Stack direction='column' sx={ sx.form } spacing={1}>
+            <Form  
+              loading={ loading }
+              errors={errors}
+              fields={ fields }
+              resource={ flattenDocument(_resource) }
+              handleChange={ handleDataChange }
+              handleRemove={ handleRemove }          
+            />
+            <Button 
+              fullWidth 
+              variant="contained"
+              color="primary"
+              onClick={ handleSubmit }
+              startIcon={ 
+                <IconLoading loading={ loading } />
+              }
+              >
+              { _resource?.id ? 'Update' : 'Save' }
+            </Button>      
+          </Stack>
+        </Collapse>
+      )}
 			<CollectionList
 				variant={variant}
 				style={style}
@@ -236,33 +263,36 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 			{enableLoadMore && (
 				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
 			)}
-      <Drawer 
-        open={ openModal }
-        handleClose={() => setOpenModal(false) }
-        title={ _resource?.id ? 'Edit' : 'Add' }
-        actions={
-          <Button 
-            fullWidth 
-            variant="contained"
-            color="primary"
-            onClick={ handleSubmit }
-            startIcon={ 
-              <IconLoading loading={ loading } />
-            }
-            >
-            { _resource?.id ? 'Update' : 'Save' }
-          </Button>      
-        }
-      >
-        <Form  
-          loading={ loading }
-          errors={errors}
-          fields={ fields }
-          resource={ flattenDocument(_resource) }
-          handleChange={ handleDataChange }
-          handleRemove={ handleRemove }          
-        />
-      </Drawer>
+      { layout == 'drawer' && (
+        <Drawer 
+          open={ openModal }
+          handleClose={() => setOpenModal(false) }
+          title={ _resource?.id ? 'Edit' : 'Add' }
+          actions={
+            <Button 
+              fullWidth 
+              variant="contained"
+              color="primary"
+              onClick={ handleSubmit }
+              startIcon={ 
+                <IconLoading loading={ loading } />
+              }
+              >
+              { _resource?.id ? 'Update' : 'Save' }
+            </Button>      
+          }
+        >
+          <Form  
+            loading={ loading }
+            errors={errors}
+            fields={ fields }
+            resource={ flattenDocument(_resource) }
+            handleChange={ handleDataChange }
+            handleRemove={ handleRemove }          
+          />
+        </Drawer>
+      )}
+     
       <AlertModal 
         open={ openDeleteModal }
         handleClose={ () => setOpenDeleteModal(false) }
@@ -299,4 +329,9 @@ const sx = {
 	item: {
 		p: 2,
 	},
+  form: {
+    borderRadius: theme => `${theme.shape.borderRadius}px`,
+    p: 2,
+    bgcolor: 'secondary.light',
+  }
 }
