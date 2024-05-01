@@ -7,6 +7,7 @@ type TableCellProps = {
 	header?: boolean
 	sticky?: boolean
 	small?: boolean
+  variant?: 'head' | 'body'
 }
 
 const TableCell: React.FC<TableCellProps> = (props) => {
@@ -16,10 +17,12 @@ const TableCell: React.FC<TableCellProps> = (props) => {
 		header = false,
 		sticky = false,
 		small = false,
+    variant='body',
 	} = props
 
 	return (
 		<MuiTableCell
+      variant={variant}
 			align={align}
 			sx={{
 				...sx.root,

@@ -23,12 +23,8 @@ import { SortOptionType } from '../../../types'
 import { SYSTEM_FIELDS } from '../../../constants'
 import { flattenDocument } from '../../../helpers'
 
-export type CollectionProps = {
-  enableForeign?: boolean
-  resource?: any
-  field?: any
-	url: string
-  foreignUrl?: string
+export type CollectionProps = {  
+	url: string  
 	variant: 'list' | 'grid'
 	style: 'avatar' | 'card' | 'cover' | 'chip'
 	editing?: boolean
@@ -45,8 +41,7 @@ export type CollectionProps = {
 	enableFilters?: boolean
 	enableSorting?: boolean
 	secondaryActions?: React.ReactNode
-	buttonText?: string
-  enableForeign?: boolean
+	buttonText?: string  
 	enableBorder?: boolean
 	enableGradient?: boolean
   enableEdit?: boolean

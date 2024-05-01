@@ -85,18 +85,18 @@ const TableList: React.FC<TableProps> = (props) => {
         { toolbar && toolbar }
       </Box>
 			<TableContainer styles={styles}>
-				<TableHeaders
-					enableEdit={enableEdit}
-					enableSelect={enableSelect}
-          enableDelete={enableDelete}          
-					fields={fields}
-					sortBy={query?.sort_by}
-					sortDirection={query?.sort_direction}
-					checked={selected?.length > 0 && selected?.length === rows?.length}
-					handleSort={handleSort}
-					handleSelectAll={handleSelectAll}
-				/>
-				<TableBody>
+        <TableBody>
+          <TableHeaders
+            enableEdit={enableEdit}
+            enableSelect={enableSelect}
+            enableDelete={enableDelete}          
+            fields={fields}
+            sortBy={query?.sort_by}
+            sortDirection={query?.sort_direction}
+            checked={selected?.length > 0 && selected?.length === rows?.length}
+            handleSort={handleSort}
+            handleSelectAll={handleSelectAll}
+          />
 					{rows?.map((row) => (
 						<TableRow
 							key={row?.id}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Checkbox, TableHead, TableRow } from '@mui/material'
+import { Checkbox, Box, TableHead, TableRow } from '@mui/material'
 import { CellHeader, TableCell } from '../../../components'
 
 type TableHeaderProps = {
@@ -27,11 +27,12 @@ const TableHeaders: React.FC<TableHeaderProps> = (props) => {
 		handleSelectAll,
 	} = props
 
+  // Wrapping in <TableHead /> causes nextjs react hydration errors 
+  // so we place the headers in the <TableBody /> component
 	return (
-		<TableHead>
 			<TableRow>
 				{enableSelect && (
-					<TableCell sticky header small>
+					<TableCell variant="head" sticky header small>
 						<Checkbox
 							checked={checked}
 							onChange={handleSelectAll}
@@ -39,7 +40,11 @@ const TableHeaders: React.FC<TableHeaderProps> = (props) => {
 						/>
 					</TableCell>
 				)}
-				{(enableEdit || enableDelete) && <TableCell header small />}
+				{(enableEdit || enableDelete) && 
+          <TableCell variant="head" header small>
+            <Box></Box>
+          </TableCell>
+        }
 				{fields?.map((field, index) => (
 					<TableCell header key={index}>
 						<CellHeader
@@ -51,7 +56,6 @@ const TableHeaders: React.FC<TableHeaderProps> = (props) => {
 					</TableCell>
 				))}
 			</TableRow>
-		</TableHead>
 	)
 }
 
