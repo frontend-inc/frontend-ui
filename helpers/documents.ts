@@ -31,20 +31,15 @@ export const flattenDocuments = (resources) => {
 }
 
 export const flattenDocument = (resource) => {
-	let { data, image, video, file, ...rest } = resource || {}
+	let { data, ...rest } = resource || {}
 	return {
-    image: image?.url,
-    video: video?.url,
-    file: file?.url,
 		...rest,
 		...data,
 	}
 }
 
 export const getDocumentValue = (document, field) => {
-	if (ATTACHMENT_FIELDS.includes(field?.variant)) {
-		return get(document, field?.name)?.url
-	} else if (REFERENCE_FIELDS.includes(field?.variant)) {
+	if (REFERENCE_FIELDS.includes(field?.variant)) {
 		let documents = document?.document_links
 			?.filter((d) => d?.target?.content_type === field?.foreign_content_type)
 			?.map((d) => d.target)

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Stack } from '@mui/material'
-import { IconLoading, TextInput } from '../..'
+import { IconLoading, TextInput } from '../../../components'
+import { useAuth } from 'frontend-js'
 
 type ResetPasswordFormProps = {
 	loading: boolean
@@ -14,6 +15,14 @@ type ResetPasswordFormProps = {
 const ResetPasswordForm: React.FC<ResetPasswordFormProps> = (props) => {
 	const { loading, errors, user, handleChange, handleSubmit, handleLogin } =
 		props
+
+  const { fetchMe } = useAuth()
+
+  useEffect(() => {
+    if(user?.id){
+      fetchMe()
+    }
+  }, [user?.id])
 
 	return (
 		<Stack spacing={1}>

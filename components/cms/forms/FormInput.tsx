@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  Autosuggest,
 	ArrayInput,
 	DateInput,
 	ImageInput,
@@ -45,7 +46,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		date: DateInput,
 		datetime: DateInput,
 		boolean: SwitchInput,
-		select: ArrayInput,
+		select: Autosuggest,
 		rating: RatingInput,
 		image: ImageInput,
 		json: JSONInput,

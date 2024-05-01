@@ -91,7 +91,7 @@ export const LOCALE_FIELD: FieldBase = {
 }
 
 export const TAGS_FIELD: FieldBase = {
-	label: 'tags',
+	label: 'Tags',
 	variant: 'array',
 	reference: false,
 	db_type: 'string',

@@ -183,7 +183,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
             user={user}
             handleChange={handleChange}
             handleSubmit={handleResetPassword}
-            handleLogin={handleLogin}
+            handleLogin={handleLoginClick}
           />
         )}
 			</Box>
