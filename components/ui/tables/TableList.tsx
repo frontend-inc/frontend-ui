@@ -5,6 +5,7 @@ import {
 	TableHeaders,
 	TableRow,
 	Pagination,
+  Placeholder
 } from '../../../components'
 
 type TableProps = {
@@ -35,7 +36,6 @@ type TableProps = {
   handleSort: (field: any) => void  
   handlePaginate: (e: any, page: number) => void
 }
-
 
 const TableList: React.FC<TableProps> = (props) => {
 

@@ -14,7 +14,6 @@ import {
 import { AppContext } from '../../../context'
 import { FieldType, FilterOptionType } from '../../../types'
 import { useRouter } from 'next/router'
-import { Placeholder } from '../..'
 import CollectionSearchFilters from './filters/CollectionSearchFilters'
 import { SYSTEM_FIELDS } from '../../../constants'
 import { flattenDocument, flattenDocuments } from '../../../helpers'
