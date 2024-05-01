@@ -120,7 +120,7 @@ const TableList: React.FC<TableProps> = (props) => {
 					))}
           { !loading && rows?.length == 0 && (
             <MuiTableRow>
-              <MuiTableCell colSpan={fields.length + 1}>
+              <MuiTableCell colSpan={fields?.length + 1}>
                 <Placeholder
                   icon="Search"
                   title="No results found"
