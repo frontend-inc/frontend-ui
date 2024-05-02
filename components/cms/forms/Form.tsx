@@ -50,8 +50,7 @@ const Form: React.FC<FormProps> = (props) => {
           endIcon={<IconLoading color="primary" loading={loading} />}
         >
           {buttonText}
-        </Button>
-      
+        </Button>      
       )}
     </Stack>
 	)
