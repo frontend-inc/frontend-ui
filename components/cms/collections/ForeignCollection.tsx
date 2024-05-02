@@ -26,6 +26,7 @@ export type ForeignCollectionProps = {
 	url: string
   layout?: 'drawer' | 'inline'
 	handle: string
+  foreignContentType?: string
 	navigateUrl?: any
 	foreignUrl?: string
 	perPage?: number
@@ -49,7 +50,8 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		variant = 'list',
 		style = 'card',
     url,
-		foreignUrl,
+    foreignUrl,
+    foreignContentType,
 		navigateUrl,
 		perPage = 10,
 		buttonText,
@@ -68,31 +70,33 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false)
 	const { clientUrl } = useContext(AppContext)
 
-	const { addLinks } = useResource({
+	const { 
+    loading,
+    query, 
+    resources, 
+    page, 
+    numPages, 
+    loadMore,
+    reloadMany,
+    findLinks, 
+    addLinks 
+  } = useResource({
 		name: 'document',
 		url,
 	})
 
-	const { 
-    loading,
+  const { 
     errors, 
-    query, 
     resource: _resource,
     setResource,
     update,
     create,
     destroy,
-    resources, 
-    findMany, 
     removeAttachment,
-    page, 
-    numPages, 
-    loadMore,
-    reloadMany 
-   } = useResource({
-      name: 'document',
-			url: foreignUrl,
-		})
+  } = useResource({
+		name: 'document',
+		url: foreignUrl,
+	})
 
 	const handleClick = (item) => {
 		if (clientUrl && navigateUrl && item?.handle) {
@@ -133,18 +137,17 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
   const handleSubmit = async () => {
 		try {
 			let resp
-      let documentIds = getDocumentIds()        
 			if (_resource?.id) {
 				resp = await update(_resource)
 			} else {
 				resp = await create(_resource)
         if (resp?.id) {
           await addLinks(resource?.handle, [resp.id])                              
-          documentIds.push(resp.id)
+          handleFetchResources()
         }
 			}
 			if(resp?.id) {        
-        handleLoadDocuments(documentIds)
+        handleFetchResources()
         setResource({})
         setOpenModal(false)        
 			}
@@ -161,49 +164,28 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
   const handleDelete = async () => {
     await destroy(_resource?.id)
     setOpenDeleteModal(false)
-    setOpenModal(false)
-    setResource({})
-    reloadMany()
+    setOpenModal(false)    
+    handleFetchResources()
   }
 
   const handleRemove = async (name) => {
 		await removeAttachment(_resource?.id, name)
 	}
 
-  const getDocumentIds = () => {
-    return filterDocumentLinks(
-      resource,
-      field?.foreign_content_type
-    )?.map((link) => link?.id) || []   
-  }
-
-  const handleLoadDocuments = async (documentIds) => {
-    if(documentIds.length === 0) {
-      return
-    }
-    findMany({
+  const handleFetchResources = async () => {
+    findLinks(resource.id, foreignContentType, {
       ...query,
-      ...defaultQuery,
-      filters: {
-        AND: [
-          {
-            id: {
-              in: documentIds,
-            },
-          },
-        ],
-      },
+      ...defaultQuery,      
       per_page: perPage,
       page: 1,
     })
   }
 
 	useEffect(() => {    
-		if (resource && field && foreignUrl) {
-      const documentIds = getDocumentIds()
-			handleLoadDocuments(documentIds)
+		if (resource?.id && foreignContentType) {      
+			handleFetchResources()
 		}
-	}, [resource, field, foreignUrl])
+	}, [resource, foreignContentType])
 
 	return (
 		<Stack direction="column" spacing={1} sx={sx.root}>
