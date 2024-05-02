@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useResource } from 'frontend-js'
-import { Box, Button } from '@mui/material'
-import { Placeholder } from '../..'
 import { flattenDocument } from '../../../helpers'
 import { SYSTEM_FIELDS } from '../../../constants'
 import { Form } from '../../../components'
+import { useAlerts } from '../../../hooks'
 
 export type CollectionFormProps = {
 	handle: string
@@ -12,23 +11,29 @@ export type CollectionFormProps = {
 	buttonText?: string
 	variant?: 'contained' | 'outlined' | 'text'
 	fields: any[]
-	children?: React.ReactElement[]
+  onSuccessMessage?: string
 }
 
 const CollectionForm: React.FC<CollectionFormProps> = (props) => {
-	const { handle, buttonText = 'Submit', fields, url } = props
+	
+  const { 
+    handle, 
+    buttonText = 'Submit', 
+    fields,
+    url,
+    onSuccessMessage='Submitted successfully!' 
+  } = props
 
-	const [submitted, setSubmitted] = useState(false)
+	const { showAlertSuccess } = useAlerts()
 
 	const {
-		loading,
+    delayedLoading,
     errors,
 		findOne,
 		resource,
 		setResource,
 		update,
 		create,
-		handleChange,
 		removeAttachment,
 	} = useResource({
 		name: 'document',
@@ -68,7 +73,7 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 				resp = await create(resource)
 			}
 			if (resp?.id) {
-				setSubmitted(true)
+				showAlertSuccess(onSuccessMessage)
 			}
 		} catch (err) {
 			console.log('Error', err)
@@ -81,31 +86,18 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 		}
 	}, [handle])
 
-	return !submitted ? (
-		<Box sx={sx.root}>
-      <Form 
-        loading={loading}
-        errors={errors}
-        fields={fields}
-        resource={flattenDocument(resource)}
-        handleChange={handleDataChange}
-        handleRemove={handleRemove}
-        handleSubmit={ handleSubmit }
-        buttonText={buttonText}
-      />
-		</Box>
-	) : (
-		<Placeholder
-			icon={'CheckCircle'}
-			title="Success"
-			description="Your form has been submitted"
-			actions={
-				<Button variant="contained" onClick={() => setSubmitted(false)}>
-					Done
-				</Button>
-			}
-		/>
-	)
+	return (
+    <Form 
+      loading={delayedLoading}
+      errors={errors}
+      fields={fields}
+      resource={flattenDocument(resource)}
+      handleChange={handleDataChange}
+      handleRemove={handleRemove}
+      handleSubmit={ handleSubmit }
+      buttonText={buttonText}
+    />
+  )
 }
 
 export default CollectionForm
