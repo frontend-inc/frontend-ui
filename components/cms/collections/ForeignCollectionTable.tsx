@@ -25,6 +25,7 @@ export type ForeignCollectionTableProps = CollectionProps & {
   resource: any 
   field: FieldType
   foreignUrl?: string
+  foreignContentType?: string
 	headers: {
     name: string
     label: string 
@@ -43,6 +44,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
     field,
 		url,
     foreignUrl,
+    foreignContentType,
     fields,
     headers,
 		filterAnchor = 'left',
@@ -61,30 +63,31 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
   const [openModal, setOpenModal] = useState(false)
   const [openDeleteModal, setOpenDeleteModal] = useState(false)
 
-  const { addLinks } = useResource({
+  const { 
+    loading, 
+    delayedLoading,
+    query, 
+    resources, 
+    findLinks,
+    page, 
+    numPages, 
+    numResults,
+    totalCount,
+    paginate,    
+    addLinks 
+  } = useResource({
 		name: 'document',
 		url,
 	})
 
 	const { 
-    loading, 
-    delayedLoading,
     errors,
     resource: _resource,
-    resources, 
     setResource,
     update,
     create,
     destroy,
-    query, 
-    findMany, 
-    reloadMany,    
     removeAttachment,
-    page, 
-    numPages, 
-    numResults,
-    totalCount,
-    paginate,
   } = useResource({
     name: 'document',
     url: foreignUrl
@@ -97,7 +100,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
 	}  
 
 	const handleSearch = (keywords: string) => {
-		findMany({
+		findLinks(resource.id, foreignContentType, {
 			...query,
       ...defaultQuery,
 			keywords: keywords,
@@ -119,7 +122,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
     if(sortBy == query?.sort_by){
       sortDir = query?.sort_direction == 'asc' ? 'desc' : 'asc'
     } 
-		findMany({
+		findLinks(resource?.id, foreignContentType, {
 			...query,
 			sort_by: sortBy,
       sort_direction: sortDir 
@@ -138,7 +141,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
 	// Filter methods
 	const handleClearFilters = () => {
 		setActiveFilters([])
-		findMany({      
+		findLinks(resource?.id, foreignContentType, {      
 			filters: {
         ...defaultQuery?.filters,
       },
@@ -197,21 +200,18 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
   const handleSubmit = async () => {
 		try {
 			let resp
-      let documentIds = getDocumentIds()
 			if (_resource?.id) {
 				resp = await update(_resource)
 			} else {
 				resp = await create(_resource)
         if(resp?.id){
           await addLinks(resource?.handle, [resp.id])                                        
-          documentIds.push(resp.id)
         }        
 			}
 			if(resp?.id) {        
-        handleLoadDocuments(documentIds)
+        handleFetchResources()
         setResource({})
         setOpenModal(false)
-        reloadMany()
 			}
 		} catch (err) {
 			console.log('Error', err)
@@ -228,9 +228,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
     setOpenDeleteModal(false)
     setOpenModal(false)
     setResource({})
-    let documentIds = getDocumentIds()
-    documentIds = documentIds.filter((id) => id !== _resource?.id)
-    handleLoadDocuments(documentIds)
+    handleFetchResources()
   }
 
   const handleRemove = async (name) => {
@@ -239,33 +237,14 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
 
   const [rows, setRows] = useState([])
 
-  const getDocumentIds = () => {
-    return filterDocumentLinks(
-      resource,
-      field?.foreign_content_type
-    )?.map((link) => link?.id)    
-  }
-
-  const handleLoadDocuments = async (documentIds) => {
-    if(documentIds.length === 0) {
-      return
-    }
+  const handleFetchResources = async () => {    
     let filterQuery = {
       ...query,
       ...defaultQuery,
-      filters: {        
-        AND: [
-          {
-            id: {
-              in: documentIds,
-            },
-          },
-        ],
-      },
       per_page: perPage,
       page: 1,
     }
-    findMany(filterQuery)
+    findLinks(resource?.id, foreignContentType, filterQuery)
   }  
 
   useEffect(() => {
@@ -276,11 +255,10 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
   }, [resources])
 
   useEffect(() => {    
-		if (resource && field && foreignUrl) {
-      const documentIds = getDocumentIds()
-			handleLoadDocuments(documentIds)
+		if (resource?.id && foreignContentType) {      
+			handleFetchResources()
 		}
-	}, [resource, field, foreignUrl])
+	}, [resource, foreignContentType])
 
 
   return (
