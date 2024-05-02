@@ -19,6 +19,7 @@ const ProfileForm: React.FC<ProfileFormProps> = (props) => {
         fields={fields}
         buttonText={buttonText}        
         handle={resource?.handle}
+        onSuccessMessage='Profile updated successfully!'
       />
     </AuthRequired>
 	)
