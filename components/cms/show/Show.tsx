@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Stack } from '@mui/material'
-import { ActionType, DocumentType, FieldType } from '../../../types'
+import { ActionType, FieldType } from '../../../types'
 import Article from './Article'
 import Item from './Item'
 import Person from './Person'
@@ -24,14 +24,15 @@ export type ShowProps = ShowItemProps & {
 }
 
 const Show: React.FC<ShowProps> = (props) => {
-	const {
+	
+  const {
 		style = 'item',
+    resource,
 		fields,
     displayFields,
 		url,
-		enableBorder,
 		actions,
-		resource,
+    enableBorder,
     enableEdit,    
 	} = props || {}
 
@@ -50,10 +51,6 @@ const Show: React.FC<ShowProps> = (props) => {
   const handleRemove = async (name) => {
 		await removeAttachment(_resource?.id, name)
 	}
-
-  useEffect(() => {
-    setResource(resource)  
-  }, [resource])
   
   const [openModal, setOpenModal] = useState(false)
 
@@ -62,9 +59,9 @@ const Show: React.FC<ShowProps> = (props) => {
   }
 
   const handleSubmit = async () => {
-    try {
+    try {      
       let resp = await update(_resource) 
-      if(resp){
+      if(resp?.id){
         setOpenModal(false)
       }
     }catch(e){
@@ -79,6 +76,12 @@ const Show: React.FC<ShowProps> = (props) => {
   }
 
   const Component = components[style]
+
+  useEffect(() => {
+    if(resource?.id){
+      setResource(resource)
+    }
+  }, [resource])
 
 	return (
 		<Stack direction="column" spacing={2} sx={sx.root}>

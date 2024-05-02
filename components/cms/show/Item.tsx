@@ -10,6 +10,8 @@ const Item: React.FC<ShowItemProps> = (props) => {
 	const { label, title, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
 
+  console.log('Item: resource:', resource)
+
 	if (!resource) return null
 	return (
 		<Box 
