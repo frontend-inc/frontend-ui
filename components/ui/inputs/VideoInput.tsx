@@ -3,12 +3,15 @@ import { CellVideo } from '../..'
 import { Box, Button } from '@mui/material'
 import { TextInput } from '../..'
 import { Search } from 'lucide-react'
+import { SyntheticEventType } from '../../../types'
 
 type VideoInputProps = {
 	name: string
 	label: string
-	value: string
-	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+	value: {
+    url: string
+  }
+	handleChange: (e: SyntheticEventType) => void
 	handleBrowse: (name: string) => void
 	placeholder?: string
 	errors?: string

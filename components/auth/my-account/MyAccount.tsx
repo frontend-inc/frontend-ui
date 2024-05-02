@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useAuth } from 'frontend-js'
-import { AuthScreen, Loader, Label, MyAccountForm } from '../..'
+import { AuthScreen, MyAccountForm } from '../..'
 import { useRouter } from 'next/router'
 
 type MyAccountProps = {
@@ -20,6 +20,7 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 		updateMe,
 		handleChange,
 		fetchMe,
+    logout,
 		deleteAvatar,
 	} = useAuth()
 
@@ -31,8 +32,9 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 		await updateMe(user)
 	}
 
-	const handleRedirect = () => {
-		router.push(redirectUrl)
+	const handleLogout = async () => {
+		await logout()
+    router.push(redirectUrl)
 	}
 
 	useEffect(() => {
@@ -60,7 +62,7 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 						handleChange={handleChange}
 						handleSubmit={handleSubmit}
 						handleDeleteAvatar={handleDeleteAvatar}
-						handleRedirect={handleRedirect}
+            handleLogout={handleLogout}
 					/>
 				</AuthScreen>
 			)}

@@ -444,6 +444,9 @@ const sx = {
 		},
 		gap: '16px',
 	},
+  form: {
+    width: '100%'
+  },
 	item: {
 		p: 2,
 	},

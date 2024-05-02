@@ -84,7 +84,6 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 								<AuthButton
 									showLabel
 									editing={editing}
-									myAccountUrl={`${clientUrl}/auth/my-account`}
 								/>
 							)}
 						</Box>

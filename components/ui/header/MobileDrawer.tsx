@@ -56,7 +56,6 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 							<AuthButton
                 showLabel
 								editing={editing}
-								myAccountUrl={`${clientUrl}/auth/my-account`}
 							/>
 						)}
 					</Box>

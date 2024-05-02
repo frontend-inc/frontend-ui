@@ -17,14 +17,6 @@ const ResetPasswordForm: React.FC<ResetPasswordFormProps> = (props) => {
 	const { loading, errors, user, handleChange, handleSubmit, handleLogin } =
 		props
 
-  const { token, setToken, authenticated, authCookie } = useAuth()
-
-  useEffect(() => {
-    console.log('authenticated', authenticated, token, authCookie)
-    let cookie = getCookie(authCookie)
-    console.log('cookie', cookie)
-  }, [token, authenticated, authCookie])
-
 	return (
 		<Stack spacing={1}>
 			<TextInput
