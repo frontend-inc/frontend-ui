@@ -71,7 +71,6 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const { 
-    loading,
     query, 
     resources, 
     page, 
@@ -87,6 +86,8 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 
   const { 
     errors, 
+    loading,
+    delayedLoading,
     resource: _resource,
     setResource,
     update,
@@ -220,7 +221,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
               color="primary"
               onClick={ handleSubmit }
               startIcon={ 
-                <IconLoading loading={ loading } />
+                <IconLoading loading={ delayedLoading } />
               }
               >
               { _resource?.id ? 'Update' : 'Save' }

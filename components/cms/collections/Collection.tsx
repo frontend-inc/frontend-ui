@@ -272,12 +272,14 @@ const Collection: React.FC<CollectionProps> = (props) => {
 					spacing={1}
 				>
 					{enableFilters && filterAnchor == 'top' && (
-						<CollectionFilterButton
-							filters={activeFilters}
-							handleFilter={handleFilter}
-							handleClear={handleClearFilters}
-							filterOptions={filterOptions}
-						/>
+            <Box>
+              <CollectionFilterButton
+                filters={activeFilters}
+                handleFilter={handleFilter}
+                handleClear={handleClearFilters}
+                filterOptions={filterOptions}
+              />
+            </Box>
 					)}
 					{enableSorting && (
 						<SortButton
