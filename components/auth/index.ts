@@ -36,3 +36,4 @@ export { default as VerifySendPinForm } from './verify/VerifySendPinForm'
 // Profiles
 export { default as Profile } from './profiles/Profile'
 export { default as ProfileForm } from './profiles/ProfileForm'
+export { default as ProfileFormWizard } from './profiles/ProfileFormWizard'

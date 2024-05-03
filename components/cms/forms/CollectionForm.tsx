@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
+import { AppContext } from '../../../context'
 import { useResource } from 'frontend-js'
 import { flattenDocument } from '../../../helpers'
 import { SYSTEM_FIELDS } from '../../../constants'
 import { Form } from '../../../components'
 import { useAlerts } from '../../../hooks'
+import { useRouter } from 'next/router'
 
 export type CollectionFormProps = {
 	handle: string
 	url: string
+  navigateUrl?: string
 	buttonText?: string
 	variant?: 'contained' | 'outlined' | 'text'
 	fields: any[]
@@ -16,11 +19,15 @@ export type CollectionFormProps = {
 
 const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 	
+  const router = useRouter()
+  const { clientUrl } = useContext(AppContext)
+
   const { 
     handle, 
     buttonText = 'Submit', 
     fields,
     url,
+    navigateUrl,
     onSuccessMessage='Submitted successfully!' 
   } = props
 
@@ -74,6 +81,9 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 			}
 			if (resp?.id) {
 				showAlertSuccess(onSuccessMessage)
+        if(navigateUrl){
+          router.push(`${clientUrl}${navigateUrl}`)
+        }
 			}
 		} catch (err) {
 			console.log('Error', err)

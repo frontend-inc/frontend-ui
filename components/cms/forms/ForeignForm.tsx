@@ -1,30 +1,39 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../../../context'
 import { useResource } from 'frontend-js'
-import { Box, Button } from '@mui/material'
-import { Form, Placeholder } from '../../../components'
+import { Form } from '../../../components'
 import { flattenDocument } from '../../../helpers'
 import { SYSTEM_FIELDS } from '../../../constants'
+import { useAlerts } from '../../../hooks'
 
 export type ForeignFormProps = {
 	handle: string
 	url: string
 	foreignUrl?: string
+  navigateUrl?: string
 	buttonText?: string
 	variant?: 'contained' | 'outlined' | 'text'
 	fields: any[]
-	children?: React.ReactElement[]
+	onSuccessMessage?: string
 }
 
 const ForeignForm: React.FC<ForeignFormProps> = (props) => {
+
+  const router = useRouter()
+  const { clientUrl } = useContext(AppContext)
+
 	const {
 		handle,
 		buttonText = 'Submit',
 		fields,
 		url,
 		foreignUrl,
+    navigateUrl,
+    onSuccessMessage='Submitted successfully!' 
 	} = props
+	
 
-	const [submitted, setSubmitted] = useState(false)
+  const { showAlertSuccess } = useAlerts()
 
 	const { loading, addLinks } = useResource({
 		name: 'document',
@@ -70,53 +79,39 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 	const handleSubmit = async () => {
 		try {
 			let resp
-			let addResp
 			if (resource?.id) {
 				resp = await update(resource)
 			} else {
 				resp = await create(resource)
 			}
 			if (resp?.id) {
-				addResp = await addLinks(handle, [resp.id])
-				if (addResp?.id) {
-					setSubmitted(true)
-				}
+				let addResp = await addLinks(handle, [resp.id])				
+        if(addResp?.id){
+          if(onSuccessMessage){
+            showAlertSuccess(onSuccessMessage)
+          }        
+          if(navigateUrl){
+            router.push(`${clientUrl}${navigateUrl}`)
+          }
+        }        
 			}
 		} catch (err) {
 			console.log('Error', err)
 		}
 	}
 
-	return !submitted ? (
-		<Box sx={sx.root}>
-      <Form 
-        loading={loading}
-        errors={errors}
-        fields={fields}
-        resource={flattenDocument(resource)}
-        handleChange={handleDataChange}
-        handleRemove={handleRemove}
-        handleSubmit={ handleSubmit }
-        buttonText={buttonText}
-      />
-		</Box>
-	) : (
-		<Placeholder
-			enableBorder
-			icon={'Check'}
-			title="Success"
-			description="Your form has been submitted"
-			actions={
-				<Button
-					color="secondary"
-					variant="contained"
-					onClick={() => setSubmitted(false)}
-				>
-					Done
-				</Button>
-			}
-		/>
-	)
+	return (
+    <Form 
+      loading={loading}
+      errors={errors}
+      fields={fields}
+      resource={flattenDocument(resource)}
+      handleChange={handleDataChange}
+      handleRemove={handleRemove}
+      handleSubmit={ handleSubmit }
+      buttonText={buttonText}
+    />
+)
 }
 
 export default ForeignForm

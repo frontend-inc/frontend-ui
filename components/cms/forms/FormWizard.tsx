@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { AppContext } from '../../../context'
 import { useResource } from 'frontend-js'
 import { Box } from '@mui/material'
 import FormWizardProgress from './wizard/FormWizardProgress'
 import FormCard from './wizard/FormCard'
 import FormWizardField from './wizard/FormWizardField'
 import FormWizardButtons from './wizard/FormWizardButtons'
+import { useRouter } from 'next/router'
 
 export type FormWizardProps = {
 	handle: string
@@ -12,7 +14,6 @@ export type FormWizardProps = {
 	url: string
 	variant?: 'contained' | 'outlined' | 'text'
 	fields: any[]
-	children?: React.ReactElement[]
 	startTitle: string
 	startDescription: string
 	startImage: string
@@ -23,9 +24,14 @@ export type FormWizardProps = {
 	endDescription: string
 	endImage: string
 	endButtonText: string
+  navigateUrl?: string
 }
 
 const FormWizard: React.FC<FormWizardProps> = (props) => {
+
+  const router = useRouter()
+  const { clientUrl } = useContext(AppContext)
+
 	const {
 		py = 4,
 		handle,
@@ -40,6 +46,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		endDescription,
 		endImage,
 		endButtonText,
+    navigateUrl
 	} = props
 
 	const [submitted, setSubmitted] = useState(false)
@@ -73,6 +80,14 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		setSubmitted(false)
 		setCurrentStep(0)
 	}
+
+  const handleSuccess = () => {
+    if(navigateUrl){
+      router.push(`${clientUrl}${navigateUrl}`)
+    }else{
+      handleResetForm()
+    }
+  }
 
 	const handleRemove = async (name) => {
 		await removeAttachment(resource?.id, name)
@@ -181,7 +196,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 						description={endDescription}
 						image={endImage}
 						buttonText={endButtonText}
-						handleClick={handleResetForm}
+						handleClick={handleSuccess}
 					/>
 				)}
 			</Box>
