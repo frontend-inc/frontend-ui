@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
 import { Image, ActionButton, Actions, SocialLink } from '../../../components'
 import { ShowItemProps } from './Show'
+import { flattenDocument } from 'frontend-js'
 
 const Person: React.FC<ShowItemProps> = (props) => {
 	const MAX_CHARS = 500
@@ -71,7 +72,7 @@ const Person: React.FC<ShowItemProps> = (props) => {
 					</Box>
 				</Stack>
 				{(actions || enableEdit) && (
-          <Box p={ enableBorder ? 1 : 0}>
+          <Stack direction='row' spacing={1} p={enableBorder ? 1 : 0}>
             { enableEdit && (
               <ActionButton 
                 resource={resource} 
@@ -80,10 +81,10 @@ const Person: React.FC<ShowItemProps> = (props) => {
             )}
             <Actions
               actions={actions}
-              resource={resource}
+              resource={flattenDocument(resource)}
               justifyContent="flex-end"
             />
-          </Box>
+          </Stack>
 				)}
 			</Stack>
 		</Box>

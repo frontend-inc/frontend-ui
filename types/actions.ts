@@ -1,8 +1,22 @@
+export type ActionNamesType = 
+  'webhook' |
+  'navigate' |
+  'url' |
+  'page' |
+  'email' |
+  'sms' |
+  'phone' | 
+  'copy' |
+  'download' |
+  'link' |
+  'print' |
+  'share'
+
 export type ActionType = {
 	id?: number
 	icon?: string
 	label: string
-	name: 'webhook' | 'navigate' | 'url' | 'click'
+	name: ActionNamesType 
 	color?: 'primary' | 'secondary'
 	variant?: 'contained' | 'outlined' | 'text'
 	page_id?: number
@@ -10,6 +24,7 @@ export type ActionType = {
 	url?: string
 	path?: string
   onClick?: (ev: any) => void
+  fieldName: string
 	options?: {
 		method: 'GET' | 'POST' | 'PUT' | 'DELETE'
 		headers: Record<string, string>

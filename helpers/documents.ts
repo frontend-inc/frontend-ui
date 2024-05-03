@@ -1,5 +1,4 @@
 import {
-	ATTACHMENT_FIELDS,
 	REFERENCE_FIELDS,
 	SYSTEM_FIELDS,
 } from '../constants/index'
@@ -33,8 +32,8 @@ export const flattenDocuments = (resources) => {
 export const flattenDocument = (resource) => {
 	let { data, ...rest } = resource || {}
 	return {
-		...rest,
 		...data,
+    ...rest,
 	}
 }
 

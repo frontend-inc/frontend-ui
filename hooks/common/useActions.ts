@@ -32,6 +32,12 @@ const useActions = (params: UseActionParams) => {
 			case 'url':
 				window.open(action?.path, '_blank')
 				break
+      case 'link':
+        let value = resource[action?.fieldName]
+        if(value){
+          window.open(value, '_blank')
+        }                
+        break
 			case 'webhook':
 				await loadingWrapper(() =>
 					fetch(action.url, {
