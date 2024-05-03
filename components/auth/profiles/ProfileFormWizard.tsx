@@ -1,12 +1,9 @@
 import React from 'react'
-import { FormWizard, AuthRequired, FormWizard } from '../../../components'
+import { FormWizard, AuthRequired } from '../../../components'
+import { FormWizardProps } from '../../../components/cms/forms/FormWizard'
 
-export type ProfileFormWizardProps = {
-	buttonText?: string
-	variant?: 'contained' | 'outlined' | 'text'
-	fields: any[]
-	resource: any
-	children?: React.ReactElement[]
+export type ProfileFormWizardProps = FormWizardProps & {	
+	resource: any	
 }
 
 const ProfileForm: React.FC<ProfileFormWizardProps> = (props) => {
@@ -19,7 +16,6 @@ const ProfileForm: React.FC<ProfileFormWizardProps> = (props) => {
         fields={fields}
         buttonText={buttonText}        
         handle={resource?.handle}
-        onSuccessMessage='Profile updated successfully!'
       />
     </AuthRequired>
 	)

@@ -181,7 +181,6 @@ const useGTM = () => {
         price: variant?.price?.amount,
         currency: 'USD',          
         url: window.location.href,
-        image_url: variant?.image?.url,
       }]
     })
   }

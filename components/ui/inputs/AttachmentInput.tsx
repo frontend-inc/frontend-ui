@@ -70,6 +70,7 @@ const AttachmentInput: React.FC<AttachmentInputProps> = (props) => {
 		variant = 'file',
 		size = IMAGE_WIDTH,
 		objectFit = 'cover',
+    placeholder='Upload file'
 	} = props
 
 	const [src, setSrc] = useState()
@@ -125,7 +126,7 @@ const AttachmentInput: React.FC<AttachmentInputProps> = (props) => {
 				/>
 			)}
 			{!attachment?.url && !src && (
-				<DropZone onDrop={onDrop} label={'Upload attachment'} />
+				<DropZone onDrop={onDrop} label={placeholder} />
 			)}
 		</Box>
 	)
