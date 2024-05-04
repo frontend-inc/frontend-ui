@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
 import { ActionButton, Actions, Image } from '../../../components'
 import { ShowItemProps } from './Show'
+import { flattenDocument } from 'frontend-js'
 
 const Item: React.FC<ShowItemProps> = (props) => {
 	const MAX_CHARS = 500
@@ -58,20 +59,25 @@ const Item: React.FC<ShowItemProps> = (props) => {
 					</Box>          
 				</Stack>
         {(actions || enableEdit) && (
-        <Box 
-          sx={{ 
-            ...sx.actions, 
-            ...(enableBorder && sx.actionsBorder)
-          }}>
-          { enableEdit && (
-            <ActionButton 
-              resource={resource} 
-              action={{ label: 'Edit', color: 'secondary', name: 'click', onClick: handleEdit }} 
-            /> 
-          )}
-          <Actions actions={actions} resource={resource} />
-        </Box>
-        )}
+          <Stack 
+            sx={sx.actions}
+            direction={{ sm: 'row', xs: 'column' }} 
+            spacing={1} 
+            p={enableBorder ? 1 : 0}
+          >
+            { enableEdit && (
+              <ActionButton 
+                resource={resource} 
+                action={{ label: 'Edit', color: 'secondary', name: 'click', onClick: handleEdit }} 
+              /> 
+            )}
+            <Actions
+              actions={actions}
+              resource={flattenDocument(resource)}
+              justifyContent="flex-end"
+            />
+          </Stack>
+				)}
 			</Stack>
 		</Box>
 	)
@@ -136,7 +142,7 @@ const sx = {
 		color: 'text.secondary',
 	},
   actions: {
-    p: 0,
+    width: '100%'
   },
   actionsBorder: {
     p: 1

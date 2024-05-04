@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
-import { Actions, ActionButton, Image } from '../..'
+import { Actions, ActionButton, Image } from '../../../components'
 import moment from 'moment'
 import { ShowItemProps } from './Show'
 
@@ -24,15 +24,18 @@ const Article: React.FC<ShowItemProps> = (props) => {
 					{moment(published_at).format('MMMM D, YYYY')}
 				</Typography>
         {(actions || enableEdit) && (
-        <Box px={2}>
-          { enableEdit && (
-            <ActionButton 
+          <Stack direction={{ xs: 'column', sm: 'row' }} sx={ sx.actions } spacing={1}>
+            { enableEdit && (
+              <ActionButton 
+                resource={resource} 
+                action={{ label: 'Edit', color: 'secondary', name: 'click', onClick: handleEdit }} 
+              /> 
+            )}
+            <Actions 
+              actions={actions} 
               resource={resource} 
-              action={{ label: 'Edit', color: 'secondary', name: 'click', onClick: handleEdit }} 
-            /> 
-          )}
-          <Actions actions={actions} resource={resource} />
-        </Box> 
+            />
+          </Stack> 
         )}
 			</Stack>
 			<Image 
@@ -82,4 +85,11 @@ const sx = {
 	caption: {
 		color: 'text.secondary',
 	},
+  actions: {
+    justifyContent: 'center',
+    width: {
+      sm: 'auto',
+      xs: '100%'
+    }
+  }
 }

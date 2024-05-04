@@ -28,7 +28,7 @@ const Actions: React.FC<ActionsProps> = (props) => {
 					...sx.buttons,
 					justifyContent,
 				}}
-				direction={'row'}
+				direction={{ sm: 'row', xs: 'column' }} 
 				spacing={1}
 			>
 				{actions?.slice(0, 2)?.map((action, index) => (
@@ -52,10 +52,7 @@ const Actions: React.FC<ActionsProps> = (props) => {
 
 export default Actions
 
-const sx = {
-	root: {
-		width: '100%',
-	},
+const sx = {	
 	buttons: {
 		width: '100%',
 	},

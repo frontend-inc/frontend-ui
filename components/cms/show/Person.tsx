@@ -72,7 +72,12 @@ const Person: React.FC<ShowItemProps> = (props) => {
 					</Box>
 				</Stack>
 				{(actions || enableEdit) && (
-          <Stack direction='row' spacing={1} p={enableBorder ? 1 : 0}>
+          <Stack 
+            sx={sx.actions}
+            direction={{ sm: 'row', xs: 'column' }} 
+            spacing={1} 
+            p={enableBorder ? 1 : 0}
+          >
             { enableEdit && (
               <ActionButton 
                 resource={resource} 
@@ -153,4 +158,7 @@ const sx = {
 		justifyContent: 'flex-start',
 		alignItems: 'center',
 	},
+  actions: {
+    width: "100%"
+  }
 }
