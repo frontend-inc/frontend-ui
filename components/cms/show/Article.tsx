@@ -3,6 +3,7 @@ import { Stack, Box, Typography } from '@mui/material'
 import { Actions, ActionButton, Image } from '../../../components'
 import moment from 'moment'
 import { ShowItemProps } from './Show'
+import { flattenDocument } from 'frontend-js'
 
 const Article: React.FC<ShowItemProps> = (props) => {
 	const { actions, resource, enableBorder, enableEdit, handleEdit } = props || {}
@@ -27,13 +28,18 @@ const Article: React.FC<ShowItemProps> = (props) => {
           <Stack direction={{ xs: 'column', sm: 'row' }} sx={ sx.actions } spacing={1}>
             { enableEdit && (
               <ActionButton 
-                resource={resource} 
-                action={{ label: 'Edit', color: 'secondary', name: 'click', onClick: handleEdit }} 
+                resource={flattenDocument(resource)} 
+                action={{ 
+                  label: 'Edit', 
+                  color: 'secondary', 
+                  name: 'click', 
+                  onClick: handleEdit 
+                }} 
               /> 
             )}
             <Actions 
               actions={actions} 
-              resource={resource} 
+              resource={flattenDocument(resource)} 
             />
           </Stack> 
         )}

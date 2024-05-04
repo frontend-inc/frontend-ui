@@ -10,7 +10,8 @@ export type ActionNamesType =
   'download' |
   'link' |
   'print' |
-  'share'
+  'share' | 
+  'click'
 
 export type ActionType = {
 	id?: number
@@ -24,7 +25,7 @@ export type ActionType = {
 	url?: string
 	path?: string
   onClick?: (ev: any) => void
-  fieldName: string
+  fieldName?: string
 	options?: {
 		method: 'GET' | 'POST' | 'PUT' | 'DELETE'
 		headers: Record<string, string>

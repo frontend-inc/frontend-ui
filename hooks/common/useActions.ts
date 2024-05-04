@@ -3,6 +3,8 @@ import { AppContext } from '../../context'
 import { useRouter } from 'next/router'
 import { ActionType } from '../../types'
 import { useLoadingWrapper } from '.'
+import copy from 'copy-to-clipboard'
+import { useAlerts } from '../../hooks'
 
 type UseActionParams = {
 	action: ActionType
@@ -14,10 +16,13 @@ const useActions = (params: UseActionParams) => {
 
 	const { action, resource } = params
 
+  const { showAlertSuccess } = useAlerts()
+
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
 	const handleClick = async (ev) => {
+    let value = resource[action?.fieldName]
 		switch (action?.name) {
 			case 'navigate':
 				let url = `${clientUrl}${action?.path}`
@@ -29,11 +34,18 @@ const useActions = (params: UseActionParams) => {
       case 'click': 
         action?.onClick && action.onClick(ev)
         break      
+      case 'copy': 
+        if(value){
+          copy(value)
+          showAlertSuccess('Copied to clipboard') 
+        }
+        break
 			case 'url':
-				window.open(action?.path, '_blank')
+        if(action?.path){
+          window.open(action?.path, '_blank')
+        }				
 				break
-      case 'link':
-        let value = resource[action?.fieldName]
+      case 'link':        
         if(value){
           window.open(value, '_blank')
         }                
@@ -43,7 +55,9 @@ const useActions = (params: UseActionParams) => {
 					fetch(action.url, {
 						method: action?.options?.method,
 						headers: action?.options?.headers,
-						body: JSON.stringify(action?.options?.body),
+						body: JSON.stringify({ 
+              data: resource 
+            }),
 					})
 				)
 				break

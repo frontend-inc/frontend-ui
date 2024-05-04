@@ -13,11 +13,9 @@ type ActionsProps = {
 
 const Actions: React.FC<ActionsProps> = (props) => {
 	const { actions, resource, justifyContent = 'center' } = props
-
 	return (
 		<Stack
 			sx={{
-				...sx.root,
 				justifyContent,
 			}}
 			direction="row"

@@ -80,7 +80,7 @@ const Person: React.FC<ShowItemProps> = (props) => {
           >
             { enableEdit && (
               <ActionButton 
-                resource={resource} 
+                resource={flattenDocument(resource)} 
                 action={{ label: 'Edit', color: 'secondary', name: 'click', onClick: handleEdit }} 
               /> 
             )}

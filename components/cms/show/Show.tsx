@@ -10,7 +10,7 @@ import { useDocuments, flattenDocument } from 'frontend-js'
 
 export type ShowItemProps = {
 	enableBorder?: boolean
-	actions?: ActionType[]
+	actions: ActionType[]
 	resource: any
   enableEdit?: boolean  
   handleEdit?: () => void
