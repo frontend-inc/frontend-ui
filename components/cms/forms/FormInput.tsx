@@ -71,7 +71,16 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		price: {
 			type: 'number',
 		},
-		image: {
+    image: {
+			handleRemove,
+		},
+    video: {
+			handleRemove,
+		},
+    audio: {
+			handleRemove,
+		},
+    file: {
 			handleRemove,
 		},
 	}
