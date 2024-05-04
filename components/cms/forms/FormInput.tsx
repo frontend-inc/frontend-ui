@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  AttachmentInput,
   Autosuggest,
 	ArrayInput,
 	DateInput,
@@ -39,6 +40,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 	let componentMapper = {
 		array: ArrayInput,
 		string: TextInput,
+    file: AttachmentInput,
 		url: TextInput,
 		text: TextInput,
 		number: TextInput,
