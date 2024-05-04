@@ -5,6 +5,7 @@ import { Form } from '../../../components'
 import { flattenDocument } from '../../../helpers'
 import { SYSTEM_FIELDS } from '../../../constants'
 import { useAlerts } from '../../../hooks'
+import { useRouter } from 'next/router'
 
 export type ForeignFormProps = {
 	handle: string

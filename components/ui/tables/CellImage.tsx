@@ -7,7 +7,7 @@ type CellImageProps = {
 	value: {
     url
   }
-	handleClick?: (value?: string) => void
+	handleClick?: any
 	size?: number
 }
 

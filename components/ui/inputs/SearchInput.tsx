@@ -7,10 +7,10 @@ import { SyntheticEventType } from '../../../types'
 type SearchInputProps = {
 	name?: string
 	label?: string
-	value?: string
+	value: string
 	placeholder?: string
 	handleChange: (e: SyntheticEventType) => void
-	handleSearch?: () => void
+	handleSearch?: (keywords: string) => void
 	styles?: any
 }
 
@@ -73,7 +73,7 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
 					if (e.key === 'Enter') {
 						e.preventDefault()
             if(handleSearch){
-              handleSearch()
+              handleSearch(value)
             }						
 					}
 				}}

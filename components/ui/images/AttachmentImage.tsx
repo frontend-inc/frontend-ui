@@ -18,7 +18,6 @@ const AttachmentImage: React.FC<AttachmentImageProps> = (props) => {
 				height: `${height}px`,
 				width: width ? `${width}px` : '100%',
 			}}
-			variant="rounded"
 		>
 			<Icon name={icon} size={24} />
 		</Box>
