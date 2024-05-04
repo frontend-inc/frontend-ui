@@ -8,7 +8,7 @@ export const ACTION_CMS_NAMES = [
   { value: 'link', label: 'Go to link' },  
   { value: 'copy', label: 'Copy to Clipboard' },
   { value: 'email', label: 'Email' },
-  { value: 'sms', label: 'Send message (mobile)' }, 
-  { value: 'phone', label: 'Phone call (mobile)' }, 
+  { value: 'sms', label: 'Text message' }, 
+  { value: 'phone', label: 'Phone call' }, 
   { value: 'download', label: 'Download' },
 ]

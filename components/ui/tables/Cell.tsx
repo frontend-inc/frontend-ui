@@ -4,6 +4,7 @@ import {
 	CellBoolean,
 	CellDate,
 	CellEnum,
+  CellFile,
 	CellHABTM,
 	CellImage,
 	CellJSON,
@@ -44,7 +45,8 @@ const Cell: React.FC<CellProps> = (props) => {
 		habtm: CellHABTM,
 		string: CellString,
 		select: CellEnum,
-    user: CellUser 
+    user: CellUser,
+    file: CellFile 
 	}
 
 	const CellComponent = componentMapper[field.variant]

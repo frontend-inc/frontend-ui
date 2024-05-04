@@ -42,19 +42,16 @@ const ImageModal: React.FC<ImageModalProps> = (props) => {
 				</>
 			}
 		>
-			<Box sx={sx.root}>
-				<Image
-					alt="Image"
-					src={image?.url}
-					height={image?.height || 500}
-					width={image?.width || 500}
-					placeholder="blur"
-					style={{
-						width: '100%',
-						objectFit: 'contain',
-					}}
-				/>
-			</Box>
+      <Image
+        alt="Image"
+        src={image?.url}
+        height={image?.height || 1200}
+        width={image?.width || 1200}
+        style={{
+          width: '100%',
+          objectFit: 'contain',
+        }}
+      />
 		</Modal>
 	)
 }

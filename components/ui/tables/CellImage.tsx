@@ -1,4 +1,5 @@
 import React from 'react'
+import { CardActionArea } from '@mui/material'
 import { Image } from '../../../components'
 import { imageFromVideoUrl } from '../../../helpers'
 
@@ -11,17 +12,19 @@ type CellImageProps = {
 }
 
 const CellImage: React.FC<CellImageProps> = (props) => {
-	const { value, size = 64 } = props
+	const { value, size = 64, handleClick } = props
 	let src = imageFromVideoUrl(value?.url)
 	return (
-		<Image
-			disableBorder
-			disableBorderRadius
-			src={src}
-			width={size}
-			height={size}
-			alt={'Image'}
-		/>
+    <CardActionArea sx={{ p: 0 }} onClick={ handleClick }>
+      <Image
+        disableBorder
+        disableBorderRadius
+        src={src}
+        width={size}
+        height={size}
+        alt={'Image'}
+      />
+    </CardActionArea>
 	)
 }
 

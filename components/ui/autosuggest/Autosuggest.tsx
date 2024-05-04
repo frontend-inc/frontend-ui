@@ -223,7 +223,7 @@ const sx: any = {
 			borderRadius: 1,
 			fontSize: (theme) => theme.typography.body2.fontSize,
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
-			bgcolor: 'background.paper',
+			bgcolor: 'background.default',
 			border: (theme) => `1px solid ${theme.palette.divider}`,
 			'&:focus': {
 				border: (theme) => `2px solid ${theme.palette.primary.light}`,

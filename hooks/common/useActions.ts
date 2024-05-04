@@ -40,6 +40,21 @@ const useActions = (params: UseActionParams) => {
           showAlertSuccess('Copied to clipboard') 
         }
         break
+      case 'email': 
+        if(value){
+          window.location.href = `mailto:${value}`
+        }
+        break
+      case 'phone':
+        if(value){
+          window.location.href = `tel:${value}`
+        }
+        break
+      case 'sms':
+        if(value){
+          window.location.href = `sms:${value}`
+        }
+        break
 			case 'url':
         if(action?.path){
           window.open(action?.path, '_blank')
@@ -49,6 +64,11 @@ const useActions = (params: UseActionParams) => {
         if(value){
           window.open(value, '_blank')
         }                
+        break
+      case 'download':         
+        if(value?.url){
+          window.open(value.url, '_blank')
+        }
         break
 			case 'webhook':
 				await loadingWrapper(() =>
