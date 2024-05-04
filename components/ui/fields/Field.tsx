@@ -1,5 +1,4 @@
 import React from 'react'
-import { Box } from '@mui/material'
 import {
 	FieldArray,
 	FieldBoolean,
@@ -16,33 +15,43 @@ import {
 
 type FieldProps = {
 	field?: any
+  enableBorder?: boolean
 	document?: any
 }
 
 const Field: React.FC<FieldProps> = (props) => {
-	const { field, document } = props
+	const { field, document, enableBorder } = props
 	const { variant, label } = field
 	let value = document[field?.name]
 	if (!value) {
 		value = '-'
 	}
+
+  const components = {
+    "boolean": FieldBoolean,
+    "date": FieldDate,
+    "datetime": FieldDate,
+    "image": FieldImage,
+    "video": FieldVideo,
+    "json": FieldJSON,
+    "url": FieldURL,
+    "rating": FieldRating,
+    "text": FieldText,
+    "number": FieldText,
+    "array": FieldArray,
+    "string": FieldString,
+    "select": FieldString,
+    "price": FieldPrice
+  }
+
+  const Component = components[variant]
+
 	return (
-		<>
-			{variant === 'boolean' && <FieldBoolean label={label} value={value} />}
-			{variant === 'date' && <FieldDate label={label} value={value} />}
-			{variant === 'datetime' && <FieldDate label={label} value={value} />}
-			{variant === 'image' && <FieldImage value={value} />}
-			{variant === 'video' && <FieldVideo value={value} />}
-			{variant === 'json' && <FieldJSON label={label} value={value} />}
-			{variant === 'url' && <FieldURL label={label} value={value} />}
-			{variant === 'rating' && <FieldRating label={label} value={value} />}
-			{variant === 'text' && <FieldText label={label} value={value} />}
-			{variant === 'number' && <FieldText label={label} value={value} />}
-			{variant === 'array' && <FieldArray label={label} value={value} />}
-			{variant === 'string' && <FieldString label={label} value={value} />}
-			{variant === 'select' && <FieldString label={label} value={value} />}
-			{variant === 'price' && <FieldPrice label={label} value={value} />}
-		</>
+		<Component 
+      label={label} 
+      value={value} 
+      enableBorder={enableBorder}
+    />			
 	)
 }
 

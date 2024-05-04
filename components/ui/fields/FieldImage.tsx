@@ -1,6 +1,5 @@
 import React from 'react'
-import { Image } from '../../../components'
-import { IMAGE_HORIZ_HEIGHT, IMAGE_HORIZ_WIDTH } from '../../../constants/index'
+import { Image, FieldWrapper } from '../../../components'
 
 type FieldImageProps = {
 	value?: any
@@ -11,13 +10,15 @@ type FieldImageProps = {
 }
 
 const FieldImage: React.FC<FieldImageProps> = (props) => {
-	const { value, objectFit = 'cover' } = props
+	const { label, value, objectFit = 'cover', ...rest } = props
 	return (
-		<Image
-			src={value?.url || value}
-			height={IMAGE_HORIZ_HEIGHT}
-			objectFit={objectFit}
-		/>
+    <FieldWrapper label={label} {...rest}>
+      <Image
+        src={value?.url || value}
+        height={120}
+        objectFit={objectFit}
+      />
+    </FieldWrapper>
 	)
 }
 

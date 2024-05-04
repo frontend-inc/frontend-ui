@@ -10,9 +10,7 @@ type FieldJSONProps = {
 const FieldJSON: React.FC<FieldJSONProps> = (props) => {
 	const { value, label, ...rest } = props
 	return (
-		<FieldWrapper label={label} {...rest}>
-			<FieldString value={JSON.stringify(value, null, 2)} />
-		</FieldWrapper>
+		<FieldString value={JSON.stringify(value, null, 2)} />
 	)
 }
 

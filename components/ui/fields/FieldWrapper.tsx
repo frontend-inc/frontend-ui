@@ -1,76 +1,52 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
-import { TypographyVariantsType } from '../../../types'
+import { Box, Stack, Typography } from '@mui/material'
 
 type FieldWrapperProps = {
-	variant?: TypographyVariantsType
-	flexDirection?: 'row' | 'column'
+	direction?: 'row' | 'column'
 	label?: string
-	color?: string
-	helperText?: string
+  enableBorder?: boolean
 	children?: React.ReactNode
 }
 
 const FieldWrapper: React.FC<FieldWrapperProps> = (props) => {
 	const {
-		variant = 'overline',
-		flexDirection = 'row',
-		label,
-		color = 'text.primary',
-		helperText,
+		direction = 'column',
+		label,		
+    enableBorder = false,
 		children,
 	} = props || {}
 
 	return (
-		<Box sx={sx.root}>
-			<Box
-				sx={{
-					...sx.field,
-					flexDirection: {
-						xs: 'column',
-						sm: flexDirection,
-					},
-				}}
+			<Stack 
+        direction={{ xs: 'column', sm: direction }} 
+        spacing={1}				
+        sx={{
+          ...sx.root,
+          ...(enableBorder && sx.rootBorder)
+        }}
 			>
 				{label && (
 					<Box
 						sx={{
 							...sx.label,
-							color,
-							...(flexDirection === 'row' && sx.labelRow),
+							...(direction === 'row' && sx.labelRow),
 						}}
 					>
-						<Typography
-							variant={variant}
-							sx={{
-								...sx.text,
-								textAlign: flexDirection === 'row' ? 'right' : 'left',
-							}}
-						>
+						<Typography variant='caption' color='text.secondary'>													
 							{label}
 						</Typography>
 					</Box>
 				)}
-				<Box sx={sx.field}>{children}</Box>
-			</Box>
-			{helperText && (
-				<Typography variant={variant} sx={sx.helperText}>
-					{helperText}
-				</Typography>
-			)}
-		</Box>
+        <Box>
+				  {children}
+        </Box>
+			</Stack>		
 	)
 }
 
 export default FieldWrapper
 
-const sx = {
-	root: {
-		display: 'flex',
-		flexDirection: 'column',
-		width: '100%',
-	},
-	field: {},
+const sx = {	
 	text: {
 		color: 'text.secondary',
 	},
@@ -78,11 +54,18 @@ const sx = {
 		width: '100%',
 	},
 	labelRow: {
-		width: '100%',
-		maxWidth: 160,
+		minWidth: 100,
+		width: 100,
 		pr: 1,
 	},
-	helperText: {
-		color: 'text.secondary',
+	root: {		
+		minHeight: 110,
+	},
+	rootBorder: {
+    p: 2,
+		width: '100%',
+		borderRadius: 1,
+		border: '1px solid',
+		borderColor: 'divider',
 	},
 }

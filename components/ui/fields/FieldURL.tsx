@@ -1,6 +1,5 @@
 import React from 'react'
-import { Button } from '@mui/material'
-import { Link2 } from 'lucide-react'
+import { Link } from '@mui/material'
 import { FieldWrapper } from '../../../components'
 
 type FieldURLProps = {
@@ -16,15 +15,12 @@ const FieldURL: React.FC<FieldURLProps> = (props) => {
 	return (
 		<FieldWrapper label={label} {...rest}>
 			{value && (
-				<Button
-					size="small"
-					color="primary"
-					sx={sx.button}
-					startIcon={<Link2 size={20} />}
-					onClick={handleClick}
+				<Link 
+          href={value}          
+					sx={sx.link}										
 				>
 					{value}
-				</Button>
+				</Link>
 			)}
 		</FieldWrapper>
 	)
@@ -33,10 +29,13 @@ const FieldURL: React.FC<FieldURLProps> = (props) => {
 export default FieldURL
 
 const sx = {
-	button: {
-		textTransform: 'none',
-		fontFamily: (theme) => theme.typography.body2.fontFamily,
-		letterSpacing: 0,
+	link: {
+    color: 'text.secondary',
+    textDecoration: 'none',
+		'&:hover': {
+      color: 'text.primary',
+      textDecoration: 'underline',
+    },
 	},
 	cell: {
 		display: 'flex',

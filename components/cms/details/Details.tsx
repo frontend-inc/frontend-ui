@@ -33,14 +33,11 @@ const Details: React.FC<DetailsProps> = (props) => {
 							xs={12}
 							sm={FULL_WIDTH_VARIANTS.includes(field?.variant) ? 12 : 4}
 						>
-							<Box
-								sx={{
-									...sx.item,
-									...(enableBorder && sx.itemBorder),
-								}}
-							>
-								<Field field={field} document={document} />
-							</Box>
+								<Field 
+                  field={field} 
+                  enableBorder={enableBorder} 
+                  document={document} 
+                />
 						</Grid>
 					))}
 			</Grid>
@@ -53,17 +50,7 @@ export default Details
 const sx = {
 	root: {
 		width: '100%',
-	},
-	item: {
-		p: 2,
-		width: '100%',
-		borderRadius: 1,
-		minHeight: 110,
-	},
-	itemBorder: {
-		border: '1px solid',
-		borderColor: 'divider',
-	},
+	},	
 	itemFullWidth: {
 		gridColumn: 'span 3',
 	},

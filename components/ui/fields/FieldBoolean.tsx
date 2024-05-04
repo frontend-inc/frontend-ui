@@ -1,6 +1,5 @@
 import React from 'react'
-import { Button } from '@mui/material'
-import { FieldWrapper } from '../../../components'
+import { Label, FieldWrapper } from '../../../components'
 
 type FieldBooleanProps = {
 	value?: boolean
@@ -12,9 +11,7 @@ const FieldBoolean: React.FC<FieldBooleanProps> = (props) => {
 	const { value, label, ...rest } = props
 	return (
 		<FieldWrapper label={label} {...rest}>
-			<Button size="small" color="primary" sx={sx.button}>
-				{value ? 'true' : 'false'}
-			</Button>
+      <Label label={ value ? 'true' : 'false' } />
 		</FieldWrapper>
 	)
 }
