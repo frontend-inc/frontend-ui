@@ -5,6 +5,7 @@ import { ShopifyAuth, SearchButton, CartButton } from '../../shopify'
 import { AppContext } from '../../../context'
 import SideNavMenuItem from './SideNavMenuItem'
 import { MenuLinkType } from '../../..'
+import { useAuth } from 'frontend-js'
 
 type MobileDrawerProps = {
 	editing?: boolean
@@ -19,11 +20,12 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 
 	const { editing, menuItems, handleClick, enableAuth, enableShopify } = props
 
+  const { currentUser } = useAuth()
 	const handleMenuClick = (path: string) => {
 		setMenuOpen(false)
 		handleClick(path)
 	}
-
+  
 	return (
 		<Drawer
 			open={menuOpen}
@@ -35,6 +37,7 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 				<List sx={sx.sideNavMenuItems}>
 					{menuItems
 						?.filter((menuItem) => menuItem.parent_id == null)
+            ?.filter((menuItem) => (menuItem?.require_auth ? currentUser?.id : !currentUser?.id))
 						?.map((menuItem, index) => (
 							<SideNavMenuItem
 								key={index}
@@ -80,12 +83,8 @@ const sx = {
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
-		height: '100%',
-		minHeight: 'calc(100vh - 70px)',
-		width: {
-			xs: '100%',
-			sm: '320px',
-		},
+		height: 'calc(100vh - 100px)',
+		width: '100%',
 	},
 	sideNavMenuItems: {
 		width: '100%',

@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { AppBar, Box, Hidden, Toolbar } from '@mui/material'
 import { AuthButton } from '../../../components'
 import Logo from './Logo'
 import { ShopifyAuth, SearchButton, CartButton } from '../../shopify'
-import { AppContext } from '../../../context'
+import { useAuth } from 'frontend-js'
 import { MenuLinkType } from '../../..'
 import TopNavMenuItem from './TopNavMenuItem'
 
@@ -30,6 +30,8 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 		position = 'absolute',
 	} = props
 
+  const { currentUser } = useAuth()
+
 	return (
 		<Hidden mdDown>
 			<AppBar
@@ -53,6 +55,7 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 						<Box sx={sx.centerMenu}>
 							{menuItems
 								?.filter((menuItem) => menuItem.parent_id == null)
+                ?.filter((menuItem) => (menuItem?.require_auth ? currentUser?.id : !currentUser?.id))
 								?.map((menuItem, index) => (
 									<TopNavMenuItem
 										key={index}

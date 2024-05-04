@@ -1,12 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Stack, List, Box, Hidden } from '@mui/material'
 import { AuthButton } from '../../../components'
 import Logo from './Logo'
 import { ShopifyAuth, SearchButton, CartButton } from '../../shopify'
-import { AppContext } from '../../../context'
 import { HEADER_LOGO_HEIGHT, HEADER_LOGO_WIDTH } from '../../../constants/index'
 import { MenuLinkType } from '../../..'
 import SideNavMenuItem from './SideNavMenuItem'
+import { useAuth } from 'frontend-js'
 
 type DesktopNavProps = {
 	editing?: boolean
@@ -35,6 +35,8 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 		enableNotifications = false,
 	} = props
 
+  const { currentUser } = useAuth()
+
 	return (
 		<Hidden mdDown>
 			<Box sx={sx.sideNav}>
@@ -62,6 +64,7 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 						<List>
 							{menuItems
 								?.filter((menuItem) => menuItem.parent_id == null)
+                ?.filter((menuItem) => (menuItem?.require_auth ? currentUser?.id : !currentUser?.id))
 								?.map((menuItem, index) => (
 									<SideNavMenuItem
 										key={index}

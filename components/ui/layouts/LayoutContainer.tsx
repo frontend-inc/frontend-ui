@@ -81,7 +81,7 @@ const sx = {
 	sideNav: {
 		display: 'flex',
 		flexDirection: {
-			sm: 'row',
+			md: 'row',
 			xs: 'column',
 		},
 		pt: {
@@ -96,7 +96,7 @@ const sx = {
 	},
 	contentSideNav: {
 		width: {
-			sm: 'calc(100% - 280px)',
+			md: 'calc(100% - 280px)',
 			xs: '100%',
 		},
 		height: '100%',

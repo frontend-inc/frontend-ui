@@ -17,7 +17,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		title,
 		description,
 		textAlign = 'left',
-		textVariant = 'h4',
+		textVariant = 'h6',
 	} = props || {}
 
 	if (!title && !description && !label) return null
@@ -40,10 +40,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 					color="text.primary"
 					sx={{
 						...sx.title,
-						textAlign: {
-							sm: textAlign,
-							xs: 'center',
-						},
+						textAlign: textAlign,
 					}}
 				>
 					{title}
