@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { muiTheme as defaultTheme } from '../../theme'
 import { buildMuiPalette } from '../../helpers'
-import { Theme } from '@mui/material'
 
 type ThemeProps = {
 	muiTheme?: any
@@ -11,7 +10,7 @@ type ThemeProps = {
 	bodyFont?: string
 	headerFont?: string
 	offset?: number
-	mobile?: boolean
+	deviceSize?: 'mobile' | 'tablet' | 'desktop'
 }
 
 const useTheme = (props: ThemeProps) => {
@@ -23,7 +22,7 @@ const useTheme = (props: ThemeProps) => {
 		bodyFont,
 		headerFont,
 		offset = 0,
-		mobile = false,
+		deviceSize='desktop'
 	} = props || {}
 
 	const [theme, setTheme] = useState(muiTheme)
@@ -53,11 +52,23 @@ const useTheme = (props: ThemeProps) => {
 			}
 		}
 
-		if (mobile == true) {
+		if (deviceSize == 'mobile') {
 			breakpoints = {
 				values: {
 					xs: 0,
 					sm: 5000,
+					md: 5000,
+					lg: 5000,
+					xl: 5000,
+				},
+			}
+		}
+
+    if (deviceSize == 'tablet') {
+			breakpoints = {
+				values: {
+					xs: 0,
+					sm: 0,
 					md: 5000,
 					lg: 5000,
 					xl: 5000,
@@ -160,7 +171,7 @@ const useTheme = (props: ThemeProps) => {
 		})
 	}, [
 		offset,
-		mobile,
+		deviceSize,
 		primaryColor,
 		bgcolor,
 		headerFont,

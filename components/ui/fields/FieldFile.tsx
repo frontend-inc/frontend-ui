@@ -11,7 +11,6 @@ type FieldFileProps = {
 
 const FieldFile: React.FC<FieldFileProps> = (props) => {
 	const { value, label, handleClick, ...rest } = props
-  console.log('FieldFile', value)
 	return (
 		<FieldWrapper label={label} {...rest}>
       <Stack direction='row' spacing={1}>

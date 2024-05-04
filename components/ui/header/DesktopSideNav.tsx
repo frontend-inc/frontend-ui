@@ -22,8 +22,8 @@ type DesktopNavProps = {
 }
 
 const DesktopSideNav = (props: DesktopNavProps) => {
-	const { clientUrl } = useContext(AppContext)
-	const {
+
+  const {
 		editing,
 		logo,
 		menuItems,
@@ -36,7 +36,7 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 	} = props
 
 	return (
-		<Hidden smDown>
+		<Hidden mdDown>
 			<Box sx={sx.sideNav}>
 				<Stack
 					sx={{

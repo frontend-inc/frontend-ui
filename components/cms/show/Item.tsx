@@ -142,7 +142,11 @@ const sx = {
 		color: 'text.secondary',
 	},
   actions: {
-    width: '100%'
+    width: '100%',
+    justifyContent: {
+      sm: 'flex-end',
+      xs: 'center'
+    }
   },
   actionsBorder: {
     p: 1

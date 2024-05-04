@@ -15,7 +15,7 @@ type MobileDrawerProps = {
 }
 
 const MobileDrawer = (props: MobileDrawerProps) => {
-	const { clientUrl, menuOpen, setMenuOpen } = useContext(AppContext)
+	const { menuOpen, setMenuOpen } = useContext(AppContext)
 
 	const { editing, menuItems, handleClick, enableAuth, enableShopify } = props
 

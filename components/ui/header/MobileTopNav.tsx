@@ -23,7 +23,6 @@ const MobileNav = (props: MobileNavProps) => {
 	const { setMenuOpen } = useContext(AppContext)
 
 	const {
-		editing,
 		logo,
 		logoWidth = 120,
 		logoHeight = 50,
@@ -33,7 +32,7 @@ const MobileNav = (props: MobileNavProps) => {
 	} = props
 
 	return (
-		<Hidden smUp>
+		<Hidden mdUp>
 			<AppBar
 				sx={{
 					...sx.appBar,

@@ -14,7 +14,7 @@ type ThemeProviderProps = {
 	headerFont?: string
 	bodyFont?: string
 	borderRadius?: number
-	mobile?: boolean
+	deviceSize?: 'mobile' | 'tablet' | 'desktop'
 	offset?: number
 }
 
@@ -27,7 +27,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 		headerFont,
 		bodyFont,
 		borderRadius,
-		mobile,
+		deviceSize,    
 		offset,
 	} = props || {}
 
@@ -38,7 +38,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 		headerFont,
 		bodyFont,
 		borderRadius,
-		mobile,
+		deviceSize,
 		offset,
 	})
 

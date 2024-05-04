@@ -159,6 +159,10 @@ const sx = {
 		alignItems: 'center',
 	},
   actions: {
-    width: "100%"
+    width: "100%",
+    justifyContent: {
+      sm: 'flex-end',
+      xs: 'center'
+    }
   }
 }

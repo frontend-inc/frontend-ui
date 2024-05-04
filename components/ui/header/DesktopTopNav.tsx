@@ -19,7 +19,6 @@ type DesktopNavProps = {
 }
 
 const DesktopTopNav = (props: DesktopNavProps) => {
-	const { clientUrl } = useContext(AppContext)
 	const {
 		editing,
 		logo,
@@ -32,7 +31,7 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 	} = props
 
 	return (
-		<Hidden smDown>
+		<Hidden mdDown>
 			<AppBar
 				sx={{
 					...sx.appBar,
