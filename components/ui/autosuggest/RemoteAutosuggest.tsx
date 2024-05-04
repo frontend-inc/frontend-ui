@@ -32,7 +32,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		name,
 		url,
 		displayField = 'title',
-    imageField,
+		imageField,
 		handleChange,
 		handleClear,
 		valueParam = 'id',
@@ -47,16 +47,12 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		name: name,
 	})
 
-	const { 
-    delayedLoading, 
-    resources, 
-    findMany 
-  } = useResource({
+	const { delayedLoading, resources, findMany } = useResource({
 		url: url,
 		name: name,
 	})
 
-  const [option, setOption] = useState<OptionType>()
+	const [option, setOption] = useState<OptionType>()
 	const [options, setOptions] = useState<OptionType[]>([])
 
 	const handleInputChange = (newValue) => {
@@ -68,21 +64,21 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		return resources.map((resource) => ({
 			label: resource[displayField],
 			value: resource[valueParam],
-      image: imageField ? get(resource, imageField) : null
+			image: imageField ? get(resource, imageField) : null,
 		}))
 	}
 
 	const findOption = async (value) => {
 		if (!value) return null
 		let resource = resources.find((resource) => resource[displayField] == value)
-    if(resource){    
-      setOption({
-        label: resource[displayField],
-        value: resource[valueParam]
-      })
-    }
+		if (resource) {
+			setOption({
+				label: resource[displayField],
+				value: resource[valueParam],
+			})
+		}
 	}
-  
+
 	useEffect(() => {
 		if (resources) {
 			setOptions([...formatResources(resources), ...defaultOptions])
@@ -92,29 +88,29 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 	useEffect(() => {
 		if (value && resources?.length > 0) {
 			let resource = resources.find((resource) => resource[valueParam] == value)
-      if(resource){ 
-        setOption({
-          label: resource[displayField],
-          value: resource[valueParam]
-        })
-      }
-    }
+			if (resource) {
+				setOption({
+					label: resource[displayField],
+					value: resource[valueParam],
+				})
+			}
+		}
 	}, [value, resources])
 
 	useEffect(() => {
 		if (url) {
 			//@ts-ignore
-			findMany({ 
-        ...defaultQuery,
-        per_page: 100
-      })
+			findMany({
+				...defaultQuery,
+				per_page: 100,
+			})
 		}
 	}, [url])
 
 	return (
 		<>
 			<Autosuggest
-        errors={errors}
+				errors={errors}
 				loading={delayedLoading}
 				direction={direction}
 				label={label}

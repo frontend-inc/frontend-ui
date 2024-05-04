@@ -11,10 +11,7 @@ export type SignInButtonProps = {
 }
 
 const SignInButton: React.FC<SignInButtonProps> = (props) => {
-	const {
-		color = 'primary',
-		buttonText = 'Sign In',
-	} = props || {}
+	const { color = 'primary', buttonText = 'Sign In' } = props || {}
 
 	const { fetchMe, currentUser } = useAuth()
 

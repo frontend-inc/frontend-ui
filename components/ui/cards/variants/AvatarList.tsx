@@ -25,10 +25,10 @@ const AvatarList: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
-    enableEdit,
-    enableDelete,
-    handleEdit,
-    handleDelete,
+		enableEdit,
+		enableDelete,
+		handleEdit,
+		handleDelete,
 	} = props
 
 	return (
@@ -39,19 +39,19 @@ const AvatarList: React.FC<CardProps> = (props) => {
 				...(enableBorder && sx.rootBorder),
 			}}
 		>
-			<ListItem 
-        disablePadding 
-        disableGutters
-        secondaryAction={
-          (enableEdit || enableDelete) && (
-            <MenuButton
-              icon='EllipsisVertical'
-              handleEdit={ enableEdit ? handleEdit : undefined }
-              handleDelete={ enableDelete ? handleDelete : undefined }
-            />
-          )
-        }
-      >
+			<ListItem
+				disablePadding
+				disableGutters
+				secondaryAction={
+					(enableEdit || enableDelete) && (
+						<MenuButton
+							icon="EllipsisVertical"
+							handleEdit={enableEdit ? handleEdit : undefined}
+							handleDelete={enableDelete ? handleDelete : undefined}
+						/>
+					)
+				}
+			>
 				<ListItemButton
 					sx={{
 						minHeight: height + 44,

@@ -2,22 +2,22 @@ import React from 'react'
 import { FormWizard, AuthRequired } from '../../../components'
 import { FormWizardProps } from '../../../components/cms/forms/FormWizard'
 
-export type ProfileFormWizardProps = FormWizardProps & {	
-	resource: any	
+export type ProfileFormWizardProps = FormWizardProps & {
+	resource: any
 }
 
 const ProfileForm: React.FC<ProfileFormWizardProps> = (props) => {
-  const { resource, buttonText, fields, ...rest } = props 
+	const { resource, buttonText, fields, ...rest } = props
 	return (
-    <AuthRequired>
-      <FormWizard 
-        { ...rest }
-        url="/api/v1/cms/profiles"        
-        fields={fields}
-        buttonText={buttonText}        
-        handle={resource?.handle}
-      />
-    </AuthRequired>
+		<AuthRequired>
+			<FormWizard
+				{...rest}
+				url="/api/v1/cms/profiles"
+				fields={fields}
+				buttonText={buttonText}
+				handle={resource?.handle}
+			/>
+		</AuthRequired>
 	)
 }
 

@@ -4,49 +4,47 @@ import { Box, Stack, Typography } from '@mui/material'
 type FieldWrapperProps = {
 	direction?: 'row' | 'column'
 	label?: string
-  enableBorder?: boolean
+	enableBorder?: boolean
 	children?: React.ReactNode
 }
 
 const FieldWrapper: React.FC<FieldWrapperProps> = (props) => {
 	const {
 		direction = 'column',
-		label,		
-    enableBorder = false,
+		label,
+		enableBorder = false,
 		children,
 	} = props || {}
 
 	return (
-			<Stack 
-        direction={{ xs: 'column', sm: direction }} 
-        spacing={1}				
-        sx={{
-          ...sx.root,
-          ...(enableBorder && sx.rootBorder)
-        }}
-			>
-				{label && (
-					<Box
-						sx={{
-							...sx.label,
-							...(direction === 'row' && sx.labelRow),
-						}}
-					>
-						<Typography variant='caption' color='text.secondary'>													
-							{label}
-						</Typography>
-					</Box>
-				)}
-        <Box>
-				  {children}
-        </Box>
-			</Stack>		
+		<Stack
+			direction={{ xs: 'column', sm: direction }}
+			spacing={1}
+			sx={{
+				...sx.root,
+				...(enableBorder && sx.rootBorder),
+			}}
+		>
+			{label && (
+				<Box
+					sx={{
+						...sx.label,
+						...(direction === 'row' && sx.labelRow),
+					}}
+				>
+					<Typography variant="caption" color="text.secondary">
+						{label}
+					</Typography>
+				</Box>
+			)}
+			<Box>{children}</Box>
+		</Stack>
 	)
 }
 
 export default FieldWrapper
 
-const sx = {	
+const sx = {
 	text: {
 		color: 'text.secondary',
 	},
@@ -58,11 +56,11 @@ const sx = {
 		width: 100,
 		pr: 1,
 	},
-	root: {		
+	root: {
 		minHeight: 110,
 	},
 	rootBorder: {
-    p: 2,
+		p: 2,
 		width: '100%',
 		borderRadius: 1,
 		border: '1px solid',

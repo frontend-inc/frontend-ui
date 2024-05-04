@@ -1,19 +1,24 @@
 import React from 'react'
 import { Button, Box } from '@mui/material'
-import { IconLoading, ImageInput, TextInput, SwitchInput } from '../../../components'
+import {
+	IconLoading,
+	ImageInput,
+	TextInput,
+	SwitchInput,
+} from '../../../components'
 
 type AccountFormProps = {
-  loading: boolean
+	loading: boolean
 	user: any
 	handleChange: (ev: any) => void
 	handleSubmit: () => void
 	handleDeleteAvatar: () => void
-  handleLogout: () => void
+	handleLogout: () => void
 }
 
 const MyAccountForm: React.FC<AccountFormProps> = (props) => {
 	const {
-    loading,
+		loading,
 		user,
 		handleSubmit,
 		handleChange,
@@ -48,17 +53,15 @@ const MyAccountForm: React.FC<AccountFormProps> = (props) => {
 				handleChange={handleChange}
 			/>
 			<Button
-        color="primary" 
-        variant="contained" 
-        onClick={handleSubmit}
-        startIcon={
-          <IconLoading loading={loading} />
-        }
-      >
+				color="primary"
+				variant="contained"
+				onClick={handleSubmit}
+				startIcon={<IconLoading loading={loading} />}
+			>
 				Save
 			</Button>
-			<Button color="secondary" variant='contained' onClick={handleLogout}>
-				Logout 
+			<Button color="secondary" variant="contained" onClick={handleLogout}>
+				Logout
 			</Button>
 		</Box>
 	)

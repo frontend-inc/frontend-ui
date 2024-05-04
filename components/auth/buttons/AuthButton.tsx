@@ -13,12 +13,7 @@ type AuthButtonProps = {
 }
 
 const AuthButton: React.FC<AuthButtonProps> = (props) => {
-	
-  const {
-		showLabel = false,
-		showIcon = true,
-		editing = false,
-	} = props || {}
+	const { showLabel = false, showIcon = true, editing = false } = props || {}
 
 	const router = useRouter()
 	const { logout, fetchMe, currentUser } = useAuth()
@@ -28,17 +23,17 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 
 	const handleLogin = () => {
 		setAuthOpen(true)
-    closeMenu()
+		closeMenu()
 	}
 
 	const handleSignup = () => {
 		setAuthOpen(true)
-    closeMenu()
+		closeMenu()
 	}
 
 	const handleMyAccount = () => {
 		setMyAccountOpen(true)
-    closeMenu()
+		closeMenu()
 	}
 
 	const handleLogout = () => {
@@ -74,7 +69,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 						</IconButton>
 					) : (
 						<IconButton onClick={handleLogin}>
-							<Icon color='primary.contrastText' name="User" size={24} />
+							<Icon color="primary.contrastText" name="User" size={24} />
 						</IconButton>
 					)}
 				</>
@@ -91,7 +86,11 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 								</Box>
 							}
 						>
-							<Typography variant="button" color='text.primary' sx={sx.username}>
+							<Typography
+								variant="button"
+								color="text.primary"
+								sx={sx.username}
+							>
 								{currentUser?.username}
 							</Typography>
 						</Button>

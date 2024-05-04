@@ -3,7 +3,7 @@ import {
 	FieldArray,
 	FieldBoolean,
 	FieldDate,
-  FieldFile,
+	FieldFile,
 	FieldImage,
 	FieldJSON,
 	FieldURL,
@@ -16,7 +16,7 @@ import {
 
 type FieldProps = {
 	field?: any
-  enableBorder?: boolean
+	enableBorder?: boolean
 	document?: any
 }
 
@@ -28,33 +28,27 @@ const Field: React.FC<FieldProps> = (props) => {
 		value = '-'
 	}
 
-  const components = {
-    "boolean": FieldBoolean,
-    "date": FieldDate,
-    "datetime": FieldDate,
-    "file": FieldFile,
-    "image": FieldImage,
-    "video": FieldVideo,
-    "json": FieldJSON,
-    "url": FieldURL,
-    "rating": FieldRating,
-    "text": FieldText,
-    "number": FieldText,
-    "array": FieldArray,
-    "string": FieldString,
-    "select": FieldString,
-    "price": FieldPrice
-  }
+	const components = {
+		boolean: FieldBoolean,
+		date: FieldDate,
+		datetime: FieldDate,
+		file: FieldFile,
+		image: FieldImage,
+		video: FieldVideo,
+		json: FieldJSON,
+		url: FieldURL,
+		rating: FieldRating,
+		text: FieldText,
+		number: FieldText,
+		array: FieldArray,
+		string: FieldString,
+		select: FieldString,
+		price: FieldPrice,
+	}
 
-  const Component = components[variant]
+	const Component = components[variant]
 
-	return (
-		<Component 
-      label={label} 
-      value={value} 
-      enableBorder={enableBorder}
-    />			
-	)
+	return <Component label={label} value={value} enableBorder={enableBorder} />
 }
 
 export default Field

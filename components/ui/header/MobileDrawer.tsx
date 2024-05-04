@@ -20,12 +20,12 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 
 	const { editing, menuItems, handleClick, enableAuth, enableShopify } = props
 
-  const { currentUser } = useAuth()
+	const { currentUser } = useAuth()
 	const handleMenuClick = (path: string) => {
 		setMenuOpen(false)
 		handleClick(path)
 	}
-  
+
 	return (
 		<Drawer
 			open={menuOpen}
@@ -37,7 +37,9 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 				<List sx={sx.sideNavMenuItems}>
 					{menuItems
 						?.filter((menuItem) => menuItem.parent_id == null)
-            ?.filter((menuItem) => (menuItem?.require_auth ? currentUser?.id : !currentUser?.id))
+						?.filter((menuItem) =>
+							menuItem?.require_auth ? currentUser?.id : !currentUser?.id
+						)
 						?.map((menuItem, index) => (
 							<SideNavMenuItem
 								key={index}
@@ -55,12 +57,7 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 				{(enableAuth || enableShopify) && (
 					<Box sx={sx.divider}>
 						{enableShopify && <ShopifyAuth variant="sideNav" />}
-						{enableAuth && (
-							<AuthButton
-                showLabel
-								editing={editing}
-							/>
-						)}
+						{enableAuth && <AuthButton showLabel editing={editing} />}
 					</Box>
 				)}
 			</Box>

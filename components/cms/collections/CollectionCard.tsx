@@ -12,35 +12,29 @@ type CollectionCardProps = {
 	buttonText?: string
 	href?: string
 	handleClick: () => void
-  handleEdit?: (item: any) => void
-  handleDelete?: (item: any) => void
+	handleEdit?: (item: any) => void
+	handleDelete?: (item: any) => void
 	enableBorder?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
-  enableEdit?: boolean
-  enableCreate?: boolean
-  enableDelete?: boolean
+	enableEdit?: boolean
+	enableCreate?: boolean
+	enableDelete?: boolean
 }
 
 const CollectionCard: React.FC<CollectionCardProps> = (props) => {
-	const { 
-    variant = 'list', 
-    style = 'card', 
-    ...rest 
-  } = props
+	const { variant = 'list', style = 'card', ...rest } = props
 
 	const COMPONENTS = {
 		card: Card,
 		avatar: AvatarCard,
 		cover: Cover,
-    chip: Chip
+		chip: Chip,
 	}
 
 	let Component = COMPONENTS[style] || Card
 
-	return (
-		<Component variant={variant} {...rest} />
-	)
+	return <Component variant={variant} {...rest} />
 }
 
 export default CollectionCard

@@ -16,7 +16,7 @@ const AppProvider = (props: AppProviderProps) => {
 	const [loaded, setLoaded] = useState(false)
 
 	const [authOpen, setAuthOpen] = useState(false) // Auth modal
-  const [myAccountOpen, setMyAccountOpen] = useState(false) // My account modal
+	const [myAccountOpen, setMyAccountOpen] = useState(false) // My account modal
 	const [authorizationOpen, setAuthorizationOpen] = useState(false) // App authorization
 	const [menuOpen, setMenuOpen] = useState(false) // Mobile menu
 
@@ -35,8 +35,8 @@ const AppProvider = (props: AppProviderProps) => {
 
 		authOpen,
 		setAuthOpen,
-    myAccountOpen,
-    setMyAccountOpen,
+		myAccountOpen,
+		setMyAccountOpen,
 
 		authorizationOpen,
 		setAuthorizationOpen,

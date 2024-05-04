@@ -9,7 +9,7 @@ export const SYSTEM_FIELDS = [
 	'title',
 	'description',
 	'handle',
-  'user',
+	'user',
 	'label',
 	'shopify_handle',
 	'published',
@@ -116,7 +116,6 @@ export const USER_FIELD: FieldBase = {
 	reference: false,
 }
 
-
 export const DEFAULT_FIELDS: FieldBase[] = [
 	ID_FIELD,
 	HANDLE_FIELD,
@@ -124,5 +123,5 @@ export const DEFAULT_FIELDS: FieldBase[] = [
 	PUBLISHED_FIELD,
 	LOCALE_FIELD,
 	TAGS_FIELD,
-  USER_FIELD
+	USER_FIELD,
 ]

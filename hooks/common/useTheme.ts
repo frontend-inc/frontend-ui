@@ -22,7 +22,7 @@ const useTheme = (props: ThemeProps) => {
 		bodyFont,
 		headerFont,
 		offset = 0,
-		deviceSize='desktop'
+		deviceSize = 'desktop',
 	} = props || {}
 
 	const [theme, setTheme] = useState(muiTheme)
@@ -64,7 +64,7 @@ const useTheme = (props: ThemeProps) => {
 			}
 		}
 
-    if (deviceSize == 'tablet') {
+		if (deviceSize == 'tablet') {
 			breakpoints = {
 				values: {
 					xs: 0,

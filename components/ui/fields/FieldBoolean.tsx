@@ -11,7 +11,7 @@ const FieldBoolean: React.FC<FieldBooleanProps> = (props) => {
 	const { value, label, ...rest } = props
 	return (
 		<FieldWrapper label={label} {...rest}>
-      <Label label={ value ? 'true' : 'false' } />
+			<Label label={value ? 'true' : 'false'} />
 		</FieldWrapper>
 	)
 }

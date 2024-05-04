@@ -26,15 +26,11 @@ const Actions: React.FC<ActionsProps> = (props) => {
 					...sx.buttons,
 					justifyContent,
 				}}
-				direction={{ sm: 'row', xs: 'column' }} 
+				direction={{ sm: 'row', xs: 'column' }}
 				spacing={1}
 			>
 				{actions?.slice(0, 2)?.map((action, index) => (
-					<ActionButton
-						key={index}						
-            action={action}            
-						resource={resource}
-					/>
+					<ActionButton key={index} action={action} resource={resource} />
 				))}
 			</Stack>
 			{actions?.length > 2 && (
@@ -50,7 +46,7 @@ const Actions: React.FC<ActionsProps> = (props) => {
 
 export default Actions
 
-const sx = {	
+const sx = {
 	buttons: {
 		width: '100%',
 	},

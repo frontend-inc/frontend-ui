@@ -4,7 +4,9 @@ import { AuthForeignCollection } from '../../components'
 import { ForeignCollectionProps } from '../../components/cms/collections/ForeignCollection'
 import { SectionProps, HeadingProps } from '../../types'
 
-type AuthCmsForeignListProps = SectionProps & HeadingProps & ForeignCollectionProps
+type AuthCmsForeignListProps = SectionProps &
+	HeadingProps &
+	ForeignCollectionProps
 
 const AuthCmsForeignList: React.FC<AuthCmsForeignListProps> = (props) => {
 	const {

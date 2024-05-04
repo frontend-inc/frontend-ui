@@ -11,7 +11,7 @@ const useComments = (props: UseCommentsProps) => {
 
 	const {
 		loading,
-    delayedLoading,
+		delayedLoading,
 		loaded,
 		errors,
 		empty,
@@ -45,7 +45,7 @@ const useComments = (props: UseCommentsProps) => {
 
 	return {
 		loading,
-    delayedLoading,
+		delayedLoading,
 		errors,
 		loaded,
 		empty,

@@ -9,8 +9,8 @@ type VideoInputProps = {
 	name: string
 	label: string
 	value: {
-    url: string
-  }
+		url: string
+	}
 	handleChange: (e: SyntheticEventType) => void
 	handleBrowse: (name: string) => void
 	placeholder?: string

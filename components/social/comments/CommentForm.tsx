@@ -3,7 +3,7 @@ import { Stack, ListItem, Button } from '@mui/material'
 import { AuthRequired, IconLoading, TextInput } from '../../../components'
 
 type CommentFormProps = {
-  pl?: number
+	pl?: number
 	loading: boolean
 	errors?: any
 	comment: any
@@ -12,44 +12,43 @@ type CommentFormProps = {
 }
 
 const CommentForm: React.FC<CommentFormProps> = (props) => {
+	const {
+		pl = 0,
+		loading,
+		errors,
+		comment,
+		handleChange,
+		handleSubmit,
+	} = props || {}
 
-  const {
-    pl=0,
-    loading,
-    errors,
-    comment,
-    handleChange,
-    handleSubmit 
-  } = props || {}
-  
 	return (
-      <AuthRequired>
-        <ListItem 
-          sx={{ 
-            pl
-          }}
-        >
-        <Stack sx={ sx.form } direction="column" spacing={1}>
-          <TextInput
-            errors={errors}
-            multiline
-            rows={4}
-            name="body"
-            value={comment?.body}
-            handleChange={handleChange}
-            placeholder="Leave a comment..."
-          />
-          <Button
-            variant="contained"
-            onClick={handleSubmit}
-            disabled={loading}
-            startIcon={<IconLoading loading={loading} />}
-          >
-            Submit
-          </Button>
-        </Stack>
-      </ListItem>
-    </AuthRequired>
+		<AuthRequired>
+			<ListItem
+				sx={{
+					pl,
+				}}
+			>
+				<Stack sx={sx.form} direction="column" spacing={1}>
+					<TextInput
+						errors={errors}
+						multiline
+						rows={4}
+						name="body"
+						value={comment?.body}
+						handleChange={handleChange}
+						placeholder="Leave a comment..."
+					/>
+					<Button
+						variant="contained"
+						onClick={handleSubmit}
+						disabled={loading}
+						startIcon={<IconLoading loading={loading} />}
+					>
+						Submit
+					</Button>
+				</Stack>
+			</ListItem>
+		</AuthRequired>
 	)
 }
 
@@ -59,10 +58,10 @@ const sx = {
 	root: {
 		alignItems: 'flex-start',
 	},
-  form: {
-    p: 2,
-    width: '100%',
-    alignItems: 'flex-start',
-    bgcolor: 'secondary.light',
-  }
+	form: {
+		p: 2,
+		width: '100%',
+		alignItems: 'flex-start',
+		bgcolor: 'secondary.light',
+	},
 }

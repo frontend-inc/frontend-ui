@@ -99,33 +99,33 @@ const Comments: React.FC<CommentsProps> = (props) => {
 				</Typography>
 				<CommentButton handleClick={handleToggleClick} />
 			</Stack>
-      <Collapse in={ openComment }>
-        <CommentForm 		
-          pl={0}		
-          errors={errors}
-          loading={loading}
-          comment={comment}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-        />
-      </Collapse>
+			<Collapse in={openComment}>
+				<CommentForm
+					pl={0}
+					errors={errors}
+					loading={loading}
+					comment={comment}
+					handleChange={handleChange}
+					handleSubmit={handleSubmit}
+				/>
+			</Collapse>
 			<List disablePadding>
 				{comments?.map((comment, i) => (
 					<Comment
 						key={i}
-            url={url}
-            handle={handle}
-						comment={comment}						
+						url={url}
+						handle={handle}
+						comment={comment}
 						handleDelete={handleDeleteComment}
 					/>
 				))}
 			</List>
 			{!loading && !openComment && comments?.length == 0 && (
-				<Placeholder 
-          icon="MessageSquare"
-          title="There are no comments." 
-          description='Be the first to leave a comment.'
-        />
+				<Placeholder
+					icon="MessageSquare"
+					title="There are no comments."
+					description="Be the first to leave a comment."
+				/>
 			)}
 			<LoadMore loadMore={loadMore} page={page} numPages={numPages} />
 			<AlertModal
@@ -134,7 +134,6 @@ const Comments: React.FC<CommentsProps> = (props) => {
 				handleClose={() => setOpenDelete(false)}
 				handleConfirm={handleDelete}
 			/>
-			  
 		</Stack>
 	)
 }

@@ -70,7 +70,7 @@ const AttachmentInput: React.FC<AttachmentInputProps> = (props) => {
 		variant = 'file',
 		size = IMAGE_WIDTH,
 		objectFit = 'cover',
-    placeholder='Upload file'
+		placeholder = 'Upload file',
 	} = props
 
 	const [src, setSrc] = useState()

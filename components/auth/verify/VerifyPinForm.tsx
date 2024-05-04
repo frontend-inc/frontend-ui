@@ -18,7 +18,7 @@ const SendPinForm: React.FC<SendPinFormProps> = (props) => {
 	return (
 		<Stack spacing={1}>
 			<TextInput
-        label="Enter your PIN"
+				label="Enter your PIN"
 				errors={errors}
 				name="pin"
 				value={user?.pin}

@@ -21,10 +21,10 @@ const CardGrid: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
-    enableEdit,
-    enableDelete,
-    handleEdit,
-    handleDelete,
+		enableEdit,
+		enableDelete,
+		handleEdit,
+		handleDelete,
 	} = props || {}
 
 	const router = useRouter()
@@ -68,17 +68,17 @@ const CardGrid: React.FC<CardProps> = (props) => {
 					...(enableBorder && sx.contentBorder),
 				}}
 			>
-				<Stack sx={ sx.contentArea } direction="row" spacing={0}>
-					<Typography sx={ sx.title } color="textPrimary" variant="subtitle2">
+				<Stack sx={sx.contentArea} direction="row" spacing={0}>
+					<Typography sx={sx.title} color="textPrimary" variant="subtitle2">
 						{truncate(title)}
 					</Typography>
-          {(enableEdit || enableDelete) && (
-            <MenuButton
-              icon='EllipsisVertical'
-              handleEdit={ enableEdit ? handleEdit : undefined }
-              handleDelete={ enableDelete ? handleDelete : undefined }
-            />
-          )}
+					{(enableEdit || enableDelete) && (
+						<MenuButton
+							icon="EllipsisVertical"
+							handleEdit={enableEdit ? handleEdit : undefined}
+							handleDelete={enableDelete ? handleDelete : undefined}
+						/>
+					)}
 				</Stack>
 				{buttonText && (
 					<Box>
@@ -126,18 +126,18 @@ const sx = {
 		},
 	},
 	content: {
-    width: '100%',
+		width: '100%',
 		minHeight: '60px',
 	},
-  contentArea: {
-    width: '100%',
-  },
+	contentArea: {
+		width: '100%',
+	},
 	contentBorder: {
 		p: 1,
 		pt: 0,
 	},
 	title: {
-    width: '100%',
+		width: '100%',
 		minHeight: '50px',
 	},
 	description: {

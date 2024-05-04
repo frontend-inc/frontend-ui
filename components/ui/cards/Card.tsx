@@ -5,9 +5,7 @@ import { CardProps } from '../../../types'
 
 const Card: React.FC<CardProps> = (props) => {
 	const { variant } = props
-  return variant == 'list' ? 
-    <CardList {...props} /> : 
-    <CardGrid {...props} />  
+	return variant == 'list' ? <CardList {...props} /> : <CardGrid {...props} />
 }
 
 export default Card

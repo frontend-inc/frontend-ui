@@ -38,7 +38,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (props) => {
 			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<ForgotPasswordForm
-          loading={loading}
+					loading={loading}
 					errors={errors}
 					user={user}
 					handleChange={handleChange}

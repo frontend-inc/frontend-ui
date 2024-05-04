@@ -30,7 +30,7 @@ const AutocompleteOption: React.FC<AutocompleteOptionProps> = (props) => {
 				</ListItemIcon>
 			)}
 			{option?.image && (
-				<ListItemIcon sx={ sx.listItemIcon }>
+				<ListItemIcon sx={sx.listItemIcon}>
 					<Image
 						src={option?.image}
 						alt={option?.label}
@@ -114,15 +114,15 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 			handleClear()
 		}
 	}
-  
-  useEffect(() => {
-    if(typeof value === 'object'){
-      setSelected(value)
-    }else if(options?.length > 0){
-      setSelected(options.find((option) => option.value == value))
-    }
-  }, [value, options])
-  
+
+	useEffect(() => {
+		if (typeof value === 'object') {
+			setSelected(value)
+		} else if (options?.length > 0) {
+			setSelected(options.find((option) => option.value == value))
+		}
+	}, [value, options])
+
 	return (
 		<Stack
 			sx={{
@@ -137,62 +137,63 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 					{label}
 				</Typography>
 			)}
-      <Box sx={ sx.inputContainer }>
-			<Autocomplete
-				freeSolo={freeSolo}
-				multiple={multiselect}
-				disableCloseOnSelect={multiselect}
-				sx={{
-					...sx.autocomplete,
-					paper: sx.paper,
-					option: sx.option,
-					popperDisablePortal: sx.popperDisablePortal,
-				}}
-				value={selected}
-				onChange={(event, newValue) => {
-					handleOnChange(event, newValue)
-				}}
-				onInputChange={(event, newInputValue) => {
-					handleInputChange && handleInputChange(newInputValue)
-				}}
-				noOptionsText="No options"
-				clearOnBlur
-				handleHomeEndKeys
-				options={options}
-				//@ts-ignore
-				getOptionLabel={(option) => option?.label || ''}
-				//@ts-ignore
-				renderOption={(props, option) => (
-					<AutocompleteOption {...props} option={option} />
-				)}
-				PaperComponent={AutocompletePaper}
-				renderInput={(params) => (
-					<InputBase
-						placeholder={placeholder}
-						ref={params.InputProps.ref}
-						inputProps={{
-							...params.inputProps,
-							autoComplete: 'off',
-						}}
-						sx={{
-							...sx.inputBase,
-							//@ts-ignore
-							...(error && sx.inputError),
-						}}
-						endAdornment={
-							(selected?.value && handleClear) && (
-								<InputAdornment position="start" sx={ sx.inputAdornment }>
-									<IconButton onClick={handleInputClear} size="small">
-										<Icon name="X" color='text.secondary' size={20} />
-									</IconButton>
-								</InputAdornment>
-							)
-						}
-					/>
-				)}
-			/>
-			<ErrorText error={error} />
-      </Box>
+			<Box sx={sx.inputContainer}>
+				<Autocomplete
+					freeSolo={freeSolo}
+					multiple={multiselect}
+					disableCloseOnSelect={multiselect}
+					sx={{
+						...sx.autocomplete,
+						paper: sx.paper,
+						option: sx.option,
+						popperDisablePortal: sx.popperDisablePortal,
+					}}
+					value={selected}
+					onChange={(event, newValue) => {
+						handleOnChange(event, newValue)
+					}}
+					onInputChange={(event, newInputValue) => {
+						handleInputChange && handleInputChange(newInputValue)
+					}}
+					noOptionsText="No options"
+					clearOnBlur
+					handleHomeEndKeys
+					options={options}
+					//@ts-ignore
+					getOptionLabel={(option) => option?.label || ''}
+					//@ts-ignore
+					renderOption={(props, option) => (
+						<AutocompleteOption {...props} option={option} />
+					)}
+					PaperComponent={AutocompletePaper}
+					renderInput={(params) => (
+						<InputBase
+							placeholder={placeholder}
+							ref={params.InputProps.ref}
+							inputProps={{
+								...params.inputProps,
+								autoComplete: 'off',
+							}}
+							sx={{
+								...sx.inputBase,
+								//@ts-ignore
+								...(error && sx.inputError),
+							}}
+							endAdornment={
+								selected?.value &&
+								handleClear && (
+									<InputAdornment position="start" sx={sx.inputAdornment}>
+										<IconButton onClick={handleInputClear} size="small">
+											<Icon name="X" color="text.secondary" size={20} />
+										</IconButton>
+									</InputAdornment>
+								)
+							}
+						/>
+					)}
+				/>
+				<ErrorText error={error} />
+			</Box>
 		</Stack>
 	)
 }
@@ -239,9 +240,9 @@ const sx: any = {
 			borderRadius: (theme) => theme.shape.borderRadius,
 		},
 	},
-  inputContainer: {
-    width: '100%'
-  },
+	inputContainer: {
+		width: '100%',
+	},
 	paper: {
 		bgcolor: 'background.paper',
 		color: 'text.primary',
@@ -253,7 +254,7 @@ const sx: any = {
 	},
 	listItemIcon: {
 		minWidth: '32px',
-    mr: 1
+		mr: 1,
 	},
 	label: {
 		mb: 0,
@@ -278,8 +279,8 @@ const sx: any = {
 	circularProgress: {
 		color: 'text.secondary',
 	},
-  inputAdornment: {
-    position: 'absolute',
-    right: 0
-  }
+	inputAdornment: {
+		position: 'absolute',
+		right: 0,
+	},
 }

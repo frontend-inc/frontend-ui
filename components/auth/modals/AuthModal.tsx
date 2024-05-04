@@ -4,7 +4,7 @@ import {
 	LoginForm,
 	SignupForm,
 	ForgotPasswordForm,
-  ResetPasswordForm,
+	ResetPasswordForm,
 	VerifyPinForm,
 	VerifySendPinForm,
 } from '../..'
@@ -29,12 +29,12 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 		errors,
 		loading,
 		user,
-		updateMe,    
+		updateMe,
 		handleChange,
 		login,
 		signup,
 		verifyPin,
-		sendPin,    
+		sendPin,
 	} = useAuth()
 
 	const [tab, setTab] = useState(0)
@@ -45,12 +45,12 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 
 	const handleLogin = async () => {
 		let resp = await login({
-      ...user,
-      app_id: appId
-    })
+			...user,
+			app_id: appId,
+		})
 		if (resp?.id) {
 			setAuthOpen(false)
-      window.location.reload()
+			window.location.reload()
 		}
 	}
 
@@ -79,11 +79,11 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 		}
 	}
 
-  const handleResetPassword = async () => {
+	const handleResetPassword = async () => {
 		let resp = await updateMe({
 			password: user?.password,
-			password_confirmation: user?.password_confirmation
-    })
+			password_confirmation: user?.password_confirmation,
+		})
 		if (resp?.id) {
 			setAuthOpen(false)
 		}
@@ -173,19 +173,19 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 						user={user}
 						handleChange={handleChange}
 						handleSubmit={handleSendPin}
-            handleLogin={ handleLoginClick }
+						handleLogin={handleLoginClick}
 					/>
 				)}
-        { tab == 5 && (
-          <ResetPasswordForm
-            errors={errors }
-            loading={loading}
-            user={user}
-            handleChange={handleChange}
-            handleSubmit={handleResetPassword}
-            handleLogin={handleLoginClick}
-          />
-        )}
+				{tab == 5 && (
+					<ResetPasswordForm
+						errors={errors}
+						loading={loading}
+						user={user}
+						handleChange={handleChange}
+						handleSubmit={handleResetPassword}
+						handleLogin={handleLoginClick}
+					/>
+				)}
 			</Box>
 		</Modal>
 	)

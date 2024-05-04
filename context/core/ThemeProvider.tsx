@@ -27,7 +27,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 		headerFont,
 		bodyFont,
 		borderRadius,
-		deviceSize,    
+		deviceSize,
 		offset,
 	} = props || {}
 

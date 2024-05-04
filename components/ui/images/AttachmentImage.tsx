@@ -3,13 +3,13 @@ import { Box } from '@mui/material'
 import { Icon } from '../../../components'
 
 type AttachmentImageProps = {
-  icon?: string
+	icon?: string
 	height: number
 	width?: number
 }
 
 const AttachmentImage: React.FC<AttachmentImageProps> = (props) => {
-	const { height = 64, width=64, icon='File' } = props
+	const { height = 64, width = 64, icon = 'File' } = props
 
 	return (
 		<Box
@@ -28,9 +28,9 @@ export default AttachmentImage
 
 const sx = {
 	image: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
 		bgcolor: 'background.paper',
-	},	
+	},
 }

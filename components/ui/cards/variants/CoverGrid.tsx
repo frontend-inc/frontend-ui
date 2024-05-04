@@ -11,7 +11,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 	const {
 		label,
 		title,
-    description,
+		description,
 		image = '',
 		href,
 		handleClick,
@@ -21,10 +21,10 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		height = 320,
 		enableGradient = false,
 		enableOverlay = false,
-    enableEdit,
-    enableDelete,
-    handleEdit,
-    handleDelete,
+		enableEdit,
+		enableDelete,
+		handleEdit,
+		handleDelete,
 		icon,
 	} = props || {}
 
@@ -57,34 +57,39 @@ const CoverVert: React.FC<CardProps> = (props) => {
 				/>
 			</TouchableOpacity>
 			<Stack spacing={1} sx={sx.cover}>
-				<Stack sx={ sx.fullWidth } spacing={1} direction={'row'} alignItems="center">
+				<Stack
+					sx={sx.fullWidth}
+					spacing={1}
+					direction={'row'}
+					alignItems="center"
+				>
 					{icon && (
 						<Box>
 							<Icon size={20} name={icon} color="common.white" />
 						</Box>
 					)}
 					<Box sx={sx.content}>
-            <Stack sx={ sx.contentContainer } direction="row" spacing={1}>
-            <Box sx={sx.fullWidth }>
-              <Typography color="common.white" variant={textVariant}>
-                {truncate(title, 60)}
-              </Typography>
-              {description && (
-                <Typography color="common.white" variant="caption">
-                  {truncate(description, 30)}
-                </Typography>
-              )}
-            </Box>
-            {(enableEdit || enableDelete) && (
-              <MenuButton
-                icon='EllipsisVertical'
-                color='common.white'
-                handleEdit={ enableEdit ? handleEdit : undefined }
-                handleDelete={ enableDelete ? handleDelete : undefined }
-              />
-            )}
-            </Stack>
-					</Box>          
+						<Stack sx={sx.contentContainer} direction="row" spacing={1}>
+							<Box sx={sx.fullWidth}>
+								<Typography color="common.white" variant={textVariant}>
+									{truncate(title, 60)}
+								</Typography>
+								{description && (
+									<Typography color="common.white" variant="caption">
+										{truncate(description, 30)}
+									</Typography>
+								)}
+							</Box>
+							{(enableEdit || enableDelete) && (
+								<MenuButton
+									icon="EllipsisVertical"
+									color="common.white"
+									handleEdit={enableEdit ? handleEdit : undefined}
+									handleDelete={enableDelete ? handleDelete : undefined}
+								/>
+							)}
+						</Stack>
+					</Box>
 				</Stack>
 				{buttonText && (
 					<Box>
@@ -113,7 +118,7 @@ const sx = {
 		borderRadius: 1,
 	},
 	cover: {
-    width: '100%',
+		width: '100%',
 		position: 'absolute',
 		bottom: 0,
 		left: 0,
@@ -131,21 +136,21 @@ const sx = {
 			opacity: 0.9,
 		},
 	},
-  fullWidth: {    
-    width: '100%',
-  },
+	fullWidth: {
+		width: '100%',
+	},
 	content: {
-    p: 2,    
-    width: '100%',
+		p: 2,
+		width: '100%',
 		minHeight: '60px',
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'flex-start',
 	},
-  contentContainer: {  
-    width: '100%',  
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
-  }
+	contentContainer: {
+		width: '100%',
+		justifyContent: 'space-between',
+		alignItems: 'flex-end',
+	},
 }

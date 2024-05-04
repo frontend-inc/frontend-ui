@@ -8,18 +8,20 @@ type CollectionFilterButtonProps = {
 	filters?: FilterOptionType[]
 	loading?: boolean
 	filterOptions?: SearchFilterOptionType[]
-  disableFilterCount?: boolean
+	disableFilterCount?: boolean
 	handleFilter: (filter: FilterOptionType) => void
 	handleClear: () => void
 }
 
-const CollectionFilterButton: React.FC<CollectionFilterButtonProps> = (props) => {
+const CollectionFilterButton: React.FC<CollectionFilterButtonProps> = (
+	props
+) => {
 	const {
 		loading = false,
 		filters = [],
 		filterOptions = [],
 		handleFilter,
-    disableFilterCount=false
+		disableFilterCount = false,
 	} = props || {}
 
 	const [open, setOpen] = useState(false)
@@ -35,7 +37,7 @@ const CollectionFilterButton: React.FC<CollectionFilterButtonProps> = (props) =>
 	return (
 		<>
 			<Badge
-        sx={ sx.badge }
+				sx={sx.badge}
 				badgeContent={disableFilterCount ? 0 : filters?.length}
 				color="primary"
 				anchorOrigin={{
@@ -54,7 +56,11 @@ const CollectionFilterButton: React.FC<CollectionFilterButtonProps> = (props) =>
 						loading ? (
 							<IconLoading loading={loading} />
 						) : (
-							<Icon name="SlidersHorizontal" color='secondary.contrastText' size={20} />
+							<Icon
+								name="SlidersHorizontal"
+								color="secondary.contrastText"
+								size={20}
+							/>
 						)
 					}
 					onClick={handleClick}
@@ -125,7 +131,7 @@ const sx = {
 			sm: '360px',
 		},
 	},
-  badge: {
-    width: '100%',
-  }
+	badge: {
+		width: '100%',
+	},
 }

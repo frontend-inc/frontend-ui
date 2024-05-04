@@ -13,14 +13,14 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 
 	const {
 		loading,
-    delayedLoading,
+		delayedLoading,
 		user,
 		setUser,
 		currentUser,
 		updateMe,
 		handleChange,
 		fetchMe,
-    logout,
+		logout,
 		deleteAvatar,
 	} = useAuth()
 
@@ -34,7 +34,7 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 
 	const handleLogout = async () => {
 		await logout()
-    router.push(redirectUrl)
+		router.push(redirectUrl)
 	}
 
 	useEffect(() => {
@@ -57,12 +57,12 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 					}
 				>
 					<MyAccountForm
-            loading={delayedLoading}
+						loading={delayedLoading}
 						user={user}
 						handleChange={handleChange}
 						handleSubmit={handleSubmit}
 						handleDeleteAvatar={handleDeleteAvatar}
-            handleLogout={handleLogout}
+						handleLogout={handleLogout}
 					/>
 				</AuthScreen>
 			)}

@@ -12,121 +12,118 @@ export type ShowItemProps = {
 	enableBorder?: boolean
 	actions: ActionType[]
 	resource: any
-  enableEdit?: boolean  
-  handleEdit?: () => void
+	enableEdit?: boolean
+	handleEdit?: () => void
 }
 
 export type ShowProps = ShowItemProps & {
-  fields: FieldType[]
-  displayFields: FieldType[]
+	fields: FieldType[]
+	displayFields: FieldType[]
 	url: string
 	style: 'article' | 'person' | 'item'
 }
 
 const Show: React.FC<ShowProps> = (props) => {
-	
-  const {
+	const {
 		style = 'item',
-    resource,
+		resource,
 		fields,
-    displayFields,
+		displayFields,
 		url,
 		actions,
-    enableBorder,
-    enableEdit,    
+		enableBorder,
+		enableEdit,
 	} = props || {}
 
-  const {
-    loading,
-    errors,
-    update,
-    resource: _resource,
-    setResource,
-    removeAttachment,
-    handleDataChange,
-  } = useDocuments({
-    collection: resource?.content_type 
-  })
+	const {
+		loading,
+		errors,
+		update,
+		resource: _resource,
+		setResource,
+		removeAttachment,
+		handleDataChange,
+	} = useDocuments({
+		collection: resource?.content_type,
+	})
 
-  const handleRemove = async (name) => {
+	const handleRemove = async (name) => {
 		await removeAttachment(_resource?.id, name)
 	}
-  
-  const [openModal, setOpenModal] = useState(false)
 
-  const handleEdit = () => {    
-    setOpenModal(true)
-  }
+	const [openModal, setOpenModal] = useState(false)
 
-  const handleSubmit = async () => {
-    try {      
-      let resp = await update(_resource) 
-      if(resp?.id){
-        setOpenModal(false)
-      }
-    }catch(e){
-      console.error(e)
-    }
-  }
+	const handleEdit = () => {
+		setOpenModal(true)
+	}
 
-  const components = {
-    "item": Item,
-    "article": Article,
-    "person": Person
-  }
+	const handleSubmit = async () => {
+		try {
+			let resp = await update(_resource)
+			if (resp?.id) {
+				setOpenModal(false)
+			}
+		} catch (e) {
+			console.error(e)
+		}
+	}
 
-  const Component = components[style]
+	const components = {
+		item: Item,
+		article: Article,
+		person: Person,
+	}
 
-  useEffect(() => {
-    if(resource?.id){
-      setResource(resource)
-    }
-  }, [resource])
+	const Component = components[style]
+
+	useEffect(() => {
+		if (resource?.id) {
+			setResource(resource)
+		}
+	}, [resource])
 
 	return (
 		<Stack direction="column" spacing={2} sx={sx.root}>
-      <Component
-        resource={_resource}
-        actions={actions}
-        enableBorder={enableBorder}
-        enableEdit={enableEdit}
-        handleEdit={handleEdit}        
-      />			
-      { displayFields?.length > 0 && (
-        <Details
-          url={url}
-          fields={displayFields}
-          resource={resource}
-          enableBorder={enableBorder}
-        />
-      )}
-      <Drawer 
-        open={ openModal }
-        handleClose={() => setOpenModal(false) }
-        title={ resource?.id ? 'Edit' : 'Add' }
-        actions={
-          <Button 
-            fullWidth 
-            variant="contained"
-            color="primary"
-            onClick={ handleSubmit }
-            startIcon={ 
-              <IconLoading loading={ loading } />
-            }
-            >
-            { resource?.id ? 'Update' : 'Save' }
-          </Button>      
-        }
-      >
-        <Form  
-          loading={ loading }
-          errors={errors}
-          fields={ fields }
-          resource={ flattenDocument(_resource) }
-          handleChange={ handleDataChange }
-          handleRemove={ handleRemove }          
-        />
-      </Drawer>
+			<Component
+				resource={_resource}
+				actions={actions}
+				enableBorder={enableBorder}
+				enableEdit={enableEdit}
+				handleEdit={handleEdit}
+			/>
+			{displayFields?.length > 0 && (
+				<Details
+					url={url}
+					fields={displayFields}
+					resource={resource}
+					enableBorder={enableBorder}
+				/>
+			)}
+			<Drawer
+				open={openModal}
+				handleClose={() => setOpenModal(false)}
+				title={resource?.id ? 'Edit' : 'Add'}
+				actions={
+					<Button
+						fullWidth
+						variant="contained"
+						color="primary"
+						onClick={handleSubmit}
+						startIcon={<IconLoading loading={loading} />}
+					>
+						{resource?.id ? 'Update' : 'Save'}
+					</Button>
+				}
+			>
+				<Form
+					loading={loading}
+					errors={errors}
+					fields={fields}
+					resource={flattenDocument(_resource)}
+					handleChange={handleDataChange}
+					handleRemove={handleRemove}
+				/>
+			</Drawer>
 		</Stack>
 	)
 }

@@ -3,7 +3,9 @@ import { AttachmentInput } from '../../../components'
 import { AttachmentInputProps } from '../../../types'
 
 const ImageInput: React.FC<AttachmentInputProps> = (props) => {
-	return <AttachmentInput {...props} placeholder='Upload image' variant="image" />
+	return (
+		<AttachmentInput {...props} placeholder="Upload image" variant="image" />
+	)
 }
 
 export default ImageInput

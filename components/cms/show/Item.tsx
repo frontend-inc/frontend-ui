@@ -7,37 +7,38 @@ import { flattenDocument } from 'frontend-js'
 const Item: React.FC<ShowItemProps> = (props) => {
 	const MAX_CHARS = 500
 
-	const { actions, resource, enableBorder, enableEdit, handleEdit } = props || {}
+	const { actions, resource, enableBorder, enableEdit, handleEdit } =
+		props || {}
 	const { label, title, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
 
-  if (!resource) return null
+	if (!resource) return null
 	return (
-		<Box 
-      sx={{
-        ...sx.root,
-        ...(enableBorder && sx.rootBorder)
-      }}
-    >
+		<Box
+			sx={{
+				...sx.root,
+				...(enableBorder && sx.rootBorder),
+			}}
+		>
 			<Stack
 				sx={sx.container}
 				direction={{ md: 'row', xs: 'column' }}
 				spacing={4}
 			>
-				<Image 
-          src={image?.url} 
-          alt={title} 
-          height={360} 
-          label={label}
-          disableBorderRadius={enableBorder}
-        />
-				<Stack 
-          spacing={2} 
-          sx={{ 
-            ...sx.content,
-            ...(enableBorder && sx.contentBorder)
-          }}
-        >
+				<Image
+					src={image?.url}
+					alt={title}
+					height={360}
+					label={label}
+					disableBorderRadius={enableBorder}
+				/>
+				<Stack
+					spacing={2}
+					sx={{
+						...sx.content,
+						...(enableBorder && sx.contentBorder),
+					}}
+				>
 					<Typography color="text.primary" variant="h4">
 						{title}
 					</Typography>
@@ -56,27 +57,32 @@ const Item: React.FC<ShowItemProps> = (props) => {
 								{open ? 'See less' : '... See all'}
 							</Link>
 						)}
-					</Box>          
+					</Box>
 				</Stack>
-        {(actions || enableEdit) && (
-          <Stack 
-            sx={sx.actions}
-            direction={{ sm: 'row', xs: 'column' }} 
-            spacing={1} 
-            p={enableBorder ? 1 : 0}
-          >
-            { enableEdit && (
-              <ActionButton 
-                resource={flattenDocument(resource)} 
-                action={{ label: 'Edit', color: 'secondary', name: 'click', onClick: handleEdit }} 
-              /> 
-            )}
-            <Actions
-              actions={actions}
-              resource={flattenDocument(resource)}
-              justifyContent="flex-end"
-            />
-          </Stack>
+				{(actions || enableEdit) && (
+					<Stack
+						sx={sx.actions}
+						direction={{ sm: 'row', xs: 'column' }}
+						spacing={1}
+						p={enableBorder ? 1 : 0}
+					>
+						{enableEdit && (
+							<ActionButton
+								resource={flattenDocument(resource)}
+								action={{
+									label: 'Edit',
+									color: 'secondary',
+									name: 'click',
+									onClick: handleEdit,
+								}}
+							/>
+						)}
+						<Actions
+							actions={actions}
+							resource={flattenDocument(resource)}
+							justifyContent="flex-end"
+						/>
+					</Stack>
 				)}
 			</Stack>
 		</Box>
@@ -92,12 +98,12 @@ const sx = {
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
-  rootBorder: {
-    overflow: 'hidden',
-    borderRadius: theme => `${theme.shape.borderRadius}px`,
-    border: '1px solid',
-    borderColor: 'divider'
-  },
+	rootBorder: {
+		overflow: 'hidden',
+		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		border: '1px solid',
+		borderColor: 'divider',
+	},
 	container: {
 		width: '100%',
 		justifyContent: 'flex-start',
@@ -127,9 +133,9 @@ const sx = {
 			xs: '100%',
 		},
 	},
-  contentBorder: {
-    p: 2,
-  },
+	contentBorder: {
+		p: 2,
+	},
 	text: {
 		width: '100%',
 		whiteSpace: 'pre-line',
@@ -141,14 +147,14 @@ const sx = {
 		cursor: 'pointer',
 		color: 'text.secondary',
 	},
-  actions: {
-    width: '100%',
-    justifyContent: {
-      sm: 'flex-end',
-      xs: 'center'
-    }
-  },
-  actionsBorder: {
-    p: 1
-  }
+	actions: {
+		width: '100%',
+		justifyContent: {
+			sm: 'flex-end',
+			xs: 'center',
+		},
+	},
+	actionsBorder: {
+		p: 1,
+	},
 }

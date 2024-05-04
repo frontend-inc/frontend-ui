@@ -37,7 +37,7 @@ const sx = {
 		fontFamily: (theme) => theme.typography.fontFamily.overline,
 		letterSpacing: '0.05em',
 		cursor: 'pointer',
-		borderRadius: theme => `${theme.shape.borderRadius}px`,
+		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 		boxShadow: '1px 0px 0 0 rgba(0,0,0,0.1)',
 	},
 	darkMode: {

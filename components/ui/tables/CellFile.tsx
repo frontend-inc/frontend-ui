@@ -3,19 +3,19 @@ import { CellButton } from '../../../components'
 
 type CellFileProps = {
 	value: {
-    url: string
-  }
-  handleClick: (value: any) => void
+		url: string
+	}
+	handleClick: (value: any) => void
 }
 
 const CellFile: React.FC<CellFileProps> = (props) => {
 	const { value, handleClick } = props
-  if(!value?.url) return null;
-	return(
-    <CellButton icon={'File'} handleClick={handleClick}>
-      Attachment
-    </CellButton>
-  )
+	if (!value?.url) return null
+	return (
+		<CellButton icon={'File'} handleClick={handleClick}>
+			Attachment
+		</CellButton>
+	)
 }
 
 export default CellFile

@@ -40,7 +40,7 @@ export type AttachmentInputProps = {
 	variant?: 'image' | 'file'
 	objectFit?: 'contain' | 'cover'
 	size?: number
-  placeholder?: string
+	placeholder?: string
 }
 
 export type InputPropsType = {

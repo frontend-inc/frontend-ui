@@ -1,7 +1,7 @@
 import React from 'react'
 import {
-  AttachmentInput,
-  Autosuggest,
+	AttachmentInput,
+	Autosuggest,
 	ArrayInput,
 	DateInput,
 	ImageInput,
@@ -40,7 +40,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 	let componentMapper = {
 		array: ArrayInput,
 		string: TextInput,
-    file: AttachmentInput,
+		file: AttachmentInput,
 		url: TextInput,
 		text: TextInput,
 		number: TextInput,
@@ -55,9 +55,9 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 	}
 
 	let inputProps = {
-    array: {
-      value: value || []
-    },
+		array: {
+			value: value || [],
+		},
 		text: {
 			multiline: true,
 			rows: 6,
@@ -71,16 +71,16 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		price: {
 			type: 'number',
 		},
-    image: {
+		image: {
 			handleRemove,
 		},
-    video: {
+		video: {
 			handleRemove,
 		},
-    audio: {
+		audio: {
 			handleRemove,
 		},
-    file: {
+		file: {
 			handleRemove,
 		},
 	}

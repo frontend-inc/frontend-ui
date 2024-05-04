@@ -6,17 +6,18 @@ import { ShowItemProps } from './Show'
 import { flattenDocument } from 'frontend-js'
 
 const Article: React.FC<ShowItemProps> = (props) => {
-	const { actions, resource, enableBorder, enableEdit, handleEdit } = props || {}
+	const { actions, resource, enableBorder, enableEdit, handleEdit } =
+		props || {}
 	const { label, title, image, description, data } = resource || {}
 	const { published_at } = data || {}
 	return (
-		<Stack 
-      sx={{
-        ...sx.root,
-        ...(enableBorder && sx.rootBorder)
-      }} 
-      spacing={7}
-    >
+		<Stack
+			sx={{
+				...sx.root,
+				...(enableBorder && sx.rootBorder),
+			}}
+			spacing={7}
+		>
 			<Stack spacing={3} sx={sx.header}>
 				<Typography color="text.primary" variant="h3">
 					{title}
@@ -24,32 +25,34 @@ const Article: React.FC<ShowItemProps> = (props) => {
 				<Typography color="text.secondary" variant="caption">
 					{moment(published_at).format('MMMM D, YYYY')}
 				</Typography>
-        {(actions || enableEdit) && (
-          <Stack direction={{ xs: 'column', sm: 'row' }} sx={ sx.actions } spacing={1}>
-            { enableEdit && (
-              <ActionButton 
-                resource={flattenDocument(resource)} 
-                action={{ 
-                  label: 'Edit', 
-                  color: 'secondary', 
-                  name: 'click', 
-                  onClick: handleEdit 
-                }} 
-              /> 
-            )}
-            <Actions 
-              actions={actions} 
-              resource={flattenDocument(resource)} 
-            />
-          </Stack> 
-        )}
+				{(actions || enableEdit) && (
+					<Stack
+						direction={{ xs: 'column', sm: 'row' }}
+						sx={sx.actions}
+						spacing={1}
+					>
+						{enableEdit && (
+							<ActionButton
+								resource={flattenDocument(resource)}
+								action={{
+									label: 'Edit',
+									color: 'secondary',
+									name: 'click',
+									onClick: handleEdit,
+								}}
+							/>
+						)}
+						<Actions actions={actions} resource={flattenDocument(resource)} />
+					</Stack>
+				)}
 			</Stack>
-			<Image 
-        src={image?.url} 
-        alt={title} height={400} 
-        label={label}
-        disableBorderRadius={enableBorder}
-      />
+			<Image
+				src={image?.url}
+				alt={title}
+				height={400}
+				label={label}
+				disableBorderRadius={enableBorder}
+			/>
 			<Box sx={sx.content}>
 				<Typography variant="body1" color="text.primary" sx={sx.text}>
 					{description}
@@ -67,11 +70,11 @@ const sx = {
 		justifyContent: 'flex-start',
 		alignItems: 'center',
 	},
-  rootBorder: {
-    py: 2,
-    border: '1px solid',
-    borderColor: 'divider',
-  },
+	rootBorder: {
+		py: 2,
+		border: '1px solid',
+		borderColor: 'divider',
+	},
 	header: {
 		maxWidth: 500,
 		width: '100%',
@@ -91,11 +94,11 @@ const sx = {
 	caption: {
 		color: 'text.secondary',
 	},
-  actions: {
-    justifyContent: 'center',
-    width: {
-      sm: 'auto',
-      xs: '100%'
-    }
-  }
+	actions: {
+		justifyContent: 'center',
+		width: {
+			sm: 'auto',
+			xs: '100%',
+		},
+	},
 }

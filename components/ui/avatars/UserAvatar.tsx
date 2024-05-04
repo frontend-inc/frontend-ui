@@ -8,9 +8,7 @@ type UserAvatarProps = {
 
 const UserAvatar: React.FC<UserAvatarProps> = (props) => {
 	const { user, size = 24 } = props
-	return (
-    <Avatar size={size} src={ user?.avatar?.url } />		
-	)
+	return <Avatar size={size} src={user?.avatar?.url} />
 }
 
 export default UserAvatar

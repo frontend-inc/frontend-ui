@@ -71,7 +71,7 @@ const VerifyPin: React.FC<VerifyPinProps> = (props) => {
 						user={user}
 						handleChange={handleChange}
 						handleSubmit={handleSendPin}
-            handleLogin={ handleLogin }
+						handleLogin={handleLogin}
 					/>
 				) : (
 					<VerifyPinForm

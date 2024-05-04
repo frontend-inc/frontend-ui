@@ -11,9 +11,7 @@ type FieldDateProps = {
 const FieldDate: React.FC<FieldDateProps> = (props) => {
 	const { value, label, ...rest } = props
 	let formattedValue = moment(value).format('MM/DD/YYYY')
-	return (
-		<FieldString label={label} value={formattedValue} {...rest} />
-	)
+	return <FieldString label={label} value={formattedValue} {...rest} />
 }
 
 export default FieldDate

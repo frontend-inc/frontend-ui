@@ -24,13 +24,12 @@ export type FormWizardProps = {
 	endDescription: string
 	endImage: string
 	endButtonText: string
-  navigateUrl?: string
+	navigateUrl?: string
 }
 
 const FormWizard: React.FC<FormWizardProps> = (props) => {
-
-  const router = useRouter()
-  const { clientUrl } = useContext(AppContext)
+	const router = useRouter()
+	const { clientUrl } = useContext(AppContext)
 
 	const {
 		py = 4,
@@ -46,7 +45,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		endDescription,
 		endImage,
 		endButtonText,
-    navigateUrl
+		navigateUrl,
 	} = props
 
 	const [submitted, setSubmitted] = useState(false)
@@ -81,13 +80,13 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		setCurrentStep(0)
 	}
 
-  const handleSuccess = () => {
-    if(navigateUrl){
-      router.push(`${clientUrl}${navigateUrl}`)
-    }else{
-      handleResetForm()
-    }
-  }
+	const handleSuccess = () => {
+		if (navigateUrl) {
+			router.push(`${clientUrl}${navigateUrl}`)
+		} else {
+			handleResetForm()
+		}
+	}
 
 	const handleRemove = async (name) => {
 		await removeAttachment(resource?.id, name)

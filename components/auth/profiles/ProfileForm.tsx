@@ -10,18 +10,18 @@ export type ProfileFormProps = {
 }
 
 const ProfileForm: React.FC<ProfileFormProps> = (props) => {
-  const { resource, buttonText, fields, ...rest } = props 
+	const { resource, buttonText, fields, ...rest } = props
 	return (
-    <AuthRequired>
-      <CollectionForm 
-        { ...rest }
-        url="/api/v1/cms/profiles"        
-        fields={fields}
-        buttonText={buttonText}        
-        handle={resource?.handle}
-        onSuccessMessage='Profile updated successfully!'
-      />
-    </AuthRequired>
+		<AuthRequired>
+			<CollectionForm
+				{...rest}
+				url="/api/v1/cms/profiles"
+				fields={fields}
+				buttonText={buttonText}
+				handle={resource?.handle}
+				onSuccessMessage="Profile updated successfully!"
+			/>
+		</AuthRequired>
 	)
 }
 

@@ -22,15 +22,15 @@ type ScriptProviderProps = {
 	googleTagManagerId?: string
 	googleAnalyticsId?: string
 	gorgiasChatId?: string
-	gorgiasContactFormSrc?: string 
-  gtmId?: string
+	gorgiasContactFormSrc?: string
+	gtmId?: string
 	hotJarId?: string
 	redditPixelId?: string
 	segmentWriteKey?: string
 	tikTokPixelId?: string
 	facebookPixelId?: string
 	klaviyoCompanyId?: string
-	visualWebsiteOptimizerId?: string  
+	visualWebsiteOptimizerId?: string
 	children: React.ReactNode
 }
 
@@ -43,7 +43,7 @@ const ScriptProvider = (props: ScriptProviderProps) => {
 		googleAnalyticsId,
 		gorgiasChatId,
 		gorgiasContactFormSrc,
-    gtmId,
+		gtmId,
 		facebookPixelId,
 		hotJarId,
 		redditPixelId,
@@ -80,12 +80,13 @@ const ScriptProvider = (props: ScriptProviderProps) => {
 		segmentWriteKey,
 	}
 
-  const wrapGTMProvider = (gtmId, children) => {
-    return !gtmId ? children :
-      <GTMProvider state={{ id: gtmId }}>
-        {children}
-      </GTMProvider>    
-  }
+	const wrapGTMProvider = (gtmId, children) => {
+		return !gtmId ? (
+			children
+		) : (
+			<GTMProvider state={{ id: gtmId }}>{children}</GTMProvider>
+		)
+	}
 
 	return (
 		<ScriptContext.Provider value={value}>
@@ -112,7 +113,7 @@ const ScriptProvider = (props: ScriptProviderProps) => {
 				<Script strategy="beforeInteractive" src={gorgiasContactFormSrc} />
 			)}
 			{okendoSubscriberId && <OkendoScript subscriberId={okendoSubscriberId} />}
-      { wrapGTMProvider(gtmId, children) }
+			{wrapGTMProvider(gtmId, children)}
 		</ScriptContext.Provider>
 	)
 }

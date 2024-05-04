@@ -6,21 +6,21 @@ import { Icon } from '../../components'
 type MenuButtonProps = {
 	children?: React.ReactNode
 	icon?: string
-  color?: string	
-  enableIcons?: boolean
-  handleEdit?: (item: any) => void
-  handleDelete?: (item: any) => void
+	color?: string
+	enableIcons?: boolean
+	handleEdit?: (item: any) => void
+	handleDelete?: (item: any) => void
 }
 
 const MenuButton: React.FC<MenuButtonProps> = (props) => {
-	const { 
-    children, 
-    icon='Ellipsis', 
-    color,
-    enableIcons=false,
-    handleEdit,
-    handleDelete 
-  } = props
+	const {
+		children,
+		icon = 'Ellipsis',
+		color,
+		enableIcons = false,
+		handleEdit,
+		handleDelete,
+	} = props
 
 	const { open, anchorEl, closeMenu, toggleMenu } = useMenu()
 
@@ -31,35 +31,31 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
 
 	return (
 		<Box onClick={handleDefaultClick}>
-			<IconButton onClick={toggleMenu}>				
-        <Icon 
-          name={ icon }
-          size={20}
-          color={ color }
-        />				
+			<IconButton onClick={toggleMenu}>
+				<Icon name={icon} size={20} color={color} />
 			</IconButton>
 			<Menu open={open} anchorEl={anchorEl} onClose={closeMenu}>
 				{children}
-        { handleEdit && (
-          <MenuItem onClick={handleEdit}>
-            {enableIcons && (
-              <ListItemIcon>
-                <Icon name="Pencil" size={20} />
-              </ListItemIcon>
-            )}
-            Edit 
-          </MenuItem>
-        )}
-        { handleDelete && (
-          <MenuItem onClick={handleDelete}>
-            {enableIcons && (
-              <ListItemIcon>
-                <Icon name="Trash" size={20} />
-              </ListItemIcon>
-            )}
-            Delete
-          </MenuItem>
-        )}
+				{handleEdit && (
+					<MenuItem onClick={handleEdit}>
+						{enableIcons && (
+							<ListItemIcon>
+								<Icon name="Pencil" size={20} />
+							</ListItemIcon>
+						)}
+						Edit
+					</MenuItem>
+				)}
+				{handleDelete && (
+					<MenuItem onClick={handleDelete}>
+						{enableIcons && (
+							<ListItemIcon>
+								<Icon name="Trash" size={20} />
+							</ListItemIcon>
+						)}
+						Delete
+					</MenuItem>
+				)}
 			</Menu>
 		</Box>
 	)

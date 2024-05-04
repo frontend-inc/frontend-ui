@@ -33,11 +33,11 @@ const Details: React.FC<DetailsProps> = (props) => {
 							xs={12}
 							sm={FULL_WIDTH_VARIANTS.includes(field?.variant) ? 12 : 4}
 						>
-								<Field 
-                  field={field} 
-                  enableBorder={enableBorder} 
-                  document={document} 
-                />
+							<Field
+								field={field}
+								enableBorder={enableBorder}
+								document={document}
+							/>
 						</Grid>
 					))}
 			</Grid>
@@ -50,7 +50,7 @@ export default Details
 const sx = {
 	root: {
 		width: '100%',
-	},	
+	},
 	itemFullWidth: {
 		gridColumn: 'span 3',
 	},

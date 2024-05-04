@@ -1,10 +1,6 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
-import {
-	Link,
-	Divider,
-	Stack,
-} from '@mui/material'
+import { Link, Divider, Stack } from '@mui/material'
 import { MenuLinkType } from '../../../types'
 import { SocialLink } from '../..'
 
@@ -33,7 +29,7 @@ const Footer: React.FC<FooterProps> = (props) => {
 			<Stack direction="row" spacing={0}>
 				{socialLinks?.map((link, i) => (
 					<SocialLink
-            key={i}          
+						key={i}
 						provider={link?.name?.toLowerCase()}
 						url={link?.url}
 					/>

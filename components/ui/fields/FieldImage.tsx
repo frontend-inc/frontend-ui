@@ -12,13 +12,9 @@ type FieldImageProps = {
 const FieldImage: React.FC<FieldImageProps> = (props) => {
 	const { label, value, objectFit = 'cover', ...rest } = props
 	return (
-    <FieldWrapper label={label} {...rest}>
-      <Image
-        src={value?.url || value}
-        height={120}
-        objectFit={objectFit}
-      />
-    </FieldWrapper>
+		<FieldWrapper label={label} {...rest}>
+			<Image src={value?.url || value} height={120} objectFit={objectFit} />
+		</FieldWrapper>
 	)
 }
 

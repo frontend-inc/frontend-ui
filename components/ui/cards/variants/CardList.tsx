@@ -22,10 +22,10 @@ const CardList: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
-    enableEdit,
-    enableDelete,
-    handleEdit,
-    handleDelete
+		enableEdit,
+		enableDelete,
+		handleEdit,
+		handleDelete,
 	} = props || {}
 
 	const router = useRouter()
@@ -64,34 +64,34 @@ const CardList: React.FC<CardProps> = (props) => {
 						/>
 					</TouchableOpacity>
 				</Box>
-        <Stack sx={ sx.contentArea } direction="row" spacing={1}>
-          <Stack
-            direction="column"
-            spacing={1}
-            sx={{
-              ...sx.content,
-              ...(enableBorder && sx.contentBorder),
-            }}
-          >
-            <Typography color="textPrimary" variant={textVariant}>
-              {truncate(title)}
-            </Typography>
-            <Typography
-              color="text.secondary"
-              variant="body2"
-              sx={sx.description}
-            >
-              {truncate(description, 80)}
-            </Typography>
-          </Stack>
-          {(enableEdit || enableDelete) && (
-            <MenuButton
-              icon='EllipsisVertical'
-              handleEdit={ enableEdit ? handleEdit : undefined }
-              handleDelete={ enableDelete ? handleDelete : undefined }
-            />
-          )}
-        </Stack> 
+				<Stack sx={sx.contentArea} direction="row" spacing={1}>
+					<Stack
+						direction="column"
+						spacing={1}
+						sx={{
+							...sx.content,
+							...(enableBorder && sx.contentBorder),
+						}}
+					>
+						<Typography color="textPrimary" variant={textVariant}>
+							{truncate(title)}
+						</Typography>
+						<Typography
+							color="text.secondary"
+							variant="body2"
+							sx={sx.description}
+						>
+							{truncate(description, 80)}
+						</Typography>
+					</Stack>
+					{(enableEdit || enableDelete) && (
+						<MenuButton
+							icon="EllipsisVertical"
+							handleEdit={enableEdit ? handleEdit : undefined}
+							handleDelete={enableDelete ? handleDelete : undefined}
+						/>
+					)}
+				</Stack>
 				{buttonText && (
 					<Box
 						sx={{
@@ -160,9 +160,9 @@ const sx = {
 		},
 		height: '100%',
 	},
-  contentArea: {
+	contentArea: {
 		width: '100%',
-  },
+	},
 	content: {
 		width: '100%',
 		justifyContent: 'flex-start',

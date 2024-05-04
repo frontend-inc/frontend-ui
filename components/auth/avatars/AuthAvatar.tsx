@@ -13,7 +13,7 @@ const AuthAvatar: React.FC<AuthAvatarProps> = (props) => {
 
 	return (
 		<Avatar variant="circular" src={currentUser?.avatar?.url} sx={sx.avatar}>
-			<Icon name='User' size={size} color={'primary.contrastText'} />
+			<Icon name="User" size={size} color={'primary.contrastText'} />
 		</Avatar>
 	)
 }

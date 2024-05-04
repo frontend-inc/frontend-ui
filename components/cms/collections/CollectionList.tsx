@@ -10,27 +10,27 @@ type CollectionListProps = {
 	buttonText?: string
 	enableBorder?: boolean
 	enableGradient?: boolean
-  enableEdit?: boolean
-  enableCreate?: boolean
-  enableDelete?: boolean
-  handleEdit?: (item: any) => void
-  handleDelete?: (item: any) => void
+	enableEdit?: boolean
+	enableCreate?: boolean
+	enableDelete?: boolean
+	handleEdit?: (item: any) => void
+	handleDelete?: (item: any) => void
 }
 
 const CollectionList: React.FC<CollectionListProps> = (props) => {
 	const {
 		resources,
 		handleClick,
-    handleEdit,
-    handleDelete,
+		handleEdit,
+		handleDelete,
 		variant = 'grid',
 		style = 'card',
 		buttonText,
 		enableBorder = false,
 		enableGradient = false,
-    enableEdit = false,
-    enableCreate = false,
-    enableDelete = false,
+		enableEdit = false,
+		enableCreate = false,
+		enableDelete = false,
 	} = props
 
 	return (
@@ -39,7 +39,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 				sx={{
 					...sx.root,
 					...(variant == 'grid' ? sx.grid : sx.list),
-          ...(style == 'chip' && sx.listDense)
+					...(style == 'chip' && sx.listDense),
 				}}
 			>
 				{resources?.map((resource, index) => (
@@ -54,13 +54,13 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 						description={resource?.description}
 						buttonText={buttonText}
 						handleClick={() => handleClick(resource)}
-            handleEdit={ () => handleEdit(resource) }
-            handleDelete={ () => handleDelete(resource)  }
+						handleEdit={() => handleEdit(resource)}
+						handleDelete={() => handleDelete(resource)}
 						enableBorder={enableBorder}
 						enableGradient={enableGradient}
-            enableEdit={enableEdit}
-            enableCreate={enableCreate}
-            enableDelete={enableDelete}
+						enableEdit={enableEdit}
+						enableCreate={enableCreate}
+						enableDelete={enableDelete}
 					/>
 				))}
 			</Box>
@@ -79,9 +79,9 @@ const sx = {
 		flexDirection: 'column',
 		gap: '16px',
 	},
-  listDense: {
-    gap: '8px'
-  },
+	listDense: {
+		gap: '8px',
+	},
 	grid: {
 		display: 'grid',
 		gridTemplateColumns: {

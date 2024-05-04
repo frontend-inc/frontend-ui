@@ -13,7 +13,7 @@ export type MenuLinkType = {
 	url?: string
 	icon?: string
 	link_type?: MenuLinkTypes
-  require_auth?: boolean
+	require_auth?: boolean
 	position: number
 	document_id?: number
 	collection_id?: number

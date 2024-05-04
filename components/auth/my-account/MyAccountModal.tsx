@@ -3,14 +3,12 @@ import { AppContext } from '../../../context'
 import { useAuth } from 'frontend-js'
 import { Modal, MyAccountForm } from '../../../components'
 
-
 const MyAccount: React.FC = () => {
-
-  const { myAccountOpen, setMyAccountOpen } = useContext(AppContext)
+	const { myAccountOpen, setMyAccountOpen } = useContext(AppContext)
 
 	const {
 		loading,
-    delayedLoading,
+		delayedLoading,
 		user,
 		setUser,
 		currentUser,
@@ -18,13 +16,13 @@ const MyAccount: React.FC = () => {
 		handleChange,
 		fetchMe,
 		deleteAvatar,
-    logout 
+		logout,
 	} = useAuth()
 
-  const handleLogout = async () => {
-    await logout()
-    setMyAccountOpen(false)
-  }
+	const handleLogout = async () => {
+		await logout()
+		setMyAccountOpen(false)
+	}
 
 	const handleDeleteAvatar = async () => {
 		await deleteAvatar()
@@ -42,26 +40,26 @@ const MyAccount: React.FC = () => {
 		}
 	}, [currentUser])
 
-  if(!currentUser) return null;
-	return (		
-    <Modal 
-      open={myAccountOpen}
-      handleClose={() => setMyAccountOpen(false)}
-      title={
-        currentUser?.id ? 
-          `${currentUser?.first_name} ${currentUser?.last_name}` : 
-          'My Account'
-      }
-    >
-      <MyAccountForm
-        loading={delayedLoading}
-        user={user}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-        handleDeleteAvatar={handleDeleteAvatar}
-        handleLogout={ handleLogout }
-      />
-    </Modal>					
+	if (!currentUser) return null
+	return (
+		<Modal
+			open={myAccountOpen}
+			handleClose={() => setMyAccountOpen(false)}
+			title={
+				currentUser?.id
+					? `${currentUser?.first_name} ${currentUser?.last_name}`
+					: 'My Account'
+			}
+		>
+			<MyAccountForm
+				loading={delayedLoading}
+				user={user}
+				handleChange={handleChange}
+				handleSubmit={handleSubmit}
+				handleDeleteAvatar={handleDeleteAvatar}
+				handleLogout={handleLogout}
+			/>
+		</Modal>
 	)
 }
 

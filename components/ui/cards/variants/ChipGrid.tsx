@@ -2,7 +2,7 @@ import React from 'react'
 import {
 	Avatar,
 	Box,
-  Stack,
+	Stack,
 	List,
 	ListItem,
 	ListItemButton,
@@ -22,58 +22,58 @@ const ChipList: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
-    enableEdit,
-    enableDelete,
-    handleEdit,
-    handleDelete,
+		enableEdit,
+		enableDelete,
+		handleEdit,
+		handleDelete,
 	} = props
 
 	return (
 		<List
-      dense
+			dense
 			disablePadding
 			sx={{
 				...sx.root,
 				...(enableBorder && sx.rootBorder),
 			}}
 		>
-			<ListItem 
-        disablePadding 
-        disableGutters
-        secondaryAction={
-          <Stack direction="row" spacing={1} sx={ sx.actions }>
-            {(enableEdit || enableDelete) && (
-              <MenuButton
-                icon='EllipsisVertical'
-                handleEdit={ enableEdit ? handleEdit : undefined }
-                handleDelete={ enableDelete ? handleDelete : undefined }
-              />
-            )}
-          </Stack>
-        }  
-      >        
+			<ListItem
+				disablePadding
+				disableGutters
+				secondaryAction={
+					<Stack direction="row" spacing={1} sx={sx.actions}>
+						{(enableEdit || enableDelete) && (
+							<MenuButton
+								icon="EllipsisVertical"
+								handleEdit={enableEdit ? handleEdit : undefined}
+								handleDelete={enableDelete ? handleDelete : undefined}
+							/>
+						)}
+					</Stack>
+				}
+			>
 				<ListItemButton
 					sx={sx.listItemButton}
 					onClick={handleClick && handleClick}
 				>
-          { image && (
-            <ListItemIcon>
-              <Avatar
-                sx={{
-                  ...sx.avatar,
-                  ...(enableGradient && sx.gradient),
-                  ...(enableOverlay && sx.overlay),
-                }}
-                src={image}
-                alt={title}
-              >
-                <Box />
-              </Avatar>
-            </ListItemIcon>
-          )}
+					{image && (
+						<ListItemIcon>
+							<Avatar
+								sx={{
+									...sx.avatar,
+									...(enableGradient && sx.gradient),
+									...(enableOverlay && sx.overlay),
+								}}
+								src={image}
+								alt={title}
+							>
+								<Box />
+							</Avatar>
+						</ListItemIcon>
+					)}
 					<ListItemText
 						primary={
-							<Typography variant='body1' color="text.primary">
+							<Typography variant="body1" color="text.primary">
 								{title}
 							</Typography>
 						}
@@ -129,7 +129,7 @@ const sx = {
 		width: '32px',
 		backgroundImage: 'linear-gradient(45deg, #999999,#DDDDDD,#FAFAFA)',
 	},
-  actions: {
-    px: 1
-  }
+	actions: {
+		px: 1,
+	},
 }

@@ -4,10 +4,8 @@ import ChipGrid from './variants/ChipGrid'
 import { CardProps } from '../../../types'
 
 const Chip: React.FC<CardProps> = (props) => {
-  const { variant } = props
-	return variant == 'list' ? 
-    <ChipList {...props} /> : 
-    <ChipGrid {...props} />
+	const { variant } = props
+	return variant == 'list' ? <ChipList {...props} /> : <ChipGrid {...props} />
 }
 
 export default Chip

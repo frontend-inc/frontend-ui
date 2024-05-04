@@ -1,9 +1,5 @@
 import React, { useState } from 'react'
-import {
-  TableList,
-	TableToolbar,
-	FilterPopup,
-} from '../../../components'
+import { TableList, TableToolbar, FilterPopup } from '../../../components'
 import { useSelected } from '../../../hooks'
 
 type TableProps = {
@@ -25,7 +21,7 @@ type TableProps = {
 	page?: number
 	perPage?: number
 	numPages?: number
-  numResults?: number
+	numResults?: number
 	totalCount?: number
 	query: any
 	handleQueryChange: (e: any) => void
@@ -34,8 +30,8 @@ type TableProps = {
 	handleSearch?: (keywords: any) => void
 	handleKeywordSearch: (keywords: string) => void
 	handleSort?: (field: any) => void
-  enableBorder?: boolean
-  disableBorderRadius?: boolean
+	enableBorder?: boolean
+	disableBorderRadius?: boolean
 	styles?: any
 }
 
@@ -67,13 +63,13 @@ const Table: React.FC<TableProps> = (props) => {
 		handleSort,
 
 		page = 1,
-    perPage = 10,
+		perPage = 10,
 		numPages,
-    numResults,
+		numResults,
 		totalCount,
-    handlePaginate,
-    enableBorder = false,
-    disableBorderRadius = false,
+		handlePaginate,
+		enableBorder = false,
+		disableBorderRadius = false,
 		styles = {},
 	} = props
 
@@ -107,49 +103,49 @@ const Table: React.FC<TableProps> = (props) => {
 	}
 
 	return (
-    <>
-      <TableList
-        loading={loading}        
-        enableBorder={enableBorder}
-        disableBorderRadius={disableBorderRadius}
-        query={query}
-        toolbar={
-          <TableToolbar
-            loading={loading}
-            query={query}
-            selected={selected}
-            handleKeywordSearch={handleKeywordSearch}
-            handleKeywordChange={handleKeywordChange}
-            handleFilter={handleFilterClick}
-            handleClearQuery={handleClearQuery}
-            enableEdit={enableEdit}
-            enableDelete={enableDelete}
-            handleDelete={handleDelete}
-            handleEdit={handleEditSelected}
-            handlePublish={handlePublish}
-            handleUnpublish={handleUnpublish}
-            secondaryActions={secondaryActions}
-          />  
-        }
-        fields={fields}
-        rows={rows}
-        enableEdit={enableEdit}
-        enableSelect={enableSelect}
-        selected={selected}
-        selectedIds={selectedIds}
-        handleClick={handleClick}
-        handleEdit={handleEdit}
-        handleSelect={handleSelect}
-        handleSort={handleSort}
-        handleSelectAll={handleSelectAll}
-        page={page}
-        perPage={perPage}
-        numPages={numPages}
-        numResults={numResults}
-        totalCount={totalCount}
-        handlePaginate={handlePaginate}
-        styles={styles}
-      />
+		<>
+			<TableList
+				loading={loading}
+				enableBorder={enableBorder}
+				disableBorderRadius={disableBorderRadius}
+				query={query}
+				toolbar={
+					<TableToolbar
+						loading={loading}
+						query={query}
+						selected={selected}
+						handleKeywordSearch={handleKeywordSearch}
+						handleKeywordChange={handleKeywordChange}
+						handleFilter={handleFilterClick}
+						handleClearQuery={handleClearQuery}
+						enableEdit={enableEdit}
+						enableDelete={enableDelete}
+						handleDelete={handleDelete}
+						handleEdit={handleEditSelected}
+						handlePublish={handlePublish}
+						handleUnpublish={handleUnpublish}
+						secondaryActions={secondaryActions}
+					/>
+				}
+				fields={fields}
+				rows={rows}
+				enableEdit={enableEdit}
+				enableSelect={enableSelect}
+				selected={selected}
+				selectedIds={selectedIds}
+				handleClick={handleClick}
+				handleEdit={handleEdit}
+				handleSelect={handleSelect}
+				handleSort={handleSort}
+				handleSelectAll={handleSelectAll}
+				page={page}
+				perPage={perPage}
+				numPages={numPages}
+				numResults={numResults}
+				totalCount={totalCount}
+				handlePaginate={handlePaginate}
+				styles={styles}
+			/>
 			<FilterPopup
 				open={showFilters}
 				anchorEl={anchorEl}

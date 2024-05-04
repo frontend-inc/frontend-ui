@@ -13,20 +13,15 @@ const CellUser: React.FC<CellUserProps> = (props) => {
 	return (
 		<Box sx={sx.cell}>
 			<Button
-        sx={ sx.button }
-        size="small"
-        color="secondary"
-				startIcon={
-          user?.avatar?.url &&
-            <UserAvatar 
-              user={ user }            
-            />
-        }        
-			>					
-       <Typography variant="caption">
-	        { user?.first_name } { user?.last_name }
-        </Typography>
-      </Button>
+				sx={sx.button}
+				size="small"
+				color="secondary"
+				startIcon={user?.avatar?.url && <UserAvatar user={user} />}
+			>
+				<Typography variant="caption">
+					{user?.first_name} {user?.last_name}
+				</Typography>
+			</Button>
 		</Box>
 	)
 }
@@ -39,7 +34,7 @@ const sx = {
 		display: 'flex',
 		justifyContent: 'flex-start',
 	},
-  button: {
-    borderRadius: theme => theme.shape.borderRadius,
-  }
+	button: {
+		borderRadius: (theme) => theme.shape.borderRadius,
+	},
 }

@@ -3,13 +3,13 @@ import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
 import { Button, Grid, Box, Stack } from '@mui/material'
 import {
-  Form,
-  Drawer,
-  AlertModal,
-  Icon,
+	Form,
+	Drawer,
+	AlertModal,
+	Icon,
 	CollectionFilterButton,
 	SearchInput,
-  IconLoading
+	IconLoading,
 } from '../../../components'
 import { AppContext } from '../../../context'
 import { FieldType, FilterOptionType } from '../../../types'
@@ -22,31 +22,32 @@ import { CollectionProps } from './Collection'
 import { filterDocumentLinks } from '../../../helpers'
 
 export type ForeignCollectionTableProps = CollectionProps & {
-  resource: any 
-  field: FieldType
-  foreignUrl?: string
-  foreignContentType?: string
+	resource: any
+	field: FieldType
+	foreignUrl?: string
+	foreignContentType?: string
 	headers: {
-    name: string
-    label: string 
-    variant: string
-    sortable: boolean
-  }[]	
+		name: string
+		label: string
+		variant: string
+		sortable: boolean
+	}[]
 }
 
-const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) => {
-	
-  const router = useRouter()
+const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
+	props
+) => {
+	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
 	const {
-    resource,
-    field,
+		resource,
+		field,
 		url,
-    foreignUrl,
-    foreignContentType,
-    fields,
-    headers,
+		foreignUrl,
+		foreignContentType,
+		fields,
+		headers,
 		filterAnchor = 'left',
 		filterOptions = [],
 		query: defaultQuery = {},
@@ -55,77 +56,77 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
 		enableFilters = false,
 		navigateUrl,
 		enableBorder = false,
-    enableEdit=false,
-    enableCreate=false,
-    enableDelete=false
+		enableEdit = false,
+		enableCreate = false,
+		enableDelete = false,
 	} = props
 
-  const [openModal, setOpenModal] = useState(false)
-  const [openDeleteModal, setOpenDeleteModal] = useState(false)
+	const [openModal, setOpenModal] = useState(false)
+	const [openDeleteModal, setOpenDeleteModal] = useState(false)
 
-  const { 
-    loading, 
-    delayedLoading,
-    query, 
-    resources, 
-    findLinks,
-    page, 
-    numPages, 
-    numResults,
-    totalCount,
-    paginate,    
-    addLinks 
-  } = useResource({
+	const {
+		loading,
+		delayedLoading,
+		query,
+		resources,
+		findLinks,
+		page,
+		numPages,
+		numResults,
+		totalCount,
+		paginate,
+		addLinks,
+	} = useResource({
 		name: 'document',
 		url,
 	})
 
-	const { 
-    errors,
-    resource: _resource,
-    setResource,
-    update,
-    create,
-    destroy,
-    removeAttachment,
-  } = useResource({
-    name: 'document',
-    url: foreignUrl
-  })
+	const {
+		errors,
+		resource: _resource,
+		setResource,
+		update,
+		create,
+		destroy,
+		removeAttachment,
+	} = useResource({
+		name: 'document',
+		url: foreignUrl,
+	})
 
 	const [keywords, setKeywords] = useState('')
 
 	const handleKeywordChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
 		setKeywords(ev.target.value)
-	}  
+	}
 
 	const handleSearch = (keywords: string) => {
 		findLinks(resource.id, foreignContentType, {
 			...query,
-      ...defaultQuery,
+			...defaultQuery,
 			keywords: keywords,
 			page: 1,
 			per_page: perPage,
 		})
 	}
 
-  const handlePaginate = (ev: any, page: number) => {
-    paginate(page)
-  }
+	const handlePaginate = (ev: any, page: number) => {
+		paginate(page)
+	}
 
-  const handleSort = (field: FieldType) => {
-    handleSortBy(field?.name)
-  }
+	const handleSort = (field: FieldType) => {
+		handleSortBy(field?.name)
+	}
 
 	const handleSortBy = (sortBy: string) => {
-    let sortDir = query?.sort_direction 
-    if(sortBy == query?.sort_by){
-      sortDir = query?.sort_direction == 'asc' ? 'desc' : 'asc'
-    } 
+		let sortDir = query?.sort_direction
+		if (sortBy == query?.sort_by) {
+			sortDir = query?.sort_direction == 'asc' ? 'desc' : 'asc'
+		}
 		findLinks(resource?.id, foreignContentType, {
 			...query,
 			sort_by: sortBy,
-      sort_direction: sortDir 
+			sort_direction: sortDir,
 		})
 	}
 
@@ -133,7 +134,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
 		activeFilters,
 		setActiveFilters,
 		handleAddFilter,
-    buildQueryFilters
+		buildQueryFilters,
 	} = useFilters({
 		query,
 	})
@@ -141,10 +142,10 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
 	// Filter methods
 	const handleClearFilters = () => {
 		setActiveFilters([])
-		findLinks(resource?.id, foreignContentType, {      
+		findLinks(resource?.id, foreignContentType, {
 			filters: {
-        ...defaultQuery?.filters,
-      },
+				...defaultQuery?.filters,
+			},
 			sort_by: 'id',
 			sort_direction: 'desc',
 			keywords: '',
@@ -187,198 +188,199 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
 		}
 	}
 
-  const handleAdd = () => {
-    setResource({})
-    setOpenModal(true)
-  }
+	const handleAdd = () => {
+		setResource({})
+		setOpenModal(true)
+	}
 
-  const handleEdit = (item) => {
-    setResource(item)
-    setOpenModal(true)
-  }
+	const handleEdit = (item) => {
+		setResource(item)
+		setOpenModal(true)
+	}
 
-  const handleSubmit = async () => {
+	const handleSubmit = async () => {
 		try {
 			let resp
 			if (_resource?.id) {
 				resp = await update(_resource)
 			} else {
 				resp = await create(_resource)
-        if(resp?.id){
-          await addLinks(resource?.handle, [resp.id])                                        
-        }        
+				if (resp?.id) {
+					await addLinks(resource?.handle, [resp.id])
+				}
 			}
-			if(resp?.id) {        
-        handleFetchResources()
-        setResource({})
-        setOpenModal(false)
+			if (resp?.id) {
+				handleFetchResources()
+				setResource({})
+				setOpenModal(false)
 			}
 		} catch (err) {
 			console.log('Error', err)
 		}
 	}
 
-  const handleDeleteClick = (item) => {
-    setResource(item)
-    setOpenDeleteModal(true)
-  }
+	const handleDeleteClick = (item) => {
+		setResource(item)
+		setOpenDeleteModal(true)
+	}
 
-  const handleDelete = async () => {
-    await destroy(_resource?.id)
-    setOpenDeleteModal(false)
-    setOpenModal(false)
-    setResource({})
-    handleFetchResources()
-  }
+	const handleDelete = async () => {
+		await destroy(_resource?.id)
+		setOpenDeleteModal(false)
+		setOpenModal(false)
+		setResource({})
+		handleFetchResources()
+	}
 
-  const handleRemove = async (name) => {
+	const handleRemove = async (name) => {
 		await removeAttachment(_resource?.id, name)
 	}
 
-  const [rows, setRows] = useState([])
+	const [rows, setRows] = useState([])
 
-  const handleFetchResources = async () => {    
-    let filterQuery = {
-      ...query,
-      ...defaultQuery,
-      per_page: perPage,
-      page: 1,
-    }
-    findLinks(resource?.id, foreignContentType, filterQuery)
-  }  
+	const handleFetchResources = async () => {
+		let filterQuery = {
+			...query,
+			...defaultQuery,
+			per_page: perPage,
+			page: 1,
+		}
+		findLinks(resource?.id, foreignContentType, filterQuery)
+	}
 
-  useEffect(() => {
-    if(resources?.length >= 0){
-      let flatten = flattenDocuments(resources)
-      setRows(flatten)
-    }    
-  }, [resources])
+	useEffect(() => {
+		if (resources?.length >= 0) {
+			let flatten = flattenDocuments(resources)
+			setRows(flatten)
+		}
+	}, [resources])
 
-  useEffect(() => {    
-		if (resource?.id && foreignContentType) {      
+	useEffect(() => {
+		if (resource?.id && foreignContentType) {
 			handleFetchResources()
 		}
 	}, [resource, foreignContentType])
 
-
-  return (
-  <Stack spacing={1} sx={sx.root}>    
-    <Grid container spacing={0}>
-      {enableFilters && filterAnchor == 'left' && (
-        <Grid item xs={12} sm={4} lg={3}>
-          <Box sx={sx.filtersContainer}>
-            <CollectionSearchFilters
-              filters={activeFilters}
-              filterOptions={filterOptions}
-              handleFilter={handleFilter}
-            />
-          </Box>
-        </Grid>
-      )}
-      <Grid
-        item
-        xs={12}
-        sm={enableFilters && filterAnchor == 'left' ? 8 : 12}
-        lg={enableFilters && filterAnchor == 'left' ? 9 : 12}
-      >
-        <Box sx={{ ...(delayedLoading && sx.loading) }}>
-          <TableList
-            toolbar={
-              <Stack
-                direction={{ xs: 'column', sm: 'row' }}
-                sx={sx.toolbar}
-                spacing={1}
-              >
-                {enableSearch && (
-                  <SearchInput
-                    value={keywords}
-                    handleChange={handleKeywordChange}
-                    handleSearch={handleSearch}
-                  />
-                )}
-                {enableFilters && filterAnchor == 'top' && (
-                  <Box sx={ sx.fullWidth }>
-                    <CollectionFilterButton
-                      disableFilterCount={false}
-                      filters={activeFilters}
-                      handleFilter={handleFilter}
-                      handleClear={handleClearFilters}
-                      filterOptions={filterOptions}
-                    />
-                  </Box>
-                )}
-                { enableCreate && (
-                  <Box sx={ sx.fullWidth }>
-                    <Button                     
-                      sx={ sx.button }
-                      color="secondary"
-                      variant="contained"
-                      onClick={ handleAdd }
-                      startIcon={
-                        <Icon name="Plus" color='secondary.contrastText' size={20} />
-                      }
-                    >
-                      Add 
-                    </Button> 
-                  </Box>
-                )}
-              </Stack>
-            }
-            enableBorder={enableBorder}
-            enableEdit={enableEdit}
-            handleEdit={handleEdit}
-            enableDelete={enableDelete}
-            handleDelete={handleDeleteClick}
-            loading={resources && loading}
-            fields={headers}
-            rows={rows}
-            handleClick={handleClick}
-            query={query}
-            handleSort={handleSort}
-            page={page}
-            perPage={perPage}
-            numPages={numPages}
-            numResults={numResults}
-            totalCount={totalCount}
-            handlePaginate={handlePaginate}
-          />
-    		</Box>
+	return (
+		<Stack spacing={1} sx={sx.root}>
+			<Grid container spacing={0}>
+				{enableFilters && filterAnchor == 'left' && (
+					<Grid item xs={12} sm={4} lg={3}>
+						<Box sx={sx.filtersContainer}>
+							<CollectionSearchFilters
+								filters={activeFilters}
+								filterOptions={filterOptions}
+								handleFilter={handleFilter}
+							/>
+						</Box>
+					</Grid>
+				)}
+				<Grid
+					item
+					xs={12}
+					sm={enableFilters && filterAnchor == 'left' ? 8 : 12}
+					lg={enableFilters && filterAnchor == 'left' ? 9 : 12}
+				>
+					<Box sx={{ ...(delayedLoading && sx.loading) }}>
+						<TableList
+							toolbar={
+								<Stack
+									direction={{ xs: 'column', sm: 'row' }}
+									sx={sx.toolbar}
+									spacing={1}
+								>
+									{enableSearch && (
+										<SearchInput
+											value={keywords}
+											handleChange={handleKeywordChange}
+											handleSearch={handleSearch}
+										/>
+									)}
+									{enableFilters && filterAnchor == 'top' && (
+										<Box sx={sx.fullWidth}>
+											<CollectionFilterButton
+												disableFilterCount={false}
+												filters={activeFilters}
+												handleFilter={handleFilter}
+												handleClear={handleClearFilters}
+												filterOptions={filterOptions}
+											/>
+										</Box>
+									)}
+									{enableCreate && (
+										<Box sx={sx.fullWidth}>
+											<Button
+												sx={sx.button}
+												color="secondary"
+												variant="contained"
+												onClick={handleAdd}
+												startIcon={
+													<Icon
+														name="Plus"
+														color="secondary.contrastText"
+														size={20}
+													/>
+												}
+											>
+												Add
+											</Button>
+										</Box>
+									)}
+								</Stack>
+							}
+							enableBorder={enableBorder}
+							enableEdit={enableEdit}
+							handleEdit={handleEdit}
+							enableDelete={enableDelete}
+							handleDelete={handleDeleteClick}
+							loading={resources && loading}
+							fields={headers}
+							rows={rows}
+							handleClick={handleClick}
+							query={query}
+							handleSort={handleSort}
+							page={page}
+							perPage={perPage}
+							numPages={numPages}
+							numResults={numResults}
+							totalCount={totalCount}
+							handlePaginate={handlePaginate}
+						/>
+					</Box>
 				</Grid>
-			</Grid>			
-      <Drawer 
-        open={ openModal }
-        handleClose={() => setOpenModal(false) }
-        title={ _resource?.id ? 'Edit' : 'Add' }
-        actions={
-          <Button 
-            fullWidth 
-            variant="contained"
-            color="primary"
-            onClick={ handleSubmit }
-            startIcon={ 
-              <IconLoading loading={ loading } />
-            }
-            >
-            { _resource?.id ? 'Update' : 'Save' }
-          </Button>      
-        }
-      >
-        <Form  
-          loading={ loading }
-          errors={errors}
-          fields={ fields }
-          resource={ flattenDocument(_resource) }
-          handleChange={ handleDataChange }
-          handleRemove={ handleRemove }          
-        />
-      </Drawer>
-      <AlertModal 
-        open={ openDeleteModal }
-        handleClose={ () => setOpenDeleteModal(false) }
-        title="Are you sure you want to delete this item?"
-        description="This action cannot be reversed."
-        handleConfirm={ handleDelete }
-      />
+			</Grid>
+			<Drawer
+				open={openModal}
+				handleClose={() => setOpenModal(false)}
+				title={_resource?.id ? 'Edit' : 'Add'}
+				actions={
+					<Button
+						fullWidth
+						variant="contained"
+						color="primary"
+						onClick={handleSubmit}
+						startIcon={<IconLoading loading={loading} />}
+					>
+						{_resource?.id ? 'Update' : 'Save'}
+					</Button>
+				}
+			>
+				<Form
+					loading={loading}
+					errors={errors}
+					fields={fields}
+					resource={flattenDocument(_resource)}
+					handleChange={handleDataChange}
+					handleRemove={handleRemove}
+				/>
+			</Drawer>
+			<AlertModal
+				open={openDeleteModal}
+				handleClose={() => setOpenDeleteModal(false)}
+				title="Are you sure you want to delete this item?"
+				description="This action cannot be reversed."
+				handleConfirm={handleDelete}
+			/>
 		</Stack>
 	)
 }
@@ -408,12 +410,12 @@ const sx = {
 	item: {
 		p: 2,
 	},
-  button: {
-    width: {
-      sm: 'auto',
-      xs: '100%'
-    }
-  },
+	button: {
+		width: {
+			sm: 'auto',
+			xs: '100%',
+		},
+	},
 	filtersContainer: {
 		mr: {
 			sm: 2,
@@ -425,7 +427,7 @@ const sx = {
 		},
 	},
 	toolbar: {
-    alignItems: 'center',
+		alignItems: 'center',
 		justifyContent: 'flex-end',
 	},
 	loading: {
@@ -434,10 +436,10 @@ const sx = {
 	circularProgress: {
 		color: 'primary.main',
 	},
-  fullWidth: {
-    width: {
-      sm: 'auto',
-      xs: '100%',
-    }
-  },
+	fullWidth: {
+		width: {
+			sm: 'auto',
+			xs: '100%',
+		},
+	},
 }

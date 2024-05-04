@@ -1,7 +1,4 @@
-import {
-	REFERENCE_FIELDS,
-	SYSTEM_FIELDS,
-} from '../constants/index'
+import { REFERENCE_FIELDS, SYSTEM_FIELDS } from '../constants/index'
 import { get } from 'lodash'
 
 export const handleDocumentChange = (ev, resource) => {
@@ -26,14 +23,14 @@ export const handleDocumentChange = (ev, resource) => {
 }
 
 export const flattenDocuments = (resources) => {
-  return resources.map((resource) => flattenDocument(resource))
+	return resources.map((resource) => flattenDocument(resource))
 }
 
 export const flattenDocument = (resource) => {
 	let { data, ...rest } = resource || {}
 	return {
 		...data,
-    ...rest,
+		...rest,
 	}
 }
 
@@ -51,9 +48,13 @@ export const getDocumentValue = (document, field) => {
 }
 
 export const filterDocumentLinks = (document, contentType) => {
-  if(!document?.document_links || document?.document_links?.length == 0 || !contentType) return null;
-	let documents = document
-    ?.document_links
+	if (
+		!document?.document_links ||
+		document?.document_links?.length == 0 ||
+		!contentType
+	)
+		return null
+	let documents = document?.document_links
 		?.filter((docuLink) => docuLink?.target?.content_type == contentType)
 		?.map((docuLink) => docuLink?.target)
 	return documents

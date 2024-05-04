@@ -63,7 +63,7 @@ export const resize = (src, { width, height, transform = 'fill' }) => {
 }
 
 export const imageFromVideoUrl = (url) => {
-  if(!url) return null;
+	if (!url) return null
 	return url?.replace(/mp4|mpeg|ogg|mkv|mov/i, 'jpg')
 }
 

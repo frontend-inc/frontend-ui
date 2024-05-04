@@ -17,7 +17,7 @@ const FormFieldInput: React.FC<FormFieldInputProps> = (props) => {
 
 	return (
 		<FormInput
-      errors={errors}
+			errors={errors}
 			name={name}
 			label={label}
 			placeholder={placeholder}

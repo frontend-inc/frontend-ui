@@ -24,7 +24,7 @@ const CellHeader: React.FC<CellHeaderProps> = (props) => {
 
 	return (
 		<Button
-      sx={ sx.root }
+			sx={sx.root}
 			disableRipple
 			fullWidth
 			onClick={() => handleSort(field)}
@@ -48,10 +48,10 @@ export default CellHeader
 
 const sx = {
 	root: {
-    borderRadius: 0,
-    width: '100%',
-    height: '100%',
-  },
+		borderRadius: 0,
+		width: '100%',
+		height: '100%',
+	},
 	label: {
 		textTransform: 'lowercase',
 		fontWeight: 500,

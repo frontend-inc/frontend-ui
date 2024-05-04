@@ -9,9 +9,7 @@ type FieldJSONProps = {
 
 const FieldJSON: React.FC<FieldJSONProps> = (props) => {
 	const { value, label, ...rest } = props
-	return (
-		<FieldString value={JSON.stringify(value, null, 2)} />
-	)
+	return <FieldString value={JSON.stringify(value, null, 2)} />
 }
 
 export default FieldJSON

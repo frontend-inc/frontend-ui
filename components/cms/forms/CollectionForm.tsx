@@ -10,32 +10,31 @@ import { useRouter } from 'next/router'
 export type CollectionFormProps = {
 	handle: string
 	url: string
-  navigateUrl?: string
+	navigateUrl?: string
 	buttonText?: string
 	variant?: 'contained' | 'outlined' | 'text'
 	fields: any[]
-  onSuccessMessage?: string
+	onSuccessMessage?: string
 }
 
 const CollectionForm: React.FC<CollectionFormProps> = (props) => {
-	
-  const router = useRouter()
-  const { clientUrl } = useContext(AppContext)
+	const router = useRouter()
+	const { clientUrl } = useContext(AppContext)
 
-  const { 
-    handle, 
-    buttonText = 'Submit', 
-    fields,
-    url,
-    navigateUrl,
-    onSuccessMessage='Submitted successfully!' 
-  } = props
+	const {
+		handle,
+		buttonText = 'Submit',
+		fields,
+		url,
+		navigateUrl,
+		onSuccessMessage = 'Submitted successfully!',
+	} = props
 
 	const { showAlertSuccess } = useAlerts()
 
 	const {
-    delayedLoading,
-    errors,
+		delayedLoading,
+		errors,
 		findOne,
 		resource,
 		setResource,
@@ -81,9 +80,9 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 			}
 			if (resp?.id) {
 				showAlertSuccess(onSuccessMessage)
-        if(navigateUrl){
-          router.push(`${clientUrl}${navigateUrl}`)
-        }
+				if (navigateUrl) {
+					router.push(`${clientUrl}${navigateUrl}`)
+				}
 			}
 		} catch (err) {
 			console.log('Error', err)
@@ -97,17 +96,17 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 	}, [handle])
 
 	return (
-    <Form 
-      loading={delayedLoading}
-      errors={errors}
-      fields={fields}
-      resource={flattenDocument(resource)}
-      handleChange={handleDataChange}
-      handleRemove={handleRemove}
-      handleSubmit={ handleSubmit }
-      buttonText={buttonText}
-    />
-  )
+		<Form
+			loading={delayedLoading}
+			errors={errors}
+			fields={fields}
+			resource={flattenDocument(resource)}
+			handleChange={handleDataChange}
+			handleRemove={handleRemove}
+			handleSubmit={handleSubmit}
+			buttonText={buttonText}
+		/>
+	)
 }
 
 export default CollectionForm

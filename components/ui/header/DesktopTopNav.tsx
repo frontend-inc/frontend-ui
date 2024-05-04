@@ -30,7 +30,7 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 		position = 'absolute',
 	} = props
 
-  const { currentUser } = useAuth()
+	const { currentUser } = useAuth()
 
 	return (
 		<Hidden mdDown>
@@ -55,7 +55,9 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 						<Box sx={sx.centerMenu}>
 							{menuItems
 								?.filter((menuItem) => menuItem.parent_id == null)
-                ?.filter((menuItem) => (menuItem?.require_auth ? currentUser?.id : !currentUser?.id))
+								?.filter((menuItem) =>
+									menuItem?.require_auth ? currentUser?.id : !currentUser?.id
+								)
 								?.map((menuItem, index) => (
 									<TopNavMenuItem
 										key={index}
@@ -65,11 +67,7 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 								))}
 						</Box>
 						<Box sx={sx.rightMenu}>
-							{enableAuth && (
-								<AuthButton
-									editing={editing}
-								/>
-							)}
+							{enableAuth && <AuthButton editing={editing} />}
 							{enableShopify && (
 								<>
 									<ShopifyAuth />

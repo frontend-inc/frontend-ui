@@ -5,9 +5,7 @@ import { CardProps } from '../../../types'
 
 const Cover: React.FC<CardProps> = (props) => {
 	const { variant } = props
-  return variant == 'list' ?
-    <CoverList {...props} /> :
-    <CoverGrid {...props} /> 	
+	return variant == 'list' ? <CoverList {...props} /> : <CoverGrid {...props} />
 }
 
 export default Cover

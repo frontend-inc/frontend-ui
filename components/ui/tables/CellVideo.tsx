@@ -5,8 +5,8 @@ import { imageFromVideoUrl } from '../../../helpers'
 
 type CellVideoProps = {
 	value: {
-    url: string
-  }
+		url: string
+	}
 	size?: number
 	handleClick?: () => void
 }

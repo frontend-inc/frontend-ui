@@ -26,8 +26,8 @@ export default TableContainer
 
 const sx = {
 	table: {
-    borderTop: '1px solid',
-    borderColor: 'divider',
+		borderTop: '1px solid',
+		borderColor: 'divider',
 		width: '100%',
 		bgcolor: 'background.main',
 		'&::-webkit-scrollbar': {

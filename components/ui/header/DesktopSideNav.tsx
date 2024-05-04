@@ -22,8 +22,7 @@ type DesktopNavProps = {
 }
 
 const DesktopSideNav = (props: DesktopNavProps) => {
-
-  const {
+	const {
 		editing,
 		logo,
 		menuItems,
@@ -35,7 +34,7 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 		enableNotifications = false,
 	} = props
 
-  const { currentUser } = useAuth()
+	const { currentUser } = useAuth()
 
 	return (
 		<Hidden mdDown>
@@ -64,7 +63,9 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 						<List>
 							{menuItems
 								?.filter((menuItem) => menuItem.parent_id == null)
-                ?.filter((menuItem) => (menuItem?.require_auth ? currentUser?.id : !currentUser?.id))
+								?.filter((menuItem) =>
+									menuItem?.require_auth ? currentUser?.id : !currentUser?.id
+								)
 								?.map((menuItem, index) => (
 									<SideNavMenuItem
 										key={index}
@@ -83,12 +84,7 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 					{(enableAuth || enableShopify) && (
 						<Box sx={sx.divider}>
 							{enableShopify && <ShopifyAuth variant="sideNav" />}
-							{enableAuth && (
-								<AuthButton
-									showLabel
-									editing={editing}
-								/>
-							)}
+							{enableAuth && <AuthButton showLabel editing={editing} />}
 						</Box>
 					)}
 				</Stack>

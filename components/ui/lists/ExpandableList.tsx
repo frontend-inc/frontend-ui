@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {
-  Box,
+	Box,
 	List,
 	ListItem,
 	ListItemText,
@@ -14,7 +14,7 @@ import { getCookie, setCookie } from 'cookies-next'
 
 type ExpandableListProps = {
 	children: React.ReactNode
-  id?: string
+	id?: string
 	label?: string
 	icon?: React.ReactNode
 	enableBorder?: boolean
@@ -23,15 +23,15 @@ type ExpandableListProps = {
 }
 
 const ExpandableList: React.FC<ExpandableListProps> = (props) => {
-	const { id, label, closed=false, children, enableBorder=true } = props
+	const { id, label, closed = false, children, enableBorder = true } = props
 
 	const [open, setOpen] = useState(!closed)
 	const handleToggleClick = () => {
-    //setMenuCookie(!open)
+		//setMenuCookie(!open)
 		setOpen(!open)
 	}
 
-  const setMenuCookie = (value: boolean) => {
+	const setMenuCookie = (value: boolean) => {
 		if (!id) return null
 		// @ts-ignore
 		let jsonCookie = JSON.parse(getCookie(`app-config`) || '{}')
@@ -39,21 +39,20 @@ const ExpandableList: React.FC<ExpandableListProps> = (props) => {
 		setCookie(`app-config`, JSON.stringify(jsonCookie))
 	}
 
-  const handleReadCookieState = (id) => {
-    let cookie = getCookie(`app-config`) || '{}'
-    // @ts-ignore
-    let jsonConfig = JSON.parse(cookie)
-    if(jsonConfig[id]= undefined) {
-      setOpen(jsonConfig[id]) 
-    }
-  }
+	const handleReadCookieState = (id) => {
+		let cookie = getCookie(`app-config`) || '{}'
+		// @ts-ignore
+		let jsonConfig = JSON.parse(cookie)
+		if ((jsonConfig[id] = undefined)) {
+			setOpen(jsonConfig[id])
+		}
+	}
 
 	useEffect(() => {
-		if(id) {
+		if (id) {
 			//handleReadCookieState(id)
 		}
 	}, [id])
-
 
 	return (
 		<List
@@ -95,9 +94,7 @@ const ExpandableList: React.FC<ExpandableListProps> = (props) => {
 				</ListItem>
 			)}
 			<Collapse in={open} timeout="auto" unmountOnExit>
-        <Box px={2}>
-				  {children}
-        </Box>
+				<Box px={2}>{children}</Box>
 			</Collapse>
 		</List>
 	)
@@ -109,7 +106,7 @@ const sx = {
 	root: {
 		width: '100%',
 		minWidth: 200,
-		my: 0,    
+		my: 0,
 	},
 	listItem: {
 		borderRadius: 1,

@@ -22,7 +22,7 @@ export type FieldVariantType =
 	| 'select'
 	| 'shopify_product'
 	| 'shopify_collection'
-  | 'user'
+	| 'user'
 
 export type FieldDbType =
 	| 'string'
@@ -34,7 +34,7 @@ export type FieldDbType =
 	| 'datetime'
 	| 'jsonb'
 	| 'habtm'
-  | 'belongs_to'
+	| 'belongs_to'
 
 export type FieldVariant = {
 	icon: string
@@ -84,5 +84,5 @@ export type FieldType = FieldBase & {
 	foreign_key?: boolean
 	foreign_collection_id?: number
 	foreign_field_id?: number
-  foreign_content_type?: string
+	foreign_content_type?: string
 }

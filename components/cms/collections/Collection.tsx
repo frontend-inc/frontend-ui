@@ -3,15 +3,15 @@ import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
 import { Button, Collapse, Grid, Box, Stack } from '@mui/material'
 import {
-  Form,
-  Drawer,
-  AlertModal,
-  Icon,
+	Form,
+	Drawer,
+	AlertModal,
+	Icon,
 	CollectionFilterButton,
 	SortButton,
 	SearchInput,
 	LoadMore,
-  IconLoading
+	IconLoading,
 } from '../../../components'
 import { AppContext } from '../../../context'
 import { FieldType, FilterOptionType } from '../../../types'
@@ -23,18 +23,18 @@ import { SortOptionType } from '../../../types'
 import { SYSTEM_FIELDS } from '../../../constants'
 import { flattenDocument } from '../../../helpers'
 
-export type CollectionProps = {  
-	url: string  
+export type CollectionProps = {
+	url: string
 	variant: 'list' | 'grid'
 	style: 'avatar' | 'card' | 'cover' | 'chip'
-  layout?: 'drawer' | 'inline'
+	layout?: 'drawer' | 'inline'
 	editing?: boolean
 	enableInfiniteLoad?: boolean
 	enableLoadMore?: boolean
 	navigateUrl: any
 	perPage?: number
 	query?: any
-  fields: FieldType[]
+	fields: FieldType[]
 	filterAnchor?: 'left' | 'top'
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
@@ -42,12 +42,12 @@ export type CollectionProps = {
 	enableFilters?: boolean
 	enableSorting?: boolean
 	secondaryActions?: React.ReactNode
-	buttonText?: string  
+	buttonText?: string
 	enableBorder?: boolean
 	enableGradient?: boolean
-  enableEdit?: boolean
-  enableCreate?: boolean
-  enableDelete?: boolean
+	enableEdit?: boolean
+	enableCreate?: boolean
+	enableDelete?: boolean
 }
 
 const Collection: React.FC<CollectionProps> = (props) => {
@@ -57,9 +57,9 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	const {
 		variant = 'grid',
 		style = 'card',
-    layout='drawer',
+		layout = 'drawer',
 		url,
-    fields,
+		fields,
 		filterAnchor = 'left',
 		filterOptions = [],
 		sortOptions = [],
@@ -74,46 +74,46 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		buttonText,
 		enableBorder = false,
 		enableGradient = false,
-    enableEdit=false,
-    enableCreate=false,
-    enableDelete=false
+		enableEdit = false,
+		enableCreate = false,
+		enableDelete = false,
 	} = props
 
-  const [openModal, setOpenModal] = useState(false)
-  const [openDeleteModal, setOpenDeleteModal] = useState(false)
+	const [openModal, setOpenModal] = useState(false)
+	const [openDeleteModal, setOpenDeleteModal] = useState(false)
 
-	const { 
-    loading, 
-    delayedLoading,
-    errors,
-    resource,
-    resources, 
-    setResource,
-    update,
-    create,
-    destroy,
-    query, 
-    findMany, 
-    reloadMany,    
-    removeAttachment,
-    page, 
-    numPages, 
-    loadMore 
-  } = useResource({
-      name: 'document',
-			url,
-		})
+	const {
+		loading,
+		delayedLoading,
+		errors,
+		resource,
+		resources,
+		setResource,
+		update,
+		create,
+		destroy,
+		query,
+		findMany,
+		reloadMany,
+		removeAttachment,
+		page,
+		numPages,
+		loadMore,
+	} = useResource({
+		name: 'document',
+		url,
+	})
 
 	const [keywords, setKeywords] = useState('')
 
 	const handleKeywordChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
 		setKeywords(ev.target.value)
-	}  
+	}
 
 	const handleSearch = (keywords: string) => {
 		findMany({
 			...query,
-      ...defaultQuery,
+			...defaultQuery,
 			keywords: keywords,
 			page: 1,
 			per_page: perPage,
@@ -146,10 +146,10 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	// Filter methods
 	const handleClearFilters = () => {
 		setActiveFilters([])
-		findMany({      
+		findMany({
 			filters: {
-        ...defaultQuery?.filters,
-      },
+				...defaultQuery?.filters,
+			},
 			sort_by: 'id',
 			sort_direction: 'desc',
 			keywords: '',
@@ -192,17 +192,17 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		}
 	}
 
-  const handleAdd = () => {
-    setResource({})
-    setOpenModal(true)
-  }
+	const handleAdd = () => {
+		setResource({})
+		setOpenModal(true)
+	}
 
-  const handleEdit = (item) => {
-    setResource(item)
-    setOpenModal(true)
-  }
+	const handleEdit = (item) => {
+		setResource(item)
+		setOpenModal(true)
+	}
 
-  const handleSubmit = async () => {
+	const handleSubmit = async () => {
 		try {
 			let resp
 			if (resource?.id) {
@@ -210,30 +210,30 @@ const Collection: React.FC<CollectionProps> = (props) => {
 			} else {
 				resp = await create(resource)
 			}
-			if(resp?.id) {
-        setResource({})
-        setOpenModal(false)
-        reloadMany()
+			if (resp?.id) {
+				setResource({})
+				setOpenModal(false)
+				reloadMany()
 			}
 		} catch (err) {
 			console.log('Error', err)
 		}
 	}
 
-  const handleDeleteClick = (item) => {
-    setResource(item)
-    setOpenDeleteModal(true)
-  }
+	const handleDeleteClick = (item) => {
+		setResource(item)
+		setOpenDeleteModal(true)
+	}
 
-  const handleDelete = async () => {
-    await destroy(resource?.id)
-    setOpenDeleteModal(false)
-    setOpenModal(false)
-    setResource({})
-    reloadMany()
-  }
+	const handleDelete = async () => {
+		await destroy(resource?.id)
+		setOpenDeleteModal(false)
+		setOpenModal(false)
+		setResource({})
+		reloadMany()
+	}
 
-  const handleRemove = async (name) => {
+	const handleRemove = async (name) => {
 		await removeAttachment(resource?.id, name)
 	}
 
@@ -250,8 +250,8 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		if (activeFilters) {
 			findMany({
 				...query,
-        filters: buildQueryFilters(activeFilters),
-        ...defaultQuery,
+				filters: buildQueryFilters(activeFilters),
+				...defaultQuery,
 			})
 		}
 	}, [activeFilters?.length, defaultQuery])
@@ -272,14 +272,14 @@ const Collection: React.FC<CollectionProps> = (props) => {
 					spacing={1}
 				>
 					{enableFilters && filterAnchor == 'top' && (
-            <Box>
-              <CollectionFilterButton
-                filters={activeFilters}
-                handleFilter={handleFilter}
-                handleClear={handleClearFilters}
-                filterOptions={filterOptions}
-              />
-            </Box>
+						<Box>
+							<CollectionFilterButton
+								filters={activeFilters}
+								handleFilter={handleFilter}
+								handleClear={handleClearFilters}
+								filterOptions={filterOptions}
+							/>
+						</Box>
 					)}
 					{enableSorting && (
 						<SortButton
@@ -290,21 +290,19 @@ const Collection: React.FC<CollectionProps> = (props) => {
 							handleSortDirection={handleSortDirection}
 						/>
 					)}
-          { enableCreate && (
-            <Box>
-              <Button 
-                sx={ sx.button }
-                color="secondary"
-                variant="contained"
-                onClick={ handleAdd }
-                startIcon={
-                  <Icon name="Plus" size={20} />
-                }
-              >
-                Add 
-              </Button> 
-            </Box>
-          )}
+					{enableCreate && (
+						<Box>
+							<Button
+								sx={sx.button}
+								color="secondary"
+								variant="contained"
+								onClick={handleAdd}
+								startIcon={<Icon name="Plus" size={20} />}
+							>
+								Add
+							</Button>
+						</Box>
+					)}
 				</Stack>
 			</Stack>
 			<Grid container spacing={0}>
@@ -326,31 +324,29 @@ const Collection: React.FC<CollectionProps> = (props) => {
 					lg={enableFilters && filterAnchor == 'left' ? 9 : 12}
 				>
 					<Box sx={{ ...(delayedLoading && sx.loading) }}>
-            { layout == 'inline' && (
-              <Collapse in={ openModal }>
-                <Stack direction='column' sx={ sx.form } spacing={1}>
-                  <Form  
-                    loading={ loading }
-                    errors={errors}
-                    fields={ fields }
-                    resource={ flattenDocument(resource) }
-                    handleChange={ handleDataChange }
-                    handleRemove={ handleRemove }          
-                  />
-                  <Button 
-                    fullWidth 
-                    variant="contained"
-                    color="primary"
-                    onClick={ handleSubmit }
-                    startIcon={ 
-                      <IconLoading loading={ loading } />
-                    }
-                    >
-                    { resource?.id ? 'Update' : 'Save' }
-                  </Button>      
-                </Stack>
-              </Collapse>
-            )}
+						{layout == 'inline' && (
+							<Collapse in={openModal}>
+								<Stack direction="column" sx={sx.form} spacing={1}>
+									<Form
+										loading={loading}
+										errors={errors}
+										fields={fields}
+										resource={flattenDocument(resource)}
+										handleChange={handleDataChange}
+										handleRemove={handleRemove}
+									/>
+									<Button
+										fullWidth
+										variant="contained"
+										color="primary"
+										onClick={handleSubmit}
+										startIcon={<IconLoading loading={loading} />}
+									>
+										{resource?.id ? 'Update' : 'Save'}
+									</Button>
+								</Stack>
+							</Collapse>
+						)}
 
 						<CollectionList
 							variant={variant}
@@ -360,11 +356,11 @@ const Collection: React.FC<CollectionProps> = (props) => {
 							buttonText={buttonText}
 							enableBorder={enableBorder}
 							enableGradient={enableGradient}
-              enableEdit={ enableEdit }
-              enableCreate={ enableCreate }
-              enableDelete={ enableDelete }
-              handleEdit={ handleEdit }
-              handleDelete={ handleDeleteClick }              
+							enableEdit={enableEdit}
+							enableCreate={enableCreate}
+							enableDelete={enableDelete}
+							handleEdit={handleEdit}
+							handleDelete={handleDeleteClick}
 						/>
 					</Box>
 					{!loading && resources.length == 0 && (
@@ -384,42 +380,40 @@ const Collection: React.FC<CollectionProps> = (props) => {
 					enableInfiniteLoad={enableInfiniteLoad}
 				/>
 			)}
-      { layout == 'drawer' && (
-        <Drawer 
-          open={ openModal }
-          handleClose={() => setOpenModal(false) }
-          title={ resource?.id ? 'Edit' : 'Add' }
-          actions={
-            <Button 
-              fullWidth 
-              variant="contained"
-              color="primary"
-              onClick={ handleSubmit }
-              startIcon={ 
-                <IconLoading loading={ loading } />
-              }
-              >
-              { resource?.id ? 'Update' : 'Save' }
-            </Button>      
-          }
-        >
-          <Form  
-            loading={ loading }
-            errors={errors}
-            fields={ fields }
-            resource={ flattenDocument(resource) }
-            handleChange={ handleDataChange }
-            handleRemove={ handleRemove }          
-          />
-        </Drawer>
-      )}
-      <AlertModal 
-        open={ openDeleteModal }
-        handleClose={ () => setOpenDeleteModal(false) }
-        title="Are you sure you want to delete this item?"
-        description="This action cannot be reversed."
-        handleConfirm={ handleDelete }
-      />
+			{layout == 'drawer' && (
+				<Drawer
+					open={openModal}
+					handleClose={() => setOpenModal(false)}
+					title={resource?.id ? 'Edit' : 'Add'}
+					actions={
+						<Button
+							fullWidth
+							variant="contained"
+							color="primary"
+							onClick={handleSubmit}
+							startIcon={<IconLoading loading={loading} />}
+						>
+							{resource?.id ? 'Update' : 'Save'}
+						</Button>
+					}
+				>
+					<Form
+						loading={loading}
+						errors={errors}
+						fields={fields}
+						resource={flattenDocument(resource)}
+						handleChange={handleDataChange}
+						handleRemove={handleRemove}
+					/>
+				</Drawer>
+			)}
+			<AlertModal
+				open={openDeleteModal}
+				handleClose={() => setOpenDeleteModal(false)}
+				title="Are you sure you want to delete this item?"
+				description="This action cannot be reversed."
+				handleConfirm={handleDelete}
+			/>
 		</Stack>
 	)
 }
@@ -446,18 +440,18 @@ const sx = {
 		},
 		gap: '16px',
 	},
-  form: {
-    width: '100%'
-  },
+	form: {
+		width: '100%',
+	},
 	item: {
 		p: 2,
 	},
-  button: {
-    width: {
-      sm: 'auto',
-      xs: '100%'
-    }
-  },
+	button: {
+		width: {
+			sm: 'auto',
+			xs: '100%',
+		},
+	},
 	filtersContainer: {
 		mr: {
 			sm: 2,

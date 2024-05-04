@@ -11,7 +11,7 @@ export type ForeignFormProps = {
 	handle: string
 	url: string
 	foreignUrl?: string
-  navigateUrl?: string
+	navigateUrl?: string
 	buttonText?: string
 	variant?: 'contained' | 'outlined' | 'text'
 	fields: any[]
@@ -19,9 +19,8 @@ export type ForeignFormProps = {
 }
 
 const ForeignForm: React.FC<ForeignFormProps> = (props) => {
-
-  const router = useRouter()
-  const { clientUrl } = useContext(AppContext)
+	const router = useRouter()
+	const { clientUrl } = useContext(AppContext)
 
 	const {
 		handle,
@@ -29,29 +28,22 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 		fields,
 		url,
 		foreignUrl,
-    navigateUrl,
-    onSuccessMessage='Submitted successfully!' 
+		navigateUrl,
+		onSuccessMessage = 'Submitted successfully!',
 	} = props
-	
 
-  const { showAlertSuccess } = useAlerts()
+	const { showAlertSuccess } = useAlerts()
 
 	const { loading, addLinks } = useResource({
 		name: 'document',
 		url,
 	})
 
-	const {
-    errors,
-		resource,
-		setResource,
-		update,
-		create,
-		removeAttachment,
-	} = useResource({
-		name: 'document',
-		url: foreignUrl,
-	})
+	const { errors, resource, setResource, update, create, removeAttachment } =
+		useResource({
+			name: 'document',
+			url: foreignUrl,
+		})
 
 	const handleDataChange = (ev) => {
 		const { name } = ev.target
@@ -86,15 +78,15 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 				resp = await create(resource)
 			}
 			if (resp?.id) {
-				let addResp = await addLinks(handle, [resp.id])				
-        if(addResp?.id){
-          if(onSuccessMessage){
-            showAlertSuccess(onSuccessMessage)
-          }        
-          if(navigateUrl){
-            router.push(`${clientUrl}${navigateUrl}`)
-          }
-        }        
+				let addResp = await addLinks(handle, [resp.id])
+				if (addResp?.id) {
+					if (onSuccessMessage) {
+						showAlertSuccess(onSuccessMessage)
+					}
+					if (navigateUrl) {
+						router.push(`${clientUrl}${navigateUrl}`)
+					}
+				}
 			}
 		} catch (err) {
 			console.log('Error', err)
@@ -102,17 +94,17 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 	}
 
 	return (
-    <Form 
-      loading={loading}
-      errors={errors}
-      fields={fields}
-      resource={flattenDocument(resource)}
-      handleChange={handleDataChange}
-      handleRemove={handleRemove}
-      handleSubmit={ handleSubmit }
-      buttonText={buttonText}
-    />
-)
+		<Form
+			loading={loading}
+			errors={errors}
+			fields={fields}
+			resource={flattenDocument(resource)}
+			handleChange={handleDataChange}
+			handleRemove={handleRemove}
+			handleSubmit={handleSubmit}
+			buttonText={buttonText}
+		/>
+	)
 }
 
 export default ForeignForm

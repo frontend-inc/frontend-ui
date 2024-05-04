@@ -5,7 +5,7 @@ import { SocialIcon } from 'react-social-icons'
 import { ThemeContext } from '../../../context'
 
 type SocialLinkProps = {
-	provider: string 		
+	provider: string
 	url?: string
 }
 
@@ -38,7 +38,7 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 	}
 
 	const handleClick = () => {
-    if(!url) return;
+		if (!url) return
 		if (url.includes('http') || url.includes('www')) {
 			window.open(url, '_blank')
 			return

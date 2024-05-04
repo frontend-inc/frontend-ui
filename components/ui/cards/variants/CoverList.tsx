@@ -21,10 +21,10 @@ const CoverList: React.FC<CardProps> = (props) => {
 		height = 240,
 		enableGradient = false,
 		enableOverlay = false,
-    enableEdit,
-    enableDelete,
-    handleEdit,
-    handleDelete,
+		enableEdit,
+		enableDelete,
+		handleEdit,
+		handleDelete,
 	} = props || {}
 
 	const router = useRouter()
@@ -67,14 +67,14 @@ const CoverList: React.FC<CardProps> = (props) => {
 							</Typography>
 						)}
 					</Box>
-          {(enableEdit || enableDelete) && (
-            <MenuButton
-              icon='EllipsisVertical'
-              color='common.white'
-              handleEdit={ enableEdit ? handleEdit : undefined }
-              handleDelete={ enableDelete ? handleDelete : undefined }
-            />
-          )}
+					{(enableEdit || enableDelete) && (
+						<MenuButton
+							icon="EllipsisVertical"
+							color="common.white"
+							handleEdit={enableEdit ? handleEdit : undefined}
+							handleDelete={enableDelete ? handleDelete : undefined}
+						/>
+					)}
 				</Stack>
 				{buttonText && (
 					<Box>
@@ -103,10 +103,10 @@ const sx = {
 		borderRadius: 1,
 	},
 	cover: {
-    width: '100%',
+		width: '100%',
 		position: 'absolute',
-    left: 0,
-    bottom: 0,
+		left: 0,
+		bottom: 0,
 		zIndex: 1,
 	},
 	button: {
@@ -119,8 +119,8 @@ const sx = {
 		},
 	},
 	content: {
-    width: '100%',
-    p: 2,    
+		width: '100%',
+		p: 2,
 		minHeight: '60px',
 		display: 'flex',
 		flexDirection: 'column',

@@ -29,7 +29,12 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = (props) => {
 				}
 			>
 				{links.map((link, index) => (
-					<Link variant="caption" sx={sx.link} key={index} href={`${clientUrl}${link?.path}`}>
+					<Link
+						variant="caption"
+						sx={sx.link}
+						key={index}
+						href={`${clientUrl}${link?.path}`}
+					>
 						{link?.label}
 					</Link>
 				))}
@@ -44,7 +49,7 @@ const sx = {
 	root: {
 		py: 1,
 	},
-	link: {    
+	link: {
 		color: 'text.secondary',
 		textDecoration: 'none',
 		'&:hover': {

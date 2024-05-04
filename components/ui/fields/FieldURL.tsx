@@ -15,10 +15,7 @@ const FieldURL: React.FC<FieldURLProps> = (props) => {
 	return (
 		<FieldWrapper label={label} {...rest}>
 			{value && (
-				<Link 
-          href={value}          
-					sx={sx.link}										
-				>
+				<Link href={value} sx={sx.link}>
 					{value}
 				</Link>
 			)}
@@ -30,12 +27,12 @@ export default FieldURL
 
 const sx = {
 	link: {
-    color: 'text.secondary',
-    textDecoration: 'none',
+		color: 'text.secondary',
+		textDecoration: 'none',
 		'&:hover': {
-      color: 'text.primary',
-      textDecoration: 'underline',
-    },
+			color: 'text.primary',
+			textDecoration: 'underline',
+		},
 	},
 	cell: {
 		display: 'flex',

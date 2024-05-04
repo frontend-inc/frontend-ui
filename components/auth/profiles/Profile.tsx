@@ -4,29 +4,37 @@ import { AuthRequired, Show } from '../../../components'
 
 export type ProfileProps = {
 	displayFields: FieldType[]
-  fields: FieldType[]
+	fields: FieldType[]
 	url: string
 	actions?: ActionType[]
 	resource: DocumentType
-  enableBorder?: boolean
-  enableEdit?: boolean
+	enableBorder?: boolean
+	enableEdit?: boolean
 }
 
 const Profile: React.FC<ProfileProps> = (props) => {
-	const { url, fields, displayFields, enableBorder, enableEdit, actions, resource } = props || {}
+	const {
+		url,
+		fields,
+		displayFields,
+		enableBorder,
+		enableEdit,
+		actions,
+		resource,
+	} = props || {}
 	return (
-    <AuthRequired>
-      <Show 
-        style='person'
-        url={url}
-        resource={resource}
-        actions={actions}
-        fields={fields}        
-        displayFields={displayFields}
-        enableBorder={enableBorder}
-        enableEdit={enableEdit}
-      />
-    </AuthRequired> 
+		<AuthRequired>
+			<Show
+				style="person"
+				url={url}
+				resource={resource}
+				actions={actions}
+				fields={fields}
+				displayFields={displayFields}
+				enableBorder={enableBorder}
+				enableEdit={enableEdit}
+			/>
+		</AuthRequired>
 	)
 }
 

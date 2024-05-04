@@ -25,10 +25,10 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
-    enableEdit,
-    enableDelete,
-    handleEdit,
-    handleDelete,
+		enableEdit,
+		enableDelete,
+		handleEdit,
+		handleDelete,
 	} = props || {}
 
 	const router = useRouter()
@@ -72,20 +72,20 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 					</Avatar>
 				</TouchableOpacity>
 			</Box>
-			<Stack spacing={1} sx={ sx.contentArea }>
-				<Stack direction="row" sx={ sx.contentArea } spacing={0}>
-          <Stack sx={ sx.content }>
-            <Typography sx={sx.title} color="textPrimary" variant={textVariant}>
-              {truncate(title)}
-            </Typography>
-          </Stack> 
-          {(enableEdit || enableDelete) && (
-            <MenuButton
-              icon='EllipsisVertical'
-              handleEdit={ enableEdit ? handleEdit : undefined }
-              handleDelete={ enableDelete ? handleDelete : undefined }
-            />
-          )}
+			<Stack spacing={1} sx={sx.contentArea}>
+				<Stack direction="row" sx={sx.contentArea} spacing={0}>
+					<Stack sx={sx.content}>
+						<Typography sx={sx.title} color="textPrimary" variant={textVariant}>
+							{truncate(title)}
+						</Typography>
+					</Stack>
+					{(enableEdit || enableDelete) && (
+						<MenuButton
+							icon="EllipsisVertical"
+							handleEdit={enableEdit ? handleEdit : undefined}
+							handleDelete={enableDelete ? handleDelete : undefined}
+						/>
+					)}
 				</Stack>
 				{buttonText && (
 					<Box>
@@ -146,17 +146,17 @@ const sx = {
 		borderRadius: 1,
 	},
 	title: {
-    width: '100%',
+		width: '100%',
 		textAlign: 'center',
 	},
 	label: {
 		textAlign: 'center',
 	},
-  content: {
-    width: '100%',
-    alignItems: 'center'    
-  },
-  contentArea: {
-    width: '100%'
-  }
+	content: {
+		width: '100%',
+		alignItems: 'center',
+	},
+	contentArea: {
+		width: '100%',
+	},
 }

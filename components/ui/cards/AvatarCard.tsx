@@ -5,11 +5,11 @@ import { CardProps } from '../../../types'
 
 const AvatarCard: React.FC<CardProps> = (props) => {
 	const { variant } = props
-  return(
-    variant == 'grid'?
-      <AvatarGrid {...props} /> : 
-      <AvatarList {...props} />
-  )	
+	return variant == 'grid' ? (
+		<AvatarGrid {...props} />
+	) : (
+		<AvatarList {...props} />
+	)
 }
 
 export default AvatarCard
