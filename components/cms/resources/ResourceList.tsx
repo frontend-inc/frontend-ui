@@ -226,18 +226,23 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				)}
 				<Stack
 					direction={{ xs: 'column', sm: 'row' }}
-					sx={sx.sortFilterActions}
+					sx={sx.actions}
 					spacing={1}
 				>
+          <Stack
+					  direction={{ xs: 'column', sm: 'row' }}
+					  
+					  spacing={1}
+				  >
 					{enableFilters && (
-						<Box>
-							<FilterButton
-								filters={activeFilters}
-								handleFilter={handleFilter}
-								handleClear={handleClearFilters}
-								filterOptions={filterOptions}
-							/>
-						</Box>
+            <Box>
+            <FilterButton
+              filters={activeFilters}
+              handleFilter={handleFilter}
+              handleClear={handleClearFilters}
+              filterOptions={filterOptions}
+            />
+            </Box>
 					)}
 					{enableSorting && (
 						<SortButton
@@ -248,6 +253,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 							handleSortDirection={handleSortDirection}
 						/>
 					)}
+          </Stack>
 					{enableCreate && (
 						<Box>
 							<Button
@@ -390,8 +396,9 @@ const sx = {
 			xs: 2,
 		},
 	},
-	sortFilterActions: {
-		justifyContent: 'flex-end',
+	actions: {
+    width: '100%',
+		justifyContent: 'space-between',
 	},
 	loading: {
 		opacity: 0.7,

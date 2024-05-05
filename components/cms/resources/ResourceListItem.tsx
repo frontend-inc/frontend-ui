@@ -17,7 +17,7 @@ export type ResourceListItemProps = {
   handleClick: (resource: any) => void
   handleEdit: (resource: any) => void
   handleDelete: (resource: any) => void
-  color?: string 
+  colorField?: string 
   secondaryActions?: React.ReactNode 
   menuActions?: any
   titleField?: string
@@ -30,7 +30,7 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 
   const { 
     resource, 
-    color='primary',
+    colorField='color',
     titleField='title',
     descriptionField='description',
     imageField='image.url',
@@ -43,7 +43,7 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
   } = props 
 
   return(
-    <List>
+    <List sx={ sx.root }>
     <ListItem 
       disablePadding
       secondaryAction={
@@ -76,7 +76,7 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
           <ListItemIcon sx={ sx.listItemIcon }> 
             <Avatar 
               sx={{
-                bgcolor: color 
+                bgcolor: get(resource, colorField) 
               }}         
             >
               <Icon 
@@ -108,10 +108,12 @@ export default ResourceListItem
 
 const sx = {
   root: {
-    border: '2px solid blue'
+    p: 0,
+    m: 0
   },
   listItemButton: {
-    p: 0
+    p: 1,
+    borderRadius: theme => `${theme.shape.borderRadius}px`
   },
   actions: {
     justifyContent: 'center'

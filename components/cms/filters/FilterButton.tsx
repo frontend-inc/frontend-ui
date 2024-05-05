@@ -83,7 +83,7 @@ const FilterButton: React.FC<FilterButtonProps> = (
 						horizontal: 'right',
 					}}
 				>
-					<CollectionFilterList
+					<FilterList
 						filters={filters}
 						filterOptions={filterOptions}
 						handleFilter={handleFilter}

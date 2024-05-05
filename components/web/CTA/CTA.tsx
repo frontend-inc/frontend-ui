@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { Box, Stack, Typography, Button } from '@mui/material'
-import { Heading } from '../..'
 import { useRouter } from 'next/router'
 import { AppContext } from '../../../context'
 import { TypographyVariantsType } from '../../../types'
@@ -23,7 +22,6 @@ const CTA: React.FC<CTAProps> = (props) => {
 		title,
 		description,
 		buttonText,
-		textVariant = 'h4',
 		href,
 		handleClick,
 	} = props || {}

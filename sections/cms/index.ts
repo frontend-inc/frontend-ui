@@ -1,4 +1,5 @@
 export { default as CmsCarousel } from './CmsCarousel'
+export { default as CmsEmailSignup } from './CmsEmailSignup'
 export { default as CmsForm } from './CmsForm'
 export { default as CmsFormWizard } from './CmsFormWizard'
 export { default as CmsForeignTable } from './CmsForeignTable'
