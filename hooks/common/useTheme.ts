@@ -9,7 +9,7 @@ type ThemeProps = {
 	borderRadius?: number
 	bodyFont?: string
 	headerFont?: string
-	offset?: number
+	offsetX?: number
 	deviceSize?: 'mobile' | 'tablet' | 'desktop'
 }
 
@@ -21,7 +21,7 @@ const useTheme = (props: ThemeProps) => {
 		borderRadius,
 		bodyFont,
 		headerFont,
-		offset = 0,
+		offsetX = 0,
 		deviceSize = 'desktop',
 	} = props || {}
 
@@ -40,14 +40,14 @@ const useTheme = (props: ThemeProps) => {
 		let typography = { ...newTheme.typography }
 		let shape = { ...newTheme.shape }
 
-		if (offset > 0) {
+		if (offsetX > 0) {
 			breakpoints = {
 				values: {
 					xs: 0,
-					sm: breakpoints.values.sm + offset,
-					md: breakpoints.values.md + offset,
-					lg: breakpoints.values.lg + offset,
-					xl: breakpoints.values.xl + offset,
+					sm: breakpoints.values.sm + offsetX,
+					md: breakpoints.values.md + offsetX,
+					lg: breakpoints.values.lg + offsetX,
+					xl: breakpoints.values.xl + offsetX,
 				},
 			}
 		}
@@ -170,7 +170,7 @@ const useTheme = (props: ThemeProps) => {
 			shape,
 		})
 	}, [
-		offset,
+		offsetX,
 		deviceSize,
 		primaryColor,
 		bgcolor,

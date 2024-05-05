@@ -11,7 +11,8 @@ type LayoutContainerProps = {
 	footer?: ReactNode
 	enableSideNav?: boolean
 	notifications: NotificationType[]
-	pageMargin?: number
+	offsetY?: number
+  offsetX?: number
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
@@ -21,11 +22,20 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 		footer,
 		notifications,
 		enableSideNav = false,
-		pageMargin = 201,
+    offsetX=0,
+    offsetY=0, 
 	} = props
 
 	return (
-		<Box sx={sx.layout}>
+		<Box 
+      sx={{
+        ...sx.layout,
+        height: {
+          sm: `calc(100vh - ${offsetY}px)`,
+          xs: '100vh',
+        },
+      }}
+      >
 			<Alert />
 			{notifications?.length > 0 && (
 				<Notifications notifications={notifications} />
@@ -33,14 +43,14 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 			<Box
 				sx={{
 					...sx.root,
-					...(enableSideNav && sx.sideNav),
+					...(enableSideNav && sx.sideNav),          
 				}}
 			>
 				{header}
 				<Box
 					sx={{
 						...sx.content,
-						...(enableSideNav ? sx.contentSideNav : sx.contentTopNav),
+						...(enableSideNav ? sx.contentSideNav : sx.contentTopNav),            
 					}}
 				>
 					<LayoutScroll>
@@ -48,7 +58,7 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 							sx={{
 								...sx.page,
 								minHeight: {
-									sm: `calc(100vh - ${pageMargin}px)`,
+									sm: `calc(100vh - ${offsetY - 30}px)`,
 									xs: '100vh',
 								},
 							}}
@@ -68,7 +78,7 @@ export default LayoutContainer
 const sx = {
 	layout: {
 		width: '100%',
-		height: '100%',
+    overflowY: 'hidden'
 	},
 	root: {
 		width: '100%',
