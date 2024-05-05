@@ -12,7 +12,7 @@ import {
 	IconLoading,
 } from '../../../components'
 import { AppContext } from '../../../context'
-import { FieldType, FilterOptionType } from '../../../types'
+import {  FilterOptionType, TableHeaderType } from '../../../types'
 import { useRouter } from 'next/router'
 import SearchFilters from '../filters/SearchFilters'
 import { SYSTEM_FIELDS } from '../../../constants'
@@ -21,12 +21,7 @@ import { TableList } from '../../../components'
 import { CollectionProps } from './Collection'
 
 export type CollectionTableProps = CollectionProps & {
-	headers: {
-		name: string
-		label: string
-		variant: string
-		sortable: boolean
-	}[]
+  headers: TableHeaderType[]
 }
 
 const CollectionTable: React.FC<CollectionTableProps> = (props) => {
@@ -97,7 +92,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		paginate(page)
 	}
 
-	const handleSort = (field: FieldType) => {
+	const handleSort = (field: TableHeaderType) => {
 		let sortBy = field?.name
 		let sortDir = query?.sort_direction
 		if (sortBy == query?.sort_by) {

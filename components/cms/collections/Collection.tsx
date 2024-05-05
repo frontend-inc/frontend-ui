@@ -14,12 +14,11 @@ import {
 	IconLoading,
 } from '../../../components'
 import { AppContext } from '../../../context'
-import { FieldType, FilterOptionType } from '../../../types'
+import { FieldType, FilterOptionType, FormFieldType } from '../../../types'
 import { useRouter } from 'next/router'
 import { CollectionList, Placeholder } from '../..'
 import CollectionSearchFilters from '../filters/SearchFilters'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
-import { SortOptionType } from '../../../types'
 import { SYSTEM_FIELDS } from '../../../constants'
 import { flattenDocument } from '../../../helpers'
 
@@ -34,7 +33,7 @@ export type CollectionProps = {
 	navigateUrl: any
 	perPage?: number
 	query?: any
-	fields: FieldType[]
+	fields: FormFieldType[]
 	filterAnchor?: 'left' | 'top'
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]

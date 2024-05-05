@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Stack } from '@mui/material'
-import { ActionType, FieldType } from '../../../types'
+import { ActionType, DisplayFieldType, FormFieldType } from '../../../types'
 import Article from './Article'
 import Item from './Item'
 import Person from './Person'
@@ -17,8 +17,8 @@ export type ShowItemProps = {
 }
 
 export type ShowProps = ShowItemProps & {
-	fields: FieldType[]
-	displayFields: FieldType[]
+	fields: FormFieldType[]
+	displayFields: DisplayFieldType[]
 	url: string
 	style: 'article' | 'person' | 'item'
 }

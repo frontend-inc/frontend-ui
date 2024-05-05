@@ -1,8 +1,10 @@
 export type FormFieldType = {
-  field: string
+  name: string
   variant: string
   label: string
 }
+
+export type DisplayFieldType = FormFieldType 
 
 export type TableHeaderType = {
   name: string

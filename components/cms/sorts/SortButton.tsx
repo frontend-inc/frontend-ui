@@ -8,7 +8,7 @@ type SortButtonProps = {
 	sortOptions: SortOptionType[]
 	sortBy: string
 	sortDirection: 'asc' | 'desc'
-	handleSortBy: (field: SortOptionType) => void
+  handleSortBy: (field: SortOptionType) => void
 	handleSortDirection: (sortDirection: 'asc' | 'desc') => void
 }
 

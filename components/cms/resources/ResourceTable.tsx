@@ -11,7 +11,11 @@ import {
 	SearchInput,
 	IconLoading,
 } from '../../../components'
-import { TableHeaderType, FormFieldType, FilterOptionType } from '../../../types'
+import { 
+  TableHeaderType, 
+  FormFieldType, 
+  FilterOptionType 
+} from '../../../types'
 import SearchFilters from '../filters/SearchFilters'
 import { TableList } from '../../../components'
 import { ResourceListProps } from './ResourceList'
@@ -87,7 +91,7 @@ const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 		paginate(page)
 	}
 
-	const handleSort = (field: FieldType) => {
+	const handleSort = (field: TableHeaderType) => {
 		let sortBy = field?.name
 		let sortDir = query?.sort_direction
 		if (sortBy == query?.sort_by) {

@@ -13,14 +13,14 @@ import {
 } from '../../../components'
 import { Stack, Collapse, Button, Box } from '@mui/material'
 import { SYSTEM_FIELDS } from '../../../constants'
-import { FieldType } from '../../../types'
+import { FormFieldType } from '../../../types'
 import { flattenDocument } from '../../../helpers'
 
 export type ForeignCollectionProps = {
 	variant?: 'list' | 'grid'
 	style?: 'card' | 'avatar' | 'cover'
 	field: any
-	fields: FieldType[]
+	fields: FormFieldType[]
 	resource: any
 	url: string
 	layout?: 'drawer' | 'inline'

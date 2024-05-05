@@ -12,7 +12,7 @@ import {
 	IconLoading,
 } from '../../../components'
 import { AppContext } from '../../../context'
-import { FieldType, FilterOptionType } from '../../../types'
+import { FieldType, FilterOptionType, TableHeaderType } from '../../../types'
 import { useRouter } from 'next/router'
 import SearchFilters from '../filters/SearchFilters'
 import { SYSTEM_FIELDS } from '../../../constants'
@@ -25,12 +25,7 @@ export type ForeignCollectionTableProps = CollectionProps & {
 	field: FieldType
 	foreignUrl?: string
 	foreignContentType?: string
-	headers: {
-		name: string
-		label: string
-		variant: string
-		sortable: boolean
-	}[]
+	headers: TableHeaderType[]
 }
 
 const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
