@@ -9,9 +9,9 @@ import {
 	Typography,
 	Radio,
 } from '@mui/material'
-import { ExpandableList } from '../../../../components'
-import { SORT_DIRECTIONS } from '../../../../constants/index'
-import { SortOptionType } from '../../../../types'
+import { ExpandableList } from '../..'
+import { SORT_DIRECTIONS } from '../../../constants/index'
+import { SortOptionType } from '../../../types'
 
 type SortListProps = {
 	sortOptions: SortOptionType[]
@@ -43,7 +43,7 @@ const SortList: React.FC<SortListProps> = (props) => {
 							<ListItemIcon sx={sx.listItemIcon}>
 								<Radio
 									checked={sortBy == sortOption?.field}
-									onChange={() => handleSortBy(sortOption?.field)}
+									onChange={() => handleSortBy(sortOption)}
 								/>
 							</ListItemIcon>
 							<ListItemText
@@ -95,6 +95,7 @@ const sx = {
 	},
 	listItemIcon: {
 		minWidth: '32px',
+    mr: 2
 	},
 	sortDirectionButton: {
 		width: '32px',

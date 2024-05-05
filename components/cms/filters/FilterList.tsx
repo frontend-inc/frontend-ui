@@ -1,20 +1,20 @@
 import React from 'react'
-import CollectionFilterListInput from './CollectionFilterListInput'
+import FilterListInput from './FilterListInput'
 import { Stack } from '@mui/material'
 
-type CollectionFilterListProps = {
+type FilterListProps = {
 	filters: any
 	filterOptions: any
 	handleFilter: any
 }
 
-const CollectionFilterList: React.FC<CollectionFilterListProps> = (props) => {
+const FilterList: React.FC<FilterListProps> = (props) => {
 	const { filters = [], filterOptions = [], handleFilter } = props || {}
 
 	return (
 		<Stack spacing={0}>
 			{filterOptions?.map((filterOption, index) => (
-				<CollectionFilterListInput
+				<FilterListInput
 					key={index}
 					filters={filters}
 					filterOption={filterOption}
@@ -25,4 +25,4 @@ const CollectionFilterList: React.FC<CollectionFilterListProps> = (props) => {
 	)
 }
 
-export default CollectionFilterList
+export default FilterList

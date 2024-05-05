@@ -1,9 +1,9 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
-import { Autosuggest } from '../../../components'
-import { OptionType } from '../../../types'
+import { Autosuggest } from '../../..'
+import { OptionType } from '../../../../types'
 
-type FilterSortProps = {
+type TableFilterSortProps = {
 	label: string
 	fieldOptions: OptionType[]
 	sortBy?: string
@@ -16,7 +16,7 @@ const SORT_DIRECTIONS = [
 	{ label: 'increasing', value: 'desc' },
 ]
 
-const FilterSortInput: React.FC<FilterSortProps> = (props) => {
+const TableFilterSortInput: React.FC<TableFilterSortProps> = (props) => {
 	const {
 		label,
 		sortBy = '',
@@ -56,7 +56,7 @@ const FilterSortInput: React.FC<FilterSortProps> = (props) => {
 	)
 }
 
-export default FilterSortInput
+export default TableFilterSortInput
 
 const sx = {
 	inputField: {

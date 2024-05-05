@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { ButtonGroup, Button, Hidden } from '@mui/material'
-import { Icon, Popup, Drawer } from '../../../ui'
+import { Icon, Popup, Drawer } from '../../ui'
 import SortList from './SortList'
-import { SortOptionType } from '../../../../types'
+import { SortOptionType } from '../../../types'
 
 type SortButtonProps = {
 	sortOptions: SortOptionType[]
@@ -60,7 +60,7 @@ const SortButton: React.FC<SortButtonProps> = (props) => {
 			</Button>
 			<Hidden smDown>
 				<Popup
-					p={1}
+					p={0}          
 					anchorEl={anchorEl}
 					open={showModal}
 					handleClose={handleCloseModal}

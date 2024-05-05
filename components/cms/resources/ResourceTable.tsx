@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
-import { Button, Grid, Box, Stack } from '@mui/material'
+import { Button, Box, Stack } from '@mui/material'
 import {
 	Form,
 	Drawer,
@@ -15,12 +15,10 @@ import { AppContext } from '../../../context'
 import { FieldType, FilterOptionType } from '../../../types'
 import { useRouter } from 'next/router'
 import SearchFilters from '../filters/SearchFilters'
-import { SYSTEM_FIELDS } from '../../../constants'
-import { flattenDocument, flattenDocuments } from '../../../helpers'
 import { TableList } from '../../../components'
-import { CollectionProps } from './Collection'
+import { ResourceListProps } from './ResourceList'
 
-export type CollectionTableProps = CollectionProps & {
+export type ResourceTableProps = ResourceListProps & {
 	headers: {
 		name: string
 		label: string
@@ -29,25 +27,23 @@ export type CollectionTableProps = CollectionProps & {
 	}[]
 }
 
-const CollectionTable: React.FC<CollectionTableProps> = (props) => {
-	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
+const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 
 	const {
 		url,
+    name,
 		fields,
 		headers,
-		filterAnchor = 'left',
 		filterOptions = [],
 		query: defaultQuery = {},
 		perPage = 20,
 		enableSearch = false,
 		enableFilters = false,
-		navigateUrl,
 		enableBorder = false,
 		enableEdit = false,
 		enableCreate = false,
 		enableDelete = false,
+    handleClick
 	} = props
 
 	const [openModal, setOpenModal] = useState(false)
@@ -63,6 +59,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		update,
 		create,
 		destroy,
+    handleChange,
 		query,
 		findMany,
 		reloadMany,
@@ -73,8 +70,8 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		totalCount,
 		paginate,
 	} = useResource({
-		name: 'document',
-		url: url,
+		name,
+		url
 	})
 
 	const [keywords, setKeywords] = useState('')
@@ -138,36 +135,6 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		handleAddFilter(filter)
 	}
 
-	const handleClick = (item) => {
-		if (clientUrl && navigateUrl && item?.handle) {
-			window.scrollTo({
-				top: 0,
-				behavior: 'smooth',
-			})
-			router.push(`${clientUrl}${navigateUrl}/${item?.handle}`)
-		}
-	}
-
-	const handleDataChange = (ev) => {
-		const { name } = ev.target
-		const value =
-			ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
-		if (SYSTEM_FIELDS.includes(name)) {
-			setResource((prev) => ({
-				...prev,
-				[name]: value,
-			}))
-		} else {
-			setResource((prev) => ({
-				...prev,
-				data: {
-					...prev.data,
-					[name]: value,
-				},
-			}))
-		}
-	}
-
 	const handleAdd = () => {
 		setResource({})
 		setOpenModal(true)
@@ -214,112 +181,92 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (activeFilters && url && perPage) {
+		if (name && url && perPage) {
 			findMany({
-				...query,
-				filters: buildQueryFilters(activeFilters),
+				...query,				
 				...defaultQuery,
 				per_page: perPage,
 			})
 		}
-	}, [activeFilters?.length, defaultQuery, perPage, url])
+	}, [perPage, name, url])
 
-	const [rows, setRows] = useState([])
-
-	useEffect(() => {
-		if (resources?.length >= 0) {
-			let flatten = flattenDocuments(resources)
-			setRows(flatten)
-		}
-	}, [resources])
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-			<Grid container spacing={0}>
-				{enableFilters && filterAnchor == 'left' && (
-					<Grid item xs={12} sm={4} lg={3}>
-						<Box sx={sx.filtersContainer}>
-							<SearchFilters
-								filters={activeFilters}
-								filterOptions={filterOptions}
-								handleFilter={handleFilter}
-							/>
-						</Box>
-					</Grid>
+				{enableFilters && (
+          <Box sx={sx.filtersContainer}>
+            <SearchFilters
+              filters={activeFilters}
+              filterOptions={filterOptions}
+              handleFilter={handleFilter}
+            />
+          </Box>
 				)}
-				<Grid
-					item
-					xs={12}
-					sm={enableFilters && filterAnchor == 'left' ? 8 : 12}
-					lg={enableFilters && filterAnchor == 'left' ? 9 : 12}
-				>
-					<Box sx={{ ...(delayedLoading && sx.loading) }}>
-						<TableList
-							toolbar={
-								<Stack
-									direction={{ xs: 'column', sm: 'row' }}
-									sx={sx.toolbar}
-									spacing={1}
-								>
-									{enableSearch && (
-										<SearchInput
-											value={keywords}
-											handleChange={handleKeywordChange}
-											handleSearch={handleSearch}
-										/>
-									)}
-									{enableFilters && filterAnchor == 'top' && (
-										<Box sx={sx.fullWidth}>
-											<FilterButton
-												filters={activeFilters}
-												handleFilter={handleFilter}
-												handleClear={handleClearFilters}
-												filterOptions={filterOptions}
-											/>
-										</Box>
-									)}
-									{enableCreate && (
-										<Box sx={sx.fullWidth}>
-											<Button
-												sx={sx.button}
-												color="secondary"
-												variant="contained"
-												onClick={handleAdd}
-												startIcon={
-													<Icon
-														name="Plus"
-														color="secondary.contrastText"
-														size={20}
-													/>
-												}
-											>
-												Add
-											</Button>
-										</Box>
-									)}
-								</Stack>
-							}
-							enableBorder={enableBorder}
-							enableEdit={enableEdit}
-							handleEdit={handleEdit}
-							enableDelete={enableDelete}
-							handleDelete={handleDeleteClick}
-							loading={resources && loading}
-							fields={headers}
-							rows={rows}
-							handleClick={handleClick}
-							query={query}
-							handleSort={handleSort}
-							page={page}
-							perPage={perPage}
-							numPages={numPages}
-							numResults={numResults}
-							totalCount={totalCount}
-							handlePaginate={handlePaginate}
-						/>
-					</Box>
-				</Grid>
-			</Grid>
+        <Box sx={{ ...(delayedLoading && sx.loading) }}>
+          <TableList
+            toolbar={
+              <Stack
+                direction={{ xs: 'column', sm: 'row' }}
+                sx={sx.toolbar}
+                spacing={1}
+              >
+                {enableSearch && (
+                  <SearchInput
+                    value={keywords}
+                    handleChange={handleKeywordChange}
+                    handleSearch={handleSearch}
+                  />
+                )}
+                {enableFilters && (
+                  <Box sx={sx.fullWidth}>
+                    <FilterButton
+                      filters={activeFilters}
+                      handleFilter={handleFilter}
+                      handleClear={handleClearFilters}
+                      filterOptions={filterOptions}
+                    />
+                  </Box>
+                )}
+                {enableCreate && (
+                  <Box sx={sx.fullWidth}>
+                    <Button
+                      sx={sx.button}
+                      color="secondary"
+                      variant="contained"
+                      onClick={handleAdd}
+                      startIcon={
+                        <Icon
+                          name="Plus"
+                          color="secondary.contrastText"
+                          size={20}
+                        />
+                      }
+                    >
+                      Add
+                    </Button>
+                  </Box>
+                )}
+              </Stack>
+            }
+            enableBorder={enableBorder}
+            enableEdit={enableEdit}
+            handleEdit={handleEdit}
+            enableDelete={enableDelete}
+            handleDelete={handleDeleteClick}
+            loading={resources && loading}
+            fields={headers}
+            rows={resources}
+            handleClick={handleClick}
+            query={query}
+            handleSort={handleSort}
+            page={page}
+            perPage={perPage}
+            numPages={numPages}
+            numResults={numResults}
+            totalCount={totalCount}
+            handlePaginate={handlePaginate}
+          />
+        </Box>
 			<Drawer
 				open={openModal}
 				handleClose={() => setOpenModal(false)}
@@ -340,8 +287,8 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 					loading={loading}
 					errors={errors}
 					fields={fields}
-					resource={flattenDocument(resource)}
-					handleChange={handleDataChange}
+					resource={resource}
+					handleChange={handleChange}
 					handleRemove={handleRemove}
 				/>
 			</Drawer>
@@ -356,7 +303,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	)
 }
 
-export default CollectionTable
+export default ResourceTable
 
 const sx = {
 	root: {

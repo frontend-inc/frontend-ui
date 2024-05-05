@@ -9,14 +9,14 @@ import {
 	NUMBER_FIELDS,
 	DATE_RANGE_OPTIONS,
 	FILTER_OPERATORS,
-} from '../../../constants/index'
+} from '../../../../constants/index'
 import { Box, IconButton, Typography } from '@mui/material'
-import { Icon, TextInput, Autosuggest, ArrayInput } from '../../../components'
+import { Icon, TextInput, Autosuggest, ArrayInput } from '../../..'
 import {
 	OptionType,
 	FilterOptionType,
 	SyntheticEventType,
-} from '../../../types'
+} from '../../../../types'
 
 type FieldOption = FilterOptionType & {
 	db_type: string

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Hidden, Badge, Button } from '@mui/material'
-import { Icon, Popup, Drawer, IconLoading } from '../../..'
-import CollectionFilterList from './CollectionFilterList'
-import { FilterOptionType, SearchFilterOptionType } from '../../../..'
+import { Icon, Popup, Drawer, IconLoading } from '../..'
+import CollectionFilterList from './FilterList'
+import { FilterOptionType, SearchFilterOptionType } from '../../..'
 
-type CollectionFilterButtonProps = {
+type FilterButtonProps = {
 	filters?: FilterOptionType[]
 	loading?: boolean
 	filterOptions?: SearchFilterOptionType[]
@@ -13,7 +13,7 @@ type CollectionFilterButtonProps = {
 	handleClear: () => void
 }
 
-const CollectionFilterButton: React.FC<CollectionFilterButtonProps> = (
+const FilterButton: React.FC<FilterButtonProps> = (
 	props
 ) => {
 	const {
@@ -70,7 +70,7 @@ const CollectionFilterButton: React.FC<CollectionFilterButtonProps> = (
 			</Badge>
 			<Hidden smDown>
 				<Popup
-					p={1}
+					p={0}
 					anchorEl={anchorEl}
 					open={open}
 					handleClose={handleClose}
@@ -103,7 +103,7 @@ const CollectionFilterButton: React.FC<CollectionFilterButtonProps> = (
 	)
 }
 
-export default CollectionFilterButton
+export default FilterButton
 
 const sx = {
 	button: {

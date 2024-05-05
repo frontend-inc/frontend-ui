@@ -1,7 +1,8 @@
-import { palette } from '../palette'
-
 export default {
 	styleOverrides: {
-		root: {},
+		root: {
+			minWidth: '44px',
+			width: '44px',
+		},
 	},
 }

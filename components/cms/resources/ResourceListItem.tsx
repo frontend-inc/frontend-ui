@@ -2,6 +2,7 @@ import React from 'react'
 import {  
   Stack,
   Avatar,
+  List,
   ListItem,
   ListItemButton,
   ListItemText,
@@ -42,9 +43,9 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
   } = props 
 
   return(
+    <List>
     <ListItem 
-      disablePadding 
-      sx={ sx.root }
+      disablePadding
       secondaryAction={
         <Stack direction="row" spacing={1} sx={ sx.actions }>
           { secondaryActions }
@@ -85,7 +86,6 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
             </Avatar>            
           </ListItemIcon>
         )}          
-      </ListItemButton>
       <ListItemText 
         primary={ 
           <Typography variant="body1" color='text.primary'>
@@ -98,14 +98,18 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
           </Typography>
         }
       />      
-    </ListItem>
+      </ListItemButton>
+    </ListItem>    
+    </List>
   )
 }
 
 export default ResourceListItem 
 
 const sx = {
-  root: {},
+  root: {
+    border: '2px solid blue'
+  },
   listItemButton: {
     p: 0
   },

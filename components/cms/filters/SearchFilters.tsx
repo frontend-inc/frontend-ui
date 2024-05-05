@@ -1,8 +1,8 @@
 import React from 'react'
-import CollectionFilterList from './CollectionFilterList'
+import CollectionFilterList from './FilterList'
 import { Button, Hidden } from '@mui/material'
-import { Icon, Drawer } from '../../..'
-import { useMenu } from '../../../../hooks'
+import { Icon, Drawer } from '../..'
+import { useMenu } from '../../../hooks'
 
 type CollectionFilterListProps = {
 	filters: any

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react'
 import { AppContext } from '../../../context'
 import { useResource } from 'frontend-js'
 import { useRouter } from 'next/router'
-import { filterDocumentLinks } from '../../../helpers'
 import {
 	Drawer,
 	LoadMore,

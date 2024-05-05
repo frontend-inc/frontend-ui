@@ -5,8 +5,8 @@ import {
 	FilterWhereType,
 	FilterOptionType,
 	OptionType,
-} from '../../../../types'
-import { ExpandableList } from '../../../../components'
+} from '../../../types'
+import { ExpandableList } from '../..'
 
 type CheckboxFilterProps = {
 	name: string
@@ -17,7 +17,6 @@ type CheckboxFilterProps = {
 	handleClick: (filter: FilterOptionType) => void
 	label?: string
 	icon?: React.ReactNode
-	enableBorder?: boolean
 	disablePadding?: boolean
 	closed?: boolean
 }
@@ -26,23 +25,21 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 	const {
 		label,
 		name,
+		options,
 		values,
 		handleClick,
-		enableBorder,
-		disablePadding = false,
+		disablePadding = true,
 		closed = false,
 	} = props
-
-	const BOOLEAN_OPTIONS = [{ label: 'True', value: true }]
 
 	return (
 		<ExpandableList
 			label={label}
-			enableBorder={enableBorder}
+			enableBorder={false}
 			disablePadding={disablePadding}
 			closed={closed}
 		>
-			{BOOLEAN_OPTIONS?.map((option, index) => (
+			{options?.map((option, index) => (
 				<CheckboxFilterItem
 					key={index}
 					values={values}

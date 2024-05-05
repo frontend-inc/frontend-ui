@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
-import { Button, Grid, Box, Stack } from '@mui/material'
+import { Button, List, Grid, Box, Stack } from '@mui/material'
 import {
 	Form,
 	Drawer,
 	AlertModal,
 	Icon,
-	CollectionFilterButton,
+	FilterButton,
 	SortButton,
 	SearchInput,
 	LoadMore,
 	IconLoading,
 } from '../..'
-import { FieldType, FilterOptionType } from '../../../types'
+import { FilterOptionType } from '../../../types'
 import { Placeholder } from '../..'
-import CollectionSearchFilters from '../collections/filters/CollectionSearchFilters'
 import { SearchFilterOptionType } from '../../../types'
 import { SortOptionType } from '../../../types'
 import ResourceListItem from './ResourceListItem'
@@ -24,16 +23,18 @@ export type ResourceListProps = {
 	url: string
   name: string
   component?: React.FC<any>
-	layout: 'list' | 'grid'
+	layout?: 'list' | 'grid'
 	dense?: boolean
   handleClick?: (item: any) => void	
 	enableInfiniteLoad?: boolean
 	enableLoadMore?: boolean
-	navigateUrl: any
 	perPage?: number
 	query?: any
-	fields: FieldType[]
-	filterAnchor?: 'left' | 'top'
+	fields: {
+    name: string 
+    label: string 
+    variant: string 
+  }[]
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
 	enableSearch?: boolean
@@ -50,13 +51,12 @@ export type ResourceListProps = {
 const ResourceList: React.FC<ResourceListProps> = (props) => {
 
 	const {
-		layout = 'grid',
+		layout = 'list',
     dense,
 		component: Component = ResourceListItem,
 		url,
     name,
 		fields,
-		filterAnchor = 'left',
 		filterOptions = [],
 		sortOptions = [],
 		query: defaultQuery = {},
@@ -65,6 +65,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		enableFilters = false,
 		enableSorting = false,
 		enableLoadMore = true,
+    enableCreate,
 		handleClick,
 	} = props
 
@@ -110,10 +111,11 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		})
 	}
 
-	const handleSortBy = (sortBy: string) => {
+	const handleSort = (field: any) => {
 		findMany({
 			...query,
-			sort_by: sortBy,
+      ...defaultQuery,
+			sort_by: field.field,
 		})
 	}
 
@@ -198,15 +200,6 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (url && perPage) {
-			findMany({
-				...defaultQuery,
-				per_page: perPage,
-			})
-		}
-	}, [url, perPage])
-
-	useEffect(() => {
 		if (activeFilters) {
 			findMany({
 				...query,
@@ -214,7 +207,16 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				...defaultQuery,
 			})
 		}
-	}, [activeFilters?.length, defaultQuery])
+	}, [activeFilters?.length]) 
+
+	useEffect(() => {
+		if (url && name && perPage) {
+			findMany({
+				...defaultQuery,
+				per_page: perPage,
+			})
+		}
+	}, [url, name, perPage])
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
@@ -231,9 +233,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					sx={sx.sortFilterActions}
 					spacing={1}
 				>
-					{enableFilters && filterAnchor == 'top' && (
+					{enableFilters && (
 						<Box>
-							<CollectionFilterButton
+							<FilterButton
 								filters={activeFilters}
 								handleFilter={handleFilter}
 								handleClear={handleClearFilters}
@@ -243,10 +245,10 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					)}
 					{enableSorting && (
 						<SortButton
-							sortBy={query?.sort_by}
-							sortDirection={query?.sort_direction}
+							sortBy={query?.sort_by || 'id'}
+							sortDirection={query?.sort_direction || 'desc' }
 							sortOptions={sortOptions}
-							handleSortBy={handleSortBy}
+							handleSortBy={handleSort}
 							handleSortDirection={handleSortDirection}
 						/>
 					)}
@@ -257,7 +259,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 								color="secondary"
 								variant="contained"
 								onClick={handleAdd}
-								startIcon={<Icon name="Plus" size={20} />}
+								startIcon={<Icon name="Plus" color='secondary.contrastText' size={20} />}
 							>
 								Add
 							</Button>
@@ -265,57 +267,37 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					)}
 				</Stack>
 			</Stack>
-			<Grid container spacing={0}>
-				{enableFilters && filterAnchor == 'left' && (
-					<Grid item xs={12} sm={4} lg={3}>
-						<Box sx={sx.filtersContainer}>
-							<CollectionSearchFilters
-								filters={activeFilters}
-								filterOptions={filterOptions}
-								handleFilter={handleFilter}
-							/>
-						</Box>
-					</Grid>
-				)}
-				<Grid
-					item
-					xs={12}
-					sm={enableFilters && filterAnchor == 'left' ? 8 : 12}
-					lg={enableFilters && filterAnchor == 'left' ? 9 : 12}
-				>
-				<Box sx={{ ...(delayedLoading && sx.loading) }}>						
-          <Stack spacing={2}>
-            <Box
-              sx={{
-                ...sx.root,
-                ...(layout == 'grid' ? sx.grid : sx.list),
-                ...(dense && sx.listDense),
-              }}
-            >
-              {resources?.map((resource, index) => (
-                <Component
-                  key={index}
-                  resource={resource}						
-                  handleClick={handleClick ? 
+      <Box sx={{ ...(delayedLoading && sx.loading) }}>						
+        <Stack spacing={2} sx={ sx.fullWidth }>
+          <Box
+            sx={{
+              ...sx.layout,
+              ...(layout == 'grid' ? sx.grid : sx.list),
+              ...(dense && sx.listDense),
+            }}
+          >
+            {resources?.map((resource, index) => (
+              <Component
+                key={index}
+                resource={resource}						
+                handleClick={ handleClick ? 
                     () => handleClick(resource) : 
-                    () => void
-                  }
-                  handleEdit={() => handleEdit(resource)}
-                  handleDelete={() => handleDeleteClick(resource)}
-                />
-              ))}
-            </Box>
-          </Stack>
-					</Box>
-					{!loading && resources.length == 0 && (
-						<Placeholder
-							icon="Search"
-							title="No results found"
-							description="Try adjusting your search or filters"
-						/>
-					)}
-				</Grid>
-			</Grid>
+                    () => null 
+                }                                        
+                handleEdit={() => handleEdit(resource)}
+                handleDelete={() => handleDeleteClick(resource)}
+              />
+            ))}
+          </Box>
+        </Stack>
+      </Box>
+      {!loading && resources.length == 0 && (
+        <Placeholder
+          icon="Search"
+          title="No results found"
+          description="Try adjusting your search or filters"
+        />
+      )}
 			{enableLoadMore && (
 				<LoadMore
 					page={page}
@@ -368,6 +350,9 @@ const sx = {
 	content: {
 		width: '100%',
 	},
+  layout: {
+		width: '100%',
+  },
   list: {
 		display: 'flex',
 		flexDirection: 'column',
@@ -387,6 +372,9 @@ const sx = {
 	form: {
 		width: '100%',
 	},
+  fullWidth: {
+    width: '100%',
+  },
 	item: {
 		p: 2,
 	},

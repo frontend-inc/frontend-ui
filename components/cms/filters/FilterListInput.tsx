@@ -1,17 +1,17 @@
 import React from 'react'
-import { FilterOptionType, SearchFilterOptionType } from '../../../../types'
+import { FilterOptionType, SearchFilterOptionType } from '../../../types'
 import CheckboxFilter from './CheckboxFilter'
 import CheckboxBooleanFilter from './CheckboxBooleanFilter'
 import CheckboxNumberRangeFilter from './CheckboxNumberRangeFilter'
 import CheckboxRatingsFilter from './CheckboxRatingsFilter'
 
-type CollectionFilterListInputProps = {
+type FilterListInputProps = {
 	filters: FilterOptionType[]
 	filterOption: SearchFilterOptionType
 	handleFilter: (filter: FilterOptionType) => void
 }
 
-const CollectionFilterListInput: React.FC<CollectionFilterListInputProps> = (
+const FilterListInput: React.FC<FilterListInputProps> = (
 	props
 ) => {
 	const { filterOption, filters = [], handleFilter } = props || {}
@@ -66,4 +66,4 @@ const CollectionFilterListInput: React.FC<CollectionFilterListInputProps> = (
 	)
 }
 
-export default CollectionFilterListInput
+export default FilterListInput

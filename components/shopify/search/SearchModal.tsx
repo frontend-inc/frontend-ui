@@ -103,7 +103,7 @@ const SearchModal: React.FC = () => {
 					/>
 					{keywords?.length > 0 && !loading && products?.length == 0 && (
 						<Placeholder
-							icon={'Search'}
+							icon={'search'}
 							title="No search results"
 							description="Try another search term"
 						/>

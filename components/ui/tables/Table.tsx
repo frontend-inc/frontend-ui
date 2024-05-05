@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TableList, TableToolbar, FilterPopup } from '../../../components'
+import { TableList, TableToolbar, TableFilterPopup } from '../../../components'
 import { useSelected } from '../../../hooks'
 
 type TableProps = {
@@ -146,7 +146,7 @@ const Table: React.FC<TableProps> = (props) => {
 				handlePaginate={handlePaginate}
 				styles={styles}
 			/>
-			<FilterPopup
+			<TableFilterPopup
 				open={showFilters}
 				anchorEl={anchorEl}
 				query={query}

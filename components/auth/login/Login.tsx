@@ -54,20 +54,22 @@ const Login: React.FC<LoginProps> = (props) => {
 	return (
 		<>
 			<Loader loading={loading} />
-			<AuthScreen title={title} subtitle={subtitle}>
-				<LoginForm
-					errors={errors}
-					loading={loading}
-					user={user}
-					handleChange={handleChange}
-					handleSubmit={handleSubmit}
-					handleOneTimePassword={oneTimePasswordUrl && handleOneTimePassword}
-					handleSignup={signupUrl && handleSignup}
-					handleForgotPassword={forgotPasswordUrl && handleForgotPassword}
-					enableGoogle={enableGoogle}
-					handleGoogleSuccess={handleGoogleSuccess}
-				/>
-			</AuthScreen>
+      { !loading && (
+        <AuthScreen title={title} subtitle={subtitle}>
+          <LoginForm
+            errors={errors}
+            loading={loading}
+            user={user}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            handleOneTimePassword={oneTimePasswordUrl && handleOneTimePassword}
+            handleSignup={signupUrl && handleSignup}
+            handleForgotPassword={forgotPasswordUrl && handleForgotPassword}
+            enableGoogle={enableGoogle}
+            handleGoogleSuccess={handleGoogleSuccess}
+          />
+        </AuthScreen>
+      )}      
 		</>
 	)
 }

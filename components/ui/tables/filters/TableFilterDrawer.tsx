@@ -1,10 +1,9 @@
 import React from 'react'
-import { Popup } from '../../../components'
-import FilterForm from './FilterForm'
+import { Drawer } from '../../..'
+import TableFilterForm from './TableFilterForm'
 
-type FilterPopupProps = {
+type FilterDrawerProps = {
 	open: boolean
-	anchorEl: any
 	query: any
 	handleClose: () => void
 	fields: any[]
@@ -13,10 +12,9 @@ type FilterPopupProps = {
 	handleClearFilters: () => void
 }
 
-const FilterPopup: React.FC<FilterPopupProps> = (props) => {
+const TableFilterDrawer: React.FC<TableFilterDrawerProps> = (props) => {
 	const {
 		open,
-		anchorEl,
 		query,
 		handleClose,
 		fields,
@@ -26,16 +24,16 @@ const FilterPopup: React.FC<FilterPopupProps> = (props) => {
 	} = props
 
 	return (
-		<Popup anchorEl={anchorEl} open={open} handleClose={handleClose}>
-			<FilterForm
+		<Drawer open={open} handleClose={handleClose} title="search">
+			<TableFilterForm
 				query={query}
 				fields={fields}
 				handleSearch={handleSearch}
 				handleChange={handleChange}
 				handleClearFilters={handleClearFilters}
 			/>
-		</Popup>
+		</Drawer>
 	)
 }
 
-export default FilterPopup
+export default TableFilterDrawer

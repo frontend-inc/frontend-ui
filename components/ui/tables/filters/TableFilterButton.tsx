@@ -1,10 +1,9 @@
 import React from 'react'
 import { ButtonGroup, Badge, Button } from '@mui/material'
 import { Clear } from '@mui/icons-material'
-import { ListFilter } from 'lucide-react'
-import IconLoading from '../loaders/IconLoading'
+import { Icon, IconLoading } from '../../../../components'
 
-type FilterButtonProps = {
+type TableFilterButtonProps = {
 	loading: boolean
 	query: any
 	handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void
@@ -12,7 +11,7 @@ type FilterButtonProps = {
 	handleClearFilters: () => void
 }
 
-const FilterButton: React.FC<FilterButtonProps> = (props) => {
+const TableFilterButton: React.FC<TableFilterButtonProps> = (props) => {
 	const {
 		loading,
 		query = {},
@@ -41,7 +40,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 						loading ? (
 							<IconLoading color="secondary.contrastText" loading />
 						) : (
-							<ListFilter />
+							<Icon name='ListFilter' size={20} color='secondary.contrastText' />
 						)
 					}
 					onClick={handleClick}
@@ -63,7 +62,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 	)
 }
 
-export default FilterButton
+export default TableFilterButton
 
 const sx = {
 	secondaryButton: {

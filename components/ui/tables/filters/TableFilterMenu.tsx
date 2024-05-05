@@ -1,9 +1,9 @@
 import React from 'react'
 import { Box, Button, Fade, Popover, Typography } from '@mui/material'
-import FilterForm from './FilterForm'
+import TableFilterForm from './TableFilterForm'
 import { FilterList } from '@mui/icons-material'
 import { Search } from 'lucide-react'
-import { SyntheticEventType } from '../../../types'
+import { SyntheticEventType } from '../../../../types'
 
 type FilterMenuProps = {
 	open: boolean
@@ -15,7 +15,7 @@ type FilterMenuProps = {
 	handleSearch: () => void
 }
 
-const FilterMenu: React.FC<FilterMenuProps> = (props) => {
+const TableFilterMenu: React.FC<FilterMenuProps> = (props) => {
 	const {
 		open,
 		anchorEl,
@@ -53,7 +53,7 @@ const FilterMenu: React.FC<FilterMenuProps> = (props) => {
 					</Typography>
 				</Box>
 				<Box sx={sx.content}>
-					<FilterForm
+					<TableFilterForm
 						query={query}
 						fields={fields}
 						handleChange={handleChange}
@@ -76,7 +76,7 @@ const FilterMenu: React.FC<FilterMenuProps> = (props) => {
 	)
 }
 
-export default FilterMenu
+export default TableFilterMenu
 
 const sx = {
 	root: {

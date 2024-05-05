@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
-import { SearchInput } from '../../../components'
+import { SearchInput } from '../../..'
 
 type FilterKeywordProps = {
 	label?: string

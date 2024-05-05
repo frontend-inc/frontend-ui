@@ -4,8 +4,8 @@ import {
 	FilterOperatorType,
 	FilterWhereType,
 	FilterOptionType,
-} from '../../../../types'
-import { ExpandableList } from '../../../../components'
+} from '../../../types'
+import { ExpandableList } from '../..'
 
 type CheckboxFilterProps = {
 	name: string

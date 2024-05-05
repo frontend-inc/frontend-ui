@@ -7,19 +7,18 @@ import {
 	Drawer,
 	AlertModal,
 	Icon,
-	CollectionFilterButton,
+	FilterButton,
 	SearchInput,
 	IconLoading,
 } from '../../../components'
 import { AppContext } from '../../../context'
 import { FieldType, FilterOptionType } from '../../../types'
 import { useRouter } from 'next/router'
-import CollectionSearchFilters from './filters/CollectionSearchFilters'
+import SearchFilters from '../filters/SearchFilters'
 import { SYSTEM_FIELDS } from '../../../constants'
 import { flattenDocument, flattenDocuments } from '../../../helpers'
 import { TableList } from '../..'
 import { CollectionProps } from './Collection'
-import { filterDocumentLinks } from '../../../helpers'
 
 export type ForeignCollectionTableProps = CollectionProps & {
 	resource: any
@@ -42,7 +41,6 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 
 	const {
 		resource,
-		field,
 		url,
 		foreignUrl,
 		foreignContentType,
@@ -267,7 +265,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 				{enableFilters && filterAnchor == 'left' && (
 					<Grid item xs={12} sm={4} lg={3}>
 						<Box sx={sx.filtersContainer}>
-							<CollectionSearchFilters
+							<SearchFilters
 								filters={activeFilters}
 								filterOptions={filterOptions}
 								handleFilter={handleFilter}
@@ -298,7 +296,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 									)}
 									{enableFilters && filterAnchor == 'top' && (
 										<Box sx={sx.fullWidth}>
-											<CollectionFilterButton
+											<FilterButton
 												disableFilterCount={false}
 												filters={activeFilters}
 												handleFilter={handleFilter}

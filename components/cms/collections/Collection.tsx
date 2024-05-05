@@ -7,7 +7,7 @@ import {
 	Drawer,
 	AlertModal,
 	Icon,
-	CollectionFilterButton,
+	FilterButton,
 	SortButton,
 	SearchInput,
 	LoadMore,
@@ -17,7 +17,7 @@ import { AppContext } from '../../../context'
 import { FieldType, FilterOptionType } from '../../../types'
 import { useRouter } from 'next/router'
 import { CollectionList, Placeholder } from '../..'
-import CollectionSearchFilters from './filters/CollectionSearchFilters'
+import CollectionSearchFilters from '../filters/SearchFilters'
 import { SearchFilterOptionType } from '../../../types'
 import { SortOptionType } from '../../../types'
 import { SYSTEM_FIELDS } from '../../../constants'
@@ -119,10 +119,10 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		})
 	}
 
-	const handleSortBy = (sortBy: string) => {
+	const handleSortBy = (field: SortOptionType) => {
 		findMany({
 			...query,
-			sort_by: sortBy,
+			sort_by: field?.field,
 		})
 	}
 
@@ -272,7 +272,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 				>
 					{enableFilters && filterAnchor == 'top' && (
 						<Box>
-							<CollectionFilterButton
+							<FilterButton
 								filters={activeFilters}
 								handleFilter={handleFilter}
 								handleClear={handleClearFilters}

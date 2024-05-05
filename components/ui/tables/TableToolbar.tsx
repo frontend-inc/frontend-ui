@@ -3,7 +3,7 @@ import { SearchInput } from '../../../components'
 import { Stack, Box, IconButton, Hidden, Badge, Button } from '@mui/material'
 import { FilterList } from '@mui/icons-material'
 import { Edit, Trash } from 'lucide-react'
-import { FilterButton } from '../../../components'
+import { TableFilterButton } from '../../../components'
 
 type TableToolbarProps = {
 	loading?: boolean
@@ -62,7 +62,7 @@ const TableToolbar: React.FC<TableToolbarProps> = (props) => {
 				</Box>
 				<Hidden mdDown>
 					<Box sx={sx.toolbar}>
-						<FilterButton
+						<TableFilterButton
 							loading={loading}
 							query={query}
 							handleClick={handleFilter}

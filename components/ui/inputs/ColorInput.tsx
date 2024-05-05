@@ -8,6 +8,7 @@ import {
 	Box,
 	Slider,
 } from '@mui/material'
+import { ExpandMore } from '@mui/icons-material'
 import * as COLORS from '@mui/material/colors'
 import { Popup, Icon, TextInput } from '../../../components'
 import { SyntheticEventType } from '../../../types'
@@ -132,7 +133,7 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 							</IconButton>
 						</Tooltip>
 						<IconButton size="small">
-							<Icon name="ChevronDown" size={20} />
+							<ExpandMore />
 						</IconButton>
 					</Stack>
 				}

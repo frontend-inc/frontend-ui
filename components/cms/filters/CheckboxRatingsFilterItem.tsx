@@ -8,7 +8,7 @@ import {
 	Checkbox,
 	Rating,
 } from '@mui/material'
-import { OptionType } from '../../../../types'
+import { OptionType } from '../../../types'
 
 type CheckboxRatingsFilterItemProps = {
 	label?: string
