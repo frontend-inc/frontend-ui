@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
 import { Button, Box, Stack } from '@mui/material'
@@ -11,9 +11,7 @@ import {
 	SearchInput,
 	IconLoading,
 } from '../../../components'
-import { AppContext } from '../../../context'
 import { FieldType, FilterOptionType } from '../../../types'
-import { useRouter } from 'next/router'
 import SearchFilters from '../filters/SearchFilters'
 import { TableList } from '../../../components'
 import { ResourceListProps } from './ResourceList'
@@ -181,27 +179,29 @@ const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (name && url && perPage) {
+		if (name && url) {
 			findMany({
 				...query,				
 				...defaultQuery,
 				per_page: perPage,
 			})
 		}
-	}, [perPage, name, url])
+	}, [name, url])
+
+	useEffect(() => {
+		if (activeFilters?.length >= 0) {
+			findMany({
+				...query,				
+				...defaultQuery,
+        filters: buildQueryFilters(activeFilters),
+				per_page: perPage,
+			})
+		}
+	}, [activeFilters?.length])
 
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-				{enableFilters && (
-          <Box sx={sx.filtersContainer}>
-            <SearchFilters
-              filters={activeFilters}
-              filterOptions={filterOptions}
-              handleFilter={handleFilter}
-            />
-          </Box>
-				)}
         <Box sx={{ ...(delayedLoading && sx.loading) }}>
           <TableList
             toolbar={

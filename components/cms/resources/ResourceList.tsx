@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
-import { Button, List, Grid, Box, Stack } from '@mui/material'
+import { Button, Box, Stack } from '@mui/material'
 import {
 	Form,
 	Drawer,

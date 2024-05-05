@@ -71,7 +71,7 @@ const useFilters = (props: UseFiltersProps) => {
 	const isBlank = (value) => {
 		return (
 			value === '' ||
-			value === false ||
+      value == undefined ||
 			value == null ||
 			(Array.isArray(value) && value.length === 0)
 		)
@@ -126,10 +126,10 @@ const useFilters = (props: UseFiltersProps) => {
 	}
 
 	useEffect(() => {
-		if (query?.filters) {
+		if (query?.filters?.length >= 0) {
 			formatFilterArray(query?.filters)
 		}
-	}, [query])
+	}, [query?.filters?.length])
 
 	return {
 		filter,

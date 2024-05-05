@@ -23,7 +23,8 @@ type CheckboxFilterProps = {
 }
 
 const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
-	const {
+	
+  const {
 		label,
 		name,
 		values,
@@ -33,7 +34,10 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 		closed = false,
 	} = props
 
-	const BOOLEAN_OPTIONS = [{ label: 'True', value: true }]
+	const BOOLEAN_OPTIONS = [
+    { label: 'True', operator: 'eq', value: true },
+    { label: 'False', operator: 'eq', value: false }
+  ]
 
 	return (
 		<ExpandableList
@@ -50,7 +54,7 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 					handleClick={() =>
 						handleClick({
 							where: 'OR',
-							operator: 'eq',
+							operator: option.operator,
 							field: name,
 							value: option.value,
 						})
