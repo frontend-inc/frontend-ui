@@ -26,6 +26,16 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 		handleClick(path)
 	}
 
+  const filterVisibility = (menuItem) => {
+    if (menuItem.visibility === 'logged_in' && !currentUser?.id) {
+      return false
+    }
+    if (menuItem.visibility === 'logged_out' && currentUser?.id) {
+      return false
+    }
+    return true  
+  }
+
 	return (
 		<Drawer
 			open={menuOpen}
@@ -37,9 +47,7 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 				<List sx={sx.sideNavMenuItems}>
 					{menuItems
 						?.filter((menuItem) => menuItem.parent_id == null)
-						?.filter((menuItem) =>
-							menuItem?.require_auth ? currentUser?.id : !currentUser?.id
-						)
+						?.filter(filterVisibility)
 						?.map((menuItem, index) => (
 							<SideNavMenuItem
 								key={index}

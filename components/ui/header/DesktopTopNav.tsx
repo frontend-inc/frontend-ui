@@ -32,6 +32,16 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 
 	const { currentUser } = useAuth()
 
+  const filterVisibility = (menuItem) => {
+    if (menuItem.visibility === 'logged_in' && !currentUser?.id) {
+      return false
+    }
+    if (menuItem.visibility === 'logged_out' && currentUser?.id) {
+      return false
+    }
+    return true  
+  }
+
 	return (
 		<Hidden mdDown>
 			<AppBar
@@ -55,9 +65,7 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 						<Box sx={sx.centerMenu}>
 							{menuItems
 								?.filter((menuItem) => menuItem.parent_id == null)
-								?.filter((menuItem) =>
-									menuItem?.require_auth ? currentUser?.id : !currentUser?.id
-								)
+								?.filter(filterVisibility)
 								?.map((menuItem, index) => (
 									<TopNavMenuItem
 										key={index}
