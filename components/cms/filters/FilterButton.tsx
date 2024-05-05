@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Hidden, Badge, Button } from '@mui/material'
 import { Icon, Popup, Drawer, IconLoading } from '../..'
-import CollectionFilterList from './FilterList'
+import FilterList from './FilterList'
 import { FilterOptionType, SearchFilterOptionType } from '../../..'
 
 type FilterButtonProps = {
@@ -92,7 +92,7 @@ const FilterButton: React.FC<FilterButtonProps> = (
 			</Hidden>
 			<Hidden smUp>
 				<Drawer open={open} handleClose={handleClose} title="Search">
-					<CollectionFilterList
+					<FilterList
 						filters={filters}
 						filterOptions={filterOptions}
 						handleFilter={handleFilter}

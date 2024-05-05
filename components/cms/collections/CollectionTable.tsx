@@ -12,7 +12,7 @@ import {
 	IconLoading,
 } from '../../../components'
 import { AppContext } from '../../../context'
-import {  FilterOptionType, TableHeaderType } from '../../../types'
+import { FilterOptionType, TableHeaderType } from '../../../types'
 import { useRouter } from 'next/router'
 import SearchFilters from '../filters/SearchFilters'
 import { SYSTEM_FIELDS } from '../../../constants'
