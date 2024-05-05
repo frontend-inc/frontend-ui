@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
-import { Button, Collapse, Grid, Box, Stack } from '@mui/material'
+import { Button, Grid, Box, Stack } from '@mui/material'
 import {
 	Form,
 	Drawer,
@@ -12,23 +12,21 @@ import {
 	SearchInput,
 	LoadMore,
 	IconLoading,
-} from '../../../components'
-import { AppContext } from '../../../context'
+} from '../..'
 import { FieldType, FilterOptionType } from '../../../types'
-import { useRouter } from 'next/router'
-import { CollectionList, Placeholder } from '../..'
-import CollectionSearchFilters from './filters/CollectionSearchFilters'
+import { Placeholder } from '../..'
+import CollectionSearchFilters from '../collections/filters/CollectionSearchFilters'
 import { SearchFilterOptionType } from '../../../types'
 import { SortOptionType } from '../../../types'
-import { SYSTEM_FIELDS } from '../../../constants'
-import { flattenDocument } from '../../../helpers'
+import ResourceListItem from './ResourceListItem'
 
-export type CollectionProps = {
+export type ResourceListProps = {
 	url: string
-	variant: 'list' | 'grid'
-	style: 'avatar' | 'card' | 'cover' | 'chip'
-	layout?: 'drawer' | 'inline'
-	editing?: boolean
+  name: string
+  component?: React.FC<any>
+	layout: 'list' | 'grid'
+	dense?: boolean
+  handleClick?: (item: any) => void	
 	enableInfiniteLoad?: boolean
 	enableLoadMore?: boolean
 	navigateUrl: any
@@ -49,15 +47,14 @@ export type CollectionProps = {
 	enableDelete?: boolean
 }
 
-const Collection: React.FC<CollectionProps> = (props) => {
-	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
+const ResourceList: React.FC<ResourceListProps> = (props) => {
 
 	const {
-		variant = 'grid',
-		style = 'card',
-		layout = 'drawer',
+		layout = 'grid',
+    dense,
+		component: Component = ResourceListItem,
 		url,
+    name,
 		fields,
 		filterAnchor = 'left',
 		filterOptions = [],
@@ -67,15 +64,8 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		enableSearch = false,
 		enableFilters = false,
 		enableSorting = false,
-		enableInfiniteLoad = false,
 		enableLoadMore = true,
-		navigateUrl,
-		buttonText,
-		enableBorder = false,
-		enableGradient = false,
-		enableEdit = false,
-		enableCreate = false,
-		enableDelete = false,
+		handleClick,
 	} = props
 
 	const [openModal, setOpenModal] = useState(false)
@@ -91,6 +81,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		update,
 		create,
 		destroy,
+    handleChange,
 		query,
 		findMany,
 		reloadMany,
@@ -99,7 +90,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		numPages,
 		loadMore,
 	} = useResource({
-		name: 'document',
+		name,
 		url,
 	})
 
@@ -159,36 +150,6 @@ const Collection: React.FC<CollectionProps> = (props) => {
 
 	const handleFilter = (filter: FilterOptionType) => {
 		handleAddFilter(filter)
-	}
-
-	const handleClick = (item) => {
-		if (clientUrl && navigateUrl && item?.handle) {
-			window.scrollTo({
-				top: 0,
-				behavior: 'smooth',
-			})
-			router.push(`${clientUrl}${navigateUrl}/${item?.handle}`)
-		}
-	}
-
-	const handleDataChange = (ev) => {
-		const { name } = ev.target
-		const value =
-			ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
-		if (SYSTEM_FIELDS.includes(name)) {
-			setResource((prev) => ({
-				...prev,
-				[name]: value,
-			}))
-		} else {
-			setResource((prev) => ({
-				...prev,
-				data: {
-					...prev.data,
-					[name]: value,
-				},
-			}))
-		}
 	}
 
 	const handleAdd = () => {
@@ -322,44 +283,29 @@ const Collection: React.FC<CollectionProps> = (props) => {
 					sm={enableFilters && filterAnchor == 'left' ? 8 : 12}
 					lg={enableFilters && filterAnchor == 'left' ? 9 : 12}
 				>
-					<Box sx={{ ...(delayedLoading && sx.loading) }}>
-						{layout == 'inline' && (
-							<Collapse in={openModal}>
-								<Stack direction="column" sx={sx.form} spacing={1}>
-									<Form
-										loading={loading}
-										errors={errors}
-										fields={fields}
-										resource={flattenDocument(resource)}
-										handleChange={handleDataChange}
-										handleRemove={handleRemove}
-									/>
-									<Button
-										fullWidth
-										variant="contained"
-										color="primary"
-										onClick={handleSubmit}
-										startIcon={<IconLoading loading={loading} />}
-									>
-										{resource?.id ? 'Update' : 'Save'}
-									</Button>
-								</Stack>
-							</Collapse>
-						)}
-						<CollectionList
-							variant={variant}
-							style={style}
-							resources={resources}
-							handleClick={handleClick}
-							buttonText={buttonText}
-							enableBorder={enableBorder}
-							enableGradient={enableGradient}
-							enableEdit={enableEdit}
-							enableCreate={enableCreate}
-							enableDelete={enableDelete}
-							handleEdit={handleEdit}
-							handleDelete={handleDeleteClick}
-						/>
+				<Box sx={{ ...(delayedLoading && sx.loading) }}>						
+          <Stack spacing={2}>
+            <Box
+              sx={{
+                ...sx.root,
+                ...(layout == 'grid' ? sx.grid : sx.list),
+                ...(dense && sx.listDense),
+              }}
+            >
+              {resources?.map((resource, index) => (
+                <Component
+                  key={index}
+                  resource={resource}						
+                  handleClick={handleClick ? 
+                    () => handleClick(resource) : 
+                    () => void
+                  }
+                  handleEdit={() => handleEdit(resource)}
+                  handleDelete={() => handleDeleteClick(resource)}
+                />
+              ))}
+            </Box>
+          </Stack>
 					</Box>
 					{!loading && resources.length == 0 && (
 						<Placeholder
@@ -375,36 +321,33 @@ const Collection: React.FC<CollectionProps> = (props) => {
 					page={page}
 					numPages={numPages}
 					loadMore={loadMore}
-					enableInfiniteLoad={enableInfiniteLoad}
 				/>
 			)}
-			{layout == 'drawer' && (
-				<Drawer
-					open={openModal}
-					handleClose={() => setOpenModal(false)}
-					title={resource?.id ? 'Edit' : 'Add'}
-					actions={
-						<Button
-							fullWidth
-							variant="contained"
-							color="primary"
-							onClick={handleSubmit}
-							startIcon={<IconLoading loading={loading} />}
-						>
-							{resource?.id ? 'Update' : 'Save'}
-						</Button>
-					}
-				>
-					<Form
-						loading={loading}
-						errors={errors}
-						fields={fields}
-						resource={flattenDocument(resource)}
-						handleChange={handleDataChange}
-						handleRemove={handleRemove}
-					/>
-				</Drawer>
-			)}
+      <Drawer
+        open={openModal}
+        handleClose={() => setOpenModal(false)}
+        title={resource?.id ? 'Edit' : 'Add'}
+        actions={
+          <Button
+            fullWidth
+            variant="contained"
+            color="primary"
+            onClick={handleSubmit}
+            startIcon={<IconLoading loading={loading} />}
+          >
+            {resource?.id ? 'Update' : 'Save'}
+          </Button>
+        }
+      >
+        <Form
+          loading={loading}
+          errors={errors}
+          fields={fields}
+          resource={resource}
+          handleChange={handleChange}
+          handleRemove={handleRemove}
+        />
+      </Drawer>
 			<AlertModal
 				open={openDeleteModal}
 				handleClose={() => setOpenDeleteModal(false)}
@@ -416,7 +359,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	)
 }
 
-export default Collection
+export default ResourceList
 
 const sx = {
 	root: {
@@ -424,7 +367,23 @@ const sx = {
 	},
 	content: {
 		width: '100%',
-	},	
+	},
+  list: {
+		display: 'flex',
+		flexDirection: 'column',
+		gap: '16px',
+	},
+	listDense: {
+		gap: '8px',
+	},
+	grid: {
+		display: 'grid',
+		gridTemplateColumns: {
+			md: '1fr 1fr 1fr',
+			xs: '1fr',
+		},
+		gap: '16px',
+	},
 	form: {
 		width: '100%',
 	},

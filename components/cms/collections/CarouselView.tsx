@@ -8,7 +8,7 @@ type CarouselViewProps = {
 	editing?: boolean
 	defaultQuery?: any
 	buttonText?: string
-	handleClick?: (item: any) => void
+	handleClick: (item: any) => void
 	component?: React.FC<any>
 	enableAutoPlay?: boolean
 	enableArrows?: boolean
@@ -44,7 +44,7 @@ const CarouselView: React.FC<CarouselViewProps> = (props) => {
 					<Component
 						key={index}
 						editing={editing}
-						direction="row"
+						variant="grid"
 						title={item?.title}
 						description={item?.description}
 						image={item?.image?.url}
