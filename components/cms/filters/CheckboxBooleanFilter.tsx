@@ -22,6 +22,12 @@ type CheckboxFilterProps = {
 	closed?: boolean
 }
 
+type BooleanOptionType = {
+  label: string
+  operator: FilterOperatorType
+  value: boolean
+}[]
+
 const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 	
   const {
@@ -34,7 +40,7 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 		closed = false,
 	} = props
 
-	const BOOLEAN_OPTIONS = [
+	const BOOLEAN_OPTIONS: BooleanOptionType = [
     { label: 'True', operator: 'eq', value: true },
     { label: 'False', operator: 'eq', value: false }
   ]

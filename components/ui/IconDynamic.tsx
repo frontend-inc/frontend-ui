@@ -21,6 +21,7 @@ const LucideIcon: React.FC<IconProps> = (props) => {
   const LucideIcon = dynamic(dynamicIconImports[toKebabCase(name)]);
     
 	return (    
+    //@ts-ignore
     <LucideIcon color={get(theme.palette, color)} size={size} />  
   )
 }

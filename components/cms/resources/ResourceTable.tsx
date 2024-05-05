@@ -11,18 +11,13 @@ import {
 	SearchInput,
 	IconLoading,
 } from '../../../components'
-import { FieldType, FilterOptionType } from '../../../types'
+import { TableHeaderType, FormFieldType, FilterOptionType } from '../../../types'
 import SearchFilters from '../filters/SearchFilters'
 import { TableList } from '../../../components'
 import { ResourceListProps } from './ResourceList'
 
 export type ResourceTableProps = ResourceListProps & {
-	headers: {
-		name: string
-		label: string
-		variant: string
-		sortable: boolean
-	}[]
+	headers: TableHeaderType[]
 }
 
 const ResourceTable: React.FC<ResourceTableProps> = (props) => {

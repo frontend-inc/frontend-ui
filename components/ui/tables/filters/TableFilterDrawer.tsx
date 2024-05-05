@@ -2,7 +2,7 @@ import React from 'react'
 import { Drawer } from '../../..'
 import TableFilterForm from './TableFilterForm'
 
-type FilterDrawerProps = {
+type TableFilterDrawerProps = {
 	open: boolean
 	query: any
 	handleClose: () => void

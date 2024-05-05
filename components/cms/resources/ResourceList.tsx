@@ -13,7 +13,7 @@ import {
 	LoadMore,
 	IconLoading,
 } from '../..'
-import { FilterOptionType } from '../../../types'
+import { FormFieldType, FilterOptionType } from '../../../types'
 import { Placeholder } from '../..'
 import { SearchFilterOptionType } from '../../../types'
 import { SortOptionType } from '../../../types'
@@ -30,11 +30,7 @@ export type ResourceListProps = {
 	enableLoadMore?: boolean
 	perPage?: number
 	query?: any
-	fields: {
-    name: string 
-    label: string 
-    variant: string 
-  }[]
+	fields: FormFieldType[]
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
 	enableSearch?: boolean

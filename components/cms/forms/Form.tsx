@@ -2,13 +2,13 @@ import React from 'react'
 import { Stack, Button } from '@mui/material'
 import FormFieldInput from './FormFieldInput'
 import { get } from 'lodash'
-import { FieldType, SyntheticEventType } from '../../../types'
+import { FormFieldType, SyntheticEventType } from '../../../types'
 import { IconLoading } from '../../../components'
 
 export type FormProps = {
 	loading: boolean
 	errors: any
-	fields: FieldType[]
+	fields: FormFieldType[]
 	resource: any
 	handleChange: (e: SyntheticEventType) => void
 	handleRemove: (name: string) => void

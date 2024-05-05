@@ -18,7 +18,7 @@ import { FieldType, FilterOptionType } from '../../../types'
 import { useRouter } from 'next/router'
 import { CollectionList, Placeholder } from '../..'
 import CollectionSearchFilters from '../filters/SearchFilters'
-import { SearchFilterOptionType } from '../../../types'
+import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { SortOptionType } from '../../../types'
 import { SYSTEM_FIELDS } from '../../../constants'
 import { flattenDocument } from '../../../helpers'
@@ -282,8 +282,8 @@ const Collection: React.FC<CollectionProps> = (props) => {
 					)}
 					{enableSorting && (
 						<SortButton
-							sortBy={query?.sort_by}
-							sortDirection={query?.sort_direction}
+							sortBy={query?.sort_by || 'id'}
+							sortDirection={query?.sort_direction || 'desc'}
 							sortOptions={sortOptions}
 							handleSortBy={handleSortBy}
 							handleSortDirection={handleSortDirection}
