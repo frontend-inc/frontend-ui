@@ -5,7 +5,6 @@ import { ShowItemProps } from './Show'
 import { flattenDocument } from 'frontend-js'
 
 type ShowContainerProps = ShowItemProps & {
-  fieldName: string 
   children: React.ReactNode
 } 
 

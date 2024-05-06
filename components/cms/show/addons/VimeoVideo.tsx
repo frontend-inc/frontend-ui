@@ -9,10 +9,14 @@ type VimeoVideoProps = ShowItemProps & {
 } 
 
 const VimeoVideo: React.FC<VimeoVideoProps> = (props) => {
-  const { resource, fieldName, ...rest } = props || {}
+  const { resource, actions, fieldName, ...rest } = props || {}
   const src = flattenDocument(resource)[fieldName]  
 	return (
-    <ShowContainer {...rest}>
+    <ShowContainer 
+      {...rest}
+      actions={actions}
+      resource={resource} 
+    >
       <VimeoEmbed src={ src } />          
     </ShowContainer>	
   )

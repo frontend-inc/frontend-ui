@@ -9,10 +9,14 @@ type YouTubeVideoProps = ShowItemProps & {
 } 
 
 const YouTubeVideo: React.FC<YouTubeVideoProps> = (props) => {
-  const { resource, fieldName, ...rest } = props || {}
+  const { actions, resource, fieldName, ...rest } = props || {}
   const src = flattenDocument(resource)[fieldName]  
 	return (
-    <ShowContainer {...rest}>
+    <ShowContainer 
+      {...rest}
+      actions={actions}
+      resource={resource}
+    >
       <YouTubeEmbed src={ src } />          
     </ShowContainer>	
   )
