@@ -50,6 +50,7 @@ const sx = {
 		bgcolor: 'background.default',
 		borderTop: '1px solid',
 		borderColor: 'divider',
+    minHeight: '80px'
 	},
 	container: {
 		width: '100%',

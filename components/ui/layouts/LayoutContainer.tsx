@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Box } from '@mui/material'
 import { Alert, LayoutScroll } from '../../../components'
 import { Notifications } from '../../../components'
@@ -26,6 +26,14 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
     offsetY=0, 
 	} = props
 
+  const [enableNotifications, setEnableNotifications] = useState(false)
+
+  useEffect(() => {
+    if(notifications?.length > 0){
+      setEnableNotifications(true)
+    }
+  }, [notifications])
+
 	return (
 		<Box 
       sx={{
@@ -51,24 +59,11 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 					sx={{
 						...sx.content,
 						...(enableSideNav ? sx.contentSideNav : sx.contentTopNav),
-            height: {
-              sm: `calc(100vh - ${offsetY - 80}px)`,
-              xs: '100vh',
-            }
+            ...(enableNotifications && sx.contentNotifications),
 					}}
 				>
 					<LayoutScroll>
-						<Box
-							sx={{
-								...sx.page,
-								minHeight: {
-									sm: `calc(100vh - ${offsetY - 30}px)`,
-									xs: '100vh',
-								},
-							}}
-						>
-							{children}
-						</Box>
+						{children}
 						{footer}
 					</LayoutScroll>
 				</Box>
@@ -114,8 +109,10 @@ const sx = {
 			xs: '100%',
 		},
 		height: '100%',
-		maxHeight: '100vh',
-	},
+	},  
+  contentNotifications: {
+    pb: '45px',
+  },
 	contentTopNav: {
 		pt: '60px',
 		minHeight: 'calc(100% - 60px)',
