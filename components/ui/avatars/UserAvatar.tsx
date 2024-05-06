@@ -1,5 +1,6 @@
 import React from 'react'
 import Avatar from './Avatar'
+import { getInitials } from '../../../helpers'
 
 type UserAvatarProps = {
 	user: any
@@ -7,8 +8,15 @@ type UserAvatarProps = {
 }
 
 const UserAvatar: React.FC<UserAvatarProps> = (props) => {
-	const { user, size = 24 } = props
-	return <Avatar size={size} src={user?.avatar?.url} />
+	const { user, size = 40 } = props
+	return(
+    <Avatar 
+      color={ user?.color }
+      label={ getInitials(user?.full_name) } 
+      size={size} 
+      src={user?.avatar?.url} 
+    />
+  )
 }
 
 export default UserAvatar

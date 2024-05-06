@@ -30,7 +30,7 @@ export type ResourceListProps = {
 	enableLoadMore?: boolean
 	perPage?: number
 	query?: any
-	fields: FormFieldType[]
+	fields?: FormFieldType[]
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
 	enableSearch?: boolean
@@ -61,6 +61,8 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		enableFilters = false,
 		enableSorting = false,
 		enableLoadMore = true,
+    enableEdit,
+    enableDelete,
     enableCreate,
 		handleClick,
 	} = props
@@ -283,11 +285,15 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
                 key={index}
                 resource={resource}						
                 handleClick={ handleClick ? 
-                    () => handleClick(resource) : 
-                    () => null 
+                  () => handleClick(resource) : 
+                  () => null 
                 }                                        
-                handleEdit={() => handleEdit(resource)}
-                handleDelete={() => handleDeleteClick(resource)}
+                handleEdit={ enableEdit  ?
+                    () => handleEdit(resource) : null 
+                  }
+                handleDelete={ enableDelete ? 
+                    () => handleDeleteClick(resource) : null 
+                  }
               />
             ))}
           </Box>

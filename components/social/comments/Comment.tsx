@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {
-	Stack,
 	Box,
-	Button,
 	Link,
 	IconButton,
 	Collapse,
@@ -30,7 +28,6 @@ type CommentProps = {
 }
 
 const Comment: React.FC<CommentProps> = (props) => {
-	const { currentUser } = useAuth()
 
 	const { url, handle, level = 0, comment: parentComment, handleDelete } = props
 
@@ -67,7 +64,7 @@ const Comment: React.FC<CommentProps> = (props) => {
 		}
 	}
 
-	useEffect(() => {
+	useEffect(() => {    
 		setComment({
 			parent_id: parentComment?.id,
 		})
@@ -85,12 +82,10 @@ const Comment: React.FC<CommentProps> = (props) => {
 						<Icon name="MessageSquare" size={20} />
 					</IconButton>
 				}
-			>
-				{comment?.user?.avatar?.url && (
-					<ListItemIcon sx={sx.listItemIcon}>
-						<UserAvatar user={comment?.user} />
-					</ListItemIcon>
-				)}
+			>				
+        <ListItemIcon sx={sx.listItemIcon}>
+          <UserAvatar user={parentComment?.user} />
+        </ListItemIcon>			
 				<ListItemText
 					primary={
 						<Typography

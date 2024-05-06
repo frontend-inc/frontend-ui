@@ -32,7 +32,7 @@ const TextInput: React.FC<TextInputPropsType> = (props) => {
 	})
 
 	const handleInputChange = (e) => {
-		if (error) clearError()
+		clearError()
 		setText(e.target.value)
 	}
 

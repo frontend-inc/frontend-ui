@@ -94,7 +94,7 @@ const ExpandableList: React.FC<ExpandableListProps> = (props) => {
 				</ListItem>
 			)}
 			<Collapse in={open} timeout="auto" unmountOnExit>
-				<Box px={2}>{children}</Box>
+				<Box pb={2} px={2}>{children}</Box>
 			</Collapse>
 		</List>
 	)
@@ -110,11 +110,9 @@ const sx = {
 	},
 	listItem: {
 		borderRadius: 1,
-		height: '40px',
 	},
 	listItemButton: {
 		py: 0,
-		px: 2,
 		borderRadius: 1,
 		height: '40px',
 	},
