@@ -6,6 +6,7 @@ import Item from './Item'
 import Person from './Person'
 import Details from '../details/Details'
 import YouTubeVideo from './addons/YouTubeVideo'
+import VimeoEmbed from './addons/VimeoVideo'
 import { Drawer, Form, IconLoading } from '../../../components'
 import { useDocuments, flattenDocument } from 'frontend-js'
 
@@ -23,10 +24,11 @@ export type ShowProps = ShowItemProps & {
 	displayFields: DisplayFieldType[]
 	url: string
 	style: 
-  'article' | 
-  'person' | 
-  'item' | 
-  'youtube'
+    'article' | 
+    'person' | 
+    'item' | 
+    'youtube' | 
+    'vimeo'
 }
 
 const Show: React.FC<ShowProps> = (props) => {
@@ -79,7 +81,8 @@ const Show: React.FC<ShowProps> = (props) => {
 		item: Item,
 		article: Article,
 		person: Person,
-    youtube: YouTubeVideo 
+    youtube: YouTubeVideo,
+    vimeo: VimeoEmbed, 
 	}
 
 	const Component = components[style]
