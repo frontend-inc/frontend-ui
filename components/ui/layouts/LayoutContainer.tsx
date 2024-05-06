@@ -50,7 +50,11 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 				<Box
 					sx={{
 						...sx.content,
-						...(enableSideNav ? sx.contentSideNav : sx.contentTopNav),            
+						...(enableSideNav ? sx.contentSideNav : sx.contentTopNav),
+            height: {
+              sm: `calc(100vh - ${offsetY - 80}px)`,
+              xs: '100vh',
+            }
 					}}
 				>
 					<LayoutScroll>
@@ -111,10 +115,6 @@ const sx = {
 		},
 		height: '100%',
 		maxHeight: '100vh',
-		overflow: 'hidden',
-		'&::-webkit-scrollbar': {
-			display: 'none',
-		},
 	},
 	contentTopNav: {
 		pt: '60px',
