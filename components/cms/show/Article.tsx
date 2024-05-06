@@ -22,9 +22,11 @@ const Article: React.FC<ShowItemProps> = (props) => {
 				<Typography color="text.primary" variant="h3">
 					{title}
 				</Typography>
+        { published_at && (
 				<Typography color="text.secondary" variant="caption">
 					{moment(published_at).format('MMMM D, YYYY')}
 				</Typography>
+        )}
 				{(actions || enableEdit) && (
 					<Stack
 						direction={{ xs: 'column', sm: 'row' }}

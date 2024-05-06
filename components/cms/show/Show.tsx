@@ -5,12 +5,14 @@ import Article from './Article'
 import Item from './Item'
 import Person from './Person'
 import Details from '../details/Details'
+import YouTubeVideo from './addons/YouTubeVideo'
 import { Drawer, Form, IconLoading } from '../../../components'
 import { useDocuments, flattenDocument } from 'frontend-js'
 
 export type ShowItemProps = {
 	enableBorder?: boolean
 	actions: ActionType[]
+  fieldName?: string
 	resource: any
 	enableEdit?: boolean
 	handleEdit?: () => void
@@ -20,7 +22,11 @@ export type ShowProps = ShowItemProps & {
 	fields: FormFieldType[]
 	displayFields: DisplayFieldType[]
 	url: string
-	style: 'article' | 'person' | 'item'
+	style: 
+  'article' | 
+  'person' | 
+  'item' | 
+  'youtube'
 }
 
 const Show: React.FC<ShowProps> = (props) => {
@@ -28,6 +34,7 @@ const Show: React.FC<ShowProps> = (props) => {
 		style = 'item',
 		resource,
 		fields,
+    fieldName,
 		displayFields,
 		url,
 		actions,
@@ -72,6 +79,7 @@ const Show: React.FC<ShowProps> = (props) => {
 		item: Item,
 		article: Article,
 		person: Person,
+    youtube: YouTubeVideo 
 	}
 
 	const Component = components[style]
@@ -85,6 +93,7 @@ const Show: React.FC<ShowProps> = (props) => {
 	return (
 		<Stack direction="column" spacing={2} sx={sx.root}>
 			<Component
+        fieldName={fieldName}
 				resource={_resource}
 				actions={actions}
 				enableBorder={enableBorder}
