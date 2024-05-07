@@ -17,7 +17,8 @@ const AppProvider = (props: AppProviderProps) => {
 
 	const [authOpen, setAuthOpen] = useState(false) // Auth modal
 	const [myAccountOpen, setMyAccountOpen] = useState(false) // My account modal
-	const [authorizationOpen, setAuthorizationOpen] = useState(false) // App authorization
+	
+  const [authorizationOpen, setAuthorizationOpen] = useState(false) // App authorization
 	const [menuOpen, setMenuOpen] = useState(false) // Mobile menu
   
 	const [app, setApp] = useState<any>()

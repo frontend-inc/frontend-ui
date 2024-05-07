@@ -15,10 +15,11 @@ import { AppContext } from '../../../context'
 
 type AuthModalProps = {
 	disableUsername?: boolean
+  enableTeams?: boolean
 }
 
 const AuthModal: React.FC<AuthModalProps> = (props) => {
-	const { disableUsername = false } = props
+	const { disableUsername = false, enableTeams=false } = props
 
 	const router = useRouter()
 	const { app_id: appId } = router.query
@@ -50,7 +51,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 		})
 		if (resp?.id) {
 			setAuthOpen(false)
-			window.location.reload()
+			//window.location.reload()
 		}
 	}
 
@@ -119,8 +120,8 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 		>
 			<Box sx={sx.tabsContainer}>
 				<Tabs value={tab} onChange={handleTabChange}>
-					<Tab label="Login" />
-					<Tab label="Register" />
+					<Tab label="Login" value={0} />
+					<Tab label="Register" value={1} />
 				</Tabs>
 			</Box>
 			<Box px={4} sx={sx.content}>

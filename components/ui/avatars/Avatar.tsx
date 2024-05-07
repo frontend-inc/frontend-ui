@@ -23,7 +23,9 @@ const UserAvatar: React.FC<UserAvatarProps> = (props) => {
 			}}
 		>      
       { label ? (
-        <Typography variant="button" color="background.default">RB</Typography>			
+        <Typography variant="button" color="background.default" sx={ sx.label }>
+          {label}
+        </Typography>			
       ): (
         <Icon name="User" color="secondary.contrastText" />    
       )}
@@ -39,4 +41,7 @@ const sx = {
     pt: '2px',
 		bgcolor: 'secondary.main',
 	},
+  label: {
+    textTransform: 'uppercase'
+  }
 }
