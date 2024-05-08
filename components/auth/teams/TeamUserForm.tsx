@@ -23,6 +23,8 @@ const TeamUserForm: React.FC<TeamUserFormProps> = (props) => {
         <UserListItem 
           selected
           user={ teamUser?.user }
+          handleEdit={() => null}
+          handleDelete={() => null}
         />         
       </List>
       <Autosuggest 

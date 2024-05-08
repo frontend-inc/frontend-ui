@@ -5,7 +5,6 @@ import { TypographyVariantsType } from '../../../types'
 import { Label, TextInput, IconLoading } from '../../../components'
 import { useResource } from 'frontend-js'
 import { useAlerts } from '../../../hooks'
-import { RouterParams } from 'frontend-ui/types'
 
 export type EmailSignupProps = {
 	label?: string
@@ -20,9 +19,6 @@ export type EmailSignupProps = {
 
 // Call To Action
 const EmailSignup: React.FC<EmailSignupProps> = (props) => {
-
-  const router = useRouter() 
-  const { app_id: appId } = router?.query as RouterParams
 
   const { showAlertSuccess } = useAlerts()
 	const {
@@ -41,7 +37,7 @@ const EmailSignup: React.FC<EmailSignupProps> = (props) => {
     create  
   } = useResource({
     name: 'contact',
-    url: `/api/v1/apps/${appId}/contacts`,
+    url: `/api/v1/contacts`,
   })
 
   const handleSubmit = async () => {
