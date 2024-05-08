@@ -3,6 +3,7 @@ import { UserType, StorageType } from '../types'
 export type TeamType = {
 	id?: number
 	name: string	
+  color: string
 	image: StorageType
 }
 

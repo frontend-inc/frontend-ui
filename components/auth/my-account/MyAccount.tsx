@@ -37,14 +37,6 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 		router.push(redirectUrl)
 	}
 
-	useEffect(() => {
-		if (!currentUser) {
-			fetchMe()
-		} else {
-			setUser(currentUser)
-		}
-	}, [currentUser])
-
 	return (
 		<>
 			{currentUser && (

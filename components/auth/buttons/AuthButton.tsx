@@ -54,10 +54,10 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (!currentUser) {
+		if (!currentUser?.id) {
 			fetchMe()
 		}
-	}, [currentUser])
+	}, [currentUser?.id])
 
 	return (
 		<>

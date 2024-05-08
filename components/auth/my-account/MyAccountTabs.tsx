@@ -13,7 +13,8 @@ const MyAccountTabs: React.FC<MyAccountTabsProps> = (props) => {
 
 	const TABS = [
     { label: 'Account', value: 0 },
-		{ label: 'Teams', value: 1 }        
+		{ label: 'Teams', value: 1 },
+    { label: 'Members', value: 2 }                
 	]
 
 	return (

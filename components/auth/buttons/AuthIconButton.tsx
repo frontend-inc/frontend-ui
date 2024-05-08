@@ -32,12 +32,6 @@ const AuthButton: React.FC = () => {
 		logout()
 	}
 
-	useEffect(() => {
-		if (!currentUser) {
-			fetchMe()
-		}
-	}, [currentUser])
-
 	return (
 		<>
 			<IconButton onClick={handleMenuClick}>

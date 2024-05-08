@@ -21,12 +21,6 @@ const SignInButton: React.FC<SignInButtonProps> = (props) => {
 		setAuthOpen(true)
 	}
 
-	useEffect(() => {
-		if (!currentUser) {
-			fetchMe()
-		}
-	}, [currentUser])
-
 	if (currentUser?.id) return null
 	return (
 		<Button

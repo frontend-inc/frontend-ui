@@ -1,10 +1,10 @@
-import React, { useEffect, useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { AppContext } from '../../../context'
 import { useAuth } from 'frontend-js'
 import { Modal, MyAccountForm } from '../../../components'
-import { TeamList } from '../../../components'
+import { TeamList, TeamUsersList, TeamUserInvite } from '../../../components'
 import MyAccountTabs from './MyAccountTabs'
-import { Box } from '@mui/material'
+import { Button, Box, Stack } from '@mui/material'
 
 type MyAccountModalProps = {
   enableTeams?: boolean
@@ -45,16 +45,15 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 		await updateMe(user)
 	}
 
-	useEffect(() => {
-		if (!currentUser) {
-			fetchMe()
-		} else {
-			setUser(currentUser)
-		}
-	}, [currentUser])
+  const handleAddUser = () => {
+    setCurrentTab(3)
+  }
 
-	if (!currentUser) return null
-	return (
+  const handleInviteUser = () => {
+    setCurrentTab(3)
+  }
+
+  return (
 		<Modal
       disablePadding
 			open={myAccountOpen}
@@ -64,6 +63,16 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 					? `${currentUser?.first_name} ${currentUser?.last_name}`
 					: 'My Account'
 			}
+      actions={ 
+        currentTab == 2 && (
+          <Button         
+            onClick={handleAddUser}
+            variant='contained'
+            color="primary"
+          >
+            Add User
+          </Button>
+        )}      
 		>
       { enableTeams && (
         <MyAccountTabs 
@@ -84,6 +93,14 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
       )}
       { currentTab == 1 && (
         <TeamList /> 
+      )}      
+      { currentTab == 2 && (
+        <TeamUsersList /> 
+      )}
+      { currentTab == 3 && (
+        <TeamUserInvite 
+          handleSuccess={() => setCurrentTab(2)}
+        /> 
       )}
       </Box>
 		</Modal>
