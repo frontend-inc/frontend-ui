@@ -5,8 +5,6 @@ const useTeams = () => {
 	  
 	const { api } = useApi()
   const [user, setUser] = useState({})
-  const [users, setUsers] = useState([])
-  const [teamUsers, setTeamUsers] = useState([])
 
   const {
     loading,
@@ -46,24 +44,6 @@ const useTeams = () => {
     )
   }  
   
-  const findUsers = async (teamId) => {
-    let resp = await loadingWrapper(
-      () => api.get(`/api/v1/teams/${teamId}/users`)
-    )  
-    if(resp){
-      setUsers(resp)
-    }
-  }  
-
-  const findTeamUsers = async (teamId) => {
-    let resp = await loadingWrapper(
-      () => api.get(`/api/v1/teams/${teamId}/team_users`)
-    )  
-    if(resp){
-      setTeamUsers(resp)
-    }
-  }  
-
   const inviteUser = async (teamId, user) => {
     return await loadingWrapper(
       () => api.post(`/api/v1/teams/${teamId}/invite_user`, {
@@ -88,10 +68,6 @@ const useTeams = () => {
     
     user,
     setUser,
-    users,
-    findUsers, 
-    teamUsers,
-    findTeamUsers,   
     inviteUser,
 
 		handleChange,
