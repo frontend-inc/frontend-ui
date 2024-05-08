@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { ResetPasswordForm, AuthScreen, Loader } from '../..'
 import { useAuth } from 'frontend-js'
-import { RouterParams } from 'frontend-ui/types'
 import { useRouter } from 'next/router'
 
 type ResetPasswordProps = {
@@ -11,7 +10,7 @@ type ResetPasswordProps = {
 	redirectUrl?: string
 }
 
-type RouterTokenParams = RouterParams & {
+type RouterTokenParams = {
   token: string
 }
 
