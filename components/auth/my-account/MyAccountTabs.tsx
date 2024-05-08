@@ -1,6 +1,5 @@
 import React from 'react'
-import { ListItemIcon, Tabs, Tab } from '@mui/material'
-import { Icon } from 'frontend-ui/components'
+import { Tabs, Tab } from '@mui/material'
 
 type MyAccountTabsProps = {
   tab?: number

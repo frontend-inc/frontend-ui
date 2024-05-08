@@ -2,7 +2,7 @@ import React from 'react'
 import { List, Stack } from '@mui/material'
 import { Autosuggest, UserListItem } from '../../../components'
 import { TeamUserType } from '../../../types'
-import { USER_ROLES } from 'lib/constants'
+import { USER_ROLES } from '../../../constants'
 
 type TeamUserFormProps = {
 	teamUser: TeamUserType

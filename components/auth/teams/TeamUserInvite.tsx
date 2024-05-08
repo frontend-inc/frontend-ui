@@ -36,6 +36,7 @@ const TeamUserInvite: React.FC<TeamUserInviteProps> = (props) => {
 
   const handleSubmit = async () => { 
     let resp = await inviteUser(currentUser?.team_id, user)
+    //@ts-ignore
     if(resp?.id){
       setUser({ username: '', first_name: '', last_name: '', email: '' })
       showAlertSuccess('User invited successfully')      
