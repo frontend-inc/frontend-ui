@@ -57,7 +57,6 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
 		>
       <ListItemButton 
         onClick={handleClick}
-        sx={ sx.listItemButton }
       >
         <ListItemIcon sx={sx.listItemIcon}>
           <UserAvatar user={user} />

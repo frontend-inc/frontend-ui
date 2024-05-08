@@ -5,7 +5,7 @@ import {
   AlertModal,
   UserListItem  
 } from '../../../components'
-import {  TeamUserType } from '../../../types'
+import { TeamUserType } from '../../../types'
 import { useTeamUsers } from '../../../hooks'
 import TeamUserForm from './TeamUserForm'
 
@@ -64,9 +64,13 @@ const TeamUsersList: React.FC<TeamListProps> = (props) => {
     }
   }
 
+  const handleLoadTeamUsers = async () => {
+    await findTeamUsers(currentUser?.team_id) as TeamUserType[]
+  }
+
   useEffect(() => {   
     if(currentUser?.team_id){      
-      findTeamUsers(currentUser?.team_id)    
+      handleLoadTeamUsers()
     }
   }, [currentUser?.team_id])
 
@@ -75,7 +79,7 @@ const TeamUsersList: React.FC<TeamListProps> = (props) => {
     { !isEditing ? (
       <>
         <List dense>
-          { teamUsers?.map((teamUser: TeamUserType) => (
+          { teamUsers?.map((teamUser) => (
             <UserListItem      
               key={teamUser.id}  
               isAdmin={ currentUser?.team_role === 'admin' }        
@@ -83,9 +87,18 @@ const TeamUsersList: React.FC<TeamListProps> = (props) => {
                 ...teamUser?.user,
                 role: teamUser?.role
               }}
-              handleClick={() => handleClick(teamUser)}
-              handleEdit={() => handleEdit(teamUser)}
-              handleDelete={() => handleDeleteClick(teamUser)}
+              handleClick={
+                // @ts-ignore
+                () => handleClick(teamUser)
+              }
+              handleEdit={
+                // @ts-ignore
+                () => handleEdit(teamUser)
+              }
+              handleDelete={
+                // @ts-ignore
+                () => handleDeleteClick(teamUser)
+              }
             />
           ))}
         </List>
@@ -109,8 +122,8 @@ const TeamUsersList: React.FC<TeamListProps> = (props) => {
       </>    
     ):(
       <Stack direction="column" spacing={1.5}>
-        <TeamUserForm 
-          //@ts-ignore 
+        <TeamUserForm
+          //@ts-ignore  
           teamUser={ teamUser }
           handleChange={ handleChange }
           errors={ errors }

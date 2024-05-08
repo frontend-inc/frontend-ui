@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useAuth } from 'frontend-js'
-import { Button, List } from '@mui/material'
+import { List } from '@mui/material'
 import {
   SelectableListItem  
-} from '../..'
+} from '../../../components'
 import { TeamType } from '../../../types'
 import { useTeams } from '../../../hooks'
 
@@ -14,11 +14,13 @@ const TeamList: React.FC = (props) => {
   const { currentUser, fetchMe } = useAuth()
   const { selectTeam } = useTeams()
 
-  const [activeTeamId, setActiveTeamId] = useState<TeamType>()
+  const [activeTeamId, setActiveTeamId] = useState(-1)
 
-  const handleClick = async (team: TeamType) => {
-    let resp = await selectTeam(team.id)     
+  const handleClick = async (team) => {
+    let resp = await selectTeam(team.id)         
+    //@ts-ignore
     if(resp?.team_id){
+      //@ts-ignore
       setActiveTeamId(resp?.team_id)
       fetchMe()
     }    
@@ -33,7 +35,7 @@ const TeamList: React.FC = (props) => {
 
   return(
     <List>
-      { teams?.map((team: TeamType) => (
+      { teams?.map((team) => (        
         <SelectableListItem      
           key={team.id}
           selected={team?.id == activeTeamId ? true : false}
