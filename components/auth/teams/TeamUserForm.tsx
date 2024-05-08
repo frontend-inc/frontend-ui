@@ -1,10 +1,11 @@
 import React from 'react'
-import { Button, Stack } from '@mui/material'
-import { IconLoading, TextInput } from '../../../components'
-import { UserType } from 'frontend-js'
+import { List, Stack } from '@mui/material'
+import { Autosuggest, UserListItem } from '../../../components'
+import { TeamUserType } from '../../../types'
+import { USER_ROLES } from 'lib/constants'
 
 type TeamUserFormProps = {
-	user: Record<string, any>
+	teamUser: TeamUserType
 	errors: Record<string, any>
 	handleChange: (ev: any) => void
 }
@@ -12,50 +13,27 @@ type TeamUserFormProps = {
 const TeamUserForm: React.FC<TeamUserFormProps> = (props) => {
 	const {    
 		errors,
-		user,
+		teamUser,
 		handleChange,    
 	} = props || {}
 
 	return (
 		<Stack spacing={1.5}>
-      <TextInput
+      <List dense disablePadding>
+        <UserListItem 
+          selected
+          user={ teamUser?.user }
+        />         
+      </List>
+      <Autosuggest 
         errors={errors}
-        direction="column"
-        name="username"
-        label="Username"
-        value={user?.username}
-        placeholder="Username"
+        name="role"
+        label="Select role"
+        value={teamUser?.role}
+        placeholder="Select role"
+        options={USER_ROLES}
         handleChange={handleChange}
-      />
-			<Stack direction="row" spacing={1}>
-				<TextInput
-					errors={errors}
-					direction="column"
-					name="first_name"
-					label="First name"
-					value={user?.first_name}
-					placeholder="First name"
-					handleChange={handleChange}
-				/>
-				<TextInput
-					errors={errors}
-					direction="column"
-					name="last_name"
-					label="Last name"
-					value={user?.last_name}
-					placeholder="Last name"
-					handleChange={handleChange}
-				/>
-			</Stack>
-			<TextInput
-				errors={errors}
-				direction="column"
-				name="email"
-				label="Email"
-				value={user?.email}
-				placeholder="Email"
-				handleChange={handleChange}
-			/>
+      />			
 		</Stack>
 	)
 }

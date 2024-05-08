@@ -1,6 +1,7 @@
 import React from 'react'
 import {
 	Typography,
+  Stack,
 	Box,
 	ListItem,
   ListItemButton,
@@ -13,28 +14,29 @@ import { UserType } from 'frontend-js'
 
 type UserListItemProps = {
 	user: UserType
+  selected?: boolean
 	isAdmin?: boolean
-  handleClick?: (user: UserType) => void
-	handleEdit?: (user: UserType) => void
-	handleDelete?: (user: UserType) => void
+  handleClick: (user: UserType) => void | undefined
+	handleEdit: (user: UserType) => void | undefined
+	handleDelete: (user: UserType) => void | undefined
 }
 
 const UserListItem: React.FC<UserListItemProps> = (props) => {
-	const { user, isAdmin, handleClick, handleEdit, handleDelete } = props
+	const { user, selected=false, isAdmin=false, handleClick, handleEdit, handleDelete } = props
 
-	return (
+	return (    
 		<ListItem
+      sx={{ 
+        ...sx.root,
+        ...(selected && sx.selected)
+      }}
+      disableGutters
 			secondaryAction={
-				isAdmin && (
-					<Box sx={sx.secondaryActions}>
-						<Label label={user?.role} />
-						<MenuButton>
-							<MenuItem onClick={() => handleEdit(user)}>Edit</MenuItem>
-							<MenuItem onClick={() => handleDelete(user)}>
-								Remove
-							</MenuItem>
-						</MenuButton>
-					</Box>
+				isAdmin && user?.role !== 'admin' && (
+        <MenuButton
+          handleEdit={ () => handleEdit(user)}
+          handleDelete={ () => handleDelete(user)}
+        />
 				)
 			}
 		>
@@ -47,9 +49,12 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
         </ListItemIcon>
         <ListItemText 
           primary={
-            <Typography variant="body1" color="text.primary">
-              { user.full_name }
-            </Typography>
+            <Stack direction="row" spacing={1}>
+              <Typography variant="body1" color="text.primary">
+                { user.full_name }
+              </Typography>
+              { user?.role && <Label label={user?.role} /> }
+            </Stack> 
             } 
           secondary={
             <Typography variant="body2" color="text.secondary">
@@ -65,6 +70,14 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
 export default UserListItem
 
 const sx = {
+  root: {
+    p: 0,
+    borderRadius: theme => `${theme.shape.borderRadius}px`,
+  },
+  selected: {
+    border: '3px solid',
+    borderColor: 'primary.main',
+  },
 	listItemIcon: {
 		mr: 2,
 	},

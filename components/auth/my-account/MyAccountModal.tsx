@@ -49,9 +49,6 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
     setCurrentTab(3)
   }
 
-  const handleInviteUser = () => {
-    setCurrentTab(3)
-  }
 
   return (
 		<Modal
@@ -63,16 +60,6 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 					? `${currentUser?.first_name} ${currentUser?.last_name}`
 					: 'My Account'
 			}
-      actions={ 
-        currentTab == 2 && (
-          <Button         
-            onClick={handleAddUser}
-            variant='contained'
-            color="primary"
-          >
-            Add User
-          </Button>
-        )}      
 		>
       { enableTeams && (
         <MyAccountTabs 
@@ -95,11 +82,14 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
         <TeamList /> 
       )}      
       { currentTab == 2 && (
-        <TeamUsersList /> 
+        <TeamUsersList 
+          handleAddUser={() => setCurrentTab(3)}
+        /> 
       )}
       { currentTab == 3 && (
         <TeamUserInvite 
           handleSuccess={() => setCurrentTab(2)}
+          handleCancel={() => setCurrentTab(2)}
         /> 
       )}
       </Box>

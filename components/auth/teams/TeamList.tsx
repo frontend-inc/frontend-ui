@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useAuth } from 'frontend-js'
-import { List } from '@mui/material'
+import { Button, List } from '@mui/material'
 import {
   SelectableListItem  
 } from '../..'
-import { TeamType, TeamUserType } from '../../../types'
+import { TeamType } from '../../../types'
 import { useTeams } from '../../../hooks'
 
 const TeamList: React.FC = (props) => {    

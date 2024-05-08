@@ -3,17 +3,18 @@ import { UserType } from 'frontend-js'
 import { useAuth } from 'frontend-js'
 import { useAlerts } from '../../../hooks'
 import { useTeams } from '../../../hooks'
-import TeamUserForm from './TeamUserForm'
+import TeamUserInviteForm from './TeamUserInviteForm'
 import { Stack, Button } from '@mui/material'
 import { IconLoading } from '../../../components'
 
 type TeamUserInviteProps = {
   handleSuccess: () => void
+  handleCancel: () => void
 }
 
 const TeamUserInvite: React.FC<TeamUserInviteProps> = (props) => {    
   
-  const { handleSuccess } = props || {}
+  const { handleSuccess, handleCancel } = props || {}
   const { showAlertSuccess } = useAlerts()
 
   const { currentUser } = useAuth()
@@ -44,22 +45,38 @@ const TeamUserInvite: React.FC<TeamUserInviteProps> = (props) => {
 
   return(
     <Stack direction='column' spacing={1.5}>
-      <TeamUserForm 
+      <TeamUserInviteForm 
         errors={ errors }
         user={ user }
         handleChange={ handleChange }
       />
-      <Button
-				fullWidth
-				color="primary"
-				onClick={handleSubmit}
-				variant="contained"
-				startIcon={<IconLoading loading={loading} />}
-			>
-				Send Invite
-			</Button>
+      <Stack sx={ sx.actions } direction={'row'} spacing={1}>
+        <Button
+          color="secondary"
+          onClick={handleCancel}
+          variant="contained"
+          startIcon={<IconLoading loading={loading} />}
+        >
+          Cancel
+        </Button>
+        <Button
+          color="primary"
+          onClick={handleSubmit}
+          variant="contained"
+          startIcon={<IconLoading loading={loading} />}
+        >
+          Send Invite
+        </Button>
+      </Stack>
     </Stack>
   )
 }
 
 export default TeamUserInvite 
+
+const sx = {
+  actions: {
+    width: '100%',
+    justifyContent: 'flex-end'
+  }
+}

@@ -43,6 +43,8 @@ export default MyAccountTabs
 const sx = {
 	root: {
     my: 0,
+    borderBottom: '1px solid',
+    borderColor: 'divider',
 		width: '100%',
 		'& .MuiTab-root': {
 			minWidth: '60px',
