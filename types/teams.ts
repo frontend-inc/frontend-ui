@@ -13,6 +13,7 @@ export type TeamUserType = {
 	team_id: number
   team: TeamType
   user: UserType
+  role: string
 }
 
 

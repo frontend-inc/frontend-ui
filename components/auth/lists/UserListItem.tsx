@@ -16,9 +16,9 @@ type UserListItemProps = {
 	user: UserType
   selected?: boolean
 	isAdmin?: boolean
-  handleClick: (user: UserType) => void | undefined
-	handleEdit: (user: UserType) => void | undefined
-	handleDelete: (user: UserType) => void | undefined
+  handleClick?: (user: UserType) => void | undefined
+	handleEdit?: (user: UserType) => void | undefined
+	handleDelete?: (user: UserType) => void | undefined
 }
 
 const UserListItem: React.FC<UserListItemProps> = (props) => {

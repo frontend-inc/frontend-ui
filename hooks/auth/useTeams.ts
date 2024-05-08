@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useApi, useResource } from 'frontend-js/hooks'
+import { useApi, useResource } from 'frontend-js'
 
 const useTeams = () => {
 	  
