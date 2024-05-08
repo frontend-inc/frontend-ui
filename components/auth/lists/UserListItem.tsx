@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
 	Typography,
   Stack,
@@ -11,18 +11,33 @@ import {
 } from '@mui/material'
 import { UserAvatar, Label, MenuButton } from '../../../components'
 import { UserType } from 'frontend-js'
+import { useAuth } from 'frontend-js'
 
 type UserListItemProps = {
 	user: UserType
   selected?: boolean
 	isAdmin?: boolean
   handleClick?: (user: UserType) => void | undefined
-	handleEdit?: (user: UserType) => void | undefined
-	handleDelete?: (user: UserType) => void | undefined
+	handleEdit: (user: UserType) => void | undefined
+	handleDelete: (user: UserType) => void | undefined
 }
 
 const UserListItem: React.FC<UserListItemProps> = (props) => {
 	const { user, selected=false, isAdmin=false, handleClick, handleEdit, handleDelete } = props
+
+  const [canEdit, setCanEdit] = useState(false)
+  const [canDelete, setCanDelete] = useState(false)
+
+  const { currentUser } = useAuth() 
+
+  useEffect(() => {
+    if(isAdmin && user?.role !== 'admin'){
+      setCanEdit(true)
+    }
+    if(isAdmin && (user?.role !== 'admin' || user?.id == currentUser?.id)){
+      setCanDelete(true)
+    }
+  }, [user, isAdmin])
 
 	return (    
 		<ListItem
@@ -32,10 +47,10 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
       }}
       disableGutters
 			secondaryAction={
-				isAdmin && user?.role !== 'admin' && (
+				(canEdit || canDelete) && (
         <MenuButton
-          handleEdit={ () => handleEdit(user)}
-          handleDelete={ () => handleDelete(user)}
+          handleEdit={canEdit && (() => handleEdit(user))}
+          handleDelete={canDelete && (() => handleDelete(user))}
         />
 				)
 			}

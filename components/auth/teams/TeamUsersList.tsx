@@ -110,6 +110,7 @@ const TeamUsersList: React.FC<TeamListProps> = (props) => {
     ):(
       <Stack direction="column" spacing={1.5}>
         <TeamUserForm 
+          //@ts-ignore 
           teamUser={ teamUser }
           handleChange={ handleChange }
           errors={ errors }
