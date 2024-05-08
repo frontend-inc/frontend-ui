@@ -65,7 +65,7 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
           primary={
             <Stack direction="row" spacing={1}>
               <Typography variant="body1" color="text.primary">
-                { user.full_name }
+                { user.name }
               </Typography>
               { user?.role && <Label label={user?.role} /> }
             </Stack> 

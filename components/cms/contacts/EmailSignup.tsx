@@ -5,6 +5,7 @@ import { TypographyVariantsType } from '../../../types'
 import { Label, TextInput, IconLoading } from '../../../components'
 import { useResource } from 'frontend-js'
 import { useAlerts } from '../../../hooks'
+import { RouterParams } from 'frontend-ui/types'
 
 export type EmailSignupProps = {
 	label?: string
@@ -21,7 +22,7 @@ export type EmailSignupProps = {
 const EmailSignup: React.FC<EmailSignupProps> = (props) => {
 
   const router = useRouter() 
-  const { app_id: appId } = router?.query 
+  const { app_id: appId } = router?.query as RouterParams
 
   const { showAlertSuccess } = useAlerts()
 	const {

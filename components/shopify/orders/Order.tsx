@@ -5,6 +5,10 @@ import { OrderDetails } from '../../../components/shopify'
 import { useRouter } from 'next/router'
 import moment from 'moment'
 
+type OrderRouterParams = {
+  order_id: string | null
+}
+
 type ShopifyCustomerOrderProps = {
 	title?: string
 	subtitle?: string
@@ -12,7 +16,8 @@ type ShopifyCustomerOrderProps = {
 
 const ShopifyCustomerOrder: React.FC<ShopifyCustomerOrderProps> = (props) => {
 	const router = useRouter()
-	let { order_id: orderId } = router?.query
+	let { order_id: orderId } = router?.query as OrderRouterParams 
+
 	if (orderId == 'new') {
 		orderId = null
 	}

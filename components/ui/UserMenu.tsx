@@ -1,5 +1,7 @@
 import React from 'react'
-import { Divider, Badge, Box, Menu, MenuItem } from '@mui/material'
+import { ListItemIcon, ListItemText, Typography, Divider, Badge, Box, Menu, MenuItem } from '@mui/material'
+import { Icon, UserAvatar } from '../../components'
+import { useAuth } from 'frontend-js/hooks'
 
 type UserMenuProps = {
 	open: boolean
@@ -12,22 +14,32 @@ type UserMenuProps = {
 const UserMenu: React.FC<UserMenuProps> = (props) => {
 	const { open, anchorEl, toggleMenu, handleLogoutClick, handleClick } = props
 
+  const { currentUser } = useAuth()
+
 	return (
 		<Menu open={open} onClose={toggleMenu} anchorEl={anchorEl}>
-			<MenuItem onClick={() => handleClick('/my-account')}>My Account</MenuItem>
+      <MenuItem onClick={() => handleClick('/my-account')}>
+        <ListItemIcon>
+          <UserAvatar size={32} user={currentUser} />
+        </ListItemIcon>
+        <ListItemText
+          primary={
+            <Typography variant="body1" color="text.primary">
+              {currentUser?.name}
+            </Typography>
+          }
+          secondary={
+            <Typography variant="body2" color="text.primary">
+              {currentUser?.email}
+            </Typography>
+          }
+        />					
+      </MenuItem>
 			<Divider />
 			<MenuItem onClick={handleLogoutClick}>
-				<Badge
-					color="success"
-					variant="dot"
-					sx={sx.badgeOnline}
-					anchorOrigin={{
-						vertical: 'top',
-						horizontal: 'left',
-					}}
-				>
-					<Box mx={1} />
-				</Badge>
+        <ListItemIcon>
+          <Icon name="LogOut" />
+        </ListItemIcon>
 				Sign Out
 			</MenuItem>
 		</Menu>
@@ -35,10 +47,3 @@ const UserMenu: React.FC<UserMenuProps> = (props) => {
 }
 
 export default UserMenu
-
-const sx = {
-	badgeOnline: {
-		height: 10,
-		width: 10,
-	},
-}

@@ -23,6 +23,7 @@ export type FieldVariantType =
 	| 'shopify_product'
 	| 'shopify_collection'
 	| 'user'
+  | 'team'
 
 export type FieldDbType =
 	| 'string'

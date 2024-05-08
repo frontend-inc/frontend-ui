@@ -11,9 +11,13 @@ type AddressProps = {
 	subtitle?: string
 }
 
+type AddressRouterParams = {
+  address_id: string | null
+}
+
 const Address: React.FC<AddressProps> = (props) => {
 	const router = useRouter()
-	let { address_id: addressId } = router?.query
+	let { address_id: addressId } = router?.query as AddressRouterParams
 	if (addressId == 'new') {
 		addressId = null
 	}

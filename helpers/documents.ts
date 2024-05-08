@@ -1,5 +1,6 @@
-import { REFERENCE_FIELDS, SYSTEM_FIELDS } from '../constants/index'
+import { REFERENCE_FIELDS } from '../constants/index'
 import { get } from 'lodash'
+import { SYSTEM_FIELDS } from 'frontend-js/constants'
 
 export const handleDocumentChange = (ev, resource) => {
 	const { name } = ev.target

@@ -115,7 +115,7 @@ const TeamUsersList: React.FC<TeamListProps> = (props) => {
           loading={loading}
           open={openDeleteModal}
           title="Remove User"
-          description={`Are you sure you want to remove ${teamUser?.user?.full_name}?`}
+          description={`Are you sure you want to remove ${teamUser?.user?.name}?`}
           handleClose={() => setOpenDeleteModal(false)}
           handleConfirm={handleDelete}
         />
