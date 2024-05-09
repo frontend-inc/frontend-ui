@@ -1,5 +1,3 @@
-import { REFERENCE_FIELDS } from '../constants/index'
-import { get } from 'lodash'
 import { SYSTEM_FIELDS } from '../constants/index'
 
 export const handleDocumentChange = (ev, resource) => {
@@ -36,16 +34,7 @@ export const flattenDocument = (resource) => {
 }
 
 export const getDocumentValue = (document, field) => {
-	if (REFERENCE_FIELDS.includes(field?.variant)) {
-		let documents = document?.document_links
-			?.filter((d) => d?.target?.content_type === field?.foreign_content_type)
-			?.map((d) => d.target)
-		return documents
-	} else if (SYSTEM_FIELDS.includes(field?.name)) {
-		return get(document, field?.name)
-	} else {
-		return get(document, `data.${field?.name}`)
-	}
+  return flattenDocument(document)[field?.name]  
 }
 
 export const filterDocumentLinks = (document, contentType) => {

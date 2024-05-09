@@ -10,6 +10,7 @@ type CellUserProps = {
 
 const CellUser: React.FC<CellUserProps> = (props) => {
 	const { value: user } = props
+  if(!user?.id) return null;
 	return (
 		<Box sx={sx.cell}>
 			<Button

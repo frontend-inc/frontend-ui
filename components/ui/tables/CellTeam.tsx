@@ -10,6 +10,7 @@ type CellTeamProps = {
 
 const CellTeam: React.FC<CellTeamProps> = (props) => {
 	const { value: team } = props
+  if(!team?.id) return null;
 	return (
 		<Box sx={sx.cell}>
 			<Button
