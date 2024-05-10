@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useApi, useResource } from 'frontend-js'
-import { TeamType } from '../../types'
+import { UserType, TeamType } from '../../types'
 
 const useTeams = () => {
 	  
@@ -43,21 +43,21 @@ const useTeams = () => {
   const selectTeam = async (teamId) => {
     return await loadingWrapper(
       () => api.post(`/api/v1/teams/${teamId}/select_team`)
-    ) as unknown as TeamType
+    ) as unknown as UserType
   }  
   
   const inviteUser = async (teamId, user) => {
     return await loadingWrapper(
       () => api.post(`/api/v1/teams/${teamId}/invite_user`, {
         user: user
-      })
+      }) as unknown as UserType
     )
   }  
 
   const deleteImage = async (teamId) => {
     return await loadingWrapper(
       () => api.post(`/api/v1/teams/${teamId}/delete_image`)
-    )
+    ) as unknown as TeamType 
   }  
 
 	return {

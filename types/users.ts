@@ -7,5 +7,7 @@ export type UserType = {
 	email: string
 	token?: string
   role?: string  
+  team_id?: number
+  team_role?: string
 	image?: StorageType
 }
