@@ -2,9 +2,9 @@ import React, { useContext, useState } from 'react'
 import { AppContext } from '../../../context'
 import { useAuth } from 'frontend-js'
 import { Modal, MyAccountForm } from '../../../components'
-import { TeamList, TeamUsersList, TeamUserInvite } from '../../../components'
+import { TeamList, TeamForm, TeamUsersList, TeamUserInvite } from '../../../components'
 import MyAccountTabs from './MyAccountTabs'
-import { Button, Box, Stack } from '@mui/material'
+import { Box } from '@mui/material'
 
 type MyAccountModalProps = {
   enableTeams?: boolean
@@ -44,10 +44,6 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 	const handleSubmit = async () => {
 		await updateMe(user)
 	}
-
-  const handleAddUser = () => {
-    setCurrentTab(3)
-  }
 
 
   return (
@@ -91,7 +87,7 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
           handleSuccess={() => setCurrentTab(2)}
           handleCancel={() => setCurrentTab(2)}
         /> 
-      )}
+      )}      
       </Box>
 		</Modal>
 	)

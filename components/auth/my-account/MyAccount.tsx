@@ -12,14 +12,11 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 	const { redirectUrl } = props || {}
 
 	const {
-		loading,
 		delayedLoading,
 		user,
-		setUser,
 		currentUser,
 		updateMe,
 		handleChange,
-		fetchMe,
 		logout,
 		deleteAvatar,
 	} = useAuth()

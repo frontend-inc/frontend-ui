@@ -10,7 +10,7 @@ import {
 } from '../../..'
 import { OptionType } from '../../../../types'
 
-type FilterFormProps = {
+type TableFilterFormProps = {
 	query: any
 	fields: any[]
 	handleChange: (e: any) => void
@@ -18,7 +18,7 @@ type FilterFormProps = {
 	handleClearFilters: () => void
 }
 
-const FilterForm: React.FC<FilterFormProps> = (props) => {
+const TableFilterForm: React.FC<TableFilterFormProps> = (props) => {
 	const { query, fields, handleChange, handleSearch, handleClearFilters } =
 		props
 
@@ -134,6 +134,7 @@ const FilterForm: React.FC<FilterFormProps> = (props) => {
 					let field = Object.keys(filter)[0]
 					let operator = Object.keys(filter[field])[0]
 					let value = filter[field][operator]
+          //@ts-ignore 
 					formattedFilters.push({
 						where: where,
 						field: field,
@@ -223,7 +224,7 @@ const FilterForm: React.FC<FilterFormProps> = (props) => {
 	)
 }
 
-export default FilterForm
+export default TableFilterForm
 
 const sx = {
 	button: {

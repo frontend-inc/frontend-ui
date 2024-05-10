@@ -5,11 +5,12 @@ import { UserAvatar } from '../../../components'
 
 type CellUserProps = {
 	children: string
+  handleClick?: () => void
 	value?: UserType
 }
 
 const CellUser: React.FC<CellUserProps> = (props) => {
-	const { value: user } = props
+	const { value: user, handleClick } = props
   if(!user?.id) return null;
 	return (
 		<Box sx={sx.cell}>
@@ -17,6 +18,7 @@ const CellUser: React.FC<CellUserProps> = (props) => {
 				sx={sx.button}
 				size="small"
 				color="secondary"
+        onClick={ handleClick }
 				startIcon={user?.avatar?.url && <UserAvatar user={user} />}
 			>
 				<Typography variant="caption">

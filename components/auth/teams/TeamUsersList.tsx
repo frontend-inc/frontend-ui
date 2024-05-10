@@ -3,6 +3,7 @@ import { useAuth } from 'frontend-js'
 import { Stack, Box, Button, List } from '@mui/material'
 import {
   AlertModal,
+  Loading,
   UserListItem  
 } from '../../../components'
 import { TeamUserType } from '../../../types'
@@ -18,7 +19,7 @@ const TeamUsersList: React.FC<TeamListProps> = (props) => {
   const { handleAddUser } = props || {}
 
   const { 
-    loading,   
+    delayedLoading: loading,   
     errors,  
     teamUser,
     setTeamUser,
@@ -79,7 +80,8 @@ const TeamUsersList: React.FC<TeamListProps> = (props) => {
     { !isEditing ? (
       <>
         <List dense>
-          { teamUsers?.map((teamUser) => (
+          <Loading loading={loading} />
+          { !loading && teamUsers?.map((teamUser) => (
             <UserListItem      
               key={teamUser.id}  
               isAdmin={ currentUser?.team_role === 'admin' }        

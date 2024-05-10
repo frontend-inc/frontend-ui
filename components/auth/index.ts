@@ -40,9 +40,11 @@ export { default as ProfileFormWizard } from './profiles/ProfileFormWizard'
 
 // Teams 
 export { default as TeamList } from './teams/TeamList'
+export { default as TeamForm } from './teams/TeamForm'
 export { default as TeamUsersList } from './teams/TeamUsersList'
 export { default as TeamUserForm } from './teams/TeamUserInviteForm'
 export { default as TeamUserInvite } from './teams/TeamUserInvite'
 
-// UI 
+// Lists 
 export { default as UserListItem } from './lists/UserListItem' 
+export { default as TeamListItem } from './lists/TeamListItem' 

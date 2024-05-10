@@ -34,6 +34,7 @@ const useTeams = () => {
 		loadMore,
 		loadingWrapper,
 		paginate,
+    removeAttachment
   } = useResource({
     name: 'team',
     url: '/api/v1/teams'
@@ -50,6 +51,12 @@ const useTeams = () => {
       () => api.post(`/api/v1/teams/${teamId}/invite_user`, {
         user: user
       })
+    )
+  }  
+
+  const deleteImage = async (teamId) => {
+    return await loadingWrapper(
+      () => api.post(`/api/v1/teams/${teamId}/delete_image`)
     )
   }  
 
@@ -70,7 +77,7 @@ const useTeams = () => {
     user,
     setUser,
     inviteUser,
-
+    deleteImage,
 		handleChange,
 		handleChangePage,
 		reloadTeams,
@@ -85,7 +92,8 @@ const useTeams = () => {
 		handleSort,
 		loadMore,
 		loadingWrapper,
-		paginate,    
+		paginate,   
+    removeAttachment 
 	}
 }
 

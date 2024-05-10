@@ -5,11 +5,12 @@ import { TeamAvatar } from '../../../components'
 
 type CellTeamProps = {
 	children: string
+  handleClick?: () => void
 	value?: TeamType
 }
 
 const CellTeam: React.FC<CellTeamProps> = (props) => {
-	const { value: team } = props
+	const { value: team, handleClick } = props
   if(!team?.id) return null;
 	return (
 		<Box sx={sx.cell}>
@@ -17,6 +18,7 @@ const CellTeam: React.FC<CellTeamProps> = (props) => {
 				sx={sx.button}
 				size="small"
 				color="secondary"
+        onClick={ handleClick }
 				startIcon={<TeamAvatar team={team} />}
 			>
 				<Typography variant="caption">
