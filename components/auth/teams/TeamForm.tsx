@@ -15,6 +15,7 @@ type TeamFormProps = {
   errors: any
 	handleChange: (ev: any) => void
 	handleSubmit: () => void
+  handleSuccess: () => void
   handleCancel: () => void
 	handleDeleteImage: () => void	
 }

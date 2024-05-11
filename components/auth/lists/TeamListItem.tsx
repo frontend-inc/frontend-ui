@@ -16,7 +16,7 @@ type TeamListItemProps = {
 	team: TeamType
   selected?: boolean
 	isAdmin?: boolean
-  handleClick?: (team: TeamType) => void | undefined
+  handleClick?: () => void | undefined
 	handleEdit: (team: TeamType) => void | undefined
 	handleDelete: (team: TeamType) => void | undefined
 }

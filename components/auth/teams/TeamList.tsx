@@ -78,9 +78,7 @@ const TeamList: React.FC = (props) => {
 
   const handleClick = async (team) => {
     let resp = await selectTeam(team.id)         
-    //@ts-ignore
-    if(resp?.team_id){
-      //@ts-ignore
+    if(resp?.team_id){      
       setActiveTeamId(resp?.team_id)
       fetchMe()
     }    
