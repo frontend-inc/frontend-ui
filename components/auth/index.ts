@@ -33,11 +33,6 @@ export { default as VerifyPin } from './verify/VerifyPin'
 export { default as VerifyPinForm } from './verify/VerifyPinForm'
 export { default as VerifySendPinForm } from './verify/VerifySendPinForm'
 
-// Profiles
-export { default as Profile } from './profiles/Profile'
-export { default as ProfileForm } from './profiles/ProfileForm'
-export { default as ProfileFormWizard } from './profiles/ProfileFormWizard'
-
 // Teams 
 export { default as TeamList } from './teams/TeamList'
 export { default as TeamForm } from './teams/TeamForm'

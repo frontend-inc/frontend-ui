@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
-import { Image, ActionButton, Actions, SocialLink } from '../../../components'
+import { Image, Actions, SocialLink } from '../../../components'
 import { ShowItemProps } from './Show'
 import { flattenDocument } from 'frontend-js'
+import { buildActions } from '../../../helpers'
 
 const Person: React.FC<ShowItemProps> = (props) => {
 	const MAX_CHARS = 500
@@ -83,19 +84,14 @@ const Person: React.FC<ShowItemProps> = (props) => {
 						spacing={1}
 						p={enableBorder ? 1 : 0}
 					>
-						{enableEdit && (
-							<ActionButton
-								resource={flattenDocument(resource)}
-								action={{
-									label: 'Edit',
-									color: 'secondary',
-									name: 'click',
-									onClick: handleEdit,
-								}}
-							/>
-						)}
 						<Actions
-							actions={actions}
+							actions={
+                buildActions({
+                  enableEdit,
+                  handleEdit,
+                  actions
+                })
+              }              
 							resource={flattenDocument(resource)}
 							justifyContent="flex-end"
 						/>

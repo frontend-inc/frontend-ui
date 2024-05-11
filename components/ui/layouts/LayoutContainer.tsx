@@ -22,7 +22,6 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 		footer,
 		notifications,
 		enableSideNav = false,
-    offsetX=0,
     offsetY=0, 
 	} = props
 
@@ -82,10 +81,11 @@ const sx = {
 	root: {
 		width: '100%',
 		height: '100%',
+    overflowY: 'scroll',
 		'&::-webkit-scrollbar': {
 			display: 'none',
 		},
-		bgcolor: 'background.default',
+		bgcolor: 'background.default',        
 	},
 	sideNav: {
 		display: 'flex',

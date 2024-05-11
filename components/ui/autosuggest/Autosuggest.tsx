@@ -68,6 +68,7 @@ type AutosuggestProps = {
 	handleInputChange?: (value: string) => void
 	handleClear?: () => void
 	freeSolo?: boolean
+  enableClear?: boolean
 }
 
 const Autosuggest: React.FC<AutosuggestProps> = (props) => {
@@ -84,6 +85,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 		handleChange,
 		handleInputChange,
 		handleClear,
+    enableClear=false,
 		freeSolo = false,
 	} = props
 
@@ -109,10 +111,18 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 	}
 
 	const handleInputClear = () => {
-		if (handleClear) {
-			setSelected({ label: '', value: null })
+    setSelected({ label: '', value: '' })
+		if (handleClear) {			
 			handleClear()
 		}
+    if(enableClear){      
+      handleChange({
+        target: {
+          name: name,
+          value: '' ,
+        },
+      })
+    }
 	}
 
 	useEffect(() => {
@@ -181,7 +191,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 							}}
 							endAdornment={
 								selected?.value &&
-								handleClear && (
+								(enableClear || handleClear) && (
 									<InputAdornment position="start" sx={sx.inputAdornment}>
 										<IconButton onClick={handleInputClear} size="small">
 											<Icon name="X" color="text.secondary" size={20} />

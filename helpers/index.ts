@@ -1,3 +1,4 @@
+export * from './actions'
 export * from './carousel'
 export * from './documents'
 export * from './utils'
