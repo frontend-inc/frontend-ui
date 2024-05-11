@@ -18,7 +18,7 @@ const PER_PAGE = 48
 
 export type ProductSearchProps = {
 	editing?: boolean
-	handle: string | string[]
+	handle: string
 	options?: SearchFilterOptionType[]
 	priceOptions?: PriceOptionType[]
 	inStockFilter?: boolean

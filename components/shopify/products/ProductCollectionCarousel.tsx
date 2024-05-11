@@ -6,7 +6,7 @@ import { ProductCarousel } from '../../../components/shopify'
 export type ProductCollectionCarouselProps = {
 	title?: string
 	editing?: boolean
-	handle: string | string[]
+	handle: string
 	enableAutoPlay?: boolean
 	enableArrows?: boolean
 	enableDots?: boolean

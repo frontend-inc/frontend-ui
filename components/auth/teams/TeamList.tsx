@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useAuth } from 'frontend-js'
-import { List } from '@mui/material'
+import { Box, Button, List } from '@mui/material'
 import {
   TeamAvatar,
   SelectableListItem,  
-  TeamForm
+  TeamForm,
+  Placeholder,
+  AlertModal
 } from '../../../components'
 import { useTeams } from '../../../hooks'
 
@@ -17,6 +19,7 @@ const TeamList: React.FC = (props) => {
     setTeam,
     updateTeam,
     createTeam,
+    deleteTeam,
     teams, 
     findTeams,
     handleChange,
@@ -28,11 +31,23 @@ const TeamList: React.FC = (props) => {
   const { selectTeam } = useTeams()
 
   const [isEditing, setIsEditing] = useState(false)
+  const [openDeleteModal, setOpenDeleteModal] = useState(false)
   const [activeTeamId, setActiveTeamId] = useState(-1)
+
+  const handleAddTeamClick = () => {
+    setTeam({})
+    setIsEditing(true)
+  }
 
   const handleEditClick = (team) => {
     setTeam(team)
     setIsEditing(true)
+  }
+
+  const handleDelete = async () => {
+    let resp = await deleteTeam(team?.id)    
+    setOpenDeleteModal(false)
+    reloadTeams()    
   }
 
   const handleSubmit = async () => {
@@ -56,6 +71,11 @@ const TeamList: React.FC = (props) => {
     findTeams()
   }
 
+  const handleDeleteClick = (team) => {
+    setTeam(team)
+    setOpenDeleteModal(true)
+  }
+
   const handleClick = async (team) => {
     let resp = await selectTeam(team.id)         
     //@ts-ignore
@@ -74,12 +94,13 @@ const TeamList: React.FC = (props) => {
   }, [currentUser?.id])
 
   return(
-    <>
+    <>   
     { !isEditing ? (
-    <List>
+     <>
+     <List>
       { teams?.map((team) => {
         const selected = team?.id == activeTeamId
-        return(        
+        return(                  
         <SelectableListItem      
           key={team.id}
           selected={selected}
@@ -89,9 +110,26 @@ const TeamList: React.FC = (props) => {
           title={team.name}          
           handleClick={() => handleClick(team)}
           handleEdit={selected ? () => handleEditClick(team): undefined}
+          handleDelete={selected ? () => handleDeleteClick(team): undefined}
         />
       )})}
     </List>
+    { !teams?.length && (
+      <Placeholder 
+        icon='Users'
+        title="No Teams"
+        description="Add a team to get started"        
+      />
+    )}
+    <Box sx={ sx.actions }>
+      <Button 
+        variant="contained" 
+        onClick={handleAddTeamClick}
+      >
+        Add Team
+      </Button>
+    </Box>
+    </>
     ):(
       <TeamForm 
         loading={loading}
@@ -103,9 +141,24 @@ const TeamList: React.FC = (props) => {
         handleSuccess={() => setIsEditing(false)}
         handleDeleteImage={handleDeleteImage}
       />
-    )}
+    )}    
+    <AlertModal 
+      open={openDeleteModal}
+      title="Delete Team"
+      description="Are you sure you want to delete this team?"
+      handleConfirm={handleDelete}
+      handleClose={() => setOpenDeleteModal(false)}
+    />
   </>
   )
 }
 
 export default TeamList
+
+const sx = {
+  actions: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'flex-end',    
+  }
+}

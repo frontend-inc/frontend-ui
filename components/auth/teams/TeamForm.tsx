@@ -32,7 +32,7 @@ const TeamForm: React.FC<TeamFormProps> = (props) => {
 
   const { currentUser } = useAuth()
 
-  if(currentUser?.team_role != 'admin'){
+  if(team?.id && currentUser?.team_role != 'admin'){
     return(      
       <Placeholder 
         icon='lock'
@@ -53,17 +53,26 @@ const TeamForm: React.FC<TeamFormProps> = (props) => {
   }
 	return (
 		<Box sx={sx.root}>
+      <TextInput
+        errors={errors}
+				value={team.name}
+				name="name"
+				placeholder="Name"
+				handleChange={handleChange}
+			/>
 			<ImageInput
 				value={team.image}
 				name="image"
 				handleChange={handleChange}
 				handleRemove={handleDeleteImage}
-			/>
-			<TextInput
+			/>			
+      <TextInput
+        multiline
+        rows={6}
         errors={errors}
-				value={team.name}
-				name="name"
-				placeholder="Name"
+				value={team.description}
+				name="description"
+				placeholder="Description"
 				handleChange={handleChange}
 			/>
 			<Stack sx={ sx.actions } direction={'row'} spacing={1}>

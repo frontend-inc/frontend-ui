@@ -4,7 +4,7 @@ import { useProducts } from 'frontend-shopify'
 import Head from 'next/head'
 
 export type OkendoReviewsProps = {
-	handle: string | string[]
+	handle: string
 	subscriberId: string
 }
 

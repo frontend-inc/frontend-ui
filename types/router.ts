@@ -1,8 +1,8 @@
 export type RouterParams = {
-  app_id?: string | null 
-  collection_id?: string | null
-  document_id?: string | null
-  view_id?: string | null
-  page_id?: string | null
-  handle?: string | null
+  app_id: string 
+  collection_id: string
+  document_id: string | null
+  view_id: string
+  page_id: string
+  handle: string
 }

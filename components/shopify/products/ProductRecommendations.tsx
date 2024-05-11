@@ -4,7 +4,7 @@ import { ProductGrid, ProductCarousel } from '../../../components/shopify'
 import { Box } from '@mui/material'
 
 export type ProductRecommendationsProps = {
-	handle?: string | string[]
+	handle?: string
 	editing?: boolean
 	layout?: 'grid' | 'carousel'
 	perPage?: string
