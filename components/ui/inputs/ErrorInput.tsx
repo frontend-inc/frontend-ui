@@ -2,22 +2,17 @@ import React, { useEffect } from 'react'
 import { ErrorText } from '../../../components'
 import { useError } from '../../../hooks'
 
-// The purpose of this component is to render 
-// server-side errors for custom input fields 
+// The purpose of this component is to render
+// server-side errors for custom input fields
 // that do not have this error handling
 type ErrorInputProps = {
-  name: string
-  value?: any
-  errors: any
+	name: string
+	value?: any
+	errors: any
 }
 
 const ErrorInput: React.FC<ErrorInputProps> = (props) => {
-	
-  const {
-		name,
-		value = '',
-		errors,
-	} = props
+	const { name, value = '', errors } = props
 
 	const { error, clearError } = useError({
 		errors,
@@ -25,13 +20,11 @@ const ErrorInput: React.FC<ErrorInputProps> = (props) => {
 	})
 
 	useEffect(() => {
-		if(error) clearError();
+		if (error) clearError()
 	}, [value])
 
-  if(!error) return null;
-	return (		
-		<ErrorText error={error} />
-	)
+	if (!error) return null
+	return <ErrorText error={error} />
 }
 
 export default ErrorInput

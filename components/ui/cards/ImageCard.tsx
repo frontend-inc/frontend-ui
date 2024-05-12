@@ -5,11 +5,7 @@ import { CardProps } from '../../../types'
 
 const ImageCard: React.FC<CardProps> = (props) => {
 	const { variant } = props
-	return variant == 'grid' ? (
-		<ImageGrid {...props} />
-	) : (
-		<ImageList {...props} />
-	)
+	return variant == 'grid' ? <ImageGrid {...props} /> : <ImageList {...props} />
 }
 
 export default ImageCard

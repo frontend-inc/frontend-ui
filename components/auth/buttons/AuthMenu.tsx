@@ -1,7 +1,14 @@
 import React from 'react'
 import { useAuth } from 'frontend-js'
 import { UserAvatar, Icon } from '../../../components'
-import { Typography, Divider, ListItemIcon, ListItemText, Menu, MenuItem } from '@mui/material'
+import {
+	Typography,
+	Divider,
+	ListItemIcon,
+	ListItemText,
+	Menu,
+	MenuItem,
+} from '@mui/material'
 
 type AuthMenuProps = {
 	open: boolean
@@ -32,9 +39,9 @@ const AuthMenu: React.FC<AuthMenuProps> = (props) => {
 			{currentUser ? (
 				<>
 					<MenuItem onClick={handleMyAccount}>
-            <ListItemIcon>
-              <UserAvatar size={32} user={currentUser} />
-            </ListItemIcon>
+						<ListItemIcon>
+							<UserAvatar size={32} user={currentUser} />
+						</ListItemIcon>
 						<ListItemText
 							primary={
 								<Typography variant="body1" color="text.primary">
@@ -48,13 +55,13 @@ const AuthMenu: React.FC<AuthMenuProps> = (props) => {
 							}
 						/>
 					</MenuItem>
-					<Divider sx={ sx.divider } />
+					<Divider sx={sx.divider} />
 					<MenuItem onClick={handleLogout}>
-            <ListItemIcon>
-              <Icon name="LogOut" size={20} />
-            </ListItemIcon>
-            Logout
-          </MenuItem>
+						<ListItemIcon>
+							<Icon name="LogOut" size={20} />
+						</ListItemIcon>
+						Logout
+					</MenuItem>
 				</>
 			) : (
 				<>
@@ -69,9 +76,9 @@ const AuthMenu: React.FC<AuthMenuProps> = (props) => {
 export default AuthMenu
 
 const sx = {
-  divider: {
-    height: '4px',
-    borderBottom: '1px solid',
-    borderColor: 'background.default'
-  }
+	divider: {
+		height: '4px',
+		borderBottom: '1px solid',
+		borderColor: 'background.default',
+	},
 }

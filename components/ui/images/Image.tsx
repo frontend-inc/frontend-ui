@@ -40,55 +40,55 @@ const Image: React.FC<ImageProps> = (props) => {
 	return (
 		<Box
 			sx={{
-        position: 'relative',
-        width: '100%',
+				position: 'relative',
+				width: '100%',
 				height: `${height}px`,
 			}}
 		>
-      <Box 
-      sx={{
-        ...sx.root,
-        height: `${height}px`,
-        '&::after': {
-					...sx.afterBase,
-					...(enableOverlay && sx.overlay),
-					...(!enableOverlay && enableGradient && sx.gradient),
-					...(!disableBorderRadius && sx.borderRadius),
-					...(!enableOverlay &&
-						!disableBorderRadius &&
-						enableGradient &&
-						sx.gradientBorderRadius),
-					bgcolor,
-					opacity,
-				},
-      }}
-      >
-			{src ? (
-				<NextImage
-					src={src}
-					alt={alt}
-					height={1600}
-					width={1600}
-					style={{
-						height: `${height}px`,
-						width: width ? `min(${width}px, 100vw)` : '100%',
-						minHeight: `${height}px`,
-						objectFit,
-						borderRadius: !disableBorderRadius
-							? `${theme.shape.borderRadius}px`
-							: '0px',
-					}}
-				/>
-			) : (
-				<NoImage
-					darkMode
-					height={height}
-					width={width}
-					disableBorder={disableBorder}
-					disableBorderRadius={disableBorderRadius}
-				/>
-			)}
-      </Box>
+			<Box
+				sx={{
+					...sx.root,
+					height: `${height}px`,
+					'&::after': {
+						...sx.afterBase,
+						...(enableOverlay && sx.overlay),
+						...(!enableOverlay && enableGradient && sx.gradient),
+						...(!disableBorderRadius && sx.borderRadius),
+						...(!enableOverlay &&
+							!disableBorderRadius &&
+							enableGradient &&
+							sx.gradientBorderRadius),
+						bgcolor,
+						opacity,
+					},
+				}}
+			>
+				{src ? (
+					<NextImage
+						src={src}
+						alt={alt}
+						height={1600}
+						width={1600}
+						style={{
+							height: `${height}px`,
+							width: width ? `min(${width}px, 100vw)` : '100%',
+							minHeight: `${height}px`,
+							objectFit,
+							borderRadius: !disableBorderRadius
+								? `${theme.shape.borderRadius}px`
+								: '0px',
+						}}
+					/>
+				) : (
+					<NoImage
+						darkMode
+						height={height}
+						width={width}
+						disableBorder={disableBorder}
+						disableBorderRadius={disableBorderRadius}
+					/>
+				)}
+			</Box>
 			{label && (
 				<Box sx={sx.label}>
 					<Label color="common.white" label={truncate(label, 22)} />

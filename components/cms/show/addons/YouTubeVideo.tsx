@@ -5,21 +5,17 @@ import { flattenDocument } from 'frontend-js'
 import ShowContainer from '../ShowContainer'
 
 type YouTubeVideoProps = ShowItemProps & {
-  fieldName: string 
-} 
+	fieldName: string
+}
 
 const YouTubeVideo: React.FC<YouTubeVideoProps> = (props) => {
-  const { actions, resource, fieldName, ...rest } = props || {}
-  const src = flattenDocument(resource)[fieldName]  
+	const { actions, resource, fieldName, ...rest } = props || {}
+	const src = flattenDocument(resource)[fieldName]
 	return (
-    <ShowContainer 
-      {...rest}
-      actions={actions}
-      resource={resource}
-    >
-      <YouTubeEmbed src={ src } />          
-    </ShowContainer>	
-  )
+		<ShowContainer {...rest} actions={actions} resource={resource}>
+			<YouTubeEmbed src={src} />
+		</ShowContainer>
+	)
 }
 
 export default YouTubeVideo

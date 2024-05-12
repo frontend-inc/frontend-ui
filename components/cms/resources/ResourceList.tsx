@@ -21,11 +21,11 @@ import ResourceListItem from './ResourceListItem'
 
 export type ResourceListProps = {
 	url: string
-  name: string
-  component?: React.FC<any>
+	name: string
+	component?: React.FC<any>
 	layout?: 'list' | 'grid'
 	dense?: boolean
-  handleClick?: (item: any) => void	
+	handleClick?: (item: any) => void
 	enableInfiniteLoad?: boolean
 	enableLoadMore?: boolean
 	perPage?: number
@@ -45,13 +45,12 @@ export type ResourceListProps = {
 }
 
 const ResourceList: React.FC<ResourceListProps> = (props) => {
-
 	const {
 		layout = 'list',
-    dense,
+		dense,
 		component: Component = ResourceListItem,
 		url,
-    name,
+		name,
 		fields,
 		filterOptions = [],
 		sortOptions = [],
@@ -61,9 +60,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		enableFilters = false,
 		enableSorting = false,
 		enableLoadMore = true,
-    enableEdit,
-    enableDelete,
-    enableCreate,
+		enableEdit,
+		enableDelete,
+		enableCreate,
 		handleClick,
 	} = props
 
@@ -80,7 +79,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		update,
 		create,
 		destroy,
-    handleChange,
+		handleChange,
 		query,
 		findMany,
 		reloadMany,
@@ -112,7 +111,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	const handleSort = (field: any) => {
 		findMany({
 			...query,
-      ...defaultQuery,
+			...defaultQuery,
 			sort_by: field.field,
 		})
 	}
@@ -205,7 +204,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				...defaultQuery,
 			})
 		}
-	}, [activeFilters?.length]) 
+	}, [activeFilters?.length])
 
 	useEffect(() => {
 		if (url && name && perPage) {
@@ -231,31 +230,27 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					sx={sx.actions}
 					spacing={1}
 				>
-          <Stack
-					  direction={{ xs: 'column', sm: 'row' }}
-					  
-					  spacing={1}
-				  >
-					{enableFilters && (
-            <Box>
-            <FilterButton
-              filters={activeFilters}
-              handleFilter={handleFilter}
-              handleClear={handleClearFilters}
-              filterOptions={filterOptions}
-            />
-            </Box>
-					)}
-					{enableSorting && (
-						<SortButton
-							sortBy={query?.sort_by || 'id'}
-							sortDirection={query?.sort_direction || 'desc' }
-							sortOptions={sortOptions}
-							handleSortBy={handleSort}
-							handleSortDirection={handleSortDirection}
-						/>
-					)}
-          </Stack>
+					<Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
+						{enableFilters && (
+							<Box>
+								<FilterButton
+									filters={activeFilters}
+									handleFilter={handleFilter}
+									handleClear={handleClearFilters}
+									filterOptions={filterOptions}
+								/>
+							</Box>
+						)}
+						{enableSorting && (
+							<SortButton
+								sortBy={query?.sort_by || 'id'}
+								sortDirection={query?.sort_direction || 'desc'}
+								sortOptions={sortOptions}
+								handleSortBy={handleSort}
+								handleSortDirection={handleSortDirection}
+							/>
+						)}
+					</Stack>
 					{enableCreate && (
 						<Box>
 							<Button
@@ -263,7 +258,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 								color="secondary"
 								variant="contained"
 								onClick={handleAdd}
-								startIcon={<Icon name="Plus" color='secondary.contrastText' size={20} />}
+								startIcon={
+									<Icon name="Plus" color="secondary.contrastText" size={20} />
+								}
 							>
 								Add
 							</Button>
@@ -271,73 +268,66 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					)}
 				</Stack>
 			</Stack>
-      <Box sx={{ ...(delayedLoading && sx.loading) }}>						
-        <Stack spacing={2} sx={ sx.fullWidth }>
-          <Box
-            sx={{
-              ...sx.layout,
-              ...(layout == 'grid' ? sx.grid : sx.list),
-              ...(dense && sx.listDense),
-            }}
-          >
-            {resources?.map((resource, index) => (
-              <Component
-                key={index}
-                resource={resource}						
-                handleClick={ handleClick ? 
-                  () => handleClick(resource) : 
-                  () => null 
-                }                                        
-                handleEdit={ enableEdit  ?
-                    () => handleEdit(resource) : null 
-                  }
-                handleDelete={ enableDelete ? 
-                    () => handleDeleteClick(resource) : null 
-                  }
-              />
-            ))}
-          </Box>
-        </Stack>
-      </Box>
-      {!loading && resources.length == 0 && (
-        <Placeholder
-          icon="Search"
-          title="No results found"
-          description="Try adjusting your search or filters"
-        />
-      )}
-			{enableLoadMore && (
-				<LoadMore
-					page={page}
-					numPages={numPages}
-					loadMore={loadMore}
+			<Box sx={{ ...(delayedLoading && sx.loading) }}>
+				<Stack spacing={2} sx={sx.fullWidth}>
+					<Box
+						sx={{
+							...sx.layout,
+							...(layout == 'grid' ? sx.grid : sx.list),
+							...(dense && sx.listDense),
+						}}
+					>
+						{resources?.map((resource, index) => (
+							<Component
+								key={index}
+								resource={resource}
+								handleClick={
+									handleClick ? () => handleClick(resource) : () => null
+								}
+								handleEdit={enableEdit ? () => handleEdit(resource) : null}
+								handleDelete={
+									enableDelete ? () => handleDeleteClick(resource) : null
+								}
+							/>
+						))}
+					</Box>
+				</Stack>
+			</Box>
+			{!loading && resources.length == 0 && (
+				<Placeholder
+					icon="Search"
+					title="No results found"
+					description="Try adjusting your search or filters"
 				/>
 			)}
-      <Drawer
-        open={openModal}
-        handleClose={() => setOpenModal(false)}
-        title={resource?.id ? 'Edit' : 'Add'}
-        actions={
-          <Button
-            fullWidth
-            variant="contained"
-            color="primary"
-            onClick={handleSubmit}
-            startIcon={<IconLoading loading={loading} />}
-          >
-            {resource?.id ? 'Update' : 'Save'}
-          </Button>
-        }
-      >
-        <Form
-          loading={loading}
-          errors={errors}
-          fields={fields}
-          resource={resource}
-          handleChange={handleChange}
-          handleRemove={handleRemove}
-        />
-      </Drawer>
+			{enableLoadMore && (
+				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
+			)}
+			<Drawer
+				open={openModal}
+				handleClose={() => setOpenModal(false)}
+				title={resource?.id ? 'Edit' : 'Add'}
+				actions={
+					<Button
+						fullWidth
+						variant="contained"
+						color="primary"
+						onClick={handleSubmit}
+						startIcon={<IconLoading loading={loading} />}
+					>
+						{resource?.id ? 'Update' : 'Save'}
+					</Button>
+				}
+			>
+				<Form
+					loading={loading}
+					errors={errors}
+					fields={fields}
+					resource={resource}
+					handleChange={handleChange}
+					handleRemove={handleRemove}
+				/>
+			</Drawer>
 			<AlertModal
 				open={openDeleteModal}
 				handleClose={() => setOpenDeleteModal(false)}
@@ -358,10 +348,10 @@ const sx = {
 	content: {
 		width: '100%',
 	},
-  layout: {
+	layout: {
 		width: '100%',
-  },
-  list: {
+	},
+	list: {
 		display: 'flex',
 		flexDirection: 'column',
 		gap: '16px',
@@ -380,9 +370,9 @@ const sx = {
 	form: {
 		width: '100%',
 	},
-  fullWidth: {
-    width: '100%',
-  },
+	fullWidth: {
+		width: '100%',
+	},
 	item: {
 		p: 2,
 	},
@@ -403,7 +393,7 @@ const sx = {
 		},
 	},
 	actions: {
-    width: '100%',
+		width: '100%',
 		justifyContent: 'space-between',
 	},
 	loading: {

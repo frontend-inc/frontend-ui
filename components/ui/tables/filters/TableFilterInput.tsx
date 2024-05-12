@@ -64,7 +64,7 @@ const FilterFieldWrapper: React.FC<FilterFieldProps> = (props) => {
 			<Box sx={sx.inputFilter}>
 				<Autosuggest
 					name={'field'}
-					options={fieldOptions} 
+					options={fieldOptions}
 					placeholder="field"
 					value={filter?.field || ''}
 					handleChange={(ev) => handleChange(ev, index)}

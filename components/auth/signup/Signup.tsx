@@ -12,8 +12,7 @@ export type SignupProps = {
 }
 
 const Signup: React.FC<SignupProps> = (props) => {
-
-  const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useContext(AppContext)
 
 	const {
 		navigateUrl,
@@ -34,9 +33,9 @@ const Signup: React.FC<SignupProps> = (props) => {
 	}
 
 	const handleLogin = () => {
-    if(loginUrl){
-      `${clientUrl}${loginUrl}`
-    }		
+		if (loginUrl) {
+			;`${clientUrl}${loginUrl}`
+		}
 	}
 
 	return (

@@ -9,7 +9,7 @@ import CollectionCard from './CollectionCard'
 import { ActionType } from '../../../types'
 
 export type CollectionCarouselProps = {
-  actions: ActionType[]
+	actions: ActionType[]
 	url: string
 	style: 'card' | 'avatar' | 'cover' | 'chip' | 'text' | 'image'
 	fields?: any
@@ -29,7 +29,7 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const {
-    actions,
+		actions,
 		url,
 		style = 'card',
 		query: defaultQuery = {},
@@ -75,10 +75,10 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 				{resources?.map((resource, index) => (
 					<Box key={index} sx={sx.item}>
 						<CollectionCard
-              actions={actions}
+							actions={actions}
 							variant="grid"
-							style={style}              
-              item={resource}														
+							style={style}
+							item={resource}
 							handleClick={() => handleClick(resource)}
 							enableBorder={enableBorder}
 							enableGradient={enableGradient}

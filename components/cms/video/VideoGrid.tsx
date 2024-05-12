@@ -5,8 +5,8 @@ import { VIDEO_HORIZ_HEIGHT, VIDEO_HORIZ_WIDTH } from '../../../constants/index'
 
 const VideoVert: React.FC<CardProps> = (props) => {
 	const {
-    actions,
-    item,		
+		actions,
+		item,
 		objectFit = 'cover',
 		height = VIDEO_HORIZ_HEIGHT,
 		width = VIDEO_HORIZ_WIDTH,
@@ -23,10 +23,10 @@ const VideoVert: React.FC<CardProps> = (props) => {
 
 	return !open ? (
 		<Cover
-      actions={actions}
+			actions={actions}
 			variant="list"
 			item={item}
-			handleClick={handleItemClick}			
+			handleClick={handleItemClick}
 			objectFit={objectFit}
 			height={height}
 			width={width}

@@ -6,8 +6,8 @@ import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
 type ShowContainerProps = ShowItemProps & {
-  children: React.ReactNode
-} 
+	children: React.ReactNode
+}
 
 const ShowContainer: React.FC<ShowContainerProps> = (props) => {
 	const { actions, resource, children, enableBorder, enableEdit, handleEdit } =
@@ -21,17 +21,17 @@ const ShowContainer: React.FC<ShowContainerProps> = (props) => {
 			}}
 			spacing={2}
 		>
-			<Stack 
-        direction={{ xs: 'column', sm: 'row' }}
-        sx={{
-          ...sx.header,
-          ...(enableBorder && sx.headerBorder),
-        }}
-      >      
-        <Typography sx={ sx.title } color="text.primary" variant="h6">
-          {title}
-        </Typography>
-        
+			<Stack
+				direction={{ xs: 'column', sm: 'row' }}
+				sx={{
+					...sx.header,
+					...(enableBorder && sx.headerBorder),
+				}}
+			>
+				<Typography sx={sx.title} color="text.primary" variant="h6">
+					{title}
+				</Typography>
+
 				{(actions || enableEdit) && (
 					<Stack
 						sx={sx.actions}
@@ -40,28 +40,24 @@ const ShowContainer: React.FC<ShowContainerProps> = (props) => {
 						p={enableBorder ? 1 : 0}
 					>
 						<Actions
-							actions={
-                buildActions({
-                  enableEdit,
-                  handleEdit,
-                  actions
-                })
-              }              
+							actions={buildActions({
+								enableEdit,
+								handleEdit,
+								actions,
+							})}
 							resource={flattenDocument(resource)}
 							justifyContent="flex-end"
 						/>
 					</Stack>
 				)}
 			</Stack>
-      <Box sx={sx.container }>
-        { children }
-      </Box>      
-			<Box 
-         sx={{
-          ...sx.content,
-          ...(enableBorder && sx.contentBorder),
-        }}
-      >
+			<Box sx={sx.container}>{children}</Box>
+			<Box
+				sx={{
+					...sx.content,
+					...(enableBorder && sx.contentBorder),
+				}}
+			>
 				<Typography variant="body1" color="text.primary" sx={sx.text}>
 					{description}
 				</Typography>
@@ -87,22 +83,22 @@ const sx = {
 		width: '100%',
 		textAlign: 'space-between',
 	},
-  headerBorder: {
-    px: 2,		
-  },
-  title: {
-    width: '100%',
-  },
-	content: {  
+	headerBorder: {
+		px: 2,
+	},
+	title: {
+		width: '100%',
+	},
+	content: {
 		width: '100%',
 		maxWidth: '100%',
 	},
-  contentBorder: {  
-    px: 2,		
+	contentBorder: {
+		px: 2,
 	},
-  container: {
-    width: '100%',
-  },
+	container: {
+		width: '100%',
+	},
 	text: {
 		width: '100%',
 		whiteSpace: 'pre-line',

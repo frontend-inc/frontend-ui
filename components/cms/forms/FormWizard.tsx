@@ -57,11 +57,11 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		setResource,
 		update,
 		create,
-    handleDataChange,
-		removeAttachment,  
-    flattenDocument  
+		handleDataChange,
+		removeAttachment,
+		flattenDocument,
 	} = useDocuments({
-		collection: contentType
+		collection: contentType,
 	})
 
 	const [currentField, setCurrentField] = useState()

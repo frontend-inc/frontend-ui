@@ -15,11 +15,11 @@ import { AppContext } from '../../../context'
 
 type AuthModalProps = {
 	disableUsername?: boolean
-  enableTeams?: boolean
+	enableTeams?: boolean
 }
 
 const AuthModal: React.FC<AuthModalProps> = (props) => {
-	const { disableUsername = false, enableTeams=false } = props
+	const { disableUsername = false, enableTeams = false } = props
 
 	const router = useRouter()
 	const { app_id: appId } = router.query

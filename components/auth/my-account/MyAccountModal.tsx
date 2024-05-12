@@ -2,16 +2,21 @@ import React, { useContext, useState } from 'react'
 import { AppContext } from '../../../context'
 import { useAuth } from 'frontend-js'
 import { Modal, MyAccountForm } from '../../../components'
-import { TeamList, TeamForm, TeamUsersList, TeamUserInvite } from '../../../components'
+import {
+	TeamList,
+	TeamForm,
+	TeamUsersList,
+	TeamUserInvite,
+} from '../../../components'
 import MyAccountTabs from './MyAccountTabs'
 import { Box } from '@mui/material'
 
 type MyAccountModalProps = {
-  enableTeams?: boolean
+	enableTeams?: boolean
 }
 
 const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
-  const { enableTeams } = props || {}
+	const { enableTeams } = props || {}
 	const { myAccountOpen, setMyAccountOpen } = useContext(AppContext)
 
 	const {
@@ -27,10 +32,10 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 		logout,
 	} = useAuth()
 
-  const [currentTab, setCurrentTab] = useState(0)
-  const handleTabChange = (ev, newValue) => {
-    setCurrentTab(newValue)
-  }
+	const [currentTab, setCurrentTab] = useState(0)
+	const handleTabChange = (ev, newValue) => {
+		setCurrentTab(newValue)
+	}
 
 	const handleLogout = async () => {
 		await logout()
@@ -45,10 +50,9 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 		await updateMe(user)
 	}
 
-
-  return (
+	return (
 		<Modal
-      disablePadding
+			disablePadding
 			open={myAccountOpen}
 			handleClose={() => setMyAccountOpen(false)}
 			title={
@@ -57,38 +61,31 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 					: 'My Account'
 			}
 		>
-      { enableTeams && (
-        <MyAccountTabs 
-          tab={ currentTab }
-          handleChange={ handleTabChange }
-        />
-      )}
-      <Box sx={ sx.content }>
-      { currentTab == 0 && (
-        <MyAccountForm
-          loading={delayedLoading}
-          user={user}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          handleDeleteAvatar={handleDeleteAvatar}
-          handleLogout={handleLogout}
-        />
-      )}
-      { currentTab == 1 && (
-        <TeamList /> 
-      )}      
-      { currentTab == 2 && (
-        <TeamUsersList 
-          handleAddUser={() => setCurrentTab(3)}
-        /> 
-      )}
-      { currentTab == 3 && (
-        <TeamUserInvite 
-          handleSuccess={() => setCurrentTab(2)}
-          handleCancel={() => setCurrentTab(2)}
-        /> 
-      )}      
-      </Box>
+			{enableTeams && (
+				<MyAccountTabs tab={currentTab} handleChange={handleTabChange} />
+			)}
+			<Box sx={sx.content}>
+				{currentTab == 0 && (
+					<MyAccountForm
+						loading={delayedLoading}
+						user={user}
+						handleChange={handleChange}
+						handleSubmit={handleSubmit}
+						handleDeleteAvatar={handleDeleteAvatar}
+						handleLogout={handleLogout}
+					/>
+				)}
+				{currentTab == 1 && <TeamList />}
+				{currentTab == 2 && (
+					<TeamUsersList handleAddUser={() => setCurrentTab(3)} />
+				)}
+				{currentTab == 3 && (
+					<TeamUserInvite
+						handleSuccess={() => setCurrentTab(2)}
+						handleCancel={() => setCurrentTab(2)}
+					/>
+				)}
+			</Box>
 		</Modal>
 	)
 }
@@ -96,7 +93,7 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 export default MyAccountModal
 
 const sx = {
-  content: {
-    p: 2
-  }
+	content: {
+		p: 2,
+	},
 }

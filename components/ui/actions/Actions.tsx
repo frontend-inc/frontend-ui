@@ -8,27 +8,27 @@ import { MenuButton } from '../../../components'
 type ActionsProps = {
 	actions: ActionType[]
 	resource: any
-  numVisible?: number
-  color?: string
+	numVisible?: number
+	color?: string
 	justifyContent?: 'flex-start' | 'center' | 'flex-end'
 }
 
 const Actions: React.FC<ActionsProps> = (props) => {
-	const { color, actions, resource, numVisible=2, justifyContent } = props
+	const { color, actions, resource, numVisible = 2, justifyContent } = props
 	return (
 		<Stack
-			sx={{ 
-        ...sx.root,
-        justifyContent
-      }}
+			sx={{
+				...sx.root,
+				justifyContent,
+			}}
 			direction="row"
 			spacing={1}
 		>
 			<Stack
-				sx={{ 
-          ...sx.buttons,
-          justifyContent
-        }}
+				sx={{
+					...sx.buttons,
+					justifyContent,
+				}}
 				direction={{ sm: 'row', xs: 'column' }}
 				spacing={1}
 			>
@@ -37,9 +37,7 @@ const Actions: React.FC<ActionsProps> = (props) => {
 				))}
 			</Stack>
 			{actions?.length > numVisible && (
-				<MenuButton
-          color={color}
-        >
+				<MenuButton color={color}>
 					{actions?.slice(numVisible, actions.length)?.map((action, index) => (
 						<ActionMenuItem key={index} action={action} resource={resource} />
 					))}
@@ -52,12 +50,12 @@ const Actions: React.FC<ActionsProps> = (props) => {
 export default Actions
 
 const sx = {
-  root: {
-    width: '100%',
-    justifyContent: 'space-between',
-  },
+	root: {
+		width: '100%',
+		justifyContent: 'space-between',
+	},
 	buttons: {
 		width: '100%',
-    justifyContent: 'flex-start',
+		justifyContent: 'flex-start',
 	},
 }

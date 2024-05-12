@@ -24,18 +24,20 @@ export const truncate = (str, length = 60) => {
 }
 
 export function getInitials(name) {
-  if(!name) return '';
-  // Trim any extra spaces and split the name into parts based on spaces
-  const parts = name.trim().split(/\s+/);
+	if (!name) return ''
+	// Trim any extra spaces and split the name into parts based on spaces
+	const parts = name.trim().split(/\s+/)
 
-  // Check if we have at least two parts (multiple words)
-  if (parts.length >= 2) {
-      // Use the first letter of the first two parts
-      return parts[0][0] + parts[1][0];
-  } else {
-      // Use the first two letters of the single part, if it's at least 2 characters long
-      return parts[0].length > 1 ? parts[0].substring(0, 2) : parts[0][0] + parts[0][0];
-  }
+	// Check if we have at least two parts (multiple words)
+	if (parts.length >= 2) {
+		// Use the first letter of the first two parts
+		return parts[0][0] + parts[1][0]
+	} else {
+		// Use the first two letters of the single part, if it's at least 2 characters long
+		return parts[0].length > 1
+			? parts[0].substring(0, 2)
+			: parts[0][0] + parts[0][0]
+	}
 }
 
 export const groupBy = (arr, name) => {

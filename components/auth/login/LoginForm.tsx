@@ -11,7 +11,7 @@ type LoginFormProps = {
 	handleSubmit: () => void
 	handleForgotPassword: false | (() => void)
 	handleSignup: false | (() => void)
-	handleOneTimePassword?: false | (() => void) 
+	handleOneTimePassword?: false | (() => void)
 	handleGoogleSuccess?: false | (() => void)
 }
 

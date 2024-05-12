@@ -12,7 +12,7 @@ type LayoutContainerProps = {
 	enableSideNav?: boolean
 	notifications: NotificationType[]
 	offsetY?: number
-  offsetX?: number
+	offsetX?: number
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
@@ -22,27 +22,27 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 		footer,
 		notifications,
 		enableSideNav = false,
-    offsetY=0, 
+		offsetY = 0,
 	} = props
 
-  const [enableNotifications, setEnableNotifications] = useState(false)
+	const [enableNotifications, setEnableNotifications] = useState(false)
 
-  useEffect(() => {
-    if(notifications?.length > 0){
-      setEnableNotifications(true)
-    }
-  }, [notifications])
+	useEffect(() => {
+		if (notifications?.length > 0) {
+			setEnableNotifications(true)
+		}
+	}, [notifications])
 
 	return (
-		<Box 
-      sx={{
-        ...sx.layout,
-        height: {
-          sm: `calc(100vh - ${offsetY}px)`,
-          xs: '100vh',
-        },
-      }}
-      >
+		<Box
+			sx={{
+				...sx.layout,
+				height: {
+					sm: `calc(100vh - ${offsetY}px)`,
+					xs: '100vh',
+				},
+			}}
+		>
 			<Alert />
 			{notifications?.length > 0 && (
 				<Notifications notifications={notifications} />
@@ -50,7 +50,7 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 			<Box
 				sx={{
 					...sx.root,
-					...(enableSideNav && sx.sideNav),          
+					...(enableSideNav && sx.sideNav),
 				}}
 			>
 				{header}
@@ -58,7 +58,7 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 					sx={{
 						...sx.content,
 						...(enableSideNav ? sx.contentSideNav : sx.contentTopNav),
-            ...(enableNotifications && sx.contentNotifications),
+						...(enableNotifications && sx.contentNotifications),
 					}}
 				>
 					<LayoutScroll>
@@ -76,16 +76,16 @@ export default LayoutContainer
 const sx = {
 	layout: {
 		width: '100%',
-    overflowY: 'hidden'
+		overflowY: 'hidden',
 	},
 	root: {
 		width: '100%',
 		height: '100%',
-    overflowY: 'scroll',
+		overflowY: 'scroll',
 		'&::-webkit-scrollbar': {
 			display: 'none',
 		},
-		bgcolor: 'background.default',        
+		bgcolor: 'background.default',
 	},
 	sideNav: {
 		display: 'flex',
@@ -109,10 +109,10 @@ const sx = {
 			xs: '100%',
 		},
 		height: '100%',
-	},  
-  contentNotifications: {
-    pb: '45px',
-  },
+	},
+	contentNotifications: {
+		pb: '45px',
+	},
 	contentTopNav: {
 		pt: '60px',
 		minHeight: 'calc(100% - 60px)',

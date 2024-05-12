@@ -19,42 +19,34 @@ export type EmailSignupProps = {
 
 // Call To Action
 const EmailSignup: React.FC<EmailSignupProps> = (props) => {
+	const { showAlertSuccess } = useAlerts()
+	const { label, title, description, buttonText = 'Subscribe' } = props || {}
 
-  const { showAlertSuccess } = useAlerts()
 	const {
-		label,
-		title,
-		description,
-		buttonText='Subscribe',
-	} = props || {}
+		errors,
+		delayedLoading,
+		resource: contact,
+		setResource: setContact,
+		handleChange,
+		create,
+	} = useResource({
+		name: 'contact',
+		url: `/api/v1/contacts`,
+	})
 
-  const { 
-    errors,
-    delayedLoading,
-    resource: contact,
-    setResource: setContact,
-    handleChange,
-    create  
-  } = useResource({
-    name: 'contact',
-    url: `/api/v1/contacts`,
-  })
-
-  const handleSubmit = async () => {
-    console.log("Contact", contact)
-    let resp = await create(contact)
-    if(resp?.id){
-      setContact({})
-      showAlertSuccess('Thank you for subscribing!')      
-    }
-  }
+	const handleSubmit = async () => {
+		console.log('Contact', contact)
+		let resp = await create(contact)
+		if (resp?.id) {
+			setContact({})
+			showAlertSuccess('Thank you for subscribing!')
+		}
+	}
 
 	return (
 		<Box sx={sx.root}>
 			<Stack sx={sx.content} direction="column" spacing={1}>
-				{label && (
-					<Label label={label} />
-				)}
+				{label && <Label label={label} />}
 				{title && (
 					<Typography variant={'h6'} color="text.primary" sx={sx.title}>
 						{title}
@@ -69,28 +61,26 @@ const EmailSignup: React.FC<EmailSignupProps> = (props) => {
 						{description}
 					</Typography>
 				)}
-					<Stack sx={ sx.actions } direction="row" spacing={0}>            
-            <TextInput 
-              errors={errors}              
-              name="email"
-              value={contact?.email }
-              handleChange={handleChange}
-              placeholder="Enter your email"
-              type="email" 
-              styles={ sx.input }             
-            />
-						<Button
-							sx={ sx.button }
-							variant="contained"
-							color="primary"
-							onClick={handleSubmit}
-              startIcon={ 
-                <IconLoading loading={ delayedLoading } />
-              }
-						>
-							{buttonText}
-						</Button>
-					</Stack>
+				<Stack sx={sx.actions} direction="row" spacing={0}>
+					<TextInput
+						errors={errors}
+						name="email"
+						value={contact?.email}
+						handleChange={handleChange}
+						placeholder="Enter your email"
+						type="email"
+						styles={sx.input}
+					/>
+					<Button
+						sx={sx.button}
+						variant="contained"
+						color="primary"
+						onClick={handleSubmit}
+						startIcon={<IconLoading loading={delayedLoading} />}
+					>
+						{buttonText}
+					</Button>
+				</Stack>
 			</Stack>
 		</Box>
 	)
@@ -122,16 +112,16 @@ const sx = {
 		pt: 2,
 		textAlign: 'center',
 		width: '100%',
-    maxWidth: 420
+		maxWidth: 420,
 	},
-  input: {
+	input: {
 		'& .MuiInputBase-input': {
 			borderRadius: (theme) =>
 				`${theme.shape.borderRadius}px 0 0 ${theme.shape.borderRadius}px`,
 		},
 	},
-  button: {		
-    minWidth: 120,
+	button: {
+		minWidth: 120,
 		borderRadius: (theme) =>
 			`0 ${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0`,
 	},

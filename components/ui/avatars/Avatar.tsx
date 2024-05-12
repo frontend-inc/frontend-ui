@@ -4,9 +4,9 @@ import { Icon } from '../..'
 
 type UserAvatarProps = {
 	src: string
-  label?: string
+	label?: string
 	size?: number
-  color?: string
+	color?: string
 }
 
 const UserAvatar: React.FC<UserAvatarProps> = (props) => {
@@ -19,16 +19,16 @@ const UserAvatar: React.FC<UserAvatarProps> = (props) => {
 				...sx.avatar,
 				height: size,
 				width: size,
-        bgcolor: src ? 'common.white' : color
+				bgcolor: src ? 'common.white' : color,
 			}}
-		>      
-      { label ? (
-        <Typography variant="button" color="background.default" sx={ sx.label }>
-          {label}
-        </Typography>			
-      ): (
-        <Icon name="User" color="secondary.contrastText" />    
-      )}
+		>
+			{label ? (
+				<Typography variant="button" color="background.default" sx={sx.label}>
+					{label}
+				</Typography>
+			) : (
+				<Icon name="User" color="secondary.contrastText" />
+			)}
 		</Avatar>
 	)
 }
@@ -37,11 +37,11 @@ export default UserAvatar
 
 const sx = {
 	avatar: {
-    display: 'flex',
-    pt: '2px',
+		display: 'flex',
+		pt: '2px',
 		bgcolor: 'secondary.main',
 	},
-  label: {
-    textTransform: 'uppercase'
-  }
+	label: {
+		textTransform: 'uppercase',
+	},
 }

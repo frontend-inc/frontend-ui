@@ -10,8 +10,8 @@ import { Actions } from '../../../../components'
 const CardList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
-    actions,
-    item,
+		actions,
+		item,
 		href,
 		height = 180,
 		textVariant = 'subtitle1',
@@ -24,7 +24,7 @@ const CardList: React.FC<CardProps> = (props) => {
 
 	const router = useRouter()
 
-  const { label, title, description, image, resource } = item || {}
+	const { label, title, description, image, resource } = item || {}
 
 	const handleItemClick = () => {
 		if (handleClick) {
@@ -60,14 +60,14 @@ const CardList: React.FC<CardProps> = (props) => {
 						/>
 					</TouchableOpacity>
 				</Box>
-				<Stack 
-          direction="row" 
-          spacing={1}        
-          sx={{
-            ...sx.contentArea,
-            ...(enableBorder && sx.contentAreaBorder),
-          }} 
-        >
+				<Stack
+					direction="row"
+					spacing={1}
+					sx={{
+						...sx.contentArea,
+						...(enableBorder && sx.contentAreaBorder),
+					}}
+				>
 					<Stack
 						direction="column"
 						spacing={1}
@@ -87,12 +87,8 @@ const CardList: React.FC<CardProps> = (props) => {
 							{truncate(description, 80)}
 						</Typography>
 					</Stack>
-          <Actions 
-            numVisible={0}
-            resource={item}
-            actions={actions}
-          />					
-				</Stack>				
+					<Actions numVisible={0} resource={item} actions={actions} />
+				</Stack>
 			</Stack>
 		</Box>
 	)
@@ -148,8 +144,8 @@ const sx = {
 	contentArea: {
 		width: '100%',
 	},
-  contentAreaBorder: {
-		pr: 1
+	contentAreaBorder: {
+		pr: 1,
 	},
 	content: {
 		width: '100%',

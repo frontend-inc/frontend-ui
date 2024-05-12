@@ -7,7 +7,7 @@ import { SectionProps } from '../../types'
 const Section: React.FC<SectionProps> = (props) => {
 	const {
 		enableTransitions = false,
-    requireAuth = false,
+		requireAuth = false,
 		children,
 		bgcolor,
 		maxWidth,
@@ -53,12 +53,7 @@ const Section: React.FC<SectionProps> = (props) => {
 						maxWidth: width,
 					}}
 				>
-        { requireAuth ? 
-          <AuthRequired>
-            {children}
-          </AuthRequired> : 
-          children
-        }					
+					{requireAuth ? <AuthRequired>{children}</AuthRequired> : children}
 				</Box>
 			</Box>
 		</Fade>

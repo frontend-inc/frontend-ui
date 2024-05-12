@@ -6,7 +6,7 @@ import { VIDEO_VERT_HEIGHT, VIDEO_VERT_WIDTH } from '../../../constants/index'
 const VideoVert: React.FC<CardProps> = (props) => {
 	const {
 		actions,
-    item,    
+		item,
 		href,
 		handleClick,
 		objectFit = 'cover',
@@ -25,9 +25,9 @@ const VideoVert: React.FC<CardProps> = (props) => {
 
 	return !open ? (
 		<Cover
-      actions={actions}
+			actions={actions}
 			variant="grid"
-      item={item}			
+			item={item}
 			handleClick={handleItemClick}
 			objectFit={objectFit}
 			height={height}

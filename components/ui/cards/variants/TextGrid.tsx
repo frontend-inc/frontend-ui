@@ -11,9 +11,9 @@ import { Actions } from '../../..'
 const CardGrid: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
-    actions,
-    item,		
-    href,
+		actions,
+		item,
+		href,
 		handleClick,
 		objectFit = 'cover',
 		height = CARD_VERT_HEIGHT,
@@ -22,7 +22,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 		enableOverlay = false,
 	} = props || {}
 
-  const { title, description } = item || {}
+	const { title, description } = item || {}
 
 	const router = useRouter()
 
@@ -44,13 +44,9 @@ const CardGrid: React.FC<CardProps> = (props) => {
 				minHeight: height + 80,
 			}}
 		>
-      <Box sx={ sx.actions }>
-        <Actions 
-          numVisible={0}
-          actions={actions} 
-          resource={item} 
-        />					
-      </Box>
+			<Box sx={sx.actions}>
+				<Actions numVisible={0} actions={actions} resource={item} />
+			</Box>
 			<Stack
 				spacing={1}
 				sx={{
@@ -58,12 +54,12 @@ const CardGrid: React.FC<CardProps> = (props) => {
 					...(enableBorder && sx.contentBorder),
 				}}
 			>
-        <Typography sx={sx.title} color="text.primary" variant="subtitle1">
-          {truncate(title)}
-        </Typography> 
-        <Typography sx={sx.description} color="text.secondary" variant="body1">
-          {truncate(description, 200)}
-        </Typography>                   
+				<Typography sx={sx.title} color="text.primary" variant="subtitle1">
+					{truncate(title)}
+				</Typography>
+				<Typography sx={sx.description} color="text.secondary" variant="body1">
+					{truncate(description, 200)}
+				</Typography>
 			</Stack>
 		</Stack>
 	)
@@ -73,14 +69,14 @@ export default CardGrid
 
 const sx = {
 	root: {
-    position: 'relative',
+		position: 'relative',
 		width: '100%',
 	},
-  actions: {
-    position: 'absolute',
-    top: 10,
-    right: 10 
-  },
+	actions: {
+		position: 'absolute',
+		top: 10,
+		right: 10,
+	},
 	rootBorder: {
 		border: '1px solid',
 		borderColor: 'divider',
@@ -109,8 +105,8 @@ const sx = {
 		minHeight: '60px',
 	},
 	contentArea: {
-    p: 1,
-    pr: 0,
+		p: 1,
+		pr: 0,
 		width: '100%',
 	},
 	contentBorder: {

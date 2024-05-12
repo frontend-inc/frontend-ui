@@ -12,7 +12,7 @@ export type CollectionFormProps = {
 	buttonText?: string
 	variant?: 'contained' | 'outlined' | 'text'
 	fields: any[]
-  contentType: string
+	contentType: string
 	onSuccessMessage?: string
 }
 
@@ -38,11 +38,11 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 		resource,
 		update,
 		create,
-    flattenDocument,
-    handleDataChange,
+		flattenDocument,
+		handleDataChange,
 		removeAttachment,
 	} = useDocuments({
-		collection: contentType,		
+		collection: contentType,
 	})
 
 	const handleRemove = async (name) => {

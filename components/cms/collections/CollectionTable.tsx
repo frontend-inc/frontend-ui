@@ -21,7 +21,7 @@ import { TableList } from '../../../components'
 import { CollectionProps } from './Collection'
 
 export type CollectionTableProps = CollectionProps & {
-  headers: TableHeaderType[]
+	headers: TableHeaderType[]
 }
 
 const CollectionTable: React.FC<CollectionTableProps> = (props) => {

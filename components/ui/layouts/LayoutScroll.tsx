@@ -31,6 +31,6 @@ const sx = {
 		'&::-webkit-scrollbar': {
 			display: 'none',
 		},
-    height: '100%'
+		height: '100%',
 	},
 }

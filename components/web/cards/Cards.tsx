@@ -45,16 +45,16 @@ const Cards: React.FC<CardsProps> = (props) => {
 				<Stack spacing={2}>
 					{items?.map((card, i) => (
 						<CollectionCard
-              actions={[]}
+							actions={[]}
 							key={i}
 							variant={variant}
 							style={style}
-              item={{ 
-                ...card,
-                image: {
-                  url: card?.image 
-                }
-              }}				              										
+							item={{
+								...card,
+								image: {
+									url: card?.image,
+								},
+							}}
 							handleClick={() => handleClick(card)}
 							enableBorder={enableBorder}
 							enableGradient={enableGradient}
@@ -68,15 +68,15 @@ const Cards: React.FC<CardsProps> = (props) => {
 					{items?.map((card, i) => (
 						<Grid item xs={12} sm={4} md={4} key={i}>
 							<CollectionCard
-                actions={[]}
+								actions={[]}
 								variant={variant}
 								style={style}
-                item={{ 
-                  ...card,
-                  image: {
-                    url: card?.image 
-                  }
-                }}	
+								item={{
+									...card,
+									image: {
+										url: card?.image,
+									},
+								}}
 								handleClick={() => handleClick(card)}
 								enableBorder={enableBorder}
 								enableGradient={enableGradient}

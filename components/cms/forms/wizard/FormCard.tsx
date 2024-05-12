@@ -11,23 +11,27 @@ type FormCardProps = {
 }
 
 const FormCard: React.FC<FormCardProps> = (props) => {
-	const { title, description, image, handleClick, buttonText='Continue' } = props
+	const {
+		title,
+		description,
+		image,
+		handleClick,
+		buttonText = 'Continue',
+	} = props
 
 	return (
 		<Stack direction="column" sx={sx.root} spacing={2}>
-      { image && (
-			  <Image src={image} height={400} />
-      )}
-      { title && (
-        <Typography variant="h4" color="text.primary">
-          {title}
-        </Typography>
-      )}
-      { description && (
-        <Typography variant="body1" color="text.secondary">
-          {description}
-        </Typography>
-      )}
+			{image && <Image src={image} height={400} />}
+			{title && (
+				<Typography variant="h4" color="text.primary">
+					{title}
+				</Typography>
+			)}
+			{description && (
+				<Typography variant="body1" color="text.secondary">
+					{description}
+				</Typography>
+			)}
 			<Box>
 				<Button onClick={handleClick} variant="contained" color="primary">
 					{buttonText}

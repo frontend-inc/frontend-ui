@@ -11,9 +11,7 @@ type FilterListInputProps = {
 	handleFilter: (filter: FilterOptionType) => void
 }
 
-const FilterListInput: React.FC<FilterListInputProps> = (
-	props
-) => {
+const FilterListInput: React.FC<FilterListInputProps> = (props) => {
 	const { filterOption, filters = [], handleFilter } = props || {}
 
 	const findFilterValues = (fieldName, filters) => {

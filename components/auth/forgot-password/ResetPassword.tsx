@@ -11,12 +11,12 @@ type ResetPasswordProps = {
 }
 
 type RouterTokenParams = {
-  token: string
+	token: string
 }
 
 const ResetPassword: React.FC<ResetPasswordProps> = (props) => {
 	const router = useRouter()
-	const { token: resetPasswordToken } = router.query as RouterTokenParams  
+	const { token: resetPasswordToken } = router.query as RouterTokenParams
 
 	const {
 		title = 'Reset Password',

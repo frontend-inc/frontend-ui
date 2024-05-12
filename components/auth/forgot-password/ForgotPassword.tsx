@@ -26,9 +26,9 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (props) => {
 	}
 
 	const handleLogin = () => {
-		if(loginUrl){
-      router.push(loginUrl)
-    }
+		if (loginUrl) {
+			router.push(loginUrl)
+		}
 	}
 
 	return (

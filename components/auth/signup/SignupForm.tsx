@@ -84,15 +84,11 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 			>
 				Register
 			</Button>
-      { handleLogin && (
-        <Button 
-          fullWidth 
-          color="primary" 
-          onClick={handleLogin}
-        >
-          Already have an account? Sign in
-        </Button>
-      )}
+			{handleLogin && (
+				<Button fullWidth color="primary" onClick={handleLogin}>
+					Already have an account? Sign in
+				</Button>
+			)}
 		</Stack>
 	)
 }

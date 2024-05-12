@@ -150,9 +150,9 @@ const sx = {
 		py: 2,
 		height: '100%',
 	},
-  disablePadding: {
-    p: 0
-  },
+	disablePadding: {
+		p: 0,
+	},
 	dialogActions: {
 		borderTop: '1px solid',
 		borderColor: 'divider',

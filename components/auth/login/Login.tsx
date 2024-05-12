@@ -12,13 +12,12 @@ export type LoginProps = {
 	oneTimePasswordUrl?: string
 	disableUsername?: boolean
 	enableGoogle?: boolean
-  navigateUrl: string
+	navigateUrl: string
 }
 
 const Login: React.FC<LoginProps> = (props) => {
+	const { clientUrl } = useContext(AppContext)
 
-  const { clientUrl } = useContext(AppContext)
- 
 	const {
 		navigateUrl,
 		title = 'Sign In',
@@ -44,42 +43,46 @@ const Login: React.FC<LoginProps> = (props) => {
 	}
 
 	const handleSignup = () => {
-    if(signupUrl){
-      router.push(`${clientUrl}${signupUrl}`)
-    }
+		if (signupUrl) {
+			router.push(`${clientUrl}${signupUrl}`)
+		}
 	}
 
 	const handleForgotPassword = () => {
-    if(forgotPasswordUrl){
-      router.push(`${clientUrl}${forgotPasswordUrl}`)
-    }
+		if (forgotPasswordUrl) {
+			router.push(`${clientUrl}${forgotPasswordUrl}`)
+		}
 	}
 
 	const handleOneTimePassword = () => {
-    if(oneTimePasswordUrl){
-      router.push(`${clientUrl}${oneTimePasswordUrl}`)
-    }
+		if (oneTimePasswordUrl) {
+			router.push(`${clientUrl}${oneTimePasswordUrl}`)
+		}
 	}
 
 	return (
 		<>
 			<Loader loading={loading} />
-      { !loading && (
-        <AuthScreen title={title} subtitle={subtitle}>
-          <LoginForm
-            errors={errors}
-            loading={loading}
-            user={user}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-            handleOneTimePassword={oneTimePasswordUrl ? handleOneTimePassword : false}
-            handleSignup={signupUrl ? handleSignup : false}
-            handleForgotPassword={forgotPasswordUrl ? handleForgotPassword : false}
-            enableGoogle={enableGoogle}
-            handleGoogleSuccess={handleGoogleSuccess}
-          />
-        </AuthScreen>
-      )}      
+			{!loading && (
+				<AuthScreen title={title} subtitle={subtitle}>
+					<LoginForm
+						errors={errors}
+						loading={loading}
+						user={user}
+						handleChange={handleChange}
+						handleSubmit={handleSubmit}
+						handleOneTimePassword={
+							oneTimePasswordUrl ? handleOneTimePassword : false
+						}
+						handleSignup={signupUrl ? handleSignup : false}
+						handleForgotPassword={
+							forgotPasswordUrl ? handleForgotPassword : false
+						}
+						enableGoogle={enableGoogle}
+						handleGoogleSuccess={handleGoogleSuccess}
+					/>
+				</AuthScreen>
+			)}
 		</>
 	)
 }

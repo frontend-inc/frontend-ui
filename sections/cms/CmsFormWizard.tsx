@@ -12,12 +12,18 @@ const CmsFormWizard: React.FC<CmsFormWizardProps> = (props) => {
 		py, //special case for padding y
 		px,
 		maxWidth,
-    requireAuth,
+		requireAuth,
 		...rest
 	} = props
 
 	return (
-		<Section requireAuth={requireAuth} bgcolor={bgcolor} py={0} px={px} maxWidth={maxWidth}>
+		<Section
+			requireAuth={requireAuth}
+			bgcolor={bgcolor}
+			py={0}
+			px={px}
+			maxWidth={maxWidth}
+		>
 			<FormWizard py={py} {...rest} />
 		</Section>
 	)

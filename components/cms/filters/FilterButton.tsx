@@ -13,9 +13,7 @@ type FilterButtonProps = {
 	handleClear: () => void
 }
 
-const FilterButton: React.FC<FilterButtonProps> = (
-	props
-) => {
+const FilterButton: React.FC<FilterButtonProps> = (props) => {
 	const {
 		loading = false,
 		filters = [],

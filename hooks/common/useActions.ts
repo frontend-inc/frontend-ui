@@ -1,4 +1,3 @@
-
 import React, { useState, useContext } from 'react'
 import { AppContext } from '../../context'
 import { useRouter } from 'next/router'
@@ -23,11 +22,11 @@ const useActions = (params: UseActionParams) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const handleClick = async (ev) => {
-    console.log("Action", action, resource)
-    let value;
-    if(action.fieldName){
-      value = resource[action.fieldName]
-    }		
+		console.log('Action', action, resource)
+		let value
+		if (action.fieldName) {
+			value = resource[action.fieldName]
+		}
 		switch (action?.name) {
 			case 'navigate':
 				let url = `${clientUrl}${action?.path}`

@@ -8,7 +8,7 @@ type SortButtonProps = {
 	sortOptions: SortOptionType[]
 	sortBy: string
 	sortDirection: 'asc' | 'desc'
-  handleSortBy: (field: SortOptionType) => void
+	handleSortBy: (field: SortOptionType) => void
 	handleSortDirection: (sortDirection: 'asc' | 'desc') => void
 }
 
@@ -60,7 +60,7 @@ const SortButton: React.FC<SortButtonProps> = (props) => {
 			</Button>
 			<Hidden smDown>
 				<Popup
-					p={0}          
+					p={0}
 					anchorEl={anchorEl}
 					open={showModal}
 					handleClose={handleCloseModal}

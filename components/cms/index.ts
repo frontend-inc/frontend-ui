@@ -34,7 +34,7 @@ export { default as VideoHoriz } from './video/VideoGrid'
 export { default as VideoModal } from '../cms/video/VideoModal'
 export { default as VideoPlayer } from '../cms/video/VideoPlayer'
 
-// Resources 
+// Resources
 export { default as ResourceList } from './resources/ResourceList'
 export { default as ResourceListItem } from './resources/ResourceListItem'
 export { default as ResourceTable } from './resources/ResourceTable'

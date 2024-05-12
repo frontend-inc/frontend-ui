@@ -10,7 +10,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		actions,
-    item,
+		item,
 		href,
 		handleClick,
 		textVariant = 'subtitle1',
@@ -21,7 +21,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		icon,
 	} = props || {}
 
-  const { label, title, description, image, resource } = item || {}
+	const { label, title, description, image, resource } = item || {}
 	const router = useRouter()
 
 	const handleItemClick = () => {
@@ -46,7 +46,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 					height={height}
 					objectFit={objectFit}
 					alt={title}
-          enableGradient={enableGradient}
+					enableGradient={enableGradient}
 					enableOverlay={enableOverlay}
 				/>
 			</TouchableOpacity>
@@ -78,14 +78,14 @@ const CoverVert: React.FC<CardProps> = (props) => {
 					</Box>
 				</Stack>
 			</Stack>
-      <Box sx={ sx.actions }>
-        <Actions   
-          numVisible={0}
-          resource={item}
-          actions={actions}
-          color={ enableOverlay ? 'common.white' : 'text.secondary' }
-        />		
-      </Box>					
+			<Box sx={sx.actions}>
+				<Actions
+					numVisible={0}
+					resource={item}
+					actions={actions}
+					color={enableOverlay ? 'common.white' : 'text.secondary'}
+				/>
+			</Box>
 		</Stack>
 	)
 }
@@ -106,7 +106,7 @@ const sx = {
 		bottom: 0,
 		left: 0,
 		zIndex: 1,
-    p: 1,
+		p: 1,
 	},
 	description: {
 		maxWidth: '320px',
@@ -136,9 +136,9 @@ const sx = {
 		justifyContent: 'space-between',
 		alignItems: 'flex-end',
 	},
-  actions: {
-    position: 'absolute',
-    top: 0,
-    right: 10
-  }
+	actions: {
+		position: 'absolute',
+		top: 0,
+		right: 10,
+	},
 }

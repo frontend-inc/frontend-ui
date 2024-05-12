@@ -15,22 +15,22 @@ export type SectionProps = {
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 	py?: number
 	px?: number
-  requireAuth?: boolean
+	requireAuth?: boolean
 }
 
 export type CardProps = {
-  actions: ActionType[]
+	actions: ActionType[]
 	editing?: boolean
 	variant?: 'list' | 'grid'
-  item: any & {
-    label?: string
-    title?: string
-    description?: string
-    image?: {
-      url: string
-    }
-    video?: string
-  }
+	item: any & {
+		label?: string
+		title?: string
+		description?: string
+		image?: {
+			url: string
+		}
+		video?: string
+	}
 	buttonText?: string
 	textVariant?: TypographyVariant
 	size?: number

@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import { useApi, useResource } from 'frontend-js'
 
 const useTeamUsers = () => {
-
-  const {
-    loading,
+	const {
+		loading,
 		delayedLoading,
 		errors,
 		resource: teamUser,
@@ -30,24 +29,23 @@ const useTeamUsers = () => {
 		loadMore,
 		loadingWrapper,
 		paginate,
-  } = useResource({
-    name: 'team_user',
-    url: '/api/v1/team_users'
-  })
-
+	} = useResource({
+		name: 'team_user',
+		url: '/api/v1/team_users',
+	})
 
 	return {
 		loading,
-		delayedLoading,		
+		delayedLoading,
 		errors,
 		teamUser,
-		teamUsers,    
+		teamUsers,
 		findTeamUser,
-		findTeamUsers,    
+		findTeamUsers,
 		updateTeamUser,
 		createTeamUser,
 		deleteTeamUser,
-		setTeamUser,        
+		setTeamUser,
 		handleChange,
 		handleChangePage,
 		reloadTeamUsers,
@@ -62,7 +60,7 @@ const useTeamUsers = () => {
 		handleSort,
 		loadMore,
 		loadingWrapper,
-		paginate,    
+		paginate,
 	}
 }
 

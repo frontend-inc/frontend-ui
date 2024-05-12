@@ -26,15 +26,15 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 		handleClick(path)
 	}
 
-  const filterVisibility = (menuItem) => {
-    if (menuItem.visibility === 'logged_in' && !currentUser?.id) {
-      return false
-    }
-    if (menuItem.visibility === 'logged_out' && currentUser?.id) {
-      return false
-    }
-    return true  
-  }
+	const filterVisibility = (menuItem) => {
+		if (menuItem.visibility === 'logged_in' && !currentUser?.id) {
+			return false
+		}
+		if (menuItem.visibility === 'logged_out' && currentUser?.id) {
+			return false
+		}
+		return true
+	}
 
 	return (
 		<Drawer

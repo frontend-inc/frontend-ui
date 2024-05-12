@@ -10,7 +10,7 @@ export const SYSTEM_FIELDS = [
 	'description',
 	'handle',
 	'user_id',
-  'team_id',
+	'team_id',
 	'label',
 	'shopify_handle',
 	'published',

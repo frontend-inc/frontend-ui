@@ -95,7 +95,7 @@ const sx = {
 	},
 	listItemIcon: {
 		minWidth: '40px',
-    mr: 2
+		mr: 2,
 	},
 	sortDirectionButton: {
 		width: '32px',

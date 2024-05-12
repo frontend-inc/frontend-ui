@@ -22,8 +22,8 @@ type RemoteAutosuggestProps = {
 	direction?: 'row' | 'column'
 	defaultQuery?: QueryParamsType
 	defaultOptions?: OptionType[]
-  enableRemoteSearch?: boolean
-  enableClear
+	enableRemoteSearch?: boolean
+	enableClear
 }
 
 const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
@@ -42,8 +42,8 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		defaultQuery = {},
 		direction = 'column',
 		defaultOptions = [],
-    enableRemoteSearch=false,
-    enableClear=false
+		enableRemoteSearch = false,
+		enableClear = false,
 	} = props
 
 	const { error, clearError } = useError({
@@ -62,14 +62,14 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 	const handleInputChange = (newValue) => {
 		if (error) clearError()
 		findOption(newValue)
-    
-    if(enableRemoteSearch && !loading){
-      //@ts-ignore
-      findMany({
-        ...defaultQuery,
-        keywords: newValue,
-      })
-    }
+
+		if (enableRemoteSearch && !loading) {
+			//@ts-ignore
+			findMany({
+				...defaultQuery,
+				keywords: newValue,
+			})
+		}
 	}
 
 	const formatResources = (resources) => {
@@ -133,7 +133,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 				handleChange={handleChange}
 				handleInputChange={handleInputChange}
 				handleClear={handleClear}
-        enableClear={enableClear}
+				enableClear={enableClear}
 			/>
 		</>
 	)

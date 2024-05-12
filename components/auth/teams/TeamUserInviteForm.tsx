@@ -10,23 +10,19 @@ type TeamUserFormProps = {
 }
 
 const TeamUserForm: React.FC<TeamUserFormProps> = (props) => {
-	const {    
-		errors,
-		user,
-		handleChange,    
-	} = props || {}
+	const { errors, user, handleChange } = props || {}
 
 	return (
 		<Stack spacing={1.5}>
-      <TextInput
-        errors={errors}
-        direction="column"
-        name="username"
-        label="Username"
-        value={user?.username}
-        placeholder="Username"
-        handleChange={handleChange}
-      />
+			<TextInput
+				errors={errors}
+				direction="column"
+				name="username"
+				label="Username"
+				value={user?.username}
+				placeholder="Username"
+				handleChange={handleChange}
+			/>
 			<Stack direction="row" spacing={1}>
 				<TextInput
 					errors={errors}

@@ -8,8 +8,8 @@ import { CardProps } from '../../../../types'
 const ImageVert: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
-    actions,
-    item,		
+		actions,
+		item,
 		href,
 		handleClick,
 		objectFit = 'cover',
@@ -18,7 +18,7 @@ const ImageVert: React.FC<CardProps> = (props) => {
 		enableOverlay = false,
 	} = props || {}
 
-  const { title, image } = item || {}
+	const { title, image } = item || {}
 
 	const router = useRouter()
 
@@ -42,14 +42,14 @@ const ImageVert: React.FC<CardProps> = (props) => {
 					enableOverlay={enableOverlay}
 				/>
 			</TouchableOpacity>
-      <Box sx={ sx.actions }>
-        <Actions 
-          numVisible={0}
-          actions={actions}
-          resource={item}
-          color={ enableOverlay ? 'common.white' : 'text.secondary' }
-        />
-      </Box>
+			<Box sx={sx.actions}>
+				<Actions
+					numVisible={0}
+					actions={actions}
+					resource={item}
+					color={enableOverlay ? 'common.white' : 'text.secondary'}
+				/>
+			</Box>
 		</Box>
 	)
 }
@@ -74,10 +74,10 @@ const sx = {
 			background: 'linear-gradient(to top, rgb(0,0,0,0.5), transparent)',
 		},
 	},
-  actions: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
-    width: '100%',
-  }
+	actions: {
+		position: 'absolute',
+		top: 10,
+		right: 10,
+		width: '100%',
+	},
 }

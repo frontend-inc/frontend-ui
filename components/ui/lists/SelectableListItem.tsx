@@ -18,7 +18,7 @@ type SelectableListItemProps = {
 	enableBorder?: boolean
 	secondaryActions?: React.ReactNode
 	handleClick?: () => void
-  avatar?: React.ReactNode
+	avatar?: React.ReactNode
 	handleEdit?: null | ((item: any) => void)
 	handleDelete?: null | ((item: any) => void)
 }
@@ -29,7 +29,7 @@ const SelectableListItem: React.FC<SelectableListItemProps> = (props) => {
 		secondaryActions,
 		enableBorder = false,
 		icon,
-    avatar,
+		avatar,
 		color = 'transparent',
 		title,
 		description,
@@ -60,8 +60,8 @@ const SelectableListItem: React.FC<SelectableListItemProps> = (props) => {
 				sx={sx.listItemButton}
 				onClick={handleClick}
 			>
-        {icon && (
-				  <ListItemIcon sx={sx.listItemIcon}>					
+				{icon && (
+					<ListItemIcon sx={sx.listItemIcon}>
 						<Box
 							sx={{
 								...sx.iconContainer,
@@ -69,14 +69,10 @@ const SelectableListItem: React.FC<SelectableListItemProps> = (props) => {
 							}}
 						>
 							<Icon name={icon} />
-						</Box>					
-				  </ListItemIcon>
-        )}
-         {avatar && (
-				  <ListItemIcon sx={sx.listItemIcon}>					
-						{ avatar }
-				  </ListItemIcon>
-        )}
+						</Box>
+					</ListItemIcon>
+				)}
+				{avatar && <ListItemIcon sx={sx.listItemIcon}>{avatar}</ListItemIcon>}
 				<ListItemText primary={title} secondary={description} />
 			</ListItemButton>
 		</ListItem>

@@ -5,64 +5,64 @@ import {
 	ImageInput,
 	TextInput,
 	SwitchInput,
-  Placeholder 
+	Placeholder,
 } from '../../../components'
 import { useAuth } from 'frontend-js'
 
 type TeamFormProps = {
 	loading: boolean
 	team: any
-  errors: any
+	errors: any
 	handleChange: (ev: any) => void
 	handleSubmit: () => void
-  handleSuccess: () => void
-  handleCancel: () => void
-	handleDeleteImage: () => void	
+	handleSuccess: () => void
+	handleCancel: () => void
+	handleDeleteImage: () => void
 }
 
 const TeamForm: React.FC<TeamFormProps> = (props) => {
 	const {
 		loading,
-    errors,
+		errors,
 		team,
 		handleSubmit,
-    handleCancel,
+		handleCancel,
 		handleChange,
 		handleDeleteImage,
 	} = props
 
-  const { currentUser } = useAuth()
+	const { currentUser } = useAuth()
 
-  if(team?.id && currentUser?.team_role != 'admin'){
-    return(      
-      <Placeholder 
-        icon='lock'
-        title='Unauthorized'
-        description='You do not have permission to access this page'
-        actions={
-          <Button
-          color="secondary"
-          onClick={handleCancel}
-          variant="contained"
-          startIcon={<IconLoading loading={loading} />}
-        >
-          Cancel
-        </Button>
-        }
-      />
-    )
-  }
+	if (team?.id && currentUser?.team_role != 'admin') {
+		return (
+			<Placeholder
+				icon="lock"
+				title="Unauthorized"
+				description="You do not have permission to access this page"
+				actions={
+					<Button
+						color="secondary"
+						onClick={handleCancel}
+						variant="contained"
+						startIcon={<IconLoading loading={loading} />}
+					>
+						Cancel
+					</Button>
+				}
+			/>
+		)
+	}
 	return (
 		<Box sx={sx.root}>
-      <TextInput
-        errors={errors}
+			<TextInput
+				errors={errors}
 				value={team.handle}
 				name="handle"
 				placeholder="Username"
 				handleChange={handleChange}
 			/>
-      <TextInput
-        errors={errors}
+			<TextInput
+				errors={errors}
 				value={team.name}
 				name="name"
 				placeholder="Name"
@@ -73,34 +73,34 @@ const TeamForm: React.FC<TeamFormProps> = (props) => {
 				name="image"
 				handleChange={handleChange}
 				handleRemove={handleDeleteImage}
-			/>			
-      <TextInput
-        multiline
-        rows={6}
-        errors={errors}
+			/>
+			<TextInput
+				multiline
+				rows={6}
+				errors={errors}
 				value={team.description}
 				name="description"
 				placeholder="Description"
 				handleChange={handleChange}
 			/>
-			<Stack sx={ sx.actions } direction={'row'} spacing={1}>
-        <Button
-          color="secondary"
-          onClick={handleCancel}
-          variant="contained"
-          startIcon={<IconLoading loading={loading} />}
-        >
-          Cancel
-        </Button>
-        <Button
-          color="primary"
-          onClick={handleSubmit}
-          variant="contained"
-          startIcon={<IconLoading loading={loading} />}
-        >
-          Save
-        </Button>
-      </Stack>
+			<Stack sx={sx.actions} direction={'row'} spacing={1}>
+				<Button
+					color="secondary"
+					onClick={handleCancel}
+					variant="contained"
+					startIcon={<IconLoading loading={loading} />}
+				>
+					Cancel
+				</Button>
+				<Button
+					color="primary"
+					onClick={handleSubmit}
+					variant="contained"
+					startIcon={<IconLoading loading={loading} />}
+				>
+					Save
+				</Button>
+			</Stack>
 		</Box>
 	)
 }
@@ -114,9 +114,8 @@ const sx = {
 		flexDirection: 'column',
 		gap: 2,
 	},
-  actions: {
-    width: '100%',
-    justifyContent: 'flex-end'
-  }
+	actions: {
+		width: '100%',
+		justifyContent: 'flex-end',
+	},
 }
-

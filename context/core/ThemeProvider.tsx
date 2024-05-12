@@ -16,7 +16,7 @@ type ThemeProviderProps = {
 	borderRadius?: number
 	deviceSize?: 'mobile' | 'tablet' | 'desktop'
 	offsetX?: number
-  offsetY?: number
+	offsetY?: number
 }
 
 const ThemeProvider = (props: ThemeProviderProps) => {
@@ -30,7 +30,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 		borderRadius,
 		deviceSize,
 		offsetX,
-    offsetY
+		offsetY,
 	} = props || {}
 
 	const { theme, setTheme } = useTheme({
@@ -41,7 +41,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 		bodyFont,
 		borderRadius,
 		deviceSize,
-		offsetX
+		offsetX,
 	})
 
 	const value = {

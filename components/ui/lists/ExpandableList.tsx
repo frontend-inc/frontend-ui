@@ -94,7 +94,9 @@ const ExpandableList: React.FC<ExpandableListProps> = (props) => {
 				</ListItem>
 			)}
 			<Collapse in={open} timeout="auto" unmountOnExit>
-				<Box pb={2} px={2}>{children}</Box>
+				<Box pb={2} px={2}>
+					{children}
+				</Box>
 			</Collapse>
 		</List>
 	)

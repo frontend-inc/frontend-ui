@@ -68,10 +68,10 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		number: {
 			type: 'number',
 		},
-    boolean: {
-      label: null,
-      placeholder: label 
-    },
+		boolean: {
+			label: null,
+			placeholder: label,
+		},
 		price: {
 			type: 'number',
 		},

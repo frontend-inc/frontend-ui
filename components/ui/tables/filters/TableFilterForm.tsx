@@ -134,7 +134,7 @@ const TableFilterForm: React.FC<TableFilterFormProps> = (props) => {
 					let field = Object.keys(filter)[0]
 					let operator = Object.keys(filter[field])[0]
 					let value = filter[field][operator]
-          //@ts-ignore 
+					//@ts-ignore
 					formattedFilters.push({
 						where: where,
 						field: field,

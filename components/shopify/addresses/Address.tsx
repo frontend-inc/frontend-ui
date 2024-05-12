@@ -12,7 +12,7 @@ type AddressProps = {
 }
 
 type AddressRouterParams = {
-  address_id: string | null
+	address_id: string | null
 }
 
 const Address: React.FC<AddressProps> = (props) => {

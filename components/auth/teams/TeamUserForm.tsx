@@ -11,31 +11,27 @@ type TeamUserFormProps = {
 }
 
 const TeamUserForm: React.FC<TeamUserFormProps> = (props) => {
-	const {    
-		errors,
-		teamUser,
-		handleChange,    
-	} = props || {}
+	const { errors, teamUser, handleChange } = props || {}
 
 	return (
 		<Stack spacing={1.5}>
-      <List dense disablePadding>
-        <UserListItem 
-          selected
-          user={ teamUser?.user }
-          handleEdit={() => null}
-          handleDelete={() => null}
-        />         
-      </List>
-      <Autosuggest 
-        errors={errors}
-        name="role"
-        label="Select role"
-        value={teamUser?.role}
-        placeholder="Select role"
-        options={USER_ROLES}
-        handleChange={handleChange}
-      />			
+			<List dense disablePadding>
+				<UserListItem
+					selected
+					user={teamUser?.user}
+					handleEdit={() => null}
+					handleDelete={() => null}
+				/>
+			</List>
+			<Autosuggest
+				errors={errors}
+				name="role"
+				label="Select role"
+				value={teamUser?.role}
+				placeholder="Select role"
+				options={USER_ROLES}
+				handleChange={handleChange}
+			/>
 		</Stack>
 	)
 }

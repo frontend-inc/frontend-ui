@@ -11,10 +11,10 @@ import {
 	SearchInput,
 	IconLoading,
 } from '../../../components'
-import { 
-  TableHeaderType, 
-  FormFieldType, 
-  FilterOptionType 
+import {
+	TableHeaderType,
+	FormFieldType,
+	FilterOptionType,
 } from '../../../types'
 import SearchFilters from '../filters/SearchFilters'
 import { TableList } from '../../../components'
@@ -25,10 +25,9 @@ export type ResourceTableProps = ResourceListProps & {
 }
 
 const ResourceTable: React.FC<ResourceTableProps> = (props) => {
-
 	const {
 		url,
-    name,
+		name,
 		fields,
 		headers,
 		filterOptions = [],
@@ -40,7 +39,7 @@ const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 		enableEdit = false,
 		enableCreate = false,
 		enableDelete = false,
-    handleClick
+		handleClick,
 	} = props
 
 	const [openModal, setOpenModal] = useState(false)
@@ -56,7 +55,7 @@ const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 		update,
 		create,
 		destroy,
-    handleChange,
+		handleChange,
 		query,
 		findMany,
 		reloadMany,
@@ -68,7 +67,7 @@ const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 		paginate,
 	} = useResource({
 		name,
-		url
+		url,
 	})
 
 	const [keywords, setKeywords] = useState('')
@@ -180,7 +179,7 @@ const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 	useEffect(() => {
 		if (name && url) {
 			findMany({
-				...query,				
+				...query,
 				...defaultQuery,
 				per_page: perPage,
 			})
@@ -190,82 +189,81 @@ const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 	useEffect(() => {
 		if (activeFilters?.length >= 0) {
 			findMany({
-				...query,				
+				...query,
 				...defaultQuery,
-        filters: buildQueryFilters(activeFilters),
+				filters: buildQueryFilters(activeFilters),
 				per_page: perPage,
 			})
 		}
 	}, [activeFilters?.length])
 
-
 	return (
 		<Stack spacing={1} sx={sx.root}>
-        <Box sx={{ ...(delayedLoading && sx.loading) }}>
-          <TableList
-            toolbar={
-              <Stack
-                direction={{ xs: 'column', sm: 'row' }}
-                sx={sx.toolbar}
-                spacing={1}
-              >
-                {enableSearch && (
-                  <SearchInput
-                    value={keywords}
-                    handleChange={handleKeywordChange}
-                    handleSearch={handleSearch}
-                  />
-                )}
-                {enableFilters && (
-                  <Box sx={sx.fullWidth}>
-                    <FilterButton
-                      filters={activeFilters}
-                      handleFilter={handleFilter}
-                      handleClear={handleClearFilters}
-                      filterOptions={filterOptions}
-                    />
-                  </Box>
-                )}
-                {enableCreate && (
-                  <Box sx={sx.fullWidth}>
-                    <Button
-                      sx={sx.button}
-                      color="secondary"
-                      variant="contained"
-                      onClick={handleAdd}
-                      startIcon={
-                        <Icon
-                          name="Plus"
-                          color="secondary.contrastText"
-                          size={20}
-                        />
-                      }
-                    >
-                      Add
-                    </Button>
-                  </Box>
-                )}
-              </Stack>
-            }
-            enableBorder={enableBorder}
-            enableEdit={enableEdit}
-            handleEdit={handleEdit}
-            enableDelete={enableDelete}
-            handleDelete={handleDeleteClick}
-            loading={resources && loading}
-            fields={headers}
-            rows={resources}
-            handleClick={handleClick}
-            query={query}
-            handleSort={handleSort}
-            page={page}
-            perPage={perPage}
-            numPages={numPages}
-            numResults={numResults}
-            totalCount={totalCount}
-            handlePaginate={handlePaginate}
-          />
-        </Box>
+			<Box sx={{ ...(delayedLoading && sx.loading) }}>
+				<TableList
+					toolbar={
+						<Stack
+							direction={{ xs: 'column', sm: 'row' }}
+							sx={sx.toolbar}
+							spacing={1}
+						>
+							{enableSearch && (
+								<SearchInput
+									value={keywords}
+									handleChange={handleKeywordChange}
+									handleSearch={handleSearch}
+								/>
+							)}
+							{enableFilters && (
+								<Box sx={sx.fullWidth}>
+									<FilterButton
+										filters={activeFilters}
+										handleFilter={handleFilter}
+										handleClear={handleClearFilters}
+										filterOptions={filterOptions}
+									/>
+								</Box>
+							)}
+							{enableCreate && (
+								<Box sx={sx.fullWidth}>
+									<Button
+										sx={sx.button}
+										color="secondary"
+										variant="contained"
+										onClick={handleAdd}
+										startIcon={
+											<Icon
+												name="Plus"
+												color="secondary.contrastText"
+												size={20}
+											/>
+										}
+									>
+										Add
+									</Button>
+								</Box>
+							)}
+						</Stack>
+					}
+					enableBorder={enableBorder}
+					enableEdit={enableEdit}
+					handleEdit={handleEdit}
+					enableDelete={enableDelete}
+					handleDelete={handleDeleteClick}
+					loading={resources && loading}
+					fields={headers}
+					rows={resources}
+					handleClick={handleClick}
+					query={query}
+					handleSort={handleSort}
+					page={page}
+					perPage={perPage}
+					numPages={numPages}
+					numResults={numResults}
+					totalCount={totalCount}
+					handlePaginate={handlePaginate}
+				/>
+			</Box>
 			<Drawer
 				open={openModal}
 				handleClose={() => setOpenModal(false)}

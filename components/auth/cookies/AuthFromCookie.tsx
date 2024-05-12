@@ -6,15 +6,15 @@ const AuthFromCookie: React.FC = () => {
 	const { authCookie, fetchMe, currentUser, authenticateFromToken } = useAuth()
 
 	useEffect(() => {
-    if(!currentUser?.id) {
-      let authToken = getCookie(authCookie)
-      if (authToken) {
-        authenticateFromToken(String(authToken))
-        if (!currentUser) {
-          fetchMe()
-        }
-      }
-    }
+		if (!currentUser?.id) {
+			let authToken = getCookie(authCookie)
+			if (authToken) {
+				authenticateFromToken(String(authToken))
+				if (!currentUser) {
+					fetchMe()
+				}
+			}
+		}
 	}, [currentUser?.id])
 
 	return null

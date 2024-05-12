@@ -8,20 +8,20 @@ import { CardProps } from '../../../../types'
 
 const CoverList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
-	const {				
+	const {
 		item,
-    actions,
-    icon,
+		actions,
+		icon,
 		href,
 		handleClick,
 		textVariant = 'subtitle1',
 		objectFit = 'cover',
 		height = 240,
 		enableGradient = false,
-		enableOverlay = false,		
+		enableOverlay = false,
 	} = props || {}
 
-  const { label, title, image } = item || {}
+	const { label, title, image } = item || {}
 	const router = useRouter()
 
 	const handleItemClick = () => {
@@ -62,16 +62,16 @@ const CoverList: React.FC<CardProps> = (props) => {
 							</Typography>
 						)}
 					</Box>
-				</Stack>				
+				</Stack>
 			</Stack>
-      <Box sx={ sx.actions }>
-        <Actions 
-          numVisible={0}
-          resource={item}
-          actions={actions}
-          color={ enableOverlay ? 'common.white' : 'text.secondary' }
-        />					
-      </Box>
+			<Box sx={sx.actions}>
+				<Actions
+					numVisible={0}
+					resource={item}
+					actions={actions}
+					color={enableOverlay ? 'common.white' : 'text.secondary'}
+				/>
+			</Box>
 		</Stack>
 	)
 }
@@ -87,7 +87,7 @@ const sx = {
 		borderRadius: 1,
 	},
 	cover: {
-    p: 1,
+		p: 1,
 		width: '100%',
 		position: 'absolute',
 		left: 0,
@@ -104,7 +104,7 @@ const sx = {
 		},
 	},
 	content: {
-    p: 1,
+		p: 1,
 		width: '100%',
 		minHeight: '60px',
 		display: 'flex',
@@ -112,9 +112,9 @@ const sx = {
 		justifyContent: 'center',
 		alignItems: 'flex-start',
 	},
-  actions: {
-    position: 'absolute',
-    top: 0,
-    right: 10
-  }
+	actions: {
+		position: 'absolute',
+		top: 0,
+		right: 10,
+	},
 }

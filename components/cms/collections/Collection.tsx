@@ -27,13 +27,13 @@ export type CollectionProps = {
 	style: 'avatar' | 'card' | 'cover' | 'chip' | 'text' | 'image'
 	layout?: 'drawer' | 'inline'
 	editing?: boolean
-  contentType: string 
+	contentType: string
 	enableInfiniteLoad?: boolean
 	enableLoadMore?: boolean
 	navigateUrl: any
 	perPage?: number
 	query?: any
-  actions: ActionType[]
+	actions: ActionType[]
 	fields: FormFieldType[]
 	filterAnchor?: 'left' | 'top'
 	filterOptions?: SearchFilterOptionType[]
@@ -44,7 +44,7 @@ export type CollectionProps = {
 	buttonText?: string
 	enableBorder?: boolean
 	enableGradient?: boolean
-  enableOverlay?: boolean
+	enableOverlay?: boolean
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
@@ -55,12 +55,12 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const {
-    actions,
+		actions,
 		variant = 'grid',
 		style = 'card',
 		layout = 'drawer',
 		url,
-    contentType,
+		contentType,
 		fields,
 		filterAnchor = 'left',
 		filterOptions = [],
@@ -76,7 +76,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		buttonText,
 		enableBorder = false,
 		enableGradient = false,
-    enableOverlay = false,
+		enableOverlay = false,
 		enableEdit = false,
 		enableCreate = false,
 		enableDelete = false,
@@ -102,10 +102,10 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		page,
 		numPages,
 		loadMore,
-    handleDataChange,
-    flattenDocument
+		handleDataChange,
+		flattenDocument,
 	} = useDocuments({
-		collection: contentType
+		collection: contentType,
 	})
 
 	const [keywords, setKeywords] = useState('')
@@ -242,27 +242,24 @@ const Collection: React.FC<CollectionProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-      <CollectionToolbar 
-        query={query}
-        activeFilters={activeFilters}
-        enableFilters={
-          enableFilters && 
-          filterAnchor == 'top'
-        }        
-        enableSorting={enableSorting}
-        enableCreate={enableCreate}
-        enableSearch={enableSearch}
-        filterOptions={filterOptions}
-        sortOptions={sortOptions}
-        handleFilter={handleFilter}
-        handleClearFilters={handleClearFilters}
-        handleSortBy={handleSortBy}
-        handleSortDirection={handleSortDirection}
-        handleAdd={handleAdd}
-        keywords={keywords}
-        handleKeywordChange={handleKeywordChange}
-        handleSearch={handleSearch}
-      />			
+			<CollectionToolbar
+				query={query}
+				activeFilters={activeFilters}
+				enableFilters={enableFilters && filterAnchor == 'top'}
+				enableSorting={enableSorting}
+				enableCreate={enableCreate}
+				enableSearch={enableSearch}
+				filterOptions={filterOptions}
+				sortOptions={sortOptions}
+				handleFilter={handleFilter}
+				handleClearFilters={handleClearFilters}
+				handleSortBy={handleSortBy}
+				handleSortDirection={handleSortDirection}
+				handleAdd={handleAdd}
+				keywords={keywords}
+				handleKeywordChange={handleKeywordChange}
+				handleSearch={handleSearch}
+			/>
 			<Grid container spacing={0}>
 				{enableFilters && filterAnchor == 'left' && (
 					<Grid item xs={12} sm={4} lg={3}>
@@ -306,7 +303,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 							</Collapse>
 						)}
 						<CollectionList
-              actions={actions}
+							actions={actions}
 							variant={variant}
 							style={style}
 							resources={resources}
@@ -314,7 +311,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 							buttonText={buttonText}
 							enableBorder={enableBorder}
 							enableGradient={enableGradient}
-              enableOverlay={enableOverlay}
+							enableOverlay={enableOverlay}
 							enableEdit={enableEdit}
 							enableDelete={enableDelete}
 							handleEdit={handleEdit}
@@ -384,7 +381,7 @@ const sx = {
 	},
 	content: {
 		width: '100%',
-	},	
+	},
 	form: {
 		width: '100%',
 	},

@@ -13,7 +13,6 @@ const Item: React.FC<ShowItemProps> = (props) => {
 	const { label, title, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
 
-
 	if (!resource) return null
 	return (
 		<Box
@@ -27,15 +26,15 @@ const Item: React.FC<ShowItemProps> = (props) => {
 				direction={{ md: 'row', xs: 'column' }}
 				spacing={4}
 			>
-        <Box sx={ sx.imageContainer }>
-          <Image
-            src={image?.url}
-            alt={title}
-            height={360}
-            label={label}
-            disableBorderRadius={enableBorder}
-          />
-        </Box>
+				<Box sx={sx.imageContainer}>
+					<Image
+						src={image?.url}
+						alt={title}
+						height={360}
+						label={label}
+						disableBorderRadius={enableBorder}
+					/>
+				</Box>
 				<Stack
 					spacing={2}
 					sx={{
@@ -43,22 +42,20 @@ const Item: React.FC<ShowItemProps> = (props) => {
 						...(enableBorder && sx.contentBorder),
 					}}
 				>
-          {(actions || enableEdit) && (
-					<Box sx={sx.actions}>						
-						<Actions
-							actions={
-                buildActions({
-                  enableEdit,
-                  handleEdit,
-                  actions
-                })
-              }
-              justifyContent='flex-end'
-							resource={flattenDocument(resource)}
-						/>
-					</Box>
-				)}
-        	<Typography color="text.primary" variant="h4">
+					{(actions || enableEdit) && (
+						<Box sx={sx.actions}>
+							<Actions
+								actions={buildActions({
+									enableEdit,
+									handleEdit,
+									actions,
+								})}
+								justifyContent="flex-end"
+								resource={flattenDocument(resource)}
+							/>
+						</Box>
+					)}
+					<Typography color="text.primary" variant="h4">
 						{title}
 					</Typography>
 					<Box>
@@ -142,10 +139,10 @@ const sx = {
 		color: 'text.secondary',
 	},
 	actions: {
-    width: '100%',
+		width: '100%',
 	},
-  imageContainer: {
-    width: "100%",
-    minWidth: 300
-  }
+	imageContainer: {
+		width: '100%',
+		minWidth: 300,
+	},
 }

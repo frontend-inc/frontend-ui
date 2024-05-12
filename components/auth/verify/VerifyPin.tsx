@@ -13,12 +13,7 @@ type VerifyPinProps = {
 }
 
 const VerifyPin: React.FC<VerifyPinProps> = (props) => {
-	const {
-		title,
-		subtitle,
-		redirectUrl,
-		loginUrl,
-	} = props || {}
+	const { title, subtitle, redirectUrl, loginUrl } = props || {}
 
 	const [showVerifyPin, setShowVerifyPin] = useState(false)
 

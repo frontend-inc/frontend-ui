@@ -33,13 +33,13 @@ export { default as VerifyPin } from './verify/VerifyPin'
 export { default as VerifyPinForm } from './verify/VerifyPinForm'
 export { default as VerifySendPinForm } from './verify/VerifySendPinForm'
 
-// Teams 
+// Teams
 export { default as TeamList } from './teams/TeamList'
 export { default as TeamForm } from './teams/TeamForm'
 export { default as TeamUsersList } from './teams/TeamUsersList'
 export { default as TeamUserForm } from './teams/TeamUserInviteForm'
 export { default as TeamUserInvite } from './teams/TeamUserInvite'
 
-// Lists 
-export { default as UserListItem } from './lists/UserListItem' 
-export { default as TeamListItem } from './lists/TeamListItem' 
+// Lists
+export { default as UserListItem } from './lists/UserListItem'
+export { default as TeamListItem } from './lists/TeamListItem'

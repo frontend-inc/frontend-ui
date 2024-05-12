@@ -68,7 +68,7 @@ type AutosuggestProps = {
 	handleInputChange?: (value: string) => void
 	handleClear?: () => void
 	freeSolo?: boolean
-  enableClear?: boolean
+	enableClear?: boolean
 }
 
 const Autosuggest: React.FC<AutosuggestProps> = (props) => {
@@ -85,7 +85,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 		handleChange,
 		handleInputChange,
 		handleClear,
-    enableClear=false,
+		enableClear = false,
 		freeSolo = false,
 	} = props
 
@@ -111,18 +111,18 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 	}
 
 	const handleInputClear = () => {
-    setSelected({ label: '', value: '' })
-		if (handleClear) {			
+		setSelected({ label: '', value: '' })
+		if (handleClear) {
 			handleClear()
 		}
-    if(enableClear){      
-      handleChange({
-        target: {
-          name: name,
-          value: '' ,
-        },
-      })
-    }
+		if (enableClear) {
+			handleChange({
+				target: {
+					name: name,
+					value: '',
+				},
+			})
+		}
 	}
 
 	useEffect(() => {

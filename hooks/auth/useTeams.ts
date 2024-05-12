@@ -3,12 +3,11 @@ import { useApi, useResource } from 'frontend-js'
 import { UserType, TeamType } from '../../types'
 
 const useTeams = () => {
-	  
 	const { api } = useApi()
-  const [user, setUser] = useState({})
+	const [user, setUser] = useState({})
 
-  const {
-    loading,
+	const {
+		loading,
 		delayedLoading,
 		errors,
 		resource: team,
@@ -34,50 +33,51 @@ const useTeams = () => {
 		loadMore,
 		loadingWrapper,
 		paginate,
-    removeAttachment
-  } = useResource({
-    name: 'team',
-    url: '/api/v1/teams'
-  })
+		removeAttachment,
+	} = useResource({
+		name: 'team',
+		url: '/api/v1/teams',
+	})
 
-  const selectTeam = async (teamId) => {
-    return await loadingWrapper(
-      () => api.post(`/api/v1/teams/${teamId}/select_team`)
-    ) as unknown as UserType
-  }  
-  
-  const inviteUser = async (teamId, user) => {
-    return await loadingWrapper(
-      () => api.post(`/api/v1/teams/${teamId}/invite_user`, {
-        user: user
-      }) as unknown as UserType
-    )
-  }  
+	const selectTeam = async (teamId) => {
+		return (await loadingWrapper(() =>
+			api.post(`/api/v1/teams/${teamId}/select_team`)
+		)) as unknown as UserType
+	}
 
-  const deleteImage = async (teamId) => {
-    return await loadingWrapper(
-      () => api.post(`/api/v1/teams/${teamId}/delete_image`)
-    ) as unknown as TeamType 
-  }  
+	const inviteUser = async (teamId, user) => {
+		return await loadingWrapper(
+			() =>
+				api.post(`/api/v1/teams/${teamId}/invite_user`, {
+					user: user,
+				}) as unknown as UserType
+		)
+	}
+
+	const deleteImage = async (teamId) => {
+		return (await loadingWrapper(() =>
+			api.post(`/api/v1/teams/${teamId}/delete_image`)
+		)) as unknown as TeamType
+	}
 
 	return {
 		loading,
-		delayedLoading,		
+		delayedLoading,
 		errors,
 		team,
-		teams,    
+		teams,
 		findTeam,
-		findTeams,    
+		findTeams,
 		updateTeam,
 		createTeam,
 		deleteTeam,
-    selectTeam,
+		selectTeam,
 		setTeam,
-    
-    user,
-    setUser,
-    inviteUser,
-    deleteImage,
+
+		user,
+		setUser,
+		inviteUser,
+		deleteImage,
 		handleChange,
 		handleChangePage,
 		reloadTeams,
@@ -92,8 +92,8 @@ const useTeams = () => {
 		handleSort,
 		loadMore,
 		loadingWrapper,
-		paginate,   
-    removeAttachment 
+		paginate,
+		removeAttachment,
 	}
 }
 

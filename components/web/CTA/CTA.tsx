@@ -17,14 +17,8 @@ export type CTAProps = {
 
 // Call To Action
 const CTA: React.FC<CTAProps> = (props) => {
-	const {
-		label,
-		title,
-		description,
-		buttonText,
-		href,
-		handleClick,
-	} = props || {}
+	const { label, title, description, buttonText, href, handleClick } =
+		props || {}
 
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)

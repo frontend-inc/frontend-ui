@@ -52,17 +52,17 @@ const Videos: React.FC<VideosProps> = (props) => {
 				{title}
 			</Typography>
 			<CollectionList
-        actions={[]}
+				actions={[]}
 				variant={variant}
 				style={style}
 				resources={resources}
 				enableBorder={enableBorder}
 				enableGradient={enableGradient}
 				handleClick={handleClick}
-        enableEdit={false}
-        enableDelete={false}
-        handleEdit={() => (null)}
-        handleDelete={() => (null)}
+				enableEdit={false}
+				enableDelete={false}
+				handleEdit={() => null}
+				handleDelete={() => null}
 			/>
 			{!loading && resources?.length === 0 && (
 				<Placeholder

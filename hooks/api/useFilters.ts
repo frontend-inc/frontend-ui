@@ -71,7 +71,7 @@ const useFilters = (props: UseFiltersProps) => {
 	const isBlank = (value) => {
 		return (
 			value === '' ||
-      value == undefined ||
+			value == undefined ||
 			value == null ||
 			(Array.isArray(value) && value.length === 0)
 		)

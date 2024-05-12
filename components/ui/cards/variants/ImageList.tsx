@@ -10,7 +10,7 @@ const ImageHoriz: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		actions,
-    item,
+		item,
 		href,
 		height = IMAGE_HORIZ_HEIGHT,
 		handleClick,
@@ -21,7 +21,7 @@ const ImageHoriz: React.FC<CardProps> = (props) => {
 
 	const router = useRouter()
 
-  const { title, image } = item || {}
+	const { title, image } = item || {}
 
 	const handleItemClick = () => {
 		if (handleClick) {
@@ -34,33 +34,33 @@ const ImageHoriz: React.FC<CardProps> = (props) => {
 	return (
 		<Box
 			sx={{
-				...sx.root,				
+				...sx.root,
 			}}
 		>
-    <Box
-        sx={{    
-          ...(enableGradient && sx.gradient),
-        }}
-      >
-			<TouchableOpacity handleClick={handleItemClick}>
-				<Image
-					src={image?.url}
-					height={height}
-					objectFit={objectFit}
-					alt={title}
-					enableGradient={enableGradient}
-					enableOverlay={enableOverlay}
+			<Box
+				sx={{
+					...(enableGradient && sx.gradient),
+				}}
+			>
+				<TouchableOpacity handleClick={handleItemClick}>
+					<Image
+						src={image?.url}
+						height={height}
+						objectFit={objectFit}
+						alt={title}
+						enableGradient={enableGradient}
+						enableOverlay={enableOverlay}
+					/>
+				</TouchableOpacity>
+			</Box>
+			<Box sx={sx.actions}>
+				<Actions
+					numVisible={0}
+					actions={actions}
+					resource={item}
+					color={enableOverlay ? 'common.white' : 'text.secondary'}
 				/>
-			</TouchableOpacity>
-      </Box>
-      <Box sx={ sx.actions }>
-        <Actions 
-          numVisible={0}
-          actions={actions}
-          resource={item}
-          color={ enableOverlay ? 'common.white' : 'text.secondary' }
-        />
-      </Box>
+			</Box>
 		</Box>
 	)
 }
@@ -85,10 +85,10 @@ const sx = {
 			background: 'linear-gradient(to top, rgb(0,0,0,0.5), transparent)',
 		},
 	},
-  actions: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
-    width: '100%',
-  }
+	actions: {
+		position: 'absolute',
+		top: 10,
+		right: 10,
+		width: '100%',
+	},
 }

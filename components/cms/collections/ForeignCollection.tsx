@@ -20,12 +20,12 @@ export type ForeignCollectionProps = {
 	style?: 'card' | 'avatar' | 'cover'
 	field: any
 	fields: FormFieldType[]
-	resource: any	
+	resource: any
 	layout?: 'drawer' | 'inline'
 	handle: string
-  contentType: string
+	contentType: string
 	foreignContentType?: string
-	navigateUrl?: any	
+	navigateUrl?: any
 	perPage?: number
 	query?: any
 	enableEdit?: boolean
@@ -64,17 +64,17 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 
 	const {
 		query,
-    resource: _resource,
+		resource: _resource,
 		resources: _resources,
-    setResource: _setResource,
+		setResource: _setResource,
 		page,
 		numPages,
 		loadMore,
-    findMany,
+		findMany,
 		findLinks,
 		addLinks,
 	} = useDocuments({
-		collection: contentType
+		collection: contentType,
 	})
 
 	const {
@@ -86,10 +86,10 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		update,
 		create,
 		destroy,
-    handleDataChange,
+		handleDataChange,
 		removeAttachment,
 	} = useDocuments({
-    collection: foreignContentType,
+		collection: foreignContentType,
 	})
 
 	const handleClick = (item) => {
@@ -136,18 +136,18 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	}
 
 	const handleDelete = async () => {
-    if(resource?.id){
-      await destroy(resource?.id)
-      setOpenDeleteModal(false)
-      setOpenModal(false)
-      handleFetchResources()
-    }
+		if (resource?.id) {
+			await destroy(resource?.id)
+			setOpenDeleteModal(false)
+			setOpenModal(false)
+			handleFetchResources()
+		}
 	}
 
 	const handleRemove = async (name) => {
-    if(resource?.id){
-		  await removeAttachment(resource?.id, name)
-    }
+		if (resource?.id) {
+			await removeAttachment(resource?.id, name)
+		}
 	}
 
 	const handleFetchResources = async () => {
@@ -165,25 +165,25 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		}
 	}, [_resource?.id, foreignContentType])
 
-  const handleFetchResource = async () => {    
-    let searchQuery = {
-      page: 1,
-      per_page: 1
-    }
-    let resp = await findMany(searchQuery)
-    if(resp?.length > 0){
-      _setResource(resp[0])
-    }
-  }
+	const handleFetchResource = async () => {
+		let searchQuery = {
+			page: 1,
+			per_page: 1,
+		}
+		let resp = await findMany(searchQuery)
+		if (resp?.length > 0) {
+			_setResource(resp[0])
+		}
+	}
 
 	useEffect(() => {
 		if (__resource?.id) {
 			_setResource(__resource)
-		}else{
-      if(contentType){
-        handleFetchResource()
-      }      
-    }
+		} else {
+			if (contentType) {
+				handleFetchResource()
+			}
+		}
 	}, [__resource, contentType])
 
 	return (
@@ -224,7 +224,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 				</Collapse>
 			)}
 			<CollectionList
-        actions={[]}
+				actions={[]}
 				variant={variant}
 				style={style}
 				resources={_resources}

@@ -85,13 +85,11 @@ const Person: React.FC<ShowItemProps> = (props) => {
 						p={enableBorder ? 1 : 0}
 					>
 						<Actions
-							actions={
-                buildActions({
-                  enableEdit,
-                  handleEdit,
-                  actions
-                })
-              }              
+							actions={buildActions({
+								enableEdit,
+								handleEdit,
+								actions,
+							})}
 							resource={flattenDocument(resource)}
 							justifyContent="flex-end"
 						/>

@@ -34,7 +34,7 @@ export const flattenDocument = (resource) => {
 }
 
 export const getDocumentValue = (document, field) => {
-  return flattenDocument(document)[field?.name]  
+	return flattenDocument(document)[field?.name]
 }
 
 export const filterDocumentLinks = (document, contentType) => {

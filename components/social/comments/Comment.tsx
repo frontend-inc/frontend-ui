@@ -28,7 +28,6 @@ type CommentProps = {
 }
 
 const Comment: React.FC<CommentProps> = (props) => {
-
 	const { url, handle, level = 0, comment: parentComment, handleDelete } = props
 
 	const [openComment, setOpenComment] = useState(false)
@@ -64,7 +63,7 @@ const Comment: React.FC<CommentProps> = (props) => {
 		}
 	}
 
-	useEffect(() => {    
+	useEffect(() => {
 		setComment({
 			parent_id: parentComment?.id,
 		})
@@ -82,10 +81,10 @@ const Comment: React.FC<CommentProps> = (props) => {
 						<Icon name="MessageSquare" size={20} />
 					</IconButton>
 				}
-			>				
-        <ListItemIcon sx={sx.listItemIcon}>
-          <UserAvatar user={parentComment?.user} />
-        </ListItemIcon>			
+			>
+				<ListItemIcon sx={sx.listItemIcon}>
+					<UserAvatar user={parentComment?.user} />
+				</ListItemIcon>
 				<ListItemText
 					primary={
 						<Typography

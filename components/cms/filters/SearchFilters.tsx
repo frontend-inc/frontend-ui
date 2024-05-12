@@ -13,8 +13,7 @@ type CollectionFilterListProps = {
 const CollectionSearchFilters: React.FC<CollectionFilterListProps> = (
 	props
 ) => {
-	
-  const { filters = [], filterOptions = [], handleFilter } = props
+	const { filters = [], filterOptions = [], handleFilter } = props
 	const { open, toggleMenu, closeMenu } = useMenu()
 
 	return (

@@ -2,18 +2,17 @@ import React from 'react'
 import { Tabs, Tab } from '@mui/material'
 
 type MyAccountTabsProps = {
-  tab?: number
-  handleChange?: (ev: any, newValue: number) => void
+	tab?: number
+	handleChange?: (ev: any, newValue: number) => void
 }
 
 const MyAccountTabs: React.FC<MyAccountTabsProps> = (props) => {
-	
-  const { tab, handleChange } = props || {}
+	const { tab, handleChange } = props || {}
 
 	const TABS = [
-    { label: 'Account', value: 0 },
+		{ label: 'Account', value: 0 },
 		{ label: 'Teams', value: 1 },
-    { label: 'Members', value: 2 }                
+		{ label: 'Members', value: 2 },
 	]
 
 	return (
@@ -29,7 +28,7 @@ const MyAccountTabs: React.FC<MyAccountTabsProps> = (props) => {
 					disableRipple
 					key={index}
 					sx={sx.tab}
-          label={ tab.label }
+					label={tab.label}
 					value={tab.value}
 				/>
 			))}
@@ -41,9 +40,9 @@ export default MyAccountTabs
 
 const sx = {
 	root: {
-    my: 0,
-    borderBottom: '1px solid',
-    borderColor: 'divider',
+		my: 0,
+		borderBottom: '1px solid',
+		borderColor: 'divider',
 		width: '100%',
 		'& .MuiTab-root': {
 			minWidth: '60px',

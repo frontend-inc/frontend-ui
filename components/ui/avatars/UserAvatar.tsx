@@ -9,14 +9,14 @@ type UserAvatarProps = {
 
 const UserAvatar: React.FC<UserAvatarProps> = (props) => {
 	const { user, size = 36 } = props
-	return(
-    <Avatar 
-      color={ user?.color }
-      label={ getInitials(user?.name) } 
-      size={size} 
-      src={user?.avatar?.url} 
-    />        
-  )
+	return (
+		<Avatar
+			color={user?.color}
+			label={getInitials(user?.name)}
+			size={size}
+			src={user?.avatar?.url}
+		/>
+	)
 }
 
 export default UserAvatar

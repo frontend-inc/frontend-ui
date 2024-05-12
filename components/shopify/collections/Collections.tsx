@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 export type CollectionsProps = {
 	editing?: boolean
 	variant?: 'grid' | 'list'
-	style?: 'card' | 'avatar' | 'cover' 
+	style?: 'card' | 'avatar' | 'cover'
 	perPage?: number
 	buttonText?: string
 	autoPlay?: boolean
@@ -51,7 +51,7 @@ const Collections: React.FC<CollectionsProps> = (props) => {
 	return (
 		<Stack spacing={1} sx={sx.root}>
 			<CollectionList
-        actions={[]}
+				actions={[]}
 				variant={variant}
 				style={style}
 				resources={collections}
@@ -59,10 +59,10 @@ const Collections: React.FC<CollectionsProps> = (props) => {
 				handleClick={handleClick}
 				enableBorder={enableBorder}
 				enableGradient={enableGradient}
-        enableEdit={false}
-        enableDelete={false}
-        handleEdit={() => (null)}
-        handleDelete={() => (null)}
+				enableEdit={false}
+				enableDelete={false}
+				handleEdit={() => null}
+				handleDelete={() => null}
 			/>
 		</Stack>
 	)

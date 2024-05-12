@@ -13,8 +13,8 @@ import { CardProps } from '../../../../types'
 const AvatarGrid: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
-    actions,
-    item,		
+		actions,
+		item,
 		href,
 		handleClick,
 		height = AVATAR_VERT_HEIGHT,
@@ -24,7 +24,7 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 		enableOverlay = false,
 	} = props || {}
 
-  const { title, image } = item || {}
+	const { title, image } = item || {}
 
 	const router = useRouter()
 
@@ -74,12 +74,8 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 							{truncate(title)}
 						</Typography>
 					</Stack>
-          <Actions 
-            numVisible={0}
-            actions={actions}
-            resource={item}
-          />
-        </Stack>
+					<Actions numVisible={0} actions={actions} resource={item} />
+				</Stack>
 			</Stack>
 		</Stack>
 	)
@@ -129,7 +125,7 @@ const sx = {
 	},
 	title: {
 		width: '100%',
-		textAlign: 'left'
+		textAlign: 'left',
 	},
 	label: {
 		textAlign: 'center',

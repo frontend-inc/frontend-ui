@@ -11,9 +11,9 @@ import { Actions } from '../../../../components'
 const CardGrid: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
-    actions,
-    item,		
-    href,
+		actions,
+		item,
+		href,
 		handleClick,
 		objectFit = 'cover',
 		height = CARD_VERT_HEIGHT,
@@ -22,7 +22,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 		enableOverlay = false,
 	} = props || {}
 
-  const { label, title, image } = item || {}
+	const { label, title, image } = item || {}
 
 	const router = useRouter()
 
@@ -69,11 +69,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 					<Typography sx={sx.title} color="textPrimary" variant="subtitle2">
 						{truncate(title)}
 					</Typography>
-          <Actions 
-            numVisible={0}
-            actions={actions} 
-            resource={item} 
-          />					
+					<Actions numVisible={0} actions={actions} resource={item} />
 				</Stack>
 			</Stack>
 		</Stack>

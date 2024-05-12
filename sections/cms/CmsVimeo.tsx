@@ -10,11 +10,14 @@ const CmsVimeo: React.FC<CmsVimeoProps> = (props) => {
 	const { bgcolor, py, px, maxWidth, requireAuth, ...rest } = props
 
 	return (
-		<Section requireAuth={requireAuth} bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
-			<Show       
-        {...rest} 
-        style={'vimeo'}
-      />
+		<Section
+			requireAuth={requireAuth}
+			bgcolor={bgcolor}
+			py={py}
+			px={px}
+			maxWidth={maxWidth}
+		>
+			<Show {...rest} style={'vimeo'} />
 		</Section>
 	)
 }

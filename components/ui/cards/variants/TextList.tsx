@@ -10,8 +10,8 @@ import { Actions } from '../../..'
 const CardList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
-    actions,
-    item,
+		actions,
+		item,
 		href,
 		height = 180,
 		textVariant = 'subtitle1',
@@ -24,7 +24,7 @@ const CardList: React.FC<CardProps> = (props) => {
 
 	const router = useRouter()
 
-  const {  title, description } = item || {}
+	const { title, description } = item || {}
 
 	const handleItemClick = () => {
 		if (handleClick) {
@@ -41,7 +41,7 @@ const CardList: React.FC<CardProps> = (props) => {
 				...(enableBorder && sx.rootBorder),
 			}}
 		>
-      <CardActionArea onClick={handleItemClick}>
+			<CardActionArea onClick={handleItemClick}>
 				<Stack sx={sx.contentArea} direction="row" spacing={1}>
 					<Stack
 						direction="column"
@@ -61,16 +61,12 @@ const CardList: React.FC<CardProps> = (props) => {
 						>
 							{truncate(description, 80)}
 						</Typography>
-					</Stack>          
-				</Stack>	
-      </CardActionArea>
-        <Box sx={ sx.actions }>
-          <Actions 
-            numVisible={0}
-            resource={item}
-            actions={actions}
-          />					
-        </Box>			
+					</Stack>
+				</Stack>
+			</CardActionArea>
+			<Box sx={sx.actions}>
+				<Actions numVisible={0} resource={item} actions={actions} />
+			</Box>
 		</Box>
 	)
 }
@@ -79,7 +75,7 @@ export default CardList
 
 const sx = {
 	root: {
-    position: 'relative',
+		position: 'relative',
 		width: '100%',
 		display: 'flex',
 		flexDirection: 'row',
@@ -98,7 +94,7 @@ const sx = {
 		},
 	},
 	rootBorder: {
-    pl: 2,
+		pl: 2,
 		border: '1px solid',
 		borderColor: 'divider',
 	},
@@ -147,9 +143,9 @@ const sx = {
 	description: {
 		maxWidth: '320px',
 	},
-  actions: {
-    position: 'absolute',
-    top: 10,
-    right: 10 
-  },
+	actions: {
+		position: 'absolute',
+		top: 10,
+		right: 10,
+	},
 }

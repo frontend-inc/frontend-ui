@@ -9,7 +9,7 @@ const Document: React.FC<ShowItemProps> = (props) => {
 	const MAX_CHARS = 500
 
 	const { actions, resource, enableBorder, enableEdit, handleEdit } =
-		props || {}		
+		props || {}
 
 	const { label, title, description } = resource || {}
 	const [open, setOpen] = useState(false)
@@ -20,56 +20,54 @@ const Document: React.FC<ShowItemProps> = (props) => {
 				...(enableBorder && sx.rootBorder),
 			}}
 		>
-				<Stack
-					spacing={2}
-					sx={{ ...sx.content, ...(enableBorder && sx.contentBorder) }}
-				>
-          { label && (
-            <Box>
-              <Label label={label} />
-            </Box>
-          )}
-					<Typography color="text.primary" variant="h4">
-						{title}
-					</Typography>					
+			<Stack
+				spacing={2}
+				sx={{ ...sx.content, ...(enableBorder && sx.contentBorder) }}
+			>
+				{label && (
 					<Box>
-						{open ? (
-							<Typography variant="body1" color="text.primary" sx={sx.text}>
-								{description}
-							</Typography>
-						) : (
-							<Typography variant="body1" color="text.primary" sx={sx.text}>
-								{description?.slice(0, MAX_CHARS)}
-							</Typography>
-						)}
-						{description?.length > MAX_CHARS && (
-							<Link onClick={() => setOpen(!open)} sx={sx.link}>
-								{open ? 'See less' : '... See all'}
-							</Link>
-						)}
+						<Label label={label} />
+					</Box>
+				)}
+				<Typography color="text.primary" variant="h4">
+					{title}
+				</Typography>
+				<Box>
+					{open ? (
+						<Typography variant="body1" color="text.primary" sx={sx.text}>
+							{description}
+						</Typography>
+					) : (
+						<Typography variant="body1" color="text.primary" sx={sx.text}>
+							{description?.slice(0, MAX_CHARS)}
+						</Typography>
+					)}
+					{description?.length > MAX_CHARS && (
+						<Link onClick={() => setOpen(!open)} sx={sx.link}>
+							{open ? 'See less' : '... See all'}
+						</Link>
+					)}
+				</Box>
+			</Stack>
+			{(actions || enableEdit) && (
+				<Stack
+					direction={{ sm: 'row', xs: 'column' }}
+					spacing={1}
+					p={enableBorder ? 1 : 0}
+				>
+					<Box>
+						<Actions
+							actions={buildActions({
+								enableEdit,
+								handleEdit,
+								actions,
+							})}
+							resource={flattenDocument(resource)}
+							justifyContent="flex-end"
+						/>
 					</Box>
 				</Stack>
-				{(actions || enableEdit) && (
-					<Stack
-						direction={{ sm: 'row', xs: 'column' }}
-						spacing={1}
-						p={enableBorder ? 1 : 0}
-					>
-            <Box>
-              <Actions
-                actions={
-                  buildActions({
-                    enableEdit,
-                    handleEdit,
-                    actions
-                  })
-                }              
-                resource={flattenDocument(resource)}
-                justifyContent="flex-end"
-              />
-            </Box>
-					</Stack>
-				)}
+			)}
 		</Box>
 	)
 }

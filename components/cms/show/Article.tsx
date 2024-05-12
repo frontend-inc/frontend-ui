@@ -23,11 +23,11 @@ const Article: React.FC<ShowItemProps> = (props) => {
 				<Typography color="text.primary" variant="h3">
 					{title}
 				</Typography>
-        { published_at && (
-				<Typography color="text.secondary" variant="caption">
-					{moment(published_at).format('MMMM D, YYYY')}
-				</Typography>
-        )}
+				{published_at && (
+					<Typography color="text.secondary" variant="caption">
+						{moment(published_at).format('MMMM D, YYYY')}
+					</Typography>
+				)}
 				{(actions || enableEdit) && (
 					<Stack
 						direction={{ xs: 'column', sm: 'row' }}
@@ -35,14 +35,12 @@ const Article: React.FC<ShowItemProps> = (props) => {
 						spacing={1}
 					>
 						<Actions
-							actions={
-                buildActions({
-                  enableEdit,
-                  handleEdit,
-                  actions
-                })
-              }
-              numVisible={4}
+							actions={buildActions({
+								enableEdit,
+								handleEdit,
+								actions,
+							})}
+							numVisible={4}
 							resource={flattenDocument(resource)}
 							justifyContent="center"
 						/>

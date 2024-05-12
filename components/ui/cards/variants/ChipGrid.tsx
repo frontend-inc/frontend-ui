@@ -17,14 +17,14 @@ import { CardProps } from '../../../../types'
 const ChipList: React.FC<CardProps> = (props) => {
 	const {
 		item,
-    actions,
+		actions,
 		handleClick,
 		enableBorder = false,
 		enableGradient = false,
-		enableOverlay = false,		
+		enableOverlay = false,
 	} = props
 
-  const { label, title, description, image } = item || {}
+	const { label, title, description, image } = item || {}
 
 	return (
 		<List
@@ -39,11 +39,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 				disablePadding
 				disableGutters
 				secondaryAction={
-					<Actions 
-            numVisible={0}
-            actions={actions}
-            resource={item}
-          />
+					<Actions numVisible={0} actions={actions} resource={item} />
 				}
 			>
 				<ListItemButton
@@ -51,7 +47,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 					onClick={handleClick && handleClick}
 				>
 					{image && (
-						<ListItemIcon sx={ sx.listItemIcon }>
+						<ListItemIcon sx={sx.listItemIcon}>
 							<Avatar
 								sx={{
 									...sx.avatar,
@@ -117,16 +113,16 @@ const sx = {
 		borderColor: 'divider',
 		borderRadius: 1,
 	},
-	avatar: {		
-    height: '48px',
+	avatar: {
+		height: '48px',
 		width: '48px',
 		backgroundImage: 'linear-gradient(45deg, #999999,#DDDDDD,#FAFAFA)',
 	},
-  listItemIcon: {
-    mr: 2,
+	listItemIcon: {
+		mr: 2,
 		height: '48px',
 		width: '48px',
-  },
+	},
 	actions: {
 		px: 1,
 	},

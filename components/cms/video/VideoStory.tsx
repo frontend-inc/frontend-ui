@@ -4,8 +4,8 @@ import { CardProps } from '../../../types'
 
 const VideoVert: React.FC<CardProps> = (props) => {
 	const {
-    actions,
-		item,		
+		actions,
+		item,
 		objectFit = 'cover',
 		height = 80,
 		width = 80,
@@ -14,7 +14,7 @@ const VideoVert: React.FC<CardProps> = (props) => {
 		enableOverlay = false,
 	} = props || {}
 
-  const { label, image, video, title } = item || {}
+	const { label, image, video, title } = item || {}
 
 	const [open, setOpen] = useState(false)
 
@@ -24,9 +24,9 @@ const VideoVert: React.FC<CardProps> = (props) => {
 
 	return !open ? (
 		<AvatarCard
-      actions={actions}
+			actions={actions}
 			variant="grid"
-      item={item}
+			item={item}
 			handleClick={handleItemClick}
 			objectFit={objectFit}
 			height={height}

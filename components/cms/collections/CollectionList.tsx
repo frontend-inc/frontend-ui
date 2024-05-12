@@ -6,16 +6,16 @@ import { buildActions } from '../../../helpers'
 
 type CollectionListProps = {
 	resources: any
-  actions: ActionType[]
+	actions: ActionType[]
 	variant: 'list' | 'grid'
 	style: 'card' | 'avatar' | 'cover' | 'chip' | 'text' | 'image'
 	buttonText?: string
 	enableBorder?: boolean
 	enableGradient?: boolean
-  enableOverlay?: boolean
+	enableOverlay?: boolean
 	enableEdit: boolean
 	enableDelete: boolean
-  handleClick: (item: any) => void
+	handleClick: (item: any) => void
 	handleEdit: (item: any) => void
 	handleDelete: (item: any) => void
 }
@@ -23,7 +23,7 @@ type CollectionListProps = {
 const CollectionList: React.FC<CollectionListProps> = (props) => {
 	const {
 		resources,
-    actions,
+		actions,
 		handleClick,
 		handleEdit,
 		handleDelete,
@@ -31,7 +31,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		style = 'card',
 		enableBorder = false,
 		enableGradient = false,
-    enableOverlay = false,
+		enableOverlay = false,
 		enableEdit = false,
 		enableDelete = false,
 	} = props
@@ -50,18 +50,18 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 						key={index}
 						variant={variant}
 						style={style}
-            item={resource}
-            handleClick={() => handleClick(resource)}
-            actions={ buildActions({
-              enableEdit,
-              enableDelete,
-              handleEdit: () => handleEdit(resource),
-              handleDelete: () => handleDelete(resource), 
-              actions          
-            })}
+						item={resource}
+						handleClick={() => handleClick(resource)}
+						actions={buildActions({
+							enableEdit,
+							enableDelete,
+							handleEdit: () => handleEdit(resource),
+							handleDelete: () => handleDelete(resource),
+							actions,
+						})}
 						enableBorder={enableBorder}
 						enableGradient={enableGradient}
-            enableOverlay={enableOverlay}
+						enableOverlay={enableOverlay}
 					/>
 				))}
 			</Box>

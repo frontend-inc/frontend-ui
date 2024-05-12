@@ -22,11 +22,8 @@ const CheckboxFilterItem: React.FC<CheckboxFilterItemProps> = (props) => {
 	return (
 		<ListItem disableGutters disablePadding>
 			<ListItemButton sx={sx.listItemButton} onClick={handleClick}>
-				<ListItemIcon sx={ sx.listItemIcon }>
-					<Checkbox 
-            checked={values.includes(option.value)} 
-            color="primary" 
-          />
+				<ListItemIcon sx={sx.listItemIcon}>
+					<Checkbox checked={values.includes(option.value)} color="primary" />
 				</ListItemIcon>
 				<ListItemText
 					primary={
@@ -46,7 +43,7 @@ const sx = {
 	listItemButton: {
 		p: 0,
 	},
-  listItemIcon: {
-    mr: 2
-  }
+	listItemIcon: {
+		mr: 2,
+	},
 }

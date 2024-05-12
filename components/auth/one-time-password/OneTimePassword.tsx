@@ -32,9 +32,9 @@ const OneTimePassword: React.FC<OneTimePasswordProps> = (props) => {
 	}
 
 	const handleLogin = () => {
-    if(loginUrl){
-      router.push(loginUrl)
-    }		
+		if (loginUrl) {
+			router.push(loginUrl)
+		}
 	}
 
 	return (
