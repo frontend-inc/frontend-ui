@@ -10,25 +10,21 @@ import {
 	ListItemText,
 	Typography,
 } from '@mui/material'
-import { Label, MenuButton } from '../../../../components'
+import { Label, Actions } from '../../../../components'
 import { truncate } from '../../../../helpers'
 import { CardProps } from '../../../../types'
 
 const ChipList: React.FC<CardProps> = (props) => {
 	const {
-		label,
-		title,
-		description,
-		image,
+		item,
+    actions,
 		handleClick,
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
-		enableEdit,
-		enableDelete,
-		handleEdit,
-		handleDelete,
 	} = props
+
+  const { label, title, description, image } = item || {}
 
 	return (
 		<List
@@ -45,13 +41,11 @@ const ChipList: React.FC<CardProps> = (props) => {
 				secondaryAction={
 					<Stack direction="row" spacing={1} sx={sx.actions}>
 						{label && <Label label={label} />}
-						{(enableEdit || enableDelete) && (
-							<MenuButton
-								icon="EllipsisVertical"
-								handleEdit={enableEdit ? handleEdit : undefined}
-								handleDelete={enableDelete ? handleDelete : undefined}
-							/>
-						)}
+            <Actions 
+              numVisible={0}
+              actions={actions}
+              resource={item}
+            />						
 					</Stack>
 				}
 			>
@@ -60,14 +54,14 @@ const ChipList: React.FC<CardProps> = (props) => {
 					onClick={handleClick && handleClick}
 				>
 					{image && (
-						<ListItemIcon>
+						<ListItemIcon sx={ sx.listItemIcon }>
 							<Avatar
 								sx={{
 									...sx.avatar,
 									...(enableGradient && sx.gradient),
 									...(enableOverlay && sx.overlay),
 								}}
-								src={image}
+								src={image?.url || image}
 								alt={title}
 							>
 								<Box />
@@ -100,7 +94,7 @@ const sx = {
 		p: 0,
 	},
 	listItemButton: {
-		minHeight: 50,
+		minHeight: 48,
 	},
 	gradient: {
 		'&::after': {
@@ -131,12 +125,16 @@ const sx = {
 		borderColor: 'divider',
 		borderRadius: 1,
 	},
-	avatar: {
-		mr: 1,
-		height: '32px',
-		width: '32px',
+	avatar: {		
+    height: '48px',
+		width: '48px',
 		backgroundImage: 'linear-gradient(45deg, #999999,#DDDDDD,#FAFAFA)',
 	},
+  listItemIcon: {
+    mr: 2,
+		height: '48px',
+		width: '48px',
+  },
 	actions: {
 		px: 1,
 	},

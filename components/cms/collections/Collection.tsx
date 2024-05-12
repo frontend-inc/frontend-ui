@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
-import { useResource } from 'frontend-js'
+import { useDocuments } from 'frontend-js'
 import { Button, Collapse, Grid, Box, Stack } from '@mui/material'
 import {
 	Form,
@@ -14,13 +14,11 @@ import {
 	IconLoading,
 } from '../../../components'
 import { AppContext } from '../../../context'
-import { FieldType, FilterOptionType, FormFieldType } from '../../../types'
+import { ActionType, FilterOptionType, FormFieldType } from '../../../types'
 import { useRouter } from 'next/router'
 import { CollectionList, Placeholder } from '../..'
 import CollectionSearchFilters from '../filters/SearchFilters'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
-import { SYSTEM_FIELDS } from '../../../constants'
-import { flattenDocument } from '../../../helpers'
 
 export type CollectionProps = {
 	url: string
@@ -28,11 +26,13 @@ export type CollectionProps = {
 	style: 'avatar' | 'card' | 'cover' | 'chip'
 	layout?: 'drawer' | 'inline'
 	editing?: boolean
+  contentType: string 
 	enableInfiniteLoad?: boolean
 	enableLoadMore?: boolean
 	navigateUrl: any
 	perPage?: number
 	query?: any
+  actions: ActionType[]
 	fields: FormFieldType[]
 	filterAnchor?: 'left' | 'top'
 	filterOptions?: SearchFilterOptionType[]
@@ -43,6 +43,7 @@ export type CollectionProps = {
 	buttonText?: string
 	enableBorder?: boolean
 	enableGradient?: boolean
+  enableOverlay?: boolean
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
@@ -53,10 +54,12 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const {
+    actions,
 		variant = 'grid',
 		style = 'card',
 		layout = 'drawer',
 		url,
+    contentType,
 		fields,
 		filterAnchor = 'left',
 		filterOptions = [],
@@ -72,6 +75,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		buttonText,
 		enableBorder = false,
 		enableGradient = false,
+    enableOverlay = false,
 		enableEdit = false,
 		enableCreate = false,
 		enableDelete = false,
@@ -97,9 +101,10 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		page,
 		numPages,
 		loadMore,
-	} = useResource({
-		name: 'document',
-		url,
+    handleDataChange,
+    flattenDocument
+	} = useDocuments({
+		collection: contentType
 	})
 
 	const [keywords, setKeywords] = useState('')
@@ -167,26 +172,6 @@ const Collection: React.FC<CollectionProps> = (props) => {
 				behavior: 'smooth',
 			})
 			router.push(`${clientUrl}${navigateUrl}/${item?.handle}`)
-		}
-	}
-
-	const handleDataChange = (ev) => {
-		const { name } = ev.target
-		const value =
-			ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
-		if (SYSTEM_FIELDS.includes(name)) {
-			setResource((prev) => ({
-				...prev,
-				[name]: value,
-			}))
-		} else {
-			setResource((prev) => ({
-				...prev,
-				data: {
-					...prev.data,
-					[name]: value,
-				},
-			}))
 		}
 	}
 
@@ -346,6 +331,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 							</Collapse>
 						)}
 						<CollectionList
+              actions={actions}
 							variant={variant}
 							style={style}
 							resources={resources}
@@ -353,6 +339,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 							buttonText={buttonText}
 							enableBorder={enableBorder}
 							enableGradient={enableGradient}
+              enableOverlay={enableOverlay}
 							enableEdit={enableEdit}
 							enableCreate={enableCreate}
 							enableDelete={enableDelete}

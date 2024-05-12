@@ -4,6 +4,7 @@ import { ActionType, DisplayFieldType, FormFieldType } from '../../../types'
 import Article from './Article'
 import Item from './Item'
 import Person from './Person'
+import Document from './Document'
 import Details from '../details/Details'
 import YouTubeVideo from './addons/YouTubeVideo'
 import VimeoEmbed from './addons/VimeoVideo'
@@ -77,7 +78,7 @@ const Show: React.FC<ShowProps> = (props) => {
 	}
 
 	const handleSubmit = async () => {
-  try {
+    try {
       let resp
       if(resource?.id){
         resp = await update(resource)
@@ -96,6 +97,7 @@ const Show: React.FC<ShowProps> = (props) => {
 		item: Item,
 		article: Article,
 		person: Person,
+    document: Document,
     youtube: YouTubeVideo,
     vimeo: VimeoEmbed, 
 	}

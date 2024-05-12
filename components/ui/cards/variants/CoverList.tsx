@@ -1,32 +1,27 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Box, Button, Stack, Typography } from '@mui/material'
-import { Image, Icon, TouchableOpacity, MenuButton } from '../../..'
+import { Image, Icon, TouchableOpacity, Actions } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
 
 const CoverList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
-	const {
-		label,
-		icon,
-		title,
-		image = '',
+	const {				
+		item,
+    actions,
+    icon,
 		href,
 		handleClick,
-		buttonText,
 		textVariant = 'subtitle1',
 		objectFit = 'cover',
 		height = 240,
 		enableGradient = false,
-		enableOverlay = false,
-		enableEdit,
-		enableDelete,
-		handleEdit,
-		handleDelete,
+		enableOverlay = false,		
 	} = props || {}
 
+  const { label, title, image } = item || {}
 	const router = useRouter()
 
 	const handleItemClick = () => {
@@ -42,7 +37,7 @@ const CoverList: React.FC<CardProps> = (props) => {
 			<TouchableOpacity handleClick={handleItemClick}>
 				<Image
 					label={label}
-					src={image}
+					src={image?.url || image}
 					objectFit={objectFit}
 					alt={title}
 					height={height}
@@ -67,27 +62,16 @@ const CoverList: React.FC<CardProps> = (props) => {
 							</Typography>
 						)}
 					</Box>
-					{(enableEdit || enableDelete) && (
-						<MenuButton
-							icon="EllipsisVertical"
-							color="common.white"
-							handleEdit={enableEdit ? handleEdit : undefined}
-							handleDelete={enableDelete ? handleDelete : undefined}
-						/>
-					)}
-				</Stack>
-				{buttonText && (
-					<Box>
-						<Button
-							variant="contained"
-							sx={sx.button}
-							onClick={handleItemClick}
-						>
-							{buttonText}
-						</Button>
-					</Box>
-				)}
+				</Stack>				
 			</Stack>
+      <Box sx={ sx.actions }>
+        <Actions 
+          numVisible={0}
+          resource={item}
+          actions={actions}
+          color={ enableOverlay ? 'common.white' : 'text.secondary' }
+        />					
+      </Box>
 		</Stack>
 	)
 }
@@ -103,6 +87,7 @@ const sx = {
 		borderRadius: 1,
 	},
 	cover: {
+    p: 1,
 		width: '100%',
 		position: 'absolute',
 		left: 0,
@@ -119,12 +104,17 @@ const sx = {
 		},
 	},
 	content: {
+    p: 1,
 		width: '100%',
-		p: 2,
 		minHeight: '60px',
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'flex-start',
 	},
+  actions: {
+    position: 'absolute',
+    top: 0,
+    right: 10
+  }
 }

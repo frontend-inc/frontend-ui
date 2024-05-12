@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
-import { Avatar, Box, Button, Stack, Typography } from '@mui/material'
-import { Label, TouchableOpacity, MenuButton } from '../../..'
+import { Avatar, Box, Stack, Typography } from '@mui/material'
+import { Actions, TouchableOpacity } from '../../../../components'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import {
@@ -13,23 +13,18 @@ import { CardProps } from '../../../../types'
 const AvatarGrid: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
-		label,
-		title,
-		image = '',
+    actions,
+    item,		
 		href,
 		handleClick,
 		height = AVATAR_VERT_HEIGHT,
 		width = AVATAR_VERT_WIDTH,
-		buttonText,
-		textVariant = 'subtitle1',
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
-		enableEdit,
-		enableDelete,
-		handleEdit,
-		handleDelete,
 	} = props || {}
+
+  const { title, image } = item || {}
 
 	const router = useRouter()
 
@@ -59,7 +54,7 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 			>
 				<TouchableOpacity handleClick={handleItemClick}>
 					<Avatar
-						src={image}
+						src={image?.url || image}
 						sx={{
 							...sx.avatar,
 							...(enableGradient && sx.gradient),
@@ -75,29 +70,16 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 			<Stack spacing={1} sx={sx.contentArea}>
 				<Stack direction="row" sx={sx.contentArea} spacing={0}>
 					<Stack sx={sx.content}>
-						<Typography sx={sx.title} color="textPrimary" variant={textVariant}>
+						<Typography sx={sx.title} color="textPrimary" variant={'subtitle2'}>
 							{truncate(title)}
 						</Typography>
 					</Stack>
-					{(enableEdit || enableDelete) && (
-						<MenuButton
-							icon="EllipsisVertical"
-							handleEdit={enableEdit ? handleEdit : undefined}
-							handleDelete={enableDelete ? handleDelete : undefined}
-						/>
-					)}
-				</Stack>
-				{buttonText && (
-					<Box>
-						<Button
-							variant="outlined"
-							color="secondary"
-							onClick={handleItemClick}
-						>
-							{buttonText}
-						</Button>
-					</Box>
-				)}
+          <Actions 
+            numVisible={0}
+            actions={actions}
+            resource={item}
+          />
+        </Stack>
 			</Stack>
 		</Stack>
 	)
@@ -147,7 +129,7 @@ const sx = {
 	},
 	title: {
 		width: '100%',
-		textAlign: 'center',
+		textAlign: 'left'
 	},
 	label: {
 		textAlign: 'center',

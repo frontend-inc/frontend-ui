@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Box, Button, Stack, Typography } from '@mui/material'
-import { Image, Icon, TouchableOpacity, MenuButton } from '../../..'
+import { Image, Icon, TouchableOpacity, Actions } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
@@ -9,25 +9,19 @@ import { CardProps } from '../../../../types'
 const CoverVert: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
-		label,
-		title,
-		description,
-		image = '',
+		actions,
+    item,
 		href,
 		handleClick,
-		buttonText,
 		textVariant = 'subtitle1',
 		objectFit = 'cover',
 		height = 320,
 		enableGradient = false,
 		enableOverlay = false,
-		enableEdit,
-		enableDelete,
-		handleEdit,
-		handleDelete,
 		icon,
 	} = props || {}
 
+  const { label, title, description, image, resource } = item || {}
 	const router = useRouter()
 
 	const handleItemClick = () => {
@@ -48,11 +42,11 @@ const CoverVert: React.FC<CardProps> = (props) => {
 			<TouchableOpacity handleClick={handleItemClick}>
 				<Image
 					label={label}
-					src={image}
+					src={image?.url || image}
 					height={height}
 					objectFit={objectFit}
 					alt={title}
-					enableGradient={enableGradient}
+          enableGradient={enableGradient}
 					enableOverlay={enableOverlay}
 				/>
 			</TouchableOpacity>
@@ -69,7 +63,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 						</Box>
 					)}
 					<Box sx={sx.content}>
-						<Stack sx={sx.contentContainer} direction="row" spacing={1}>
+						<Stack sx={sx.contentContainer} direction="column" spacing={0}>
 							<Box sx={sx.fullWidth}>
 								<Typography color="common.white" variant={textVariant}>
 									{truncate(title, 60)}
@@ -80,29 +74,18 @@ const CoverVert: React.FC<CardProps> = (props) => {
 									</Typography>
 								)}
 							</Box>
-							{(enableEdit || enableDelete) && (
-								<MenuButton
-									icon="EllipsisVertical"
-									color="common.white"
-									handleEdit={enableEdit ? handleEdit : undefined}
-									handleDelete={enableDelete ? handleDelete : undefined}
-								/>
-							)}
 						</Stack>
 					</Box>
 				</Stack>
-				{buttonText && (
-					<Box>
-						<Button
-							variant="contained"
-							sx={sx.button}
-							onClick={handleItemClick}
-						>
-							{buttonText}
-						</Button>
-					</Box>
-				)}
 			</Stack>
+      <Box sx={ sx.actions }>
+        <Actions   
+          numVisible={0}
+          resource={item}
+          actions={actions}
+          color={ enableOverlay ? 'common.white' : 'text.secondary' }
+        />		
+      </Box>					
 		</Stack>
 	)
 }
@@ -123,6 +106,7 @@ const sx = {
 		bottom: 0,
 		left: 0,
 		zIndex: 1,
+    p: 1,
 	},
 	description: {
 		maxWidth: '320px',
@@ -140,9 +124,8 @@ const sx = {
 		width: '100%',
 	},
 	content: {
-		p: 2,
+		px: 1,
 		width: '100%',
-		minHeight: '60px',
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
@@ -153,4 +136,9 @@ const sx = {
 		justifyContent: 'space-between',
 		alignItems: 'flex-end',
 	},
+  actions: {
+    position: 'absolute',
+    top: 0,
+    right: 10
+  }
 }

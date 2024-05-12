@@ -11,25 +11,21 @@ import {
 } from '@mui/material'
 import { truncate } from '../../../../helpers'
 import { CardProps } from '../../../../types'
-import { MenuButton } from '../../..'
+import { Actions } from '../../../../components'
 
 const AvatarList: React.FC<CardProps> = (props) => {
 	const {
-		title,
-		description,
-		textVariant = 'body1',
-		image,
+		actions,
+    item,
 		height = 128,
 		width = 128,
 		handleClick,
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
-		enableEdit,
-		enableDelete,
-		handleEdit,
-		handleDelete,
 	} = props
+
+  const { title, description, image } = item || {}
 
 	return (
 		<List
@@ -43,13 +39,11 @@ const AvatarList: React.FC<CardProps> = (props) => {
 				disablePadding
 				disableGutters
 				secondaryAction={
-					(enableEdit || enableDelete) && (
-						<MenuButton
-							icon="EllipsisVertical"
-							handleEdit={enableEdit ? handleEdit : undefined}
-							handleDelete={enableDelete ? handleDelete : undefined}
-						/>
-					)
+          <Actions 
+            numVisible={0}
+            actions={actions}
+            resource={item}
+          />					
 				}
 			>
 				<ListItemButton
@@ -58,7 +52,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 					}}
 					onClick={handleClick && handleClick}
 				>
-					<ListItemIcon>
+					<ListItemIcon sx={ sx.listItemIcon }>
 						<Avatar
 							sx={{
 								...sx.avatar,
@@ -67,7 +61,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 								height: `${height}px`,
 								width: `${width}px`,
 							}}
-							src={image}
+							src={image?.url || image}
 							alt={title}
 						>
 							<Box />
@@ -75,7 +69,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 					</ListItemIcon>
 					<ListItemText
 						primary={
-							<Typography variant={textVariant} color="text.primary">
+							<Typography variant={'subtitle2'} color="text.primary">
 								{title}
 							</Typography>
 						}
@@ -126,13 +120,16 @@ const sx = {
 			background: 'rgb(0,0,0,0.5)',
 		},
 	},
+  listItemIcon: {
+    width: 130,
+    mr: 2,
+  },
 	rootBorder: {
 		border: '1px solid',
 		borderColor: 'divider',
 		borderRadius: 1,
 	},
 	avatar: {
-		mr: 2,
 		height: '64px',
 		width: '64px',
 		backgroundImage: 'linear-gradient(45deg, #999999,#DDDDDD,#FAFAFA)',

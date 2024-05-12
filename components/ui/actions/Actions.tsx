@@ -9,11 +9,12 @@ type ActionsProps = {
 	actions: ActionType[]
 	resource: any
   numVisible?: number
+  color?: string
 	justifyContent?: 'flex-start' | 'center' | 'flex-end'
 }
 
 const Actions: React.FC<ActionsProps> = (props) => {
-	const { actions, resource, numVisible=2, justifyContent } = props
+	const { color, actions, resource, numVisible=2, justifyContent } = props
 	return (
 		<Stack
 			sx={{ 
@@ -36,7 +37,9 @@ const Actions: React.FC<ActionsProps> = (props) => {
 				))}
 			</Stack>
 			{actions?.length > numVisible && (
-				<MenuButton>
+				<MenuButton
+          color={color}
+        >
 					{actions?.slice(numVisible, actions.length)?.map((action, index) => (
 						<ActionMenuItem key={index} action={action} resource={resource} />
 					))}

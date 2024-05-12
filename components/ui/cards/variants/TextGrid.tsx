@@ -6,7 +6,7 @@ import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CARD_VERT_HEIGHT, CARD_VERT_WIDTH } from '../../../../constants/index'
 import { CardProps } from '../../../../types'
-import { Actions } from '../../../../components'
+import { Actions } from '../../..'
 
 const CardGrid: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
@@ -22,7 +22,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 		enableOverlay = false,
 	} = props || {}
 
-  const { label, title, image } = item || {}
+  const { title, description } = item || {}
 
 	const router = useRouter()
 
@@ -44,20 +44,13 @@ const CardGrid: React.FC<CardProps> = (props) => {
 				minHeight: height + 80,
 			}}
 		>
-			<Box sx={sx.imageContainer}>
-				<TouchableOpacity handleClick={handleItemClick}>
-					<Image
-						src={image?.url || image}
-						height={height}
-						objectFit={objectFit}
-						alt={title}
-						label={label}
-						enableGradient={enableGradient}
-						disableBorderRadius={enableBorder}
-						enableOverlay={enableOverlay}
-					/>
-				</TouchableOpacity>
-			</Box>
+      <Box sx={ sx.actions }>
+        <Actions 
+          numVisible={0}
+          actions={actions} 
+          resource={item} 
+        />					
+      </Box>
 			<Stack
 				spacing={1}
 				sx={{
@@ -65,16 +58,12 @@ const CardGrid: React.FC<CardProps> = (props) => {
 					...(enableBorder && sx.contentBorder),
 				}}
 			>
-				<Stack sx={sx.contentArea} direction="row" spacing={0}>
-					<Typography sx={sx.title} color="textPrimary" variant="subtitle2">
-						{truncate(title)}
-					</Typography>
-          <Actions 
-            numVisible={0}
-            actions={actions} 
-            resource={item} 
-          />					
-				</Stack>
+        <Typography sx={sx.title} color="text.primary" variant="subtitle1">
+          {truncate(title)}
+        </Typography> 
+        <Typography sx={sx.description} color="text.secondary" variant="body1">
+          {truncate(description, 200)}
+        </Typography>                   
 			</Stack>
 		</Stack>
 	)
@@ -84,8 +73,14 @@ export default CardGrid
 
 const sx = {
 	root: {
+    position: 'relative',
 		width: '100%',
 	},
+  actions: {
+    position: 'absolute',
+    top: 10,
+    right: 10 
+  },
 	rootBorder: {
 		border: '1px solid',
 		borderColor: 'divider',
@@ -114,6 +109,8 @@ const sx = {
 		minHeight: '60px',
 	},
 	contentArea: {
+    p: 1,
+    pr: 0,
 		width: '100%',
 	},
 	contentBorder: {
@@ -122,9 +119,8 @@ const sx = {
 	},
 	title: {
 		width: '100%',
-		minHeight: '50px',
 	},
 	description: {
-		maxWidth: '320px',
+		whiteSpace: 'pre-line',
 	},
 }

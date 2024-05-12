@@ -1,25 +1,30 @@
 import React from 'react'
 import { Stack, Box } from '@mui/material'
 import { CollectionCard } from '../..'
+import { ActionType } from '../../../../types'
+import { buildActions } from '../../../helpers'
 
 type CollectionListProps = {
 	resources: any
-	handleClick: (item: any) => void
+  actions: ActionType[]
 	variant: 'list' | 'grid'
 	style: 'card' | 'avatar' | 'cover' | 'chip'
 	buttonText?: string
 	enableBorder?: boolean
 	enableGradient?: boolean
-	enableEdit?: boolean
-	enableCreate?: boolean
-	enableDelete?: boolean
-	handleEdit?: (item: any) => void
-	handleDelete?: (item: any) => void
+  enableOverlay?: boolean
+	enableEdit: boolean
+	enableCreate: boolean
+	enableDelete: boolean
+  handleClick: (item: any) => void
+	handleEdit: (item: any) => void
+	handleDelete: (item: any) => void
 }
 
 const CollectionList: React.FC<CollectionListProps> = (props) => {
 	const {
 		resources,
+    actions,
 		handleClick,
 		handleEdit,
 		handleDelete,
@@ -28,6 +33,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		buttonText,
 		enableBorder = false,
 		enableGradient = false,
+    enableOverlay = false,
 		enableEdit = false,
 		enableCreate = false,
 		enableDelete = false,
@@ -47,17 +53,19 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 						key={index}
 						variant={variant}
 						style={style}
-						label={resource?.label}
-						title={resource?.title}
-						image={resource?.image?.url}
-						video={resource?.video?.url}
-						description={resource?.description}
+            item={resource}
 						buttonText={buttonText}
-						handleClick={() => handleClick(resource)}
-						handleEdit={() => handleEdit(resource)}
-						handleDelete={() => handleDelete(resource)}
+            handleClick={() => handleClick(resource)}
+            actions={ buildActions({
+              enableEdit,
+              enableDelete,
+              handleEdit: () => handleEdit(resource),
+              handleDelete: () => handleDelete(resource), 
+              actions          
+            })}
 						enableBorder={enableBorder}
 						enableGradient={enableGradient}
+            enableOverlay={enableOverlay}
 						enableEdit={enableEdit}
 						enableCreate={enableCreate}
 						enableDelete={enableDelete}

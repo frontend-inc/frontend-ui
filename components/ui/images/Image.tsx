@@ -40,9 +40,15 @@ const Image: React.FC<ImageProps> = (props) => {
 	return (
 		<Box
 			sx={{
-				...sx.root,
+        width: '100%',
 				height: `${height}px`,
-				'&::after': {
+			}}
+		>
+      <Box 
+      sx={{
+        ...sx.root,
+        height: `${height}px`,
+        '&::after': {
 					...sx.afterBase,
 					...(enableOverlay && sx.overlay),
 					...(!enableOverlay && enableGradient && sx.gradient),
@@ -54,8 +60,8 @@ const Image: React.FC<ImageProps> = (props) => {
 					bgcolor,
 					opacity,
 				},
-			}}
-		>
+      }}
+      >
 			{src ? (
 				<NextImage
 					src={src}
@@ -81,6 +87,7 @@ const Image: React.FC<ImageProps> = (props) => {
 					disableBorderRadius={disableBorderRadius}
 				/>
 			)}
+      </Box>
 			{label && (
 				<Box sx={sx.label}>
 					<Label color="common.white" label={truncate(label, 22)} />
@@ -103,7 +110,7 @@ const sx = {
 	},
 	label: {
 		position: 'absolute',
-		right: 15,
+		left: 15,
 		top: 15,
 	},
 	borderRadius: {

@@ -1,14 +1,25 @@
 import React from 'react'
-import { Card, Cover, AvatarCard, Chip } from '../..'
+import { Card, Cover, AvatarCard, Chip, TextCard, ImageCard } from '../..'
+import { ActionType } from '../../../../types'
+
+type CardStyleTypes = 'card' | 
+  'avatar' | 
+  'cover' | 
+  'chip' | 
+  'image' | 
+  'text'
 
 type CollectionCardProps = {
+  actions: ActionType[]
 	variant: 'list' | 'grid'
-	style: 'card' | 'avatar' | 'cover' | 'chip'
-	label?: string
-	title?: string
-	image?: string
-	video?: string
-	description: string
+	style: CardStyleTypes 
+  item: any & {
+    label?: string
+    title?: string
+    image?: string
+    video?: string
+    description: string  
+  }
 	buttonText?: string
 	href?: string
 	handleClick: () => void
@@ -30,6 +41,8 @@ const CollectionCard: React.FC<CollectionCardProps> = (props) => {
 		avatar: AvatarCard,
 		cover: Cover,
 		chip: Chip,
+    text: TextCard,
+    image: ImageCard
 	}
 
 	let Component = COMPONENTS[style] || Card

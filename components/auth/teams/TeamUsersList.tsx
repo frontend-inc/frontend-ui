@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useAuth } from 'frontend-js'
 import { Stack, Box, Button, List } from '@mui/material'
 import {
+  Placeholder,
   AlertModal,
   Loading,
   UserListItem  
@@ -104,15 +105,24 @@ const TeamUsersList: React.FC<TeamListProps> = (props) => {
             />
           ))}
         </List>
-        <Box sx={ sx.actions }>
-          <Button         
-            onClick={handleAddUser}
-            variant='contained'
-            color="primary"
-          >
-            Add User
-          </Button>
-        </Box>
+        { !teamUsers?.length && (
+            <Placeholder 
+              icon='Users'
+              title="No Teams"
+              description="Add a team to get started"        
+            />
+        )}
+        { currentUser?.team_id && (
+          <Box sx={ sx.actions }>
+            <Button         
+              onClick={handleAddUser}
+              variant='contained'
+              color="primary"
+            >
+              Add User
+            </Button>
+          </Box>
+        )}
         <AlertModal
           loading={loading}
           open={openDeleteModal}

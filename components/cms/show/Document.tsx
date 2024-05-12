@@ -1,20 +1,18 @@
 import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
-import { ActionButton, Actions, Image } from '../../../components'
+import { Label, Actions } from '../../../components'
 import { ShowItemProps } from './Show'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-const Item: React.FC<ShowItemProps> = (props) => {
+const Document: React.FC<ShowItemProps> = (props) => {
 	const MAX_CHARS = 500
 
 	const { actions, resource, enableBorder, enableEdit, handleEdit } =
-		props || {}
-	const { label, title, image, description } = resource || {}
+		props || {}		
+
+	const { label, title, description } = resource || {}
 	const [open, setOpen] = useState(false)
-
-
-	if (!resource) return null
 	return (
 		<Box
 			sx={{
@@ -22,45 +20,18 @@ const Item: React.FC<ShowItemProps> = (props) => {
 				...(enableBorder && sx.rootBorder),
 			}}
 		>
-			<Stack
-				sx={sx.container}
-				direction={{ md: 'row', xs: 'column' }}
-				spacing={4}
-			>
-        <Box sx={ sx.imageContainer }>
-          <Image
-            src={image?.url}
-            alt={title}
-            height={360}
-            label={label}
-            disableBorderRadius={enableBorder}
-          />
-        </Box>
 				<Stack
 					spacing={2}
-					sx={{
-						...sx.content,
-						...(enableBorder && sx.contentBorder),
-					}}
+					sx={{ ...sx.content, ...(enableBorder && sx.contentBorder) }}
 				>
-          {(actions || enableEdit) && (
-					<Box sx={sx.actions}>						
-						<Actions
-							actions={
-                buildActions({
-                  enableEdit,
-                  handleEdit,
-                  actions
-                })
-              }
-              justifyContent='flex-end'
-							resource={flattenDocument(resource)}
-						/>
-					</Box>
-				)}
-        	<Typography color="text.primary" variant="h4">
+          { label && (
+            <Box>
+              <Label label={label} />
+            </Box>
+          )}
+					<Typography color="text.primary" variant="h4">
 						{title}
-					</Typography>
+					</Typography>					
 					<Box>
 						{open ? (
 							<Typography variant="body1" color="text.primary" sx={sx.text}>
@@ -78,19 +49,39 @@ const Item: React.FC<ShowItemProps> = (props) => {
 						)}
 					</Box>
 				</Stack>
-			</Stack>
+				{(actions || enableEdit) && (
+					<Stack
+						sx={sx.actions}
+						direction={{ sm: 'row', xs: 'column' }}
+						spacing={1}
+						p={enableBorder ? 1 : 0}
+					>
+						<Actions
+							actions={
+                buildActions({
+                  enableEdit,
+                  handleEdit,
+                  actions
+                })
+              }              
+							resource={flattenDocument(resource)}
+							justifyContent="flex-end"
+						/>
+					</Stack>
+				)}
 		</Box>
 	)
 }
 
-export default Item
+export default Document
 
 const sx = {
 	root: {
 		width: '100%',
 		display: 'flex',
 		justifyContent: 'center',
-		alignItems: 'center',
+		alignItems: 'flex-start',
+		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 	},
 	rootBorder: {
 		overflow: 'hidden',
@@ -102,18 +93,20 @@ const sx = {
 		width: '100%',
 		justifyContent: 'flex-start',
 		alignItems: {
-			md: 'flex-start',
+			sm: 'flex-start',
 			xs: 'center',
 		},
 	},
-	image: {
-		height: {
-			sm: 256,
-			xs: 180,
+	imageContainer: {
+		width: '100%',
+		height: '100%',
+		maxHeight: {
+			sm: 240,
+			xs: 240,
 		},
-		width: {
-			sm: 256,
-			xs: 180,
+		maxWidth: {
+			sm: 240,
+			xs: '100%',
 		},
 	},
 	header: {
@@ -122,10 +115,6 @@ const sx = {
 	},
 	content: {
 		width: '100%',
-		maxWidth: {
-			sm: 500,
-			xs: '100%',
-		},
 	},
 	contentBorder: {
 		p: 2,
@@ -141,11 +130,16 @@ const sx = {
 		cursor: 'pointer',
 		color: 'text.secondary',
 	},
-	actions: {
-    width: '100%',
+	socialUrls: {
+		width: '100%',
+		justifyContent: 'flex-start',
+		alignItems: 'center',
 	},
-  imageContainer: {
-    width: "100%",
-    minWidth: 300
-  }
+	actions: {
+		width: '100%',
+		justifyContent: {
+			sm: 'flex-end',
+			xs: 'center',
+		},
+	},
 }

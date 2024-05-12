@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
-import { Box, Button, Stack, Typography } from '@mui/material'
-import { Image, TouchableOpacity, MenuButton } from '../../../../components'
+import { Box, Button, CardActionArea, Stack, Typography } from '@mui/material'
+import { Image, TouchableOpacity, MenuButton } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
-import { Actions } from '../../../../components'
+import { Actions } from '../../..'
 
 const CardList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
@@ -24,7 +24,7 @@ const CardList: React.FC<CardProps> = (props) => {
 
 	const router = useRouter()
 
-  const { label, title, description, image, resource } = item || {}
+  const {  title, description } = item || {}
 
 	const handleItemClick = () => {
 		if (handleClick) {
@@ -41,25 +41,7 @@ const CardList: React.FC<CardProps> = (props) => {
 				...(enableBorder && sx.rootBorder),
 			}}
 		>
-			<Stack
-				sx={sx.container}
-				spacing={1}
-				flexDirection={{ xs: 'column', sm: 'row' }}
-			>
-				<Box sx={sx.image}>
-					<TouchableOpacity handleClick={handleItemClick}>
-						<Image
-							label={label}
-							src={image?.url || image}
-							height={height}
-							objectFit={objectFit}
-							alt={title}
-							enableGradient={enableGradient}
-							enableOverlay={enableOverlay}
-							disableBorderRadius={enableBorder}
-						/>
-					</TouchableOpacity>
-				</Box>
+      <CardActionArea onClick={handleItemClick}>
 				<Stack sx={sx.contentArea} direction="row" spacing={1}>
 					<Stack
 						direction="column"
@@ -79,14 +61,16 @@ const CardList: React.FC<CardProps> = (props) => {
 						>
 							{truncate(description, 80)}
 						</Typography>
-					</Stack>
+					</Stack>          
+				</Stack>	
+      </CardActionArea>
+        <Box sx={ sx.actions }>
           <Actions 
             numVisible={0}
             resource={item}
             actions={actions}
           />					
-				</Stack>				
-			</Stack>
+        </Box>			
 		</Box>
 	)
 }
@@ -95,6 +79,7 @@ export default CardList
 
 const sx = {
 	root: {
+    position: 'relative',
 		width: '100%',
 		display: 'flex',
 		flexDirection: 'row',
@@ -113,6 +98,7 @@ const sx = {
 		},
 	},
 	rootBorder: {
+    pl: 2,
 		border: '1px solid',
 		borderColor: 'divider',
 	},
@@ -161,19 +147,9 @@ const sx = {
 	description: {
 		maxWidth: '320px',
 	},
-	actions: {
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: {
-			sm: 'flex-end',
-			xs: 'flex-start',
-		},
-	},
-	actionsBorder: {
-		px: 1,
-		pb: {
-			sm: 0,
-			xs: 1,
-		},
-	},
+  actions: {
+    position: 'absolute',
+    top: 10,
+    right: 10 
+  },
 }

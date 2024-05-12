@@ -56,6 +56,13 @@ const TeamForm: React.FC<TeamFormProps> = (props) => {
 		<Box sx={sx.root}>
       <TextInput
         errors={errors}
+				value={team.handle}
+				name="handle"
+				placeholder="Username"
+				handleChange={handleChange}
+			/>
+      <TextInput
+        errors={errors}
 				value={team.name}
 				name="name"
 				placeholder="Name"
