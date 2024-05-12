@@ -58,7 +58,8 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		update,
 		create,
     handleDataChange,
-		removeAttachment,    
+		removeAttachment,  
+    flattenDocument  
 	} = useDocuments({
 		collection: contentType
 	})
