@@ -3,6 +3,7 @@ import { Stack, Box, Typography } from '@mui/material'
 import { Actions, ActionButton } from '../../../components'
 import { ShowItemProps } from './Show'
 import { flattenDocument } from 'frontend-js'
+import { buildActions } from '../../../helpers'
 
 type ShowContainerProps = ShowItemProps & {
   children: React.ReactNode
@@ -33,24 +34,22 @@ const ShowContainer: React.FC<ShowContainerProps> = (props) => {
         
 				{(actions || enableEdit) && (
 					<Stack
-						direction={{ xs: 'column', sm: 'row' }}
 						sx={sx.actions}
-						spacing={0}
+						direction={{ sm: 'row', xs: 'column' }}
+						spacing={1}
+						p={enableBorder ? 1 : 0}
 					>
-						{enableEdit && (
-              <Box>
-                <ActionButton
-                  resource={flattenDocument(resource)}
-                  action={{
-                    label: 'Edit',
-                    color: 'secondary',
-                    name: 'click',
-                    onClick: handleEdit,
-                  }}
-                />
-              </Box>
-						)}
-						<Actions actions={actions} resource={flattenDocument(resource)} />
+						<Actions
+							actions={
+                buildActions({
+                  enableEdit,
+                  handleEdit,
+                  actions
+                })
+              }              
+							resource={flattenDocument(resource)}
+							justifyContent="flex-end"
+						/>
 					</Stack>
 				)}
 			</Stack>

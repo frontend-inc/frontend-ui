@@ -15,12 +15,12 @@ export type ShowItemProps = {
   handle?: string
 	enableBorder?: boolean
 	actions: ActionType[]
-  fieldName: string
-  contentType: string
+  fieldName?: string
+  contentType?: string
 	resource: any
-	enableEdit: boolean
+	enableEdit?: boolean
   enableCreate?: boolean
-	handleEdit: () => void
+	handleEdit?: () => void
 }
 
 export type ShowProps = ShowItemProps & {
