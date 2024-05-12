@@ -40,13 +40,13 @@ const Image: React.FC<ImageProps> = (props) => {
 	return (
 		<Box
 			sx={{
+        ...sx.root,
         width: '100%',
 				height: `${height}px`,
 			}}
 		>
       <Box 
       sx={{
-        ...sx.root,
         height: `${height}px`,
         '&::after': {
 					...sx.afterBase,
