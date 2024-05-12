@@ -14,6 +14,10 @@ export default AuthLayout
 
 const sx = {
 	root: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
 		height: '100vh',
 		bgcolor: 'background.default',
 	},

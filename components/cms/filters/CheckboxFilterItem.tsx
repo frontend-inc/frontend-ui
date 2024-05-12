@@ -19,7 +19,6 @@ type CheckboxFilterItemProps = {
 const CheckboxFilterItem: React.FC<CheckboxFilterItemProps> = (props) => {
 	const { values = [], option, handleClick } = props
 
-  console.log("VALUES", values)
 	return (
 		<ListItem disableGutters disablePadding>
 			<ListItemButton sx={sx.listItemButton} onClick={handleClick}>
