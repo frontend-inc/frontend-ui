@@ -12,7 +12,7 @@ type LoginFormProps = {
 	handleForgotPassword: false | (() => void)
 	handleSignup: false | (() => void)
 	handleOneTimePassword?: false | (() => void)
-	handleGoogleSuccess?: false | (() => void)
+	handleGoogleSuccess?: () => void
 }
 
 const LoginForm: React.FC<LoginFormProps> = (props) => {
