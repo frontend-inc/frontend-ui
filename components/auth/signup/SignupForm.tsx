@@ -8,7 +8,7 @@ type SignupFormProps = {
 	errors: Record<string, any>
 	handleChange: (ev: any) => void
 	handleSubmit: () => void
-	handleLogin: () => void
+	handleLogin: false | (() => void)
 	disableUsername?: boolean
 }
 
@@ -84,9 +84,15 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 			>
 				Register
 			</Button>
-			<Button fullWidth color="primary" onClick={handleLogin}>
-				Already have an account? Sign in
-			</Button>
+      { handleLogin && (
+        <Button 
+          fullWidth 
+          color="primary" 
+          onClick={handleLogin}
+        >
+          Already have an account? Sign in
+        </Button>
+      )}
 		</Stack>
 	)
 }

@@ -1,3 +1,4 @@
+export * from './auth'
 export * from './addons'
 export * from './cms'
 export * from './shopify'

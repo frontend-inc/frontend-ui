@@ -10,7 +10,6 @@ type OneTimePasswordProps = {
 	title?: string
 	subtitle?: string
 	loginUrl?: string
-	authConfig?: Record<any, string>
 }
 
 const OneTimePassword: React.FC<OneTimePasswordProps> = (props) => {
@@ -19,7 +18,6 @@ const OneTimePassword: React.FC<OneTimePasswordProps> = (props) => {
 		title = 'One-Time Password',
 		subtitle = 'Get a one-time password link',
 		loginUrl,
-		authConfig = {},
 	} = props || {}
 
 	const router = useRouter()
@@ -27,17 +25,16 @@ const OneTimePassword: React.FC<OneTimePasswordProps> = (props) => {
 	const { errors, loading, user, handleChange, sendOneTimePassword } = useAuth()
 
 	const handleSubmit = async () => {
-		let resp = await sendOneTimePassword({
-			...user,
-			...authConfig,
-		})
+		let resp = await sendOneTimePassword(user)
 		if (resp?.id) {
 			router.push(redirectUrl)
 		}
 	}
 
 	const handleLogin = () => {
-		router.push(loginUrl)
+    if(loginUrl){
+      router.push(loginUrl)
+    }		
 	}
 
 	return (

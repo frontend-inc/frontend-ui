@@ -10,7 +10,6 @@ type VerifyPinProps = {
 	subtitle?: string
 	redirectUrl: string
 	loginUrl: string
-	authConfig?: Record<string, any>
 }
 
 const VerifyPin: React.FC<VerifyPinProps> = (props) => {
@@ -19,7 +18,6 @@ const VerifyPin: React.FC<VerifyPinProps> = (props) => {
 		subtitle,
 		redirectUrl,
 		loginUrl,
-		authConfig = {},
 	} = props || {}
 
 	const [showVerifyPin, setShowVerifyPin] = useState(false)
@@ -30,10 +28,7 @@ const VerifyPin: React.FC<VerifyPinProps> = (props) => {
 	const router = useRouter()
 
 	const handleSendPin = async () => {
-		let resp = await sendPin({
-			...user,
-			...authConfig,
-		})
+		let resp = await sendPin(user)
 		if (resp?.id) {
 			setShowVerifyPin(true)
 		}
@@ -51,10 +46,7 @@ const VerifyPin: React.FC<VerifyPinProps> = (props) => {
 			...user,
 			pin: '',
 		})
-		await sendPin({
-			...user,
-			...authConfig,
-		})
+		await sendPin(user)
 	}
 
 	const handleLogin = () => {

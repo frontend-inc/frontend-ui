@@ -9,10 +9,10 @@ type LoginFormProps = {
 	enableGoogle?: boolean
 	handleChange: (ev: any) => void
 	handleSubmit: () => void
-	handleForgotPassword: () => void
-	handleSignup: () => void
-	handleOneTimePassword?: () => void
-	handleGoogleSuccess?: () => void
+	handleForgotPassword: false | (() => void)
+	handleSignup: false | (() => void)
+	handleOneTimePassword?: false | (() => void) 
+	handleGoogleSuccess?: false | (() => void)
 }
 
 const LoginForm: React.FC<LoginFormProps> = (props) => {

@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { LoginForm, AuthScreen, Loader } from '../..'
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
+import { AppContext } from '../../../context'
 
-type LoginProps = {
-	redirectUrl: string
+export type LoginProps = {
 	title?: string
 	subtitle?: string
 	forgotPasswordUrl?: string
@@ -12,11 +12,15 @@ type LoginProps = {
 	oneTimePasswordUrl?: string
 	disableUsername?: boolean
 	enableGoogle?: boolean
+  navigateUrl: string
 }
 
 const Login: React.FC<LoginProps> = (props) => {
+
+  const { clientUrl } = useContext(AppContext)
+ 
 	const {
-		redirectUrl,
+		navigateUrl,
 		title = 'Sign In',
 		subtitle = 'Log in to your account',
 		forgotPasswordUrl,
@@ -31,24 +35,30 @@ const Login: React.FC<LoginProps> = (props) => {
 	const handleSubmit = async () => {
 		let resp = await login(user)
 		if (resp?.id) {
-			router.push(redirectUrl)
+			router.push(`${clientUrl}${navigateUrl}`)
 		}
 	}
 
 	const handleGoogleSuccess = () => {
-		router.push(redirectUrl)
+		router.push(`${clientUrl}${navigateUrl}`)
 	}
 
 	const handleSignup = () => {
-		router.push(signupUrl)
+    if(signupUrl){
+      router.push(`${clientUrl}${signupUrl}`)
+    }
 	}
 
 	const handleForgotPassword = () => {
-		router.push(forgotPasswordUrl)
+    if(forgotPasswordUrl){
+      router.push(`${clientUrl}${forgotPasswordUrl}`)
+    }
 	}
 
 	const handleOneTimePassword = () => {
-		router.push(oneTimePasswordUrl)
+    if(oneTimePasswordUrl){
+      router.push(`${clientUrl}${oneTimePasswordUrl}`)
+    }
 	}
 
 	return (
@@ -62,9 +72,9 @@ const Login: React.FC<LoginProps> = (props) => {
             user={user}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
-            handleOneTimePassword={oneTimePasswordUrl && handleOneTimePassword}
-            handleSignup={signupUrl && handleSignup}
-            handleForgotPassword={forgotPasswordUrl && handleForgotPassword}
+            handleOneTimePassword={oneTimePasswordUrl ? handleOneTimePassword : false}
+            handleSignup={signupUrl ? handleSignup : false}
+            handleForgotPassword={forgotPasswordUrl ? handleForgotPassword : false}
             enableGoogle={enableGoogle}
             handleGoogleSuccess={handleGoogleSuccess}
           />

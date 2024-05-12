@@ -1,24 +1,25 @@
-import React from 'react'
-import { AuthLayout, AuthScreen, SignupForm } from '../..'
+import React, { useContext } from 'react'
+import { AuthLayout, AuthScreen, SignupForm } from '../../../components'
+import { AppContext } from '../../../context'
 import { useAuth } from 'frontend-js'
-
 import { useRouter } from 'next/router'
 
-type SignupProps = {
-	redirectUrl: string
+export type SignupProps = {
+	navigateUrl: string
 	loginUrl: string
 	title?: string
 	subtitle?: string
-	authConfig?: Record<string, any>
 }
 
 const Signup: React.FC<SignupProps> = (props) => {
+
+  const { clientUrl } = useContext(AppContext)
+
 	const {
-		redirectUrl,
+		navigateUrl,
 		loginUrl,
 		title = 'Sign up',
 		subtitle = 'Register your account',
-		authConfig = {},
 	} = props
 
 	const router = useRouter()
@@ -26,17 +27,16 @@ const Signup: React.FC<SignupProps> = (props) => {
 	const { loading, errors, user, handleChange, signup } = useAuth()
 
 	const handleSubmit = async () => {
-		let resp = await signup({
-			...user,
-			...authConfig,
-		})
+		let resp = await signup(user)
 		if (resp?.id) {
-			router.push(redirectUrl)
+			router.push(`${clientUrl}${navigateUrl}`)
 		}
 	}
 
 	const handleLogin = () => {
-		router.push(loginUrl)
+    if(loginUrl){
+      `${clientUrl}${loginUrl}`
+    }		
 	}
 
 	return (
@@ -48,7 +48,7 @@ const Signup: React.FC<SignupProps> = (props) => {
 					user={user}
 					handleChange={handleChange}
 					handleSubmit={handleSubmit}
-					handleLogin={handleLogin}
+					handleLogin={loginUrl ? handleLogin : false}
 				/>
 			</AuthScreen>
 		</AuthLayout>
