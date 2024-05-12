@@ -30,7 +30,6 @@ export type ForeignCollectionProps = {
 	foreignUrl?: string
 	perPage?: number
 	query?: any
-	buttonText?: string
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
@@ -52,7 +51,6 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		foreignContentType,
 		navigateUrl,
 		perPage = 10,
-		buttonText,
 		query: defaultQuery = null,
 		enableBorder = false,
 		enableGradient = false,
@@ -224,15 +222,14 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 				</Collapse>
 			)}
 			<CollectionList
+        actions={[]}
 				variant={variant}
 				style={style}
 				resources={resources}
 				handleClick={handleClick}
-				buttonText={buttonText}
 				enableBorder={enableBorder}
 				enableGradient={enableGradient}
 				enableEdit={enableEdit}
-				enableCreate={enableCreate}
 				enableDelete={enableDelete}
 				handleEdit={handleEdit}
 				handleDelete={handleDeleteClick}

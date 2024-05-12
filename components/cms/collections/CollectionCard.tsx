@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, Cover, AvatarCard, Chip, TextCard, ImageCard } from '../..'
-import { ActionType } from '../../../../types'
+import { ActionType } from '../../../types'
 
 type CardStyleTypes = 'card' | 
   'avatar' | 

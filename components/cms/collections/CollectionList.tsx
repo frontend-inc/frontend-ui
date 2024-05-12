@@ -1,20 +1,19 @@
 import React from 'react'
 import { Stack, Box } from '@mui/material'
 import { CollectionCard } from '../..'
-import { ActionType } from '../../../../types'
+import { ActionType } from '../../../types'
 import { buildActions } from '../../../helpers'
 
 type CollectionListProps = {
 	resources: any
   actions: ActionType[]
 	variant: 'list' | 'grid'
-	style: 'card' | 'avatar' | 'cover' | 'chip'
+	style: 'card' | 'avatar' | 'cover' | 'chip' | 'text' | 'image'
 	buttonText?: string
 	enableBorder?: boolean
 	enableGradient?: boolean
   enableOverlay?: boolean
 	enableEdit: boolean
-	enableCreate: boolean
 	enableDelete: boolean
   handleClick: (item: any) => void
 	handleEdit: (item: any) => void
@@ -30,12 +29,10 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		handleDelete,
 		variant = 'grid',
 		style = 'card',
-		buttonText,
 		enableBorder = false,
 		enableGradient = false,
     enableOverlay = false,
 		enableEdit = false,
-		enableCreate = false,
 		enableDelete = false,
 	} = props
 
@@ -54,7 +51,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 						variant={variant}
 						style={style}
             item={resource}
-						buttonText={buttonText}
             handleClick={() => handleClick(resource)}
             actions={ buildActions({
               enableEdit,
@@ -66,9 +62,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 						enableBorder={enableBorder}
 						enableGradient={enableGradient}
             enableOverlay={enableOverlay}
-						enableEdit={enableEdit}
-						enableCreate={enableCreate}
-						enableDelete={enableDelete}
 					/>
 				))}
 			</Box>

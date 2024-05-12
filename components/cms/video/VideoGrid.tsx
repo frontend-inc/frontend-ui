@@ -5,11 +5,8 @@ import { VIDEO_HORIZ_HEIGHT, VIDEO_HORIZ_WIDTH } from '../../../constants/index'
 
 const VideoVert: React.FC<CardProps> = (props) => {
 	const {
-		title,
-		image = '',
-		video = '',
-		buttonText,
-		textVariant = 'subtitle1',
+    actions,
+    item,		
 		objectFit = 'cover',
 		height = VIDEO_HORIZ_HEIGHT,
 		width = VIDEO_HORIZ_WIDTH,
@@ -26,12 +23,10 @@ const VideoVert: React.FC<CardProps> = (props) => {
 
 	return !open ? (
 		<Cover
+      actions={actions}
 			variant="list"
-			title={title}
-			image={image}
-			handleClick={handleItemClick}
-			buttonText={buttonText}
-			textVariant={textVariant}
+			item={item}
+			handleClick={handleItemClick}			
 			objectFit={objectFit}
 			height={height}
 			width={width}
@@ -42,8 +37,8 @@ const VideoVert: React.FC<CardProps> = (props) => {
 		/>
 	) : (
 		<VideoModal
-			title={title}
-			src={video}
+			title={item?.title}
+			src={item?.video}
 			open={open}
 			handleClose={() => setOpen(false)}
 		/>

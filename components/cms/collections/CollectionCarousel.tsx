@@ -6,17 +6,17 @@ import { Typography } from '@mui/material'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
 import CollectionCard from './CollectionCard'
+import { ActionType } from '../../../types'
 
 export type CollectionCarouselProps = {
-	title?: string
+  actions: ActionType[]
 	url: string
-	style: 'card' | 'avatar' | 'cover'
+	style: 'card' | 'avatar' | 'cover' | 'chip' | 'text' | 'image'
 	fields?: any
 	editing?: boolean
 	navigateUrl: any
 	perPage?: number
 	query?: any
-	buttonText?: string
 	enableAutoPlay?: boolean
 	enableArrows?: boolean
 	enableBorder?: boolean
@@ -29,13 +29,12 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const {
-		title,
+    actions,
 		url,
 		style = 'card',
 		query: defaultQuery = {},
 		perPage = 20,
 		navigateUrl,
-		buttonText,
 		enableAutoPlay = false,
 		enableArrows = false,
 		enableDots = true,
@@ -68,9 +67,6 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-			<Typography variant="h5" color="textPrimary">
-				{title}
-			</Typography>
 			<Carousel
 				enableDots={enableDots}
 				enableAutoPlay={enableAutoPlay}
@@ -79,14 +75,10 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 				{resources?.map((resource, index) => (
 					<Box key={index} sx={sx.item}>
 						<CollectionCard
+              actions={actions}
 							variant="grid"
-							style={style}
-							label={resource?.label}
-							title={resource?.title}
-							image={resource?.image?.url}
-							video={resource?.video?.url}
-							description={resource?.description}
-							buttonText={buttonText}
+							style={style}              
+              item={resource}														
 							handleClick={() => handleClick(resource)}
 							enableBorder={enableBorder}
 							enableGradient={enableGradient}

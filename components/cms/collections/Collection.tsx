@@ -341,7 +341,6 @@ const Collection: React.FC<CollectionProps> = (props) => {
 							enableGradient={enableGradient}
               enableOverlay={enableOverlay}
 							enableEdit={enableEdit}
-							enableCreate={enableCreate}
 							enableDelete={enableDelete}
 							handleEdit={handleEdit}
 							handleDelete={handleDeleteClick}

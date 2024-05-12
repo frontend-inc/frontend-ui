@@ -5,15 +5,10 @@ import { VIDEO_VERT_HEIGHT, VIDEO_VERT_WIDTH } from '../../../constants/index'
 
 const VideoVert: React.FC<CardProps> = (props) => {
 	const {
-		editing,
-		label,
-		title,
-		image = '',
-		video = '',
+		actions,
+    item,    
 		href,
 		handleClick,
-		buttonText,
-		textVariant = 'subtitle1',
 		objectFit = 'cover',
 		height = VIDEO_VERT_HEIGHT,
 		width = VIDEO_VERT_WIDTH,
@@ -30,12 +25,10 @@ const VideoVert: React.FC<CardProps> = (props) => {
 
 	return !open ? (
 		<Cover
+      actions={actions}
 			variant="grid"
-			title={title}
-			image={image}
+      item={item}			
 			handleClick={handleItemClick}
-			buttonText={buttonText}
-			textVariant={textVariant}
 			objectFit={objectFit}
 			height={height}
 			width={width}
@@ -47,18 +40,11 @@ const VideoVert: React.FC<CardProps> = (props) => {
 	) : (
 		<VideoModal
 			open={open}
-			title={title}
-			src={video}
+			title={item?.title}
+			src={item?.video}
 			handleClose={() => setOpen(false)}
 		/>
 	)
 }
 
 export default VideoVert
-
-const sx = {
-	video: {
-		width: '100%',
-		height: '100%',
-	},
-}

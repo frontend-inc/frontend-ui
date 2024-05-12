@@ -8,7 +8,7 @@ type VideosProps = {
 	title?: string
 	url: string
 	variant: 'list' | 'grid'
-	style: 'card' | 'avatar' | 'cover'
+	style: 'card' | 'avatar' | 'cover' | 'chip' | 'text' | 'image'
 	editing?: boolean
 	perPage?: number
 	query?: any
@@ -52,12 +52,17 @@ const Videos: React.FC<VideosProps> = (props) => {
 				{title}
 			</Typography>
 			<CollectionList
+        actions={[]}
 				variant={variant}
 				style={style}
 				resources={resources}
 				enableBorder={enableBorder}
 				enableGradient={enableGradient}
 				handleClick={handleClick}
+        enableEdit={false}
+        enableDelete={false}
+        handleEdit={() => (null)}
+        handleDelete={() => (null)}
 			/>
 			{!loading && resources?.length === 0 && (
 				<Placeholder

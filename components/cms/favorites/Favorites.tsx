@@ -76,13 +76,17 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 
 	return (
 		<CollectionList
+      actions={[]}
 			resources={resources}
 			variant={variant}
 			style={style}
-			buttonText={buttonText}
 			handleClick={handleClick}
 			enableBorder={enableBorder}
 			enableGradient={enableGradient}
+      enableEdit={false}
+      enableDelete={false}
+      handleEdit={() => (null)}
+      handleDelete={() => (null)}
 		/>
 	)
 }
