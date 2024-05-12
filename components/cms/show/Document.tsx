@@ -51,22 +51,23 @@ const Document: React.FC<ShowItemProps> = (props) => {
 				</Stack>
 				{(actions || enableEdit) && (
 					<Stack
-						sx={sx.actions}
 						direction={{ sm: 'row', xs: 'column' }}
 						spacing={1}
 						p={enableBorder ? 1 : 0}
 					>
-						<Actions
-							actions={
-                buildActions({
-                  enableEdit,
-                  handleEdit,
-                  actions
-                })
-              }              
-							resource={flattenDocument(resource)}
-							justifyContent="flex-end"
-						/>
+            <Box>
+              <Actions
+                actions={
+                  buildActions({
+                    enableEdit,
+                    handleEdit,
+                    actions
+                  })
+                }              
+                resource={flattenDocument(resource)}
+                justifyContent="flex-end"
+              />
+            </Box>
 					</Stack>
 				)}
 		</Box>
@@ -134,12 +135,5 @@ const sx = {
 		width: '100%',
 		justifyContent: 'flex-start',
 		alignItems: 'center',
-	},
-	actions: {
-		width: '100%',
-		justifyContent: {
-			sm: 'flex-end',
-			xs: 'center',
-		},
 	},
 }

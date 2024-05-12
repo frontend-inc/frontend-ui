@@ -60,7 +60,14 @@ const CardList: React.FC<CardProps> = (props) => {
 						/>
 					</TouchableOpacity>
 				</Box>
-				<Stack sx={sx.contentArea} direction="row" spacing={1}>
+				<Stack 
+          direction="row" 
+          spacing={1}        
+          sx={{
+            ...sx.contentArea,
+            ...(enableBorder && sx.contentAreaBorder),
+          }} 
+        >
 					<Stack
 						direction="column"
 						spacing={1}
@@ -140,6 +147,9 @@ const sx = {
 	},
 	contentArea: {
 		width: '100%',
+	},
+  contentAreaBorder: {
+		pr: 1
 	},
 	content: {
 		width: '100%',

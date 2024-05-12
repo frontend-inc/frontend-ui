@@ -18,6 +18,7 @@ import { ActionType, FilterOptionType, FormFieldType } from '../../../types'
 import { useRouter } from 'next/router'
 import { CollectionList, Placeholder } from '../..'
 import CollectionSearchFilters from '../filters/SearchFilters'
+import CollectionToolbar from './CollectionToolbar'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 
 export type CollectionProps = {
@@ -241,53 +242,27 @@ const Collection: React.FC<CollectionProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-			<Stack direction="column" spacing={1}>
-				{enableSearch && (
-					<SearchInput
-						value={keywords}
-						handleChange={handleKeywordChange}
-						handleSearch={handleSearch}
-					/>
-				)}
-				<Stack
-					direction={{ xs: 'column', sm: 'row' }}
-					sx={sx.sortFilterActions}
-					spacing={1}
-				>
-					{enableFilters && filterAnchor == 'top' && (
-						<Box>
-							<FilterButton
-								filters={activeFilters}
-								handleFilter={handleFilter}
-								handleClear={handleClearFilters}
-								filterOptions={filterOptions}
-							/>
-						</Box>
-					)}
-					{enableSorting && (
-						<SortButton
-							sortBy={query?.sort_by || 'id'}
-							sortDirection={query?.sort_direction || 'desc'}
-							sortOptions={sortOptions}
-							handleSortBy={handleSortBy}
-							handleSortDirection={handleSortDirection}
-						/>
-					)}
-					{enableCreate && (
-						<Box>
-							<Button
-								sx={sx.button}
-								color="secondary"
-								variant="contained"
-								onClick={handleAdd}
-								startIcon={<Icon name="Plus" size={20} />}
-							>
-								Add
-							</Button>
-						</Box>
-					)}
-				</Stack>
-			</Stack>
+      <CollectionToolbar 
+        query={query}
+        activeFilters={activeFilters}
+        enableFilters={
+          enableFilters && 
+          filterAnchor == 'top'
+        }        
+        enableSorting={enableSorting}
+        enableCreate={enableCreate}
+        enableSearch={enableSearch}
+        filterOptions={filterOptions}
+        sortOptions={sortOptions}
+        handleFilter={handleFilter}
+        handleClearFilters={handleClearFilters}
+        handleSortBy={handleSortBy}
+        handleSortDirection={handleSortDirection}
+        handleAdd={handleAdd}
+        keywords={keywords}
+        handleKeywordChange={handleKeywordChange}
+        handleSearch={handleSearch}
+      />			
 			<Grid container spacing={0}>
 				{enableFilters && filterAnchor == 'left' && (
 					<Grid item xs={12} sm={4} lg={3}>
