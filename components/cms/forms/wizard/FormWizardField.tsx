@@ -1,7 +1,6 @@
 import React from 'react'
 import { Fade, Typography, Stack } from '@mui/material'
 import FormInput from '../FormInput'
-import { flattenDocument } from '../../../../helpers'
 import { get } from 'lodash'
 import FormWizardInput from './FormWizardInput'
 
@@ -33,19 +32,6 @@ const FormWizardField: React.FC<FormWizardProps> = (props) => {
 	const { field, fadeIn, resource, setResource, handleChange, handleRemove } =
 		props
 
-	const handleDataChange = (ev) => {
-		const { name } = ev.target
-		const value =
-			ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
-		setResource((prev) => ({
-			...prev,
-			data: {
-				...prev.data,
-				[name]: value,
-			},
-		}))
-	}
-
 	return (
 		<Fade in={fadeIn} timeout={350}>
 			<Stack direction="column" spacing={3}>
@@ -70,7 +56,7 @@ const FormWizardField: React.FC<FormWizardProps> = (props) => {
 								placeholder={field.placeholder}
 								variant={field.variant}
 								options={field.options}
-								value={get(flattenDocument(resource), field.name)}
+								value={get(resource, field.name)}
 								handleChange={handleChange}
 							/>
 						) : (
@@ -80,8 +66,8 @@ const FormWizardField: React.FC<FormWizardProps> = (props) => {
 								placeholder={field.placeholder}
 								variant={field.variant}
 								options={field.options}
-								value={get(flattenDocument(resource?.data), field.name)}
-								handleChange={handleDataChange}
+								value={get(resource?.data, field.name)}
+								handleChange={handleChange}
 								handleRemove={handleRemove}
 							/>
 						)}

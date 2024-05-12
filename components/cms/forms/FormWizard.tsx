@@ -57,9 +57,8 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		setResource,
 		update,
 		create,
-		handleChange,
     handleDataChange,
-		removeAttachment,
+		removeAttachment,    
 	} = useDocuments({
 		collection: contentType
 	})
@@ -175,7 +174,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 									field={currentField}
 									handleChange={handleDataChange}
 									handleRemove={handleRemove}
-									resource={resource}
+									resource={flattenDocument(resource)}
 									setResource={setResource}
 								/>
 								<FormWizardButtons
