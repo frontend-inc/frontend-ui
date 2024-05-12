@@ -44,7 +44,7 @@ const ImageHoriz: React.FC<CardProps> = (props) => {
       >
 			<TouchableOpacity handleClick={handleItemClick}>
 				<Image
-					src={image?.url || image}
+					src={image?.url}
 					height={height}
 					objectFit={objectFit}
 					alt={title}

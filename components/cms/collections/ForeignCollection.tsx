@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { AppContext } from '../../../context'
-import { useResource } from 'frontend-js'
+import { useResource, useDocuments } from 'frontend-js'
 import { useRouter } from 'next/router'
 import {
 	Drawer,
@@ -12,7 +12,6 @@ import {
 	Icon,
 } from '../../../components'
 import { Stack, Collapse, Button, Box } from '@mui/material'
-import { SYSTEM_FIELDS } from '../../../constants'
 import { FormFieldType } from '../../../types'
 import { flattenDocument } from '../../../helpers'
 
@@ -21,13 +20,12 @@ export type ForeignCollectionProps = {
 	style?: 'card' | 'avatar' | 'cover'
 	field: any
 	fields: FormFieldType[]
-	resource: any
-	url: string
+	resource: any	
 	layout?: 'drawer' | 'inline'
 	handle: string
+  contentType: string
 	foreignContentType?: string
-	navigateUrl?: any
-	foreignUrl?: string
+	navigateUrl?: any	
 	perPage?: number
 	query?: any
 	enableEdit?: boolean
@@ -40,14 +38,12 @@ export type ForeignCollectionProps = {
 
 const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	const {
-		field,
 		fields,
-		resource,
+		resource: __resource,
 		layout = 'drawer',
 		variant = 'list',
 		style = 'card',
-		url,
-		foreignUrl,
+		contentType,
 		foreignContentType,
 		navigateUrl,
 		perPage = 10,
@@ -68,56 +64,37 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 
 	const {
 		query,
-		resources,
+    resource: _resource,
+		resources: _resources,
+    setResource: _setResource,
 		page,
 		numPages,
 		loadMore,
-		reloadMany,
+    findMany,
 		findLinks,
 		addLinks,
-	} = useResource({
-		name: 'document',
-		url,
+	} = useDocuments({
+		collection: contentType
 	})
 
 	const {
 		errors,
 		loading,
 		delayedLoading,
-		resource: _resource,
+		resource,
 		setResource,
 		update,
 		create,
 		destroy,
+    handleDataChange,
 		removeAttachment,
-	} = useResource({
-		name: 'document',
-		url: foreignUrl,
+	} = useDocuments({
+    collection: foreignContentType,
 	})
 
 	const handleClick = (item) => {
 		if (clientUrl && navigateUrl && item?.handle) {
 			router.push(`${clientUrl}${navigateUrl}/${item?.handle}`)
-		}
-	}
-
-	const handleDataChange = (ev) => {
-		const { name } = ev.target
-		const value =
-			ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
-		if (SYSTEM_FIELDS.includes(name)) {
-			setResource((prev) => ({
-				...prev,
-				[name]: value,
-			}))
-		} else {
-			setResource((prev) => ({
-				...prev,
-				data: {
-					...prev.data,
-					[name]: value,
-				},
-			}))
 		}
 	}
 
@@ -134,12 +111,12 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	const handleSubmit = async () => {
 		try {
 			let resp
-			if (_resource?.id) {
-				resp = await update(_resource)
+			if (resource?.id) {
+				resp = await update(resource)
 			} else {
-				resp = await create(_resource)
+				resp = await create(resource)
 				if (resp?.id) {
-					await addLinks(resource?.handle, [resp.id])
+					await addLinks(_resource?.handle, [resp.id])
 					handleFetchResources()
 				}
 			}
@@ -159,18 +136,22 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	}
 
 	const handleDelete = async () => {
-		await destroy(_resource?.id)
-		setOpenDeleteModal(false)
-		setOpenModal(false)
-		handleFetchResources()
+    if(resource?.id){
+      await destroy(resource?.id)
+      setOpenDeleteModal(false)
+      setOpenModal(false)
+      handleFetchResources()
+    }
 	}
 
 	const handleRemove = async (name) => {
-		await removeAttachment(_resource?.id, name)
+    if(resource?.id){
+		  await removeAttachment(resource?.id, name)
+    }
 	}
 
 	const handleFetchResources = async () => {
-		findLinks(resource.id, foreignContentType, {
+		findLinks(_resource.id, foreignContentType, {
 			...query,
 			...defaultQuery,
 			per_page: perPage,
@@ -179,10 +160,31 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (resource?.id && foreignContentType) {
+		if (_resource?.id && foreignContentType) {
 			handleFetchResources()
 		}
-	}, [resource, foreignContentType])
+	}, [_resource?.id, foreignContentType])
+
+  const handleFetchResource = async () => {    
+    let searchQuery = {
+      page: 1,
+      per_page: 1
+    }
+    let resp = await findMany(searchQuery)
+    if(resp?.length > 0){
+      _setResource(resp[0])
+    }
+  }
+
+	useEffect(() => {
+		if (__resource?.id) {
+			_setResource(__resource)
+		}else{
+      if(contentType){
+        handleFetchResource()
+      }      
+    }
+	}, [__resource, contentType])
 
 	return (
 		<Stack direction="column" spacing={1} sx={sx.root}>
@@ -205,7 +207,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 							loading={loading}
 							errors={errors}
 							fields={fields}
-							resource={flattenDocument(_resource)}
+							resource={flattenDocument(resource)}
 							handleChange={handleDataChange}
 							handleRemove={handleRemove}
 						/>
@@ -216,7 +218,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 							onClick={handleSubmit}
 							startIcon={<IconLoading loading={delayedLoading} />}
 						>
-							{_resource?.id ? 'Update' : 'Save'}
+							{resource?.id ? 'Update' : 'Save'}
 						</Button>
 					</Stack>
 				</Collapse>
@@ -225,7 +227,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
         actions={[]}
 				variant={variant}
 				style={style}
-				resources={resources}
+				resources={_resources}
 				handleClick={handleClick}
 				enableBorder={enableBorder}
 				enableGradient={enableGradient}
@@ -241,7 +243,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 				<Drawer
 					open={openModal}
 					handleClose={() => setOpenModal(false)}
-					title={_resource?.id ? 'Edit' : 'Add'}
+					title={resource?.id ? 'Edit' : 'Add'}
 					actions={
 						<Button
 							fullWidth
@@ -250,7 +252,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 							onClick={handleSubmit}
 							startIcon={<IconLoading loading={loading} />}
 						>
-							{_resource?.id ? 'Update' : 'Save'}
+							{resource?.id ? 'Update' : 'Save'}
 						</Button>
 					}
 				>
@@ -258,7 +260,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 						loading={loading}
 						errors={errors}
 						fields={fields}
-						resource={flattenDocument(_resource)}
+						resource={flattenDocument(resource)}
 						handleChange={handleDataChange}
 						handleRemove={handleRemove}
 					/>

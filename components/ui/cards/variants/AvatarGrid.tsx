@@ -54,7 +54,7 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 			>
 				<TouchableOpacity handleClick={handleItemClick}>
 					<Avatar
-						src={image?.url || image}
+						src={image?.url}
 						sx={{
 							...sx.avatar,
 							...(enableGradient && sx.gradient),

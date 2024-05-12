@@ -61,7 +61,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 								height: `${height}px`,
 								width: `${width}px`,
 							}}
-							src={image?.url || image}
+							src={image?.url}
 							alt={title}
 						>
 							<Box />

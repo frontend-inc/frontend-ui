@@ -12,7 +12,7 @@ const ProductImageCarousel: React.FC = () => {
 					<TouchableOpacity handleClick={() => handleImageClick(image)}>
 						<Box
 							component="img"
-							src={image?.url || image?.url}
+							src={image?.url?.url}
 							sx={{
 								...sx.image,
 								height: '512px',

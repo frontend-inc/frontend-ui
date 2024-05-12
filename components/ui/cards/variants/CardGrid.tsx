@@ -47,7 +47,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 			<Box sx={sx.imageContainer}>
 				<TouchableOpacity handleClick={handleItemClick}>
 					<Image
-						src={image?.url || image}
+						src={image?.url}
 						height={height}
 						objectFit={objectFit}
 						alt={title}

@@ -50,7 +50,7 @@ const CardList: React.FC<CardProps> = (props) => {
 					<TouchableOpacity handleClick={handleItemClick}>
 						<Image
 							label={label}
-							src={image?.url || image}
+							src={image?.url}
 							height={height}
 							objectFit={objectFit}
 							alt={title}

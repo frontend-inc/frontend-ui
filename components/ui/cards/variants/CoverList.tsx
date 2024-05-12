@@ -37,7 +37,7 @@ const CoverList: React.FC<CardProps> = (props) => {
 			<TouchableOpacity handleClick={handleItemClick}>
 				<Image
 					label={label}
-					src={image?.url || image}
+					src={image?.url}
 					objectFit={objectFit}
 					alt={title}
 					height={height}

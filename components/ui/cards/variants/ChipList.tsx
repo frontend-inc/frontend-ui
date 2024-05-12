@@ -61,7 +61,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 									...(enableGradient && sx.gradient),
 									...(enableOverlay && sx.overlay),
 								}}
-								src={image?.url || image}
+								src={image?.url}
 								alt={title}
 							>
 								<Box />
