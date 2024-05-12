@@ -23,7 +23,7 @@ import { SortOptionType, SearchFilterOptionType } from '../../../types'
 export type CollectionProps = {
 	url: string
 	variant: 'list' | 'grid'
-	style: 'avatar' | 'card' | 'cover' | 'chip'
+	style: 'avatar' | 'card' | 'cover' | 'chip' | 'text' | 'image'
 	layout?: 'drawer' | 'inline'
 	editing?: boolean
   contentType: string 

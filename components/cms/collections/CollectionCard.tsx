@@ -12,7 +12,7 @@ type CardStyleTypes = 'card' |
 type CollectionCardProps = {
   actions: ActionType[]
 	variant: 'list' | 'grid'
-	style: CardStyleTypes 
+	style: CardStyleTypes   
   item: any & {
     label?: string
     title?: string

@@ -45,14 +45,16 @@ const Cards: React.FC<CardsProps> = (props) => {
 				<Stack spacing={2}>
 					{items?.map((card, i) => (
 						<CollectionCard
+              actions={[]}
 							key={i}
 							variant={variant}
 							style={style}
-							label={card?.label}
-							title={card?.title}
-							description={card?.description}
-							image={card?.image}
-							buttonText={card?.buttonText}
+              item={{ 
+                ...card,
+                image: {
+                  url: card?.image 
+                }
+              }}				              										
 							handleClick={() => handleClick(card)}
 							enableBorder={enableBorder}
 							enableGradient={enableGradient}
