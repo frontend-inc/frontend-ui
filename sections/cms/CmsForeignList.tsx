@@ -18,11 +18,12 @@ const CmsForeignCollection: React.FC<CmsForeignCollectionProps> = (props) => {
 		py,
 		px,
 		maxWidth,
+    requireAuth,
 		...rest
 	} = props
 
 	return (
-		<Section bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
+		<Section requireAuth={requireAuth} bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
 			<Heading
 				label={label}
 				title={title}

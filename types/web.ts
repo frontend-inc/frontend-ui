@@ -15,6 +15,7 @@ export type SectionProps = {
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 	py?: number
 	px?: number
+  requireAuth?: boolean
 }
 
 export type CardProps = {

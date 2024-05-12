@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Fade, Box } from '@mui/material'
 import { muiTheme } from '../../theme'
-
-type SectionProps = {
-	children: React.ReactNode
-	bgcolor?: string
-	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
-	py?: number
-	px?: number
-	enableTransitions?: boolean
-}
+import { AuthRequired } from '../../components'
+import { SectionProps } from '../../types'
 
 const Section: React.FC<SectionProps> = (props) => {
 	const {
 		enableTransitions = false,
+    requireAuth = false,
 		children,
 		bgcolor,
 		maxWidth,
@@ -59,7 +53,12 @@ const Section: React.FC<SectionProps> = (props) => {
 						maxWidth: width,
 					}}
 				>
-					{children}
+        { requireAuth ? 
+          <AuthRequired>
+            {children}
+          </AuthRequired> : 
+          children
+        }					
 				</Box>
 			</Box>
 		</Fade>

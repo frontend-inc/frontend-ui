@@ -7,10 +7,10 @@ import { SectionProps } from '../../types'
 type CmsShowProps = SectionProps & ShowProps
 
 const CmsShow: React.FC<CmsShowProps> = (props) => {
-	const { bgcolor, py, px, maxWidth, ...rest } = props
+	const { bgcolor, py, px, maxWidth, requireAuth, ...rest } = props
 
 	return (
-		<Section bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
+		<Section requireAuth={requireAuth} bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
 			<Show {...rest} />
 		</Section>
 	)
