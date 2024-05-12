@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../../../context'
-import { useResource } from 'frontend-js'
+import { useDocuments } from 'frontend-js'
 import { Box } from '@mui/material'
 import FormWizardProgress from './wizard/FormWizardProgress'
 import FormCard from './wizard/FormCard'
@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 export type FormWizardProps = {
 	handle: string
 	py?: number
-	url: string
+	contentType: string
 	variant?: 'contained' | 'outlined' | 'text'
 	fields: any[]
 	startTitle: string
@@ -35,7 +35,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		py = 4,
 		handle,
 		fields,
-		url,
+		contentType,
 		startTitle,
 		startDescription,
 		startImage,
@@ -58,10 +58,10 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		update,
 		create,
 		handleChange,
+    handleDataChange,
 		removeAttachment,
-	} = useResource({
-		name: 'document',
-		url,
+	} = useDocuments({
+		collection: contentType
 	})
 
 	const [currentField, setCurrentField] = useState()
@@ -173,7 +173,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 								<FormWizardField
 									fadeIn={fadeIn}
 									field={currentField}
-									handleChange={handleChange}
+									handleChange={handleDataChange}
 									handleRemove={handleRemove}
 									resource={resource}
 									setResource={setResource}
