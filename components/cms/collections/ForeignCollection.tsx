@@ -70,9 +70,16 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		page,
 		numPages,
 		loadMore,
-		findMany,
 		findLinks,
 		addLinks,
+	} = useDocuments({
+		collection: contentType,
+	})
+
+  // Isolate the useDocuments hook to avoid conflicts
+  // with resources 
+  const {
+		findMany,
 	} = useDocuments({
 		collection: contentType,
 	})
@@ -151,12 +158,15 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	}
 
 	const handleFetchResources = async () => {
-		findLinks(_resource.id, foreignContentType, {
-			...query,
-			...defaultQuery,
-			per_page: perPage,
-			page: 1,
-		})
+    if(_resource?.id && foreignContentType) {
+      console.log("ForeignCollection", _resource.id, foreignContentType)
+      findLinks(_resource.id, foreignContentType, {
+        ...query,
+        ...defaultQuery,
+        per_page: perPage,
+        page: 1,
+      })
+    }
 	}
 
 	useEffect(() => {
