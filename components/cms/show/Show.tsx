@@ -54,8 +54,7 @@ const Show: React.FC<ShowProps> = (props) => {
 		update,
 		create,
 		resource,
-		setResource,
-		findMany,
+    setResource,
 		removeAttachment,
 		handleDataChange,
 	} = useDocuments({
@@ -99,36 +98,11 @@ const Show: React.FC<ShowProps> = (props) => {
 
 	const Component = components[style]
 
-	const handleFetchResource = async () => {
-		let resources
-		let searchQuery = {
-			page: 1,
-			per_page: 1,
-		}
-		if (handle) {
-			resources = await findMany({
-				...searchQuery,
-				filters: {
-					AND: [{ handle: { eq: handle } }],
-				},
-			})
-		} else {
-			resources = await findMany(searchQuery)
-		}
-		if (resources?.length > 0) {
-			setResource(resources[0])
-		}
-	}
-
-	useEffect(() => {
-		if (_resource?.id) {
-			setResource(_resource)
-		} else {
-			if (contentType) {
-				handleFetchResource()
-			}
-		}
-	}, [_resource, contentType, handle])
+  useEffect(() => {
+    if(_resource?.id){
+      setResource(_resource)
+    }
+  }, [_resource])
 
 	return (
 		<Stack direction="column" spacing={2} sx={sx.root}>

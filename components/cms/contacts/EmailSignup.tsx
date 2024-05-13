@@ -35,7 +35,6 @@ const EmailSignup: React.FC<EmailSignupProps> = (props) => {
 	})
 
 	const handleSubmit = async () => {
-		console.log('Contact', contact)
 		let resp = await create(contact)
 		if (resp?.id) {
 			setContact({})

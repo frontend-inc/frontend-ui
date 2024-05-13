@@ -10,9 +10,7 @@ type CellHABTMProps = {
 
 const CellHABTM: React.FC<CellHABTMProps> = (props) => {
 	const { value: links, field, handleClick } = props
-
 	let text = `${links?.length || 0} ${field?.foreign_collection?.plural_name}`
-
 	return (
 		<CellButton handleClick={handleClick} icon={'Database'}>
 			{text}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { AppContext } from '../../../context'
-import { useResource, useDocuments } from 'frontend-js'
+import { useDocuments } from 'frontend-js'
 import { useRouter } from 'next/router'
 import {
 	Drawer,
@@ -39,7 +39,7 @@ export type ForeignCollectionProps = {
 const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	const {
 		fields,
-		resource: __resource,
+		resource: _resource,
 		layout = 'drawer',
 		variant = 'list',
 		style = 'card',
@@ -64,22 +64,12 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 
 	const {
 		query,
-		resource: _resource,
-		resources: _resources,
-		setResource: _setResource,
+		resources,
 		page,
 		numPages,
 		loadMore,
 		findLinks,
 		addLinks,
-	} = useDocuments({
-		collection: contentType,
-	})
-
-  // Isolate the useDocuments hook to avoid conflicts
-  // with resources 
-  const {
-		findMany,
 	} = useDocuments({
 		collection: contentType,
 	})
@@ -123,7 +113,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 			} else {
 				resp = await create(resource)
 				if (resp?.id) {
-					await addLinks(_resource?.handle, [resp.id])
+					await addLinks(_resource?.id, [resp.id])
 					handleFetchResources()
 				}
 			}
@@ -159,7 +149,6 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 
 	const handleFetchResources = async () => {
     if(_resource?.id && foreignContentType) {
-      console.log("ForeignCollection", _resource.id, foreignContentType)
       findLinks(_resource.id, foreignContentType, {
         ...query,
         ...defaultQuery,
@@ -174,27 +163,6 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 			handleFetchResources()
 		}
 	}, [_resource?.id, foreignContentType])
-
-	const handleFetchResource = async () => {
-		let searchQuery = {
-			page: 1,
-			per_page: 1,
-		}
-		let resp = await findMany(searchQuery)
-		if (resp?.length > 0) {
-			_setResource(resp[0])
-		}
-	}
-
-	useEffect(() => {
-		if (__resource?.id) {
-			_setResource(__resource)
-		} else {
-			if (contentType) {
-				handleFetchResource()
-			}
-		}
-	}, [__resource, contentType])
 
 	return (
 		<Stack direction="column" spacing={1} sx={sx.root}>
@@ -237,7 +205,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 				actions={[]}
 				variant={variant}
 				style={style}
-				resources={_resources}
+				resources={resources}
 				handleClick={handleClick}
 				enableBorder={enableBorder}
 				enableGradient={enableGradient}
@@ -276,7 +244,6 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 					/>
 				</Drawer>
 			)}
-
 			<AlertModal
 				open={openDeleteModal}
 				handleClose={() => setOpenDeleteModal(false)}

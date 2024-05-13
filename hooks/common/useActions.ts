@@ -22,7 +22,6 @@ const useActions = (params: UseActionParams) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const handleClick = async (ev) => {
-		console.log('Action', action, resource)
 		let value
 		if (action.fieldName) {
 			value = resource[action.fieldName]
