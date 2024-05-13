@@ -12,7 +12,7 @@ const FieldArray: React.FC<FieldArrayProps> = (props) => {
 	const { value: values, label, ...rest } = props
 	return (
 		<FieldWrapper label={label} {...rest}>
-      <Stack sx={ sx.stack } direction={row} spacing={1}>
+      <Stack sx={ sx.stack } direction={'row'} spacing={1}>
 			{ Array.isArray(values) && 
         values?.map((value, index) => (
 				<Chip key={index} label={value} sx={sx.chip} size="small" />
