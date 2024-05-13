@@ -1,5 +1,5 @@
 import React from 'react'
-import { Chip } from '@mui/material'
+import { Stack, Chip } from '@mui/material'
 import { FieldWrapper } from '../../../components'
 
 type FieldArrayProps = {
@@ -10,12 +10,14 @@ type FieldArrayProps = {
 
 const FieldArray: React.FC<FieldArrayProps> = (props) => {
 	const { value: values, label, ...rest } = props
-
 	return (
 		<FieldWrapper label={label} {...rest}>
-			{values?.map((value, index) => (
+      <Stack sx={ sx.stack } direction={row} spacing={1}>
+			{ Array.isArray(values) && 
+        values?.map((value, index) => (
 				<Chip key={index} label={value} sx={sx.chip} size="small" />
 			))}
+      </Stack>
 		</FieldWrapper>
 	)
 }
@@ -24,12 +26,12 @@ export default FieldArray
 
 const sx = {
 	chip: {
-		mt: 0,
-		mr: 0.5,
-		mb: 0.5,
-		ml: 0,
-		textTransform: 'none',
-		fontFamily: (theme) => theme.typography.caption.fontFamily,
+		fontFamily: (theme) => theme.typography.button.fontFamily,
 		letterSpacing: 0,
+    borderRadius: theme => `${theme.shape.borderRadius}px`,
 	},
+  stack: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  }
 }
