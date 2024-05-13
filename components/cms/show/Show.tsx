@@ -124,7 +124,7 @@ const Show: React.FC<ShowProps> = (props) => {
 					enableBorder={enableBorder}
 				/>
 			)}
-			{!loading && !resource?.id && enableCreate && (
+			{(!resource?.id && !_resource?.id && enableCreate) && (
 				<Stack direction="column" spacing={2} sx={sx.inlineForm}>
 					<Form
 						loading={loading}

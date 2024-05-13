@@ -51,6 +51,7 @@ const AuthShow: React.FC<ShowProps> = (props) => {
 		}
 	}, [_resource, contentType, handle])
 
+  if(!resource?.id) return null;
 	return (
     <Show 
       handle={handle}
