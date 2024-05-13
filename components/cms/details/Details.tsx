@@ -31,7 +31,7 @@ const Details: React.FC<DetailsProps> = (props) => {
 							key={i}
 							item
 							xs={12}
-							sm={FULL_WIDTH_VARIANTS.includes(field?.variant) ? 12 : 4}
+							sm={FULL_WIDTH_VARIANTS.includes(field?.variant) ? 12 : 6}
 						>
 							<Field
 								field={field}
