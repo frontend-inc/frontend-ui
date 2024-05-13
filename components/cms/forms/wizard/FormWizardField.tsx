@@ -29,7 +29,7 @@ const WIZARD_FIELD_VARIENTS = [
 ]
 
 const FormWizardField: React.FC<FormWizardProps> = (props) => {
-	const { field, fadeIn, resource, setResource, handleChange, handleRemove } =
+	const { field, fadeIn, resource, handleChange, handleRemove } =
 		props
 
 	return (
@@ -66,7 +66,7 @@ const FormWizardField: React.FC<FormWizardProps> = (props) => {
 								placeholder={field.placeholder}
 								variant={field.variant}
 								options={field.options}
-								value={get(resource?.data, field.name)}
+								value={get(resource, field.name)}
 								handleChange={handleChange}
 								handleRemove={handleRemove}
 							/>
@@ -82,11 +82,11 @@ export default FormWizardField
 
 const sx = {
 	title: {
-		textAlign: 'center',
+		textAlign: 'left',
 		width: '100%',
 	},
 	description: {
-		textAlign: 'center',
+		textAlign: 'left',
 		width: '100%',
 	},
 }

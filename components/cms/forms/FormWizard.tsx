@@ -10,6 +10,7 @@ import { useRouter } from 'next/router'
 
 export type FormWizardProps = {
 	handle: string
+  resource?: any
 	py?: number
 	contentType: string
 	variant?: 'contained' | 'outlined' | 'text'
@@ -34,6 +35,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 	const {
 		py = 4,
 		handle,
+    resource: _resource,
 		fields,
 		contentType,
 		startTitle,
@@ -129,12 +131,6 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (handle) {
-			findOne(handle)
-		}
-	}, [handle])
-
-	useEffect(() => {
 		if (fields) {
 			setTotalSteps(fields.length) // End card adds 1
 		}
@@ -145,6 +141,14 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 			setCurrentField(fields[currentStep - 1])
 		}
 	}, [fields, currentStep])
+
+	useEffect(() => {
+    if(_resource?.id){
+      setResource(_resource)
+    }else if(handle && contentType) {      
+      findOne(handle)
+    }		
+	}, [_resource, handle, contentType])
 
 	return (
 		<Box sx={sx.root}>

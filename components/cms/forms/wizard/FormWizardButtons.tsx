@@ -65,7 +65,7 @@ export default FormWizardButtons
 const sx = {
 	actions: {
 		width: '100%',
-		justifyContent: 'flex-end',
+		justifyContent: 'center',
 		py: 4,
 	},
 }
