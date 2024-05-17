@@ -50,6 +50,8 @@ const sx = {
 		},
 		whiteSpace: 'nowrap',
 		maxWidth: '240px',    
+    borderBottom: '2px solid',
+    borderColor: 'divider',
 	},
 	cellSmall: {
 		minWidth: '40px',

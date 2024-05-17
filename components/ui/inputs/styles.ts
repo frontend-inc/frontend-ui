@@ -1,24 +1,21 @@
 export const sx = {
 	inputBase: {
 		p: 0,
-		color: 'text.secondary',
+		color: 'text.secondary',    
 		width: '100%',
 		'& input, & .MuiInputBase-inputMultiline': {
 			WebkitAppearance: 'none',
 			MozAppearance: 'none',
 			appearance: 'none',
 			p: 1,
-			borderRadius: 1,
+			borderRadius: theme => `${theme.shape.borderRadius}px`,
 			fontSize: (theme) => theme.typography.body2.fontSize,
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
-			bgcolor: 'background.default',
+			bgcolor: 'background.paper',
 			border: '2px solid',
-			borderColor: 'divider',
-			m: '1px',
+			borderColor: 'divider',			
 			'&:focus': {
-				m: '0px',
 				boxShadow: `none`,
-				border: '3px solid',
 				borderColor: 'primary.main',
 			},
 		},
