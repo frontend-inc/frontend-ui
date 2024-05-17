@@ -37,7 +37,7 @@ const CellHeader: React.FC<CellHeaderProps> = (props) => {
 				)
 			}
 		>
-			<Typography variant="body1" color="text.primary" sx={sx.label}>
+			<Typography variant="overline" color="text.primary" sx={sx.label}>
 				{field?.label}
 			</Typography>
 		</Button>
@@ -51,10 +51,6 @@ const sx = {
 		borderRadius: 0,
 		width: '100%',
 		height: '100%',
-	},
-	label: {
-		textTransform: 'lowercase',
-		fontWeight: 500,
 	},
 	icon: {
 		visibility: 'hidden',

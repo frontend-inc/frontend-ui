@@ -85,7 +85,7 @@ const ExpandableList: React.FC<ExpandableListProps> = (props) => {
 					>
 						<ListItemText
 							primary={
-								<Typography sx={sx.label} variant={'caption'}>
+								<Typography sx={sx.label} variant={'overline'}>
 									{label}
 								</Typography>
 							}
