@@ -69,7 +69,7 @@ const sx = {
 	skeleton: {
 		m: 0.5,
 		opacity: 0.1,
-		borderRadius: (theme) => theme.shape.borderRadius,
+		borderRadius: 1,
 		bgcolor: 'text.secondary',
 	},
 }

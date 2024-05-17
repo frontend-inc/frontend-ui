@@ -45,7 +45,7 @@ export const selectStyles: any = {
 		zIndex: 999,
 		position: 'absolute',
 		width: '100%',
-		borderRadius: (theme) => theme.shape.borderRadius,
+		borderRadius: 1,
 	}),
 	input: (styles) => ({
 		...styles,
@@ -60,12 +60,12 @@ export const selectStyles: any = {
 	singleValue: (styles) => ({
 		...styles,
 		color: 'text.primary',
-		borderRadius: (theme) => theme.shape.borderRadius,
+		borderRadius: 1,
 	}),
 	multiValue: (styles) => ({
 		...styles,
 		p: '0px 2px',
-		borderRadius: (theme) => theme.shape.borderRadius,
+		borderRadius: 1,
 		fontSize: 15,
 		border: '1px solid',
 		borderColor: theme.palette.primary.main,

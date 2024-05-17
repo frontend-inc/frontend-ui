@@ -37,6 +37,6 @@ const sx = {
 		justifyContent: 'flex-start',
 	},
 	button: {
-		borderRadius: (theme) => theme.shape.borderRadius,
+		borderRadius: 1,
 	},
 }

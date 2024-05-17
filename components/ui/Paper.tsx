@@ -29,7 +29,7 @@ export default Paper
 const sx = {
 	root: {
 		width: '100%',
-		borderRadius: (theme) => theme.shape.borderRadius,
+		borderRadius: 1,
 		bgcolor: 'background.paper',
 		boxShadow: 0,
 		border: '1px solid',

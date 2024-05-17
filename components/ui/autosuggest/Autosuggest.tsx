@@ -234,7 +234,7 @@ const sx: any = {
 			borderRadius: 1,
 			fontSize: (theme) => theme.typography.body2.fontSize,
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
-			bgcolor: 'background.default',
+			bgcolor: 'background.paper',
 			border: (theme) => `1px solid ${theme.palette.divider}`,
 			'&:focus': {
 				border: (theme) => `2px solid ${theme.palette.primary.light}`,
@@ -247,7 +247,7 @@ const sx: any = {
 			borderColor: 'error.main',
 			p: 1,
 			height: 20,
-			borderRadius: (theme) => theme.shape.borderRadius,
+			borderRadius: 1,
 		},
 	},
 	inputContainer: {

@@ -128,7 +128,7 @@ export default Modal
 
 const sx = {
 	root: {
-		borderRadius: (theme) => theme.shape.borderRadius,
+		borderRadius: 1,
 	},
 	title: {},
 	dialogTitleContainer: {
