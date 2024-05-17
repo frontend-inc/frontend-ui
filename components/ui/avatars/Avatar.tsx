@@ -1,5 +1,5 @@
 import React from 'react'
-import { Avatar, Typography } from '@mui/material'
+import { Avatar as MuiAvatar, Typography } from '@mui/material'
 import { Icon } from '../..'
 
 type UserAvatarProps = {
@@ -9,10 +9,10 @@ type UserAvatarProps = {
 	color?: string
 }
 
-const UserAvatar: React.FC<UserAvatarProps> = (props) => {
+const Avatar: React.FC<UserAvatarProps> = (props) => {
 	const { src, color, label, size = 40 } = props
 	return (
-		<Avatar
+		<MuiAvatar
 			variant="circular"
 			src={src}
 			sx={{
@@ -29,11 +29,11 @@ const UserAvatar: React.FC<UserAvatarProps> = (props) => {
 			) : (
 				<Icon name="User" color="secondary.contrastText" />
 			)}
-		</Avatar>
+		</MuiAvatar>
 	)
 }
 
-export default UserAvatar
+export default Avatar
 
 const sx = {
 	avatar: {

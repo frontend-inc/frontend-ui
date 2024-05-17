@@ -215,7 +215,7 @@ const TableFilterForm: React.FC<TableFilterFormProps> = (props) => {
 				startIcon={<FilterList />}
 				onClick={handleClearFilters}
 				fullWidth
-				variant="outlined"
+				variant="contained"
 				color="secondary"
 			>
 				Reset filters

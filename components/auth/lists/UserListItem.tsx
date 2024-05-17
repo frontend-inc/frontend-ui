@@ -7,7 +7,6 @@ import {
 	ListItemButton,
 	ListItemIcon,
 	ListItemText,
-	MenuItem,
 } from '@mui/material'
 import { UserAvatar, Label, MenuButton } from '../../../components'
 import { UserType } from 'frontend-js'

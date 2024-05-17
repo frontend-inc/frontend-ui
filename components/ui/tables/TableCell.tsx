@@ -28,8 +28,8 @@ const TableCell: React.FC<TableCellProps> = (props) => {
 				...sx.root,
 				...(small && sx.cellSmall),
 				...(sticky && sx.cellSticky),
+        ...(header && sticky && sx.cellStickyHeader),
 				...(header && sx.cellHeader),
-				...(header && sticky && sx.cellStickyHeader),
 			}}
 		>
 			{children}
@@ -44,32 +44,31 @@ const sx = {
 		px: 1,
 		minWidth: '100px',
 		bgcolor: 'background.default',
-		borderBottom: '1px dotted',
-		borderRight: '1px dotted',
-		borderColor: 'divider',
 		overflowX: 'scroll',
 		'&::-webkit-scrollbar': {
 			display: 'none',
 		},
 		whiteSpace: 'nowrap',
-		maxWidth: '240px',
+		maxWidth: '240px',    
 	},
 	cellSmall: {
 		minWidth: '40px',
 		width: '40px',
 	},
 	cellHeader: {
-		borderBottom: '3px solid',
+		borderBottom: '2px solid',
+    borderColor: 'divider',
 		zIndex: 1,
 		p: 0,
 	},
 	cellSticky: {
 		position: 'sticky',
-		left: 0,
-		borderRight: '3px solid',
+		left: 0,		    
 		zIndex: 2,
 	},
 	cellStickyHeader: {
-		zIndex: 3,
+		zIndex: 3,    
+    borderBottom: '3px solid',
+    borderColor: 'divider',
 	},
 }

@@ -18,6 +18,7 @@ const CellUser: React.FC<CellUserProps> = (props) => {
 				sx={sx.button}
 				size="small"
 				color="secondary"
+        variant="contained"
 				onClick={handleClick}
 				startIcon={user?.avatar?.url && <UserAvatar user={user} />}
 			>

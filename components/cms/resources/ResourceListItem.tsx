@@ -24,10 +24,12 @@ export type ResourceListItemProps = {
 	descriptionField?: string
 	imageField?: string
 	iconField?: string
+  avatar?: any 
 }
 
 const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 	const {
+    avatar,
 		resource,
 		colorField = 'color',
 		titleField = 'title',
@@ -58,7 +60,12 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 					sx={sx.listItemButton}
 					onClick={() => handleClick(resource)}
 				>
-					{get(resource, imageField) && (
+          {avatar && (
+						<ListItemIcon sx={sx.listItemIcon}>
+							{ avatar }
+						</ListItemIcon>
+					)}
+					{!avatar && get(resource, imageField) && (
 						<ListItemIcon sx={sx.listItemIcon}>
 							<Image
 								src={get(resource, imageField)}
@@ -68,7 +75,7 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 							/>
 						</ListItemIcon>
 					)}
-					{get(resource, iconField) && (
+					{avatar && get(resource, iconField) && (
 						<ListItemIcon sx={sx.listItemIcon}>
 							<Avatar
 								sx={{
@@ -79,11 +86,7 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 							</Avatar>
 						</ListItemIcon>
 					)}
-					{resource?.user && (
-						<ListItemIcon sx={sx.listItemIcon}>
-							<UserAvatar user={resource?.user} />
-						</ListItemIcon>
-					)}
+					
 					<ListItemText
 						primary={
 							<Typography variant="body1" color="text.primary">
