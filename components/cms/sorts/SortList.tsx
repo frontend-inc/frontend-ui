@@ -32,7 +32,7 @@ const SortList: React.FC<SortListProps> = (props) => {
 
 	return (
 		<>
-			<MenuList label="Sort by" enableBorder={false}>
+			<MenuList label="Sort by" disableBorder>
 				{sortOptions?.map((sortOption: any) => (
 					<ListItem disablePadding disableGutters sx={sx.listItem}>
 						<ListItemButton
