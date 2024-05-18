@@ -89,7 +89,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 				</Popup>
 			</Hidden>
 			<Hidden smUp>
-				<Drawer open={open} handleClose={handleClose} title="Search">
+				<Drawer open={open} handleClose={handleClose} title="Search" disablePadding>
 					<FilterList
 						filters={filters}
 						filterOptions={filterOptions}

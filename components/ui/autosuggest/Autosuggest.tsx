@@ -190,7 +190,6 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 								...(error && sx.inputError),
 							}}
 							endAdornment={
-								selected?.value &&
 								(enableClear || handleClear) && (
 									<InputAdornment position="start" sx={sx.inputAdornment}>
 										<IconButton onClick={handleInputClear} size="small">
@@ -235,9 +234,9 @@ const sx: any = {
 			fontSize: (theme) => theme.typography.body2.fontSize,
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
 			bgcolor: 'background.paper',
-			border: (theme) => `1px solid ${theme.palette.divider}`,
+			border: (theme) => `3px solid ${theme.palette.divider}`,
 			'&:focus': {
-				border: (theme) => `2px solid ${theme.palette.primary.light}`,
+				border: (theme) => `3px solid ${theme.palette.primary.light}`,
 			},
 		},
 	},

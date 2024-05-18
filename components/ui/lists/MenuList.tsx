@@ -17,13 +17,13 @@ type MenuListProps = {
 	id?: string
 	label?: string
 	icon?: React.ReactNode
-	enableBorder?: boolean
+	disableBorder?: boolean
 	disablePadding?: boolean
 	closed?: boolean
 }
 
 const MenuList: React.FC<MenuListProps> = (props) => {
-	const { id, label, closed = false, children, enableBorder = true } = props
+	const { id, label, closed = false, children, disableBorder = false } = props
 
 	const [open, setOpen] = useState(!closed)
 	const handleToggleClick = () => {
@@ -59,7 +59,7 @@ const MenuList: React.FC<MenuListProps> = (props) => {
 			disablePadding
 			sx={{
 				...sx.root,
-				...(enableBorder && sx.borderTop),
+				...(!disableBorder && sx.borderTop),
 			}}
 		>
 			{label && (
@@ -93,11 +93,16 @@ const MenuList: React.FC<MenuListProps> = (props) => {
 					</ListItemButton>
 				</ListItem>
 			)}
-			<Collapse in={open} timeout="auto" unmountOnExit>
+			<Box 
+        sx={{ 
+          ...sx.collapse,
+          ...(open && sx.open)
+        }}
+      >
 				<Box pb={2} px={2}>
 					{children}
 				</Box>
-			</Collapse>
+			</Box>
 		</List>
 	)
 }
@@ -110,6 +115,12 @@ const sx = {
 		minWidth: 200,
 		my: 0,
 	},
+  collapse: {
+    display: 'none',  
+  },
+  open: {
+    display: 'block',
+  },
 	listItem: {
 		borderRadius: 1,
 	},
@@ -129,7 +140,6 @@ const sx = {
 	},
 	icon: {
 		color: 'text.secondary',
-		transition: 'transform 0.3s ease-in-out',
 	},
 	expandMore: {
 		transform: 'rotate(90deg)',

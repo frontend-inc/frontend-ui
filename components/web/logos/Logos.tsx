@@ -17,7 +17,7 @@ const Logos: React.FC<LogosProps> = (props) => {
 	return (
 		<Stack spacing={0} sx={sx.root}>
 			{title && (
-				<Typography variant="body1" color="text.secondary" sx={sx.title}>
+				<Typography variant="caption" color="text.secondary" sx={sx.title}>
 					{title}
 				</Typography>
 			)}
@@ -57,6 +57,7 @@ const sx = {
 	title: {
 		width: '100%',
 		textAlign: 'center',
+    mb: 4
 	},
 	logos: {
 		overflowX: 'scroll',

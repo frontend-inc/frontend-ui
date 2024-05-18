@@ -23,7 +23,7 @@ type RemoteAutosuggestProps = {
 	defaultQuery?: QueryParamsType
 	defaultOptions?: OptionType[]
 	enableRemoteSearch?: boolean
-	enableClear
+	enableClear?: boolean
 }
 
 const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
