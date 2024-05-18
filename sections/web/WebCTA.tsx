@@ -10,7 +10,7 @@ const WebCTA: React.FC<WebCTAProps> = (props) => {
 	const { bgcolor, py, px, maxWidth, ...rest } = props
 
 	return (
-		<Section bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
+		<Section requireAuth={requireAuth} bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
 			<CTA {...rest} />
 		</Section>
 	)

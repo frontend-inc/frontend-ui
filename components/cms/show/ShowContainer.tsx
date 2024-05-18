@@ -1,7 +1,7 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
 import { Actions, ActionButton } from '../../../components'
-import { ShowItemProps } from './Show'
+import { ShowItemProps } from './CollectionShow'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 

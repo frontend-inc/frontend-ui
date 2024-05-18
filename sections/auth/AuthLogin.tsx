@@ -11,7 +11,7 @@ const AuthLogin: React.FC<AuthLoginProps> = (props) => {
 
 	return (
 		<Section
-			requireAuth={requireAuth}
+			requireAuth={false}
 			bgcolor={bgcolor}
 			py={py}
 			px={px}

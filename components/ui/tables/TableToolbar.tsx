@@ -81,7 +81,7 @@ const TableToolbar: React.FC<TableToolbarProps> = (props) => {
 									{enableDelete && (
 										<Button
 											color="secondary"
-											variant="text"
+											variant="contained"
 											onClick={() => handleDelete(selected)}
 										>
 											Delete
@@ -91,14 +91,14 @@ const TableToolbar: React.FC<TableToolbarProps> = (props) => {
 										<>
 											<Button
 												color="secondary"
-												variant="text"
+												variant="contained"
 												onClick={() => handlePublish(selected)}
 											>
 												Publish
 											</Button>
 											<Button
 												color="secondary"
-												variant="text"
+												variant="contained"
 												onClick={() => handleUnpublish(selected)}
 											>
 												Unpublish

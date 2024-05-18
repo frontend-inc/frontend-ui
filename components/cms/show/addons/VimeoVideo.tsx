@@ -1,6 +1,6 @@
 import React from 'react'
 import { VimeoEmbed } from '../../..'
-import { ShowItemProps } from '../Show'
+import { ShowItemProps } from '../CollectionShow'
 import { flattenDocument } from 'frontend-js'
 import ShowContainer from '../ShowContainer'
 

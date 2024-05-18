@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Button, Stack } from '@mui/material'
+import { Button, Stack } from '@mui/material'
 import { ActionType, DisplayFieldType, FormFieldType } from '../../../types'
 import Article from './Article'
 import Item from './Item'
@@ -8,10 +8,10 @@ import Document from './Document'
 import Details from '../details/Details'
 import YouTubeVideo from './addons/YouTubeVideo'
 import VimeoEmbed from './addons/VimeoVideo'
-import { Drawer, Form, IconLoading, Placeholder } from '../../../components'
+import { Drawer, Form, IconLoading } from '../..'
 import { useDocuments, flattenDocument } from 'frontend-js'
 
-export type ShowItemProps = {
+export type CollectionShowItemProps = {
 	handle?: string
 	enableBorder?: boolean
 	actions: ActionType[]
@@ -23,14 +23,14 @@ export type ShowItemProps = {
 	handleEdit?: () => void
 }
 
-export type ShowProps = ShowItemProps & {
+export type CollectionShowProps = CollectionShowItemProps & {
 	fields: FormFieldType[]
 	displayFields: DisplayFieldType[]
 	url: string
 	style: 'article' | 'person' | 'item' | 'youtube' | 'vimeo'
 }
 
-const Show: React.FC<ShowProps> = (props) => {
+const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 	let { handle } = props
 	if (handle == 'index') handle = undefined
 
@@ -174,7 +174,7 @@ const Show: React.FC<ShowProps> = (props) => {
 	)
 }
 
-export default Show
+export default CollectionShow
 
 const sx = {
 	root: {

@@ -10,7 +10,7 @@ const WebCoverImageCarousel: React.FC<WebCoverImageCarouselProps> = (props) => {
 	const { bgcolor, py, px, maxWidth, ...rest } = props
 
 	return (
-		<Section bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
+		<Section requireAuth={requireAuth} bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
 			<CoverImageCarousel {...rest} />
 		</Section>
 	)

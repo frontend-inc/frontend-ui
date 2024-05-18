@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
 import { ActionButton, Actions, Image } from '../../../components'
-import { ShowItemProps } from './Show'
+import { ShowItemProps } from './CollectionShow'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
