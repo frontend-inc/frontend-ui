@@ -1,11 +1,11 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
 import { Actions, ActionButton } from '../../../components'
-import { ShowItemProps } from './CollectionShow'
+import { CollectionShowItemProps } from './CollectionShow'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-type ShowContainerProps = ShowItemProps & {
+type ShowContainerProps = CollectionShowItemProps & {
 	children: React.ReactNode
 }
 

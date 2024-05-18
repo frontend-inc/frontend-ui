@@ -7,7 +7,7 @@ import { SectionProps } from '../../types'
 type AddonOkendoReviewsProps = SectionProps & OkendoReviewsProps
 
 const AddonOkendoReviews: React.FC<AddonOkendoReviewsProps> = (props) => {
-	const { bgcolor, py, px, maxWidth, ...rest } = props
+	const { bgcolor, py, px, maxWidth, requireAuth, ...rest } = props
 
 	return (
 		<Section requireAuth={requireAuth} bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>

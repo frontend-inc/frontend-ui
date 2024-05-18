@@ -7,7 +7,7 @@ import { SectionProps } from '../../types'
 type AddonGiftUpProps = SectionProps & GiftUpProps
 
 const AddonGiftUp: React.FC<AddonGiftUpProps> = (props) => {
-	const { bgcolor, py, px, maxWidth, ...rest } = props
+	const { bgcolor, py, px, maxWidth, requireAuth, ...rest } = props
 
 	return (
 		<Section requireAuth={requireAuth} bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>

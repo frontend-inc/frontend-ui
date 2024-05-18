@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section } from '../../components'
 import { Show } from '../../components'
-import { ShowProps } from '../../components/cms/show/Show'
+import { ShowProps } from '../../components/cms/show/CollectionShow'
 import { SectionProps } from '../../types'
 
 type CmsVimeoProps = SectionProps & ShowProps

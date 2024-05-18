@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
 import { ActionButton, Actions, Image } from '../../../components'
-import { ShowItemProps } from './CollectionShow'
+import { CollectionShowItemProps } from './CollectionShow'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-const Item: React.FC<ShowItemProps> = (props) => {
+const Item: React.FC<CollectionShowItemProps> = (props) => {
 	const MAX_CHARS = 500
 
 	const { actions, resource, enableBorder, enableEdit, handleEdit } =

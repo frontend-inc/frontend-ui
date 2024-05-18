@@ -7,7 +7,7 @@ import { SectionProps } from '../../types'
 type WebImageProps = SectionProps & ImageProps
 
 const WebImage: React.FC<WebImageProps> = (props) => {
-	const { bgcolor, py, px, maxWidth, ...rest } = props
+	const { bgcolor, py, px, maxWidth, requireAuth, ...rest } = props
 
 	return (
 		<Section requireAuth={requireAuth} bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>

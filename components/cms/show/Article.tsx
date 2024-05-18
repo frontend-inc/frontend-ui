@@ -2,11 +2,11 @@ import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
 import { Actions, Image } from '../../../components'
 import moment from 'moment'
-import { ShowItemProps } from './CollectionShow'
+import { CollectionShowItemProps } from './CollectionShow'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-const Article: React.FC<ShowItemProps> = (props) => {
+const Article: React.FC<CollectionShowItemProps> = (props) => {
 	const { actions, resource, enableBorder, enableEdit, handleEdit } =
 		props || {}
 	const { label, title, image, description, data } = resource || {}
