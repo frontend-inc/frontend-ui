@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section } from '../../components'
 import { Show } from '../../components'
-import { ShowProps } from '../../components/cms/show/CollectionShow'
+import { CollectionShowProps } from '../../components/cms/show/CollectionShow'
 import { SectionProps } from '../../types'
 
-type CmsVimeoProps = SectionProps & ShowProps
+type CmsVimeoProps = SectionProps & CollectionShowProps
 
 const CmsVimeo: React.FC<CmsVimeoProps> = (props) => {
 	const { bgcolor, py, px, maxWidth, requireAuth, ...rest } = props

@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section } from '../../components'
 import { Show } from '../../components'
-import { ShowProps } from '../../components/cms/show/CollectionShow'
+import { CollectionShowProps } from '../../components/cms/show/CollectionShow'
 import { SectionProps } from '../../types'
 
-type CmsShowProps = SectionProps & ShowProps
+type CmsShowProps = SectionProps & CollectionShowProps
 
 const CmsShow: React.FC<CmsShowProps> = (props) => {
 	const { bgcolor, py, px, maxWidth, requireAuth, ...rest } = props

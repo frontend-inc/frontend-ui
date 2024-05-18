@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section } from '../../components'
 import { Show } from '../../components'
-import { ShowProps } from '../../components/cms/show/CollectionShow'
+import { CollectionShowProps } from '../../components/cms/show/CollectionShow'
 import { SectionProps } from '../../types'
 
-type CmsYouTubeProps = SectionProps & ShowProps
+type CmsYouTubeProps = SectionProps & CollectionShowProps
 
 const CmsYouTube: React.FC<CmsYouTubeProps> = (props) => {
 	const { bgcolor, py, px, maxWidth, requireAuth, ...rest } = props
