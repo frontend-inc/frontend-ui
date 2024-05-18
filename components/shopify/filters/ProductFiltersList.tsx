@@ -8,7 +8,7 @@ import {
 import { Stack } from '@mui/material'
 import { SHOPIFY_SEARCH_FILTERS } from '../../../constants'
 import RadioPriceRangeInput from './RadioPriceRangeInput'
-import { ExpandableList } from '../../../components'
+import { MenuList } from '../../../components'
 
 type ProductFiltersListProps = {
 	filters: SearchFilterType[]
@@ -34,23 +34,23 @@ const ProductFiltersList: React.FC<ProductFiltersListProps> = (props) => {
 				let option = options?.find((o) => o.name == filterType.value)
 				if (!option) return null
 				return (
-					<ExpandableList label={filterType.label}>
+					<MenuList label={filterType.label}>
 						<CheckboxFilterList
 							filters={activeFilters}
 							option={option}
 							handleClick={filterType.array ? handleFilterArray : handleFilter}
 						/>
-					</ExpandableList>
+					</MenuList>
 				)
 			})}
 			{priceOptions?.length > 0 && (
-				<ExpandableList label="Price">
+				<MenuList label="Price">
 					<RadioPriceRangeInput
 						filters={filters}
 						options={priceOptions}
 						handleClick={handleFilter}
 					/>
-				</ExpandableList>
+				</MenuList>
 			)}
 		</Stack>
 	)

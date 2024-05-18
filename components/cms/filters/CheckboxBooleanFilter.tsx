@@ -6,7 +6,7 @@ import {
 	FilterOptionType,
 	OptionType,
 } from '../../../types'
-import { ExpandableList } from '../..'
+import { MenuList } from '../..'
 
 type CheckboxFilterProps = {
 	name: string
@@ -45,7 +45,7 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 	]
 
 	return (
-		<ExpandableList
+		<MenuList
 			label={label}
 			enableBorder={enableBorder}
 			disablePadding={disablePadding}
@@ -66,7 +66,7 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 					}
 				/>
 			))}
-		</ExpandableList>
+		</MenuList>
 	)
 }
 

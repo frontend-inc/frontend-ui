@@ -29,7 +29,6 @@ const Drawer: React.FC<DrawerProps> = (props) => {
 		actions,
 		variant = 'temporary',
 		disablePadding = false,
-		hideBackdrop = false,
 		closeIcon = 'X',
 		fullWidth = false,
 		styles = {},
@@ -64,7 +63,7 @@ const Drawer: React.FC<DrawerProps> = (props) => {
 						)}
 					</Box>
 					<Box>
-						<Typography variant="subtitle1">{title}</Typography>
+						<Typography color='text.secondary' variant="subtitle2">{title}</Typography>
 					</Box>
 					<Box sx={sx.headerAction}>
 						{anchor != 'right' && (

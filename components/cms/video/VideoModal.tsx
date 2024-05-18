@@ -55,8 +55,8 @@ const VideoModal: React.FC<VideoModalProps> = (props) => {
 					<>
 						{enableCopy && (
 							<Button
-								variant="outlined"
-								sx={sx.button}
+                color='secondary'
+								variant="contained"
 								startIcon={<Link />}
 								onClick={handleCopyUrlClick}
 							>
@@ -65,8 +65,8 @@ const VideoModal: React.FC<VideoModalProps> = (props) => {
 						)}
 						{enableDownload && (
 							<Button
-								variant="outlined"
-								sx={sx.button}
+                color="primary"
+								variant="contained"
 								startIcon={<Download />}
 								onClick={handleDownloadClick}
 							>
@@ -94,8 +94,5 @@ const sx = {
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
-	},
-	button: {
-		color: 'text.secondary',
-	},
+	}	
 }

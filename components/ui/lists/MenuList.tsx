@@ -12,7 +12,7 @@ import {
 import { ChevronRight } from '@mui/icons-material'
 import { getCookie, setCookie } from 'cookies-next'
 
-type ExpandableListProps = {
+type MenuListProps = {
 	children: React.ReactNode
 	id?: string
 	label?: string
@@ -22,7 +22,7 @@ type ExpandableListProps = {
 	closed?: boolean
 }
 
-const ExpandableList: React.FC<ExpandableListProps> = (props) => {
+const MenuList: React.FC<MenuListProps> = (props) => {
 	const { id, label, closed = false, children, enableBorder = true } = props
 
 	const [open, setOpen] = useState(!closed)
@@ -102,7 +102,7 @@ const ExpandableList: React.FC<ExpandableListProps> = (props) => {
 	)
 }
 
-export default ExpandableList
+export default MenuList
 
 const sx = {
 	root: {

@@ -5,7 +5,7 @@ import {
 	FilterWhereType,
 	FilterOptionType,
 } from '../../../types'
-import { ExpandableList } from '../..'
+import { MenuList } from '../..'
 
 type CheckboxNumberRangeFilterProps = {
 	name: string
@@ -40,7 +40,7 @@ const CheckboxNumberRangeFilter: React.FC<CheckboxNumberRangeFilterProps> = (
 	} = props
 
 	return (
-		<ExpandableList
+		<MenuList
 			label={label}
 			enableBorder={enableBorder}
 			disablePadding={disablePadding}
@@ -68,7 +68,7 @@ const CheckboxNumberRangeFilter: React.FC<CheckboxNumberRangeFilterProps> = (
 					}
 				/>
 			))}
-		</ExpandableList>
+		</MenuList>
 	)
 }
 

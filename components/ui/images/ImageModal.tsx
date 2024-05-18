@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAlerts } from '../../../hooks'
 import { Modal } from '../../../components'
-import { Box, Button, CircularProgress } from '@mui/material'
+import { Button } from '@mui/material'
 import copy from 'copy-to-clipboard'
 import Image from 'next/image'
 
@@ -35,7 +35,10 @@ const ImageModal: React.FC<ImageModalProps> = (props) => {
 			disablePadding
 			actions={
 				<>
-					<Button onClick={handleCopyUrlClick}>Copy URL</Button>
+					<Button 
+            color='secondary'
+            variant="contained"
+            onClick={handleCopyUrlClick}>Copy URL</Button>
 					<Button variant="contained" onClick={handleDownloadClick}>
 						Download
 					</Button>

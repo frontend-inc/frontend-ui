@@ -9,7 +9,7 @@ import {
 	Typography,
 	Radio,
 } from '@mui/material'
-import { ExpandableList } from '../..'
+import { MenuList } from '../..'
 import { SORT_DIRECTIONS } from '../../../constants/index'
 import { SortOptionType } from '../../../types'
 
@@ -32,7 +32,7 @@ const SortList: React.FC<SortListProps> = (props) => {
 
 	return (
 		<>
-			<ExpandableList label="Sort by">
+			<MenuList label="Sort by">
 				{sortOptions?.map((sortOption: any) => (
 					<ListItem disablePadding disableGutters sx={sx.listItem}>
 						<ListItemButton
@@ -54,8 +54,8 @@ const SortList: React.FC<SortListProps> = (props) => {
 						</ListItemButton>
 					</ListItem>
 				))}
-			</ExpandableList>
-			<ExpandableList label="Direction">
+			</MenuList>
+			<MenuList label="Direction">
 				{SORT_DIRECTIONS.map((direction, i) => (
 					<ListItem disablePadding key={i} sx={sx.listItem}>
 						<ListItemButton
@@ -79,7 +79,7 @@ const SortList: React.FC<SortListProps> = (props) => {
 						</ListItemButton>
 					</ListItem>
 				))}
-			</ExpandableList>
+			</MenuList>
 		</>
 	)
 }

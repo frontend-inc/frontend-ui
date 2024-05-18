@@ -86,7 +86,7 @@ export { default as DropZone } from './inputs/DropZone'
 export { default as DateInput } from './inputs/DateInput'
 export { default as EditableTypography } from './inputs/EditableTypography'
 export { default as EditableTextInput } from './inputs/EditableTextInput'
-export { default as ExpandableList } from './lists/ExpandableList'
+export { default as MenuList } from './lists/MenuList'
 export { default as ErrorText } from './inputs/ErrorText'
 export { default as ErrorInput } from './inputs/ErrorInput'
 

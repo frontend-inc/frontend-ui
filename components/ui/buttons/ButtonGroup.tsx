@@ -25,7 +25,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = (props) =>{
       variant="fullWidth"
       sx={{ 
         ...sx.root,
-        p: disablePadding ? 0 : '4px' 
+        p: disablePadding ? 0 : '5px' 
       }}
       value={value}
       onChange={handleInputChange}
