@@ -47,13 +47,17 @@ const ButtonGroup: React.FC<ButtonGroupProps> = (props) =>{
       value={value}
       onChange={handleInputChange}
       indicatorColor="primary"
-      textColor="primary"      
+      textColor="inherit"      
     >
       {tabs.map((tab, i) => (
         <Tab 
           key={i} 
           disableRipple
           iconPosition={iconPosition}
+          onClick={
+            //@ts-ignore
+            () => handleChange(tab.value)
+          }
           label={ tab.label } 
           value={ tab.value }
           icon={ tab.icon && <Icon size={20} color='text.secondary' name={ tab.icon } /> }
@@ -76,29 +80,32 @@ const sx = {
     '& .MuiTabs-indicator': {
       height: "100%",   
       width: "100%",
-      borderRadius: 1,   
-      bgcolor: 'secondary.main',
-      zIndex: 0,
+      borderRadius: 1,
+      borderRight: '1px solid',
+      borderBottom: '1px solid',
+      borderColor: 'background.default',   
+      bgcolor: 'secondary.light',
+      zIndex: 0,      
     },
     '& .MuiButtonBase-root': {
       minHeight: 34,
       minWidth: 44,      
       px: 1,    
       zIndex: 1, 
-      color: 'common.white', 
+      color: 'common.white',       
     }, 
     '& .MuiTabs-root': {            
       minHeight: 34,
-      height: 34,        
+      height: 34,          
     },
 		'& .MuiTab-root': {            
       minHeight: 34,
-      borderRadius: 1,
+      borderRadius: 1,      
       color: 'text.secondary',
 			'&.Mui-selected': {
         borderRadius: 1,
-        color: 'text.primary',
-			},      
+        color: 'common.white',
+			},            
 		},
 	},
   rootBorder: {
