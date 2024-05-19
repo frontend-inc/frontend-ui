@@ -7,7 +7,6 @@ import {
 	ListItemText,
 	Checkbox,
 } from '@mui/material'
-import { formatCurrency } from 'frontend-shopify'
 
 type CheckboxNumberRangeFilterItemProps = {
 	label?: string

@@ -23,11 +23,19 @@ export type CollectionShowItemProps = {
 	handleEdit?: () => void
 }
 
+type CollectionShowStyleTypes = 
+  'item' | 
+  'article' | 
+  'person' | 
+  'document' | 
+  'youtube' | 
+  'vimeo' 
+
 export type CollectionShowProps = CollectionShowItemProps & {
 	fields: FormFieldType[]
 	displayFields: DisplayFieldType[]
 	url: string
-	style: 'article' | 'person' | 'item' | 'youtube' | 'vimeo'
+	style: CollectionShowStyleTypes 
 }
 
 const CollectionShow: React.FC<CollectionShowProps> = (props) => {

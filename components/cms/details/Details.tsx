@@ -10,7 +10,7 @@ type DetailsProps = {
 	enableBorder?: boolean
 }
 
-const FULL_WIDTH_VARIANTS = ['text', 'image', ]
+const FULL_WIDTH_VARIANTS = ['string', 'text', 'image', 'url']
 
 const Details: React.FC<DetailsProps> = (props) => {
 	const { resource, fields, enableBorder = false } = props

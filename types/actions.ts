@@ -12,6 +12,7 @@ export type ActionNamesType =
 	| 'print'
 	| 'share'
 	| 'click'
+  | 'stripe_payment_link'
 
 export type ActionType = {
 	id?: number

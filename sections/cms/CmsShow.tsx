@@ -1,6 +1,6 @@
 import React from 'react'
 import { Section } from '../../components'
-import { Show } from '../../components'
+import { CollectionShow } from '../../components'
 import { CollectionShowProps } from '../../components/cms/show/CollectionShow'
 import { SectionProps } from '../../types'
 
@@ -17,7 +17,7 @@ const CmsShow: React.FC<CmsShowProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Show {...rest} />
+			<CollectionShow {...rest} />
 		</Section>
 	)
 }
