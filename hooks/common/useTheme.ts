@@ -88,8 +88,17 @@ const useTheme = (props: ThemeProps) => {
 		}
 
 		if (bgcolor) {
-			palette = buildMuiPalette(palette, bgcolor)
+			palette = {
+        ...palette,
+        background: {
+          ...palette.background,
+          default: bgcolor,
+          main: bgcolor,
+        },        
+      }
 		}
+
+    palette = buildMuiPalette(palette)
 
 		if (headerFont) {
 			typography = {

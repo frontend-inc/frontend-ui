@@ -1,18 +1,19 @@
 import { lighten, darken, getContrastRatio } from '@mui/material'
 
-export const buildMuiPalette = (palette, bgcolor) => {
+export const buildMuiPalette = (palette) => {
 
-	const contrast = getContrastRatio(bgcolor, '#000000')
-  const paper = contrast > 10 ? darken(bgcolor, 0.1) : lighten(bgcolor, 0.1)
-	const primaryText = contrast > 10 ? darken(bgcolor, 0.9) : lighten(bgcolor, 0.9)
-	const secondaryText = contrast > 10 ? darken(bgcolor, 0.7) : lighten(bgcolor, 0.7)
-	const divider = contrast > 10 ? darken(bgcolor, 0.2) : lighten(bgcolor, 0.2)
+  const bgColor = palette.background.default
+	const contrast = getContrastRatio(bgColor, '#000000')
+  const paper = contrast > 10 ? darken(bgColor, 0.02) : lighten(bgColor, 0.05)
+	const primaryText = contrast > 10 ? darken(bgColor, 0.9) : lighten(bgColor, 0.9)
+	const secondaryText = contrast > 10 ? darken(bgColor, 0.7) : lighten(bgColor, 0.7)
+	const divider = contrast > 10 ? darken(bgColor, 0.12) : lighten(bgColor, 0.12)
 
 	let muiPalette = {
 		...palette,
 		background: {
-			default: bgcolor,
-			main: bgcolor,
+			default: bgColor,
+			main: bgColor,
 			paper: paper,
 		},
 		divider: divider,
