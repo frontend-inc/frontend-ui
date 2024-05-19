@@ -14,7 +14,7 @@ export const sx = {
 			border: '1px solid',
       borderColor: 'divider',
       m: '1px',
-      bgcolor: 'background.paper',			
+      bgcolor: 'background.main',			
 			'&:focus': {
         m: 0,
 				boxShadow: `none`,

@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../../../context'
+import React from 'react'
 import { Link, Divider, Stack } from '@mui/material'
 import { MenuLinkType } from '../../../types'
 import { SocialLink } from '../..'
