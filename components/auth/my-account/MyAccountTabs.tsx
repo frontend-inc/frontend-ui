@@ -15,10 +15,14 @@ const MyAccountTabs: React.FC<MyAccountTabsProps> = (props) => {
 		{ label: 'Members', value: 2 },
 	]
 
+  const handleTabChange = (ev: any, newValue: number) => {
+    handleChange(newValue)
+  }
+
 	return (
 		<Tabs
 			value={tab}
-			onChange={handleChange}
+			onChange={handleTabChange}
 			color="secondary"
 			sx={sx.root}
 			variant="fullWidth"

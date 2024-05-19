@@ -5,7 +5,7 @@ import { Tabs as MuiTabs, Tab as MuiTab } from '@mui/material'
 import TabContent from './TabContent'
 
 export type TabsProps = {
-	orientation?: 'horizontal' | 'vertical'
+	direction?: 'row' | 'column'
 	items?: {
 		icon?: string
 		label: string
@@ -19,7 +19,7 @@ export type TabsProps = {
 const Tabs: React.FC<TabsProps> = (props) => {
 	const [currentTab, setCurrentTab] = useState(0)
 
-	const { items = [], orientation = 'vertical' } = props
+	const { items = [], direction = 'row' } = props
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
 		setCurrentTab(newValue)
@@ -28,18 +28,18 @@ const Tabs: React.FC<TabsProps> = (props) => {
 	return (
 		<Stack
 			spacing={1}
-			direction={orientation === 'vertical' ? 'row' : 'column'}
+			direction={direction == 'column' ? 'row' : 'column'}
 			sx={sx.root}
 		>
 			<MuiTabs
 				centered
-				orientation={orientation}
+				direction={direction == 'column' ? 'vertical' : 'horizontal' }
 				value={currentTab}
 				onChange={handleChange}
 				color="primary"
 				sx={{
 					...sx.tabs,
-					...(orientation === 'vertical' && sx.verticalTabs),
+					...(direction === 'column' && sx.verticalTabs),
 				}}
 			>
 				{items?.map((item, i) => (

@@ -62,7 +62,7 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 			}
 		>
 			{enableTeams && (
-				<MyAccountTabs tab={currentTab} handleChange={handleTabChange} />
+				<MyAccountTabs tab={currentTab} handleChange={setCurrentTab} />
 			)}
 			<Box sx={sx.content}>
 				{currentTab == 0 && (

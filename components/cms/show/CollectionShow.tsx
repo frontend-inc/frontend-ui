@@ -49,7 +49,7 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 	} = props || {}
 
 	const {
-		loading,
+    delayedLoading: loading,
 		errors,
 		update,
 		create,

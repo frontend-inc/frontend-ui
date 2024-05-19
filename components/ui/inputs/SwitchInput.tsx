@@ -61,7 +61,7 @@ const sx = {
 		py: '2px',
 		px: 2,
 		fontSize: 15,
-		border: (theme) => `3px solid ${theme.palette.divider}`,
+		border: (theme) => `1px solid ${theme.palette.divider}`,
 		'&:focus': {
 			borderColor: 'primary.light',
 		},

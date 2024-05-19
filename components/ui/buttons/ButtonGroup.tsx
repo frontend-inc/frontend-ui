@@ -6,15 +6,28 @@ type ButtonGroupProps = {
   tabs: {
     icon?: string 
     label?: string
-    value: number | string
+    value: number | string | boolean
   }[]
-  value: number | string
+  value: number | string | boolean
   disablePadding?: boolean
+  disableBorder?: boolean
+  iconPosition?: 'start' | 'end' | 'top' | 'bottom'
+  variant?: 'fullWidth' | 'scrollable'
+  size?: 'small' | 'large' 
 }
 
 const ButtonGroup: React.FC<ButtonGroupProps> = (props) =>{
 
-  const { disablePadding=false, handleChange, tabs, value } = props
+  const { 
+    disablePadding=false, 
+    disableBorder=false, 
+    handleChange, 
+    tabs, 
+    value,
+    iconPosition='start',
+    variant="fullWidth",
+    size="large" 
+  } = props
 
   const handleInputChange = (ev: React.ChangeEvent<HTMLInputElement>, newValue: number) => {
     handleChange(newValue)
@@ -22,24 +35,28 @@ const ButtonGroup: React.FC<ButtonGroupProps> = (props) =>{
 
   return(
     <Tabs
-      variant="fullWidth"
+      variant={variant}
       sx={{ 
         ...sx.root,
-        p: disablePadding ? 0 : '5px' 
+        ...(!disableBorder && sx.rootBorder),
+        p: disablePadding ? 0 : '5px',
+        '& .MuiTab-root': {     
+          height: size == "small" ? 34 : 36,
+        } 
       }}
       value={value}
       onChange={handleInputChange}
       indicatorColor="primary"
-      textColor="primary"
+      textColor="primary"      
     >
       {tabs.map((tab, i) => (
         <Tab 
           key={i} 
           disableRipple
-          iconPosition='start'
+          iconPosition={iconPosition}
           label={ tab.label } 
           value={ tab.value }
-          icon={ tab.icon && <Icon size={20} name={ tab.icon } /> }
+          icon={ tab.icon && <Icon size={20} color='text.secondary' name={ tab.icon } /> }
         />
       ))}
     </Tabs>
@@ -50,20 +67,21 @@ export default ButtonGroup
 
 const sx = {
   root: {    
-    minHeight: 36,    
-    borderRadius: 1,
-    bgcolor: 'secondary.dark',
+    minHeight: 34,    
+    borderRadius: 1.5,
+    bgcolor: 'background.paper',
     '& svg': {
       mx: 0.5
     }, 
     '& .MuiTabs-indicator': {
-      height: 34,   
+      height: "100%",   
+      width: "100%",
       borderRadius: 1,   
-      bgcolor: 'secondary.light',
+      bgcolor: 'secondary.main',
       zIndex: 0,
     },
     '& .MuiButtonBase-root': {
-      height: 34,
+      minHeight: 34,
       minWidth: 44,      
       px: 1,    
       zIndex: 1, 
@@ -74,13 +92,17 @@ const sx = {
       height: 34,        
     },
 		'& .MuiTab-root': {            
-      minHeight: 36,
-      height: 36,
+      minHeight: 34,
       borderRadius: 1,
+      color: 'text.secondary',
 			'&.Mui-selected': {
         borderRadius: 1,
-			},
-      
+        color: 'text.primary',
+			},      
 		},
 	},
+  rootBorder: {
+    border: '1px solid',
+    borderColor: 'divider'
+  }
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Stack, FormControl, InputBase, Typography } from '@mui/material'
+import { Box, Stack, InputBase, Typography } from '@mui/material'
 import { ErrorText } from '../../../components'
 import { sx } from './styles'
 import { useError } from '../../../hooks'
