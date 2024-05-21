@@ -280,11 +280,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 						{resources?.map((resource, index) => (
 							<Component
 								key={index}
-								title={resource?.title}
-                description={resource?.description}
-                icon={resource?.icon}
-                image={resource?.image?.url}
-                color={resource?.color}
+                resource={resource}
 								handleClick={
 									handleClick ? 
                     (() => handleClick(resource)) : undefined 

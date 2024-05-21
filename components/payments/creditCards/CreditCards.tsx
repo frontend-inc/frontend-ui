@@ -81,7 +81,7 @@ const CreditCards: React.FC<CreditCardsProps> = (props) => {
                 key={creditCard.id}
                 selected={creditCard.primary}
                 icon={'CreditCard'}
-                title={creditCard.last_4}
+                title={creditCard.last4}
                 description={creditCard.brand}
                 handleClick={() => handleClick(creditCard)}
                 handleDelete={() => handleDeleteClick(creditCard)}
