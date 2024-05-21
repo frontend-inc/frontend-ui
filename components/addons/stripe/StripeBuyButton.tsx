@@ -2,16 +2,16 @@ import React from 'react'
 import { Box } from '@mui/material'
 
 export type StripeBuyButtonProps = {
-  buyButtonId: string // Stripe buy button id
-  publishableKey: string // stripe publishable key
+  buyButtonId: string 
+  publishableKey: string 
 }
+
+// Script tag included in html head
+//<script async src="https://js.stripe.com/v3/buy-button.js"></script>
 
 const StripeBuyButton: React.FC<StripeBuyButtonProps> = (props) => {
   const { buyButtonId, publishableKey } = props
 
-  // Script tag included in html head
-  //<script async src="https://js.stripe.com/v3/buy-button.js"></script>
-  console.log(buyButtonId, publishableKey)
   if(!buyButtonId || !publishableKey) return null;
   return(
     <Box sx={ sx.root}>      

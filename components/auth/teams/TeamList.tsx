@@ -11,7 +11,8 @@ import {
 import { useTeams } from '../../../hooks'
 
 const TeamList: React.FC = (props) => {
-	const {
+	
+  const {
 		delayedLoading: loading,
 		errors,
 		team,

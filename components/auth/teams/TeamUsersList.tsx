@@ -103,7 +103,7 @@ const TeamUsersList: React.FC<TeamListProps> = (props) => {
 								/>
 							))}
 					</List>
-					{!teamUsers?.length && (
+					{(!loading && teamUsers?.length == 0) && (
 						<Placeholder
 							icon="Users"
 							title="No Teams"

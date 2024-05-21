@@ -93,16 +93,11 @@ const MenuList: React.FC<MenuListProps> = (props) => {
 					</ListItemButton>
 				</ListItem>
 			)}
-			<Box 
-        sx={{ 
-          ...sx.collapse,
-          ...(open && sx.open)
-        }}
-      >
+      <Collapse in={open}>
 				<Box pb={2} px={2}>
 					{children}
 				</Box>
-			</Box>
+			</Collapse>
 		</List>
 	)
 }
@@ -114,13 +109,7 @@ const sx = {
 		width: '100%',
 		minWidth: 200,
 		my: 0,
-	},
-  collapse: {
-    display: 'none',  
-  },
-  open: {
-    display: 'block',
-  },
+	},  
 	listItem: {
 		borderRadius: 1,
 	},
@@ -139,6 +128,7 @@ const sx = {
 		lineHeight: '1em',
 	},
 	icon: {
+    transition: 'transform 0.3s ease-in-out',
 		color: 'text.secondary',
 	},
 	expandMore: {

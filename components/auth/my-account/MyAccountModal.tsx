@@ -7,35 +7,33 @@ import {
 	TeamForm,
 	TeamUsersList,
 	TeamUserInvite,
+  StripeCreditCard,
+  CreditCards
 } from '../../../components'
 import MyAccountTabs from './MyAccountTabs'
 import { Box } from '@mui/material'
 
 type MyAccountModalProps = {
 	enableTeams?: boolean
+  enableStripe?: boolean
+  stripePublishableKey: string
 }
 
 const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
-	const { enableTeams } = props || {}
+	const { enableTeams, enableStripe, stripePublishableKey } = props || {}
 	const { myAccountOpen, setMyAccountOpen } = useContext(AppContext)
 
 	const {
-		loading,
 		delayedLoading,
 		user,
-		setUser,
 		currentUser,
 		updateMe,
 		handleChange,
-		fetchMe,
 		deleteAvatar,
 		logout,
 	} = useAuth()
 
 	const [currentTab, setCurrentTab] = useState(0)
-	const handleTabChange = (ev, newValue) => {
-		setCurrentTab(newValue)
-	}
 
 	const handleLogout = async () => {
 		await logout()
@@ -50,6 +48,10 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 		await updateMe(user)
 	}
 
+  const handleTabChange = (ev: any, newValue: number) => {
+    setCurrentTab(newValue)
+  }
+
 	return (
 		<Modal
 			disablePadding
@@ -61,9 +63,12 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 					: 'My Account'
 			}
 		>
-			{enableTeams && (
-				<MyAccountTabs tab={currentTab} handleChange={setCurrentTab} />
-			)}
+      <MyAccountTabs 
+        tab={currentTab} 
+        enableTeams={enableTeams}
+        enableStripe={enableStripe}
+        handleChange={handleTabChange} 
+      />		
 			<Box sx={sx.content}>
 				{currentTab == 0 && (
 					<MyAccountForm
@@ -85,6 +90,11 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 						handleCancel={() => setCurrentTab(2)}
 					/>
 				)}
+        {currentTab == 4 && (
+          <CreditCards 
+            stripePublishableKey={stripePublishableKey}
+          />
+        )}
 			</Box>
 		</Modal>
 	)

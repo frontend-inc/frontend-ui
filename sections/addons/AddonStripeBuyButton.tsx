@@ -3,9 +3,9 @@ import { Section, StripeBuyButton } from '../../components'
 import { StripeBuyButtonProps } from '../../components/addons/stripe/StripeBuyButton'
 import { SectionProps } from '../../types'
 
-type AddonGiftUpProps = SectionProps & StripeBuyButtonProps
+type AddonStripeBuyButtonProps = SectionProps & StripeBuyButtonProps
 
-const AddonGiftUp: React.FC<AddonGiftUpProps> = (props) => {
+const AddonStripeBuyButton: React.FC<AddonStripeBuyButtonProps> = (props) => {
 	const { bgcolor, py, px, maxWidth, requireAuth, ...rest } = props
 
 	return (
@@ -15,4 +15,4 @@ const AddonGiftUp: React.FC<AddonGiftUpProps> = (props) => {
 	)
 }
 
-export default AddonGiftUp
+export default AddonStripeBuyButton

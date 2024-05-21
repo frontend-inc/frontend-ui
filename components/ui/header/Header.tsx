@@ -9,7 +9,7 @@ import { MenuLinkType } from '../../../types'
 
 type HeaderProps = {
 	editing?: boolean
-	topNav?: boolean
+	sideNav?: boolean
 	mode?: 'accent' | 'light' | 'dark'
 	logo?: string
 	enableAuth?: boolean
@@ -23,7 +23,7 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = (props) => {
 	const { logo } = useContext(AppContext)
 	const {
-		topNav = false,
+		sideNav = false,
 		editing = false,
 		menuItems,
 		handleClick,
@@ -36,10 +36,10 @@ const Header: React.FC<HeaderProps> = (props) => {
 		<Box
 			sx={{
 				...sx.root,
-				...(!topNav && sx.rootSideNav),
+				...(sideNav && sx.rootSideNav),
 			}}
 		>
-			{topNav ? (
+			{!sideNav ? (
 				<DesktopTopNav
 					editing={editing}
 					logo={logo}

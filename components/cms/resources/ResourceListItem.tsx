@@ -9,33 +9,32 @@ import {
 	ListItemIcon,
 	Typography,
 } from '@mui/material'
-import { UserAvatar, Image, Icon, MenuButton } from '../..'
-import { get } from 'lodash'
+import { Image, Icon, MenuButton } from '../..'
 
 export type ResourceListItemProps = {
-	resource: any
-	handleClick: (resource: any) => void
-	handleEdit: (resource: any) => void
-	handleDelete: (resource: any) => void
-	colorField?: string
+  resource?: any
+	title?: string
+  description?: string
+  avatar?: any
+  icon?: string
+  image?: string
+  color?: string
+	handleClick?: (resource: any) => void
+	handleEdit?: (resource: any) => void
+	handleDelete?: (resource: any) => void
 	secondaryActions?: React.ReactNode
 	menuActions?: any
-	titleField?: string
-	descriptionField?: string
-	imageField?: string
-	iconField?: string
-  avatar?: any 
 }
 
 const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 	const {
+    resource,
+    title,
+    description,
     avatar,
-		resource,
-		colorField = 'color',
-		titleField = 'title',
-		descriptionField = 'description',
-		imageField = 'image.url',
-		iconField = 'icon',
+    icon,
+    image,
+    color,
 		handleClick,
 		handleEdit,
 		handleDelete,
@@ -58,44 +57,43 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 			>
 				<ListItemButton
 					sx={sx.listItemButton}
-					onClick={() => handleClick(resource)}
+					onClick={handleClick ? () => handleClick(resource) : undefined}
 				>
           {avatar && (
 						<ListItemIcon sx={sx.listItemIcon}>
 							{ avatar }
 						</ListItemIcon>
 					)}
-					{!avatar && get(resource, imageField) && (
+					{(!avatar && image) && (
 						<ListItemIcon sx={sx.listItemIcon}>
 							<Image
-								src={get(resource, imageField)}
+								src={image}
 								width={32}
 								height={32}
-								alt={get(resource, titleField)}
+								alt={image}
 							/>
 						</ListItemIcon>
 					)}
-					{avatar && get(resource, iconField) && (
+					{icon &&  (
 						<ListItemIcon sx={sx.listItemIcon}>
 							<Avatar
 								sx={{
-									bgcolor: get(resource, colorField),
+									bgcolor: color
 								}}
 							>
-								<Icon name={get(resource, iconField)} size={24} />
+								<Icon name={icon} size={24} />
 							</Avatar>
 						</ListItemIcon>
-					)}
-					
+					)}					
 					<ListItemText
 						primary={
 							<Typography variant="body1" color="text.primary">
-								{get(resource, titleField)}
+								{ title }
 							</Typography>
 						}
 						secondary={
 							<Typography variant="body2" color="text.secondary">
-								{get(resource, descriptionField)}
+								{ description }
 							</Typography>
 						}
 					/>
