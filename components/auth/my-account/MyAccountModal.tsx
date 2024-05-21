@@ -4,10 +4,9 @@ import { useAuth } from 'frontend-js'
 import { Modal, MyAccountForm } from '../../../components'
 import {
 	TeamList,
-	TeamForm,
 	TeamUsersList,
 	TeamUserInvite,
-  StripeCreditCard,
+  SubscriptionPlans,
   CreditCards
 } from '../../../components'
 import MyAccountTabs from './MyAccountTabs'
@@ -94,6 +93,9 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
           <CreditCards 
             stripePublishableKey={stripePublishableKey}
           />
+        )}
+        {currentTab == 6 && (
+          <SubscriptionPlans />
         )}
 			</Box>
 		</Modal>

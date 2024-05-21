@@ -53,7 +53,7 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
 								<Icon name="Trash" size={20} />
 							</ListItemIcon>
 						)}
-						Delete
+						Remove
 					</MenuItem>
 				)}
 			</Menu>
