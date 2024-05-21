@@ -33,7 +33,7 @@ const Tabs: React.FC<TabsProps> = (props) => {
 		>
 			<MuiTabs
 				centered
-				direction={direction == 'column' ? 'vertical' : 'horizontal' }
+				orientation={direction == 'column' ? 'vertical' : 'horizontal' }
 				value={currentTab}
 				onChange={handleChange}
 				color="primary"
