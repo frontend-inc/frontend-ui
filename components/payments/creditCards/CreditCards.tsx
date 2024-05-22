@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Button, List } from '@mui/material'
+import { useAuth } from 'frontend-js'
 import {
   Loading,
 	SelectableListItem,
@@ -33,6 +34,8 @@ const CreditCards: React.FC<CreditCardsProps> = (props) => {
 	const [isEditing, setIsEditing] = useState(false)
 	const [openDeleteModal, setOpenDeleteModal] = useState(false)
 
+  const { currentUser, fetchMe } = useAuth()
+
 	const handleAddCreditCardClick = () => {
 		setCreditCard({})
 		setIsEditing(true)
@@ -63,12 +66,19 @@ const CreditCards: React.FC<CreditCardsProps> = (props) => {
 		let resp = await selectCreditCard(creditCard.id)
 		if (resp?.id) {
 			findCreditCards()
+      fetchMe()
 		}
 	}
 
 	useEffect(() => {
 		findCreditCards()
 	}, [])
+
+  useEffect(() => {
+		if(!currentUser?.id){
+      fetchMe()
+    }
+	}, [currentUser])
 
 	return (
 		<>
@@ -79,7 +89,7 @@ const CreditCards: React.FC<CreditCardsProps> = (props) => {
 						{!loading && creditCards?.map((creditCard) =>(
               <SelectableListItem
                 key={creditCard.id}
-                selected={creditCard.primary}
+                selected={creditCard.id == currentUser?.credit_card_id}
                 icon={'CreditCard'}
                 title={creditCard.last4}
                 description={creditCard.brand}

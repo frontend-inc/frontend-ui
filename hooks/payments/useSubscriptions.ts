@@ -40,9 +40,9 @@ const useSubscriptions = () => {
 		)) as unknown as SubscriptionPlanType
 	}
 
-  const unsubscribe = async (subscriptionPlanId) => {
+  const unsubscribe = async () => {
 		return (await loadingWrapper(() =>
-			api.post(`/api/v1/subscription_plans/${subscriptionPlanId}/unsubscribe`)
+			api.post(`/api/v1/subscription_plans/unsubscribe`)
 		)) as unknown as SubscriptionPlanType
 	}
 

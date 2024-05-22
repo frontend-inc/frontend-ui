@@ -68,9 +68,7 @@ const SubscriptionPlanList: React.FC = (props) => {
       <Loading loading={loading} />
       <List>
         {!loading && subscriptionPlans?.map((subscriptionPlan) => {
-            const selected = currentUser?.subscriptions?.find(
-              (sub) => sub?.id == subscriptionPlan?.id
-            )
+            const selected = currentUser?.subscription_plan_id === subscriptionPlan.id
             return(
             <SelectableListItem
               key={subscriptionPlan.id}
