@@ -1,6 +1,6 @@
 import React from 'react'
 import { List, Stack } from '@mui/material'
-import { Autosuggest, UserListItem } from '../../../components'
+import { Autosuggest, UserItem } from '../../../components'
 import { TeamUserType } from '../../../types'
 import { USER_ROLES } from '../../../constants'
 
@@ -16,7 +16,7 @@ const TeamUserForm: React.FC<TeamUserFormProps> = (props) => {
 	return (
 		<Stack spacing={1.5}>
 			<List dense disablePadding>
-				<UserListItem
+				<UserItem
 					selected
 					user={teamUser?.user}
 					handleEdit={() => null}

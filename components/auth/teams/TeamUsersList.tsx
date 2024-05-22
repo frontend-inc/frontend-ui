@@ -5,7 +5,7 @@ import {
 	Placeholder,
 	AlertModal,
 	Loading,
-	UserListItem,
+	UserItem,
 } from '../../../components'
 import { TeamUserType } from '../../../types'
 import { useTeamUsers } from '../../../hooks'
@@ -81,7 +81,7 @@ const TeamUsersList: React.FC<TeamListProps> = (props) => {
 						<Loading loading={loading} />
 						{!loading &&
 							teamUsers?.map((teamUser) => (
-								<UserListItem
+								<UserItem
 									key={teamUser.id}
 									isAdmin={currentUser?.team_role === 'admin'}
 									user={{
