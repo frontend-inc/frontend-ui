@@ -39,7 +39,7 @@ const SubscriptionPlanList: React.FC = (props) => {
 	}
 
   const handleUnsubscribe = async () => {
-		const resp = await unsubscribe(activeSubscriptionPlan?.id)
+		const resp = await unsubscribe()
 		if (resp?.id) {      
 			setOpenUnsubscribeModal(false)
 			await reloadSubscriptionPlans()
@@ -52,8 +52,8 @@ const SubscriptionPlanList: React.FC = (props) => {
     setOpenSubscribeModal(true)    
   }
 
-	const handleUnsubscribeClick = (subscriptionPlan) => {
-    setActiveSubscriptionPlan(subscriptionPlan)
+	const handleUnsubscribeClick = () => {
+    setActiveSubscriptionPlan()
 		setOpenUnsubscribeModal(true)
 	}
 
@@ -77,7 +77,6 @@ const SubscriptionPlanList: React.FC = (props) => {
               title={subscriptionPlan.title}
               description={subscriptionPlan.description}
               handleClick={() => handleSubscribeClick(subscriptionPlan)}
-              handleDelete={selected ? () => handleUnsubscribeClick(subscriptionPlan) : undefined}
             />
           )
         })}
@@ -89,12 +88,12 @@ const SubscriptionPlanList: React.FC = (props) => {
           description="Subscription plans will appear here."
         />
       )}
-      { !loading && currentUser?.stripe_plan_id && (
+      { !loading && currentUser?.stripe_subscription_id && (
         <Button 
           fullWidth
           variant="contained"
           color="secondary"
-          onClick={() => handleUnsubscribeClick()}
+          onClick={handleUnsubscribeClick}
         >
           Cancel Subscription
         </Button>
