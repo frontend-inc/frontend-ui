@@ -35,18 +35,16 @@ const Register: React.FC<RegisterProps> = (props) => {
 	}
 
 	return (
-		<AuthLayout>
-			<AuthScreen title={title} subtitle={subtitle}>
-				<RegisterForm
-					errors={errors}
-					loading={loading}
-					customer={customer}
-					handleChange={handleChange}
-					handleSubmit={handleSubmit}
-					handleLogin={handleLogin}
-				/>
-			</AuthScreen>
-		</AuthLayout>
+    <AuthScreen title={title} subtitle={subtitle}>
+      <RegisterForm
+        errors={errors}
+        loading={loading}
+        customer={customer}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        handleLogin={handleLogin}
+      />
+    </AuthScreen>
 	)
 }
 

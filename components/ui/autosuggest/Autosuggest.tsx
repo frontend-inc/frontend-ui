@@ -234,9 +234,9 @@ const sx: any = {
 			fontSize: (theme) => theme.typography.body2.fontSize,
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
 			bgcolor: 'background.paper',
-			border: (theme) => `3px solid ${theme.palette.divider}`,
+			border: (theme) => `1px solid ${theme.palette.divider}`,
 			'&:focus': {
-				border: (theme) => `3px solid ${theme.palette.primary.light}`,
+				border: (theme) => `1px solid ${theme.palette.primary.light}`,
 			},
 		},
 	},

@@ -11,12 +11,10 @@ export const sx = {
 			borderRadius: theme => `${theme.shape.borderRadius}px`,
 			fontSize: (theme) => theme.typography.body2.fontSize,
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
-			border: '3px solid',
+			border: '1px solid',
       borderColor: 'divider',
       bgcolor: 'background.main',			
 			'&:focus': {
-				boxShadow: `none`,
-				border: '3px solid',
 				borderColor: 'primary.main',
 			},
 		},

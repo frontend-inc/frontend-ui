@@ -74,7 +74,7 @@ const sx = {
 		fontSize: 15,
 	},
 	border: {
-		border: (theme) => `3px solid ${theme.palette.divider}`,
+		border: (theme) => `1px solid ${theme.palette.divider}`,
 		boxShadow: `rgb(0 0 0 / 5%) 0px 2px 4px !important`,
 		pt: 0.5,
 		pr: 2,
