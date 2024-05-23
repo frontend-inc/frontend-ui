@@ -79,7 +79,7 @@ const sx = {
     }, 
     '& .MuiTabs-indicator': {
       height: "100%",   
-      width: "100%",
+      width: "100px",
       borderRadius: 1,
       borderRight: '1px solid',
       borderBottom: '1px solid',
