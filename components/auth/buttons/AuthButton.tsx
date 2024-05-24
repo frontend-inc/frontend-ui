@@ -3,7 +3,7 @@ import { Button, Typography, Box, IconButton } from '@mui/material'
 import { useMenu } from '../../../hooks'
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
-import { Icon, AuthAvatar, AuthMenu } from '../..'
+import { Icon, UserAvatar, AuthMenu } from '../..'
 import { AppContext } from '../../../context'
 
 type AuthButtonProps = {
@@ -65,7 +65,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 				<>
 					{currentUser?.id ? (
 						<IconButton onClick={toggleMenu}>
-							<AuthAvatar />
+							<UserAvatar user={ currentUser } />
 						</IconButton>
 					) : (
 						<IconButton onClick={handleLogin}>
@@ -79,7 +79,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 						<Button
 							sx={sx.button}
 							onClick={toggleMenu}
-							startIcon={showIcon && <AuthAvatar />}
+							startIcon={showIcon && <UserAvatar user={ currentUser } />}
 							endIcon={
 								<Box>
 									<Icon name="MoreVertical" size={20} />

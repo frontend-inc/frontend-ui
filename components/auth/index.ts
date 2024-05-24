@@ -1,5 +1,4 @@
 export { default as AuthRequired } from './AuthRequired'
-export { default as AuthAvatar } from './avatars/AuthAvatar'
 export { default as AuthButton } from './buttons/AuthButton'
 export { default as AuthIconButton } from './buttons/AuthIconButton'
 export { default as AuthLayout } from './layouts/AuthLayout'

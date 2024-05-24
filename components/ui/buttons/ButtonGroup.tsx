@@ -1,6 +1,7 @@
 import React from 'react'
 import { Tab, Tabs } from '@mui/material'
 import { Icon } from '../../../components'
+
 type ButtonGroupProps = {  
   handleChange: (newValue: number | string) => void
   tabs: {

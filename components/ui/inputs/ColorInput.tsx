@@ -69,11 +69,23 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 
 	const handleColorChange = (color) => {
 		const hexColor = COLORS[color][tone]
+    handleChange({
+      target: {
+        name,
+        value: hexColor,
+      },
+    })
 		setHex(hexColor)
 		closeMenu()
 	}
 
 	const handleHexColorChange = (hexColor) => {
+    handleChange({
+      target: {
+        name,
+        value: hexColor,
+      },
+    })
 		setHex(hexColor)
 		closeMenu()
 	}
@@ -92,17 +104,14 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 		if (value) {
 			setHex(value)
 			setText(value)
+      handleChange({
+        target: {
+          name,
+          value,
+        },
+      })
 		}
 	}, [value])
-
-	useEffect(() => {
-		handleChange({
-			target: {
-				name,
-				value: hex,
-			},
-		})
-	}, [hex])
 
 	return (
 		<Stack direction="column" spacing={1} sx={sx.root}>
