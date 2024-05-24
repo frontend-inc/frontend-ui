@@ -19,13 +19,13 @@ type MenuListProps = {
 	icon?: React.ReactNode
 	disableBorder?: boolean
 	disablePadding?: boolean
-	closed?: boolean
+	defaultClosed?: boolean
 }
 
 const MenuList: React.FC<MenuListProps> = (props) => {
-	const { id, label, closed = false, children, disableBorder = false } = props
+	const { id, label, defaultClosed = false, children, disableBorder = false } = props
 
-	const [open, setOpen] = useState(!closed)
+	const [open, setOpen] = useState(!defaultClosed)
 	const handleToggleClick = () => {
 		//setMenuCookie(!open)
 		setOpen(!open)

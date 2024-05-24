@@ -1,10 +1,10 @@
 import React from 'react'
 import { Tab, Tabs } from '@mui/material'
-import { Icon } from '../../../components'
+import { Icon } from '../..'
 
-type ButtonGroupProps = {  
+type ButtonSwitchProps = {  
   handleChange: (newValue: number | string) => void
-  tabs: {
+  options: {
     icon?: string 
     label?: string
     value: number | string | boolean
@@ -17,13 +17,13 @@ type ButtonGroupProps = {
   size?: 'small' | 'large' 
 }
 
-const ButtonGroup: React.FC<ButtonGroupProps> = (props) =>{
+const ButtonSwitchInput: React.FC<ButtonSwitchProps> = (props) =>{
 
   const { 
     disablePadding=false, 
     disableBorder=false, 
     handleChange, 
-    tabs, 
+    options, 
     value,
     iconPosition='start',
     variant="fullWidth",
@@ -50,7 +50,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = (props) =>{
       indicatorColor="primary"
       textColor="inherit"      
     >
-      {tabs.map((tab, i) => (
+      {options.map((tab, i) => (
         <Tab 
           key={i} 
           disableRipple
@@ -68,7 +68,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = (props) =>{
   )
 }
 
-export default ButtonGroup
+export default ButtonSwitchInput
 
 const sx = {
   root: {    
