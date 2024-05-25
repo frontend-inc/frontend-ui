@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ShopContext } from 'frontend-shopify'
 import { IconButton } from '@mui/material'
 import {
 	ListItem,
@@ -41,7 +42,7 @@ const SideNavShopifyAuthButton: React.FC<SideNavShopifyAuthButtonProps> = (
 				<ListItemText
 					primary={
 						<Typography variant="button" color="text.primary">
-							My Orders
+							Your Orders
 						</Typography>
 					}
 				/>
@@ -51,13 +52,15 @@ const SideNavShopifyAuthButton: React.FC<SideNavShopifyAuthButtonProps> = (
 }
 
 type ShopifyAuthProps = {
-	customerUrl?: string
+	customerPortalUrl?: string
 	variant?: 'topNav' | 'sideNav'
 }
 
 const ShopifyAuth: React.FC<ShopifyAuthProps> = (props) => {
 	const router = useRouter()
-	const { variant = 'topNav', customerUrl } = props || {}
+	const { variant = 'topNav' } = props || {}
+
+  const { customerPortalUrl } = useContext(ShopContext) as any
 
 	const { findShop } = useShop()
 
@@ -71,15 +74,18 @@ const ShopifyAuth: React.FC<ShopifyAuthProps> = (props) => {
 	}
 
 	const handleClick = async () => {
-		if (customerUrl) {
-			router.push(customerUrl)
-		} else {
-			let shop = await findShop()
-			let shopId = getLastPathOfUrl(shop?.id)
-			router.push(`https://shopify.com/${shopId}/account`)
-		}
+		if (customerPortalUrl) {
+			router.push(customerPortalUrl)
+		} 
 	}
 
+  const fetchCustomerPortalUrl = async () => {
+    let shop = await findShop()
+		let shopId = getLastPathOfUrl(shop?.id)
+		return `https://shopify.com/${shopId}/account`
+  }
+
+  if(!customerPortalUrl) return null;
 	return variant == 'topNav' ? (
 		<TopNavShopifyAuthButton handleClick={handleClick} />
 	) : (

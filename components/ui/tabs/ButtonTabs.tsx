@@ -2,8 +2,8 @@ import React from 'react'
 import { Tab, Tabs } from '@mui/material'
 import { Icon } from '../..'
 
-type ButtonSwitchProps = {  
-  handleChange: (newValue: number | string) => void
+type ButtonTabsProps = {  
+  handleChange: (value: string | number) => void
   options: {
     icon?: string 
     label?: string
@@ -17,7 +17,7 @@ type ButtonSwitchProps = {
   size?: 'small' | 'large' 
 }
 
-const ButtonSwitchInput: React.FC<ButtonSwitchProps> = (props) =>{
+const ButtonTabs: React.FC<ButtonTabsProps> = (props) =>{
 
   const { 
     disablePadding=false, 
@@ -30,8 +30,8 @@ const ButtonSwitchInput: React.FC<ButtonSwitchProps> = (props) =>{
     size="large" 
   } = props
 
-  const handleInputChange = (ev: React.ChangeEvent<HTMLInputElement>, newValue: number) => {
-    handleChange(newValue)
+  const handleInputChange = (ev: React.ChangeEvent<HTMLInputElement>, value: number | string) => {
+    handleChange(value)
   }
 
   return(
@@ -40,9 +40,10 @@ const ButtonSwitchInput: React.FC<ButtonSwitchProps> = (props) =>{
       sx={{ 
         ...sx.root,
         ...(!disableBorder && sx.rootBorder),
-        p: disablePadding ? 0 : '5px',
+        p: disablePadding ? 0 : '3px',
         '& .MuiTab-root': {     
           height: size == "small" ? 34 : 36,
+          minWidth: size == "small" ? 44 : 64,
         } 
       }}
       value={value}
@@ -68,7 +69,7 @@ const ButtonSwitchInput: React.FC<ButtonSwitchProps> = (props) =>{
   )
 }
 
-export default ButtonSwitchInput
+export default ButtonTabs
 
 const sx = {
   root: {    
@@ -97,9 +98,9 @@ const sx = {
     }, 
     '& .MuiTabs-root': {            
       minHeight: 34,
-      height: 34,          
+      height: 34,                
     },
-		'& .MuiTab-root': {            
+		'& .MuiTab-root': {    
       minHeight: 34,
       borderRadius: 1,      
       color: 'text.secondary',

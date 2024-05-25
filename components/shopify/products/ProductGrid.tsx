@@ -29,7 +29,6 @@ const ProductGrid: React.FC<ProductGridProps> = (props) => {
 
 	const {
 		editing = false,
-    navigateUrl,
 		products,
 		buttonText = 'Add to cart',
 		enableBorder = false,
@@ -79,9 +78,8 @@ const sx = {
 		maxWidth: '100%',
 		display: 'grid',
 		gridTemplateColumns: {
-			lg: 'repeat(3, 1fr)',
-			md: '1fr 1fr 1fr',
-			sm: '1fr 1fr',
+			md: 'repeat(3, 1fr)',
+			sm: 'repeat(2, 1fr)',
 			xs: '1fr',
 		},
 	},

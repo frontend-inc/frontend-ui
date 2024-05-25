@@ -78,7 +78,8 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 							{enableAuth && <AuthButton editing={editing} />}
 							{enableShopify && (
 								<>
-									<ShopifyAuth />
+									<ShopifyAuth 
+                  />
 									<SearchButton />
 									<CartButton />
 								</>
