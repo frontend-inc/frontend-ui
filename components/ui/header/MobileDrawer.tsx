@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
-import { List, Box } from '@mui/material'
+import { List, Stack, Box } from '@mui/material'
 import { AuthButton, Drawer } from '../..'
-import { ShopifyAuth, SearchButton, CartButton } from '../../shopify'
+import { ShopifyAuth, CartButton } from '../../shopify'
 import { AppContext } from '../../../context'
 import SideNavMenuItem from './SideNavMenuItem'
 import { MenuLinkType } from '../../..'
@@ -55,18 +55,21 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 								handleClick={handleMenuClick}
 							/>
 						))}
-					{enableShopify && (
-						<>
-							<SearchButton variant="sideNav" />
-							<CartButton variant="sideNav" />
-						</>
-					)}
 				</List>
 				{(enableAuth || enableShopify) && (
-					<Box sx={sx.divider}>
-						{enableShopify && <ShopifyAuth variant="sideNav" />}
-						{enableAuth && <AuthButton showLabel editing={editing} />}
-					</Box>
+          <Stack direction="column" spacing={1}>
+          {enableShopify && (
+            <>
+              <CartButton variant="sideNav" />
+              <ShopifyAuth variant="sideNav" />
+            </>
+          )}
+            { enableAuth && 
+            <Box sx={sx.divider}>
+              <AuthButton showLabel editing={editing} />
+            </Box>
+            }
+          </Stack>
 				)}
 			</Box>
 		</Drawer>

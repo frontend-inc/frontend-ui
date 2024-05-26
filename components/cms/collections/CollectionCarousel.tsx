@@ -14,7 +14,7 @@ export type CollectionCarouselProps = {
 	style: 'card' | 'avatar' | 'cover' | 'chip' | 'text' | 'image'
 	fields?: any
 	editing?: boolean
-	navigateUrl: any
+	href: any
 	perPage?: number
 	query?: any
 	enableAutoPlay?: boolean
@@ -34,7 +34,7 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 		style = 'card',
 		query: defaultQuery = {},
 		perPage = 20,
-		navigateUrl,
+		href,
 		enableAutoPlay = false,
 		enableArrows = false,
 		enableDots = true,
@@ -47,12 +47,12 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 	})
 
 	const handleClick = (item) => {
-		if (clientUrl && navigateUrl && item?.handle) {
+		if (clientUrl && href && item?.handle) {
 			window.scrollTo({
 				top: 0,
 				behavior: 'smooth',
 			})
-			router.push(`${clientUrl}${navigateUrl}/${item?.handle}`)
+			router.push(`${clientUrl}${href}/${item?.handle}`)
 		}
 	}
 

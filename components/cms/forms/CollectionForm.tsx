@@ -9,7 +9,7 @@ export type CollectionFormProps = {
 	handle: string
   resource?: any
 	url: string
-	navigateUrl?: string
+	href?: string
 	buttonText?: string
 	variant?: 'contained' | 'outlined' | 'text'
 	fields: any[]
@@ -27,7 +27,7 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 		buttonText = 'Submit',
 		fields,
 		contentType,
-		navigateUrl,
+		href,
 		onSuccessMessage = 'Submitted successfully!',
 	} = props
 
@@ -64,8 +64,8 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 			}
 			if (resp?.id) {
 				showAlertSuccess(onSuccessMessage)
-				if (navigateUrl) {
-					router.push(`${clientUrl}${navigateUrl}`)
+				if (href) {
+					router.push(`${clientUrl}${href}`)
 				}
 			}
 		} catch (err) {

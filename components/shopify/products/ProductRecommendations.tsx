@@ -14,6 +14,7 @@ export type ProductRecommendationsProps = {
 	enableQuickShop?: boolean
 	enableOkendoStarRating?: boolean
 	buttonText?: string
+  href?: string
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 }
 
@@ -31,7 +32,7 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 		enableQuantity,
 		enableQuickShop,
 		enableOkendoStarRating,
-		maxWidth,
+    href
 	} = props || {}
 
 	const [similarProducts, setSimilarProducts] = useState<any>()
@@ -72,6 +73,7 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 		<Box sx={sx.root}>
 			{layout == 'grid' && (
 				<ProductGrid
+          href={href}
 					editing={editing}
 					loading={loading}
 					products={similarProducts}

@@ -2,7 +2,7 @@ import React from 'react'
 import { Stack, List, Box, Hidden } from '@mui/material'
 import { AuthButton } from '../../../components'
 import Logo from './Logo'
-import { ShopifyAuth, SearchButton, CartButton } from '../../shopify'
+import { ShopifyAuth, CartButton } from '../../shopify'
 import { HEADER_LOGO_HEIGHT, HEADER_LOGO_WIDTH } from '../../../constants/index'
 import { MenuLinkType } from '../../..'
 import SideNavMenuItem from './SideNavMenuItem'
@@ -81,19 +81,22 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 										handleClick={handleClick}
 									/>
 								))}
-							{enableShopify && (
-								<>
-									<SearchButton variant="sideNav" />
-									<CartButton variant="sideNav" editing={editing} />
-								</>
-							)}
 						</List>
 					</Stack>
 					{(enableAuth || enableShopify) && (
-						<Box sx={sx.divider}>
-							{enableShopify && <ShopifyAuth variant="sideNav" />}
-							{enableAuth && <AuthButton showLabel editing={editing} />}
-						</Box>
+            <Stack direction="column" spacing={1}>
+            {enableShopify && (
+              <>
+                <CartButton variant="sideNav" editing={editing} />
+                <ShopifyAuth variant="sideNav" />
+              </>
+            )}
+            {enableAuth && (
+              <Box sx={sx.divider}>
+                <AuthButton showLabel editing={editing} />
+              </Box>
+            )}
+            </Stack>
 					)}
 				</Stack>
 			</Box>

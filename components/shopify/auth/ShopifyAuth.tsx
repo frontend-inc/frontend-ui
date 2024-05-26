@@ -3,6 +3,7 @@ import { ShopContext } from 'frontend-shopify'
 import { IconButton } from '@mui/material'
 import {
 	ListItem,
+  ListItemIcon,
 	ListItemText,
 	ListItemButton,
 	Typography,
@@ -13,36 +14,43 @@ import { useRouter } from 'next/router'
 
 type TopNavShopifyAuthButtonProps = {
 	handleClick: () => void
+  icon: string
 }
 
 const TopNavShopifyAuthButton: React.FC<TopNavShopifyAuthButtonProps> = (
 	props
 ) => {
-	const { handleClick } = props
+	const { handleClick, icon } = props
 
 	return (
 		<IconButton onClick={handleClick}>
-			<Icon name="ShoppingBag" size={24} />
+			<Icon name={ icon } size={24} />
 		</IconButton>
 	)
 }
 
 type SideNavShopifyAuthButtonProps = {
 	handleClick: () => void
+  icon: string
 }
 
 const SideNavShopifyAuthButton: React.FC<SideNavShopifyAuthButtonProps> = (
 	props
 ) => {
-	const { handleClick } = props
+	const { handleClick, icon } = props
 
 	return (
 		<ListItem disablePadding disableGutters>
-			<ListItemButton onClick={handleClick}>
+			<ListItemButton 
+        sx={ sx.listItemButton }
+        onClick={handleClick}>
+        <ListItemIcon>
+          <Icon name={ icon } />
+        </ListItemIcon>
 				<ListItemText
 					primary={
 						<Typography variant="button" color="text.primary">
-							Your Orders
+							Orders
 						</Typography>
 					}
 				/>
@@ -52,13 +60,14 @@ const SideNavShopifyAuthButton: React.FC<SideNavShopifyAuthButtonProps> = (
 }
 
 type ShopifyAuthProps = {
+  icon?: string
 	customerPortalUrl?: string
 	variant?: 'topNav' | 'sideNav'
 }
 
 const ShopifyAuth: React.FC<ShopifyAuthProps> = (props) => {
 	const router = useRouter()
-	const { variant = 'topNav' } = props || {}
+	const { icon='ReceiptText', variant = 'topNav' } = props || {}
 
   const { customerPortalUrl } = useContext(ShopContext) as any
 
@@ -87,10 +96,16 @@ const ShopifyAuth: React.FC<ShopifyAuthProps> = (props) => {
 
   if(!customerPortalUrl) return null;
 	return variant == 'topNav' ? (
-		<TopNavShopifyAuthButton handleClick={handleClick} />
+		<TopNavShopifyAuthButton icon={icon} handleClick={handleClick} />
 	) : (
-		<SideNavShopifyAuthButton handleClick={handleClick} />
+		<SideNavShopifyAuthButton icon={icon} handleClick={handleClick} />
 	)
 }
 
 export default ShopifyAuth
+
+const sx = {
+  listItemButton: {
+    px: 1
+  },
+}

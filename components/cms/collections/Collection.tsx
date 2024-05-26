@@ -30,7 +30,7 @@ export type CollectionProps = {
 	contentType: string
 	enableInfiniteLoad?: boolean
 	enableLoadMore?: boolean
-	navigateUrl: any
+	href: any
 	perPage?: number
 	query?: any
 	actions: ActionType[]
@@ -72,7 +72,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		enableSorting = false,
 		enableInfiniteLoad = false,
 		enableLoadMore = true,
-		navigateUrl,
+		href,
 		buttonText,
 		enableBorder = false,
 		enableGradient = false,
@@ -167,12 +167,12 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	}
 
 	const handleClick = (item) => {
-		if (clientUrl && navigateUrl && item?.handle) {
+		if (clientUrl && href && item?.handle) {
 			window.scrollTo({
 				top: 0,
 				behavior: 'smooth',
 			})
-			router.push(`${clientUrl}${navigateUrl}/${item?.handle}`)
+			router.push(`${clientUrl}${href}/${item?.handle}`)
 		}
 	}
 

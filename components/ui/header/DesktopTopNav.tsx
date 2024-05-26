@@ -2,7 +2,7 @@ import React from 'react'
 import { AppBar, Box, Hidden, Toolbar } from '@mui/material'
 import { AuthButton } from '../../../components'
 import Logo from './Logo'
-import { ShopifyAuth, SearchButton, CartButton } from '../../shopify'
+import { ShopifyAuth, CartButton } from '../../shopify'
 import { useAuth } from 'frontend-js'
 import { MenuLinkType } from '../../..'
 import TopNavMenuItem from './TopNavMenuItem'
@@ -78,9 +78,7 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 							{enableAuth && <AuthButton editing={editing} />}
 							{enableShopify && (
 								<>
-									<ShopifyAuth 
-                  />
-									<SearchButton />
+									<ShopifyAuth />									
 									<CartButton />
 								</>
 							)}

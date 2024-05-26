@@ -12,14 +12,14 @@ export type LoginProps = {
 	oneTimePasswordUrl?: string
 	disableUsername?: boolean
 	enableGoogle?: boolean
-	navigateUrl: string
+	href: string
 }
 
 const Login: React.FC<LoginProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const {
-		navigateUrl,
+		href,
 		title = 'Sign In',
 		subtitle = 'Log in to your account',
 		forgotPasswordUrl,
@@ -34,12 +34,12 @@ const Login: React.FC<LoginProps> = (props) => {
 	const handleSubmit = async () => {
 		let resp = await login(user)
 		if (resp?.id) {
-			router.push(`${clientUrl}${navigateUrl}`)
+			router.push(`${clientUrl}${href}`)
 		}
 	}
 
 	const handleGoogleSuccess = () => {
-		router.push(`${clientUrl}${navigateUrl}`)
+		router.push(`${clientUrl}${href}`)
 	}
 
 	const handleSignup = () => {

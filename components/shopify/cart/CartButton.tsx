@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Badge, IconButton } from '@mui/material'
 import {
 	ListItem,
+  ListItemIcon,
 	ListItemText,
 	ListItemButton,
 	Typography,
@@ -12,12 +13,13 @@ import { Icon } from '../../../components'
 
 type SideNavCartButtonProps = {
 	label?: string
+  icon: string
 	totalQuantity: number
 	handleClick: () => void
 }
 
 const SideNavCartButton: React.FC<SideNavCartButtonProps> = (props) => {
-	const { label = 'Cart', totalQuantity, handleClick } = props
+	const { label = 'Cart', icon, totalQuantity, handleClick } = props
 
 	return (
 		<ListItem
@@ -28,10 +30,16 @@ const SideNavCartButton: React.FC<SideNavCartButtonProps> = (props) => {
 					badgeContent={totalQuantity}
 					color="primary"
 					sx={sx.badge}
-				></Badge>
+				/>
 			}
 		>
-			<ListItemButton onClick={handleClick}>
+			<ListItemButton 
+        sx={ sx.listItemButton }
+        onClick={handleClick}
+      >
+        <ListItemIcon>
+          <Icon name={ icon } />
+        </ListItemIcon>
 				<ListItemText
 					primary={
 						<Typography variant="subtitle2" color="text.primary">
@@ -45,13 +53,13 @@ const SideNavCartButton: React.FC<SideNavCartButtonProps> = (props) => {
 }
 
 type TopNavCartButtonProps = {
-	icon?: string
+	icon: string
 	totalQuantity: number
 	handleClick: () => void
 }
 
 const TopNavCartButton: React.FC<TopNavCartButtonProps> = (props) => {
-	const { icon = 'ShoppingCart', totalQuantity, handleClick } = props
+	const { icon, totalQuantity, handleClick } = props
 
 	return (
 		<IconButton onClick={handleClick} sx={sx.root}>
@@ -89,6 +97,7 @@ const CartButton: React.FC<CartButtonProps> = (props) => {
 	) : (
 		<SideNavCartButton
 			label={label}
+      icon={icon}
 			handleClick={handleCartClick}
 			totalQuantity={cart?.totalQuantity}
 		/>
@@ -106,6 +115,9 @@ const sx = {
 		color: 'text.primary',
 		justifyContent: 'flex-start',
 	},
+  listItemButton: {
+    px: 1
+  },
 	badge: {
 		mr: 1,
 	},

@@ -25,7 +25,7 @@ export type FormWizardProps = {
 	endDescription: string
 	endImage: string
 	endButtonText: string
-	navigateUrl?: string
+	href?: string
 }
 
 const FormWizard: React.FC<FormWizardProps> = (props) => {
@@ -47,7 +47,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		endDescription,
 		endImage,
 		endButtonText,
-		navigateUrl,
+		href,
 	} = props
 
 	const [submitted, setSubmitted] = useState(false)
@@ -83,8 +83,8 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 	}
 
 	const handleSuccess = () => {
-		if (navigateUrl) {
-			router.push(`${clientUrl}${navigateUrl}`)
+		if (href) {
+			router.push(`${clientUrl}${href}`)
 		} else {
 			handleResetForm()
 		}

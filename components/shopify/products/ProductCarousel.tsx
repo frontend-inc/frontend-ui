@@ -9,6 +9,7 @@ import { AppContext } from '../../../context'
 
 type ProductCarouselProps = {
 	editing?: boolean
+  href: string
 	loading?: boolean
 	products: ProductType[]
 	buttonText?: string
@@ -26,6 +27,7 @@ type ProductCarouselProps = {
 const ProductCarousel: React.FC<ProductCarouselProps> = (props) => {
 	const {
 		editing = false,
+    href='/products',
 		products,
 		buttonText = 'Add to cart',
 		enableAutoPlay = false,
@@ -45,8 +47,10 @@ const ProductCarousel: React.FC<ProductCarouselProps> = (props) => {
 
 	const handleClick = (product) => {
 		if (!editing) trackProductClicked(product)
-		const url = `${clientUrl}/products/${product?.handle}`
-		router.push(url)
+    if(href){
+		  const url = `${clientUrl}${href}/${product?.handle}`
+		  router.push(url)
+    }
 	}
 
 	return (

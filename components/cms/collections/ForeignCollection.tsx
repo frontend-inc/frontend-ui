@@ -25,7 +25,7 @@ export type ForeignCollectionProps = {
 	handle: string
 	contentType: string
 	foreignContentType?: string
-	navigateUrl?: any
+	href?: any
 	perPage?: number
 	query?: any
 	enableEdit?: boolean
@@ -45,7 +45,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		style = 'card',
 		contentType,
 		foreignContentType,
-		navigateUrl,
+		href,
 		perPage = 10,
 		query: defaultQuery = null,
 		enableBorder = false,
@@ -90,8 +90,8 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	})
 
 	const handleClick = (item) => {
-		if (clientUrl && navigateUrl && item?.handle) {
-			router.push(`${clientUrl}${navigateUrl}/${item?.handle}`)
+		if (clientUrl && href && item?.handle) {
+			router.push(`${clientUrl}${href}/${item?.handle}`)
 		}
 	}
 

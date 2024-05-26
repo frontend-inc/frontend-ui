@@ -38,7 +38,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		perPage = 20,
 		enableSearch = false,
 		enableFilters = false,
-		navigateUrl,
+		href,
 		enableBorder = false,
 		enableEdit = false,
 		enableCreate = false,
@@ -134,12 +134,12 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	}
 
 	const handleClick = (item) => {
-		if (clientUrl && navigateUrl && item?.handle) {
+		if (clientUrl && href && item?.handle) {
 			window.scrollTo({
 				top: 0,
 				behavior: 'smooth',
 			})
-			router.push(`${clientUrl}${navigateUrl}/${item?.handle}`)
+			router.push(`${clientUrl}${href}/${item?.handle}`)
 		}
 	}
 

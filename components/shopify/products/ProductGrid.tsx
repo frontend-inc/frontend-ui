@@ -5,10 +5,10 @@ import { useRouter } from 'next/router'
 import { useSegment } from '../../../hooks/addons'
 import { ProductType } from 'frontend-shopify'
 import { AppContext } from '../../../context'
-import Grid from '@mui/material/Unstable_Grid2'
 
 type ProductGridProps = {
 	editing?: boolean
+  href: string
 	loading?: boolean
 	products: ProductType[]
 	xs?: number
@@ -29,6 +29,7 @@ const ProductGrid: React.FC<ProductGridProps> = (props) => {
 
 	const {
 		editing = false,
+    href='/products',
 		products,
 		buttonText = 'Add to cart',
 		enableBorder = false,
@@ -43,8 +44,10 @@ const ProductGrid: React.FC<ProductGridProps> = (props) => {
 
 	const handleClick = (product) => {
 		if (!editing) trackProductClicked(product)
-		const url = `${clientUrl}/products/${product?.handle}`
-		router.push(url)
+    if(href){
+		  const url = `${clientUrl}${href}/${product?.handle}`
+		  router.push(url)
+    }
 	}
 
 	return (

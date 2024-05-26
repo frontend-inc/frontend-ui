@@ -11,7 +11,7 @@ type FavoritesProps = {
 	field: any
 	url: string
 	handle: string
-	navigateUrl?: any
+	href?: any
 	foreignUrl?: string
 	perPage?: number
 	query?: any
@@ -29,7 +29,7 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 		variant = 'list',
 		style = 'card',
 		url,
-		navigateUrl,
+		href,
 		perPage = 5,
 		editing = false,
 		buttonText,
@@ -47,8 +47,8 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 	})
 
 	const handleClick = (item) => {
-		if (!editing && clientUrl && navigateUrl && item?.handle) {
-			router.push(`${clientUrl}${navigateUrl}/${item?.handle}`)
+		if (!editing && clientUrl && href && item?.handle) {
+			router.push(`${clientUrl}${href}/${item?.handle}`)
 		}
 	}
 

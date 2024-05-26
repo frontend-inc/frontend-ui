@@ -9,7 +9,6 @@ import {
 import { ShopContext } from 'frontend-shopify'
 import { AppContext } from '../../../context'
 import { Icon } from '../../../components'
-import { useAlerts } from '../../../hooks'
 
 type TopNavSearchButtonProps = {
 	handleClick: () => void

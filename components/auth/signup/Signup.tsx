@@ -5,7 +5,7 @@ import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
 
 export type SignupProps = {
-	navigateUrl: string
+	href: string
 	loginUrl: string
 	title?: string
 	subtitle?: string
@@ -15,7 +15,7 @@ const Signup: React.FC<SignupProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const {
-		navigateUrl,
+		href,
 		loginUrl,
 		title = 'Sign up',
 		subtitle = 'Register your account',
@@ -28,7 +28,7 @@ const Signup: React.FC<SignupProps> = (props) => {
 	const handleSubmit = async () => {
 		let resp = await signup(user)
 		if (resp?.id) {
-			router.push(`${clientUrl}${navigateUrl}`)
+			router.push(`${clientUrl}${href}`)
 		}
 	}
 

@@ -11,7 +11,7 @@ export type ForeignFormProps = {
 	handle: string
 	url: string
 	foreignUrl?: string
-	navigateUrl?: string
+	href?: string
 	buttonText?: string
 	variant?: 'contained' | 'outlined' | 'text'
 	fields: any[]
@@ -28,7 +28,7 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 		fields,
 		url,
 		foreignUrl,
-		navigateUrl,
+		href,
 		onSuccessMessage = 'Submitted successfully!',
 	} = props
 
@@ -83,8 +83,8 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 					if (onSuccessMessage) {
 						showAlertSuccess(onSuccessMessage)
 					}
-					if (navigateUrl) {
-						router.push(`${clientUrl}${navigateUrl}`)
+					if (href) {
+						router.push(`${clientUrl}${href}`)
 					}
 				}
 			}

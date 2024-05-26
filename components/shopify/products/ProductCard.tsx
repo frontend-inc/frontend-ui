@@ -135,10 +135,10 @@ const sx = {
 	},
 	text: {
 		py: 1,
-		height: '90px',
+		minHeight: '90px',
 	},
 	textWithReviews: {
-		height: '120px',
+		minHeight: '120px',
 	},
 	contentBorder: {
 		p: 1,
