@@ -2,9 +2,8 @@ import React, { useEffect, useContext } from 'react'
 import { useCollections } from 'frontend-shopify'
 import { CollectionList } from '../../../components'
 import { Stack } from '@mui/material'
-import { ShopContext } from 'frontend-shopify'
 import { useRouter } from 'next/router'
-import { AppContext } from '@frontend-mui/context'
+import { AppContext } from '../../../context'
 
 export type CollectionsProps = {
 	editing?: boolean

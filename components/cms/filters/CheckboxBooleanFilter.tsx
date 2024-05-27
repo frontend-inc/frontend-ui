@@ -19,7 +19,7 @@ type CheckboxFilterProps = {
 	icon?: React.ReactNode
 	disableBorder?: boolean
 	disablePadding?: boolean
-	closed?: boolean
+	defaultClosed?: boolean
 }
 
 type BooleanOptionType = {
@@ -36,7 +36,7 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 		handleClick,
 		disableBorder,
 		disablePadding = false,
-		closed = false,
+		defaultClosed = false,
 	} = props
 
 	const BOOLEAN_OPTIONS: BooleanOptionType = [
@@ -49,7 +49,7 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 			label={label}
 			disableBorder={disableBorder}
 			disablePadding={disablePadding}
-			closed={closed}
+			defaultClosed={defaultClosed}
 		>
 			{BOOLEAN_OPTIONS?.map((option, index) => (
 				<CheckboxFilterItem

@@ -7,6 +7,7 @@ import {
 	Placeholder,
 	AlertModal,
 } from '../..'
+import { SubscriptionPlanType } from '../../../types'
 import { useSubscriptions } from '../../../hooks'
 
 const SubscriptionPlanList: React.FC = (props) => {
@@ -24,7 +25,7 @@ const SubscriptionPlanList: React.FC = (props) => {
 
   const [openSubscribeModel, setOpenSubscribeModal] = useState(false)
   const [openUnsubscribeModal, setOpenUnsubscribeModal] = useState(false)
-	const [activeSubscriptionPlan, setActiveSubscriptionPlan] = useState(-1)
+	const [activeSubscriptionPlan, setActiveSubscriptionPlan] = useState<SubscriptionPlanType | null>(null)
 
 	const handleSubscribe = async () => {
     let resp
@@ -53,7 +54,7 @@ const SubscriptionPlanList: React.FC = (props) => {
   }
 
 	const handleUnsubscribeClick = () => {
-    setActiveSubscriptionPlan()
+    setActiveSubscriptionPlan(null)
 		setOpenUnsubscribeModal(true)
 	}
 

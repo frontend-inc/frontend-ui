@@ -5,7 +5,7 @@ import { Box } from '@mui/material'
 import { useFavorites } from 'frontend-shopify'
 
 export type ProductFavoritesProps = {
-	editing?: boolean
+	href: string
 	perPage?: string
 	enableBorder?: boolean
 	enableAddToCart?: boolean
@@ -16,7 +16,7 @@ export type ProductFavoritesProps = {
 
 const ProductFavorites: React.FC<ProductFavoritesProps> = (props) => {
 	const {
-		editing = false,
+    href,
 		enableBorder = false,
 		buttonText = 'Add to cart',
 		enableAddToCart,
@@ -29,7 +29,7 @@ const ProductFavorites: React.FC<ProductFavoritesProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			<ProductGrid
-				editing={editing}
+        href={href}				
 				products={favorites}
 				enableBorder={enableBorder}
 				enableAddToCart={enableAddToCart}

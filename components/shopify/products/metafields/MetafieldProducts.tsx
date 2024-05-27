@@ -10,11 +10,12 @@ import { useProducts } from 'frontend-shopify'
 export type MetafieldProductsProps = {
 	layout?: 'grid' | 'carousel'
 	handle: string
+  href: string
 	metafield: MetafieldIdentifierType
 }
 
 const MetafieldProducts: React.FC<MetafieldProductsProps> = (props) => {
-	const { handle, layout = 'grid', metafield, ...rest } = props
+	const { handle, href, layout = 'grid', metafield, ...rest } = props
 
 	const { loading, product, findProduct } = useProducts()
 	const [products, setProducts] = useState<ProductType[] | null>(null)
@@ -34,9 +35,19 @@ const MetafieldProducts: React.FC<MetafieldProductsProps> = (props) => {
 	if (!products) return null
 	return (
 		<>
-			{layout == 'grid' && <ProductGrid products={products} {...rest} />}
+			{layout == 'grid' && (
+        <ProductGrid 
+          href={href} 
+          products={products} 
+          {...rest} 
+        />
+      )}
 			{layout == 'carousel' && (
-				<ProductCarousel products={products} {...rest} />
+				<ProductCarousel 
+          href={href}
+          products={products} 
+          {...rest} 
+        />
 			)}
 		</>
 	)

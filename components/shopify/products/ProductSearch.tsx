@@ -8,7 +8,7 @@ import {
 import { ProductSortKeyType } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
 import { useRouter } from 'next/router'
-import { Box, Grid, Stack, Typography } from '@mui/material'
+import { Box, Grid, Stack } from '@mui/material'
 import { SearchInput, Placeholder } from '../..'
 import { ProductSortButton, ProductGrid, ProductSearchFilters } from '..'
 import LoadMore from '../search/LoadMore'
@@ -17,7 +17,7 @@ import { AppContext } from '../../../context'
 const PER_PAGE = 48
 
 export type ProductSearchProps = {
-	editing?: boolean
+	href: string
 	handle: string
 	options?: SearchFilterOptionType[]
 	priceOptions?: PriceOptionType[]
@@ -33,7 +33,7 @@ export type ProductSearchProps = {
 
 const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 	const {
-		editing = false,
+		href,
 		options,
 		priceOptions,
 		enableFilters = false,
@@ -75,7 +75,6 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 		filters,
 		handleFilter,
 		handleFilterArray,
-		formatProductFilters,
 		formatQueryFilters,
 	} = useSearchFilters()
 
@@ -159,6 +158,7 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 
 					{products?.length > 0 && (
 						<ProductGrid
+              href={href}
 							loading={loading}
 							products={products}
 							xs={12}

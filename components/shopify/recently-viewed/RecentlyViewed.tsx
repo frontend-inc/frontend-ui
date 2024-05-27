@@ -5,7 +5,7 @@ import { Box } from '@mui/material'
 import { useRecentlyViewed } from 'frontend-shopify'
 
 export type RecentlyViewedProps = {
-	editing?: boolean
+	href: string
 	layout?: 'grid' | 'carousel'
 	perPage?: string
 	enableBorder?: boolean
@@ -20,7 +20,7 @@ export type RecentlyViewedProps = {
 
 const RecentlyViewed: React.FC<RecentlyViewedProps> = (props) => {
 	const {
-		editing = false,
+		href,
 		layout = 'grid',
 		enableBorder = false,
 		buttonText = 'Add to cart',
@@ -35,7 +35,7 @@ const RecentlyViewed: React.FC<RecentlyViewedProps> = (props) => {
 		<Box sx={sx.root}>
 			{layout == 'grid' && (
 				<ProductGrid
-					editing={editing}
+          href={href}
 					products={products}
 					enableBorder={enableBorder}
 					enableAddToCart={enableAddToCart}
@@ -46,7 +46,7 @@ const RecentlyViewed: React.FC<RecentlyViewedProps> = (props) => {
 			)}
 			{layout == 'carousel' && (
 				<ProductCarousel
-					editing={editing}
+          href={href}
 					products={products}
 					enableBorder={enableBorder}
 					buttonText={buttonText}

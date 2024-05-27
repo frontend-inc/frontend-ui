@@ -5,7 +5,7 @@ import { Box } from '@mui/material'
 
 export type ProductRecommendationsProps = {
 	handle?: string
-	editing?: boolean
+  href?: string
 	layout?: 'grid' | 'carousel'
 	perPage?: string
 	enableBorder?: boolean
@@ -14,7 +14,6 @@ export type ProductRecommendationsProps = {
 	enableQuickShop?: boolean
 	enableOkendoStarRating?: boolean
 	buttonText?: string
-  href?: string
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 }
 
@@ -23,7 +22,7 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 ) => {
 	const {
 		handle,
-		editing = false,
+		href,
 		layout = 'grid',
 		perPage = 12,
 		enableBorder = false,
@@ -32,7 +31,6 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 		enableQuantity,
 		enableQuickShop,
 		enableOkendoStarRating,
-    href
 	} = props || {}
 
 	const [similarProducts, setSimilarProducts] = useState<any>()
@@ -73,8 +71,7 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 		<Box sx={sx.root}>
 			{layout == 'grid' && (
 				<ProductGrid
-          href={href}
-					editing={editing}
+          href={href}					
 					loading={loading}
 					products={similarProducts}
 					enableBorder={enableBorder}
@@ -87,7 +84,7 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 			)}
 			{layout == 'carousel' && (
 				<ProductCarousel
-					editing={editing}
+          href={href}
 					loading={loading}
 					products={similarProducts}
 					enableBorder={enableBorder}

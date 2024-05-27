@@ -30,7 +30,6 @@ const ShopifyStore: React.FC<ShopifyStoreProps> = (props) => {
 			storefrontAccessToken={storefrontAccessToken}
 		>
 			<Cart />
-			<SearchModal />
 			<ProductProvider>
 				<CollectionProvider>{children}</CollectionProvider>
 			</ProductProvider>

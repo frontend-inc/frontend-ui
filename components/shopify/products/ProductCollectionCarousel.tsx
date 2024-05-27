@@ -5,7 +5,6 @@ import { ProductCarousel } from '../../../components/shopify'
 
 export type ProductCollectionCarouselProps = {
   href: string
-	editing?: boolean
 	handle: string
 	enableAutoPlay?: boolean
 	enableArrows?: boolean
@@ -23,7 +22,6 @@ const ProductCollectionCarousel: React.FC<ProductCollectionCarouselProps> = (
 	const {
 		handle,
     href,
-		editing = false,
 		enableAutoPlay = false,
 		enableArrows = false,
 		enableDots = false,
@@ -45,7 +43,6 @@ const ProductCollectionCarousel: React.FC<ProductCollectionCarouselProps> = (
 	return (
 		<Stack spacing={2}>
 			<ProductCarousel
-				editing={editing}
         href={href}
 				loading={loading}
 				products={products}

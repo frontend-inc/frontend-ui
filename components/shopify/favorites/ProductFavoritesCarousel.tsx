@@ -5,7 +5,7 @@ import { Box, Typography } from '@mui/material'
 import { useFavorites } from 'frontend-shopify'
 
 type ProductFavoritesCarouselProps = {
-	editing?: boolean
+	href: string
 	title?: string
 	perPage?: string
 	enableBorder?: boolean
@@ -22,7 +22,7 @@ const ProductFavoritesCarousel: React.FC<ProductFavoritesCarouselProps> = (
 	props
 ) => {
 	const {
-		editing = false,
+		href,
 		title = 'Favorites',
 		enableBorder = false,
 		buttonText = 'Add to cart',
@@ -45,7 +45,7 @@ const ProductFavoritesCarousel: React.FC<ProductFavoritesCarouselProps> = (
 				</Typography>
 			)}
 			<ProductCarousel
-				editing={editing}
+				href={href}
 				products={favorites}
 				enableBorder={enableBorder}
 				enableAddToCart={enableAddToCart}

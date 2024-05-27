@@ -8,7 +8,6 @@ import { ProductType } from 'frontend-shopify'
 import { AppContext } from '../../../context'
 
 type ProductCarouselProps = {
-	editing?: boolean
   href: string
 	loading?: boolean
 	products: ProductType[]
@@ -26,7 +25,6 @@ type ProductCarouselProps = {
 
 const ProductCarousel: React.FC<ProductCarouselProps> = (props) => {
 	const {
-		editing = false,
     href='/products',
 		products,
 		buttonText = 'Add to cart',

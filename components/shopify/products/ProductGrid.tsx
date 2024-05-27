@@ -7,7 +7,6 @@ import { ProductType } from 'frontend-shopify'
 import { AppContext } from '../../../context'
 
 type ProductGridProps = {
-	editing?: boolean
   href: string
 	loading?: boolean
 	products: ProductType[]
@@ -28,7 +27,6 @@ const ProductGrid: React.FC<ProductGridProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const {
-		editing = false,
     href='/products',
 		products,
 		buttonText = 'Add to cart',
