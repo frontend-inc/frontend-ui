@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
-import { Box, Button, Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import { Image, TouchableOpacity, MenuButton } from '../../../../components'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'

@@ -13,7 +13,7 @@ import {
 import { PriceOptionType, SearchFilterOptionType } from 'frontend-shopify'
 
 export type ProductCollectionProps = {
-	editing?: boolean
+  href: string
 	handle: string
 	options: SearchFilterOptionType[]
 	priceOptions: PriceOptionType[]
@@ -29,7 +29,7 @@ export type ProductCollectionProps = {
 const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 	const {
 		handle,
-		editing = false,
+    href,
 		options = [],
 		priceOptions = [],
 		enableFilters = false,
@@ -95,7 +95,7 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 				)}
 			</Stack>
 			<ProductGrid
-				editing={editing}
+        href={href}
 				loading={loading}
 				products={products}
 				enableBorder={enableBorder}

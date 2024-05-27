@@ -20,7 +20,6 @@ export type CollectionCoverImageProps = {
 const CollectionCoverImage: React.FC<CollectionCoverImageProps> = (props) => {
 	const {
 		shopifyCollection,
-		editing = false,
 		handleClick,
 		height = 400,
 		alt = 'image',
@@ -35,7 +34,6 @@ const CollectionCoverImage: React.FC<CollectionCoverImageProps> = (props) => {
 	if (!shopifyCollection) return null
 	return (
 		<CoverImage
-			editing={editing}
 			enableOverlay={enableOverlay}
 			enableGradient={enableGradient}
 			opacity={opacity}

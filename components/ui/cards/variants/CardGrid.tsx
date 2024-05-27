@@ -16,7 +16,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 		href,
 		handleClick,
 		objectFit = 'cover',
-		height = CARD_VERT_HEIGHT,
+		height = 240,
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
@@ -40,7 +40,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 			sx={{
 				...sx.root,
 				...(enableBorder && sx.rootBorder),
-				minWidth: `${CARD_VERT_WIDTH}px`,
+				width: '100%',
 				minHeight: height + 80,
 			}}
 		>

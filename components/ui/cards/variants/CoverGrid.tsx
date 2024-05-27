@@ -21,7 +21,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		icon,
 	} = props || {}
 
-	const { label, title, description, image, resource } = item || {}
+	const { label, title, description, image } = item || {}
 	const router = useRouter()
 
 	const handleItemClick = () => {
@@ -69,7 +69,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 									{truncate(title, 60)}
 								</Typography>
 								{description && (
-									<Typography color="common.white" variant="caption">
+									<Typography color="common.white" variant="body2">
 										{truncate(description, 30)}
 									</Typography>
 								)}
