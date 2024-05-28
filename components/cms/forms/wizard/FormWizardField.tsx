@@ -29,8 +29,7 @@ const WIZARD_FIELD_VARIENTS = [
 ]
 
 const FormWizardField: React.FC<FormWizardProps> = (props) => {
-	const { field, fadeIn, resource, handleChange, handleRemove } =
-		props
+	const { field, fadeIn, resource, handleChange, handleRemove } = props
 
 	return (
 		<Fade in={fadeIn} timeout={350}>

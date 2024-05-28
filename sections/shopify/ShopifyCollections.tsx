@@ -17,11 +17,23 @@ const ShopifyCollections: React.FC<ShopifyCollectionsProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
+		requireTeam,
+		requirePaid,
+		requireAdmin,
 		...rest
 	} = props
 
 	return (
-		<Section requireAuth={requireAuth} bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
+		<Section
+			requireAuth={requireAuth}
+			requireTeam={requireTeam}
+			requirePaid={requirePaid}
+			requireAdmin={requireAdmin}
+			bgcolor={bgcolor}
+			py={py}
+			px={px}
+			maxWidth={maxWidth}
+		>
 			<Heading
 				label={label}
 				title={title}

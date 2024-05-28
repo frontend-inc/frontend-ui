@@ -8,7 +8,7 @@ import { ProductType } from 'frontend-shopify'
 import { AppContext } from '../../../context'
 
 type ProductCarouselProps = {
-  href: string
+	href: string
 	loading?: boolean
 	products: ProductType[]
 	buttonText?: string
@@ -25,7 +25,7 @@ type ProductCarouselProps = {
 
 const ProductCarousel: React.FC<ProductCarouselProps> = (props) => {
 	const {
-    href='/products',
+		href = '/products',
 		products,
 		buttonText = 'Add to cart',
 		enableAutoPlay = false,
@@ -44,10 +44,10 @@ const ProductCarousel: React.FC<ProductCarouselProps> = (props) => {
 	const { trackProductClicked } = useSegment()
 
 	const handleClick = (product) => {
-    if(href){
-		  const url = `${clientUrl}${href}/${product?.handle}`
-		  router.push(url)
-    }
+		if (href) {
+			const url = `${clientUrl}${href}/${product?.handle}`
+			router.push(url)
+		}
 	}
 
 	return (

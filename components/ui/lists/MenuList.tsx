@@ -23,7 +23,13 @@ type MenuListProps = {
 }
 
 const MenuList: React.FC<MenuListProps> = (props) => {
-	const { id, label, defaultClosed = false, children, disableBorder = false } = props
+	const {
+		id,
+		label,
+		defaultClosed = false,
+		children,
+		disableBorder = false,
+	} = props
 
 	const [open, setOpen] = useState(!defaultClosed)
 	const handleToggleClick = () => {
@@ -93,7 +99,7 @@ const MenuList: React.FC<MenuListProps> = (props) => {
 					</ListItemButton>
 				</ListItem>
 			)}
-      <Collapse in={open}>
+			<Collapse in={open}>
 				<Box pb={2} px={2}>
 					{children}
 				</Box>
@@ -109,7 +115,7 @@ const sx = {
 		width: '100%',
 		minWidth: 200,
 		my: 0,
-	},  
+	},
 	listItem: {
 		borderRadius: 1,
 	},
@@ -128,7 +134,7 @@ const sx = {
 		lineHeight: '1em',
 	},
 	icon: {
-    transition: 'transform 0.3s ease-in-out',
+		transition: 'transform 0.3s ease-in-out',
 		color: 'text.secondary',
 	},
 	expandMore: {

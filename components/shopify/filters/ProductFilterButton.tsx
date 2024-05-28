@@ -41,7 +41,13 @@ const ProductFilterButton: React.FC<ProductFilterButtonProps> = (props) => {
 				Filter
 			</Button>
 			<Hidden smDown>
-				<Popup disablePadding anchorEl={anchorEl} open={open} handleClose={closeMenu} p={1}>
+				<Popup
+					disablePadding
+					anchorEl={anchorEl}
+					open={open}
+					handleClose={closeMenu}
+					p={1}
+				>
 					<ProductFiltersList
 						filters={filters}
 						options={options}

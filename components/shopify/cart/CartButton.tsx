@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Badge, IconButton } from '@mui/material'
 import {
 	ListItem,
-  ListItemIcon,
+	ListItemIcon,
 	ListItemText,
 	ListItemButton,
 	Typography,
@@ -13,7 +13,7 @@ import { Icon } from '../../../components'
 
 type SideNavCartButtonProps = {
 	label?: string
-  icon: string
+	icon: string
 	totalQuantity: number
 	handleClick: () => void
 }
@@ -26,20 +26,13 @@ const SideNavCartButton: React.FC<SideNavCartButtonProps> = (props) => {
 			disablePadding
 			disableGutters
 			secondaryAction={
-				<Badge
-					badgeContent={totalQuantity}
-					color="primary"
-					sx={sx.badge}
-				/>
+				<Badge badgeContent={totalQuantity} color="primary" sx={sx.badge} />
 			}
 		>
-			<ListItemButton 
-        sx={ sx.listItemButton }
-        onClick={handleClick}
-      >
-        <ListItemIcon>
-          <Icon name={ icon } />
-        </ListItemIcon>
+			<ListItemButton sx={sx.listItemButton} onClick={handleClick}>
+				<ListItemIcon>
+					<Icon name={icon} />
+				</ListItemIcon>
 				<ListItemText
 					primary={
 						<Typography variant="subtitle2" color="text.primary">
@@ -97,7 +90,7 @@ const CartButton: React.FC<CartButtonProps> = (props) => {
 	) : (
 		<SideNavCartButton
 			label={label}
-      icon={icon}
+			icon={icon}
 			handleClick={handleCartClick}
 			totalQuantity={cart?.totalQuantity}
 		/>
@@ -115,9 +108,9 @@ const sx = {
 		color: 'text.primary',
 		justifyContent: 'flex-start',
 	},
-  listItemButton: {
-    px: 1
-  },
+	listItemButton: {
+		px: 1,
+	},
 	badge: {
 		mr: 1,
 	},

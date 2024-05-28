@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 
 export type CollectionFormProps = {
 	handle: string
-  resource?: any
+	resource?: any
 	url: string
 	href?: string
 	buttonText?: string
@@ -23,7 +23,7 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 
 	const {
 		handle,
-    resource: _resource,
+		resource: _resource,
 		buttonText = 'Submit',
 		fields,
 		contentType,
@@ -38,7 +38,7 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 		errors,
 		findOne,
 		resource,
-    setResource,
+		setResource,
 		update,
 		create,
 		flattenDocument,
@@ -49,9 +49,9 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 	})
 
 	const handleRemove = async (name) => {
-    if(resource?.id){
-		  await removeAttachment(resource?.id, name)
-    }
+		if (resource?.id) {
+			await removeAttachment(resource?.id, name)
+		}
 	}
 
 	const handleSubmit = async () => {
@@ -74,9 +74,9 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 	}
 
 	useEffect(() => {
-    if(_resource){
-      setResource(_resource)
-    }else if (handle) {
+		if (_resource) {
+			setResource(_resource)
+		} else if (handle) {
 			findOne(handle)
 		}
 	}, [_resource, handle])

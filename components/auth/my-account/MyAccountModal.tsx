@@ -6,16 +6,16 @@ import {
 	TeamList,
 	TeamUsersList,
 	TeamUserInvite,
-  SubscriptionPlans,
-  CreditCards
+	SubscriptionPlans,
+	CreditCards,
 } from '../../../components'
 import MyAccountTabs from './MyAccountTabs'
 import { Box } from '@mui/material'
 
 type MyAccountModalProps = {
 	enableTeams?: boolean
-  enableStripe?: boolean
-  stripePublishableKey: string
+	enableStripe?: boolean
+	stripePublishableKey: string
 }
 
 const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
@@ -47,9 +47,9 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 		await updateMe(user)
 	}
 
-  const handleTabChange = (ev: any, newValue: number) => {
-    setCurrentTab(newValue)
-  }
+	const handleTabChange = (ev: any, newValue: number) => {
+		setCurrentTab(newValue)
+	}
 
 	return (
 		<Modal
@@ -62,12 +62,12 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 					: 'My Account'
 			}
 		>
-      <MyAccountTabs 
-        tab={currentTab} 
-        enableTeams={enableTeams}
-        enableStripe={enableStripe}
-        handleChange={handleTabChange} 
-      />		
+			<MyAccountTabs
+				tab={currentTab}
+				enableTeams={enableTeams}
+				enableStripe={enableStripe}
+				handleChange={handleTabChange}
+			/>
 			<Box sx={sx.content}>
 				{currentTab == 0 && (
 					<MyAccountForm
@@ -89,14 +89,10 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 						handleCancel={() => setCurrentTab(2)}
 					/>
 				)}
-        {currentTab == 4 && (
-          <CreditCards 
-            stripePublishableKey={stripePublishableKey}
-          />
-        )}
-        {currentTab == 6 && (
-          <SubscriptionPlans />
-        )}
+				{currentTab == 4 && (
+					<CreditCards stripePublishableKey={stripePublishableKey} />
+				)}
+				{currentTab == 6 && <SubscriptionPlans />}
 			</Box>
 		</Modal>
 	)

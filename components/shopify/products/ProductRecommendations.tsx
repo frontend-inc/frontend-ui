@@ -5,7 +5,7 @@ import { Box } from '@mui/material'
 
 export type ProductRecommendationsProps = {
 	handle?: string
-  href?: string
+	href?: string
 	layout?: 'grid' | 'carousel'
 	perPage?: string
 	enableBorder?: boolean
@@ -71,7 +71,7 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 		<Box sx={sx.root}>
 			{layout == 'grid' && (
 				<ProductGrid
-          href={href}					
+					href={href}
 					loading={loading}
 					products={similarProducts}
 					enableBorder={enableBorder}
@@ -84,7 +84,7 @@ const ProductRecommendations: React.FC<ProductRecommendationsProps> = (
 			)}
 			{layout == 'carousel' && (
 				<ProductCarousel
-          href={href}
+					href={href}
 					loading={loading}
 					products={similarProducts}
 					enableBorder={enableBorder}

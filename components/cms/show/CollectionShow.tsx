@@ -23,19 +23,19 @@ export type CollectionShowItemProps = {
 	handleEdit?: () => void
 }
 
-type CollectionShowStyleTypes = 
-  'item' | 
-  'article' | 
-  'person' | 
-  'document' | 
-  'youtube' | 
-  'vimeo' 
+type CollectionShowStyleTypes =
+	| 'item'
+	| 'article'
+	| 'person'
+	| 'document'
+	| 'youtube'
+	| 'vimeo'
 
 export type CollectionShowProps = CollectionShowItemProps & {
 	fields: FormFieldType[]
 	displayFields: DisplayFieldType[]
 	url: string
-	style: CollectionShowStyleTypes 
+	style: CollectionShowStyleTypes
 }
 
 const CollectionShow: React.FC<CollectionShowProps> = (props) => {
@@ -57,12 +57,12 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 	} = props || {}
 
 	const {
-    delayedLoading: loading,
+		delayedLoading: loading,
 		errors,
 		update,
 		create,
 		resource,
-    setResource,
+		setResource,
 		removeAttachment,
 		handleDataChange,
 	} = useDocuments({
@@ -106,11 +106,11 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 
 	const Component = components[style]
 
-  useEffect(() => {
-    if(_resource?.id){
-      setResource(_resource)
-    }
-  }, [_resource])
+	useEffect(() => {
+		if (_resource?.id) {
+			setResource(_resource)
+		}
+	}, [_resource])
 
 	return (
 		<Stack direction="column" spacing={2} sx={sx.root}>
@@ -131,27 +131,6 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 					resource={resource}
 					enableBorder={enableBorder}
 				/>
-			)}
-			{(!resource?.id && !_resource?.id && enableCreate) && (
-				<Stack direction="column" spacing={2} sx={sx.inlineForm}>
-					<Form
-						loading={loading}
-						errors={errors}
-						fields={fields}
-						resource={flattenDocument(resource)}
-						handleChange={handleDataChange}
-						handleRemove={handleRemove}
-					/>
-					<Button
-						fullWidth
-						variant="contained"
-						color="primary"
-						onClick={handleSubmit}
-						startIcon={<IconLoading loading={loading} />}
-					>
-						Create
-					</Button>
-				</Stack>
 			)}
 			<Drawer
 				open={openModal}

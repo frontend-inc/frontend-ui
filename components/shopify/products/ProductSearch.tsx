@@ -71,12 +71,8 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 		useState<ProductSortKeyType>('COLLECTION_DEFAULT')
 	const [reverse, setReverse] = useState(false)
 
-	const {
-		filters,
-		handleFilter,
-		handleFilterArray,
-		formatQueryFilters,
-	} = useSearchFilters()
+	const { filters, handleFilter, handleFilterArray, formatQueryFilters } =
+		useSearchFilters()
 
 	const handleChange = (ev) => {
 		setKeywords(ev.target.value)
@@ -158,7 +154,7 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 
 					{products?.length > 0 && (
 						<ProductGrid
-              href={href}
+							href={href}
 							loading={loading}
 							products={products}
 							xs={12}

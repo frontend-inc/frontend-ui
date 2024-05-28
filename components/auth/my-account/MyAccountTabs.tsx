@@ -3,41 +3,33 @@ import { Tabs, Tab } from '@mui/material'
 
 type MyAccountTabsProps = {
 	tab?: number
-  enableTeams?: boolean
-  enableStripe?: boolean
+	enableTeams?: boolean
+	enableStripe?: boolean
 	handleChange?: (ev: any, newValue: number) => void
 }
 
 const MyAccountTabs: React.FC<MyAccountTabsProps> = (props) => {
-	const { 
-    tab, 
-    enableTeams,
-    enableStripe,
-    handleChange 
-  } = props || {}
+	const { tab, enableTeams, enableStripe, handleChange } = props || {}
 
-	const TABS = [
-		{ label: 'Account', value: 0 },    
+	const TABS = [{ label: 'Account', value: 0 }]
+	const TEAM_TABS = [
+		{ label: 'Teams', value: 1 },
+		{ label: 'Members', value: 2 },
 	]
-  const TEAM_TABS = [
-    { label: 'Teams', value: 1 },
-    { label: 'Members', value: 2 },		
-  ]
-  const STRIPE_TABS = [
-    { label: 'Payment', value: 4 },
-    { label: 'Subscription', value: 6 },
-  ]
+	const STRIPE_TABS = [
+		{ label: 'Payment', value: 4 },
+		{ label: 'Subscription', value: 6 },
+	]
 
+	let tabs = TABS
+	if (enableTeams) {
+		tabs = [...tabs, ...TEAM_TABS]
+	}
+	if (enableStripe) {
+		tabs = [...tabs, ...STRIPE_TABS]
+	}
 
-  let tabs = TABS 
-  if(enableTeams){
-    tabs = [...tabs, ...TEAM_TABS]
-  }
-  if(enableStripe){
-    tabs = [...tabs, ...STRIPE_TABS]
-  }
-
-  if(!enableTeams && !enableStripe) return null;
+	if (!enableTeams && !enableStripe) return null
 	return (
 		<Tabs
 			value={tab}

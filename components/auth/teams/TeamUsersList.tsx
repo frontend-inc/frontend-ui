@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useAuth } from 'frontend-js'
 import { Stack, Box, Button, List } from '@mui/material'
-import {
-	Placeholder,
-	AlertModal,
-	Loading,
-	UserItem,
-} from '../../../components'
+import { Placeholder, AlertModal, Loading, UserItem } from '../../../components'
 import { TeamUserType } from '../../../types'
 import { useTeamUsers } from '../../../hooks'
 import TeamUserForm from './TeamUserForm'
@@ -103,7 +98,7 @@ const TeamUsersList: React.FC<TeamListProps> = (props) => {
 								/>
 							))}
 					</List>
-					{(!loading && teamUsers?.length == 0) && (
+					{!loading && teamUsers?.length == 0 && (
 						<Placeholder
 							icon="Users"
 							title="No Teams"

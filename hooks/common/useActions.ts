@@ -21,7 +21,7 @@ const useActions = (params: UseActionParams) => {
 
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
-  const { currentUser } = useAuth()
+	const { currentUser } = useAuth()
 
 	const handleClick = async (ev) => {
 		let value
@@ -70,12 +70,12 @@ const useActions = (params: UseActionParams) => {
 					window.open(value, '_blank')
 				}
 				break
-      case 'stripe_payment_link':        
-        if (value) {
-          let url = `${value}?prefilled_email=${currentUser?.email}&client_reference_id=${currentUser?.email}`
-          window.open(url, '_blank')
-        }
-        break  
+			case 'stripe_payment_link':
+				if (value) {
+					let url = `${value}?prefilled_email=${currentUser?.email}&client_reference_id=${currentUser?.email}`
+					window.open(url, '_blank')
+				}
+				break
 			case 'download':
 				if (value?.url) {
 					window.open(value.url, '_blank')

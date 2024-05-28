@@ -3,7 +3,7 @@ import { ShopContext } from 'frontend-shopify'
 import { IconButton } from '@mui/material'
 import {
 	ListItem,
-  ListItemIcon,
+	ListItemIcon,
 	ListItemText,
 	ListItemButton,
 	Typography,
@@ -14,7 +14,7 @@ import { useRouter } from 'next/router'
 
 type TopNavShopifyAuthButtonProps = {
 	handleClick: () => void
-  icon: string
+	icon: string
 }
 
 const TopNavShopifyAuthButton: React.FC<TopNavShopifyAuthButtonProps> = (
@@ -24,14 +24,14 @@ const TopNavShopifyAuthButton: React.FC<TopNavShopifyAuthButtonProps> = (
 
 	return (
 		<IconButton onClick={handleClick}>
-			<Icon name={ icon } size={24} />
+			<Icon name={icon} size={24} />
 		</IconButton>
 	)
 }
 
 type SideNavShopifyAuthButtonProps = {
 	handleClick: () => void
-  icon: string
+	icon: string
 }
 
 const SideNavShopifyAuthButton: React.FC<SideNavShopifyAuthButtonProps> = (
@@ -41,12 +41,10 @@ const SideNavShopifyAuthButton: React.FC<SideNavShopifyAuthButtonProps> = (
 
 	return (
 		<ListItem disablePadding disableGutters>
-			<ListItemButton 
-        sx={ sx.listItemButton }
-        onClick={handleClick}>
-        <ListItemIcon>
-          <Icon name={ icon } />
-        </ListItemIcon>
+			<ListItemButton sx={sx.listItemButton} onClick={handleClick}>
+				<ListItemIcon>
+					<Icon name={icon} />
+				</ListItemIcon>
 				<ListItemText
 					primary={
 						<Typography variant="button" color="text.primary">
@@ -60,16 +58,16 @@ const SideNavShopifyAuthButton: React.FC<SideNavShopifyAuthButtonProps> = (
 }
 
 type ShopifyAuthProps = {
-  icon?: string
+	icon?: string
 	customerPortalUrl?: string
 	variant?: 'topNav' | 'sideNav'
 }
 
 const ShopifyAuth: React.FC<ShopifyAuthProps> = (props) => {
 	const router = useRouter()
-	const { icon='ReceiptText', variant = 'topNav' } = props || {}
+	const { icon = 'ReceiptText', variant = 'topNav' } = props || {}
 
-  const { customerPortalUrl } = useContext(ShopContext) as any
+	const { customerPortalUrl } = useContext(ShopContext) as any
 
 	const { findShop } = useShop()
 
@@ -85,16 +83,16 @@ const ShopifyAuth: React.FC<ShopifyAuthProps> = (props) => {
 	const handleClick = async () => {
 		if (customerPortalUrl) {
 			router.push(customerPortalUrl)
-		} 
+		}
 	}
 
-  const fetchCustomerPortalUrl = async () => {
-    let shop = await findShop()
+	const fetchCustomerPortalUrl = async () => {
+		let shop = await findShop()
 		let shopId = getLastPathOfUrl(shop?.id)
 		return `https://shopify.com/${shopId}/account`
-  }
+	}
 
-  if(!customerPortalUrl) return null;
+	if (!customerPortalUrl) return null
 	return variant == 'topNav' ? (
 		<TopNavShopifyAuthButton icon={icon} handleClick={handleClick} />
 	) : (
@@ -105,7 +103,7 @@ const ShopifyAuth: React.FC<ShopifyAuthProps> = (props) => {
 export default ShopifyAuth
 
 const sx = {
-  listItemButton: {
-    px: 1
-  },
+	listItemButton: {
+		px: 1,
+	},
 }

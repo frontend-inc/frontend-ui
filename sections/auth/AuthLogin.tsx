@@ -7,7 +7,17 @@ import { SectionProps } from '../../types'
 type AuthLoginProps = SectionProps & LoginProps
 
 const AuthLogin: React.FC<AuthLoginProps> = (props) => {
-	const { bgcolor, py, px, maxWidth, requireAuth, ...rest } = props
+	const {
+		bgcolor,
+		py,
+		px,
+		maxWidth,
+		requireAuth,
+		requireTeam,
+		requirePaid,
+		requireAdmin,
+		...rest
+	} = props
 
 	return (
 		<Section

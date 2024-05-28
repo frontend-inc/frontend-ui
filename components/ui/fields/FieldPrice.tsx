@@ -35,7 +35,7 @@ const FieldPrice: React.FC<FieldPriceProps> = (props) => {
 	return (
 		<FieldString
 			variant={variant}
-			value={isNaN(value) ? '-' : price }
+			value={isNaN(value) ? '-' : price}
 			label={label}
 			color={color}
 			placeholder={placeholder}

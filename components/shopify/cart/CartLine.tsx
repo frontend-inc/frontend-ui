@@ -185,7 +185,7 @@ const sx = {
 	},
 	listItemIcon: {
 		mr: 2,
-    width: 96,
+		width: 96,
 	},
 	buttonGroup: {
 		height: '28px',

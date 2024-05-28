@@ -35,7 +35,7 @@ const RecentlyViewed: React.FC<RecentlyViewedProps> = (props) => {
 		<Box sx={sx.root}>
 			{layout == 'grid' && (
 				<ProductGrid
-          href={href}
+					href={href}
 					products={products}
 					enableBorder={enableBorder}
 					enableAddToCart={enableAddToCart}
@@ -46,7 +46,7 @@ const RecentlyViewed: React.FC<RecentlyViewedProps> = (props) => {
 			)}
 			{layout == 'carousel' && (
 				<ProductCarousel
-          href={href}
+					href={href}
 					products={products}
 					enableBorder={enableBorder}
 					buttonText={buttonText}

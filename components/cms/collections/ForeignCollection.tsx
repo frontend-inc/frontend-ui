@@ -62,17 +62,10 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	const [openDeleteModal, setOpenDeleteModal] = useState(false)
 	const { clientUrl } = useContext(AppContext)
 
-	const {
-		query,
-		resources,
-		page,
-		numPages,
-		loadMore,
-		findLinks,
-		addLinks,
-	} = useDocuments({
-		collection: contentType,
-	})
+	const { query, resources, page, numPages, loadMore, findLinks, addLinks } =
+		useDocuments({
+			collection: contentType,
+		})
 
 	const {
 		errors,
@@ -148,14 +141,14 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	}
 
 	const handleFetchResources = async () => {
-    if(_resource?.id && foreignContentType) {
-      findLinks(_resource.id, foreignContentType, {
-        ...query,
-        ...defaultQuery,
-        per_page: perPage,
-        page: 1,
-      })
-    }
+		if (_resource?.id && foreignContentType) {
+			findLinks(_resource.id, foreignContentType, {
+				...query,
+				...defaultQuery,
+				per_page: perPage,
+				page: 1,
+			})
+		}
 	}
 
 	useEffect(() => {

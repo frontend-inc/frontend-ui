@@ -7,11 +7,24 @@ import { SectionProps } from '../../types'
 type CmsEmailSignupProps = SectionProps & EmailSignupProps
 
 const CmsEmailSignup: React.FC<CmsEmailSignupProps> = (props) => {
-	const { bgcolor, py, px, maxWidth, requireAuth, ...rest } = props
+	const {
+		bgcolor,
+		py,
+		px,
+		maxWidth,
+		requireAuth,
+		requireTeam,
+		requirePaid,
+		requireAdmin,
+		...rest
+	} = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
+			requireTeam={requireTeam}
+			requirePaid={requirePaid}
+			requireAdmin={requireAdmin}
 			bgcolor={bgcolor}
 			py={py}
 			px={px}

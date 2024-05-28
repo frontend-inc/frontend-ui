@@ -8,6 +8,9 @@ const Section: React.FC<SectionProps> = (props) => {
 	const {
 		enableTransitions = false,
 		requireAuth = false,
+		requireTeam = false,
+		requirePaid = false,
+		requireAdmin = false,
 		children,
 		bgcolor,
 		maxWidth,
@@ -53,7 +56,17 @@ const Section: React.FC<SectionProps> = (props) => {
 						maxWidth: width,
 					}}
 				>
-					{requireAuth ? <AuthRequired>{children}</AuthRequired> : children}
+					<AuthRequired
+						requireAuth={requireAuth}
+						requireTeam={requireTeam}
+						requirePaid={requirePaid}
+						requireAdmin={requireAdmin}
+						requireTeam={requireTeam}
+						requirePaid={requirePaid}
+						requireAdmin={requireAdmin}
+					>
+						{children}
+					</AuthRequired>
 				</Box>
 			</Box>
 		</Fade>

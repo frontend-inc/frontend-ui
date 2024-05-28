@@ -18,7 +18,7 @@ const CellTeam: React.FC<CellTeamProps> = (props) => {
 				sx={sx.button}
 				size="small"
 				color="secondary"
-        variant="contained"
+				variant="contained"
 				onClick={handleClick}
 				startIcon={<TeamAvatar team={team} />}
 			>

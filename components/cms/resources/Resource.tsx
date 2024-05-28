@@ -12,13 +12,13 @@ import {
 import { Image, Icon, MenuButton } from '../..'
 
 export type ResourceProps = {
-  avatar?: React.ReactNode
-  icon?: string
-  color?: string  
-  title?: string
-  description?: string
-  image?: string
-  resource: any
+	avatar?: React.ReactNode
+	icon?: string
+	color?: string
+	title?: string
+	description?: string
+	image?: string
+	resource: any
 	handleClick?: (resource: any) => void
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
@@ -28,13 +28,13 @@ export type ResourceProps = {
 
 const Resource: React.FC<ResourceProps> = (props) => {
 	const {
-    icon,
-    avatar,
-    title,
-    description,
-    image,
-    color,
-    resource,
+		icon,
+		avatar,
+		title,
+		description,
+		image,
+		color,
+		resource,
 		handleClick,
 		handleEdit,
 		handleDelete,
@@ -59,41 +59,32 @@ const Resource: React.FC<ResourceProps> = (props) => {
 					sx={sx.listItemButton}
 					onClick={handleClick ? () => handleClick(resource) : undefined}
 				>
-          {avatar && (
+					{avatar && <ListItemIcon sx={sx.listItemIcon}>{avatar}</ListItemIcon>}
+					{!avatar && image && (
 						<ListItemIcon sx={sx.listItemIcon}>
-							{ avatar }
+							<Image src={image} width={32} height={32} alt={image} />
 						</ListItemIcon>
 					)}
-					{(!avatar && image) && (
-						<ListItemIcon sx={sx.listItemIcon}>
-							<Image
-								src={image}
-								width={32}
-								height={32}
-								alt={image}
-							/>
-						</ListItemIcon>
-					)}
-					{icon &&  (
+					{icon && (
 						<ListItemIcon sx={sx.listItemIcon}>
 							<Avatar
 								sx={{
-									bgcolor: color
+									bgcolor: color,
 								}}
 							>
 								<Icon name={icon} size={24} />
 							</Avatar>
 						</ListItemIcon>
-					)}					
+					)}
 					<ListItemText
 						primary={
 							<Typography variant="body1" color="text.primary">
-								{ title }
+								{title}
 							</Typography>
 						}
 						secondary={
 							<Typography variant="body2" color="text.secondary">
-								{ description }
+								{description}
 							</Typography>
 						}
 					/>

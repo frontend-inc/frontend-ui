@@ -1,11 +1,11 @@
-import { OptionType } from "frontend-js"
+import { OptionType } from 'frontend-js'
 
 export type FormFieldType = {
 	name: string
 	variant: string
 	label: string
-  options?: OptionType[]
-  placeholder?: string
+	options?: OptionType[]
+	placeholder?: string
 }
 
 export type DisplayFieldType = FormFieldType

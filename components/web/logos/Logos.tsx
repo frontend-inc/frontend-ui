@@ -57,7 +57,7 @@ const sx = {
 	title: {
 		width: '100%',
 		textAlign: 'center',
-    mb: 4
+		mb: 4,
 	},
 	logos: {
 		overflowX: 'scroll',

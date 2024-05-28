@@ -7,10 +7,29 @@ import { SectionProps } from '../../types'
 type AddonKlaviyoButtonProps = SectionProps & KlaviyoButtonProps
 
 const AddonKlaviyoButton: React.FC<AddonKlaviyoButtonProps> = (props) => {
-	const { bgcolor, py, px, maxWidth, requireAuth, ...rest } = props
+	const {
+		bgcolor,
+		py,
+		px,
+		maxWidth,
+		requireAuth,
+		requireTeam,
+		requirePaid,
+		requireAdmin,
+		...rest
+	} = props
 
 	return (
-		<Section requireAuth={requireAuth} bgcolor={bgcolor} py={py} px={px} maxWidth={maxWidth}>
+		<Section
+			requireAuth={requireAuth}
+			requireTeam={requireTeam}
+			requirePaid={requirePaid}
+			requireAdmin={requireAdmin}
+			bgcolor={bgcolor}
+			py={py}
+			px={px}
+			maxWidth={maxWidth}
+		>
 			<KlaviyoButton {...rest} />
 		</Section>
 	)

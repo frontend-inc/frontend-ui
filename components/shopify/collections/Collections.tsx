@@ -7,7 +7,7 @@ import { AppContext } from '../../../context'
 
 export type CollectionsProps = {
 	editing?: boolean
-  href: string
+	href: string
 	variant?: 'grid' | 'list'
 	style?: 'card' | 'avatar' | 'cover'
 	perPage?: number
@@ -17,7 +17,7 @@ export type CollectionsProps = {
 	showDots?: boolean
 	enableBorder?: boolean
 	enableGradient?: boolean
-  enableOverlay?: boolean
+	enableOverlay?: boolean
 }
 
 const Collections: React.FC<CollectionsProps> = (props) => {
@@ -28,7 +28,7 @@ const Collections: React.FC<CollectionsProps> = (props) => {
 		buttonText,
 		enableBorder = false,
 		enableGradient = false,
-    enableOverlay = false
+		enableOverlay = false,
 	} = props
 
 	const router = useRouter()
@@ -37,14 +37,14 @@ const Collections: React.FC<CollectionsProps> = (props) => {
 
 	const { clientUrl } = useContext(AppContext) as any
 
-	const handleClick = (collection) => {		
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
-    if(href){
-      router.push(`${clientUrl}${href}/${collection?.handle}`)		
-    }
+	const handleClick = (collection) => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		})
+		if (href) {
+			router.push(`${clientUrl}${href}/${collection?.handle}`)
+		}
 	}
 
 	useEffect(() => {
@@ -62,7 +62,7 @@ const Collections: React.FC<CollectionsProps> = (props) => {
 				handleClick={handleClick}
 				enableBorder={enableBorder}
 				enableGradient={enableGradient}
-        enableOverlay={enableOverlay}
+				enableOverlay={enableOverlay}
 				enableEdit={false}
 				enableDelete={false}
 				handleEdit={() => null}

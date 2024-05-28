@@ -33,14 +33,14 @@ const useSubscriptions = () => {
 		url: '/api/v1/subscription_plans',
 	})
 
-  // Pass the DB subscription_plan_id
+	// Pass the DB subscription_plan_id
 	const subscribe = async (subscriptionPlanId) => {
 		return (await loadingWrapper(() =>
 			api.post(`/api/v1/subscription_plans/${subscriptionPlanId}/subscribe`)
 		)) as unknown as SubscriptionPlanType
 	}
 
-  const unsubscribe = async () => {
+	const unsubscribe = async () => {
 		return (await loadingWrapper(() =>
 			api.post(`/api/v1/subscription_plans/unsubscribe`)
 		)) as unknown as SubscriptionPlanType
@@ -55,7 +55,7 @@ const useSubscriptions = () => {
 		findSubscriptionPlan,
 		findSubscriptionPlans,
 
-    subscribe,
+		subscribe,
 		unsubscribe,
 
 		handleChange,
@@ -72,7 +72,7 @@ const useSubscriptions = () => {
 		handleSort,
 		loadMore,
 		loadingWrapper,
-		paginate
+		paginate,
 	}
 }
 

@@ -27,10 +27,10 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 	}
 
 	const filterVisibility = (menuItem) => {
-		if (menuItem.visibility === 'logged_in' && !currentUser?.id) {
+		if (menuItem.require_user && !currentUser?.id) {
 			return false
 		}
-		if (menuItem.visibility === 'logged_out' && currentUser?.id) {
+		if (menuItem.require_guest && currentUser?.id) {
 			return false
 		}
 		return true
@@ -57,19 +57,19 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 						))}
 				</List>
 				{(enableAuth || enableShopify) && (
-          <Stack direction="column" spacing={1}>
-          {enableShopify && (
-            <>
-              <CartButton variant="sideNav" />
-              <ShopifyAuth variant="sideNav" />
-            </>
-          )}
-            { enableAuth && 
-            <Box sx={sx.divider}>
-              <AuthButton showLabel editing={editing} />
-            </Box>
-            }
-          </Stack>
+					<Stack direction="column" spacing={1}>
+						{enableShopify && (
+							<>
+								<CartButton variant="sideNav" />
+								<ShopifyAuth variant="sideNav" />
+							</>
+						)}
+						{enableAuth && (
+							<Box sx={sx.divider}>
+								<AuthButton showLabel editing={editing} />
+							</Box>
+						)}
+					</Stack>
 				)}
 			</Box>
 		</Drawer>

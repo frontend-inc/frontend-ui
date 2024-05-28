@@ -7,7 +7,7 @@ import { ProductType } from 'frontend-shopify'
 import { AppContext } from '../../../context'
 
 type ProductGridProps = {
-  href: string
+	href: string
 	loading?: boolean
 	products: ProductType[]
 	xs?: number
@@ -27,7 +27,7 @@ const ProductGrid: React.FC<ProductGridProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const {
-    href='/products',
+		href = '/products',
 		products,
 		buttonText = 'Add to cart',
 		enableBorder = false,
@@ -41,10 +41,10 @@ const ProductGrid: React.FC<ProductGridProps> = (props) => {
 	const { trackProductClicked } = useSegment()
 
 	const handleClick = (product) => {
-    if(href){
-		  const url = `${clientUrl}${href}/${product?.handle}`
-		  router.push(url)
-    }
+		if (href) {
+			const url = `${clientUrl}${href}/${product?.handle}`
+			router.push(url)
+		}
 	}
 
 	return (

@@ -17,16 +17,22 @@ const CmsList: React.FC<CmsListProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
+		requireTeam,
+		requirePaid,
+		requireAdmin,
 		...rest
 	} = props
 
 	return (
 		<Section
-			requireAuth={requireAuth}
 			bgcolor={bgcolor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
+			requireAuth={requireAuth}
+			requireTeam={requireTeam}
+			requirePaid={requirePaid}
+			requireAdmin={requireAdmin}
 		>
 			<Heading
 				label={label}

@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 
 export type FormWizardProps = {
 	handle: string
-  resource?: any
+	resource?: any
 	py?: number
 	contentType: string
 	variant?: 'contained' | 'outlined' | 'text'
@@ -35,7 +35,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 	const {
 		py = 4,
 		handle,
-    resource: _resource,
+		resource: _resource,
 		fields,
 		contentType,
 		startTitle,
@@ -143,11 +143,11 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 	}, [fields, currentStep])
 
 	useEffect(() => {
-    if(_resource?.id){
-      setResource(_resource)
-    }else if(handle && contentType) {      
-      findOne(handle)
-    }		
+		if (_resource?.id) {
+			setResource(_resource)
+		} else if (handle && contentType) {
+			findOne(handle)
+		}
 	}, [_resource, handle, contentType])
 
 	return (

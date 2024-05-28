@@ -280,18 +280,13 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 						{resources?.map((resource, index) => (
 							<Component
 								key={index}
-                resource={resource}
+								resource={resource}
 								handleClick={
-									handleClick ? 
-                    (() => handleClick(resource)) : undefined 
+									handleClick ? () => handleClick(resource) : undefined
 								}
-								handleEdit={
-                  enableEdit ? 
-                    (() => handleEdit(resource)) : undefined 
-                }
+								handleEdit={enableEdit ? () => handleEdit(resource) : undefined}
 								handleDelete={
-									enableDelete ? 
-                    (() => handleDeleteClick(resource)) : undefined
+									enableDelete ? () => handleDeleteClick(resource) : undefined
 								}
 							/>
 						))}

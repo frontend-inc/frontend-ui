@@ -16,6 +16,9 @@ export type SectionProps = {
 	py?: number
 	px?: number
 	requireAuth?: boolean
+	requireTeam?: boolean
+	requirePaid?: boolean
+	requireAdmin?: boolean
 }
 
 export type CardProps = {

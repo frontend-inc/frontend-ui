@@ -12,12 +12,12 @@ const FieldArray: React.FC<FieldArrayProps> = (props) => {
 	const { value: values, label, ...rest } = props
 	return (
 		<FieldWrapper label={label} {...rest}>
-      <Stack sx={ sx.stack } direction={'row'} spacing={1}>
-			{ Array.isArray(values) && 
-        values?.map((value, index) => (
-				<Chip key={index} label={value} sx={sx.chip} size="small" />
-			))}
-      </Stack>
+			<Stack sx={sx.stack} direction={'row'} spacing={1}>
+				{Array.isArray(values) &&
+					values?.map((value, index) => (
+						<Chip key={index} label={value} sx={sx.chip} size="small" />
+					))}
+			</Stack>
 		</FieldWrapper>
 	)
 }
@@ -28,10 +28,10 @@ const sx = {
 	chip: {
 		fontFamily: (theme) => theme.typography.button.fontFamily,
 		letterSpacing: 0,
-    borderRadius: theme => `${theme.shape.borderRadius}px`,
+		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 	},
-  stack: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  }
+	stack: {
+		display: 'flex',
+		flexWrap: 'wrap',
+	},
 }

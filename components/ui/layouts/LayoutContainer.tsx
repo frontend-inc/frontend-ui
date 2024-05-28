@@ -19,7 +19,7 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 	const {
 		children,
 		header,
-		footer,    
+		footer,
 		notifications,
 		enableSideNav = false,
 		offsetY = 0,

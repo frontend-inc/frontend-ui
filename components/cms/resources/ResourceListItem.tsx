@@ -2,13 +2,13 @@ import React from 'react'
 import Resource from './Resource'
 
 export type ResourceListItemProps = {
-  avatar?: React.ReactNode
-  icon?: string
-  color?: string  
-  title?: string
-  description?: string
-  image?: string
-  resource: any
+	avatar?: React.ReactNode
+	icon?: string
+	color?: string
+	title?: string
+	description?: string
+	image?: string
+	resource: any
 	handleClick?: (resource: any) => void
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
@@ -17,9 +17,8 @@ export type ResourceListItemProps = {
 }
 
 const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
-	
-  const {
-    resource,
+	const {
+		resource,
 		handleClick,
 		handleEdit,
 		handleDelete,
@@ -27,23 +26,23 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 		menuActions,
 	} = props
 
-  const { icon, color, title, description } = resource || {}
-  let image = resource?.image?.url
+	const { icon, color, title, description } = resource || {}
+	let image = resource?.image?.url
 
 	return (
-    <Resource 
-      icon={icon}
-      color={color}
-      title={title}
-      description={description}
-      image={image}
-      resource={resource}
-      handleClick={handleClick}
-      handleEdit={handleEdit}
-      handleDelete={handleDelete}
-      secondaryActions={secondaryActions}
-      menuActions={menuActions}
-    />
+		<Resource
+			icon={icon}
+			color={color}
+			title={title}
+			description={description}
+			image={image}
+			resource={resource}
+			handleClick={handleClick}
+			handleEdit={handleEdit}
+			handleDelete={handleDelete}
+			secondaryActions={secondaryActions}
+			menuActions={menuActions}
+		/>
 	)
 }
 

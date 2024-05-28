@@ -7,7 +7,18 @@ import { SectionProps } from '../../types'
 type WebCoverImageProps = SectionProps & CoverImageProps
 
 const WebCoverImage: React.FC<WebCoverImageProps> = (props) => {
-	const { enableTransitions, bgcolor, py, px, maxWidth, requireAuth, ...rest } = props
+	const {
+		enableTransitions,
+		bgcolor,
+		py,
+		px,
+		maxWidth,
+		requireAuth,
+		requireTeam,
+		requirePaid,
+		requireAdmin,
+		...rest
+	} = props
 
 	return (
 		<Section

@@ -2,30 +2,29 @@ import React, { useState, useEffect } from 'react'
 import { Box, Button, List } from '@mui/material'
 import { useAuth } from 'frontend-js'
 import {
-  Loading,
+	Loading,
 	SelectableListItem,
 	StripeCreditCard,
 	Placeholder,
-	AlertModal,  
+	AlertModal,
 } from '../../../components'
 import { useCreditCards } from '../../../hooks'
 
 type CreditCardsProps = {
-  stripePublishableKey: string
+	stripePublishableKey: string
 }
 
 const CreditCards: React.FC<CreditCardsProps> = (props) => {
-	
-  const { stripePublishableKey } = props || {}
+	const { stripePublishableKey } = props || {}
 
-  const {
+	const {
 		delayedLoading: loading,
 		errors,
 		creditCard,
 		setCreditCard,
 		createCreditCard,
 		deleteCreditCard,
-    selectCreditCard,
+		selectCreditCard,
 		creditCards,
 		findCreditCards,
 		reloadCreditCards,
@@ -34,7 +33,7 @@ const CreditCards: React.FC<CreditCardsProps> = (props) => {
 	const [isEditing, setIsEditing] = useState(false)
 	const [openDeleteModal, setOpenDeleteModal] = useState(false)
 
-  const { currentUser, fetchMe } = useAuth()
+	const { currentUser, fetchMe } = useAuth()
 
 	const handleAddCreditCardClick = () => {
 		setCreditCard({})
@@ -42,15 +41,15 @@ const CreditCards: React.FC<CreditCardsProps> = (props) => {
 	}
 
 	const handleDelete = async () => {
-    if(creditCard?.id){
-      setOpenDeleteModal(false)
-      await deleteCreditCard(creditCard?.id)
-      reloadCreditCards()
-    }		
+		if (creditCard?.id) {
+			setOpenDeleteModal(false)
+			await deleteCreditCard(creditCard?.id)
+			reloadCreditCards()
+		}
 	}
 
-	const handleSubmit = async (token) => {		
-		let resp = await createCreditCard({ token })		
+	const handleSubmit = async (token) => {
+		let resp = await createCreditCard({ token })
 		if (resp?.id) {
 			setIsEditing(false)
 			reloadCreditCards()
@@ -66,7 +65,7 @@ const CreditCards: React.FC<CreditCardsProps> = (props) => {
 		let resp = await selectCreditCard(creditCard.id)
 		if (resp?.id) {
 			findCreditCards()
-      fetchMe()
+			fetchMe()
 		}
 	}
 
@@ -74,31 +73,32 @@ const CreditCards: React.FC<CreditCardsProps> = (props) => {
 		findCreditCards()
 	}, [])
 
-  useEffect(() => {
-		if(!currentUser?.id){
-      fetchMe()
-    }
+	useEffect(() => {
+		if (!currentUser?.id) {
+			fetchMe()
+		}
 	}, [currentUser])
 
 	return (
 		<>
 			{!isEditing ? (
 				<>
-        	<Loading loading={loading} />
+					<Loading loading={loading} />
 					<List>
-						{!loading && creditCards?.map((creditCard) =>(
-              <SelectableListItem
-                key={creditCard.id}
-                selected={creditCard.id == currentUser?.credit_card_id}
-                icon={'CreditCard'}
-                title={creditCard.last4}
-                description={creditCard.brand}
-                handleClick={() => handleClick(creditCard)}
-                handleDelete={() => handleDeleteClick(creditCard)}
-              />
-            ))}
+						{!loading &&
+							creditCards?.map((creditCard) => (
+								<SelectableListItem
+									key={creditCard.id}
+									selected={creditCard.id == currentUser?.credit_card_id}
+									icon={'CreditCard'}
+									title={creditCard.last4}
+									description={creditCard.brand}
+									handleClick={() => handleClick(creditCard)}
+									handleDelete={() => handleDeleteClick(creditCard)}
+								/>
+							))}
 					</List>
-					{(!loading && !creditCards?.length) && (
+					{!loading && !creditCards?.length && (
 						<Placeholder
 							icon="CreditCard"
 							title="No Credit Cards"
@@ -112,10 +112,10 @@ const CreditCards: React.FC<CreditCardsProps> = (props) => {
 					</Box>
 				</>
 			) : (
-				<StripeCreditCard	 
-          publishableKey={stripePublishableKey}				
+				<StripeCreditCard
+					publishableKey={stripePublishableKey}
 					handleSubmit={handleSubmit}
-          handleCancel={() => setIsEditing(false)}
+					handleCancel={() => setIsEditing(false)}
 				/>
 			)}
 			<AlertModal

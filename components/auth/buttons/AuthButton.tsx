@@ -65,7 +65,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 				<>
 					{currentUser?.id ? (
 						<IconButton onClick={toggleMenu}>
-							<UserAvatar user={ currentUser } />
+							<UserAvatar user={currentUser} />
 						</IconButton>
 					) : (
 						<IconButton onClick={handleLogin}>
@@ -79,7 +79,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 						<Button
 							sx={sx.button}
 							onClick={toggleMenu}
-							startIcon={showIcon && <UserAvatar user={ currentUser } />}
+							startIcon={showIcon && <UserAvatar user={currentUser} />}
 							endIcon={
 								<Box>
 									<Icon name="MoreVertical" size={20} />

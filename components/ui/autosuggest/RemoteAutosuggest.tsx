@@ -119,6 +119,16 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		}
 	}, [url])
 
+	useEffect(() => {
+		if (Object.keys(defaultQuery)?.length > 0 && url) {
+			//@ts-ignore
+			findMany({
+				...defaultQuery,
+				per_page: 100,
+			})
+		}
+	}, [defaultQuery])
+
 	return (
 		<>
 			<Autosuggest

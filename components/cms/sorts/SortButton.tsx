@@ -88,7 +88,7 @@ const SortButton: React.FC<SortButtonProps> = (props) => {
 					open={showModal}
 					handleClose={handleCloseModal}
 					anchor={'right'}
-          disablePadding
+					disablePadding
 				>
 					<SortList
 						sortOptions={sortOptions}

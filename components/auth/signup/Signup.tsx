@@ -39,16 +39,16 @@ const Signup: React.FC<SignupProps> = (props) => {
 	}
 
 	return (
-    <AuthScreen title={title} subtitle={subtitle}>
-      <SignupForm
-        errors={errors}
-        loading={loading}
-        user={user}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-        handleLogin={loginUrl ? handleLogin : false}
-      />
-    </AuthScreen>
+		<AuthScreen title={title} subtitle={subtitle}>
+			<SignupForm
+				errors={errors}
+				loading={loading}
+				user={user}
+				handleChange={handleChange}
+				handleSubmit={handleSubmit}
+				handleLogin={loginUrl ? handleLogin : false}
+			/>
+		</AuthScreen>
 	)
 }
 

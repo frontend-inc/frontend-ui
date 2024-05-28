@@ -4,7 +4,7 @@ import { useCollections } from 'frontend-shopify'
 import { ProductCarousel } from '../../../components/shopify'
 
 export type ProductCollectionCarouselProps = {
-  href: string
+	href: string
 	handle: string
 	enableAutoPlay?: boolean
 	enableArrows?: boolean
@@ -21,7 +21,7 @@ const ProductCollectionCarousel: React.FC<ProductCollectionCarouselProps> = (
 ) => {
 	const {
 		handle,
-    href,
+		href,
 		enableAutoPlay = false,
 		enableArrows = false,
 		enableDots = false,
@@ -43,13 +43,13 @@ const ProductCollectionCarousel: React.FC<ProductCollectionCarouselProps> = (
 	return (
 		<Stack spacing={2}>
 			<ProductCarousel
-        href={href}
+				href={href}
 				loading={loading}
 				products={products}
 				enableAutoPlay={enableAutoPlay}
 				enableArrows={enableArrows}
 				enableDots={enableDots}
-				enableBorder={enableBorder}        
+				enableBorder={enableBorder}
 				enableAddToCart={enableAddToCart}
 				enableQuickShop={enableQuickShop}
 				enableQuantity={enableQuantity}

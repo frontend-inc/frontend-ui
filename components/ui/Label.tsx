@@ -14,11 +14,7 @@ const Label: React.FC<LabelProps> = (props) => {
 	if (!label) return null
 	return (
 		<Chip
-			label={
-        <Typography variant="overline">
-          {label}
-        </Typography>
-      }
+			label={<Typography variant="overline">{label}</Typography>}
 			sx={{
 				...sx.chip,
 				...(darkMode && sx.darkMode),

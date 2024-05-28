@@ -35,10 +35,13 @@ const ImageModal: React.FC<ImageModalProps> = (props) => {
 			disablePadding
 			actions={
 				<>
-					<Button 
-            color='secondary'
-            variant="contained"
-            onClick={handleCopyUrlClick}>Copy URL</Button>
+					<Button
+						color="secondary"
+						variant="contained"
+						onClick={handleCopyUrlClick}
+					>
+						Copy URL
+					</Button>
 					<Button variant="contained" onClick={handleDownloadClick}>
 						Download
 					</Button>

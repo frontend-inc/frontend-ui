@@ -22,7 +22,7 @@ const SwipeableProductImages: React.FC<SwipeableProductImagesProps> = (
 		product,
 		height = 320,
 		handleClick,
-		objectFit = 'contain',
+		objectFit = 'cover',
 		disableBorderRadius = false,
 		responsiveHeight = false,
 	} = props

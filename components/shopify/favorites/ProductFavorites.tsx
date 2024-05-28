@@ -16,7 +16,7 @@ export type ProductFavoritesProps = {
 
 const ProductFavorites: React.FC<ProductFavoritesProps> = (props) => {
 	const {
-    href,
+		href,
 		enableBorder = false,
 		buttonText = 'Add to cart',
 		enableAddToCart,
@@ -29,7 +29,7 @@ const ProductFavorites: React.FC<ProductFavoritesProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			<ProductGrid
-        href={href}				
+				href={href}
 				products={favorites}
 				enableBorder={enableBorder}
 				enableAddToCart={enableAddToCart}

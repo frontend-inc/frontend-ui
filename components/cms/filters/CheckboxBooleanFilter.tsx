@@ -45,7 +45,7 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 	]
 
 	return (
-		<MenuList      
+		<MenuList
 			label={label}
 			disableBorder={disableBorder}
 			disablePadding={disablePadding}

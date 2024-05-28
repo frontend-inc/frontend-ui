@@ -7,26 +7,33 @@ import {
 import { Cart, SearchModal } from '../../../components/shopify'
 
 type ShopifyStoreProps = {
-  enableShopify?: boolean
+	enableShopify?: boolean
 	domain: string
 	storefrontAccessToken: string
-  customerPortalUrl?: string
+	customerPortalUrl?: string
 	logo?: string
 	shopUrl: string
 	children: any
 }
 
 const ShopifyStore: React.FC<ShopifyStoreProps> = (props) => {
-	const { children, enableShopify, logo, domain, customerPortalUrl, shopUrl, storefrontAccessToken } = props
+	const {
+		children,
+		enableShopify,
+		logo,
+		domain,
+		customerPortalUrl,
+		shopUrl,
+		storefrontAccessToken,
+	} = props
 
-  if(enableShopify && (!domain || !storefrontAccessToken)) return null;
-	return (
-    enableShopify ? (
+	if (enableShopify && (!domain || !storefrontAccessToken)) return null
+	return enableShopify ? (
 		<ShopProvider
 			logo={logo}
 			domain={domain}
 			shopUrl={shopUrl}
-      customerPortalUrl={customerPortalUrl}
+			customerPortalUrl={customerPortalUrl}
 			storefrontAccessToken={storefrontAccessToken}
 		>
 			<Cart />
@@ -34,7 +41,8 @@ const ShopifyStore: React.FC<ShopifyStoreProps> = (props) => {
 				<CollectionProvider>{children}</CollectionProvider>
 			</ProductProvider>
 		</ShopProvider>
-    ) : children
+	) : (
+		children
 	)
 }
 

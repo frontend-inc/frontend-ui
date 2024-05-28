@@ -28,7 +28,7 @@ const TableCell: React.FC<TableCellProps> = (props) => {
 				...sx.root,
 				...(small && sx.cellSmall),
 				...(sticky && sx.cellSticky),
-        ...(header && sticky && sx.cellStickyHeader),
+				...(header && sticky && sx.cellStickyHeader),
 				...(header && sx.cellHeader),
 			}}
 		>
@@ -49,9 +49,9 @@ const sx = {
 			display: 'none',
 		},
 		whiteSpace: 'nowrap',
-		maxWidth: '240px',    
-    borderBottom: '2px solid',
-    borderColor: 'divider',
+		maxWidth: '240px',
+		borderBottom: '2px solid',
+		borderColor: 'divider',
 	},
 	cellSmall: {
 		minWidth: '40px',
@@ -59,18 +59,18 @@ const sx = {
 	},
 	cellHeader: {
 		borderBottom: '2px solid',
-    borderColor: 'divider',
+		borderColor: 'divider',
 		zIndex: 1,
 		p: 0,
 	},
 	cellSticky: {
 		position: 'sticky',
-		left: 0,		    
+		left: 0,
 		zIndex: 2,
 	},
 	cellStickyHeader: {
-		zIndex: 3,    
-    borderBottom: '3px solid',
-    borderColor: 'divider',
+		zIndex: 3,
+		borderBottom: '3px solid',
+		borderColor: 'divider',
 	},
 }

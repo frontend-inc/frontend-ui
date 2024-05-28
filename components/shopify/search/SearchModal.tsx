@@ -14,12 +14,11 @@ import { useProducts } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
 
 type SearchModalProps = {
-  href: string
+	href: string
 }
 
 const SearchModal: React.FC<SearchModalProps> = (props) => {
-
-  const { href } = props
+	const { href } = props
 	// Minimum number of characters to track analytics
 	const MIN_ANALYTICS_CHARS = 5
 
@@ -99,7 +98,7 @@ const SearchModal: React.FC<SearchModalProps> = (props) => {
 				</AppBar>
 				<Container maxWidth="md">
 					<ProductGrid
-            href={href}
+						href={href}
 						loading={loading}
 						products={products}
 						xs={12}

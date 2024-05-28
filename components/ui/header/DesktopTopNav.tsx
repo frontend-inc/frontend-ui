@@ -33,10 +33,10 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 	const { currentUser } = useAuth()
 
 	const filterVisibility = (menuItem) => {
-		if (menuItem.visibility === 'logged_in' && !currentUser?.id) {
+		if (menuItem.require_user && !currentUser?.id) {
 			return false
 		}
-		if (menuItem.visibility === 'logged_out' && currentUser?.id) {
+		if (menuItem.require_guest && currentUser?.id) {
 			return false
 		}
 		return true
@@ -78,7 +78,7 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 							{enableAuth && <AuthButton editing={editing} />}
 							{enableShopify && (
 								<>
-									<ShopifyAuth />									
+									<ShopifyAuth />
 									<CartButton />
 								</>
 							)}
