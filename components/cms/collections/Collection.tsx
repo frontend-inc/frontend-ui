@@ -79,6 +79,8 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		enableEdit = false,
 		enableCreate = false,
 		enableDelete = false,
+    filterUser = false,
+    filterTeam = false,
     query: defaultQuery = {},
 	} = props
 
@@ -107,6 +109,19 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	} = useDocuments({
 		collection: contentType,
 	})
+
+  const [currentUserFilter, setCurrentUserFilter] = useState()
+
+  useEffect(() => {
+    let newFilter = {
+      AND: [
+        ...(filterUser && currentUser?.id ? [{ user_id: { eq: currentUser?.id }}] : []),
+        ...(filterTeam && currentUser?.team_id ? [{ team_id: { eq: currentUser?.team_id }}] : [])
+      ]
+    }      
+    //@ts-ignore
+    setCurrentUserFilter(newFilter)    
+  }, [currentUser?.id, filterUser, filterTeam])
 
 	const [keywords, setKeywords] = useState('')
 
@@ -139,10 +154,11 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	}
 
 	const {
+    queryFilters,
 		activeFilters,
 		setActiveFilters,
 		handleAddFilter,
-		buildQueryFilters,
+    mergeAllFilters,		
 	} = useFilters({
 		query,
 	})
@@ -228,23 +244,25 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	}  
 
 	useEffect(() => {
-		if (url && perPage) {        
+		if (url && perPage) {             
 			findMany({
-				...defaultQuery,       
+				...defaultQuery,
+        filters: mergeAllFilters([
+          defaultQuery?.filters,
+          currentUserFilter,
+          queryFilters
+        ]),       
 				per_page: perPage,
 			})
 		}
-	}, [url, perPage, currentUser?.id])
-
-	useEffect(() => {
-		if (activeFilters) {
-			findMany({
-				...query,
-				filters: buildQueryFilters(activeFilters),
-				...defaultQuery,
-			})
-		}
-	}, [activeFilters?.length, defaultQuery])
+	}, [
+    url, 
+    perPage, 
+    currentUserFilter,
+    currentUser?.id,
+    queryFilters,
+    defaultQuery,
+  ])
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
