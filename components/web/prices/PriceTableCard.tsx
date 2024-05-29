@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
 	Stack,
 	Box,
@@ -11,7 +11,10 @@ import {
 } from '@mui/material'
 import { PriceType } from '../../../types'
 import { useRouter } from 'next/router'
-import { Label } from '../../../components'
+import { Label } from '../..'
+import { useAuth } from 'frontend-js'
+import { AppContext } from '../../../context'
+import { formatCurrency } from 'frontend-shopify'
 
 type PriceCardProps = {
 	price: PriceType
@@ -20,11 +23,20 @@ type PriceCardProps = {
 const PriceCard: React.FC<PriceCardProps> = (props) => {
 	const router = useRouter()
 
-	const { price } = props
+  const { setAuthOpen } = useContext(AppContext) as any 
+	
+  const { price } = props
+
+  const { currentUser } = useAuth()
 
 	const handleClick = () => {
-		if (price?.url) {
-			router.push(price.url)
+    if(!currentUser) {
+      setAuthOpen(true)
+      return
+    }
+		if (price?.stripe_payment_url) {
+      let url = `${price.stripe_payment_url}?client_reference_id=${currentUser.id}&email=${currentUser.email}`
+			router.push(url)
 		}
 	}
 
@@ -40,7 +52,10 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
 					{price.title}
 				</Typography>
 				<Typography variant="h5" color="text.primary">
-					{price.price}
+					{formatCurrency(price.price, 0)} 
+          {(price.recurring && price.recurring_rate) && (
+            `/${price.recurring_rate}`
+          )}
 				</Typography>
 				<Divider />
 				<List disablePadding>

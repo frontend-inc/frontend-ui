@@ -76,18 +76,6 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		collection: contentType
 	})
 
-  const [currentUserFilter, setCurrentUserFilter] = useState()
-  useEffect(() => {
-    let newFilter = {
-      AND: [
-        ...(filterUser && currentUser?.id ? [{ user_id: { eq: currentUser?.id }}] : []),
-        ...(filterTeam && currentUser?.team_id ? [{ team_id: { eq: currentUser?.team_id }}] : [])
-      ]
-    }      
-    //@ts-ignore
-    setCurrentUserFilter(newFilter)    
-  }, [currentUser?.id, filterUser, filterTeam])
-
 	const [keywords, setKeywords] = useState('')
 
 	const handleKeywordChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
@@ -126,7 +114,8 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		activeFilters,
 		setActiveFilters,
 		handleAddFilter,
-    mergeAllFilters,		
+    mergeAllFilters,	
+    buildUserFilters,	
 	} = useFilters({
 		query,
 	})
@@ -216,8 +205,10 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
     }
 	}
 
+  const currentUserFilter = buildUserFilters(currentUser, filterUser, filterTeam)
+
 	useEffect(() => {
-		if (contentType && perPage) {             
+		if (contentType && currentUser) {             
 			findMany({
 				...defaultQuery,
         filters: mergeAllFilters([
@@ -231,10 +222,11 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	}, [
     contentType, 
     perPage, 
-    currentUserFilter,
-    currentUser?.id,
+    filterUser,
+    filterTeam,
+    currentUser,
     queryFilters,
-    defaultQuery,
+    defaultQuery,,
   ])
 
 	const [rows, setRows] = useState([])

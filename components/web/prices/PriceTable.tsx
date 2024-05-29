@@ -1,32 +1,32 @@
 import React from 'react'
 import { Stack } from '@mui/material'
-import PriceCard from './PriceCard'
+import PriceTableCard from './PriceTableCard'
 import { PriceType } from '../../..'
-import { Placeholder } from '../../../components'
+import { Placeholder } from '../..'
 
-export type PricesProps = {
+export type PriceTableProps = {
 	items: PriceType[]
 }
 
-const Prices: React.FC<PricesProps> = (props) => {
+const PriceTable: React.FC<PriceTableProps> = (props) => {
 	const { items } = props
 
 	return (
 		<Stack spacing={2}>
 			<Stack direction={{ sm: 'row', xs: 'column' }} spacing={1}>
 				{items.map((item, index) => (
-					<PriceCard key={index} price={item} />
+					<PriceTableCard key={index} price={item} />
 				))}
 			</Stack>
 			{items?.length === 0 && (
 				<Placeholder
-					icon="Search"
-					title="No content"
-					description="Your content will appear here."
+					icon="CreditCard"
+					title="No subscription plans"
+					description="Subscription plans will appear here."
 				/>
 			)}
 		</Stack>
 	)
 }
 
-export default Prices
+export default PriceTable

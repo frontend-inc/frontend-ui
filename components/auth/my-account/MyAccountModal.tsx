@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { AppContext } from '../../../context'
+import { AppContext, StripeContext } from '../../../context'
 import { useAuth } from 'frontend-js'
 import { Modal, MyAccountForm } from '../../../components'
 import {
@@ -15,11 +15,10 @@ import { Box } from '@mui/material'
 type MyAccountModalProps = {
 	enableTeams?: boolean
 	enableStripe?: boolean
-	stripePublishableKey: string
 }
 
 const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
-	const { enableTeams, enableStripe, stripePublishableKey } = props || {}
+	const { enableTeams, enableStripe } = props || {}
 	const { myAccountOpen, setMyAccountOpen } = useContext(AppContext)
 
 	const {
@@ -31,6 +30,8 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 		deleteAvatar,
 		logout,
 	} = useAuth()
+
+  const { stripePublishableKey } = useContext(StripeContext)  
 
 	const [currentTab, setCurrentTab] = useState(0)
 

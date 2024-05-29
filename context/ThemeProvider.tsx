@@ -4,7 +4,7 @@ import {
 	createTheme,
 	ThemeProvider as MuiThemeProvider,
 } from '@mui/material/styles'
-import { useTheme } from '../../hooks'
+import { useTheme } from '../hooks'
 
 type ThemeProviderProps = {
 	children: React.ReactNode

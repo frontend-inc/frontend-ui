@@ -117,11 +117,3 @@ const SubscriptionPlanList: React.FC = (props) => {
 }
 
 export default SubscriptionPlanList
-
-const sx = {
-	actions: {
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'flex-end',
-	},
-}

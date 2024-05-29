@@ -9,9 +9,9 @@ import {
 	OkendoScript,
 	RedditScript,
 	VisualWebsiteOptimizerScript,
-} from '../../components/addons'
+} from '../components/addons'
 import { GTMProvider } from '@elgorditosalsero/react-gtm-hook'
-import { useFacebookPixel, useTikTok } from '../../hooks/addons'
+import { useFacebookPixel, useTikTok } from '../hooks/addons'
 import Script from 'next/script'
 import { AnalyticsBrowser } from '@segment/analytics-next'
 

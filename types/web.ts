@@ -60,6 +60,9 @@ export type PriceType = {
 	features: {
 		label: string
 	}[]
+  recurring?: boolean
+  recurring_rate?: string
 	buttonText: string
-	url: string
+	url?: string
+  stripe_payment_url?: string
 }

@@ -155,6 +155,14 @@ const useFilters = (props: UseFiltersProps) => {
 		}
 		return formattedFilters
 	}
+  const buildUserFilters = (currentUser, filterUser, filterTeam) => {
+    return {
+      AND: [
+        ...(filterUser && currentUser?.id ? [{ user_id: { eq: currentUser?.id }}] : []),
+        ...(filterTeam && currentUser?.team_id ? [{ team_id: { eq: currentUser?.team_id }}] : [])
+      ]
+    }    
+  }
 
 	useEffect(() => {
 		if (query?.filters?.length >= 0) {
@@ -177,6 +185,7 @@ const useFilters = (props: UseFiltersProps) => {
 		findDuplicateFilterIndex,
     mergeFilters,
     mergeAllFilters,
+    buildUserFilters,
 		buildQueryFilters,
 	}
 }
