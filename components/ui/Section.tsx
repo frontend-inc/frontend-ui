@@ -61,9 +61,6 @@ const Section: React.FC<SectionProps> = (props) => {
 						requireTeam={requireTeam}
 						requirePaid={requirePaid}
 						requireAdmin={requireAdmin}
-						requireTeam={requireTeam}
-						requirePaid={requirePaid}
-						requireAdmin={requireAdmin}
 					>
 						{children}
 					</AuthRequired>
