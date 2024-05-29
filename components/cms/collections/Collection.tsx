@@ -58,8 +58,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		actions,
 		variant = 'grid',
 		style = 'card',
-		layout = 'drawer',
-		url,
+		layout = 'drawer',		
 		contentType,
 		fields,
 		filterAnchor = 'left',
@@ -167,9 +166,10 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	const handleClearFilters = () => {
 		setActiveFilters([])
 		findMany({
-			filters: {
-				...defaultQuery?.filters,
-			},
+			filters: mergeAllFilters([
+        defaultQuery?.filters,
+        currentUserFilter,        
+      ]),
 			sort_by: 'id',
 			sort_direction: 'desc',
 			keywords: '',
@@ -244,7 +244,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	}  
 
 	useEffect(() => {
-		if (url && perPage) {             
+		if (contentType && perPage) {             
 			findMany({
 				...defaultQuery,
         filters: mergeAllFilters([
@@ -256,7 +256,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 			})
 		}
 	}, [
-    url, 
+    contentType, 
     perPage, 
     currentUserFilter,
     currentUser?.id,

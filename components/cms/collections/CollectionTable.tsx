@@ -45,6 +45,8 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		enableEdit = false,
 		enableCreate = false,
 		enableDelete = false,
+    filterUser = false,
+    filterTeam = false,
 	} = props
 
 	const [openModal, setOpenModal] = useState(false)
@@ -73,6 +75,18 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	} = useDocuments({
 		collection: contentType
 	})
+
+  const [currentUserFilter, setCurrentUserFilter] = useState()
+  useEffect(() => {
+    let newFilter = {
+      AND: [
+        ...(filterUser && currentUser?.id ? [{ user_id: { eq: currentUser?.id }}] : []),
+        ...(filterTeam && currentUser?.team_id ? [{ team_id: { eq: currentUser?.team_id }}] : [])
+      ]
+    }      
+    //@ts-ignore
+    setCurrentUserFilter(newFilter)    
+  }, [currentUser?.id, filterUser, filterTeam])
 
 	const [keywords, setKeywords] = useState('')
 
@@ -108,10 +122,11 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	}
 
 	const {
+    queryFilters,
 		activeFilters,
 		setActiveFilters,
 		handleAddFilter,
-		buildQueryFilters,
+    mergeAllFilters,		
 	} = useFilters({
 		query,
 	})
@@ -120,9 +135,10 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	const handleClearFilters = () => {
 		setActiveFilters([])
 		findMany({
-			filters: {
-				...defaultQuery?.filters,
-			},
+			filters: mergeAllFilters([
+        ...defaultQuery.filters,
+        currentUserFilter,
+      ]),
 			sort_by: 'id',
 			sort_direction: 'desc',
 			keywords: '',
@@ -201,15 +217,25 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (activeFilters && contentType && perPage) {
+		if (contentType && perPage) {             
 			findMany({
-				...query,
-				filters: buildQueryFilters(activeFilters),
 				...defaultQuery,
+        filters: mergeAllFilters([
+          defaultQuery?.filters,
+          currentUserFilter,
+          queryFilters
+        ]),       
 				per_page: perPage,
 			})
 		}
-	}, [activeFilters?.length, defaultQuery, perPage, contentType, currentUser?.id])
+	}, [
+    contentType, 
+    perPage, 
+    currentUserFilter,
+    currentUser?.id,
+    queryFilters,
+    defaultQuery,
+  ])
 
 	const [rows, setRows] = useState([])
 
