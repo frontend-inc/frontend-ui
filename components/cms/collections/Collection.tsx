@@ -45,6 +45,8 @@ export type CollectionProps = {
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
+  filterUser?: boolean
+  filterTeam?: boolean
 }
 
 const Collection: React.FC<CollectionProps> = (props) => {
@@ -63,7 +65,6 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		filterAnchor = 'left',
 		filterOptions = [],
 		sortOptions = [],
-		query: defaultQuery = {},
 		perPage = 20,
 		enableSearch = false,
 		enableFilters = false,
@@ -78,6 +79,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		enableEdit = false,
 		enableCreate = false,
 		enableDelete = false,
+    query: defaultQuery = {},
 	} = props
 
 	const [openModal, setOpenModal] = useState(false)
@@ -226,9 +228,9 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	}  
 
 	useEffect(() => {
-		if (url && perPage) {
+		if (url && perPage) {        
 			findMany({
-				...defaultQuery,
+				...defaultQuery,       
 				per_page: perPage,
 			})
 		}

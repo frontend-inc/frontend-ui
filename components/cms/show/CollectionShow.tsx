@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { AppContext } from '../../../context'
+import { useAuth } from 'frontend-js'
 import { Button, Stack } from '@mui/material'
 import { ActionType, DisplayFieldType, FormFieldType } from '../../../types'
 import Article from './Article'
@@ -42,6 +44,9 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 	let { handle } = props
 	if (handle == 'index') handle = undefined
 
+  const { setAuthOpen } = useContext(AppContext)
+  const { currentUser } = useAuth()
+
 	const {
 		style = 'item',
 		resource: _resource,
@@ -76,10 +81,12 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 	const [openModal, setOpenModal] = useState(false)
 
 	const handleEdit = () => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		setOpenModal(true)
 	}
 
 	const handleSubmit = async () => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		try {
 			let resp
 			if (resource?.id) {
