@@ -14,6 +14,7 @@ import {
 import { Stack, Collapse, Button, Box } from '@mui/material'
 import { FormFieldType } from '../../../types'
 import { flattenDocument } from '../../../helpers'
+import { useAuth } from 'frontend-js'
 
 export type ForeignCollectionProps = {
 	variant?: 'list' | 'grid'
@@ -37,6 +38,9 @@ export type ForeignCollectionProps = {
 }
 
 const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
+  const { setAuthOpen } = useContext(AppContext)
+  const { currentUser } = useAuth()
+
 	const {
 		fields,
 		resource: _resource,
@@ -89,11 +93,13 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	}
 
 	const handleAdd = () => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		setResource({})
 		setOpenModal(!openModal)
 	}
 
 	const handleEdit = (item) => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		setResource(item)
 		setOpenModal(true)
 	}
@@ -121,11 +127,13 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	}
 
 	const handleDeleteClick = (item) => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		setResource(item)
 		setOpenDeleteModal(true)
 	}
 
 	const handleDelete = async () => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		if (resource?.id) {
 			await destroy(resource?.id)
 			setOpenDeleteModal(false)
@@ -135,6 +143,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	}
 
 	const handleRemove = async (name) => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		if (resource?.id) {
 			await removeAttachment(resource?.id, name)
 		}
@@ -155,7 +164,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		if (_resource?.id && foreignContentType) {
 			handleFetchResources()
 		}
-	}, [_resource?.id, foreignContentType])
+	}, [_resource?.id, foreignContentType, currentUser?.id])
 
 	return (
 		<Stack direction="column" spacing={1} sx={sx.root}>

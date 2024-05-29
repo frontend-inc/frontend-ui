@@ -49,8 +49,8 @@ export default CellHeader
 const sx = {
 	root: {
 		borderRadius: 0,
-		width: '100%',
-		height: '100%',
+		width: '100%',		
+    height: 44,
 	},
 	icon: {
 		visibility: 'hidden',

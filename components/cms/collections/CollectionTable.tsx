@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
-import { useResource } from 'frontend-js'
+import { useDocuments } from 'frontend-js'
 import { Button, Grid, Box, Stack } from '@mui/material'
 import {
 	Form,
@@ -19,6 +19,7 @@ import { SYSTEM_FIELDS } from '../../../constants'
 import { flattenDocument, flattenDocuments } from '../../../helpers'
 import { TableList } from '../../../components'
 import { CollectionProps } from './Collection'
+import { useAuth } from 'frontend-js'
 
 export type CollectionTableProps = CollectionProps & {
 	headers: TableHeaderType[]
@@ -26,10 +27,11 @@ export type CollectionTableProps = CollectionProps & {
 
 const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl, setAuthOpen } = useContext(AppContext)
+  const { currentUser } = useAuth()
 
 	const {
-		url,
+		contentType,
 		fields,
 		headers,
 		filterAnchor = 'left',
@@ -58,6 +60,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		update,
 		create,
 		destroy,
+    handleDataChange,
 		query,
 		findMany,
 		reloadMany,
@@ -67,9 +70,8 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		numResults,
 		totalCount,
 		paginate,
-	} = useResource({
-		name: 'document',
-		url: url,
+	} = useDocuments({
+		collection: contentType
 	})
 
 	const [keywords, setKeywords] = useState('')
@@ -142,38 +144,21 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 			router.push(`${clientUrl}${href}/${item?.handle}`)
 		}
 	}
-
-	const handleDataChange = (ev) => {
-		const { name } = ev.target
-		const value =
-			ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
-		if (SYSTEM_FIELDS.includes(name)) {
-			setResource((prev) => ({
-				...prev,
-				[name]: value,
-			}))
-		} else {
-			setResource((prev) => ({
-				...prev,
-				data: {
-					...prev.data,
-					[name]: value,
-				},
-			}))
-		}
-	}
-
+	
 	const handleAdd = () => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		setResource({})
 		setOpenModal(true)
 	}
 
 	const handleEdit = (item) => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		setResource(item)
 		setOpenModal(true)
 	}
 
 	const handleSubmit = async () => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		try {
 			let resp
 			if (resource?.id) {
@@ -192,12 +177,16 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	}
 
 	const handleDeleteClick = (item) => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		setResource(item)
 		setOpenDeleteModal(true)
 	}
 
 	const handleDelete = async () => {
-		await destroy(resource?.id)
+    if(!currentUser?.id) return setAuthOpen(true);
+    if(resource?.id){
+		  await destroy(resource.id)
+    }
 		setOpenDeleteModal(false)
 		setOpenModal(false)
 		setResource({})
@@ -205,11 +194,14 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	}
 
 	const handleRemove = async (name) => {
-		await removeAttachment(resource?.id, name)
+    if(!currentUser?.id) return setAuthOpen(true);
+    if(resource?.id){
+		  await removeAttachment(resource.id, name)
+    }
 	}
 
 	useEffect(() => {
-		if (activeFilters && url && perPage) {
+		if (activeFilters && contentType && perPage) {
 			findMany({
 				...query,
 				filters: buildQueryFilters(activeFilters),
@@ -217,7 +209,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 				per_page: perPage,
 			})
 		}
-	}, [activeFilters?.length, defaultQuery, perPage, url])
+	}, [activeFilters?.length, defaultQuery, perPage, contentType, currentUser?.id])
 
 	const [rows, setRows] = useState([])
 

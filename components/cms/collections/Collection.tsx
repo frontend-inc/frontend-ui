@@ -6,10 +6,6 @@ import {
 	Form,
 	Drawer,
 	AlertModal,
-	Icon,
-	FilterButton,
-	SortButton,
-	SearchInput,
 	LoadMore,
 	IconLoading,
 } from '../../../components'
@@ -20,6 +16,7 @@ import { CollectionList, Placeholder } from '../..'
 import CollectionSearchFilters from '../filters/SearchFilters'
 import CollectionToolbar from './CollectionToolbar'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
+import { useAuth } from 'frontend-js'
 
 export type CollectionProps = {
 	url: string
@@ -52,7 +49,8 @@ export type CollectionProps = {
 
 const Collection: React.FC<CollectionProps> = (props) => {
 	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl, setAuthOpen } = useContext(AppContext)
+  const { currentUser } = useAuth()
 
 	const {
 		actions,
@@ -177,16 +175,19 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	}
 
 	const handleAdd = () => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		setResource({})
 		setOpenModal(true)
 	}
 
 	const handleEdit = (item) => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		setResource(item)
 		setOpenModal(true)
 	}
 
 	const handleSubmit = async () => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		try {
 			let resp
 			if (resource?.id) {
@@ -205,11 +206,13 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	}
 
 	const handleDeleteClick = (item) => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		setResource(item)
 		setOpenDeleteModal(true)
 	}
 
 	const handleDelete = async () => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		await destroy(resource?.id)
 		setOpenDeleteModal(false)
 		setOpenModal(false)
@@ -218,8 +221,9 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	}
 
 	const handleRemove = async (name) => {
+    if(!currentUser?.id) return setAuthOpen(true);    
 		await removeAttachment(resource?.id, name)
-	}
+	}  
 
 	useEffect(() => {
 		if (url && perPage) {
@@ -228,7 +232,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 				per_page: perPage,
 			})
 		}
-	}, [url, perPage])
+	}, [url, perPage, currentUser?.id])
 
 	useEffect(() => {
 		if (activeFilters) {

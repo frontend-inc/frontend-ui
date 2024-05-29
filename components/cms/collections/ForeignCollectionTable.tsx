@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
-import { useResource } from 'frontend-js'
+import { useDocuments } from 'frontend-js'
 import { Button, Grid, Box, Stack } from '@mui/material'
 import {
 	Form,
@@ -15,10 +15,10 @@ import { AppContext } from '../../../context'
 import { FieldType, FilterOptionType, TableHeaderType } from '../../../types'
 import { useRouter } from 'next/router'
 import SearchFilters from '../filters/SearchFilters'
-import { SYSTEM_FIELDS } from '../../../constants'
 import { flattenDocument, flattenDocuments } from '../../../helpers'
 import { TableList } from '../..'
 import { CollectionProps } from './Collection'
+import { useAuth } from 'frontend-js'
 
 export type ForeignCollectionTableProps = CollectionProps & {
 	resource: any
@@ -32,12 +32,12 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 	props
 ) => {
 	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl, setAuthOpen } = useContext(AppContext)
+  const { currentUser } = useAuth()
 
 	const {
 		resource,
-		url,
-		foreignUrl,
+		contentType,
 		foreignContentType,
 		fields,
 		headers,
@@ -69,9 +69,8 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 		totalCount,
 		paginate,
 		addLinks,
-	} = useResource({
-		name: 'document',
-		url,
+	} = useDocuments({
+		collection: contentType
 	})
 
 	const {
@@ -81,10 +80,10 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 		update,
 		create,
 		destroy,
+    handleDataChange,
 		removeAttachment,
-	} = useResource({
-		name: 'document',
-		url: foreignUrl,
+	} = useDocuments({		
+		collection: foreignContentType,
 	})
 
 	const [keywords, setKeywords] = useState('')
@@ -127,7 +126,6 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 		activeFilters,
 		setActiveFilters,
 		handleAddFilter,
-		buildQueryFilters,
 	} = useFilters({
 		query,
 	})
@@ -161,37 +159,20 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 		}
 	}
 
-	const handleDataChange = (ev) => {
-		const { name } = ev.target
-		const value =
-			ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
-		if (SYSTEM_FIELDS.includes(name)) {
-			setResource((prev) => ({
-				...prev,
-				[name]: value,
-			}))
-		} else {
-			setResource((prev) => ({
-				...prev,
-				data: {
-					...prev.data,
-					[name]: value,
-				},
-			}))
-		}
-	}
-
 	const handleAdd = () => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		setResource({})
 		setOpenModal(true)
 	}
 
 	const handleEdit = (item) => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		setResource(item)
 		setOpenModal(true)
 	}
 
 	const handleSubmit = async () => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		try {
 			let resp
 			if (_resource?.id) {
@@ -213,11 +194,13 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 	}
 
 	const handleDeleteClick = (item) => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		setResource(item)
 		setOpenDeleteModal(true)
 	}
 
 	const handleDelete = async () => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		await destroy(_resource?.id)
 		setOpenDeleteModal(false)
 		setOpenModal(false)
@@ -226,6 +209,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 	}
 
 	const handleRemove = async (name) => {
+    if(!currentUser?.id) return setAuthOpen(true);
 		await removeAttachment(_resource?.id, name)
 	}
 
@@ -252,7 +236,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 		if (resource?.id && foreignContentType) {
 			handleFetchResources()
 		}
-	}, [resource, foreignContentType])
+	}, [resource, foreignContentType, currentUser?.id])
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
