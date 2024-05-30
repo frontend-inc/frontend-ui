@@ -6,6 +6,7 @@ import { ShopifyAuth, CartButton } from '../../shopify'
 import { useAuth } from 'frontend-js'
 import { MenuLinkType } from '../../..'
 import TopNavMenuItem from './TopNavMenuItem'
+import { filterLinkVisibility } from '../../..'
 
 type DesktopNavProps = {
 	editing?: boolean
@@ -34,16 +35,6 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 
 	const { currentUser } = useAuth()
 
-	const filterVisibility = (menuItem) => {
-		if (menuItem.require_user && !currentUser?.id) {
-			return false
-		}
-		if (menuItem.require_guest && currentUser?.id) {
-			return false
-		}
-		return true
-	}
-
 	return (
 		<Hidden mdDown>
 			<AppBar
@@ -67,7 +58,7 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 						<Box sx={sx.centerMenu}>
 							{menuItems
 								?.filter((menuItem) => menuItem.parent_id == null)
-								?.filter(filterVisibility)
+								?.filter((menuItem) => filterLinkVisibility(menuItem, currentUser))
 								?.map((menuItem, index) => (
 									<TopNavMenuItem
 										key={index}

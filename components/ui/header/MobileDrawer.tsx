@@ -6,6 +6,7 @@ import { AppContext } from '../../../context'
 import SideNavMenuItem from './SideNavMenuItem'
 import { MenuLinkType } from '../../..'
 import { useAuth } from 'frontend-js'
+import { filterLinkVisibility } from '../../..'
 
 type MobileDrawerProps = {
 	editing?: boolean
@@ -34,16 +35,6 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 		handleClick(path)
 	}
 
-	const filterVisibility = (menuItem) => {
-		if (menuItem.require_user && !currentUser?.id) {
-			return false
-		}
-		if (menuItem.require_guest && currentUser?.id) {
-			return false
-		}
-		return true
-	}
-
 	return (
 		<Drawer
 			open={menuOpen}
@@ -55,7 +46,7 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 				<List sx={sx.sideNavMenuItems}>
 					{menuItems
 						?.filter((menuItem) => menuItem.parent_id == null)
-						?.filter(filterVisibility)
+						?.filter((menuItem) => filterLinkVisibility(menuItem, currentUser))
 						?.map((menuItem, index) => (
 							<SideNavMenuItem
 								key={index}

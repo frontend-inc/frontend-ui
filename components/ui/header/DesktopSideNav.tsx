@@ -7,6 +7,7 @@ import { HEADER_LOGO_HEIGHT, HEADER_LOGO_WIDTH } from '../../../constants/index'
 import { MenuLinkType } from '../../..'
 import SideNavMenuItem from './SideNavMenuItem'
 import { useAuth } from 'frontend-js'
+import { filterLinkVisibility } from '../../../helpers'
 
 type DesktopNavProps = {
 	editing?: boolean
@@ -38,16 +39,6 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 
 	const { currentUser } = useAuth()
 
-	const filterVisibility = (menuItem) => {
-		if (menuItem.require_user && !currentUser?.id) {
-			return false
-		}
-		if (menuItem.require_guest && currentUser?.id) {
-			return false
-		}
-		return true
-	}
-
 	return (
 		<Hidden mdDown>
 			<Box sx={sx.sideNav}>
@@ -75,7 +66,7 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 						<List>
 							{menuItems
 								?.filter((menuItem) => menuItem.parent_id == null)
-								?.filter(filterVisibility)
+								?.filter((menuItem) => filterLinkVisibility(menuItem, currentUser))
 								?.map((menuItem, index) => (
 									<SideNavMenuItem
 										key={index}
