@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
 import { useDocuments } from 'frontend-js'
-import { Button, Collapse, Grid, Box, Stack } from '@mui/material'
+import { Button, Grid, Box, Stack } from '@mui/material'
 import {
 	Form,
 	Drawer,
@@ -297,30 +297,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 					sm={enableFilters && filterAnchor == 'left' ? 8 : 12}
 					lg={enableFilters && filterAnchor == 'left' ? 9 : 12}
 				>
-					<Box sx={{ ...(delayedLoading && sx.loading) }}>
-						{layout == 'inline' && (
-							<Collapse in={openModal}>
-								<Stack direction="column" sx={sx.form} spacing={1}>
-									<Form
-										loading={loading}
-										errors={errors}
-										fields={fields}
-										resource={flattenDocument(resource)}
-										handleChange={handleDataChange}
-										handleRemove={handleRemove}
-									/>
-									<Button
-										fullWidth
-										variant="contained"
-										color="primary"
-										onClick={handleSubmit}
-										startIcon={<IconLoading loading={loading} />}
-									>
-										{resource?.id ? 'Update' : 'Save'}
-									</Button>
-								</Stack>
-							</Collapse>
-						)}
+					<Box sx={{ ...(delayedLoading && sx.loading) }}>					
 						<CollectionList
 							actions={actions}
 							variant={variant}
@@ -354,33 +331,31 @@ const Collection: React.FC<CollectionProps> = (props) => {
 					enableInfiniteLoad={enableInfiniteLoad}
 				/>
 			)}
-			{layout == 'drawer' && (
-				<Drawer
-					open={openModal}
-					handleClose={() => setOpenModal(false)}
-					title={resource?.id ? 'Edit' : 'Add'}
-					actions={
-						<Button
-							fullWidth
-							variant="contained"
-							color="primary"
-							onClick={handleSubmit}
-							startIcon={<IconLoading loading={loading} />}
-						>
-							{resource?.id ? 'Update' : 'Save'}
-						</Button>
-					}
-				>
-					<Form
-						loading={loading}
-						errors={errors}
-						fields={fields}
-						resource={flattenDocument(resource)}
-						handleChange={handleDataChange}
-						handleRemove={handleRemove}
-					/>
-				</Drawer>
-			)}
+      <Drawer
+        open={openModal}
+        handleClose={() => setOpenModal(false)}
+        title={resource?.id ? 'Edit' : 'Add'}
+        actions={
+          <Button
+            fullWidth
+            variant="contained"
+            color="primary"
+            onClick={handleSubmit}
+            startIcon={<IconLoading loading={loading} />}
+          >
+            {resource?.id ? 'Update' : 'Save'}
+          </Button>
+        }
+      >
+        <Form
+          loading={loading}
+          errors={errors}
+          fields={fields}
+          resource={flattenDocument(resource)}
+          handleChange={handleDataChange}
+          handleRemove={handleRemove}
+        />
+      </Drawer>
 			<AlertModal
 				open={openDeleteModal}
 				handleClose={() => setOpenDeleteModal(false)}

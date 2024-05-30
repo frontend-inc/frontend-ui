@@ -48,14 +48,19 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 		handleSearch,
 	} = props
 
+  if(!enableSearch && !enableFilters && !enableSorting && !enableCreate) {
+    return null
+  }
 	return (
 		<Stack direction="column" spacing={1}>
 			{enableSearch && (
-				<SearchInput
-					value={keywords}
-					handleChange={handleKeywordChange}
-					handleSearch={handleSearch}
-				/>
+        <Box sx={ sx.searchBar }>
+          <SearchInput
+            value={keywords}
+            handleChange={handleKeywordChange}
+            handleSearch={handleSearch}
+          />
+        </Box>
 			)}
 			<Stack
 				direction={{ xs: 'column', sm: 'row' }}
@@ -107,29 +112,10 @@ const sx = {
 	root: {
 		width: '100%',
 	},
-	content: {
-		width: '100%',
-	},
-	form: {
-		width: '100%',
-	},
-	item: {
-		p: 2,
-	},
 	button: {
 		width: {
 			sm: 'auto',
 			xs: '100%',
-		},
-	},
-	filtersContainer: {
-		mr: {
-			sm: 2,
-			xs: 0,
-		},
-		mb: {
-			sm: 0,
-			xs: 2,
 		},
 	},
 	toolbarActions: {
@@ -141,4 +127,8 @@ const sx = {
 	circularProgress: {
 		color: 'primary.main',
 	},
+  searchBar: {
+    pt: 1,
+    width: '100%'
+  }
 }

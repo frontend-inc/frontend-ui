@@ -21,8 +21,7 @@ export type ForeignCollectionProps = {
 	style?: 'card' | 'avatar' | 'cover'
 	field: any
 	fields: FormFieldType[]
-	resource: any
-	layout?: 'drawer' | 'inline'
+	resource: any	
 	handle: string
 	contentType: string
 	foreignContentType?: string
@@ -43,8 +42,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 
 	const {
 		fields,
-		resource: _resource,
-		layout = 'drawer',
+		resource: _resource,		
 		variant = 'list',
 		style = 'card',
 		contentType,
@@ -179,30 +177,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 						Add
 					</Button>
 				</Box>
-			)}
-			{layout == 'inline' && (
-				<Collapse in={openModal}>
-					<Stack direction="column" sx={sx.form} spacing={1}>
-						<Form
-							loading={loading}
-							errors={errors}
-							fields={fields}
-							resource={flattenDocument(resource)}
-							handleChange={handleDataChange}
-							handleRemove={handleRemove}
-						/>
-						<Button
-							fullWidth
-							variant="contained"
-							color="primary"
-							onClick={handleSubmit}
-							startIcon={<IconLoading loading={delayedLoading} />}
-						>
-							{resource?.id ? 'Update' : 'Save'}
-						</Button>
-					</Stack>
-				</Collapse>
-			)}
+			)}			
 			<CollectionList
 				actions={[]}
 				variant={variant}
@@ -219,33 +194,31 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 			{enableLoadMore && (
 				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
 			)}
-			{layout == 'drawer' && (
-				<Drawer
-					open={openModal}
-					handleClose={() => setOpenModal(false)}
-					title={resource?.id ? 'Edit' : 'Add'}
-					actions={
-						<Button
-							fullWidth
-							variant="contained"
-							color="primary"
-							onClick={handleSubmit}
-							startIcon={<IconLoading loading={loading} />}
-						>
-							{resource?.id ? 'Update' : 'Save'}
-						</Button>
-					}
-				>
-					<Form
-						loading={loading}
-						errors={errors}
-						fields={fields}
-						resource={flattenDocument(resource)}
-						handleChange={handleDataChange}
-						handleRemove={handleRemove}
-					/>
-				</Drawer>
-			)}
+      <Drawer
+        open={openModal}
+        handleClose={() => setOpenModal(false)}
+        title={resource?.id ? 'Edit' : 'Add'}
+        actions={
+          <Button
+            fullWidth
+            variant="contained"
+            color="primary"
+            onClick={handleSubmit}
+            startIcon={<IconLoading loading={loading} />}
+          >
+            {resource?.id ? 'Update' : 'Save'}
+          </Button>
+        }
+      >
+        <Form
+          loading={loading}
+          errors={errors}
+          fields={fields}
+          resource={flattenDocument(resource)}
+          handleChange={handleDataChange}
+          handleRemove={handleRemove}
+        />
+      </Drawer>
 			<AlertModal
 				open={openDeleteModal}
 				handleClose={() => setOpenDeleteModal(false)}

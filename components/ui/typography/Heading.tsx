@@ -9,6 +9,7 @@ type HeadingProps = {
 	description?: string
 	textAlign?: 'left' | 'center'
 	textVariant?: TypographyVariantsType
+  enableBorder?: boolean
 }
 
 const Heading: React.FC<HeadingProps> = (props) => {
@@ -18,6 +19,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		description,
 		textAlign = 'left',
 		textVariant = 'h6',
+    enableBorder = false
 	} = props || {}
 
 	if (!title && !description && !label) return null
@@ -25,6 +27,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		<Stack
 			sx={{
 				...sx.stack,
+        ...(enableBorder && sx.border ),
 				alignItems: {
 					sm: textAlign === 'center' ? 'center' : 'flex-start',
 					xs: 'center',
@@ -70,11 +73,14 @@ export default Heading
 const sx = {
 	stack: {
 		width: '100%',
-		pb: 4,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
-
+  border: {
+    py: 2,
+    borderBottom: '1px solid',
+    borderColor: 'divider'
+  },
 	title: {
 		width: '100%',
 	},
