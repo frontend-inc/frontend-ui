@@ -96,7 +96,12 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 			value = `#${value}`
 		}
 		if (value?.length == 7) {
-			setHex(value)
+			handleChange({
+				target: {
+					name,
+					value,
+				},
+			})
 		}
 	}
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { AppBar, Box, Hidden, Toolbar } from '@mui/material'
-import { AuthButton } from '../../../components'
+import { AuthButton, StripeCustomerButton } from '../../../components'
 import Logo from './Logo'
 import { ShopifyAuth, CartButton } from '../../shopify'
 import { useAuth } from 'frontend-js'
@@ -13,6 +13,7 @@ type DesktopNavProps = {
 	menuItems?: MenuLinkType[]
 	enableAuth?: boolean
 	enableShopify?: boolean
+  enableStripe?: boolean
 	enableNotifications?: boolean
 	handleClick: (path: string) => void
 	position?: 'fixed' | 'relative' | 'absolute'
@@ -25,6 +26,7 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 		menuItems,
 		handleClick,
 		enableAuth = false,
+    enableStripe = false,
 		enableShopify = false,
 		enableNotifications = false,
 		position = 'absolute',
@@ -75,8 +77,13 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 								))}
 						</Box>
 						<Box sx={sx.rightMenu}>
-							{enableAuth && <AuthButton editing={editing} />}
-							{enableShopify && (
+							{enableAuth && (
+                <AuthButton editing={editing} />
+              )}
+							{enableStripe && (
+                <StripeCustomerButton />
+              )}
+              {enableShopify && (
 								<>
 									<ShopifyAuth />
 									<CartButton />

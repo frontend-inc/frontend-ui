@@ -2,14 +2,20 @@ import React from 'react'
 import StripeContext from './StripeContext'
 
 type StripeProviderProps = {
-	publishableKey?: string
+	publishableKey: string
+  customerPortalUrl?: string
 	children: React.ReactNode
 }
 
 const StripeProvider = (props: StripeProviderProps) => {
-	const { children, publishableKey } = props || {}
+	const { 
+    children, 
+    publishableKey,
+    customerPortalUrl 
+  } = props || {}
 
 	const value = {
+    stripeCustomerPortalUrl: customerPortalUrl,
     stripePublishableKey: publishableKey
 	}
 

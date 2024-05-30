@@ -59,7 +59,6 @@ const SideNavShopifyAuthButton: React.FC<SideNavShopifyAuthButtonProps> = (
 
 type ShopifyAuthProps = {
 	icon?: string
-	customerPortalUrl?: string
 	variant?: 'topNav' | 'sideNav'
 }
 

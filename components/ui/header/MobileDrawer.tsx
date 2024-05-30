@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { List, Stack, Box } from '@mui/material'
-import { AuthButton, Drawer } from '../..'
+import { AuthButton, StripeCustomerButton, Drawer } from '../..'
 import { ShopifyAuth, CartButton } from '../../shopify'
 import { AppContext } from '../../../context'
 import SideNavMenuItem from './SideNavMenuItem'
@@ -12,13 +12,21 @@ type MobileDrawerProps = {
 	menuItems?: MenuLinkType[]
 	handleClick: (path: string) => void
 	enableAuth?: boolean
+  enableStripe?: boolean
 	enableShopify?: boolean
 }
 
 const MobileDrawer = (props: MobileDrawerProps) => {
 	const { menuOpen, setMenuOpen } = useContext(AppContext)
 
-	const { editing, menuItems, handleClick, enableAuth, enableShopify } = props
+	const { 
+    editing, 
+    menuItems, 
+    handleClick, 
+    enableAuth, 
+    enableStripe, 
+    enableShopify 
+  } = props
 
 	const { currentUser } = useAuth()
 	const handleMenuClick = (path: string) => {
@@ -64,6 +72,9 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 								<ShopifyAuth variant="sideNav" />
 							</>
 						)}
+            { enableStripe && (
+              <StripeCustomerButton variant="sideNav" />
+            )}
 						{enableAuth && (
 							<Box sx={sx.divider}>
 								<AuthButton showLabel editing={editing} />

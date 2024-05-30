@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack, List, Box, Hidden } from '@mui/material'
-import { AuthButton } from '../../../components'
+import { AuthButton, StripeCustomerButton } from '../../../components'
 import Logo from './Logo'
 import { ShopifyAuth, CartButton } from '../../shopify'
 import { HEADER_LOGO_HEIGHT, HEADER_LOGO_WIDTH } from '../../../constants/index'
@@ -15,6 +15,7 @@ type DesktopNavProps = {
 	logoHeight?: number
 	menuItems?: MenuLinkType[]
 	enableAuth?: boolean
+  enableStripe?: boolean
 	enableShopify?: boolean
 	enableNotifications?: boolean
 	handleClick: (path: string) => void
@@ -30,6 +31,7 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 		logoHeight = HEADER_LOGO_HEIGHT,
 		handleClick,
 		enableAuth = false,
+    enableStripe = false,
 		enableShopify = false,
 		enableNotifications = false,
 	} = props
@@ -91,6 +93,9 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 									<ShopifyAuth variant="sideNav" />
 								</>
 							)}
+              {enableStripe && (
+                <StripeCustomerButton variant="sideNav" />
+              )}
 							{enableAuth && (
 								<Box sx={sx.divider}>
 									<AuthButton showLabel editing={editing} />
