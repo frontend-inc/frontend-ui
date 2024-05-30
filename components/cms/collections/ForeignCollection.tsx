@@ -10,8 +10,9 @@ import {
 	IconLoading,
 	AlertModal,
 	Icon,
+  Placeholder
 } from '../../../components'
-import { Stack, Collapse, Button, Box } from '@mui/material'
+import { Stack, Button, Box } from '@mui/material'
 import { FormFieldType } from '../../../types'
 import { flattenDocument } from '../../../helpers'
 import { useAuth } from 'frontend-js'
@@ -194,6 +195,13 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 			{enableLoadMore && (
 				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
 			)}
+      {!loading && resources.length == 0 && (
+        <Placeholder
+          icon="Search"
+          title="No results found"
+          description="Try adjusting your search or filters"
+        />
+      )}
       <Drawer
         open={openModal}
         handleClose={() => setOpenModal(false)}
