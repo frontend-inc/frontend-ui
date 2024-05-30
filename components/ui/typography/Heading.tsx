@@ -36,7 +36,11 @@ const Heading: React.FC<HeadingProps> = (props) => {
 			direction={'column'}
 			spacing={1}
 		>
-			{label && <Label label={label} />}
+			{label && (
+      <Typography variant="caption" color='text.secondary'>
+        { label }
+      </Typography>
+      )}
 			{title && (
 				<Typography
 					variant={textVariant}
