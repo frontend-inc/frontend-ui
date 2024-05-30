@@ -82,7 +82,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 						<Typography sx={sx.title} variant={'subtitle1'}>
 							{title}
 						</Typography>
-						<Typography variant="subtitle2" sx={sx.description}>
+						<Typography variant="body1" sx={sx.description}>
 							{truncate(description, 160)}
 						</Typography>
 						{buttonText && (

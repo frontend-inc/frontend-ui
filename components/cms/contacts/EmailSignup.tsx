@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Stack, Typography, Button } from '@mui/material'
 import { useRouter } from 'next/router'
 import { TypographyVariantsType } from '../../../types'
-import { Label, TextInput, IconLoading } from '../../../components'
+import { TextInput, IconLoading } from '../../../components'
 import { useResource } from 'frontend-js'
 import { useAlerts } from '../../../hooks'
 
@@ -45,7 +45,11 @@ const EmailSignup: React.FC<EmailSignupProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			<Stack sx={sx.content} direction="column" spacing={1}>
-				{label && <Label label={label} />}
+        {label && (
+					<Typography variant={'caption'} color="text.secondary" sx={sx.label}>
+						{label}
+					</Typography>
+				)}
 				{title && (
 					<Typography variant={'h6'} color="text.primary" sx={sx.title}>
 						{title}

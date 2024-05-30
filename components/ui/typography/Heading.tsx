@@ -79,6 +79,7 @@ const sx = {
 		width: '100%',
 		justifyContent: 'center',
 		alignItems: 'center',
+    mb: 1
 	},
   border: {
     py: 2,
