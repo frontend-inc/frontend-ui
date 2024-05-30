@@ -30,7 +30,7 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 	} = props
 
 	return (
-		<Stack sx={sx.root} direction="column" spacing={2}>
+		<Stack sx={sx.root} direction="column" spacing={1}>
 			<Breadcrumbs maxLinks={maxLinks} links={links} />
 			<Stack
 				direction={{
