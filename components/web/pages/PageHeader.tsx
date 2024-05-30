@@ -63,7 +63,7 @@ export default PageHeader
 
 const sx = {
 	root: {
-		pt: 2,
+		py: 2,
 		width: '100%',
 	},
 	content: {
