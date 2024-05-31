@@ -71,7 +71,7 @@ const SubscriptionTable: React.FC = () => {
 	return (
 		<>
 			<Loading loading={loading} />
-			<Stack direction={{ xs: 'column', sm: 'row'}} spacing={2}>
+			<Stack sx={ sx.table } direction={{ xs: 'column', sm: 'row'}} spacing={2}>
 				{!loading &&
 					subscriptionPlans?.map((subscriptionPlan) => {
 						const selected =
@@ -147,6 +147,10 @@ const SubscriptionTable: React.FC = () => {
 export default SubscriptionTable
 
 const sx = {
+  table: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   cancelLink: {
     py: 2
   },

@@ -89,6 +89,7 @@ const sx = {
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
+    maxWidth: 400
 	},
 	content: {
 		minHeight: 300,
@@ -99,7 +100,9 @@ const sx = {
 		mb: 0,
 	},
   selected: {
-    border: '2px solid',
+    border: '3px solid',
 		borderColor: 'primary.main',
+    boxShadow: '0 0 20px 0 rgba(0,0,0,0.1)',
+    transform : 'scale(1.05)',
   }
 }

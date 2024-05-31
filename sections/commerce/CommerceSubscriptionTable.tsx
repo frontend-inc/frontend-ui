@@ -1,4 +1,5 @@
 import React from 'react'
+import {Stack } from '@mui/material'
 import { Section, Heading } from '../../components'
 import { SubscriptionTable } from '../../components'
 import { SectionProps, HeadingProps } from '../../types'
@@ -10,7 +11,7 @@ const CommerceSubscriptionTable: React.FC<CommerceSubscriptionTableProps> = (pro
 		label,
 		title,
 		description,
-		textAlign,
+		textAlign='center',
 		bgcolor,
 		py,
 		px,
@@ -33,13 +34,15 @@ const CommerceSubscriptionTable: React.FC<CommerceSubscriptionTableProps> = (pro
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
 		>
-			<Heading
-				label={label}
-				title={title}
-				description={description}
-				textAlign={textAlign}
-			/>
-			<SubscriptionTable />
+      <Stack spacing={3}>
+        <Heading
+          label={label}
+          title={title}
+          description={description}
+          textAlign={textAlign}
+        />
+        <SubscriptionTable />
+      </Stack>
 		</Section>
 	)
 }
