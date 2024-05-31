@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Cover, AvatarCard, Chip, TextCard, ImageCard } from '../..'
+import { Card, CoverCard, AvatarCard, Chip, TextCard, ImageCard } from '../..'
 import { ActionType } from '../../../types'
 
 type CardStyleTypes = 'card' | 'avatar' | 'cover' | 'chip' | 'image' | 'text'
@@ -34,7 +34,7 @@ const CollectionCard: React.FC<CollectionCardProps> = (props) => {
 	const COMPONENTS = {
 		card: Card,
 		avatar: AvatarCard,
-		cover: Cover,
+		cover: CoverCard,
 		chip: Chip,
 		text: TextCard,
 		image: ImageCard,
