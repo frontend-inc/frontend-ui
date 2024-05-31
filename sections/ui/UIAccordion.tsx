@@ -4,9 +4,9 @@ import { Accordion } from '../../components'
 import { AccordionProps } from '../../components/web/accordions/Accordion'
 import { SectionProps, HeadingProps } from '../../types'
 
-type WebAccordionProps = SectionProps & HeadingProps & AccordionProps
+type UIAccordionProps = SectionProps & HeadingProps & AccordionProps
 
-const WebAccordion: React.FC<WebAccordionProps> = (props) => {
+const UIAccordion: React.FC<UIAccordionProps> = (props) => {
 	const {
 		label,
 		title,
@@ -45,4 +45,4 @@ const WebAccordion: React.FC<WebAccordionProps> = (props) => {
 	)
 }
 
-export default WebAccordion
+export default UIAccordion

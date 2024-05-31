@@ -15,7 +15,10 @@ const PriceTable: React.FC<PriceTableProps> = (props) => {
 		<Stack spacing={2}>
 			<Stack direction={{ sm: 'row', xs: 'column' }} spacing={1}>
 				{items.map((item, index) => (
-					<PriceTableCard key={index} price={item} />
+					<PriceTableCard 
+            key={index} 
+            price={item} 
+          />
 				))}
 			</Stack>
 			{items?.length === 0 && (

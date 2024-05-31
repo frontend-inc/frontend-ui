@@ -63,13 +63,12 @@ export default PageHeader
 
 const sx = {
 	root: {
-		py: 2,
 		width: '100%',
 	},
 	content: {
+    pb: 1,
 		justifyContent: 'space-between',
 		width: '100%',
-		bgcolor: 'background.default',
 	},
 	contentBorder: {
 		borderBottom: 1,
@@ -83,5 +82,5 @@ const sx = {
 			sm: 0,
 			xs: 1,
 		},
-	},
+	}
 }

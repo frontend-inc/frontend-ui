@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
-import { Swipeable, CoverImage, Placeholder } from '../..'
+import { Swipeable, Cover, Placeholder } from '../..'
 import { useRouter } from 'next/router'
 
-export type CoverImageCarouselProps = {
+export type CoverCarouselProps = {
 	items: {
 		title?: string
 		description?: string
@@ -23,7 +23,7 @@ export type CoverImageCarouselProps = {
 	alignItems?: 'flex-start' | 'center' | 'flex-end'
 }
 
-const CoverImageCarousel: React.FC<CoverImageCarouselProps> = (props) => {
+const CoverCarousel: React.FC<CoverCarouselProps> = (props) => {
 	const router = useRouter()
 
 	const {
@@ -54,7 +54,7 @@ const CoverImageCarousel: React.FC<CoverImageCarouselProps> = (props) => {
 		<>
 			<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
 				{items?.map((item, index) => (
-					<CoverImage
+					<Cover
 						key={index}
 						editing={editing}
 						title={item?.title}
@@ -81,4 +81,4 @@ const CoverImageCarousel: React.FC<CoverImageCarouselProps> = (props) => {
 	)
 }
 
-export default CoverImageCarousel
+export default CoverCarousel

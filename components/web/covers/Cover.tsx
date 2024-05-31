@@ -4,7 +4,7 @@ import { Image } from '../..'
 import { useRouter } from 'next/router'
 import { AppContext } from '../../../context'
 
-export type CoverImageProps = {
+export type CoverProps = {
 	editing?: boolean
 	title?: string
 	description?: string
@@ -22,7 +22,7 @@ export type CoverImageProps = {
 	href?: string
 }
 
-const CoverImage: React.FC<CoverImageProps> = (props) => {
+const Cover: React.FC<CoverProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
@@ -114,7 +114,7 @@ const CoverImage: React.FC<CoverImageProps> = (props) => {
 	)
 }
 
-export default CoverImage
+export default Cover
 
 const sx = {
 	root: {

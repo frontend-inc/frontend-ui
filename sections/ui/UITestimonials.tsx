@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { Tabs } from '../../components'
-import { TabsProps } from '../../components/web/tabs/Tabs'
+import { Testimonials } from '../../components'
+import { TestimonialsProps } from '../../components/web/testimonials/Testimonials'
 import { SectionProps, HeadingProps } from '../../types'
 
-type WebTabsProps = SectionProps & HeadingProps & TabsProps
+type UITestimonialsProps = SectionProps & HeadingProps & TestimonialsProps
 
-const WebTabs: React.FC<WebTabsProps> = (props) => {
+const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 	const {
 		label,
 		title,
@@ -40,9 +40,9 @@ const WebTabs: React.FC<WebTabsProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<Tabs {...rest} />
+			<Testimonials {...rest} />
 		</Section>
 	)
 }
 
-export default WebTabs
+export default UITestimonials

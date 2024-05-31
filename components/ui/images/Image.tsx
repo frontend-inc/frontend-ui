@@ -1,6 +1,6 @@
 import React from 'react'
-import { Label, NoImage } from '../../../components'
-import { Box, useTheme } from '@mui/material'
+import { Label, NoImage, Icon } from '../../../components'
+import { Box, IconButton, useTheme } from '@mui/material'
 import { truncate } from '../../../helpers'
 import NextImage from 'next/image'
 
@@ -17,6 +17,7 @@ export type ImageProps = {
 	enableOverlay?: boolean
 	disableBorder?: boolean
 	disableBorderRadius?: boolean
+  secondaryActions?: React.ReactNode
 }
 
 const Image: React.FC<ImageProps> = (props) => {
@@ -33,6 +34,7 @@ const Image: React.FC<ImageProps> = (props) => {
 		enableGradient = false,
 		disableBorder = false,
 		disableBorderRadius = false,
+    secondaryActions
 	} = props
 
 	const theme = useTheme()
@@ -49,6 +51,8 @@ const Image: React.FC<ImageProps> = (props) => {
 				sx={{
 					...sx.root,
 					height: `${height}px`,
+          minWidth: width ? `${width}px` : '100%',
+          ...(!disableBorderRadius && sx.borderRadius),
 					'&::after': {
 						...sx.afterBase,
 						...(enableOverlay && sx.overlay),
@@ -69,6 +73,7 @@ const Image: React.FC<ImageProps> = (props) => {
 						alt={alt}
 						height={1600}
 						width={1600}
+            layout="responsive"
 						style={{
 							height: `${height}px`,
 							width: width ? `min(${width}px, 100vw)` : '100%',
@@ -94,6 +99,9 @@ const Image: React.FC<ImageProps> = (props) => {
 					<Label color="common.white" label={truncate(label, 22)} />
 				</Box>
 			)}
+      <Box sx={ sx.secondaryActions }>
+        { secondaryActions }
+      </Box>
 		</Box>
 	)
 }
@@ -138,4 +146,9 @@ const sx = {
 		background: 'linear-gradient(to top, rgb(0,0,0,1.0), transparent)',
 		borderRadius: 1,
 	},
+  secondaryActions: {
+    position: 'absolute',
+		right: 15,
+		top: 10,
+  }
 }

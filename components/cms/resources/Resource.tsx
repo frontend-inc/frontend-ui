@@ -15,7 +15,7 @@ export type ResourceProps = {
 	avatar?: React.ReactNode
 	icon?: string
 	color?: string
-	title?: string
+	title?: string | React.ReactNode
 	description?: string
 	image?: string
 	resource: any
@@ -77,11 +77,7 @@ const Resource: React.FC<ResourceProps> = (props) => {
 						</ListItemIcon>
 					)}
 					<ListItemText
-						primary={
-							<Typography variant="body1" color="text.primary">
-								{title}
-							</Typography>
-						}
+						primary={ title }						
 						secondary={
 							<Typography variant="body2" color="text.secondary">
 								{description}

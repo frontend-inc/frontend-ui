@@ -114,7 +114,7 @@ const sx = {
 			xs: '100%',
 		},
 		position: 'relative',
-		borderRight: '1px solid',
+		borderRight: '1px dotted',
 		borderColor: 'divider',
 	},
 	desktopSideNav: {

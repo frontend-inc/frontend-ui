@@ -4,9 +4,9 @@ import { PriceTable } from '../../components'
 import { PriceTableProps } from '../../components/web/prices/PriceTable'
 import { SectionProps, HeadingProps } from '../../types'
 
-type WebPriceTableProps = SectionProps & HeadingProps & PriceTableProps
+type UIPriceTableProps = SectionProps & HeadingProps & PriceTableProps
 
-const WebPriceTable: React.FC<WebPriceTableProps> = (props) => {
+const UIPriceTable: React.FC<UIPriceTableProps> = (props) => {
 	const {
 		label,
 		title,
@@ -45,4 +45,4 @@ const WebPriceTable: React.FC<WebPriceTableProps> = (props) => {
 	)
 }
 
-export default WebPriceTable
+export default UIPriceTable

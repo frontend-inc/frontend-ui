@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section } from '../../components'
-import { CTA } from '../../components'
-import { CTAProps } from '../../components/web/CTA/CTA'
+import { CoverCarousel } from '../../components'
+import { CoverCarouselProps } from '../../components/web/covers/CoverCarousel'
 import { SectionProps } from '../../types'
 
-type WebCTAProps = SectionProps & CTAProps
+type UICoverCarouselProps = SectionProps & CoverCarouselProps
 
-const WebCTA: React.FC<WebCTAProps> = (props) => {
+const UICoverCarousel: React.FC<UICoverCarouselProps> = (props) => {
 	const {
 		bgcolor,
 		py,
@@ -30,9 +30,9 @@ const WebCTA: React.FC<WebCTAProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<CTA {...rest} />
+			<CoverCarousel {...rest} />
 		</Section>
 	)
 }
 
-export default WebCTA
+export default UICoverCarousel

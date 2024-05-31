@@ -1,9 +1,9 @@
 import React from 'react'
-import { Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import { TypographyVariantsType } from '../../../types'
-import { Label } from '../../../components'
 
 type HeadingProps = {
+  actions?: React.ReactNode
 	label?: string
 	title?: string
 	description?: string
@@ -14,6 +14,7 @@ type HeadingProps = {
 
 const Heading: React.FC<HeadingProps> = (props) => {
 	const {
+    actions,    
 		label,
 		title,
 		description,
@@ -24,17 +25,15 @@ const Heading: React.FC<HeadingProps> = (props) => {
 
 	if (!title && !description && !label) return null
 	return (
+    <Box sx={ sx.root }>
 		<Stack
 			sx={{
 				...sx.stack,
         ...(enableBorder && sx.border ),
-				alignItems: {
-					sm: textAlign === 'center' ? 'center' : 'flex-start',
-					xs: 'center',
-				},
+				alignItems: textAlign,
 			}}
 			direction={'column'}
-			spacing={1}
+			spacing={0}
 		>
 			{label && (
       <Typography variant="caption" color='text.secondary'>
@@ -59,27 +58,36 @@ const Heading: React.FC<HeadingProps> = (props) => {
 					color="text.secondary"
 					sx={{
 						...sx.description,
-						textAlign: {
-							sm: textAlign,
-							xs: 'center',
-						},
+						textAlign: textAlign,
 					}}
 				>
 					{description}
 				</Typography>
 			)}
 		</Stack>
+    { actions }
+    </Box>
 	)
 }
 
 export default Heading
 
 const sx = {
+  root: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: {
+      xs: 'column',
+      sm: 'row',
+    }
+  },
 	stack: {
+    pb: 1,
 		width: '100%',
 		justifyContent: 'center',
 		alignItems: 'center',
-    mb: 1
 	},
   border: {
     py: 2,

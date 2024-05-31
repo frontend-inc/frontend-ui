@@ -23,6 +23,7 @@ export type SectionProps = {
 
 export type CardProps = {
 	actions: ActionType[]
+  enableFavorites?: boolean
 	editing?: boolean
 	variant?: 'list' | 'grid'
 	item: any & {

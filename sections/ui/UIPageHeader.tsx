@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section } from '../../components'
-import { Logos } from '../../components'
-import { LogosProps } from '../../components/web/logos/Logos'
+import { PageHeader } from '../../components'
+import { PageHeaderProps } from '../../components/web/pages/PageHeader'
 import { SectionProps } from '../../types'
 
-type WebLogosProps = SectionProps & LogosProps
+type UIPageHeaderProps = SectionProps & PageHeaderProps
 
-const WebLogos: React.FC<WebLogosProps> = (props) => {
+const UIPageHeader: React.FC<UIPageHeaderProps> = (props) => {
 	const {
 		bgcolor,
 		py,
@@ -30,9 +30,9 @@ const WebLogos: React.FC<WebLogosProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Logos {...rest} />
+			<PageHeader {...rest} />
 		</Section>
 	)
 }
 
-export default WebLogos
+export default UIPageHeader

@@ -58,7 +58,6 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		actions,
 		variant = 'grid',
 		style = 'card',
-		layout = 'drawer',		
 		contentType,
 		fields,
 		filterAnchor = 'left',
@@ -260,7 +259,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
   ])
 
 	return (
-		<Stack spacing={1} sx={sx.root}>
+		<Stack spacing={1} sx={sx.root}>      
 			<CollectionToolbar
 				query={query}
 				activeFilters={activeFilters}
@@ -375,12 +374,6 @@ const sx = {
 	},
 	content: {
 		width: '100%',
-	},
-	form: {
-		width: '100%',
-	},
-	item: {
-		p: 2,
 	},
 	button: {
 		width: {

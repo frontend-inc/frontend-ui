@@ -4,9 +4,9 @@ import { Cards } from '../../components'
 import { CardsProps } from '../../components/web/cards/Cards'
 import { SectionProps, HeadingProps } from '../../types'
 
-type WebCardsProps = SectionProps & HeadingProps & CardsProps
+type UICardsProps = SectionProps & HeadingProps & CardsProps
 
-const WebCards: React.FC<WebCardsProps> = (props) => {
+const UICards: React.FC<UICardsProps> = (props) => {
 	const {
 		label,
 		title,
@@ -45,4 +45,4 @@ const WebCards: React.FC<WebCardsProps> = (props) => {
 	)
 }
 
-export default WebCards
+export default UICards

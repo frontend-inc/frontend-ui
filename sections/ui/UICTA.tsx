@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section } from '../../components'
-import { CoverImageCarousel } from '../../components'
-import { CoverImageCarouselProps } from '../../components/web/covers/CoverImageCarousel'
+import { CTA } from '../../components'
+import { CTAProps } from '../../components/web/CTA/CTA'
 import { SectionProps } from '../../types'
 
-type WebCoverImageCarouselProps = SectionProps & CoverImageCarouselProps
+type UICTAProps = SectionProps & CTAProps
 
-const WebCoverImageCarousel: React.FC<WebCoverImageCarouselProps> = (props) => {
+const UICTA: React.FC<UICTAProps> = (props) => {
 	const {
 		bgcolor,
 		py,
@@ -30,9 +30,9 @@ const WebCoverImageCarousel: React.FC<WebCoverImageCarouselProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<CoverImageCarousel {...rest} />
+			<CTA {...rest} />
 		</Section>
 	)
 }
 
-export default WebCoverImageCarousel
+export default UICTA

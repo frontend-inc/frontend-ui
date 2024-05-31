@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { Features } from '../../components'
-import { FeaturesProps } from '../../components/web/features/Features'
+import { Featured } from '../../components'
+import { FeaturedProps } from '../../components/web/featured/Featured'
 import { SectionProps, HeadingProps } from '../../types'
 
-type WebFeaturesProps = SectionProps & HeadingProps & FeaturesProps
+type UIFeaturedProps = SectionProps & HeadingProps & FeaturedProps
 
-const WebFeatures: React.FC<WebFeaturesProps> = (props) => {
+const UIFeatured: React.FC<UIFeaturedProps> = (props) => {
 	const {
 		label,
 		title,
@@ -40,9 +40,9 @@ const WebFeatures: React.FC<WebFeaturesProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<Features {...rest} />
+			<Featured {...rest} />
 		</Section>
 	)
 }
 
-export default WebFeatures
+export default UIFeatured

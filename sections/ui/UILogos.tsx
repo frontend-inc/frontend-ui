@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section } from '../../components'
-import { Image } from '../../components'
-import { ImageProps } from '../../components/ui/images/Image'
+import { Logos } from '../../components'
+import { LogosProps } from '../../components/web/logos/Logos'
 import { SectionProps } from '../../types'
 
-type WebImageProps = SectionProps & ImageProps
+type UILogosProps = SectionProps & LogosProps
 
-const WebImage: React.FC<WebImageProps> = (props) => {
+const UILogos: React.FC<UILogosProps> = (props) => {
 	const {
 		bgcolor,
 		py,
@@ -30,9 +30,9 @@ const WebImage: React.FC<WebImageProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Image {...rest} />
+			<Logos {...rest} />
 		</Section>
 	)
 }
 
-export default WebImage
+export default UILogos

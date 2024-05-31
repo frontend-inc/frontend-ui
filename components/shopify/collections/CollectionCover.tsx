@@ -1,8 +1,8 @@
 import React from 'react'
-import { CoverImage } from '../..'
+import { Cover } from '../..'
 import { CollectionType } from 'frontend-shopify'
 
-export type CollectionCoverImageProps = {
+export type CollectionCoverProps = {
 	shopifyCollection: CollectionType
 	editing?: boolean
 	height?: number
@@ -17,7 +17,7 @@ export type CollectionCoverImageProps = {
 	href?: string
 }
 
-const CollectionCoverImage: React.FC<CollectionCoverImageProps> = (props) => {
+const CollectionCover: React.FC<CollectionCoverProps> = (props) => {
 	const {
 		shopifyCollection,
 		handleClick,
@@ -33,7 +33,7 @@ const CollectionCoverImage: React.FC<CollectionCoverImageProps> = (props) => {
 
 	if (!shopifyCollection) return null
 	return (
-		<CoverImage
+		<Cover
 			enableOverlay={enableOverlay}
 			enableGradient={enableGradient}
 			opacity={opacity}
@@ -50,4 +50,4 @@ const CollectionCoverImage: React.FC<CollectionCoverImageProps> = (props) => {
 	)
 }
 
-export default CollectionCoverImage
+export default CollectionCover

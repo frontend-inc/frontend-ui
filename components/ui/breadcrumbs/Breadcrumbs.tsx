@@ -47,7 +47,7 @@ export default Breadcrumbs
 
 const sx = {
 	root: {
-		py: 1,
+		py: 0,
 	},
 	link: {
 		color: 'text.secondary',

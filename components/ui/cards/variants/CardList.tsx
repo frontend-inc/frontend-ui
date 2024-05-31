@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
+import { AuthContext } from 'frontend-js'
 import { Box, Stack, Typography } from '@mui/material'
-import { Image, TouchableOpacity, MenuButton } from '../../../../components'
+import { Image, TouchableOpacity, FavoriteButton } from '../../../../components'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
@@ -11,6 +12,7 @@ const CardList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		actions,
+    enableFavorites,
 		item,
 		href,
 		height = 180,
@@ -57,6 +59,11 @@ const CardList: React.FC<CardProps> = (props) => {
 							enableGradient={enableGradient}
 							enableOverlay={enableOverlay}
 							disableBorderRadius={enableBorder}
+              secondaryActions={enableFavorites && (
+                <FavoriteButton
+                  handle={resource?.handle}
+                />
+              )}
 						/>
 					</TouchableOpacity>
 				</Box>

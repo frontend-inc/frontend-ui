@@ -1,12 +1,13 @@
 import React from 'react'
 import { Section } from '../../components'
-import { PageHeader } from '../../components'
-import { PageHeaderProps } from '../../components/web/pages/PageHeader'
+import { Image } from '../../components'
+import { ImageProps } from '../../components/ui/images/Image'
 import { SectionProps } from '../../types'
+import { Box } from '@mui/material'
 
-type WebPageHeaderProps = SectionProps & PageHeaderProps
+type UIImageProps = SectionProps & ImageProps
 
-const WebPageHeader: React.FC<WebPageHeaderProps> = (props) => {
+const UIImage: React.FC<UIImageProps> = (props) => {
 	const {
 		bgcolor,
 		py,
@@ -30,9 +31,9 @@ const WebPageHeader: React.FC<WebPageHeaderProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<PageHeader {...rest} />
+			<Image {...rest} />
 		</Section>
 	)
 }
 
-export default WebPageHeader
+export default UIImage

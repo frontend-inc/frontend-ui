@@ -61,23 +61,21 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
             handleSearch={handleSearch}
           />
         </Box>
-			)}
-			<Stack
-				direction={{ xs: 'column', sm: 'row' }}
-				sx={sx.toolbarActions}
-				spacing={1}
+			)}      
+			<Box				
+				sx={sx.toolbarActions}				
 			>
-				<Stack spacing={1} direction={{ xs: 'column', sm: 'row' }}>
-					{enableFilters && (
-						<Box>
+				<Stack sx={ sx.filterAndSort } spacing={1} direction={{ xs: 'column', sm: 'row' }}>						
+          {enableFilters && (
+            <Box>
 							<FilterButton
 								filters={activeFilters}
 								handleFilter={handleFilter}
 								handleClear={handleClearFilters}
 								filterOptions={filterOptions}
 							/>
-						</Box>
-					)}
+            </Box>
+				  )}          
 					{enableSorting && (
 						<SortButton
 							sortBy={query?.sort_by || 'id'}
@@ -101,7 +99,7 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 						</Button>
 					</Box>
 				)}
-			</Stack>
+			</Box>
 		</Stack>
 	)
 }
@@ -118,8 +116,18 @@ const sx = {
 			xs: '100%',
 		},
 	},
+  toolbar: {
+    borderTop: '1px solid',
+    borderColor: 'divider',
+  },
 	toolbarActions: {
+    display: 'flex',
+    width: '100%',
 		justifyContent: 'space-between',
+    flexDirection: {
+      xs: 'column',
+      sm: 'row',
+    }
 	},
 	loading: {
 		opacity: 0.7,
@@ -128,7 +136,9 @@ const sx = {
 		color: 'primary.main',
 	},
   searchBar: {
-    pt: 1,
     width: '100%'
+  },
+  filterAndSort: {
+    height: 40,
   }
 }

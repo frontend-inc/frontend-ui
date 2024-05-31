@@ -2,8 +2,8 @@ import React, { useEffect, useState, useContext } from 'react'
 import { IconButton } from '@mui/material'
 import { Icon } from '../..'
 import { isFavorited } from '../../../helpers'
-import { useAuth } from 'frontend-js'
-import { useAlerts, useSocial } from '../../../hooks'
+import { AuthContext, useAuth } from 'frontend-js'
+import { useSocial } from '../../../hooks'
 import { AppContext } from '../../../context'
 
 type FavoriteButtonProps = {
@@ -12,18 +12,22 @@ type FavoriteButtonProps = {
 }
 
 const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
-	const { url, handle } = props
+	const { handle } = props
 
 	const { currentUser } = useAuth()
-	const { authOpen, setAuthOpen } = useContext(AppContext)
+	const { setAuthOpen } = useContext(AppContext)
 
 	const [favorited, setFavorited] = useState(false)
 
-	const { loading, favorite, unfavorite } = useSocial({
-		url,
-	})
+  const { serverPath } = useContext(AuthContext) as any 
 
-	const { showAlertError } = useAlerts()
+	const { 
+    loading, 
+    favorite, 
+    unfavorite 
+  } = useSocial({
+		url: serverPath
+	})
 
 	const handleClick = async () => {
 		if (!currentUser?.id) {
@@ -57,6 +61,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 			}}
 		>
 			<Icon
+        size={20}
 				name="Heart"
 				color={favorited ? 'primary.contrastText' : 'text.primary'}
 			/>

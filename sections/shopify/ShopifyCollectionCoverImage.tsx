@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section } from '../../components'
-import { CollectionCoverImage } from '../../components/shopify'
-import { CollectionCoverImageProps } from '../../components/shopify/collections/CollectionCoverImage'
+import { CollectionCover } from '../../components/shopify'
+import { CollectionCoverProps } from '../../components/shopify/collections/CollectionCover'
 import { SectionProps } from '../../types'
 
-type ShopifyCollectionCoverImageProps = SectionProps & CollectionCoverImageProps
+type ShopifyCollectionCoverImageProps = SectionProps & CollectionCoverProps
 
 const ShopifyCollectionCoverImage: React.FC<
 	ShopifyCollectionCoverImageProps
@@ -32,7 +32,7 @@ const ShopifyCollectionCoverImage: React.FC<
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<CollectionCoverImage {...rest} />
+			<CollectionCover {...rest} />
 		</Section>
 	)
 }

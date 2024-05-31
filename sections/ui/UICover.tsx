@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section } from '../../components'
-import { CoverImage } from '../../components'
-import { CoverImageProps } from '../../components/web/covers/CoverImage'
+import { Cover } from '../../components'
+import { CoverProps } from '../../components/web/covers/Cover'
 import { SectionProps } from '../../types'
 
-type WebCoverImageProps = SectionProps & CoverImageProps
+type UICoverProps = SectionProps & CoverProps
 
-const WebCoverImage: React.FC<WebCoverImageProps> = (props) => {
+const UICover: React.FC<UICoverProps> = (props) => {
 	const {
 		enableTransitions,
 		bgcolor,
@@ -28,9 +28,9 @@ const WebCoverImage: React.FC<WebCoverImageProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<CoverImage {...rest} />
+			<Cover {...rest} />
 		</Section>
 	)
 }
 
-export default WebCoverImage
+export default UICover

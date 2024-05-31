@@ -36,7 +36,7 @@ export { default as ProductVariantSelector } from './variants/ProductVariantSele
 
 // Collections
 export { default as Collections } from './collections/Collections'
-export { default as CollectionCoverImage } from './collections/CollectionCoverImage'
+export { default as CollectionCover } from './collections/CollectionCover'
 
 // Products
 export { default as ProductCard } from './products/ProductCard'
