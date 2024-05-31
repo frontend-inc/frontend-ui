@@ -31,8 +31,6 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 		logout,
 	} = useAuth()
 
-  const { stripePublishableKey } = useContext(StripeContext)  
-
 	const [currentTab, setCurrentTab] = useState(0)
 
 	const handleLogout = async () => {
@@ -91,7 +89,7 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 					/>
 				)}
 				{currentTab == 4 && (
-					<CreditCards stripePublishableKey={stripePublishableKey} />
+					<CreditCards />
 				)}
 				{currentTab == 6 && <SubscriptionPlans />}
 			</Box>

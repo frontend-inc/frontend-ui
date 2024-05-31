@@ -80,7 +80,7 @@ const ArrayListInput: React.FC<InputPropsType> = (props) => {
 					{label}
 				</Typography>
 			)}
-			{values?.map((value, index) => (
+			{Array.isArray(values) && values?.map((value, index) => (
 				<ArrayItemInput
 					key={index}
 					index={index}
@@ -90,7 +90,12 @@ const ArrayListInput: React.FC<InputPropsType> = (props) => {
 				/>
 			))}
 			<Box>
-				<Button onClick={handleAddClick} startIcon={<Plus size={20} />}>
+				<Button 
+          variant="contained"
+          color="secondary"
+          onClick={handleAddClick} 
+          startIcon={<Plus size={20} />}
+        >
 					Add
 				</Button>
 			</Box>

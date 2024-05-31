@@ -1,16 +1,17 @@
 import React from 'react'
 import {
 	Stack,
-	Box,
+	Box,  
 	Button,
 	Divider,
 	Typography,
 	List,
+  ListItemIcon,
 	ListItem,
 	ListItemText,
 } from '@mui/material'
 import { SubscriptionPlanType } from '../../../types'
-import { Label } from '../..'
+import { Label, Icon } from '../..'
 
 type SubscriptionTableCardProps = {
 	selected?: boolean
@@ -47,9 +48,12 @@ const SubscriptionTableCard: React.FC<SubscriptionTableCardProps> = (props) => {
 					{ subscriptionPlan.display_price }          
 				</Typography>
 				<Divider />
-				<List disablePadding>
+				<List dense disablePadding>
 					{subscriptionPlan?.features?.map((feature, i) => (
 						<ListItem key={i}>
+              <ListItemIcon>
+                <Icon name="Check" size={20} color='text.secondary' />
+              </ListItemIcon>
 							<ListItemText
 								primary={
 									<Typography variant="body1" color="text.primary">

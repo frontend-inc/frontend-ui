@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
+import { StripeContext } from '../../../context'
 import { Box, Button, List } from '@mui/material'
 import { useAuth } from 'frontend-js'
 import {
@@ -10,12 +11,8 @@ import {
 } from '../../../components'
 import { useCreditCards } from '../../../hooks'
 
-type CreditCardsProps = {
-	stripePublishableKey: string
-}
-
-const CreditCards: React.FC<CreditCardsProps> = (props) => {
-	const { stripePublishableKey } = props || {}
+const CreditCards: React.FC = () => {
+	const { stripePublishableKey } = useContext(StripeContext)
 
 	const {
 		delayedLoading: loading,
@@ -86,17 +83,22 @@ const CreditCards: React.FC<CreditCardsProps> = (props) => {
 					<Loading loading={loading} />
 					<List>
 						{!loading &&
-							creditCards?.map((creditCard) => (
+							creditCards?.map((creditCard) => {
+                const selected = creditCard.id == currentUser?.credit_card_id
+                return(
 								<SelectableListItem
 									key={creditCard.id}
-									selected={creditCard.id == currentUser?.credit_card_id}
+									selected={selected}
 									icon={'CreditCard'}
 									title={creditCard.last4}
 									description={creditCard.brand}
 									handleClick={() => handleClick(creditCard)}
-									handleDelete={() => handleDeleteClick(creditCard)}
+									handleDelete={
+                    selected ? 
+                      undefined : 
+                      () => handleDeleteClick(creditCard)}
 								/>
-							))}
+							)})}
 					</List>
 					{!loading && !creditCards?.length && (
 						<Placeholder
@@ -112,11 +114,13 @@ const CreditCards: React.FC<CreditCardsProps> = (props) => {
 					</Box>
 				</>
 			) : (
-				<StripeCreditCard
-					publishableKey={stripePublishableKey}
-					handleSubmit={handleSubmit}
-					handleCancel={() => setIsEditing(false)}
-				/>
+        <Box py={2}>
+          <StripeCreditCard
+            publishableKey={stripePublishableKey}
+            handleSubmit={handleSubmit}
+            handleCancel={() => setIsEditing(false)}
+          />
+        </Box>
 			)}
 			<AlertModal
 				open={openDeleteModal}

@@ -181,7 +181,9 @@ const Collection: React.FC<CollectionProps> = (props) => {
 
 	const handleAdd = () => {
     if(!currentUser?.id) return setAuthOpen(true);
-		setResource({})
+		setResource({
+      id: null
+    })
 		setOpenModal(true)
 	}
 

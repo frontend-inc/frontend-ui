@@ -72,8 +72,8 @@ const SubscriptionPlanList: React.FC = (props) => {
 								key={subscriptionPlan.id}
 								selected={selected}
 								icon="CreditCard"
-								title={subscriptionPlan.title}
-								description={subscriptionPlan.description}
+								title={subscriptionPlan.name}
+								description={subscriptionPlan.display_price}
 								handleClick={() => handleSubscribeClick(subscriptionPlan)}
 							/>
 						)
