@@ -5,43 +5,52 @@ import { useResource } from 'frontend-js'
 import { useRouter } from 'next/router'
 
 type SocialButtonsProps = {
-	url: string
 	handle: string
 	enableLikes?: boolean
-	enableShares?: boolean
 	enableFavorites?: boolean
+  enableSharing?: boolean
+  numLikes?: number
+  numFavorites?: number
 	justifyContent?: string
 }
 
 const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 	const {
-		url,
 		handle,
-		enableLikes,
-		enableShares,
+		enableLikes,		
 		enableFavorites,
+    enableSharing,
+    numLikes,
+    numFavorites,
 		justifyContent = 'center',
 	} = props
 
 	const router = useRouter()
 	const currentPageUrl = router.asPath
 
-	const { loading, resource, findOne } = useResource({
-		url,
-	})
-
-	useEffect(() => {
-		if (url && handle) {
-			findOne(handle)
-		}
-	}, [url, handle])
-
-	if (!resource?.id) return null
+  if(!enableLikes && !enableFavorites && !enableSharing) return null;
 	return (
 		<Stack direction="row" justifyContent={justifyContent} spacing={1}>
-			{enableLikes && <LikeButton handle={handle} url={url} />}
-			{enableFavorites && <FavoriteButton handle={handle} />}
-			{enableShares && <ShareButton url={currentPageUrl} />}
+			{enableLikes && (
+        <LikeButton 
+          variant='button' 
+          handle={handle} 
+          numLikes={numLikes}
+        />
+      )}
+			{enableFavorites && (
+        <FavoriteButton 
+          variant='button' 
+          handle={handle} 
+          numFavorites={numFavorites}
+        />
+      )}
+			{enableSharing && (
+        <ShareButton 
+          variant='button' 
+          url={currentPageUrl} 
+        />
+      )}
 		</Stack>
 	)
 }

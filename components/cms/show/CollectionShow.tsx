@@ -23,6 +23,8 @@ export type CollectionShowItemProps = {
 	enableEdit?: boolean
 	enableCreate?: boolean
   enableFavorites?: boolean
+  enableLikes?: boolean
+  enableSharing?: boolean
 	handleEdit?: () => void
 }
 
@@ -54,7 +56,9 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 		actions,
 		enableBorder,
 		enableEdit,
-    enableFavorites
+    enableFavorites,
+    enableLikes,
+    enableSharing,
 	} = props || {}
 
   const { setAuthOpen } = useContext(AppContext)
@@ -124,11 +128,13 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 				<Component
 					fieldName={fieldName}
 					resource={resource}
-					actions={actions}
-          enableFavorites={enableFavorites}
+					actions={actions}          
 					enableBorder={enableBorder}
 					enableEdit={enableEdit}
 					handleEdit={handleEdit}
+          enableFavorites={enableFavorites}
+          enableLikes={enableLikes}
+          enableSharing={enableSharing}          
 				/>
 			)}
 			{displayFields?.length > 0 && (

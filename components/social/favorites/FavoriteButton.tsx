@@ -8,10 +8,12 @@ import { Favorite, FavoriteBorder } from '@mui/icons-material'
 
 type FavoriteButtonProps = {
 	handle: string 
+  variant?: 'icon' | 'button'
+  numFavorites?: number
 }
 
 const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
-	const { handle } = props
+	const { handle, variant='icon', numFavorites } = props
 
 	const { fetchMe, currentUser } = useAuth()
 	const { setAuthOpen } = useContext(AppContext)
@@ -54,19 +56,34 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 	}, [currentUser, handle])
 
 	return (
-		<IconButton
-      size="small"
-			onClick={handleClick}
-			sx={{
-				...sx.icon,
-				...(isFavorite && sx.isFavorite),
-			}}
-		>
-      { isFavorite ? 
-        <Favorite /> : 
-        <FavoriteBorder />
-      }			
-		</IconButton>
+    variant == 'icon' ? (
+      <IconButton
+        size="small"
+        onClick={handleClick}
+        sx={{
+          ...sx.icon,
+          ...(isFavorite && sx.iconFavorited),
+        }}
+      >
+        { isFavorite ? 
+          <Favorite fontSize='small' /> : 
+          <FavoriteBorder fontSize='small' />
+        }
+      </IconButton> 
+    ):(
+      <IconButton
+        sx={{
+          ...sx.button,
+          ...(isFavorite && sx.buttonFavorited),
+        }}        
+        onClick={handleClick}        
+      >
+        { isFavorite ? 
+          <Favorite fontSize='small' /> : 
+          <FavoriteBorder fontSize='small' />
+        }
+      </IconButton>
+    )
 	)
 }
 
@@ -74,15 +91,32 @@ export default FavoriteButton
 
 const sx = {
 	icon: {
-		color: 'text.secondary',
+    color: 'text.secondary',
 		'&:hover': {
 			color: 'text.secondary',
 		},
 	},
-	isFavorite: {
+	iconFavorited: {
 		color: 'primary.main',
 		'&:hover': {
 			color: 'primary.dark',
+		},
+	},
+  button: {
+    border: '1px solid',
+    borderColor: 'divider',
+    bgcolor: 'background.main',
+    color: 'text.secondary',
+		'&:hover': {
+      bgcolor: 'background.main',
+			color: 'text.secondary',
+		},
+	},
+	buttonFavorited: {
+    borderColor: 'primary.main',
+		color: 'primary.main',
+		'&:hover': {
+			color: 'primary.main',
 		},
 	},
 }

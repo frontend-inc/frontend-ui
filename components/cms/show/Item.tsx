@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
-import { FavoriteButton, Actions, Image } from '../../../components'
+import { FavoriteButton, Actions, Image, SocialButtons } from '../../../components'
 import { CollectionShowItemProps } from './CollectionShow'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
@@ -8,80 +8,92 @@ import { buildActions } from '../../../helpers'
 const Item: React.FC<CollectionShowItemProps> = (props) => {
 	const MAX_CHARS = 500
 
-	const { actions, resource, enableBorder, enableEdit, handleEdit, enableFavorites } =
+	const { 
+    actions, 
+    resource, 
+    enableBorder, 
+    enableEdit, 
+    handleEdit, 
+    enableLikes,
+    enableFavorites,
+    enableSharing 
+  } =
 		props || {}
 	const { handle, label, title, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
 
 	if (!resource) return null
 	return (
-		<Box
-			sx={{
-				...sx.root,
-				...(enableBorder && sx.rootBorder),
-			}}
-		>
-			<Stack
-				sx={sx.container}
-				direction={{ md: 'row', xs: 'column' }}
-				spacing={4}
-			>
-				<Box sx={sx.imageContainer}>
-					<Image
-						src={image?.url}
-						alt={title}
-						height={360}
-						label={label}
-						disableBorderRadius={enableBorder}
-            secondaryActions={enableFavorites && (
-              <FavoriteButton 
-                handle={ handle }
-              />
+    <Stack spacing={2}>
+      <Box
+        sx={{
+          ...sx.root,
+          ...(enableBorder && sx.rootBorder),
+        }}
+      >
+        <Stack
+          sx={sx.container}
+          direction={{ md: 'row', xs: 'column' }}
+          spacing={4}
+        >
+          <Box sx={sx.imageContainer}>
+            <Image
+              src={image?.url}
+              alt={title}
+              height={360}
+              label={label}
+              disableBorderRadius={enableBorder}
+            />
+          </Box>
+          <Stack
+            spacing={2}
+            sx={{
+              ...sx.content,
+              ...(enableBorder && sx.contentBorder),
+            }}
+          >
+            {(actions || enableEdit) && (
+              <Box sx={sx.actions}>
+                <Actions
+                  actions={buildActions({
+                    enableEdit,
+                    handleEdit,
+                    actions,
+                  })}
+                  justifyContent="flex-end"
+                  resource={flattenDocument(resource)}
+                />
+              </Box>
             )}
-					/>
-				</Box>
-				<Stack
-					spacing={2}
-					sx={{
-						...sx.content,
-						...(enableBorder && sx.contentBorder),
-					}}
-				>
-					{(actions || enableEdit) && (
-						<Box sx={sx.actions}>
-							<Actions
-								actions={buildActions({
-									enableEdit,
-									handleEdit,
-									actions,
-								})}
-								justifyContent="flex-end"
-								resource={flattenDocument(resource)}
-							/>
-						</Box>
-					)}
-					<Typography color="text.primary" variant="h4">
-						{title}
-					</Typography>
-					<Box>
-						{open ? (
-							<Typography variant="body1" color="text.primary" sx={sx.text}>
-								{description}
-							</Typography>
-						) : (
-							<Typography variant="body1" color="text.primary" sx={sx.text}>
-								{description?.slice(0, MAX_CHARS)}
-							</Typography>
-						)}
-						{description?.length > MAX_CHARS && (
-							<Link onClick={() => setOpen(!open)} sx={sx.link}>
-								{open ? 'See less' : '... See all'}
-							</Link>
-						)}
-					</Box>
-				</Stack>
-			</Stack>
-		</Box>
+            <Typography color="text.primary" variant="h4">
+              {title}
+            </Typography>
+            <Box>
+              {open ? (
+                <Typography variant="body1" color="text.primary" sx={sx.text}>
+                  {description}
+                </Typography>
+              ) : (
+                <Typography variant="body1" color="text.primary" sx={sx.text}>
+                  {description?.slice(0, MAX_CHARS)}
+                </Typography>
+              )}
+              {description?.length > MAX_CHARS && (
+                <Link onClick={() => setOpen(!open)} sx={sx.link}>
+                  {open ? 'See less' : '... See all'}
+                </Link>
+              )}
+            </Box>
+          </Stack>
+        </Stack>
+      </Box>
+      <SocialButtons 
+        handle={resource?.handle}
+        enableLikes={enableLikes}
+        enableFavorites={enableFavorites}
+        enableSharing={enableSharing}
+      />
+    </Stack>
 	)
 }
 

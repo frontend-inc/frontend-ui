@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
-import { FavoriteButton, Image, Actions, SocialLink } from '../../../components'
+import { SocialButtons, Image, Actions, SocialLink } from '../../../components'
 import { CollectionShowItemProps } from './CollectionShow'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
@@ -8,7 +8,7 @@ import { buildActions } from '../../../helpers'
 const Person: React.FC<CollectionShowItemProps> = (props) => {
 	const MAX_CHARS = 500
 
-	const { actions, resource, enableBorder, enableEdit, handleEdit, enableFavorites } =
+	const { actions, resource, enableBorder, enableEdit, handleEdit, enableFavorites, enableLikes, enableSharing } =
 		props || {}
 	const { data } = resource || {}
 	const { facebook, instagram, linkedin, twitter, youtube, blog } = data || {}
@@ -16,6 +16,7 @@ const Person: React.FC<CollectionShowItemProps> = (props) => {
 	const { handle, label, title, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
 	return (
+    <Stack spacing={2} direction='column' justifyContent='center'>
 		<Box
 			sx={{
 				...sx.root,
@@ -33,12 +34,7 @@ const Person: React.FC<CollectionShowItemProps> = (props) => {
 						height={240}
 						src={image?.url}
 						alt={title}
-						disableBorderRadius={enableBorder}
-            secondaryActions={enableFavorites && (
-              <FavoriteButton 
-                handle={ handle }
-              />
-            )}
+						disableBorderRadius={enableBorder}            
 					/>
 				</Box>
 				<Stack
@@ -102,6 +98,13 @@ const Person: React.FC<CollectionShowItemProps> = (props) => {
 				)}
 			</Stack>
 		</Box>
+    <SocialButtons 
+      handle={resource?.handle}
+      enableLikes={enableLikes}
+      enableFavorites={enableFavorites}
+      enableSharing={enableSharing}
+    />
+  </Stack>  
 	)
 }
 

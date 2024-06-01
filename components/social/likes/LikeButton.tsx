@@ -1,29 +1,32 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { IconButton } from '@mui/material'
+import { Button, IconButton } from '@mui/material'
 import { isLiked } from '../../../helpers'
-import { useAlerts, useSocial } from '../../../hooks'
+import { useSocial } from '../../../hooks'
 import { useAuth } from 'frontend-js'
-import { Icon } from '../..'
+import { ThumbUp } from '@mui/icons-material'
 import { AppContext } from '../../../context'
 
 type LikeButtonProps = {
-	url: string
 	handle: string | number
+  variant?: 'icon' | 'button'
+  numLikes?: number
 }
 
 const LikeButton: React.FC<LikeButtonProps> = (props) => {
-	const { url, handle } = props
+	const { handle, variant='icon', numLikes } = props
 
 	const { currentUser } = useAuth()
-	const { authOpen, setAuthOpen } = useContext(AppContext)
+	const { setAuthOpen } = useContext(AppContext)
 
 	const [liked, setLiked] = useState(false)
 
 	const { loading, like, unlike } = useSocial({
-		url,
+		url: '/api/v1/social',
 	})
 
-	const handleClick = async () => {
+	const handleClick = async (ev) => {
+    ev.stopPropagation();
+    ev.preventDefault();
 		if (!currentUser?.id) {
 			return setAuthOpen(true)
 		}
@@ -47,18 +50,27 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
 	}, [currentUser, handle])
 
 	return (
+    variant == 'icon' ? (
 		<IconButton
 			onClick={handleClick}
 			sx={{
 				...sx.icon,
-				...(liked && sx.liked),
+				...(liked && sx.iconLiked),
 			}}
 		>
-			<Icon
-				name="ThumbsUp"
-				color={liked ? 'primary.contrastText' : 'text.primary'}
-			/>
+			<ThumbUp />
 		</IconButton>
+    ):(
+      <IconButton 
+        onClick={handleClick}
+        sx={{
+          ...sx.button,
+          ...(liked && sx.buttonLiked),
+        }}
+      >
+        <ThumbUp fontSize="small" />
+      </IconButton>
+    )
 	)
 }
 
@@ -66,16 +78,32 @@ export default LikeButton
 
 const sx = {
 	icon: {
-		bgcolor: 'grey.100',
+    color: 'text.secondary',
 		'&:hover': {
-			bgcolor: 'grey.300',
+			color: 'text.secondary',
 		},
 	},
-	liked: {
-		bgcolor: 'primary.main',
-		color: 'white',
+	iconLiked: {
+		color: 'primary.main',
 		'&:hover': {
-			bgcolor: 'primary.dark',
+			color: 'primary.dark',
+		},
+	},
+  button: {
+    transition: 'transform 0.2s',
+    border: '1px solid',
+    borderColor: 'divider',
+    color: 'text.secondary',
+		'&:hover': {
+			color: 'text.secondary',
+		},
+	},
+	buttonLiked: {
+    transform: 'rotate(10deg)',
+    borderColor: 'primary.main',
+		color: 'primary.main',
+		'&:hover': {
+			color: 'primary.dark',
 		},
 	},
 }

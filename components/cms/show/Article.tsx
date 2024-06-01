@@ -1,13 +1,13 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
-import { FavoriteButton, Actions, Image } from '../../../components'
+import { SocialButtons, Actions, Image } from '../../../components'
 import moment from 'moment'
 import { CollectionShowItemProps } from './CollectionShow'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
 const Article: React.FC<CollectionShowItemProps> = (props) => {
-	const { actions, resource, enableBorder, enableEdit, handleEdit, enableFavorites } =
+	const { actions, resource, enableBorder, enableEdit, handleEdit, enableFavorites, enableLikes, enableSharing } =
 		props || {}
 	const { handle, label, title, image, description, data } = resource || {}
 	const { published_at } = data || {}
@@ -17,7 +17,7 @@ const Article: React.FC<CollectionShowItemProps> = (props) => {
 				...sx.root,
 				...(enableBorder && sx.rootBorder),
 			}}
-			spacing={7}
+			spacing={6}
 		>
 			<Stack spacing={3} sx={sx.header}>
 				<Typography color="text.primary" variant="h3">
@@ -52,13 +52,14 @@ const Article: React.FC<CollectionShowItemProps> = (props) => {
 				alt={title}
 				height={400}
 				label={label}
-				disableBorderRadius={enableBorder}
-        secondaryActions={ enableFavorites && (
-          <FavoriteButton
-            handle={handle}
-          />
-        )}
+				disableBorderRadius={enableBorder}        
 			/>
+      <SocialButtons 
+        handle={resource?.handle}
+        enableLikes={enableLikes}
+        enableFavorites={enableFavorites}
+        enableSharing={enableSharing}
+      />
 			<Box sx={sx.content}>
 				<Typography variant="body1" color="text.primary" sx={sx.text}>
 					{description}
