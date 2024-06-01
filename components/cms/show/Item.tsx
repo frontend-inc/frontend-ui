@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
-import { ActionButton, Actions, Image } from '../../../components'
+import { FavoriteButton, Actions, Image } from '../../../components'
 import { CollectionShowItemProps } from './CollectionShow'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
@@ -8,9 +8,9 @@ import { buildActions } from '../../../helpers'
 const Item: React.FC<CollectionShowItemProps> = (props) => {
 	const MAX_CHARS = 500
 
-	const { actions, resource, enableBorder, enableEdit, handleEdit } =
+	const { actions, resource, enableBorder, enableEdit, handleEdit, enableFavorites } =
 		props || {}
-	const { label, title, image, description } = resource || {}
+	const { handle, label, title, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
 
 	if (!resource) return null
@@ -33,6 +33,11 @@ const Item: React.FC<CollectionShowItemProps> = (props) => {
 						height={360}
 						label={label}
 						disableBorderRadius={enableBorder}
+            secondaryActions={enableFavorites && (
+              <FavoriteButton 
+                handle={ handle }
+              />
+            )}
 					/>
 				</Box>
 				<Stack

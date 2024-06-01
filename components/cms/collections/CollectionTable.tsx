@@ -15,13 +15,12 @@ import { AppContext } from '../../../context'
 import { FilterOptionType, TableHeaderType } from '../../../types'
 import { useRouter } from 'next/router'
 import SearchFilters from '../filters/SearchFilters'
-import { SYSTEM_FIELDS } from '../../../constants'
 import { flattenDocument, flattenDocuments } from '../../../helpers'
 import { TableList } from '../../../components'
-import { CollectionProps } from './Collection'
+import { CollectionListProps } from './CollectionList'
 import { useAuth } from 'frontend-js'
 
-export type CollectionTableProps = CollectionProps & {
+export type CollectionTableProps = CollectionListProps & {
 	headers: TableHeaderType[]
 }
 
@@ -31,7 +30,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
   const { currentUser } = useAuth()
 
 	const {
-		contentType,
+		url,
 		fields,
 		headers,
 		filterAnchor = 'left',
@@ -73,7 +72,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		totalCount,
 		paginate,
 	} = useDocuments({
-		collection: contentType
+		url
 	})
 
 	const [keywords, setKeywords] = useState('')
@@ -208,7 +207,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
   const currentUserFilter = buildUserFilters(currentUser, filterUser, filterTeam)
 
 	useEffect(() => {
-		if (contentType && currentUser) {             
+		if (url && currentUser) {             
 			findMany({
 				...defaultQuery,
         filters: mergeAllFilters([
@@ -220,7 +219,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 			})
 		}
 	}, [
-    contentType, 
+    url, 
     perPage, 
     filterUser,
     filterTeam,

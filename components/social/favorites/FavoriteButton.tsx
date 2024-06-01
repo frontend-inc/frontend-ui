@@ -27,6 +27,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
   })
 
 	const handleClick = async (ev) => {
+    ev.stopPropagation();
     ev.preventDefault();
 		if (!currentUser?.id) {
 			return setAuthOpen(true)

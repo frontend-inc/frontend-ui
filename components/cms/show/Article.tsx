@@ -1,15 +1,15 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
-import { Actions, Image } from '../../../components'
+import { FavoriteButton, Actions, Image } from '../../../components'
 import moment from 'moment'
 import { CollectionShowItemProps } from './CollectionShow'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
 const Article: React.FC<CollectionShowItemProps> = (props) => {
-	const { actions, resource, enableBorder, enableEdit, handleEdit } =
+	const { actions, resource, enableBorder, enableEdit, handleEdit, enableFavorites } =
 		props || {}
-	const { label, title, image, description, data } = resource || {}
+	const { handle, label, title, image, description, data } = resource || {}
 	const { published_at } = data || {}
 	return (
 		<Stack
@@ -53,6 +53,11 @@ const Article: React.FC<CollectionShowItemProps> = (props) => {
 				height={400}
 				label={label}
 				disableBorderRadius={enableBorder}
+        secondaryActions={ enableFavorites && (
+          <FavoriteButton
+            handle={handle}
+          />
+        )}
 			/>
 			<Box sx={sx.content}>
 				<Typography variant="body1" color="text.primary" sx={sx.text}>

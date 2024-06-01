@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { Cover, VideoModal } from '../..'
+import { CoverCard, VideoModal } from '../..'
 import { CardProps } from '../../../types'
 import { VIDEO_VERT_HEIGHT, VIDEO_VERT_WIDTH } from '../../../constants/index'
 
 const VideoVert: React.FC<CardProps> = (props) => {
 	const {
 		actions,
-		item,
+		resource,
 		href,
 		handleClick,
 		objectFit = 'cover',
@@ -24,10 +24,10 @@ const VideoVert: React.FC<CardProps> = (props) => {
 	}
 
 	return !open ? (
-		<Cover
+		<CoverCard
 			actions={actions}
 			variant="grid"
-			item={item}
+			resource={resource}
 			handleClick={handleItemClick}
 			objectFit={objectFit}
 			height={height}
@@ -40,8 +40,8 @@ const VideoVert: React.FC<CardProps> = (props) => {
 	) : (
 		<VideoModal
 			open={open}
-			title={item?.title}
-			src={item?.video}
+			title={resource?.title}
+			src={resource?.video}
 			handleClose={() => setOpen(false)}
 		/>
 	)

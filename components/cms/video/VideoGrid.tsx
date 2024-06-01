@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { Cover, VideoModal } from '../..'
+import { CoverCard, VideoModal } from '../..'
 import { CardProps } from '../../../types'
 import { VIDEO_HORIZ_HEIGHT, VIDEO_HORIZ_WIDTH } from '../../../constants/index'
 
 const VideoVert: React.FC<CardProps> = (props) => {
 	const {
 		actions,
-		item,
+		resource,
 		objectFit = 'cover',
 		height = VIDEO_HORIZ_HEIGHT,
 		width = VIDEO_HORIZ_WIDTH,
@@ -22,10 +22,10 @@ const VideoVert: React.FC<CardProps> = (props) => {
 	}
 
 	return !open ? (
-		<Cover
+		<CoverCard
 			actions={actions}
 			variant="list"
-			item={item}
+			resource={resource}
 			handleClick={handleItemClick}
 			objectFit={objectFit}
 			height={height}

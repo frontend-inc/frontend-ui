@@ -17,14 +17,13 @@ import { useRouter } from 'next/router'
 import SearchFilters from '../filters/SearchFilters'
 import { flattenDocument, flattenDocuments } from '../../../helpers'
 import { TableList } from '../..'
-import { CollectionProps } from './Collection'
+import { CollectionProps } from './CollectionList'
 import { useAuth } from 'frontend-js'
 
 export type ForeignCollectionTableProps = CollectionProps & {
 	resource: any
 	field: FieldType
 	foreignUrl?: string
-	foreignContentType?: string
 	headers: TableHeaderType[]
 }
 
@@ -37,8 +36,8 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 
 	const {
 		resource,
-		contentType,
-		foreignContentType,
+		url,
+		foreignUrl,
 		fields,
 		headers,
 		filterAnchor = 'left',
@@ -70,7 +69,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 		paginate,
 		addLinks,
 	} = useDocuments({
-		collection: contentType
+		url
 	})
 
 	const {
@@ -83,7 +82,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
     handleDataChange,
 		removeAttachment,
 	} = useDocuments({		
-		collection: foreignContentType,
+		url: foreignUrl,
 	})
 
 	const [keywords, setKeywords] = useState('')
@@ -93,7 +92,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 	}
 
 	const handleSearch = (keywords: string) => {
-		findLinks(resource.id, foreignContentType, {
+		findLinks(resource.id, foreignUrl, {
 			...query,
 			...defaultQuery,
 			keywords: keywords,
@@ -115,7 +114,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 		if (sortBy == query?.sort_by) {
 			sortDir = query?.sort_direction == 'asc' ? 'desc' : 'asc'
 		}
-		findLinks(resource?.id, foreignContentType, {
+		findLinks(resource?.id, foreignUrl, {
 			...query,
 			sort_by: sortBy,
 			sort_direction: sortDir,
@@ -133,7 +132,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 	// Filter methods
 	const handleClearFilters = () => {
 		setActiveFilters([])
-		findLinks(resource?.id, foreignContentType, {
+		findLinks(resource?.id, foreignUrl, {
 			filters: {
 				...defaultQuery?.filters,
 			},
@@ -222,7 +221,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 			per_page: perPage,
 			page: 1,
 		}
-		findLinks(resource?.id, foreignContentType, filterQuery)
+		findLinks(resource?.id, foreignUrl, filterQuery)
 	}
 
 	useEffect(() => {
@@ -233,10 +232,10 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 	}, [resources])
 
 	useEffect(() => {
-		if (resource?.id && foreignContentType) {
+		if (resource?.id && foreignUrl) {
 			handleFetchResources()
 		}
-	}, [resource, foreignContentType, currentUser?.id])
+	}, [resource, foreignUrl, currentUser?.id])
 
 	return (
 		<Stack spacing={1} sx={sx.root}>

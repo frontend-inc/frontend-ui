@@ -104,7 +104,7 @@ const Image: React.FC<ImageProps> = (props) => {
       </TouchableOpacity>
       { secondaryActions && (
         <Box sx={ sx.secondaryActions }>
-          {  secondaryActions  }
+          { secondaryActions  }
         </Box>
       )}
 		</Box>

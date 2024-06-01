@@ -22,6 +22,7 @@ export type CollectionShowItemProps = {
 	resource: any
 	enableEdit?: boolean
 	enableCreate?: boolean
+  enableFavorites?: boolean
 	handleEdit?: () => void
 }
 
@@ -43,10 +44,6 @@ export type CollectionShowProps = CollectionShowItemProps & {
 const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 	let { handle } = props
 	if (handle == 'index') handle = undefined
-
-  const { setAuthOpen } = useContext(AppContext)
-  const { currentUser } = useAuth()
-
 	const {
 		style = 'item',
 		resource: _resource,
@@ -57,9 +54,12 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 		contentType,
 		actions,
 		enableBorder,
-		enableCreate,
 		enableEdit,
+    enableFavorites
 	} = props || {}
+
+  const { setAuthOpen } = useContext(AppContext)
+  const { currentUser } = useAuth()
 
 	const {
 		delayedLoading: loading,
@@ -126,6 +126,7 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 					fieldName={fieldName}
 					resource={resource}
 					actions={actions}
+          enableFavorites={enableFavorites}
 					enableBorder={enableBorder}
 					enableEdit={enableEdit}
 					handleEdit={handleEdit}

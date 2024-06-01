@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import {
 	Drawer,
 	LoadMore,
-	CollectionList,
+	CardList,
 	Form,
 	IconLoading,
 	AlertModal,
@@ -24,8 +24,8 @@ export type ForeignCollectionProps = {
 	fields: FormFieldType[]
 	resource: any	
 	handle: string
-	contentType: string
-	foreignContentType?: string
+	url: string
+  foreignUrl: string
 	href?: any
 	perPage?: number
 	query?: any
@@ -47,8 +47,8 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		resource: _resource,		
 		variant = 'list',
 		style = 'card',
-		contentType,
-		foreignContentType,
+		url,
+    foreignUrl,
 		href,
 		perPage = 10,
 		query: defaultQuery = null,
@@ -69,7 +69,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 
 	const { query, resources, page, numPages, loadMore, findLinks, addLinks } =
 		useDocuments({
-			collection: contentType,
+			url
 		})
 
 	const {
@@ -84,7 +84,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		handleDataChange,
 		removeAttachment,
 	} = useDocuments({
-		collection: foreignContentType,
+		url: foreignUrl,
 	})
 
 	const handleClick = (item) => {
@@ -151,8 +151,8 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	}
 
 	const handleFetchResources = async () => {
-		if (_resource?.id && foreignContentType) {
-			findLinks(_resource.id, foreignContentType, {
+		if (_resource?.id && foreignUrl) {
+			findLinks(_resource.id, foreignUrl, {
 				...query,
 				...defaultQuery,
 				per_page: perPage,
@@ -162,10 +162,10 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (_resource?.id && foreignContentType) {
+		if (_resource?.id && foreignUrl) {
 			handleFetchResources()
 		}
-	}, [_resource?.id, foreignContentType, currentUser?.id])
+	}, [_resource?.id, foreignUrl, currentUser?.id])
 
 	return (
 		<Stack direction="column" spacing={1} sx={sx.root}>
@@ -181,7 +181,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 					</Button>
 				</Box>
 			)}			
-			<CollectionList
+			<CardList
 				actions={[]}
 				variant={variant}
 				style={style}
