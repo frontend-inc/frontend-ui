@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
-import { Box, Button, Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import { Image, Icon, TouchableOpacity, Actions } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
@@ -9,7 +9,7 @@ import { CardProps } from '../../../../types'
 const CoverList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
-		item,
+		resource,
 		actions,
 		icon,
 		href,
@@ -21,7 +21,7 @@ const CoverList: React.FC<CardProps> = (props) => {
 		enableOverlay = false,
 	} = props || {}
 
-	const { label, title, image } = item || {}
+	const { label, title, image } = resource || {}
 	const router = useRouter()
 
 	const handleItemClick = () => {
@@ -67,7 +67,7 @@ const CoverList: React.FC<CardProps> = (props) => {
 			<Box sx={sx.actions}>
 				<Actions
 					numVisible={0}
-					resource={item}
+					resource={resource}
 					actions={actions}
 					color={enableOverlay ? 'common.white' : 'text.secondary'}
 				/>

@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react'
 import { useResource } from 'frontend-js'
 import { Box, Stack } from '@mui/material'
 import { Carousel } from '../..'
-import { Typography } from '@mui/material'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
 import CollectionCard from './CollectionCard'
@@ -22,6 +21,7 @@ export type CollectionCarouselProps = {
 	enableBorder?: boolean
 	enableDots?: boolean
 	enableGradient?: boolean
+  enableFavorites?: boolean
 }
 
 const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
@@ -40,6 +40,7 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 		enableDots = true,
 		enableBorder = false,
 		enableGradient = false,
+    enableFavorites = false 
 	} = props
 
 	const { findMany, resources } = useResource({
@@ -78,10 +79,11 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 							actions={actions}
 							variant="grid"
 							style={style}
-							item={resource}
+							resource={resource}
 							handleClick={() => handleClick(resource)}
 							enableBorder={enableBorder}
 							enableGradient={enableGradient}
+              enableFavorites={enableFavorites}
 						/>
 					</Box>
 				))}

@@ -9,7 +9,7 @@ const ImageVert: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		actions,
-		item,
+		resource,
 		href,
 		handleClick,
 		objectFit = 'cover',
@@ -18,7 +18,7 @@ const ImageVert: React.FC<CardProps> = (props) => {
 		enableOverlay = false,
 	} = props || {}
 
-	const { title, image } = item || {}
+	const { title, image } = resource || {}
 
 	const router = useRouter()
 
@@ -46,7 +46,7 @@ const ImageVert: React.FC<CardProps> = (props) => {
 				<Actions
 					numVisible={0}
 					actions={actions}
-					resource={item}
+					resource={resource}
 					color={enableOverlay ? 'common.white' : 'text.secondary'}
 				/>
 			</Box>

@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
-import { AuthContext } from 'frontend-js'
 import { Box, Stack, Typography } from '@mui/material'
 import { Image, TouchableOpacity, FavoriteButton } from '../../../../components'
 import { truncate } from '../../../../helpers'
@@ -12,8 +11,7 @@ const CardList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		actions,
-    enableFavorites,
-		item,
+		resource,
 		href,
 		height = 180,
 		textVariant = 'subtitle1',
@@ -22,11 +20,12 @@ const CardList: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
+    enableFavorites = false 
 	} = props || {}
 
 	const router = useRouter()
 
-	const { label, title, description, image, resource } = item || {}
+	const { label, title, description, image } = resource || {}
 
 	const handleItemClick = () => {
 		if (handleClick) {
@@ -94,7 +93,7 @@ const CardList: React.FC<CardProps> = (props) => {
 							{truncate(description, 80)}
 						</Typography>
 					</Stack>
-					<Actions numVisible={0} resource={item} actions={actions} />
+					<Actions numVisible={0} resource={resource} actions={actions} />
 				</Stack>
 			</Stack>
 		</Box>

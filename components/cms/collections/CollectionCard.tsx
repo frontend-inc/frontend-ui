@@ -8,7 +8,7 @@ type CollectionCardProps = {
 	actions: ActionType[]
 	variant: 'list' | 'grid'
 	style: CardStyleTypes
-	item: any & {
+	resource: any & {
 		label?: string
 		title?: string
 		image?: string
@@ -26,6 +26,7 @@ type CollectionCardProps = {
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
+  enableFavorites?: boolean
 }
 
 const CollectionCard: React.FC<CollectionCardProps> = (props) => {
@@ -38,7 +39,7 @@ const CollectionCard: React.FC<CollectionCardProps> = (props) => {
 		chip: Chip,
 		text: TextCard,
 		image: ImageCard,
-	}
+	}    
 
 	let Component = COMPONENTS[style] || Card
 

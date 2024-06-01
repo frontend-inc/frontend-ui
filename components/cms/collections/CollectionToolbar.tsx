@@ -52,8 +52,8 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
     return null
   }
 	return (
-		<Stack direction="column" spacing={1}>
-			{enableSearch && (
+    <>
+      {enableSearch && (
         <Box sx={ sx.searchBar }>
           <SearchInput
             value={keywords}
@@ -61,11 +61,9 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
             handleSearch={handleSearch}
           />
         </Box>
-			)}      
-			<Box				
-				sx={sx.toolbarActions}				
-			>
-				<Stack sx={ sx.filterAndSort } spacing={1} direction={{ xs: 'column', sm: 'row' }}>						
+      )}   
+		  <Stack justifyContent='space-between' direction={{ sm: 'row', xs: 'column'}} spacing={1}>		   
+				<Stack spacing={1} direction={{ xs: 'column', sm: 'row' }}>						      
           {enableFilters && (
             <Box>
 							<FilterButton
@@ -99,8 +97,8 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 						</Button>
 					</Box>
 				)}
-			</Box>
-		</Stack>
+		  </Stack>
+    </>
 	)
 }
 
@@ -138,7 +136,4 @@ const sx = {
   searchBar: {
     width: '100%'
   },
-  filterAndSort: {
-    height: 40,
-  }
 }

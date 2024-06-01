@@ -34,10 +34,16 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
       setAuthOpen(true)
       return
     }
-		if (price?.stripe_payment_url) {
-      let url = `${price.stripe_payment_url}?client_reference_id=${currentUser.id}&email=${currentUser.email}`
-			router.push(url)
-		}
+    if(!price.url) return;
+    switch(price?.price_type) {
+      case 'stripe_payment_link':        
+        let url = `${price.stripe_payment_url}?client_reference_id=${currentUser.id}&email=${currentUser.email}`
+        window.open(url, '_blank')
+        break;
+      case 'url': 
+        router.push(price.url)
+        break;
+    }		
 	}
 
 	return (

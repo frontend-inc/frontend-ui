@@ -2,7 +2,6 @@ import React from 'react'
 import {
 	Avatar,
 	Box,
-	Stack,
 	List,
 	ListItem,
 	ListItemButton,
@@ -10,13 +9,12 @@ import {
 	ListItemText,
 	Typography,
 } from '@mui/material'
-import { Label, Actions } from '../../..'
-import { truncate } from '../../../../helpers'
+import { Actions } from '../../..'
 import { CardProps } from '../../../../types'
 
 const ChipList: React.FC<CardProps> = (props) => {
 	const {
-		item,
+		resource,
 		actions,
 		handleClick,
 		enableBorder = false,
@@ -24,7 +22,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 		enableOverlay = false,
 	} = props
 
-	const { label, title, description, image } = item || {}
+	const { title, image } = resource || {}
 
 	return (
 		<List
@@ -39,7 +37,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 				disablePadding
 				disableGutters
 				secondaryAction={
-					<Actions numVisible={0} actions={actions} resource={item} />
+					<Actions numVisible={0} actions={actions} resource={resource} />
 				}
 			>
 				<ListItemButton

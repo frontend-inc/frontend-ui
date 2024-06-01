@@ -1,28 +1,25 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
-import { Box, Button, Stack, Typography } from '@mui/material'
-import { Image, TouchableOpacity, MenuButton } from '../../..'
+import { Box, Stack, Typography } from '@mui/material'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
+import { TouchableOpacity } from '../../..'
 import { CARD_VERT_HEIGHT, CARD_VERT_WIDTH } from '../../../../constants/index'
 import { CardProps } from '../../../../types'
 import { Actions } from '../../..'
 
-const CardGrid: React.FC<CardProps> = (props) => {
+const TextGrid: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		actions,
-		item,
+		resource,
 		href,
 		handleClick,
-		objectFit = 'cover',
 		height = CARD_VERT_HEIGHT,
 		enableBorder = false,
-		enableGradient = false,
-		enableOverlay = false,
 	} = props || {}
 
-	const { title, description } = item || {}
+	const { title, description } = resource || {}
 
 	const router = useRouter()
 
@@ -35,37 +32,39 @@ const CardGrid: React.FC<CardProps> = (props) => {
 	}
 
 	return (
-		<Stack
-			spacing={1}
-			sx={{
-				...sx.root,
-				...(enableBorder && sx.rootBorder),
-				minWidth: `${CARD_VERT_WIDTH}px`,
-				minHeight: height + 80,
-			}}
-		>
-			<Box sx={sx.actions}>
-				<Actions numVisible={0} actions={actions} resource={item} />
-			</Box>
-			<Stack
-				spacing={1}
-				sx={{
-					...sx.content,
-					...(enableBorder && sx.contentBorder),
-				}}
-			>
-				<Typography sx={sx.title} color="text.primary" variant="subtitle1">
-					{truncate(title)}
-				</Typography>
-				<Typography sx={sx.description} color="text.secondary" variant="body1">
-					{truncate(description, 200)}
-				</Typography>
-			</Stack>
-		</Stack>
+    <TouchableOpacity handleClick={handleItemClick}>
+      <Stack
+        spacing={1}
+        sx={{
+          ...sx.root,
+          ...(enableBorder && sx.rootBorder),
+          minWidth: `${CARD_VERT_WIDTH}px`,
+          minHeight: height + 80,
+        }}
+      >
+        <Box sx={sx.actions}>
+          <Actions numVisible={0} actions={actions} resource={resource} />
+        </Box>
+        <Stack
+          spacing={1}
+          sx={{
+            ...sx.content,
+            ...(enableBorder && sx.contentBorder),
+          }}
+        >
+          <Typography sx={sx.title} color="text.primary" variant="subtitle1">
+            {truncate(title)}
+          </Typography>
+          <Typography sx={sx.description} color="text.secondary" variant="body1">
+            {truncate(description, 200)}
+          </Typography>
+        </Stack>
+      </Stack>
+    </TouchableOpacity>
 	)
 }
 
-export default CardGrid
+export default TextGrid
 
 const sx = {
 	root: {

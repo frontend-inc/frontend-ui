@@ -49,7 +49,7 @@ const Cards: React.FC<CardsProps> = (props) => {
 							key={i}
 							variant={variant}
 							style={style}
-							item={{
+							resource={{
 								...card,
 								image: {
 									url: card?.image,
@@ -71,7 +71,7 @@ const Cards: React.FC<CardsProps> = (props) => {
 								actions={[]}
 								variant={variant}
 								style={style}
-								item={{
+								resource={{
 									...card,
 									image: {
 										url: card?.image,

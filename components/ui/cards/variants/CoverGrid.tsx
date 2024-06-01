@@ -10,7 +10,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		actions,
-		item,
+		resource,
 		href,
 		handleClick,
 		textVariant = 'subtitle1',
@@ -21,7 +21,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		icon,
 	} = props || {}
 
-	const { label, title, description, image } = item || {}
+	const { label, title, description, image } = resource || {}
 	const router = useRouter()
 
 	const handleItemClick = () => {
@@ -81,7 +81,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 			<Box sx={sx.actions}>
 				<Actions
 					numVisible={0}
-					resource={item}
+					resource={resource}
 					actions={actions}
 					color={enableOverlay ? 'common.white' : 'text.secondary'}
 				/>

@@ -10,7 +10,7 @@ const ImageHoriz: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		actions,
-		item,
+		resource,
 		href,
 		height = IMAGE_HORIZ_HEIGHT,
 		handleClick,
@@ -21,7 +21,7 @@ const ImageHoriz: React.FC<CardProps> = (props) => {
 
 	const router = useRouter()
 
-	const { title, image } = item || {}
+	const { title, image } = resource || {}
 
 	const handleItemClick = () => {
 		if (handleClick) {
@@ -57,7 +57,7 @@ const ImageHoriz: React.FC<CardProps> = (props) => {
 				<Actions
 					numVisible={0}
 					actions={actions}
-					resource={item}
+					resource={resource}
 					color={enableOverlay ? 'common.white' : 'text.secondary'}
 				/>
 			</Box>

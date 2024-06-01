@@ -1,10 +1,9 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
-import { Box, Button, Stack, Typography } from '@mui/material'
-import { Image, TouchableOpacity, MenuButton } from '../../..'
+import { Box, Stack, Typography } from '@mui/material'
+import { Image, TouchableOpacity, FavoriteButton } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
-import { CARD_VERT_HEIGHT, CARD_VERT_WIDTH } from '../../../../constants/index'
 import { CardProps } from '../../../../types'
 import { Actions } from '../../../../components'
 
@@ -12,7 +11,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		actions,
-		item,
+		resource,
 		href,
 		handleClick,
 		objectFit = 'cover',
@@ -20,9 +19,10 @@ const CardGrid: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
+    enableFavorites = false
 	} = props || {}
 
-	const { label, title, image } = item || {}
+	const { label, title, image } = resource || {}
 
 	const router = useRouter()
 
@@ -45,18 +45,23 @@ const CardGrid: React.FC<CardProps> = (props) => {
 			}}
 		>
 			<Box sx={sx.imageContainer}>
-				<TouchableOpacity handleClick={handleItemClick}>
-					<Image
-						src={image?.url}
-						height={height}
-						objectFit={objectFit}
-						alt={title}
-						label={label}
-						enableGradient={enableGradient}
-						disableBorderRadius={enableBorder}
-						enableOverlay={enableOverlay}
-					/>
-				</TouchableOpacity>
+        <Image
+          src={image?.url}
+          height={height}
+          objectFit={objectFit}
+          alt={title}
+          label={label}
+          enableGradient={enableGradient}
+          disableBorderRadius={enableBorder}
+          enableOverlay={enableOverlay}            
+          handleClick={handleItemClick}
+          secondaryActions={
+            enableFavorites && 
+              <FavoriteButton
+                handle={resource?.handle}
+              />
+          }
+        />
 			</Box>
 			<Stack
 				spacing={1}
@@ -69,7 +74,11 @@ const CardGrid: React.FC<CardProps> = (props) => {
 					<Typography sx={sx.title} color="textPrimary" variant="subtitle2">
 						{truncate(title)}
 					</Typography>
-					<Actions numVisible={0} actions={actions} resource={item} />
+					<Actions 
+            numVisible={0} 
+            actions={actions} 
+            resource={resource} 
+          />
 				</Stack>
 			</Stack>
 		</Stack>

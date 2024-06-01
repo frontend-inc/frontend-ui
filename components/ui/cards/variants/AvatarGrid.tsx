@@ -14,7 +14,7 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		actions,
-		item,
+		resource,
 		href,
 		handleClick,
 		height = AVATAR_VERT_HEIGHT,
@@ -24,7 +24,7 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 		enableOverlay = false,
 	} = props || {}
 
-	const { title, image } = item || {}
+	const { title, image } = resource || {}
 
 	const router = useRouter()
 
@@ -74,7 +74,7 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 							{truncate(title)}
 						</Typography>
 					</Stack>
-					<Actions numVisible={0} actions={actions} resource={item} />
+					<Actions numVisible={0} actions={actions} resource={resource} />
 				</Stack>
 			</Stack>
 		</Stack>

@@ -11,20 +11,16 @@ const CardList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		actions,
-		item,
-		href,
-		height = 180,
+		resource,
+		href,		
 		textVariant = 'subtitle1',
-		handleClick,
-		objectFit = 'cover',
+		handleClick,		
 		enableBorder = false,
-		enableGradient = false,
-		enableOverlay = false,
 	} = props || {}
 
 	const router = useRouter()
 
-	const { title, description } = item || {}
+	const { title, description } = resource || {}
 
 	const handleItemClick = () => {
 		if (handleClick) {
@@ -65,7 +61,7 @@ const CardList: React.FC<CardProps> = (props) => {
 				</Stack>
 			</CardActionArea>
 			<Box sx={sx.actions}>
-				<Actions numVisible={0} resource={item} actions={actions} />
+				<Actions numVisible={0} resource={resource} actions={actions} />
 			</Box>
 		</Box>
 	)

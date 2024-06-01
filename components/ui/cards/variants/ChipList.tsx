@@ -16,7 +16,7 @@ import { CardProps } from '../../../../types'
 
 const ChipList: React.FC<CardProps> = (props) => {
 	const {
-		item,
+		resource,
 		actions,
 		handleClick,
 		enableBorder = false,
@@ -24,7 +24,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 		enableOverlay = false,
 	} = props
 
-	const { label, title, description, image } = item || {}
+	const { label, title, description, image } = resource || {}
 
 	return (
 		<List
@@ -41,7 +41,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 				secondaryAction={
 					<Stack direction="row" spacing={1} sx={sx.actions}>
 						{label && <Label label={label} />}
-						<Actions numVisible={0} actions={actions} resource={item} />
+						<Actions numVisible={0} actions={actions} resource={resource} />
 					</Stack>
 				}
 			>

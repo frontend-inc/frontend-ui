@@ -1,6 +1,6 @@
 import React from 'react'
-import { Label, NoImage, Icon } from '../../../components'
-import { Box, IconButton, useTheme } from '@mui/material'
+import { Label, NoImage, TouchableOpacity } from '../../../components'
+import { Box, useTheme } from '@mui/material'
 import { truncate } from '../../../helpers'
 import NextImage from 'next/image'
 
@@ -17,6 +17,7 @@ export type ImageProps = {
 	enableOverlay?: boolean
 	disableBorder?: boolean
 	disableBorderRadius?: boolean
+  handleClick?: () => void
   secondaryActions?: React.ReactNode
 }
 
@@ -34,6 +35,7 @@ const Image: React.FC<ImageProps> = (props) => {
 		enableGradient = false,
 		disableBorder = false,
 		disableBorderRadius = false,
+    handleClick,
     secondaryActions
 	} = props
 
@@ -47,6 +49,7 @@ const Image: React.FC<ImageProps> = (props) => {
 				height: `${height}px`,
 			}}
 		>
+      <TouchableOpacity handleClick={ handleClick }>
 			<Box
 				sx={{
 					...sx.root,
@@ -99,9 +102,12 @@ const Image: React.FC<ImageProps> = (props) => {
 					<Label color="common.white" label={truncate(label, 22)} />
 				</Box>
 			)}
-      <Box sx={ sx.secondaryActions }>
-        { secondaryActions }
-      </Box>
+      </TouchableOpacity>
+      { secondaryActions && (
+        <Box sx={ sx.secondaryActions }>
+          {  secondaryActions  }
+        </Box>
+      )}
 		</Box>
 	)
 }

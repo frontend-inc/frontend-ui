@@ -16,7 +16,7 @@ import { Actions } from '../../../../components'
 const AvatarList: React.FC<CardProps> = (props) => {
 	const {
 		actions,
-		item,
+		resource,
 		height = 128,
 		width = 128,
 		handleClick,
@@ -25,7 +25,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 		enableOverlay = false,
 	} = props
 
-	const { title, description, image } = item || {}
+	const { title, description, image } = resource || {}
 
 	return (
 		<List
@@ -39,7 +39,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 				disablePadding
 				disableGutters
 				secondaryAction={
-					<Actions numVisible={0} actions={actions} resource={item} />
+					<Actions numVisible={0} actions={actions} resource={resource} />
 				}
 			>
 				<ListItemButton

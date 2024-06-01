@@ -3,9 +3,9 @@ import { AppContext } from '../../../context'
 import { useResource } from 'frontend-js'
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
-import { CollectionList } from '../../../components'
+import { CollectionList } from '../..'
 
-type FavoritesProps = {
+export type FavoritesProps = {
 	variant?: 'list' | 'grid'
 	style?: 'card' | 'avatar' | 'cover'
 	field: any
@@ -20,6 +20,7 @@ type FavoritesProps = {
 	enableBorder?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
+  enableFavorites?: boolean
 }
 
 const Favorites: React.FC<FavoritesProps> = (props) => {
@@ -32,18 +33,21 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 		href,
 		perPage = 5,
 		editing = false,
-		buttonText,
 		query: defaultQuery = null,
 		enableBorder = false,
 		enableGradient = false,
 	} = props
 
-	const router = useRouter()
+  const router = useRouter()
 
 	const { clientUrl } = useContext(AppContext)
 
-	const { loading, query, resources, findMany } = useResource({
-		url,
+	const { 
+    query, 
+    resources, 
+    findMany 
+  } = useResource({
+		url: `${url}/favorites`,
 	})
 
 	const handleClick = (item) => {
@@ -53,21 +57,10 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (url && currentUser) {
-			const documentIds = currentUser?.favorites?.map((document) => document.id)
-
+		if (url && currentUser?.id) {
 			findMany({
 				...query,
 				...defaultQuery,
-				filters: {
-					AND: [
-						{
-							id: {
-								in: documentIds,
-							},
-						},
-					],
-				},
 				per_page: perPage,
 				page: 1,
 			})
@@ -76,17 +69,13 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 
 	return (
 		<CollectionList
-			actions={[]}
+      enableFavorites
 			resources={resources}
 			variant={variant}
 			style={style}
 			handleClick={handleClick}
 			enableBorder={enableBorder}
 			enableGradient={enableGradient}
-			enableEdit={false}
-			enableDelete={false}
-			handleEdit={() => null}
-			handleDelete={() => null}
 		/>
 	)
 }

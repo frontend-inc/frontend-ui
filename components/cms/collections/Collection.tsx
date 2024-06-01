@@ -19,7 +19,6 @@ import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useAuth } from 'frontend-js'
 
 export type CollectionProps = {
-	url: string
 	variant: 'list' | 'grid'
 	style: 'avatar' | 'card' | 'cover' | 'chip' | 'text' | 'image'
 	layout?: 'drawer' | 'inline'
@@ -45,8 +44,9 @@ export type CollectionProps = {
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
+  enableFavorites?: boolean
   filterUser?: boolean
-  filterTeam?: boolean
+  filterTeam?: boolean  
 }
 
 const Collection: React.FC<CollectionProps> = (props) => {
@@ -77,6 +77,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		enableEdit = false,
 		enableCreate = false,
 		enableDelete = false,
+    enableFavorites = false,
     filterUser = false,
     filterTeam = false,
     query: defaultQuery = {},
@@ -311,6 +312,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 							enableOverlay={enableOverlay}
 							enableEdit={enableEdit}
 							enableDelete={enableDelete}
+              enableFavorites={enableFavorites}
 							handleEdit={handleEdit}
 							handleDelete={handleDeleteClick}
 						/>

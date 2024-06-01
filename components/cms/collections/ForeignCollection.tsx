@@ -34,6 +34,7 @@ export type ForeignCollectionProps = {
 	enableDelete?: boolean
 	enableBorder?: boolean
 	enableGradient?: boolean
+  enableFavorites?: boolean
 	enableLoadMore?: boolean
 }
 
@@ -57,6 +58,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		enableCreate = false,
 		enableEdit = false,
 		enableDelete = false,
+    enableFavorites = false
 	} = props
 
 	const router = useRouter()
@@ -185,6 +187,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 				style={style}
 				resources={resources}
 				handleClick={handleClick}
+        enableFavorites={enableFavorites}
 				enableBorder={enableBorder}
 				enableGradient={enableGradient}
 				enableEdit={enableEdit}

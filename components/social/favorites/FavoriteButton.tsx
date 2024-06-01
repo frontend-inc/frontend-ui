@@ -2,13 +2,12 @@ import React, { useEffect, useState, useContext } from 'react'
 import { IconButton } from '@mui/material'
 import { Icon } from '../..'
 import { isFavorited } from '../../../helpers'
-import { AuthContext, useAuth } from 'frontend-js'
+import { ApiContext, useAuth } from 'frontend-js'
 import { useSocial } from '../../../hooks'
 import { AppContext } from '../../../context'
 
 type FavoriteButtonProps = {
-	url: string
-	handle: string | number
+	handle: string 
 }
 
 const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
@@ -19,17 +18,16 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 
 	const [favorited, setFavorited] = useState(false)
 
-  const { serverPath } = useContext(AuthContext) as any 
-
 	const { 
     loading, 
     favorite, 
     unfavorite 
   } = useSocial({
-		url: serverPath
-	})
+    url: '/api/v1/social' 
+  })
 
-	const handleClick = async () => {
+	const handleClick = async (ev) => {
+    ev.preventDefault();
 		if (!currentUser?.id) {
 			return setAuthOpen(true)
 		}
@@ -54,6 +52,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 
 	return (
 		<IconButton
+      size="small"
 			onClick={handleClick}
 			sx={{
 				...sx.icon,

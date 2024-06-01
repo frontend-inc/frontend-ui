@@ -6,27 +6,31 @@ import { buildActions } from '../../../helpers'
 
 type CollectionListProps = {
 	resources: any
-	actions: ActionType[]
+	actions?: ActionType[]
 	variant: 'list' | 'grid'
 	style: 'card' | 'avatar' | 'cover' | 'chip' | 'text' | 'image'
 	buttonText?: string
 	enableBorder?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
-	enableEdit: boolean
-	enableDelete: boolean
+	enableEdit?: boolean
+	enableDelete?: boolean
+  enableFavorites?: boolean
 	handleClick: (item: any) => void
-	handleEdit: (item: any) => void
-	handleDelete: (item: any) => void
+	handleEdit?: (item: any) => void
+	handleDelete?: (item: any) => void
 }
 
 const CollectionList: React.FC<CollectionListProps> = (props) => {
+
+  const handleNull = () => null;
+
 	const {
 		resources,
-		actions,
+		actions = [],
 		handleClick,
-		handleEdit,
-		handleDelete,
+		handleEdit = handleNull,
+		handleDelete = handleNull,
 		variant = 'grid',
 		style = 'card',
 		enableBorder = false,
@@ -34,6 +38,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		enableOverlay = false,
 		enableEdit = false,
 		enableDelete = false,
+    enableFavorites = false,
 	} = props
 
 	return (
@@ -50,7 +55,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 						key={index}
 						variant={variant}
 						style={style}
-						item={resource}
+						resource={resource}
 						handleClick={() => handleClick(resource)}
 						actions={buildActions({
 							enableEdit,
@@ -59,6 +64,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 							handleDelete: () => handleDelete(resource),
 							actions,
 						})}
+            enableFavorites={enableFavorites}
 						enableBorder={enableBorder}
 						enableGradient={enableGradient}
 						enableOverlay={enableOverlay}

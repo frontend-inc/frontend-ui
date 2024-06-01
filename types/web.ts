@@ -26,7 +26,7 @@ export type CardProps = {
   enableFavorites?: boolean
 	editing?: boolean
 	variant?: 'list' | 'grid'
-	item: any & {
+	resource: any & {
 		label?: string
 		title?: string
 		description?: string
@@ -58,6 +58,7 @@ export type PriceType = {
 	label: string
 	title: string
 	price: number
+  price_type: 'stripe_payment_link' | 'url'
 	features: {
 		label: string
 	}[]
