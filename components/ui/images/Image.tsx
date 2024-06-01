@@ -18,7 +18,6 @@ export type ImageProps = {
 	disableBorder?: boolean
 	disableBorderRadius?: boolean
   handleClick?: () => void
-  secondaryActions?: React.ReactNode
 }
 
 const Image: React.FC<ImageProps> = (props) => {
@@ -35,8 +34,7 @@ const Image: React.FC<ImageProps> = (props) => {
 		enableGradient = false,
 		disableBorder = false,
 		disableBorderRadius = false,
-    handleClick,
-    secondaryActions
+    handleClick,    
 	} = props
 
 	const theme = useTheme()
@@ -50,63 +48,58 @@ const Image: React.FC<ImageProps> = (props) => {
 			}}
 		>
       <TouchableOpacity handleClick={ handleClick }>
-			<Box
-				sx={{
-					...sx.root,
-					height: `${height}px`,
-          minWidth: width ? `${width}px` : '100%',
-          ...(!disableBorderRadius && sx.borderRadius),
-					'&::after': {
-						...sx.afterBase,
-						...(enableOverlay && sx.overlay),
-						...(!enableOverlay && enableGradient && sx.gradient),
-						...(!disableBorderRadius && sx.borderRadius),
-						...(!enableOverlay &&
-							!disableBorderRadius &&
-							enableGradient &&
-							sx.gradientBorderRadius),
-						bgcolor,
-						opacity,
-					},
-				}}
-			>
-				{src ? (
-					<NextImage
-						src={src}
-						alt={alt}
-						height={1600}
-						width={1600}
-            layout="responsive"
-						style={{
-							height: `${height}px`,
-							width: width ? `min(${width}px, 100vw)` : '100%',
-							minHeight: `${height}px`,
-							objectFit,
-							borderRadius: !disableBorderRadius
-								? `${theme.shape.borderRadius}px`
-								: '0px',
-						}}
-					/>
-				) : (
-					<NoImage
-						height={height}
-						width={width}
-						disableBorder={disableBorder}
-						disableBorderRadius={disableBorderRadius}
-					/>
-				)}
-			</Box>
-			{label && (
+        <Box
+          sx={{
+            ...sx.root,
+            height: `${height}px`,
+            minWidth: width ? `${width}px` : '100%',
+            ...(!disableBorderRadius && sx.borderRadius),
+            '&::after': {
+              ...sx.afterBase,
+              ...(enableOverlay && sx.overlay),
+              ...(!enableOverlay && enableGradient && sx.gradient),
+              ...(!disableBorderRadius && sx.borderRadius),
+              ...(!enableOverlay &&
+                !disableBorderRadius &&
+                enableGradient &&
+                sx.gradientBorderRadius),
+              bgcolor,
+              opacity,
+            },
+          }}
+        >
+          {src ? (
+            <NextImage
+              src={src}
+              alt={alt}
+              height={1600}
+              width={1600}
+              layout="responsive"
+              style={{
+                height: `${height}px`,
+                width: width ? `min(${width}px, 100vw)` : '100%',
+                minHeight: `${height}px`,
+                objectFit,
+                borderRadius: !disableBorderRadius
+                  ? `${theme.shape.borderRadius}px`
+                  : '0px',
+              }}
+            />
+          ) : (
+            <NoImage
+              height={height}
+              width={width}
+              disableBorder={disableBorder}
+              disableBorderRadius={disableBorderRadius}
+            />
+          )}
+        </Box>
+      </TouchableOpacity>
+      {label && (
 				<Box sx={sx.label}>
 					<Label color="common.white" label={truncate(label, 22)} />
 				</Box>
 			)}
-      </TouchableOpacity>
-      { secondaryActions && (
-        <Box sx={ sx.secondaryActions }>
-          { secondaryActions  }
-        </Box>
-      )}
 		</Box>
 	)
 }

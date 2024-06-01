@@ -58,11 +58,6 @@ const CardList: React.FC<CardProps> = (props) => {
 							enableGradient={enableGradient}
 							enableOverlay={enableOverlay}
 							disableBorderRadius={enableBorder}
-              secondaryActions={enableFavorites && (
-                <FavoriteButton
-                  handle={resource?.handle}
-                />
-              )}
 						/>
 					</TouchableOpacity>
 				</Box>
@@ -93,7 +88,14 @@ const CardList: React.FC<CardProps> = (props) => {
 							{truncate(description, 80)}
 						</Typography>
 					</Stack>
-					<Actions numVisible={0} resource={resource} actions={actions} />
+          <Stack direction='column' alignItems='flex-end'>            
+            <Actions numVisible={0} resource={resource} actions={actions} />
+            {enableFavorites && (
+              <FavoriteButton
+                handle={resource?.handle}
+              />
+            )}
+          </Stack>
 				</Stack>
 			</Stack>
 		</Box>
@@ -176,10 +178,6 @@ const sx = {
 	actions: {
 		display: 'flex',
 		flexDirection: 'column',
-		alignItems: {
-			sm: 'flex-end',
-			xs: 'flex-start',
-		},
 	},
 	actionsBorder: {
 		px: 1,

@@ -1,6 +1,7 @@
 import React from 'react'
 import {
 	Avatar,
+  Stack,
 	Box,
 	List,
 	ListItem,
@@ -11,7 +12,7 @@ import {
 } from '@mui/material'
 import { truncate } from '../../../../helpers'
 import { CardProps } from '../../../../types'
-import { Actions } from '../../../../components'
+import { Actions, FavoriteButton } from '../../../../components'
 
 const AvatarList: React.FC<CardProps> = (props) => {
 	const {
@@ -23,6 +24,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
+    enableFavorites = false
 	} = props
 
 	const { title, description, image } = resource || {}
@@ -39,7 +41,14 @@ const AvatarList: React.FC<CardProps> = (props) => {
 				disablePadding
 				disableGutters
 				secondaryAction={
-					<Actions numVisible={0} actions={actions} resource={resource} />
+          <Stack direction="row" alignItems="flex-end" mr={1}>            
+            { enableFavorites && (
+              <FavoriteButton
+                handle={resource?.handle}
+              />
+            )}
+            <Actions numVisible={0} actions={actions} resource={resource} />
+          </Stack>
 				}
 			>
 				<ListItemButton

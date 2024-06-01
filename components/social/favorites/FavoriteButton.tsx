@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { IconButton } from '@mui/material'
+import { Box, IconButton } from '@mui/material'
 import { isFavorited } from '../../../helpers'
 import { useAuth } from 'frontend-js'
 import { useSocial } from '../../../hooks'
@@ -56,7 +56,8 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 	}, [currentUser, handle])
 
 	return (
-    variant == 'icon' ? (
+    <Box>
+    { variant == 'icon' ? (
       <IconButton
         size="small"
         onClick={handleClick}
@@ -83,7 +84,8 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
           <FavoriteBorder fontSize='small' />
         }
       </IconButton>
-    )
+    )}
+  </Box>
 	)
 }
 

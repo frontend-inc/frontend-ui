@@ -4,7 +4,7 @@ import { Box, Link, Stack, Typography } from '@mui/material'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
-import { Actions } from '../../..'
+import { FavoriteButton, Actions } from '../../..'
 
 const CardList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
@@ -15,6 +15,7 @@ const CardList: React.FC<CardProps> = (props) => {
 		textVariant = 'subtitle1',
 		handleClick,		
 		enableBorder = false,
+    enableFavorites = false
 	} = props || {}
 
 	const router = useRouter()
@@ -59,9 +60,14 @@ const CardList: React.FC<CardProps> = (props) => {
 						</Typography>
 					</Stack>
 				</Stack>
-			<Box sx={sx.actions}>
-				<Actions numVisible={0} resource={resource} actions={actions} />
-			</Box>
+        <Stack direction="row" justifyContent='flex-end' sx={sx.actions}>
+          { enableFavorites && (
+            <FavoriteButton
+              handle={resource?.handle}
+            />
+          )}
+          <Actions numVisible={0} actions={actions} resource={resource} />
+        </Stack>
 		</Box>
 	)
 }

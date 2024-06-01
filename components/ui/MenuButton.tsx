@@ -15,7 +15,7 @@ type MenuButtonProps = {
 const MenuButton: React.FC<MenuButtonProps> = (props) => {
 	const {
 		children,
-		icon = 'Ellipsis',
+		icon = 'EllipsisVertical',
 		color,
 		enableIcons = false,
 		handleEdit,
@@ -31,7 +31,7 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
 
 	return (
 		<Box onClick={handleDefaultClick}>
-			<IconButton onClick={toggleMenu}>
+			<IconButton size="small" onClick={toggleMenu}>
 				<Icon name={icon} size={20} color={color} />
 			</IconButton>
 			<Menu open={open} anchorEl={anchorEl} onClose={closeMenu}>

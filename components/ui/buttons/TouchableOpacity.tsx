@@ -4,7 +4,7 @@ import { CardActionArea } from '@mui/material'
 
 type TouchableOpacityProps = {
 	children: any
-	handleClick: (item: any) => void
+	handleClick: () => void
 	disableRipple?: boolean
 	justifyContent?: string
 }

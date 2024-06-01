@@ -50,16 +50,16 @@ const ImageHoriz: React.FC<CardProps> = (props) => {
 						objectFit={objectFit}
 						alt={title}
 						enableGradient={enableGradient}
-						enableOverlay={enableOverlay}
-            secondaryActions={enableFavorites && (
-              <FavoriteButton
-                handle={resource?.handle}
-              />
-            )}
+						enableOverlay={enableOverlay}            
 					/>
 				</TouchableOpacity>
 			</Box>
 			<Box sx={sx.actions}>
+        {enableFavorites && (
+          <FavoriteButton
+            handle={resource?.handle}
+          />
+        )}
 				<Actions
 					numVisible={0}
 					actions={actions}
@@ -92,9 +92,10 @@ const sx = {
 		},
 	},
 	actions: {
+    display: 'flex',
+    flexDirection: 'row',
 		position: 'absolute',
 		top: 10,
 		right: 10,
-		width: '100%',
 	},
 }

@@ -66,13 +66,6 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 						<Box />
 					</Avatar>
 				</TouchableOpacity>
-        { enableFavorites && (
-          <Box sx={ sx.secondaryActions }>
-            <FavoriteButton 
-              handle={ resource?.handle }
-            />
-          </Box>
-        )}
 			</Box>
 			<Stack spacing={1} sx={sx.contentArea}>
 				<Stack direction="row" sx={sx.contentArea} spacing={0}>
@@ -81,9 +74,14 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 							{truncate(title)}
 						</Typography>
 					</Stack>
-          <Stack direction="row" spacing={1}>
-					  <Actions numVisible={0} actions={actions} resource={resource} />
-          </Stack> 
+          <Box sx={sx.actions }>					              
+            {enableFavorites && (
+              <FavoriteButton
+                handle={resource?.handle}
+              />
+            )}
+            <Actions numVisible={0} actions={actions} resource={resource} />
+          </Box> 
 				</Stack>
 			</Stack>
 		</Stack>
@@ -151,9 +149,10 @@ const sx = {
     width: '100%',
     position: 'relative',
   },
-  secondaryActions: {
-    position: "absolute",
-    top: 0,
-    right: 0
+  actions: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
   }
 }

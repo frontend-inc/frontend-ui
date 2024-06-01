@@ -44,11 +44,6 @@ const CoverList: React.FC<CardProps> = (props) => {
 					height={height}
 					enableGradient={enableGradient}
 					enableOverlay={enableOverlay}
-          secondaryActions={enableFavorites && (
-            <FavoriteButton
-              handle={resource?.handle}
-            />
-          )}
 				/>
 			</TouchableOpacity>
 			<Stack spacing={1} sx={sx.cover}>
@@ -71,6 +66,11 @@ const CoverList: React.FC<CardProps> = (props) => {
 				</Stack>
 			</Stack>
 			<Box sx={sx.actions}>
+        {enableFavorites && (
+          <FavoriteButton
+            handle={resource?.handle}
+          />
+        )}
 				<Actions
 					numVisible={0}
 					resource={resource}
@@ -119,6 +119,8 @@ const sx = {
 		alignItems: 'flex-start',
 	},
 	actions: {
+    display: 'flex',
+    flexDirection: 'row',    
 		position: 'absolute',
 		top: 0,
 		right: 10,

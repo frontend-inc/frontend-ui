@@ -1,6 +1,7 @@
 import React from 'react'
 import {
 	Avatar,
+  Stack,
 	Box,
 	List,
 	ListItem,
@@ -9,7 +10,7 @@ import {
 	ListItemText,
 	Typography,
 } from '@mui/material'
-import { Actions } from '../../..'
+import { FavoriteButton, Actions } from '../../..'
 import { CardProps } from '../../../../types'
 
 const ChipList: React.FC<CardProps> = (props) => {
@@ -20,6 +21,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
+    enableFavorites = false
 	} = props
 
 	const { title, image } = resource || {}
@@ -37,7 +39,14 @@ const ChipList: React.FC<CardProps> = (props) => {
 				disablePadding
 				disableGutters
 				secondaryAction={
-					<Actions numVisible={0} actions={actions} resource={resource} />
+          <Stack direction="row" alignItems='flex-end' sx={sx.actions}>
+          { enableFavorites && (
+            <FavoriteButton
+              handle={resource?.handle}
+            />
+          )}
+          <Actions numVisible={0} actions={actions} resource={resource} />
+        </Stack>
 				}
 			>
 				<ListItemButton

@@ -5,7 +5,7 @@ import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CARD_VERT_HEIGHT, CARD_VERT_WIDTH } from '../../../../constants/index'
 import { CardProps } from '../../../../types'
-import { Actions } from '../../..'
+import { FavoriteButton, Actions } from '../../..'
 
 const TextGrid: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
@@ -16,6 +16,7 @@ const TextGrid: React.FC<CardProps> = (props) => {
 		handleClick,
 		height = CARD_VERT_HEIGHT,
 		enableBorder = false,
+    enableFavorites = false
 	} = props || {}
 
 	const { title, description } = resource || {}
@@ -40,9 +41,14 @@ const TextGrid: React.FC<CardProps> = (props) => {
           minHeight: height + 80,
         }}
       >
-        <Box sx={sx.actions}>
+        <Stack direction="row" alignItems='flex-end' sx={sx.actions}>
+          { enableFavorites && (
+            <FavoriteButton
+              handle={resource?.handle}
+            />
+          )}
           <Actions numVisible={0} actions={actions} resource={resource} />
-        </Box>
+        </Stack>
         <Stack
           spacing={1}
           sx={{

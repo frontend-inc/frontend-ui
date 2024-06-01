@@ -22,8 +22,9 @@ const Actions: React.FC<ActionsProps> = (props) => {
 				justifyContent,
 			}}
 			direction="row"
-			spacing={1}
+			spacing={0}
 		>
+      { actions?.slice(0, numVisible)?.length > 0 && (
 			<Stack
 				sx={{
 					...sx.buttons,
@@ -36,6 +37,7 @@ const Actions: React.FC<ActionsProps> = (props) => {
 					<ActionButton key={index} action={action} resource={resource} />
 				))}
 			</Stack>
+      )}
 			{actions?.length > numVisible && (
 				<MenuButton color={color}>
 					{actions?.slice(numVisible, actions.length)?.map((action, index) => (

@@ -55,12 +55,6 @@ const CardGrid: React.FC<CardProps> = (props) => {
           disableBorderRadius={enableBorder}
           enableOverlay={enableOverlay}            
           handleClick={handleItemClick}
-          secondaryActions={
-            enableFavorites && 
-              <FavoriteButton
-                handle={resource?.handle}
-              />
-          }
         />
 			</Box>
 			<Stack
@@ -74,11 +68,18 @@ const CardGrid: React.FC<CardProps> = (props) => {
 					<Typography sx={sx.title} color="textPrimary" variant="subtitle2">
 						{truncate(title)}
 					</Typography>
-					<Actions 
-            numVisible={0} 
-            actions={actions} 
-            resource={resource} 
-          />
+          <Stack direction="column" alignItems='flex-end'>            
+            { enableFavorites && 
+              <FavoriteButton
+                handle={resource?.handle}
+              />
+            }
+            <Actions 
+              numVisible={0} 
+              actions={actions} 
+              resource={resource} 
+            />
+          </Stack>
 				</Stack>
 			</Stack>
 		</Stack>

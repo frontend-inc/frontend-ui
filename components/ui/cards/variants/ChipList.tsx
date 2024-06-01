@@ -10,7 +10,7 @@ import {
 	ListItemText,
 	Typography,
 } from '@mui/material'
-import { Label, Actions } from '../../../../components'
+import { FavoriteButton, Label, Actions } from '../../../../components'
 import { truncate } from '../../../../helpers'
 import { CardProps } from '../../../../types'
 
@@ -22,6 +22,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
+    enableFavorites = false
 	} = props
 
 	const { label, title, description, image } = resource || {}
@@ -39,8 +40,12 @@ const ChipList: React.FC<CardProps> = (props) => {
 				disablePadding
 				disableGutters
 				secondaryAction={
-					<Stack direction="row" spacing={1} sx={sx.actions}>
-						{label && <Label label={label} />}
+					<Stack direction="row" spacing={0} sx={sx.actions}>
+            { enableFavorites && (
+              <FavoriteButton
+                handle={resource?.handle}
+              />
+            )}
 						<Actions numVisible={0} actions={actions} resource={resource} />
 					</Stack>
 				}
@@ -133,5 +138,7 @@ const sx = {
 	},
 	actions: {
 		px: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
 	},
 }
