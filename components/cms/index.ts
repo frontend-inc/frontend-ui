@@ -1,6 +1,7 @@
 // CMS
 export { default as Article } from './show/Article'
 export { default as Collection } from './collections/Collection'
+export { default as CollectionToolbar } from './collections/CollectionToolbar'
 export { default as CollectionCarousel } from './collections/CollectionCarousel'
 export { default as CollectionList } from './collections/CollectionList'
 export { default as CollectionCard } from './collections/CollectionCard'
@@ -32,6 +33,7 @@ export { default as VideoVert } from './video/VideoList'
 export { default as VideoHoriz } from './video/VideoGrid'
 export { default as VideoModal } from '../cms/video/VideoModal'
 export { default as VideoPlayer } from '../cms/video/VideoPlayer'
+export { default as SearchFilters } from '../cms/filters/SearchFilters'
 
 // Resources
 export { default as Resource } from './resources/Resource'

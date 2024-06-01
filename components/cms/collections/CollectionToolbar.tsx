@@ -18,7 +18,7 @@ export type CollectionToolbarProps = {
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
 	enableCreate?: boolean
-	handleAdd: () => void
+	handleAdd?: () => void
 	handleFilter: (filter: FilterOptionType) => void
 	handleClearFilters: () => void
 	handleSortBy: (sortBy: SortOptionType) => void
@@ -29,6 +29,8 @@ export type CollectionToolbarProps = {
 }
 
 const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
+  const handleNull = () => null;
+
 	const {
 		query = {},
 		activeFilters,
@@ -38,7 +40,7 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 		enableSorting = false,
 		filterOptions = [],
 		sortOptions = [],
-		handleAdd,
+		handleAdd = handleNull,
 		handleFilter,
 		handleClearFilters,
 		keywords,

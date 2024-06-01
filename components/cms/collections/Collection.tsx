@@ -12,9 +12,12 @@ import {
 import { AppContext } from '../../../context'
 import { ActionType, FilterOptionType, FormFieldType } from '../../../types'
 import { useRouter } from 'next/router'
-import { CollectionList, Placeholder } from '../..'
-import CollectionSearchFilters from '../filters/SearchFilters'
-import CollectionToolbar from './CollectionToolbar'
+import { 
+  CollectionList, 
+  Placeholder, 
+  CollectionToolbar, 
+  SearchFilters 
+} from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useAuth } from 'frontend-js'
 
@@ -285,7 +288,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
 				{enableFilters && filterAnchor == 'left' && (
 					<Grid item xs={12} sm={4} lg={3}>
 						<Box sx={sx.filtersContainer}>
-							<CollectionSearchFilters
+							<SearchFilters
 								filters={activeFilters}
 								filterOptions={filterOptions}
 								handleFilter={handleFilter}
