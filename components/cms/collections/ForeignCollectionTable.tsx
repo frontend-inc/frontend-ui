@@ -17,10 +17,10 @@ import { useRouter } from 'next/router'
 import SearchFilters from '../filters/SearchFilters'
 import { flattenDocument, flattenDocuments } from '../../../helpers'
 import { TableList } from '../..'
-import { CollectionProps } from './CollectionList'
+import { CollectionListProps } from './CollectionList'
 import { useAuth } from 'frontend-js'
 
-export type ForeignCollectionTableProps = CollectionProps & {
+export type ForeignCollectionTableProps = CollectionListProps & {
 	resource: any
 	field: FieldType
 	foreignUrl?: string

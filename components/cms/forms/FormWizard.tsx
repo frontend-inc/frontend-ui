@@ -145,10 +145,10 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 	useEffect(() => {
 		if (_resource?.id) {
 			setResource(_resource)
-		} else if (handle && contentType) {
+		} else if (handle && url) {
 			findOne(handle)
 		}
-	}, [_resource, handle, contentType])
+	}, [_resource, handle, url])
 
 	return (
 		<Box sx={sx.root}>

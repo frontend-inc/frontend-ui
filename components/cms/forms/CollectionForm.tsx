@@ -8,7 +8,6 @@ import { useRouter } from 'next/router'
 export type CollectionFormProps = {
 	handle: string
 	resource?: any
-	url: string
 	href?: string
 	buttonText?: string
 	variant?: 'contained' | 'outlined' | 'text'
