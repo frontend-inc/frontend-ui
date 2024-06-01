@@ -17,7 +17,7 @@ const VideoVert: React.FC<CardProps> = (props) => {
 
 	const [open, setOpen] = useState(false)
 
-	const handleItemClick = () => {
+	const handleresourceClick = () => {
 		setOpen(true)
 	}
 
@@ -26,7 +26,7 @@ const VideoVert: React.FC<CardProps> = (props) => {
 			actions={actions}
 			variant="list"
 			resource={resource}
-			handleClick={handleItemClick}
+			handleClick={handleresourceClick}
 			objectFit={objectFit}
 			height={height}
 			width={width}
@@ -37,8 +37,8 @@ const VideoVert: React.FC<CardProps> = (props) => {
 		/>
 	) : (
 		<VideoModal
-			title={item?.title}
-			src={item?.video}
+			title={resource?.title}
+			src={resource?.video}
 			open={open}
 			handleClose={() => setOpen(false)}
 		/>

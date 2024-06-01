@@ -40,7 +40,7 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 	return (
 		<Stack direction="row" justifyContent={justifyContent} spacing={1}>
 			{enableLikes && <LikeButton handle={handle} url={url} />}
-			{enableFavorites && <FavoriteButton handle={handle} url={url} />}
+			{enableFavorites && <FavoriteButton handle={handle} />}
 			{enableShares && <ShareButton url={currentPageUrl} />}
 		</Stack>
 	)

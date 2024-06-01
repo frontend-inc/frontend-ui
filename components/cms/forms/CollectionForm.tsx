@@ -13,7 +13,7 @@ export type CollectionFormProps = {
 	buttonText?: string
 	variant?: 'contained' | 'outlined' | 'text'
 	fields: any[]
-	contentType: string
+	url: string
 	onSuccessMessage?: string
 }
 
@@ -26,7 +26,7 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 		resource: _resource,
 		buttonText = 'Submit',
 		fields,
-		contentType,
+		url,
 		href,
 		onSuccessMessage = 'Submitted successfully!',
 	} = props
@@ -45,7 +45,7 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 		handleDataChange,
 		removeAttachment,
 	} = useDocuments({
-		collection: contentType,
+		url,
 	})
 
 	const handleRemove = async (name) => {

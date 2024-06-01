@@ -18,7 +18,7 @@ export type CollectionShowItemProps = {
 	enableBorder?: boolean
 	actions: ActionType[]
 	fieldName?: string
-	contentType?: string
+	url?: string
 	resource: any
 	enableEdit?: boolean
 	enableCreate?: boolean
@@ -51,7 +51,6 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 		fieldName,
 		displayFields,
 		url,
-		contentType,
 		actions,
 		enableBorder,
 		enableEdit,
@@ -71,7 +70,7 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 		removeAttachment,
 		handleDataChange,
 	} = useDocuments({
-		collection: contentType,
+		url
 	})
 
 	const handleRemove = async (name) => {

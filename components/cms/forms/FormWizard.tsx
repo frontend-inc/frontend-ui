@@ -12,7 +12,7 @@ export type FormWizardProps = {
 	handle: string
 	resource?: any
 	py?: number
-	contentType: string
+	url: string
 	variant?: 'contained' | 'outlined' | 'text'
 	fields: any[]
 	startTitle: string
@@ -37,7 +37,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		handle,
 		resource: _resource,
 		fields,
-		contentType,
+		url,
 		startTitle,
 		startDescription,
 		startImage,
@@ -63,7 +63,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		removeAttachment,
 		flattenDocument,
 	} = useDocuments({
-		collection: contentType,
+		url,
 	})
 
 	const [currentField, setCurrentField] = useState()
