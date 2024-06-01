@@ -1,9 +1,8 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
-import { Box, Stack, Typography } from '@mui/material'
+import { Link, Box, Stack, Typography } from '@mui/material'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
-import { TouchableOpacity } from '../../..'
 import { CARD_VERT_HEIGHT, CARD_VERT_WIDTH } from '../../../../constants/index'
 import { CardProps } from '../../../../types'
 import { Actions } from '../../..'
@@ -32,7 +31,6 @@ const TextGrid: React.FC<CardProps> = (props) => {
 	}
 
 	return (
-    <TouchableOpacity handleClick={handleItemClick}>
       <Stack
         spacing={1}
         sx={{
@@ -51,16 +49,17 @@ const TextGrid: React.FC<CardProps> = (props) => {
             ...sx.content,
             ...(enableBorder && sx.contentBorder),
           }}
-        >
-          <Typography sx={sx.title} color="text.primary" variant="subtitle1">
-            {truncate(title)}
-          </Typography>
+        >                  
+          <Link onClick={ handleItemClick }>
+            <Typography sx={sx.title} color="text.primary" variant="subtitle1">
+              {truncate(title)}
+            </Typography>
+          </Link>
           <Typography sx={sx.description} color="text.secondary" variant="body1">
             {truncate(description, 200)}
           </Typography>
         </Stack>
       </Stack>
-    </TouchableOpacity>
 	)
 }
 
@@ -102,6 +101,7 @@ const sx = {
 	content: {
 		width: '100%',
 		minHeight: '60px',
+    
 	},
 	contentArea: {
 		p: 1,

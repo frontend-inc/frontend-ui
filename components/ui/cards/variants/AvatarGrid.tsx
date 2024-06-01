@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Avatar, Box, Stack, Typography } from '@mui/material'
-import { Actions, TouchableOpacity } from '../../../../components'
+import { Actions, FavoriteButton, TouchableOpacity } from '../../../../components'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import {
@@ -22,6 +22,7 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
+    enableFavorites = false
 	} = props || {}
 
 	const { title, image } = resource || {}
@@ -48,8 +49,7 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 		>
 			<Box
 				sx={{
-					height: height,
-					width,
+          ...sx.avatarContainer,
 				}}
 			>
 				<TouchableOpacity handleClick={handleItemClick}>
@@ -66,6 +66,13 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 						<Box />
 					</Avatar>
 				</TouchableOpacity>
+        { enableFavorites && (
+          <Box sx={ sx.secondaryActions }>
+            <FavoriteButton 
+              handle={ resource?.handle }
+            />
+          </Box>
+        )}
 			</Box>
 			<Stack spacing={1} sx={sx.contentArea}>
 				<Stack direction="row" sx={sx.contentArea} spacing={0}>
@@ -74,7 +81,9 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 							{truncate(title)}
 						</Typography>
 					</Stack>
-					<Actions numVisible={0} actions={actions} resource={resource} />
+          <Stack direction="row" spacing={1}>
+					  <Actions numVisible={0} actions={actions} resource={resource} />
+          </Stack> 
 				</Stack>
 			</Stack>
 		</Stack>
@@ -91,7 +100,7 @@ const sx = {
 		justifyContent: 'center',
 	},
 	avatar: {
-		backgroundImage: 'linear-gradient(45deg, #999999,#DDDDDD,#FAFAFA)',
+		backgroundImage: 'linear-gradient(45deg, #888888, #222222,#000000)',
 	},
 	gradient: {
 		'&::after': {
@@ -137,4 +146,14 @@ const sx = {
 	contentArea: {
 		width: '100%',
 	},
+  avatarContainer: {
+    height: '100%',
+    width: '100%',
+    position: 'relative',
+  },
+  secondaryActions: {
+    position: "absolute",
+    top: 0,
+    right: 0
+  }
 }

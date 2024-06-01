@@ -128,7 +128,7 @@ const sx = {
 	avatar: {
 		height: '64px',
 		width: '64px',
-		backgroundImage: 'linear-gradient(45deg, #999999,#DDDDDD,#FAFAFA)',
+		backgroundImage: 'linear-gradient(45deg, #888888, #222222,#000000)',
 	},
 	description: {
 		maxWidth: 320,

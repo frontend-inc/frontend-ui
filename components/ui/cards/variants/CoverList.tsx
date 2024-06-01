@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Box, Stack, Typography } from '@mui/material'
-import { Image, Icon, TouchableOpacity, Actions } from '../../..'
+import { FavoriteButton, Image, Icon, TouchableOpacity, Actions } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
@@ -19,6 +19,7 @@ const CoverList: React.FC<CardProps> = (props) => {
 		height = 240,
 		enableGradient = false,
 		enableOverlay = false,
+    enableFavorites = false,
 	} = props || {}
 
 	const { label, title, image } = resource || {}
@@ -43,6 +44,11 @@ const CoverList: React.FC<CardProps> = (props) => {
 					height={height}
 					enableGradient={enableGradient}
 					enableOverlay={enableOverlay}
+          secondaryActions={enableFavorites && (
+            <FavoriteButton
+              handle={resource?.handle}
+            />
+          )}
 				/>
 			</TouchableOpacity>
 			<Stack spacing={1} sx={sx.cover}>

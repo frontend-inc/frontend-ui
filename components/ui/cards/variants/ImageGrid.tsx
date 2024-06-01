@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
-import { Image, Actions, TouchableOpacity } from '../../..'
+import { FavoriteButton, Image, Actions, TouchableOpacity } from '../../..'
 import { useRouter } from 'next/router'
 import { Box } from '@mui/material'
 import { CardProps } from '../../../../types'
@@ -16,6 +16,7 @@ const ImageVert: React.FC<CardProps> = (props) => {
 		height = 320,
 		enableGradient = false,
 		enableOverlay = false,
+    enableFavorites = false
 	} = props || {}
 
 	const { title, image } = resource || {}
@@ -40,6 +41,11 @@ const ImageVert: React.FC<CardProps> = (props) => {
 					alt={title}
 					enableGradient={enableGradient}
 					enableOverlay={enableOverlay}
+          secondaryActions={enableFavorites && (
+            <FavoriteButton
+              handle={resource?.handle}
+            />
+          )}
 				/>
 			</TouchableOpacity>
 			<Box sx={sx.actions}>

@@ -89,7 +89,6 @@ const Image: React.FC<ImageProps> = (props) => {
 					/>
 				) : (
 					<NoImage
-						darkMode
 						height={height}
 						width={width}
 						disableBorder={disableBorder}

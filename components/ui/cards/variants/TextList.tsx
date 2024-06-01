@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
-import { Box, Button, CardActionArea, Stack, Typography } from '@mui/material'
-import { Image, TouchableOpacity, MenuButton } from '../../..'
+import { Box, Link, Stack, Typography } from '@mui/material'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
@@ -37,7 +36,6 @@ const CardList: React.FC<CardProps> = (props) => {
 				...(enableBorder && sx.rootBorder),
 			}}
 		>
-			<CardActionArea onClick={handleItemClick}>
 				<Stack sx={sx.contentArea} direction="row" spacing={1}>
 					<Stack
 						direction="column"
@@ -47,9 +45,11 @@ const CardList: React.FC<CardProps> = (props) => {
 							...(enableBorder && sx.contentBorder),
 						}}
 					>
-						<Typography color="textPrimary" variant={textVariant}>
-							{truncate(title)}
-						</Typography>
+            <Link onClick={ handleItemClick }>
+              <Typography color="textPrimary" variant={textVariant}>
+                {truncate(title)}
+              </Typography>
+            </Link>
 						<Typography
 							color="text.secondary"
 							variant="body2"
@@ -59,7 +59,6 @@ const CardList: React.FC<CardProps> = (props) => {
 						</Typography>
 					</Stack>
 				</Stack>
-			</CardActionArea>
 			<Box sx={sx.actions}>
 				<Actions numVisible={0} resource={resource} actions={actions} />
 			</Box>

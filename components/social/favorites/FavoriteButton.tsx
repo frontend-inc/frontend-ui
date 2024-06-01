@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { IconButton } from '@mui/material'
-import { Icon } from '../..'
 import { isFavorited } from '../../../helpers'
-import { ApiContext, useAuth } from 'frontend-js'
+import { useAuth } from 'frontend-js'
 import { useSocial } from '../../../hooks'
 import { AppContext } from '../../../context'
+import { Favorite, FavoriteBorder } from '@mui/icons-material'
 
 type FavoriteButtonProps = {
 	handle: string 
@@ -13,10 +13,10 @@ type FavoriteButtonProps = {
 const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 	const { handle } = props
 
-	const { currentUser } = useAuth()
+	const { fetchMe, currentUser } = useAuth()
 	const { setAuthOpen } = useContext(AppContext)
 
-	const [favorited, setFavorited] = useState(false)
+	const [isFavorite, setIsFavorite] = useState(false)
 
 	const { 
     loading, 
@@ -31,21 +31,23 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 		if (!currentUser?.id) {
 			return setAuthOpen(true)
 		}
-		if (favorited) {
-			setFavorited(false)
+		if (isFavorite) {
+			setIsFavorite(false)
 			await unfavorite(handle)
+      fetchMe()
 		} else {
-			setFavorited(true)
+			setIsFavorite(true)
 			await favorite(handle)
+      fetchMe()
 		}
 	}
 
 	useEffect(() => {
 		if (currentUser && handle) {
 			if (isFavorited(currentUser, handle)) {
-				setFavorited(true)
+				setIsFavorite(true)
 			} else {
-				setFavorited(false)
+				setIsFavorite(false)
 			}
 		}
 	}, [currentUser, handle])
@@ -56,14 +58,13 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 			onClick={handleClick}
 			sx={{
 				...sx.icon,
-				...(favorited && sx.favorited),
+				...(isFavorite && sx.isFavorite),
 			}}
 		>
-			<Icon
-        size={20}
-				name="Heart"
-				color={favorited ? 'primary.contrastText' : 'text.primary'}
-			/>
+      { isFavorite ? 
+        <Favorite /> : 
+        <FavoriteBorder />
+      }			
 		</IconButton>
 	)
 }
@@ -72,15 +73,15 @@ export default FavoriteButton
 
 const sx = {
 	icon: {
-		bgcolor: 'grey.100',
+		color: 'text.secondary',
 		'&:hover': {
-			bgcolor: 'grey.300',
+			color: 'text.secondary',
 		},
 	},
-	favorited: {
-		bgcolor: 'primary.main',
+	isFavorite: {
+		color: 'primary.main',
 		'&:hover': {
-			bgcolor: 'primary.dark',
+			color: 'primary.dark',
 		},
 	},
 }

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Box } from '@mui/material'
 import { AppContext } from '../../../../context'
-import { Image, Actions, TouchableOpacity } from '../../..'
+import { FavoriteButton, Image, Actions, TouchableOpacity } from '../../..'
 import { useRouter } from 'next/router'
 import { IMAGE_HORIZ_HEIGHT } from '../../../../constants/index'
 import { CardProps } from '../../../../types'
@@ -17,6 +17,7 @@ const ImageHoriz: React.FC<CardProps> = (props) => {
 		objectFit = 'cover',
 		enableGradient = false,
 		enableOverlay = false,
+    enableFavorites = false
 	} = props || {}
 
 	const router = useRouter()
@@ -50,6 +51,11 @@ const ImageHoriz: React.FC<CardProps> = (props) => {
 						alt={title}
 						enableGradient={enableGradient}
 						enableOverlay={enableOverlay}
+            secondaryActions={enableFavorites && (
+              <FavoriteButton
+                handle={resource?.handle}
+              />
+            )}
 					/>
 				</TouchableOpacity>
 			</Box>
