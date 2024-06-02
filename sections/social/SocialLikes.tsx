@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { Favorites } from '../../components'
-import { FavoritesProps } from '../../components/social/favorites/Favorites'
+import { Likes } from '../../components'
+import { LikesProps } from '../../components/social/likes/Likes'
 import { SectionProps, HeadingProps } from '../../types'
 
-type SocialFavoritesProps = SectionProps & HeadingProps & FavoritesProps
+type SocialFavoritesProps = SectionProps & HeadingProps & LikesProps
 
 const SocialFavorites: React.FC<SocialFavoritesProps> = (props) => {
 	const {
@@ -40,7 +40,7 @@ const SocialFavorites: React.FC<SocialFavoritesProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<Favorites {...rest} />
+			<Likes {...rest} />
 		</Section>
 	)
 }
