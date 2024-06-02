@@ -148,6 +148,7 @@ export default SubscriptionTable
 
 const sx = {
   table: {
+    width: "100%",
     justifyContent: 'center',
     alignItems: 'center',
   },

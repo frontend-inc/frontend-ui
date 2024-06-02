@@ -14,7 +14,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = (props) => {
 	const { logo } = useApp()
 
 	return (
-		<Stack direction="column" spacing={2} justifyContent="space-between">
+		<Stack width='100%' direction="column" spacing={2} justifyContent="space-between">
 			<Box sx={sx.header}>
 				<Box sx={sx.logo}>
 					{logo && (
@@ -44,6 +44,7 @@ export default AuthLayout
 
 const sx = {
 	root: {
+    width: '100%',
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',

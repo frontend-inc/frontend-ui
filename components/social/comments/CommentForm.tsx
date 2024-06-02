@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack, ListItem, Button } from '@mui/material'
-import { AuthRequired, IconLoading, TextInput } from '../../../components'
+import { AuthGuard, IconLoading, TextInput } from '../../../components'
 
 type CommentFormProps = {
 	pl?: number
@@ -22,7 +22,7 @@ const CommentForm: React.FC<CommentFormProps> = (props) => {
 	} = props || {}
 
 	return (
-		<AuthRequired>
+		<AuthGuard>
 			<ListItem
 				sx={{
 					pl,
@@ -48,7 +48,7 @@ const CommentForm: React.FC<CommentFormProps> = (props) => {
 					</Button>
 				</Stack>
 			</ListItem>
-		</AuthRequired>
+		</AuthGuard>
 	)
 }
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Fade, Box } from '@mui/material'
 import { muiTheme } from '../../theme'
-import { AuthRequired } from '../../components'
+import { AuthGuard } from '../../components'
 import { SectionProps } from '../../types'
 
 const Section: React.FC<SectionProps> = (props) => {
@@ -56,14 +56,14 @@ const Section: React.FC<SectionProps> = (props) => {
 						maxWidth: width,
 					}}
 				>
-					<AuthRequired
+					<AuthGuard
 						requireAuth={requireAuth}
 						requireTeam={requireTeam}
 						requirePaid={requirePaid}
 						requireAdmin={requireAdmin}
 					>
 						{children}
-					</AuthRequired>
+					</AuthGuard>
 				</Box>
 			</Box>
 		</Fade>

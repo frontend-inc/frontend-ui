@@ -12,7 +12,7 @@ export type LoginProps = {
 	oneTimePasswordUrl?: string
 	disableUsername?: boolean
 	enableGoogle?: boolean
-	href: string
+	href?: string
 }
 
 const Login: React.FC<LoginProps> = (props) => {
@@ -33,7 +33,7 @@ const Login: React.FC<LoginProps> = (props) => {
 
 	const handleSubmit = async () => {
 		let resp = await login(user)
-		if (resp?.id) {
+		if (resp?.id && href) {
 			router.push(`${clientUrl}${href}`)
 		}
 	}

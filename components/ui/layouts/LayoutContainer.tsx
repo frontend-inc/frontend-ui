@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Box } from '@mui/material'
-import { Alert, LayoutScroll } from '../../../components'
+import { AuthGuard, Alert, LayoutScroll } from '../../../components'
 import { Notifications } from '../../../components'
 import { NotificationType } from '../../../types'
 
@@ -13,6 +13,10 @@ type LayoutContainerProps = {
 	notifications: NotificationType[]
 	offsetY?: number
 	offsetX?: number
+  requireAuth?: boolean
+  requireTeam?: boolean
+  requirePaid?: boolean
+  requireAdmin?: boolean
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
@@ -23,6 +27,10 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 		notifications,
 		enableSideNav = false,
 		offsetY = 0,
+    requireAuth,
+    requireTeam,
+    requirePaid,
+    requireAdmin,
 	} = props
 
 	const [enableNotifications, setEnableNotifications] = useState(false)
@@ -62,8 +70,15 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 					}}
 				>
 					<LayoutScroll>
-						{children}
-						{footer}
+            <AuthGuard
+              requireAuth={requireAuth}
+              requirePaid={requirePaid}
+              requireTeam={requireTeam}
+              requireAdmin={requireAdmin}              
+            >
+              {children}
+              {footer}
+            </AuthGuard>
 					</LayoutScroll>
 				</Box>
 			</Box>
