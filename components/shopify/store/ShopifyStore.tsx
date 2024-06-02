@@ -8,11 +8,11 @@ import { Cart, SearchModal } from '../../../components/shopify'
 
 type ShopifyStoreProps = {
 	enableShopify?: boolean
-	domain: string
-	storefrontAccessToken: string
+	domain?: string
+	storefrontAccessToken?: string
 	customerPortalUrl?: string
 	logo?: string
-	shopUrl: string
+	shopUrl?: string
 	children: any
 }
 

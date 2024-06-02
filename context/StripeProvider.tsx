@@ -2,7 +2,7 @@ import React from 'react'
 import StripeContext from './StripeContext'
 
 type StripeProviderProps = {
-	publishableKey: string
+	publishableKey?: string
   customerPortalUrl?: string
 	children: React.ReactNode
 }
