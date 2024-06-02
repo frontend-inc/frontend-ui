@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
-import { FavoriteButton, Actions, Image, SocialButtons } from '../../../components'
+import { BuyNowButton, StripePaymentLink, Actions, Image, SocialButtons } from '../../../components'
 import { CollectionShowItemProps } from './CollectionShow'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
@@ -16,7 +16,9 @@ const Item: React.FC<CollectionShowItemProps> = (props) => {
     handleEdit, 
     enableLikes,
     enableFavorites,
-    enableSharing 
+    enableSharing,
+    enableBuyNow,
+    enableStripePaymentLink, 
   } =
 		props || {}
 	const { handle, label, title, image, description } = resource || {}
@@ -68,6 +70,18 @@ const Item: React.FC<CollectionShowItemProps> = (props) => {
             <Typography color="text.primary" variant="h4">
               {title}
             </Typography>
+            { enableBuyNow && (
+              <BuyNowButton 
+                resource={resource}
+                buttonText="Buy Now"              
+              />          
+            )}
+            { enableStripePaymentLink && (
+              <StripePaymentLink 
+                resource={resource}
+                buttonText="Checkout"              
+              />          
+            )}
             <Box>
               {open ? (
                 <Typography variant="body1" color="text.primary" sx={sx.text}>

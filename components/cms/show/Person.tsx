@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
-import { SocialButtons, Image, Actions, SocialLink } from '../../../components'
+import { BuyNowButton, StripePaymentLink,  SocialButtons, Image, Actions, SocialLink } from '../../../components'
 import { CollectionShowItemProps } from './CollectionShow'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
@@ -8,15 +8,25 @@ import { buildActions } from '../../../helpers'
 const Person: React.FC<CollectionShowItemProps> = (props) => {
 	const MAX_CHARS = 500
 
-	const { actions, resource, enableBorder, enableEdit, handleEdit, enableFavorites, enableLikes, enableSharing } =
-		props || {}
+	const { 
+    actions, 
+    resource, 
+    enableBorder, 
+    enableEdit, 
+    handleEdit, 
+    enableFavorites, 
+    enableLikes, 
+    enableSharing, 
+    enableBuyNow, 
+    enableStripePaymentLink 
+  } = props || {}
 	const { data } = resource || {}
 	const { facebook, instagram, linkedin, twitter, youtube, blog } = data || {}
 
 	const { handle, label, title, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
 	return (
-    <Stack spacing={2} direction='column' justifyContent='center'>
+    <Stack spacing={3} direction='column' justifyContent='center'>
 		<Box
 			sx={{
 				...sx.root,
@@ -38,29 +48,26 @@ const Person: React.FC<CollectionShowItemProps> = (props) => {
 					/>
 				</Box>
 				<Stack
-					spacing={2}
+					spacing={1}
 					sx={{ ...sx.content, ...(enableBorder && sx.contentBorder) }}
 				>
 					<Typography color="text.primary" variant="h4">
 						{title}
 					</Typography>
-					{facebook ||
-						instagram ||
-						linkedin ||
-						twitter ||
-						youtube ||
-						(blog && (
-							<Stack direction="row" spacing={0} sx={sx.socialUrls}>
-								{facebook && <SocialLink provider="facebook" url={facebook} />}
-								{instagram && (
-									<SocialLink provider="instagram" url={instagram} />
-								)}
-								{linkedin && <SocialLink provider="linkedin" url={linkedin} />}
-								{twitter && <SocialLink provider="twitter" url={twitter} />}
-								{youtube && <SocialLink provider="youtube" url={youtube} />}
-								{blog && <SocialLink provider="blog" url={blog} />}
-							</Stack>
-						))}
+         
+          { enableBuyNow && (
+            <BuyNowButton 
+              resource={resource}
+              buttonText="Buy Now"              
+            />          
+          )}
+          { enableStripePaymentLink && (
+            <StripePaymentLink 
+              resource={resource}
+              buttonText="Checkout"              
+            />          
+          )}
+          
 					<Box>
 						{open ? (
 							<Typography variant="body1" color="text.primary" sx={sx.text}>

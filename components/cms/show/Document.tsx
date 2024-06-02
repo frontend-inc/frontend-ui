@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
-import { SocialButtons, Label, Actions } from '../../../components'
+import { BuyNowButton, StripePaymentLink, SocialButtons, Label, Actions } from '../../../components'
 import { CollectionShowItemProps } from './CollectionShow'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
@@ -8,7 +8,7 @@ import { buildActions } from '../../../helpers'
 const Document: React.FC<CollectionShowItemProps> = (props) => {
 	const MAX_CHARS = 500
 
-	const { actions, resource, enableBorder, enableEdit, handleEdit, enableFavorites, enableLikes, enableSharing } =
+	const { actions, resource, enableBorder, enableEdit, handleEdit, enableFavorites, enableLikes, enableSharing, enableBuyNow, enableStripePaymentLink } =
 		props || {}
 
 	const { label, title, description } = resource || {}
@@ -33,6 +33,19 @@ const Document: React.FC<CollectionShowItemProps> = (props) => {
 				<Typography color="text.primary" variant="h4">
 					{title}
 				</Typography>
+
+        { enableBuyNow && (
+          <BuyNowButton 
+            resource={resource}
+            buttonText="Buy Now"              
+          />          
+        )}
+        { enableStripePaymentLink && (
+          <StripePaymentLink 
+            resource={resource}
+            buttonText="Checkout"              
+          />          
+        )}
 				<Box>
 					{open ? (
 						<Typography variant="body1" color="text.primary" sx={sx.text}>

@@ -8,14 +8,14 @@ import {
 	ListItemButton,
 	Typography,
 } from '@mui/material'
-import { Icon } from '../../../components'
+import { Icon } from '../..'
 
-type TopNavStripeCustomerButtonButtonProps = {
+type TopNavStripeCustomerPortalButtonProps = {
 	handleClick: () => void
 	icon: string
 }
 
-const TopNavStripeCustomerButtonButton: React.FC<TopNavStripeCustomerButtonButtonProps> = (
+const TopNavStripeCustomerPortalButton: React.FC<TopNavStripeCustomerPortalButtonProps> = (
 	props
 ) => {
 	const { handleClick, icon } = props
@@ -27,12 +27,12 @@ const TopNavStripeCustomerButtonButton: React.FC<TopNavStripeCustomerButtonButto
 	)
 }
 
-type SideNavStripeCustomerButtonButtonProps = {
+type SideNavStripeCustomerPortalButtonProps = {
 	handleClick: () => void
 	icon: string
 }
 
-const SideNavStripeCustomerButtonButton: React.FC<SideNavStripeCustomerButtonButtonProps> = (
+const SideNavStripeCustomerPortalButton: React.FC<SideNavStripeCustomerPortalButtonProps> = (
 	props
 ) => {
 	const { handleClick, icon } = props
@@ -58,12 +58,12 @@ const SideNavStripeCustomerButtonButton: React.FC<SideNavStripeCustomerButtonBut
 	)
 }
 
-type StripeCustomerButtonProps = {
+type StripeCustomerPortalButtonProps = {
 	icon?: string
 	variant?: 'topNav' | 'sideNav'
 }
 
-const StripeCustomerButton: React.FC<StripeCustomerButtonProps> = (props) => {
+const StripeCustomerPortalButton: React.FC<StripeCustomerPortalButtonProps> = (props) => {
 	const { icon = 'CreditCard', variant = 'topNav' } = props || {}
 
 	const { stripeCustomerPortalUrl } = useContext(StripeContext) as any
@@ -76,13 +76,13 @@ const StripeCustomerButton: React.FC<StripeCustomerButtonProps> = (props) => {
 
 	if (!stripeCustomerPortalUrl) return null
 	return variant == 'topNav' ? (
-		<TopNavStripeCustomerButtonButton icon={icon} handleClick={handleClick} />
+		<TopNavStripeCustomerPortalButton icon={icon} handleClick={handleClick} />
 	) : (
-		<SideNavStripeCustomerButtonButton icon={icon} handleClick={handleClick} />
+		<SideNavStripeCustomerPortalButton icon={icon} handleClick={handleClick} />
 	)
 }
 
-export default StripeCustomerButton
+export default StripeCustomerPortalButton
 
 const sx = {
 	listItemButton: {

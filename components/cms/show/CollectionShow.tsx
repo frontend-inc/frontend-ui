@@ -25,6 +25,8 @@ export type CollectionShowItemProps = {
   enableFavorites?: boolean
   enableLikes?: boolean
   enableSharing?: boolean
+  enableBuyNow?: boolean
+  enableStripePaymentLink?: boolean
 	handleEdit?: () => void
 }
 
@@ -59,6 +61,8 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
     enableFavorites,
     enableLikes,
     enableSharing,
+    enableBuyNow,
+    enableStripePaymentLink
 	} = props || {}
 
   const { setAuthOpen } = useContext(AppContext)
@@ -134,7 +138,9 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 					handleEdit={handleEdit}
           enableFavorites={enableFavorites}
           enableLikes={enableLikes}
-          enableSharing={enableSharing}          
+          enableSharing={enableSharing}   
+          enableBuyNow={enableBuyNow}
+          enableStripePaymentLink={enableStripePaymentLink}       
 				/>
 			)}
 			{displayFields?.length > 0 && (

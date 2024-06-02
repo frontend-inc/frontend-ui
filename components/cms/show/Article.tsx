@@ -1,13 +1,13 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
-import { SocialButtons, Actions, Image } from '../../../components'
+import { BuyNowButton, StripePaymentLink, SocialButtons, Actions, Image } from '../../../components'
 import moment from 'moment'
 import { CollectionShowItemProps } from './CollectionShow'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
 const Article: React.FC<CollectionShowItemProps> = (props) => {
-	const { actions, resource, enableBorder, enableEdit, handleEdit, enableFavorites, enableLikes, enableSharing } =
+	const { actions, resource, enableBorder, enableEdit, handleEdit, enableFavorites, enableLikes, enableSharing, enableBuyNow, enableStripePaymentLink } =
 		props || {}
 	const { handle, label, title, image, description, data } = resource || {}
 	const { published_at } = data || {}
@@ -20,15 +20,8 @@ const Article: React.FC<CollectionShowItemProps> = (props) => {
 			spacing={6}
 		>
 			<Stack spacing={3} sx={sx.header}>
-				<Typography color="text.primary" variant="h3">
-					{title}
-				</Typography>
-				{published_at && (
-					<Typography color="text.secondary" variant="caption">
-						{moment(published_at).format('MMMM D, YYYY')}
-					</Typography>
-				)}
-				{(actions || enableEdit) && (
+
+      {(actions || enableEdit) && (
 					<Stack
 						direction={{ xs: 'column', sm: 'row' }}
 						sx={sx.actions}
@@ -46,6 +39,29 @@ const Article: React.FC<CollectionShowItemProps> = (props) => {
 						/>
 					</Stack>
 				)}
+				<Typography color="text.primary" variant="h3">
+					{title}
+				</Typography>        
+				{published_at && (
+					<Typography color="text.secondary" variant="caption">
+						{moment(published_at).format('MMMM D, YYYY')}
+					</Typography>
+				)}
+      { enableBuyNow && (
+          <BuyNowButton             
+            resource={resource}
+            buttonText="Buy Now"              
+            justifyContent='center'
+          />          
+        )}
+        { enableStripePaymentLink && (
+          <StripePaymentLink 
+            resource={resource}
+            buttonText="Checkout" 
+            justifyContent='center'             
+          />          
+        )}
+				
 			</Stack>
 			<Image
 				src={image?.url}
@@ -54,6 +70,8 @@ const Article: React.FC<CollectionShowItemProps> = (props) => {
 				label={label}
 				disableBorderRadius={enableBorder}        
 			/>
+              
+        
       <SocialButtons 
         handle={resource?.handle}
         enableLikes={enableLikes}
