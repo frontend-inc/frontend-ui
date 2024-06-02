@@ -12,7 +12,6 @@ const CmsFormWizard: React.FC<CmsFormWizardProps> = (props) => {
 		py, //special case for padding y
 		px,
 		maxWidth,
-		requireAuth,
 		requireTeam,
 		requirePaid,
 		requireAdmin,
@@ -21,7 +20,7 @@ const CmsFormWizard: React.FC<CmsFormWizardProps> = (props) => {
 
 	return (
 		<Section
-			requireAuth={requireAuth}
+			requireAuth
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}

@@ -88,13 +88,17 @@ const CardList: React.FC<CardProps> = (props) => {
 							{truncate(description, 80)}
 						</Typography>
 					</Stack>
-          <Stack direction='column' alignItems='flex-end'>            
-            <Actions numVisible={0} resource={resource} actions={actions} />
-            {enableFavorites && (
+          <Stack direction="row" justifyContent='flex-end'>                        
+            { enableFavorites && 
               <FavoriteButton
                 handle={resource?.handle}
               />
-            )}
+            }
+            <Actions 
+              numVisible={0} 
+              actions={actions} 
+              resource={resource} 
+            />
           </Stack>
 				</Stack>
 			</Stack>

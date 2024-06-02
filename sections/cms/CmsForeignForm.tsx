@@ -16,7 +16,6 @@ const CmsForeignForm: React.FC<CmsForeignFormProps> = (props) => {
 		py,
 		px,
 		maxWidth,
-		requireAuth,
 		requireTeam,
 		requirePaid,
 		requireAdmin,
@@ -25,7 +24,7 @@ const CmsForeignForm: React.FC<CmsForeignFormProps> = (props) => {
 
 	return (
 		<Section
-			requireAuth={requireAuth}
+			requireAuth
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}

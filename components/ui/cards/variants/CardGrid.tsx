@@ -68,7 +68,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 					<Typography sx={sx.title} color="textPrimary" variant="subtitle2">
 						{truncate(title)}
 					</Typography>
-          <Stack direction="column" alignItems='flex-end'>            
+          <Stack direction="row" justifyContent='flex-end'>                        
             { enableFavorites && 
               <FavoriteButton
                 handle={resource?.handle}
