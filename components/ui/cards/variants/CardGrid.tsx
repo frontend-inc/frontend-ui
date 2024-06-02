@@ -90,7 +90,9 @@ export default CardGrid
 
 const sx = {
 	root: {
-		width: '100%',
+    borderRadius: 1,
+    width: '100%',
+    minWidth: 300,
 	},
 	rootBorder: {
 		border: '1px solid',

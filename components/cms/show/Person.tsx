@@ -38,15 +38,26 @@ const Person: React.FC<CollectionShowItemProps> = (props) => {
 				direction={{ sm: 'row', xs: 'column' }}
 				spacing={4}
 			>
-				<Box sx={sx.imageContainer}>
-					<Image
-						label={label}
-						height={240}
-						src={image?.url}
-						alt={title}
-						disableBorderRadius={enableBorder}            
-					/>
-				</Box>
+        <Stack sx={{
+          ...sx.leftPanel,
+          ...((enableBorder && (enableFavorites || enableSharing || enableLikes)) && sx.leftPanelBorder) 
+        }} spacing={2} direction="column">
+          <Box sx={sx.imageContainer}>
+            <Image
+              label={label}
+              height={240}
+              src={image?.url}
+              alt={title}
+              disableBorderRadius={enableBorder}            
+            />
+          </Box>
+          <SocialButtons 
+            handle={resource?.handle}
+            enableLikes={enableLikes}
+            enableFavorites={enableFavorites}
+            enableSharing={enableSharing}
+          />
+      </Stack>
 				<Stack
 					spacing={1}
 					sx={{ ...sx.content, ...(enableBorder && sx.contentBorder) }}
@@ -105,12 +116,6 @@ const Person: React.FC<CollectionShowItemProps> = (props) => {
 				)}
 			</Stack>
 		</Box>
-    <SocialButtons 
-      handle={resource?.handle}
-      enableLikes={enableLikes}
-      enableFavorites={enableFavorites}
-      enableSharing={enableSharing}
-    />
   </Stack>  
 	)
 }
@@ -139,6 +144,12 @@ const sx = {
 			xs: 'center',
 		},
 	},
+  leftPanel: {
+    width: "100%",
+  },
+  leftPanelBorder: {
+    pb: 2,
+  },
 	imageContainer: {
 		width: '100%',
 		height: '100%',

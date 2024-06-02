@@ -41,7 +41,7 @@ export default TouchableOpacity
 const sx = {
 	root: {
 		p: 0,
-		cursor: 'pointer',
+		cursor: 'pointer !important',
 		overflow: 'hidden',
 		display: 'flex',
 		flexDirection: 'row',

@@ -108,6 +108,7 @@ export default Image
 
 const sx = {
 	root: {
+    cursor: 'pointer',
 		position: 'relative',
 		width: '100%',
 		display: 'flex',

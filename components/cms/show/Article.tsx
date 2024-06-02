@@ -6,8 +6,12 @@ import { CollectionShowItemProps } from './CollectionShow'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-const Article: React.FC<CollectionShowItemProps> = (props) => {
-	const { actions, resource, enableBorder, enableEdit, handleEdit, enableFavorites, enableLikes, enableSharing, enableBuyNow, enableStripePaymentLink } =
+type ArticleProps = CollectionShowItemProps & {
+  disableImage?: boolean
+}
+
+const Article: React.FC<ArticleProps> = (props) => {
+	const { actions, resource, disableImage=false, enableBorder, enableEdit, handleEdit, enableFavorites, enableLikes, enableSharing, enableBuyNow, enableStripePaymentLink } =
 		props || {}
 	const { handle, label, title, image, description, data } = resource || {}
 	const { published_at } = data || {}
@@ -17,10 +21,9 @@ const Article: React.FC<CollectionShowItemProps> = (props) => {
 				...sx.root,
 				...(enableBorder && sx.rootBorder),
 			}}
-			spacing={6}
+			spacing={4}
 		>
 			<Stack spacing={3} sx={sx.header}>
-
       {(actions || enableEdit) && (
 					<Stack
 						direction={{ xs: 'column', sm: 'row' }}
@@ -60,9 +63,9 @@ const Article: React.FC<CollectionShowItemProps> = (props) => {
             buttonText="Checkout" 
             justifyContent='center'             
           />          
-        )}
-				
+        )}				
 			</Stack>
+      { !disableImage && (
 			<Image
 				src={image?.url}
 				alt={title}
@@ -70,7 +73,7 @@ const Article: React.FC<CollectionShowItemProps> = (props) => {
 				label={label}
 				disableBorderRadius={enableBorder}        
 			/>
-              
+      )}  
         
       <SocialButtons 
         handle={resource?.handle}

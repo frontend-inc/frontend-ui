@@ -60,9 +60,9 @@ const BuyNowButton: React.FC<BuyNowButtonProps> = (props) => {
   return(
     <Box>
       <Stack direction="column" spacing={1} alignItems={justifyContent}>
-        <Stack direction="row" spacing={1} alignItems='center' justifyContent={justifyContent}>
+        <Stack direction="row" spacing={1} alignItems='center' justifyContent={justifyContent}>          
           <Typography variant="subtitle1" color="textPrimary">
-            {displayAmount}
+            {displayAmount ? displayAmount : 'FREE'}
           </Typography>
           <Typography variant="caption" color="text.secondary">
             {availableForSale ? "Price" : "Sold out"}
@@ -92,7 +92,7 @@ const BuyNowButton: React.FC<BuyNowButtonProps> = (props) => {
             <IconLoading loading={loading} />
           }
         >
-          { purchased ? "Purchased" : `${buttonText} ${displayAmount}` }        
+          { purchased ? "Purchased" : `${buttonText} ${displayAmount ? displayAmount : ''}` }        
         </Button>
       </Stack>
       <AlertModal 

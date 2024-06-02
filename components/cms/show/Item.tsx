@@ -38,15 +38,30 @@ const Item: React.FC<CollectionShowItemProps> = (props) => {
           direction={{ md: 'row', xs: 'column' }}
           spacing={4}
         >
-          <Box sx={sx.imageContainer}>
-            <Image
-              src={image?.url}
-              alt={title}
-              height={360}
-              label={label}
-              disableBorderRadius={enableBorder}
-            />
-          </Box>
+          <Stack 
+            spacing={2} 
+            direction="column"
+            sx={{
+              ...sx.leftPanel,
+              ...((enableBorder && (enableFavorites || enableSharing || enableLikes)) && sx.leftPanelBorder) 
+            }}
+          >
+            <Box sx={sx.imageContainer}>
+              <Image
+                src={image?.url}
+                alt={title}
+                height={360}
+                label={label}
+                disableBorderRadius={enableBorder}
+              />
+            </Box>
+          <SocialButtons 
+            handle={resource?.handle}
+            enableLikes={enableLikes}
+            enableFavorites={enableFavorites}
+            enableSharing={enableSharing}
+          />
+          </Stack>
           <Stack
             spacing={2}
             sx={{
@@ -100,13 +115,7 @@ const Item: React.FC<CollectionShowItemProps> = (props) => {
             </Box>
           </Stack>
         </Stack>
-      </Box>
-      <SocialButtons 
-        handle={resource?.handle}
-        enableLikes={enableLikes}
-        enableFavorites={enableFavorites}
-        enableSharing={enableSharing}
-      />
+      </Box>     
     </Stack>
 	)
 }
@@ -173,7 +182,18 @@ const sx = {
 		width: '100%',
 	},
 	imageContainer: {
+    transition: 'all 0.5s ease-in-out',
+    borderRadius: 1,
 		width: '100%',
 		minWidth: 300,
+    '&:hover': {
+      boxShadow: '0 0 20px rgba(0,0,0,0.2)',
+    }
 	},
+  leftPanel: {
+    width: "100%"
+  },
+  leftPanelBorder: {
+    pb: 2
+  }
 }
