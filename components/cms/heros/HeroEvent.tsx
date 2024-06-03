@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeroArticle } from 'frontend-ui/components'
+import { HeroArticle } from '../../../components'
 import { HeroProps } from './Hero'
 
 const HeroEvent: React.FC<HeroProps> = (props) => {

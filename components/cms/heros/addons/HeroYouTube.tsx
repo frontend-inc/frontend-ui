@@ -4,7 +4,7 @@ import { HeroProps } from '../Hero'
 import { flattenDocument } from 'frontend-js'
 import HeroContainer from '../HeroContainer'
 
-type HeroYouTubeProps = HeroProps & {
+export type HeroYouTubeProps = HeroProps & {
 	fieldName: string
 }
 

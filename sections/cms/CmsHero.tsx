@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section } from '../../components'
 import { Hero } from '../../components'
-import { HeroProps } from '../../components/cms/heros/Hero'
+import { HeroItemProps } from '../../components/cms/heros/Hero'
 import { SectionProps } from '../../types'
 
-type CmsHeroProps = SectionProps & HeroProps
+type CmsHeroProps = SectionProps & HeroItemProps
 
 const CmsHero: React.FC<CmsHeroProps> = (props) => {
 	const {

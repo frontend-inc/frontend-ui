@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section } from '../../components'
-import { Hero } from '../../components'
-import { HeroProps } from '../../components/cms/heros/Hero'
+import { HeroVimeo } from '../../components'
+import { HeroVimeoProps } from '../../components/cms/heros/addons/HeroVimeo'
 import { SectionProps } from '../../types'
 
-type CmsVimeoProps = SectionProps & HeroProps
+type CmsVimeoProps = SectionProps & HeroVimeoProps
 
 const CmsVimeo: React.FC<CmsVimeoProps> = (props) => {
 	const {
@@ -30,7 +30,7 @@ const CmsVimeo: React.FC<CmsVimeoProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Hero {...rest} style={'vimeo'} />
+			<HeroVimeo {...rest} />
 		</Section>
 	)
 }

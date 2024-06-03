@@ -8,7 +8,7 @@ import {
 import { useAlerts } from '../../../hooks'
 import { Modal, SocialIcon } from '../..'
 import { IosShare } from '@mui/icons-material'
-import copy from 'copy-to-clipboard'
+
 
 type ShareButtonProps = {
 	url: string
@@ -118,10 +118,6 @@ const sx = {
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center'
-  },
-  button: {
-    border: '1px solid',
-    borderColor: 'divider',
   },
   text: {
     width: '100%',

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
 import { Actions, ActionButton } from '../..'
-import { HeroItemProps } from './Hero'
+import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-type HeroContainerProps = HeroItemProps & {
+type HeroContainerProps = HeroProps & {
 	children: React.ReactNode
 }
 

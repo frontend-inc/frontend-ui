@@ -4,7 +4,7 @@ import { HeroProps } from '../Hero'
 import { flattenDocument } from 'frontend-js'
 import HeroContainer from '../HeroContainer'
 
-type HeroVimeoProps = HeroProps & {
+export type HeroVimeoProps = HeroProps & {
 	fieldName: string
 }
 

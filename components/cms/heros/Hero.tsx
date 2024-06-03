@@ -40,17 +40,18 @@ type HeroStyleTypes =
 	| 'youtube'
 	| 'vimeo'
 
-export type Hero = HeroProps & {
-	fields: FormFieldType[]
+export type HeroItemProps = HeroProps & {
+  fieldName: string
+	fields?: FormFieldType[]
 	url: string
 	style: HeroStyleTypes
 }
 
-const Hero: React.FC<Hero> = (props) => {
+const Hero: React.FC<HeroItemProps> = (props) => {
 	let { handle } = props
 	if (handle == 'index') handle = undefined
 	const {
-		style = 'item',
+		style = 'article',
 		resource: _resource,
 		fields,
 		fieldName,
