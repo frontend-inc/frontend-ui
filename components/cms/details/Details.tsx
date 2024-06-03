@@ -3,7 +3,7 @@ import { Box, Grid } from '@mui/material'
 import { Field } from '../..'
 import { flattenDocument } from '../../../helpers'
 
-type DetailsProps = {
+export type DetailsProps = {
 	fields: any[]
 	url: string
 	resource: any

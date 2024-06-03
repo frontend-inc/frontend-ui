@@ -1,15 +1,15 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
-import { Actions, ActionButton } from '../../../components'
-import { ShowItemProps } from './Show'
+import { Actions, ActionButton } from '../..'
+import { HeroItemProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-type ShowContainerProps = ShowItemProps & {
+type HeroContainerProps = HeroItemProps & {
 	children: React.ReactNode
 }
 
-const ShowContainer: React.FC<ShowContainerProps> = (props) => {
+const HeroContainer: React.FC<HeroContainerProps> = (props) => {
 	const { actions, resource, children, enableBorder, enableEdit, handleEdit } =
 		props || {}
 	const { title, description } = resource || {}
@@ -66,7 +66,7 @@ const ShowContainer: React.FC<ShowContainerProps> = (props) => {
 	)
 }
 
-export default ShowContainer
+export default HeroContainer
 
 const sx = {
 	root: {

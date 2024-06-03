@@ -2,20 +2,19 @@ import React, { useState, useEffect, useContext } from 'react'
 import { AppContext } from '../../../context'
 import { useAuth } from 'frontend-js'
 import { Button, Stack } from '@mui/material'
-import { ActionType, DisplayFieldType, FormFieldType } from '../../../types'
-import Article from './Article'
-import Product from './Product'
-import Profile from './Profile'
-import Document from './Document'
-import Event from './Event'
-import Place from './Place'
-import Details from '../details/Details'
-import YouTubeVideo from './addons/YouTubeVideo'
-import VimeoEmbed from './addons/VimeoVideo'
+import { ActionType, FormFieldType } from '../../../types'
+import Article from './HeroArticle'
+import Product from './HeroProduct'
+import Profile from './HeroProfile'
+import Document from './HeroDocument'
+import Event from './HeroEvent'
+import Place from './HeroPlace'
+import YouTubeVideo from './addons/HeroYouTube'
+import VimeoEmbed from './addons/HeroVimeo'
 import { Drawer, Form, IconLoading } from '../..'
 import { useDocuments, flattenDocument } from 'frontend-js'
 
-export type ShowItemProps = {
+export type HeroProps = {
 	handle?: string
 	enableBorder?: boolean
 	actions: ActionType[]
@@ -32,7 +31,7 @@ export type ShowItemProps = {
 	handleEdit?: () => void
 }
 
-type ShowStyleTypes =
+type HeroStyleTypes =
 	| 'product'
 	| 'article'
 	| 'profile'
@@ -40,14 +39,13 @@ type ShowStyleTypes =
 	| 'youtube'
 	| 'vimeo'
 
-export type ShowProps = ShowItemProps & {
+export type Hero = HeroProps & {
 	fields: FormFieldType[]
-	displayFields: DisplayFieldType[]
 	url: string
-	style: ShowStyleTypes
+	style: HeroStyleTypes
 }
 
-const Show: React.FC<ShowProps> = (props) => {
+const Hero: React.FC<Hero> = (props) => {
 	let { handle } = props
 	if (handle == 'index') handle = undefined
 	const {
@@ -55,7 +53,6 @@ const Show: React.FC<ShowProps> = (props) => {
 		resource: _resource,
 		fields,
 		fieldName,
-		displayFields,
 		url,
 		actions,
 		enableBorder,
@@ -176,7 +173,7 @@ const Show: React.FC<ShowProps> = (props) => {
 	)
 }
 
-export default Show
+export default Hero
 
 const sx = {
 	root: {

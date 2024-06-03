@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
 import { BuyNowButton, StripePaymentLink,  SocialButtons, Image, Actions, SocialLink } from '../..'
-import { ShowItemProps } from './Show'
+import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-const Profile: React.FC<ShowItemProps> = (props) => {
+const Profile: React.FC<HeroProps> = (props) => {
 	const MAX_CHARS = 500
 
 	const { 

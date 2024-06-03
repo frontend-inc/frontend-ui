@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section } from '../../components'
-import { Show } from '../../components'
-import { ShowProps } from '../../components/cms/show/Show'
+import { Hero } from '../../components'
+import { HeroProps } from '../../components/cms/heros/Hero'
 import { SectionProps } from '../../types'
 
-type CmsShowProps = SectionProps & ShowProps
+type CmsHeroProps = SectionProps & HeroProps
 
-const CmsShow: React.FC<CmsShowProps> = (props) => {
+const CmsHero: React.FC<CmsHeroProps> = (props) => {
 	const {
 		bgcolor,
 		py,
@@ -30,9 +30,9 @@ const CmsShow: React.FC<CmsShowProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Show {...rest} />
+			<Hero {...rest} />
 		</Section>
 	)
 }
 
-export default CmsShow
+export default CmsHero

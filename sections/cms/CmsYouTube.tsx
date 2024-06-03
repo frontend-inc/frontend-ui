@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section } from '../../components'
-import { Show } from '../../components'
-import { ShowProps } from '../../components/cms/show/Show'
+import { Hero } from '../../components'
+import { HeroProps } from '../../components/cms/heros/Hero'
 import { SectionProps } from '../../types'
 
-type CmsYouTubeProps = SectionProps & ShowProps
+type CmsYouTubeProps = SectionProps & HeroProps
 
 const CmsYouTube: React.FC<CmsYouTubeProps> = (props) => {
 	const {
@@ -30,7 +30,7 @@ const CmsYouTube: React.FC<CmsYouTubeProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Show {...rest} style={'youtube'} />
+			<Hero {...rest} style={'youtube'} />
 		</Section>
 	)
 }

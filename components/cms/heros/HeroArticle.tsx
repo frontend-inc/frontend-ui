@@ -1,19 +1,19 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
-import { BuyNowButton, StripePaymentLink, SocialButtons, Actions, Image } from '../../../components'
+import { BuyNowButton, StripePaymentLink, SocialButtons, Actions, Image } from '../..'
 import moment from 'moment'
-import { ShowItemProps } from './Show'
+import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-type ArticleProps = ShowItemProps & {
+type HeroArticleProps = HeroProps & {
   disableImage?: boolean
 }
 
-const Article: React.FC<ArticleProps> = (props) => {
+const HeroArticle: React.FC<HeroArticleProps> = (props) => {
 	const { actions, resource, disableImage=false, enableBorder, enableEdit, handleEdit, enableFavorites, enableLikes, enableSharing, enableBuyNow, enableStripePaymentLink } =
 		props || {}
-	const { handle, label, title, image, description, data } = resource || {}
+	const { label, title, image, description, data } = resource || {}
 	const { published_at } = data || {}
 	return (
 		<Stack
@@ -92,7 +92,7 @@ const Article: React.FC<ArticleProps> = (props) => {
 	)
 }
 
-export default Article
+export default HeroArticle
 
 const sx = {
 	root: {

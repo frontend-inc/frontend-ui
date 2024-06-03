@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
 import { BuyNowButton, StripePaymentLink, Actions, Image, SocialButtons } from '../..'
-import { ShowItemProps } from './Show'
+import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-const Place: React.FC<ShowItemProps> = (props) => {
+const HeroPlace: React.FC<HeroProps> = (props) => {
 	const MAX_CHARS = 500
 
 	const { 
@@ -120,7 +120,7 @@ const Place: React.FC<ShowItemProps> = (props) => {
 	)
 }
 
-export default Place
+export default HeroPlace
 
 const sx = {
 	root: {
