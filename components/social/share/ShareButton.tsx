@@ -25,7 +25,6 @@ const ShareButton: React.FC<ShareButtonProps> = (props) => {
 		{ label: 'Share to Twitter', value: 'twitter' },
 		{ label: 'Share to LinkedIn', value: 'linkedin' },
 		{ label: 'Send by Email', value: 'email' },
-		{ label: 'Copy share URL', value: 'copy' },
 	]
 
 	const { showAlertSuccess } = useAlerts()
@@ -58,10 +57,6 @@ const ShareButton: React.FC<ShareButtonProps> = (props) => {
 				return `https://www.linkedin.com/shareArticle?mini=true&url=${url}`
 			case 'email':
 				return `mailto:?subject=Check out this product&body=${url}`
-			case 'copy':
-				copy(url)
-				showAlertSuccess('Share link copied to clipboard')
-				return
 			default:
 				return
 		}

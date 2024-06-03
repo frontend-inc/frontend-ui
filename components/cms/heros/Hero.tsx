@@ -18,6 +18,7 @@ export type HeroProps = {
 	handle?: string
 	enableBorder?: boolean
 	actions: ActionType[]
+  fields?: FormFieldType[]
 	fieldName?: string
 	url?: string
 	resource: any
