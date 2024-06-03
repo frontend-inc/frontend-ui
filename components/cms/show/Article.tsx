@@ -66,6 +66,7 @@ const Article: React.FC<ArticleProps> = (props) => {
         )}				
 			</Stack>
       { !disableImage && (
+        <Box sx={ sx.imageContainer }>
 			<Image
 				src={image?.url}
 				alt={title}
@@ -73,6 +74,7 @@ const Article: React.FC<ArticleProps> = (props) => {
 				label={label}
 				disableBorderRadius={enableBorder}        
 			/>
+      </Box>
       )}  
         
       <SocialButtons 
@@ -129,4 +131,13 @@ const sx = {
 			xs: '100%',
 		},
 	},
+  imageContainer: {
+    width: '100%',
+    transition: 'all 0.4s ease-in-out',
+    borderRadius: 1,
+    boxShadow: '0 0 20px rgba(0,0,0,0.2)',
+    '&:hover': {
+      boxShadow: '0 0 20px rgba(0,0,0,0.4)',
+    }
+  }
 }

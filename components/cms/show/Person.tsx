@@ -161,6 +161,12 @@ const sx = {
 			sm: 240,
 			xs: '100%',
 		},
+    transition: 'all 0.4s ease-in-out',
+    borderRadius: 1,
+    boxShadow: '0 0 20px rgba(0,0,0,0.2)',
+    '&:hover': {
+      boxShadow: '0 0 20px rgba(0,0,0,0.4)',
+    }
 	},
 	header: {
 		width: '100%',
