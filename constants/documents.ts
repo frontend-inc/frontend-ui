@@ -7,6 +7,7 @@ export const ATTACHMENT_FIELDS = ['image', 'video', 'file']
 export const SYSTEM_FIELDS = [
 	'id',
 	'title',
+  'subtitle',
 	'description',
 	'handle',
 	'user_id',
@@ -65,13 +66,27 @@ export const TITLE_FIELD: FieldBase = {
 	editable: true,
 }
 
+export const SUBTITLE_FIELD: FieldBase = {
+	label: 'Subtitle',
+	variant: 'string',
+	reference: false,
+	db_type: 'string',
+	name: 'subtitle',
+	position: 3,
+	array: false,
+	internal: true,
+	visible: true,
+	editable: true,
+}
+
+
 export const PUBLISHED_FIELD: FieldBase = {
 	label: 'Published',
 	variant: 'boolean',
 	reference: false,
 	db_type: 'boolean',
 	name: 'published',
-	position: 3,
+	position: 4,
 	array: false,
 	internal: true,
 	visible: true,
@@ -84,7 +99,7 @@ export const LOCALE_FIELD: FieldBase = {
 	reference: false,
 	db_type: 'string',
 	name: 'locale',
-	position: 4,
+	position: 5,
 	array: false,
 	internal: true,
 	visible: true,
@@ -97,7 +112,7 @@ export const TAGS_FIELD: FieldBase = {
 	reference: false,
 	db_type: 'string',
 	name: 'tags',
-	position: 5,
+	position: 6,
 	array: true,
 	internal: true,
 	editable: true,
@@ -110,7 +125,7 @@ export const USER_FIELD: FieldBase = {
 	db_type: 'belongs_to',
 	name: 'user',
 	internal: true,
-	position: 6,
+	position: 7,
 	array: false,
 	visible: true,
 	editable: false,
@@ -121,6 +136,7 @@ export const DEFAULT_FIELDS: FieldBase[] = [
 	ID_FIELD,
 	HANDLE_FIELD,
 	TITLE_FIELD,
+  SUBTITLE_FIELD,
 	PUBLISHED_FIELD,
 	LOCALE_FIELD,
 	TAGS_FIELD,
