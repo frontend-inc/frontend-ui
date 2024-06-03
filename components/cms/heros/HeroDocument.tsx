@@ -2,7 +2,7 @@ import React from 'react'
 import { HeroArticle } from '../../../components'
 import { HeroProps } from './Hero'
 
-const Document: React.FC<HeroProps> = (props) => {
+const HeroDocument: React.FC<HeroProps> = (props) => {
 	return (
 		<HeroArticle 
       disableImage 
@@ -11,4 +11,4 @@ const Document: React.FC<HeroProps> = (props) => {
 	)
 }
 
-export default Document
+export default HeroDocument

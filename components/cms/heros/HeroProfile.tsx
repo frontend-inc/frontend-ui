@@ -5,7 +5,7 @@ import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-const Profile: React.FC<HeroProps> = (props) => {
+const HeroProfile: React.FC<HeroProps> = (props) => {
 	const MAX_CHARS = 500
 
 	const { 
@@ -119,7 +119,7 @@ const Profile: React.FC<HeroProps> = (props) => {
 	)
 }
 
-export default Profile
+export default HeroProfile
 
 const sx = {
 	root: {
@@ -160,12 +160,7 @@ const sx = {
 			sm: 240,
 			xs: '100%',
 		},
-    transition: 'all 0.4s ease-in-out',
     borderRadius: 1,
-    boxShadow: '0 0 20px rgba(0,0,0,0.2)',
-    '&:hover': {
-      boxShadow: '0 0 20px rgba(0,0,0,0.4)',
-    }
 	},
 	header: {
 		width: '100%',

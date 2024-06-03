@@ -5,7 +5,7 @@ import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-const Product: React.FC<HeroProps> = (props) => {
+const HeroProduct: React.FC<HeroProps> = (props) => {
 	const MAX_CHARS = 500
 
 	const { 
@@ -120,7 +120,7 @@ const Product: React.FC<HeroProps> = (props) => {
 	)
 }
 
-export default Product
+export default HeroProduct
 
 const sx = {
 	root: {

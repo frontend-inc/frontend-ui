@@ -186,10 +186,6 @@ const sx = {
     borderRadius: 1,
 		width: '100%',
 		minWidth: 300,
-    boxShadow: '0 0 20px rgba(0,0,0,0.2)',
-    '&:hover': {
-      boxShadow: '0 0 20px rgba(0,0,0,0.4)',
-    }
 	},
   leftPanel: {
     width: "100%"
