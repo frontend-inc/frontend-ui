@@ -12,7 +12,7 @@ type HeroContainerProps = HeroProps & {
 const HeroContainer: React.FC<HeroContainerProps> = (props) => {
 	const { actions, resource, children, enableBorder, enableEdit, handleEdit } =
 		props || {}
-	const { title, description } = resource || {}
+	const { title, subtitle, description } = resource || {}
 	return (
 		<Stack
 			sx={{
@@ -31,6 +31,11 @@ const HeroContainer: React.FC<HeroContainerProps> = (props) => {
 				<Typography sx={sx.title} color="text.primary" variant="h6">
 					{title}
 				</Typography>
+        { subtitle && (
+          <Typography color="text.secondary" variant="body1">
+            {subtitle}
+          </Typography>  
+        )}            
 
 				{(actions || enableEdit) && (
 					<Stack

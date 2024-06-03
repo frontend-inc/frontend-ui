@@ -21,7 +21,7 @@ const HeroPlace: React.FC<HeroProps> = (props) => {
     enableStripePaymentLink, 
   } =
 		props || {}
-	const { handle, label, title, image, description } = resource || {}
+	const { label, title, subtitle, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
 
 	if (!resource) return null
@@ -85,6 +85,12 @@ const HeroPlace: React.FC<HeroProps> = (props) => {
             <Typography color="text.primary" variant="h4">
               {title}
             </Typography>
+            { subtitle && (
+              <Typography color="text.secondary" variant="body1">
+                {subtitle}
+            </Typography>
+            )}
+            
             { enableBuyNow && (
               <BuyNowButton 
                 resource={resource}

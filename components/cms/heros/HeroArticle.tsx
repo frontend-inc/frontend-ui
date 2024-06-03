@@ -8,13 +8,13 @@ import { buildActions } from '../../../helpers'
 
 type HeroArticleProps = HeroProps & {
   disableImage?: boolean
+  direction?: 'column' | 'column-reverse'
 }
 
 const HeroArticle: React.FC<HeroArticleProps> = (props) => {
-	const { actions, resource, disableImage=false, enableBorder, enableEdit, handleEdit, enableFavorites, enableLikes, enableSharing, enableBuyNow, enableStripePaymentLink } =
+	const { actions, direction='column', resource, disableImage=false, enableBorder, enableEdit, handleEdit, enableFavorites, enableLikes, enableSharing, enableBuyNow, enableStripePaymentLink } =
 		props || {}
-	const { label, title, image, description, data } = resource || {}
-	const { published_at } = data || {}
+	const { label, title, subtitle, image, description, data } = resource || {}
 	return (
 		<Stack
 			sx={{
@@ -23,34 +23,44 @@ const HeroArticle: React.FC<HeroArticleProps> = (props) => {
 			}}
 			spacing={4}
 		>
-			<Stack spacing={3} sx={sx.header}>
       {(actions || enableEdit) && (
-					<Stack
-						direction={{ xs: 'column', sm: 'row' }}
-						sx={sx.actions}
-						spacing={1}
-					>
-						<Actions
-							actions={buildActions({
-								enableEdit,
-								handleEdit,
-								actions,
-							})}
-							numVisible={4}
-							resource={flattenDocument(resource)}
-							justifyContent="center"
-						/>
-					</Stack>
-				)}
+        <Box
+          pt={enableBorder ? 4 : 0 }
+          sx={sx.actions}
+        >
+          <Actions
+            actions={buildActions({
+              enableEdit,
+              handleEdit,
+              actions,
+            })}
+            numVisible={4}
+            resource={flattenDocument(resource)}
+            justifyContent="center"
+          />
+        </Box>
+      )}
+      { (!disableImage && direction == 'column-reverse') && (
+        <Box sx={ sx.imageContainer }>
+          <Image
+            src={image?.url}
+            alt={title}
+            height={400}
+            label={label}
+            disableBorderRadius={enableBorder}        
+          />
+        </Box>
+      )}  
+			<Stack spacing={3} sx={sx.header}>        
 				<Typography color="text.primary" variant="h3">
 					{title}
-				</Typography>        
-				{published_at && (
-					<Typography color="text.secondary" variant="caption">
-						{moment(published_at).format('MMMM D, YYYY')}
-					</Typography>
-				)}
-      { enableBuyNow && (
+				</Typography>  
+        { subtitle && (
+          <Typography color="text.secondary" variant="body1">
+            {subtitle}
+          </Typography>  
+        )}            
+        { enableBuyNow && (
           <BuyNowButton             
             resource={resource}
             buttonText="Buy Now"              
@@ -65,18 +75,17 @@ const HeroArticle: React.FC<HeroArticleProps> = (props) => {
           />          
         )}				
 			</Stack>
-      { !disableImage && (
+      { (!disableImage && direction == 'column') && (
         <Box sx={ sx.imageContainer }>
-			<Image
-				src={image?.url}
-				alt={title}
-				height={400}
-				label={label}
-				disableBorderRadius={enableBorder}        
-			/>
-      </Box>
-      )}  
-        
+          <Image
+            src={image?.url}
+            alt={title}
+            height={400}
+            label={label}
+            disableBorderRadius={enableBorder}        
+          />
+        </Box>
+      )}          
       <SocialButtons 
         handle={resource?.handle}
         enableLikes={enableLikes}
@@ -101,7 +110,6 @@ const sx = {
 		alignItems: 'center',
 	},
 	rootBorder: {
-		py: 2,
 		border: '1px solid',
 		borderColor: 'divider',
 	},
@@ -133,11 +141,6 @@ const sx = {
 	},
   imageContainer: {
     width: '100%',
-    transition: 'all 0.4s ease-in-out',
     borderRadius: 1,
-    boxShadow: '0 0 20px rgba(0,0,0,0.2)',
-    '&:hover': {
-      boxShadow: '0 0 20px rgba(0,0,0,0.4)',
-    }
   }
 }

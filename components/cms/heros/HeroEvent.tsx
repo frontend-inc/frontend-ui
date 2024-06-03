@@ -5,7 +5,7 @@ import { HeroProps } from './Hero'
 const HeroEvent: React.FC<HeroProps> = (props) => {
 	return (
 		<HeroArticle 
-      disableImage 
+      direction='column-reverse'
       {...props}
     />
 	)
