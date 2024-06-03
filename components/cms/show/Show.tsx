@@ -4,16 +4,18 @@ import { useAuth } from 'frontend-js'
 import { Button, Stack } from '@mui/material'
 import { ActionType, DisplayFieldType, FormFieldType } from '../../../types'
 import Article from './Article'
-import Item from './Item'
-import Person from './Person'
+import Product from './Product'
+import Profile from './Profile'
 import Document from './Document'
+import Event from './Event'
+import Place from './Place'
 import Details from '../details/Details'
 import YouTubeVideo from './addons/YouTubeVideo'
 import VimeoEmbed from './addons/VimeoVideo'
 import { Drawer, Form, IconLoading } from '../..'
 import { useDocuments, flattenDocument } from 'frontend-js'
 
-export type CollectionShowItemProps = {
+export type ShowItemProps = {
 	handle?: string
 	enableBorder?: boolean
 	actions: ActionType[]
@@ -30,22 +32,22 @@ export type CollectionShowItemProps = {
 	handleEdit?: () => void
 }
 
-type CollectionShowStyleTypes =
-	| 'item'
+type ShowStyleTypes =
+	| 'product'
 	| 'article'
-	| 'person'
+	| 'profile'
 	| 'document'
 	| 'youtube'
 	| 'vimeo'
 
-export type CollectionShowProps = CollectionShowItemProps & {
+export type ShowProps = ShowItemProps & {
 	fields: FormFieldType[]
 	displayFields: DisplayFieldType[]
 	url: string
-	style: CollectionShowStyleTypes
+	style: ShowStyleTypes
 }
 
-const CollectionShow: React.FC<CollectionShowProps> = (props) => {
+const Show: React.FC<ShowProps> = (props) => {
 	let { handle } = props
 	if (handle == 'index') handle = undefined
 	const {
@@ -110,9 +112,11 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 	}
 
 	const components = {
-		item: Item,
-		article: Article,
-		person: Person,
+    article: Article,
+    event: Event,
+		product: Product,		
+		profile: Profile,
+    place: Place,
 		document: Document,
 		youtube: YouTubeVideo,
 		vimeo: VimeoEmbed,
@@ -141,14 +145,6 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
           enableSharing={enableSharing}   
           enableBuyNow={enableBuyNow}
           enableStripePaymentLink={enableStripePaymentLink}       
-				/>
-			)}
-			{displayFields?.length > 0 && (
-				<Details
-					url={url}
-					fields={displayFields}
-					resource={resource}
-					enableBorder={enableBorder}
 				/>
 			)}
 			<Drawer
@@ -180,7 +176,7 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 	)
 }
 
-export default CollectionShow
+export default Show
 
 const sx = {
 	root: {

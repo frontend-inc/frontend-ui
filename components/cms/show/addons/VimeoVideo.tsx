@@ -1,10 +1,10 @@
 import React from 'react'
 import { VimeoEmbed } from '../../..'
-import { CollectionShowItemProps } from '../CollectionShow'
+import { ShowItemProps } from '../Show'
 import { flattenDocument } from 'frontend-js'
 import ShowContainer from '../ShowContainer'
 
-type VimeoVideoProps = CollectionShowItemProps & {
+type VimeoVideoProps = ShowItemProps & {
 	fieldName: string
 }
 

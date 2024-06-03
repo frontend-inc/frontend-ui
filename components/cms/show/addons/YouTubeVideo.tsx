@@ -1,10 +1,10 @@
 import React from 'react'
 import { YouTubeEmbed } from '../../..'
-import { CollectionShowItemProps } from '../CollectionShow'
+import { ShowItemProps } from '../Show'
 import { flattenDocument } from 'frontend-js'
 import ShowContainer from '../ShowContainer'
 
-type YouTubeVideoProps = CollectionShowItemProps & {
+type YouTubeVideoProps = ShowItemProps & {
 	fieldName: string
 }
 

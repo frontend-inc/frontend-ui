@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
-import { BuyNowButton, StripePaymentLink,  SocialButtons, Image, Actions, SocialLink } from '../../../components'
-import { CollectionShowItemProps } from './CollectionShow'
+import { BuyNowButton, StripePaymentLink,  SocialButtons, Image, Actions, SocialLink } from '../..'
+import { ShowItemProps } from './Show'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-const Person: React.FC<CollectionShowItemProps> = (props) => {
+const Profile: React.FC<ShowItemProps> = (props) => {
 	const MAX_CHARS = 500
 
 	const { 
@@ -21,9 +21,8 @@ const Person: React.FC<CollectionShowItemProps> = (props) => {
     enableStripePaymentLink 
   } = props || {}
 	const { data } = resource || {}
-	const { facebook, instagram, linkedin, twitter, youtube, blog } = data || {}
 
-	const { handle, label, title, image, description } = resource || {}
+	const { label, title, image, description } = resource || {}
 	const [open, setOpen] = useState(false)
 	return (
     <Stack spacing={3} direction='column' justifyContent='center'>
@@ -120,7 +119,7 @@ const Person: React.FC<CollectionShowItemProps> = (props) => {
 	)
 }
 
-export default Person
+export default Profile
 
 const sx = {
 	root: {

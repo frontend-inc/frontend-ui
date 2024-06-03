@@ -2,7 +2,7 @@ import React from 'react'
 import { Article } from 'frontend-ui/components'
 import { ShowItemProps } from './Show'
 
-const Document: React.FC<ShowItemProps> = (props) => {
+const Event: React.FC<ShowItemProps> = (props) => {
 	return (
 		<Article 
       disableImage 
@@ -11,4 +11,4 @@ const Document: React.FC<ShowItemProps> = (props) => {
 	)
 }
 
-export default Document
+export default Event

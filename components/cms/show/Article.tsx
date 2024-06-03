@@ -2,11 +2,11 @@ import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
 import { BuyNowButton, StripePaymentLink, SocialButtons, Actions, Image } from '../../../components'
 import moment from 'moment'
-import { CollectionShowItemProps } from './CollectionShow'
+import { ShowItemProps } from './Show'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-type ArticleProps = CollectionShowItemProps & {
+type ArticleProps = ShowItemProps & {
   disableImage?: boolean
 }
 

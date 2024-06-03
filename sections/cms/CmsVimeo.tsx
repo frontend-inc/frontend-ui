@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section } from '../../components'
-import { CollectionShow } from '../../components'
-import { CollectionShowProps } from '../../components/cms/show/CollectionShow'
+import { Show } from '../../components'
+import { ShowProps } from '../../components/cms/show/Show'
 import { SectionProps } from '../../types'
 
-type CmsVimeoProps = SectionProps & CollectionShowProps
+type CmsVimeoProps = SectionProps & ShowProps
 
 const CmsVimeo: React.FC<CmsVimeoProps> = (props) => {
 	const {
@@ -30,7 +30,7 @@ const CmsVimeo: React.FC<CmsVimeoProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<CollectionShow {...rest} style={'vimeo'} />
+			<Show {...rest} style={'vimeo'} />
 		</Section>
 	)
 }

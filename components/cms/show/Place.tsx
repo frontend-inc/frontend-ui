@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
-import { BuyNowButton, StripePaymentLink, Actions, Image, SocialButtons } from '../../../components'
-import { CollectionShowItemProps } from './CollectionShow'
+import { BuyNowButton, StripePaymentLink, Actions, Image, SocialButtons } from '../..'
+import { ShowItemProps } from './Show'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-const Item: React.FC<CollectionShowItemProps> = (props) => {
+const Place: React.FC<ShowItemProps> = (props) => {
 	const MAX_CHARS = 500
 
 	const { 
@@ -27,6 +27,19 @@ const Item: React.FC<CollectionShowItemProps> = (props) => {
 	if (!resource) return null
 	return (
     <Stack spacing={2}>
+      {(actions || enableEdit) && (
+        <Box sx={sx.actions}>
+          <Actions
+            actions={buildActions({
+              enableEdit,
+              handleEdit,
+              actions,
+            })}
+            justifyContent="flex-end"
+            resource={flattenDocument(resource)}
+          />
+        </Box>
+      )}
       <Box
         sx={{
           ...sx.root,
@@ -68,20 +81,7 @@ const Item: React.FC<CollectionShowItemProps> = (props) => {
               ...sx.content,
               ...(enableBorder && sx.contentBorder),
             }}
-          >
-            {(actions || enableEdit) && (
-              <Box sx={sx.actions}>
-                <Actions
-                  actions={buildActions({
-                    enableEdit,
-                    handleEdit,
-                    actions,
-                  })}
-                  justifyContent="flex-end"
-                  resource={flattenDocument(resource)}
-                />
-              </Box>
-            )}
+          >           
             <Typography color="text.primary" variant="h4">
               {title}
             </Typography>
@@ -120,7 +120,7 @@ const Item: React.FC<CollectionShowItemProps> = (props) => {
 	)
 }
 
-export default Item
+export default Place
 
 const sx = {
 	root: {
