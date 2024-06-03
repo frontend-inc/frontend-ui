@@ -21,12 +21,22 @@ const HeroContainer: React.FC<HeroContainerProps> = (props) => {
 			}}
 			spacing={0}
 		>			
-      {(actions || enableEdit) && (
+     	
+			<Box sx={sx.container}>{children}</Box>
+			<Stack
+        spacing={2}
+				sx={{
+					...sx.content,
+					...(enableBorder && sx.contentBorder),
+				}}
+			>
+        <Stack direction={{ sm: "row", xs: 'column-reverse' }} justifyContent='space-between' spacing={1}>
+        <Typography sx={sx.title} color="text.primary" variant="h4">
+					{title}
+				</Typography>
+        {(actions || enableEdit) && (
         <Box
-          sx={{
-            ...sx.header,
-            ...(enableBorder && sx.headerBorder),
-          }}
+          sx={sx.actions}
         >
           <Actions
             actions={buildActions({
@@ -38,18 +48,8 @@ const HeroContainer: React.FC<HeroContainerProps> = (props) => {
             justifyContent="flex-end"
           />
         </Box>
-      )}			
-			<Box sx={sx.container}>{children}</Box>
-			<Stack
-        spacing={2}
-				sx={{
-					...sx.content,
-					...(enableBorder && sx.contentBorder),
-				}}
-			>
-        <Typography sx={sx.title} color="text.primary" variant="h4">
-					{title}
-				</Typography>
+      )}		
+        </Stack>
         { subtitle && (
           <Typography color="text.secondary" variant="body1">
             {subtitle}
@@ -76,13 +76,9 @@ const sx = {
 		border: '1px solid',
 		borderColor: 'divider',
 	},
-	header: {
-    py: 1,
+	actions: {
 		width: '100%',
     justifyContent: 'flex-end'
-	},
-	headerBorder: {
-		p: 2,
 	},
 	title: {
 		width: '100%',
@@ -104,10 +100,5 @@ const sx = {
 	},
 	caption: {
 		color: 'text.secondary',
-	},
-	actions: {
-    py: 2,
-		justifyContent: 'flex-end',
-		width: '100%',
 	},
 }
