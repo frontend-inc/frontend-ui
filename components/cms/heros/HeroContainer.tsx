@@ -14,21 +14,40 @@ const HeroContainer: React.FC<HeroContainerProps> = (props) => {
 		props || {}
 	const { title, subtitle, description } = resource || {}
 	return (
-		<Stack
+		<Box
 			sx={{
 				...sx.root,
 				...(enableBorder && sx.rootBorder),
 			}}
-			spacing={2}
-		>
+			spacing={0}
+		>			
+      {(actions || enableEdit) && (
+        <Box
+          sx={{
+            ...sx.header,
+            ...(enableBorder && sx.headerBorder),
+          }}
+        >
+          <Actions
+            actions={buildActions({
+              enableEdit,
+              handleEdit,
+              actions,
+            })}
+            resource={flattenDocument(resource)}
+            justifyContent="flex-end"
+          />
+        </Box>
+      )}			
+			<Box sx={sx.container}>{children}</Box>
 			<Stack
-				direction={{ xs: 'column', sm: 'row' }}
+        spacing={2}
 				sx={{
-					...sx.header,
-					...(enableBorder && sx.headerBorder),
+					...sx.content,
+					...(enableBorder && sx.contentBorder),
 				}}
 			>
-				<Typography sx={sx.title} color="text.primary" variant="h6">
+        <Typography sx={sx.title} color="text.primary" variant="h4">
 					{title}
 				</Typography>
         { subtitle && (
@@ -36,38 +55,11 @@ const HeroContainer: React.FC<HeroContainerProps> = (props) => {
             {subtitle}
           </Typography>  
         )}            
-
-				{(actions || enableEdit) && (
-					<Stack
-						sx={sx.actions}
-						direction={{ sm: 'row', xs: 'column' }}
-						spacing={1}
-						p={enableBorder ? 1 : 0}
-					>
-						<Actions
-							actions={buildActions({
-								enableEdit,
-								handleEdit,
-								actions,
-							})}
-							resource={flattenDocument(resource)}
-							justifyContent="flex-end"
-						/>
-					</Stack>
-				)}
-			</Stack>
-			<Box sx={sx.container}>{children}</Box>
-			<Box
-				sx={{
-					...sx.content,
-					...(enableBorder && sx.contentBorder),
-				}}
-			>
 				<Typography variant="body1" color="text.primary" sx={sx.text}>
 					{description}
 				</Typography>
-			</Box>
-		</Stack>
+			</Stack>
+		</Box>
 	)
 }
 
@@ -80,21 +72,23 @@ const sx = {
 		alignItems: 'center',
 	},
 	rootBorder: {
-		py: 2,
+		pb: 2,
 		border: '1px solid',
 		borderColor: 'divider',
 	},
 	header: {
+    py: 1,
 		width: '100%',
-		textAlign: 'space-between',
+    justifyContent: 'flex-end'
 	},
 	headerBorder: {
-		px: 2,
+		p: 2,
 	},
 	title: {
 		width: '100%',
 	},
 	content: {
+    py: 2,
 		width: '100%',
 		maxWidth: '100%',
 	},
@@ -112,6 +106,7 @@ const sx = {
 		color: 'text.secondary',
 	},
 	actions: {
+    py: 2,
 		justifyContent: 'flex-end',
 		width: '100%',
 	},
