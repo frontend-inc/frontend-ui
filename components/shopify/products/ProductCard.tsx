@@ -71,7 +71,6 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 				}}
 			>
 				<Stack
-					spacing={0.5}
 					direction="column"
 					sx={{
 						...sx.text,
