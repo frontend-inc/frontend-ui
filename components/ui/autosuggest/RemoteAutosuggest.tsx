@@ -7,7 +7,7 @@ import { useError } from '../../../hooks'
 import { OptionType, QueryParamsType, SyntheticEventType } from '../../../types'
 import { get } from 'lodash'
 
-type RemoteAutosuggestProps = {
+export type RemoteAutosuggestProps = {
 	errors?: any
 	value?: any
 	label?: string

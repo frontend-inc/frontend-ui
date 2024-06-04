@@ -2,12 +2,12 @@ import React from 'react'
 import { Calendly } from '../..'
 import { flattenDocument } from 'frontend-js'
 
-export type AddonProps = {
+export type AddonCalendlyProps = {
 	fieldName: string
   resource: any 
 }
 
-const AddonCalendly: React.FC<AddonProps> = (props) => {
+const AddonCalendly: React.FC<AddonCalendlyProps> = (props) => {
 	const { resource, fieldName, ...rest } = props || {}
 	const value = flattenDocument(resource)[fieldName]
 	return (

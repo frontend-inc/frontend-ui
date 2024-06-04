@@ -4,7 +4,7 @@ import { Calendly } from '../../components'
 import { CalendlyProps } from '../../components/addons/calendly/Calendly'
 import { SectionProps } from '../../types'
 
-type AddonCalendlyProps = SectionProps & CalendlyProps
+export type AddonCalendlyProps = SectionProps & CalendlyProps
 
 const AddonCalendly: React.FC<AddonCalendlyProps> = (props) => {
 	const {
