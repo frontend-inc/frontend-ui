@@ -9,11 +9,12 @@ import { Favorite, FavoriteBorder } from '@mui/icons-material'
 type FavoriteButtonProps = {
 	handle: string 
   variant?: 'icon' | 'button'
+  color?: string
   numFavorites?: number
 }
 
 const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
-	const { handle, variant='icon', numFavorites } = props
+	const { handle, variant='icon', color='text.secondary', numFavorites } = props
 
 	const { fetchMe, currentUser } = useAuth()
 	const { setAuthOpen } = useContext(AppContext)
@@ -61,7 +62,11 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
       <IconButton
         size="small"
         onClick={handleClick}
-        sx={{
+        sx={{          
+          color,
+          '&:hover': {
+            color,
+          },          
           ...sx.icon,
           ...(isFavorite && sx.iconFavorited),
         }}
@@ -91,13 +96,8 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 
 export default FavoriteButton
 
-const sx = {
-	icon: {
-    color: 'text.secondary',
-		'&:hover': {
-			color: 'text.secondary',
-		},
-	},
+const sx = {	
+  icon: {},
 	iconFavorited: {
 		color: 'primary.main',
 		'&:hover': {

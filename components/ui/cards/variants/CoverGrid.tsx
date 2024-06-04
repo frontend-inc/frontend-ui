@@ -84,13 +84,14 @@ const CoverVert: React.FC<CardProps> = (props) => {
         {enableFavorites && (
           <FavoriteButton
             handle={resource?.handle}
+            color='common.white'
           />
         )}
 				<Actions
 					numVisible={0}
 					resource={resource}
 					actions={actions}
-					color={enableOverlay ? 'common.white' : 'text.secondary'}
+					color={'common.white'}
 				/>
 			</Box>
 		</Stack>
