@@ -36,6 +36,9 @@ export { default as HeroProduct } from './heros/HeroProduct'
 export { default as HeroProfile } from './heros/HeroProfile'
 export { default as HeroPlace } from './heros/HeroPlace'
 export { default as HeroHeader } from './heros/HeroHeader'
+
+// Hero Addons
+export { default as HeroCalendly } from './heros/addons/HeroCalendly'
 export { default as HeroYouTube } from './heros/addons/HeroYouTube'
 export { default as HeroVimeo } from './heros/addons/HeroVimeo'
 

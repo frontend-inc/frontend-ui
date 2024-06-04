@@ -1,3 +1,4 @@
+export { default as AddonCalendly } from './AddonCalendly'
 export { default as AddonGiftUp } from './AddonGiftUp'
 export { default as AddonGorgiasContactForm } from './AddonGorgiasContactForm'
 export { default as AddonKlaviyoButton } from './AddonKlaviyoButton'

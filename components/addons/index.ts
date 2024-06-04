@@ -12,6 +12,7 @@ export { default as RedditScript } from './reddit/RedditScript'
 export { default as VisualWebsiteOptimizerScript } from './visual-website-optimizer/VisualWebsiteOptimizerScript'
 
 //Embeds
+export { default as Calendly } from './calendly/Calendly'
 export { default as GiftUp } from './giftup/GiftUp'
 export { default as GorgiasChat } from './gorgias/GorgiasChat'
 export { default as MailchimpSubscribe } from './mailchimp/MailchimpSubscribe'
