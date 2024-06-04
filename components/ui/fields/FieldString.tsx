@@ -1,18 +1,9 @@
 import React from 'react'
 import { Typography } from '@mui/material'
 import { FieldWrapper } from '../../../components'
-import { TypographyVariantsType } from '../../../types'
+import { FieldElementProps } from './Field'
 
-type FieldStringProps = {
-	value: string
-	variant?: TypographyVariantsType
-	label?: string
-	color?: string
-	placeholder?: string
-	rest?: any
-}
-
-const FieldString: React.FC<FieldStringProps> = (props) => {
+const FieldString: React.FC<FieldElementProps> = (props) => {
 	const {
 		value,
 		label,
@@ -23,7 +14,7 @@ const FieldString: React.FC<FieldStringProps> = (props) => {
 	} = props
 
 	return (
-		<FieldWrapper label={label} {...rest}>
+		<FieldWrapper label={label} color={color} {...rest}>
 			<Typography variant={variant} color={color} sx={sx.text}>
 				{value || placeholder}
 			</Typography>

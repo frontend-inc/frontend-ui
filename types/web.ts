@@ -1,5 +1,6 @@
 import { TypographyVariant } from '@mui/material'
 import { ActionType } from './actions'
+import { DisplayFieldType } from './forms'
 
 export type HeadingProps = {
 	label?: string
@@ -35,6 +36,7 @@ export type CardProps = {
 		}
 		video?: string
 	}
+  fields: DisplayFieldType[]
 	buttonText?: string
 	textVariant?: TypographyVariant
 	size?: number

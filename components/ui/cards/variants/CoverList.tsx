@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Box, Stack, Typography } from '@mui/material'
-import { FavoriteButton, Image, Icon, TouchableOpacity, Actions } from '../../..'
+import { CardFields, FavoriteButton, Image, Icon, TouchableOpacity, Actions } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
@@ -10,6 +10,7 @@ const CoverList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		resource,
+    fields=[],
 		actions,
 		icon,
 		href,
@@ -57,11 +58,11 @@ const CoverList: React.FC<CardProps> = (props) => {
 						<Typography color="common.white" variant={textVariant}>
 							{truncate(title, 40)}
 						</Typography>
-						{label && (
-							<Typography color="common.white" variant="caption">
-								{label}
-							</Typography>
-						)}
+						<CardFields 
+              fields={fields}
+              resource={resource}
+              color="common.white"
+            />
 					</Box>
 				</Stack>
 			</Stack>

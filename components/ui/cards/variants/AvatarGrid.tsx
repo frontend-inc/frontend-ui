@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Avatar, Box, Stack, Typography } from '@mui/material'
-import { Actions, FavoriteButton, TouchableOpacity } from '../../../../components'
+import { Actions, CardFields, FavoriteButton, TouchableOpacity } from '../../../../components'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import {
@@ -15,6 +15,7 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
+    fields=[],
 		href,
 		handleClick,
 		height = AVATAR_VERT_HEIGHT,
@@ -69,11 +70,9 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 			</Box>
 			<Stack spacing={1} sx={sx.contentArea}>
 				<Stack direction="row" sx={sx.contentArea} spacing={0}>
-					<Stack sx={sx.content}>
-						<Typography sx={sx.title} color="textPrimary" variant={'subtitle2'}>
-							{truncate(title)}
-						</Typography>
-					</Stack>
+          <Typography sx={sx.title} color="textPrimary" variant={'subtitle2'}>
+            {truncate(title)}
+          </Typography>
           <Box sx={sx.actions }>					              
             {enableFavorites && (
               <FavoriteButton
@@ -84,6 +83,10 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
           </Box> 
 				</Stack>
 			</Stack>
+      <CardFields
+        fields={fields}
+        resource={resource}
+      />	
 		</Stack>
 	)
 }

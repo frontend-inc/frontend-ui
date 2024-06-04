@@ -7,12 +7,13 @@ type FieldAvatarProps = {
 	rounded?: boolean
 	label?: string
 	rest?: any
+  color?: string
 }
 
 const FieldAvatar: React.FC<FieldAvatarProps> = (props) => {
-	const { value, label, size = 32, ...rest } = props
+	const { value, label, color, size = 32, ...rest } = props
 	return (
-		<FieldWrapper label={label} {...rest}>
+		<FieldWrapper label={label} color={color} {...rest}>
 			<Avatar src={value} />
 		</FieldWrapper>
 	)

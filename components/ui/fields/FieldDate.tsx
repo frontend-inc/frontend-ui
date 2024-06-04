@@ -6,6 +6,7 @@ type FieldDateProps = {
 	value?: any
 	label?: string
 	rest?: any
+  color?: string
 }
 
 const FieldDate: React.FC<FieldDateProps> = (props) => {

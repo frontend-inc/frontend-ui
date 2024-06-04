@@ -3,12 +3,14 @@ import { CollectionList } from '../..'
 import { 
   SortOptionType, 
   SearchFilterOptionType, 
+  DisplayFieldType
 } from '../../../types'
 
 export type PurchasesProps = {
 	variant: 'list' | 'grid'
 	style: 'card' | 'avatar' | 'cover'
 	field: any
+  displayFields?: DisplayFieldType[]
 	url: string
 	handle: string
 	href: any

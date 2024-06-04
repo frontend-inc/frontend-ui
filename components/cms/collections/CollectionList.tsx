@@ -10,10 +10,10 @@ import {
 	IconLoading,
 } from '../..'
 import { AppContext } from '../../../context'
-import { ActionType, FilterOptionType, FormFieldType } from '../../../types'
+import { ActionType, FilterOptionType, FormFieldType, DisplayFieldType } from '../../../types'
 import { useRouter } from 'next/router'
 import { 
-  CardList, 
+  CollectionCards, 
   Placeholder, 
   CollectionToolbar, 
   SearchFilters 
@@ -34,6 +34,7 @@ export type CollectionListProps = {
 	query?: any
 	actions?: ActionType[]
 	fields?: FormFieldType[]
+  displayFields?: DisplayFieldType[]
 	filterAnchor?: 'left' | 'top'
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
@@ -64,7 +65,8 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		style = 'card',
     href,
 		url,
-		fields,
+		fields=[],
+    displayFields=[],
 		filterAnchor = 'left',
 		filterOptions = [],
 		sortOptions = [],
@@ -309,11 +311,12 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 					lg={enableFilters && filterAnchor == 'left' ? 9 : 12}
 				>
 					<Box sx={{ ...(delayedLoading && sx.loading) }}>					
-						<CardList
+						<CollectionCards
 							actions={actions}
 							variant={variant}
 							style={style}
 							resources={resources}
+              fields={displayFields}
 							handleClick={handleClick}
 							buttonText={buttonText}
 							enableBorder={enableBorder}

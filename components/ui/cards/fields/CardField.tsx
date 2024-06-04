@@ -12,10 +12,10 @@ import {
 	FieldString,
 	FieldText,
 	FieldVideo,
-} from '../../../components'
-import { DisplayFieldType, TypographyVariantsType } from '../../../types'
+} from '../../..'
+import { DisplayFieldType, TypographyVariantsType } from '../../../../types'
 import { get } from 'lodash'
-import moment from 'moment'
+import { truncate } from '../../../../helpers'
 
 export type FieldElementProps = {
   label?: string
@@ -26,7 +26,6 @@ export type FieldElementProps = {
   placeholder?: string
   enableBorder?: boolean
   disablePadding?: boolean
-  dateFormat?: string
 }
 
 type FieldProps = {
@@ -39,18 +38,13 @@ type FieldProps = {
   disablePadding?: boolean
 	field: DisplayFieldType 
 	resource?: any
-  dateFormat?: string
 }
 
-const Field: React.FC<FieldProps> = (props) => {
-	const { field, resource, dateFormat='MM/DD/YYYYY', ...rest } = props
+const CardField: React.FC<FieldProps> = (props) => {
+	const { field, resource, color='text.secondary', ...rest } = props
 	const { variant: fieldVariant, icon } = field
 	let value = get(resource, field?.name)
 	if (!value) return null;
-
-  if (field?.variant == 'date' || field?.variant == 'datetime') {
-    value = moment(value).format(dateFormat)
-  }
 
 	const components = {
 		boolean: FieldBoolean,
@@ -70,14 +64,35 @@ const Field: React.FC<FieldProps> = (props) => {
 		price: FieldPrice,
 	}
 
+  const variantProps = {
+    string: {
+      value: truncate(value)
+    },
+    text: {
+      variant: 'body1',
+      value: truncate(value, 80)
+    },
+    image: {
+      height: 64,
+      width: 64
+    }
+  }
+
 	const Component = components[fieldVariant]
+  const componentProps = variantProps?.[fieldVariant] || {}
 
 	return(
     <Component 
-      value={value}       
+      disablePadding
+      icon={icon}
+      variant='caption'
+      color={color}
+      direction="row-reverse"      
+      value={value} 
+      { ...componentProps }
       {...rest}            
     />
   )
 }
 
-export default Field
+export default CardField

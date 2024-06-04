@@ -11,6 +11,7 @@ type CollectionCardProps = {
 	resource: any & {
 		label?: string
 		title?: string
+    subtitle?: string
 		image?: string
 		video?: string
 		description: string

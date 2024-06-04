@@ -36,7 +36,7 @@ const Details: React.FC<DetailsProps> = (props) => {
 							<Field
 								field={field}
 								enableBorder={enableBorder}
-								document={document}
+								resource={document}
 							/>
 						</Grid>
 					))}

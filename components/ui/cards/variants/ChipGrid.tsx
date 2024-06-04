@@ -10,13 +10,14 @@ import {
 	ListItemText,
 	Typography,
 } from '@mui/material'
-import { FavoriteButton, Actions } from '../../..'
+import { CardFields, FavoriteButton, Actions } from '../../..'
 import { CardProps } from '../../../../types'
 
 const ChipList: React.FC<CardProps> = (props) => {
 	const {
 		resource,
 		actions,
+    fields=[],
 		handleClick,
 		enableBorder = false,
 		enableGradient = false,
@@ -74,6 +75,12 @@ const ChipList: React.FC<CardProps> = (props) => {
 								{title}
 							</Typography>
 						}
+            secondary={
+              <CardFields 
+                fields={fields}
+                resource={resource}
+              />
+            }
 					/>
 				</ListItemButton>
 			</ListItem>

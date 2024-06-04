@@ -1,6 +1,6 @@
 // CMS
-export { default as CardList } from './collections/CardList'
 export { default as CollectionList } from './collections/CollectionList'
+export { default as CollectionCards } from './collections/CollectionCards'
 export { default as CollectionToolbar } from './collections/CollectionToolbar'
 export { default as CollectionCarousel } from './collections/CollectionCarousel'
 export { default as CollectionCard } from './collections/CollectionCard'

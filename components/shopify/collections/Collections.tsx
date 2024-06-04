@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { useCollections } from 'frontend-shopify'
-import { CardList } from '../../../components'
+import { CollectionCards } from '../../../components'
 import { Stack } from '@mui/material'
 import { useRouter } from 'next/router'
 import { AppContext } from '../../../context'
@@ -53,7 +53,7 @@ const Collections: React.FC<CollectionsProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-			<CardList
+			<CollectionCards
 				actions={[]}
 				variant={variant}
 				style={style}

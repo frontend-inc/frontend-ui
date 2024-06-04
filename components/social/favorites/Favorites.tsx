@@ -2,13 +2,15 @@ import React from 'react'
 import { CollectionList } from '../..'
 import { 
   SortOptionType, 
-  SearchFilterOptionType, 
+  SearchFilterOptionType,
+  DisplayFieldType 
 } from '../../../types'
 
 export type FavoritesProps = {
 	variant: 'list' | 'grid'
 	style: 'card' | 'avatar' | 'cover'
-	field: any
+	field: any  
+  displayFields?: DisplayFieldType[]
 	url: string
 	handle: string
 	href: any

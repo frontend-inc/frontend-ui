@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Box, Stack, Typography } from '@mui/material'
-import { Image, TouchableOpacity, FavoriteButton } from '../../..'
+import { Image, CardFields, FavoriteButton } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
@@ -12,6 +12,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
+    fields=[],
 		href,
 		handleClick,
 		objectFit = 'cover',
@@ -58,7 +59,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
         />
 			</Box>
 			<Stack
-				spacing={1}
+				spacing={0}
 				sx={{
 					...sx.content,
 					...(enableBorder && sx.contentBorder),
@@ -81,6 +82,10 @@ const CardGrid: React.FC<CardProps> = (props) => {
             />
           </Stack>
 				</Stack>
+        <CardFields 
+          fields={fields}
+          resource={resource}
+        />
 			</Stack>
 		</Stack>
 	)
@@ -119,18 +124,17 @@ const sx = {
 	},
 	content: {
 		width: '100%',
-		minHeight: '60px',
 	},
 	contentArea: {
 		width: '100%',
 	},
 	contentBorder: {
-		p: 1,
+		px: 1,
+    pb: 1,
 		pt: 0,
 	},
 	title: {
 		width: '100%',
-		minHeight: '50px',
 	},
 	description: {
 		maxWidth: '320px',

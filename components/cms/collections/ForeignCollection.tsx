@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import {
 	Drawer,
 	LoadMore,
-	CardList,
+	CollectionCards,
 	Form,
 	IconLoading,
 	AlertModal,
@@ -181,7 +181,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 					</Button>
 				</Box>
 			)}			
-			<CardList
+			<CollectionCards
 				actions={[]}
 				variant={variant}
 				style={style}

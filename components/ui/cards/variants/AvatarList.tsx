@@ -12,12 +12,13 @@ import {
 } from '@mui/material'
 import { truncate } from '../../../../helpers'
 import { CardProps } from '../../../../types'
-import { Actions, FavoriteButton } from '../../../../components'
+import { Actions, CardFields, FavoriteButton } from '../../../../components'
 
 const AvatarList: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
+    fields=[],
 		height = 128,
 		width = 128,
 		handleClick,
@@ -79,13 +80,10 @@ const AvatarList: React.FC<CardProps> = (props) => {
 							</Typography>
 						}
 						secondary={
-							<Typography
-								variant="body2"
-								color="text.secondary"
-								sx={sx.description}
-							>
-								{truncate(description, 80)}
-							</Typography>
+              <CardFields
+                fields={fields}
+                resource={resource}
+              />							
 						}
 					/>
 				</ListItemButton>

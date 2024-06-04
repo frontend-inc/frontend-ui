@@ -6,13 +6,14 @@ type FieldVideoProps = {
 	handleClick?: (item: any) => void
 	label?: string
 	rest?: any
+  color?: string
 }
 
 const FieldVideo: React.FC<FieldVideoProps> = (props) => {
-	const { value, label, handleClick, ...rest } = props
+	const { value, label, color, handleClick, ...rest } = props
 
 	return (
-		<FieldWrapper label={label} {...rest}>
+		<FieldWrapper label={label} color={color} {...rest}>
 			{value ? <video src={value} controls muted autoPlay /> : <NoImage />}
 		</FieldWrapper>
 	)

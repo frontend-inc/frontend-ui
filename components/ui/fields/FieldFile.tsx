@@ -7,16 +7,17 @@ type FieldFileProps = {
 	handleClick?: () => void
 	label?: string
 	rest?: any
+  color?: string
 }
 
 const FieldFile: React.FC<FieldFileProps> = (props) => {
-	const { value, label, handleClick, ...rest } = props
+	const { value, label, color='text.secondary', handleClick, ...rest } = props
 	return (
-		<FieldWrapper label={label} {...rest}>
+		<FieldWrapper label={label} color={color} {...rest}>
 			<Stack direction="row" spacing={1}>
 				<Icon name="File" size={20} color="text.primary" />
 				{value?.content_type && (
-					<Link href={value?.url} sx={sx.link} target="_blank">
+					<Link color={color} href={value?.url} sx={sx.link} target="_blank">
 						{value?.content_type}
 					</Link>
 				)}

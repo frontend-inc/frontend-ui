@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Box, Stack, Typography } from '@mui/material'
-import { Image, TouchableOpacity, FavoriteButton } from '../../../../components'
+import { Image, CardFields, TouchableOpacity, FavoriteButton } from '../../../../components'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
@@ -12,6 +12,7 @@ const CardList: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
+    fields=[],
 		href,
 		height = 180,
 		textVariant = 'subtitle1',
@@ -25,7 +26,7 @@ const CardList: React.FC<CardProps> = (props) => {
 
 	const router = useRouter()
 
-	const { label, title, description, image } = resource || {}
+	const { label, title, subtitle, description, image } = resource || {}
 
 	const handleItemClick = () => {
 		if (handleClick) {
@@ -71,7 +72,7 @@ const CardList: React.FC<CardProps> = (props) => {
 				>
 					<Stack
 						direction="column"
-						spacing={1}
+						spacing={0.5}
 						sx={{
 							...sx.content,
 							...(enableBorder && sx.contentBorder),
@@ -80,13 +81,10 @@ const CardList: React.FC<CardProps> = (props) => {
 						<Typography color="textPrimary" variant={textVariant}>
 							{truncate(title)}
 						</Typography>
-						<Typography
-							color="text.secondary"
-							variant="body2"
-							sx={sx.description}
-						>
-							{truncate(description, 80)}
-						</Typography>
+            <CardFields 
+              fields={fields}
+              resource={resource}
+            />
 					</Stack>
           <Stack direction="row" justifyContent='flex-end'>                        
             { enableFavorites && 

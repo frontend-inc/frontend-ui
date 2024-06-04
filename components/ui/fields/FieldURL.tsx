@@ -7,13 +7,14 @@ type FieldURLProps = {
 	handleClick?: () => void
 	label?: string
 	rest?: any
+  color?: string
 }
 
 const FieldURL: React.FC<FieldURLProps> = (props) => {
-	const { value, label, handleClick, ...rest } = props
+	const { value, label, color, handleClick, ...rest } = props
 
 	return (
-		<FieldWrapper label={label} {...rest}>
+		<FieldWrapper label={label} color={color} {...rest}>
 			{value && (
 				<Link href={value} sx={sx.link}>
 					{value}

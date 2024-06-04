@@ -1,9 +1,13 @@
 import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
+import { Icon } from '../../../components'
 
 type FieldWrapperProps = {
-	direction?: 'row' | 'column'
+	direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse'
 	label?: string
+  icon?: string
+  color?: string
+  disablePadding?: boolean
 	enableBorder?: boolean
 	children?: React.ReactNode
 }
@@ -12,14 +16,17 @@ const FieldWrapper: React.FC<FieldWrapperProps> = (props) => {
 	const {
 		direction = 'column',
 		label,
+    icon,
+    color='text.secondary',
 		enableBorder = false,
+    disablePadding = false,
 		children,
 	} = props || {}
 
 	return (
 		<Stack
-			direction={{ xs: 'column', sm: direction }}
-			spacing={1}
+			direction={ direction }
+			spacing={disablePadding ? 0 : 1}
 			sx={{
 				...sx.root,
 				...(enableBorder && sx.rootBorder),
@@ -29,15 +36,20 @@ const FieldWrapper: React.FC<FieldWrapperProps> = (props) => {
 				<Box
 					sx={{
 						...sx.label,
-						...(direction === 'row' && sx.labelRow),
+						...((direction === 'row' || direction == 'row-reverse') && sx.labelRow),
 					}}
 				>
-					<Typography variant="caption" color="text.secondary">
+					<Typography variant="caption" color={ color }>
 						{label}
 					</Typography>
 				</Box>
-			)}
-			<Box>{children}</Box>
+			)}      
+			<Stack direction="row" spacing={1}>
+        { icon && (
+          <Icon name={icon} color={ color } size={20} />
+        )}
+        {children}
+      </Stack>
 		</Stack>
 	)
 }
@@ -57,7 +69,6 @@ const sx = {
 		pr: 1,
 	},
 	root: {
-		minHeight: 110,
 	},
 	rootBorder: {
 		p: 2,

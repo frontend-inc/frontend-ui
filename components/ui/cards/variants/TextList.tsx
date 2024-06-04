@@ -4,13 +4,14 @@ import { Box, Link, Stack, Typography } from '@mui/material'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
-import { FavoriteButton, Actions } from '../../..'
+import { FavoriteButton, CardFields, Actions } from '../../..'
 
 const CardList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		actions,
 		resource,
+    fields=[],
 		href,		
 		textVariant = 'subtitle1',
 		handleClick,		
@@ -51,12 +52,16 @@ const CardList: React.FC<CardProps> = (props) => {
                 {truncate(title)}
               </Typography>
             </Link>
+            <CardFields 
+              fields={fields}
+              resource={resource}
+            />
 						<Typography
 							color="text.secondary"
 							variant="body2"
 							sx={sx.description}
 						>
-							{truncate(description, 80)}
+							{truncate(description, 200)}
 						</Typography>
 					</Stack>
 				</Stack>
@@ -142,7 +147,7 @@ const sx = {
 		},
 	},
 	description: {
-		maxWidth: '320px',
+		maxWidth: '600px',
 	},
 	actions: {
 		position: 'absolute',

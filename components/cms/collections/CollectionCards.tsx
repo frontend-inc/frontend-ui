@@ -1,11 +1,13 @@
 import React from 'react'
 import { Stack, Box } from '@mui/material'
 import { CollectionCard } from '../..'
-import { ActionType } from '../../../types'
+import { ActionType, DisplayFieldType } from '../../../types'
 import { buildActions } from '../../../helpers'
+import { flattenDocument } from 'frontend-js/helpers'
 
-type CardListProps = {
+type CollectionCardsProps = {
 	resources: any
+  fields?: DisplayFieldType[]
 	actions?: ActionType[]
 	variant: 'list' | 'grid'
 	style: 'card' | 'avatar' | 'cover' | 'chip' | 'text' | 'image'
@@ -21,12 +23,13 @@ type CardListProps = {
 	handleDelete?: (item: any) => void
 }
 
-const CardList: React.FC<CardListProps> = (props) => {
+const CollectionCards: React.FC<CollectionCardsProps> = (props) => {
 
   const handleNull = () => null;
 
 	const {
 		resources,
+    fields=[],
 		actions = [],
 		handleClick,
 		handleEdit = handleNull,
@@ -55,7 +58,8 @@ const CardList: React.FC<CardListProps> = (props) => {
 						key={index}
 						variant={variant}
 						style={style}
-						resource={resource}
+						resource={flattenDocument(resource)}
+            fields={fields}
 						handleClick={() => handleClick(resource)}
 						actions={buildActions({
 							enableEdit,
@@ -75,7 +79,7 @@ const CardList: React.FC<CardListProps> = (props) => {
 	)
 }
 
-export default CardList
+export default CollectionCards
 
 const sx = {
 	root: {

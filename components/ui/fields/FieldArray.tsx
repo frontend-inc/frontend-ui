@@ -6,12 +6,13 @@ type FieldArrayProps = {
 	value?: any[]
 	label?: string
 	rest?: any
+  color?: string
 }
 
 const FieldArray: React.FC<FieldArrayProps> = (props) => {
-	const { value: values, label, ...rest } = props
+	const { value: values, color, label, ...rest } = props
 	return (
-		<FieldWrapper label={label} {...rest}>
+		<FieldWrapper label={label} color={color} {...rest}>
 			<Stack sx={sx.stack} direction={'row'} spacing={1}>
 				{Array.isArray(values) &&
 					values?.map((value, index) => (
