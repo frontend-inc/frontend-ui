@@ -1,7 +1,6 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
 import { BuyNowButton, StripePaymentLink, SocialButtons, Actions, Image } from '../..'
-import moment from 'moment'
 import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
