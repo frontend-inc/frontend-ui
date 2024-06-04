@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section } from '../../components'
 import { HeroYouTube } from '../../components'
-import { HeroYouTubeProps } from '../../components/cms/heros/addons/HeroYouTube'
+import { HeroYouTubeProps } from '../../components/cms/heros/HeroYouTube'
 import { SectionProps } from '../../types'
 
 type CmsYouTubeProps = SectionProps & HeroYouTubeProps

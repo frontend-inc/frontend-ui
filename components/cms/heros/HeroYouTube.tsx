@@ -1,8 +1,8 @@
 import React from 'react'
-import { YouTubeEmbed } from '../../..'
-import { HeroProps } from '../Hero'
+import { YouTubeEmbed } from '../..'
+import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
-import HeroContainer from '../HeroContainer'
+import HeroContainer from './HeroContainer'
 
 export type HeroYouTubeProps = HeroProps & {
 	fieldName: string

@@ -36,11 +36,11 @@ export { default as HeroProduct } from './heros/HeroProduct'
 export { default as HeroProfile } from './heros/HeroProfile'
 export { default as HeroPlace } from './heros/HeroPlace'
 export { default as HeroHeader } from './heros/HeroHeader'
+export { default as HeroYouTube } from './heros/HeroYouTube'
+export { default as HeroVimeo } from './heros/HeroVimeo'
 
-// Hero Addons
-export { default as HeroCalendly } from './heros/addons/HeroCalendly'
-export { default as HeroYouTube } from './heros/addons/HeroYouTube'
-export { default as HeroVimeo } from './heros/addons/HeroVimeo'
+// Addons
+export { default as AddonCalendly } from './addons/AddonCalendly'
 
 // Resources
 export { default as Resource } from './resources/Resource'
