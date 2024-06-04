@@ -2,7 +2,6 @@ import React from 'react'
 import {
 	ListItem,
 	ListItemButton,
-	Typography,
 	ListItemIcon,
 	ListItemText,
 	Checkbox,

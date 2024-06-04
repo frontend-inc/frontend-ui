@@ -1,51 +1,42 @@
 import React, { useState } from 'react'
 import CheckboxFilterItem from './CheckboxFilterItem'
 import {
-	FilterOperatorType,
-	FilterWhereType,
 	FilterOptionType,
-	OptionType,
 } from '../../../types'
 import { MenuList } from '../..'
 
-type CheckboxFilterProps = {
-	field: string
-	options?: OptionType[]
-	values?: any
+type CheckboxDatesPastFilterProps = {
+  field: string
 	handleClick: (filter: FilterOptionType) => void
 	label?: string
-	disableBorder?: boolean
+  values?: string[]
 	disablePadding?: boolean
 }
 
-type BooleanOptionType = {
-	label: string
-	operator: FilterOperatorType
-	value: boolean
-}[]
-
-const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
+const CheckboxDatesPastFilter: React.FC<CheckboxDatesPastFilterProps> = (props) => {
 	const {
 		label,
 		field,
 		values,
 		handleClick,
-		disableBorder,
 		disablePadding = false,
 	} = props
 
-	const BOOLEAN_OPTIONS: BooleanOptionType = [
-		{ label: 'True', operator: 'eq', value: true },
-		{ label: 'False', operator: 'eq', value: false },
+	let OPTIONS = [
+    { label: 'Today', value: 'current_time' },
+		{ label: '1 day ago', value: '1_day_ago' },
+		{ label: '7 days ago', value: '7_days_ago' },
+		{ label: '30 days ago', value: '30_days_ago' },
+		{ label: '90 days ago', value: '90_days_ago' },
+    { label: 'Current Year', value: 'current_year' }
 	]
 
 	return (
 		<MenuList
 			label={label}
-			disableBorder={disableBorder}
 			disablePadding={disablePadding}
 		>
-			{BOOLEAN_OPTIONS?.map((option, index) => (
+			{OPTIONS?.map((option, index) => (
 				<CheckboxFilterItem
 					key={index}
 					values={values}
@@ -53,8 +44,8 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 					handleClick={() =>
 						handleClick({
               field,
-							where: 'OR',
-							operator: option.operator,							
+							where: 'AND',
+							operator: 'gt',
 							value: option.value,
 						})
 					}
@@ -64,4 +55,4 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 	)
 }
 
-export default CheckboxFilter
+export default CheckboxDatesPastFilter

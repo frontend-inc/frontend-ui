@@ -4,6 +4,8 @@ import CheckboxFilter from './CheckboxFilter'
 import CheckboxBooleanFilter from './CheckboxBooleanFilter'
 import CheckboxNumberRangeFilter from './CheckboxNumberRangeFilter'
 import CheckboxRatingsFilter from './CheckboxRatingsFilter'
+import CheckboxDatesPastFilter from './CheckboxDatesPastFilter'
+import CheckboxDatesFutureFilter from './CheckboxDatesFutureFilter'
 
 type FilterListInputProps = {
 	filters: FilterOptionType[]
@@ -23,16 +25,44 @@ const FilterListInput: React.FC<FilterListInputProps> = (props) => {
 		<>
 			{filterOption.variant == 'boolean' && (
 				<CheckboxBooleanFilter
-					name={filterOption?.field}
+					field={filterOption?.field}
+					label={filterOption?.label}
+					values={findFilterValues(filterOption?.field, filters)}
+					handleClick={handleFilter}
+				/>
+			)}
+        
+      {filterOption.variant == 'date_range' && (
+        // Todo: Update to use date range component
+				<CheckboxDatesPastFilter
+					field={filterOption?.field}
+					label={filterOption?.label}
+					values={findFilterValues(filterOption?.field, filters)}
+					handleClick={handleFilter}
+				/>
+			)}
+      {filterOption.variant == 'date_range_past' && (
+				<CheckboxDatesPastFilter
+					field={filterOption?.field}
 					label={filterOption?.label}
 					values={findFilterValues(filterOption?.field, filters)}
 					handleClick={handleFilter}
 				/>
 			)}
 
+      {filterOption.variant == 'date_range_future' && (
+				<CheckboxDatesFutureFilter
+					field={filterOption?.field}
+					label={filterOption?.label}
+					values={findFilterValues(filterOption?.field, filters)}
+					handleClick={handleFilter}
+				/>
+			)}
+
+
 			{filterOption.variant == 'multiple_choice' && (
 				<CheckboxFilter
-					name={filterOption?.field}
+					field={filterOption?.field}
 					label={filterOption?.label}
 					values={findFilterValues(filterOption?.field, filters)}
 					// @ts-ignore
@@ -43,7 +73,7 @@ const FilterListInput: React.FC<FilterListInputProps> = (props) => {
 
 			{filterOption.variant == 'number_range' && (
 				<CheckboxNumberRangeFilter
-					name={filterOption?.field}
+          field={filterOption?.field}
 					label={filterOption?.label}
 					values={findFilterValues(filterOption?.field, filters)}
 					// @ts-ignore
@@ -54,7 +84,7 @@ const FilterListInput: React.FC<FilterListInputProps> = (props) => {
 
 			{filterOption.variant == 'ratings_scale' && (
 				<CheckboxRatingsFilter
-					name={filterOption?.field}
+          field={filterOption?.field}
 					label={filterOption?.label}
 					values={findFilterValues(filterOption?.field, filters)}
 					handleClick={handleFilter}

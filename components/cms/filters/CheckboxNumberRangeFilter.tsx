@@ -8,9 +8,7 @@ import {
 import { MenuList } from '../..'
 
 type CheckboxNumberRangeFilterProps = {
-	name: string
-	where?: FilterWhereType
-	operator?: FilterOperatorType
+	field: string
 	options?: {
 		label: string
 		min: string | number
@@ -19,7 +17,6 @@ type CheckboxNumberRangeFilterProps = {
 	values?: any
 	handleClick: (filter: FilterOptionType) => void
 	label?: string
-	icon?: React.ReactNode
 	disablePadding?: boolean
 	defaultClosed?: boolean
 }
@@ -29,7 +26,7 @@ const CheckboxNumberRangeFilter: React.FC<CheckboxNumberRangeFilterProps> = (
 ) => {
 	const {
 		label,
-		name,
+		field,
 		options,
 		values,
 		handleClick,
@@ -54,7 +51,7 @@ const CheckboxNumberRangeFilter: React.FC<CheckboxNumberRangeFilterProps> = (
 					}}
 					handleClick={() =>
 						handleClick({
-							field: name,
+							field,
 							operator: 'btw',
 							where: 'OR',
 							value: [

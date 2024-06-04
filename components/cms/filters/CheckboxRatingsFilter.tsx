@@ -8,7 +8,7 @@ import {
 import { MenuList } from '../..'
 
 type CheckboxFilterProps = {
-	name: string
+	field: string
 	where?: FilterWhereType
 	operator?: FilterOperatorType
 	values?: any
@@ -22,7 +22,7 @@ type CheckboxFilterProps = {
 const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 	const {
 		label,
-		name,
+		field,
 		values,
 		handleClick,
 		disablePadding = false,
@@ -52,7 +52,7 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 						handleClick({
 							where: 'OR',
 							operator: 'eq',
-							field: name,
+							field: field,
 							value: option.value,
 						})
 					}
