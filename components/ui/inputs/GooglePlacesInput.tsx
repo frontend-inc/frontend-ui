@@ -10,6 +10,8 @@ const GooglePlacesInput: React.FC<TextInputPropsType> = (props) => {
   const { 
     name, 
     value, 
+    label,
+    placeholder,
     handleChange, 
     direction='column' 
   } = props || {};
@@ -34,19 +36,14 @@ const GooglePlacesInput: React.FC<TextInputPropsType> = (props) => {
     fetchPlaces(debouncedValue);
   }, [debouncedValue])
 
-  const handleInputChange = async (ev) => {
-    const { value } = ev?.target;    
-    resp = await fetchPlace(value);
-    console.log("Place", resp);
-  };
 
   const [options, setOptions] = useState([]);
   
   useEffect(() => {
     if (places?.length > 0) {
-      setOptions(places?.map((p) => ({ 
-        label: p?.displayName?.text, 
-        value: p.id 
+      setOptions(places?.map((place) => ({ 
+        label: place?.displayName?.text, 
+        value: place
       })));
     }
   }, [places])
@@ -55,9 +52,10 @@ const GooglePlacesInput: React.FC<TextInputPropsType> = (props) => {
     <Autosuggest 
       freeSolo
       name="google_place_id"
+      label={label}
       value={keywords}
       options={options}
-      handleChange={handleInputChange}
+      handleChange={handleChange}
       handleInputChange={handleKeywordChange}
       direction={direction}
       loading={loading}
