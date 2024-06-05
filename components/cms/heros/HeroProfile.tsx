@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
-import { BuyNowButton, StripePaymentLink,  SocialButtons, Image, Actions, SocialLink } from '../..'
+import { DisplayFields, BuyNowButton, StripePaymentLink,  SocialButtons, Image, Actions, SocialLink } from '../..'
 import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
@@ -11,6 +11,7 @@ const HeroProfile: React.FC<HeroProps> = (props) => {
 	const { 
     actions, 
     resource, 
+    displayFields=[],
     enableBorder, 
     enableEdit, 
     handleEdit, 
@@ -64,7 +65,10 @@ const HeroProfile: React.FC<HeroProps> = (props) => {
 					<Typography color="text.primary" variant="h4">
 						{title}
 					</Typography>
-         
+          <DisplayFields 
+            fields={ displayFields }
+            resource={ resource }
+          />
           { enableBuyNow && (
             <BuyNowButton 
               resource={resource}

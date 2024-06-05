@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Box, Stack, Typography } from '@mui/material'
-import { Image, CardFields, FavoriteButton } from '../../..'
+import { Image, DisplayFields, FavoriteButton } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
@@ -82,7 +82,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
             />
           </Stack>
 				</Stack>
-        <CardFields 
+        <DisplayFields 
           fields={fields}
           resource={resource}
         />

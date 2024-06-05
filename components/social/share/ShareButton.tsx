@@ -78,7 +78,7 @@ const ShareButton: React.FC<ShareButtonProps> = (props) => {
           <IosShare fontSize="small" />
         </IconButton>
       )}
-			<Modal open={open} handleClose={() => setOpen(false)} title="Share">
+			<Modal open={open} handleClose={() => setOpen(false)}>
         <Box p={4}>
         <Stack spacing={2}>
           <Box width='100%'>
@@ -109,9 +109,13 @@ export default ShareButton
 
 const sx = {
   iconButton: {
-    color: 'grey.100'
+    border: '1px solid',
+    borderColor: 'primary.main',
+    color: 'primary.main'
   },
   button: {
+    border: '1px solid',
+    borderColor: 'primary.main',
     color: 'primary.main'
   },
 	socialButtons: {

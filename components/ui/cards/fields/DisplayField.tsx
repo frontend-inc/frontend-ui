@@ -40,7 +40,7 @@ type FieldProps = {
 	resource?: any
 }
 
-const CardField: React.FC<FieldProps> = (props) => {
+const DisplayField: React.FC<FieldProps> = (props) => {
 	const { field, resource, color='text.secondary', ...rest } = props
 	const { variant: fieldVariant, icon } = field
 	let value = get(resource, field?.name)
@@ -95,4 +95,4 @@ const CardField: React.FC<FieldProps> = (props) => {
   )
 }
 
-export default CardField
+export default DisplayField

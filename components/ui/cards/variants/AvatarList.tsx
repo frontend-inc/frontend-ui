@@ -12,7 +12,7 @@ import {
 } from '@mui/material'
 import { truncate } from '../../../../helpers'
 import { CardProps } from '../../../../types'
-import { Actions, CardFields, FavoriteButton } from '../../../../components'
+import { Actions, DisplayFields, FavoriteButton } from '../../../../components'
 
 const AvatarList: React.FC<CardProps> = (props) => {
 	const {
@@ -80,7 +80,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 							</Typography>
 						}
 						secondary={
-              <CardFields
+              <DisplayFields
                 fields={fields}
                 resource={resource}
               />							

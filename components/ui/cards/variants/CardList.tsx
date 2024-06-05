@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Box, Stack, Typography } from '@mui/material'
-import { Image, CardFields, TouchableOpacity, FavoriteButton } from '../../../../components'
+import { Image, DisplayFields, TouchableOpacity, FavoriteButton } from '../../../../components'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
@@ -81,7 +81,7 @@ const CardList: React.FC<CardProps> = (props) => {
 						<Typography color="textPrimary" variant={textVariant}>
 							{truncate(title)}
 						</Typography>
-            <CardFields 
+            <DisplayFields 
               fields={fields}
               resource={resource}
             />

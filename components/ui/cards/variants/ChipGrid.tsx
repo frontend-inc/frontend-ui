@@ -10,7 +10,7 @@ import {
 	ListItemText,
 	Typography,
 } from '@mui/material'
-import { CardFields, FavoriteButton, Actions } from '../../..'
+import { DisplayFields, FavoriteButton, Actions } from '../../..'
 import { CardProps } from '../../../../types'
 
 const ChipList: React.FC<CardProps> = (props) => {
@@ -76,7 +76,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 							</Typography>
 						}
             secondary={
-              <CardFields 
+              <DisplayFields 
                 fields={fields}
                 resource={resource}
               />

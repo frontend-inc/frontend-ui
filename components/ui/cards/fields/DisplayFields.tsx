@@ -1,22 +1,23 @@
 import React from "react"
-import { CardField } from "../../../../components"
+import { DisplayField } from "../../.."
 import { DisplayFieldType } from "../../../../types"
 import { Stack } from "@mui/material"
 
-type CardFieldsProps = {
+type DisplayFieldsProps = {
   color?: string
   fields: DisplayFieldType[]
   resource: any
+  alignItems?: 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline'
 }
 
-const CardFields: React.FC<CardFieldsProps> = (props) => {
+const DisplayFields: React.FC<DisplayFieldsProps> = (props) => {
 
-  const { fields, resource, color } = props || {}
+  const { fields, resource, color, alignItems='flex-start' } = props || {}
 
   return(
-    <Stack sx={ sx.root } direction="column" spacing={0.5} alignItems='flex-start'>
+    <Stack sx={ sx.root } direction="column" spacing={0.5} alignItems={ alignItems }>
       { fields?.map((field, index) => (
-        <CardField 
+        <DisplayField 
           key={index}
           color={color}
           field={field}
@@ -27,7 +28,7 @@ const CardFields: React.FC<CardFieldsProps> = (props) => {
   )
 }
 
-export default CardFields
+export default DisplayFields
 
 const sx = {
   root: {

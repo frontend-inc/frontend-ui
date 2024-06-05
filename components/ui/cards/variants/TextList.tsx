@@ -4,7 +4,7 @@ import { Box, Link, Stack, Typography } from '@mui/material'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
-import { FavoriteButton, CardFields, Actions } from '../../..'
+import { FavoriteButton, DisplayFields, Actions } from '../../..'
 
 const CardList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
@@ -52,7 +52,7 @@ const CardList: React.FC<CardProps> = (props) => {
                 {truncate(title)}
               </Typography>
             </Link>
-            <CardFields 
+            <DisplayFields 
               fields={fields}
               resource={resource}
             />

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { AppContext } from '../../../context'
 import { useAuth } from 'frontend-js'
 import { Button, Stack } from '@mui/material'
-import { ActionType, FormFieldType } from '../../../types'
+import { ActionType, FormFieldType, DisplayFieldType } from '../../../types'
 import Article from './HeroArticle'
 import Product from './HeroProduct'
 import Profile from './HeroProfile'
@@ -18,6 +18,7 @@ export type HeroProps = {
 	handle?: string
 	enableBorder?: boolean
 	actions: ActionType[]
+  displayFields: DisplayFieldType[]
   fields?: FormFieldType[]
 	fieldName?: string
 	url?: string
@@ -54,6 +55,7 @@ const Hero: React.FC<HeroItemProps> = (props) => {
 		style = 'article',
 		resource: _resource,
 		fields,
+    displayFields=[],
 		fieldName,
 		url,
 		actions,
@@ -135,7 +137,8 @@ const Hero: React.FC<HeroItemProps> = (props) => {
 				<Component
 					fieldName={fieldName}
 					resource={resource}
-					actions={actions}          
+					actions={actions}    
+          displayFields={displayFields}          
 					enableBorder={enableBorder}
 					enableEdit={enableEdit}
 					handleEdit={handleEdit}

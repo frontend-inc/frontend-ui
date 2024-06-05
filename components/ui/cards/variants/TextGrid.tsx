@@ -5,7 +5,7 @@ import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CARD_VERT_HEIGHT, CARD_VERT_WIDTH } from '../../../../constants/index'
 import { CardProps } from '../../../../types'
-import { FavoriteButton, CardFields, Actions } from '../../..'
+import { FavoriteButton, DisplayFields, Actions } from '../../..'
 
 const TextGrid: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
@@ -62,7 +62,7 @@ const TextGrid: React.FC<CardProps> = (props) => {
               {truncate(title)}
             </Typography>
           </Link>
-          <CardFields 
+          <DisplayFields 
             fields={fields}
             resource={resource}
           />

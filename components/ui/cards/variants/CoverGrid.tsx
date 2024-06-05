@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Box, Stack, Typography } from '@mui/material'
-import { FavoriteButton, CardFields, Image, Icon, TouchableOpacity, Actions } from '../../..'
+import { FavoriteButton, DisplayFields, Image, Icon, TouchableOpacity, Actions } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
@@ -70,7 +70,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 								<Typography color="common.white" variant={textVariant}>
 									{truncate(title, 60)}
 								</Typography>
-                <CardFields
+                <DisplayFields
                   color="common.white"
                   fields={fields}
                   resource={resource}

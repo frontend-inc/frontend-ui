@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
-import { BuyNowButton, StripePaymentLink, SocialButtons, Actions, Image } from '../..'
+import { DisplayFields, BuyNowButton, StripePaymentLink, SocialButtons, Actions, Image } from '../..'
 import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
@@ -10,9 +10,9 @@ type HeroContainerProps = HeroProps & {
 }
 
 const HeroContainer: React.FC<HeroContainerProps> = (props) => {
-	const { actions, resource, children, enableBorder, enableEdit, handleEdit, enableFavorites, enableLikes, enableSharing, enableBuyNow, enableStripePaymentLink } =
+	const { actions, displayFields=[], resource, children, enableBorder, enableEdit, handleEdit, enableFavorites, enableLikes, enableSharing, enableBuyNow, enableStripePaymentLink } =
 		props || {}
-	const { label, title, subtitle, image, description, data } = resource || {}
+	const { title, description } = resource || {}
 	return (
 		<Stack
 			sx={{
@@ -42,11 +42,10 @@ const HeroContainer: React.FC<HeroContainerProps> = (props) => {
 				<Typography color="text.primary" variant="h3">
 					{title}
 				</Typography>  
-        { subtitle && (
-          <Typography color="text.secondary" variant="body1">
-            {subtitle}
-          </Typography>  
-        )}            
+        <DisplayFields 
+          fields={displayFields}
+          resource={resource} 
+        />          
         { enableBuyNow && (
           <BuyNowButton             
             resource={resource}
