@@ -6,7 +6,7 @@ import { SectionProps } from '../../../types'
 
 type CmsCalendlyProps = SectionProps & AddonCalendlyProps
 
-const CmsAddonCalendly: React.FC<CmsCalendlyProps> = (props) => {
+const CmsCalendly: React.FC<CmsCalendlyProps> = (props) => {
 	const {
 		bgcolor,
 		py,
@@ -35,4 +35,4 @@ const CmsAddonCalendly: React.FC<CmsCalendlyProps> = (props) => {
 	)
 }
 
-export default CmsAddonCalendly
+export default CmsCalendly

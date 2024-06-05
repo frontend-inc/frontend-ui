@@ -14,4 +14,4 @@ export { default as CmsVimeo } from './CmsVimeo'
 export { default as CmsYouTube } from './CmsYouTube'
 
 // Cms Addons
-export { default as CmsAddonCalendly } from './addons/CmsAddonCalendly'
+export { default as CmsCalendly } from './addons/CmsCalendly'
