@@ -23,7 +23,8 @@ import { useAuth } from 'frontend-js'
 export type ForeignCollectionTableProps = CollectionListProps & {
 	resource: any
 	field: FieldType
-	foreignUrl?: string
+  foreignUrl?: string
+	foreignContentType?: string
 	headers: TableHeaderType[]
 }
 
@@ -37,7 +38,8 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 	const {
 		resource,
 		url,
-		foreignUrl,
+    foreignUrl,
+		foreignContentType,
 		fields,
 		headers,
 		filterAnchor = 'left',
@@ -92,7 +94,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 	}
 
 	const handleSearch = (keywords: string) => {
-		findLinks(resource.id, foreignUrl, {
+		findLinks(resource.id, foreignContentType, {
 			...query,
 			...defaultQuery,
 			keywords: keywords,
@@ -114,7 +116,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 		if (sortBy == query?.sort_by) {
 			sortDir = query?.sort_direction == 'asc' ? 'desc' : 'asc'
 		}
-		findLinks(resource?.id, foreignUrl, {
+		findLinks(resource?.id, foreignContentType, {
 			...query,
 			sort_by: sortBy,
 			sort_direction: sortDir,
@@ -132,7 +134,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 	// Filter methods
 	const handleClearFilters = () => {
 		setActiveFilters([])
-		findLinks(resource?.id, foreignUrl, {
+		findLinks(resource?.id, foreignContentType, {
 			filters: {
 				...defaultQuery?.filters,
 			},
@@ -221,7 +223,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 			per_page: perPage,
 			page: 1,
 		}
-		findLinks(resource?.id, foreignUrl, filterQuery)
+		findLinks(resource?.id, foreignContentType, filterQuery)
 	}
 
 	useEffect(() => {
@@ -232,10 +234,10 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 	}, [resources])
 
 	useEffect(() => {
-		if (resource?.id && foreignUrl) {
+		if (resource?.id && foreignContentType) {
 			handleFetchResources()
 		}
-	}, [resource, foreignUrl, currentUser?.id])
+	}, [resource, foreignContentType, currentUser?.id])
 
 	return (
 		<Stack spacing={1} sx={sx.root}>

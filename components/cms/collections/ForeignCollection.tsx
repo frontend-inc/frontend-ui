@@ -26,6 +26,7 @@ export type ForeignCollectionProps = {
 	handle: string
 	url: string
   foreignUrl: string
+  foreignContentType?: string
 	href?: any
 	perPage?: number
 	query?: any
@@ -49,6 +50,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		style = 'card',
 		url,
     foreignUrl,
+    foreignContentType,
 		href,
 		perPage = 10,
 		query: defaultQuery = null,
@@ -151,8 +153,8 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	}
 
 	const handleFetchResources = async () => {
-		if (_resource?.id && foreignUrl) {
-			findLinks(_resource.id, foreignUrl, {
+		if (_resource?.id && foreignContentType) {
+			findLinks(_resource.id, foreignContentType, {
 				...query,
 				...defaultQuery,
 				per_page: perPage,
@@ -162,10 +164,10 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (_resource?.id && foreignUrl) {
+		if (_resource?.id && foreignContentType) {
 			handleFetchResources()
 		}
-	}, [_resource?.id, foreignUrl, currentUser?.id])
+	}, [_resource?.id, foreignContentType, currentUser?.id])
 
 	return (
 		<Stack direction="column" spacing={1} sx={sx.root}>
