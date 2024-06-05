@@ -111,6 +111,7 @@ const sx = {
 	rootBorder: {
 		border: '1px solid',
 		borderColor: 'divider',
+    pb: 2
 	},
 	header: {
 		maxWidth: 500,
