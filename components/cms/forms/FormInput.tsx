@@ -45,7 +45,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		file: AttachmentInput,
 		url: TextInput,
 		text: TextInput,
-    location: TextInput,
+    location: LocationInput,
 		number: TextInput,
 		price: TextInput,
 		date: DateInput,
