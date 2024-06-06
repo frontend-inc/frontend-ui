@@ -78,7 +78,6 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 		direction = 'column',
 		options,
 		label,
-		loading = false,
 		name,
 		placeholder = 'Select',
 		multiselect = false,
@@ -126,14 +125,15 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (typeof value === 'object') {
+		if (value && typeof value === 'object') {
 			setSelected(value)
-		} else if (options?.length > 0) {
-			setSelected(options.find((option) => option.value == value))
+		} else if (value && options?.length > 0) {
+      let option = options.find((option) => option.value == value)
+      if(option) setSelected(option);
 		}
 	}, [value, options])
 
-	return (
+  return (
 		<Stack
 			sx={{
 				...sx.stack,
@@ -233,7 +233,7 @@ const sx: any = {
 			borderRadius: 1,
 			fontSize: (theme) => theme.typography.body2.fontSize,
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
-			bgcolor: 'background.paper',
+			bgcolor: 'background.main',
 			border: (theme) => `1px solid ${theme.palette.divider}`,
 			'&:focus': {
 				border: (theme) => `1px solid ${theme.palette.primary.light}`,
@@ -273,6 +273,7 @@ const sx: any = {
 		marginRight: '10px',
 	},
 	stack: {
+    width: '100%',
 		alignItems: 'flex-start',
 	},
 	stackVertical: {

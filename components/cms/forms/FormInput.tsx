@@ -3,6 +3,7 @@ import {
 	AttachmentInput,
 	Autosuggest,
 	ArrayInput,
+  LocationInput,
   ArrayListInput,
 	DateInput,
 	ImageInput,
@@ -39,11 +40,12 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 	} = props
 
 	let componentMapper = {
-		array: ArrayListInput,
+		array: ArrayInput,
 		string: TextInput,
 		file: AttachmentInput,
 		url: TextInput,
 		text: TextInput,
+    location: TextInput,
 		number: TextInput,
 		price: TextInput,
 		date: DateInput,

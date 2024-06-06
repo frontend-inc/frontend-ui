@@ -1,14 +1,14 @@
 import React from 'react'
-import { CellString } from '../../../components'
+import { CellString } from '../..'
 import { truncate } from '../../../helpers'
 
-type CellTextProps = {
+type CellLocationProps = {
 	value?: string
 }
 
-const CellText: React.FC<CellTextProps> = (props) => {
+const CellLocation: React.FC<CellLocationProps> = (props) => {
 	const { value } = props
 	return <CellString variant="body2" value={truncate(value, 250)} />
 }
 
-export default CellText
+export default CellLocation
