@@ -11,7 +11,7 @@ const CardList: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
-    fields=[],
+    displayFields=[],
 		href,		
 		textVariant = 'subtitle1',
 		handleClick,		
@@ -53,7 +53,7 @@ const CardList: React.FC<CardProps> = (props) => {
               </Typography>
             </Link>
             <DisplayFields 
-              fields={fields}
+              fields={displayFields}
               resource={resource}
             />
 						<Typography

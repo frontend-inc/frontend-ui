@@ -10,7 +10,7 @@ const CoverList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		resource,
-    fields=[],
+    displayFields=[],
 		actions,
 		icon,
 		href,
@@ -59,7 +59,7 @@ const CoverList: React.FC<CardProps> = (props) => {
 							{truncate(title, 40)}
 						</Typography>
 						<DisplayFields 
-              fields={fields}
+              fields={displayFields}
               resource={resource}
               color="common.white"
             />

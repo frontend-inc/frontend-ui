@@ -7,7 +7,7 @@ import { flattenDocument } from 'frontend-js/helpers'
 
 type CollectionCardsProps = {
 	resources: any
-  fields?: DisplayFieldType[]
+  displayFields?: DisplayFieldType[]
 	actions?: ActionType[]
 	variant: 'list' | 'grid'
 	style: 'card' | 'avatar' | 'cover' | 'chip' | 'text' | 'image'
@@ -29,7 +29,7 @@ const CollectionCards: React.FC<CollectionCardsProps> = (props) => {
 
 	const {
 		resources,
-    fields=[],
+    displayFields=[],
 		actions = [],
 		handleClick,
 		handleEdit = handleNull,
@@ -59,7 +59,7 @@ const CollectionCards: React.FC<CollectionCardsProps> = (props) => {
 						variant={variant}
 						style={style}
 						resource={flattenDocument(resource)}
-            fields={fields}
+            displayFields={displayFields}
 						handleClick={() => handleClick(resource)}
 						actions={buildActions({
 							enableEdit,

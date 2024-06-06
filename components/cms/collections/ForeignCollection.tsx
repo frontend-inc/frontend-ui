@@ -13,7 +13,7 @@ import {
   Placeholder
 } from '../../../components'
 import { Stack, Button, Box } from '@mui/material'
-import { FormFieldType } from '../../../types'
+import { DisplayFieldType, FormFieldType } from '../../../types'
 import { flattenDocument } from '../../../helpers'
 import { useAuth } from 'frontend-js'
 
@@ -22,6 +22,7 @@ export type ForeignCollectionProps = {
 	style?: 'card' | 'avatar' | 'cover'
 	field: any
 	fields: FormFieldType[]
+  displayFields?: DisplayFieldType[]
 	resource: any	
 	handle: string
 	url: string
@@ -45,6 +46,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 
 	const {
 		fields,
+    displayFields=[],
 		resource: _resource,		
 		variant = 'list',
 		style = 'card',
@@ -185,6 +187,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 			)}			
 			<CollectionCards
 				actions={[]}
+        displayFields={displayFields}
 				variant={variant}
 				style={style}
 				resources={resources}

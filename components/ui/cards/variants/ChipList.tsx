@@ -18,7 +18,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 	const {
 		resource,
 		actions,
-    fields=[],
+    displayFields=[],
 		handleClick,
 		enableBorder = false,
 		enableGradient = false,
@@ -78,7 +78,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 						}
 						secondary={
               <DisplayFields 
-                fields={fields}
+                fields={displayFields}
                 resource={resource}
               />
 						}

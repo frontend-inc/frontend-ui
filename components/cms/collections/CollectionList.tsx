@@ -316,7 +316,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 							variant={variant}
 							style={style}
 							resources={resources}
-              fields={displayFields}
+              displayFields={displayFields}
 							handleClick={handleClick}
 							buttonText={buttonText}
 							enableBorder={enableBorder}

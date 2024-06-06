@@ -18,7 +18,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
-    fields=[],
+    displayFields=[],
 		height = 128,
 		width = 128,
 		handleClick,
@@ -81,7 +81,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 						}
 						secondary={
               <DisplayFields
-                fields={fields}
+                fields={displayFields}
                 resource={resource}
               />							
 						}

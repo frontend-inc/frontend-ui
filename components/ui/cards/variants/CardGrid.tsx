@@ -12,7 +12,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
-    fields=[],
+    displayFields=[],
 		href,
 		handleClick,
 		objectFit = 'cover',
@@ -83,7 +83,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
           </Stack>
 				</Stack>
         <DisplayFields 
-          fields={fields}
+          fields={displayFields}
           resource={resource}
         />
 			</Stack>

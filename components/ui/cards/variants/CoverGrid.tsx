@@ -11,7 +11,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
-    fields=[],
+    displayFields=[],
 		href,
 		handleClick,
 		textVariant = 'subtitle1',
@@ -23,7 +23,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		icon,
 	} = props || {}
 
-	const { label, title, description, image } = resource || {}
+	const { label, title, image } = resource || {}
 	const router = useRouter()
 
 	const handleItemClick = () => {
@@ -72,7 +72,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 								</Typography>
                 <DisplayFields
                   color="common.white"
-                  fields={fields}
+                  fields={displayFields}
                   resource={resource}
                 />								
 							</Box>

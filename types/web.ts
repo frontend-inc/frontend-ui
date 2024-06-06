@@ -36,7 +36,7 @@ export type CardProps = {
 		}
 		video?: string
 	}
-  fields: DisplayFieldType[]
+  displayFields: DisplayFieldType[]
 	buttonText?: string
 	textVariant?: TypographyVariant
 	size?: number

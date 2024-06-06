@@ -12,7 +12,7 @@ const CardList: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
-    fields=[],
+    displayFields=[],
 		href,
 		height = 180,
 		textVariant = 'subtitle1',
@@ -82,7 +82,7 @@ const CardList: React.FC<CardProps> = (props) => {
 							{truncate(title)}
 						</Typography>
             <DisplayFields 
-              fields={fields}
+              fields={displayFields}
               resource={resource}
             />
 					</Stack>

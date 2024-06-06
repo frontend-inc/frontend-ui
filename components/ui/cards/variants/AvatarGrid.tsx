@@ -15,7 +15,7 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
-    fields=[],
+    displayFields=[],
 		href,
 		handleClick,
 		height = AVATAR_VERT_HEIGHT,
@@ -84,7 +84,7 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 				</Stack>
 			</Stack>
       <DisplayFields
-        fields={fields}
+        fields={displayFields}
         resource={resource}
       />	
 		</Stack>

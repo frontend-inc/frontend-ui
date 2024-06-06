@@ -12,7 +12,7 @@ const TextGrid: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
-    fields=[],
+    displayFields=[],
 		href,
 		handleClick,
 		height = CARD_VERT_HEIGHT,
@@ -63,7 +63,7 @@ const TextGrid: React.FC<CardProps> = (props) => {
             </Typography>
           </Link>
           <DisplayFields 
-            fields={fields}
+            fields={displayFields}
             resource={resource}
           />
           <Typography sx={sx.description} color="text.secondary" variant="body1">

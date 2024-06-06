@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, CoverCard, AvatarCard, Chip, TextCard, ImageCard } from '../..'
-import { ActionType } from '../../../types'
+import { ActionType, DisplayFieldType } from '../../../types'
 
 type CardStyleTypes = 'card' | 'avatar' | 'cover' | 'chip' | 'image' | 'text'
 
@@ -8,6 +8,7 @@ type CollectionCardProps = {
 	actions: ActionType[]
 	variant: 'list' | 'grid'
 	style: CardStyleTypes
+  displayFields: DisplayFieldType[]
 	resource: any & {
 		label?: string
 		title?: string
@@ -44,7 +45,7 @@ const CollectionCard: React.FC<CollectionCardProps> = (props) => {
 
 	let Component = COMPONENTS[style] || Card
 
-	return <Component variant={variant} {...rest} />
+return <Component variant={variant} {...rest} />
 }
 
 export default CollectionCard
