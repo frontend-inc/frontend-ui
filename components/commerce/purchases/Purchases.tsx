@@ -30,6 +30,9 @@ export type PurchasesProps = {
   enablePurchases?: boolean
   enableInfiniteLoad?: boolean
   enableLoadMore?: boolean
+  emptyIcon?: string
+  emptyTitle?: string
+  emptyDescription?: string
 }
 
 const Purchases: React.FC<PurchasesProps> = (props) => {

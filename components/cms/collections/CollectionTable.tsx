@@ -46,6 +46,9 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		enableDelete = false,
     filterUser = false,
     filterTeam = false,
+    emptyIcon,
+    emptyTitle='No results found',
+    emptyDescription='Try adjusting your search or filters.',
 	} = props
 
 	const [openModal, setOpenModal] = useState(false)
@@ -320,6 +323,9 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 							numResults={numResults}
 							totalCount={totalCount}
 							handlePaginate={handlePaginate}
+              emptyIcon={emptyIcon}
+              emptyTitle={emptyTitle}
+              emptyDescription={emptyDescription}
 						/>
 					</Box>
 				</Grid>

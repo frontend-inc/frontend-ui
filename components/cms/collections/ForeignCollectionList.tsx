@@ -11,7 +11,7 @@ import {
 	AlertModal,
 	Icon,
   Placeholder
-} from '../../../components'
+} from '../..'
 import { Stack, Button, Box } from '@mui/material'
 import { DisplayFieldType, FormFieldType } from '../../../types'
 import { flattenDocument } from '../../../helpers'
@@ -38,6 +38,9 @@ export type ForeignCollectionProps = {
 	enableGradient?: boolean
   enableFavorites?: boolean
 	enableLoadMore?: boolean
+  emptyIcon?: string
+  emptyTitle?: string
+  emptyDescription?: string
 }
 
 const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
@@ -62,7 +65,10 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		enableCreate = false,
 		enableEdit = false,
 		enableDelete = false,
-    enableFavorites = false
+    enableFavorites = false,
+    emptyIcon,
+    emptyTitle='No results found',
+    emptyDescription='Try adjusting your search or filters'
 	} = props
 
 	const router = useRouter()
@@ -205,9 +211,10 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 			)}
       {!loading && resources.length == 0 && (
         <Placeholder
-          icon="Search"
-          title="No results found"
-          description="Try adjusting your search or filters"
+          enableBorder
+          icon={ emptyIcon }
+          title={ emptyTitle }
+          description={ emptyDescription }
         />
       )}
       <Drawer

@@ -41,6 +41,9 @@ type TableProps = {
 	handleSelectAll?: () => void
 	handleSort: (field: any) => void
 	handlePaginate: (e: any, page: number) => void
+  emptyIcon?: string
+  emptyTitle?: string
+  emptyDescription?: string
 }
 
 const TableList: React.FC<TableProps> = (props) => {
@@ -71,6 +74,9 @@ const TableList: React.FC<TableProps> = (props) => {
 		numResults,
 		totalCount,
 		styles = {},
+    emptyIcon='Search',
+    emptyTitle='No results found',
+    emptyDescription='Try adjusting your search or filters',
 	} = props
 
 	return (
@@ -121,9 +127,9 @@ const TableList: React.FC<TableProps> = (props) => {
 						<MuiTableRow>
 							<MuiTableCell colSpan={fields?.length + 1}>
 								<Placeholder
-									icon="Search"
-									title="No results found"
-									description="Try changing your search query."
+									icon={ emptyIcon }
+									title={ emptyTitle }
+									description={ emptyDescription }
 								/>
 							</MuiTableCell>
 						</MuiTableRow>

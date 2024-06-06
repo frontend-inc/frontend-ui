@@ -53,6 +53,9 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 		enableEdit = false,
 		enableCreate = false,
 		enableDelete = false,
+    emptyIcon,
+    emptyTitle,
+    emptyDescription
 	} = props
 
 	const [openModal, setOpenModal] = useState(false)
@@ -323,6 +326,9 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 							numResults={numResults}
 							totalCount={totalCount}
 							handlePaginate={handlePaginate}
+              emptyIcon={emptyIcon}
+              emptyTitle={emptyTitle}
+              emptyDescription={emptyDescription}
 						/>
 					</Box>
 				</Grid>

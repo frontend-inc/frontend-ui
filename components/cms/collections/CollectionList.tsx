@@ -51,7 +51,10 @@ export type CollectionListProps = {
 	enableDelete?: boolean
   enableFavorites?: boolean
   filterUser?: boolean
-  filterTeam?: boolean  
+  filterTeam?: boolean 
+  emptyIcon?: string
+  emptyTitle?: string
+  emptyDescription?: string 
 }
 
 const CollectionList: React.FC<CollectionListProps> = (props) => {
@@ -87,6 +90,9 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
     filterUser = false,
     filterTeam = false,
     query: defaultQuery = {},
+    emptyIcon,
+    emptyTitle='No results found',
+    emptyDescription='Try changing your search or filters.'
 	} = props
 
   const handleNavigate = (resource) => {
@@ -331,9 +337,10 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 					</Box>
 					{!loading && resources.length == 0 && (
 						<Placeholder
-							icon="Search"
-							title="No results found"
-							description="Try adjusting your search or filters"
+              enableBorder
+							icon={ emptyIcon }
+							title={ emptyTitle }
+							description={ emptyDescription }
 						/>
 					)}
 				</Grid>
