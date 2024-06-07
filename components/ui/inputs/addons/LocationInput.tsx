@@ -6,6 +6,7 @@ import { useDebounce } from 'use-debounce'
 import { 
   Stack,
   Box,
+  Paper,
   Typography,
   List,
   ListItem,
@@ -121,19 +122,14 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
         direction={direction}
         placeholder={ placeholder }
       />
-      { enablePosition && (
-        <Stack direction="row" spacing={1} alignItems='center'>
-          <Icon name="MapPin" size={20} />
-          <Typography variant='overline' color='text.secondary'>
-            Lat: { lat } 
-          </Typography>
-          <Typography variant='overline' color='text.secondary'>
-            Lng: { lng } 
-          </Typography>
-        </Stack>
-      )}
+      <Box sx={ sx.anchor }>
       { open && (
-      <Box sx={sx.container}>
+      <Paper 
+        sx={{ 
+          ...sx.container,
+          height: (options?.length * 64)
+        }} 
+        elevation={2}>
         <List 
           dense 
           disablePadding
@@ -153,17 +149,39 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
           </ListItem>
         ))}
         </List>
-      </Box>
+      </Paper>
       )}
+      { enablePosition && (
+        <Stack direction="row" spacing={1} alignItems='center'>
+          <Icon name="MapPin" size={20} />
+          <Typography variant='overline' color='text.secondary'>
+            Lat: { lat } 
+          </Typography>
+          <Typography variant='overline' color='text.secondary'>
+            Lng: { lng } 
+          </Typography>
+        </Stack>
+      )}
+      </Box>
     </Stack>
   );
 };
 export default LocationInput;
 
 const sx = {
-  container: {
+  anchor: {
     position: 'relative',
+  },
+  container: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
     width: '100%',
+    borderRadius: theme => `${theme.shape.borderRadius}px`,
+    minHeight: '100px',
+    height: '100% !important',
+    maxHeight: '240px',
+    overflowY: 'scroll',
   },
   list: {
     bgcolor: 'background.paper',    

@@ -11,6 +11,7 @@ import {
 	RatingInput,
 	SwitchInput,
 	TextInput,
+  ShopifyProductInput
 } from '../../../components'
 import { SyntheticEventType } from '../../../types'
 
@@ -55,6 +56,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		rating: RatingInput,
 		image: ImageInput,
 		json: JSONInput,
+    shopify: ShopifyProductInput
 	}
 
 	let inputProps = {

@@ -6,7 +6,12 @@ import { useError } from '../../../hooks'
 import { TextInputPropsType } from '../../../types'
 import { useDebounce } from 'use-debounce'
 
-const TextInput: React.FC<TextInputPropsType> = (props) => {
+type TextInputProps = TextInputPropsType & {
+  onBlur?: () => void
+  onFocus?: () => void
+}
+
+const TextInput: React.FC<TextInputProps> = (props) => {
 	const {
 		label,
 		type,
@@ -21,6 +26,8 @@ const TextInput: React.FC<TextInputPropsType> = (props) => {
 		errors,
 		direction = 'column',
 		styles = {},
+    onBlur,
+    onFocus
 	} = props
 
 	const [text, setText] = useState(value)
@@ -89,6 +96,8 @@ const TextInput: React.FC<TextInputPropsType> = (props) => {
 						placeholder={placeholder}
 						onChange={debouncedChanged}
 						value={text}
+            onBlur={onBlur && onBlur}
+            onFocus={onFocus && onFocus}
 					/>
 					<ErrorText error={error} />
 				</Box>
