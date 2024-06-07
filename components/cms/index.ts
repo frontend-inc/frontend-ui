@@ -41,6 +41,7 @@ export { default as HeroVimeo } from './heros/HeroVimeo'
 
 // Addons
 export { default as AddonCalendly } from './addons/AddonCalendly'
+export { default as AddonGoogleMap } from './addons/AddonGoogleMap'
 
 // Resources
 export { default as Resource } from './resources/Resource'

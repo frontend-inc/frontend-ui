@@ -14,4 +14,6 @@ export { default as CmsVimeo } from './CmsVimeo'
 export { default as CmsYouTube } from './CmsYouTube'
 
 // Cms Addons
+export { default as CmsGoogleMap } from './addons/CmsGoogleMap'
 export { default as CmsCalendly } from './addons/CmsCalendly'
+
