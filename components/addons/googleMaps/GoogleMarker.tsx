@@ -47,7 +47,6 @@ const GoogleMarker: React.FC<GoogleMarkerProps> = (props) => {
   }
 
   const { resource } = marker || {} 
-  console.log('resource', displayFields)
 	return (
     <>
       <AdvancedMarker 
@@ -73,8 +72,9 @@ const GoogleMarker: React.FC<GoogleMarkerProps> = (props) => {
                 />
               </Box>
             )}            
-            <Typography variant="subtitle2" color='text.primary'>{marker?.label}</Typography>          
+            <Typography variant="subtitle2" color='grey.900'>{marker?.label}</Typography>          
             <DisplayFields 
+              color={'grey.800'}
               fields={displayFields}
               resource={resource}
             />

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useGooglePlaces } from "../../../hooks";
-import { TextInput, Icon } from '../../../components'
+import { TextInput, GoogleMap, Icon } from '../../../components'
 import { TextInputPropsType } from '../../../types'
 import { useDebounce } from 'use-debounce'
 import { 
   Stack,
   Box,
+  Typography,
   List,
   ListItem,
   ListItemButton,
@@ -13,7 +14,17 @@ import {
   ListItemText,
 } from "@mui/material";
 
-const LocationInput: React.FC<TextInputPropsType> = (props) => {
+type LocationInputProps = TextInputPropsType & {
+  enablePosition?: boolean
+  lat?: number
+  lng?: number
+  height?: number
+  width?: number
+  zoom?: number
+  darkTheme?: boolean
+}
+
+const LocationInput: React.FC<LocationInputProps> = (props) => {
   
   const { 
     name='location', 
@@ -21,7 +32,14 @@ const LocationInput: React.FC<TextInputPropsType> = (props) => {
     label,
     placeholder="Search location",
     handleChange, 
-    direction='column' 
+    direction='column',
+    height=240,
+    width=360,
+    zoom=16,
+    darkTheme=false,
+    enablePosition=true, 
+    lat,
+    lng
   } = props || {};
 
   const { 
@@ -69,7 +87,31 @@ const LocationInput: React.FC<TextInputPropsType> = (props) => {
   }, [places])
 
   return (
-    <Stack width={'100%'} direction="column">
+    <Stack width={'100%'} direction="column" spacing={1}>
+      {(enablePosition && lat && lng) && (
+        <Box 
+          sx={{ 
+          ...sx.mapContainer,
+          height,
+          width 
+        }}>
+          <GoogleMap 
+            enableBorder
+            darkTheme={darkTheme}
+            height={height}
+            width={width}
+            zoom={zoom}
+            markers={[
+              {
+                lat: lat,
+                lng: lng,
+                label: document?.title,
+                resource: document
+              }
+            ]}
+          />
+        </Box>
+      )}
       <TextInput 
         name={name}
         label={label}
@@ -79,6 +121,17 @@ const LocationInput: React.FC<TextInputPropsType> = (props) => {
         direction={direction}
         placeholder={ placeholder }
       />
+      { enablePosition && (
+        <Stack direction="row" spacing={1} alignItems='center'>
+          <Icon name="MapPin" size={20} />
+          <Typography variant='overline' color='text.secondary'>
+            Lat: { lat } 
+          </Typography>
+          <Typography variant='overline' color='text.secondary'>
+            Lng: { lng } 
+          </Typography>
+        </Stack>
+      )}
       { open && (
       <Box sx={sx.container}>
         <List 
@@ -124,5 +177,8 @@ const sx = {
   listItemButton: {
     px: 1,
     py: 0
+  },
+  mapContainer: {
+    overflow: 'hidden',
   }
 }

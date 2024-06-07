@@ -1,13 +1,17 @@
 import React from 'react'
-import { Section } from '../../../components'
+import { Section, Heading } from '../../../components'
 import { AddonGoogleMap } from '../../../components'
 import { AddonGoogleMapProps } from '../../../components/cms/addons/AddonGoogleMap'
-import { SectionProps } from '../../../types'
+import { SectionProps, HeadingProps } from '../../../types'
 
-type CmsGoogleMapProps = SectionProps & AddonGoogleMapProps
+type CmsGoogleMapProps = SectionProps & HeadingProps & AddonGoogleMapProps
 
 const CmsGoogleMap: React.FC<CmsGoogleMapProps> = (props) => {
 	const {
+    label,
+    title,
+    description,
+    textAlign,
 		bgcolor,
 		py,
 		px,
@@ -30,6 +34,12 @@ const CmsGoogleMap: React.FC<CmsGoogleMapProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
+      <Heading
+				label={label}
+				title={title}
+				description={description}
+				textAlign={textAlign}
+			/>
 			<AddonGoogleMap {...rest} />
 		</Section>
 	)

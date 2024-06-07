@@ -11,6 +11,7 @@ export type GoogleMapProps = {
   darkTheme?: boolean
 	markers: GoogleMarkerType[]
   height?: number
+  width?: number | string
   zoom?: number
   enableBorder?: boolean
   displayFields?: DisplayFieldType[]
@@ -23,8 +24,9 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
 	const { 
     darkTheme=false,
     height=300, 
+    width,
     markers,
-    zoom=3,
+    zoom=16,
     enableBorder=false,
     displayFields=[] 
   } = props
@@ -61,12 +63,14 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
         ...(enableBorder && sx.mapBorder)
       }} 
       height={ height } 
-      width="100%"
+      width={ width ? width : '100%' }
     >
       <Map 
         zoomControl
         scaleControl
         fullscreenControl
+        mapTypeControl={false}
+        streetViewControl={false}
         mapId={mapConfig.mapId || null}
         mapTypeId={mapConfig.mapTypeId}
         styles={mapConfig.styles}
