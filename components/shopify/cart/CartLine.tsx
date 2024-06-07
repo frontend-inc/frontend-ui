@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { ShopContext } from 'frontend-shopify'
+import { ShopifyContext } from 'frontend-shopify'
 import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
 import {
@@ -52,7 +52,7 @@ const CartLine: React.FC<CartLineProps> = (props) => {
 	const router = useRouter()
 	const { trackRemoveFromCart } = useSegment()
 	const { loading, cartLineRemove, cartLineUpdate } = useCart()
-	const { shopUrl, setCartOpen } = useContext(ShopContext) as any
+	const { shopUrl, setCartOpen } = useContext(ShopifyContext) as any
 
 	const { id, quantity, merchandise, sellingPlanAllocation } = line || {}
 

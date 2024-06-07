@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { Button, Box, Stack, Typography } from '@mui/material'
 import { truncate } from '../../../helpers'
 import { ProductType } from 'frontend-shopify'
-import { ShopContext } from 'frontend-shopify'
+import { ShopifyContext } from 'frontend-shopify'
 import { formatCurrency } from 'frontend-shopify'
 import SwipeableProductImages from './images/SwipeableProductImages'
 import { ProductModal, AddToCartButton } from '..'
@@ -37,7 +37,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 	} = props || {}
 
 	const [open, setOpen] = useState(false)
-	const { setSearchOpen } = useContext(ShopContext) as any
+	const { setSearchOpen } = useContext(ShopifyContext) as any
 
 	const handleQuickShop = () => {
 		setOpen(true)

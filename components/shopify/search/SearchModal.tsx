@@ -9,7 +9,7 @@ import {
 	Box,
 	IconButton,
 } from '@mui/material'
-import { ShopContext } from 'frontend-shopify'
+import { ShopifyContext } from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
 
@@ -24,7 +24,7 @@ const SearchModal: React.FC<SearchModalProps> = (props) => {
 
 	const { trackProductsSearched } = useSegment()
 	const { setMenuOpen, searchOpen, setSearchOpen } = useContext(
-		ShopContext
+		ShopifyContext
 	) as any
 
 	const [expanded, setExpanded] = useState(false)

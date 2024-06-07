@@ -6,7 +6,7 @@ import {
 	ListItemButton,
 	Typography,
 } from '@mui/material'
-import { ShopContext } from 'frontend-shopify'
+import { ShopifyContext } from 'frontend-shopify'
 import { AppContext } from '../../../context'
 import { Icon } from '../../../components'
 
@@ -52,7 +52,7 @@ type SearchButtonProps = {
 
 const SearchButton: React.FC<SearchButtonProps> = (props) => {
 	const { variant = 'topNav' } = props
-	const { toggleSearch } = useContext(ShopContext) as any
+	const { toggleSearch } = useContext(ShopifyContext) as any
 	const { setMenuOpen } = useContext(AppContext)
 
 	const handleToggleSearch = () => {

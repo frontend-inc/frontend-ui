@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useGooglePlaces } from "../../../hooks";
-import { TextInput, GoogleMap, Icon } from '../../../components'
-import { TextInputPropsType } from '../../../types'
+import { useGooglePlaces } from "../../../../hooks";
+import { TextInput, GoogleMap, Icon } from '../../..'
+import { TextInputPropsType } from '../../../../types'
 import { useDebounce } from 'use-debounce'
 import { 
   Stack,
