@@ -293,17 +293,22 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
     gridTemplateColumns = '1fr'
   }
 
+  const handleSetMarkers = (resources) => {
+  let markers = resources
+      ?.filter((res) => res?.lat && res?.lng)
+      ?.map((res) => ({
+        lat: res?.lat,
+        lng: res?.lng,
+        label: res?.title
+      })
+    )
+    if(markers.length == 0) return setGoogleMarkers([]);
+    setGoogleMarkers(markers)
+  }
+
   useEffect(() => {
     if(resources){
-      let markers = resources
-        ?.filter((resource) => resource?.lat && resource?.lng)
-        ?.map((resource) => ({
-          lat: resource?.lat,
-          lng: resource?.lng,
-          label: resource?.title
-        })
-      )
-      setGoogleMarkers(markers)
+      handleSetMarkers(resources)      
     }
   }, [resources])
 
@@ -339,13 +344,11 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
       >
 				{enableFilters && filterAnchor == 'left' && (
 					<Box>
-						<Box sx={sx.filtersContainer}>
-							<SearchFilters
-								filters={activeFilters}
-								filterOptions={filterOptions}
-								handleFilter={handleFilter}
-							/>
-						</Box>
+            <SearchFilters
+              filters={activeFilters}
+              filterOptions={filterOptions}
+              handleFilter={handleFilter}
+            />
 					</Box>
 				)}
 				<Box>
@@ -378,17 +381,15 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 					)}
 				</Box>
         { enableGoogleMap && (
-          <Box 
-            sx={sx.googleMap}
-          >    
-          { googleMarkers?.length > 0 && (
-            <GoogleMap 
-              zoom={15}
-              markers={ googleMarkers }              
-            />                 
+          <Box sx={sx.googleMap}>    
+            { googleMarkers?.length > 0 && (
+              <GoogleMap 
+                zoom={15}
+                markers={ googleMarkers }              
+              />                 
+            )}
+            </Box>
           )}
-          </Box>
-        )}
 			</Box>
 
 			{enableLoadMore && (
