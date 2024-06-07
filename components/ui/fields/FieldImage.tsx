@@ -15,6 +15,7 @@ type FieldImageProps = {
 
 const FieldImage: React.FC<FieldImageProps> = (props) => {
 	const { label, value, height=140, width, color, objectFit = 'cover', ...rest } = props
+  if(!value) return null;
 	return (
 		<FieldWrapper color={color} label={label} {...rest}>
       <Box 

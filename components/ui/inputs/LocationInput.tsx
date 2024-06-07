@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useGooglePlaces } from "../../../hooks";
-import { TextInput } from '../../../components'
+import { TextInput, Icon } from '../../../components'
 import { TextInputPropsType } from '../../../types'
 import { useDebounce } from 'use-debounce'
 import { 
@@ -9,6 +9,7 @@ import {
   List,
   ListItem,
   ListItemButton,
+  ListItemIcon,
   ListItemText,
 } from "@mui/material";
 
@@ -88,7 +89,13 @@ const LocationInput: React.FC<TextInputPropsType> = (props) => {
         { options?.map((option, index) => (
           <ListItem disableGutters>
             <ListItemButton sx={ sx.listItemButton } onClick={() => handleClick(option) }>
-              <ListItemText primary={option.label} />
+              <ListItemIcon>
+                <Icon name="MapPin" size={20} />
+              </ListItemIcon>
+              <ListItemText 
+                primary={option.label} 
+                secondary={option.value}
+              />
             </ListItemButton>
           </ListItem>
         ))}
@@ -116,5 +123,6 @@ const sx = {
   },
   listItemButton: {
     px: 1,
+    py: 0
   }
 }

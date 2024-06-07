@@ -19,7 +19,7 @@ import {
   CollectionToolbar, 
   SearchFilters 
 } from '../..'
-import { GoogleMapMarker, SortOptionType, SearchFilterOptionType } from '../../../types'
+import { GoogleMarker, SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useAuth } from 'frontend-js'
 
 export type CollectionListProps = {
@@ -115,7 +115,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 
 	const [openModal, setOpenModal] = useState(false)
 	const [openDeleteModal, setOpenDeleteModal] = useState(false)
-  const [googleMarkers, setGoogleMarkers] = useState<GoogleMapMarker[] | []>([])
+  const [googleMarkers, setGoogleMarkers] = useState<GoogleMarker[] | []>([])
 
 	const {
 		loading,
@@ -299,7 +299,8 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
       ?.map((res) => ({
         lat: res?.lat,
         lng: res?.lng,
-        label: res?.title
+        label: res?.title,
+        resource: res
       })
     )
     if(markers.length == 0) return setGoogleMarkers([]);
@@ -385,7 +386,10 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
             { googleMarkers?.length > 0 && (
               <GoogleMap 
                 zoom={15}
-                markers={ googleMarkers }              
+                height={380}    
+                markers={ googleMarkers } 
+                enableBorder={ enableBorder }                  
+                displayFields={displayFields}       
               />                 
             )}
             </Box>
@@ -463,6 +467,5 @@ const sx = {
   googleMap: {              
     width: '100%',
     minWidth: 300,
-    height: 300,    
   }
 }

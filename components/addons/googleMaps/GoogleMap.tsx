@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { Box } from '@mui/material'
-import { Map, AdvancedMarker, Pin, Marker} from '@vis.gl/react-google-maps';
-import { GoogleMapMarker } from '../../../types';
+import { 
+  Map, 
+} from '@vis.gl/react-google-maps';
+import { GoogleMarkerType } from '../../../types';
 import { MAP_CONFIGS, MapConfig } from './styles/mapConfigs'
-import { useTheme } from '@mui/material/styles';
+import GoogleMarker from './GoogleMarker';
 
 export type GoogleMapProps = {
   darkTheme?: boolean
-	markers: GoogleMapMarker[]
+	markers: GoogleMarkerType[]
   height?: number
   zoom?: number
+  enableBorder?: boolean
+  displayFields?: DisplayFieldType[]
 }
 
 // https://visgl.github.io/react-google-maps/docs/api-reference/components/map
@@ -20,7 +24,9 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
     darkTheme=false,
     height=300, 
     markers,
-    zoom=3 
+    zoom=3,
+    enableBorder=false,
+    displayFields=[] 
   } = props
 
   const calcCenterMarker = (markers: any) => {
@@ -30,8 +36,6 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
   }
 
   const [center, setCenter] = useState(calcCenterMarker(markers))
-
-  const theme = useTheme()
 
   useEffect(() => {
     if (markers.length > 1) {
@@ -51,7 +55,14 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
 
   if(!markers || !center) return null;
 	return (
-    <Box height={ height } width="100%">
+    <Box 
+      sx={{ 
+        ...sx.mapContainer,
+        ...(enableBorder && sx.mapBorder)
+      }} 
+      height={ height } 
+      width="100%"
+    >
       <Map 
         zoomControl
         scaleControl
@@ -63,19 +74,11 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
         defaultCenter={ center }
       >
         { markers.map((marker: any, index: number) => (
-          <AdvancedMarker 
-            key={index}                         
-            position={{ 
-              lat: marker.lat, 
-              lng: marker.lng 
-            }} 
-          >
-            <Pin 
-              background={theme.palette.primary.main}
-              borderColor={theme.palette.primary.main}
-              glyphColor={theme.palette.primary.contrastText}
-            />
-          </AdvancedMarker>
+          <GoogleMarker 
+            key={index} 
+            marker={marker}
+            displayFields={displayFields}
+          /> 
         ))}
       </Map>
     </Box>
@@ -83,3 +86,15 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
 }
 
 export default GoogleMap
+
+const sx = {
+  mapContainer: {
+    position: 'sticky',
+    borderRadius: 1,
+    overflow: 'hidden',
+  },
+  mapBorder: {
+    border: '1px solid',
+    borderColor: 'divider',
+  }
+}
