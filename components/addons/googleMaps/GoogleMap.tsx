@@ -66,7 +66,6 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
       width={ width ? width : '100%' }
     >
       <Map 
-        zoomControl
         scaleControl
         fullscreenControl
         mapTypeControl={false}
@@ -74,8 +73,11 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
         mapId={mapConfig.mapId || null}
         mapTypeId={mapConfig.mapTypeId}
         styles={mapConfig.styles}
-        defaultZoom={zoom} 
-        defaultCenter={ center }
+        defaultZoom={16} 
+        defaultCenter={{
+          lat: markers[0].lat,
+          lng: markers[0].lng
+        }}
       >
         { markers.map((marker: any, index: number) => (
           <GoogleMarker 

@@ -121,6 +121,7 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
         direction={direction}
         placeholder={ placeholder }
       />
+        <Box sx={sx.container}>
       { enablePosition && (
         <Stack direction="row" spacing={1} alignItems='center'>
           <Icon name="MapPin" size={20} />
@@ -133,7 +134,6 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
         </Stack>
       )}
       { open && (
-      <Box sx={sx.container}>
         <List 
           dense 
           disablePadding
@@ -153,8 +153,8 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
           </ListItem>
         ))}
         </List>
-      </Box>
       )}
+      </Box>
     </Stack>
   );
 };

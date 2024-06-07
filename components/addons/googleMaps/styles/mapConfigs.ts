@@ -22,57 +22,24 @@ export const MAP_CONFIGS: MapConfig[] = [
     id: 'light',
     label: 'Light',
     mapId: '49ae42fed52588c3',
-    mapTypeId: MapTypeId.ROADMAP
+    mapTypeId: MapTypeId.ROADMAP,
   },
   {
     id: 'dark',
     label: 'Dark',
     mapId: '739af084373f96fe',
-    mapTypeId: MapTypeId.ROADMAP
-  },
-  {
-    id: 'satellite',
-    label: 'Satellite (no mapId)',
-    mapTypeId: MapTypeId.SATELLITE
-  },
-  {
-    id: 'hybrid',
-    label: 'Hybrid (no mapId)',
-    mapTypeId: MapTypeId.HYBRID
-  },
-  {
-    id: 'terrain',
-    label: 'Terrain (no mapId)',
-    mapTypeId: MapTypeId.TERRAIN
+    mapTypeId: MapTypeId.ROADMAP,
   },
   {
     id: 'styled1',
     label: 'Raster / "Bright Colors" (no mapId)',
     mapTypeId: MapTypeId.ROADMAP,
-    styles: brightColorsStyles
+    styles: brightColorsStyles,
   },
   {
     id: 'styled2',
     label: 'Raster / "Vitamin C" (no mapId)',
     mapTypeId: MapTypeId.ROADMAP,
-    styles: vitaminCStyles
-  },
-  {
-    id: 'satellite2',
-    label: 'Satellite ("light" mapId)',
-    mapId: '49ae42fed52588c3',
-    mapTypeId: MapTypeId.SATELLITE
-  },
-  {
-    id: 'hybrid2',
-    label: 'Hybrid ("light" mapId)',
-    mapId: '49ae42fed52588c3',
-    mapTypeId: MapTypeId.HYBRID
-  },
-  {
-    id: 'terrain2',
-    label: 'Terrain ("light" mapId)',
-    mapId: '49ae42fed52588c3',
-    mapTypeId: MapTypeId.TERRAIN
-  }
+    styles: vitaminCStyles,
+  },  
 ];
