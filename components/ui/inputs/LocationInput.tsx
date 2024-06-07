@@ -59,7 +59,7 @@ const LocationInput: React.FC<TextInputPropsType> = (props) => {
   useEffect(() => {
     if (places?.length > 0) {
       setOptions(places?.map((place) => ({ 
-        label: place?.formattedAddress, 
+        label: place?.displayName?.text, 
         value: place?.formattedAddress
       })));
     }else{

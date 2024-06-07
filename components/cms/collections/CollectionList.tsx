@@ -1,14 +1,15 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
 import { useDocuments } from 'frontend-js'
-import { Button, Grid, Box, Stack } from '@mui/material'
+import { Button, Box, Stack } from '@mui/material'
 import {
 	Form,
 	Drawer,
 	AlertModal,
 	LoadMore,
 	IconLoading,
-} from '../..'
+  GoogleMap
+} from '../../../components'
 import { AppContext } from '../../../context'
 import { ActionType, FilterOptionType, FormFieldType, DisplayFieldType } from '../../../types'
 import { useRouter } from 'next/router'
@@ -18,7 +19,7 @@ import {
   CollectionToolbar, 
   SearchFilters 
 } from '../..'
-import { SortOptionType, SearchFilterOptionType } from '../../../types'
+import { GoogleMapMarker, SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useAuth } from 'frontend-js'
 
 export type CollectionListProps = {
@@ -41,6 +42,7 @@ export type CollectionListProps = {
 	enableSearch?: boolean
 	enableFilters?: boolean
 	enableSorting?: boolean
+  enableGoogleMap?: boolean
 	buttonText?: string
   handleClick?: (resource: any) => void
 	enableBorder?: boolean
@@ -73,6 +75,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		filterAnchor = 'left',
 		filterOptions = [],
 		sortOptions = [],
+    enableGoogleMap = false,
 		perPage = 20,
 		enableSearch = false,
 		enableFilters = false,
@@ -112,6 +115,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 
 	const [openModal, setOpenModal] = useState(false)
 	const [openDeleteModal, setOpenDeleteModal] = useState(false)
+  const [googleMarkers, setGoogleMarkers] = useState<GoogleMapMarker[] | []>([])
 
 	const {
 		loading,
@@ -278,6 +282,31 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
     defaultQuery,
   ])
 
+  let gridTemplateColumns; 
+  if (enableFilters && filterAnchor == 'left' && enableGoogleMap) {
+    gridTemplateColumns = '1fr 2fr 1fr'
+  } else if (enableFilters && filterAnchor == 'left') {
+    gridTemplateColumns = '2fr 3fr' 
+  } else if (enableGoogleMap) {
+    gridTemplateColumns = '3fr 2fr' 
+  } else {
+    gridTemplateColumns = '1fr'
+  }
+
+  useEffect(() => {
+    if(resources){
+      let markers = resources
+        ?.filter((resource) => resource?.lat && resource?.lng)
+        ?.map((resource) => ({
+          lat: resource?.lat,
+          lng: resource?.lng,
+          label: resource?.title
+        })
+      )
+      setGoogleMarkers(markers)
+    }
+  }, [resources])
+
 	return (
 		<Stack spacing={1} sx={sx.root}>      
 			<CollectionToolbar
@@ -298,9 +327,18 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 				handleKeywordChange={handleKeywordChange}
 				handleSearch={handleSearch}
 			/>
-			<Grid container spacing={0}>
+			<Box 
+        sx={{
+          display: 'grid',
+          gap: '10px',
+          gridTemplateColumns: {
+            sm: gridTemplateColumns,
+            xs: '1fr',
+          },
+        }}
+      >
 				{enableFilters && filterAnchor == 'left' && (
-					<Grid item xs={12} sm={4} lg={3}>
+					<Box>
 						<Box sx={sx.filtersContainer}>
 							<SearchFilters
 								filters={activeFilters}
@@ -308,14 +346,9 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 								handleFilter={handleFilter}
 							/>
 						</Box>
-					</Grid>
+					</Box>
 				)}
-				<Grid
-					item
-					xs={12}
-					sm={enableFilters && filterAnchor == 'left' ? 8 : 12}
-					lg={enableFilters && filterAnchor == 'left' ? 9 : 12}
-				>
+				<Box>
 					<Box sx={{ ...(delayedLoading && sx.loading) }}>					
 						<CollectionCards
 							actions={actions}
@@ -343,8 +376,21 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 							description={ emptyDescription }
 						/>
 					)}
-				</Grid>
-			</Grid>
+				</Box>
+        { enableGoogleMap && (
+          <Box 
+            sx={sx.googleMap}
+          >    
+          { googleMarkers?.length > 0 && (
+            <GoogleMap 
+              zoom={15}
+              markers={ googleMarkers }              
+            />                 
+          )}
+          </Box>
+        )}
+			</Box>
+
 			{enableLoadMore && (
 				<LoadMore
 					page={page}
@@ -404,16 +450,6 @@ const sx = {
 			xs: '100%',
 		},
 	},
-	filtersContainer: {
-		mr: {
-			sm: 2,
-			xs: 0,
-		},
-		mb: {
-			sm: 0,
-			xs: 2,
-		},
-	},
 	sortFilterActions: {
 		justifyContent: 'flex-end',
 	},
@@ -423,4 +459,9 @@ const sx = {
 	circularProgress: {
 		color: 'primary.main',
 	},
+  googleMap: {              
+    width: '100%',
+    minWidth: 300,
+    height: 300,    
+  }
 }

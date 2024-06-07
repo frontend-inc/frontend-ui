@@ -60,7 +60,7 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
         mapTypeId={mapConfig.mapTypeId}
         styles={mapConfig.styles}
         zoom={zoom} 
-        center={center}
+        center={ center }
       >
         { markers.map((marker: any, index: number) => (
           <AdvancedMarker 

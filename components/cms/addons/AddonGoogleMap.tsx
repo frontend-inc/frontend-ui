@@ -10,7 +10,7 @@ export type AddonGoogleMapProps = {
 }
 
 const AddonGoogleMap: React.FC<AddonGoogleMapProps> = (props) => {
-	const { resource, zoom=14, darkTheme=false } = props || {}
+	const { resource, zoom=16, darkTheme=false } = props || {}
 	const { lat, lng } = flattenDocument(resource)
 	return (
 		<GoogleMap 
