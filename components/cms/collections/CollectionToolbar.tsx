@@ -54,7 +54,7 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 		return null
 	}
 	return (
-		<>
+		<Stack direction="column" spacing={1}>
 			{enableSearch && (
 				<Box sx={sx.searchBar}>
 					<SearchInput
@@ -104,7 +104,7 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 					</Box>
 				)}
 			</Stack>
-		</>
+		</Stack>
 	)
 }
 

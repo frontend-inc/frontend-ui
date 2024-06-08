@@ -14,6 +14,7 @@ import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
 import {
 	CollectionCards,
+  CollectionLayout,
 	Placeholder,
 	CollectionToolbar,
 	SearchFilters,
@@ -24,6 +25,7 @@ import { CollectionListProps } from './CollectionList'
 export type CollectContainerProps = CollectionListProps & {	
   resource?: any
   searchUrl: string
+  component?: React.FC<any>
 }
 
 const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
@@ -32,6 +34,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
 	const { currentUser } = useAuth()
 
 	const {
+    component: CollectionList = CollectionCards,
     resource: _resource,
 		actions,
 		variant = 'grid',
@@ -181,105 +184,83 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
 		await removeAttachment(resource?.id, name)
 	}
 
-	let gridTemplateColumns
-	if (enableFilters && filterAnchor == 'left' && enableGoogleMap) {
-		gridTemplateColumns = '1fr 2fr 1fr'
-	} else if (enableFilters && filterAnchor == 'left') {
-		gridTemplateColumns = '2fr 3fr'
-	} else if (enableGoogleMap) {
-		gridTemplateColumns = '3fr 2fr'
-	} else {
-		gridTemplateColumns = '1fr'
-	}
-
 	return (
-		<Stack spacing={1} sx={sx.root}>
-			<CollectionToolbar
-				query={query}
-				activeFilters={activeFilters}
-				enableFilters={enableFilters && filterAnchor == 'top'}
-				enableSorting={enableSorting}
-				enableCreate={enableCreate}
-				enableSearch={enableSearch}
-				filterOptions={filterOptions}
-				sortOptions={sortOptions}
-				handleFilter={handleFilter}
-				handleClearFilters={handleClearFilters}
-				handleSortBy={handleSortBy}
-				handleSortDirection={handleSortDirection}
-				handleAdd={handleAdd}
-				keywords={keywords}
-				handleKeywordChange={handleKeywordChange}
-				handleSearch={handleSearch}
-			/>
-			<Box
-				sx={{
-					display: 'grid',
-					gap: '10px',
-					gridTemplateColumns: {
-						sm: gridTemplateColumns,
-						xs: '1fr',
-					},
-				}}
-			>
-				{enableFilters && filterAnchor == 'left' && (
-					<Box>
-						<SearchFilters
-							filters={activeFilters}
-							filterOptions={filterOptions}
-							handleFilter={handleFilter}
-						/>
-					</Box>
-				)}
-				<Box>
-					<Box sx={{ ...(searchLoading && sx.loading) }}>
-						<CollectionCards
-							actions={actions}
-							variant={variant}
-							style={style}
-							resources={resources}
-							displayFields={displayFields}
-							handleClick={handleClick}
-							buttonText={buttonText}
-							enableBorder={enableBorder}
-							enableGradient={enableGradient}
-							enableOverlay={enableOverlay}
-							enableEdit={enableEdit}
-							enableDelete={enableDelete}
-							enableFavorites={enableFavorites}
-							handleEdit={handleEdit}
-							handleDelete={handleDeleteClick}
-						/>
-					</Box>
-					{!loading && resources.length == 0 && (
-						<Placeholder
-							enableBorder
-							icon={emptyIcon}
-							title={emptyTitle}
-							description={emptyDescription}
-						/>
-					)}
-				</Box>
-				{enableGoogleMap && (
-					<Box sx={sx.googleMap}>
-            <GoogleMap
-              zoom={15}
-              height={380}
-              resources={resources}								
-              enableBorder={enableBorder}
-              displayFields={displayFields}
-            />
-					</Box>
-				)}
-			</Box>
-			{enableLoadMore && (
-				<LoadMore
-					page={page}
-					numPages={numPages}
-					loadMore={loadMore}
-					enableInfiniteLoad={enableInfiniteLoad}
-				/>
-			)}
+		<>
+      <CollectionLayout 
+        loading={loading || searchLoading}
+        header={
+          <CollectionToolbar
+            query={query}
+            activeFilters={activeFilters}
+            enableFilters={enableFilters && filterAnchor == 'top'}
+            enableSorting={enableSorting}
+            enableCreate={enableCreate}
+            enableSearch={enableSearch}
+            filterOptions={filterOptions}
+            sortOptions={sortOptions}
+            handleFilter={handleFilter}
+            handleClearFilters={handleClearFilters}
+            handleSortBy={handleSortBy}
+            handleSortDirection={handleSortDirection}
+            handleAdd={handleAdd}
+            keywords={keywords}
+            handleKeywordChange={handleKeywordChange}
+            handleSearch={handleSearch}
+          />
+        }
+        expandLeft={enableFilters && filterAnchor == 'left'}
+        expandRight={enableGoogleMap}
+        leftPanel={
+          <SearchFilters
+            filters={activeFilters}
+            filterOptions={filterOptions}
+            handleFilter={handleFilter}
+          />
+        }
+        rightPanel={
+          <GoogleMap
+            zoom={15}
+            height={380}
+            resources={resources}								
+            enableBorder={enableBorder}
+            displayFields={displayFields}
+          />
+        }
+      >
+        <CollectionList
+          actions={actions}
+          variant={variant}
+          style={style}
+          resources={resources}
+          displayFields={displayFields}
+          handleClick={handleClick}
+          buttonText={buttonText}
+          enableBorder={enableBorder}
+          enableGradient={enableGradient}
+          enableOverlay={enableOverlay}
+          enableEdit={enableEdit}
+          enableDelete={enableDelete}
+          enableFavorites={enableFavorites}
+          handleEdit={handleEdit}
+          handleDelete={handleDeleteClick}
+        />
+        {enableLoadMore && (
+          <LoadMore
+            page={page}
+            numPages={numPages}
+            loadMore={loadMore}
+            enableInfiniteLoad={enableInfiniteLoad}
+          />
+        )}
+        {!loading && resources.length == 0 && (
+          <Placeholder
+            enableBorder
+            icon={emptyIcon}
+            title={emptyTitle}
+            description={emptyDescription}
+          />
+        )}
+			</CollectionLayout>			
 			<Drawer
 				open={openModal}
 				handleClose={() => setOpenModal(false)}
@@ -312,36 +293,9 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
 				description="This action cannot be reversed."
 				handleConfirm={handleDelete}
 			/>
-		</Stack>
+		</>
 	)
 }
 
 export default CollectionContainer
 
-const sx = {
-	root: {
-		width: '100%',
-	},
-	content: {
-		width: '100%',
-	},
-	button: {
-		width: {
-			sm: 'auto',
-			xs: '100%',
-		},
-	},
-	sortFilterActions: {
-		justifyContent: 'flex-end',
-	},
-	loading: {
-		opacity: 0.7,
-	},
-	circularProgress: {
-		color: 'primary.main',
-	},
-	googleMap: {
-		width: '100%',
-		minWidth: 300,
-	},
-}
