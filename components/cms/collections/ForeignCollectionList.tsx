@@ -1,5 +1,5 @@
 import React from 'react'
-import CollectionContainer from './CollectionContainer'
+import { CollectionContainer } from '../../../components'
 import { CollectionListProps } from './CollectionList'
 
 export type ForeignCollectionProps = CollectionListProps & {	

@@ -11,23 +11,13 @@ import {
 	GoogleMap,
 } from '../..'
 import { AppContext } from '../../../context'
-import {
-	ActionType,
-	FilterOptionType,
-	FormFieldType,
-	DisplayFieldType,
-} from '../../../types'
 import { useRouter } from 'next/router'
 import {
 	CollectionCards,
 	Placeholder,
 	CollectionToolbar,
 	SearchFilters,
-} from '../..'
-import {
-	SortOptionType,
-	SearchFilterOptionType,
-} from '../../../types'
+} from '../../../components'
 import { useAuth } from 'frontend-js'
 import { CollectionListProps } from './CollectionList'
 

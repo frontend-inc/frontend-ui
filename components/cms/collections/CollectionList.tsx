@@ -1,35 +1,14 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { useSearch } from '../../../hooks'
-import { useDocuments } from 'frontend-js'
-import { Button, Box, Stack } from '@mui/material'
+import React from 'react'
 import {
-	Form,
-	Drawer,
-	AlertModal,
-	LoadMore,
-	IconLoading,
-	GoogleMap,
-} from '../../../components'
-import { AppContext } from '../../../context'
-import {
-	ActionType,
-	FilterOptionType,
+	ActionType,	
 	FormFieldType,
 	DisplayFieldType,
 } from '../../../types'
-import { useRouter } from 'next/router'
-import {
-	CollectionCards,
-	Placeholder,
-	CollectionToolbar,
-	SearchFilters,
-} from '../..'
 import {
 	SortOptionType,
 	SearchFilterOptionType,
 } from '../../../types'
-import { useAuth } from 'frontend-js'
-import CollectionContainer from './CollectionContainer'
+import { CollectionContainer } from '../../../components'
 
 export type CollectionListProps = {
 	variant: 'list' | 'grid'

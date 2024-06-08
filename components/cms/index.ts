@@ -1,9 +1,10 @@
 // CMS
-export { default as CollectionList } from './collections/CollectionList'
 export { default as CollectionCards } from './collections/CollectionCards'
-export { default as CollectionToolbar } from './collections/CollectionToolbar'
 export { default as CollectionCarousel } from './collections/CollectionCarousel'
 export { default as CollectionCard } from './collections/CollectionCard'
+export { default as CollectionContainer } from './collections/CollectionContainer'
+export { default as CollectionList } from './collections/CollectionList'
+export { default as CollectionToolbar } from './collections/CollectionToolbar'
 export { default as CollectionForm } from '../cms/forms/CollectionForm'
 export { default as CollectionTable } from './collections/CollectionTable'
 export { default as EmailSignup } from './contacts/EmailSignup'
