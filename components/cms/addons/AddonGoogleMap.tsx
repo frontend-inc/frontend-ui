@@ -18,20 +18,12 @@ const AddonGoogleMap: React.FC<AddonGoogleMapProps> = (props) => {
 		darkTheme = false,
 		displayFields = [],
 	} = props || {}
-	const { lat, lng } = flattenDocument(resource)
-
-	const marker = {
-		lat,
-		lng,
-		label: resource?.title,
-		resource,
-	}
 
 	return (
 		<GoogleMap
 			darkTheme={darkTheme}
 			zoom={zoom}
-			markers={[marker]}
+			resources={[resource]}
 			displayFields={displayFields}
 		/>
 	)

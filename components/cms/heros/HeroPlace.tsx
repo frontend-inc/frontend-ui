@@ -7,7 +7,8 @@ import {
 	Actions,
 	Image,
 	SocialButtons,
-} from '../..'
+	GoogleMap,
+} from '../../../components'
 import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
@@ -72,26 +73,19 @@ const HeroPlace: React.FC<HeroProps> = (props) => {
 							<Image
 								src={image?.url}
 								alt={title}
-								height={360}
+								height={500}
 								label={label}
 								disableBorderRadius={enableBorder}
 							/>
 						</Box>
+
 						<SocialButtons
 							handle={resource?.handle}
 							enableLikes={enableLikes}
 							enableFavorites={enableFavorites}
 							enableSharing={enableSharing}
 						/>
-					</Stack>
-					<Stack
-						spacing={2}
-						sx={{
-							...sx.content,
-							...(enableBorder && sx.contentBorder),
-						}}
-					>
-						<Typography color="text.primary" variant="h4">
+						            <Typography color="text.primary" variant="h4">
 							{title}
 						</Typography>
 						<DisplayFields fields={displayFields} resource={resource} />
@@ -102,22 +96,19 @@ const HeroPlace: React.FC<HeroProps> = (props) => {
 						{enableStripePaymentLink && (
 							<StripePaymentLink resource={resource} buttonText="Checkout" />
 						)}
-						<Box>
-							{open ? (
-								<Typography variant="body1" color="text.primary" sx={sx.text}>
-									{description}
-								</Typography>
-							) : (
-								<Typography variant="body1" color="text.primary" sx={sx.text}>
-									{description?.slice(0, MAX_CHARS)}
-								</Typography>
-							)}
-							{description?.length > MAX_CHARS && (
-								<Link onClick={() => setOpen(!open)} sx={sx.link}>
-									{open ? 'See less' : '... See all'}
-								</Link>
-							)}
-						</Box>
+
+					</Stack>
+					<Stack
+						spacing={2}
+						sx={{
+							...sx.content,
+							...(enableBorder && sx.contentBorder),
+						}}
+					>
+            <GoogleMap
+              enableBorder 
+              resources={[resource]}
+            />
 					</Stack>
 				</Stack>
 			</Box>

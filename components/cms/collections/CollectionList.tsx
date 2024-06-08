@@ -296,25 +296,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		gridTemplateColumns = '1fr'
 	}
 
-	const handleSetMarkers = (resources) => {
-		let markers = resources
-			?.filter((res) => res?.lat && res?.lng)
-			?.map((res) => ({
-				lat: res?.lat,
-				lng: res?.lng,
-				label: res?.title,
-				resource: res,
-			}))
-		if (markers.length == 0) return setGoogleMarkers([])
-		setGoogleMarkers(markers)
-	}
-
-	useEffect(() => {
-		if (resources) {
-			handleSetMarkers(resources)
-		}
-	}, [resources])
-
 	return (
 		<Stack spacing={1} sx={sx.root}>
 			<CollectionToolbar
@@ -385,19 +366,16 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 				</Box>
 				{enableGoogleMap && (
 					<Box sx={sx.googleMap}>
-						{googleMarkers?.length > 0 && (
 							<GoogleMap
 								zoom={15}
 								height={380}
-								markers={googleMarkers}
+                resources={resources}								
 								enableBorder={enableBorder}
 								displayFields={displayFields}
 							/>
-						)}
 					</Box>
 				)}
 			</Box>
-
 			{enableLoadMore && (
 				<LoadMore
 					page={page}

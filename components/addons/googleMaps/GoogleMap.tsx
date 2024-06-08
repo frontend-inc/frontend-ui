@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Box } from '@mui/material'
 import { Map } from '@vis.gl/react-google-maps'
-import { GoogleMarkerType } from '../../../types'
+import { GoogleMarkerType, DisplayFieldType } from '../../../types'
 import { MAP_CONFIGS, MapConfig } from './styles/mapConfigs'
 import GoogleMarker from './GoogleMarker'
 
 export type GoogleMapProps = {
 	darkTheme?: boolean
-	markers: GoogleMarkerType[]
+	resources: any[] 
 	height?: number
 	width?: number | string
 	zoom?: number
@@ -22,7 +22,7 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
 		darkTheme = false,
 		height = 300,
 		width,
-		markers,
+		resources,
 		zoom = 16,
 		enableBorder = false,
 		displayFields = [],
@@ -38,7 +38,29 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
 		}
 	}, [darkTheme])
 
-	if (markers?.length <= 0) return null
+  const [googleMarkers, setGoogleMarkers] = useState<GoogleMarkerType[]>([])
+
+  const handleSetMarkers = (resources) => {
+		let markers = resources
+			?.filter((res) => res?.lat && res?.lng)
+			?.map((res) => ({
+				lat: res?.lat,
+				lng: res?.lng,
+				label: res?.title,
+				resource: res,
+			}))
+		if (markers.length == 0) return setGoogleMarkers([])
+		setGoogleMarkers(markers)
+	}
+
+	useEffect(() => {
+		if (resources) {
+			handleSetMarkers(resources)
+		}
+	}, [resources])
+
+
+	if (googleMarkers?.length <= 0) return null
 	return (
 		<Box
 			sx={{
@@ -58,11 +80,11 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
 				styles={mapConfig.styles}
 				defaultZoom={zoom}
 				defaultCenter={{
-					lat: markers[0]?.lat,
-					lng: markers[0]?.lng,
+					lat: googleMarkers[0]?.lat,
+					lng: googleMarkers[0]?.lng,
 				}}
 			>
-				{markers.map((marker: any, index: number) => (
+				{googleMarkers.map((marker: any, index: number) => (
 					<GoogleMarker
 						key={index}
 						marker={marker}

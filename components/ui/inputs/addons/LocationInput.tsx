@@ -100,14 +100,7 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
 						height={height}
 						width={width}
 						zoom={zoom}
-						markers={[
-							{
-								lat: lat,
-								lng: lng,
-								label: document?.title,
-								resource: document,
-							},
-						]}
+						resources={[document]}
 					/>
 				</Box>
 			)}
