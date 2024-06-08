@@ -9,10 +9,15 @@ export type HeroVimeoProps = HeroProps & {
 }
 
 const VimeoVideo: React.FC<HeroVimeoProps> = (props) => {
-	const { resource, actions, fieldName, ...rest } = props || {}
+	const { resource, actions, fieldName, displayFields=[], ...rest } = props || {}
 	const src = flattenDocument(resource)[fieldName]
 	return (
-		<HeroContainer {...rest} actions={actions} resource={resource}>
+		<HeroContainer  
+      actions={actions} 
+      resource={resource}
+      displayFields={[]}
+      {...rest}
+    >
 			<VimeoEmbed src={src} />
 		</HeroContainer>
 	)

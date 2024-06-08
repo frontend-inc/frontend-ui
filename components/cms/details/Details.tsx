@@ -5,7 +5,7 @@ import { flattenDocument } from '../../../helpers'
 import { DisplayFieldType } from '../../../types'
 
 export type DetailsProps = {
-	displayFields: DisplayFieldType
+	displayFields: DisplayFieldType[]
 	url: string
 	resource: any
 	enableBorder?: boolean

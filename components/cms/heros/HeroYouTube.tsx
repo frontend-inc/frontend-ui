@@ -9,10 +9,15 @@ export type HeroYouTubeProps = HeroProps & {
 }
 
 const HeroYouTube: React.FC<HeroYouTubeProps> = (props) => {
-	const { actions, resource, fieldName, ...rest } = props || {}
+	const { actions, resource, fieldName, displayFields=[], ...rest } = props || {}
 	const src = flattenDocument(resource)[fieldName]
 	return (
-		<HeroContainer {...rest} actions={actions} resource={resource}>
+		<HeroContainer  
+      actions={actions} 
+      resource={resource}
+      displayFields={[]}
+      {...rest}
+    >
 			<YouTubeEmbed src={src} />
 		</HeroContainer>
 	)

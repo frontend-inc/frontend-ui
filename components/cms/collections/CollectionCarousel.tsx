@@ -80,6 +80,7 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 							variant="grid"
 							style={style}
 							resource={resource}
+              displayFields={[]}
 							handleClick={() => handleClick(resource)}
 							enableBorder={enableBorder}
 							enableGradient={enableGradient}

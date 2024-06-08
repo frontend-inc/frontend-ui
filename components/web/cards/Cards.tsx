@@ -84,6 +84,7 @@ const Cards: React.FC<CardsProps> = (props) => {
 										url: card?.image,
 									},
 								}}
+                displayFields={[]}
 								handleClick={() => handleClick(card)}
 								enableBorder={enableBorder}
 								enableGradient={enableGradient}
