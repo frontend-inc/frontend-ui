@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-	ShopProvider,
+	ShopifyProvider,
 	ProductProvider,
 	CollectionProvider,
 } from 'frontend-shopify'
@@ -29,7 +29,7 @@ const ShopifyStore: React.FC<ShopifyStoreProps> = (props) => {
 
 	if (enableShopify && (!domain || !storefrontAccessToken)) return null
 	return enableShopify ? (
-		<ShopProvider
+		<ShopifyProvider
 			logo={logo}
 			domain={domain}
 			shopUrl={shopUrl}
@@ -40,7 +40,7 @@ const ShopifyStore: React.FC<ShopifyStoreProps> = (props) => {
 			<ProductProvider>
 				<CollectionProvider>{children}</CollectionProvider>
 			</ProductProvider>
-		</ShopProvider>
+		</ShopifyProvider>
 	) : (
 		children
 	)

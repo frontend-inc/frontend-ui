@@ -55,8 +55,6 @@ const ProductImageSlider: React.FC<ProductImageSliderProps> = (props) => {
 		image,
 		images,
 		handleClick,
-		height = 520,
-		width = 520,
 		thumbnailSize = 80,
 	} = props
 

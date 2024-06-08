@@ -36,7 +36,7 @@ const ColorVariantsOptions: React.FC<ColorVariantsOptionsProps> = (props) => {
 								src={variant?.image?.url}
 								alt={variant?.image?.altText}
 								style={{
-									objectFit: 'contain',
+									objectFit: 'cover',
 								}}
 							/>
 						</Button>
@@ -63,15 +63,16 @@ const sx = {
 		gap: '10px',
 	},
 	button: {
-		border: '2px solid transparent',
+    p: 0,
+    overflow: 'hidden',
+		border: '3px solid transparent',
 		'&:hover': {
 			bgcolor: 'transparent',
 			opacity: 0.85,
 		},
 	},
 	activeButton: {
-		opacity: 1,
-		border: '2px solid',
+		opacity: 1,		
 		borderColor: 'primary.main',
 	},
 }

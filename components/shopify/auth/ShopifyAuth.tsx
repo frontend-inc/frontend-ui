@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { ShopContext } from 'frontend-shopify'
+import { ShopifyContext } from 'frontend-shopify'
 import { IconButton } from '@mui/material'
 import {
 	ListItem,
@@ -66,7 +66,7 @@ const ShopifyAuth: React.FC<ShopifyAuthProps> = (props) => {
 	const router = useRouter()
 	const { icon = 'ReceiptText', variant = 'topNav' } = props || {}
 
-	const { customerPortalUrl } = useContext(ShopContext) as any
+	const { customerPortalUrl } = useContext(ShopifyContext) as any
 
 	const { findShop } = useShop()
 

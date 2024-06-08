@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react'
 import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
 import { Box, Stack } from '@mui/material'
-import { ShopContext } from 'frontend-shopify'
+import { ShopifyContext } from 'frontend-shopify'
 import { Drawer, Placeholder } from '../../../components'
 import {
 	CartDiscounts,
@@ -15,7 +15,7 @@ type CartProps = {
 	title?: string
 }
 
-interface ShopContextType {
+interface ShopifyContextType {
 	cart: any // replace CartType with the actual type of your cart
 	cartOpen: () => void
 	toggleCart: () => void
@@ -26,7 +26,7 @@ const Cart: React.FC<CartProps> = (props) => {
 
 	const { trackCartViewed } = useSegment()
 
-	const { cartOpen, toggleCart } = useContext(ShopContext) as any
+	const { cartOpen, toggleCart } = useContext(ShopifyContext) as any
 	const { cart } = useCart()
 
 	useEffect(() => {

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useGooglePlaces } from "../../../hooks";
-import { TextInput, GoogleMap, Icon } from '../../../components'
-import { TextInputPropsType } from '../../../types'
+import { useGooglePlaces } from "../../../../hooks";
+import { TextInput, GoogleMap, Icon } from '../../..'
+import { TextInputPropsType } from '../../../../types'
 import { useDebounce } from 'use-debounce'
 import { 
   Stack,
   Box,
+  Paper,
   Typography,
   List,
   ListItem,
@@ -121,7 +122,36 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
         direction={direction}
         placeholder={ placeholder }
       />
-        <Box sx={sx.container}>
+      <Box sx={ sx.anchor }>
+      { open && (
+        <Paper 
+          sx={{ 
+            ...sx.container,
+            height: (options?.length * 64)
+          }} 
+          elevation={2}
+        >
+          <List 
+            dense 
+            disablePadding
+            sx={ sx.list }
+          >
+          { options?.map((option, index) => (
+            <ListItem disableGutters>
+              <ListItemButton sx={ sx.listItemButton } onClick={() => handleClick(option) }>
+                <ListItemIcon>
+                  <Icon name="MapPin" size={20} />
+                </ListItemIcon>
+                <ListItemText 
+                  primary={option.label} 
+                  secondary={option.value}
+                />
+              </ListItemButton>
+            </ListItem>
+          ))}
+          </List>
+        </Paper>
+      )}
       { enablePosition && (
         <Stack direction="row" spacing={1} alignItems='center'>
           <Icon name="MapPin" size={20} />
@@ -133,27 +163,6 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
           </Typography>
         </Stack>
       )}
-      { open && (
-        <List 
-          dense 
-          disablePadding
-          sx={ sx.list }
-        >
-        { options?.map((option, index) => (
-          <ListItem disableGutters>
-            <ListItemButton sx={ sx.listItemButton } onClick={() => handleClick(option) }>
-              <ListItemIcon>
-                <Icon name="MapPin" size={20} />
-              </ListItemIcon>
-              <ListItemText 
-                primary={option.label} 
-                secondary={option.value}
-              />
-            </ListItemButton>
-          </ListItem>
-        ))}
-        </List>
-      )}
       </Box>
     </Stack>
   );
@@ -161,9 +170,19 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
 export default LocationInput;
 
 const sx = {
-  container: {
+  anchor: {
     position: 'relative',
+  },
+  container: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
     width: '100%',
+    borderRadius: theme => `${theme.shape.borderRadius}px`,
+    minHeight: '100px',
+    height: '100% !important',
+    maxHeight: '240px',
+    overflowY: 'scroll',
   },
   list: {
     bgcolor: 'background.paper',    

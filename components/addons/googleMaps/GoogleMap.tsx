@@ -31,20 +31,6 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
     displayFields=[] 
   } = props
 
-  const calcCenterMarker = (markers: any) => {
-    const lat = markers.reduce((sum: number, marker: any) => sum + marker.lat, 0) / markers.length
-    const lng = markers.reduce((sum: number, marker: any) => sum + marker.lng, 0) / markers.length
-    return { lat, lng }
-  }
-
-  const [center, setCenter] = useState(calcCenterMarker(markers))
-
-  useEffect(() => {
-    if (markers.length > 1) {
-      setCenter(calcCenterMarker(markers))
-    }
-  }, [markers])
-
   const [mapConfig, setMapConfig] = useState<MapConfig>(MAP_CONFIGS[0])
 
   useEffect(() => {
@@ -55,7 +41,7 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
     }
   }, [darkTheme])
 
-  if(!markers || !center) return null;
+  if(markers?.length <= 0) return null;
 	return (
     <Box 
       sx={{ 
@@ -73,10 +59,10 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
         mapId={mapConfig.mapId || null}
         mapTypeId={mapConfig.mapTypeId}
         styles={mapConfig.styles}
-        defaultZoom={16} 
+        defaultZoom={zoom} 
         defaultCenter={{
-          lat: markers[0].lat,
-          lng: markers[0].lng
+          lat: markers[0]?.lat,
+          lng: markers[0]?.lng
         }}
       >
         { markers.map((marker: any, index: number) => (

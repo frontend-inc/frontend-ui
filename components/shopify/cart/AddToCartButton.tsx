@@ -9,7 +9,7 @@ import {
 	QuantitySelector,
 	SubscriptionSelector,
 } from '../../../components/shopify'
-import { ShopContext } from 'frontend-shopify'
+import { ShopifyContext } from 'frontend-shopify'
 import { ProductType, ProductVariantType } from 'frontend-shopify'
 
 type AddToCartButtonProps = {
@@ -26,7 +26,7 @@ type AddToCartButtonProps = {
 const AddToCartButton: React.FC<AddToCartButtonProps> = (props) => {
 	const { showAlertError } = useAlerts()
 	const { trackAddToCart } = useSegment()
-	const { toggleCart } = useContext(ShopContext) as any
+	const { toggleCart } = useContext(ShopifyContext) as any
 	const { loading, cartLineAdd } = useCart()
 
 	const {

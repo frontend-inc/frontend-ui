@@ -7,7 +7,7 @@ import {
 	ListItemButton,
 	Typography,
 } from '@mui/material'
-import { ShopContext } from 'frontend-shopify'
+import { ShopifyContext } from 'frontend-shopify'
 import { AppContext } from '../../../context'
 import { Icon } from '../../../components'
 
@@ -73,7 +73,7 @@ type CartButtonProps = {
 const CartButton: React.FC<CartButtonProps> = (props) => {
 	const { variant = 'topNav', label = 'Cart', icon = 'ShoppingCart' } = props
 
-	const { cart, toggleCart } = useContext(ShopContext) as any
+	const { cart, toggleCart } = useContext(ShopifyContext) as any
 	const { setMenuOpen } = useContext(AppContext)
 
 	const handleCartClick = () => {
