@@ -7,13 +7,13 @@ import {
 	Actions,
 	Image,
 	SocialButtons,
+  ExpandableText,
 } from '../..'
 import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
 const HeroProduct: React.FC<HeroProps> = (props) => {
-	const MAX_CHARS = 500
 
 	const {
 		actions,
@@ -101,22 +101,9 @@ const HeroProduct: React.FC<HeroProps> = (props) => {
 						{enableStripePaymentLink && (
 							<StripePaymentLink resource={resource} buttonText="Checkout" />
 						)}
-						<Box>
-							{open ? (
-								<Typography variant="body1" color="text.primary" sx={sx.text}>
-									{description}
-								</Typography>
-							) : (
-								<Typography variant="body1" color="text.primary" sx={sx.text}>
-									{description?.slice(0, MAX_CHARS)}
-								</Typography>
-							)}
-							{description?.length > MAX_CHARS && (
-								<Link onClick={() => setOpen(!open)} sx={sx.link}>
-									{open ? 'See less' : '... See all'}
-								</Link>
-							)}
-						</Box>
+            <ExpandableText
+              text={description}
+            />
 					</Stack>
 				</Stack>
 			</Box>
@@ -171,15 +158,7 @@ const sx = {
 	contentBorder: {
 		p: 2,
 	},
-	text: {
-		width: '100%',
-		whiteSpace: 'pre-line',
-	},
 	caption: {
-		color: 'text.secondary',
-	},
-	link: {
-		cursor: 'pointer',
 		color: 'text.secondary',
 	},
 	actions: {

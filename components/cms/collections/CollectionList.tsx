@@ -121,7 +121,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 
 	const [openModal, setOpenModal] = useState(false)
 	const [openDeleteModal, setOpenDeleteModal] = useState(false)
-	const [googleMarkers, setGoogleMarkers] = useState<GoogleMarker[] | []>([])
 
 	const {
 		loading,
@@ -366,13 +365,13 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 				</Box>
 				{enableGoogleMap && (
 					<Box sx={sx.googleMap}>
-							<GoogleMap
-								zoom={15}
-								height={380}
-                resources={resources}								
-								enableBorder={enableBorder}
-								displayFields={displayFields}
-							/>
+            <GoogleMap
+              zoom={15}
+              height={380}
+              resources={resources}								
+              enableBorder={enableBorder}
+              displayFields={displayFields}
+            />
 					</Box>
 				)}
 			</Box>

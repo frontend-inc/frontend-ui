@@ -7,6 +7,7 @@ import {
 	SocialButtons,
 	Actions,
 	Image,
+  ExpandableText,
 } from '../..'
 import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'

@@ -6,7 +6,7 @@ import {
 	StripePaymentLink,
 	SocialButtons,
 	Actions,
-	Image,
+	ExpandableText
 } from '../..'
 import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
@@ -82,9 +82,9 @@ const HeroContainer: React.FC<HeroContainerProps> = (props) => {
 				enableSharing={enableSharing}
 			/>
 			<Box sx={sx.content}>
-				<Typography variant="body1" color="text.primary" sx={sx.text}>
-					{description}
-				</Typography>
+        <ExpandableText 
+          text={description}
+        />
 			</Box>
 		</Stack>
 	)

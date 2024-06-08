@@ -8,6 +8,7 @@ import {
 	Image,
 	Actions,
 	SocialLink,
+  ExpandableText
 } from '../..'
 import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
@@ -86,23 +87,9 @@ const HeroProfile: React.FC<HeroProps> = (props) => {
 						{enableStripePaymentLink && (
 							<StripePaymentLink resource={resource} buttonText="Checkout" />
 						)}
-
-						<Box>
-							{open ? (
-								<Typography variant="body1" color="text.primary" sx={sx.text}>
-									{description}
-								</Typography>
-							) : (
-								<Typography variant="body1" color="text.primary" sx={sx.text}>
-									{description?.slice(0, MAX_CHARS)}
-								</Typography>
-							)}
-							{description?.length > MAX_CHARS && (
-								<Link onClick={() => setOpen(!open)} sx={sx.link}>
-									{open ? 'See less' : '... See all'}
-								</Link>
-							)}
-						</Box>
+            <ExpandableText 
+              text={description}
+            />
 					</Stack>
 					{(actions || enableEdit) && (
 						<Stack

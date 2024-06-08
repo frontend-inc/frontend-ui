@@ -8,6 +8,7 @@ import {
 	Image,
 	SocialButtons,
 	GoogleMap,
+  ExpandableText
 } from '../../../components'
 import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
@@ -30,7 +31,6 @@ const HeroPlace: React.FC<HeroProps> = (props) => {
 		enableStripePaymentLink,
 	} = props || {}
 	const { label, title, image, description } = resource || {}
-	const [open, setOpen] = useState(false)
 
 	if (!resource) return null
 	return (
@@ -78,25 +78,25 @@ const HeroPlace: React.FC<HeroProps> = (props) => {
 								disableBorderRadius={enableBorder}
 							/>
 						</Box>
-
 						<SocialButtons
 							handle={resource?.handle}
 							enableLikes={enableLikes}
 							enableFavorites={enableFavorites}
 							enableSharing={enableSharing}
 						/>
-						            <Typography color="text.primary" variant="h4">
+						<Typography color="text.primary" variant="h4">
 							{title}
 						</Typography>
 						<DisplayFields fields={displayFields} resource={resource} />
-
 						{enableBuyNow && (
 							<BuyNowButton resource={resource} buttonText="Buy Now" />
 						)}
 						{enableStripePaymentLink && (
 							<StripePaymentLink resource={resource} buttonText="Checkout" />
 						)}
-
+            <ExpandableText
+              text={description}
+            />
 					</Stack>
 					<Stack
 						spacing={2}
