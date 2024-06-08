@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react'
-import AutocompleteInput from 'frontend-ui/components/ui/inputs/AutocompleteInput'
+import { AutocompleteInput } from '../../../../components'
 import { Image, Placeholder } from '../../../../components'
 import { SyntheticEventType } from '../../../../types'
-import { useProducts } from 'frontend-shopify/hooks'
+import { useProducts } from 'frontend-shopify'
 import { ShopifyContext } from 'frontend-shopify'
 import { Box, Collapse, Stack, Typography } from '@mui/material'
 

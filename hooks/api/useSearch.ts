@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useDocuments, useAuth } from 'frontend-js'
 import { useFilters } from '../../hooks'
+import { 
+  SortOptionType,
+  FilterOptionType 
+} from '../../types'
 
 const useSearch = (props) => {
 	const { currentUser } = useAuth()

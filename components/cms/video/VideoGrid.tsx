@@ -30,6 +30,7 @@ const VideoVert: React.FC<CardProps> = (props) => {
 			objectFit={objectFit}
 			height={height}
 			width={width}
+      displayFields={[]}
 			enableBorder={enableBorder}
 			enableGradient={enableGradient}
 			enableOverlay={enableOverlay}

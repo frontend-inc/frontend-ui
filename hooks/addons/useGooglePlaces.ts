@@ -22,7 +22,7 @@ const useGooglePlaces = () => {
 	const [error, setError] = useState(null)
 
 	const [place, setPlace] = useState<GooglePlaceType | null>(null)
-	const [places, setPlaces] = useState<GooglePredictionType | []>([])
+	const [places, setPlaces] = useState<GooglePredictionType[] | []>([])
 
 	const fetchPlace = async (placeId) => {
 		let resp

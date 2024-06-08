@@ -13,6 +13,7 @@ export type OptionType = {
 	label: string
 	value: string | number | boolean | null
 	icon?: string
+  image?: string
 }
 
 export type TypographyVariantsType =

@@ -81,6 +81,7 @@ export { default as LayoutScroll } from './layouts/LayoutScroll'
 export { default as ColorModeTheme } from './theme/ColorModeTheme'
 
 // Inputs
+export { default as AutocompleteInput } from './inputs/AutocompleteInput'
 export { default as ArrayInput } from './inputs/ArrayInput'
 export { default as ArrayListInput } from './inputs/ArrayListInput'
 export { default as AttachmentInput } from './inputs/AttachmentInput'

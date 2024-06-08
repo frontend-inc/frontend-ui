@@ -3,7 +3,7 @@ import { Stack, Box } from '@mui/material'
 import { CollectionCard } from '../..'
 import { ActionType, DisplayFieldType } from '../../../types'
 import { buildActions } from '../../../helpers'
-import { flattenDocument } from 'frontend-js/helpers'
+import { flattenDocument } from 'frontend-js'
 
 type CollectionCardsProps = {
 	resources: any
