@@ -209,7 +209,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 			{enableLoadMore && (
 				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
 			)}
-			{!loading && resources.length == 0 && (
+			{!loading && resources?.length == 0 && (
 				<Placeholder
 					enableBorder
 					icon={emptyIcon}

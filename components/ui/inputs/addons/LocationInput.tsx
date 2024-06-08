@@ -72,7 +72,7 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
 	const [options, setOptions] = useState([])
 
 	useEffect(() => {
-		if (places?.length > 0) {
+		if (places && places?.length > 0) {
 			setOptions(
 				places?.map((place) => ({
 					label: place?.displayName?.text,
@@ -118,7 +118,7 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
 					<Paper
 						sx={{
 							...sx.container,
-							height: options?.length * 64,
+							height: ((options?.length || 0) * 64),
 						}}
 						elevation={2}
 					>

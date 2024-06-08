@@ -125,14 +125,15 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (value && typeof value === 'object') {
+		if (options &&value && typeof value === 'object') {
 			setSelected(value)
-		} else if (value && options?.length > 0) {
+		} else if (value && options && options?.length > 0) {
 			let option = options.find((option) => option.value == value)
 			if (option) setSelected(option)
-		}
+    }
 	}, [value, options])
 
+  if(!options) return null;
 	return (
 		<Stack
 			sx={{
