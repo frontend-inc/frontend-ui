@@ -18,12 +18,12 @@ const ChipList: React.FC<CardProps> = (props) => {
 	const {
 		resource,
 		actions,
-    displayFields=[],
+		displayFields = [],
 		handleClick,
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
-    enableFavorites = false
+		enableFavorites = false,
 	} = props
 
 	const { label, title, description, image } = resource || {}
@@ -42,11 +42,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 				disableGutters
 				secondaryAction={
 					<Stack direction="row" spacing={0} sx={sx.actions}>
-            { enableFavorites && (
-              <FavoriteButton
-                handle={resource?.handle}
-              />
-            )}
+						{enableFavorites && <FavoriteButton handle={resource?.handle} />}
 						<Actions numVisible={0} actions={actions} resource={resource} />
 					</Stack>
 				}
@@ -77,10 +73,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 							</Typography>
 						}
 						secondary={
-              <DisplayFields 
-                fields={displayFields}
-                resource={resource}
-              />
+							<DisplayFields fields={displayFields} resource={resource} />
 						}
 					/>
 				</ListItemButton>
@@ -140,7 +133,7 @@ const sx = {
 	},
 	actions: {
 		px: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+		alignItems: 'center',
+		justifyContent: 'center',
 	},
 }

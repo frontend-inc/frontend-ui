@@ -13,7 +13,9 @@ const usePayments = (props: UsePaymentsProps) => {
 	const { loading, loadingWrapper } = useLoaders()
 
 	const purchase = async (itemId) => {
-		return await loadingWrapper(() => api.post(`/api/v1/payments/${itemId}/purchase`))
+		return await loadingWrapper(() =>
+			api.post(`/api/v1/payments/${itemId}/purchase`)
+		)
 	}
 
 	return {

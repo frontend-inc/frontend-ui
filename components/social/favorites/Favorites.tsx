@@ -1,21 +1,21 @@
 import React from 'react'
 import { CollectionList } from '../..'
-import { 
-  SortOptionType, 
-  SearchFilterOptionType,
-  DisplayFieldType 
+import {
+	SortOptionType,
+	SearchFilterOptionType,
+	DisplayFieldType,
 } from '../../../types'
 
 export type FavoritesProps = {
 	variant: 'list' | 'grid'
 	style: 'card' | 'avatar' | 'cover'
-	field: any  
-  displayFields?: DisplayFieldType[]
+	field: any
+	displayFields?: DisplayFieldType[]
 	url: string
 	handle: string
 	href: any
 	foreignUrl?: string
-  filterAnchor?: 'left' | 'top'
+	filterAnchor?: 'left' | 'top'
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
 	enableSearch?: boolean
@@ -27,27 +27,22 @@ export type FavoritesProps = {
 	enableBorder?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
-  enableFavorites?: boolean
-  enableInfiniteLoad?: boolean
-  enableLoadMore?: boolean
+	enableFavorites?: boolean
+	enableInfiniteLoad?: boolean
+	enableLoadMore?: boolean
 }
 
 const Favorites: React.FC<FavoritesProps> = (props) => {
-
-	const {
-		url,
-  ...rest	
-  } = props
-
+	const { url, ...rest } = props
 
 	return (
-    <CollectionList 
-      enableFavorites
-      url={`${url}/favorites`}
-      // Todo: Component errors without a default value 
-      query={{}}
-      { ...rest }
-    />
+		<CollectionList
+			enableFavorites
+			url={`${url}/favorites`}
+			// Todo: Component errors without a default value
+			query={{}}
+			{...rest}
+		/>
 	)
 }
 

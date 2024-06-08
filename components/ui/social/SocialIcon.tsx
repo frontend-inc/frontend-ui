@@ -6,22 +6,21 @@ import { SocialIcon as ReactSocialIcon } from 'react-social-icons'
 type SocialIconProps = {
 	provider: string
 	url?: string
-  handleClick?: () => void
-  bgColor?: string
+	handleClick?: () => void
+	bgColor?: string
 }
 
 const SocialIcon: React.FC<SocialIconProps> = (props) => {
 	const { provider, handleClick, bgColor } = props || {}
 
-
 	return (
 		<IconButton size="small" onClick={handleClick}>
-			<ReactSocialIcon 
-        /* @ts-ignore */
-        network={provider} 
-        bgColor={bgColor} 
-        style={styles} 
-      />
+			<ReactSocialIcon
+				/* @ts-ignore */
+				network={provider}
+				bgColor={bgColor}
+				style={styles}
+			/>
 		</IconButton>
 	)
 }

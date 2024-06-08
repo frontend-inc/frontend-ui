@@ -1,37 +1,41 @@
-import React from "react"
-import { DisplayField } from "../../.."
-import { DisplayFieldType } from "../../../../types"
-import { Stack } from "@mui/material"
+import React from 'react'
+import { DisplayField } from '../../..'
+import { DisplayFieldType } from '../../../../types'
+import { Stack } from '@mui/material'
 
 type DisplayFieldsProps = {
-  color?: string
-  fields: DisplayFieldType[]
-  resource: any
-  alignItems?: 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline'
+	color?: string
+	fields: DisplayFieldType[]
+	resource: any
+	alignItems?: 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline'
 }
 
 const DisplayFields: React.FC<DisplayFieldsProps> = (props) => {
+	const { fields, resource, color, alignItems = 'flex-start' } = props || {}
 
-  const { fields, resource, color, alignItems='flex-start' } = props || {}
-
-  return(
-    <Stack sx={ sx.root } direction="column" spacing={0.5} alignItems={ alignItems }>
-      { fields?.map((field, index) => (
-        <DisplayField 
-          key={index}
-          color={color}
-          field={field}
-          resource={resource}
-        />
-      ))}     
-  </Stack>
-  )
+	return (
+		<Stack
+			sx={sx.root}
+			direction="column"
+			spacing={0.5}
+			alignItems={alignItems}
+		>
+			{fields?.map((field, index) => (
+				<DisplayField
+					key={index}
+					color={color}
+					field={field}
+					resource={resource}
+				/>
+			))}
+		</Stack>
+	)
 }
 
 export default DisplayFields
 
 const sx = {
-  root: {
-    width: '100%'
-  }
+	root: {
+		width: '100%',
+	},
 }

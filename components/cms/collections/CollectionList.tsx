@@ -8,18 +8,27 @@ import {
 	AlertModal,
 	LoadMore,
 	IconLoading,
-  GoogleMap
+	GoogleMap,
 } from '../../../components'
 import { AppContext } from '../../../context'
-import { ActionType, FilterOptionType, FormFieldType, DisplayFieldType } from '../../../types'
+import {
+	ActionType,
+	FilterOptionType,
+	FormFieldType,
+	DisplayFieldType,
+} from '../../../types'
 import { useRouter } from 'next/router'
-import { 
-  CollectionCards, 
-  Placeholder, 
-  CollectionToolbar, 
-  SearchFilters 
+import {
+	CollectionCards,
+	Placeholder,
+	CollectionToolbar,
+	SearchFilters,
 } from '../..'
-import { GoogleMarker, SortOptionType, SearchFilterOptionType } from '../../../types'
+import {
+	GoogleMarker,
+	SortOptionType,
+	SearchFilterOptionType,
+} from '../../../types'
 import { useAuth } from 'frontend-js'
 
 export type CollectionListProps = {
@@ -35,53 +44,53 @@ export type CollectionListProps = {
 	query?: any
 	actions?: ActionType[]
 	fields?: FormFieldType[]
-  displayFields?: DisplayFieldType[]
+	displayFields?: DisplayFieldType[]
 	filterAnchor?: 'left' | 'top'
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
 	enableSearch?: boolean
 	enableFilters?: boolean
 	enableSorting?: boolean
-  enableGoogleMap?: boolean
+	enableGoogleMap?: boolean
 	buttonText?: string
-  handleClick?: (resource: any) => void
+	handleClick?: (resource: any) => void
 	enableBorder?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
-  enableFavorites?: boolean
-  filterUser?: boolean
-  filterTeam?: boolean 
-  emptyIcon?: string
-  emptyTitle?: string
-  emptyDescription?: string 
+	enableFavorites?: boolean
+	filterUser?: boolean
+	filterTeam?: boolean
+	emptyIcon?: string
+	emptyTitle?: string
+	emptyDescription?: string
 }
 
 const CollectionList: React.FC<CollectionListProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl, setAuthOpen } = useContext(AppContext)
-  const { currentUser } = useAuth()
+	const { currentUser } = useAuth()
 
 	const {
 		actions,
 		variant = 'grid',
 		style = 'card',
-    href,
+		href,
 		url,
-		fields=[],
-    displayFields=[],
+		fields = [],
+		displayFields = [],
 		filterAnchor = 'left',
 		filterOptions = [],
 		sortOptions = [],
-    enableGoogleMap = false,
+		enableGoogleMap = false,
 		perPage = 20,
 		enableSearch = false,
 		enableFilters = false,
 		enableSorting = false,
 		enableInfiniteLoad = false,
-		enableLoadMore = true,		
+		enableLoadMore = true,
 		buttonText,
 		enableBorder = false,
 		enableGradient = false,
@@ -89,16 +98,16 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		enableEdit = false,
 		enableCreate = false,
 		enableDelete = false,
-    enableFavorites = false,
-    filterUser = false,
-    filterTeam = false,
-    query: defaultQuery = {},
-    emptyIcon,
-    emptyTitle='No results found',
-    emptyDescription='Try changing your search or filters.'
+		enableFavorites = false,
+		filterUser = false,
+		filterTeam = false,
+		query: defaultQuery = {},
+		emptyIcon,
+		emptyTitle = 'No results found',
+		emptyDescription = 'Try changing your search or filters.',
 	} = props
 
-  const handleNavigate = (resource) => {
+	const handleNavigate = (resource) => {
 		if (clientUrl && href && resource?.handle) {
 			window.scrollTo({
 				top: 0,
@@ -108,14 +117,11 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		}
 	}
 
-  const { 
-    handleClick = handleNavigate,
-  } = props
-
+	const { handleClick = handleNavigate } = props
 
 	const [openModal, setOpenModal] = useState(false)
 	const [openDeleteModal, setOpenDeleteModal] = useState(false)
-  const [googleMarkers, setGoogleMarkers] = useState<GoogleMarker[] | []>([])
+	const [googleMarkers, setGoogleMarkers] = useState<GoogleMarker[] | []>([])
 
 	const {
 		loading,
@@ -171,12 +177,12 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 	}
 
 	const {
-    queryFilters,
+		queryFilters,
 		activeFilters,
 		setActiveFilters,
 		handleAddFilter,
-    mergeAllFilters,	
-    buildUserFilters	
+		mergeAllFilters,
+		buildUserFilters,
 	} = useFilters({
 		query,
 	})
@@ -185,10 +191,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 	const handleClearFilters = () => {
 		setActiveFilters([])
 		findMany({
-			filters: mergeAllFilters([
-        defaultQuery?.filters,
-        currentUserFilter,        
-      ]),
+			filters: mergeAllFilters([defaultQuery?.filters, currentUserFilter]),
 			sort_by: 'id',
 			sort_direction: 'desc',
 			keywords: '',
@@ -202,21 +205,21 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 	}
 
 	const handleAdd = () => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		setResource({
-      id: null
-    })
+			id: null,
+		})
 		setOpenModal(true)
 	}
 
 	const handleEdit = (item) => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		setResource(item)
 		setOpenModal(true)
 	}
 
 	const handleSubmit = async () => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		try {
 			let resp
 			if (resource?.id) {
@@ -235,13 +238,13 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 	}
 
 	const handleDeleteClick = (item) => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		setResource(item)
 		setOpenDeleteModal(true)
 	}
 
 	const handleDelete = async () => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		await destroy(resource?.id)
 		setOpenDeleteModal(false)
 		setOpenModal(false)
@@ -250,71 +253,70 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 	}
 
 	const handleRemove = async (name) => {
-    if(!currentUser?.id) return setAuthOpen(true);    
+		if (!currentUser?.id) return setAuthOpen(true)
 		await removeAttachment(resource?.id, name)
-	}  
+	}
 
-  const currentUserFilter = buildUserFilters(
-    currentUser, 
-    filterUser, 
-    filterTeam
-  )
+	const currentUserFilter = buildUserFilters(
+		currentUser,
+		filterUser,
+		filterTeam
+	)
 
 	useEffect(() => {
-		if (url && currentUser) {                   
+		if (url && currentUser) {
 			findMany({
 				...defaultQuery,
-        filters: mergeAllFilters([
-          defaultQuery?.filters,
-          currentUserFilter,
-          queryFilters
-        ]),       
+				filters: mergeAllFilters([
+					defaultQuery?.filters,
+					currentUserFilter,
+					queryFilters,
+				]),
 				per_page: perPage,
 			})
 		}
 	}, [
-    url, 
-    perPage, 
-    filterUser,
-    filterTeam,
-    currentUser,
-    queryFilters,
-    defaultQuery,
-  ])
+		url,
+		perPage,
+		filterUser,
+		filterTeam,
+		currentUser,
+		queryFilters,
+		defaultQuery,
+	])
 
-  let gridTemplateColumns; 
-  if (enableFilters && filterAnchor == 'left' && enableGoogleMap) {
-    gridTemplateColumns = '1fr 2fr 1fr'
-  } else if (enableFilters && filterAnchor == 'left') {
-    gridTemplateColumns = '2fr 3fr' 
-  } else if (enableGoogleMap) {
-    gridTemplateColumns = '3fr 2fr' 
-  } else {
-    gridTemplateColumns = '1fr'
-  }
+	let gridTemplateColumns
+	if (enableFilters && filterAnchor == 'left' && enableGoogleMap) {
+		gridTemplateColumns = '1fr 2fr 1fr'
+	} else if (enableFilters && filterAnchor == 'left') {
+		gridTemplateColumns = '2fr 3fr'
+	} else if (enableGoogleMap) {
+		gridTemplateColumns = '3fr 2fr'
+	} else {
+		gridTemplateColumns = '1fr'
+	}
 
-  const handleSetMarkers = (resources) => {
-  let markers = resources
-      ?.filter((res) => res?.lat && res?.lng)
-      ?.map((res) => ({
-        lat: res?.lat,
-        lng: res?.lng,
-        label: res?.title,
-        resource: res
-      })
-    )
-    if(markers.length == 0) return setGoogleMarkers([]);
-    setGoogleMarkers(markers)
-  }
+	const handleSetMarkers = (resources) => {
+		let markers = resources
+			?.filter((res) => res?.lat && res?.lng)
+			?.map((res) => ({
+				lat: res?.lat,
+				lng: res?.lng,
+				label: res?.title,
+				resource: res,
+			}))
+		if (markers.length == 0) return setGoogleMarkers([])
+		setGoogleMarkers(markers)
+	}
 
-  useEffect(() => {
-    if(resources){
-      handleSetMarkers(resources)      
-    }
-  }, [resources])
+	useEffect(() => {
+		if (resources) {
+			handleSetMarkers(resources)
+		}
+	}, [resources])
 
 	return (
-		<Stack spacing={1} sx={sx.root}>      
+		<Stack spacing={1} sx={sx.root}>
 			<CollectionToolbar
 				query={query}
 				activeFilters={activeFilters}
@@ -333,33 +335,33 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 				handleKeywordChange={handleKeywordChange}
 				handleSearch={handleSearch}
 			/>
-			<Box 
-        sx={{
-          display: 'grid',
-          gap: '10px',
-          gridTemplateColumns: {
-            sm: gridTemplateColumns,
-            xs: '1fr',
-          },
-        }}
-      >
+			<Box
+				sx={{
+					display: 'grid',
+					gap: '10px',
+					gridTemplateColumns: {
+						sm: gridTemplateColumns,
+						xs: '1fr',
+					},
+				}}
+			>
 				{enableFilters && filterAnchor == 'left' && (
 					<Box>
-            <SearchFilters
-              filters={activeFilters}
-              filterOptions={filterOptions}
-              handleFilter={handleFilter}
-            />
+						<SearchFilters
+							filters={activeFilters}
+							filterOptions={filterOptions}
+							handleFilter={handleFilter}
+						/>
 					</Box>
 				)}
 				<Box>
-					<Box sx={{ ...(delayedLoading && sx.loading) }}>					
+					<Box sx={{ ...(delayedLoading && sx.loading) }}>
 						<CollectionCards
 							actions={actions}
 							variant={variant}
 							style={style}
 							resources={resources}
-              displayFields={displayFields}
+							displayFields={displayFields}
 							handleClick={handleClick}
 							buttonText={buttonText}
 							enableBorder={enableBorder}
@@ -367,33 +369,33 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 							enableOverlay={enableOverlay}
 							enableEdit={enableEdit}
 							enableDelete={enableDelete}
-              enableFavorites={enableFavorites}
+							enableFavorites={enableFavorites}
 							handleEdit={handleEdit}
 							handleDelete={handleDeleteClick}
 						/>
 					</Box>
 					{!loading && resources.length == 0 && (
 						<Placeholder
-              enableBorder
-							icon={ emptyIcon }
-							title={ emptyTitle }
-							description={ emptyDescription }
+							enableBorder
+							icon={emptyIcon}
+							title={emptyTitle}
+							description={emptyDescription}
 						/>
 					)}
 				</Box>
-        { enableGoogleMap && (
-          <Box sx={sx.googleMap}>    
-            { googleMarkers?.length > 0 && (
-              <GoogleMap 
-                zoom={15}
-                height={380}    
-                markers={ googleMarkers } 
-                enableBorder={ enableBorder }                  
-                displayFields={displayFields}       
-              />                 
-            )}
-            </Box>
-          )}
+				{enableGoogleMap && (
+					<Box sx={sx.googleMap}>
+						{googleMarkers?.length > 0 && (
+							<GoogleMap
+								zoom={15}
+								height={380}
+								markers={googleMarkers}
+								enableBorder={enableBorder}
+								displayFields={displayFields}
+							/>
+						)}
+					</Box>
+				)}
 			</Box>
 
 			{enableLoadMore && (
@@ -404,31 +406,31 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 					enableInfiniteLoad={enableInfiniteLoad}
 				/>
 			)}
-      <Drawer
-        open={openModal}
-        handleClose={() => setOpenModal(false)}
-        title={resource?.id ? 'Edit' : 'Add'}
-        actions={
-          <Button
-            fullWidth
-            variant="contained"
-            color="primary"
-            onClick={handleSubmit}
-            startIcon={<IconLoading loading={loading} />}
-          >
-            {resource?.id ? 'Update' : 'Save'}
-          </Button>
-        }
-      >
-        <Form
-          loading={loading}
-          errors={errors}
-          fields={fields}
-          resource={flattenDocument(resource)}
-          handleChange={handleDataChange}
-          handleRemove={handleRemove}
-        />
-      </Drawer>
+			<Drawer
+				open={openModal}
+				handleClose={() => setOpenModal(false)}
+				title={resource?.id ? 'Edit' : 'Add'}
+				actions={
+					<Button
+						fullWidth
+						variant="contained"
+						color="primary"
+						onClick={handleSubmit}
+						startIcon={<IconLoading loading={loading} />}
+					>
+						{resource?.id ? 'Update' : 'Save'}
+					</Button>
+				}
+			>
+				<Form
+					loading={loading}
+					errors={errors}
+					fields={fields}
+					resource={flattenDocument(resource)}
+					handleChange={handleDataChange}
+					handleRemove={handleRemove}
+				/>
+			</Drawer>
 			<AlertModal
 				open={openDeleteModal}
 				handleClose={() => setOpenDeleteModal(false)}
@@ -464,8 +466,8 @@ const sx = {
 	circularProgress: {
 		color: 'primary.main',
 	},
-  googleMap: {              
-    width: '100%',
-    minWidth: 300,
-  }
+	googleMap: {
+		width: '100%',
+		minWidth: 300,
+	},
 }

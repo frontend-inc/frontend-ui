@@ -39,8 +39,8 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 		direction = 'column',
 		freeSolo = true,
 	} = props
-  let { value } = props
-  if(!value) value = [];
+	let { value } = props
+	if (!value) value = []
 
 	const { error, clearError } = useError({
 		errors,
@@ -64,41 +64,41 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 			<Typography sx={sx.label} variant="caption" color="text.secondary">
 				{label}
 			</Typography>
-				<Autocomplete
-					multiple
-					freeSolo={freeSolo}
-					defaultValue={value || []}
-					onChange={handleInputChange}
-					options={options || []}
-					getOptionLabel={(option) => option}
-					PopperComponent={CustomPopper}
-					clearIcon={<X />}
-					renderTags={(tagValue, getTagProps) =>
-						Array.isArray(tagValue) &&
-						tagValue.map((option, index) => (
-							<Chip
-								sx={sx.chip}
-								label={option}
-								color="secondary"
-								deleteIcon={<X size={20} />}
-								{...getTagProps({ index })}
-							/>
-						))
-					}
-					renderInput={(params) => (
-						<TextField
-							{...params}
-							color="primary"
-							sx={{
-								...sx.textField,
-								...((error && sx.inputError) || {}),
-							}}
-							placeholder={placeholder}
-							margin="dense"
-							variant="outlined"
+			<Autocomplete
+				multiple
+				freeSolo={freeSolo}
+				defaultValue={value || []}
+				onChange={handleInputChange}
+				options={options || []}
+				getOptionLabel={(option) => option}
+				PopperComponent={CustomPopper}
+				clearIcon={<X />}
+				renderTags={(tagValue, getTagProps) =>
+					Array.isArray(tagValue) &&
+					tagValue.map((option, index) => (
+						<Chip
+							sx={sx.chip}
+							label={option}
+							color="secondary"
+							deleteIcon={<X size={20} />}
+							{...getTagProps({ index })}
 						/>
-					)}
-				/>
+					))
+				}
+				renderInput={(params) => (
+					<TextField
+						{...params}
+						color="primary"
+						sx={{
+							...sx.textField,
+							...((error && sx.inputError) || {}),
+						}}
+						placeholder={placeholder}
+						margin="dense"
+						variant="outlined"
+					/>
+				)}
+			/>
 			<ErrorText error={error} />
 		</Stack>
 	)

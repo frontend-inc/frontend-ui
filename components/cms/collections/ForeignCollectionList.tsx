@@ -10,7 +10,7 @@ import {
 	IconLoading,
 	AlertModal,
 	Icon,
-  Placeholder
+	Placeholder,
 } from '../..'
 import { Stack, Button, Box } from '@mui/material'
 import { DisplayFieldType, FormFieldType } from '../../../types'
@@ -22,12 +22,12 @@ export type ForeignCollectionProps = {
 	style?: 'card' | 'avatar' | 'cover'
 	field: any
 	fields: FormFieldType[]
-  displayFields?: DisplayFieldType[]
-	resource: any	
+	displayFields?: DisplayFieldType[]
+	resource: any
 	handle: string
 	url: string
-  foreignUrl: string
-  foreignContentType?: string
+	foreignUrl: string
+	foreignContentType?: string
 	href?: any
 	perPage?: number
 	query?: any
@@ -36,26 +36,26 @@ export type ForeignCollectionProps = {
 	enableDelete?: boolean
 	enableBorder?: boolean
 	enableGradient?: boolean
-  enableFavorites?: boolean
+	enableFavorites?: boolean
 	enableLoadMore?: boolean
-  emptyIcon?: string
-  emptyTitle?: string
-  emptyDescription?: string
+	emptyIcon?: string
+	emptyTitle?: string
+	emptyDescription?: string
 }
 
 const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
-  const { setAuthOpen } = useContext(AppContext)
-  const { currentUser } = useAuth()
+	const { setAuthOpen } = useContext(AppContext)
+	const { currentUser } = useAuth()
 
 	const {
 		fields,
-    displayFields=[],
-		resource: _resource,		
+		displayFields = [],
+		resource: _resource,
 		variant = 'list',
 		style = 'card',
 		url,
-    foreignUrl,
-    foreignContentType,
+		foreignUrl,
+		foreignContentType,
 		href,
 		perPage = 10,
 		query: defaultQuery = null,
@@ -65,10 +65,10 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 		enableCreate = false,
 		enableEdit = false,
 		enableDelete = false,
-    enableFavorites = false,
-    emptyIcon,
-    emptyTitle='No results found',
-    emptyDescription='Try adjusting your search or filters'
+		enableFavorites = false,
+		emptyIcon,
+		emptyTitle = 'No results found',
+		emptyDescription = 'Try adjusting your search or filters',
 	} = props
 
 	const router = useRouter()
@@ -79,7 +79,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 
 	const { query, resources, page, numPages, loadMore, findLinks, addLinks } =
 		useDocuments({
-			url
+			url,
 		})
 
 	const {
@@ -104,13 +104,13 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	}
 
 	const handleAdd = () => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		setResource({})
 		setOpenModal(!openModal)
 	}
 
 	const handleEdit = (item) => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		setResource(item)
 		setOpenModal(true)
 	}
@@ -138,13 +138,13 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	}
 
 	const handleDeleteClick = (item) => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		setResource(item)
 		setOpenDeleteModal(true)
 	}
 
 	const handleDelete = async () => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		if (resource?.id) {
 			await destroy(resource?.id)
 			setOpenDeleteModal(false)
@@ -154,7 +154,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 	}
 
 	const handleRemove = async (name) => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		if (resource?.id) {
 			await removeAttachment(resource?.id, name)
 		}
@@ -190,15 +190,15 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 						Add
 					</Button>
 				</Box>
-			)}			
+			)}
 			<CollectionCards
 				actions={[]}
-        displayFields={displayFields}
+				displayFields={displayFields}
 				variant={variant}
 				style={style}
 				resources={resources}
 				handleClick={handleClick}
-        enableFavorites={enableFavorites}
+				enableFavorites={enableFavorites}
 				enableBorder={enableBorder}
 				enableGradient={enableGradient}
 				enableEdit={enableEdit}
@@ -209,39 +209,39 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
 			{enableLoadMore && (
 				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
 			)}
-      {!loading && resources.length == 0 && (
-        <Placeholder
-          enableBorder
-          icon={ emptyIcon }
-          title={ emptyTitle }
-          description={ emptyDescription }
-        />
-      )}
-      <Drawer
-        open={openModal}
-        handleClose={() => setOpenModal(false)}
-        title={resource?.id ? 'Edit' : 'Add'}
-        actions={
-          <Button
-            fullWidth
-            variant="contained"
-            color="primary"
-            onClick={handleSubmit}
-            startIcon={<IconLoading loading={loading} />}
-          >
-            {resource?.id ? 'Update' : 'Save'}
-          </Button>
-        }
-      >
-        <Form
-          loading={loading}
-          errors={errors}
-          fields={fields}
-          resource={flattenDocument(resource)}
-          handleChange={handleDataChange}
-          handleRemove={handleRemove}
-        />
-      </Drawer>
+			{!loading && resources.length == 0 && (
+				<Placeholder
+					enableBorder
+					icon={emptyIcon}
+					title={emptyTitle}
+					description={emptyDescription}
+				/>
+			)}
+			<Drawer
+				open={openModal}
+				handleClose={() => setOpenModal(false)}
+				title={resource?.id ? 'Edit' : 'Add'}
+				actions={
+					<Button
+						fullWidth
+						variant="contained"
+						color="primary"
+						onClick={handleSubmit}
+						startIcon={<IconLoading loading={loading} />}
+					>
+						{resource?.id ? 'Update' : 'Save'}
+					</Button>
+				}
+			>
+				<Form
+					loading={loading}
+					errors={errors}
+					fields={fields}
+					resource={flattenDocument(resource)}
+					handleChange={handleDataChange}
+					handleRemove={handleRemove}
+				/>
+			</Drawer>
 			<AlertModal
 				open={openDeleteModal}
 				handleClose={() => setOpenDeleteModal(false)}

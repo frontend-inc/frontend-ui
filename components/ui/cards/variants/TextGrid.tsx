@@ -12,12 +12,12 @@ const TextGrid: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
-    displayFields=[],
+		displayFields = [],
 		href,
 		handleClick,
 		height = CARD_VERT_HEIGHT,
 		enableBorder = false,
-    enableFavorites = false
+		enableFavorites = false,
 	} = props || {}
 
 	const { title, description } = resource || {}
@@ -33,44 +33,37 @@ const TextGrid: React.FC<CardProps> = (props) => {
 	}
 
 	return (
-      <Stack
-        spacing={1}
-        sx={{
-          ...sx.root,
-          ...(enableBorder && sx.rootBorder),
-          minWidth: `${CARD_VERT_WIDTH}px`,
-          minHeight: height + 80,
-        }}
-      >
-        <Stack direction="row" alignItems='flex-end' sx={sx.actions}>
-          { enableFavorites && (
-            <FavoriteButton
-              handle={resource?.handle}
-            />
-          )}
-          <Actions numVisible={0} actions={actions} resource={resource} />
-        </Stack>
-        <Stack
-          spacing={1}
-          sx={{
-            ...sx.content,
-            ...(enableBorder && sx.contentBorder),
-          }}
-        >                  
-          <Link onClick={ handleItemClick }>
-            <Typography sx={sx.title} color="text.primary" variant="subtitle1">
-              {truncate(title)}
-            </Typography>
-          </Link>
-          <DisplayFields 
-            fields={displayFields}
-            resource={resource}
-          />
-          <Typography sx={sx.description} color="text.secondary" variant="body1">
-            {truncate(description, 200)}
-          </Typography>
-        </Stack>
-      </Stack>
+		<Stack
+			spacing={1}
+			sx={{
+				...sx.root,
+				...(enableBorder && sx.rootBorder),
+				minWidth: `${CARD_VERT_WIDTH}px`,
+				minHeight: height + 80,
+			}}
+		>
+			<Stack direction="row" alignItems="flex-end" sx={sx.actions}>
+				{enableFavorites && <FavoriteButton handle={resource?.handle} />}
+				<Actions numVisible={0} actions={actions} resource={resource} />
+			</Stack>
+			<Stack
+				spacing={1}
+				sx={{
+					...sx.content,
+					...(enableBorder && sx.contentBorder),
+				}}
+			>
+				<Link onClick={handleItemClick}>
+					<Typography sx={sx.title} color="text.primary" variant="subtitle1">
+						{truncate(title)}
+					</Typography>
+				</Link>
+				<DisplayFields fields={displayFields} resource={resource} />
+				<Typography sx={sx.description} color="text.secondary" variant="body1">
+					{truncate(description, 200)}
+				</Typography>
+			</Stack>
+		</Stack>
 	)
 }
 
@@ -112,7 +105,6 @@ const sx = {
 	content: {
 		width: '100%',
 		minHeight: '60px',
-    
 	},
 	contentArea: {
 		p: 1,

@@ -51,12 +51,7 @@ type ProductImageSliderProps = {
 }
 
 const ProductImageSlider: React.FC<ProductImageSliderProps> = (props) => {
-	const {
-		image,
-		images,
-		handleClick,
-		thumbnailSize = 80,
-	} = props
+	const { image, images, handleClick, thumbnailSize = 80 } = props
 
 	return (
 		<Stack direction="column" spacing={0} sx={sx.root}>

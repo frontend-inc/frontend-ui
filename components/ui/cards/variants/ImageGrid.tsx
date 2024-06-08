@@ -16,7 +16,7 @@ const ImageVert: React.FC<CardProps> = (props) => {
 		height = 320,
 		enableGradient = false,
 		enableOverlay = false,
-    enableFavorites = false
+		enableFavorites = false,
 	} = props || {}
 
 	const { title, image } = resource || {}
@@ -40,15 +40,11 @@ const ImageVert: React.FC<CardProps> = (props) => {
 					objectFit={objectFit}
 					alt={title}
 					enableGradient={enableGradient}
-					enableOverlay={enableOverlay}          
+					enableOverlay={enableOverlay}
 				/>
 			</TouchableOpacity>
 			<Box sx={sx.actions}>
-        {enableFavorites && (
-            <FavoriteButton
-              handle={resource?.handle}
-            />
-          )}
+				{enableFavorites && <FavoriteButton handle={resource?.handle} />}
 				<Actions
 					numVisible={0}
 					actions={actions}
@@ -81,9 +77,9 @@ const sx = {
 		},
 	},
 	actions: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'flex-end',
 		position: 'absolute',
 		top: 10,
 		right: 10,

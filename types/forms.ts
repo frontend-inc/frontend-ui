@@ -3,7 +3,7 @@ import { OptionType } from 'frontend-js'
 export type DisplayFieldType = {
 	name: string
 	variant: string
-  icon?: string
+	icon?: string
 	label: string
 	options?: OptionType[]
 	placeholder?: string

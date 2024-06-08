@@ -24,7 +24,7 @@ export type SectionProps = {
 
 export type CardProps = {
 	actions: ActionType[]
-  enableFavorites?: boolean
+	enableFavorites?: boolean
 	editing?: boolean
 	variant?: 'list' | 'grid'
 	resource: any & {
@@ -36,7 +36,7 @@ export type CardProps = {
 		}
 		video?: string
 	}
-  displayFields: DisplayFieldType[]
+	displayFields: DisplayFieldType[]
 	buttonText?: string
 	textVariant?: TypographyVariant
 	size?: number
@@ -57,17 +57,17 @@ export type CardProps = {
 }
 
 export type PriceType = {
-  id?: number
+	id?: number
 	label: string
 	title: string
 	price: number
-  price_type: 'stripe_payment_link' | 'url'
+	price_type: 'stripe_payment_link' | 'url'
 	features: {
 		label: string
 	}[]
-  recurring?: boolean
-  recurring_rate?: string
+	recurring?: boolean
+	recurring_rate?: string
 	buttonText: string
 	url?: string
-  stripe_payment_url?: string
+	stripe_payment_url?: string
 }

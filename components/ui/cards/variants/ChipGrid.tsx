@@ -1,7 +1,7 @@
 import React from 'react'
 import {
 	Avatar,
-  Stack,
+	Stack,
 	Box,
 	List,
 	ListItem,
@@ -17,12 +17,12 @@ const ChipList: React.FC<CardProps> = (props) => {
 	const {
 		resource,
 		actions,
-    displayFields=[],
+		displayFields = [],
 		handleClick,
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
-    enableFavorites = false
+		enableFavorites = false,
 	} = props
 
 	const { title, image } = resource || {}
@@ -40,14 +40,10 @@ const ChipList: React.FC<CardProps> = (props) => {
 				disablePadding
 				disableGutters
 				secondaryAction={
-          <Stack direction="row" alignItems='flex-end' sx={sx.actions}>
-          { enableFavorites && (
-            <FavoriteButton
-              handle={resource?.handle}
-            />
-          )}
-          <Actions numVisible={0} actions={actions} resource={resource} />
-        </Stack>
+					<Stack direction="row" alignItems="flex-end" sx={sx.actions}>
+						{enableFavorites && <FavoriteButton handle={resource?.handle} />}
+						<Actions numVisible={0} actions={actions} resource={resource} />
+					</Stack>
 				}
 			>
 				<ListItemButton
@@ -75,12 +71,9 @@ const ChipList: React.FC<CardProps> = (props) => {
 								{title}
 							</Typography>
 						}
-            secondary={
-              <DisplayFields 
-                fields={displayFields}
-                resource={resource}
-              />
-            }
+						secondary={
+							<DisplayFields fields={displayFields} resource={resource} />
+						}
 					/>
 				</ListItemButton>
 			</ListItem>

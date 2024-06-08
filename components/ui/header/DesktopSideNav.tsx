@@ -16,7 +16,7 @@ type DesktopNavProps = {
 	logoHeight?: number
 	menuItems?: MenuLinkType[]
 	enableAuth?: boolean
-  enableStripe?: boolean
+	enableStripe?: boolean
 	enableShopify?: boolean
 	enableNotifications?: boolean
 	handleClick: (path: string) => void
@@ -32,7 +32,7 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 		logoHeight = HEADER_LOGO_HEIGHT,
 		handleClick,
 		enableAuth = false,
-    enableStripe = false,
+		enableStripe = false,
 		enableShopify = false,
 		enableNotifications = false,
 	} = props
@@ -66,7 +66,9 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 						<List>
 							{menuItems
 								?.filter((menuItem) => menuItem.parent_id == null)
-								?.filter((menuItem) => filterLinkVisibility(menuItem, currentUser))
+								?.filter((menuItem) =>
+									filterLinkVisibility(menuItem, currentUser)
+								)
 								?.map((menuItem, index) => (
 									<SideNavMenuItem
 										key={index}
@@ -84,9 +86,7 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 									<ShopifyAuth variant="sideNav" />
 								</>
 							)}
-              {enableStripe && (
-                <StripeCustomerPortalButton variant="sideNav" />
-              )}
+							{enableStripe && <StripeCustomerPortalButton variant="sideNav" />}
 							{enableAuth && (
 								<Box sx={sx.divider}>
 									<AuthButton showLabel editing={editing} />

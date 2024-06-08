@@ -4,8 +4,8 @@ export type SearchFilterVariantType =
 	| 'boolean'
 	| 'number_range'
 	| 'date_range'
-  | 'date_range_past'
-  | 'date_range_future'
+	| 'date_range_past'
+	| 'date_range_future'
 	| 'ratings_scale'
 
 export type SearchFilterOptionType = {

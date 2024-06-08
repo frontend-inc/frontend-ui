@@ -33,9 +33,9 @@ type TableProps = {
 	enableBorder?: boolean
 	disableBorderRadius?: boolean
 	styles?: any
-  emptyIcon?: string
-  emptyTitle?: string
-  emptyDescription?: string
+	emptyIcon?: string
+	emptyTitle?: string
+	emptyDescription?: string
 }
 
 const Table: React.FC<TableProps> = (props) => {
@@ -74,9 +74,9 @@ const Table: React.FC<TableProps> = (props) => {
 		enableBorder = false,
 		disableBorderRadius = false,
 		styles = {},
-    emptyIcon,
-    emptyTitle,
-    emptyDescription
+		emptyIcon,
+		emptyTitle,
+		emptyDescription,
 	} = props
 
 	const handleKeywordChange = (e: any) => {
@@ -150,9 +150,9 @@ const Table: React.FC<TableProps> = (props) => {
 				numResults={numResults}
 				totalCount={totalCount}
 				handlePaginate={handlePaginate}
-        emptyIcon={emptyIcon}
-        emptyTitle={emptyTitle}
-        emptyDescription={emptyDescription}
+				emptyIcon={emptyIcon}
+				emptyTitle={emptyTitle}
+				emptyDescription={emptyDescription}
 				styles={styles}
 			/>
 			<TableFilterPopup

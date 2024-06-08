@@ -18,18 +18,18 @@ export type HeroProps = {
 	handle?: string
 	enableBorder?: boolean
 	actions: ActionType[]
-  displayFields: DisplayFieldType[]
-  fields?: FormFieldType[]
+	displayFields: DisplayFieldType[]
+	fields?: FormFieldType[]
 	fieldName?: string
 	url?: string
 	resource: any
 	enableEdit?: boolean
 	enableCreate?: boolean
-  enableFavorites?: boolean
-  enableLikes?: boolean
-  enableSharing?: boolean
-  enableBuyNow?: boolean
-  enableStripePaymentLink?: boolean
+	enableFavorites?: boolean
+	enableLikes?: boolean
+	enableSharing?: boolean
+	enableBuyNow?: boolean
+	enableStripePaymentLink?: boolean
 	handleEdit?: () => void
 }
 
@@ -42,7 +42,7 @@ type HeroStyleTypes =
 	| 'vimeo'
 
 export type HeroItemProps = HeroProps & {
-  fieldName: string
+	fieldName: string
 	fields?: FormFieldType[]
 	url: string
 	style: HeroStyleTypes
@@ -55,21 +55,21 @@ const Hero: React.FC<HeroItemProps> = (props) => {
 		style = 'article',
 		resource: _resource,
 		fields,
-    displayFields=[],
+		displayFields = [],
 		fieldName,
 		url,
 		actions,
 		enableBorder,
 		enableEdit,
-    enableFavorites,
-    enableLikes,
-    enableSharing,
-    enableBuyNow,
-    enableStripePaymentLink
+		enableFavorites,
+		enableLikes,
+		enableSharing,
+		enableBuyNow,
+		enableStripePaymentLink,
 	} = props || {}
 
-  const { setAuthOpen } = useContext(AppContext)
-  const { currentUser } = useAuth()
+	const { setAuthOpen } = useContext(AppContext)
+	const { currentUser } = useAuth()
 
 	const {
 		delayedLoading: loading,
@@ -81,7 +81,7 @@ const Hero: React.FC<HeroItemProps> = (props) => {
 		removeAttachment,
 		handleDataChange,
 	} = useDocuments({
-		url
+		url,
 	})
 
 	const handleRemove = async (name) => {
@@ -91,12 +91,12 @@ const Hero: React.FC<HeroItemProps> = (props) => {
 	const [openModal, setOpenModal] = useState(false)
 
 	const handleEdit = () => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		setOpenModal(true)
 	}
 
 	const handleSubmit = async () => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		try {
 			let resp
 			if (resource?.id) {
@@ -113,11 +113,11 @@ const Hero: React.FC<HeroItemProps> = (props) => {
 	}
 
 	const components = {
-    article: Article,
-    event: Event,
-		product: Product,		
+		article: Article,
+		event: Event,
+		product: Product,
 		profile: Profile,
-    place: Place,
+		place: Place,
 		document: Document,
 		youtube: YouTubeVideo,
 		vimeo: VimeoEmbed,
@@ -137,16 +137,16 @@ const Hero: React.FC<HeroItemProps> = (props) => {
 				<Component
 					fieldName={fieldName}
 					resource={resource}
-					actions={actions}    
-          displayFields={displayFields}          
+					actions={actions}
+					displayFields={displayFields}
 					enableBorder={enableBorder}
 					enableEdit={enableEdit}
 					handleEdit={handleEdit}
-          enableFavorites={enableFavorites}
-          enableLikes={enableLikes}
-          enableSharing={enableSharing}   
-          enableBuyNow={enableBuyNow}
-          enableStripePaymentLink={enableStripePaymentLink}       
+					enableFavorites={enableFavorites}
+					enableLikes={enableLikes}
+					enableSharing={enableSharing}
+					enableBuyNow={enableBuyNow}
+					enableStripePaymentLink={enableStripePaymentLink}
 				/>
 			)}
 			<Drawer

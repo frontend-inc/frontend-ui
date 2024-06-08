@@ -8,11 +8,11 @@ type CollectionCardProps = {
 	actions: ActionType[]
 	variant: 'list' | 'grid'
 	style: CardStyleTypes
-  displayFields: DisplayFieldType[]
+	displayFields: DisplayFieldType[]
 	resource: any & {
 		label?: string
 		title?: string
-    subtitle?: string
+		subtitle?: string
 		image?: string
 		video?: string
 		description: string
@@ -28,7 +28,7 @@ type CollectionCardProps = {
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
-  enableFavorites?: boolean
+	enableFavorites?: boolean
 }
 
 const CollectionCard: React.FC<CollectionCardProps> = (props) => {
@@ -41,11 +41,11 @@ const CollectionCard: React.FC<CollectionCardProps> = (props) => {
 		chip: Chip,
 		text: TextCard,
 		image: ImageCard,
-	}    
+	}
 
 	let Component = COMPONENTS[style] || Card
 
-return <Component variant={variant} {...rest} />
+	return <Component variant={variant} {...rest} />
 }
 
 export default CollectionCard

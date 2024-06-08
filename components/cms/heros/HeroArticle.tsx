@@ -1,18 +1,38 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
-import { DisplayFields, BuyNowButton, StripePaymentLink, SocialButtons, Actions, Image } from '../..'
+import {
+	DisplayFields,
+	BuyNowButton,
+	StripePaymentLink,
+	SocialButtons,
+	Actions,
+	Image,
+} from '../..'
 import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
 type HeroArticleProps = HeroProps & {
-  disableImage?: boolean
-  direction?: 'column' | 'column-reverse'
+	disableImage?: boolean
+	direction?: 'column' | 'column-reverse'
 }
 
 const HeroArticle: React.FC<HeroArticleProps> = (props) => {
-	const { actions, displayFields=[], direction='column', resource, disableImage=false, enableBorder, enableEdit, handleEdit, enableFavorites, enableLikes, enableSharing, enableBuyNow, enableStripePaymentLink } =
-		props || {}
+	const {
+		actions,
+		displayFields = [],
+		direction = 'column',
+		resource,
+		disableImage = false,
+		enableBorder,
+		enableEdit,
+		handleEdit,
+		enableFavorites,
+		enableLikes,
+		enableSharing,
+		enableBuyNow,
+		enableStripePaymentLink,
+	} = props || {}
 	const { label, title, image, description } = resource || {}
 	return (
 		<Stack
@@ -22,75 +42,72 @@ const HeroArticle: React.FC<HeroArticleProps> = (props) => {
 			}}
 			spacing={4}
 		>
-      {(actions || enableEdit) && (
-        <Box
-          pt={enableBorder ? 4 : 0 }
-          sx={sx.actions}
-        >
-          <Actions
-            actions={buildActions({
-              enableEdit,
-              handleEdit,
-              actions,
-            })}
-            numVisible={4}
-            resource={flattenDocument(resource)}
-            justifyContent="center"
-          />
-        </Box>
-      )}
-      { (!disableImage && direction == 'column-reverse') && (
-        <Box sx={ sx.imageContainer }>
-          <Image
-            src={image?.url}
-            alt={title}
-            height={400}
-            label={label}
-            disableBorderRadius={enableBorder}        
-          />
-        </Box>
-      )}  
-			<Stack spacing={3} sx={sx.header}>        
+			{(actions || enableEdit) && (
+				<Box pt={enableBorder ? 4 : 0} sx={sx.actions}>
+					<Actions
+						actions={buildActions({
+							enableEdit,
+							handleEdit,
+							actions,
+						})}
+						numVisible={4}
+						resource={flattenDocument(resource)}
+						justifyContent="center"
+					/>
+				</Box>
+			)}
+			{!disableImage && direction == 'column-reverse' && (
+				<Box sx={sx.imageContainer}>
+					<Image
+						src={image?.url}
+						alt={title}
+						height={400}
+						label={label}
+						disableBorderRadius={enableBorder}
+					/>
+				</Box>
+			)}
+			<Stack spacing={3} sx={sx.header}>
 				<Typography color="text.primary" variant="h3">
 					{title}
-				</Typography>  
-        <DisplayFields 
-          alignItems='center'
-          fields={displayFields}
-          resource={resource} 
-        />          
-        { enableBuyNow && (
-          <BuyNowButton             
-            resource={resource}
-            buttonText="Buy Now"              
-            justifyContent='center'
-          />          
-        )}
-        { enableStripePaymentLink && (
-          <StripePaymentLink 
-            resource={resource}
-            buttonText="Checkout" 
-            justifyContent='center'             
-          />          
-        )}				
+				</Typography>
+				<DisplayFields
+					alignItems="center"
+					fields={displayFields}
+					resource={resource}
+				/>
+				{enableBuyNow && (
+					<BuyNowButton
+						resource={resource}
+						buttonText="Buy Now"
+						justifyContent="center"
+					/>
+				)}
+				{enableStripePaymentLink && (
+					<StripePaymentLink
+						resource={resource}
+						buttonText="Checkout"
+						justifyContent="center"
+					/>
+				)}
 			</Stack>
-      { (!disableImage && direction == 'column') && (
-        <Box sx={ sx.imageContainer }>
-          <Image
-            src={image?.url}
-            alt={title}
-            height={400}
-            label={label}
-            disableBorderRadius={enableBorder}        
-          />
-        </Box>
-      )}          
-      <SocialButtons 
-        handle={resource?.handle}
-        enableLikes={enableLikes}
-        enableFavorites={enableFavorites}
-        enableSharing={enableSharing}
-      />
+			{!disableImage && direction == 'column' && (
+				<Box sx={sx.imageContainer}>
+					<Image
+						src={image?.url}
+						alt={title}
+						height={400}
+						label={label}
+						disableBorderRadius={enableBorder}
+					/>
+				</Box>
+			)}
+			<SocialButtons
+				handle={resource?.handle}
+				enableLikes={enableLikes}
+				enableFavorites={enableFavorites}
+				enableSharing={enableSharing}
+			/>
 			<Box sx={sx.content}>
 				<Typography variant="body1" color="text.primary" sx={sx.text}>
 					{description}
@@ -111,7 +128,7 @@ const sx = {
 	rootBorder: {
 		border: '1px solid',
 		borderColor: 'divider',
-    pb: 2
+		pb: 2,
 	},
 	header: {
 		maxWidth: 500,
@@ -139,8 +156,8 @@ const sx = {
 			xs: '100%',
 		},
 	},
-  imageContainer: {
-    width: '100%',
-    borderRadius: 1,
-  }
+	imageContainer: {
+		width: '100%',
+		borderRadius: 1,
+	},
 }

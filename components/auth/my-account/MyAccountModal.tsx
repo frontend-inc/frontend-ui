@@ -88,9 +88,7 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 						handleCancel={() => setCurrentTab(2)}
 					/>
 				)}
-				{currentTab == 4 && (
-					<CreditCards />
-				)}
+				{currentTab == 4 && <CreditCards />}
 				{currentTab == 6 && <SubscriptionPlans />}
 			</Box>
 		</Modal>

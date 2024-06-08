@@ -1,7 +1,14 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Box, Stack, Typography } from '@mui/material'
-import { DisplayFields, FavoriteButton, Image, Icon, TouchableOpacity, Actions } from '../../..'
+import {
+	DisplayFields,
+	FavoriteButton,
+	Image,
+	Icon,
+	TouchableOpacity,
+	Actions,
+} from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
@@ -10,7 +17,7 @@ const CoverList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		resource,
-    displayFields=[],
+		displayFields = [],
 		actions,
 		icon,
 		href,
@@ -20,7 +27,7 @@ const CoverList: React.FC<CardProps> = (props) => {
 		height = 240,
 		enableGradient = false,
 		enableOverlay = false,
-    enableFavorites = false,
+		enableFavorites = false,
 	} = props || {}
 
 	const { label, title, image } = resource || {}
@@ -58,20 +65,16 @@ const CoverList: React.FC<CardProps> = (props) => {
 						<Typography color="common.white" variant={textVariant}>
 							{truncate(title, 40)}
 						</Typography>
-						<DisplayFields 
-              fields={displayFields}
-              resource={resource}
-              color="common.white"
-            />
+						<DisplayFields
+							fields={displayFields}
+							resource={resource}
+							color="common.white"
+						/>
 					</Box>
 				</Stack>
 			</Stack>
 			<Box sx={sx.actions}>
-        {enableFavorites && (
-          <FavoriteButton
-            handle={resource?.handle}
-          />
-        )}
+				{enableFavorites && <FavoriteButton handle={resource?.handle} />}
 				<Actions
 					numVisible={0}
 					resource={resource}
@@ -120,8 +123,8 @@ const sx = {
 		alignItems: 'flex-start',
 	},
 	actions: {
-    display: 'flex',
-    flexDirection: 'row',    
+		display: 'flex',
+		flexDirection: 'row',
 		position: 'absolute',
 		top: 0,
 		right: 10,

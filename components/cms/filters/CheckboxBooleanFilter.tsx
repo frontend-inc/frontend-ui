@@ -52,9 +52,9 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 					option={option}
 					handleClick={() =>
 						handleClick({
-              field,
+							field,
 							where: 'OR',
-							operator: option.operator,							
+							operator: option.operator,
 							value: option.value,
 						})
 					}

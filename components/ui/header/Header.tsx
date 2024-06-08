@@ -13,7 +13,7 @@ type HeaderProps = {
 	mode?: 'accent' | 'light' | 'dark'
 	logo?: string
 	enableAuth?: boolean
-  enableStripe?: boolean
+	enableStripe?: boolean
 	enableShopify?: boolean
 	enableNotifications?: boolean
 	bgcolor?: string
@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 		menuItems,
 		handleClick,
 		enableAuth = false,
-    enableStripe = false,
+		enableStripe = false,
 		enableShopify = false,
 		enableNotifications = false,
 	} = props
@@ -46,7 +46,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 					editing={editing}
 					logo={logo}
 					enableAuth={enableAuth}
-          enableStripe={enableStripe}
+					enableStripe={enableStripe}
 					enableShopify={enableShopify}
 					enableNotifications={enableNotifications}
 					menuItems={menuItems}
@@ -57,7 +57,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 					editing={editing}
 					logo={logo}
 					enableAuth={enableAuth}
-          enableStripe={enableStripe}
+					enableStripe={enableStripe}
 					enableShopify={enableShopify}
 					enableNotifications={enableNotifications}
 					menuItems={menuItems}
@@ -75,7 +75,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 			<MobileDrawer
 				editing={editing}
 				enableAuth={enableAuth}
-        enableStripe={enableStripe}
+				enableStripe={enableStripe}
 				enableShopify={enableShopify}
 				menuItems={menuItems}
 				handleClick={handleClick}

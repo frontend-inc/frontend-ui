@@ -7,7 +7,7 @@ type FieldURLProps = {
 	handleClick?: () => void
 	label?: string
 	rest?: any
-  color?: string
+	color?: string
 }
 
 const FieldURL: React.FC<FieldURLProps> = (props) => {

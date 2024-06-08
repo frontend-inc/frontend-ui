@@ -77,7 +77,7 @@ const Resource: React.FC<ResourceProps> = (props) => {
 						</ListItemIcon>
 					)}
 					<ListItemText
-						primary={ title }						
+						primary={title}
 						secondary={
 							<Typography variant="body2" color="text.secondary">
 								{description}

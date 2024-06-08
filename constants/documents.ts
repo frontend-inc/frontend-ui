@@ -7,7 +7,7 @@ export const ATTACHMENT_FIELDS = ['image', 'video', 'file']
 export const SYSTEM_FIELDS = [
 	'id',
 	'title',
-  'subtitle',
+	'subtitle',
 	'description',
 	'handle',
 	'user_id',
@@ -16,7 +16,7 @@ export const SYSTEM_FIELDS = [
 	'shopify_handle',
 	'published',
 	'locale',
-  'location',
+	'location',
 	'tags',
 	'habtm',
 	'image',
@@ -80,7 +80,6 @@ export const SUBTITLE_FIELD: FieldBase = {
 	editable: true,
 }
 
-
 export const PUBLISHED_FIELD: FieldBase = {
 	label: 'Published',
 	variant: 'boolean',
@@ -137,7 +136,7 @@ export const DEFAULT_FIELDS: FieldBase[] = [
 	ID_FIELD,
 	HANDLE_FIELD,
 	TITLE_FIELD,
-  SUBTITLE_FIELD,
+	SUBTITLE_FIELD,
 	PUBLISHED_FIELD,
 	LOCALE_FIELD,
 	TAGS_FIELD,

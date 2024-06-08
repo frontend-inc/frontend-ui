@@ -27,7 +27,7 @@ export { default as VideoModal } from '../cms/video/VideoModal'
 export { default as VideoPlayer } from '../cms/video/VideoPlayer'
 export { default as SearchFilters } from '../cms/filters/SearchFilters'
 
-// Show 
+// Show
 export { default as Hero } from './heros/Hero'
 export { default as HeroArticle } from './heros/HeroArticle'
 export { default as HeroEvent } from './heros/HeroEvent'
@@ -50,6 +50,5 @@ export { default as ResourceList } from './resources/ResourceList'
 export { default as ResourceListItem } from './resources/ResourceListItem'
 export { default as ResourceTable } from './resources/ResourceTable'
 
-
-// Details 
+// Details
 export { default as Details } from './details/Details'

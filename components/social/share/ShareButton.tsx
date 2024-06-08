@@ -1,22 +1,16 @@
 import React, { useState } from 'react'
-import {
-	Box,
-	IconButton,
-  Stack,
-  Typography
-} from '@mui/material'
+import { Box, IconButton, Stack, Typography } from '@mui/material'
 import { useAlerts } from '../../../hooks'
 import { Modal, SocialIcon } from '../..'
 import { IosShare } from '@mui/icons-material'
 
-
 type ShareButtonProps = {
 	url: string
-  variant?: 'icon' | 'button'
+	variant?: 'icon' | 'button'
 }
 
 const ShareButton: React.FC<ShareButtonProps> = (props) => {
-	const { url, variant='icon' } = props
+	const { url, variant = 'icon' } = props
 	const [open, setOpen] = useState(false)
 
 	const SOCIAL_PLATFORMS = [
@@ -64,42 +58,37 @@ const ShareButton: React.FC<ShareButtonProps> = (props) => {
 
 	return (
 		<Box>
-      { variant == 'icon' ? (
-        <IconButton 
-          sx={ sx.iconButton }
-          onClick={handleClick}>
-          <IosShare fontSize="small" />
-        </IconButton>
-      ):(
-        <IconButton 
-          sx={ sx.button }
-          onClick={handleClick}          
-        >
-          <IosShare fontSize="small" />
-        </IconButton>
-      )}
+			{variant == 'icon' ? (
+				<IconButton sx={sx.iconButton} onClick={handleClick}>
+					<IosShare fontSize="small" />
+				</IconButton>
+			) : (
+				<IconButton sx={sx.button} onClick={handleClick}>
+					<IosShare fontSize="small" />
+				</IconButton>
+			)}
 			<Modal open={open} handleClose={() => setOpen(false)}>
-        <Box p={4}>
-        <Stack spacing={2}>
-          <Box width='100%'>
-            <Typography sx={ sx.text } color='text.primary' variant='subtitle1'>
-              Share to social media 
-            </Typography>
-            <Typography sx={ sx.text } color='text.secondary' variant='body1'>
-              Select your social media platform
-            </Typography>
-          </Box>
-          <Stack direction="row" spacing={1} sx={ sx.socialButtons }>
-            {SOCIAL_PLATFORMS.map((platform, index) => (            
-              <SocialIcon   
-                key={index}                  
-                provider={platform.value} 
-                handleClick={() => handleShareClick(platform.value)}
-              />            
-            ))}
-          </Stack>
-        </Stack>
-        </Box>
+				<Box p={4}>
+					<Stack spacing={2}>
+						<Box width="100%">
+							<Typography sx={sx.text} color="text.primary" variant="subtitle1">
+								Share to social media
+							</Typography>
+							<Typography sx={sx.text} color="text.secondary" variant="body1">
+								Select your social media platform
+							</Typography>
+						</Box>
+						<Stack direction="row" spacing={1} sx={sx.socialButtons}>
+							{SOCIAL_PLATFORMS.map((platform, index) => (
+								<SocialIcon
+									key={index}
+									provider={platform.value}
+									handleClick={() => handleShareClick(platform.value)}
+								/>
+							))}
+						</Stack>
+					</Stack>
+				</Box>
 			</Modal>
 		</Box>
 	)
@@ -108,23 +97,23 @@ const ShareButton: React.FC<ShareButtonProps> = (props) => {
 export default ShareButton
 
 const sx = {
-  iconButton: {
-    border: '1px solid',
-    borderColor: 'primary.main',
-    color: 'primary.main'
-  },
-  button: {
-    border: '1px solid',
-    borderColor: 'primary.main',
-    color: 'primary.main'
-  },
+	iconButton: {
+		border: '1px solid',
+		borderColor: 'primary.main',
+		color: 'primary.main',
+	},
+	button: {
+		border: '1px solid',
+		borderColor: 'primary.main',
+		color: 'primary.main',
+	},
 	socialButtons: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  text: {
-    width: '100%',
-    textAlign: 'center'
-  }
+		width: '100%',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	text: {
+		width: '100%',
+		textAlign: 'center',
+	},
 }

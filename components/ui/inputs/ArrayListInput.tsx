@@ -31,11 +31,11 @@ const ArrayItemInput: React.FC<ArrayItemInputProps> = (props) => {
 				//@ts-ignore
 				handleChange={handleInputChange}
 			/>
-      <Box>
-        <IconButton size="small" onClick={() => handleRemove(index)}>
-          <X size={20} />
-        </IconButton>
-      </Box>
+			<Box>
+				<IconButton size="small" onClick={() => handleRemove(index)}>
+					<X size={20} />
+				</IconButton>
+			</Box>
 		</Stack>
 	)
 }
@@ -82,22 +82,23 @@ const ArrayListInput: React.FC<InputPropsType> = (props) => {
 					{label}
 				</Typography>
 			)}
-			{Array.isArray(values) && values?.map((value, index) => (
-				<ArrayItemInput
-					key={index}
-					index={index}
-					value={value}
-					handleChange={handleInputChange}
-					handleRemove={handleRemove}
-				/>
-			))}
+			{Array.isArray(values) &&
+				values?.map((value, index) => (
+					<ArrayItemInput
+						key={index}
+						index={index}
+						value={value}
+						handleChange={handleInputChange}
+						handleRemove={handleRemove}
+					/>
+				))}
 			<Box>
-				<Button 
-          variant="contained"
-          color="secondary"
-          onClick={handleAddClick} 
-          startIcon={<Plus size={20} />}
-        >
+				<Button
+					variant="contained"
+					color="secondary"
+					onClick={handleAddClick}
+					startIcon={<Plus size={20} />}
+				>
 					Add
 				</Button>
 			</Box>

@@ -6,7 +6,7 @@ import { Plus, Search } from 'lucide-react'
 import {
 	TableFilterInputs,
 	TableFilterKeywordsInput,
-	TableFilterSortInput,  
+	TableFilterSortInput,
 } from '../../..'
 import { OptionType } from '../../../../types'
 
@@ -179,7 +179,7 @@ const TableFilterForm: React.FC<TableFilterFormProps> = (props) => {
 					sortBy={query?.sort_by}
 					sortDirection={query?.sort_direction}
 				/>
-			</Box>      
+			</Box>
 			<TableFilterInputs
 				filters={activeFilters}
 				fieldOptions={filterOptions}

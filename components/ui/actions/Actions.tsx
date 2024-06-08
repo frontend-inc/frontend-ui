@@ -24,20 +24,20 @@ const Actions: React.FC<ActionsProps> = (props) => {
 			direction="row"
 			spacing={0}
 		>
-      { actions?.slice(0, numVisible)?.length > 0 && (
-			<Stack
-				sx={{
-					...sx.buttons,
-					justifyContent,
-				}}
-				direction={{ sm: 'row', xs: 'column' }}
-				spacing={1}
-			>
-				{actions?.slice(0, numVisible)?.map((action, index) => (
-					<ActionButton key={index} action={action} resource={resource} />
-				))}
-			</Stack>
-      )}
+			{actions?.slice(0, numVisible)?.length > 0 && (
+				<Stack
+					sx={{
+						...sx.buttons,
+						justifyContent,
+					}}
+					direction={{ sm: 'row', xs: 'column' }}
+					spacing={1}
+				>
+					{actions?.slice(0, numVisible)?.map((action, index) => (
+						<ActionButton key={index} action={action} resource={resource} />
+					))}
+				</Stack>
+			)}
 			{actions?.length > numVisible && (
 				<MenuButton color={color}>
 					{actions?.slice(numVisible, actions.length)?.map((action, index) => (

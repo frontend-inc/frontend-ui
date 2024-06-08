@@ -17,4 +17,3 @@ export { default as CmsYouTube } from './CmsYouTube'
 export { default as CmsGoogleMap } from './addons/CmsGoogleMap'
 export { default as CmsCalendly } from './addons/CmsCalendly'
 export { default as CmsShopifyProduct } from './addons/CmsShopifyProduct'
-

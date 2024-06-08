@@ -3,18 +3,13 @@ import { Box } from '@mui/material'
 
 type NoImageProps = {
 	height?: number
-	width?: number	
+	width?: number
 	disableBorder?: boolean
 	disableBorderRadius?: boolean
 }
 
 const NoImage: React.FC<NoImageProps> = (props) => {
-	const {
-		height = 100,
-		width,
-		disableBorder,
-		disableBorderRadius,
-	} = props
+	const { height = 100, width, disableBorder, disableBorderRadius } = props
 
 	return (
 		<Box
@@ -39,7 +34,7 @@ const sx = {
 		border: '1px solid',
 		borderColor: 'divider',
 		borderRadius: 1,
-    backgroundImage: 'linear-gradient(45deg, #666666, #222222,#000000)',
+		backgroundImage: 'linear-gradient(45deg, #666666, #222222,#000000)',
 	},
 	disableBorder: {
 		border: 'none',

@@ -63,8 +63,8 @@ const sx = {
 		gap: '10px',
 	},
 	button: {
-    p: 0,
-    overflow: 'hidden',
+		p: 0,
+		overflow: 'hidden',
 		border: '3px solid transparent',
 		'&:hover': {
 			bgcolor: 'transparent',
@@ -72,7 +72,7 @@ const sx = {
 		},
 	},
 	activeButton: {
-		opacity: 1,		
+		opacity: 1,
 		borderColor: 'primary.main',
 	},
 }

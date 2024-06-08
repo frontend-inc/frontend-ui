@@ -7,11 +7,11 @@ type FieldFileProps = {
 	handleClick?: () => void
 	label?: string
 	rest?: any
-  color?: string
+	color?: string
 }
 
 const FieldFile: React.FC<FieldFileProps> = (props) => {
-	const { value, label, color='text.secondary', handleClick, ...rest } = props
+	const { value, label, color = 'text.secondary', handleClick, ...rest } = props
 	return (
 		<FieldWrapper label={label} color={color} {...rest}>
 			<Stack direction="row" spacing={1}>

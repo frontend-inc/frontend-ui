@@ -11,7 +11,7 @@ const useFilters = (props: UseFiltersProps) => {
 	const [showFilterModal, setShowFilterModal] = useState(false)
 
 	const [filter, setFilter] = useState()
-  const [queryFilters, setQueryFilters] = useState({})
+	const [queryFilters, setQueryFilters] = useState({})
 	const [activeFilters, setActiveFilters] = useState([])
 
 	const handleOpenFilterModal = () => {
@@ -78,31 +78,25 @@ const useFilters = (props: UseFiltersProps) => {
 		)
 	}
 
-  const mergeFilters = (filters, newFilters) => {
-    if(!filters) return newFilters;
-    if(!newFilters) return filters;    
-    let mergedFilters = { 
-      AND: [
-        ...(filters?.AND || []),
-        ...(newFilters?.AND || [])
-      ],
-      OR: [
-        ...(filters.OR || []),
-        ...(newFilters.OR || [])
-      ]
-    }
-    return mergedFilters
-  }
+	const mergeFilters = (filters, newFilters) => {
+		if (!filters) return newFilters
+		if (!newFilters) return filters
+		let mergedFilters = {
+			AND: [...(filters?.AND || []), ...(newFilters?.AND || [])],
+			OR: [...(filters.OR || []), ...(newFilters.OR || [])],
+		}
+		return mergedFilters
+	}
 
-  const mergeAllFilters = (filters) => {
-    if (filters.length === 0) {
-      return {};
-    }
-    
-    return filters.reduce((mergedFilter, currentFilter) => {
-      return mergeFilters(mergedFilter, currentFilter);
-    }, {});
-  }  
+	const mergeAllFilters = (filters) => {
+		if (filters.length === 0) {
+			return {}
+		}
+
+		return filters.reduce((mergedFilter, currentFilter) => {
+			return mergeFilters(mergedFilter, currentFilter)
+		}, {})
+	}
 
 	const buildQueryFilters = (activeFilters) => {
 		let filters = {}
@@ -129,9 +123,9 @@ const useFilters = (props: UseFiltersProps) => {
 		return filters
 	}
 
-  useEffect(() => {
-    setQueryFilters(buildQueryFilters(activeFilters))
-  }, [activeFilters])
+	useEffect(() => {
+		setQueryFilters(buildQueryFilters(activeFilters))
+	}, [activeFilters])
 
 	// Convert the query object into an array of filter options
 	const formatFilterArray = (filters) => {
@@ -155,14 +149,18 @@ const useFilters = (props: UseFiltersProps) => {
 		}
 		return formattedFilters
 	}
-  const buildUserFilters = (currentUser, filterUser, filterTeam) => {
-    return {
-      AND: [
-        ...(filterUser && currentUser?.id ? [{ user_id: { eq: currentUser?.id }}] : []),
-        ...(filterTeam && currentUser?.team_id ? [{ team_id: { eq: currentUser?.team_id }}] : [])
-      ]
-    }    
-  }
+	const buildUserFilters = (currentUser, filterUser, filterTeam) => {
+		return {
+			AND: [
+				...(filterUser && currentUser?.id
+					? [{ user_id: { eq: currentUser?.id } }]
+					: []),
+				...(filterTeam && currentUser?.team_id
+					? [{ team_id: { eq: currentUser?.team_id } }]
+					: []),
+			],
+		}
+	}
 
 	useEffect(() => {
 		if (query?.filters?.length >= 0) {
@@ -178,14 +176,14 @@ const useFilters = (props: UseFiltersProps) => {
 		handleOpenFilterModal,
 		handleCloseFilterModal,
 		handleAddFilter,
-    queryFilters,
+		queryFilters,
 		activeFilters,
 		setActiveFilters,
 		findDuplicateFilter,
 		findDuplicateFilterIndex,
-    mergeFilters,
-    mergeAllFilters,
-    buildUserFilters,
+		mergeFilters,
+		mergeAllFilters,
+		buildUserFilters,
 		buildQueryFilters,
 	}
 }

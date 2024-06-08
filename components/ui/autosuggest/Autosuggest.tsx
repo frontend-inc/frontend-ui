@@ -128,12 +128,12 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 		if (value && typeof value === 'object') {
 			setSelected(value)
 		} else if (value && options?.length > 0) {
-      let option = options.find((option) => option.value == value)
-      if(option) setSelected(option);
+			let option = options.find((option) => option.value == value)
+			if (option) setSelected(option)
 		}
 	}, [value, options])
 
-  return (
+	return (
 		<Stack
 			sx={{
 				...sx.stack,
@@ -273,7 +273,7 @@ const sx: any = {
 		marginRight: '10px',
 	},
 	stack: {
-    width: '100%',
+		width: '100%',
 		alignItems: 'flex-start',
 	},
 	stackVertical: {

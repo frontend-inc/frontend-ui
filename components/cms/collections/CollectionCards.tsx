@@ -7,7 +7,7 @@ import { flattenDocument } from 'frontend-js/helpers'
 
 type CollectionCardsProps = {
 	resources: any
-  displayFields?: DisplayFieldType[]
+	displayFields?: DisplayFieldType[]
 	actions?: ActionType[]
 	variant: 'list' | 'grid'
 	style: 'card' | 'avatar' | 'cover' | 'chip' | 'text' | 'image'
@@ -17,19 +17,18 @@ type CollectionCardsProps = {
 	enableOverlay?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
-  enableFavorites?: boolean
+	enableFavorites?: boolean
 	handleClick: (item: any) => void
 	handleEdit?: (item: any) => void
 	handleDelete?: (item: any) => void
 }
 
 const CollectionCards: React.FC<CollectionCardsProps> = (props) => {
-
-  const handleNull = () => null;
+	const handleNull = () => null
 
 	const {
 		resources,
-    displayFields=[],
+		displayFields = [],
 		actions = [],
 		handleClick,
 		handleEdit = handleNull,
@@ -41,7 +40,7 @@ const CollectionCards: React.FC<CollectionCardsProps> = (props) => {
 		enableOverlay = false,
 		enableEdit = false,
 		enableDelete = false,
-    enableFavorites = false,
+		enableFavorites = false,
 	} = props
 
 	return (
@@ -59,7 +58,7 @@ const CollectionCards: React.FC<CollectionCardsProps> = (props) => {
 						variant={variant}
 						style={style}
 						resource={flattenDocument(resource)}
-            displayFields={displayFields}
+						displayFields={displayFields}
 						handleClick={() => handleClick(resource)}
 						actions={buildActions({
 							enableEdit,
@@ -68,7 +67,7 @@ const CollectionCards: React.FC<CollectionCardsProps> = (props) => {
 							handleDelete: () => handleDelete(resource),
 							actions,
 						})}
-            enableFavorites={enableFavorites}
+						enableFavorites={enableFavorites}
 						enableBorder={enableBorder}
 						enableGradient={enableGradient}
 						enableOverlay={enableOverlay}

@@ -13,21 +13,21 @@ type MobileDrawerProps = {
 	menuItems?: MenuLinkType[]
 	handleClick: (path: string) => void
 	enableAuth?: boolean
-  enableStripe?: boolean
+	enableStripe?: boolean
 	enableShopify?: boolean
 }
 
 const MobileDrawer = (props: MobileDrawerProps) => {
 	const { menuOpen, setMenuOpen } = useContext(AppContext)
 
-	const { 
-    editing, 
-    menuItems, 
-    handleClick, 
-    enableAuth, 
-    enableStripe, 
-    enableShopify 
-  } = props
+	const {
+		editing,
+		menuItems,
+		handleClick,
+		enableAuth,
+		enableStripe,
+		enableShopify,
+	} = props
 
 	const { currentUser } = useAuth()
 	const handleMenuClick = (path: string) => {
@@ -63,9 +63,7 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 								<ShopifyAuth variant="sideNav" />
 							</>
 						)}
-            { enableStripe && (
-              <StripeCustomerPortalButton variant="sideNav" />
-            )}
+						{enableStripe && <StripeCustomerPortalButton variant="sideNav" />}
 						{enableAuth && (
 							<Box sx={sx.divider}>
 								<AuthButton showLabel editing={editing} />

@@ -84,21 +84,21 @@ const CreditCards: React.FC = () => {
 					<List>
 						{!loading &&
 							creditCards?.map((creditCard) => {
-                const selected = creditCard.id == currentUser?.credit_card_id
-                return(
-								<SelectableListItem
-									key={creditCard.id}
-									selected={selected}
-									icon={'CreditCard'}
-									title={creditCard.last4}
-									description={creditCard.brand}
-									handleClick={() => handleClick(creditCard)}
-									handleDelete={
-                    selected ? 
-                      undefined : 
-                      () => handleDeleteClick(creditCard)}
-								/>
-							)})}
+								const selected = creditCard.id == currentUser?.credit_card_id
+								return (
+									<SelectableListItem
+										key={creditCard.id}
+										selected={selected}
+										icon={'CreditCard'}
+										title={creditCard.last4}
+										description={creditCard.brand}
+										handleClick={() => handleClick(creditCard)}
+										handleDelete={
+											selected ? undefined : () => handleDeleteClick(creditCard)
+										}
+									/>
+								)
+							})}
 					</List>
 					{!loading && !creditCards?.length && (
 						<Placeholder
@@ -114,13 +114,13 @@ const CreditCards: React.FC = () => {
 					</Box>
 				</>
 			) : (
-        <Box py={2}>
-          <StripeCreditCard
-            publishableKey={stripePublishableKey}
-            handleSubmit={handleSubmit}
-            handleCancel={() => setIsEditing(false)}
-          />
-        </Box>
+				<Box py={2}>
+					<StripeCreditCard
+						publishableKey={stripePublishableKey}
+						handleSubmit={handleSubmit}
+						handleCancel={() => setIsEditing(false)}
+					/>
+				</Box>
 			)}
 			<AlertModal
 				open={openDeleteModal}

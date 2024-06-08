@@ -86,7 +86,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = (props) => {
 
 	if (!product) return null
 	return (
-		<Stack direction="column" spacing={1} sx={ sx.fullWidth}>
+		<Stack direction="column" spacing={1} sx={sx.fullWidth}>
 			{enableSubscription && (
 				<SubscriptionSelector
 					product={product}
@@ -94,7 +94,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = (props) => {
 					handleChange={handleSellingPlanChange}
 				/>
 			)}
-			<Stack direction="row" spacing={1} sx={ sx.fullWidth}>
+			<Stack direction="row" spacing={1} sx={sx.fullWidth}>
 				{enableQuantity == true && (
 					<QuantitySelector
 						size={size}
@@ -146,7 +146,7 @@ const sx = {
 	addToCartButtonSmall: {
 		height: '40px',
 	},
-  fullWidth: {
-    width: '100%',
-  }
+	fullWidth: {
+		width: '100%',
+	},
 }

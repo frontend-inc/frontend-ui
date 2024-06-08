@@ -13,10 +13,10 @@ type LayoutContainerProps = {
 	notifications: NotificationType[]
 	offsetY?: number
 	offsetX?: number
-  requireAuth?: boolean
-  requireTeam?: boolean
-  requirePaid?: boolean
-  requireAdmin?: boolean
+	requireAuth?: boolean
+	requireTeam?: boolean
+	requirePaid?: boolean
+	requireAdmin?: boolean
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
@@ -27,10 +27,10 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 		notifications,
 		enableSideNav = false,
 		offsetY = 0,
-    requireAuth,
-    requireTeam,
-    requirePaid,
-    requireAdmin,
+		requireAuth,
+		requireTeam,
+		requirePaid,
+		requireAdmin,
 	} = props
 
 	const [enableNotifications, setEnableNotifications] = useState(false)
@@ -70,15 +70,15 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 					}}
 				>
 					<LayoutScroll>
-            <AuthGuard
-              requireAuth={requireAuth}
-              requirePaid={requirePaid}
-              requireTeam={requireTeam}
-              requireAdmin={requireAdmin}              
-            >
-              {children}
-              {footer}
-            </AuthGuard>
+						<AuthGuard
+							requireAuth={requireAuth}
+							requirePaid={requirePaid}
+							requireTeam={requireTeam}
+							requireAdmin={requireAdmin}
+						>
+							{children}
+							{footer}
+						</AuthGuard>
 					</LayoutScroll>
 				</Box>
 			</Box>
@@ -118,14 +118,14 @@ const sx = {
 		flexDirection: 'column',
 		width: '100%',
 	},
-  contentNotifications: {
+	contentNotifications: {
 		pb: '45px',
 	},
 	contentSideNav: {
-    pt: {
-      md: 0,
-      sm: '60px',
-    },
+		pt: {
+			md: 0,
+			sm: '60px',
+		},
 		width: {
 			md: 'calc(100% - 280px)',
 			xs: '100%',

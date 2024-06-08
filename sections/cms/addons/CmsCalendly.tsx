@@ -8,10 +8,10 @@ type CmsCalendlyProps = SectionProps & HeadingProps & AddonCalendlyProps
 
 const CmsCalendly: React.FC<CmsCalendlyProps> = (props) => {
 	const {
-    label,
-    title,
-    description,
-    textAlign,
+		label,
+		title,
+		description,
+		textAlign,
 		bgcolor,
 		py,
 		px,
@@ -34,7 +34,7 @@ const CmsCalendly: React.FC<CmsCalendlyProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Heading
+			<Heading
 				label={label}
 				title={title}
 				description={description}

@@ -6,7 +6,7 @@ type FieldVideoProps = {
 	handleClick?: (item: any) => void
 	label?: string
 	rest?: any
-  color?: string
+	color?: string
 }
 
 const FieldVideo: React.FC<FieldVideoProps> = (props) => {

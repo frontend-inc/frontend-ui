@@ -23,27 +23,27 @@ type PriceCardProps = {
 const PriceCard: React.FC<PriceCardProps> = (props) => {
 	const router = useRouter()
 
-  const { setAuthOpen } = useContext(AppContext) as any 
-	
-  const { price } = props
+	const { setAuthOpen } = useContext(AppContext) as any
 
-  const { currentUser } = useAuth()
+	const { price } = props
+
+	const { currentUser } = useAuth()
 
 	const handleClick = () => {
-    if(!currentUser) {
-      setAuthOpen(true)
-      return
-    }
-    if(!price.url) return;
-    switch(price?.price_type) {
-      case 'stripe_payment_link':        
-        let url = `${price.stripe_payment_url}?client_reference_id=${currentUser.id}&email=${currentUser.email}`
-        window.open(url, '_blank')
-        break;
-      case 'url': 
-        router.push(price.url)
-        break;
-    }		
+		if (!currentUser) {
+			setAuthOpen(true)
+			return
+		}
+		if (!price.url) return
+		switch (price?.price_type) {
+			case 'stripe_payment_link':
+				let url = `${price.stripe_payment_url}?client_reference_id=${currentUser.id}&email=${currentUser.email}`
+				window.open(url, '_blank')
+				break
+			case 'url':
+				router.push(price.url)
+				break
+		}
 	}
 
 	return (
@@ -58,10 +58,10 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
 					{price.title}
 				</Typography>
 				<Typography variant="h5" color="text.primary">
-					{formatCurrency(price.price, 0)} 
-          {(price.recurring && price.recurring_rate) && (
-            `/${price.recurring_rate}`
-          )}
+					{formatCurrency(price.price, 0)}
+					{price.recurring &&
+						price.recurring_rate &&
+						`/${price.recurring_rate}`}
 				</Typography>
 				<Divider />
 				<List disablePadding>

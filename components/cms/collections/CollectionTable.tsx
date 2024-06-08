@@ -27,7 +27,7 @@ export type CollectionTableProps = CollectionListProps & {
 const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl, setAuthOpen } = useContext(AppContext)
-  const { currentUser } = useAuth()
+	const { currentUser } = useAuth()
 
 	const {
 		url,
@@ -44,11 +44,11 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		enableEdit = false,
 		enableCreate = false,
 		enableDelete = false,
-    filterUser = false,
-    filterTeam = false,
-    emptyIcon,
-    emptyTitle='No results found',
-    emptyDescription='Try adjusting your search or filters.',
+		filterUser = false,
+		filterTeam = false,
+		emptyIcon,
+		emptyTitle = 'No results found',
+		emptyDescription = 'Try adjusting your search or filters.',
 	} = props
 
 	const [openModal, setOpenModal] = useState(false)
@@ -64,7 +64,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		update,
 		create,
 		destroy,
-    handleDataChange,
+		handleDataChange,
 		query,
 		findMany,
 		reloadMany,
@@ -75,7 +75,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		totalCount,
 		paginate,
 	} = useDocuments({
-		url
+		url,
 	})
 
 	const [keywords, setKeywords] = useState('')
@@ -112,12 +112,12 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	}
 
 	const {
-    queryFilters,
+		queryFilters,
 		activeFilters,
 		setActiveFilters,
 		handleAddFilter,
-    mergeAllFilters,	
-    buildUserFilters,	
+		mergeAllFilters,
+		buildUserFilters,
 	} = useFilters({
 		query,
 	})
@@ -126,10 +126,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	const handleClearFilters = () => {
 		setActiveFilters([])
 		findMany({
-			filters: mergeAllFilters([
-        ...defaultQuery.filters,
-        currentUserFilter,
-      ]),
+			filters: mergeAllFilters([...defaultQuery.filters, currentUserFilter]),
 			sort_by: 'id',
 			sort_direction: 'desc',
 			keywords: '',
@@ -151,21 +148,21 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 			router.push(`${clientUrl}${href}/${item?.handle}`)
 		}
 	}
-	
+
 	const handleAdd = () => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		setResource({})
 		setOpenModal(true)
 	}
 
 	const handleEdit = (item) => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		setResource(item)
 		setOpenModal(true)
 	}
 
 	const handleSubmit = async () => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		try {
 			let resp
 			if (resource?.id) {
@@ -184,16 +181,16 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	}
 
 	const handleDeleteClick = (item) => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		setResource(item)
 		setOpenDeleteModal(true)
 	}
 
 	const handleDelete = async () => {
-    if(!currentUser?.id) return setAuthOpen(true);
-    if(resource?.id){
-		  await destroy(resource.id)
-    }
+		if (!currentUser?.id) return setAuthOpen(true)
+		if (resource?.id) {
+			await destroy(resource.id)
+		}
 		setOpenDeleteModal(false)
 		setOpenModal(false)
 		setResource({})
@@ -201,35 +198,40 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	}
 
 	const handleRemove = async (name) => {
-    if(!currentUser?.id) return setAuthOpen(true);
-    if(resource?.id){
-		  await removeAttachment(resource.id, name)
-    }
+		if (!currentUser?.id) return setAuthOpen(true)
+		if (resource?.id) {
+			await removeAttachment(resource.id, name)
+		}
 	}
 
-  const currentUserFilter = buildUserFilters(currentUser, filterUser, filterTeam)
+	const currentUserFilter = buildUserFilters(
+		currentUser,
+		filterUser,
+		filterTeam
+	)
 
 	useEffect(() => {
-		if (url && currentUser) {             
+		if (url && currentUser) {
 			findMany({
 				...defaultQuery,
-        filters: mergeAllFilters([
-          defaultQuery?.filters,
-          currentUserFilter,
-          queryFilters
-        ]),       
+				filters: mergeAllFilters([
+					defaultQuery?.filters,
+					currentUserFilter,
+					queryFilters,
+				]),
 				per_page: perPage,
 			})
 		}
 	}, [
-    url, 
-    perPage, 
-    filterUser,
-    filterTeam,
-    currentUser,
-    queryFilters,
-    defaultQuery,,
-  ])
+		url,
+		perPage,
+		filterUser,
+		filterTeam,
+		currentUser,
+		queryFilters,
+		defaultQuery,
+		,
+	])
 
 	const [rows, setRows] = useState([])
 
@@ -323,9 +325,9 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 							numResults={numResults}
 							totalCount={totalCount}
 							handlePaginate={handlePaginate}
-              emptyIcon={emptyIcon}
-              emptyTitle={emptyTitle}
-              emptyDescription={emptyDescription}
+							emptyIcon={emptyIcon}
+							emptyTitle={emptyTitle}
+							emptyDescription={emptyDescription}
 						/>
 					</Box>
 				</Grid>

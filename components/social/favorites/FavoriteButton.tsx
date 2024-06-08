@@ -7,42 +7,43 @@ import { AppContext } from '../../../context'
 import { Favorite, FavoriteBorder } from '@mui/icons-material'
 
 type FavoriteButtonProps = {
-	handle: string 
-  variant?: 'icon' | 'button'
-  color?: string
-  numFavorites?: number
+	handle: string
+	variant?: 'icon' | 'button'
+	color?: string
+	numFavorites?: number
 }
 
 const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
-	const { handle, variant='icon', color='text.secondary', numFavorites } = props
+	const {
+		handle,
+		variant = 'icon',
+		color = 'text.secondary',
+		numFavorites,
+	} = props
 
 	const { fetchMe, currentUser } = useAuth()
 	const { setAuthOpen } = useContext(AppContext)
 
 	const [isFavorite, setIsFavorite] = useState(false)
 
-	const { 
-    loading, 
-    favorite, 
-    unfavorite 
-  } = useSocial({
-    url: '/api/v1/social' 
-  })
+	const { loading, favorite, unfavorite } = useSocial({
+		url: '/api/v1/social',
+	})
 
 	const handleClick = async (ev) => {
-    ev.stopPropagation();
-    ev.preventDefault();
+		ev.stopPropagation()
+		ev.preventDefault()
 		if (!currentUser?.id) {
 			return setAuthOpen(true)
 		}
 		if (isFavorite) {
 			setIsFavorite(false)
 			await unfavorite(handle)
-      fetchMe()
+			fetchMe()
 		} else {
 			setIsFavorite(true)
 			await favorite(handle)
-      fetchMe()
+			fetchMe()
 		}
 	}
 
@@ -57,65 +58,67 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 	}, [currentUser, handle])
 
 	return (
-    <Box>
-    { variant == 'icon' ? (
-      <IconButton
-        size="small"
-        onClick={handleClick}
-        sx={{          
-          color,
-          '&:hover': {
-            color,
-          },          
-          ...sx.icon,
-          ...(isFavorite && sx.iconFavorited),
-        }}
-      >
-        { isFavorite ? 
-          <Favorite fontSize='small' /> : 
-          <FavoriteBorder fontSize='small' />
-        }
-      </IconButton> 
-    ):(
-      <IconButton
-        sx={{
-          ...sx.button,
-          ...(isFavorite && sx.buttonFavorited),
-        }}        
-        onClick={handleClick}        
-      >
-        { isFavorite ? 
-          <Favorite fontSize='small' /> : 
-          <FavoriteBorder fontSize='small' />
-        }
-      </IconButton>
-    )}
-  </Box>
+		<Box>
+			{variant == 'icon' ? (
+				<IconButton
+					size="small"
+					onClick={handleClick}
+					sx={{
+						color,
+						'&:hover': {
+							color,
+						},
+						...sx.icon,
+						...(isFavorite && sx.iconFavorited),
+					}}
+				>
+					{isFavorite ? (
+						<Favorite fontSize="small" />
+					) : (
+						<FavoriteBorder fontSize="small" />
+					)}
+				</IconButton>
+			) : (
+				<IconButton
+					sx={{
+						...sx.button,
+						...(isFavorite && sx.buttonFavorited),
+					}}
+					onClick={handleClick}
+				>
+					{isFavorite ? (
+						<Favorite fontSize="small" />
+					) : (
+						<FavoriteBorder fontSize="small" />
+					)}
+				</IconButton>
+			)}
+		</Box>
 	)
 }
 
 export default FavoriteButton
 
-const sx = {	
-  icon: {},
+const sx = {
+	icon: {},
 	iconFavorited: {
 		color: 'primary.main',
 		'&:hover': {
 			color: 'primary.dark',
 		},
 	},
-  button: {
-    border: '1px solid',
-    borderColor: 'divider',
-    bgcolor: 'background.main',
-    color: 'text.secondary',
+	button: {
+		border: '1px solid',
+		borderColor: 'divider',
+		bgcolor: 'background.main',
+		color: 'text.secondary',
 		'&:hover': {
-      bgcolor: 'background.main',
+			bgcolor: 'background.main',
 			color: 'text.secondary',
 		},
 	},
 	buttonFavorited: {
-    borderColor: 'primary.main',
+		borderColor: 'primary.main',
 		color: 'primary.main',
 		'&:hover': {
 			color: 'primary.main',

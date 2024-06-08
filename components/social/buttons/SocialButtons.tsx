@@ -8,49 +8,40 @@ type SocialButtonsProps = {
 	handle: string
 	enableLikes?: boolean
 	enableFavorites?: boolean
-  enableSharing?: boolean
-  numLikes?: number
-  numFavorites?: number
+	enableSharing?: boolean
+	numLikes?: number
+	numFavorites?: number
 	justifyContent?: string
 }
 
 const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 	const {
 		handle,
-		enableLikes,		
+		enableLikes,
 		enableFavorites,
-    enableSharing,
-    numLikes,
-    numFavorites,
+		enableSharing,
+		numLikes,
+		numFavorites,
 		justifyContent = 'center',
 	} = props
 
 	const router = useRouter()
 	const currentPageUrl = router.asPath
 
-  if(!enableLikes && !enableFavorites && !enableSharing) return null;
+	if (!enableLikes && !enableFavorites && !enableSharing) return null
 	return (
 		<Stack direction="row" justifyContent={justifyContent} spacing={1}>
 			{enableLikes && (
-        <LikeButton 
-          variant='button' 
-          handle={handle} 
-          numLikes={numLikes}
-        />
-      )}
+				<LikeButton variant="button" handle={handle} numLikes={numLikes} />
+			)}
 			{enableFavorites && (
-        <FavoriteButton 
-          variant='button' 
-          handle={handle} 
-          numFavorites={numFavorites}
-        />
-      )}
-			{enableSharing && (
-        <ShareButton 
-          variant='button' 
-          url={currentPageUrl} 
-        />
-      )}
+				<FavoriteButton
+					variant="button"
+					handle={handle}
+					numFavorites={numFavorites}
+				/>
+			)}
+			{enableSharing && <ShareButton variant="button" url={currentPageUrl} />}
 		</Stack>
 	)
 }

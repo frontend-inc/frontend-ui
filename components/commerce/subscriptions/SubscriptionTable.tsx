@@ -19,7 +19,7 @@ const SubscriptionTable: React.FC = () => {
 
 	const { currentUser, fetchMe } = useAuth()
 
-  const { setCreditCardOpen, setAuthOpen } = useContext(AppContext)
+	const { setCreditCardOpen, setAuthOpen } = useContext(AppContext)
 
 	const [openSubscribeModel, setOpenSubscribeModal] = useState(false)
 	const [openUnsubscribeModal, setOpenUnsubscribeModal] = useState(false)
@@ -48,11 +48,11 @@ const SubscriptionTable: React.FC = () => {
 	}
 
 	const handleSubscribeClick = (subscriptionPlan) => {
-    const { id: userId, stripe_customer_id, credit_card_id } = currentUser || {}
-    if(!userId) return setAuthOpen(true);
-    if(!stripe_customer_id || !credit_card_id){
-      return setCreditCardOpen(true)
-    }
+		const { id: userId, stripe_customer_id, credit_card_id } = currentUser || {}
+		if (!userId) return setAuthOpen(true)
+		if (!stripe_customer_id || !credit_card_id) {
+			return setCreditCardOpen(true)
+		}
 		setActiveSubscriptionTable(subscriptionPlan)
 		setOpenSubscribeModal(true)
 	}
@@ -71,7 +71,7 @@ const SubscriptionTable: React.FC = () => {
 	return (
 		<>
 			<Loading loading={loading} />
-			<Stack sx={ sx.table } direction={{ xs: 'column', sm: 'row'}} spacing={2}>
+			<Stack sx={sx.table} direction={{ xs: 'column', sm: 'row' }} spacing={2}>
 				{!loading &&
 					subscriptionPlans?.map((subscriptionPlan) => {
 						const selected =
@@ -79,11 +79,9 @@ const SubscriptionTable: React.FC = () => {
 						return (
 							<SubscriptionTableCard
 								key={subscriptionPlan.id}
-								selected={selected}                
-                //@ts-ignore 
-								subscriptionPlan={
-                  subscriptionPlan
-                }
+								selected={selected}
+								//@ts-ignore
+								subscriptionPlan={subscriptionPlan}
 								handleClick={() => handleSubscribeClick(subscriptionPlan)}
 							/>
 						)
@@ -96,34 +94,32 @@ const SubscriptionTable: React.FC = () => {
 					description="Subscription plans will appear here."
 				/>
 			)}
-      <Stack 
-        sx={ sx.footerLinks }
-        direction={'row'} 
-        my={2} 
-        spacing={1}
-        divider={ 
-          <Box sx={ sx.divider } />
-        }
-      >        
-        { currentUser?.id && (
-          <Link
-            sx={ sx.cancelLink }
-            color="text.secondary"
-            onClick={() => setCreditCardOpen(true)}
-          >
-            Payment Methods
-          </Link>
-			  )}
-        {!loading && currentUser?.stripe_subscription_id && (
-          <Link
-            sx={ sx.cancelLink }
-            color="text.secondary"
-            onClick={handleUnsubscribeClick}
-          >
-            Cancel Subscription
-          </Link>
-        )}
-      </Stack>
+			<Stack
+				sx={sx.footerLinks}
+				direction={'row'}
+				my={2}
+				spacing={1}
+				divider={<Box sx={sx.divider} />}
+			>
+				{currentUser?.id && (
+					<Link
+						sx={sx.cancelLink}
+						color="text.secondary"
+						onClick={() => setCreditCardOpen(true)}
+					>
+						Payment Methods
+					</Link>
+				)}
+				{!loading && currentUser?.stripe_subscription_id && (
+					<Link
+						sx={sx.cancelLink}
+						color="text.secondary"
+						onClick={handleUnsubscribeClick}
+					>
+						Cancel Subscription
+					</Link>
+				)}
+			</Stack>
 			<AlertModal
 				loading={loading}
 				open={openSubscribeModel}
@@ -147,22 +143,22 @@ const SubscriptionTable: React.FC = () => {
 export default SubscriptionTable
 
 const sx = {
-  table: {
-    width: "100%",
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  cancelLink: {
-    py: 2
-  },
-  footerLinks: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  divider: {
-    height: '100%',
-    borderRight: '1px solid',
-    borderColor: 'divider'
-  }
+	table: {
+		width: '100%',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	cancelLink: {
+		py: 2,
+	},
+	footerLinks: {
+		width: '100%',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	divider: {
+		height: '100%',
+		borderRight: '1px solid',
+		borderColor: 'divider',
+	},
 }

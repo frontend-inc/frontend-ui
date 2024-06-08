@@ -66,7 +66,7 @@ const sx = {
 		width: '100%',
 	},
 	content: {
-    pb: 1,
+		pb: 1,
 		justifyContent: 'space-between',
 		width: '100%',
 	},
@@ -82,5 +82,5 @@ const sx = {
 			sm: 0,
 			xs: 1,
 		},
-	}
+	},
 }

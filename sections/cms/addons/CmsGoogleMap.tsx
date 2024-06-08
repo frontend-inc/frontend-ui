@@ -8,10 +8,10 @@ type CmsGoogleMapProps = SectionProps & HeadingProps & AddonGoogleMapProps
 
 const CmsGoogleMap: React.FC<CmsGoogleMapProps> = (props) => {
 	const {
-    label,
-    title,
-    description,
-    textAlign,
+		label,
+		title,
+		description,
+		textAlign,
 		bgcolor,
 		py,
 		px,
@@ -34,7 +34,7 @@ const CmsGoogleMap: React.FC<CmsGoogleMapProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Heading
+			<Heading
 				label={label}
 				title={title}
 				description={description}

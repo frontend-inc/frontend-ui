@@ -12,7 +12,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
-    displayFields=[],
+		displayFields = [],
 		href,
 		handleClick,
 		objectFit = 'cover',
@@ -20,7 +20,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
-    enableFavorites = false
+		enableFavorites = false,
 	} = props || {}
 
 	const { label, title, image } = resource || {}
@@ -46,17 +46,17 @@ const CardGrid: React.FC<CardProps> = (props) => {
 			}}
 		>
 			<Box sx={sx.imageContainer}>
-        <Image
-          src={image?.url}
-          height={height}
-          objectFit={objectFit}
-          alt={title}
-          label={label}
-          enableGradient={enableGradient}
-          disableBorderRadius={enableBorder}
-          enableOverlay={enableOverlay}            
-          handleClick={handleItemClick}
-        />
+				<Image
+					src={image?.url}
+					height={height}
+					objectFit={objectFit}
+					alt={title}
+					label={label}
+					enableGradient={enableGradient}
+					disableBorderRadius={enableBorder}
+					enableOverlay={enableOverlay}
+					handleClick={handleItemClick}
+				/>
 			</Box>
 			<Stack
 				spacing={0}
@@ -69,23 +69,12 @@ const CardGrid: React.FC<CardProps> = (props) => {
 					<Typography sx={sx.title} color="textPrimary" variant="subtitle2">
 						{truncate(title)}
 					</Typography>
-          <Stack direction="row" justifyContent='flex-end'>                        
-            { enableFavorites && 
-              <FavoriteButton
-                handle={resource?.handle}
-              />
-            }
-            <Actions 
-              numVisible={0} 
-              actions={actions} 
-              resource={resource} 
-            />
-          </Stack>
+					<Stack direction="row" justifyContent="flex-end">
+						{enableFavorites && <FavoriteButton handle={resource?.handle} />}
+						<Actions numVisible={0} actions={actions} resource={resource} />
+					</Stack>
 				</Stack>
-        <DisplayFields 
-          fields={displayFields}
-          resource={resource}
-        />
+				<DisplayFields fields={displayFields} resource={resource} />
 			</Stack>
 		</Stack>
 	)
@@ -95,9 +84,9 @@ export default CardGrid
 
 const sx = {
 	root: {
-    borderRadius: 1,
-    width: '100%',
-    minWidth: 300,
+		borderRadius: 1,
+		width: '100%',
+		minWidth: 300,
 	},
 	rootBorder: {
 		border: '1px solid',
@@ -130,7 +119,7 @@ const sx = {
 	},
 	contentBorder: {
 		px: 1,
-    pb: 1,
+		pb: 1,
 		pt: 0,
 	},
 	title: {

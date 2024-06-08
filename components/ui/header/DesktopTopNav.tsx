@@ -14,7 +14,7 @@ type DesktopNavProps = {
 	menuItems?: MenuLinkType[]
 	enableAuth?: boolean
 	enableShopify?: boolean
-  enableStripe?: boolean
+	enableStripe?: boolean
 	enableNotifications?: boolean
 	handleClick: (path: string) => void
 	position?: 'fixed' | 'relative' | 'absolute'
@@ -27,7 +27,7 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 		menuItems,
 		handleClick,
 		enableAuth = false,
-    enableStripe = false,
+		enableStripe = false,
 		enableShopify = false,
 		enableNotifications = false,
 		position = 'absolute',
@@ -58,7 +58,9 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 						<Box sx={sx.centerMenu}>
 							{menuItems
 								?.filter((menuItem) => menuItem.parent_id == null)
-								?.filter((menuItem) => filterLinkVisibility(menuItem, currentUser))
+								?.filter((menuItem) =>
+									filterLinkVisibility(menuItem, currentUser)
+								)
 								?.map((menuItem, index) => (
 									<TopNavMenuItem
 										key={index}
@@ -68,13 +70,9 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 								))}
 						</Box>
 						<Box sx={sx.rightMenu}>
-							{enableAuth && (
-                <AuthButton editing={editing} />
-              )}
-							{enableStripe && (
-                <StripeCustomerPortalButton />
-              )}
-              {enableShopify && (
+							{enableAuth && <AuthButton editing={editing} />}
+							{enableStripe && <StripeCustomerPortalButton />}
+							{enableShopify && (
 								<>
 									<ShopifyAuth />
 									<CartButton />

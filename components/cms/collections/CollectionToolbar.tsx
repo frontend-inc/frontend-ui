@@ -29,7 +29,7 @@ export type CollectionToolbarProps = {
 }
 
 const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
-  const handleNull = () => null;
+	const handleNull = () => null
 
 	const {
 		query = {},
@@ -50,32 +50,36 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 		handleSearch,
 	} = props
 
-  if(!enableSearch && !enableFilters && !enableSorting && !enableCreate) {
-    return null
-  }
+	if (!enableSearch && !enableFilters && !enableSorting && !enableCreate) {
+		return null
+	}
 	return (
-    <>
-      {enableSearch && (
-        <Box sx={ sx.searchBar }>
-          <SearchInput
-            value={keywords}
-            handleChange={handleKeywordChange}
-            handleSearch={handleSearch}
-          />
-        </Box>
-      )}   
-		  <Stack justifyContent='space-between' direction={{ sm: 'row', xs: 'column'}} spacing={1}>		   
-				<Stack spacing={1} direction={{ xs: 'column', sm: 'row' }}>						      
-          {enableFilters && (
-            <Box>
+		<>
+			{enableSearch && (
+				<Box sx={sx.searchBar}>
+					<SearchInput
+						value={keywords}
+						handleChange={handleKeywordChange}
+						handleSearch={handleSearch}
+					/>
+				</Box>
+			)}
+			<Stack
+				justifyContent="space-between"
+				direction={{ sm: 'row', xs: 'column' }}
+				spacing={1}
+			>
+				<Stack spacing={1} direction={{ xs: 'column', sm: 'row' }}>
+					{enableFilters && (
+						<Box>
 							<FilterButton
 								filters={activeFilters}
 								handleFilter={handleFilter}
 								handleClear={handleClearFilters}
 								filterOptions={filterOptions}
 							/>
-            </Box>
-				  )}          
+						</Box>
+					)}
 					{enableSorting && (
 						<SortButton
 							sortBy={query?.sort_by || 'id'}
@@ -99,8 +103,8 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 						</Button>
 					</Box>
 				)}
-		  </Stack>
-    </>
+			</Stack>
+		</>
 	)
 }
 
@@ -116,18 +120,18 @@ const sx = {
 			xs: '100%',
 		},
 	},
-  toolbar: {
-    borderTop: '1px solid',
-    borderColor: 'divider',
-  },
+	toolbar: {
+		borderTop: '1px solid',
+		borderColor: 'divider',
+	},
 	toolbarActions: {
-    display: 'flex',
-    width: '100%',
+		display: 'flex',
+		width: '100%',
 		justifyContent: 'space-between',
-    flexDirection: {
-      xs: 'column',
-      sm: 'row',
-    }
+		flexDirection: {
+			xs: 'column',
+			sm: 'row',
+		},
 	},
 	loading: {
 		opacity: 0.7,
@@ -135,7 +139,7 @@ const sx = {
 	circularProgress: {
 		color: 'primary.main',
 	},
-  searchBar: {
-    width: '100%'
-  },
+	searchBar: {
+		width: '100%',
+	},
 }

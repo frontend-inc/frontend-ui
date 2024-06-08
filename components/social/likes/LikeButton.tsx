@@ -8,12 +8,12 @@ import { AppContext } from '../../../context'
 
 type LikeButtonProps = {
 	handle: string | number
-  variant?: 'icon' | 'button'
-  numLikes?: number
+	variant?: 'icon' | 'button'
+	numLikes?: number
 }
 
 const LikeButton: React.FC<LikeButtonProps> = (props) => {
-	const { handle, variant='icon', numLikes } = props
+	const { handle, variant = 'icon', numLikes } = props
 
 	const { currentUser } = useAuth()
 	const { setAuthOpen } = useContext(AppContext)
@@ -25,8 +25,8 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
 	})
 
 	const handleClick = async (ev) => {
-    ev.stopPropagation();
-    ev.preventDefault();
+		ev.stopPropagation()
+		ev.preventDefault()
 		if (!currentUser?.id) {
 			return setAuthOpen(true)
 		}
@@ -49,8 +49,7 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
 		}
 	}, [currentUser, handle])
 
-	return (
-    variant == 'icon' ? (
+	return variant == 'icon' ? (
 		<IconButton
 			onClick={handleClick}
 			sx={{
@@ -60,17 +59,16 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
 		>
 			<ThumbUp />
 		</IconButton>
-    ):(
-      <IconButton 
-        onClick={handleClick}
-        sx={{
-          ...sx.button,
-          ...(liked && sx.buttonLiked),
-        }}
-      >
-        <ThumbUp fontSize="small" />
-      </IconButton>
-    )
+	) : (
+		<IconButton
+			onClick={handleClick}
+			sx={{
+				...sx.button,
+				...(liked && sx.buttonLiked),
+			}}
+		>
+			<ThumbUp fontSize="small" />
+		</IconButton>
 	)
 }
 
@@ -78,7 +76,7 @@ export default LikeButton
 
 const sx = {
 	icon: {
-    color: 'text.secondary',
+		color: 'text.secondary',
 		'&:hover': {
 			color: 'text.secondary',
 		},
@@ -89,18 +87,18 @@ const sx = {
 			color: 'primary.dark',
 		},
 	},
-  button: {
-    transition: 'transform 0.2s',
-    border: '1px solid',
-    borderColor: 'divider',
-    color: 'text.secondary',
+	button: {
+		transition: 'transform 0.2s',
+		border: '1px solid',
+		borderColor: 'divider',
+		color: 'text.secondary',
 		'&:hover': {
 			color: 'text.secondary',
 		},
 	},
 	buttonLiked: {
-    transform: 'rotate(10deg)',
-    borderColor: 'primary.main',
+		transform: 'rotate(10deg)',
+		borderColor: 'primary.main',
 		color: 'primary.main',
 		'&:hover': {
 			color: 'primary.dark',

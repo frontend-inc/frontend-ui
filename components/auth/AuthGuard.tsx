@@ -22,33 +22,29 @@ const AuthGuard: React.FC<AuthGuardProps> = (props) => {
 	const { currentUser } = useAuth()
 
 	if (requireAuth && !currentUser?.id) {
-		return (
-			<AuthWall />
-		)
+		return <AuthWall />
 	}
 	if (requireTeam && !currentUser?.team_id) {
 		return (
-      <Box sx={ sx.center }>
-        <Heading
-          title="Team required"
-          description="You must be a member of a team."
-        />
-      </Box>
+			<Box sx={sx.center}>
+				<Heading
+					title="Team required"
+					description="You must be a member of a team."
+				/>
+			</Box>
 		)
 	}
 	if (requirePaid && !currentUser?.paid) {
-		return (
-      <PayWall />        
-		)
+		return <PayWall />
 	}
 	if (requireAdmin && currentUser?.role != 'admin') {
 		return (
-			<Box sx={ sx.center }>
-        <Heading
-          title="Admin Required"
-          description="You must be an admin to access this page."
-        />
-      </Box>
+			<Box sx={sx.center}>
+				<Heading
+					title="Admin Required"
+					description="You must be an admin to access this page."
+				/>
+			</Box>
 		)
 	}
 	return children
@@ -57,11 +53,11 @@ const AuthGuard: React.FC<AuthGuardProps> = (props) => {
 export default AuthGuard
 
 const sx = {
-  center: {
-    height: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",    
-  }
+	center: {
+		height: '100vh',
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
 }

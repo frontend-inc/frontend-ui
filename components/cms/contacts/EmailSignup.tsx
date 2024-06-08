@@ -45,7 +45,7 @@ const EmailSignup: React.FC<EmailSignupProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			<Stack sx={sx.content} direction="column" spacing={1}>
-        {label && (
+				{label && (
 					<Typography variant={'caption'} color="text.secondary" sx={sx.label}>
 						{label}
 					</Typography>

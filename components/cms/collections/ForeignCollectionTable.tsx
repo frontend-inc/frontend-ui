@@ -23,7 +23,7 @@ import { useAuth } from 'frontend-js'
 export type ForeignCollectionTableProps = CollectionListProps & {
 	resource: any
 	field: FieldType
-  foreignUrl?: string
+	foreignUrl?: string
 	foreignContentType?: string
 	headers: TableHeaderType[]
 }
@@ -33,12 +33,12 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 ) => {
 	const router = useRouter()
 	const { clientUrl, setAuthOpen } = useContext(AppContext)
-  const { currentUser } = useAuth()
+	const { currentUser } = useAuth()
 
 	const {
 		resource,
 		url,
-    foreignUrl,
+		foreignUrl,
 		foreignContentType,
 		fields,
 		headers,
@@ -53,9 +53,9 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 		enableEdit = false,
 		enableCreate = false,
 		enableDelete = false,
-    emptyIcon,
-    emptyTitle,
-    emptyDescription
+		emptyIcon,
+		emptyTitle,
+		emptyDescription,
 	} = props
 
 	const [openModal, setOpenModal] = useState(false)
@@ -74,7 +74,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 		paginate,
 		addLinks,
 	} = useDocuments({
-		url
+		url,
 	})
 
 	const {
@@ -84,9 +84,9 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 		update,
 		create,
 		destroy,
-    handleDataChange,
+		handleDataChange,
 		removeAttachment,
-	} = useDocuments({		
+	} = useDocuments({
 		url: foreignUrl,
 	})
 
@@ -126,11 +126,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 		})
 	}
 
-	const {
-		activeFilters,
-		setActiveFilters,
-		handleAddFilter,
-	} = useFilters({
+	const { activeFilters, setActiveFilters, handleAddFilter } = useFilters({
 		query,
 	})
 
@@ -164,19 +160,19 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 	}
 
 	const handleAdd = () => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		setResource({})
 		setOpenModal(true)
 	}
 
 	const handleEdit = (item) => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		setResource(item)
 		setOpenModal(true)
 	}
 
 	const handleSubmit = async () => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		try {
 			let resp
 			if (_resource?.id) {
@@ -198,13 +194,13 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 	}
 
 	const handleDeleteClick = (item) => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		setResource(item)
 		setOpenDeleteModal(true)
 	}
 
 	const handleDelete = async () => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		await destroy(_resource?.id)
 		setOpenDeleteModal(false)
 		setOpenModal(false)
@@ -213,7 +209,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 	}
 
 	const handleRemove = async (name) => {
-    if(!currentUser?.id) return setAuthOpen(true);
+		if (!currentUser?.id) return setAuthOpen(true)
 		await removeAttachment(_resource?.id, name)
 	}
 
@@ -326,9 +322,9 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 							numResults={numResults}
 							totalCount={totalCount}
 							handlePaginate={handlePaginate}
-              emptyIcon={emptyIcon}
-              emptyTitle={emptyTitle}
-              emptyDescription={emptyDescription}
+							emptyIcon={emptyIcon}
+							emptyTitle={emptyTitle}
+							emptyDescription={emptyDescription}
 						/>
 					</Box>
 				</Grid>

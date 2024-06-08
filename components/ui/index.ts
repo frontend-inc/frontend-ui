@@ -110,7 +110,7 @@ export { default as SearchInput } from './inputs/SearchInput'
 export { default as TabsInput } from './inputs/TabsInput'
 export { default as TabsSwitchInput } from './inputs/TabsSwitchInput'
 export { default as VideoInput } from './inputs/VideoInput'
-// Input addons 
+// Input addons
 export { default as LocationInput } from './inputs/addons/LocationInput'
 export { default as ShopifyProductInput } from './inputs/addons/ShopifyProductInput'
 

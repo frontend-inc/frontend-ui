@@ -5,7 +5,7 @@ type FieldBooleanProps = {
 	value?: boolean
 	label?: string
 	rest?: any
-  color?: string
+	color?: string
 }
 
 const FieldBoolean: React.FC<FieldBooleanProps> = (props) => {

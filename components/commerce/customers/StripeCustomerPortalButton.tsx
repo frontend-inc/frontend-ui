@@ -15,9 +15,9 @@ type TopNavStripeCustomerPortalButtonProps = {
 	icon: string
 }
 
-const TopNavStripeCustomerPortalButton: React.FC<TopNavStripeCustomerPortalButtonProps> = (
-	props
-) => {
+const TopNavStripeCustomerPortalButton: React.FC<
+	TopNavStripeCustomerPortalButtonProps
+> = (props) => {
 	const { handleClick, icon } = props
 
 	return (
@@ -32,16 +32,13 @@ type SideNavStripeCustomerPortalButtonProps = {
 	icon: string
 }
 
-const SideNavStripeCustomerPortalButton: React.FC<SideNavStripeCustomerPortalButtonProps> = (
-	props
-) => {
+const SideNavStripeCustomerPortalButton: React.FC<
+	SideNavStripeCustomerPortalButtonProps
+> = (props) => {
 	const { handleClick, icon } = props
 
 	return (
-		<ListItem 
-      disablePadding 
-      disableGutters
-    >
+		<ListItem disablePadding disableGutters>
 			<ListItemButton sx={sx.listItemButton} onClick={handleClick}>
 				<ListItemIcon>
 					<Icon name={icon} />
@@ -63,7 +60,9 @@ type StripeCustomerPortalButtonProps = {
 	variant?: 'topNav' | 'sideNav'
 }
 
-const StripeCustomerPortalButton: React.FC<StripeCustomerPortalButtonProps> = (props) => {
+const StripeCustomerPortalButton: React.FC<StripeCustomerPortalButtonProps> = (
+	props
+) => {
 	const { icon = 'CreditCard', variant = 'topNav' } = props || {}
 
 	const { stripeCustomerPortalUrl } = useContext(StripeContext) as any

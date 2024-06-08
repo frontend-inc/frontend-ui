@@ -7,8 +7,8 @@ import { TextInputPropsType } from '../../../types'
 import { useDebounce } from 'use-debounce'
 
 type TextInputProps = TextInputPropsType & {
-  onBlur?: () => void
-  onFocus?: () => void
+	onBlur?: () => void
+	onFocus?: () => void
 }
 
 const TextInput: React.FC<TextInputProps> = (props) => {
@@ -26,8 +26,8 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 		errors,
 		direction = 'column',
 		styles = {},
-    onBlur,
-    onFocus
+		onBlur,
+		onFocus,
 	} = props
 
 	const [text, setText] = useState(value)
@@ -96,8 +96,8 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 						placeholder={placeholder}
 						onChange={debouncedChanged}
 						value={text}
-            onBlur={onBlur && onBlur}
-            onFocus={onFocus && onFocus}
+						onBlur={onBlur && onBlur}
+						onFocus={onFocus && onFocus}
 					/>
 					<ErrorText error={error} />
 				</Box>

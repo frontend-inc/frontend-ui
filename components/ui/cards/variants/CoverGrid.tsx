@@ -1,7 +1,14 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Box, Stack, Typography } from '@mui/material'
-import { FavoriteButton, DisplayFields, Image, Icon, TouchableOpacity, Actions } from '../../..'
+import {
+	FavoriteButton,
+	DisplayFields,
+	Image,
+	Icon,
+	TouchableOpacity,
+	Actions,
+} from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
@@ -11,7 +18,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
-    displayFields=[],
+		displayFields = [],
 		href,
 		handleClick,
 		textVariant = 'subtitle1',
@@ -19,7 +26,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		height = 320,
 		enableGradient = false,
 		enableOverlay = false,
-    enableFavorites = false,
+		enableFavorites = false,
 		icon,
 	} = props || {}
 
@@ -70,23 +77,20 @@ const CoverVert: React.FC<CardProps> = (props) => {
 								<Typography color="common.white" variant={textVariant}>
 									{truncate(title, 60)}
 								</Typography>
-                <DisplayFields
-                  color="common.white"
-                  fields={displayFields}
-                  resource={resource}
-                />								
+								<DisplayFields
+									color="common.white"
+									fields={displayFields}
+									resource={resource}
+								/>
 							</Box>
 						</Stack>
 					</Box>
 				</Stack>
 			</Stack>
 			<Box sx={sx.actions}>
-        {enableFavorites && (
-          <FavoriteButton
-            handle={resource?.handle}
-            color='common.white'
-          />
-        )}
+				{enableFavorites && (
+					<FavoriteButton handle={resource?.handle} color="common.white" />
+				)}
 				<Actions
 					numVisible={0}
 					resource={resource}
@@ -145,9 +149,9 @@ const sx = {
 		alignItems: 'flex-end',
 	},
 	actions: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    flexDirection: 'row',
+		display: 'flex',
+		justifyContent: 'flex-end',
+		flexDirection: 'row',
 		position: 'absolute',
 		top: 0,
 		right: 10,

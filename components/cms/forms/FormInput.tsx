@@ -3,15 +3,15 @@ import {
 	AttachmentInput,
 	Autosuggest,
 	ArrayInput,
-  LocationInput,
-  ArrayListInput,
+	LocationInput,
+	ArrayListInput,
 	DateInput,
 	ImageInput,
 	JSONInput,
 	RatingInput,
 	SwitchInput,
 	TextInput,
-  ShopifyProductInput
+	ShopifyProductInput,
 } from '../../../components'
 import { SyntheticEventType } from '../../../types'
 
@@ -46,7 +46,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		file: AttachmentInput,
 		url: TextInput,
 		text: TextInput,
-    location: LocationInput,
+		location: LocationInput,
 		number: TextInput,
 		price: TextInput,
 		date: DateInput,
@@ -56,7 +56,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		rating: RatingInput,
 		image: ImageInput,
 		json: JSONInput,
-    shopify: ShopifyProductInput
+		shopify: ShopifyProductInput,
 	}
 
 	let inputProps = {

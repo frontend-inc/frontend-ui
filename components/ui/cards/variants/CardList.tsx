@@ -1,7 +1,12 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Box, Stack, Typography } from '@mui/material'
-import { Image, DisplayFields, TouchableOpacity, FavoriteButton } from '../../../../components'
+import {
+	Image,
+	DisplayFields,
+	TouchableOpacity,
+	FavoriteButton,
+} from '../../../../components'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
@@ -12,7 +17,7 @@ const CardList: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
-    displayFields=[],
+		displayFields = [],
 		href,
 		height = 180,
 		textVariant = 'subtitle1',
@@ -21,7 +26,7 @@ const CardList: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
-    enableFavorites = false 
+		enableFavorites = false,
 	} = props || {}
 
 	const router = useRouter()
@@ -51,7 +56,7 @@ const CardList: React.FC<CardProps> = (props) => {
 				<Box sx={sx.image}>
 					<TouchableOpacity handleClick={handleItemClick}>
 						<Image
-		 					label={label}
+							label={label}
 							src={image?.url}
 							height={height}
 							objectFit={objectFit}
@@ -81,23 +86,12 @@ const CardList: React.FC<CardProps> = (props) => {
 						<Typography color="textPrimary" variant={textVariant}>
 							{truncate(title)}
 						</Typography>
-            <DisplayFields 
-              fields={displayFields}
-              resource={resource}
-            />
+						<DisplayFields fields={displayFields} resource={resource} />
 					</Stack>
-          <Stack direction="row" justifyContent='flex-end'>                        
-            { enableFavorites && 
-              <FavoriteButton
-                handle={resource?.handle}
-              />
-            }
-            <Actions 
-              numVisible={0} 
-              actions={actions} 
-              resource={resource} 
-            />
-          </Stack>
+					<Stack direction="row" justifyContent="flex-end">
+						{enableFavorites && <FavoriteButton handle={resource?.handle} />}
+						<Actions numVisible={0} actions={actions} resource={resource} />
+					</Stack>
 				</Stack>
 			</Stack>
 		</Box>

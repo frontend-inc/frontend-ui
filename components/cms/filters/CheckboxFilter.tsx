@@ -11,7 +11,7 @@ import { MenuList } from '../..'
 type CheckboxFilterProps = {
 	field: string
 	where?: FilterWhereType
-  operator?: FilterOperatorType
+	operator?: FilterOperatorType
 	options?: OptionType[]
 	values?: any
 	handleClick: (filter: FilterOptionType) => void
@@ -25,8 +25,8 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 	const {
 		label,
 		field,
-    where='AND',
-    operator='eq',
+		where = 'AND',
+		operator = 'eq',
 		options,
 		values,
 		handleClick,

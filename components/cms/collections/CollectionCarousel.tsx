@@ -21,7 +21,7 @@ export type CollectionCarouselProps = {
 	enableBorder?: boolean
 	enableDots?: boolean
 	enableGradient?: boolean
-  enableFavorites?: boolean
+	enableFavorites?: boolean
 }
 
 const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
@@ -40,7 +40,7 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 		enableDots = true,
 		enableBorder = false,
 		enableGradient = false,
-    enableFavorites = false 
+		enableFavorites = false,
 	} = props
 
 	const { findMany, resources } = useResource({
@@ -83,7 +83,7 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 							handleClick={() => handleClick(resource)}
 							enableBorder={enableBorder}
 							enableGradient={enableGradient}
-              enableFavorites={enableFavorites}
+							enableFavorites={enableFavorites}
 						/>
 					</Box>
 				))}

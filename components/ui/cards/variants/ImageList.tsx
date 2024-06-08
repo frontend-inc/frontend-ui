@@ -17,7 +17,7 @@ const ImageHoriz: React.FC<CardProps> = (props) => {
 		objectFit = 'cover',
 		enableGradient = false,
 		enableOverlay = false,
-    enableFavorites = false
+		enableFavorites = false,
 	} = props || {}
 
 	const router = useRouter()
@@ -50,16 +50,12 @@ const ImageHoriz: React.FC<CardProps> = (props) => {
 						objectFit={objectFit}
 						alt={title}
 						enableGradient={enableGradient}
-						enableOverlay={enableOverlay}            
+						enableOverlay={enableOverlay}
 					/>
 				</TouchableOpacity>
 			</Box>
 			<Box sx={sx.actions}>
-        {enableFavorites && (
-          <FavoriteButton
-            handle={resource?.handle}
-          />
-        )}
+				{enableFavorites && <FavoriteButton handle={resource?.handle} />}
 				<Actions
 					numVisible={0}
 					actions={actions}
@@ -92,8 +88,8 @@ const sx = {
 		},
 	},
 	actions: {
-    display: 'flex',
-    flexDirection: 'row',
+		display: 'flex',
+		flexDirection: 'row',
 		position: 'absolute',
 		top: 10,
 		right: 10,

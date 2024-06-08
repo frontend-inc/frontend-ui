@@ -6,7 +6,7 @@ type FieldArrayProps = {
 	value?: any[]
 	label?: string
 	rest?: any
-  color?: string
+	color?: string
 }
 
 const FieldArray: React.FC<FieldArrayProps> = (props) => {

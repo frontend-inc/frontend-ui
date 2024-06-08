@@ -5,7 +5,7 @@ import {
 	FieldDate,
 	FieldFile,
 	FieldImage,
-  FieldLocation,
+	FieldLocation,
 	FieldJSON,
 	FieldURL,
 	FieldPrice,
@@ -19,39 +19,39 @@ import { get } from 'lodash'
 import moment from 'moment'
 
 export type FieldElementProps = {
-  label?: string
-  value: any
-  color?: string 
-  direction?: 'row' | 'column'
-  variant?: TypographyVariantsType
-  placeholder?: string
-  enableBorder?: boolean
-  disablePadding?: boolean
-  dateFormat?: string
+	label?: string
+	value: any
+	color?: string
+	direction?: 'row' | 'column'
+	variant?: TypographyVariantsType
+	placeholder?: string
+	enableBorder?: boolean
+	disablePadding?: boolean
+	dateFormat?: string
 }
 
 type FieldProps = {
-  label?: string
-  color?: string 
-  direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse'
-  variant?: TypographyVariantsType
-  placeholder?: string
-  enableBorder?: boolean
-  disablePadding?: boolean
-	field: DisplayFieldType 
+	label?: string
+	color?: string
+	direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse'
+	variant?: TypographyVariantsType
+	placeholder?: string
+	enableBorder?: boolean
+	disablePadding?: boolean
+	field: DisplayFieldType
 	resource?: any
-  dateFormat?: string
+	dateFormat?: string
 }
 
 const Field: React.FC<FieldProps> = (props) => {
-	const { field, resource, dateFormat='MM/DD/YYYYY', ...rest } = props
+	const { field, resource, dateFormat = 'MM/DD/YYYYY', ...rest } = props
 	const { variant: fieldVariant } = field
 	let value = get(resource, field?.name)
-	if (!value) return null;
+	if (!value) return null
 
-  if (field?.variant == 'date' || field?.variant == 'datetime') {
-    value = moment(value).format(dateFormat)
-  }
+	if (field?.variant == 'date' || field?.variant == 'datetime') {
+		value = moment(value).format(dateFormat)
+	}
 
 	const components = {
 		boolean: FieldBoolean,
@@ -64,7 +64,7 @@ const Field: React.FC<FieldProps> = (props) => {
 		url: FieldURL,
 		rating: FieldRating,
 		text: FieldText,
-    location: FieldLocation,
+		location: FieldLocation,
 		number: FieldText,
 		array: FieldArray,
 		string: FieldString,
@@ -74,12 +74,7 @@ const Field: React.FC<FieldProps> = (props) => {
 
 	const Component = components[fieldVariant]
 
-	return(
-    <Component 
-      value={value}       
-      {...rest}            
-    />
-  )
+	return <Component value={value} {...rest} />
 }
 
 export default Field

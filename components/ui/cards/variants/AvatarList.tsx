@@ -1,7 +1,7 @@
 import React from 'react'
 import {
 	Avatar,
-  Stack,
+	Stack,
 	Box,
 	List,
 	ListItem,
@@ -18,14 +18,14 @@ const AvatarList: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
-    displayFields=[],
+		displayFields = [],
 		height = 128,
 		width = 128,
 		handleClick,
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
-    enableFavorites = false
+		enableFavorites = false,
 	} = props
 
 	const { title, description, image } = resource || {}
@@ -42,14 +42,10 @@ const AvatarList: React.FC<CardProps> = (props) => {
 				disablePadding
 				disableGutters
 				secondaryAction={
-          <Stack direction="row" alignItems="flex-end" mr={1}>            
-            { enableFavorites && (
-              <FavoriteButton
-                handle={resource?.handle}
-              />
-            )}
-            <Actions numVisible={0} actions={actions} resource={resource} />
-          </Stack>
+					<Stack direction="row" alignItems="flex-end" mr={1}>
+						{enableFavorites && <FavoriteButton handle={resource?.handle} />}
+						<Actions numVisible={0} actions={actions} resource={resource} />
+					</Stack>
 				}
 			>
 				<ListItemButton
@@ -80,10 +76,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 							</Typography>
 						}
 						secondary={
-              <DisplayFields
-                fields={displayFields}
-                resource={resource}
-              />							
+							<DisplayFields fields={displayFields} resource={resource} />
 						}
 					/>
 				</ListItemButton>

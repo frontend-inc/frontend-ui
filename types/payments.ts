@@ -12,15 +12,15 @@ export type CreditCardType = {
 
 export type SubscriptionPlanType = {
 	id: number
-  label?: string
+	label?: string
 	name: string
 	description: string
 	price: number
-  display_price: string  
-  free_trial?: boolean
-  free_trial_days?: number
+	display_price: string
+	free_trial?: boolean
+	free_trial_days?: number
 	recurring: string
 	recurring_interval: string
 	stripe_id: string
-  features: string[]
+	features: string[]
 }

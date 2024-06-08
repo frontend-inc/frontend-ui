@@ -49,7 +49,7 @@ const CheckboxNumberRangeFilterItem: React.FC<
 	return (
 		<ListItem disableGutters disablePadding>
 			<ListItemButton sx={sx.listItemButton} onClick={handleClick}>
-				<ListItemIcon sx={ sx.listItemIcon}>
+				<ListItemIcon sx={sx.listItemIcon}>
 					<Checkbox checked={checked} color="primary" />
 				</ListItemIcon>
 				<ListItemText
@@ -70,7 +70,7 @@ const sx = {
 	listItemButton: {
 		p: 0,
 	},
-  listItemIcon: {
-    mr: 2
-  }
+	listItemIcon: {
+		mr: 2,
+	},
 }

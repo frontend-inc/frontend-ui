@@ -10,7 +10,7 @@ type FieldReferenceProps = {
 	handleClick?: () => void
 	label?: string
 	rest?: any
-  color?: string
+	color?: string
 }
 
 const FieldReference: React.FC<FieldReferenceProps> = (props) => {

@@ -1,12 +1,12 @@
 import React from 'react'
 import {
 	Stack,
-	Box,  
+	Box,
 	Button,
 	Divider,
 	Typography,
 	List,
-  ListItemIcon,
+	ListItemIcon,
 	ListItem,
 	ListItemText,
 } from '@mui/material'
@@ -15,26 +15,26 @@ import { Label, Icon } from '../..'
 
 type SubscriptionTableCardProps = {
 	selected?: boolean
-  buttonText?: string
-  handleClick: () => void
-  subscriptionPlan: SubscriptionPlanType
+	buttonText?: string
+	handleClick: () => void
+	subscriptionPlan: SubscriptionPlanType
 }
 
 const SubscriptionTableCard: React.FC<SubscriptionTableCardProps> = (props) => {
-  const { 
-    buttonText='Subscribe',
-    selected, 
-    handleClick, 
-    subscriptionPlan 
-  } = props 
-  
+	const {
+		buttonText = 'Subscribe',
+		selected,
+		handleClick,
+		subscriptionPlan,
+	} = props
+
 	return (
-		<Box 
-      sx={{
-        ...sx.root,
-        ...(selected && sx.selected)
-      }}
-    >
+		<Box
+			sx={{
+				...sx.root,
+				...(selected && sx.selected),
+			}}
+		>
 			<Stack sx={sx.content} direction="column" spacing={1}>
 				{subscriptionPlan?.label && (
 					<Box>
@@ -45,15 +45,15 @@ const SubscriptionTableCard: React.FC<SubscriptionTableCardProps> = (props) => {
 					{subscriptionPlan.name}
 				</Typography>
 				<Typography variant="h5" color="text.primary">
-					{ subscriptionPlan.display_price }          
+					{subscriptionPlan.display_price}
 				</Typography>
 				<Divider />
 				<List dense disablePadding>
 					{subscriptionPlan?.features?.map((feature, i) => (
 						<ListItem key={i}>
-              <ListItemIcon>
-                <Icon name="Check" size={20} color='text.secondary' />
-              </ListItemIcon>
+							<ListItemIcon>
+								<Icon name="Check" size={20} color="text.secondary" />
+							</ListItemIcon>
 							<ListItemText
 								primary={
 									<Typography variant="body1" color="text.primary">
@@ -71,7 +71,7 @@ const SubscriptionTableCard: React.FC<SubscriptionTableCardProps> = (props) => {
 				color="primary"
 				fullWidth
 			>
-				{ buttonText }
+				{buttonText}
 			</Button>
 		</Box>
 	)
@@ -89,7 +89,7 @@ const sx = {
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
-    maxWidth: 400
+		maxWidth: 400,
 	},
 	content: {
 		minHeight: 300,
@@ -99,10 +99,10 @@ const sx = {
 		color: 'text.primary',
 		mb: 0,
 	},
-  selected: {
-    border: '3px solid',
+	selected: {
+		border: '3px solid',
 		borderColor: 'primary.main',
-    boxShadow: '0 0 20px 0 rgba(0,0,0,0.1)',
-    transform : 'scale(1.05)',
-  }
+		boxShadow: '0 0 20px 0 rgba(0,0,0,0.1)',
+		transform: 'scale(1.05)',
+	},
 }

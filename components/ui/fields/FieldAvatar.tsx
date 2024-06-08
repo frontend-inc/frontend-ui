@@ -7,7 +7,7 @@ type FieldAvatarProps = {
 	rounded?: boolean
 	label?: string
 	rest?: any
-  color?: string
+	color?: string
 }
 
 const FieldAvatar: React.FC<FieldAvatarProps> = (props) => {

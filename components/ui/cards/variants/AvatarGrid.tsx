@@ -1,7 +1,12 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Avatar, Box, Stack, Typography } from '@mui/material'
-import { Actions, DisplayFields, FavoriteButton, TouchableOpacity } from '../../../../components'
+import {
+	Actions,
+	DisplayFields,
+	FavoriteButton,
+	TouchableOpacity,
+} from '../../../../components'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import {
@@ -15,7 +20,7 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
-    displayFields=[],
+		displayFields = [],
 		href,
 		handleClick,
 		height = AVATAR_VERT_HEIGHT,
@@ -23,7 +28,7 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
-    enableFavorites = false
+		enableFavorites = false,
 	} = props || {}
 
 	const { title, image } = resource || {}
@@ -50,7 +55,7 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 		>
 			<Box
 				sx={{
-          ...sx.avatarContainer,
+					...sx.avatarContainer,
 				}}
 			>
 				<TouchableOpacity handleClick={handleItemClick}>
@@ -70,23 +75,16 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 			</Box>
 			<Stack spacing={1} sx={sx.contentArea}>
 				<Stack direction="row" sx={sx.contentArea} spacing={0}>
-          <Typography sx={sx.title} color="textPrimary" variant={'subtitle2'}>
-            {truncate(title)}
-          </Typography>
-          <Box sx={sx.actions }>					              
-            {enableFavorites && (
-              <FavoriteButton
-                handle={resource?.handle}
-              />
-            )}
-            <Actions numVisible={0} actions={actions} resource={resource} />
-          </Box> 
+					<Typography sx={sx.title} color="textPrimary" variant={'subtitle2'}>
+						{truncate(title)}
+					</Typography>
+					<Box sx={sx.actions}>
+						{enableFavorites && <FavoriteButton handle={resource?.handle} />}
+						<Actions numVisible={0} actions={actions} resource={resource} />
+					</Box>
 				</Stack>
 			</Stack>
-      <DisplayFields
-        fields={displayFields}
-        resource={resource}
-      />	
+			<DisplayFields fields={displayFields} resource={resource} />
 		</Stack>
 	)
 }
@@ -147,15 +145,15 @@ const sx = {
 	contentArea: {
 		width: '100%',
 	},
-  avatarContainer: {
-    height: '100%',
-    width: '100%',
-    position: 'relative',
-  },
-  actions: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end',
-  }
+	avatarContainer: {
+		height: '100%',
+		width: '100%',
+		position: 'relative',
+	},
+	actions: {
+		display: 'flex',
+		flexDirection: 'row',
+		alignItems: 'flex-end',
+		justifyContent: 'flex-end',
+	},
 }
