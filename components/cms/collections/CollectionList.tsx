@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { useFilters } from '../../../hooks'
+import { useSearch } from '../../../hooks'
 import { useDocuments } from 'frontend-js'
 import { Button, Box, Stack } from '@mui/material'
 import {
@@ -25,7 +25,6 @@ import {
 	SearchFilters,
 } from '../..'
 import {
-	GoogleMarker,
 	SortOptionType,
 	SearchFilterOptionType,
 } from '../../../types'
@@ -107,6 +106,47 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		emptyDescription = 'Try changing your search or filters.',
 	} = props
 
+	const {
+		loading,
+		delayedLoading,
+		errors,
+		resource,
+		setResource,
+		update,
+		create,
+		destroy,
+		removeAttachment,
+		handleDataChange,
+		flattenDocument,
+	} = useDocuments({
+		url,
+	})
+
+  const {
+    delayedLoading: searchLoading,
+    resources,
+    query,
+    findMany,
+    reloadMany,
+    page,
+    numPages,
+    loadMore,
+    keywords,
+    handleKeywordChange,
+    handleSearch,
+    handleSortBy,
+    handleSortDirection,
+    activeFilters,
+    handleFilter,
+    handleClearFilters, 
+  } = useSearch({
+    url,
+    perPage,
+    filterUser,
+    filterTeam,
+    query: defaultQuery,  
+  })
+
 	const handleNavigate = (resource) => {
 		if (clientUrl && href && resource?.handle) {
 			window.scrollTo({
@@ -121,87 +161,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 
 	const [openModal, setOpenModal] = useState(false)
 	const [openDeleteModal, setOpenDeleteModal] = useState(false)
-
-	const {
-		loading,
-		delayedLoading,
-		errors,
-		resource,
-		resources,
-		setResource,
-		update,
-		create,
-		destroy,
-		query,
-		findMany,
-		reloadMany,
-		removeAttachment,
-		page,
-		numPages,
-		loadMore,
-		handleDataChange,
-		flattenDocument,
-	} = useDocuments({
-		url,
-	})
-
-	const [keywords, setKeywords] = useState('')
-
-	const handleKeywordChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-		setKeywords(ev.target.value)
-	}
-
-	const handleSearch = (keywords: string) => {
-		findMany({
-			...query,
-			...defaultQuery,
-			keywords: keywords,
-			page: 1,
-			per_page: perPage,
-		})
-	}
-
-	const handleSortBy = (field: SortOptionType) => {
-		findMany({
-			...query,
-			sort_by: field?.field,
-		})
-	}
-
-	const handleSortDirection = (sortDirection: 'asc' | 'desc') => {
-		findMany({
-			...query,
-			sort_direction: sortDirection,
-		})
-	}
-
-	const {
-		queryFilters,
-		activeFilters,
-		setActiveFilters,
-		handleAddFilter,
-		mergeAllFilters,
-		buildUserFilters,
-	} = useFilters({
-		query,
-	})
-
-	// Filter methods
-	const handleClearFilters = () => {
-		setActiveFilters([])
-		findMany({
-			filters: mergeAllFilters([defaultQuery?.filters, currentUserFilter]),
-			sort_by: 'id',
-			sort_direction: 'desc',
-			keywords: '',
-			page: 1,
-			per_page: perPage,
-		})
-	}
-
-	const handleFilter = (filter: FilterOptionType) => {
-		handleAddFilter(filter)
-	}
 
 	const handleAdd = () => {
 		if (!currentUser?.id) return setAuthOpen(true)
@@ -256,34 +215,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		await removeAttachment(resource?.id, name)
 	}
 
-	const currentUserFilter = buildUserFilters(
-		currentUser,
-		filterUser,
-		filterTeam
-	)
-
-	useEffect(() => {
-		if (url && currentUser) {
-			findMany({
-				...defaultQuery,
-				filters: mergeAllFilters([
-					defaultQuery?.filters,
-					currentUserFilter,
-					queryFilters,
-				]),
-				per_page: perPage,
-			})
-		}
-	}, [
-		url,
-		perPage,
-		filterUser,
-		filterTeam,
-		currentUser,
-		queryFilters,
-		defaultQuery,
-	])
-
 	let gridTemplateColumns
 	if (enableFilters && filterAnchor == 'left' && enableGoogleMap) {
 		gridTemplateColumns = '1fr 2fr 1fr'
@@ -335,7 +266,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 					</Box>
 				)}
 				<Box>
-					<Box sx={{ ...(delayedLoading && sx.loading) }}>
+					<Box sx={{ ...(searchLoading && sx.loading) }}>
 						<CollectionCards
 							actions={actions}
 							variant={variant}
