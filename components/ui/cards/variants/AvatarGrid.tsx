@@ -3,6 +3,7 @@ import { AppContext } from '../../../../context'
 import { Avatar, Box, Stack, Typography } from '@mui/material'
 import {
 	Actions,
+  AvgRating, 
 	DisplayFields,
 	FavoriteButton,
 	TouchableOpacity,
@@ -29,6 +30,7 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
+    enableRatings = false
 	} = props || {}
 
 	const { title, image } = resource || {}
@@ -77,12 +79,15 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 				<Stack direction="row" sx={sx.contentArea} spacing={0}>
 					<Typography sx={sx.title} color="textPrimary" variant={'subtitle2'}>
 						{truncate(title)}
-					</Typography>
+					</Typography>                    
 					<Box sx={sx.actions}>
 						{enableFavorites && <FavoriteButton handle={resource?.handle} />}
 						<Actions numVisible={0} actions={actions} resource={resource} />
 					</Box>
 				</Stack>
+        {enableRatings && (
+          <AvgRating size="small" resource={resource} />
+        )}             
 			</Stack>
 			<DisplayFields fields={displayFields} resource={resource} />
 		</Stack>

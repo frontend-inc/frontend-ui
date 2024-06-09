@@ -6,6 +6,7 @@ import {
 	StripePaymentLink,
 	SocialButtons,
 	Actions,
+  AvgRating,
 	ExpandableText
 } from '../..'
 import { HeroProps } from './Hero'
@@ -28,6 +29,7 @@ const HeroContainer: React.FC<HeroContainerProps> = (props) => {
 		enableFavorites,
 		enableLikes,
 		enableSharing,
+    enableRatings,
 		enableBuyNow,
 		enableStripePaymentLink,
 	} = props || {}
@@ -58,6 +60,12 @@ const HeroContainer: React.FC<HeroContainerProps> = (props) => {
 				<Typography color="text.primary" variant="h3">
 					{title}
 				</Typography>
+        { enableRatings && (
+          <AvgRating 
+            resource={resource} 
+            enableTotal
+          />
+        )}
 				<DisplayFields fields={displayFields} resource={resource} />
 				{enableBuyNow && (
 					<BuyNowButton

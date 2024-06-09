@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
-import { Link, Box, Stack, Typography } from '@mui/material'
+import { Link, Stack, Typography } from '@mui/material'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CARD_VERT_HEIGHT, CARD_VERT_WIDTH } from '../../../../constants/index'
 import { CardProps } from '../../../../types'
-import { FavoriteButton, DisplayFields, Actions } from '../../..'
+import { AvgRating, FavoriteButton, DisplayFields, Actions } from '../../..'
 
 const TextGrid: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
@@ -16,8 +16,9 @@ const TextGrid: React.FC<CardProps> = (props) => {
 		href,
 		handleClick,
 		height = CARD_VERT_HEIGHT,
-		enableBorder = false,
+		enableBorder = false,    
 		enableFavorites = false,
+    enableRatings = false,
 	} = props || {}
 
 	const { title, description } = resource || {}
@@ -58,6 +59,9 @@ const TextGrid: React.FC<CardProps> = (props) => {
 						{truncate(title)}
 					</Typography>
 				</Link>
+        {enableRatings && (
+          <AvgRating resource={resource} size="small" />
+        )}
 				<DisplayFields fields={displayFields} resource={resource} />
 				<Typography sx={sx.description} color="text.secondary" variant="body1">
 					{truncate(description, 200)}

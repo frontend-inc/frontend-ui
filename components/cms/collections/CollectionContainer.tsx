@@ -63,6 +63,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
 		enableCreate = false,
 		enableDelete = false,
 		enableFavorites = false,
+    enableRatings = false,
 		filterUser = false,
 		filterTeam = false,
 		query: defaultQuery = {},
@@ -243,6 +244,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
           enableEdit={enableEdit}
           enableDelete={enableDelete}
           enableFavorites={enableFavorites}
+          enableRatings={enableRatings}
           handleEdit={handleEdit}
           handleDelete={handleDeleteClick}
           { ...rest }

@@ -6,6 +6,7 @@ import {
 	DisplayFields,
 	TouchableOpacity,
 	FavoriteButton,
+  AvgRating
 } from '../../../../components'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
@@ -27,6 +28,7 @@ const CardList: React.FC<CardProps> = (props) => {
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
+    enableRatings = false 
 	} = props || {}
 
 	const router = useRouter()
@@ -86,6 +88,9 @@ const CardList: React.FC<CardProps> = (props) => {
 						<Typography color="textPrimary" variant={textVariant}>
 							{truncate(title)}
 						</Typography>
+            { enableRatings && (
+              <AvgRating resource={resource} size="small" />
+            )}
 						<DisplayFields fields={displayFields} resource={resource} />
 					</Stack>
 					<Stack direction="row" justifyContent="flex-end">

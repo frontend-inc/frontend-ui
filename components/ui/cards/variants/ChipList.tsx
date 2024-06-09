@@ -10,8 +10,7 @@ import {
 	ListItemText,
 	Typography,
 } from '@mui/material'
-import { FavoriteButton, DisplayFields, Actions } from '../../../../components'
-import { truncate } from '../../../../helpers'
+import { AvgRating, FavoriteButton, DisplayFields, Actions } from '../../../../components'
 import { CardProps } from '../../../../types'
 
 const ChipList: React.FC<CardProps> = (props) => {
@@ -24,9 +23,10 @@ const ChipList: React.FC<CardProps> = (props) => {
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
+    enableRatings = false,
 	} = props
 
-	const { label, title, description, image } = resource || {}
+	const { title, image } = resource || {}
 
 	return (
 		<List
@@ -68,12 +68,17 @@ const ChipList: React.FC<CardProps> = (props) => {
 					)}
 					<ListItemText
 						primary={
-							<Typography variant="body1" color="text.primary">
-								{title}
-							</Typography>
+							<Stack direction="column" spacing={0}>              
+                <Typography variant="body1" color="text.primary">
+                  {title}
+                </Typography>
+                {enableRatings && (
+                  <AvgRating resource={resource} size="small" />
+                )}
+              </Stack>
 						}
 						secondary={
-							<DisplayFields fields={displayFields} resource={resource} />
+              <DisplayFields fields={displayFields} resource={resource} />
 						}
 					/>
 				</ListItemButton>

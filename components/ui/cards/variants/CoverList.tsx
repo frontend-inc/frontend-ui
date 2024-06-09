@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Box, Stack, Typography } from '@mui/material'
 import {
+  AvgRating,
 	DisplayFields,
 	FavoriteButton,
 	Image,
@@ -28,6 +29,7 @@ const CoverList: React.FC<CardProps> = (props) => {
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
+    enableRatings = false
 	} = props || {}
 
 	const { label, title, image } = resource || {}
@@ -65,6 +67,9 @@ const CoverList: React.FC<CardProps> = (props) => {
 						<Typography color="common.white" variant={textVariant}>
 							{truncate(title, 40)}
 						</Typography>
+            {enableRatings && (
+              <AvgRating color='common.white' resource={resource} size="small" />
+            )}
 						<DisplayFields
 							fields={displayFields}
 							resource={resource}

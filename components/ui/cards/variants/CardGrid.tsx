@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Box, Stack, Typography } from '@mui/material'
-import { Image, DisplayFields, FavoriteButton } from '../../..'
+import { Image, AvgRating, DisplayFields, FavoriteButton } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
@@ -21,6 +21,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
+    enableRatings = false,
 	} = props || {}
 
 	const { label, title, image } = resource || {}
@@ -74,7 +75,12 @@ const CardGrid: React.FC<CardProps> = (props) => {
 						<Actions numVisible={0} actions={actions} resource={resource} />
 					</Stack>
 				</Stack>
-				<DisplayFields fields={displayFields} resource={resource} />
+        { enableRatings && (
+          <AvgRating resource={resource} size="small" />
+        )}
+        { displayFields?.length > 0 && (
+				  <DisplayFields fields={displayFields} resource={resource} />
+        )}
 			</Stack>
 		</Stack>
 	)

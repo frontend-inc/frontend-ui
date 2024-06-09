@@ -10,9 +10,8 @@ import {
 	ListItemText,
 	Typography,
 } from '@mui/material'
-import { truncate } from '../../../../helpers'
 import { CardProps } from '../../../../types'
-import { Actions, DisplayFields, FavoriteButton } from '../../../../components'
+import { Actions, AvgRating, DisplayFields, FavoriteButton } from '../../../../components'
 
 const AvatarList: React.FC<CardProps> = (props) => {
 	const {
@@ -26,9 +25,10 @@ const AvatarList: React.FC<CardProps> = (props) => {
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
+    enableRatings = false,
 	} = props
 
-	const { title, description, image } = resource || {}
+	const { title, image } = resource || {}
 
 	return (
 		<List
@@ -76,7 +76,12 @@ const AvatarList: React.FC<CardProps> = (props) => {
 							</Typography>
 						}
 						secondary={
+              <Stack direction='column' spacing={1}>
+              { enableRatings && (
+                <AvgRating resource={resource} size="small" /> 
+              )}
 							<DisplayFields fields={displayFields} resource={resource} />
+              </Stack>
 						}
 					/>
 				</ListItemButton>

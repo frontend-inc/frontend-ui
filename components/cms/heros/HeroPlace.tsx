@@ -8,14 +8,14 @@ import {
 	Image,
 	SocialButtons,
 	GoogleMap,
-  ExpandableText
+  ExpandableText,
+  AvgRating
 } from '../../../components'
 import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
 const HeroPlace: React.FC<HeroProps> = (props) => {
-	const MAX_CHARS = 500
 
 	const {
 		actions,
@@ -27,6 +27,7 @@ const HeroPlace: React.FC<HeroProps> = (props) => {
 		enableLikes,
 		enableFavorites,
 		enableSharing,
+    enableRatings,
 		enableBuyNow,
 		enableStripePaymentLink,
 	} = props || {}
@@ -87,6 +88,12 @@ const HeroPlace: React.FC<HeroProps> = (props) => {
 						<Typography color="text.primary" variant="h4">
 							{title}
 						</Typography>
+            { enableRatings && (
+              <AvgRating 
+                resource={resource} 
+                enableTotal
+              />
+            )}
 						<DisplayFields fields={displayFields} resource={resource} />
 						{enableBuyNow && (
 							<BuyNowButton resource={resource} buttonText="Buy Now" />

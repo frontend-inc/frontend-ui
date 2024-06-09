@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Box, Link, Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import {
+  AvgRating,
 	DisplayFields,
 	BuyNowButton,
 	StripePaymentLink,
@@ -25,6 +26,7 @@ const HeroProduct: React.FC<HeroProps> = (props) => {
 		enableLikes,
 		enableFavorites,
 		enableSharing,
+    enableRatings,
 		enableBuyNow,
 		enableStripePaymentLink,
 	} = props || {}
@@ -94,6 +96,12 @@ const HeroProduct: React.FC<HeroProps> = (props) => {
 						<Typography color="text.primary" variant="h4">
 							{title}
 						</Typography>
+            { enableRatings && (
+              <AvgRating 
+                resource={resource} 
+                enableTotal
+              />
+            )}
 						<DisplayFields fields={displayFields} resource={resource} />
 						{enableBuyNow && (
 							<BuyNowButton resource={resource} buttonText="Buy Now" />

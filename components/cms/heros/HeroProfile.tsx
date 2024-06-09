@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Link, Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import {
 	DisplayFields,
 	BuyNowButton,
@@ -7,7 +7,7 @@ import {
 	SocialButtons,
 	Image,
 	Actions,
-	SocialLink,
+	AvgRating,
   ExpandableText
 } from '../..'
 import { HeroProps } from './Hero'
@@ -15,7 +15,6 @@ import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
 const HeroProfile: React.FC<HeroProps> = (props) => {
-	const MAX_CHARS = 500
 
 	const {
 		actions,
@@ -27,6 +26,7 @@ const HeroProfile: React.FC<HeroProps> = (props) => {
 		enableFavorites,
 		enableLikes,
 		enableSharing,
+    enableRatings,
 		enableBuyNow,
 		enableStripePaymentLink,
 	} = props || {}
@@ -80,6 +80,12 @@ const HeroProfile: React.FC<HeroProps> = (props) => {
 						<Typography color="text.primary" variant="h4">
 							{title}
 						</Typography>
+            { enableRatings && (
+              <AvgRating 
+                resource={resource} 
+                enableTotal
+              />
+            )}
 						<DisplayFields fields={displayFields} resource={resource} />
 						{enableBuyNow && (
 							<BuyNowButton resource={resource} buttonText="Buy Now" />
@@ -151,11 +157,7 @@ const sx = {
 		maxHeight: {
 			sm: 240,
 			xs: 240,
-		},
-		maxWidth: {
-			sm: 240,
-			xs: '100%',
-		},
+		},		
 		borderRadius: 1,
 	},
 	header: {

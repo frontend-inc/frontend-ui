@@ -7,6 +7,7 @@ import {
 	SocialButtons,
 	Actions,
 	Image,
+  AvgRating,
   ExpandableText,
 } from '../..'
 import { HeroProps } from './Hero'
@@ -31,6 +32,7 @@ const HeroArticle: React.FC<HeroArticleProps> = (props) => {
 		enableFavorites,
 		enableLikes,
 		enableSharing,
+    enableRatings,
 		enableBuyNow,
 		enableStripePaymentLink,
 	} = props || {}
@@ -72,6 +74,13 @@ const HeroArticle: React.FC<HeroArticleProps> = (props) => {
 				<Typography color="text.primary" variant="h3">
 					{title}
 				</Typography>
+        { enableRatings && (
+          <AvgRating 
+            justifyContent="center"
+            resource={resource} 
+            enableTotal
+          />
+        )}
 				<DisplayFields
 					alignItems="center"
 					fields={displayFields}
