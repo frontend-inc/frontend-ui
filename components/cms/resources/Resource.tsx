@@ -9,7 +9,8 @@ import {
 	ListItemIcon,
 	Typography,
 } from '@mui/material'
-import { Image, Icon, MenuButton } from '../..'
+import { Image, Icon, DisplayFields, MenuButton } from '../..'
+import { DisplayFieldType } from '../../../types'
 
 export type ResourceProps = {
 	avatar?: React.ReactNode
@@ -24,6 +25,7 @@ export type ResourceProps = {
 	handleDelete?: (resource: any) => void
 	secondaryActions?: React.ReactNode
 	menuActions?: any
+  displayFields: DisplayFieldType[]
 }
 
 const Resource: React.FC<ResourceProps> = (props) => {
@@ -40,6 +42,7 @@ const Resource: React.FC<ResourceProps> = (props) => {
 		handleDelete,
 		secondaryActions,
 		menuActions,
+    displayFields=[]
 	} = props
 
 	return (
@@ -79,9 +82,15 @@ const Resource: React.FC<ResourceProps> = (props) => {
 					<ListItemText
 						primary={title}
 						secondary={
-							<Typography variant="body2" color="text.secondary">
-								{description}
-							</Typography>
+              <>
+                <DisplayFields 
+                  fields={ displayFields }
+                  resource={ resource }
+                />
+                <Typography variant="body2" color="text.secondary">
+                  {description}
+                </Typography>
+              </>
 						}
 					/>
 				</ListItemButton>

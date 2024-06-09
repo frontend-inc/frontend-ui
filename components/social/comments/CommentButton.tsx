@@ -9,24 +9,11 @@ type CommentButtonProps = {
 const CommentButton: React.FC<CommentButtonProps> = (props) => {
 	const { reply, handleClick } = props
 
-	const handleToggleClick = () => {
-		handleClick()
-	}
-
 	return (
-		<Button variant="contained" color="secondary" onClick={handleToggleClick}>
+		<Button variant="contained" color="secondary" onClick={handleClick}>
 			{reply ? 'Reply' : 'Leave a comment'}
 		</Button>
 	)
 }
 
 export default CommentButton
-
-const sx = {
-	icon: {
-		fontSize: '28px',
-	},
-	selected: {
-		color: 'primary.main',
-	},
-}

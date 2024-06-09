@@ -18,6 +18,7 @@ import { Placeholder } from '../..'
 import { SearchFilterOptionType } from '../../../types'
 import { SortOptionType } from '../../../types'
 import ResourceListItem from './ResourceListItem'
+import { empty } from 'validations'
 
 export type ResourceListProps = {
 	url: string
@@ -42,6 +43,9 @@ export type ResourceListProps = {
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
+  emptyIcon?: string
+  emptyTitle?: string
+  emptyDescription?: string
 }
 
 const ResourceList: React.FC<ResourceListProps> = (props) => {
@@ -64,6 +68,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		enableDelete,
 		enableCreate,
 		handleClick,
+    emptyIcon='Search',
+    emptyTitle='No results found',
+    emptyDescription='Try adjusting your search or filters'
 	} = props
 
 	const [openModal, setOpenModal] = useState(false)
@@ -295,9 +302,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 			</Box>
 			{!loading && resources.length == 0 && (
 				<Placeholder
-					icon="Search"
-					title="No results found"
-					description="Try adjusting your search or filters"
+					icon={ emptyIcon }
+					title={ emptyTitle }
+					description={ emptyDescription }
 				/>
 			)}
 			{enableLoadMore && (

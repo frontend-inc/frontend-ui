@@ -168,6 +168,7 @@ const sx = {
 	},
 	listItemIcon: {
 		mt: 1,
+    mr: 2
 	},
 	commentText: {
 		mb: 1,
