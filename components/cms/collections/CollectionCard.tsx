@@ -29,6 +29,7 @@ type CollectionCardProps = {
 	enableCreate?: boolean
 	enableDelete?: boolean
 	enableFavorites?: boolean
+  enableRatings?: boolean
 }
 
 const CollectionCard: React.FC<CollectionCardProps> = (props) => {
