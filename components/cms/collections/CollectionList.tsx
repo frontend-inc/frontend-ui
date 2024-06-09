@@ -30,7 +30,7 @@ export type CollectionListProps = {
 	enableSearch?: boolean
 	enableFilters?: boolean
 	enableSorting?: boolean
-	enableGoogleMap?: boolean
+	enableGoogleMaps?: boolean
 	buttonText?: string
 	handleClick?: (resource: any) => void
 	enableBorder?: boolean

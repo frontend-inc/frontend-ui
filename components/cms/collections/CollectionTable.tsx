@@ -75,7 +75,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		totalCount,
 		paginate,
 	} = useDocuments({
-		url,
+		url
 	})
 
 	const [keywords, setKeywords] = useState('')
@@ -126,7 +126,10 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	const handleClearFilters = () => {
 		setActiveFilters([])
 		findMany({
-			filters: mergeAllFilters([...defaultQuery.filters, currentUserFilter]),
+			filters: mergeAllFilters([
+        ...defaultQuery.filters, 
+        currentUserFilter
+      ]),
 			sort_by: 'id',
 			sort_direction: 'desc',
 			keywords: '',

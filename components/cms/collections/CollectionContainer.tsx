@@ -26,6 +26,7 @@ export type CollectContainerProps = CollectionListProps & {
   resource?: any
   searchUrl: string
   component?: React.FC<any>
+  rest?: any
 }
 
 const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
@@ -34,7 +35,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
 	const { currentUser } = useAuth()
 
 	const {
-    component: CollectionList = CollectionCards,
+    component: RenderList = CollectionCards,
     resource: _resource,
 		actions,
 		variant = 'grid',
@@ -47,7 +48,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
 		filterAnchor = 'left',
 		filterOptions = [],
 		sortOptions = [],
-		enableGoogleMap = false,
+		enableGoogleMaps = false,
 		perPage = 20,
 		enableSearch = false,
 		enableFilters = false,
@@ -68,6 +69,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
 		emptyIcon,
 		emptyTitle = 'No results found',
 		emptyDescription = 'Try changing your search or filters.',
+    ...rest
 	} = props
 
 	const {
@@ -209,7 +211,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
           />
         }
         expandLeft={enableFilters && filterAnchor == 'left'}
-        expandRight={enableGoogleMap}
+        expandRight={enableGoogleMaps}
         leftPanel={
           <SearchFilters
             filters={activeFilters}
@@ -227,7 +229,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
           />
         }
       >
-        <CollectionList
+        <RenderList
           actions={actions}
           variant={variant}
           style={style}
@@ -243,6 +245,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
           enableFavorites={enableFavorites}
           handleEdit={handleEdit}
           handleDelete={handleDeleteClick}
+          { ...rest }
         />
         {enableLoadMore && (
           <LoadMore
