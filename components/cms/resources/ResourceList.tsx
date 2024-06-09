@@ -18,7 +18,6 @@ import { Placeholder } from '../..'
 import { SearchFilterOptionType } from '../../../types'
 import { SortOptionType } from '../../../types'
 import ResourceListItem from './ResourceListItem'
-import { empty } from 'validations'
 
 export type ResourceListProps = {
 	url: string

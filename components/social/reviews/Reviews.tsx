@@ -6,11 +6,19 @@ import {
 	ReviewForm,
 	LoadMore,
 	Placeholder,
-} from '../..'
-import { List, Stack, Collapse, Typography } from '@mui/material'
+  FilterButton,
+	SortButton,
+	SearchInput,
+} from '../../../components'
+import { List, Box, Stack, Collapse, Typography } from '@mui/material'
 import { useReviews } from '../../../hooks'
 import { useAuth } from 'frontend-js'
 import { AppContext } from '../../../context'
+import { useFilters } from '../../../hooks'
+import { FormFieldType, FilterOptionType } from '../../../types'
+import { SearchFilterOptionType } from '../../../types'
+import { SortOptionType } from '../../../types'
+
 
 export type ReviewsProps = {
 	handle: string
@@ -46,6 +54,26 @@ const Reviews: React.FC<ReviewsProps> = (props) => {
 		url,
 		handle,
 	})
+
+  const perPage = 20
+  const filterOptions: SearchFilterOptionType[] = [
+    {
+      label: 'Rating',
+      field: 'rating',
+      variant: 'ratings_scale',
+    },    
+  ]
+
+  const sortOptions: SortOptionType[] = [
+    {
+      label: 'Date',
+      field: 'created_at',
+    },
+    {
+      label: 'Rating',
+      field: 'rating',      
+    }
+  ]
 
 	const { setAuthOpen } = useContext(AppContext)
 
@@ -83,6 +111,69 @@ const Reviews: React.FC<ReviewsProps> = (props) => {
 		})
 	}
 
+	const [keywords, setKeywords] = useState('')
+
+	const handleKeywordChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+		setKeywords(ev.target.value)
+	}
+
+	const handleSearch = (keywords: string) => {
+		findReviews({
+			...query,
+			keywords: keywords,
+			page: 1,
+			per_page: perPage,
+		})
+	}
+
+	const handleSort = (field: any) => {
+		findReviews({
+			...query,
+			sort_by: field.field,
+		})
+	}
+
+	const handleSortDirection = (sortDirection: 'asc' | 'desc') => {
+		findReviews({
+			...query,
+			sort_direction: sortDirection,
+		})
+	}
+
+	const {
+		activeFilters,
+		setActiveFilters,
+		handleAddFilter,
+		buildQueryFilters,
+	} = useFilters({
+		query,
+	})
+
+  // Filter methods
+	const handleClearFilters = () => {
+		setActiveFilters([])
+		findReviews({			
+			sort_by: 'id',
+			sort_direction: 'desc',
+			keywords: '',
+			page: 1,
+			per_page: perPage,
+		})
+	}
+
+	const handleFilter = (filter: FilterOptionType) => {
+		handleAddFilter(filter)
+	}
+
+	useEffect(() => {
+		if (activeFilters) {
+			findReviews({
+				...query,
+				filters: buildQueryFilters(activeFilters),
+			})
+		}
+	}, [activeFilters?.length])
+
 	useEffect(() => {
 		if (url && handle) {
 			findReviews({
@@ -94,10 +185,40 @@ const Reviews: React.FC<ReviewsProps> = (props) => {
 	return (
 		<Stack spacing={1} sx={sx.root}>
 			<Stack direction="row" sx={sx.reviewHeader}>
-				<Typography color="text.primary" variant="subtitle1">
+				<Typography color="text.primary" variant="h6">
 					Reviews ({totalCount})
 				</Typography>
-				<ReviewButton handleClick={handleToggleClick} />
+			</Stack>
+      <Stack direction="column" spacing={1}>
+        <SearchInput
+          value={keywords}
+          handleChange={handleKeywordChange}
+          handleSearch={handleSearch}
+        />
+				<Stack
+					direction={{ xs: 'column', sm: 'row' }}
+					justifyContent="space-between"
+					spacing={1}
+				>
+					<Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
+            <Box>
+              <FilterButton
+                filters={activeFilters}
+                handleFilter={handleFilter}
+                handleClear={handleClearFilters}
+                filterOptions={filterOptions}
+              />
+            </Box>
+            <SortButton
+              sortBy={query?.sort_by || 'id'}
+              sortDirection={query?.sort_direction || 'desc'}
+              sortOptions={sortOptions}
+              handleSortBy={handleSort}
+              handleSortDirection={handleSortDirection}
+            />
+					</Stack>          
+          <ReviewButton handleClick={handleToggleClick} />          
+				</Stack>
 			</Stack>
 			<Collapse in={openReview}>
 				<ReviewForm					
