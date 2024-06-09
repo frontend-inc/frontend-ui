@@ -46,6 +46,14 @@ const MyAccountForm: React.FC<AccountFormProps> = (props) => {
 				placeholder="Last name"
 				handleChange={handleChange}
 			/>
+      <TextInput
+        multiline
+        rows={3}
+        name="bio"
+				value={user.bio}
+				placeholder="Bio"
+				handleChange={handleChange}
+			/>
 			<SwitchInput
 				value={user?.accepts_marketing}
 				placeholder="Accept email marketing"

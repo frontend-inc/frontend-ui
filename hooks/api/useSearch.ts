@@ -7,11 +7,11 @@ import {
 } from '../../types'
 
 const useSearch = (props) => {
-	const { currentUser } = useAuth()
 
   const {
 		url,
 		perPage = 20,
+    user,
 		filterUser = false,
 		filterTeam = false,
 		query: defaultQuery = {},
@@ -89,19 +89,19 @@ const useSearch = (props) => {
 		handleAddFilter(filter)
 	}
 
-	const currentUserFilter = buildUserFilters(
-		currentUser,
+	const userFilter = buildUserFilters(
+		user,
 		filterUser,
 		filterTeam
 	)
 
 	useEffect(() => {
-		if (url && currentUser) {
+		if (url && user) {
 			findMany({
 				...defaultQuery,
 				filters: mergeAllFilters([
 					defaultQuery?.filters,
-					currentUserFilter,
+					userFilter,
 					queryFilters,
 				]),
 				per_page: perPage,
@@ -110,9 +110,9 @@ const useSearch = (props) => {
 	}, [
 		url,
 		perPage,
+    user,
 		filterUser,
 		filterTeam,
-		currentUser,
 		queryFilters,
 		defaultQuery,
 	])

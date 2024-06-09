@@ -3,6 +3,7 @@ import {
 	ActionType,	
 	FormFieldType,
 	DisplayFieldType,
+  UserType,
 } from '../../../types'
 import {
 	SortOptionType,
@@ -11,6 +12,7 @@ import {
 import { CollectionContainer } from '../../../components'
 
 export type CollectionListProps = {
+  user?: UserType
 	variant: 'list' | 'grid'
 	style: 'avatar' | 'card' | 'cover' | 'chip' | 'text' | 'image'
 	layout?: 'drawer' | 'inline'

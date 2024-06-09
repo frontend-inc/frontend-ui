@@ -22,7 +22,7 @@ import {
 import { useAuth } from 'frontend-js'
 import { CollectionListProps } from './CollectionList'
 
-export type CollectContainerProps = CollectionListProps & {	
+export type CollectContainerProps = CollectionListProps & {	  
   resource?: any
   searchUrl: string
   component?: React.FC<any>
@@ -37,6 +37,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
 	const {
     component: RenderList = CollectionCards,
     resource: _resource,
+    user,
 		actions,
 		variant = 'grid',
 		style = 'card',
@@ -109,6 +110,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
     handleClearFilters, 
   } = useSearch({
     url: searchUrl,
+    user,
     perPage,
     filterUser,
     filterTeam,
@@ -256,16 +258,16 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
             loadMore={loadMore}
             enableInfiniteLoad={enableInfiniteLoad}
           />
-        )}
-        {!loading && resources.length == 0 && (
-          <Placeholder
-            enableBorder
-            icon={emptyIcon}
-            title={emptyTitle}
-            description={emptyDescription}
-          />
-        )}
+        )}        
 			</CollectionLayout>			
+      {!loading && resources.length == 0 && (
+        <Placeholder
+          enableBorder
+          icon={emptyIcon}
+          title={emptyTitle}
+          description={emptyDescription}
+        />
+      )}
 			<Drawer
 				open={openModal}
 				handleClose={() => setOpenModal(false)}

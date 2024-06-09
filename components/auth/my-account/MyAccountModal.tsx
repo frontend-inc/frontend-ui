@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react'
-import { AppContext, StripeContext } from '../../../context'
+import React, { useContext, useEffect, useState } from 'react'
+import { AppContext } from '../../../context'
 import { useAuth } from 'frontend-js'
 import { Modal, MyAccountForm } from '../../../components'
 import {
@@ -24,6 +24,8 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 	const {
 		delayedLoading,
 		user,
+    setUser,
+    fetchMe,
 		currentUser,
 		updateMe,
 		handleChange,
@@ -49,6 +51,18 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 	const handleTabChange = (ev: any, newValue: number) => {
 		setCurrentTab(newValue)
 	}
+
+  useEffect(() => {
+    if(currentUser){        
+      setUser(currentUser)
+    }
+  }, [currentUser])
+
+  useEffect(() => {    
+    if(!currentUser?.id){
+      fetchMe()
+    }
+  }, [currentUser])
 
 	return (
 		<Modal
