@@ -31,6 +31,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 
 	const {
 		url,
+    user,
 		fields,
 		headers,
 		filterAnchor = 'left',
@@ -128,7 +129,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		findMany({
 			filters: mergeAllFilters([
         ...defaultQuery.filters, 
-        currentUserFilter
+        userFilter
       ]),
 			sort_by: 'id',
 			sort_direction: 'desc',
@@ -207,19 +208,19 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		}
 	}
 
-	const currentUserFilter = buildUserFilters(
-		currentUser,
+	const userFilter = buildUserFilters(
+		user,
 		filterUser,
 		filterTeam
 	)
 
 	useEffect(() => {
-		if (url && currentUser) {
+		if (url && user) {
 			findMany({
 				...defaultQuery,
 				filters: mergeAllFilters([
 					defaultQuery?.filters,
-					currentUserFilter,
+					userFilter,
 					queryFilters,
 				]),
 				per_page: perPage,
@@ -227,13 +228,12 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		}
 	}, [
 		url,
+    user,
 		perPage,
 		filterUser,
-		filterTeam,
-		currentUser,
+		filterTeam,		
 		queryFilters,
-		defaultQuery,
-		,
+		defaultQuery,		
 	])
 
 	const [rows, setRows] = useState([])
