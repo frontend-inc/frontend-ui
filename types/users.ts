@@ -11,6 +11,8 @@ export type UserType = {
   avatar?: {
     url: string  
   }
+  num_followers?: number
+  num_following?: number
 	token?: string
 	paid?: boolean
 	role?: string

@@ -1,23 +1,42 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../../../context'
 import { 
   Stack,
   Box,
   Avatar,
   Typography, 
-  Link   
+  Button 
 } from '@mui/material'
 import { FollowButton, FollowCounts, ExpandableText } from '../../../components'
 import { UserType } from '../../../types'
+import { useRouter } from 'next/router'
 
 export type UserProfileProps = {
   user: UserType 
+  href: string
   enableFollowing?: boolean
 }
 
 const UserProfile: React.FC<UserProfileProps> = (props) => {
-  const { user, enableFollowing = false } = props || {}
+  const { 
+    user, 
+    href,
+    enableFollowing = false 
+  } = props || {}
   const { name, username, bio, avatar } = user || {}
 
+  const { clientUrl } = useContext(AppContext)
+  const router = useRouter()
+
+  const handleClick = () => {
+		if (clientUrl && href && username) {
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth',
+			})
+			router.push(`${clientUrl}${href}/${username}`)
+		}
+	}
   return (
     <Box sx={ sx.container }>
       <Stack sx={ sx.profile } direction={{ sm: 'row', xs: 'column'}} spacing={4} alignItems="flex-start">
@@ -29,13 +48,19 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
           />
         )}  
         </Box>    
-        <Stack direction="column" spacing={1}>
+        <Stack direction="column" spacing={0}>
           <Stack direction="row" alignItems='center' spacing={1}>
             <Typography variant="h6"  color='text.primary'>{name}</Typography>
           </Stack>
           <FollowCounts user={ user } />
-          <Typography variant="body2"  color='text.secondary'>@{username}</Typography>
-          <Link href={`/${username}`} variant="body2"  color='text.secondary'>{username}</Link>
+          <Box>
+          <Button     
+            sx={ sx.button }        
+            onClick={ handleClick }
+            >
+            @{username}
+          </Button>     
+          </Box>                 
           { bio && (
             <ExpandableText 
               text={ bio }
@@ -62,6 +87,9 @@ const sx = {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  button: {
+    color: 'text.secondary'
   },
   profile: {
     maxWidth: 600

@@ -12,7 +12,8 @@ import {
 	SearchInput,
 	LoadMore,
 	IconLoading,
-} from '../..'
+  Loader
+} from '../../../components'
 import { FormFieldType, FilterOptionType } from '../../../types'
 import { Placeholder } from '../..'
 import { SearchFilterOptionType } from '../../../types'
@@ -75,9 +76,8 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	const [openModal, setOpenModal] = useState(false)
 	const [openDeleteModal, setOpenDeleteModal] = useState(false)
 
-	const {
-		loading,
-		delayedLoading,
+	const {		
+		delayedLoading: loading,
 		errors,
 		resource,
 		resources,
@@ -274,7 +274,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					)}
 				</Stack>
 			</Stack>
-			<Box sx={{ ...(delayedLoading && sx.loading) }}>
+			<Box sx={{ ...(loading && sx.loading) }}>
 				<Stack spacing={2} sx={sx.fullWidth}>
 					<Box
 						sx={{
@@ -283,7 +283,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 							...(dense && sx.listDense),
 						}}
 					>
-						{resources?.map((resource, index) => (
+						{!loading && resources?.map((resource, index) => (
 							<Component
 								key={index}
 								resource={resource}
@@ -306,6 +306,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					description={ emptyDescription }
 				/>
 			)}
+      { loading && !resources.length && (
+       <Loader loading={loading} />
+      )}
 			{enableLoadMore && (
 				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
 			)}

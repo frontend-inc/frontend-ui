@@ -1,6 +1,7 @@
-import React from 'react'
-import { Stack, Divider, Typography } from '@mui/material'
+import React, { useState, useEffect } from 'react'
+import { Button, Stack, Divider, Typography } from '@mui/material'
 import { UserType } from '../../../types'
+import FollowModal from './FollowModal'
 
 type FollowCountsProps = {
 	user: UserType
@@ -12,26 +13,32 @@ const FollowCounts: React.FC<FollowCountsProps> = (props) => {
 		user
 	} = props
 
+  const [open, setOpen] = useState(false)
+
+  const handleClick = () => {
+    setOpen(true)
+  }
 
 	return (
+    <>
     <Stack direction="row" spacing={1} alignItems='center' divider={<Divider sx={ sx.divider } />}>
       <Stack direction="row" spacing={1} alignItems='center'>
-        <Typography variant="subtitle2" color="text.primary">
-          {user?.num_followers} 
-        </Typography>
-        <Typography variant="overline" color="text.secondary">
-          Followers
-        </Typography>
+        <Button sx={ sx.link } onClick={handleClick}>
+          {user?.display_num_followers}
+        </Button>
       </Stack>
       <Stack direction="row" spacing={1} alignItems='center'>
-        <Typography variant="subtitle2" color="text.primary">
-          {user?.num_following} 
-        </Typography>
-        <Typography variant="overline" color="text.secondary">
-          Following
-        </Typography>
+        <Button sx={ sx.link } onClick={handleClick}>
+          {user?.display_num_following}
+        </Button>
       </Stack>
     </Stack>
+    <FollowModal 
+      open={open}
+      handleClose={() => setOpen(false)}
+      user={user}
+    />
+    </>
 	)
 }
 
@@ -42,5 +49,8 @@ const sx = {
     borderRight: '2px solid',
     borderColor: 'divider',
     height: 16,
+  },
+  link: {
+    color: 'text.secondary',
   }
 }
