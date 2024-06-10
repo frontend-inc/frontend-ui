@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { Likes } from '../../components'
-import { LikesProps } from '../../components/social/likes/Likes'
+import { Feed } from '../../components'
+import { FeedProps } from '../../components/social/feed/Feed'
 import { SectionProps, HeadingProps } from '../../types'
 
-type SocialLikesProps = SectionProps & HeadingProps & LikesProps
+type SocialFeedProps = SectionProps & HeadingProps & FeedProps
 
-const SocialLikes: React.FC<SocialLikesProps> = (props) => {
+const SocialFeed: React.FC<SocialFeedProps> = (props) => {
 	const {
 		label,
 		title,
@@ -39,9 +39,9 @@ const SocialLikes: React.FC<SocialLikesProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<Likes {...rest} />
+			<Feed {...rest} />
 		</Section>
 	)
 }
 
-export default SocialLikes
+export default SocialFeed
