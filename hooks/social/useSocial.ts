@@ -28,12 +28,12 @@ const useSocial = (props: UseSocialProps) => {
 		return await loadingWrapper(() => api.url(url).unfavorite(itemId))
 	}
 
-	const follow = async (itemId) => {
-		return await loadingWrapper(() => api.url(url).follow(itemId))
+	const follow = async (username) => {
+		return await loadingWrapper(() => api.url(url).follow(username))
 	}
 
-	const unfollow = async (itemId) => {
-		return await loadingWrapper(() => api.url(url).unfollow(itemId))
+	const unfollow = async (username) => {
+		return await loadingWrapper(() => api.url(url).unfollow(username))
 	}
 
 	return {
