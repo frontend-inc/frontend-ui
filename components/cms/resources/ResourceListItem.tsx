@@ -8,6 +8,7 @@ export type ResourceListItemProps = {
 	color?: string
 	title?: string
 	description?: string
+  layout?: 'list' | 'grid'
 	image?: string
 	resource: any
 	handleClick?: (resource: any) => void

@@ -16,6 +16,7 @@ export type ResourceProps = {
 	avatar?: React.ReactNode
 	icon?: string
 	color?: string
+  layout?: 'list' | 'grid'
 	title?: string | React.ReactNode
 	description?: string
 	image?: string
@@ -32,8 +33,9 @@ const Resource: React.FC<ResourceProps> = (props) => {
 	const {
 		icon,
 		avatar,
-		title,
+		title,    
 		description,
+    layout='list',
 		image,
 		color,
 		resource,
@@ -69,7 +71,9 @@ const Resource: React.FC<ResourceProps> = (props) => {
 						</ListItemIcon>
 					)}
 					{icon && (
-						<ListItemIcon sx={sx.listItemIcon}>
+						<ListItemIcon 
+              sx={sx.listItemIcon}
+            >
 							<Avatar
 								sx={{
 									bgcolor: color,
@@ -80,7 +84,11 @@ const Resource: React.FC<ResourceProps> = (props) => {
 						</ListItemIcon>
 					)}
 					<ListItemText
-						primary={title}
+						primary={
+              <Typography color='text.primary' variant='body1'>
+                { title }
+              </Typography>
+            }
 						secondary={
               <>
                 <DisplayFields 

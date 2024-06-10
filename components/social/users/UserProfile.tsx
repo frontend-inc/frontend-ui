@@ -3,11 +3,10 @@ import { AppContext } from '../../../context'
 import { 
   Stack,
   Box,
-  Avatar,
   Typography, 
   Button 
 } from '@mui/material'
-import { FollowButton, FollowCounts, ExpandableText } from '../../../components'
+import { UserAvatar, FollowButton, FollowCounts, ExpandableText } from '../../../components'
 import { UserType } from '../../../types'
 import { useRouter } from 'next/router'
 
@@ -15,13 +14,15 @@ export type UserProfileProps = {
   user: UserType 
   href: string
   enableFollowing?: boolean
+  enableBorder?: boolean
 }
 
 const UserProfile: React.FC<UserProfileProps> = (props) => {
   const { 
     user, 
     href,
-    enableFollowing = false 
+    enableFollowing = false,
+    enableBorder = false 
   } = props || {}
   const { name, username, bio, avatar } = user || {}
 
@@ -38,13 +39,16 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 		}
 	}
   return (
-    <Box sx={ sx.container }>
+    <Box sx={{
+      ...sx.container,
+      ...(enableBorder && sx.containerBorder) 
+      }}>
       <Stack sx={ sx.profile } direction={{ sm: 'row', xs: 'column'}} spacing={4} alignItems="flex-start">
         <Box height="100%" sx={ sx.avatarContainer }>
         { avatar?.url && (
-          <Avatar 
-            src={avatar?.url} 
-            sx={ sx.avatar }
+          <UserAvatar 
+            user={ user }  
+            size={96}          
           />
         )}  
         </Box>    
@@ -87,6 +91,10 @@ const sx = {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  containerBorder: {
+    border: '1px solid',
+    borderColor: 'divider',
   },
   button: {
     color: 'text.secondary'

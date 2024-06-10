@@ -46,6 +46,7 @@ export type ResourceListProps = {
   emptyIcon?: string
   emptyTitle?: string
   emptyDescription?: string
+  componentProps?: any
 }
 
 const ResourceList: React.FC<ResourceListProps> = (props) => {
@@ -55,7 +56,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		component: Component = ResourceListItem,
 		url,
 		name,
-		fields,
+		fields=[],
 		filterOptions = [],
 		sortOptions = [],
 		query: defaultQuery = {},
@@ -70,7 +71,8 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		handleClick,
     emptyIcon='Search',
     emptyTitle='No results found',
-    emptyDescription='Try adjusting your search or filters'
+    emptyDescription='Try adjusting your search or filters',
+    componentProps={}
 	} = props
 
 	const [openModal, setOpenModal] = useState(false)
@@ -265,7 +267,11 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 								variant="contained"
 								onClick={handleAdd}
 								startIcon={
-									<Icon name="Plus" color="secondary.contrastText" size={20} />
+									<Icon 
+                    name="Plus" 
+                    color="secondary.contrastText" 
+                    size={20} 
+                  />
 								}
 							>
 								Add
@@ -286,6 +292,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 						{!loading && resources?.map((resource, index) => (
 							<Component
 								key={index}
+                layout={layout}
 								resource={resource}
 								handleClick={
 									handleClick ? () => handleClick(resource) : undefined
@@ -294,6 +301,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 								handleDelete={
 									enableDelete ? () => handleDeleteClick(resource) : undefined
 								}
+                { ...componentProps }
 							/>
 						))}
 					</Box>
