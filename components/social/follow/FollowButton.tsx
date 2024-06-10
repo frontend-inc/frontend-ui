@@ -52,7 +52,7 @@ const FollowButton: React.FC<FollowButtonProps> = (props) => {
 		}
 	}, [currentUser, user])
 
-  if(currentUser?.id == user?.id) return null;
+  if(!currentUser?.id || currentUser?.id == user?.id) return null;
 	return (    
     <Button
       sx={ sx.button}

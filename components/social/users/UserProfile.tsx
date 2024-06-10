@@ -6,7 +6,7 @@ import {
   Typography, 
   Button 
 } from '@mui/material'
-import { UserAvatar, FollowButton, FollowCounts, ExpandableText } from '../../../components'
+import { Placeholder, UserAvatar, FollowButton, FollowCounts, ExpandableText } from '../../../components'
 import { UserType } from '../../../types'
 import { useRouter } from 'next/router'
 
@@ -38,6 +38,13 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 			router.push(`${clientUrl}${href}/${username}`)
 		}
 	}
+  if(!user?.username){ return(
+    <Placeholder 
+      icon='UserCircle'
+      title='Please sign in'
+      description='Sign in to view the user profile'
+    />
+  )}
   return (
     <Box sx={{
       ...sx.container,
