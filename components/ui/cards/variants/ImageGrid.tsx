@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../../../context'
-import { FavoriteButton, Image, Actions, TouchableOpacity } from '../../..'
+import { AppContext, ThemeContext, ThemeProvider } from '../../../../context'
+import { UserButton, FavoriteButton, Image, Actions, TouchableOpacity } from '../../..'
 import { useRouter } from 'next/router'
 import { Box } from '@mui/material'
 import { CardProps } from '../../../../types'
@@ -16,6 +16,7 @@ const ImageVert: React.FC<CardProps> = (props) => {
 		height = 320,
 		enableGradient = false,
 		enableOverlay = false,
+    enableUsers = false,
 		enableFavorites = false,
 	} = props || {}
 
@@ -31,7 +32,14 @@ const ImageVert: React.FC<CardProps> = (props) => {
 		}
 	}
 
+  const { theme } = useContext(ThemeContext)
+  
 	return (
+    <ThemeProvider 
+      muiTheme={ theme } 
+      textPrimary='#FFFFFF'
+      textSecondary='#FFFFFF' 
+    >
 		<Box sx={sx.root}>
 			<TouchableOpacity handleClick={handleItemClick}>
 				<Image
@@ -52,7 +60,15 @@ const ImageVert: React.FC<CardProps> = (props) => {
 					color={enableOverlay ? 'common.white' : 'text.secondary'}
 				/>
 			</Box>
+      <Box sx={ sx.userCard }>
+        { enableUsers && (
+          <UserButton 
+            user={ resource?.user } 
+          />
+        )}
+      </Box>  
 		</Box>
+    </ThemeProvider>
 	)
 }
 
@@ -83,5 +99,13 @@ const sx = {
 		position: 'absolute',
 		top: 10,
 		right: 10,
+	},
+  userCard: {
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'flex-end',
+		position: 'absolute',
+		bottom: 10,
+		left: 10,
 	},
 }

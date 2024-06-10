@@ -14,6 +14,8 @@ type ThemeProviderProps = {
 	headerFont?: string
 	bodyFont?: string
 	borderRadius?: number
+  textPrimary?: string //color
+  textSecondary?: string //color
 	deviceSize?: 'mobile' | 'tablet' | 'desktop'
 	offsetX?: number
 	offsetY?: number
@@ -25,18 +27,21 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 		muiTheme,
 		primaryColor,
 		bgcolor,
+    textPrimary,
+    textSecondary,
 		headerFont,
 		bodyFont,
 		borderRadius,
 		deviceSize,
 		offsetX,
-		offsetY,
 	} = props || {}
 
 	const { theme, setTheme } = useTheme({
 		muiTheme,
 		primaryColor,
 		bgcolor,
+    textPrimary,
+    textSecondary,
 		headerFont,
 		bodyFont,
 		borderRadius,

@@ -1,15 +1,17 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../../../context'
+import { AppContext, ThemeContext } from '../../../../context'
 import { Box, Stack, Typography } from '@mui/material'
 import {
+  UserButton,
   AvgRating,
 	FavoriteButton,
 	DisplayFields,
 	Image,
 	Icon,
 	TouchableOpacity,
-	Actions,
+	Actions,  
 } from '../../..'
+import { ThemeProvider } from '../../../../context'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
@@ -26,6 +28,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		objectFit = 'cover',
 		height = 320,
 		enableGradient = false,
+    enableUsers = false,
 		enableOverlay = false,
 		enableFavorites = false,
     enableRatings = false,
@@ -43,67 +46,76 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		}
 	}
 
+  const { theme } = useContext(ThemeContext)
+
 	return (
-		<Stack
-			spacing={1}
-			sx={{
-				...sx.root,
-			}}
-		>
-			<TouchableOpacity handleClick={handleItemClick}>
-				<Image
-					label={label}
-					src={image?.url}
-					height={height}
-					objectFit={objectFit}
-					alt={title}
-					enableGradient={enableGradient}
-					enableOverlay={enableOverlay}
-				/>
-			</TouchableOpacity>
-			<Stack spacing={1} sx={sx.cover}>
-				<Stack
-					sx={sx.fullWidth}
-					spacing={1}
-					direction={'row'}
-					alignItems="center"
-				>
-					{icon && (
-						<Box>
-							<Icon size={20} name={icon} color="common.white" />
-						</Box>
-					)}
-					<Box sx={sx.content}>
-						<Stack sx={sx.contentContainer} direction="column" spacing={0}>
-							<Box sx={sx.fullWidth}>
-								<Typography color="common.white" variant={textVariant}>
-									{truncate(title, 60)}
-								</Typography>
-                { enableRatings && (
-                  <AvgRating color='common.white' resource={resource} size="small" />
-                )}
-								<DisplayFields
-									color="common.white"
-									fields={displayFields}
-									resource={resource}
-								/>
-							</Box>
-						</Stack>
-					</Box>
-				</Stack>
-			</Stack>
-			<Box sx={sx.actions}>
-				{enableFavorites && (
-					<FavoriteButton handle={resource?.handle} color="common.white" />
-				)}
-				<Actions
-					numVisible={0}
-					resource={resource}
-					actions={actions}
-					color={'common.white'}
-				/>
-			</Box>
-		</Stack>
+    <ThemeProvider 
+      muiTheme={ theme } 
+      textPrimary='#FFFFFF'
+      textSecondary='#FFFFFF' 
+    >
+      <Stack
+        spacing={1}
+        sx={{
+          ...sx.root,
+        }}
+      >
+        <TouchableOpacity handleClick={handleItemClick}>
+          <Image
+            label={label}
+            src={image?.url}
+            height={height}
+            objectFit={objectFit}
+            alt={title}
+            enableGradient={enableGradient}
+            enableOverlay={enableOverlay}
+          />
+        </TouchableOpacity>
+        <Stack spacing={1} sx={sx.cover}>
+          <Stack
+            sx={sx.fullWidth}
+            spacing={1}
+            direction={'row'}
+            alignItems="center"
+          >
+            {icon && (
+              <Box>
+                <Icon size={20} name={icon} color="common.white" />
+              </Box>
+            )}
+            <Box sx={sx.content}>
+              <Stack sx={sx.contentContainer} direction="column" spacing={0}>
+                <Box sx={sx.fullWidth}>
+                  <Typography color='text.primary' variant={textVariant}>
+                    {truncate(title, 60)}
+                  </Typography>
+                  { enableRatings && (
+                    <AvgRating resource={resource} size="small" />
+                  )}
+                  <DisplayFields
+                    fields={displayFields}
+                    resource={resource}
+                  />
+                  { enableUsers && (
+                    <UserButton user={ resource?.user } />
+                  )}
+                </Box>
+              </Stack>
+            </Box>
+          </Stack>
+        </Stack>
+        <Box sx={sx.actions}>
+          {enableFavorites && (
+            <FavoriteButton handle={resource?.handle} color="common.white" />
+          )}
+          <Actions
+            numVisible={0}
+            resource={resource}
+            actions={actions}
+          />
+        </Box>
+      </Stack>
+    </ThemeProvider>
 	)
 }
 

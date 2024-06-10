@@ -6,7 +6,8 @@ import {
 	DisplayFields,
 	TouchableOpacity,
 	FavoriteButton,
-  AvgRating
+  AvgRating,
+  UserButton
 } from '../../../../components'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
@@ -28,7 +29,8 @@ const CardList: React.FC<CardProps> = (props) => {
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
-    enableRatings = false 
+    enableRatings = false,
+    enableUsers = false 
 	} = props || {}
 
 	const router = useRouter()
@@ -84,14 +86,19 @@ const CardList: React.FC<CardProps> = (props) => {
 							...sx.content,
 							...(enableBorder && sx.contentBorder),
 						}}
-					>
-						<Typography color="textPrimary" variant={textVariant}>
+					>            
+            <Typography color="textPrimary" variant={textVariant}>
 							{truncate(title)}
 						</Typography>
             { enableRatings && (
               <AvgRating resource={resource} size="small" />
             )}
 						<DisplayFields fields={displayFields} resource={resource} />
+            { enableUsers && (
+              <UserButton 
+                user={ resource?.user }
+              />            
+            )}
 					</Stack>
 					<Stack direction="row" justifyContent="flex-end">
 						{enableFavorites && <FavoriteButton handle={resource?.handle} />}
@@ -166,8 +173,7 @@ const sx = {
 			xs: 1,
 		},
 	},
-	contentBorder: {
-		py: 2,
+	contentBorder: {		
 		px: {
 			sm: 0,
 			xs: 2,

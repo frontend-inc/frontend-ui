@@ -4,14 +4,13 @@ import { DisplayFieldType } from '../../../../types'
 import { Stack } from '@mui/material'
 
 type DisplayFieldsProps = {
-	color?: string
 	fields: DisplayFieldType[]
 	resource: any
 	alignItems?: 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline'
 }
 
 const DisplayFields: React.FC<DisplayFieldsProps> = (props) => {
-	const { fields, resource, color, alignItems = 'flex-start' } = props || {}
+	const { fields, resource, alignItems = 'flex-start' } = props || {}
 
 	return (
 		<Stack
@@ -23,7 +22,6 @@ const DisplayFields: React.FC<DisplayFieldsProps> = (props) => {
 			{fields?.map((field, index) => (
 				<DisplayField
 					key={index}
-					color={color}
 					field={field}
 					resource={resource}
 				/>

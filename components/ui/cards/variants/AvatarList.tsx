@@ -11,7 +11,7 @@ import {
 	Typography,
 } from '@mui/material'
 import { CardProps } from '../../../../types'
-import { Actions, AvgRating, DisplayFields, FavoriteButton } from '../../../../components'
+import { UserButton, Actions, AvgRating, DisplayFields, FavoriteButton } from '../../../../components'
 
 const AvatarList: React.FC<CardProps> = (props) => {
 	const {
@@ -24,6 +24,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
+    enableUsers = false,
 		enableFavorites = false,
     enableRatings = false,
 	} = props
@@ -77,10 +78,15 @@ const AvatarList: React.FC<CardProps> = (props) => {
 						}
 						secondary={
               <Stack direction='column' spacing={1}>
-              { enableRatings && (
-                <AvgRating resource={resource} size="small" /> 
-              )}
-							<DisplayFields fields={displayFields} resource={resource} />
+                { enableRatings && (
+                  <AvgRating resource={resource} size="small" /> 
+                )}
+                <DisplayFields fields={displayFields} resource={resource} />
+                { enableUsers && (
+                  <UserButton 
+                    user={ resource?.user }
+                  />
+                )}
               </Stack>
 						}
 					/>

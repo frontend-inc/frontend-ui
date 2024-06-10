@@ -65,6 +65,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
 		enableDelete = false,
 		enableFavorites = false,
     enableRatings = false,
+    enableUsers = false,
 		filterUser = false,
 		filterTeam = false,
 		query: defaultQuery = {},
@@ -245,6 +246,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
           enableOverlay={enableOverlay}
           enableEdit={enableEdit}
           enableDelete={enableDelete}
+          enableUsers={enableUsers}
           enableFavorites={enableFavorites}
           enableRatings={enableRatings}
           handleEdit={handleEdit}

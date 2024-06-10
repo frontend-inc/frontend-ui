@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Box, Stack, Typography } from '@mui/material'
-import { Image, AvgRating, DisplayFields, FavoriteButton } from '../../..'
+import { Image, UserButton, AvgRating, DisplayFields, FavoriteButton, ResourceList } from '../../..'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
@@ -17,6 +17,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 		handleClick,
 		objectFit = 'cover',
 		height = 240,
+    enableUsers = false,
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
@@ -46,7 +47,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 				minHeight: height + 80,
 			}}
 		>
-			<Box sx={sx.imageContainer}>
+		  <Box sx={sx.imageContainer}>
 				<Image
 					src={image?.url}
 					height={height}
@@ -70,16 +71,21 @@ const CardGrid: React.FC<CardProps> = (props) => {
 					<Typography sx={sx.title} color="textPrimary" variant="subtitle2">
 						{truncate(title)}
 					</Typography>
-					<Stack direction="row" justifyContent="flex-end">
-						{enableFavorites && <FavoriteButton handle={resource?.handle} />}
-						<Actions numVisible={0} actions={actions} resource={resource} />
-					</Stack>
+          <Stack direction="row" justifyContent="flex-end">
+            {enableFavorites && <FavoriteButton handle={resource?.handle} />}
+            <Actions numVisible={0} actions={actions} resource={resource} />
+          </Stack>
 				</Stack>
         { enableRatings && (
           <AvgRating resource={resource} size="small" />
         )}
         { displayFields?.length > 0 && (
 				  <DisplayFields fields={displayFields} resource={resource} />
+        )}
+        { resource?.user && (
+          <UserButton 
+            user={ resource?.user }
+          />
         )}
 			</Stack>
 		</Stack>
@@ -117,6 +123,13 @@ const sx = {
 			background: 'linear-gradient(to top, rgb(0,0,0,0.5), transparent)',
 		},
 	},
+  cardHeader: {
+    height: 40,
+    alignItems: 'center',
+  },
+  cardHeaderBorder: {
+    px: 1
+  },
 	content: {
 		width: '100%',
 	},
@@ -124,9 +137,8 @@ const sx = {
 		width: '100%',
 	},
 	contentBorder: {
-		px: 1,
-		pb: 1,
-		pt: 0,
+		p: 1,
+    pt: 0    
 	},
 	title: {
 		width: '100%',

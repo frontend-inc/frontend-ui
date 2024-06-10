@@ -5,7 +5,7 @@ import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CARD_VERT_HEIGHT, CARD_VERT_WIDTH } from '../../../../constants/index'
 import { CardProps } from '../../../../types'
-import { AvgRating, FavoriteButton, DisplayFields, Actions } from '../../..'
+import { UserButton, AvgRating, FavoriteButton, DisplayFields, Actions } from '../../..'
 
 const TextGrid: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
@@ -17,6 +17,7 @@ const TextGrid: React.FC<CardProps> = (props) => {
 		handleClick,
 		height = CARD_VERT_HEIGHT,
 		enableBorder = false,    
+    enableUsers = false,
 		enableFavorites = false,
     enableRatings = false,
 	} = props || {}
@@ -58,7 +59,12 @@ const TextGrid: React.FC<CardProps> = (props) => {
 					<Typography sx={sx.title} color="text.primary" variant="subtitle1">
 						{truncate(title)}
 					</Typography>
-				</Link>
+				</Link>        
+        { enableUsers && (
+          <UserButton 
+            user={ resource?.user }
+          />
+        )}
         {enableRatings && (
           <AvgRating resource={resource} size="small" />
         )}
@@ -120,7 +126,7 @@ const sx = {
 		pt: 0,
 	},
 	title: {
-		width: '100%',
+		width: '100%',        
 	},
 	description: {
 		whiteSpace: 'pre-line',

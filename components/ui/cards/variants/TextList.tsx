@@ -4,7 +4,7 @@ import { Box, Link, Stack, Typography } from '@mui/material'
 import { truncate } from '../../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../../types'
-import { AvgRating, FavoriteButton, DisplayFields, Actions } from '../../..'
+import { UserButton, AvgRating, FavoriteButton, DisplayFields, Actions } from '../../..'
 
 const CardList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
@@ -16,6 +16,7 @@ const CardList: React.FC<CardProps> = (props) => {
 		textVariant = 'subtitle1',
 		handleClick,
 		enableBorder = false,
+    enableUsers = false,
 		enableFavorites = false,
     enableRatings = false
 	} = props || {}
@@ -53,6 +54,11 @@ const CardList: React.FC<CardProps> = (props) => {
 							{truncate(title)}
 						</Typography>
 					</Link>
+          { enableUsers && (
+            <UserButton 
+              user={ resource?.user }
+            />
+          )}
           {enableRatings && (
             <AvgRating resource={resource} size="small" />
           )}

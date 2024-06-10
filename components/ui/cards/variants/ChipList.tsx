@@ -10,7 +10,7 @@ import {
 	ListItemText,
 	Typography,
 } from '@mui/material'
-import { AvgRating, FavoriteButton, DisplayFields, Actions } from '../../../../components'
+import { UserButton, AvgRating, FavoriteButton, DisplayFields, Actions } from '../../../../components'
 import { CardProps } from '../../../../types'
 
 const ChipList: React.FC<CardProps> = (props) => {
@@ -22,6 +22,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
+    enableUsers = false,
 		enableFavorites = false,
     enableRatings = false,
 	} = props
@@ -78,7 +79,14 @@ const ChipList: React.FC<CardProps> = (props) => {
               </Stack>
 						}
 						secondary={
-              <DisplayFields fields={displayFields} resource={resource} />
+              <>
+                <DisplayFields fields={displayFields} resource={resource} />
+                { enableUsers && (
+                  <UserButton 
+                    user={ resource?.user }
+                  />
+                )}
+              </>
 						}
 					/>
 				</ListItemButton>

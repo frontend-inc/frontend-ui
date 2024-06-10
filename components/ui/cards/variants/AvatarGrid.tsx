@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { AppContext } from '../../../../context'
 import { Avatar, Box, Stack, Typography } from '@mui/material'
 import {
+  UserButton,
 	Actions,
   AvgRating, 
 	DisplayFields,
@@ -26,6 +27,7 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 		handleClick,
 		height = AVATAR_VERT_HEIGHT,
 		width = AVATAR_VERT_WIDTH,
+    enableUsers = false,
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
@@ -90,6 +92,12 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
         )}             
 			</Stack>
 			<DisplayFields fields={displayFields} resource={resource} />
+      
+      { enableUsers && (
+        <Box sx={ sx.cardFooter }>
+          <UserButton user={ resource?.user } />
+        </Box>
+      )}
 		</Stack>
 	)
 }
@@ -161,4 +169,12 @@ const sx = {
 		alignItems: 'flex-end',
 		justifyContent: 'flex-end',
 	},
+  cardFooter: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    height: 40,
+  }
 }

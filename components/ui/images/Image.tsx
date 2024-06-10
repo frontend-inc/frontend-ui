@@ -138,11 +138,11 @@ const sx = {
 	},
 	gradient: {
 		height: '50%',
-		background: 'linear-gradient(to top, rgb(0,0,0,1.0), transparent)',
+		background: 'linear-gradient(to top, rgb(0,0,0,2.0), transparent)',
 	},
 	gradientBorderRadius: {
 		height: '50%',
-		background: 'linear-gradient(to top, rgb(0,0,0,1.0), transparent)',
+		background: 'linear-gradient(to top, rgb(0,0,0,2.0), transparent)',
 		borderRadius: 1,
 	},
 	secondaryActions: {

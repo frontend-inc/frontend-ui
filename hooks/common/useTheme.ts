@@ -6,6 +6,8 @@ type ThemeProps = {
 	muiTheme?: any
 	primaryColor?: string
 	bgcolor?: string
+  textPrimary?: string 
+  textSecondary?: string
 	borderRadius?: number
 	bodyFont?: string
 	headerFont?: string
@@ -14,9 +16,12 @@ type ThemeProps = {
 }
 
 const useTheme = (props: ThemeProps) => {
+
 	const {
 		muiTheme = defaultTheme,
 		primaryColor,
+    textPrimary,
+    textSecondary,
 		bgcolor,
 		borderRadius,
 		bodyFont,
@@ -85,7 +90,7 @@ const useTheme = (props: ThemeProps) => {
 					main: primaryColor,
 				},
 			}
-		}
+		}    
 
 		if (bgcolor) {
 			palette = {
@@ -99,6 +104,26 @@ const useTheme = (props: ThemeProps) => {
 		}
 
 		palette = buildMuiPalette(palette)
+
+    if (textPrimary) {
+			palette = {
+				...palette,
+				text: {
+					...palette.text,
+					primary: textPrimary,
+				},
+			}
+		}
+
+    if (textSecondary) {
+			palette = {
+				...palette,
+				text: {
+					...palette.text,
+					secondary: textSecondary,
+				},
+			}
+		}
 
 		if (headerFont) {
 			typography = {
@@ -183,10 +208,12 @@ const useTheme = (props: ThemeProps) => {
 		deviceSize,
 		primaryColor,
 		bgcolor,
+    textPrimary,
+    textSecondary,
 		headerFont,
 		bodyFont,
 		borderRadius,
-		muiTheme,
+		muiTheme   
 	])
 
 	return {

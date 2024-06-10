@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Box } from '@mui/material'
-import { AppContext } from '../../../../context'
-import { FavoriteButton, Image, Actions, TouchableOpacity } from '../../..'
+import { AppContext, ThemeContext, ThemeProvider } from '../../../../context'
+import { UserButton, FavoriteButton, Image, Actions, TouchableOpacity } from '../../..'
 import { useRouter } from 'next/router'
 import { IMAGE_HORIZ_HEIGHT } from '../../../../constants/index'
 import { CardProps } from '../../../../types'
@@ -15,6 +15,7 @@ const ImageHoriz: React.FC<CardProps> = (props) => {
 		height = IMAGE_HORIZ_HEIGHT,
 		handleClick,
 		objectFit = 'cover',
+    enableUsers = false,
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
@@ -32,7 +33,14 @@ const ImageHoriz: React.FC<CardProps> = (props) => {
 		}
 	}
 
+  const { theme } = useContext(ThemeContext)
+
 	return (
+    <ThemeProvider 
+      muiTheme={ theme } 
+      textPrimary='#FFFFFF'
+      textSecondary='#FFFFFF' 
+    >
 		<Box
 			sx={{
 				...sx.root,
@@ -52,9 +60,9 @@ const ImageHoriz: React.FC<CardProps> = (props) => {
 						enableGradient={enableGradient}
 						enableOverlay={enableOverlay}
 					/>
-				</TouchableOpacity>
+				</TouchableOpacity>        
 			</Box>
-			<Box sx={sx.actions}>
+			<Box sx={sx.actions}>        
 				{enableFavorites && <FavoriteButton handle={resource?.handle} />}
 				<Actions
 					numVisible={0}
@@ -62,8 +70,16 @@ const ImageHoriz: React.FC<CardProps> = (props) => {
 					resource={resource}
 					color={enableOverlay ? 'common.white' : 'text.secondary'}
 				/>
-			</Box>
+			</Box>    
+      <Box sx={ sx.userCard }>
+        { enableUsers && (
+          <UserButton 
+            user={ resource?.user } 
+          />
+        )}
+      </Box>  
 		</Box>
+    </ThemeProvider>
 	)
 }
 
@@ -93,5 +109,12 @@ const sx = {
 		position: 'absolute',
 		top: 10,
 		right: 10,
+	},
+  userCard: {
+		display: 'flex',
+		flexDirection: 'row',
+		position: 'absolute',
+		bottom: 10,
+		left: 10,
 	},
 }

@@ -17,6 +17,7 @@ type CollectionCardsProps = {
 	enableOverlay?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
+  enableUsers?: boolean
 	enableFavorites?: boolean
   enableRatings?: boolean
 	handleClick: (item: any) => void
@@ -41,6 +42,7 @@ const CollectionCards: React.FC<CollectionCardsProps> = (props) => {
 		enableOverlay = false,
 		enableEdit = false,
 		enableDelete = false,
+    enableUsers = false,
 		enableFavorites = false,
     enableRatings = false,
 	} = props
@@ -69,6 +71,7 @@ const CollectionCards: React.FC<CollectionCardsProps> = (props) => {
 							handleDelete: () => handleDelete(resource),
 							actions,
 						})}
+            enableUsers={enableUsers}
 						enableFavorites={enableFavorites}
             enableRatings={enableRatings}
 						enableBorder={enableBorder}
