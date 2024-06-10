@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { 
   Stack,
   Box,
-  Button,
   Avatar,
   Typography, 
   Link   
@@ -16,7 +15,7 @@ export type UserProfileProps = {
 }
 
 const UserProfile: React.FC<UserProfileProps> = (props) => {
-  const { user, enableFollowing=true } = props || {}
+  const { user, enableFollowing = false } = props || {}
   const { name, username, bio, avatar } = user || {}
 
   return (
