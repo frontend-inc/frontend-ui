@@ -1,3 +1,4 @@
+export * from './analytics'
 export * from './auth'
 export * from './api'
 export * from './addons'

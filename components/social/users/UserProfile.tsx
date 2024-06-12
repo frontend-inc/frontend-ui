@@ -63,7 +63,11 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
           <Stack direction="row" alignItems='center' spacing={1}>
             <Typography variant="h6"  color='text.primary'>{name}</Typography>
           </Stack>
-          <FollowCounts user={ user } />
+          { enableFollowing && (
+            <FollowCounts 
+              user={ user } 
+            />
+          )}
           <Box>
           <Button     
             sx={ sx.button }        
