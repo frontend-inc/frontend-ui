@@ -19,7 +19,7 @@ export const Statistic: React.FC<StatisticProps> = (props) => {
 
   return (
     <Stack 
-      spacing={1}
+      spacing={direction === 'row' ? 1 : 0}
       direction={ direction }
       sx={{        
         ...sx.root,
@@ -43,13 +43,14 @@ export default Statistic
 
 const sx = {
   root: {
+    p: 1,
     borderRadius: 1,
-    padding: 2,
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%'
   },
   rootBorder: {
+    p: 2,
     border: '1px solid',
     borderColor: 'divider'
   }

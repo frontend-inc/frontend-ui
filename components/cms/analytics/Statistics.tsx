@@ -10,6 +10,7 @@ export type StatisticsProps = {
   layout?: 'row' | 'column'
   url: string
   query?: any
+  direction?: 'row' | 'column'
   metaFields: {
     icon?: any
     label: string
@@ -29,6 +30,7 @@ const Statistics: React.FC<StatisticsProps> = (props) => {
     enableBorder, 
     url, 
     metaFields=[],
+    direction,
     query: defaultQuery = {},
   } = props || {}
 
@@ -57,6 +59,7 @@ const Statistics: React.FC<StatisticsProps> = (props) => {
       { metaFields?.map((metaField, i) => (
         <Statistic           
           key={i}
+          direction={direction}
           icon={ metaField?.icon }
           label={metaField?.label}
           value={data?.[metaField.value] || 0}
