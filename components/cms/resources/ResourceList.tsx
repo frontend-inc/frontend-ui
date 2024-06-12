@@ -314,9 +314,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					description={ emptyDescription }
 				/>
 			)}
-      { loading && !resources.length && (
        <Loader loading={loading} />
-      )}
 			{enableLoadMore && (
 				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
 			)}

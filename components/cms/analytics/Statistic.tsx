@@ -4,31 +4,38 @@ import {
   Box,
   Typography  
 } from '@mui/material'
+import { Icon } from '../../../components'
 
 export type StatisticProps = {
   value: number
   label: string
   icon?: any
+  direction?: 'row' | 'column'
   enableBorder?: boolean
 }
 
 export const Statistic: React.FC<StatisticProps> = (props) => {
-  const { value, label, icon, enableBorder = false } = props
+  const { value, label, icon, direction="row", enableBorder = false } = props
 
   return (
-    <Box
+    <Stack 
+      spacing={1}
+      direction={ direction }
       sx={{        
         ...sx.root,
         ...(enableBorder && sx.rootBorder)
       }}
     >
-      <Typography variant="h6" color="textPrimary">
-        {value}
-      </Typography>
-      <Typography variant="body2" color="textSecondary">
-        {label}
-      </Typography>
-    </Box>
+      <Box>
+        <Icon name={icon} size={24} />
+      </Box>
+        <Typography variant="h6" color="textPrimary">
+          {value}
+        </Typography>
+        <Typography variant="caption" color="textSecondary">
+          {label}
+        </Typography>
+    </Stack>
   )
 }
 
@@ -38,8 +45,6 @@ const sx = {
   root: {
     borderRadius: 1,
     padding: 2,
-    display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%'

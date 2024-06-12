@@ -1,5 +1,10 @@
 import { is } from 'immutable'
 import React, { useState, useEffect } from 'react'
+import { 
+  mergeFilters,
+  mergeAllFilters,
+  formatFilterArray
+} from '../../helpers'
 
 type UseFiltersProps = {
 	query?: any
@@ -78,26 +83,6 @@ const useFilters = (props: UseFiltersProps) => {
 		)
 	}
 
-	const mergeFilters = (filters, newFilters) => {
-		if (!filters) return newFilters
-		if (!newFilters) return filters
-		let mergedFilters = {
-			AND: [...(filters?.AND || []), ...(newFilters?.AND || [])],
-			OR: [...(filters.OR || []), ...(newFilters.OR || [])],
-		}
-		return mergedFilters
-	}
-
-	const mergeAllFilters = (filters) => {
-		if (filters.length === 0) {
-			return {}
-		}
-
-		return filters.reduce((mergedFilter, currentFilter) => {
-			return mergeFilters(mergedFilter, currentFilter)
-		}, {})
-	}
-
 	const buildQueryFilters = (activeFilters) => {
 		let filters = {}
 		activeFilters
@@ -127,28 +112,7 @@ const useFilters = (props: UseFiltersProps) => {
 		setQueryFilters(buildQueryFilters(activeFilters))
 	}, [activeFilters])
 
-	// Convert the query object into an array of filter options
-	const formatFilterArray = (filters) => {
-		let formattedFilters = []
-		if (typeof filters === 'object') {
-			Object.keys(filters).forEach((where) => {
-				filters[where].forEach((filter) => {
-					let field = Object.keys(filter)[0]
-					let operator = Object.keys(filter[field])[0]
-					let value = filter[field][operator]
-					//@ts-ignore
-					formattedFilters.push({
-						where,
-						field,
-						operator,
-						value,
-					})
-				})
-			})
-			setActiveFilters(formattedFilters)
-		}
-		return formattedFilters
-	}
+  
 	const buildUserFilters = (currentUser, filterUser, filterTeam) => {
 		return {
 			AND: [
@@ -164,7 +128,8 @@ const useFilters = (props: UseFiltersProps) => {
 
 	useEffect(() => {
 		if (query?.filters?.length >= 0) {
-			formatFilterArray(query?.filters)
+			let filterArray = formatFilterArray(query?.filters)
+      setActiveFilters(filterArray)
 		}
 	}, [query?.filters?.length])
 

@@ -3,12 +3,23 @@ import {
   Stack,
 } from '@mui/material'
 import { useStatistics } from '../../../hooks'
+import { mergeFilters } from '../../../helpers'
 import Statistic from './Statistic'
 
 export type StatisticsProps = {
   layout?: 'row' | 'column'
   url: string
   query?: any
+  metaFields: {
+    icon?: any
+    label: string
+    value: 
+      'total' | 
+      'current_day' | 
+      '1_day_ago' | 
+      '7_days_ago' | 
+      '30_days_ago'
+  }[]
   enableBorder?: boolean  
 }
 
@@ -17,6 +28,7 @@ const Statistics: React.FC<StatisticsProps> = (props) => {
   const { 
     enableBorder, 
     url, 
+    metaFields=[],
     query: defaultQuery = {},
   } = props || {}
 
@@ -30,7 +42,7 @@ const Statistics: React.FC<StatisticsProps> = (props) => {
 
   useEffect(() => {
     if(url && defaultQuery) {
-      fetchData(defaultQuery)
+      fetchData(defaultQuery)        
     }
   }, [url])
 
@@ -42,30 +54,15 @@ const Statistics: React.FC<StatisticsProps> = (props) => {
       }} 
       spacing={2}
     >
-      { data && (
-        <>
-          <Statistic 
-            enableBorder={enableBorder}
-            label={'Total'}
-            value={data.total}
-          />
-          <Statistic 
-            enableBorder={enableBorder}
-            label={'Yesterday'}
-            value={data.last_1_day}
-          />
-          <Statistic 
-            enableBorder={enableBorder}
-            label={'Last 7 days'}
-            value={data.last_7_days}
-          />
-          <Statistic 
-            enableBorder={enableBorder}
-            label={'Last 30 days'}
-            value={data.last_30_days}
-          />
-        </>
-      )}
+      { metaFields?.map((metaField, i) => (
+        <Statistic           
+          key={i}
+          icon={ metaField?.icon }
+          label={metaField?.label}
+          value={data?.[metaField.value] || 0}
+          enableBorder={enableBorder}
+        />
+      ))}
     </Stack>
   )
 }
