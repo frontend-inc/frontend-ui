@@ -1,5 +1,6 @@
 export * from './addons'
 export * from './auth'
+export * from './ai'
 export * from './cms'
 export * from './web'
 export * from './ui'
