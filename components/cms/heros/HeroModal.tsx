@@ -118,12 +118,12 @@ const HeroModal: React.FC<HeroModalProps> = (props) => {
                   />
                 )}
                 <Hidden smDown>
-                <IconButton 
-                  onClick={handleClose}
-                  sx={ sx.iconButton }
-                >
-                  <Icon name="X" color='primary.main' size={20} />
-                </IconButton>
+                  <IconButton 
+                    onClick={handleClose}
+                    sx={ sx.iconButton }
+                  >
+                    <Icon name="X" color='primary.main' size={20} />
+                  </IconButton>
                 </Hidden>
               </Stack>
               <Stack direction="column" spacing={1} sx={ sx.innerContent }>
@@ -229,6 +229,9 @@ const sx = {
     top: 10,
     right: 10,
     bgcolor: 'rgb(0,0,0,0.5)',
+    '&:hover': {
+      bgcolor: 'rgb(0,0,0,0.7)',
+    },
   },
   iconButton: {
     border: '1px solid',

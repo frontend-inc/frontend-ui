@@ -46,11 +46,13 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
     />
   )}
   return (
-    <Box sx={{
-      ...sx.container,
-      ...(enableBorder && sx.containerBorder) 
-      }}>
-      <Stack sx={ sx.profile } direction={{ sm: 'row', xs: 'column'}} spacing={4} alignItems="flex-start">
+    <Box 
+      sx={{
+        ...sx.container,
+        ...(enableBorder && sx.containerBorder) 
+      }}
+    >
+      <Stack sx={ sx.profile } direction={{ sm: 'row', xs: 'column'}} spacing={{ sm: 4, xs: 0 }} alignItems="flex-start">
         <Box height="100%" sx={ sx.avatarContainer }>
         { avatar?.url && (
           <UserAvatar 
@@ -61,7 +63,11 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
         </Box>    
         <Stack direction="column" spacing={0}>
           <Stack direction="row" alignItems='center' spacing={1}>
-            <Typography variant="h6"  color='text.primary'>{name}</Typography>
+            <Typography 
+              variant="h6"  
+              color='text.primary'
+              sx={ sx.name }
+            >{name}</Typography>
           </Stack>
           { enableFollowing && (
             <FollowCounts 
@@ -110,6 +116,13 @@ const sx = {
   button: {
     color: 'text.secondary'
   },
+  name: {
+    width: '100%',
+    textAlign: {
+      sm: 'left',
+      xs: 'center'
+    }
+  },
   profile: {
     maxWidth: 600
   },
@@ -121,6 +134,7 @@ const sx = {
     height: 140,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    width: '100%',    
   }
 }
