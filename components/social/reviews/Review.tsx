@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import {	
   Stack,
 	ListItem,
@@ -17,7 +17,7 @@ type ReviewProps = {
 }
 
 const Review: React.FC<ReviewProps> = (props) => {
-	const { review, handleDelete } = props
+	const { review } = props
 
 	return (
     <ListItem

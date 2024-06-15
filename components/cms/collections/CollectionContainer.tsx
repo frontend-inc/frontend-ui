@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useSearch } from '../../../hooks'
 import { useDocuments } from 'frontend-js'
-import { Button, Box, Stack } from '@mui/material'
+import { Button, Stack } from '@mui/material'
 import {
 	Form,
 	Drawer,
@@ -243,34 +243,36 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
           />
         }
       >
-        <RenderList
-          actions={actions}
-          variant={variant}
-          style={style}
-          resources={resources}
-          displayFields={displayFields}
-          handleClick={handleClick}
-          buttonText={buttonText}
-          enableBorder={enableBorder}
-          enableGradient={enableGradient}          
-          enableOverlay={enableOverlay}
-          enableEdit={enableEdit}
-          enableDelete={enableDelete}
-          enableUsers={enableUsers}
-          enableFavorites={enableFavorites}
-          enableRatings={enableRatings}
-          handleEdit={handleEdit}
-          handleDelete={handleDeleteClick}
-          { ...rest }
-        />
-        {enableLoadMore && (
-          <LoadMore
-            page={page}
-            numPages={numPages}
-            loadMore={loadMore}
-            enableInfiniteLoad={enableInfiniteLoad}
+        <Stack direction="column" spacing={2}>
+          <RenderList
+            actions={actions}
+            variant={variant}
+            style={style}
+            resources={resources}
+            displayFields={displayFields}
+            handleClick={handleClick}
+            buttonText={buttonText}
+            enableBorder={enableBorder}
+            enableGradient={enableGradient}          
+            enableOverlay={enableOverlay}
+            enableEdit={enableEdit}
+            enableDelete={enableDelete}
+            enableUsers={enableUsers}
+            enableFavorites={enableFavorites}
+            enableRatings={enableRatings}
+            handleEdit={handleEdit}
+            handleDelete={handleDeleteClick}
+            { ...rest }
           />
-        )}        
+          {enableLoadMore && (
+            <LoadMore
+              page={page}
+              numPages={numPages}
+              loadMore={loadMore}
+              enableInfiniteLoad={enableInfiniteLoad}
+            />
+          )}    
+        </Stack>    
 			</CollectionLayout>			
       {!loading && resources.length == 0 && (
         <Placeholder

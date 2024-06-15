@@ -13,6 +13,7 @@ export { default as CmsKanBan } from './CmsKanBan'
 export { default as CmsTable } from './CmsTable'
 export { default as CmsVimeo } from './CmsVimeo'
 export { default as CmsYouTube } from './CmsYouTube'
+export { default as CmsSimilar } from './CmsSimilar'
 export { default as CmsStatistics } from './CmsStatistics'
 
 // Cms Addons
