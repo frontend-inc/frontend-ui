@@ -69,19 +69,19 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
               sx={ sx.name }
             >{name}</Typography>
           </Stack>
+          <Box sx={ sx.username }>
+            <Button     
+              sx={ sx.button }        
+              onClick={ handleClick }
+              >
+              @{username}
+            </Button>     
+          </Box>                 
           { enableFollowing && (
             <FollowCounts 
               user={ user } 
             />
           )}
-          <Box>
-          <Button     
-            sx={ sx.button }        
-            onClick={ handleClick }
-            >
-            @{username}
-          </Button>     
-          </Box>                 
           { bio && (
             <ExpandableText 
               text={ bio }
@@ -136,5 +136,13 @@ const sx = {
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',    
+  },
+  username: {
+    width: "100%",
+    display: 'flex',
+    justifyContent: {
+      sm: 'flex-start',
+      xs: 'center'
+    }
   }
 }

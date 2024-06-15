@@ -205,9 +205,6 @@ const sx = {
   innerContent: {
     pr: 2,
   },
-	caption: {
-		color: 'text.secondary',
-	},
 	actions: {
     display: 'flex',
     flexDirection: 'row',
@@ -229,9 +226,6 @@ const sx = {
     top: 10,
     right: 10,
     bgcolor: 'rgb(0,0,0,0.5)',
-    '&:hover': {
-      bgcolor: 'rgb(0,0,0,0.7)',
-    },
   },
   iconButton: {
     border: '1px solid',
