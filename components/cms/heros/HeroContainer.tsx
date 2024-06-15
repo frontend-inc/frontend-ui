@@ -33,6 +33,7 @@ const HeroContainer: React.FC<HeroContainerProps> = (props) => {
 		enableBuyNow,
 		enableStripePaymentLink,
 	} = props || {}
+  
 	const { title, description } = resource || {}
 	return (
 		<Stack

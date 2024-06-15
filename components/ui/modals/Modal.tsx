@@ -28,6 +28,7 @@ type ModalProps = {
 	enableCancel?: boolean
 	hideBackdrop?: boolean
 	disableClose?: boolean
+  disableHeader?: boolean
 }
 
 const Modal: React.FC<ModalProps> = (props) => {
@@ -46,6 +47,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 		enableCancel = false,
 		hideBackdrop = false,
 		disableClose = false,
+    disableHeader = false
 	} = props
 
 	const { isMobile } = useResponsive()
@@ -70,6 +72,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 			onClose={handleClose}
 			hideBackdrop={hideBackdrop}
 		>
+      { !disableHeader && (
 			<DialogTitle sx={sx.dialogTitleContainer}>
 				<Box sx={sx.dialogTitleContent}>
 					<Typography variant="subtitle1" color="textPrimary" sx={sx.title}>
@@ -87,6 +90,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 					)}
 				</Box>
 			</DialogTitle>
+      )}
 			<DialogContent
 				sx={{
 					...sx.dialogContent,

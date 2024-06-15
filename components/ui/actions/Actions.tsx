@@ -53,7 +53,6 @@ export default Actions
 
 const sx = {
 	root: {
-		width: '100%',
 		justifyContent: 'space-between',
 	},
 	buttons: {

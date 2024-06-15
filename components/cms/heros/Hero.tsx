@@ -17,6 +17,7 @@ import { useDocuments, flattenDocument } from 'frontend-js'
 export type HeroProps = {
 	handle?: string
 	enableBorder?: boolean
+  enableOverlay?: boolean
 	actions: ActionType[]
 	displayFields: DisplayFieldType[]
 	fields?: FormFieldType[]
@@ -61,6 +62,7 @@ const Hero: React.FC<HeroItemProps> = (props) => {
 		url,
 		actions,
 		enableBorder,
+    enableOverlay,
 		enableEdit,
 		enableFavorites,    
 		enableLikes,
@@ -142,6 +144,7 @@ const Hero: React.FC<HeroItemProps> = (props) => {
 					actions={actions}
 					displayFields={displayFields}
 					enableBorder={enableBorder}
+          enableOverlay={enableOverlay}
 					enableEdit={enableEdit}
 					handleEdit={handleEdit}
 					enableFavorites={enableFavorites}

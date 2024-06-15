@@ -27,6 +27,7 @@ const HeroArticle: React.FC<HeroArticleProps> = (props) => {
 		resource,
 		disableImage = false,
 		enableBorder,
+    enableOverlay,
 		enableEdit,
 		handleEdit,
 		enableFavorites,
@@ -66,6 +67,7 @@ const HeroArticle: React.FC<HeroArticleProps> = (props) => {
 						alt={title}
 						height={400}
 						label={label}
+            enableOverlay={enableOverlay}
 						disableBorderRadius={enableBorder}
 					/>
 				</Box>

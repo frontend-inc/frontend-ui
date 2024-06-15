@@ -26,8 +26,6 @@ const AiChatForm: React.FC<AiChatFormProps> = (props) => {
 		handleInputChange,
 	} = props
 
-  console.log('prompt', prompt)
-
 	useEffect(() => {
     setMessages([
       {
@@ -36,7 +34,7 @@ const AiChatForm: React.FC<AiChatFormProps> = (props) => {
         content: prompt,
       },
     ])
-	}, [])
+	}, [prompt])
 
 	return (
     <Box sx={ sx.root }>

@@ -142,8 +142,6 @@ export default Comments
 
 const sx = {
 	root: {
-		py: 2,
-		pb: 1.5,
 		borderColor: 'divider',
 	},
 	commentHeader: {

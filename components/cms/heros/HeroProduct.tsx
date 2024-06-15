@@ -57,7 +57,10 @@ const HeroProduct: React.FC<HeroProps> = (props) => {
 			>
 				<Stack
 					sx={sx.container}
-					direction={{ md: 'row', xs: 'column' }}
+					direction={{ 
+            md: 'row', 
+            xs: 'column' 
+          }}
 					spacing={4}
 				>
 					<Stack

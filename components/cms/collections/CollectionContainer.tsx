@@ -13,6 +13,7 @@ import {
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
 import {
+  HeroModal,
 	CollectionCards,
   CollectionLayout,
 	Placeholder,
@@ -25,6 +26,7 @@ import { CollectionListProps } from './CollectionList'
 export type CollectContainerProps = CollectionListProps & {	  
   resource?: any
   searchUrl: string
+  enableUsers?: boolean
   component?: React.FC<any>
   rest?: any
 }
@@ -34,11 +36,14 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
 	const { clientUrl, setAuthOpen } = useContext(AppContext)
 	const { currentUser } = useAuth()
 
+  const [open, setOpen] = useState(false)
+  const [activeResource, setActiveResource] = useState({})
+
 	const {
     component: RenderList = CollectionCards,
     resource: _resource,
     user,
-		actions,
+		actions = [],
 		variant = 'grid',
 		style = 'card',
 		href,
@@ -119,13 +124,18 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
   })
 
 	const handleNavigate = (resource) => {
-		if (clientUrl && href && resource?.handle) {
-			window.scrollTo({
-				top: 0,
-				behavior: 'smooth',
-			})
-			router.push(`${clientUrl}${href}/${resource?.handle}`)
-		}
+    if(href){
+      if (clientUrl && href && resource?.handle) {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        })
+        router.push(`${clientUrl}${href}/${resource?.handle}`)
+      }
+    }else{
+      setActiveResource(resource)
+      setOpen(true)    
+    }
 	}
 
 	const { handleClick = handleNavigate } = props
@@ -242,7 +252,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
           handleClick={handleClick}
           buttonText={buttonText}
           enableBorder={enableBorder}
-          enableGradient={enableGradient}
+          enableGradient={enableGradient}          
           enableOverlay={enableOverlay}
           enableEdit={enableEdit}
           enableDelete={enableDelete}
@@ -302,6 +312,19 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
 				description="This action cannot be reversed."
 				handleConfirm={handleDelete}
 			/>
+      <HeroModal
+        open={ open }
+        handleClose={ () => setOpen(false) }
+        actions={ actions }
+        resource={ activeResource }
+        url={ url }
+        displayFields={displayFields}
+        enableOverlay={enableOverlay}
+        enableEdit={enableEdit}
+        enableFavorites={enableFavorites}
+        enableRatings={enableRatings}
+        handleEdit={() => handleEdit(activeResource)}
+      />
 		</>
 	)
 }
