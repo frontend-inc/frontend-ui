@@ -122,7 +122,9 @@ const Sortable: React.FC<SortableProps> = (props) => {
             id={activeResource?.id} 
             resource={activeResource} 
             displayFields={displayFields}   
-            actions={[]}                     
+            actions={[]}   
+            enableRatings={enableRatings}
+            enableFavorites={enableFavorites}                  
           /> 
         ): 
           null 
