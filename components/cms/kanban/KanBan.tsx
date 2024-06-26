@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ActionType, DisplayFieldType, TableHeaderType } from '../../../types'
+import { ActionType, DisplayFieldType } from '../../../types'
 import { flattenDocuments } from 'frontend-js'
 import Sortable from './Sortable'
 import { groupResourcesByField } from '../../../helpers/utils'

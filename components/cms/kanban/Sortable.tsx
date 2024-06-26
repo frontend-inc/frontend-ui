@@ -273,5 +273,6 @@ const sx = {
     p: 1,
     borderRadius: 1,
     boxShadow: 3,
+    width: 280
   }
 }
