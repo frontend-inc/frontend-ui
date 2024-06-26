@@ -139,6 +139,7 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
 	}
 
   const handleDrop = async (movedItem, value, columns) => {    
+    setActiveResource(null)
     let movedDocument = changeDocumentValue(movedItem,fieldName,value)        
     await update(movedDocument)    
     

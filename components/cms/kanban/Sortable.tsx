@@ -97,7 +97,13 @@ const Sortable: React.FC<SortableProps> = (props) => {
         spacing={1}
       >
         {headers?.map((header) => (
-          <Stack sx={sx.column} key={header.value} direction="column" spacing={1} justifyContent='space-between'>
+          <Stack 
+            sx={sx.column} 
+            key={header.value} 
+            direction="column" 
+            spacing={1} 
+            justifyContent='space-between'
+          >
             <Box>
               <Typography variant="subtitle2" color='text.primary'>
                 {header.label}
@@ -180,7 +186,7 @@ const Sortable: React.FC<SortableProps> = (props) => {
 
     if (over) {
       const activeContainer = findContainer(active.id);
-      const overContainer = findContainer(over.id) || over.id; // Check for column id if over.id is not an item
+      const overContainer = findContainer(over.id) || over.id;
 
       if (activeContainer && overContainer) {
         let newColumns;
