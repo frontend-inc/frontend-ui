@@ -194,7 +194,7 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
   if(!headers || !fieldName) return null;
 	return (
     <>
-      <Box px={1}>
+      <Box px={0.5}>
         <CollectionToolbar
           query={query}
           activeFilters={activeFilters}

@@ -1,12 +1,6 @@
 import React from 'react'
 import { CollectionList } from '../..'
 import { CollectionListProps } from './CollectionList'
-import {
-	SortOptionType,
-	SearchFilterOptionType,
-	DisplayFieldType,
-  ActionType,
-} from '../../../types'
 
 export type CollectionSimilarProps = CollectionListProps & {
 	resource: any 

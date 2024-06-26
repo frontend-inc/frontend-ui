@@ -254,7 +254,7 @@ export default Sortable;
 
 const sx = {
   container: {
-    px: 1,
+    px: 0.5,
     py: 2,
     width: '100%',
     overflowX: 'scroll',

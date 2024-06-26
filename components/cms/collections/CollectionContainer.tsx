@@ -320,6 +320,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
         enableEdit={enableEdit}
         enableFavorites={enableFavorites}
         enableRatings={enableRatings}
+        enableUsers={enableUsers}
         handleEdit={() => handleEdit(activeResource)}
       />
 		</>

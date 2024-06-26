@@ -17,6 +17,7 @@ import {
 	Image,
 	SocialButtons,
   ExpandableText,
+  UserButton
 } from '../..'
 import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
@@ -45,6 +46,7 @@ const HeroModal: React.FC<HeroModalProps> = (props) => {
     enableRatings,
 		enableBuyNow,
 		enableStripePaymentLink,
+    enableUsers
 	} = props || {}
 
 	const { 
@@ -131,6 +133,11 @@ const HeroModal: React.FC<HeroModalProps> = (props) => {
                 <Typography color="text.primary" variant="h4">
                   {title}
                 </Typography>
+                { enableUsers && (
+                  <UserButton 
+                    user={ resource?.user }
+                  />            
+                )}
                 { enableRatings == true && (
                   <AvgRating 
                     resource={resource} 

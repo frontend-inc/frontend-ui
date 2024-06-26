@@ -31,6 +31,7 @@ export type HeroProps = {
 	enableSharing?: boolean
   enableRatings?: boolean
 	enableBuyNow?: boolean
+  enableUsers?: boolean
 	enableStripePaymentLink?: boolean
 	handleEdit?: () => void
 }
