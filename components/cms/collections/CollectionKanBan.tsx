@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useDocuments } from 'frontend-js'
 import { CollectionListProps } from './CollectionList'
 import { KanBan } from '../../../components'
-import { SYSTEM_FIELDS, useAuth } from 'frontend-js'
+import { useAuth } from 'frontend-js'
 import { ActionType } from '../../../types'
 import { 
   Drawer, 
@@ -13,7 +13,10 @@ import {
 } from '../../../components'
 import { Button } from '@mui/material'
 import { AppContext } from '../../../context'
-import { flattenDocument } from 'frontend-js'
+import { 
+  changeDocumentValue, 
+  flattenDocument 
+} from 'frontend-js'
 
 export type CollectionKanBanProps = CollectionListProps & {	
 	headers: {
@@ -26,7 +29,7 @@ export type CollectionKanBanProps = CollectionListProps & {
 
 const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
 	
-  const { clientUrl, setAuthOpen } = useContext(AppContext)
+  const { setAuthOpen } = useContext(AppContext)
   const { currentUser } = useAuth()
 
 	const {
@@ -38,6 +41,8 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
     actions=[],
     enableOverlay=false,
     enableEdit,
+    enableDelete,
+    enableCreate,
     enableFavorites,
     enableRatings,  
     enableUsers,  
@@ -46,6 +51,7 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
 
   const { 
     loading,
+    delayedLoading,
     errors,
     resource,
     resources,
@@ -73,11 +79,10 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
     setOpen(true)
   }  
 
-	const handleAdd = () => {
-		if (!currentUser?.id) return setAuthOpen(true)
-		setResource({
-			id: null,
-		})
+	const handleAdd = (columnName) => {
+		if (!currentUser?.id) return setAuthOpen(true);
+		let newResource = changeDocumentValue({}, fieldName, columnName)
+    setResource(newResource)
 		setOpenModal(true)
 	}
 
@@ -104,26 +109,28 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
         }*/
 				setResource({})
 				setOpenModal(false)
-				reloadMany()
+				await reloadMany()        
 			}
 		} catch (err) {
 			console.log('Error', err)
 		}
 	}
 
-	const handleDeleteClick = (item) => {
+	const handleDeleteClick = (item) => {    
 		if (!currentUser?.id) return setAuthOpen(true)
+    setActiveResource(item)
 		setResource(item)
 		setOpenDeleteModal(true)
 	}
 
 	const handleDelete = async () => {
 		if (!currentUser?.id) return setAuthOpen(true)
-		await destroy(resource?.id)
+    if(!resource?.id) return;
+		await destroy(resource.id)
 		setOpenDeleteModal(false)
-		setOpenModal(false)
-		setResource({})
-		reloadMany()
+		setOpenModal(false)		
+		await reloadMany() 
+    setResource({})   
 	}
 
 	const handleRemove = async (name) => {
@@ -131,26 +138,9 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
 		await removeAttachment(resource?.id, name)
 	}
 
-  const handleDrop = async (movedItem, overContainer, columns) => {
-
-    let movedDocument = { ...movedItem }
-		if (SYSTEM_FIELDS.includes(fieldName)) {
-			movedDocument = {
-        ...movedDocument,
-        [fieldName]: overContainer
-      }
-		} else {
-			movedDocument = {
-				...movedDocument,
-				data: {
-					...movedDocument.data,
-					[fieldName]: overContainer,
-				}
-			}
-    }
-    
-    // Update the moved item
-    await update(movedDocument)
+  const handleDrop = async (movedItem, value, columns) => {    
+    let movedDocument = changeDocumentValue(movedItem,fieldName,value)        
+    await update(movedDocument)    
     
     let columnItems = Object.keys(columns).map((key) => columns[key])
     columnItems = columnItems.reduce((acc, val) => acc.concat(val), []);
@@ -161,6 +151,7 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
       }
     })
     await updatePositions(columnItems)
+    await reloadMany()    
   }  
 
   useEffect(() => {
@@ -177,21 +168,25 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
   if(!headers || !fieldName || resources?.length == 0) return null;
 	return (
     <>
-    <KanBan
-      actions={actions}
-      resources={resources}
-      headers={headers}
-      fieldName={fieldName}
-      displayFields={displayFields}
-      handleClick={ handleClick }
-      handleDrop={handleDrop}    
-      enableEdit={enableEdit}
-      enableDelete={enableEdit}
-      handleEdit={handleEdit}
-      handleDelete={handleDeleteClick}      
-      enableFavorites={enableFavorites}
-      enableRatings={enableRatings}       
-    />
+      <KanBan
+        loading={delayedLoading}
+        actions={actions}
+        resources={resources}
+        activeResource={activeResource}
+        headers={headers}
+        fieldName={fieldName}
+        displayFields={displayFields}
+        handleClick={ handleClick }
+        handleDrop={handleDrop}    
+        enableEdit={enableEdit}
+        enableDelete={enableEdit}
+        enableCreate={enableCreate}
+        handleEdit={handleEdit}
+        handleDelete={handleDeleteClick}      
+        handleAdd={handleAdd}
+        enableFavorites={enableFavorites}
+        enableRatings={enableRatings}       
+      />
     	<Drawer
 				open={openModal}
 				handleClose={() => setOpenModal(false)}

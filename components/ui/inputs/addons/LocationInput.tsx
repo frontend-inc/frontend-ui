@@ -37,7 +37,7 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
 		width = 360,
 		zoom = 16,
 		darkTheme = false,
-		enablePosition = true,
+		enablePosition = false,
 		lat,
 		lng,
 	} = props || {}

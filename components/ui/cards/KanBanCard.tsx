@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../../../context'
+import React from 'react'
 import { 
   Box, 
   Button,
@@ -9,7 +8,6 @@ import {
 import {
 	Image,
 	DisplayFields,
-	TouchableOpacity,
 	FavoriteButton,
   AvgRating,
   UserButton
@@ -17,12 +15,13 @@ import {
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../types'
-import { Icon, Actions } from '../../../components'
+import { Actions } from '../../../components'
 import {useSortable} from '@dnd-kit/sortable';
 import { buildActions } from '../../../helpers'
 
 type KanBanCardProps = CardProps & {
   id: string
+  loading?: boolean
   ref?: any
   attributes?: any
   listeners?: any 
@@ -30,14 +29,13 @@ type KanBanCardProps = CardProps & {
 }
 
 const KanBanCard: React.FC<KanBanCardProps> = (props) => {
-	const { clientUrl } = useContext(AppContext)
 
 	const {
     id,
+    loading,
 		actions,
 		resource,
 		displayFields = [],
-		href,
 		height = 200,
 		textVariant = 'subtitle2',
 		handleClick,
@@ -62,8 +60,6 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
     id: id
   })
 
-	const router = useRouter()
-
 	const { title, image } = resource || {}
 
   return (
@@ -72,6 +68,7 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
       sx={{
         ...sx.root,
         ...(enableDragging && sx.rootDragging),
+        ...(loading && sx.rootLoading )
       }}
     >
 		<Stack 
@@ -132,7 +129,9 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
           numVisible={0} 
           actions={buildActions({
             enableEdit,
+            enableDelete,
             handleEdit,
+            handleDelete,
             actions,
           })} 
           resource={resource} 
@@ -164,6 +163,9 @@ const sx = {
   rootDragging: {
     boxShadow: 2,
     transform: 'rotate(3deg)'
+  },
+  rootLoading: {
+    opacity: 0.5
   },
   dragHandle: {
     width: 32,

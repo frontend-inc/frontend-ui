@@ -93,7 +93,7 @@ const HeroModal: React.FC<HeroModalProps> = (props) => {
               spacing={2}
               sx={ sx.rightPanel }
             >
-              <Stack justifyContent='flex-end' alignItems='center' direction="row" spacing={2}>
+              <Stack justifyContent='flex-end' alignItems='center' direction="row" spacing={1}>
                 {(enableLikes || enableFavorites || enableSharing) && (
                   <SocialButtons
                     justifyContent="flex-end"
@@ -121,10 +121,9 @@ const HeroModal: React.FC<HeroModalProps> = (props) => {
                 )}
                 <Hidden smDown>
                   <IconButton 
-                    onClick={handleClose}
-                    sx={ sx.iconButton }
+                    onClick={handleClose}                    
                   >
-                    <Icon name="X" color='primary.main' size={20} />
+                    <Icon name="X" color='text.secondary' size={20} />
                   </IconButton>
                 </Hidden>
               </Stack>
@@ -208,7 +207,6 @@ const sx = {
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    border: '1px solid blue'
 	},
 	imageContainer: {
 		transition: 'all 0.5s ease-in-out',
@@ -225,8 +223,4 @@ const sx = {
     right: 10,
     bgcolor: 'rgb(0,0,0,0.5)',
   },
-  iconButton: {
-    border: '1px solid',
-    borderColor: 'primary.main',
-  }
 }

@@ -5,7 +5,9 @@ import Sortable from './Sortable'
 import { groupResourcesByField } from '../../../helpers/utils'
 
 export type KanBanProps = {	
+  loading?: boolean
 	resources: any
+  activeResource: any
   fieldName: string
   headers: {
     label: string
@@ -19,26 +21,32 @@ export type KanBanProps = {
   enableRatings?: boolean
   enableEdit?: boolean
   enableDelete?: boolean
-  handleEdit?: (resource: any) => void
-  handleDelete?: (resource: any) => void
+  enableCreate?: boolean
+  handleEdit: (resource: any) => void
+  handleDelete: (resource: any) => void
+  handleAdd: (status: string) => void
 }
 
 const KanBan: React.FC<KanBanProps> = (props) => {
 
 	const {
+    loading,
     actions,
     headers,
     fieldName,
 		resources,    
+    activeResource,
 		handleClick,
     handleDrop,
     displayFields=[],
     enableFavorites,
     enableRatings,
     enableEdit,
-    enableDelete,  
+    enableDelete, 
+    enableCreate, 
     handleEdit,
-    handleDelete  
+    handleDelete,
+    handleAdd  
 	} = props
 
   const [groupedResources, setGroupedResources] = useState({})
@@ -51,17 +59,19 @@ const KanBan: React.FC<KanBanProps> = (props) => {
   }
   
   useEffect(() => {
-    if(resources?.length > 0 && fieldName){
-      handleGroupResources(resources, fieldName)
-    }
+    if(resources){
+      handleGroupResources(resources, fieldName) 
+    }    
   }, [resources, fieldName, headers])
   
   if(Object.keys(groupedResources).length == 0) return null;
 	return (
     <Sortable 
+      loading={loading}
       actions={actions}
       headers={headers}
       columns={groupedResources}
+      activeResource={activeResource}
       handleDrop={handleDrop}
       handleClick={handleClick}
       displayFields={displayFields}
@@ -69,8 +79,10 @@ const KanBan: React.FC<KanBanProps> = (props) => {
       enableRatings={enableRatings}
       enableEdit={enableEdit}
       enableDelete={enableDelete}
+      enableCreate={enableCreate}
       handleEdit={handleEdit}
       handleDelete={handleDelete}
+      handleAdd={handleAdd}
     />
 	)
 }

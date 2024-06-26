@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   closestCenter,
   DndContext, 
@@ -14,19 +14,21 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
-import { List, Typography, Stack } from '@mui/material'
+import { Box, Button, List, Typography, Stack } from '@mui/material'
 import Droppable from './Droppable'
 import { 
   ActionType, 
   DisplayFieldType 
 } from '../../../types'
-import { KanBanCard } from '../../../components'
+import { Icon, KanBanCard } from '../../../components'
 
 type SortableProps = {
+  loading?: boolean
   headers: {
     label: string 
     value: string
   }[]
+  activeResource: any
   actions: ActionType[]
   displayFields: DisplayFieldType[]
   handleClick: (resource: any) => void
@@ -36,13 +38,17 @@ type SortableProps = {
   enableRatings?: boolean
   enableEdit?: boolean
   enableDelete?: boolean
-  handleEdit?: (resource: any) => void
-  handleDelete?: (resource: any) => void
+  enableCreate?: boolean
+  handleEdit: (resource: any) => void
+  handleDelete: (resource: any) => void
+  handleAdd: (status: string) => void
 }
 
 const Sortable: React.FC<SortableProps> = (props) => {
   
   const { 
+    loading,
+    activeResource,
     actions=[],
     headers=[],
     handleDrop,
@@ -53,8 +59,10 @@ const Sortable: React.FC<SortableProps> = (props) => {
     enableRatings,
     enableEdit,
     enableDelete,
+    enableCreate,
     handleEdit,
-    handleDelete,
+    handleDelete,   
+    handleAdd 
   } = props 
 
   const [activeId, setActiveId] = useState(null);
@@ -67,7 +75,13 @@ const Sortable: React.FC<SortableProps> = (props) => {
     })
   );
 
-  const activeResource = activeId ? findResourceById(activeId) : null;
+  const draggedResource = activeId ? findResourceById(activeId) : null;
+  
+  useEffect(() => {
+    if(initialColumns){
+      setColumns(initialColumns)
+    }
+  }, [initialColumns])
 
   if(headers.length === 0) return null;
   return (
@@ -77,50 +91,73 @@ const Sortable: React.FC<SortableProps> = (props) => {
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
     >
-      <Stack sx={sx.container} direction="row" spacing={1}>
+      <Stack 
+        sx={ sx.container } 
+        direction="row" 
+        spacing={1}
+      >
         {headers?.map((header) => (
-          <Stack sx={sx.column} key={header.value} direction="column" spacing={1}>
-            <Typography variant="subtitle2" color='text.primary'>
-              {header.label}
-            </Typography>
-            <SortableContext 
-              key={header.value}
-              items={columns[header.value]?.map(res => res.id)}
-              strategy={verticalListSortingStrategy}
-            >
-              <List disablePadding>
-                { columns[header.value].length > 0 ? 
-                  columns[header.value]?.map(res => (
-                  <KanBanCard 
-                    key={res?.id} 
-                    id={res?.id} 
-                    resource={res}
-                    actions={actions}
-                    displayFields={displayFields}
-                    handleClick={() => handleClick(res)}
-                    enableFavorites={enableFavorites}
-                    enableRatings={enableRatings}
-                    enableEdit={enableEdit}
-                    enableDelete={enableDelete}
-                    handleEdit={handleEdit}
-                    handleDelete={handleDelete}
-                  />
-                )):(
-                  <Droppable 
-                    id={header.value} 
-                  />
-                )}
-              </List>
-            </SortableContext>
+          <Stack sx={sx.column} key={header.value} direction="column" spacing={1} justifyContent='space-between'>
+            <Box>
+              <Typography variant="subtitle2" color='text.primary'>
+                {header.label}
+              </Typography>
+              <SortableContext 
+                key={header.value}
+                items={columns[header.value]?.map(res => res.id)}
+                strategy={verticalListSortingStrategy}
+              >
+                <List 
+                  sx={sx.cardList}
+                  disablePadding
+                >
+                  { columns[header.value].length > 0 ? 
+                    columns[header.value]?.map(res => (
+                    <KanBanCard 
+                      loading={ loading && activeResource?.id == res?.id }
+                      key={res?.id} 
+                      id={res?.id} 
+                      resource={res}
+                      actions={actions}
+                      displayFields={displayFields}
+                      handleClick={() => handleClick(res)}
+                      enableFavorites={enableFavorites}
+                      enableRatings={enableRatings}
+                      enableEdit={enableEdit}
+                      enableDelete={enableDelete}
+                      handleEdit={() => handleEdit(res)}
+                      handleDelete={() => handleDelete(res)}
+                    />
+                  )):(
+                    <Droppable 
+                      id={header.value} 
+                    />
+                  )}
+                </List>
+              </SortableContext>
+            </Box>
+            {enableCreate && (
+              <Button 
+                fullWidth
+                variant="contained" 
+                color="secondary" 
+                onClick={() => handleAdd(header.value)}
+                startIcon={
+                  <Icon name="Plus" size={20} />
+                }
+              >
+                Add
+              </Button>
+            )}
           </Stack>
         ))}
       </Stack>
       <DragOverlay>
-        {activeResource ? (
+        {draggedResource ? (
           <KanBanCard 
             enableDragging
-            id={activeResource?.id} 
-            resource={activeResource} 
+            id={draggedResource?.id} 
+            resource={draggedResource} 
             displayFields={displayFields}   
             actions={[]}   
             enableRatings={enableRatings}
@@ -191,8 +228,6 @@ const Sortable: React.FC<SortableProps> = (props) => {
     setActiveId(null);
   }
 
-
-
   function findResourceById(id) {
     for (const column in columns) {
       const resource = columns[column].find(item => item.id === id);
@@ -216,11 +251,21 @@ const sx = {
     px: 1,
     py: 2,
     width: '100%',
-    overflowX: 'scroll'
+    overflowX: 'scroll',
+  },
+  loading: {
+    opacity: 0.5
+  },
+  cardList: {
+    maxHeight: '100vh',
+    overflowY: 'scroll',
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
   },
   column: {
     p: 1,
     borderRadius: 1,
-    boxShadow: 2
+    boxShadow: 3,
   }
 }
