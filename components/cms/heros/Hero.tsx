@@ -56,7 +56,7 @@ const Hero: React.FC<HeroItemProps> = (props) => {
 	const {
 		style = 'article',
 		resource: _resource,
-		fields,
+		fields=[],
 		displayFields = [],
 		fieldName,
 		url,

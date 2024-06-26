@@ -10,6 +10,7 @@ import { Actions } from '../../../../components'
 const CardGrid: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
+    ref,
 		actions,
 		resource,
 		displayFields = [],
@@ -39,6 +40,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 
 	return (
 		<Stack
+      ref={ref}
 			spacing={1}
 			sx={{
 				...sx.root,
@@ -99,6 +101,7 @@ const sx = {
 		borderRadius: 1,
 		width: '100%',
 		minWidth: 300,
+    bgcolor: 'background.default'
 	},
 	rootBorder: {
 		border: '1px solid',

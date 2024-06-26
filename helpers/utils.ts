@@ -57,6 +57,26 @@ export const groupBy = (arr, name) => {
 	return grouped
 }
 
+export const groupResourcesByField = (resources, fieldName, allowedValues) => {
+  // Initialize the grouped result object with keys from allowedValues
+  const grouped = {};
+  allowedValues.forEach(value => {
+      grouped[value] = [];
+  });
+
+  // Iterate over each resource
+  resources.forEach(resource => {
+      // Check if the resource has the specified field and if its value is allowed
+      if (resource.hasOwnProperty(fieldName) && allowedValues.includes(resource[fieldName])) {
+          // Add the resource to the appropriate group
+          grouped[resource[fieldName]].push(resource);
+      }
+  });
+
+  return grouped;
+}
+
+
 // https://cloudinary.com/documentation/resizing_and_cropping
 export const resize = (src, { width, height, transform = 'fill' }) => {
 	if (!src) return null

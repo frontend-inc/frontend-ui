@@ -33,17 +33,22 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 	if (!enableLikes && !enableFavorites && !enableSharing) return null
 	return (
 		<Stack direction={ direction } justifyContent={justifyContent} spacing={1}>
-			{enableLikes && (
+			{enableLikes == true && (
 				<LikeButton variant="button" handle={handle} numLikes={numLikes} />
 			)}
-			{enableFavorites && (
+			{enableFavorites == true && (
 				<FavoriteButton
 					variant="button"
 					handle={handle}
 					numFavorites={numFavorites}
 				/>
 			)}
-			{enableSharing && <ShareButton variant="button" url={currentPageUrl} />}
+			{enableSharing == true && (
+        <ShareButton 
+          variant="button" 
+          url={currentPageUrl} 
+        />
+      )}
 		</Stack>
 	)
 }

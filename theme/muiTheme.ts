@@ -17,7 +17,6 @@ export const muiTheme = {
 			light: '#343842',
 		},
 	},
-	shadows,
 	typography,
 	shape,
 	spacing,

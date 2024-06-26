@@ -35,7 +35,7 @@ const CardList: React.FC<CardProps> = (props) => {
 
 	const router = useRouter()
 
-	const { label, title, subtitle, description, image } = resource || {}
+	const { label, title, image } = resource || {}
 
 	const handleItemClick = () => {
 		if (handleClick) {

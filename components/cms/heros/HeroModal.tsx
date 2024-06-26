@@ -72,21 +72,23 @@ const HeroModal: React.FC<HeroModalProps> = (props) => {
             direction={{ md: 'row', xs: 'column' }}
             spacing={4}
           >
-            <Stack
-              spacing={2}
-              direction="column"
-              sx={ sx.leftPanel }
-            >
-              <Box sx={sx.imageContainer}>
-                <Image
-                  src={image?.url}
-                  alt={title}
-                  height={620}
-                  label={label}
-                  disableBorderRadius
-                />
-              </Box>
-            </Stack>
+            { image?.url && (
+              <Stack
+                spacing={2}
+                direction="column"
+                sx={ sx.leftPanel }
+              >
+                <Box sx={sx.imageContainer}>
+                  <Image
+                    src={image?.url}
+                    alt={title}
+                    height={620}
+                    label={label}
+                    disableBorderRadius
+                  />
+                </Box>
+              </Stack>
+            )}
             <Stack
               spacing={2}
               sx={ sx.rightPanel }
@@ -130,7 +132,7 @@ const HeroModal: React.FC<HeroModalProps> = (props) => {
                 <Typography color="text.primary" variant="h4">
                   {title}
                 </Typography>
-                { enableRatings && (
+                { enableRatings == true && (
                   <AvgRating 
                     resource={resource} 
                     enableTotal
@@ -193,10 +195,6 @@ const sx = {
 	rightPanel: {
     p: 2,
 		width: '100%',
-		maxWidth: {
-			sm: 500,
-			xs: '100%',
-		},
     overflowY: 'scroll',
     '&::-webkit-scrollbar': {
       display: 'none',

@@ -28,7 +28,7 @@ export type CollectContainerProps = CollectionListProps & {
   searchUrl: string
   enableUsers?: boolean
   component?: React.FC<any>
-  rest?: any
+  rest?: any  
 }
 
 const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
@@ -82,7 +82,6 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
 
 	const {
 		loading,
-		delayedLoading,
 		errors,
 		resource,
 		setResource,
@@ -139,7 +138,6 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
 	}
 
 	const { handleClick = handleNavigate } = props
-
 	const [openModal, setOpenModal] = useState(false)
 	const [openDeleteModal, setOpenDeleteModal] = useState(false)
 
@@ -167,10 +165,6 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
 				resp = await create(resource)
 			}
 			if (resp?.id) {
-        if(_resource?.id) {
-          await addLinks(resp.id, [_resource?.id])
-          reloadMany()
-        }
 				setResource({})
 				setOpenModal(false)
 				reloadMany()
@@ -188,6 +182,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
 
 	const handleDelete = async () => {
 		if (!currentUser?.id) return setAuthOpen(true)
+    if(!resource?.id) return;
 		await destroy(resource?.id)
 		setOpenDeleteModal(false)
 		setOpenModal(false)
@@ -197,6 +192,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
 
 	const handleRemove = async (name) => {
 		if (!currentUser?.id) return setAuthOpen(true)
+    if(!resource?.id) return;
 		await removeAttachment(resource?.id, name)
 	}
 

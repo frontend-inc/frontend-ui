@@ -43,6 +43,7 @@ export type CollectionListProps = {
 	enableDelete?: boolean
 	enableFavorites?: boolean
   enableRatings?: boolean
+  enableUsers?: boolean
 	filterUser?: boolean
 	filterTeam?: boolean
 	emptyIcon?: string

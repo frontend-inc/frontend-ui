@@ -1,111 +1,78 @@
 import React, { useState, useEffect } from 'react'
-import { CollectionListProps } from '../../../components/cms/collections/CollectionList'
-import { TableHeaderType } from '../../../types'
-import { 
-  Stack, 
-  Box 
-} from '@mui/material'
-import { Card } from '../../../components'
+import { ActionType, DisplayFieldType, TableHeaderType } from '../../../types'
 import { flattenDocuments } from 'frontend-js'
+import Sortable from './Sortable'
+import { groupResourcesByField } from '../../../helpers/utils'
 
-export type KanBanProps = CollectionListProps & {	
+export type KanBanProps = {	
 	resources: any
   fieldName: string
-  headers: TableHeaderType[]
-  handleDrop: (resource: any) => void
-  handleClick: () => void
+  headers: {
+    label: string
+    value: string 
+  }[]
+  actions: ActionType[]
+  displayFields: DisplayFieldType[]
+  handleDrop: (movedItem: any, overContainer: string, columns: any[]) => void
+  handleClick: (resource: any) => void
+  enableFavorites?: boolean
+  enableRatings?: boolean
+  enableEdit?: boolean
+  enableDelete?: boolean
+  handleEdit?: (resource: any) => void
+  handleDelete?: (resource: any) => void
 }
 
 const KanBan: React.FC<KanBanProps> = (props) => {
-	
-  const KANBAN_HEADERS = [
-    { label: "To Do", value: "todo" },
-    { label: "Doing", value: "doing" },
-    { label: "Done", value: "done" },
-  ]
 
 	const {
-		resources,
+    actions,
+    headers,
+    fieldName,
+		resources,    
 		handleClick,
     handleDrop,
     displayFields=[],
-    ...rest
+    enableFavorites,
+    enableRatings,
+    enableEdit,
+    enableDelete,  
+    handleEdit,
+    handleDelete  
 	} = props
 
-  const headers = KANBAN_HEADERS;
-  const fieldName="status";
-
   const [groupedResources, setGroupedResources] = useState({})
-
-  const groupBy = (resources, name) => {
-    const grouped = {}
-    resources.forEach((item) => {
-      if (!item) return
-      let groupBy = item[name]
-      if(!groupBy){
-        groupBy = headers[0].value
-      }
-
-      if (!grouped[groupBy]) {
-        grouped[groupBy] = []
-      }
-
-      grouped[groupBy].push(item)
-    })    
-    return grouped
-  }
-
-  useEffect(() => {
-    if(resources && headers && fieldName){
-      let grouped = groupBy(flattenDocuments(resources), fieldName)      
-      setGroupedResources(grouped)
-    }
-  }, [resources, headers, fieldName])
   
-  if(!groupedResources) return null;
+  const handleGroupResources = (resources, fieldName) => {
+    let flattenedResources = flattenDocuments(resources)
+    let allowedOptions = headers.map((header) => header.value)
+    let grouped = groupResourcesByField(flattenedResources, fieldName, allowedOptions)      
+    setGroupedResources(grouped)
+  }
+  
+  useEffect(() => {
+    if(resources?.length > 0 && fieldName){
+      handleGroupResources(resources, fieldName)
+    }
+  }, [resources, fieldName, headers])
+  
+  if(Object.keys(groupedResources).length == 0) return null;
 	return (
-    <Stack direction="row" spacing={1}>
-      { Object.keys(groupedResources)?.map((key) => (
-        <Stack 
-          key={ key }
-          direction="column" 
-          spacing={1}
-          sx={ sx.column }
-        >
-          { groupedResources[key]?.map((resource) => (
-            <Card 
-              key={resource.id}
-              enableBorder
-              resource={resource}          
-              displayFields={displayFields}
-              actions={[]}
-              handleClick={handleClick}          
-              variant="grid"
-            />
-          ))}
-        </Stack>
-      ))}
-    </Stack>
+    <Sortable 
+      actions={actions}
+      headers={headers}
+      columns={groupedResources}
+      handleDrop={handleDrop}
+      handleClick={handleClick}
+      displayFields={displayFields}
+      enableFavorites={enableFavorites}
+      enableRatings={enableRatings}
+      enableEdit={enableEdit}
+      enableDelete={enableDelete}
+      handleEdit={handleEdit}
+      handleDelete={handleDelete}
+    />
 	)
 }
 
 export default KanBan
-
-const sx = {
-  board: {
-    width: "100%",
-    overflowX: "scroll",    
-    '&::-webkit-scrollbar': {
-      display: 'none'
-    }
-  },
-  column: {
-    width: 320,
-    height: "100%",
-    overflowY: "scroll",
-    overflowX: "hidden",
-    '&::-webkit-scrollbar': {
-      display: 'none'
-    }
-  }
-}
