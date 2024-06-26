@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useDocuments } from 'frontend-js'
 import { CollectionListProps } from './CollectionList'
-import { CollectionToolbar, KanBan } from '../../../components'
+import { CollectionToolbar, KanBan } from '../..'
 import { useAuth } from 'frontend-js'
 import { useSearch } from '../../../hooks'
 import { ActionType } from '../../../types'
@@ -11,7 +11,7 @@ import {
   IconLoading,
   AlertModal,
   HeroModal 
-} from '../../../components'
+} from '../..'
 import { Box, Button } from '@mui/material'
 import { AppContext } from '../../../context'
 import { 
@@ -24,8 +24,8 @@ export type CollectionKanBanProps = CollectionListProps & {
     label: string 
     value: string 
   }[]
+  resource: any
   actions: ActionType[]
-  fieldName: string 
   searchUrl: string    
 }
 
@@ -36,9 +36,9 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
 
 	const {
 		url,
+    searchUrl,
     headers,
     fields=[],
-    fieldName,
     resource: _resource,
     displayFields=[],
     actions=[],
@@ -62,6 +62,8 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
     ...rest
 	} = props  
 
+  const fieldName = 'status'; //Hard code the field as status
+
   const { 
     loading,
     delayedLoading,
@@ -74,14 +76,12 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
     handleDataChange,
     removeAttachment,
     addLinks,
-    reloadMany,
     updatePositions
   } = useDocuments({
     url
   })
 
   const {
-    delayedLoading: searchLoading,
     resources,
     query,
     keywords,
@@ -89,20 +89,17 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
     handleSearch,
     handleSortBy,
     handleSortDirection,
+    reloadMany,
     activeFilters,
     handleFilter,
     handleClearFilters, 
   } = useSearch({
-    url,    
+    url: searchUrl,    
     user: currentUser,
     perPage: 1000,
     filterUser,
     filterTeam,
-    query: {
-      filters: {
-        AND: []
-      }
-    },  
+    query: {},  
   })
 
   const [open, setOpen] = useState(false)

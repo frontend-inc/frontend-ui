@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionKanBan } from '../../components'
-import { CollectionKanBanProps } from '../../components/cms/collections/CollectionKanBan'
+import { ForeignCollectionKanBan } from '../../components'
+import { ForeignCollectionKanBanProps } from '../../components/cms/collections/ForeignCollectionKanBan'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsKanBanProps = SectionProps & HeadingProps & CollectionKanBanProps
+type CmsForeignKanBanProps = SectionProps & HeadingProps & ForeignCollectionKanBanProps
 
-const CmsKanBan: React.FC<CmsKanBanProps> = (props) => {
+const CmsForeignKanBan: React.FC<CmsForeignKanBanProps> = (props) => {
 	const {
 		label,
 		title,
@@ -20,7 +20,6 @@ const CmsKanBan: React.FC<CmsKanBanProps> = (props) => {
 		requireTeam,
 		requirePaid,
 		requireAdmin,
-    url,
 		...rest
 	} = props
 
@@ -41,13 +40,9 @@ const CmsKanBan: React.FC<CmsKanBanProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<CollectionKanBan         
-        {...rest} 
-        url={url}
-        searchUrl={url}
-      />
+			<ForeignCollectionKanBan {...rest} />
 		</Section>
 	)
 }
 
-export default CmsKanBan
+export default CmsForeignKanBan
