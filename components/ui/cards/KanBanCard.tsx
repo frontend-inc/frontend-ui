@@ -121,7 +121,6 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
         size="small"
         variant="contained"
         color="secondary"
-        sx={ sx.button }
       >
         DETAILS
       </Button>   

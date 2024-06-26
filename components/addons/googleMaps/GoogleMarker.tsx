@@ -68,7 +68,6 @@ const GoogleMarker: React.FC<GoogleMarkerProps> = (props) => {
 							{marker?.label}
 						</Typography>
 						<DisplayFields
-							color={'grey.800'}
 							fields={displayFields}
 							resource={resource}
 						/>

@@ -15,7 +15,6 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
 import { List, Typography, Stack } from '@mui/material'
-import SortableItem from './SortableItem'
 import Droppable from './Droppable'
 import { 
   ActionType, 

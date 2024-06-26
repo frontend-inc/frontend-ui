@@ -153,7 +153,7 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
     await update(movedDocument)
     
     let columnItems = Object.keys(columns).map((key) => columns[key])
-    columnItems = columnItems.flat()
+    columnItems = columnItems.reduce((acc, val) => acc.concat(val), []);
     columnItems = columnItems.map((item, index) => {
       return {
         ...item,

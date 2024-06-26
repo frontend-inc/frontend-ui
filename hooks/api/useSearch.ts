@@ -76,7 +76,7 @@ const useSearch = (props) => {
 	const handleClearFilters = () => {
 		setActiveFilters([])
 		findMany({
-			filters: mergeAllFilters([defaultQuery?.filters, currentUserFilter]),
+			filters: mergeAllFilters([defaultQuery?.filters, userFilter]),
 			sort_by: 'id',
 			sort_direction: 'desc',
 			keywords: '',
