@@ -39,7 +39,7 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 		displayFields = [],
 		href,
 		height = 200,
-		textVariant = 'caption',
+		textVariant = 'subtitle2',
 		handleClick,
 		objectFit = 'cover',
     enableDragging=false,
@@ -80,9 +80,6 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
       { ...attributes }
       { ...listeners }
     >
-      <Typography sx={ sx.title } color="text.primary" variant={textVariant}>
-        {truncate(title)}
-      </Typography>       
       { image?.url && (
         <Box sx={ sx.image }>
           <Image
@@ -103,6 +100,9 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
           spacing={0.5}
           sx={ sx.content }
         >     
+          <Typography sx={ sx.title } color="text.primary" variant={textVariant}>
+            {truncate(title)}
+          </Typography>       
           { enableRatings == true && (
             <AvgRating resource={resource} size="small" />
           )}
@@ -186,7 +186,6 @@ const sx = {
     justifyContent: 'center',
   },
 	image: { 
-    pt: 1,   
     overflow: 'hidden',
     borderRadius: theme => `${theme.spacing(1)}px ${theme.spacing(1)}px 0 0`,
 		width: '100%',
@@ -204,8 +203,6 @@ const sx = {
     borderColor: 'divider',
   },
   title: {
-    px: 1,
-    pt: 1,
     width: "100%"
   },
 	description: {
