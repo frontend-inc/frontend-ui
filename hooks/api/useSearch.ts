@@ -114,7 +114,7 @@ const useSearch = (props) => {
 		filterUser,
 		filterTeam,
 		queryFilters,
-		defaultQuery,
+		Object.keys(defaultQuery)?.length,
 	])
 
   return {

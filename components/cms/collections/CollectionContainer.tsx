@@ -100,7 +100,6 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
     delayedLoading: searchLoading,
     resources,
     query,
-    findMany,
     reloadMany,
     page,
     numPages,

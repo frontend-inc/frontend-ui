@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useDocuments } from 'frontend-js'
 import { CollectionListProps } from './CollectionList'
-import { KanBan } from '../../../components'
+import { CollectionToolbar, KanBan } from '../../../components'
 import { useAuth } from 'frontend-js'
+import { useSearch } from '../../../hooks'
 import { ActionType } from '../../../types'
 import { 
   Drawer, 
@@ -11,7 +12,7 @@ import {
   AlertModal,
   HeroModal 
 } from '../../../components'
-import { Button } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import { AppContext } from '../../../context'
 import { 
   changeDocumentValue, 
@@ -25,6 +26,7 @@ export type CollectionKanBanProps = CollectionListProps & {
   }[]
   actions: ActionType[]
   fieldName: string 
+  searchUrl: string    
 }
 
 const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
@@ -37,6 +39,7 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
     headers,
     fields=[],
     fieldName,
+    resource: _resource,
     displayFields=[],
     actions=[],
     enableOverlay=false,
@@ -46,6 +49,16 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
     enableFavorites,
     enableRatings,  
     enableUsers,  
+    enableSearch = false,
+		enableFilters = false,
+		enableSorting = false,
+    filterOptions=[],
+    sortOptions=[],
+    filterUser = false,
+		filterTeam = false,
+    emptyIcon,
+		emptyTitle = 'No results found',
+		emptyDescription = 'Try changing your search or filters.',
     ...rest
 	} = props  
 
@@ -54,18 +67,42 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
     delayedLoading,
     errors,
     resource,
-    resources,
     setResource,
     create,
     update,
     destroy,
     handleDataChange,
     removeAttachment,
-    findMany,
+    addLinks,
     reloadMany,
     updatePositions
   } = useDocuments({
     url
+  })
+
+  const {
+    delayedLoading: searchLoading,
+    resources,
+    query,
+    keywords,
+    handleKeywordChange,
+    handleSearch,
+    handleSortBy,
+    handleSortDirection,
+    activeFilters,
+    handleFilter,
+    handleClearFilters, 
+  } = useSearch({
+    url,    
+    user: currentUser,
+    perPage: 1000,
+    filterUser,
+    filterTeam,
+    query: {
+      filters: {
+        AND: []
+      }
+    },  
   })
 
   const [open, setOpen] = useState(false)
@@ -101,12 +138,11 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
 			} else {
 				resp = await create(resource)
 			}
-			if (resp?.id) {
-        /*
+			if (resp?.id) {        
         if(_resource?.id) {
           await addLinks(resp.id, [_resource?.id])
           reloadMany()
-        }*/
+        }
 				setResource({})
 				setOpenModal(false)
 				await reloadMany()        
@@ -155,20 +191,27 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
     await reloadMany()    
   }  
 
-  useEffect(() => {
-    if(url){
-      findMany({
-        sort_by: 'position',
-        sort_direction: 'asc',
-        page: 1,
-        per_page: 1000
-      })
-    }
-  }, [url])  
-
-  if(!headers || !fieldName || resources?.length == 0) return null;
+  if(!headers || !fieldName) return null;
 	return (
     <>
+      <Box px={1}>
+        <CollectionToolbar
+          query={query}
+          activeFilters={activeFilters}
+          enableFilters={enableFilters}
+          enableSorting={enableSorting}
+          enableSearch={enableSearch}
+          filterOptions={filterOptions}
+          sortOptions={sortOptions}
+          handleFilter={handleFilter}
+          handleClearFilters={handleClearFilters}
+          handleSortBy={handleSortBy}
+          handleSortDirection={handleSortDirection}
+          keywords={keywords}
+          handleKeywordChange={handleKeywordChange}
+          handleSearch={handleSearch}
+        />
+      </Box>
       <KanBan
         loading={delayedLoading}
         actions={actions}
