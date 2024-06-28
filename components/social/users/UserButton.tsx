@@ -5,6 +5,7 @@ import {
 import {
   Box,
   Button,  
+  Typography
 } from '@mui/material'
 import { UserType } from '../../../types'
 
@@ -30,7 +31,9 @@ const UserButton: React.FC<UserButtonProps> = (props) => {
         /> 
     }            
     >
-      { user?.name }
+      <Typography variant="body2" color='text.primary'>
+        { user?.name }
+      </Typography>
     </Button>
     </Box>
   )
@@ -39,7 +42,7 @@ const UserButton: React.FC<UserButtonProps> = (props) => {
 export default UserButton
 
 const sx = {
-  root: {
+  root: {        
     color: 'text.secondary',
     '&:hover': {
       bgcolor: 'transparent',

@@ -10,6 +10,7 @@ import {
 	ListItemButton,
 	ListItemIcon,
 	ListItemText,
+  Typography
 } from '@mui/material'
 import { TextInputPropsType } from '../../../types'
 
@@ -32,7 +33,6 @@ const AutocompleteInput: React.FC<AutocompleteInput> = (props) => {
 	const [open, setOpen] = useState(false)
 
 	const handleClick = (option) => {
-		console.log('handleClick', option)
 		setOpen(false)
 		handleChange({
 			target: {
@@ -72,12 +72,12 @@ const AutocompleteInput: React.FC<AutocompleteInput> = (props) => {
 					>
 						<List dense sx={sx.list}>
 							{options?.map((option, index) => (
-								<ListItem disableGutters>
+								<ListItem>
 									<ListItemButton
 										sx={sx.listItemButton}
 										onClick={() => handleClick(option)}
 									>
-										<ListItemIcon sx={{ mr: 2 }}>
+										<ListItemIcon sx={sx.listItemIcon}>
 											{option?.image && (
 												<Avatar
 													alt={option.label}
@@ -87,7 +87,12 @@ const AutocompleteInput: React.FC<AutocompleteInput> = (props) => {
 											)}
 											{option?.icon && <Icon name={option.icon} size={20} />}
 										</ListItemIcon>
-										<ListItemText primary={option.label} />
+										<ListItemText primary={
+                        <Typography variant="body1" sx={ sx.label }>
+                          { option.label }
+                        </Typography>
+                      } 
+                    />
 									</ListItemButton>
 								</ListItem>
 							))}
@@ -116,7 +121,6 @@ const sx = {
 	},
 	avatar: {
 		borderRadius: 1,
-		mr: 2,
 	},
 	list: {
 		bgcolor: 'background.paper',
@@ -130,8 +134,17 @@ const sx = {
 	listItemButton: {
 		px: 1,
 		py: 0,
+    height: 44,
 	},
+  listItemIcon: {
+     width: 44, 
+     minWidth: 44 
+  },
 	mapContainer: {
 		overflow: 'hidden',
 	},
+  label: {
+    width: '100%',
+    textAlign: 'left'
+  }
 }

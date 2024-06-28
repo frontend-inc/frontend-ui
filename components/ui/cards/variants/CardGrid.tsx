@@ -41,7 +41,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 	return (
 		<Stack
       ref={ref}
-			spacing={1}
+			spacing={0}
 			sx={{
 				...sx.root,
 				...(enableBorder && sx.rootBorder),
@@ -65,30 +65,54 @@ const CardGrid: React.FC<CardProps> = (props) => {
 			<Stack
 				spacing={0}
 				sx={{
-					...sx.content,
-					...(enableBorder && sx.contentBorder),
+					...sx.cardContent,
+					...(enableBorder && sx.cardContentBorder),
 				}}
 			>
-				<Stack sx={sx.contentArea} direction="row" spacing={0}>
-					<Typography sx={sx.title} color="textPrimary" variant="subtitle2">
-						{truncate(title)}
-					</Typography>
-          <Stack direction="row" justifyContent="flex-end">
-            {enableFavorites && <FavoriteButton handle={resource?.handle} />}
-            <Actions numVisible={0} actions={actions} resource={resource} />
+        <Box sx={ sx.content }>
+          <Typography 
+            sx={sx.title} 
+            color="textPrimary" 
+            variant="subtitle2"
+          >
+            {truncate(title)}
+          </Typography>
+          { enableRatings && (
+            <AvgRating 
+              resource={resource} 
+              size="small" 
+            />
+          )}
+          { displayFields?.length > 0 && (
+            <DisplayFields 
+              fields={displayFields} 
+              resource={resource} 
+            />
+          )}
+        </Box>
+        <Stack sx={sx.footer} direction="row" justifyContent="space-between">
+          <Stack direction="row" spacing={1}>
+            { resource?.user && (
+              <UserButton 
+                user={ resource?.user }
+              />
+            )}
           </Stack>
-				</Stack>
-        { enableRatings && (
-          <AvgRating resource={resource} size="small" />
-        )}
-        { displayFields?.length > 0 && (
-				  <DisplayFields fields={displayFields} resource={resource} />
-        )}
-        { resource?.user && (
-          <UserButton 
-            user={ resource?.user }
-          />
-        )}
+          <Stack direction="row" spacing={1}>
+            {enableFavorites && (
+              <FavoriteButton 
+                handle={resource?.handle} 
+              />
+            )}
+            { actions?.length > 0 && (
+              <Actions 
+                numVisible={0} 
+                actions={actions} 
+                resource={resource} 
+              />
+            )}
+          </Stack>
+        </Stack>
 			</Stack>
 		</Stack>
 	)
@@ -100,8 +124,12 @@ const sx = {
 	root: {
 		borderRadius: 1,
 		width: '100%',
-		minWidth: 300,
-    bgcolor: 'background.default'
+		minWidth: 280,
+    bgcolor: 'background.default',
+    transition: 'box-shadow 0.3s',
+    '&:hover': {
+      boxShadow: 2
+    }
 	},
 	rootBorder: {
 		border: '1px solid',
@@ -110,6 +138,8 @@ const sx = {
 		overflow: 'hidden',
 	},
 	imageContainer: {
+    height: 230,
+    minHeight: 230,
 		width: '100%',
 		position: 'relative',
 		flexDirection: 'column',
@@ -126,27 +156,25 @@ const sx = {
 			background: 'linear-gradient(to top, rgb(0,0,0,0.5), transparent)',
 		},
 	},
-  cardHeader: {
-    height: 40,
-    alignItems: 'center',
-  },
   cardHeaderBorder: {
     px: 1
   },
-	content: {
+	cardContent: {
+    pt: 1,
 		width: '100%',
+    display: 'flex',
+    height: '100%',
+    justifyContent: 'space-between',
+    alignItems: 'space-between',
 	},
-	contentArea: {
-		width: '100%',
-	},
-	contentBorder: {
+  cardContentBorder: {
 		p: 1,
     pt: 0    
-	},
+	},  
+	content: {
+		height: '100%'
+	},	
 	title: {
 		width: '100%',
-	},
-	description: {
-		maxWidth: '320px',
 	},
 }

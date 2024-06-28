@@ -60,9 +60,13 @@ const sx = {
 				`${theme.shape.borderRadius}px 0 0 ${theme.shape.borderRadius}px`,
 		},
 	},
-	button: {
+	button: {    
 		fontSize: 13,
 		borderRadius: (theme) =>
 			`0 ${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0`,
+    boxShadow: 0,
+    '&:hover': {
+      boxShadow: 0,
+    },
 	},
 }

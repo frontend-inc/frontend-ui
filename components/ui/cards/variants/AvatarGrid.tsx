@@ -110,6 +110,10 @@ const sx = {
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'center',
+    transition: 'box-shadow 0.3s',
+    '&:hover': {
+      boxShadow: 2
+    }
 	},
 	avatar: {
 		backgroundImage: 'linear-gradient(45deg, #888888, #222222,#000000)',

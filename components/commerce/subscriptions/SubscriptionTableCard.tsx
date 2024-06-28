@@ -90,6 +90,12 @@ const sx = {
 		flexDirection: 'column',
 		justifyContent: 'space-between',
 		maxWidth: 400,
+    boxShadow: 0,
+    transition: 'all 0.3s ease-in-out',
+    '&:hover': {
+      boxShadow: 3,
+    }
+  
 	},
 	content: {
 		minHeight: 300,

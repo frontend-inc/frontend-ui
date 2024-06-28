@@ -21,6 +21,7 @@ export const Statistic: React.FC<StatisticProps> = (props) => {
     <Stack 
       spacing={direction === 'row' ? 1 : 0}
       direction={ direction }
+      boxShadow={1}
       sx={{        
         ...sx.root,
         ...(enableBorder && sx.rootBorder)

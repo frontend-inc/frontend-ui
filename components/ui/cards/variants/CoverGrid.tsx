@@ -128,6 +128,10 @@ const sx = {
 		overflow: 'hidden',
 		width: '100%',
 		borderRadius: 1,
+    transition: 'box-shadow 0.3s',
+    '&:hover': {
+      boxShadow: 2
+    }
 	},
 	cover: {
 		width: '100%',

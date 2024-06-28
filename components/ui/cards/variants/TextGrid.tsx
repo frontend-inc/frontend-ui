@@ -83,6 +83,10 @@ const sx = {
 	root: {
 		position: 'relative',
 		width: '100%',
+    transition: 'box-shadow 0.3s',
+    '&:hover': {
+      boxShadow: 2
+    }
 	},
 	actions: {
 		position: 'absolute',

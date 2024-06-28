@@ -75,7 +75,7 @@ const Image: React.FC<ImageProps> = (props) => {
 							height={1600}
 							width={1600}
 							layout="responsive"
-							style={{
+							style={{                
 								height: `${height}px`,
 								width: width ? `min(${width}px, 100vw)` : '100%',
 								minHeight: `${height}px`,

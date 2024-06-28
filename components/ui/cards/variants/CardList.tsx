@@ -119,6 +119,10 @@ const sx = {
 		flexDirection: 'row',
 		borderRadius: 1,
 		overflow: 'hidden',
+    transition: 'box-shadow 0.3s',
+    '&:hover': {
+      boxShadow: 2
+    }
 	},
 	gradient: {
 		'&::after': {

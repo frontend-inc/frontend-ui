@@ -66,9 +66,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 			/>
 			<Stack
 				spacing={1}
-				sx={{
-					...(enableBorder && sx.contentBorder),
-				}}
+				sx={ sx.content }
 			>
 				<Stack
 					direction="column"
@@ -127,6 +125,10 @@ const sx = {
 		flexDirection: 'column',
 		overflow: 'hidden',
 		borderRadius: 1,
+    transition: 'box-shadow 0.3s',
+    '&:hover': {
+      boxShadow: 2
+    }
 	},
 	rootBorder: {
 		border: '1px solid',
@@ -139,7 +141,7 @@ const sx = {
 	textWithReviews: {
 		minHeight: '120px',
 	},
-	contentBorder: {
+	content: {
 		p: 1,
 		pt: 0,
 	},

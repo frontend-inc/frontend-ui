@@ -139,6 +139,9 @@ const Sortable: React.FC<SortableProps> = (props) => {
                       id={header.value} 
                     />
                   )}
+                  <Droppable 
+                    id={header.value} 
+                  />
                 </List>
               </SortableContext>
             </Box>
@@ -219,7 +222,8 @@ const Sortable: React.FC<SortableProps> = (props) => {
             insertIndex = overIndex;
           }
           
-          newOverItems.splice(insertIndex, 0, movedItem); // Insert at the dropped position
+          // Insert at the dropped position
+          newOverItems.splice(insertIndex, 0, movedItem); 
 
           newColumns = {
             ...columns,
@@ -271,8 +275,12 @@ const sx = {
   },
   column: {
     p: 1,
-    borderRadius: 1,
-    boxShadow: 3,
-    width: 280
+    borderRadius: 1,    
+    width: 280,
+    transition: 'box-shadow 0.2s',
+    boxShadow: 2,
+    '&:hover': {
+      boxShadow: 4
+    }
   }
 }

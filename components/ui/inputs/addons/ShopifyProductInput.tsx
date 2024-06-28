@@ -124,11 +124,10 @@ const sx = {
 		border: '1px solid',
 		borderColor: 'divider',
 		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'flex-start',
+		flexDirection: 'column',		
 		p: 0,
 	},
 	productContent: {
-		p: 1,
+		p: 1,    
 	},
 }

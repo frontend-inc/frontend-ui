@@ -101,6 +101,10 @@ const sx = {
 	root: {
 		m: 0,
 		p: 0,
+    transition: 'box-shadow 0.3s',
+    '&:hover': {
+      boxShadow: 2
+    }
 	},
 	listItemButton: {
 		minHeight: 48,

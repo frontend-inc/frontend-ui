@@ -112,14 +112,15 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
         </Stack>	        
       </Stack>        		          
 		</Stack>
-    <Box sx={ sx.actionsContainer }>
+    <Box sx={ sx.footer }>
       <Button 
         onClick={ handleClick }
         size="small"
         variant="contained"
         color="secondary"
+        sx={ sx.button }
       >
-        DETAILS
+        Details
       </Button>   
       <Stack direction="row" alignItems="flex-end">
         {enableFavorites == true && (
@@ -156,6 +157,7 @@ const sx = {
     borderColor: 'divider',
     bgcolor: 'background.default',
     transition: 'box-shadow 0.3s',
+    overflow: 'hidden',
     '&:hover': {
       boxShadow: 2,      
     }
@@ -180,13 +182,10 @@ const sx = {
       cursor: 'grabbing'
     }
   },
-  actions: {
-    height: '100%',
-    display: 'flex',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
+  button: {
+    textTransform: 'uppercase'
   },
-	image: { 
+	image: {     
     overflow: 'hidden',
     borderRadius: theme => `${theme.spacing(1)}px ${theme.spacing(1)}px 0 0`,
 		width: '100%',
@@ -209,7 +208,7 @@ const sx = {
 	description: {
 		maxWidth: '240px',
 	},
-  actionsContainer: {
+  footer: {
     width: '100%',
     display: 'flex',
     justifyContent: 'space-between',

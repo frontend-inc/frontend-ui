@@ -55,23 +55,22 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 	}
 	return (
 		<Stack direction="column" spacing={1}>
-			{enableSearch && (
-				<Box sx={sx.searchBar}>
-					<SearchInput
-						value={keywords}
-						handleChange={handleKeywordChange}
-						handleSearch={handleSearch}
-					/>
-				</Box>
-			)}
 			<Stack
 				justifyContent="space-between"
 				direction={{ sm: 'row', xs: 'column' }}
 				spacing={1}
 			>
-				<Stack spacing={1} direction={{ xs: 'column', sm: 'row' }}>
+				<Stack spacing={1} direction={{ xs: 'column', sm: 'row' }} alignItems='center'>
+          {enableSearch && (
+            <SearchInput
+              value={keywords}
+              handleChange={handleKeywordChange}
+              handleSearch={handleSearch}
+            />
+          )}
+
 					{enableFilters && (
-						<Box>
+						<Box sx={sx.buttonContainer}>
 							<FilterButton
 								filters={activeFilters}
 								handleFilter={handleFilter}
@@ -81,17 +80,19 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 						</Box>
 					)}
 					{enableSorting && (
-						<SortButton
-							sortBy={query?.sort_by || 'id'}
-							sortDirection={query?.sort_direction || 'desc'}
-							sortOptions={sortOptions}
-							handleSortBy={handleSortBy}
-							handleSortDirection={handleSortDirection}
-						/>
+            <Box sx={sx.buttonContainer}>
+              <SortButton
+                sortBy={query?.sort_by || 'id'}
+                sortDirection={query?.sort_direction || 'desc'}
+                sortOptions={sortOptions}
+                handleSortBy={handleSortBy}
+                handleSortDirection={handleSortDirection}
+              />
+            </Box>
 					)}
 				</Stack>
 				{enableCreate && (
-					<Box>
+					<Stack spacing={1} direction={{ xs: 'column', sm: 'row' }} alignItems='center'>
 						<Button
 							sx={sx.button}
 							color="secondary"
@@ -101,7 +102,7 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 						>
 							Add
 						</Button>
-					</Box>
+					</Stack>
 				)}
 			</Stack>
 		</Stack>
@@ -133,6 +134,12 @@ const sx = {
 			sm: 'row',
 		},
 	},
+  buttonContainer: {
+    width: {
+      xs: '100%',
+      sm: 'auto'
+    }
+  },
 	loading: {
 		opacity: 0.7,
 	},

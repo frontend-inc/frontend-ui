@@ -56,7 +56,7 @@ const SortButton: React.FC<SortButtonProps> = (props) => {
 					/>
 				}
 			>
-				{selected?.label ? selected?.label : 'Sort'}
+				Sort
 			</Button>
 			<Hidden smDown>
 				<Popup

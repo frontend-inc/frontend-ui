@@ -21,7 +21,7 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
 		enableIcons = false,
 		handleEdit,
 		handleDelete,
-		size = 'small',
+		size = 'medium',
 	} = props
 
 	const { open, anchorEl, closeMenu, toggleMenu } = useMenu()

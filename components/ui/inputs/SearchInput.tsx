@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Typography, InputBase } from '@mui/material'
-import { sx as inputSx } from './styles'
+import { Typography, Paper } from '@mui/material'
 import { useDebounce } from 'use-debounce'
 import { SyntheticEventType } from '../../../types'
+import { Icon } from '../../../components'
+import InputBase from '@mui/material/InputBase';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import DirectionsIcon from '@mui/icons-material/Directions';
 
 type SearchInputProps = {
 	name?: string
@@ -10,7 +15,7 @@ type SearchInputProps = {
 	value: string
 	placeholder?: string
 	handleChange: (e: SyntheticEventType) => void
-	handleSearch?: (keywords: string) => void
+	handleSearch: (keywords: string) => void
 	styles?: any
 }
 
@@ -50,50 +55,48 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
 	}, [value])
 
 	return (
-		<Box sx={sx.root}>
-			{label && (
-				<Typography variant="body2" color="textSecondary">
-					{label}
-				</Typography>
-			)}
-			<InputBase
-				sx={{
-					...inputSx.inputBase,
-					...sx.inputBase,
-					...styles,
-				}}
-				type="text"
-				fullWidth
-				name={name}
-				placeholder={placeholder}
-				autoComplete="off"
-				onChange={handleInputChange}
-				value={text}
-				onKeyDown={(e) => {
-					if (e.key === 'Enter') {
-						e.preventDefault()
-						if (handleSearch) {
-							handleSearch(text)
-						}
-					}
-				}}
-			/>
-		</Box>
+		<Paper
+      component="form"
+      sx={sx.root}
+    >
+      <IconButton sx={{ p: '10px' }} aria-label="menu">
+        <MenuIcon />
+      </IconButton>
+      <InputBase
+        sx={{ ml: 1, flex: 1 }}
+        placeholder={ placeholder }
+        inputProps={{ 'aria-label': 'search google maps' }}
+        value={text}
+        onChange={ handleInputChange }
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            handleSearch(text)
+          }
+        }}
+      />
+      <IconButton 
+        onClick={() => handleSearch(debouncedValue)}
+        type="button" sx={{ p: '10px' }} aria-label="search">
+        <Icon name="Search" size={20} color='text.secondary' />
+      </IconButton>
+    </Paper>
 	)
 }
 
 export default SearchInput
 
 const sx = {
-	root: {
-		width: '100%',
-	},
-	inputBase: {
-		minWidth: '165px',
-		'& input, & .MuiInputBase-inputMultiline': {
-			...inputSx.inputBase['& input, & .MuiInputBase-inputMultiline'],
-			fontSize: (theme) => theme.typography.subtitle2.fontSize,
-			fontFamily: (theme) => theme.typography.subtitle2.fontFamily,
-		},
-	},
+  root: { 
+    p: 0, 
+    display: 'flex', 
+    alignItems: 'center', 
+    width: '100%', 
+    maxWidth: 400,
+    minWidth: {
+      sm: 320,
+      xs: "100%"
+    } 
+  }
 }
+

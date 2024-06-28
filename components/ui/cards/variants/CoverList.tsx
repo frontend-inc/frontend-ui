@@ -111,6 +111,10 @@ const sx = {
 		flexDirection: 'column',
 		overflow: 'hidden',
 		borderRadius: 1,
+    transition: 'box-shadow 0.3s',
+    '&:hover': {
+      boxShadow: 2
+    }
 	},
 	cover: {
 		p: 1,

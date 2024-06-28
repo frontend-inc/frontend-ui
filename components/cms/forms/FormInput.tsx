@@ -4,7 +4,6 @@ import {
 	Autosuggest,
 	ArrayInput,
 	LocationInput,
-	ArrayListInput,
 	DateInput,
 	ImageInput,
 	JSONInput,

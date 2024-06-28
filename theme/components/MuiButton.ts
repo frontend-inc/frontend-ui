@@ -1,7 +1,6 @@
 export default {
 	defaultProps: {
 		disableRipple: true,
-		disableElevation: true,
 	},
 	styleOverrides: {
 		root: {
@@ -9,7 +8,10 @@ export default {
 		},
 		sizeSmall: {},
 		sizeLarge: {},
-		outlined: {},
-		contained: {},
+		outlined: {
+    },
+		contained: {
+      boxShadow: '0px 2px 1px 0 rgba(0,0,0,0.2)',                 
+    },
 	},
 }
