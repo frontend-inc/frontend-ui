@@ -51,6 +51,7 @@ const sx = {
     height: 16,
   },
   link: {
+    boxShadow: 0,
     color: 'text.secondary',
   }
 }

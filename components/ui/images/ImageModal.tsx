@@ -51,12 +51,13 @@ const ImageModal: React.FC<ImageModalProps> = (props) => {
 			<Image
 				alt="Image"
 				src={image?.url}
-				height={image?.height || 1200}
-				width={image?.width || 1200}
+				height={1200}
+				width={1200}
 				style={{
 					width: '100%',
 					objectFit: 'contain',
 				}}
+        layout="responsive"
 			/>
 		</Modal>
 	)
