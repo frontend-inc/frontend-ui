@@ -62,7 +62,6 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
       <InputBase
         sx={{ ml: 2, flex: 1 }}
         placeholder={ placeholder }
-        inputProps={{ 'aria-label': 'search google maps' }}
         value={text}
         onChange={ handleInputChange }
         onKeyDown={(e) => {

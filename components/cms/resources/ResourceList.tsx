@@ -225,20 +225,19 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-			<Stack direction="column" spacing={1}>
-				{enableSearch && (
-					<SearchInput
-						value={keywords}
-						handleChange={handleKeywordChange}
-						handleSearch={handleSearch}
-					/>
-				)}
 				<Stack
 					direction={{ xs: 'column', sm: 'row' }}
 					sx={sx.actions}
 					spacing={1}
 				>
 					<Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
+            {enableSearch && (
+              <SearchInput
+                value={keywords}
+                handleChange={handleKeywordChange}
+                handleSearch={handleSearch}
+              />
+            )}
 						{enableFilters && (
 							<Box>
 								<FilterButton
@@ -279,7 +278,6 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 						</Box>
 					)}
 				</Stack>
-			</Stack>
 			<Box sx={{ ...(loading && sx.loading) }}>
 				<Stack spacing={2} sx={sx.fullWidth}>
 					<Box
