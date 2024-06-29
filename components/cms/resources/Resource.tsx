@@ -35,7 +35,6 @@ const Resource: React.FC<ResourceProps> = (props) => {
 		avatar,
 		title,    
 		description,
-    layout='list',
 		image,
 		color,
 		resource,
@@ -54,9 +53,11 @@ const Resource: React.FC<ResourceProps> = (props) => {
 				secondaryAction={
 					<Stack direction="row" spacing={1} sx={sx.actions}>
 						{secondaryActions}
-						<MenuButton handleEdit={handleEdit} handleDelete={handleDelete}>
-							{menuActions}
-						</MenuButton>
+            {(menuActions || handleEdit || handleDelete) && (
+              <MenuButton handleEdit={handleEdit} handleDelete={handleDelete}>
+                {menuActions}
+              </MenuButton>
+            )}
 					</Stack>
 				}
 			>

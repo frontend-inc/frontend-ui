@@ -8,12 +8,14 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import DirectionsIcon from '@mui/icons-material/Directions';
+import { min } from 'moment'
 
 type SearchInputProps = {
 	name?: string
 	label?: string
 	value: string
 	placeholder?: string
+  fullWidth?: boolean
 	handleChange: (e: SyntheticEventType) => void
 	handleSearch: (keywords: string) => void
 	styles?: any
@@ -22,7 +24,7 @@ type SearchInputProps = {
 const SearchInput: React.FC<SearchInputProps> = (props) => {
 	const {
 		name = 'keywords',
-		label,
+		fullWidth=false,
 		value,
 		placeholder = 'Search...',
 		handleChange,
@@ -57,7 +59,10 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
 	return (
 		<Paper
       component="form"
-      sx={sx.root}
+      sx={{ 
+        ...sx.root,
+        ...(fullWidth && sx.fullWidth)
+      }}
     >      
       <InputBase
         sx={{ ml: 2, flex: 1 }}
@@ -93,6 +98,10 @@ const sx = {
       sm: 320,
       xs: "100%"
     } 
+  },
+  fullWidth: {
+    width: '100%',
+    minWidth: '100%'
   }
 }
 

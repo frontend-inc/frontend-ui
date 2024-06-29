@@ -114,6 +114,7 @@ const sx = {
     borderColor: 'divider',
   },
   button: {
+    boxShadow: 0,
     color: 'text.secondary'
   },
   name: {
@@ -138,6 +139,7 @@ const sx = {
     width: '100%',    
   },
   username: {
+    boxShadow: 0,
     width: "100%",
     display: 'flex',
     justifyContent: {
