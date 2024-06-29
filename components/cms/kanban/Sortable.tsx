@@ -267,16 +267,20 @@ const sx = {
     opacity: 0.5
   },
   cardList: {
+    width: 260,    
     maxHeight: '100vh',
-    overflowY: 'scroll',
+    overflowY: 'scroll',    
+    overflowX: 'hidden',
     '&::-webkit-scrollbar': {
       display: 'none',
     },
   },
   column: {
     p: 1,
-    borderRadius: 1,    
     width: 280,
+    minWidth: 280,
+    overflowX: 'hidden',
+    borderRadius: 1,    
     transition: 'box-shadow 0.2s',
     boxShadow: 2,
     '&:hover': {

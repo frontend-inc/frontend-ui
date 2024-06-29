@@ -27,7 +27,7 @@ export default Droppable;
 const sx = {
   root: {
     borderRadius: 1,
-    width: 320,
+    width: 260,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
