@@ -42,9 +42,11 @@ const UserButton: React.FC<UserButtonProps> = (props) => {
 export default UserButton
 
 const sx = {
-  root: {        
+  root: {      
+    boxShadow: 0,  
     color: 'text.secondary',
     '&:hover': {
+      boxShadow: 0,
       bgcolor: 'transparent',
     }
   }
