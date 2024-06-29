@@ -58,12 +58,9 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
 		<Paper
       component="form"
       sx={sx.root}
-    >
-      <IconButton sx={{ p: '10px' }} aria-label="menu">
-        <MenuIcon />
-      </IconButton>
+    >      
       <InputBase
-        sx={{ ml: 1, flex: 1 }}
+        sx={{ ml: 2, flex: 1 }}
         placeholder={ placeholder }
         inputProps={{ 'aria-label': 'search google maps' }}
         value={text}
