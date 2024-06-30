@@ -52,12 +52,6 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 		setCurrentTab(newValue)
 	}
 
-  useEffect(() => {
-    if(currentUser){        
-      setUser(currentUser)
-    }
-  }, [currentUser])
-
   useEffect(() => {    
     if(!currentUser?.id){
       fetchMe()

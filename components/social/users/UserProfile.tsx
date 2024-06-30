@@ -57,27 +57,22 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
         { avatar?.url && (
           <UserAvatar 
             user={ user }  
-            size={96}          
+            size={120}          
           />
         )}  
         </Box>    
         <Stack direction="column" spacing={0}>
-          <Stack direction="row" alignItems='center' spacing={1}>
-            <Typography 
-              variant="h6"  
-              color='text.primary'
-              sx={ sx.name }
-            >{name}</Typography>
-          </Stack>
-          <Box sx={ sx.username }>
-            <Button     
-              sx={ sx.button }        
-              onClick={ handleClick }
-              >
-              @{username}
-            </Button>     
-          </Box>                 
-          { enableFollowing && (
+          <Typography 
+            variant="caption"  
+            color='text.secondary'
+            sx={ sx.username }
+          >@{username}</Typography>                 
+          <Typography 
+            variant="h6"  
+            color='text.primary'
+            sx={ sx.name }
+          >{name}</Typography>
+          { enableFollowing == true && (
             <FollowCounts 
               user={ user } 
             />
@@ -85,11 +80,12 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
           { bio && (
             <ExpandableText 
               text={ bio }
+              color='text.secondary'
             />
           )}      
         </Stack>
         <Stack direction="row" height="100%" justifyContent='flex-start'>
-        { enableFollowing && (
+        { enableFollowing == true && (
           <FollowButton
             user={user}                
           />
@@ -119,6 +115,7 @@ const sx = {
   },
   name: {
     width: '100%',
+    minWidth: 200,
     textAlign: {
       sm: 'left',
       xs: 'center'

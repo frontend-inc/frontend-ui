@@ -19,7 +19,10 @@ type AuthModalProps = {
 }
 
 const AuthModal: React.FC<AuthModalProps> = (props) => {
-	const { disableUsername = false, enableTeams = false } = props
+	const { 
+    disableUsername = false, 
+    enableTeams = false 
+  } = props
 
 	const router = useRouter()
 	const { app_id: appId } = router.query

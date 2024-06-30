@@ -50,7 +50,7 @@ const MyAccountForm: React.FC<AccountFormProps> = (props) => {
         multiline
         rows={3}
         name="bio"
-				value={user.bio}
+				value={user?.bio}
 				placeholder="Bio"
 				handleChange={handleChange}
 			/>

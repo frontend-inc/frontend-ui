@@ -10,19 +10,20 @@ const MAX_CHARS = 200
 type ExpandableTextProps = {
   text: string
   maxChars?: number
+  color?: string 
 }
 
 const ExpandableText: React.FC<ExpandableTextProps> = (props) => {
-  const { text, maxChars = MAX_CHARS } = props || {}
+  const { text, color='text.primary', maxChars = MAX_CHARS } = props || {}
   const [open, setOpen] = useState(false)
   return(
     <Stack direction="column" spacing={0}>
       {open ? (
-        <Typography variant="body1" color="text.primary" sx={sx.text}>
+        <Typography variant="body1" color={ color } sx={sx.text}>
           {text}
         </Typography>
       ) : (
-        <Typography variant="body1" color="text.primary" sx={sx.text}>
+        <Typography variant="body1" color={ color } sx={sx.text}>
           {text?.slice(0, maxChars)}
         </Typography>
       )}
