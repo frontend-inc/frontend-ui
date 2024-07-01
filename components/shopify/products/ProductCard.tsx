@@ -75,7 +75,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 						...(enableOkendoStarRating && sx.textWithReviews),
 					}}
 				>
-					<Typography color="textPrimary" variant="subtitle1">
+					<Typography color="textPrimary" variant="subtitle2">
 						{truncate(product?.title)}
 					</Typography>
 					{enableOkendoStarRating && <OkendoStarRating product={product} />}
