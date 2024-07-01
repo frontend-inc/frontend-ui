@@ -10,7 +10,8 @@ import {
 	ListItemButton,
 	ListItemIcon,
 	ListItemText,
-  Typography
+  Typography,
+  ClickAwayListener
 } from '@mui/material'
 import { TextInputPropsType } from '../../../types'
 
@@ -46,10 +47,13 @@ const AutocompleteInput: React.FC<AutocompleteInput> = (props) => {
 		let { value } = ev.target
 		handleInputChange(value)
 		if (options?.length > 0) setOpen(true)
-		if (value == '') setOpen(false)
+		if (value == ''){
+      setOpen(false)
+    }
 	}
 
 	return (
+    <ClickAwayListener onClickAway={() => setOpen(false)}>
 		<Stack width={'100%'} direction="column" spacing={1}>
 			<TextInput
 				name={name}
@@ -59,48 +63,49 @@ const AutocompleteInput: React.FC<AutocompleteInput> = (props) => {
 				handleChange={handleKeywordChange}
 				direction={direction}
 				placeholder={placeholder}
-				onFocus={() => setOpen(true)}
+				onFocus={() => setOpen(!open)}
 			/>
-			<Box sx={sx.anchor}>
-				{open && (
-					<Paper
-						elevation={2}
-						sx={{
-							...sx.paper,
-							height: options?.length * 64,
-						}}
-					>
-						<List dense sx={sx.list}>
-							{options?.map((option, index) => (
-								<ListItem>
-									<ListItemButton
-										sx={sx.listItemButton}
-										onClick={() => handleClick(option)}
-									>
-										<ListItemIcon sx={sx.listItemIcon}>
-											{option?.image && (
-												<Avatar
-													alt={option.label}
-													src={option.image}
-													sx={sx.avatar}
-												/>
-											)}
-											{option?.icon && <Icon name={option.icon} size={20} />}
-										</ListItemIcon>
-										<ListItemText primary={
-                        <Typography variant="body1" sx={ sx.label }>
-                          { option.label }
-                        </Typography>
-                      } 
-                    />
-									</ListItemButton>
-								</ListItem>
-							))}
-						</List>
-					</Paper>
-				)}
-			</Box>
+        <Box sx={sx.anchor}>
+          {open && (
+            <Paper
+              elevation={2}
+              sx={{
+                ...sx.paper,
+                height: options?.length * 64,
+              }}
+            >
+              <List dense sx={sx.list}>
+                {options?.map((option, index) => (
+                  <ListItem>
+                    <ListItemButton
+                      sx={sx.listItemButton}
+                      onClick={() => handleClick(option)}
+                    >
+                      <ListItemIcon sx={sx.listItemIcon}>
+                        {option?.image && (
+                          <Avatar
+                            alt={option.label}
+                            src={option.image}
+                            sx={sx.avatar}
+                          />
+                        )}
+                        {option?.icon && <Icon name={option.icon} size={20} />}
+                      </ListItemIcon>
+                      <ListItemText primary={
+                          <Typography variant="body1" sx={ sx.label }>
+                            { option.label }
+                          </Typography>
+                        } 
+                      />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
+            </Paper>
+          )}
+        </Box>
 		</Stack>
+    </ClickAwayListener>
 	)
 }
 export default AutocompleteInput
@@ -110,14 +115,15 @@ const sx = {
 		position: 'relative',
 	},
 	paper: {
-		p: 2,
+		p: 0,
 		position: 'absolute',
-		top: -10,
+		top: -6,
 		left: 0,
 		width: '100%',
 		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 		maxHeight: '220px',
 		overflowY: 'scroll',
+    zIndex: theme => theme.zIndex.modal,
 	},
 	avatar: {
 		borderRadius: 1,

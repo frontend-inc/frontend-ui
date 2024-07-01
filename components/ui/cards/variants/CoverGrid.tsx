@@ -89,14 +89,14 @@ const CoverVert: React.FC<CardProps> = (props) => {
                   <Typography color='text.primary' variant={textVariant}>
                     {truncate(title, 60)}
                   </Typography>
-                  { enableRatings && (
+                  { enableRatings == true && (
                     <AvgRating resource={resource} size="small" />
                   )}
                   <DisplayFields
                     fields={displayFields}
                     resource={resource}
                   />
-                  { enableUsers && (
+                  { enableUsers == true && (
                     <UserButton user={ resource?.user } />
                   )}
                 </Box>
@@ -105,7 +105,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
           </Stack>
         </Stack>
         <Box sx={sx.actions}>
-          {enableFavorites && (
+          {enableFavorites == true && (
             <FavoriteButton handle={resource?.handle} color="common.white" />
           )}
           <Actions

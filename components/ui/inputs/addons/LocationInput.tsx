@@ -74,8 +74,9 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
 	useEffect(() => {
 		if (places && places?.length > 0) {
 			setOptions(
-				places?.map((place) => ({
-					label: place?.displayName?.text,
+        //@ts-ignore
+				places?.map((place) => ({        
+					label: place?.displayName?.text,          
 					value: place?.formattedAddress,
 				}))
 			)
@@ -85,7 +86,7 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
 	}, [places])
 
 	return (
-		<Stack width={'100%'} direction="column" spacing={1}>
+		<Stack width={'100%'} direction="column" spacing={0}>
 			{enablePosition && lat && lng && (
 				<Box
 					sx={{
@@ -142,7 +143,7 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
 						</List>
 					</Paper>
 				)}
-				{enablePosition && (
+				{enablePosition == true && (
 					<Stack direction="row" spacing={1} alignItems="center">
 						<Icon name="MapPin" size={20} />
 						<Typography variant="overline" color="text.secondary">
@@ -169,10 +170,10 @@ const sx = {
 		left: 0,
 		width: '100%',
 		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
-		minHeight: '100px',
 		height: '100% !important',
 		maxHeight: '240px',
 		overflowY: 'scroll',
+    zIndex: theme => theme.zIndex.modal,
 	},
 	list: {
 		bgcolor: 'background.paper',

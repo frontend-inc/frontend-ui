@@ -61,7 +61,6 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 		<Box>
 			{variant == 'icon' ? (
 				<IconButton
-					size="small"
 					onClick={handleClick}
 					sx={{
 						color,

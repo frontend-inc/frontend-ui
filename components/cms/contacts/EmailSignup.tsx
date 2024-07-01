@@ -124,6 +124,7 @@ const sx = {
 		},
 	},
 	button: {
+    boxShadow: 1,
 		minWidth: 120,
 		borderRadius: (theme) =>
 			`0 ${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0`,

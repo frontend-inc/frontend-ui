@@ -83,17 +83,16 @@ const sx = {
 	root: {
 		width: '100%',
 		border: '1px solid',
-		borderColor: 'divider',
-		borderRadius: 1,
 		p: 2,
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
 		maxWidth: 400,
-    boxShadow: 0,
+    boxShadow: 2,    
+		borderRadius: 1,
     transition: 'all 0.3s ease-in-out',
     '&:hover': {
-      boxShadow: 3,
+      boxShadow: 6,
     }
   
 	},
@@ -108,7 +107,7 @@ const sx = {
 	selected: {
 		border: '3px solid',
 		borderColor: 'primary.main',
-		boxShadow: '0 0 20px 0 rgba(0,0,0,0.1)',
 		transform: 'scale(1.05)',
+    boxShadow: 4,
 	},
 }

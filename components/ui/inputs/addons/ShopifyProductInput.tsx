@@ -54,7 +54,7 @@ const ShopifyProductInput: React.FC<AutosuggestProps> = (props) => {
 		}
 	}, [value])
 
-	const handleAChange = (e) => {
+	const handleAutocompleteChange = (e) => {
 		const { value } = e.target
 		handleChange({
 			target: {
@@ -101,7 +101,7 @@ const ShopifyProductInput: React.FC<AutosuggestProps> = (props) => {
 				label={label}
 				value={value}
 				options={options}
-				handleChange={handleAChange}
+				handleChange={handleAutocompleteChange}
 				handleInputChange={handleInputChange}
 				direction={direction}
 				placeholder={placeholder}
@@ -121,11 +121,10 @@ const sx = {
 		minHeight: 182,
 		borderRadius: 1,
 		overflow: 'hidden',
-		border: '1px solid',
-		borderColor: 'divider',
 		display: 'flex',
 		flexDirection: 'column',		
 		p: 0,
+    boxShadow: 1
 	},
 	productContent: {
 		p: 1,    

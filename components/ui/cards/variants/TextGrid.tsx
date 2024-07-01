@@ -45,7 +45,11 @@ const TextGrid: React.FC<CardProps> = (props) => {
 			}}
 		>
 			<Stack direction="row" alignItems="flex-end" sx={sx.actions}>
-				{enableFavorites && <FavoriteButton handle={resource?.handle} />}
+				{enableFavorites == true && (
+          <FavoriteButton 
+            handle={resource?.handle} 
+          />
+        )}
 				<Actions numVisible={0} actions={actions} resource={resource} />
 			</Stack>
 			<Stack
@@ -60,12 +64,12 @@ const TextGrid: React.FC<CardProps> = (props) => {
 						{truncate(title)}
 					</Typography>
 				</Link>        
-        { enableUsers && (
+        { enableUsers == true && (
           <UserButton 
             user={ resource?.user }
           />
         )}
-        {enableRatings && (
+        {enableRatings == true && (
           <AvgRating resource={resource} size="small" />
         )}
 				<DisplayFields fields={displayFields} resource={resource} />
@@ -81,8 +85,10 @@ export default TextGrid
 
 const sx = {
 	root: {
+    p: 1,
 		position: 'relative',
 		width: '100%',
+    borderRadius: 1,
     transition: 'box-shadow 0.3s',
     '&:hover': {
       boxShadow: 2
@@ -95,8 +101,7 @@ const sx = {
 	},
 	rootBorder: {
 		border: '1px solid',
-		borderColor: 'divider',
-		borderRadius: 1,
+		borderColor: 'divider',		
 		overflow: 'hidden',
 	},
 	imageContainer: {

@@ -78,26 +78,27 @@ const AvatarGrid: React.FC<CardProps> = (props) => {
 				</TouchableOpacity>
 			</Box>
 			<Stack spacing={1} sx={sx.contentArea}>
-				<Stack direction="row" sx={sx.contentArea} spacing={0}>
-					<Typography sx={sx.title} color="textPrimary" variant={'subtitle2'}>
-						{truncate(title)}
-					</Typography>                    
-					<Box sx={sx.actions}>
-						{enableFavorites && <FavoriteButton handle={resource?.handle} />}
-						<Actions numVisible={0} actions={actions} resource={resource} />
-					</Box>
-				</Stack>
-        {enableRatings && (
+        <Typography sx={sx.title} color="textPrimary" variant={'subtitle2'}>
+          {truncate(title)}
+        </Typography>                    
+        {enableRatings == true && (
           <AvgRating size="small" resource={resource} />
         )}             
 			</Stack>
-			<DisplayFields fields={displayFields} resource={resource} />
-      
-      { enableUsers && (
-        <Box sx={ sx.cardFooter }>
-          <UserButton user={ resource?.user } />
-        </Box>
+      { displayFields?.length > 0 && (
+			  <DisplayFields fields={displayFields} resource={resource} />      
       )}
+      <Box sx={ sx.cardFooter }>   
+        <Stack direction="row" spacing={0}>
+          {enableFavorites == true && <FavoriteButton handle={resource?.handle} />}
+          { enableUsers == true && (
+            <UserButton user={ resource?.user } />
+          )}
+        </Stack>
+        <Stack direction="row" spacing={0}>
+          <Actions numVisible={0} actions={actions} resource={resource} />
+        </Stack>
+      </Box>
 		</Stack>
 	)
 }
@@ -109,10 +110,13 @@ const sx = {
 		position: 'relative',
 		flexDirection: 'column',
 		alignItems: 'center',
-		justifyContent: 'center',
+		justifyContent: 'center',    
+    p: 1,
+    borderRadius: 1,
+    boxShadow: 1,
     transition: 'box-shadow 0.3s',
     '&:hover': {
-      boxShadow: 2
+      boxShadow: 3
     }
 	},
 	avatar: {
@@ -142,13 +146,8 @@ const sx = {
 			background: 'rgb(0,0,0,0.5)',
 		},
 	},
-	rootBorder: {
-		border: '1px solid',
-		borderColor: 'divider',
-		p: 1,
-		borderRadius: 1,
-	},
 	title: {
+    px: 1,
 		width: '100%',
 		textAlign: 'left',
 	},
@@ -167,18 +166,11 @@ const sx = {
 		width: '100%',
 		position: 'relative',
 	},
-	actions: {
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'flex-end',
-		justifyContent: 'flex-end',
-	},
   cardFooter: {
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    height: 40,
   }
 }

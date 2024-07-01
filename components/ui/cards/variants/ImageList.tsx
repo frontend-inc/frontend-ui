@@ -63,7 +63,7 @@ const ImageHoriz: React.FC<CardProps> = (props) => {
 				</TouchableOpacity>        
 			</Box>
 			<Box sx={sx.actions}>        
-				{enableFavorites && <FavoriteButton handle={resource?.handle} />}
+				{enableFavorites == true && <FavoriteButton handle={resource?.handle} />}
 				<Actions
 					numVisible={0}
 					actions={actions}
@@ -72,7 +72,7 @@ const ImageHoriz: React.FC<CardProps> = (props) => {
 				/>
 			</Box>    
       <Box sx={ sx.userCard }>
-        { enableUsers && (
+        { enableUsers == true && (
           <UserButton 
             user={ resource?.user } 
           />

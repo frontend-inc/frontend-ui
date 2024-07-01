@@ -76,21 +76,21 @@ const CoverList: React.FC<CardProps> = (props) => {
               <Typography variant={textVariant}>
                 {truncate(title, 40)}
               </Typography>
-              {enableRatings && (
+              {enableRatings == true && (
                 <AvgRating resource={resource} size="small" />
               )}
               <DisplayFields
                 fields={displayFields}
                 resource={resource}
               />
-              { enableUsers && (
+              { enableUsers == true && (
                 <UserButton user={ resource?.user } />
               )}
             </Box>
           </Stack>
         </Stack>
         <Box sx={sx.actions}>
-          {enableFavorites && <FavoriteButton handle={resource?.handle} />}
+          {enableFavorites == true && <FavoriteButton handle={resource?.handle} />}
           <Actions
             numVisible={0}
             resource={resource}

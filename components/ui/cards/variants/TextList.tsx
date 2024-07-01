@@ -54,12 +54,12 @@ const CardList: React.FC<CardProps> = (props) => {
 							{truncate(title)}
 						</Typography>
 					</Link>
-          { enableUsers && (
+          { enableUsers == true && (
             <UserButton 
               user={ resource?.user }
             />
           )}
-          {enableRatings && (
+          {enableRatings == true && (
             <AvgRating resource={resource} size="small" />
           )}
 					<DisplayFields fields={displayFields} resource={resource} />
@@ -73,7 +73,11 @@ const CardList: React.FC<CardProps> = (props) => {
 				</Stack>
 			</Stack>
 			<Stack direction="row" justifyContent="flex-end" sx={sx.actions}>
-				{enableFavorites && <FavoriteButton handle={resource?.handle} />}
+				{enableFavorites == true && (
+          <FavoriteButton 
+            handle={resource?.handle} 
+          />
+        )}
 				<Actions numVisible={0} actions={actions} resource={resource} />
 			</Stack>
 		</Box>
@@ -84,6 +88,7 @@ export default CardList
 
 const sx = {
 	root: {
+    p: 1,
 		position: 'relative',
 		width: '100%',
 		display: 'flex',
@@ -107,7 +112,6 @@ const sx = {
 		},
 	},
 	rootBorder: {
-		pl: 2,
 		border: '1px solid',
 		borderColor: 'divider',
 	},

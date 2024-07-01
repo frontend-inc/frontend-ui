@@ -44,7 +44,6 @@ const CardGrid: React.FC<CardProps> = (props) => {
 			spacing={0}
 			sx={{
 				...sx.root,
-				...(enableBorder && sx.rootBorder),
 				width: '100%',
 				minHeight: height + 80,
 			}}
@@ -64,10 +63,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
 			</Box>
 			<Stack
 				spacing={0}
-				sx={{
-					...sx.cardContent,
-					...(enableBorder && sx.cardContentBorder),
-				}}
+				sx={ sx.cardContent }
 			>
         <Box sx={ sx.content }>
           <Typography 
@@ -99,7 +95,7 @@ const CardGrid: React.FC<CardProps> = (props) => {
             )}
           </Stack>
           <Stack direction="row" spacing={1}>
-            {enableFavorites && (
+            {enableFavorites == true && (
               <FavoriteButton 
                 handle={resource?.handle} 
               />
@@ -122,20 +118,16 @@ export default CardGrid
 
 const sx = {
 	root: {
+    overflow: 'hidden',
 		borderRadius: 1,
 		width: '100%',
 		minWidth: 280,
     bgcolor: 'background.default',
     transition: 'box-shadow 0.3s',
+    boxShadow: 1,
     '&:hover': {
-      boxShadow: 2
+      boxShadow: 3
     }
-	},
-	rootBorder: {
-		border: '1px solid',
-		borderColor: 'divider',
-		borderRadius: 1,
-		overflow: 'hidden',
 	},
 	imageContainer: {
     height: 230,
@@ -159,18 +151,14 @@ const sx = {
   cardHeaderBorder: {
     px: 1
   },
-	cardContent: {
-    pt: 1,
+	cardContent: {    
+    p: 1,
 		width: '100%',
     display: 'flex',
     height: '100%',
     justifyContent: 'space-between',
     alignItems: 'space-between',
 	},
-  cardContentBorder: {
-		p: 1,
-    pt: 0    
-	},  
 	content: {
 		height: '100%'
 	},	

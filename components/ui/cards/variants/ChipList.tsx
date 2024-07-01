@@ -43,7 +43,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 				disableGutters
 				secondaryAction={
 					<Stack direction="row" spacing={0} sx={sx.actions}>
-						{enableFavorites && <FavoriteButton handle={resource?.handle} />}
+						{enableFavorites == true && <FavoriteButton handle={resource?.handle} />}
 						<Actions numVisible={0} actions={actions} resource={resource} />
 					</Stack>
 				}
@@ -73,7 +73,7 @@ const ChipList: React.FC<CardProps> = (props) => {
                 <Typography variant="body1" color="text.primary">
                   {title}
                 </Typography>
-                {enableRatings && (
+                {enableRatings == true && (
                   <AvgRating resource={resource} size="small" />
                 )}
               </Stack>
@@ -81,7 +81,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 						secondary={
               <>
                 <DisplayFields fields={displayFields} resource={resource} />
-                { enableUsers && (
+                { enableUsers == true && (
                   <UserButton 
                     user={ resource?.user }
                   />
@@ -101,13 +101,19 @@ const sx = {
 	root: {
 		my: 0,
 		p: 0,
+    borderRadius: 1,
+    boxShadow: 0,
     transition: 'box-shadow 0.3s',
     '&:hover': {
       boxShadow: 2
     }
 	},
 	listItemButton: {
+    p: 1,
 		minHeight: 48,
+    '&:hover': {
+      bgcolor: 'transparent'
+    }
 	},
 	gradient: {
 		'&::after': {

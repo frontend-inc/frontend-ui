@@ -67,7 +67,7 @@ const CardList: React.FC<CardProps> = (props) => {
 							alt={title}
 							enableGradient={enableGradient}
 							enableOverlay={enableOverlay}
-							disableBorderRadius={enableBorder}
+							disableBorderRadius
 						/>
 					</TouchableOpacity>
 				</Box>
@@ -90,18 +90,18 @@ const CardList: React.FC<CardProps> = (props) => {
             <Typography color="textPrimary" variant={textVariant}>
 							{truncate(title)}
 						</Typography>
-            { enableRatings && (
+            { enableRatings == true && (
               <AvgRating resource={resource} size="small" />
             )}
 						<DisplayFields fields={displayFields} resource={resource} />
-            { enableUsers && (
+            { enableUsers == true && (
               <UserButton 
                 user={ resource?.user }
               />            
             )}
 					</Stack>
 					<Stack direction="row" justifyContent="flex-end">
-						{enableFavorites && <FavoriteButton handle={resource?.handle} />}
+						{enableFavorites == true && <FavoriteButton handle={resource?.handle} />}
 						<Actions numVisible={0} actions={actions} resource={resource} />
 					</Stack>
 				</Stack>
@@ -119,9 +119,10 @@ const sx = {
 		flexDirection: 'row',
 		borderRadius: 1,
 		overflow: 'hidden',
+    boxShadow: 1,
     transition: 'box-shadow 0.3s',
     '&:hover': {
-      boxShadow: 2
+      boxShadow: 3
     }
 	},
 	gradient: {

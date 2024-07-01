@@ -51,6 +51,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 			>
 				<ListItemButton
 					sx={{
+            ...sx.listItemButton,
 						minHeight: height + 44,
 					}}
 					onClick={handleClick && handleClick}
@@ -78,11 +79,11 @@ const AvatarList: React.FC<CardProps> = (props) => {
 						}
 						secondary={
               <Stack direction='column' spacing={1}>
-                { enableRatings && (
+                { enableRatings == true && (
                   <AvgRating resource={resource} size="small" /> 
                 )}
                 <DisplayFields fields={displayFields} resource={resource} />
-                { enableUsers && (
+                { enableUsers == true && (
                   <UserButton 
                     user={ resource?.user }
                   />
@@ -102,9 +103,10 @@ const sx = {
 	listItem: {
 		my: 0,
 		p: 0,
+    borderRadius: 1,
     transition: 'box-shadow 0.3s',
     '&:hover': {
-      boxShadow: 2
+      boxShadow: 2,
     }
 	},
 	gradient: {
@@ -148,4 +150,9 @@ const sx = {
 	description: {
 		maxWidth: 320,
 	},
+  listItemButton: {
+    '&:hover': {
+      bgcolor: 'transparent'
+    }
+  }
 }

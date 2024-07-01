@@ -12,6 +12,7 @@ import {
 } from '@mui/material'
 import { UserButton, AvgRating, DisplayFields, FavoriteButton, Actions } from '../../..'
 import { CardProps } from '../../../../types'
+import { truncate } from '../../../../helpers'
 
 const ChipList: React.FC<CardProps> = (props) => {
 	const {
@@ -71,9 +72,9 @@ const ChipList: React.FC<CardProps> = (props) => {
 						primary={
               <Stack direction="column" spacing={0}>              
                 <Typography variant="body1" color="text.primary">
-                  {title}
+                  {truncate(title, 16)}
                 </Typography>
-                {enableRatings && (
+                {enableRatings == true && (
                   <AvgRating resource={resource} size="small" />
                 )}
               </Stack>
@@ -81,7 +82,7 @@ const ChipList: React.FC<CardProps> = (props) => {
 						secondary={						
               <>
                 <DisplayFields fields={displayFields} resource={resource} />
-                { enableUsers && (
+                { enableUsers == true && (
                   <UserButton 
                     user={ resource?.user }
                   />
@@ -101,13 +102,17 @@ const sx = {
 	root: {
 		m: 0,
 		p: 0,
+    borderRadius: 1,
+    boxShadow: 0,
     transition: 'box-shadow 0.3s',
     '&:hover': {
       boxShadow: 2
     }
 	},
 	listItemButton: {
-		minHeight: 48,
+    '&:hover': {
+      bgcolor: 'transparent'
+    },
 	},
 	gradient: {
 		'&::after': {
@@ -132,11 +137,6 @@ const sx = {
 			height: '100%',
 			background: 'rgb(0,0,0,0.5)',
 		},
-	},
-	rootBorder: {
-		border: '1px solid',
-		borderColor: 'divider',
-		borderRadius: 1,
 	},
 	avatar: {
 		height: '48px',
