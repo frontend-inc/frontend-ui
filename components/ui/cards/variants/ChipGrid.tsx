@@ -102,8 +102,9 @@ const sx = {
 	root: {
 		m: 0,
 		p: 0,
-    borderRadius: 1,
-    boxShadow: 0,
+    borderRadius: 1,    
+    border: '1px solid',
+    borderColor: 'divider',
     transition: 'box-shadow 0.3s',
     '&:hover': {
       boxShadow: 2

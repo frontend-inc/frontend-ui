@@ -124,9 +124,10 @@ const sx = {
 		minWidth: 280,
     bgcolor: 'background.default',
     transition: 'box-shadow 0.3s',
-    boxShadow: 1,
+    border: '1px solid',
+    borderColor: 'divider',
     '&:hover': {
-      boxShadow: 3
+      boxShadow: 2
     }
 	},
 	imageContainer: {

@@ -119,10 +119,12 @@ const sx = {
 		flexDirection: 'row',
 		borderRadius: 1,
 		overflow: 'hidden',
-    boxShadow: 1,
+    boxShadow: 0,
+    border: '1px solid',
+    borderColor: 'divider',
     transition: 'box-shadow 0.3s',
     '&:hover': {
-      boxShadow: 3
+      boxShadow: 2
     }
 	},
 	gradient: {

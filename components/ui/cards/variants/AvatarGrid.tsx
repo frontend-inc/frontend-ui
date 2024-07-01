@@ -113,10 +113,11 @@ const sx = {
 		justifyContent: 'center',    
     p: 1,
     borderRadius: 1,
-    boxShadow: 1,
+    border: '1px solid',
+    borderColor: 'divider',
     transition: 'box-shadow 0.3s',
     '&:hover': {
-      boxShadow: 3
+      boxShadow: 2
     }
 	},
 	avatar: {
