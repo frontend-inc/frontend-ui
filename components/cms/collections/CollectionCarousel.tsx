@@ -74,7 +74,14 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 				enableArrows={enableArrows}
 			>
 				{resources?.map((resource, index) => (
-					<Box key={index} sx={sx.item}>
+					<Box 
+            key={index} 
+            sx={{
+              ...sx.item,
+              pt: enableArrows ? 5 : 0,
+              pb: enableDots ? 4 : 0
+            }}
+          >
 						<CollectionCard
 							actions={actions}
 							variant="grid"
@@ -108,6 +115,8 @@ const sx = {
 		gap: '16px',
 	},
 	item: {
-		p: 2,
-	},
+    p: 2,
+    pt: 0,
+    pb: 4
+	}
 }

@@ -4,6 +4,8 @@ import { Box } from '@mui/material'
 import { getCarouselResponsive } from '../../../helpers'
 import { useTheme } from '@mui/material/styles'
 import CarouselDot from './CarouselDot'
+import CarouselLeftArrow from './CarouselLeftArrow'
+import CarouselRightArrow from './CarouselRightArrow'
 // Note: required global CSS import from _app or app/layout.tsx
 // import 'react-multi-carousel/lib/styles.css'
 
@@ -52,6 +54,8 @@ const ReactCarousel: React.FC<CarouselProps> = (props) => {
 					arrows={enableArrows}
 					showDots={enableDots}
 					customDot={<CarouselDot />}
+          customRightArrow={<CarouselRightArrow />}
+          customLeftArrow={<CarouselLeftArrow />}
 				>
 					{children}
 				</Carousel>
