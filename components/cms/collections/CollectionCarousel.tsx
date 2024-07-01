@@ -78,8 +78,8 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
             key={index} 
             sx={{
               ...sx.item,
-              pt: enableArrows ? 5 : 0,
-              pb: enableDots ? 4 : 0
+              pt: enableArrows ? 5 : 1,
+              pb: enableDots ? 4 : 1
             }}
           >
 						<CollectionCard
@@ -116,7 +116,5 @@ const sx = {
 	},
 	item: {
     p: 2,
-    pt: 0,
-    pb: 4
 	}
 }
