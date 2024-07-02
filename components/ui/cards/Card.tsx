@@ -18,8 +18,7 @@ const Card: React.FC<CardProps> = (props) => {
 		handleClick,
 		objectFit = 'cover',
 		height = 240,
-    enableUsers = false,
-		enableBorder = false,
+    enableUsers = false,		
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
@@ -55,8 +54,7 @@ const Card: React.FC<CardProps> = (props) => {
 					objectFit={objectFit}
 					alt={title}
 					label={label}
-					enableGradient={enableGradient}
-					disableBorderRadius={enableBorder}
+					enableGradient={enableGradient}					
 					enableOverlay={enableOverlay}
 					handleClick={handleItemClick}
 				/>

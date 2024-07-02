@@ -10,7 +10,6 @@ const VideoVert: React.FC<CardProps> = (props) => {
 		objectFit = 'cover',
 		height = VIDEO_HORIZ_HEIGHT,
 		width = VIDEO_HORIZ_WIDTH,
-		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
 	} = props || {}
@@ -24,14 +23,12 @@ const VideoVert: React.FC<CardProps> = (props) => {
 	return !open ? (
 		<CoverCard
 			actions={actions}
-			variant="list"
 			resource={resource}
 			handleClick={handleresourceClick}
 			objectFit={objectFit}
 			height={height}
 			width={width}
       displayFields={[]}
-			enableBorder={enableBorder}
 			enableGradient={enableGradient}
 			enableOverlay={enableOverlay}
 			icon="PlayCircle"

@@ -31,7 +31,6 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 	const {
 		actions,
 		url,
-		style = 'card',
 		query: defaultQuery = {},
 		perPage = 20,
 		href,
@@ -84,8 +83,7 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
           >
 						<CollectionCard
 							actions={actions}
-							variant="grid"
-							style={style}
+							style='card'
 							resource={resource}
               displayFields={[]}
 							handleClick={() => handleClick(resource)}

@@ -7,9 +7,6 @@ import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import DirectionsIcon from '@mui/icons-material/Directions';
-import { min } from 'moment'
-import { transferableAbortController } from 'util'
 
 type SearchInputProps = {
 	name?: string

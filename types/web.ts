@@ -31,7 +31,6 @@ export type CardProps = {
 	enableFavorites?: boolean
   enableRatings?: boolean
 	editing?: boolean
-	variant?: 'list' | 'grid'
 	resource: any & {
 		label?: string
 		title?: string

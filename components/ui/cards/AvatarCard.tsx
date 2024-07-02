@@ -20,8 +20,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 		displayFields = [],
 		height = 128,
 		width = 128,
-		handleClick,
-		enableBorder = false,
+		handleClick,		
 		enableGradient = false,
 		enableOverlay = false,
     enableUsers = false,
@@ -34,10 +33,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 	return (
 		<List
 			disablePadding
-			sx={{
-				...sx.listItem,
-				...(enableBorder && sx.rootBorder),
-			}}
+			sx={ sx.listItem }
 		>
 			<ListItem
 				disablePadding

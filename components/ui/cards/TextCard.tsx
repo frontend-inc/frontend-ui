@@ -36,7 +36,7 @@ const CardList: React.FC<CardProps> = (props) => {
 		<Box
 			sx={ sx.root }
 		>
-			<Stack sx={sx.contentArea} direction="row" spacing={1}>
+			<Stack direction="row" spacing={1}>
 				<Stack
 					direction="column"
 					spacing={1}
@@ -99,13 +99,6 @@ const sx = {
 		width: '100%',
 		justifyContent: 'flex-start',
 		alignItems: 'flex-start',
-	},
-	contentBorder: {
-		py: 2,
-		px: {
-			sm: 0,
-			xs: 2,
-		},
 	},
 	description: {
 		maxWidth: '600px',

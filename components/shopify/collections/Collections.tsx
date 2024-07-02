@@ -55,7 +55,6 @@ const Collections: React.FC<CollectionsProps> = (props) => {
 		<Stack spacing={1} sx={sx.root}>
 			<CollectionCards
 				actions={[]}
-				variant={variant}
 				style={style}
 				resources={collections}
 				buttonText={buttonText}

@@ -18,8 +18,7 @@ const ChipCard: React.FC<CardProps> = (props) => {
 		resource,
 		actions,
 		displayFields = [],
-		handleClick,
-		enableBorder = false,
+		handleClick,		
 		enableGradient = false,
 		enableOverlay = false,
     enableUsers = false,
@@ -33,10 +32,7 @@ const ChipCard: React.FC<CardProps> = (props) => {
 		<List
 			dense
 			disablePadding
-			sx={{
-				...sx.root,
-				...(enableBorder && sx.rootBorder),
-			}}
+			sx={ sx.root }
 		>
 			<ListItem
 				disablePadding
