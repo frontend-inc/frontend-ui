@@ -11,7 +11,7 @@ import {
 	Typography,
 } from '@mui/material'
 import { CardProps } from '../../../types'
-import { UserButton, Actions, AvgRating, DisplayFields, FavoriteButton } from '../../../components'
+import { UserChip, Actions, AvgRating, DisplayFields, FavoriteButton } from '../../../components'
 
 const AvatarList: React.FC<CardProps> = (props) => {
 	const {
@@ -73,7 +73,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 					</ListItemIcon>
 					<ListItemText
 						primary={
-							<Typography variant={'subtitle2'} color="text.primary">
+							<Typography variant='subtitle2' color="text.primary" sx={ sx.title }>
 								{title}
 							</Typography>
 						}
@@ -84,7 +84,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
                 )}
                 <DisplayFields fields={displayFields} resource={resource} />
                 { enableUsers == true && (
-                  <UserButton 
+                  <UserChip 
                     user={ resource?.user }
                   />
                 )}
@@ -139,6 +139,9 @@ const sx = {
 		borderColor: 'divider',
 		borderRadius: 1,
 	},
+  title: {
+    pb: 0.5
+  },
 	avatar: {
 		height: '64px',
 		width: '64px',

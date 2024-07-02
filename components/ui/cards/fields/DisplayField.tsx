@@ -83,13 +83,13 @@ const DisplayField: React.FC<FieldProps> = (props) => {
 	const Component = components[fieldVariant]
 	const componentProps = variantProps?.[fieldVariant] || {}
 
+  if(!value || value == '') return null;
 	return (
 		<Component
 			disablePadding
 			icon={icon}
 			variant="caption"
 			color={color}
-			direction="row-reverse"
 			value={value}
 			{...componentProps}
 			{...rest}

@@ -10,7 +10,7 @@ import {
 	DisplayFields,
 	FavoriteButton,
   AvgRating,
-  UserButton
+  UserChip
 } from '../../../components'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
@@ -105,7 +105,7 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
           )}
           <DisplayFields fields={displayFields} resource={resource} />
           { enableUsers && (
-            <UserButton 
+            <UserChip 
               user={ resource?.user }
             />            
           )}

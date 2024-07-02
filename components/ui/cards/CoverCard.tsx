@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { AppContext, ThemeContext } from '../../../context'
 import { Box, Stack, Typography } from '@mui/material'
 import {
-  UserButton,
+  UserChip,
   AvgRating,
 	FavoriteButton,
 	DisplayFields,
@@ -97,7 +97,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
                     resource={resource}
                   />
                   { enableUsers == true && (
-                    <UserButton user={ resource?.user } />
+                    <UserChip user={ resource?.user } />
                   )}
                 </Box>
               </Stack>

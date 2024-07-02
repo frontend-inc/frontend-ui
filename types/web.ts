@@ -53,7 +53,6 @@ export type CardProps = {
 	handleDelete?: (item: any) => void
 	objectFit?: 'cover' | 'contain'
 	responsive?: boolean
-	enableBorder?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
 	enableEdit?: boolean

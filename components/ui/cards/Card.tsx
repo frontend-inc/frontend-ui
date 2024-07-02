@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
 import { Box, Stack, Typography } from '@mui/material'
-import { Image, UserButton, AvgRating, DisplayFields, FavoriteButton, ResourceList } from '../..'
+import { Image, UserChip, AvgRating, DisplayFields, FavoriteButton, ResourceList } from '../..'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../types'
@@ -89,7 +89,7 @@ const Card: React.FC<CardProps> = (props) => {
         <Stack direction="row" justifyContent="space-between">
           <Stack direction="row" spacing={1}>
             { resource?.user && (
-              <UserButton 
+              <UserChip 
                 user={ resource?.user }
               />
             )}

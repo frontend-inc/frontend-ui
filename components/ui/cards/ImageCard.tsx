@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AppContext, ThemeContext, ThemeProvider } from '../../../context'
-import { UserButton, FavoriteButton, Image, Actions, TouchableOpacity } from '../../../components'
+import { UserChip, FavoriteButton, Image, Actions, TouchableOpacity } from '../../../components'
 import { useRouter } from 'next/router'
 import { Box } from '@mui/material'
 import { CardProps } from '../../../types'
@@ -62,7 +62,7 @@ const ImageCard: React.FC<CardProps> = (props) => {
 			</Box>
       <Box sx={ sx.userCard }>
         { enableUsers == true && (
-          <UserButton 
+          <UserChip 
             user={ resource?.user } 
           />
         )}

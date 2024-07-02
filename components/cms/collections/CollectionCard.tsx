@@ -1,5 +1,13 @@
 import React from 'react'
-import { ListCard, Card, CoverCard, AvatarCard, ChipCard, TextCard, ImageCard } from '../..'
+import { 
+  ListCard, 
+  Card, 
+  CoverCard, 
+  AvatarCard, 
+  ChipCard, 
+  TextCard, 
+  TableCard 
+} from '../..'
 import { ActionType, DisplayFieldType } from '../../../types'
 
 type CardStyleTypes = 
@@ -7,7 +15,7 @@ type CardStyleTypes =
   'card' | 
   'avatar' | 
   'cover' | 
-  'chip' |   
+  'table' |   
   'text'
 
 type CollectionCardProps = {
@@ -45,7 +53,8 @@ const CollectionCard: React.FC<CollectionCardProps> = (props) => {
 		card: Card,
 		avatar: AvatarCard,
 		cover: CoverCard,
-		chip: ChipCard,
+    chip: ChipCard,
+		table: TableCard,
 		text: TextCard,
     list: ListCard		
 	}

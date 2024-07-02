@@ -71,6 +71,7 @@ export { default as ChipCard } from './cards/ChipCard'
 export { default as TextCard } from './cards/TextCard'
 export { default as ImageCard } from './cards/ImageCard'
 export { default as KanBanCard } from './cards/KanBanCard'
+export { default as TableCard } from './cards/TableCard'
 export { default as ListCard } from './cards/ListCard'
 
 // Layouts

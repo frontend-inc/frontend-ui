@@ -4,7 +4,7 @@ import { Box, Link, Stack, Typography } from '@mui/material'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../types'
-import { UserButton, AvgRating, FavoriteButton, DisplayFields, Actions } from '../..'
+import { UserChip, AvgRating, FavoriteButton, DisplayFields, Actions } from '../..'
 
 const CardList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
@@ -15,7 +15,6 @@ const CardList: React.FC<CardProps> = (props) => {
 		href,
 		textVariant = 'subtitle1',
 		handleClick,
-		enableBorder = false,
     enableUsers = false,
 		enableFavorites = false,
     enableRatings = false
@@ -35,30 +34,19 @@ const CardList: React.FC<CardProps> = (props) => {
 
 	return (
 		<Box
-			sx={{
-				...sx.root,
-				...(enableBorder && sx.rootBorder),
-			}}
+			sx={ sx.root }
 		>
 			<Stack sx={sx.contentArea} direction="row" spacing={1}>
 				<Stack
 					direction="column"
 					spacing={1}
-					sx={{
-						...sx.content,
-						...(enableBorder && sx.contentBorder),
-					}}
+					sx={ sx.content }
 				>
 					<Link sx={ sx.link } onClick={handleItemClick}>
 						<Typography color="textPrimary" variant={textVariant}>
 							{truncate(title)}
 						</Typography>
-					</Link>
-          { enableUsers == true && (
-            <UserButton 
-              user={ resource?.user }
-            />
-          )}
+					</Link>          
           {enableRatings == true && (
             <AvgRating resource={resource} size="small" />
           )}
@@ -70,6 +58,11 @@ const CardList: React.FC<CardProps> = (props) => {
 					>
 						{truncate(description, 200)}
 					</Typography>
+          { enableUsers == true && (
+            <UserChip 
+              user={ resource?.user }
+            />
+          )}
 				</Stack>
 			</Stack>
 			<Stack direction="row" justifyContent="flex-end" sx={sx.actions}>

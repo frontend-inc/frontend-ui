@@ -15,7 +15,7 @@ const DisplayFields: React.FC<DisplayFieldsProps> = (props) => {
 	return (
 		<Stack
 			sx={sx.root}
-			direction="column"
+			direction={'column'}
 			spacing={0.5}
 			alignItems={alignItems}
 		>

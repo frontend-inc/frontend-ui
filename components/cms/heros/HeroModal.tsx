@@ -17,7 +17,7 @@ import {
 	Image,
 	SocialButtons,
   ExpandableText,
-  UserButton
+  UserChip
 } from '../..'
 import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
@@ -134,7 +134,7 @@ const HeroModal: React.FC<HeroModalProps> = (props) => {
                   {title}
                 </Typography>
                 { enableUsers && (
-                  <UserButton 
+                  <UserChip 
                     user={ resource?.user }
                   />            
                 )}

@@ -9,7 +9,7 @@ type CollectionCardsProps = {
 	resources: any
 	displayFields?: DisplayFieldType[]
 	actions?: ActionType[]
-	style: 'list' | 'card' | 'avatar' | 'cover' | 'chip' | 'text'
+	style: 'list' | 'card' | 'avatar' | 'cover' | 'table' | 'text'
 	buttonText?: string
 	enableBorder?: boolean
 	enableGradient?: boolean
@@ -52,18 +52,16 @@ const CollectionCards: React.FC<CollectionCardsProps> = (props) => {
     cover: 'grid',
     chip: 'list',
     text: 'list',
-    image: 'grid' 
+    table: 'table' 
   }
 
   let variant = VARIANTS[style]
 
 	return (
-		<Stack spacing={2}>
 			<Box
 				sx={{
 					...sx.root,
 					...(variant == 'grid' ? sx.grid : sx.list),
-					...(style == 'chip' && sx.listDense),
 				}}
 			>
 				{resources?.map((resource, index) => (
@@ -89,7 +87,6 @@ const CollectionCards: React.FC<CollectionCardsProps> = (props) => {
 					/>
 				))}
 			</Box>
-		</Stack>
 	)
 }
 
@@ -98,6 +95,7 @@ export default CollectionCards
 const sx = {
 	root: {
 		width: '100%',
+    overflowX: 'scroll',
 	},
 	list: {
 		display: 'flex',
@@ -105,7 +103,7 @@ const sx = {
 		gap: '16px',
 	},
 	listDense: {
-		gap: '8px',
+		gap: '8px',    
 	},
 	grid: {
 		display: 'grid',

@@ -26,6 +26,6 @@ export default FieldString
 
 const sx = {
 	text: {
-		whiteSpace: 'pre-wrap',
+		whiteSpace: 'pre-wrap',   
 	},
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Chip } from '@mui/material'
+import { Stack, Box, Chip } from '@mui/material'
 import { FieldWrapper } from '../../../components'
 
 type FieldArrayProps = {
@@ -13,7 +13,7 @@ const FieldArray: React.FC<FieldArrayProps> = (props) => {
 	const { value: values, color, label, ...rest } = props
 	return (
 		<FieldWrapper label={label} color={color} {...rest}>
-			<Box sx={sx.stack}>
+			<Box sx={ sx.stack }>
 				{Array.isArray(values) &&
 					values?.map((value, index) => (
 						<Chip key={index} label={value} sx={sx.chip} size="small" />
@@ -34,6 +34,9 @@ const sx = {
 	stack: {
 		display: 'flex',
 		flexWrap: 'wrap',
-    gap: '8px'
+    gap: '8px',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    width: '100%'
 	},
 }

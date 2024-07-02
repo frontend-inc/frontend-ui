@@ -111,11 +111,13 @@ const sx = {
 		alignItems: 'center',
 	},
 	header: {
+    px: 2,
 		maxWidth: 500,
 		width: '100%',
 		textAlign: 'center',
 	},
 	content: {
+    px: 2,
 		width: '100%',
 		maxWidth: {
 			sm: 500,

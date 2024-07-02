@@ -10,7 +10,7 @@ import {
 	ListItemText,
 	Typography,
 } from '@mui/material'
-import { UserButton, AvgRating, FavoriteButton, DisplayFields, Actions } from '../..'
+import { UserChip, AvgRating, FavoriteButton, DisplayFields, Actions } from '../..'
 import { CardProps } from '../../../types'
 
 const ChipCard: React.FC<CardProps> = (props) => {
@@ -82,7 +82,7 @@ const ChipCard: React.FC<CardProps> = (props) => {
               <>
                 <DisplayFields fields={displayFields} resource={resource} />
                 { enableUsers == true && (
-                  <UserButton 
+                  <UserChip 
                     user={ resource?.user }
                   />
                 )}

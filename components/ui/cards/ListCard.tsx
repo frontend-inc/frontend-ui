@@ -7,7 +7,7 @@ import {
 	TouchableOpacity,
 	FavoriteButton,
   AvgRating,
-  UserButton
+  UserChip
 } from '../..'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
@@ -25,7 +25,6 @@ const CardList: React.FC<CardProps> = (props) => {
 		textVariant = 'subtitle1',
 		handleClick,
 		objectFit = 'cover',
-		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
@@ -47,10 +46,7 @@ const CardList: React.FC<CardProps> = (props) => {
 
 	return (
 		<Box
-			sx={{
-				...sx.root,
-				...(enableBorder && sx.rootBorder),
-			}}
+			sx={ sx.root }
 		>
 			<Stack
 				sx={sx.container}
@@ -73,18 +69,12 @@ const CardList: React.FC<CardProps> = (props) => {
 				<Stack
 					direction="row"
 					spacing={1}
-					sx={{
-						...sx.contentArea,
-						...(enableBorder && sx.contentAreaBorder),
-					}}
+					sx={ sx.contentArea }
 				>
 					<Stack
 						direction="column"
 						spacing={0.5}
-						sx={{
-							...sx.content,
-							...(enableBorder && sx.contentBorder),
-						}}
+						sx={ sx.content }
 					>            
             <Typography color="textPrimary" variant={textVariant}>
 							{truncate(title)}
@@ -94,7 +84,7 @@ const CardList: React.FC<CardProps> = (props) => {
             )}
 						<DisplayFields fields={displayFields} resource={resource} />
             { enableUsers == true && (
-              <UserButton 
+              <UserChip 
                 user={ resource?.user }
               />            
             )}

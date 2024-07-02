@@ -83,10 +83,7 @@ const sx = {
 	},
 	container: {
 		width: '100%',
-		overflowX: 'scroll',
-		'&::-webkit-scrollbar': {
-			display: 'none',
-		},
+		overflowX: 'hidden'
 	},
 	containerTransitions: {
 		transition: 'all 0.3s ease-in-out',
