@@ -10,10 +10,10 @@ import {
 	ListItemText,
 	Typography,
 } from '@mui/material'
-import { UserButton, AvgRating, FavoriteButton, DisplayFields, Actions } from '../../../../components'
-import { CardProps } from '../../../../types'
+import { UserButton, AvgRating, FavoriteButton, DisplayFields, Actions } from '../..'
+import { CardProps } from '../../../types'
 
-const ChipList: React.FC<CardProps> = (props) => {
+const ChipCard: React.FC<CardProps> = (props) => {
 	const {
 		resource,
 		actions,
@@ -95,18 +95,14 @@ const ChipList: React.FC<CardProps> = (props) => {
 	)
 }
 
-export default ChipList
+export default ChipCard
 
 const sx = {
 	root: {
 		my: 0,
 		p: 0,
-    borderRadius: 1,
-    boxShadow: 0,
-    transition: 'box-shadow 0.3s',
-    '&:hover': {
-      boxShadow: 2
-    }
+    borderBottom: '1px solid',
+    borderColor: 'divider',        
 	},
 	listItemButton: {
     p: 1,

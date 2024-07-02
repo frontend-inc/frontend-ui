@@ -1,28 +1,27 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
 import {
+  Cover,
 	DisplayFields,
 	BuyNowButton,
 	StripePaymentLink,
 	SocialButtons,
 	Actions,
+	Image,
   AvgRating,
-	ExpandableText
+  ExpandableText,
 } from '../..'
 import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-type HeroContainerProps = HeroProps & {
-	children?: React.ReactNode
-}
-
-const HeroContainer: React.FC<HeroContainerProps> = (props) => {
+const HeroCover: React.FC<HeroProps> = (props) => {
 	const {
 		actions,
 		displayFields = [],
 		resource,
-		children,
+		enableBorder,
+    enableOverlay,
 		enableEdit,
 		handleEdit,
 		enableFavorites,
@@ -32,41 +31,51 @@ const HeroContainer: React.FC<HeroContainerProps> = (props) => {
 		enableBuyNow,
 		enableStripePaymentLink,
 	} = props || {}
-  
-	const { title, description } = resource || {}
+	const { label, title, image, description } = resource || {}
 	return (
 		<Stack
-			sx={ sx.root }
+			sx={ sx.root } 
 			spacing={4}
 		>
-			{(actions || enableEdit) && (
-				<Box sx={sx.actions}>
-					<Actions
-						actions={buildActions({
-							enableEdit,
-							handleEdit,
-							actions,
-						})}
-						numVisible={4}
-						resource={flattenDocument(resource)}
-						justifyContent="center"
-					/>
-				</Box>
-			)}
+      <Cover 
+        image={image?.url}
+        height={400}
+        title={ title }
+        enableOverlay
+      />			
 			<Stack spacing={3} sx={sx.header}>
-				<Typography color="text.primary" variant="h3">
-					{title}
-				</Typography>
+        <SocialButtons
+          handle={resource?.handle}
+          enableLikes={enableLikes}
+          enableFavorites={enableFavorites}
+          enableSharing={enableSharing}
+        />
+        {(actions || enableEdit) && (
+          <Box sx={sx.actions}>
+            <Actions
+              actions={buildActions({
+                enableEdit,
+                handleEdit,
+                actions,
+              })}
+              numVisible={4}
+              resource={flattenDocument(resource)}
+              justifyContent="center"
+            />
+          </Box>
+        )}
         { enableRatings == true && (
           <AvgRating 
+            justifyContent="center"
             resource={resource} 
             enableTotal
           />
         )}
         { displayFields?.length > 0 && (
-				  <DisplayFields 
-            fields={displayFields} 
-            resource={resource} 
+          <DisplayFields
+            alignItems="center"
+            fields={displayFields}
+            resource={resource}
           />
         )}
 				{enableBuyNow == true && (
@@ -84,33 +93,22 @@ const HeroContainer: React.FC<HeroContainerProps> = (props) => {
 					/>
 				)}
 			</Stack>
-			<Box sx={sx.container}>{children}</Box>
-			<SocialButtons
-				handle={resource?.handle}
-				enableLikes={enableLikes}
-				enableFavorites={enableFavorites}
-				enableSharing={enableSharing}
-			/>
 			<Box sx={sx.content}>
-        <ExpandableText 
-          text={description}
-        />
+				<Typography variant="body1" color="text.primary" sx={sx.text}>
+					{description}
+				</Typography>
 			</Box>
 		</Stack>
 	)
 }
 
-export default HeroContainer
+export default HeroCover
 
 const sx = {
 	root: {
 		width: '100%',
 		justifyContent: 'flex-start',
 		alignItems: 'center',
-	},
-	rootBorder: {
-		border: '1px solid',
-		borderColor: 'divider',
 	},
 	header: {
 		maxWidth: 500,
@@ -138,7 +136,7 @@ const sx = {
 			xs: '100%',
 		},
 	},
-	container: {
+	imageContainer: {
 		width: '100%',
 		borderRadius: 1,
 	},

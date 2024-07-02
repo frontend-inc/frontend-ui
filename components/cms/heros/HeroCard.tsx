@@ -1,27 +1,25 @@
 import React, { useState } from 'react'
-import { Box, Link, Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import {
+  AvgRating,
 	DisplayFields,
 	BuyNowButton,
 	StripePaymentLink,
 	Actions,
 	Image,
 	SocialButtons,
-	GoogleMap,
   ExpandableText,
-  AvgRating
-} from '../../../components'
+} from '../..'
 import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-const HeroPlace: React.FC<HeroProps> = (props) => {
+const HeroCard: React.FC<HeroProps> = (props) => {
 
 	const {
 		actions,
 		resource,
 		displayFields = [],
-		enableBorder,
 		enableEdit,
 		handleEdit,
 		enableLikes,
@@ -50,33 +48,27 @@ const HeroPlace: React.FC<HeroProps> = (props) => {
 				</Box>
 			)}
 			<Box
-				sx={{
-					...sx.root,
-					...(enableBorder && sx.rootBorder),
-				}}
+				sx={ sx.root }
 			>
 				<Stack
 					sx={sx.container}
-					direction={{ md: 'row', xs: 'column' }}
+					direction={{ 
+            md: 'row', 
+            xs: 'column' 
+          }}
 					spacing={4}
 				>
 					<Stack
 						spacing={2}
 						direction="column"
-						sx={{
-							...sx.leftPanel,
-							...(enableBorder &&
-								(enableFavorites || enableSharing || enableLikes) &&
-								sx.leftPanelBorder),
-						}}
+						sx={ sx.leftPanel }
 					>
 						<Box sx={sx.imageContainer}>
 							<Image
 								src={image?.url}
 								alt={title}
-								height={500}
+								height={400}
 								label={label}
-								disableBorderRadius={enableBorder}
 							/>
 						</Box>
 						<SocialButtons
@@ -85,36 +77,40 @@ const HeroPlace: React.FC<HeroProps> = (props) => {
 							enableFavorites={enableFavorites}
 							enableSharing={enableSharing}
 						/>
+					</Stack>
+					<Stack
+						spacing={2}
+						sx={ sx.content }
+					>
 						<Typography color="text.primary" variant="h4">
 							{title}
 						</Typography>
-            { enableRatings && (
+            { enableRatings == true && (
               <AvgRating 
                 resource={resource} 
                 enableTotal
               />
             )}
-						<DisplayFields fields={displayFields} resource={resource} />
-						{enableBuyNow && (
-							<BuyNowButton resource={resource} buttonText="Buy Now" />
+            { displayFields?.length > 0 && (
+						  <DisplayFields 
+                fields={displayFields} 
+                resource={resource} 
+              />
+            )}
+						{enableBuyNow == true && (
+							<BuyNowButton 
+                resource={resource} 
+                buttonText="Buy Now" 
+              />
 						)}
-						{enableStripePaymentLink && (
-							<StripePaymentLink resource={resource} buttonText="Checkout" />
+						{enableStripePaymentLink == true && (
+							<StripePaymentLink 
+                resource={resource} 
+                buttonText="Checkout" 
+              />
 						)}
             <ExpandableText
               text={description}
-            />
-					</Stack>
-					<Stack
-						spacing={2}
-						sx={{
-							...sx.content,
-							...(enableBorder && sx.contentBorder),
-						}}
-					>
-            <GoogleMap
-              enableBorder 
-              resources={[resource]}
             />
 					</Stack>
 				</Stack>
@@ -123,7 +119,7 @@ const HeroPlace: React.FC<HeroProps> = (props) => {
 	)
 }
 
-export default HeroPlace
+export default HeroCard
 
 const sx = {
 	root: {
@@ -170,15 +166,7 @@ const sx = {
 	contentBorder: {
 		p: 2,
 	},
-	text: {
-		width: '100%',
-		whiteSpace: 'pre-line',
-	},
 	caption: {
-		color: 'text.secondary',
-	},
-	link: {
-		cursor: 'pointer',
 		color: 'text.secondary',
 	},
 	actions: {
@@ -188,7 +176,10 @@ const sx = {
 		transition: 'all 0.5s ease-in-out',
 		borderRadius: 1,
 		width: '100%',
-		minWidth: 300,
+		minWidth: {
+			sm: 420,
+			xs: '100%',
+		},
 	},
 	leftPanel: {
 		width: '100%',

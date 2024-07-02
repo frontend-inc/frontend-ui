@@ -3,12 +3,10 @@ import { AppContext } from '../../../context'
 import { useAuth } from 'frontend-js'
 import { Button, Stack } from '@mui/material'
 import { ActionType, FormFieldType, DisplayFieldType } from '../../../types'
-import Article from './HeroArticle'
-import Product from './HeroProduct'
-import Profile from './HeroProfile'
-import Document from './HeroDocument'
-import Event from './HeroEvent'
-import Place from './HeroPlace'
+import HeroList from './HeroList'
+import HeroCard from './HeroCard'
+import HeroAvatar from './HeroAvatar'
+import HeroCover from './HeroCover'
 import YouTubeVideo from './HeroYouTube'
 import VimeoEmbed from './HeroVimeo'
 import { Drawer, Form, IconLoading } from '../..'
@@ -37,10 +35,10 @@ export type HeroProps = {
 }
 
 type HeroStyleTypes =
-	| 'product'
-	| 'article'
-	| 'profile'
-	| 'document'
+	| 'card'
+  | 'cover' 
+	| 'list'  
+	| 'avatar'
 	| 'youtube'
 	| 'vimeo'
 
@@ -118,12 +116,10 @@ const Hero: React.FC<HeroItemProps> = (props) => {
 	}
 
 	const components = {
-		article: Article,
-		event: Event,
-		product: Product,
-		profile: Profile,
-		place: Place,
-		document: Document,
+		list: HeroList,
+		cover: HeroCover,
+		card: HeroCard,
+		avatar: HeroAvatar,
 		youtube: YouTubeVideo,
 		vimeo: VimeoEmbed,
 	}

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../../../context'
+import { AppContext } from '../../../context'
 import { Box, Stack, Typography } from '@mui/material'
 import {
 	Image,
@@ -8,11 +8,11 @@ import {
 	FavoriteButton,
   AvgRating,
   UserButton
-} from '../../../../components'
-import { truncate } from '../../../../helpers'
+} from '../..'
+import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
-import { CardProps } from '../../../../types'
-import { Actions } from '../../../../components'
+import { CardProps } from '../../../types'
+import { Actions } from '../..'
 
 const CardList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
@@ -67,7 +67,6 @@ const CardList: React.FC<CardProps> = (props) => {
 							alt={title}
 							enableGradient={enableGradient}
 							enableOverlay={enableOverlay}
-							disableBorderRadius
 						/>
 					</TouchableOpacity>
 				</Box>
@@ -117,15 +116,11 @@ const sx = {
 		width: '100%',
 		display: 'flex',
 		flexDirection: 'row',
-		borderRadius: 1,
-		overflow: 'hidden',
-    boxShadow: 0,
-    border: '1px solid',
+    pt: 1,
+    pb: 2,
+		overflow: 'hidden',    
+    borderBottom: '1px solid',
     borderColor: 'divider',
-    transition: 'box-shadow 0.3s',
-    '&:hover': {
-      boxShadow: 2
-    }
 	},
 	gradient: {
 		'&::after': {

@@ -1,12 +1,17 @@
 import React from 'react'
-import { Card, CoverCard, AvatarCard, Chip, TextCard, ImageCard } from '../..'
+import { ListCard, Card, CoverCard, AvatarCard, ChipCard, TextCard, ImageCard } from '../..'
 import { ActionType, DisplayFieldType } from '../../../types'
 
-type CardStyleTypes = 'card' | 'avatar' | 'cover' | 'chip' | 'image' | 'text'
+type CardStyleTypes = 
+  'list' | 
+  'card' | 
+  'avatar' | 
+  'cover' | 
+  'chip' |   
+  'text'
 
 type CollectionCardProps = {
 	actions: ActionType[]
-	variant: 'list' | 'grid'
 	style: CardStyleTypes
 	displayFields: DisplayFieldType[]
 	resource: any & {
@@ -34,20 +39,20 @@ type CollectionCardProps = {
 }
 
 const CollectionCard: React.FC<CollectionCardProps> = (props) => {
-	const { variant = 'list', style = 'card', ...rest } = props
+	const { style = 'card', ...rest } = props
 
 	const COMPONENTS = {
 		card: Card,
 		avatar: AvatarCard,
 		cover: CoverCard,
-		chip: Chip,
+		chip: ChipCard,
 		text: TextCard,
-		image: ImageCard,
+    list: ListCard		
 	}
 
 	let Component = COMPONENTS[style] || Card
 
-	return <Component variant={variant} {...rest} />
+	return <Component {...rest} />
 }
 
 export default CollectionCard

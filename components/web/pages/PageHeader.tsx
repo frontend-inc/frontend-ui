@@ -26,7 +26,6 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 		maxLinks = 3,
 		actions,
 		resource,
-		enableBorder = false,
 	} = props
 
 	return (
@@ -40,7 +39,6 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 				spacing={1}
 				sx={{
 					...sx.content,
-					...(enableBorder && sx.contentBorder),
 				}}
 			>
 				<Heading
@@ -69,11 +67,9 @@ const sx = {
 		pb: 1,
 		justifyContent: 'space-between',
 		width: '100%',
-	},
-	contentBorder: {
-		borderBottom: 1,
+    borderBottom: 1,
 		borderColor: 'divider',
-	},
+	},	
 	actions: {
 		display: 'flex',
 		alignItems: 'flex-start',

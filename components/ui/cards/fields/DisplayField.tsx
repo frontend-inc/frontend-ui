@@ -45,7 +45,7 @@ const DisplayField: React.FC<FieldProps> = (props) => {
 	const { field, resource, color = 'text.secondary', ...rest } = props
 	const { variant: fieldVariant, icon } = field
 	let value = get(resource, field?.name)
-	if (!value) return null
+	if (!value || value?.length == 0) return null;
 
 	const components = {
 		boolean: FieldBoolean,

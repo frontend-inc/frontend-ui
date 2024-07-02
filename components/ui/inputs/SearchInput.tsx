@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import { min } from 'moment'
+import { transferableAbortController } from 'util'
 
 type SearchInputProps = {
 	name?: string
@@ -59,6 +60,7 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
 	return (
 		<Paper
       component="form"
+      elevation={0}
       sx={{ 
         ...sx.root,
         ...(fullWidth && sx.fullWidth)
@@ -93,11 +95,17 @@ const sx = {
     display: 'flex', 
     alignItems: 'center', 
     width: '100%', 
+    border: '1px solid',
+    borderColor: 'divider',
     maxWidth: 400,
     minWidth: {
       sm: 320,
       xs: "100%"
-    } 
+    },
+    transition: 'box-shadow 0.3s',
+    '&:hover': {
+      boxShadow: 1
+    }
   },
   fullWidth: {
     width: '100%',

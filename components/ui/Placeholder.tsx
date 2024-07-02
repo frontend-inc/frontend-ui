@@ -49,10 +49,8 @@ const sx = {
 		alignItems: 'center',
 		width: '100%',
 		borderRadius: 1,
-    transition: 'box-shadow 0.3s',
-    '&:hover': {
-      boxShadow: 2,
-    }
+    border: '1px solid',
+    borderColor: 'divider',
 	},
 	title: {
 		color: 'text.primary',

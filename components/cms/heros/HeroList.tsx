@@ -14,19 +14,11 @@ import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-type HeroArticleProps = HeroProps & {
-	disableImage?: boolean
-	direction?: 'column' | 'column-reverse'
-}
-
-const HeroArticle: React.FC<HeroArticleProps> = (props) => {
+const HeroList: React.FC<HeroProps> = (props) => {
 	const {
 		actions,
 		displayFields = [],
-		direction = 'column',
 		resource,
-		disableImage = false,
-		enableBorder,
     enableOverlay,
 		enableEdit,
 		handleEdit,
@@ -40,14 +32,11 @@ const HeroArticle: React.FC<HeroArticleProps> = (props) => {
 	const { label, title, image, description } = resource || {}
 	return (
 		<Stack
-			sx={{
-				...sx.root,
-				...(enableBorder && sx.rootBorder),
-			}}
+			sx={ sx.root }
 			spacing={4}
 		>
 			{(actions || enableEdit) && (
-				<Box pt={enableBorder ? 4 : 0} sx={sx.actions}>
+				<Box sx={sx.actions}>
 					<Actions
 						actions={buildActions({
 							enableEdit,
@@ -60,42 +49,32 @@ const HeroArticle: React.FC<HeroArticleProps> = (props) => {
 					/>
 				</Box>
 			)}
-			{!disableImage && direction == 'column-reverse' && (
-				<Box sx={sx.imageContainer}>
-					<Image
-						src={image?.url}
-						alt={title}
-						height={400}
-						label={label}
-            enableOverlay={enableOverlay}
-						disableBorderRadius={enableBorder}
-					/>
-				</Box>
-			)}
 			<Stack spacing={3} sx={sx.header}>
 				<Typography color="text.primary" variant="h3">
 					{title}
 				</Typography>
-        { enableRatings && (
+        { enableRatings == true && (
           <AvgRating 
             justifyContent="center"
             resource={resource} 
             enableTotal
           />
         )}
-				<DisplayFields
-					alignItems="center"
-					fields={displayFields}
-					resource={resource}
-				/>
-				{enableBuyNow && (
+        { displayFields?.length > 0 && (
+          <DisplayFields
+            alignItems="center"
+            fields={displayFields}
+            resource={resource}
+          />
+        )}
+				{enableBuyNow == true && (
 					<BuyNowButton
 						resource={resource}
 						buttonText="Buy Now"
 						justifyContent="center"
 					/>
 				)}
-				{enableStripePaymentLink && (
+				{enableStripePaymentLink == true && (
 					<StripePaymentLink
 						resource={resource}
 						buttonText="Checkout"
@@ -103,17 +82,14 @@ const HeroArticle: React.FC<HeroArticleProps> = (props) => {
 					/>
 				)}
 			</Stack>
-			{!disableImage && direction == 'column' && (
-				<Box sx={sx.imageContainer}>
-					<Image
-						src={image?.url}
-						alt={title}
-						height={400}
-						label={label}
-						disableBorderRadius={enableBorder}
-					/>
-				</Box>
-			)}
+      <Box sx={sx.imageContainer}>
+        <Image
+          src={image?.url}
+          alt={title}
+          height={400}
+          label={label}          
+        />
+      </Box>
 			<SocialButtons
 				handle={resource?.handle}
 				enableLikes={enableLikes}
@@ -129,7 +105,7 @@ const HeroArticle: React.FC<HeroArticleProps> = (props) => {
 	)
 }
 
-export default HeroArticle
+export default HeroList
 
 const sx = {
 	root: {

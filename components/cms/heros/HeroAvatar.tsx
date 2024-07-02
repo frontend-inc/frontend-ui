@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Stack, Typography } from '@mui/material'
+import { Avatar, Box, Stack, Typography } from '@mui/material'
 import {
 	DisplayFields,
 	BuyNowButton,
@@ -14,7 +14,7 @@ import { HeroProps } from './Hero'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-const HeroProfile: React.FC<HeroProps> = (props) => {
+const HeroAvatar: React.FC<HeroProps> = (props) => {
 
 	const {
 		actions,
@@ -33,14 +33,28 @@ const HeroProfile: React.FC<HeroProps> = (props) => {
 	const { data } = resource || {}
 
 	const { label, title, image, description } = resource || {}
-	const [open, setOpen] = useState(false)
 	return (
-		<Stack spacing={3} direction="column" justifyContent="center">
+		<Stack spacing={2} direction="column" justifyContent="center">
+      {(actions || enableEdit) && (
+        <Stack
+          sx={sx.actions}
+          direction={{ sm: 'row', xs: 'column' }}
+          spacing={1}
+          p={enableBorder ? 1 : 0}
+        >
+          <Actions
+            actions={buildActions({
+              enableEdit,
+              handleEdit,
+              actions,
+            })}
+            resource={flattenDocument(resource)}
+            justifyContent="flex-end"
+          />
+        </Stack>
+      )}
 			<Box
-				sx={{
-					...sx.root,
-					...(enableBorder && sx.rootBorder),
-				}}
+				sx={ sx.root }
 			>
 				<Stack
 					sx={sx.container}
@@ -48,23 +62,22 @@ const HeroProfile: React.FC<HeroProps> = (props) => {
 					spacing={4}
 				>
 					<Stack
-						sx={{
-							...sx.leftPanel,
-							...(enableBorder &&
-								(enableFavorites || enableSharing || enableLikes) &&
-								sx.leftPanelBorder),
-						}}
+						sx={ sx.leftPanel }
 						spacing={2}
 						direction="column"
 					>
 						<Box sx={sx.imageContainer}>
-							<Image
-								label={label}
-								height={240}
-								src={image?.url}
-								alt={title}
-								disableBorderRadius={enableBorder}
-							/>
+              <Avatar
+                sx={{
+                  ...sx.avatar,								
+                  height: 200,
+                  width: 200,
+                }}
+                src={image?.url}
+                alt={title}
+              >
+                <Box />
+              </Avatar>
 						</Box>
 						<SocialButtons
 							handle={resource?.handle}
@@ -97,31 +110,13 @@ const HeroProfile: React.FC<HeroProps> = (props) => {
               text={description}
             />
 					</Stack>
-					{(actions || enableEdit) && (
-						<Stack
-							sx={sx.actions}
-							direction={{ sm: 'row', xs: 'column' }}
-							spacing={1}
-							p={enableBorder ? 1 : 0}
-						>
-							<Actions
-								actions={buildActions({
-									enableEdit,
-									handleEdit,
-									actions,
-								})}
-								resource={flattenDocument(resource)}
-								justifyContent="flex-end"
-							/>
-						</Stack>
-					)}
 				</Stack>
 			</Box>
 		</Stack>
 	)
 }
 
-export default HeroProfile
+export default HeroAvatar
 
 const sx = {
 	root: {
@@ -137,6 +132,35 @@ const sx = {
 		border: '1px solid',
 		borderColor: 'divider',
 	},
+  avatar: {
+		height: '200px',
+		width: '200px',
+		backgroundImage: 'linear-gradient(45deg, #888888, #222222,#000000)',
+	},
+  gradient: {
+		'&::after': {
+			content: '""',
+			borderRadius: '50%',
+			position: 'absolute',
+			bottom: 0,
+			left: 0,
+			width: '100%',
+			height: '100%',
+			background: 'linear-gradient(to top, rgb(0,0,0,0.5), transparent)',
+		},
+	},
+	overlay: {
+		'&::after': {
+			content: '""',
+			borderRadius: '50%',
+			position: 'absolute',
+			bottom: 0,
+			left: 0,
+			width: '100%',
+			height: '100%',
+			background: 'rgb(0,0,0,0.5)',
+		},
+	},
 	container: {
 		width: '100%',
 		justifyContent: 'flex-start',
@@ -146,7 +170,10 @@ const sx = {
 		},
 	},
 	leftPanel: {
-		width: '100%',
+		width: {
+       sm: 200,
+       xs: '100%'
+    }
 	},
 	leftPanelBorder: {
 		pb: 2,
@@ -154,11 +181,10 @@ const sx = {
 	imageContainer: {
 		width: '100%',
 		height: '100%',
-		maxHeight: {
-			sm: 240,
-			xs: 240,
-		},		
 		borderRadius: 1,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
 	},
 	header: {
 		width: '100%',

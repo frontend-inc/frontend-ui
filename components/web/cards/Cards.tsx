@@ -13,8 +13,7 @@ type CardType = {
 }
 
 export type CardsProps = {
-	variant?: 'grid' | 'list'
-	style?: 'avatar' | 'card' | 'cover'
+	style?: 'card' | 'cover'
 	items: CardType[]
 	enableBorder?: boolean
 	enableGradient?: boolean
@@ -25,7 +24,6 @@ const Cards: React.FC<CardsProps> = (props) => {
 	const router = useRouter()
 
 	const {
-		variant = 'grid',
 		style = 'card',
 		items,
 		enableBorder,
@@ -41,59 +39,27 @@ const Cards: React.FC<CardsProps> = (props) => {
 
 	return (
 		<Box>
-			{variant == 'list' && (
-				<Stack spacing={2}>
-					{items?.map((card, i) => (
-						<CollectionCard
-							actions={[]}
-							key={i}
-							variant={variant}
-							style={style}
-							resource={{
-								...card,
-								image: {
-									url: card?.image,
-								},
-							}}
-              displayFields={[
-                { 
-                  name: 'description', 
-                  variant: 'text', 
-                  label: 'Description' 
-                }
-              ]}
-							handleClick={() => handleClick(card)}
-							enableBorder={enableBorder}
-							enableGradient={enableGradient}
-							enableOverlay={enableOverlay}
-						/>
-					))}
-				</Stack>
-			)}
-			{variant == 'grid' && (
-				<Grid container spacing={2}>
-					{items?.map((card, i) => (
-						<Grid item xs={12} sm={4} md={4} key={i}>
-							<CollectionCard
-								actions={[]}
-								variant={variant}
-								style={style}
-								resource={{
-									...card,
-									image: {
-										url: card?.image,
-									},
-								}}
-                displayFields={[]}
-								handleClick={() => handleClick(card)}
-								enableBorder={enableBorder}
-								enableGradient={enableGradient}
-								enableOverlay={enableOverlay}
-							/>
-						</Grid>
-					))}
-				</Grid>
-			)}
+      <Grid container spacing={2}>
+        {items?.map((card, i) => (
+          <Grid item xs={12} sm={4} md={4} key={i}>
+            <CollectionCard
+              actions={[]}
+              style={style}
+              resource={{
+                ...card,
+                image: {
+                  url: card?.image,
+                },
+              }}
+              displayFields={[]}
+              handleClick={() => handleClick(card)}
+              enableBorder={enableBorder}
+              enableGradient={enableGradient}
+              enableOverlay={enableOverlay}
+            />
+          </Grid>
+        ))}
+      </Grid>
 			{items?.length == 0 && (
 				<Placeholder
 					icon="Search"

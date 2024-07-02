@@ -9,8 +9,7 @@ type CollectionCardsProps = {
 	resources: any
 	displayFields?: DisplayFieldType[]
 	actions?: ActionType[]
-	variant: 'list' | 'grid'
-	style: 'card' | 'avatar' | 'cover' | 'chip' | 'text' | 'image'
+	style: 'list' | 'card' | 'avatar' | 'cover' | 'chip' | 'text'
 	buttonText?: string
 	enableBorder?: boolean
 	enableGradient?: boolean
@@ -35,7 +34,6 @@ const CollectionCards: React.FC<CollectionCardsProps> = (props) => {
 		handleClick,
 		handleEdit = handleNull,
 		handleDelete = handleNull,
-		variant = 'grid',
 		style = 'card',
 		enableBorder = false,
 		enableGradient = false,
@@ -46,6 +44,18 @@ const CollectionCards: React.FC<CollectionCardsProps> = (props) => {
 		enableFavorites = false,
     enableRatings = false,
 	} = props
+
+  const VARIANTS = {
+    list: 'list',
+    card: 'grid',
+    avatar: 'list',
+    cover: 'grid',
+    chip: 'list',
+    text: 'list',
+    image: 'grid' 
+  }
+
+  let variant = VARIANTS[style]
 
 	return (
 		<Stack spacing={2}>
@@ -59,8 +69,7 @@ const CollectionCards: React.FC<CollectionCardsProps> = (props) => {
 				{resources?.map((resource, index) => (
 					<CollectionCard
 						key={index}
-						variant={variant}
-						style={style}
+            style={style}
 						resource={flattenDocument(resource)}
 						displayFields={displayFields}
 						handleClick={() => handleClick(resource)}

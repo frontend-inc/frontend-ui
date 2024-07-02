@@ -38,7 +38,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 		enableOverlay = false,
 		opacity = 0.65,
 		alignItems = 'center',
-		overlayColor = '#FFFFFF',
+		overlayColor = '#000000',
 		href,
 	} = props
 
@@ -78,7 +78,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 					{title && (
 						<Typography
 							variant={'h3'}
-							color="text.primary"
+							color="common.white"
 							sx={{
 								textAlign: alignItems === 'center' ? 'center' : 'left',
 							}}
