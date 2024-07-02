@@ -19,11 +19,15 @@ const Placeholder: React.FC<PlaceholderProps> = (props) => {
 		description,
 		actions,
 		color = 'text.secondary',
+    enableBorder=false
 	} = props
 
 	return (
 		<Box
-			sx={ sx.root }
+			sx={{ 
+        ...sx.root,
+        ...(enableBorder && sx.rootBorder) 
+      }}
 		>
 			<Stack spacing={1} alignItems="center">
 				{icon && <Icon name={icon} size={24} color={color} />}
@@ -48,10 +52,12 @@ const sx = {
 		justifyContent: 'center',
 		alignItems: 'center',
 		width: '100%',
-		borderRadius: 1,
+		borderRadius: 1,    
+	},
+  rootBorder: {
     border: '1px solid',
     borderColor: 'divider',
-	},
+  },
 	title: {
 		color: 'text.primary',
 		textAlign: 'center',

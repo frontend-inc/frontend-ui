@@ -119,6 +119,7 @@ const sx = {
 	content: {
     px: 2,
 		width: '100%',
+    pb: 4,
 		maxWidth: {
 			sm: 500,
 			xs: '100%',

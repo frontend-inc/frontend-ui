@@ -50,15 +50,13 @@ const sx = {
 		},
 		whiteSpace: 'nowrap',
 		maxWidth: '240px',
-		borderBottom: '2px solid',
-		borderColor: 'divider',
 	},
 	cellSmall: {
 		minWidth: '40px',
 		width: '40px',
 	},
 	cellHeader: {
-		borderBottom: '2px solid',
+		borderBottom: '1px solid',
 		borderColor: 'divider',
 		zIndex: 1,
 		p: 0,

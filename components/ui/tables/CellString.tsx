@@ -8,7 +8,7 @@ type CellStringProps = {
 }
 
 const CellString: React.FC<CellStringProps> = (props) => {
-	const { value, variant = 'caption' } = props
+	const { value, variant = 'body2' } = props
 	return (
 		<Typography sx={sx.text} variant={variant}>
 			{value}

@@ -43,8 +43,7 @@ const CmsGeoList: React.FC<CmsListProps> = (props) => {
 			<CollectionList       
         {...rest} 
         enableGoogleMaps 
-        variant="list"
-        style="card"
+        style="list"
       />
 		</Section>
 	)

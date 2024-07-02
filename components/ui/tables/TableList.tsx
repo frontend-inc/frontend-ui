@@ -155,6 +155,10 @@ const sx = {
 	root: {
 		overflow: 'hidden',
 		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+    transition: 'box-shadow 0.3s',
+    '&:hover': {
+      boxShadow: 2
+    }
 	},
 	rootBorder: {
 		border: '1px solid',

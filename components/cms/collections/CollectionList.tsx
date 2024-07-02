@@ -12,9 +12,8 @@ import {
 import { CollectionContainer } from '../../../components'
 
 export type CollectionListProps = {
-  user?: UserType
-	variant: 'list' | 'grid'
-	style: 'avatar' | 'card' | 'cover' | 'chip' | 'text' | 'image'
+  user?: UserType	
+	style: 'list' | 'avatar' | 'card' | 'cover' | 'text' 
 	layout?: 'drawer' | 'inline'
 	editing?: boolean
 	url: string

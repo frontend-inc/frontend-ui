@@ -112,5 +112,6 @@ const sx = {
 			xs: '1fr',
 		},
 		gap: '16px',
+    pb: 1
 	},
 }

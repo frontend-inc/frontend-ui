@@ -40,7 +40,10 @@ const CmsTable: React.FC<CmsTableProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<CollectionTable {...rest} />
+			<CollectionTable 
+        {...rest} 
+        enableBorder
+      />
 		</Section>
 	)
 }

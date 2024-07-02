@@ -26,7 +26,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		handleClick,
 		textVariant = 'subtitle1',
 		objectFit = 'cover',
-		height = 320,
+		height = 400,
 		enableGradient = false,
     enableUsers = false,
 		enableOverlay = false,
@@ -56,9 +56,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
     >
       <Stack
         spacing={1}
-        sx={{
-          ...sx.root,
-        }}
+        sx={ sx.root }
       >
         <TouchableOpacity handleClick={handleItemClick}>
           <Image

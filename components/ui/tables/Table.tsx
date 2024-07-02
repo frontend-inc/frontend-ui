@@ -26,10 +26,10 @@ type TableProps = {
 	query: any
 	handleQueryChange: (e: any) => void
 	handleClearQuery: () => void
-	handlePaginate?: (e: any, page: number) => void
-	handleSearch?: (keywords: any) => void
+	handlePaginate: (e: any, page: number) => void
+	handleSearch: (keywords: any) => void
 	handleKeywordSearch: (keywords: string) => void
-	handleSort?: (field: any) => void
+	handleSort: (field: any) => void
 	enableBorder?: boolean
 	disableBorderRadius?: boolean
 	styles?: any

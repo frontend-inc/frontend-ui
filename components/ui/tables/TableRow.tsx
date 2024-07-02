@@ -92,8 +92,9 @@ export default TableRow
 const sx = {
 	root: {
 		height: '50px',
-		borderBottom: '1px solid',
-		borderColor: 'divider',
+    '&:hover .MuiTableCell-root': {
+      bgcolor: 'secondary.main'
+    }
 	},
 	editIcon: {
 		height: '20px',

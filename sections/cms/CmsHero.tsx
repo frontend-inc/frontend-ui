@@ -27,7 +27,7 @@ const CmsHero: React.FC<CmsHeroProps> = (props) => {
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
 			bgcolor={bgcolor}
-			py={py}
+			py={style == 'cover' ? 0 : py}
 			px={style == 'cover' ? 0 : px}
 			maxWidth={maxWidth}
 		>
