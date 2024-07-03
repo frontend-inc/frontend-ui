@@ -71,8 +71,7 @@ const DisplayField: React.FC<FieldProps> = (props) => {
 			value: truncate(value),
 		},
 		text: {
-			variant: 'body1',
-			value: truncate(value, 80),
+			variant: 'body1',			
 		},
 		image: {
 			height: 64,

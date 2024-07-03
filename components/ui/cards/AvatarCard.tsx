@@ -78,7 +78,8 @@ const AvatarList: React.FC<CardProps> = (props) => {
                 { enableRatings == true && (
                   <AvgRating resource={resource} size="small" /> 
                 )}
-                <DisplayFields fields={displayFields} resource={resource} />
+                <DisplayFields 
+                  fields={displayFields} resource={resource} />
                 { enableUsers == true && (
                   <UserChip 
                     user={ resource?.user }

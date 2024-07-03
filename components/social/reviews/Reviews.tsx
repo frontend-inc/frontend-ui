@@ -15,7 +15,7 @@ import { useReviews } from '../../../hooks'
 import { useAuth } from 'frontend-js'
 import { AppContext } from '../../../context'
 import { useFilters } from '../../../hooks'
-import { FormFieldType, FilterOptionType } from '../../../types'
+import { FilterOptionType } from '../../../types'
 import { SearchFilterOptionType } from '../../../types'
 import { SortOptionType } from '../../../types'
 
@@ -185,22 +185,21 @@ const Reviews: React.FC<ReviewsProps> = (props) => {
 	return (
 		<Stack spacing={1} sx={sx.root}>
 			<Stack direction="row" sx={sx.reviewHeader}>
-				<Typography color="text.primary" variant="h6">
+				<Typography color="text.primary" variant="subtitle1">
 					Reviews ({totalCount})
 				</Typography>
 			</Stack>
-      <Stack direction="column" spacing={1}>
-        <SearchInput
-          value={keywords}
-          handleChange={handleKeywordChange}
-          handleSearch={handleSearch}
-        />
 				<Stack
 					direction={{ xs: 'column', sm: 'row' }}
 					justifyContent="space-between"
 					spacing={1}
 				>
-					<Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
+					<Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} alignItems='center'>
+            <SearchInput
+              value={keywords}
+              handleChange={handleKeywordChange}
+              handleSearch={handleSearch}
+            />
             <Box>
               <FilterButton
                 filters={activeFilters}
@@ -209,17 +208,20 @@ const Reviews: React.FC<ReviewsProps> = (props) => {
                 filterOptions={filterOptions}
               />
             </Box>
-            <SortButton
-              sortBy={query?.sort_by || 'id'}
-              sortDirection={query?.sort_direction || 'desc'}
-              sortOptions={sortOptions}
-              handleSortBy={handleSort}
-              handleSortDirection={handleSortDirection}
-            />
-					</Stack>          
-          <ReviewButton handleClick={handleToggleClick} />          
+            <Box>
+              <SortButton
+                sortBy={query?.sort_by || 'id'}
+                sortDirection={query?.sort_direction || 'desc'}
+                sortOptions={sortOptions}
+                handleSortBy={handleSort}
+                handleSortDirection={handleSortDirection}
+              />
+            </Box>
+					</Stack>   
+          <Box>
+            <ReviewButton handleClick={handleToggleClick} />          
+          </Box>       
 				</Stack>
-			</Stack>
 			<Collapse in={openReview}>
 				<ReviewForm					
 					errors={errors}
@@ -240,7 +242,7 @@ const Reviews: React.FC<ReviewsProps> = (props) => {
 			</List>
 			{!loading && !openReview && reviews?.length == 0 && (
 				<Placeholder
-					icon="MessageSquare"
+					icon="Star"
 					title="There are no reviews."
 					description="Be the first to leave a review."
 				/>

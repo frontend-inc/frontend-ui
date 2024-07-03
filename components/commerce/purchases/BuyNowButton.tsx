@@ -7,6 +7,7 @@ import { usePayments } from '../../../hooks'
 import { isPurchased } from '../../../helpers'
 
 type BuyNowButtonProps = {
+  size?: 'small' | 'medium' | 'large'
 	resource: any
 	buttonText?: string
 	justifyContent?: 'center' | 'flex-start' | 'flex-end'
@@ -14,6 +15,7 @@ type BuyNowButtonProps = {
 
 const BuyNowButton: React.FC<BuyNowButtonProps> = (props) => {
 	const {
+    size='large',
 		resource,
 		buttonText = 'Buy Now',
 		justifyContent = 'flex-start',
@@ -54,36 +56,26 @@ const BuyNowButton: React.FC<BuyNowButtonProps> = (props) => {
 	return (
 		<Box>
 			<Stack direction="column" spacing={1} alignItems={justifyContent}>
-				<Stack
-					direction="row"
-					spacing={1}
-					alignItems="center"
-					justifyContent={justifyContent}
-				>
-					<Typography variant="subtitle1" color="textPrimary">
-						{displayAmount ? displayAmount : 'FREE'}
-					</Typography>
-					<Typography variant="caption" color="text.secondary">
-						{availableForSale ? 'Price' : 'Sold out'}
-					</Typography>
-				</Stack>
 				<Button
 					sx={sx.button}
-					size="large"
+					size={ size }
 					variant="contained"
 					color="primary"
 					onClick={handleClick}
-					disabled={!availableForSale}
+          disabled={!availableForSale}
 					startIcon={
-						purchased ? (
+            <>
+						{ purchased && (
 							<Icon name="CheckCircle" size={20} color="primary.contrastText" />
-						) : (
+						)} 
+            { !purchased && availableForSale == true && (
 							<Icon
 								name="CreditCard"
 								size={20}
 								color={'primary.contrastText'}
 							/>
-						)
+						)}
+            </>
 					}
 					endIcon={<IconLoading loading={loading} />}
 				>

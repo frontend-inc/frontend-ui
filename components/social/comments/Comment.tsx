@@ -73,7 +73,7 @@ const Comment: React.FC<CommentProps> = (props) => {
 			<ListItem
 				sx={{
 					...sx.listItem,
-					pl: Math.min(level * 7, 14),
+					pl: Math.min(level * 7, 14) + 2,
 				}}
 				secondaryAction={
 					<IconButton onClick={handleReply}>

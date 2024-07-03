@@ -99,7 +99,10 @@ const HeroAvatar: React.FC<HeroProps> = (props) => {
                 enableTotal
               />
             )}
-						<DisplayFields fields={displayFields} resource={resource} />
+						<DisplayFields 
+              fields={displayFields} 
+              resource={resource} 
+            />
 						{enableBuyNow && (
 							<BuyNowButton resource={resource} buttonText="Buy Now" />
 						)}

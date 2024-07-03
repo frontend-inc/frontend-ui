@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, ListItem, Button } from '@mui/material'
+import { Paper, Stack, ListItem, Button } from '@mui/material'
 import { AuthGuard, IconLoading, RatingInput, TextInput } from '../..'
 
 type ReviewFormProps = {
@@ -21,8 +21,8 @@ const ReviewForm: React.FC<ReviewFormProps> = (props) => {
 
 	return (
 		<AuthGuard>
-			<ListItem>
-				<Stack sx={sx.form} direction="column" spacing={1}>
+			<ListItem disableGutters>
+        <Stack sx={sx.form} direction="column" spacing={1}>
           <RatingInput 
             errors={errors}            
             name="rating"
@@ -30,30 +30,30 @@ const ReviewForm: React.FC<ReviewFormProps> = (props) => {
             handleChange={handleChange}
           />
           <TextInput
-						errors={errors}
-						name="title"
-						value={review?.title}
-						handleChange={handleChange}
-						placeholder="Review summary..."
-					/>          
-					<TextInput
-						errors={errors}
-						multiline
-						rows={4}
-						name="body"
-						value={review?.body}
-						handleChange={handleChange}
-						placeholder="Leave a review..."
-					/>
-					<Button
-						variant="contained"
-						onClick={handleSubmit}
-						disabled={loading}
-						startIcon={<IconLoading loading={loading} />}
-					>
-						Submit
-					</Button>
-				</Stack>
+            errors={errors}
+            name="title"
+            value={review?.title}
+            handleChange={handleChange}
+            placeholder="Review summary..."
+          />          
+          <TextInput
+            errors={errors}
+            multiline
+            rows={4}
+            name="body"
+            value={review?.body}
+            handleChange={handleChange}
+            placeholder="Leave a review..."
+          />
+          <Button
+            variant="contained"
+            onClick={handleSubmit}
+            disabled={loading}
+            startIcon={<IconLoading loading={loading} />}
+          >
+            Submit
+          </Button>
+        </Stack>
 			</ListItem>
 		</AuthGuard>
 	)
@@ -69,6 +69,8 @@ const sx = {
 		p: 2,
 		width: '100%',
 		alignItems: 'flex-start',
-		bgcolor: 'secondary.light',
 	},
+  paper: {
+    width: '100%'
+  }
 }

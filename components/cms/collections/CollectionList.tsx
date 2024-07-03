@@ -42,7 +42,9 @@ export type CollectionListProps = {
 	enableDelete?: boolean
   enableComments?: boolean
 	enableFavorites?: boolean
+  enableLikes?: boolean
   enableRatings?: boolean  
+  enableSharing?: boolean
   enableUsers?: boolean
 	filterUser?: boolean
 	filterTeam?: boolean

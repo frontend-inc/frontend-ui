@@ -86,7 +86,7 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
 	}, [places])
 
 	return (
-		<Stack width={'100%'} direction="column" spacing={0}>
+		<Stack width={'100%'} direction="column" spacing={1}>
 			{enablePosition && lat && lng && (
 				<Box
 					sx={{
@@ -101,7 +101,7 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
 						height={height}
 						width={width}
 						zoom={zoom}
-						resources={[document]}
+						resources={[{ lat, lng }]}
 					/>
 				</Box>
 			)}

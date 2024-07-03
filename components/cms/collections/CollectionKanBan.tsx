@@ -10,7 +10,6 @@ import {
   Form,
   IconLoading,
   AlertModal,
-  CommentsModal,
   HeroModal 
 } from '../..'
 import { Box, Button } from '@mui/material'
@@ -48,7 +47,9 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
     enableCreate,
     enableComments,
     enableFavorites,
-    enableRatings,  
+    enableLikes,
+    enableRatings,
+    enableSharing,  
     enableUsers,  
     enableSearch = false,
 		enableFilters = false,
@@ -118,7 +119,7 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
 
   const handleComment = (resource) => {
     setActiveResource(resource)
-    setCommentsOpen(true)
+    setOpen(true)
   }  
 
 	const handleAdd = (columnName) => {
@@ -285,12 +286,6 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
         enableFavorites={enableFavorites}
         enableRatings={enableRatings}
         handleEdit={() => handleEdit(activeResource)}
-      />
-      <CommentsModal 
-        open={ commentsOpen }
-        handleClose={ () => setCommentsOpen(false) }
-        resource={ activeResource }
-        url={ url }
       />
   </>    
 	)

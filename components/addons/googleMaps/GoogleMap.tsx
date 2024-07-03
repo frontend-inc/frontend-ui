@@ -15,7 +15,6 @@ export type GoogleMapProps = {
 	displayFields?: DisplayFieldType[]
 }
 
-// https://visgl.github.io/react-google-maps/docs/api-reference/components/map
 // https://visgl.github.io/react-google-maps/docs/api-reference/components/advanced-marker
 const GoogleMap: React.FC<GoogleMapProps> = (props) => {
 	const {
@@ -42,7 +41,6 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
 
   const handleSetMarkers = (resources) => {
 		let markers = resources
-			?.filter((res) => res?.lat && res?.lng)
 			?.map((res) => ({
 				lat: res?.lat,
 				lng: res?.lng,
@@ -59,6 +57,7 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
 		}
 	}, [resources])
 
+  console.log('googleMarkers', googleMarkers)
 
 	if (googleMarkers?.length <= 0) return null
 	return (

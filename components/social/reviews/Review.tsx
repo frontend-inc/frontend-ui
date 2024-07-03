@@ -62,6 +62,9 @@ const sx = {
     color: 'primary.main'
   },
 	listItem: {
+    pb: 1,
+    borderBottom: '1px solid',
+    borderColor: 'divider',
 		alignItems: 'flex-start',
 		'&:hover .MuiBox-root': {
 			display: 'block',
