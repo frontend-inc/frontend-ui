@@ -10,7 +10,6 @@ import {
 	Typography,
 } from '@mui/material'
 import { UserAvatar } from '../../../components'
-import { useAuth } from 'frontend-js'
 import { useComments } from '../../../hooks'
 import { Icon } from '../../../components'
 import moment from 'moment'

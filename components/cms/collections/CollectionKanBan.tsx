@@ -10,6 +10,7 @@ import {
   Form,
   IconLoading,
   AlertModal,
+  CommentsModal,
   HeroModal 
 } from '../..'
 import { Box, Button } from '@mui/material'
@@ -42,10 +43,10 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
     resource: _resource,
     displayFields=[],
     actions=[],
-    enableOverlay=false,
     enableEdit,
     enableDelete,
     enableCreate,
+    enableComments,
     enableFavorites,
     enableRatings,  
     enableUsers,  
@@ -56,6 +57,8 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
     sortOptions=[],
     filterUser = false,
 		filterTeam = false,
+    enableGradient,
+    enableOverlay,
     emptyIcon,
 		emptyTitle = 'No results found',
 		emptyDescription = 'Try changing your search or filters.',
@@ -103,7 +106,7 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
   })
 
   const [open, setOpen] = useState(false)
-  
+  const [commentsOpen, setCommentsOpen] = useState(false)
   const [openModal, setOpenModal] = useState(false)
 	const [openDeleteModal, setOpenDeleteModal] = useState(false)
   const [activeResource, setActiveResource] = useState()
@@ -111,6 +114,11 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
   const handleClick = (resource) => {
     setActiveResource(resource)
     setOpen(true)
+  }  
+
+  const handleComment = (resource) => {
+    setActiveResource(resource)
+    setCommentsOpen(true)
   }  
 
 	const handleAdd = (columnName) => {
@@ -217,6 +225,8 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
         headers={headers}
         fieldName={fieldName}
         displayFields={displayFields}
+        enableOverlay={enableOverlay}
+        enableGradient={enableGradient}
         handleClick={ handleClick }
         handleDrop={handleDrop}    
         enableEdit={enableEdit}
@@ -225,8 +235,10 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
         handleEdit={handleEdit}
         handleDelete={handleDeleteClick}      
         handleAdd={handleAdd}
+        enableComments={enableComments}
         enableFavorites={enableFavorites}
-        enableRatings={enableRatings}       
+        enableRatings={enableRatings}    
+        handleComment={handleComment}   
       />
     	<Drawer
 				open={openModal}
@@ -260,19 +272,26 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
 				description="This action cannot be reversed."
 				handleConfirm={handleDelete}
 			/>
-    <HeroModal
-      open={ open }
-      handleClose={ () => setOpen(false) }
-      actions={ actions }
-      resource={ activeResource }
-      url={ url }
-      displayFields={displayFields}
-      enableOverlay={enableOverlay}
-      enableEdit={enableEdit}
-      enableFavorites={enableFavorites}
-      enableRatings={enableRatings}
-      handleEdit={() => handleEdit(activeResource)}
-    />
+      <HeroModal
+        open={ open }
+        handleClose={ () => setOpen(false) }
+        actions={ actions }
+        resource={ activeResource }
+        url={ url }
+        displayFields={displayFields}
+        enableOverlay={enableOverlay}
+        enableEdit={enableEdit}
+        enableComments={enableComments}
+        enableFavorites={enableFavorites}
+        enableRatings={enableRatings}
+        handleEdit={() => handleEdit(activeResource)}
+      />
+      <CommentsModal 
+        open={ commentsOpen }
+        handleClose={ () => setCommentsOpen(false) }
+        resource={ activeResource }
+        url={ url }
+      />
   </>    
 	)
 }

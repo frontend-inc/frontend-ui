@@ -27,7 +27,7 @@ export type CardProps = {
   ref?: React.Ref<any>
 	actions: ActionType[]
   enableUsers?: boolean
-  enableComments?: boolean
+  enableComments?: boolean  
 	enableFavorites?: boolean
   enableRatings?: boolean
 	editing?: boolean
@@ -56,6 +56,7 @@ export type CardProps = {
 	enableOverlay?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
+  handleComment?: (item: any) => void
 	icon?: string
 }
 

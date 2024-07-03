@@ -7,13 +7,13 @@ import {
 } from '@mui/material'
 import {
 	Image,
+  CommentButton,
 	DisplayFields,
 	FavoriteButton,
   AvgRating,
   UserChip
 } from '../../../components'
 import { truncate } from '../../../helpers'
-import { useRouter } from 'next/router'
 import { CardProps } from '../../../types'
 import { Actions } from '../../../components'
 import {useSortable} from '@dnd-kit/sortable';
@@ -43,12 +43,14 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
     enableDragging=false,
 		enableGradient = false,
 		enableOverlay = false,
+    enableComments,
 		enableFavorites,
     enableRatings,
     enableEdit,
     enableDelete,
     handleEdit,
     handleDelete,
+    handleComment,
     enableUsers 
 	} = props || {}
 
@@ -125,6 +127,12 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
       <Stack direction="row" alignItems="flex-end">
         {enableFavorites == true && (
           <FavoriteButton handle={resource?.handle} />
+        )}
+        { enableComments == true && (
+          <CommentButton 
+            handle={resource?.handle} 
+            handleClick={ handleComment }
+          />
         )}
         <Actions 
           numVisible={0} 

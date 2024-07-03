@@ -34,14 +34,18 @@ type SortableProps = {
   handleClick: (resource: any) => void
   handleDrop: (movedItem: any, overContainer: string, columns: any[]) => void
   columns: Record<string,any>
+  enableComments?: boolean
   enableFavorites?: boolean
   enableRatings?: boolean
+  enableOverlay?: boolean
+  enableGradient?: boolean
   enableEdit?: boolean
   enableDelete?: boolean
   enableCreate?: boolean
   handleEdit: (resource: any) => void
   handleDelete: (resource: any) => void
   handleAdd: (status: string) => void
+  handleComment: (resource: any) => void
 }
 
 const Sortable: React.FC<SortableProps> = (props) => {
@@ -52,9 +56,12 @@ const Sortable: React.FC<SortableProps> = (props) => {
     actions=[],
     headers=[],
     handleDrop,
-    displayFields=[],
+    displayFields=[],    
     columns: initialColumns = {},
+    enableOverlay,
+    enableGradient,
     handleClick,
+    enableComments,
     enableFavorites,
     enableRatings,
     enableEdit,
@@ -62,7 +69,8 @@ const Sortable: React.FC<SortableProps> = (props) => {
     enableCreate,
     handleEdit,
     handleDelete,   
-    handleAdd 
+    handleAdd,
+    handleComment 
   } = props 
 
   const [activeId, setActiveId] = useState(null);
@@ -127,12 +135,16 @@ const Sortable: React.FC<SortableProps> = (props) => {
                       actions={actions}
                       displayFields={displayFields}
                       handleClick={() => handleClick(res)}
+                      enableOverlay={enableOverlay}
+                      enableGradient={enableGradient}
+                      enableComments={enableComments}
                       enableFavorites={enableFavorites}
                       enableRatings={enableRatings}
                       enableEdit={enableEdit}
                       enableDelete={enableDelete}
                       handleEdit={() => handleEdit(res)}
                       handleDelete={() => handleDelete(res)}
+                      handleComment={() => handleComment(res)}
                     />
                   )):(
                     <Droppable 

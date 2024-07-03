@@ -17,14 +17,18 @@ export type KanBanProps = {
   displayFields: DisplayFieldType[]
   handleDrop: (movedItem: any, overContainer: string, columns: any[]) => void
   handleClick: (resource: any) => void
+  enableComments?: boolean
   enableFavorites?: boolean
   enableRatings?: boolean
+  enableOverlay?: boolean
+  enableGradient?: boolean
   enableEdit?: boolean
   enableDelete?: boolean
   enableCreate?: boolean
   handleEdit: (resource: any) => void
   handleDelete: (resource: any) => void
   handleAdd: (status: string) => void
+  handleComment: (resource: any) => void
 }
 
 const KanBan: React.FC<KanBanProps> = (props) => {
@@ -39,6 +43,9 @@ const KanBan: React.FC<KanBanProps> = (props) => {
 		handleClick,
     handleDrop,
     displayFields=[],
+    enableOverlay,
+    enableGradient,
+    enableComments,
     enableFavorites,
     enableRatings,
     enableEdit,
@@ -46,7 +53,8 @@ const KanBan: React.FC<KanBanProps> = (props) => {
     enableCreate, 
     handleEdit,
     handleDelete,
-    handleAdd  
+    handleAdd,
+    handleComment  
 	} = props
 
   const [groupedResources, setGroupedResources] = useState({})
@@ -75,6 +83,9 @@ const KanBan: React.FC<KanBanProps> = (props) => {
       handleDrop={handleDrop}
       handleClick={handleClick}
       displayFields={displayFields}
+      enableOverlay={enableOverlay}
+      enableGradient={enableGradient}
+      enableComments={enableComments}
       enableFavorites={enableFavorites}
       enableRatings={enableRatings}
       enableEdit={enableEdit}
@@ -83,6 +94,7 @@ const KanBan: React.FC<KanBanProps> = (props) => {
       handleEdit={handleEdit}
       handleDelete={handleDelete}
       handleAdd={handleAdd}
+      handleComment={handleComment}
     />
 	)
 }

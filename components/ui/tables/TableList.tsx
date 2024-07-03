@@ -20,7 +20,6 @@ type TableProps = {
 	fields: Array<any>
 	rows: Array<any>
 	toolbar?: React.ReactNode
-	enableBorder?: boolean
 	disableBorderRadius?: boolean
 	enableSelect?: boolean
 	enableEdit?: boolean
@@ -53,7 +52,6 @@ const TableList: React.FC<TableProps> = (props) => {
 		loading,
 		fields,
 		rows,
-		enableBorder,
 		disableBorderRadius,
 		enableSelect = false,
 		enableEdit = false,
@@ -82,8 +80,7 @@ const TableList: React.FC<TableProps> = (props) => {
 	return (
 		<Box
 			sx={{
-				...sx.root,
-				...(enableBorder && sx.rootBorder),
+				...sx.root,				
 				...(disableBorderRadius && sx.disableBorderRadius),
 			}}
 		>

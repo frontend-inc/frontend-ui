@@ -1,6 +1,8 @@
 export { default as Comment } from './comments/Comment'
 export { default as Comments } from './comments/Comments'
+export { default as CommentsModal } from './comments/CommentsModal'
 export { default as CommentButton } from './comments/CommentButton'
+export { default as CommentReplyButton } from './comments/CommentReplyButton'
 export { default as CommentForm } from './comments/CommentForm'
 export { default as Favorites } from './favorites/Favorites'
 export { default as FavoriteButton } from './favorites/FavoriteButton'

@@ -7,6 +7,7 @@ import {
   Typography 
 } from '@mui/material'
 import {
+  Comments,
   Modal,
   AvgRating,
   Icon,
@@ -27,6 +28,7 @@ export type HeroModalProps = HeroProps & {
   open: boolean  
   handleClose: () => void
   url: string
+  enableComments?: boolean
 }
 
 const HeroModal: React.FC<HeroModalProps> = (props) => {
@@ -40,6 +42,7 @@ const HeroModal: React.FC<HeroModalProps> = (props) => {
 		displayFields = [],
 		enableEdit,
 		handleEdit,
+    enableComments,
 		enableLikes,
 		enableFavorites,
 		enableSharing,

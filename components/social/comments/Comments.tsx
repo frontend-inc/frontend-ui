@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import {
 	AlertModal,
-	CommentButton,
+	CommentReplyButton,
 	Comment,
 	CommentForm,
 	LoadMore,
@@ -97,7 +97,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
 				<Typography color="text.primary" variant="subtitle1">
 					Comments ({totalCount})
 				</Typography>
-				<CommentButton handleClick={handleToggleClick} />
+				<CommentReplyButton handleClick={handleToggleClick} />
 			</Stack>
 			<Collapse in={openComment}>
 				<CommentForm

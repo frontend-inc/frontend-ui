@@ -60,8 +60,8 @@ const sx = {
 	},
 	form: {
 		p: 2,
+    px: 5,
 		width: '100%',
 		alignItems: 'flex-start',
-		bgcolor: 'secondary.light',
 	},
 }
