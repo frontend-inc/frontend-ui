@@ -29,9 +29,6 @@ const useActions = (params: UseActionParams) => {
 			value = resource[action.fieldName]
 		}
 		switch (action?.name) {
-      case 'add_link': 
-        console.log('add_link', resource)
-        break;
 			case 'navigate':
 				let url = `${clientUrl}${action?.path}`
 				if (resource?.handle) {

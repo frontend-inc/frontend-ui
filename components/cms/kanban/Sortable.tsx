@@ -183,6 +183,7 @@ const Sortable: React.FC<SortableProps> = (props) => {
             actions={[]}   
             enableRatings={enableRatings}
             enableFavorites={enableFavorites}                  
+            handleComment={() => handleComment(activeResource)}
           /> 
         ): 
           null 

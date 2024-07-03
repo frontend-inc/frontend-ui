@@ -48,8 +48,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 		perPage = 20,
 		enableSearch = false,
 		enableFilters = false,
-		href,
-		enableBorder = false,
+		href,		
 		enableEdit = false,
 		enableCreate = false,
 		enableDelete = false,
@@ -304,8 +303,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (
 										</Box>
 									)}
 								</Stack>
-							}
-							enableBorder={enableBorder}
+							}							
 							enableEdit={enableEdit}
 							handleEdit={handleEdit}
 							enableDelete={enableDelete}

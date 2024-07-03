@@ -40,8 +40,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		perPage = 20,
 		enableSearch = false,
 		enableFilters = false,
-		href,
-		enableBorder = false,
+		href,		
 		enableEdit = false,
 		enableCreate = false,
 		enableDelete = false,
@@ -311,7 +310,6 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 									)}
 								</Stack>
 							}
-							enableBorder={enableBorder}
 							enableEdit={enableEdit}
 							handleEdit={handleEdit}
 							enableDelete={enableDelete}

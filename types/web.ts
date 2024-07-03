@@ -55,8 +55,7 @@ export type CardProps = {
 	enableGradient?: boolean
 	enableOverlay?: boolean
 	enableEdit?: boolean
-	enableDelete?: boolean
-  handleComment?: (item: any) => void
+	enableDelete?: boolean  
 	icon?: string
 }
 

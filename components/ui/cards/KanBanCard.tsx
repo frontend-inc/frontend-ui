@@ -26,6 +26,7 @@ type KanBanCardProps = CardProps & {
   attributes?: any
   listeners?: any 
   enableDragging?: boolean
+  handleComment: () => void
 }
 
 const KanBanCard: React.FC<KanBanCardProps> = (props) => {
@@ -130,8 +131,7 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
         )}
         { enableComments == true && (
           <CommentButton 
-            handle={resource?.handle} 
-            handleClick={ handleComment }
+            handleClick={handleComment}
           />
         )}
         <Actions 

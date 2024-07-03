@@ -45,8 +45,7 @@ const CmsForeignGeoList: React.FC<CmsForeignGeoListProps> = (props) => {
 			<ForeignCollection 
         {...rest} 
         enableGoogleMaps 
-        variant="list"
-        style="card"
+        style="list"
       />
 		</Section>
 	)

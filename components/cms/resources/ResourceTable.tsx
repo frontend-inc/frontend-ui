@@ -34,8 +34,7 @@ const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 		query: defaultQuery = {},
 		perPage = 20,
 		enableSearch = false,
-		enableFilters = false,
-		enableBorder = false,
+		enableFilters = false,		
 		enableEdit = false,
 		enableCreate = false,
 		enableDelete = false,
@@ -245,7 +244,6 @@ const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 							)}
 						</Stack>
 					}
-					enableBorder={enableBorder}
 					enableEdit={enableEdit}
 					handleEdit={handleEdit}
 					enableDelete={enableDelete}

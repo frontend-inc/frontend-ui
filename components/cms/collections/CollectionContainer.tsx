@@ -43,8 +43,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
     component: RenderList = CollectionCards,
     resource: _resource,
     user,
-		actions = [],
-		variant = 'grid',
+		actions = [],		
 		style = 'card',
 		href,
 		url,
@@ -240,8 +239,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
       >
         <Stack direction="column" spacing={2}>
           <RenderList
-            actions={actions}
-            variant={variant}
+            actions={actions}            
             style={style}
             resources={resources}
             displayFields={displayFields}
