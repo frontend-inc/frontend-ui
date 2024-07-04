@@ -57,8 +57,6 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
 		}
 	}, [resources])
 
-  console.log('googleMarkers', googleMarkers)
-
 	if (googleMarkers?.length <= 0) return null
 	return (
 		<Box

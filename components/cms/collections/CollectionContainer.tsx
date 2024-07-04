@@ -44,25 +44,17 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
     resource: _resource,
     user,
 		actions = [],
-		variant = 'grid',
 		style = 'card',
 		href,
 		url,
     searchUrl,
 		fields = [],
 		displayFields = [],
-		filterAnchor = 'left',
 		filterOptions = [],
 		sortOptions = [],
 		enableGoogleMaps = false,
-		perPage = 20,
 		enableSearch = false,
-		enableFilters = false,
-		enableSorting = false,
-		enableInfiniteLoad = false,
-		enableLoadMore = true,
 		buttonText,
-		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
 		enableEdit = false,
@@ -80,6 +72,9 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
     ...rest
 	} = props
 
+  const enableFilters = enableSearch && filterOptions.length > 0
+  const enableSorting = enableSearch && sortOptions.length > 0
+
 	const {
 		loading,
 		errors,
@@ -88,13 +83,23 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
 		update,
 		create,
 		destroy,
-    addLinks,
 		removeAttachment,
 		handleDataChange,
-		flattenDocument,    
+		flattenDocument,  
+    addLinks,  
 	} = useDocuments({
 		url,
 	})
+
+  let PER_PAGE = {
+    'list': 10,
+    'avatar': 10,
+    'card': 12,
+    'cover': 12,
+    'text': 10,    
+  }
+
+  let perPage = PER_PAGE[style] || 10
 
   const {
     delayedLoading: searchLoading,
@@ -161,7 +166,10 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
 			if (resource?.id) {
 				resp = await update(resource)
 			} else {
-				resp = await create(resource)
+				resp = await create(resource)        
+        if (_resource?.id && resp?.id) {
+					let add = await addLinks(resp.id, [_resource?.id])
+				}
 			}
 			if (resp?.id) {
 				setResource({})
@@ -203,7 +211,7 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
           <CollectionToolbar
             query={query}
             activeFilters={activeFilters}
-            enableFilters={enableFilters && filterAnchor == 'top'}
+            enableFilters={enableFilters}
             enableSorting={enableSorting}
             enableCreate={enableCreate}
             enableSearch={enableSearch}
@@ -219,35 +227,25 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
             handleSearch={handleSearch}
           />
         }
-        expandLeft={enableFilters && filterAnchor == 'left'}
         expandRight={enableGoogleMaps}
-        leftPanel={
-          <SearchFilters
-            filters={activeFilters}
-            filterOptions={filterOptions}
-            handleFilter={handleFilter}
-          />
-        }
         rightPanel={
-          <GoogleMap
-            zoom={15}
-            height={380}
-            resources={resources}								
-            enableBorder={enableBorder}
-            displayFields={displayFields}
-          />
-        }
-      >
+            <GoogleMap
+              enableBorder
+              zoom={15}
+              height={380}
+              resources={resources}								            
+              displayFields={displayFields}
+            />
+          }
+        >
         <Stack direction="column" spacing={2}>
           <RenderList
             actions={actions}
-            variant={variant}
             style={style}
             resources={resources}
             displayFields={displayFields}
             handleClick={handleClick}
             buttonText={buttonText}
-            enableBorder={enableBorder}
             enableGradient={enableGradient}          
             enableOverlay={enableOverlay}
             enableEdit={enableEdit}
@@ -258,15 +256,12 @@ const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
             handleEdit={handleEdit}
             handleDelete={handleDeleteClick}
             { ...rest }
-          />
-          {enableLoadMore && (
-            <LoadMore
-              page={page}
-              numPages={numPages}
-              loadMore={loadMore}
-              enableInfiniteLoad={enableInfiniteLoad}
-            />
-          )}    
+          />          
+          <LoadMore
+            page={page}
+            numPages={numPages}
+            loadMore={loadMore}
+          />              
         </Stack>    
 			</CollectionLayout>			
       {!loading && resources.length == 0 && (

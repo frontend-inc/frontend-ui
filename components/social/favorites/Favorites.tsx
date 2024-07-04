@@ -17,7 +17,6 @@ export type FavoritesProps = {
 	handle: string
 	href: any
 	foreignUrl?: string
-	filterAnchor?: 'left' | 'top'
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
 	enableSearch?: boolean

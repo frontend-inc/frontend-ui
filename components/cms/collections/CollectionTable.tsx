@@ -34,7 +34,6 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
     user,
 		fields,
 		headers,
-		filterAnchor = 'left',
 		filterOptions = [],
 		query: defaultQuery = {},
 		perPage = 20,
@@ -247,94 +246,73 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-			<Grid container spacing={0}>
-				{enableFilters && filterAnchor == 'left' && (
-					<Grid item xs={12} sm={4} lg={3}>
-						<Box sx={sx.filtersContainer}>
-							<SearchFilters
-								filters={activeFilters}
-								filterOptions={filterOptions}
-								handleFilter={handleFilter}
-							/>
-						</Box>
-					</Grid>
-				)}
-				<Grid
-					item
-					xs={12}
-					sm={enableFilters && filterAnchor == 'left' ? 8 : 12}
-					lg={enableFilters && filterAnchor == 'left' ? 9 : 12}
-				>
-					<Box sx={{ ...(delayedLoading && sx.loading) }}>
-						<TableList
-							toolbar={
-								<Stack
-									direction={{ xs: 'column', sm: 'row' }}
-									sx={sx.toolbar}
-									spacing={1}
-								>
-									{enableSearch && (
-										<SearchInput
-											value={keywords}
-											handleChange={handleKeywordChange}
-											handleSearch={handleSearch}
-										/>
-									)}
-									{enableFilters && filterAnchor == 'top' && (
-										<Box sx={sx.fullWidth}>
-											<FilterButton
-												filters={activeFilters}
-												handleFilter={handleFilter}
-												handleClear={handleClearFilters}
-												filterOptions={filterOptions}
-											/>
-										</Box>
-									)}
-									{enableCreate && (
-										<Box sx={sx.fullWidth}>
-											<Button
-												sx={sx.button}
-												color="secondary"
-												variant="contained"
-												onClick={handleAdd}
-												startIcon={
-													<Icon
-														name="Plus"
-														color="secondary.contrastText"
-														size={20}
-													/>
-												}
-											>
-												Add
-											</Button>
-										</Box>
-									)}
-								</Stack>
-							}
-							enableBorder={enableBorder}
-							enableEdit={enableEdit}
-							handleEdit={handleEdit}
-							enableDelete={enableDelete}
-							handleDelete={handleDeleteClick}
-							loading={resources && loading}
-							fields={headers}
-							rows={rows}
-							handleClick={handleClick}
-							query={query}
-							handleSort={handleSort}
-							page={page}
-							perPage={perPage}
-							numPages={numPages}
-							numResults={numResults}
-							totalCount={totalCount}
-							handlePaginate={handlePaginate}
-							emptyIcon={emptyIcon}
-							emptyTitle={emptyTitle}
-							emptyDescription={emptyDescription}
-						/>
-					</Box>
-				</Grid>
-			</Grid>
+      <Box sx={{ ...(delayedLoading && sx.loading) }}>
+        <TableList
+          toolbar={
+            <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              sx={sx.toolbar}
+              spacing={1}
+            >
+              {enableSearch && (
+                <SearchInput
+                  value={keywords}
+                  handleChange={handleKeywordChange}
+                  handleSearch={handleSearch}
+                />
+              )}
+              {enableFilters && (
+                <Box sx={sx.fullWidth}>
+                  <FilterButton
+                    filters={activeFilters}
+                    handleFilter={handleFilter}
+                    handleClear={handleClearFilters}
+                    filterOptions={filterOptions}
+                  />
+                </Box>
+              )}
+              {enableCreate && (
+                <Box sx={sx.fullWidth}>
+                  <Button
+                    sx={sx.button}
+                    color="secondary"
+                    variant="contained"
+                    onClick={handleAdd}
+                    startIcon={
+                      <Icon
+                        name="Plus"
+                        color="secondary.contrastText"
+                        size={20}
+                      />
+                    }
+                  >
+                    Add
+                  </Button>
+                </Box>
+              )}
+            </Stack>
+          }
+          enableEdit={enableEdit}
+          handleEdit={handleEdit}
+          enableDelete={enableDelete}
+          handleDelete={handleDeleteClick}
+          loading={resources && loading}
+          fields={headers}
+          rows={rows}
+          handleClick={handleClick}
+          query={query}
+          handleSort={handleSort}
+          page={page}
+          perPage={perPage}
+          numPages={numPages}
+          numResults={numResults}
+          totalCount={totalCount}
+          handlePaginate={handlePaginate}
+          emptyIcon={emptyIcon}
+          emptyTitle={emptyTitle}
+          emptyDescription={emptyDescription}
+        />
+      </Box>
 			<Drawer
 				open={openModal}
 				handleClose={() => setOpenModal(false)}

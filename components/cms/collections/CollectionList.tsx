@@ -24,8 +24,7 @@ export type CollectionListProps = {
 	query?: any
 	actions: ActionType[]
 	fields?: FormFieldType[]
-	displayFields: DisplayFieldType[]
-	filterAnchor?: 'left' | 'top'
+	displayFields: DisplayFieldType[]	
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
 	enableSearch?: boolean
@@ -62,9 +61,9 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 
 	return (
     <CollectionContainer
+      { ...rest }
       url={url} 
       searchUrl={url}
-      { ...rest }
     />
 	)
 }
