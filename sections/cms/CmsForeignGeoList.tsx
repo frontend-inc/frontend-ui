@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
 import { ForeignCollection } from '../../components'
-import { ForeignCollectionProps } from '../../components/cms/collections/ForeignCollectionList'
+import { ForeignCollectionListProps } from '../../components/cms/collections/ForeignCollectionList'
 import { SectionProps, HeadingProps } from '../../types'
 
 type CmsForeignGeoListProps = SectionProps &
 	HeadingProps &
-	ForeignCollectionProps
+	ForeignCollectionListProps
 
 const CmsForeignGeoList: React.FC<CmsForeignGeoListProps> = (props) => {
 	const {
