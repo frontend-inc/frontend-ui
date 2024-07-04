@@ -25,6 +25,16 @@ const TabsSwitchInput: React.FC<TabsSwitchInputProps> = (props) => {
 		disablePadding = false,
 	} = props
 
+  const handleTabChange = (ev) => {
+    const newValue = ev.target.value
+    handleChange({
+      target: {
+        name,
+        value: newValue == 1 ? true : false,
+      },
+    })
+  }
+
 	return (
 		<TabsInput
 			name={name}
@@ -38,7 +48,7 @@ const TabsSwitchInput: React.FC<TabsSwitchInputProps> = (props) => {
 				{ label: 'Yes', value: 1 },
 			]}
 			value={value == true ? 1 : 0}
-			handleChange={handleChange}
+			handleChange={handleTabChange}
 		/>
 	)
 }
