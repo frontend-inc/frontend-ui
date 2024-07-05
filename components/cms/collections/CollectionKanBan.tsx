@@ -105,7 +105,6 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
   })
 
   const [open, setOpen] = useState(false)
-  const [commentsOpen, setCommentsOpen] = useState(false)
   const [openModal, setOpenModal] = useState(false)
 	const [openDeleteModal, setOpenDeleteModal] = useState(false)
   const [activeResource, setActiveResource] = useState()
