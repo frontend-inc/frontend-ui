@@ -164,7 +164,7 @@ const Sortable: React.FC<SortableProps> = (props) => {
                 color="secondary" 
                 onClick={() => handleAdd(header.value)}
                 startIcon={
-                  <Icon name="Plus" size={20} />
+                  <Icon name="Plus" color='secondary.contrastText' size={20} />
                 }
               >
                 Add

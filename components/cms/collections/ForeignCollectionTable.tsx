@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
 import { useDocuments } from 'frontend-js'
-import { Button, Grid, Box, Stack } from '@mui/material'
+import { Button, Box, Stack } from '@mui/material'
 import {
 	Form,
 	Drawer,
@@ -14,7 +14,6 @@ import {
 import { AppContext } from '../../../context'
 import { FieldType, FilterOptionType, TableHeaderType } from '../../../types'
 import { useRouter } from 'next/router'
-import SearchFilters from '../filters/SearchFilters'
 import { flattenDocument, flattenDocuments } from '../../../helpers'
 import { TableList } from '../..'
 import { CollectionListProps } from './CollectionList'

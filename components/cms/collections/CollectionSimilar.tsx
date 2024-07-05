@@ -12,7 +12,6 @@ const CollectionSimilar: React.FC<CollectionSimilarProps> = (props) => {
   if(!resource?.id && url) return null;
 	return (
 		<CollectionList
-			enableFavorites
 			url={`${url}/${resource?.id}/similar`}
 			// Todo: Component errors without a default value
 			query={{}}

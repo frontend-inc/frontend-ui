@@ -52,8 +52,6 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
     enableSharing,  
     enableUsers,  
     enableSearch = false,
-		enableFilters = false,
-		enableSorting = false,
     filterOptions=[],
     sortOptions=[],
     filterUser = false,
@@ -197,6 +195,8 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
     await reloadMany()    
   }  
 
+  const enableFilters = enableSearch && filterOptions?.length > 0
+
   if(!headers || !fieldName) return null;
 	return (
     <>
@@ -205,7 +205,6 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
           query={query}
           activeFilters={activeFilters}
           enableFilters={enableFilters}
-          enableSorting={enableSorting}
           enableSearch={enableSearch}
           filterOptions={filterOptions}
           sortOptions={sortOptions}

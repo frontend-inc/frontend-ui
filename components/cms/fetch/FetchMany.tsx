@@ -8,7 +8,8 @@ type FetchManyProps = {
 }
 
 const FetchMany: React.FC<FetchManyProps> = (props) => {
-	const {
+	
+  const {
 		children,
 		url,
 		defaultQuery = {

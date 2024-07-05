@@ -33,7 +33,7 @@ const sx = {
 		color: 'secondary.contrastText',
 		bgcolor: 'secondary.main',
 		cursor: 'pointer',
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
+		borderRadius: 0.5,
 		boxShadow: '1px 0px 0 0 rgba(0,0,0,0.1)',
 	},
 	darkMode: {

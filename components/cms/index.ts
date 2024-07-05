@@ -22,7 +22,6 @@ export { default as FormFieldInput } from '../cms/forms/FormFieldInput'
 export { default as Fetch } from './fetch/Fetch'
 export { default as FetchMany } from './fetch/FetchMany'
 
-export { default as GridView } from './collections/GridView'
 export { default as LoadMore } from './collections/LoadMore'
 export { default as FilterButton } from './filters/FilterButton'
 export { default as KanBan } from '../cms/kanban/KanBan'
