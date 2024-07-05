@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { Stack, Typography, Box, Button } from '@mui/material'
-import { InputPropsType } from 'frontend-ui/types'
+import { InputPropsType } from '../../../types'
 import { Plus } from 'lucide-react'
 import JsonForm from './json/JsonForm'
 import JsonItem from './json/JsonItem'
-import { useMenu } from 'frontend-ui/hooks'
-import { SortableList, Drawer } from 'frontend-ui/components'
+import { useMenu } from '../../../hooks'
+import { SortableList, Drawer } from '../../../components'
 
 type JsonArrayInputProps = InputPropsType & {
 	title?: string
 	fields: Record<string, any>[]
-	direction?: 'row' | 'column'
 	name: string
 	label?: string
 	value: any[]
@@ -25,7 +24,6 @@ const JsonArrayInput: React.FC<JsonArrayInputProps> = (props) => {
 		fields = [],
 		value: items = [],
 		handleChange,
-		direction = 'column',
 	} = props
 
 	const { open, anchorEl, openMenu, closeMenu } = useMenu()
@@ -155,8 +153,8 @@ const JsonArrayInput: React.FC<JsonArrayInputProps> = (props) => {
 					index={currentIndex}
 					item={activeItem}
 					fields={fields}
-					direction={direction}
 					handleChange={handleInputChange}
+          direction='column'
 				/>
 			</Drawer>
 		</Stack>

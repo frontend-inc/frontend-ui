@@ -6,18 +6,15 @@ import {
 	TabsSwitchInput,
 	RatingInput,
 	TextInput,
-  ImageInput 
-} from 'frontend-ui/components'
+} from '../../../../components'
 
 type JsonFormProps = {
 	index: number
 	item: any
 	handleChange: any
 	fields: any
-	direction?: 'row' | 'column'
-	appId: string
-	collectionId: string
-	foreignCollectionId: string
+  direction?: 'column' | 'row'
+  handleRemove?: () => void 
 }
 
 const JsonForm: React.FC<JsonFormProps> = (props) => {
@@ -25,11 +22,12 @@ const JsonForm: React.FC<JsonFormProps> = (props) => {
 		item,
 		handleChange,
 		fields,
-		direction = 'column',
+    direction = 'column',
+    handleRemove
 	} = props
 
 	return (
-		<Stack direction={direction} spacing={1} sx={sx.root}>
+		<Stack direction='column' spacing={1} sx={sx.root}>
 			{fields.map((field, i) => (
 					<>
 						{field?.type === 'boolean' && (
@@ -44,7 +42,7 @@ const JsonForm: React.FC<JsonFormProps> = (props) => {
 						{field?.type === 'string' && (
               <TextInput
                 label={field.label}
-                direction={field.direction}
+                direction={direction}
                 name={field.name}
                 value={item[field.name]}
                 placeholder={field.placeholder}
@@ -70,7 +68,7 @@ const JsonForm: React.FC<JsonFormProps> = (props) => {
                 multiline
                 rows={6}
                 label={field.label}
-                direction={field.direction}
+                direction={direction}
                 name={field.name}
                 value={item[field.name]}
                 placeholder={field.placeholder}
@@ -84,7 +82,7 @@ const JsonForm: React.FC<JsonFormProps> = (props) => {
 								type="number"
 								name={field.name}
 								label={field.label}
-								direction={field.direction}
+								direction={direction}
 								value={item[field.name]}
 								placeholder={field.placeholder}
 								//@ts-ignore
@@ -95,7 +93,7 @@ const JsonForm: React.FC<JsonFormProps> = (props) => {
 						{field?.type === 'select' && (
 							<Autosuggest
 								label={field.label}
-								direction={field.direction}
+								direction={direction}
 								name={field.name}
 								value={item[field.name]}
 								placeholder={field.placeholder}
@@ -104,22 +102,10 @@ const JsonForm: React.FC<JsonFormProps> = (props) => {
 							/>
 						)}
 
-						{field?.type === 'image' && (
-							<ImageInput
-								label={field.label}
-								direction={field.direction}
-								name={field.name}
-								value={item[field.name]}
-								placeholder={field.placeholder}
-								//@ts-ignore
-								handleChange={handleChange}
-							/>
-						)}
-
 						{field?.type === 'rating' && (
 							<RatingInput
 								label={field.label}
-								direction={field.direction}
+								direction={direction}
 								name={field.name}
 								value={item[field.name]}
 								placeholder={field.placeholder}
