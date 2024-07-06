@@ -3,7 +3,7 @@ import {
 	PriceOptionType,
 	SearchFilterOptionType,
 	useProducts,
-	useSearchFilters,
+	useQueryFilters,
 } from 'frontend-shopify'
 import { ProductSortKeyType } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
@@ -72,7 +72,7 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 	const [reverse, setReverse] = useState(false)
 
 	const { filters, handleFilter, handleFilterArray, formatQueryFilters } =
-		useSearchFilters()
+		useQueryFilters()
 
 	const handleChange = (ev) => {
 		setKeywords(ev.target.value)

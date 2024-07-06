@@ -11,14 +11,7 @@ export { default as CollectionSimilar } from './collections/CollectionSimilar'
 export { default as CollectionTable } from './collections/CollectionTable'
 export { default as CollectionKanBan } from './collections/CollectionKanBan'
 export { default as EmailSignup } from './contacts/EmailSignup'
-export { default as Form } from '../cms/forms/Form'
-export { default as FormWizard } from '../cms/forms/FormWizard'
-export { default as ForeignForm } from './forms/ForeignForm'
-export { default as ForeignCollection } from './collections/ForeignCollectionList'
-export { default as ForeignCollectionKanBan } from './collections/ForeignCollectionKanBan'
-export { default as ForeignCollectionTable } from './collections/ForeignCollectionTable'
-export { default as FormInput } from '../cms/forms/FormInput'
-export { default as FormFieldInput } from '../cms/forms/FormFieldInput'
+
 export { default as Fetch } from './fetch/Fetch'
 export { default as FetchMany } from './fetch/FetchMany'
 
@@ -32,6 +25,14 @@ export { default as VideoModal } from '../cms/video/VideoModal'
 export { default as VideoPlayer } from '../cms/video/VideoPlayer'
 export { default as SearchFilters } from '../cms/filters/SearchFilters'
 
+// Forms 
+export { default as Form } from '../cms/forms/Form'
+export { default as FormWizard } from '../cms/forms/FormWizard'
+export { default as ForeignForm } from './forms/ForeignForm'
+export { default as FormInput } from '../cms/forms/FormInput'
+export { default as FormFieldInput } from '../cms/forms/FormFieldInput'
+export { default as ResourceForm } from '../cms/forms/ResourceForm'
+
 // Show
 export { default as Hero } from './heros/Hero'
 export { default as HeroList } from './heros/HeroList'
@@ -43,6 +44,9 @@ export { default as HeroHeader } from './heros/HeroHeader'
 export { default as HeroYouTube } from './heros/HeroYouTube'
 export { default as HeroVimeo } from './heros/HeroVimeo'
 export { default as HeroSnippet } from './heros/HeroSnippet'
+
+// Query 
+export { default as Query } from './query/Query'
 
 // Statistics 
 export { default as Statistics } from './analytics/Statistics'

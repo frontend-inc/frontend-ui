@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ResourceContext } from 'frontend-js'
 import { Box, Button } from '@mui/material'
 import { Waypoint } from 'react-waypoint'
 import { ExpandMore } from '@mui/icons-material'
@@ -6,13 +7,16 @@ import { Icon } from '../../../components'
 
 type LoadMoreProps = {
 	enableInfiniteLoad?: boolean
-	page?: number
-	numPages?: number
-	loadMore: () => void
 }
 
 const LoadMore: React.FC<LoadMoreProps> = (props) => {
-	const { enableInfiniteLoad = false, page = 1, numPages = 1, loadMore } = props
+	const { enableInfiniteLoad = false } = props
+
+  const { 
+    page,
+    numPages,
+    loadMore 
+  } = useContext(ResourceContext) as any
 
 	return (
 		<Box sx={sx.root}>

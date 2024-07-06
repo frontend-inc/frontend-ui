@@ -6,55 +6,69 @@ import {
 	SortButton,
 	SearchInput,
 } from '../../../components'
-import { FilterOptionType } from '../../../types'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
+import { useSearch, useForms } from '../../../hooks'
+import { useAuth } from 'frontend-js'
 
 export type CollectionToolbarProps = {
 	query: any
-	activeFilters: FilterOptionType[]
+	url: string
+  filterUser: boolean
+  filterTeam: boolean
+  perPage: number  
 	enableSearch?: boolean
-	enableFilters?: boolean
-	enableSorting?: boolean
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
 	enableCreate?: boolean
-	handleAdd?: () => void
-	handleFilter: (filter: FilterOptionType) => void
-	handleClearFilters: () => void
-	handleSortBy: (sortBy: SortOptionType) => void
-	handleSortDirection: (sortDirection: 'asc' | 'desc') => void
-	keywords: string
-	handleKeywordChange: (ev: React.ChangeEvent<HTMLInputElement>) => void
-	handleSearch: (keywords: string) => void
+  handleAdd?: () => void
 }
 
 const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
-	const handleNull = () => null
+  const { currentUser } = useAuth()
 
 	const {
-		query = {},
-		activeFilters,
+    url,
+    filterUser,
+    filterTeam,
+    query: defaultQuery ={},
+    perPage,
 		enableCreate = false,
 		enableSearch = false,
-		enableFilters = false,
-		enableSorting = false,
 		filterOptions = [],
 		sortOptions = [],
-		handleAdd = handleNull,
-		handleFilter,
-		handleClearFilters,
-		keywords,
-		handleKeywordChange,
-		handleSortBy,
-		handleSortDirection,
-		handleSearch,
 	} = props
+
+  const {
+    query,
+    keywords,
+    handleKeywordChange,
+    handleSearch,
+    handleSortBy,
+    handleSortDirection,
+    activeFilters,
+    handleFilter,
+    handleClearFilters, 
+  } = useSearch({
+    url,    
+    user: currentUser,
+    perPage,
+    filterUser,
+    filterTeam,
+    query: defaultQuery,  
+  })
+
+  const { 
+    handleAdd 
+  } = useForms()
+
+  const enableFilters = enableSearch && filterOptions.length > 0
+  const enableSorting = enableSearch && sortOptions.length > 0
 
 	if (!enableSearch && !enableFilters && !enableSorting && !enableCreate) {
 		return null
 	}
 	return (
-		<Stack direction="column" spacing={1}>
+		<Stack direction="column" spacing={1} mb={1}>
 			<Stack
 				justifyContent="space-between"
 				direction={{ sm: 'row', xs: 'column' }}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useDocuments, useAuth } from 'frontend-js'
-import { useFilters } from '../../hooks'
+import { useQuery } from 'frontend-js'
+import { useFilters } from '..'
 import { 
   SortOptionType,
   FilterOptionType 
@@ -27,7 +27,7 @@ const useSearch = (props) => {
 		page,
 		numPages,
 		loadMore,
-	} = useDocuments({
+	} = useQuery({
 		url,
 	})
 
@@ -96,7 +96,7 @@ const useSearch = (props) => {
 	)
 
 	useEffect(() => {
-		if (url && user) {
+		if (!loading && url && perPage && defaultQuery && queryFilters){
 			findMany({
 				...defaultQuery,
 				filters: mergeAllFilters([
@@ -108,13 +108,7 @@ const useSearch = (props) => {
 			})
 		}
 	}, [
-		url,
-		perPage,
-    user,
-		filterUser,
-		filterTeam,
-		queryFilters,
-		Object.keys(defaultQuery)?.length,
+		url
 	])
 
   return {

@@ -8,22 +8,39 @@ import {
 	SocialButtons,
   HeroSnippet
 } from '../..'
-import { HeroProps } from './Hero'
+import { useResourceContext } from 'frontend-js'
+import { ActionType, FormFieldType, DisplayFieldType } from '../../../types'
 
-export type HeroModalProps = HeroProps & {
+export type HeroModalProps =  {  
   open: boolean  
   handleClose: () => void
-  url: string
+  handle?: string
+	enableBorder?: boolean
+  enableOverlay?: boolean
+	actions: ActionType[]
+	displayFields: DisplayFieldType[]
+	fields?: FormFieldType[]
+	fieldName?: string
+	enableEdit?: boolean
+	enableCreate?: boolean
+	enableFavorites?: boolean
+	enableLikes?: boolean
+	enableSharing?: boolean
+  enableRatings?: boolean
+	enableBuyNow?: boolean
+  enableUsers?: boolean
+	enableStripePaymentLink?: boolean
+	handleEdit?: () => void
   enableComments?: boolean
 }
 
 const HeroModal: React.FC<HeroModalProps> = (props) => {
 
+  const { resource, url } = useResourceContext()
+
 	const {
     open,
     handleClose,
-		resource,
-    url,
     actions=[],
     displayFields=[],
     enableComments,
@@ -34,8 +51,6 @@ const HeroModal: React.FC<HeroModalProps> = (props) => {
     enableEdit,
     handleEdit 
 	} = props || {}
-
-  const { image, label, title } = resource || {}
 
 	if (!resource) return null
 	return (

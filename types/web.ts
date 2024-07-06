@@ -1,7 +1,7 @@
 import React from 'react'
 import { TypographyVariant } from '@mui/material'
 import { ActionType } from './actions'
-import { DisplayFieldType } from './forms'
+import { DisplayFieldType, FormFieldType } from './forms'
 
 export type HeadingProps = {
 	label?: string
@@ -21,6 +21,18 @@ export type SectionProps = {
 	requireTeam?: boolean
 	requirePaid?: boolean
 	requireAdmin?: boolean
+}
+
+export type FormProps = {
+  fields: FormFieldType[]
+  editFields?: FormFieldType[]
+  createFields?: FormFieldType[]
+}
+
+export type ForeignProps = {
+  resource: any 
+  foreignUrl: string
+  foreignContentType: string  
 }
 
 export type CardProps = {

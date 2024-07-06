@@ -1,27 +1,18 @@
-import React, { useContext, useEffect } from 'react'
-import { useResource } from 'frontend-js'
+import React, { useState, useContext } from 'react'
+import { ResourceContext, QueryContext } from 'frontend-js'
 import { Box, Stack } from '@mui/material'
-import { Carousel } from '../..'
+import { HeroModal, Carousel } from '../../../components'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
 import CollectionCard from './CollectionCard'
 import { ActionType } from '../../../types'
+import { useForms } from '../../../hooks'
+import { CollectionListProps } from './CollectionList'
 
-export type CollectionCarouselProps = {
-	actions: ActionType[]
-	url: string
-	style: 'card' | 'avatar' | 'cover' | 'chip' | 'text' | 'image'
-	fields?: any
-	editing?: boolean
-	href: any
-	perPage?: number
-	query?: any
+export type CollectionCarouselProps = CollectionListProps & {
 	enableAutoPlay?: boolean
 	enableArrows?: boolean
-	enableBorder?: boolean
 	enableDots?: boolean
-	enableGradient?: boolean
-	enableFavorites?: boolean
 }
 
 const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
@@ -30,43 +21,61 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 
 	const {
 		actions,
-		url,
-		query: defaultQuery = {},
-		perPage = 20,
 		href,
+    displayFields,
+
 		enableAutoPlay = true,
 		enableArrows = true,
 		enableDots = false,
-		enableBorder = false,
 		enableGradient = false,
+    enableOverlay = false,
+    enableEdit = false,
+    enableDelete = false,
+    enableRatings = false,
+    enableUsers = false,    
 		enableFavorites = false,
 	} = props
 
-	const { findMany, resources } = useResource({
-		url,
-	})
+  const [open, setOpen] = useState(false)
 
-	const handleClick = (item) => {
-		if (clientUrl && href && item?.handle) {
-			window.scrollTo({
-				top: 0,
-				behavior: 'smooth',
-			})
-			router.push(`${clientUrl}${href}/${item?.handle}`)
-		}
+  const { 
+    handleEdit,
+    handleDeleteClick 
+  } = useForms()
+
+  const { 
+    resource, 
+    setResource 
+  } = useContext(ResourceContext) as any 
+
+	const { 
+    loading, 
+    resources 
+  } = useContext(QueryContext) as any
+
+  const handleClick = (resource) => {
+    if(href){
+      if (clientUrl && href && resource?.handle) {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        })
+        router.push(`${clientUrl}${href}/${resource?.handle}`)
+      }
+    }else{
+      setResource(resource)
+      setOpen(true)    
+    }
 	}
 
-	useEffect(() => {
-		if (url && perPage) {
-			findMany({
-				...defaultQuery,
-				per_page: perPage,
-			})
-		}
-	}, [url, perPage])
-
 	return (
-		<Stack spacing={1} sx={sx.root}>
+		<Stack 
+      spacing={1} 
+      sx={{ 
+        ...sx.root,
+        ...(loading && sx.loading )
+      }}
+    >
 			<Carousel
 				enableDots={enableDots}
 				enableAutoPlay={enableAutoPlay}
@@ -86,14 +95,29 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 							style='card'
 							resource={resource}
               displayFields={[]}
+              enableEdit={enableEdit}
+              enableDelete={enableDelete}
+              handleEdit={() => handleEdit(resource)}
+              handleDelete={() => handleDeleteClick(resource)}
 							handleClick={() => handleClick(resource)}
-							enableBorder={enableBorder}
 							enableGradient={enableGradient}
 							enableFavorites={enableFavorites}
 						/>
 					</Box>
 				))}
 			</Carousel>
+      <HeroModal
+        open={ open }
+        handleClose={ () => setOpen(false) }
+        actions={ actions }
+        displayFields={displayFields}
+        enableOverlay={enableOverlay}
+        enableEdit={enableEdit}
+        enableFavorites={enableFavorites}
+        enableRatings={enableRatings}
+        enableUsers={enableUsers}
+        handleEdit={() => handleEdit(resource)}
+      />
 		</Stack>
 	)
 }
@@ -104,6 +128,9 @@ const sx = {
 	root: {
 		width: '100%',
 	},
+  loading: {
+    opacity: 0.5
+  },
 	grid: {
 		display: 'grid',
 		gridTemplateColumns: {

@@ -1,21 +1,26 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionList, CollectionToolbar } from '../../components'
-import { CollectionListProps } from '../../components/cms/collections/CollectionList'
+import { CollectionCarousel, CollectionToolbar } from '../../components'
+import { CollectionCarouselProps } from '../../components/cms/collections/CollectionCarousel'
 import { CollectionToolbarProps } from '../../components/cms/collections/CollectionToolbar'
-import { SectionProps, HeadingProps, FormProps } from '../../types'
+import { SectionProps, HeadingProps, FormProps, ForeignProps } from '../../types'
 import { QueryProvider, ResourceProvider } from 'frontend-js'
 import { Query, ResourceForm } from '../../components'
 import { FormProvider } from '../../context'
 
-type CmsGeoListProps = SectionProps & 
+type CmsForeignCarouselProps = SectionProps & 
   HeadingProps & 
-  CollectionListProps & 
+  CollectionCarouselProps & 
   CollectionToolbarProps & 
-  FormProps
+  FormProps & 
+  ForeignProps  
 
-const CmsGeoList: React.FC<CmsGeoListProps> = (props) => {
+const CmsForeignCarousel: React.FC<CmsForeignCarouselProps> = (props) => {
 	const {
+    url,
+    foreignUrl,
+    foreignContentType,
+    resource,
 		label,
 		title,
 		description,
@@ -32,8 +37,7 @@ const CmsGeoList: React.FC<CmsGeoListProps> = (props) => {
     enableSearch,
     enableCreate,
     filterOptions,
-    sortOptions,
-    url,
+    sortOptions,    
     query={},
     filterUser,
     filterTeam,
@@ -41,9 +45,11 @@ const CmsGeoList: React.FC<CmsGeoListProps> = (props) => {
 		...rest
 	} = props
 
+  const searchUrl = `${url}/${resource?.id}/${foreignContentType}`
+
 	return (
-    <QueryProvider url={url}>
-      <ResourceProvider url={url} name='document'>
+    <QueryProvider url={searchUrl}>
+      <ResourceProvider url={foreignUrl} name='document'>
         <FormProvider
           editFields={fields}
           createFields={fields}
@@ -82,18 +88,18 @@ const CmsGeoList: React.FC<CmsGeoListProps> = (props) => {
                 sortOptions={sortOptions} 
                 enableCreate={enableCreate}                 
               />
-              <CollectionList 
+              <CollectionCarousel 
                 {...rest} 
-                enableGoogleMaps 
-                style="list"
               />
             </Section>
           </Query>
-          <ResourceForm />
+          <ResourceForm 
+            resource={resource}
+          />
         </FormProvider>
       </ResourceProvider>
     </QueryProvider>
 	)
 }
 
-export default CmsGeoList
+export default CmsForeignCarousel

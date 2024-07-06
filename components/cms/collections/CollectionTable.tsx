@@ -2,23 +2,14 @@ import React, { useContext, useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
 import { useDocuments } from 'frontend-js'
 import { Button, Grid, Box, Stack } from '@mui/material'
-import {
-	Form,
-	Drawer,
-	AlertModal,
-	Icon,
-	FilterButton,
-	SearchInput,
-	IconLoading,
-} from '../../../components'
 import { AppContext } from '../../../context'
-import { FilterOptionType, TableHeaderType } from '../../../types'
+import { TableHeaderType } from '../../../types'
 import { useRouter } from 'next/router'
-import SearchFilters from '../filters/SearchFilters'
-import { flattenDocument, flattenDocuments } from '../../../helpers'
+import { flattenDocuments } from '../../../helpers'
 import { TableList } from '../../../components'
 import { CollectionListProps } from './CollectionList'
-import { useAuth } from 'frontend-js'
+import { useQuery } from 'frontend-js'
+import { useForms } from '../../../hooks'
 
 export type CollectionTableProps = CollectionListProps & {
 	headers: TableHeaderType[]
@@ -26,120 +17,27 @@ export type CollectionTableProps = CollectionListProps & {
 
 const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	const router = useRouter()
-	const { clientUrl, setAuthOpen } = useContext(AppContext)
-	const { currentUser } = useAuth()
+	const { clientUrl } = useContext(AppContext)
+
+  const { 
+    loading,
+    resources,
+    findMany, 
+    paginate,
+    query,
+    page,
+    perPage,
+    numPages,
+    numResults,
+    totalCount,    
+  } = useQuery()
 
 	const {
-		url,
-    user,
-		fields,
 		headers,
-		filterOptions = [],
-		query: defaultQuery = {},
-		perPage = 20,
-		enableSearch = false,
-		enableFilters = false,
 		href,		
 		enableEdit = false,
-		enableCreate = false,
 		enableDelete = false,
-		filterUser = false,
-		filterTeam = false,
-		emptyIcon,
-		emptyTitle = 'No results found',
-		emptyDescription = 'Try adjusting your search or filters.',
 	} = props
-
-	const [openModal, setOpenModal] = useState(false)
-	const [openDeleteModal, setOpenDeleteModal] = useState(false)
-
-	const {
-		loading,
-		delayedLoading,
-		errors,
-		resource,
-		resources,
-		setResource,
-		update,
-		create,
-		destroy,
-		handleDataChange,
-		query,
-		findMany,
-		reloadMany,
-		removeAttachment,
-		page,
-		numPages,
-		numResults,
-		totalCount,
-		paginate,
-	} = useDocuments({
-		url
-	})
-
-	const [keywords, setKeywords] = useState('')
-
-	const handleKeywordChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-		setKeywords(ev.target.value)
-	}
-
-	const handleSearch = (keywords: string) => {
-		findMany({
-			...query,
-			...defaultQuery,
-			keywords: keywords,
-			page: 1,
-			per_page: perPage,
-		})
-	}
-
-	const handlePaginate = (ev: any, page: number) => {
-		paginate(page)
-	}
-
-	const handleSort = (field: TableHeaderType) => {
-		let sortBy = field?.name
-		let sortDir = query?.sort_direction
-		if (sortBy == query?.sort_by) {
-			sortDir = query?.sort_direction == 'asc' ? 'desc' : 'asc'
-		}
-		findMany({
-			...query,
-			sort_by: sortBy,
-			sort_direction: sortDir,
-		})
-	}
-
-	const {
-		queryFilters,
-		activeFilters,
-		setActiveFilters,
-		handleAddFilter,
-		mergeAllFilters,
-		buildUserFilters,
-	} = useFilters({
-		query,
-	})
-
-	// Filter methods
-	const handleClearFilters = () => {
-		setActiveFilters([])
-		findMany({
-			filters: mergeAllFilters([
-        ...defaultQuery.filters, 
-        userFilter
-      ]),
-			sort_by: 'id',
-			sort_direction: 'desc',
-			keywords: '',
-			page: 1,
-			per_page: perPage,
-		})
-	}
-
-	const handleFilter = (filter: FilterOptionType) => {
-		handleAddFilter(filter)
-	}
 
 	const handleClick = (item) => {
 		if (clientUrl && href && item?.handle) {
@@ -151,88 +49,28 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		}
 	}
 
-	const handleAdd = () => {
-		if (!currentUser?.id) return setAuthOpen(true)
-		setResource({})
-		setOpenModal(true)
-	}
+  const {
+    handleEdit,
+    handleDeleteClick
+  } = useForms()
 
-	const handleEdit = (item) => {
-		if (!currentUser?.id) return setAuthOpen(true)
-		setResource(item)
-		setOpenModal(true)
-	}
+  const handleSort = (field) => {       
+    const { name } = field || {}
+    const { sort_by } = query || {}
+    let sort_direction = query?.sort_direction || 'asc' 
+    if(sort_by == name) {
+      sort_direction = sort_direction == 'asc' ? 'desc' : 'asc'
+    }    
+    findMany({
+			...query,
+      sort_direction, 
+			sort_by: name,
+		})
+  }
 
-	const handleSubmit = async () => {
-		if (!currentUser?.id) return setAuthOpen(true)
-		try {
-			let resp
-			if (resource?.id) {
-				resp = await update(resource)
-			} else {
-				resp = await create(resource)
-			}
-			if (resp?.id) {
-				setResource({})
-				setOpenModal(false)
-				reloadMany()
-			}
-		} catch (err) {
-			console.log('Error', err)
-		}
-	}
-
-	const handleDeleteClick = (item) => {
-		if (!currentUser?.id) return setAuthOpen(true)
-		setResource(item)
-		setOpenDeleteModal(true)
-	}
-
-	const handleDelete = async () => {
-		if (!currentUser?.id) return setAuthOpen(true)
-		if (resource?.id) {
-			await destroy(resource.id)
-		}
-		setOpenDeleteModal(false)
-		setOpenModal(false)
-		setResource({})
-		reloadMany()
-	}
-
-	const handleRemove = async (name) => {
-		if (!currentUser?.id) return setAuthOpen(true)
-		if (resource?.id) {
-			await removeAttachment(resource.id, name)
-		}
-	}
-
-	const userFilter = buildUserFilters(
-		user,
-		filterUser,
-		filterTeam
-	)
-
-	useEffect(() => {
-		if (url && user) {
-			findMany({
-				...defaultQuery,
-				filters: mergeAllFilters([
-					defaultQuery?.filters,
-					userFilter,
-					queryFilters,
-				]),
-				per_page: perPage,
-			})
-		}
-	}, [
-		url,
-    user,
-		perPage,
-		filterUser,
-		filterTeam,		
-		queryFilters,
-		defaultQuery,		
-	])
+  const handlePaginate = async (value) => {
+    await paginate(value)
+  }
 
 	const [rows, setRows] = useState([])
 
@@ -245,52 +83,8 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-      <Box sx={{ ...(delayedLoading && sx.loading) }}>
+      <Box sx={{ ...(loading && sx.loading) }}>
         <TableList
-          toolbar={
-            <Stack
-              direction={{ xs: 'column', sm: 'row' }}
-              sx={sx.toolbar}
-              spacing={1}
-            >
-              {enableSearch && (
-                <SearchInput
-                  value={keywords}
-                  handleChange={handleKeywordChange}
-                  handleSearch={handleSearch}
-                />
-              )}
-              {enableFilters && (
-                <Box sx={sx.fullWidth}>
-                  <FilterButton
-                    filters={activeFilters}
-                    handleFilter={handleFilter}
-                    handleClear={handleClearFilters}
-                    filterOptions={filterOptions}
-                  />
-                </Box>
-              )}
-              {enableCreate && (
-                <Box sx={sx.fullWidth}>
-                  <Button
-                    sx={sx.button}
-                    color="secondary"
-                    variant="contained"
-                    onClick={handleAdd}
-                    startIcon={
-                      <Icon
-                        name="Plus"
-                        color="secondary.contrastText"
-                        size={20}
-                      />
-                    }
-                  >
-                    Add
-                  </Button>
-                </Box>
-              )}
-            </Stack>
-          }
           enableEdit={enableEdit}
           handleEdit={handleEdit}
           enableDelete={enableDelete}
@@ -307,43 +101,8 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
           numResults={numResults}
           totalCount={totalCount}
           handlePaginate={handlePaginate}
-          emptyIcon={emptyIcon}
-          emptyTitle={emptyTitle}
-          emptyDescription={emptyDescription}
         />
       </Box>
-			<Drawer
-				open={openModal}
-				handleClose={() => setOpenModal(false)}
-				title={resource?.id ? 'Edit' : 'Add'}
-				actions={
-					<Button
-						fullWidth
-						variant="contained"
-						color="primary"
-						onClick={handleSubmit}
-						startIcon={<IconLoading loading={loading} />}
-					>
-						{resource?.id ? 'Update' : 'Save'}
-					</Button>
-				}
-			>
-				<Form
-					loading={loading}
-					errors={errors}
-					fields={fields}
-					resource={flattenDocument(resource)}
-					handleChange={handleDataChange}
-					handleRemove={handleRemove}
-				/>
-			</Drawer>
-			<AlertModal
-				open={openDeleteModal}
-				handleClose={() => setOpenDeleteModal(false)}
-				title="Are you sure you want to delete this item?"
-				description="This action cannot be reversed."
-				handleConfirm={handleDelete}
-			/>
 		</Stack>
 	)
 }

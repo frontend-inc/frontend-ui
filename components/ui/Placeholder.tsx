@@ -52,6 +52,7 @@ const sx = {
 		justifyContent: 'center',
 		alignItems: 'center',
 		width: '100%',
+    maxWidth: '100vw',
 		borderRadius: 1,    
 	},
   rootBorder: {

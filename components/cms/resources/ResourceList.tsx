@@ -305,7 +305,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					</Box>
 				</Stack>
 			</Box>
-			{!loading && resources.length == 0 && (
+			{!loading && resources?.length == 0 && (
 				<Placeholder
 					icon={ emptyIcon }
 					title={ emptyTitle }

@@ -1,10 +1,18 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionCarousel } from '../../components'
+import { CollectionCarousel, CollectionToolbar } from '../../components'
 import { CollectionCarouselProps } from '../../components/cms/collections/CollectionCarousel'
-import { SectionProps, HeadingProps } from '../../types'
+import { CollectionToolbarProps } from '../../components/cms/collections/CollectionToolbar'
+import { SectionProps, HeadingProps, FormProps } from '../../types'
+import { QueryProvider, ResourceProvider } from 'frontend-js'
+import { Query, ResourceForm } from '../../components'
+import { FormProvider } from '../../context'
 
-type CmsCarouselProps = SectionProps & HeadingProps & CollectionCarouselProps
+type CmsCarouselProps = SectionProps & 
+  HeadingProps & 
+  CollectionCarouselProps & 
+  CollectionToolbarProps & 
+  FormProps
 
 const CmsCarousel: React.FC<CmsCarouselProps> = (props) => {
 	const {
@@ -20,28 +28,69 @@ const CmsCarousel: React.FC<CmsCarouselProps> = (props) => {
 		requireTeam,
 		requirePaid,
 		requireAdmin,
+    fields,
+    enableSearch,
+    enableCreate,
+    filterOptions,
+    sortOptions,
+    url,
+    query={},
+    filterUser,
+    filterTeam,
+    perPage,
 		...rest
 	} = props
 
 	return (
-		<Section
-			requireAuth={requireAuth}
-			requireTeam={requireTeam}
-			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
-			bgcolor={bgcolor}
-			py={py}
-			px={px}
-			maxWidth={maxWidth}
-		>
-			<Heading
-				label={label}
-				title={title}
-				description={description}
-				textAlign={textAlign}
-			/>
-			<CollectionCarousel {...rest} />
-		</Section>
+    <QueryProvider url={url}>
+      <ResourceProvider url={url} name='document'>
+        <FormProvider
+          editFields={fields}
+          createFields={fields}
+        >
+          <Query 
+            url={url}
+            query={query}
+            filterUser={filterUser}
+            filterTeam={filterTeam}
+            perPage={perPage}
+          >
+            <Section
+              bgcolor={bgcolor}
+              py={py}
+              px={px}
+              maxWidth={maxWidth}
+              requireAuth={requireAuth}
+              requireTeam={requireTeam}
+              requirePaid={requirePaid}
+              requireAdmin={requireAdmin}
+            >
+              <Heading
+                label={label}
+                title={title}
+                description={description}
+                textAlign={textAlign}
+              />
+              <CollectionToolbar
+                url={url}
+                query={query}
+                perPage={perPage}
+                filterUser={filterUser}
+                filterTeam={filterTeam}  
+                enableSearch={enableSearch}              
+                filterOptions={filterOptions}
+                sortOptions={sortOptions} 
+                enableCreate={enableCreate}                 
+              />
+              <CollectionCarousel 
+                {...rest} 
+              />
+            </Section>
+          </Query>
+          <ResourceForm />
+        </FormProvider>
+      </ResourceProvider>
+    </QueryProvider>
 	)
 }
 
