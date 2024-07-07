@@ -112,20 +112,6 @@ const useFilters = (props: UseFiltersProps) => {
 		setQueryFilters(buildQueryFilters(activeFilters))
 	}, [activeFilters])
 
-  
-	const buildUserFilters = (currentUser, filterUser, filterTeam) => {
-		return {
-			AND: [
-				...(filterUser && currentUser?.id
-					? [{ user_id: { eq: currentUser?.id } }]
-					: []),
-				...(filterTeam && currentUser?.team_id
-					? [{ team_id: { eq: currentUser?.team_id } }]
-					: []),
-			],
-		}
-	}
-
 	useEffect(() => {
 		if (query?.filters?.length >= 0) {
 			let filterArray = formatFilterArray(query?.filters)
@@ -148,7 +134,6 @@ const useFilters = (props: UseFiltersProps) => {
 		findDuplicateFilterIndex,
 		mergeFilters,
 		mergeAllFilters,
-		buildUserFilters,
 		buildQueryFilters,
 	}
 }

@@ -92,7 +92,7 @@ const TableFilterForm: React.FC<TableFilterFormProps> = (props) => {
 			per_page: query?.per_page || 20,
 			sort_by: query?.sort_by || 'id',
 			sort_direction: query?.sort_direction || 'desc',
-			filters: filters,
+			filters: filters      
 		}
 
 		handleSearch(searchQuery)

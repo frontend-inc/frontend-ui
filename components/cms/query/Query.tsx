@@ -13,7 +13,6 @@ export type QueryProps = {
 const Query: React.FC<QueryProps> = (props) => {
 
   const { url } = useContext(QueryContext) as any
-  const { currentUser } = useAuth()
 
   const {
 		filterUser = false,
@@ -25,7 +24,6 @@ const Query: React.FC<QueryProps> = (props) => {
 
   useSearch({
     url,
-    user: currentUser,
     perPage,
     filterUser,
     filterTeam,
