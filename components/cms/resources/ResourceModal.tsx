@@ -11,7 +11,7 @@ import {
 import { useResourceContext } from 'frontend-js'
 import { ActionType, FormFieldType, DisplayFieldType } from '../../../types'
 
-export type HeroModalProps =  {  
+export type ResourceModalProps =  {  
   open: boolean  
   handleClose: () => void
   handle?: string
@@ -34,7 +34,7 @@ export type HeroModalProps =  {
   enableComments?: boolean
 }
 
-const HeroModal: React.FC<HeroModalProps> = (props) => {
+const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 
   const { resource, url } = useResourceContext()
 
@@ -89,7 +89,7 @@ const HeroModal: React.FC<HeroModalProps> = (props) => {
 	)
 }
 
-export default HeroModal
+export default ResourceModal
 
 const sx = {
 	root: {

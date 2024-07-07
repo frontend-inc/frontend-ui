@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useSearch } from '../../../hooks'
-import { UserType, useAuth } from 'frontend-js'
+import { QueryContext, useAuth } from 'frontend-js'
 
 export type QueryProps = {
-	url: string
 	perPage?: number
 	query?: any
 	filterUser?: boolean
@@ -13,10 +12,10 @@ export type QueryProps = {
 
 const Query: React.FC<QueryProps> = (props) => {
 
+  const { url } = useContext(QueryContext) as any
   const { currentUser } = useAuth()
 
   const {
-		url,
 		filterUser = false,
 		filterTeam = false,
 		query = {},

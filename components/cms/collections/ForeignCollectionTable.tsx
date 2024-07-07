@@ -1,39 +1,44 @@
 import React from 'react'
 import {
-  CollectionContainer,
+  ForeignCollectionContainer,
   CollectionTableList 
 } from '../..'
 import { CollectionListProps } from './CollectionList'
-import { CollectionContainerProps } from './CollectionContainer'
+import { ForeignCollectionProps } from './ForeignCollection'
 import { TableHeaderType } from '../../../types'
 
-export type CollectionTableProps = 
-  CollectionListProps & 
-  CollectionContainerProps & {
+export type ForeignCollectionTableProps = 
+  ForeignCollectionProps & {
     headers: TableHeaderType[]
   }
 
 
-const CollectionTable: React.FC<CollectionTableProps> = (props) => {
+const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) => {
 	
   const { 
+    resource,
+    url,
+    foreignUrl,
+    foreignContentType,
     fields,
     enableSearch,
     enableCreate,
     filterOptions,
     sortOptions,
-    url,
     query={},
     filterUser,
     filterTeam,
     perPage,
     ...rest 
-  } = props 
-
+  } = props
+  
 	return (
-    <CollectionContainer
-      url={url}        
-      resourceUrl={url}
+    <ForeignCollectionContainer 
+      url={url}    
+      resource={resource}
+      foreignUrl={foreignUrl}
+      foreignContentType={foreignContentType}    
+      resourceUrl={foreignUrl}
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}
@@ -46,11 +51,11 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
     >      
       <CollectionTableList 
         { ...rest }
-        url={url}
+        url={foreignUrl}
       />                
-    </CollectionContainer>
+    </ForeignCollectionContainer>
 	)
 }
 
-export default CollectionTable
+export default ForeignCollectionTable
 

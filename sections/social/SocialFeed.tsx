@@ -3,12 +3,12 @@ import { Section, Heading } from '../../components'
 import { Feed } from '../../components'
 import { FeedProps } from '../../components/social/feed/Feed'
 import { SectionProps, HeadingProps } from '../../types'
-import { ResourceProvider } from 'frontend-js'
 
 type SocialFeedProps = SectionProps & HeadingProps & FeedProps
 
 const SocialFeed: React.FC<SocialFeedProps> = (props) => {
 	const {
+    url,
 		label,
 		title,
 		description,
@@ -24,7 +24,6 @@ const SocialFeed: React.FC<SocialFeedProps> = (props) => {
 	} = props
 
 	return (
-    <ResourceProvider>
       <Section
         requireAuth
         requireTeam={requireTeam}
@@ -41,9 +40,11 @@ const SocialFeed: React.FC<SocialFeedProps> = (props) => {
           description={description}
           textAlign={textAlign}
         />
-        <Feed {...rest} />
+        <Feed 
+          {...rest} 
+          url={url}
+        />
       </Section>
-    </ResourceProvider>
 	)
 }
 

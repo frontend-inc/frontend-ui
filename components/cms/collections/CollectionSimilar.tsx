@@ -1,22 +1,49 @@
 import React from 'react'
-import { CollectionList } from '../..'
+import {
+  CollectionContainer,
+  CollectionList 
+} from '../..'
 import { CollectionListProps } from './CollectionList'
+import { CollectionContainerProps } from './CollectionContainer'
 
-export type CollectionSimilarProps = CollectionListProps & {
-	resource: any 
-}
+export type CollectionSimilarProps = 
+  CollectionListProps & 
+  CollectionContainerProps & {
+    resource: any
+  }
 
 const CollectionSimilar: React.FC<CollectionSimilarProps> = (props) => {
-	const { url, resource, ...rest } = props
+	
+  const { 
+    resource,
+    enableSearch,
+    filterOptions,
+    sortOptions,
+    url,
+    query={},
+    filterUser,
+    filterTeam,
+    perPage,
+    ...rest 
+  } = props 
 
-  if(!resource?.id && url) return null;
 	return (
-		<CollectionList
-			url={`${url}/${resource?.id}/similar`}
-			// Todo: Component errors without a default value
-			query={{}}
-			{...rest}
-		/>
+    <CollectionContainer
+      url={`${url}/${resource?.id}/similar`}        
+      resourceUrl={url}
+      query={query}
+      filterUser={filterUser}
+      filterTeam={filterTeam}
+      perPage={perPage}                
+      enableSearch={enableSearch}
+      filterOptions={filterOptions}
+      sortOptions={sortOptions}         
+    >      
+      <CollectionList 
+        { ...rest }
+        url={url}
+      />                
+    </CollectionContainer>
 	)
 }
 

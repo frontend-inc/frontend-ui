@@ -1,148 +1,84 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { useResourceContext } from 'frontend-js'
-import { Button, Stack } from '@mui/material'
-import {
-	LoadMore,
-	GoogleMap,
+import React from 'react'
+import { 
+  CollectionToolbar, 
+  Query, 
+  ResourceForm 
 } from '../..'
-import { QueryContext } from 'frontend-js'
-import { AppContext } from '../../../context'
-import { useRouter } from 'next/router'
-import {
-  HeroModal,
-	CollectionCards,
-  CollectionLayout,
-	Placeholder,
-} from '../../../components'
 import { CollectionListProps } from './CollectionList'
-import { useForms } from '../../../hooks'
+import { FormProvider } from '../../../context'
+import { QueryProvider, ResourceProvider } from 'frontend-js'
+import { 
+  FormFieldType, 
+  SearchFilterOptionType, 
+  SortOptionType 
+} from '../../../types'
 
-export type CollectContainerProps = CollectionListProps & {	  
-  resource?: any
-  enableUsers?: boolean
-  component?: React.FC<any>
-  rest?: any  
+export type CollectionContainerProps = {
+  url: string
+  resourceUrl: string
+  query?: any
+  filterUser?: boolean
+  filterTeam?: boolean
+  fields?: FormFieldType[]  
+  filterOptions?: SearchFilterOptionType[]
+  sortOptions?: SortOptionType[]
+  perPage?: number
+  enableSearch?: boolean
+  enableCreate?: boolean
+  children: React.ReactNode
 }
 
-const CollectionContainer: React.FC<CollectContainerProps> = (props) => {
-	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
-
-  const [open, setOpen] = useState(false)
+const CollectionContainer: React.FC<CollectionContainerProps> = (props) => {
 
   const { 
-    resource, 
-    setResource 
-  } = useResourceContext()
+    url,
+    resourceUrl,
+    children,
+    query,
+    filterUser=false,
+    filterTeam=false,
+    fields=[],    
+    perPage=20,
+    enableSearch,
+    enableCreate,
+    filterOptions,
+    sortOptions,
+  } = props 
 
-	const {
-    component: RenderList = CollectionCards,
-		actions = [],		
-		style = 'card',
-		href,
-		displayFields = [],
-		enableGoogleMaps = false,
-		buttonText,
-		enableGradient = false,
-		enableOverlay = false,
-		enableEdit = false,
-		enableDelete = false,
-		enableFavorites = false,
-    enableRatings = false,
-    enableUsers = false,
-		emptyIcon,
-		emptyTitle = 'No results found',
-		emptyDescription = 'Try changing your search or filters.',
-    ...rest
-	} = props
-
-  const { 
-    loading,    
-    resources     
-  } = useContext(QueryContext) as any 
-
-	const handleNavigate = (resource) => {
-    if(href){
-      if (clientUrl && href && resource?.handle) {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth',
-        })
-        router.push(`${clientUrl}${href}/${resource?.handle}`)
-      }
-    }else{
-      setResource(resource)
-      setOpen(true)    
-    }
-	}
-
-	const { handleClick = handleNavigate } = props
-
-  const {
-    handleEdit,
-    handleDeleteClick
-  } = useForms()
-
-	return (
-		<>
-      <CollectionLayout 
-        loading={loading}
-        expandRight={enableGoogleMaps}
-        rightPanel={
-            <GoogleMap
-              enableBorder
-              zoom={15}
-              height={380}
-              resources={resources}								            
-              displayFields={displayFields}
-            />
-          }
+  return(
+    <QueryProvider url={url}>
+      <ResourceProvider 
+        url={resourceUrl} 
+        name='document'
+      >
+        <FormProvider
+          editFields={fields}
+          createFields={fields}
         >
-        <Stack direction="column" spacing={2}>
-          <RenderList
-            actions={actions}            
-            style={style}
-            resources={resources}
-            displayFields={displayFields}
-            handleClick={handleClick}
-            buttonText={buttonText}
-            enableGradient={enableGradient}          
-            enableOverlay={enableOverlay}
-            enableEdit={enableEdit}
-            enableDelete={enableDelete}
-            enableUsers={enableUsers}
-            enableFavorites={enableFavorites}
-            enableRatings={enableRatings}
-            handleEdit={handleEdit}
-            handleDelete={handleDeleteClick}
-            { ...rest }
-          />          
-          <LoadMore />              
-        </Stack>    
-			</CollectionLayout>			
-      {!loading && resources?.length == 0 && (
-        <Placeholder
-          enableBorder
-          icon={emptyIcon}
-          title={emptyTitle}
-          description={emptyDescription}
-        />
-      )}
-      <HeroModal
-        open={ open }
-        handleClose={ () => setOpen(false) }
-        actions={ actions }
-        displayFields={displayFields}
-        enableOverlay={enableOverlay}
-        enableEdit={enableEdit}
-        enableFavorites={enableFavorites}
-        enableRatings={enableRatings}
-        enableUsers={enableUsers}
-        handleEdit={() => handleEdit(resource)}
-      />
-		</>
-	)
+          <Query 
+            query={query}
+            filterUser={filterUser}
+            filterTeam={filterTeam}
+            perPage={perPage}
+          >
+            <CollectionToolbar
+              url={url}
+              query={query}
+              perPage={perPage}
+              filterUser={filterUser}
+              filterTeam={filterTeam}  
+              enableSearch={enableSearch}              
+              filterOptions={filterOptions}
+              sortOptions={sortOptions} 
+              enableCreate={enableCreate}                 
+            />
+              { children }
+          </Query>
+          <ResourceForm />
+        </FormProvider>
+      </ResourceProvider>
+    </QueryProvider>
+  )
 }
 
 export default CollectionContainer
-

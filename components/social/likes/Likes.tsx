@@ -1,50 +1,52 @@
 import React from 'react'
-import { CollectionList } from '../..'
 import {
-	SortOptionType,
-	SearchFilterOptionType,
-	DisplayFieldType,
-  ActionType
-} from '../../../types'
+  CollectionContainer,
+  CollectionList 
+} from '../..'
+import { CollectionListProps } from '../../cms/collections/CollectionList'
+import { CollectionContainerProps } from '../../cms/collections/CollectionContainer'
 
-export type LikesProps = {
-	variant: 'list' | 'grid'
-	style: 'card' | 'avatar' | 'cover'
-	field: any
-  actions: ActionType[]
-	displayFields: DisplayFieldType[]
-	url: string
-	handle: string
-	href: any
-	foreignUrl?: string
-	filterOptions?: SearchFilterOptionType[]
-	sortOptions?: SortOptionType[]
-	enableSearch?: boolean
-	enableFilters?: boolean
-	enableSorting?: boolean
-	perPage?: number
-	query?: any
-	buttonText?: string
-	enableBorder?: boolean
-	enableGradient?: boolean
-	enableOverlay?: boolean
-	enableLikes?: boolean
-	enableInfiniteLoad?: boolean
-	enableLoadMore?: boolean
-}
+export type LikesProps = 
+  CollectionListProps & 
+  CollectionContainerProps 
 
 const Likes: React.FC<LikesProps> = (props) => {
-	const { url, ...rest } = props
+	
+  const { 
+    fields,
+    enableSearch,
+    enableCreate,
+    filterOptions,
+    sortOptions,
+    url,
+    query={},
+    filterUser,
+    filterTeam,
+    perPage,
+    ...rest 
+  } = props 
+
+  let likesUrl = `${url}/likes`
 
 	return (
-		<CollectionList
-			enableLikes
-			url={`${url}/likes`}
-			// Todo: Component errors without a default value
-			query={{}}
-			{...rest}
-		/>
+    <CollectionContainer
+      url={likesUrl}        
+      resourceUrl={url}
+      query={query}
+      filterUser={filterUser}
+      filterTeam={filterTeam}
+      perPage={perPage}                
+      enableSearch={enableSearch}
+      filterOptions={filterOptions}
+      sortOptions={sortOptions}         
+    >      
+      <CollectionList 
+        { ...rest }
+        url={url}
+      />                
+    </CollectionContainer>
 	)
 }
 
 export default Likes
+

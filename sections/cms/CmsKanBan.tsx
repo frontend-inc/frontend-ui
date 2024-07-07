@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionKanBan, CollectionToolbar } from '../../components'
-import { CollectionKanBanProps } from '../../components/cms/collections/CollectionKanBan'
+import { CollectionKanBanList, CollectionContainer } from '../../components'
+import { CollectionKanBanListProps } from '../../components/cms/collections/CollectionKanBanList'
 import { CollectionToolbarProps } from '../../components/cms/collections/CollectionToolbar'
 import { SectionProps, HeadingProps, FormProps } from '../../types'
 import { QueryProvider, ResourceProvider } from 'frontend-js'
@@ -10,7 +10,7 @@ import { FormProvider } from '../../context'
 
 type CmsKanBanProps = SectionProps & 
   HeadingProps & 
-  CollectionKanBanProps & 
+  CollectionKanBanListProps & 
   CollectionToolbarProps & 
   FormProps
 
@@ -42,54 +42,41 @@ const CmsKanBan: React.FC<CmsKanBanProps> = (props) => {
 	} = props
 
 	return (
-    <QueryProvider url={url}>
-      <ResourceProvider url={url} name='document'>
-        <FormProvider
-          editFields={fields}
-          createFields={fields}
-        >
-          <Query 
-            url={url}
-            query={query}
-            filterUser={filterUser}
-            filterTeam={filterTeam}
-            perPage={200}
-          >
-            <Section
-              bgcolor={bgcolor}
-              py={py}
-              px={px}
-              maxWidth={maxWidth}
-              requireAuth={requireAuth}
-              requireTeam={requireTeam}
-              requirePaid={requirePaid}
-              requireAdmin={requireAdmin}
-            >
-              <Heading
-                label={label}
-                title={title}
-                description={description}
-                textAlign={textAlign}
-              />
-              <CollectionToolbar
-                url={url}
-                query={query}
-                perPage={perPage}
-                filterUser={filterUser}
-                filterTeam={filterTeam}  
-                enableSearch={enableSearch}              
-                filterOptions={filterOptions}
-              />
-              <CollectionKanBan 
-                {...rest} 
-                enableCreate={enableCreate}
-              />
-            </Section>
-          </Query>
-          <ResourceForm />
-        </FormProvider>
-      </ResourceProvider>
-    </QueryProvider>
+    <Section
+      bgcolor={bgcolor}
+      py={py}
+      px={px}
+      maxWidth={maxWidth}
+      requireAuth={requireAuth}
+      requireTeam={requireTeam}
+      requirePaid={requirePaid}
+      requireAdmin={requireAdmin}
+    >
+      <Heading
+        label={label}
+        title={title}
+        description={description}
+        textAlign={textAlign}
+      />
+      <CollectionContainer
+        url={url}        
+        resourceUrl={url}
+        query={query}
+        filterUser={filterUser}
+        filterTeam={filterTeam}
+        editFields={fields}
+        createFields={fields}  
+        enableSearch={enableSearch}
+        filterOptions={filterOptions}
+        perPage={200}
+      >
+        <CollectionKanBanList 
+          {...rest} 
+          url={url}
+          enableCreate={enableCreate}
+        />
+      </CollectionContainer>
+    </Section>          
 	)
 }
 

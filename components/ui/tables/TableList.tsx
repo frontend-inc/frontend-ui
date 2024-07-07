@@ -84,6 +84,7 @@ const TableList: React.FC<TableProps> = (props) => {
 				...(disableBorderRadius && sx.disableBorderRadius),
 			}}
 		>
+    {(title || toolbar) && (
 			<Box p={1} sx={sx.toolbar}>
 				{title && (
 					<Typography variant="subtitle1" color="text.primary">
@@ -92,6 +93,7 @@ const TableList: React.FC<TableProps> = (props) => {
 				)}
 				{toolbar && toolbar}
 			</Box>
+      )}
 			<TableContainer styles={styles}>
 				<TableBody>
 					<TableHeaders

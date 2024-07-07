@@ -3,12 +3,12 @@ import { Section, Heading } from '../../components'
 import { Favorites } from '../../components'
 import { FavoritesProps } from '../../components/social/favorites/Favorites'
 import { SectionProps, HeadingProps } from '../../types'
-import { ResourceProvider } from 'frontend-js'
 
 type SocialFavoritesProps = SectionProps & HeadingProps & FavoritesProps
 
 const SocialFavorites: React.FC<SocialFavoritesProps> = (props) => {
-	const {
+	
+  const {
 		label,
 		title,
 		description,
@@ -25,26 +25,26 @@ const SocialFavorites: React.FC<SocialFavoritesProps> = (props) => {
 	} = props
 
 	return (
-    <ResourceProvider>
-      <Section
-        requireAuth={requireAuth}
-        requireTeam={requireTeam}
-        requirePaid={requirePaid}
-        requireAdmin={requireAdmin}
-        bgcolor={bgcolor}
-        py={py}
-        px={px}
-        maxWidth={maxWidth}
-      >
-        <Heading
-          label={label}
-          title={title}
-          description={description}
-          textAlign={textAlign}
-        />
-        <Favorites {...rest} />
-      </Section>
-    </ResourceProvider>
+    <Section
+      requireAuth={requireAuth}
+      requireTeam={requireTeam}
+      requirePaid={requirePaid}
+      requireAdmin={requireAdmin}
+      bgcolor={bgcolor}
+      py={py}
+      px={px}
+      maxWidth={maxWidth}
+    >
+      <Heading
+        label={label}
+        title={title}
+        description={description}
+        textAlign={textAlign}
+      />
+      <Favorites 
+        {...rest} 
+      />
+    </Section>
 	)
 }
 

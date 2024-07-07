@@ -1,28 +1,28 @@
 import React from 'react'
 import {
-  CollectionContainer,
-  CollectionTableList 
+  ForeignCollectionContainer  
 } from '../..'
 import { CollectionListProps } from './CollectionList'
-import { CollectionContainerProps } from './CollectionContainer'
-import { TableHeaderType } from '../../../types'
+import { ForeignCollectionContainerProps } from './ForeignCollectionContainer'
+import CollectionCarouselList from './CollectionCarouselList'
 
-export type CollectionTableProps = 
+export type ForeignCollectionCarouselProps = 
   CollectionListProps & 
-  CollectionContainerProps & {
-    headers: TableHeaderType[]
-  }
+  ForeignCollectionContainerProps
 
 
-const CollectionTable: React.FC<CollectionTableProps> = (props) => {
+const ForeignCollectionCarousel: React.FC<ForeignCollectionCarouselProps> = (props) => {
 	
   const { 
+    url,
+    resource,
+    foreignUrl,
+    foreignContentType,
     fields,
     enableSearch,
     enableCreate,
     filterOptions,
     sortOptions,
-    url,
     query={},
     filterUser,
     filterTeam,
@@ -31,9 +31,12 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
   } = props 
 
 	return (
-    <CollectionContainer
+    <ForeignCollectionContainer
       url={url}        
-      resourceUrl={url}
+      resource={resource}
+      foreignUrl={foreignUrl}
+      foreignContentType={foreignContentType}      
+      resourceUrl={foreignUrl}
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}
@@ -44,13 +47,13 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
       filterOptions={filterOptions}
       sortOptions={sortOptions}         
     >      
-      <CollectionTableList 
+      <CollectionCarouselList 
         { ...rest }
-        url={url}
+        url={foreignUrl}
       />                
-    </CollectionContainer>
+    </ForeignCollectionContainer>
 	)
 }
 
-export default CollectionTable
+export default ForeignCollectionCarousel
 

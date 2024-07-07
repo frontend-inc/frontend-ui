@@ -107,9 +107,7 @@ const useSearch = (props) => {
 				per_page: perPage,
 			})
 		}
-	}, [
-		url
-	])
+	}, [url])
 
   return {
     loading,

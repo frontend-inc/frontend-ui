@@ -1,17 +1,12 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionList, CollectionToolbar } from '../../components'
-import { CollectionListProps } from '../../components/cms/collections/CollectionList'
-import { CollectionToolbarProps } from '../../components/cms/collections/CollectionToolbar'
+import { CollectionGeo } from '../../components'
+import { CollectionGeoProps } from '../../components/cms/collections/CollectionGeo'
 import { SectionProps, HeadingProps, FormProps } from '../../types'
-import { QueryProvider, ResourceProvider } from 'frontend-js'
-import { Query, ResourceForm } from '../../components'
-import { FormProvider } from '../../context'
 
 type CmsGeoListProps = SectionProps & 
   HeadingProps & 
-  CollectionListProps & 
-  CollectionToolbarProps & 
+  CollectionGeoProps & 
   FormProps
 
 const CmsGeoList: React.FC<CmsGeoListProps> = (props) => {
@@ -27,72 +22,31 @@ const CmsGeoList: React.FC<CmsGeoListProps> = (props) => {
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
-    fields,
-    enableSearch,
-    enableCreate,
-    filterOptions,
-    sortOptions,
-    url,
-    query={},
-    filterUser,
-    filterTeam,
-    perPage,
+		requireAdmin,   
 		...rest
 	} = props
 
-	return (
-    <QueryProvider url={url}>
-      <ResourceProvider url={url} name='document'>
-        <FormProvider
-          editFields={fields}
-          createFields={fields}
-        >
-          <Query 
-            url={url}
-            query={query}
-            filterUser={filterUser}
-            filterTeam={filterTeam}
-            perPage={perPage}
-          >
-            <Section
-              bgcolor={bgcolor}
-              py={py}
-              px={px}
-              maxWidth={maxWidth}
-              requireAuth={requireAuth}
-              requireTeam={requireTeam}
-              requirePaid={requirePaid}
-              requireAdmin={requireAdmin}
-            >
-              <Heading
-                label={label}
-                title={title}
-                description={description}
-                textAlign={textAlign}
-              />
-              <CollectionToolbar
-                url={url}
-                query={query}
-                perPage={perPage}
-                filterUser={filterUser}
-                filterTeam={filterTeam}  
-                enableSearch={enableSearch}              
-                filterOptions={filterOptions}
-                sortOptions={sortOptions} 
-                enableCreate={enableCreate}                 
-              />
-              <CollectionList 
-                {...rest} 
-                enableGoogleMaps 
-                style="list"
-              />
-            </Section>
-          </Query>
-          <ResourceForm />
-        </FormProvider>
-      </ResourceProvider>
-    </QueryProvider>
+	return (   
+    <Section
+      bgcolor={bgcolor}
+      py={py}
+      px={px}
+      maxWidth={maxWidth}
+      requireAuth={requireAuth}
+      requireTeam={requireTeam}
+      requirePaid={requirePaid}
+      requireAdmin={requireAdmin}
+    >
+      <Heading
+        label={label}
+        title={title}
+        description={description}
+        textAlign={textAlign}
+      />      
+      <CollectionGeo 
+        {...rest} 
+      />      
+    </Section>
 	)
 }
 

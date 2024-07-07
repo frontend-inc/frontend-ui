@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionCarousel, CollectionToolbar } from '../../components'
-import { CollectionCarouselProps } from '../../components/cms/collections/CollectionCarousel'
+import { CollectionCarouselList, CollectionToolbar } from '../../components'
+import { CollectionCarouselListProps } from '../../components/cms/collections/CollectionCarouselList'
 import { CollectionToolbarProps } from '../../components/cms/collections/CollectionToolbar'
 import { SectionProps, HeadingProps, FormProps, ForeignProps } from '../../types'
 import { QueryProvider, ResourceProvider } from 'frontend-js'
@@ -10,7 +10,7 @@ import { FormProvider } from '../../context'
 
 type CmsForeignCarouselProps = SectionProps & 
   HeadingProps & 
-  CollectionCarouselProps & 
+  CollectionCarouselListProps & 
   CollectionToolbarProps & 
   FormProps & 
   ForeignProps  
@@ -88,7 +88,7 @@ const CmsForeignCarousel: React.FC<CmsForeignCarouselProps> = (props) => {
                 sortOptions={sortOptions} 
                 enableCreate={enableCreate}                 
               />
-              <CollectionCarousel 
+              <CollectionCarouselList 
                 {...rest} 
               />
             </Section>

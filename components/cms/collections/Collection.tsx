@@ -1,20 +1,16 @@
 import React from 'react'
 import {
   CollectionContainer,
-  CollectionTableList 
+  CollectionList 
 } from '../..'
 import { CollectionListProps } from './CollectionList'
 import { CollectionContainerProps } from './CollectionContainer'
-import { TableHeaderType } from '../../../types'
 
-export type CollectionTableProps = 
+export type CollectionProps = 
   CollectionListProps & 
-  CollectionContainerProps & {
-    headers: TableHeaderType[]
-  }
+  CollectionContainerProps
 
-
-const CollectionTable: React.FC<CollectionTableProps> = (props) => {
+const Collection: React.FC<CollectionProps> = (props) => {
 	
   const { 
     fields,
@@ -23,6 +19,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
     filterOptions,
     sortOptions,
     url,
+    resourceUrl,
     query={},
     filterUser,
     filterTeam,
@@ -33,7 +30,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	return (
     <CollectionContainer
       url={url}        
-      resourceUrl={url}
+      resourceUrl={resourceUrl || url}
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}
@@ -44,7 +41,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
       filterOptions={filterOptions}
       sortOptions={sortOptions}         
     >      
-      <CollectionTableList 
+      <CollectionList 
         { ...rest }
         url={url}
       />                
@@ -52,5 +49,5 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	)
 }
 
-export default CollectionTable
+export default Collection
 

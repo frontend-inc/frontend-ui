@@ -1,18 +1,12 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionTable, CollectionToolbar } from '../../components'
-import { CollectionTableProps } from '../../components/cms/collections/CollectionTable'
-import { CollectionToolbarProps } from '../../components/cms/collections/CollectionToolbar'
-import { SectionProps, HeadingProps, FormProps } from '../../types'
-import { QueryProvider, ResourceProvider } from 'frontend-js'
-import { Query, ResourceForm } from '../../components'
-import { FormProvider } from '../../context'
+import { CollectionTable } from '../../components'
+import { CollectionTableProps } from '../../components/cms/collections/CollectionTableList'
+import { SectionProps, HeadingProps } from '../../types'
 
 type CmsTableProps = SectionProps & 
   HeadingProps & 
-  CollectionTableProps & 
-  CollectionToolbarProps & 
-  FormProps
+  CollectionTableProps
 
 const CmsTable: React.FC<CmsTableProps> = (props) => {
 	const {
@@ -27,70 +21,31 @@ const CmsTable: React.FC<CmsTableProps> = (props) => {
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
-    fields,
-    enableSearch,
-    enableCreate,
-    filterOptions,
-    sortOptions,
-    url,
-    query={},
-    filterUser,
-    filterTeam,
-    perPage,
+		requireAdmin,        
 		...rest
 	} = props
 
 	return (
-    <QueryProvider url={url}>
-      <ResourceProvider url={url} name='document'>
-        <FormProvider
-          editFields={fields}
-          createFields={fields}
-        >
-          <Query 
-            url={url}
-            query={query}
-            filterUser={filterUser}
-            filterTeam={filterTeam}
-            perPage={perPage}
-          >
-            <Section
-              bgcolor={bgcolor}
-              py={py}
-              px={px}
-              maxWidth={maxWidth}
-              requireAuth={requireAuth}
-              requireTeam={requireTeam}
-              requirePaid={requirePaid}
-              requireAdmin={requireAdmin}
-            >
-              <Heading
-                label={label}
-                title={title}
-                description={description}
-                textAlign={textAlign}
-              />
-              <CollectionToolbar
-                url={url}
-                query={query}
-                perPage={perPage}
-                filterUser={filterUser}
-                filterTeam={filterTeam}  
-                enableSearch={enableSearch}              
-                filterOptions={filterOptions}
-                sortOptions={sortOptions} 
-                enableCreate={enableCreate}                 
-              />
-              <CollectionTable 
-                {...rest} 
-              />
-            </Section>
-          </Query>
-          <ResourceForm />
-        </FormProvider>
-      </ResourceProvider>
-    </QueryProvider>
+    <Section
+      bgcolor={bgcolor}
+      py={py}
+      px={px}
+      maxWidth={maxWidth}
+      requireAuth={requireAuth}
+      requireTeam={requireTeam}
+      requirePaid={requirePaid}
+      requireAdmin={requireAdmin}
+    >
+      <Heading
+        label={label}
+        title={title}
+        description={description}
+        textAlign={textAlign}
+      />
+      <CollectionTable 
+        {...rest} 
+      />
+    </Section>
 	)
 }
 

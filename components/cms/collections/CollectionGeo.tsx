@@ -1,20 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { QueryContext } from 'frontend-js'
+import { Hidden, Grid } from '@mui/material'
 import {
+  GoogleMap,
   CollectionContainer,
-  CollectionTableList 
+  CollectionList 
 } from '../..'
 import { CollectionListProps } from './CollectionList'
 import { CollectionContainerProps } from './CollectionContainer'
-import { TableHeaderType } from '../../../types'
+import CollectionGeoList from './CollectionGeoList'
 
-export type CollectionTableProps = 
+export type CollectionGeoProps = 
   CollectionListProps & 
-  CollectionContainerProps & {
-    headers: TableHeaderType[]
-  }
+  CollectionContainerProps
 
-
-const CollectionTable: React.FC<CollectionTableProps> = (props) => {
+const CollectionGeo: React.FC<CollectionGeoProps> = (props) => {
 	
   const { 
     fields,
@@ -27,8 +27,11 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
     filterUser,
     filterTeam,
     perPage,
+    displayFields,
     ...rest 
   } = props 
+
+  const { resources } = useContext(QueryContext) as any 
 
 	return (
     <CollectionContainer
@@ -43,14 +46,15 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
       enableCreate={enableCreate}    
       filterOptions={filterOptions}
       sortOptions={sortOptions}         
-    >      
-      <CollectionTableList 
-        { ...rest }
+    >
+      <CollectionGeoList 
         url={url}
-      />                
+        displayFields={displayFields}
+        { ...rest }
+      />                 
     </CollectionContainer>
 	)
 }
 
-export default CollectionTable
+export default CollectionGeo
 

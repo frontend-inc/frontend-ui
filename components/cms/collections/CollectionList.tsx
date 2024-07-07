@@ -9,7 +9,7 @@ import { QueryContext } from 'frontend-js'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
 import {
-  HeroModal,
+  ResourceModal,
 	CollectionCards,
   CollectionLayout,
 	Placeholder,
@@ -21,6 +21,7 @@ import {
 } from '../../../types'
 
 export type CollectionListProps = {
+  url: string 
   component?: React.FC<any>
   href?: string
 	style: 'list' | 'avatar' | 'card' | 'cover' | 'text' 
@@ -28,7 +29,6 @@ export type CollectionListProps = {
 	perPage?: number
 	actions: ActionType[]
 	displayFields: DisplayFieldType[]	
-	enableGoogleMaps?: boolean
 	buttonText?: string
 	handleClick?: (resource: any) => void
 	enableGradient?: boolean
@@ -63,7 +63,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		style = 'card',
 		href,
 		displayFields = [],
-		enableGoogleMaps = false,
 		buttonText,
 		enableGradient = false,
 		enableOverlay = false,
@@ -107,19 +106,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 
 	return (
     <>
-    <CollectionLayout 
-      loading={loading}
-      expandRight={enableGoogleMaps}
-      rightPanel={
-          <GoogleMap
-            enableBorder
-            zoom={15}
-            height={380}
-            resources={resources}								            
-            displayFields={displayFields}
-          />
-        }
-      >
       <Stack direction="column" spacing={2}>
         <RenderList
           actions={actions}            
@@ -141,7 +127,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
         />          
         <LoadMore />              
       </Stack>   
-      </CollectionLayout>			 
       {!loading && resources?.length == 0 && (
         <Placeholder
           enableBorder
@@ -150,7 +135,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
           description={emptyDescription}
         />
       )}
-      <HeroModal
+      <ResourceModal
         open={ open }
         handleClose={ () => setOpen(false) }
         actions={ actions }
@@ -162,7 +147,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
         enableUsers={enableUsers}
         handleEdit={() => handleEdit(resource)}
       />
-		</>
+    </>
 	)
 }
 
