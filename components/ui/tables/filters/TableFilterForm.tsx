@@ -3,8 +3,8 @@ import { Box, Button } from '@mui/material'
 import { FILTERABLE_TYPES, SORTABLE_TYPES } from '../../../../constants/index'
 import { FilterList } from '@mui/icons-material'
 import { Plus, Search } from 'lucide-react'
-import {
-	TableFilterInputs,
+import {  
+	TableFilterInputs,  
 	TableFilterKeywordsInput,
 	TableFilterSortInput,
 } from '../../..'
