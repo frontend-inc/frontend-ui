@@ -1,18 +1,12 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionKanBanList, CollectionContainer } from '../../components'
-import { CollectionKanBanListProps } from '../../components/cms/collections/CollectionKanBanList'
-import { CollectionToolbarProps } from '../../components/cms/collections/CollectionToolbar'
-import { SectionProps, HeadingProps, FormProps } from '../../types'
-import { QueryProvider, ResourceProvider } from 'frontend-js'
-import { Query, ResourceForm } from '../../components'
-import { FormProvider } from '../../context'
+import { CollectionKanBan, CollectionContainer } from '../../components'
+import { CollectionKanBanProps } from '../../components/cms/collections/CollectionKanBan'
+import { SectionProps, HeadingProps } from '../../types'
 
 type CmsKanBanProps = SectionProps & 
   HeadingProps & 
-  CollectionKanBanListProps & 
-  CollectionToolbarProps & 
-  FormProps
+  CollectionKanBanProps 
 
 const CmsKanBan: React.FC<CmsKanBanProps> = (props) => {
 	const {
@@ -64,13 +58,12 @@ const CmsKanBan: React.FC<CmsKanBanProps> = (props) => {
         query={query}
         filterUser={filterUser}
         filterTeam={filterTeam}
-        editFields={fields}
-        createFields={fields}  
+        fields={fields}        
         enableSearch={enableSearch}
         filterOptions={filterOptions}
         perPage={200}
       >
-        <CollectionKanBanList 
+        <CollectionKanBan 
           {...rest} 
           url={url}
           enableCreate={enableCreate}

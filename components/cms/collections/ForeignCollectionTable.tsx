@@ -17,9 +17,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
 	
   const { 
     resource,
-    url,
-    foreignUrl,
-    foreignContentType,
+    url,    
     fields,
     enableSearch,
     enableCreate,
@@ -36,9 +34,6 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
     <ForeignCollectionContainer 
       url={url}    
       resource={resource}
-      foreignUrl={foreignUrl}
-      foreignContentType={foreignContentType}    
-      resourceUrl={foreignUrl}
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}

@@ -30,7 +30,6 @@ const CollectionSimilar: React.FC<CollectionSimilarProps> = (props) => {
 	return (
     <CollectionContainer
       url={`${url}/${resource?.id}/similar`}        
-      resourceUrl={url}
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}

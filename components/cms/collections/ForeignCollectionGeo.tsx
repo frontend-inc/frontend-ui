@@ -21,10 +21,7 @@ const ForeignCollectionGeo: React.FC<ForeignCollectionGeoProps> = (props) => {
 	
   const { 
     resource,
-    url,
-    foreignUrl,
-    foreignContentType,    
-    resourceUrl,
+    url,    
     fields,
     displayFields=[],
     enableSearch,
@@ -38,15 +35,10 @@ const ForeignCollectionGeo: React.FC<ForeignCollectionGeoProps> = (props) => {
     ...rest 
   } = props 
 
-  const searchUrl = `${url}/${resource?.id}/${foreignContentType}`
-
 	return (
     <ForeignCollectionContainer 
       resource={resource}
-      url={searchUrl}    
-      foreignUrl={foreignUrl}
-      foreignContentType={foreignContentType}    
-      resourceUrl={foreignUrl}
+      url={url}    
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}

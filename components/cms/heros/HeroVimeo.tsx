@@ -1,8 +1,8 @@
 import React from 'react'
 import { VimeoEmbed } from '../..'
-import { HeroProps } from './Hero'
+import { HeroProps } from './HeroItem'
 import { flattenDocument } from 'frontend-js'
-import HeroContainer from './HeroContainer'
+import HeroLayout from './HeroLayout'
 
 export type HeroVimeoProps = HeroProps & {
 	fieldName: string
@@ -12,14 +12,14 @@ const VimeoVideo: React.FC<HeroVimeoProps> = (props) => {
 	const { resource, actions, fieldName, displayFields=[], ...rest } = props || {}
 	const src = flattenDocument(resource)[fieldName]
 	return (
-		<HeroContainer  
+		<HeroLayout  
       actions={actions} 
       resource={resource}
       displayFields={[]}
       {...rest}
     >
 			<VimeoEmbed src={src} />
-		</HeroContainer>
+		</HeroLayout>
 	)
 }
 

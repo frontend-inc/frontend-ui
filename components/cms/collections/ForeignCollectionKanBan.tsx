@@ -4,7 +4,6 @@ import {
 } from '../..'
 import { CollectionListProps } from './CollectionList'
 import { ForeignCollectionContainerProps } from './ForeignCollectionContainer'
-import { TableHeaderType } from '../../../types'
 import CollectionKanBanList from './CollectionKanBanList'
 
 export type ForeignCollectionKanBanProps = 
@@ -21,8 +20,6 @@ const CollectionKanBan: React.FC<ForeignCollectionKanBanProps> = (props) => {
   const { 
     url,
     resource,
-    foreignUrl,
-    foreignContentType,
     headers=[],
     fields,
     enableSearch,
@@ -39,10 +36,7 @@ const CollectionKanBan: React.FC<ForeignCollectionKanBanProps> = (props) => {
 	return (
     <ForeignCollectionContainer
       resource={resource}
-      url={url}  
-      foreignUrl={foreignUrl}
-      foreignContentType={foreignContentType}      
-      resourceUrl={url}
+      url={url}        
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}

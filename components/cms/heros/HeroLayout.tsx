@@ -6,20 +6,23 @@ import {
 	StripePaymentLink,
 	SocialButtons,
 	Actions,
-	Image,
   AvgRating,
-  ExpandableText,
+	ExpandableText
 } from '../..'
 import { HeroProps } from './HeroItem'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
-const HeroList: React.FC<HeroProps> = (props) => {
+type HeroLayoutProps = HeroProps & {
+	children?: React.ReactNode
+}
+
+const HeroLayout: React.FC<HeroLayoutProps> = (props) => {
 	const {
 		actions,
 		displayFields = [],
 		resource,
-    enableOverlay,
+		children,
 		enableEdit,
 		handleEdit,
 		enableFavorites,
@@ -29,7 +32,8 @@ const HeroList: React.FC<HeroProps> = (props) => {
 		enableBuyNow,
 		enableStripePaymentLink,
 	} = props || {}
-	const { label, title, image, description } = resource || {}
+  
+	const { title, description } = resource || {}
 	return (
 		<Stack
 			sx={ sx.root }
@@ -55,16 +59,14 @@ const HeroList: React.FC<HeroProps> = (props) => {
 				</Typography>
         { enableRatings == true && (
           <AvgRating 
-            justifyContent="center"
             resource={resource} 
             enableTotal
           />
         )}
         { displayFields?.length > 0 && (
-          <DisplayFields
-            alignItems="center"
-            fields={displayFields}
-            resource={resource}
+				  <DisplayFields 
+            fields={displayFields} 
+            resource={resource} 
           />
         )}
 				{enableBuyNow == true && (
@@ -82,14 +84,7 @@ const HeroList: React.FC<HeroProps> = (props) => {
 					/>
 				)}
 			</Stack>
-      <Box sx={sx.imageContainer}>
-        <Image
-          src={image?.url}
-          alt={title}
-          height={400}
-          label={label}          
-        />
-      </Box>
+			<Box sx={sx.container}>{children}</Box>
 			<SocialButtons
 				handle={resource?.handle}
 				enableLikes={enableLikes}
@@ -97,15 +92,15 @@ const HeroList: React.FC<HeroProps> = (props) => {
 				enableSharing={enableSharing}
 			/>
 			<Box sx={sx.content}>
-				<Typography variant="body1" color="text.primary" sx={sx.text}>
-					{description}
-				</Typography>
+        <ExpandableText 
+          text={description}
+        />
 			</Box>
 		</Stack>
 	)
 }
 
-export default HeroList
+export default HeroLayout
 
 const sx = {
 	root: {
@@ -116,7 +111,6 @@ const sx = {
 	rootBorder: {
 		border: '1px solid',
 		borderColor: 'divider',
-		pb: 2,
 	},
 	header: {
 		maxWidth: 500,
@@ -144,7 +138,7 @@ const sx = {
 			xs: '100%',
 		},
 	},
-	imageContainer: {
+	container: {
 		width: '100%',
 		borderRadius: 1,
 	},

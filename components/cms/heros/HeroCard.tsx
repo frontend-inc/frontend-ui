@@ -10,7 +10,7 @@ import {
 	SocialButtons,
   ExpandableText,
 } from '../..'
-import { HeroProps } from './Hero'
+import { HeroProps } from './HeroItem'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 

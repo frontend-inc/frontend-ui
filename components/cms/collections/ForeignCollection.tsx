@@ -8,8 +8,6 @@ import { CollectionContainerProps } from './CollectionContainer'
 
 export type ForeignProps = {
   resource: any,
-  foreignUrl: string,
-  foreignContentType: string,  
 } 
 
 export type ForeignCollectionProps = 
@@ -22,30 +20,22 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
   const { 
     resource,
     url,
-    foreignUrl,
-    foreignContentType,    
-    resourceUrl,
     fields,
     enableSearch,
     enableCreate,
     filterOptions,
     sortOptions,    
-    query={},
     filterUser,
     filterTeam,
     perPage,
+    query={},
     ...rest 
   } = props 
-
-  const searchUrl = `${url}/${resource?.id}/${foreignContentType}`
 
 	return (
     <ForeignCollectionContainer 
       resource={resource}
-      url={searchUrl}    
-      foreignUrl={foreignUrl}
-      foreignContentType={foreignContentType}    
-      resourceUrl={foreignUrl}
+      url={url}    
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}
@@ -58,7 +48,7 @@ const ForeignCollection: React.FC<ForeignCollectionProps> = (props) => {
     >      
       <CollectionList 
         { ...rest }
-        url={foreignUrl}
+        url={url}
       />                
     </ForeignCollectionContainer>
 	)

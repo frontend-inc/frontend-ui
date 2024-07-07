@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
 import { CollectionTable } from '../../components'
-import { CollectionTableProps } from '../../components/cms/collections/CollectionTableList'
+import { CollectionTableProps } from '../../components/cms/collections/CollectionTable'
 import { SectionProps, HeadingProps } from '../../types'
 
 type CmsTableProps = SectionProps & 

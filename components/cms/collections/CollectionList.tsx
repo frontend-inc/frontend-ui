@@ -11,7 +11,6 @@ import { useRouter } from 'next/router'
 import {
   ResourceModal,
 	CollectionCards,
-  CollectionLayout,
 	Placeholder,
 } from '../../../components'
 import { useForms } from '../../../hooks'
@@ -22,7 +21,6 @@ import {
 
 export type CollectionListProps = {
   url: string 
-  component?: React.FC<any>
   href?: string
 	style: 'list' | 'avatar' | 'card' | 'cover' | 'text' 
 	editing?: boolean
@@ -58,7 +56,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
   } = useResourceContext()
 
 	const {
-    component: RenderList = CollectionCards,
 		actions = [],		
 		style = 'card',
 		href,
@@ -69,8 +66,10 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		enableEdit = false,
 		enableDelete = false,
 		enableFavorites = false,
-    enableRatings = false,
+    enableLikes = false,
     enableUsers = false,
+    enableRatings = false,
+    enableComments = false,
 		emptyIcon,
 		emptyTitle = 'No results found',
 		emptyDescription = 'Try changing your search or filters.',
@@ -107,7 +106,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 	return (
     <>
       <Stack direction="column" spacing={2}>
-        <RenderList
+        <CollectionCards
           actions={actions}            
           style={style}
           resources={resources}
@@ -143,7 +142,9 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
         enableOverlay={enableOverlay}
         enableEdit={enableEdit}
         enableFavorites={enableFavorites}
+        enableLikes={enableLikes}
         enableRatings={enableRatings}
+        enableComments={enableComments}
         enableUsers={enableUsers}
         handleEdit={() => handleEdit(resource)}
       />

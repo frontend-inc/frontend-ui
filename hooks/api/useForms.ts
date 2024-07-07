@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
-import { AppContext, FormContext } from '../../context'
+import { AppContext } from '../../context'
 import {    
   useAuth, 
   useQuery, 
-  useDocuments 
+  useDocuments,
+  ResourceContext 
 } from 'frontend-js'
 
 type FormParams = {
@@ -12,12 +13,11 @@ type FormParams = {
 
 const useForms = (params?: FormParams) => {
 
-  const { 
-    resource: _resource 
-  } = params || {}
+  const { resource: _resource } = params || {}
 
   const { 
-    reloadMany  
+    query={},
+    findMany    
   } = useQuery()
 
   const { currentUser } = useAuth()
@@ -31,7 +31,7 @@ const useForms = (params?: FormParams) => {
     setOpenDeleteModal,
     openFormModal,
     setOpenFormModal,
-  } = useContext(FormContext)
+  } = useContext(ResourceContext) as any 
 
   const { 
     delayedLoading: loading,
@@ -45,6 +45,17 @@ const useForms = (params?: FormParams) => {
     handleDataChange,
     removeAttachment,
   } = useDocuments()
+
+  const reloadMany = async () => {
+    if(_resource?.id){
+      findMany({
+        ...query,
+        belongs_to: _resource?.id
+      })
+    }else{
+      findMany(query)
+    }
+  }
 
 	const handleAdd = () => {
 		if (!currentUser?.id) return setAuthOpen(true)
@@ -75,7 +86,7 @@ const useForms = (params?: FormParams) => {
 			if (resp?.id) {
 				setResource({})
         setOpenFormModal(false)
-				reloadMany()
+        reloadMany()
 			}
 		} catch (err) {
 			console.log('Error', err)

@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { FormContext } from '../../../context'
 import { 
   Button 
 } from '@mui/material'
@@ -11,25 +10,28 @@ import {
 } from '../../../components'
 import { useForms } from '../../../hooks'
 import { flattenDocument } from 'frontend-js'
+import { FormFieldType } from '../../../types'
+import { ResourceContext } from 'frontend-js'
 
 export type ResourceFormProps = {
+  fields: FormFieldType[] 
   resource?: any 
 }
 
 const ResourceForm: React.FC<ResourceFormProps> = (props) => {
 
-  const { resource: _resource } = props || {}
+  const { 
+    fields,
+    resource: _resource 
+  } = props || {}
 
   const { 
-    editFields,
-    createFields,
-
     openDeleteModal,
     setOpenDeleteModal,
 
     openFormModal,
     setOpenFormModal
-  } = useContext(FormContext)
+  } = useContext(ResourceContext) as any 
 
   const {   
     loading,
@@ -64,7 +66,7 @@ const ResourceForm: React.FC<ResourceFormProps> = (props) => {
 				<Form
 					loading={loading}
 					errors={errors}
-					fields={resource?.id ? editFields : createFields }
+					fields={ fields }
 					resource={flattenDocument(resource)}
 					handleChange={handleDataChange}
 					handleRemove={handleRemove}

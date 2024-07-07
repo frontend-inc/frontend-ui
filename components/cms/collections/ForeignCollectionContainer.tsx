@@ -6,8 +6,6 @@ import { CollectionContainerProps } from './CollectionContainer'
 
 export type ForeignProps = {
   resource: any,
-  foreignUrl: string,
-  foreignContentType: string,  
 } 
 
 export type ForeignCollectionContainerProps = 
@@ -19,15 +17,11 @@ const ForeignCollectionContainer: React.FC<ForeignCollectionContainerProps> = (p
   const { 
     resource,
     url,
-    foreignUrl,
-    foreignContentType,    
-    resourceUrl,
     fields,
     enableSearch,
     enableCreate,
     filterOptions,
     sortOptions,    
-    query={},
     filterUser,
     filterTeam,
     perPage,
@@ -35,12 +29,21 @@ const ForeignCollectionContainer: React.FC<ForeignCollectionContainerProps> = (p
     ...rest 
   } = props 
 
-  const searchUrl = `${url}/${resource?.id}/${foreignContentType}`
+  let { query={} } = props || {}
+
+  // The CMS documents server handles the 
+  // the belongs_to query parameter 
+  if(resource?.id){
+    query = {
+      ...query,
+      belongs_to: resource?.id
+    }
+  }
 
 	return (
     <CollectionContainer
-      url={searchUrl}        
-      resourceUrl={foreignUrl}
+      resource={resource}
+      url={url}              
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}

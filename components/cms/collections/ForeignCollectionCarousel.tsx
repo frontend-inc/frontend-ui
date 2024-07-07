@@ -15,9 +15,7 @@ const ForeignCollectionCarousel: React.FC<ForeignCollectionCarouselProps> = (pro
 	
   const { 
     url,
-    resource,
-    foreignUrl,
-    foreignContentType,
+    resource,    
     fields,
     enableSearch,
     enableCreate,
@@ -34,9 +32,6 @@ const ForeignCollectionCarousel: React.FC<ForeignCollectionCarouselProps> = (pro
     <ForeignCollectionContainer
       url={url}        
       resource={resource}
-      foreignUrl={foreignUrl}
-      foreignContentType={foreignContentType}      
-      resourceUrl={foreignUrl}
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}
@@ -49,7 +44,7 @@ const ForeignCollectionCarousel: React.FC<ForeignCollectionCarouselProps> = (pro
     >      
       <CollectionCarouselList 
         { ...rest }
-        url={foreignUrl}
+        url={url}
       />                
     </ForeignCollectionContainer>
 	)

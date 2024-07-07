@@ -4,7 +4,7 @@ import { KanBan } from '../..'
 import { 
   ResourceModal 
 } from '../..'
-import { FormContext } from '../../../context'
+import { ResourceContext } from 'frontend-js'
 import { 
   useQuery,
   useResourceContext,
@@ -72,7 +72,7 @@ const CollectionKanBanList: React.FC<CollectionKanBanListProps> = (props) => {
     handleDeleteClick 
   } = useForms()
 
-  const { setOpenFormModal } = useContext(FormContext)
+  const { setOpenFormModal } = useContext(ResourceContext) as any
 
   const handleAdd = (header) => {
     setResource({

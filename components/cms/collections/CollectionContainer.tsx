@@ -1,25 +1,25 @@
 import React from 'react'
 import { 
   CollectionToolbar, 
-  Query, 
+  Query,   
   ResourceForm 
 } from '../..'
-import { CollectionListProps } from './CollectionList'
-import { FormProvider } from '../../../context'
 import { QueryProvider, ResourceProvider } from 'frontend-js'
 import { 
+  DisplayFieldType,
   FormFieldType, 
   SearchFilterOptionType, 
   SortOptionType 
 } from '../../../types'
 
 export type CollectionContainerProps = {
+  resource?: any
   url: string
-  resourceUrl: string
   query?: any
   filterUser?: boolean
   filterTeam?: boolean
   fields?: FormFieldType[]  
+  displayFields?: DisplayFieldType[]
   filterOptions?: SearchFilterOptionType[]
   sortOptions?: SortOptionType[]
   perPage?: number
@@ -31,8 +31,8 @@ export type CollectionContainerProps = {
 const CollectionContainer: React.FC<CollectionContainerProps> = (props) => {
 
   const { 
+    resource,
     url,
-    resourceUrl,
     children,
     query,
     filterUser=false,
@@ -48,34 +48,32 @@ const CollectionContainer: React.FC<CollectionContainerProps> = (props) => {
   return(
     <QueryProvider url={url}>
       <ResourceProvider 
-        url={resourceUrl} 
+        url={url} 
         name='document'
       >
-        <FormProvider
-          editFields={fields}
-          createFields={fields}
+        <Query 
+          query={query}
+          filterUser={filterUser}
+          filterTeam={filterTeam}
+          perPage={perPage}
         >
-          <Query 
+          <CollectionToolbar
+            url={url}
             query={query}
-            filterUser={filterUser}
-            filterTeam={filterTeam}
             perPage={perPage}
-          >
-            <CollectionToolbar
-              url={url}
-              query={query}
-              perPage={perPage}
-              filterUser={filterUser}
-              filterTeam={filterTeam}  
-              enableSearch={enableSearch}              
-              filterOptions={filterOptions}
-              sortOptions={sortOptions} 
-              enableCreate={enableCreate}                 
-            />
-              { children }
-          </Query>
-          <ResourceForm />
-        </FormProvider>
+            filterUser={filterUser}
+            filterTeam={filterTeam}  
+            enableSearch={enableSearch}              
+            filterOptions={filterOptions}
+            sortOptions={sortOptions} 
+            enableCreate={enableCreate}                 
+          />
+            { children }
+        </Query>
+        <ResourceForm 
+          fields={fields}
+          resource={resource}
+        />
       </ResourceProvider>
     </QueryProvider>
   )
