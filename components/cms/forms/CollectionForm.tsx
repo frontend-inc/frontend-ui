@@ -25,7 +25,6 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 		resource: _resource,
 		buttonText = 'Submit',
 		fields,
-		url,
 		href,
 		onSuccessMessage = 'Submitted successfully!',
 	} = props
@@ -43,9 +42,7 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 		flattenDocument,
 		handleDataChange,
 		removeAttachment,
-	} = useDocuments({
-		url,
-	})
+	} = useDocuments()
 
 	const handleRemove = async (name) => {
 		if (resource?.id) {

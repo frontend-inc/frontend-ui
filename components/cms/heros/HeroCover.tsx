@@ -7,9 +7,7 @@ import {
 	StripePaymentLink,
 	SocialButtons,
 	Actions,
-	Image,
-  AvgRating,
-  ExpandableText,
+  AvgRating,  
 } from '../..'
 import { HeroProps } from './HeroItem'
 import { flattenDocument } from 'frontend-js'
@@ -20,10 +18,8 @@ const HeroCover: React.FC<HeroProps> = (props) => {
 		actions,
 		displayFields = [],
 		resource,
-		enableBorder,
-    enableOverlay,
-		enableEdit,
-		handleEdit,
+    handleEdit,
+		enableEdit,		
 		enableFavorites,
 		enableLikes,
 		enableSharing,
@@ -31,7 +27,7 @@ const HeroCover: React.FC<HeroProps> = (props) => {
 		enableBuyNow,
 		enableStripePaymentLink,
 	} = props || {}
-	const { label, title, image, description } = resource || {}
+	const { title, image, description } = resource || {}
 	return (
 		<Stack
 			sx={ sx.root } 

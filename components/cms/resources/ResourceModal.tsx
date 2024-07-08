@@ -64,7 +64,6 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
         <HeroSnippet 
           resource={resource}
           enableEdit={enableEdit}
-          handleEdit={handleEdit}
           actions={actions}
           displayFields={displayFields}
           enableRatings={enableRatings}

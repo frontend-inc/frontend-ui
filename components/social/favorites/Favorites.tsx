@@ -31,7 +31,6 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 	return (
     <CollectionContainer
       url={favoritesUrl}        
-      resourceUrl={url}
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}

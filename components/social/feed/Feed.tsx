@@ -31,7 +31,6 @@ const Feed: React.FC<FeedProps> = (props) => {
 	return (
     <CollectionContainer
       url={socialUrl}        
-      resourceUrl={url}
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}

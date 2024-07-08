@@ -30,6 +30,7 @@ export type HeroProps = {
   enableUsers?: boolean
 	enableStripePaymentLink?: boolean
   enableOverlay?: boolean
+  handleEdit?: (res: any) => void
 }
 
 type HeroStyleTypes =

@@ -8,8 +8,6 @@ import CollectionGeoList from './CollectionGeoList'
 
 export type ForeignProps = {
   resource: any,
-  foreignUrl: string,
-  foreignContentType: string,  
 } 
 
 export type ForeignCollectionGeoProps = 
@@ -51,7 +49,7 @@ const ForeignCollectionGeo: React.FC<ForeignCollectionGeoProps> = (props) => {
     >      
       <CollectionGeoList 
         { ...rest }
-        url={foreignUrl}
+        url={url}
         displayFields={displayFields}
       />                
     </ForeignCollectionContainer>

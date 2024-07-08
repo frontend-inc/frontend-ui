@@ -19,7 +19,6 @@ const Collection: React.FC<CollectionProps> = (props) => {
     filterOptions,
     sortOptions,
     url,
-    resourceUrl,
     query={},
     filterUser,
     filterTeam,
@@ -30,7 +29,6 @@ const Collection: React.FC<CollectionProps> = (props) => {
 	return (
     <CollectionContainer
       url={url}        
-      resourceUrl={resourceUrl || url}
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}

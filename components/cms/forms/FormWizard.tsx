@@ -62,9 +62,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		handleDataChange,
 		removeAttachment,
 		flattenDocument,
-	} = useDocuments({
-		url,
-	})
+	} = useDocuments()
 
 	const [currentField, setCurrentField] = useState()
 	const [currentStep, setCurrentStep] = useState(0)

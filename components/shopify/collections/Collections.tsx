@@ -23,7 +23,6 @@ export type CollectionsProps = {
 const Collections: React.FC<CollectionsProps> = (props) => {
 	const {
 		href,
-		variant = 'grid',
 		style = 'card',
 		buttonText,
 		enableBorder = false,
@@ -33,7 +32,11 @@ const Collections: React.FC<CollectionsProps> = (props) => {
 
 	const router = useRouter()
 
-	const { loading, collections, findCollections } = useCollections()
+	const { 
+    loading, 
+    collections, 
+    findCollections 
+  } = useCollections()
 
 	const { clientUrl } = useContext(AppContext) as any
 

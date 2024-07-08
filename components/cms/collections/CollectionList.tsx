@@ -1,11 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useResourceContext } from 'frontend-js'
-import { Button, Stack } from '@mui/material'
+import { Stack } from '@mui/material'
 import {
 	LoadMore,
-	GoogleMap,
 } from '../..'
-import { QueryContext } from 'frontend-js'
+import { useQuery } from 'frontend-js'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
 import {
@@ -78,8 +77,11 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 
   const { 
     loading,    
-    resources     
-  } = useContext(QueryContext) as any 
+    resources,
+    page,
+    numPages,
+    loadMore      
+  } = useQuery()
 
 	const handleNavigate = (resource) => {
     if(href){
@@ -124,7 +126,11 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
           handleDelete={handleDeleteClick}
           { ...rest }
         />          
-        <LoadMore />              
+        <LoadMore 
+          page={page}
+          numPages={numPages}
+          loadMore={loadMore}
+        />              
       </Stack>   
       {!loading && resources?.length == 0 && (
         <Placeholder

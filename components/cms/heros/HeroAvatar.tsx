@@ -20,7 +20,6 @@ const HeroAvatar: React.FC<HeroProps> = (props) => {
 		actions,
 		resource,
 		displayFields = [],
-		enableBorder,
 		enableEdit,
 		handleEdit,
 		enableFavorites,
@@ -39,8 +38,7 @@ const HeroAvatar: React.FC<HeroProps> = (props) => {
         <Stack
           sx={sx.actions}
           direction={{ sm: 'row', xs: 'column' }}
-          spacing={1}
-          p={enableBorder ? 1 : 0}
+          spacing={1}          
         >
           <Actions
             actions={buildActions({
@@ -88,7 +86,7 @@ const HeroAvatar: React.FC<HeroProps> = (props) => {
 					</Stack>
 					<Stack
 						spacing={1}
-						sx={{ ...sx.content, ...(enableBorder && sx.contentBorder) }}
+						sx={ sx.content }
 					>
 						<Typography color="text.primary" variant="h4">
 							{title}

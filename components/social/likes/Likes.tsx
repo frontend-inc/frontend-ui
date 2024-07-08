@@ -31,7 +31,6 @@ const Likes: React.FC<LikesProps> = (props) => {
 	return (
     <CollectionContainer
       url={likesUrl}        
-      resourceUrl={url}
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}

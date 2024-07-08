@@ -1,10 +1,6 @@
-import React, { useContext } from 'react'
-import { QueryContext } from 'frontend-js'
-import { Hidden, Grid } from '@mui/material'
+import React from 'react'
 import {
-  GoogleMap,
   CollectionContainer,
-  CollectionList 
 } from '../..'
 import { CollectionListProps } from './CollectionList'
 import { CollectionContainerProps } from './CollectionContainer'
@@ -31,12 +27,9 @@ const CollectionGeo: React.FC<CollectionGeoProps> = (props) => {
     ...rest 
   } = props 
 
-  const { resources } = useContext(QueryContext) as any 
-
 	return (
     <CollectionContainer
       url={url}        
-      resourceUrl={url}
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}

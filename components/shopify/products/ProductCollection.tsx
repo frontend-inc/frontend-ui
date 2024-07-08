@@ -3,7 +3,7 @@ import { Stack } from '@mui/material'
 import {
 	ProductSortKeyType,
 	useCollections,
-	useQueryFilters,
+	useSearchFilters,
 } from 'frontend-shopify'
 import {
 	ProductGrid,
@@ -49,7 +49,7 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 	const { loading, products, findCollection } = useCollections()
 
 	const { filters, handleFilter, handleFilterArray, formatProductFilters } =
-		useQueryFilters()
+    useSearchFilters()
 
 	const handleSortClick = (sortKey, reverse = false) => {
 		setSortKey(sortKey)

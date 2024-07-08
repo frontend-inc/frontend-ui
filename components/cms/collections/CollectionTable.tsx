@@ -33,7 +33,6 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	return (
     <CollectionContainer
       url={url}        
-      resourceUrl={url}
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}

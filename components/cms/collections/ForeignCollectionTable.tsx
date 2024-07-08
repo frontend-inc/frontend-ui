@@ -46,7 +46,7 @@ const ForeignCollectionTable: React.FC<ForeignCollectionTableProps> = (props) =>
     >      
       <CollectionTableList 
         { ...rest }
-        url={foreignUrl}
+        url={url}
       />                
     </ForeignCollectionContainer>
 	)

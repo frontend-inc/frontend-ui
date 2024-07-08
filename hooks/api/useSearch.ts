@@ -26,9 +26,7 @@ const useSearch = (props) => {
 		page,
 		numPages,
 		loadMore,
-	} = useQuery({
-		url,
-	})
+	} = useQuery()
 
 	const [keywords, setKeywords] = useState('')
 
@@ -81,7 +79,7 @@ const useSearch = (props) => {
 			page: 1,
 			per_page: perPage,
       current_user: filterUser ? true : false,
-      curren_team: filterTeam ? true : false
+      current_team: filterTeam ? true : false
 		})
 	}
 
@@ -99,7 +97,7 @@ const useSearch = (props) => {
 				),
 				per_page: perPage,
         current_user: filterUser ? true : false,
-        curren_team: filterTeam ? true : false
+        current_team: filterTeam ? true : false
 			})
 		}
 	}, [url, filterUser, filterTeam])

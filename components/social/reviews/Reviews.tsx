@@ -247,7 +247,11 @@ const Reviews: React.FC<ReviewsProps> = (props) => {
 					description="Be the first to leave a review."
 				/>
 			)}
-			<LoadMore loadMore={loadMore} page={page} numPages={numPages} />
+			<LoadMore 
+        loadMore={loadMore} 
+        page={page} 
+        numPages={numPages} 
+      />
 			<AlertModal
 				loading={loading}
 				open={openDelete}

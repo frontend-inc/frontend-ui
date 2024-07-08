@@ -20,9 +20,6 @@ export { default as ForeignCollectionTable } from './collections/ForeignCollecti
 export { default as ForeignCollectionCarousel } from './collections/ForeignCollectionCarousel'
 export { default as EmailSignup } from './contacts/EmailSignup'
 
-export { default as Fetch } from './fetch/Fetch'
-export { default as FetchMany } from './fetch/FetchMany'
-
 export { default as LoadMore } from './collections/LoadMore'
 export { default as FilterButton } from './filters/FilterButton'
 export { default as KanBan } from '../cms/kanban/KanBan'

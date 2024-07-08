@@ -1,6 +1,6 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionKanBan, CollectionContainer } from '../../components'
+import { CollectionKanBan } from '../../components'
 import { CollectionKanBanProps } from '../../components/cms/collections/CollectionKanBan'
 import { SectionProps, HeadingProps } from '../../types'
 
@@ -21,17 +21,7 @@ const CmsKanBan: React.FC<CmsKanBanProps> = (props) => {
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
-    fields,
-    enableSearch,
-    enableCreate,
-    filterOptions,
-    sortOptions,
-    url,
-    query={},
-    filterUser,
-    filterTeam,
-    perPage,
+		requireAdmin,  
 		...rest
 	} = props
 
@@ -51,24 +41,10 @@ const CmsKanBan: React.FC<CmsKanBanProps> = (props) => {
         title={title}
         description={description}
         textAlign={textAlign}
-      />
-      <CollectionContainer
-        url={url}        
-        resourceUrl={url}
-        query={query}
-        filterUser={filterUser}
-        filterTeam={filterTeam}
-        fields={fields}        
-        enableSearch={enableSearch}
-        filterOptions={filterOptions}
-        perPage={200}
-      >
+      />      
         <CollectionKanBan 
           {...rest} 
-          url={url}
-          enableCreate={enableCreate}
-        />
-      </CollectionContainer>
+        />      
     </Section>          
 	)
 }

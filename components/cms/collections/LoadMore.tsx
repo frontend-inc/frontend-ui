@@ -6,17 +6,19 @@ import { ExpandMore } from '@mui/icons-material'
 import { Icon } from '../../../components'
 
 type LoadMoreProps = {
+  page: number 
+  numPages: number
+  loadMore: () => void
 	enableInfiniteLoad?: boolean
 }
 
 const LoadMore: React.FC<LoadMoreProps> = (props) => {
-	const { enableInfiniteLoad = false } = props
-
-  const { 
+	const { 
     page,
     numPages,
-    loadMore 
-  } = useContext(ResourceContext) as any
+    loadMore,
+    enableInfiniteLoad = false 
+  } = props
 
 	return (
 		<Box sx={sx.root}>

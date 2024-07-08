@@ -33,7 +33,6 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 	return (
     <CollectionContainer
       url={url}        
-      resourceUrl={url}
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}

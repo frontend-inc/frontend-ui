@@ -4,7 +4,6 @@ import {
 } from '../..'
 import { CollectionListProps } from './CollectionList'
 import { CollectionContainerProps } from './CollectionContainer'
-import { TableHeaderType } from '../../../types'
 import CollectionKanBanList from './CollectionKanBanList'
 
 export type CollectionKanBanProps = 
@@ -36,7 +35,6 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
 	return (
     <CollectionContainer
       url={url}        
-      resourceUrl={url}
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}

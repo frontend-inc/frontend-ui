@@ -48,7 +48,7 @@ const CollectionKanBan: React.FC<ForeignCollectionKanBanProps> = (props) => {
       <CollectionKanBanList 
         { ...rest }
         headers={headers}
-        url={foreignUrl}
+        url={url}
       />                
     </ForeignCollectionContainer>
 	)

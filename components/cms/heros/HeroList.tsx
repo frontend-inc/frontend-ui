@@ -7,8 +7,7 @@ import {
 	SocialButtons,
 	Actions,
 	Image,
-  AvgRating,
-  ExpandableText,
+  AvgRating,  
 } from '../..'
 import { HeroProps } from './HeroItem'
 import { flattenDocument } from 'frontend-js'
@@ -19,7 +18,6 @@ const HeroList: React.FC<HeroProps> = (props) => {
 		actions,
 		displayFields = [],
 		resource,
-    enableOverlay,
 		enableEdit,
 		handleEdit,
 		enableFavorites,
