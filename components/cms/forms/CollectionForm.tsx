@@ -10,8 +10,6 @@ import { useAlerts } from '../../../hooks'
 import { useRouter } from 'next/router'
 
 export type CollectionFormProps = {
-	handle: string
-	resource?: any
 	href?: string
 	buttonText?: string
 	variant?: 'contained' | 'outlined' | 'text'
@@ -25,8 +23,6 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const {
-		handle,
-		resource: _resource,
 		buttonText = 'Submit',
 		fields,
 		url,
@@ -79,11 +75,11 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 		}
 	}
 
-	useEffect(() => {
-		if (_resource) {
-			setResource(_resource)
-		} 
-	}, [_resource])
+  useEffect(() => {
+    setResource({
+      title: ''
+    })
+  }, [])
 
 	return (
 		<Form
