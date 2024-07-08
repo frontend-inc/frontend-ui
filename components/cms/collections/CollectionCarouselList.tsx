@@ -5,7 +5,6 @@ import { ResourceModal, Carousel } from '../..'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
 import CollectionCard from './CollectionCard'
-import { ActionType } from '../../../types'
 import { useForms } from '../../../hooks'
 import { CollectionListProps } from './CollectionList'
 
@@ -25,7 +24,7 @@ const CollectionCarouselList: React.FC<CollectionCarouselListProps> = (props) =>
     displayFields,
 
 		enableAutoPlay = true,
-		enableArrows = true,
+		enableArrows = false,
 		enableDots = false,
 		enableGradient = false,
     enableOverlay = false,
@@ -94,7 +93,7 @@ const CollectionCarouselList: React.FC<CollectionCarouselListProps> = (props) =>
 							actions={actions}
 							style='card'
 							resource={resource}
-              displayFields={[]}
+              displayFields={displayFields}
               enableEdit={enableEdit}
               enableDelete={enableDelete}
               handleEdit={() => handleEdit(resource)}

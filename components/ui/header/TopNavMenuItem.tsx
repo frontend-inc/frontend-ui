@@ -142,6 +142,7 @@ export default TopNavMenuItem
 
 const sx = {
 	menuButton: {
+    boxShadow: 0,
 		cursor: 'pointer',
 		justifyContent: 'flex-start',
 		color: 'text.primary',

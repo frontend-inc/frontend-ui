@@ -45,7 +45,7 @@ const SideNavStripeCustomerPortalButton: React.FC<
 				</ListItemIcon>
 				<ListItemText
 					primary={
-						<Typography variant="button" color="text.primary">
+						<Typography variant="body1" color="text.primary">
 							Billing
 						</Typography>
 					}

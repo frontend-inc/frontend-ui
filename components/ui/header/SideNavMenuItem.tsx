@@ -28,7 +28,7 @@ const SublinkMenuItem: React.FC<SublinkMenuItemProps> = (props) => {
 			<ListItemButton onClick={handleClick}>
 				<ListItemText
 					primary={
-						<Typography variant="subtitle2" color="text.primary">
+						<Typography variant="button" color="text.primary">
 							{label}
 						</Typography>
 					}
@@ -107,7 +107,7 @@ const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 					)}
 					<ListItemText
 						primary={
-							<Typography variant="subtitle2" color="text.primary">
+							<Typography variant="body1" color="text.primary">
 								{menuItem.name}
 							</Typography>
 						}

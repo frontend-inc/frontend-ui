@@ -20,7 +20,7 @@ export default CarouselLeftArrow
 const sx = {
   root: {
     position: 'absolute',
-    right: 50,
+    left: 0,
     top: 20,
     transform: 'translateY(-50%)',
     bgcolor: 'secondary.main',
