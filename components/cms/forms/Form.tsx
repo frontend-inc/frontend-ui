@@ -46,7 +46,12 @@ const Form: React.FC<FormProps> = (props) => {
 					variant="contained"
 					onClick={handleSubmit}
 					disabled={loading}
-					endIcon={<IconLoading color="primary" loading={loading} />}
+					endIcon={
+            <IconLoading 
+              color="primary.contrastText" 
+              loading={loading} 
+            />
+          }
 				>
 					{buttonText}
 				</Button>

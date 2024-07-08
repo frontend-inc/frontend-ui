@@ -37,16 +37,16 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 	const { showAlertSuccess } = useAlerts()
 
 	const {
-		delayedLoading,
+		delayedLoading: loading,
 		errors,
-		findOne,
 		resource,
 		setResource,
 		update,
 		create,
 		removeAttachment,
 	} = useResource({
-		url
+		url,
+    name: 'document'
 	})
 
   const handleDataChange = (ev) => {
@@ -82,14 +82,12 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 	useEffect(() => {
 		if (_resource) {
 			setResource(_resource)
-		} else if (handle) {
-			findOne(handle)
-		}
-	}, [_resource, handle])
+		} 
+	}, [_resource])
 
 	return (
 		<Form
-			loading={delayedLoading}
+			loading={loading}
 			errors={errors}
 			fields={fields}
 			resource={flattenDocument(resource)}
@@ -102,12 +100,3 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 }
 
 export default CollectionForm
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-	button: {
-		mt: 2,
-	},
-}

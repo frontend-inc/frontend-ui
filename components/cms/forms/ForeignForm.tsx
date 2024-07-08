@@ -52,8 +52,7 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 	const handleDataChange = (ev) => {
 		const { name } = ev.target
 		const value =
-			ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
-    
+			ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value    
     setResource(prev => changeDocumentValue(prev, name, value))
 	}
 
