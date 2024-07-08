@@ -27,7 +27,6 @@ export { default as SearchFilters } from '../cms/filters/SearchFilters'
 // Forms 
 export { default as Form } from '../cms/forms/Form'
 export { default as FormWizard } from '../cms/forms/FormWizard'
-export { default as ForeignForm } from './forms/ForeignForm'
 export { default as FormInput } from '../cms/forms/FormInput'
 export { default as FormFieldInput } from '../cms/forms/FormFieldInput'
 export { default as ResourceForm } from '../cms/forms/ResourceForm'
