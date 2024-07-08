@@ -60,7 +60,8 @@ const KanBan: React.FC<KanBanProps> = (props) => {
   const [groupedResources, setGroupedResources] = useState({})
   
   const handleGroupResources = (resources, fieldName) => {
-    let flattenedResources = flattenDocuments(resources)
+    let sortedDocuments = resources.sort((a, b) => a.position - b.position)
+    let flattenedResources = flattenDocuments(sortedDocuments)
     let allowedOptions = headers.map((header) => header.value)
     let grouped = groupResourcesByField(flattenedResources, fieldName, allowedOptions)      
     setGroupedResources(grouped)
