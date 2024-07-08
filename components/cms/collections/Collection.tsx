@@ -13,6 +13,7 @@ export type CollectionProps =
 const Collection: React.FC<CollectionProps> = (props) => {
 	
   const { 
+    resource,
     fields,
     enableSearch,
     enableCreate,
@@ -22,16 +23,19 @@ const Collection: React.FC<CollectionProps> = (props) => {
     query={},
     filterUser,
     filterTeam,
+    filterRelated,
     perPage,
     ...rest 
   } = props 
 
 	return (
     <CollectionContainer
+      resource={resource}
       url={url}        
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}
+      filterRelated={filterRelated}
       perPage={perPage}                
       fields={fields}      
       enableSearch={enableSearch}

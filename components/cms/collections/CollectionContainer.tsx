@@ -18,6 +18,7 @@ export type CollectionContainerProps = {
   query?: any
   filterUser?: boolean
   filterTeam?: boolean
+  filterRelated?: boolean
   fields?: FormFieldType[]  
   displayFields?: DisplayFieldType[]
   filterOptions?: SearchFilterOptionType[]
@@ -33,10 +34,10 @@ const CollectionContainer: React.FC<CollectionContainerProps> = (props) => {
   const { 
     resource,
     url,
-    children,
-    query,
+    children,    
     filterUser=false,
     filterTeam=false,
+    filterRelated=false,
     fields=[],    
     perPage=20,
     enableSearch,
@@ -44,6 +45,32 @@ const CollectionContainer: React.FC<CollectionContainerProps> = (props) => {
     filterOptions,
     sortOptions,
   } = props 
+
+  let { query={} } = props || {}
+
+  if(filterRelated == true && resource?.id){
+    query = { 
+      ...query, 
+      belongs_to: resource.id 
+    }
+  }else{
+    query = { 
+      ...query, 
+      belongs_to: null
+    }
+  }
+  
+  if(filterUser == true ){
+      query = { ...query, current_user: true }
+  }else{
+    query = { ...query, current_user: false }
+  }
+
+  if(filterTeam == true ){
+    query = { ...query, current_team: true }
+  }else{
+    query = { ...query, current_team: false }
+  }
 
   return(
     <QueryProvider url={url}>
@@ -53,8 +80,6 @@ const CollectionContainer: React.FC<CollectionContainerProps> = (props) => {
       >
         <Query 
           query={query}
-          filterUser={filterUser}
-          filterTeam={filterTeam}
           perPage={perPage}
         >
           <CollectionToolbar

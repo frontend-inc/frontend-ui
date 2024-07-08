@@ -1,12 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { useSearch } from '../../../hooks'
-import { QueryContext, useAuth } from 'frontend-js'
+import { QueryContext } from 'frontend-js'
 
 export type QueryProps = {
 	perPage?: number
 	query?: any
 	filterUser?: boolean
 	filterTeam?: boolean
+  filterRelated?: boolean
   children: React.ReactNode
 }
 
@@ -15,20 +16,24 @@ const Query: React.FC<QueryProps> = (props) => {
   const { url } = useContext(QueryContext) as any
 
   const {
-		filterUser = false,
-		filterTeam = false,
-		query = {},
+    query = {},
     perPage = 20,
     children
 	} = props
 
-  useSearch({
+  const { 
+    handleSearch 
+  } = useSearch({
     url,
     perPage,
-    filterUser,
-    filterTeam,
     query,  
   })
+
+  useEffect(() => {
+    if(url && query){
+      handleSearch()
+    }
+  }, [url, query])
 
   return children 
 }

@@ -10,10 +10,8 @@ const useSearch = (props) => {
 
   const {
 		url,
-		perPage = 20,
-		filterUser = false,
-		filterTeam = false,
-		query: defaultQuery = {},
+    query: defaultQuery = {},
+		perPage = 20
 	} = props
 
 	const {
@@ -34,7 +32,7 @@ const useSearch = (props) => {
 		setKeywords(ev.target.value)
 	}
 
-	const handleSearch = (keywords: string) => {
+	const handleSearch = (keywords='') => {
 		findMany({
 			...query,
 			...defaultQuery,
@@ -59,11 +57,9 @@ const useSearch = (props) => {
 	}
 
 	const {
-		queryFilters,
 		activeFilters,
 		setActiveFilters,
 		handleAddFilter,
-		mergeFilters,
 	} = useFilters({
 		query,
 	})
@@ -72,35 +68,19 @@ const useSearch = (props) => {
 	const handleClearFilters = () => {
 		setActiveFilters([])
 		findMany({
+      ...defaultQuery,
 			filters: defaultQuery?.filters,
 			sort_by: 'id',
 			sort_direction: 'desc',
 			keywords: '',
 			page: 1,
-			per_page: perPage,
-      current_user: filterUser ? true : false,
-      current_team: filterTeam ? true : false
+			per_page: perPage
 		})
 	}
 
 	const handleFilter = (filter: FilterOptionType) => {
 		handleAddFilter(filter)
 	}
-
-	useEffect(() => {
-		if (!loading && url && perPage && defaultQuery && queryFilters){
-			findMany({
-				...defaultQuery,
-				filters: mergeFilters(
-					defaultQuery?.filters,					
-					queryFilters,
-				),
-				per_page: perPage,
-        current_user: filterUser ? true : false,
-        current_team: filterTeam ? true : false
-			})
-		}
-	}, [url, filterUser, filterTeam])
 
   return {
     loading,

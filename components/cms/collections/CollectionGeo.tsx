@@ -13,6 +13,7 @@ export type CollectionGeoProps =
 const CollectionGeo: React.FC<CollectionGeoProps> = (props) => {
 	
   const { 
+    resource,
     fields,
     enableSearch,
     enableCreate,
@@ -22,6 +23,7 @@ const CollectionGeo: React.FC<CollectionGeoProps> = (props) => {
     query={},
     filterUser,
     filterTeam,
+    filterRelated,
     perPage,
     displayFields,
     ...rest 
@@ -29,10 +31,12 @@ const CollectionGeo: React.FC<CollectionGeoProps> = (props) => {
 
 	return (
     <CollectionContainer
+      resource={resource}
       url={url}        
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}
+      filterRelated={filterRelated}
       perPage={perPage}                
       fields={fields}      
       enableSearch={enableSearch}

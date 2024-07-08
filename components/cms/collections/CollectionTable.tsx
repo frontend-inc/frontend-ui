@@ -17,6 +17,7 @@ export type CollectionTableProps =
 const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	
   const { 
+    resource,
     fields,
     enableSearch,
     enableCreate,
@@ -26,16 +27,19 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
     query={},
     filterUser,
     filterTeam,
+    filterRelated,
     perPage,
     ...rest 
   } = props 
 
 	return (
     <CollectionContainer
+      resource={resource}
       url={url}        
       query={query}
       filterUser={filterUser}
       filterTeam={filterTeam}
+      filterRelated={filterRelated}
       perPage={perPage}                
       fields={fields}      
       enableSearch={enableSearch}
