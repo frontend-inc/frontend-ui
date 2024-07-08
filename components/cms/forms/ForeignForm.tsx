@@ -1,14 +1,16 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
-import { useResource } from 'frontend-js'
+import { 
+  flattenDocument, 
+  changeDocumentValue, 
+  useResource 
+} from 'frontend-js'
 import { Form } from '../../../components'
-import { flattenDocument } from '../../../helpers'
-import { SYSTEM_FIELDS } from '../../../constants'
 import { useAlerts } from '../../../hooks'
 import { useRouter } from 'next/router'
 
 export type ForeignFormProps = {
-	handle: string
+  resource: any 	
 	url: string
 	foreignUrl?: string
 	href?: string
@@ -23,50 +25,41 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const {
-		handle,
+		resource: _resource,
 		buttonText = 'Submit',
 		fields,
-		url,
-		foreignUrl,
+		url,		
 		href,
 		onSuccessMessage = 'Submitted successfully!',
 	} = props
 
 	const { showAlertSuccess } = useAlerts()
 
-	const { loading, addLinks } = useResource({
-		name: 'document',
-		url,
-	})
-
-	const { errors, resource, setResource, update, create, removeAttachment } =
-		useResource({
+	const { 
+    delayedLoading: loading,
+    errors, 
+    resource, 
+    setResource, 
+    update, 
+    create, 
+    removeAttachment,
+    addLinks 
+  } = useResource({
 			name: 'document',
-			url: foreignUrl,
+			url,
 		})
 
 	const handleDataChange = (ev) => {
 		const { name } = ev.target
 		const value =
 			ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
-		if (SYSTEM_FIELDS.includes(name)) {
-			setResource((prev) => ({
-				...prev,
-				[name]: value,
-			}))
-		} else {
-			setResource((prev) => ({
-				...prev,
-				data: {
-					...prev.data,
-					[name]: value,
-				},
-			}))
-		}
+    
+    setResource(prev => changeDocumentValue(prev, name, value))
 	}
 
 	const handleRemove = async (name) => {
-		await removeAttachment(resource?.id, name)
+    if(resource?.id)
+		  await removeAttachment(resource.id, name)
 	}
 
 	const handleSubmit = async () => {
@@ -78,8 +71,8 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 				resp = await create(resource)
 			}
 			if (resp?.id) {
-				let addResp = await addLinks(handle, [resp.id])
-				if (addResp?.id) {
+				let submitResp = await addLinks(resp.id, [_resource.id])
+				if (submitResp?.id) {
 					if (onSuccessMessage) {
 						showAlertSuccess(onSuccessMessage)
 					}
@@ -108,12 +101,3 @@ const ForeignForm: React.FC<ForeignFormProps> = (props) => {
 }
 
 export default ForeignForm
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-	form: {
-		width: '100%',
-	},
-}

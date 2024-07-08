@@ -1,6 +1,10 @@
 import React, { useContext, useEffect } from 'react'
 import { AppContext } from '../../../context'
-import { useDocuments } from 'frontend-js'
+import { 
+  flattenDocument,
+  changeDocumentValue, 
+  useResource 
+} from 'frontend-js'
 import { Form } from '../../../components'
 import { useAlerts } from '../../../hooks'
 import { useRouter } from 'next/router'
@@ -25,6 +29,7 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 		resource: _resource,
 		buttonText = 'Submit',
 		fields,
+		url,
 		href,
 		onSuccessMessage = 'Submitted successfully!',
 	} = props
@@ -39,10 +44,15 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 		setResource,
 		update,
 		create,
-		flattenDocument,
-		handleDataChange,
 		removeAttachment,
-	} = useDocuments()
+	} = useResource({
+		url
+	})
+
+  const handleDataChange = (ev) => {
+    const { name, value } = ev.target
+    setResource((prev) => changeDocumentValue(prev, name, value))
+  }
 
 	const handleRemove = async (name) => {
 		if (resource?.id) {
