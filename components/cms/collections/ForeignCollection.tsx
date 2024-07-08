@@ -7,7 +7,7 @@ import { CollectionListProps } from './CollectionList'
 import { CollectionContainerProps } from './CollectionContainer'
 
 export type ForeignProps = {
-  resource: any,
+  resource: any
 } 
 
 export type ForeignCollectionProps = 
