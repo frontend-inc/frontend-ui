@@ -20,7 +20,7 @@ const CellUser: React.FC<CellUserProps> = (props) => {
 				color="secondary"
 				variant="contained"
 				onClick={handleClick}
-				startIcon={<UserAvatar user={user} />}
+				startIcon={<UserAvatar size={28} user={user} />}
 			>
 				<Typography variant="caption">
 					{user?.first_name} {user?.last_name}
