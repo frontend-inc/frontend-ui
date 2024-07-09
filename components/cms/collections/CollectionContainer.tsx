@@ -16,9 +16,11 @@ export type CollectionContainerProps = {
   resource?: any
   url: string
   query?: any
-  filterUser?: boolean
-  filterTeam?: boolean
-  filterRelated?: boolean
+  filterUser?: boolean // Find resources that belong to the current user
+  filterTeam?: boolean // Find resources that belong to the current team
+  filterRelated?: boolean // Find habtm resources
+  filterGeo?: boolean // Find nearby resources using Geo search
+  filterSimilar?: boolean // Find similar resources based on tags
   fields?: FormFieldType[]  
   displayFields?: DisplayFieldType[]
   filterOptions?: SearchFilterOptionType[]
@@ -39,8 +41,10 @@ const CollectionContainer: React.FC<CollectionContainerProps> = (props) => {
     filterUser=false,
     filterTeam=false,
     filterRelated=false,
+    filterGeo=false,
+    filterSimilar=false,
     fields=[],    
-    perPage=20,
+    perPage=12,
     enableGeoSearch,
     enableSearch,
     enableCreate,
@@ -63,7 +67,7 @@ const CollectionContainer: React.FC<CollectionContainerProps> = (props) => {
   }
   
   if(filterUser == true ){
-      query = { ...query, current_user: true }
+    query = { ...query, current_user: true }
   }else{
     query = { ...query, current_user: false }
   }
@@ -73,6 +77,22 @@ const CollectionContainer: React.FC<CollectionContainerProps> = (props) => {
   }else{
     query = { ...query, current_team: false }
   }
+
+  if(filterGeo == true && resource?.location){    
+    query = {
+      ...query,
+      location: resource?.location 
+    }
+  }
+
+  if(filterSimilar == true && resource?.id){
+    query = {
+      ...query,
+      similar_to: resource?.id
+    }
+  }     
+  
+  console.log("QUERY", filterGeo, resource, query)
 
   return(
     <QueryProvider url={url}>

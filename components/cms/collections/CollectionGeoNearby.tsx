@@ -1,60 +1,51 @@
 import React from 'react'
 import {
   CollectionContainer,
+  CollectionList 
 } from '../..'
 import { CollectionListProps } from './CollectionList'
 import { CollectionContainerProps } from './CollectionContainer'
-import CollectionGeoList from './CollectionGeoList'
 
-export type CollectionGeoProps = 
+export type CollectionGeoNearbyProps = 
   CollectionListProps & 
-  CollectionContainerProps
+  CollectionContainerProps & {
+    resource: any
+  }
 
-const CollectionGeo: React.FC<CollectionGeoProps> = (props) => {
+const CollectionGeoNearby: React.FC<CollectionGeoNearbyProps> = (props) => {
 	
   const { 
     resource,
-    fields,
     enableSearch,
-    enableCreate,
     filterOptions,
     sortOptions,
     url,
     query={},
     filterUser,
     filterTeam,
-    filterRelated,
-    filterGeo,
     perPage,
-    displayFields,
     ...rest 
   } = props 
 
 	return (
     <CollectionContainer
+      filterGeo
       resource={resource}
       url={url}        
-      query={query}
+      query={query}      
       filterUser={filterUser}
       filterTeam={filterTeam}
-      filterRelated={filterRelated}
-      filterGeo={filterGeo}
       perPage={perPage}                
-      fields={fields}    
-      enableGeoSearch  
       enableSearch={enableSearch}
-      enableCreate={enableCreate}    
       filterOptions={filterOptions}
       sortOptions={sortOptions}         
-    >
-      <CollectionGeoList 
-        url={url}
-        displayFields={displayFields}
+    >      
+      <CollectionList 
         { ...rest }
-      />                 
+        url={url}
+      />                
     </CollectionContainer>
 	)
 }
 
-export default CollectionGeo
-
+export default CollectionGeoNearby

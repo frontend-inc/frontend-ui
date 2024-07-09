@@ -17,7 +17,7 @@ const Query: React.FC<QueryProps> = (props) => {
 
   const {
     query = {},
-    perPage = 20,
+    perPage = 12,
     children
 	} = props
 
@@ -31,7 +31,10 @@ const Query: React.FC<QueryProps> = (props) => {
 
   useEffect(() => {
     if(url && query){
-      handleSearch()
+      handleSearch(
+        query?.keywords, 
+        query?.location
+      )
     }
   }, [url, query])
 

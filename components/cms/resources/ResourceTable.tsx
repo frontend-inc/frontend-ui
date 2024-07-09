@@ -32,7 +32,7 @@ const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 		headers,
 		filterOptions = [],
 		query: defaultQuery = {},
-		perPage = 20,
+		perPage = 10,
 		enableSearch = false,
 		enableFilters = false,		
 		enableEdit = false,

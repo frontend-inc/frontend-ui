@@ -24,6 +24,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
     filterUser,
     filterTeam,
     filterRelated,
+    filterGeo,
     perPage,
     ...rest 
   } = props 
@@ -36,6 +37,7 @@ const Collection: React.FC<CollectionProps> = (props) => {
       filterUser={filterUser}
       filterTeam={filterTeam}
       filterRelated={filterRelated}
+      filterGeo={filterGeo}
       perPage={perPage}                
       fields={fields}      
       enableSearch={enableSearch}

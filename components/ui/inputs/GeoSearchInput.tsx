@@ -47,7 +47,6 @@ const GeoSearchInput: React.FC<GeoSearchInputProps> = (props) => {
 		setText(e.target.value)
 	}
 
-
   const [locationText, setLocationText] = useState(location)
   const [debouncedLocationText] = useDebounce(locationText, 150)
   const handleLocationInputChange = (e) => {
