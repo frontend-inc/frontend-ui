@@ -43,7 +43,7 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
   } = useGooglePlaces()
 
 	const [keywords, setKeywords] = useState(value)  
-	const [debouncedText] = useDebounce(keywords, 500)
+	const [debouncedText] = useDebounce(keywords, 150)
 
 	const handleKeywordChange = (ev) => {
 		const { value } = ev.target

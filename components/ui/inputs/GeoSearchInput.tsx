@@ -49,11 +49,13 @@ const GeoSearchInput: React.FC<GeoSearchInputProps> = (props) => {
 
 
   const [locationText, setLocationText] = useState(location)
-  const [debouncedLocationText] = useDebounce(locationText, 500)
+  const [debouncedLocationText] = useDebounce(locationText, 150)
   const handleLocationInputChange = (e) => {
     let value = e.target.value
     setLocationText(value)
-    fetchPlaces(value)
+    if (placeOptions?.length > 0) {
+			setOpen(true)
+		}
   }
 
   const handleClick = (option) => { 
@@ -74,6 +76,7 @@ const GeoSearchInput: React.FC<GeoSearchInputProps> = (props) => {
 
   useEffect(() => {
 		if (debouncedLocationText !== location) {
+      fetchPlaces(debouncedLocationText)
 			handleLocationChange({
 				target: {
 					name,
@@ -88,14 +91,6 @@ const GeoSearchInput: React.FC<GeoSearchInputProps> = (props) => {
 			setText(value)
 		}
 	}, [value])
-
-  useEffect(() => {
-		if (placeOptions?.length > 0) {
-			setOpen(true)
-		}else{
-      setOpen(false)    
-    }
-	}, [placeOptions])
 
 	return (
     <Box>
