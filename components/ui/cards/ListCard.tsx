@@ -5,6 +5,7 @@ import {
 	Image,
 	DisplayFields,
 	TouchableOpacity,
+  CommentButton,
 	FavoriteButton,
   AvgRating,
   UserChip
@@ -27,6 +28,7 @@ const CardList: React.FC<CardProps> = (props) => {
 		objectFit = 'cover',
 		enableGradient = false,
 		enableOverlay = false,
+    enableComments = false,
 		enableFavorites = false,
     enableRatings = false,
     enableUsers = false 
@@ -83,13 +85,14 @@ const CardList: React.FC<CardProps> = (props) => {
               <AvgRating resource={resource} size="small" />
             )}
 						<DisplayFields fields={displayFields} resource={resource} />
-            { enableUsers == true && (
+            { resource?.user && (
               <UserChip 
                 user={ resource?.user }
               />            
             )}
 					</Stack>
 					<Stack direction="row" justifyContent="flex-end">
+            {enableComments == true && <CommentButton resource={resource} />}
 						{enableFavorites == true && <FavoriteButton handle={resource?.handle} />}
 						<Actions numVisible={0} actions={actions} resource={resource} />
 					</Stack>

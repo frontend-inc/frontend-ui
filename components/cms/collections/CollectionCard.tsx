@@ -42,6 +42,7 @@ type CollectionCardProps = {
 	enableCreate?: boolean
 	enableDelete?: boolean
   enableUsers?: boolean
+  enableComments?: boolean
 	enableFavorites?: boolean
   enableRatings?: boolean
 }

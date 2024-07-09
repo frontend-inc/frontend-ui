@@ -47,12 +47,12 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
-  const [open, setOpen] = useState(false)
-
   const { 
+    setOpenShowModal,
+    openShowModal,
     resource, 
     setResource 
-  } = useResourceContext()
+  } = useResourceContext() as any 
 
 	const {
 		actions = [],		
@@ -94,7 +94,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
       }
     }else{
       setResource(resource)
-      setOpen(true)    
+      setOpenShowModal(true)    
     }
 	}
 
@@ -122,6 +122,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
           enableUsers={enableUsers}
           enableFavorites={enableFavorites}
           enableRatings={enableRatings}
+          enableComments={enableComments}
           handleEdit={handleEdit}
           handleDelete={handleDeleteClick}
           { ...rest }
@@ -141,8 +142,8 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
         />
       )}
       <ResourceModal
-        open={ open }
-        handleClose={ () => setOpen(false) }
+        open={ openShowModal }
+        handleClose={ () => setOpenShowModal(false) }
         actions={ actions }
         displayFields={displayFields}
         enableOverlay={enableOverlay}

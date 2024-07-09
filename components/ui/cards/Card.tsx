@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
 import { Box, Stack, Typography } from '@mui/material'
-import { Image, UserChip, AvgRating, DisplayFields, FavoriteButton, ResourceList } from '../..'
+import { Image, UserChip, AvgRating, DisplayFields, FavoriteButton, CommentButton } from '../..'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../types'
@@ -15,12 +15,13 @@ const Card: React.FC<CardProps> = (props) => {
 		resource,
 		displayFields = [],
 		href,
-		handleClick,
+		handleClick,    
 		objectFit = 'cover',
 		height = 240,
     enableUsers = false,		
 		enableGradient = false,
 		enableOverlay = false,
+    enableComments = false,
 		enableFavorites = false,
     enableRatings = false,
 	} = props || {}
@@ -92,10 +93,15 @@ const Card: React.FC<CardProps> = (props) => {
               />
             )}
           </Stack>
-          <Stack direction="row" spacing={1}>
+          <Stack direction="row" spacing={0}>
             {enableFavorites == true && (
               <FavoriteButton 
                 handle={resource?.handle} 
+              />
+            )}
+            {enableComments == true && (
+              <CommentButton  
+                resource={resource} 
               />
             )}
             { actions?.length > 0 && (

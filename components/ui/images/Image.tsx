@@ -118,8 +118,13 @@ const sx = {
 	},
 	label: {
 		position: 'absolute',
-		left: 10,
-		bottom: 15,
+		left: 15,
+		top: 15,
+	},
+  labelBottom: {
+		position: 'absolute',
+		left: 15,
+    bottom: 15,
 	},
 	borderRadius: {
 		borderRadius: 1,

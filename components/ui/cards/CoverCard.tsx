@@ -10,6 +10,7 @@ import {
 	Icon,
 	TouchableOpacity,
 	Actions,  
+  CommentButton
 } from '../..'
 import { ThemeProvider } from '../../../context'
 import { truncate } from '../../../helpers'
@@ -30,6 +31,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		enableGradient = false,
     enableUsers = false,
 		enableOverlay = false,
+    enableComments = false,
 		enableFavorites = false,
     enableRatings = false,
 		icon,
@@ -103,6 +105,9 @@ const CoverVert: React.FC<CardProps> = (props) => {
           </Stack>
         </Stack>
         <Box sx={sx.actions}>
+          {enableComments == true && (
+            <CommentButton resource={resource} color="common.white" />
+          )}
           {enableFavorites == true && (
             <FavoriteButton handle={resource?.handle} color="common.white" />
           )}
