@@ -33,7 +33,6 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
   const NYC_LNG = -73.935242
   const [center, setCenter] = useState({ lat: NYC_LAT, lng: NYC_LNG })
 
-
 	useEffect(() => {
 		if (darkTheme) {
 			setMapConfig(MAP_CONFIGS[1])

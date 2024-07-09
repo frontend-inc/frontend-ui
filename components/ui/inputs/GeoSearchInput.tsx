@@ -53,6 +53,10 @@ const GeoSearchInput: React.FC<GeoSearchInputProps> = (props) => {
   const handleLocationInputChange = (e) => {
     let value = e.target.value
     setLocationText(value)
+    if(value.length == 0){
+      setOpen(false)
+      return;
+    }
     if (placeOptions?.length > 0) {
 			setOpen(true)
 		}
