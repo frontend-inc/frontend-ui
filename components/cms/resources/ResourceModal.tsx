@@ -67,6 +67,7 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
           actions={actions}
           displayFields={displayFields}
           enableRatings={enableRatings}
+          handleEdit={handleEdit}
         />         
         {(enableLikes || enableFavorites || enableSharing) && (
           <SocialButtons

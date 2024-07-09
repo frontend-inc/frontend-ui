@@ -146,13 +146,13 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
         handleClose={ () => setOpenShowModal(false) }
         actions={ actions }
         displayFields={displayFields}
-        enableOverlay={enableOverlay}
-        enableEdit={enableEdit}
+        enableOverlay={enableOverlay}        
         enableFavorites={enableFavorites}
         enableLikes={enableLikes}
         enableRatings={enableRatings}
         enableComments={enableComments}
         enableUsers={enableUsers}
+        enableEdit={enableEdit}
         handleEdit={() => handleEdit(resource)}
       />
     </>

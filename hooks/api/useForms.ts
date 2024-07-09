@@ -27,6 +27,7 @@ const useForms = (params?: FormParams) => {
   } = useContext(AppContext)
 
   const { 
+    setOpenShowModal,
     openDeleteModal,
     setOpenDeleteModal,
     openFormModal,
@@ -62,12 +63,14 @@ const useForms = (params?: FormParams) => {
 		setResource({
 			id: undefined,
 		})
+    setOpenShowModal(false)
 		setOpenFormModal(true)
 	}
 
 	const handleEdit = (item) => {
 		if (!currentUser?.id) return setAuthOpen(true)
 		setResource(item)
+    setOpenShowModal(false)
 		setOpenFormModal(true)
 	}
 
