@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Box } from '@mui/material'
-import { Map } from '@vis.gl/react-google-maps'
+import { Map, useMap } from '@vis.gl/react-google-maps'
 import { GoogleMarkerType, DisplayFieldType } from '../../../types'
 import { MAP_CONFIGS, MapConfig } from './styles/mapConfigs'
 import GoogleMarker from './GoogleMarker'
@@ -29,6 +29,11 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
 
 	const [mapConfig, setMapConfig] = useState<MapConfig>(MAP_CONFIGS[0])
 
+  const NYC_LAT = 40.7128
+  const NYC_LNG = -73.935242
+  const [center, setCenter] = useState({ lat: NYC_LAT, lng: NYC_LNG })
+
+
 	useEffect(() => {
 		if (darkTheme) {
 			setMapConfig(MAP_CONFIGS[1])
@@ -50,6 +55,23 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
 		if (markers.length == 0) return setGoogleMarkers([])
 		setGoogleMarkers(markers)
 	}
+
+  const map = useMap();
+
+  useEffect(() => {
+    if(map){
+      map.setCenter(center)
+    }
+  }, [center])
+
+  useEffect(() => {
+    if(googleMarkers?.length > 0){
+      setCenter({
+        lat: googleMarkers[0]?.lat,
+        lng: googleMarkers[0]?.lng,
+      })
+    }
+  }, [googleMarkers])
 
 	useEffect(() => {
 		if (resources) {
@@ -76,10 +98,7 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
 				mapTypeId={mapConfig.mapTypeId}
 				styles={mapConfig.styles}
 				defaultZoom={zoom}
-				defaultCenter={{
-					lat: googleMarkers[0]?.lat,
-					lng: googleMarkers[0]?.lng,
-				}}
+				defaultCenter={center}
 			>
 				{googleMarkers.map((marker: any, index: number) => (
 					<GoogleMarker

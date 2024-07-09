@@ -21,7 +21,6 @@ type TableProps = {
 	page?: number
 	perPage?: number
 	numPages?: number
-	numResults?: number
 	totalCount?: number
 	query: any
 	handleQueryChange: (e: any) => void
@@ -67,7 +66,6 @@ const Table: React.FC<TableProps> = (props) => {
 		page = 1,
 		perPage = 10,
 		numPages,
-		numResults,
 		totalCount,
 		handlePaginate,		
 		disableBorderRadius = false,
@@ -144,7 +142,6 @@ const Table: React.FC<TableProps> = (props) => {
 				page={page}
 				perPage={perPage}
 				numPages={numPages}
-				numResults={numResults}
 				totalCount={totalCount}
 				handlePaginate={handlePaginate}
 				emptyIcon={emptyIcon}

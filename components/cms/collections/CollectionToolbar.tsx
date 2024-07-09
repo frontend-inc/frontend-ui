@@ -5,6 +5,7 @@ import {
 	FilterButton,
 	SortButton,
 	SearchInput,
+  GeoSearchInput
 } from '../../../components'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch, useForms } from '../../../hooks'
@@ -17,6 +18,7 @@ export type CollectionToolbarProps = {
   filterTeam: boolean
   perPage: number  
 	enableSearch?: boolean
+  enableGeoSearch?: boolean
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
 	enableCreate?: boolean
@@ -34,6 +36,7 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
     perPage,
 		enableCreate = false,
 		enableSearch = false,
+    enableGeoSearch = false,
 		filterOptions = [],
 		sortOptions = [],
 	} = props
@@ -42,6 +45,8 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
     query,
     keywords,
     handleKeywordChange,
+    location,
+    handleLocationChange,
     handleSearch,
     handleSortBy,
     handleSortDirection,
@@ -75,10 +80,19 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 				spacing={1}
 			>
 				<Stack spacing={1} direction={{ xs: 'column', sm: 'row' }} alignItems='center'>
-          {enableSearch && (
+          {enableSearch && !enableGeoSearch && (
             <SearchInput
               value={keywords}
               handleChange={handleKeywordChange}
+              handleSearch={handleSearch}
+            />
+          )}
+          {enableGeoSearch && (
+            <GeoSearchInput
+              value={keywords}
+              location={location}
+              handleChange={handleKeywordChange}
+              handleLocationChange={handleLocationChange}
               handleSearch={handleSearch}
             />
           )}

@@ -15,7 +15,6 @@ type PaginationProps = {
 	page?: number
 	perPage?: number
 	numPages?: number
-	numResults?: number
 	handlePaginate: (event: React.ChangeEvent<unknown>, page: number) => void
 }
 
@@ -26,7 +25,6 @@ const Pagination: React.FC<PaginationProps> = (props) => {
 		page = 1,
 		numPages = 1,
 		perPage = 10,
-		numResults,
 		handlePaginate,
 	} = props
 
@@ -41,12 +39,12 @@ const Pagination: React.FC<PaginationProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (page && numPages && numResults && perPage) {
+		if (page && numPages && totalCount && perPage) {
 			let start = (page - 1) * perPage + 1
 			setStartIndex(start)
-			setEndIndex(start + numResults - 1)
+			setEndIndex(start + totalCount - 1)
 		}
-	}, [page, numPages, numResults])
+	}, [page, numPages, totalCount])
 
 	return (
 		<Box sx={sx.pagination}>

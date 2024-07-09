@@ -38,7 +38,8 @@ const CollectionGeo: React.FC<CollectionGeoProps> = (props) => {
       filterTeam={filterTeam}
       filterRelated={filterRelated}
       perPage={perPage}                
-      fields={fields}      
+      fields={fields}    
+      enableGeoSearch  
       enableSearch={enableSearch}
       enableCreate={enableCreate}    
       filterOptions={filterOptions}

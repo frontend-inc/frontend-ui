@@ -28,7 +28,6 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
     page,
     perPage,
     numPages,
-    numResults,
     totalCount,    
   } = useQuery()
 
@@ -98,7 +97,6 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
           page={page}
           perPage={perPage}
           numPages={numPages}
-          numResults={numResults}
           totalCount={totalCount}
           handlePaginate={handlePaginate}
         />

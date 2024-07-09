@@ -25,6 +25,7 @@ export type CollectionContainerProps = {
   sortOptions?: SortOptionType[]
   perPage?: number
   enableSearch?: boolean
+  enableGeoSearch?: boolean
   enableCreate?: boolean
   children: React.ReactNode
 }
@@ -40,6 +41,7 @@ const CollectionContainer: React.FC<CollectionContainerProps> = (props) => {
     filterRelated=false,
     fields=[],    
     perPage=20,
+    enableGeoSearch,
     enableSearch,
     enableCreate,
     filterOptions,
@@ -88,7 +90,8 @@ const CollectionContainer: React.FC<CollectionContainerProps> = (props) => {
             perPage={perPage}
             filterUser={filterUser}
             filterTeam={filterTeam}  
-            enableSearch={enableSearch}              
+            enableSearch={enableSearch}
+            enableGeoSearch={enableGeoSearch}              
             filterOptions={filterOptions}
             sortOptions={sortOptions} 
             enableCreate={enableCreate}                 

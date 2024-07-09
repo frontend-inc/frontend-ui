@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { Typography, Paper } from '@mui/material'
+import { Paper } from '@mui/material'
 import { useDebounce } from 'use-debounce'
 import { SyntheticEventType } from '../../../types'
 import { Icon } from '../../../components'
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 
 type SearchInputProps = {
 	name?: string
@@ -75,6 +74,7 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
           }
         }}
       />
+      <Divider sx={{ height: 28, my: 0.5 }} orientation="vertical" />
       <IconButton 
         onClick={() => handleSearch(debouncedValue)}
         type="button" sx={{ p: '10px' }} aria-label="search">

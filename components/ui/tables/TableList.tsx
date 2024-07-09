@@ -30,7 +30,6 @@ type TableProps = {
 	page?: number
 	perPage?: number
 	numPages?: number
-	numResults?: number
 	totalCount?: number
 	query: any
 	styles?: any
@@ -69,7 +68,6 @@ const TableList: React.FC<TableProps> = (props) => {
 		page,
 		perPage,
 		numPages,
-		numResults,
 		totalCount,
 		styles = {},
 		emptyIcon = 'Search',
@@ -140,7 +138,6 @@ const TableList: React.FC<TableProps> = (props) => {
 				perPage={perPage}
 				numPages={numPages}
 				totalCount={totalCount}
-				numResults={numResults}
 				loading={loading}
 				handlePaginate={handlePaginate}
 			/>

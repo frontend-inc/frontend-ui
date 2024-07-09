@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 type GooglePredictionType = {
 	description: string
@@ -21,6 +21,7 @@ const useGooglePlaces = () => {
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState(null)
 
+  const [placeOptions, setPlaceOptions] = useState([])
 	const [place, setPlace] = useState<GooglePlaceType | null>(null)
 	const [places, setPlaces] = useState<GooglePredictionType[] | []>([])
 
@@ -58,12 +59,26 @@ const useGooglePlaces = () => {
 		return resp?.data
 	}
 
+  useEffect(() => {
+		if (places && places?.length > 0) {
+			setPlaceOptions(
+        //@ts-ignore
+				places?.map((place) => ({        
+					label: place?.displayName?.text,          
+					value: place?.formattedAddress,
+				}))
+			)
+		} 
+	}, [places])
+
+
 	return {
 		loading,
 		error,
 
 		place,
 		places,
+    placeOptions,
 		fetchPlace,
 		fetchPlaces,
 	}

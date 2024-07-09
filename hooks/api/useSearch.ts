@@ -27,19 +27,36 @@ const useSearch = (props) => {
 	} = useQuery()
 
 	const [keywords, setKeywords] = useState('')
+  const [location, setLocation] = useState('')
 
 	const handleKeywordChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
 		setKeywords(ev.target.value)
 	}
 
-	const handleSearch = (keywords='') => {
-		findMany({
+  const handleLocationChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    setLocation(ev.target.value)
+  }
+
+	const handleSearch = (keywords='', location='') => {
+    let searchQuery = {
 			...query,
 			...defaultQuery,
-			keywords: keywords,
+			keywords: keywords,     
 			page: 1,
 			per_page: perPage,
-		})
+		}
+    if(location?.length > 0){
+      searchQuery = {
+        ...searchQuery,
+        location: location
+      }
+    }else{
+      searchQuery = {
+        ...searchQuery,
+        location: null
+      }
+    }
+		findMany(searchQuery)
 	}
 
 	const handleSortBy = (field: SortOptionType) => {
@@ -95,6 +112,9 @@ const useSearch = (props) => {
     keywords,
     setKeywords,
     handleKeywordChange,
+    location,
+    setLocation,
+    handleLocationChange,    
     handleSearch,
     handleSortBy,
     handleSortDirection,
