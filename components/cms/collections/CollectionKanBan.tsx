@@ -21,7 +21,6 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
     resource,
     fields,
     enableSearch,
-    enableCreate,
     filterOptions,
     sortOptions,
     url,
