@@ -2,9 +2,7 @@ import React, { useContext } from 'react'
 import { AppContext } from '../../context'
 import {    
   useAuth, 
-  useQuery, 
-  useDocuments,
-  ResourceContext 
+  useCollection,
 } from 'frontend-js'
 
 type FormParams = {
@@ -15,11 +13,6 @@ const useForms = (params?: FormParams) => {
 
   const { resource: _resource } = params || {}
 
-  const { 
-    query={},
-    findMany    
-  } = useQuery()
-
   const { currentUser } = useAuth()
 
   const { 
@@ -27,25 +20,24 @@ const useForms = (params?: FormParams) => {
   } = useContext(AppContext)
 
   const { 
-    setOpenShowModal,
-    openDeleteModal,
-    setOpenDeleteModal,
-    openFormModal,
-    setOpenFormModal,
-  } = useContext(ResourceContext) as any 
-
-  const { 
     delayedLoading: loading,
     errors,
+    query={},
+    findMany,    
     resource,
     setResource,
     addLinks,
     create,
     update,
     destroy,
-    handleDataChange,
-    removeAttachment,
-  } = useDocuments()
+    handleChange,
+    removeAttachment,    
+    setOpenShow,
+    openDelete,
+    setOpenDelete,
+    openEdit,
+    setOpenEdit,
+  } = useCollection()
 
   const reloadMany = async () => {
     if(_resource?.id){
@@ -63,15 +55,15 @@ const useForms = (params?: FormParams) => {
 		setResource({
 			id: undefined,
 		})
-    setOpenShowModal(false)
-		setOpenFormModal(true)
+    setOpenShow(false)
+		setOpenEdit(true)
 	}
 
 	const handleEdit = (item) => {
 		if (!currentUser?.id) return setAuthOpen(true)
 		setResource(item)
-    setOpenShowModal(false)
-		setOpenFormModal(true)
+    setOpenShow(false)
+		setOpenEdit(true)
 	}
 
 	const handleSubmit = async () => {
@@ -88,7 +80,7 @@ const useForms = (params?: FormParams) => {
 			}
 			if (resp?.id) {
 				setResource({})
-        setOpenFormModal(false)
+        setOpenEdit(false)
         reloadMany()
 			}
 		} catch (err) {
@@ -99,15 +91,15 @@ const useForms = (params?: FormParams) => {
 	const handleDeleteClick = (item) => {
 		if (!currentUser?.id) return setAuthOpen(true)
 		setResource(item)
-		setOpenDeleteModal(true)
+		setOpenDelete(true)
 	}
 
 	const handleDelete = async () => {
 		if (!currentUser?.id) return setAuthOpen(true)
     if(!resource?.id) return;
 		await destroy(resource?.id)
-		setOpenDeleteModal(false)
-    setOpenFormModal(false)
+		setOpenDelete(false)
+    setOpenEdit(false)
 		setResource({})
 		reloadMany()
 	}
@@ -131,11 +123,11 @@ const useForms = (params?: FormParams) => {
     handleDelete,
     handleDeleteClick,
     handleRemove,    
-		handleDataChange,
-    openFormModal,
-    setOpenFormModal,
-    openDeleteModal,
-    setOpenDeleteModal
+		handleChange,
+    openEdit,
+    setOpenEdit,
+    openDelete,
+    setOpenDelete
 	}
 }
 

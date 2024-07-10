@@ -2,9 +2,9 @@ import React from 'react'
 import { 
   CollectionToolbar, 
   Query,   
-  ResourceForm 
+  CollectionFormModal 
 } from '../..'
-import { QueryProvider, ResourceProvider } from 'frontend-js'
+import { CollectionProvider } from 'frontend-js'
 import { 
   DisplayFieldType,
   FormFieldType, 
@@ -92,38 +92,32 @@ const CollectionContainer: React.FC<CollectionContainerProps> = (props) => {
     }
   }     
   
-  console.log("QUERY", filterGeo, resource, query)
 
   return(
-    <QueryProvider url={url}>
-      <ResourceProvider 
-        url={url} 
-        name='document'
+    <CollectionProvider url={url}>
+      <Query 
+        query={query}
+        perPage={perPage}
       >
-        <Query 
+        <CollectionToolbar
+          url={url}
           query={query}
           perPage={perPage}
-        >
-          <CollectionToolbar
-            url={url}
-            query={query}
-            perPage={perPage}
-            filterUser={filterUser}
-            filterTeam={filterTeam}  
-            enableSearch={enableSearch}
-            enableGeoSearch={enableGeoSearch}              
-            filterOptions={filterOptions}
-            sortOptions={sortOptions} 
-            enableCreate={enableCreate}                 
-          />
-            { children }
-        </Query>
-        <ResourceForm 
-          fields={fields}
-          resource={resource}
+          filterUser={filterUser}
+          filterTeam={filterTeam}  
+          enableSearch={enableSearch}
+          enableGeoSearch={enableGeoSearch}              
+          filterOptions={filterOptions}
+          sortOptions={sortOptions} 
+          enableCreate={enableCreate}   
         />
-      </ResourceProvider>
-    </QueryProvider>
+        { children }
+      </Query>
+      <CollectionFormModal 
+        fields={fields}
+        resource={resource}
+      />
+    </CollectionProvider>
   )
 }
 

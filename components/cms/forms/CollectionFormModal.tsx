@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { 
   Button 
 } from '@mui/material'
@@ -7,18 +7,17 @@ import {
   Drawer,
   Form,
   IconLoading   
-} from '../../../components'
+} from '../..'
 import { useForms } from '../../../hooks'
-import { flattenDocument } from 'frontend-js'
+import { useCollection, flattenDocument } from 'frontend-js'
 import { FormFieldType } from '../../../types'
-import { ResourceContext } from 'frontend-js'
 
-export type ResourceFormProps = {
+export type CollectionFormModalProps = {
   fields: FormFieldType[] 
   resource?: any 
 }
 
-const ResourceForm: React.FC<ResourceFormProps> = (props) => {
+const CollectionFormModal: React.FC<CollectionFormModalProps> = (props) => {
 
   const { 
     fields,
@@ -26,19 +25,19 @@ const ResourceForm: React.FC<ResourceFormProps> = (props) => {
   } = props || {}
 
   const { 
-    openDeleteModal,
-    setOpenDeleteModal,
+    openDelete,
+    setOpenDelete,
 
-    openFormModal,
+    openEdit,
     setOpenFormModal
-  } = useContext(ResourceContext) as any 
+  } = useCollection()
 
   const {   
     loading,
     errors,
     resource,  
     handleSubmit,
-    handleDataChange,
+    handleChange,
     handleRemove,
     handleDelete,    
   } = useForms({
@@ -48,7 +47,7 @@ const ResourceForm: React.FC<ResourceFormProps> = (props) => {
   return (
     <>
       <Drawer
-				open={openFormModal}
+				open={openEdit}
 				handleClose={() => setOpenFormModal(false)}
 				title={resource?.id ? 'Edit' : 'Add'}
 				actions={
@@ -68,13 +67,13 @@ const ResourceForm: React.FC<ResourceFormProps> = (props) => {
 					errors={errors}
 					fields={ fields }
 					resource={flattenDocument(resource)}
-					handleChange={handleDataChange}
+					handleChange={handleChange}
 					handleRemove={handleRemove}
 				/>
 			</Drawer>
 			<AlertModal
-				open={openDeleteModal}
-				handleClose={() => setOpenDeleteModal(false)}
+				open={openDelete}
+				handleClose={() => setOpenDelete(false)}
 				title="Are you sure you want to delete this item?"
 				description="This action cannot be reversed."
 				handleConfirm={handleDelete}
@@ -83,4 +82,4 @@ const ResourceForm: React.FC<ResourceFormProps> = (props) => {
   )
 }
 
-export default ResourceForm
+export default CollectionFormModal

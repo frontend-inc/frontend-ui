@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
-import { ResourceContext, QueryContext } from 'frontend-js'
+import { CollectionContext } from 'frontend-js'
 import { Box, Stack } from '@mui/material'
-import { ResourceModal, Carousel } from '../..'
+import { CollectionShowModal, Carousel } from '../..'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
 import CollectionCard from './CollectionCard'
@@ -43,14 +43,11 @@ const CollectionCarouselList: React.FC<CollectionCarouselListProps> = (props) =>
   } = useForms()
 
   const { 
-    resource, 
-    setResource 
-  } = useContext(ResourceContext) as any 
-
-	const { 
     loading, 
-    resources 
-  } = useContext(QueryContext) as any
+    resource, 
+    resources, 
+    setResource 
+  } = useContext(CollectionContext) as any 
 
   const handleClick = (resource) => {
     if(href){
@@ -105,7 +102,7 @@ const CollectionCarouselList: React.FC<CollectionCarouselListProps> = (props) =>
 					</Box>
 				))}
 			</Carousel>
-      <ResourceModal
+      <CollectionShowModal
         open={ open }
         handleClose={ () => setOpen(false) }
         actions={ actions }

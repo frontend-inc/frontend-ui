@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { ResourceContext } from 'frontend-js'
+import { CollectionContext } from 'frontend-js'
 import { Box, Button } from '@mui/material'
 import { Waypoint } from 'react-waypoint'
 import { ExpandMore } from '@mui/icons-material'

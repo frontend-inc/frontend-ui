@@ -11,7 +11,7 @@ import HeroCover from './HeroCover'
 import YouTubeVideo from './HeroYouTube'
 import VimeoEmbed from './HeroVimeo'
 import { useForms } from '../../../hooks'
-import { useResourceContext } from 'frontend-js'
+import { useCollection } from 'frontend-js'
 
 export type HeroProps = {
 	handle?: string
@@ -66,7 +66,7 @@ const HeroItem: React.FC<HeroItemProps> = (props) => {
 		enableStripePaymentLink,
 	} = props || {}
 
-  const { resource } = useResourceContext()
+  const { resource } = useCollection()
 
 	const components = {
 		list: HeroList,

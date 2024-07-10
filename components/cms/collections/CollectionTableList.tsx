@@ -1,14 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { useFilters } from '../../../hooks'
-import { useDocuments } from 'frontend-js'
-import { Button, Grid, Box, Stack } from '@mui/material'
+import { useCollection } from 'frontend-js'
+import { Box, Stack } from '@mui/material'
 import { AppContext } from '../../../context'
 import { TableHeaderType } from '../../../types'
 import { useRouter } from 'next/router'
 import { flattenDocuments } from '../../../helpers'
 import { TableList } from '../..'
 import { CollectionListProps } from './CollectionList'
-import { useQuery } from 'frontend-js'
 import { useForms } from '../../../hooks'
 
 export type CollectionTableProps = CollectionListProps & {
@@ -29,7 +27,7 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
     perPage,
     numPages,
     totalCount,    
-  } = useQuery()
+  } = useCollection()
 
 	const {
 		headers,

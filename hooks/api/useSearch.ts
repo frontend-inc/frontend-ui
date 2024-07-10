@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { useQuery } from 'frontend-js'
+import React, { useState } from 'react'
+import { useCollection } from 'frontend-js'
 import { useFilters } from '..'
 import { 
   SortOptionType,
@@ -24,7 +24,7 @@ const useSearch = (props) => {
 		page,
 		numPages,
 		loadMore,
-	} = useQuery()
+	} = useCollection()
 
 	const [keywords, setKeywords] = useState('')
   const [location, setLocation] = useState('')
@@ -62,7 +62,7 @@ const useSearch = (props) => {
 	const handleSortBy = (field: SortOptionType) => {
 		findMany({
 			...query,
-			sort_by: field?.field,
+			sort_by: field?.name,
 		})
 	}
 

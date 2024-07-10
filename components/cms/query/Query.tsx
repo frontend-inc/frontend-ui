@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { useSearch } from '../../../hooks'
-import { QueryContext } from 'frontend-js'
+import { CollectionContext } from 'frontend-js'
 
 export type QueryProps = {
 	perPage?: number
@@ -13,7 +13,7 @@ export type QueryProps = {
 
 const Query: React.FC<QueryProps> = (props) => {
 
-  const { url } = useContext(QueryContext) as any
+  const { url } = useContext(CollectionContext) as any
 
   const {
     query = {},

@@ -1,7 +1,7 @@
 import React from 'react'
-import { ResourceForm } from '../../../components'
+import { CollectionFormModal } from '../../../components'
 import { FormFieldType } from '../../../types'
-import { QueryProvider, ResourceProvider } from 'frontend-js'
+import { CollectionProvider } from 'frontend-js'
 
 export type HeroContainerProps = {
   url: string
@@ -20,18 +20,15 @@ const HeroContainer: React.FC<HeroContainerProps> = (props) => {
   } = props || {}
 
   return(
-    <QueryProvider url={url}>
-      <ResourceProvider 
-        url={url}
-        name="document"
-        resource={resource}
-      >
-        { children }
-        <ResourceForm 
-          fields={fields}          
-        />
-      </ResourceProvider>
-    </QueryProvider>
+    <CollectionProvider 
+      resource={resource}
+      url={url}
+    >
+      { children }
+      <CollectionFormModal 
+        fields={fields}          
+      />
+    </CollectionProvider>
   )
 }
 

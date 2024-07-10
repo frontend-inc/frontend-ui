@@ -8,10 +8,10 @@ import {
 	SocialButtons,
   HeroSnippet
 } from '../..'
-import { useResourceContext } from 'frontend-js'
+import { useCollection } from 'frontend-js'
 import { ActionType, FormFieldType, DisplayFieldType } from '../../../types'
 
-export type ResourceModalProps =  {  
+export type CollectionShowModalProps =  {  
   open: boolean  
   handleClose: () => void
   handle?: string
@@ -34,9 +34,9 @@ export type ResourceModalProps =  {
   enableComments?: boolean
 }
 
-const ResourceModal: React.FC<ResourceModalProps> = (props) => {
+const CollectionShowModal: React.FC<CollectionShowModalProps> = (props) => {
 
-  const { resource, url } = useResourceContext()
+  const { resource, url } = useCollection()
 
 	const {
     open,
@@ -89,7 +89,7 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 	)
 }
 
-export default ResourceModal
+export default CollectionShowModal
 
 const sx = {
 	root: {

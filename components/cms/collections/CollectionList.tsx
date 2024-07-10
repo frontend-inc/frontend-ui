@@ -1,14 +1,13 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { useResourceContext } from 'frontend-js'
+import React, { useContext } from 'react'
 import { Stack } from '@mui/material'
 import {
 	LoadMore,
 } from '../..'
-import { useQuery } from 'frontend-js'
+import { useCollection } from 'frontend-js'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
 import {
-  ResourceModal,
+  CollectionShowModal,
 	CollectionCards,
 	Placeholder,
 } from '../../../components'
@@ -48,11 +47,16 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
   const { 
-    setOpenShowModal,
-    openShowModal,
     resource, 
-    setResource 
-  } = useResourceContext() as any 
+    setResource,
+    loading,    
+    resources,
+    page,
+    numPages,
+    loadMore,
+    openShow,
+    setOpenShow,       
+  } = useCollection()
 
 	const {
 		actions = [],		
@@ -75,14 +79,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
     ...rest
 	} = props
 
-  const { 
-    loading,    
-    resources,
-    page,
-    numPages,
-    loadMore      
-  } = useQuery()
-
 	const handleNavigate = (resource) => {
     if(href){
       if (clientUrl && href && resource?.handle) {
@@ -94,7 +90,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
       }
     }else{
       setResource(resource)
-      setOpenShowModal(true)    
+      setOpenShow(true)    
     }
 	}
 
@@ -141,9 +137,9 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
           description={emptyDescription}
         />
       )}
-      <ResourceModal
-        open={ openShowModal }
-        handleClose={ () => setOpenShowModal(false) }
+      <CollectionShowModal
+        open={ openShow }
+        handleClose={ () => setOpenShow(false) }
         actions={ actions }
         displayFields={displayFields}
         enableOverlay={enableOverlay}        

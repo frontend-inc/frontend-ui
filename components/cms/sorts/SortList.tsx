@@ -42,7 +42,7 @@ const SortList: React.FC<SortListProps> = (props) => {
 						>
 							<ListItemIcon sx={sx.listItemIcon}>
 								<Radio
-									checked={sortBy == sortOption?.field}
+									checked={sortBy == sortOption?.name}
 									onChange={() => handleSortBy(sortOption)}
 								/>
 							</ListItemIcon>

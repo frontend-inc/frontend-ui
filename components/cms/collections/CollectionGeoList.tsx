@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { QueryContext } from 'frontend-js'
+import { CollectionContext } from 'frontend-js'
 import { Hidden, Grid } from '@mui/material'
 import {
   GoogleMap,
@@ -17,7 +17,7 @@ const CollectionGeoList: React.FC<CollectionGeoListProps> = (props) => {
     ...rest 
   } = props 
 
-  const { resources } = useContext(QueryContext) as any 
+  const { resources } = useContext(CollectionContext) as any 
 
 	return (
     <Grid container spacing={2}>

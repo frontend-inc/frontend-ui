@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { ResourceContext } from 'frontend-js'
+import { CollectionContext } from 'frontend-js'
 import { Box, IconButton } from '@mui/material'
 import { ChatBubbleOutline } from '@mui/icons-material'
 
@@ -15,14 +15,14 @@ const CommentButton: React.FC<CommentButtonProps> = (props) => {
 	} = props
   
   const {
-    openShowModal,
-    setOpenShowModal,
+    openShow,
+    setOpenShow,
     setResource  
-  } = useContext(ResourceContext) as any 
+  } = useContext(CollectionContext) as any 
 
   const handleClick = () => {
     setResource(resource)
-    setOpenShowModal(!openShowModal)
+    setOpenShow(!openShow)
   }
 
 	return (

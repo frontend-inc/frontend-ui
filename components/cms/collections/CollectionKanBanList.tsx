@@ -2,12 +2,11 @@ import React, { useContext, useEffect, useState } from 'react'
 import { CollectionListProps } from './CollectionList'
 import { KanBan } from '../..'
 import { 
-  ResourceModal 
+  CollectionShowModal 
 } from '../..'
-import { ResourceContext } from 'frontend-js'
+import { CollectionContext } from 'frontend-js'
 import { 
-  useQuery,
-  useResourceContext,
+  useCollection,
   changeDocumentValue, 
 } from 'frontend-js'
 import { useForms } from '../../../hooks'
@@ -44,16 +43,13 @@ const CollectionKanBanList: React.FC<CollectionKanBanListProps> = (props) => {
 
   const { 
     loading,
-    resources, 
-    updatePositions, 
-    reloadMany 
-  } = useQuery()
-
-  const { 
     resource, 
-    setResource,
-    update 
-  } = useResourceContext()
+    resources,     
+    update,     
+    updatePositions, 
+    setResource,    
+    reloadMany 
+  } = useCollection()
 
   const [open, setOpen] = useState(false)
 
@@ -72,7 +68,7 @@ const CollectionKanBanList: React.FC<CollectionKanBanListProps> = (props) => {
     handleDeleteClick 
   } = useForms()
 
-  const { setOpenFormModal } = useContext(ResourceContext) as any
+  const { setOpenFormModal } = useContext(CollectionContext) as any
 
   const handleAdd = (header) => {
     setResource({
@@ -124,7 +120,7 @@ const CollectionKanBanList: React.FC<CollectionKanBanListProps> = (props) => {
         enableRatings={enableRatings}    
         handleComment={handleComment}   
       />
-      <ResourceModal
+      <CollectionShowModal
         open={ open }
         handleClose={ () => setOpen(false) }
         actions={ actions }
