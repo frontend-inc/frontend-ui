@@ -30,13 +30,13 @@ const Query: React.FC<QueryProps> = (props) => {
   })
 
   useEffect(() => {
-    if(url && query){
+    if(url){
       handleSearch(
         query?.keywords, 
         query?.location
       )
     }
-  }, [url, query])
+  }, [url])
 
   return children 
 }

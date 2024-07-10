@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { Stack } from '@mui/material'
 import {
 	LoadMore,

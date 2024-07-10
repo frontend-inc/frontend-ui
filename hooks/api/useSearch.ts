@@ -9,7 +9,6 @@ import {
 const useSearch = (props) => {
 
   const {
-		url,
     query: defaultQuery = {},
 		perPage = 20
 	} = props
@@ -74,6 +73,8 @@ const useSearch = (props) => {
 	}
 
 	const {
+    mergeFilters,
+    buildQueryFilters,
 		activeFilters,
 		setActiveFilters,
 		handleAddFilter,
@@ -96,7 +97,18 @@ const useSearch = (props) => {
 	}
 
 	const handleFilter = (filter: FilterOptionType) => {
-		handleAddFilter(filter)
+		let newFilters = handleAddFilter(filter)    
+    let queryFilter = buildQueryFilters(newFilters)
+    let mergedFilters = mergeFilters(
+      defaultQuery?.filters,
+      queryFilter
+    )
+    findMany({
+      ...defaultQuery,
+      ...query,
+      filters: mergedFilters,
+      page: 1 
+    })
 	}
 
   return {

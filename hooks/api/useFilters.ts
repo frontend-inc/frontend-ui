@@ -72,6 +72,7 @@ const useFilters = (props: UseFiltersProps) => {
 			updatedFilters = [...updatedFilters, filter]
 		}
 		setActiveFilters(updatedFilters)
+    return updatedFilters
 	}
 
 	const isBlank = (value) => {
