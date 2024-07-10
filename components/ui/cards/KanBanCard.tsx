@@ -127,9 +127,7 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
       </Button>   
       <Stack direction="row" alignItems="flex-end">
         { enableComments == true && (
-          <CommentButton 
-            handleClick={handleComment}
-          />
+          <CommentButton resource={resource} />
         )}
         {enableFavorites == true && (
           <FavoriteButton handle={resource?.handle} />

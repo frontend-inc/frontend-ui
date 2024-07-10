@@ -27,9 +27,9 @@ const UserFollowers: React.FC<UserFollowersProps> = (props) => {
       }}      
       enableSorting
       sortOptions={[
-        { label: 'Username', field: 'username'},
-        { label: 'Total followers', field: 'num_followers'},        
-        { label: 'Total following', field: 'num_following'},        
+        { label: 'Username', name: 'username'},
+        { label: 'Total followers', name: 'num_followers'},        
+        { label: 'Total following', name: 'num_following'},        
       ]}
     />      
   )

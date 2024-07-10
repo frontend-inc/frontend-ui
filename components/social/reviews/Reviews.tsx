@@ -67,11 +67,11 @@ const Reviews: React.FC<ReviewsProps> = (props) => {
   const sortOptions: SortOptionType[] = [
     {
       label: 'Date',
-      field: 'created_at',
+      name: 'created_at',
     },
     {
       label: 'Rating',
-      field: 'rating',      
+      name: 'rating',      
     }
   ]
 

@@ -73,6 +73,10 @@ export type QueryParamsType = {
 	per_page?: number | null
   current_user?: boolean 
   current_team?: boolean
+  belongs_to?: number 
+  similar_to?: number
+  location?: string
+  radius?: number
 	rest?: any
 }
 

@@ -21,8 +21,6 @@ const SortButton: React.FC<SortButtonProps> = (props) => {
 		handleSortDirection,
 	} = props
 
-	const [selected, setSelected] = useState<SortOptionType>(null)
-
 	const [showModal, setShowModal] = useState(false)
 	const [anchorEl, setAnchorEl] = useState(null)
 
@@ -34,12 +32,6 @@ const SortButton: React.FC<SortButtonProps> = (props) => {
 	const handleCloseModal = () => {
 		setShowModal(false)
 	}
-
-	useEffect(() => {
-		if (sortOptions?.length > 0 && sortBy) {
-			setSelected(sortOptions.find((option) => option.field == sortBy))
-		}
-	}, [sortOptions, sortBy])
 
 	return (
 		<>

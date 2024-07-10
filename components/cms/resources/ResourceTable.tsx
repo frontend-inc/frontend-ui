@@ -15,6 +15,7 @@ import {
 	TableHeaderType,
 	FormFieldType,
 	FilterOptionType,
+  SyntheticEventType,
 } from '../../../types'
 import SearchFilters from '../filters/SearchFilters'
 import { TableList } from '../../../components'
@@ -60,8 +61,7 @@ const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 		reloadMany,
 		removeAttachment,
 		page,
-		numPages,
-		numResults,
+		numPages,		
 		totalCount,
 		paginate,
 	} = useResource({
@@ -71,7 +71,7 @@ const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 
 	const [keywords, setKeywords] = useState('')
 
-	const handleKeywordChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+	const handleKeywordChange = (ev: SyntheticEventType) => {
 		setKeywords(ev.target.value)
 	}
 
@@ -257,7 +257,6 @@ const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 					page={page}
 					perPage={perPage}
 					numPages={numPages}
-					numResults={numResults}
 					totalCount={totalCount}
 					handlePaginate={handlePaginate}
 				/>
