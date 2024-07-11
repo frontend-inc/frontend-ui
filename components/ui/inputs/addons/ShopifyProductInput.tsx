@@ -82,18 +82,13 @@ const ShopifyProductInput: React.FC<AutosuggestProps> = (props) => {
 			<Collapse in={product?.id || loading}>
 				<Box sx={sx.productCard}>
 					<Image
+            enableGradient
 						disableBorder
-						disableBorderRadius
 						src={product?.images?.edges?.[0]?.node?.url}
 						alt={product?.title}
-						height={120}
-						width={160}
+						height={180}
+						width={180}
 					/>
-					<Stack direction="column" spacing={1} sx={sx.productContent}>
-						<Typography variant="body2" color="text.primary">
-							{product?.title}
-						</Typography>
-					</Stack>
 				</Box>
 			</Collapse>
 			<AutocompleteInput
@@ -117,7 +112,7 @@ const sx = {
 		width: '100%',
 	},
 	productCard: {
-		width: 162,
+		width: 182,
 		minHeight: 182,
 		borderRadius: 1,
 		overflow: 'hidden',

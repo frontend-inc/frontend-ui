@@ -47,7 +47,7 @@ const AutocompleteInput: React.FC<AutocompleteInput> = (props) => {
 	const handleKeywordChange = (ev) => {
 		let { value } = ev.target
 		handleInputChange(value)
-		if (options?.length > 0) setOpen(true)
+		if (options?.length > 0) setOpen(true);
 		if (value == ''){
       setOpen(false)
     }
@@ -55,58 +55,58 @@ const AutocompleteInput: React.FC<AutocompleteInput> = (props) => {
 
 	return (
     <ClickAwayListener onClickAway={() => setOpen(false)}>
-		<Stack width={'100%'} direction="column" spacing={1}>
-			<TextInput
-				name={name}
-				label={label}
-				value={value}
-				options={options}
-				handleChange={handleKeywordChange}
-				direction={direction}
-				placeholder={placeholder}
-				onFocus={() => setOpen(!open)}
-        info={info}
-			/>
-        <Box sx={sx.anchor}>
-          {open && (
-            <Paper
-              elevation={2}
-              sx={{
-                ...sx.paper,
-                height: options?.length * 64,
-              }}
-            >
-              <List dense sx={sx.list}>
-                {options?.map((option, index) => (
-                  <ListItem>
-                    <ListItemButton
-                      sx={sx.listItemButton}
-                      onClick={() => handleClick(option)}
-                    >
-                      <ListItemIcon sx={sx.listItemIcon}>
-                        {option?.image && (
-                          <Avatar
-                            alt={option.label}
-                            src={option.image}
-                            sx={sx.avatar}
-                          />
-                        )}
-                        {option?.icon && <Icon name={option.icon} size={20} />}
-                      </ListItemIcon>
-                      <ListItemText primary={
-                          <Typography variant="body1" sx={ sx.label }>
-                            { option.label }
-                          </Typography>
-                        } 
-                      />
-                    </ListItemButton>
-                  </ListItem>
-                ))}
-              </List>
-            </Paper>
-          )}
-        </Box>
-		</Stack>
+      <Stack width={'100%'} direction="column" spacing={0}>
+        <TextInput
+          name={name}
+          label={label}
+          value={value}
+          options={options}
+          handleChange={handleKeywordChange}
+          direction={direction}
+          placeholder={placeholder}
+          onFocus={() => setOpen(!open)}
+          info={info}
+        />
+          <Box sx={sx.anchor}>
+            {open && (
+              <Paper
+                elevation={2}
+                sx={{
+                  ...sx.paper,
+                  height: options?.length * 64,
+                }}
+              >
+                <List dense sx={sx.list}>
+                  {options?.map((option, index) => (
+                    <ListItem>
+                      <ListItemButton
+                        sx={sx.listItemButton}
+                        onClick={() => handleClick(option)}
+                      >
+                        <ListItemIcon sx={sx.listItemIcon}>
+                          {option?.image && (
+                            <Avatar
+                              alt={option.label}
+                              src={option.image}
+                              sx={sx.avatar}                              
+                            />
+                          )}
+                          {option?.icon && <Icon name={option.icon} size={20} />}
+                        </ListItemIcon>
+                        <ListItemText primary={
+                            <Typography variant="body1" sx={ sx.label }>
+                              { option.label }
+                            </Typography>
+                          } 
+                        />
+                      </ListItemButton>
+                    </ListItem>
+                  ))}
+                </List>
+              </Paper>
+            )}
+          </Box>
+      </Stack>
     </ClickAwayListener>
 	)
 }
@@ -119,7 +119,7 @@ const sx = {
 	paper: {
 		p: 0,
 		position: 'absolute',
-		top: -6,
+		top: 2,
 		left: 0,
 		width: '100%',
 		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
@@ -129,6 +129,8 @@ const sx = {
 	},
 	avatar: {
 		borderRadius: 1,
+    height: 32,
+    width: 32
 	},
 	list: {
 		bgcolor: 'background.paper',
@@ -145,8 +147,9 @@ const sx = {
     height: 44,
 	},
   listItemIcon: {
-     width: 44, 
-     minWidth: 44 
+     width: 32, 
+     minWidth: 32,
+     mr: 2 
   },
 	mapContainer: {
 		overflow: 'hidden',

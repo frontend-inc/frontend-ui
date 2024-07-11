@@ -29,8 +29,8 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
 		handleChange,
 		direction = 'column',
 		height = 240,
-		width = 360,
-		zoom = 16,
+		width = 320,
+		zoom = 15,
 		darkTheme = false,
 		enablePosition = false,
 		lat,
@@ -103,17 +103,6 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
         options={placeOptions}
         handleClick={handleClick}
       />
-      {enablePosition == true && (
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Icon name="MapPin" size={20} />
-          <Typography variant="overline" color="text.secondary">
-            Lat: {lat}
-          </Typography>
-          <Typography variant="overline" color="text.secondary">
-            Lng: {lng}
-          </Typography>
-        </Stack>
-      )}
 		</Stack>
 	)
 }
