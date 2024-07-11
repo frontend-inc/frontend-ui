@@ -67,11 +67,6 @@ export { default as LayoutEmpty } from './layouts/LayoutEmpty'
 export { default as Loader } from './loaders/Loader'
 export { default as LayoutScroll } from './layouts/LayoutScroll'
 
-// Theme
-export { default as ColorModeTheme } from './theme/ColorModeTheme'
-
-// Inputs
-
 // Input addons
 export { default as LocationInput } from './inputs/addons/LocationInput'
 export { default as ShopifyProductInput } from './inputs/addons/ShopifyProductInput'

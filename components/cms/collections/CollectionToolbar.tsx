@@ -126,7 +126,7 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 							color="secondary"
 							variant="contained"
 							onClick={handleAdd}
-							startIcon={<Icon name="Plus" size={20} />}
+							startIcon={<Icon name="Plus" size={20} color='secondary.contrastText' />}
 						>
 							Add
 						</Button>

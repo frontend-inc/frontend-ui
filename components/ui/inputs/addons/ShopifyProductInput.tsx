@@ -112,14 +112,17 @@ const sx = {
 		width: '100%',
 	},
 	productCard: {
-		width: 182,
-		minHeight: 182,
+		width: 180,
+		minHeight: 180,
 		borderRadius: 1,
 		overflow: 'hidden',
 		display: 'flex',
 		flexDirection: 'column',		
 		p: 0,
-    boxShadow: 1
+    transition: 'box-shadow 0.3s',
+    '&:hover': {
+      boxShadow: 2
+    }
 	},
 	productContent: {
 		p: 1,    
