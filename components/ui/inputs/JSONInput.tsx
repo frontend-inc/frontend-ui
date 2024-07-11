@@ -1,18 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { TextInput } from '../../../components'
-import { SyntheticEventType } from '../../../types'
+import { InputPropsType } from '../../../types'
 
-type JSONInputProps = {
-	errors: Record<string, string>
-	value: any
-	name: string
-	label?: string
-	placeholder?: string
-	handleChange: (e: SyntheticEventType) => void
-}
+type JSONInputProps = InputPropsType
 
 const JSONInput: React.FC<JSONInputProps> = (props) => {
-	const { errors, value, name, label, placeholder, handleChange } = props
+	const { errors, value, name, label, info, placeholder, handleChange } = props
 
 	const defaultValue = value ? JSON.stringify(value, null, 2) : '{}'
 	const [jsonValue, setJsonValue] = useState(defaultValue)
@@ -74,6 +67,7 @@ const JSONInput: React.FC<JSONInputProps> = (props) => {
 			handleChange={handleJSONChange}
 			name={name}
 			label={label}
+      info={info}
 		/>
 	)
 }

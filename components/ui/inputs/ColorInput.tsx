@@ -10,7 +10,7 @@ import {
 } from '@mui/material'
 import { ExpandMore } from '@mui/icons-material'
 import * as COLORS from '@mui/material/colors'
-import { Popup, Icon, TextInput } from '../../../components'
+import { InputLabel, Popup, TextInput } from '../../../components'
 import { SyntheticEventType } from '../../../types'
 import { useMenu } from '../../../hooks'
 import { MUI_COLORS, HEX_COLORS } from '../../../constants/index'
@@ -45,6 +45,7 @@ type ColorInputProps = {
 	handleChange: (e: SyntheticEventType) => void
 	errors?: any
 	disableTone?: boolean
+  info?: string
 }
 
 const ColorInput: React.FC<ColorInputProps> = (props) => {
@@ -55,6 +56,7 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 		placeholder = 'Color',
 		disableTone = false,
 		handleChange,
+    info
 	} = props
 
 	const [tone, setTone] = useState(500)
@@ -120,11 +122,10 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 
 	return (
 		<Stack direction="column" spacing={1} sx={sx.root}>
-			{label && (
-				<Typography variant="caption" color="textSecondary">
-					{label}
-				</Typography>
-			)}
+      <InputLabel 
+        label={label}
+        info={info}
+      />
 			<Button
 				sx={sx.button}
 				fullWidth

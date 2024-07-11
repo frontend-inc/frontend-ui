@@ -1,6 +1,7 @@
 import React from 'react'
-import { FormControl, Stack, Select, MenuItem, Typography } from '@mui/material'
+import { FormControl, Stack, Select, MenuItem } from '@mui/material'
 import { SelectInputPropsType } from '../../..'
+import { InputLabel } from '../../../components'
 
 const SelectInput: React.FC<SelectInputPropsType> = (props) => {
 	const {
@@ -10,6 +11,7 @@ const SelectInput: React.FC<SelectInputPropsType> = (props) => {
 		value,
 		options,
 		handleChange,
+    info
 	} = props
 
 	return (
@@ -22,9 +24,7 @@ const SelectInput: React.FC<SelectInputPropsType> = (props) => {
 				direction={direction}
 				spacing={1}
 			>
-				<Typography variant="caption" sx={sx.label} gutterBottom>
-					{label}
-				</Typography>
+        <InputLabel label={label} info={info} />
 				<Select
 					sx={sx.root}
 					value={value}

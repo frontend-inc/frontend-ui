@@ -3,7 +3,7 @@ import { Stack } from '@mui/material'
 import {
 	ArrayInput,
 	Autosuggest,
-	TabsSwitchInput,
+	BooleanInput,
 	RatingInput,
 	TextInput,
 } from '../../../../components'
@@ -31,7 +31,7 @@ const JsonForm: React.FC<JsonFormProps> = (props) => {
 			{fields.map((field, i) => (
 					<>
 						{field?.type === 'boolean' && (
-							<TabsSwitchInput
+							<BooleanInput
 								label={field.label}
 								name={field.name}
 								value={item[field.name]}

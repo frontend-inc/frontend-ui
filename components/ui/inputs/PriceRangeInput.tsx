@@ -6,6 +6,7 @@ import {
 	Box,
 	InputAdornment,
 } from '@mui/material'
+import { InputLabel } from '../../../components'
 import { SyntheticEventType } from '../../../types'
 
 type NumberRangeInputProps = {
@@ -17,6 +18,7 @@ type NumberRangeInputProps = {
 	}
 	handleChange: (value: SyntheticEventType) => void
 	currency?: string
+  info?: string
 }
 
 const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
@@ -28,7 +30,8 @@ const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 		name,
 		label,
 		handleChange,
-		currency = '',
+		currency = 'usd',
+    info
 	} = props || {}
 
 	const handleMinChange = (ev) => {
@@ -59,11 +62,10 @@ const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-			{label && (
-				<Typography variant="caption" color="textSecondary">
-					{label}
-				</Typography>
-			)}
+      <InputLabel 
+        label={label}
+        info={info}
+      />
 			<Box sx={sx.inputs}>
 				<FormControl variant="standard">
 					<Input

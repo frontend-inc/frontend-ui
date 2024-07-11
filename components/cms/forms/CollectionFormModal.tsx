@@ -29,7 +29,7 @@ const CollectionFormModal: React.FC<CollectionFormModalProps> = (props) => {
     setOpenDelete,
 
     openEdit,
-    setOpenFormModal
+    setOpenEdit
   } = useCollection()
 
   const {   
@@ -48,7 +48,7 @@ const CollectionFormModal: React.FC<CollectionFormModalProps> = (props) => {
     <>
       <Drawer
 				open={openEdit}
-				handleClose={() => setOpenFormModal(false)}
+				handleClose={() => setOpenEdit(false)}
 				title={resource?.id ? 'Edit' : 'Add'}
 				actions={
 					<Button

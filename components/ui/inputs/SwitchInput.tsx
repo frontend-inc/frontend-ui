@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Switch, Typography, FormControlLabel } from '@mui/material'
 import { InputPropsType } from '../../../types'
+import { InputLabel } from '../../../components'
 
 type SwitchInputProps = InputPropsType & {
 	disableBorder?: boolean
@@ -14,13 +15,12 @@ const SwitchInput: React.FC<SwitchInputProps> = (props) => {
 		label,
 		placeholder,
 		handleChange,
+    info
 	} = props
 
 	return (
 		<Box sx={sx.root}>
-			<Typography variant="caption" color="textSecondary">
-				{label}
-			</Typography>
+      <InputLabel label={label} info={info} />
 			<Box
 				sx={{
 					...sx.input,

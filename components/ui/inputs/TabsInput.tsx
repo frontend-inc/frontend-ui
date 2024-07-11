@@ -2,7 +2,8 @@ import React from 'react'
 import { Stack, Typography } from '@mui/material'
 import { ButtonTabs } from '../../../components'
 import { SyntheticEventType } from '../../../types'
-import sx from './styles'
+import { InputLabel } from '../../../components'
+import sx from './helpers/styles'
 
 type TabsInputProps = {
 	name: string
@@ -20,6 +21,7 @@ type TabsInputProps = {
 	variant?: 'fullWidth' | 'scrollable'
 	size?: 'small' | 'large'
 	direction?: 'row' | 'column'
+  info?: string
 }
 
 const TabsInput: React.FC<TabsInputProps> = (props) => {
@@ -35,6 +37,7 @@ const TabsInput: React.FC<TabsInputProps> = (props) => {
 		variant = 'fullWidth',
 		size = 'large',
 		direction = 'row',
+    info
 	} = props
 
 	const handleInputChange = (value: number | string) => {
@@ -56,11 +59,10 @@ const TabsInput: React.FC<TabsInputProps> = (props) => {
 			direction={direction}
 			spacing={1}
 		>
-			{label && (
-				<Typography sx={sx.label} variant="caption" color="text.secondary">
-					{label}
-				</Typography>
-			)}
+      <InputLabel 
+        label={label}
+        info={info}
+      />
 			<ButtonTabs
 				options={options}
 				value={value}

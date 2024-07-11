@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { FormControl, InputBase, Typography } from '@mui/material'
 import moment from 'moment'
-import { sx } from './styles'
+import { sx } from './helpers/styles'
+import { InputLabel } from '../../../components'
 
 type DateInputProps = {
 	errors?: any
@@ -10,11 +11,12 @@ type DateInputProps = {
 	name: string
 	value?: string
 	placeholder?: string
+  info?: string
 	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const DateInput: React.FC<DateInputProps> = (props) => {
-	const { errors, required, label, name, value, handleChange, placeholder } =
+	const { errors, required, label, info, name, value, handleChange, placeholder } =
 		props
 
 	const [error, setError] = useState(false)
@@ -29,9 +31,10 @@ const DateInput: React.FC<DateInputProps> = (props) => {
 
 	return (
 		<FormControl fullWidth>
-			<Typography variant="caption" color="textSecondary">
-				{label}
-			</Typography>
+      <InputLabel 
+        label={label}
+        info={info}
+      />
 			<InputBase
 				error={error}
 				autoComplete="off"

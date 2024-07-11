@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Typography, Box, Stack, IconButton, Button } from '@mui/material'
-import { InputPropsType } from '../../../types'
+import { InputPropsType } from '../../../../types'
 import { X, Plus } from 'lucide-react'
-import { TextInput } from '../../../components'
+import { TextInput } from '../../..'
 
 type ArrayItemInputProps = {
 	index: number
