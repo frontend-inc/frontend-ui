@@ -15,7 +15,7 @@ const NoSpaceInput: React.FC<NoSpaceInputPropsType> = (props) => {
 		value,
 		name,
 		label,
-    info,
+		info,
 		placeholder,
 		handleChange,
 		disabled,
@@ -46,7 +46,7 @@ const NoSpaceInput: React.FC<NoSpaceInputPropsType> = (props) => {
 			handleChange={handleInputChange}
 			name={name}
 			label={label}
-      info={info}
+			info={info}
 		/>
 	)
 }

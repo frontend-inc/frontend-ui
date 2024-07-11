@@ -7,21 +7,21 @@ import AIChatMessages from './AIChatMessages'
 import { useChat } from 'ai/react'
 
 export type AIChatProps = TextInputPropsType & {
-  avatar?: string
-  id?: string
-  label: string
-	prompt?: string	
-  buttonText?: string
+	avatar?: string
+	id?: string
+	label: string
+	prompt?: string
+	buttonText?: string
 }
 
 const AIChat: React.FC<AIChatProps> = (props) => {
-	const { 
-    avatar,
-    id = 'openai-chat', 
-    label="Start a conversation", 
-    prompt = '',
-    buttonText="Send Message" 
-  } = props
+	const {
+		avatar,
+		id = 'openai-chat',
+		label = 'Start a conversation',
+		prompt = '',
+		buttonText = 'Send Message',
+	} = props
 
 	const [loading, setLoading] = useState(false)
 
@@ -38,29 +38,24 @@ const AIChat: React.FC<AIChatProps> = (props) => {
 
 	return (
 		<Stack direction="column" spacing={2}>
-      <AIChatMessages 
-        avatar={avatar}
-        messages={messages}
-      />
-      <AIChatForm
-        label={label}
-        prompt={prompt}
-        setMessages={setMessages}
-        input={input}
-        handleInputChange={handleInputChange}
-      />
-      <Button
-        fullWidth
-        variant="contained"
-        color="primary"
-        onClick={handleChatSubmit}
-        startIcon={
-          <IconLoading loading={loading} />
-        }
-      >
-      {!loading && buttonText}
-    </Button>
-	</Stack>
+			<AIChatMessages avatar={avatar} messages={messages} />
+			<AIChatForm
+				label={label}
+				prompt={prompt}
+				setMessages={setMessages}
+				input={input}
+				handleInputChange={handleInputChange}
+			/>
+			<Button
+				fullWidth
+				variant="contained"
+				color="primary"
+				onClick={handleChatSubmit}
+				startIcon={<IconLoading loading={loading} />}
+			>
+				{!loading && buttonText}
+			</Button>
+		</Stack>
 	)
 }
 

@@ -11,7 +11,7 @@ type BooleanInputProps = {
 	label?: string
 	direction?: 'row' | 'column'
 	size?: 'small' | 'large'
-  info?: string 
+	info?: string
 }
 
 const BooleanInput: React.FC<BooleanInputProps> = (props) => {
@@ -24,24 +24,24 @@ const BooleanInput: React.FC<BooleanInputProps> = (props) => {
 		size = 'small',
 		disableBorder = false,
 		disablePadding = false,
-    info
+		info,
 	} = props
 
-  const handleTabChange = (ev) => {
-    const newValue = ev.target.value
-    handleChange({
-      target: {
-        name,
-        value: newValue == 1 ? true : false,
-      },
-    })
-  }
+	const handleTabChange = (ev) => {
+		const newValue = ev.target.value
+		handleChange({
+			target: {
+				name,
+				value: newValue == 1 ? true : false,
+			},
+		})
+	}
 
 	return (
 		<TabsInput
 			name={name}
 			label={label}
-      info={info}
+			info={info}
 			size={size}
 			direction={direction}
 			disableBorder={disableBorder}

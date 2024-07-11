@@ -28,7 +28,7 @@ type TableProps = {
 	handlePaginate: (e: any, page: number) => void
 	handleSearch: (keywords: any) => void
 	handleKeywordSearch: (keywords: string) => void
-	handleSort: (field: any) => void	
+	handleSort: (field: any) => void
 	disableBorderRadius?: boolean
 	styles?: any
 	emptyIcon?: string
@@ -67,7 +67,7 @@ const Table: React.FC<TableProps> = (props) => {
 		perPage = 10,
 		numPages,
 		totalCount,
-		handlePaginate,		
+		handlePaginate,
 		disableBorderRadius = false,
 		styles = {},
 		emptyIcon,
@@ -107,7 +107,7 @@ const Table: React.FC<TableProps> = (props) => {
 	return (
 		<>
 			<TableList
-				loading={loading}				
+				loading={loading}
 				disableBorderRadius={disableBorderRadius}
 				query={query}
 				toolbar={

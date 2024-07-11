@@ -25,7 +25,7 @@ export { default as VideoModal } from '../cms/video/VideoModal'
 export { default as VideoPlayer } from '../cms/video/VideoPlayer'
 export { default as SearchFilters } from '../cms/filters/SearchFilters'
 
-// Forms 
+// Forms
 export { default as Form } from '../cms/forms/Form'
 export { default as FormWizard } from '../cms/forms/FormWizard'
 export { default as FormInput } from '../cms/forms/FormInput'
@@ -47,10 +47,10 @@ export { default as HeroYouTube } from './heros/HeroYouTube'
 export { default as HeroVimeo } from './heros/HeroVimeo'
 export { default as HeroSnippet } from './heros/HeroSnippet'
 
-// Query 
+// Query
 export { default as Query } from './query/Query'
 
-// Statistics 
+// Statistics
 export { default as Statistics } from './analytics/Statistics'
 
 // Addons

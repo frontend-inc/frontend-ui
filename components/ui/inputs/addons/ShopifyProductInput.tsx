@@ -82,7 +82,7 @@ const ShopifyProductInput: React.FC<AutosuggestProps> = (props) => {
 			<Collapse in={product?.id || loading}>
 				<Box sx={sx.productCard}>
 					<Image
-            enableGradient
+						enableGradient
 						disableBorder
 						src={product?.images?.edges?.[0]?.node?.url}
 						alt={product?.title}
@@ -117,14 +117,14 @@ const sx = {
 		borderRadius: 1,
 		overflow: 'hidden',
 		display: 'flex',
-		flexDirection: 'column',		
+		flexDirection: 'column',
 		p: 0,
-    transition: 'box-shadow 0.3s',
-    '&:hover': {
-      boxShadow: 2
-    }
+		transition: 'box-shadow 0.3s',
+		'&:hover': {
+			boxShadow: 2,
+		},
 	},
 	productContent: {
-		p: 1,    
+		p: 1,
 	},
 }

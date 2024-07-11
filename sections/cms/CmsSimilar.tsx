@@ -3,9 +3,7 @@ import { Section, Heading, CollectionSimilar } from '../../components'
 import { CollectionSimilarProps } from '../../components/cms/collections/CollectionSimilar'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsListProps = SectionProps & 
-  HeadingProps & 
-  CollectionSimilarProps
+type CmsListProps = SectionProps & HeadingProps & CollectionSimilarProps
 
 const CmsSimilar: React.FC<CmsListProps> = (props) => {
 	const {
@@ -25,26 +23,24 @@ const CmsSimilar: React.FC<CmsListProps> = (props) => {
 	} = props
 
 	return (
-    <Section
-      theme={theme}
-      py={py}
-      px={px}
-      maxWidth={maxWidth}
-      requireAuth={requireAuth}
-      requireTeam={requireTeam}
-      requirePaid={requirePaid}
-      requireAdmin={requireAdmin}
-    >
-      <Heading
-        label={label}
-        title={title}
-        description={description}
-        textAlign={textAlign}
-      />
-      <CollectionSimilar         
-        {...rest} 
-      />
-    </Section>
+		<Section
+			theme={theme}
+			py={py}
+			px={px}
+			maxWidth={maxWidth}
+			requireAuth={requireAuth}
+			requireTeam={requireTeam}
+			requirePaid={requirePaid}
+			requireAdmin={requireAdmin}
+		>
+			<Heading
+				label={label}
+				title={title}
+				description={description}
+				textAlign={textAlign}
+			/>
+			<CollectionSimilar {...rest} />
+		</Section>
 	)
 }
 

@@ -4,9 +4,7 @@ import { CollectionKanBan } from '../../components'
 import { CollectionKanBanProps } from '../../components/cms/collections/CollectionKanBan'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsKanBanProps = SectionProps & 
-  HeadingProps & 
-  CollectionKanBanProps 
+type CmsKanBanProps = SectionProps & HeadingProps & CollectionKanBanProps
 
 const CmsKanBan: React.FC<CmsKanBanProps> = (props) => {
 	const {
@@ -21,31 +19,29 @@ const CmsKanBan: React.FC<CmsKanBanProps> = (props) => {
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,  
+		requireAdmin,
 		...rest
 	} = props
 
 	return (
-    <Section
-      theme={theme}
-      py={py}
-      px={px}
-      maxWidth={maxWidth}
-      requireAuth={requireAuth}
-      requireTeam={requireTeam}
-      requirePaid={requirePaid}
-      requireAdmin={requireAdmin}
-    >
-      <Heading
-        label={label}
-        title={title}
-        description={description}
-        textAlign={textAlign}
-      />      
-        <CollectionKanBan 
-          {...rest} 
-        />      
-    </Section>          
+		<Section
+			theme={theme}
+			py={py}
+			px={px}
+			maxWidth={maxWidth}
+			requireAuth={requireAuth}
+			requireTeam={requireTeam}
+			requirePaid={requirePaid}
+			requireAdmin={requireAdmin}
+		>
+			<Heading
+				label={label}
+				title={title}
+				description={description}
+				textAlign={textAlign}
+			/>
+			<CollectionKanBan {...rest} />
+		</Section>
 	)
 }
 

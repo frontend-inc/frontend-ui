@@ -6,7 +6,7 @@ import {
 	ReviewForm,
 	LoadMore,
 	Placeholder,
-  FilterButton,
+	FilterButton,
 	SortButton,
 	SearchInput,
 } from '../../../components'
@@ -18,7 +18,6 @@ import { useFilters } from '../../../hooks'
 import { FilterOptionType } from '../../../types'
 import { SearchFilterOptionType } from '../../../types'
 import { SortOptionType } from '../../../types'
-
 
 export type ReviewsProps = {
 	handle: string
@@ -55,25 +54,25 @@ const Reviews: React.FC<ReviewsProps> = (props) => {
 		handle,
 	})
 
-  const perPage = 20
-  const filterOptions: SearchFilterOptionType[] = [
-    {
-      label: 'Rating',
-      field: 'rating',
-      variant: 'ratings_scale',
-    },    
-  ]
+	const perPage = 20
+	const filterOptions: SearchFilterOptionType[] = [
+		{
+			label: 'Rating',
+			field: 'rating',
+			variant: 'ratings_scale',
+		},
+	]
 
-  const sortOptions: SortOptionType[] = [
-    {
-      label: 'Date',
-      name: 'created_at',
-    },
-    {
-      label: 'Rating',
-      name: 'rating',      
-    }
-  ]
+	const sortOptions: SortOptionType[] = [
+		{
+			label: 'Date',
+			name: 'created_at',
+		},
+		{
+			label: 'Rating',
+			name: 'rating',
+		},
+	]
 
 	const { setAuthOpen } = useContext(AppContext)
 
@@ -149,10 +148,10 @@ const Reviews: React.FC<ReviewsProps> = (props) => {
 		query,
 	})
 
-  // Filter methods
+	// Filter methods
 	const handleClearFilters = () => {
 		setActiveFilters([])
-		findReviews({			
+		findReviews({
 			sort_by: 'id',
 			sort_direction: 'desc',
 			keywords: '',
@@ -189,41 +188,45 @@ const Reviews: React.FC<ReviewsProps> = (props) => {
 					Reviews ({totalCount})
 				</Typography>
 			</Stack>
+			<Stack
+				direction={{ xs: 'column', sm: 'row' }}
+				justifyContent="space-between"
+				spacing={1}
+			>
 				<Stack
 					direction={{ xs: 'column', sm: 'row' }}
-					justifyContent="space-between"
 					spacing={1}
+					alignItems="center"
 				>
-					<Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} alignItems='center'>
-            <SearchInput
-              value={keywords}
-              handleChange={handleKeywordChange}
-              handleSearch={handleSearch}
-            />
-            <Box>
-              <FilterButton
-                filters={activeFilters}
-                handleFilter={handleFilter}
-                handleClear={handleClearFilters}
-                filterOptions={filterOptions}
-              />
-            </Box>
-            <Box>
-              <SortButton
-                sortBy={query?.sort_by || 'id'}
-                sortDirection={query?.sort_direction || 'desc'}
-                sortOptions={sortOptions}
-                handleSortBy={handleSort}
-                handleSortDirection={handleSortDirection}
-              />
-            </Box>
-					</Stack>   
-          <Box>
-            <ReviewButton handleClick={handleToggleClick} />          
-          </Box>       
+					<SearchInput
+						value={keywords}
+						handleChange={handleKeywordChange}
+						handleSearch={handleSearch}
+					/>
+					<Box>
+						<FilterButton
+							filters={activeFilters}
+							handleFilter={handleFilter}
+							handleClear={handleClearFilters}
+							filterOptions={filterOptions}
+						/>
+					</Box>
+					<Box>
+						<SortButton
+							sortBy={query?.sort_by || 'id'}
+							sortDirection={query?.sort_direction || 'desc'}
+							sortOptions={sortOptions}
+							handleSortBy={handleSort}
+							handleSortDirection={handleSortDirection}
+						/>
+					</Box>
 				</Stack>
+				<Box>
+					<ReviewButton handleClick={handleToggleClick} />
+				</Box>
+			</Stack>
 			<Collapse in={openReview}>
-				<ReviewForm					
+				<ReviewForm
 					errors={errors}
 					loading={loading}
 					review={review}
@@ -233,11 +236,7 @@ const Reviews: React.FC<ReviewsProps> = (props) => {
 			</Collapse>
 			<List dense disablePadding>
 				{reviews?.map((review, i) => (
-					<Review
-						key={i}
-						review={review}
-						handleDelete={handleDeleteReview}
-					/>
+					<Review key={i} review={review} handleDelete={handleDeleteReview} />
 				))}
 			</List>
 			{!loading && !openReview && reviews?.length == 0 && (
@@ -247,11 +246,7 @@ const Reviews: React.FC<ReviewsProps> = (props) => {
 					description="Be the first to leave a review."
 				/>
 			)}
-			<LoadMore 
-        loadMore={loadMore} 
-        page={page} 
-        numPages={numPages} 
-      />
+			<LoadMore loadMore={loadMore} page={page} numPages={numPages} />
 			<AlertModal
 				loading={loading}
 				open={openDelete}

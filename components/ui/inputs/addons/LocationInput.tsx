@@ -3,11 +3,7 @@ import { useGooglePlaces } from '../../../../hooks'
 import { TextInput, GoogleMap, Icon } from '../../..'
 import { TextInputPropsType } from '../../../../types'
 import { useDebounce } from 'use-debounce'
-import {
-	Stack,
-	Box,
-	Typography,
-} from '@mui/material'
+import { Stack, Box, Typography } from '@mui/material'
 import LocationOptionsList from './LocationOptionsList'
 
 type LocationInputProps = TextInputPropsType & {
@@ -37,18 +33,15 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
 		lng,
 	} = props || {}
 
-	const { 
-    placeOptions, 
-    fetchPlaces 
-  } = useGooglePlaces()
+	const { placeOptions, fetchPlaces } = useGooglePlaces()
 
-	const [keywords, setKeywords] = useState(value)  
+	const [keywords, setKeywords] = useState(value)
 	const [debouncedText] = useDebounce(keywords, 150)
 
 	const handleKeywordChange = (ev) => {
 		const { value } = ev.target
 		setKeywords(value)
-		if (placeOptions?.length > 0) setOpen(true);
+		if (placeOptions?.length > 0) setOpen(true)
 	}
 
 	const handleClick = (option) => {
@@ -63,8 +56,7 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
 	}
 
 	useEffect(() => {
-    if(debouncedText?.length > 0)
-		  fetchPlaces(debouncedText);
+		if (debouncedText?.length > 0) fetchPlaces(debouncedText)
 	}, [debouncedText])
 
 	const [open, setOpen] = useState(false)
@@ -98,11 +90,11 @@ const LocationInput: React.FC<LocationInputProps> = (props) => {
 				direction={direction}
 				placeholder={placeholder}
 			/>
-      <LocationOptionsList 
-        open={open}
-        options={placeOptions}
-        handleClick={handleClick}
-      />
+			<LocationOptionsList
+				open={open}
+				options={placeOptions}
+				handleClick={handleClick}
+			/>
 		</Stack>
 	)
 }

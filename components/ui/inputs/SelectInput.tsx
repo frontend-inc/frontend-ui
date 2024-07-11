@@ -11,7 +11,7 @@ const SelectInput: React.FC<SelectInputPropsType> = (props) => {
 		value,
 		options,
 		handleChange,
-    info
+		info,
 	} = props
 
 	return (
@@ -24,7 +24,7 @@ const SelectInput: React.FC<SelectInputPropsType> = (props) => {
 				direction={direction}
 				spacing={1}
 			>
-        <InputLabel label={label} info={info} />
+				<InputLabel label={label} info={info} />
 				<Select
 					sx={sx.root}
 					value={value}

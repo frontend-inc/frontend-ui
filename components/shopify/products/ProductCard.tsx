@@ -64,10 +64,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 				handleClick={handleItemClick}
 				disableBorderRadius={enableBorder ? true : false}
 			/>
-			<Stack
-				spacing={1}
-				sx={ sx.content }
-			>
+			<Stack spacing={1} sx={sx.content}>
 				<Stack
 					direction="column"
 					sx={{
@@ -125,10 +122,10 @@ const sx = {
 		flexDirection: 'column',
 		overflow: 'hidden',
 		borderRadius: 1,
-    transition: 'box-shadow 0.3s',
-    '&:hover': {
-      boxShadow: 2
-    }
+		transition: 'box-shadow 0.3s',
+		'&:hover': {
+			boxShadow: 2,
+		},
 	},
 	rootBorder: {
 		border: '1px solid',

@@ -40,11 +40,11 @@ const JsonItem: React.FC<JsonItemProps> = (props) => {
 				<ListItemIcon sx={sx.listItemIcon}>
 					<Icon name="GripVertical" size={20} />
 				</ListItemIcon>
-        { item?.icon && (
-          <ListItemIcon sx={sx.listItemIcon}>
-            <Icon name={ item.icon } size={20} />
-          </ListItemIcon>
-        )}
+				{item?.icon && (
+					<ListItemIcon sx={sx.listItemIcon}>
+						<Icon name={item.icon} size={20} />
+					</ListItemIcon>
+				)}
 				<ListItemText
 					primary={
 						<Typography color="text.primary" variant="body1">

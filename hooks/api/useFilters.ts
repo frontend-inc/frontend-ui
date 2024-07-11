@@ -1,10 +1,6 @@
 import { is } from 'immutable'
 import React, { useState, useEffect } from 'react'
-import { 
-  mergeFilters,
-  mergeAllFilters,
-  formatFilterArray
-} from '../../helpers'
+import { mergeFilters, mergeAllFilters, formatFilterArray } from '../../helpers'
 
 type UseFiltersProps = {
 	query?: any
@@ -72,7 +68,7 @@ const useFilters = (props: UseFiltersProps) => {
 			updatedFilters = [...updatedFilters, filter]
 		}
 		setActiveFilters(updatedFilters)
-    return updatedFilters
+		return updatedFilters
 	}
 
 	const isBlank = (value) => {
@@ -116,7 +112,7 @@ const useFilters = (props: UseFiltersProps) => {
 	useEffect(() => {
 		if (query?.filters?.length >= 0) {
 			let filterArray = formatFilterArray(query?.filters)
-      setActiveFilters(filterArray)
+			setActiveFilters(filterArray)
 		}
 	}, [query?.filters?.length])
 

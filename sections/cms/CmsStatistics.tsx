@@ -2,19 +2,16 @@ import React from 'react'
 import { Section, Heading } from '../../components'
 import { Statistics } from '../../components'
 import { StatisticsProps } from '../../components/cms/analytics/Statistics'
-import { SectionProps, HeadingProps  } from '../../types'
+import { SectionProps, HeadingProps } from '../../types'
 
-type CmsStatisticsProps = SectionProps & 
-  HeadingProps & 
-  StatisticsProps
+type CmsStatisticsProps = SectionProps & HeadingProps & StatisticsProps
 
 const CmsStatistics: React.FC<CmsStatisticsProps> = (props) => {
-  
 	const {
-    label,
-    title,
-    description,
-    textAlign,
+		label,
+		title,
+		description,
+		textAlign,
 		theme,
 		py,
 		px,
@@ -37,7 +34,7 @@ const CmsStatistics: React.FC<CmsStatisticsProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Heading
+			<Heading
 				label={label}
 				title={title}
 				description={description}

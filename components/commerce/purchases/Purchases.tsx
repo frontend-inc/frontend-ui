@@ -4,14 +4,14 @@ import {
 	SortOptionType,
 	SearchFilterOptionType,
 	DisplayFieldType,
-  ActionType,
+	ActionType,
 } from '../../../types'
 
 export type PurchasesProps = {
 	variant: 'list' | 'grid'
 	style: 'card' | 'avatar' | 'cover'
 	field: any
-  actions?: ActionType[]
+	actions?: ActionType[]
 	displayFields?: DisplayFieldType[]
 	url: string
 	handle: string
@@ -37,17 +37,12 @@ export type PurchasesProps = {
 }
 
 const Purchases: React.FC<PurchasesProps> = (props) => {
-	const { 
-    actions=[], 
-    displayFields=[], 
-    url, 
-    ...rest 
-  } = props
+	const { actions = [], displayFields = [], url, ...rest } = props
 
 	return (
 		<CollectionList
-      actions={actions}
-      displayFields={displayFields}
+			actions={actions}
+			displayFields={displayFields}
 			url={`${url}/purchases`}
 			// Todo: Component errors without a default value
 			query={{}}

@@ -14,87 +14,83 @@ export type CollectionCarouselListProps = CollectionListProps & {
 	enableDots?: boolean
 }
 
-const CollectionCarouselList: React.FC<CollectionCarouselListProps> = (props) => {
+const CollectionCarouselList: React.FC<CollectionCarouselListProps> = (
+	props
+) => {
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
 	const {
 		actions,
 		href,
-    displayFields,
+		displayFields,
 
 		enableAutoPlay = true,
 		enableArrows = false,
 		enableDots = false,
 		enableGradient = false,
-    enableOverlay = false,
-    enableEdit = false,
-    enableDelete = false,
-    enableRatings = false,
-    enableUsers = false,    
+		enableOverlay = false,
+		enableEdit = false,
+		enableDelete = false,
+		enableRatings = false,
+		enableUsers = false,
 		enableFavorites = false,
 	} = props
 
-  const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(false)
 
-  const { 
-    handleEdit,
-    handleDeleteClick 
-  } = useForms()
+	const { handleEdit, handleDeleteClick } = useForms()
 
-  const { 
-    loading, 
-    resource, 
-    resources, 
-    setResource 
-  } = useContext(CollectionContext) as any 
+	const { loading, resource, resources, setResource } = useContext(
+		CollectionContext
+	) as any
 
-  const handleClick = (resource) => {
-    if(href){
-      if (clientUrl && href && resource?.handle) {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth',
-        })
-        router.push(`${clientUrl}${href}/${resource?.handle}`)
-      }
-    }else{
-      setResource(resource)
-      setOpen(true)    
-    }
+	const handleClick = (resource) => {
+		if (href) {
+			if (clientUrl && href && resource?.handle) {
+				window.scrollTo({
+					top: 0,
+					behavior: 'smooth',
+				})
+				router.push(`${clientUrl}${href}/${resource?.handle}`)
+			}
+		} else {
+			setResource(resource)
+			setOpen(true)
+		}
 	}
 
 	return (
-		<Stack 
-      spacing={1} 
-      sx={{ 
-        ...sx.root,
-        ...(loading && sx.loading )
-      }}
-    >
+		<Stack
+			spacing={1}
+			sx={{
+				...sx.root,
+				...(loading && sx.loading),
+			}}
+		>
 			<Carousel
 				enableDots={enableDots}
 				enableAutoPlay={enableAutoPlay}
 				enableArrows={enableArrows}
 			>
 				{resources?.map((resource, index) => (
-					<Box 
-            key={index} 
-            sx={{
-              ...sx.item,
-              pt: enableArrows ? 5 : 1,
-              pb: enableDots ? 4 : 1
-            }}
-          >
+					<Box
+						key={index}
+						sx={{
+							...sx.item,
+							pt: enableArrows ? 5 : 1,
+							pb: enableDots ? 4 : 1,
+						}}
+					>
 						<CollectionCard
 							actions={actions}
-							style='card'
+							style="card"
 							resource={resource}
-              displayFields={displayFields}
-              enableEdit={enableEdit}
-              enableDelete={enableDelete}
-              handleEdit={() => handleEdit(resource)}
-              handleDelete={() => handleDeleteClick(resource)}
+							displayFields={displayFields}
+							enableEdit={enableEdit}
+							enableDelete={enableDelete}
+							handleEdit={() => handleEdit(resource)}
+							handleDelete={() => handleDeleteClick(resource)}
 							handleClick={() => handleClick(resource)}
 							enableGradient={enableGradient}
 							enableFavorites={enableFavorites}
@@ -102,18 +98,18 @@ const CollectionCarouselList: React.FC<CollectionCarouselListProps> = (props) =>
 					</Box>
 				))}
 			</Carousel>
-      <CollectionShowModal
-        open={ open }
-        handleClose={ () => setOpen(false) }
-        actions={ actions }
-        displayFields={displayFields}
-        enableOverlay={enableOverlay}
-        enableEdit={enableEdit}
-        enableFavorites={enableFavorites}
-        enableRatings={enableRatings}
-        enableUsers={enableUsers}
-        handleEdit={() => handleEdit(resource)}
-      />
+			<CollectionShowModal
+				open={open}
+				handleClose={() => setOpen(false)}
+				actions={actions}
+				displayFields={displayFields}
+				enableOverlay={enableOverlay}
+				enableEdit={enableEdit}
+				enableFavorites={enableFavorites}
+				enableRatings={enableRatings}
+				enableUsers={enableUsers}
+				handleEdit={() => handleEdit(resource)}
+			/>
 		</Stack>
 	)
 }
@@ -124,9 +120,9 @@ const sx = {
 	root: {
 		width: '100%',
 	},
-  loading: {
-    opacity: 0.5
-  },
+	loading: {
+		opacity: 0.5,
+	},
 	grid: {
 		display: 'grid',
 		gridTemplateColumns: {
@@ -136,6 +132,6 @@ const sx = {
 		gap: '16px',
 	},
 	item: {
-    p: 2,
-	}
+		p: 2,
+	},
 }

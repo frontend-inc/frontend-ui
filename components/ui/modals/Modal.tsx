@@ -28,7 +28,7 @@ type ModalProps = {
 	enableCancel?: boolean
 	hideBackdrop?: boolean
 	disableClose?: boolean
-  disableHeader?: boolean
+	disableHeader?: boolean
 }
 
 const Modal: React.FC<ModalProps> = (props) => {
@@ -47,7 +47,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 		enableCancel = false,
 		hideBackdrop = false,
 		disableClose = false,
-    disableHeader = false
+		disableHeader = false,
 	} = props
 
 	const { isMobile } = useResponsive()
@@ -72,25 +72,25 @@ const Modal: React.FC<ModalProps> = (props) => {
 			onClose={handleClose}
 			hideBackdrop={hideBackdrop}
 		>
-      { !disableHeader && (
-			<DialogTitle sx={sx.dialogTitleContainer}>
-				<Box sx={sx.dialogTitleContent}>
-					<Typography variant="subtitle1" color="textPrimary" sx={sx.title}>
-						{title}
-					</Typography>
-					{!loading && (
-						<Box sx={sx.secondaryActions}>
-							{secondaryActions && secondaryActions}
-							{!disableClose && (
-								<IconButton onClick={handleClose}>
-									<Icon name="X" />
-								</IconButton>
-							)}
-						</Box>
-					)}
-				</Box>
-			</DialogTitle>
-      )}
+			{!disableHeader && (
+				<DialogTitle sx={sx.dialogTitleContainer}>
+					<Box sx={sx.dialogTitleContent}>
+						<Typography variant="subtitle1" color="textPrimary" sx={sx.title}>
+							{title}
+						</Typography>
+						{!loading && (
+							<Box sx={sx.secondaryActions}>
+								{secondaryActions && secondaryActions}
+								{!disableClose && (
+									<IconButton onClick={handleClose}>
+										<Icon name="X" />
+									</IconButton>
+								)}
+							</Box>
+						)}
+					</Box>
+				</DialogTitle>
+			)}
 			<DialogContent
 				sx={{
 					...sx.dialogContent,

@@ -24,24 +24,24 @@ export type SectionProps = {
 }
 
 export type FormProps = {
-  fields: FormFieldType[]
-  editFields?: FormFieldType[]
-  createFields?: FormFieldType[]
+	fields: FormFieldType[]
+	editFields?: FormFieldType[]
+	createFields?: FormFieldType[]
 }
 
 export type ForeignProps = {
-  resource: any 
-  foreignUrl: string
-  foreignContentType: string  
+	resource: any
+	foreignUrl: string
+	foreignContentType: string
 }
 
 export type CardProps = {
-  ref?: React.Ref<any>
+	ref?: React.Ref<any>
 	actions: ActionType[]
-  enableUsers?: boolean
-  enableComments?: boolean  
+	enableUsers?: boolean
+	enableComments?: boolean
 	enableFavorites?: boolean
-  enableRatings?: boolean
+	enableRatings?: boolean
 	editing?: boolean
 	resource: any & {
 		label?: string
@@ -67,7 +67,7 @@ export type CardProps = {
 	enableGradient?: boolean
 	enableOverlay?: boolean
 	enableEdit?: boolean
-	enableDelete?: boolean  
+	enableDelete?: boolean
 	icon?: string
 }
 

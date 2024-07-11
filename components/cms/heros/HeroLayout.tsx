@@ -6,8 +6,8 @@ import {
 	StripePaymentLink,
 	SocialButtons,
 	Actions,
-  AvgRating,
-	ExpandableText
+	AvgRating,
+	ExpandableText,
 } from '../..'
 import { HeroProps } from './HeroItem'
 import { flattenDocument } from 'frontend-js'
@@ -28,16 +28,13 @@ const HeroLayout: React.FC<HeroLayoutProps> = (props) => {
 		enableFavorites,
 		enableLikes,
 		enableSharing,
-    enableRatings,
+		enableRatings,
 		enablePayments,
 	} = props || {}
-  
+
 	const { title, description } = resource || {}
 	return (
-		<Stack
-			sx={ sx.root }
-			spacing={4}
-		>
+		<Stack sx={sx.root} spacing={4}>
 			{(actions || enableEdit) && (
 				<Box sx={sx.actions}>
 					<Actions
@@ -56,18 +53,10 @@ const HeroLayout: React.FC<HeroLayoutProps> = (props) => {
 				<Typography color="text.primary" variant="h3">
 					{title}
 				</Typography>
-        { enableRatings == true && (
-          <AvgRating 
-            resource={resource} 
-            enableTotal
-          />
-        )}
-        { displayFields?.length > 0 && (
-				  <DisplayFields 
-            fields={displayFields} 
-            resource={resource} 
-          />
-        )}
+				{enableRatings == true && <AvgRating resource={resource} enableTotal />}
+				{displayFields?.length > 0 && (
+					<DisplayFields fields={displayFields} resource={resource} />
+				)}
 				{enablePayments == true && (
 					<StripePaymentLink
 						resource={resource}
@@ -84,9 +73,7 @@ const HeroLayout: React.FC<HeroLayoutProps> = (props) => {
 				enableSharing={enableSharing}
 			/>
 			<Box sx={sx.content}>
-        <ExpandableText 
-          text={description}
-        />
+				<ExpandableText text={description} />
 			</Box>
 		</Stack>
 	)

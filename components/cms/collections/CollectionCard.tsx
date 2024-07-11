@@ -1,22 +1,16 @@
 import React from 'react'
-import { 
-  ListCard, 
-  Card, 
-  CoverCard, 
-  AvatarCard, 
-  ChipCard, 
-  TextCard, 
-  TableCard 
+import {
+	ListCard,
+	Card,
+	CoverCard,
+	AvatarCard,
+	ChipCard,
+	TextCard,
+	TableCard,
 } from '../..'
 import { ActionType, DisplayFieldType } from '../../../types'
 
-type CardStyleTypes = 
-  'list' | 
-  'card' | 
-  'avatar' | 
-  'cover' | 
-  'table' |   
-  'text'
+type CardStyleTypes = 'list' | 'card' | 'avatar' | 'cover' | 'table' | 'text'
 
 type CollectionCardProps = {
 	actions: ActionType[]
@@ -41,10 +35,10 @@ type CollectionCardProps = {
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
-  enableUsers?: boolean
-  enableComments?: boolean
+	enableUsers?: boolean
+	enableComments?: boolean
 	enableFavorites?: boolean
-  enableRatings?: boolean
+	enableRatings?: boolean
 }
 
 const CollectionCard: React.FC<CollectionCardProps> = (props) => {
@@ -54,10 +48,10 @@ const CollectionCard: React.FC<CollectionCardProps> = (props) => {
 		card: Card,
 		avatar: AvatarCard,
 		cover: CoverCard,
-    chip: ChipCard,
+		chip: ChipCard,
 		table: TableCard,
 		text: TextCard,
-    list: ListCard		
+		list: ListCard,
 	}
 
 	let Component = COMPONENTS[style] || Card

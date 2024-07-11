@@ -1,9 +1,5 @@
 import React, { useEffect } from 'react'
-import { 
-  ActionType, 
-  FormFieldType, 
-  DisplayFieldType 
-} from '../../../types'
+import { ActionType, FormFieldType, DisplayFieldType } from '../../../types'
 import HeroList from './HeroList'
 import HeroCard from './HeroCard'
 import HeroAvatar from './HeroAvatar'
@@ -25,20 +21,14 @@ export type HeroProps = {
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
-  enableRatings?: boolean
+	enableRatings?: boolean
 	enablePayments?: boolean
-  enableUsers?: boolean	
-  enableOverlay?: boolean
-  handleEdit?: (res: any) => void
+	enableUsers?: boolean
+	enableOverlay?: boolean
+	handleEdit?: (res: any) => void
 }
 
-type HeroStyleTypes =
-	| 'card'
-  | 'cover' 
-	| 'list'  
-	| 'avatar'
-	| 'youtube'
-	| 'vimeo'
+type HeroStyleTypes = 'card' | 'cover' | 'list' | 'avatar' | 'youtube' | 'vimeo'
 
 export type HeroItemProps = HeroProps & {
 	fieldName: string
@@ -51,20 +41,20 @@ const HeroItem: React.FC<HeroItemProps> = (props) => {
 	let { handle } = props
 	if (handle == 'index') handle = undefined
 	const {
-		style = 'article',		
+		style = 'article',
 		displayFields = [],
 		fieldName,
 		actions,
-    enableOverlay,
+		enableOverlay,
 		enableEdit,
-		enableFavorites,    
+		enableFavorites,
 		enableLikes,
 		enableSharing,
-    enableRatings,
+		enableRatings,
 		enablePayments,
 	} = props || {}
 
-  const { resource } = useCollection()
+	const { resource } = useCollection()
 
 	const components = {
 		list: HeroList,
@@ -76,27 +66,25 @@ const HeroItem: React.FC<HeroItemProps> = (props) => {
 	}
 
 	const Component = components[style]
-  
-  const { 
-    handleEdit 
-  } = useForms()
 
-  if(!resource?.id) return null;
+	const { handleEdit } = useForms()
+
+	if (!resource?.id) return null
 	return (
-    <Component
-      fieldName={fieldName}
-      resource={resource}
-      actions={actions}
-      displayFields={displayFields}
-      enableOverlay={enableOverlay}
-      enableEdit={enableEdit}
-      handleEdit={() => handleEdit(resource)}
-      enableFavorites={enableFavorites}
-      enableLikes={enableLikes}
-      enableSharing={enableSharing}
-      enableRatings={enableRatings}
-      enablePayments={enablePayments}
-    />		
+		<Component
+			fieldName={fieldName}
+			resource={resource}
+			actions={actions}
+			displayFields={displayFields}
+			enableOverlay={enableOverlay}
+			enableEdit={enableEdit}
+			handleEdit={() => handleEdit(resource)}
+			enableFavorites={enableFavorites}
+			enableLikes={enableLikes}
+			enableSharing={enableSharing}
+			enableRatings={enableRatings}
+			enablePayments={enablePayments}
+		/>
 	)
 }
 

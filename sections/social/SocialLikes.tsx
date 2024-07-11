@@ -5,14 +5,11 @@ import { LikesProps } from '../../components/social/likes/Likes'
 import { SectionProps, HeadingProps } from '../../types'
 import { CollectionProvider } from 'frontend-js'
 
-type SocialLikesProps = 
-  SectionProps & 
-  HeadingProps & 
-  LikesProps
+type SocialLikesProps = SectionProps & HeadingProps & LikesProps
 
 const SocialLikes: React.FC<SocialLikesProps> = (props) => {
 	const {
-    url,
+		url,
 		label,
 		title,
 		description,
@@ -27,34 +24,31 @@ const SocialLikes: React.FC<SocialLikesProps> = (props) => {
 		...rest
 	} = props
 
-  const likesUrl = `${url}/likes`
+	const likesUrl = `${url}/likes`
 
 	return (
-    <CollectionProvider url={likesUrl}>
-      <Query>
-        <Section
-          requireAuth
-          requireTeam={requireTeam}
-          requirePaid={requirePaid}
-          requireAdmin={requireAdmin}
-          theme={theme}
-          py={py}
-          px={px}
-          maxWidth={maxWidth}
-        >
-          <Heading
-            label={label}
-            title={title}
-            description={description}
-            textAlign={textAlign}
-          />
-          <Likes 
-            url={url}
-            {...rest} 
-          />
-        </Section>
-      </Query>
-    </CollectionProvider>    
+		<CollectionProvider url={likesUrl}>
+			<Query>
+				<Section
+					requireAuth
+					requireTeam={requireTeam}
+					requirePaid={requirePaid}
+					requireAdmin={requireAdmin}
+					theme={theme}
+					py={py}
+					px={px}
+					maxWidth={maxWidth}
+				>
+					<Heading
+						label={label}
+						title={title}
+						description={description}
+						textAlign={textAlign}
+					/>
+					<Likes url={url} {...rest} />
+				</Section>
+			</Query>
+		</CollectionProvider>
 	)
 }
 

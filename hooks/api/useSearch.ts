@@ -1,17 +1,10 @@
 import React, { useState } from 'react'
 import { useCollection } from 'frontend-js'
 import { useFilters } from '..'
-import { 
-  SortOptionType,
-  FilterOptionType 
-} from '../../types'
+import { SortOptionType, FilterOptionType } from '../../types'
 
 const useSearch = (props) => {
-
-  const {
-    query: defaultQuery = {},
-		perPage = 20
-	} = props
+	const { query: defaultQuery = {}, perPage = 20 } = props
 
 	const {
 		loading,
@@ -26,35 +19,35 @@ const useSearch = (props) => {
 	} = useCollection()
 
 	const [keywords, setKeywords] = useState('')
-  const [location, setLocation] = useState('')
+	const [location, setLocation] = useState('')
 
 	const handleKeywordChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
 		setKeywords(ev.target.value)
 	}
 
-  const handleLocationChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    setLocation(ev.target.value)
-  }
+	const handleLocationChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+		setLocation(ev.target.value)
+	}
 
-	const handleSearch = (keywords='', location='') => {
-    let searchQuery = {
+	const handleSearch = (keywords = '', location = '') => {
+		let searchQuery = {
 			...query,
 			...defaultQuery,
-			keywords: keywords,     
+			keywords: keywords,
 			page: 1,
 			per_page: perPage,
 		}
-    if(location?.length > 0){
-      searchQuery = {
-        ...searchQuery,
-        location: location
-      }
-    }else{
-      searchQuery = {
-        ...searchQuery,
-        location: null
-      }
-    }
+		if (location?.length > 0) {
+			searchQuery = {
+				...searchQuery,
+				location: location,
+			}
+		} else {
+			searchQuery = {
+				...searchQuery,
+				location: null,
+			}
+		}
 		findMany(searchQuery)
 	}
 
@@ -73,8 +66,8 @@ const useSearch = (props) => {
 	}
 
 	const {
-    mergeFilters,
-    buildQueryFilters,
+		mergeFilters,
+		buildQueryFilters,
 		activeFilters,
 		setActiveFilters,
 		handleAddFilter,
@@ -86,54 +79,51 @@ const useSearch = (props) => {
 	const handleClearFilters = () => {
 		setActiveFilters([])
 		findMany({
-      ...defaultQuery,
+			...defaultQuery,
 			filters: defaultQuery?.filters,
 			sort_by: 'id',
 			sort_direction: 'desc',
 			keywords: '',
 			page: 1,
-			per_page: perPage
+			per_page: perPage,
 		})
 	}
 
 	const handleFilter = (filter: FilterOptionType) => {
-		let newFilters = handleAddFilter(filter)    
-    let queryFilter = buildQueryFilters(newFilters)
-    let mergedFilters = mergeFilters(
-      defaultQuery?.filters,
-      queryFilter
-    )
-    findMany({
-      ...defaultQuery,
-      ...query,
-      filters: mergedFilters,
-      page: 1 
-    })
+		let newFilters = handleAddFilter(filter)
+		let queryFilter = buildQueryFilters(newFilters)
+		let mergedFilters = mergeFilters(defaultQuery?.filters, queryFilter)
+		findMany({
+			...defaultQuery,
+			...query,
+			filters: mergedFilters,
+			page: 1,
+		})
 	}
 
-  return {
-    loading,
-    delayedLoading,
-    resources,
-    query,
-    findMany,
-    reloadMany,
-    page,
-    numPages,
-    loadMore,
-    keywords,
-    setKeywords,
-    handleKeywordChange,
-    location,
-    setLocation,
-    handleLocationChange,    
-    handleSearch,
-    handleSortBy,
-    handleSortDirection,
-    activeFilters,
-    handleFilter,
-    handleClearFilters,    
-  }
+	return {
+		loading,
+		delayedLoading,
+		resources,
+		query,
+		findMany,
+		reloadMany,
+		page,
+		numPages,
+		loadMore,
+		keywords,
+		setKeywords,
+		handleKeywordChange,
+		location,
+		setLocation,
+		handleLocationChange,
+		handleSearch,
+		handleSortBy,
+		handleSortDirection,
+		activeFilters,
+		handleFilter,
+		handleClearFilters,
+	}
 }
 
 export default useSearch

@@ -45,7 +45,7 @@ type ColorInputProps = {
 	handleChange: (e: SyntheticEventType) => void
 	errors?: any
 	disableTone?: boolean
-  info?: string
+	info?: string
 }
 
 const ColorInput: React.FC<ColorInputProps> = (props) => {
@@ -56,7 +56,7 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 		placeholder = 'Color',
 		disableTone = false,
 		handleChange,
-    info
+		info,
 	} = props
 
 	const [tone, setTone] = useState(500)
@@ -122,10 +122,7 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 
 	return (
 		<Stack direction="column" spacing={1} sx={sx.root}>
-      <InputLabel 
-        label={label}
-        info={info}
-      />
+			<InputLabel label={label} info={info} />
 			<Button
 				sx={sx.button}
 				fullWidth

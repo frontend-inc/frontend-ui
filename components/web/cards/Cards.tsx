@@ -39,27 +39,27 @@ const Cards: React.FC<CardsProps> = (props) => {
 
 	return (
 		<Box>
-      <Grid container spacing={2}>
-        {items?.map((card, i) => (
-          <Grid item xs={12} sm={4} md={4} key={i}>
-            <CollectionCard
-              actions={[]}
-              style={style}
-              resource={{
-                ...card,
-                image: {
-                  url: card?.image,
-                },
-              }}
-              displayFields={[]}
-              handleClick={() => handleClick(card)}
-              enableBorder={enableBorder}
-              enableGradient={enableGradient}
-              enableOverlay={enableOverlay}
-            />
-          </Grid>
-        ))}
-      </Grid>
+			<Grid container spacing={2}>
+				{items?.map((card, i) => (
+					<Grid item xs={12} sm={4} md={4} key={i}>
+						<CollectionCard
+							actions={[]}
+							style={style}
+							resource={{
+								...card,
+								image: {
+									url: card?.image,
+								},
+							}}
+							displayFields={[]}
+							handleClick={() => handleClick(card)}
+							enableBorder={enableBorder}
+							enableGradient={enableGradient}
+							enableOverlay={enableOverlay}
+						/>
+					</Grid>
+				))}
+			</Grid>
 			{items?.length == 0 && (
 				<Placeholder
 					icon="Search"

@@ -5,7 +5,7 @@ import {
 	FilterButton,
 	SortButton,
 	SearchInput,
-  GeoSearchInput
+	GeoSearchInput,
 } from '../../../components'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch, useForms } from '../../../hooks'
@@ -14,60 +14,58 @@ import { useAuth } from 'frontend-js'
 export type CollectionToolbarProps = {
 	query: any
 	url: string
-  filterUser: boolean
-  filterTeam: boolean
-  perPage: number  
+	filterUser: boolean
+	filterTeam: boolean
+	perPage: number
 	enableSearch?: boolean
-  enableGeoSearch?: boolean
+	enableGeoSearch?: boolean
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
 	enableCreate?: boolean
-  handleAdd?: () => void
+	handleAdd?: () => void
 }
 
 const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
-  const { currentUser } = useAuth()
+	const { currentUser } = useAuth()
 
 	const {
-    url,
-    filterUser,
-    filterTeam,
-    query: defaultQuery ={},
-    perPage,
+		url,
+		filterUser,
+		filterTeam,
+		query: defaultQuery = {},
+		perPage,
 		enableCreate = false,
 		enableSearch = false,
-    enableGeoSearch = false,
+		enableGeoSearch = false,
 		filterOptions = [],
 		sortOptions = [],
 	} = props
 
-  const {
-    query,
-    keywords,
-    handleKeywordChange,
-    location,
-    handleLocationChange,
-    handleSearch,
-    handleSortBy,
-    handleSortDirection,
-    activeFilters,
-    handleFilter,
-    handleClearFilters, 
-  } = useSearch({
-    url,    
-    user: currentUser,
-    perPage,
-    filterUser,
-    filterTeam,
-    query: defaultQuery,  
-  })
+	const {
+		query,
+		keywords,
+		handleKeywordChange,
+		location,
+		handleLocationChange,
+		handleSearch,
+		handleSortBy,
+		handleSortDirection,
+		activeFilters,
+		handleFilter,
+		handleClearFilters,
+	} = useSearch({
+		url,
+		user: currentUser,
+		perPage,
+		filterUser,
+		filterTeam,
+		query: defaultQuery,
+	})
 
-  const { 
-    handleAdd 
-  } = useForms()
+	const { handleAdd } = useForms()
 
-  const enableFilters = enableSearch && filterOptions.length > 0
-  const enableSorting = enableSearch && sortOptions.length > 0
+	const enableFilters = enableSearch && filterOptions.length > 0
+	const enableSorting = enableSearch && sortOptions.length > 0
 
 	if (!enableSearch && !enableFilters && !enableSorting && !enableCreate) {
 		return null
@@ -79,23 +77,27 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 				direction={{ sm: 'row', xs: 'column' }}
 				spacing={1}
 			>
-				<Stack spacing={1} direction={{ xs: 'column', sm: 'row' }} alignItems='center'>
-          {enableSearch && !enableGeoSearch && (
-            <SearchInput
-              value={keywords}
-              handleChange={handleKeywordChange}
-              handleSearch={handleSearch}
-            />
-          )}
-          {enableGeoSearch && (
-            <GeoSearchInput
-              value={keywords}
-              location={location}
-              handleChange={handleKeywordChange}
-              handleLocationChange={handleLocationChange}
-              handleSearch={handleSearch}
-            />
-          )}
+				<Stack
+					spacing={1}
+					direction={{ xs: 'column', sm: 'row' }}
+					alignItems="center"
+				>
+					{enableSearch && !enableGeoSearch && (
+						<SearchInput
+							value={keywords}
+							handleChange={handleKeywordChange}
+							handleSearch={handleSearch}
+						/>
+					)}
+					{enableGeoSearch && (
+						<GeoSearchInput
+							value={keywords}
+							location={location}
+							handleChange={handleKeywordChange}
+							handleLocationChange={handleLocationChange}
+							handleSearch={handleSearch}
+						/>
+					)}
 
 					{enableFilters && (
 						<Box sx={sx.buttonContainer}>
@@ -108,25 +110,31 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 						</Box>
 					)}
 					{enableSorting && (
-            <Box sx={sx.buttonContainer}>
-              <SortButton
-                sortBy={query?.sort_by || 'id'}
-                sortDirection={query?.sort_direction || 'desc'}
-                sortOptions={sortOptions}
-                handleSortBy={handleSortBy}
-                handleSortDirection={handleSortDirection}
-              />
-            </Box>
+						<Box sx={sx.buttonContainer}>
+							<SortButton
+								sortBy={query?.sort_by || 'id'}
+								sortDirection={query?.sort_direction || 'desc'}
+								sortOptions={sortOptions}
+								handleSortBy={handleSortBy}
+								handleSortDirection={handleSortDirection}
+							/>
+						</Box>
 					)}
 				</Stack>
 				{enableCreate && (
-					<Stack spacing={1} direction={{ xs: 'column', sm: 'row' }} alignItems='center'>
+					<Stack
+						spacing={1}
+						direction={{ xs: 'column', sm: 'row' }}
+						alignItems="center"
+					>
 						<Button
 							sx={sx.button}
 							color="secondary"
 							variant="contained"
 							onClick={handleAdd}
-							startIcon={<Icon name="Plus" size={20} color='secondary.contrastText' />}
+							startIcon={
+								<Icon name="Plus" size={20} color="secondary.contrastText" />
+							}
 						>
 							Add
 						</Button>
@@ -162,12 +170,12 @@ const sx = {
 			sm: 'row',
 		},
 	},
-  buttonContainer: {
-    width: {
-      xs: '100%',
-      sm: 'auto'
-    }
-  },
+	buttonContainer: {
+		width: {
+			xs: '100%',
+			sm: 'auto',
+		},
+	},
 	loading: {
 		opacity: 0.7,
 	},

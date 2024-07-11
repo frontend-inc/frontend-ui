@@ -15,12 +15,12 @@ const SwitchInput: React.FC<SwitchInputProps> = (props) => {
 		label,
 		placeholder,
 		handleChange,
-    info
+		info,
 	} = props
 
 	return (
 		<Box sx={sx.root}>
-      <InputLabel label={label} info={info} />
+			<InputLabel label={label} info={info} />
 			<Box
 				sx={{
 					...sx.input,

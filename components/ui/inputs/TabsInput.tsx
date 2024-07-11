@@ -21,7 +21,7 @@ type TabsInputProps = {
 	variant?: 'fullWidth' | 'scrollable'
 	size?: 'small' | 'large'
 	direction?: 'row' | 'column'
-  info?: string
+	info?: string
 }
 
 const TabsInput: React.FC<TabsInputProps> = (props) => {
@@ -37,7 +37,7 @@ const TabsInput: React.FC<TabsInputProps> = (props) => {
 		variant = 'fullWidth',
 		size = 'large',
 		direction = 'row',
-    info
+		info,
 	} = props
 
 	const handleInputChange = (value: number | string) => {
@@ -59,10 +59,7 @@ const TabsInput: React.FC<TabsInputProps> = (props) => {
 			direction={direction}
 			spacing={1}
 		>
-      <InputLabel 
-        label={label}
-        info={info}
-      />
+			<InputLabel label={label} info={info} />
 			<ButtonTabs
 				options={options}
 				value={value}

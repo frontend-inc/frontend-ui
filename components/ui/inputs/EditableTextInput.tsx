@@ -11,7 +11,7 @@ type EditableTextInputProps = {
 	handleSubmit: (name: string, value: string) => void
 	loading?: boolean
 	placeholder?: string
-  info?: string 
+	info?: string
 }
 
 const EditableTextInput: React.FC<EditableTextInputProps> = (props) => {
@@ -23,7 +23,7 @@ const EditableTextInput: React.FC<EditableTextInputProps> = (props) => {
 		handleSubmit,
 		loading,
 		placeholder,
-    info
+		info,
 	} = props
 
 	const [editing, setEditing] = useState(false)
@@ -42,7 +42,7 @@ const EditableTextInput: React.FC<EditableTextInputProps> = (props) => {
 				name={name}
 				handleChange={handleChange}
 				placeholder={placeholder}
-        info={info}
+				info={info}
 			/>
 			<Box sx={sx.icons}>
 				{loading ? (

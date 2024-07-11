@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 
 type SocialButtonsProps = {
 	handle: string
-  direction?: 'row' | 'column'
+	direction?: 'row' | 'column'
 	enableLikes?: boolean
 	enableFavorites?: boolean
 	enableSharing?: boolean
@@ -18,7 +18,7 @@ type SocialButtonsProps = {
 const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 	const {
 		handle,
-    direction = 'row',
+		direction = 'row',
 		enableLikes,
 		enableFavorites,
 		enableSharing,
@@ -32,7 +32,7 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 
 	if (!enableLikes && !enableFavorites && !enableSharing) return null
 	return (
-		<Stack direction={ direction } justifyContent={justifyContent} spacing={1}>
+		<Stack direction={direction} justifyContent={justifyContent} spacing={1}>
 			{enableLikes == true && (
 				<LikeButton variant="button" handle={handle} numLikes={numLikes} />
 			)}
@@ -44,11 +44,8 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 				/>
 			)}
 			{enableSharing == true && (
-        <ShareButton 
-          variant="button" 
-          url={currentPageUrl} 
-        />
-      )}
+				<ShareButton variant="button" url={currentPageUrl} />
+			)}
 		</Stack>
 	)
 }

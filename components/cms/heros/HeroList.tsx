@@ -7,7 +7,7 @@ import {
 	SocialButtons,
 	Actions,
 	Image,
-  AvgRating,  
+	AvgRating,
 } from '../..'
 import { HeroProps } from './HeroItem'
 import { flattenDocument } from 'frontend-js'
@@ -23,15 +23,12 @@ const HeroList: React.FC<HeroProps> = (props) => {
 		enableFavorites,
 		enableLikes,
 		enableSharing,
-    enableRatings,
-		enablePayments
+		enableRatings,
+		enablePayments,
 	} = props || {}
 	const { label, title, image, description } = resource || {}
 	return (
-		<Stack
-			sx={ sx.root }
-			spacing={4}
-		>
+		<Stack sx={sx.root} spacing={4}>
 			{(actions || enableEdit) && (
 				<Box sx={sx.actions}>
 					<Actions
@@ -50,21 +47,17 @@ const HeroList: React.FC<HeroProps> = (props) => {
 				<Typography color="text.primary" variant="h3">
 					{title}
 				</Typography>
-        { enableRatings == true && (
-          <AvgRating 
-            justifyContent="center"
-            resource={resource} 
-            enableTotal
-          />
-        )}
-        { displayFields?.length > 0 && (
-          <DisplayFields
-            alignItems="center"
-            fields={displayFields}
-            resource={resource}
-          />
-        )}
-        {enablePayments == true && (
+				{enableRatings == true && (
+					<AvgRating justifyContent="center" resource={resource} enableTotal />
+				)}
+				{displayFields?.length > 0 && (
+					<DisplayFields
+						alignItems="center"
+						fields={displayFields}
+						resource={resource}
+					/>
+				)}
+				{enablePayments == true && (
 					<StripePaymentLink
 						resource={resource}
 						buttonText="Checkout"
@@ -72,14 +65,9 @@ const HeroList: React.FC<HeroProps> = (props) => {
 					/>
 				)}
 			</Stack>
-      <Box sx={sx.imageContainer}>
-        <Image
-          src={image?.url}
-          alt={title}
-          height={400}
-          label={label}          
-        />
-      </Box>
+			<Box sx={sx.imageContainer}>
+				<Image src={image?.url} alt={title} height={400} label={label} />
+			</Box>
 			<SocialButtons
 				handle={resource?.handle}
 				enableLikes={enableLikes}

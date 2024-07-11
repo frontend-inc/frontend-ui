@@ -73,7 +73,7 @@ const AttachmentInput: React.FC<AttachmentInputProps> = (props) => {
 		size = IMAGE_WIDTH,
 		objectFit = 'cover',
 		placeholder = 'Upload file',
-    info
+		info,
 	} = props
 
 	const [src, setSrc] = useState(null)
@@ -107,10 +107,7 @@ const AttachmentInput: React.FC<AttachmentInputProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-      <InputLabel 
-        label={label}
-        info={info}
-      />
+			<InputLabel label={label} info={info} />
 			{attachment?.url && (
 				<RenderAttachment
 					variant={variant}

@@ -16,10 +16,10 @@ type CollectionCardsProps = {
 	enableOverlay?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
-  enableUsers?: boolean
-  enableComments?: boolean
+	enableUsers?: boolean
+	enableComments?: boolean
 	enableFavorites?: boolean
-  enableRatings?: boolean
+	enableRatings?: boolean
 	handleClick: (item: any) => void
 	handleEdit?: (item: any) => void
 	handleDelete?: (item: any) => void
@@ -41,55 +41,55 @@ const CollectionCards: React.FC<CollectionCardsProps> = (props) => {
 		enableOverlay = false,
 		enableEdit = false,
 		enableDelete = false,
-    enableUsers = false,
-    enableComments = false,
+		enableUsers = false,
+		enableComments = false,
 		enableFavorites = false,
-    enableRatings = false,
+		enableRatings = false,
 	} = props
 
-  const VARIANTS = {
-    list: 'list',
-    card: 'grid',
-    avatar: 'list',
-    cover: 'grid',
-    chip: 'list',
-    text: 'list',
-    table: 'table' 
-  }
+	const VARIANTS = {
+		list: 'list',
+		card: 'grid',
+		avatar: 'list',
+		cover: 'grid',
+		chip: 'list',
+		text: 'list',
+		table: 'table',
+	}
 
-  let variant = VARIANTS[style]
+	let variant = VARIANTS[style]
 
 	return (
-			<Box
-				sx={{
-					...sx.root,
-					...(variant == 'grid' ? sx.grid : sx.list),
-				}}
-			>
-				{resources?.map((resource, index) => (
-					<CollectionCard
-						key={index}
-            style={style}
-						resource={flattenDocument(resource)}
-						displayFields={displayFields}
-						handleClick={() => handleClick(resource)}
-						actions={buildActions({
-							enableEdit,
-							enableDelete,
-							handleEdit: () => handleEdit(resource),
-							handleDelete: () => handleDelete(resource),
-							actions,
-						})}
-            enableUsers={enableUsers}
-            enableComments={enableComments}
-						enableFavorites={enableFavorites}
-            enableRatings={enableRatings}
-						enableBorder={enableBorder}
-						enableGradient={enableGradient}
-						enableOverlay={enableOverlay}
-					/>
-				))}
-			</Box>
+		<Box
+			sx={{
+				...sx.root,
+				...(variant == 'grid' ? sx.grid : sx.list),
+			}}
+		>
+			{resources?.map((resource, index) => (
+				<CollectionCard
+					key={index}
+					style={style}
+					resource={flattenDocument(resource)}
+					displayFields={displayFields}
+					handleClick={() => handleClick(resource)}
+					actions={buildActions({
+						enableEdit,
+						enableDelete,
+						handleEdit: () => handleEdit(resource),
+						handleDelete: () => handleDelete(resource),
+						actions,
+					})}
+					enableUsers={enableUsers}
+					enableComments={enableComments}
+					enableFavorites={enableFavorites}
+					enableRatings={enableRatings}
+					enableBorder={enableBorder}
+					enableGradient={enableGradient}
+					enableOverlay={enableOverlay}
+				/>
+			))}
+		</Box>
 	)
 }
 
@@ -98,7 +98,7 @@ export default CollectionCards
 const sx = {
 	root: {
 		width: '100%',
-    overflowX: 'scroll',
+		overflowX: 'scroll',
 	},
 	list: {
 		display: 'flex',
@@ -106,7 +106,7 @@ const sx = {
 		gap: '16px',
 	},
 	listDense: {
-		gap: '8px',    
+		gap: '8px',
 	},
 	grid: {
 		display: 'grid',
@@ -115,6 +115,6 @@ const sx = {
 			xs: '1fr',
 		},
 		gap: '16px',
-    pb: 1
+		pb: 1,
 	},
 }

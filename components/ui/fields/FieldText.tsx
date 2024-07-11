@@ -8,16 +8,24 @@ type FieldTextProps = {
 	placeholder?: string
 	variant?: TypographyVariantsType
 	color?: string
-  maxChars?: number
-	rest?: any  
+	maxChars?: number
+	rest?: any
 }
 
 const FieldText: React.FC<FieldTextProps> = (props) => {
-	const { value, label, variant, color, placeholder, maxChars=80, ...rest } = props
+	const {
+		value,
+		label,
+		variant,
+		color,
+		placeholder,
+		maxChars = 80,
+		...rest
+	} = props
 	return (
-    <FieldWrapper label={label} color={color} {...rest}>
-      <ExpandableText text={value || placeholder } maxChars={maxChars} />
-    </FieldWrapper>
+		<FieldWrapper label={label} color={color} {...rest}>
+			<ExpandableText text={value || placeholder} maxChars={maxChars} />
+		</FieldWrapper>
 	)
 }
 

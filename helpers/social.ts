@@ -15,6 +15,8 @@ export const isFavorited = (user, documentId) => {
 }
 
 export const isFollowing = (user, followUser) => {
-  if(!user || !followUser) return false;
-	return user?.following?.find((u: any) => u.username === followUser?.username) ? true : false
+	if (!user || !followUser) return false
+	return user?.following?.find((u: any) => u.username === followUser?.username)
+		? true
+		: false
 }

@@ -12,7 +12,7 @@ type JsonArrayInputProps = InputPropsType & {
 	fields: Record<string, any>[]
 	name: string
 	label?: string
-  info?: string
+	info?: string
 	value: any[]
 	handleChange: any
 }
@@ -25,7 +25,7 @@ const JsonArrayInput: React.FC<JsonArrayInputProps> = (props) => {
 		fields = [],
 		value: items = [],
 		handleChange,
-    info
+		info,
 	} = props
 
 	const { open, anchorEl, openMenu, closeMenu } = useMenu()
@@ -106,10 +106,7 @@ const JsonArrayInput: React.FC<JsonArrayInputProps> = (props) => {
 
 	return (
 		<Stack direction="column" spacing={0.5} sx={sx.root}>
-      <InputLabel 
-        label={label}
-        info={info}
-      />			
+			<InputLabel label={label} info={info} />
 			<SortableList
 				droppableId={`json-array-${name}`}
 				handleDrop={handleDrop}
@@ -155,7 +152,7 @@ const JsonArrayInput: React.FC<JsonArrayInputProps> = (props) => {
 					item={activeItem}
 					fields={fields}
 					handleChange={handleInputChange}
-          direction='column'
+					direction="column"
 				/>
 			</Drawer>
 		</Stack>

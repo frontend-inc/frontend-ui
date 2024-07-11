@@ -10,8 +10,8 @@ import {
 	ListItemButton,
 	ListItemIcon,
 	ListItemText,
-  Typography,
-  ClickAwayListener
+	Typography,
+	ClickAwayListener,
 } from '@mui/material'
 import { TextInputPropsType } from '../../../types'
 
@@ -29,7 +29,7 @@ const AutocompleteInput: React.FC<AutocompleteInput> = (props) => {
 		handleInputChange,
 		options = [],
 		direction = 'column',
-    info
+		info,
 	} = props || {}
 
 	const [open, setOpen] = useState(false)
@@ -47,67 +47,68 @@ const AutocompleteInput: React.FC<AutocompleteInput> = (props) => {
 	const handleKeywordChange = (ev) => {
 		let { value } = ev.target
 		handleInputChange(value)
-		if (options?.length > 0) setOpen(true);
-		if (value == ''){
-      setOpen(false)
-    }
+		if (options?.length > 0) setOpen(true)
+		if (value == '') {
+			setOpen(false)
+		}
 	}
 
 	return (
-    <ClickAwayListener onClickAway={() => setOpen(false)}>
-      <Stack width={'100%'} direction="column" spacing={0}>
-        <TextInput
-          name={name}
-          label={label}
-          value={value}
-          options={options}
-          handleChange={handleKeywordChange}
-          direction={direction}
-          placeholder={placeholder}
-          onFocus={() => setOpen(!open)}
-          info={info}
-        />
-          <Box sx={sx.anchor}>
-            {open && (
-              <Paper
-                elevation={2}
-                sx={{
-                  ...sx.paper,
-                  height: options?.length * 64,
-                }}
-              >
-                <List dense sx={sx.list}>
-                  {options?.map((option, index) => (
-                    <ListItem>
-                      <ListItemButton
-                        sx={sx.listItemButton}
-                        onClick={() => handleClick(option)}
-                      >
-                        <ListItemIcon sx={sx.listItemIcon}>
-                          {option?.image && (
-                            <Avatar
-                              alt={option.label}
-                              src={option.image}
-                              sx={sx.avatar}                              
-                            />
-                          )}
-                          {option?.icon && <Icon name={option.icon} size={20} />}
-                        </ListItemIcon>
-                        <ListItemText primary={
-                            <Typography variant="body1" sx={ sx.label }>
-                              { option.label }
-                            </Typography>
-                          } 
-                        />
-                      </ListItemButton>
-                    </ListItem>
-                  ))}
-                </List>
-              </Paper>
-            )}
-          </Box>
-      </Stack>
-    </ClickAwayListener>
+		<ClickAwayListener onClickAway={() => setOpen(false)}>
+			<Stack width={'100%'} direction="column" spacing={0}>
+				<TextInput
+					name={name}
+					label={label}
+					value={value}
+					options={options}
+					handleChange={handleKeywordChange}
+					direction={direction}
+					placeholder={placeholder}
+					onFocus={() => setOpen(!open)}
+					info={info}
+				/>
+				<Box sx={sx.anchor}>
+					{open && (
+						<Paper
+							elevation={2}
+							sx={{
+								...sx.paper,
+								height: options?.length * 64,
+							}}
+						>
+							<List dense sx={sx.list}>
+								{options?.map((option, index) => (
+									<ListItem>
+										<ListItemButton
+											sx={sx.listItemButton}
+											onClick={() => handleClick(option)}
+										>
+											<ListItemIcon sx={sx.listItemIcon}>
+												{option?.image && (
+													<Avatar
+														alt={option.label}
+														src={option.image}
+														sx={sx.avatar}
+													/>
+												)}
+												{option?.icon && <Icon name={option.icon} size={20} />}
+											</ListItemIcon>
+											<ListItemText
+												primary={
+													<Typography variant="body1" sx={sx.label}>
+														{option.label}
+													</Typography>
+												}
+											/>
+										</ListItemButton>
+									</ListItem>
+								))}
+							</List>
+						</Paper>
+					)}
+				</Box>
+			</Stack>
+		</ClickAwayListener>
 	)
 }
 export default AutocompleteInput
@@ -125,12 +126,12 @@ const sx = {
 		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 		maxHeight: '220px',
 		overflowY: 'scroll',
-    zIndex: theme => theme.zIndex.modal,
+		zIndex: (theme) => theme.zIndex.modal,
 	},
 	avatar: {
 		borderRadius: 1,
-    height: 32,
-    width: 32
+		height: 32,
+		width: 32,
 	},
 	list: {
 		bgcolor: 'background.paper',
@@ -144,18 +145,18 @@ const sx = {
 	listItemButton: {
 		px: 1,
 		py: 0,
-    height: 44,
+		height: 44,
 	},
-  listItemIcon: {
-     width: 32, 
-     minWidth: 32,
-     mr: 2 
-  },
+	listItemIcon: {
+		width: 32,
+		minWidth: 32,
+		mr: 2,
+	},
 	mapContainer: {
 		overflow: 'hidden',
 	},
-  label: {
-    width: '100%',
-    textAlign: 'left'
-  }
+	label: {
+		width: '100%',
+		textAlign: 'left',
+	},
 }

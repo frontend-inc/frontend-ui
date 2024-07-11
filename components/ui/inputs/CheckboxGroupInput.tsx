@@ -15,7 +15,7 @@ type CheckboxGroupInputProps = {
 	label: string
 	value?: string[]
 	options: OptionType[]
-  info?: string
+	info?: string
 	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -27,7 +27,7 @@ const CheckboxGroupInput: React.FC<CheckboxGroupInputProps> = (props) => {
 		value: values = [],
 		options,
 		handleChange,
-    info
+		info,
 	} = props || {}
 
 	const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,10 +49,7 @@ const CheckboxGroupInput: React.FC<CheckboxGroupInputProps> = (props) => {
 	return (
 		<FormControl>
 			<FormGroup>
-        <InputLabel 
-          label={label}
-          info={info}
-        />
+				<InputLabel label={label} info={info} />
 				{options?.map((option, idx) => (
 					<FormControlLabel
 						key={idx}

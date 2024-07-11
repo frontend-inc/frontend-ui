@@ -1,6 +1,12 @@
 import React, { useContext } from 'react'
 import { AppContext, ThemeContext, ThemeProvider } from '../../../context'
-import { UserChip, FavoriteButton, Image, Actions, TouchableOpacity } from '../../../components'
+import {
+	UserChip,
+	FavoriteButton,
+	Image,
+	Actions,
+	TouchableOpacity,
+} from '../../../components'
 import { useRouter } from 'next/router'
 import { Box } from '@mui/material'
 import { CardProps } from '../../../types'
@@ -16,7 +22,7 @@ const ImageCard: React.FC<CardProps> = (props) => {
 		height = 320,
 		enableGradient = false,
 		enableOverlay = false,
-    enableUsers = false,
+		enableUsers = false,
 		enableFavorites = false,
 	} = props || {}
 
@@ -32,43 +38,41 @@ const ImageCard: React.FC<CardProps> = (props) => {
 		}
 	}
 
-  const { theme } = useContext(ThemeContext)
-  
+	const { theme } = useContext(ThemeContext)
+
 	return (
-    <ThemeProvider 
-      muiTheme={ theme } 
-      textPrimary='#FFFFFF'
-      textSecondary='#FFFFFF' 
-    >
-		<Box sx={sx.root}>
-			<TouchableOpacity handleClick={handleItemClick}>
-				<Image
-					src={image?.url}
-					height={height}
-					objectFit={objectFit}
-					alt={title}
-					enableGradient={enableGradient}
-					enableOverlay={enableOverlay}
-				/>
-			</TouchableOpacity>
-			<Box sx={sx.actions}>
-				{enableFavorites == true && <FavoriteButton handle={resource?.handle} />}
-				<Actions
-					numVisible={0}
-					actions={actions}
-					resource={resource}
-					color={enableOverlay ? 'common.white' : 'text.secondary'}
-				/>
+		<ThemeProvider
+			muiTheme={theme}
+			textPrimary="#FFFFFF"
+			textSecondary="#FFFFFF"
+		>
+			<Box sx={sx.root}>
+				<TouchableOpacity handleClick={handleItemClick}>
+					<Image
+						src={image?.url}
+						height={height}
+						objectFit={objectFit}
+						alt={title}
+						enableGradient={enableGradient}
+						enableOverlay={enableOverlay}
+					/>
+				</TouchableOpacity>
+				<Box sx={sx.actions}>
+					{enableFavorites == true && (
+						<FavoriteButton handle={resource?.handle} />
+					)}
+					<Actions
+						numVisible={0}
+						actions={actions}
+						resource={resource}
+						color={enableOverlay ? 'common.white' : 'text.secondary'}
+					/>
+				</Box>
+				<Box sx={sx.userCard}>
+					{enableUsers == true && <UserChip user={resource?.user} />}
+				</Box>
 			</Box>
-      <Box sx={ sx.userCard }>
-        { enableUsers == true && (
-          <UserChip 
-            user={ resource?.user } 
-          />
-        )}
-      </Box>  
-		</Box>
-    </ThemeProvider>
+		</ThemeProvider>
 	)
 }
 
@@ -80,10 +84,10 @@ const sx = {
 		flexDirection: 'column',
 		overflow: 'hidden',
 		borderRadius: 1,
-    transition: 'box-shadow 0.3s',
-    '&:hover': {
-      boxShadow: 2
-    }
+		transition: 'box-shadow 0.3s',
+		'&:hover': {
+			boxShadow: 2,
+		},
 	},
 	gradient: {
 		'&::after': {
@@ -104,7 +108,7 @@ const sx = {
 		top: 10,
 		right: 10,
 	},
-  userCard: {
+	userCard: {
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'flex-end',

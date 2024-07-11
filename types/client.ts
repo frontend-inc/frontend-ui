@@ -71,12 +71,12 @@ export type QueryParamsType = {
 	filters?: FiltersType | Record<string, any>
 	page?: number | null
 	per_page?: number | null
-  current_user?: boolean 
-  current_team?: boolean
-  belongs_to?: number 
-  similar_to?: number
-  location?: string
-  radius?: number
+	current_user?: boolean
+	current_team?: boolean
+	belongs_to?: number
+	similar_to?: number
+	location?: string
+	radius?: number
 	rest?: any
 }
 

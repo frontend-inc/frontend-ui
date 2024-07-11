@@ -8,7 +8,7 @@ type SocialFeedProps = SectionProps & HeadingProps & FeedProps
 
 const SocialFeed: React.FC<SocialFeedProps> = (props) => {
 	const {
-    url,
+		url,
 		label,
 		title,
 		description,
@@ -24,27 +24,24 @@ const SocialFeed: React.FC<SocialFeedProps> = (props) => {
 	} = props
 
 	return (
-      <Section
-        requireAuth
-        requireTeam={requireTeam}
-        requirePaid={requirePaid}
-        requireAdmin={requireAdmin}
-        theme={theme}
-        py={py}
-        px={px}
-        maxWidth={maxWidth}
-      >
-        <Heading
-          label={label}
-          title={title}
-          description={description}
-          textAlign={textAlign}
-        />
-        <Feed 
-          {...rest} 
-          url={url}
-        />
-      </Section>
+		<Section
+			requireAuth
+			requireTeam={requireTeam}
+			requirePaid={requirePaid}
+			requireAdmin={requireAdmin}
+			theme={theme}
+			py={py}
+			px={px}
+			maxWidth={maxWidth}
+		>
+			<Heading
+				label={label}
+				title={title}
+				description={description}
+				textAlign={textAlign}
+			/>
+			<Feed {...rest} url={url} />
+		</Section>
 	)
 }
 

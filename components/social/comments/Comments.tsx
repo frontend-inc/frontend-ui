@@ -122,7 +122,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
 			</List>
 			{!loading && comments?.length == 0 && (
 				<Placeholder
-          enableBorder
+					enableBorder
 					icon="MessageSquare"
 					title="There are no comments."
 					description="Be the first to leave a comment."

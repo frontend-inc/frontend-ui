@@ -11,7 +11,14 @@ import {
 	Typography,
 } from '@mui/material'
 import { CardProps } from '../../../types'
-import { UserChip, Actions, AvgRating, DisplayFields, CommentButton, FavoriteButton } from '../../../components'
+import {
+	UserChip,
+	Actions,
+	AvgRating,
+	DisplayFields,
+	CommentButton,
+	FavoriteButton,
+} from '../../../components'
 
 const AvatarList: React.FC<CardProps> = (props) => {
 	const {
@@ -20,36 +27,35 @@ const AvatarList: React.FC<CardProps> = (props) => {
 		displayFields = [],
 		height = 128,
 		width = 128,
-		handleClick,		
+		handleClick,
 		enableGradient = false,
 		enableOverlay = false,
-    enableUsers = false,
-    enableComments = false,
+		enableUsers = false,
+		enableComments = false,
 		enableFavorites = false,
-    enableRatings = false,
+		enableRatings = false,
 	} = props
 
 	const { title, image } = resource || {}
 
 	return (
-		<List
-			disablePadding
-			sx={ sx.listItem }
-		>
+		<List disablePadding sx={sx.listItem}>
 			<ListItem
 				disablePadding
 				disableGutters
 				secondaryAction={
 					<Stack direction="row" alignItems="flex-end" mr={1}>
-            {enableComments == true && <CommentButton resource={resource} /> }
-						{enableFavorites == true && <FavoriteButton handle={resource?.handle} />}
+						{enableComments == true && <CommentButton resource={resource} />}
+						{enableFavorites == true && (
+							<FavoriteButton handle={resource?.handle} />
+						)}
 						<Actions numVisible={0} actions={actions} resource={resource} />
 					</Stack>
 				}
 			>
 				<ListItemButton
 					sx={{
-            ...sx.listItemButton,
+						...sx.listItemButton,
 						minHeight: height + 44,
 					}}
 					onClick={handleClick && handleClick}
@@ -71,23 +77,22 @@ const AvatarList: React.FC<CardProps> = (props) => {
 					</ListItemIcon>
 					<ListItemText
 						primary={
-							<Typography variant='subtitle2' color="text.primary" sx={ sx.title }>
+							<Typography
+								variant="subtitle2"
+								color="text.primary"
+								sx={sx.title}
+							>
 								{title}
 							</Typography>
 						}
 						secondary={
-              <Stack direction='column' spacing={1}>
-                { enableRatings == true && (
-                  <AvgRating resource={resource} size="small" /> 
-                )}
-                <DisplayFields 
-                  fields={displayFields} resource={resource} />
-                { resource?.user && (
-                  <UserChip 
-                    user={ resource?.user }
-                  />
-                )}
-              </Stack>
+							<Stack direction="column" spacing={1}>
+								{enableRatings == true && (
+									<AvgRating resource={resource} size="small" />
+								)}
+								<DisplayFields fields={displayFields} resource={resource} />
+								{resource?.user && <UserChip user={resource?.user} />}
+							</Stack>
 						}
 					/>
 				</ListItemButton>
@@ -102,8 +107,8 @@ const sx = {
 	listItem: {
 		my: 0,
 		p: 0,
-    borderBottom: '1px solid',
-    borderColor: 'divider',
+		borderBottom: '1px solid',
+		borderColor: 'divider',
 	},
 	gradient: {
 		'&::after': {
@@ -138,9 +143,9 @@ const sx = {
 		borderColor: 'divider',
 		borderRadius: 1,
 	},
-  title: {
-    pb: 0.5
-  },
+	title: {
+		pb: 0.5,
+	},
 	avatar: {
 		height: '64px',
 		width: '64px',
@@ -149,9 +154,9 @@ const sx = {
 	description: {
 		maxWidth: 320,
 	},
-  listItemButton: {
-    '&:hover': {
-      bgcolor: 'transparent'
-    }
-  }
+	listItemButton: {
+		'&:hover': {
+			bgcolor: 'transparent',
+		},
+	},
 }

@@ -7,7 +7,7 @@ import GoogleMarker from './GoogleMarker'
 
 export type GoogleMapProps = {
 	darkTheme?: boolean
-	resources: any[] 
+	resources: any[]
 	height?: number
 	width?: number | string
 	zoom?: number
@@ -29,9 +29,9 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
 
 	const [mapConfig, setMapConfig] = useState<MapConfig>(MAP_CONFIGS[0])
 
-  const NYC_LAT = 40.7128
-  const NYC_LNG = -73.935242
-  const [center, setCenter] = useState({ lat: NYC_LAT, lng: NYC_LNG })
+	const NYC_LAT = 40.7128
+	const NYC_LNG = -73.935242
+	const [center, setCenter] = useState({ lat: NYC_LAT, lng: NYC_LNG })
 
 	useEffect(() => {
 		if (darkTheme) {
@@ -41,36 +41,35 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
 		}
 	}, [darkTheme])
 
-  const [googleMarkers, setGoogleMarkers] = useState<GoogleMarkerType[]>([])
+	const [googleMarkers, setGoogleMarkers] = useState<GoogleMarkerType[]>([])
 
-  const handleSetMarkers = (resources) => {
-		let markers = resources
-			?.map((res) => ({
-				lat: res?.lat,
-				lng: res?.lng,
-				label: res?.title,
-				resource: res,
-			}))
+	const handleSetMarkers = (resources) => {
+		let markers = resources?.map((res) => ({
+			lat: res?.lat,
+			lng: res?.lng,
+			label: res?.title,
+			resource: res,
+		}))
 		if (markers.length == 0) return setGoogleMarkers([])
 		setGoogleMarkers(markers)
 	}
 
-  const map = useMap();
+	const map = useMap()
 
-  useEffect(() => {
-    if(map){
-      map.setCenter(center)
-    }
-  }, [center])
+	useEffect(() => {
+		if (map) {
+			map.setCenter(center)
+		}
+	}, [center])
 
-  useEffect(() => {
-    if(googleMarkers?.length > 0){
-      setCenter({
-        lat: googleMarkers[0]?.lat,
-        lng: googleMarkers[0]?.lng,
-      })
-    }
-  }, [googleMarkers])
+	useEffect(() => {
+		if (googleMarkers?.length > 0) {
+			setCenter({
+				lat: googleMarkers[0]?.lat,
+				lng: googleMarkers[0]?.lng,
+			})
+		}
+	}, [googleMarkers])
 
 	useEffect(() => {
 		if (resources) {
@@ -118,10 +117,10 @@ const sx = {
 		position: 'sticky',
 		borderRadius: 1,
 		overflow: 'hidden',
-    transition: 'box-shadow 0.3s',
-    '&:hover': {
-      boxShadow: 2
-    }
+		transition: 'box-shadow 0.3s',
+		'&:hover': {
+			boxShadow: 2,
+		},
 	},
 	mapBorder: {
 		border: '1px solid',

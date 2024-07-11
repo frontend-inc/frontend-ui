@@ -10,7 +10,7 @@ const ReviewButton: React.FC<ReviewButtonProps> = (props) => {
 
 	return (
 		<Button variant="contained" color="secondary" onClick={handleClick}>
-			Leave a review 
+			Leave a review
 		</Button>
 	)
 }

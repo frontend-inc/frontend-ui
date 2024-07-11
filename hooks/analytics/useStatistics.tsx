@@ -8,8 +8,8 @@ type UseStatisticsProps = {
 }
 
 type DataParams = {
-  field: string 
-  date_range: string
+	field: string
+	date_range: string
 }
 
 const useStatistics = (props: UseStatisticsProps) => {
@@ -18,24 +18,24 @@ const useStatistics = (props: UseStatisticsProps) => {
 
 	const { loading, loadingWrapper } = useLoaders()
 
-  const [data, setData] = useState<any>(null)
+	const [data, setData] = useState<any>(null)
 
 	const fetchData = async (query: QueryParamsType) => {
-    let apiQuery = new ApiQuery()
-    //@ts-ignore
-    apiQuery.filter(query.filters)
-    let queryUrl = apiQuery.url()
-		const resp = await loadingWrapper(() => 
-      api.get(`${url}/statistics`, queryUrl)
-    )
-    setData(resp?.data)
-    return resp
+		let apiQuery = new ApiQuery()
+		//@ts-ignore
+		apiQuery.filter(query.filters)
+		let queryUrl = apiQuery.url()
+		const resp = await loadingWrapper(() =>
+			api.get(`${url}/statistics`, queryUrl)
+		)
+		setData(resp?.data)
+		return resp
 	}
 
 	return {
 		loading,
-    data,
-    fetchData,
+		data,
+		fetchData,
 	}
 }
 

@@ -8,13 +8,11 @@ import { UserType } from '../../../types'
 
 type FollowButtonProps = {
 	user: UserType
-	color?: string	
+	color?: string
 }
 
 const FollowButton: React.FC<FollowButtonProps> = (props) => {
-	const {
-		user
-	} = props
+	const { user } = props
 
 	const { fetchMe, currentUser } = useAuth()
 	const { setAuthOpen } = useContext(AppContext)
@@ -52,16 +50,16 @@ const FollowButton: React.FC<FollowButtonProps> = (props) => {
 		}
 	}, [currentUser, user])
 
-  if(!currentUser?.id || currentUser?.id == user?.id) return null;
-	return (    
-    <Button
-      sx={ sx.button}
-      variant="contained"
-      color={ following ? 'secondary' : 'primary' }					
-      onClick={usernameClick}      
-    >
-      {following ? "Following" : "Follow" }
-    </Button>    
+	if (!currentUser?.id || currentUser?.id == user?.id) return null
+	return (
+		<Button
+			sx={sx.button}
+			variant="contained"
+			color={following ? 'secondary' : 'primary'}
+			onClick={usernameClick}
+		>
+			{following ? 'Following' : 'Follow'}
+		</Button>
 	)
 }
 
@@ -69,6 +67,6 @@ export default FollowButton
 
 const sx = {
 	button: {
-    minWidth: 120
-  }
+		minWidth: 120,
+	},
 }

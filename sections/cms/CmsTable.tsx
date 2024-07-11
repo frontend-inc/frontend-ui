@@ -4,9 +4,7 @@ import { CollectionTable } from '../../components'
 import { CollectionTableProps } from '../../components/cms/collections/CollectionTable'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsTableProps = SectionProps & 
-  HeadingProps & 
-  CollectionTableProps
+type CmsTableProps = SectionProps & HeadingProps & CollectionTableProps
 
 const CmsTable: React.FC<CmsTableProps> = (props) => {
 	const {
@@ -21,31 +19,29 @@ const CmsTable: React.FC<CmsTableProps> = (props) => {
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,        
+		requireAdmin,
 		...rest
 	} = props
 
 	return (
-    <Section
-      theme={theme}
-      py={py}
-      px={px}
-      maxWidth={maxWidth}
-      requireAuth={requireAuth}
-      requireTeam={requireTeam}
-      requirePaid={requirePaid}
-      requireAdmin={requireAdmin}
-    >
-      <Heading
-        label={label}
-        title={title}
-        description={description}
-        textAlign={textAlign}
-      />
-      <CollectionTable 
-        {...rest} 
-      />
-    </Section>
+		<Section
+			theme={theme}
+			py={py}
+			px={px}
+			maxWidth={maxWidth}
+			requireAuth={requireAuth}
+			requireTeam={requireTeam}
+			requirePaid={requirePaid}
+			requireAdmin={requireAdmin}
+		>
+			<Heading
+				label={label}
+				title={title}
+				description={description}
+				textAlign={textAlign}
+			/>
+			<CollectionTable {...rest} />
+		</Section>
 	)
 }
 

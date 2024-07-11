@@ -10,7 +10,13 @@ import {
 	ListItemText,
 	Typography,
 } from '@mui/material'
-import { UserChip, AvgRating, FavoriteButton, DisplayFields, Actions } from '../..'
+import {
+	UserChip,
+	AvgRating,
+	FavoriteButton,
+	DisplayFields,
+	Actions,
+} from '../..'
 import { CardProps } from '../../../types'
 
 const ChipCard: React.FC<CardProps> = (props) => {
@@ -18,28 +24,26 @@ const ChipCard: React.FC<CardProps> = (props) => {
 		resource,
 		actions,
 		displayFields = [],
-		handleClick,		
+		handleClick,
 		enableGradient = false,
 		enableOverlay = false,
-    enableUsers = false,
+		enableUsers = false,
 		enableFavorites = false,
-    enableRatings = false,
+		enableRatings = false,
 	} = props
 
 	const { title, image } = resource || {}
 
 	return (
-		<List
-			dense
-			disablePadding
-			sx={ sx.root }
-		>
+		<List dense disablePadding sx={sx.root}>
 			<ListItem
 				disablePadding
 				disableGutters
 				secondaryAction={
 					<Stack direction="row" spacing={0} sx={sx.actions}>
-						{enableFavorites == true && <FavoriteButton handle={resource?.handle} />}
+						{enableFavorites == true && (
+							<FavoriteButton handle={resource?.handle} />
+						)}
 						<Actions numVisible={0} actions={actions} resource={resource} />
 					</Stack>
 				}
@@ -65,24 +69,20 @@ const ChipCard: React.FC<CardProps> = (props) => {
 					)}
 					<ListItemText
 						primary={
-							<Stack direction="column" spacing={0}>              
-                <Typography variant="body1" color="text.primary">
-                  {title}
-                </Typography>
-                {enableRatings == true && (
-                  <AvgRating resource={resource} size="small" />
-                )}
-              </Stack>
+							<Stack direction="column" spacing={0}>
+								<Typography variant="body1" color="text.primary">
+									{title}
+								</Typography>
+								{enableRatings == true && (
+									<AvgRating resource={resource} size="small" />
+								)}
+							</Stack>
 						}
 						secondary={
-              <>
-                <DisplayFields fields={displayFields} resource={resource} />
-                { enableUsers == true && (
-                  <UserChip 
-                    user={ resource?.user }
-                  />
-                )}
-              </>
+							<>
+								<DisplayFields fields={displayFields} resource={resource} />
+								{enableUsers == true && <UserChip user={resource?.user} />}
+							</>
 						}
 					/>
 				</ListItemButton>
@@ -97,15 +97,15 @@ const sx = {
 	root: {
 		my: 0,
 		p: 0,
-    borderBottom: '1px solid',
-    borderColor: 'divider',        
+		borderBottom: '1px solid',
+		borderColor: 'divider',
 	},
 	listItemButton: {
-    p: 1,
+		p: 1,
 		minHeight: 48,
-    '&:hover': {
-      bgcolor: 'transparent'
-    }
+		'&:hover': {
+			bgcolor: 'transparent',
+		},
 	},
 	gradient: {
 		'&::after': {

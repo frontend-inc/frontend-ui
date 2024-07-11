@@ -21,7 +21,7 @@ const useGooglePlaces = () => {
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState(null)
 
-  const [placeOptions, setPlaceOptions] = useState([])
+	const [placeOptions, setPlaceOptions] = useState([])
 	const [place, setPlace] = useState<GooglePlaceType | null>(null)
 	const [places, setPlaces] = useState<GooglePredictionType[] | []>([])
 
@@ -59,18 +59,17 @@ const useGooglePlaces = () => {
 		return resp?.data
 	}
 
-  useEffect(() => {
+	useEffect(() => {
 		if (places && places?.length > 0) {
 			setPlaceOptions(
-        //@ts-ignore
-				places?.map((place) => ({        
-					label: place?.displayName?.text,          
+				//@ts-ignore
+				places?.map((place) => ({
+					label: place?.displayName?.text,
 					value: place?.formattedAddress,
 				}))
 			)
-		} 
+		}
 	}, [places])
-
 
 	return {
 		loading,
@@ -78,7 +77,7 @@ const useGooglePlaces = () => {
 
 		place,
 		places,
-    placeOptions,
+		placeOptions,
 		fetchPlace,
 		fetchPlaces,
 	}

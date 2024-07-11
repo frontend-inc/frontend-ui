@@ -13,7 +13,7 @@ export type OptionType = {
 	label: string
 	value: string | number | boolean | null
 	icon?: string
-  image?: string
+	image?: string
 }
 
 export type TypographyVariantsType =
@@ -42,7 +42,7 @@ export type AttachmentInputProps = {
 	objectFit?: 'contain' | 'cover'
 	size?: number
 	placeholder?: string
-  info?: string 
+	info?: string
 }
 
 export type InputPropsType = {
@@ -56,7 +56,7 @@ export type InputPropsType = {
 	options?: OptionType[]
 	direction?: 'row' | 'column'
 	styles?: any
-  info?: string 
+	info?: string
 }
 
 export type TextInputPropsType = InputPropsType & {

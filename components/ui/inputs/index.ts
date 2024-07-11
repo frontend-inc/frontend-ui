@@ -29,6 +29,6 @@ export { default as SwitchInput } from './SwitchInput'
 export { default as SearchInput } from './SearchInput'
 export { default as TabsInput } from './TabsInput'
 
-// Helpers 
+// Helpers
 export { default as DropZone } from './helpers/DropZone'
 export { default as InputLabel } from './helpers/InputLabel'

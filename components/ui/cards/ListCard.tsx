@@ -5,10 +5,10 @@ import {
 	Image,
 	DisplayFields,
 	TouchableOpacity,
-  CommentButton,
+	CommentButton,
 	FavoriteButton,
-  AvgRating,
-  UserChip
+	AvgRating,
+	UserChip,
 } from '../..'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
@@ -28,10 +28,10 @@ const CardList: React.FC<CardProps> = (props) => {
 		objectFit = 'cover',
 		enableGradient = false,
 		enableOverlay = false,
-    enableComments = false,
+		enableComments = false,
 		enableFavorites = false,
-    enableRatings = false,
-    enableUsers = false 
+		enableRatings = false,
+		enableUsers = false,
 	} = props || {}
 
 	const router = useRouter()
@@ -47,9 +47,7 @@ const CardList: React.FC<CardProps> = (props) => {
 	}
 
 	return (
-		<Box
-			sx={ sx.root }
-		>
+		<Box sx={sx.root}>
 			<Stack
 				sx={sx.container}
 				spacing={1}
@@ -68,32 +66,22 @@ const CardList: React.FC<CardProps> = (props) => {
 						/>
 					</TouchableOpacity>
 				</Box>
-				<Stack
-					direction="row"
-					spacing={1}
-					sx={ sx.contentArea }
-				>
-					<Stack
-						direction="column"
-						spacing={0.5}
-						sx={ sx.content }
-					>            
-            <Typography color="textPrimary" variant={textVariant}>
+				<Stack direction="row" spacing={1} sx={sx.contentArea}>
+					<Stack direction="column" spacing={0.5} sx={sx.content}>
+						<Typography color="textPrimary" variant={textVariant}>
 							{truncate(title)}
 						</Typography>
-            { enableRatings == true && (
-              <AvgRating resource={resource} size="small" />
-            )}
+						{enableRatings == true && (
+							<AvgRating resource={resource} size="small" />
+						)}
 						<DisplayFields fields={displayFields} resource={resource} />
-            { resource?.user && (
-              <UserChip 
-                user={ resource?.user }
-              />            
-            )}
+						{resource?.user && <UserChip user={resource?.user} />}
 					</Stack>
 					<Stack direction="row" justifyContent="flex-end">
-            {enableComments == true && <CommentButton resource={resource} />}
-						{enableFavorites == true && <FavoriteButton handle={resource?.handle} />}
+						{enableComments == true && <CommentButton resource={resource} />}
+						{enableFavorites == true && (
+							<FavoriteButton handle={resource?.handle} />
+						)}
 						<Actions numVisible={0} actions={actions} resource={resource} />
 					</Stack>
 				</Stack>
@@ -109,11 +97,11 @@ const sx = {
 		width: '100%',
 		display: 'flex',
 		flexDirection: 'row',
-    pt: 1,
-    pb: 2,
-		overflow: 'hidden',    
-    borderBottom: '1px solid',
-    borderColor: 'divider',
+		pt: 1,
+		pb: 2,
+		overflow: 'hidden',
+		borderBottom: '1px solid',
+		borderColor: 'divider',
 	},
 	gradient: {
 		'&::after': {
@@ -168,7 +156,7 @@ const sx = {
 			xs: 1,
 		},
 	},
-	contentBorder: {		
+	contentBorder: {
 		px: {
 			sm: 0,
 			xs: 2,

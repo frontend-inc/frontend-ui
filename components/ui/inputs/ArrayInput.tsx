@@ -1,12 +1,6 @@
 import React from 'react'
 import { useError } from '../../../hooks'
-import {
-	Stack,
-	Popper,
-	Autocomplete,
-	Chip,
-	TextField,
-} from '@mui/material'
+import { Stack, Popper, Autocomplete, Chip, TextField } from '@mui/material'
 import { InputLabel, ErrorText } from '../../../components'
 import { X } from 'lucide-react'
 import { SyntheticEventType } from '../../../types'
@@ -25,7 +19,7 @@ type ArrayInputProps = {
 	handleChange: (e: SyntheticEventType) => void
 	direction?: 'row' | 'column'
 	freeSolo?: boolean
-  info?: string
+	info?: string
 }
 
 const ArrayInput: React.FC<ArrayInputProps> = (props) => {
@@ -38,7 +32,7 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 		handleChange,
 		direction = 'column',
 		freeSolo = true,
-    info,
+		info,
 	} = props
 	let { value } = props
 	if (!value) value = []
@@ -62,10 +56,7 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 
 	return (
 		<Stack sx={sx.root} direction={direction} spacing={0}>
-      <InputLabel
-        label={label}
-        info={info}
-      />
+			<InputLabel label={label} info={info} />
 			<Autocomplete
 				multiple
 				freeSolo={freeSolo}

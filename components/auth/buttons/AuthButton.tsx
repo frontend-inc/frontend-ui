@@ -85,11 +85,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 								</Box>
 							}
 						>
-							<Typography
-								variant="body1"
-								color="text.primary"
-								sx={sx.username}
-							>
+							<Typography variant="body1" color="text.primary" sx={sx.username}>
 								{currentUser?.username}
 							</Typography>
 						</Button>
@@ -130,7 +126,7 @@ const sx = {
 		color: 'text.primary',
 	},
 	button: {
-    boxShadow: 0,
+		boxShadow: 0,
 		width: '100%',
 		color: 'text.primary',
 		justifyContent: 'flex-start',

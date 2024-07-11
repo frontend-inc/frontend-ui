@@ -7,8 +7,7 @@ import { SectionProps, HeadingProps } from '../../types'
 type SocialFavoritesProps = SectionProps & HeadingProps & FavoritesProps
 
 const SocialFavorites: React.FC<SocialFavoritesProps> = (props) => {
-	
-  const {
+	const {
 		label,
 		title,
 		description,
@@ -25,26 +24,24 @@ const SocialFavorites: React.FC<SocialFavoritesProps> = (props) => {
 	} = props
 
 	return (
-    <Section
-      requireAuth={requireAuth}
-      requireTeam={requireTeam}
-      requirePaid={requirePaid}
-      requireAdmin={requireAdmin}
-      theme={theme}
-      py={py}
-      px={px}
-      maxWidth={maxWidth}
-    >
-      <Heading
-        label={label}
-        title={title}
-        description={description}
-        textAlign={textAlign}
-      />
-      <Favorites 
-        {...rest} 
-      />
-    </Section>
+		<Section
+			requireAuth={requireAuth}
+			requireTeam={requireTeam}
+			requirePaid={requirePaid}
+			requireAdmin={requireAdmin}
+			theme={theme}
+			py={py}
+			px={px}
+			maxWidth={maxWidth}
+		>
+			<Heading
+				label={label}
+				title={title}
+				description={description}
+				textAlign={textAlign}
+			/>
+			<Favorites {...rest} />
+		</Section>
 	)
 }
 

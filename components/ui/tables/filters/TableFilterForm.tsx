@@ -3,8 +3,8 @@ import { Box, Button } from '@mui/material'
 import { FILTERABLE_TYPES, SORTABLE_TYPES } from '../../../../constants/index'
 import { FilterList } from '@mui/icons-material'
 import { Plus, Search } from 'lucide-react'
-import {  
-	TableFilterInputs,  
+import {
+	TableFilterInputs,
 	TableFilterKeywordsInput,
 	TableFilterSortInput,
 } from '../../..'
@@ -92,7 +92,7 @@ const TableFilterForm: React.FC<TableFilterFormProps> = (props) => {
 			per_page: query?.per_page || 20,
 			sort_by: query?.sort_by || 'id',
 			sort_direction: query?.sort_direction || 'desc',
-			filters: filters      
+			filters: filters,
 		}
 
 		handleSearch(searchQuery)

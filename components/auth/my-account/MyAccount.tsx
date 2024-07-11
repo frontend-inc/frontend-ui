@@ -14,14 +14,14 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 	const {
 		delayedLoading,
 		user,
-    setUser,
-		currentUser,    
+		setUser,
+		currentUser,
 		updateMe,
 		handleChange,
 		logout,
 		deleteAvatar,
 	} = useAuth()
-  
+
 	const handleDeleteAvatar = async () => {
 		await deleteAvatar()
 	}
@@ -34,7 +34,6 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 		await logout()
 		router.push(redirectUrl)
 	}
-
 
 	return (
 		<>

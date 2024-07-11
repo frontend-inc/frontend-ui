@@ -1,21 +1,20 @@
 import React, { useState } from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 import {
-  AvgRating,
+	AvgRating,
 	DisplayFields,
 	BuyNowButton,
 	StripePaymentLink,
 	Actions,
 	Image,
 	SocialButtons,
-  ExpandableText,
+	ExpandableText,
 } from '../..'
 import { HeroProps } from './HeroItem'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
 const HeroCard: React.FC<HeroProps> = (props) => {
-
 	const {
 		actions,
 		resource,
@@ -25,8 +24,8 @@ const HeroCard: React.FC<HeroProps> = (props) => {
 		enableLikes,
 		enableFavorites,
 		enableSharing,
-    enableRatings,
-		enablePayments
+		enableRatings,
+		enablePayments,
 	} = props || {}
 	const { label, title, image, description } = resource || {}
 
@@ -46,29 +45,18 @@ const HeroCard: React.FC<HeroProps> = (props) => {
 					/>
 				</Box>
 			)}
-			<Box
-				sx={ sx.root }
-			>
+			<Box sx={sx.root}>
 				<Stack
 					sx={sx.container}
-					direction={{ 
-            md: 'row', 
-            xs: 'column' 
-          }}
+					direction={{
+						md: 'row',
+						xs: 'column',
+					}}
 					spacing={4}
 				>
-					<Stack
-						spacing={2}
-						direction="column"
-						sx={ sx.leftPanel }
-					>
+					<Stack spacing={2} direction="column" sx={sx.leftPanel}>
 						<Box sx={sx.imageContainer}>
-							<Image
-								src={image?.url}
-								alt={title}
-								height={400}
-								label={label}
-							/>
+							<Image src={image?.url} alt={title} height={400} label={label} />
 						</Box>
 						<SocialButtons
 							handle={resource?.handle}
@@ -77,34 +65,20 @@ const HeroCard: React.FC<HeroProps> = (props) => {
 							enableSharing={enableSharing}
 						/>
 					</Stack>
-					<Stack
-						spacing={2}
-						sx={ sx.content }
-					>
+					<Stack spacing={2} sx={sx.content}>
 						<Typography color="text.primary" variant="h4">
 							{title}
 						</Typography>
-            { enableRatings == true && (
-              <AvgRating 
-                resource={resource} 
-                enableTotal
-              />
-            )}
-            { displayFields?.length > 0 && (
-						  <DisplayFields 
-                fields={displayFields} 
-                resource={resource} 
-              />
-            )}
-						{enablePayments == true && (
-							<StripePaymentLink 
-                resource={resource} 
-                buttonText="Checkout" 
-              />
+						{enableRatings == true && (
+							<AvgRating resource={resource} enableTotal />
 						)}
-            <ExpandableText
-              text={description}
-            />
+						{displayFields?.length > 0 && (
+							<DisplayFields fields={displayFields} resource={resource} />
+						)}
+						{enablePayments == true && (
+							<StripePaymentLink resource={resource} buttonText="Checkout" />
+						)}
+						<ExpandableText text={description} />
 					</Stack>
 				</Stack>
 			</Box>

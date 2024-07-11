@@ -28,7 +28,7 @@ const StripePaymentLink: React.FC<StripePaymentLinkProps> = (props) => {
 		window.open(url, '_blank')
 	}
 
-  if(!resource?.stripe_payment_link) return null;
+	if (!resource?.stripe_payment_link) return null
 	return (
 		<Stack
 			sx={sx.root}
@@ -61,7 +61,7 @@ const sx = {
 		alignItems: 'center',
 	},
 	button: {
-    textTransform: 'none',
+		textTransform: 'none',
 		width: {
 			sm: 240,
 			xs: '100%',

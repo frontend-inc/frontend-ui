@@ -8,10 +8,10 @@ type SocialFollowersProps = SectionProps & HeadingProps & UserFollowersProps
 
 const SocialFollowers: React.FC<SocialFollowersProps> = (props) => {
 	const {
-    label,
-    title,
-    description,
-    textAlign,    
+		label,
+		title,
+		description,
+		textAlign,
 		theme,
 		py,
 		px,
@@ -34,7 +34,7 @@ const SocialFollowers: React.FC<SocialFollowersProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Heading
+			<Heading
 				label={label}
 				title={title}
 				description={description}

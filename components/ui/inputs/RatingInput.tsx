@@ -3,7 +3,7 @@ import { Stack, Box } from '@mui/material'
 import Rating from '@mui/material/Rating'
 import { InputPropsType, SyntheticEventType } from '../../../types'
 import { StarBorderOutlined, Star } from '@mui/icons-material'
-import {InputLabel} from '../../../components'
+import { InputLabel } from '../../../components'
 
 type RatingInputProps = InputPropsType & {
 	name?: string
@@ -13,7 +13,7 @@ type RatingInputProps = InputPropsType & {
 	label?: string
 	value?: number
 	direction?: 'row' | 'column'
-  info?: string 
+	info?: string
 	handleChange?: (e: SyntheticEventType) => void
 }
 
@@ -27,7 +27,7 @@ const RatingInput: React.FC<RatingInputProps> = (props) => {
 		readOnly = false,
 		direction = 'column',
 		size,
-    info
+		info,
 	} = props
 
 	const onChange = (event, value) => {
@@ -48,7 +48,7 @@ const RatingInput: React.FC<RatingInputProps> = (props) => {
 			direction={direction}
 			spacing={1}
 		>
-      <InputLabel label={label} info={info} />
+			<InputLabel label={label} info={info} />
 			<Box
 				sx={{
 					...sx.input,
@@ -76,7 +76,7 @@ const sx = {
 		width: '100%',
 		fontSize: 15,
 		'&:focus': {
-			boxShadow: 2			
+			boxShadow: 2,
 		},
 	},
 	rating: {

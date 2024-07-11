@@ -19,12 +19,7 @@ const LoadMore: React.FC<LoadMoreProps> = (props) => {
 				color="secondary"
 				onClick={handleSearch}
 				disabled={loading}
-        endIcon={
-          <Icon 
-            name="ChevronDown" 
-            color='secondary.contrastText' 
-          />
-        }
+				endIcon={<Icon name="ChevronDown" color="secondary.contrastText" />}
 			>
 				Load More
 			</Button>

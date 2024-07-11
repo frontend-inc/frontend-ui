@@ -67,9 +67,9 @@ const sx = {
 		pb: 1,
 		justifyContent: 'space-between',
 		width: '100%',
-    borderBottom: 1,
+		borderBottom: 1,
 		borderColor: 'divider',
-	},	
+	},
 	actions: {
 		display: 'flex',
 		alignItems: 'flex-start',

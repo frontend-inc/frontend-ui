@@ -18,7 +18,7 @@ type NumberRangeInputProps = {
 	}
 	handleChange: (value: SyntheticEventType) => void
 	currency?: string
-  info?: string
+	info?: string
 }
 
 const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
@@ -31,7 +31,7 @@ const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 		label,
 		handleChange,
 		currency = 'usd',
-    info
+		info,
 	} = props || {}
 
 	const handleMinChange = (ev) => {
@@ -62,10 +62,7 @@ const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-      <InputLabel 
-        label={label}
-        info={info}
-      />
+			<InputLabel label={label} info={info} />
 			<Box sx={sx.inputs}>
 				<FormControl variant="standard">
 					<Input

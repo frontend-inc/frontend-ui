@@ -12,7 +12,7 @@ import {
 	SearchInput,
 	LoadMore,
 	IconLoading,
-  Loader
+	Loader,
 } from '../../../components'
 import { FormFieldType, FilterOptionType } from '../../../types'
 import { Placeholder } from '../..'
@@ -43,10 +43,10 @@ export type ResourceListProps = {
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
-  emptyIcon?: string
-  emptyTitle?: string
-  emptyDescription?: string
-  componentProps?: any
+	emptyIcon?: string
+	emptyTitle?: string
+	emptyDescription?: string
+	componentProps?: any
 }
 
 const ResourceList: React.FC<ResourceListProps> = (props) => {
@@ -56,7 +56,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		component: Component = ResourceListItem,
 		url,
 		name,
-		fields=[],
+		fields = [],
 		filterOptions = [],
 		sortOptions = [],
 		query: defaultQuery = {},
@@ -69,16 +69,16 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		enableDelete,
 		enableCreate,
 		handleClick,
-    emptyIcon='Search',
-    emptyTitle='No results found',
-    emptyDescription='Try adjusting your search or filters',
-    componentProps={}
+		emptyIcon = 'Search',
+		emptyTitle = 'No results found',
+		emptyDescription = 'Try adjusting your search or filters',
+		componentProps = {},
 	} = props
 
 	const [openModal, setOpenModal] = useState(false)
 	const [openDeleteModal, setOpenDeleteModal] = useState(false)
 
-	const {		
+	const {
 		delayedLoading: loading,
 		errors,
 		resource,
@@ -225,59 +225,55 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-				<Stack
-					direction={{ xs: 'column', sm: 'row' }}
-					sx={sx.actions}
-					spacing={1}
-				>
-					<Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
-            {enableSearch && (
-              <SearchInput
-                value={keywords}
-                handleChange={handleKeywordChange}
-                handleSearch={handleSearch}
-              />
-            )}
-						{enableFilters && (
-							<Box>
-								<FilterButton
-									filters={activeFilters}
-									handleFilter={handleFilter}
-									handleClear={handleClearFilters}
-									filterOptions={filterOptions}
-								/>
-							</Box>
-						)}
-						{enableSorting && (
-							<SortButton
-								sortBy={query?.sort_by || 'id'}
-								sortDirection={query?.sort_direction || 'desc'}
-								sortOptions={sortOptions}
-								handleSortBy={handleSort}
-								handleSortDirection={handleSortDirection}
-							/>
-						)}
-					</Stack>
-					{enableCreate && (
+			<Stack
+				direction={{ xs: 'column', sm: 'row' }}
+				sx={sx.actions}
+				spacing={1}
+			>
+				<Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
+					{enableSearch && (
+						<SearchInput
+							value={keywords}
+							handleChange={handleKeywordChange}
+							handleSearch={handleSearch}
+						/>
+					)}
+					{enableFilters && (
 						<Box>
-							<Button
-								sx={sx.button}
-								color="secondary"
-								variant="contained"
-								onClick={handleAdd}
-								startIcon={
-									<Icon 
-                    name="Plus" 
-                    color="secondary.contrastText" 
-                    size={20} 
-                  />
-								}
-							>
-								Add
-							</Button>
+							<FilterButton
+								filters={activeFilters}
+								handleFilter={handleFilter}
+								handleClear={handleClearFilters}
+								filterOptions={filterOptions}
+							/>
 						</Box>
 					)}
+					{enableSorting && (
+						<SortButton
+							sortBy={query?.sort_by || 'id'}
+							sortDirection={query?.sort_direction || 'desc'}
+							sortOptions={sortOptions}
+							handleSortBy={handleSort}
+							handleSortDirection={handleSortDirection}
+						/>
+					)}
 				</Stack>
+				{enableCreate && (
+					<Box>
+						<Button
+							sx={sx.button}
+							color="secondary"
+							variant="contained"
+							onClick={handleAdd}
+							startIcon={
+								<Icon name="Plus" color="secondary.contrastText" size={20} />
+							}
+						>
+							Add
+						</Button>
+					</Box>
+				)}
+			</Stack>
 			<Box sx={{ ...(loading && sx.loading) }}>
 				<Stack spacing={2} sx={sx.fullWidth}>
 					<Box
@@ -287,32 +283,35 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 							...(dense && sx.listDense),
 						}}
 					>
-						{!loading && resources?.map((resource, index) => (
-							<Component
-								key={index}
-                layout={layout}
-								resource={resource}
-								handleClick={
-									handleClick ? () => handleClick(resource) : undefined
-								}
-								handleEdit={enableEdit ? () => handleEdit(resource) : undefined}
-								handleDelete={
-									enableDelete ? () => handleDeleteClick(resource) : undefined
-								}
-                { ...componentProps }
-							/>
-						))}
+						{!loading &&
+							resources?.map((resource, index) => (
+								<Component
+									key={index}
+									layout={layout}
+									resource={resource}
+									handleClick={
+										handleClick ? () => handleClick(resource) : undefined
+									}
+									handleEdit={
+										enableEdit ? () => handleEdit(resource) : undefined
+									}
+									handleDelete={
+										enableDelete ? () => handleDeleteClick(resource) : undefined
+									}
+									{...componentProps}
+								/>
+							))}
 					</Box>
 				</Stack>
 			</Box>
 			{!loading && resources?.length == 0 && (
 				<Placeholder
-					icon={ emptyIcon }
-					title={ emptyTitle }
-					description={ emptyDescription }
+					icon={emptyIcon}
+					title={emptyTitle}
+					description={emptyDescription}
 				/>
 			)}
-       <Loader loading={loading} />
+			<Loader loading={loading} />
 			{enableLoadMore && (
 				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
 			)}

@@ -28,7 +28,7 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 		styles = {},
 		onBlur,
 		onFocus,
-    info,
+		info,
 	} = props
 
 	const [text, setText] = useState(value)
@@ -73,10 +73,7 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 				direction={direction}
 				spacing={0.5}
 			>
-        <InputLabel  
-          label={label}
-          info={info}
-        />
+				<InputLabel label={label} info={info} />
 				<Box sx={sx.inputContainer}>
 					<InputBase
 						rows={rows}

@@ -15,7 +15,7 @@ import {
 	TableHeaderType,
 	FormFieldType,
 	FilterOptionType,
-  SyntheticEventType,
+	SyntheticEventType,
 } from '../../../types'
 import SearchFilters from '../filters/SearchFilters'
 import { TableList } from '../../../components'
@@ -35,7 +35,7 @@ const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 		query: defaultQuery = {},
 		perPage = 10,
 		enableSearch = false,
-		enableFilters = false,		
+		enableFilters = false,
 		enableEdit = false,
 		enableCreate = false,
 		enableDelete = false,
@@ -61,7 +61,7 @@ const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 		reloadMany,
 		removeAttachment,
 		page,
-		numPages,		
+		numPages,
 		totalCount,
 		paginate,
 	} = useResource({

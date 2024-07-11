@@ -8,14 +8,13 @@ import {
 	Image,
 	Actions,
 	AvgRating,
-  ExpandableText
+	ExpandableText,
 } from '../..'
 import { HeroProps } from './HeroItem'
 import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
 const HeroAvatar: React.FC<HeroProps> = (props) => {
-
 	const {
 		actions,
 		resource,
@@ -25,56 +24,50 @@ const HeroAvatar: React.FC<HeroProps> = (props) => {
 		enableFavorites,
 		enableLikes,
 		enableSharing,
-    enableRatings,
-		enablePayments
+		enableRatings,
+		enablePayments,
 	} = props || {}
 	const { data } = resource || {}
 
 	const { label, title, image, description } = resource || {}
 	return (
 		<Stack spacing={2} direction="column" justifyContent="center">
-      {(actions || enableEdit) && (
-        <Stack
-          sx={sx.actions}
-          direction={{ sm: 'row', xs: 'column' }}
-          spacing={1}          
-        >
-          <Actions
-            actions={buildActions({
-              enableEdit,
-              handleEdit,
-              actions,
-            })}
-            resource={flattenDocument(resource)}
-            justifyContent="flex-end"
-          />
-        </Stack>
-      )}
-			<Box
-				sx={ sx.root }
-			>
+			{(actions || enableEdit) && (
+				<Stack
+					sx={sx.actions}
+					direction={{ sm: 'row', xs: 'column' }}
+					spacing={1}
+				>
+					<Actions
+						actions={buildActions({
+							enableEdit,
+							handleEdit,
+							actions,
+						})}
+						resource={flattenDocument(resource)}
+						justifyContent="flex-end"
+					/>
+				</Stack>
+			)}
+			<Box sx={sx.root}>
 				<Stack
 					sx={sx.container}
 					direction={{ sm: 'row', xs: 'column' }}
 					spacing={4}
 				>
-					<Stack
-						sx={ sx.leftPanel }
-						spacing={2}
-						direction="column"
-					>
+					<Stack sx={sx.leftPanel} spacing={2} direction="column">
 						<Box sx={sx.imageContainer}>
-              <Avatar
-                sx={{
-                  ...sx.avatar,								
-                  height: 200,
-                  width: 200,
-                }}
-                src={image?.url}
-                alt={title}
-              >
-                <Box />
-              </Avatar>
+							<Avatar
+								sx={{
+									...sx.avatar,
+									height: 200,
+									width: 200,
+								}}
+								src={image?.url}
+								alt={title}
+							>
+								<Box />
+							</Avatar>
 						</Box>
 						<SocialButtons
 							handle={resource?.handle}
@@ -83,29 +76,16 @@ const HeroAvatar: React.FC<HeroProps> = (props) => {
 							enableSharing={enableSharing}
 						/>
 					</Stack>
-					<Stack
-						spacing={1}
-						sx={ sx.content }
-					>
+					<Stack spacing={1} sx={sx.content}>
 						<Typography color="text.primary" variant="h4">
 							{title}
 						</Typography>
-            { enableRatings && (
-              <AvgRating 
-                resource={resource} 
-                enableTotal
-              />
-            )}
-						<DisplayFields 
-              fields={displayFields} 
-              resource={resource} 
-            />
+						{enableRatings && <AvgRating resource={resource} enableTotal />}
+						<DisplayFields fields={displayFields} resource={resource} />
 						{enablePayments && (
 							<StripePaymentLink resource={resource} buttonText="Checkout" />
 						)}
-            <ExpandableText 
-              text={description}
-            />
+						<ExpandableText text={description} />
 					</Stack>
 				</Stack>
 			</Box>
@@ -129,12 +109,12 @@ const sx = {
 		border: '1px solid',
 		borderColor: 'divider',
 	},
-  avatar: {
+	avatar: {
 		height: '200px',
 		width: '200px',
 		backgroundImage: 'linear-gradient(45deg, #888888, #222222,#000000)',
 	},
-  gradient: {
+	gradient: {
 		'&::after': {
 			content: '""',
 			borderRadius: '50%',
@@ -168,9 +148,9 @@ const sx = {
 	},
 	leftPanel: {
 		width: {
-       sm: 200,
-       xs: '100%'
-    }
+			sm: 200,
+			xs: '100%',
+		},
 	},
 	leftPanelBorder: {
 		pb: 2,
@@ -179,9 +159,9 @@ const sx = {
 		width: '100%',
 		height: '100%',
 		borderRadius: 1,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 	header: {
 		width: '100%',

@@ -88,13 +88,12 @@ const sx = {
 		justifyContent: 'space-between',
 		maxWidth: 400,
 		border: '1px solid',
-    borderColor: 'divider',
-    borderRadius: 1,
-    transition: 'all 0.3s ease-in-out',
-    '&:hover': {
-      boxShadow: 6,
-    }
-  
+		borderColor: 'divider',
+		borderRadius: 1,
+		transition: 'all 0.3s ease-in-out',
+		'&:hover': {
+			boxShadow: 6,
+		},
 	},
 	content: {
 		minHeight: 300,

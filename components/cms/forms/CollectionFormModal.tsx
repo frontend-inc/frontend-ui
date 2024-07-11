@@ -1,52 +1,41 @@
 import React from 'react'
-import { 
-  Button 
-} from '@mui/material'
-import { 
-  AlertModal,
-  Drawer,
-  Form,
-  IconLoading   
-} from '../..'
+import { Button } from '@mui/material'
+import { AlertModal, Drawer, Form, IconLoading } from '../..'
 import { useForms } from '../../../hooks'
 import { useCollection, flattenDocument } from 'frontend-js'
 import { FormFieldType } from '../../../types'
 
 export type CollectionFormModalProps = {
-  fields: FormFieldType[] 
-  parentResource?: any 
+	fields: FormFieldType[]
+	parentResource?: any
 }
 
 const CollectionFormModal: React.FC<CollectionFormModalProps> = (props) => {
+	const { fields, parentResource } = props || {}
 
-  const { 
-    fields,
-    parentResource
-  } = props || {}
+	const {
+		resource,
+		openDelete,
+		setOpenDelete,
 
-  const { 
-    resource,
-    openDelete,
-    setOpenDelete,
+		openEdit,
+		setOpenEdit,
+	} = useCollection()
 
-    openEdit,
-    setOpenEdit
-  } = useCollection()
+	const {
+		loading,
+		errors,
+		handleSubmit,
+		handleChange,
+		handleRemove,
+		handleDelete,
+	} = useForms({
+		parentResource: parentResource,
+	})
 
-  const {   
-    loading,
-    errors,
-    handleSubmit,
-    handleChange,
-    handleRemove,
-    handleDelete,    
-  } = useForms({
-    parentResource: parentResource,
-  })
-
-  return (
-    <>
-      <Drawer
+	return (
+		<>
+			<Drawer
 				open={openEdit}
 				handleClose={() => setOpenEdit(false)}
 				title={resource?.id ? 'Edit' : 'Add'}
@@ -65,7 +54,7 @@ const CollectionFormModal: React.FC<CollectionFormModalProps> = (props) => {
 				<Form
 					loading={loading}
 					errors={errors}
-					fields={ fields }
+					fields={fields}
 					resource={flattenDocument(resource)}
 					handleChange={handleChange}
 					handleRemove={handleRemove}
@@ -78,8 +67,8 @@ const CollectionFormModal: React.FC<CollectionFormModalProps> = (props) => {
 				description="This action cannot be reversed."
 				handleConfirm={handleDelete}
 			/>
-    </>
-  )
+		</>
+	)
 }
 
 export default CollectionFormModal

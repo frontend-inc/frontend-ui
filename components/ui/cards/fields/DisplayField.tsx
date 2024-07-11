@@ -45,7 +45,7 @@ const DisplayField: React.FC<FieldProps> = (props) => {
 	const { field, resource, color = 'text.secondary', ...rest } = props
 	const { variant: fieldVariant, icon } = field
 	let value = get(resource, field?.name)
-	if (!value || value?.length == 0) return null;
+	if (!value || value?.length == 0) return null
 
 	const components = {
 		boolean: FieldBoolean,
@@ -71,7 +71,7 @@ const DisplayField: React.FC<FieldProps> = (props) => {
 			value: truncate(value),
 		},
 		text: {
-			variant: 'body1',			
+			variant: 'body1',
 		},
 		image: {
 			height: 64,
@@ -82,7 +82,7 @@ const DisplayField: React.FC<FieldProps> = (props) => {
 	const Component = components[fieldVariant]
 	const componentProps = variantProps?.[fieldVariant] || {}
 
-  if(!value || value == '') return null;
+	if (!value || value == '') return null
 	return (
 		<Component
 			disablePadding

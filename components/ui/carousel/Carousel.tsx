@@ -54,8 +54,8 @@ const ReactCarousel: React.FC<CarouselProps> = (props) => {
 					arrows={enableArrows}
 					showDots={enableDots}
 					customDot={<CarouselDot />}
-          customRightArrow={<CarouselRightArrow />}
-          customLeftArrow={<CarouselLeftArrow />}
+					customRightArrow={<CarouselRightArrow />}
+					customLeftArrow={<CarouselLeftArrow />}
 				>
 					{children}
 				</Carousel>

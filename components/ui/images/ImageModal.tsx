@@ -57,7 +57,7 @@ const ImageModal: React.FC<ImageModalProps> = (props) => {
 					width: '100%',
 					objectFit: 'contain',
 				}}
-        layout="responsive"
+				layout="responsive"
 			/>
 		</Modal>
 	)

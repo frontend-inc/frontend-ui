@@ -78,20 +78,20 @@ const TableList: React.FC<TableProps> = (props) => {
 	return (
 		<Box
 			sx={{
-				...sx.root,				
+				...sx.root,
 				...(disableBorderRadius && sx.disableBorderRadius),
 			}}
 		>
-    {(title || toolbar) && (
-			<Box p={1} sx={sx.toolbar}>
-				{title && (
-					<Typography variant="subtitle1" color="text.primary">
-						{title}
-					</Typography>
-				)}
-				{toolbar && toolbar}
-			</Box>
-      )}
+			{(title || toolbar) && (
+				<Box p={1} sx={sx.toolbar}>
+					{title && (
+						<Typography variant="subtitle1" color="text.primary">
+							{title}
+						</Typography>
+					)}
+					{toolbar && toolbar}
+				</Box>
+			)}
 			<TableContainer styles={styles}>
 				<TableBody>
 					<TableHeaders

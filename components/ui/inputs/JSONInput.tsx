@@ -67,7 +67,7 @@ const JSONInput: React.FC<JSONInputProps> = (props) => {
 			handleChange={handleJSONChange}
 			name={name}
 			label={label}
-      info={info}
+			info={info}
 		/>
 	)
 }

@@ -13,8 +13,8 @@ type JsonFormProps = {
 	item: any
 	handleChange: any
 	fields: any
-  direction?: 'column' | 'row'
-  handleRemove?: () => void 
+	direction?: 'column' | 'row'
+	handleRemove?: () => void
 }
 
 const JsonForm: React.FC<JsonFormProps> = (props) => {
@@ -22,98 +22,98 @@ const JsonForm: React.FC<JsonFormProps> = (props) => {
 		item,
 		handleChange,
 		fields,
-    direction = 'column',
-    handleRemove
+		direction = 'column',
+		handleRemove,
 	} = props
 
 	return (
-		<Stack direction='column' spacing={1} sx={sx.root}>
+		<Stack direction="column" spacing={1} sx={sx.root}>
 			{fields.map((field, i) => (
-					<>
-						{field?.type === 'boolean' && (
-							<BooleanInput
-								label={field.label}
-								name={field.name}
-								value={item[field.name]}
-								handleChange={handleChange}
-							/>
-						)}
+				<>
+					{field?.type === 'boolean' && (
+						<BooleanInput
+							label={field.label}
+							name={field.name}
+							value={item[field.name]}
+							handleChange={handleChange}
+						/>
+					)}
 
-						{field?.type === 'string' && (
-              <TextInput
-                label={field.label}
-                direction={direction}
-                name={field.name}
-                value={item[field.name]}
-                placeholder={field.placeholder}
-                //@ts-ignore
-                handleChange={handleChange}
-              />
-						)}
+					{field?.type === 'string' && (
+						<TextInput
+							label={field.label}
+							direction={direction}
+							name={field.name}
+							value={item[field.name]}
+							placeholder={field.placeholder}
+							//@ts-ignore
+							handleChange={handleChange}
+						/>
+					)}
 
-						{field?.type === 'array' && (
-							<ArrayInput
-								label={field.label}
-								name={field.name}
-								value={item[field.name] || []}
-								placeholder={field.placeholder}
-								direction={direction}
-								//@ts-ignore
-								handleChange={handleChange}
-							/>
-						)}
+					{field?.type === 'array' && (
+						<ArrayInput
+							label={field.label}
+							name={field.name}
+							value={item[field.name] || []}
+							placeholder={field.placeholder}
+							direction={direction}
+							//@ts-ignore
+							handleChange={handleChange}
+						/>
+					)}
 
-						{field?.type === 'text' && (
-              <TextInput
-                multiline
-                rows={6}
-                label={field.label}
-                direction={direction}
-                name={field.name}
-                value={item[field.name]}
-                placeholder={field.placeholder}
-                //@ts-ignore
-                handleChange={handleChange}
-              />
-						)}
+					{field?.type === 'text' && (
+						<TextInput
+							multiline
+							rows={6}
+							label={field.label}
+							direction={direction}
+							name={field.name}
+							value={item[field.name]}
+							placeholder={field.placeholder}
+							//@ts-ignore
+							handleChange={handleChange}
+						/>
+					)}
 
-						{field?.type === 'number' && (
-							<TextInput
-								type="number"
-								name={field.name}
-								label={field.label}
-								direction={direction}
-								value={item[field.name]}
-								placeholder={field.placeholder}
-								//@ts-ignore
-								handleChange={handleChange}
-							/>
-						)}
+					{field?.type === 'number' && (
+						<TextInput
+							type="number"
+							name={field.name}
+							label={field.label}
+							direction={direction}
+							value={item[field.name]}
+							placeholder={field.placeholder}
+							//@ts-ignore
+							handleChange={handleChange}
+						/>
+					)}
 
-						{field?.type === 'select' && (
-							<Autosuggest
-								label={field.label}
-								direction={direction}
-								name={field.name}
-								value={item[field.name]}
-								placeholder={field.placeholder}
-								handleChange={handleChange}
-								options={field.options}
-							/>
-						)}
+					{field?.type === 'select' && (
+						<Autosuggest
+							label={field.label}
+							direction={direction}
+							name={field.name}
+							value={item[field.name]}
+							placeholder={field.placeholder}
+							handleChange={handleChange}
+							options={field.options}
+						/>
+					)}
 
-						{field?.type === 'rating' && (
-							<RatingInput
-								label={field.label}
-								direction={direction}
-								name={field.name}
-								value={item[field.name]}
-								placeholder={field.placeholder}
-								//@ts-ignore
-								handleChange={handleChange}
-							/>
-						)}
-					</>				
+					{field?.type === 'rating' && (
+						<RatingInput
+							label={field.label}
+							direction={direction}
+							name={field.name}
+							value={item[field.name]}
+							placeholder={field.placeholder}
+							//@ts-ignore
+							handleChange={handleChange}
+						/>
+					)}
+				</>
 			))}
 		</Stack>
 	)

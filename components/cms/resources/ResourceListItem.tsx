@@ -8,7 +8,7 @@ export type ResourceListItemProps = {
 	color?: string
 	title?: string
 	description?: string
-  layout?: 'list' | 'grid'
+	layout?: 'list' | 'grid'
 	image?: string
 	resource: any
 	handleClick?: (resource: any) => void
@@ -16,7 +16,7 @@ export type ResourceListItemProps = {
 	handleDelete?: (resource: any) => void
 	secondaryActions?: React.ReactNode
 	menuActions?: any
-  displayFields?: DisplayFieldType[]
+	displayFields?: DisplayFieldType[]
 }
 
 const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
@@ -27,7 +27,7 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 		handleDelete,
 		secondaryActions,
 		menuActions,
-    displayFields=[]
+		displayFields = [],
 	} = props
 
 	const { icon, color, title, description } = resource || {}
@@ -40,7 +40,7 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 			title={title}
 			description={description}
 			image={image}
-      displayFields={displayFields}
+			displayFields={displayFields}
 			resource={resource}
 			handleClick={handleClick}
 			handleEdit={handleEdit}

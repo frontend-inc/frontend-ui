@@ -10,7 +10,7 @@ type CheckboxInputProps = {
 	label?: string
 	handleChange: (e: SyntheticEventType) => void
 	disableBorder?: boolean
-  info?: string
+	info?: string
 }
 
 const CheckboxInput: React.FC<CheckboxInputProps> = (props) => {
@@ -21,7 +21,7 @@ const CheckboxInput: React.FC<CheckboxInputProps> = (props) => {
 		label,
 		handleChange,
 		disableBorder = false,
-    info
+		info,
 	} = props
 
 	const handleCheckboxChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,10 +36,7 @@ const CheckboxInput: React.FC<CheckboxInputProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-      <InputLabel 
-        label={label}
-        info={info}
-      />
+			<InputLabel label={label} info={info} />
 			<Box
 				sx={{
 					...sx.input,

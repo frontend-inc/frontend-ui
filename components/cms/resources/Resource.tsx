@@ -16,7 +16,7 @@ export type ResourceProps = {
 	avatar?: React.ReactNode
 	icon?: string
 	color?: string
-  layout?: 'list' | 'grid'
+	layout?: 'list' | 'grid'
 	title?: string | React.ReactNode
 	description?: string
 	image?: string
@@ -26,14 +26,14 @@ export type ResourceProps = {
 	handleDelete?: (resource: any) => void
 	secondaryActions?: React.ReactNode
 	menuActions?: any
-  displayFields: DisplayFieldType[]
+	displayFields: DisplayFieldType[]
 }
 
 const Resource: React.FC<ResourceProps> = (props) => {
 	const {
 		icon,
 		avatar,
-		title,    
+		title,
 		description,
 		image,
 		color,
@@ -43,7 +43,7 @@ const Resource: React.FC<ResourceProps> = (props) => {
 		handleDelete,
 		secondaryActions,
 		menuActions,
-    displayFields=[]
+		displayFields = [],
 	} = props
 
 	return (
@@ -53,11 +53,11 @@ const Resource: React.FC<ResourceProps> = (props) => {
 				secondaryAction={
 					<Stack direction="row" spacing={1} sx={sx.actions}>
 						{secondaryActions}
-            {(menuActions || handleEdit || handleDelete) && (
-              <MenuButton handleEdit={handleEdit} handleDelete={handleDelete}>
-                {menuActions}
-              </MenuButton>
-            )}
+						{(menuActions || handleEdit || handleDelete) && (
+							<MenuButton handleEdit={handleEdit} handleDelete={handleDelete}>
+								{menuActions}
+							</MenuButton>
+						)}
 					</Stack>
 				}
 			>
@@ -72,9 +72,7 @@ const Resource: React.FC<ResourceProps> = (props) => {
 						</ListItemIcon>
 					)}
 					{icon && (
-						<ListItemIcon 
-              sx={sx.listItemIcon}
-            >
+						<ListItemIcon sx={sx.listItemIcon}>
 							<Avatar
 								sx={{
 									bgcolor: color,
@@ -86,20 +84,17 @@ const Resource: React.FC<ResourceProps> = (props) => {
 					)}
 					<ListItemText
 						primary={
-              <Typography color='text.primary' variant='body1'>
-                { title }
-              </Typography>
-            }
+							<Typography color="text.primary" variant="body1">
+								{title}
+							</Typography>
+						}
 						secondary={
-              <>
-                <DisplayFields 
-                  fields={ displayFields }
-                  resource={ resource }
-                />
-                <Typography variant="body2" color="text.secondary">
-                  {description}
-                </Typography>
-              </>
+							<>
+								<DisplayFields fields={displayFields} resource={resource} />
+								<Typography variant="body2" color="text.secondary">
+									{description}
+								</Typography>
+							</>
 						}
 					/>
 				</ListItemButton>

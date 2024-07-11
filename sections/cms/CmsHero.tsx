@@ -4,7 +4,7 @@ import { Hero } from '../../components'
 import { HeroProps } from '../../components/cms/heros/Hero'
 import { SectionProps } from '../../types'
 
-type CmsHeroProps = SectionProps & HeroProps 
+type CmsHeroProps = SectionProps & HeroProps
 
 const CmsHero: React.FC<CmsHeroProps> = (props) => {
 	const {
@@ -16,26 +16,23 @@ const CmsHero: React.FC<CmsHeroProps> = (props) => {
 		requireTeam,
 		requirePaid,
 		requireAdmin,
-    style,
+		style,
 		...rest
 	} = props
 
 	return (
-      <Section
-        requireAuth={requireAuth}
-        requireTeam={requireTeam}
-        requirePaid={requirePaid}
-        requireAdmin={requireAdmin}
-        theme={theme}
-        py={style == 'cover' ? 0 : py}
-        px={style == 'cover' ? 0 : px}
-        maxWidth={maxWidth}
-      >
-        <Hero 
-          {...rest} 
-          style={style} 
-        />
-      </Section>
+		<Section
+			requireAuth={requireAuth}
+			requireTeam={requireTeam}
+			requirePaid={requirePaid}
+			requireAdmin={requireAdmin}
+			theme={theme}
+			py={style == 'cover' ? 0 : py}
+			px={style == 'cover' ? 0 : px}
+			maxWidth={maxWidth}
+		>
+			<Hero {...rest} style={style} />
+		</Section>
 	)
 }
 

@@ -1,10 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../../../context'
-import { 
-  flattenDocument, 
-  changeDocumentValue,
-  useResource 
-} from 'frontend-js'
+import { flattenDocument, changeDocumentValue, useResource } from 'frontend-js'
 import { Box } from '@mui/material'
 import FormWizardProgress from './wizard/FormWizardProgress'
 import FormCard from './wizard/FormCard'
@@ -62,19 +58,19 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		resource,
 		setResource,
 		update,
-		create,		
-		removeAttachment,		
+		create,
+		removeAttachment,
 	} = useResource({
-    url,
-    name: 'document'
-  })
+		url,
+		name: 'document',
+	})
 
-  const handleDataChange = (ev) => {
-    const { name } = ev.target
-    const value = ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
-    setResource((prev) => changeDocumentValue(prev, name, value))
-  
-  }
+	const handleDataChange = (ev) => {
+		const { name } = ev.target
+		const value =
+			ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
+		setResource((prev) => changeDocumentValue(prev, name, value))
+	}
 
 	const [currentField, setCurrentField] = useState()
 	const [currentStep, setCurrentStep] = useState(0)

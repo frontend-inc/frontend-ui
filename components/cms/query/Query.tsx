@@ -7,38 +7,28 @@ export type QueryProps = {
 	query?: any
 	filterUser?: boolean
 	filterTeam?: boolean
-  filterRelated?: boolean
-  children: React.ReactNode
+	filterRelated?: boolean
+	children: React.ReactNode
 }
 
 const Query: React.FC<QueryProps> = (props) => {
+	const { url } = useContext(CollectionContext) as any
 
-  const { url } = useContext(CollectionContext) as any
+	const { query = {}, perPage = 12, children } = props
 
-  const {
-    query = {},
-    perPage = 12,
-    children
-	} = props
+	const { handleSearch } = useSearch({
+		url,
+		perPage,
+		query,
+	})
 
-  const { 
-    handleSearch 
-  } = useSearch({
-    url,
-    perPage,
-    query,  
-  })
+	useEffect(() => {
+		if (url) {
+			handleSearch(query?.keywords, query?.location)
+		}
+	}, [url])
 
-  useEffect(() => {
-    if(url){
-      handleSearch(
-        query?.keywords, 
-        query?.location
-      )
-    }
-  }, [url])
-
-  return children 
+	return children
 }
 
 export default Query

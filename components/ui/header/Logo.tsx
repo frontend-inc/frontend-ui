@@ -55,7 +55,7 @@ export default Logo
 
 const sx = {
 	root: {
-    boxShadow: 0,
+		boxShadow: 0,
 		width: '100%',
 		minHeight: 'auto',
 		minWidth: 'auto',

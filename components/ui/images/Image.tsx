@@ -75,7 +75,7 @@ const Image: React.FC<ImageProps> = (props) => {
 							height={1600}
 							width={1600}
 							layout="responsive"
-							style={{                
+							style={{
 								height: `${height}px`,
 								width: width ? `min(${width}px, 100vw)` : '100%',
 								minHeight: `${height}px`,
@@ -121,10 +121,10 @@ const sx = {
 		left: 15,
 		top: 15,
 	},
-  labelBottom: {
+	labelBottom: {
 		position: 'absolute',
 		left: 15,
-    bottom: 15,
+		bottom: 15,
 	},
 	borderRadius: {
 		borderRadius: 1,

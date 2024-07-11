@@ -49,7 +49,7 @@ const ProductCollection: React.FC<ProductCollectionProps> = (props) => {
 	const { loading, products, findCollection } = useCollections()
 
 	const { filters, handleFilter, handleFilterArray, formatProductFilters } =
-    useSearchFilters()
+		useSearchFilters()
 
 	const handleSortClick = (sortKey, reverse = false) => {
 		setSortKey(sortKey)

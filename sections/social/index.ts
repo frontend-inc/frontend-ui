@@ -6,4 +6,3 @@ export { default as SocialProfile } from './SocialProfile'
 export { default as SocialFeed } from './SocialFeed'
 export { default as SocialFollowers } from './SocialFollowers'
 export { default as SocialFollowing } from './SocialFollowing'
-

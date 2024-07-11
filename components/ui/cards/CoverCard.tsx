@@ -2,15 +2,15 @@ import React, { useContext } from 'react'
 import { AppContext, ThemeContext } from '../../../context'
 import { Box, Stack, Typography } from '@mui/material'
 import {
-  UserChip,
-  AvgRating,
+	UserChip,
+	AvgRating,
 	FavoriteButton,
 	DisplayFields,
 	Image,
 	Icon,
 	TouchableOpacity,
-	Actions,  
-  CommentButton
+	Actions,
+	CommentButton,
 } from '../..'
 import { ThemeProvider } from '../../../context'
 import { truncate } from '../../../helpers'
@@ -29,11 +29,11 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		objectFit = 'cover',
 		height = 400,
 		enableGradient = false,
-    enableUsers = false,
+		enableUsers = false,
 		enableOverlay = false,
-    enableComments = false,
+		enableComments = false,
 		enableFavorites = false,
-    enableRatings = false,
+		enableRatings = false,
 		icon,
 	} = props || {}
 
@@ -48,77 +48,65 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		}
 	}
 
-  const { theme } = useContext(ThemeContext)
+	const { theme } = useContext(ThemeContext)
 
 	return (
-    <ThemeProvider 
-      muiTheme={ theme } 
-      textPrimary='#FFFFFF'
-      textSecondary='#FFFFFF' 
-    >
-      <Stack
-        spacing={1}
-        sx={ sx.root }
-      >
-        <TouchableOpacity handleClick={handleItemClick}>
-          <Image
-            label={label}
-            src={image?.url}
-            height={height}
-            objectFit={objectFit}
-            alt={title}
-            enableGradient={enableGradient}
-            enableOverlay={enableOverlay}
-          />
-        </TouchableOpacity>
-        <Stack spacing={1} sx={sx.cover}>
-          <Stack
-            sx={sx.fullWidth}
-            spacing={1}
-            direction={'row'}
-            alignItems="center"
-          >
-            {icon && (
-              <Box>
-                <Icon size={20} name={icon} color="common.white" />
-              </Box>
-            )}
-            <Box sx={sx.content}>
-              <Stack sx={sx.contentContainer} direction="column" spacing={0}>
-                <Box sx={sx.fullWidth}>
-                  <Typography color='text.primary' variant={textVariant}>
-                    {truncate(title, 60)}
-                  </Typography>
-                  { enableRatings == true && (
-                    <AvgRating resource={resource} size="small" />
-                  )}
-                  <DisplayFields
-                    fields={displayFields}
-                    resource={resource}
-                  />
-                  { enableUsers == true && (
-                    <UserChip user={ resource?.user } />
-                  )}
-                </Box>
-              </Stack>
-            </Box>
-          </Stack>
-        </Stack>
-        <Box sx={sx.actions}>
-          {enableComments == true && (
-            <CommentButton resource={resource} color="common.white" />
-          )}
-          {enableFavorites == true && (
-            <FavoriteButton handle={resource?.handle} color="common.white" />
-          )}
-          <Actions
-            numVisible={0}
-            resource={resource}
-            actions={actions}
-          />
-        </Box>
-      </Stack>
-    </ThemeProvider>
+		<ThemeProvider
+			muiTheme={theme}
+			textPrimary="#FFFFFF"
+			textSecondary="#FFFFFF"
+		>
+			<Stack spacing={1} sx={sx.root}>
+				<TouchableOpacity handleClick={handleItemClick}>
+					<Image
+						label={label}
+						src={image?.url}
+						height={height}
+						objectFit={objectFit}
+						alt={title}
+						enableGradient={enableGradient}
+						enableOverlay={enableOverlay}
+					/>
+				</TouchableOpacity>
+				<Stack spacing={1} sx={sx.cover}>
+					<Stack
+						sx={sx.fullWidth}
+						spacing={1}
+						direction={'row'}
+						alignItems="center"
+					>
+						{icon && (
+							<Box>
+								<Icon size={20} name={icon} color="common.white" />
+							</Box>
+						)}
+						<Box sx={sx.content}>
+							<Stack sx={sx.contentContainer} direction="column" spacing={0}>
+								<Box sx={sx.fullWidth}>
+									<Typography color="text.primary" variant={textVariant}>
+										{truncate(title, 60)}
+									</Typography>
+									{enableRatings == true && (
+										<AvgRating resource={resource} size="small" />
+									)}
+									<DisplayFields fields={displayFields} resource={resource} />
+									{enableUsers == true && <UserChip user={resource?.user} />}
+								</Box>
+							</Stack>
+						</Box>
+					</Stack>
+				</Stack>
+				<Box sx={sx.actions}>
+					{enableComments == true && (
+						<CommentButton resource={resource} color="common.white" />
+					)}
+					{enableFavorites == true && (
+						<FavoriteButton handle={resource?.handle} color="common.white" />
+					)}
+					<Actions numVisible={0} resource={resource} actions={actions} />
+				</Box>
+			</Stack>
+		</ThemeProvider>
 	)
 }
 

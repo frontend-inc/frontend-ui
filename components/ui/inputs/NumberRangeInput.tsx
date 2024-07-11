@@ -10,7 +10,7 @@ type NumberRangeInputProps = {
 		min: number
 		max: number
 	}
-  info?: string
+	info?: string
 	handleChange: (value: SyntheticEventType) => void
 }
 
@@ -23,7 +23,7 @@ const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 		name,
 		label,
 		handleChange,
-    info
+		info,
 	} = props || {}
 
 	const handleMinChange = (ev) => {
@@ -54,7 +54,7 @@ const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-      <InputLabel label={label} info={info} />
+			<InputLabel label={label} info={info} />
 			<Box sx={sx.inputs}>
 				<TextInput
 					type="number"

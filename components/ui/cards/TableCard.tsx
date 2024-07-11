@@ -6,8 +6,8 @@ import {
 	DisplayField,
 	TouchableOpacity,
 	FavoriteButton,
-  AvgRating,
-  UserChip
+	AvgRating,
+	UserChip,
 } from '../..'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
@@ -27,8 +27,8 @@ const TableCard: React.FC<CardProps> = (props) => {
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
-    enableRatings = false,
-    enableUsers = false 
+		enableRatings = false,
+		enableUsers = false,
 	} = props || {}
 
 	const router = useRouter()
@@ -44,57 +44,49 @@ const TableCard: React.FC<CardProps> = (props) => {
 	}
 
 	return (
-		<Stack 
-      direction="row"
-      spacing={1}
-			sx={ sx.root }
-		>
-      <Box sx={ sx.grid }>
-        <Box sx={ sx.imageItem }>
-          <Box sx={ sx.image }>
-            <TouchableOpacity handleClick={handleItemClick}>
-              <Image
-                src={image?.url}
-                height={height}
-                objectFit={objectFit}
-                alt={title}
-                enableGradient={enableGradient}
-                enableOverlay={enableOverlay}
-              />
-            </TouchableOpacity>
-          </Box>
-        </Box>
-        <Box sx={sx.item}>
-          <Typography color="text.primary" variant='body1'>
-            {truncate(title)}
-          </Typography>
-        </Box>
-        { enableRatings == true && (
-          <Box sx={ sx.item }>
-            <AvgRating resource={resource} size="small" />
-          </Box>
-        )}
-        {displayFields?.map((field, index) => (
-          <Box sx={ sx.item } key={index}>
-            <DisplayField
-              key={index}
-              field={field}
-              resource={resource}
-            />
-          </Box>
-        ))}
-        { enableUsers == true && (
-          <Box sx={ sx.item }>
-            <UserChip 
-              user={ resource?.user }
-            />            
-          </Box>
-        )}
-      </Box>
-      <Stack direction="row" justifyContent="flex-end">
-        {enableFavorites == true && <FavoriteButton handle={resource?.handle} />}
-        <Actions numVisible={0} actions={actions} resource={resource} />
-      </Stack>
+		<Stack direction="row" spacing={1} sx={sx.root}>
+			<Box sx={sx.grid}>
+				<Box sx={sx.imageItem}>
+					<Box sx={sx.image}>
+						<TouchableOpacity handleClick={handleItemClick}>
+							<Image
+								src={image?.url}
+								height={height}
+								objectFit={objectFit}
+								alt={title}
+								enableGradient={enableGradient}
+								enableOverlay={enableOverlay}
+							/>
+						</TouchableOpacity>
+					</Box>
+				</Box>
+				<Box sx={sx.item}>
+					<Typography color="text.primary" variant="body1">
+						{truncate(title)}
+					</Typography>
+				</Box>
+				{enableRatings == true && (
+					<Box sx={sx.item}>
+						<AvgRating resource={resource} size="small" />
+					</Box>
+				)}
+				{displayFields?.map((field, index) => (
+					<Box sx={sx.item} key={index}>
+						<DisplayField key={index} field={field} resource={resource} />
+					</Box>
+				))}
+				{enableUsers == true && (
+					<Box sx={sx.item}>
+						<UserChip user={resource?.user} />
+					</Box>
+				)}
+			</Box>
+			<Stack direction="row" justifyContent="flex-end">
+				{enableFavorites == true && (
+					<FavoriteButton handle={resource?.handle} />
+				)}
+				<Actions numVisible={0} actions={actions} resource={resource} />
+			</Stack>
 		</Stack>
 	)
 }
@@ -106,46 +98,46 @@ const sx = {
 		width: '100%',
 		display: 'flex',
 		flexDirection: 'row',
-    flexWrap: 'nowrap',
-    pt: 1,
-    pb: 2,
-		overflow: 'hidden',    
-    borderBottom: '1px solid',
-    borderColor: 'divider',
-    justifyContent: 'space-between',
+		flexWrap: 'nowrap',
+		pt: 1,
+		pb: 2,
+		overflow: 'hidden',
+		borderBottom: '1px solid',
+		borderColor: 'divider',
+		justifyContent: 'space-between',
 	},
 	grid: {
-    width: "100%",
-    display: {
-       sm: 'grid',
-       xs: 'flex',
-    },
-    gridTemplateColumns: 'repeat(auto-fill, 140px)',
-    gap: '12px',
-  },
-  item: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',    
-    maxWidth: 140,
-    minWidth: 140,
-  },
+		width: '100%',
+		display: {
+			sm: 'grid',
+			xs: 'flex',
+		},
+		gridTemplateColumns: 'repeat(auto-fill, 140px)',
+		gap: '12px',
+	},
+	item: {
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'flex-start',
+		alignItems: 'center',
+		maxWidth: 140,
+		minWidth: 140,
+	},
 	container: {
 		width: '100%',
 	},
-  imageItem: {		
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',    
-		width: '100%',		
-    height: "100%"
+	imageItem: {
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		width: '100%',
+		height: '100%',
 	},
-	image: {		
+	image: {
 		width: 100,
 		maxWidth: 100,
-    height: "100%"
+		height: '100%',
 	},
 	contentArea: {
 		width: '100%',
@@ -163,7 +155,7 @@ const sx = {
 			xs: 1,
 		},
 	},
-	contentBorder: {		
+	contentBorder: {
 		px: {
 			sm: 0,
 			xs: 2,

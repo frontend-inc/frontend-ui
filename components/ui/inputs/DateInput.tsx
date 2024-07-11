@@ -11,13 +11,21 @@ type DateInputProps = {
 	name: string
 	value?: string
 	placeholder?: string
-  info?: string
+	info?: string
 	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const DateInput: React.FC<DateInputProps> = (props) => {
-	const { errors, required, label, info, name, value, handleChange, placeholder } =
-		props
+	const {
+		errors,
+		required,
+		label,
+		info,
+		name,
+		value,
+		handleChange,
+		placeholder,
+	} = props
 
 	const [error, setError] = useState(false)
 
@@ -31,10 +39,7 @@ const DateInput: React.FC<DateInputProps> = (props) => {
 
 	return (
 		<FormControl fullWidth>
-      <InputLabel 
-        label={label}
-        info={info}
-      />
+			<InputLabel label={label} info={info} />
 			<InputBase
 				error={error}
 				autoComplete="off"

@@ -12,7 +12,7 @@ const Section: React.FC<SectionProps> = (props) => {
 		requirePaid = false,
 		requireAdmin = false,
 		children,
-		theme='light',
+		theme = 'light',
 		maxWidth,
 		py = 4,
 		px = 3,
@@ -39,31 +39,31 @@ const Section: React.FC<SectionProps> = (props) => {
 		}
 	}, [maxWidth])
 
-	return (   
-    <LightDarkTheme theme={theme}> 
-		  <Fade in={true} timeout={1000}>
-        <Box sx={ sx.root }>
-          <Box
-            sx={{
-              ...sx.container,
-              ...(enableTransitions && sx.containerTransitions),
-              py,
-              px,
-              maxWidth: width,
-            }}
-          >
-            <AuthGuard
-              requireAuth={requireAuth}
-              requireTeam={requireTeam}
-              requirePaid={requirePaid}
-              requireAdmin={requireAdmin}
-            >
-              {children}
-            </AuthGuard>
-          </Box>
-        </Box>
-		</Fade>
-    </LightDarkTheme>
+	return (
+		<LightDarkTheme theme={theme}>
+			<Fade in={true} timeout={1000}>
+				<Box sx={sx.root}>
+					<Box
+						sx={{
+							...sx.container,
+							...(enableTransitions && sx.containerTransitions),
+							py,
+							px,
+							maxWidth: width,
+						}}
+					>
+						<AuthGuard
+							requireAuth={requireAuth}
+							requireTeam={requireTeam}
+							requirePaid={requirePaid}
+							requireAdmin={requireAdmin}
+						>
+							{children}
+						</AuthGuard>
+					</Box>
+				</Box>
+			</Fade>
+		</LightDarkTheme>
 	)
 }
 
@@ -77,11 +77,11 @@ const sx = {
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center',
-    bgcolor: 'background.default',
+		bgcolor: 'background.default',
 	},
 	container: {
 		width: '100%',
-		overflowX: 'hidden'
+		overflowX: 'hidden',
 	},
 	containerTransitions: {
 		transition: 'all 0.3s ease-in-out',

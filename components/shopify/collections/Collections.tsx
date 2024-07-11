@@ -32,11 +32,7 @@ const Collections: React.FC<CollectionsProps> = (props) => {
 
 	const router = useRouter()
 
-	const { 
-    loading, 
-    collections, 
-    findCollections 
-  } = useCollections()
+	const { loading, collections, findCollections } = useCollections()
 
 	const { clientUrl } = useContext(AppContext) as any
 

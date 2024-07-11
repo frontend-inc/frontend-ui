@@ -11,11 +11,12 @@ type NumberSliderInputProps = {
 	min: number
 	max: number
 	stepSize?: number
-  info?: string 
+	info?: string
 }
 
 const NumberSliderInput: React.FC<NumberSliderInputProps> = (props) => {
-	const { value, label, info, name, handleChange, min, max, stepSize } = props || {}
+	const { value, label, info, name, handleChange, min, max, stepSize } =
+		props || {}
 
 	const handleInputChange = (ev, newValue: number[]) => {
 		handleChange({
@@ -28,7 +29,7 @@ const NumberSliderInput: React.FC<NumberSliderInputProps> = (props) => {
 
 	return (
 		<Box sx={sx.slider}>
-      <InputLabel label={label} info={info} />
+			<InputLabel label={label} info={info} />
 			<Slider
 				defaultValue={value}
 				valueLabelDisplay="auto"
@@ -52,5 +53,5 @@ const sx = {
 		alignItems: 'flex-start',
 		justifyContent: 'flex-start',
 		width: '100%',
-	}
+	},
 }

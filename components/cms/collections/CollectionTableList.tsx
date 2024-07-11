@@ -17,24 +17,19 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
-  const { 
-    loading,
-    resources,
-    findMany, 
-    paginate,
-    query,
-    page,
-    perPage,
-    numPages,
-    totalCount,    
-  } = useCollection()
-
 	const {
-		headers,
-		href,		
-		enableEdit = false,
-		enableDelete = false,
-	} = props
+		loading,
+		resources,
+		findMany,
+		paginate,
+		query,
+		page,
+		perPage,
+		numPages,
+		totalCount,
+	} = useCollection()
+
+	const { headers, href, enableEdit = false, enableDelete = false } = props
 
 	const handleClick = (item) => {
 		if (clientUrl && href && item?.handle) {
@@ -46,28 +41,25 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 		}
 	}
 
-  const {
-    handleEdit,
-    handleDeleteClick
-  } = useForms()
+	const { handleEdit, handleDeleteClick } = useForms()
 
-  const handleSort = (field) => {       
-    const { name } = field || {}
-    const { sort_by } = query || {}
-    let sort_direction = query?.sort_direction || 'asc' 
-    if(sort_by == name) {
-      sort_direction = sort_direction == 'asc' ? 'desc' : 'asc'
-    }    
-    findMany({
+	const handleSort = (field) => {
+		const { name } = field || {}
+		const { sort_by } = query || {}
+		let sort_direction = query?.sort_direction || 'asc'
+		if (sort_by == name) {
+			sort_direction = sort_direction == 'asc' ? 'desc' : 'asc'
+		}
+		findMany({
 			...query,
-      sort_direction, 
+			sort_direction,
 			sort_by: name,
 		})
-  }
+	}
 
-  const handlePaginate = async (value) => {
-    await paginate(value)
-  }
+	const handlePaginate = async (value) => {
+		await paginate(value)
+	}
 
 	const [rows, setRows] = useState([])
 
@@ -80,25 +72,25 @@ const CollectionTable: React.FC<CollectionTableProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-      <Box sx={{ ...(loading && sx.loading) }}>
-        <TableList
-          enableEdit={enableEdit}
-          handleEdit={handleEdit}
-          enableDelete={enableDelete}
-          handleDelete={handleDeleteClick}
-          loading={resources && loading}
-          fields={headers}
-          rows={rows}
-          handleClick={handleClick}
-          query={query}
-          handleSort={handleSort}
-          page={page}
-          perPage={perPage}
-          numPages={numPages}
-          totalCount={totalCount}
-          handlePaginate={handlePaginate}
-        />
-      </Box>
+			<Box sx={{ ...(loading && sx.loading) }}>
+				<TableList
+					enableEdit={enableEdit}
+					handleEdit={handleEdit}
+					enableDelete={enableDelete}
+					handleDelete={handleDeleteClick}
+					loading={resources && loading}
+					fields={headers}
+					rows={rows}
+					handleClick={handleClick}
+					query={query}
+					handleSort={handleSort}
+					page={page}
+					perPage={perPage}
+					numPages={numPages}
+					totalCount={totalCount}
+					handlePaginate={handlePaginate}
+				/>
+			</Box>
 		</Stack>
 	)
 }
