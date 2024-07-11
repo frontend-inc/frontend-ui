@@ -14,17 +14,18 @@ import { FormFieldType } from '../../../types'
 
 export type CollectionFormModalProps = {
   fields: FormFieldType[] 
-  resource?: any 
+  parentResource?: any 
 }
 
 const CollectionFormModal: React.FC<CollectionFormModalProps> = (props) => {
 
   const { 
     fields,
-    resource: _resource 
+    parentResource
   } = props || {}
 
   const { 
+    resource,
     openDelete,
     setOpenDelete,
 
@@ -35,13 +36,12 @@ const CollectionFormModal: React.FC<CollectionFormModalProps> = (props) => {
   const {   
     loading,
     errors,
-    resource,  
     handleSubmit,
     handleChange,
     handleRemove,
     handleDelete,    
   } = useForms({
-    resource: _resource
+    parentResource: parentResource,
   })
 
   return (

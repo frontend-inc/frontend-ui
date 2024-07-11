@@ -6,12 +6,12 @@ import {
 } from 'frontend-js'
 
 type FormParams = {
-  resource?: any 
+  parentResource?: any 
 }
 
 const useForms = (params?: FormParams) => {
 
-  const { resource: _resource } = params || {}
+  const { parentResource } = params || {}
 
   const { currentUser } = useAuth()
 
@@ -40,10 +40,10 @@ const useForms = (params?: FormParams) => {
   } = useCollection()
 
   const reloadMany = async () => {
-    if(_resource?.id){
+    if(parentResource?.id){
       findMany({
         ...query,
-        belongs_to: _resource?.id
+        belongs_to: parentResource?.id
       })
     }else{
       findMany(query)
@@ -74,13 +74,13 @@ const useForms = (params?: FormParams) => {
 				resp = await update(resource)
 			} else {
 				resp = await create(resource)        
-        if (_resource?.id && resp?.id) {
-					await addLinks(resp.id, [_resource?.id])
+        if (parentResource?.id && resp?.id) {
+					await addLinks(resp.id, [parentResource?.id])
 				}
+        setResource({})
 			}
 			if (resp?.id) {
-				setResource({})
-        setOpenEdit(false)
+        setOpenEdit(false)        
         reloadMany()
 			}
 		} catch (err) {

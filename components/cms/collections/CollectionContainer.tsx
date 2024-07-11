@@ -115,7 +115,7 @@ const CollectionContainer: React.FC<CollectionContainerProps> = (props) => {
       </Query>
       <CollectionFormModal 
         fields={fields}
-        resource={resource}
+        parentResource={resource}
       />
     </CollectionProvider>
   )
