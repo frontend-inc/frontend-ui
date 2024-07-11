@@ -30,7 +30,6 @@ const AvatarList: React.FC<CardProps> = (props) => {
 		handleClick,
 		enableGradient = false,
 		enableOverlay = false,
-		enableUsers = false,
 		enableComments = false,
 		enableFavorites = false,
 		enableRatings = false,

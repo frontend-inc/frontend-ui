@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../../context'
 import { Section, Heading } from '../../components'
-import { CollectionForm } from '../../components'
-import { CollectionFormProps } from '../../components/cms/forms/CollectionForm'
+import { Form } from '../../components'
+import { FormProps } from '../../components/cms/forms/Form'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsFormProps = SectionProps & HeadingProps & CollectionFormProps
+type CmsFormProps = SectionProps & HeadingProps & FormProps
 
 const CmsForm: React.FC<CmsFormProps> = (props) => {
 	const {
@@ -21,7 +22,7 @@ const CmsForm: React.FC<CmsFormProps> = (props) => {
 		requireAdmin,
 		...rest
 	} = props
-
+  
 	return (
 		<Section
 			requireAuth
@@ -39,7 +40,9 @@ const CmsForm: React.FC<CmsFormProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<CollectionForm {...rest} />
+			<Form 
+        {...rest} 
+      />
 		</Section>
 	)
 }

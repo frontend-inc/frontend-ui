@@ -1,5 +1,5 @@
 import React from 'react'
-import { CollectionToolbar, Query, CollectionFormModal } from '../..'
+import { CollectionToolbar, Query, CollectionDeleteModal, CollectionFormModal } from '../..'
 import { CollectionProvider } from 'frontend-js'
 import {
 	DisplayFieldType,
@@ -105,6 +105,7 @@ const CollectionContainer: React.FC<CollectionContainerProps> = (props) => {
 				{children}
 			</Query>
 			<CollectionFormModal fields={fields} parentResource={resource} />
+      <CollectionDeleteModal />
 		</CollectionProvider>
 	)
 }

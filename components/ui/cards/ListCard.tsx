@@ -23,7 +23,6 @@ const CardList: React.FC<CardProps> = (props) => {
 		displayFields = [],
 		href,
 		height = 180,
-		textVariant = 'subtitle1',
 		handleClick,
 		objectFit = 'cover',
 		enableGradient = false,
@@ -31,7 +30,6 @@ const CardList: React.FC<CardProps> = (props) => {
 		enableComments = false,
 		enableFavorites = false,
 		enableRatings = false,
-		enableUsers = false,
 	} = props || {}
 
 	const router = useRouter()
@@ -68,7 +66,7 @@ const CardList: React.FC<CardProps> = (props) => {
 				</Box>
 				<Stack direction="row" spacing={1} sx={sx.contentArea}>
 					<Stack direction="column" spacing={0.5} sx={sx.content}>
-						<Typography color="textPrimary" variant={textVariant}>
+						<Typography color="text.primary" variant='subtitle2'>
 							{truncate(title)}
 						</Typography>
 						{enableRatings == true && (

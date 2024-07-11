@@ -25,7 +25,6 @@ const Card: React.FC<CardProps> = (props) => {
 		handleClick,
 		objectFit = 'cover',
 		height = 240,
-		enableUsers = false,
 		enableGradient = false,
 		enableOverlay = false,
 		enableComments = false,
@@ -68,11 +67,16 @@ const Card: React.FC<CardProps> = (props) => {
 				/>
 			</Box>
 			<Stack spacing={0} sx={sx.cardContent}>
-				<Box sx={sx.content}>
-					<Typography sx={sx.title} color="textPrimary" variant="subtitle2">
+				<Box sx={sx.content}>          
+					<Typography sx={sx.title} color="text.primary" variant="subtitle2">
 						{truncate(title)}
 					</Typography>
-					{enableRatings && <AvgRating resource={resource} size="small" />}
+					{enableRatings == true && (
+            <AvgRating 
+              resource={resource} 
+              size="small"
+            />
+          )}
 					{displayFields?.length > 0 && (
 						<DisplayFields fields={displayFields} resource={resource} />
 					)}

@@ -7,12 +7,12 @@ type FormFieldInputProps = {
 	errors?: any
 	value?: any | any[]
 	handleChange: (e: SyntheticEventType) => void
-	handleRemove?: (name: string) => void
+	handleRemove: (name: string) => void
 }
 
 const FormFieldInput: React.FC<FormFieldInputProps> = (props) => {
-	const { field, errors, value, handleChange, handleRemove } = props
-
+	
+  const { field, errors, value, handleChange, handleRemove } = props
 	const { name, label, placeholder, variant, options } = field
 
 	return (

@@ -32,7 +32,6 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 		resource,
 		displayFields = [],
 		height = 200,
-		textVariant = 'subtitle2',
 		handleClick,
 		objectFit = 'cover',
 		enableDragging = false,
@@ -84,7 +83,7 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 						<Typography
 							sx={sx.title}
 							color="text.primary"
-							variant={textVariant}
+							variant='subtitle2'
 						>
 							{truncate(title)}
 						</Typography>

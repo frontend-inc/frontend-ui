@@ -16,7 +16,9 @@ const HeroContainer: React.FC<HeroContainerProps> = (props) => {
 	return (
 		<CollectionProvider resource={resource} url={url}>
 			{children}
-			<CollectionFormModal fields={fields} />
+			<CollectionFormModal 
+        fields={fields} 
+      />
 		</CollectionProvider>
 	)
 }

@@ -20,7 +20,6 @@ const CardList: React.FC<CardProps> = (props) => {
 		resource,
 		displayFields = [],
 		href,
-		textVariant = 'subtitle1',
 		handleClick,
 		enableUsers = false,
 		enableComments = false,
@@ -45,7 +44,7 @@ const CardList: React.FC<CardProps> = (props) => {
 			<Stack direction="row" spacing={1}>
 				<Stack direction="column" spacing={1} sx={sx.content}>
 					<Link sx={sx.link} onClick={handleItemClick}>
-						<Typography color="textPrimary" variant={textVariant}>
+						<Typography color="text.primary" variant='subtitle2'>
 							{truncate(title)}
 						</Typography>
 					</Link>

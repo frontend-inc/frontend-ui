@@ -7,7 +7,6 @@ export { default as CollectionCard } from './collections/CollectionCard'
 export { default as CollectionList } from './collections/CollectionList'
 export { default as CollectionGeo } from './collections/CollectionGeo'
 export { default as CollectionToolbar } from './collections/CollectionToolbar'
-export { default as CollectionForm } from '../cms/forms/CollectionForm'
 export { default as CollectionGeoNearby } from './collections/CollectionGeoNearby'
 export { default as CollectionSimilar } from './collections/CollectionSimilar'
 export { default as CollectionTable } from './collections/CollectionTable'
@@ -26,11 +25,14 @@ export { default as VideoPlayer } from '../cms/video/VideoPlayer'
 export { default as SearchFilters } from '../cms/filters/SearchFilters'
 
 // Forms
-export { default as Form } from '../cms/forms/Form'
+export { default as Form } from './forms/Form'
+export { default as FormModal } from './forms/FormModal'
+export { default as FormFields } from './forms/FormFields'
 export { default as FormWizard } from '../cms/forms/FormWizard'
 export { default as FormInput } from '../cms/forms/FormInput'
 export { default as FormFieldInput } from '../cms/forms/FormFieldInput'
 export { default as CollectionFormModal } from './forms/CollectionFormModal'
+export { default as CollectionDeleteModal } from './forms/CollectionDeleteModal'
 
 // Show
 export { default as Hero } from './heros/Hero'

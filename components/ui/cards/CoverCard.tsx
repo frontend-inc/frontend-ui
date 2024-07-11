@@ -25,7 +25,6 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		displayFields = [],
 		href,
 		handleClick,
-		textVariant = 'subtitle1',
 		objectFit = 'cover',
 		height = 400,
 		enableGradient = false,
@@ -83,7 +82,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 						<Box sx={sx.content}>
 							<Stack sx={sx.contentContainer} direction="column" spacing={0}>
 								<Box sx={sx.fullWidth}>
-									<Typography color="text.primary" variant={textVariant}>
+									<Typography color="text.primary" variant='subtitle2'>
 										{truncate(title, 60)}
 									</Typography>
 									{enableRatings == true && (

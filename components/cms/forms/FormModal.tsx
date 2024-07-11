@@ -1,43 +1,28 @@
-import React, { useEffect, useContext } from 'react'
-import { AppContext } from '../../../context'
+import React, { useEffect } from 'react'
 import { flattenDocument, changeDocumentValue, useResource } from 'frontend-js'
-import { FormFields } from '../..'
+import { FormFields, Drawer } from '../../../components'
 import { useAlerts } from '../../../hooks'
-import { useRouter } from 'next/router'
+import { FormProps } from './Form'
 
-export type FormProps = {
-  loading?: boolean
-	resource: any
-  parentResource?: any
-	url: string
-	foreignUrl?: string
-	href?: string
-	buttonText?: string
-	fields: any[]
-	filterRelated?: boolean
-	onSuccessMessage?: string
-  handleSuccess?: () => void
+export type FormModalProps = FormProps & {
+  title?: string
+  open: boolean
+  handleClose: () => void	
 }
 
-const Form: React.FC<FormProps> = (props) => {
-	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
+const FormModal: React.FC<FormModalProps> = (props) => {
 
-  const { href } = props || {}
-  const onSuccess = () => {
-    if(href){
-      router.push(`${clientUrl}${href}`)
-    }
-  }
-
-	const {    
+	const {
+    title,
+    open,
+    handleClose,
 		resource: _resource,
     parentResource,
 		buttonText = 'Submit',
 		fields,
 		url,
 		onSuccessMessage = 'Submitted successfully!',
-    handleSuccess=onSuccess
+    handleSuccess
 	} = props
 
 	const { showAlertSuccess } = useAlerts()
@@ -77,16 +62,16 @@ const Form: React.FC<FormProps> = (props) => {
         // Handle associated resources
         if (parentResource?.id) {
           await addLinks(resp.id, [parentResource.id])
-        }
+        }        
 			}
-			if (resp?.id) {        
+			if (resp?.id) {
         if (onSuccessMessage) {
           showAlertSuccess(onSuccessMessage)
         }
         if(handleSuccess){
           handleSuccess()
         }
-			}      
+			}
 		} catch (err) {
 			console.log('Error', err)
 		}
@@ -105,17 +90,23 @@ const Form: React.FC<FormProps> = (props) => {
   }, [_resource])
 
 	return (
-		<FormFields
-			loading={loading}
-			errors={errors}
-			fields={fields}
-			resource={flattenDocument(resource)}
-			handleChange={handleDataChange}
-			handleRemove={handleRemove}
-			handleSubmit={handleSubmit}
-			buttonText={buttonText}
-		/>
+    <Drawer 
+      open={open}
+      handleClose={handleClose}
+      title={title}
+    >
+      <FormFields
+        loading={loading}
+        errors={errors}
+        fields={fields}
+        resource={flattenDocument(resource)}
+        handleChange={handleDataChange}
+        handleRemove={handleRemove}
+        handleSubmit={handleSubmit}
+        buttonText={buttonText}
+      />
+    </Drawer>
 	)
 }
 
-export default Form
+export default FormModal
