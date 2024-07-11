@@ -8,7 +8,7 @@ type CmsYouTubeProps = SectionProps & HeroYouTubeProps
 
 const CmsYouTube: React.FC<CmsYouTubeProps> = (props) => {
 	const {
-		bgcolor,
+		theme,
 		py,
 		px,
 		maxWidth,
@@ -25,7 +25,7 @@ const CmsYouTube: React.FC<CmsYouTubeProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			bgcolor={bgcolor}
+			theme={theme}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

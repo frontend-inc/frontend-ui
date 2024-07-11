@@ -12,7 +12,7 @@ const SocialReviews: React.FC<SocialReviewsProps> = (props) => {
 		title,
 		description,
 		textAlign,
-		bgcolor,
+		theme,
 		py,
 		px,
 		maxWidth,
@@ -29,7 +29,7 @@ const SocialReviews: React.FC<SocialReviewsProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			bgcolor={bgcolor}
+			theme={theme}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

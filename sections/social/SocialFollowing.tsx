@@ -12,7 +12,7 @@ const SocialFollowing: React.FC<SocialFollowingProps> = (props) => {
     title,
     description,
     textAlign,    
-		bgcolor,
+		theme,
 		py,
 		px,
 		maxWidth,
@@ -29,7 +29,7 @@ const SocialFollowing: React.FC<SocialFollowingProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			bgcolor={bgcolor}
+			theme={theme}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

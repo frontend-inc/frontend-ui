@@ -13,7 +13,7 @@ export type HeadingProps = {
 export type SectionProps = {
 	children: React.ReactNode
 	enableTransitions?: boolean
-	bgcolor?: string
+	theme?: 'dark' | 'light' | 'accent'
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 	py?: number
 	px?: number

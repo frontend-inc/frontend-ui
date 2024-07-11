@@ -8,7 +8,7 @@ type CmsShopifyProductProps = SectionProps & AddonShopifyProductProps
 
 const CmsShopifyProduct: React.FC<CmsShopifyProductProps> = (props) => {
 	const {
-		bgcolor,
+		theme,
 		py,
 		px,
 		maxWidth,
@@ -25,7 +25,7 @@ const CmsShopifyProduct: React.FC<CmsShopifyProductProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			bgcolor={bgcolor}
+			theme={theme}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

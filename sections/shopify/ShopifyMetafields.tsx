@@ -14,7 +14,7 @@ const ShopifyMetafields: React.FC<ShopifyMetafieldsProps> = (props) => {
 		title,
 		description,
 		textAlign,
-		bgcolor,
+		theme,
 		py,
 		px,
 		maxWidth,
@@ -31,7 +31,7 @@ const ShopifyMetafields: React.FC<ShopifyMetafieldsProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			bgcolor={bgcolor}
+			theme={theme}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

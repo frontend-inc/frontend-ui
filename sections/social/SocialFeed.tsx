@@ -13,7 +13,7 @@ const SocialFeed: React.FC<SocialFeedProps> = (props) => {
 		title,
 		description,
 		textAlign,
-		bgcolor,
+		theme,
 		py,
 		px,
 		maxWidth,
@@ -29,7 +29,7 @@ const SocialFeed: React.FC<SocialFeedProps> = (props) => {
         requireTeam={requireTeam}
         requirePaid={requirePaid}
         requireAdmin={requireAdmin}
-        bgcolor={bgcolor}
+        theme={theme}
         py={py}
         px={px}
         maxWidth={maxWidth}

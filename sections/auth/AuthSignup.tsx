@@ -8,7 +8,7 @@ type AuthSignupProps = SectionProps & SignupProps
 
 const AuthSignup: React.FC<AuthSignupProps> = (props) => {
 	const {
-		bgcolor,
+		theme,
 		py,
 		px,
 		maxWidth,
@@ -22,7 +22,7 @@ const AuthSignup: React.FC<AuthSignupProps> = (props) => {
 	return (
 		<Section
 			requireAuth={false}
-			bgcolor={bgcolor}
+			theme={theme}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

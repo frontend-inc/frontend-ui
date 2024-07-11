@@ -8,7 +8,7 @@ type SocialProfileProps = SectionProps & UserProfileProps
 
 const SocialProfile: React.FC<SocialProfileProps> = (props) => {
 	const {
-		bgcolor,
+		theme,
 		py,
 		px,
 		maxWidth,
@@ -25,7 +25,7 @@ const SocialProfile: React.FC<SocialProfileProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			bgcolor={bgcolor}
+			theme={theme}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

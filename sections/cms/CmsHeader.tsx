@@ -8,7 +8,7 @@ type CmsHeaderProps = SectionProps & HeroHeaderProps
 
 const CmsHeader: React.FC<CmsHeaderProps> = (props) => {
 	const {
-		bgcolor,
+		theme,
 		py,
 		px,
 		maxWidth,
@@ -25,7 +25,7 @@ const CmsHeader: React.FC<CmsHeaderProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			bgcolor={bgcolor}
+			theme={theme}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

@@ -15,7 +15,7 @@ const CmsStatistics: React.FC<CmsStatisticsProps> = (props) => {
     title,
     description,
     textAlign,
-		bgcolor,
+		theme,
 		py,
 		px,
 		maxWidth,
@@ -32,7 +32,7 @@ const CmsStatistics: React.FC<CmsStatisticsProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			bgcolor={bgcolor}
+			theme={theme}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

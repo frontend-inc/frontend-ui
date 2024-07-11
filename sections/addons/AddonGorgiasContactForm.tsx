@@ -10,7 +10,7 @@ const AddonGorgiasContactForm: React.FC<AddonGorgiasContactFormProps> = (
 	props
 ) => {
 	const {
-		bgcolor,
+		theme,
 		py,
 		px,
 		maxWidth,
@@ -27,7 +27,7 @@ const AddonGorgiasContactForm: React.FC<AddonGorgiasContactFormProps> = (
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			bgcolor={bgcolor}
+			theme={theme}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

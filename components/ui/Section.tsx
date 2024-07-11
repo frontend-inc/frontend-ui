@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Fade, Box } from '@mui/material'
 import { muiTheme } from '../../theme'
-import { AuthGuard } from '../../components'
+import { AuthGuard, LightDarkTheme } from '../../components'
 import { SectionProps } from '../../types'
 
 const Section: React.FC<SectionProps> = (props) => {
@@ -12,7 +12,7 @@ const Section: React.FC<SectionProps> = (props) => {
 		requirePaid = false,
 		requireAdmin = false,
 		children,
-		bgcolor,
+		theme='light',
 		maxWidth,
 		py = 4,
 		px = 3,
@@ -39,34 +39,31 @@ const Section: React.FC<SectionProps> = (props) => {
 		}
 	}, [maxWidth])
 
-	return (
-		<Fade in={true} timeout={1000}>
-			<Box
-				sx={{
-					...sx.root,
-					bgcolor,
-				}}
-			>
-				<Box
-					sx={{
-						...sx.container,
-						...(enableTransitions && sx.containerTransitions),
-						py,
-						px,
-						maxWidth: width,
-					}}
-				>
-					<AuthGuard
-						requireAuth={requireAuth}
-						requireTeam={requireTeam}
-						requirePaid={requirePaid}
-						requireAdmin={requireAdmin}
-					>
-						{children}
-					</AuthGuard>
-				</Box>
-			</Box>
+	return (   
+    <LightDarkTheme theme={theme}> 
+		  <Fade in={true} timeout={1000}>
+        <Box sx={ sx.root }>
+          <Box
+            sx={{
+              ...sx.container,
+              ...(enableTransitions && sx.containerTransitions),
+              py,
+              px,
+              maxWidth: width,
+            }}
+          >
+            <AuthGuard
+              requireAuth={requireAuth}
+              requireTeam={requireTeam}
+              requirePaid={requirePaid}
+              requireAdmin={requireAdmin}
+            >
+              {children}
+            </AuthGuard>
+          </Box>
+        </Box>
 		</Fade>
+    </LightDarkTheme>
 	)
 }
 
@@ -80,6 +77,7 @@ const sx = {
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center',
+    bgcolor: 'background.default',
 	},
 	container: {
 		width: '100%',

@@ -8,7 +8,7 @@ type CmsHeroProps = SectionProps & HeroProps
 
 const CmsHero: React.FC<CmsHeroProps> = (props) => {
 	const {
-		bgcolor,
+		theme,
 		py,
 		px,
 		maxWidth,
@@ -26,7 +26,7 @@ const CmsHero: React.FC<CmsHeroProps> = (props) => {
         requireTeam={requireTeam}
         requirePaid={requirePaid}
         requireAdmin={requireAdmin}
-        bgcolor={bgcolor}
+        theme={theme}
         py={style == 'cover' ? 0 : py}
         px={style == 'cover' ? 0 : px}
         maxWidth={maxWidth}

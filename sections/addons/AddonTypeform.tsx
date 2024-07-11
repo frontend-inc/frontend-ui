@@ -8,7 +8,7 @@ type AddonTypeformProps = SectionProps & TypeformProps
 
 const AddonTypeform: React.FC<AddonTypeformProps> = (props) => {
 	const {
-		bgcolor,
+		theme,
 		py,
 		px,
 		maxWidth,
@@ -25,7 +25,7 @@ const AddonTypeform: React.FC<AddonTypeformProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			bgcolor={bgcolor}
+			theme={theme}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

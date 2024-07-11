@@ -14,7 +14,7 @@ const CmsKanBan: React.FC<CmsKanBanProps> = (props) => {
 		title,
 		description,
 		textAlign,
-		bgcolor,
+		theme,
 		py,
 		px,
 		maxWidth,
@@ -27,7 +27,7 @@ const CmsKanBan: React.FC<CmsKanBanProps> = (props) => {
 
 	return (
     <Section
-      bgcolor={bgcolor}
+      theme={theme}
       py={py}
       px={px}
       maxWidth={maxWidth}

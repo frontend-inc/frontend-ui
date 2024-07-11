@@ -8,7 +8,7 @@ type UIPageHeaderProps = SectionProps & PageHeaderProps
 
 const UIPageHeader: React.FC<UIPageHeaderProps> = (props) => {
 	const {
-		bgcolor,
+		theme,
 		py,
 		px,
 		maxWidth,
@@ -25,7 +25,7 @@ const UIPageHeader: React.FC<UIPageHeaderProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			bgcolor={bgcolor}
+			theme={theme}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

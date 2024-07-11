@@ -8,7 +8,7 @@ type ShopifyMetafieldImageProps = SectionProps & MetafieldImageProps
 
 const ShopifyMetafieldImage: React.FC<ShopifyMetafieldImageProps> = (props) => {
 	const {
-		bgcolor,
+		theme,
 		py,
 		px,
 		maxWidth,
@@ -25,7 +25,7 @@ const ShopifyMetafieldImage: React.FC<ShopifyMetafieldImageProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			bgcolor={bgcolor}
+			theme={theme}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

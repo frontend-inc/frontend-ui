@@ -14,7 +14,7 @@ const CommerceSubscriptionTable: React.FC<CommerceSubscriptionTableProps> = (
 		title,
 		description,
 		textAlign = 'center',
-		bgcolor,
+		theme,
 		py,
 		px,
 		maxWidth,
@@ -27,7 +27,7 @@ const CommerceSubscriptionTable: React.FC<CommerceSubscriptionTableProps> = (
 
 	return (
 		<Section
-			bgcolor={bgcolor}
+			theme={theme}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
