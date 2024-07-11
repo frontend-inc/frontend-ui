@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Button } from '@mui/material'
+import { Icon } from '../../../components'
 
 type LoadMoreProps = {
 	loading?: boolean
@@ -18,6 +19,12 @@ const LoadMore: React.FC<LoadMoreProps> = (props) => {
 				color="secondary"
 				onClick={handleSearch}
 				disabled={loading}
+        endIcon={
+          <Icon 
+            name="ChevronDown" 
+            color='secondary.contrastText' 
+          />
+        }
 			>
 				Load More
 			</Button>

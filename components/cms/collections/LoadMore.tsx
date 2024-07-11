@@ -24,12 +24,21 @@ const LoadMore: React.FC<LoadMoreProps> = (props) => {
 		<Box sx={sx.root}>
 			{page < numPages && (
 				<>
-					{enableInfiniteLoad && <Waypoint onEnter={loadMore} />}
+					{ enableInfiniteLoad && (
+            <Waypoint 
+              onEnter={loadMore} 
+            />
+          )}
 					<Button
 						color="secondary"
 						variant="contained"
 						onClick={loadMore}
-						endIcon={<Icon name="ChevronDown" />}
+						endIcon={
+              <Icon 
+                name="ChevronDown" 
+                color='secondary.contrastText' 
+              />
+            }
 					>
 						Load More
 					</Button>
