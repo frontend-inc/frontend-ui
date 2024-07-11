@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useAuth } from 'frontend-js'
 import { AppContext } from '../../../context'
-import { Box, Stack, Typography, Button } from '@mui/material'
+import { Box, Stack, Button } from '@mui/material'
 import { Icon } from '../..'
 
 type StripePaymentLinkProps = {
@@ -28,6 +28,7 @@ const StripePaymentLink: React.FC<StripePaymentLinkProps> = (props) => {
 		window.open(url, '_blank')
 	}
 
+  if(!resource?.stripe_payment_link) return null;
 	return (
 		<Stack
 			sx={sx.root}
@@ -60,6 +61,7 @@ const sx = {
 		alignItems: 'center',
 	},
 	button: {
+    textTransform: 'none',
 		width: {
 			sm: 240,
 			xs: '100%',

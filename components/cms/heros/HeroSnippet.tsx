@@ -11,6 +11,7 @@ import {
 	Actions,
 	Image,
   UserChip,
+  StripePaymentLink
 } from '../..'
 import { HeroProps } from './HeroItem'
 import { flattenDocument } from 'frontend-js'
@@ -24,6 +25,7 @@ const HeroSnippet: React.FC<HeroProps>  = (props) => {
     actions=[],
     displayFields=[],
     enableRatings,
+    enablePayments,
     enableEdit,
     handleEdit 
 	} = props || {}
@@ -58,6 +60,13 @@ const HeroSnippet: React.FC<HeroProps>  = (props) => {
           fields={displayFields} 
           resource={resource}
         />   
+				{enablePayments == true && (
+					<StripePaymentLink
+						resource={resource}
+						buttonText="Checkout"
+						justifyContent="center"
+					/>
+				)}
         <UserChip 
           user={ resource?.user } 
         />

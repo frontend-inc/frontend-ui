@@ -26,8 +26,7 @@ const HeroCard: React.FC<HeroProps> = (props) => {
 		enableFavorites,
 		enableSharing,
     enableRatings,
-		enableBuyNow,
-		enableStripePaymentLink,
+		enablePayments
 	} = props || {}
 	const { label, title, image, description } = resource || {}
 
@@ -97,13 +96,7 @@ const HeroCard: React.FC<HeroProps> = (props) => {
                 resource={resource} 
               />
             )}
-						{enableBuyNow == true && (
-							<BuyNowButton 
-                resource={resource} 
-                buttonText="Buy Now" 
-              />
-						)}
-						{enableStripePaymentLink == true && (
+						{enablePayments == true && (
 							<StripePaymentLink 
                 resource={resource} 
                 buttonText="Checkout" 

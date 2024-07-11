@@ -26,8 +26,7 @@ const HeroAvatar: React.FC<HeroProps> = (props) => {
 		enableLikes,
 		enableSharing,
     enableRatings,
-		enableBuyNow,
-		enableStripePaymentLink,
+		enablePayments
 	} = props || {}
 	const { data } = resource || {}
 
@@ -101,10 +100,7 @@ const HeroAvatar: React.FC<HeroProps> = (props) => {
               fields={displayFields} 
               resource={resource} 
             />
-						{enableBuyNow && (
-							<BuyNowButton resource={resource} buttonText="Buy Now" />
-						)}
-						{enableStripePaymentLink && (
+						{enablePayments && (
 							<StripePaymentLink resource={resource} buttonText="Checkout" />
 						)}
             <ExpandableText 

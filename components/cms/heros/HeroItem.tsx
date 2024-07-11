@@ -26,9 +26,8 @@ export type HeroProps = {
 	enableLikes?: boolean
 	enableSharing?: boolean
   enableRatings?: boolean
-	enableBuyNow?: boolean
-  enableUsers?: boolean
-	enableStripePaymentLink?: boolean
+	enablePayments?: boolean
+  enableUsers?: boolean	
   enableOverlay?: boolean
   handleEdit?: (res: any) => void
 }
@@ -62,8 +61,7 @@ const HeroItem: React.FC<HeroItemProps> = (props) => {
 		enableLikes,
 		enableSharing,
     enableRatings,
-		enableBuyNow,
-		enableStripePaymentLink,
+		enablePayments,
 	} = props || {}
 
   const { resource } = useCollection()
@@ -97,8 +95,7 @@ const HeroItem: React.FC<HeroItemProps> = (props) => {
       enableLikes={enableLikes}
       enableSharing={enableSharing}
       enableRatings={enableRatings}
-      enableBuyNow={enableBuyNow}
-      enableStripePaymentLink={enableStripePaymentLink}
+      enablePayments={enablePayments}
     />		
 	)
 }

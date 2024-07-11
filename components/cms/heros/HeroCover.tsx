@@ -24,8 +24,7 @@ const HeroCover: React.FC<HeroProps> = (props) => {
 		enableLikes,
 		enableSharing,
     enableRatings,
-		enableBuyNow,
-		enableStripePaymentLink,
+		enablePayments,
 	} = props || {}
 	const { title, image, description } = resource || {}
 	return (
@@ -74,14 +73,7 @@ const HeroCover: React.FC<HeroProps> = (props) => {
             resource={resource}
           />
         )}
-				{enableBuyNow == true && (
-					<BuyNowButton
-						resource={resource}
-						buttonText="Buy Now"
-						justifyContent="center"
-					/>
-				)}
-				{enableStripePaymentLink == true && (
+				{enablePayments == true && (
 					<StripePaymentLink
 						resource={resource}
 						buttonText="Checkout"
