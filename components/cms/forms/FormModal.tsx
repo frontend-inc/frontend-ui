@@ -69,7 +69,7 @@ const FormModal: React.FC<FormModalProps> = (props) => {
           showAlertSuccess(onSuccessMessage)
         }
         if(handleSuccess){
-          handleSuccess()
+          handleSuccess(resp)
         }
 			}
 		} catch (err) {
@@ -77,15 +77,13 @@ const FormModal: React.FC<FormModalProps> = (props) => {
 		}
 	}
 
-	useEffect(() => {
-		setResource({
-			title: '',
-		})
-	})
-
   useEffect(() => {
     if(_resource){
       setResource(_resource)
+    }else{
+      setResource({
+        title: ''
+      })
     }
   }, [_resource])
 

@@ -16,7 +16,7 @@ export type FormProps = {
 	fields: any[]
 	filterRelated?: boolean
 	onSuccessMessage?: string
-  handleSuccess?: () => void
+  handleSuccess?: (resource: any) => void
 }
 
 const Form: React.FC<FormProps> = (props) => {
@@ -84,7 +84,7 @@ const Form: React.FC<FormProps> = (props) => {
           showAlertSuccess(onSuccessMessage)
         }
         if(handleSuccess){
-          handleSuccess()
+          handleSuccess(resp)
         }
 			}      
 		} catch (err) {

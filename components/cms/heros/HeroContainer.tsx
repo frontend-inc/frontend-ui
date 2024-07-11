@@ -12,9 +12,11 @@ export type HeroContainerProps = {
 
 const HeroContainer: React.FC<HeroContainerProps> = (props) => {
 	const { url, fields, resource, children } = props || {}
-
 	return (
-		<CollectionProvider resource={resource} url={url}>
+		<CollectionProvider 
+      resource={resource} 
+      url={url}
+    >
 			{children}
 			<CollectionFormModal 
         fields={fields} 

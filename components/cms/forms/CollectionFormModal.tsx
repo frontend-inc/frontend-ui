@@ -10,39 +10,40 @@ export type CollectionFormModalProps = {
 }
 
 const CollectionFormModal: React.FC<CollectionFormModalProps> = (props) => {
-	const { 
+	
+  const { 
     fields, 
     parentResource 
   } = props || {}
 
 	const {
     url,
-    findOne,
 		resource,
-
-		openDelete,
-		setOpenDelete,
-
+    setResource,
+    reloadMany,
 		openEdit,
 		setOpenEdit,
 	} = useCollection()
 
-  const handleSuccess = () => {
-    findOne(resource?.id)
+  const handleSuccess = async (savedResource) => {        
+    if(savedResource?.id){
+      setResource(savedResource)
+    }        
+    reloadMany()    
+    setOpenEdit(false)
   }
 
+
 	return (
-		<>
-			<FormModal 
-        open={ openEdit }
-        handleClose={ () => setOpenEdit(false) }
-        resource={ resource }
-        parentResource={ parentResource }
-        fields={ fields }
-        url={ url }
-        handleSuccess={ handleSuccess }
-      />
-		</>
+    <FormModal 
+      open={ openEdit }
+      handleClose={ () => setOpenEdit(false) }
+      resource={ resource }
+      parentResource={ parentResource }
+      fields={ fields }
+      url={ url }
+      handleSuccess={ handleSuccess }
+    />
 	)
 }
 
