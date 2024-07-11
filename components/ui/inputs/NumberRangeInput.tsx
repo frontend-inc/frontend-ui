@@ -1,6 +1,6 @@
 import React from 'react'
-import { Input, FormControl, Typography, Box } from '@mui/material'
-import { TextInput } from '../../../components'
+import { Box } from '@mui/material'
+import { TextInput, InputLabel } from '../../../components'
 import { SyntheticEventType } from '../../../types'
 
 type NumberRangeInputProps = {
@@ -10,6 +10,7 @@ type NumberRangeInputProps = {
 		min: number
 		max: number
 	}
+  info?: string
 	handleChange: (value: SyntheticEventType) => void
 }
 
@@ -22,6 +23,7 @@ const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 		name,
 		label,
 		handleChange,
+    info
 	} = props || {}
 
 	const handleMinChange = (ev) => {
@@ -52,11 +54,7 @@ const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-			{label && (
-				<Typography variant="caption" color="textSecondary">
-					{label}
-				</Typography>
-			)}
+      <InputLabel label={label} info={info} />
 			<Box sx={sx.inputs}>
 				<TextInput
 					type="number"

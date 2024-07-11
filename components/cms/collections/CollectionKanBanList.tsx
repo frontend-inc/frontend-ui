@@ -68,13 +68,13 @@ const CollectionKanBanList: React.FC<CollectionKanBanListProps> = (props) => {
     handleDeleteClick 
   } = useForms()
 
-  const { setOpenFormModal } = useContext(CollectionContext) as any
+  const { setOpenEdit } = useContext(CollectionContext) as any
 
   const handleAdd = (header) => {
     setResource({
       status: header
     })
-    setOpenFormModal(true)
+    setOpenEdit(true)
   }
 
   const handleDrop = async (movedItem, value, columns) => {    

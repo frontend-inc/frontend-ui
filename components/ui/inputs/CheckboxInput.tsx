@@ -1,6 +1,7 @@
 import React from 'react'
 import { SyntheticEventType } from '../../../types'
 import { Checkbox, Box, FormControlLabel, Typography } from '@mui/material'
+import { InputLabel } from '../../../components'
 
 type CheckboxInputProps = {
 	name: string
@@ -9,6 +10,7 @@ type CheckboxInputProps = {
 	label?: string
 	handleChange: (e: SyntheticEventType) => void
 	disableBorder?: boolean
+  info?: string
 }
 
 const CheckboxInput: React.FC<CheckboxInputProps> = (props) => {
@@ -19,6 +21,7 @@ const CheckboxInput: React.FC<CheckboxInputProps> = (props) => {
 		label,
 		handleChange,
 		disableBorder = false,
+    info
 	} = props
 
 	const handleCheckboxChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,9 +36,10 @@ const CheckboxInput: React.FC<CheckboxInputProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-			<Typography variant="caption" color="textSecondary">
-				{label}
-			</Typography>
+      <InputLabel 
+        label={label}
+        info={info}
+      />
 			<Box
 				sx={{
 					...sx.input,

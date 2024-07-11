@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Stack, InputBase, Typography } from '@mui/material'
-import { ErrorText } from '../../../components'
-import { sx } from './styles'
+import { Box, Stack, InputBase } from '@mui/material'
+import { InputLabel, ErrorText } from '../../../components'
+import { sx } from './helpers/styles'
 import { useError } from '../../../hooks'
 import { TextInputPropsType } from '../../../types'
 import { useDebounce } from 'use-debounce'
@@ -28,6 +28,7 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 		styles = {},
 		onBlur,
 		onFocus,
+    info,
 	} = props
 
 	const [text, setText] = useState(value)
@@ -72,11 +73,10 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 				direction={direction}
 				spacing={0.5}
 			>
-				{label && (
-					<Typography sx={sx.label} variant="caption" color="text.secondary">
-						{label}
-					</Typography>
-				)}
+        <InputLabel  
+          label={label}
+          info={info}
+        />
 				<Box sx={sx.inputContainer}>
 					<InputBase
 						rows={rows}

@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import { Avatar, Box, IconButton, Typography } from '@mui/material'
+import { Avatar, Box, IconButton } from '@mui/material'
 import { DeleteOutlined } from '@mui/icons-material'
 import Image from 'next/image'
-import DropZone from './DropZone'
+import DropZone from './helpers/DropZone'
 import { File } from 'lucide-react'
+import { InputLabel } from '../../../components'
 import { AttachmentInputProps } from '../../../types'
+
 const IMAGE_WIDTH = 140
 
 type RenderAttachmentProps = {
@@ -71,9 +73,10 @@ const AttachmentInput: React.FC<AttachmentInputProps> = (props) => {
 		size = IMAGE_WIDTH,
 		objectFit = 'cover',
 		placeholder = 'Upload file',
+    info
 	} = props
 
-	const [src, setSrc] = useState()
+	const [src, setSrc] = useState(null)
 
 	const onDrop = async (file, preview) => {
 		setSrc(preview.src)
@@ -104,9 +107,10 @@ const AttachmentInput: React.FC<AttachmentInputProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-			<Typography variant="caption" color="textSecondary">
-				{label}
-			</Typography>
+      <InputLabel 
+        label={label}
+        info={info}
+      />
 			{attachment?.url && (
 				<RenderAttachment
 					variant={variant}

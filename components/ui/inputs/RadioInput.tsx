@@ -7,17 +7,14 @@ import {
 	Typography,
 } from '@mui/material'
 import { SelectInputPropsType } from '../../../types'
+import { InputLabel } from '../../../components'
 
 const RadioInput: React.FC<SelectInputPropsType> = (props) => {
-	const { label, name, value, options, handleChange } = props
+	const { label, info, name, value, options, handleChange } = props
 
 	return (
 		<FormControl fullWidth component="fieldset">
-			{label && (
-				<Typography variant="caption" color="text.secondary" gutterBottom>
-					{label}
-				</Typography>
-			)}
+      <InputLabel label={label} info={info} />			
 			<RadioGroup name={name} value={String(value)} onChange={handleChange}>
 				{options?.map((option, idx) => (
 					<FormControlLabel

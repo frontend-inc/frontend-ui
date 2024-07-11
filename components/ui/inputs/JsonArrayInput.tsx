@@ -5,13 +5,14 @@ import { Plus } from 'lucide-react'
 import JsonForm from './json/JsonForm'
 import JsonItem from './json/JsonItem'
 import { useMenu } from '../../../hooks'
-import { SortableList, Drawer } from '../../../components'
+import { SortableList, InputLabel, Drawer } from '../../../components'
 
 type JsonArrayInputProps = InputPropsType & {
 	title?: string
 	fields: Record<string, any>[]
 	name: string
 	label?: string
+  info?: string
 	value: any[]
 	handleChange: any
 }
@@ -24,6 +25,7 @@ const JsonArrayInput: React.FC<JsonArrayInputProps> = (props) => {
 		fields = [],
 		value: items = [],
 		handleChange,
+    info
 	} = props
 
 	const { open, anchorEl, openMenu, closeMenu } = useMenu()
@@ -104,11 +106,10 @@ const JsonArrayInput: React.FC<JsonArrayInputProps> = (props) => {
 
 	return (
 		<Stack direction="column" spacing={0.5} sx={sx.root}>
-			{label && (
-				<Typography variant="caption" color="text.secondary">
-					{label}
-				</Typography>
-			)}
+      <InputLabel 
+        label={label}
+        info={info}
+      />			
 			<SortableList
 				droppableId={`json-array-${name}`}
 				handleDrop={handleDrop}

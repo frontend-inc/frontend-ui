@@ -6,6 +6,7 @@ import {
 	FormGroup,
 	Typography,
 } from '@mui/material'
+import { InputLabel } from '../../../components'
 import { OptionType } from '../../../types'
 
 type CheckboxGroupInputProps = {
@@ -14,6 +15,7 @@ type CheckboxGroupInputProps = {
 	label: string
 	value?: string[]
 	options: OptionType[]
+  info?: string
 	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -25,6 +27,7 @@ const CheckboxGroupInput: React.FC<CheckboxGroupInputProps> = (props) => {
 		value: values = [],
 		options,
 		handleChange,
+    info
 	} = props || {}
 
 	const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,9 +49,10 @@ const CheckboxGroupInput: React.FC<CheckboxGroupInputProps> = (props) => {
 	return (
 		<FormControl>
 			<FormGroup>
-				<Typography variant="caption" color="textSecondary">
-					{label}
-				</Typography>
+        <InputLabel 
+          label={label}
+          info={info}
+        />
 				{options?.map((option, idx) => (
 					<FormControlLabel
 						key={idx}

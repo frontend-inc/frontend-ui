@@ -29,6 +29,7 @@ const AutocompleteInput: React.FC<AutocompleteInput> = (props) => {
 		handleInputChange,
 		options = [],
 		direction = 'column',
+    info
 	} = props || {}
 
 	const [open, setOpen] = useState(false)
@@ -64,6 +65,7 @@ const AutocompleteInput: React.FC<AutocompleteInput> = (props) => {
 				direction={direction}
 				placeholder={placeholder}
 				onFocus={() => setOpen(!open)}
+        info={info}
 			/>
         <Box sx={sx.anchor}>
           {open && (
