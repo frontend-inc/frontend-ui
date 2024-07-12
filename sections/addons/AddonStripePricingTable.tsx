@@ -9,7 +9,7 @@ const AddonStripePricingTable: React.FC<AddonStripePricingTableProps> = (
 	props
 ) => {
 	const {
-		theme,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -26,7 +26,7 @@ const AddonStripePricingTable: React.FC<AddonStripePricingTableProps> = (
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			theme={theme}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

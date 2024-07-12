@@ -10,7 +10,7 @@ const ShopifyProductFeatured: React.FC<ShopifyProductFeaturedProps> = (
 	props
 ) => {
 	const {
-		theme,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -27,7 +27,7 @@ const ShopifyProductFeatured: React.FC<ShopifyProductFeaturedProps> = (
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			theme={theme}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

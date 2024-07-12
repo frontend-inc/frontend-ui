@@ -8,7 +8,7 @@ type CmsVimeoProps = SectionProps & HeroVimeoProps
 
 const CmsVimeo: React.FC<CmsVimeoProps> = (props) => {
 	const {
-		theme,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -25,7 +25,7 @@ const CmsVimeo: React.FC<CmsVimeoProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			theme={theme}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

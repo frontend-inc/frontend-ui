@@ -12,7 +12,7 @@ const ShopifyProducts: React.FC<ShopifyProductsProps> = (props) => {
 		title,
 		description,
 		textAlign,
-		theme,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -29,7 +29,7 @@ const ShopifyProducts: React.FC<ShopifyProductsProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			theme={theme}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

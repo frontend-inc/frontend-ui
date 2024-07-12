@@ -12,7 +12,7 @@ const CmsGoogleMap: React.FC<CmsGoogleMapProps> = (props) => {
 		title,
 		description,
 		textAlign,
-		theme,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -29,7 +29,7 @@ const CmsGoogleMap: React.FC<CmsGoogleMapProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			theme={theme}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

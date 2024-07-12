@@ -14,7 +14,7 @@ const SocialLikes: React.FC<SocialLikesProps> = (props) => {
 		title,
 		description,
 		textAlign,
-		theme,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -34,7 +34,7 @@ const SocialLikes: React.FC<SocialLikesProps> = (props) => {
 					requireTeam={requireTeam}
 					requirePaid={requirePaid}
 					requireAdmin={requireAdmin}
-					theme={theme}
+					mode={mode}
 					py={py}
 					px={px}
 					maxWidth={maxWidth}

@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
 import { Box, Stack, Typography } from '@mui/material'
 import {
+  LightDarkMode,
 	Image,
 	UserChip,
 	AvgRating,
@@ -82,18 +83,18 @@ const Card: React.FC<CardProps> = (props) => {
 					)}
 				</Box>
 				<Stack direction="row" justifyContent="space-between">
-					<Stack direction="row" spacing={1}>
-						{resource?.user && <UserChip user={resource?.user} />}
-					</Stack>
-					<Stack direction="row" spacing={0}>
-						{enableFavorites == true && (
-							<FavoriteButton handle={resource?.handle} />
-						)}
-						{enableComments == true && <CommentButton resource={resource} />}
-						{actions?.length > 0 && (
-							<Actions numVisible={0} actions={actions} resource={resource} />
-						)}
-					</Stack>
+          <Stack direction="row" spacing={1}>
+            {resource?.user && <UserChip user={resource?.user} />}
+          </Stack>
+          <Stack direction="row" spacing={0}>
+            {enableFavorites == true && (
+              <FavoriteButton handle={resource?.handle} />
+            )}
+            {enableComments == true && <CommentButton resource={resource} />}
+            {actions?.length > 0 && (
+              <Actions numVisible={0} actions={actions} resource={resource} />
+            )}
+          </Stack>
 				</Stack>
 			</Stack>
 		</Stack>
@@ -145,6 +146,7 @@ const sx = {
 		height: '100%',
 		justifyContent: 'space-between',
 		alignItems: 'space-between',
+    bgcolor: 'background.default'
 	},
 	content: {
 		height: '100%',

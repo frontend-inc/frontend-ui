@@ -9,7 +9,7 @@ type UIImageProps = SectionProps & ImageProps
 
 const UIImage: React.FC<UIImageProps> = (props) => {
 	const {
-		theme,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -26,7 +26,7 @@ const UIImage: React.FC<UIImageProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			theme={theme}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

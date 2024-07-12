@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
 import { Box, Stack, Typography } from '@mui/material'
 import {
+  LightDarkMode,
 	Image,
 	DisplayFields,
 	TouchableOpacity,

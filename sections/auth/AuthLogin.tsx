@@ -8,7 +8,7 @@ type AuthLoginProps = SectionProps & LoginProps
 
 const AuthLogin: React.FC<AuthLoginProps> = (props) => {
 	const {
-		theme,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -22,7 +22,7 @@ const AuthLogin: React.FC<AuthLoginProps> = (props) => {
 	return (
 		<Section
 			requireAuth={false}
-			theme={theme}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

@@ -1,6 +1,5 @@
 import React from 'react'
-import { Button } from '@mui/material'
-import { AlertModal, FormModal } from '../../../components'
+import { RemoteFormModal } from '../../../components'
 import { useCollection } from 'frontend-js'
 import { FormFieldType } from '../../../types'
 
@@ -12,11 +11,10 @@ export type CollectionFormModalProps = {
 const CollectionFormModal: React.FC<CollectionFormModalProps> = (props) => {
 	
   const { 
-    fields, 
     parentResource 
   } = props || {}
 
-	const {
+	const {    
     url,
 		resource,
     setResource,
@@ -33,15 +31,13 @@ const CollectionFormModal: React.FC<CollectionFormModalProps> = (props) => {
     setOpenEdit(false)
   }
 
-
-	return (
-    <FormModal 
+  return (
+    <RemoteFormModal 
       open={ openEdit }
       handleClose={ () => setOpenEdit(false) }
+      url={ url }
       resource={ resource }
       parentResource={ parentResource }
-      fields={ fields }
-      url={ url }
       handleSuccess={ handleSuccess }
     />
 	)

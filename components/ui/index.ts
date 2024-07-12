@@ -86,7 +86,7 @@ export { default as TextModal } from './TextModal'
 export { default as Swipeable } from './swipeable/Swipeable'
 
 // Theme
-export { default as LightDarkTheme } from './theme/LightDarkTheme'
+export { default as LightDarkMode } from './theme/LightDarkMode'
 
 // Inputs, Fields and Tables
 export * from './cards'

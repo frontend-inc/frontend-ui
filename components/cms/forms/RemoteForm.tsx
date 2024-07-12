@@ -1,23 +1,22 @@
 import React, { useEffect, useContext } from 'react'
 import { AppContext } from '../../../context'
 import { flattenDocument, changeDocumentValue, useResource } from 'frontend-js'
-import { FormFields } from '../..'
-import { useAlerts } from '../../../hooks'
+import { Loader, FormFields } from '../..'
+import { useAlerts, useFields } from '../../../hooks'
 import { useRouter } from 'next/router'
 
-export type FormProps = {
+export type RemoteFormProps = {
   loading?: boolean
 	resource: any
   parentResource?: any
 	url: string
 	href?: string
 	buttonText?: string
-	fields: any[]
 	onSuccessMessage?: string
   handleSuccess?: (resource: any) => void
 }
 
-const Form: React.FC<FormProps> = (props) => {
+const RemoteForm: React.FC<RemoteFormProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
@@ -32,7 +31,6 @@ const Form: React.FC<FormProps> = (props) => {
 		resource: _resource,
     parentResource,
 		buttonText = 'Submit',
-		fields,
 		url,
 		onSuccessMessage = 'Submitted successfully!',
     handleSuccess=onSuccess
@@ -40,11 +38,19 @@ const Form: React.FC<FormProps> = (props) => {
 
 	const { showAlertSuccess } = useAlerts()
 
+  const { 
+    formFields,
+    fetchFormFields 
+  } = useFields({
+    url
+  })
+
 	const {
 		delayedLoading: loading,
 		errors,
 		resource,
 		setResource,
+    findOne,
 		update,
 		create,
 		removeAttachment,
@@ -90,23 +96,30 @@ const Form: React.FC<FormProps> = (props) => {
 		}
 	}
 
-	useEffect(() => {
-		setResource({
-			title: '',
-		})
-	})
-
   useEffect(() => {
-    if(_resource){
-      setResource(_resource)
+    if(_resource?.id){
+      findOne(_resource?.id)
+    }else{
+      setResource({
+        title: ''
+      })
     }
   }, [_resource])
 
+  useEffect(() => {
+    if(url){
+      fetchFormFields()
+    }
+  }, [url])
+
+  if((_resource?.id && !resource?.id) && formFields) return(
+    <Loader loading />
+  )
 	return (
 		<FormFields
 			loading={loading}
 			errors={errors}
-			fields={fields}
+			fields={formFields}
 			resource={flattenDocument(resource)}
 			handleChange={handleDataChange}
 			handleRemove={handleRemove}
@@ -116,4 +129,4 @@ const Form: React.FC<FormProps> = (props) => {
 	)
 }
 
-export default Form
+export default RemoteForm

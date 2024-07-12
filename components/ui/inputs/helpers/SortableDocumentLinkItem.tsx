@@ -1,6 +1,6 @@
 import React from 'react'
 import { Typography, ListItem, ListItemIcon, ListItemText } from '@mui/material'
-import { Image, MenuButton } from '../../../../components'
+import { Icon, Image, MenuButton } from '../../../../components'
 
 type SortableListItemProps = {
   image?: string
@@ -36,6 +36,9 @@ const SortableDoccumentLinkItem: React.FC<SortableListItemProps> = (props) => {
         />
       }
 		>      
+      <ListItemIcon sx={ sx.dragHandle }>
+        <Icon name="GripVertical" size={20} color='text.secondary' />
+      </ListItemIcon>
       <ListItemIcon sx={ sx.listItemIcon }>
         <Image 
           src={image}
@@ -76,6 +79,11 @@ const sx = {
     boxShadow: 2
   },
   listItemIcon: {
-    mr: 2
+    mr: 2,
+    width: 32,
+    height: 32
+  },
+  dragHandle: {
+    cursor: 'grab'
   }
 }

@@ -10,7 +10,7 @@ const ShopifyCollectionCoverImage: React.FC<
 	ShopifyCollectionCoverImageProps
 > = (props) => {
 	const {
-		theme,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -27,7 +27,7 @@ const ShopifyCollectionCoverImage: React.FC<
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			theme={theme}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

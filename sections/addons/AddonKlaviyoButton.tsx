@@ -8,7 +8,7 @@ type AddonKlaviyoButtonProps = SectionProps & KlaviyoButtonProps
 
 const AddonKlaviyoButton: React.FC<AddonKlaviyoButtonProps> = (props) => {
 	const {
-		theme,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -25,7 +25,7 @@ const AddonKlaviyoButton: React.FC<AddonKlaviyoButtonProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			theme={theme}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

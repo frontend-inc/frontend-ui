@@ -8,7 +8,7 @@ type OpenAIChatProps = SectionProps & AIChatProps
 
 const OpenAIChat: React.FC<OpenAIChatProps> = (props) => {
 	const {
-		theme,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -25,7 +25,7 @@ const OpenAIChat: React.FC<OpenAIChatProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			theme={theme}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

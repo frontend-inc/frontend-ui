@@ -15,7 +15,7 @@ const CmsGeoList: React.FC<CmsGeoListProps> = (props) => {
 		title,
 		description,
 		textAlign,
-		theme,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -28,7 +28,7 @@ const CmsGeoList: React.FC<CmsGeoListProps> = (props) => {
 
 	return (
 		<Section
-			theme={theme}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

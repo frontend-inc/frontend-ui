@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { DocumentLinkType, SyntheticEventType } from '../../../types'
-import { FormModal, Icon, InputLabel } from '../../../components'
-import { Button, Box } from '@mui/material'
+import { SyntheticEventType } from '../../../types'
+import { RemoteFormModal, Icon, InputLabel } from '../../../components'
+import { Button, Stack } from '@mui/material'
 import { useResource } from 'frontend-js'
 import SortableDocumentLinks from './helpers/SortableDocumentLinks'
 
@@ -25,7 +25,6 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
     url, 
     foreignUrl,
     contentType,
-    fields,
   } = props || {}
 
   const {  
@@ -91,8 +90,9 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
     (link) => link?.target?.content_type === contentType
   )
 
+  if(!resource?.id) return null;
   return(
-    <Box>
+    <Stack direction='column' spacing={0.5}>
       <InputLabel 
         label={label} 
       />
@@ -101,7 +101,7 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
         handleDrop={handleDrop}
         handleEdit={handleEdit}
         handleDelete={handleDelete}        
-      />
+      />      
       <Button   
         fullWidth
         onClick={ handleAddClick }
@@ -113,15 +113,14 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
       >
         Add { contentType }
       </Button>
-      <FormModal 
+      <RemoteFormModal 
         open={ open }
         handleClose={ () => setOpen(false) }
         url={foreignUrl}
         resource={ foreignResource }
-        fields={ fields }
         handleSuccess={ handleSuccess }
       />
-    </Box>
+    </Stack>
   )
 }
 

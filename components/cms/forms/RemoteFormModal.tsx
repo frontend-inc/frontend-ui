@@ -1,14 +1,14 @@
 import React from 'react'
-import { Form, Drawer } from '../../../components'
-import { FormProps } from './Form'
+import { RemoteForm, Drawer } from '../..'
+import { RemoteFormProps } from './RemoteForm'
 
-export type FormModalProps = FormProps & {
+export type RemoteFormModalProps = RemoteFormProps & {
   title?: string
   open: boolean
   handleClose: () => void	
 }
 
-const FormModal: React.FC<FormModalProps> = (props) => {
+const RemoteFormModal: React.FC<RemoteFormModalProps> = (props) => {
 
 	const {
     title,
@@ -23,11 +23,11 @@ const FormModal: React.FC<FormModalProps> = (props) => {
       handleClose={handleClose}
       title={title}
     >
-      <Form 
+      <RemoteForm 
         { ...rest }
       />
     </Drawer>
 	)
 }
 
-export default FormModal
+export default RemoteFormModal

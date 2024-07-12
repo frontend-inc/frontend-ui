@@ -8,7 +8,7 @@ type CmsEmailSignupProps = SectionProps & EmailSignupProps
 
 const CmsEmailSignup: React.FC<CmsEmailSignupProps> = (props) => {
 	const {
-		theme,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -25,7 +25,7 @@ const CmsEmailSignup: React.FC<CmsEmailSignupProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			theme={theme}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

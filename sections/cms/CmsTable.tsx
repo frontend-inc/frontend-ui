@@ -12,7 +12,7 @@ const CmsTable: React.FC<CmsTableProps> = (props) => {
 		title,
 		description,
 		textAlign,
-		theme,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -25,7 +25,7 @@ const CmsTable: React.FC<CmsTableProps> = (props) => {
 
 	return (
 		<Section
-			theme={theme}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

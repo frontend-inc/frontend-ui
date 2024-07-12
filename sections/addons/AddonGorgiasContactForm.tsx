@@ -10,7 +10,7 @@ const AddonGorgiasContactForm: React.FC<AddonGorgiasContactFormProps> = (
 	props
 ) => {
 	const {
-		theme,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -27,7 +27,7 @@ const AddonGorgiasContactForm: React.FC<AddonGorgiasContactFormProps> = (
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			theme={theme}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

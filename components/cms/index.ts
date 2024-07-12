@@ -1,19 +1,12 @@
-// CMS
-export { default as Collection } from './collections/Collection'
-export { default as CollectionContainer } from './collections/CollectionContainer'
-export { default as CollectionCards } from './collections/CollectionCards'
-export { default as CollectionCarousel } from './collections/CollectionCarousel'
-export { default as CollectionCard } from './collections/CollectionCard'
-export { default as CollectionList } from './collections/CollectionList'
-export { default as CollectionGeo } from './collections/CollectionGeo'
-export { default as CollectionToolbar } from './collections/CollectionToolbar'
-export { default as CollectionGeoNearby } from './collections/CollectionGeoNearby'
-export { default as CollectionSimilar } from './collections/CollectionSimilar'
-export { default as CollectionTable } from './collections/CollectionTable'
-export { default as CollectionTableList } from './collections/CollectionTableList'
-export { default as CollectionKanBan } from './collections/CollectionKanBan'
-export { default as EmailSignup } from './contacts/EmailSignup'
+export * from './collections'
+export * from './forms'
+export * from './heros'
 
+export { default as AddonCalendly } from './addons/AddonCalendly'
+export { default as AddonGoogleMap } from './addons/AddonGoogleMap'
+export { default as AddonShopifyProduct } from './addons/AddonShopifyProduct'
+
+export { default as EmailSignup } from './contacts/EmailSignup'
 export { default as LoadMore } from './collections/LoadMore'
 export { default as FilterButton } from './filters/FilterButton'
 export { default as KanBan } from '../cms/kanban/KanBan'
@@ -23,42 +16,8 @@ export { default as VideoHoriz } from './video/VideoGrid'
 export { default as VideoModal } from '../cms/video/VideoModal'
 export { default as VideoPlayer } from '../cms/video/VideoPlayer'
 export { default as SearchFilters } from '../cms/filters/SearchFilters'
-
-// Forms
-export { default as Form } from './forms/Form'
-export { default as FormModal } from './forms/FormModal'
-export { default as FormFields } from './forms/FormFields'
-export { default as FormWizard } from '../cms/forms/FormWizard'
-export { default as FormInput } from '../cms/forms/FormInput'
-export { default as FormFieldInput } from '../cms/forms/FormFieldInput'
-export { default as CollectionFormModal } from './forms/CollectionFormModal'
-export { default as CollectionDeleteModal } from './forms/CollectionDeleteModal'
-
-// Show
-export { default as Hero } from './heros/Hero'
-export { default as HeroItem } from './heros/HeroItem'
-export { default as HeroContainer } from './heros/HeroContainer'
-export { default as HeroLayout } from './heros/HeroLayout'
-export { default as HeroList } from './heros/HeroList'
-export { default as HeroCover } from './heros/HeroCover'
-export { default as CollectionShowModal } from './collections/CollectionShowModal'
-export { default as HeroCard } from './heros/HeroCard'
-export { default as HeroAvatar } from './heros/HeroAvatar'
-export { default as HeroHeader } from './heros/HeroHeader'
-export { default as HeroYouTube } from './heros/HeroYouTube'
-export { default as HeroVimeo } from './heros/HeroVimeo'
-export { default as HeroSnippet } from './heros/HeroSnippet'
-
-// Query
 export { default as Query } from './query/Query'
-
-// Statistics
 export { default as Statistics } from './analytics/Statistics'
-
-// Addons
-export { default as AddonCalendly } from './addons/AddonCalendly'
-export { default as AddonGoogleMap } from './addons/AddonGoogleMap'
-export { default as AddonShopifyProduct } from './addons/AddonShopifyProduct'
 
 // Resources
 export { default as Resource } from './resources/Resource'

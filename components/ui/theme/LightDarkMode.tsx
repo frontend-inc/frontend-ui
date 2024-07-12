@@ -2,20 +2,20 @@ import React, { useState, useEffect, useContext } from 'react'
 import { ThemeProvider } from '../../../context'
 import { ThemeContext } from '../../../context'
 
-type LightDarkThemeProps = {
-	theme: 'dark' | 'light' | 'accent'
+type LightDarkModeProps = {
+	mode: 'dark' | 'light' | 'accent'
 	children: React.ReactNode
 }
 
-const LightDarkTheme: React.FC<LightDarkThemeProps> = (props) => {
-	const { theme: lightDarkTheme, children } = props || {}
+const LightDarkMode: React.FC<LightDarkModeProps> = (props) => {
+	const { mode, children } = props || {}
 
 	const [bgcolor, setBgcolor] = useState('#FFFFFF')
 
 	const { theme: muiTheme } = useContext(ThemeContext)
 
 	useEffect(() => {
-		switch (lightDarkTheme) {
+		switch (mode) {
 			case 'dark':
 				setBgcolor('#000000')
 				break
@@ -26,7 +26,7 @@ const LightDarkTheme: React.FC<LightDarkThemeProps> = (props) => {
 				setBgcolor(muiTheme?.palette?.primary?.main)
 				break
 		}
-	}, [lightDarkTheme, muiTheme?.palette?.primary?.main])
+	}, [mode, muiTheme?.palette?.primary?.main])
 
 	return (
 		<ThemeProvider muiTheme={muiTheme} bgcolor={bgcolor}>
@@ -35,4 +35,4 @@ const LightDarkTheme: React.FC<LightDarkThemeProps> = (props) => {
 	)
 }
 
-export default LightDarkTheme
+export default LightDarkMode

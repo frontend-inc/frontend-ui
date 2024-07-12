@@ -8,7 +8,7 @@ type AddonGiftUpProps = SectionProps & GiftUpProps
 
 const AddonGiftUp: React.FC<AddonGiftUpProps> = (props) => {
 	const {
-		theme,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -25,7 +25,7 @@ const AddonGiftUp: React.FC<AddonGiftUpProps> = (props) => {
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
-			theme={theme}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
