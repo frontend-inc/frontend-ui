@@ -6,6 +6,7 @@ import FormWizardProgress from './wizard/FormWizardProgress'
 import FormCard from './wizard/FormCard'
 import FormWizardField from './wizard/FormWizardField'
 import FormWizardButtons from './wizard/FormWizardButtons'
+import { Modal } from '../../../components'
 import { useRouter } from 'next/router'
 
 export type FormWizardProps = {
@@ -76,16 +77,19 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 	const [currentStep, setCurrentStep] = useState(0)
 	const [totalSteps, setTotalSteps] = useState(0)
 	const [fadeIn, setFadeIn] = useState(false)
+  const [open, setOpen] = useState(false)
 
 	const handleStartClick = () => {
-		setCurrentStep(1)
+		setCurrentStep(0)
 		setFadeIn(true)
+    setOpen(true)
 	}
 
 	const handleResetForm = () => {
 		setResource({})
 		setSubmitted(false)
 		setCurrentStep(0)
+    setOpen(false)
 	}
 
 	const handleSuccess = () => {
@@ -110,6 +114,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 			}
 			if (resp?.id) {
 				setSubmitted(true)
+        setOpen(false)
 			}
 		} catch (err) {
 			console.log('Error', err)
@@ -138,13 +143,13 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 
 	useEffect(() => {
 		if (fields) {
-			setTotalSteps(fields.length) // End card adds 1
+			setTotalSteps(fields.length-1) // End card adds 1
 		}
 	}, [fields])
 
 	useEffect(() => {
-		if (fields && currentStep > 0) {
-			setCurrentField(fields[currentStep - 1])
+		if (fields) {
+			setCurrentField(fields[currentStep])
 		}
 	}, [fields, currentStep])
 
@@ -158,58 +163,57 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-			{currentStep > 0 && (
-				<FormWizardProgress currentStep={currentStep} totalSteps={totalSteps} />
-			)}
-			<Box
-				sx={{
-					...sx.form,
-					py,
-				}}
-			>
 				{!submitted ? (
-					<>
-						{currentStep == 0 && (
-							<FormCard
-								title={startTitle}
-								description={startDescription}
-								image={startImage}
-								buttonText={startButtonText}
-								handleClick={handleStartClick}
-							/>
-						)}
-						{currentStep > 0 && (
-							<>
-								<FormWizardField
-									fadeIn={fadeIn}
-									field={currentField}
-									handleChange={handleDataChange}
-									handleRemove={handleRemove}
-									resource={flattenDocument(resource)}
-									setResource={setResource}
-								/>
-								<FormWizardButtons
-									currentStep={currentStep}
-									totalSteps={totalSteps}
-									handleNextStep={handleNextStep}
-									handlePrevStep={handlePrevStep}
-									handleSubmit={handleSubmit}
-									buttonText={buttonText}
-								/>
-							</>
-						)}
-					</>
-				) : (
-					<FormCard
+          <FormCard
+            title={startTitle}
+            description={startDescription}
+            image={startImage}
+            buttonText={startButtonText}
+            handleClick={handleStartClick}
+          />
+        ):(
+          <FormCard
 						title={endTitle}
 						description={endDescription}
 						image={endImage}
 						buttonText={endButtonText}
 						handleClick={handleSuccess}
 					/>
-				)}
+        )}						
+        <Modal 
+          fullScreen
+          disablePadding
+          open={ open }
+          handleClose={() => setOpen(false)}
+        >
+          <FormWizardProgress 
+            currentStep={currentStep} 
+            totalSteps={totalSteps} 
+          />
+          <Box sx={ sx.formContainer }>
+          <Box sx={ sx.form }>
+            { currentField && (
+              <FormWizardField
+                fadeIn={fadeIn}
+                field={currentField}
+                handleChange={handleDataChange}
+                handleRemove={handleRemove}
+                resource={flattenDocument(resource)}
+                setResource={setResource}
+              />
+            )}
+            <FormWizardButtons
+              currentStep={currentStep}
+              totalSteps={totalSteps}
+              handleNextStep={handleNextStep}
+              handlePrevStep={handlePrevStep}
+              handleSubmit={handleSubmit}
+              buttonText={buttonText}
+            />
+            </Box>
+          </Box>
+        </Modal>
 			</Box>
-		</Box>
 	)
 }
 
@@ -223,8 +227,17 @@ const sx = {
 		justifyContent: 'space-between',
 		alignItems: 'center',
 	},
+  formContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: 'calc(100vh - 200px)',
+  },
 	form: {
 		px: 2,
+    py: 4,
 		width: '100%',
 		maxWidth: '600px',
 	},

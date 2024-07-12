@@ -22,7 +22,6 @@ const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 		handleSubmit,
 	} = props
 
-	if (currentStep == 0) return
 	return (
 		<Stack direction="row" spacing={1} sx={sx.actions}>
 			<Button
@@ -38,6 +37,7 @@ const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 			</Button>
 			{currentStep != totalSteps ? (
 				<Button
+          size='large'
 					variant="contained"
 					onClick={handleNextStep}
 					disabled={currentStep == totalSteps}
@@ -49,6 +49,7 @@ const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 				</Button>
 			) : (
 				<Button
+          size="large"
 					variant="contained"
 					onClick={handleSubmit}
 					disabled={currentStep != totalSteps}
@@ -65,7 +66,7 @@ export default FormWizardButtons
 const sx = {
 	actions: {
 		width: '100%',
-		justifyContent: 'center',
+		justifyContent: 'flex-end',
 		py: 4,
 	},
 }

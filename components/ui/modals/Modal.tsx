@@ -61,13 +61,13 @@ const Modal: React.FC<ModalProps> = (props) => {
 				'& .MuiDialog-paper': {
 					bgcolor: 'background.default',
 					maxWidth: {
-						sm: muiTheme.breakpoints.values[maxWidth],
+						sm: (isMobile || fullScreen) ? '100vw' : muiTheme.breakpoints.values[maxWidth],
 						xs: '100vw',
 					},
 				},
 			}}
 			fullWidth
-			fullScreen={isMobile || fullScreen === true ? true : false}
+			fullScreen={isMobile || fullScreen === true}
 			open={open}
 			onClose={handleClose}
 			hideBackdrop={hideBackdrop}

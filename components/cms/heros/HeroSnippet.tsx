@@ -28,11 +28,11 @@ const HeroSnippet: React.FC<HeroProps> = (props) => {
 
 	if (!resource) return null
 	return (
-		<Paper elevation={2} sx={sx.paper}>
+		<Paper elevation={0} sx={sx.paper}>
 			<Stack direction="row" spacing={2} sx={sx.header}>
 				{image?.url && (
 					<Box sx={sx.imageContainer}>
-						<Image label={label} src={image?.url} alt={title} height={240} />
+						<Image disableBorderRadius label={label} src={image?.url} alt={title} height={240} />
 					</Box>
 				)}
 				<Stack spacing={0.5} direction="column" p={2} width="100%">
@@ -74,15 +74,18 @@ const HeroSnippet: React.FC<HeroProps> = (props) => {
 export default HeroSnippet
 
 const sx = {
-	root: {
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		overflow: 'hidden',
-		position: 'relative',
+	paper: {		
+    border: '1px solid',
+    borderColor: 'divider',
+    mb: 2,
+    transition: 'box-shadow 0.3s',
+    '&:hover': {
+      boxShadow: 2,
+    },
 	},
 	container: {
+    borderRadius: 1,
+    overflow: 'hidden',
 		width: '100%',
 		justifyContent: 'flex-start',
 		alignItems: {
@@ -94,17 +97,16 @@ const sx = {
 		width: '100%',
 	},
 	imageContainer: {
-		borderRadius: 1,
 		width: 240,
 		minWidth: 240,
+    borderRadius: theme => 
+      `${theme.shape.borderRadius}px 0 0 ${theme.shape.borderRadius}px`,
+    overflow: 'hidden'
 	},
 	closeButton: {
 		position: 'absolute',
 		top: 10,
 		right: 10,
 		bgcolor: 'rgb(0,0,0,0.5)',
-	},
-	paper: {
-		mb: 2,
 	},
 }

@@ -9,7 +9,7 @@ type CmsFormWizardProps = SectionProps & FormWizardProps
 const CmsFormWizard: React.FC<CmsFormWizardProps> = (props) => {
 	const {
 		mode,
-		py, //special case for padding y
+		py,
 		px,
 		maxWidth,
 		requireTeam,
@@ -25,11 +25,11 @@ const CmsFormWizard: React.FC<CmsFormWizardProps> = (props) => {
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
 			mode={mode}
-			py={0}
+			py={py}
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<FormWizard py={py} {...rest} />
+			<FormWizard {...rest} />
 		</Section>
 	)
 }
