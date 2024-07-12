@@ -2,10 +2,8 @@ import React, { useState } from 'react'
 import { Avatar, Box, Stack, Typography } from '@mui/material'
 import {
 	DisplayFields,
-	BuyNowButton,
 	StripePaymentLink,
 	SocialButtons,
-	Image,
 	Actions,
 	AvgRating,
 	ExpandableText,

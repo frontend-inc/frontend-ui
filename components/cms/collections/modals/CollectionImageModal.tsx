@@ -1,42 +1,33 @@
 import React from 'react'
-import { Box } from '@mui/material'
-import { Comments, Modal, SocialButtons, HeroSnippet } from '../..'
+import { Box, IconButton } from '@mui/material'
+import { Image, Comments, Icon, Modal, SocialButtons } from '../../../../components'
 import { useCollection } from 'frontend-js'
-import { ActionType, FormFieldType, DisplayFieldType } from '../../../types'
 
-export type CollectionShowModalProps = {
+export type CollectionImageModalProps = {
 	open: boolean
 	handleClose: () => void
 	handle?: string
-	enableBorder?: boolean
+	enableGradient?: boolean
 	enableOverlay?: boolean
-	actions: ActionType[]
-	displayFields: DisplayFieldType[]
-	fields?: FormFieldType[]
-	fieldName?: string
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
-	enableRatings?: boolean
-	enableBuyNow?: boolean
 	enableUsers?: boolean
-	enableStripePaymentLink?: boolean
 	handleEdit?: () => void
 	enableComments?: boolean
 }
 
-const CollectionShowModal: React.FC<CollectionShowModalProps> = (props) => {
+const CollectionImageModal: React.FC<CollectionImageModalProps> = (props) => {
 	const { resource, url } = useCollection()
 
 	const {
 		open,
 		handleClose,
-		actions = [],
-		displayFields = [],
+    enableGradient,
+    enableOverlay,
 		enableComments,
-		enableRatings,
 		enableLikes,
 		enableFavorites,
 		enableSharing,
@@ -46,16 +37,31 @@ const CollectionShowModal: React.FC<CollectionShowModalProps> = (props) => {
 
 	if (!resource) return null
 	return (
-		<Modal disablePadding open={open} handleClose={handleClose} maxWidth="md">
-			<Box px={3} pb={2}>
-				<HeroSnippet
-					resource={resource}
-					enableEdit={enableEdit}
-					actions={actions}
-					displayFields={displayFields}
-					enableRatings={enableRatings}
-					handleEdit={handleEdit}
-				/>
+		<Modal 
+      disablePadding 
+      disableHeader
+      open={open} 
+      handleClose={handleClose} 
+      maxWidth="md"
+    >			
+      <Box sx={sx.imageContainer}>
+        <Image  
+          src={ resource?.image?.url }
+          height={800}
+          enableGradient={enableGradient}
+          enableOverlay={enableOverlay}
+          disableBorderRadius
+        />
+      <Box sx={ sx.closeButton }>
+        <IconButton 
+          sx={ sx.closeButton }
+          onClick={handleClose}
+        >
+          <Icon name="X" color='common.white' />
+        </IconButton>
+      </Box>
+      </Box>
+      <Box px={3}>
 				{(enableLikes || enableFavorites || enableSharing) && (
 					<SocialButtons
 						justifyContent="center"
@@ -71,7 +77,7 @@ const CollectionShowModal: React.FC<CollectionShowModalProps> = (props) => {
 	)
 }
 
-export default CollectionShowModal
+export default CollectionImageModal
 
 const sx = {
 	root: {
@@ -93,18 +99,13 @@ const sx = {
 	header: {
 		width: '100%',
 	},
-	imageContainer: {
-		borderRadius: 1,
-		width: 240,
-		minWidth: 240,
-	},
 	closeButton: {
 		position: 'absolute',
 		top: 10,
 		right: 10,
 		bgcolor: 'rgb(0,0,0,0.5)',
 	},
-	paper: {
-		mb: 2,
-	},
+  imageContainer: {
+    position: 'relative',
+  }	
 }

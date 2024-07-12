@@ -36,39 +36,24 @@ export type ForeignProps = {
 }
 
 export type CardProps = {
-	ref?: React.Ref<any>
 	actions: ActionType[]
+  displayFields: DisplayFieldType[]
 	enableUsers?: boolean
 	enableComments?: boolean
 	enableFavorites?: boolean
 	enableRatings?: boolean
-	editing?: boolean
-	resource: any & {
-		label?: string
-		title?: string
-		description?: string
-		image?: {
-			url: string
-		}
-		video?: string
-	}
-	displayFields: DisplayFieldType[]
-	buttonText?: string
-	textVariant?: TypographyVariant
-	size?: number
+  enableLikes?: boolean
+	resource: any
 	href?: string
 	height?: number
 	width?: number
 	handleClick?: () => void
 	handleEdit?: (item: any) => void
 	handleDelete?: (item: any) => void
-	objectFit?: 'cover' | 'contain'
-	responsive?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
-	icon?: string
 }
 
 export type PriceType = {

@@ -16,11 +16,8 @@ export type CollectionListProps = {
 	url: string
 	href?: string
 	style: 'list' | 'avatar' | 'card' | 'cover' | 'text'
-	editing?: boolean
-	perPage?: number
 	actions: ActionType[]
 	displayFields: DisplayFieldType[]
-	buttonText?: string
 	handleClick?: (resource: any) => void
 	enableGradient?: boolean
 	enableOverlay?: boolean

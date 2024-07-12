@@ -1,57 +1,54 @@
-import React, { useContext } from 'react'
-import { AppContext, ThemeContext, ThemeProvider } from '../../../context'
+import React from 'react'
 import {
 	UserChip,
 	FavoriteButton,
 	Image,
 	Actions,
 	TouchableOpacity,
+  LightDarkMode
 } from '../../../components'
-import { useRouter } from 'next/router'
 import { Box } from '@mui/material'
-import { CardProps } from '../../../types'
+import { buildActions } from '../../../helpers'
 
-const ImageCard: React.FC<CardProps> = (props) => {
-	const { clientUrl } = useContext(AppContext)
+type ImageCardProps = {
+	enableUsers?: boolean
+	enableComments?: boolean
+	enableFavorites?: boolean
+	enableRatings?: boolean
+  enableLikes?: boolean
+	resource: any
+	handleClick: () => void
+	handleEdit?: (item: any) => void
+	handleDelete?: (item: any) => void
+	enableGradient?: boolean
+	enableOverlay?: boolean
+	enableEdit?: boolean
+	enableDelete?: boolean
+}
+
+const ImageCard: React.FC<ImageCardProps> = (props) => {
 	const {
-		actions,
 		resource,
-		href,
-		handleClick,
-		objectFit = 'cover',
-		height = 320,
+    handleClick,
+    enableEdit,
+    enableDelete,
+    handleEdit,    
+    handleDelete,
 		enableGradient = false,
 		enableOverlay = false,
-		enableUsers = false,
 		enableFavorites = false,
 	} = props || {}
 
 	const { title, image } = resource || {}
 
-	const router = useRouter()
-
-	const handleItemClick = () => {
-		if (handleClick) {
-			handleClick()
-		} else if (href) {
-			router.push(`${clientUrl}${href}`)
-		}
-	}
-
-	const { theme } = useContext(ThemeContext)
 
 	return (
-		<ThemeProvider
-			muiTheme={theme}
-			textPrimary="#FFFFFF"
-			textSecondary="#FFFFFF"
-		>
+    <LightDarkMode mode='dark'>
 			<Box sx={sx.root}>
-				<TouchableOpacity handleClick={handleItemClick}>
+				<TouchableOpacity handleClick={handleClick}>
 					<Image
 						src={image?.url}
-						height={height}
-						objectFit={objectFit}
+						height={240}
 						alt={title}
 						enableGradient={enableGradient}
 						enableOverlay={enableOverlay}
@@ -62,17 +59,22 @@ const ImageCard: React.FC<CardProps> = (props) => {
 						<FavoriteButton handle={resource?.handle} />
 					)}
 					<Actions
+            resource={resource}
 						numVisible={0}
-						actions={actions}
-						resource={resource}
-						color={enableOverlay ? 'common.white' : 'text.secondary'}
+						actions={ 
+              buildActions({
+                enableEdit,
+                enableDelete,
+                handleEdit,
+                handleDelete
+            })}
 					/>
 				</Box>
 				<Box sx={sx.userCard}>
-					{enableUsers == true && <UserChip user={resource?.user} />}
+					{resource?.user && <UserChip user={resource?.user} />}
 				</Box>
 			</Box>
-		</ThemeProvider>
+    </LightDarkMode>
 	)
 }
 

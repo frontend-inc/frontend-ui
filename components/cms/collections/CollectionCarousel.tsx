@@ -6,9 +6,7 @@ import { TableHeaderType } from '../../../types'
 import CollectionCarouselList from './CollectionCarouselList'
 
 export type CollectionCarouselProps = CollectionListProps &
-	CollectionContainerProps & {
-		headers: TableHeaderType[]
-	}
+	CollectionContainerProps 
 
 const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 	const {

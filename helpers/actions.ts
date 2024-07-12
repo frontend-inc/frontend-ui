@@ -5,7 +5,7 @@ type BuildActionParams = {
 	handleEdit?: (item: any) => void
 	enableDelete?: boolean
 	handleDelete?: (item: any) => void
-	actions: ActionType[]
+	actions?: ActionType[]
 }
 
 export const buildActions = ({

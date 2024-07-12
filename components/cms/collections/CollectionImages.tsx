@@ -1,11 +1,11 @@
 import React from 'react'
-import { CollectionContainer, CollectionList } from '../..'
+import { CollectionContainer, CollectionImageList } from '../..'
 import { CollectionListProps } from './CollectionList'
 import { CollectionContainerProps } from './CollectionContainer'
 
-export type CollectionProps = CollectionListProps & CollectionContainerProps
+export type CollectionImagesProps = CollectionListProps & CollectionContainerProps
 
-const Collection: React.FC<CollectionProps> = (props) => {
+const CollectionImages: React.FC<CollectionImagesProps> = (props) => {
 	const {
 		resource,
 		enableSearch,
@@ -37,9 +37,9 @@ const Collection: React.FC<CollectionProps> = (props) => {
 			enableFilters={enableFilters}
       enableSorting={enableSorting}
 		>
-			<CollectionList {...rest} url={url} />
+			<CollectionImageList {...rest} url={url} />
 		</CollectionContainer>
 	)
 }
 
-export default Collection
+export default CollectionImages
