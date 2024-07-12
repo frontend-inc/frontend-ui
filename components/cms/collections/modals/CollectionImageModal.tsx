@@ -49,7 +49,6 @@ const CollectionImageModal: React.FC<CollectionImageModalProps> = (props) => {
           src={ resource?.image?.url }
           height={800}
           enableGradient={enableGradient}
-          enableOverlay={enableOverlay}
           disableBorderRadius
         />
       <Box sx={ sx.closeButton }>
