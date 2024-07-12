@@ -143,7 +143,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 
 	useEffect(() => {
 		if (fields) {
-			setTotalSteps(fields.length-1) // End card adds 1
+			setTotalSteps(fields.length)
 		}
 	}, [fields])
 
