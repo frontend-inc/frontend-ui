@@ -52,30 +52,44 @@ const CollectionContainer: React.FC<CollectionContainerProps> = (props) => {
 	if (filterRelated == true && resource?.id) {
 		query = {
 			...query,
-			belongs_to: resource.id,
+      method: 'related',
+			resource_id: resource.id,
 		}
 	} else {
 		query = {
 			...query,
-			belongs_to: null,
+			resource_id: null,
 		}
 	}
 
 	if (filterUser == true) {
-		query = { ...query, current_user: true }
+		query = { 
+      ...query, 
+      current_user: true 
+    }
 	} else {
-		query = { ...query, current_user: false }
+		query = { 
+      ...query, 
+      current_user: false 
+    }
 	}
 
 	if (filterTeam == true) {
-		query = { ...query, current_team: true }
+		query = { 
+      ...query, 
+      current_team: true 
+    }
 	} else {
-		query = { ...query, current_team: false }
+		query = { 
+      ...query, 
+      current_team: false 
+    }
 	}
 
 	if (filterGeo == true && resource?.location) {
 		query = {
 			...query,
+      method: 'location',
 			location: resource?.location,
 		}
 	}
@@ -83,7 +97,8 @@ const CollectionContainer: React.FC<CollectionContainerProps> = (props) => {
 	if (filterSimilar == true && resource?.id) {
 		query = {
 			...query,
-			similar_to: resource?.id,
+      method: 'similar',
+			resource_id: resource?.id,
 		}
 	}
 

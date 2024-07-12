@@ -13,18 +13,22 @@ const Feed: React.FC<FeedProps> = (props) => {
 		filterOptions,
 		sortOptions,
 		url,
-		query = {},
 		filterUser,
 		filterTeam,
 		perPage,
 		...rest
 	} = props
 
-	let socialUrl = `${url}/social_feed`
+  let { query={} } = props
+
+  query = {
+    ...query,
+    method: 'social_feed'
+  }
 
 	return (
 		<CollectionContainer
-			url={socialUrl}
+			url={url}
 			query={query}
 			filterUser={filterUser}
 			filterTeam={filterTeam}

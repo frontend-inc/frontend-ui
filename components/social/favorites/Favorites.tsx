@@ -13,18 +13,22 @@ const Favorites: React.FC<FavoritesProps> = (props) => {
 		filterOptions,
 		sortOptions,
 		url,
-		query = {},
 		filterUser,
 		filterTeam,
 		perPage,
 		...rest
 	} = props
 
-	let favoritesUrl = `${url}/favorites`
+  let { query={} } = props
+
+  query = {
+    ...query,
+    method: 'favorites'
+  }
 
 	return (
 		<CollectionContainer
-			url={favoritesUrl}
+			url={url}
 			query={query}
 			filterUser={filterUser}
 			filterTeam={filterTeam}

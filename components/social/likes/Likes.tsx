@@ -13,18 +13,22 @@ const Likes: React.FC<LikesProps> = (props) => {
 		filterOptions,
 		sortOptions,
 		url,
-		query = {},
 		filterUser,
 		filterTeam,
 		perPage,
 		...rest
 	} = props
 
-	let likesUrl = `${url}/likes`
+  let { query={} } = props
+
+  query = {
+    ...query,
+    method: 'likes'
+  }
 
 	return (
 		<CollectionContainer
-			url={likesUrl}
+			url={url}
 			query={query}
 			filterUser={filterUser}
 			filterTeam={filterTeam}

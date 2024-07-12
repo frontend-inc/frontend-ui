@@ -40,6 +40,7 @@ const useSearch = (props) => {
 		if (location?.length > 0) {
 			searchQuery = {
 				...searchQuery,
+        method: 'location',
 				location: location,
 			}
 		} else {
