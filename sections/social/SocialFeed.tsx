@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
 import { Feed } from '../../components'
-import { FeedProps } from '../../components/social/feed/Feed'
+import { CollectionProps } from '../../components/cms/collections/Collection'
 import { SectionProps, HeadingProps } from '../../types'
 
-type SocialFeedProps = SectionProps & HeadingProps & FeedProps
+type SocialFeedProps = SectionProps & HeadingProps & CollectionProps
 
 const SocialFeed: React.FC<SocialFeedProps> = (props) => {
 	const {

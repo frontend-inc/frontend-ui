@@ -6,6 +6,7 @@ export type DocumentLinkType = {
 	source_id: number
 	target: DocumentType
 	source: DocumentType
+  position: number
 	updated_at: string
 	created_at: string
 }

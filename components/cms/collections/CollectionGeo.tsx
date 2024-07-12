@@ -12,14 +12,14 @@ const CollectionGeo: React.FC<CollectionGeoProps> = (props) => {
 		fields,
 		enableSearch,
 		enableCreate,
-		filterOptions,
-		sortOptions,
 		url,
 		query = {},
 		filterUser,
 		filterTeam,
 		filterRelated,
 		filterGeo,
+    enableFilters,
+    enableSorting,
 		perPage,
 		displayFields,
 		...rest
@@ -38,9 +38,9 @@ const CollectionGeo: React.FC<CollectionGeoProps> = (props) => {
 			fields={fields}
 			enableGeoSearch
 			enableSearch={enableSearch}
+      enableFilters={enableFilters}
+      enableSorting={enableSorting}
 			enableCreate={enableCreate}
-			filterOptions={filterOptions}
-			sortOptions={sortOptions}
 		>
 			<CollectionGeoList url={url} displayFields={displayFields} {...rest} />
 		</CollectionContainer>

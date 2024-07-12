@@ -1,25 +1,10 @@
 import React from 'react'
-import { CollectionContainer, CollectionList } from '../..'
-import { CollectionListProps } from '../../cms/collections/CollectionList'
-import { CollectionContainerProps } from '../../cms/collections/CollectionContainer'
+import { Collection } from '../..'
+import { CollectionProps } from '../../cms/collections/Collection'
 
-export type LikesProps = CollectionListProps & CollectionContainerProps
+const Likes: React.FC<CollectionProps> = (props) => {
 
-const Likes: React.FC<LikesProps> = (props) => {
-	const {
-		fields,
-		enableSearch,
-		enableCreate,
-		filterOptions,
-		sortOptions,
-		url,
-		filterUser,
-		filterTeam,
-		perPage,
-		...rest
-	} = props
-
-  let { query={} } = props
+  let { query={}, ...rest } = props
 
   query = {
     ...query,
@@ -27,18 +12,10 @@ const Likes: React.FC<LikesProps> = (props) => {
   }
 
 	return (
-		<CollectionContainer
-			url={url}
-			query={query}
-			filterUser={filterUser}
-			filterTeam={filterTeam}
-			perPage={perPage}
-			enableSearch={enableSearch}
-			filterOptions={filterOptions}
-			sortOptions={sortOptions}
-		>
-			<CollectionList {...rest} url={url} />
-		</CollectionContainer>
+		<Collection 
+      query={query}
+      {...rest}
+    />
 	)
 }
 

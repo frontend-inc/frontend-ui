@@ -15,8 +15,8 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 		fields,
 		enableSearch,
 		enableCreate,
-		filterOptions,
-		sortOptions,
+		enableFilters,
+    enableSorting,
 		url,
 		query = {},
 		filterUser,
@@ -35,8 +35,8 @@ const CollectionCarousel: React.FC<CollectionCarouselProps> = (props) => {
 			fields={fields}
 			enableSearch={enableSearch}
 			enableCreate={enableCreate}
-			filterOptions={filterOptions}
-			sortOptions={sortOptions}
+      enableFilters={enableFilters}
+      enableSorting={enableSorting}
 		>
 			<CollectionCarouselList {...rest} url={url} />
 		</CollectionContainer>

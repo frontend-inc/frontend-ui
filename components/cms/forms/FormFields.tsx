@@ -10,7 +10,7 @@ export type FormProps = {
 	errors: any
 	fields: FormFieldType[]
 	resource: any
-	handleChange: (e: SyntheticEventType) => void
+	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 	handleRemove: (name: string) => void
 	handleSubmit?: () => void
 	buttonText?: string

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Section, Heading, CollectionGeoNearby } from '../../components'
-import { CollectionGeoNearbyProps } from '../../components/cms/collections/CollectionGeoNearby'
+import { CollectionProps } from '../../components/cms/collections/Collection'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsListProps = SectionProps & HeadingProps & CollectionGeoNearbyProps
+type CmsListProps = SectionProps & HeadingProps & CollectionProps
 
 const CmsNearby: React.FC<CmsListProps> = (props) => {
 	const {

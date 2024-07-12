@@ -11,8 +11,8 @@ const Collection: React.FC<CollectionProps> = (props) => {
 		fields,
 		enableSearch,
 		enableCreate,
-		filterOptions,
-		sortOptions,
+    enableFilters,
+    enableSorting,
 		url,
 		query = {},
 		filterUser,
@@ -36,8 +36,8 @@ const Collection: React.FC<CollectionProps> = (props) => {
 			fields={fields}
 			enableSearch={enableSearch}
 			enableCreate={enableCreate}
-			filterOptions={filterOptions}
-			sortOptions={sortOptions}
+			enableFilters={enableFilters}
+      enableSorting={enableSorting}
 		>
 			<CollectionList {...rest} url={url} />
 		</CollectionContainer>

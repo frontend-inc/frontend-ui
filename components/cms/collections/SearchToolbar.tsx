@@ -18,6 +18,8 @@ export type ToolbarProps = {
 	filterTeam: boolean
 	perPage: number
 	enableSearch?: boolean
+  enableFilters?: boolean
+  enableSorting?: boolean
 	enableGeoSearch?: boolean
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
@@ -37,6 +39,8 @@ const SearchToolbar: React.FC<ToolbarProps> = (props) => {
 		enableCreate = false,
 		enableSearch = false,
 		enableGeoSearch = false,
+    enableFilters = false,
+    enableSorting = false ,
 		filterOptions = [],
 		sortOptions = [],
 	} = props
@@ -64,10 +68,10 @@ const SearchToolbar: React.FC<ToolbarProps> = (props) => {
 
 	const { handleAdd } = useForms()
 
-	const enableFilters = enableSearch && filterOptions.length > 0
-	const enableSorting = enableSearch && sortOptions.length > 0
+	const displayFilters = enableFilters && filterOptions.length > 0
+	const displaySorting = enableSorting && sortOptions.length > 0
 
-	if (!enableSearch && !enableFilters && !enableSorting && !enableCreate) {
+	if (!enableSearch && !displayFilters && !displaySorting && !enableCreate) {
 		return null
 	}
 	return (
@@ -99,7 +103,7 @@ const SearchToolbar: React.FC<ToolbarProps> = (props) => {
 						/>
 					)}
 
-					{enableFilters && (
+					{displayFilters && (
 						<Box sx={sx.buttonContainer}>
 							<FilterButton
 								filters={activeFilters}
@@ -109,7 +113,7 @@ const SearchToolbar: React.FC<ToolbarProps> = (props) => {
 							/>
 						</Box>
 					)}
-					{enableSorting && (
+					{displaySorting && (
 						<Box sx={sx.buttonContainer}>
 							<SortButton
 								sortBy={query?.sort_by || 'id'}

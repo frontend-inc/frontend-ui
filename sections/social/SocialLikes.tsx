@@ -1,11 +1,11 @@
 import React from 'react'
 import { Section, Heading, Query } from '../../components'
 import { Likes } from '../../components'
-import { LikesProps } from '../../components/social/likes/Likes'
+import { CollectionProps } from '../../components/cms/collections/Collection'
 import { SectionProps, HeadingProps } from '../../types'
 import { CollectionProvider } from 'frontend-js'
 
-type SocialLikesProps = SectionProps & HeadingProps & LikesProps
+type SocialLikesProps = SectionProps & HeadingProps & CollectionProps
 
 const SocialLikes: React.FC<SocialLikesProps> = (props) => {
 	const {

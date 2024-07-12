@@ -4,8 +4,6 @@ import { CollectionProvider } from 'frontend-js'
 import {
 	DisplayFieldType,
 	FormFieldType,
-	SearchFilterOptionType,
-	SortOptionType,
 } from '../../../types'
 
 export type CollectionContainerProps = {
@@ -19,12 +17,12 @@ export type CollectionContainerProps = {
 	filterSimilar?: boolean // Find similar resources based on tags
 	fields?: FormFieldType[]
 	displayFields?: DisplayFieldType[]
-	filterOptions?: SearchFilterOptionType[]
-	sortOptions?: SortOptionType[]
 	perPage?: number
 	enableSearch?: boolean
 	enableGeoSearch?: boolean
 	enableCreate?: boolean
+  enableFilters?: boolean
+  enableSorting?: boolean
 	children: React.ReactNode
 }
 
@@ -43,8 +41,8 @@ const CollectionContainer: React.FC<CollectionContainerProps> = (props) => {
 		enableGeoSearch,
 		enableSearch,
 		enableCreate,
-		filterOptions,
-		sortOptions,
+    enableFilters = true,
+    enableSorting = true
 	} = props
 
 	let { query = {} } = props || {}
@@ -113,9 +111,9 @@ const CollectionContainer: React.FC<CollectionContainerProps> = (props) => {
 					filterTeam={filterTeam}
 					enableSearch={enableSearch}
 					enableGeoSearch={enableGeoSearch}
-					filterOptions={filterOptions}
-					sortOptions={sortOptions}
 					enableCreate={enableCreate}
+          enableFilters={enableFilters}
+          enableSorting={enableSorting}
 				/>
 				{children}
 			</Query>

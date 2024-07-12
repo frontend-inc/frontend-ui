@@ -17,11 +17,11 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
 		resource,
 		fields,
 		enableSearch,
-		filterOptions,
-		sortOptions,
 		url,
 		headers = [],
 		query = {},
+    enableFilters,
+    enableSorting,
 		filterUser,
 		filterTeam,
 		filterRelated,
@@ -40,7 +40,8 @@ const CollectionKanBan: React.FC<CollectionKanBanProps> = (props) => {
 			perPage={perPage}
 			fields={fields}
 			enableSearch={enableSearch}
-			filterOptions={filterOptions}
+      enableFilters={enableFilters}
+			enableSorting={false}
 		>
 			<CollectionKanBanList {...rest} url={url} headers={headers} />
 		</CollectionContainer>

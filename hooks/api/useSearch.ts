@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useCollection } from 'frontend-js'
 import { useFilters } from '..'
-import { SortOptionType, FilterOptionType } from '../../types'
+import { SortOptionType, FilterOptionType, SyntheticEventType } from '../../types'
 
 const useSearch = (props) => {
 	const { query: defaultQuery = {}, perPage = 20 } = props
@@ -21,11 +21,11 @@ const useSearch = (props) => {
 	const [keywords, setKeywords] = useState('')
 	const [location, setLocation] = useState('')
 
-	const handleKeywordChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+	const handleKeywordChange = (ev: SyntheticEventType) => {
 		setKeywords(ev.target.value)
 	}
 
-	const handleLocationChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+	const handleLocationChange = (ev: SyntheticEventType) => {
 		setLocation(ev.target.value)
 	}
 

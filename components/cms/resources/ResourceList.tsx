@@ -3,7 +3,7 @@ import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
 import { Button, Box, Stack } from '@mui/material'
 import {
-	Form,
+	FormFields,
 	Drawer,
 	AlertModal,
 	Icon,
@@ -17,7 +17,7 @@ import {
 import { FormFieldType, FilterOptionType } from '../../../types'
 import { Placeholder } from '../..'
 import { SearchFilterOptionType } from '../../../types'
-import { SortOptionType } from '../../../types'
+import { SortOptionType, SyntheticEventType } from '../../../types'
 import ResourceListItem from './ResourceListItem'
 
 export type ResourceListProps = {
@@ -102,7 +102,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 
 	const [keywords, setKeywords] = useState('')
 
-	const handleKeywordChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+	const handleKeywordChange = (ev: SyntheticEventType) => {
 		setKeywords(ev.target.value)
 	}
 
@@ -331,9 +331,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					</Button>
 				}
 			>
-				<Form
+				<FormFields
+          errors={errors}
 					loading={loading}
-					errors={errors}
 					fields={fields}
 					resource={resource}
 					handleChange={handleChange}

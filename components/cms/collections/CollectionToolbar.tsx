@@ -13,6 +13,8 @@ export type CollectionToolbarProps = {
 	enableSearch?: boolean
 	enableGeoSearch?: boolean
 	enableCreate?: boolean
+  enableFilters?: boolean
+  enableSorting?: boolean
 	handleAdd?: () => void
 }
 

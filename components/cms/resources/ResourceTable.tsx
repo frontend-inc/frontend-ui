@@ -3,7 +3,7 @@ import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
 import { Button, Box, Stack } from '@mui/material'
 import {
-	Form,
+	FormFields,
 	Drawer,
 	AlertModal,
 	Icon,
@@ -13,7 +13,6 @@ import {
 } from '../../../components'
 import {
 	TableHeaderType,
-	FormFieldType,
 	FilterOptionType,
 	SyntheticEventType,
 } from '../../../types'
@@ -277,14 +276,16 @@ const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 					</Button>
 				}
 			>
-				<Form
-					loading={loading}
-					errors={errors}
-					fields={fields}
-					resource={resource}
-					handleChange={handleChange}
-					handleRemove={handleRemove}
-				/>
+        { fields && (
+          <FormFields
+            loading={loading}
+            errors={errors}
+            fields={fields}
+            resource={resource}
+            handleChange={handleChange}
+            handleRemove={handleRemove}
+          />
+        )}
 			</Drawer>
 			<AlertModal
 				open={openDeleteModal}
