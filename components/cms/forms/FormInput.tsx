@@ -11,8 +11,9 @@ import {
 	SwitchInput,
 	TextInput,
 	ShopifyProductInput,
+  ReferenceInput
 } from '../../../components'
-import { SyntheticEventType } from '../../../types'
+import { FormFieldType, SyntheticEventType } from '../../../types'
 
 type FormInputProps = {
 	variant: any
@@ -24,10 +25,16 @@ type FormInputProps = {
 	placeholder?: string
 	handleChange: (e: SyntheticEventType) => void
 	handleRemove: (name: string) => void
+  resource?: any
+  url?: string
+  foreignUrl?: string
+  contentType?: string
+  fields?: FormFieldType[]
 }
 
 const FormInput: React.FC<FormInputProps> = (props) => {
-	const {
+	
+  const {
 		variant,
 		name,
 		label,
@@ -36,7 +43,12 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		options,
 		placeholder,
 		handleChange,
-		handleRemove,
+		handleRemove,    
+    resource,
+    url,
+    foreignUrl,
+    fields,
+    contentType,    
 	} = props
 
 	let componentMapper = {
@@ -56,6 +68,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		image: ImageInput,
 		json: JSONInput,
 		shopify: ShopifyProductInput,
+    habtm: ReferenceInput 
 	}
 
 	let inputProps = {
@@ -88,6 +101,13 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		file: {
 			handleRemove,
 		},
+    habtm: {
+      resource,
+      url,
+      foreignUrl,
+      contentType,
+      fields
+    }
 	}
 
 	let InputComponent = componentMapper[variant]

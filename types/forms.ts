@@ -15,6 +15,12 @@ export type FormFieldType = {
 	label: string
 	options?: OptionType[]
 	placeholder?: string
+  // Used by ReferenceInput
+  resource?: any
+  url?: string
+  foreignUrl?: string
+  fields?: FormFieldType[]
+  contentType?: string
 }
 
 export type TableHeaderType = {

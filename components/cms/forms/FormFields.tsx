@@ -33,8 +33,9 @@ const FormFields: React.FC<FormProps> = (props) => {
 			{fields?.map((field, index) => (
 				<FormFieldInput
 					key={index}
+          resource={resource}          
 					errors={errors}
-					field={field}
+					field={field}          
 					value={get(resource, field.name)}
 					handleChange={handleChange}
 					handleRemove={handleRemove}

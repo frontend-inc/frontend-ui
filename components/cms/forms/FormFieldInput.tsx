@@ -1,31 +1,52 @@
 import React from 'react'
-import { SyntheticEventType } from '../../../types'
+import { FormFieldType, SyntheticEventType } from '../../../types'
 import FormInput from './FormInput'
 
 type FormFieldInputProps = {
-	field: any
+  resource: any
+	field: FormFieldType
 	errors?: any
 	value?: any | any[]
+  url?: string
+  foreignUrl?: string
+  contentType?: string
+  fields?: FormFieldType[]
 	handleChange: (e: SyntheticEventType) => void
 	handleRemove: (name: string) => void
 }
 
 const FormFieldInput: React.FC<FormFieldInputProps> = (props) => {
 	
-  const { field, errors, value, handleChange, handleRemove } = props
-	const { name, label, placeholder, variant, options } = field
+  const { resource, field, errors, value, handleChange, handleRemove } = props
+	const {     
+    name, 
+    label, 
+    placeholder, 
+    variant,
+    options, 
+    url,
+    foreignUrl,
+    contentType,
+    fields     
+  } = field
 
 	return (
-		<FormInput
+		<FormInput      
 			errors={errors}
 			name={name}
 			label={label}
 			placeholder={placeholder}
 			variant={variant}
 			options={options}
-			value={value}
+			value={value}      
 			handleChange={handleChange}
 			handleRemove={handleRemove}
+      // Reference props 
+      url={url}
+      foreignUrl={foreignUrl}
+      resource={resource}
+      contentType={contentType}
+      fields={fields}
 		/>
 	)
 }
