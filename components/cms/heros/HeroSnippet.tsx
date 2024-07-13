@@ -5,6 +5,7 @@ import {
 	DisplayFields,
 	Actions,
 	Image,
+  SocialButtons,
 	UserChip,
 	StripePaymentLink,
 } from '../..'
@@ -22,20 +23,39 @@ const HeroSnippet: React.FC<HeroProps> = (props) => {
 		enablePayments,
 		enableEdit,
 		handleEdit,
+    enableLikes,
+    enableFavorites,
+    enableSharing,
 	} = props || {}
 
 	const { image, label, title } = resource || {}
 
 	if (!resource) return null
 	return (
-		<Paper elevation={0} sx={sx.paper}>
-			<Stack direction="row" spacing={2} sx={sx.header}>
+		<Paper elevation={1} sx={sx.paper}>
+			<Stack direction="column" spacing={2} sx={sx.header}>
 				{image?.url && (
 					<Box sx={sx.imageContainer}>
-						<Image disableBorderRadius label={label} src={image?.url} alt={title} height={240} />
+						<Image 
+              disableBorderRadius 
+              label={label} 
+              src={image?.url} 
+              alt={title} 
+              height={440} 
+              objectFit='contain'
+            />
 					</Box>
 				)}
 				<Stack spacing={0.5} direction="column" p={2} width="100%">
+        {(enableLikes || enableFavorites || enableSharing) && (
+					<SocialButtons
+						justifyContent="center"
+						handle={resource?.handle}
+						enableLikes={enableLikes}
+						enableFavorites={enableFavorites}
+						enableSharing={enableSharing}
+					/>
+				)}
 					<Typography variant="subtitle1" color="text.primary">
 						{resource?.title}
 					</Typography>
@@ -52,20 +72,6 @@ const HeroSnippet: React.FC<HeroProps> = (props) => {
 					)}
 					<UserChip user={resource?.user} />
 				</Stack>
-				<Box justifyContent="flex-end">
-					{(actions?.length > 0 || enableEdit) && (
-						<Actions
-							numVisible={0}
-							actions={buildActions({
-								enableEdit,
-								handleEdit,
-								actions,
-							})}
-							justifyContent="flex-end"
-							resource={flattenDocument(resource)}
-						/>
-					)}
-				</Box>
 			</Stack>
 		</Paper>
 	)
@@ -77,7 +83,7 @@ const sx = {
 	paper: {		
     border: '1px solid',
     borderColor: 'divider',
-    mb: 2,
+    my: 1,
     transition: 'box-shadow 0.3s',
     '&:hover': {
       boxShadow: 2,
@@ -97,10 +103,9 @@ const sx = {
 		width: '100%',
 	},
 	imageContainer: {
-		width: 240,
-		minWidth: 240,
+		width: '100%',
     borderRadius: theme => 
-      `${theme.shape.borderRadius}px 0 0 ${theme.shape.borderRadius}px`,
+      `${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0 0`,
     overflow: 'hidden'
 	},
 	closeButton: {

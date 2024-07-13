@@ -46,8 +46,8 @@ const CollectionShowModal: React.FC<CollectionShowModalProps> = (props) => {
 
 	if (!resource) return null
 	return (
-		<Modal disablePadding open={open} handleClose={handleClose} maxWidth="md">
-			<Box px={3} pb={2}>
+		<Modal disablePadding open={open} handleClose={handleClose} maxWidth="sm">
+			<Box px={2} pb={2}>
 				<HeroSnippet
 					resource={resource}
 					enableEdit={enableEdit}
@@ -56,16 +56,10 @@ const CollectionShowModal: React.FC<CollectionShowModalProps> = (props) => {
 					enableRatings={enableRatings}
           enablePayments={enablePayments}
 					handleEdit={handleEdit}          
+          enableLikes={enableLikes}
+          enableFavorites={enableFavorites}
+          enableSharing={enableSharing}
 				/>
-				{(enableLikes || enableFavorites || enableSharing) && (
-					<SocialButtons
-						justifyContent="center"
-						handle={resource?.handle}
-						enableLikes={enableLikes}
-						enableFavorites={enableFavorites}
-						enableSharing={enableSharing}
-					/>
-				)}
 				{enableComments && <Comments url={url} handle={resource?.handle} />}
 			</Box>
 		</Modal>
