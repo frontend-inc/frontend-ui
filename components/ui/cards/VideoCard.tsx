@@ -5,12 +5,13 @@ import {
 	Image,
 	Actions,
 	TouchableOpacity,
-  LightDarkMode
-} from '../../../components'
-import { Box } from '@mui/material'
+  LightDarkMode, 
+  Icon
+} from '../..'
+import { IconButton, Box } from '@mui/material'
 import { buildActions } from '../../../helpers'
 
-type ImageCardProps = {
+type VideoCardProps = {
 	enableUsers?: boolean
 	enableComments?: boolean
 	enableFavorites?: boolean
@@ -26,7 +27,7 @@ type ImageCardProps = {
 	enableDelete?: boolean
 }
 
-const ImageCard: React.FC<ImageCardProps> = (props) => {
+const VideoCard: React.FC<VideoCardProps> = (props) => {
 	const {
 		resource,
     handleClick,
@@ -48,12 +49,22 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 				<TouchableOpacity handleClick={handleClick}>
 					<Image
 						src={image?.url}
-						height={260}
+						height={360}
 						alt={title}
 						enableGradient={enableGradient}
 						enableOverlay={enableOverlay}
 					/>
-				</TouchableOpacity>
+				</TouchableOpacity>        
+          <IconButton
+            sx={sx.playIcon}
+            onClick={handleClick}
+          >
+            <Icon 
+              name="Play" 
+              color="common.white" 
+              size={20} 
+            />
+          </IconButton>
 				<Box sx={sx.actions}>
 					{enableFavorites == true && (
 						<FavoriteButton handle={resource?.handle} />
@@ -78,7 +89,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 	)
 }
 
-export default ImageCard
+export default VideoCard
 
 const sx = {
 	root: {
@@ -109,6 +120,15 @@ const sx = {
 		position: 'absolute',
 		top: 10,
 		right: 10,
+	},
+  playIcon: {
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'flex-end',
+		position: 'absolute',
+		top: 'calc(50% - 20px)',
+		right: 'calc(50% - 20px)',
+    bgcolor: 'rgb(0,0,0,0.5)',
 	},
 	userCard: {
 		display: 'flex',

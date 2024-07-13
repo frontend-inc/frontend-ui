@@ -1,22 +1,11 @@
 import React from 'react'
-import { Box, IconButton } from '@mui/material'
-import { Image, Comments, Icon, Modal, SocialButtons } from '../../../../components'
+import { Image, MediaModal } from '../../../../components'
 import { useCollection } from 'frontend-js'
 
 export type CollectionImageModalProps = {
 	open: boolean
 	handleClose: () => void
-	handle?: string
-	enableGradient?: boolean
-	enableOverlay?: boolean
-	enableEdit?: boolean
-	enableCreate?: boolean
-	enableFavorites?: boolean
-	enableLikes?: boolean
-	enableSharing?: boolean
-	enableUsers?: boolean
-	handleEdit?: () => void
-	enableComments?: boolean
+  enableGradient?: boolean
 }
 
 const CollectionImageModal: React.FC<CollectionImageModalProps> = (props) => {
@@ -25,54 +14,22 @@ const CollectionImageModal: React.FC<CollectionImageModalProps> = (props) => {
 	const {
 		open,
 		handleClose,
-    enableGradient,
-    enableOverlay,
-		enableComments,
-		enableLikes,
-		enableFavorites,
-		enableSharing,
-		enableEdit,
-		handleEdit,
+    enableGradient
 	} = props || {}
 
 	if (!resource) return null
 	return (
-		<Modal 
-      disablePadding 
-      disableHeader
-      open={open} 
-      handleClose={handleClose} 
-      maxWidth="md"
-    >			
-      <Box sx={sx.imageContainer}>
-        <Image  
-          src={ resource?.image?.url }
-          height={800}
-          enableGradient={enableGradient}
-          disableBorderRadius
-        />
-      <Box sx={ sx.closeButton }>
-        <IconButton 
-          sx={ sx.closeButton }
-          onClick={handleClose}
-        >
-          <Icon name="X" color='common.white' />
-        </IconButton>
-      </Box>
-      </Box>
-      <Box px={3}>
-				{(enableLikes || enableFavorites || enableSharing) && (
-					<SocialButtons
-						justifyContent="center"
-						handle={resource?.handle}
-						enableLikes={enableLikes}
-						enableFavorites={enableFavorites}
-						enableSharing={enableSharing}
-					/>
-				)}
-				{enableComments && <Comments url={url} handle={resource?.handle} />}
-			</Box>
-		</Modal>
+    <MediaModal
+      open={open}
+      handleClose={handleClose}
+    >
+      <Image  
+        src={ resource?.image?.url }
+        height={800}
+        enableGradient={enableGradient}
+        disableBorderRadius
+      />      
+    </MediaModal>
 	)
 }
 
@@ -80,23 +37,7 @@ export default CollectionImageModal
 
 const sx = {
 	root: {
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		overflow: 'hidden',
-		position: 'relative',
-	},
-	container: {
-		width: '100%',
-		justifyContent: 'flex-start',
-		alignItems: {
-			md: 'flex-start',
-			xs: 'center',
-		},
-	},
-	header: {
-		width: '100%',
+    zIndex: 9999,
 	},
 	closeButton: {
 		position: 'absolute',
@@ -105,6 +46,11 @@ const sx = {
 		bgcolor: 'rgb(0,0,0,0.5)',
 	},
   imageContainer: {
-    position: 'relative',
+    borderRadius: 1,
+    overflow: 'hidden',
+    maxWidth: 'calc(100vw - 50px)',
+    maxHeight: 'calc(100vh - 50px)',
+    position: 'relative',    
+    zIndex: 999
   }	
 }

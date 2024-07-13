@@ -14,7 +14,10 @@ export { default as CollectionTable } from './CollectionTable'
 export { default as CollectionTableList } from './CollectionTableList'
 export { default as CollectionKanBan } from './CollectionKanBan'
 export { default as SearchToolbar } from './SearchToolbar'
+export { default as CollectionVideos } from './CollectionVideos'
+export { default as CollectionVideoList } from './CollectionVideoList'
 
 // Modals 
 export { default as CollectionShowModal } from './modals/CollectionShowModal'
 export { default as CollectionImageModal } from './modals/CollectionImageModal'
+export { default as CollectionVideoModal } from './modals/CollectionVideoModal'

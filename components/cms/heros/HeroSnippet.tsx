@@ -34,18 +34,16 @@ const HeroSnippet: React.FC<HeroProps> = (props) => {
 	return (
 		<Paper elevation={1} sx={sx.paper}>
 			<Stack direction="column" spacing={0} sx={sx.header}>
-				{image?.url && (
-					<Box sx={sx.imageContainer}>
-						<Image 
-              disableBorderRadius 
-              label={label} 
-              src={image?.url} 
-              alt={title} 
-              height={400} 
-              objectFit='contain'
-            />
-					</Box>
-				)}
+        <Box sx={sx.imageContainer}>
+          <Image 
+            disableBorderRadius 
+            label={label} 
+            src={image?.url} 
+            alt={title} 
+            height={400} 
+            objectFit='contain'
+          />
+        </Box>
 				<Stack spacing={0.5} direction="column" p={2} width="100%">
         {(enableLikes || enableFavorites || enableSharing) && (
 					<SocialButtons

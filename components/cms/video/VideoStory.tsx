@@ -6,7 +6,6 @@ const VideoVert: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
-		objectFit = 'cover',
 		height = 80,
 		width = 80,
 		enableGradient = false,
@@ -21,25 +20,25 @@ const VideoVert: React.FC<CardProps> = (props) => {
 		setOpen(true)
 	}
 
-	return !open ? (
-		<AvatarCard
-			actions={actions}
-			resource={resource}
-			handleClick={handleItemClick}
-			objectFit={objectFit}
-			height={height}
-			width={width}
-			displayFields={[]}
-			enableGradient={enableGradient}
-			enableOverlay={enableOverlay}
-		/>
-	) : (
-		<VideoModal
-			open={open}
-			title={title}
-			src={video}
-			handleClose={() => setOpen(false)}
-		/>
+	return(
+    <>
+      <AvatarCard
+        actions={actions}
+        resource={resource}
+        handleClick={handleItemClick}
+        height={height}
+        width={width}
+        displayFields={[]}
+        enableGradient={enableGradient}
+        enableOverlay={enableOverlay}
+      />
+      <VideoModal
+        open={open}
+        title={title}
+        src={video}
+        handleClose={() => setOpen(false)}
+      />
+    </>
 	)
 }
 
