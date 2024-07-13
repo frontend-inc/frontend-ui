@@ -33,7 +33,7 @@ const HeroSnippet: React.FC<HeroProps> = (props) => {
 	if (!resource) return null
 	return (
 		<Paper elevation={1} sx={sx.paper}>
-			<Stack direction="column" spacing={2} sx={sx.header}>
+			<Stack direction="column" spacing={0} sx={sx.header}>
 				{image?.url && (
 					<Box sx={sx.imageContainer}>
 						<Image 
@@ -41,7 +41,7 @@ const HeroSnippet: React.FC<HeroProps> = (props) => {
               label={label} 
               src={image?.url} 
               alt={title} 
-              height={440} 
+              height={400} 
               objectFit='contain'
             />
 					</Box>
