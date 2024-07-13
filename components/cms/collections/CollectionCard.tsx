@@ -38,6 +38,7 @@ type CollectionCardProps = {
 	enableUsers?: boolean
 	enableComments?: boolean
 	enableFavorites?: boolean
+  enableLikes?: boolean
 	enableRatings?: boolean
 }
 

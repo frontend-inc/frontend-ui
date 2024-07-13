@@ -18,6 +18,7 @@ import {
 	DisplayFields,
 	CommentButton,
 	FavoriteButton,
+  LikeButton,
 } from '../../../components'
 
 const AvatarList: React.FC<CardProps> = (props) => {
@@ -32,6 +33,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 		enableOverlay = false,
 		enableComments = false,
 		enableFavorites = false,
+    enableLikes = false,
 		enableRatings = false,
 	} = props
 
@@ -44,10 +46,13 @@ const AvatarList: React.FC<CardProps> = (props) => {
 				disableGutters
 				secondaryAction={
 					<Stack direction="row" alignItems="flex-end" mr={1}>
-						{enableComments == true && <CommentButton resource={resource} />}
+            {enableLikes == true && (
+							<LikeButton handle={resource?.handle} />
+						)}
 						{enableFavorites == true && (
 							<FavoriteButton handle={resource?.handle} />
 						)}
+            {enableComments == true && <CommentButton resource={resource} />}
 						<Actions numVisible={0} actions={actions} resource={resource} />
 					</Stack>
 				}

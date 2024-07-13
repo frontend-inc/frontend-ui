@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
 import { Box, Stack, Typography } from '@mui/material'
-import {
-  LightDarkMode,
+import {  
 	Image,
 	DisplayFields,
 	TouchableOpacity,
 	CommentButton,
 	FavoriteButton,
+  LikeButton,
 	AvgRating,
 	UserChip,
 } from '../..'
@@ -25,11 +25,11 @@ const CardList: React.FC<CardProps> = (props) => {
 		href,
 		height = 180,
 		handleClick,
-		objectFit = 'cover',
 		enableGradient = false,
 		enableOverlay = false,
 		enableComments = false,
 		enableFavorites = false,
+    enableLikes = false,
 		enableRatings = false,
 	} = props || {}
 
@@ -57,8 +57,7 @@ const CardList: React.FC<CardProps> = (props) => {
 						<Image
 							label={label}
 							src={image?.url}
-							height={height}
-							objectFit={objectFit}
+							height={height}							
 							alt={title}
 							enableGradient={enableGradient}
 							enableOverlay={enableOverlay}
@@ -76,11 +75,14 @@ const CardList: React.FC<CardProps> = (props) => {
 						<DisplayFields fields={displayFields} resource={resource} />
 						{resource?.user && <UserChip user={resource?.user} />}
 					</Stack>
-					<Stack direction="row" justifyContent="flex-end">
-						{enableComments == true && <CommentButton resource={resource} />}
+					<Stack direction="row" justifyContent="flex-end">						
+            { enableLikes == true && (
+              <LikeButton handle={resource?.handle} /> 
+            )}
 						{enableFavorites == true && (
 							<FavoriteButton handle={resource?.handle} />
 						)}
+            { enableComments == true && <CommentButton resource={resource} />}
 						<Actions numVisible={0} actions={actions} resource={resource} />
 					</Stack>
 				</Stack>

@@ -48,8 +48,8 @@ const sx = {
   imageContainer: {
     borderRadius: 1,
     overflow: 'hidden',
-    maxWidth: 'calc(100vw - 50px)',
-    maxHeight: 'calc(100vh - 50px)',
+    maxWidth: 'calc(100vw - 100px)',
+    maxHeight: 'calc(100vh - 100px)',
     position: 'relative',    
     zIndex: 999
   }	

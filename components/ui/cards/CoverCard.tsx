@@ -5,14 +5,15 @@ import {
 	UserChip,
 	AvgRating,
 	FavoriteButton,
+  LikeButton,
 	DisplayFields,
 	Image,
 	Icon,
 	TouchableOpacity,
 	Actions,
 	CommentButton,
+  LightDarkMode,
 } from '../..'
-import { ThemeProvider } from '../../../context'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../types'
@@ -25,15 +26,14 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		displayFields = [],
 		href,
 		handleClick,
-		objectFit = 'cover',
 		height = 400,
 		enableGradient = false,
 		enableUsers = false,
 		enableOverlay = false,
 		enableComments = false,
 		enableFavorites = false,
-		enableRatings = false,
-		icon,
+    enableLikes = false,
+		enableRatings = false,		
 	} = props || {}
 
 	const { label, title, image } = resource || {}
@@ -50,18 +50,13 @@ const CoverVert: React.FC<CardProps> = (props) => {
 	const { theme } = useContext(ThemeContext)
 
 	return (
-		<ThemeProvider
-			muiTheme={theme}
-			textPrimary="#FFFFFF"
-			textSecondary="#FFFFFF"
-		>
+		<LightDarkMode mode='dark'>
 			<Stack spacing={1} sx={sx.root}>
 				<TouchableOpacity handleClick={handleItemClick}>
 					<Image
 						label={label}
 						src={image?.url}
 						height={height}
-						objectFit={objectFit}
 						alt={title}
 						enableGradient={enableGradient}
 						enableOverlay={enableOverlay}
@@ -74,11 +69,6 @@ const CoverVert: React.FC<CardProps> = (props) => {
 						direction={'row'}
 						alignItems="center"
 					>
-						{icon && (
-							<Box>
-								<Icon size={20} name={icon} color="common.white" />
-							</Box>
-						)}
 						<Box sx={sx.content}>
 							<Stack sx={sx.contentContainer} direction="column" spacing={0}>
 								<Box sx={sx.fullWidth}>
@@ -95,17 +85,20 @@ const CoverVert: React.FC<CardProps> = (props) => {
 						</Box>
 					</Stack>
 				</Stack>
-				<Box sx={sx.actions}>
-					{enableComments == true && (
-						<CommentButton resource={resource} color="common.white" />
+				<Box sx={sx.actions}>					
+          {enableLikes == true && (
+						<LikeButton handle={resource?.handle} color="common.white" />
 					)}
 					{enableFavorites == true && (
 						<FavoriteButton handle={resource?.handle} color="common.white" />
 					)}
+          {enableComments == true && (
+						<CommentButton resource={resource} color="common.white" />
+					)}
 					<Actions numVisible={0} resource={resource} actions={actions} />
 				</Box>
 			</Stack>
-		</ThemeProvider>
+		</LightDarkMode>
 	)
 }
 

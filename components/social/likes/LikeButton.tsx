@@ -1,9 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { Button, IconButton } from '@mui/material'
+import { Box, IconButton } from '@mui/material'
 import { isLiked } from '../../../helpers'
 import { useSocial } from '../../../hooks'
 import { useAuth } from 'frontend-js'
-import { ThumbUp } from '@mui/icons-material'
+import {  
+  Favorite, 
+  FavoriteBorder,    
+} from '@mui/icons-material'
 import { AppContext } from '../../../context'
 
 type LikeButtonProps = {
@@ -49,7 +52,9 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
 		}
 	}, [currentUser, handle])
 
-	return variant == 'icon' ? (
+	return(
+  <Box>
+    { variant == 'icon' ? (
 		<IconButton
 			onClick={handleClick}
 			sx={{
@@ -57,7 +62,10 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
 				...(liked && sx.iconLiked),
 			}}
 		>
-			<ThumbUp />
+      { liked ? 
+			  <Favorite fontSize="small" /> : 
+        <FavoriteBorder fontSize="small" />
+      }
 		</IconButton>
 	) : (
 		<IconButton
@@ -67,8 +75,13 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
 				...(liked && sx.buttonLiked),
 			}}
 		>
-			<ThumbUp fontSize="small" />
+			{ liked ? 
+			  <Favorite fontSize="small" /> : 
+        <FavoriteBorder fontSize="small" />
+      }
 		</IconButton>
+    )}
+  </Box>
 	)
 }
 
@@ -97,7 +110,6 @@ const sx = {
 		},
 	},
 	buttonLiked: {
-		transform: 'rotate(10deg)',
 		borderColor: 'primary.main',
 		color: 'primary.main',
 		'&:hover': {

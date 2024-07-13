@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
 import { Box, Stack, Typography } from '@mui/material'
 import {
-  LightDarkMode,
+  LikeButton,
 	Image,
 	UserChip,
 	AvgRating,
@@ -23,13 +23,13 @@ const Card: React.FC<CardProps> = (props) => {
 		resource,
 		displayFields = [],
 		href,
-		handleClick,
-		objectFit = 'cover',
+		handleClick,		
 		height = 240,
 		enableGradient = false,
 		enableOverlay = false,
 		enableComments = false,
 		enableFavorites = false,
+    enableLikes = false,
 		enableRatings = false,
 	} = props || {}
 
@@ -58,8 +58,7 @@ const Card: React.FC<CardProps> = (props) => {
 			<Box sx={sx.imageContainer}>
 				<Image
 					src={image?.url}
-					height={height}
-					objectFit={objectFit}
+					height={height}					
 					alt={title}
 					label={label}
 					enableGradient={enableGradient}
@@ -87,6 +86,11 @@ const Card: React.FC<CardProps> = (props) => {
             {resource?.user && <UserChip user={resource?.user} />}
           </Stack>
           <Stack direction="row" spacing={0}>
+            { enableLikes == true && (
+              <LikeButton 
+                handle={resource?.handle}
+              />
+            )}
             {enableFavorites == true && (
               <FavoriteButton handle={resource?.handle} />
             )}

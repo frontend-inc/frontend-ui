@@ -19,6 +19,7 @@ type CollectionCardsProps = {
 	enableUsers?: boolean
 	enableComments?: boolean
 	enableFavorites?: boolean
+  enableLikes?: boolean
 	enableRatings?: boolean
 	handleClick: (item: any) => void
 	handleEdit?: (item: any) => void
@@ -44,6 +45,7 @@ const CollectionCards: React.FC<CollectionCardsProps> = (props) => {
 		enableUsers = false,
 		enableComments = false,
 		enableFavorites = false,
+    enableLikes = false,
 		enableRatings = false,
 	} = props
 
@@ -83,6 +85,7 @@ const CollectionCards: React.FC<CollectionCardsProps> = (props) => {
 					enableUsers={enableUsers}
 					enableComments={enableComments}
 					enableFavorites={enableFavorites}
+          enableLikes={enableLikes}
 					enableRatings={enableRatings}
 					enableBorder={enableBorder}
 					enableGradient={enableGradient}

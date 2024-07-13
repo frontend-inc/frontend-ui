@@ -36,6 +36,7 @@ export type ForeignProps = {
 }
 
 export type CardProps = {
+  ref?: any
 	actions: ActionType[]
   displayFields: DisplayFieldType[]
 	enableUsers?: boolean

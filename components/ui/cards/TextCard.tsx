@@ -9,6 +9,7 @@ import {
 	AvgRating,
 	CommentButton,
 	FavoriteButton,
+  LikeButton,
 	DisplayFields,
 	Actions,
 } from '../..'
@@ -24,6 +25,7 @@ const CardList: React.FC<CardProps> = (props) => {
 		enableUsers = false,
 		enableComments = false,
 		enableFavorites = false,
+    enableLikes = false,
 		enableRatings = false,
 	} = props || {}
 
@@ -63,10 +65,13 @@ const CardList: React.FC<CardProps> = (props) => {
 				</Stack>
 			</Stack>
 			<Stack direction="row" justifyContent="flex-end" sx={sx.actions}>
-				{enableComments == true && <CommentButton resource={resource} />}
+        {enableLikes == true && (
+					<LikeButton handle={resource?.handle} />
+				)}
 				{enableFavorites == true && (
 					<FavoriteButton handle={resource?.handle} />
 				)}
+        {enableComments == true && <CommentButton resource={resource} />}
 				<Actions numVisible={0} actions={actions} resource={resource} />
 			</Stack>
 		</Box>
@@ -79,6 +84,7 @@ const sx = {
 	root: {
 		pt: 1,
 		pb: 2,
+    minHeight: 140,
 		position: 'relative',
 		width: '100%',
 		display: 'flex',

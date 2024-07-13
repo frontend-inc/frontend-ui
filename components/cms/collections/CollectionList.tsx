@@ -55,7 +55,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		style = 'card',
 		href,
 		displayFields = [],
-		buttonText,
 		enableGradient = false,
 		enableOverlay = false,
 		enableEdit = false,
@@ -99,13 +98,13 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 					resources={resources}
 					displayFields={displayFields}
 					handleClick={handleClick}
-					buttonText={buttonText}
 					enableGradient={enableGradient}
 					enableOverlay={enableOverlay}
 					enableEdit={enableEdit}
 					enableDelete={enableDelete}
 					enableUsers={enableUsers}
 					enableFavorites={enableFavorites}
+          enableLikes={enableLikes}
 					enableRatings={enableRatings}
 					enableComments={enableComments}
 					handleEdit={handleEdit}

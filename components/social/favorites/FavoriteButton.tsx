@@ -4,7 +4,12 @@ import { isFavorited } from '../../../helpers'
 import { useAuth } from 'frontend-js'
 import { useSocial } from '../../../hooks'
 import { AppContext } from '../../../context'
-import { Favorite, FavoriteBorder } from '@mui/icons-material'
+import { 
+  Bookmark,
+  BookmarkBorder,
+  Favorite, 
+  FavoriteBorder 
+} from '@mui/icons-material'
 
 type FavoriteButtonProps = {
 	handle: string
@@ -72,9 +77,9 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 					}}
 				>
 					{isFavorite ? (
-						<Favorite fontSize="small" />
+						<Bookmark fontSize="small" />
 					) : (
-						<FavoriteBorder fontSize="small" />
+						<BookmarkBorder fontSize="small" />
 					)}
 				</IconButton>
 			) : (
@@ -86,9 +91,9 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 					onClick={handleClick}
 				>
 					{isFavorite ? (
-						<Favorite fontSize="small" />
+						<Bookmark fontSize="small" />
 					) : (
-						<FavoriteBorder fontSize="small" />
+						<BookmarkBorder fontSize="small" />
 					)}
 				</IconButton>
 			)}
