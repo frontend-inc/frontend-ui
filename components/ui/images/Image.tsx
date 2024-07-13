@@ -142,12 +142,12 @@ const sx = {
 		height: '100%',
 	},
 	gradient: {
-		height: '50%',
-		background: 'linear-gradient(to top, rgb(0,0,0,2.0), transparent)',
+		height: '100%',
+    background: 'linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 20%, transparent 60%, rgba(0, 0, 0, 0.5) 100%)',
 	},
 	gradientBorderRadius: {
-		height: '50%',
-		background: 'linear-gradient(to top, rgb(0,0,0,2.0), transparent)',
+		height: '100%',
+    background: 'linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 20%, transparent 60%, rgba(0, 0, 0, 0.5) 100%)',
 		borderRadius: 1,
 	},
 	secondaryActions: {

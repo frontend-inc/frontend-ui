@@ -91,17 +91,6 @@ const sx = {
 			boxShadow: 2,
 		},
 	},
-	gradient: {
-		'&::after': {
-			content: '""',
-			position: 'absolute',
-			bottom: 0,
-			left: 0,
-			width: '100%',
-			height: '50%',
-			background: 'linear-gradient(to top, rgb(0,0,0,0.5), transparent)',
-		},
-	},
 	actions: {
 		display: 'flex',
 		flexDirection: 'row',

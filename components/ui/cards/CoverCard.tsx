@@ -47,8 +47,6 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		}
 	}
 
-	const { theme } = useContext(ThemeContext)
-
 	return (
 		<LightDarkMode mode='dark'>
 			<Stack spacing={1} sx={sx.root}>
