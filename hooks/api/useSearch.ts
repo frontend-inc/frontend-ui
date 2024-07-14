@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { useCollection } from 'frontend-js'
+import { useList } from 'frontend-js'
 import { useFilters } from '..'
 import { SortOptionType, FilterOptionType, SyntheticEventType } from '../../types'
 
 const useSearch = (props) => {
-	const { query: defaultQuery = {}, perPage = 20 } = props
+	const { query: defaultQuery = {} } = props
 
 	const {
 		loading,
@@ -16,7 +16,7 @@ const useSearch = (props) => {
 		page,
 		numPages,
 		loadMore,
-	} = useCollection()
+	} = useList()
 
 	const [keywords, setKeywords] = useState('')
 	const [location, setLocation] = useState('')
@@ -34,8 +34,7 @@ const useSearch = (props) => {
 			...query,
 			...defaultQuery,
 			keywords: keywords,
-			page: 1,
-			per_page: perPage,
+			page: 1			
 		}
 		if (location?.length > 0) {
 			searchQuery = {
@@ -86,7 +85,6 @@ const useSearch = (props) => {
 			sort_direction: 'desc',
 			keywords: '',
 			page: 1,
-			per_page: perPage,
 		})
 	}
 

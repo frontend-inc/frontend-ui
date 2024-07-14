@@ -11,7 +11,7 @@ export const LINK_OPTIONS = {
 		...DEFAULT_LINK_OPTIONS,
 		{
 			value: 'shopify_collection',
-			label: 'Collection',
+			label: 'List',
 			icon: 'ShoppingCart',
 		},
 		{ value: 'shopify_product', label: 'Product', icon: 'Shirt' },

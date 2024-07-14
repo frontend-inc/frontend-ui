@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionImages } from '../../components'
-import { CollectionImagesProps } from '../../components/cms/collections/CollectionImages'
+import { ImageList } from '../../components'
+import { ImageListProps } from '../../components/cms/collections/ImageList'
 import { SectionProps, HeadingProps, FormProps } from '../../types'
 
 type CmsImagesProps = SectionProps &
 	HeadingProps &
-	CollectionImagesProps &
+	ImageListProps &
 	FormProps
 
 const CmsImages: React.FC<CmsImagesProps> = (props) => {
@@ -43,7 +43,7 @@ const CmsImages: React.FC<CmsImagesProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<CollectionImages {...rest} />
+			<ImageList {...rest} />
 		</Section>
 	)
 }

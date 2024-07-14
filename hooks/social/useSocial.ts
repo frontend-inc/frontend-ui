@@ -2,38 +2,37 @@ import React, { useContext } from 'react'
 import { ApiContext } from 'frontend-js'
 import { useLoaders } from '..'
 
-type UseSocialProps = {
+type UseSocialParams = {
 	url: string
 }
 
-const useSocial = (props: UseSocialProps) => {
-	const { url } = props
+const useSocial = (params: UseSocialParams) => {
 	const { api } = useContext(ApiContext) as any
 
 	const { loading, loadingWrapper } = useLoaders()
 
 	const like = async (itemId) => {
-		return await loadingWrapper(() => api.url(url).like(itemId))
+		return await loadingWrapper(() => api.like(itemId, params))
 	}
 
 	const unlike = async (itemId) => {
-		return await loadingWrapper(() => api.url(url).unlike(itemId))
+		return await loadingWrapper(() => api.unlike(itemId, params))
 	}
 
 	const favorite = async (itemId) => {
-		return await loadingWrapper(() => api.url(url).favorite(itemId))
+		return await loadingWrapper(() => api.favorite(itemId, params))
 	}
 
 	const unfavorite = async (itemId) => {
-		return await loadingWrapper(() => api.url(url).unfavorite(itemId))
+		return await loadingWrapper(() => api.unfavorite(itemId, params))
 	}
 
 	const follow = async (username) => {
-		return await loadingWrapper(() => api.url(url).follow(username))
+		return await loadingWrapper(() => api.follow(username, params))
 	}
 
 	const unfollow = async (username) => {
-		return await loadingWrapper(() => api.url(url).unfollow(username))
+		return await loadingWrapper(() => api.unfollow(username, params))
 	}
 
 	return {

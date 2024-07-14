@@ -11,7 +11,7 @@ export const NOTIFICATION_OPTIONS = {
 		...DEFAULT_NOTIFICATION_OPTIONS,
 		{
 			value: 'shopify_collection',
-			label: 'Shopify Collection',
+			label: 'Shopify List',
 			icon: 'ShoppingCart',
 		},
 		{ value: 'shopify_product', label: 'Shopify Product', icon: 'TShirt' },

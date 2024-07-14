@@ -9,7 +9,13 @@ type AppProviderProps = {
 }
 
 const AppProvider = (props: AppProviderProps) => {
-	const { children, clientUrl, name, logo } = props || {}
+	
+  const { 
+    children, 
+    clientUrl, 
+    name, 
+    logo 
+  } = props || {}
 
 	const [alert, setAlert] = useState()
 	const [loading, setLoading] = useState(false)
@@ -17,10 +23,7 @@ const AppProvider = (props: AppProviderProps) => {
 
 	const [authOpen, setAuthOpen] = useState(false) // Auth modal
 	const [myAccountOpen, setMyAccountOpen] = useState(false) // My account modal
-
 	const [creditCardOpen, setCreditCardOpen] = useState(false) // Credit card modal
-
-	const [authorizationOpen, setAuthorizationOpen] = useState(false) // App authorization
 	const [menuOpen, setMenuOpen] = useState(false) // Mobile menu
 
 	const [app, setApp] = useState<any>()
@@ -44,9 +47,6 @@ const AppProvider = (props: AppProviderProps) => {
 
 		myAccountOpen,
 		setMyAccountOpen,
-
-		authorizationOpen,
-		setAuthorizationOpen,
 
 		menuOpen,
 		setMenuOpen,

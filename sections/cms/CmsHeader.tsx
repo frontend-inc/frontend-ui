@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section } from '../../components'
-import { HeroHeader } from '../../components'
-import { HeroHeaderProps } from '../../components/cms/heros/HeroHeader'
+import { ShowHeader } from '../../components'
+import { ShowHeaderProps } from '../../components/cms/show/ShowHeader'
 import { SectionProps } from '../../types'
 
-type CmsHeaderProps = SectionProps & HeroHeaderProps
+type CmsHeaderProps = SectionProps & ShowHeaderProps
 
 const CmsHeader: React.FC<CmsHeaderProps> = (props) => {
 	const {
@@ -30,7 +30,7 @@ const CmsHeader: React.FC<CmsHeaderProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<HeroHeader {...rest} />
+			<ShowHeader {...rest} />
 		</Section>
 	)
 }

@@ -47,7 +47,7 @@ const Image: React.FC<ImageProps> = (props) => {
 				height: `${height}px`,
 			}}
 		>
-			<TouchableOpacity handleClick={handleClick}>
+			<TouchableOpacity handleClick={handleClick ? handleClick : undefined}>
 				<Box
 					sx={{
 						...sx.root,
@@ -61,8 +61,7 @@ const Image: React.FC<ImageProps> = (props) => {
 							...(!disableBorderRadius && sx.borderRadius),
 							...(!enableOverlay &&
 								!disableBorderRadius &&
-								enableGradient &&
-								sx.gradientBorderRadius),
+								enableGradient && sx.borderRadius),
 							bgcolor,
 							opacity,
 						},
@@ -144,11 +143,6 @@ const sx = {
 	gradient: {
 		height: '100%',
     background: 'linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 20%, transparent 60%, rgba(0, 0, 0, 0.5) 100%)',
-	},
-	gradientBorderRadius: {
-		height: '100%',
-    background: 'linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 20%, transparent 60%, rgba(0, 0, 0, 0.5) 100%)',
-		borderRadius: 1,
 	},
 	secondaryActions: {
 		position: 'absolute',

@@ -1,5 +1,5 @@
 import React from 'react'
-import { CollectionList } from '../..'
+import { ListItems } from '../..'
 import {
 	SortOptionType,
 	SearchFilterOptionType,
@@ -40,7 +40,7 @@ const Purchases: React.FC<PurchasesProps> = (props) => {
 	const { actions = [], displayFields = [], url, ...rest } = props
 
 	return (
-		<CollectionList
+		<ListItems
 			actions={actions}
 			displayFields={displayFields}
 			url={`${url}/purchases`}

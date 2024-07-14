@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { useSearch } from '../../../hooks'
-import { CollectionContext } from 'frontend-js'
+import { ResourceContext } from 'frontend-js'
 
 export type QueryProps = {
 	perPage?: number
@@ -12,13 +12,12 @@ export type QueryProps = {
 }
 
 const Query: React.FC<QueryProps> = (props) => {
-	const { url } = useContext(CollectionContext) as any
+	const { url } = useContext(ResourceContext) as any
 
-	const { query = {}, perPage = 12, children } = props
+	const { query = {}, children } = props
 
 	const { handleSearch } = useSearch({
 		url,
-		perPage,
 		query,
 	})
 

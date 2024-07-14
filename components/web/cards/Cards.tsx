@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box, Grid, Stack } from '@mui/material'
-import { CollectionCard, Placeholder } from '../../../components'
+import { Box, Grid } from '@mui/material'
+import { ListCard, Placeholder } from '../../../components'
 import { useRouter } from 'next/router'
 
 type CardType = {
@@ -42,7 +42,7 @@ const Cards: React.FC<CardsProps> = (props) => {
 			<Grid container spacing={2}>
 				{items?.map((card, i) => (
 					<Grid item xs={12} sm={4} md={4} key={i}>
-						<CollectionCard
+						<ListCard
 							actions={[]}
 							style={style}
 							resource={{

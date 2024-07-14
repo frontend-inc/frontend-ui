@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionGeo } from '../../components'
-import { CollectionGeoProps } from '../../components/cms/collections/CollectionGeo'
+import { GeoList } from '../../components'
+import { GeoListProps } from '../../components/cms/collections/GeoList'
 import { SectionProps, HeadingProps, FormProps } from '../../types'
 
 type CmsGeoListProps = SectionProps &
 	HeadingProps &
-	CollectionGeoProps &
+	GeoListProps &
 	FormProps
 
 const CmsGeoList: React.FC<CmsGeoListProps> = (props) => {
@@ -43,7 +43,7 @@ const CmsGeoList: React.FC<CmsGeoListProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<CollectionGeo {...rest} />
+			<GeoList {...rest} />
 		</Section>
 	)
 }

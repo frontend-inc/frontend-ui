@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionCarousel } from '../../components'
-import { CollectionCarouselProps } from '../../components/cms/collections/CollectionCarousel'
+import { CarouselList } from '../../components'
+import { CarouselListProps } from '../../components/cms/collections/CarouselList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsCarouselProps = SectionProps & HeadingProps & CollectionCarouselProps
+type CmsCarouselProps = SectionProps & HeadingProps & CarouselListProps
 
 const CmsCarousel: React.FC<CmsCarouselProps> = (props) => {
 	const {
@@ -40,7 +40,7 @@ const CmsCarousel: React.FC<CmsCarouselProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<CollectionCarousel {...rest} />
+			<CarouselList {...rest} />
 		</Section>
 	)
 }

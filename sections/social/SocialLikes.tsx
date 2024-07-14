@@ -1,15 +1,13 @@
 import React from 'react'
-import { Section, Heading, Query } from '../../components'
+import { Section, Heading } from '../../components'
 import { Likes } from '../../components'
-import { CollectionProps } from '../../components/cms/collections/Collection'
+import { ListProps } from '../../components/cms/collections/List'
 import { SectionProps, HeadingProps } from '../../types'
-import { CollectionProvider } from 'frontend-js'
 
-type SocialLikesProps = SectionProps & HeadingProps & CollectionProps
+type SocialLikesProps = SectionProps & HeadingProps & ListProps
 
 const SocialLikes: React.FC<SocialLikesProps> = (props) => {
 	const {
-		url,
 		label,
 		title,
 		description,
@@ -24,31 +22,25 @@ const SocialLikes: React.FC<SocialLikesProps> = (props) => {
 		...rest
 	} = props
 
-	const likesUrl = `${url}/likes`
-
 	return (
-		<CollectionProvider url={likesUrl}>
-			<Query>
-				<Section
-					requireAuth
-					requireTeam={requireTeam}
-					requirePaid={requirePaid}
-					requireAdmin={requireAdmin}
-					mode={mode}
-					py={py}
-					px={px}
-					maxWidth={maxWidth}
-				>
-					<Heading
-						label={label}
-						title={title}
-						description={description}
-						textAlign={textAlign}
-					/>
-					<Likes url={url} {...rest} />
-				</Section>
-			</Query>
-		</CollectionProvider>
+    <Section
+      requireAuth
+      requireTeam={requireTeam}
+      requirePaid={requirePaid}
+      requireAdmin={requireAdmin}
+      mode={mode}
+      py={py}
+      px={px}
+      maxWidth={maxWidth}
+    >
+      <Heading
+        label={label}
+        title={title}
+        description={description}
+        textAlign={textAlign}
+      />
+      <Likes {...rest} />
+    </Section>
 	)
 }
 

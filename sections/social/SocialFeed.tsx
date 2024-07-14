@@ -1,14 +1,13 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
 import { Feed } from '../../components'
-import { CollectionProps } from '../../components/cms/collections/Collection'
+import { ListProps } from '../../components/cms/collections/List'
 import { SectionProps, HeadingProps } from '../../types'
 
-type SocialFeedProps = SectionProps & HeadingProps & CollectionProps
+type SocialFeedProps = SectionProps & HeadingProps & ListProps
 
 const SocialFeed: React.FC<SocialFeedProps> = (props) => {
 	const {
-		url,
 		label,
 		title,
 		description,
@@ -40,7 +39,7 @@ const SocialFeed: React.FC<SocialFeedProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<Feed {...rest} url={url} />
+			<Feed {...rest} />
 		</Section>
 	)
 }

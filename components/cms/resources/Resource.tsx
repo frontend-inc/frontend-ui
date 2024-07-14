@@ -89,12 +89,10 @@ const Resource: React.FC<ResourceProps> = (props) => {
 							</Typography>
 						}
 						secondary={
-							<>
-								<DisplayFields fields={displayFields} resource={resource} />
-								<Typography variant="body2" color="text.secondary">
-									{description}
-								</Typography>
-							</>
+							<DisplayFields 
+                fields={displayFields} 
+                resource={resource} 
+              />
 						}
 					/>
 				</ListItemButton>

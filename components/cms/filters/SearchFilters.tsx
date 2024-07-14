@@ -1,16 +1,16 @@
 import React from 'react'
-import CollectionFilterList from './FilterList'
+import ListFilterList from './FilterList'
 import { Button, Hidden } from '@mui/material'
 import { Icon, Drawer } from '../..'
 import { useMenu } from '../../../hooks'
 
-type CollectionFilterListProps = {
+type ListFilterListProps = {
 	filters: any
 	filterOptions: any
 	handleFilter: any
 }
 
-const CollectionSearchFilters: React.FC<CollectionFilterListProps> = (
+const ListSearchFilters: React.FC<ListFilterListProps> = (
 	props
 ) => {
 	const { filters = [], filterOptions = [], handleFilter } = props
@@ -19,7 +19,7 @@ const CollectionSearchFilters: React.FC<CollectionFilterListProps> = (
 	return (
 		<>
 			<Hidden smDown>
-				<CollectionFilterList
+				<ListFilterList
 					filters={filters}
 					filterOptions={filterOptions}
 					handleFilter={handleFilter}
@@ -36,7 +36,7 @@ const CollectionSearchFilters: React.FC<CollectionFilterListProps> = (
 					Filters
 				</Button>
 				<Drawer open={open} handleClose={closeMenu} anchor="right">
-					<CollectionFilterList
+					<ListFilterList
 						filters={filters}
 						filterOptions={filterOptions}
 						handleFilter={handleFilter}
@@ -47,7 +47,7 @@ const CollectionSearchFilters: React.FC<CollectionFilterListProps> = (
 	)
 }
 
-export default CollectionSearchFilters
+export default ListSearchFilters
 
 const sx = {
 	button: {

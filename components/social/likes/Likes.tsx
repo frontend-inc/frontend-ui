@@ -1,8 +1,8 @@
 import React from 'react'
-import { Collection } from '../..'
-import { CollectionProps } from '../../cms/collections/Collection'
+import { List } from '../..'
+import { ListProps } from '../../cms/collections/List'
 
-const Likes: React.FC<CollectionProps> = (props) => {
+const Likes: React.FC<ListProps> = (props) => {
 
   let { query={}, ...rest } = props
 
@@ -12,7 +12,7 @@ const Likes: React.FC<CollectionProps> = (props) => {
   }
 
 	return (
-		<Collection 
+		<List 
       query={query}
       {...rest}
     />

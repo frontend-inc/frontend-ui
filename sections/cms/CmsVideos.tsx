@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionVideos } from '../../components'
-import { CollectionVideosProps } from '../../components/cms/collections/CollectionVideos'
+import { VideoList } from '../../components'
+import { VideoListProps } from '../../components/cms/collections/VideoList'
 import { SectionProps, HeadingProps, FormProps } from '../../types'
 
 type CmsVideosProps = SectionProps &
 	HeadingProps &
-	CollectionVideosProps &
+	VideoListProps &
 	FormProps
 
 const CmsVideos: React.FC<CmsVideosProps> = (props) => {
@@ -43,7 +43,7 @@ const CmsVideos: React.FC<CmsVideosProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<CollectionVideos {...rest} />
+			<VideoList {...rest} />
 		</Section>
 	)
 }

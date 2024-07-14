@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionKanBan } from '../../components'
-import { CollectionKanBanProps } from '../../components/cms/collections/CollectionKanBan'
+import { KanBanList } from '../../components'
+import { KanBanListProps } from '../../components/cms/collections/KanBanList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsKanBanProps = SectionProps & HeadingProps & CollectionKanBanProps
+type CmsKanBanProps = SectionProps & HeadingProps & KanBanListProps
 
 const CmsKanBan: React.FC<CmsKanBanProps> = (props) => {
 	const {
@@ -40,7 +40,7 @@ const CmsKanBan: React.FC<CmsKanBanProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<CollectionKanBan {...rest} />
+			<KanBanList {...rest} />
 		</Section>
 	)
 }

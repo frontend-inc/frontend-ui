@@ -2,13 +2,13 @@ import React from 'react'
 import { Box, Backdrop, IconButton } from '@mui/material'
 import { Icon } from '../../../components'
 
-export type CollectionImageModalProps = {
+export type ShowImageModalProps = {
 	open: boolean
 	handleClose: () => void
   children: React.ReactNode
 }
 
-const MediaModal: React.FC<CollectionImageModalProps> = (props) => {
+const MediaModal: React.FC<ShowImageModalProps> = (props) => {
 
 	const {
 		open,

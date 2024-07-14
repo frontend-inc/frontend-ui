@@ -1,11 +1,11 @@
 import React from 'react'
-import { Section, Heading, CollectionGeoNearby } from '../../components'
-import { CollectionProps } from '../../components/cms/collections/Collection'
+import { Section, Heading, GeoNearbyList } from '../../components'
+import { ListProps } from '../../components/cms/collections/List'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsListProps = SectionProps & HeadingProps & CollectionProps
+type CmsListProps = SectionProps & HeadingProps & ListProps
 
-const CmsNearby: React.FC<CmsListProps> = (props) => {
+const CmsGeoNearbyList: React.FC<CmsListProps> = (props) => {
 	const {
 		label,
 		title,
@@ -39,9 +39,9 @@ const CmsNearby: React.FC<CmsListProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<CollectionGeoNearby {...rest} />
+			<GeoNearbyList {...rest} />
 		</Section>
 	)
 }
 
-export default CmsNearby
+export default CmsGeoNearbyList

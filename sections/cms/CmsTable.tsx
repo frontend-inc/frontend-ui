@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionTable } from '../../components'
-import { CollectionTableProps } from '../../components/cms/collections/CollectionTable'
+import { DataTableList } from '../../components'
+import { DataTableListProps } from '../../components/cms/collections/DataTableList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsTableProps = SectionProps & HeadingProps & CollectionTableProps
+type CmsTableProps = SectionProps & HeadingProps & DataTableListProps
 
 const CmsTable: React.FC<CmsTableProps> = (props) => {
 	const {
@@ -40,7 +40,7 @@ const CmsTable: React.FC<CmsTableProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<CollectionTable {...rest} />
+			<DataTableList {...rest} />
 		</Section>
 	)
 }

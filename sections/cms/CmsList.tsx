@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { Collection } from '../../components'
-import { CollectionProps } from '../../components/cms/collections/Collection'
+import { List } from '../../components'
+import { ListProps } from '../../components/cms/collections/List'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsListProps = SectionProps & HeadingProps & CollectionProps
+type CmsListProps = SectionProps & HeadingProps & ListProps
 
 const CmsList: React.FC<CmsListProps> = (props) => {
 	const {
@@ -40,7 +40,7 @@ const CmsList: React.FC<CmsListProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<Collection {...rest} />
+			<List {...rest} />
 		</Section>
 	)
 }

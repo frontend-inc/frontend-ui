@@ -1,6 +1,6 @@
 export * from './collections'
 export * from './forms'
-export * from './heros'
+export * from './show'
 
 export { default as AddonCalendly } from './addons/AddonCalendly'
 export { default as AddonGoogleMap } from './addons/AddonGoogleMap'
