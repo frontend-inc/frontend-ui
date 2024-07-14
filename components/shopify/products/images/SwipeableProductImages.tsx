@@ -71,7 +71,6 @@ const SwipeableProductImages: React.FC<SwipeableProductImagesProps> = (
 									})}
 									alt={product?.title}
 									height={height}
-									objectFit={objectFit}
 									disableBorderRadius={disableBorderRadius}
 								/>
 							</TouchableOpacity>

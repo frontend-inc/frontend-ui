@@ -7,7 +7,6 @@ const VideoVert: React.FC<CardProps> = (props) => {
 	const {
 		actions,
 		resource,
-		objectFit = 'cover',
 		height = VIDEO_VERT_HEIGHT,
 		width = VIDEO_VERT_WIDTH,
 		enableGradient = false,
@@ -25,13 +24,11 @@ const VideoVert: React.FC<CardProps> = (props) => {
 			actions={actions}
 			resource={resource}
 			handleClick={handleItemClick}
-			objectFit={objectFit}
 			height={height}
 			width={width}
 			displayFields={[]}
 			enableGradient={enableGradient}
 			enableOverlay={enableOverlay}
-			icon="PlayCircle"
 		/>
 	) : (
 		<VideoModal

@@ -51,7 +51,7 @@ const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 	const [open, setOpen] = useState(false)
 
 	const { children } = menuItem
-	const { loading, products, findList } = useCollections()
+	const { loading, products, findCollections } = useCollections()
 
 	const handleListClick = () => {
 		router.push(`/collections/${menuItem?.shopify_handle}`)
@@ -70,7 +70,7 @@ const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 		}
 		if (menuItem?.link_type == 'shopify_collection') {
 			setOpen(false)
-			findList(menuItem?.shopify_handle)
+			findCollections(menuItem?.shopify_handle)
 			return
 		} else if (menuItem?.link_type == 'url') {
 			window.open(menuItem.url, '_blank')

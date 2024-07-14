@@ -33,7 +33,6 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 		displayFields = [],
 		height = 200,
 		handleClick,
-		objectFit = 'cover',
 		enableDragging = false,
 		enableGradient = false,
 		enableOverlay = false,
@@ -69,7 +68,6 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 						<Image
 							src={image?.url}
 							height={height}
-							objectFit={objectFit}
 							alt={title}
 							disableBorderRadius
 							handleClick={handleClick}

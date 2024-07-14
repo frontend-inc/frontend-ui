@@ -32,7 +32,6 @@ const SelectableCardItem: React.FC<SelectableCardItemProps> = (props) => {
 					<Image
 						src={image}
 						height={200}
-						objectFit={'cover'}
 						alt={title}
 						disableBorderRadius
 					/>

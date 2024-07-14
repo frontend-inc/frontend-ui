@@ -9,7 +9,6 @@ type FieldImageProps = {
 	height?: number
 	width?: number
 	handleClick?: () => void
-	objectFit?: 'cover' | 'contain'
 	color?: string
 }
 
@@ -20,7 +19,6 @@ const FieldImage: React.FC<FieldImageProps> = (props) => {
 		height = 140,
 		width,
 		color,
-		objectFit = 'cover',
 		...rest
 	} = props
 	if (!value) return null
@@ -35,7 +33,6 @@ const FieldImage: React.FC<FieldImageProps> = (props) => {
 				<Image
 					src={value?.url || value}
 					height={height}
-					objectFit={objectFit}
 				/>
 			</Box>
 		</FieldWrapper>

@@ -90,11 +90,6 @@ const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
 			<ShowVideoModal
 				open={openShow}
 				handleClose={() => setOpenShow(false)}
-				enableFavorites={enableFavorites}
-				enableLikes={enableLikes}
-				enableComments={enableComments}
-				enableEdit={enableEdit}
-				handleEdit={() => handleEdit(resource)}
 			/>
 		</>
 	)

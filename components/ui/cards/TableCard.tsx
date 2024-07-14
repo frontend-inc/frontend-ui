@@ -22,8 +22,7 @@ const TableCard: React.FC<CardProps> = (props) => {
 		displayFields = [],
 		href,
 		height = 100,
-		handleClick,
-		objectFit = 'cover',
+		handleClick,		
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
@@ -51,8 +50,7 @@ const TableCard: React.FC<CardProps> = (props) => {
 						<TouchableOpacity handleClick={handleItemClick}>
 							<Image
 								src={image?.url}
-								height={height}
-								objectFit={objectFit}
+								height={height}								
 								alt={title}
 								enableGradient={enableGradient}
 								enableOverlay={enableOverlay}

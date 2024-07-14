@@ -27,7 +27,7 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 
 	const { children } = menuItem
 
-	const { loading, products, findList } = useCollections()
+	const { loading, products, findCollections } = useCollections()
 
 	const { open, openMenu, closeMenu, anchorEl, toggleMenu } = useMenu()
 
@@ -48,7 +48,7 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 		}
 		if (menuItem?.link_type == 'shopify_collection') {
 			openMenu(ev)
-			findList(menuItem?.shopify_handle)
+			findCollections(menuItem?.shopify_handle)
 			return
 		} else if (menuItem?.link_type == 'url') {
 			closeMenu()

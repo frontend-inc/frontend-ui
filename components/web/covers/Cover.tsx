@@ -56,7 +56,6 @@ const Cover: React.FC<CoverProps> = (props) => {
 				src={image}
 				alt={alt}
 				height={height}
-				objectFit={'cover'}
 				disableBorderRadius
 				bgcolor={overlayColor}
 				enableGradient={enableGradient}

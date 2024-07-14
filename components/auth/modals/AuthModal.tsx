@@ -81,6 +81,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 	}
 
 	const handleResetPassword = async () => {
+    //@ts-ignore    
 		let resp = await updateMe({
 			password: user?.password,
 			password_confirmation: user?.password_confirmation,

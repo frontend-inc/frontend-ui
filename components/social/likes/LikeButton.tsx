@@ -12,11 +12,12 @@ import { AppContext } from '../../../context'
 type LikeButtonProps = {
 	handle: string | number
 	variant?: 'icon' | 'button'
+  color?: string
 	numLikes?: number
 }
 
 const LikeButton: React.FC<LikeButtonProps> = (props) => {
-	const { handle, variant = 'icon', numLikes } = props
+	const { handle, color='text.secondary', variant = 'icon', numLikes } = props
 
 	const { currentUser } = useAuth()
 	const { setAuthOpen } = useContext(AppContext)
@@ -57,7 +58,11 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
     { variant == 'icon' ? (
 		<IconButton
 			onClick={handleClick}
-			sx={{
+			sx={{        
+        color,
+        '&:hover': {
+          color,
+        },          
 				...sx.icon,
 				...(liked && sx.iconLiked),
 			}}
@@ -71,6 +76,10 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
 		<IconButton
 			onClick={handleClick}
 			sx={{
+        color,
+        '&:hover': {
+          color,
+        }, 
 				...sx.button,
 				...(liked && sx.buttonLiked),
 			}}
@@ -88,12 +97,7 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
 export default LikeButton
 
 const sx = {
-	icon: {
-		color: 'text.secondary',
-		'&:hover': {
-			color: 'text.secondary',
-		},
-	},
+	icon: {},
 	iconLiked: {
 		color: 'primary.main',
 		'&:hover': {
@@ -103,11 +107,7 @@ const sx = {
 	button: {
 		transition: 'transform 0.2s',
 		border: '1px solid',
-		borderColor: 'divider',
-		color: 'text.secondary',
-		'&:hover': {
-			color: 'text.secondary',
-		},
+		borderColor: 'divider',		
 	},
 	buttonLiked: {
 		borderColor: 'primary.main',

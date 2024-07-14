@@ -6,9 +6,7 @@ import { useSocial } from '../../../hooks'
 import { AppContext } from '../../../context'
 import { 
   Bookmark,
-  BookmarkBorder,
-  Favorite, 
-  FavoriteBorder 
+  BookmarkBorder, 
 } from '@mui/icons-material'
 
 type FavoriteButtonProps = {

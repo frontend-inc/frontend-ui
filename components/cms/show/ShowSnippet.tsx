@@ -3,15 +3,12 @@ import { Paper, Box, Stack, Typography } from '@mui/material'
 import {
 	AvgRating,
 	DisplayFields,
-	Actions,
 	Image,
   SocialButtons,
 	UserChip,
 	StripePaymentLink,
 } from '../..'
 import { ShowProps } from './ShowItem'
-import { flattenDocument } from 'frontend-js'
-import { buildActions } from '../../../helpers'
 
 const ShowSnippet: React.FC<ShowProps> = (props) => {
 	const {
@@ -41,7 +38,6 @@ const ShowSnippet: React.FC<ShowProps> = (props) => {
             src={image?.url} 
             alt={title} 
             height={400} 
-            objectFit='contain'
           />
         </Box>
 				<Stack spacing={0.5} direction="column" p={2} width="100%">

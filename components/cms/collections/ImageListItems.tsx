@@ -95,14 +95,8 @@ const ImageListItems: React.FC<ListItemsImageProps> = (props) => {
 			)}
 			<ShowImageModal
 				open={openShow}
-				handleClose={() => setOpenShow(false)}
-				enableOverlay={enableOverlay}
-				enableFavorites={enableFavorites}
-				enableLikes={enableLikes}
-				enableComments={enableComments}
-				enableUsers={enableUsers}
-				enableEdit={enableEdit}
-				handleEdit={() => handleEdit(resource)}
+				handleClose={() => setOpenShow(false)}				
+        enableGradient={enableGradient}
 			/>
 		</>
 	)

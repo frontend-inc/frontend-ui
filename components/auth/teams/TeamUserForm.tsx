@@ -19,6 +19,7 @@ const TeamUserForm: React.FC<TeamUserFormProps> = (props) => {
 				<UserItem
 					selected
 					user={teamUser?.user}
+          handleClick={() => null}
 					handleEdit={() => null}
 					handleDelete={() => null}
 				/>
