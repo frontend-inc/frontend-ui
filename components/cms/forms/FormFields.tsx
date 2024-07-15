@@ -2,7 +2,7 @@ import React from 'react'
 import { Stack, Button } from '@mui/material'
 import FormFieldInput from './FormFieldInput'
 import { get } from 'lodash'
-import { FormFieldType, SyntheticEventType } from '../../../types'
+import { FormFieldType } from '../../../types'
 import { IconLoading } from '../..'
 
 export type FormProps = {

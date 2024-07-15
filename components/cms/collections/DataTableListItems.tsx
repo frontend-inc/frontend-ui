@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { useList } from 'frontend-js'
+import { useResourceContext } from 'frontend-js'
 import { Box, Stack } from '@mui/material'
 import { AppContext } from '../../../context'
 import { TableHeaderType } from '../../../types'
@@ -27,7 +27,7 @@ const DataTableList: React.FC<DataTableListProps> = (props) => {
 		perPage,
 		numPages,
 		totalCount,
-	} = useList()
+	} = useResourceContext()
 
 	const { headers, href, enableEdit = false, enableDelete = false } = props
 

@@ -67,7 +67,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		rating: RatingInput,
 		image: ImageInput,
 		json: JSONInput,
-		shopify: ShopifyProductInput,
+		shopify: ShopifyProductInput,    
     habtm: ReferenceInput 
 	}
 
@@ -110,7 +110,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
     }
 	}
 
-	let InputComponent = componentMapper[variant]
+	let InputComponent = componentMapper[variant] || TextInput 
 
 	return (
 		<InputComponent

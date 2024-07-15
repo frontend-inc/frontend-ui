@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../context'
-import { useAuth, useList } from 'frontend-js'
+import { useAuth, useResourceContext } from 'frontend-js'
 
 type FormParams = {
 	parentResource?: any
@@ -31,7 +31,7 @@ const useForms = (params?: FormParams) => {
 		setOpenDelete,
 		openEdit,
 		setOpenEdit,
-	} = useList()
+	} = useResourceContext()
 
 	const reloadMany = async () => {
 		if (parentResource?.id) {

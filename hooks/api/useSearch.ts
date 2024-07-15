@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useList } from 'frontend-js'
+import { useQuery, useResourceContext } from 'frontend-js'
 import { useFilters } from '..'
 import { SortOptionType, FilterOptionType, SyntheticEventType } from '../../types'
 
@@ -11,12 +11,13 @@ const useSearch = (props) => {
 		delayedLoading,
 		resources,
 		query,
+    setQuery,
 		findMany,
 		reloadMany,
 		page,
 		numPages,
 		loadMore,
-	} = useList()
+	} = useResourceContext()
 
 	const [keywords, setKeywords] = useState('')
 	const [location, setLocation] = useState('')
@@ -48,20 +49,21 @@ const useSearch = (props) => {
 				location: null,
 			}
 		}
-		findMany(searchQuery)
+    setQuery(searchQuery)
+		//findMany(searchQuery)
 	}
 
-	const handleSortBy = (field: SortOptionType) => {
-		findMany({
-			...query,
-			sort_by: field?.name,
-		})
+	const handleSortBy = (field: SortOptionType) => {		
+    setQuery({
+      ...query,
+      sort_by: field?.name  
+    })
 	}
 
 	const handleSortDirection = (sortDirection: 'asc' | 'desc') => {
-		findMany({
-			...query,
-			sort_direction: sortDirection,
+    setQuery({
+      ...query,
+      sort_direction: sortDirection    		
 		})
 	}
 

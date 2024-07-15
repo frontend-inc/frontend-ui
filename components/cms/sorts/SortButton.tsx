@@ -5,6 +5,7 @@ import SortList from './SortList'
 import { SortOptionType } from '../../../types'
 
 type SortButtonProps = {
+  loading?: boolean
 	sortOptions: SortOptionType[]
 	sortBy: string
 	sortDirection: 'asc' | 'desc'

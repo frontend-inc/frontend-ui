@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image, MediaModal } from '../..'
-import { useList } from 'frontend-js'
+import { useResourceContext } from 'frontend-js'
 import { Box } from '@mui/material'
 
 export type ShowImageModalProps = {
@@ -10,7 +10,7 @@ export type ShowImageModalProps = {
 }
 
 const ShowImageModal: React.FC<ShowImageModalProps> = (props) => {
-	const { resource } = useList()
+	const { resource } = useResourceContext()
 
 	const {
 		open,

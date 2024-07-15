@@ -3,7 +3,7 @@ import { ListItemsProps } from './ListItems'
 import { KanBan } from '../..'
 import { ShowModal } from '../..'
 import { ResourceContext } from 'frontend-js'
-import { useList, changeDocumentValue } from 'frontend-js'
+import { useResourceContext, changeDocumentValue } from 'frontend-js'
 import { useForms } from '../../../hooks'
 
 export type KanBanListListProps = ListItemsProps & {
@@ -43,7 +43,7 @@ const KanBanListList: React.FC<KanBanListListProps> = (props) => {
 		updatePositions,
 		setResource,
 		reloadMany,
-	} = useList()
+	} = useResourceContext()
 
 	const [open, setOpen] = useState(false)
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import { Stack } from '@mui/material'
 import { LoadMore } from '../..'
-import { useList } from 'frontend-js'
+import { useResourceContext } from 'frontend-js'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
 import {
@@ -48,7 +48,7 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
 		loadMore,
 		openShow,
 		setOpenShow,
-	} = useList()
+	} = useResourceContext()
 
 	const {
 		actions = [],

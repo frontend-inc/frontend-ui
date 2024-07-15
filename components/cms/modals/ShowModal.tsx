@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from '@mui/material'
 import { Comments, Modal, SocialButtons, ShowSnippet } from '../..'
-import { useList } from 'frontend-js'
+import { useResourceContext } from 'frontend-js'
 import { ActionType, FormFieldType, DisplayFieldType } from '../../../types'
 
 export type ShowModalProps = {
@@ -27,7 +27,7 @@ export type ShowModalProps = {
 }
 
 const ShowModal: React.FC<ShowModalProps> = (props) => {
-	const { resource, url } = useList()
+	const { resource, url } = useResourceContext()
 
 	const {
 		open,

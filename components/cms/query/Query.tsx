@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from 'react'
-import { useSearch } from '../../../hooks'
-import { ResourceContext } from 'frontend-js'
+import { useQueryContext, ResourceContext } from 'frontend-js'
 
 export type QueryProps = {
 	perPage?: number
@@ -12,20 +11,17 @@ export type QueryProps = {
 }
 
 const Query: React.FC<QueryProps> = (props) => {
-	const { url } = useContext(ResourceContext) as any
+	const { query, setQuery, url } = useContext(ResourceContext) as any
+	const { query: defaultQuery = {}, children } = props
+  
+  useEffect(() => {
+    setQuery(defaultQuery)
+  }, [defaultQuery])
 
-	const { query = {}, children } = props
-
-	const { handleSearch } = useSearch({
-		url,
-		query,
-	})
-
-	useEffect(() => {
-		if (url) {
-			handleSearch(query?.keywords, query?.location)
-		}
-	}, [url])
+  useQueryContext({
+    url,
+    query, 
+  })	
 
 	return children
 }

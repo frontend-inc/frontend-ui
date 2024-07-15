@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { RemoteFormModal } from '../..'
-import { useList } from 'frontend-js'
+import { useResourceContext } from 'frontend-js'
 import { FormFieldType } from '../../../types'
 
 export type EditModalProps = {
@@ -21,7 +21,7 @@ const EditModal: React.FC<EditModalProps> = (props) => {
     reloadMany,
 		openEdit,
 		setOpenEdit,
-	} = useList()
+	} = useResourceContext()
 
   useEffect(() => {
     console.log("resource", resource)

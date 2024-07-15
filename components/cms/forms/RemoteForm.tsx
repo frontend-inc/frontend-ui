@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react'
 import { AppContext } from '../../../context'
 import { flattenDocument, changeDocumentValue, useResource } from 'frontend-js'
 import { Loader, FormFields } from '../..'
-import { useAlerts, useFields } from '../../../hooks'
+import { useAlerts, useFetchForm } from '../../../hooks'
 import { useRouter } from 'next/router'
 
 export type RemoteFormProps = {
@@ -39,11 +39,12 @@ const RemoteForm: React.FC<RemoteFormProps> = (props) => {
 	const { showAlertSuccess } = useAlerts()
 
   const { 
-    formFields,
-    fetchFormFields 
-  } = useFields({
+    fields  
+  } = useFetchForm({
     url
   })
+
+  console.log("FIELDS", fields)
 
 	const {
 		delayedLoading: loading,
@@ -106,20 +107,15 @@ const RemoteForm: React.FC<RemoteFormProps> = (props) => {
     }
   }, [_resource])
 
-  useEffect(() => {
-    if(url){
-      fetchFormFields()
-    }
-  }, [url])
-
-  if((_resource?.id && !resource?.id) && formFields) return(
+  if(!fields || fields?.length == 0) return null;
+  if(_resource?.id && !resource?.id) return(
     <Loader loading />
   )
 	return (
 		<FormFields
 			loading={loading}
 			errors={errors}
-			fields={formFields}
+			fields={fields}
 			resource={flattenDocument(resource)}
 			handleChange={handleDataChange}
 			handleRemove={handleRemove}

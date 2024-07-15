@@ -20,73 +20,13 @@ export type ListToolbarProps = {
 
 const ListToolbar: React.FC<ListToolbarProps> = (props) => {
 	
-	const {
-		url,
-    ...rest 
-	} = props
-
-  const {     
-    fetchSearchFields,
-    filterFields,
-    sortFields 
-  } = useFields({
-    url
-  })
-
-  useEffect(() => {
-    if(url){
-      fetchSearchFields()
-    }
-  }, [url])
-
 	return (
     <SearchToolbar 
-      { ...rest }
-      url={url}      
-      filterOptions={ filterFields }
-      sortOptions={ sortFields }
+      { ...props }
+      fetchRemoteFilters 
+      fetchRemoteSorts
     />		
 	)
 }
 
 export default ListToolbar
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-	button: {
-		width: {
-			sm: 'auto',
-			xs: '100%',
-		},
-	},
-	toolbar: {
-		borderTop: '1px solid',
-		borderColor: 'divider',
-	},
-	toolbarActions: {
-		display: 'flex',
-		width: '100%',
-		justifyContent: 'space-between',
-		flexDirection: {
-			xs: 'column',
-			sm: 'row',
-		},
-	},
-	buttonContainer: {
-		width: {
-			xs: '100%',
-			sm: 'auto',
-		},
-	},
-	loading: {
-		opacity: 0.7,
-	},
-	circularProgress: {
-		color: 'primary.main',
-	},
-	searchBar: {
-		width: '100%',
-	},
-}

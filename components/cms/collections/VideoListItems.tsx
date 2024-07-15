@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, Stack } from '@mui/material'
 import { LoadMore } from '../..'
-import { useList } from 'frontend-js'
+import { useResourceContext } from 'frontend-js'
 import {
   VideoCard,
 	ShowVideoModal,
@@ -35,7 +35,7 @@ const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
 		loadMore,
 		openShow,
 		setOpenShow,
-	} = useList()
+	} = useResourceContext()
 
 	const {
 		enableEdit = false,

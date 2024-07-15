@@ -1,7 +1,7 @@
 import React from 'react'
 import { Backdrop, Box, IconButton } from '@mui/material'
 import { MediaModal, Icon } from '../..'
-import { useList } from 'frontend-js'
+import { useResourceContext } from 'frontend-js'
 
 export type ShowVideoModalProps = {
 	open: boolean
@@ -9,7 +9,7 @@ export type ShowVideoModalProps = {
 }
 
 const ShowVideoModal: React.FC<ShowVideoModalProps> = (props) => {
-	const { resource, url } = useList()
+	const { resource, url } = useResourceContext()
 
 	const {
 		open,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, Stack } from '@mui/material'
 import { LoadMore } from '../..'
-import { useList } from 'frontend-js'
+import { useResourceContext } from 'frontend-js'
 import {
   ImageCard,
 	ShowImageModal,
@@ -37,7 +37,7 @@ const ImageListItems: React.FC<ListItemsImageProps> = (props) => {
 		loadMore,
 		openShow,
 		setOpenShow,
-	} = useList()
+	} = useResourceContext()
 
 	const {
 		enableGradient = false,

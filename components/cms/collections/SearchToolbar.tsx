@@ -2,8 +2,8 @@ import React from 'react'
 import { Button, Box, Stack } from '@mui/material'
 import {
 	Icon,
-	FilterButton,
-	SortButton,
+  RemoteFilterButton,
+	RemoteSortButton,
 	SearchInput,
 	GeoSearchInput,
 } from '../..'
@@ -41,8 +41,6 @@ const SearchToolbar: React.FC<ToolbarProps> = (props) => {
 		enableGeoSearch = false,
     enableFilters = false,
     enableSorting = false ,
-		filterOptions = [],
-		sortOptions = [],
 	} = props
 
 	const {
@@ -68,10 +66,7 @@ const SearchToolbar: React.FC<ToolbarProps> = (props) => {
 
 	const { handleAdd } = useForms()
 
-	const displayFilters = enableFilters && filterOptions.length > 0
-	const displaySorting = enableSorting && sortOptions.length > 0
-
-	if (!enableSearch && !displayFilters && !displaySorting && !enableCreate) {
+	if (!enableSearch && !enableFilters && !enableSorting && !enableCreate) {
 		return null
 	}
 	return (
@@ -103,22 +98,22 @@ const SearchToolbar: React.FC<ToolbarProps> = (props) => {
 						/>
 					)}
 
-					{displayFilters && (
+					{enableFilters && (
 						<Box sx={sx.buttonContainer}>
-							<FilterButton
+							<RemoteFilterButton
+                url={ url }
 								filters={activeFilters}
 								handleFilter={handleFilter}
-								handleClear={handleClearFilters}
-								filterOptions={filterOptions}
+								handleClear={handleClearFilters}								
 							/>
 						</Box>
 					)}
-					{displaySorting && (
+					{enableSorting && (
 						<Box sx={sx.buttonContainer}>
-							<SortButton
+							<RemoteSortButton
+                url={ url }
 								sortBy={query?.sort_by || 'id'}
-								sortDirection={query?.sort_direction || 'desc'}
-								sortOptions={sortOptions}
+								sortDirection={query?.sort_direction || 'desc'}								
 								handleSortBy={handleSortBy}
 								handleSortDirection={handleSortDirection}
 							/>

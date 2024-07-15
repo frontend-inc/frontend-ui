@@ -7,7 +7,7 @@ import ShowCover from './ShowCover'
 import YouTubeVideo from './ShowYouTube'
 import VimeoEmbed from './ShowVimeo'
 import { useForms } from '../../../hooks'
-import { useList } from 'frontend-js'
+import { useResourceContext } from 'frontend-js'
 
 export type ShowProps = {
 	handle?: string
@@ -54,7 +54,7 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 		enablePayments,
 	} = props || {}
 
-	const { resource } = useList()
+	const { resource } = useResourceContext()
 
 	const components = {
 		list: ShowList,

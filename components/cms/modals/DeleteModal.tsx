@@ -1,14 +1,14 @@
 import React from 'react'
 import { AlertModal } from '../..'
 import { useForms } from '../../../hooks'
-import { useList } from 'frontend-js'
+import { useResourceContext } from 'frontend-js'
 
 const DeleteModal: React.FC = () => {
 
     const {
       openDelete,
       setOpenDelete,
-    } = useList()
+    } = useResourceContext()
 
     const {
       handleDelete
