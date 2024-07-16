@@ -96,7 +96,8 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 					)}
 					{enableQuickShop && (
 						<Button
-							color={enableAddToCart ? 'primary' : 'secondary'}
+              variant='contained'
+							color='secondary'
 							onClick={handleQuickShop}
 						>
 							Quick Shop
@@ -122,10 +123,6 @@ const sx = {
 		flexDirection: 'column',
 		overflow: 'hidden',
 		borderRadius: 1,
-		transition: 'box-shadow 0.3s',
-		'&:hover': {
-			boxShadow: 2,
-		},
 	},
 	rootBorder: {
 		border: '1px solid',

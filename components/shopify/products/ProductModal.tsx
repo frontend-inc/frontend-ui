@@ -21,7 +21,7 @@ const ProductModal: React.FC<ProductModalProps> = (props) => {
 	} = props
 
 	return (
-		<Modal open={open} handleClose={handleClose} maxWidth={'sm'}>
+		<Modal open={open} handleClose={handleClose} maxWidth={'md'}>
 			<ProductProvider>
 				<ProductDetails
 					shopifyProduct={shopifyProduct}

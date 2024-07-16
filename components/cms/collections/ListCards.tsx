@@ -1,6 +1,5 @@
 import React from 'react'
-import { Stack, Box } from '@mui/material'
-import { ListCard } from '../..'
+import { ListCard, ListLayout } from '../..'
 import { ActionType, DisplayFieldType } from '../../../types'
 import { buildActions } from '../../../helpers'
 import { flattenDocument } from 'frontend-js'
@@ -49,25 +48,22 @@ const ListCards: React.FC<ListCardsProps> = (props) => {
 		enableRatings = false,
 	} = props
 
-	const VARIANTS = {
-		list: 'list',
-		card: 'grid',
-		avatar: 'list',
-		cover: 'grid',
-		chip: 'list',
-		text: 'list',
-		table: 'table',
-	}
+  let grid = false 
 
-	let variant = VARIANTS[style]
+	const LAYOUTS = {
+		list: false,
+		card: true,
+		avatar: false,
+		cover: true,
+		chip: false,
+		text: false,
+		table: false,
+	}
+  
+	grid = LAYOUTS[style]
 
 	return (
-		<Box
-			sx={{
-				...sx.root,
-				...(variant == 'grid' ? sx.grid : sx.list),
-			}}
-		>
+    <ListLayout grid={grid}>
 			{resources?.map((resource, index) => (
 				<ListCard
 					key={index}
@@ -92,32 +88,8 @@ const ListCards: React.FC<ListCardsProps> = (props) => {
 					enableOverlay={enableOverlay}
 				/>
 			))}
-		</Box>
+		</ListLayout>
 	)
 }
 
 export default ListCards
-
-const sx = {
-	root: {
-		width: '100%',
-		overflowX: 'scroll',
-	},
-	list: {
-		display: 'flex',
-		flexDirection: 'column',
-		gap: '16px',
-	},
-	listDense: {
-		gap: '8px',
-	},
-	grid: {
-		display: 'grid',
-		gridTemplateColumns: {
-			md: '1fr 1fr 1fr',
-			xs: '1fr',
-		},
-		gap: '16px',
-		pb: 1,
-	},
-}

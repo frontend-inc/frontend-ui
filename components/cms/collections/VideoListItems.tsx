@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, Stack } from '@mui/material'
-import { LoadMore } from '../..'
+import { LoadMore, ListLayout } from '../..'
 import { useResourceContext } from 'frontend-js'
 import {
   VideoCard,
@@ -60,9 +60,8 @@ const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
 	return (
     <>
 			<Stack direction="column" spacing={2}>
-        <Grid container spacing={1}>          
-        { resources?.map(resource => (
-          <Grid item xs={12} sm={6} md={4} lg={3}>
+        <ListLayout grid>          
+          { resources?.map(resource => (          
             <VideoCard 
               key={ resource.id }
               resource={resource}
@@ -74,9 +73,8 @@ const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
               handleClick={() => handleClick(resource)}
               handleDelete={() => handleDeleteClick(resource)}
             />
-          </Grid>
-        ))}	
-        </Grid>		
+          ))}	
+        </ListLayout>		
 				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
 			</Stack>
 			{!loading && resources?.length == 0 && (
