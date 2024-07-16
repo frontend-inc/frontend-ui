@@ -33,15 +33,15 @@ export const flattenDocument = (resource) => {
 	}
 }
 
-export const filterDocumentLinks = (document, contentType) => {
+export const filterReferences = (document, contentType) => {
 	if (
-		!document?.document_links ||
-		document?.document_links?.length == 0 ||
+		!document?.references ||
+		document?.references?.length == 0 ||
 		!contentType
 	)
 		return null
-	let documents = document?.document_links
-		?.filter((docuLink) => docuLink?.target?.content_type == contentType)
-		?.map((docuLink) => docuLink?.target)
+	let documents = document?.references
+		?.filter((reference) => reference?.target?.content_type == contentType)
+		?.map((reference) => reference?.target)
 	return documents
 }

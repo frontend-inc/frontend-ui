@@ -1,6 +1,6 @@
 import { ImageType, VideoType, UserType } from '../types'
 
-export type DocumentLinkType = {
+export type ReferenceType = {
 	id: number
 	target_id: number
 	source_id: number
@@ -29,6 +29,6 @@ export type DocumentType = {
 	shopify_handle?: string
 	created_at: string
 	updated_at: string
-	document_links: DocumentLinkType[]
+	references: ReferenceType[]
 	links: DocumentType[]
 }

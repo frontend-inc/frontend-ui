@@ -20,7 +20,7 @@ const useForms = (params?: FormParams) => {
 		findMany,
 		resource,
 		setResource,
-		addLinks,
+		addReferences,
 		create,
 		update,
 		destroy,
@@ -69,7 +69,7 @@ const useForms = (params?: FormParams) => {
 			} else {
 				resp = await create(resource)
 				if (parentResource?.id && resp?.id) {
-					await addLinks(resp.id, [parentResource?.id])
+					await addReferences(resp.id, [parentResource?.id])
 				}
 				setResource({})
 			}

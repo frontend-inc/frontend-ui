@@ -1,22 +1,20 @@
 import React from 'react'
 import { Typography, ListItem, ListItemIcon, ListItemText } from '@mui/material'
-import { Icon, Image, MenuButton } from '../../../../components'
+import { Icon, Image, MenuButton } from '../../..'
 
-type SortableListItemProps = {
+type SortableReferenceItemProps = {
   image?: string
 	title: string
-	subtitle?: string
 	isDragging?: boolean
   handleDelete: () => void
   handleEdit: () => void
 }
 
-const SortableDoccumentLinkItem: React.FC<SortableListItemProps> = (props) => {
+const SortableReferenceItem: React.FC<SortableReferenceItemProps> = (props) => {
 	
   const { 
     image,
     title, 
-    subtitle, 
     isDragging,
     handleDelete,
     handleEdit 
@@ -57,7 +55,7 @@ const SortableDoccumentLinkItem: React.FC<SortableListItemProps> = (props) => {
 	)
 }
 
-export default SortableDoccumentLinkItem
+export default SortableReferenceItem
 
 const sx = {
 	item: {

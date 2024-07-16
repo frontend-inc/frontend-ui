@@ -3,7 +3,7 @@ import { SyntheticEventType } from '../../../types'
 import { RemoteFormModal, Icon, InputLabel } from '../../../components'
 import { Button, Stack } from '@mui/material'
 import { useResource } from 'frontend-js'
-import SortableDocumentLinks from './helpers/SortableDocumentLinks'
+import SortableReferences from './helpers/SortableReferences'
 
 type ReferenceInputProps = {
   resource: any
@@ -31,9 +31,9 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
     resource,  
     setResource,
     findOne,
-    addLinks,
-    removeLinks,
-    updateLinkPositions 
+    addReferences,
+    removeReferences,
+    updateReferencePositions 
   } = useResource({
     url,
     name: 'document'
@@ -58,7 +58,7 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
   }, [_resource])
 
   const handleDrop = async (sorted) => {
-    updateLinkPositions(resource?.id, sorted)
+    updateReferencePositions(resource?.id, sorted)
   }  
 
   const [open, setOpen] = useState(false)
@@ -74,20 +74,20 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
   }
 
   const handleDelete = async (res) => {
-    await removeLinks(resource?.id, [res.id])
+    await removeReferences(resource?.id, [res.id])
     handleReload()
   }
 
   const handleSuccess = async (res: any) => {
-    let response = await addLinks(resource?.id, [res?.id])
+    let response = await addReferences(resource?.id, [res?.id])
     if(response?.id){
       handleReload()     
       setOpen(false)
     }
   }
 
-  const documentLinks = resource?.document_links?.filter(
-    (link) => link?.target?.content_type === contentType
+  const references = resource?.references?.filter(
+    (reference) => reference?.target?.content_type === contentType
   )
 
   if(!resource?.id) return null;
@@ -96,8 +96,8 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
       <InputLabel 
         label={label} 
       />
-      <SortableDocumentLinks 
-        documentLinks={documentLinks}
+      <SortableReferences 
+        references={references}
         handleDrop={handleDrop}
         handleEdit={handleEdit}
         handleDelete={handleDelete}        

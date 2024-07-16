@@ -48,7 +48,7 @@ const Form: React.FC<FormProps> = (props) => {
 		update,
 		create,
 		removeAttachment,
-		addLinks,
+		addReferences,
 	} = useResource({
 		name: 'document',
 		url,
@@ -74,7 +74,7 @@ const Form: React.FC<FormProps> = (props) => {
 				resp = await create(resource)
         // Handle associated resources
         if (parentResource?.id) {
-          await addLinks(resp.id, [parentResource.id])
+          await addReferences(resp.id, [parentResource.id])
         }
 			}
 			if (resp?.id) {        
