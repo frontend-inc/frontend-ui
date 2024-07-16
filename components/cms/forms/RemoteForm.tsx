@@ -44,8 +44,6 @@ const RemoteForm: React.FC<RemoteFormProps> = (props) => {
     url
   })
 
-  console.log("FIELDS", fields)
-
 	const {
 		delayedLoading: loading,
 		errors,

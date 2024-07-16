@@ -55,7 +55,7 @@ const ShowLayout: React.FC<ShowLayoutProps> = (props) => {
 				</Typography>
 				{enableRatings == true && <AvgRating resource={resource} enableTotal />}
 				{displayFields?.length > 0 && (
-					<DisplayFields fields={displayFields} resource={resource} />
+					<DisplayFields fields={displayFields} resource={flattenDocument(resource)} />
 				)}
 				{enablePayments == true && (
 					<StripePaymentLink

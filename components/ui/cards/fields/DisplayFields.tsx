@@ -15,8 +15,6 @@ const DisplayFields: React.FC<DisplayFieldsProps> = (props) => {
 	const {
 		fields,
 		resource,
-		enableTitle,
-		enableRatings,
 		alignItems = 'flex-start',
 	} = props || {}
 
@@ -28,7 +26,12 @@ const DisplayFields: React.FC<DisplayFieldsProps> = (props) => {
 			alignItems={alignItems}
 		>
 			{fields?.map((field, index) => (
-				<DisplayField key={index} field={field} resource={resource} />
+				<DisplayField 
+          key={index} 
+          field={field} 
+          resource={resource} 
+          alignItems={alignItems}
+        />
 			))}
 		</Stack>
 	)

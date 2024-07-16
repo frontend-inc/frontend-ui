@@ -58,7 +58,7 @@ const ShowCover: React.FC<ShowProps> = (props) => {
 					<DisplayFields
 						alignItems="center"
 						fields={displayFields}
-						resource={resource}
+						resource={flattenDocument(resource)}
 					/>
 				)}
 				{enablePayments == true && (
