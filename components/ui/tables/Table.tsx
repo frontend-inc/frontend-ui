@@ -107,7 +107,7 @@ const Table: React.FC<TableProps> = (props) => {
 	return (
 		<>
 			<TableList
-				loading={loading}
+				loading={loading}        
 				disableBorderRadius={disableBorderRadius}
 				query={query}
 				toolbar={

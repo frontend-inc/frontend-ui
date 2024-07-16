@@ -1,5 +1,5 @@
 import React from 'react'
-import { Checkbox, Box, TableHead, TableRow } from '@mui/material'
+import { Checkbox, Box, TableRow } from '@mui/material'
 import { CellHeader, TableCell } from '../../../components'
 
 type TableHeaderProps = {

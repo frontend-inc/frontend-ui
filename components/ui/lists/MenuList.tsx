@@ -17,7 +17,7 @@ type MenuListProps = {
 	id?: string
 	label?: string
 	icon?: React.ReactNode
-	disableBorder?: boolean
+	enableBorder?: boolean
 	disablePadding?: boolean
 	defaultClosed?: boolean
 }
@@ -28,7 +28,7 @@ const MenuList: React.FC<MenuListProps> = (props) => {
 		label,
 		defaultClosed = false,
 		children,
-		disableBorder = false,
+		enableBorder = false,
 	} = props
 
 	const [open, setOpen] = useState(!defaultClosed)
@@ -65,7 +65,7 @@ const MenuList: React.FC<MenuListProps> = (props) => {
 			disablePadding
 			sx={{
 				...sx.root,
-				...(!disableBorder && sx.borderTop),
+				...(enableBorder && sx.border),
 			}}
 		>
 			{label && (
@@ -140,8 +140,8 @@ const sx = {
 	expandMore: {
 		transform: 'rotate(90deg)',
 	},
-	borderTop: {
-		borderTop: '1px solid',
+	border: {
+		borderTop: '1px dotted',
 		borderColor: 'divider',
 	},
 }
