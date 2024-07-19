@@ -59,7 +59,7 @@ const TeamUsersList: React.FC<TeamListProps> = (props) => {
 	}
 
 	const handleLoadTeamUsers = async () => {
-		;(await findTeamUsers(currentUser?.team_id)) as TeamUserType[]
+		await findTeamUsers(currentUser?.team_id)
 	}
 
 	useEffect(() => {

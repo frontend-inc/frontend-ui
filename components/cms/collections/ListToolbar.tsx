@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import {
 	SearchToolbar,
 } from '../..'
-import { useFields } from '../../../hooks'
 
 export type ListToolbarProps = {
 	query: any
@@ -23,8 +22,6 @@ const ListToolbar: React.FC<ListToolbarProps> = (props) => {
 	return (
     <SearchToolbar 
       { ...props }
-      fetchRemoteFilters 
-      fetchRemoteSorts
     />		
 	)
 }

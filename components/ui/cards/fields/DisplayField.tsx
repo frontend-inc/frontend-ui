@@ -39,7 +39,7 @@ type FieldProps = {
 	disablePadding?: boolean
 	field: DisplayFieldType
 	resource?: any
-  alignItems: 'flex-start' | 'center' | 'flex-end'
+  alignItems?: 'flex-start' | 'center' | 'flex-end'
 }
 
 const DisplayField: React.FC<FieldProps> = (props) => {

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { ButtonGroup, Button, Hidden } from '@mui/material'
+import React, { useState } from 'react'
+import { Button, Hidden } from '@mui/material'
 import { Icon, Popup, Drawer } from '../../ui'
 import SortList from './SortList'
 import { SortOptionType } from '../../../types'

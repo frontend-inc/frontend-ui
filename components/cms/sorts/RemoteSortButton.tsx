@@ -14,7 +14,10 @@ type RemoteSortButtonProps = {
 const RemoteSortButton: React.FC<RemoteSortButtonProps> = (props) => {
 	const {
     url, 
-    ...rest 
+    sortBy,
+    sortDirection,
+    handleSortBy,
+    handleSortDirection,
 	} = props || {}
 
   const { loading, fields } = useFetchSort({
@@ -22,10 +25,13 @@ const RemoteSortButton: React.FC<RemoteSortButtonProps> = (props) => {
   })  
 	
 	return (
-		<SortButton 
-      { ...rest }
+		<SortButton       
       loading={loading}
       sortOptions={fields}
+      sortBy={sortBy}
+      sortDirection={sortDirection}
+      handleSortBy={handleSortBy}
+      handleSortDirection={handleSortDirection}
     />		
 	)
 }

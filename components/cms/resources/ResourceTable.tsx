@@ -22,6 +22,7 @@ import { ResourceListProps } from './ResourceList'
 
 export type ResourceTableProps = ResourceListProps & {
 	headers: TableHeaderType[]
+  enableFilters?: boolean
 }
 
 const ResourceTable: React.FC<ResourceTableProps> = (props) => {

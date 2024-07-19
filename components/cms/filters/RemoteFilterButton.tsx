@@ -2,11 +2,12 @@ import React from 'react'
 import { useFetchFilters } from '../../../hooks'
 import { FilterOptionType } from '../../..'
 import { FilterButton } from '../../../components'
+import { FilterButtonProps } from './FilterButton'
 
-type RemoteFilterButtonProps = {
+type RemoteFilterButtonProps = FilterButtonProps & {
   url: string 
 	filters?: FilterOptionType[]
-	disableFilterCount?: boolean
+  disableFilterCount?: boolean
 	handleFilter: (filter: FilterOptionType) => void
 	handleClear: () => void
 }
@@ -14,7 +15,9 @@ type RemoteFilterButtonProps = {
 const RemoteFilterButton: React.FC<RemoteFilterButtonProps> = (props) => {
 	const {
     url, 
-    ...rest 
+    disableFilterCount = false,
+    handleFilter,
+    handleClear 
 	} = props || {}
 
   const { loading, fields } = useFetchFilters({
@@ -22,9 +25,11 @@ const RemoteFilterButton: React.FC<RemoteFilterButtonProps> = (props) => {
   })
 	
 	return (
-		<FilterButton 
-      { ...rest }
+		<FilterButton       
       loading={loading}
+      disableFilterCount={disableFilterCount}
+      handleFilter={handleFilter}
+      handleClear={handleClear}
       filterOptions={fields}
     />		
 	)

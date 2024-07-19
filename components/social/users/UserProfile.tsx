@@ -44,8 +44,6 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 		}
 	}
 
-  console.log("Metafields", displayFields, user)
-
 	if (!user?.id) {
 		return (
 			<Placeholder
