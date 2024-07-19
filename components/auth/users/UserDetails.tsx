@@ -1,6 +1,6 @@
 import React from 'react'
-import { DetailsProps } from './Details'
-import { Details } from '../../../components'
+import { DetailsProps } from '../../cms/details/Details'
+import { Details } from '../..'
 import { UserType } from 'frontend-js'
 import { DisplayFieldType } from '../../../types'
 

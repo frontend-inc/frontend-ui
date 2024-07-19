@@ -4,6 +4,7 @@ import { useAuth } from 'frontend-js'
 import { FormFields } from '../..'
 import { useAlerts } from '../../../hooks'
 import { useRouter } from 'next/router'
+import { Container } from '@mui/material'
 
 export type UserFormProps = {
   loading?: boolean	  
@@ -38,6 +39,7 @@ const UserForm: React.FC<UserFormProps> = (props) => {
 		delayedLoading,
     errors,
 		user,
+    setUser,
 		fetchMe,
 		currentUser,
 		updateMe,
@@ -65,25 +67,39 @@ const UserForm: React.FC<UserFormProps> = (props) => {
 		}
 	}
 
-
   useEffect(() => {
     if(!currentUser?.id){
       fetchMe()
     }
   }, [])
 
+  useEffect(() => {
+    setUser(currentUser)
+  }, [currentUser])
+
 	return (
-		<FormFields
-			loading={delayedLoading}
-			errors={errors}
-			fields={fields}
-			resource={user}
-			handleChange={handleChange}
-			handleRemove={handleRemove}
-			handleSubmit={handleSubmit}
-			buttonText={buttonText}
-		/>
+    <FormFields
+      loading={delayedLoading}
+      errors={errors}
+      fields={fields}
+      resource={user}
+      handleChange={handleChange}
+      handleRemove={handleRemove}
+      handleSubmit={handleSubmit}
+      buttonText={buttonText}
+    />
 	)
 }
 
 export default UserForm
+
+const sx = {
+  paper: {
+    boxShadow: 0,
+    p: 4,
+    transition: 'box-shadow 0.3s',
+    '&:hover': {
+      boxShadow: 2
+    }
+  }
+}

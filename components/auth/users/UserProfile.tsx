@@ -8,7 +8,7 @@ import {
 	ExpandableText,
   DisplayFields,
   FollowButtonGroup
-} from '../../../components'
+} from '../..'
 import { DisplayFieldType, UserType } from '../../../types'
 import { useRouter } from 'next/router'
 

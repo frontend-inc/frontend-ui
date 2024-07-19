@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section } from '../../components'
 import { UserDetails } from '../../components'
-import { UserDetailsProps } from '../../components/cms/details/UserDetails'
+import { UserDetailsProps } from '../../components/auth/users/UserDetails'
 import { SectionProps } from '../../types'
 
 type AuthUserDetailsProps = SectionProps & UserDetailsProps

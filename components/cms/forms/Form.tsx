@@ -4,6 +4,7 @@ import { useResource } from 'frontend-js'
 import { FormFields } from '../..'
 import { useAlerts } from '../../../hooks'
 import { useRouter } from 'next/router'
+import { Paper } from '@mui/material'
 
 export type FormProps = {
   loading?: boolean
@@ -96,17 +97,25 @@ const Form: React.FC<FormProps> = (props) => {
   }, [_resource])
 
 	return (
-		<FormFields
-			loading={loading}
-			errors={errors}
-			fields={fields}
-			resource={resource}
-			handleChange={handleChange}
-			handleRemove={handleRemove}
-			handleSubmit={handleSubmit}
-			buttonText={buttonText}
-		/>
+    <Paper sx={ sx.paper } elevation={2}>
+      <FormFields
+        loading={loading}
+        errors={errors}
+        fields={fields}
+        resource={resource}
+        handleChange={handleChange}
+        handleRemove={handleRemove}
+        handleSubmit={handleSubmit}
+        buttonText={buttonText}
+      />
+    </Paper>
 	)
 }
 
 export default Form
+
+const sx = {
+  paper: {
+    p: 4
+  }
+}

@@ -27,11 +27,15 @@ export { default as SignInButton } from './buttons/SignInButton'
 export { default as SignUpButton } from './buttons/SignUpButton'
 export { default as Signup } from './signup/Signup'
 export { default as SignupForm } from './signup/SignupForm'
-export { default as UserItem } from './users/UserItem'
-export { default as UserForm } from './users/UserForm'
 export { default as VerifyPin } from './verify/VerifyPin'
 export { default as VerifyPinForm } from './verify/VerifyPinForm'
 export { default as VerifySendPinForm } from './verify/VerifySendPinForm'
+
+// Users 
+export { default as UserItem } from './users/UserItem'
+export { default as UserForm } from './users/UserForm'
+export { default as UserDetails } from './users/UserDetails'
+export { default as UserProfile } from './users/UserProfile'
 
 // Teams
 export { default as TeamList } from './teams/TeamList'
