@@ -48,7 +48,15 @@ const Field: React.FC<FieldProps> = (props) => {
 	const { field, resource, dateFormat = 'MM/DD/YYYYY', ...rest } = props
 	const { variant: fieldVariant, label } = field
 	let value = get(resource, field?.name)
-	if (!value) return null
+	if (!value){
+    switch(fieldVariant){
+      case 'array': 
+        value = []
+      default:
+        value = '-'
+        break
+    }
+  }
 
 	if (field?.variant == 'date' || field?.variant == 'datetime') {
 		value = moment(value).format(dateFormat)
@@ -59,6 +67,7 @@ const Field: React.FC<FieldProps> = (props) => {
 		date: FieldDate,
 		datetime: FieldDate,
 		file: FieldFile,
+    float: FieldString,
 		image: FieldImage,
 		video: FieldVideo,
 		json: FieldJSON,
@@ -66,7 +75,7 @@ const Field: React.FC<FieldProps> = (props) => {
 		rating: FieldRating,
 		text: FieldText,
 		location: FieldLocation,
-		number: FieldText,
+		number: FieldString,
 		array: FieldArray,
 		string: FieldString,
 		select: FieldString,
