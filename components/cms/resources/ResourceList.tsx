@@ -3,6 +3,7 @@ import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
 import { Button, Box, Stack } from '@mui/material'
 import {
+  SortableList,
 	FormFields,
 	Drawer,
 	AlertModal,
@@ -35,14 +36,11 @@ export type ResourceListProps = {
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
 	enableSearch?: boolean
-	enableFilters?: boolean
-	enableSorting?: boolean
 	buttonText?: string
-	enableBorder?: boolean
-	enableGradient?: boolean
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
+  sortable?: boolean
 	emptyIcon?: string
 	emptyTitle?: string
 	emptyDescription?: string
@@ -62,13 +60,11 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		query: defaultQuery = {},
 		perPage = 20,
 		enableSearch = false,
-		enableFilters = false,
-		enableSorting = false,
-		enableLoadMore = true,
 		enableEdit,
 		enableDelete,
 		enableCreate,
 		handleClick,
+    sortable=false,
 		emptyIcon = 'Search',
 		emptyTitle = 'No results found',
 		emptyDescription = 'Try adjusting your search or filters',
@@ -87,6 +83,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		update,
 		create,
 		destroy,
+    updatePositions,
 		handleChange,
 		query,
 		findMany,
@@ -204,6 +201,10 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		await removeAttachment(resource?.id, name)
 	}
 
+  const handleDrop = async (sorted) => {
+    await updatePositions(sorted)
+  }
+
 	useEffect(() => {
 		if (activeFilters) {
 			findMany({
@@ -222,6 +223,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 			})
 		}
 	}, [url, name, perPage])
+      
+  const enableFilters = filterOptions?.length > 0
+  const enableSorting = sortOptions?.length > 0
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
@@ -283,24 +287,49 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 							...(dense && sx.listDense),
 						}}
 					>
-						{!loading &&
-							resources?.map((resource, index) => (
-								<Component
-									key={index}
-									layout={layout}
-									resource={resource}
-									handleClick={
-										handleClick ? () => handleClick(resource) : undefined
-									}
-									handleEdit={
-										enableEdit ? () => handleEdit(resource) : undefined
-									}
-									handleDelete={
-										enableDelete ? () => handleDeleteClick(resource) : undefined
-									}
-									{...componentProps}
-								/>
-							))}
+            { sortable && !loading && resources?.length > 0 && (
+              <SortableList 
+                droppableId="resource-list"
+                items={ resources }
+                handleDrop={handleDrop}
+                renderItem={(resource, index) => (
+                  <Component
+                    key={index}
+                    sortable
+                    layout={layout}
+                    resource={resource}
+                    handleClick={
+                      handleClick ? () => handleClick(resource) : undefined
+                    }
+                    handleEdit={
+                      enableEdit ? () => handleEdit(resource) : undefined
+                    }
+                    handleDelete={
+                      enableDelete ? () => handleDeleteClick(resource) : undefined
+                    }
+                    {...componentProps}
+                  />
+                )}
+              />
+            )}
+						  
+              { !sortable && !loading && resources?.map((resource, index) => (
+                <Component
+                  key={index}
+                  layout={layout}
+                  resource={resource}
+                  handleClick={
+                    handleClick ? () => handleClick(resource) : undefined
+                  }
+                  handleEdit={
+                    enableEdit ? () => handleEdit(resource) : undefined
+                  }
+                  handleDelete={
+                    enableDelete ? () => handleDeleteClick(resource) : undefined
+                  }
+                  {...componentProps}
+                />
+              ))}
 					</Box>
 				</Stack>
 			</Box>
@@ -312,9 +341,11 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				/>
 			)}
 			<Loader loading={loading} />
-			{enableLoadMore && (
-				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
-			)}
+			<LoadMore 
+        page={page} 
+        numPages={numPages} 
+        loadMore={loadMore} 
+      />
 			<Drawer
 				open={openModal}
 				handleClose={() => setOpenModal(false)}

@@ -10,10 +10,11 @@ import {
 	RatingInput,
 	SwitchInput,
 	TextInput,
+  NoSpaceInput,
 	ShopifyProductInput,
   ReferenceInput
 } from '../../../components'
-import { FormFieldType, SyntheticEventType } from '../../../types'
+import { FormFieldType, OptionType, SyntheticEventType } from '../../../types'
 
 type FormInputProps = {
 	variant: any
@@ -57,6 +58,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		file: AttachmentInput,
 		url: TextInput,
 		text: TextInput,
+    nospace: NoSpaceInput,
 		location: LocationInput,
 		number: TextInput,
 		price: TextInput,
@@ -77,7 +79,11 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			rows: 6,
 		},
 		select: {
-			options: options,
+      // Handle both array of strings and array of objects
+			options: options?.map((option: OptionType) => ({
+        label: option.label || option,
+        value: option.value || option
+      })),
 		},
 		number: {
 			type: 'number',

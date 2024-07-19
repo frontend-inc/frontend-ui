@@ -18,10 +18,10 @@ export { default as Query } from './query/Query'
 export { default as Statistics } from './analytics/Statistics'
 
 // Resources
-export { default as Resource } from './resources/Resource'
 export { default as ResourceList } from './resources/ResourceList'
 export { default as ResourceListItem } from './resources/ResourceListItem'
 export { default as ResourceTable } from './resources/ResourceTable'
 
 // Details
 export { default as Details } from './details/Details'
+export { default as UserDetails } from './details/UserDetails'

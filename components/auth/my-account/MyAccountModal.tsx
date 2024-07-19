@@ -11,20 +11,21 @@ import {
 } from '../../../components'
 import MyAccountTabs from './MyAccountTabs'
 import { Box } from '@mui/material'
+import { MetafieldType } from '../../../types'
 
 type MyAccountModalProps = {
 	enableTeams?: boolean
 	enableStripe?: boolean
+  metafields?: MetafieldType[]
 }
 
 const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
-	const { enableTeams, enableStripe } = props || {}
+	const { enableTeams, enableStripe, metafields } = props || {}
 	const { myAccountOpen, setMyAccountOpen } = useContext(AppContext)
 
 	const {
 		delayedLoading,
 		user,
-		setUser,
 		fetchMe,
 		currentUser,
 		updateMe,
@@ -84,6 +85,7 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 						handleSubmit={handleSubmit}
 						handleDeleteAvatar={handleDeleteAvatar}
 						handleLogout={handleLogout}
+            metafields={ metafields }
 					/>
 				)}
 				{currentTab == 1 && <TeamList />}

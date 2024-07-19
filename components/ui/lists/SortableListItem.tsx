@@ -24,7 +24,7 @@ const SortableListItem: React.FC<SortableListItemProps> = (props) => {
 				...(isDragging && sx.isDragging),
 			}}
 		>
-			<ListItemIcon>
+			<ListItemIcon sx={ sx.dragHandle }>
 				<DragIndicator sx={sx.icon} />
 			</ListItemIcon>
 			<ListItemText 
@@ -52,4 +52,10 @@ const sx = {
 	},
 	isDragging: {
   },
+  dragHandle: {
+    cursor: 'grab',
+    '&:active': {
+      cursor: 'grabbing',
+    },
+  }
 }

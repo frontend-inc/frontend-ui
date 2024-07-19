@@ -4,9 +4,10 @@ import FormFieldInput from './FormFieldInput'
 import { get } from 'lodash'
 import { FormFieldType } from '../../../types'
 import { IconLoading } from '../..'
+import { areFieldConditionsValid } from 'lib/helpers'
 
 export type FormProps = {
-	loading: boolean
+	loading?: boolean
 	errors: any
 	fields: FormFieldType[]
 	resource: any
@@ -30,7 +31,11 @@ const FormFields: React.FC<FormProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-			{fields?.map((field, index) => (
+			{fields?.map((field, index) => {       
+        if(!areFieldConditionsValid(field?.conditions || [], resource)){
+          return null
+        } 
+      return(
 				<FormFieldInput
 					key={index}
           resource={resource}          
@@ -40,7 +45,7 @@ const FormFields: React.FC<FormProps> = (props) => {
 					handleChange={handleChange}
 					handleRemove={handleRemove}
 				/>
-			))}
+			)})}
 			{handleSubmit && (
 				<Button
 					size="large"

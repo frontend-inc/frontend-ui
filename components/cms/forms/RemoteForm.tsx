@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { AppContext } from '../../../context'
-import { flattenDocument, changeDocumentValue, useResource } from 'frontend-js'
+import { useResource } from 'frontend-js'
 import { Loader, FormFields } from '../..'
 import { useAlerts, useFetchForm } from '../../../hooks'
 import { useRouter } from 'next/router'
@@ -54,17 +54,11 @@ const RemoteForm: React.FC<RemoteFormProps> = (props) => {
 		create,
 		removeAttachment,
 		addReferences,
+    handleChange
 	} = useResource({
 		name: 'document',
 		url,
 	})
-
-	const handleDataChange = (ev) => {
-		const { name } = ev.target
-		const value =
-			ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
-		setResource((prev) => changeDocumentValue(prev, name, value))
-	}
 
 	const handleRemove = async (name) => {
 		if (resource?.id) await removeAttachment(resource.id, name)
@@ -114,8 +108,8 @@ const RemoteForm: React.FC<RemoteFormProps> = (props) => {
 			loading={loading}
 			errors={errors}
 			fields={fields}
-			resource={flattenDocument(resource)}
-			handleChange={handleDataChange}
+			resource={resource}
+			handleChange={handleChange}
 			handleRemove={handleRemove}
 			handleSubmit={handleSubmit}
 			buttonText={buttonText}

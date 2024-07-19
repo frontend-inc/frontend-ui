@@ -40,5 +40,6 @@ const sx = {
 	},
 	button: {
 		borderRadius: 1,
+    bgcolor: 'transparent',
 	},
 }

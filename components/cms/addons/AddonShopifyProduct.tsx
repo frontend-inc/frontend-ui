@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ProductDetails } from '../../../components/shopify'
 import { useProducts } from 'frontend-shopify'
-import { flattenDocument } from 'frontend-js'
+import { get } from 'lodash'
 
 export type AddonShopifyProductProps = {
 	fieldName: string
@@ -10,7 +10,7 @@ export type AddonShopifyProductProps = {
 
 const AddonShopifyProduct: React.FC<AddonShopifyProductProps> = (props) => {
 	const { resource, fieldName, ...rest } = props || {}
-	const shopifyHandle = flattenDocument(resource)[fieldName]
+	const shopifyHandle = get(resource, fieldName)
 
 	const { loading, product, findProduct } = useProducts()
 

@@ -1,15 +1,12 @@
 import React, { useEffect, useContext } from 'react'
 import { AppContext } from '../../../context'
-import { useResource } from 'frontend-js'
+import { useAuth } from 'frontend-js'
 import { FormFields } from '../..'
 import { useAlerts } from '../../../hooks'
 import { useRouter } from 'next/router'
 
-export type FormProps = {
-  loading?: boolean
-	resource: any
-  parentResource?: any
-	url: string
+export type UserFormProps = {
+  loading?: boolean	  
 	href?: string
 	buttonText?: string
 	fields: any[]
@@ -17,7 +14,7 @@ export type FormProps = {
   handleSuccess?: (resource: any) => void
 }
 
-const Form: React.FC<FormProps> = (props) => {
+const UserForm: React.FC<UserFormProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
@@ -29,11 +26,8 @@ const Form: React.FC<FormProps> = (props) => {
   }
 
 	const {    
-		resource: _resource,
-    parentResource,
-		buttonText = 'Submit',
+		buttonText = 'Update Profile',
 		fields,
-		url,
 		onSuccessMessage = 'Submitted successfully!',
     handleSuccess=onSuccess
 	} = props
@@ -41,36 +35,23 @@ const Form: React.FC<FormProps> = (props) => {
 	const { showAlertSuccess } = useAlerts()
 
 	const {
-		delayedLoading: loading,
-		errors,
-		resource,
-		setResource,
-		update,
-		create,
-		removeAttachment,
-		addReferences,
-    handleChange
-	} = useResource({
-		name: 'document',
-		url,
-	})
+		delayedLoading,
+    errors,
+		user,
+		fetchMe,
+		currentUser,
+		updateMe,
+		handleChange,
+		deleteAvatar,
+	} = useAuth()
 
-	const handleRemove = async (name) => {
-		if (resource?.id) await removeAttachment(resource.id, name)
+	const handleRemove = async () => {
+		await deleteAvatar()
 	}
 
 	const handleSubmit = async () => {
-		try {
-			let resp
-			if (resource?.id) {
-				resp = await update(resource)
-			} else {
-				resp = await create(resource)
-        // Handle associated resources
-        if (parentResource?.id) {
-          await addReferences(resp.id, [parentResource.id])
-        }
-			}
+		try {			
+			let resp = await updateMe(user)			
 			if (resp?.id) {        
         if (onSuccessMessage) {
           showAlertSuccess(onSuccessMessage)
@@ -84,23 +65,19 @@ const Form: React.FC<FormProps> = (props) => {
 		}
 	}
 
-	
+
   useEffect(() => {
-    if(_resource){
-      setResource(_resource)
-    }else{
-      setResource({
-        title: '',
-      })
+    if(!currentUser?.id){
+      fetchMe()
     }
-  }, [_resource])
+  }, [])
 
 	return (
 		<FormFields
-			loading={loading}
+			loading={delayedLoading}
 			errors={errors}
 			fields={fields}
-			resource={resource}
+			resource={user}
 			handleChange={handleChange}
 			handleRemove={handleRemove}
 			handleSubmit={handleSubmit}
@@ -109,4 +86,4 @@ const Form: React.FC<FormProps> = (props) => {
 	)
 }
 
-export default Form
+export default UserForm

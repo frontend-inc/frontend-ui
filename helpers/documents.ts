@@ -21,18 +21,6 @@ export const handleDocumentChange = (ev, resource) => {
 	return newResource
 }
 
-export const flattenDocuments = (resources) => {
-	return resources.map((resource) => flattenDocument(resource))
-}
-
-export const flattenDocument = (resource) => {
-	let { data, ...rest } = resource || {}
-	return {
-		...data,
-		...rest,
-	}
-}
-
 export const filterReferences = (document, contentType) => {
 	if (
 		!document?.references ||

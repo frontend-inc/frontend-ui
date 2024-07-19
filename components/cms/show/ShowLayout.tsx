@@ -10,7 +10,7 @@ import {
 	ExpandableText,
 } from '../..'
 import { ShowProps } from './ShowItem'
-import { flattenDocument } from 'frontend-js'
+import { get } from 'lodash'
 import { buildActions } from '../../../helpers'
 
 type ShowLayoutProps = ShowProps & {
@@ -44,7 +44,7 @@ const ShowLayout: React.FC<ShowLayoutProps> = (props) => {
 							actions,
 						})}
 						numVisible={4}
-						resource={flattenDocument(resource)}
+						resource={resource}
 						justifyContent="center"
 					/>
 				</Box>
@@ -55,7 +55,7 @@ const ShowLayout: React.FC<ShowLayoutProps> = (props) => {
 				</Typography>
 				{enableRatings == true && <AvgRating resource={resource} enableTotal />}
 				{displayFields?.length > 0 && (
-					<DisplayFields fields={displayFields} resource={flattenDocument(resource)} />
+					<DisplayFields fields={displayFields} resource={resource} />
 				)}
 				{enablePayments == true && (
 					<StripePaymentLink

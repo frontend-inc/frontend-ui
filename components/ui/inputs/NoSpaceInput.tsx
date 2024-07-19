@@ -38,6 +38,7 @@ const NoSpaceInput: React.FC<NoSpaceInputPropsType> = (props) => {
 
 	return (
 		<TextInput
+      disableDebounce
 			direction={direction}
 			errors={errors}
 			value={value}

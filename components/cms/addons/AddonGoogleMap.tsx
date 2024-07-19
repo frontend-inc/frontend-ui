@@ -1,6 +1,6 @@
 import React from 'react'
 import { GoogleMap } from '../..'
-import { flattenDocument } from 'frontend-js'
+import { get } from 'lodash'
 import { DisplayFieldType } from '../../../types'
 
 export type AddonGoogleMapProps = {

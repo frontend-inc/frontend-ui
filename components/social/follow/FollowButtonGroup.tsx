@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Stack, Divider, Typography } from '@mui/material'
+import { Link, Stack, Divider, Typography } from '@mui/material'
 import { UserType } from '../../../types'
 import FollowModal from './FollowModal'
 
-type FollowCountsProps = {
+type FollowButtonGroupProps = {
 	user: UserType
 	color?: string
 }
 
-const FollowCounts: React.FC<FollowCountsProps> = (props) => {
+const FollowButtonGroup: React.FC<FollowButtonGroupProps> = (props) => {
 	const { user } = props
 
 	const [open, setOpen] = useState(false)
@@ -26,14 +26,14 @@ const FollowCounts: React.FC<FollowCountsProps> = (props) => {
 				divider={<Divider sx={sx.divider} />}
 			>
 				<Stack direction="row" spacing={1} alignItems="center">
-					<Button sx={sx.link} onClick={handleClick}>
+					<Link sx={ sx.link } variant="overline" onClick={handleClick}>
 						{user?.display_num_followers}
-					</Button>
+					</Link>
 				</Stack>
 				<Stack direction="row" spacing={1} alignItems="center">
-					<Button sx={sx.link} onClick={handleClick}>
+					<Link variant='overline' sx={ sx.link } onClick={handleClick}>
 						{user?.display_num_following}
-					</Button>
+					</Link>
 				</Stack>
 			</Stack>
 			<FollowModal open={open} handleClose={() => setOpen(false)} user={user} />
@@ -41,7 +41,7 @@ const FollowCounts: React.FC<FollowCountsProps> = (props) => {
 	)
 }
 
-export default FollowCounts
+export default FollowButtonGroup
 
 const sx = {
 	divider: {
@@ -50,7 +50,9 @@ const sx = {
 		height: 16,
 	},
 	link: {
+    minWidth: 100,
 		boxShadow: 0,
 		color: 'text.secondary',
+    textDecoration: 'none'
 	},
 }

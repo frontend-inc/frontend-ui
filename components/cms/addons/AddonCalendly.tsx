@@ -1,6 +1,6 @@
 import React from 'react'
 import { Calendly } from '../..'
-import { flattenDocument } from 'frontend-js'
+import { get } from 'lodash'
 
 export type AddonCalendlyProps = {
 	fieldName: string
@@ -9,7 +9,7 @@ export type AddonCalendlyProps = {
 
 const AddonCalendly: React.FC<AddonCalendlyProps> = (props) => {
 	const { resource, fieldName, ...rest } = props || {}
-	const value = flattenDocument(resource)[fieldName]
+	const value = get(resource, fieldName)
 	return <Calendly calendlyUrl={value} />
 }
 

@@ -74,8 +74,8 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 
 	const formatResources = (resources) => {
 		return resources.map((resource) => ({
-			label: resource[displayField],
-			value: resource[valueParam],
+			label: get(resource, displayField),
+			value: get(resource, valueParam),
 			image: imageField ? get(resource, imageField) : null,
 		}))
 	}
@@ -85,8 +85,8 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		let resource = resources.find((resource) => resource[displayField] == value)
 		if (resource) {
 			setOption({
-				label: resource[displayField],
-				value: resource[valueParam],
+				label: get(resource, displayField),
+				value: get(resource, valueParam),
 			})
 		}
 	}
@@ -99,11 +99,11 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 
 	useEffect(() => {
 		if (value && resources?.length > 0) {
-			let resource = resources.find((resource) => resource[valueParam] == value)
+			let resource = resources.find((resource) => get(resource, valueParam) == value)
 			if (resource) {
 				setOption({
-					label: resource[displayField],
-					value: resource[valueParam],
+					label: get(resource, displayField),
+					value: get(resource, valueParam),
 				})
 			}
 		}

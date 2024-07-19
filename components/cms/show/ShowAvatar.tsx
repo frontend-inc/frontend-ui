@@ -9,7 +9,6 @@ import {
 	ExpandableText,
 } from '../..'
 import { ShowProps } from './ShowItem'
-import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
 const ShowAvatar: React.FC<ShowProps> = (props) => {
@@ -25,9 +24,8 @@ const ShowAvatar: React.FC<ShowProps> = (props) => {
 		enableRatings,
 		enablePayments,
 	} = props || {}
-	const { data } = resource || {}
 
-	const { label, title, image, description } = resource || {}
+	const { title, image, description } = resource || {}
 	return (
 		<Stack spacing={2} direction="column" justifyContent="center">
 			{(actions || enableEdit) && (
@@ -42,7 +40,7 @@ const ShowAvatar: React.FC<ShowProps> = (props) => {
 							handleEdit,
 							actions,
 						})}
-						resource={flattenDocument(resource)}
+						resource={resource}
 						justifyContent="flex-end"
 					/>
 				</Stack>

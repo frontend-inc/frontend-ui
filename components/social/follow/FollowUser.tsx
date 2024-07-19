@@ -1,6 +1,5 @@
 import React from 'react'
-import { Box } from '@mui/system'
-import { FollowButton, Resource, UserAvatar } from '../../../components'
+import { FollowButton, ResourceListItem, UserAvatar } from '../../../components'
 import { UserType } from '../../../types'
 
 type FollowUserProps = {
@@ -12,7 +11,7 @@ const FollowUser: React.FC<FollowUserProps> = (props) => {
 	const { resource: user, size = 44 } = props || {}
 
 	return (
-		<Resource
+		<ResourceListItem
 			resource={user}
 			avatar={<UserAvatar size={size} user={user} />}
 			title={user?.name}

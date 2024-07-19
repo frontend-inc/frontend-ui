@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section } from '../../components'
-import { UserProfile } from '../../components'
-import { UserProfileProps } from '../../components/social/users/UserProfile'
+import { UserDetails } from '../../components'
+import { UserDetailsProps } from '../../components/cms/details/UserDetails'
 import { SectionProps } from '../../types'
 
-type SocialProfileProps = SectionProps & UserProfileProps
+type AuthUserDetailsProps = SectionProps & UserDetailsProps
 
-const SocialProfile: React.FC<SocialProfileProps> = (props) => {
+const AuthUserDetails: React.FC<AuthUserDetailsProps> = (props) => {
 	const {
 		mode,
 		py,
@@ -30,9 +30,9 @@ const SocialProfile: React.FC<SocialProfileProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<UserProfile {...rest} />
+			<UserDetails {...rest} />
 		</Section>
 	)
 }
 
-export default SocialProfile
+export default AuthUserDetails

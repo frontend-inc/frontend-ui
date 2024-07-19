@@ -78,7 +78,10 @@ const Card: React.FC<CardProps> = (props) => {
             />
           )}
 					{displayFields?.length > 0 && (
-						<DisplayFields fields={displayFields} resource={resource} />
+						<DisplayFields 
+              fields={displayFields} 
+              resource={resource} 
+            />
 					)}
 				</Box>
 				<Stack direction="row" justifyContent="space-between">

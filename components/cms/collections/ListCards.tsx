@@ -2,7 +2,7 @@ import React from 'react'
 import { ListCard, ListLayout } from '../..'
 import { ActionType, DisplayFieldType } from '../../../types'
 import { buildActions } from '../../../helpers'
-import { flattenDocument } from 'frontend-js'
+import { get } from 'lodash'
 
 type ListCardsProps = {
 	resources: any
@@ -68,7 +68,7 @@ const ListCards: React.FC<ListCardsProps> = (props) => {
 				<ListCard
 					key={index}
 					style={style}
-					resource={flattenDocument(resource)}
+					resource={resource}
 					displayFields={displayFields}
 					handleClick={() => handleClick(resource)}
 					actions={buildActions({

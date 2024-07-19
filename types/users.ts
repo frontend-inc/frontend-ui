@@ -23,4 +23,5 @@ export type UserType = {
 	image?: StorageType
   password?: string
   password_confirmation?: string
+  data?: any
 }

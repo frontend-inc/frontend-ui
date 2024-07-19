@@ -10,7 +10,7 @@ import {
 	AvgRating,
 } from '../..'
 import { ShowProps } from './ShowItem'
-import { flattenDocument } from 'frontend-js'
+import { get } from 'lodash'
 import { buildActions } from '../../../helpers'
 
 const ShowCover: React.FC<ShowProps> = (props) => {
@@ -46,7 +46,7 @@ const ShowCover: React.FC<ShowProps> = (props) => {
 								actions,
 							})}
 							numVisible={4}
-							resource={flattenDocument(resource)}
+							resource={resource}
 							justifyContent="center"
 						/>
 					</Box>
@@ -58,7 +58,7 @@ const ShowCover: React.FC<ShowProps> = (props) => {
 					<DisplayFields
 						alignItems="center"
 						fields={displayFields}
-						resource={flattenDocument(resource)}
+						resource={resource}
 					/>
 				)}
 				{enablePayments == true && (

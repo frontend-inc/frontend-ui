@@ -5,10 +5,11 @@ import {
 	Placeholder,
 	UserAvatar,
 	FollowButton,
-	FollowCounts,
 	ExpandableText,
+  DisplayFields,
+  FollowButtonGroup
 } from '../../../components'
-import { UserType } from '../../../types'
+import { DisplayFieldType, UserType } from '../../../types'
 import { useRouter } from 'next/router'
 
 export type UserProfileProps = {
@@ -16,6 +17,7 @@ export type UserProfileProps = {
 	href: string
 	enableFollowing?: boolean
 	enableBorder?: boolean
+  displayFields?: DisplayFieldType[]
 }
 
 const UserProfile: React.FC<UserProfileProps> = (props) => {
@@ -24,7 +26,9 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 		href,
 		enableFollowing = false,
 		enableBorder = false,
+    displayFields=[]
 	} = props || {}
+  
 	const { name, username, bio, avatar } = user || {}
 
 	const { clientUrl } = useContext(AppContext)
@@ -39,7 +43,10 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 			router.push(`${clientUrl}${href}/${username}`)
 		}
 	}
-	if (!user?.username) {
+
+  console.log("Metafields", displayFields, user)
+
+	if (!user?.id) {
 		return (
 			<Placeholder
 				icon="UserCircle"
@@ -62,7 +69,13 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 				alignItems="flex-start"
 			>
 				<Box height="100%" sx={sx.avatarContainer}>
-					{avatar?.url && <UserAvatar user={user} size={120} />}
+					{avatar?.url && (
+            <UserAvatar 
+              user={user} 
+              size={120} 
+              enableGradient
+            />
+          )}
 				</Box>
 				<Stack direction="column" spacing={0}>
 					<Typography variant="caption" color="text.secondary" sx={sx.username}>
@@ -71,8 +84,18 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 					<Typography variant="h6" color="text.primary" sx={sx.name}>
 						{name}
 					</Typography>
-					{enableFollowing == true && <FollowCounts user={user} />}
-					{bio && <ExpandableText text={bio} color="text.secondary" />}
+          <Stack direction="column" spacing={1}>
+					{enableFollowing == true && (
+            <FollowButtonGroup user={user} />
+          )}
+          <DisplayFields 
+            resource={user}
+            fields={ displayFields }
+          />
+          {bio && (
+            <ExpandableText text={bio} color="text.secondary" />
+          )}      
+          </Stack>    
 				</Stack>
 				<Stack direction="row" height="100%" justifyContent="flex-start">
 					{enableFollowing == true && <FollowButton user={user} />}
@@ -114,12 +137,14 @@ const sx = {
 		width: 110,
 		height: 110,
 	},
-	avatarContainer: {
-		height: 140,
+	avatarContainer: {    
+    bgcolor: 'common.white',
+		height: 126,
+    width: 126,
+    borderRadius: '100%',
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
-		width: '100%',
 	},
 	username: {
 		boxShadow: 0,

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { ActionType, DisplayFieldType } from '../../../types'
-import { flattenDocuments } from 'frontend-js'
 import Sortable from './Sortable'
 import { groupResourcesByField } from '../../../helpers/utils'
 
@@ -59,11 +58,10 @@ const KanBan: React.FC<KanBanProps> = (props) => {
 	const [groupedResources, setGroupedResources] = useState({})
 
 	const handleGroupResources = (resources, fieldName) => {
-		let sortedDocuments = resources.sort((a, b) => a.position - b.position)
-		let flattenedResources = flattenDocuments(sortedDocuments)
+		let sortedResources = resources.sort((a, b) => a.position - b.position)		
 		let allowedOptions = headers.map((header) => header.value)
 		let grouped = groupResourcesByField(
-			flattenedResources,
+			sortedResources,
 			fieldName,
 			allowedOptions
 		)

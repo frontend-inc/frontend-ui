@@ -22,11 +22,7 @@ const EditModal: React.FC<EditModalProps> = (props) => {
 		openEdit,
 		setOpenEdit,
 	} = useResourceContext()
-
-  useEffect(() => {
-    console.log("resource", resource)
-  }, [resource])
-
+  
   const handleSuccess = async (savedResource) => {        
     if(savedResource?.id){
       setResource(savedResource)

@@ -1,7 +1,7 @@
 import React from 'react'
 import { YouTubeEmbed } from '../..'
 import { ShowProps } from './ShowItem'
-import { flattenDocument } from 'frontend-js'
+import { get } from 'lodash'
 import ShowLayout from './ShowLayout'
 
 export type ShowYouTubeProps = ShowProps & {
@@ -16,7 +16,7 @@ const ShowYouTube: React.FC<ShowYouTubeProps> = (props) => {
 		displayFields = [],
 		...rest
 	} = props || {}
-	const src = flattenDocument(resource)[fieldName]
+	const src = get(resource, fieldName)
 	return (
 		<ShowLayout
 			actions={actions}

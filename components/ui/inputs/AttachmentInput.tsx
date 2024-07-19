@@ -31,15 +31,23 @@ const RenderAttachment: React.FC<RenderAttachmentProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			{variant == 'image' && (
-				<Image
-					alt={alt}
-					height={size}
-					width={size}
-					src={src}
-					style={{
-						objectFit,
-					}}
-				/>
+        <Box 
+          sx={{ 
+            ...sx.imageContainer, 
+            height: size, 
+            width: size 
+          }}
+        >
+          <Image
+            alt={alt}
+            height={size}
+            width={size}
+            src={src}
+            style={{
+              objectFit,
+            }}
+          />
+        </Box>
 			)}
 			{variant == 'file' && (
 				<Avatar variant="rounded" sx={sx.avatar}>
@@ -165,4 +173,8 @@ const sx = {
 		left: 26,
 		top: -10,
 	},
+  imageContainer: {
+    borderRadius: 1,
+    overflow: 'hidden',
+  }
 }

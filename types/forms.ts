@@ -9,12 +9,19 @@ export type DisplayFieldType = {
 	placeholder?: string
 }
 
+export type FormFieldConditionType = {
+	name: string
+	operator: 'eq' | 'neq' | 'in' | 'nin'
+	value: any
+}
+
 export type FormFieldType = {
 	name: string
 	variant: string
-	label: string
+	label?: string
 	options?: OptionType[]
 	placeholder?: string
+  conditions?: FormFieldConditionType[]
   // Used by ReferenceInput
   resource?: any
   url?: string

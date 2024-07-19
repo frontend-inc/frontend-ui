@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Box, Grid } from '@mui/material'
 import { Field } from '../..'
-import { flattenDocument } from '../../../helpers'
 import { DisplayFieldType } from '../../../types'
 
 export type DetailsProps = {
@@ -15,13 +14,6 @@ const FULL_WIDTH_VARIANTS = ['text', 'image', 'url']
 
 const Details: React.FC<DetailsProps> = (props) => {
 	const { resource, displayFields, enableBorder = false } = props
-	const [document, setDocument] = useState<any>()
-
-	useEffect(() => {
-		if (resource) {
-			setDocument(flattenDocument(resource))
-		}
-	}, [resource])
 
 	return (
 		<Box sx={sx.root}>
@@ -37,7 +29,7 @@ const Details: React.FC<DetailsProps> = (props) => {
 							<Field
 								field={field}
 								enableBorder={enableBorder}
-								resource={document}
+								resource={resource}
 							/>
 						</Grid>
 					))}

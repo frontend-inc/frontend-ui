@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { Form } from '../../components'
-import { FormProps } from '../../components/cms/forms/Form'
+import { UserForm } from '../../components'
+import { UserFormProps } from '../../components/auth/users/UserForm'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsFormProps = SectionProps & HeadingProps & FormProps
+type AuthUserFormProps = SectionProps & HeadingProps & UserFormProps
 
-const CmsForm: React.FC<CmsFormProps> = (props) => {
+const AuthUserForm: React.FC<AuthUserFormProps> = (props) => {
 	const {
 		label,
 		title,
@@ -39,11 +39,11 @@ const CmsForm: React.FC<CmsFormProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<Form 
+			<UserForm 
         {...rest} 
       />
 		</Section>
 	)
 }
 
-export default CmsForm
+export default AuthUserForm

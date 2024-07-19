@@ -46,7 +46,7 @@ type FieldProps = {
 
 const Field: React.FC<FieldProps> = (props) => {
 	const { field, resource, dateFormat = 'MM/DD/YYYYY', ...rest } = props
-	const { variant: fieldVariant } = field
+	const { variant: fieldVariant, label } = field
 	let value = get(resource, field?.name)
 	if (!value) return null
 
@@ -75,7 +75,7 @@ const Field: React.FC<FieldProps> = (props) => {
 
 	const Component = components[fieldVariant]
 
-	return <Component value={value} {...rest} />
+	return <Component value={value} label={label} {...rest} />
 }
 
 export default Field

@@ -5,10 +5,11 @@ import { getInitials } from '../../../helpers'
 type UserAvatarProps = {
 	user: any
 	size?: number
+  enableGradient?: boolean
 }
 
 const UserAvatar: React.FC<UserAvatarProps> = (props) => {
-	const { user, size = 36 } = props
+	const { user, size = 36, enableGradient=false } = props
 	return (
 		<Avatar
 			color={user?.color}

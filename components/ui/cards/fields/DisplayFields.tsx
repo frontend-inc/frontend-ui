@@ -8,7 +8,7 @@ type DisplayFieldsProps = {
 	resource: any
 	enableTitle?: boolean
 	enableRatings?: boolean
-	alignItems?: 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline'
+	alignItems?: 'flex-start' | 'center' | 'flex-end'
 }
 
 const DisplayFields: React.FC<DisplayFieldsProps> = (props) => {

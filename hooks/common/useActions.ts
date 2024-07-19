@@ -6,6 +6,7 @@ import { useLoadingWrapper } from '.'
 import copy from 'copy-to-clipboard'
 import { useAlerts } from '../../hooks'
 import { useAuth } from 'frontend-js'
+import { get } from 'lodash'
 
 type UseActionParams = {
 	action: ActionType
@@ -26,7 +27,7 @@ const useActions = (params: UseActionParams) => {
 	const handleClick = async (ev) => {
 		let value
 		if (action.fieldName) {
-			value = resource[action.fieldName]
+			value = get(resource, action.fieldName)
 		}
 		switch (action?.name) {
 			case 'navigate':

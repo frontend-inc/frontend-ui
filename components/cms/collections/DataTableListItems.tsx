@@ -4,7 +4,6 @@ import { Box, Stack } from '@mui/material'
 import { AppContext } from '../../../context'
 import { TableHeaderType } from '../../../types'
 import { useRouter } from 'next/router'
-import { flattenDocuments } from '../../../helpers'
 import { TableList } from '../..'
 import { ListItemsProps } from './ListItems'
 import { useForms } from '../../../hooks'
@@ -61,15 +60,6 @@ const DataTableList: React.FC<DataTableListProps> = (props) => {
 		await paginate(value)
 	}
 
-	const [rows, setRows] = useState([])
-
-	useEffect(() => {
-		if (resources?.length >= 0) {
-			let flatten = flattenDocuments(resources)
-			setRows(flatten)
-		}
-	}, [resources])
-
 	return (
 		<Stack spacing={1} sx={sx.root}>
 			<Box sx={{ ...(loading && sx.loading) }}>
@@ -80,7 +70,7 @@ const DataTableList: React.FC<DataTableListProps> = (props) => {
 					handleDelete={handleDeleteClick}
 					loading={resources && loading}
 					fields={headers}
-					rows={rows}
+					rows={resources}
 					handleClick={handleClick}
 					query={query}
 					handleSort={handleSort}

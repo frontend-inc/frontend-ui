@@ -3,7 +3,6 @@ import { Box, Stack, Typography } from '@mui/material'
 import {
 	AvgRating,
 	DisplayFields,
-	BuyNowButton,
 	StripePaymentLink,
 	Actions,
 	Image,
@@ -11,7 +10,6 @@ import {
 	ExpandableText,
 } from '../..'
 import { ShowProps } from './ShowItem'
-import { flattenDocument } from 'frontend-js'
 import { buildActions } from '../../../helpers'
 
 const ShowCard: React.FC<ShowProps> = (props) => {
@@ -41,7 +39,7 @@ const ShowCard: React.FC<ShowProps> = (props) => {
 							actions,
 						})}
 						justifyContent="flex-end"
-						resource={flattenDocument(resource)}
+						resource={resource}
 					/>
 				</Box>
 			)}
@@ -73,7 +71,7 @@ const ShowCard: React.FC<ShowProps> = (props) => {
 							<AvgRating resource={resource} enableTotal />
 						)}
 						{displayFields?.length > 0 && (
-							<DisplayFields fields={displayFields} resource={flattenDocument(resource)} />
+							<DisplayFields fields={displayFields} resource={resource} />
 						)}
 						{enablePayments == true && (
 							<StripePaymentLink resource={resource} buttonText="Checkout" />

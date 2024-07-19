@@ -44,8 +44,8 @@ type FieldProps = {
 
 const DisplayField: React.FC<FieldProps> = (props) => {
 	const { field, resource, color = 'text.secondary', alignItems='flex-start', ...rest } = props
-	const { variant: fieldVariant, icon } = field
-	let value = get(resource, field?.name)
+	const { name, variant: fieldVariant, icon } = field
+	let value = get(resource, name)
 	if (!value || value?.length == 0) return null
 
 	const components = {

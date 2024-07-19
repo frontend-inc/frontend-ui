@@ -116,6 +116,8 @@ const sx = {
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		height: 50,
+    borderBottom: '1px solid',
+    borderColor: 'divider'
 	},
 	headerAction: {
 		minWidth: '40px',

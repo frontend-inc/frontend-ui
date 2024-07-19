@@ -12,7 +12,7 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 	const { redirectUrl } = props || {}
 
 	const {
-		delayedLoading,
+		loading,
 		user,
 		setUser,
 		currentUser,
@@ -47,7 +47,7 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 					}
 				>
 					<MyAccountForm
-						loading={delayedLoading}
+						loading={loading}
 						user={user}
 						handleChange={handleChange}
 						handleSubmit={handleSubmit}
