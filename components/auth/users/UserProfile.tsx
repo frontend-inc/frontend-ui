@@ -1,105 +1,98 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../../../context'
-import { Stack, Box, Typography, Button } from '@mui/material'
+import React from 'react'
+import { Stack, Box, Typography } from '@mui/material'
 import {
-	Placeholder,
+  Actions,
 	UserAvatar,
 	FollowButton,
 	ExpandableText,
   DisplayFields,
-  FollowButtonGroup
+  FollowButtonGroup,
+  SocialFields,
 } from '../..'
-import { DisplayFieldType, UserType } from '../../../types'
-import { useRouter } from 'next/router'
+import { 
+  FormFieldType, 
+  SocialFieldType, 
+  DisplayFieldType,
+  ActionType, 
+} from '../../../types'
+import { UserType } from 'frontend-js'
 
 export type UserProfileProps = {
 	user: UserType
-	href: string
 	enableFollowing?: boolean
-	enableBorder?: boolean
   displayFields?: DisplayFieldType[]
+  socialFields?: SocialFieldType[]  
+  actions?: ActionType[]
 }
 
 const UserProfile: React.FC<UserProfileProps> = (props) => {
 	const {
 		user,
-		href,
 		enableFollowing = false,
-		enableBorder = false,
-    displayFields=[]
+    displayFields=[],
+    socialFields=[],    
+    actions=[],
 	} = props || {}
   
 	const { name, username, bio, avatar } = user || {}
 
-	const { clientUrl } = useContext(AppContext)
-	const router = useRouter()
-
-	const handleClick = () => {
-		if (clientUrl && href && username) {
-			window.scrollTo({
-				top: 0,
-				behavior: 'smooth',
-			})
-			router.push(`${clientUrl}${href}/${username}`)
-		}
-	}
-
-	if (!user?.id) {
-		return (
-			<Placeholder
-				icon="UserCircle"
-				title="Please sign in"
-				description="Sign in to view the user profile"
-			/>
-		)
-	}
+  if(!user?.id) return null;
 	return (
-		<Box
-			sx={{
-				...sx.container,
-				...(enableBorder && sx.containerBorder),
-			}}
-		>
-			<Stack
-				sx={sx.profile}
-				direction={{ sm: 'row', xs: 'column' }}
-				spacing={{ sm: 4, xs: 0 }}
-				alignItems="flex-start"
-			>
-				<Box height="100%" sx={sx.avatarContainer}>
-					{avatar?.url && (
-            <UserAvatar 
-              user={user} 
-              size={120} 
-              enableGradient
-            />
-          )}
-				</Box>
-				<Stack direction="column" spacing={0}>
-					<Typography variant="caption" color="text.secondary" sx={sx.username}>
-						@{username}
-					</Typography>
-					<Typography variant="h6" color="text.primary" sx={sx.name}>
-						{name}
-					</Typography>
+    <Box sx={ sx.container }>
+      <Stack
+        width='100%'
+        direction={{ sm: 'row', xs: 'column' }}
+        spacing={{ sm: 4, xs: 0 }}
+        alignItems="flex-start"
+      >
+        <Stack direction="column" alignItems="center">
+          <Box height="100%" sx={sx.avatarContainer}>
+            {avatar?.url && (
+              <UserAvatar 
+                user={user} 
+                size={120} 
+                enableGradient
+              />
+            )}
+          </Box>  
+          <SocialFields 
+            fields={ socialFields }
+            resource={ user }
+          />              
+        </Stack>
+        <Stack direction="column" spacing={1}>
+          <Typography variant="caption" color="text.secondary" sx={sx.username}>
+            @{username}
+          </Typography>
+          <Typography variant="h6" color="text.primary" sx={sx.name}>
+            {name}
+          </Typography>
           <Stack direction="column" spacing={1}>
-					{enableFollowing == true && (
+          {enableFollowing == true && (
             <FollowButtonGroup user={user} />
           )}
           <DisplayFields 
             resource={user}
             fields={ displayFields }
-          />
+          />        
           {bio && (
             <ExpandableText text={bio} color="text.secondary" />
-          )}      
+          )}
           </Stack>    
-				</Stack>
-				<Stack direction="row" height="100%" justifyContent="flex-start">
-					{enableFollowing == true && <FollowButton user={user} />}
-				</Stack>
-			</Stack>
-		</Box>
+        </Stack>
+        <Stack direction="row" height="100%" justifyContent="flex-start">
+          {enableFollowing == true && <FollowButton user={user} />}
+        </Stack>
+        {actions?.length > 0 && (
+          <Stack direction="row" sx={sx.actions}>              
+            <Actions 
+              actions={actions}    
+              resource={user}
+            />
+          </Stack>
+        )}
+      </Stack>
+    </Box>
 	)
 }
 
@@ -107,10 +100,12 @@ export default UserProfile
 
 const sx = {
 	container: {
+    width: '100%',
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
-		justifyContent: 'center',
+		justifyContent: 'center',    
+    borderRadius: 1,    
 	},
 	containerBorder: {
 		border: '1px solid',
@@ -127,9 +122,6 @@ const sx = {
 			sm: 'left',
 			xs: 'center',
 		},
-	},
-	profile: {
-		maxWidth: 600,
 	},
 	avatar: {
 		width: 110,
@@ -153,4 +145,10 @@ const sx = {
 			xs: 'center',
 		},
 	},
+  actions: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
+  }
 }

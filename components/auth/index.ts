@@ -32,8 +32,10 @@ export { default as VerifyPinForm } from './verify/VerifyPinForm'
 export { default as VerifySendPinForm } from './verify/VerifySendPinForm'
 
 // Users 
+export { default as CurrentUser } from './users/CurrentUser'
+export { default as CurrentUserForm } from './users/CurrentUserForm'
+export { default as CurrentUserEditModal } from './users/CurrentUserEditModal'
 export { default as UserItem } from './users/UserItem'
-export { default as UserForm } from './users/UserForm'
 export { default as UserDetails } from './users/UserDetails'
 export { default as UserProfile } from './users/UserProfile'
 

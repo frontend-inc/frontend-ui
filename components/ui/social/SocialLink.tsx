@@ -2,36 +2,40 @@ import React, { useContext, useEffect, useState } from 'react'
 import { IconButton } from '@mui/material'
 //@ts-ignore
 import { SocialIcon } from 'react-social-icons'
-import { ThemeContext } from '../../../context'
 
 type SocialLinkProps = {
 	provider: string
 	url?: string
+  color?: string
 }
 
 const SocialLink: React.FC<SocialLinkProps> = (props) => {
-	const { provider, url } = props || {}
+	const { provider, url, color='text.primary' } = props || {}
 
 	const formatUrl = (username: string) => {
 		switch (provider) {
 			case 'facebook':
-				return `https://www.facebook.com/${url}`
-				break
+				return `https://www.facebook.com/${username}`
 			case 'instagram':
-				return `https://www.instagram.com/${url}`
-				break
+				return `https://www.instagram.com/${username}`
 			case 'linkedin':
-				return `https://www.linkedin.com/in/${url}`
-				break
+				return `https://www.linkedin.com/in/${username}`
 			case 'twitter':
-				return `https://www.twitter.com/${url}`
-				break
+				return `https://www.twitter.com/${username}`
 			case 'youtube':
-				return `https://www.youtube.com/${url}`
-				break
+				return `https://www.youtube.com/${username}`
 			case 'tiktok':
-				return `https://www.tiktok.com/${url}`
-				break
+				return `https://www.tiktok.com/${username}`
+      case 'github':
+        return `https://www.github.com/${username}`
+      case 'pinterest':
+        return `https://www.pinterest.com/${username}`
+      case 'snapchat':
+        return `https://www.snapchat.com/add/${username}`
+      case 'whatsapp':
+        return `https://wa.me/${username}`
+      case 'email': 
+        return `mailto:${username}`      
 			default:
 				break
 		}
@@ -42,23 +46,24 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 		if (url.includes('http') || url.includes('www')) {
 			window.open(url, '_blank')
 			return
+    } else if (provider == 'whatsapp' && url.includes('+')) {
+      window.open(`https://wa.me/${url}`, '_blank')
+      return
+    } else if (provider == 'email'){
+      window.open(`mailto:${url}`, '_blank')
+      return    
 		} else {
 			window.open(formatUrl(url), '_blank')
 		}
 	}
 
-	const [bgColor, setBgColor] = useState('black')
-	const { theme } = useContext(ThemeContext)
-
-	useEffect(() => {
-		if (theme) {
-			setBgColor('#222222')
-		}
-	}, [theme])
-
 	return (
 		<IconButton size="small" onClick={handleClick}>
-			<SocialIcon network={provider} bgColor={bgColor} style={styles} />
+			<SocialIcon 
+        network={provider} 
+        color={color} 
+        style={styles} 
+      />
 		</IconButton>
 	)
 }
@@ -66,6 +71,6 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 export default SocialLink
 
 const styles = {
-	height: 32,
-	width: 32,
+	height: 24,
+	width: 24,
 }

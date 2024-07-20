@@ -4,18 +4,18 @@ import { useAuth } from 'frontend-js'
 import { FormFields } from '../..'
 import { useAlerts } from '../../../hooks'
 import { useRouter } from 'next/router'
-import { Container } from '@mui/material'
+import { FormFieldType } from '../../../types'
 
-export type UserFormProps = {
+export type CurrentUserFormProps = {
   loading?: boolean	  
 	href?: string
 	buttonText?: string
-	fields: any[]
+	fields: FormFieldType[]
 	onSuccessMessage?: string
   handleSuccess?: (resource: any) => void
 }
 
-const UserForm: React.FC<UserFormProps> = (props) => {
+const UserForm: React.FC<CurrentUserFormProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
@@ -54,7 +54,8 @@ const UserForm: React.FC<UserFormProps> = (props) => {
 	const handleSubmit = async () => {
 		try {			
 			let resp = await updateMe(user)			
-			if (resp?.id) {        
+			if (resp?.id) {   
+        fetchMe()     
         if (onSuccessMessage) {
           showAlertSuccess(onSuccessMessage)
         }
@@ -71,10 +72,12 @@ const UserForm: React.FC<UserFormProps> = (props) => {
     if(!currentUser?.id){
       fetchMe()
     }
-  }, [])
+  }, [currentUser])
 
   useEffect(() => {
-    setUser(currentUser)
+    if(currentUser?.id){
+      setUser(currentUser)
+    }
   }, [currentUser])
 
 	return (

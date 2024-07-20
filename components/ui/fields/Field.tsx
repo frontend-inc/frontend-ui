@@ -32,6 +32,8 @@ export type FieldElementProps = {
 }
 
 type FieldProps = {
+  field: DisplayFieldType
+	resource?: any
 	label?: string
 	color?: string
 	direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse'
@@ -39,8 +41,6 @@ type FieldProps = {
 	placeholder?: string
 	enableBorder?: boolean
 	disablePadding?: boolean
-	field: DisplayFieldType
-	resource?: any
 	dateFormat?: string
 }
 

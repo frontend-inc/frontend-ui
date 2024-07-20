@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { UserForm } from '../../components'
-import { UserFormProps } from '../../components/auth/users/UserForm'
+import { CurrentUserForm } from '../../components'
+import { CurrentUserFormProps } from '../../components/auth/users/CurrentUserForm'
 import { SectionProps, HeadingProps } from '../../types'
 
-type AuthUserFormProps = SectionProps & HeadingProps & UserFormProps
+type AuthUserFormProps = SectionProps & HeadingProps & CurrentUserFormProps
 
 const AuthUserForm: React.FC<AuthUserFormProps> = (props) => {
 	const {
@@ -39,7 +39,7 @@ const AuthUserForm: React.FC<AuthUserFormProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<UserForm 
+			<CurrentUserForm 
         {...rest} 
       />
 		</Section>

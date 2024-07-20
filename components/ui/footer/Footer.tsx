@@ -29,7 +29,7 @@ const Footer: React.FC<FooterProps> = (props) => {
 				{socialLinks?.map((link, i) => (
 					<SocialLink
 						key={i}
-						provider={link?.name?.toLowerCase()}
+						platform={link?.name?.toLowerCase()}
 						url={link?.url}
 					/>
 				))}

@@ -13,6 +13,12 @@ const LucideIcon: React.FC<LucideIconProps> = (props) => {
 	const { name, color = 'text.primary', size = 24 } = props
 	const theme = useTheme()
 	const Icon = icons[name]
-	return Icon && <Icon color={get(theme.palette, color)} size={size} />
+  if(!Icon) return null;
+	return(
+    <Icon 
+      color={get(theme.palette, color)} 
+      size={size} 
+    />
+  )
 }
 export default LucideIcon

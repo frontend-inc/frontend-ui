@@ -2,7 +2,6 @@ import React from 'react'
 import { ListCard, ListLayout } from '../..'
 import { ActionType, DisplayFieldType } from '../../../types'
 import { buildActions } from '../../../helpers'
-import { get } from 'lodash'
 
 type ListCardsProps = {
 	resources: any

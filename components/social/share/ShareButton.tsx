@@ -13,7 +13,7 @@ const ShareButton: React.FC<ShareButtonProps> = (props) => {
 	const { url, variant = 'icon' } = props
 	const [open, setOpen] = useState(false)
 
-	const SOCIAL_PLATFORMS = [
+	const SOCIAL_PROVIDERS = [
 		{ label: 'Share to Instagram', value: 'instagram' },
 		{ label: 'Share to Facebook', value: 'facebook' },
 		{ label: 'Share to Twitter', value: 'twitter' },
@@ -79,11 +79,11 @@ const ShareButton: React.FC<ShareButtonProps> = (props) => {
 							</Typography>
 						</Box>
 						<Stack direction="row" spacing={1} sx={sx.socialButtons}>
-							{SOCIAL_PLATFORMS.map((platform, index) => (
+							{SOCIAL_PROVIDERS.map((provider, index) => (
 								<SocialIcon
 									key={index}
-									provider={platform.value}
-									handleClick={() => handleShareClick(platform.value)}
+									provider={provider.value}
+									handleClick={() => handleShareClick(provider.value)}
 								/>
 							))}
 						</Stack>

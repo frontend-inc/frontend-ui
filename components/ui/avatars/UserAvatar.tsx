@@ -16,6 +16,7 @@ const UserAvatar: React.FC<UserAvatarProps> = (props) => {
 			label={getInitials(user?.name)}
 			size={size}
 			src={user?.avatar?.url}
+      enableGradient={enableGradient}
 		/>
 	)
 }
