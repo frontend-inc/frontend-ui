@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section } from '../../components'
-import { CurrentUserDetails } from '../../components'
-import { CurrentUserDetailsProps } from '../../components/auth/users/CurrentUserDetails'
+import { UserDetails } from '../../components'
+import { UserDetailsProps } from '../../components/auth/users/UserDetails'
 import { SectionProps } from '../../types'
 
-type AuthUserDetailsProps = SectionProps & CurrentUserDetailsProps
+type CmsUserDetailsProps = SectionProps & UserDetailsProps
 
-const AuthUserDetails: React.FC<AuthUserDetailsProps> = (props) => {
+const CmsUserDetails: React.FC<CmsUserDetailsProps> = (props) => {
 	const {
 		mode,
 		py,
@@ -30,9 +30,9 @@ const AuthUserDetails: React.FC<AuthUserDetailsProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<CurrentUserDetails {...rest} />
+			<UserDetails {...rest} />
 		</Section>
 	)
 }
 
-export default AuthUserDetails
+export default CmsUserDetails

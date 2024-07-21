@@ -35,7 +35,7 @@ const MultipleChoiceInput: React.FC<MultipleChoiceInputProps> = (props) => {
 	const [selected, setSelected] = useState(value || [])
 
 	const handleSelect = (item) => {
-		if (selected.find((i) => i === item)) {
+		if (Array.isArray(selected) && selected.find((i) => i === item)) {
 			setSelected(selected.filter((i) => i != item))
 		} else {
 			if (multiSelect) {
@@ -47,12 +47,14 @@ const MultipleChoiceInput: React.FC<MultipleChoiceInputProps> = (props) => {
 	}
 
 	useEffect(() => {
-		handleChange({
-			target: {
-				name,
-				value: selected,
-			},
-		})
+    if(Array.isArray(selected)){
+      handleChange({
+        target: {
+          name,
+          value: selected || [],
+        },
+      })
+    }
 	}, [selected])
 
 	return (
@@ -67,7 +69,7 @@ const MultipleChoiceInput: React.FC<MultipleChoiceInputProps> = (props) => {
 							key={idx}
 							title={option.label}
 							icon={option.icon}
-							selected={selected.find((i) => i === option.value)}
+							selected={Array.isArray(selected) && selected.find((i) => i === option.value)}
 							handleClick={() => handleSelect(option?.value)}
 						/>
 					))}
@@ -81,7 +83,7 @@ const MultipleChoiceInput: React.FC<MultipleChoiceInputProps> = (props) => {
 								title={option.label}
 								image={option.image}
 								description={option.description}
-								selected={selected.find((i) => i === option.value)}
+								selected={Array.isArray(selected) && selected.find((i) => i === option.value)}
 								handleClick={() => handleSelect(option?.value)}
 							/>
 						</Box>

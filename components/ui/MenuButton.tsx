@@ -16,7 +16,7 @@ type MenuButtonProps = {
 const MenuButton: React.FC<MenuButtonProps> = (props) => {
 	const {
 		children,
-		icon = 'EllipsisVertical',
+		icon = 'Ellipsis',
 		color,
 		enableIcons = false,
 		handleEdit,

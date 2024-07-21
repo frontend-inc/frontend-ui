@@ -2,7 +2,7 @@ import React from 'react'
 import { ListContainer } from '../..'
 import { ListItemsProps } from './ListItems'
 import { ListContainerProps } from './ListContainer'
-import GeoListList from './GeoListItems'
+import GeoListItems from './GeoListItems'
 
 export type GeoListProps = ListItemsProps & ListContainerProps
 
@@ -42,7 +42,7 @@ const GeoList: React.FC<GeoListProps> = (props) => {
       enableSorting={enableSorting}
 			enableCreate={enableCreate}
 		>
-			<GeoListList url={url} displayFields={displayFields} {...rest} />
+			<GeoListItems url={url} displayFields={displayFields} {...rest} />
 		</ListContainer>
 	)
 }

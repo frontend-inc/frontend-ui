@@ -10,7 +10,6 @@ import {
   SocialFields,
 } from '../..'
 import { 
-  FormFieldType, 
   SocialFieldType, 
   DisplayFieldType,
   ActionType, 
@@ -40,7 +39,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 	return (
     <Box sx={ sx.container }>
       <Stack
-        width='100%'
+        sx={ sx.userContainer }
         direction={{ sm: 'row', xs: 'column' }}
         spacing={{ sm: 4, xs: 0 }}
         alignItems="flex-start"
@@ -86,6 +85,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
         {actions?.length > 0 && (
           <Stack direction="row" sx={sx.actions}>              
             <Actions 
+              numVisible={0}
               actions={actions}    
               resource={user}
             />
@@ -111,6 +111,9 @@ const sx = {
 		border: '1px solid',
 		borderColor: 'divider',
 	},
+  userContainer: {
+    maxWidth: 600
+  },
 	button: {
 		boxShadow: 0,
 		color: 'text.secondary',

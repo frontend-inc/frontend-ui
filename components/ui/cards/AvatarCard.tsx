@@ -16,9 +16,7 @@ import {
 	Actions,
 	AvgRating,
 	DisplayFields,
-	CommentButton,
-	FavoriteButton,
-  LikeButton,
+	SocialActions
 } from '../../../components'
 
 const AvatarList: React.FC<CardProps> = (props) => {
@@ -45,16 +43,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 				disablePadding
 				disableGutters
 				secondaryAction={
-					<Stack direction="row" alignItems="flex-end" mr={1}>
-            {enableLikes == true && (
-							<LikeButton handle={resource?.handle} />
-						)}
-						{enableFavorites == true && (
-							<FavoriteButton handle={resource?.handle} />
-						)}
-            {enableComments == true && <CommentButton resource={resource} />}
 						<Actions numVisible={0} actions={actions} resource={resource} />
-					</Stack>
 				}
 			>
 				<ListItemButton
@@ -95,7 +84,13 @@ const AvatarList: React.FC<CardProps> = (props) => {
 									<AvgRating resource={resource} size="small" />
 								)}
 								<DisplayFields fields={displayFields} resource={resource} />
-								{resource?.user && <UserChip user={resource?.user} />}
+								<UserChip user={resource?.user} />
+                <SocialActions 
+                  resource={resource}
+                  enableLikes={enableLikes}
+                  enableFavorites={enableFavorites}
+                  enableComments={enableComments}
+                />                
 							</Stack>
 						}
 					/>

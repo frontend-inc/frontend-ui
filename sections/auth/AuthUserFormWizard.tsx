@@ -1,18 +1,17 @@
 import React from 'react'
 import { Section } from '../../components'
-import { CurrentUserDetails } from '../../components'
-import { CurrentUserDetailsProps } from '../../components/auth/users/CurrentUserDetails'
+import { CurrentUserFormWizard } from '../../components'
+import { CurrentUserFormWizardProps } from '../../components/auth/users/CurrentUserFormWizard'
 import { SectionProps } from '../../types'
 
-type AuthUserDetailsProps = SectionProps & CurrentUserDetailsProps
+type AuthUserFormWizardProps = SectionProps & CurrentUserFormWizardProps
 
-const AuthUserDetails: React.FC<AuthUserDetailsProps> = (props) => {
+const AuthUserFormWizard: React.FC<AuthUserFormWizardProps> = (props) => {
 	const {
 		mode,
 		py,
 		px,
 		maxWidth,
-		requireAuth,
 		requireTeam,
 		requirePaid,
 		requireAdmin,
@@ -21,7 +20,7 @@ const AuthUserDetails: React.FC<AuthUserDetailsProps> = (props) => {
 
 	return (
 		<Section
-			requireAuth={requireAuth}
+			requireAuth
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}
@@ -30,9 +29,9 @@ const AuthUserDetails: React.FC<AuthUserDetailsProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<CurrentUserDetails {...rest} />
+			<CurrentUserFormWizard {...rest} />
 		</Section>
 	)
 }
 
-export default AuthUserDetails
+export default AuthUserFormWizard

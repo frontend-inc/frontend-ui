@@ -6,7 +6,7 @@ import { ResourceContext } from 'frontend-js'
 import { useResourceContext, changeDocumentValue } from 'frontend-js'
 import { useForms } from '../../../hooks'
 
-export type KanBanListListProps = ListItemsProps & {
+export type KanBanListItemsProps = ListItemsProps & {
 	headers: {
 		label: string
 		value: string
@@ -14,7 +14,7 @@ export type KanBanListListProps = ListItemsProps & {
 	enableCreate?: boolean
 }
 
-const KanBanListList: React.FC<KanBanListListProps> = (props) => {
+const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 	const {
 		headers,
 		displayFields = [],
@@ -127,4 +127,4 @@ const KanBanListList: React.FC<KanBanListListProps> = (props) => {
 	)
 }
 
-export default KanBanListList
+export default KanBanListItems

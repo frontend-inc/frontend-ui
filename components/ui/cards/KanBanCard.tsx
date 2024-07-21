@@ -1,10 +1,9 @@
 import React from 'react'
 import { Box, Button, Stack, Typography } from '@mui/material'
 import {
-	Image,
-	CommentButton,
+	Image,	
 	DisplayFields,
-	FavoriteButton,
+	SocialActions,
 	AvgRating,
 	UserChip,
 } from '../../../components'
@@ -37,13 +36,13 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 		enableGradient = false,
 		enableOverlay = false,
 		enableComments,
+    enableLikes,
 		enableFavorites,
 		enableRatings,
 		enableEdit,
 		enableDelete,
 		handleEdit,
 		handleDelete,
-		handleComment,
 		enableUsers,
 	} = props || {}
 
@@ -104,10 +103,12 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 					Details
 				</Button>
 				<Stack direction="row" alignItems="flex-end">
-					{enableComments == true && <CommentButton resource={resource} />}
-					{enableFavorites == true && (
-						<FavoriteButton handle={resource?.handle} />
-					)}
+          <SocialActions 
+            resource={resource} 
+            enableLikes={enableLikes} 
+            enableFavorites={enableFavorites} 
+            enableComments={enableComments}
+          />					
 					<Actions
 						numVisible={0}
 						actions={buildActions({

@@ -1,18 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../../../context'
-import { useResource } from 'frontend-js'
-import { Box } from '@mui/material'
-import FormWizardProgress from './wizard/FormWizardProgress'
-import FormCard from './wizard/FormCard'
-import FormWizardField from './wizard/FormWizardField'
-import FormWizardButtons from './wizard/FormWizardButtons'
-import { Modal } from '../../../components'
+import { Button, Box } from '@mui/material'
+import FormWizardProgress from '../../cms/forms/wizard/FormWizardProgress'
+import FormWizardField from '../../cms/forms/wizard/FormWizardField'
+import FormWizardButtons from '../../cms/forms/wizard/FormWizardButtons'
+import { Modal } from '../..'
 import { useRouter } from 'next/router'
+import { useAuth } from 'frontend-js'
 
-export type FormWizardProps = {
+export type CurrentUserFormWizardProps = {
 	handle: string
-	resource?: any
-	url: string
 	variant?: 'contained' | 'outlined' | 'text'
 	fields: any[]
 	startTitle: string
@@ -28,42 +25,27 @@ export type FormWizardProps = {
 	href?: string
 }
 
-const FormWizard: React.FC<FormWizardProps> = (props) => {
+const CurrentUserFormWizard: React.FC<CurrentUserFormWizardProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
-	const {
-		handle,
-		resource: _resource,
-		fields=[],
-		url,
-		startTitle,
-		startDescription,
-		startImage,
-		startButtonText = 'Start',
-		buttonText = 'Submit',
-		endTitle,
-		endDescription,
-		endImage,
-		endButtonText,
+	const {		
+		fields=[],		
+		buttonText = 'Update Profile',
 		href,
 	} = props
 
-	const [submitted, setSubmitted] = useState(false)
+  const {     
+    user, 
+    setUser, 
+    currentUser, 
+    updateMe,
+    handleChange, 
+    fetchMe, 
+    deleteAvatar 
+  } = useAuth()
 
-	const {
-		loading,
-		findOne,
-		resource,
-		setResource,
-		update,
-		create,
-		removeAttachment,
-    handleChange
-	} = useResource({
-		url,
-		name: 'document',
-	})
+	const [submitted, setSubmitted] = useState(false)
 
 	const [currentField, setCurrentField] = useState()
 	const [currentStep, setCurrentStep] = useState(0)
@@ -78,7 +60,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 	}
 
 	const handleResetForm = () => {
-		setResource({})
+		setUser(currentUser)
 		setSubmitted(false)
 		setCurrentStep(0)
     setOpen(false)
@@ -92,21 +74,19 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		}
 	}
 
-	const handleRemove = async (name) => {
-		await removeAttachment(resource?.id, name)
+	const handleRemove = async () => {
+		await deleteAvatar()
 	}
 
 	const handleSubmit = async () => {
 		try {
-			let resp
-			if (resource?.id) {
-				resp = await update(resource)
-			} else {
-				resp = await create(resource)
-			}
+			let resp = await updateMe(user)
 			if (resp?.id) {
 				setSubmitted(true)
         setOpen(false)
+        if (handleSuccess) {
+          handleSuccess()
+        }
 			}
 		} catch (err) {
 			console.log('Error', err)
@@ -135,7 +115,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 
 	useEffect(() => {
 		if (fields) {
-			setTotalSteps(fields.length)
+			setTotalSteps(fields.length-1)
 		}
 	}, [fields])
 
@@ -146,32 +126,24 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 	}, [fields, currentStep])
 
 	useEffect(() => {
-		if (_resource?.id) {
-			setResource(_resource)
-		} else if (handle && url) {
-			findOne(handle)
-		}
-	}, [_resource, handle, url])
+		if(currentUser?.id){
+      setUser(currentUser)    
+    }else{
+      fetchMe()
+    }
+	}, [currentUser])
 
 	return (
-		<Box sx={sx.root}>
-    {!submitted ? (
-      <FormCard
-        title={startTitle}
-        description={startDescription}
-        image={startImage}
-        buttonText={startButtonText}
-        handleClick={handleStartClick}
-      />
-    ):(
-      <FormCard
-        title={endTitle}
-        description={endDescription}
-        image={endImage}
-        buttonText={endButtonText}
-        handleClick={handleSuccess}
-      />
-    )}						
+		<Box sx={sx.root}>  
+     <Button
+        onClick={handleStartClick}
+        variant='contained'
+        color='primary'
+        size='large'
+        sx={sx.button}
+      >
+        {buttonText}
+      </Button>  
     <Modal 
       fullScreen
       disablePadding
@@ -190,8 +162,8 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
             field={currentField}
             handleChange={handleChange}
             handleRemove={handleRemove}
-            resource={resource}
-            setResource={setResource}
+            resource={user}
+            setResource={setUser}
           />
         )}
         <FormWizardButtons
@@ -209,7 +181,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 	)
 }
 
-export default FormWizard
+export default CurrentUserFormWizard
 
 const sx = {
 	root: {
@@ -233,4 +205,5 @@ const sx = {
 		width: '100%',
 		maxWidth: '600px',
 	},	
+  button: {}
 }

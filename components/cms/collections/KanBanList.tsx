@@ -2,7 +2,7 @@ import React from 'react'
 import { ListContainer } from '../..'
 import { ListItemsProps } from './ListItems'
 import { ListContainerProps } from './ListContainer'
-import KanBanListList from './KanBanListItems'
+import KanBanListItems from './KanBanListItems'
 
 export type KanBanListProps = ListItemsProps &
 	ListContainerProps & {
@@ -43,7 +43,7 @@ const KanBanList: React.FC<KanBanListProps> = (props) => {
       enableFilters={enableFilters}
 			enableSorting={false}
 		>
-			<KanBanListList {...rest} url={url} headers={headers} />
+			<KanBanListItems {...rest} url={url} headers={headers} />
 		</ListContainer>
 	)
 }

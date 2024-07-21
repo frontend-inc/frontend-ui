@@ -2,13 +2,11 @@ import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
 import { Box, Stack, Typography } from '@mui/material'
 import {
-  LikeButton,
 	Image,
 	UserChip,
 	AvgRating,
 	DisplayFields,
-	FavoriteButton,
-	CommentButton,
+	SocialActions
 } from '../..'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
@@ -61,13 +59,14 @@ const Card: React.FC<CardProps> = (props) => {
 					height={height}					
 					alt={title}
 					label={label}
+          disableBorderRadius
 					enableGradient={enableGradient}
 					enableOverlay={enableOverlay}
 					handleClick={handleItemClick}
 				/>
 			</Box>
 			<Stack spacing={0} sx={sx.cardContent}>
-				<Box sx={sx.content}>          
+				<Box sx={sx.content}>                          
 					<Typography sx={sx.title} color="text.primary" variant="subtitle2">
 						{truncate(title)}
 					</Typography>
@@ -83,25 +82,18 @@ const Card: React.FC<CardProps> = (props) => {
               resource={resource} 
             />
 					)}
+          <UserChip user={resource?.user} />        
 				</Box>
-				<Stack direction="row" justifyContent="space-between">
-          <Stack direction="row" spacing={1}>
-            {resource?.user && <UserChip user={resource?.user} />}
-          </Stack>
-          <Stack direction="row" spacing={0}>
-            { enableLikes == true && (
-              <LikeButton 
-                handle={resource?.handle}
-              />
-            )}
-            {enableFavorites == true && (
-              <FavoriteButton handle={resource?.handle} />
-            )}
-            {enableComments == true && <CommentButton resource={resource} />}
-            {actions?.length > 0 && (
+				<Stack direction="row" justifyContent="space-between">          
+          <SocialActions 
+            resource={resource} 
+            enableLikes={enableLikes} 
+            enableFavorites={enableFavorites} 
+            enableComments={enableComments} 
+          />          
+          {actions?.length > 0 && (
               <Actions numVisible={0} actions={actions} resource={resource} />
             )}
-          </Stack>
 				</Stack>
 			</Stack>
 		</Stack>
@@ -143,6 +135,10 @@ const sx = {
 			background: 'linear-gradient(to top, rgb(0,0,0,0.5), transparent)',
 		},
 	},
+  cardHeader: {
+    p: 1,
+    minHeight: 36
+  },
 	cardHeaderBorder: {
 		px: 1,
 	},
@@ -161,4 +157,7 @@ const sx = {
 	title: {
 		width: '100%',
 	},
+  user: {
+
+  }
 }

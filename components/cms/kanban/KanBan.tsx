@@ -18,6 +18,7 @@ export type KanBanProps = {
 	handleClick: (resource: any) => void
 	enableComments?: boolean
 	enableFavorites?: boolean
+  enableLikes?: boolean
 	enableRatings?: boolean
 	enableOverlay?: boolean
 	enableGradient?: boolean
@@ -45,6 +46,7 @@ const KanBan: React.FC<KanBanProps> = (props) => {
 		enableGradient,
 		enableComments,
 		enableFavorites,
+    enableLikes,
 		enableRatings,
 		enableEdit,
 		enableDelete,
@@ -89,6 +91,7 @@ const KanBan: React.FC<KanBanProps> = (props) => {
 			enableGradient={enableGradient}
 			enableComments={enableComments}
 			enableFavorites={enableFavorites}
+      enableLikes={enableLikes}
 			enableRatings={enableRatings}
 			enableEdit={enableEdit}
 			enableDelete={enableDelete}

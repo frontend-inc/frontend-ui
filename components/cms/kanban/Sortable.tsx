@@ -33,6 +33,7 @@ type SortableProps = {
 	columns: Record<string, any>
 	enableComments?: boolean
 	enableFavorites?: boolean
+  enableLikes?: boolean
 	enableRatings?: boolean
 	enableOverlay?: boolean
 	enableGradient?: boolean
@@ -59,6 +60,7 @@ const Sortable: React.FC<SortableProps> = (props) => {
 		handleClick,
 		enableComments,
 		enableFavorites,
+    enableLikes,
 		enableRatings,
 		enableEdit,
 		enableDelete,
@@ -128,7 +130,8 @@ const Sortable: React.FC<SortableProps> = (props) => {
 												enableGradient={enableGradient}
 												enableComments={enableComments}
 												enableFavorites={enableFavorites}
-												enableRatings={enableRatings}
+                        enableLikes={enableLikes}
+												enableRatings={enableRatings}                        
 												enableEdit={enableEdit}
 												enableDelete={enableDelete}
 												handleEdit={() => handleEdit(res)}
@@ -169,6 +172,7 @@ const Sortable: React.FC<SortableProps> = (props) => {
 						actions={[]}
 						enableRatings={enableRatings}
 						enableFavorites={enableFavorites}
+            enableLikes={enableLikes}
 						handleComment={() => handleComment(activeResource)}
 					/>
 				) : null}

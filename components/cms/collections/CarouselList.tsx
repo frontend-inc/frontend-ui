@@ -2,7 +2,7 @@ import React from 'react'
 import { ListContainer } from '../..'
 import { ListItemsProps } from './ListItems'
 import { ListContainerProps } from './ListContainer'
-import CarouselListList from './CarouselListItems'
+import CarouselListItems from './CarouselListItems'
 
 export type CarouselListProps = ListItemsProps &
 	ListContainerProps 
@@ -35,7 +35,7 @@ const CarouselList: React.FC<CarouselListProps> = (props) => {
       enableFilters={enableFilters}
       enableSorting={enableSorting}
 		>
-			<CarouselListList {...rest} url={url} />
+			<CarouselListItems {...rest} url={url} />
 		</ListContainer>
 	)
 }

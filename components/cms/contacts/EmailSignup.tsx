@@ -5,6 +5,7 @@ import { TypographyVariantsType } from '../../../types'
 import { TextInput, IconLoading } from '../../../components'
 import { useResource } from 'frontend-js'
 import { useAlerts } from '../../../hooks'
+import { AlignJustify } from 'lucide-react'
 
 export type EmailSignupProps = {
 	label?: string
@@ -64,7 +65,7 @@ const EmailSignup: React.FC<EmailSignupProps> = (props) => {
 						{description}
 					</Typography>
 				)}
-				<Stack sx={sx.actions} direction="row" spacing={0}>
+				<Stack sx={sx.inputContainer} direction="row" spacing={0}>
 					<TextInput
 						errors={errors}
 						name="email"
@@ -111,11 +112,13 @@ const sx = {
 		textAlign: 'center',
 		maxWidth: '600px',
 	},
-	actions: {
+	inputContainer: {
 		pt: 2,
 		textAlign: 'center',
 		width: '100%',
 		maxWidth: 420,
+    display: 'flex',
+    alignItems: 'flex-end',
 	},
 	input: {
 		'& .MuiInputBase-input': {
@@ -126,6 +129,7 @@ const sx = {
 	button: {
 		boxShadow: 1,
 		minWidth: 120,
+    height: 42,
 		borderRadius: (theme) =>
 			`0 ${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0`,
 	},

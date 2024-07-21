@@ -1,17 +1,15 @@
 import React, { useContext } from 'react'
-import { AppContext, ThemeContext } from '../../../context'
+import { AppContext } from '../../../context'
 import { Box, Stack, Typography } from '@mui/material'
 import {
 	UserChip,
 	AvgRating,
-	FavoriteButton,
-  LikeButton,
 	DisplayFields,
 	Image,	
 	TouchableOpacity,
 	Actions,
-	CommentButton,
-  LightDarkMode,
+	SocialActions,
+  LightDarkMode
 } from '../..'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
@@ -66,8 +64,8 @@ const CoverVert: React.FC<CardProps> = (props) => {
 						direction={'row'}
 						alignItems="center"
 					>
-						<Box sx={sx.content}>
-							<Stack sx={sx.contentContainer} direction="column" spacing={0}>
+						<Box sx={sx.contentContainer}>
+							<Stack sx={sx.content} direction="column" spacing={0}>
 								<Box sx={sx.fullWidth}>
 									<Typography color="text.primary" variant='subtitle2'>
 										{truncate(title, 60)}
@@ -77,23 +75,21 @@ const CoverVert: React.FC<CardProps> = (props) => {
 									)}
 									<DisplayFields fields={displayFields} resource={resource} />
 									{enableUsers == true && <UserChip user={resource?.user} />}
+                  <Stack direction="row" sx={sx.actions}>					
+                    <SocialActions 
+                      color='common.white'
+                      resource={resource} 
+                      enableLikes={enableLikes} 
+                      enableFavorites={enableFavorites} 
+                      enableComments={enableComments}
+                    />                    
+					          <Actions numVisible={0} resource={resource} actions={actions} />
+				          </Stack>
 								</Box>
 							</Stack>
 						</Box>
 					</Stack>
-				</Stack>
-				<Box sx={sx.actions}>					
-          {enableLikes == true && (
-						<LikeButton handle={resource?.handle} color="common.white" />
-					)}
-					{enableFavorites == true && (
-						<FavoriteButton handle={resource?.handle} color="common.white" />
-					)}
-          {enableComments == true && (
-						<CommentButton resource={resource} color="common.white" />
-					)}
-					<Actions numVisible={0} resource={resource} actions={actions} />
-				</Box>
+				</Stack>				
 			</Stack>
 		</LightDarkMode>
 	)
@@ -132,25 +128,22 @@ const sx = {
 	fullWidth: {
 		width: '100%',
 	},
-	content: {
-		px: 1,
+	contentContainer: {
+		px: 0,
 		width: '100%',
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'flex-start',
 	},
-	contentContainer: {
+	content: {
 		width: '100%',
 		justifyContent: 'space-between',
 		alignItems: 'flex-end',
 	},
 	actions: {
 		display: 'flex',
-		justifyContent: 'flex-end',
+		justifyContent: 'space-between',
 		flexDirection: 'row',
-		position: 'absolute',
-		top: 0,
-		right: 10,
 	},
 }

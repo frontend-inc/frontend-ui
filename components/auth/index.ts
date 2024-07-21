@@ -31,20 +31,15 @@ export { default as VerifyPin } from './verify/VerifyPin'
 export { default as VerifyPinForm } from './verify/VerifyPinForm'
 export { default as VerifySendPinForm } from './verify/VerifySendPinForm'
 
-// Users 
-export { default as CurrentUser } from './users/CurrentUser'
-export { default as CurrentUserForm } from './users/CurrentUserForm'
-export { default as CurrentUserEditModal } from './users/CurrentUserEditModal'
-export { default as UserItem } from './users/UserItem'
-export { default as UserDetails } from './users/UserDetails'
-export { default as UserProfile } from './users/UserProfile'
-
 // Teams
 export { default as TeamList } from './teams/TeamList'
 export { default as TeamForm } from './teams/TeamForm'
 export { default as TeamUsersList } from './teams/TeamUsersList'
 export { default as TeamUserForm } from './teams/TeamUserInviteForm'
 export { default as TeamUserInvite } from './teams/TeamUserInvite'
+
+// Users 
+export * from './users'
 
 // Lists
 export { default as UserListItem } from './lists/UserListItem'

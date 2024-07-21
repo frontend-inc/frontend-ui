@@ -65,24 +65,28 @@ const CardList: React.FC<CardProps> = (props) => {
 					</TouchableOpacity>
 				</Box>
 				<Stack direction="row" spacing={1} sx={sx.contentArea}>
-					<Stack direction="column" spacing={0.5} sx={sx.content}>
-						<Typography color="text.primary" variant='subtitle2'>
-							{truncate(title)}
-						</Typography>
-						{enableRatings == true && (
-							<AvgRating resource={resource} size="small" />
-						)}
-						<DisplayFields fields={displayFields} resource={resource} />
-						{resource?.user && <UserChip user={resource?.user} />}
+					<Stack direction="column" sx={sx.content}>
+            <Stack direction="column" spacing={0.5}>
+              <Typography color="text.primary" variant='subtitle2'>
+                {truncate(title)}
+              </Typography>
+              {enableRatings == true && (
+                <AvgRating resource={resource} size="small" />
+              )}
+              <DisplayFields fields={displayFields} resource={resource} />
+              <UserChip user={resource?.user} />
+            </Stack>
+            <Stack direction="row" justifyContent="flex-end">						
+              { enableLikes == true && (
+                <LikeButton handle={resource?.handle} /> 
+              )}
+              {enableFavorites == true && (
+                <FavoriteButton handle={resource?.handle} />
+              )}
+              { enableComments == true && <CommentButton resource={resource} />}
+            </Stack>
 					</Stack>
-					<Stack direction="row" justifyContent="flex-end">						
-            { enableLikes == true && (
-              <LikeButton handle={resource?.handle} /> 
-            )}
-						{enableFavorites == true && (
-							<FavoriteButton handle={resource?.handle} />
-						)}
-            { enableComments == true && <CommentButton resource={resource} />}
+					<Stack direction="row" justifyContent="flex-end">						          
 						<Actions numVisible={0} actions={actions} resource={resource} />
 					</Stack>
 				</Stack>
@@ -149,7 +153,7 @@ const sx = {
 	},
 	content: {
 		width: '100%',
-		justifyContent: 'flex-start',
+		justifyContent: 'space-between',
 		alignItems: 'flex-start',
 		height: '100%',
 		py: {

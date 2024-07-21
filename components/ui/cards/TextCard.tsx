@@ -62,16 +62,19 @@ const CardList: React.FC<CardProps> = (props) => {
 						{truncate(description, 200)}
 					</Typography>
 					{enableUsers == true && <UserChip user={resource?.user} />}
+
+          <Stack direction="row">
+            {enableLikes == true && (
+              <LikeButton handle={resource?.handle} />
+            )}
+            {enableFavorites == true && (
+              <FavoriteButton handle={resource?.handle} />
+            )}
+            {enableComments == true && <CommentButton resource={resource} />}
+          </Stack>
 				</Stack>
 			</Stack>
 			<Stack direction="row" justifyContent="flex-end" sx={sx.actions}>
-        {enableLikes == true && (
-					<LikeButton handle={resource?.handle} />
-				)}
-				{enableFavorites == true && (
-					<FavoriteButton handle={resource?.handle} />
-				)}
-        {enableComments == true && <CommentButton resource={resource} />}
 				<Actions numVisible={0} actions={actions} resource={resource} />
 			</Stack>
 		</Box>
@@ -82,8 +85,7 @@ export default CardList
 
 const sx = {
 	root: {
-		pt: 1,
-		pb: 2,
+		py: 1,
     minHeight: 140,
 		position: 'relative',
 		width: '100%',
