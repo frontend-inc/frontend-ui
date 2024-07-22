@@ -4,6 +4,7 @@ import {
 	FormFields
 } from '../../../components'
 import { MetafieldType } from '../../../types'
+import { USER_FORM_FIELDS } from '../../../constants'
 
 type MyAccountFormProps = {
 	loading?: boolean
@@ -28,19 +29,7 @@ const MyAccountForm: React.FC<MyAccountFormProps> = (props) => {
 		handleDeleteAvatar,
 	} = props
 
-  let formFields = [
-    { name: 'avatar', variant: 'image' },
-    { label: 'First name', name: 'first_name', variant: 'string' },
-    { label: 'Last name', name: 'last_name', variant: 'string' },
-    { label: 'Bio', name: 'bio', variant: 'text' },
-  ]
-
-  if(metafields?.length > 0){
-    formFields = [
-      ...formFields,
-      ...metafields 
-    ]
-  }
+  let formFields = USER_FORM_FIELDS
   
   formFields = [
     ...formFields,

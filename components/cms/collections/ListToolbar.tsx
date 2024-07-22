@@ -6,9 +6,6 @@ import {
 export type ListToolbarProps = {
 	query: any
 	url: string
-	filterUser: boolean
-	filterTeam: boolean
-	perPage: number
 	enableSearch?: boolean
 	enableGeoSearch?: boolean
 	enableCreate?: boolean

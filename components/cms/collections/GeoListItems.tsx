@@ -6,8 +6,13 @@ import { ListItemsProps } from './ListItems'
 
 export type GeoListListProps = ListItemsProps
 
-const GeoListList: React.FC<GeoListListProps> = (props) => {
-	const { url, displayFields, ...rest } = props
+const GeoListItems: React.FC<GeoListListProps> = (props) => {
+	
+  const { 
+    url, 
+    displayFields, 
+    ...rest 
+  } = props
 
 	const { resources } = useContext(ResourceContext) as any
 
@@ -36,4 +41,4 @@ const GeoListList: React.FC<GeoListListProps> = (props) => {
 	)
 }
 
-export default GeoListList
+export default GeoListItems

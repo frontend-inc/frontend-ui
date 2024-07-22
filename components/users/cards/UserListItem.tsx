@@ -1,13 +1,13 @@
 import React from 'react'
-import { FollowButton, ResourceListItem, UserAvatar } from '../../../components'
+import { FollowButton, ResourceListItem, UserAvatar } from '../..'
 import { UserType } from '../../../types'
 
-type FollowUserProps = {
+type UserListItemProps = {
 	size?: number
 	resource: UserType
 }
 
-const FollowUser: React.FC<FollowUserProps> = (props) => {
+const UserListItem: React.FC<UserListItemProps> = (props) => {
 	const { resource: user, size = 44 } = props || {}
 
 	return (
@@ -28,4 +28,4 @@ const FollowUser: React.FC<FollowUserProps> = (props) => {
 	)
 }
 
-export default FollowUser
+export default UserListItem

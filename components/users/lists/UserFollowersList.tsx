@@ -1,13 +1,13 @@
 import React from 'react'
 import { ResourceList } from '../..'
 import { UserType } from '../../../types'
-import FollowUser from './FollowUser'
+import UserListItem from '../cards/UserListItem'
 
-export type UserFollowersProps = {
+export type UserFollowersListProps = {
 	user: UserType
 }
 
-const UserFollowers: React.FC<UserFollowersProps> = (props) => {
+const UserFollowersList: React.FC<UserFollowersListProps> = (props) => {
 	const { user } = props || {}
 
 	return (
@@ -16,7 +16,7 @@ const UserFollowers: React.FC<UserFollowersProps> = (props) => {
 			enableLoadMore
 			name="user"
 			url={`/api/v1/cms/users/${user?.username}/followers`}
-			component={FollowUser}
+			component={UserListItem}
 			componentProps={{
 				size: 64,
 			}}
@@ -29,4 +29,4 @@ const UserFollowers: React.FC<UserFollowersProps> = (props) => {
 	)
 }
 
-export default UserFollowers
+export default UserFollowersList

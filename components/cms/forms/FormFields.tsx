@@ -41,7 +41,7 @@ const FormFields: React.FC<FormProps> = (props) => {
           resource={resource}          
 					errors={errors}
 					field={field}          
-					value={get(resource, field.name)}
+					value={get(resource, field.name) || field?.default}
           //@ts-ignore
 					handleChange={handleChange}
 					handleRemove={handleRemove}

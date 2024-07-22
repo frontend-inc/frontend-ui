@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useAuth } from 'frontend-js'
 import { Stack, Box, Button, List } from '@mui/material'
-import { Placeholder, AlertModal, Loading, UserItem } from '../../../components'
+import { Placeholder, AlertModal, Loading, MyAccountUserItem } from '../../../components'
 import { TeamUserType } from '../../../types'
 import { useTeamUsers } from '../../../hooks'
 import TeamUserForm from './TeamUserForm'
@@ -76,7 +76,7 @@ const TeamUsersList: React.FC<TeamListProps> = (props) => {
 						<Loading loading={loading} />
 						{!loading &&
 							teamUsers?.map((teamUser) => (
-								<UserItem
+								<MyAccountUserItem
 									key={teamUser.id}
 									isAdmin={currentUser?.team_role === 'admin'}
 									user={{

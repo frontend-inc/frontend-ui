@@ -33,7 +33,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
     actions=[],
 	} = props || {}
   
-	const { name, username, bio, avatar } = user || {}
+	const { name, username, about_me, avatar } = user || {}
 
   if(!user?.id) return null;
 	return (
@@ -74,8 +74,8 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
             resource={user}
             fields={ displayFields }
           />        
-          {bio && (
-            <ExpandableText text={bio} color="text.secondary" />
+          {about_me && (
+            <ExpandableText text={about_me} color="text.secondary" />
           )}
           </Stack>    
         </Stack>

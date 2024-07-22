@@ -14,9 +14,6 @@ import { useAuth } from 'frontend-js'
 export type ToolbarProps = {
 	query: any
 	url: string
-	filterUser: boolean
-	filterTeam: boolean
-	perPage: number
 	enableSearch?: boolean
   enableFilters?: boolean
   enableSorting?: boolean
@@ -32,10 +29,7 @@ const SearchToolbar: React.FC<ToolbarProps> = (props) => {
 
 	const {
 		url,
-		filterUser,
-		filterTeam,
 		query: defaultQuery = {},
-		perPage,
 		enableCreate = false,
 		enableSearch = false,
 		enableGeoSearch = false,
@@ -57,10 +51,6 @@ const SearchToolbar: React.FC<ToolbarProps> = (props) => {
 		handleClearFilters,
 	} = useSearch({
 		url,
-		user: currentUser,
-		perPage,
-		filterUser,
-		filterTeam,
 		query: defaultQuery,
 	})
 

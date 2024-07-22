@@ -24,4 +24,4 @@ export { default as ResourceTable } from './resources/ResourceTable'
 
 // Details
 export { default as Details } from './details/Details'
-export { default as UserDetails } from '../auth/users/UserDetails'
+export { default as UserDetails } from '../users/profile/UserDetails'

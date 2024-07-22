@@ -8,11 +8,11 @@ import {
 	ListItemIcon,
 	ListItemText,
 } from '@mui/material'
-import { UserAvatar, Label, MenuButton } from '../../../components'
+import { UserAvatar, Label, MenuButton } from '../..'
 import { UserType } from 'frontend-js'
 import { useAuth } from 'frontend-js'
 
-type UserItemProps = {
+type MyAccountUserItemProps = {
 	user: UserType
 	selected?: boolean
 	isAdmin?: boolean
@@ -21,7 +21,7 @@ type UserItemProps = {
 	handleDelete: (user: UserType) => void | undefined
 }
 
-const UserItem: React.FC<UserItemProps> = (props) => {
+const MyAccountUserItem: React.FC<MyAccountUserItemProps> = (props) => {
 	const {
 		user,
 		selected = false,
@@ -85,7 +85,7 @@ const UserItem: React.FC<UserItemProps> = (props) => {
 	)
 }
 
-export default UserItem
+export default MyAccountUserItem
 
 const sx = {
 	root: {

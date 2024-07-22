@@ -253,13 +253,15 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 						</Box>
 					)}
 					{enableSorting && (
-						<SortButton
-							sortBy={query?.sort_by || 'id'}
-							sortDirection={query?.sort_direction || 'desc'}
-							sortOptions={sortOptions}
-							handleSortBy={handleSort}
-							handleSortDirection={handleSortDirection}
-						/>
+            <Box>
+              <SortButton
+                sortBy={query?.sort_by || 'id'}
+                sortDirection={query?.sort_direction || 'desc'}
+                sortOptions={sortOptions}
+                handleSortBy={handleSort}
+                handleSortDirection={handleSortDirection}
+              />
+            </Box>
 					)}
 				</Stack>
 				{enableCreate && (
@@ -270,7 +272,11 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 							variant="contained"
 							onClick={handleAdd}
 							startIcon={
-								<Icon name="Plus" color="secondary.contrastText" size={20} />
+								<Icon 
+                  name="Plus" 
+                  color="secondary.contrastText" 
+                  size={20} 
+                />
 							}
 						>
 							Add

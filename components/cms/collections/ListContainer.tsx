@@ -30,13 +30,8 @@ const ListContainer: React.FC<ListContainerProps> = (props) => {
 	const {
 		resource,
 		url,
-		children,
-		perPage = 12,
-		filterUser = false,
-		filterTeam = false,
-		filterRelated = false,
-		filterGeo = false,
-		filterSimilar = false,
+    query={},
+		children,		
 		fields = [],
 		enableGeoSearch,
 		enableSearch,
@@ -45,77 +40,12 @@ const ListContainer: React.FC<ListContainerProps> = (props) => {
     enableSorting = true
 	} = props
 
-	let { query = {} } = props || {}
-
-  if(perPage){
-    query = {
-      ...query,
-      per_page: perPage 
-    }
-  }
-
-	if (filterRelated == true && resource?.id) {
-		query = {
-			...query,
-      method: 'related',
-			resource_id: resource.id,
-		}
-	} else {
-		query = {
-			...query,
-			resource_id: null,
-		}
-	}
-
-	if (filterUser == true) {
-		query = { 
-      ...query, 
-      current_user: true 
-    }
-	} else {
-		query = { 
-      ...query, 
-      current_user: false 
-    }
-	}
-
-	if (filterTeam == true) {
-		query = { 
-      ...query, 
-      current_team: true 
-    }
-	} else {
-		query = { 
-      ...query, 
-      current_team: false 
-    }
-	}
-
-	if (filterGeo == true && resource?.location) {
-		query = {
-			...query,
-      method: 'location',
-			location: resource?.location,
-		}
-	}
-
-	if (filterSimilar == true && resource?.id) {
-		query = {
-			...query,
-      method: 'similar',
-			resource_id: resource?.id,
-		}
-	}
-
 	return (
 		<ResourceProvider name='document' url={url}>
 			<Query query={query}>
 				<ListToolbar
 					url={url}
-					query={query}
-					perPage={perPage}
-					filterUser={filterUser}
-					filterTeam={filterTeam}
+					query={query}					
 					enableSearch={enableSearch}
 					enableGeoSearch={enableGeoSearch}
 					enableCreate={enableCreate}

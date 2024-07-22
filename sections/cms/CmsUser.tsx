@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section } from '../../components'
 import { UserProfile } from '../../components'
-import { UserProfileProps } from '../../components/auth/users/UserProfile'
+import { UserProfileProps } from '../../components/users/profile/UserProfile'
 import { SectionProps } from '../../types'
 
 type CmsUserProps = SectionProps & UserProfileProps

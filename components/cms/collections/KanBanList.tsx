@@ -1,5 +1,5 @@
 import React from 'react'
-import { ListContainer } from '../..'
+import { List } from '../..'
 import { ListItemsProps } from './ListItems'
 import { ListContainerProps } from './ListContainer'
 import KanBanListItems from './KanBanListItems'
@@ -13,38 +13,13 @@ export type KanBanListProps = ListItemsProps &
 	}
 
 const KanBanList: React.FC<KanBanListProps> = (props) => {
-	const {
-		resource,
-		fields,
-		enableSearch,
-		url,
-		headers = [],
-		query = {},
-    enableFilters,
-    enableSorting,
-		filterUser,
-		filterTeam,
-		filterRelated,
-		perPage,
-		...rest
-	} = props
-
+	
 	return (
-		<ListContainer
-			resource={resource}
-			url={url}
-			query={query}
-			filterUser={filterUser}
-			filterTeam={filterTeam}
-			filterRelated={filterRelated}
-			perPage={perPage}
-			fields={fields}
-			enableSearch={enableSearch}
-      enableFilters={enableFilters}
-			enableSorting={false}
-		>
-			<KanBanListItems {...rest} url={url} headers={headers} />
-		</ListContainer>
+    <List 
+      { ...props }
+      enableSorting={false}
+      list={ KanBanListItems }
+    />
 	)
 }
 

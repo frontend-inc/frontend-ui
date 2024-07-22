@@ -28,6 +28,7 @@ export type FormFieldType = {
   foreignUrl?: string
   fields?: FormFieldType[]
   contentType?: string
+  default?: any
 }
 
 export type TableHeaderType = {

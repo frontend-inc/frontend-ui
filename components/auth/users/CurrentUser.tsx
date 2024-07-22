@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { AuthGuard, UserProfile, CurrentUserEditModal } from '../../../components'
 import { useAuth } from 'frontend-js'
-import { UserProfileProps } from '../../../components/auth/users/UserProfile' 
+import { UserProfileProps } from '../../users/profile/UserProfile' 
 import { FormFieldType, ActionType } from '../../../types'
 import { buildActions } from '../../../helpers'
 
