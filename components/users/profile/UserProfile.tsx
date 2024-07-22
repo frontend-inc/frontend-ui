@@ -18,7 +18,7 @@ import { UserType } from 'frontend-js'
 
 export type UserProfileProps = {
 	user: UserType
-	enableFollowing?: boolean
+	enableFollowers?: boolean
   displayFields?: DisplayFieldType[]
   socialFields?: SocialFieldType[]  
   actions?: ActionType[]
@@ -27,7 +27,7 @@ export type UserProfileProps = {
 const UserProfile: React.FC<UserProfileProps> = (props) => {
 	const {
 		user,
-		enableFollowing = false,
+		enableFollowers = false,
     displayFields=[],
     socialFields=[],    
     actions=[],
@@ -67,7 +67,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
             {name}
           </Typography>
           <Stack direction="column" spacing={1}>
-          {enableFollowing == true && (
+          {enableFollowers == true && (
             <FollowButtonGroup user={user} />
           )}
           <DisplayFields 
@@ -80,7 +80,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
           </Stack>    
         </Stack>
         <Stack direction="row" height="100%" justifyContent="flex-start">
-          {enableFollowing == true && <FollowButton user={user} />}
+          {enableFollowers == true && <FollowButton user={user} />}
         </Stack>
         {actions?.length > 0 && (
           <Stack direction="row" sx={sx.actions}>              

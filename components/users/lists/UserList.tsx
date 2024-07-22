@@ -1,19 +1,37 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../../../context'
 import { ResourceList } from '../..'
-import { UserType } from '../../../types'
+import { DisplayFieldType, SocialFieldType, UserType } from '../../../types'
 import UserListItem from '../cards/UserListItem'
 import { COUNTRIES, STATES } from '../../../constants'
+import { useRouter } from 'next/router'
 
 export type UserListProps = {
 	user: UserType
   url?: string
+  href?: string
   enableLocation?: boolean
+  enableFollowers?: boolean
+  displayFields: DisplayFieldType[]
+  socialFields: SocialFieldType[]
 }
 
 const UserList: React.FC<UserListProps> = (props) => {
-	const {         
-    enableLocation=false 
+  const router = useRouter()
+  const { clientUrl } = useContext(AppContext)
+  
+  const {     
+    href,    
+    enableLocation=false,
+    displayFields=[],
+    socialFields=[] 
   } = props || {}
+
+  const handleClick = (user: UserType) => {    
+    if(href){
+      router.push(`${clientUrl}${href}/${user?.username}`)
+    }
+  }
 
   let filterOptions = []
   if(enableLocation){
@@ -37,14 +55,18 @@ const UserList: React.FC<UserListProps> = (props) => {
 
 	return (
 		<ResourceList
+      dense
 			enableSearch
 			enableLoadMore
 			name="user"
 			url={'/api/v1/cms/users'}
-			component={UserListItem}
-			componentProps={{
-				size: 64
-			}}
+      handleClick={ handleClick }
+			component={UserListItem}			      
+      itemProps={{  
+        size: 72,      
+        displayFields,
+        socialFields
+      }}      
       filterOptions={filterOptions}
 			sortOptions={[
 				{ label: 'Username', name: 'username' },

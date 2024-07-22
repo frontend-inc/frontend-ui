@@ -4,9 +4,9 @@ import { CurrentUser } from '../../components'
 import { CurrentUserProps } from '../../components/auth/users/CurrentUser'
 import { SectionProps } from '../../types'
 
-type AuthCurrentUserProps = SectionProps & CurrentUserProps
+type AuthUserProps = SectionProps & CurrentUserProps
 
-const AuthCurrentUser: React.FC<AuthCurrentUserProps> = (props) => {
+const AuthUser: React.FC<AuthUserProps> = (props) => {
 	const {
 		mode,
 		py,
@@ -35,4 +35,4 @@ const AuthCurrentUser: React.FC<AuthCurrentUserProps> = (props) => {
 	)
 }
 
-export default AuthCurrentUser
+export default AuthUser

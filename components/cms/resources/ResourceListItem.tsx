@@ -24,11 +24,13 @@ export type ResourceProps = {
 	handleClick?: (resource: any) => void
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
+  secondary?: React.ReactNode
 	secondaryActions?: React.ReactNode
 	menuActions?: any
   sortable?: boolean
   isDragging?: boolean
-	displayFields?: DisplayFieldType[]
+  enableBorder?: boolean
+	displayFields?: DisplayFieldType[]  
 }
 
 const Resource: React.FC<ResourceProps> = (props) => {
@@ -44,7 +46,9 @@ const Resource: React.FC<ResourceProps> = (props) => {
 		menuActions,
 		displayFields = [],
     sortable,
-    isDragging=false
+    isDragging=false,
+    enableBorder=false,
+    secondary
 	} = props
 
   const { title } = resource || {}
@@ -53,6 +57,7 @@ const Resource: React.FC<ResourceProps> = (props) => {
 	return (
 		<List sx={{ 
       ...sx.root, 
+      ...(enableBorder && sx.rootBorder ),
       ...(isDragging && sx.isDragging)
       }}
     >
@@ -102,10 +107,13 @@ const Resource: React.FC<ResourceProps> = (props) => {
 							</Typography>
 						}
 						secondary={
-							<DisplayFields 
-                fields={displayFields} 
-                resource={resource} 
-              />
+              <>
+                <DisplayFields 
+                  fields={displayFields} 
+                  resource={resource} 
+                />
+                {secondary}
+              </>
 						}
 					/>
 				</ListItemButton>
@@ -121,6 +129,10 @@ const sx = {
 		p: 0,
 		m: 0,
 	},
+  rootBorder: {
+    borderBottom: '1px solid',
+    borderColor: 'divider'
+  },
 	listItemButton: {
 		p: 1,
 		borderRadius: (theme) => `${theme.shape.borderRadius}px`,

@@ -43,8 +43,8 @@ export type ResourceListProps = {
   sortable?: boolean
 	emptyIcon?: string
 	emptyTitle?: string
-	emptyDescription?: string
-	componentProps?: any
+	emptyDescription?: string	
+  itemProps?: any
 }
 
 const ResourceList: React.FC<ResourceListProps> = (props) => {
@@ -68,7 +68,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		emptyIcon = 'Search',
 		emptyTitle = 'No results found',
 		emptyDescription = 'Try adjusting your search or filters',
-		componentProps = {},
+		itemProps={}
 	} = props
 
 	const [openModal, setOpenModal] = useState(false)
@@ -313,7 +313,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
                     handleDelete={
                       enableDelete ? () => handleDeleteClick(resource) : undefined
                     }
-                    {...componentProps}
+                    { ...itemProps }
                   />
                 )}
               />
@@ -333,7 +333,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
                   handleDelete={
                     enableDelete ? () => handleDeleteClick(resource) : undefined
                   }
-                  {...componentProps}
+                  { ...itemProps }
                 />
               ))}
 					</Box>

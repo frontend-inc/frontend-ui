@@ -1,14 +1,17 @@
 import React from 'react'
 import { ResourceList } from '../..'
-import { UserType } from '../../../types'
+import { UserListProps } from './UserList'
 import UserListItem from '../cards/UserListItem'
 
-export type UserFollowingListProps = {
-	user: UserType
-}
+export type UserFollowingListProps = UserListProps
 
 const UserFollowingList: React.FC<UserFollowingListProps> = (props) => {
-	const { user } = props || {}
+	const { 
+    user,
+    displayFields=[],
+    socialFields=[],
+    enableFollowers 
+  } = props || {}
 
 	return (
 		<ResourceList
@@ -17,9 +20,12 @@ const UserFollowingList: React.FC<UserFollowingListProps> = (props) => {
 			name="user"
 			url={`/api/v1/cms/users/${user?.username}/following`}
 			component={UserListItem}
-			componentProps={{
-				size: 64,
-			}}
+			itemProps={{  
+        size: 72,      
+        displayFields,
+        socialFields,
+        enableFollowers
+      }}      
 			sortOptions={[
 				{ label: 'Username', name: 'username' },
         { label: 'First name', name: 'first_name' },

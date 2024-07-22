@@ -80,7 +80,7 @@ const DisplayField: React.FC<FieldProps> = (props) => {
 		},
 	}
 
-	const Component = components[fieldVariant]
+	const Component = components[fieldVariant] || FieldString
 	const componentProps = variantProps?.[fieldVariant] || {}
 
 	if (!value || value == '') return null
