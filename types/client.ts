@@ -77,6 +77,7 @@ export type QueryParamsType = {
 	similar_to?: number
 	location?: string
 	radius?: number
+  method?: string 
 	rest?: any
 }
 

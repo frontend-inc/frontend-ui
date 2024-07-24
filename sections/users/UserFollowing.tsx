@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { UserFollowing } from '../../components'
-import { UserFollowingProps } from '../../components/users/lists/UserFollowingList'
+import { UserFollowingList } from '../../components'
+import { UserFollowingListProps } from '../../components/users/lists/UserFollowingList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type SocialFollowingProps = SectionProps & HeadingProps & UserFollowingProps
+type SocialFollowingProps = SectionProps & HeadingProps & UserFollowingListProps
 
 const SocialFollowing: React.FC<SocialFollowingProps> = (props) => {
 	const {
@@ -40,7 +40,7 @@ const SocialFollowing: React.FC<SocialFollowingProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<UserFollowing {...rest} />
+			<UserFollowingList {...rest} />
 		</Section>
 	)
 }

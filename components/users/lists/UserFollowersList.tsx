@@ -1,6 +1,5 @@
 import React from 'react'
 import { ResourceList } from '../..'
-import { UserType } from '../../../types'
 import { UserListProps } from './UserList'
 import UserListItem from '../cards/UserListItem'
 
