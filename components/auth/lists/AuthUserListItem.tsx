@@ -7,20 +7,20 @@ import {
 	ListItemIcon,
 	ListItemText,
 } from '@mui/material'
-import { UserAvatar, Label, MenuButton } from '../../../components'
+import { UserAvatar, Label, MenuButton } from '../..'
 import { UserType } from 'frontend-js'
 import { useAuth } from 'frontend-js'
 
-type UserListItemProps = {
+type AuthUserListItemProps = {
 	user: UserType
 	selected?: boolean
 	isAdmin?: boolean
 	handleClick: () => void
-	handleEdit: (user: UserType) => void | undefined
-	handleDelete: (user: UserType) => void | undefined
+	handleEdit: (user: UserType) => null
+	handleDelete: (user: UserType) => null
 }
 
-const UserListItem: React.FC<UserListItemProps> = (props) => {
+const AuthUserListItem: React.FC<AuthUserListItemProps> = (props) => {
 	const {
 		user,
 		selected = false,
@@ -84,7 +84,7 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
 	)
 }
 
-export default UserListItem
+export default AuthUserListItem
 
 const sx = {
 	root: {

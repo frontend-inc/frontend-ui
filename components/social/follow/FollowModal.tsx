@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { useAuth } from 'frontend-js'
-import { Stack, Box, Typography, Tabs, Tab } from '@mui/material'
+import React, { useState } from 'react'
+import { Box, Tabs, Tab } from '@mui/material'
 import { Modal, ResourceList } from '../..'
 import { UserType } from '../../../types'
 import FollowUser from '../../users/cards/UserListItem'

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ListItemsProps } from './ListItems'
 import { KanBan } from '../..'
-import { ShowModal } from '../..'
 import { ResourceContext } from 'frontend-js'
 import { useResourceContext, changeDocumentValue } from 'frontend-js'
 import { useForms } from '../../../hooks'
@@ -43,18 +42,17 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 		updatePositions,
 		setResource,
 		reloadMany,
+    setOpenShow
 	} = useResourceContext()
-
-	const [open, setOpen] = useState(false)
 
 	const handleClick = (resource) => {
 		setResource(resource)
-		setOpen(true)
+		setOpenShow(true)
 	}
 
 	const handleComment = (resource) => {
 		setResource(resource)
-		setOpen(true)
+		setOpenShow(true)
 	}
 
 	const { handleEdit, handleDeleteClick } = useForms()
@@ -87,43 +85,29 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 
 	if (!headers || !fieldName) return null
 	return (
-		<>
-			<KanBan
-				loading={loading}
-				actions={actions}
-				resources={resources}
-				activeResource={resource}
-				headers={headers}
-				fieldName={fieldName}
-				displayFields={displayFields}
-				enableOverlay={enableOverlay}
-				enableGradient={enableGradient}
-				handleClick={handleClick}
-				handleDrop={handleDrop}
-				enableEdit={enableEdit}
-				enableDelete={enableEdit}
-				enableCreate={enableCreate}
-				handleEdit={handleEdit}
-				handleDelete={handleDeleteClick}
-				handleAdd={handleAdd}
-				enableComments={enableComments}
-				enableFavorites={enableFavorites}
-				enableRatings={enableRatings}
-				handleComment={handleComment}
-			/>
-			<ShowModal
-				open={open}
-				handleClose={() => setOpen(false)}
-				actions={actions}
-				displayFields={displayFields}
-				enableOverlay={enableOverlay}
-				enableEdit={enableEdit}
-				enableComments={enableComments}
-				enableFavorites={enableFavorites}
-				enableRatings={enableRatings}
-				handleEdit={() => handleEdit(resource)}
-			/>
-		</>
+    <KanBan
+      loading={loading}
+      actions={actions}
+      resources={resources}
+      activeResource={resource}
+      headers={headers}
+      fieldName={fieldName}
+      displayFields={displayFields}
+      enableOverlay={enableOverlay}
+      enableGradient={enableGradient}
+      handleClick={handleClick}
+      handleDrop={handleDrop}
+      enableEdit={enableEdit}
+      enableDelete={enableEdit}
+      enableCreate={enableCreate}
+      handleEdit={handleEdit}
+      handleDelete={handleDeleteClick}
+      handleAdd={handleAdd}
+      enableComments={enableComments}
+      enableFavorites={enableFavorites}
+      enableRatings={enableRatings}
+      handleComment={handleComment}
+    />
 	)
 }
 

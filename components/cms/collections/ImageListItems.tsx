@@ -1,10 +1,9 @@
 import React from 'react'
-import { Grid, Stack } from '@mui/material'
+import { Stack } from '@mui/material'
 import { LoadMore, ListLayout } from '../..'
 import { useResourceContext } from 'frontend-js'
 import {
   ImageCard,
-	ShowImageModal,
 	Placeholder,
 } from '../..'
 import { useForms } from '../../../hooks'
@@ -28,14 +27,12 @@ export type ListItemsImageProps = {
 const ImageListItems: React.FC<ListItemsImageProps> = (props) => {
 
 	const {
-		resource,
 		setResource,
 		loading,
 		resources,
 		page,
 		numPages,
 		loadMore,
-		openShow,
 		setOpenShow,
 	} = useResourceContext()
 
@@ -91,11 +88,6 @@ const ImageListItems: React.FC<ListItemsImageProps> = (props) => {
 					description={emptyDescription}
 				/>
 			)}
-			<ShowImageModal
-				open={openShow}
-				handleClose={() => setOpenShow(false)}				
-        enableGradient={enableGradient}
-			/>
 		</>
 	)
 }

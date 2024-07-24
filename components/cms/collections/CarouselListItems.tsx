@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { ResourceContext } from 'frontend-js'
 import { Box, Stack } from '@mui/material'
-import { ShowModal, Carousel } from '../..'
+import { Carousel } from '../..'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
 import ListCard from './ListCard'
@@ -24,7 +24,6 @@ const CarouselListList: React.FC<CarouselListListProps> = (
 		actions,
 		href,
 		displayFields,
-
 		enableAutoPlay = true,
 		enableArrows = false,
 		enableDots = false,
@@ -35,13 +34,15 @@ const CarouselListList: React.FC<CarouselListListProps> = (
 		enableRatings = false,
 		enableUsers = false,
 		enableFavorites = false,
+    enableLikes = false 
 	} = props
 
-	const [open, setOpen] = useState(false)
+  const { handleEdit, handleDeleteClick } = useForms()
 
-	const { handleEdit, handleDeleteClick } = useForms()
-
-	const { loading, resource, resources, setResource } = useContext(
+	const { 
+    setOpenShow,
+    loading,     
+    resource, resources, setResource } = useContext(
 		ResourceContext
 	) as any
 
@@ -56,7 +57,7 @@ const CarouselListList: React.FC<CarouselListListProps> = (
 			}
 		} else {
 			setResource(resource)
-			setOpen(true)
+			setOpenShow(true)
 		}
 	}
 
@@ -94,22 +95,13 @@ const CarouselListList: React.FC<CarouselListListProps> = (
 							handleClick={() => handleClick(resource)}
 							enableGradient={enableGradient}
 							enableFavorites={enableFavorites}
+              enableRatings={enableRatings}
+              enableUsers={enableUsers}
+              enableLikes={enableLikes}              
 						/>
 					</Box>
 				))}
 			</Carousel>
-			<ShowModal
-				open={open}
-				handleClose={() => setOpen(false)}
-				actions={actions}
-				displayFields={displayFields}
-				enableOverlay={enableOverlay}
-				enableEdit={enableEdit}
-				enableFavorites={enableFavorites}
-				enableRatings={enableRatings}
-				enableUsers={enableUsers}
-				handleEdit={() => handleEdit(resource)}
-			/>
 		</Stack>
 	)
 }

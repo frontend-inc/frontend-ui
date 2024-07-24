@@ -3,7 +3,7 @@ import { Button, Box } from '@mui/material'
 import {
 	FormFields
 } from '../../../components'
-import { MetafieldType } from '../../../types'
+import { FormFieldType, MetafieldType } from '../../../types'
 import { USER_FORM_FIELDS } from '../../../constants'
 
 type MyAccountFormProps = {
@@ -41,6 +41,7 @@ const MyAccountForm: React.FC<MyAccountFormProps> = (props) => {
       <FormFields 
         loading={loading}
         errors={errors}
+        //@ts-ignore 
         fields={formFields}
         resource={user}
         handleChange={handleChange}

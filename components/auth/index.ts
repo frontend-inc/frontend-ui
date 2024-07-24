@@ -43,5 +43,5 @@ export { default as TeamUserInvite } from './teams/TeamUserInvite'
 export * from './users'
 
 // Lists
-export { default as UserListItem } from './lists/UserListItem'
+export { default as AuthUserListItem } from './lists/AuthUserListItem'
 export { default as TeamListItem } from './lists/TeamListItem'

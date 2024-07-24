@@ -1,42 +1,19 @@
 import React from 'react'
-import { ListContainer } from '../..'
-import { ListItemsProps } from './ListItems'
-import { ListContainerProps } from './ListContainer'
+import { List } from '../..'
+import { ListProps } from './List'
 import CarouselListItems from './CarouselListItems'
 
-export type CarouselListProps = ListItemsProps &
-	ListContainerProps 
+export type CarouselListProps = ListProps 
 
 const CarouselList: React.FC<CarouselListProps> = (props) => {
-	const {
-		fields,
-		enableSearch,
-		enableCreate,
-		enableFilters,
-    enableSorting,
-		url,
-		query = {},
-		filterUser,
-		filterTeam,
-		perPage,
-		...rest
-	} = props
 
 	return (
-		<ListContainer
-			url={url}
-			query={query}
-			filterUser={filterUser}
-			filterTeam={filterTeam}
-			perPage={perPage}
-			fields={fields}
-			enableSearch={enableSearch}
-			enableCreate={enableCreate}
-      enableFilters={enableFilters}
-      enableSorting={enableSorting}
-		>
-			<CarouselListItems {...rest} url={url} />
-		</ListContainer>
+		<List
+      { ...props }
+      list={
+        CarouselListItems
+      }
+		/>
 	)
 }
 
