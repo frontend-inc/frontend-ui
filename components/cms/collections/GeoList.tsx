@@ -1,10 +1,9 @@
 import React from 'react'
 import { List } from '../..'
-import { ListItemsProps } from './ListItems'
-import { ListContainerProps } from './ListContainer'
+import { ListProps } from './List'
 import GeoListItems from './GeoListItems'
 
-export type GeoListProps = ListItemsProps & ListContainerProps
+export type GeoListProps = ListProps
 
 const GeoList: React.FC<GeoListProps> = (props) => {	
 

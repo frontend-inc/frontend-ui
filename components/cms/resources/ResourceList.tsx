@@ -15,9 +15,8 @@ import {
 	IconLoading,
 	Loader,
 } from '../../../components'
-import { FormFieldType, FilterOptionType } from '../../../types'
+import { FormFieldType, FilterOptionType, SearchFilterOptionType } from '../../../types'
 import { Placeholder } from '../..'
-import { SearchFilterOptionType } from '../../../types'
 import { SortOptionType, SyntheticEventType } from '../../../types'
 import ResourceListItem from './ResourceListItem'
 

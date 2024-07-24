@@ -1,16 +1,20 @@
 import React from 'react'
-import { List, VideoListItems } from '../..'
-import { ListItemsProps } from './ListItems'
-import { ListContainerProps } from './ListContainer'
+import { List, VideoListItems, ShowVideoModal } from '../..'
+import { ListProps } from './List'
 
-export type VideoListProps = ListItemsProps & ListContainerProps
+export type VideoListProps = ListProps
 
 const VideoList: React.FC<VideoListProps> = (props) => {
 	
 	return (
     <List 
       { ...props }
-      list={ VideoListItems }
+      list={ 
+        VideoListItems 
+      }
+      show={
+        ShowVideoModal							
+      }
     />
 	)
 }

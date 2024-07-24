@@ -85,10 +85,6 @@ const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
 					description={emptyDescription}
 				/>
 			)}
-			<ShowVideoModal
-				open={openShow}
-				handleClose={() => setOpenShow(false)}
-			/>
 		</>
 	)
 }

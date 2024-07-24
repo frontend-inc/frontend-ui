@@ -3,24 +3,16 @@ import { Backdrop, Box, IconButton } from '@mui/material'
 import { MediaModal, Icon } from '../..'
 import { useResourceContext } from 'frontend-js'
 
-export type ShowVideoModalProps = {
-	open: boolean
-	handleClose: () => void
-}
+export type ShowVideoModalProps = {}
 
 const ShowVideoModal: React.FC<ShowVideoModalProps> = (props) => {
-	const { resource, url } = useResourceContext()
-
-	const {
-		open,
-		handleClose,
-	} = props || {}
+	const { openShow, setOpenShow, resource, url } = useResourceContext()
 
 	if (!resource) return null
 	return (
     <MediaModal
-      open={open}
-      handleClose={handleClose}
+      open={openShow}
+      handleClose={() => setOpenShow(false)}
     >
       <video 
         src={resource?.video?.url} 

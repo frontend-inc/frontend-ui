@@ -4,25 +4,21 @@ import { useResourceContext } from 'frontend-js'
 import { Box } from '@mui/material'
 
 export type ShowImageModalProps = {
-	open: boolean
-	handleClose: () => void
   enableGradient?: boolean
 }
 
 const ShowImageModal: React.FC<ShowImageModalProps> = (props) => {
-	const { resource } = useResourceContext()
+	const { openShow, setOpenShow, resource } = useResourceContext()
 
 	const {
-		open,
-		handleClose,
     enableGradient
 	} = props || {}
 
 	if (!resource) return null
 	return (
     <MediaModal
-      open={open}
-      handleClose={handleClose}
+      open={openShow}
+      handleClose={() => setOpenShow(false)}
     >
       <Box sx={ sx.imageContainer }>
         <Image  

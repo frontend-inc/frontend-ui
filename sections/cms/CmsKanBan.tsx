@@ -24,12 +24,12 @@ const CmsKanBan: React.FC<CmsKanBanProps> = (props) => {
 	} = props
 
 	return (
-		<Section
+		<Section      
 			mode={mode}
 			py={py}
 			px={px}
-			maxWidth={maxWidth}
-			requireAuth={requireAuth}
+			maxWidth={maxWidth}			
+      requireAuth={requireAuth}
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 			requireAdmin={requireAdmin}

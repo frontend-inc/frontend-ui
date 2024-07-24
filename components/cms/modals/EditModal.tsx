@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { RemoteFormModal } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { FormFieldType } from '../../../types'

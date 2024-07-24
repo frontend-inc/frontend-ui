@@ -39,14 +39,12 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const {
-		resource,
 		setResource,
 		loading,
 		resources,
 		page,
 		numPages,
 		loadMore,
-		openShow,
 		setOpenShow,
 	} = useResourceContext()
 
@@ -92,7 +90,7 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
 	return (
 		<>
 			<Stack direction="column" spacing={2}>
-				<ListCards
+				<ListCards          
 					actions={actions}
 					style={style}
 					resources={resources}
@@ -121,20 +119,6 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
 					description={emptyDescription}
 				/>
 			)}
-			<ShowModal
-				open={openShow}
-				handleClose={() => setOpenShow(false)}
-				actions={actions}
-				displayFields={displayFields}
-				enableOverlay={enableOverlay}
-				enableFavorites={enableFavorites}
-				enableLikes={enableLikes}
-				enableRatings={enableRatings}
-				enableComments={enableComments}
-				enableUsers={enableUsers}
-				enableEdit={enableEdit}
-				handleEdit={() => handleEdit(resource)}
-			/>
 		</>
 	)
 }

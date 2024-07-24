@@ -1,16 +1,20 @@
 import React from 'react'
-import { List, ImageListItems } from '../..'
-import { ListItemsProps } from './ListItems'
-import { ListContainerProps } from './ListContainer'
+import { List, ShowImageModal, ImageListItems } from '../..'
+import { ListProps } from './List'
 
-export type ImageListProps = ListItemsProps & ListContainerProps
+export type ImageListProps = ListProps
 
 const ImageList: React.FC<ImageListProps> = (props) => {
 
 	return (
 		<List
 			{ ...props }
-      list={ ImageListItems }
+      list={ 
+        ImageListItems 
+      }
+      show={
+        ShowImageModal
+      }
 		/>			
 	)
 }

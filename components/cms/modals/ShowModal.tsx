@@ -5,8 +5,6 @@ import { useResourceContext } from 'frontend-js'
 import { ActionType, FormFieldType, DisplayFieldType } from '../../../types'
 
 export type ShowModalProps = {
-	open: boolean
-	handleClose: () => void
 	handle?: string
 	enableBorder?: boolean
 	enableOverlay?: boolean
@@ -27,11 +25,15 @@ export type ShowModalProps = {
 }
 
 const ShowModal: React.FC<ShowModalProps> = (props) => {
-	const { resource, url } = useResourceContext()
+	
+  const { 
+    openShow,
+    setOpenShow,
+    resource,
+    url 
+  } = useResourceContext()
 
 	const {
-		open,
-		handleClose,
 		actions = [],
 		displayFields = [],
 		enableComments,
@@ -46,7 +48,7 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 
 	if (!resource) return null
 	return (
-		<Modal disablePadding open={open} handleClose={handleClose} maxWidth="sm">
+		<Modal disablePadding open={openShow} handleClose={() => setOpenShow(false)} maxWidth="sm">
 			<Box px={2} pb={2}>
 				<ShowSnippet
 					resource={resource}
@@ -67,39 +69,3 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 }
 
 export default ShowModal
-
-const sx = {
-	root: {
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		overflow: 'hidden',
-		position: 'relative',
-	},
-	container: {
-		width: '100%',
-		justifyContent: 'flex-start',
-		alignItems: {
-			md: 'flex-start',
-			xs: 'center',
-		},
-	},
-	header: {
-		width: '100%',
-	},
-	imageContainer: {
-		borderRadius: 1,
-		width: 240,
-		minWidth: 240,
-	},
-	closeButton: {
-		position: 'absolute',
-		top: 10,
-		right: 10,
-		bgcolor: 'rgb(0,0,0,0.5)',
-	},
-	paper: {
-		mb: 2,
-	},
-}

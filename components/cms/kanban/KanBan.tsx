@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ActionType, DisplayFieldType } from '../../../types'
+import { AuthGuard } from '../../../components'
 import Sortable from './Sortable'
 import { groupResourcesByField } from '../../../helpers/utils'
 
@@ -78,29 +79,31 @@ const KanBan: React.FC<KanBanProps> = (props) => {
 
 	if (Object.keys(groupedResources).length == 0) return null
 	return (
-		<Sortable
-			loading={loading}
-			actions={actions}
-			headers={headers}
-			columns={groupedResources}
-			activeResource={activeResource}
-			handleDrop={handleDrop}
-			handleClick={handleClick}
-			displayFields={displayFields}
-			enableOverlay={enableOverlay}
-			enableGradient={enableGradient}
-			enableComments={enableComments}
-			enableFavorites={enableFavorites}
-      enableLikes={enableLikes}
-			enableRatings={enableRatings}
-			enableEdit={enableEdit}
-			enableDelete={enableDelete}
-			enableCreate={enableCreate}
-			handleEdit={handleEdit}
-			handleDelete={handleDelete}
-			handleAdd={handleAdd}
-			handleComment={handleComment}
-		/>
+    <AuthGuard requireAuth>
+      <Sortable
+        loading={loading}
+        actions={actions}
+        headers={headers}
+        columns={groupedResources}
+        activeResource={activeResource}
+        handleDrop={handleDrop}
+        handleClick={handleClick}
+        displayFields={displayFields}
+        enableOverlay={enableOverlay}
+        enableGradient={enableGradient}
+        enableComments={enableComments}
+        enableFavorites={enableFavorites}
+        enableLikes={enableLikes}
+        enableRatings={enableRatings}
+        enableEdit={enableEdit}
+        enableDelete={enableDelete}
+        enableCreate={enableCreate}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+        handleAdd={handleAdd}
+        handleComment={handleComment}
+      />
+    </AuthGuard>
 	)
 }
 

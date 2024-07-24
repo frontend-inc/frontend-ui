@@ -29,12 +29,12 @@ const ListCards: React.FC<ListCardsProps> = (props) => {
 
 	const {
 		resources,
+    style = 'card',
 		displayFields = [],
 		actions = [],
 		handleClick,
 		handleEdit = handleNull,
 		handleDelete = handleNull,
-		style = 'card',
 		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
@@ -70,13 +70,15 @@ const ListCards: React.FC<ListCardsProps> = (props) => {
 					resource={resource}
 					displayFields={displayFields}
 					handleClick={() => handleClick(resource)}
-					actions={buildActions({
-						enableEdit,
-						enableDelete,
-						handleEdit: () => handleEdit(resource),
-						handleDelete: () => handleDelete(resource),
-						actions,
-					})}
+					actions={
+            buildActions({
+              enableEdit,
+              enableDelete,
+              handleEdit: () => handleEdit(resource),
+              handleDelete: () => handleDelete(resource),
+              actions,
+            })
+          }
 					enableUsers={enableUsers}
 					enableComments={enableComments}
 					enableFavorites={enableFavorites}
