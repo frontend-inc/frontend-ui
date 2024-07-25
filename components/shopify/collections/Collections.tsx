@@ -1,9 +1,9 @@
 import React, { useEffect, useContext } from 'react'
 import { useCollections } from 'frontend-shopify'
-import { ListCards } from '../../../components'
 import { Stack } from '@mui/material'
 import { useRouter } from 'next/router'
 import { AppContext } from '../../../context'
+import { CollectionCard } from '../../../components'
 
 export type CollectionsProps = {
 	editing?: boolean
@@ -52,20 +52,16 @@ const Collections: React.FC<CollectionsProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-			<ListCards
-				actions={[]}
-				style={style}
-				resources={collections}
-				buttonText={buttonText}
-				handleClick={handleClick}
-				enableBorder={enableBorder}
-				enableGradient={enableGradient}
-				enableOverlay={enableOverlay}
-				enableEdit={false}
-				enableDelete={false}
-				handleEdit={() => null}
-				handleDelete={() => null}
-			/>
+      { collections.map((collection, index) =>(        
+        <CollectionCard 
+          key={index}
+          collection={collection}
+          handleClick={handleClick}
+          enableBorder={enableBorder}
+          enableGradient={enableGradient}
+          enableOverlay={enableOverlay}
+        />
+      ))}
 		</Stack>
 	)
 }

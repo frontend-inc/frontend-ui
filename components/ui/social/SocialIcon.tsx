@@ -10,19 +10,17 @@ type SocialIconProps = {
 	url?: string
 	handleClick?: () => void
 	color?: string
+  size?: number
 }
 
 const SocialIcon: React.FC<SocialIconProps> = (props) => {
-	const { provider, handleClick, color='primary.main' } = props || {}
-	const theme = useTheme()
-  let bgColor = get(theme.palette, color)
+	const { provider, handleClick, color, size=20 } = props || {}
 	return (
 		<IconButton size="small" onClick={handleClick}>
 			<ReactSocialIcon
 				/* @ts-ignore */
 				network={provider}
-				bgColor={bgColor}
-        style={{ height: 20, width: 20 }}
+        style={{ height: size, width: size }}
 			/>
 		</IconButton>
 	)

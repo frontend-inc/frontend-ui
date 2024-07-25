@@ -4,13 +4,14 @@ import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
-import {
-	ShowModal,
-	ListCards,
+import {   
 	Placeholder,
+  ListCard, 
+  ListLayout 
 } from '../..'
 import { useForms } from '../../../hooks'
 import { ActionType, DisplayFieldType } from '../../../types'
+import { buildActions } from '../../../helpers'
 
 export type ListItemsProps = {
 	url: string
@@ -84,32 +85,57 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
 	}
 
 	const { handleClick = handleNavigate } = props
-
 	const { handleEdit, handleDeleteClick } = useForms()
+
+  let grid = false 
+
+	const LAYOUTS = {
+		list: false,
+		card: true,
+		avatar: false,
+		cover: true,
+		chip: false,
+		text: false,
+		table: false,
+	}
+  
+	grid = LAYOUTS[style]
 
 	return (
 		<>
 			<Stack direction="column" spacing={2}>
-				<ListCards          
-					actions={actions}
-					style={style}
-					resources={resources}
-					displayFields={displayFields}
-					handleClick={handleClick}
-					enableGradient={enableGradient}
-					enableOverlay={enableOverlay}
-					enableEdit={enableEdit}
-					enableDelete={enableDelete}
-					enableUsers={enableUsers}
-					enableFavorites={enableFavorites}
-          enableLikes={enableLikes}
-					enableRatings={enableRatings}
-					enableComments={enableComments}
-					handleEdit={handleEdit}
-					handleDelete={handleDeleteClick}
-					{...rest}
-				/>
-				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
+        <ListLayout grid={grid}>
+          {resources?.map((resource, index) => (
+            <ListCard
+              key={index}
+              style={style}
+              resource={resource}
+              displayFields={displayFields}
+              handleClick={() => handleClick(resource)}
+              actions={
+                buildActions({
+                  enableEdit,
+                  enableDelete,
+                  handleEdit: () => handleEdit(resource),
+                  handleDelete: () => handleDeleteClick(resource),
+                  actions,
+                })
+              }
+              enableUsers={enableUsers}
+              enableComments={enableComments}
+              enableFavorites={enableFavorites}
+              enableLikes={enableLikes}
+              enableRatings={enableRatings}          
+              enableGradient={enableGradient}
+              enableOverlay={enableOverlay}
+            />
+          ))}
+          <LoadMore 
+            page={page} 
+            numPages={numPages} 
+            loadMore={loadMore} 
+          />
+      </ListLayout>
 			</Stack>
 			{!loading && resources?.length == 0 && (
 				<Placeholder

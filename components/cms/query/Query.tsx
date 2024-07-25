@@ -6,7 +6,7 @@ export type QueryProps = {
 	query?: any
 	filterUser?: boolean
 	filterTeam?: boolean
-	filterRelated?: boolean
+	filterReferences?: boolean
 	children: React.ReactNode
 }
 

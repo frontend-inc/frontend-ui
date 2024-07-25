@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import { Comments, Modal, SocialButtons, ShowSnippet } from '../..'
+import { Comments, Modal, ShowSnippet } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { ActionType, FormFieldType, DisplayFieldType } from '../../../types'
 

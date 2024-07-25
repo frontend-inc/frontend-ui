@@ -84,6 +84,7 @@ const ShareButton: React.FC<ShareButtonProps> = (props) => {
 									key={index}
 									provider={provider.value}
 									handleClick={() => handleShareClick(provider.value)}
+                  size={36}
 								/>
 							))}
 						</Stack>

@@ -38,7 +38,7 @@ export type ListProps = {
   enableOverlay?: boolean
   filterUser?: boolean
   filterTeam?: boolean
-  filterRelated?: boolean
+  filterReferences?: boolean
   filterSimilar?: boolean
   filterGeo?: boolean
   perPage?: number
@@ -77,7 +77,7 @@ const List: React.FC<ListProps> = (props) => {
     enableOverlay, 
 		filterUser,
 		filterTeam,
-		filterRelated,
+		filterReferences,
     filterSimilar,
 		filterGeo,
 		perPage,
@@ -96,7 +96,7 @@ const List: React.FC<ListProps> = (props) => {
     filterUser,
     filterTeam,
     filterSimilar,
-    filterRelated,
+    filterReferences,
     filterGeo
   })
 

@@ -316,25 +316,24 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
                   />
                 )}
               />
-            )}
-						  
-              { !sortable && !loading && resources?.map((resource, index) => (
-                <Component
-                  key={index}
-                  layout={layout}
-                  resource={resource}
-                  handleClick={
-                    handleClick ? () => handleClick(resource) : undefined
-                  }
-                  handleEdit={
-                    enableEdit ? () => handleEdit(resource) : undefined
-                  }
-                  handleDelete={
-                    enableDelete ? () => handleDeleteClick(resource) : undefined
-                  }
-                  { ...itemProps }
-                />
-              ))}
+            )}						  
+            { !sortable && !loading && resources?.map((resource, index) => (
+              <Component
+                key={index}
+                layout={layout}
+                resource={resource}
+                handleClick={
+                  handleClick ? () => handleClick(resource) : undefined
+                }
+                handleEdit={
+                  enableEdit ? () => handleEdit(resource) : undefined
+                }
+                handleDelete={
+                  enableDelete ? () => handleDeleteClick(resource) : undefined
+                }
+                { ...itemProps }
+              />
+            ))}
 					</Box>
 				</Stack>
 			</Box>

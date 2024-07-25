@@ -6,11 +6,10 @@ export const buildSearchQuery = (params) => {
     perPage,
     filterUser,
     filterTeam,
-    filterRelated,
+    filterReferences,
     filterGeo,
     filterSimilar    
   } = params || {}
-
 
   if(perPage){
     query = {
@@ -19,10 +18,10 @@ export const buildSearchQuery = (params) => {
     }
   }
 
-	if (filterRelated == true && resource?.id) {
+	if (filterReferences == true && resource?.id) {
 		query = {
 			...query,
-      method: 'related',
+      method: 'references',
 			resource_id: resource.id,
 		}
 	} else {
