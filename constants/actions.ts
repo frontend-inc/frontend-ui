@@ -12,5 +12,5 @@ export const ACTION_CMS_NAMES = [
 	{ value: 'sms', label: 'Text message' },
 	{ value: 'phone', label: 'Phone call' },
 	{ value: 'download', label: 'Download' },
-	{ value: 'add_link', label: 'Add Link' },
+	//{ value: 'add_reference', label: 'Add Reference' },
 ]

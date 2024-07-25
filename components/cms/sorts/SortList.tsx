@@ -32,7 +32,7 @@ const SortList: React.FC<SortListProps> = (props) => {
 
 	return (
 		<>
-			<MenuList label="Sort by">
+			<MenuList disablePadding label="Sort by">
 				{sortOptions?.map((sortOption: any) => (
 					<ListItem disablePadding disableGutters sx={sx.listItem}>
 						<ListItemButton
@@ -55,7 +55,7 @@ const SortList: React.FC<SortListProps> = (props) => {
 					</ListItem>
 				))}
 			</MenuList>
-			<MenuList label="Direction">
+			<MenuList disablePadding label="Direction">
 				{SORT_DIRECTIONS.map((direction, i) => (
 					<ListItem disablePadding key={i} sx={sx.listItem}>
 						<ListItemButton
@@ -95,7 +95,6 @@ const sx = {
 	},
 	listItemIcon: {
 		minWidth: '40px',
-		mr: 2,
 	},
 	sortDirectionButton: {
 		width: '32px',

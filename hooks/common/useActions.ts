@@ -16,7 +16,7 @@ type UseActionParams = {
 const useActions = (params: UseActionParams) => {
 	const { loading, data, errors, loadingWrapper } = useLoadingWrapper()
 
-	const { action, resource } = params
+	const { action, resource } = params || {}
 
 	const { showAlertSuccess } = useAlerts()
 

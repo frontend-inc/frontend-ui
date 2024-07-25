@@ -105,7 +105,9 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
 		<>
 			<Stack direction="column" spacing={2}>
         <ListLayout grid={grid}>
-          {resources?.map((resource, index) => (
+          {resources?.map((resource, index) => { 
+            resource = resource?.target || resource
+            return(
             <ListCard
               key={index}
               style={style}
@@ -129,13 +131,13 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
               enableGradient={enableGradient}
               enableOverlay={enableOverlay}
             />
-          ))}
+          )})}
           <LoadMore 
             page={page} 
             numPages={numPages} 
             loadMore={loadMore} 
           />
-      </ListLayout>
+        </ListLayout>
 			</Stack>
 			{!loading && resources?.length == 0 && (
 				<Placeholder

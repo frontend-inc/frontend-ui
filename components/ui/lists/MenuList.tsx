@@ -29,6 +29,7 @@ const MenuList: React.FC<MenuListProps> = (props) => {
 		defaultClosed = false,
 		children,
 		enableBorder = false,
+    disablePadding = false
 	} = props
 
 	const [open, setOpen] = useState(!defaultClosed)
@@ -100,7 +101,11 @@ const MenuList: React.FC<MenuListProps> = (props) => {
 				</ListItem>
 			)}
 			<Collapse in={open}>
-				<Box pb={2} px={2}>
+				<Box 
+          sx={{ 
+            ...sx.content,
+            ...(disablePadding && sx.contentDisablePadding),
+          }}>
 					{children}
 				</Box>
 			</Collapse>
@@ -142,4 +147,11 @@ const sx = {
 		borderTop: '1px solid',
 		borderColor: 'divider',
 	},
+  content: {
+    pb: 2,
+    px: 2
+  },
+  contentDisablePadding: {
+    p: 0
+  }  
 }
