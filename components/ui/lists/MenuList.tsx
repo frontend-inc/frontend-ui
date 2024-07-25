@@ -116,12 +116,10 @@ const sx = {
 		minWidth: 200,
 		my: 0,
 	},
-	listItem: {
-		borderRadius: 1,
+	listItem: {		
 	},
 	listItemButton: {
-		py: 0,
-		borderRadius: 1,
+		py: 0,		
 		height: '40px',
 	},
 	listItemIcon: {
@@ -141,7 +139,7 @@ const sx = {
 		transform: 'rotate(90deg)',
 	},
 	border: {
-		borderTop: '1px dotted',
+		borderTop: '1px solid',
 		borderColor: 'divider',
 	},
 }

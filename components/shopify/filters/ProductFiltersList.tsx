@@ -34,7 +34,11 @@ const ProductFiltersList: React.FC<ProductFiltersListProps> = (props) => {
 				let option = options?.find((o) => o.name == filterType.value)
 				if (!option) return null
 				return (
-					<MenuList label={filterType.label}>
+					<MenuList 
+            enableBorder
+            disablePadding
+            label={filterType.label}
+          >
 						<CheckboxFilterList
 							filters={activeFilters}
 							option={option}
@@ -44,7 +48,11 @@ const ProductFiltersList: React.FC<ProductFiltersListProps> = (props) => {
 				)
 			})}
 			{priceOptions?.length > 0 && (
-				<MenuList label="Price">
+				<MenuList 
+          enableBorder
+          disablePadding
+          label="Price"
+        >
 					<RadioPriceRangeInput
 						filters={filters}
 						options={priceOptions}
