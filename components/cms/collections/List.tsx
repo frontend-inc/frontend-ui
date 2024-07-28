@@ -92,7 +92,7 @@ const List: React.FC<ListProps> = (props) => {
   const searchQuery = buildSearchQuery({
     query,
     resource,
-    perPage: 2,
+    perPage,
     filterUser,
     filterTeam,
     filterSimilar,
