@@ -78,6 +78,7 @@ export type QueryParamsType = {
 	location?: string
 	radius?: number
   method?: string 
+  resource_id?: number | string 
 	rest?: any
 }
 

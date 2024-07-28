@@ -15,6 +15,7 @@ const DataTableList: React.FC<DataTableListProps> = (props) => {
       list={
         DataTableListItems
       }
+      loadMore={false}
 		/>
 	)
 }

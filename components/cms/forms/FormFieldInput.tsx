@@ -27,6 +27,7 @@ const FormFieldInput: React.FC<FormFieldInputProps> = (props) => {
     url,
     foreignUrl,
     contentType,
+    displayField,
     fields     
   } = field
 
@@ -47,6 +48,7 @@ const FormFieldInput: React.FC<FormFieldInputProps> = (props) => {
       resource={resource}
       contentType={contentType}
       fields={fields}
+      displayField={displayField}
 		/>
 	)
 }

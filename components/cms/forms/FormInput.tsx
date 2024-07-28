@@ -12,7 +12,8 @@ import {
 	TextInput,
   NoSpaceInput,
 	ShopifyProductInput,
-  ReferenceInput
+  ReferenceInput,
+  RemoteAutosuggest
 } from '../../../components'
 import { FormFieldType, OptionType, SyntheticEventType } from '../../../types'
 
@@ -30,6 +31,8 @@ type FormInputProps = {
   url?: string
   foreignUrl?: string
   contentType?: string
+  query?: any 
+  displayField?: string //Autosuggest has an optional display field param
   fields?: FormFieldType[]
 }
 
@@ -49,10 +52,13 @@ const FormInput: React.FC<FormInputProps> = (props) => {
     url,
     foreignUrl,
     fields,
-    contentType,    
+    contentType, 
+    query={},  
+    displayField 
 	} = props
 
 	let componentMapper = {
+    autosuggest: RemoteAutosuggest,
 		array: ArrayInput,
 		string: TextInput,
 		file: AttachmentInput,
@@ -70,10 +76,15 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		image: ImageInput,
 		json: JSONInput,
 		shopify: ShopifyProductInput,    
-    habtm: ReferenceInput 
+    habtm: ReferenceInput, 
 	}
 
 	let inputProps = {
+    autosuggest: {
+      url,
+      displayField,
+      query
+    },
 		text: {
 			multiline: true,
 			rows: 6,
@@ -116,7 +127,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
     }
 	}
 
-	let InputComponent = componentMapper[variant] || TextInput 
+	let InputComponent = componentMapper[variant] || TextInput   
 
 	return (
 		<InputComponent
@@ -125,7 +136,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			name={name}
 			value={value || ''}
 			handleChange={handleChange}
-			placeholder={placeholder}
+			placeholder={placeholder}   
 			{...inputProps[variant]}
 		/>
 	)

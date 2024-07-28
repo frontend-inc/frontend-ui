@@ -10,6 +10,7 @@ type TableHeaderProps = {
 	enableSelect?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
+  enableShow?: boolean
 	handleSort: (e: any) => void
 	handleSelectAll?: (e: any) => void
 }
@@ -23,6 +24,7 @@ const TableHeaders: React.FC<TableHeaderProps> = (props) => {
 		enableSelect = false,
 		enableEdit = false,
 		enableDelete = false,
+    enableShow = false,
 		handleSort,
 		handleSelectAll,
 	} = props
@@ -36,7 +38,7 @@ const TableHeaders: React.FC<TableHeaderProps> = (props) => {
 					<Checkbox checked={checked} onChange={handleSelectAll} value="true" />
 				</TableCell>
 			)}
-			{(enableEdit || enableDelete) && (
+			{(enableEdit || enableDelete || enableShow) && (
 				<TableCell variant="head" header small>
 					<Box></Box>
 				</TableCell>

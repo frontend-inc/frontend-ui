@@ -45,8 +45,9 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
 		resources,
 		page,
 		numPages,
-		loadMore,
-		setOpenShow,
+		query={},
+    setQuery, 
+		setOpenShow,    
 	} = useResourceContext()
 
 	const {
@@ -101,13 +102,19 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
   
 	grid = LAYOUTS[style]
 
+  const handleLoadMore = () => {
+    let newPage = (page + 1) || 2
+    setQuery({ 
+      ...query, 
+      page: newPage
+    })
+  }
+
 	return (
 		<>
 			<Stack direction="column" spacing={2}>
         <ListLayout grid={grid}>
-          {resources?.map((resource, index) => { 
-            resource = resource?.target || resource
-            return(
+          {resources?.map((resource, index) => (
             <ListCard
               key={index}
               style={style}
@@ -131,13 +138,13 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
               enableGradient={enableGradient}
               enableOverlay={enableOverlay}
             />
-          )})}
-          <LoadMore 
-            page={page} 
-            numPages={numPages} 
-            loadMore={loadMore} 
-          />
+          ))}
         </ListLayout>
+        <LoadMore 
+          page={page} 
+          numPages={numPages} 
+          loadMore={handleLoadMore} 
+        />
 			</Stack>
 			{!loading && resources?.length == 0 && (
 				<Placeholder

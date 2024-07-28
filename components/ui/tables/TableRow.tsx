@@ -1,18 +1,21 @@
 import React from 'react'
 import { Stack, Button, Checkbox, TableRow as MuiTableRow } from '@mui/material'
 import { Cell, TableCell } from '../../../components'
+import { get } from 'lodash'
 
 type TableRowProps = {
 	row: any
 	fields: Array<any>
 	enableEdit?: boolean
 	enableDelete?: boolean
+  enableShow?: boolean
 	enableSelect?: boolean
-	handleClick?: (value: any, row: any, field: any) => void
-	handleEdit?: (item: any) => void
-	handleDelete?: (item: any) => void
+	handleClick: (value: any, row: any, field: any) => void
+  handleShow: (resource: any) => void
+	handleEdit: (item: any) => void
+	handleDelete: (item: any) => void
 	selectedIds?: Array<any>
-	handleSelect?: (item: any) => void
+	handleSelect: (item: any) => void
 }
 
 const TableRow: React.FC<TableRowProps> = (props) => {
@@ -21,10 +24,12 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 		fields,
 		enableEdit = false,
 		enableDelete = false,
+    enableShow = false,
 		enableSelect = false,
-		handleClick,
+		handleClick,    
 		handleEdit,
 		handleDelete,
+    handleShow,
 		selectedIds,
 		handleSelect,
 	} = props
@@ -32,7 +37,10 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 	const selected = selectedIds?.includes(row?.id) ? true : false
 
 	return (
-		<MuiTableRow sx={sx.root} selected={selected}>
+		<MuiTableRow 
+      sx={sx.root} 
+      selected={selected}
+    >
 			{enableSelect && (
 				<TableCell small align={'center'} sticky>
 					<Checkbox
@@ -45,6 +53,16 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 			{(enableEdit || enableDelete) && (
 				<TableCell small align="center">
 					<Stack direction="row" spacing={1}>
+            {enableShow && (
+							<Button
+								size="small"
+								variant="contained"
+								color="secondary"
+								onClick={() => handleShow(row)}
+							>
+								View
+							</Button>
+						)}
 						{enableEdit && (
 							<Button
 								size="small"
@@ -69,16 +87,14 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 				</TableCell>
 			)}
 			{fields?.map((field, index) => {
-				let value = row[field.name]
+				let value = get(row, 'field.name')
 				return (
 					<TableCell key={index}>
 						<Cell
 							row={row}
 							field={field}
 							value={value}
-							handleClick={
-								handleClick ? () => handleClick(value, row, field) : null
-							}
+							handleClick={() => handleClick(value, row, field)}
 						/>
 					</TableCell>
 				)

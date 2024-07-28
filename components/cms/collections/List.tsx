@@ -38,10 +38,10 @@ export type ListProps = {
   enableOverlay?: boolean
   filterUser?: boolean
   filterTeam?: boolean
-  filterReferences?: boolean
   filterSimilar?: boolean
   filterGeo?: boolean
   perPage?: number
+  loadMore?: boolean
   list: React.FC<any>  
   header?: React.FC<any>
   show?: React.FC<any>
@@ -77,7 +77,6 @@ const List: React.FC<ListProps> = (props) => {
     enableOverlay, 
 		filterUser,
 		filterTeam,
-		filterReferences,
     filterSimilar,
 		filterGeo,
 		perPage,
@@ -86,17 +85,17 @@ const List: React.FC<ListProps> = (props) => {
     show: RenderShow = ShowModal,
     edit: RenderEdit = EditModal, 
     destroy: RenderDelete = DeleteModal,
+    loadMore,
 		...rest
 	} = props
 
   const searchQuery = buildSearchQuery({
     query,
     resource,
-    perPage,
+    perPage: 2,
     filterUser,
     filterTeam,
     filterSimilar,
-    filterReferences,
     filterGeo
   })
 
@@ -105,6 +104,7 @@ const List: React.FC<ListProps> = (props) => {
       url={url}
       query={searchQuery}
       name='document'
+      loadMore={loadMore}
       header={
         <ListToolbar 
           url={url}

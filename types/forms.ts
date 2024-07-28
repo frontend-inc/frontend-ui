@@ -28,6 +28,8 @@ export type FormFieldType = {
   foreignUrl?: string
   fields?: FormFieldType[]
   contentType?: string
+  displayField?: string 
+  query?: any 
   default?: any
 }
 
