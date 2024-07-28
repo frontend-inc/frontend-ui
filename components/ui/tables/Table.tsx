@@ -11,7 +11,7 @@ type TableProps = {
 	enableSelect?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
-	handleClick?: (item: any) => void
+  handleClick: (value: any, row: any, field: any) => void
 	handleEdit?: (row: any) => void
 	handleEditSelected?: (items: any[]) => void
 	handleDelete?: (items: any[]) => void

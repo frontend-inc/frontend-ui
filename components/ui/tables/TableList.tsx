@@ -25,10 +25,10 @@ type TableProps = {
 	enableEdit?: boolean
 	enableDelete?: boolean
   enableShow?: boolean
-  handleClick: (value: any, row: any, field: any) => void
-  handleShow: (resource: any) => void 
-	handleEdit: (row: any) => void
-	handleDelete: (row: any) => void
+  handleClick?: (value: any, row: any, field: any) => void
+  handleShow?: (resource: any) => void 
+	handleEdit?: (resource: any) => void
+	handleDelete?: (resource: any) => void
 	page?: number
 	perPage?: number
 	numPages?: number
@@ -37,7 +37,7 @@ type TableProps = {
 	styles?: any
 	selected?: any
 	selectedIds?: any
-	handleSelect: (row: any) => void
+	handleSelect?: (row: any) => void
 	handleSelectAll?: () => void
 	handleSort: (field: any) => void
 	handlePaginate: (e: any, page: number) => void

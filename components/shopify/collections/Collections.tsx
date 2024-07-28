@@ -6,16 +6,7 @@ import { AppContext } from '../../../context'
 import { CollectionCard } from '../../../components'
 
 export type CollectionsProps = {
-	editing?: boolean
 	href: string
-	variant?: 'grid' | 'list'
-	style?: 'card' | 'avatar' | 'cover'
-	perPage?: number
-	buttonText?: string
-	autoPlay?: boolean
-	arrows?: boolean
-	showDots?: boolean
-	enableBorder?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
 }
@@ -23,9 +14,6 @@ export type CollectionsProps = {
 const Collections: React.FC<CollectionsProps> = (props) => {
 	const {
 		href,
-		style = 'card',
-		buttonText,
-		enableBorder = false,
 		enableGradient = false,
 		enableOverlay = false,
 	} = props
@@ -52,12 +40,11 @@ const Collections: React.FC<CollectionsProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-      { collections.map((collection, index) =>(        
+      { collections?.map((collection, index) =>(        
         <CollectionCard 
           key={index}
           collection={collection}
-          handleClick={handleClick}
-          enableBorder={enableBorder}
+          handleClick={() => handleClick(collection)}
           enableGradient={enableGradient}
           enableOverlay={enableOverlay}
         />
