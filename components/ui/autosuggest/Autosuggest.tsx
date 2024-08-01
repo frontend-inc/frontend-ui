@@ -4,6 +4,7 @@ import {
 	Paper,
 	Stack,
 	IconButton,
+  MenuItem,
 	ListItem,
 	ListItemIcon,
 	Typography,
@@ -23,8 +24,8 @@ type AutocompleteOptionProps = {
 const AutocompleteOption: React.FC<AutocompleteOptionProps> = (props) => {
 	const { option } = props
 	return (
-		<ListItem sx={sx.listItem} {...props}>
-			{option?.icon && (
+		<MenuItem>
+      {option?.icon && (
 				<ListItemIcon sx={sx.listItemIcon}>
 					<Icon name={option.icon} size={20} />
 				</ListItemIcon>
@@ -42,7 +43,7 @@ const AutocompleteOption: React.FC<AutocompleteOptionProps> = (props) => {
 				</ListItemIcon>
 			)}
 			<Typography variant="body1">{option.label}</Typography>
-		</ListItem>
+		</MenuItem>
 	)
 }
 
@@ -51,7 +52,13 @@ type AutocompletePaperProps = {
 }
 
 const AutocompletePaper: React.FC<AutocompletePaperProps> = (props) => {
-	return <Paper {...props} elevation={10} sx={sx.paper} />
+	return(
+    <Paper 
+      {...props} 
+      elevation={2} 
+      sx={sx.paper} 
+    />
+  )
 }
 
 type AutosuggestProps = {
@@ -135,7 +142,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 		}
 	}, [value, options])
 
-	if (!options) return null
+	if (!options) return null;
 	return (
 		<Stack
 			sx={{
@@ -156,7 +163,6 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 					disableCloseOnSelect={multiselect}
 					sx={{
 						...sx.autocomplete,
-						paper: sx.paper,
 						option: sx.option,
 						popperDisablePortal: sx.popperDisablePortal,
 					}}
@@ -256,20 +262,16 @@ const sx: any = {
 		width: '100%',
 	},
 	paper: {
+    width: '100%',  
 		bgcolor: 'background.paper',
 		color: 'text.primary',
 		p: 0,
 		my: 0,
-    overflowX: 'hidden'
 	},
 	popperDisablePortal: {
 		position: 'relative',
     overflowX: 'hidden'
 	},
-  listItem: {
-    mr: 2, 
-    flexShrink: 0
-  },
 	listItemIcon: {
 		minWidth: '32px',
 		mr: 1,

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Box } from '@mui/material'
 import { useResource } from 'frontend-js'
 import { Autosuggest } from '../..'
-import { ErrorText } from '../..'
 import { useError } from '../../../hooks'
 import { OptionType, QueryParamsType, SyntheticEventType } from '../../../types'
 import { get } from 'lodash'
@@ -140,25 +138,22 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		}
 	}, [defaultQuery])
 
-  console.log("Display Field", displayField)
   if(!displayField) return null;
 	return (
-		<>
-			<Autosuggest
-				errors={errors}
-				loading={delayedLoading}
-				direction={direction}
-				label={label}
-				name={name}
-				value={option}
-				options={options}
-				placeholder={placeholder}
-				handleChange={handleChange}
-				handleInputChange={handleInputChange}
-				handleClear={handleClear}
-				enableClear={enableClear}
-			/>
-		</>
+    <Autosuggest
+      errors={errors}
+      loading={delayedLoading}
+      direction={direction}
+      label={label}
+      name={name}
+      value={option}
+      options={options}
+      placeholder={placeholder}
+      handleChange={handleChange}
+      handleInputChange={handleInputChange}
+      handleClear={handleClear}
+      enableClear={enableClear}
+    />
 	)
 }
 
