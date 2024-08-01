@@ -23,7 +23,7 @@ type AutocompleteOptionProps = {
 const AutocompleteOption: React.FC<AutocompleteOptionProps> = (props) => {
 	const { option } = props
 	return (
-		<ListItem sx={{ mr: 2, flexShrink: 0 }} {...props}>
+		<ListItem sx={sx.listItem} {...props}>
 			{option?.icon && (
 				<ListItemIcon sx={sx.listItemIcon}>
 					<Icon name={option.icon} size={20} />
@@ -222,6 +222,7 @@ const styles = {
 const sx: any = {
 	autocomplete: {
 		width: '100%',
+    overflowX: 'hidden'
 	},
 	inputBase: {
 		width: '100%',
@@ -259,10 +260,16 @@ const sx: any = {
 		color: 'text.primary',
 		p: 0,
 		my: 0,
+    overflowX: 'hidden'
 	},
 	popperDisablePortal: {
 		position: 'relative',
+    overflowX: 'hidden'
 	},
+  listItem: {
+    mr: 2, 
+    flexShrink: 0
+  },
 	listItemIcon: {
 		minWidth: '32px',
 		mr: 1,

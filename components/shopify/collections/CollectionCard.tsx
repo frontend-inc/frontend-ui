@@ -45,7 +45,7 @@ const CollectionCard: React.FC<CardProps> = (props) => {
 					<Image
 						label={label}
 						src={image?.url}
-						height={300}
+						height={400}
 						alt={title}
 						enableGradient={enableGradient}
 						enableOverlay={enableOverlay}
