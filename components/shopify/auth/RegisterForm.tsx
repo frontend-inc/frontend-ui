@@ -65,7 +65,7 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
 			</Button>
 			<Button
 				fullWidth
-				color="primary"
+				color="secondary"
 				variant="outlined"
 				onClick={handleLogin}
 			>

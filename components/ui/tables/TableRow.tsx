@@ -10,12 +10,12 @@ type TableRowProps = {
 	enableDelete?: boolean
   enableShow?: boolean
 	enableSelect?: boolean
-	handleClick: (value: any, row: any, field: any) => void
-  handleShow: (resource: any) => void
-	handleEdit: (item: any) => void
-	handleDelete: (item: any) => void
-	selectedIds?: Array<any>
-	handleSelect: (item: any) => void
+  selectedIds?: Array<any>
+	handleClick?: (value: any, row: any, field: any) => void
+  handleShow?: (resource: any) => void
+	handleEdit?: (item: any) => void
+	handleDelete?: (item: any) => void
+	handleSelect?: (item: any) => void
 }
 
 const TableRow: React.FC<TableRowProps> = (props) => {
@@ -45,7 +45,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 				<TableCell small align={'center'} sticky>
 					<Checkbox
 						checked={selected}
-						onChange={() => handleSelect(row)}
+						onChange={handleSelect ? () => handleSelect(row) : undefined}
 						value="true"
 					/>
 				</TableCell>
@@ -58,7 +58,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 								size="small"
 								variant="contained"
 								color="secondary"
-								onClick={() => handleShow(row)}
+								onClick={handleShow ? () => handleShow(row) : undefined}
 							>
 								View
 							</Button>
@@ -68,7 +68,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 								size="small"
 								variant="contained"
 								color="secondary"
-								onClick={() => handleEdit(row)}
+								onClick={handleEdit ? () => handleEdit(row) : undefined}
 							>
 								Edit
 							</Button>
@@ -78,7 +78,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 								size="small"
 								variant="contained"
 								color="secondary"
-								onClick={() => handleDelete(row)}
+								onClick={handleDelete ? () => handleDelete(row) : undefined}
 							>
 								Delete
 							</Button>
@@ -87,14 +87,14 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 				</TableCell>
 			)}
 			{fields?.map((field, index) => {
-				let value = get(row, 'field.name')
+				let value = get(row, field.name)        
 				return (
 					<TableCell key={index}>
 						<Cell
 							row={row}
 							field={field}
 							value={value}
-							handleClick={() => handleClick(value, row, field)}
+							handleClick={handleClick ? () => handleClick(value, row, field) : undefined}
 						/>
 					</TableCell>
 				)

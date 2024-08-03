@@ -31,6 +31,9 @@ const sx = {
 	root: {
 		width: '100%',
 		overflowX: 'scroll',
+    '&::-webkit-scrollbar': {
+      display: 'none'
+    },
 	},
 	list: {
 		display: 'flex',

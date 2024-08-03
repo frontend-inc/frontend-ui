@@ -85,7 +85,7 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 				Register
 			</Button>
 			{handleLogin && (
-				<Button fullWidth color="primary" onClick={handleLogin}>
+				<Button fullWidth color="secondary" variant="contained" onClick={handleLogin}>
 					Already have an account? Sign in
 				</Button>
 			)}

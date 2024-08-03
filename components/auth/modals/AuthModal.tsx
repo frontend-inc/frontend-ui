@@ -117,7 +117,6 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 		<Modal
 			open={authOpen}
 			handleClose={() => setAuthOpen(false)}
-			disablePadding
 		>
 			<Box sx={sx.tabsContainer}>
 				<Tabs value={tab} onChange={handleTabChange}>

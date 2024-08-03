@@ -96,6 +96,9 @@ const sx = {
 	list: {
 		overflowY: 'scroll',
 		width: '100%',
+    '&::-webkit-scrollbar': {
+			display: 'none',
+		},
 	},
 	draggableItem: {},
 	isDragging: {},
