@@ -96,8 +96,8 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 					)}
 					{enableQuickShop && (
 						<Button
-              variant='contained'
-							color='secondary'
+							variant="contained"
+							color="secondary"
 							onClick={handleQuickShop}
 						>
 							Quick Shop

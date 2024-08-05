@@ -1,4 +1,4 @@
-import { FormFieldConditionType } from "../types"
+import { FormFieldConditionType } from '../types'
 
 export const validateFieldConditions = (
 	conditions: FormFieldConditionType[],

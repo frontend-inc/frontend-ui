@@ -48,12 +48,12 @@ const ShowList: React.FC<ShowProps> = (props) => {
 				</Typography>
 				{enableRatings == true && (
 					<AvgRating justifyContent="center" resource={resource} enableTotal />
-				)}			
-        <DisplayFields
-          alignItems="center"
-          fields={displayFields}
-          resource={resource}
-        />				
+				)}
+				<DisplayFields
+					alignItems="center"
+					fields={displayFields}
+					resource={resource}
+				/>
 				{enablePayments == true && (
 					<StripePaymentLink
 						resource={resource}

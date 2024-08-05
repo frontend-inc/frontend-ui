@@ -8,11 +8,11 @@ type TableRowProps = {
 	fields: Array<any>
 	enableEdit?: boolean
 	enableDelete?: boolean
-  enableShow?: boolean
+	enableShow?: boolean
 	enableSelect?: boolean
-  selectedIds?: Array<any>
+	selectedIds?: Array<any>
 	handleClick?: (value: any, row: any, field: any) => void
-  handleShow?: (resource: any) => void
+	handleShow?: (resource: any) => void
 	handleEdit?: (item: any) => void
 	handleDelete?: (item: any) => void
 	handleSelect?: (item: any) => void
@@ -24,12 +24,12 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 		fields,
 		enableEdit = false,
 		enableDelete = false,
-    enableShow = false,
+		enableShow = false,
 		enableSelect = false,
-		handleClick,    
+		handleClick,
 		handleEdit,
 		handleDelete,
-    handleShow,
+		handleShow,
 		selectedIds,
 		handleSelect,
 	} = props
@@ -37,10 +37,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 	const selected = selectedIds?.includes(row?.id) ? true : false
 
 	return (
-		<MuiTableRow 
-      sx={sx.root} 
-      selected={selected}
-    >
+		<MuiTableRow sx={sx.root} selected={selected}>
 			{enableSelect && (
 				<TableCell small align={'center'} sticky>
 					<Checkbox
@@ -53,7 +50,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 			{(enableEdit || enableDelete) && (
 				<TableCell small align="center">
 					<Stack direction="row" spacing={1}>
-            {enableShow && (
+						{enableShow && (
 							<Button
 								size="small"
 								variant="contained"
@@ -87,14 +84,16 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 				</TableCell>
 			)}
 			{fields?.map((field, index) => {
-				let value = get(row, field.name)        
+				let value = get(row, field.name)
 				return (
 					<TableCell key={index}>
 						<Cell
 							row={row}
 							field={field}
 							value={value}
-							handleClick={handleClick ? () => handleClick(value, row, field) : undefined}
+							handleClick={
+								handleClick ? () => handleClick(value, row, field) : undefined
+							}
 						/>
 					</TableCell>
 				)

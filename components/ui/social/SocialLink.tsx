@@ -6,11 +6,11 @@ import { SocialIcon } from 'react-social-icons'
 type SocialLinkProps = {
 	provider: string
 	url?: string
-  color?: string
+	color?: string
 }
 
 const SocialLink: React.FC<SocialLinkProps> = (props) => {
-	const { provider, url, color='text.primary' } = props || {}
+	const { provider, url, color = 'text.primary' } = props || {}
 
 	const formatUrl = (username: string) => {
 		switch (provider) {
@@ -26,16 +26,16 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 				return `https://www.youtube.com/${username}`
 			case 'tiktok':
 				return `https://www.tiktok.com/${username}`
-      case 'github':
-        return `https://www.github.com/${username}`
-      case 'pinterest':
-        return `https://www.pinterest.com/${username}`
-      case 'snapchat':
-        return `https://www.snapchat.com/add/${username}`
-      case 'whatsapp':
-        return `https://wa.me/${username}`
-      case 'email': 
-        return `mailto:${username}`      
+			case 'github':
+				return `https://www.github.com/${username}`
+			case 'pinterest':
+				return `https://www.pinterest.com/${username}`
+			case 'snapchat':
+				return `https://www.snapchat.com/add/${username}`
+			case 'whatsapp':
+				return `https://wa.me/${username}`
+			case 'email':
+				return `mailto:${username}`
 			default:
 				break
 		}
@@ -46,12 +46,12 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 		if (url.includes('http') || url.includes('www')) {
 			window.open(url, '_blank')
 			return
-    } else if (provider == 'whatsapp' && url.includes('+')) {
-      window.open(`https://wa.me/${url}`, '_blank')
-      return
-    } else if (provider == 'email'){
-      window.open(`mailto:${url}`, '_blank')
-      return    
+		} else if (provider == 'whatsapp' && url.includes('+')) {
+			window.open(`https://wa.me/${url}`, '_blank')
+			return
+		} else if (provider == 'email') {
+			window.open(`mailto:${url}`, '_blank')
+			return
 		} else {
 			window.open(formatUrl(url), '_blank')
 		}
@@ -59,11 +59,7 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 
 	return (
 		<IconButton size="small" onClick={handleClick}>
-			<SocialIcon 
-        network={provider} 
-        color={color} 
-        style={styles} 
-      />
+			<SocialIcon network={provider} color={color} style={styles} />
 		</IconButton>
 	)
 }

@@ -47,14 +47,14 @@ const MultipleChoiceInput: React.FC<MultipleChoiceInputProps> = (props) => {
 	}
 
 	useEffect(() => {
-    if(Array.isArray(selected)){
-      handleChange({
-        target: {
-          name,
-          value: selected || [],
-        },
-      })
-    }
+		if (Array.isArray(selected)) {
+			handleChange({
+				target: {
+					name,
+					value: selected || [],
+				},
+			})
+		}
 	}, [selected])
 
 	return (
@@ -69,7 +69,10 @@ const MultipleChoiceInput: React.FC<MultipleChoiceInputProps> = (props) => {
 							key={idx}
 							title={option.label}
 							icon={option.icon}
-							selected={Array.isArray(selected) && selected.find((i) => i === option.value)}
+							selected={
+								Array.isArray(selected) &&
+								selected.find((i) => i === option.value)
+							}
 							handleClick={() => handleSelect(option?.value)}
 						/>
 					))}
@@ -83,7 +86,10 @@ const MultipleChoiceInput: React.FC<MultipleChoiceInputProps> = (props) => {
 								title={option.label}
 								image={option.image}
 								description={option.description}
-								selected={Array.isArray(selected) && selected.find((i) => i === option.value)}
+								selected={
+									Array.isArray(selected) &&
+									selected.find((i) => i === option.value)
+								}
 								handleClick={() => handleSelect(option?.value)}
 							/>
 						</Box>

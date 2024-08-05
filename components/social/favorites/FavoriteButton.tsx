@@ -4,10 +4,7 @@ import { isFavorited } from '../../../helpers'
 import { useAuth } from 'frontend-js'
 import { useSocial } from '../../../hooks'
 import { AppContext } from '../../../context'
-import { 
-  Bookmark,
-  BookmarkBorder, 
-} from '@mui/icons-material'
+import { Bookmark, BookmarkBorder } from '@mui/icons-material'
 
 type FavoriteButtonProps = {
 	handle: string

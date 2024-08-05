@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Box, Stack } from '@mui/material'
 import {
 	Icon,
-  FilterButton,
+	FilterButton,
 	SortButton,
 	SearchInput,
 	GeoSearchInput,
@@ -14,8 +14,8 @@ export type ToolbarProps = {
 	query: any
 	url: string
 	enableSearch?: boolean
-  enableFilters?: boolean
-  enableSorting?: boolean
+	enableFilters?: boolean
+	enableSorting?: boolean
 	enableGeoSearch?: boolean
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
@@ -24,17 +24,16 @@ export type ToolbarProps = {
 }
 
 const ListToolbar: React.FC<ToolbarProps> = (props) => {
-
 	const {
 		url,
 		query: defaultQuery = {},
-    filterOptions=[],
-    sortOptions=[],
+		filterOptions = [],
+		sortOptions = [],
 		enableCreate = false,
 		enableSearch = false,
 		enableGeoSearch = false,
-    enableFilters = false,
-    enableSorting = false ,
+		enableFilters = false,
+		enableSorting = false,
 	} = props
 
 	const {
@@ -91,19 +90,19 @@ const ListToolbar: React.FC<ToolbarProps> = (props) => {
 					{enableFilters && (
 						<Box sx={sx.buttonContainer}>
 							<FilterButton
-                filterOptions={filterOptions}
+								filterOptions={filterOptions}
 								filters={activeFilters}
 								handleFilter={handleFilter}
-								handleClear={handleClearFilters}								
+								handleClear={handleClearFilters}
 							/>
 						</Box>
 					)}
 					{enableSorting && (
 						<Box sx={sx.buttonContainer}>
 							<SortButton
-                sortOptions={sortOptions}
+								sortOptions={sortOptions}
 								sortBy={query?.sort_by || 'id'}
-								sortDirection={query?.sort_direction || 'desc'}								
+								sortDirection={query?.sort_direction || 'desc'}
 								handleSortBy={handleSortBy}
 								handleSortDirection={handleSortDirection}
 							/>

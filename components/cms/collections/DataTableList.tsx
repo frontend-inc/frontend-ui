@@ -4,20 +4,11 @@ import { ListProps } from './List'
 import { TableHeaderType } from '../../../types'
 
 export type DataTableListProps = ListProps & {
-  headers: TableHeaderType[]
+	headers: TableHeaderType[]
 }
 
 const DataTableList: React.FC<DataTableListProps> = (props) => {
-
-	return (
-		<List 
-      { ...props }
-      list={
-        DataTableListItems
-      }
-      loadMore={false}
-		/>
-	)
+	return <List {...props} list={DataTableListItems} loadMore={false} />
 }
 
 export default DataTableList

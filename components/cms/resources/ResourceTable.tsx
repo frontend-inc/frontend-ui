@@ -22,7 +22,7 @@ import { ResourceListProps } from './ResourceList'
 
 export type ResourceTableProps = ResourceListProps & {
 	headers: TableHeaderType[]
-  enableFilters?: boolean
+	enableFilters?: boolean
 }
 
 const ResourceTable: React.FC<ResourceTableProps> = (props) => {
@@ -277,16 +277,16 @@ const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 					</Button>
 				}
 			>
-        { fields && (
-          <FormFields
-            loading={loading}
-            errors={errors}
-            fields={fields}
-            resource={resource}
-            handleChange={handleChange}
-            handleRemove={handleRemove}
-          />
-        )}
+				{fields && (
+					<FormFields
+						loading={loading}
+						errors={errors}
+						fields={fields}
+						resource={resource}
+						handleChange={handleChange}
+						handleRemove={handleRemove}
+					/>
+				)}
 			</Drawer>
 			<AlertModal
 				open={openDeleteModal}

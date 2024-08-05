@@ -1,20 +1,16 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
 import { Box, Stack, Typography } from '@mui/material'
-import {
-	Image,	
-	TouchableOpacity,
-  LightDarkMode
-} from '../..'
+import { Image, TouchableOpacity, LightDarkMode } from '../..'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 
 export type CardProps = {
-  collection?: any
-  href?: string
-  handleClick?: () => void  
-  enableGradient?: boolean
-  enableOverlay?: boolean  
+	collection?: any
+	href?: string
+	handleClick?: () => void
+	enableGradient?: boolean
+	enableOverlay?: boolean
 }
 
 const CollectionCard: React.FC<CardProps> = (props) => {
@@ -39,7 +35,7 @@ const CollectionCard: React.FC<CardProps> = (props) => {
 	}
 
 	return (
-		<LightDarkMode mode='dark'>
+		<LightDarkMode mode="dark">
 			<Stack spacing={1} sx={sx.root}>
 				<TouchableOpacity handleClick={handleItemClick}>
 					<Image
@@ -61,14 +57,14 @@ const CollectionCard: React.FC<CardProps> = (props) => {
 						<Box sx={sx.contentContainer}>
 							<Stack sx={sx.content} direction="column" spacing={0}>
 								<Box sx={sx.fullWidth}>
-									<Typography color="text.primary" variant='subtitle2'>
+									<Typography color="text.primary" variant="subtitle2">
 										{truncate(title, 60)}
-									</Typography>									
+									</Typography>
 								</Box>
 							</Stack>
 						</Box>
 					</Stack>
-				</Stack>				
+				</Stack>
 			</Stack>
 		</LightDarkMode>
 	)

@@ -4,7 +4,7 @@ import {
 	AvgRating,
 	DisplayFields,
 	Image,
-  SocialButtons,
+	SocialButtons,
 	UserChip,
 	StripePaymentLink,
 } from '../..'
@@ -20,9 +20,9 @@ const ShowSnippet: React.FC<ShowProps> = (props) => {
 		enablePayments,
 		enableEdit,
 		handleEdit,
-    enableLikes,
-    enableFavorites,
-    enableSharing,
+		enableLikes,
+		enableFavorites,
+		enableSharing,
 	} = props || {}
 
 	const { image, label, title } = resource || {}
@@ -31,25 +31,25 @@ const ShowSnippet: React.FC<ShowProps> = (props) => {
 	return (
 		<Paper elevation={1} sx={sx.paper}>
 			<Stack direction="column" spacing={0} sx={sx.header}>
-        <Box sx={sx.imageContainer}>
-          <Image 
-            disableBorderRadius 
-            label={label} 
-            src={image?.url} 
-            alt={title} 
-            height={400} 
-          />
-        </Box>
-				<Stack spacing={0.5} direction="column" p={2} width="100%">
-        {(enableLikes || enableFavorites || enableSharing) && (
-					<SocialButtons
-						justifyContent="center"
-						handle={resource?.handle}
-						enableLikes={enableLikes}
-						enableFavorites={enableFavorites}
-						enableSharing={enableSharing}
+				<Box sx={sx.imageContainer}>
+					<Image
+						disableBorderRadius
+						label={label}
+						src={image?.url}
+						alt={title}
+						height={400}
 					/>
-				)}
+				</Box>
+				<Stack spacing={0.5} direction="column" p={2} width="100%">
+					{(enableLikes || enableFavorites || enableSharing) && (
+						<SocialButtons
+							justifyContent="center"
+							handle={resource?.handle}
+							enableLikes={enableLikes}
+							enableFavorites={enableFavorites}
+							enableSharing={enableSharing}
+						/>
+					)}
 					<Typography variant="subtitle1" color="text.primary">
 						{resource?.title}
 					</Typography>
@@ -74,18 +74,18 @@ const ShowSnippet: React.FC<ShowProps> = (props) => {
 export default ShowSnippet
 
 const sx = {
-	paper: {		
-    border: '1px solid',
-    borderColor: 'divider',
-    my: 1,
-    transition: 'box-shadow 0.3s',
-    '&:hover': {
-      boxShadow: 2,
-    },
+	paper: {
+		border: '1px solid',
+		borderColor: 'divider',
+		my: 1,
+		transition: 'box-shadow 0.3s',
+		'&:hover': {
+			boxShadow: 2,
+		},
 	},
 	container: {
-    borderRadius: 1,
-    overflow: 'hidden',
+		borderRadius: 1,
+		overflow: 'hidden',
 		width: '100%',
 		justifyContent: 'flex-start',
 		alignItems: {
@@ -98,9 +98,9 @@ const sx = {
 	},
 	imageContainer: {
 		width: '100%',
-    borderRadius: theme => 
-      `${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0 0`,
-    overflow: 'hidden'
+		borderRadius: (theme) =>
+			`${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0 0`,
+		overflow: 'hidden',
 	},
 	closeButton: {
 		position: 'absolute',

@@ -22,7 +22,7 @@ export type RemoteAutosuggestProps = {
 	defaultOptions?: OptionType[]
 	enableRemoteSearch?: boolean
 	enableClear?: boolean
-  perPage?: number 
+	perPage?: number
 }
 
 const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
@@ -43,7 +43,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		defaultOptions = [],
 		enableRemoteSearch = false,
 		enableClear = false,
-    perPage = 100
+		perPage = 100,
 	} = props
 
 	const { error, clearError } = useError({
@@ -51,12 +51,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		name: name,
 	})
 
-	const { 
-    loading, 
-    delayedLoading, 
-    resources, 
-    findMany 
-  } = useResource({
+	const { loading, delayedLoading, resources, findMany } = useResource({
 		url: url,
 		name: name,
 	})
@@ -78,16 +73,16 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 	}
 
 	const formatResources = (resources) => {
-    if(!displayField) return [];
+		if (!displayField) return []
 		return resources.map((resource) => ({
 			label: get(resource, displayField),
 			value: get(resource, valueParam),
 			image: imageField ? get(resource, imageField) : null,
-		}))    
+		}))
 	}
 
 	const findOption = async (value) => {
-		if (!value) return null;
+		if (!value) return null
 		let resource = resources.find((resource) => resource[displayField] == value)
 		if (resource) {
 			setOption({
@@ -99,16 +94,15 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 
 	useEffect(() => {
 		if (resources) {
-			setOptions([
-        ...formatResources(resources), 
-        ...defaultOptions
-      ])
+			setOptions([...formatResources(resources), ...defaultOptions])
 		}
 	}, [resources])
 
 	useEffect(() => {
 		if (value && resources?.length > 0) {
-			let resource = resources.find((resource) => get(resource, valueParam) == value)
+			let resource = resources.find(
+				(resource) => get(resource, valueParam) == value
+			)
 			if (resource) {
 				setOption({
 					label: get(resource, displayField),
@@ -138,22 +132,22 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		}
 	}, [defaultQuery])
 
-  if(!displayField) return null;
+	if (!displayField) return null
 	return (
-    <Autosuggest
-      errors={errors}
-      loading={delayedLoading}
-      direction={direction}
-      label={label}
-      name={name}
-      value={option}
-      options={options}
-      placeholder={placeholder}
-      handleChange={handleChange}
-      handleInputChange={handleInputChange}
-      handleClear={handleClear}
-      enableClear={enableClear}
-    />
+		<Autosuggest
+			errors={errors}
+			loading={delayedLoading}
+			direction={direction}
+			label={label}
+			name={name}
+			value={option}
+			options={options}
+			placeholder={placeholder}
+			handleChange={handleChange}
+			handleInputChange={handleInputChange}
+			handleClear={handleClear}
+			enableClear={enableClear}
+		/>
 	)
 }
 

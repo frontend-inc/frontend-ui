@@ -61,7 +61,10 @@ const Modal: React.FC<ModalProps> = (props) => {
 				'& .MuiDialog-paper': {
 					bgcolor: 'background.default',
 					maxWidth: {
-						sm: (isMobile || fullScreen) ? '100vw' : muiTheme.breakpoints.values[maxWidth],
+						sm:
+							isMobile || fullScreen
+								? '100vw'
+								: muiTheme.breakpoints.values[maxWidth],
 						xs: '100vw',
 					},
 				},

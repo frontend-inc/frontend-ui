@@ -5,7 +5,7 @@ import {
 	Image,
 	Actions,
 	TouchableOpacity,
-  LightDarkMode
+	LightDarkMode,
 } from '../../../components'
 import { Box } from '@mui/material'
 import { buildActions } from '../../../helpers'
@@ -15,7 +15,7 @@ type ImageCardProps = {
 	enableComments?: boolean
 	enableFavorites?: boolean
 	enableRatings?: boolean
-  enableLikes?: boolean
+	enableLikes?: boolean
 	resource: any
 	handleClick: () => void
 	handleEdit?: (item: any) => void
@@ -29,11 +29,11 @@ type ImageCardProps = {
 const ImageCard: React.FC<ImageCardProps> = (props) => {
 	const {
 		resource,
-    handleClick,
-    enableEdit,
-    enableDelete,
-    handleEdit,    
-    handleDelete,
+		handleClick,
+		enableEdit,
+		enableDelete,
+		handleEdit,
+		handleDelete,
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
@@ -41,9 +41,8 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 
 	const { title, image } = resource || {}
 
-
 	return (
-    <LightDarkMode mode='dark'>
+		<LightDarkMode mode="dark">
 			<Box sx={sx.root}>
 				<TouchableOpacity handleClick={handleClick}>
 					<Image
@@ -59,22 +58,21 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 						<FavoriteButton handle={resource?.handle} />
 					)}
 					<Actions
-            resource={resource}
+						resource={resource}
 						numVisible={0}
-						actions={ 
-              buildActions({
-                enableEdit,
-                enableDelete,
-                handleEdit,
-                handleDelete
-            })}
+						actions={buildActions({
+							enableEdit,
+							enableDelete,
+							handleEdit,
+							handleDelete,
+						})}
 					/>
 				</Box>
 				<Box sx={sx.userCard}>
 					{resource?.user && <UserChip user={resource?.user} />}
 				</Box>
 			</Box>
-    </LightDarkMode>
+		</LightDarkMode>
 	)
 }
 

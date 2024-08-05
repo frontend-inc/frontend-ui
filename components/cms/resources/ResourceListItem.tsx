@@ -24,20 +24,20 @@ export type ResourceProps = {
 	handleClick?: (resource: any) => void
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
-  secondary?: React.ReactNode
+	secondary?: React.ReactNode
 	secondaryActions?: React.ReactNode
 	menuActions?: any
-  sortable?: boolean
-  isDragging?: boolean
-  enableBorder?: boolean
-	displayFields?: DisplayFieldType[]  
+	sortable?: boolean
+	isDragging?: boolean
+	enableBorder?: boolean
+	displayFields?: DisplayFieldType[]
 }
 
 const Resource: React.FC<ResourceProps> = (props) => {
 	const {
 		icon,
 		avatar,
-    color,
+		color,
 		resource,
 		handleClick,
 		handleEdit,
@@ -45,22 +45,23 @@ const Resource: React.FC<ResourceProps> = (props) => {
 		secondaryActions,
 		menuActions,
 		displayFields = [],
-    sortable,
-    isDragging=false,
-    enableBorder=false,
-    secondary
+		sortable,
+		isDragging = false,
+		enableBorder = false,
+		secondary,
 	} = props
 
-  const { title } = resource || {}
-  const image = resource?.image?.url 
+	const { title } = resource || {}
+	const image = resource?.image?.url
 
 	return (
-		<List sx={{ 
-      ...sx.root, 
-      ...(enableBorder && sx.rootBorder ),
-      ...(isDragging && sx.isDragging)
-      }}
-    >
+		<List
+			sx={{
+				...sx.root,
+				...(enableBorder && sx.rootBorder),
+				...(isDragging && sx.isDragging),
+			}}
+		>
 			<ListItem
 				disablePadding
 				secondaryAction={
@@ -78,11 +79,11 @@ const Resource: React.FC<ResourceProps> = (props) => {
 					sx={sx.listItemButton}
 					onClick={handleClick ? () => handleClick(resource) : undefined}
 				>
-          { sortable && (
-            <ListItemIcon sx={sx.dragHandle}>
-              <Icon name="GripVertical" size={20} color='text.secondary' />
-            </ListItemIcon>
-          )}
+					{sortable && (
+						<ListItemIcon sx={sx.dragHandle}>
+							<Icon name="GripVertical" size={20} color="text.secondary" />
+						</ListItemIcon>
+					)}
 					{avatar && <ListItemIcon sx={sx.listItemIcon}>{avatar}</ListItemIcon>}
 					{!avatar && image && (
 						<ListItemIcon sx={sx.listItemIcon}>
@@ -107,13 +108,10 @@ const Resource: React.FC<ResourceProps> = (props) => {
 							</Typography>
 						}
 						secondary={
-              <>
-                <DisplayFields 
-                  fields={displayFields} 
-                  resource={resource} 
-                />
-                {secondary}
-              </>
+							<>
+								<DisplayFields fields={displayFields} resource={resource} />
+								{secondary}
+							</>
 						}
 					/>
 				</ListItemButton>
@@ -129,13 +127,12 @@ const sx = {
 		p: 0,
 		m: 0,
 	},
-  rootBorder: {
-    borderBottom: '1px solid',
-    borderColor: 'divider'
-  },
+	rootBorder: {
+		borderBottom: '1px solid',
+		borderColor: 'divider',
+	},
 	listItemButton: {
 		p: 1,
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
 	},
 	actions: {
 		alignItems: 'center',
@@ -143,14 +140,14 @@ const sx = {
 	listItemIcon: {
 		mr: 2,
 	},
-  dragHandle: {
-    width: 24,
-    cursor: 'grab',
-    '&:active': {
-      cursor: 'grabbing',
-    },
-  },
-  isDragging: {
-    border: '2px solid red',
-  }
+	dragHandle: {
+		width: 24,
+		cursor: 'grab',
+		'&:active': {
+			cursor: 'grabbing',
+		},
+	},
+	isDragging: {
+		border: '2px solid red',
+	},
 }

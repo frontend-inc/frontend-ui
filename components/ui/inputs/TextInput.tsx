@@ -9,7 +9,7 @@ import { useDebounce } from 'use-debounce'
 type TextInputProps = TextInputPropsType & {
 	onBlur?: () => void
 	onFocus?: () => void
-  disableDebounce?: boolean
+	disableDebounce?: boolean
 }
 
 const TextInput: React.FC<TextInputProps> = (props) => {
@@ -30,7 +30,7 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 		onBlur,
 		onFocus,
 		info,
-    disableDebounce=false
+		disableDebounce = false,
 	} = props
 
 	const [text, setText] = useState(value)
@@ -44,9 +44,9 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 	const handleInputChange = (e) => {
 		clearError()
 		setText(e.target.value)
-    if(disableDebounce){
-      handleChange(e)    
-    }
+		if (disableDebounce) {
+			handleChange(e)
+		}
 	}
 
 	useEffect(() => {

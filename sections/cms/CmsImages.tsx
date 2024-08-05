@@ -4,10 +4,7 @@ import { ImageList } from '../../components'
 import { ImageListProps } from '../../components/cms/collections/ImageList'
 import { SectionProps, HeadingProps, FormProps } from '../../types'
 
-type CmsImagesProps = SectionProps &
-	HeadingProps &
-	ImageListProps &
-	FormProps
+type CmsImagesProps = SectionProps & HeadingProps & ImageListProps & FormProps
 
 const CmsImages: React.FC<CmsImagesProps> = (props) => {
 	const {

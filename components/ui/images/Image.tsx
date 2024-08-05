@@ -61,7 +61,8 @@ const Image: React.FC<ImageProps> = (props) => {
 							...(!disableBorderRadius && sx.borderRadius),
 							...(!enableOverlay &&
 								!disableBorderRadius &&
-								enableGradient && sx.borderRadius),
+								enableGradient &&
+								sx.borderRadius),
 							bgcolor,
 							opacity,
 						},
@@ -142,7 +143,8 @@ const sx = {
 	},
 	gradient: {
 		height: '100%',
-    background: 'linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%)',
+		background:
+			'linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%)',
 	},
 	secondaryActions: {
 		position: 'absolute',

@@ -38,7 +38,7 @@ type ListCardProps = {
 	enableUsers?: boolean
 	enableComments?: boolean
 	enableFavorites?: boolean
-  enableLikes?: boolean
+	enableLikes?: boolean
 	enableRatings?: boolean
 }
 

@@ -39,11 +39,17 @@ type FieldProps = {
 	disablePadding?: boolean
 	field: DisplayFieldType
 	resource?: any
-  alignItems?: 'flex-start' | 'center' | 'flex-end'
+	alignItems?: 'flex-start' | 'center' | 'flex-end'
 }
 
 const DisplayField: React.FC<FieldProps> = (props) => {
-	const { field, resource, color = 'text.secondary', alignItems='flex-start', ...rest } = props
+	const {
+		field,
+		resource,
+		color = 'text.secondary',
+		alignItems = 'flex-start',
+		...rest
+	} = props
 	const { name, variant: fieldVariant, icon } = field
 	let value = get(resource, name)
 	if (!value || value?.length == 0) return null
@@ -91,7 +97,7 @@ const DisplayField: React.FC<FieldProps> = (props) => {
 			variant="caption"
 			color={color}
 			value={value}
-      alignItems={alignItems}
+			alignItems={alignItems}
 			{...componentProps}
 			{...rest}
 		/>

@@ -10,17 +10,13 @@ const FieldString: React.FC<FieldElementProps> = (props) => {
 		color = 'text.primary',
 		placeholder,
 		variant = 'body1',
-    alignItems,
+		alignItems,
 		...rest
 	} = props
 
 	return (
 		<FieldWrapper alignItems={alignItems} label={label} color={color} {...rest}>
-			<Typography 
-        variant={variant} 
-        color={color}
-        sx={sx.text}
-      >
+			<Typography variant={variant} color={color} sx={sx.text}>
 				{value || placeholder}
 			</Typography>
 		</FieldWrapper>

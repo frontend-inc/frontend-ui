@@ -16,7 +16,7 @@ import { MetafieldType } from '../../../types'
 type MyAccountModalProps = {
 	enableTeams?: boolean
 	enableStripe?: boolean
-  metafields?: MetafieldType[]
+	metafields?: MetafieldType[]
 }
 
 const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
@@ -85,7 +85,7 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 						handleSubmit={handleSubmit}
 						handleDeleteAvatar={handleDeleteAvatar}
 						handleLogout={handleLogout}
-            metafields={ metafields }
+						metafields={metafields}
 					/>
 				)}
 				{currentTab == 1 && <TeamList />}

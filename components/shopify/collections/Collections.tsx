@@ -12,11 +12,7 @@ export type CollectionsProps = {
 }
 
 const Collections: React.FC<CollectionsProps> = (props) => {
-	const {
-		href,
-		enableGradient = false,
-		enableOverlay = false,
-	} = props
+	const { href, enableGradient = false, enableOverlay = false } = props
 
 	const router = useRouter()
 
@@ -39,16 +35,16 @@ const Collections: React.FC<CollectionsProps> = (props) => {
 	}, [])
 
 	return (
-		<Box sx={ sx.grid }>
-      { collections?.map((collection, index) =>(        
-        <CollectionCard 
-          key={index}
-          collection={collection}
-          handleClick={() => handleClick(collection)}
-          enableGradient={enableGradient}
-          enableOverlay={enableOverlay}
-        />
-      ))}
+		<Box sx={sx.grid}>
+			{collections?.map((collection, index) => (
+				<CollectionCard
+					key={index}
+					collection={collection}
+					handleClick={() => handleClick(collection)}
+					enableGradient={enableGradient}
+					enableOverlay={enableOverlay}
+				/>
+			))}
 		</Box>
 	)
 }
@@ -56,8 +52,8 @@ const Collections: React.FC<CollectionsProps> = (props) => {
 export default Collections
 
 const sx = {
-  grid: {
-    width: '100%',
+	grid: {
+		width: '100%',
 		display: 'grid',
 		gridTemplateColumns: {
 			md: '1fr 1fr 1fr',

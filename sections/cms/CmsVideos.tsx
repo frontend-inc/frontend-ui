@@ -4,10 +4,7 @@ import { VideoList } from '../../components'
 import { VideoListProps } from '../../components/cms/collections/VideoList'
 import { SectionProps, HeadingProps, FormProps } from '../../types'
 
-type CmsVideosProps = SectionProps &
-	HeadingProps &
-	VideoListProps &
-	FormProps
+type CmsVideosProps = SectionProps & HeadingProps & VideoListProps & FormProps
 
 const CmsVideos: React.FC<CmsVideosProps> = (props) => {
 	const {

@@ -1,16 +1,14 @@
 import React from 'react'
 import { Button, Box } from '@mui/material'
-import {
-	FormFields
-} from '../../../components'
+import { FormFields } from '../../../components'
 import { FormFieldType, MetafieldType } from '../../../types'
 import { USER_FORM_FIELDS } from '../../../constants'
 
 type MyAccountFormProps = {
 	loading?: boolean
-  errors?: any
+	errors?: any
 	user: any
-  metafields?: MetafieldType[]
+	metafields?: MetafieldType[]
 	handleChange: (ev: any) => void
 	handleSubmit: () => void
 	handleDeleteAvatar: () => void
@@ -20,35 +18,39 @@ type MyAccountFormProps = {
 const MyAccountForm: React.FC<MyAccountFormProps> = (props) => {
 	const {
 		loading,
-    errors,
+		errors,
 		user,
-    metafields=[],
+		metafields = [],
 		handleSubmit,
 		handleChange,
 		handleLogout,
 		handleDeleteAvatar,
 	} = props
 
-  let formFields = USER_FORM_FIELDS
-  
-  formFields = [
-    ...formFields,
-    { label: 'Accept email marketing', name: 'accepts_marketing', variant: 'boolean' },        
-  ]
+	let formFields = USER_FORM_FIELDS
+
+	formFields = [
+		...formFields,
+		{
+			label: 'Accept email marketing',
+			name: 'accepts_marketing',
+			variant: 'boolean',
+		},
+	]
 
 	return (
 		<Box sx={sx.root}>
-      <FormFields 
-        loading={loading}
-        errors={errors}
-        //@ts-ignore 
-        fields={formFields}
-        resource={user}
-        handleChange={handleChange}
-        handleRemove={handleDeleteAvatar}
-        handleSubmit={handleSubmit}
-        buttonText='Save'
-      />			
+			<FormFields
+				loading={loading}
+				errors={errors}
+				//@ts-ignore
+				fields={formFields}
+				resource={user}
+				handleChange={handleChange}
+				handleRemove={handleDeleteAvatar}
+				handleSubmit={handleSubmit}
+				buttonText="Save"
+			/>
 			<Button color="secondary" variant="contained" onClick={handleLogout}>
 				Logout
 			</Button>

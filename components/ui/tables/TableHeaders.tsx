@@ -10,7 +10,7 @@ type TableHeaderProps = {
 	enableSelect?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
-  enableShow?: boolean
+	enableShow?: boolean
 	handleSort: (e: any) => void
 	handleSelectAll?: (e: any) => void
 }
@@ -24,7 +24,7 @@ const TableHeaders: React.FC<TableHeaderProps> = (props) => {
 		enableSelect = false,
 		enableEdit = false,
 		enableDelete = false,
-    enableShow = false,
+		enableShow = false,
 		handleSort,
 		handleSelectAll,
 	} = props

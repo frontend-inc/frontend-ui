@@ -10,10 +10,10 @@ import {
 	RatingInput,
 	SwitchInput,
 	TextInput,
-  NoSpaceInput,
+	NoSpaceInput,
 	ShopifyProductInput,
-  ReferenceInput,
-  RemoteAutosuggest
+	ReferenceInput,
+	RemoteAutosuggest,
 } from '../../../components'
 import { FormFieldType, OptionType, SyntheticEventType } from '../../../types'
 
@@ -27,18 +27,17 @@ type FormInputProps = {
 	placeholder?: string
 	handleChange: (e: SyntheticEventType) => void
 	handleRemove: (name: string) => void
-  resource?: any
-  url?: string
-  foreignUrl?: string
-  contentType?: string
-  query?: any 
-  displayField?: string //Autosuggest has an optional display field param
-  fields?: FormFieldType[]
+	resource?: any
+	url?: string
+	foreignUrl?: string
+	contentType?: string
+	query?: any
+	displayField?: string //Autosuggest has an optional display field param
+	fields?: FormFieldType[]
 }
 
 const FormInput: React.FC<FormInputProps> = (props) => {
-	
-  const {
+	const {
 		variant,
 		name,
 		label,
@@ -47,24 +46,24 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		options,
 		placeholder,
 		handleChange,
-		handleRemove,    
-    resource,
-    url,
-    foreignUrl,
-    fields,
-    contentType, 
-    query={},  
-    displayField 
+		handleRemove,
+		resource,
+		url,
+		foreignUrl,
+		fields,
+		contentType,
+		query = {},
+		displayField,
 	} = props
 
 	let componentMapper = {
-    autosuggest: RemoteAutosuggest,
+		autosuggest: RemoteAutosuggest,
 		array: ArrayInput,
 		string: TextInput,
 		file: AttachmentInput,
 		url: TextInput,
 		text: TextInput,
-    nospace: NoSpaceInput,
+		nospace: NoSpaceInput,
 		location: LocationInput,
 		number: TextInput,
 		price: TextInput,
@@ -75,26 +74,26 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		rating: RatingInput,
 		image: ImageInput,
 		json: JSONInput,
-		shopify: ShopifyProductInput,    
-    habtm: ReferenceInput, 
+		shopify: ShopifyProductInput,
+		habtm: ReferenceInput,
 	}
 
 	let inputProps = {
-    autosuggest: {
-      url,
-      displayField,
-      query
-    },
+		autosuggest: {
+			url,
+			displayField,
+			query,
+		},
 		text: {
 			multiline: true,
 			rows: 6,
 		},
 		select: {
-      // Handle both array of strings and array of objects
+			// Handle both array of strings and array of objects
 			options: options?.map((option: OptionType) => ({
-        label: option.label || option,
-        value: option.value || option
-      })),
+				label: option.label || option,
+				value: option.value || option,
+			})),
 		},
 		number: {
 			type: 'number',
@@ -118,16 +117,16 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		file: {
 			handleRemove,
 		},
-    habtm: {
-      resource,
-      url,
-      foreignUrl,
-      contentType,
-      fields
-    }
+		habtm: {
+			resource,
+			url,
+			foreignUrl,
+			contentType,
+			fields,
+		},
 	}
 
-	let InputComponent = componentMapper[variant] || TextInput   
+	let InputComponent = componentMapper[variant] || TextInput
 
 	return (
 		<InputComponent
@@ -136,7 +135,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			name={name}
 			value={value || ''}
 			handleChange={handleChange}
-			placeholder={placeholder}   
+			placeholder={placeholder}
 			{...inputProps[variant]}
 		/>
 	)

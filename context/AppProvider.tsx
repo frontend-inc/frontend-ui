@@ -9,13 +9,7 @@ type AppProviderProps = {
 }
 
 const AppProvider = (props: AppProviderProps) => {
-	
-  const { 
-    children, 
-    clientUrl, 
-    name, 
-    logo 
-  } = props || {}
+	const { children, clientUrl, name, logo } = props || {}
 
 	const [alert, setAlert] = useState()
 	const [loading, setLoading] = useState(false)

@@ -29,12 +29,7 @@ const SelectableCardItem: React.FC<SelectableCardItemProps> = (props) => {
 				}}
 			>
 				<Box sx={sx.imageContainer}>
-					<Image
-						src={image}
-						height={200}
-						alt={title}
-						disableBorderRadius
-					/>
+					<Image src={image} height={200} alt={title} disableBorderRadius />
 				</Box>
 				<Stack spacing={1} sx={sx.content}>
 					<Stack spacing={0}>

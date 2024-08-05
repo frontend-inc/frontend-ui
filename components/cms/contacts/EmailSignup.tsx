@@ -117,8 +117,8 @@ const sx = {
 		textAlign: 'center',
 		width: '100%',
 		maxWidth: 420,
-    display: 'flex',
-    alignItems: 'flex-end',
+		display: 'flex',
+		alignItems: 'flex-end',
 	},
 	input: {
 		'& .MuiInputBase-input': {
@@ -129,7 +129,7 @@ const sx = {
 	button: {
 		boxShadow: 1,
 		minWidth: 120,
-    height: 42,
+		height: 42,
 		borderRadius: (theme) =>
 			`0 ${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0`,
 	},

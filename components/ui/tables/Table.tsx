@@ -11,7 +11,7 @@ type TableProps = {
 	enableSelect?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
-  handleClick: (value: any, row: any, field: any) => void
+	handleClick: (value: any, row: any, field: any) => void
 	handleEdit?: (row: any) => void
 	handleEditSelected?: (items: any[]) => void
 	handleDelete?: (items: any[]) => void
@@ -107,7 +107,7 @@ const Table: React.FC<TableProps> = (props) => {
 	return (
 		<>
 			<TableList
-				loading={loading}        
+				loading={loading}
 				disableBorderRadius={disableBorderRadius}
 				query={query}
 				toolbar={

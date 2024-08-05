@@ -81,7 +81,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 	}
 
 	const handleResetPassword = async () => {
-    //@ts-ignore    
+		//@ts-ignore
 		let resp = await updateMe({
 			password: user?.password,
 			password_confirmation: user?.password_confirmation,
@@ -114,10 +114,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 	}, [authOpen])
 
 	return (
-		<Modal
-			open={authOpen}
-			handleClose={() => setAuthOpen(false)}
-		>
+		<Modal open={authOpen} handleClose={() => setAuthOpen(false)}>
 			<Box sx={sx.tabsContainer}>
 				<Tabs value={tab} onChange={handleTabChange}>
 					<Tab label="Login" value={0} />

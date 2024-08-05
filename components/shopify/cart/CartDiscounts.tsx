@@ -19,7 +19,7 @@ const CartDiscountCodeInput: React.FC = () => {
 
 	return (
 		<Stack>
-			<Stack direction="row" spacing={0} alignItems='center'>
+			<Stack direction="row" spacing={0} alignItems="center">
 				<TextInput
 					name="discountCode"
 					value={discountCode}
@@ -27,7 +27,7 @@ const CartDiscountCodeInput: React.FC = () => {
 					placeholder="Enter discount code"
 					styles={sx.input}
 				/>
-				<Button          
+				<Button
 					onClick={handleSubmit}
 					color="secondary"
 					variant="contained"
@@ -61,8 +61,8 @@ const sx = {
 		},
 	},
 	button: {
-    mt: '4px',
-    height: 42,
+		mt: '4px',
+		height: 42,
 		borderRadius: (theme) =>
 			`0 ${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0`,
 	},

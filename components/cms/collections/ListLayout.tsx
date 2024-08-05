@@ -1,17 +1,13 @@
 import React from 'react'
 import { Box } from '@mui/material'
 
-type ListLayoutProps = {	
+type ListLayoutProps = {
 	grid?: boolean
-  children: React.ReactNode
+	children: React.ReactNode
 }
 
 const ListLayout: React.FC<ListLayoutProps> = (props) => {
-
-	const {
-    grid = false,
-    children 
-	} = props
+	const { grid = false, children } = props
 
 	return (
 		<Box
@@ -20,7 +16,7 @@ const ListLayout: React.FC<ListLayoutProps> = (props) => {
 				...(grid ? sx.grid : sx.list),
 			}}
 		>
-			{ children }
+			{children}
 		</Box>
 	)
 }
@@ -31,9 +27,9 @@ const sx = {
 	root: {
 		width: '100%',
 		overflowX: 'scroll',
-    '&::-webkit-scrollbar': {
-      display: 'none'
-    },
+		'&::-webkit-scrollbar': {
+			display: 'none',
+		},
 	},
 	list: {
 		display: 'flex',

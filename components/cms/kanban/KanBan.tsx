@@ -19,7 +19,7 @@ export type KanBanProps = {
 	handleClick: (resource: any) => void
 	enableComments?: boolean
 	enableFavorites?: boolean
-  enableLikes?: boolean
+	enableLikes?: boolean
 	enableRatings?: boolean
 	enableOverlay?: boolean
 	enableGradient?: boolean
@@ -47,7 +47,7 @@ const KanBan: React.FC<KanBanProps> = (props) => {
 		enableGradient,
 		enableComments,
 		enableFavorites,
-    enableLikes,
+		enableLikes,
 		enableRatings,
 		enableEdit,
 		enableDelete,
@@ -61,7 +61,7 @@ const KanBan: React.FC<KanBanProps> = (props) => {
 	const [groupedResources, setGroupedResources] = useState({})
 
 	const handleGroupResources = (resources, fieldName) => {
-		let sortedResources = resources.sort((a, b) => a.position - b.position)		
+		let sortedResources = resources.sort((a, b) => a.position - b.position)
 		let allowedOptions = headers.map((header) => header.value)
 		let grouped = groupResourcesByField(
 			sortedResources,
@@ -79,31 +79,31 @@ const KanBan: React.FC<KanBanProps> = (props) => {
 
 	if (Object.keys(groupedResources).length == 0) return null
 	return (
-    <AuthGuard requireAuth>
-      <Sortable
-        loading={loading}
-        actions={actions}
-        headers={headers}
-        columns={groupedResources}
-        activeResource={activeResource}
-        handleDrop={handleDrop}
-        handleClick={handleClick}
-        displayFields={displayFields}
-        enableOverlay={enableOverlay}
-        enableGradient={enableGradient}
-        enableComments={enableComments}
-        enableFavorites={enableFavorites}
-        enableLikes={enableLikes}
-        enableRatings={enableRatings}
-        enableEdit={enableEdit}
-        enableDelete={enableDelete}
-        enableCreate={enableCreate}
-        handleEdit={handleEdit}
-        handleDelete={handleDelete}
-        handleAdd={handleAdd}
-        handleComment={handleComment}
-      />
-    </AuthGuard>
+		<AuthGuard requireAuth>
+			<Sortable
+				loading={loading}
+				actions={actions}
+				headers={headers}
+				columns={groupedResources}
+				activeResource={activeResource}
+				handleDrop={handleDrop}
+				handleClick={handleClick}
+				displayFields={displayFields}
+				enableOverlay={enableOverlay}
+				enableGradient={enableGradient}
+				enableComments={enableComments}
+				enableFavorites={enableFavorites}
+				enableLikes={enableLikes}
+				enableRatings={enableRatings}
+				enableEdit={enableEdit}
+				enableDelete={enableDelete}
+				enableCreate={enableCreate}
+				handleEdit={handleEdit}
+				handleDelete={handleDelete}
+				handleAdd={handleAdd}
+				handleComment={handleComment}
+			/>
+		</AuthGuard>
 	)
 }
 

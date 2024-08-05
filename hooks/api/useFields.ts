@@ -10,19 +10,19 @@ const useFields = (props: UseFieldsParams) => {
 
 	const [formFields, setFormFields] = useState([])
 
-  const { resources: dataFormFields } = useQuery({
-    url: `${url}/form_fields`,
-    query: {}
-  })
+	const { resources: dataFormFields } = useQuery({
+		url: `${url}/form_fields`,
+		query: {},
+	})
 
-  useEffect(() => {
-    if(dataFormFields){
-      setFormFields(dataFormFields)
-    }
-  }, [dataFormFields])
+	useEffect(() => {
+		if (dataFormFields) {
+			setFormFields(dataFormFields)
+		}
+	}, [dataFormFields])
 
-	return {		
-    formFields,		 
+	return {
+		formFields,
 	}
 }
 

@@ -24,15 +24,15 @@ export type FieldElementProps = {
 	color?: string
 	direction?: 'row' | 'column'
 	variant?: TypographyVariantsType
-  alignItems?: 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline'
+	alignItems?: 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline'
 	placeholder?: string
 	enableBorder?: boolean
 	disablePadding?: boolean
-	dateFormat?: string  
+	dateFormat?: string
 }
 
 type FieldProps = {
-  field: DisplayFieldType
+	field: DisplayFieldType
 	resource?: any
 	label?: string
 	color?: string
@@ -48,15 +48,15 @@ const Field: React.FC<FieldProps> = (props) => {
 	const { field, resource, dateFormat = 'MM/DD/YYYYY', ...rest } = props
 	const { variant: fieldVariant, label } = field
 	let value = get(resource, field?.name)
-	if (!value){
-    switch(fieldVariant){
-      case 'array': 
-        value = []
-      default:
-        value = '-'
-        break
-    }
-  }
+	if (!value) {
+		switch (fieldVariant) {
+			case 'array':
+				value = []
+			default:
+				value = '-'
+				break
+		}
+	}
 
 	if (field?.variant == 'date' || field?.variant == 'datetime') {
 		value = moment(value).format(dateFormat)
@@ -67,7 +67,7 @@ const Field: React.FC<FieldProps> = (props) => {
 		date: FieldDate,
 		datetime: FieldDate,
 		file: FieldFile,
-    float: FieldString,
+		float: FieldString,
 		image: FieldImage,
 		video: FieldVideo,
 		json: FieldJSON,

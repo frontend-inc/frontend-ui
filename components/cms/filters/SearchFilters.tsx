@@ -10,9 +10,7 @@ type ListFilterListProps = {
 	handleFilter: any
 }
 
-const ListSearchFilters: React.FC<ListFilterListProps> = (
-	props
-) => {
+const ListSearchFilters: React.FC<ListFilterListProps> = (props) => {
 	const { filters = [], filterOptions = [], handleFilter } = props
 	const { open, toggleMenu, closeMenu } = useMenu()
 

@@ -13,15 +13,9 @@ export type ShowContainerProps = {
 const ShowContainer: React.FC<ShowContainerProps> = (props) => {
 	const { url, fields, resource, children } = props || {}
 	return (
-		<ResourceProvider
-      name='document' 
-      resource={resource} 
-      url={url}
-    >
+		<ResourceProvider name="document" resource={resource} url={url}>
 			{children}
-			<EditModal 
-        fields={fields} 
-      />
+			<EditModal fields={fields} />
 		</ResourceProvider>
 	)
 }

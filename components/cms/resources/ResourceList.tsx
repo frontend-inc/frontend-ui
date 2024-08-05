@@ -3,7 +3,7 @@ import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
 import { Button, Box, Stack } from '@mui/material'
 import {
-  SortableList,
+	SortableList,
 	FormFields,
 	Drawer,
 	AlertModal,
@@ -15,7 +15,11 @@ import {
 	IconLoading,
 	Loader,
 } from '../../../components'
-import { FormFieldType, FilterOptionType, SearchFilterOptionType } from '../../../types'
+import {
+	FormFieldType,
+	FilterOptionType,
+	SearchFilterOptionType,
+} from '../../../types'
 import { Placeholder } from '../..'
 import { SortOptionType, SyntheticEventType } from '../../../types'
 import ResourceListItem from './ResourceListItem'
@@ -39,11 +43,11 @@ export type ResourceListProps = {
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
-  sortable?: boolean
+	sortable?: boolean
 	emptyIcon?: string
 	emptyTitle?: string
-	emptyDescription?: string	
-  itemProps?: any
+	emptyDescription?: string
+	itemProps?: any
 }
 
 const ResourceList: React.FC<ResourceListProps> = (props) => {
@@ -63,11 +67,11 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		enableDelete,
 		enableCreate,
 		handleClick,
-    sortable=false,
+		sortable = false,
 		emptyIcon = 'Search',
 		emptyTitle = 'No results found',
 		emptyDescription = 'Try adjusting your search or filters',
-		itemProps={}
+		itemProps = {},
 	} = props
 
 	const [openModal, setOpenModal] = useState(false)
@@ -82,7 +86,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		update,
 		create,
 		destroy,
-    updatePositions,
+		updatePositions,
 		handleChange,
 		query,
 		findMany,
@@ -200,9 +204,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		await removeAttachment(resource?.id, name)
 	}
 
-  const handleDrop = async (sorted) => {
-    await updatePositions(sorted)
-  }
+	const handleDrop = async (sorted) => {
+		await updatePositions(sorted)
+	}
 
 	useEffect(() => {
 		if (activeFilters) {
@@ -222,9 +226,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 			})
 		}
 	}, [url, name, perPage])
-      
-  const enableFilters = filterOptions?.length > 0
-  const enableSorting = sortOptions?.length > 0
+
+	const enableFilters = filterOptions?.length > 0
+	const enableSorting = sortOptions?.length > 0
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
@@ -252,15 +256,15 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 						</Box>
 					)}
 					{enableSorting && (
-            <Box>
-              <SortButton
-                sortBy={query?.sort_by || 'id'}
-                sortDirection={query?.sort_direction || 'desc'}
-                sortOptions={sortOptions}
-                handleSortBy={handleSort}
-                handleSortDirection={handleSortDirection}
-              />
-            </Box>
+						<Box>
+							<SortButton
+								sortBy={query?.sort_by || 'id'}
+								sortDirection={query?.sort_direction || 'desc'}
+								sortOptions={sortOptions}
+								handleSortBy={handleSort}
+								handleSortDirection={handleSortDirection}
+							/>
+						</Box>
 					)}
 				</Stack>
 				{enableCreate && (
@@ -271,11 +275,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 							variant="contained"
 							onClick={handleAdd}
 							startIcon={
-								<Icon 
-                  name="Plus" 
-                  color="secondary.contrastText" 
-                  size={20} 
-                />
+								<Icon name="Plus" color="secondary.contrastText" size={20} />
 							}
 						>
 							Add
@@ -292,48 +292,52 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 							...(dense && sx.listDense),
 						}}
 					>
-            { sortable && !loading && resources?.length > 0 && (
-              <SortableList 
-                droppableId="resource-list"
-                items={ resources }
-                handleDrop={handleDrop}
-                renderItem={(resource, index) => (
-                  <Component
-                    key={index}
-                    sortable
-                    layout={layout}
-                    resource={resource}
-                    handleClick={
-                      handleClick ? () => handleClick(resource) : undefined
-                    }
-                    handleEdit={
-                      enableEdit ? () => handleEdit(resource) : undefined
-                    }
-                    handleDelete={
-                      enableDelete ? () => handleDeleteClick(resource) : undefined
-                    }
-                    { ...itemProps }
-                  />
-                )}
-              />
-            )}						  
-            { !sortable && !loading && resources?.map((resource, index) => (
-              <Component
-                key={index}
-                layout={layout}
-                resource={resource}
-                handleClick={
-                  handleClick ? () => handleClick(resource) : undefined
-                }
-                handleEdit={
-                  enableEdit ? () => handleEdit(resource) : undefined
-                }
-                handleDelete={
-                  enableDelete ? () => handleDeleteClick(resource) : undefined
-                }
-                { ...itemProps }
-              />
-            ))}
+						{sortable && !loading && resources?.length > 0 && (
+							<SortableList
+								droppableId="resource-list"
+								items={resources}
+								handleDrop={handleDrop}
+								renderItem={(resource, index) => (
+									<Component
+										key={index}
+										sortable
+										layout={layout}
+										resource={resource}
+										handleClick={
+											handleClick ? () => handleClick(resource) : undefined
+										}
+										handleEdit={
+											enableEdit ? () => handleEdit(resource) : undefined
+										}
+										handleDelete={
+											enableDelete
+												? () => handleDeleteClick(resource)
+												: undefined
+										}
+										{...itemProps}
+									/>
+								)}
+							/>
+						)}
+						{!sortable &&
+							!loading &&
+							resources?.map((resource, index) => (
+								<Component
+									key={index}
+									layout={layout}
+									resource={resource}
+									handleClick={
+										handleClick ? () => handleClick(resource) : undefined
+									}
+									handleEdit={
+										enableEdit ? () => handleEdit(resource) : undefined
+									}
+									handleDelete={
+										enableDelete ? () => handleDeleteClick(resource) : undefined
+									}
+									{...itemProps}
+								/>
+							))}
 					</Box>
 				</Stack>
 			</Box>
@@ -345,11 +349,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				/>
 			)}
 			<Loader loading={loading} />
-			<LoadMore 
-        page={page} 
-        numPages={numPages} 
-        loadMore={loadMore} 
-      />
+			<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
 			<Drawer
 				open={openModal}
 				handleClose={() => setOpenModal(false)}
@@ -367,7 +367,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				}
 			>
 				<FormFields
-          errors={errors}
+					errors={errors}
 					loading={loading}
 					fields={fields}
 					resource={resource}

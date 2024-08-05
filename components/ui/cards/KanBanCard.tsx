@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Button, Stack, Typography } from '@mui/material'
 import {
-	Image,	
+	Image,
 	DisplayFields,
 	SocialActions,
 	AvgRating,
@@ -36,7 +36,7 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 		enableGradient = false,
 		enableOverlay = false,
 		enableComments,
-    enableLikes,
+		enableLikes,
 		enableFavorites,
 		enableRatings,
 		enableEdit,
@@ -77,11 +77,7 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 				)}
 				<Stack direction="row" alignItems="flex-start">
 					<Stack direction="column" spacing={0.5} sx={sx.content}>
-						<Typography
-							sx={sx.title}
-							color="text.primary"
-							variant='subtitle2'
-						>
+						<Typography sx={sx.title} color="text.primary" variant="subtitle2">
 							{truncate(title)}
 						</Typography>
 						{enableRatings == true && (
@@ -103,12 +99,12 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 					Details
 				</Button>
 				<Stack direction="row" alignItems="flex-end">
-          <SocialActions 
-            resource={resource} 
-            enableLikes={enableLikes} 
-            enableFavorites={enableFavorites} 
-            enableComments={enableComments}
-          />					
+					<SocialActions
+						resource={resource}
+						enableLikes={enableLikes}
+						enableFavorites={enableFavorites}
+						enableComments={enableComments}
+					/>
 					<Actions
 						numVisible={0}
 						actions={buildActions({

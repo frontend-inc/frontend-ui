@@ -16,7 +16,7 @@ export { default as ListToolbar } from './ListToolbar'
 export { default as VideoList } from './VideoList'
 export { default as VideoListItems } from './VideoListItems'
 
-// Modals 
+// Modals
 export { default as ShowModal } from '../modals/ShowModal'
 export { default as ShowImageModal } from '../modals/ShowImageModal'
 export { default as ShowVideoModal } from '../modals/ShowVideoModal'

@@ -24,9 +24,9 @@ type TableProps = {
 	enableSelect?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
-  enableShow?: boolean
-  handleClick?: (value: any, row: any, field: any) => void
-  handleShow?: (resource: any) => void 
+	enableShow?: boolean
+	handleClick?: (value: any, row: any, field: any) => void
+	handleShow?: (resource: any) => void
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
 	page?: number
@@ -56,12 +56,12 @@ const TableList: React.FC<TableProps> = (props) => {
 		disableBorderRadius,
 		enableSelect = false,
 		enableEdit = false,
-		enableDelete = false,    
-    enableShow = false,
-		handleClick,    
+		enableDelete = false,
+		enableShow = false,
+		handleClick,
 		handleEdit,
 		handleDelete,
-    handleShow,
+		handleShow,
 		query,
 		selected,
 		selectedIds,
@@ -102,7 +102,7 @@ const TableList: React.FC<TableProps> = (props) => {
 						enableEdit={enableEdit}
 						enableSelect={enableSelect}
 						enableDelete={enableDelete}
-            enableShow={enableShow}
+						enableShow={enableShow}
 						fields={fields}
 						sortBy={query?.sort_by}
 						sortDirection={query?.sort_direction}
@@ -119,11 +119,11 @@ const TableList: React.FC<TableProps> = (props) => {
 							enableSelect={enableSelect}
 							enableEdit={enableEdit}
 							enableDelete={enableDelete}
-              enableShow={enableShow}
-              handleClick={ handleClick }              
+							enableShow={enableShow}
+							handleClick={handleClick}
 							handleEdit={handleEdit}
 							handleDelete={handleDelete}
-              handleShow={handleShow}
+							handleShow={handleShow}
 							handleSelect={handleSelect}
 						/>
 					))}

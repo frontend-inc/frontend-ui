@@ -9,12 +9,7 @@ type SortableListItemProps = {
 }
 
 const SortableListItem: React.FC<SortableListItemProps> = (props) => {
-	
-  const { 
-    title, 
-    subtitle, 
-    isDragging 
-  } = props
+	const { title, subtitle, isDragging } = props
 
 	return (
 		<ListItem
@@ -24,20 +19,21 @@ const SortableListItem: React.FC<SortableListItemProps> = (props) => {
 				...(isDragging && sx.isDragging),
 			}}
 		>
-			<ListItemIcon sx={ sx.dragHandle }>
+			<ListItemIcon sx={sx.dragHandle}>
 				<DragIndicator sx={sx.icon} />
 			</ListItemIcon>
-			<ListItemText 
-        primary={
-          <Typography variant='body1' color='text.primary'>
-            { title }
-          </Typography>
-        } secondary={
-          <Typography variant='body2' color='text.secondary'>
-            {subtitle} 
-          </Typography>
-        }
-      />
+			<ListItemText
+				primary={
+					<Typography variant="body1" color="text.primary">
+						{title}
+					</Typography>
+				}
+				secondary={
+					<Typography variant="body2" color="text.secondary">
+						{subtitle}
+					</Typography>
+				}
+			/>
 		</ListItem>
 	)
 }
@@ -45,17 +41,15 @@ const SortableListItem: React.FC<SortableListItemProps> = (props) => {
 export default SortableListItem
 
 const sx = {
-	item: {
-	},
+	item: {},
 	icon: {
 		color: 'text.secondary',
 	},
-	isDragging: {
-  },
-  dragHandle: {
-    cursor: 'grab',
-    '&:active': {
-      cursor: 'grabbing',
-    },
-  }
+	isDragging: {},
+	dragHandle: {
+		cursor: 'grab',
+		'&:active': {
+			cursor: 'grabbing',
+		},
+	},
 }

@@ -14,9 +14,7 @@ export type CarouselListListProps = ListItemsProps & {
 	enableDots?: boolean
 }
 
-const CarouselListList: React.FC<CarouselListListProps> = (
-	props
-) => {
+const CarouselListList: React.FC<CarouselListListProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
@@ -34,15 +32,12 @@ const CarouselListList: React.FC<CarouselListListProps> = (
 		enableRatings = false,
 		enableUsers = false,
 		enableFavorites = false,
-    enableLikes = false 
+		enableLikes = false,
 	} = props
 
-  const { handleEdit, handleDeleteClick } = useForms()
+	const { handleEdit, handleDeleteClick } = useForms()
 
-	const { 
-    setOpenShow,
-    loading,     
-    resource, resources, setResource } = useContext(
+	const { setOpenShow, loading, resource, resources, setResource } = useContext(
 		ResourceContext
 	) as any
 
@@ -95,9 +90,9 @@ const CarouselListList: React.FC<CarouselListListProps> = (
 							handleClick={() => handleClick(resource)}
 							enableGradient={enableGradient}
 							enableFavorites={enableFavorites}
-              enableRatings={enableRatings}
-              enableUsers={enableUsers}
-              enableLikes={enableLikes}              
+							enableRatings={enableRatings}
+							enableUsers={enableUsers}
+							enableLikes={enableLikes}
 						/>
 					</Box>
 				))}

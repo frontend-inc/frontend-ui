@@ -36,14 +36,14 @@ export type ForeignProps = {
 }
 
 export type CardProps = {
-  ref?: any
+	ref?: any
 	actions: ActionType[]
-  displayFields: DisplayFieldType[]
+	displayFields: DisplayFieldType[]
 	enableUsers?: boolean
 	enableComments?: boolean
 	enableFavorites?: boolean
 	enableRatings?: boolean
-  enableLikes?: boolean
+	enableLikes?: boolean
 	resource: any
 	href?: string
 	height?: number

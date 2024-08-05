@@ -68,7 +68,8 @@ const SortableList: React.FC<SortableListProps> = (props) => {
 												...(snapshot.isDragging && sx.isDragging),
 											}}
 										>
-											{renderItem({
+											{renderItem(
+												{
 													...item,
 													isDragging: snapshot.isDragging,
 												},
@@ -96,7 +97,7 @@ const sx = {
 	list: {
 		overflowY: 'scroll',
 		width: '100%',
-    '&::-webkit-scrollbar': {
+		'&::-webkit-scrollbar': {
 			display: 'none',
 		},
 	},

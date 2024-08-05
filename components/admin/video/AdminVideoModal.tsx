@@ -35,8 +35,8 @@ const VideoModal: React.FC<VideoModalProps> = (props) => {
 		window.open(src, '_blank')
 	}
 
-	if(title.length > 0) {
-    //@ts-ignore
+	if (title.length > 0) {
+		//@ts-ignore
 		title = src?.split('/').pop()
 	}
 

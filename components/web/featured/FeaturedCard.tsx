@@ -111,10 +111,6 @@ const sx = {
 		width: '100%',
 		display: 'flex',
 		borderRadius: 1,
-		transition: 'box-shadow 0.3s',
-		'&:hover': {
-			boxShadow: 2,
-		},
 	},
 	imageContainer: {
 		width: '100%',

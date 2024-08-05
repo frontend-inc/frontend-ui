@@ -4,10 +4,7 @@ import { GeoList } from '../../components'
 import { GeoListProps } from '../../components/cms/collections/GeoList'
 import { SectionProps, HeadingProps, FormProps } from '../../types'
 
-type CmsGeoListProps = SectionProps &
-	HeadingProps &
-	GeoListProps &
-	FormProps
+type CmsGeoListProps = SectionProps & HeadingProps & GeoListProps & FormProps
 
 const CmsGeoList: React.FC<CmsGeoListProps> = (props) => {
 	const {

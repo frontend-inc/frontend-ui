@@ -8,16 +8,16 @@ type UseFetchSortParams = {
 
 const useFetchSort = (props: UseFetchSortParams) => {
 	const { url } = props || {}
-  const { api } = useContext(ApiContext) as any 
+	const { api } = useContext(ApiContext) as any
 
-  const fetcher = (url: string) => api.get(url)
-  
-  const { isLoading, data, error } = useSWR(`${url}/sort_fields`,fetcher)
+	const fetcher = (url: string) => api.get(url)
 
-	return {		
-    loading: isLoading,
-    errors: error,
-    fields: data?.data
+	const { isLoading, data, error } = useSWR(`${url}/sort_fields`, fetcher)
+
+	return {
+		loading: isLoading,
+		errors: error,
+		fields: data?.data,
 	}
 }
 

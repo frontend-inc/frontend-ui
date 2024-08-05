@@ -24,13 +24,7 @@ type BooleanOptionType = {
 }[]
 
 const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
-	const {
-		label,
-		field,
-		values,
-		handleClick,
-		disablePadding = false,
-	} = props
+	const { label, field, values, handleClick, disablePadding = false } = props
 
 	const BOOLEAN_OPTIONS: BooleanOptionType = [
 		{ label: 'True', operator: 'eq', value: true },
@@ -38,10 +32,7 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 	]
 
 	return (
-		<MenuList
-			label={label}
-			disablePadding={disablePadding}
-		>
+		<MenuList label={label} disablePadding={disablePadding}>
 			{BOOLEAN_OPTIONS?.map((option, index) => (
 				<CheckboxFilterItem
 					key={index}

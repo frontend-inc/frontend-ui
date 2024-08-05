@@ -2,11 +2,7 @@ import React from 'react'
 import { Grid, Stack } from '@mui/material'
 import { LoadMore, ListLayout } from '../..'
 import { useResourceContext } from 'frontend-js'
-import {
-  VideoCard,
-	ShowVideoModal,
-	Placeholder,
-} from '../..'
+import { VideoCard, ShowVideoModal, Placeholder } from '../..'
 import { useForms } from '../../../hooks'
 
 export type VideoListItemsProps = {
@@ -24,7 +20,6 @@ export type VideoListItemsProps = {
 }
 
 const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
-
 	const {
 		resource,
 		setResource,
@@ -51,30 +46,30 @@ const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
 	} = props
 
 	const handleClick = (resource) => {
-    setResource(resource)
-    setOpenShow(true)		
+		setResource(resource)
+		setOpenShow(true)
 	}
 
 	const { handleEdit, handleDeleteClick } = useForms()
 
 	return (
-    <>
+		<>
 			<Stack direction="column" spacing={2}>
-        <ListLayout grid>          
-          { resources?.map(resource => (          
-            <VideoCard 
-              key={ resource.id }
-              resource={resource}
-              enableEdit={enableEdit}
-              enableDelete={enableDelete}
-              enableUsers={enableUsers}
-              enableFavorites={enableFavorites}
-              enableComments={enableComments}
-              handleClick={() => handleClick(resource)}
-              handleDelete={() => handleDeleteClick(resource)}
-            />
-          ))}	
-        </ListLayout>		
+				<ListLayout grid>
+					{resources?.map((resource) => (
+						<VideoCard
+							key={resource.id}
+							resource={resource}
+							enableEdit={enableEdit}
+							enableDelete={enableDelete}
+							enableUsers={enableUsers}
+							enableFavorites={enableFavorites}
+							enableComments={enableComments}
+							handleClick={() => handleClick(resource)}
+							handleDelete={() => handleDeleteClick(resource)}
+						/>
+					))}
+				</ListLayout>
 				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
 			</Stack>
 			{!loading && resources?.length == 0 && (

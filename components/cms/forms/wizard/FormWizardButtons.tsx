@@ -37,7 +37,7 @@ const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 			</Button>
 			{currentStep != totalSteps ? (
 				<Button
-          size='large'
+					size="large"
 					variant="contained"
 					onClick={handleNextStep}
 					disabled={currentStep == totalSteps}
@@ -49,7 +49,7 @@ const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 				</Button>
 			) : (
 				<Button
-          size="large"
+					size="large"
 					variant="contained"
 					onClick={handleSubmit}
 					disabled={currentStep != totalSteps}

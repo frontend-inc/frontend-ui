@@ -10,7 +10,7 @@ import { useForms } from '../../../hooks'
 
 export type DataTableListProps = ListItemsProps & {
 	headers: TableHeaderType[]
-  enableShow?: boolean
+	enableShow?: boolean
 }
 
 const DataTableList: React.FC<DataTableListProps> = (props) => {
@@ -29,20 +29,20 @@ const DataTableList: React.FC<DataTableListProps> = (props) => {
 		totalCount,
 	} = useResourceContext()
 
-	const { 
-    headers, 
-    href, 
-    enableEdit = false, 
-    enableDelete = false,
-    enableShow = false  
-  } = props || {}
+	const {
+		headers,
+		href,
+		enableEdit = false,
+		enableDelete = false,
+		enableShow = false,
+	} = props || {}
 
-  const handleCellClick = (value, row, field) => {
-    // Todo: manage cell actions
+	const handleCellClick = (value, row, field) => {
+		// Todo: manage cell actions
 	}
 
 	const handleClick = (resource) => {
-    if (clientUrl && href && resource?.handle) {
+		if (clientUrl && href && resource?.handle) {
 			window.scrollTo({
 				top: 0,
 				behavior: 'smooth',
@@ -51,10 +51,7 @@ const DataTableList: React.FC<DataTableListProps> = (props) => {
 		}
 	}
 
-	const {
-    handleEdit, 
-    handleDeleteClick 
-  } = useForms()
+	const { handleEdit, handleDeleteClick } = useForms()
 
 	const handleSort = (field) => {
 		const { name } = field || {}
@@ -78,13 +75,13 @@ const DataTableList: React.FC<DataTableListProps> = (props) => {
 		<Stack spacing={1} sx={sx.root}>
 			<Box sx={{ ...(loading && sx.loading) }}>
 				<TableList
-          handleClick={handleCellClick}
-          enableEdit={enableEdit}
-          enableDelete={enableDelete}
-          enableShow={enableShow}
-					handleEdit={handleEdit}					
+					handleClick={handleCellClick}
+					enableEdit={enableEdit}
+					enableDelete={enableDelete}
+					enableShow={enableShow}
+					handleEdit={handleEdit}
 					handleDelete={handleDeleteClick}
-          handleShow={handleClick}
+					handleShow={handleClick}
 					loading={resources && loading}
 					fields={headers}
 					rows={resources}

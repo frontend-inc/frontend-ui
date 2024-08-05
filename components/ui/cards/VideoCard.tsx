@@ -5,8 +5,8 @@ import {
 	Image,
 	Actions,
 	TouchableOpacity,
-  LightDarkMode, 
-  Icon
+	LightDarkMode,
+	Icon,
 } from '../..'
 import { IconButton, Box } from '@mui/material'
 import { buildActions } from '../../../helpers'
@@ -16,7 +16,7 @@ type VideoCardProps = {
 	enableComments?: boolean
 	enableFavorites?: boolean
 	enableRatings?: boolean
-  enableLikes?: boolean
+	enableLikes?: boolean
 	resource: any
 	handleClick: () => void
 	handleEdit?: (item: any) => void
@@ -30,11 +30,11 @@ type VideoCardProps = {
 const VideoCard: React.FC<VideoCardProps> = (props) => {
 	const {
 		resource,
-    handleClick,
-    enableEdit,
-    enableDelete,
-    handleEdit,    
-    handleDelete,
+		handleClick,
+		enableEdit,
+		enableDelete,
+		handleEdit,
+		handleDelete,
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
@@ -42,9 +42,8 @@ const VideoCard: React.FC<VideoCardProps> = (props) => {
 
 	const { title, image } = resource || {}
 
-
 	return (
-    <LightDarkMode mode='dark'>
+		<LightDarkMode mode="dark">
 			<Box sx={sx.root}>
 				<TouchableOpacity handleClick={handleClick}>
 					<Image
@@ -54,38 +53,30 @@ const VideoCard: React.FC<VideoCardProps> = (props) => {
 						enableGradient={enableGradient}
 						enableOverlay={enableOverlay}
 					/>
-				</TouchableOpacity>        
-          <IconButton
-            sx={sx.playIcon}
-            onClick={handleClick}
-          >
-            <Icon 
-              name="Play" 
-              color="common.white" 
-              size={20} 
-            />
-          </IconButton>
+				</TouchableOpacity>
+				<IconButton sx={sx.playIcon} onClick={handleClick}>
+					<Icon name="Play" color="common.white" size={20} />
+				</IconButton>
 				<Box sx={sx.actions}>
 					{enableFavorites == true && (
 						<FavoriteButton handle={resource?.handle} />
 					)}
 					<Actions
-            resource={resource}
+						resource={resource}
 						numVisible={0}
-						actions={ 
-              buildActions({
-                enableEdit,
-                enableDelete,
-                handleEdit,
-                handleDelete
-            })}
+						actions={buildActions({
+							enableEdit,
+							enableDelete,
+							handleEdit,
+							handleDelete,
+						})}
 					/>
 				</Box>
 				<Box sx={sx.userCard}>
 					{resource?.user && <UserChip user={resource?.user} />}
 				</Box>
 			</Box>
-    </LightDarkMode>
+		</LightDarkMode>
 	)
 }
 
@@ -121,14 +112,14 @@ const sx = {
 		top: 10,
 		right: 10,
 	},
-  playIcon: {
+	playIcon: {
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'flex-end',
 		position: 'absolute',
 		top: 'calc(50% - 20px)',
 		right: 'calc(50% - 20px)',
-    bgcolor: 'rgb(0,0,0,0.5)',
+		bgcolor: 'rgb(0,0,0,0.5)',
 	},
 	userCard: {
 		display: 'flex',

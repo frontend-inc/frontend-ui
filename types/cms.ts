@@ -6,7 +6,7 @@ export type ReferenceType = {
 	source_id: number
 	target: DocumentType
 	source: DocumentType
-  position: number
+	position: number
 	updated_at: string
 	created_at: string
 }

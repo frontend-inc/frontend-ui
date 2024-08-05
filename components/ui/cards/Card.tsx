@@ -1,13 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
 import { Box, Stack, Typography } from '@mui/material'
-import {
-	Image,
-	UserChip,
-	AvgRating,
-	DisplayFields,
-	SocialActions
-} from '../..'
+import { Image, UserChip, AvgRating, DisplayFields, SocialActions } from '../..'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../types'
@@ -21,13 +15,13 @@ const Card: React.FC<CardProps> = (props) => {
 		resource,
 		displayFields = [],
 		href,
-		handleClick,		
+		handleClick,
 		height = 240,
 		enableGradient = false,
 		enableOverlay = false,
 		enableComments = false,
 		enableFavorites = false,
-    enableLikes = false,
+		enableLikes = false,
 		enableRatings = false,
 	} = props || {}
 
@@ -56,44 +50,38 @@ const Card: React.FC<CardProps> = (props) => {
 			<Box sx={sx.imageContainer}>
 				<Image
 					src={image?.url}
-					height={height}					
+					height={height}
 					alt={title}
 					label={label}
-          disableBorderRadius
+					disableBorderRadius
 					enableGradient={enableGradient}
 					enableOverlay={enableOverlay}
 					handleClick={handleItemClick}
 				/>
 			</Box>
 			<Stack spacing={0} sx={sx.cardContent}>
-				<Box sx={sx.content}>                          
+				<Box sx={sx.content}>
 					<Typography sx={sx.title} color="text.primary" variant="subtitle2">
 						{truncate(title)}
 					</Typography>
 					{enableRatings == true && (
-            <AvgRating 
-              resource={resource} 
-              size="small"
-            />
-          )}
-					{displayFields?.length > 0 && (
-						<DisplayFields 
-              fields={displayFields} 
-              resource={resource} 
-            />
+						<AvgRating resource={resource} size="small" />
 					)}
-          <UserChip user={resource?.user} />        
+					{displayFields?.length > 0 && (
+						<DisplayFields fields={displayFields} resource={resource} />
+					)}
+					<UserChip user={resource?.user} />
 				</Box>
-				<Stack direction="row" justifyContent="space-between">          
-          <SocialActions 
-            resource={resource} 
-            enableLikes={enableLikes} 
-            enableFavorites={enableFavorites} 
-            enableComments={enableComments} 
-          />          
-          {actions?.length > 0 && (
-              <Actions numVisible={0} actions={actions} resource={resource} />
-            )}
+				<Stack direction="row" justifyContent="space-between">
+					<SocialActions
+						resource={resource}
+						enableLikes={enableLikes}
+						enableFavorites={enableFavorites}
+						enableComments={enableComments}
+					/>
+					{actions?.length > 0 && (
+						<Actions numVisible={0} actions={actions} resource={resource} />
+					)}
 				</Stack>
 			</Stack>
 		</Stack>
@@ -135,10 +123,10 @@ const sx = {
 			background: 'linear-gradient(to top, rgb(0,0,0,0.5), transparent)',
 		},
 	},
-  cardHeader: {
-    p: 1,
-    minHeight: 36
-  },
+	cardHeader: {
+		p: 1,
+		minHeight: 36,
+	},
 	cardHeaderBorder: {
 		px: 1,
 	},
@@ -149,7 +137,7 @@ const sx = {
 		height: '100%',
 		justifyContent: 'space-between',
 		alignItems: 'space-between',
-    bgcolor: 'background.default'
+		bgcolor: 'background.default',
 	},
 	content: {
 		height: '100%',
@@ -157,7 +145,5 @@ const sx = {
 	title: {
 		width: '100%',
 	},
-  user: {
-
-  }
+	user: {},
 }

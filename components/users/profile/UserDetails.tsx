@@ -5,21 +5,15 @@ import { UserType } from 'frontend-js'
 import { DisplayFieldType } from '../../../types'
 
 export type UserDetailsProps = DetailsProps & {
-  user: UserType
-  displayFields: DisplayFieldType[]
-  url: string
-  enableBorder?: boolean
+	user: UserType
+	displayFields: DisplayFieldType[]
+	url: string
+	enableBorder?: boolean
 }
 
 const UserDetails: React.FC<UserDetailsProps> = (props) => {
-  const { user } = props
-  return(
-    <Details     
-      { ...props }
-      resource={user}
-      enableBorder
-    />
-  )
+	const { user } = props
+	return <Details {...props} resource={user} enableBorder />
 }
 
-export default UserDetails 
+export default UserDetails

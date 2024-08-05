@@ -5,11 +5,11 @@ import {
 	Stack,
 	IconButton,
 	ListItem,
-  MenuItem,
+	MenuItem,
 	ListItemIcon,
 	Typography,
 	InputBase,
-	InputAdornment,  
+	InputAdornment,
 } from '@mui/material'
 import { useError } from '../../../hooks'
 import { InputLabel, Icon, ErrorText } from '../..'
@@ -70,7 +70,7 @@ type AutosuggestProps = {
 	handleClear?: () => void
 	freeSolo?: boolean
 	enableClear?: boolean
-  info?: string
+	info?: string
 }
 
 const Autosuggest: React.FC<AutosuggestProps> = (props) => {
@@ -88,7 +88,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 		handleClear,
 		enableClear = false,
 		freeSolo = false,
-    info,
+		info,
 	} = props
 
 	const [selected, setSelected] = useState({
@@ -146,10 +146,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 			direction={direction}
 			spacing={0.5}
 		>
-      <InputLabel 
-        label={label} 
-        info={info}
-      />			
+			<InputLabel label={label} info={info} />
 			<Box sx={sx.inputContainer}>
 				<Autocomplete
 					freeSolo={freeSolo}

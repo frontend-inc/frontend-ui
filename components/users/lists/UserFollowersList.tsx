@@ -6,11 +6,7 @@ import UserListItem from '../cards/UserListItem'
 export type UserFollowersListProps = UserListProps
 
 const UserFollowersList: React.FC<UserFollowersListProps> = (props) => {
-	const { 
-    user, 
-    displayFields=[], 
-    socialFields=[] 
-  } = props || {}
+	const { user, displayFields = [], socialFields = [] } = props || {}
 
 	return (
 		<ResourceList
@@ -19,11 +15,11 @@ const UserFollowersList: React.FC<UserFollowersListProps> = (props) => {
 			name="user"
 			url={`/api/v1/cms/users/${user?.username}/followers`}
 			component={UserListItem}
-			itemProps={{  
-        size: 72,      
-        displayFields,
-        socialFields
-      }}      
+			itemProps={{
+				size: 72,
+				displayFields,
+				socialFields,
+			}}
 			sortOptions={[
 				{ label: 'Username', name: 'username' },
 				{ label: 'Total followers', name: 'num_followers' },

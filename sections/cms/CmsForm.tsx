@@ -21,7 +21,7 @@ const CmsForm: React.FC<CmsFormProps> = (props) => {
 		requireAdmin,
 		...rest
 	} = props
-  
+
 	return (
 		<Section
 			requireAuth
@@ -39,9 +39,7 @@ const CmsForm: React.FC<CmsFormProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<Form 
-        {...rest} 
-      />
+			<Form {...rest} />
 		</Section>
 	)
 }

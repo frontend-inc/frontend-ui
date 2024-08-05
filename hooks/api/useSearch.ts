@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import { useQuery, useResourceContext } from 'frontend-js'
 import { useFilters } from '..'
-import { SortOptionType, FilterOptionType, SyntheticEventType } from '../../types'
+import {
+	SortOptionType,
+	FilterOptionType,
+	SyntheticEventType,
+} from '../../types'
 
 const useSearch = (props) => {
 	const { query: defaultQuery = {} } = props
@@ -11,7 +15,7 @@ const useSearch = (props) => {
 		delayedLoading,
 		resources,
 		query,
-    setQuery,
+		setQuery,
 		findMany,
 		reloadMany,
 		page,
@@ -35,12 +39,12 @@ const useSearch = (props) => {
 			...query,
 			...defaultQuery,
 			keywords: keywords,
-			page: 1			
+			page: 1,
 		}
 		if (location?.length > 0) {
 			searchQuery = {
 				...searchQuery,
-        method: 'location',
+				method: 'location',
 				location: location,
 			}
 		} else {
@@ -49,21 +53,21 @@ const useSearch = (props) => {
 				location: null,
 			}
 		}
-    setQuery(searchQuery)
+		setQuery(searchQuery)
 		//findMany(searchQuery)
 	}
 
-	const handleSortBy = (field: SortOptionType) => {		
-    setQuery({
-      ...query,
-      sort_by: field?.name  
-    })
+	const handleSortBy = (field: SortOptionType) => {
+		setQuery({
+			...query,
+			sort_by: field?.name,
+		})
 	}
 
 	const handleSortDirection = (sortDirection: 'asc' | 'desc') => {
-    setQuery({
-      ...query,
-      sort_direction: sortDirection    		
+		setQuery({
+			...query,
+			sort_direction: sortDirection,
 		})
 	}
 

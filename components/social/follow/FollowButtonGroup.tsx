@@ -26,12 +26,12 @@ const FollowButtonGroup: React.FC<FollowButtonGroupProps> = (props) => {
 				divider={<Divider sx={sx.divider} />}
 			>
 				<Stack direction="row" spacing={1} alignItems="center">
-					<Link sx={ sx.link } variant="overline" onClick={handleClick}>
+					<Link sx={sx.link} variant="overline" onClick={handleClick}>
 						{user?.display_num_followers}
 					</Link>
 				</Stack>
 				<Stack direction="row" spacing={1} alignItems="center">
-					<Link variant='overline' sx={ sx.link } onClick={handleClick}>
+					<Link variant="overline" sx={sx.link} onClick={handleClick}>
 						{user?.display_num_following}
 					</Link>
 				</Stack>
@@ -50,9 +50,9 @@ const sx = {
 		height: 16,
 	},
 	link: {
-    minWidth: 100,
+		minWidth: 100,
 		boxShadow: 0,
 		color: 'text.secondary',
-    textDecoration: 'none'
+		textDecoration: 'none',
 	},
 }

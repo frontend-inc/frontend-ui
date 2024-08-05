@@ -1,4 +1,4 @@
-// Users 
+// Users
 export { default as CurrentUser } from './CurrentUser'
 export { default as CurrentUserDetails } from './CurrentUserDetails'
 export { default as CurrentUserForm } from './CurrentUserForm'

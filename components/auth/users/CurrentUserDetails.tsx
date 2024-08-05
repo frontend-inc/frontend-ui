@@ -5,22 +5,18 @@ import { useAuth } from 'frontend-js'
 import { DisplayFieldType } from '../../../types'
 
 export type CurrentUserDetailsProps = DetailsProps & {
-  displayFields: DisplayFieldType[]
-  url: string
-  enableBorder?: boolean
+	displayFields: DisplayFieldType[]
+	url: string
+	enableBorder?: boolean
 }
 
 const CurrentUserDetails: React.FC<CurrentUserDetailsProps> = (props) => {
-  const { currentUser } = useAuth()
-  return(
-    <AuthGuard requireAuth>
-      <Details     
-        { ...props }
-        resource={currentUser}
-        enableBorder
-      />
-    </AuthGuard>
-  )
+	const { currentUser } = useAuth()
+	return (
+		<AuthGuard requireAuth>
+			<Details {...props} resource={currentUser} enableBorder />
+		</AuthGuard>
+	)
 }
 
-export default CurrentUserDetails 
+export default CurrentUserDetails

@@ -21,7 +21,7 @@ const AuthUserForm: React.FC<AuthUserFormProps> = (props) => {
 		requireAdmin,
 		...rest
 	} = props
-  
+
 	return (
 		<Section
 			requireAuth
@@ -39,9 +39,7 @@ const AuthUserForm: React.FC<AuthUserFormProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<CurrentUserForm 
-        {...rest} 
-      />
+			<CurrentUserForm {...rest} />
 		</Section>
 	)
 }

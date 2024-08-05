@@ -7,39 +7,39 @@ import { useRouter } from 'next/router'
 import { FormFieldType } from '../../../types'
 
 export type CurrentUserFormProps = {
-  loading?: boolean	  
+	loading?: boolean
 	href?: string
 	buttonText?: string
 	fields: FormFieldType[]
 	onSuccessMessage?: string
-  handleSuccess?: (resource: any) => void
+	handleSuccess?: (resource: any) => void
 }
 
 const UserForm: React.FC<CurrentUserFormProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
-  const { href } = props || {}
-  const onSuccess = () => {
-    if(href){
-      router.push(`${clientUrl}${href}`)
-    }
-  }
+	const { href } = props || {}
+	const onSuccess = () => {
+		if (href) {
+			router.push(`${clientUrl}${href}`)
+		}
+	}
 
-	const {    
+	const {
 		buttonText = 'Update Profile',
 		fields,
 		onSuccessMessage = 'Submitted successfully!',
-    handleSuccess=onSuccess
+		handleSuccess = onSuccess,
 	} = props
 
 	const { showAlertSuccess } = useAlerts()
 
 	const {
 		delayedLoading,
-    errors,
+		errors,
 		user,
-    setUser,
+		setUser,
 		fetchMe,
 		currentUser,
 		updateMe,
@@ -52,53 +52,53 @@ const UserForm: React.FC<CurrentUserFormProps> = (props) => {
 	}
 
 	const handleSubmit = async () => {
-		try {			
-			let resp = await updateMe(user)			
-			if (resp?.id) {   
-        fetchMe()     
-        if (onSuccessMessage) {
-          showAlertSuccess(onSuccessMessage)
-        }
-        if(handleSuccess){
-          handleSuccess(resp)
-        }
-			}      
+		try {
+			let resp = await updateMe(user)
+			if (resp?.id) {
+				fetchMe()
+				if (onSuccessMessage) {
+					showAlertSuccess(onSuccessMessage)
+				}
+				if (handleSuccess) {
+					handleSuccess(resp)
+				}
+			}
 		} catch (err) {
 			console.log('Error', err)
 		}
 	}
 
-  useEffect(() => {
-		if(currentUser?.id){
-      setUser(currentUser)    
-    }else{
-      fetchMe()
-    }
+	useEffect(() => {
+		if (currentUser?.id) {
+			setUser(currentUser)
+		} else {
+			fetchMe()
+		}
 	}, [currentUser])
 
 	return (
-    <FormFields
-      loading={delayedLoading}
-      errors={errors}
-      fields={fields}
-      resource={user}
-      handleChange={handleChange}
-      handleRemove={handleRemove}
-      handleSubmit={handleSubmit}
-      buttonText={buttonText}
-    />
+		<FormFields
+			loading={delayedLoading}
+			errors={errors}
+			fields={fields}
+			resource={user}
+			handleChange={handleChange}
+			handleRemove={handleRemove}
+			handleSubmit={handleSubmit}
+			buttonText={buttonText}
+		/>
 	)
 }
 
 export default UserForm
 
 const sx = {
-  paper: {
-    boxShadow: 0,
-    p: 4,
-    transition: 'box-shadow 0.3s',
-    '&:hover': {
-      boxShadow: 2
-    }
-  }
+	paper: {
+		boxShadow: 0,
+		p: 4,
+		transition: 'box-shadow 0.3s',
+		'&:hover': {
+			boxShadow: 2,
+		},
+	},
 }

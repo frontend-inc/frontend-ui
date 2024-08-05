@@ -26,7 +26,7 @@ export default UserChip
 
 const sx = {
 	root: {
-    py: 0.5,
+		py: 0.5,
 		alignItems: 'center',
 	},
 }

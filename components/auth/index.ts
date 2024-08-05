@@ -39,7 +39,7 @@ export { default as TeamUsersList } from './teams/TeamUsersList'
 export { default as TeamUserForm } from './teams/TeamUserInviteForm'
 export { default as TeamUserInvite } from './teams/TeamUserInvite'
 
-// Users 
+// Users
 export * from './users'
 
 // Lists

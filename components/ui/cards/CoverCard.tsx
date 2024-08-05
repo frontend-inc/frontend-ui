@@ -5,11 +5,11 @@ import {
 	UserChip,
 	AvgRating,
 	DisplayFields,
-	Image,	
+	Image,
 	TouchableOpacity,
 	Actions,
 	SocialActions,
-  LightDarkMode
+	LightDarkMode,
 } from '../..'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
@@ -29,8 +29,8 @@ const CoverVert: React.FC<CardProps> = (props) => {
 		enableOverlay = false,
 		enableComments = false,
 		enableFavorites = false,
-    enableLikes = false,
-		enableRatings = false,		
+		enableLikes = false,
+		enableRatings = false,
 	} = props || {}
 
 	const { label, title, image } = resource || {}
@@ -45,7 +45,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 	}
 
 	return (
-		<LightDarkMode mode='dark'>
+		<LightDarkMode mode="dark">
 			<Stack spacing={1} sx={sx.root}>
 				<TouchableOpacity handleClick={handleItemClick}>
 					<Image
@@ -67,7 +67,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 						<Box sx={sx.contentContainer}>
 							<Stack sx={sx.content} direction="column" spacing={0}>
 								<Box sx={sx.fullWidth}>
-									<Typography color="text.primary" variant='subtitle2'>
+									<Typography color="text.primary" variant="subtitle2">
 										{truncate(title, 60)}
 									</Typography>
 									{enableRatings == true && (
@@ -75,21 +75,25 @@ const CoverVert: React.FC<CardProps> = (props) => {
 									)}
 									<DisplayFields fields={displayFields} resource={resource} />
 									{enableUsers == true && <UserChip user={resource?.user} />}
-                  <Stack direction="row" sx={sx.actions}>					
-                    <SocialActions 
-                      color='common.white'
-                      resource={resource} 
-                      enableLikes={enableLikes} 
-                      enableFavorites={enableFavorites} 
-                      enableComments={enableComments}
-                    />                    
-					          <Actions numVisible={0} resource={resource} actions={actions} />
-				          </Stack>
+									<Stack direction="row" sx={sx.actions}>
+										<SocialActions
+											color="common.white"
+											resource={resource}
+											enableLikes={enableLikes}
+											enableFavorites={enableFavorites}
+											enableComments={enableComments}
+										/>
+										<Actions
+											numVisible={0}
+											resource={resource}
+											actions={actions}
+										/>
+									</Stack>
 								</Box>
 							</Stack>
 						</Box>
 					</Stack>
-				</Stack>				
+				</Stack>
 			</Stack>
 		</LightDarkMode>
 	)

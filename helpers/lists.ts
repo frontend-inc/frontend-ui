@@ -1,27 +1,26 @@
 export const buildSearchQuery = (params) => {
+	let { query = {} } = params || {}
+	const {
+		resource,
+		perPage,
+		filterUser,
+		filterTeam,
+		filterReferences,
+		filterGeo,
+		filterSimilar,
+	} = params || {}
 
-  let { query = {} } = params || {}
-  const { 
-    resource,
-    perPage,
-    filterUser,
-    filterTeam,
-    filterReferences,
-    filterGeo,
-    filterSimilar    
-  } = params || {}
-
-  if(perPage){
-    query = {
-      ...query,
-      per_page: perPage 
-    }
-  }
+	if (perPage) {
+		query = {
+			...query,
+			per_page: perPage,
+		}
+	}
 
 	if (filterReferences == true && resource?.id) {
 		query = {
 			...query,
-      method: 'references',
+			method: 'references',
 			resource_id: resource.id,
 		}
 	} else {
@@ -32,33 +31,33 @@ export const buildSearchQuery = (params) => {
 	}
 
 	if (filterUser == true) {
-		query = { 
-      ...query, 
-      current_user: true 
-    }
+		query = {
+			...query,
+			current_user: true,
+		}
 	} else {
-		query = { 
-      ...query, 
-      current_user: false 
-    }
+		query = {
+			...query,
+			current_user: false,
+		}
 	}
 
 	if (filterTeam == true) {
-		query = { 
-      ...query, 
-      current_team: true 
-    }
+		query = {
+			...query,
+			current_team: true,
+		}
 	} else {
-		query = { 
-      ...query, 
-      current_team: false 
-    }
+		query = {
+			...query,
+			current_team: false,
+		}
 	}
 
 	if (filterGeo == true && resource?.location) {
 		query = {
 			...query,
-      method: 'location',
+			method: 'location',
 			location: resource?.location,
 		}
 	}
@@ -66,9 +65,9 @@ export const buildSearchQuery = (params) => {
 	if (filterSimilar == true && resource?.id) {
 		query = {
 			...query,
-      method: 'similar',
+			method: 'similar',
 			resource_id: resource?.id,
 		}
 	}
-  return query
+	return query
 }

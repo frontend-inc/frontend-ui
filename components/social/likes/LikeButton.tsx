@@ -3,21 +3,18 @@ import { Box, IconButton } from '@mui/material'
 import { isLiked } from '../../../helpers'
 import { useSocial } from '../../../hooks'
 import { useAuth } from 'frontend-js'
-import {  
-  Favorite, 
-  FavoriteBorder,    
-} from '@mui/icons-material'
+import { Favorite, FavoriteBorder } from '@mui/icons-material'
 import { AppContext } from '../../../context'
 
 type LikeButtonProps = {
 	handle: string | number
 	variant?: 'icon' | 'button'
-  color?: string
+	color?: string
 	numLikes?: number
 }
 
 const LikeButton: React.FC<LikeButtonProps> = (props) => {
-	const { handle, color='text.secondary', variant = 'icon', numLikes } = props
+	const { handle, color = 'text.secondary', variant = 'icon', numLikes } = props
 
 	const { currentUser } = useAuth()
 	const { setAuthOpen } = useContext(AppContext)
@@ -53,44 +50,46 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
 		}
 	}, [currentUser, handle])
 
-	return(
-  <Box>
-    { variant == 'icon' ? (
-		<IconButton
-			onClick={handleClick}
-			sx={{        
-        color,
-        '&:hover': {
-          color,
-        },          
-				...sx.icon,
-				...(liked && sx.iconLiked),
-			}}
-		>
-      { liked ? 
-			  <Favorite fontSize="small" /> : 
-        <FavoriteBorder fontSize="small" />
-      }
-		</IconButton>
-	) : (
-		<IconButton
-			onClick={handleClick}
-			sx={{
-        color,
-        '&:hover': {
-          color,
-        }, 
-				...sx.button,
-				...(liked && sx.buttonLiked),
-			}}
-		>
-			{ liked ? 
-			  <Favorite fontSize="small" /> : 
-        <FavoriteBorder fontSize="small" />
-      }
-		</IconButton>
-    )}
-  </Box>
+	return (
+		<Box>
+			{variant == 'icon' ? (
+				<IconButton
+					onClick={handleClick}
+					sx={{
+						color,
+						'&:hover': {
+							color,
+						},
+						...sx.icon,
+						...(liked && sx.iconLiked),
+					}}
+				>
+					{liked ? (
+						<Favorite fontSize="small" />
+					) : (
+						<FavoriteBorder fontSize="small" />
+					)}
+				</IconButton>
+			) : (
+				<IconButton
+					onClick={handleClick}
+					sx={{
+						color,
+						'&:hover': {
+							color,
+						},
+						...sx.button,
+						...(liked && sx.buttonLiked),
+					}}
+				>
+					{liked ? (
+						<Favorite fontSize="small" />
+					) : (
+						<FavoriteBorder fontSize="small" />
+					)}
+				</IconButton>
+			)}
+		</Box>
 	)
 }
 
@@ -107,7 +106,7 @@ const sx = {
 	button: {
 		transition: 'transform 0.2s',
 		border: '1px solid',
-		borderColor: 'divider',		
+		borderColor: 'divider',
 	},
 	buttonLiked: {
 		borderColor: 'primary.main',

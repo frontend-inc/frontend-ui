@@ -9,7 +9,7 @@ import {
 	AvgRating,
 	CommentButton,
 	FavoriteButton,
-  LikeButton,
+	LikeButton,
 	DisplayFields,
 	Actions,
 } from '../..'
@@ -25,7 +25,7 @@ const CardList: React.FC<CardProps> = (props) => {
 		enableUsers = false,
 		enableComments = false,
 		enableFavorites = false,
-    enableLikes = false,
+		enableLikes = false,
 		enableRatings = false,
 	} = props || {}
 
@@ -46,7 +46,7 @@ const CardList: React.FC<CardProps> = (props) => {
 			<Stack direction="row" spacing={1}>
 				<Stack direction="column" spacing={1} sx={sx.content}>
 					<Link sx={sx.link} onClick={handleItemClick}>
-						<Typography color="text.primary" variant='subtitle2'>
+						<Typography color="text.primary" variant="subtitle2">
 							{truncate(title)}
 						</Typography>
 					</Link>
@@ -63,15 +63,13 @@ const CardList: React.FC<CardProps> = (props) => {
 					</Typography>
 					{enableUsers == true && <UserChip user={resource?.user} />}
 
-          <Stack direction="row">
-            {enableLikes == true && (
-              <LikeButton handle={resource?.handle} />
-            )}
-            {enableFavorites == true && (
-              <FavoriteButton handle={resource?.handle} />
-            )}
-            {enableComments == true && <CommentButton resource={resource} />}
-          </Stack>
+					<Stack direction="row">
+						{enableLikes == true && <LikeButton handle={resource?.handle} />}
+						{enableFavorites == true && (
+							<FavoriteButton handle={resource?.handle} />
+						)}
+						{enableComments == true && <CommentButton resource={resource} />}
+					</Stack>
 				</Stack>
 			</Stack>
 			<Stack direction="row" justifyContent="flex-end" sx={sx.actions}>
@@ -86,7 +84,7 @@ export default CardList
 const sx = {
 	root: {
 		py: 1,
-    minHeight: 140,
+		minHeight: 140,
 		position: 'relative',
 		width: '100%',
 		display: 'flex',

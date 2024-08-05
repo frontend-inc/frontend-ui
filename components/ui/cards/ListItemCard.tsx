@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
 import { Box, Stack, Typography } from '@mui/material'
-import {  
+import {
 	Image,
 	DisplayFields,
 	TouchableOpacity,
 	CommentButton,
 	FavoriteButton,
-  LikeButton,
+	LikeButton,
 	AvgRating,
 	UserChip,
 } from '../..'
@@ -29,7 +29,7 @@ const CardList: React.FC<CardProps> = (props) => {
 		enableOverlay = false,
 		enableComments = false,
 		enableFavorites = false,
-    enableLikes = false,
+		enableLikes = false,
 		enableRatings = false,
 	} = props || {}
 
@@ -57,7 +57,7 @@ const CardList: React.FC<CardProps> = (props) => {
 						<Image
 							label={label}
 							src={image?.url}
-							height={height}							
+							height={height}
 							alt={title}
 							enableGradient={enableGradient}
 							enableOverlay={enableOverlay}
@@ -66,27 +66,25 @@ const CardList: React.FC<CardProps> = (props) => {
 				</Box>
 				<Stack direction="row" spacing={1} sx={sx.contentArea}>
 					<Stack direction="column" sx={sx.content}>
-            <Stack direction="column" spacing={0.5}>
-              <Typography color="text.primary" variant='subtitle2'>
-                {truncate(title)}
-              </Typography>
-              {enableRatings == true && (
-                <AvgRating resource={resource} size="small" />
-              )}
-              <DisplayFields fields={displayFields} resource={resource} />
-              <UserChip user={resource?.user} />
-            </Stack>
-            <Stack direction="row" justifyContent="flex-end">						
-              { enableLikes == true && (
-                <LikeButton handle={resource?.handle} /> 
-              )}
-              {enableFavorites == true && (
-                <FavoriteButton handle={resource?.handle} />
-              )}
-              { enableComments == true && <CommentButton resource={resource} />}
-            </Stack>
+						<Stack direction="column" spacing={0.5}>
+							<Typography color="text.primary" variant="subtitle2">
+								{truncate(title)}
+							</Typography>
+							{enableRatings == true && (
+								<AvgRating resource={resource} size="small" />
+							)}
+							<DisplayFields fields={displayFields} resource={resource} />
+							<UserChip user={resource?.user} />
+						</Stack>
+						<Stack direction="row" justifyContent="flex-end">
+							{enableLikes == true && <LikeButton handle={resource?.handle} />}
+							{enableFavorites == true && (
+								<FavoriteButton handle={resource?.handle} />
+							)}
+							{enableComments == true && <CommentButton resource={resource} />}
+						</Stack>
 					</Stack>
-					<Stack direction="row" justifyContent="flex-end">						          
+					<Stack direction="row" justifyContent="flex-end">
 						<Actions numVisible={0} actions={actions} resource={resource} />
 					</Stack>
 				</Stack>

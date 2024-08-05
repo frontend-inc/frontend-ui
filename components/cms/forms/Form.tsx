@@ -7,36 +7,36 @@ import { useRouter } from 'next/router'
 import { Paper } from '@mui/material'
 
 export type FormProps = {
-  loading?: boolean
+	loading?: boolean
 	resource: any
-  parentResource?: any
+	parentResource?: any
 	url: string
 	href?: string
 	buttonText?: string
 	fields: any[]
 	onSuccessMessage?: string
-  handleSuccess?: (resource: any) => void
+	handleSuccess?: (resource: any) => void
 }
 
 const Form: React.FC<FormProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
-  const { href } = props || {}
-  const onSuccess = () => {
-    if(href){
-      router.push(`${clientUrl}${href}`)
-    }
-  }
+	const { href } = props || {}
+	const onSuccess = () => {
+		if (href) {
+			router.push(`${clientUrl}${href}`)
+		}
+	}
 
-	const {    
+	const {
 		resource: _resource,
-    parentResource,
+		parentResource,
 		buttonText = 'Submit',
 		fields,
 		url,
 		onSuccessMessage = 'Submitted successfully!',
-    handleSuccess=onSuccess
+		handleSuccess = onSuccess,
 	} = props
 
 	const { showAlertSuccess } = useAlerts()
@@ -50,7 +50,7 @@ const Form: React.FC<FormProps> = (props) => {
 		create,
 		removeAttachment,
 		addReferences,
-    handleChange
+		handleChange,
 	} = useResource({
 		name: 'document',
 		url,
@@ -67,55 +67,54 @@ const Form: React.FC<FormProps> = (props) => {
 				resp = await update(resource)
 			} else {
 				resp = await create(resource)
-        // Handle associated resources
-        if (parentResource?.id) {
-          await addReferences(resp.id, [parentResource.id])
-        }
+				// Handle associated resources
+				if (parentResource?.id) {
+					await addReferences(resp.id, [parentResource.id])
+				}
 			}
-			if (resp?.id) {        
-        if (onSuccessMessage) {
-          showAlertSuccess(onSuccessMessage)
-        }
-        if(handleSuccess){
-          handleSuccess(resp)
-        }
-			}      
+			if (resp?.id) {
+				if (onSuccessMessage) {
+					showAlertSuccess(onSuccessMessage)
+				}
+				if (handleSuccess) {
+					handleSuccess(resp)
+				}
+			}
 		} catch (err) {
 			console.log('Error', err)
 		}
 	}
 
-	
-  useEffect(() => {
-    if(_resource){
-      setResource(_resource)
-    }else{
-      setResource({
-        title: '',
-      })
-    }
-  }, [_resource])
+	useEffect(() => {
+		if (_resource) {
+			setResource(_resource)
+		} else {
+			setResource({
+				title: '',
+			})
+		}
+	}, [_resource])
 
 	return (
-    <Paper sx={ sx.paper } elevation={2}>
-      <FormFields
-        loading={loading}
-        errors={errors}
-        fields={fields}
-        resource={resource}
-        handleChange={handleChange}
-        handleRemove={handleRemove}
-        handleSubmit={handleSubmit}
-        buttonText={buttonText}
-      />
-    </Paper>
+		<Paper sx={sx.paper} elevation={2}>
+			<FormFields
+				loading={loading}
+				errors={errors}
+				fields={fields}
+				resource={resource}
+				handleChange={handleChange}
+				handleRemove={handleRemove}
+				handleSubmit={handleSubmit}
+				buttonText={buttonText}
+			/>
+		</Paper>
 	)
 }
 
 export default Form
 
 const sx = {
-  paper: {
-    p: 4
-  }
+	paper: {
+		p: 4,
+	},
 }

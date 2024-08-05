@@ -42,7 +42,7 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 		updatePositions,
 		setResource,
 		reloadMany,
-    setOpenShow
+		setOpenShow,
 	} = useResourceContext()
 
 	const handleClick = (resource) => {
@@ -85,29 +85,29 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 
 	if (!headers || !fieldName) return null
 	return (
-    <KanBan
-      loading={loading}
-      actions={actions}
-      resources={resources}
-      activeResource={resource}
-      headers={headers}
-      fieldName={fieldName}
-      displayFields={displayFields}
-      enableOverlay={enableOverlay}
-      enableGradient={enableGradient}
-      handleClick={handleClick}
-      handleDrop={handleDrop}
-      enableEdit={enableEdit}
-      enableDelete={enableEdit}
-      enableCreate={enableCreate}
-      handleEdit={handleEdit}
-      handleDelete={handleDeleteClick}
-      handleAdd={handleAdd}
-      enableComments={enableComments}
-      enableFavorites={enableFavorites}
-      enableRatings={enableRatings}
-      handleComment={handleComment}
-    />
+		<KanBan
+			loading={loading}
+			actions={actions}
+			resources={resources}
+			activeResource={resource}
+			headers={headers}
+			fieldName={fieldName}
+			displayFields={displayFields}
+			enableOverlay={enableOverlay}
+			enableGradient={enableGradient}
+			handleClick={handleClick}
+			handleDrop={handleDrop}
+			enableEdit={enableEdit}
+			enableDelete={enableEdit}
+			enableCreate={enableCreate}
+			handleEdit={handleEdit}
+			handleDelete={handleDeleteClick}
+			handleAdd={handleAdd}
+			enableComments={enableComments}
+			enableFavorites={enableFavorites}
+			enableRatings={enableRatings}
+			handleComment={handleComment}
+		/>
 	)
 }
 

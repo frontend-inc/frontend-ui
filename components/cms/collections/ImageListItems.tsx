@@ -2,10 +2,7 @@ import React from 'react'
 import { Stack } from '@mui/material'
 import { LoadMore, ListLayout } from '../..'
 import { useResourceContext } from 'frontend-js'
-import {
-  ImageCard,
-	Placeholder,
-} from '../..'
+import { ImageCard, Placeholder } from '../..'
 import { useForms } from '../../../hooks'
 
 export type ListItemsImageProps = {
@@ -25,7 +22,6 @@ export type ListItemsImageProps = {
 }
 
 const ImageListItems: React.FC<ListItemsImageProps> = (props) => {
-
 	const {
 		setResource,
 		loading,
@@ -52,32 +48,32 @@ const ImageListItems: React.FC<ListItemsImageProps> = (props) => {
 	} = props
 
 	const handleClick = (resource) => {
-    setResource(resource)
-    setOpenShow(true)		
+		setResource(resource)
+		setOpenShow(true)
 	}
 
 	const { handleDeleteClick } = useForms()
 
 	return (
-    <>
+		<>
 			<Stack direction="column" spacing={2}>
-        <ListLayout grid>
-          { resources?.map(resource => (
-            <ImageCard 
-              key={ resource.id }
-              resource={resource}
-              enableEdit={enableEdit}
-              enableDelete={enableDelete}
-              enableOverlay={enableOverlay}
-              enableGradient={enableGradient}
-              enableUsers={enableUsers}
-              enableFavorites={enableFavorites}
-              enableComments={enableComments}
-              handleClick={() => handleClick(resource)}
-              handleDelete={() => handleDeleteClick(resource)}
-            />
-          ))}	
-        </ListLayout>
+				<ListLayout grid>
+					{resources?.map((resource) => (
+						<ImageCard
+							key={resource.id}
+							resource={resource}
+							enableEdit={enableEdit}
+							enableDelete={enableDelete}
+							enableOverlay={enableOverlay}
+							enableGradient={enableGradient}
+							enableUsers={enableUsers}
+							enableFavorites={enableFavorites}
+							enableComments={enableComments}
+							handleClick={() => handleClick(resource)}
+							handleDelete={() => handleDeleteClick(resource)}
+						/>
+					))}
+				</ListLayout>
 				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
 			</Stack>
 			{!loading && resources?.length == 0 && (

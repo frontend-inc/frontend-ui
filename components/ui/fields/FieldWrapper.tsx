@@ -7,7 +7,7 @@ type FieldWrapperProps = {
 	label?: string
 	icon?: string
 	color?: string
-  alignItems?: 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline'
+	alignItems?: 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline'
 	disablePadding?: boolean
 	enableBorder?: boolean
 	children?: React.ReactNode
@@ -19,7 +19,7 @@ const FieldWrapper: React.FC<FieldWrapperProps> = (props) => {
 		label,
 		icon,
 		color = 'text.secondary',
-    alignItems = 'flex-start',
+		alignItems = 'flex-start',
 		enableBorder = false,
 		disablePadding = false,
 		children,
@@ -33,7 +33,7 @@ const FieldWrapper: React.FC<FieldWrapperProps> = (props) => {
 				...sx.root,
 				...(enableBorder && sx.rootBorder),
 			}}
-      alignItems={alignItems}
+			alignItems={alignItems}
 		>
 			{label && (
 				<Box
@@ -59,8 +59,8 @@ const FieldWrapper: React.FC<FieldWrapperProps> = (props) => {
 export default FieldWrapper
 
 const sx = {
-  root: {
-		width: '100%',    
+	root: {
+		width: '100%',
 	},
 	text: {
 		color: 'text.secondary',

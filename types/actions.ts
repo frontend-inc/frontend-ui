@@ -35,7 +35,7 @@ export type ActionType = {
 	}
 }
 
-export type SocialFieldType = {  
-  provider: string
-  name: string
+export type SocialFieldType = {
+	provider: string
+	name: string
 }

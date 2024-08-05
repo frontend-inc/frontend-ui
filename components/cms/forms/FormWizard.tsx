@@ -35,7 +35,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 	const {
 		handle,
 		resource: _resource,
-		fields=[],
+		fields = [],
 		url,
 		startTitle,
 		startDescription,
@@ -59,7 +59,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		update,
 		create,
 		removeAttachment,
-    handleChange
+		handleChange,
 	} = useResource({
 		url,
 		name: 'document',
@@ -69,19 +69,19 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 	const [currentStep, setCurrentStep] = useState(0)
 	const [totalSteps, setTotalSteps] = useState(0)
 	const [fadeIn, setFadeIn] = useState(false)
-  const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(false)
 
 	const handleStartClick = () => {
 		setCurrentStep(0)
 		setFadeIn(true)
-    setOpen(true)
+		setOpen(true)
 	}
 
 	const handleResetForm = () => {
 		setResource({})
 		setSubmitted(false)
 		setCurrentStep(0)
-    setOpen(false)
+		setOpen(false)
 	}
 
 	const handleSuccess = () => {
@@ -106,7 +106,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 			}
 			if (resp?.id) {
 				setSubmitted(true)
-        setOpen(false)
+				setOpen(false)
 			}
 		} catch (err) {
 			console.log('Error', err)
@@ -155,57 +155,54 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-    {!submitted ? (
-      <FormCard
-        title={startTitle}
-        description={startDescription}
-        image={startImage}
-        buttonText={startButtonText}
-        handleClick={handleStartClick}
-      />
-    ):(
-      <FormCard
-        title={endTitle}
-        description={endDescription}
-        image={endImage}
-        buttonText={endButtonText}
-        handleClick={handleSuccess}
-      />
-    )}						
-    <Modal 
-      fullScreen
-      disablePadding
-      open={ open }
-      handleClose={() => setOpen(false)}
-    >
-      <FormWizardProgress 
-        currentStep={currentStep} 
-        totalSteps={totalSteps} 
-      />
-      <Box sx={ sx.formContainer }>
-        <Box sx={ sx.form }>
-        { currentField && (
-          <FormWizardField
-            fadeIn={fadeIn}
-            field={currentField}
-            handleChange={handleChange}
-            handleRemove={handleRemove}
-            resource={resource}
-            setResource={setResource}
-          />
-        )}
-        <FormWizardButtons
-          currentStep={currentStep}
-          totalSteps={totalSteps}
-          handleNextStep={handleNextStep}
-          handlePrevStep={handlePrevStep}
-          handleSubmit={handleSubmit}
-          buttonText={buttonText}
-        />
-        </Box>
-      </Box>
-    </Modal>
-  </Box>
+			{!submitted ? (
+				<FormCard
+					title={startTitle}
+					description={startDescription}
+					image={startImage}
+					buttonText={startButtonText}
+					handleClick={handleStartClick}
+				/>
+			) : (
+				<FormCard
+					title={endTitle}
+					description={endDescription}
+					image={endImage}
+					buttonText={endButtonText}
+					handleClick={handleSuccess}
+				/>
+			)}
+			<Modal
+				fullScreen
+				disablePadding
+				open={open}
+				handleClose={() => setOpen(false)}
+			>
+				<FormWizardProgress currentStep={currentStep} totalSteps={totalSteps} />
+				<Box sx={sx.formContainer}>
+					<Box sx={sx.form}>
+						{currentField && (
+							<FormWizardField
+								fadeIn={fadeIn}
+								field={currentField}
+								handleChange={handleChange}
+								handleRemove={handleRemove}
+								resource={resource}
+								setResource={setResource}
+							/>
+						)}
+						<FormWizardButtons
+							currentStep={currentStep}
+							totalSteps={totalSteps}
+							handleNextStep={handleNextStep}
+							handlePrevStep={handlePrevStep}
+							handleSubmit={handleSubmit}
+							buttonText={buttonText}
+						/>
+					</Box>
+				</Box>
+			</Modal>
+		</Box>
 	)
 }
 
@@ -219,18 +216,18 @@ const sx = {
 		justifyContent: 'space-between',
 		alignItems: 'center',
 	},
-  formContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: 'calc(100vh - 200px)',
-  },
+	formContainer: {
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
+		width: '100%',
+		height: 'calc(100vh - 200px)',
+	},
 	form: {
 		px: 2,
-    py: 4,
+		py: 4,
 		width: '100%',
 		maxWidth: '600px',
-	},	
+	},
 }

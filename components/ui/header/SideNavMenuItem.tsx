@@ -135,10 +135,7 @@ const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 						/>
 					))}
 					{products?.length > 5 && (
-						<SublinkMenuItem
-							label="See all"
-							handleClick={handleListClick}
-						/>
+						<SublinkMenuItem label="See all" handleClick={handleListClick} />
 					)}
 				</List>
 			</Collapse>

@@ -9,9 +9,9 @@ const AuthLayout: React.FC<AuthLayoutProps> = (props) => {
 	const { children } = props
 
 	return (
-    <Box sx={sx.root}>
-      <Container maxWidth="sm">{children}</Container>
-    </Box>
+		<Box sx={sx.root}>
+			<Container maxWidth="sm">{children}</Container>
+		</Box>
 	)
 }
 

@@ -21,16 +21,16 @@ export type FormFieldType = {
 	label?: string
 	options?: OptionType[]
 	placeholder?: string
-  conditions?: FormFieldConditionType[]
-  // Used by ReferenceInput
-  resource?: any
-  url?: string
-  foreignUrl?: string
-  fields?: FormFieldType[]
-  contentType?: string
-  displayField?: string 
-  query?: any 
-  default?: any
+	conditions?: FormFieldConditionType[]
+	// Used by ReferenceInput
+	resource?: any
+	url?: string
+	foreignUrl?: string
+	fields?: FormFieldType[]
+	contentType?: string
+	displayField?: string
+	query?: any
+	default?: any
 }
 
 export type TableHeaderType = {

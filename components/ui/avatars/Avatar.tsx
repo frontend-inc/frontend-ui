@@ -7,19 +7,19 @@ type UserAvatarProps = {
 	label?: string
 	size?: number
 	color?: string
-  enableGradient?: boolean
-  enableOverlay?: boolean
+	enableGradient?: boolean
+	enableOverlay?: boolean
 }
 
 const Avatar: React.FC<UserAvatarProps> = (props) => {
-	const { 
-    src, 
-    color, 
-    label, 
-    enableGradient = false, 
-    enableOverlay = false, 
-    size = 40 
-  } = props
+	const {
+		src,
+		color,
+		label,
+		enableGradient = false,
+		enableOverlay = false,
+		size = 40,
+	} = props
 	return (
 		<MuiAvatar
 			variant="circular"
@@ -29,8 +29,8 @@ const Avatar: React.FC<UserAvatarProps> = (props) => {
 				height: size,
 				width: size,
 				bgcolor: src ? 'common.white' : color,
-        ...(enableGradient && sx.gradient),
-        ...(enableOverlay && sx.overlay),
+				...(enableGradient && sx.gradient),
+				...(enableOverlay && sx.overlay),
 			}}
 		>
 			{label ? (
@@ -52,7 +52,7 @@ const sx = {
 		pt: '2px',
 		bgcolor: 'secondary.main',
 	},
-  overlay: {
+	overlay: {
 		'&::after': {
 			content: '""',
 			borderRadius: '50%',
@@ -64,7 +64,7 @@ const sx = {
 			background: 'rgb(0,0,0,0.5)',
 		},
 	},
-  gradient: {
+	gradient: {
 		'&::after': {
 			content: '""',
 			borderRadius: '50%',

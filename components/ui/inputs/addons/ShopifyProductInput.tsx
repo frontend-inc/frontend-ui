@@ -27,22 +27,16 @@ const ShopifyProductInput: React.FC<AutosuggestProps> = (props) => {
 
 	const { domain, storefrontAccessToken } = useContext(ShopifyContext) as any
 
-	const { 
-    loading, 
-    product, 
-    products,
-    setProduct, 
-    findProduct, 
-    findProducts 
-  } = useProducts()
+	const { loading, product, products, setProduct, findProduct, findProducts } =
+		useProducts()
 
 	const [options, setOptions] = useState([])
 
 	const handleInputChange = (newValue) => {
 		findProducts(newValue)
-    if(newValue == ''){
-      setProduct(null)      
-    }
+		if (newValue == '') {
+			setProduct(null)
+		}
 	}
 
 	useEffect(() => {

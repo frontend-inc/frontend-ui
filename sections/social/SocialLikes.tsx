@@ -23,24 +23,24 @@ const SocialLikes: React.FC<SocialLikesProps> = (props) => {
 	} = props
 
 	return (
-    <Section
-      requireAuth
-      requireTeam={requireTeam}
-      requirePaid={requirePaid}
-      requireAdmin={requireAdmin}
-      mode={mode}
-      py={py}
-      px={px}
-      maxWidth={maxWidth}
-    >
-      <Heading
-        label={label}
-        title={title}
-        description={description}
-        textAlign={textAlign}
-      />
-      <Likes {...rest} />
-    </Section>
+		<Section
+			requireAuth
+			requireTeam={requireTeam}
+			requirePaid={requirePaid}
+			requireAdmin={requireAdmin}
+			mode={mode}
+			py={py}
+			px={px}
+			maxWidth={maxWidth}
+		>
+			<Heading
+				label={label}
+				title={title}
+				description={description}
+				textAlign={textAlign}
+			/>
+			<Likes {...rest} />
+		</Section>
 	)
 }
 

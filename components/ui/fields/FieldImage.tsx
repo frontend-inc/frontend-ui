@@ -13,14 +13,7 @@ type FieldImageProps = {
 }
 
 const FieldImage: React.FC<FieldImageProps> = (props) => {
-	const {
-		label,
-		value,
-		height = 140,
-		width,
-		color,
-		...rest
-	} = props
+	const { label, value, height = 140, width, color, ...rest } = props
 	if (!value) return null
 	return (
 		<FieldWrapper color={color} label={label} {...rest}>
@@ -30,10 +23,7 @@ const FieldImage: React.FC<FieldImageProps> = (props) => {
 					width: width ? width : undefined,
 				}}
 			>
-				<Image
-					src={value?.url || value}
-					height={height}
-				/>
+				<Image src={value?.url || value} height={height} />
 			</Box>
 		</FieldWrapper>
 	)

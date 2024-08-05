@@ -73,12 +73,22 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 					</Button>
 				)}
 				{handleForgotPassword && (
-					<Button fullWidth color="secondary" variant="contained" onClick={handleForgotPassword}>
+					<Button
+						fullWidth
+						color="secondary"
+						variant="contained"
+						onClick={handleForgotPassword}
+					>
 						Forgot password?
 					</Button>
 				)}
 				{handleOneTimePassword && (
-					<Button fullWidth color="secondary" variant="contained" onClick={handleOneTimePassword}>
+					<Button
+						fullWidth
+						color="secondary"
+						variant="contained"
+						onClick={handleOneTimePassword}
+					>
 						One-time password
 					</Button>
 				)}

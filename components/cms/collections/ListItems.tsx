@@ -4,11 +4,7 @@ import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
-import {   
-	Placeholder,
-  ListCard, 
-  ListLayout 
-} from '../..'
+import { Placeholder, ListCard, ListLayout } from '../..'
 import { useForms } from '../../../hooks'
 import { ActionType, DisplayFieldType } from '../../../types'
 import { buildActions } from '../../../helpers'
@@ -45,9 +41,9 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
 		resources,
 		page,
 		numPages,
-		query={},
-    setQuery, 
-		setOpenShow,    
+		query = {},
+		setQuery,
+		setOpenShow,
 	} = useResourceContext()
 
 	const {
@@ -88,7 +84,7 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
 	const { handleClick = handleNavigate } = props
 	const { handleEdit, handleDeleteClick } = useForms()
 
-  let grid = false 
+	let grid = false
 
 	const LAYOUTS = {
 		list: false,
@@ -99,52 +95,46 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
 		text: false,
 		table: false,
 	}
-  
+
 	grid = LAYOUTS[style]
 
-  const handleLoadMore = () => {
-    let newPage = (page + 1) || 2
-    setQuery({ 
-      ...query, 
-      page: newPage
-    })
-  }
+	const handleLoadMore = () => {
+		let newPage = page + 1 || 2
+		setQuery({
+			...query,
+			page: newPage,
+		})
+	}
 
 	return (
 		<>
 			<Stack direction="column" spacing={2}>
-        <ListLayout grid={grid}>
-          {resources?.map((resource, index) => (
-            <ListCard
-              key={index}
-              style={style}
-              resource={resource}
-              displayFields={displayFields}
-              handleClick={() => handleClick(resource)}
-              actions={
-                buildActions({
-                  enableEdit,
-                  enableDelete,
-                  handleEdit: () => handleEdit(resource),
-                  handleDelete: () => handleDeleteClick(resource),
-                  actions,
-                })
-              }
-              enableUsers={enableUsers}
-              enableComments={enableComments}
-              enableFavorites={enableFavorites}
-              enableLikes={enableLikes}
-              enableRatings={enableRatings}          
-              enableGradient={enableGradient}
-              enableOverlay={enableOverlay}
-            />
-          ))}
-        </ListLayout>
-        <LoadMore 
-          page={page} 
-          numPages={numPages} 
-          loadMore={handleLoadMore} 
-        />
+				<ListLayout grid={grid}>
+					{resources?.map((resource, index) => (
+						<ListCard
+							key={index}
+							style={style}
+							resource={resource}
+							displayFields={displayFields}
+							handleClick={() => handleClick(resource)}
+							actions={buildActions({
+								enableEdit,
+								enableDelete,
+								handleEdit: () => handleEdit(resource),
+								handleDelete: () => handleDeleteClick(resource),
+								actions,
+							})}
+							enableUsers={enableUsers}
+							enableComments={enableComments}
+							enableFavorites={enableFavorites}
+							enableLikes={enableLikes}
+							enableRatings={enableRatings}
+							enableGradient={enableGradient}
+							enableOverlay={enableOverlay}
+						/>
+					))}
+				</ListLayout>
+				<LoadMore page={page} numPages={numPages} loadMore={handleLoadMore} />
 			</Stack>
 			{!loading && resources?.length == 0 && (
 				<Placeholder

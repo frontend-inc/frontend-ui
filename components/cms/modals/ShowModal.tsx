@@ -25,13 +25,7 @@ export type ShowModalProps = {
 }
 
 const ShowModal: React.FC<ShowModalProps> = (props) => {
-	
-  const { 
-    openShow,
-    setOpenShow,
-    resource,
-    url 
-  } = useResourceContext()
+	const { openShow, setOpenShow, resource, url } = useResourceContext()
 
 	const {
 		actions = [],
@@ -41,14 +35,19 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 		enableLikes,
 		enableFavorites,
 		enableSharing,
-    enablePayments,
+		enablePayments,
 		enableEdit,
 		handleEdit,
 	} = props || {}
 
 	if (!resource) return null
 	return (
-		<Modal disablePadding open={openShow} handleClose={() => setOpenShow(false)} maxWidth="sm">
+		<Modal
+			disablePadding
+			open={openShow}
+			handleClose={() => setOpenShow(false)}
+			maxWidth="sm"
+		>
 			<Box px={2} pb={2}>
 				<ShowSnippet
 					resource={resource}
@@ -56,11 +55,11 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 					actions={actions}
 					displayFields={displayFields}
 					enableRatings={enableRatings}
-          enablePayments={enablePayments}
-					handleEdit={handleEdit}          
-          enableLikes={enableLikes}
-          enableFavorites={enableFavorites}
-          enableSharing={enableSharing}
+					enablePayments={enablePayments}
+					handleEdit={handleEdit}
+					enableLikes={enableLikes}
+					enableFavorites={enableFavorites}
+					enableSharing={enableSharing}
 				/>
 				{enableComments && <Comments url={url} handle={resource?.handle} />}
 			</Box>

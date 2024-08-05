@@ -31,22 +31,23 @@ const FormFields: React.FC<FormProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-			{fields?.map((field, index) => {       
-        if(!validateFieldConditions(field?.conditions || [], resource)){
-          return null
-        } 
-      return(
-				<FormFieldInput
-					key={index}
-          resource={resource}          
-					errors={errors}
-					field={field}          
-					value={get(resource, field.name) || field?.default}
-          //@ts-ignore
-					handleChange={handleChange}
-					handleRemove={handleRemove}
-				/>
-			)})}
+			{fields?.map((field, index) => {
+				if (!validateFieldConditions(field?.conditions || [], resource)) {
+					return null
+				}
+				return (
+					<FormFieldInput
+						key={index}
+						resource={resource}
+						errors={errors}
+						field={field}
+						value={get(resource, field.name) || field?.default}
+						//@ts-ignore
+						handleChange={handleChange}
+						handleRemove={handleRemove}
+					/>
+				)
+			})}
 			{handleSubmit && (
 				<Button
 					size="large"
