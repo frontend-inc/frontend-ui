@@ -3,17 +3,14 @@ import { useQueryContext, ResourceContext } from 'frontend-js'
 
 export type QueryProps = {
 	query?: any
-	loadMore?: boolean
 	children: React.ReactNode
 }
 
 const Query: React.FC<QueryProps> = (props) => {
-	const { children, query: defaultQuery = {}, loadMore = false } = props
+	const { children, query: defaultQuery = {} } = props
 	const { setQuery } = useContext(ResourceContext) as any
 
-	useQueryContext({
-		loadMore,
-	})
+	useQueryContext()
 
 	useEffect(() => {
 		if (defaultQuery) {

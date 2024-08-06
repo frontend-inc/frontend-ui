@@ -12,7 +12,7 @@ import {
 import { Image, Icon, DisplayFields, MenuButton } from '../..'
 import { DisplayFieldType } from '../../../types'
 
-export type ResourceProps = {
+export type ResourceListItemProps = {
 	avatar?: React.ReactNode
 	icon?: string
 	color?: string
@@ -33,7 +33,7 @@ export type ResourceProps = {
 	displayFields?: DisplayFieldType[]
 }
 
-const Resource: React.FC<ResourceProps> = (props) => {
+const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 	const {
 		icon,
 		avatar,
@@ -120,7 +120,7 @@ const Resource: React.FC<ResourceProps> = (props) => {
 	)
 }
 
-export default Resource
+export default ResourceListItem
 
 const sx = {
 	root: {

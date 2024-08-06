@@ -30,7 +30,7 @@ export type ResourceListProps = {
 	component?: React.FC<any>
 	layout?: 'list' | 'grid'
 	dense?: boolean
-	handleClick?: (item: any) => void
+	handleClick?: (resource: any) => void
 	enableInfiniteLoad?: boolean
 	enableLoadMore?: boolean
 	perPage?: number

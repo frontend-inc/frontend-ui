@@ -99,10 +99,10 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
 	grid = LAYOUTS[style]
 
 	const handleLoadMore = () => {
-		let newPage = page + 1 || 2
+		let perPage = (query?.per_page || 12) + 12
 		setQuery({
 			...query,
-			page: newPage,
+			per_page: perPage,
 		})
 	}
 
