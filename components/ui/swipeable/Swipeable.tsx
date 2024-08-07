@@ -51,7 +51,7 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
 				{children}
 			</SwipeableComponent>
 			{enableArrows && (
-				<Box sx={sx.actions}>
+				<Box sx={sx.buttons}>
 					<IconButton onClick={handlePrev}>
 						<Icon name="ChevronLeft" size={32} />
 					</IconButton>
@@ -71,7 +71,7 @@ const sx = {
 		width: '100%',
 		position: 'relative',
 	},
-	actions: {
+	buttons: {
 		position: 'absolute',
 		top: '50%',
 		transform: 'translateY(-50%)',

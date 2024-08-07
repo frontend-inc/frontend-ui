@@ -27,7 +27,7 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 	const {
 		id,
 		loading,
-		actions,
+		buttons,
 		resource,
 		displayFields = [],
 		height = 200,
@@ -107,12 +107,12 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 					/>
 					<Actions
 						numVisible={0}
-						actions={buildActions({
+						buttons={buildActions({
 							enableEdit,
 							enableDelete,
 							handleEdit,
 							handleDelete,
-							actions,
+							buttons,
 						})}
 						resource={resource}
 					/>

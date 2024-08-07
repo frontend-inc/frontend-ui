@@ -55,7 +55,7 @@ const TableFilterButton: React.FC<TableFilterButtonProps> = (props) => {
 					<Button
 						variant="contained"
 						color="secondary"
-						sx={sx.secondaryButton}
+						sx={sx.secondaryAction}
 						onClick={handleClearFilters}
 					>
 						<Clear />
@@ -69,7 +69,7 @@ const TableFilterButton: React.FC<TableFilterButtonProps> = (props) => {
 export default TableFilterButton
 
 const sx = {
-	secondaryButton: {
+	secondaryAction: {
 		width: 34,
 	},
 }

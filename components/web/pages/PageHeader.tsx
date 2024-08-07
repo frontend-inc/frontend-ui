@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack, Box } from '@mui/material'
-import { ActionType } from '../../../types'
+import { ButtonType } from '../../../types'
 import { Heading, Actions, Breadcrumbs } from '../../../components'
 
 export type PageHeaderProps = {
@@ -12,7 +12,7 @@ export type PageHeaderProps = {
 		path: string
 	}[]
 	maxLinks?: number
-	actions: ActionType[]
+	buttons: ButtonType[]
 	resource?: any
 	enableBorder?: boolean
 }
@@ -24,7 +24,7 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 		description,
 		links,
 		maxLinks = 3,
-		actions,
+		buttons,
 		resource,
 	} = props
 
@@ -47,9 +47,9 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 					description={description}
 					textAlign="left"
 				/>
-				{actions?.length > 0 && (
-					<Box sx={sx.actions}>
-						<Actions actions={actions} resource={resource} />
+				{buttons?.length > 0 && (
+					<Box sx={sx.buttons}>
+						<Actions buttons={buttons} resource={resource} />
 					</Box>
 				)}
 			</Stack>
@@ -70,7 +70,7 @@ const sx = {
 		borderBottom: 1,
 		borderColor: 'divider',
 	},
-	actions: {
+	buttons: {
 		display: 'flex',
 		alignItems: 'flex-start',
 		justifyContent: 'flex-end',

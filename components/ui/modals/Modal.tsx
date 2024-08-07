@@ -19,7 +19,7 @@ type ModalProps = {
 	handleClose: () => void
 	title?: string
 	subtitle?: string
-	actions?: any
+	buttons?: any
 	children?: any
 	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 	secondaryActions?: any
@@ -38,7 +38,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 		handleClose,
 		title,
 		subtitle,
-		actions,
+		buttons,
 		children,
 		maxWidth = 'sm',
 		secondaryActions,
@@ -111,7 +111,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 
 			{!loading && (
 				<>
-					{(enableCancel || actions) && (
+					{(enableCancel || buttons) && (
 						<DialogActions sx={sx.dialogActions}>
 							{enableCancel && (
 								<Button
@@ -122,7 +122,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 									Cancel
 								</Button>
 							)}
-							{actions && actions}
+							{buttons && buttons}
 						</DialogActions>
 					)}
 				</>

@@ -27,6 +27,9 @@ export const SYSTEM_FIELDS = [
 	'file',
 	'lat',
 	'lng',
+  'email',
+  'phone',
+  'url',
 ]
 
 export const ID_FIELD: FieldBase = {

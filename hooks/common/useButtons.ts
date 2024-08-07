@@ -1,19 +1,19 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import { AppContext } from '../../context'
 import { useRouter } from 'next/router'
-import { ActionType } from '../../types'
+import { ButtonType } from '../../types'
 import { useLoadingWrapper } from '.'
 import copy from 'copy-to-clipboard'
-import { useAlerts } from '../../hooks'
+import { useAlerts } from '..'
 import { useAuth } from 'frontend-js'
 import { get } from 'lodash'
 
-type UseActionParams = {
-	action: ActionType
+type UseButtonParams = {
+	action: ButtonType
 	resource?: any
 }
 
-const useActions = (params: UseActionParams) => {
+const useButtons = (params: UseButtonParams) => {
 	const { loading, data, errors, loadingWrapper } = useLoadingWrapper()
 
 	const { action, resource } = params || {}
@@ -106,4 +106,4 @@ const useActions = (params: UseActionParams) => {
 	}
 }
 
-export default useActions
+export default useButtons

@@ -121,7 +121,7 @@ const TeamList: React.FC = (props) => {
 							description="Add a team to get started"
 						/>
 					)}
-					<Box sx={sx.actions}>
+					<Box sx={sx.buttons}>
 						<Button variant="contained" onClick={handleAddTeamClick}>
 							Add Team
 						</Button>
@@ -153,7 +153,7 @@ const TeamList: React.FC = (props) => {
 export default TeamList
 
 const sx = {
-	actions: {
+	buttons: {
 		width: '100%',
 		display: 'flex',
 		justifyContent: 'flex-end',

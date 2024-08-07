@@ -1,6 +1,6 @@
 import React from 'react'
 import { TypographyVariant } from '@mui/material'
-import { ActionType } from './actions'
+import { ButtonType } from './buttons'
 import { DisplayFieldType, FormFieldType } from './forms'
 
 export type HeadingProps = {
@@ -36,7 +36,7 @@ export type ForeignProps = {
 
 export type CardProps = {
 	ref?: any
-	actions: ActionType[]
+	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
 	enableUsers?: boolean
 	enableComments?: boolean

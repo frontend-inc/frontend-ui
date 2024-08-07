@@ -19,7 +19,7 @@ type ShowLayoutProps = ShowProps & {
 
 const ShowLayout: React.FC<ShowLayoutProps> = (props) => {
 	const {
-		actions,
+		buttons,
 		displayFields = [],
 		resource,
 		children,
@@ -35,13 +35,13 @@ const ShowLayout: React.FC<ShowLayoutProps> = (props) => {
 	const { title, description } = resource || {}
 	return (
 		<Stack sx={sx.root} spacing={4}>
-			{(actions || enableEdit) && (
-				<Box sx={sx.actions}>
+			{(buttons || enableEdit) && (
+				<Box sx={sx.buttons}>
 					<Actions
-						actions={buildActions({
+						buttons={buildActions({
 							enableEdit,
 							handleEdit,
-							actions,
+							buttons,
 						})}
 						numVisible={4}
 						resource={resource}
@@ -110,7 +110,7 @@ const sx = {
 	caption: {
 		color: 'text.secondary',
 	},
-	actions: {
+	buttons: {
 		justifyContent: 'center',
 		width: {
 			sm: 'auto',

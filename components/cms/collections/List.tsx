@@ -9,7 +9,7 @@ import {
 } from '../..'
 import { buildSearchQuery } from '../../../helpers'
 import {
-	ActionType,
+	ButtonType,
 	DisplayFieldType,
 	FormFieldType,
 	QueryParamsType,
@@ -24,7 +24,7 @@ export type ListProps = {
 	style: 'avatar' | 'card' | 'list' | 'cover'
 	resource?: any
 	fields: FormFieldType[]
-	actions: ActionType[]
+	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
 	filterOptions: SearchFilterOptionType[]
 	sortOptions: SortOptionType[]
@@ -70,7 +70,7 @@ const List: React.FC<ListProps> = (props) => {
 		href,
 		url,
 		query = {},
-		actions = [],
+		buttons = [],
 		fields = [],
 		displayFields = [],
 		filterOptions = [],
@@ -129,7 +129,7 @@ const List: React.FC<ListProps> = (props) => {
 				<RenderList
 					{...rest}
 					style={style}
-					actions={actions}
+					buttons={buttons}
 					url={url}
 					href={href}
 					enableLikes={enableLikes}
@@ -144,7 +144,7 @@ const List: React.FC<ListProps> = (props) => {
 			}
 			show={
 				<RenderShow
-					actions={actions}
+					buttons={buttons}
 					displayFields={displayFields}
 					enableOverlay={enableOverlay}
 					enableFavorites={enableFavorites}

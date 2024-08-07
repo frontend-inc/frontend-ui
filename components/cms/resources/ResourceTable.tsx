@@ -265,7 +265,7 @@ const ResourceTable: React.FC<ResourceTableProps> = (props) => {
 				open={openModal}
 				handleClose={() => setOpenModal(false)}
 				title={resource?.id ? 'Edit' : 'Add'}
-				actions={
+				buttons={
 					<Button
 						fullWidth
 						variant="contained"

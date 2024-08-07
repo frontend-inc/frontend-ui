@@ -6,17 +6,17 @@ import {
 } from '../../../components'
 import { useAuth } from 'frontend-js'
 import { UserProfileProps } from '../../users/profile/UserProfile'
-import { FormFieldType, ActionType } from '../../../types'
+import { FormFieldType, ButtonType } from '../../../types'
 import { buildActions } from '../../../helpers'
 
 export type CurrentUserProps = UserProfileProps & {
 	enableEdit?: boolean
 	fields?: FormFieldType[]
-	actions?: ActionType[]
+	buttons?: ButtonType[]
 }
 
 const CurrentUser: React.FC<CurrentUserProps> = (props) => {
-	const { enableEdit, fields = [], actions = [] } = props || {}
+	const { enableEdit, fields = [], buttons = [] } = props || {}
 
 	const { user, setUser, currentUser, fetchMe } = useAuth()
 
@@ -41,12 +41,12 @@ const CurrentUser: React.FC<CurrentUserProps> = (props) => {
 	let userActions = buildActions({
 		enableEdit,
 		handleEdit,
-		actions,
+		buttons,
 	})
 
 	return (
 		<AuthGuard>
-			<UserProfile {...props} user={currentUser} actions={userActions} />
+			<UserProfile {...props} user={currentUser} buttons={userActions} />
 			<CurrentUserEditModal
 				open={open}
 				handleClose={() => setOpen(false)}

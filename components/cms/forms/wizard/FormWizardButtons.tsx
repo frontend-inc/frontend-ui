@@ -23,7 +23,7 @@ const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 	} = props
 
 	return (
-		<Stack direction="row" spacing={1} sx={sx.actions}>
+		<Stack direction="row" spacing={1} sx={sx.buttons}>
 			<Button
 				variant="contained"
 				color="secondary"
@@ -64,7 +64,7 @@ const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 export default FormWizardButtons
 
 const sx = {
-	actions: {
+	buttons: {
 		width: '100%',
 		justifyContent: 'flex-end',
 		py: 4,

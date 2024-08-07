@@ -31,7 +31,7 @@ const CarouselProgress: React.FC<CarouselProgressProps> = (props) => {
 			<Box>{children[currentStep]}</Box>
 			<Box sx={sx.controls}>
 				<LinearProgress color="primary" variant="determinate" value={80} />
-				<Box sx={sx.actions}>
+				<Box sx={sx.buttons}>
 					<IconButton onClick={handlePrevStep}>
 						<ChevronLeft />
 					</IconButton>
@@ -47,7 +47,7 @@ const CarouselProgress: React.FC<CarouselProgressProps> = (props) => {
 export default CarouselProgress
 
 const sx = {
-	actions: {
+	buttons: {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',

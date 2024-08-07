@@ -111,7 +111,7 @@ const TeamUsersList: React.FC<TeamListProps> = (props) => {
 						/>
 					)}
 					{currentUser?.team_id && (
-						<Box sx={sx.actions}>
+						<Box sx={sx.buttons}>
 							<Button
 								onClick={handleAddUser}
 								variant="contained"
@@ -138,7 +138,7 @@ const TeamUsersList: React.FC<TeamListProps> = (props) => {
 						handleChange={handleChange}
 						errors={errors}
 					/>
-					<Stack sx={sx.actions} direction="row" spacing={1}>
+					<Stack sx={sx.buttons} direction="row" spacing={1}>
 						<Button
 							variant="contained"
 							color="secondary"
@@ -159,7 +159,7 @@ const TeamUsersList: React.FC<TeamListProps> = (props) => {
 export default TeamUsersList
 
 const sx = {
-	actions: {
+	buttons: {
 		width: '100%',
 		display: 'flex',
 		justifyContent: 'flex-end',

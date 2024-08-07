@@ -44,7 +44,7 @@ const TeamUserInvite: React.FC<TeamUserInviteProps> = (props) => {
 				user={user}
 				handleChange={handleChange}
 			/>
-			<Stack sx={sx.actions} direction={'row'} spacing={1}>
+			<Stack sx={sx.buttons} direction={'row'} spacing={1}>
 				<Button
 					color="secondary"
 					onClick={handleCancel}
@@ -69,7 +69,7 @@ const TeamUserInvite: React.FC<TeamUserInviteProps> = (props) => {
 export default TeamUserInvite
 
 const sx = {
-	actions: {
+	buttons: {
 		width: '100%',
 		justifyContent: 'flex-end',
 	},

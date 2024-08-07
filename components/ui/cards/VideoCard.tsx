@@ -57,14 +57,14 @@ const VideoCard: React.FC<VideoCardProps> = (props) => {
 				<IconButton sx={sx.playIcon} onClick={handleClick}>
 					<Icon name="Play" color="common.white" size={20} />
 				</IconButton>
-				<Box sx={sx.actions}>
+				<Box sx={sx.buttons}>
 					{enableFavorites == true && (
 						<FavoriteButton handle={resource?.handle} />
 					)}
 					<Actions
 						resource={resource}
 						numVisible={0}
-						actions={buildActions({
+						buttons={buildActions({
 							enableEdit,
 							enableDelete,
 							handleEdit,
@@ -104,7 +104,7 @@ const sx = {
 			background: 'linear-gradient(to top, rgb(0,0,0,0.5), transparent)',
 		},
 	},
-	actions: {
+	buttons: {
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'flex-end',

@@ -19,7 +19,7 @@ const CarouselListList: React.FC<CarouselListListProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 
 	const {
-		actions,
+		buttons,
 		href,
 		displayFields,
 		enableAutoPlay = true,
@@ -79,7 +79,7 @@ const CarouselListList: React.FC<CarouselListListProps> = (props) => {
 						}}
 					>
 						<ListCard
-							actions={actions}
+							buttons={buttons}
 							style="card"
 							resource={resource}
 							displayFields={displayFields}

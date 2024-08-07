@@ -9,7 +9,7 @@ type DrawerProps = {
 	title?: string
 	anchor?: 'left' | 'right' | 'top' | 'bottom'
 	handleClose: () => void
-	actions?: any
+	buttons?: any
 	children: React.ReactNode
 	closeIcon?: string
 	disablePadding?: boolean
@@ -26,7 +26,7 @@ const Drawer: React.FC<DrawerProps> = (props) => {
 		anchor = 'right',
 		handleClose,
 		children,
-		actions,
+		buttons,
 		variant = 'temporary',
 		disablePadding = false,
 		closeIcon = 'X',
@@ -78,13 +78,13 @@ const Drawer: React.FC<DrawerProps> = (props) => {
 				<Box
 					sx={{
 						...sx.content,
-						...(actions && sx.contentActions),
+						...(buttons && sx.contentActions),
 						...(!disablePadding && sx.contentPadding),
 					}}
 				>
 					{children}
 				</Box>
-				{actions && <Box sx={sx.actions}>{actions}</Box>}
+				{buttons && <Box sx={sx.buttons}>{buttons}</Box>}
 			</Box>
 		</SwipeableDrawer>
 	)
@@ -127,7 +127,7 @@ const sx = {
 		borderColor: 'divider',
 		boxShadow: `rgb(0 0 0 / 5%) 0px 2px 4px !important`,
 	},
-	actions: {
+	buttons: {
 		bgcolor: 'background.paper',
 		position: 'absolute',
 		bottom: 0,

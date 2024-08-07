@@ -10,7 +10,7 @@ export type ShowYouTubeProps = ShowProps & {
 
 const ShowYouTube: React.FC<ShowYouTubeProps> = (props) => {
 	const {
-		actions,
+		buttons,
 		resource,
 		fieldName,
 		displayFields = [],
@@ -19,7 +19,7 @@ const ShowYouTube: React.FC<ShowYouTubeProps> = (props) => {
 	const src = get(resource, fieldName)
 	return (
 		<ShowLayout
-			actions={actions}
+			buttons={buttons}
 			resource={resource}
 			displayFields={[]}
 			{...rest}

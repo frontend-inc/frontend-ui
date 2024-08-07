@@ -19,7 +19,7 @@ import { Actions } from '../..'
 const CardList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
-		actions,
+		buttons,
 		resource,
 		displayFields = [],
 		href,
@@ -85,7 +85,7 @@ const CardList: React.FC<CardProps> = (props) => {
 						</Stack>
 					</Stack>
 					<Stack direction="row" justifyContent="flex-end">
-						<Actions numVisible={0} actions={actions} resource={resource} />
+						<Actions numVisible={0} buttons={buttons} resource={resource} />
 					</Stack>
 				</Stack>
 			</Stack>
@@ -168,11 +168,11 @@ const sx = {
 	description: {
 		maxWidth: '320px',
 	},
-	actions: {
+	buttons: {
 		display: 'flex',
 		flexDirection: 'column',
 	},
-	actionsBorder: {
+	buttonsBorder: {
 		px: 1,
 		pb: {
 			sm: 0,

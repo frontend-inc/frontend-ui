@@ -39,7 +39,7 @@ const TeamForm: React.FC<TeamFormProps> = (props) => {
 				icon="lock"
 				title="Unauthorized"
 				description="You do not have permission to access this page"
-				actions={
+				buttons={
 					<Button
 						color="secondary"
 						onClick={handleCancel}
@@ -83,7 +83,7 @@ const TeamForm: React.FC<TeamFormProps> = (props) => {
 				placeholder="Description"
 				handleChange={handleChange}
 			/>
-			<Stack sx={sx.actions} direction={'row'} spacing={1}>
+			<Stack sx={sx.buttons} direction={'row'} spacing={1}>
 				<Button
 					color="secondary"
 					onClick={handleCancel}
@@ -114,7 +114,7 @@ const sx = {
 		flexDirection: 'column',
 		gap: 2,
 	},
-	actions: {
+	buttons: {
 		width: '100%',
 		justifyContent: 'flex-end',
 	},

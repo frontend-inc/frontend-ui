@@ -1,9 +1,9 @@
-export const ACTION_NAMES = [
+export const BUTTON_NAMES = [
 	{ value: 'navigate', label: 'Go to page' },
 	{ value: 'url', label: 'Go to URL' },
 ]
 
-export const ACTION_CMS_NAMES = [
+export const BUTTON_CMS_NAMES = [
 	{ value: 'navigate', label: 'Go to page' },
 	{ value: 'link', label: 'Go to link' },
 	{ value: 'stripe_payment_link', label: 'Stripe payment link' },

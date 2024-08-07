@@ -14,7 +14,7 @@ import { buildActions } from '../../../helpers'
 
 const ShowCard: React.FC<ShowProps> = (props) => {
 	const {
-		actions,
+		buttons,
 		resource,
 		displayFields = [],
 		enableEdit,
@@ -30,13 +30,13 @@ const ShowCard: React.FC<ShowProps> = (props) => {
 	if (!resource) return null
 	return (
 		<Stack spacing={2}>
-			{(actions || enableEdit) && (
-				<Box sx={sx.actions}>
+			{(buttons || enableEdit) && (
+				<Box sx={sx.buttons}>
 					<Actions
-						actions={buildActions({
+						buttons={buildActions({
 							enableEdit,
 							handleEdit,
-							actions,
+							buttons,
 						})}
 						justifyContent="flex-end"
 						resource={resource}
@@ -134,7 +134,7 @@ const sx = {
 	caption: {
 		color: 'text.secondary',
 	},
-	actions: {
+	buttons: {
 		width: '100%',
 	},
 	imageContainer: {

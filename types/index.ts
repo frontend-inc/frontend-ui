@@ -1,4 +1,4 @@
-export * from './actions'
+export * from './buttons'
 export * from './app'
 export * from './client'
 export * from './cms'

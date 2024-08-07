@@ -17,7 +17,7 @@ import {
 const CardList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
-		actions,
+		buttons,
 		resource,
 		displayFields = [],
 		href,
@@ -72,8 +72,8 @@ const CardList: React.FC<CardProps> = (props) => {
 					</Stack>
 				</Stack>
 			</Stack>
-			<Stack direction="row" justifyContent="flex-end" sx={sx.actions}>
-				<Actions numVisible={0} actions={actions} resource={resource} />
+			<Stack direction="row" justifyContent="flex-end" sx={sx.buttons}>
+				<Actions numVisible={0} buttons={buttons} resource={resource} />
 			</Stack>
 		</Box>
 	)
@@ -105,7 +105,7 @@ const sx = {
 	description: {
 		maxWidth: '600px',
 	},
-	actions: {
+	buttons: {
 		position: 'absolute',
 		top: 10,
 		right: 10,

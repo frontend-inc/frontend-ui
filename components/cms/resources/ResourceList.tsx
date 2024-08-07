@@ -235,7 +235,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		<Stack spacing={1} sx={sx.root}>
 			<Stack
 				direction={{ xs: 'column', sm: 'row' }}
-				sx={sx.actions}
+				sx={sx.buttons}
 				spacing={1}
 			>
 				<Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
@@ -349,7 +349,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				open={openModal}
 				handleClose={() => setOpenModal(false)}
 				title={resource?.id ? 'Edit' : 'Add'}
-				actions={
+				buttons={
 					<Button
 						fullWidth
 						variant="contained"
@@ -434,7 +434,7 @@ const sx = {
 			xs: 2,
 		},
 	},
-	actions: {
+	buttons: {
 		width: '100%',
 		justifyContent: 'space-between',
 	},

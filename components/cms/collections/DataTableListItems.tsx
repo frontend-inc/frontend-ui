@@ -38,7 +38,7 @@ const DataTableList: React.FC<DataTableListProps> = (props) => {
 	} = props || {}
 
 	const handleCellClick = (value, row, field) => {
-		// Todo: manage cell actions
+		// Todo: manage cell buttons
 	}
 
 	const handleClick = (resource) => {

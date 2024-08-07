@@ -72,7 +72,7 @@ const TableToolbar: React.FC<TableToolbarProps> = (props) => {
 					</Box>
 				</Hidden>
 			</Box>
-			<Box sx={sx.actions}>
+			<Box sx={sx.buttons}>
 				<Box sx={sx.toolbar}>
 					<Hidden mdDown>
 						<Stack direction="row" spacing={1}>
@@ -194,7 +194,7 @@ const sx = {
 	title: {
 		lineHeight: 1.2,
 	},
-	actions: {
+	buttons: {
 		width: 240,
 		display: 'flex',
 		flexDirection: 'row',

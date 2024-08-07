@@ -1,4 +1,4 @@
-export * from './actions'
+export * from './buttons'
 export * from './carousel'
 export * from './documents'
 export * from './links'

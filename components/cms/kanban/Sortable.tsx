@@ -16,7 +16,7 @@ import {
 } from '@dnd-kit/sortable'
 import { Box, Button, List, Typography, Stack } from '@mui/material'
 import Droppable from './Droppable'
-import { ActionType, DisplayFieldType } from '../../../types'
+import { ButtonType, DisplayFieldType } from '../../../types'
 import { Icon, KanBanCard } from '../../../components'
 
 type SortableProps = {
@@ -26,7 +26,7 @@ type SortableProps = {
 		value: string
 	}[]
 	activeResource: any
-	actions: ActionType[]
+	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
 	handleClick: (resource: any) => void
 	handleDrop: (movedItem: any, overContainer: string, columns: any[]) => void
@@ -50,7 +50,7 @@ const Sortable: React.FC<SortableProps> = (props) => {
 	const {
 		loading,
 		activeResource,
-		actions = [],
+		buttons = [],
 		headers = [],
 		handleDrop,
 		displayFields = [],
@@ -123,7 +123,7 @@ const Sortable: React.FC<SortableProps> = (props) => {
 												key={res?.id}
 												id={res?.id}
 												resource={res}
-												actions={actions}
+												buttons={buttons}
 												displayFields={displayFields}
 												handleClick={() => handleClick(res)}
 												enableOverlay={enableOverlay}
@@ -169,7 +169,7 @@ const Sortable: React.FC<SortableProps> = (props) => {
 						id={draggedResource?.id}
 						resource={draggedResource}
 						displayFields={displayFields}
-						actions={[]}
+						buttons={[]}
 						enableRatings={enableRatings}
 						enableFavorites={enableFavorites}
 						enableLikes={enableLikes}

@@ -43,7 +43,7 @@ const Cards: React.FC<CardsProps> = (props) => {
 				{items?.map((card, i) => (
 					<Grid item xs={12} sm={4} md={4} key={i}>
 						<ListCard
-							actions={[]}
+							buttons={[]}
 							style={style}
 							resource={{
 								...card,

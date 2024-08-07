@@ -18,7 +18,7 @@ import { CardProps } from '../../../types'
 const CoverVert: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
-		actions,
+		buttons,
 		resource,
 		displayFields = [],
 		href,
@@ -75,7 +75,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 									)}
 									<DisplayFields fields={displayFields} resource={resource} />
 									{enableUsers == true && <UserChip user={resource?.user} />}
-									<Stack direction="row" sx={sx.actions}>
+									<Stack direction="row" sx={sx.buttons}>
 										<SocialActions
 											color="common.white"
 											resource={resource}
@@ -86,7 +86,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 										<Actions
 											numVisible={0}
 											resource={resource}
-											actions={actions}
+											buttons={buttons}
 										/>
 									</Stack>
 								</Box>
@@ -145,7 +145,7 @@ const sx = {
 		justifyContent: 'space-between',
 		alignItems: 'flex-end',
 	},
-	actions: {
+	buttons: {
 		display: 'flex',
 		justifyContent: 'space-between',
 		flexDirection: 'row',

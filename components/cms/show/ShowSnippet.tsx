@@ -14,7 +14,7 @@ const ShowSnippet: React.FC<ShowProps> = (props) => {
 	const {
 		resource,
 		url,
-		actions = [],
+		buttons = [],
 		displayFields = [],
 		enableRatings,
 		enablePayments,

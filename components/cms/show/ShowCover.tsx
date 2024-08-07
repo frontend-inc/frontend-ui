@@ -15,7 +15,7 @@ import { buildActions } from '../../../helpers'
 
 const ShowCover: React.FC<ShowProps> = (props) => {
 	const {
-		actions,
+		buttons,
 		displayFields = [],
 		resource,
 		handleEdit,
@@ -37,13 +37,13 @@ const ShowCover: React.FC<ShowProps> = (props) => {
 					enableFavorites={enableFavorites}
 					enableSharing={enableSharing}
 				/>
-				{(actions || enableEdit) && (
-					<Box sx={sx.actions}>
+				{(buttons || enableEdit) && (
+					<Box sx={sx.buttons}>
 						<Actions
-							actions={buildActions({
+							buttons={buildActions({
 								enableEdit,
 								handleEdit,
-								actions,
+								buttons,
 							})}
 							numVisible={4}
 							resource={resource}
@@ -108,7 +108,7 @@ const sx = {
 	caption: {
 		color: 'text.secondary',
 	},
-	actions: {
+	buttons: {
 		justifyContent: 'center',
 		width: {
 			sm: 'auto',

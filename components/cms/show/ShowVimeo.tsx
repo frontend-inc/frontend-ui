@@ -11,7 +11,7 @@ export type ShowVimeoProps = ShowProps & {
 const VimeoVideo: React.FC<ShowVimeoProps> = (props) => {
 	const {
 		resource,
-		actions,
+		buttons,
 		fieldName,
 		displayFields = [],
 		...rest
@@ -19,7 +19,7 @@ const VimeoVideo: React.FC<ShowVimeoProps> = (props) => {
 	const src = get(resource, fieldName)
 	return (
 		<ShowLayout
-			actions={actions}
+			buttons={buttons}
 			resource={resource}
 			displayFields={[]}
 			{...rest}

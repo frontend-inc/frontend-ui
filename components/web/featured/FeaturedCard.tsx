@@ -86,7 +86,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 							{truncate(description, 160)}
 						</Typography>
 						{buttonText && (
-							<Box sx={sx.actions}>
+							<Box sx={sx.buttons}>
 								<Button
 									size="large"
 									variant="contained"
@@ -134,7 +134,7 @@ const sx = {
 			sm: '55%',
 		},
 	},
-	actions: {
+	buttons: {
 		mt: 2,
 		display: 'flex',
 		justifyContent: {

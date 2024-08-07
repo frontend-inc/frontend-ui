@@ -63,7 +63,7 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 			}}
 			disablePadding
 			secondaryAction={
-				<Stack direction="row" spacing={1} sx={sx.actions}>
+				<Stack direction="row" spacing={1} sx={sx.buttons}>
 					{secondaryActions}
 					{(menuActions || handleEdit || handleDelete) && (
 						<MenuButton handleEdit={handleEdit} handleDelete={handleDelete}>
@@ -134,7 +134,7 @@ const sx = {
 		p: 1,
 		borderRadius: 1,
 	},
-	actions: {
+	buttons: {
 		alignItems: 'center',
 	},
 	listItemIcon: {

@@ -21,7 +21,7 @@ import {
 
 const AvatarList: React.FC<CardProps> = (props) => {
 	const {
-		actions,
+		buttons,
 		resource,
 		displayFields = [],
 		height = 128,
@@ -43,7 +43,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 				disablePadding
 				disableGutters
 				secondaryAction={
-					<Actions numVisible={0} actions={actions} resource={resource} />
+					<Actions numVisible={0} buttons={buttons} resource={resource} />
 				}
 			>
 				<ListItemButton

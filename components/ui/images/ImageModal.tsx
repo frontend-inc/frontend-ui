@@ -33,7 +33,7 @@ const ImageModal: React.FC<ImageModalProps> = (props) => {
 			title={title}
 			maxWidth="md"
 			disablePadding
-			actions={
+			buttons={
 				<>
 					<Button
 						color="secondary"

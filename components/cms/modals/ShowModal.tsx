@@ -2,13 +2,13 @@ import React from 'react'
 import { Box } from '@mui/material'
 import { Comments, Modal, ShowSnippet } from '../..'
 import { useResourceContext } from 'frontend-js'
-import { ActionType, FormFieldType, DisplayFieldType } from '../../../types'
+import { ButtonType, FormFieldType, DisplayFieldType } from '../../../types'
 
 export type ShowModalProps = {
 	handle?: string
 	enableBorder?: boolean
 	enableOverlay?: boolean
-	actions: ActionType[]
+	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
 	fields?: FormFieldType[]
 	fieldName?: string
@@ -28,7 +28,7 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 	const { openShow, setOpenShow, resource, url } = useResourceContext()
 
 	const {
-		actions = [],
+		buttons = [],
 		displayFields = [],
 		enableComments,
 		enableRatings,
@@ -52,7 +52,7 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 				<ShowSnippet
 					resource={resource}
 					enableEdit={enableEdit}
-					actions={actions}
+					buttons={buttons}
 					displayFields={displayFields}
 					enableRatings={enableRatings}
 					enablePayments={enablePayments}

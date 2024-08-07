@@ -22,7 +22,7 @@ import { CardProps } from '../../../types'
 const ChipCard: React.FC<CardProps> = (props) => {
 	const {
 		resource,
-		actions,
+		buttons,
 		displayFields = [],
 		handleClick,
 		enableGradient = false,
@@ -40,11 +40,11 @@ const ChipCard: React.FC<CardProps> = (props) => {
 				disablePadding
 				disableGutters
 				secondaryAction={
-					<Stack direction="row" spacing={0} sx={sx.actions}>
+					<Stack direction="row" spacing={0} sx={sx.buttons}>
 						{enableFavorites == true && (
 							<FavoriteButton handle={resource?.handle} />
 						)}
-						<Actions numVisible={0} actions={actions} resource={resource} />
+						<Actions numVisible={0} buttons={buttons} resource={resource} />
 					</Stack>
 				}
 			>
@@ -146,7 +146,7 @@ const sx = {
 		height: '48px',
 		width: '48px',
 	},
-	actions: {
+	buttons: {
 		px: 1,
 		alignItems: 'center',
 		justifyContent: 'center',

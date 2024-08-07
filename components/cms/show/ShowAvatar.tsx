@@ -13,7 +13,7 @@ import { buildActions } from '../../../helpers'
 
 const ShowAvatar: React.FC<ShowProps> = (props) => {
 	const {
-		actions,
+		buttons,
 		resource,
 		displayFields = [],
 		enableEdit,
@@ -28,17 +28,17 @@ const ShowAvatar: React.FC<ShowProps> = (props) => {
 	const { title, image, description } = resource || {}
 	return (
 		<Stack spacing={2} direction="column" justifyContent="center">
-			{(actions || enableEdit) && (
+			{(buttons || enableEdit) && (
 				<Stack
-					sx={sx.actions}
+					sx={sx.buttons}
 					direction={{ sm: 'row', xs: 'column' }}
 					spacing={1}
 				>
 					<Actions
-						actions={buildActions({
+						buttons={buildActions({
 							enableEdit,
 							handleEdit,
-							actions,
+							buttons,
 						})}
 						resource={resource}
 						justifyContent="flex-end"
@@ -185,7 +185,7 @@ const sx = {
 		justifyContent: 'flex-start',
 		alignItems: 'center',
 	},
-	actions: {
+	buttons: {
 		width: '100%',
 		justifyContent: {
 			sm: 'flex-end',

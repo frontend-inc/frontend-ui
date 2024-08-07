@@ -9,7 +9,7 @@ import {
 	FollowButtonGroup,
 	SocialFields,
 } from '../..'
-import { SocialFieldType, DisplayFieldType, ActionType } from '../../../types'
+import { SocialFieldType, DisplayFieldType, ButtonType } from '../../../types'
 import { UserType } from 'frontend-js'
 
 export type UserProfileProps = {
@@ -17,7 +17,7 @@ export type UserProfileProps = {
 	enableFollowers?: boolean
 	displayFields?: DisplayFieldType[]
 	socialFields?: SocialFieldType[]
-	actions?: ActionType[]
+	buttons?: ButtonType[]
 }
 
 const UserProfile: React.FC<UserProfileProps> = (props) => {
@@ -26,7 +26,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 		enableFollowers = false,
 		displayFields = [],
 		socialFields = [],
-		actions = [],
+		buttons = [],
 	} = props || {}
 
 	const { name, username, about_me, avatar } = user || {}
@@ -66,9 +66,9 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 				<Stack direction="row" height="100%" justifyContent="flex-start">
 					{enableFollowers == true && <FollowButton user={user} />}
 				</Stack>
-				{actions?.length > 0 && (
-					<Stack direction="row" sx={sx.actions}>
-						<Actions numVisible={0} actions={actions} resource={user} />
+				{buttons?.length > 0 && (
+					<Stack direction="row" sx={sx.buttons}>
+						<Actions numVisible={0} buttons={buttons} resource={user} />
 					</Stack>
 				)}
 			</Stack>
@@ -128,7 +128,7 @@ const sx = {
 			xs: 'center',
 		},
 	},
-	actions: {
+	buttons: {
 		width: '100%',
 		display: 'flex',
 		justifyContent: 'flex-end',

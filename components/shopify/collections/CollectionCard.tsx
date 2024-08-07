@@ -116,7 +116,7 @@ const sx = {
 		justifyContent: 'space-between',
 		alignItems: 'flex-end',
 	},
-	actions: {
+	buttons: {
 		display: 'flex',
 		justifyContent: 'space-between',
 		flexDirection: 'row',

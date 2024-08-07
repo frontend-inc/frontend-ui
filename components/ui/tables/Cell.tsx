@@ -35,6 +35,8 @@ const Cell: React.FC<CellProps> = (props) => {
 		boolean: CellBoolean,
 		date: CellDate,
 		datetime: CellDate,
+    email: CellString,
+    phone: CellString,    
 		image: CellImage,
 		video: CellVideo,
 		json: CellJSON,

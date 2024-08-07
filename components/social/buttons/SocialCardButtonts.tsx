@@ -62,7 +62,7 @@ const SocialCardButtons: React.FC<SocialCardButtonsProps> = (props) => {
 export default SocialCardButtons
 
 const sx = {
-	actions: {
+	buttons: {
 		alignItems: 'flex-end',
 		justifyContent: 'space-between',
 	},

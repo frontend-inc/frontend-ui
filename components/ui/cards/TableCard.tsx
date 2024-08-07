@@ -17,7 +17,7 @@ import { Actions } from '../..'
 const TableCard: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
-		actions,
+		buttons,
 		resource,
 		displayFields = [],
 		href,
@@ -83,7 +83,7 @@ const TableCard: React.FC<CardProps> = (props) => {
 				{enableFavorites == true && (
 					<FavoriteButton handle={resource?.handle} />
 				)}
-				<Actions numVisible={0} actions={actions} resource={resource} />
+				<Actions numVisible={0} buttons={buttons} resource={resource} />
 			</Stack>
 		</Stack>
 	)
@@ -162,11 +162,11 @@ const sx = {
 	description: {
 		maxWidth: '320px',
 	},
-	actions: {
+	buttons: {
 		display: 'flex',
 		flexDirection: 'column',
 	},
-	actionsBorder: {
+	buttonsBorder: {
 		px: 1,
 		pb: {
 			sm: 0,

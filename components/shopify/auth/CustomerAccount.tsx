@@ -95,7 +95,7 @@ const CustomerAccount: React.FC<CustomerAccountProps> = (props) => {
 				<Placeholder
 					title="Please sign in."
 					description="You must be signed in to manage your account."
-					actions={<Button onClick={handleLogin}>Sign In</Button>}
+					buttons={<Button onClick={handleLogin}>Sign In</Button>}
 				/>
 			)}
 		</AuthScreen>

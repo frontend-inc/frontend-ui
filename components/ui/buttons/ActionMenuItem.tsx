@@ -1,11 +1,10 @@
 import React from 'react'
 import { MenuItem } from '@mui/material'
-import { useActions } from '../../../hooks'
-import { ActionType } from '../../../types'
-import { Icon } from '../..'
+import { useButtons } from '../../../hooks'
+import { ButtonType } from '../../../types'
 
 type ActionMenuItemProps = {
-	action: ActionType
+	action: ButtonType
 	variant?: 'text' | 'outlined' | 'contained'
 	color?: 'primary' | 'secondary'
 	resource: any
@@ -17,7 +16,7 @@ const ActionMenuItem: React.FC<ActionMenuItemProps> = (props) => {
 
 	const { icon, label = 'View' } = action || {}
 
-	const { handleClick } = useActions({
+	const { handleClick } = useButtons({
 		action,
 		resource,
 	})

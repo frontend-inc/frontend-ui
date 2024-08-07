@@ -27,7 +27,7 @@ const AlertModal: React.FC<AlertModalProps> = (props) => {
 		<Modal
 			open={open}
 			loading={loading}
-			actions={
+			buttons={
 				<>
 					<Button variant="contained" color="secondary" onClick={handleClose}>
 						Cancel

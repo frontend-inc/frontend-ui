@@ -53,14 +53,14 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 						enableOverlay={enableOverlay}
 					/>
 				</TouchableOpacity>
-				<Box sx={sx.actions}>
+				<Box sx={sx.buttons}>
 					{enableFavorites == true && (
 						<FavoriteButton handle={resource?.handle} />
 					)}
 					<Actions
 						resource={resource}
 						numVisible={0}
-						actions={buildActions({
+						buttons={buildActions({
 							enableEdit,
 							enableDelete,
 							handleEdit,
@@ -89,7 +89,7 @@ const sx = {
 			boxShadow: 2,
 		},
 	},
-	actions: {
+	buttons: {
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'flex-end',

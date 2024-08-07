@@ -1,11 +1,11 @@
 import React from 'react'
 import { Button } from '@mui/material'
-import { useActions } from '../../../hooks'
-import { ActionType } from '../../../types'
-import { Icon } from '../../../components'
+import { useButtons } from '../../../hooks'
+import { ButtonType } from '../../../types'
+import { Icon } from '../..'
 
 type ActionProps = {
-	action: ActionType
+	action: ButtonType
 	resource: any
 	rest?: any
 }
@@ -15,7 +15,7 @@ const ActionButton: React.FC<ActionProps> = (props) => {
 
 	const { icon, label = 'View' } = action || {}
 
-	const { handleClick } = useActions({
+	const { handleClick } = useButtons({
 		action,
 		resource,
 	})

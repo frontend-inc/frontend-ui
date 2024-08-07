@@ -48,7 +48,7 @@ const VideoModal: React.FC<VideoModalProps> = (props) => {
 				handleClose={handleClose}
 				maxWidth="md"
 				title={title}
-				actions={
+				buttons={
 					<>
 						{enableCopy && (
 							<Button

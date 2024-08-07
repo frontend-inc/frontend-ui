@@ -2,19 +2,19 @@ import React from 'react'
 import { Stack } from '@mui/material'
 import ActionButton from './ActionButton'
 import ActionMenuItem from './ActionMenuItem'
-import { ActionType } from '../../../types'
-import { MenuButton } from '../../../components'
+import { ButtonType } from '../../../types'
+import { MenuButton } from '../..'
 
-type ActionsProps = {
-	actions: ActionType[]
+type ActionButtonsProps = {
+	buttons: ButtonType[]
 	resource: any
 	numVisible?: number
 	color?: string
 	justifyContent?: 'flex-start' | 'center' | 'flex-end'
 }
 
-const Actions: React.FC<ActionsProps> = (props) => {
-	const { color, actions, resource, numVisible = 2, justifyContent } = props
+const ActionButtons: React.FC<ActionButtonsProps> = (props) => {
+	const { color, buttons, resource, numVisible = 2, justifyContent } = props
 	return (
 		<Stack
 			sx={{
@@ -24,7 +24,7 @@ const Actions: React.FC<ActionsProps> = (props) => {
 			direction="row"
 			spacing={0}
 		>
-			{actions?.slice(0, numVisible)?.length > 0 && (
+			{buttons?.slice(0, numVisible)?.length > 0 && (
 				<Stack
 					sx={{
 						...sx.buttons,
@@ -33,14 +33,14 @@ const Actions: React.FC<ActionsProps> = (props) => {
 					direction={{ sm: 'row', xs: 'column' }}
 					spacing={1}
 				>
-					{actions?.slice(0, numVisible)?.map((action, index) => (
+					{buttons?.slice(0, numVisible)?.map((action, index) => (
 						<ActionButton key={index} action={action} resource={resource} />
 					))}
 				</Stack>
 			)}
-			{actions?.length > numVisible && (
+			{buttons?.length > numVisible && (
 				<MenuButton color={color}>
-					{actions?.slice(numVisible, actions.length)?.map((action, index) => (
+					{buttons?.slice(numVisible, buttons.length)?.map((action, index) => (
 						<ActionMenuItem key={index} action={action} resource={resource} />
 					))}
 				</MenuButton>
@@ -49,7 +49,7 @@ const Actions: React.FC<ActionsProps> = (props) => {
 	)
 }
 
-export default Actions
+export default ActionButtons
 
 const sx = {
 	root: {

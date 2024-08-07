@@ -6,14 +6,14 @@ import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
 import { Placeholder, ListCard, ListLayout } from '../..'
 import { useForms } from '../../../hooks'
-import { ActionType, DisplayFieldType } from '../../../types'
+import { ButtonType, DisplayFieldType } from '../../../types'
 import { buildActions } from '../../../helpers'
 
 export type ListItemsProps = {
 	url: string
 	href?: string
 	style: 'list' | 'avatar' | 'card' | 'cover' | 'text'
-	actions: ActionType[]
+	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
 	handleClick?: (resource: any) => void
 	enableGradient?: boolean
@@ -47,7 +47,7 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
 	} = useResourceContext()
 
 	const {
-		actions = [],
+		buttons = [],
 		style = 'card',
 		href,
 		displayFields = [],
@@ -117,12 +117,12 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
 							resource={resource}
 							displayFields={displayFields}
 							handleClick={() => handleClick(resource)}
-							actions={buildActions({
+							buttons={buildActions({
 								enableEdit,
 								enableDelete,
 								handleEdit: () => handleEdit(resource),
 								handleDelete: () => handleDeleteClick(resource),
-								actions,
+								buttons,
 							})}
 							enableUsers={enableUsers}
 							enableComments={enableComments}

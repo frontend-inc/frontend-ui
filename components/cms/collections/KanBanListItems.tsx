@@ -17,7 +17,7 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 	const {
 		headers,
 		displayFields = [],
-		actions = [],
+		buttons = [],
 		enableEdit,
 		enableDelete,
 		enableCreate,
@@ -87,7 +87,7 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 	return (
 		<KanBan
 			loading={loading}
-			actions={actions}
+			buttons={buttons}
 			resources={resources}
 			activeResource={resource}
 			headers={headers}

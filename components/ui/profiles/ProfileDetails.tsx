@@ -7,12 +7,12 @@ type ProfileDetailsProps = {
 	title: string
 	description: string
 	label?: string
-	actions?: React.ReactNode
+	buttons?: React.ReactNode
 	disableRing?: boolean
 }
 
 const ProfileDetails: React.FC<ProfileDetailsProps> = (props) => {
-	const { src, disableRing, actions, title, description, label } = props
+	const { src, disableRing, buttons, title, description, label } = props
 
 	return (
 		<Stack direction={{ sm: 'row', xs: 'column' }} spacing={2}>
@@ -21,7 +21,7 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = (props) => {
 			</Box>
 			<Box sx={sx.details}>
 				<ProfileInfo title={title} description={description} label={label} />
-				{actions && actions}
+				{buttons && buttons}
 			</Box>
 		</Stack>
 	)

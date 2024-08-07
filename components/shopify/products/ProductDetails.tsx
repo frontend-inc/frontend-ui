@@ -122,7 +122,7 @@ const sx = {
 	root: {
 		px: 0,
 	},
-	actions: {
+	buttons: {
 		alignItems: 'flex-end',
 	},
 }

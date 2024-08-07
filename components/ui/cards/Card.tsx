@@ -11,7 +11,7 @@ const Card: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		ref,
-		actions,
+		buttons,
 		resource,
 		displayFields = [],
 		href,
@@ -79,8 +79,8 @@ const Card: React.FC<CardProps> = (props) => {
 						enableFavorites={enableFavorites}
 						enableComments={enableComments}
 					/>
-					{actions?.length > 0 && (
-						<Actions numVisible={0} actions={actions} resource={resource} />
+					{buttons?.length > 0 && (
+						<Actions numVisible={0} buttons={buttons} resource={resource} />
 					)}
 				</Stack>
 			</Stack>

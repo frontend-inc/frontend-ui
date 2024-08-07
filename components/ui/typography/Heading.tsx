@@ -3,7 +3,7 @@ import { Box, Stack, Typography } from '@mui/material'
 import { TypographyVariantsType } from '../../../types'
 
 type HeadingProps = {
-	actions?: React.ReactNode
+	buttons?: React.ReactNode
 	label?: string
 	title?: string
 	description?: string
@@ -14,7 +14,7 @@ type HeadingProps = {
 
 const Heading: React.FC<HeadingProps> = (props) => {
 	const {
-		actions,
+		buttons,
 		label,
 		title,
 		description,
@@ -65,7 +65,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 					</Typography>
 				)}
 			</Stack>
-			{actions}
+			{buttons}
 		</Box>
 	)
 }

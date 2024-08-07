@@ -54,7 +54,7 @@ const CTA: React.FC<CTAProps> = (props) => {
 					</Typography>
 				)}
 				{buttonText && (
-					<Box sx={sx.actions}>
+					<Box sx={sx.buttons}>
 						<Button
 							size="large"
 							variant="contained"
@@ -92,7 +92,7 @@ const sx = {
 		textAlign: 'center',
 		maxWidth: '600px',
 	},
-	actions: {
+	buttons: {
 		mt: 2,
 		textAlign: 'center',
 		width: '100%',

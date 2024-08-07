@@ -14,7 +14,7 @@ import { buildActions } from '../../../helpers'
 
 const ShowList: React.FC<ShowProps> = (props) => {
 	const {
-		actions,
+		buttons,
 		displayFields = [],
 		resource,
 		enableEdit,
@@ -28,13 +28,13 @@ const ShowList: React.FC<ShowProps> = (props) => {
 	const { label, title, image, description } = resource || {}
 	return (
 		<Stack sx={sx.root} spacing={4}>
-			{(actions || enableEdit) && (
-				<Box sx={sx.actions}>
+			{(buttons || enableEdit) && (
+				<Box sx={sx.buttons}>
 					<Actions
-						actions={buildActions({
+						buttons={buildActions({
 							enableEdit,
 							handleEdit,
-							actions,
+							buttons,
 						})}
 						numVisible={4}
 						resource={resource}
@@ -112,7 +112,7 @@ const sx = {
 	caption: {
 		color: 'text.secondary',
 	},
-	actions: {
+	buttons: {
 		justifyContent: 'center',
 		width: {
 			sm: 'auto',

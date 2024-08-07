@@ -1,5 +1,5 @@
 import React from 'react'
-import { ActionType, FormFieldType, DisplayFieldType } from '../../../types'
+import { ButtonType, FormFieldType, DisplayFieldType } from '../../../types'
 import ShowList from './ShowList'
 import ShowCard from './ShowCard'
 import ShowAvatar from './ShowAvatar'
@@ -11,7 +11,7 @@ import { useResourceContext } from 'frontend-js'
 
 export type ShowProps = {
 	handle?: string
-	actions: ActionType[]
+	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
 	fieldName?: string
 	url?: string
@@ -44,7 +44,7 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 		style = 'article',
 		displayFields = [],
 		fieldName,
-		actions,
+		buttons,
 		enableOverlay,
 		enableEdit,
 		enableFavorites,
@@ -74,7 +74,7 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 		<Component
 			fieldName={fieldName}
 			resource={resource}
-			actions={actions}
+			buttons={buttons}
 			displayFields={displayFields}
 			enableOverlay={enableOverlay}
 			enableEdit={enableEdit}

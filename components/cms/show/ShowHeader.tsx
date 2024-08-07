@@ -1,6 +1,6 @@
 import React from 'react'
 import { PageHeader } from '../..'
-import { ActionType } from '../../../types'
+import { ButtonType } from '../../../types'
 
 export type ShowHeaderProps = {
 	resource: any & {
@@ -13,7 +13,7 @@ export type ShowHeaderProps = {
 		path: string
 	}[]
 	maxLinks?: number
-	actions: ActionType[]
+	buttons: ButtonType[]
 	enableBorder?: boolean
 }
 

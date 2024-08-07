@@ -6,7 +6,7 @@ type PlaceholderProps = {
 	icon?: string
 	title?: string
 	description?: string
-	actions?: any
+	buttons?: any
 	color?: string
 	enableBorder?: boolean
 	enableAvatarBorder?: boolean
@@ -17,7 +17,7 @@ const Placeholder: React.FC<PlaceholderProps> = (props) => {
 		icon,
 		title,
 		description,
-		actions,
+		buttons,
 		color = 'text.secondary',
 		enableBorder = false,
 	} = props
@@ -37,7 +37,7 @@ const Placeholder: React.FC<PlaceholderProps> = (props) => {
 				<Typography sx={sx.description} variant="body1" color="textSecondary">
 					{description}
 				</Typography>
-				{actions && <Box sx={sx.actions}>{actions}</Box>}
+				{buttons && <Box sx={sx.buttons}>{buttons}</Box>}
 			</Stack>
 		</Box>
 	)
@@ -70,7 +70,7 @@ const sx = {
 		border: '1px solid',
 		borderColor: 'divider',
 	},
-	actions: {
+	buttons: {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',

@@ -136,7 +136,7 @@ const JsonArrayInput: React.FC<JsonArrayInputProps> = (props) => {
 				title={title}
 				open={open}
 				handleClose={closeMenu}
-				actions={
+				buttons={
 					<Button
 						fullWidth
 						variant="contained"

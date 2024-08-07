@@ -14,7 +14,7 @@ export type ActionNamesType =
 	| 'click'
 	| 'stripe_payment_link'
 
-export type ActionType = {
+export type ButtonType = {
 	id?: number
 	icon?: string
 	label: string

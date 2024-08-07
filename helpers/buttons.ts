@@ -1,11 +1,11 @@
-import { ActionType } from '..'
+import { ButtonType } from '..'
 
 type BuildActionParams = {
 	enableEdit?: boolean
 	handleEdit?: (item: any) => void
 	enableDelete?: boolean
 	handleDelete?: (item: any) => void
-	actions?: ActionType[]
+	buttons?: ButtonType[]
 }
 
 export const buildActions = ({
@@ -13,7 +13,7 @@ export const buildActions = ({
 	enableDelete,
 	handleEdit,
 	handleDelete,
-	actions,
+	buttons,
 }: BuildActionParams) => {
 	const EDIT_ACTION = {
 		label: 'Edit',
@@ -29,9 +29,9 @@ export const buildActions = ({
 		onClick: handleDelete,
 	}
 
-	let newActions = <ActionType[]>[]
-	if (actions) {
-		newActions = newActions.concat(actions)
+	let newActions = <ButtonType[]>[]
+	if (buttons) {
+		newActions = newActions.concat(buttons)
 	}
 	if (enableEdit && handleEdit) {
 		//@ts-ignore

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ActionType, DisplayFieldType } from '../../../types'
+import { ButtonType, DisplayFieldType } from '../../../types'
 import { AuthGuard } from '../../../components'
 import Sortable from './Sortable'
 import { groupResourcesByField } from '../../../helpers/utils'
@@ -13,7 +13,7 @@ export type KanBanProps = {
 		label: string
 		value: string
 	}[]
-	actions: ActionType[]
+	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
 	handleDrop: (movedItem: any, overContainer: string, columns: any[]) => void
 	handleClick: (resource: any) => void
@@ -35,7 +35,7 @@ export type KanBanProps = {
 const KanBan: React.FC<KanBanProps> = (props) => {
 	const {
 		loading,
-		actions,
+		buttons,
 		headers,
 		fieldName,
 		resources,
@@ -82,7 +82,7 @@ const KanBan: React.FC<KanBanProps> = (props) => {
 		<AuthGuard requireAuth>
 			<Sortable
 				loading={loading}
-				actions={actions}
+				buttons={buttons}
 				headers={headers}
 				columns={groupedResources}
 				activeResource={activeResource}

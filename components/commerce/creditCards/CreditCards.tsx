@@ -107,7 +107,7 @@ const CreditCards: React.FC = () => {
 							description="Add a credit card to get started"
 						/>
 					)}
-					<Box sx={sx.actions}>
+					<Box sx={sx.buttons}>
 						<Button variant="contained" onClick={handleAddCreditCardClick}>
 							Add Credit Card
 						</Button>
@@ -136,7 +136,7 @@ const CreditCards: React.FC = () => {
 export default CreditCards
 
 const sx = {
-	actions: {
+	buttons: {
 		width: '100%',
 		display: 'flex',
 		justifyContent: 'flex-end',
