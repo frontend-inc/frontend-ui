@@ -35,7 +35,7 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 		info,
 	} = props
 	let { value } = props
-	if (!value) value = [];
+	if (!value) value = []
 
 	const { error, clearError } = useError({
 		errors,

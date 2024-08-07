@@ -26,7 +26,7 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 	const {
 		delayedLoading,
 		user,
-    setUser,
+		setUser,
 		fetchMe,
 		currentUser,
 		updateMe,
@@ -57,9 +57,9 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 	useEffect(() => {
 		if (!currentUser?.id) {
 			fetchMe()
-		}else{
-      setUser(currentUser)
-    }
+		} else {
+			setUser(currentUser)
+		}
 	}, [currentUser])
 
 	return (

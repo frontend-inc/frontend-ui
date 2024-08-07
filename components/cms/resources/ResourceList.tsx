@@ -44,7 +44,7 @@ export type ResourceListProps = {
 	enableCreate?: boolean
 	enableDelete?: boolean
 	sortable?: boolean
-  enableBorder?: boolean
+	enableBorder?: boolean
 	emptyIcon?: string
 	emptyTitle?: string
 	emptyDescription?: string
@@ -69,7 +69,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		enableCreate,
 		handleClick,
 		sortable = false,
-    enableBorder = false,
+		enableBorder = false,
 		emptyIcon = 'Search',
 		emptyTitle = 'No results found',
 		emptyDescription = 'Try adjusting your search or filters',
@@ -287,43 +287,41 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 			</Stack>
 			<Box sx={{ ...(loading && sx.loading) }}>
 				<Stack spacing={2} sx={sx.fullWidth}>
-          {sortable && resources?.length > 0 && (
-            <SortableList
-              droppableId="resource-list"
-              items={resources}
-              handleDrop={handleDrop}
-              renderItem={(resource, index) => (
-                <Component
-                  key={index}
-                  sortable
-                  layout={layout}
-                  resource={resource}
-                  enableBorder={enableBorder}
-                  handleClick={
-                    handleClick ? () => handleClick(resource) : undefined
-                  }
-                  handleEdit={
-                    enableEdit ? () => handleEdit(resource) : undefined
-                  }
-                  handleDelete={
-                    enableDelete
-                      ? () => handleDeleteClick(resource)
-                      : undefined
-                  }
-                  {...itemProps}
-                />
-              )}
-            />
-          )}
+					{sortable && resources?.length > 0 && (
+						<SortableList
+							droppableId="resource-list"
+							items={resources}
+							handleDrop={handleDrop}
+							renderItem={(resource, index) => (
+								<Component
+									key={index}
+									sortable
+									layout={layout}
+									resource={resource}
+									enableBorder={enableBorder}
+									handleClick={
+										handleClick ? () => handleClick(resource) : undefined
+									}
+									handleEdit={
+										enableEdit ? () => handleEdit(resource) : undefined
+									}
+									handleDelete={
+										enableDelete ? () => handleDeleteClick(resource) : undefined
+									}
+									{...itemProps}
+								/>
+							)}
+						/>
+					)}
 
 					{!sortable && (
-            <List>            
-							{ resources?.map((resource, index) => (
-								<Component                  
+						<List>
+							{resources?.map((resource, index) => (
+								<Component
 									key={index}
 									layout={layout}
 									resource={resource}
-                  enableBorder={enableBorder}
+									enableBorder={enableBorder}
 									handleClick={
 										handleClick ? () => handleClick(resource) : undefined
 									}
@@ -336,8 +334,8 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 									{...itemProps}
 								/>
 							))}
-            </List>
-          )}
+						</List>
+					)}
 				</Stack>
 			</Box>
 			{!loading && resources?.length == 0 && (
