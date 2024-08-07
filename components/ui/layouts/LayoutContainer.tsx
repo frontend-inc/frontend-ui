@@ -13,10 +13,10 @@ type LayoutContainerProps = {
 	notifications: NotificationType[]
 	offsetY?: number
 	offsetX?: number
+	roles?: string[]
 	requireAuth?: boolean
 	requireTeam?: boolean
 	requirePaid?: boolean
-	requireAdmin?: boolean
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
@@ -27,10 +27,10 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 		notifications,
 		enableSideNav = false,
 		offsetY = 0,
+		roles = [],
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 	} = props
 
 	const [enableNotifications, setEnableNotifications] = useState(false)
@@ -71,10 +71,10 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 				>
 					<LayoutScroll>
 						<AuthGuard
+							roles={roles}
 							requireAuth={requireAuth}
 							requirePaid={requirePaid}
 							requireTeam={requireTeam}
-							requireAdmin={requireAdmin}
 						>
 							{children}
 							{footer}

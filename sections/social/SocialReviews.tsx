@@ -19,7 +19,6 @@ const SocialReviews: React.FC<SocialReviewsProps> = (props) => {
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		...rest
 	} = props
 
@@ -28,7 +27,6 @@ const SocialReviews: React.FC<SocialReviewsProps> = (props) => {
 			requireAuth={requireAuth}
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
 			mode={mode}
 			py={py}
 			px={px}

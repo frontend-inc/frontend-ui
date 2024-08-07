@@ -25,7 +25,6 @@ const CmsShow: React.FC<CmsShowProps> = (props) => {
 			requireAuth={requireAuth}
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
 			mode={mode}
 			py={style == 'cover' ? 0 : py}
 			px={style == 'cover' ? 0 : px}

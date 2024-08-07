@@ -15,7 +15,6 @@ const ShopifyPDP: React.FC<ShopifyPDPProps> = (props) => {
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		...rest
 	} = props
 
@@ -24,7 +23,6 @@ const ShopifyPDP: React.FC<ShopifyPDPProps> = (props) => {
 			requireAuth={requireAuth}
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
 			mode={mode}
 			py={py}
 			px={px}

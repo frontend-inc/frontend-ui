@@ -19,7 +19,6 @@ const CmsTable: React.FC<CmsTableProps> = (props) => {
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		...rest
 	} = props
 
@@ -32,7 +31,6 @@ const CmsTable: React.FC<CmsTableProps> = (props) => {
 			requireAuth={requireAuth}
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
 		>
 			<Heading
 				label={label}

@@ -19,7 +19,6 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		...rest
 	} = props
 
@@ -28,7 +27,6 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 			requireAuth={requireAuth}
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
 			mode={mode}
 			py={py}
 			px={px}

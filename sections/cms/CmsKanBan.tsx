@@ -19,7 +19,6 @@ const CmsKanBan: React.FC<CmsKanBanProps> = (props) => {
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		...rest
 	} = props
 
@@ -32,7 +31,6 @@ const CmsKanBan: React.FC<CmsKanBanProps> = (props) => {
 			requireAuth={requireAuth}
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
 		>
 			<Heading
 				label={label}

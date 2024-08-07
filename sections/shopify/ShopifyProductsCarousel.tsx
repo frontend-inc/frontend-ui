@@ -23,7 +23,6 @@ const ShopifyProductsCarousel: React.FC<ShopifyProductsCarouselProps> = (
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		...rest
 	} = props
 
@@ -32,7 +31,6 @@ const ShopifyProductsCarousel: React.FC<ShopifyProductsCarouselProps> = (
 			requireAuth={requireAuth}
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
 			mode={mode}
 			py={py}
 			px={px}

@@ -20,7 +20,6 @@ export type SectionProps = {
 	requireAuth?: boolean
 	requireTeam?: boolean
 	requirePaid?: boolean
-	requireAdmin?: boolean
 }
 
 export type FormProps = {

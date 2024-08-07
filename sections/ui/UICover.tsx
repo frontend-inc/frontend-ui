@@ -16,7 +16,6 @@ const UICover: React.FC<UICoverProps> = (props) => {
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		...rest
 	} = props
 

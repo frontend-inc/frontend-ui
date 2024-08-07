@@ -15,7 +15,6 @@ const CmsShopifyProduct: React.FC<CmsShopifyProductProps> = (props) => {
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		...rest
 	} = props
 
@@ -24,7 +23,6 @@ const CmsShopifyProduct: React.FC<CmsShopifyProductProps> = (props) => {
 			requireAuth={requireAuth}
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
 			mode={mode}
 			py={py}
 			px={px}

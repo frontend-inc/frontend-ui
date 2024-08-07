@@ -5,19 +5,19 @@ import { Heading, AuthWall, PayWall } from '..'
 
 export type AuthGuardProps = {
 	children: React.ReactNode
+	roles?: string[]
 	requireAuth?: boolean
 	requireTeam?: boolean
 	requirePaid?: boolean
-	requireAdmin?: boolean
 }
 
 const AuthGuard: React.FC<AuthGuardProps> = (props) => {
 	const {
 		children,
+		roles = [],
 		requireAuth = false,
 		requireTeam = false,
 		requirePaid = false,
-		requireAdmin = false,
 	} = props
 	const { currentUser } = useAuth()
 
@@ -34,18 +34,22 @@ const AuthGuard: React.FC<AuthGuardProps> = (props) => {
 			</Box>
 		)
 	}
-	if (requirePaid && !currentUser?.paid) {
-		return <PayWall />
-	}
-	if (requireAdmin && currentUser?.role != 'admin') {
+	if (
+		roles?.length > 0 &&
+		!roles?.includes(currentUser?.role) &&
+		currentUser?.role !== 'admin'
+	) {
 		return (
 			<Box sx={sx.center}>
 				<Heading
-					title="Admin Required"
-					description="You must be an admin to access this page."
+					title="Unauthorized"
+					description="You are not authorized to access this page."
 				/>
 			</Box>
 		)
+	}
+	if (requirePaid && !currentUser?.paid) {
+		return <PayWall />
 	}
 	return children
 }

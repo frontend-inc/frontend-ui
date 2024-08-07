@@ -17,7 +17,6 @@ const ShopifyCollectionCoverImage: React.FC<
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		...rest
 	} = props
 
@@ -26,7 +25,6 @@ const ShopifyCollectionCoverImage: React.FC<
 			requireAuth={requireAuth}
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
 			mode={mode}
 			py={py}
 			px={px}

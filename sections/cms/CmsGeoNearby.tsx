@@ -18,7 +18,6 @@ const CmsGeoNearbyList: React.FC<CmsListProps> = (props) => {
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		...rest
 	} = props
 
@@ -31,7 +30,6 @@ const CmsGeoNearbyList: React.FC<CmsListProps> = (props) => {
 			requireAuth={requireAuth}
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
 		>
 			<Heading
 				label={label}

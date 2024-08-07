@@ -18,7 +18,6 @@ const AuthUserForm: React.FC<AuthUserFormProps> = (props) => {
 		maxWidth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		...rest
 	} = props
 
@@ -27,7 +26,6 @@ const AuthUserForm: React.FC<AuthUserFormProps> = (props) => {
 			requireAuth
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
 			mode={mode}
 			py={py}
 			px={px}

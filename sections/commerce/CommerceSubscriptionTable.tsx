@@ -21,7 +21,6 @@ const CommerceSubscriptionTable: React.FC<CommerceSubscriptionTableProps> = (
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		...rest
 	} = props
 
@@ -34,7 +33,6 @@ const CommerceSubscriptionTable: React.FC<CommerceSubscriptionTableProps> = (
 			requireAuth={requireAuth}
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
 		>
 			<Stack spacing={3}>
 				<Heading

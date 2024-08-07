@@ -23,7 +23,6 @@ const AddonMailchimpSubscribe: React.FC<AddonMailchimpSubscribeProps> = (
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		...rest
 	} = props
 
@@ -32,7 +31,6 @@ const AddonMailchimpSubscribe: React.FC<AddonMailchimpSubscribeProps> = (
 			requireAuth={requireAuth}
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
 			mode={mode}
 			py={py}
 			px={px}

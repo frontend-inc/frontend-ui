@@ -18,7 +18,6 @@ const SocialFeed: React.FC<SocialFeedProps> = (props) => {
 		maxWidth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		...rest
 	} = props
 
@@ -27,7 +26,6 @@ const SocialFeed: React.FC<SocialFeedProps> = (props) => {
 			requireAuth
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
 			mode={mode}
 			py={py}
 			px={px}

@@ -7,23 +7,13 @@ import { SectionProps } from '../../types'
 type AuthUserFormWizardProps = SectionProps & CurrentUserFormWizardProps
 
 const AuthUserFormWizard: React.FC<AuthUserFormWizardProps> = (props) => {
-	const {
-		mode,
-		py,
-		px,
-		maxWidth,
-		requireTeam,
-		requirePaid,
-		requireAdmin,
-		...rest
-	} = props
+	const { mode, py, px, maxWidth, requireTeam, requirePaid, ...rest } = props
 
 	return (
 		<Section
 			requireAuth
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
 			mode={mode}
 			py={py}
 			px={px}

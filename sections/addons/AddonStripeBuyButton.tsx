@@ -14,7 +14,6 @@ const AddonStripeBuyButton: React.FC<AddonStripeBuyButtonProps> = (props) => {
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		...rest
 	} = props
 
@@ -23,7 +22,6 @@ const AddonStripeBuyButton: React.FC<AddonStripeBuyButtonProps> = (props) => {
 			requireAuth={requireAuth}
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
 			mode={mode}
 			py={py}
 			px={px}

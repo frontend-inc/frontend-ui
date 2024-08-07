@@ -10,7 +10,6 @@ const Section: React.FC<SectionProps> = (props) => {
 		requireAuth = false,
 		requireTeam = false,
 		requirePaid = false,
-		requireAdmin = false,
 		children,
 		mode = 'light',
 		maxWidth,
@@ -56,7 +55,6 @@ const Section: React.FC<SectionProps> = (props) => {
 							requireAuth={requireAuth}
 							requireTeam={requireTeam}
 							requirePaid={requirePaid}
-							requireAdmin={requireAdmin}
 						>
 							{children}
 						</AuthGuard>

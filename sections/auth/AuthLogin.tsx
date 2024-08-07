@@ -15,7 +15,6 @@ const AuthLogin: React.FC<AuthLoginProps> = (props) => {
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		...rest
 	} = props
 

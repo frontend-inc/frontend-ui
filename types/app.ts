@@ -1,3 +1,10 @@
+export type MenuType = {
+	label: string
+	name: string
+	internal?: boolean
+	links: MenuLinkType[]
+}
+
 export type MenuLinkTypes =
 	| 'dropdown'
 	| 'link'

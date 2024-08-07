@@ -23,7 +23,6 @@ const ShopifyMetafieldProducts: React.FC<ShopifyMetafieldProductsProps> = (
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		...rest
 	} = props
 
@@ -32,7 +31,6 @@ const ShopifyMetafieldProducts: React.FC<ShopifyMetafieldProductsProps> = (
 			requireAuth={requireAuth}
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
 			mode={mode}
 			py={py}
 			px={px}

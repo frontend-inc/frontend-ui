@@ -16,7 +16,6 @@ const AddonStripePricingTable: React.FC<AddonStripePricingTableProps> = (
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		...rest
 	} = props
 
@@ -25,7 +24,6 @@ const AddonStripePricingTable: React.FC<AddonStripePricingTableProps> = (
 			requireAuth={requireAuth}
 			requireTeam={requireTeam}
 			requirePaid={requirePaid}
-			requireAdmin={requireAdmin}
 			mode={mode}
 			py={py}
 			px={px}
