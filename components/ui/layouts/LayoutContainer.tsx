@@ -9,7 +9,7 @@ type LayoutContainerProps = {
 	children: React.ReactNode
 	header?: React.ReactNode
 	footer?: React.ReactNode
-	enableSideNav?: boolean
+	sideNav?: boolean
 	notifications: NotificationType[]
 	offsetY?: number
 	offsetX?: number
@@ -25,7 +25,7 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 		header,
 		footer,
 		notifications,
-		enableSideNav = false,
+		sideNav = false,
 		offsetY = 0,
 		roles = [],
 		requireAuth,
@@ -58,14 +58,14 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 			<Box
 				sx={{
 					...sx.root,
-					...(enableSideNav && sx.sideNav),
+					...(sideNav && sx.sideNav),
 				}}
 			>
 				{header}
 				<Box
 					sx={{
 						...sx.content,
-						...(enableSideNav ? sx.contentSideNav : sx.contentTopNav),
+						...(sideNav ? sx.contentSideNav : sx.contentTopNav),
 						...(enableNotifications && sx.contentNotifications),
 					}}
 				>
