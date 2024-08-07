@@ -7,8 +7,6 @@ type MenuItemProps = {
 	handleClick: () => void
 	active?: boolean
 	depth?: number
-	open?: boolean
-	expandable?: boolean
 	icon?: React.ReactNode
 }
 
@@ -17,8 +15,6 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
 		handleClick,
 		active = false,
 		depth = 0,
-		open,
-		expandable = false,
 		label,
 		icon,
 	} = props

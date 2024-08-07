@@ -54,7 +54,6 @@ export type ResourceListProps = {
 const ResourceList: React.FC<ResourceListProps> = (props) => {
 	const {
 		layout = 'list',
-		dense,
 		component: Component = ResourceListItem,
 		url,
 		name,
@@ -345,7 +344,6 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					description={emptyDescription}
 				/>
 			)}
-			<Loader loading={loading} />
 			<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
 			<Drawer
 				open={openModal}
@@ -441,7 +439,7 @@ const sx = {
 		justifyContent: 'space-between',
 	},
 	loading: {
-		opacity: 0.7,
+		opacity: 0.5,
 	},
 	circularProgress: {
 		color: 'primary.main',

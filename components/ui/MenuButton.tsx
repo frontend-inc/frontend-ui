@@ -7,7 +7,6 @@ type MenuButtonProps = {
 	children?: React.ReactNode
 	icon?: string
 	color?: string
-	size?: 'small' | 'medium' | 'large'
 	enableIcons?: boolean
 	handleEdit?: false | ((item: any) => void)
 	handleDelete?: false | ((item: any) => void)
@@ -21,7 +20,6 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
 		enableIcons = false,
 		handleEdit,
 		handleDelete,
-		size = 'medium',
 	} = props
 
 	const { open, anchorEl, closeMenu, toggleMenu } = useMenu()
@@ -33,7 +31,7 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
 
 	return (
 		<Box onClick={handleDefaultClick}>
-			<IconButton size={size} onClick={toggleMenu}>
+			<IconButton onClick={toggleMenu}>
 				<Icon name={icon} size={20} color={color} />
 			</IconButton>
 			<Menu open={open} anchorEl={anchorEl} onClose={closeMenu}>
