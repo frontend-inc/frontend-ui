@@ -34,7 +34,8 @@ export type ResourceListItemProps = {
 }
 
 const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
-	const {
+	
+  const {
 		icon,
 		avatar,
 		color,
@@ -54,69 +55,66 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 	const { title } = resource || {}
 	const image = resource?.image?.url
 
-	return (
-		<List
-			sx={{
-				...sx.root,
-				...(enableBorder && sx.rootBorder),
-				...(isDragging && sx.isDragging),
-			}}
-		>
-			<ListItem
-				disablePadding
-				secondaryAction={
-					<Stack direction="row" spacing={1} sx={sx.actions}>
-						{secondaryActions}
-						{(menuActions || handleEdit || handleDelete) && (
-							<MenuButton handleEdit={handleEdit} handleDelete={handleDelete}>
-								{menuActions}
-							</MenuButton>
-						)}
-					</Stack>
-				}
-			>
-				<ListItemButton
-					sx={sx.listItemButton}
-					onClick={handleClick ? () => handleClick(resource) : undefined}
-				>
-					{sortable && (
-						<ListItemIcon sx={sx.dragHandle}>
-							<Icon name="GripVertical" size={20} color="text.secondary" />
-						</ListItemIcon>
-					)}
-					{avatar && <ListItemIcon sx={sx.listItemIcon}>{avatar}</ListItemIcon>}
-					{!avatar && image && (
-						<ListItemIcon sx={sx.listItemIcon}>
-							<Image src={image} width={32} height={32} alt={image} />
-						</ListItemIcon>
-					)}
-					{icon && (
-						<ListItemIcon sx={sx.listItemIcon}>
-							<Avatar
-								sx={{
-									bgcolor: color,
-								}}
-							>
-								<Icon name={icon} size={24} />
-							</Avatar>
-						</ListItemIcon>
-					)}
-					<ListItemText
-						primary={
-							<Typography color="text.primary" variant="body1">
-								{title}
-							</Typography>
-						}
-						secondary={
-							<>
-								<DisplayFields fields={displayFields} resource={resource} />
-								{secondary}
-							</>
-						}
-					/>
-				</ListItemButton>
-			</ListItem>
-		</List>
+	return (		
+    <ListItem
+      sx={{
+        ...sx.root,
+        ...(enableBorder && sx.rootBorder),
+        ...(isDragging && sx.isDragging),
+      }}      
+      disablePadding
+      secondaryAction={
+        <Stack direction="row" spacing={1} sx={sx.actions}>
+          {secondaryActions}
+          {(menuActions || handleEdit || handleDelete) && (
+            <MenuButton handleEdit={handleEdit} handleDelete={handleDelete}>
+              {menuActions}
+            </MenuButton>
+          )}
+        </Stack>
+      }
+    >
+      <ListItemButton
+        sx={sx.listItemButton}
+        onClick={handleClick ? () => handleClick(resource) : undefined}
+      >
+        {sortable && (
+          <ListItemIcon sx={sx.dragHandle}>
+            <Icon name="GripVertical" size={20} color="text.secondary" />
+          </ListItemIcon>
+        )}
+        {avatar && <ListItemIcon sx={sx.listItemIcon}>{avatar}</ListItemIcon>}
+        {!avatar && image && (
+          <ListItemIcon sx={sx.listItemIcon}>
+            <Image src={image} width={32} height={32} alt={image} />
+          </ListItemIcon>
+        )}
+        {icon && (
+          <ListItemIcon sx={sx.listItemIcon}>
+            <Avatar
+              sx={{
+                bgcolor: color,
+              }}
+            >
+              <Icon name={icon} size={24} />
+            </Avatar>
+          </ListItemIcon>
+        )}
+        <ListItemText
+          primary={
+            <Typography color="text.primary" variant="body1">
+              {title}
+            </Typography>
+          }
+          secondary={
+            <>
+              <DisplayFields fields={displayFields} resource={resource} />
+              {secondary}
+            </>
+          }
+        />
+      </ListItemButton>
+    </ListItem>
 	)
 }
 
@@ -124,15 +122,18 @@ export default ResourceListItem
 
 const sx = {
 	root: {
-		p: 0,
-		m: 0,
+		p: 0,		
+    borderRadius: 1,
 	},
 	rootBorder: {
-		borderBottom: '1px solid',
+		border: '1px solid',
 		borderColor: 'divider',
+    bgcolor: 'background.paper',
+    mb: 1
 	},
 	listItemButton: {
 		p: 1,
+    borderRadius: 1,
 	},
 	actions: {
 		alignItems: 'center',

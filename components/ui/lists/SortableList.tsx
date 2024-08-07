@@ -46,8 +46,6 @@ const SortableList: React.FC<SortableListProps> = (props) => {
 				{(provided) => (
 					<Box sx={sx.root}>
 						<List
-							dense
-							disablePadding
 							sx={sx.list}
 							{...provided.droppableProps}
 							ref={provided.innerRef}
