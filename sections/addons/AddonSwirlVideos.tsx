@@ -1,6 +1,6 @@
 import React from 'react'
 import { Section } from '../../components'
-import { SwirlVideos } from '../../components'
+//import { SwirlVideos } from '../../components'
 import { SwirlVideosProps } from '../../components/addons/swirl/SwirlVideos'
 import { SectionProps } from '../../types'
 
@@ -27,8 +27,8 @@ const AddonSwirlVideos: React.FC<AddonSwirlVideosProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-		>
-			<SwirlVideos {...rest} />
+		>			
+      <></>
 		</Section>
 	)
 }

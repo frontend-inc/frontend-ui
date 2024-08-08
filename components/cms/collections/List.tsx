@@ -111,7 +111,6 @@ const List: React.FC<ListProps> = (props) => {
 			url={url}
 			query={searchQuery}
 			name="document"
-			loadMore={loadMore}
 			header={
 				<ListToolbar
 					url={url}

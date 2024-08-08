@@ -15,7 +15,6 @@ const CmsShow: React.FC<CmsShowProps> = (props) => {
 		requireAuth,
 		requireTeam,
 		requirePaid,
-		requireAdmin,
 		style,
 		...rest
 	} = props
