@@ -4,6 +4,6 @@ export type RouterParams = {
 	document_id: string | null
 	view_id: string
 	page_id: string
-  action_id: string
+	action_id: string
 	handle: string
 }

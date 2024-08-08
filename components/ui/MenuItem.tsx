@@ -11,13 +11,7 @@ type MenuItemProps = {
 }
 
 const MenuItem: React.FC<MenuItemProps> = (props) => {
-	const {
-		handleClick,
-		active = false,
-		depth = 0,
-		label,
-		icon,
-	} = props
+	const { handleClick, active = false, depth = 0, label, icon } = props
 
 	let paddingLeft = 18
 

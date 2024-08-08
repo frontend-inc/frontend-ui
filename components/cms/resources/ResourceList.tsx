@@ -45,7 +45,7 @@ export type ResourceListProps = {
 	enableDelete?: boolean
 	sortable?: boolean
 	enableBorder?: boolean
-  direction?: 'row' | 'column'
+	direction?: 'row' | 'column'
 	emptyIcon?: string
 	emptyTitle?: string
 	emptyDescription?: string
@@ -70,7 +70,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		handleClick,
 		sortable = false,
 		enableBorder = false,
-    direction='row',
+		direction = 'row',
 		emptyIcon = 'Search',
 		emptyTitle = 'No results found',
 		emptyDescription = 'Try adjusting your search or filters',
@@ -271,17 +271,17 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					)}
 				</Stack>
 				{enableCreate && (
-						<Button
-							sx={sx.button}
-							color="secondary"
-							variant="contained"
-							onClick={handleAdd}
-							startIcon={
-								<Icon name="Plus" color="secondary.contrastText" size={20} />
-							}
-						>
-							Add
-						</Button>
+					<Button
+						sx={sx.button}
+						color="secondary"
+						variant="contained"
+						onClick={handleAdd}
+						startIcon={
+							<Icon name="Plus" color="secondary.contrastText" size={20} />
+						}
+					>
+						Add
+					</Button>
 				)}
 			</Stack>
 			<Box sx={{ ...(loading && sx.loading) }}>

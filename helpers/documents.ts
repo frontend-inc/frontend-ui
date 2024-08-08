@@ -1,4 +1,3 @@
-
 export const filterReferences = (document, contentType) => {
 	if (
 		!document?.references ||

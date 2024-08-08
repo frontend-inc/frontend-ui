@@ -71,8 +71,8 @@ const DisplayField: React.FC<FieldProps> = (props) => {
 		string: FieldString,
 		select: FieldString,
 		price: FieldPrice,
-    email: FieldString,
-    phone: FieldString    
+		email: FieldString,
+		phone: FieldString,
 	}
 
 	const variantProps = {
