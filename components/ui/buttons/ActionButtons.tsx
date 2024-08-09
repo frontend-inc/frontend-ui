@@ -33,15 +33,15 @@ const ActionButtons: React.FC<ActionButtonsProps> = (props) => {
 					direction={{ sm: 'row', xs: 'column' }}
 					spacing={1}
 				>
-					{buttons?.slice(0, numVisible)?.map((action, index) => (
-						<ActionButton key={index} action={action} resource={resource} />
+					{buttons?.slice(0, numVisible)?.map((button, index) => (
+						<ActionButton key={index} button={button} resource={resource} />
 					))}
 				</Stack>
 			)}
 			{buttons?.length > numVisible && (
 				<MenuButton color={color}>
 					{buttons?.slice(numVisible, buttons.length)?.map((action, index) => (
-						<ActionMenuItem key={index} action={action} resource={resource} />
+						<ActionMenuItem key={index} button={button} resource={resource} />
 					))}
 				</MenuButton>
 			)}

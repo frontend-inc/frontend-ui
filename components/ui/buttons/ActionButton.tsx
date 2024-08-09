@@ -5,18 +5,18 @@ import { ButtonType } from '../../../types'
 import { Icon } from '../..'
 
 type ActionProps = {
-	action: ButtonType
+	button: ButtonType
 	resource: any
 	rest?: any
 }
 
 const ActionButton: React.FC<ActionProps> = (props) => {
-	const { action, resource, ...rest } = props
+	const { button, resource, ...rest } = props
 
-	const { icon, label = 'View' } = action || {}
+	const { icon, label = 'View' } = button || {}
 
 	const { handleClick } = useButtons({
-		action,
+		button,
 		resource,
 	})
 
@@ -34,7 +34,7 @@ const ActionButton: React.FC<ActionProps> = (props) => {
 						name={icon}
 						size={20}
 						color={
-							action?.color == 'primary'
+							button?.color == 'primary'
 								? 'primary.contrastText'
 								: 'secondary.contrastText'
 						}
@@ -42,8 +42,8 @@ const ActionButton: React.FC<ActionProps> = (props) => {
 				)
 			}
 			onClick={onClick}
-			variant={action?.variant || 'contained'}
-			color={action?.color || 'secondary'}
+			variant={button?.variant || 'contained'}
+			color={button?.color || 'secondary'}
 			{...rest}
 		>
 			{label}

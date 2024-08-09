@@ -4,7 +4,7 @@ import { useButtons } from '../../../hooks'
 import { ButtonType } from '../../../types'
 
 type ActionMenuItemProps = {
-	action: ButtonType
+	button: ButtonType
 	variant?: 'text' | 'outlined' | 'contained'
 	color?: 'primary' | 'secondary'
 	resource: any
@@ -12,12 +12,12 @@ type ActionMenuItemProps = {
 }
 
 const ActionMenuItem: React.FC<ActionMenuItemProps> = (props) => {
-	const { action, resource, ...rest } = props
+	const { button, resource, ...rest } = props
 
-	const { icon, label = 'View' } = action || {}
+	const { icon, label = 'View' } = button || {}
 
 	const { handleClick } = useButtons({
-		action,
+		button,
 		resource,
 	})
 

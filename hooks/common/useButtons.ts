@@ -5,20 +5,23 @@ import { ButtonType } from '../../types'
 import { useLoadingWrapper } from '.'
 import copy from 'copy-to-clipboard'
 import { useAlerts } from '..'
-import { useAuth } from 'frontend-js'
+import { useAuth, useApi } from 'frontend-js'
 import { get } from 'lodash'
 
 type UseButtonParams = {
-	action: ButtonType
+	button: ButtonType
 	resource?: any
 }
 
 const useButtons = (params: UseButtonParams) => {
 	const { loading, data, errors, loadingWrapper } = useLoadingWrapper()
 
-	const { action, resource } = params || {}
+	const { button, resource } = params || {}
+  const { action_id } = button || {}
 
 	const { showAlertSuccess } = useAlerts()
+
+  const { api } = useApi()
 
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
@@ -26,19 +29,16 @@ const useButtons = (params: UseButtonParams) => {
 
 	const handleClick = async (ev) => {
 		let value
-		if (action.fieldName) {
-			value = get(resource, action.fieldName)
+		if (button.fieldName) {
+			value = get(resource, button.fieldName)
 		}
-		switch (action?.name) {
+		switch (button?.button_type) {
 			case 'navigate':
-				let url = `${clientUrl}${action?.path}`
+				let url = `${clientUrl}${button?.path}`
 				if (resource?.handle) {
-					url = `${clientUrl}${action?.path}/${resource.handle}`
+					url = `${clientUrl}${button?.path}/${resource.handle}`
 				}
 				router.push(url)
-				break
-			case 'click':
-				action?.onClick && action.onClick(ev)
 				break
 			case 'copy':
 				if (value) {
@@ -62,8 +62,8 @@ const useButtons = (params: UseButtonParams) => {
 				}
 				break
 			case 'url':
-				if (action?.path) {
-					window.open(action?.path, '_blank')
+				if (button?.path) {
+					window.open(button?.path, '_blank')
 				}
 				break
 			case 'link':
@@ -82,15 +82,13 @@ const useButtons = (params: UseButtonParams) => {
 					window.open(value.url, '_blank')
 				}
 				break
-			case 'webhook':
+			case 'action':
 				await loadingWrapper(() =>
-					fetch(action.url, {
-						method: action?.options?.method,
-						headers: action?.options?.headers,
-						body: JSON.stringify({
-							data: resource,
-						}),
-					})
+					api.post(`/api/v1/actions/${action_id}/trigger`, {
+            app_action: {
+              resource_id: resource?.id,
+            }
+          })
 				)
 				break
 			default:
