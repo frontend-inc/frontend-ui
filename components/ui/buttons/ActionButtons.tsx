@@ -40,7 +40,7 @@ const ActionButtons: React.FC<ActionButtonsProps> = (props) => {
 			)}
 			{buttons?.length > numVisible && (
 				<MenuButton color={color}>
-					{buttons?.slice(numVisible, buttons.length)?.map((action, index) => (
+					{buttons?.slice(numVisible, buttons.length)?.map((button, index) => (
 						<ActionMenuItem key={index} button={button} resource={resource} />
 					))}
 				</MenuButton>
