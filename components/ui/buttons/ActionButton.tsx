@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from '@mui/material'
 import { useButtons } from '../../../hooks'
 import { ButtonType } from '../../../types'
-import { Icon } from '../..'
+import { IconLoading, Icon } from '../..'
 
 type ActionProps = {
 	button: ButtonType
@@ -15,7 +15,7 @@ const ActionButton: React.FC<ActionProps> = (props) => {
 
 	const { icon, label = 'View' } = button || {}
 
-	const { handleClick } = useButtons({
+	const { loading, handleClick } = useButtons({
 		button,
 		resource,
 	})
@@ -41,6 +41,9 @@ const ActionButton: React.FC<ActionProps> = (props) => {
 					/>
 				)
 			}
+      endIcon={ 
+        <IconLoading loading={loading} />
+      }
 			onClick={onClick}
 			variant={button?.variant || 'contained'}
 			color={button?.color || 'secondary'}
