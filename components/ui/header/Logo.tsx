@@ -27,10 +27,13 @@ const Logo: React.FC<LogoProps> = (props) => {
 				<Image
 					src={src}
 					alt="logo"
-					width={width ? Number(width) : LOGO_WIDTH}
-					height={height ? Number(height) : LOGO_HEIGHT}
-					//@ts-ignore
-					style={styles.image}
+					width={160}
+					height={160}
+          style={{
+            maxHeight: '50px',
+            maxWidth: '120px',
+            objectFit: 'contain',
+          }}										
 				/>
 			)}
 			{!src && (
