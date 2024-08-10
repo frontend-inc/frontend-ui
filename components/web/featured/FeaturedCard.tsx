@@ -64,18 +64,16 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 				}}
 			>
 				<Box sx={sx.image}>
-					<TouchableOpacity handleClick={handleItemClick}>
-						<Image
-							label={label}
-							src={image}
-							height={320}
-							objectFit={objectFit}
-							alt={title}
-							enableOverlay={enableOverlay}
-							enableGradient={enableGradient}
-							disableBorderRadius={enableBorder}
-						/>
-					</TouchableOpacity>
+          <Image
+            label={label}
+            src={image}
+            height={320}
+            objectFit={objectFit}
+            alt={title}
+            enableOverlay={enableOverlay}
+            enableGradient={enableGradient}
+            disableBorderRadius={enableBorder}            
+          />
 				</Box>
 				<Box sx={sx.content}>
 					<Stack spacing={0} sx={sx.textContent}>

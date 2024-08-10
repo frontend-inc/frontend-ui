@@ -8,7 +8,6 @@ type NotificationProps = {
 
 const Notification: React.FC<NotificationProps> = (props) => {
 	const { children } = props
-
 	return (
 		<Box sx={sx.root}>
 			<Box sx={sx.icon}>
