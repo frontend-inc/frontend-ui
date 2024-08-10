@@ -29,7 +29,9 @@ const ActionButton: React.FC<ActionProps> = (props) => {
 			fullWidth
 			sx={sx.button}
 			startIcon={
-				icon && (
+        <>
+        <IconLoading loading={loading} />
+				{(!loading && icon) && (
 					<Icon
 						name={icon}
 						size={20}
@@ -39,11 +41,9 @@ const ActionButton: React.FC<ActionProps> = (props) => {
 								: 'secondary.contrastText'
 						}
 					/>
-				)
+				)}
+        </>
 			}
-      endIcon={ 
-        <IconLoading loading={loading} />
-      }
 			onClick={onClick}
 			variant={button?.variant || 'contained'}
 			color={button?.color || 'secondary'}
