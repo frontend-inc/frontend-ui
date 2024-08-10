@@ -15,17 +15,18 @@ export const buildActions = ({
 	handleDelete,
 	buttons,
 }: BuildActionParams) => {
-	const EDIT_ACTION = {
+	
+  const EDIT_ACTION = {
 		label: 'Edit',
 		color: 'secondary',
-		name: 'click',
+		button_type: 'click',
 		onClick: handleEdit,
 	}
 
 	const DELETE_ACTION = {
 		label: 'Delete',
 		color: 'error',
-		name: 'click',
+		button_type: 'click',
 		onClick: handleDelete,
 	}
 

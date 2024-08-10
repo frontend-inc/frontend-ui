@@ -54,7 +54,7 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 		enablePayments,
 	} = props || {}
 
-	const { resource } = useResourceContext()
+	const { resource, openEdit } = useResourceContext()
 
 	const components = {
 		list: ShowList,
@@ -65,10 +65,10 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 		vimeo: VimeoEmbed,
 	}
 
-	const Component = components[style]
+	const Component = components[style] || ShowList
 
-	const { handleEdit } = useForms()
-
+	const { handleEdit } = useForms()  
+  
 	if (!resource?.id) return null
 	return (
 		<Component

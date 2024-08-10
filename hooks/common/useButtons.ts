@@ -61,6 +61,11 @@ const useButtons = (params: UseButtonParams) => {
 					window.location.href = `sms:${value}`
 				}
 				break
+      case 'click': 
+        if (button?.onClick){
+          button.onClick(resource)
+        }
+        break;
 			case 'url':
 				if (button?.path) {
 					window.open(button?.path, '_blank')

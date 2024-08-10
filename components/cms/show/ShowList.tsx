@@ -9,7 +9,6 @@ import {
 	AvgRating,
 } from '../..'
 import { ShowProps } from './ShowItem'
-import { get } from 'lodash'
 import { buildActions } from '../../../helpers'
 
 const ShowList: React.FC<ShowProps> = (props) => {

@@ -6,6 +6,7 @@ export type ActionType = {
 
 export type ButtonTypeType =
 	| 'action'
+  | 'click'
 	| 'navigate'
 	| 'url'
 	| 'page'
