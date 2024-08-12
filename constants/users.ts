@@ -10,8 +10,11 @@ export const USER_FORM_FIELDS = [
 	{ name: 'avatar', variant: 'image' },
 	{ label: 'First name', name: 'first_name', variant: 'string' },
 	{ label: 'Last name', name: 'last_name', variant: 'string' },
-	{ label: 'About me', name: 'about_me', variant: 'text' },
-	{
+	{ label: 'About me', name: 'about_me', variant: 'text' },	
+]
+
+export const USER_ADDRESS_FIELDS = [
+  {
 		label: 'Address',
 		name: 'address1',
 		variant: 'string',

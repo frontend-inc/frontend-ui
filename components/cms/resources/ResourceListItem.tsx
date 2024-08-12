@@ -95,7 +95,7 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 								bgcolor: color,
 							}}
 						>
-							<Icon name={icon} size={24} />
+							<Icon name={icon} size={24} color={'primary.contrastText'} />
 						</Avatar>
 					</ListItemIcon>
 				)}

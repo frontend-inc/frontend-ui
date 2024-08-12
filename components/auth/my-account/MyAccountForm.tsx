@@ -20,7 +20,6 @@ const MyAccountForm: React.FC<MyAccountFormProps> = (props) => {
 		loading,
 		errors,
 		user,
-		metafields = [],
 		handleSubmit,
 		handleChange,
 		handleLogout,
