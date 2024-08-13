@@ -2,7 +2,7 @@
 import React from 'react'
 import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
-import { AdminRoleItem } from '../..'
+import { AdminRoleItem } from '../../../containers'
 
 const AdminRolesList: React.FC = () => {
 

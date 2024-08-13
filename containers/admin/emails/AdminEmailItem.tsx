@@ -1,5 +1,5 @@
 import React from 'react'
-import { ResourceListItem, Label } from 'frontend-ui/components'
+import { ResourceListItem, Label } from '../../../components'
 import { deepPurple } from '@mui/material/colors'
 
 type EmailItemProps = {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { IconButton } from '@mui/material'
-import { Label, Icon, ResourceListItem } from 'frontend-ui/components'
+import { Label, Icon, ResourceListItem } from '../../../components'
 
 type AdminActionItemProps = {
 	resource: any

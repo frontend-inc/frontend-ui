@@ -1,5 +1,5 @@
 import React from 'react'
-import { Label, ResourceListItem } from 'frontend-ui/components'
+import { Label, ResourceListItem } from '../../../components'
 import * as COLORS from '@mui/material/colors'
 import { Typography } from '@mui/material'
 
