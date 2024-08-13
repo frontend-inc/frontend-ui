@@ -1,21 +1,21 @@
 import React from 'react'
 import { Box } from '@mui/material'
 
-type LayoutScrollProps = {
+type AdminLayoutScrollProps = {
 	children: React.ReactNode
 	ref?: any
-	p?: number
+	pb?: number
 }
 
-const LayoutScroll: React.FC<AdminLayoutScrollProps> = (props) => {
-	const { children, ref, p = 0 } = props || {}
+const AdminLayoutScroll: React.FC<AdminLayoutScrollProps> = (props) => {
+	const { children, ref, pb = 0 } = props || {}
 
 	return (
 		<Box
 			ref={ref && ref}
 			sx={{
 				...sx.root,
-				p: p,
+				pb: pb,
 			}}
 		>
 			{children}
@@ -23,14 +23,14 @@ const LayoutScroll: React.FC<AdminLayoutScrollProps> = (props) => {
 	)
 }
 
-export default LayoutScroll
+export default AdminLayoutScroll
 
 const sx = {
 	root: {
+		height: 'calc(100vh - 50px)',
 		overflowY: 'scroll',
 		'&::-webkit-scrollbar': {
 			display: 'none',
 		},
-		height: '100%',
 	},
 }

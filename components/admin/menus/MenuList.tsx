@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
 	Box,
 	List,
@@ -10,11 +10,9 @@ import {
 	Collapse,
 } from '@mui/material'
 import { ChevronRight } from '@mui/icons-material'
-import { getCookie, setCookie } from 'cookies-next'
 
 type MenuListProps = {
 	children: React.ReactNode
-	id?: string
 	label?: string
 	icon?: React.ReactNode
 	enableBorder?: boolean
@@ -23,8 +21,8 @@ type MenuListProps = {
 }
 
 const MenuList: React.FC<MenuListProps> = (props) => {
-	const {
-		id,
+
+  const {
 		label,
 		defaultClosed = false,
 		children,
@@ -34,32 +32,8 @@ const MenuList: React.FC<MenuListProps> = (props) => {
 
 	const [open, setOpen] = useState(!defaultClosed)
 	const handleToggleClick = () => {
-		//setMenuCookie(!open)
 		setOpen(!open)
 	}
-
-	const setMenuCookie = (value: boolean) => {
-		if (!id) return null
-		// @ts-ignore
-		let jsonCookie = JSON.parse(getCookie(`app-config`) || '{}')
-		jsonCookie[id] = value
-		setCookie(`app-config`, JSON.stringify(jsonCookie))
-	}
-
-	const handleReadCookieState = (id) => {
-		let cookie = getCookie(`app-config`) || '{}'
-		// @ts-ignore
-		let jsonConfig = JSON.parse(cookie)
-		if ((jsonConfig[id] = undefined)) {
-			setOpen(jsonConfig[id])
-		}
-	}
-
-	useEffect(() => {
-		if (id) {
-			//handleReadCookieState(id)
-		}
-	}, [id])
 
 	return (
 		<List

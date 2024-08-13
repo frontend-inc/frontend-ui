@@ -69,7 +69,7 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 						...(enableNotifications && sx.contentNotifications),
 					}}
 				>
-					<LayoutScroll>
+					<AdminLayoutScroll>
 						<AuthGuard
 							roles={roles}
 							requireAuth={requireAuth}
@@ -79,7 +79,7 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 							{children}
 							{footer}
 						</AuthGuard>
-					</LayoutScroll>
+					</AdminLayoutScroll>
 				</Box>
 			</Box>
 		</Box>

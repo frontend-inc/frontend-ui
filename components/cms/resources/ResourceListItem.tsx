@@ -123,6 +123,7 @@ const sx = {
 	root: {
 		p: 0,
 		borderRadius: 1,
+    overflow: 'hidden',
 	},
 	rootBorder: {
 		border: '1px solid',
