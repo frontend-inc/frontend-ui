@@ -61,7 +61,7 @@ const AdminMenuLinkList: React.FC<AdminMenuListProps> = (props) => {
           name: 'page_id',
           variant: 'autosuggest',
           placeholder: 'Select page',
-          displayField: 'name',
+          displayField: 'title',
           url: `${apiUrl}/pages`,
           query: {},
           conditions: [
@@ -70,9 +70,9 @@ const AdminMenuLinkList: React.FC<AdminMenuListProps> = (props) => {
         },
       ]}
       component={AdminMenuLinkItem}
-      emptyIcon="FolderTree"
-      emptyTitle="No menus"
-      emptyDescription="No menus yet."
+      emptyIcon="Link"
+      emptyTitle="No links"
+      emptyDescription="No links yet."
     />
   )
 }
