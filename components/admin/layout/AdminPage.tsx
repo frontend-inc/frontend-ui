@@ -12,9 +12,9 @@ import { useRouter } from "next/router"
 export type AdminPageProps = {
   title: string 
   actions?: React.ReactNode
-  activeTab: string
-  activeMenu: string
-  menuItems: AdminMenusType
+  activeTab?: string
+  activeMenu?: string
+  menuItems?: AdminMenusType
   disablePadding?: boolean
   children: React.ReactNode
 }

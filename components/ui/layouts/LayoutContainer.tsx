@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Box } from '@mui/material'
-import { AuthGuard, Alert, LayoutScroll } from '../../../components'
+import { AuthGuard, Alert, AdminLayoutScroll } from '../../../components'
 import { Notifications } from '../../../components'
 import { NotificationType } from '../../../types'
 
