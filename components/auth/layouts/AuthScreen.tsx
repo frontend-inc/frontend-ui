@@ -1,5 +1,6 @@
 import React from 'react'
 import { Paper, Box, Typography } from '@mui/material'
+import { Container } from '../../../components'
 
 type AuthScreenProps = {
 	title: string
@@ -11,19 +12,21 @@ const AuthScreen: React.FC<AuthScreenProps> = (props) => {
 	const { title, subtitle, children } = props
 
 	return (
-		<Paper elevation={0} sx={sx.paper}>
-			<Box sx={sx.titles}>
-				<Typography variant="h4" sx={sx.title}>
-					{title}
-				</Typography>
-				{subtitle && (
-					<Typography variant="body2" color="text.secondary" sx={sx.subtitle}>
-						{subtitle}
-					</Typography>
-				)}
-			</Box>
-			{children}
-		</Paper>
+    <Container maxWidth="sm">
+      <Paper elevation={0} sx={sx.paper}>
+        <Box sx={sx.titles}>
+          <Typography variant="h4" sx={sx.title}>
+            {title}
+          </Typography>
+          {subtitle && (
+            <Typography variant="body2" color="text.secondary" sx={sx.subtitle}>
+              {subtitle}
+            </Typography>
+          )}
+        </Box>
+        {children}
+      </Paper>
+    </Container>
 	)
 }
 

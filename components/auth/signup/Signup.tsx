@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { AuthLayout, AuthScreen, SignupForm } from '../../../components'
+import { AuthScreen, SignupForm } from '../../../components'
 import { AppContext } from '../../../context'
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
@@ -17,7 +17,7 @@ const Signup: React.FC<SignupProps> = (props) => {
 	const {
 		href,
 		loginUrl,
-		title = 'Sign up',
+		title = 'Sign Up',
 		subtitle = 'Register your account',
 	} = props
 
@@ -39,7 +39,10 @@ const Signup: React.FC<SignupProps> = (props) => {
 	}
 
 	return (
-		<AuthScreen title={title} subtitle={subtitle}>
+		<AuthScreen 
+      title={title} 
+      subtitle={subtitle}
+    >
 			<SignupForm
 				errors={errors}
 				loading={loading}
