@@ -40,7 +40,7 @@ const AdminMenuLinkList: React.FC<AdminMenuListProps> = (props) => {
         },
         { 
           label: 'Link type',
-          name: 'link_type',
+          name: 'variant',
           variant: 'select',
           options: [
             { value: 'page', label: 'Page', icon: 'StickyNote' },
@@ -53,7 +53,7 @@ const AdminMenuLinkList: React.FC<AdminMenuListProps> = (props) => {
           variant: 'string',
           placeholder: 'URL',
           conditions: [
-            { name: 'link_type', operator: 'eq', value: 'url' }
+            { name: 'variant', operator: 'eq', value: 'url' }
           ]
         },            
         {
@@ -65,7 +65,7 @@ const AdminMenuLinkList: React.FC<AdminMenuListProps> = (props) => {
           url: `${apiUrl}/pages`,
           query: {},
           conditions: [
-            { name: 'link_type', operator: 'eq', value: 'page' }
+            { name: 'variant', operator: 'eq', value: 'page' }
           ]
         },
       ]}
