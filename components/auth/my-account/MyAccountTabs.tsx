@@ -36,7 +36,7 @@ const MyAccountTabs: React.FC<MyAccountTabsProps> = (props) => {
 			onChange={handleChange}
 			color="secondary"
 			sx={sx.root}
-			variant="fullWidth"
+			variant="fullWidth"      
 		>
 			{tabs?.map((tab, index) => (
 				<Tab

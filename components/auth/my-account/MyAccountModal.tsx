@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../../../context'
 import { useAuth } from 'frontend-js'
-import { Modal, MyAccountForm } from '../../../components'
+import { UserAvatar, Icon, Modal, MyAccountForm } from '../../../components'
 import {
 	TeamList,
 	TeamUsersList,
@@ -9,8 +9,8 @@ import {
 	SubscriptionPlans,
 	CreditCards,
 } from '../../../components'
-import MyAccountTabs from './MyAccountTabs'
-import { Box } from '@mui/material'
+import MyAccountMenu from './MyAccountMenu'
+import { Box, Button } from '@mui/material'
 import { MetafieldType } from '../../../types'
 
 type MyAccountModalProps = {
@@ -67,18 +67,32 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 			disablePadding
 			open={myAccountOpen}
 			handleClose={() => setMyAccountOpen(false)}
-			title={
+			title={          
 				currentUser?.id
 					? `${currentUser?.first_name} ${currentUser?.last_name}`
-					: 'My Account'
+					: 'My Account'         
 			}
 		>
-			<MyAccountTabs
-				tab={currentTab}
-				enableTeams={enableTeams}
-				enableStripe={enableStripe}
-				handleChange={handleTabChange}
-			/>
+      { currentTab == null ? (
+        <MyAccountMenu
+          tab={currentTab}
+          enableTeams={enableTeams}
+          enableStripe={enableStripe}
+          handleChange={handleTabChange}
+        />
+      ):(
+        <Box px={1}>
+          <Button 
+            sx={ sx.button }
+            color="secondary"
+            variant="contained"
+            startIcon={ <Icon name="ChevronLeft" color='text.primary' size={32} /> }
+            onClick={() => setCurrentTab(null)}
+          >
+            Back
+          </Button>
+        </Box>
+      )}
 			<Box sx={sx.content}>
 				{currentTab == 0 && (
 					<MyAccountForm
@@ -114,4 +128,14 @@ const sx = {
 	content: {
 		p: 2,
 	},
+  button: {
+    color: 'text.primary',
+    bgcolor: 'background.paper',
+    boxShadow: 0,
+    '&:hover': {
+      color: 'text.primary',
+      boxShadow: 0,
+      bgcolor: 'background.paper',
+    }
+  }
 }
