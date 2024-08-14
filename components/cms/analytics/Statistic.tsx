@@ -43,11 +43,7 @@ const sx = {
 		borderRadius: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
-		width: '100%',
-		transition: 'box-shadow 0.3s',
-		'&:hover': {
-			boxShadow: 1,
-		},
+		width: '100%',		
 	},
 	rootBorder: {
 		p: 2,

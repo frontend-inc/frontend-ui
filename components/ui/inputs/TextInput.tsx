@@ -61,9 +61,7 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 	}, [debouncedText])
 
 	useEffect(() => {
-		if (value !== text) {
-			setText(value)
-		}
+		setText(value)		
 	}, [value])
 
 	return (
