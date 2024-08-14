@@ -8,6 +8,8 @@ export type ButtonTypeType =
 	| 'action'
   | 'click'
 	| 'navigate'
+  | 'navigate_cms'
+  | 'navigate_user'  
 	| 'url'
 	| 'page'
 	| 'email'

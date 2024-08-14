@@ -18,7 +18,7 @@ export type CurrentUserProps = UserProfileProps & {
 const CurrentUser: React.FC<CurrentUserProps> = (props) => {
 	const { enableEdit, fields = [], buttons = [] } = props || {}
 
-	const { user, setUser, currentUser, fetchMe } = useAuth()
+	const { setUser, currentUser, fetchMe } = useAuth()
 
 	const [open, setOpen] = useState(false)
 
@@ -41,7 +41,7 @@ const CurrentUser: React.FC<CurrentUserProps> = (props) => {
 	let userActions = buildActions({
 		enableEdit,
 		handleEdit,
-		buttons,
+		buttons,    
 	})
 
 	return (

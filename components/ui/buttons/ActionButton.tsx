@@ -1,23 +1,25 @@
 import React from 'react'
 import { Button } from '@mui/material'
 import { useButtons } from '../../../hooks'
-import { ButtonType } from '../../../types'
+import { ButtonType, UserType } from '../../../types'
 import { IconLoading, Icon } from '../..'
 
 type ActionProps = {
 	button: ButtonType
 	resource: any
+  user?: UserType
 	rest?: any
 }
 
 const ActionButton: React.FC<ActionProps> = (props) => {
-	const { button, resource, ...rest } = props
+	const { button, user, resource, ...rest } = props
 
 	const { icon, label = 'View' } = button || {}
 
 	const { loading, handleClick } = useButtons({
 		button,
 		resource,
+    user
 	})
 
 	const onClick = (ev) => {

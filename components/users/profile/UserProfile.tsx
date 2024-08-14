@@ -68,7 +68,12 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 				</Stack>
 				{buttons?.length > 0 && (
 					<Stack direction="row" sx={sx.buttons}>
-						<Actions numVisible={0} buttons={buttons} resource={user} />
+						<Actions 
+              numVisible={1}
+              buttons={buttons} 
+              resource={user} 
+              user={user}
+            />
 					</Stack>
 				)}
 			</Stack>

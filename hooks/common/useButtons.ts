@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../context'
 import { useRouter } from 'next/router'
-import { ButtonType } from '../../types'
+import { ButtonType, UserType } from '../../types'
 import { useLoadingWrapper } from '.'
 import copy from 'copy-to-clipboard'
 import { useAlerts } from '..'
@@ -11,12 +11,14 @@ import { get } from 'lodash'
 type UseButtonParams = {
 	button: ButtonType
 	resource?: any
+  user?: UserType
 }
 
 const useButtons = (params: UseButtonParams) => {
+  const { button, resource, user } = params || {}
+
 	const { loading, data, errors, loadingWrapper } = useLoadingWrapper()
 
-	const { button, resource } = params || {}
   const { action_id } = button || {}
 
 	const { showAlertSuccess } = useAlerts()
@@ -28,18 +30,29 @@ const useButtons = (params: UseButtonParams) => {
 	const { currentUser } = useAuth()
 
 	const handleClick = async (ev) => {
-		let value
+		let value, url;
 		if (button.fieldName) {
 			value = get(resource, button.fieldName)
 		}
 		switch (button?.button_type) {
 			case 'navigate':
-				let url = `${clientUrl}${button?.path}`
-				if (resource?.handle) {
-					url = `${clientUrl}${button?.path}/${resource.handle}`
-				}
+				url = `${clientUrl}${button?.path}`
 				router.push(url)
 				break
+      case 'navigate_user':
+        url = `${clientUrl}${button?.path}`
+        if (resource?.handle) {
+          url = `${clientUrl}${button?.path}/${user.username}`
+        }
+        router.push(url)
+        break
+      case 'navigate_cms':
+        url = `${clientUrl}${button?.path}`
+        if (resource?.handle) {
+          url = `${clientUrl}${button?.path}/${resource?.handle}`
+        }
+        router.push(url)
+        break  
 			case 'copy':
 				if (value) {
 					copy(value)
