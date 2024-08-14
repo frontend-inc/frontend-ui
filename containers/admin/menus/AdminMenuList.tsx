@@ -100,7 +100,7 @@ const AdminMenuList = () => {
               variant: 'autosuggest',
               placeholder: 'Select page',
               displayField: 'name',
-              url: `${apiUrl}/collections`,
+              url: `${apiUrl}/pages`,
               query: {},
               conditions: [
                 { name: 'link_type', operator: 'eq', value: 'page' }
