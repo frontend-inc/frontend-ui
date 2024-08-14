@@ -42,7 +42,7 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 	}
 
 	const handleMenuClick = (ev, menuItem) => {
-		if (menuItem?.children.length > 0) {
+		if (menuItem?.children?.length > 0) {
 			toggleMenu(ev)
 			return
 		}
