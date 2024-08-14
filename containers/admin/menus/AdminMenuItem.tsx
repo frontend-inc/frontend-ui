@@ -26,9 +26,6 @@ const AdminMenuItem: React.FC<ResourceListItemProps> = (props) => {
 			secondaryActions={
 				<>
 					{menu?.internal && <Label label="System" />}
-					<IconButton onClick={handleClick}>
-						<Icon name="ChevronRight" />
-					</IconButton>
 				</>
 			}
 			handleClick={handleClick}

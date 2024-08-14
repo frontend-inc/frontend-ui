@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { Drawer, ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
-import { AdminMenuItem, AdminMenuLinkItem } from '../../../containers'
+import { AdminMenuItem, AdminMenuLinkList } from '../../../containers'
+import { AdminMenuType } from '@frontend-mui/types'
 
 const AdminMenuList = () => {
 
   const { apiUrl } = useAdmin()
 	const [open, setOpen] = useState(false)
-	const [activeMenu, setActiveMenu] = useState()
+	const [activeMenu, setActiveMenu] = useState<AdminMenuType>()
 
 	const handleClick = (menu) => {
 		setActiveMenu(menu)
@@ -54,64 +55,12 @@ const AdminMenuList = () => {
         handleClose={() => setOpen(false)}
         title={activeMenu?.label}
       >
-        <ResourceList
-          direction='column'
-          sortable
-          enableBorder
-          url={`${apiUrl}/menus/${activeMenu?.id}/links`}
-          name="link"
-          enableCreate
-          enableEdit
-          enableSearch
-          enableDelete
-          handleClick={handleClick}
-          query={{
-            sort_by: 'position',
-            sort_direction: 'asc',
-          }}
-          fields={[
-            {
-              label: 'Name',
-              name: 'name',
-              variant: 'string',
-              placeholder: 'Link name',
-            },
-            { 
-              label: 'Link type',
-              name: 'link_type',
-              variant: 'select',
-              options: [
-                { value: 'page', label: 'Page', icon: 'StickyNote' },
-                { value: 'url', label: 'URL', icon: 'ExternalLink' },              
-              ]
-            },
-            {
-              label: 'URL',
-              name: 'url',
-              variant: 'string',
-              placeholder: 'URL',
-              conditions: [
-                { name: 'link_type', operator: 'eq', value: 'url' }
-              ]
-            },            
-            {
-              label: 'Page',
-              name: 'page_id',
-              variant: 'autosuggest',
-              placeholder: 'Select page',
-              displayField: 'name',
-              url: `${apiUrl}/pages`,
-              query: {},
-              conditions: [
-                { name: 'link_type', operator: 'eq', value: 'page' }
-              ]
-            },
-          ]}
-          component={AdminMenuLinkItem}
-          emptyIcon="FolderTree"
-          emptyTitle="No menus"
-          emptyDescription="No menus yet."
-        />
+        { activeMenu?.id && (
+          <AdminMenuLinkList 
+            menuId={activeMenu?.id} 
+            handleClick={handleClick} 
+          />        
+        )}
       </Drawer>
     </>
   )
