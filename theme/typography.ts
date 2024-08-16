@@ -78,7 +78,7 @@ export const typography = {
 	button: {
 		fontFamily: 'Inter',
 		fontWeight: 600,
-		fontSize: 13,
+		fontSize: 12,
 	},
 	caption: {
 		fontFamily: 'Inter',

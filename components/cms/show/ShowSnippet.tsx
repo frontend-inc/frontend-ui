@@ -29,7 +29,7 @@ const ShowSnippet: React.FC<ShowProps> = (props) => {
 
 	if (!resource) return null
 	return (
-		<Paper elevation={1} sx={sx.paper}>
+		<Paper elevation={0} sx={sx.paper}>
 			<Stack direction="column" spacing={0} sx={sx.header}>
 				<Box sx={sx.imageContainer}>
 					<Image
@@ -37,7 +37,7 @@ const ShowSnippet: React.FC<ShowProps> = (props) => {
 						label={label}
 						src={image?.url}
 						alt={title}
-						height={400}
+						height={260}
 					/>
 				</Box>
 				<Stack spacing={0.5} direction="column" p={2} width="100%">
@@ -75,13 +75,6 @@ export default ShowSnippet
 
 const sx = {
 	paper: {
-		border: '1px solid',
-		borderColor: 'divider',
-		my: 1,
-		transition: 'box-shadow 0.3s',
-		'&:hover': {
-			boxShadow: 2,
-		},
 	},
 	container: {
 		borderRadius: 1,

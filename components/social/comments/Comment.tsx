@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {
 	Box,
 	Link,
+  Stack,
 	IconButton,
 	Collapse,
 	ListItem,
@@ -14,6 +15,7 @@ import { useComments } from '../../../hooks'
 import { Icon } from '../../../components'
 import moment from 'moment'
 import CommentForm from './CommentForm'
+import { transform } from 'next/dist/build/swc'
 
 type CommentProps = {
 	url: string
@@ -27,7 +29,14 @@ type CommentProps = {
 }
 
 const Comment: React.FC<CommentProps> = (props) => {
-	const { url, handle, level = 0, comment: parentComment, handleDelete } = props
+	const { 
+    url, 
+    handle, 
+    reply = false, 
+    level = 0, 
+    comment: parentComment, 
+    handleDelete 
+  } = props
 
 	const [openComment, setOpenComment] = useState(false)
 	const [showReplies, setShowReplies] = useState(false)
@@ -73,7 +82,6 @@ const Comment: React.FC<CommentProps> = (props) => {
 			<ListItem
 				sx={{
 					...sx.listItem,
-					pl: Math.min(level * 7, 14) + 2,
 				}}
 				secondaryAction={
 					<IconButton onClick={handleReply}>
@@ -86,25 +94,24 @@ const Comment: React.FC<CommentProps> = (props) => {
 				</ListItemIcon>
 				<ListItemText
 					primary={
-						<Typography
-							variant="body1"
-							color="text.primary"
-							sx={sx.commentText}
-						>
-							{parentComment?.body}
-						</Typography>
+              <Typography
+                variant="body1"
+                color="text.primary"
+                sx={sx.commentText}
+              >
+                {parentComment?.body}
+              </Typography>
 					}
 					secondary={
-						<Typography variant="body2" color="text.secondary" sx={sx.caption}>
-							{`@${parentComment?.user?.username}`} commented{' '}
-							{moment(parentComment?.created_at).fromNow()}
-						</Typography>
+              <Typography variant="body2" color="text.secondary" sx={sx.caption}>
+                {`@${parentComment?.user?.username}`} commented{' '}
+                {moment(parentComment?.created_at).fromNow()}
+              </Typography>
 					}
 				/>
 			</ListItem>
 			<Collapse in={openComment}>
 				<CommentForm
-					pl={Math.min(level * 7, 14)}
 					loading={delayedLoading}
 					errors={errors}
 					comment={comment}
@@ -116,9 +123,6 @@ const Comment: React.FC<CommentProps> = (props) => {
 				<>
 					{!showReplies && (
 						<Box
-							sx={{
-								pl: Math.min(level * 7, 14),
-							}}
 						>
 							<Link sx={sx.link} onClick={handleShowReplies}>
 								Show {parentComment?.replies?.length}{' '}
@@ -128,16 +132,15 @@ const Comment: React.FC<CommentProps> = (props) => {
 					)}
 				</>
 			)}
-			<Box
-				sx={{
-					...sx.divider,
-					ml: Math.min(level * 7, 14),
-				}}
-			/>
+			<Box sx={{ 
+        ...sx.divider,
+        ml: reply ? 7 : 0, 
+      }} />
 			<Collapse in={showReplies}>
 				{parentComment?.replies?.map((reply) => (
 					<Comment
 						key={reply.id}
+            reply 
 						url={url}
 						handle={handle}
 						comment={reply}
@@ -201,4 +204,7 @@ const sx = {
 		borderBottom: '1px solid',
 		borderColor: 'divider',
 	},
+  replyIcon: {
+    transform: 'rotate(180deg)',
+  }
 }

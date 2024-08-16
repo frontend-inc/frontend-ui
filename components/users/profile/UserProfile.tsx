@@ -1,7 +1,7 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
 import {
-	Actions,
+	ActionButtons,
 	UserAvatar,
 	FollowButton,
 	ExpandableText,
@@ -68,7 +68,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 				</Stack>
 				{buttons?.length > 0 && (
 					<Stack direction="row" sx={sx.buttons}>
-						<Actions 
+						<ActionButtons 
               numVisible={1}
               buttons={buttons} 
               resource={user} 

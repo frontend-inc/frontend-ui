@@ -85,7 +85,7 @@ const CardList: React.FC<CardProps> = (props) => {
 						</Stack>
 					</Stack>
 					<Stack direction="row" justifyContent="flex-end">
-						<Actions numVisible={0} buttons={buttons} resource={resource} />
+						<ActionButtons numVisible={0} buttons={buttons} resource={resource} />
 					</Stack>
 				</Stack>
 			</Stack>

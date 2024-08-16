@@ -139,6 +139,8 @@ const List: React.FC<ListProps> = (props) => {
 					displayFields={displayFields}
 					enableEdit={enableEdit}
 					enableDelete={enableDelete}
+          enableGradient={enableGradient}
+          enableOverlay={enableOverlay}
 				/>
 			}
 			show={

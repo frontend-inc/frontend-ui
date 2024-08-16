@@ -13,7 +13,7 @@ export type ListProps = {
 	destroy: React.ReactNode
 }
 
-const List: React.FC<ListProps> = (props) => {
+const ListBase: React.FC<ListProps> = (props) => {
 	const {
 		url,
 		name,
@@ -38,4 +38,4 @@ const List: React.FC<ListProps> = (props) => {
 	)
 }
 
-export default List
+export default ListBase

@@ -11,7 +11,7 @@ const CommentReplyButton: React.FC<CommentReplyButtonProps> = (props) => {
 
 	return (
 		<Button variant="contained" color="secondary" onClick={handleClick}>
-			{reply ? 'Reply' : 'Leave a comment'}
+			{reply ? 'Reply' : 'Leave a Comment'}
 		</Button>
 	)
 }

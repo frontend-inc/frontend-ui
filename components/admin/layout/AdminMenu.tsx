@@ -19,8 +19,11 @@ const AdminMenusItems: React.FC<AdminMenuItemsProps> = (props) => {
   if(Object.keys(menuItems)?.length === 0) return null;
   return(
     <AdminLayoutLeft>
-      { Object.keys(menuItems).map((key) => (
-        <MenuList label={ key }>
+      { Object.keys(menuItems).map((key, index) => (
+        <MenuList 
+          label={ key }
+          enableBorder={ index !== 0 }
+        >
           {menuItems[key]?.map((menuItem) => (
             <MenuListItem
               key={menuItem.value}

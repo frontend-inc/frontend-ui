@@ -11,7 +11,7 @@ import {
 	FavoriteButton,
 	LikeButton,
 	DisplayFields,
-	Actions,
+	ActionButtons,
 } from '../..'
 
 const CardList: React.FC<CardProps> = (props) => {
@@ -73,7 +73,7 @@ const CardList: React.FC<CardProps> = (props) => {
 				</Stack>
 			</Stack>
 			<Stack direction="row" justifyContent="flex-end" sx={sx.buttons}>
-				<Actions numVisible={0} buttons={buttons} resource={resource} />
+				<ActionButtons numVisible={0} buttons={buttons} resource={resource} />
 			</Stack>
 		</Box>
 	)

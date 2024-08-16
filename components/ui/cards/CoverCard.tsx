@@ -7,7 +7,7 @@ import {
 	DisplayFields,
 	Image,
 	TouchableOpacity,
-	Actions,
+	ActionButtons,
 	SocialActions,
 	LightDarkMode,
 } from '../..'
@@ -15,7 +15,7 @@ import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../types'
 
-const CoverVert: React.FC<CardProps> = (props) => {
+const CoverCard: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
 		buttons,
@@ -83,7 +83,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 											enableFavorites={enableFavorites}
 											enableComments={enableComments}
 										/>
-										<Actions
+										<ActionButtons
 											numVisible={0}
 											resource={resource}
 											buttons={buttons}
@@ -99,7 +99,7 @@ const CoverVert: React.FC<CardProps> = (props) => {
 	)
 }
 
-export default CoverVert
+export default CoverCard
 
 const sx = {
 	root: {

@@ -4,7 +4,7 @@ import {
 	DisplayFields,
 	StripePaymentLink,
 	SocialButtons,
-	Actions,
+	ActionButtons,
 	AvgRating,
 	ExpandableText,
 } from '../..'
@@ -34,7 +34,7 @@ const ShowAvatar: React.FC<ShowProps> = (props) => {
 					direction={{ sm: 'row', xs: 'column' }}
 					spacing={1}
 				>
-					<Actions
+					<ActionButtons
 						buttons={buildActions({
 							enableEdit,
 							handleEdit,

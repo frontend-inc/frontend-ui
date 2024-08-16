@@ -4,7 +4,7 @@ import {
 	AvgRating,
 	DisplayFields,
 	StripePaymentLink,
-	Actions,
+	ActionButtons,
 	Image,
 	SocialButtons,
 	ExpandableText,
@@ -32,7 +32,7 @@ const ShowCard: React.FC<ShowProps> = (props) => {
 		<Stack spacing={2}>
 			{(buttons || enableEdit) && (
 				<Box sx={sx.buttons}>
-					<Actions
+					<ActionButtons
 						buttons={buildActions({
 							enableEdit,
 							handleEdit,

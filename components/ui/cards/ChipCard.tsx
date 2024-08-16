@@ -15,7 +15,7 @@ import {
 	AvgRating,
 	FavoriteButton,
 	DisplayFields,
-	Actions,
+	ActionButtons,
 } from '../..'
 import { CardProps } from '../../../types'
 
@@ -44,7 +44,7 @@ const ChipCard: React.FC<CardProps> = (props) => {
 						{enableFavorites == true && (
 							<FavoriteButton handle={resource?.handle} />
 						)}
-						<Actions numVisible={0} buttons={buttons} resource={resource} />
+						<ActionButtons numVisible={0} buttons={buttons} resource={resource} />
 					</Stack>
 				}
 			>

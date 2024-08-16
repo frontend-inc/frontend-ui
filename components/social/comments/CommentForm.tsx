@@ -3,7 +3,6 @@ import { Stack, ListItem, Button } from '@mui/material'
 import { AuthGuard, IconLoading, TextInput } from '../../../components'
 
 type CommentFormProps = {
-	pl?: number
 	loading: boolean
 	errors?: any
 	comment: any
@@ -12,8 +11,7 @@ type CommentFormProps = {
 }
 
 const CommentForm: React.FC<CommentFormProps> = (props) => {
-	const {
-		pl = 0,
+	const {		
 		loading,
 		errors,
 		comment,
@@ -24,9 +22,9 @@ const CommentForm: React.FC<CommentFormProps> = (props) => {
 	return (
 		<AuthGuard>
 			<ListItem
-				sx={{
-					pl,
-				}}
+        sx={{
+          pl: 0
+        }}
 			>
 				<Stack sx={sx.form} direction="column" spacing={1}>
 					<TextInput
@@ -59,8 +57,8 @@ const sx = {
 		alignItems: 'flex-start',
 	},
 	form: {
-		p: 2,
-		px: 5,
+		p: 0,
+		px: 0,
 		width: '100%',
 		alignItems: 'flex-start',
 	},

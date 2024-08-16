@@ -83,7 +83,7 @@ const TableCard: React.FC<CardProps> = (props) => {
 				{enableFavorites == true && (
 					<FavoriteButton handle={resource?.handle} />
 				)}
-				<Actions numVisible={0} buttons={buttons} resource={resource} />
+				<ActionButtons numVisible={0} buttons={buttons} resource={resource} />
 			</Stack>
 		</Stack>
 	)

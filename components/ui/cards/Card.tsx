@@ -80,7 +80,7 @@ const Card: React.FC<CardProps> = (props) => {
 						enableComments={enableComments}
 					/>
 					{buttons?.length > 0 && (
-						<Actions numVisible={0} buttons={buttons} resource={resource} />
+						<ActionButtons numVisible={0} buttons={buttons} resource={resource} />
 					)}
 				</Stack>
 			</Stack>

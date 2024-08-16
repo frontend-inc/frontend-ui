@@ -4,7 +4,7 @@ import {
 	DisplayFields,
 	StripePaymentLink,
 	SocialButtons,
-	Actions,
+	ActionButtons,
 	Image,
 	AvgRating,
 } from '../..'
@@ -29,7 +29,7 @@ const ShowList: React.FC<ShowProps> = (props) => {
 		<Stack sx={sx.root} spacing={4}>
 			{(buttons || enableEdit) && (
 				<Box sx={sx.buttons}>
-					<Actions
+					<ActionButtons
 						buttons={buildActions({
 							enableEdit,
 							handleEdit,

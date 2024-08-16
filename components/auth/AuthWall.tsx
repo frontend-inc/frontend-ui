@@ -1,13 +1,12 @@
 import React from 'react'
 import Login from './login/Login'
-import { AuthLayout, Heading } from '../../components'
-import { Box, Stack, Container } from '@mui/material'
+import { AuthLayout } from '../../components'
+import { Box, Container } from '@mui/material'
 
 const AuthWall: React.FC = () => {
 	return (
 		<Container maxWidth="sm">
 			<Box sx={sx.root}>
-				<Heading description="Please sign in to continue." textAlign="center" />
 				<AuthLayout>
 					<Login />
 				</AuthLayout>

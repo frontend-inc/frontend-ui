@@ -3,7 +3,7 @@ import {
 	UserChip,
 	FavoriteButton,
 	Image,
-	Actions,
+	ActionButtons,
 	TouchableOpacity,
 	LightDarkMode,
 } from '../../../components'
@@ -57,7 +57,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 					{enableFavorites == true && (
 						<FavoriteButton handle={resource?.handle} />
 					)}
-					<Actions
+					<ActionButtons
 						resource={resource}
 						numVisible={0}
 						buttons={buildActions({

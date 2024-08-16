@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import { Comments, Modal, ShowSnippet } from '../..'
+import { Comments, Drawer, Modal, ShowSnippet } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { ButtonType, FormFieldType, DisplayFieldType } from '../../../types'
 
@@ -42,28 +42,33 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 
 	if (!resource) return null
 	return (
-		<Modal
+		<Drawer
 			disablePadding
 			open={openShow}
 			handleClose={() => setOpenShow(false)}
-			maxWidth="sm"
+      title={ resource?.title }
 		>
-			<Box px={2} pb={2}>
-				<ShowSnippet
-					resource={resource}
-					enableEdit={enableEdit}
-					buttons={buttons}
-					displayFields={displayFields}
-					enableRatings={enableRatings}
-					enablePayments={enablePayments}
-					handleEdit={handleEdit}
-					enableLikes={enableLikes}
-					enableFavorites={enableFavorites}
-					enableSharing={enableSharing}
-				/>
-				{enableComments && <Comments url={url} handle={resource?.handle} />}
-			</Box>
-		</Modal>
+      <ShowSnippet
+        resource={resource}
+        enableEdit={enableEdit}
+        buttons={buttons}
+        displayFields={displayFields}
+        enableRatings={enableRatings}
+        enablePayments={enablePayments}
+        handleEdit={handleEdit}
+        enableLikes={enableLikes}
+        enableFavorites={enableFavorites}
+        enableSharing={enableSharing}
+      />
+      { enableComments && (
+        <Box px={2}>
+          <Comments 
+            url={ url } 
+            handle={resource?.handle} 
+          /> 
+        </Box>
+      )}
+		</Drawer>
 	)
 }
 

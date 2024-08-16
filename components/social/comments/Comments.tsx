@@ -6,6 +6,7 @@ import {
 	CommentForm,
 	LoadMore,
 	Placeholder,
+  AuthGuard,
 } from '../../../components'
 import { List, Stack, Collapse, Typography } from '@mui/material'
 import { useComments } from '../../../hooks'
@@ -49,16 +50,6 @@ const Comments: React.FC<CommentsProps> = (props) => {
 
 	const { setAuthOpen } = useContext(AppContext)
 
-	const handleToggleClick = () => {
-		if (currentUser?.id) {
-			setComment({})
-			setReply(!reply)
-			setOpenComment(!openComment)
-		} else {
-			setAuthOpen(true)
-		}
-	}
-
 	const handleSubmit = async () => {
 		await createComment(comment)
 		setOpenComment(false)
@@ -93,15 +84,14 @@ const Comments: React.FC<CommentsProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-			<Stack direction="row" sx={sx.commentHeader}>
+			<Stack direction="column" spacing={1} sx={sx.commentHeader}>
 				<Typography color="text.primary" variant="subtitle1">
 					Comments ({totalCount})
 				</Typography>
-				<CommentReplyButton handleClick={handleToggleClick} />
 			</Stack>
-			<Collapse in={openComment}>
+      <AuthGuard requireAuth>
+			<Collapse in>
 				<CommentForm
-					pl={0}
 					errors={errors}
 					loading={loading}
 					comment={comment}
@@ -109,6 +99,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
 					handleSubmit={handleSubmit}
 				/>
 			</Collapse>
+      </AuthGuard>
 			<List disablePadding>
 				{comments?.map((comment, i) => (
 					<Comment
@@ -146,7 +137,8 @@ const sx = {
 		borderColor: 'divider',
 	},
 	commentHeader: {
-		alignItems: 'center',
+    width: '100%',
+		alignItems: 'flex-start',
 		justifyContent: 'space-between',
 	},
 }

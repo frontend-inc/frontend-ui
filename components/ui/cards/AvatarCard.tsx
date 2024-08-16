@@ -13,7 +13,7 @@ import {
 import { CardProps } from '../../../types'
 import {
 	UserChip,
-	Actions,
+	ActionButtons,
 	AvgRating,
 	DisplayFields,
 	SocialActions,
@@ -43,7 +43,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 				disablePadding
 				disableGutters
 				secondaryAction={
-					<Actions numVisible={0} buttons={buttons} resource={resource} />
+					<ActionButtons numVisible={0} buttons={buttons} resource={resource} />
 				}
 			>
 				<ListItemButton

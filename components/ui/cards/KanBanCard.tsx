@@ -105,7 +105,7 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 						enableFavorites={enableFavorites}
 						enableComments={enableComments}
 					/>
-					<Actions
+					<ActionButtons
 						numVisible={0}
 						buttons={buildActions({
 							enableEdit,
