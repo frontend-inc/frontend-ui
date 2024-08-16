@@ -3,13 +3,13 @@ import { Box, Button, Stack, Typography } from '@mui/material'
 import {
 	Image,
 	DisplayFields,
-	SocialActions,
+	SocialButtons,
 	AvgRating,
 	UserChip,
 } from '../../../components'
 import { truncate } from '../../../helpers'
 import { CardProps } from '../../../types'
-import { Actions } from '../../../components'
+import { ActionButtons } from '../../../components'
 import { useSortable } from '@dnd-kit/sortable'
 import { buildActions } from '../../../helpers'
 
@@ -99,7 +99,7 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 					Details
 				</Button>
 				<Stack direction="row" alignItems="flex-end">
-					<SocialActions
+					<SocialButtons
 						resource={resource}
 						enableLikes={enableLikes}
 						enableFavorites={enableFavorites}

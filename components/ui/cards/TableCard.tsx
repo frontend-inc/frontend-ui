@@ -12,7 +12,7 @@ import {
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../types'
-import { Actions } from '../..'
+import { ActionButtons } from '../..'
 
 const TableCard: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)

@@ -1,31 +1,31 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
-import { Box, Stack, Typography } from '@mui/material'
-import { Image, UserChip, AvgRating, DisplayFields, SocialButtons } from '../..'
+import { Button, Box, Stack, Typography } from '@mui/material'
+import { Image } from '../..'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
-import { CardProps } from '../../../types'
-import { ActionButtons } from '../../../components'
 
-const Card: React.FC<CardProps> = (props) => {
+type SimpleCardProps = {
+  item?: any
+  buttonText?: string
+  href?: string
+  handleClick?: () => void
+  enableGradient?: boolean
+  enableOverlay?: boolean
+}
+
+const Card: React.FC<SimpleCardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
-		ref,
-		buttons,
-		resource,
-		displayFields = [],
-		href,
+    href,
+    buttonText='',
+		item,		
 		handleClick,
-		height = 240,
 		enableGradient = false,
 		enableOverlay = false,
-		enableComments = false,
-		enableFavorites = false,
-		enableLikes = false,
-		enableRatings = false,
 	} = props || {}
 
-	const { label, title, image } = resource || {}
+	const { label, title, description, image } = item || {}
 
 	const router = useRouter()
 
@@ -39,18 +39,17 @@ const Card: React.FC<CardProps> = (props) => {
 
 	return (
 		<Stack
-			ref={ref}
 			spacing={0}
 			sx={{
 				...sx.root,
 				width: '100%',
-				minHeight: height + 80,
+				minHeight: 320
 			}}
 		>
 			<Box sx={sx.imageContainer}>
 				<Image
 					src={image?.url}
-					height={height}
+					height={240}
 					alt={title}
 					label={label}
 					disableBorderRadius
@@ -64,23 +63,19 @@ const Card: React.FC<CardProps> = (props) => {
 					<Typography sx={sx.title} color="text.primary" variant="subtitle2">
 						{truncate(title)}
 					</Typography>
-					{enableRatings == true && (
-						<AvgRating resource={resource} size="small" />
-					)}
-					{displayFields?.length > 0 && (
-						<DisplayFields fields={displayFields} resource={resource} />
-					)}
-					<UserChip user={resource?.user} />
+          <Typography sx={sx.title} color="text.secondary" variant="body2">
+						{truncate(description)}
+					</Typography>
 				</Box>
 				<Stack direction="row" justifyContent="space-between">
-					<SocialButtons
-						resource={resource}
-						enableLikes={enableLikes}
-						enableFavorites={enableFavorites}
-						enableComments={enableComments}
-					/>
-					{buttons?.length > 0 && (
-						<ActionButtons numVisible={0} buttons={buttons} resource={resource} />
+					{href && buttonText?.length > 0 && (
+						<Button 
+              variant="contained"
+              color="primary"
+              onClick={handleItemClick}
+            >
+              {buttonText}
+            </Button>
 					)}
 				</Stack>
 			</Stack>

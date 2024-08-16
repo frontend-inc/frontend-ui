@@ -1,8 +1,9 @@
+
 import React from 'react'
 import { Stack } from '@mui/material'
 import { LikeButton, FavoriteButton, CommentButton } from '../../..'
 
-type SocialActionsProps = {
+type SocialButtonsProps = {
 	resource: any
 	enableLikes?: boolean
 	enableFavorites?: boolean
@@ -10,7 +11,7 @@ type SocialActionsProps = {
 	color?: string
 }
 
-const SocialActions: React.FC<SocialActionsProps> = (props) => {
+const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 	const { resource, enableLikes, enableFavorites, enableComments, color } =
 		props || {}
 	return (
@@ -28,4 +29,4 @@ const SocialActions: React.FC<SocialActionsProps> = (props) => {
 	)
 }
 
-export default SocialActions
+export default SocialButtons

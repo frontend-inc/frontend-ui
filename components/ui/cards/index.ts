@@ -9,5 +9,5 @@ export { default as VideoCard } from './VideoCard'
 export { default as TableCard } from './TableCard'
 export { default as ListItemCard } from './ListItemCard'
 
-// SocialActions
-export { default as SocialActions } from './actions/SocialActions'
+// SocialButtons
+export { default as SocialButtons } from './buttons/SocialButtons'

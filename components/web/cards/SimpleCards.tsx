@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Grid } from '@mui/material'
-import { ListCard, Placeholder } from '../../../components'
+import { SimpleCard, Placeholder } from '../..'
 import { useRouter } from 'next/router'
 
 type CardType = {
@@ -12,7 +12,7 @@ type CardType = {
 	url?: string
 }
 
-export type CardsProps = {
+export type SimpleCardsProps = {
 	style?: 'card' | 'cover'
 	items: CardType[]
 	enableBorder?: boolean
@@ -20,13 +20,11 @@ export type CardsProps = {
 	enableOverlay?: boolean
 }
 
-const Cards: React.FC<CardsProps> = (props) => {
+const SimpleCards: React.FC<SimpleCardsProps> = (props) => {
 	const router = useRouter()
 
 	const {
-		style = 'card',
 		items,
-		enableBorder,
 		enableGradient,
 		enableOverlay,
 	} = props || {}
@@ -42,18 +40,14 @@ const Cards: React.FC<CardsProps> = (props) => {
 			<Grid container spacing={2}>
 				{items?.map((card, i) => (
 					<Grid item xs={12} sm={4} md={4} key={i}>
-						<ListCard
-							buttons={[]}
-							style={style}
-							resource={{
+						<SimpleCard
+							item={{
 								...card,
 								image: {
 									url: card?.image,
 								},
 							}}
-							displayFields={[]}
 							handleClick={() => handleClick(card)}
-							enableBorder={enableBorder}
 							enableGradient={enableGradient}
 							enableOverlay={enableOverlay}
 						/>
@@ -71,4 +65,4 @@ const Cards: React.FC<CardsProps> = (props) => {
 	)
 }
 
-export default Cards
+export default SimpleCards

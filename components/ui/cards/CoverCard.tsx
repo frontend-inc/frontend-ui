@@ -8,7 +8,7 @@ import {
 	Image,
 	TouchableOpacity,
 	ActionButtons,
-	SocialActions,
+	SocialButtons,
 	LightDarkMode,
 } from '../..'
 import { truncate } from '../../../helpers'
@@ -76,7 +76,7 @@ const CoverCard: React.FC<CardProps> = (props) => {
 									<DisplayFields fields={displayFields} resource={resource} />
 									{enableUsers == true && <UserChip user={resource?.user} />}
 									<Stack direction="row" sx={sx.buttons}>
-										<SocialActions
+										<SocialButtons
 											color="common.white"
 											resource={resource}
 											enableLikes={enableLikes}

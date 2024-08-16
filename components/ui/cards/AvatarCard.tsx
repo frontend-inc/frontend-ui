@@ -16,7 +16,7 @@ import {
 	ActionButtons,
 	AvgRating,
 	DisplayFields,
-	SocialActions,
+	SocialButtons,
 } from '../../../components'
 
 const AvatarList: React.FC<CardProps> = (props) => {
@@ -85,7 +85,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 								)}
 								<DisplayFields fields={displayFields} resource={resource} />
 								<UserChip user={resource?.user} />
-								<SocialActions
+								<SocialButtons
 									resource={resource}
 									enableLikes={enableLikes}
 									enableFavorites={enableFavorites}

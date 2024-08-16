@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { Cards } from '../../components'
-import { CardsProps } from '../../components/web/cards/Cards'
+import { SimpleCards } from '../../components'
+import { SimpleCardsProps } from '../../components/web/cards/SimpleCards'
 import { SectionProps, HeadingProps } from '../../types'
 
-type UICardsProps = SectionProps & HeadingProps & CardsProps
+type UICardsProps = SectionProps & HeadingProps & SimpleCardsProps
 
 const UICards: React.FC<UICardsProps> = (props) => {
 	const {
@@ -36,9 +36,10 @@ const UICards: React.FC<UICardsProps> = (props) => {
 				label={label}
 				title={title}
 				description={description}
-				textAlign={textAlign}
+				textAlign={'center'}
+        textVariant='h3'
 			/>
-			<Cards {...rest} />
+			<SimpleCards {...rest} />
 		</Section>
 	)
 }
