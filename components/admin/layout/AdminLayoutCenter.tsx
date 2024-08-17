@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from '@mui/material'
 
-type LayoutCenterProps = {
+type AdminLayoutCenterProps = {
 	children: React.ReactNode
 }
 

@@ -93,6 +93,7 @@ const AdminActionsList: React.FC = () => {
           sortable
           enableBorder
           direction="column"
+          //@ts-ignore
           url={`${apiUrl}/actions/${activeAction?.id}/zaps`}
           name="zap"
           enableSearch

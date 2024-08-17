@@ -1,5 +1,5 @@
 import React from 'react'
-import { useApi, useResource } from 'frontend-js/hooks'
+import { useApi, useResource } from 'frontend-js'
 
 function useApps(): Record<string, any> {
 	const { api } = useApi()

@@ -1,4 +1,5 @@
 export * from './admin/actions'
+export * from './admin/fields'
 export * from './buttons'
 export * from './carousel'
 export * from './colors'

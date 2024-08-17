@@ -1,5 +1,5 @@
 import React from 'react'
-import { useResource } from 'frontend-js/hooks'
+import { useResource } from 'frontend-js'
 
 const useAccounts = (props) => {
 	const { id, appId } = props

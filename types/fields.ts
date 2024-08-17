@@ -1,6 +1,7 @@
-export type FieldVariantType =
+export type FieldVariantTypes =
 	| 'array'
 	| 'audio'
+  | 'email'
 	| 'habtm'
 	| 'html'
 	| 'string'
@@ -11,6 +12,7 @@ export type FieldVariantType =
 	| 'date'
 	| 'datetime'
 	| 'price'
+  | 'phone'
 	| 'url'
 	| 'rating'
 	| 'image'
@@ -37,11 +39,11 @@ export type FieldDbType =
 	| 'habtm'
 	| 'belongs_to'
 
-export type FieldVariant = {
+export type FieldVariantType = {
 	icon: string
 	category: 'Text' | 'Dates' | 'Numbers' | 'Media' | 'Data' | 'Reference'
 	db_type: FieldDbType
-	variant: FieldVariantType
+	variant: FieldVariantTypes
 	label: string
 	description: string
 	array: boolean
@@ -52,7 +54,7 @@ export type FieldBase = {
 	label?: string
 	name?: string
 	db_type?: FieldDbType
-	variant?: FieldVariantType
+	variant?: FieldVariantTypes
 	position: number
 	editable: boolean
 	visible: boolean

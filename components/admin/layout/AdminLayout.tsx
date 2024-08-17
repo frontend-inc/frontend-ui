@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import { StyleProps } from 'frontend-ui/types'
+import { StyleProps } from '../../../types'
 import { Alert, AdminLayoutTabs, AdminTabIcons } from '../../../components'
 
 type AdminLayoutProps = {

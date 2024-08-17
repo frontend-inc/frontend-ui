@@ -1,6 +1,5 @@
 import React from 'react'
-import { IconButton } from '@mui/material'
-import { ResourceListItem, Icon, Label } from '../../../components'
+import { ResourceListItem, Label } from '../../../components'
 import { ResourceListItemProps } from '../../../components/cms/resources/ResourceListItem'
 
 const AdminMenuItem: React.FC<ResourceListItemProps> = (props) => {

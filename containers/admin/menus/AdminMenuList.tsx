@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Drawer, ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { AdminMenuItem, AdminMenuLinkList } from '../../../containers'
-import { AdminMenuType } from '@frontend-mui/types'
+import { AdminMenuType } from '../../../types'
 
 const AdminMenuList = () => {
 

@@ -7,8 +7,8 @@ import {
 	ListItemText,
 	ListItemIcon,
 } from '@mui/material'
-import { Icon } from 'frontend-ui/components'
-import { MenuButton } from 'frontend-ui/components'
+import { Icon } from '../../../components'
+import { MenuButton } from '../../../components'
 
 type MenuListItemProps = {
 	selected?: boolean

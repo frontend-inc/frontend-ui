@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Hidden, Box } from '@mui/material'
-import { useAdmin } from 'frontend-ui/hooks'
+import { useAdmin } from '../../../hooks'
 import { Drawer } from '../../../components'
 import { useResponsive } from '../../../hooks'
 

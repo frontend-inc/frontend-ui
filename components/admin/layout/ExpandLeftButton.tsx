@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AdminContext } from '../../../context'
 import { IconButton } from '@mui/material'
-import { Icon } from 'frontend-ui/components'
+import { Icon } from '../../../components'
 
 const ExpandLeftButton: React.FC = () => {
 	const { toggleLayoutLeft } = useContext(AdminContext)
