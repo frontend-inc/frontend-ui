@@ -67,6 +67,7 @@ const CardList: React.FC<CardProps> = (props) => {
 				<Stack direction="row" spacing={1} sx={sx.contentArea}>
 					<Stack direction="column" sx={sx.content}>
 						<Stack direction="column" spacing={0.5}>
+              <UserChip user={resource?.user} />
 							<Typography color="text.primary" variant="subtitle2">
 								{truncate(title)}
 							</Typography>
@@ -74,7 +75,6 @@ const CardList: React.FC<CardProps> = (props) => {
 								<AvgRating resource={resource} size="small" />
 							)}
 							<DisplayFields fields={displayFields} resource={resource} />
-							<UserChip user={resource?.user} />
 						</Stack>
 						<Stack direction="row" justifyContent="flex-end">
 							{enableLikes == true && <LikeButton handle={resource?.handle} />}

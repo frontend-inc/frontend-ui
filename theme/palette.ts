@@ -5,7 +5,7 @@ export const palette = {
 		main: COLORS.grey[900],
 	},
 	secondary: {
-		main: COLORS.grey[50],
+		main: COLORS.grey[200],
 		contrastText: COLORS.grey[800],
 	},
 	accent: {
@@ -24,7 +24,7 @@ export const palette = {
 	},
 	text: {
 		primary: '#000000',
-		secondary: COLORS.grey[800],
+		secondary: COLORS.grey[900],
 	},
 	background: {
 		default: '#FFFFFF',

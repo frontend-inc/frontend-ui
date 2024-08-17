@@ -70,13 +70,16 @@ const AvatarList: React.FC<CardProps> = (props) => {
 					</ListItemIcon>
 					<ListItemText
 						primary={
-							<Typography
-								variant="subtitle2"
-								color="text.primary"
-								sx={sx.title}
-							>
-								{title}
-							</Typography>
+              <>
+                <UserChip user={resource?.user} />
+                <Typography
+                  variant="subtitle2"
+                  color="text.primary"
+                  sx={sx.title}
+                >
+                  {title}
+                </Typography>
+              </>
 						}
 						secondary={
 							<Stack direction="column" spacing={1}>
@@ -84,8 +87,10 @@ const AvatarList: React.FC<CardProps> = (props) => {
 									<AvgRating resource={resource} size="small" />
 								)}
 								<DisplayFields fields={displayFields} resource={resource} />
-								<UserChip user={resource?.user} />
 								<SocialButtons
+                  spacing={0}
+                  variant="icon"
+                  justifyContent="flex-start"
 									resource={resource}
 									enableLikes={enableLikes}
 									enableFavorites={enableFavorites}

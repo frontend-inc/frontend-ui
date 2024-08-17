@@ -15,7 +15,7 @@ const UserChip: React.FC<UserChipProps> = (props) => {
 	return (
 		<Stack sx={sx.root} direction="row" spacing={1}>
 			<UserAvatar user={user} size={size} />
-			<Typography variant="body2" color="text.primary">
+			<Typography variant="caption" color="text.secondary">
 				{user?.name}
 			</Typography>
 		</Stack>

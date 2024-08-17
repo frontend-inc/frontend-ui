@@ -8,6 +8,3 @@ export { default as KanBanCard } from './KanBanCard'
 export { default as VideoCard } from './VideoCard'
 export { default as TableCard } from './TableCard'
 export { default as ListItemCard } from './ListItemCard'
-
-// SocialButtons
-export { default as SocialButtons } from './buttons/SocialButtons'

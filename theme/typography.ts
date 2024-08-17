@@ -79,13 +79,14 @@ export const typography = {
 		fontFamily: 'Inter',
 		fontWeight: 600,
 		fontSize: 12,
+    letterSpacing: '0.03em',
 	},
 	caption: {
 		fontFamily: 'Inter',
-		fontWeight: 600,
+		fontWeight: 500,
 		textTransform: 'uppercase',
 		fontSize: 12,
-		letterSpacing: 'auto',
+		letterSpacing: '0.03em',
 	},
 	overline: {
 		fontFamily: 'Inter',

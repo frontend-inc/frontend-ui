@@ -12,6 +12,7 @@ export { default as ReviewButton } from './reviews/ReviewButton'
 export { default as ReviewForm } from './reviews/ReviewForm'
 export { default as ShareButton } from './share/ShareButton'
 export { default as SocialButtons } from './buttons/SocialButtons'
+export { default as SocialCardButtons } from './buttons/SocialCardButtons'
 export { default as SocialField } from './fields/SocialField'
 export { default as SocialFields } from './fields/SocialFields'
 

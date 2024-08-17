@@ -22,7 +22,7 @@ const Avatar: React.FC<UserAvatarProps> = (props) => {
 	} = props
 	return (
 		<MuiAvatar
-			variant="circular"
+			variant="rounded"
 			src={src}
 			sx={{
 				...sx.avatar,
@@ -51,11 +51,12 @@ const sx = {
 		display: 'flex',
 		pt: '2px',
 		bgcolor: 'secondary.main',
+    borderRadius: 1
 	},
 	overlay: {
 		'&::after': {
 			content: '""',
-			borderRadius: '50%',
+			borderRadius: 1,
 			position: 'absolute',
 			bottom: 0,
 			left: 0,
@@ -67,7 +68,7 @@ const sx = {
 	gradient: {
 		'&::after': {
 			content: '""',
-			borderRadius: '50%',
+			borderRadius: 1,
 			position: 'absolute',
 			bottom: 0,
 			left: 0,
