@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Stack, Typography, Button } from '@mui/material'
 import { useRouter } from 'next/router'
 import { TypographyVariantsType } from '../../../types'
-import { TextInput, IconLoading } from '../../../components'
+import { Heading, TextInput, IconLoading } from '../../../components'
 import { useResource } from 'frontend-js'
 import { useAlerts } from '../../../hooks'
 import { AlignJustify } from 'lucide-react'
@@ -21,7 +21,13 @@ export type EmailSignupProps = {
 // Call To Action
 const EmailSignup: React.FC<EmailSignupProps> = (props) => {
 	const { showAlertSuccess } = useAlerts()
-	const { label, title, description, buttonText = 'Subscribe' } = props || {}
+	const { 
+    label, 
+    title, 
+    description, 
+    textVariant='h3',
+    buttonText = 'Subscribe' 
+  } = props || {}
 
 	const {
 		errors,
@@ -46,25 +52,13 @@ const EmailSignup: React.FC<EmailSignupProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			<Stack sx={sx.content} direction="column" spacing={1}>
-				{label && (
-					<Typography variant={'caption'} color="text.secondary" sx={sx.label}>
-						{label}
-					</Typography>
-				)}
-				{title && (
-					<Typography variant={'h6'} color="text.primary" sx={sx.title}>
-						{title}
-					</Typography>
-				)}
-				{description && (
-					<Typography
-						variant="body1"
-						color="text.secondary"
-						sx={sx.description}
-					>
-						{description}
-					</Typography>
-				)}
+        <Heading 
+          label={label}
+          title={title}
+          description={description}
+          textVariant={textVariant}
+          textAlign="center"
+        />
 				<Stack sx={sx.inputContainer} direction="row" spacing={0}>
 					<TextInput
 						errors={errors}
@@ -113,7 +107,6 @@ const sx = {
 		maxWidth: '600px',
 	},
 	inputContainer: {
-		pt: 2,
 		textAlign: 'center',
 		width: '100%',
 		maxWidth: 420,

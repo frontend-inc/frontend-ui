@@ -40,6 +40,7 @@ export default Accordion
 const sx = {
 	root: {
 		width: '100%',
+    borderRadius: 0    
 	},
 	title: {
 		width: '100%',

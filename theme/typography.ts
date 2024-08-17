@@ -11,7 +11,7 @@ export const typography = {
 	h2: {
 		fontFamily: 'Instrument Sans',
 		fontWeight: 700,
-		fontSize: 48,
+		fontSize: 40,
 		'@media (max-width:600px)': {
 			fontSize: 34,
 		},
@@ -20,7 +20,7 @@ export const typography = {
 		fontFamily: 'Instrument Sans',
 		fontWeight: 700,
 		textIndent: 0,
-		fontSize: 40,
+		fontSize: 36,
 		'@media (max-width:600px)': {
 			fontSize: 34,
 		},

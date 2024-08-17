@@ -1,7 +1,7 @@
 import React from 'react'
-import { Typography } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
-import { Icon, Text } from '../..'
+import { Image, Icon, Text } from '../..'
 
 type AccordionProps = {
 	title: string
@@ -19,9 +19,17 @@ const AccordionItem: React.FC<AccordionProps> = (props) => {
 				<Typography variant="subtitle1">{title}</Typography>
 			</AccordionSummary>
 			<AccordionDetails sx={sx.accordionDetails}>
+        <Stack direction="row" spacing={2}>
 				<Text variant="body1" color="text.primary">
 					{description}
 				</Text>
+        { image && (
+          <Image         
+            src={image}
+            height={240}
+          />
+          )}
+        </Stack>
 			</AccordionDetails>
 		</Accordion>
 	)
@@ -32,10 +40,10 @@ export default AccordionItem
 const sx = {
 	root: {
 		bgcolor: 'background.default',
-		borderTop: '1px solid',
 		borderColor: 'divider',
 		my: '0px !important',
 		py: 1,
+    borderRadius: 0
 	},
 	imageContainer: {
 		width: 256,
