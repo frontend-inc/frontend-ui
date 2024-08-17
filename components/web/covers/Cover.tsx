@@ -9,6 +9,7 @@ export type CoverProps = {
 	title?: string
 	description?: string
 	buttonText?: string
+  textVariant?: 'h1' | 'h2' | 'h3' 
 	image?: string
 	height?: number
 	width?: number
@@ -29,6 +30,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 	const {
 		title,
 		description,
+    textVariant='h2',
 		buttonText,
 		handleClick,
 		image,
@@ -76,7 +78,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 				>
 					{title && (
 						<Typography
-							variant={'h3'}
+							variant={textVariant}
 							color="common.white"
 							sx={{
 								textAlign: alignItems === 'center' ? 'center' : 'left',
@@ -134,6 +136,6 @@ const sx = {
 		},
 	},
 	content: {
-		maxWidth: '540px',
+		maxWidth: '720px',
 	},
 }
