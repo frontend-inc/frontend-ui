@@ -1,6 +1,6 @@
 import React from 'react'
 import * as COLORS from '@mui/material/colors'
-import { useAlerts } from 'frontend-ui/hooks'
+import { useAlerts } from '../../../hooks'
 import { Label, ResourceListItem } from '../../../components'
 import copy from 'copy-to-clipboard'
 

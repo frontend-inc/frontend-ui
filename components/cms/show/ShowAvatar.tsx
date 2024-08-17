@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Avatar, Box, Stack, Typography } from '@mui/material'
 import {
 	DisplayFields,
@@ -66,7 +66,7 @@ const ShowAvatar: React.FC<ShowProps> = (props) => {
 							</Avatar>
 						</Box>
 						<SocialButtons
-							handle={resource?.handle}
+							resource={resource}
 							enableLikes={enableLikes}
 							enableFavorites={enableFavorites}
 							enableSharing={enableSharing}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { IconButton } from '@mui/material'
-import { useAuth } from 'frontend-js/hooks'
+import { useAuth } from 'frontend-js'
 import { useMenu } from '../../../hooks'
 import { UserMenu, UserAvatar } from '../..'
 import { useRouter } from 'next/router'

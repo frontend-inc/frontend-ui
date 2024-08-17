@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Drawer, ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { AdminMenuLinkItem } from '../..'
-import { AdminMenuType } from '@frontend-mui/types'
+import { AdminMenuType } from '../../../types'
 
 type AdminMenuListProps = {
   menuId: number

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { useLoadingWrapper } from 'frontend-ui/hooks'
-import { useApi } from 'frontend-js/hooks'
-import { UnsplashImageType } from 'types'
+import { useLoadingWrapper } from '../../hooks'
+import { useApi } from 'frontend-js'
+import { UnsplashImageType } from '../../types'
 
 type UseUnsplashParams = {
   apiKey: string
@@ -26,7 +26,7 @@ const useUnsplash = (params: UseUnsplashParams) => {
 
 	const fetchDownloadLocation = async (image) => {
 		let downloadLocation = image?.links?.download_location
-		let resp = await fetch(`${downloadLocation}?client_id=${UNSPLASH_API_KEY}`)
+		let resp = await fetch(`${downloadLocation}?client_id=${apiKey}`)
 		let data = await resp.json()
 		return data?.url
 	}

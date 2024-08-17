@@ -5,7 +5,7 @@ import {
   ExpandRightButton 
 } from '../../../components'
 import { TypographyVariantsType } from '../../../types'
-import { useAdmin } from 'frontend-ui/hooks'
+import { useAdmin } from '../../../hooks'
 
 type AdminHeaderProps = {
 	title?: string | React.ReactNode

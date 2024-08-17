@@ -1,7 +1,6 @@
 import React from 'react'
-import { IconButton } from '@mui/material'
-import { ResourceListItem, Icon, Label } from 'frontend-ui/components'
-import { ResourceListItemProps } from 'frontend-ui/components/cms/resources/ResourceListItem'
+import { ResourceListItem } from '../../../components'
+import { ResourceListItemProps } from '../../../components/cms/resources/ResourceListItem'
 
 const AdminMenuLinkItem: React.FC<ResourceListItemProps> = (props) => {
 	const {

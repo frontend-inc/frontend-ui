@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { AdminContext } from 'frontend-ui/context'
+import { AdminContext } from '../../context'
 
 const useTabs = (tab: string) => {
 	const { activeTab, setActiveTab } = useContext(AdminContext)

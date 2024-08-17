@@ -2,8 +2,8 @@ import React, { useEffect, useContext } from 'react'
 import { AdminContext } from '../../../context'
 import { ExpandLeftButton, AdminHeader } from '../../../components'
 import { Hidden, Box } from '@mui/material'
-import { Drawer } from 'frontend-ui/components'
-import { useResponsive } from 'frontend-ui/hooks'
+import { Drawer } from '../../../components'
+import { useResponsive } from '../../../hooks'
 
 type AdminLayoutLeftProps = {
 	title?: string
