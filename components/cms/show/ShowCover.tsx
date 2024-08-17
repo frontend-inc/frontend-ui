@@ -32,7 +32,7 @@ const ShowCover: React.FC<ShowProps> = (props) => {
 			<Cover image={image?.url} height={400} title={title} enableOverlay />
 			<Stack spacing={3} sx={sx.header}>
 				<SocialButtons
-					handle={resource?.handle}
+					resource={resource}
 					enableLikes={enableLikes}
 					enableFavorites={enableFavorites}
 					enableSharing={enableSharing}

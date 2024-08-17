@@ -65,7 +65,7 @@ const ShowList: React.FC<ShowProps> = (props) => {
 				<Image src={image?.url} alt={title} height={400} label={label} />
 			</Box>
 			<SocialButtons
-				handle={resource?.handle}
+				resource={resource}
 				enableLikes={enableLikes}
 				enableFavorites={enableFavorites}
 				enableSharing={enableSharing}

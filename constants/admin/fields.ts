@@ -191,7 +191,7 @@ export const STRING_FIELD: FieldVariantType = {
 export const SHOPIFY_FIELD: FieldVariantType = {
 	icon: 'ShoppingCart',
 	category: 'Shopify',
-	variant: 'shopify',
+	variant: 'shopify_product',
 	db_type: 'string',
 	label: 'Shopify product',
 	description: 'Shopify product handle',

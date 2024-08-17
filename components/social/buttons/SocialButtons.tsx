@@ -18,19 +18,19 @@ type SocialButtonsProps = {
 	numLikes?: number
 	numFavorites?: number
 	justifyContent?: string
+  variant?: 'icon' | 'button'
   color?: string
   spacing?: number
-  variant?: 'button' | 'icon'
 }
 
 const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 	const {
 		resource,
 		direction = 'row',
+    enableComments,
 		enableLikes,
 		enableFavorites,
 		enableSharing,
-    enableComments,
 		numLikes,
 		numFavorites,
     variant='button',
@@ -47,8 +47,8 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 		<Stack direction={direction} justifyContent={justifyContent} spacing={spacing}>
 			{enableLikes == true && (
 				<LikeButton 
+          variant={ variant } 
           color={color} 
-          variant={variant} 
           handle={resource?.handle} 
           numLikes={numLikes} 
         />
@@ -61,17 +61,14 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
           color={color}
 				/>
 			)}
-      {enableComments == true && (
-				<CommentButton 
-          resource={resource} 
-          color={color} 
+      { enableComments == true && (
+        <CommentButton 
+          resource={ resource } 
+          color={color}     
         />
-			)}
+      )}
 			{enableSharing == true && (
-				<ShareButton 
-          variant={variant} 
-          url={currentPageUrl} 
-        />
+				<ShareButton variant={ variant } url={currentPageUrl}  />
 			)}
 		</Stack>
 	)

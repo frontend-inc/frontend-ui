@@ -2,7 +2,7 @@ import React from 'react'
 import { useResource } from 'frontend-js'
 
 const useAccounts = (props) => {
-	const { id, appId } = props
+	const { appId } = props
 
 	const {
 		resourceId: accountId,
@@ -31,7 +31,6 @@ const useAccounts = (props) => {
 		sortDirection,
 		handleSort,
 	} = useResource({
-		id: id,
 		url: `/api/v1/admin/apps/${appId}/accounts`,
 		name: 'account',
 	})

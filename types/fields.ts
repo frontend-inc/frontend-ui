@@ -21,7 +21,8 @@ export type FieldVariantTypes =
 	| 'json'
 	| 'state'
 	| 'country'
-	| 'select'
+  | 'location'
+	| 'select'  
 	| 'shopify_product'
 	| 'shopify_collection'
 	| 'user'
@@ -39,9 +40,20 @@ export type FieldDbType =
 	| 'habtm'
 	| 'belongs_to'
 
+export type FieldCategoryType = 
+  'Text' | 
+  'Date' | 
+  'Numbers' | 
+  'Geographic' |
+  'Media' | 
+  'Data' | 
+  'Boolean' | 
+  'Reference' |   
+  'Shopify'
+
 export type FieldVariantType = {
 	icon: string
-	category: 'Text' | 'Dates' | 'Numbers' | 'Media' | 'Data' | 'Reference'
+	category: FieldCategoryType
 	db_type: FieldDbType
 	variant: FieldVariantTypes
 	label: string
