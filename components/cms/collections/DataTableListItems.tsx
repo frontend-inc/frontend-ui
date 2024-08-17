@@ -5,10 +5,10 @@ import { AppContext } from '../../../context'
 import { TableHeaderType } from '../../../types'
 import { useRouter } from 'next/router'
 import { TableList } from '../..'
-import { ListItemsProps } from './DataListItems'
+import { DataListItemsProps } from './DataListItems'
 import { useForms } from '../../../hooks'
 
-export type DataTableListProps = ListItemsProps & {
+export type DataTableListProps = DataListItemsProps & {
 	headers: TableHeaderType[]
 	enableShow?: boolean
 }

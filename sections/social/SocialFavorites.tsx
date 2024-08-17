@@ -2,9 +2,9 @@ import React from 'react'
 import { Section, Heading } from '../../components'
 import { Favorites } from '../../components'
 import { SectionProps, HeadingProps } from '../../types'
-import { ListProps } from '../../components/cms/collections/DataList'
+import { DataListProps } from '../../components/cms/collections/DataList'
 
-type SocialFavoritesProps = SectionProps & HeadingProps & ListProps
+type SocialFavoritesProps = SectionProps & HeadingProps & DataListProps
 
 const SocialFavorites: React.FC<SocialFavoritesProps> = (props) => {
 	const {

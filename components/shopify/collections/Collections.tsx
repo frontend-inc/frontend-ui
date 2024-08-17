@@ -2,8 +2,8 @@ import React, { useEffect, useContext } from 'react'
 import { useCollections } from 'frontend-shopify'
 import { useRouter } from 'next/router'
 import { AppContext } from '../../../context'
-import { Stack, Box } from '@mui/material'
-import { ListLayout, CollectionCard } from '../../../components'
+import { Box } from '@mui/material'
+import { CollectionCard } from '../../../components'
 
 export type CollectionsProps = {
 	href: string

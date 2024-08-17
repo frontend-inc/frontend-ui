@@ -1,7 +1,7 @@
 import React from 'react'
 import { Stack } from '@mui/material'
 import ButtonAction from './ButtonAction'
-import ActionMenuItem from './ActionMenuItem'
+import ButtonMenu from './ButtonMenu'
 import { ButtonType, UserType } from '../../../types'
 import { MenuButton } from '../..'
 
@@ -17,6 +17,19 @@ type ButtonActionsProps = {
 
 const ButtonActions: React.FC<ButtonActionsProps> = (props) => {
 	const { color, buttons, resource, user, numVisible = 2, size, justifyContent } = props
+
+  const buildButtonPath = (button, resource, user) => {
+    let { action_type: action, path } = button
+    if(action == 'navigate_user'){
+      action = 'navigate'
+      path  = `${path}/${user?.username}`
+    }else if(action == 'navigate_cms'){
+      action = 'navigate'
+      path  = `${path}/${resource?.handle}`
+    }
+    return { action, path }
+  }
+
 	return (
 		<Stack
 			sx={{
@@ -36,20 +49,7 @@ const ButtonActions: React.FC<ButtonActionsProps> = (props) => {
 					spacing={1}
 				>
 					{buttons?.slice(0, numVisible)?.map((button, index) => {             
-            let { action_type: action, path } = button
-            if(action == 'navigate_user'){
-              action = 'navigate'
-              path  = `${path}/${user?.username}`
-            }else if(action == 'navigate_cms'){
-              action = 'navigate'
-              path  = `${path}/${resource?.handle}`
-            }
-            console.log('ButtonActions', {
-                label: button?.label, 
-                action, 
-                path
-              }
-            )
+            let { action, path } = buildButtonPath(button, resource, user)            
             return(
               <ButtonAction 
                 key={index} 
@@ -70,14 +70,19 @@ const ButtonActions: React.FC<ButtonActionsProps> = (props) => {
 			)}
 			{buttons?.length > numVisible && (
 				<MenuButton color={color}>
-					{buttons?.slice(numVisible, buttons.length)?.map((button, index) => (
-						<ActionMenuItem 
+					{buttons?.slice(numVisible, buttons.length)?.map((button, index) => {
+            let { action, path } = buildButtonPath(button, resource, user)            
+            return(
+						<ButtonMenu 
               key={index} 
-              button={button} 
-              resource={resource} 
-              user={user}
+              action={ action }
+              path={ path }
+              actionId={ button?.action_id }
+              label={ button?.label }
+              icon={ button?.icon }
+              color={ button?.color }                            
             />
-					))}
+					)})}
 				</MenuButton>
 			)}
 		</Stack>

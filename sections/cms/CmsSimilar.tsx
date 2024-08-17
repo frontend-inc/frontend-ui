@@ -1,9 +1,9 @@
 import React from 'react'
 import { Section, Heading, SimilarList } from '../../components'
-import { ListProps } from '../../components/cms/collections/DataList'
+import { DataListProps } from '../../components/cms/collections/DataList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsListProps = SectionProps & HeadingProps & ListProps
+type CmsListProps = SectionProps & HeadingProps & DataListProps
 
 const CmsSimilar: React.FC<CmsListProps> = (props) => {
 	const {

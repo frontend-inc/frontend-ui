@@ -1,5 +1,5 @@
 import React from 'react'
-import { ListItems } from '../..'
+import { DataListItems } from '../..'
 import {
 	SortOptionType,
 	SearchFilterOptionType,
@@ -40,7 +40,7 @@ const Purchases: React.FC<PurchasesProps> = (props) => {
 	const { buttons = [], displayFields = [], url, ...rest } = props
 
 	return (
-		<ListItems
+		<DataListItems
 			buttons={buttons}
 			displayFields={displayFields}
 			url={`${url}/purchases`}
