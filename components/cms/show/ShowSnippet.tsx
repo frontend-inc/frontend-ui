@@ -43,8 +43,8 @@ const ShowSnippet: React.FC<ShowProps> = (props) => {
 				<Stack spacing={0.5} direction="column" p={2} width="100%">
 					{(enableLikes || enableFavorites || enableSharing) && (
 						<SocialButtons
-							justifyContent="center"
-							handle={resource?.handle}
+              resource={resource}
+							justifyContent="center"							
 							enableLikes={enableLikes}
 							enableFavorites={enableFavorites}
 							enableSharing={enableSharing}

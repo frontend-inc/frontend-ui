@@ -67,7 +67,7 @@ const ShowLayout: React.FC<ShowLayoutProps> = (props) => {
 			</Stack>
 			<Box sx={sx.container}>{children}</Box>
 			<SocialButtons
-				handle={resource?.handle}
+				resource={resource}
 				enableLikes={enableLikes}
 				enableFavorites={enableFavorites}
 				enableSharing={enableSharing}

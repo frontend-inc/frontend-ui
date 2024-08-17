@@ -1,30 +1,37 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Stack } from '@mui/material'
-import { LikeButton, FavoriteButton, ShareButton } from '../../../components'
-import { useResource } from 'frontend-js'
+import { CommentButton, LikeButton, FavoriteButton, ShareButton } from '../../../components'
 import { useRouter } from 'next/router'
 
 type SocialButtonsProps = {
-	handle: string
+	resource: any 
 	direction?: 'row' | 'column'
-	enableLikes?: boolean
+  enableComments?: boolean
+	enableLikes?: boolean  
 	enableFavorites?: boolean
 	enableSharing?: boolean
 	numLikes?: number
 	numFavorites?: number
 	justifyContent?: string
+  variant?: 'icon' | 'button'
+  color?: string
+  spacing?: number
 }
 
 const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 	const {
-		handle,
+		resource,
 		direction = 'row',
+    enableComments,
 		enableLikes,
 		enableFavorites,
 		enableSharing,
 		numLikes,
 		numFavorites,
 		justifyContent = 'center',
+    variant = 'button',
+    color,
+    spacing = 1
 	} = props
 
 	const router = useRouter()
@@ -34,17 +41,29 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 	return (
 		<Stack direction={direction} justifyContent={justifyContent} spacing={1}>
 			{enableLikes == true && (
-				<LikeButton variant="button" handle={handle} numLikes={numLikes} />
+				<LikeButton 
+          variant={ variant } 
+          color={color} 
+          handle={resource?.handle} 
+          numLikes={numLikes} 
+        />
 			)}
 			{enableFavorites == true && (
 				<FavoriteButton
-					variant="button"
-					handle={handle}
+					variant={ variant }
+					handle={resource?.handle}
 					numFavorites={numFavorites}
+          color={color}
 				/>
 			)}
+      { enableComments == true && (
+        <CommentButton 
+          resource={ resource } 
+          color={color}     
+        />
+      )}
 			{enableSharing == true && (
-				<ShareButton variant="button" url={currentPageUrl} />
+				<ShareButton variant={ variant } url={currentPageUrl}  />
 			)}
 		</Stack>
 	)

@@ -7,7 +7,7 @@ type LayoutScrollProps = {
 	p?: number
 }
 
-const LayoutScroll: React.FC<AdminLayoutScrollProps> = (props) => {
+const LayoutScroll: React.FC<LayoutScrollProps> = (props) => {
 	const { children, ref, p = 0 } = props || {}
 
 	return (
