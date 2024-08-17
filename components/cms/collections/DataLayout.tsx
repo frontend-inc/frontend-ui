@@ -1,12 +1,12 @@
 import React from 'react'
 import { Box } from '@mui/material'
 
-type ListLayoutProps = {
+type DataLayoutProps = {
 	grid?: boolean
 	children: React.ReactNode
 }
 
-const ListLayout: React.FC<ListLayoutProps> = (props) => {
+const DataLayout: React.FC<DataLayoutProps> = (props) => {
 	const { grid = false, children } = props
 
 	return (
@@ -21,7 +21,7 @@ const ListLayout: React.FC<ListLayoutProps> = (props) => {
 	)
 }
 
-export default ListLayout
+export default DataLayout
 
 const sx = {
 	root: {

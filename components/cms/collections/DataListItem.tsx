@@ -12,7 +12,7 @@ import { ButtonType, DisplayFieldType } from '../../../types'
 
 type CardStyleTypes = 'list' | 'card' | 'avatar' | 'cover' | 'table' | 'text'
 
-type ListCardProps = {
+type DataListItemProps = {
 	buttons: ButtonType[]
 	style: CardStyleTypes
 	displayFields: DisplayFieldType[]
@@ -42,7 +42,7 @@ type ListCardProps = {
 	enableRatings?: boolean
 }
 
-const ListCard: React.FC<ListCardProps> = (props) => {
+const DataListItem: React.FC<DataListItemProps> = (props) => {
 	const { style = 'card', ...rest } = props
 
 	const COMPONENTS = {
@@ -60,4 +60,4 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 	return <Component {...rest} />
 }
 
-export default ListCard
+export default DataListItem

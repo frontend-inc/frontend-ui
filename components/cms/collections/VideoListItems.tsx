@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, Stack } from '@mui/material'
-import { LoadMore, ListLayout } from '../..'
+import { LoadMore, DataLayout } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { VideoCard, ShowVideoModal, Placeholder } from '../..'
 import { useForms } from '../../../hooks'
@@ -55,7 +55,7 @@ const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
 	return (
 		<>
 			<Stack direction="column" spacing={2}>
-				<ListLayout grid>
+				<DataLayout grid>
 					{resources?.map((resource) => (
 						<VideoCard
 							key={resource.id}
@@ -69,7 +69,7 @@ const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
 							handleDelete={() => handleDeleteClick(resource)}
 						/>
 					))}
-				</ListLayout>
+				</DataLayout>
 				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
 			</Stack>
 			{!loading && resources?.length == 0 && (

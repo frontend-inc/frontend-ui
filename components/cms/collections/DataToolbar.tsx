@@ -10,7 +10,7 @@ import {
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch, useForms } from '../../../hooks'
 
-export type ToolbarProps = {
+export type DataToolbarProps = {
 	query: any
 	url: string
 	enableSearch?: boolean
@@ -23,7 +23,7 @@ export type ToolbarProps = {
 	handleAdd?: () => void
 }
 
-const ListToolbar: React.FC<ToolbarProps> = (props) => {
+const DataToolbar: React.FC<DataToolbarProps> = (props) => {
 	const {
 		url,
 		query: defaultQuery = {},
@@ -133,7 +133,7 @@ const ListToolbar: React.FC<ToolbarProps> = (props) => {
 	)
 }
 
-export default ListToolbar
+export default DataToolbar
 
 const sx = {
 	root: {

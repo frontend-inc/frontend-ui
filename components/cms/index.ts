@@ -14,7 +14,6 @@ export { default as SortButton } from './sorts/SortButton'
 export { default as RemoteSortButton } from './sorts/RemoteSortButton'
 export { default as RemoteFilterButton } from './filters/RemoteFilterButton'
 export { default as SearchFilters } from '../cms/filters/SearchFilters'
-export { default as Query } from './query/Query'
 export { default as Statistics } from './analytics/Statistics'
 
 // Resources

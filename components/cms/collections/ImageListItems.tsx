@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack } from '@mui/material'
-import { LoadMore, ListLayout } from '../..'
+import { LoadMore, DataLayout } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { ImageCard, Placeholder } from '../..'
 import { useForms } from '../../../hooks'
@@ -57,7 +57,7 @@ const ImageListItems: React.FC<ListItemsImageProps> = (props) => {
 	return (
 		<>
 			<Stack direction="column" spacing={2}>
-				<ListLayout grid>
+				<DataLayout grid>
 					{resources?.map((resource) => (
 						<ImageCard
 							key={resource.id}
@@ -73,7 +73,7 @@ const ImageListItems: React.FC<ListItemsImageProps> = (props) => {
 							handleDelete={() => handleDeleteClick(resource)}
 						/>
 					))}
-				</ListLayout>
+				</DataLayout>
 				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
 			</Stack>
 			{!loading && resources?.length == 0 && (

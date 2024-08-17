@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { ListItemsProps } from './ListItems'
+import { DataListItemsProps } from './DataListItems'
 import { KanBan } from '../..'
 import { ResourceContext } from 'frontend-js'
 import { useResourceContext, changeDocumentValue } from 'frontend-js'
 import { useForms } from '../../../hooks'
 
-export type KanBanListItemsProps = ListItemsProps & {
+export type KanBanListItemsProps = DataListItemsProps & {
 	headers: {
 		label: string
 		value: string

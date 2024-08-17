@@ -1,8 +1,8 @@
 import React from 'react'
-import { Query } from '../..'
+import { DataFetcher } from '../..'
 import { ResourceProvider } from 'frontend-js'
 
-export type ListProps = {
+export type DataListProps = {
 	query: any
 	url: string
 	name: string
@@ -13,7 +13,7 @@ export type ListProps = {
 	destroy: React.ReactNode
 }
 
-const ListBase: React.FC<ListProps> = (props) => {
+const DataListBase: React.FC<DataListProps> = (props) => {
 	const {
 		url,
 		name,
@@ -27,15 +27,15 @@ const ListBase: React.FC<ListProps> = (props) => {
 
 	return (
 		<ResourceProvider name={name} url={url}>
-			<Query query={query}>
+			<DataFetcher query={query}>
 				{header && header}
 				{list && list}
 				{show && show}
 				{edit && edit}
 				{destroy && destroy}
-			</Query>
+			</DataFetcher>
 		</ResourceProvider>
 	)
 }
 
-export default ListBase
+export default DataListBase

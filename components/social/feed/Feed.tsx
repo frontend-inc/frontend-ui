@@ -1,8 +1,8 @@
 import React from 'react'
-import { List } from '../..'
-import { ListProps } from '../../cms/collections/List'
+import { DataList } from '../..'
+import { DataListProps } from '../../cms/collections/DataList'
 
-const Feed: React.FC<ListProps> = (props) => {
+const Feed: React.FC<DataListProps> = (props) => {
 	let { query = {}, ...rest } = props
 
 	query = {
@@ -10,7 +10,7 @@ const Feed: React.FC<ListProps> = (props) => {
 		method: 'social_feed',
 	}
 
-	return <List query={query} {...rest} />
+	return <DataList query={query} {...rest} />
 }
 
 export default Feed

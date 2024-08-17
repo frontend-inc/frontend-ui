@@ -1,6 +1,6 @@
 import React from 'react'
 import { List, DataTableListItems } from '../..'
-import { ListProps } from './List'
+import { ListProps } from './DataList'
 import { TableHeaderType } from '../../../types'
 
 export type DataTableListProps = ListProps & {

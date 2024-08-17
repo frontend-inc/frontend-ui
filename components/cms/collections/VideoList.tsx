@@ -1,11 +1,11 @@
 import React from 'react'
-import { List, VideoListItems, ShowVideoModal } from '../..'
-import { ListProps } from './List'
+import { DataList, VideoListItems, ShowVideoModal } from '../..'
+import { DataListProps } from './DataList'
 
-export type VideoListProps = ListProps
+export type VideoListProps = DataListProps
 
 const VideoList: React.FC<VideoListProps> = (props) => {
-	return <List {...props} list={VideoListItems} show={ShowVideoModal} />
+	return <DataList {...props} list={VideoListItems} show={ShowVideoModal} />
 }
 
 export default VideoList

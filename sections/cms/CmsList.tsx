@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
 import { List } from '../../components'
-import { ListProps } from '../../components/cms/collections/List'
+import { ListProps } from '../../components/cms/collections/DataList'
 import { SectionProps, HeadingProps } from '../../types'
 
 type CmsListProps = SectionProps & HeadingProps & ListProps

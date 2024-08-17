@@ -1,9 +1,9 @@
 import React from 'react'
-import { List } from '../..'
-import { ListProps } from './List'
+import { DataList } from '../..'
+import { DataListProps } from './DataList'
 import KanBanListItems from './KanBanListItems'
 
-export type KanBanListProps = ListProps & {
+export type KanBanListProps = DataListProps & {
 	headers: {
 		label: string
 		value: string
@@ -11,7 +11,7 @@ export type KanBanListProps = ListProps & {
 }
 
 const KanBanList: React.FC<KanBanListProps> = (props) => {
-	return <List {...props} enableSorting={false} list={KanBanListItems} />
+	return <DataList {...props} enableSorting={false} list={KanBanListItems} />
 }
 
 export default KanBanList

@@ -4,12 +4,12 @@ import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
-import { Placeholder, ListCard, ListLayout } from '../..'
+import { Placeholder, DataListItem, DataLayout } from '../..'
 import { useForms } from '../../../hooks'
 import { ButtonType, DisplayFieldType } from '../../../types'
 import { buildActions } from '../../../helpers'
 
-export type ListItemsProps = {
+export type DataListItemsProps = {
 	url: string
 	href?: string
 	style: 'list' | 'avatar' | 'card' | 'cover' | 'text'
@@ -31,7 +31,7 @@ export type ListItemsProps = {
 	emptyDescription?: string
 }
 
-const ListItems: React.FC<ListItemsProps> = (props) => {
+const DataListItems: React.FC<DataListItemsProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
@@ -109,9 +109,9 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
 	return (
 		<>
 			<Stack direction="column" spacing={2}>
-				<ListLayout grid={grid}>
+				<DataLayout grid={grid}>
 					{resources?.map((resource, index) => (
-						<ListCard
+						<DataListItem
 							key={index}
 							style={style}
 							resource={resource}
@@ -133,7 +133,7 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
 							enableOverlay={enableOverlay}
 						/>
 					))}
-				</ListLayout>
+				</DataLayout>
 				<LoadMore page={page} numPages={numPages} loadMore={handleLoadMore} />
 			</Stack>
 			{!loading && resources?.length == 0 && (
@@ -148,4 +148,4 @@ const ListItems: React.FC<ListItemsProps> = (props) => {
 	)
 }
 
-export default ListItems
+export default DataListItems

@@ -50,14 +50,12 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (debouncedText) {
-			handleChange({
-				target: {
-					name,
-					value: debouncedText,
-				},
-			})
-		}
+    handleChange({
+      target: {
+        name,
+        value: debouncedText,
+      },
+    })
 	}, [debouncedText])
 
 	useEffect(() => {

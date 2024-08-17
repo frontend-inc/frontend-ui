@@ -5,7 +5,7 @@ import { AppContext } from '../../../context'
 import { TableHeaderType } from '../../../types'
 import { useRouter } from 'next/router'
 import { TableList } from '../..'
-import { ListItemsProps } from './ListItems'
+import { ListItemsProps } from './DataListItems'
 import { useForms } from '../../../hooks'
 
 export type DataTableListProps = ListItemsProps & {

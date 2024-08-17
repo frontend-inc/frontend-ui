@@ -7,7 +7,6 @@ type UserListItemProps = {
 	size?: number
 	resource: UserType
 	displayFields: DisplayFieldType[]
-	socialFields: SocialFieldType[]
 	enableFollowers?: boolean
 	handleClick?: () => void
 }
@@ -17,14 +16,12 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
 		resource: user,
 		size = 44,
 		displayFields = [],
-		socialFields = [],
 		enableFollowers,
 		handleClick,
 	} = props || {}
 
 	return (
 		<ResourceListItem
-			enableBorder
 			handleClick={handleClick}
 			resource={{
 				...user,
@@ -33,12 +30,6 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
 			avatar={
 				<Stack direction="column" spacing={1} alignItems="center">
 					<UserAvatar size={size} user={user} />
-          { socialFields?.length > 0 && (
-					  <SocialFields 
-              resource={user} 
-              fields={socialFields} 
-            />
-          )}
 				</Stack>
 			}
 			displayFields={displayFields}

@@ -1,8 +1,8 @@
 import React from 'react'
 import {
-	ListBase,
-	ListItems,
-	ListToolbar,
+	DataListBase,
+	DataListItems,
+	DataToolbar,
 	ShowModal,
 	DeleteModal,
 	EditModal,
@@ -17,7 +17,7 @@ import {
 	SortOptionType,
 } from '../../../types'
 
-export type ListProps = {
+export type DataListProps = {
 	url: string
 	name: string
 	query?: QueryParamsType
@@ -56,7 +56,7 @@ export type ListProps = {
 	destroy?: React.FC<any>
 }
 
-const List: React.FC<ListProps> = (props) => {
+const DataList: React.FC<DataListProps> = (props) => {
 	const {
 		style,
 		resource,
@@ -87,8 +87,8 @@ const List: React.FC<ListProps> = (props) => {
 		filterSimilar,
 		filterGeo,
 		perPage,
-		header: RenderHeader = ListToolbar,
-		list: RenderList = ListItems,
+		header: RenderHeader = DataToolbar,
+		list: RenderList = DataListItems,
 		show: RenderShow = ShowModal,
 		edit: RenderEdit = EditModal,
 		destroy: RenderDelete = DeleteModal,
@@ -107,12 +107,12 @@ const List: React.FC<ListProps> = (props) => {
 	})
 
 	return (
-		<ListBase
+		<DataListBase
 			url={url}
 			query={searchQuery}
 			name="document"
 			header={
-				<ListToolbar
+				<DataToolbar
 					url={url}
 					query={searchQuery}
 					enableSearch={enableSearch}
@@ -161,4 +161,4 @@ const List: React.FC<ListProps> = (props) => {
 	)
 }
 
-export default List
+export default DataList

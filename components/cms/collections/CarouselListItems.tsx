@@ -4,11 +4,11 @@ import { Box, Stack } from '@mui/material'
 import { Carousel } from '../..'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
-import ListCard from './ListCard'
+import DataListItem from './DataListItem'
 import { useForms } from '../../../hooks'
-import { ListItemsProps } from './ListItems'
+import { DataListItemsProps } from './DataListItems'
 
-export type CarouselListListProps = ListItemsProps & {
+export type CarouselListListProps = DataListItemsProps & {
 	enableAutoPlay?: boolean
 	enableArrows?: boolean
 	enableDots?: boolean
@@ -78,7 +78,7 @@ const CarouselListList: React.FC<CarouselListListProps> = (props) => {
 							pb: enableDots ? 4 : 1,
 						}}
 					>
-						<ListCard
+						<DataListItem
 							buttons={buttons}
 							style="card"
 							resource={resource}

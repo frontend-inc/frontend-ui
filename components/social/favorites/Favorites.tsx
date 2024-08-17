@@ -1,8 +1,8 @@
 import React from 'react'
-import { List } from '../..'
-import { ListProps } from '../../cms/collections/List'
+import { DataList } from '../..'
+import { DataListProps } from '../../cms/collections/DataList'
 
-const Favorites: React.FC<ListProps> = (props) => {
+const Favorites: React.FC<DataListProps> = (props) => {
 	let { query = {}, ...rest } = props
 
 	query = {
@@ -10,7 +10,7 @@ const Favorites: React.FC<ListProps> = (props) => {
 		method: 'favorites',
 	}
 
-	return <List query={query} {...rest} />
+	return <DataList query={query} {...rest} />
 }
 
 export default Favorites
