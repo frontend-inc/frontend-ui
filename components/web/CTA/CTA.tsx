@@ -1,35 +1,21 @@
-import React, { useContext } from 'react'
-import { Box, Stack, Typography, Button } from '@mui/material'
-import { useRouter } from 'next/router'
-import { AppContext } from '../../../context'
-import { TypographyVariantsType } from '../../../types'
+import React from 'react'
+import { Box, Stack, Typography } from '@mui/material'
+import { ButtonType, TypographyVariantsType } from '../../../types'
+import { ButtonActions } from '../../../components'
 
 export type CTAProps = {
 	label?: string
 	title: string
 	description: string
-	buttonText?: string
 	textVariant?: TypographyVariantsType
-	href?: string
-	handleClick?: () => void
+	buttons: ButtonType[]
 	direction?: string
 }
 
 // Call To Action
 const CTA: React.FC<CTAProps> = (props) => {
-	const { label, title, description, buttonText, href, handleClick } =
+	const { label, title, description, buttons } =
 		props || {}
-
-	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
-
-	const handleItemClick = () => {
-		if (handleClick) {
-			return handleClick()
-		} else if (href) {
-			router.push(`${clientUrl}${href}`)
-		}
-	}
 
 	return (
 		<Box sx={sx.root}>
@@ -53,16 +39,14 @@ const CTA: React.FC<CTAProps> = (props) => {
 						{description}
 					</Typography>
 				)}
-				{buttonText && (
+				{buttons?.length > 0 && (
 					<Box sx={sx.buttons}>
-						<Button
-							size="large"
-							variant="contained"
-							color="primary"
-							onClick={handleItemClick}
-						>
-							{buttonText}
-						</Button>
+						<ButtonActions 
+              resource={[]}
+              buttons={buttons} 
+              size='large'
+              justifyContent='center'
+            />
 					</Box>
 				)}
 			</Stack>
@@ -93,7 +77,7 @@ const sx = {
 		maxWidth: '600px',
 	},
 	buttons: {
-		mt: 2,
+		pt: 2,
 		textAlign: 'center',
 		width: '100%',
 	},

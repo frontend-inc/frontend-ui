@@ -1,12 +1,12 @@
-export const BUTTON_TYPES = [    
-  { value: 'navigate', label: 'Go to page' },
-  { value: 'navigate_show', label: 'Go to CMS page' },
-  { value: 'navigate_user', label: 'Go to User page' },
-	{ value: 'url', label: 'Go to URL' },  
+export const BUTTON_ACTIONS = [    
+  { value: 'navigate', label: 'Visit page' },
+  { value: 'navigate_show', label: 'Visit CMS item' },
+  { value: 'navigate_user', label: 'Visit user profile' },
+	{ value: 'url', label: 'Visit URL' },  
   { value: 'action', label: 'Custom action' },
 ]
 
-export const BUTTON_TYPES_CMS = [
+export const BUTTON_ACTIONS_CMS = [
   { value: 'action', label: 'Action' },
 	{ value: 'navigate', label: 'Go to landing page' },
 	{ value: 'link', label: 'Go to link' },

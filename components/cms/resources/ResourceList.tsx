@@ -240,7 +240,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				sx={sx.buttons}
 				spacing={1}
 			>
-				<Stack direction={{ xs: 'column', sm: direction }} spacing={1}>
+				<Stack alignItems='center' direction={{ xs: 'column', sm: direction }} spacing={1}>
 					{enableSearch && (
 						<SearchInput
 							value={keywords}

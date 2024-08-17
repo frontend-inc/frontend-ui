@@ -5,7 +5,7 @@ import {
 	BuyNowButton,
 	StripePaymentLink,
 	SocialButtons,
-	ActionButtons,
+	ButtonActions,
 	AvgRating,
 	ExpandableText,
 } from '../..'
@@ -37,7 +37,7 @@ const ShowLayout: React.FC<ShowLayoutProps> = (props) => {
 		<Stack sx={sx.root} spacing={4}>
 			{(buttons || enableEdit) && (
 				<Box sx={sx.buttons}>
-					<ActionButtons
+					<ButtonActions
 						buttons={buildActions({
 							enableEdit,
 							handleEdit,

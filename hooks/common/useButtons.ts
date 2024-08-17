@@ -1,25 +1,26 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../context'
 import { useRouter } from 'next/router'
-import { ButtonType, UserType } from '../../types'
+import { ActionType, UserType } from '../../types'
 import { useLoadingWrapper } from '.'
 import copy from 'copy-to-clipboard'
 import { useAlerts } from '..'
 import { useAuth, useApi } from 'frontend-js'
-import { get } from 'lodash'
 
 type UseButtonParams = {
-	button: ButtonType
+	action: ActionType 
+  actionId?: number 
+  path?: string
+  url?: string
+  value?: any   
 	resource?: any
   user?: UserType
 }
 
 const useButtons = (params: UseButtonParams) => {
-  const { button, resource, user } = params || {}
+  const { action, actionId, value, path, resource, user } = params || {}
 
 	const { loading, data, errors, loadingWrapper } = useLoadingWrapper()
-
-  const { action_id } = button || {}
 
 	const { showAlertSuccess } = useAlerts()
 
@@ -30,26 +31,23 @@ const useButtons = (params: UseButtonParams) => {
 	const { currentUser } = useAuth()
 
 	const handleClick = async (ev) => {
-		let value, url;
-		if (button.fieldName) {
-			value = get(resource, button.fieldName)
-		}
-		switch (button?.button_type) {
+		let url;
+		switch (action) {
 			case 'navigate':
-				url = `${clientUrl}${button?.path}`
+				url = `${clientUrl}${path}`
 				router.push(url)
 				break
       case 'navigate_user':
-        url = `${clientUrl}${button?.path}`
+        url = `${clientUrl}${path}`
         if (resource?.handle) {
-          url = `${clientUrl}${button?.path}/${user.username}`
+          url = `${clientUrl}${path}/${user.username}`
         }
         router.push(url)
         break
       case 'navigate_cms':
-        url = `${clientUrl}${button?.path}`
+        url = `${clientUrl}${path}`
         if (resource?.handle) {
-          url = `${clientUrl}${button?.path}/${resource?.handle}`
+          url = `${clientUrl}${path}/${resource?.handle}`
         }
         router.push(url)
         break  
@@ -74,14 +72,9 @@ const useButtons = (params: UseButtonParams) => {
 					window.location.href = `sms:${value}`
 				}
 				break
-      case 'click': 
-        if (button?.onClick){
-          button.onClick(resource)
-        }
-        break;
 			case 'url':
-				if (button?.path) {
-					window.open(button?.path, '_blank')
+				if (path) {
+					window.open(path, '_blank')
 				}
 				break
 			case 'link':
@@ -96,13 +89,13 @@ const useButtons = (params: UseButtonParams) => {
 				}
 				break
 			case 'download':
-				if (value?.url) {
-					window.open(value.url, '_blank')
+				if (path) {
+					window.open(path, '_blank')
 				}
 				break
 			case 'action':
 				await loadingWrapper(() =>
-					api.post(`/api/v1/actions/${action_id}/trigger`, {
+					api.post(`/api/v1/actions/${actionId}/trigger`, {
             app_action: {
               resource_id: resource?.id,
             }

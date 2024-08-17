@@ -5,7 +5,7 @@ import { Image, UserChip, AvgRating, DisplayFields, SocialButtons } from '../..'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../types'
-import { ActionButtons } from '../../../components'
+import { ButtonActions } from '../../../components'
 
 const Card: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
@@ -80,7 +80,7 @@ const Card: React.FC<CardProps> = (props) => {
 						enableComments={enableComments}
 					/>
 					{buttons?.length > 0 && (
-						<ActionButtons numVisible={0} buttons={buttons} resource={resource} />
+						<ButtonActions numVisible={0} buttons={buttons} resource={resource} />
 					)}
 				</Stack>
 			</Stack>

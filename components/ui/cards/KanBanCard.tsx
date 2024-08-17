@@ -9,7 +9,7 @@ import {
 } from '../../../components'
 import { truncate } from '../../../helpers'
 import { CardProps } from '../../../types'
-import { ActionButtons } from '../../../components'
+import { ButtonActions } from '../../../components'
 import { useSortable } from '@dnd-kit/sortable'
 import { buildActions } from '../../../helpers'
 
@@ -105,7 +105,7 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 						enableFavorites={enableFavorites}
 						enableComments={enableComments}
 					/>
-					<ActionButtons
+					<ButtonActions
 						numVisible={0}
 						buttons={buildActions({
 							enableEdit,

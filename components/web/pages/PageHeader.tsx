@@ -1,7 +1,7 @@
 import React from 'react'
 import { Stack, Box } from '@mui/material'
 import { ButtonType } from '../../../types'
-import { Heading, ActionButtons, Breadcrumbs } from '../../../components'
+import { Heading, ButtonActions, Breadcrumbs } from '../../../components'
 
 export type PageHeaderProps = {
 	label?: string
@@ -49,7 +49,7 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 				/>
 				{buttons?.length > 0 && (
 					<Box sx={sx.buttons}>
-						<ActionButtons buttons={buttons} resource={resource} />
+						<ButtonActions buttons={buttons} resource={resource} />
 					</Box>
 				)}
 			</Stack>

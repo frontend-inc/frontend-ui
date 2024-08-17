@@ -6,7 +6,7 @@ import {
 	BuyNowButton,
 	StripePaymentLink,
 	SocialButtons,
-	ActionButtons,
+	ButtonActions,
 	AvgRating,
 } from '../..'
 import { ShowProps } from './ShowItem'
@@ -39,7 +39,7 @@ const ShowCover: React.FC<ShowProps> = (props) => {
 				/>
 				{(buttons || enableEdit) && (
 					<Box sx={sx.buttons}>
-						<ActionButtons
+						<ButtonActions
 							buttons={buildActions({
 								enableEdit,
 								handleEdit,

@@ -14,7 +14,11 @@ const SocialFields: React.FC<SocialFieldsProps> = (props) => {
 	return (
 		<Stack direction="row" spacing={0}>
 			{fields?.map((field, i) => (
-				<SocialField key={i} field={field} resource={resource} />
+				<SocialField 
+          key={i} 
+          field={field} 
+          resource={resource} 
+        />
 			))}
 		</Stack>
 	)

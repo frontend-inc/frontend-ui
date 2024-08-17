@@ -1,7 +1,7 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
 import {
-	ActionButtons,
+	ButtonActions,
 	UserAvatar,
 	FollowButton,
 	ExpandableText,
@@ -41,11 +41,9 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 				alignItems="flex-start"
 			>
 				<Stack direction="column" alignItems="center">
-					<Box height="100%" sx={sx.avatarContainer}>
-						{avatar?.url && (
-							<UserAvatar user={user} size={120} enableGradient />
-						)}
-					</Box>
+          {avatar?.url && (
+            <UserAvatar user={user} size={120} enableGradient />
+          )}
 					<SocialFields fields={socialFields} resource={user} />
 				</Stack>
 				<Stack direction="column" spacing={1}>
@@ -68,7 +66,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 				</Stack>
 				{buttons?.length > 0 && (
 					<Stack direction="row" sx={sx.buttons}>
-						<ActionButtons 
+						<ButtonActions 
               numVisible={1}
               buttons={buttons} 
               resource={user} 

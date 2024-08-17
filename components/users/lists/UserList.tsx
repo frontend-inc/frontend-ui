@@ -33,26 +33,6 @@ const UserList: React.FC<UserListProps> = (props) => {
 		}
 	}
 
-	let filterOptions = []
-	if (enableLocation) {
-		filterOptions = [
-			//@ts-ignore
-			{
-				label: 'City',
-				field: 'city',
-				variant: 'multiple_choice',
-				options: STATES,
-			},
-			//@ts-ignore
-			{
-				label: 'Country',
-				field: 'country',
-				variant: 'multiple_choice',
-				options: COUNTRIES,
-			},
-		]
-	}
-
 	return (
 		<ResourceList
 			dense
@@ -67,7 +47,7 @@ const UserList: React.FC<UserListProps> = (props) => {
 				displayFields,
 				socialFields,
 			}}
-			filterOptions={filterOptions}
+			filterOptions={[]}
 			sortOptions={[
 				{ label: 'Username', name: 'username' },
 				{ label: 'First name', name: 'first_name' },

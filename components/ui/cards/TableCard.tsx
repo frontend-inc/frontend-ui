@@ -12,7 +12,7 @@ import {
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../types'
-import { ActionButtons } from '../..'
+import { ButtonActions } from '../..'
 
 const TableCard: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
@@ -83,7 +83,7 @@ const TableCard: React.FC<CardProps> = (props) => {
 				{enableFavorites == true && (
 					<FavoriteButton handle={resource?.handle} />
 				)}
-				<ActionButtons numVisible={0} buttons={buttons} resource={resource} />
+				<ButtonActions numVisible={0} buttons={buttons} resource={resource} />
 			</Stack>
 		</Stack>
 	)

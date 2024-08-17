@@ -17,23 +17,27 @@ type SimpleCardProps = {
 const Card: React.FC<SimpleCardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
-    href,
-    buttonText='',
 		item,		
 		handleClick,
 		enableGradient = false,
 		enableOverlay = false,
 	} = props || {}
 
-	const { label, title, description, image } = item || {}
+	const { 
+    label, 
+    title, 
+    description, 
+    image,
+    url,
+  } = item || {}
 
 	const router = useRouter()
 
 	const handleItemClick = () => {
 		if (handleClick) {
 			handleClick()
-		} else if (href) {
-			router.push(`${clientUrl}${href}`)
+		} else if (url) {
+			router.push(`${clientUrl}${url}`)
 		}
 	}
 
@@ -67,17 +71,6 @@ const Card: React.FC<SimpleCardProps> = (props) => {
 						{truncate(description)}
 					</Typography>
 				</Box>
-				<Stack direction="row" justifyContent="space-between">
-					{href && buttonText?.length > 0 && (
-						<Button 
-              variant="contained"
-              color="primary"
-              onClick={handleItemClick}
-            >
-              {buttonText}
-            </Button>
-					)}
-				</Stack>
 			</Stack>
 		</Stack>
 	)

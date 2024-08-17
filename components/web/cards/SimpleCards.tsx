@@ -38,16 +38,16 @@ const SimpleCards: React.FC<SimpleCardsProps> = (props) => {
 	return (
 		<Box>
 			<Grid container spacing={2}>
-				{items?.map((card, i) => (
+				{items?.map((item, i) => (
 					<Grid item xs={12} sm={4} md={4} key={i}>
 						<SimpleCard
 							item={{
-								...card,
+								...item,
 								image: {
-									url: card?.image,
+									url: item?.image,
 								},
-							}}
-							handleClick={() => handleClick(card)}
+							}}              
+							handleClick={() => handleClick(item)}
 							enableGradient={enableGradient}
 							enableOverlay={enableOverlay}
 						/>

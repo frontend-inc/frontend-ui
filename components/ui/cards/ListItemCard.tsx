@@ -14,7 +14,7 @@ import {
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 import { CardProps } from '../../../types'
-import { ActionButtons } from '../..'
+import { ButtonActions } from '../..'
 
 const CardList: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
@@ -85,7 +85,7 @@ const CardList: React.FC<CardProps> = (props) => {
 						</Stack>
 					</Stack>
 					<Stack direction="row" justifyContent="flex-end">
-						<ActionButtons numVisible={0} buttons={buttons} resource={resource} />
+						<ButtonActions numVisible={0} buttons={buttons} resource={resource} />
 					</Stack>
 				</Stack>
 			</Stack>

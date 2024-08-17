@@ -1,5 +1,5 @@
-export { default as ActionButtons } from './buttons/ActionButtons'
-export { default as ActionButton } from './buttons/ActionButton'
+export { default as ButtonActions } from './buttons/ButtonActions'
+export { default as ButtonAction } from './buttons/ButtonAction'
 export { default as Avatar } from './avatars/Avatar'
 export { default as AlertModal } from './modals/AlertModal'
 export { default as AlertButton } from './AlertButton'

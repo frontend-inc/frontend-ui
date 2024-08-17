@@ -19,14 +19,14 @@ export const buildActions = ({
   const EDIT_ACTION = {
 		label: 'Edit',
 		color: 'secondary',
-		button_type: 'click',
+		action: 'click',
 		onClick: handleEdit,
 	}
 
 	const DELETE_ACTION = {
 		label: 'Delete',
 		color: 'error',
-		button_type: 'click',
+		action: 'click',
 		onClick: handleDelete,
 	}
 

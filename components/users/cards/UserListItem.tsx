@@ -33,7 +33,12 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
 			avatar={
 				<Stack direction="column" spacing={1} alignItems="center">
 					<UserAvatar size={size} user={user} />
-					<SocialFields resource={user} fields={socialFields} />
+          { socialFields?.length > 0 && (
+					  <SocialFields 
+              resource={user} 
+              fields={socialFields} 
+            />
+          )}
 				</Stack>
 			}
 			displayFields={displayFields}

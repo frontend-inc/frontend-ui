@@ -7,7 +7,7 @@ import {
 	DisplayFields,
 	Image,
 	TouchableOpacity,
-	ActionButtons,
+	ButtonActions,
 	SocialButtons,
 	LightDarkMode,
 } from '../..'
@@ -83,7 +83,7 @@ const CoverCard: React.FC<CardProps> = (props) => {
 											enableFavorites={enableFavorites}
 											enableComments={enableComments}
 										/>
-										<ActionButtons
+										<ButtonActions
 											numVisible={0}
 											resource={resource}
 											buttons={buttons}
