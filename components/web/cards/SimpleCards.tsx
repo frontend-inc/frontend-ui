@@ -37,9 +37,9 @@ const SimpleCards: React.FC<SimpleCardsProps> = (props) => {
 
 	return (
 		<Box>
-			<Grid container spacing={2}>
+			<Grid container spacing={1}>
 				{items?.map((item, i) => (
-					<Grid item xs={12} sm={4} md={4} key={i}>
+					<Grid item xs={12} sm={6} md={4} key={i}>
 						<SimpleCard
 							item={{
 								...item,

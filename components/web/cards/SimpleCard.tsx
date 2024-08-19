@@ -83,7 +83,6 @@ const sx = {
 		overflow: 'hidden',
 		borderRadius: 1,
 		width: '100%',
-		minWidth: 280,
 		bgcolor: 'background.default',
 		transition: 'box-shadow 0.3s',
 		border: '1px solid',

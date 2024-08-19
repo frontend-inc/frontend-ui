@@ -2,7 +2,7 @@ export const typography = {
 	h1: {
 		fontFamily: 'Instrument Sans',
 		fontWeight: 700,
-		fontSize: 64,
+		fontSize: 46,
 		lineHeight: '1.1em',
 		'@media (max-width:600px)': {
 			fontSize: 40,
@@ -11,18 +11,18 @@ export const typography = {
 	h2: {
 		fontFamily: 'Instrument Sans',
 		fontWeight: 700,
-		fontSize: 40,
+		fontSize: 38,
 		'@media (max-width:600px)': {
-			fontSize: 34,
+			fontSize: 32,
 		},
 	},
 	h3: {
 		fontFamily: 'Instrument Sans',
 		fontWeight: 700,
 		textIndent: 0,
-		fontSize: 36,
+		fontSize: 34,
 		'@media (max-width:600px)': {
-			fontSize: 34,
+			fontSize: 30,
 		},
 		lineHeight: '1.3em',
 	},
@@ -31,7 +31,7 @@ export const typography = {
 		fontSize: 28,
 		fontWeight: 700,
 		'@media (max-width:600px)': {
-			fontSize: 20,
+			fontSize: 22,
 		},
 	},
 	h5: {

@@ -30,7 +30,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 	const {
 		title,
 		description,
-    textVariant='h2',
+    textVariant='h1',
 		buttonText,
 		handleClick,
 		image,

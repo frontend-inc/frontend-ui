@@ -43,6 +43,7 @@ const sx = {
 		display: 'grid',
 		gridTemplateColumns: {
 			md: '1fr 1fr 1fr',
+      sm: '1fr 1fr',
 			xs: '1fr',
 		},
 		gap: '16px',
