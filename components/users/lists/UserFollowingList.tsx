@@ -1,5 +1,5 @@
 import React from 'react'
-import { ResourceList } from '../..'
+import { Resources } from '../..'
 import { UserListProps } from './UserList'
 import UserListItem from '../cards/UserListItem'
 
@@ -14,7 +14,7 @@ const UserFollowingList: React.FC<UserFollowingListProps> = (props) => {
 	} = props || {}
 
 	return (
-		<ResourceList
+		<Resources
 			enableSearch
 			enableLoadMore
 			name="user"

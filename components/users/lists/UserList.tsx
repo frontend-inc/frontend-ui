@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
-import { ResourceList } from '../..'
+import { Resources } from '../..'
 import { DisplayFieldType, SocialFieldType, UserType } from '../../../types'
 import UserListItem from '../cards/UserListItem'
 import { COUNTRIES, STATES } from '../../../constants'
@@ -34,7 +34,7 @@ const UserList: React.FC<UserListProps> = (props) => {
 	}
 
 	return (
-		<ResourceList
+		<Resources
 			dense
 			enableSearch
 			enableLoadMore

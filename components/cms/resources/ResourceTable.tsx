@@ -18,7 +18,7 @@ import {
 } from '../../../types'
 import SearchFilters from '../filters/SearchFilters'
 import { TableList } from '../../../components'
-import { ResourceListProps } from './ResourceList'
+import { ResourceListProps } from './Resources'
 
 export type ResourceTableProps = ResourceListProps & {
 	headers: TableHeaderType[]

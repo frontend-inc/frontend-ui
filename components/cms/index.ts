@@ -17,7 +17,7 @@ export { default as SearchFilters } from '../cms/filters/SearchFilters'
 export { default as Statistics } from './analytics/Statistics'
 
 // Resources
-export { default as ResourceList } from './resources/ResourceList'
+export { default as Resources } from './resources/Resources'
 export { default as ResourceListItem } from './resources/ResourceListItem'
 export { default as ResourceTable } from './resources/ResourceTable'
 

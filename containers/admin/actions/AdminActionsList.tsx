@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Stack } from '@mui/material'
-import { ResourceList, Drawer } from '../../../components'
+import { Resources, Drawer } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { 
   AdminActionItem, 
@@ -26,7 +26,7 @@ const AdminActionsList: React.FC = () => {
 
   return(
     <Stack p={2} direction="column" spacing={2}>
-      <ResourceList
+      <Resources
         url={`${apiUrl}/actions`}
         name="app_action"
         enableSearch

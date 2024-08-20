@@ -1,5 +1,5 @@
-import React, { useEffect, useContext } from 'react'
-import { useQueryContext, ResourceContext } from 'frontend-js'
+import React, { useEffect } from 'react'
+import { useQueryContext, useResourceContext } from 'frontend-js'
 
 export type DataFetcherProps = {
 	query?: any
@@ -7,16 +7,16 @@ export type DataFetcherProps = {
 }
 
 const DataFetcher: React.FC<DataFetcherProps> = (props) => {
-	const { children, query: defaultDataFetcher = {} } = props
-	const { setDataFetcher } = useContext(ResourceContext) as any
+	const { children, query: defaultQuery = {} } = props
+	const { setQuery } = useResourceContext()
 
 	useQueryContext()
 
 	useEffect(() => {
-		if (defaultDataFetcher) {
-			setDataFetcher(defaultDataFetcher)
+		if (defaultQuery) {
+			setQuery(defaultQuery)
 		}
-	}, [defaultDataFetcher])
+	}, [defaultQuery])
 
 	return children
 }

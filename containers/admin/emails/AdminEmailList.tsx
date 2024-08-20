@@ -1,5 +1,5 @@
 import React from 'react'
-import { ResourceList } from '../../../components'
+import { Resources } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { AdminEmailItem } from '../../../containers'
 
@@ -8,7 +8,7 @@ const AdminEmailsList = () => {
   const { apiUrl } = useAdmin()
 
   return(
-    <ResourceList
+    <Resources
       url={`${apiUrl}/emails`}
       name="email"
       enableCreate

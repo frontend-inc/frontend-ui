@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { ResourceList } from '../../../components'
+import { Resources } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { AdminCommentItem } from '../../../containers'
 
@@ -9,7 +9,7 @@ const AdminCommentsList: React.FC = () => {
   const { apiUrl } = useAdmin()
 
   return(
-    <ResourceList
+    <Resources
       url={`${apiUrl}/comments`}
       name="comment"
       enableSearch

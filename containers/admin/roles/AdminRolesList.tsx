@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { ResourceList } from '../../../components'
+import { Resources } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { AdminRoleItem } from '../../../containers'
 
@@ -9,7 +9,7 @@ const AdminRolesList: React.FC = () => {
   const { apiUrl } = useAdmin()
 
   return(
-    <ResourceList
+    <Resources
       sortable
       url={`${apiUrl}/roles`}
       name="role"

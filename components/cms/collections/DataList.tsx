@@ -87,11 +87,11 @@ const DataList: React.FC<DataListProps> = (props) => {
 		filterSimilar,
 		filterGeo,
 		perPage,
-		header: RenderHeader = DataToolbar,
-		list: RenderList = DataListItems,
-		show: RenderShow = ShowModal,
-		edit: RenderEdit = EditModal,
-		destroy: RenderDelete = DeleteModal,
+		header: ResourceHeader = DataToolbar,
+		list: ResourceList = DataListItems,
+		show: ResourceShow = ShowModal,
+		edit: ResourceEdit = EditModal,
+		destroy: ResourceDelete = DeleteModal,
 		loadMore,
 		...rest
 	} = props
@@ -125,7 +125,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 				/>
 			}
 			list={
-				<RenderList
+				<ResourceList
 					{...rest}
 					style={style}
 					buttons={buttons}
@@ -144,7 +144,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 				/>
 			}
 			show={
-				<RenderShow
+				<ResourceShow
 					buttons={buttons}
 					displayFields={displayFields}
 					enableOverlay={enableOverlay}
@@ -155,8 +155,13 @@ const DataList: React.FC<DataListProps> = (props) => {
 					enableUsers={enableUsers}
 				/>
 			}
-			edit={<RenderEdit fields={fields} parentResource={resource} />}
-			destroy={<RenderDelete />}
+			edit={
+        <ResourceEdit 
+          fields={fields} 
+          parentResource={resource} 
+        />
+      }
+			destroy={<ResourceDelete />}
 		/>
 	)
 }

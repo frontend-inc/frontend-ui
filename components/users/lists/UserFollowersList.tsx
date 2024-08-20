@@ -1,5 +1,5 @@
 import React from 'react'
-import { ResourceList } from '../..'
+import { Resources } from '../..'
 import { UserListProps } from './UserList'
 import UserListItem from '../cards/UserListItem'
 
@@ -9,7 +9,7 @@ const UserFollowersList: React.FC<UserFollowersListProps> = (props) => {
 	const { user, displayFields = [], socialFields = [] } = props || {}
 
 	return (
-		<ResourceList
+		<Resources
 			enableSearch
 			enableLoadMore
 			name="user"

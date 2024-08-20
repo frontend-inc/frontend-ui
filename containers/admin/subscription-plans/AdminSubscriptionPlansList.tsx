@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { ResourceList } from '../../../components'
+import { Resources } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { AdminSubscriptionPlanItem } from '../../../containers'
 
@@ -9,7 +9,7 @@ const AdminSubscriptionPlansList: React.FC = () => {
   const { apiUrl } = useAdmin()
 
   return(
-    <ResourceList      
+    <Resources      
       url={`${apiUrl}/subscription_plans`}
       name="subscription_plan"
       enableSearch
