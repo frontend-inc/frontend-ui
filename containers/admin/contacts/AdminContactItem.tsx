@@ -1,40 +1,21 @@
 import React from 'react'
-import { UserAvatar, Label, ResourceListItem } from '../../../components'
-import { truncate } from '../../../helpers'
+import { UserAvatar, ResourceListItem } from '../../../components'
 
-type AdminCommentItemProps = {
+type AdminContactItemProps = {
 	resource: any
 	handleClick: () => void
 	handleEdit: () => void
 	handleDelete: () => void
 }
 
-const AdminCommentItem: React.FC<AdminCommentItemProps> = (props) => {
-	const { resource: comment, handleClick, handleEdit, handleDelete } = props
-
-	const getCommentUserName = (comment) => {
-		return comment?.user?.first_name + ' ' + comment?.user?.last_name
-	}
+const AdminContactItem: React.FC<AdminContactItemProps> = (props) => {
+	const { resource: contact, handleClick, handleEdit, handleDelete } = props
 
 	return (
-		<ResourceListItem
-			resource={comment}
-			title={getCommentUserName(comment)}
-			displayFields={[
-				{
-					label: 'User',
-					name: 'user.username',
-					variant: 'string',
-				},
-				{
-					label: 'Description',
-					variant: 'text',
-					name: 'body',
-				},
-			]}
-			description={truncate(comment?.body)}
-			avatar={<UserAvatar user={comment?.user} />}
-			secondaryActions={comment?.flagged && <Label label="Flagged" />}
+		<ResourceListItem   
+      primary={ contact?.name } 
+      secondary={ contact?.email }
+			avatar={<UserAvatar user={contact} />}
 			handleClick={handleClick}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}
@@ -42,4 +23,4 @@ const AdminCommentItem: React.FC<AdminCommentItemProps> = (props) => {
 	)
 }
 
-export default AdminCommentItem
+export default AdminContactItem

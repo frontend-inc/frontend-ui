@@ -18,17 +18,8 @@ const AdminWebhookItem: React.FC<AdminWebhookItemProps> = (props) => {
 			sortable={sortable}
 			icon="Webhook"
 			color="primary.main"
-			resource={{
-				title: resource?.event_type,
-				...resource,
-			}}
-			displayFields={[
-				{
-					label: 'Collection',
-					variant: 'string',
-					name: 'collection.name',
-				},
-			]}
+      primary={ resource?.event_type }
+			secondary={ resource?.collection?.name }			
 			secondaryActions={<Label label={resource?.event_type} />}
 			handleClick={handleClick}
 			handleEdit={handleEdit}

@@ -1,65 +1,44 @@
-import React, { useState, useEffect } from 'react'
-import { useFilters } from '../../../hooks'
-import { useResource } from 'frontend-js'
-import { List, Button, Box, Stack } from '@mui/material'
+import React from 'react'
+import { Stack } from '@mui/material'
 import {
 	SortableList,
-	FormFields,
-	Drawer,
-	AlertModal,
-	Icon,
-	FilterButton,
-	SortButton,
-	SearchInput,
+	Resource,
 	LoadMore,
-	IconLoading,
-	Loader,
 } from '../..'
-import {
-	FormFieldType,
-	FilterOptionType,
-	SearchFilterOptionType,
-} from '../../../types'
-import { Placeholder } from '../..'
-import { SortOptionType, SyntheticEventType } from '../../../types'
-import ResourceListItem from './ResourceListItem'
-import Toolbar from './ResourceToolbar'
+import { ResourceListProps } from './ResourceList'
 
-export type SortableResourceListProps = {
-  loading?: boolean
-  resources?: any[]
-  handleDrop?: (sorted: any) => void 
-  enableBorder?: boolean
-  component?: React.FC<any>
-  handleClick?: (resource: any) => void
-  handleEdit?: (resource: any) => void
-  handleDelete?: (resource: any) => void  
+type SortableResourceListProps = ResourceListProps & {
+  handleDrop: (sorted: any) => void
 }
 
 const SortableResourceList: React.FC<SortableResourceListProps> = (props) => {
-	const {
-    loading,
-    resources,
-    handleDrop,
+	
+  const {
+    resources, 
+    page,
+    numPages,
     enableBorder,
-    component: Component = ResourceListItem, 
+    enableEdit,
+    enableDelete,
     handleClick,
     handleEdit,
     handleDelete,
-    enableEdit,
+    handleDrop,
+    handleLoadMore,
+    component: Component = Resource, 
   } = props
+
 	return (		
     <Stack spacing={2} sx={sx.fullWidth}>
       {resources?.length > 0 && (
         <SortableList
-          droppableId="resource-list"
+          droppableId="sortable"
           items={resources}
           handleDrop={handleDrop}
           renderItem={(resource, index) => (
             <Component
               key={index}
               sortable
-              layout={layout}
               resource={resource}
               enableBorder={enableBorder}
               handleClick={
@@ -69,26 +48,22 @@ const SortableResourceList: React.FC<SortableResourceListProps> = (props) => {
                 enableEdit ? () => handleEdit(resource) : undefined
               }
               handleDelete={
-                enableDelete ? () => handleDeleteClick(resource) : undefined
+                enableDelete ? () => handleDelete(resource) : undefined
               }
-              {...itemProps}
             />
           )}
         />
       )}
-			{!loading && resources?.length == 0 && (
-				<Placeholder
-					icon={emptyIcon}
-					title={emptyTitle}
-					description={emptyDescription}
-				/>
-			)}
-			<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
-	</Stack>
+			<LoadMore 
+        page={page} 
+        numPages={numPages} 
+        loadMore={handleLoadMore} 
+      />
+	  </Stack>
 	)
 }
 
-export default Resources
+export default SortableResourceList
 
 const sx = {
 	root: {

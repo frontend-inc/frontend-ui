@@ -1,7 +1,7 @@
 import React from 'react'
 import { Stack } from '@mui/material'
-import { FollowButton, ResourceListItem, UserAvatar, SocialFields } from '../..'
-import { DisplayFieldType, SocialFieldType, UserType } from '../../../types'
+import { FollowButton, ResourceListItem, UserAvatar, DisplayFields } from '../..'
+import { DisplayFieldType,  UserType } from '../../../types'
 
 type UserListItemProps = {
 	size?: number
@@ -23,16 +23,18 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
 	return (
 		<ResourceListItem
 			handleClick={handleClick}
-			resource={{
-				...user,
-				title: user.name,
-			}}
+      primary={ user?.name }			
 			avatar={
 				<Stack direction="column" spacing={1} alignItems="center">
 					<UserAvatar size={size} user={user} />
 				</Stack>
 			}
-			displayFields={displayFields}
+      secondary={
+        <DisplayFields 
+          resource={ user } 
+          fields={ displayFields } 
+        />
+      }			
 			secondaryActions={enableFollowers && <FollowButton user={user} />}
 		/>
 	)

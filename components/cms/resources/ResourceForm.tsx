@@ -2,7 +2,7 @@ import React from 'react'
 import { Drawer, FormFields, IconLoading } from '../../../components'
 import { Button } from '@mui/material'
 
-type ResourceFormProps = {
+export type ResourceFormProps = {
   open: boolean
   handleClose: () => void
   loading: boolean
@@ -30,30 +30,30 @@ const ResourceForm: React.FC<ResourceFormProps> = (props) => {
 
   return (
     <Drawer
-				open={open}
-				handleClose={ handleClose }
-				title={resource?.id ? 'Edit' : 'Add'}
-				buttons={
-					<Button
-						fullWidth
-						variant="contained"
-						color="primary"
-						onClick={handleSubmit}
-						startIcon={<IconLoading loading={loading} />}
-					>
-						{resource?.id ? 'Update' : 'Save'}
-					</Button>
-				}
-			>
-				<FormFields
-					errors={errors}
-					loading={loading}
-					fields={fields}
-					resource={resource}
-					handleChange={handleChange}
-					handleRemove={handleRemove}
-				/>
-			</Drawer>
+      open={open}
+      handleClose={ handleClose }
+      title={resource?.id ? 'Edit' : 'Add'}
+      buttons={
+        <Button
+          fullWidth
+          variant="contained"
+          color="primary"
+          onClick={handleSubmit}
+          startIcon={<IconLoading loading={loading} />}
+        >
+          {resource?.id ? 'Update' : 'Save'}
+        </Button>
+      }
+    >
+      <FormFields
+        errors={errors}
+        loading={loading}
+        fields={fields}
+        resource={resource}
+        handleChange={handleChange}
+        handleRemove={handleRemove}
+      />
+    </Drawer>
   )
 }
 

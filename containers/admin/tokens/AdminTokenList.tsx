@@ -2,6 +2,7 @@ import React from 'react'
 import { Resources } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { AdminTokenItem } from '../../../containers'
+import AdminTokenForm from './AdminTokenForm'
 
 const AdminTokenList: React.FC = () => {
 
@@ -22,19 +23,8 @@ const AdminTokenList: React.FC = () => {
           variant: 'boolean',
         },
       ]}
-      fields={[
-        {
-          label: 'Name',
-          name: 'name',
-          variant: 'string',
-          placeholder: 'Enter name ...',
-        },
-        {
-          label: 'Admin',
-          name: 'admin',
-          variant: 'boolean',
-        },
-      ]}
+      edit={ AdminTokenForm }
+      create={ AdminTokenForm }
       component={AdminTokenItem}
       emptyIcon="Key"
       emptyTitle="No API Keys"

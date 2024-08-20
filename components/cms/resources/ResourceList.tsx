@@ -2,10 +2,10 @@ import React from 'react'
 import { Stack, List } from '@mui/material'
 import { 
   LoadMore,
-  ResourceListItem 
+  Resource 
 } from '../../../components'
 
-type ResourceListProps = {
+export type ResourceListProps = {
   resources: any[]
   page: number
   numPages: number
@@ -13,10 +13,10 @@ type ResourceListProps = {
   enableEdit?: boolean
   enableDelete?: boolean
   handleClick?: (resource: any) => void
-  handleEdit?: (resource: any) => void
-  handleDelete?: (resource: any) => void
+  handleEdit: (resource: any) => void
+  handleDelete: (resource: any) => void
   handleDrop?: (sorted: any[]) => void
-  handleLoadMore?: () => void
+  handleLoadMore: () => void
   component?: React.FC<any>
 }
 
@@ -34,7 +34,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
     handleDelete,
     handleDrop,
     handleLoadMore,
-    component: Component = ResourceListItem, 
+    component: Component = Resource, 
   } = props || {}
 
   return(
@@ -43,8 +43,8 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
         {resources?.map((resource, index) => (
           <Component
             key={index}
-            resource={resource}
             enableBorder={enableBorder}
+            resource={ resource }          
             handleClick={
               handleClick ? () => handleClick(resource) : undefined
             }

@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Drawer, Resources } from '../../../components'
+import { Drawer, SortableResources } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { AdminMenuItem, AdminMenuLinkList } from '../../../containers'
 import { AdminMenuType } from '../../../types'
+import AdminMenuForm from './AdminMenuForm'
 
 const AdminMenuList = () => {
 
@@ -17,7 +18,7 @@ const AdminMenuList = () => {
 
   return(
     <>
-      <Resources
+      <SortableResources
         sortable
         enableBorder
         url={`${apiUrl}/menus`}
@@ -31,20 +32,8 @@ const AdminMenuList = () => {
           sort_by: 'position',
           sort_direction: 'asc',
         }}
-        fields={[
-          {
-            label: 'Label',
-            name: 'label',
-            variant: 'string',
-            placeholder: 'Label',
-          },
-          {
-            label: 'API name',
-            name: 'name',
-            variant: 'nospace',
-            placeholder: 'Name',
-          },
-        ]}
+        edit={AdminMenuForm}
+        create={AdminMenuForm}        
         component={AdminMenuItem}
         emptyIcon="FolderTree"
         emptyTitle="No menus"

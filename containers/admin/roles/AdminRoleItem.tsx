@@ -18,11 +18,8 @@ const AdminRoleItem: React.FC<AdminRoleItemProps> = (props) => {
       sortable
       icon="User"
       color="primary.main"
-      resource={{
-        title: role?.label,
-        ...role,
-      }}
-      displayFields={[{ name: 'name', label: 'Name', variant: 'string' }]}
+      primary={ role?.label }      
+      secondary={ role?.name }
       secondaryActions={role?.internal ? <Label label="System" /> : null}
       handleEdit={!role?.internal ? handleEdit : undefined}
       handleDelete={!role?.internal ? handleDelete : undefined}

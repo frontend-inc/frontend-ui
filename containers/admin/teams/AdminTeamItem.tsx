@@ -13,9 +13,8 @@ const AdminTeamItem: React.FC<AdminTeamItemProps> = (props) => {
 
 	return (
 		<ResourceListItem
-			title={team?.name}
-			avatar={<TeamAvatar team={team} />}
-			resource={team}
+			primary={team?.name}
+			avatar={<TeamAvatar team={team} />}			
 			handleClick={handleClick}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}

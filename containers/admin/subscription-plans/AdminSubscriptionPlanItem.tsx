@@ -1,7 +1,6 @@
 import React from 'react'
 import { Label, ResourceListItem } from '../../../components'
 import * as COLORS from '@mui/material/colors'
-import { Typography } from '@mui/material'
 
 type AdminSubscriptionPlanItemProps = {
 	resource: any
@@ -21,14 +20,8 @@ const AdminSubscriptionPlanItem: React.FC<AdminSubscriptionPlanItemProps> = (pro
 	return (
 		<ResourceListItem
 			icon="CreditCard"
-			title={<Typography variant="body1">{subscriptionPlan?.name}</Typography>}
-			displayFields={[
-				{
-					label: 'Price',
-					variant: 'string',
-					name: 'display_price',
-				},
-			]}
+      primary={ subscriptionPlan?.name }
+      secondary={ subscriptionPlan?.display_price }
 			secondaryActions={
 				subscriptionPlan?.label && <Label label={subscriptionPlan?.label} />
 			}
@@ -36,7 +29,6 @@ const AdminSubscriptionPlanItem: React.FC<AdminSubscriptionPlanItemProps> = (pro
 			handleClick={handleClick}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}
-			resource={subscriptionPlan}
 		/>
 	)
 }

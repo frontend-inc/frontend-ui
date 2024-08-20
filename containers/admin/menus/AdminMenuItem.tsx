@@ -18,10 +18,7 @@ const AdminMenuItem: React.FC<ResourceListItemProps> = (props) => {
 			enableBorder={enableBorder}
 			icon="FolderTree"
 			color="primary.main"
-			resource={{
-				title: menu?.label,
-				...menu,
-			}}
+      primary={ menu?.label }
 			secondaryActions={
 				<>
 					{menu?.internal && <Label label="System" />}

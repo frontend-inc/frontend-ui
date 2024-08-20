@@ -1,6 +1,7 @@
 import React from 'react'
 import { UserAvatar, Label, ResourceListItem } from '../../../components'
 import { truncate } from '../../../helpers'
+import { Stack, Typography } from '@mui/material'
 
 type AdminCommentItemProps = {
 	resource: any
@@ -18,21 +19,17 @@ const AdminCommentItem: React.FC<AdminCommentItemProps> = (props) => {
 
 	return (
 		<ResourceListItem
-			resource={comment}
-			title={getCommentUserName(comment)}
-			displayFields={[
-				{
-					label: 'User',
-					name: 'user.username',
-					variant: 'string',
-				},
-				{
-					label: 'Description',
-					variant: 'text',
-					name: 'body',
-				},
-			]}
-			description={truncate(comment?.body)}
+			primary={getCommentUserName(comment)}
+      secondary={ 
+        <Stack direction="column" spacing={0}>
+          <Typography variant="overline" color='text.secondary'>
+            @{ comment?.user?.username }
+          </Typography>
+          <Typography variant="body2" color='text.secondary'>
+            { truncate(comment?.body, 40) }
+          </Typography>
+        </Stack>
+      }			
 			avatar={<UserAvatar user={comment?.user} />}
 			secondaryActions={comment?.flagged && <Label label="Flagged" />}
 			handleClick={handleClick}

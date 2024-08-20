@@ -1,31 +1,28 @@
 import React from 'react'
-import { UserAvatar, Label, ResourceListItem } from '../../../components'
+import { FieldRating, UserAvatar, Label, ResourceListItem } from '../../../components'
+import { truncate } from '../../../helpers'
+import { Typography } from '@mui/material'
 
-type ReviewItemProps = {
+type AdminReviewItemProps = {
 	resource: any
 	handleClick: () => void
 	handleEdit: () => void
 	handleDelete: () => void
 }
 
-const AdminReviewItem: React.FC<ReviewItemProps> = (props) => {
+const AdminReviewItem: React.FC<AdminReviewItemProps> = (props) => {
 	const { resource: review, handleClick, handleEdit, handleDelete } = props
 
 	return (
 		<ResourceListItem
-			resource={review}
-			displayFields={[
-				{
-					label: 'Rating',
-					variant: 'rating',
-					name: 'rating',
-				},
-				{
-					label: 'Description',
-					variant: 'text',
-					name: 'description',
-				},
-			]}
+      primary={ 
+        <FieldRating value={review?.rating} />
+      }
+      secondary={ 
+        <Typography variant="body2" color='text.secondary'>
+          { truncate(review?.description, 40) }
+        </Typography>
+      }
 			avatar={<UserAvatar user={review?.user} />}
 			secondaryActions={review?.flagged && <Label label="Flagged" />}
 			handleClick={handleClick}

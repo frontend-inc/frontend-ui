@@ -14,12 +14,9 @@ const EmailItem: React.FC<EmailItemProps> = (props) => {
 	return (
 		<ResourceListItem
 			enableBorder
-			resource={{
-				title: email.name,
-				...email,
-			}}
-			displayFields={[{ label: 'Subject', name: 'subject', variant: 'string' }]}
-			icon={'Mail'}
+      primary={ email.name }
+      secondary={ email.subject }			
+			icon='Mail'
 			color={deepPurple[500]}
 			secondaryActions={email?.internal && <Label label="System" />}
 			handleClick={() => handleEdit(email)}

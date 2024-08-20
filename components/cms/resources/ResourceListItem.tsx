@@ -2,17 +2,16 @@ import React from 'react'
 import {
 	Stack,
 	Avatar,
-	List,
 	ListItem,
 	ListItemButton,
 	ListItemText,
 	ListItemIcon,
-	Typography,
 } from '@mui/material'
-import { Image, Icon, DisplayFields, MenuButton } from '../..'
-import { DisplayFieldType } from '../../../types'
+import { Image, Icon, MenuButton } from '../..'
 
 export type ResourceListItemProps = {
+  primary: React.ReactNode
+	secondary?: React.ReactNode
 	avatar?: React.ReactNode
 	icon?: string
 	color?: string
@@ -20,39 +19,33 @@ export type ResourceListItemProps = {
 	title?: string | React.ReactNode
 	description?: string
 	image?: string
-	resource: any
 	handleClick?: (resource: any) => void
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
-	secondary?: React.ReactNode
 	secondaryActions?: React.ReactNode
 	menuActions?: any
 	sortable?: boolean
 	isDragging?: boolean
 	enableBorder?: boolean
-	displayFields?: DisplayFieldType[]
 }
 
 const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
-	const {
+	const {    
 		icon,
 		avatar,
 		color,
-		resource,
+    primary,
+		secondary,
+    image,
 		handleClick,
 		handleEdit,
 		handleDelete,
 		secondaryActions,
 		menuActions,
-		displayFields = [],
 		sortable,
 		isDragging = false,
-		enableBorder = false,
-		secondary,
+		enableBorder = false,    
 	} = props
-
-	const { title } = resource || {}
-	const image = resource?.image?.url
 
 	return (
 		<ListItem
@@ -75,7 +68,7 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 		>
 			<ListItemButton
 				sx={sx.listItemButton}
-				onClick={handleClick ? () => handleClick(resource) : undefined}
+				onClick={handleClick ? handleClick : undefined}
 			>
 				{sortable && (
 					<ListItemIcon sx={sx.dragHandle}>
@@ -100,17 +93,8 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 					</ListItemIcon>
 				)}
 				<ListItemText
-					primary={
-						<Typography color="text.primary" variant="body1">
-							{title}
-						</Typography>
-					}
-					secondary={
-						<>
-							<DisplayFields fields={displayFields} resource={resource} />
-							{secondary}
-						</>
-					}
+					primary={ primary }
+					secondary={ secondary }
 				/>
 			</ListItemButton>
 		</ListItem>

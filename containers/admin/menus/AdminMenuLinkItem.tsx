@@ -1,8 +1,8 @@
 import React from 'react'
 import { ResourceListItem } from '../../../components'
-import { ResourceListItemProps } from '../../../components/cms/resources/ResourceListItem'
+import { ResourceProps } from '../../../components/cms/resources/Resource'
 
-const AdminMenuLinkItem: React.FC<ResourceListItemProps> = (props) => {
+const AdminMenuLinkItem: React.FC<ResourceProps> = (props) => {
 	const {
 		resource: link,
 		sortable,
@@ -18,10 +18,7 @@ const AdminMenuLinkItem: React.FC<ResourceListItemProps> = (props) => {
 			enableBorder={enableBorder}
 			icon="Link"
 			color="primary.main"
-			resource={{
-				title: link?.name,
-				...link,
-			}}
+      primary={link?.name}			
 			handleClick={handleClick}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}

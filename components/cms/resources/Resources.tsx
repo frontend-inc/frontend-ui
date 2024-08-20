@@ -20,8 +20,8 @@ import ResourceToolbar from './ResourceToolbar'
 export type ResourcesProps = {
   toolbar?: React.FC<any>
   list?: React.FC<any>
-  edit: React.FC<any>
-  create: React.FC<any>
+  edit?: React.FC<any>
+  create?: React.FC<any>
 	url: string
 	name: string
 	component?: React.FC<any>
@@ -265,7 +265,7 @@ const Resources: React.FC<ResourcesProps> = (props) => {
           enableBorder={ enableBorder }
           enableEdit={ enableEdit }
           enableDelete={ enableDelete }
-          handleClick={ handleClick }
+          handleClick={ handleClick ? handleClick : undefined }
           handleEdit={ handleEdit }
           handleDelete={ handleDeleteClick }
           handleDrop={ handleDrop }

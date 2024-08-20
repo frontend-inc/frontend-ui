@@ -2,6 +2,7 @@ import React from 'react'
 import { Resources } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { AdminEmailItem } from '../../../containers'
+import AdminEmailForm from './AdminEmailForm'
 
 const AdminEmailsList = () => {
 
@@ -18,13 +19,10 @@ const AdminEmailsList = () => {
       query={{
         sort_by: 'name',
         sort_direction: 'asc',
-      }}
-      fields={[
-        { label: 'Name', name: 'name', variant: 'string' },
-        { label: 'Subject', name: 'subject', variant: 'string' },
-        { label: 'Body', name: 'body', variant: 'text' },
-      ]}
-      component={AdminEmailItem}
+      }}      
+      edit={ AdminEmailForm }
+      create={ AdminEmailForm }
+      component={ AdminEmailItem }
       emptyIcon="MessageSquare"
       emptyTitle="No email templates"
       emptyDescription="No email templates yet."

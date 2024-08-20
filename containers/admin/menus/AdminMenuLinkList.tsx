@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
-import { Drawer, Resources } from '../../../components'
+import React from 'react'
+import { SortableResources } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { AdminMenuLinkItem } from '../..'
 import { AdminMenuType } from '../../../types'
+import AdminMenuLinkForm from './AdminMenuLinkForm'
 
 type AdminMenuListProps = {
   menuId: number
@@ -16,7 +17,7 @@ const AdminMenuLinkList: React.FC<AdminMenuListProps> = (props) => {
   const { apiUrl } = useAdmin()
 
   return(
-    <Resources
+    <SortableResources
       direction='column'
       sortable
       enableBorder
@@ -31,45 +32,9 @@ const AdminMenuLinkList: React.FC<AdminMenuListProps> = (props) => {
         sort_by: 'position',
         sort_direction: 'asc',
       }}
-      fields={[
-        {
-          label: 'Name',
-          name: 'name',
-          variant: 'string',
-          placeholder: 'Link name',
-        },
-        { 
-          label: 'Link type',
-          name: 'variant',
-          variant: 'select',
-          options: [
-            { value: 'page', label: 'Page', icon: 'StickyNote' },
-            { value: 'url', label: 'URL', icon: 'ExternalLink' },              
-          ]
-        },
-        {
-          label: 'URL',
-          name: 'url',
-          variant: 'string',
-          placeholder: 'URL',
-          conditions: [
-            { name: 'variant', operator: 'eq', value: 'url' }
-          ]
-        },            
-        {
-          label: 'Page',
-          name: 'page_id',
-          variant: 'autosuggest',
-          placeholder: 'Select page',
-          displayField: 'title',
-          url: `${apiUrl}/pages`,
-          query: {},
-          conditions: [
-            { name: 'variant', operator: 'eq', value: 'page' }
-          ]
-        },
-      ]}
-      component={AdminMenuLinkItem}
+      edit={ AdminMenuLinkForm }
+      create={ AdminMenuLinkForm }
+      component={ AdminMenuLinkItem }
       emptyIcon="Link"
       emptyTitle="No links"
       emptyDescription="No links yet."

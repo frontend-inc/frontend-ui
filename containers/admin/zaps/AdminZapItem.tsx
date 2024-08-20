@@ -24,22 +24,8 @@ const ActionItem: React.FC<ActionItemProps> = (props) => {
 			sortable={sortable}
 			icon={zap.zap_type === 'email' ? 'Mail' : 'Webhook'}
 			color="primary.main"
-			resource={{
-				title: zap?.zap_type,
-				...zap,
-			}}
-			displayFields={[
-				{
-					label: 'URL',
-					variant: 'string',
-					name: 'url',
-				},
-				{
-					label: 'Email',
-					variant: 'string',
-					name: 'email.name',
-				},
-			]}
+      primary={ zap?.zap_type }
+			secondary={ zap?.url || zap?.email?.name }			
 			secondaryActions={<Label label={zap?.event_type} />}
 			handleClick={handleClick}
 			handleEdit={handleEdit}

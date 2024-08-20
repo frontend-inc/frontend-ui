@@ -1,16 +1,16 @@
 
 import React from 'react'
-import { Resources } from '../../../components'
+import { SortableResources } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { AdminRoleItem } from '../../../containers'
+import AdminRoleForm from './AdminRoleForm'
 
 const AdminRolesList: React.FC = () => {
 
   const { apiUrl } = useAdmin()
 
   return(
-    <Resources
-      sortable
+    <SortableResources
       url={`${apiUrl}/roles`}
       name="role"
       enableCreate
@@ -20,21 +20,9 @@ const AdminRolesList: React.FC = () => {
       query={{
         sort_by: 'position',
         sort_direction: 'asc',
-      }}
-      fields={[
-        {
-          label: 'Label',
-          name: 'label',
-          variant: 'string',
-          placeholder: 'Label',
-        },
-        {
-          label: 'API name',
-          name: 'name',
-          variant: 'nospace',
-          placeholder: 'Name',
-        },
-      ]}
+      }}      
+      create={ AdminRoleForm }
+      edit={ AdminRoleForm }
       component={AdminRoleItem}
       emptyIcon="Users"
       emptyTitle="No roles"

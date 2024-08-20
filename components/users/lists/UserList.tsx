@@ -3,7 +3,6 @@ import { AppContext } from '../../../context'
 import { Resources } from '../..'
 import { DisplayFieldType, SocialFieldType, UserType } from '../../../types'
 import UserListItem from '../cards/UserListItem'
-import { COUNTRIES, STATES } from '../../../constants'
 import { useRouter } from 'next/router'
 
 export type UserListProps = {
