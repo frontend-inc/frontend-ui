@@ -6,6 +6,7 @@ import { Search } from 'lucide-react'
 import { SyntheticEventType } from '../../../../types'
 
 type FilterMenuProps = {
+  loading: boolean
 	open: boolean
 	anchorEl: HTMLElement | null
 	fields: any
@@ -19,6 +20,7 @@ const TableFilterMenu: React.FC<FilterMenuProps> = (props) => {
 	const {
 		open,
 		anchorEl,
+    loading,
 		query,
 		fields,
 		handleChange,
@@ -54,6 +56,7 @@ const TableFilterMenu: React.FC<FilterMenuProps> = (props) => {
 				</Box>
 				<Box sx={sx.content}>
 					<TableFilterForm
+            loading={loading}
 						query={query}
 						fields={fields}
 						handleChange={handleChange}
