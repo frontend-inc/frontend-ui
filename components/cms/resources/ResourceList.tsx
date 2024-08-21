@@ -4,6 +4,7 @@ import {
   LoadMore,
   Resource 
 } from '../../../components'
+import { SortOptionType } from '../../../types'
 
 export type ResourceListProps = {
   resources: any[]
@@ -17,6 +18,7 @@ export type ResourceListProps = {
   handleDelete: (resource: any) => void
   handleDrop?: (sorted: any[]) => void
   handleLoadMore: () => void
+  handleSort: (field: SortOptionType) => void
   component?: React.FC<any>
 }
 
@@ -32,7 +34,6 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
     handleClick,
     handleEdit,
     handleDelete,
-    handleDrop,
     handleLoadMore,
     component: Component = Resource, 
   } = props || {}

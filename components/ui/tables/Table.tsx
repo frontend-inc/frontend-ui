@@ -41,7 +41,6 @@ const Table: React.FC<TableProps> = (props) => {
 
 	const {
 		loading,
-
 		fields,
 		rows,
 		enableSelect = false,
@@ -129,7 +128,7 @@ const Table: React.FC<TableProps> = (props) => {
 					/>
 				}
 				fields={fields}
-				rows={rows}
+				resources={rows}
 				enableEdit={enableEdit}
 				enableSelect={enableSelect}
 				selected={selected}

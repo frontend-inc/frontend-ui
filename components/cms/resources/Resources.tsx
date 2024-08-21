@@ -118,13 +118,18 @@ const Resources: React.FC<ResourcesProps> = (props) => {
 		})
 	}
 
-	const handleSort = (field: any) => {
+  const handleSort = (field: SortOptionType) => {
+		let sortBy = field?.name || field?.field 
+		let sortDir = query?.sort_direction
+		if (sortBy == query?.sort_by) {
+			sortDir = query?.sort_direction == 'asc' ? 'desc' : 'asc'
+		}
 		findMany({
 			...query,
-			...defaultQuery,
-			sort_by: field.field,
+			sort_by: sortBy,
+			sort_direction: sortDir,
 		})
-	}
+  }
 
 	const handleSortDirection = (sortDirection: 'asc' | 'desc') => {
 		findMany({
@@ -269,7 +274,8 @@ const Resources: React.FC<ResourcesProps> = (props) => {
           handleEdit={ handleEdit }
           handleDelete={ handleDeleteClick }
           handleDrop={ handleDrop }
-          handleLoadMore={ loadMore }          
+          handleSort={ handleSort }        
+          handleLoadMore={ loadMore }            
           component={ Component }           
         />			
         {!loading && resources?.length == 0 && (
