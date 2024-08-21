@@ -17,7 +17,7 @@ import {
 type TableProps = {
 	title?: string
 	loading: boolean
-	fields: any[]
+	headers: any[]
 	resources: any[]
 	toolbar?: React.ReactNode
 	disableBorderRadius?: boolean
@@ -51,7 +51,7 @@ const TableList: React.FC<TableProps> = (props) => {
 		title,
 		toolbar,
 		loading,
-		fields,
+		headers,
 		resources,
 		disableBorderRadius,
 		enableSelect = false,
@@ -103,7 +103,7 @@ const TableList: React.FC<TableProps> = (props) => {
 						enableSelect={enableSelect}
 						enableDelete={enableDelete}
 						enableShow={enableShow}
-						fields={fields}
+						fields={headers}
 						sortBy={query?.sort_by}
 						sortDirection={query?.sort_direction}
 						checked={selected?.length > 0 && selected?.length === rows?.length}
@@ -114,7 +114,7 @@ const TableList: React.FC<TableProps> = (props) => {
 						<TableRow
 							key={row?.id}
 							row={row}
-							fields={fields}
+							fields={headers}
 							selectedIds={selectedIds}
 							enableSelect={enableSelect}
 							enableEdit={enableEdit}
@@ -129,7 +129,7 @@ const TableList: React.FC<TableProps> = (props) => {
 					))}
 					{!loading && resources?.length == 0 && (
 						<MuiTableRow>
-							<MuiTableCell colSpan={fields?.length + 1}>
+							<MuiTableCell colSpan={headers?.length + 1}>
 								<Placeholder
 									icon={emptyIcon}
 									title={emptyTitle}

@@ -4,7 +4,7 @@ import { useSelected } from '../../../hooks'
 
 type TableProps = {
 	loading: boolean
-	fields: Array<any>
+	headers: Array<any>
 	rows: Array<any>
 	enableSearch?: boolean
 	enableFilters?: boolean
@@ -41,7 +41,7 @@ const Table: React.FC<TableProps> = (props) => {
 
 	const {
 		loading,
-		fields,
+		headers,
 		rows,
 		enableSelect = false,
 		enableEdit = false,
@@ -127,7 +127,7 @@ const Table: React.FC<TableProps> = (props) => {
 						secondaryActions={secondaryActions}
 					/>
 				}
-				fields={fields}
+				headers={headers}
 				resources={rows}
 				enableEdit={enableEdit}
 				enableSelect={enableSelect}
@@ -149,11 +149,12 @@ const Table: React.FC<TableProps> = (props) => {
 				styles={styles}
 			/>
 			<TableFilterPopup
+        loading={loading}
 				open={showFilters}
 				anchorEl={anchorEl}
 				query={query}
 				handleClose={() => setShowFilters(false)}
-				fields={fields}
+				fields={headers}
 				handleSearch={handleSearch}
 				handleChange={handleQueryChange}
 				handleClearFilters={handleClearQuery}

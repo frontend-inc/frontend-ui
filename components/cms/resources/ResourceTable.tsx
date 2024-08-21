@@ -10,6 +10,7 @@ export type ResourceTableProps = ResourcesProps & {
 }
 
 const ResourceTable: React.FC<ResourceTableProps> = (props) => {	
+  
   return(
     <Resources
       { ...props }    

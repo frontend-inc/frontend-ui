@@ -83,7 +83,7 @@ const DataTableList: React.FC<DataTableListProps> = (props) => {
 					handleDelete={handleDeleteClick}
 					handleShow={handleClick}
 					loading={resources && loading}
-					fields={headers}
+					headers={headers}
 					resources={resources}
 					query={query}
 					handleSort={handleSort}

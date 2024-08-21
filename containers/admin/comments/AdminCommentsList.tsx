@@ -9,14 +9,14 @@ const AdminCommentsList: React.FC = () => {
   const { apiUrl } = useAdmin()
 
   return(
-    <Resources
+    <Resources      
       url={`${apiUrl}/comments`}
       name="comment"
       enableSearch
       enableDelete
       filterOptions={[
         { field: 'flagged', label: 'Flagged', variant: 'boolean' },
-      ]}
+      ]}      
       component={AdminCommentItem}
       emptyIcon="MessageSquare"
       emptyTitle="No comments"

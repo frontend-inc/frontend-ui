@@ -10,6 +10,7 @@ import {
 	FormFieldType,
 	FilterOptionType,
 	SearchFilterOptionType,
+  TableHeaderType,
 } from '../../../types'
 import { SortOptionType, SyntheticEventType } from '../../../types'
 import ResourceForm from './ResourceForm'
@@ -32,6 +33,7 @@ export type ResourcesProps = {
 	enableLoadMore?: boolean
 	perPage?: number
 	query?: any
+  headers?: TableHeaderType[]
 	fields?: FormFieldType[]
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
@@ -58,6 +60,7 @@ const Resources: React.FC<ResourcesProps> = (props) => {
     create: CreateForm = ResourceForm,		
 		url,
 		name,
+    headers = [],
 		fields = [],
 		filterOptions = [],
 		sortOptions = [],
@@ -119,7 +122,7 @@ const Resources: React.FC<ResourcesProps> = (props) => {
 	}
 
   const handleSort = (field: SortOptionType) => {
-		let sortBy = field?.name || field?.field 
+		let sortBy = field?.name 
 		let sortDir = query?.sort_direction
 		if (sortBy == query?.sort_by) {
 			sortDir = query?.sort_direction == 'asc' ? 'desc' : 'asc'
@@ -264,6 +267,8 @@ const Resources: React.FC<ResourcesProps> = (props) => {
       />			
 			<Box sx={{ ...(loading && sx.loading) }}>
         <List 
+          query={query}
+          headers={ headers }
           resources={ resources }
           page={ page }
           numPages={ numPages }

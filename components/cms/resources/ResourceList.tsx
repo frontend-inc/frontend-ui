@@ -4,10 +4,12 @@ import {
   LoadMore,
   Resource 
 } from '../../../components'
-import { SortOptionType } from '../../../types'
+import { TableHeaderType, SortOptionType, QueryParamsType } from '../../../types'
 
 export type ResourceListProps = {
+  query?: QueryParamsType
   resources: any[]
+  headers?: TableHeaderType[]
   page: number
   numPages: number
   enableBorder?: boolean
@@ -25,7 +27,7 @@ export type ResourceListProps = {
 const ResourceList: React.FC<ResourceListProps> = (props) => {
 
   const { 
-    resources, 
+    resources,     
     page,
     numPages,
     enableBorder,
