@@ -106,7 +106,7 @@ const TableList: React.FC<TableProps> = (props) => {
 						fields={headers}
 						sortBy={query?.sort_by}
 						sortDirection={query?.sort_direction}
-						checked={selected?.length > 0 && selected?.length === rows?.length}
+						checked={selected?.length > 0 && selected?.length === resources?.length}
 						handleSort={handleSort}
 						handleSelectAll={handleSelectAll}
 					/>
