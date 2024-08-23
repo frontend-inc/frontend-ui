@@ -1,10 +1,10 @@
 import React from 'react'
 import { UserAvatar, ResourceDetails } from '../../../components'
 import { ResourceShowProps } from '../../../components/cms/resources/ResourceShow'
-import { MetafieldType } from '../../../types'
+import { DisplayFieldType } from '../../../types'
 
 type AdminUserShowProps = ResourceShowProps & {
-  metafields?: MetafieldType[]
+  metafields?: DisplayFieldType[]
 }
 
 const AdminUserShow: React.FC<AdminUserShowProps> = (props) => {	

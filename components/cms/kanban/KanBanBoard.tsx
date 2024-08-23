@@ -169,8 +169,7 @@ const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 						buttons={[]}
 						enableRatings={enableRatings}
 						enableFavorites={enableFavorites}
-						enableLikes={enableLikes}
-						handleComment={() => handleComment(activeResource)}
+						enableLikes={enableLikes}						
 					/>
 				) : null}
 			</DragOverlay>

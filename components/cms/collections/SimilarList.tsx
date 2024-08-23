@@ -1,9 +1,14 @@
 import React from 'react'
-import DataList from '../data/DataList'
-import {DataListProps } from '../data/DataList'
+import CollectionList from '../collections/CollectionList'
+import { CollectionListProps } from '../collections/CollectionList'
 
-const SimilarList: React.FC<DataListProps> = (props) => {
-	return <DataList {...props} filterSimilar />
+const SimilarList: React.FC<CollectionListProps> = (props) => {
+	return(
+    <CollectionList 
+      {...props} 
+      filterSimilar 
+    />
+  )
 }
 
 export default SimilarList

@@ -5,12 +5,13 @@ import { AppContext } from '../../../context'
 import { TableHeaderType } from '../../../types'
 import { useRouter } from 'next/router'
 import { TableList } from '../..'
-import { DataListItemsProps } from './DataListItems'
+import { DataListItemsProps } from '../data/DataListItems'
 import { useForms } from '../../../hooks'
 
 export type DataTableListProps = DataListItemsProps & {
 	headers: TableHeaderType[]
 	enableShow?: boolean
+  href?: string
 }
 
 const DataTableList: React.FC<DataTableListProps> = (props) => {

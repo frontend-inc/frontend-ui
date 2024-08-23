@@ -9,6 +9,7 @@ import { ResourceListProps } from './ResourceList'
 
 type SortableResourceListProps = ResourceListProps & {
   handleDrop: (sorted: any) => void
+  component?: React.FC<any>
 }
 
 const SortableResourceList: React.FC<SortableResourceListProps> = (props) => {
@@ -40,14 +41,17 @@ const SortableResourceList: React.FC<SortableResourceListProps> = (props) => {
               key={index}
               sortable
               resource={resource}
-              enableBorder={enableBorder}
-              handleClick={
+              enableBorder={enableBorder}              
+              // @ts-ignore
+              handleClick={                
                 handleClick ? () => handleClick(resource) : undefined
-              }
+              }              
               handleEdit={
+                // @ts-ignore
                 enableEdit ? () => handleEdit(resource) : undefined
-              }
+              }              
               handleDelete={
+                // @ts-ignore
                 enableDelete ? () => handleDelete(resource) : undefined
               }
             />

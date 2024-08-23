@@ -1,15 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { DataListItemsProps } from './DataListItems'
+import { CollectionListProps } from '../collections/CollectionList'
 import { KanBan } from '../..'
 import { ResourceContext } from 'frontend-js'
 import { useResourceContext, changeDocumentValue } from 'frontend-js'
 import { useForms } from '../../../hooks'
 
-export type KanBanListItemsProps = DataListItemsProps & {
+export type KanBanListItemsProps = CollectionListProps & {
 	headers: {
 		label: string
 		value: string
 	}[]
+  enableSharing?: boolean
 	enableCreate?: boolean
 }
 
@@ -46,11 +47,6 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 	} = useResourceContext()
 
 	const handleClick = (resource) => {
-		setResource(resource)
-		setOpenShow(true)
-	}
-
-	const handleComment = (resource) => {
 		setResource(resource)
 		setOpenShow(true)
 	}
@@ -104,8 +100,7 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 			handleAdd={handleAdd}
 			enableComments={enableComments}
 			enableFavorites={enableFavorites}
-			enableRatings={enableRatings}
-			handleComment={handleComment}
+			enableRatings={enableRatings}			
 		/>
 	)
 }

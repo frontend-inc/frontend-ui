@@ -1,5 +1,5 @@
 import React from 'react'
-import { EditModal } from '../..'
+import { CollectionForm } from '../..'
 import { FormFieldType } from '../../../types'
 import { ResourceProvider } from 'frontend-js'
 
@@ -15,7 +15,7 @@ const ShowContainer: React.FC<ShowContainerProps> = (props) => {
 	return (
 		<ResourceProvider name="document" resource={resource} url={url}>
 			{children}
-			<EditModal fields={fields} />
+			<CollectionForm fields={fields} />
 		</ResourceProvider>
 	)
 }

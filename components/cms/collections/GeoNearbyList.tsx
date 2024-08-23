@@ -1,9 +1,9 @@
 import React from 'react'
-import DataList from '../data/DataList'
-import { DataListProps } from '../data/DataList'
+import { CollectionList } from '../../../components'
+import { CollectionListProps } from '../collections/CollectionList'
 
-const GeoNearbyList: React.FC<DataListProps> = (props) => {
-	return <DataList {...props} filterGeo />
+const GeoNearbyList: React.FC<CollectionListProps> = (props) => {
+	return <CollectionList {...props} filterGeo />
 }
 
 export default GeoNearbyList

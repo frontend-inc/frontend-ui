@@ -11,7 +11,7 @@ const ListItemCard: React.FC<CardProps> = (props) => {
     label,
     primary,
     secondary,
-    action,
+    actions,
     secondaryAction,
 		handleClick,
     image,
@@ -52,7 +52,7 @@ const ListItemCard: React.FC<CardProps> = (props) => {
               </Typography>
 						</Stack>
 						<Stack direction="row" justifyContent="flex-end">
-							{ action }
+							{ actions }
 						</Stack>
 					</Stack>
 					<Stack direction="row" justifyContent="flex-end">

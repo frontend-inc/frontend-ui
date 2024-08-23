@@ -7,7 +7,7 @@ const TextCard: React.FC<CardProps> = (props) => {
 	const {
     primary,
     secondary,
-    action,
+    actions,
     secondaryAction,
 		handleClick,
     slots={
@@ -32,7 +32,7 @@ const TextCard: React.FC<CardProps> = (props) => {
 						{ secondary }
 					</Typography>
 					<Stack direction="row">
-						{ action }
+						{ actions }
 					</Stack>
 				</Stack>
 			</Stack>

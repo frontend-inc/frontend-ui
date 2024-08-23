@@ -7,6 +7,9 @@ export type AvatarImageProps = {
   height?: number
   enableGradient?: boolean
   enableOverlay?: boolean
+  slots?: {
+    image?: any
+  }
 }
 
 const AvatarImage: React.FC<AvatarImageProps> = (props) => {
