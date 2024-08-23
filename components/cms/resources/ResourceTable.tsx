@@ -2,10 +2,10 @@ import React from 'react'
 import {
 	TableHeaderType,
 } from '../../../types'
-import { Resources, TableList } from '../../../components'
-import { ResourcesProps } from './ResourceList'
+import { ResourceList, TableList } from '../../../components'
+import { ResourceListProps } from './ResourceList'
 
-export type ResourceTableProps = ResourcesProps & {
+export type ResourceTableProps = ResourceListProps & {
 	headers: TableHeaderType[]
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Tabs, Tab } from '@mui/material'
-import { Modal, Resources } from '../..'
+import { Modal, ResourceList } from '../..'
 import { UserType } from '../../../types'
 import FollowUser from '../../users/cards/UserListItem'
 

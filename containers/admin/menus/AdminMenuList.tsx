@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Drawer, SortableResources } from '../../../components'
+import { Drawer, SortableResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { AdminMenuItem, AdminMenuLinkList } from '../../../containers'
 import { AdminMenuType } from '../../../types'
@@ -18,7 +18,7 @@ const AdminMenuList = () => {
 
   return(
     <>
-      <SortableResources
+      <SortableResourceList
         sortable
         enableBorder
         url={`${apiUrl}/menus`}

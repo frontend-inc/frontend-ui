@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
-import { Resources } from '../..'
+import { ResourceList } from '../..'
 import { DisplayFieldType, SocialFieldType, UserType } from '../../../types'
 import UserListItem from '../cards/UserListItem'
 import { useRouter } from 'next/router'

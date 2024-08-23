@@ -1,6 +1,5 @@
 import React from 'react'
 import { ResourceList } from '../../../components'
-
 import { useAdmin } from '../../../hooks'
 import { AdminEmailItem } from '../../../containers'
 import AdminEmailForm from './AdminEmailForm'

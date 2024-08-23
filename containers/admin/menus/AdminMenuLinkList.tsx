@@ -1,5 +1,5 @@
 import React from 'react'
-import { SortableResources } from '../../../components'
+import { SortableResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { AdminMenuLinkItem } from '../..'
 import { AdminMenuType } from '../../../types'
@@ -17,9 +17,7 @@ const AdminMenuLinkList: React.FC<AdminMenuListProps> = (props) => {
   const { apiUrl } = useAdmin()
 
   return(
-    <SortableResources
-      direction='column'
-      sortable
+    <SortableResourceList
       enableBorder
       url={`${apiUrl}/menus/${menuId}/links`}
       name="link"

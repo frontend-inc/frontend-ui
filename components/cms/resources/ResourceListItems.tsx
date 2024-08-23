@@ -2,7 +2,6 @@ import React from 'react'
 import { Stack, List } from '@mui/material'
 import { 
   LoadMore,
-  Resource 
 } from '../..'
 import { TableHeaderType, SortOptionType, QueryParamsType } from '../../../types'
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Resources } from '../..'
+import { ResourceList } from '../..'
 import { UserListProps } from './UserList'
 import UserListItem from '../cards/UserListItem'
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Stack } from '@mui/material'
-import { SortableResources, Resources, Drawer } from '../../../components'
+import { SortableResourceList, ResourceList, Drawer } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { 
   AdminActionItem, 
@@ -56,7 +56,7 @@ const AdminActionsList: React.FC = () => {
         emptyDescription="No actions yet."
       />
       <Drawer open={open} handleClose={handleClose}>
-        <SortableResources          
+        <SortableResourceList          
           enableBorder
           direction="column"
           //@ts-ignore

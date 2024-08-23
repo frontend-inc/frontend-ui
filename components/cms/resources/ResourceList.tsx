@@ -16,11 +16,11 @@ import {
 import { SortOptionType, SyntheticEventType } from '../../../types'
 import ResourceForm from './ResourceForm'
 import ResourceShow from './ResourceShow'
-import ResourceList from './ResourceListItems'
 import ResourceListItem from './ResourceListItem'
+import ResourceListItems from './ResourceListItems'
 import ResourceToolbar from './ResourceToolbar'
 
-export type ResourcesProps = {
+export type ResourceListProps = {
   toolbar?: React.FC<any>
   list?: React.FC<any>
   edit?: React.FC<any>
@@ -63,7 +63,7 @@ export type ResourcesProps = {
   }
 }
 
-const Resources: React.FC<ResourceListProps> = (props) => {
+const ResourceList: React.FC<ResourceListProps> = (props) => {
 
   const SLOT_PROPS = {
     list: {},
@@ -75,7 +75,7 @@ const Resources: React.FC<ResourceListProps> = (props) => {
   
 	const {
     toolbar: Toolbar = ResourceToolbar,
-    list: List = ResourceList,
+    list: List = ResourceListItems,
     component: Component = ResourceListItem,
     edit: EditForm = ResourceForm,
     create: CreateForm = ResourceForm,    		
@@ -316,7 +316,6 @@ const Resources: React.FC<ResourceListProps> = (props) => {
         <List 
           query={query}
           headers={ headers }
-          resources={ resources }
           page={ page }
           numPages={ numPages }
           handleDrop={ handleDrop }
@@ -395,7 +394,7 @@ const Resources: React.FC<ResourceListProps> = (props) => {
 	)
 }
 
-export default Resources
+export default ResourceList
 
 const sx = {
 	root: {
