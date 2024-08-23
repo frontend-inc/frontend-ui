@@ -1,14 +1,20 @@
 import React from 'react'
-import { DataList, DataTableListItems } from '../..'
-import { DataListProps } from '../data/DataList'
+import { CollectionList, DataTableListItems } from '../..'
+import { CollectionListProps } from '../collections/CollectionList'
 import { TableHeaderType } from '../../../types'
 
-export type DataTableListProps = DataListProps & {
+export type DataTableListProps = CollectionListProps & {
 	headers: TableHeaderType[]
 }
 
 const DataTableList: React.FC<DataTableListProps> = (props) => {
-	return <DataList {...props} list={DataTableListItems} loadMore={false} />
+	return(
+    <CollectionList 
+      {...props} 
+      list={DataTableListItems} 
+      loadMore={false} 
+    />
+  )
 }
 
 export default DataTableList
