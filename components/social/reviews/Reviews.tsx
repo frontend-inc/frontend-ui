@@ -1,7 +1,5 @@
 import React from 'react'
-import {
-	ReviewForm,
-} from '../../../components'
+import { ReviewForm } from '../../../components'
 import { DataList } from '../../../components'
 import ReviewsList from './ReviewsList'
 
@@ -13,40 +11,43 @@ export type ReviewsProps = {
 const Reviews: React.FC<ReviewsProps> = (props) => {
 	const { url, handle } = props
 
-	return (    
-    <DataList 
-      url={`${url}/${handle}/reviews`}
-      name="review"
-      enableSearch
-      enableSorting 
-      enableFilters 
-      fields={[]}
-      sortOptions={[{
-          label: 'Date',
-          name: 'created_at',
-        },
-        {
-          label: 'Rating',
-          name: 'rating',
-        }] 
-      }      
-      filterOptions={[{
-        label: 'Rating',
-        field: 'rating',
-        variant: 'ratings_scale',
-      }]}
-      enableCreate 
-      enableEdit 
-      enableDelete
-      list={ ReviewsList }
-      edit={ ReviewForm }
-      create={ ReviewForm }
-      slots={{
-        toolbar: {
-          buttonText: 'Add Review',
-        }
-      }}
-    />
+	return (
+		<DataList
+			url={`${url}/${handle}/reviews`}
+			name="review"
+			enableSearch
+			enableSorting
+			enableFilters
+			fields={[]}
+			sortOptions={[
+				{
+					label: 'Date',
+					name: 'created_at',
+				},
+				{
+					label: 'Rating',
+					name: 'rating',
+				},
+			]}
+			filterOptions={[
+				{
+					label: 'Rating',
+					field: 'rating',
+					variant: 'ratings_scale',
+				},
+			]}
+			enableCreate
+			enableEdit
+			enableDelete
+			list={ReviewsList}
+			edit={ReviewForm}
+			create={ReviewForm}
+			slots={{
+				toolbar: {
+					buttonText: 'Add Review',
+				},
+			}}
+		/>
 	)
 }
 

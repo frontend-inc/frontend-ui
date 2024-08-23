@@ -33,16 +33,16 @@ const UICards: React.FC<UICardsProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Stack spacing={2}>
-        <Heading
-          label={label}
-          title={title}
-          description={description}
-          textAlign={'center'}
-          textVariant='h3'
-        />
-        <Cards {...rest} />
-      </Stack>
+			<Stack spacing={2}>
+				<Heading
+					label={label}
+					title={title}
+					description={description}
+					textAlign={'center'}
+					textVariant="h3"
+				/>
+				<Cards {...rest} />
+			</Stack>
 		</Section>
 	)
 }

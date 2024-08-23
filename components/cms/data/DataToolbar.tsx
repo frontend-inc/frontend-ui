@@ -1,11 +1,6 @@
 import React from 'react'
 import { Button, Box, Stack } from '@mui/material'
-import {
-	Icon,
-	FilterButton,
-	SortButton,
-	SearchInput,
-} from '../..'
+import { Icon, FilterButton, SortButton, SearchInput } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch, useForms } from '../../../hooks'
 
@@ -19,11 +14,11 @@ export type DataToolbarProps = {
 	sortOptions?: SortOptionType[]
 	enableCreate?: boolean
 	handleAdd?: () => void
-  component?: React.FC<any>
-  buttonText?: string
-  slots?: {
-    search?: any
-  }
+	component?: React.FC<any>
+	buttonText?: string
+	slots?: {
+		search?: any
+	}
 }
 
 const DataToolbar: React.FC<DataToolbarProps> = (props) => {
@@ -36,11 +31,11 @@ const DataToolbar: React.FC<DataToolbarProps> = (props) => {
 		enableSearch = false,
 		enableFilters = false,
 		enableSorting = false,
-    buttonText='Add',
-    component: SearchComponent = SearchInput,
-    slots={
-      search: {}
-    }
+		buttonText = 'Add',
+		component: SearchComponent = SearchInput,
+		slots = {
+			search: {},
+		},
 	} = props
 
 	const {
@@ -80,7 +75,7 @@ const DataToolbar: React.FC<DataToolbarProps> = (props) => {
 							value={keywords}
 							handleChange={handleKeywordChange}
 							handleSearch={handleSearch}
-              { ...slots.search }
+							{...slots.search}
 						/>
 					)}
 					{enableFilters && (
@@ -120,7 +115,7 @@ const DataToolbar: React.FC<DataToolbarProps> = (props) => {
 								<Icon name="Plus" size={20} color="primary.contrastText" />
 							}
 						>
-							{ buttonText }
+							{buttonText}
 						</Button>
 					</Stack>
 				)}

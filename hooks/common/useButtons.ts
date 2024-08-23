@@ -8,30 +8,30 @@ import { useAlerts } from '..'
 import { useAuth, useApi } from 'frontend-js'
 
 type UseButtonParams = {
-	action: ActionType 
-  actionId?: number 
-  path?: string
-  url?: string
-  value?: any   
+	action: ActionType
+	actionId?: number
+	path?: string
+	url?: string
+	value?: any
 	resource?: any
-  user?: UserType
+	user?: UserType
 }
 
 const useButtons = (params: UseButtonParams) => {
-  const { action, actionId, value, path, resource, user } = params || {}
+	const { action, actionId, value, path, resource, user } = params || {}
 
 	const { loading, data, errors, loadingWrapper } = useLoadingWrapper()
 
 	const { showAlertSuccess } = useAlerts()
 
-  const { api } = useApi()
+	const { api } = useApi()
 
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 	const { currentUser } = useAuth()
 
 	const handleClick = async (ev) => {
-		let url;
+		let url
 		switch (action) {
 			case 'navigate':
 				url = `${clientUrl}${path}`
@@ -82,10 +82,10 @@ const useButtons = (params: UseButtonParams) => {
 			case 'action':
 				await loadingWrapper(() =>
 					api.post(`/api/v1/actions/${actionId}/trigger`, {
-            app_action: {
-              resource_id: resource?.id,
-            }
-          })
+						app_action: {
+							resource_id: resource?.id,
+						},
+					})
 				)
 				break
 			default:

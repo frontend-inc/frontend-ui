@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react' 
+import React, { useEffect } from 'react'
 
 const Debug: React.FC<any> = (props) => {
+	useEffect(() => {
+		console.log('Debug', props)
+	}, [props])
 
-  useEffect(() => {
-    console.log('Debug', props)
-  }, [props])
-
-  return null
+	return null
 }
 
 export default Debug

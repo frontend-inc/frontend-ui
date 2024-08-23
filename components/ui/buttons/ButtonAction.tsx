@@ -5,62 +5,62 @@ import { ActionType } from '../../../types'
 import { IconLoading, Icon } from '../..'
 
 type ActionProps = {
-  icon?: string  
-  color?: 'primary' | 'secondary'
-  size?: 'small' | 'medium' | 'large'
-  variant?: 'text' | 'outlined' | 'contained'
+	icon?: string
+	color?: 'primary' | 'secondary'
+	size?: 'small' | 'medium' | 'large'
+	variant?: 'text' | 'outlined' | 'contained'
 	action: ActionType
-  actionId?: number
-  path?: string
-  resource?: any
-  onClick?: () => void
-  children: React.ReactNode
+	actionId?: number
+	path?: string
+	resource?: any
+	onClick?: () => void
+	children: React.ReactNode
 }
 
 const ButtonAction: React.FC<ActionProps> = (props) => {
-	const { 
-    children,
-    icon, 
-    action, 
-    path, 
-    actionId, 
-    onClick, 
-    color='secondary',     
-    variant='contained',
-    size="medium", 
-    resource,
-    ...rest 
-  } = props
+	const {
+		children,
+		icon,
+		action,
+		path,
+		actionId,
+		onClick,
+		color = 'secondary',
+		variant = 'contained',
+		size = 'medium',
+		resource,
+		...rest
+	} = props
 
 	const { loading, handleClick } = useButtons({
 		action,
-    actionId,
-    path,
-    resource
+		actionId,
+		path,
+		resource,
 	})
 
 	return (
 		<Button
 			fullWidth
 			sx={sx.button}
-      size={size}
+			size={size}
 			startIcon={
-        <>
-        <IconLoading loading={loading} />
-				{(!loading && icon) && (
-					<Icon
-						name={icon}
-						size={20}
-						color={
-							color == 'primary'
-								? 'primary.contrastText'
-								: 'secondary.contrastText'
-						}
-					/>
-				)}
-        </>
+				<>
+					<IconLoading loading={loading} />
+					{!loading && icon && (
+						<Icon
+							name={icon}
+							size={20}
+							color={
+								color == 'primary'
+									? 'primary.contrastText'
+									: 'secondary.contrastText'
+							}
+						/>
+					)}
+				</>
 			}
-			onClick={onClick ? onClick : handleClick }
+			onClick={onClick ? onClick : handleClick}
 			variant={variant}
 			color={color}
 			{...rest}

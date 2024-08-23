@@ -1,29 +1,25 @@
 import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
-import {
-	Image,
-	TouchableOpacity,
-	LightDarkMode,
-} from '../..'
+import { Image, TouchableOpacity, LightDarkMode } from '../..'
 import { CardProps } from './Card'
 
 const CoverCard: React.FC<CardProps> = (props) => {
 	const {
-    label,
-    primary,
-    secondary,
-    actions,
-    secondaryAction,
+		label,
+		primary,
+		secondary,
+		actions,
+		secondaryAction,
 		handleClick,
-    image,
+		image,
 		height = 340,
-    slots={
-      item: {},
-      image: {}
-    }
+		slots = {
+			item: {},
+			image: {},
+		},
 	} = props || {}
 
-  return (
+	return (
 		<LightDarkMode mode="dark">
 			<Stack spacing={1} sx={sx.root} {...slots.item}>
 				<TouchableOpacity handleClick={handleClick}>
@@ -31,8 +27,8 @@ const CoverCard: React.FC<CardProps> = (props) => {
 						label={label}
 						src={image}
 						height={height}
-						alt={primary}						
-            { ...slots.image }
+						alt={primary}
+						{...slots.image}
 					/>
 				</TouchableOpacity>
 				<Stack spacing={1} sx={sx.cover}>
@@ -46,15 +42,15 @@ const CoverCard: React.FC<CardProps> = (props) => {
 							<Stack sx={sx.content} direction="column" spacing={0}>
 								<Box sx={sx.fullWidth}>
 									<Typography color="text.primary" variant="subtitle1">
-										{ primary }
-									</Typography>									
-                  <Typography color="text.secondary" variant="body2">
-										{ secondary }
+										{primary}
 									</Typography>
-                  <Stack direction="row" sx={sx.buttons}>
-                    { actions }
-                    { secondaryAction }
-                  </Stack>
+									<Typography color="text.secondary" variant="body2">
+										{secondary}
+									</Typography>
+									<Stack direction="row" sx={sx.buttons}>
+										{actions}
+										{secondaryAction}
+									</Stack>
 								</Box>
 							</Stack>
 						</Box>

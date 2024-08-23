@@ -4,7 +4,7 @@ import TableFilterForm from './TableFilterForm'
 
 type TableFilterDrawerProps = {
 	open: boolean
-  loading: boolean
+	loading: boolean
 	query: any
 	handleClose: () => void
 	fields: any[]
@@ -16,7 +16,7 @@ type TableFilterDrawerProps = {
 const TableFilterDrawer: React.FC<TableFilterDrawerProps> = (props) => {
 	const {
 		open,
-    loading,
+		loading,
 		query,
 		handleClose,
 		fields,
@@ -28,7 +28,7 @@ const TableFilterDrawer: React.FC<TableFilterDrawerProps> = (props) => {
 	return (
 		<Drawer open={open} handleClose={handleClose} title="search">
 			<TableFilterForm
-        loading={loading}
+				loading={loading}
 				query={query}
 				fields={fields}
 				handleSearch={handleSearch}

@@ -9,9 +9,9 @@ const LayoutCenter: React.FC<AdminLayoutCenterProps> = (props) => {
 	const { children } = props
 
 	return (
-      <Box sx={sx.root}>
-        <Box sx={sx.content}>{children}</Box>
-      </Box>
+		<Box sx={sx.root}>
+			<Box sx={sx.content}>{children}</Box>
+		</Box>
 	)
 }
 

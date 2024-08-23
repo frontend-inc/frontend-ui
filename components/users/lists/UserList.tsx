@@ -45,13 +45,13 @@ const UserList: React.FC<UserListProps> = (props) => {
 				{ label: 'First name', name: 'first_name' },
 				{ label: 'Last name', name: 'last_name' },
 			]}
-      component={UserListItem}
+			component={UserListItem}
 			slots={{
 				list: {
-          size: 72,
-				  displayFields,
-				  socialFields
-        }
+					size: 72,
+					displayFields,
+					socialFields,
+				},
 			}}
 		/>
 	)

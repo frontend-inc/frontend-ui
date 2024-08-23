@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  Typography,
+	Typography,
 	List,
 	ListItem,
 	ListItemButton,
@@ -12,26 +12,22 @@ import { CardProps } from './Card'
 
 const AvatarCard: React.FC<CardProps> = (props) => {
 	const {
-    primary,
-    secondary,
-    image,
-    actions,
-    secondaryAction,
+		primary,
+		secondary,
+		image,
+		actions,
+		secondaryAction,
 		height = 128,
 		handleClick,
-    slots={
-      item: {},
-      image: {}
-    }
+		slots = {
+			item: {},
+			image: {},
+		},
 	} = props
 
 	return (
-		<List disablePadding sx={sx.listItem} { ...slots.item }>
-			<ListItem
-				disablePadding
-				disableGutters
-				secondaryAction={ secondaryAction }
-			>
+		<List disablePadding sx={sx.listItem} {...slots.item}>
+			<ListItem disablePadding disableGutters secondaryAction={secondaryAction}>
 				<ListItemButton
 					sx={{
 						...sx.listItemButton,
@@ -40,25 +36,25 @@ const AvatarCard: React.FC<CardProps> = (props) => {
 					onClick={handleClick && handleClick}
 				>
 					<ListItemIcon sx={sx.listItemIcon}>
-						<AvatarImage 
-              height={ height }              
+						<AvatarImage
+							height={height}
 							image={image}
 							alt={primary}
-              { ...slots.image }
-						/>							
+							{...slots.image}
+						/>
 					</ListItemIcon>
 					<ListItemText
-						primary={ 
-              <Typography variant="subtitle1" color="text.primary">
-                { primary }
-              </Typography>
-            }
-						secondary={ 
-              <>
-                { secondary }
-                { actions }
-              </>
-            }
+						primary={
+							<Typography variant="subtitle1" color="text.primary">
+								{primary}
+							</Typography>
+						}
+						secondary={
+							<>
+								{secondary}
+								{actions}
+							</>
+						}
 					/>
 				</ListItemButton>
 			</ListItem>
@@ -74,7 +70,7 @@ const sx = {
 		p: 0,
 		borderBottom: '1px solid',
 		borderColor: 'divider',
-	},	
+	},
 	listItemIcon: {
 		width: 130,
 		mr: 2,

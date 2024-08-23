@@ -11,14 +11,8 @@ export type CollectionFormProps = {
 const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 	const { parentResource } = props || {}
 
-	const { 
-    url, 
-    resource, 
-    setResource, 
-    reloadMany, 
-    openEdit, 
-    setOpenEdit 
-  } = useResourceContext()
+	const { url, resource, setResource, reloadMany, openEdit, setOpenEdit } =
+		useResourceContext()
 
 	const handleSuccess = async (savedResource) => {
 		if (savedResource?.id) {

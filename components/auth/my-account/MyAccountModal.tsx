@@ -67,32 +67,34 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 			disablePadding
 			open={myAccountOpen}
 			handleClose={() => setMyAccountOpen(false)}
-			title={          
+			title={
 				currentUser?.id
 					? `${currentUser?.first_name} ${currentUser?.last_name}`
-					: 'My Account'         
+					: 'My Account'
 			}
 		>
-      { currentTab == null ? (
-        <MyAccountMenu
-          tab={currentTab}
-          enableTeams={enableTeams}
-          enableStripe={enableStripe}
-          handleChange={handleTabChange}
-        />
-      ):(
-        <Box px={1}>
-          <Button 
-            sx={ sx.button }
-            color="secondary"
-            variant="contained"
-            startIcon={ <Icon name="ChevronLeft" color='text.primary' size={32} /> }
-            onClick={() => setCurrentTab(null)}
-          >
-            Back
-          </Button>
-        </Box>
-      )}
+			{currentTab == null ? (
+				<MyAccountMenu
+					tab={currentTab}
+					enableTeams={enableTeams}
+					enableStripe={enableStripe}
+					handleChange={handleTabChange}
+				/>
+			) : (
+				<Box px={1}>
+					<Button
+						sx={sx.button}
+						color="secondary"
+						variant="contained"
+						startIcon={
+							<Icon name="ChevronLeft" color="text.primary" size={32} />
+						}
+						onClick={() => setCurrentTab(null)}
+					>
+						Back
+					</Button>
+				</Box>
+			)}
 			<Box sx={sx.content}>
 				{currentTab == 0 && (
 					<MyAccountForm
@@ -128,14 +130,14 @@ const sx = {
 	content: {
 		p: 2,
 	},
-  button: {
-    color: 'text.primary',
-    bgcolor: 'background.paper',
-    boxShadow: 0,
-    '&:hover': {
-      color: 'text.primary',
-      boxShadow: 0,
-      bgcolor: 'background.paper',
-    }
-  }
+	button: {
+		color: 'text.primary',
+		bgcolor: 'background.paper',
+		boxShadow: 0,
+		'&:hover': {
+			color: 'text.primary',
+			boxShadow: 0,
+			bgcolor: 'background.paper',
+		},
+	},
 }

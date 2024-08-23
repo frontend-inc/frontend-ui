@@ -8,7 +8,7 @@ const ExpandLeftButton: React.FC = () => {
 
 	return (
 		<IconButton onClick={toggleLayoutLeft} sx={sx.button}>
-			<Icon name={'Menu'} color='text.secondary' />
+			<Icon name={'Menu'} color="text.secondary" />
 		</IconButton>
 	)
 }

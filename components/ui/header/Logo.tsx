@@ -29,11 +29,11 @@ const Logo: React.FC<LogoProps> = (props) => {
 					alt="logo"
 					width={160}
 					height={160}
-          style={{
-            maxHeight: '50px',
-            maxWidth: '120px',
-            objectFit: 'contain',
-          }}										
+					style={{
+						maxHeight: '50px',
+						maxWidth: '120px',
+						objectFit: 'contain',
+					}}
 				/>
 			)}
 			{!src && (

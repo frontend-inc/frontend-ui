@@ -10,20 +10,20 @@ type AdminRoleItemProps = {
 }
 
 const AdminRoleItem: React.FC<AdminRoleItemProps> = (props) => {
-  const { resource: role, handleEdit, handleDelete } = props || {}
+	const { resource: role, handleEdit, handleDelete } = props || {}
 
 	return (
-    <ResourceListItem
-      enableBorder
-      sortable
-      icon="User"
-      color="primary.main"
-      primary={ role?.label }      
-      secondary={ role?.name }
-      secondaryActions={role?.internal ? <Label label="System" /> : null}
-      handleEdit={!role?.internal ? handleEdit : undefined}
-      handleDelete={!role?.internal ? handleDelete : undefined}
-    />
+		<ResourceListItem
+			enableBorder
+			sortable
+			icon="User"
+			color="primary.main"
+			primary={role?.label}
+			secondary={role?.name}
+			secondaryActions={role?.internal ? <Label label="System" /> : null}
+			handleEdit={!role?.internal ? handleEdit : undefined}
+			handleDelete={!role?.internal ? handleDelete : undefined}
+		/>
 	)
 }
 

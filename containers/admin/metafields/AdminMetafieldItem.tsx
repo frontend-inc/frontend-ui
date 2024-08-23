@@ -18,8 +18,8 @@ const AdminMetafieldItem: React.FC<AdminMetafieldItemProps> = (props) => {
 			enableBorder
 			sortable={sortable}
 			avatar={<FieldIcon variant={resource?.variant} />}
-      primary={ resource?.label }
-			secondary={ resource?.name }			
+			primary={resource?.label}
+			secondary={resource?.name}
 			secondaryActions={<Label label={resource?.variant} />}
 			handleClick={handleClick}
 			handleEdit={handleEdit}

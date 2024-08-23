@@ -11,7 +11,7 @@ import { useForms } from '../../../hooks'
 export type DataTableListProps = DataListItemsProps & {
 	headers: TableHeaderType[]
 	enableShow?: boolean
-  href?: string
+	href?: string
 }
 
 const DataTableList: React.FC<DataTableListProps> = (props) => {

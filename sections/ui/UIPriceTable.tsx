@@ -37,7 +37,7 @@ const UIPriceTable: React.FC<UIPriceTableProps> = (props) => {
 				title={title}
 				description={description}
 				textAlign={'center'}
-        textVariant='h3'
+				textVariant="h3"
 			/>
 			<PriceTable {...rest} />
 		</Section>

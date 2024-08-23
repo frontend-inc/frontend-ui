@@ -1,6 +1,6 @@
 export default {
 	defaultProps: {
-    disableElevation: true,
+		disableElevation: true,
 		disableRipple: true,
 	},
 	styleOverrides: {
@@ -10,7 +10,6 @@ export default {
 		sizeSmall: {},
 		sizeLarge: {},
 		outlined: {},
-		contained: {
-		},
+		contained: {},
 	},
 }

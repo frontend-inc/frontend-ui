@@ -21,8 +21,7 @@ type MenuListProps = {
 }
 
 const MenuList: React.FC<MenuListProps> = (props) => {
-
-  const {
+	const {
 		label,
 		defaultClosed = false,
 		children,

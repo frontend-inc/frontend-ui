@@ -33,11 +33,11 @@ type KanBanBoardProps = {
 	handleEdit: (resource: any) => void
 	handleDelete: (resource: any) => void
 	handleAdd: (status: string) => void
-  component?: React.FC<any>
-  slots?: {
-    list?: any 
-    card?: any    
-  }
+	component?: React.FC<any>
+	slots?: {
+		list?: any
+		card?: any
+	}
 }
 
 const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
@@ -45,19 +45,19 @@ const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 		loading,
 		headers = [],
 		handleDrop,
-		columns: initialColumns = {},		
-		handleClick,    
+		columns: initialColumns = {},
+		handleClick,
 		enableEdit,
 		enableDelete,
 		enableCreate,
 		handleEdit,
 		handleDelete,
-		handleAdd, 
-    component: Component = KanBanCard,
-    slots={
-      list: {},
-      card: {}
-    }   
+		handleAdd,
+		component: Component = KanBanCard,
+		slots = {
+			list: {},
+			card: {},
+		},
 	} = props
 
 	const [activeId, setActiveId] = useState(null)
@@ -117,8 +117,8 @@ const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 												enableDelete={enableDelete}
 												handleEdit={() => handleEdit(res)}
 												handleDelete={() => handleDelete(res)}
-                        component={Component}
-                        { ...slots.card }
+												component={Component}
+												{...slots.card}
 											/>
 										))
 									) : (
@@ -147,10 +147,10 @@ const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 			<DragOverlay>
 				{draggedResource ? (
 					<Component
-            enableDragging
+						enableDragging
 						id={draggedResource?.id}
 						resource={draggedResource}
-            { ...slots.card }				
+						{...slots.card}
 					/>
 				) : null}
 			</DragOverlay>

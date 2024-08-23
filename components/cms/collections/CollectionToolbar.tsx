@@ -20,7 +20,7 @@ export type CollectionToolbarProps = {
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
 	enableCreate?: boolean
-  buttonText?: string
+	buttonText?: string
 	handleAdd?: () => void
 }
 
@@ -35,7 +35,7 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 		enableGeoSearch = false,
 		enableFilters = false,
 		enableSorting = false,
-    buttonText='Add'
+		buttonText = 'Add',
 	} = props
 
 	const {
@@ -72,14 +72,14 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 					direction={{ xs: 'column', sm: 'row' }}
 					alignItems="center"
 				>
-					{(enableSearch && !enableGeoSearch) && (
+					{enableSearch && !enableGeoSearch && (
 						<SearchInput
 							value={keywords}
 							handleChange={handleKeywordChange}
 							handleSearch={handleSearch}
 						/>
 					)}
-					{(enableGeoSearch && !enableSearch) && (
+					{enableGeoSearch && !enableSearch && (
 						<GeoSearchInput
 							value={keywords}
 							location={location}
@@ -125,7 +125,7 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 								<Icon name="Plus" size={20} color="primary.contrastText" />
 							}
 						>
-							{ buttonText }
+							{buttonText}
 						</Button>
 					</Stack>
 				)}

@@ -22,7 +22,7 @@ const DisplayFields: React.FC<DisplayFieldsProps> = (props) => {
 			alignItems={alignItems}
 		>
 			{fields?.map((field, index) => (
-        <DisplayField
+				<DisplayField
 					key={index}
 					field={field}
 					resource={resource}

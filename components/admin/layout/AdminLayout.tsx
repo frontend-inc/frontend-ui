@@ -4,10 +4,10 @@ import { StyleProps } from '../../../types'
 import { Alert, AdminLayoutTabs, AdminTabIcons } from '../../../components'
 
 type AdminLayoutProps = {
-  logo?: string
+	logo?: string
 	handleClick?: (item: any) => void
 	menuItems?: any[]
-  secondaryActions?: React.ReactNode
+	secondaryActions?: React.ReactNode
 	children: React.ReactNode
 }
 
@@ -18,12 +18,12 @@ const AdminLayout: React.FC<AdminLayoutProps> = (props) => {
 		<Box sx={sx.root}>
 			<Alert anchorBottom />
 			<AdminLayoutTabs>
-				<AdminTabIcons 
-          logo={logo}
-          handleClick={handleClick} 
-          menuItems={menuItems} 
-          secondaryActions={secondaryActions}
-        />
+				<AdminTabIcons
+					logo={logo}
+					handleClick={handleClick}
+					menuItems={menuItems}
+					secondaryActions={secondaryActions}
+				/>
 			</AdminLayoutTabs>
 			<Box sx={sx.content}>{children}</Box>
 		</Box>

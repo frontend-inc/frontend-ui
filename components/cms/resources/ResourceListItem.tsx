@@ -10,7 +10,7 @@ import {
 import { Image, Icon, MenuButton } from '../..'
 
 export type ResourceListItemProps = {
-  primary: React.ReactNode
+	primary: React.ReactNode
 	secondary?: React.ReactNode
 	avatar?: React.ReactNode
 	icon?: string
@@ -30,13 +30,13 @@ export type ResourceListItemProps = {
 }
 
 const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
-	const {    
+	const {
 		icon,
 		avatar,
 		color,
-    primary,
+		primary,
 		secondary,
-    image,
+		image,
 		handleClick,
 		handleEdit,
 		handleDelete,
@@ -44,7 +44,7 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 		menuActions,
 		sortable,
 		isDragging = false,
-		enableBorder = false,    
+		enableBorder = false,
 	} = props
 
 	return (
@@ -92,10 +92,7 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 						</Avatar>
 					</ListItemIcon>
 				)}
-				<ListItemText
-					primary={ primary }
-					secondary={ secondary }
-				/>
+				<ListItemText primary={primary} secondary={secondary} />
 			</ListItemButton>
 		</ListItem>
 	)
@@ -107,7 +104,7 @@ const sx = {
 	root: {
 		p: 0,
 		borderRadius: 1,
-    overflow: 'hidden',
+		overflow: 'hidden',
 	},
 	rootBorder: {
 		border: '1px solid',

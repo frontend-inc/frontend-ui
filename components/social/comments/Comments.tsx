@@ -6,7 +6,7 @@ import {
 	CommentForm,
 	LoadMore,
 	Placeholder,
-  AuthGuard,
+	AuthGuard,
 } from '../../../components'
 import { List, Stack, Collapse, Typography } from '@mui/material'
 import { useComments } from '../../../hooks'
@@ -89,17 +89,17 @@ const Comments: React.FC<CommentsProps> = (props) => {
 					Comments ({totalCount})
 				</Typography>
 			</Stack>
-      <AuthGuard requireAuth>
-			<Collapse in>
-				<CommentForm
-					errors={errors}
-					loading={loading}
-					comment={comment}
-					handleChange={handleChange}
-					handleSubmit={handleSubmit}
-				/>
-			</Collapse>
-      </AuthGuard>
+			<AuthGuard requireAuth>
+				<Collapse in>
+					<CommentForm
+						errors={errors}
+						loading={loading}
+						comment={comment}
+						handleChange={handleChange}
+						handleSubmit={handleSubmit}
+					/>
+				</Collapse>
+			</AuthGuard>
 			<List disablePadding>
 				{comments?.map((comment, i) => (
 					<Comment
@@ -137,7 +137,7 @@ const sx = {
 		borderColor: 'divider',
 	},
 	commentHeader: {
-    width: '100%',
+		width: '100%',
 		alignItems: 'flex-start',
 		justifyContent: 'space-between',
 	},

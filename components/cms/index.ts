@@ -5,7 +5,6 @@ export * from './forms'
 export * from './show'
 export * from './resources'
 
-
 export { default as DisplayField } from './displayFields/DisplayField'
 export { default as DisplayFields } from './displayFields/DisplayFields'
 export { default as SecondaryFields } from './displayFields/SecondaryFields'

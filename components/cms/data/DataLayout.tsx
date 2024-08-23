@@ -2,7 +2,7 @@ import React from 'react'
 import { Box } from '@mui/material'
 
 type DataLayoutProps = {
-  loading?: boolean
+	loading?: boolean
 	grid?: boolean
 	children: React.ReactNode
 }
@@ -15,7 +15,7 @@ const DataLayout: React.FC<DataLayoutProps> = (props) => {
 			sx={{
 				...sx.root,
 				...(grid ? sx.grid : sx.list),
-        ...(loading && sx.loading )
+				...(loading && sx.loading),
 			}}
 		>
 			{children}
@@ -45,13 +45,13 @@ const sx = {
 		display: 'grid',
 		gridTemplateColumns: {
 			md: '1fr 1fr 1fr',
-      sm: '1fr 1fr',
+			sm: '1fr 1fr',
 			xs: '1fr',
 		},
 		gap: '16px',
 		pb: 1,
 	},
-  loading: {
-    opacity: 0.5
-  }
+	loading: {
+		opacity: 0.5,
+	},
 }

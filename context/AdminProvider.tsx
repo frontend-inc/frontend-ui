@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import AdminContext from './AdminContext'
 
 type AdminProviderProps = {
-  apiUrl: string
-  clientUrl: string 
+	apiUrl: string
+	clientUrl: string
 	children: React.ReactNode
 }
 
@@ -28,8 +28,8 @@ const AdminProvider: React.FC<AdminProviderProps> = (props) => {
 		loading,
 		setLoading,
 
-    apiUrl,
-    clientUrl, 
+		apiUrl,
+		clientUrl,
 
 		activeTab,
 		setActiveTab,
@@ -51,11 +51,7 @@ const AdminProvider: React.FC<AdminProviderProps> = (props) => {
 		toggleLayoutRight,
 	}
 
-	return (
-		<AdminContext.Provider value={value}>
-      {children}
-    </AdminContext.Provider>
-	)
+	return <AdminContext.Provider value={value}>{children}</AdminContext.Provider>
 }
 
 export default AdminProvider

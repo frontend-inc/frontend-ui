@@ -19,17 +19,12 @@ const AccordionItem: React.FC<AccordionProps> = (props) => {
 				<Typography variant="subtitle1">{title}</Typography>
 			</AccordionSummary>
 			<AccordionDetails sx={sx.accordionDetails}>
-        <Stack direction="row" spacing={2}>
-				<Text variant="body1" color="text.primary">
-					{description}
-				</Text>
-        { image && (
-          <Image         
-            src={image}
-            height={240}
-          />
-          )}
-        </Stack>
+				<Stack direction="row" spacing={2}>
+					<Text variant="body1" color="text.primary">
+						{description}
+					</Text>
+					{image && <Image src={image} height={240} />}
+				</Stack>
 			</AccordionDetails>
 		</Accordion>
 	)
@@ -43,7 +38,7 @@ const sx = {
 		borderColor: 'divider',
 		my: '0px !important',
 		py: 1,
-    borderRadius: 0
+		borderRadius: 0,
 	},
 	imageContainer: {
 		width: 256,

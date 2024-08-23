@@ -10,8 +10,8 @@ export type VideoListItemsProps = {
 	url: string
 	enableEdit?: boolean
 	enableDelete?: boolean
-  enableGradient?: boolean
-  enableOverlay?: boolean
+	enableGradient?: boolean
+	enableOverlay?: boolean
 	enableComments?: boolean
 	enableFavorites?: boolean
 	enableLikes?: boolean
@@ -20,15 +20,8 @@ export type VideoListItemsProps = {
 }
 
 const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
-
-  const {
-		setResource,
-		resources,
-		page,
-		numPages,
-		loadMore,
-		setOpenShow,
-	} = useResourceContext()
+	const { setResource, resources, page, numPages, loadMore, setOpenShow } =
+		useResourceContext()
 
 	const {
 		enableEdit = false,
@@ -37,8 +30,8 @@ const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
 		enableLikes = false,
 		enableUsers = false,
 		enableComments = false,
-    enableGradient = false,
-    enableOverlay = false ,
+		enableGradient = false,
+		enableOverlay = false,
 		...rest
 	} = props
 
@@ -50,37 +43,37 @@ const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
 	const { handleEdit, handleDeleteClick } = useForms()
 
 	return (
-    <Stack direction="column" spacing={2}>
-      <DataLayout grid>
-        {resources?.map((resource) => (
-          <VideoCard
-            key={resource.id}
-            image={resource?.image?.url}
-            primary={resource?.title}
-            secondaryAction={
-              <ButtonActions 
-                numVisible={0}
-                resource={resource}
-                buttons={buildActions({
-                  enableEdit,
-                  enableDelete,
-                  handleEdit: () => handleEdit(resource),
-                  handleDelete: () => handleDeleteClick(resource),
-                })}
-              /> 
-            }
-            slots={{
-              image: {
-                enableGradient,
-                enableOverlay,                  
-              },
-            }}
-            handleClick={() => handleClick(resource)}
-          />
-        ))}
-      </DataLayout>
-      <LoadMore page={page} numPages={numPages} loadMore={loadMore} />
-    </Stack>
+		<Stack direction="column" spacing={2}>
+			<DataLayout grid>
+				{resources?.map((resource) => (
+					<VideoCard
+						key={resource.id}
+						image={resource?.image?.url}
+						primary={resource?.title}
+						secondaryAction={
+							<ButtonActions
+								numVisible={0}
+								resource={resource}
+								buttons={buildActions({
+									enableEdit,
+									enableDelete,
+									handleEdit: () => handleEdit(resource),
+									handleDelete: () => handleDeleteClick(resource),
+								})}
+							/>
+						}
+						slots={{
+							image: {
+								enableGradient,
+								enableOverlay,
+							},
+						}}
+						handleClick={() => handleClick(resource)}
+					/>
+				))}
+			</DataLayout>
+			<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
+		</Stack>
 	)
 }
 

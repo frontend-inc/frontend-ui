@@ -18,7 +18,7 @@ const FieldString: React.FC<FieldElementProps> = (props) => {
 	return (
 		<FieldWrapper alignItems={alignItems} label={label} color={color} {...rest}>
 			<Typography variant={variant} color={color} sx={sx.text}>
-				{ truncate(value || placeholder, 50)}
+				{truncate(value || placeholder, 50)}
 			</Typography>
 		</FieldWrapper>
 	)

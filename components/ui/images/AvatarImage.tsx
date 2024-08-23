@@ -2,56 +2,55 @@ import React from 'react'
 import { Avatar, Box } from '@mui/material'
 
 export type AvatarImageProps = {
-  image: string
-  alt: string
-  height?: number
-  enableGradient?: boolean
-  enableOverlay?: boolean
-  slots?: {
-    image?: any
-  }
+	image: string
+	alt: string
+	height?: number
+	enableGradient?: boolean
+	enableOverlay?: boolean
+	slots?: {
+		image?: any
+	}
 }
 
 const AvatarImage: React.FC<AvatarImageProps> = (props) => {
+	const {
+		image,
+		alt,
+		height = 64,
+		enableGradient = false,
+		enableOverlay = false,
+		slots = {
+			image: {},
+		},
+	} = props
 
-  const {
-    image,
-    alt,
-    height = 64,
-    enableGradient = false,
-    enableOverlay = false,
-    slots={
-      image: {}
-    }
-  } = props
-
-  return(
-    <Avatar
-      sx={{
-        ...sx.avatar,
-        ...(enableGradient && sx.gradient),
-        ...(enableOverlay && sx.overlay),
-        height: `${height}px`,
-        width: `${height}px`,
-      }}
-      src={image}
-      alt={alt}
-      { ...slots.image }
-    >
-      <Box />
-    </Avatar>
-  )
+	return (
+		<Avatar
+			sx={{
+				...sx.avatar,
+				...(enableGradient && sx.gradient),
+				...(enableOverlay && sx.overlay),
+				height: `${height}px`,
+				width: `${height}px`,
+			}}
+			src={image}
+			alt={alt}
+			{...slots.image}
+		>
+			<Box />
+		</Avatar>
+	)
 }
 
 export default AvatarImage
 
 const sx = {
-  avatar: {
+	avatar: {
 		height: '64px',
 		width: '64px',
 		backgroundImage: 'linear-gradient(45deg, #888888, #222222,#000000)',
 	},
-  gradient: {
+	gradient: {
 		'&::after': {
 			content: '""',
 			borderRadius: '50%',

@@ -43,7 +43,7 @@ const sx = {
 		borderRadius: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
-		width: '100%',		
+		width: '100%',
 	},
 	rootBorder: {
 		p: 2,

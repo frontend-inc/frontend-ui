@@ -18,7 +18,7 @@ const ActionItem: React.FC<ActionItemProps> = (props) => {
 		handleDelete,
 	} = props
 
-  console.log("ZAP", zap)
+	console.log('ZAP', zap)
 
 	return (
 		<ResourceListItem
@@ -26,8 +26,8 @@ const ActionItem: React.FC<ActionItemProps> = (props) => {
 			sortable={sortable}
 			icon={zap.zap_type === 'email' ? 'Mail' : 'Webhook'}
 			color="primary.main"
-      primary={ zap?.zap_type }
-			secondary={ zap?.url || zap?.email?.name }			
+			primary={zap?.zap_type}
+			secondary={zap?.url || zap?.email?.name}
 			secondaryActions={<Label label={zap?.event_type} />}
 			handleClick={handleClick}
 			handleEdit={handleEdit}

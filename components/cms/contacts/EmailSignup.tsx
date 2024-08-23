@@ -19,13 +19,13 @@ export type EmailSignupProps = {
 // Call To Action
 const EmailSignup: React.FC<EmailSignupProps> = (props) => {
 	const { showAlertSuccess } = useAlerts()
-	const { 
-    label, 
-    title, 
-    description, 
-    textVariant='h3',
-    buttonText = 'Subscribe' 
-  } = props || {}
+	const {
+		label,
+		title,
+		description,
+		textVariant = 'h3',
+		buttonText = 'Subscribe',
+	} = props || {}
 
 	const {
 		errors,
@@ -50,13 +50,13 @@ const EmailSignup: React.FC<EmailSignupProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			<Stack sx={sx.content} direction="column" spacing={1}>
-        <Heading 
-          label={label}
-          title={title}
-          description={description}
-          textVariant={textVariant}
-          textAlign="center"
-        />
+				<Heading
+					label={label}
+					title={title}
+					description={description}
+					textVariant={textVariant}
+					textAlign="center"
+				/>
 				<Stack sx={sx.inputContainer} direction="row" spacing={0}>
 					<TextInput
 						errors={errors}

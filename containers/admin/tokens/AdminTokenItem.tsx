@@ -24,8 +24,8 @@ const TokenItem: React.FC<TokenItemProps> = (props) => {
 	return (
 		<ResourceListItem
 			enableBorder
-      primary={ token?.name }
-			secondary={ truncate(token?.api_key, 20) }			
+			primary={token?.name}
+			secondary={truncate(token?.api_key, 20)}
 			icon="Key"
 			color={token?.internal ? COLORS.deepPurple[500] : COLORS.teal[500]}
 			handleClick={handleCopyToken}

@@ -7,10 +7,10 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 
 type TabIconsProps = {
-  logo?: string
+	logo?: string
 	menuItems: any
 	handleClick: any
-  secondaryActions?: React.ReactNode
+	secondaryActions?: React.ReactNode
 }
 
 const TabIcons: React.FC<TabIconsProps> = (props) => {
@@ -27,19 +27,19 @@ const TabIcons: React.FC<TabIconsProps> = (props) => {
 		<Box sx={sx.root}>
 			<Box width="100%">
 				<Box sx={sx.menuItems}>
-          { logo && (
-            <Button sx={sx.logoButton} onClick={handleHomeClick}>
-              <Image src={logo} height={24} width={24} alt="logo" />
-            </Button>
-          )}
+					{logo && (
+						<Button sx={sx.logoButton} onClick={handleHomeClick}>
+							<Image src={logo} height={24} width={24} alt="logo" />
+						</Button>
+					)}
 					{menuItems?.map((item, index) => (
-            <Box px={1} key={index}>
-              <AdminTabIcon							
-                selected={activeTab == item.id}
-                icon={item.icon}
-                handleClick={() => handleClick(item)}
-              />
-            </Box> 
+						<Box px={1} key={index}>
+							<AdminTabIcon
+								selected={activeTab == item.id}
+								icon={item.icon}
+								handleClick={() => handleClick(item)}
+							/>
+						</Box>
 					))}
 				</Box>
 			</Box>
@@ -49,7 +49,7 @@ const TabIcons: React.FC<TabIconsProps> = (props) => {
 				divider={<Divider />}
 				sx={sx.bottomTabs}
 			>
-				{ secondaryActions }
+				{secondaryActions}
 				<AdminTabAuth />
 			</Stack>
 		</Box>
@@ -73,7 +73,7 @@ const sx = {
 		color: 'primary.contrastText',
 	},
 	menuItems: {
-    my: 1,
+		my: 1,
 		display: 'flex',
 		justifyContent: 'center',
 		width: '100%',
@@ -93,8 +93,8 @@ const sx = {
 	logoButton: {
 		p: 0,
 		m: 0,
-    height: 24,
-    width: 24,
+		height: 24,
+		width: 24,
 		'&:hover': {
 			backgroundColor: 'transparent',
 		},

@@ -36,7 +36,7 @@ type FormInputProps = {
 	contentType?: string
 	query?: any
 	displayField?: string //Autosuggest has an optional display field param
-  valueParam?: string // MetafieldAutosuggest has an optional value param
+	valueParam?: string // MetafieldAutosuggest has an optional value param
 	fields?: FormFieldType[]
 }
 
@@ -58,7 +58,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		contentType,
 		query = {},
 		displayField,
-    valueParam
+		valueParam,
 	} = props
 
 	let componentMapper = {
@@ -89,7 +89,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		autosuggest: {
 			url,
 			displayField,
-      valueParam,
+			valueParam,
 			defaultQuery: query,
 		},
 		text: {

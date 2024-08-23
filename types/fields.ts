@@ -1,7 +1,7 @@
 export type FieldVariantTypes =
 	| 'array'
 	| 'audio'
-  | 'email'
+	| 'email'
 	| 'habtm'
 	| 'html'
 	| 'string'
@@ -12,7 +12,7 @@ export type FieldVariantTypes =
 	| 'date'
 	| 'datetime'
 	| 'price'
-  | 'phone'
+	| 'phone'
 	| 'url'
 	| 'rating'
 	| 'image'
@@ -21,8 +21,8 @@ export type FieldVariantTypes =
 	| 'json'
 	| 'state'
 	| 'country'
-  | 'location'
-	| 'select'  
+	| 'location'
+	| 'select'
 	| 'shopify_product'
 	| 'shopify_collection'
 	| 'user'
@@ -40,16 +40,16 @@ export type FieldDbType =
 	| 'habtm'
 	| 'belongs_to'
 
-export type FieldCategoryType = 
-  'Text' | 
-  'Date' | 
-  'Numbers' | 
-  'Geographic' |
-  'Media' | 
-  'Data' | 
-  'Boolean' | 
-  'Reference' |   
-  'Shopify'
+export type FieldCategoryType =
+	| 'Text'
+	| 'Date'
+	| 'Numbers'
+	| 'Geographic'
+	| 'Media'
+	| 'Data'
+	| 'Boolean'
+	| 'Reference'
+	| 'Shopify'
 
 export type FieldVariantType = {
 	icon: string

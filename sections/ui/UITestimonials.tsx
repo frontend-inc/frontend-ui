@@ -37,7 +37,7 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 				title={title}
 				description={description}
 				textAlign={'center'}
-        textVariant='h3'
+				textVariant="h3"
 			/>
 			<Testimonials {...rest} />
 		</Section>

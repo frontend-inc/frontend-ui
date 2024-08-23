@@ -20,7 +20,7 @@ const AdminCommentItem: React.FC<AdminCommentItemProps> = (props) => {
 	return (
 		<ResourceListItem
 			primary={getCommentUserName(comment)}
-      secondary={truncate(comment?.body, 40)}			
+			secondary={truncate(comment?.body, 40)}
 			avatar={<UserAvatar user={comment?.user} />}
 			secondaryActions={comment?.flagged && <Label label="Flagged" />}
 			handleClick={handleClick}

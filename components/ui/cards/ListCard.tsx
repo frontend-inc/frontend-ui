@@ -1,30 +1,26 @@
 import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
-import {
-	Image,
-	TouchableOpacity,
-} from '../..'
+import { Image, TouchableOpacity } from '../..'
 import { CardProps } from './Card'
 
 const ListItemCard: React.FC<CardProps> = (props) => {
 	const {
-    label,
-    primary,
-    secondary,
-    actions,
-    secondaryAction,
+		label,
+		primary,
+		secondary,
+		actions,
+		secondaryAction,
 		handleClick,
-    image,
+		image,
 		height = 180,
-    slots={
-      item: {},
-      image: {}
-    }
-
+		slots = {
+			item: {},
+			image: {},
+		},
 	} = props || {}
 
 	return (
-		<Box sx={sx.root} { ...slots.item }>
+		<Box sx={sx.root} {...slots.item}>
 			<Stack
 				sx={sx.container}
 				spacing={1}
@@ -37,7 +33,7 @@ const ListItemCard: React.FC<CardProps> = (props) => {
 							src={image}
 							height={height}
 							alt={primary}
-							{ ...slots.image }
+							{...slots.image}
 						/>
 					</TouchableOpacity>
 				</Box>
@@ -45,18 +41,18 @@ const ListItemCard: React.FC<CardProps> = (props) => {
 					<Stack direction="column" sx={sx.content}>
 						<Stack direction="column" spacing={0.5}>
 							<Typography color="text.primary" variant="subtitle1">
-								{ primary }
+								{primary}
 							</Typography>
 							<Typography color="text.secondary" variant="body2">
-                { secondary }
-              </Typography>
+								{secondary}
+							</Typography>
 						</Stack>
 						<Stack direction="row" justifyContent="flex-end">
-							{ actions }
+							{actions}
 						</Stack>
 					</Stack>
 					<Stack direction="row" justifyContent="flex-end">
-						{ secondaryAction }
+						{secondaryAction}
 					</Stack>
 				</Stack>
 			</Stack>

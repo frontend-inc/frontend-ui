@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {
 	Box,
 	Link,
-  Stack,
+	Stack,
 	IconButton,
 	Collapse,
 	ListItem,
@@ -29,14 +29,14 @@ type CommentProps = {
 }
 
 const Comment: React.FC<CommentProps> = (props) => {
-	const { 
-    url, 
-    handle, 
-    reply = false, 
-    level = 0, 
-    comment: parentComment, 
-    handleDelete 
-  } = props
+	const {
+		url,
+		handle,
+		reply = false,
+		level = 0,
+		comment: parentComment,
+		handleDelete,
+	} = props
 
 	const [openComment, setOpenComment] = useState(false)
 	const [showReplies, setShowReplies] = useState(false)
@@ -94,19 +94,19 @@ const Comment: React.FC<CommentProps> = (props) => {
 				</ListItemIcon>
 				<ListItemText
 					primary={
-              <Typography
-                variant="body1"
-                color="text.primary"
-                sx={sx.commentText}
-              >
-                {parentComment?.body}
-              </Typography>
+						<Typography
+							variant="body1"
+							color="text.primary"
+							sx={sx.commentText}
+						>
+							{parentComment?.body}
+						</Typography>
 					}
 					secondary={
-              <Typography variant="body2" color="text.secondary" sx={sx.caption}>
-                {`@${parentComment?.user?.username}`} commented{' '}
-                {moment(parentComment?.created_at).fromNow()}
-              </Typography>
+						<Typography variant="body2" color="text.secondary" sx={sx.caption}>
+							{`@${parentComment?.user?.username}`} commented{' '}
+							{moment(parentComment?.created_at).fromNow()}
+						</Typography>
 					}
 				/>
 			</ListItem>
@@ -122,8 +122,7 @@ const Comment: React.FC<CommentProps> = (props) => {
 			{parentComment?.replies?.length > 0 && (
 				<>
 					{!showReplies && (
-						<Box
-						>
+						<Box>
 							<Link sx={sx.link} onClick={handleShowReplies}>
 								Show {parentComment?.replies?.length}{' '}
 								{parentComment?.replies?.length > 1 ? 'replies' : 'reply'}
@@ -132,15 +131,17 @@ const Comment: React.FC<CommentProps> = (props) => {
 					)}
 				</>
 			)}
-			<Box sx={{ 
-        ...sx.divider,
-        ml: reply ? 7 : 0, 
-      }} />
+			<Box
+				sx={{
+					...sx.divider,
+					ml: reply ? 7 : 0,
+				}}
+			/>
 			<Collapse in={showReplies}>
 				{parentComment?.replies?.map((reply) => (
 					<Comment
 						key={reply.id}
-            reply 
+						reply
 						url={url}
 						handle={handle}
 						comment={reply}
@@ -204,7 +205,7 @@ const sx = {
 		borderBottom: '1px solid',
 		borderColor: 'divider',
 	},
-  replyIcon: {
-    transform: 'rotate(180deg)',
-  }
+	replyIcon: {
+		transform: 'rotate(180deg)',
+	},
 }

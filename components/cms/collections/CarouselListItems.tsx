@@ -35,17 +35,9 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 		enableLikes = false,
 	} = props
 
-	const { 
-    handleEdit, 
-    handleDeleteClick 
-  } = useForms()
+	const { handleEdit, handleDeleteClick } = useForms()
 
-	const { 
-    setOpenShow, 
-    loading, 
-    resources, 
-    setResource 
-  } = useResourceContext()
+	const { setOpenShow, loading, resources, setResource } = useResourceContext()
 
 	const handleClick = (resource) => {
 		if (href) {
@@ -95,7 +87,7 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 							handleDelete={() => handleDeleteClick(resource)}
 							handleClick={() => handleClick(resource)}
 							enableGradient={enableGradient}
-              enableOverlay={enableOverlay}
+							enableOverlay={enableOverlay}
 							enableFavorites={enableFavorites}
 							enableRatings={enableRatings}
 							enableUsers={enableUsers}

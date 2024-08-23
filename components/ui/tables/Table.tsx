@@ -149,7 +149,7 @@ const Table: React.FC<TableProps> = (props) => {
 				styles={styles}
 			/>
 			<TableFilterPopup
-        loading={loading}
+				loading={loading}
 				open={showFilters}
 				anchorEl={anchorEl}
 				query={query}

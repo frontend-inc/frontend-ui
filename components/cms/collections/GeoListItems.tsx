@@ -5,7 +5,7 @@ import { GoogleMap, CollectionListItems } from '../..'
 import { CollectionListItemsProps } from './CollectionListItems'
 
 export type GeoListListProps = CollectionListItemsProps & {
-  url: string
+	url: string
 }
 
 const GeoListItems: React.FC<GeoListListProps> = (props) => {

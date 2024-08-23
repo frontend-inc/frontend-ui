@@ -4,17 +4,10 @@ import { LoadMore, DataLayout } from '../../../components'
 import { useResourceContext } from 'frontend-js'
 
 const ReviewsList = (props) => {
-  
-  const { 
-    loading, 
-    resources,
-    query,
-    setQuery,
-    page,
-    numPages  
-  } = useResourceContext()
+	const { loading, resources, query, setQuery, page, numPages } =
+		useResourceContext()
 
-  const handleLoadMore = () => {
+	const handleLoadMore = () => {
 		let perPage = (query?.per_page || 12) + 12
 		setQuery({
 			...query,
@@ -22,21 +15,15 @@ const ReviewsList = (props) => {
 		})
 	}
 
-  return (
-    <DataLayout loading={loading}>
-      {!loading && resources?.map((resource, index) => (
-        <ReviewItem
-          key={index}
-          resource={resource}
-        />
-      ))}
-      <LoadMore 
-        page={page} 
-        numPages={numPages} 
-        loadMore={handleLoadMore} 
-      />        
-    </DataLayout>    
-  )
+	return (
+		<DataLayout loading={loading}>
+			{!loading &&
+				resources?.map((resource, index) => (
+					<ReviewItem key={index} resource={resource} />
+				))}
+			<LoadMore page={page} numPages={numPages} loadMore={handleLoadMore} />
+		</DataLayout>
+	)
 }
 
 export default ReviewsList

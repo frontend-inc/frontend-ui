@@ -5,57 +5,49 @@ import { ResourceFormProps } from '../../../components/cms/resources/ResourceFor
 import { useAdmin } from '../../../hooks'
 
 const AdminZapForm: React.FC<ResourceFormProps> = (props) => {
+	const { apiUrl } = useAdmin()
 
-  const { apiUrl } = useAdmin()
+	const FORM_FIELDS = [
+		{
+			label: 'Zap',
+			name: 'zap_type',
+			variant: 'select',
+			options: ZAP_TYPES,
+		},
+		{
+			label: 'Post URL',
+			name: 'url',
+			variant: 'string',
+			conditions: [
+				{
+					name: 'zap_type',
+					operator: 'eq',
+					value: 'webhook',
+				},
+			],
+		},
+		{
+			label: 'Email',
+			name: 'email_id',
+			variant: 'autosuggest',
+			displayField: 'name',
+			url: `${apiUrl}/emails`,
+			query: {
+				filters: {
+					AND: [{ internal: { eq: false } }],
+				},
+			},
+			conditions: [
+				{
+					name: 'zap_type',
+					operator: 'eq',
+					value: 'email',
+				},
+			],
+		},
+	]
 
-  const FORM_FIELDS =[
-    {
-      label: 'Zap',
-      name: 'zap_type',
-      variant: 'select',
-      options: ZAP_TYPES,
-    },
-    {
-      label: 'Post URL',
-      name: 'url',
-      variant: 'string',
-      conditions: [
-        {
-          name: 'zap_type',
-          operator: 'eq',
-          value: 'webhook',
-        },
-      ],
-    },
-    {
-      label: 'Email',
-      name: 'email_id',
-      variant: 'autosuggest',
-      displayField: 'name',
-      url: `${apiUrl}/emails`,
-      query: {
-        filters: {
-          AND: [
-            { internal: { eq: false } },
-          ]
-        }
-      },
-      conditions: [
-        {
-          name: 'zap_type',
-          operator: 'eq',
-          value: 'email',
-        },
-      ],
-    },
-  ]
-
-  return (
-    <ResourceForm 
-      { ...props }
-      fields={ FORM_FIELDS }
-    />
-  )
+	return <ResourceForm {...props} fields={FORM_FIELDS} />
 }
 
 export default AdminZapForm

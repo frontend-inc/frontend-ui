@@ -28,7 +28,7 @@ const AuthGuard: React.FC<AuthGuardProps> = (props) => {
 		return (
 			<Box sx={sx.center}>
 				<Heading
-          textAlign='center'
+					textAlign="center"
 					title="Team required"
 					description="You must be a member of a team."
 				/>
@@ -43,7 +43,7 @@ const AuthGuard: React.FC<AuthGuardProps> = (props) => {
 		return (
 			<Box sx={sx.center}>
 				<Heading
-          textAlign='center'
+					textAlign="center"
 					title="Unauthorized"
 					description="You are not authorized to access this page."
 				/>
@@ -60,7 +60,7 @@ export default AuthGuard
 
 const sx = {
 	center: {
-    width: '100%',
+		width: '100%',
 		height: '100vh',
 		display: 'flex',
 		flexDirection: 'column',

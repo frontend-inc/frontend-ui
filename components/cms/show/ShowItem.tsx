@@ -67,8 +67,8 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 
 	const Component = components[style] || ShowList
 
-	const { handleEdit } = useForms()  
-  
+	const { handleEdit } = useForms()
+
 	if (!resource?.id) return null
 	return (
 		<Component

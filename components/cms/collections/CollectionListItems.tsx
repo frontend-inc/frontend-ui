@@ -81,11 +81,8 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 	}
 
 	const { handleClick = handleNavigate } = props
-	
-  const { 
-    handleEdit, 
-    handleDeleteClick 
-  } = useForms()
+
+	const { handleEdit, handleDeleteClick } = useForms()
 
 	let grid = false
 

@@ -18,7 +18,7 @@ const AdminMenuLinkItem: React.FC<ResourceProps> = (props) => {
 			enableBorder={enableBorder}
 			icon="Link"
 			color="primary.main"
-      primary={link?.name}			
+			primary={link?.name}
 			handleClick={handleClick}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}

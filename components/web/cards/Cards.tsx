@@ -23,11 +23,7 @@ export type CardsProps = {
 const Cards: React.FC<CardsProps> = (props) => {
 	const router = useRouter()
 
-	const {
-		items,
-		enableGradient,
-		enableOverlay,
-	} = props || {}
+	const { items, enableGradient, enableOverlay } = props || {}
 
 	const handleClick = (card: CardType) => {
 		if (card?.url) {
@@ -41,16 +37,16 @@ const Cards: React.FC<CardsProps> = (props) => {
 				{items?.map((item, i) => (
 					<Grid item xs={12} sm={6} md={4} key={i}>
 						<Card
-              image={ item?.image }
-              primary={ item?.title }
-              secondary={ item?.description }							
+							image={item?.image}
+							primary={item?.title}
+							secondary={item?.description}
 							handleClick={() => handleClick(item)}
-              slots={{
-                image: {
-                  enableGradient,
-                  enableOverlay
-                }
-              }}
+							slots={{
+								image: {
+									enableGradient,
+									enableOverlay,
+								},
+							}}
 						/>
 					</Grid>
 				))}

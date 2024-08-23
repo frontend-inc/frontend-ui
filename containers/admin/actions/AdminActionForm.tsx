@@ -5,53 +5,43 @@ import { ResourceFormProps } from '../../../components/cms/resources/ResourceFor
 import { useAdmin } from '../../../hooks'
 
 const AdminActionForm: React.FC<ResourceFormProps> = (props) => {
+	const { apiUrl } = useAdmin()
 
-  const { apiUrl } = useAdmin()
+	const FORM_FIELDS = [
+		{
+			label: 'Label',
+			name: 'label',
+			variant: 'string',
+		},
+		{
+			label: 'API name',
+			name: 'name',
+			variant: 'nospace',
+		},
+		{
+			label: 'Action',
+			name: 'action_type',
+			variant: 'select',
+			options: ACTION_TYPES,
+		},
+		{
+			label: 'Collection',
+			name: 'collection_id',
+			variant: 'autosuggest',
+			displayField: 'name',
+			url: `${apiUrl}/collections`,
+			query: {},
+			conditions: [
+				{
+					name: 'action_type',
+					operator: 'in',
+					value: ['resources.create', 'resources.save', 'resources.delete'],
+				},
+			],
+		},
+	]
 
-  const FORM_FIELDS = [
-    {
-      label: 'Label',
-      name: 'label',
-      variant: 'string',
-    },
-    {
-      label: 'API name',
-      name: 'name',
-      variant: 'nospace',
-    },
-    {
-      label: 'Action',
-      name: 'action_type',
-      variant: 'select',
-      options: ACTION_TYPES,
-    },
-    {
-      label: 'Collection',
-      name: 'collection_id',
-      variant: 'autosuggest',
-      displayField: 'name',
-      url: `${apiUrl}/collections`,
-      query: {},
-      conditions: [
-        {
-          name: 'action_type',
-          operator: 'in',
-          value: [
-            'resources.create',
-            'resources.save',
-            'resources.delete',
-          ],
-        },
-      ],
-    },
-  ]
-
-  return (
-    <ResourceForm 
-      { ...props }
-      fields={ FORM_FIELDS }
-    />
-  )
+	return <ResourceForm {...props} fields={FORM_FIELDS} />
 }
 
 export default AdminActionForm

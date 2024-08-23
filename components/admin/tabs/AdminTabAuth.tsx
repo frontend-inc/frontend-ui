@@ -6,14 +6,13 @@ import { UserMenu, UserAvatar } from '../..'
 import { useRouter } from 'next/router'
 
 type TabAuthProps = {
-  loginUrl?: string
+	loginUrl?: string
 }
 
 const TabAuth: React.FC<TabAuthProps> = (props) => {
-	
-  const { loginUrl='/login' } = props || {}
+	const { loginUrl = '/login' } = props || {}
 
-  const router = useRouter()
+	const router = useRouter()
 	const { logout, currentUser } = useAuth()
 	const { open, anchorEl, closeMenu, toggleMenu } = useMenu()
 

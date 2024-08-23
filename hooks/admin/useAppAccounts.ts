@@ -2,7 +2,7 @@ import React from 'react'
 import { useResource } from 'frontend-js'
 
 type UseAppAccountsParams = {
-  appId: string | string[] | undefined
+	appId: string | string[] | undefined
 }
 
 const useAppAccounts = (props: UseAppAccountsParams) => {

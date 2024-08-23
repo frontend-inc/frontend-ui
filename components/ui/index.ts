@@ -16,7 +16,7 @@ export { default as Center } from './Center'
 export { default as CloudinaryImage } from './images/CloudinaryImage'
 export { default as ContextLoader } from './loaders/ContextLoader'
 export { default as Container } from './Container'
-export { default as  Divider } from './Divider'
+export { default as Divider } from './Divider'
 export { default as Drawer } from './modals/Drawer'
 export { default as ExpandableText } from './typography/ExpandableText'
 export { default as GeoSearchInput } from './inputs/GeoSearchInput'
@@ -85,7 +85,7 @@ export { default as Logo } from './images/Logo'
 export { default as TextModal } from './TextModal'
 export { default as Swipeable } from './swipeable/Swipeable'
 
-// Debug 
+// Debug
 export { default as Debug } from './debug/Debug'
 
 // Theme

@@ -3,39 +3,38 @@ import { Box, Stack, Typography } from '@mui/material'
 import { Image } from '../..'
 
 export type CardProps = {
-  ref?: any
-  avatar?: React.ReactNode 
-  image: string
-  label?: string
-  primary: string  
-  secondary?: string | React.ReactNode 
-  actions?: React.ReactNode 
-  secondaryAction?: React.ReactNode 
-  handleClick?: () => void
-  height?: number
-  slots?: {
-    item?: any
-    image?: any
-  }
+	ref?: any
+	avatar?: React.ReactNode
+	image: string
+	label?: string
+	primary: string
+	secondary?: string | React.ReactNode
+	actions?: React.ReactNode
+	secondaryAction?: React.ReactNode
+	handleClick?: () => void
+	height?: number
+	slots?: {
+		item?: any
+		image?: any
+	}
 }
 
 const Card: React.FC<CardProps> = (props) => {
 	const {
 		ref,
-    label,
-    primary,
-    secondary,
-    actions,
-    secondaryAction,
+		label,
+		primary,
+		secondary,
+		actions,
+		secondaryAction,
 		handleClick,
-    image,
+		image,
 		height = 240,
-    slots={
-      item: {},
-      image: {}
-    }
+		slots = {
+			item: {},
+			image: {},
+		},
 	} = props || {}
-
 
 	return (
 		<Stack
@@ -46,32 +45,32 @@ const Card: React.FC<CardProps> = (props) => {
 				width: '100%',
 				minHeight: height + 80,
 			}}
-      { ...slots.item }
-		>      
+			{...slots.item}
+		>
 			<Box sx={sx.imageContainer}>
 				<Image
 					src={image}
 					height={height}
 					alt={primary}
-					label={label}					
+					label={label}
 					handleClick={handleClick}
-          { ...slots.image }
+					{...slots.image}
 				/>
 			</Box>
 			<Stack spacing={0} sx={sx.cardContent}>
 				<Box sx={sx.content}>
 					<Typography sx={sx.title} color="text.primary" variant="subtitle1">
-						{ primary }
+						{primary}
 					</Typography>
-          {secondary && (
-            <Typography color="text.secondary" variant="body2">
-              { secondary }
-            </Typography>
-          )}
+					{secondary && (
+						<Typography color="text.secondary" variant="body2">
+							{secondary}
+						</Typography>
+					)}
 				</Box>
 				<Stack direction="row" justifyContent="space-between">
-          { actions }
-					{ secondaryAction}
+					{actions}
+					{secondaryAction}
 				</Stack>
 			</Stack>
 		</Stack>

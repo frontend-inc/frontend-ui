@@ -3,7 +3,7 @@ import ResourceListItem from './ResourceListItem'
 import { truncate } from '../../../helpers'
 
 export type ResourceProps = {
-  resource: any 
+	resource: any
 	avatar?: React.ReactNode
 	icon?: string
 	color?: string
@@ -19,11 +19,11 @@ export type ResourceProps = {
 }
 
 const Resource: React.FC<ResourceProps> = (props) => {
-	const {    
-    icon,
-    color,
-    avatar,
-		resource, 
+	const {
+		icon,
+		color,
+		avatar,
+		resource,
 		handleClick,
 		handleEdit,
 		handleDelete,
@@ -31,26 +31,26 @@ const Resource: React.FC<ResourceProps> = (props) => {
 		menuActions,
 		sortable,
 		isDragging = false,
-		enableBorder = false,    
+		enableBorder = false,
 	} = props
 
 	return (
-		<ResourceListItem 
-      icon={ icon }
-      color={ color }
-      avatar={ avatar }
-      primary={ resource?.title }
-      secondary={ truncate(resource?.description, 60 )}
-      image={ resource?.image?.url }
-      handleClick={() => handleClick(resource)}
-      handleEdit={ handleEdit }
-      handleDelete={ handleDelete }
-      menuActions={ menuActions }
-      secondaryActions={ secondaryActions }
-      sortable={ sortable }
-      isDragging={ isDragging }
-      enableBorder={ enableBorder }
-    />  
+		<ResourceListItem
+			icon={icon}
+			color={color}
+			avatar={avatar}
+			primary={resource?.title}
+			secondary={truncate(resource?.description, 60)}
+			image={resource?.image?.url}
+			handleClick={() => handleClick(resource)}
+			handleEdit={handleEdit}
+			handleDelete={handleDelete}
+			menuActions={menuActions}
+			secondaryActions={secondaryActions}
+			sortable={sortable}
+			isDragging={isDragging}
+			enableBorder={enableBorder}
+		/>
 	)
 }
 

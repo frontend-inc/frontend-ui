@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import {
-	Box,  
+	Box,
 	Button,
 	Dialog,
 	DialogActions,
 	DialogContent,
 	DialogTitle,
-  Stack,
+	Stack,
 	Typography,
 	IconButton,
 } from '@mui/material'
@@ -18,8 +18,8 @@ type ModalProps = {
 	open: boolean
 	loading?: boolean
 	handleClose: () => void
-  avatar?: React.ReactNode 
-	title?: string 
+	avatar?: React.ReactNode
+	title?: string
 	subtitle?: string
 	buttons?: any
 	children?: any
@@ -38,7 +38,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 		open,
 		loading = false,
 		handleClose,
-    avatar,
+		avatar,
 		title,
 		subtitle,
 		buttons,
@@ -81,12 +81,12 @@ const Modal: React.FC<ModalProps> = (props) => {
 			{!disableHeader && (
 				<DialogTitle sx={sx.dialogTitleContainer}>
 					<Box sx={sx.dialogTitleContent}>
-            <Stack direction="row" alignItems='center' spacing={1}>
-              { avatar }
-              <Typography variant="subtitle1" color="textPrimary" sx={sx.title}>
-                {title}
-              </Typography>
-            </Stack>
+						<Stack direction="row" alignItems="center" spacing={1}>
+							{avatar}
+							<Typography variant="subtitle1" color="textPrimary" sx={sx.title}>
+								{title}
+							</Typography>
+						</Stack>
 						{!loading && (
 							<Box sx={sx.secondaryActions}>
 								{secondaryActions && secondaryActions}
@@ -149,8 +149,8 @@ const sx = {
 		px: 1,
 		pl: 3,
 		bgcolor: 'background.default',
-    borderBottom: '1px solid',
-    borderColor: "divider"
+		borderBottom: '1px solid',
+		borderColor: 'divider',
 	},
 	dialogTitleContent: {
 		height: '50px',

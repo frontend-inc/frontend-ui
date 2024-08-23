@@ -46,28 +46,25 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 			disablePadding
 			open={openShow}
 			handleClose={() => setOpenShow(false)}
-      title={ resource?.title }
+			title={resource?.title}
 		>
-      <ShowSnippet
-        resource={resource}
-        enableEdit={enableEdit}
-        buttons={buttons}
-        displayFields={displayFields}
-        enableRatings={enableRatings}
-        enablePayments={enablePayments}
-        handleEdit={handleEdit}
-        enableLikes={enableLikes}
-        enableFavorites={enableFavorites}
-        enableSharing={enableSharing}
-      />
-      { enableComments && (
-        <Box px={2}>
-          <Comments 
-            url={ url } 
-            handle={resource?.handle} 
-          /> 
-        </Box>
-      )}
+			<ShowSnippet
+				resource={resource}
+				enableEdit={enableEdit}
+				buttons={buttons}
+				displayFields={displayFields}
+				enableRatings={enableRatings}
+				enablePayments={enablePayments}
+				handleEdit={handleEdit}
+				enableLikes={enableLikes}
+				enableFavorites={enableFavorites}
+				enableSharing={enableSharing}
+			/>
+			{enableComments && (
+				<Box px={2}>
+					<Comments url={url} handle={resource?.handle} />
+				</Box>
+			)}
 		</Drawer>
 	)
 }

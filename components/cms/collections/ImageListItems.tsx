@@ -56,37 +56,37 @@ const ImageListItems: React.FC<ListItemsImageProps> = (props) => {
 	const { handleEdit, handleDeleteClick } = useForms()
 
 	return (
-    <Stack direction="column" spacing={2}>
-      <DataLayout grid>
-        {resources?.map((resource) => (
-          <ImageCard
-            key={resource.id}
-            image={resource?.image?.url}
-            primary={resource?.title}
-            secondaryAction={
-              <ButtonActions 
-                numVisible={0}
-                resource={resource}
-                buttons={buildActions({
-                  enableEdit,
-                  enableDelete,
-                  handleEdit: () => handleEdit(resource),
-                  handleDelete: () => handleDeleteClick(resource),
-                })}
-              /> 
-            }
-            slots={{
-              image: {
-                enableGradient,
-                enableOverlay,                  
-              },
-            }}
-            handleClick={() => handleClick(resource)}
-          />
-        ))}
-      </DataLayout>
-      <LoadMore page={page} numPages={numPages} loadMore={loadMore} />
-    </Stack>
+		<Stack direction="column" spacing={2}>
+			<DataLayout grid>
+				{resources?.map((resource) => (
+					<ImageCard
+						key={resource.id}
+						image={resource?.image?.url}
+						primary={resource?.title}
+						secondaryAction={
+							<ButtonActions
+								numVisible={0}
+								resource={resource}
+								buttons={buildActions({
+									enableEdit,
+									enableDelete,
+									handleEdit: () => handleEdit(resource),
+									handleDelete: () => handleDeleteClick(resource),
+								})}
+							/>
+						}
+						slots={{
+							image: {
+								enableGradient,
+								enableOverlay,
+							},
+						}}
+						handleClick={() => handleClick(resource)}
+					/>
+				))}
+			</DataLayout>
+			<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
+		</Stack>
 	)
 }
 

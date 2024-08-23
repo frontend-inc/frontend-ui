@@ -41,9 +41,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 				alignItems="flex-start"
 			>
 				<Stack direction="column" alignItems="center">
-          {avatar?.url && (
-            <UserAvatar user={user} size={120} enableGradient />
-          )}
+					{avatar?.url && <UserAvatar user={user} size={120} enableGradient />}
 					<SocialFields fields={socialFields} resource={user} />
 				</Stack>
 				<Stack direction="column" spacing={1}>
@@ -66,12 +64,12 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 				</Stack>
 				{buttons?.length > 0 && (
 					<Stack direction="row" sx={sx.buttons}>
-						<ButtonActions 
-              numVisible={1}
-              buttons={buttons} 
-              resource={user} 
-              user={user}
-            />
+						<ButtonActions
+							numVisible={1}
+							buttons={buttons}
+							resource={user}
+							user={user}
+						/>
 					</Stack>
 				)}
 			</Stack>

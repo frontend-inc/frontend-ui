@@ -1,39 +1,28 @@
 import React from 'react'
-import {
-	Image,
-	TouchableOpacity,
-	LightDarkMode,
-} from '../../../components'
+import { Image, TouchableOpacity, LightDarkMode } from '../../../components'
 import { Box } from '@mui/material'
 import { CardProps } from './Card'
 
 const ImageCard: React.FC<CardProps> = (props) => {
 	const {
-    primary,
-    secondaryAction,
+		primary,
+		secondaryAction,
 		handleClick,
-    image,
+		image,
 		height = 260,
-    slots={
-      item: {},
-      image: {}
-    }
+		slots = {
+			item: {},
+			image: {},
+		},
 	} = props || {}
- 
+
 	return (
 		<LightDarkMode mode="dark">
-			<Box sx={sx.root} { ...slots.item }>
+			<Box sx={sx.root} {...slots.item}>
 				<TouchableOpacity handleClick={handleClick}>
-					<Image
-						src={image}
-						height={height}
-						alt={primary}
-            { ...slots.image }						
-					/>
+					<Image src={image} height={height} alt={primary} {...slots.image} />
 				</TouchableOpacity>
-				<Box sx={sx.buttons}>
-					{ secondaryAction }
-				</Box>				
+				<Box sx={sx.buttons}>{secondaryAction}</Box>
 			</Box>
 		</LightDarkMode>
 	)

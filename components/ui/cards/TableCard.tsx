@@ -1,29 +1,25 @@
 import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
-import {
-	Image,
-	TouchableOpacity,
-} from '../..'
+import { Image, TouchableOpacity } from '../..'
 import { CardProps } from './Card'
 
 const TableCard: React.FC<CardProps> = (props) => {
-
-  const {
+	const {
 		label,
-    primary,
-    secondary,
-    secondaryAction,
+		primary,
+		secondary,
+		secondaryAction,
 		handleClick,
-    image,
+		image,
 		height = 240,
-    slots={
-      item: {},
-      image: {}
-    }
+		slots = {
+			item: {},
+			image: {},
+		},
 	} = props || {}
 
 	return (
-		<Stack direction="row" spacing={1} sx={sx.root} { ...slots.item }>
+		<Stack direction="row" spacing={1} sx={sx.root} {...slots.item}>
 			<Box sx={sx.grid}>
 				<Box sx={sx.imageItem}>
 					<Box sx={sx.image}>
@@ -32,20 +28,20 @@ const TableCard: React.FC<CardProps> = (props) => {
 								src={image}
 								height={height}
 								alt={primary}
-								{ ...slots.image }
+								{...slots.image}
 							/>
 						</TouchableOpacity>
 					</Box>
 				</Box>
 				<Box sx={sx.item}>
 					<Typography color="text.primary" variant="body1">
-						{ primary }
+						{primary}
 					</Typography>
 				</Box>
-				{ secondary }
+				{secondary}
 			</Box>
 			<Stack direction="row" justifyContent="flex-end">
-				{ secondaryAction }
+				{secondaryAction}
 			</Stack>
 		</Stack>
 	)

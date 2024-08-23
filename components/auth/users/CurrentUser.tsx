@@ -41,7 +41,7 @@ const CurrentUser: React.FC<CurrentUserProps> = (props) => {
 	let userActions = buildActions({
 		enableEdit,
 		handleEdit,
-		buttons,    
+		buttons,
 	})
 
 	return (

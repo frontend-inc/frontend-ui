@@ -9,7 +9,9 @@ type AdminSubscriptionPlanItemProps = {
 	handleDelete: () => void
 }
 
-const AdminSubscriptionPlanItem: React.FC<AdminSubscriptionPlanItemProps> = (props) => {
+const AdminSubscriptionPlanItem: React.FC<AdminSubscriptionPlanItemProps> = (
+	props
+) => {
 	const {
 		resource: subscriptionPlan,
 		handleClick,
@@ -20,8 +22,8 @@ const AdminSubscriptionPlanItem: React.FC<AdminSubscriptionPlanItemProps> = (pro
 	return (
 		<ResourceListItem
 			icon="CreditCard"
-      primary={ subscriptionPlan?.name }
-      secondary={ subscriptionPlan?.display_price }
+			primary={subscriptionPlan?.name}
+			secondary={subscriptionPlan?.display_price}
 			secondaryActions={
 				subscriptionPlan?.label && <Label label={subscriptionPlan?.label} />
 			}

@@ -1,34 +1,31 @@
 import React from 'react'
 import { Box, Button, Stack, Typography } from '@mui/material'
-import {
-	Image,
-} from '../../../components'
+import { Image } from '../../../components'
 import { useSortable } from '@dnd-kit/sortable'
 import { CardProps } from './Card'
 
-
 type KanBanCardProps = CardProps & {
-  loading?: boolean
-  id: string
-  enableDragging?: boolean
+	loading?: boolean
+	id: string
+	enableDragging?: boolean
 }
 
 const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 	const {
 		id,
-    loading,
-    label,
-    primary,
-    secondary,
-    secondaryAction,
+		loading,
+		label,
+		primary,
+		secondary,
+		secondaryAction,
 		handleClick,
-    image,
-    enableDragging,
+		image,
+		enableDragging,
 		height = 240,
-    slots={
-      item: {},
-      image: {}
-    }		
+		slots = {
+			item: {},
+			image: {},
+		},
 	} = props || {}
 
 	const { attributes, listeners, setNodeRef } = useSortable({
@@ -40,32 +37,32 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 			direction="column"
 			sx={{
 				...sx.root,
-        ...(loading && sx.rootLoading),
+				...(loading && sx.rootLoading),
 				...(enableDragging && sx.rootDragging),
 			}}
-      { ...slots.item }
+			{...slots.item}
 		>
 			<Stack direction="column" ref={setNodeRef} {...attributes} {...listeners}>
 				{image && (
 					<Box sx={sx.image}>
 						<Image
-              label={ label }
+							label={label}
 							src={image}
 							height={height}
 							alt={primary}
 							handleClick={handleClick}
-              { ...slots.image }
+							{...slots.image}
 						/>
 					</Box>
 				)}
 				<Stack direction="row" alignItems="flex-start">
 					<Stack direction="column" spacing={0.5} sx={sx.content}>
 						<Typography sx={sx.title} color="text.primary" variant="subtitle1">
-							{ primary }
+							{primary}
 						</Typography>
 						<Typography color="text.secondary" variant="body2">
-              { secondary }
-              </Typography>
+							{secondary}
+						</Typography>
 					</Stack>
 				</Stack>
 			</Stack>
@@ -80,7 +77,7 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 					Details
 				</Button>
 				<Stack direction="row" alignItems="flex-end">
-					{ secondaryAction }
+					{secondaryAction}
 				</Stack>
 			</Box>
 		</Stack>

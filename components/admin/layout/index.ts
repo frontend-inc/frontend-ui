@@ -8,6 +8,6 @@ export { default as AdminLayoutRight } from './AdminLayoutRight'
 export { default as AdminLayoutScroll } from './AdminLayoutScroll'
 export { default as AdminMenu } from './AdminMenu'
 
-// Expand buttons 
+// Expand buttons
 export { default as ExpandLeftButton } from './ExpandLeftButton'
 export { default as ExpandRightButton } from './ExpandRightButton'

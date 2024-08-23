@@ -27,8 +27,8 @@ const AddonSwirlVideos: React.FC<AddonSwirlVideosProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-		>			
-      <></>
+		>
+			<></>
 		</Section>
 	)
 }

@@ -79,7 +79,7 @@ export const typography = {
 		fontFamily: 'Inter',
 		fontWeight: 600,
 		fontSize: 12,
-    letterSpacing: '0.03em',
+		letterSpacing: '0.03em',
 	},
 	caption: {
 		fontFamily: 'Inter',

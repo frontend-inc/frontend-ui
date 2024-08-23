@@ -43,8 +43,8 @@ const ShowSnippet: React.FC<ShowProps> = (props) => {
 				<Stack spacing={0.5} direction="column" p={2} width="100%">
 					{(enableLikes || enableFavorites || enableSharing) && (
 						<SocialButtons
-              resource={resource}
-							justifyContent="center"							
+							resource={resource}
+							justifyContent="center"
 							enableLikes={enableLikes}
 							enableFavorites={enableFavorites}
 							enableSharing={enableSharing}
@@ -74,8 +74,7 @@ const ShowSnippet: React.FC<ShowProps> = (props) => {
 export default ShowSnippet
 
 const sx = {
-	paper: {
-	},
+	paper: {},
 	container: {
 		borderRadius: 1,
 		overflow: 'hidden',

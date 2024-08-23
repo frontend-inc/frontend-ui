@@ -4,7 +4,7 @@ import TableFilterForm from './TableFilterForm'
 
 type TableFilterPopupProps = {
 	open: boolean
-  loading: boolean
+	loading: boolean
 	anchorEl: any
 	query: any
 	handleClose: () => void
@@ -17,7 +17,7 @@ type TableFilterPopupProps = {
 const TableFilterPopup: React.FC<TableFilterPopupProps> = (props) => {
 	const {
 		open,
-    loading,
+		loading,
 		anchorEl,
 		query,
 		handleClose,
@@ -30,7 +30,7 @@ const TableFilterPopup: React.FC<TableFilterPopupProps> = (props) => {
 	return (
 		<Popup anchorEl={anchorEl} open={open} handleClose={handleClose}>
 			<TableFilterForm
-        loading={ loading }
+				loading={loading}
 				query={query}
 				fields={fields}
 				handleSearch={handleSearch}

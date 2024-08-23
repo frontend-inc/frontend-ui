@@ -11,20 +11,14 @@ type CommentFormProps = {
 }
 
 const CommentForm: React.FC<CommentFormProps> = (props) => {
-	const {		
-		loading,
-		errors,
-		comment,
-		handleChange,
-		handleSubmit,
-	} = props || {}
+	const { loading, errors, comment, handleChange, handleSubmit } = props || {}
 
 	return (
 		<AuthGuard>
 			<ListItem
-        sx={{
-          pl: 0
-        }}
+				sx={{
+					pl: 0,
+				}}
 			>
 				<Stack sx={sx.form} direction="column" spacing={1}>
 					<TextInput

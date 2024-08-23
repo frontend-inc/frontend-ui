@@ -1,9 +1,6 @@
 import React from 'react'
 import { Grid, Stack, Box, Typography } from '@mui/material'
-import { 
-  ExpandLeftButton, 
-  ExpandRightButton 
-} from '../../../components'
+import { ExpandLeftButton, ExpandRightButton } from '../../../components'
 import { TypographyVariantsType } from '../../../types'
 import { useAdmin } from '../../../hooks'
 
@@ -45,7 +42,7 @@ const AdminHeader: React.FC<AdminHeaderProps> = (props) => {
 						{enableExpandLeftPanel && !openLayoutLeft && <ExpandLeftButton />}
 						{primaryActions && primaryActions}
 						{title && (
-							<Typography variant={variant} sx={sx.title} color='text.primary'>
+							<Typography variant={variant} sx={sx.title} color="text.primary">
 								{title}
 							</Typography>
 						)}

@@ -1,9 +1,9 @@
 export type ActionType =
 	| 'action'
-  | 'click'
+	| 'click'
 	| 'navigate'
-  | 'navigate_cms'
-  | 'navigate_user'  
+	| 'navigate_cms'
+	| 'navigate_user'
 	| 'url'
 	| 'page'
 	| 'email'
@@ -27,8 +27,8 @@ export type ButtonType = {
 	path?: string
 	onClick?: (ev: any) => void
 	fieldName?: string
-  action_id?: number
-  action?: ActionType 
+	action_id?: number
+	action?: ActionType
 	options?: {
 		method: 'GET' | 'POST' | 'PUT' | 'DELETE'
 		headers: Record<string, string>

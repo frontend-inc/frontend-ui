@@ -4,11 +4,11 @@ import { useApi } from 'frontend-js'
 import { UnsplashImageType } from '../../types'
 
 type UseUnsplashParams = {
-  apiKey: string
+	apiKey: string
 }
 
 const useUnsplash = (params: UseUnsplashParams) => {
-  const { apiKey } = params || {}
+	const { apiKey } = params || {}
 	const { api } = useApi()
 	const { loading, loadingWrapper } = useLoadingWrapper()
 

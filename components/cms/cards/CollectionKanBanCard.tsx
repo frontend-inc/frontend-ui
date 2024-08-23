@@ -1,9 +1,6 @@
 import React from 'react'
 import { Box, Button, Stack, Typography } from '@mui/material'
-import {
-	SecondaryFields,
-	SocialButtons,
-} from '../../../components'
+import { SecondaryFields, SocialButtons } from '../../../components'
 import { KanBanCard } from '../../../components'
 import { CardProps } from '../../../types'
 import { ButtonActions } from '../../../components'
@@ -15,7 +12,7 @@ type KanBanCardProps = CardProps & {
 	ref?: any
 	attributes?: any
 	listeners?: any
-	enableDragging?: boolean	
+	enableDragging?: boolean
 }
 
 const CollectionKanBanCard: React.FC<KanBanCardProps> = (props) => {
@@ -27,8 +24,8 @@ const CollectionKanBanCard: React.FC<KanBanCardProps> = (props) => {
 		displayFields = [],
 		height = 200,
 		handleClick,
-    enableGradient,
-    enableOverlay,
+		enableGradient,
+		enableOverlay,
 		enableDragging = false,
 		enableComments,
 		enableLikes,
@@ -42,51 +39,51 @@ const CollectionKanBanCard: React.FC<KanBanCardProps> = (props) => {
 	} = props || {}
 
 	return (
-    <KanBanCard 
-      id={ resource?.id }
-      primary={ resource?.title }
-      enableDragging={ enableDragging }
-      loading={ loading }
-      image={ resource?.image?.url }
-      handleClick={ handleClick }
-      secondary={
-        <SecondaryFields
-          enableRatings={ enableRatings }
-          enableUsers={ enableUsers }
-          fields={ displayFields }
-          resource={ resource }
-        />
-      }
-      actions={ 
-        <Box>
-          <SocialButtons
+		<KanBanCard
+			id={resource?.id}
+			primary={resource?.title}
+			enableDragging={enableDragging}
+			loading={loading}
+			image={resource?.image?.url}
+			handleClick={handleClick}
+			secondary={
+				<SecondaryFields
+					enableRatings={enableRatings}
+					enableUsers={enableUsers}
+					fields={displayFields}
+					resource={resource}
+				/>
+			}
+			actions={
+				<Box>
+					<SocialButtons
 						resource={resource}
 						enableLikes={enableLikes}
 						enableFavorites={enableFavorites}
 						enableComments={enableComments}
 					/>
-        </Box> 
-      }
-      secondaryAction={ 
-        <ButtonActions
-          numVisible={0}
-          buttons={buildActions({
-            enableEdit,
-            enableDelete,
-            handleEdit,
-            handleDelete,
-            buttons,
-          })}
-          resource={resource}
-        />
-      }
-      slots={{
-        image: {
-          enableGradient,
-          enableOverlay,      
-        }
-      }}
-    /> 				
+				</Box>
+			}
+			secondaryAction={
+				<ButtonActions
+					numVisible={0}
+					buttons={buildActions({
+						enableEdit,
+						enableDelete,
+						handleEdit,
+						handleDelete,
+						buttons,
+					})}
+					resource={resource}
+				/>
+			}
+			slots={{
+				image: {
+					enableGradient,
+					enableOverlay,
+				},
+			}}
+		/>
 	)
 }
 

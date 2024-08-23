@@ -1,5 +1,5 @@
 import React from 'react'
-import {  
+import {
 	ListCard,
 	Card,
 	CoverCard,
@@ -8,11 +8,7 @@ import {
 	TextCard,
 	TableCard,
 } from '../..'
-import { 
-  SecondaryFields,
-  SocialButtons,  
-  ButtonActions,
-} from '../..'
+import { SecondaryFields, SocialButtons, ButtonActions } from '../..'
 import { ButtonType, DisplayFieldType } from '../../../types'
 import { Box } from '@mui/material'
 
@@ -49,8 +45,8 @@ type DataListItemProps = {
 }
 
 const CollectionListItem: React.FC<DataListItemProps> = (props) => {
-	const {     
-    buttons,
+	const {
+		buttons,
 		resource,
 		displayFields = [],
 		href,
@@ -61,10 +57,10 @@ const CollectionListItem: React.FC<DataListItemProps> = (props) => {
 		enableFavorites = false,
 		enableLikes = false,
 		enableRatings = false,
-    enableUsers = false,
-    style = 'card', 
-    ...rest 
-  } = props
+		enableUsers = false,
+		style = 'card',
+		...rest
+	} = props
 
 	const COMPONENTS = {
 		card: Card,
@@ -76,61 +72,58 @@ const CollectionListItem: React.FC<DataListItemProps> = (props) => {
 		list: ListCard,
 	}
 
-  const itemProps = {
-    card: {},
-    avatar: {},
-    cover: {},
-    chip: {},
-    table: {},
-    text: {},
-    list: {},
-	}[style] || {}
+	const itemProps =
+		{
+			card: {},
+			avatar: {},
+			cover: {},
+			chip: {},
+			table: {},
+			text: {},
+			list: {},
+		}[style] || {}
 
 	let Component = COMPONENTS[style] || Card
 
-	return(
-    <Component 
-      {...rest} 
-      label={ resource?.label }
-      image={ resource?.image?.url }
-      primary={ resource?.title }
-      secondary={ 
-        <SecondaryFields           
-          enableRatings={ enableRatings }
-          enableUsers={ enableUsers }
-          fields={ displayFields }
-          resource={ resource }
-        />
-      }
-      actions={
-        <Box>
-          <SocialButtons  
-            spacing={0}
-            variant='icon'   
-            justifyContent='flex-start'     
-            resource={resource}
-            enableLikes={enableLikes}
-            enableFavorites={enableFavorites}
-            enableComments={enableComments}
-          />
-        </Box>
-      }
-      secondaryAction={ 
-        <ButtonActions 
-          numVisible={0} 
-          buttons={buttons} 
-          resource={resource} 
-        />
-      }
-      slots={{
-        image: {
-          enableGradient,
-          enableOverlay
-        }
-      }}
-      { ...itemProps }
-    />
-  )
+	return (
+		<Component
+			{...rest}
+			label={resource?.label}
+			image={resource?.image?.url}
+			primary={resource?.title}
+			secondary={
+				<SecondaryFields
+					enableRatings={enableRatings}
+					enableUsers={enableUsers}
+					fields={displayFields}
+					resource={resource}
+				/>
+			}
+			actions={
+				<Box>
+					<SocialButtons
+						spacing={0}
+						variant="icon"
+						justifyContent="flex-start"
+						resource={resource}
+						enableLikes={enableLikes}
+						enableFavorites={enableFavorites}
+						enableComments={enableComments}
+					/>
+				</Box>
+			}
+			secondaryAction={
+				<ButtonActions numVisible={0} buttons={buttons} resource={resource} />
+			}
+			slots={{
+				image: {
+					enableGradient,
+					enableOverlay,
+				},
+			}}
+			{...itemProps}
+		/>
+	)
 }
 
 export default CollectionListItem

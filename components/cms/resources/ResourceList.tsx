@@ -2,16 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
 import { Box, Stack } from '@mui/material'
-import {
-	AlertModal,
-	Placeholder,
-} from '../..'
+import { AlertModal, Placeholder } from '../..'
 import {
 	FormFieldType,
 	FilterOptionType,
 	SearchFilterOptionType,
-  TableHeaderType,
-  DisplayFieldType,
+	TableHeaderType,
+	DisplayFieldType,
 } from '../../../types'
 import { SortOptionType, SyntheticEventType } from '../../../types'
 import ResourceForm from './ResourceForm'
@@ -21,11 +18,11 @@ import ResourceListItems from './ResourceListItems'
 import ResourceToolbar from './ResourceToolbar'
 
 export type ResourceListProps = {
-  toolbar?: React.FC<any>
-  list?: React.FC<any>
-  edit?: React.FC<any>
-  create?: React.FC<any>
-  show?: React.FC<any>
+	toolbar?: React.FC<any>
+	list?: React.FC<any>
+	edit?: React.FC<any>
+	create?: React.FC<any>
+	show?: React.FC<any>
 	url: string
 	name: string
 	component?: React.FC<any>
@@ -36,17 +33,17 @@ export type ResourceListProps = {
 	enableLoadMore?: boolean
 	perPage?: number
 	query?: any
-  headers?: TableHeaderType[]
+	headers?: TableHeaderType[]
 	fields?: FormFieldType[]
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
-  displayFields?: DisplayFieldType[]
+	displayFields?: DisplayFieldType[]
 	enableSearch?: boolean
 	buttonText?: string
-  enableShow?: boolean
+	enableShow?: boolean
 	enableEdit?: boolean
 	enableCreate?: boolean
-	enableDelete?: boolean  
+	enableDelete?: boolean
 	sortable?: boolean
 	enableBorder?: boolean
 	direction?: 'row' | 'column'
@@ -54,48 +51,47 @@ export type ResourceListProps = {
 	emptyTitle?: string
 	emptyDescription?: string
 	itemProps?: any
-  slots?: {
-    list?: any 
-    edit?: any 
-    create?: any 
-    show?: any 
-    toolbar?: any 
-  }
+	slots?: {
+		list?: any
+		edit?: any
+		create?: any
+		show?: any
+		toolbar?: any
+	}
 }
 
 const ResourceList: React.FC<ResourceListProps> = (props) => {
+	const SLOT_PROPS = {
+		list: {},
+		edit: {},
+		create: {},
+		show: {},
+		toolbar: {},
+	}
 
-  const SLOT_PROPS = {
-    list: {},
-    edit: {},
-    create: {},
-    show: {},
-    toolbar: {}
-  }
-  
 	const {
-    toolbar: Toolbar = ResourceToolbar,
-    list: List = ResourceListItems,
-    component: Component = ResourceListItem,
-    edit: EditForm = ResourceForm,
-    create: CreateForm = ResourceForm,    		
-    show: ShowModal = ResourceShow, 
+		toolbar: Toolbar = ResourceToolbar,
+		list: List = ResourceListItems,
+		component: Component = ResourceListItem,
+		edit: EditForm = ResourceForm,
+		create: CreateForm = ResourceForm,
+		show: ShowModal = ResourceShow,
 		url,
-		name,    
-    headers = [],
-		fields = [],    
+		name,
+		headers = [],
+		fields = [],
 		filterOptions = [],
 		sortOptions = [],
-    displayFields=[],
+		displayFields = [],
 		query: defaultQuery = {},
 		perPage = 20,
 		enableSearch = false,
 		enableEdit,
 		enableDelete,
 		enableCreate,
-    enableShow,
+		enableShow,
 		handleClick,
-    slots=SLOT_PROPS,
+		slots = SLOT_PROPS,
 		enableBorder = false,
 		direction = 'row',
 		emptyIcon = 'Search',
@@ -103,9 +99,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		emptyDescription = 'Try adjusting your search or filters',
 	} = props
 
-  const [openShow, setOpenShow] = useState(false)
+	const [openShow, setOpenShow] = useState(false)
 	const [openCreate, setOpenCreate] = useState(false)
-  const [openEdit, setOpenEdit] = useState(false)
+	const [openEdit, setOpenEdit] = useState(false)
 	const [openDelete, setOpenDelete] = useState(false)
 
 	const {
@@ -120,7 +116,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		updatePositions,
 		handleChange,
 		query,
-    findOne,
+		findOne,
 		findMany,
 		reloadMany,
 		removeAttachment,
@@ -148,8 +144,8 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		})
 	}
 
-  const handleSort = (field: SortOptionType) => {
-		let sortBy = field?.name 
+	const handleSort = (field: SortOptionType) => {
+		let sortBy = field?.name
 		let sortDir = query?.sort_direction
 		if (sortBy == query?.sort_by) {
 			sortDir = query?.sort_direction == 'asc' ? 'desc' : 'asc'
@@ -159,7 +155,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 			sort_by: sortBy,
 			sort_direction: sortDir,
 		})
-  }
+	}
 
 	const handleSortDirection = (sortDirection: 'asc' | 'desc') => {
 		findMany({
@@ -198,16 +194,16 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 
 	const handleAdd = () => {
 		setResource({})
-    setOpenShow(false)
-    setOpenEdit(false)
-    setOpenCreate(true)
+		setOpenShow(false)
+		setOpenEdit(false)
+		setOpenCreate(true)
 	}
 
 	const handleEdit = (resource) => {
 		setResource(resource)
-    setOpenShow(false)
-    setOpenCreate(false)
-		setOpenEdit(true)    
+		setOpenShow(false)
+		setOpenCreate(false)
+		setOpenEdit(true)
 	}
 
 	const handleSubmit = async () => {
@@ -220,9 +216,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 			}
 			if (resp?.id) {
 				setResource({})
-        setOpenShow(false)
+				setOpenShow(false)
 				setOpenCreate(false)
-        setOpenEdit(false)
+				setOpenEdit(false)
 				reloadMany()
 			}
 		} catch (err) {
@@ -230,28 +226,28 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		}
 	}
 
-  const handleShowClick = async (resource) => {
-    if(enableShow){
-      let resp = await findOne(resource?.id)      
-      setResource(resp)
-      setOpenShow(true)
-      setOpenEdit(false)
-      setOpenCreate(false)    
-    }
-  }
+	const handleShowClick = async (resource) => {
+		if (enableShow) {
+			let resp = await findOne(resource?.id)
+			setResource(resp)
+			setOpenShow(true)
+			setOpenEdit(false)
+			setOpenCreate(false)
+		}
+	}
 
 	const handleDeleteClick = (resource) => {
 		setResource(resource)
-    setOpenEdit(false)
-    setOpenCreate(false)
+		setOpenEdit(false)
+		setOpenCreate(false)
 		setOpenDelete(true)
 	}
 
 	const handleDelete = async () => {
 		await destroy(resource?.id)
-    setOpenShow(false)
-    setOpenEdit(false)
-		setOpenDelete(false)		
+		setOpenShow(false)
+		setOpenEdit(false)
+		setOpenDelete(false)
 		setResource({})
 		reloadMany()
 	}
@@ -288,101 +284,102 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-      <Toolbar 
-        direction={direction}
-        enableSearch={enableSearch}
-        enableFilters={enableFilters}
-        enableSorting={enableSorting}
-        enableCreate={enableCreate}
-        handleSearch={handleSearch}
-        handleKeywordChange={handleKeywordChange}
-        handleFilter={handleFilter}
-        handleClearFilters={handleClearFilters}
-        handleSort={handleSort}
-        handleSortDirection={handleSortDirection}
-        handleAdd={handleAdd}
-        keywords={keywords}
-        activeFilters={activeFilters}
-        filterOptions={filterOptions}
-        sortOptions={sortOptions}
-        query={query}
-        { ...slots.toolbar }
-      />			
-			<Box 
-        sx={{ 
-          ...(loading && sx.loading) 
-        }}
-      >
-        <List 
-          query={query}
-          headers={ headers }
-          page={ page }
-          numPages={ numPages }
-          handleDrop={ handleDrop }
-          handleSort={ handleSort }        
-          handleLoadMore={ loadMore }            
-          renderItem={(resource, props) => (
-            <Component 
-              key={ resource?.id }              
-              resource={ resource }
-              enableBorder={ enableBorder }
-              enableEdit={ enableEdit }
-              enableDelete={ enableDelete }
-              handleClick={handleClick ? 
-                  () => handleClick(resource) : 
-                  () => handleShowClick(resource) 
-              }
-              handleEdit={() => handleEdit(resource) }
-              handleDelete={() => handleDeleteClick(resource) }    
-              { ...props }
-              { ...slots.list }
-            />
-          )}
-        />			
-        {!loading && resources?.length == 0 && (
-          <Placeholder
-            icon={emptyIcon}
-            title={emptyTitle}
-            description={emptyDescription}
-          />
-        )}			  
+			<Toolbar
+				direction={direction}
+				enableSearch={enableSearch}
+				enableFilters={enableFilters}
+				enableSorting={enableSorting}
+				enableCreate={enableCreate}
+				handleSearch={handleSearch}
+				handleKeywordChange={handleKeywordChange}
+				handleFilter={handleFilter}
+				handleClearFilters={handleClearFilters}
+				handleSort={handleSort}
+				handleSortDirection={handleSortDirection}
+				handleAdd={handleAdd}
+				keywords={keywords}
+				activeFilters={activeFilters}
+				filterOptions={filterOptions}
+				sortOptions={sortOptions}
+				query={query}
+				{...slots.toolbar}
+			/>
+			<Box
+				sx={{
+					...(loading && sx.loading),
+				}}
+			>
+				<List
+					query={query}
+					headers={headers}
+					page={page}
+					numPages={numPages}
+					handleDrop={handleDrop}
+					handleSort={handleSort}
+					handleLoadMore={loadMore}
+					renderItem={(resource, props) => (
+						<Component
+							key={resource?.id}
+							resource={resource}
+							enableBorder={enableBorder}
+							enableEdit={enableEdit}
+							enableDelete={enableDelete}
+							handleClick={
+								handleClick
+									? () => handleClick(resource)
+									: () => handleShowClick(resource)
+							}
+							handleEdit={() => handleEdit(resource)}
+							handleDelete={() => handleDeleteClick(resource)}
+							{...props}
+							{...slots.list}
+						/>
+					)}
+				/>
+				{!loading && resources?.length == 0 && (
+					<Placeholder
+						icon={emptyIcon}
+						title={emptyTitle}
+						description={emptyDescription}
+					/>
+				)}
 			</Box>
-			<CreateForm 
-        open={ openCreate }
-        handleClose={() => setOpenCreate(false)}
-        loading={ loading }
-        errors={ errors }
-        resource={ resource }
-        handleChange={ handleChange }        
-        handleRemove={ handleRemove }
-        handleSubmit={ handleSubmit }
-        fields={ fields }
-        { ...slots.create }
-      />
-      <EditForm                 
-        open={ openEdit }
-        handleClose={() => setOpenEdit(false)}
-        loading={ loading }
-        errors={ errors }
-        resource={ resource }
-        handleChange={ handleChange }        
-        handleRemove={ handleRemove }
-        handleSubmit={ handleSubmit }
-        fields={ fields }
-        { ...slots.edit }
-      />
-      <ShowModal 
-        loading={loading}
-        open={ openShow }
-        handleClose={() => setOpenShow(false)}
-        fields={ displayFields }
-        resource={ resource }
-        enableEdit={ enableEdit }
-        enableDelete={ enableDelete }
-        handleEdit={() => handleEdit(resource) }
-        handleDelete={() => handleDeleteClick(resource) }
-        { ...slots.show }
-      />
+			<CreateForm
+				open={openCreate}
+				handleClose={() => setOpenCreate(false)}
+				loading={loading}
+				errors={errors}
+				resource={resource}
+				handleChange={handleChange}
+				handleRemove={handleRemove}
+				handleSubmit={handleSubmit}
+				fields={fields}
+				{...slots.create}
+			/>
+			<EditForm
+				open={openEdit}
+				handleClose={() => setOpenEdit(false)}
+				loading={loading}
+				errors={errors}
+				resource={resource}
+				handleChange={handleChange}
+				handleRemove={handleRemove}
+				handleSubmit={handleSubmit}
+				fields={fields}
+				{...slots.edit}
+			/>
+			<ShowModal
+				loading={loading}
+				open={openShow}
+				handleClose={() => setOpenShow(false)}
+				fields={displayFields}
+				resource={resource}
+				enableEdit={enableEdit}
+				enableDelete={enableDelete}
+				handleEdit={() => handleEdit(resource)}
+				handleDelete={() => handleDeleteClick(resource)}
+				{...slots.show}
+			/>
 			<AlertModal
 				open={openDelete}
 				handleClose={() => setOpenDelete(false)}

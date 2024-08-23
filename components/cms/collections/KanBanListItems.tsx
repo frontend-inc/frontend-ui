@@ -11,7 +11,7 @@ export type KanBanListItemsProps = CollectionListProps & {
 		label: string
 		value: string
 	}[]
-  enableSharing?: boolean
+	enableSharing?: boolean
 	enableCreate?: boolean
 }
 
@@ -80,7 +80,7 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 		await reloadMany()
 	}
 
-  const [columns, setColumns] = useState({})
+	const [columns, setColumns] = useState({})
 
 	const handleGroupResources = (resources, fieldName) => {
 		let sortedResources = resources.sort((a, b) => a.position - b.position)
@@ -99,35 +99,34 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 		}
 	}, [resources, fieldName, headers])
 
-
-  const slots = {
-    list: {
-      enableOverlay,
-      enableGradient,
-      buttons,
-      displayFields,
-      enableComments,
-      enableFavorites,
-      enableLikes,
-      enableRatings,
-    },
-    card: {
-      enableOverlay,
-      enableGradient,
-      buttons,
-      displayFields,
-      enableComments,
-      enableFavorites,
-      enableLikes,
-      enableRatings,
-    }
-  }
+	const slots = {
+		list: {
+			enableOverlay,
+			enableGradient,
+			buttons,
+			displayFields,
+			enableComments,
+			enableFavorites,
+			enableLikes,
+			enableRatings,
+		},
+		card: {
+			enableOverlay,
+			enableGradient,
+			buttons,
+			displayFields,
+			enableComments,
+			enableFavorites,
+			enableLikes,
+			enableRatings,
+		},
+	}
 
 	if (!headers || !fieldName || Object.keys(columns)?.length == 0) return null
 	return (
 		<KanBanBoard
 			loading={loading}
-      columns={columns}
+			columns={columns}
 			headers={headers}
 			handleClick={handleClick}
 			handleDrop={handleDrop}
@@ -136,9 +135,9 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 			enableCreate={enableCreate}
 			handleEdit={handleEdit}
 			handleDelete={handleDeleteClick}
-			handleAdd={handleAdd}			
-      slots={slots}		
-      component={ CollectionKanBanCard }
+			handleAdd={handleAdd}
+			slots={slots}
+			component={CollectionKanBanCard}
 		/>
 	)
 }

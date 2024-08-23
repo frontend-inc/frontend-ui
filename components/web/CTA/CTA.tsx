@@ -14,8 +14,7 @@ export type CTAProps = {
 
 // Call To Action
 const CTA: React.FC<CTAProps> = (props) => {
-	const { label, title, description, buttons } =
-		props || {}
+	const { label, title, description, buttons } = props || {}
 
 	return (
 		<Box sx={sx.root}>
@@ -41,12 +40,12 @@ const CTA: React.FC<CTAProps> = (props) => {
 				)}
 				{buttons?.length > 0 && (
 					<Box sx={sx.buttons}>
-						<ButtonActions 
-              resource={[]}
-              buttons={buttons} 
-              size='large'
-              justifyContent='center'
-            />
+						<ButtonActions
+							resource={[]}
+							buttons={buttons}
+							size="large"
+							justifyContent="center"
+						/>
 					</Box>
 				)}
 			</Stack>

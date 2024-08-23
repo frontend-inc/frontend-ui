@@ -12,29 +12,20 @@ import { CardProps } from './Card'
 
 const ChipCard: React.FC<CardProps> = (props) => {
 	const {
-    primary,
-    secondary,
-    secondaryAction,
+		primary,
+		secondary,
+		secondaryAction,
 		handleClick,
-    image,
-    slots={
-      item: {},
-      image: {}
-    }
+		image,
+		slots = {
+			item: {},
+			image: {},
+		},
 	} = props
 
 	return (
-		<List 
-      dense 
-      disablePadding 
-      sx={sx.root} 
-      { ...slots.item }
-    >
-			<ListItem
-				disablePadding
-				disableGutters
-				secondaryAction={ secondaryAction }
-			>
+		<List dense disablePadding sx={sx.root} {...slots.item}>
+			<ListItem disablePadding disableGutters secondaryAction={secondaryAction}>
 				<ListItemButton
 					sx={sx.listItemButton}
 					onClick={handleClick && handleClick}
@@ -49,16 +40,13 @@ const ChipCard: React.FC<CardProps> = (props) => {
 								}}
 								src={image}
 								alt={primary}
-                { ...slots.image }
+								{...slots.image}
 							>
 								<Box />
 							</Avatar>
 						</ListItemIcon>
 					)}
-					<ListItemText
-						primary={ primary }
-						secondary={ secondary }
-					/>
+					<ListItemText primary={primary} secondary={secondary} />
 				</ListItemButton>
 			</ListItem>
 		</List>

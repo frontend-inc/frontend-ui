@@ -4,7 +4,7 @@ import { FILTERABLE_TYPES, SORTABLE_TYPES } from '../../../../constants/index'
 import { FilterList } from '@mui/icons-material'
 import { Plus, Search } from 'lucide-react'
 import {
-  IconLoading,
+	IconLoading,
 	TableFilterInputs,
 	TableFilterKeywordsInput,
 	TableFilterSortInput,
@@ -12,7 +12,7 @@ import {
 import { OptionType } from '../../../../types'
 
 type TableFilterFormProps = {
-  loading: boolean
+	loading: boolean
 	query: any
 	fields: any[]
 	handleChange: (e: any) => void
@@ -21,8 +21,14 @@ type TableFilterFormProps = {
 }
 
 const TableFilterForm: React.FC<TableFilterFormProps> = (props) => {
-	const { loading, query, fields, handleChange, handleSearch, handleClearFilters } =
-		props
+	const {
+		loading,
+		query,
+		fields,
+		handleChange,
+		handleSearch,
+		handleClearFilters,
+	} = props
 
 	const [filterOptions, setFilterOptions] = useState<Record<string, any>[]>([])
 	const [sortOptions, setSortOptions] = useState<OptionType[]>([])
@@ -194,7 +200,7 @@ const TableFilterForm: React.FC<TableFilterFormProps> = (props) => {
 					<Button
 						variant="contained"
 						color="secondary"
-						startIcon={ <Plus /> }
+						startIcon={<Plus />}
 						onClick={handleAddFilter}
 						sx={sx.addFilterButton}
 					>
@@ -203,12 +209,10 @@ const TableFilterForm: React.FC<TableFilterFormProps> = (props) => {
 				</Box>
 			</Box>
 			<Button
-				sx={sx.button}				
-        startIcon={
-          loading ? 
-            <IconLoading loading={loading} /> : 
-            <Search size={20} />
-        }        
+				sx={sx.button}
+				startIcon={
+					loading ? <IconLoading loading={loading} /> : <Search size={20} />
+				}
 				onClick={handleFilterSearch}
 				fullWidth
 				variant="contained"

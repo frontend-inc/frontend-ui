@@ -68,7 +68,7 @@ const GeoToolbar: React.FC<CollectionToolbarProps> = (props) => {
 					direction={{ xs: 'column', sm: 'row' }}
 					alignItems="center"
 				>
-					{ enableSearch && (
+					{enableSearch && (
 						<GeoSearchInput
 							value={keywords}
 							location={location}

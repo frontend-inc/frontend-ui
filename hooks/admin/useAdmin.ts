@@ -3,10 +3,10 @@ import { AdminContext } from '../../context'
 
 const useAdmin = () => {
 	const {
-    apiUrl,
-    clientUrl,
+		apiUrl,
+		clientUrl,
 		loading,
-		setLoading,    		
+		setLoading,
 		leftTab,
 		setLeftTab,
 		rightTab,
@@ -19,8 +19,8 @@ const useAdmin = () => {
 	} = useContext(AdminContext)
 
 	return {
-    apiUrl,
-    clientUrl,
+		apiUrl,
+		clientUrl,
 		loading,
 		setLoading,
 		leftTab,

@@ -4,7 +4,7 @@ import { CollectionListProps } from '../collections/CollectionList'
 import KanBanListItems from './KanBanListItems'
 
 export type KanBanListProps = CollectionListProps & {
-  fieldName: string
+	fieldName: string
 	headers: {
 		label: string
 		value: string
@@ -12,13 +12,9 @@ export type KanBanListProps = CollectionListProps & {
 }
 
 const KanBanList: React.FC<KanBanListProps> = (props) => {
-	return(
-    <CollectionList 
-      {...props} 
-      enableSorting={false} 
-      list={KanBanListItems} 
-    />
-  )
+	return (
+		<CollectionList {...props} enableSorting={false} list={KanBanListItems} />
+	)
 }
 
 export default KanBanList

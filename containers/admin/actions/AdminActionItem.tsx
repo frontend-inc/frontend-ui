@@ -19,11 +19,9 @@ const AdminActionItem: React.FC<AdminActionItemProps> = (props) => {
 			sortable={sortable}
 			icon="Zap"
 			color="primary.main"
-			primary={ resource?.label }
-      secondary={ resource?.collection?.name }			
-			secondaryActions={
-				<Label label={resource?.event_type} />
-			}
+			primary={resource?.label}
+			secondary={resource?.collection?.name}
+			secondaryActions={<Label label={resource?.event_type} />}
 			handleClick={handleClick}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}

@@ -5,7 +5,9 @@ import { CollectionListProps } from '../collections/CollectionList'
 export type ImageListProps = CollectionListProps
 
 const ImageList: React.FC<ImageListProps> = (props) => {
-	return <CollectionList {...props} list={ImageListItems} show={ShowImageModal} />
+	return (
+		<CollectionList {...props} list={ImageListItems} show={ShowImageModal} />
+	)
 }
 
 export default ImageList

@@ -13,39 +13,28 @@ import { CardProps } from './Card'
 
 const VideoCard: React.FC<CardProps> = (props) => {
 	const {
-    avatar,
-    primary,    
-    secondaryAction,
+		avatar,
+		primary,
+		secondaryAction,
 		handleClick,
-    image,		
-    slots={
-      item: {},
-      image: {}
-    }
+		image,
+		slots = {
+			item: {},
+			image: {},
+		},
 	} = props || {}
 
 	return (
 		<LightDarkMode mode="dark">
-			<Box sx={sx.root} { ...slots.item }>
+			<Box sx={sx.root} {...slots.item}>
 				<TouchableOpacity handleClick={handleClick}>
-					<Image
-						src={image}
-						height={360}
-						alt={primary}
-						{ ...slots.image }
-					/>
+					<Image src={image} height={360} alt={primary} {...slots.image} />
 				</TouchableOpacity>
 				<IconButton sx={sx.playIcon} onClick={handleClick}>
 					<Icon name="Play" color="common.white" size={20} />
 				</IconButton>
-				<Box sx={sx.buttons}>
-          { secondaryAction }
-				</Box>
-        { avatar && (
-				<Box sx={sx.avatar}>					
-        { avatar }
-				</Box>
-        )}
+				<Box sx={sx.buttons}>{secondaryAction}</Box>
+				{avatar && <Box sx={sx.avatar}>{avatar}</Box>}
 			</Box>
 		</LightDarkMode>
 	)

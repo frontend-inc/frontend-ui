@@ -5,13 +5,9 @@ import { CollectionListProps } from '../collections/CollectionList'
 export type VideoListProps = CollectionListProps
 
 const VideoList: React.FC<VideoListProps> = (props) => {
-	return(
-    <CollectionList 
-      {...props} 
-      list={VideoListItems} 
-      show={ShowVideoModal} 
-    />
-  )
+	return (
+		<CollectionList {...props} list={VideoListItems} show={ShowVideoModal} />
+	)
 }
 
 export default VideoList

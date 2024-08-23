@@ -5,18 +5,18 @@ import { CardProps } from './Card'
 
 const TextCard: React.FC<CardProps> = (props) => {
 	const {
-    primary,
-    secondary,
-    actions,
-    secondaryAction,
+		primary,
+		secondary,
+		actions,
+		secondaryAction,
 		handleClick,
-    slots={
-      item: {},
-    }
+		slots = {
+			item: {},
+		},
 	} = props || {}
 
 	return (
-		<Box sx={sx.root} { ...slots.item }>
+		<Box sx={sx.root} {...slots.item}>
 			<Stack direction="row" spacing={1}>
 				<Stack direction="column" spacing={1} sx={sx.content}>
 					<Link sx={sx.link} onClick={handleClick}>
@@ -29,15 +29,13 @@ const TextCard: React.FC<CardProps> = (props) => {
 						variant="body2"
 						sx={sx.description}
 					>
-						{ secondary }
+						{secondary}
 					</Typography>
-					<Stack direction="row">
-						{ actions }
-					</Stack>
+					<Stack direction="row">{actions}</Stack>
 				</Stack>
 			</Stack>
 			<Stack direction="row" justifyContent="flex-end" sx={sx.buttons}>
-				{ secondaryAction }
+				{secondaryAction}
 			</Stack>
 		</Box>
 	)

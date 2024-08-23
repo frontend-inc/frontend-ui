@@ -1,45 +1,40 @@
 import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
-import {
-	Image,
-  MenuButton,
-	TouchableOpacity,
-} from '../..'
+import { Image, MenuButton, TouchableOpacity } from '../..'
 
 type DataListItemProps = {
-  label?: string
-  primary: string 
-  secondary?: string
-  actions?: React.ReactNode
-  secondaryAction?: React.ReactNode
-  image?: string
-  height?: number
-  handleClick?: () => void 
-  handleEdit?: () => void
-  handleDelete?: () => void
-  slots?: {
-    item?: any
-    image?: any
-  } 
+	label?: string
+	primary: string
+	secondary?: string
+	actions?: React.ReactNode
+	secondaryAction?: React.ReactNode
+	image?: string
+	height?: number
+	handleClick?: () => void
+	handleEdit?: () => void
+	handleDelete?: () => void
+	slots?: {
+		item?: any
+		image?: any
+	}
 }
 
 const DataListItem: React.FC<DataListItemProps> = (props) => {
-	
 	const {
-    label,
+		label,
 		primary,
-    secondary,
-    actions,
-    secondaryAction,
-    height,
-    image,
-    handleClick,
-    handleEdit,
-    handleDelete,
-    slots={
-      item: {},
-      image: {}
-    },
+		secondary,
+		actions,
+		secondaryAction,
+		height,
+		image,
+		handleClick,
+		handleEdit,
+		handleDelete,
+		slots = {
+			item: {},
+			image: {},
+		},
 	} = props || {}
 
 	return (
@@ -49,39 +44,39 @@ const DataListItem: React.FC<DataListItemProps> = (props) => {
 				spacing={1}
 				flexDirection={{ xs: 'column', sm: 'row' }}
 			>
-        { image && (
-          <Box sx={sx.image}>
-            <TouchableOpacity handleClick={handleClick}>
-              <Image
-                label={label}
-                src={image}
-                height={height}
-                alt={primary}
-                { ...slots.image }
-              />
-            </TouchableOpacity>
-          </Box>
-        )}
+				{image && (
+					<Box sx={sx.image}>
+						<TouchableOpacity handleClick={handleClick}>
+							<Image
+								label={label}
+								src={image}
+								height={height}
+								alt={primary}
+								{...slots.image}
+							/>
+						</TouchableOpacity>
+					</Box>
+				)}
 				<Stack direction="row" spacing={1} sx={sx.contentArea}>
 					<Stack direction="column" sx={sx.content}>
-						<Stack direction="column" spacing={0.5}>              
+						<Stack direction="column" spacing={0.5}>
 							<Typography color="text.primary" variant="subtitle2">
-								{ primary }
+								{primary}
 							</Typography>
-              <Typography color="text.secondary" variant="body2">
-								{ secondary }
-							</Typography>              
+							<Typography color="text.secondary" variant="body2">
+								{secondary}
+							</Typography>
 						</Stack>
 						<Stack direction="row" justifyContent="flex-end">
-              { actions }
+							{actions}
 						</Stack>
 					</Stack>
-					<Stack direction="row" justifyContent="flex-end">            
-            {(handleEdit || handleDelete) && (
-						  <MenuButton handleEdit={handleEdit} handleDelete={handleDelete}>
-							  { secondaryAction }
-						  </MenuButton>
-					  )}            
+					<Stack direction="row" justifyContent="flex-end">
+						{(handleEdit || handleDelete) && (
+							<MenuButton handleEdit={handleEdit} handleDelete={handleDelete}>
+								{secondaryAction}
+							</MenuButton>
+						)}
 					</Stack>
 				</Stack>
 			</Stack>
