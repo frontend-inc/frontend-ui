@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Stack } from '@mui/material'
-import { SortableResourceList, ResourceList, Drawer } from '../../../components'
+import { ResourceList, Drawer } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { AdminActionItem, AdminZapItem } from '../../../containers'
 import { ACTION_TYPES } from '../../../constants'
@@ -51,31 +51,30 @@ const AdminActionsList: React.FC = () => {
 				emptyTitle="No actions"
 				emptyDescription="No actions yet."
 			/>
-			<Drawer open={open} handleClose={handleClose}>
-        { activeAction?.id && (
-          <ResourceList
-            sortable
-            enableBorder
-            direction="column"
-            //@ts-ignore
-            url={`${apiUrl}/actions/${activeAction?.id}/zaps`}
-            name="zap"
-            enableSearch
-            enableCreate
-            enableEdit
-            enableDelete
-            query={{
-              sort_by: 'position',
-              sort_direction: 'asc',
-            }}
-            edit={AdminZapForm}
-            create={AdminZapForm}
-            component={AdminZapItem}
-            emptyIcon="Zap"
-            emptyTitle="No zaps"
-            emptyDescription="No zaps yet."
-          />
-        )}
+
+			<Drawer open={open} handleClose={handleClose}>        
+        <ResourceList
+          sortable
+          enableBorder
+          direction="column"
+          //@ts-ignore
+          url={`${apiUrl}/actions/${activeAction?.id}/zaps`}
+          name="zap"
+          enableSearch
+          enableCreate
+          enableEdit
+          enableDelete
+          query={{
+            sort_by: 'position',
+            sort_direction: 'asc',
+          }}
+          edit={AdminZapForm}
+          create={AdminZapForm}
+          component={AdminZapItem}
+          emptyIcon="Zap"
+          emptyTitle="No zaps"
+          emptyDescription="No zaps yet."
+        />
 			</Drawer>
 		</Stack>
 	)

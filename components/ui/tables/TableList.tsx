@@ -40,7 +40,7 @@ type TableProps = {
 	handleSelect?: (row: any) => void
 	handleSelectAll?: () => void
 	handleSort: (field: any) => void
-	handlePaginate: (e: any, page: number) => void
+	handlePaginate: (page: number) => void
 	emptyIcon?: string
 	emptyTitle?: string
 	emptyDescription?: string
