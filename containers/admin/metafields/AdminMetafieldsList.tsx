@@ -1,5 +1,5 @@
 import React from 'react'
-import { SortableResourceList } from '../../../components'
+import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { AdminMetafieldItem } from '../..'
 import AdminMetafieldForm from './AdminMetafieldForm'
@@ -8,7 +8,7 @@ const AdminMetafieldsList = () => {
 	const { apiUrl } = useAdmin()
 
 	return (
-		<SortableResourceList
+		<ResourceList
 			sortable
 			url={`${apiUrl}/metafields`}
 			name="metafield"

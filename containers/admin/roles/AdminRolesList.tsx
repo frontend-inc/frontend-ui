@@ -1,5 +1,5 @@
 import React from 'react'
-import { SortableResourceList } from '../../../components'
+import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { AdminRoleItem } from '../../../containers'
 import AdminRoleForm from './AdminRoleForm'
@@ -8,7 +8,8 @@ const AdminRolesList: React.FC = () => {
 	const { apiUrl } = useAdmin()
 
 	return (
-		<SortableResourceList
+		<ResourceList
+      sortable
 			url={`${apiUrl}/roles`}
 			name="role"
 			enableCreate

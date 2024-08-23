@@ -72,7 +72,11 @@ const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
 					/>
 				))}
 			</DataLayout>
-			<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
+			<LoadMore 
+        page={page} 
+        numPages={numPages} 
+        handlePaginate={loadMore} 
+      />
 		</Stack>
 	)
 }

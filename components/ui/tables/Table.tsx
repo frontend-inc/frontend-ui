@@ -25,7 +25,7 @@ type TableProps = {
 	query: any
 	handleQueryChange: (e: any) => void
 	handleClearQuery: () => void
-	handlePaginate: (e: any, page: number) => void
+	handlePaginate: (page: number) => void
 	handleSearch: (keywords: any) => void
 	handleKeywordSearch: (keywords: string) => void
 	handleSort: (field: any) => void

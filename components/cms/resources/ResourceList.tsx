@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
 import { Box, Stack } from '@mui/material'
-import { AlertModal, Placeholder } from '../..'
+import { SortableListItems, AlertModal, Placeholder } from '../..'
 import {
 	FormFieldType,
 	FilterOptionType,
@@ -18,11 +18,13 @@ import ResourceListItems from './ResourceListItems'
 import ResourceToolbar from './ResourceToolbar'
 
 export type ResourceListProps = {
+  sortable?: boolean
 	toolbar?: React.FC<any>
 	list?: React.FC<any>
 	edit?: React.FC<any>
 	create?: React.FC<any>
 	show?: React.FC<any>
+  pagination?: React.FC<any>
 	url: string
 	name: string
 	component?: React.FC<any>
@@ -44,19 +46,20 @@ export type ResourceListProps = {
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
-	sortable?: boolean
 	enableBorder?: boolean
 	direction?: 'row' | 'column'
 	emptyIcon?: string
 	emptyTitle?: string
 	emptyDescription?: string
 	itemProps?: any
+  disableInfiniteLoad?: boolean
 	slots?: {
 		list?: any
 		edit?: any
 		create?: any
 		show?: any
 		toolbar?: any
+    pagination?: any
 	}
 }
 
@@ -67,15 +70,18 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		create: {},
 		show: {},
 		toolbar: {},
+    pagination: {},
 	}
 
 	const {
+    sortable = false,
 		toolbar: Toolbar = ResourceToolbar,
 		list: List = ResourceListItems,
 		component: Component = ResourceItem,
 		edit: EditForm = ResourceForm,
 		create: CreateForm = ResourceForm,
 		show: ShowModal = ResourceShow,
+    disableInfiniteLoad = false,
 		url,
 		name,
 		headers = [],
@@ -122,7 +128,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		removeAttachment,
 		page,
 		numPages,
+    totalCount,
 		loadMore,
+    paginate,
 	} = useResource({
 		name,
 		url,
@@ -143,6 +151,14 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 			per_page: perPage,
 		})
 	}
+
+  const handlePaginate = async (page) => {
+    if(!disableInfiniteLoad){
+      await loadMore()
+    }else{
+      await paginate(page)
+    }
+  }
 
 	const handleSort = (field: SortOptionType) => {
 		let sortBy = field?.name
@@ -309,14 +325,14 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					...(loading && sx.loading),
 				}}
 			>
+        { !sortable ? (
 				<List
 					query={query}
 					headers={headers}
 					page={page}
 					numPages={numPages}
-					handleDrop={handleDrop}
-					handleSort={handleSort}
-					handleLoadMore={loadMore}
+					handlePaginate={handlePaginate}
+          handleSort={handleSort}
           resources={ resources }
 					renderItem={(resource, props) => (
 						<Component
@@ -332,11 +348,39 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 							}
 							handleEdit={() => handleEdit(resource)}
 							handleDelete={() => handleDeleteClick(resource)}
-							{...props}
-							{...slots.list}
+              { ...props }
+							{...slots.list}              
 						/>
 					)}
 				/>
+        ):(
+          <SortableListItems
+            droppableId="sortable"
+            resources={resources}
+            handleDrop={handleDrop}
+            page={page}
+            numPages={numPages}
+            handlePaginate={handlePaginate}
+            renderItem={(resource, index) => (
+              <Component
+                key={index}
+                sortable
+                resource={resource}
+                enableBorder={enableBorder}
+                enableEdit={enableEdit}
+                enableDelete={enableDelete}                
+                handleClick={
+                  handleClick
+                    ? () => handleClick(resource)
+                    : () => handleShowClick(resource)
+                }
+                handleEdit={() => handleEdit(resource)}
+                handleDelete={() => handleDeleteClick(resource)}
+                  {...slots.list}
+              />
+            )}
+          />
+        )}            
 				{!loading && resources?.length == 0 && (
 					<Placeholder
 						icon={emptyIcon}

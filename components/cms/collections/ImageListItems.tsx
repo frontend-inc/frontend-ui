@@ -85,7 +85,11 @@ const ImageListItems: React.FC<ListItemsImageProps> = (props) => {
 					/>
 				))}
 			</DataLayout>
-			<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
+			<LoadMore 
+        page={page} 
+        numPages={numPages} 
+        handlePaginate={loadMore} 
+      />
 		</Stack>
 	)
 }

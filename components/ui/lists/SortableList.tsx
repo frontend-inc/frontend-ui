@@ -5,7 +5,7 @@ import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd'
 type SortableListProps = {
 	items: any[]
 	droppableId: string
-	renderItem: (item: any, index: number) => JSX.Element
+	renderItem: (item: any, index: number, props: any) => React.ReactNode
 	handleDrop: (items: any[]) => void
 }
 
@@ -41,48 +41,49 @@ const SortableList: React.FC<SortableListProps> = (props) => {
 	}, [items])
 
 	return (
-		<DragDropContext onDragEnd={onDragEnd}>
-			<Droppable droppableId={String(droppableId)}>
-				{(provided) => (
-					<Box sx={sx.root}>
-						<List
-							sx={sx.list}
-							{...provided.droppableProps}
-							ref={provided.innerRef}
-						>
-							{sorted?.map((item, index) => (
-								<Draggable
-									key={item?.id || index}
-									draggableId={String(item?.id || index)}
-									index={index}
-								>
-									{(provided, snapshot) => (
-										<Box
-											ref={provided.innerRef}
-											{...provided.draggableProps}
-											{...provided.dragHandleProps}
-											sx={{
-												...sx.draggableItem,
-												...(snapshot.isDragging && sx.isDragging),
-											}}
-										>
-											{renderItem(
-												{
-													...item,
-													isDragging: snapshot.isDragging,
-												},
-												index
-											)}
-										</Box>
-									)}
-								</Draggable>
-							))}
-						</List>
-						{provided.placeholder}
-					</Box>
-				)}
-			</Droppable>
-		</DragDropContext>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId={String(droppableId)}>
+          {(provided) => (
+            <Box sx={sx.root}>
+              <List
+                sx={sx.list}
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                {sorted?.map((item, index) => (
+                  <Draggable
+                    key={item?.id || index}
+                    draggableId={String(item?.id || index)}
+                    index={index}
+                  >
+                    {(provided, snapshot) => (
+                      <Box
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        sx={{
+                          ...sx.draggableItem,
+                          ...(snapshot.isDragging && sx.isDragging),
+                        }}
+                      >
+                        {renderItem(
+                          {
+                            ...item,
+                            isDragging: snapshot.isDragging,
+                          },
+                          index,
+                          props 
+                        )}
+                      </Box>
+                    )}
+                  </Draggable>
+                ))}
+              </List>
+              {provided.placeholder}
+            </Box>
+          )}
+        </Droppable>
+      </DragDropContext>    
 	)
 }
 

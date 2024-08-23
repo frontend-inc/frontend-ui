@@ -15,7 +15,7 @@ type PaginationProps = {
 	page?: number
 	perPage?: number
 	numPages?: number
-	handlePaginate: (event: React.ChangeEvent<unknown>, page: number) => void
+	handlePaginate: (page: number) => void
 }
 
 const Pagination: React.FC<PaginationProps> = (props) => {
@@ -35,7 +35,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
 
 	const handleChangePage = (event, nextPage) => {
 		setPageNumber(nextPage)
-		handlePaginate(event, nextPage)
+		handlePaginate(nextPage)
 	}
 
 	useEffect(() => {

@@ -7,7 +7,7 @@ import {
 	QueryParamsType,
 } from '../../../types'
 
-export type ResourceListProps = {
+export type ResourceListItemsProps = {
 	query?: QueryParamsType
 	resources: any[]
 	headers?: TableHeaderType[]
@@ -20,23 +20,33 @@ export type ResourceListProps = {
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
 	handleDrop?: (sorted: any[]) => void
-	handleLoadMore: () => void
-	handleSort: (field: SortOptionType) => void
+	handlePaginate: (page: number) => void
+	handleSort?: (field: SortOptionType) => void
 	renderItem: (resource: any, props: any) => React.ReactNode
 }
 
-const ResourceList: React.FC<ResourceListProps> = (props) => {
-	const { resources, page, numPages, handleLoadMore, renderItem } = props || {}
+const ResourceListItems: React.FC<ResourceListItemsProps> = (props) => {
+	const { 
+    page,
+    numPages,
+    handlePaginate,
+    resources, 
+    renderItem 
+  } = props || {}
 
 	return (
 		<Stack spacing={2} sx={sx.fullWidth}>
 			<List>{resources?.map((resource) => renderItem(resource, props))}</List>
-			<LoadMore page={page} numPages={numPages} loadMore={handleLoadMore} />
+      <LoadMore
+        page={page}
+        numPages={numPages}
+        handlePaginate={() => handlePaginate(page + 1)}
+      />
 		</Stack>
 	)
 }
 
-export default ResourceList
+export default ResourceListItems
 
 const sx = {
 	fullWidth: {

@@ -134,7 +134,11 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 						/>
 					))}
 				</DataLayout>
-				<LoadMore page={page} numPages={numPages} loadMore={handleLoadMore} />
+				<LoadMore 
+          page={page} 
+          numPages={numPages} 
+          handlePaginate={handleLoadMore} 
+        />
 			</Stack>
 			{!loading && resources?.length == 0 && (
 				<Placeholder

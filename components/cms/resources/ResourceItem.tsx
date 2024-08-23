@@ -34,7 +34,7 @@ const Resource: React.FC<ResourceProps> = (props) => {
 		enableBorder = false,
 	} = props
 
-	return (
+  return (
 		<ResourceListItem
 			icon={icon}
 			color={color}

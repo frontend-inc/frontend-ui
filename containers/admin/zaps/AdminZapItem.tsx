@@ -1,7 +1,7 @@
 import React from 'react'
 import { Label, ResourceListItem } from '../../../components'
 
-type ActionItemProps = {
+type AdminZapItemProps = {
 	resource: any
 	sortable?: boolean
 	handleClick: () => void
@@ -9,7 +9,7 @@ type ActionItemProps = {
 	handleDelete: () => void
 }
 
-const ActionItem: React.FC<ActionItemProps> = (props) => {
+const AdminZapItem: React.FC<AdminZapItemProps> = (props) => {
 	const {
 		resource: zap,
 		sortable,
@@ -17,8 +17,6 @@ const ActionItem: React.FC<ActionItemProps> = (props) => {
 		handleEdit,
 		handleDelete,
 	} = props
-
-	console.log('ZAP', zap)
 
 	return (
 		<ResourceListItem
@@ -36,4 +34,4 @@ const ActionItem: React.FC<ActionItemProps> = (props) => {
 	)
 }
 
-export default ActionItem
+export default AdminZapItem

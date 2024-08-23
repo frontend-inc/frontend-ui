@@ -119,7 +119,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
 					description="Be the first to leave a comment."
 				/>
 			)}
-			<LoadMore loadMore={loadMore} page={page} numPages={numPages} />
+			<LoadMore handlePaginate={loadMore} page={page} numPages={numPages} />
 			<AlertModal
 				loading={loading}
 				open={openDelete}

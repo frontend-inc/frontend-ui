@@ -8,22 +8,22 @@ import { Icon } from '../../../components'
 type LoadMoreProps = {
 	page: number
 	numPages: number
-	loadMore: () => void
+	handlePaginate: () => void
 	enableInfiniteLoad?: boolean
 }
 
 const LoadMore: React.FC<LoadMoreProps> = (props) => {
-	const { page, numPages, loadMore, enableInfiniteLoad = false } = props
+	const { page, numPages, handlePaginate, enableInfiniteLoad = false } = props
 
 	return (
 		<Box sx={sx.root}>
 			{page < numPages && (
 				<>
-					{enableInfiniteLoad && <Waypoint onEnter={loadMore} />}
+					{enableInfiniteLoad && <Waypoint onEnter={handlePaginate} />}
 					<Button
 						color="secondary"
 						variant="contained"
-						onClick={loadMore}
+						onClick={handlePaginate}
 						endIcon={<Icon name="ChevronDown" color="secondary.contrastText" />}
 					>
 						Load More

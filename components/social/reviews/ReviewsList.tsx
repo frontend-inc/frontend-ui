@@ -21,7 +21,7 @@ const ReviewsList = (props) => {
 				resources?.map((resource, index) => (
 					<ReviewItem key={index} resource={resource} />
 				))}
-			<LoadMore page={page} numPages={numPages} loadMore={handleLoadMore} />
+			<LoadMore page={page} numPages={numPages} handlePaginate={handleLoadMore} />
 		</DataLayout>
 	)
 }
