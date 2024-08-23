@@ -2,8 +2,9 @@ import React from 'react'
 import { Stack } from '@mui/material'
 import { LoadMore, DataLayout } from '../..'
 import { useResourceContext } from 'frontend-js'
-import { ImageCard, Placeholder } from '../..'
+import { ButtonActions, ImageCard, Placeholder } from '../..'
 import { useForms } from '../../../hooks'
+import { buildActions } from '../../../helpers'
 
 export type ListItemsImageProps = {
 	url: string
@@ -52,39 +53,40 @@ const ImageListItems: React.FC<ListItemsImageProps> = (props) => {
 		setOpenShow(true)
 	}
 
-	const { handleDeleteClick } = useForms()
+	const { handleEdit, handleDeleteClick } = useForms()
 
 	return (
-		<>
-			<Stack direction="column" spacing={2}>
-				<DataLayout grid>
-					{resources?.map((resource) => (
-						<ImageCard
-							key={resource.id}
-							resource={resource}
-							enableEdit={enableEdit}
-							enableDelete={enableDelete}
-							enableOverlay={enableOverlay}
-							enableGradient={enableGradient}
-							enableUsers={enableUsers}
-							enableFavorites={enableFavorites}
-							enableComments={enableComments}
-							handleClick={() => handleClick(resource)}
-							handleDelete={() => handleDeleteClick(resource)}
-						/>
-					))}
-				</DataLayout>
-				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
-			</Stack>
-			{!loading && resources?.length == 0 && (
-				<Placeholder
-					enableBorder
-					icon={emptyIcon}
-					title={emptyTitle}
-					description={emptyDescription}
-				/>
-			)}
-		</>
+    <Stack direction="column" spacing={2}>
+      <DataLayout grid>
+        {resources?.map((resource) => (
+          <ImageCard
+            key={resource.id}
+            image={resource?.image?.url}
+            primary={resource?.title}
+            secondaryAction={
+              <ButtonActions 
+                numVisible={0}
+                resource={resource}
+                buttons={buildActions({
+                  enableEdit,
+                  enableDelete,
+                  handleEdit: () => handleEdit(resource),
+                  handleDelete: () => handleDeleteClick(resource),
+                })}
+              /> 
+            }
+            slots={{
+              image: {
+                enableGradient,
+                enableOverlay,                  
+              },
+            }}
+            handleClick={() => handleClick(resource)}
+          />
+        ))}
+      </DataLayout>
+      <LoadMore page={page} numPages={numPages} loadMore={loadMore} />
+    </Stack>
 	)
 }
 

@@ -53,9 +53,9 @@ const useForms = (params?: FormParams) => {
 		setOpenEdit(true)
 	}
 
-	const handleEdit = (item) => {
+	const handleEdit = (resource) => {
 		if (!currentUser?.id) return setAuthOpen(true)
-		setResource(item)
+		setResource(resource)
 		setOpenShow(false)
 		setOpenEdit(true)
 	}
@@ -82,9 +82,9 @@ const useForms = (params?: FormParams) => {
 		}
 	}
 
-	const handleDeleteClick = (item) => {
+	const handleDeleteClick = (resource) => {
 		if (!currentUser?.id) return setAuthOpen(true)
-		setResource(item)
+		setResource(resource)
 		setOpenDelete(true)
 	}
 

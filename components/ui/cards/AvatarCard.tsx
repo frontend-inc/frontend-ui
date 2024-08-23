@@ -1,50 +1,36 @@
 import React from 'react'
 import {
-	Avatar,
-	Stack,
-	Box,
+  Typography,
 	List,
 	ListItem,
 	ListItemButton,
 	ListItemIcon,
 	ListItemText,
-	Typography,
 } from '@mui/material'
-import { CardProps } from '../../../types'
-import {
-	UserChip,
-	ButtonActions,
-	AvgRating,
-	DisplayFields,
-	SocialButtons,
-} from '../../../components'
+import { AvatarImage } from '../../../components'
+import { CardProps } from './Card'
 
-const AvatarList: React.FC<CardProps> = (props) => {
+const AvatarCard: React.FC<CardProps> = (props) => {
 	const {
-		buttons,
-		resource,
-		displayFields = [],
+    primary,
+    secondary,
+    image,
+    actions,
+    secondaryAction,
 		height = 128,
-		width = 128,
 		handleClick,
-		enableGradient = false,
-		enableOverlay = false,
-		enableComments = false,
-		enableFavorites = false,
-		enableLikes = false,
-		enableRatings = false,
+    slots={
+      item: {},
+      image: {}
+    }
 	} = props
 
-	const { title, image } = resource || {}
-
 	return (
-		<List disablePadding sx={sx.listItem}>
+		<List disablePadding sx={sx.listItem} { ...slots.item }>
 			<ListItem
 				disablePadding
 				disableGutters
-				secondaryAction={
-					<ButtonActions numVisible={0} buttons={buttons} resource={resource} />
-				}
+				secondaryAction={ secondaryAction }
 			>
 				<ListItemButton
 					sx={{
@@ -54,50 +40,25 @@ const AvatarList: React.FC<CardProps> = (props) => {
 					onClick={handleClick && handleClick}
 				>
 					<ListItemIcon sx={sx.listItemIcon}>
-						<Avatar
-							sx={{
-								...sx.avatar,
-								...(enableGradient && sx.gradient),
-								...(enableOverlay && sx.overlay),
-								height: `${height}px`,
-								width: `${width}px`,
-							}}
-							src={image?.url}
-							alt={title}
-						>
-							<Box />
-						</Avatar>
+						<AvatarImage 
+              height={ height }              
+							image={image}
+							alt={primary}
+              { ...slots.image }
+						/>							
 					</ListItemIcon>
 					<ListItemText
-						primary={
+						primary={ 
+              <Typography variant="subtitle1" color="text.primary">
+                { primary }
+              </Typography>
+            }
+						secondary={ 
               <>
-                <UserChip user={resource?.user} />
-                <Typography
-                  variant="subtitle2"
-                  color="text.primary"
-                  sx={sx.title}
-                >
-                  {title}
-                </Typography>
+                { secondary }
+                { actions }
               </>
-						}
-						secondary={
-							<Stack direction="column" spacing={1}>
-								{enableRatings == true && (
-									<AvgRating resource={resource} size="small" />
-								)}
-								<DisplayFields fields={displayFields} resource={resource} />
-								<SocialButtons
-                  spacing={0}
-                  variant="icon"
-                  justifyContent="flex-start"
-									resource={resource}
-									enableLikes={enableLikes}
-									enableFavorites={enableFavorites}
-									enableComments={enableComments}
-								/>
-							</Stack>
-						}
+            }
 					/>
 				</ListItemButton>
 			</ListItem>
@@ -105,7 +66,7 @@ const AvatarList: React.FC<CardProps> = (props) => {
 	)
 }
 
-export default AvatarList
+export default AvatarCard
 
 const sx = {
 	listItem: {
@@ -113,31 +74,7 @@ const sx = {
 		p: 0,
 		borderBottom: '1px solid',
 		borderColor: 'divider',
-	},
-	gradient: {
-		'&::after': {
-			content: '""',
-			borderRadius: '50%',
-			position: 'absolute',
-			bottom: 0,
-			left: 0,
-			width: '100%',
-			height: '100%',
-			background: 'linear-gradient(to top, rgb(0,0,0,0.5), transparent)',
-		},
-	},
-	overlay: {
-		'&::after': {
-			content: '""',
-			borderRadius: '50%',
-			position: 'absolute',
-			bottom: 0,
-			left: 0,
-			width: '100%',
-			height: '100%',
-			background: 'rgb(0,0,0,0.5)',
-		},
-	},
+	},	
 	listItemIcon: {
 		width: 130,
 		mr: 2,
@@ -149,11 +86,6 @@ const sx = {
 	},
 	title: {
 		pb: 0.5,
-	},
-	avatar: {
-		height: '64px',
-		width: '64px',
-		backgroundImage: 'linear-gradient(45deg, #888888, #222222,#000000)',
 	},
 	description: {
 		maxWidth: 320,

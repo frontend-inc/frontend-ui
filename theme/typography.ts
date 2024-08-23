@@ -46,7 +46,7 @@ export const typography = {
 	},
 	subtitle1: {
 		fontFamily: 'Instrument Sans',
-		fontSize: 18,
+		fontSize: 17,
 		fontWeight: 600,
 		lineHeight: '1.5em',
 		textTransform: 'none',

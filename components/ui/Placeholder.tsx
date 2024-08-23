@@ -31,10 +31,10 @@ const Placeholder: React.FC<PlaceholderProps> = (props) => {
 		>
 			<Stack spacing={1} alignItems="center">
 				{icon && <Icon name={icon} size={24} color={color} />}
-				<Typography sx={sx.title} variant="subtitle2">
+				<Typography sx={sx.title} variant="subtitle2" color='text.primary'>
 					{title}
 				</Typography>
-				<Typography sx={sx.description} variant="body1" color="textSecondary">
+				<Typography sx={sx.description} variant="body1" color="text.secondary">
 					{description}
 				</Typography>
 				{buttons && <Box sx={sx.buttons}>{buttons}</Box>}

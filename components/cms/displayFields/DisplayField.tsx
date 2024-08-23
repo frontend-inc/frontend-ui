@@ -13,10 +13,10 @@ import {
 	FieldString,
 	FieldText,
 	FieldVideo,
-} from '../../..'
-import { DisplayFieldType, TypographyVariantsType } from '../../../../types'
+} from '../..'
+import { DisplayFieldType, TypographyVariantsType } from '../../../types'
 import { get } from 'lodash'
-import { truncate } from '../../../../helpers'
+import { truncate } from '../../../helpers'
 
 export type FieldElementProps = {
 	label?: string

@@ -1,6 +1,5 @@
 import React from 'react'
-import { Backdrop, Box, IconButton } from '@mui/material'
-import { MediaModal, Icon } from '../..'
+import { MediaModal } from '../..'
 import { useResourceContext } from 'frontend-js'
 
 export type ShowVideoModalProps = {}

@@ -12,6 +12,7 @@ type ActionProps = {
 	action: ActionType
   actionId?: number
   path?: string
+  resource?: any
   onClick?: () => void
   children: React.ReactNode
 }
@@ -27,6 +28,7 @@ const ButtonAction: React.FC<ActionProps> = (props) => {
     color='secondary',     
     variant='contained',
     size="medium", 
+    resource,
     ...rest 
   } = props
 
@@ -34,6 +36,7 @@ const ButtonAction: React.FC<ActionProps> = (props) => {
 		action,
     actionId,
     path,
+    resource
 	})
 
 	return (

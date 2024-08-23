@@ -16,11 +16,11 @@ const AdminReviewItem: React.FC<AdminReviewItemProps> = (props) => {
 	return (
 		<ResourceListItem
       primary={ 
-        <FieldRating value={review?.rating} />
+        <FieldRating size="small" value={review?.rating} />
       }
       secondary={ 
         <Typography variant="body2" color='text.secondary'>
-          { truncate(review?.description, 40) }
+          { truncate(review?.title, 40) }
         </Typography>
       }
 			avatar={<UserAvatar user={review?.user} />}

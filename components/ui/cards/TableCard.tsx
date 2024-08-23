@@ -1,89 +1,51 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../../../context'
-import { Box, Hidden, Stack, Typography } from '@mui/material'
+import React from 'react'
+import { Box, Stack, Typography } from '@mui/material'
 import {
 	Image,
-	DisplayField,
 	TouchableOpacity,
-	FavoriteButton,
-	AvgRating,
-	UserChip,
 } from '../..'
-import { truncate } from '../../../helpers'
-import { useRouter } from 'next/router'
-import { CardProps } from '../../../types'
-import { ButtonActions } from '../..'
+import { CardProps } from './Card'
 
 const TableCard: React.FC<CardProps> = (props) => {
-	const { clientUrl } = useContext(AppContext)
-	const {
-		buttons,
-		resource,
-		displayFields = [],
-		href,
-		height = 100,
+
+  const {
+		label,
+    primary,
+    secondary,
+    secondaryAction,
 		handleClick,
-		enableGradient = false,
-		enableOverlay = false,
-		enableFavorites = false,
-		enableRatings = false,
-		enableUsers = false,
+    image,
+		height = 240,
+    slots={
+      item: {},
+      image: {}
+    }
 	} = props || {}
 
-	const router = useRouter()
-
-	const { label, title, image } = resource || {}
-
-	const handleItemClick = () => {
-		if (handleClick) {
-			return handleClick()
-		} else if (href) {
-			router.push(`${clientUrl}${href}`)
-		}
-	}
-
 	return (
-		<Stack direction="row" spacing={1} sx={sx.root}>
+		<Stack direction="row" spacing={1} sx={sx.root} { ...slots.item }>
 			<Box sx={sx.grid}>
 				<Box sx={sx.imageItem}>
 					<Box sx={sx.image}>
-						<TouchableOpacity handleClick={handleItemClick}>
+						<TouchableOpacity handleClick={handleClick}>
 							<Image
-								src={image?.url}
+								src={image}
 								height={height}
-								alt={title}
-								enableGradient={enableGradient}
-								enableOverlay={enableOverlay}
+								alt={primary}
+								{ ...slots.image }
 							/>
 						</TouchableOpacity>
 					</Box>
 				</Box>
 				<Box sx={sx.item}>
 					<Typography color="text.primary" variant="body1">
-						{truncate(title)}
+						{ primary }
 					</Typography>
 				</Box>
-				{enableRatings == true && (
-					<Box sx={sx.item}>
-						<AvgRating resource={resource} size="small" />
-					</Box>
-				)}
-				{displayFields?.map((field, index) => (
-					<Box sx={sx.item} key={index}>
-						<DisplayField key={index} field={field} resource={resource} />
-					</Box>
-				))}
-				{enableUsers == true && (
-					<Box sx={sx.item}>
-						<UserChip user={resource?.user} />
-					</Box>
-				)}
+				{ secondary }
 			</Box>
 			<Stack direction="row" justifyContent="flex-end">
-				{enableFavorites == true && (
-					<FavoriteButton handle={resource?.handle} />
-				)}
-				<ButtonActions numVisible={0} buttons={buttons} resource={resource} />
+				{ secondaryAction }
 			</Stack>
 		</Stack>
 	)

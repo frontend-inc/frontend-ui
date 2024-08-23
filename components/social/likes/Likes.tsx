@@ -1,8 +1,8 @@
 import React from 'react'
-import { DataList } from '../..'
-import { DataListProps } from '../../cms/collections/DataList'
+import { CollectionList } from '../..'
+import { CollectionListProps } from '../../cms/collections/CollectionList'
 
-const Likes: React.FC<DataListProps> = (props) => {
+const Likes: React.FC<CollectionListProps> = (props) => {
 	let { query = {}, ...rest } = props
 
 	query = {
@@ -10,7 +10,12 @@ const Likes: React.FC<DataListProps> = (props) => {
 		method: 'likes',
 	}
 
-	return <DataList query={query} {...rest} />
+	return(
+    <CollectionList 
+      query={query} 
+      {...rest} 
+    />
+  )
 }
 
 export default Likes

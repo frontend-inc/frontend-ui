@@ -2,51 +2,38 @@ import React from 'react'
 import {
 	Avatar,
 	Box,
-	Stack,
 	List,
 	ListItem,
 	ListItemButton,
 	ListItemIcon,
 	ListItemText,
-	Typography,
 } from '@mui/material'
-import {
-	UserChip,
-	AvgRating,
-	FavoriteButton,
-	DisplayFields,
-	ButtonActions,
-} from '../..'
-import { CardProps } from '../../../types'
+import { CardProps } from './Card'
 
 const ChipCard: React.FC<CardProps> = (props) => {
 	const {
-		resource,
-		buttons,
-		displayFields = [],
+    primary,
+    secondary,
+    secondaryAction,
 		handleClick,
-		enableGradient = false,
-		enableOverlay = false,
-		enableUsers = false,
-		enableFavorites = false,
-		enableRatings = false,
+    image,
+    slots={
+      item: {},
+      image: {}
+    }
 	} = props
 
-	const { title, image } = resource || {}
-
 	return (
-		<List dense disablePadding sx={sx.root}>
+		<List 
+      dense 
+      disablePadding 
+      sx={sx.root} 
+      { ...slots.item }
+    >
 			<ListItem
 				disablePadding
 				disableGutters
-				secondaryAction={
-					<Stack direction="row" spacing={0} sx={sx.buttons}>
-						{enableFavorites == true && (
-							<FavoriteButton handle={resource?.handle} />
-						)}
-						<ButtonActions numVisible={0} buttons={buttons} resource={resource} />
-					</Stack>
-				}
+				secondaryAction={ secondaryAction }
 			>
 				<ListItemButton
 					sx={sx.listItemButton}
@@ -57,33 +44,20 @@ const ChipCard: React.FC<CardProps> = (props) => {
 							<Avatar
 								sx={{
 									...sx.avatar,
-									...(enableGradient && sx.gradient),
-									...(enableOverlay && sx.overlay),
+									...(slots?.image?.enableGradient && sx.gradient),
+									...(slots?.image?.enableOverlay && sx.overlay),
 								}}
-								src={image?.url}
-								alt={title}
+								src={image}
+								alt={primary}
+                { ...slots.image }
 							>
 								<Box />
 							</Avatar>
 						</ListItemIcon>
 					)}
 					<ListItemText
-						primary={
-							<Stack direction="column" spacing={0}>
-								<Typography variant="body1" color="text.primary">
-									{title}
-								</Typography>
-								{enableRatings == true && (
-									<AvgRating resource={resource} size="small" />
-								)}
-							</Stack>
-						}
-						secondary={
-							<>
-								<DisplayFields fields={displayFields} resource={resource} />
-								{enableUsers == true && <UserChip user={resource?.user} />}
-							</>
-						}
+						primary={ primary }
+						secondary={ secondary }
 					/>
 				</ListItemButton>
 			</ListItem>

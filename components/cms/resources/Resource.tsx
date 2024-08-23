@@ -8,7 +8,7 @@ export type ResourceProps = {
 	icon?: string
 	color?: string
 	layout?: 'list' | 'grid'
-	handleClick?: (resource: any) => void
+	handleClick: (resource: any) => void
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
 	secondaryActions?: React.ReactNode
@@ -42,7 +42,7 @@ const Resource: React.FC<ResourceProps> = (props) => {
       primary={ resource?.title }
       secondary={ truncate(resource?.description, 60 )}
       image={ resource?.image?.url }
-      handleClick={ handleClick }
+      handleClick={() => handleClick(resource)}
       handleEdit={ handleEdit }
       handleDelete={ handleDelete }
       menuActions={ menuActions }

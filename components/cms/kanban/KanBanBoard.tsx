@@ -17,9 +17,9 @@ import {
 import { Box, Button, List, Typography, Stack } from '@mui/material'
 import Droppable from './Droppable'
 import { ButtonType, DisplayFieldType } from '../../../types'
-import { Icon, KanBanCard } from '../../../components'
+import { Icon, CollectionKanBanCard, KanBanCard } from '../..'
 
-type SortableProps = {
+type KanBanBoardProps = {
 	loading?: boolean
 	headers: {
 		label: string
@@ -43,10 +43,9 @@ type SortableProps = {
 	handleEdit: (resource: any) => void
 	handleDelete: (resource: any) => void
 	handleAdd: (status: string) => void
-	handleComment: (resource: any) => void
 }
 
-const Sortable: React.FC<SortableProps> = (props) => {
+const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 	const {
 		loading,
 		activeResource,
@@ -67,8 +66,7 @@ const Sortable: React.FC<SortableProps> = (props) => {
 		enableCreate,
 		handleEdit,
 		handleDelete,
-		handleAdd,
-		handleComment,
+		handleAdd,    
 	} = props
 
 	const [activeId, setActiveId] = useState(null)
@@ -118,7 +116,7 @@ const Sortable: React.FC<SortableProps> = (props) => {
 								<List sx={sx.cardList} disablePadding>
 									{columns[header.value].length > 0 ? (
 										columns[header.value]?.map((res) => (
-											<KanBanCard
+											<CollectionKanBanCard
 												loading={loading && activeResource?.id == res?.id}
 												key={res?.id}
 												id={res?.id}
@@ -136,7 +134,6 @@ const Sortable: React.FC<SortableProps> = (props) => {
 												enableDelete={enableDelete}
 												handleEdit={() => handleEdit(res)}
 												handleDelete={() => handleDelete(res)}
-												handleComment={() => handleComment(res)}
 											/>
 										))
 									) : (
@@ -164,8 +161,8 @@ const Sortable: React.FC<SortableProps> = (props) => {
 			</Stack>
 			<DragOverlay>
 				{draggedResource ? (
-					<KanBanCard
-						enableDragging
+					<CollectionKanBanCard
+            enableDragging
 						id={draggedResource?.id}
 						resource={draggedResource}
 						displayFields={displayFields}
@@ -257,7 +254,7 @@ const Sortable: React.FC<SortableProps> = (props) => {
 	}
 }
 
-export default Sortable
+export default KanBanBoard
 
 const sx = {
 	container: {

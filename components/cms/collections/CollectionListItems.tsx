@@ -1,18 +1,17 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import { Stack } from '@mui/material'
 import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
-import { Placeholder, DataListItem, DataLayout } from '../..'
+import { Placeholder, CollectionListItem, DataLayout } from '../..'
 import { useForms } from '../../../hooks'
 import { ButtonType, DisplayFieldType } from '../../../types'
 import { buildActions } from '../../../helpers'
 
-export type DataListItemsProps = {
-	url: string
+export type CollectionListItemsProps = {
 	href?: string
-	style: 'list' | 'avatar' | 'card' | 'cover' | 'text'
+	style?: 'list' | 'card' | 'avatar' | 'cover' | 'table' | 'text'
 	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
 	handleClick?: (resource: any) => void
@@ -31,7 +30,7 @@ export type DataListItemsProps = {
 	emptyDescription?: string
 }
 
-const DataListItems: React.FC<DataListItemsProps> = (props) => {
+const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
@@ -82,7 +81,11 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 	}
 
 	const { handleClick = handleNavigate } = props
-	const { handleEdit, handleDeleteClick } = useForms()
+	
+  const { 
+    handleEdit, 
+    handleDeleteClick 
+  } = useForms()
 
 	let grid = false
 
@@ -111,7 +114,7 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 			<Stack direction="column" spacing={2}>
 				<DataLayout grid={grid}>
 					{resources?.map((resource, index) => (
-						<DataListItem
+						<CollectionListItem
 							key={index}
 							style={style}
 							resource={resource}
@@ -148,4 +151,4 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 	)
 }
 
-export default DataListItems
+export default CollectionListItems

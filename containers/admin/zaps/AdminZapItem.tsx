@@ -18,6 +18,8 @@ const ActionItem: React.FC<ActionItemProps> = (props) => {
 		handleDelete,
 	} = props
 
+  console.log("ZAP", zap)
+
 	return (
 		<ResourceListItem
 			enableBorder

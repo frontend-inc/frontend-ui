@@ -3,16 +3,22 @@ import { RemoteFormModal } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { FormFieldType } from '../../../types'
 
-export type EditModalProps = {
+export type CollectionFormProps = {
 	fields: FormFieldType[]
 	parentResource?: any
 }
 
-const EditModal: React.FC<EditModalProps> = (props) => {
+const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 	const { parentResource } = props || {}
 
-	const { url, resource, setResource, reloadMany, openEdit, setOpenEdit } =
-		useResourceContext()
+	const { 
+    url, 
+    resource, 
+    setResource, 
+    reloadMany, 
+    openEdit, 
+    setOpenEdit 
+  } = useResourceContext()
 
 	const handleSuccess = async (savedResource) => {
 		if (savedResource?.id) {
@@ -34,4 +40,4 @@ const EditModal: React.FC<EditModalProps> = (props) => {
 	)
 }
 
-export default EditModal
+export default CollectionForm

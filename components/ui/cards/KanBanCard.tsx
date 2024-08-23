@@ -2,89 +2,70 @@ import React from 'react'
 import { Box, Button, Stack, Typography } from '@mui/material'
 import {
 	Image,
-	DisplayFields,
-	SocialButtons,
-	AvgRating,
-	UserChip,
 } from '../../../components'
-import { truncate } from '../../../helpers'
-import { CardProps } from '../../../types'
-import { ButtonActions } from '../../../components'
 import { useSortable } from '@dnd-kit/sortable'
-import { buildActions } from '../../../helpers'
+import { CardProps } from './Card'
+
 
 type KanBanCardProps = CardProps & {
-	id: string
-	loading?: boolean
-	ref?: any
-	attributes?: any
-	listeners?: any
-	enableDragging?: boolean
-	handleComment: () => void
+  loading?: boolean
+  id: string
+  enableDragging?: boolean
 }
 
 const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 	const {
 		id,
-		loading,
-		buttons,
-		resource,
-		displayFields = [],
-		height = 200,
+    loading,
+    label,
+    primary,
+    secondary,
+    secondaryAction,
 		handleClick,
-		enableDragging = false,
-		enableGradient = false,
-		enableOverlay = false,
-		enableComments,
-		enableLikes,
-		enableFavorites,
-		enableRatings,
-		enableEdit,
-		enableDelete,
-		handleEdit,
-		handleDelete,
-		enableUsers,
+    image,
+    enableDragging,
+		height = 240,
+    slots={
+      item: {},
+      image: {}
+    }		
 	} = props || {}
 
 	const { attributes, listeners, setNodeRef } = useSortable({
 		id: id,
 	})
 
-	const { title, image } = resource || {}
-
 	return (
 		<Stack
 			direction="column"
 			sx={{
 				...sx.root,
+        ...(loading && sx.rootLoading),
 				...(enableDragging && sx.rootDragging),
-				...(loading && sx.rootLoading),
 			}}
+      { ...slots.item }
 		>
 			<Stack direction="column" ref={setNodeRef} {...attributes} {...listeners}>
-				{image?.url && (
+				{image && (
 					<Box sx={sx.image}>
 						<Image
-							src={image?.url}
+              label={ label }
+							src={image}
 							height={height}
-							alt={title}
-							disableBorderRadius
+							alt={primary}
 							handleClick={handleClick}
-							enableGradient={enableGradient}
-							enableOverlay={enableOverlay}
+              { ...slots.image }
 						/>
 					</Box>
 				)}
 				<Stack direction="row" alignItems="flex-start">
 					<Stack direction="column" spacing={0.5} sx={sx.content}>
-						<Typography sx={sx.title} color="text.primary" variant="subtitle2">
-							{truncate(title)}
+						<Typography sx={sx.title} color="text.primary" variant="subtitle1">
+							{ primary }
 						</Typography>
-						{enableRatings == true && (
-							<AvgRating resource={resource} size="small" />
-						)}
-						<DisplayFields fields={displayFields} resource={resource} />
-						{enableUsers && <UserChip user={resource?.user} />}
+						<Typography color="text.secondary" variant="body2">
+              { secondary }
+              </Typography>
 					</Stack>
 				</Stack>
 			</Stack>
@@ -99,23 +80,7 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 					Details
 				</Button>
 				<Stack direction="row" alignItems="flex-end">
-					<SocialButtons
-						resource={resource}
-						enableLikes={enableLikes}
-						enableFavorites={enableFavorites}
-						enableComments={enableComments}
-					/>
-					<ButtonActions
-						numVisible={0}
-						buttons={buildActions({
-							enableEdit,
-							enableDelete,
-							handleEdit,
-							handleDelete,
-							buttons,
-						})}
-						resource={resource}
-					/>
+					{ secondaryAction }
 				</Stack>
 			</Box>
 		</Stack>

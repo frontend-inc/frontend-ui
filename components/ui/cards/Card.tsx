@@ -1,41 +1,41 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../../../context'
+import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
-import { Image, UserChip, AvgRating, DisplayFields, SocialButtons } from '../..'
-import { truncate } from '../../../helpers'
-import { useRouter } from 'next/router'
-import { CardProps } from '../../../types'
-import { ButtonActions } from '../../../components'
+import { Image } from '../..'
+
+export type CardProps = {
+  ref?: any
+  avatar?: React.ReactNode 
+  image: string
+  label?: string
+  primary: string  
+  secondary?: string | React.ReactNode 
+  actions?: React.ReactNode 
+  secondaryAction?: React.ReactNode 
+  handleClick?: () => void
+  height?: number
+  slots?: {
+    item?: any
+    image?: any
+  }
+}
 
 const Card: React.FC<CardProps> = (props) => {
-	const { clientUrl } = useContext(AppContext)
 	const {
 		ref,
-		buttons,
-		resource,
-		displayFields = [],
-		href,
+    label,
+    primary,
+    secondary,
+    actions,
+    secondaryAction,
 		handleClick,
+    image,
 		height = 240,
-		enableGradient = false,
-		enableOverlay = false,
-		enableComments = false,
-		enableFavorites = false,
-		enableLikes = false,
-		enableRatings = false,
+    slots={
+      item: {},
+      image: {}
+    }
 	} = props || {}
 
-	const { label, title, image } = resource || {}
-
-	const router = useRouter()
-
-	const handleItemClick = () => {
-		if (handleClick) {
-			handleClick()
-		} else if (href) {
-			router.push(`${clientUrl}${href}`)
-		}
-	}
 
 	return (
 		<Stack
@@ -46,42 +46,32 @@ const Card: React.FC<CardProps> = (props) => {
 				width: '100%',
 				minHeight: height + 80,
 			}}
-		>
+      { ...slots.item }
+		>      
 			<Box sx={sx.imageContainer}>
 				<Image
-					src={image?.url}
+					src={image}
 					height={height}
-					alt={title}
-					label={label}
-					disableBorderRadius
-					enableGradient={enableGradient}
-					enableOverlay={enableOverlay}
-					handleClick={handleItemClick}
+					alt={primary}
+					label={label}					
+					handleClick={handleClick}
+          { ...slots.image }
 				/>
 			</Box>
 			<Stack spacing={0} sx={sx.cardContent}>
 				<Box sx={sx.content}>
-					<Typography sx={sx.title} color="text.primary" variant="subtitle2">
-						{truncate(title)}
+					<Typography sx={sx.title} color="text.primary" variant="subtitle1">
+						{ primary }
 					</Typography>
-					{enableRatings == true && (
-						<AvgRating resource={resource} size="small" />
-					)}
-					{displayFields?.length > 0 && (
-						<DisplayFields fields={displayFields} resource={resource} />
-					)}
-					<UserChip user={resource?.user} />
+          {secondary && (
+            <Typography color="text.secondary" variant="body2">
+              { secondary }
+            </Typography>
+          )}
 				</Box>
 				<Stack direction="row" justifyContent="space-between">
-					<SocialButtons
-						resource={resource}
-						enableLikes={enableLikes}
-						enableFavorites={enableFavorites}
-						enableComments={enableComments}
-					/>
-					{buttons?.length > 0 && (
-						<ButtonActions numVisible={0} buttons={buttons} resource={resource} />
-					)}
+          { actions }
+					{ secondaryAction}
 				</Stack>
 			</Stack>
 		</Stack>
@@ -111,24 +101,6 @@ const sx = {
 		position: 'relative',
 		flexDirection: 'column',
 		overflow: 'hidden',
-	},
-	gradient: {
-		'&::after': {
-			content: '""',
-			position: 'absolute',
-			bottom: 0,
-			left: 0,
-			width: '100%',
-			height: '50%',
-			background: 'linear-gradient(to top, rgb(0,0,0,0.5), transparent)',
-		},
-	},
-	cardHeader: {
-		p: 1,
-		minHeight: 36,
-	},
-	cardHeaderBorder: {
-		px: 1,
 	},
 	cardContent: {
 		p: 1,

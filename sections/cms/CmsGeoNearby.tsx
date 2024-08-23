@@ -1,6 +1,6 @@
 import React from 'react'
 import { Section, Heading, GeoNearbyList } from '../../components'
-import { DataListProps } from '../../components/cms/collections/DataList'
+import { DataListProps } from '../../components/cms/data/DataList'
 import { SectionProps, HeadingProps } from '../../types'
 
 type CmsListProps = SectionProps & HeadingProps & DataListProps

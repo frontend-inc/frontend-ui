@@ -1,11 +1,11 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { SimpleCards } from '../../components'
-import { SimpleCardsProps } from '../../components/web/cards/SimpleCards'
+import { Cards } from '../../components'
+import { CardsProps } from '../../components/web/cards/Cards'
 import { SectionProps, HeadingProps } from '../../types'
 import { Stack } from '@mui/material'
 
-type UICardsProps = SectionProps & HeadingProps & SimpleCardsProps
+type UICardsProps = SectionProps & HeadingProps & CardsProps
 
 const UICards: React.FC<UICardsProps> = (props) => {
 	const {
@@ -41,7 +41,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
           textAlign={'center'}
           textVariant='h3'
         />
-        <SimpleCards {...rest} />
+        <Cards {...rest} />
       </Stack>
 		</Section>
 	)

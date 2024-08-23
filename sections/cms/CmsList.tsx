@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { DataList } from '../../components'
-import { DataListProps } from '../../components/cms/collections/DataList'
+import { CollectionList } from '../../components'
+import { CollectionListProps } from '../../components/cms/collections/CollectionList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsListProps = SectionProps & HeadingProps & DataListProps
+type CmsListProps = SectionProps & HeadingProps & CollectionListProps
 
 const CmsList: React.FC<CmsListProps> = (props) => {
 	const {
@@ -38,7 +38,7 @@ const CmsList: React.FC<CmsListProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<DataList {...rest} />
+			<CollectionList {...rest} />
 		</Section>
 	)
 }

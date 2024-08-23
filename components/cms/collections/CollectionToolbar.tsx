@@ -10,7 +10,7 @@ import {
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch, useForms } from '../../../hooks'
 
-export type DataToolbarProps = {
+export type CollectionToolbarProps = {
 	query: any
 	url: string
 	enableSearch?: boolean
@@ -20,10 +20,11 @@ export type DataToolbarProps = {
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
 	enableCreate?: boolean
+  buttonText?: string
 	handleAdd?: () => void
 }
 
-const DataToolbar: React.FC<DataToolbarProps> = (props) => {
+const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 	const {
 		url,
 		query: defaultQuery = {},
@@ -34,6 +35,7 @@ const DataToolbar: React.FC<DataToolbarProps> = (props) => {
 		enableGeoSearch = false,
 		enableFilters = false,
 		enableSorting = false,
+    buttonText='Add'
 	} = props
 
 	const {
@@ -70,14 +72,14 @@ const DataToolbar: React.FC<DataToolbarProps> = (props) => {
 					direction={{ xs: 'column', sm: 'row' }}
 					alignItems="center"
 				>
-					{enableSearch && !enableGeoSearch && (
+					{(enableSearch && !enableGeoSearch) && (
 						<SearchInput
 							value={keywords}
 							handleChange={handleKeywordChange}
 							handleSearch={handleSearch}
 						/>
 					)}
-					{enableGeoSearch && (
+					{(enableGeoSearch && !enableSearch) && (
 						<GeoSearchInput
 							value={keywords}
 							location={location}
@@ -86,7 +88,6 @@ const DataToolbar: React.FC<DataToolbarProps> = (props) => {
 							handleSearch={handleSearch}
 						/>
 					)}
-
 					{enableFilters && (
 						<Box sx={sx.buttonContainer}>
 							<FilterButton
@@ -117,14 +118,14 @@ const DataToolbar: React.FC<DataToolbarProps> = (props) => {
 					>
 						<Button
 							sx={sx.button}
-							color="secondary"
+							color="primary"
 							variant="contained"
 							onClick={handleAdd}
 							startIcon={
 								<Icon name="Plus" size={20} color="secondary.contrastText" />
 							}
 						>
-							Add
+							{ buttonText }
 						</Button>
 					</Stack>
 				)}
@@ -133,7 +134,7 @@ const DataToolbar: React.FC<DataToolbarProps> = (props) => {
 	)
 }
 
-export default DataToolbar
+export default CollectionToolbar
 
 const sx = {
 	root: {

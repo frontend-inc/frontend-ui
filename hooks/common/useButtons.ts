@@ -37,20 +37,6 @@ const useButtons = (params: UseButtonParams) => {
 				url = `${clientUrl}${path}`
 				router.push(url)
 				break
-      case 'navigate_user':
-        url = `${clientUrl}${path}`
-        if (resource?.handle) {
-          url = `${clientUrl}${path}/${user.username}`
-        }
-        router.push(url)
-        break
-      case 'navigate_cms':
-        url = `${clientUrl}${path}`
-        if (resource?.handle) {
-          url = `${clientUrl}${path}/${resource?.handle}`
-        }
-        router.push(url)
-        break  
 			case 'copy':
 				if (value) {
 					copy(value)

@@ -34,24 +34,25 @@ const UserList: React.FC<UserListProps> = (props) => {
 
 	return (
 		<Resources
-			dense
 			enableSearch
 			enableLoadMore
 			name="user"
 			url={'/api/v1/cms/users'}
 			handleClick={handleClick}
-			component={UserListItem}
-			itemProps={{
-				size: 72,
-				displayFields,
-				socialFields,
-			}}
 			filterOptions={[]}
 			sortOptions={[
 				{ label: 'Username', name: 'username' },
 				{ label: 'First name', name: 'first_name' },
 				{ label: 'Last name', name: 'last_name' },
 			]}
+      component={UserListItem}
+			slots={{
+				list: {
+          size: 72,
+				  displayFields,
+				  socialFields
+        }
+			}}
 		/>
 	)
 }

@@ -16,12 +16,12 @@ export type ResourceListProps = {
   enableEdit?: boolean
   enableDelete?: boolean
   handleClick?: (resource: any) => void
-  handleEdit: (resource: any) => void
-  handleDelete: (resource: any) => void
+  handleEdit?: (resource: any) => void
+  handleDelete?: (resource: any) => void
   handleDrop?: (sorted: any[]) => void
   handleLoadMore: () => void
   handleSort: (field: SortOptionType) => void
-  component?: React.FC<any>
+  renderItem: (resource: any, props: any) => React.ReactNode
 }
 
 const ResourceList: React.FC<ResourceListProps> = (props) => {
@@ -30,35 +30,14 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
     resources,     
     page,
     numPages,
-    enableBorder,
-    enableEdit,
-    enableDelete,
-    handleClick,
-    handleEdit,
-    handleDelete,
     handleLoadMore,
-    component: Component = Resource, 
+    renderItem,
   } = props || {}
 
   return(
     <Stack spacing={2} sx={sx.fullWidth}>
       <List>
-        {resources?.map((resource, index) => (
-          <Component
-            key={index}
-            enableBorder={enableBorder}
-            resource={ resource }          
-            handleClick={
-              handleClick ? () => handleClick(resource) : undefined
-            }
-            handleEdit={
-              enableEdit ? () => handleEdit(resource) : undefined
-            }
-            handleDelete={
-              enableDelete ? () => handleDelete(resource) : undefined
-            }
-          />
-        ))}
+        {resources?.map(resource => renderItem(resource, props))}
       </List>
       <LoadMore 
         page={page} 

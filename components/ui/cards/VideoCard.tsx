@@ -9,72 +9,43 @@ import {
 	Icon,
 } from '../..'
 import { IconButton, Box } from '@mui/material'
-import { buildActions } from '../../../helpers'
+import { CardProps } from './Card'
 
-type VideoCardProps = {
-	enableUsers?: boolean
-	enableComments?: boolean
-	enableFavorites?: boolean
-	enableRatings?: boolean
-	enableLikes?: boolean
-	resource: any
-	handleClick: () => void
-	handleEdit?: (item: any) => void
-	handleDelete?: (item: any) => void
-	enableGradient?: boolean
-	enableOverlay?: boolean
-	enableEdit?: boolean
-	enableDelete?: boolean
-}
-
-const VideoCard: React.FC<VideoCardProps> = (props) => {
+const VideoCard: React.FC<CardProps> = (props) => {
 	const {
-		resource,
+    avatar,
+    primary,    
+    secondaryAction,
 		handleClick,
-		enableEdit,
-		enableDelete,
-		handleEdit,
-		handleDelete,
-		enableGradient = false,
-		enableOverlay = false,
-		enableFavorites = false,
+    image,		
+    slots={
+      item: {},
+      image: {}
+    }
 	} = props || {}
-
-	const { title, image } = resource || {}
 
 	return (
 		<LightDarkMode mode="dark">
-			<Box sx={sx.root}>
+			<Box sx={sx.root} { ...slots.item }>
 				<TouchableOpacity handleClick={handleClick}>
 					<Image
-						src={image?.url}
+						src={image}
 						height={360}
-						alt={title}
-						enableGradient={enableGradient}
-						enableOverlay={enableOverlay}
+						alt={primary}
+						{ ...slots.image }
 					/>
 				</TouchableOpacity>
 				<IconButton sx={sx.playIcon} onClick={handleClick}>
 					<Icon name="Play" color="common.white" size={20} />
 				</IconButton>
 				<Box sx={sx.buttons}>
-					{enableFavorites == true && (
-						<FavoriteButton handle={resource?.handle} />
-					)}
-					<ButtonActions
-						resource={resource}
-						numVisible={0}
-						buttons={buildActions({
-							enableEdit,
-							enableDelete,
-							handleEdit,
-							handleDelete,
-						})}
-					/>
+          { secondaryAction }
 				</Box>
-				<Box sx={sx.userCard}>
-					{resource?.user && <UserChip user={resource?.user} />}
+        { avatar && (
+				<Box sx={sx.avatar}>					
+        { avatar }
 				</Box>
+        )}
 			</Box>
 		</LightDarkMode>
 	)
@@ -121,7 +92,7 @@ const sx = {
 		right: 'calc(50% - 20px)',
 		bgcolor: 'rgb(0,0,0,0.5)',
 	},
-	userCard: {
+	avatar: {
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'flex-end',

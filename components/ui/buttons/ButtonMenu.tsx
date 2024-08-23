@@ -4,6 +4,7 @@ import { useButtons } from '../../../hooks'
 import { ActionType } from '../../../types'
 
 type ButtonMenuProps = {	
+  resource: any
   action: ActionType
   actionId?: number
   path?: string
@@ -15,12 +16,13 @@ type ButtonMenuProps = {
 }
 
 const ButtonMenu: React.FC<ButtonMenuProps> = (props) => {
-	const { onClick, action, actionId, path, label } = props	
+	const { onClick, resource, action, actionId, path, label } = props	
 
 	const { handleClick } = useButtons({
 		action,
     actionId,
     path,
+    resource,
 	})
 
 	return (

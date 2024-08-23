@@ -1,60 +1,38 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../../../context'
+import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 import {
-	UserChip,
-	AvgRating,
-	DisplayFields,
 	Image,
 	TouchableOpacity,
-	ButtonActions,
-	SocialButtons,
 	LightDarkMode,
 } from '../..'
-import { truncate } from '../../../helpers'
-import { useRouter } from 'next/router'
-import { CardProps } from '../../../types'
+import { CardProps } from './Card'
 
 const CoverCard: React.FC<CardProps> = (props) => {
-	const { clientUrl } = useContext(AppContext)
 	const {
-		buttons,
-		resource,
-		displayFields = [],
-		href,
+    label,
+    primary,
+    secondary,
+    actions,
+    secondaryAction,
 		handleClick,
-		height = 400,
-		enableGradient = false,
-		enableUsers = false,
-		enableOverlay = false,
-		enableComments = false,
-		enableFavorites = false,
-		enableLikes = false,
-		enableRatings = false,
+    image,
+		height = 340,
+    slots={
+      item: {},
+      image: {}
+    }
 	} = props || {}
 
-	const { label, title, image } = resource || {}
-	const router = useRouter()
-
-	const handleItemClick = () => {
-		if (handleClick) {
-			handleClick()
-		} else if (href) {
-			router.push(`${clientUrl}${href}`)
-		}
-	}
-
-	return (
+  return (
 		<LightDarkMode mode="dark">
-			<Stack spacing={1} sx={sx.root}>
-				<TouchableOpacity handleClick={handleItemClick}>
+			<Stack spacing={1} sx={sx.root} {...slots.item}>
+				<TouchableOpacity handleClick={handleClick}>
 					<Image
 						label={label}
-						src={image?.url}
+						src={image}
 						height={height}
-						alt={title}
-						enableGradient={enableGradient}
-						enableOverlay={enableOverlay}
+						alt={primary}						
+            { ...slots.image }
 					/>
 				</TouchableOpacity>
 				<Stack spacing={1} sx={sx.cover}>
@@ -67,28 +45,16 @@ const CoverCard: React.FC<CardProps> = (props) => {
 						<Box sx={sx.contentContainer}>
 							<Stack sx={sx.content} direction="column" spacing={0}>
 								<Box sx={sx.fullWidth}>
-									<Typography color="text.primary" variant="subtitle2">
-										{truncate(title, 60)}
+									<Typography color="text.primary" variant="subtitle1">
+										{ primary }
+									</Typography>									
+                  <Typography color="text.secondary" variant="body2">
+										{ secondary }
 									</Typography>
-									{enableRatings == true && (
-										<AvgRating resource={resource} size="small" />
-									)}
-									<DisplayFields fields={displayFields} resource={resource} />
-									{enableUsers == true && <UserChip user={resource?.user} />}
-									<Stack direction="row" sx={sx.buttons}>
-										<SocialButtons
-											color="common.white"
-											resource={resource}
-											enableLikes={enableLikes}
-											enableFavorites={enableFavorites}
-											enableComments={enableComments}
-										/>
-										<ButtonActions
-											numVisible={0}
-											resource={resource}
-											buttons={buttons}
-										/>
-									</Stack>
+                  <Stack direction="row" sx={sx.buttons}>
+                    { actions }
+                    { secondaryAction }
+                  </Stack>
 								</Box>
 							</Stack>
 						</Box>

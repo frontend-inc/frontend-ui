@@ -56,12 +56,13 @@ const ButtonActions: React.FC<ButtonActionsProps> = (props) => {
                 color={ button?.color }
                 icon={ button?.icon }
                 action={ action }
-                path={ path }
                 actionId={ button?.action_id }
+                path={ path }
                 //@ts-ignore
                 onClick={ button?.onClick }
                 variant={ button?.variant || 'contained' }
                 size={size}
+                resource={ resource }
               >
                 { button?.label }
               </ButtonAction>
@@ -80,7 +81,9 @@ const ButtonActions: React.FC<ButtonActionsProps> = (props) => {
               actionId={ button?.action_id }
               label={ button?.label }
               icon={ button?.icon }
-              color={ button?.color }                            
+              color={ button?.color }  
+              onClick={ button?.onClick }   
+              resource={ resource }                       
             />
 					)})}
 				</MenuButton>

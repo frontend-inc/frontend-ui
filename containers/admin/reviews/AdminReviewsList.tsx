@@ -3,6 +3,7 @@ import React from 'react'
 import { Resources } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { AdminReviewItem } from '../../../containers'
+import AdminReviewShow from './AdminReviewShow'
 
 const AdminReviewsList: React.FC = () => {
 
@@ -13,6 +14,7 @@ const AdminReviewsList: React.FC = () => {
       enableBorder={false}
       url={`${apiUrl}/reviews`}
       name="review"
+      enableShow
       enableSearch
       enableDelete
       filterOptions={[
@@ -27,7 +29,12 @@ const AdminReviewsList: React.FC = () => {
           variant: 'boolean',
         },
       ]}
+      displayFields={[
+        { name: 'rating', label: 'Rating', variant: 'rating' },
+        { name: 'body', label: 'Review', variant: 'text' },
+      ]}
       component={AdminReviewItem}
+      show={ AdminReviewShow }
       emptyIcon="Star"
       emptyTitle="No reviews found"
       emptyDescription="No reviews found for this app"

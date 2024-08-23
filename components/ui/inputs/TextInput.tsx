@@ -31,7 +31,7 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 		onBlur,
 		onFocus,
 		info,
-    debounceDelay = 1500,
+    debounceDelay = 350,
 		disableDebounce = false,
 	} = props
 

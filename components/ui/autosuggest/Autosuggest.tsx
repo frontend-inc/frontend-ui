@@ -5,7 +5,6 @@ import {
 	Stack,
 	IconButton,
 	ListItem,
-	MenuItem,
 	ListItemIcon,
 	Typography,
 	InputBase,

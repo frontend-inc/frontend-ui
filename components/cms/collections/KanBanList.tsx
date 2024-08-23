@@ -1,9 +1,10 @@
 import React from 'react'
-import { DataList } from '../..'
-import { DataListProps } from './DataList'
+import { CollectionList } from '../..'
+import { CollectionListProps } from '../collections/CollectionList'
 import KanBanListItems from './KanBanListItems'
 
-export type KanBanListProps = DataListProps & {
+export type KanBanListProps = CollectionListProps & {
+  fieldName: string
 	headers: {
 		label: string
 		value: string
@@ -11,7 +12,13 @@ export type KanBanListProps = DataListProps & {
 }
 
 const KanBanList: React.FC<KanBanListProps> = (props) => {
-	return <DataList {...props} enableSorting={false} list={KanBanListItems} />
+	return(
+    <CollectionList 
+      {...props} 
+      enableSorting={false} 
+      list={KanBanListItems} 
+    />
+  )
 }
 
 export default KanBanList

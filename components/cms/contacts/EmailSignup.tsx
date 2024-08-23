@@ -1,11 +1,9 @@
 import React from 'react'
-import { Box, Stack, Typography, Button } from '@mui/material'
-import { useRouter } from 'next/router'
+import { Box, Stack, Button } from '@mui/material'
 import { TypographyVariantsType } from '../../../types'
 import { Heading, TextInput, IconLoading } from '../../../components'
 import { useResource } from 'frontend-js'
 import { useAlerts } from '../../../hooks'
-import { AlignJustify } from 'lucide-react'
 
 export type EmailSignupProps = {
 	label?: string

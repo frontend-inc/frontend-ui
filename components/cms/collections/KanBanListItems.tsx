@@ -82,7 +82,6 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 		await updatePositions(columnItems)
 		await reloadMany()
 	}
-
 	if (!headers || !fieldName) return null
 	return (
 		<KanBan

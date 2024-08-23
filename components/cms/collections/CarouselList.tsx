@@ -1,12 +1,17 @@
 import React from 'react'
-import { DataList } from '../..'
-import { DataListProps } from './DataList'
+import { CollectionList } from '../..'
+import { CollectionListProps } from '../collections/CollectionList'
 import CarouselListItems from './CarouselListItems'
 
-export type CarouselListProps = DataListProps
+export type CarouselListProps = CollectionListProps
 
 const CarouselList: React.FC<CarouselListProps> = (props) => {
-	return <DataList {...props} list={CarouselListItems} />
+	return(
+    <CollectionList 
+      {...props} 
+      list={CarouselListItems} 
+    />
+  )
 }
 
 export default CarouselList

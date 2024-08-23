@@ -1,11 +1,11 @@
 import React from 'react'
-import { DataList, ShowImageModal, ImageListItems } from '../..'
-import { DataListProps } from './DataList'
+import { CollectionList, ShowImageModal, ImageListItems } from '../..'
+import { CollectionListProps } from '../collections/CollectionList'
 
-export type ImageListProps = DataListProps
+export type ImageListProps = CollectionListProps
 
 const ImageList: React.FC<ImageListProps> = (props) => {
-	return <DataList {...props} list={ImageListItems} show={ShowImageModal} />
+	return <CollectionList {...props} list={ImageListItems} show={ShowImageModal} />
 }
 
 export default ImageList

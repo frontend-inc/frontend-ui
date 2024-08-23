@@ -1,59 +1,56 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../context'
-import { Button, Box, Stack, Typography } from '@mui/material'
-import { Image } from '../..'
+import { Box, Stack, Typography } from '@mui/material'
+import { Image, UserChip, AvgRating, DisplayFields, SocialButtons } from '../..'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
+import { CardProps } from '../../../types'
+import { ButtonActions } from '../../../components'
 
-type SimpleCardProps = {
-  item?: any
-  buttonText?: string
-  href?: string
-  handleClick?: () => void
-  enableGradient?: boolean
-  enableOverlay?: boolean
-}
-
-const Card: React.FC<SimpleCardProps> = (props) => {
+const Card: React.FC<CardProps> = (props) => {
 	const { clientUrl } = useContext(AppContext)
 	const {
-		item,		
+		ref,
+		buttons,
+		resource,
+		displayFields = [],
+		href,
 		handleClick,
+		height = 240,
 		enableGradient = false,
 		enableOverlay = false,
+		enableComments = false,
+		enableFavorites = false,
+		enableLikes = false,
+		enableRatings = false,
 	} = props || {}
 
-	const { 
-    label, 
-    title, 
-    description, 
-    image,
-    url,
-  } = item || {}
+	const { label, title, image } = resource || {}
 
 	const router = useRouter()
 
 	const handleItemClick = () => {
 		if (handleClick) {
 			handleClick()
-		} else if (url) {
-			router.push(`${clientUrl}${url}`)
+		} else if (href) {
+			router.push(`${clientUrl}${href}`)
 		}
 	}
 
 	return (
 		<Stack
+			ref={ref}
 			spacing={0}
 			sx={{
 				...sx.root,
 				width: '100%',
-				minHeight: 320
+				minHeight: height + 80,
 			}}
 		>
 			<Box sx={sx.imageContainer}>
 				<Image
 					src={image?.url}
-					height={240}
+					height={height}
 					alt={title}
 					label={label}
 					disableBorderRadius
@@ -67,10 +64,25 @@ const Card: React.FC<SimpleCardProps> = (props) => {
 					<Typography sx={sx.title} color="text.primary" variant="subtitle2">
 						{truncate(title)}
 					</Typography>
-          <Typography sx={sx.title} color="text.secondary" variant="body2">
-						{truncate(description)}
-					</Typography>
+					{enableRatings == true && (
+						<AvgRating resource={resource} size="small" />
+					)}
+					{displayFields?.length > 0 && (
+						<DisplayFields fields={displayFields} resource={resource} />
+					)}
+					<UserChip user={resource?.user} />
 				</Box>
+				<Stack direction="row" justifyContent="space-between">
+					<SocialButtons
+						resource={resource}
+						enableLikes={enableLikes}
+						enableFavorites={enableFavorites}
+						enableComments={enableComments}
+					/>
+					{buttons?.length > 0 && (
+						<ButtonActions numVisible={0} buttons={buttons} resource={resource} />
+					)}
+				</Stack>
 			</Stack>
 		</Stack>
 	)
@@ -83,6 +95,7 @@ const sx = {
 		overflow: 'hidden',
 		borderRadius: 1,
 		width: '100%',
+		minWidth: 280,
 		bgcolor: 'background.default',
 		transition: 'box-shadow 0.3s',
 		border: '1px solid',

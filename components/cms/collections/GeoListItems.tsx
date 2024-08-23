@@ -1,10 +1,12 @@
 import React, { useContext } from 'react'
 import { ResourceContext } from 'frontend-js'
 import { Hidden, Grid } from '@mui/material'
-import { GoogleMap, DataListItems } from '../..'
-import { DataListItemsProps } from './DataListItems'
+import { GoogleMap, CollectionListItems } from '../..'
+import { CollectionListItemsProps } from './CollectionListItems'
 
-export type GeoListListProps = DataListItemsProps
+export type GeoListListProps = CollectionListItemsProps & {
+  url: string
+}
 
 const GeoListItems: React.FC<GeoListListProps> = (props) => {
 	const { url, displayFields, ...rest } = props
@@ -14,9 +16,8 @@ const GeoListItems: React.FC<GeoListListProps> = (props) => {
 	return (
 		<Grid container spacing={2}>
 			<Grid item sm={12} md={7}>
-				<DataListItems
+				<CollectionListItems
 					{...rest}
-					url={url}
 					displayFields={displayFields}
 					style="list"
 				/>

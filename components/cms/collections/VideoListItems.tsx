@@ -1,34 +1,32 @@
 import React from 'react'
-import { Grid, Stack } from '@mui/material'
-import { LoadMore, DataLayout } from '../..'
+import { Stack } from '@mui/material'
+import { ButtonActions, LoadMore, DataLayout } from '../..'
 import { useResourceContext } from 'frontend-js'
-import { VideoCard, ShowVideoModal, Placeholder } from '../..'
+import { VideoCard } from '../..'
 import { useForms } from '../../../hooks'
+import { buildActions } from '../../../helpers'
 
 export type VideoListItemsProps = {
 	url: string
 	enableEdit?: boolean
 	enableDelete?: boolean
+  enableGradient?: boolean
+  enableOverlay?: boolean
 	enableComments?: boolean
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
 	enableUsers?: boolean
-	emptyIcon?: string
-	emptyTitle?: string
-	emptyDescription?: string
 }
 
 const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
-	const {
-		resource,
+
+  const {
 		setResource,
-		loading,
 		resources,
 		page,
 		numPages,
 		loadMore,
-		openShow,
 		setOpenShow,
 	} = useResourceContext()
 
@@ -39,9 +37,8 @@ const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
 		enableLikes = false,
 		enableUsers = false,
 		enableComments = false,
-		emptyIcon,
-		emptyTitle = 'No results found',
-		emptyDescription = 'Try changing your search or filters.',
+    enableGradient = false,
+    enableOverlay = false ,
 		...rest
 	} = props
 
@@ -53,34 +50,37 @@ const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
 	const { handleEdit, handleDeleteClick } = useForms()
 
 	return (
-		<>
-			<Stack direction="column" spacing={2}>
-				<DataLayout grid>
-					{resources?.map((resource) => (
-						<VideoCard
-							key={resource.id}
-							resource={resource}
-							enableEdit={enableEdit}
-							enableDelete={enableDelete}
-							enableUsers={enableUsers}
-							enableFavorites={enableFavorites}
-							enableComments={enableComments}
-							handleClick={() => handleClick(resource)}
-							handleDelete={() => handleDeleteClick(resource)}
-						/>
-					))}
-				</DataLayout>
-				<LoadMore page={page} numPages={numPages} loadMore={loadMore} />
-			</Stack>
-			{!loading && resources?.length == 0 && (
-				<Placeholder
-					enableBorder
-					icon={emptyIcon}
-					title={emptyTitle}
-					description={emptyDescription}
-				/>
-			)}
-		</>
+    <Stack direction="column" spacing={2}>
+      <DataLayout grid>
+        {resources?.map((resource) => (
+          <VideoCard
+            key={resource.id}
+            image={resource?.image?.url}
+            primary={resource?.title}
+            secondaryAction={
+              <ButtonActions 
+                numVisible={0}
+                resource={resource}
+                buttons={buildActions({
+                  enableEdit,
+                  enableDelete,
+                  handleEdit: () => handleEdit(resource),
+                  handleDelete: () => handleDeleteClick(resource),
+                })}
+              /> 
+            }
+            slots={{
+              image: {
+                enableGradient,
+                enableOverlay,                  
+              },
+            }}
+            handleClick={() => handleClick(resource)}
+          />
+        ))}
+      </DataLayout>
+      <LoadMore page={page} numPages={numPages} loadMore={loadMore} />
+    </Stack>
 	)
 }
 

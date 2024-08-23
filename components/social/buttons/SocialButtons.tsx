@@ -34,7 +34,7 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 		numLikes,
 		numFavorites,
     variant='button',
-		justifyContent = 'center',
+		justifyContent = 'flex-start',
     spacing = 1,
     color
 	} = props

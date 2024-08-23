@@ -20,16 +20,7 @@ const AdminCommentItem: React.FC<AdminCommentItemProps> = (props) => {
 	return (
 		<ResourceListItem
 			primary={getCommentUserName(comment)}
-      secondary={ 
-        <Stack direction="column" spacing={0}>
-          <Typography variant="overline" color='text.secondary'>
-            @{ comment?.user?.username }
-          </Typography>
-          <Typography variant="body2" color='text.secondary'>
-            { truncate(comment?.body, 40) }
-          </Typography>
-        </Stack>
-      }			
+      secondary={truncate(comment?.body, 40)}			
 			avatar={<UserAvatar user={comment?.user} />}
 			secondaryActions={comment?.flagged && <Label label="Flagged" />}
 			handleClick={handleClick}

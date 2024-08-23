@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
 import { Likes } from '../../components'
-import { DataListProps } from '../../components/cms/collections/DataList'
+import { DataListProps } from '../../components/cms/data/DataList'
 import { SectionProps, HeadingProps } from '../../types'
 
 type SocialLikesProps = SectionProps & HeadingProps & DataListProps

@@ -7,40 +7,40 @@ import {
 	Typography,
 	Rating,
 } from '@mui/material'
-import { UserAvatar } from '../../../components'
+import { UserAvatar } from '../..'
 import moment from 'moment'
 
 type ReviewProps = {
-	review: any
+	resource: any
 	user?: any
 	handleDelete?: (review: any) => void
 }
 
 const Review: React.FC<ReviewProps> = (props) => {
-	const { review } = props
+	const { resource } = props
 
 	return (
 		<ListItem sx={sx.listItem}>
 			<ListItemIcon sx={sx.listItemIcon}>
-				<UserAvatar user={review?.user} />
+				<UserAvatar user={resource?.user} />
 			</ListItemIcon>
 			<ListItemText
-				primary={<Rating readOnly sx={sx.rating} value={review.rating} />}
+				primary={<Rating readOnly sx={sx.rating} value={resource.rating} />}
 				secondary={
 					<Stack direction="column" spacing={1}>
 						<Typography variant="body1" color="text.primary">
-							{review?.title}
+							{resource?.title}
 						</Typography>
 						<Typography
 							variant="body2"
 							color="text.secondary"
 							sx={sx.reviewText}
 						>
-							{review.body}
+							{resource.body}
 						</Typography>
 						<Typography variant="body2" color="text.secondary" sx={sx.caption}>
-							{`@${review?.user?.username}`} reviewed{' '}
-							{moment(review?.created_at).fromNow()}
+							{`@${resource?.user?.username}`} reviewed{' '}
+							{moment(resource?.created_at).fromNow()}
 						</Typography>
 					</Stack>
 				}

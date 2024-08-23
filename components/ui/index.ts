@@ -8,8 +8,6 @@ export { default as Autosuggest } from './autosuggest/Autosuggest'
 export { default as Button } from './Button'
 export { default as ButtonTabs } from './tabs/ButtonTabs'
 export { default as Breadcrumbs } from './breadcrumbs/Breadcrumbs'
-export { default as DisplayField } from './cards/fields/DisplayField'
-export { default as DisplayFields } from './cards/fields/DisplayFields'
 export { default as Column } from './Column'
 export { default as Carousel } from './carousel/Carousel'
 export { default as CarouselDot } from './carousel/CarouselDot'
@@ -78,6 +76,7 @@ export { default as SelectableListItem } from './lists/SelectableListItem'
 export { default as Pagination } from './Pagination'
 
 // Media
+export { default as AvatarImage } from './images/AvatarImage'
 export { default as AttachmentImage } from './images/AttachmentImage'
 export { default as EmptyImage } from './images/EmptyImage'
 export { default as Image } from './images/Image'
@@ -86,11 +85,14 @@ export { default as Logo } from './images/Logo'
 export { default as TextModal } from './TextModal'
 export { default as Swipeable } from './swipeable/Swipeable'
 
+// Debug 
+export { default as Debug } from './debug/Debug'
+
 // Theme
 export { default as LightDarkMode } from './theme/LightDarkMode'
 
 // Inputs, Fields and Tables
-export * from './cards'
 export * from './inputs'
 export * from './fields'
 export * from './tables'
+export * from './cards'

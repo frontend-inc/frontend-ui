@@ -1,76 +1,39 @@
 import React from 'react'
 import {
-	UserChip,
-	FavoriteButton,
 	Image,
-	ButtonActions,
 	TouchableOpacity,
 	LightDarkMode,
 } from '../../../components'
 import { Box } from '@mui/material'
-import { buildActions } from '../../../helpers'
+import { CardProps } from './Card'
 
-type ImageCardProps = {
-	enableUsers?: boolean
-	enableComments?: boolean
-	enableFavorites?: boolean
-	enableRatings?: boolean
-	enableLikes?: boolean
-	resource: any
-	handleClick: () => void
-	handleEdit?: (item: any) => void
-	handleDelete?: (item: any) => void
-	enableGradient?: boolean
-	enableOverlay?: boolean
-	enableEdit?: boolean
-	enableDelete?: boolean
-}
-
-const ImageCard: React.FC<ImageCardProps> = (props) => {
+const ImageCard: React.FC<CardProps> = (props) => {
 	const {
-		resource,
+    primary,
+    secondaryAction,
 		handleClick,
-		enableEdit,
-		enableDelete,
-		handleEdit,
-		handleDelete,
-		enableGradient = false,
-		enableOverlay = false,
-		enableFavorites = false,
+    image,
+		height = 260,
+    slots={
+      item: {},
+      image: {}
+    }
 	} = props || {}
-
-	const { title, image } = resource || {}
-
+ 
 	return (
 		<LightDarkMode mode="dark">
-			<Box sx={sx.root}>
+			<Box sx={sx.root} { ...slots.item }>
 				<TouchableOpacity handleClick={handleClick}>
 					<Image
-						src={image?.url}
-						height={260}
-						alt={title}
-						enableGradient={enableGradient}
-						enableOverlay={enableOverlay}
+						src={image}
+						height={height}
+						alt={primary}
+            { ...slots.image }						
 					/>
 				</TouchableOpacity>
 				<Box sx={sx.buttons}>
-					{enableFavorites == true && (
-						<FavoriteButton handle={resource?.handle} />
-					)}
-					<ButtonActions
-						resource={resource}
-						numVisible={0}
-						buttons={buildActions({
-							enableEdit,
-							enableDelete,
-							handleEdit,
-							handleDelete,
-						})}
-					/>
-				</Box>
-				<Box sx={sx.userCard}>
-					{resource?.user && <UserChip user={resource?.user} />}
-				</Box>
+					{ secondaryAction }
+				</Box>				
 			</Box>
 		</LightDarkMode>
 	)

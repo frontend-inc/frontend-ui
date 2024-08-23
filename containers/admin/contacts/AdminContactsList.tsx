@@ -17,6 +17,7 @@ const AdminContactsList: React.FC = () => {
       enableSearch
       enableCreate
       enableEdit
+      enableShow
       enableDelete
       sortOptions={[
         { name: 'created_at', label: 'Date' },
@@ -24,6 +25,13 @@ const AdminContactsList: React.FC = () => {
         { name: 'email', label: 'Email' },
         { name: 'phone', label: 'Phone' },
         { name: 'company', label: 'Company' },
+      ]}
+      displayFields={[
+        { name: 'name', label: 'Name', variant: 'string' },
+        { name: 'email', label: 'Email', variant: 'string' },
+        { name: 'phone', label: 'Phone', variant: 'string' },
+        { name: 'company', label: 'Company', variant: 'string' },
+        { name: 'message', label: 'Message', variant: 'text' },
       ]}
       edit={ AdminContactForm }
       create={ AdminContactForm }

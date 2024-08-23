@@ -11,9 +11,11 @@ import {
 	FilterOptionType,
 	SearchFilterOptionType,
   TableHeaderType,
+  DisplayFieldType,
 } from '../../../types'
 import { SortOptionType, SyntheticEventType } from '../../../types'
 import ResourceForm from './ResourceForm'
+import ResourceShow from './ResourceShow'
 import ResourceList from './ResourceList'
 import ResourceListItem from './ResourceListItem'
 import ResourceToolbar from './ResourceToolbar'
@@ -23,6 +25,7 @@ export type ResourcesProps = {
   list?: React.FC<any>
   edit?: React.FC<any>
   create?: React.FC<any>
+  show?: React.FC<any>
 	url: string
 	name: string
 	component?: React.FC<any>
@@ -37,11 +40,13 @@ export type ResourcesProps = {
 	fields?: FormFieldType[]
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
+  displayFields?: DisplayFieldType[]
 	enableSearch?: boolean
 	buttonText?: string
+  enableShow?: boolean
 	enableEdit?: boolean
 	enableCreate?: boolean
-	enableDelete?: boolean
+	enableDelete?: boolean  
 	sortable?: boolean
 	enableBorder?: boolean
 	direction?: 'row' | 'column'
@@ -49,28 +54,48 @@ export type ResourcesProps = {
 	emptyTitle?: string
 	emptyDescription?: string
 	itemProps?: any
+  slots?: {
+    list?: any 
+    edit?: any 
+    create?: any 
+    show?: any 
+    toolbar?: any 
+  }
 }
 
 const Resources: React.FC<ResourcesProps> = (props) => {
+
+  const SLOT_PROPS = {
+    list: {},
+    edit: {},
+    create: {},
+    show: {},
+    toolbar: {}
+  }
+  
 	const {
     toolbar: Toolbar = ResourceToolbar,
     list: List = ResourceList,
     component: Component = ResourceListItem,
     edit: EditForm = ResourceForm,
-    create: CreateForm = ResourceForm,		
+    create: CreateForm = ResourceForm,    		
+    show: ShowModal = ResourceShow, 
 		url,
-		name,
+		name,    
     headers = [],
-		fields = [],
+		fields = [],    
 		filterOptions = [],
 		sortOptions = [],
+    displayFields=[],
 		query: defaultQuery = {},
 		perPage = 20,
 		enableSearch = false,
 		enableEdit,
 		enableDelete,
 		enableCreate,
+    enableShow,
 		handleClick,
+    slots=SLOT_PROPS,
 		enableBorder = false,
 		direction = 'row',
 		emptyIcon = 'Search',
@@ -78,6 +103,7 @@ const Resources: React.FC<ResourcesProps> = (props) => {
 		emptyDescription = 'Try adjusting your search or filters',
 	} = props
 
+  const [openShow, setOpenShow] = useState(false)
 	const [openCreate, setOpenCreate] = useState(false)
   const [openEdit, setOpenEdit] = useState(false)
 	const [openDelete, setOpenDelete] = useState(false)
@@ -94,6 +120,7 @@ const Resources: React.FC<ResourcesProps> = (props) => {
 		updatePositions,
 		handleChange,
 		query,
+    findOne,
 		findMany,
 		reloadMany,
 		removeAttachment,
@@ -171,12 +198,14 @@ const Resources: React.FC<ResourcesProps> = (props) => {
 
 	const handleAdd = () => {
 		setResource({})
+    setOpenShow(false)
     setOpenEdit(false)
     setOpenCreate(true)
 	}
 
 	const handleEdit = (resource) => {
 		setResource(resource)
+    setOpenShow(false)
     setOpenCreate(false)
 		setOpenEdit(true)    
 	}
@@ -191,6 +220,7 @@ const Resources: React.FC<ResourcesProps> = (props) => {
 			}
 			if (resp?.id) {
 				setResource({})
+        setOpenShow(false)
 				setOpenCreate(false)
         setOpenEdit(false)
 				reloadMany()
@@ -199,6 +229,16 @@ const Resources: React.FC<ResourcesProps> = (props) => {
 			console.log('Error', err)
 		}
 	}
+
+  const handleShowClick = async (resource) => {
+    if(enableShow){
+      let resp = await findOne(resource?.id)      
+      setResource(resp)
+      setOpenShow(true)
+      setOpenEdit(false)
+      setOpenCreate(false)    
+    }
+  }
 
 	const handleDeleteClick = (resource) => {
 		setResource(resource)
@@ -209,6 +249,8 @@ const Resources: React.FC<ResourcesProps> = (props) => {
 
 	const handleDelete = async () => {
 		await destroy(resource?.id)
+    setOpenShow(false)
+    setOpenEdit(false)
 		setOpenDelete(false)		
 		setResource({})
 		reloadMany()
@@ -264,24 +306,39 @@ const Resources: React.FC<ResourcesProps> = (props) => {
         filterOptions={filterOptions}
         sortOptions={sortOptions}
         query={query}
+        { ...slots.toolbar }
       />			
-			<Box sx={{ ...(loading && sx.loading) }}>
+			<Box 
+        sx={{ 
+          ...(loading && sx.loading) 
+        }}
+      >
         <List 
           query={query}
           headers={ headers }
           resources={ resources }
           page={ page }
           numPages={ numPages }
-          enableBorder={ enableBorder }
-          enableEdit={ enableEdit }
-          enableDelete={ enableDelete }
-          handleClick={ handleClick ? handleClick : undefined }
-          handleEdit={ handleEdit }
-          handleDelete={ handleDeleteClick }
           handleDrop={ handleDrop }
           handleSort={ handleSort }        
           handleLoadMore={ loadMore }            
-          component={ Component }           
+          renderItem={(resource, props) => (
+            <Component 
+              key={ resource?.id }              
+              resource={ resource }
+              enableBorder={ enableBorder }
+              enableEdit={ enableEdit }
+              enableDelete={ enableDelete }
+              handleClick={handleClick ? 
+                  () => handleClick(resource) : 
+                  () => handleShowClick(resource) 
+              }
+              handleEdit={() => handleEdit(resource) }
+              handleDelete={() => handleDeleteClick(resource) }    
+              { ...props }
+              { ...slots.list }
+            />
+          )}
         />			
         {!loading && resources?.length == 0 && (
           <Placeholder
@@ -301,6 +358,7 @@ const Resources: React.FC<ResourcesProps> = (props) => {
         handleRemove={ handleRemove }
         handleSubmit={ handleSubmit }
         fields={ fields }
+        { ...slots.create }
       />
       <EditForm                 
         open={ openEdit }
@@ -312,6 +370,19 @@ const Resources: React.FC<ResourcesProps> = (props) => {
         handleRemove={ handleRemove }
         handleSubmit={ handleSubmit }
         fields={ fields }
+        { ...slots.edit }
+      />
+      <ShowModal 
+        loading={loading}
+        open={ openShow }
+        handleClose={() => setOpenShow(false)}
+        fields={ displayFields }
+        resource={ resource }
+        enableEdit={ enableEdit }
+        enableDelete={ enableDelete }
+        handleEdit={() => handleEdit(resource) }
+        handleDelete={() => handleDeleteClick(resource) }
+        { ...slots.show }
       />
 			<AlertModal
 				open={openDelete}

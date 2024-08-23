@@ -7,13 +7,14 @@ type FieldRatingProps = {
 	label?: string
 	rest?: any
 	color?: string
+  size?: 'small' | 'medium' | 'large'
 }
 
 const FieldRating: React.FC<FieldRatingProps> = (props) => {
-	const { value, label, color, ...rest } = props
+	const { value, label, size, color, ...rest } = props
 	return (
 		<FieldWrapper label={label} color={color} {...rest}>
-			<Rating readOnly sx={sx.rating} value={value} />
+			<Rating size={size} readOnly sx={sx.rating} value={value} />
 		</FieldWrapper>
 	)
 }

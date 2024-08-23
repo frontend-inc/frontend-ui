@@ -1,20 +1,20 @@
-import React, { useState, useContext } from 'react'
-import { ResourceContext } from 'frontend-js'
+import React, { useContext } from 'react'
 import { Box, Stack } from '@mui/material'
 import { Carousel } from '../..'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
-import DataListItem from './DataListItem'
+import CollectionListItem from './CollectionListItem'
 import { useForms } from '../../../hooks'
-import { DataListItemsProps } from './DataListItems'
+import { CollectionListItemsProps } from '../collections/CollectionListItems'
+import { useResourceContext } from 'frontend-js'
 
-export type CarouselListListProps = DataListItemsProps & {
+export type CarouselListItemsProps = CollectionListItemsProps & {
 	enableAutoPlay?: boolean
 	enableArrows?: boolean
 	enableDots?: boolean
 }
 
-const CarouselListList: React.FC<CarouselListListProps> = (props) => {
+const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
@@ -35,11 +35,17 @@ const CarouselListList: React.FC<CarouselListListProps> = (props) => {
 		enableLikes = false,
 	} = props
 
-	const { handleEdit, handleDeleteClick } = useForms()
+	const { 
+    handleEdit, 
+    handleDeleteClick 
+  } = useForms()
 
-	const { setOpenShow, loading, resource, resources, setResource } = useContext(
-		ResourceContext
-	) as any
+	const { 
+    setOpenShow, 
+    loading, 
+    resources, 
+    setResource 
+  } = useResourceContext()
 
 	const handleClick = (resource) => {
 		if (href) {
@@ -78,7 +84,7 @@ const CarouselListList: React.FC<CarouselListListProps> = (props) => {
 							pb: enableDots ? 4 : 1,
 						}}
 					>
-						<DataListItem
+						<CollectionListItem
 							buttons={buttons}
 							style="card"
 							resource={resource}
@@ -89,6 +95,7 @@ const CarouselListList: React.FC<CarouselListListProps> = (props) => {
 							handleDelete={() => handleDeleteClick(resource)}
 							handleClick={() => handleClick(resource)}
 							enableGradient={enableGradient}
+              enableOverlay={enableOverlay}
 							enableFavorites={enableFavorites}
 							enableRatings={enableRatings}
 							enableUsers={enableUsers}
@@ -101,7 +108,7 @@ const CarouselListList: React.FC<CarouselListListProps> = (props) => {
 	)
 }
 
-export default CarouselListList
+export default CarouselListItems
 
 const sx = {
 	root: {
@@ -119,6 +126,6 @@ const sx = {
 		gap: '16px',
 	},
 	item: {
-		p: 2,
+		p: 1,
 	},
 }

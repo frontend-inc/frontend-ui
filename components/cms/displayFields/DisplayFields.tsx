@@ -1,6 +1,6 @@
 import React from 'react'
-import { DisplayField } from '../../../../components'
-import { DisplayFieldType } from '../../../../types'
+import { DisplayField } from '../..'
+import { DisplayFieldType } from '../../../types'
 import { Stack } from '@mui/material'
 
 type DisplayFieldsProps = {

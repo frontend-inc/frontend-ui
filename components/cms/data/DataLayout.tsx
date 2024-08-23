@@ -2,18 +2,20 @@ import React from 'react'
 import { Box } from '@mui/material'
 
 type DataLayoutProps = {
+  loading?: boolean
 	grid?: boolean
 	children: React.ReactNode
 }
 
 const DataLayout: React.FC<DataLayoutProps> = (props) => {
-	const { grid = false, children } = props
+	const { loading, grid = false, children } = props
 
 	return (
 		<Box
 			sx={{
 				...sx.root,
 				...(grid ? sx.grid : sx.list),
+        ...(loading && sx.loading )
 			}}
 		>
 			{children}
@@ -49,4 +51,7 @@ const sx = {
 		gap: '16px',
 		pb: 1,
 	},
+  loading: {
+    opacity: 0.5
+  }
 }

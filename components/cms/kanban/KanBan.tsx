@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { ButtonType, DisplayFieldType } from '../../../types'
 import { AuthGuard } from '../../../components'
-import Sortable from './Sortable'
+import KanBanBoard from './KanBanBoard'
 import { groupResourcesByField } from '../../../helpers/utils'
 
 export type KanBanProps = {
@@ -29,7 +29,6 @@ export type KanBanProps = {
 	handleEdit: (resource: any) => void
 	handleDelete: (resource: any) => void
 	handleAdd: (status: string) => void
-	handleComment: (resource: any) => void
 }
 
 const KanBan: React.FC<KanBanProps> = (props) => {
@@ -55,7 +54,6 @@ const KanBan: React.FC<KanBanProps> = (props) => {
 		handleEdit,
 		handleDelete,
 		handleAdd,
-		handleComment,
 	} = props
 
 	const [groupedResources, setGroupedResources] = useState({})
@@ -80,7 +78,7 @@ const KanBan: React.FC<KanBanProps> = (props) => {
 	if (Object.keys(groupedResources).length == 0) return null
 	return (
 		<AuthGuard requireAuth>
-			<Sortable
+			<KanBanBoard
 				loading={loading}
 				buttons={buttons}
 				headers={headers}
@@ -100,8 +98,7 @@ const KanBan: React.FC<KanBanProps> = (props) => {
 				enableCreate={enableCreate}
 				handleEdit={handleEdit}
 				handleDelete={handleDelete}
-				handleAdd={handleAdd}
-				handleComment={handleComment}
+				handleAdd={handleAdd}        
 			/>
 		</AuthGuard>
 	)

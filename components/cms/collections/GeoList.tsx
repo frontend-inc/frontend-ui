@@ -1,12 +1,16 @@
 import React from 'react'
-import { DataList } from '../..'
-import { DataListProps } from './DataList'
+import { CollectionList, GeoToolbar } from '../..'
+import { CollectionListProps } from '../collections/CollectionList'
 import GeoListItems from './GeoListItems'
 
-export type GeoListProps = DataListProps
-
-const GeoList: React.FC<GeoListProps> = (props) => {
-	return <DataList {...props} enableGeoSearch list={GeoListItems} />
+const GeoList: React.FC<CollectionListProps> = (props) => {
+	return(
+    <CollectionList 
+      {...props} 
+      toolbar={ GeoToolbar }
+      list={GeoListItems} 
+    />
+  )
 }
 
 export default GeoList

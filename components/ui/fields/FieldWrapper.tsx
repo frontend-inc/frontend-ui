@@ -74,7 +74,7 @@ const sx = {
 		pr: 1,
 	},
 	rootBorder: {
-		p: 2,
+		p: 1.5,
 		width: '100%',
 		borderRadius: 1,
 		border: '1px solid',
