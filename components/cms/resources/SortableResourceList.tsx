@@ -5,7 +5,7 @@ import {
 	Resource,
 	LoadMore,
 } from '../..'
-import { ResourceListProps } from './ResourceList'
+import { ResourceListProps } from './ResourceListItems'
 
 type SortableResourceListProps = ResourceListProps & {
   handleDrop: (sorted: any) => void

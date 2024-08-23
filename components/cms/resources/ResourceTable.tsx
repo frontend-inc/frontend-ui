@@ -3,7 +3,7 @@ import {
 	TableHeaderType,
 } from '../../../types'
 import { Resources, TableList } from '../../../components'
-import { ResourcesProps } from './Resources'
+import { ResourcesProps } from './ResourceList'
 
 export type ResourceTableProps = ResourcesProps & {
 	headers: TableHeaderType[]
@@ -12,7 +12,7 @@ export type ResourceTableProps = ResourcesProps & {
 const ResourceTable: React.FC<ResourceTableProps> = (props) => {	
   
   return(
-    <Resources
+    <ResourceList
       { ...props }    
       list={ TableList }
     />

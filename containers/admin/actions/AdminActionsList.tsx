@@ -28,7 +28,7 @@ const AdminActionsList: React.FC = () => {
 
   return(
     <Stack p={2} direction="column" spacing={2}>
-      <Resources
+      <ResourceList
         url={`${apiUrl}/actions`}
         name="app_action"
         enableSearch

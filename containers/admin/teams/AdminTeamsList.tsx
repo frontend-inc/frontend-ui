@@ -1,6 +1,7 @@
 
 import React from 'react'
-import { Resources } from '../../../components'
+import { ResourceList } from '../../../components'
+
 import { useAdmin } from '../../../hooks'
 import { AdminTeamItem } from '../../../containers'
 
@@ -9,7 +10,7 @@ const AdminTeamsList: React.FC = () => {
   const { apiUrl } = useAdmin()
 
   return(
-    <Resources
+    <ResourceList
       enableBorder
       url={`${apiUrl}/teams`}
       name="team"

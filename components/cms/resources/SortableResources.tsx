@@ -1,16 +1,17 @@
 import React from 'react'
 import SortableResourceList from './SortableResourceList'
-import { Resources } from '../../../components'
-import { ResourcesProps } from './Resources'
+import { ResourceList } from '../../../components'
 
-const SortableResources: React.FC<ResourcesProps> = (props) => {
+import { ResourcesProps } from './ResourceList'
+
+const SortableResources: React.FC<ResourceListProps> = (props) => {
 
   const { 
     list: ResourceList = SortableResourceList,
   } = props || {}
 	
 	return (
-		<Resources 
+		<ResourceList 
       { ...props }
       list={ ResourceList }
     />

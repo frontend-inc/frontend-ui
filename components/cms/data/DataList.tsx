@@ -1,6 +1,7 @@
 import React from 'react'
 import {
 	DataFetcher,
+  DataListItem,
 	DataListItems,
 	DataToolbar,
 	DataForm,
@@ -35,13 +36,14 @@ export type DataListProps = {
 	enableSorting?: boolean
 	perPage?: number
 	loadMore?: boolean
-	list: React.FC<any>
+	list?: React.FC<any>
 	toolbar?: React.FC<any>
 	show?: React.FC<any>
 	edit?: React.FC<any>
   empty?: React.FC<any>
   create?: React.FC<any>
 	destroy?: React.FC<any>
+  component?: React.FC<any>
   slots?: {
     toolbar?: any
     list?: any
@@ -90,6 +92,7 @@ const DataList: React.FC<DataListProps> = (props) => {
     emptyDescription,
 		toolbar: Toolbar = DataToolbar,
 		list: List = DataListItems,
+    component: Component = DataListItem,
 		show: Show = DataShow,
 		edit: Edit = DataForm,
     create: Create = DataForm,    
@@ -118,7 +121,8 @@ const DataList: React.FC<DataListProps> = (props) => {
 					{...rest}
 					href={href}
 					enableEdit={enableEdit}
-					enableDelete={enableDelete}          
+					enableDelete={enableDelete}  
+          component={ Component }        
           { ...slots.list }
 				/>
         <Edit 

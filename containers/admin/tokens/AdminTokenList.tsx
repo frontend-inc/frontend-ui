@@ -1,5 +1,6 @@
 import React from 'react'
-import { Resources } from '../../../components'
+import { ResourceList } from '../../../components'
+
 import { useAdmin } from '../../../hooks'
 import { AdminTokenItem } from '../../../containers'
 import AdminTokenForm from './AdminTokenForm'
@@ -9,7 +10,7 @@ const AdminTokenList: React.FC = () => {
   const { apiUrl } = useAdmin()
 
   return( 
-    <Resources
+    <ResourceList
       url={`${apiUrl}/tokens`}
       name="token"
       enableCreate

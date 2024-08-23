@@ -1,6 +1,7 @@
 
 import React from 'react'
-import { Resources } from '../../../components'
+import { ResourceList } from '../../../components'
+
 import { useAdmin } from '../../../hooks'
 import { AdminContactItem } from '../../../containers'
 import AdminContactForm from './AdminContactForm'
@@ -10,7 +11,7 @@ const AdminContactsList: React.FC = () => {
   const { apiUrl } = useAdmin()
 
   return(
-    <Resources
+    <ResourceList
       enableBorder={false}
       url={`${apiUrl}/contacts`}
       name="contact"

@@ -3,7 +3,7 @@ import {
 	Typography,	
 } from '@mui/material'
 import { Label, UserAvatar, ResourceListItem } from '../../../components'
-import { ResourceProps } from '../../../components/cms/resources/Resource'
+import { ResourceProps } from '../../../components/cms/resources/ResourceItem'
 import { useAuth } from 'frontend-js'
 
 const AdminUserItem: React.FC<ResourceProps> = (props) => {

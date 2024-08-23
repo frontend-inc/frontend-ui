@@ -1,6 +1,6 @@
 import React from 'react'
 import { ResourceListItem, Label } from '../../../components'
-import { ResourceProps } from '../../../components/cms/resources/Resource'
+import { ResourceProps } from '../../../components/cms/resources/ResourceItem'
 
 const AdminMenuItem: React.FC<ResourceProps> = (props) => {
 	const {

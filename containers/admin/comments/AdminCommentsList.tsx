@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { Resources } from '../../../components'
+import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import { AdminCommentItem } from '../../../containers'
 import AdminCommentShow from './AdminCommentShow'
@@ -10,7 +10,7 @@ const AdminCommentsList: React.FC = () => {
   const { apiUrl } = useAdmin()
 
   return(
-    <Resources      
+    <ResourceList     
       url={`${apiUrl}/comments`}
       name="comment"
       enableSearch
@@ -21,10 +21,6 @@ const AdminCommentsList: React.FC = () => {
       ]}      
       component={AdminCommentItem}
       show={ AdminCommentShow }
-      displayFields={[
-        { name: 'document.title', variant: 'string', label: 'Item' },
-        { name: 'body', variant: 'text', label: 'Comment' },
-      ]}
       emptyIcon="MessageSquare"
       emptyTitle="No comments"
       emptyDescription="No comments yet."

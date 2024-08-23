@@ -1,6 +1,7 @@
 
 import React from 'react'
-import { Resources } from '../../../components'
+import { ResourceList } from '../../../components'
+
 import { useAdmin } from '../../../hooks'
 import AdminUserItem from './AdminUserItem'
 import AdminUserForm from './AdminUserForm'
@@ -16,7 +17,7 @@ const AdminUsersList: React.FC<AdminUserListProps> = (props) => {
   const { apiUrl } = useAdmin()
   const { metafields=[] } = props 
   return(
-    <Resources
+    <ResourceList
       enableBorder
       url={`${apiUrl}/users`}
       name="user"

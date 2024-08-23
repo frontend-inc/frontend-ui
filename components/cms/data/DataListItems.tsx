@@ -74,10 +74,7 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
       {resources?.map((resource, index) => (
         <Component
           key={index}
-          label={ resource?.label }
-          image={ resource?.image?.url }
-          primary={resource?.title}
-          secondary={ resource?.description }
+          resource={ resource }
           handleClick={ handleClick ? 
               () => handleClick(resource) : 
               () => handleShowClick(resource) }

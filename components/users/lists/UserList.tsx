@@ -33,7 +33,7 @@ const UserList: React.FC<UserListProps> = (props) => {
 	}
 
 	return (
-		<Resources
+		<ResourceList
 			enableSearch
 			enableLoadMore
 			name="user"

@@ -26,7 +26,7 @@ const FollowModal: React.FC<FollowModalProps> = (props) => {
 			</Tabs>
 			<Box sx={sx.container}>
 				{currentTab == 0 && (
-					<Resources
+					<ResourceList
 						name="user"
 						url={`/api/v1/cms/users/${user?.username}/followers`}
 						enableSearch
@@ -34,7 +34,7 @@ const FollowModal: React.FC<FollowModalProps> = (props) => {
 					/>
 				)}
 				{currentTab == 1 && (
-					<Resources
+					<ResourceList
 						name="user"
 						url={`/api/v1/cms/users/${user?.username}/following`}
 						enableSearch

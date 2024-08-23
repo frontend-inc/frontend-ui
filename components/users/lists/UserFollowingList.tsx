@@ -14,7 +14,7 @@ const UserFollowingList: React.FC<UserFollowingListProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Resources
+		<ResourceList
 			enableSearch
 			enableLoadMore
 			name="user"

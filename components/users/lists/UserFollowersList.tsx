@@ -9,7 +9,7 @@ const UserFollowersList: React.FC<UserFollowersListProps> = (props) => {
 	const { user, displayFields = [], socialFields = [] } = props || {}
 
 	return (
-		<Resources
+		<ResourceList
 			enableSearch
 			enableLoadMore
 			name="user"

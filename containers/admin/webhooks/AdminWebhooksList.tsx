@@ -1,6 +1,7 @@
 
 import React from 'react'
-import { Resources } from '../../../components'
+import { ResourceList } from '../../../components'
+
 import { useAdmin } from '../../../hooks'
 import { AdminWebhookItem } from '../../../containers'
 
@@ -17,7 +18,7 @@ const AdminWebhooksList: React.FC = () => {
   const { apiUrl } = useAdmin()
 
   return(
-    <Resources
+    <ResourceList
       url={`${apiUrl}/webhooks`}
       name="webhook"
       enableCreate

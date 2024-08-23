@@ -1,6 +1,7 @@
 
 import React from 'react'
-import { Resources } from '../../../components'
+import { ResourceList } from '../../../components'
+
 import { useAdmin } from '../../../hooks'
 import { AdminReviewItem } from '../../../containers'
 import AdminReviewShow from './AdminReviewShow'
@@ -10,7 +11,7 @@ const AdminReviewsList: React.FC = () => {
   const { apiUrl } = useAdmin()
 
   return(
-    <Resources
+    <ResourceList
       enableBorder={false}
       url={`${apiUrl}/reviews`}
       name="review"
