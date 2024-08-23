@@ -93,11 +93,11 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
       {enableCreate && (
         <Button
           sx={sx.button}
-          color="secondary"
+          color="primary"
           variant="contained"
           onClick={handleAdd}
           startIcon={
-            <Icon name="Plus" color="secondary.contrastText" size={20} />
+            <Icon name="Plus" color="primary.contrastText" size={20} />
           }
         >
           Add

@@ -5,7 +5,6 @@ import {
 	FilterButton,
 	SortButton,
 	SearchInput,
-	GeoSearchInput,
 } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch, useForms } from '../../../hooks'
