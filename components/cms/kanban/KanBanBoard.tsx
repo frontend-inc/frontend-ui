@@ -16,8 +16,7 @@ import {
 } from '@dnd-kit/sortable'
 import { Box, Button, List, Typography, Stack } from '@mui/material'
 import Droppable from './Droppable'
-import { ButtonType, DisplayFieldType } from '../../../types'
-import { Icon, CollectionKanBanCard, KanBanCard } from '../..'
+import { Icon, KanBanCard } from '../..'
 
 type KanBanBoardProps = {
 	loading?: boolean
@@ -25,48 +24,40 @@ type KanBanBoardProps = {
 		label: string
 		value: string
 	}[]
-	activeResource: any
-	buttons: ButtonType[]
-	displayFields: DisplayFieldType[]
 	handleClick: (resource: any) => void
 	handleDrop: (movedItem: any, overContainer: string, columns: any[]) => void
 	columns: Record<string, any>
-	enableComments?: boolean
-	enableFavorites?: boolean
-	enableLikes?: boolean
-	enableRatings?: boolean
-	enableOverlay?: boolean
-	enableGradient?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
 	enableCreate?: boolean
 	handleEdit: (resource: any) => void
 	handleDelete: (resource: any) => void
 	handleAdd: (status: string) => void
+  component?: React.FC<any>
+  slots?: {
+    list?: any 
+    card?: any    
+  }
 }
 
 const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 	const {
 		loading,
-		activeResource,
-		buttons = [],
 		headers = [],
 		handleDrop,
-		displayFields = [],
-		columns: initialColumns = {},
-		enableOverlay,
-		enableGradient,
-		handleClick,
-		enableComments,
-		enableFavorites,
-		enableLikes,
-		enableRatings,
+		columns: initialColumns = {},		
+		handleClick,    
 		enableEdit,
 		enableDelete,
 		enableCreate,
 		handleEdit,
 		handleDelete,
-		handleAdd,    
+		handleAdd, 
+    component: Component = KanBanCard,
+    slots={
+      list: {},
+      card: {}
+    }   
 	} = props
 
 	const [activeId, setActiveId] = useState(null)
@@ -116,24 +107,18 @@ const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 								<List sx={sx.cardList} disablePadding>
 									{columns[header.value].length > 0 ? (
 										columns[header.value]?.map((res) => (
-											<CollectionKanBanCard
-												loading={loading && activeResource?.id == res?.id}
+											<Component
+												loading={loading}
 												key={res?.id}
 												id={res?.id}
 												resource={res}
-												buttons={buttons}
-												displayFields={displayFields}
 												handleClick={() => handleClick(res)}
-												enableOverlay={enableOverlay}
-												enableGradient={enableGradient}
-												enableComments={enableComments}
-												enableFavorites={enableFavorites}
-												enableLikes={enableLikes}
-												enableRatings={enableRatings}
 												enableEdit={enableEdit}
 												enableDelete={enableDelete}
 												handleEdit={() => handleEdit(res)}
 												handleDelete={() => handleDelete(res)}
+                        component={Component}
+                        { ...slots.card }
 											/>
 										))
 									) : (
@@ -161,15 +146,11 @@ const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 			</Stack>
 			<DragOverlay>
 				{draggedResource ? (
-					<CollectionKanBanCard
+					<Component
             enableDragging
 						id={draggedResource?.id}
 						resource={draggedResource}
-						displayFields={displayFields}
-						buttons={[]}
-						enableRatings={enableRatings}
-						enableFavorites={enableFavorites}
-						enableLikes={enableLikes}						
+            { ...slots.card }				
 					/>
 				) : null}
 			</DragOverlay>

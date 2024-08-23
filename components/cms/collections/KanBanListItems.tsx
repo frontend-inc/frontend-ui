@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { CollectionListProps } from '../collections/CollectionList'
-import { KanBan } from '../..'
+import { CollectionKanBanCard, KanBanBoard } from '../../../components'
 import { ResourceContext } from 'frontend-js'
 import { useResourceContext, changeDocumentValue } from 'frontend-js'
 import { useForms } from '../../../hooks'
+import { groupResourcesByField } from '../../../helpers'
 
 export type KanBanListItemsProps = CollectionListProps & {
 	headers: {
@@ -78,18 +79,56 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 		await updatePositions(columnItems)
 		await reloadMany()
 	}
-	if (!headers || !fieldName) return null
+
+  const [columns, setColumns] = useState({})
+
+	const handleGroupResources = (resources, fieldName) => {
+		let sortedResources = resources.sort((a, b) => a.position - b.position)
+		let allowedOptions = headers.map((header) => header.value)
+		let grouped = groupResourcesByField(
+			sortedResources,
+			fieldName,
+			allowedOptions
+		)
+		setColumns(grouped)
+	}
+
+	useEffect(() => {
+		if (resources) {
+			handleGroupResources(resources, fieldName)
+		}
+	}, [resources, fieldName, headers])
+
+
+  const slots = {
+    list: {
+      enableOverlay,
+      enableGradient,
+      buttons,
+      displayFields,
+      enableComments,
+      enableFavorites,
+      enableLikes,
+      enableRatings,
+    },
+    card: {
+      enableOverlay,
+      enableGradient,
+      buttons,
+      displayFields,
+      enableComments,
+      enableFavorites,
+      enableLikes,
+      enableRatings,
+    }
+  }
+
+	if (!headers || !fieldName || Object.keys(columns)?.length == 0) return null
 	return (
-		<KanBan
+		<KanBanBoard
 			loading={loading}
-			buttons={buttons}
-			resources={resources}
-			activeResource={resource}
+      columns={columns}
 			headers={headers}
-			fieldName={fieldName}
-			displayFields={displayFields}
-			enableOverlay={enableOverlay}
-			enableGradient={enableGradient}
 			handleClick={handleClick}
 			handleDrop={handleDrop}
 			enableEdit={enableEdit}
@@ -97,10 +136,9 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 			enableCreate={enableCreate}
 			handleEdit={handleEdit}
 			handleDelete={handleDeleteClick}
-			handleAdd={handleAdd}
-			enableComments={enableComments}
-			enableFavorites={enableFavorites}
-			enableRatings={enableRatings}			
+			handleAdd={handleAdd}			
+      slots={slots}		
+      component={ CollectionKanBanCard }
 		/>
 	)
 }
