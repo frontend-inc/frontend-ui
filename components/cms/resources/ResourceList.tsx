@@ -13,7 +13,7 @@ import {
 import { SortOptionType, SyntheticEventType } from '../../../types'
 import ResourceForm from './ResourceForm'
 import ResourceShow from './ResourceShow'
-import ResourceListItem from './ResourceListItem'
+import ResourceItem from './ResourceItem'
 import ResourceListItems from './ResourceListItems'
 import ResourceToolbar from './ResourceToolbar'
 
@@ -72,7 +72,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	const {
 		toolbar: Toolbar = ResourceToolbar,
 		list: List = ResourceListItems,
-		component: Component = ResourceListItem,
+		component: Component = ResourceItem,
 		edit: EditForm = ResourceForm,
 		create: CreateForm = ResourceForm,
 		show: ShowModal = ResourceShow,
@@ -317,10 +317,11 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					handleDrop={handleDrop}
 					handleSort={handleSort}
 					handleLoadMore={loadMore}
+          resources={ resources }
 					renderItem={(resource, props) => (
 						<Component
 							key={resource?.id}
-							resource={resource}
+							resource={resource}              
 							enableBorder={enableBorder}
 							enableEdit={enableEdit}
 							enableDelete={enableDelete}

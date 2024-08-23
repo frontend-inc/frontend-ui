@@ -1,6 +1,6 @@
 import React from 'react'
 import { ResourceForm } from '../../../components'
-import { ACTION_TYPES, ZAP_TYPES } from '../../../constants'
+import { ACTION_TYPES } from '../../../constants'
 import { ResourceFormProps } from '../../../components/cms/resources/ResourceForm'
 import { useAdmin } from '../../../hooks'
 
@@ -19,7 +19,7 @@ const AdminActionForm: React.FC<ResourceFormProps> = (props) => {
 			variant: 'nospace',
 		},
 		{
-			label: 'Action',
+			label: 'Trigger',
 			name: 'action_type',
 			variant: 'select',
 			options: ACTION_TYPES,

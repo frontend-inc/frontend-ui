@@ -12,7 +12,6 @@ type AdminActionItemProps = {
 
 const AdminActionItem: React.FC<AdminActionItemProps> = (props) => {
 	const { resource, sortable, handleClick, handleEdit, handleDelete } = props
-
 	return (
 		<ResourceListItem
 			enableBorder

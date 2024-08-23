@@ -67,7 +67,7 @@ const Card: React.FC<CardProps> = (props) => {
 							{secondary}
 						</Typography>
 					)}
-				</Box>
+      </Box>
 				<Stack direction="row" justifyContent="space-between">
 					{actions}
 					{secondaryAction}
