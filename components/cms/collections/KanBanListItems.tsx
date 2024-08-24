@@ -38,7 +38,6 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 
 	const {
 		loading,
-		resource,
 		resources,
 		update,
 		updatePositions,

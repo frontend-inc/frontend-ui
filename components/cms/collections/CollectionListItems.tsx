@@ -4,7 +4,7 @@ import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { AppContext } from '../../../context'
 import { useRouter } from 'next/router'
-import { Placeholder, CollectionListItem, DataLayout } from '../..'
+import { CollectionListItem, DataLayout } from '../..'
 import { useForms } from '../../../hooks'
 import { ButtonType, DisplayFieldType } from '../../../types'
 import { buildActions } from '../../../helpers'
@@ -25,9 +25,7 @@ export type CollectionListItemsProps = {
 	enableRatings?: boolean
 	enableSharing?: boolean
 	enableUsers?: boolean
-	emptyIcon?: string
-	emptyTitle?: string
-	emptyDescription?: string
+  component?: React.FC<any>
 }
 
 const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
@@ -49,6 +47,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		buttons = [],
 		style = 'card',
 		href,
+    handleClick,
 		displayFields = [],
 		enableGradient = false,
 		enableOverlay = false,
@@ -59,14 +58,13 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		enableUsers = false,
 		enableRatings = false,
 		enableComments = false,
-		emptyIcon,
-		emptyTitle = 'No results found',
-		emptyDescription = 'Try changing your search or filters.',
-		...rest
+    component: Component = CollectionListItem,
 	} = props
 
-	const handleNavigate = (resource) => {
-		if (href) {
+	const handleShowClick = (resource) => {
+    if(handleClick){
+      handleClick(resource)
+    } else if(href) {
 			if (clientUrl && href && resource?.handle) {
 				window.scrollTo({
 					top: 0,
@@ -80,9 +78,10 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		}
 	}
 
-	const { handleClick = handleNavigate } = props
-
-	const { handleEdit, handleDeleteClick } = useForms()
+	const { 
+    handleEdit, 
+    handleDeleteClick 
+  } = useForms()
 
 	let grid = false
 
@@ -98,7 +97,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 
 	grid = LAYOUTS[style]
 
-	const handleLoadMore = () => {
+	const handlePaginate = () => {
 		let perPage = (query?.per_page || 12) + 12
 		setQuery({
 			...query,
@@ -107,48 +106,38 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 	}
 
 	return (
-		<>
-			<Stack direction="column" spacing={2}>
-				<DataLayout grid={grid}>
-					{resources?.map((resource, index) => (
-						<CollectionListItem
-							key={index}
-							style={style}
-							resource={resource}
-							displayFields={displayFields}
-							handleClick={() => handleClick(resource)}
-							buttons={buildActions({
-								enableEdit,
-								enableDelete,
-								handleEdit: () => handleEdit(resource),
-								handleDelete: () => handleDeleteClick(resource),
-								buttons,
-							})}
-							enableUsers={enableUsers}
-							enableComments={enableComments}
-							enableFavorites={enableFavorites}
-							enableLikes={enableLikes}
-							enableRatings={enableRatings}
-							enableGradient={enableGradient}
-							enableOverlay={enableOverlay}
-						/>
-					))}
-				</DataLayout>
-				<LoadMore 
-          page={page} 
-          numPages={numPages} 
-          handlePaginate={handleLoadMore} 
-        />
-			</Stack>
-			{!loading && resources?.length == 0 && (
-				<Placeholder
-					enableBorder
-					icon={emptyIcon}
-					title={emptyTitle}
-					description={emptyDescription}
-				/>
-			)}
-		</>
+    <Stack direction="column" spacing={2}>
+      <DataLayout grid={grid}>
+        {resources?.map((resource, index) => (
+          <Component 
+            key={index}
+            style={style}
+            resource={resource}
+            displayFields={displayFields}
+            handleClick={() => handleShowClick(resource)}
+            buttons={buildActions({
+              enableEdit,
+              enableDelete,
+              handleEdit: () => handleEdit(resource),
+              handleDelete: () => handleDeleteClick(resource),
+              buttons,
+            })}
+            enableUsers={enableUsers}
+            enableComments={enableComments}
+            enableFavorites={enableFavorites}
+            enableLikes={enableLikes}
+            enableRatings={enableRatings}
+            enableGradient={enableGradient}
+            enableOverlay={enableOverlay}
+          />
+        ))}
+      </DataLayout>
+      <LoadMore 
+        page={page} 
+        numPages={numPages} 
+        handlePaginate={handlePaginate} 
+      />
+    </Stack>
 	)
 }
 

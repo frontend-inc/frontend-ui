@@ -1,5 +1,4 @@
 import React from 'react'
-import { Stack } from '@mui/material'
 import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { DataListItem, DataLayout } from '../..'
@@ -9,7 +8,6 @@ export type DataListItemsProps = {
 	enableShow?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
-	handleShow?: (resource: any) => void
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
 	handleClick: (resource: any) => void
@@ -37,7 +35,6 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 		enableShow,
 		enableEdit,
 		enableDelete,
-		handleShow,
 		handleClick,
 		pagination: Pagination = LoadMore,
 		component: Component = DataListItem,
@@ -45,10 +42,12 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 			item: {},
 			list: {},
 		},
-		...rest
 	} = props
 
-	const { handleEdit, handleDeleteClick } = useForms()
+	const { 
+    handleEdit, 
+    handleDeleteClick 
+  } = useForms()
 
 	const handleShowClick = (resource: any) => {
 		if (enableShow) {
@@ -57,7 +56,7 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 		}
 	}
 
-	const handleLoadMore = () => {
+	const handlePaginate = () => {
 		let perPage = (query?.per_page || 12) + 12
 		setQuery({
 			...query,
@@ -86,7 +85,11 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 					{...slots.item}
 				/>
 			))}
-			<Pagination page={page} numPages={numPages} loadMore={handleLoadMore} />
+			<Pagination 
+        page={page} 
+        numPages={numPages} 
+        handlePaginate={handlePaginate} 
+      />
 		</DataLayout>
 	)
 }

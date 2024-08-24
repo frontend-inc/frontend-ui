@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 import {
 	FollowButton,
 	ResourceListItem,
@@ -28,7 +28,11 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
 	return (
 		<ResourceListItem
 			handleClick={handleClick}
-			primary={user?.name}
+			primary={
+        <Typography variant="subtitle2" color="text.primary"> 
+          { user?.name}
+        </Typography>
+      }
 			avatar={
 				<Stack direction="column" spacing={1} alignItems="center">
 					<UserAvatar size={size} user={user} />
