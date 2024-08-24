@@ -25,12 +25,13 @@ const useForms = (params?: FormParams) => {
 		update,
 		destroy,
 		handleChange,
-		removeAttachment,
-		setOpenShow,
-		openDelete,
-		setOpenDelete,
+		removeAttachment,    
 		openEdit,
+		openDelete,
+    openShow,
 		setOpenEdit,
+    setOpenDelete,		
+    setOpenShow,
 	} = useResourceContext()
 
 	const reloadMany = async () => {
@@ -43,6 +44,11 @@ const useForms = (params?: FormParams) => {
 			findMany(query)
 		}
 	}
+
+  const handleShow = (resource: any) => {
+    setResource(resource)
+		setOpenShow(true)
+  }
 
 	const handleAdd = () => {
 		if (!currentUser?.id) return setAuthOpen(true)
@@ -109,19 +115,22 @@ const useForms = (params?: FormParams) => {
 		errors,
 		resource,
 		setResource,
+		handleChange,
 
 		handleAdd,
-		handleEdit,
-
-		handleSubmit,
+		handleEdit,    
 		handleDelete,
 		handleDeleteClick,
 		handleRemove,
-		handleChange,
-		openEdit,
-		setOpenEdit,
-		openDelete,
+    handleShow,
+		handleSubmit,    
+		
+    openEdit,
+    openDelete,
+    openShow,        
+		setOpenEdit,		
 		setOpenDelete,
+    setOpenShow,
 	}
 }
 

@@ -25,7 +25,10 @@ export type CollectionListItemsProps = {
 	enableRatings?: boolean
 	enableSharing?: boolean
 	enableUsers?: boolean
-  component?: React.FC<any>
+  slots?: {
+    list?: any
+    item?: any
+  }
 }
 
 const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
@@ -58,7 +61,10 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		enableUsers = false,
 		enableRatings = false,
 		enableComments = false,
-    component: Component = CollectionListItem,
+    slots={
+      list: {},
+      item: {}
+    }
 	} = props
 
 	const handleShowClick = (resource) => {
@@ -107,9 +113,10 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 
 	return (
     <Stack direction="column" spacing={2}>
-      <DataLayout grid={grid}>
+      <DataLayout { ...slots.list } grid={grid}>
         {resources?.map((resource, index) => (
-          <Component 
+          <CollectionListItem 
+            { ...slots.item }
             key={index}
             style={style}
             resource={resource}

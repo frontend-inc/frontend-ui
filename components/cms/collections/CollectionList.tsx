@@ -9,6 +9,7 @@ import {
 	SortOptionType,
 } from '../../../types'
 import {
+  CollectionListItem,
 	CollectionListItems,
 	CollectionToolbar,
 	CollectionShow,
@@ -46,6 +47,7 @@ export type CollectionListProps = {
 	perPage?: number
 	loadMore?: boolean
 	list: React.FC<any>
+  component?: React.FC<any>
 	toolbar?: React.FC<any>
 	show?: React.FC<any>
 	edit?: React.FC<any>
@@ -60,6 +62,7 @@ export type CollectionListProps = {
 		create?: any
 		destroy?: any
 		empty?: any
+    item?: any
 	}
 	url: string
 	query?: any
@@ -106,7 +109,8 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		sortOptions = [],
 		headers = [], // Used by KanBan
 		toolbar: Toolbar = CollectionToolbar,
-		list: List = CollectionListItems,
+		list: List = CollectionListItems,    
+    component: Component = CollectionListItem,
 		show: Show = CollectionShow,
 		edit: Edit = CollectionForm,
 		create: Create = CollectionForm,
@@ -115,6 +119,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		slots: defaultSlots = {
 			toolbar: {},
 			list: {},
+      item: {},
 			show: {},
 			edit: {},
 			create: {},
@@ -135,20 +140,12 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 
 	const slots = {
 		list: {
+      ...defaultSlots.list,
 			headers,
-			style,
-			buttons,
-			displayFields,
-			enableLikes,
-			enableFavorites,
-			enableRatings,
-			enableComments,
-			enableUsers,
-			enableGradient,
-			enableOverlay,
-			...defaultSlots.list,
+      style,
 		},
 		show: {
+      ...defaultSlots.show,
 			displayFields,
 			buttons,
 			enableLikes,
@@ -157,20 +154,32 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			enableComments,
 			enableUsers,
 			enableGradient,
-			enableOverlay,
-			...defaultSlots.show,
+			enableOverlay,			
 		},
 		edit: {
+      ...defaultSlots.edit,
 			fields,
-			...defaultSlots.edit,
 		},
 		create: {
+      ...defaultSlots.create,
 			fields,
-			...defaultSlots.create,
 		},
 		destroy: defaultSlots.destroy,
 		toolbar: defaultSlots.toolbar,
 		empty: defaultSlots.empty,
+    item: {
+      ...defaultSlots.item,
+      style,
+			buttons,
+			displayFields,
+			enableLikes,
+			enableFavorites,
+			enableRatings,
+			enableComments,
+			enableUsers,
+			enableGradient,
+			enableOverlay,      
+    }
 	}
 
 	return (
@@ -190,6 +199,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			sortOptions={sortOptions}
 			toolbar={Toolbar}
 			list={List}
+      component={Component}
 			show={Show}
 			edit={Edit}
 			create={Create}

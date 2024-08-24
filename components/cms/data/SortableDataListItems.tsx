@@ -1,17 +1,16 @@
 import React from 'react'
-import { LoadMore } from '../..'
+import { LoadMore, SortableList } from '../..'
 import { useResourceContext } from 'frontend-js'
-import { DataItem, DataLayout } from '../..'
+import { DataItem, CollectionListItem, DataLayout } from '../..'
 import { useForms } from '../../../hooks'
 
 export type DataListItemsProps = {
-  href?: string
 	enableShow?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
-	handleClick?: (resource: any) => void
+	handleClick: (resource: any) => void
 	pagination?: React.FC<any>
 	component?: React.FC<any>
 	slots?: {
@@ -20,17 +19,16 @@ export type DataListItemsProps = {
 	}
 }
 
-const DataListItems: React.FC<DataListItemsProps> = (props) => {
-	
-  const {
-		setResource,
+const SortableDataListItems: React.FC<DataListItemsProps> = (props) => {
+	const {
 		loading,
 		resources,
 		page,
 		numPages,
 		query = {},
 		setQuery,
-		setOpenShow,
+    updatePositions,
+    reloadMany
 	} = useResourceContext()
 
 	const {
@@ -41,8 +39,8 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 		pagination: Pagination = LoadMore,
 		component: Component = DataItem,
 		slots = {
-			item: {},
-			list: {},
+      list: {},
+			item: {},			
 		},
 	} = props
 
@@ -56,7 +54,7 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
     if(handleClick){
       handleClick(resource)
     }else if (enableShow) {
-      handleShow(resource)			
+			handleShow(resource)
 		}
 	}
 
@@ -68,23 +66,34 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 		})
 	}
 
+  const handleDrop = async (sorted: any) => {
+    await updatePositions(sorted)
+    reloadMany()
+  }
+
 	return (
 		<DataLayout {...slots.list} loading={loading}>
-			{resources?.map((resource, index) => (
-				<Component
-					key={index}
-					resource={resource}
-					handleClick={() => handleShowClick(resource)}											
-					enableShow={enableShow}
-					enableEdit={enableEdit}
-					enableDelete={enableDelete}
-					handleEdit={enableEdit ? () => handleEdit(resource) : undefined}
-					handleDelete={
-						enableDelete ? () => handleDeleteClick(resource) : undefined
-					}
-					{...slots.item}
-				/>
-			))}
+      <SortableList
+        droppableId='sortable'
+        handleDrop={handleDrop}
+        items={resources}
+        renderItem={resource => (
+          <Component
+            {...slots.item}
+            sortable
+            key={ resource?.id }
+            resource={resource}
+            enableShow={enableShow}
+            enableEdit={enableEdit}
+            enableDelete={enableDelete}
+            handleClick={() => handleShowClick(resource)}
+            handleEdit={enableEdit ? () => handleEdit(resource) : undefined}
+            handleDelete={
+              enableDelete ? () => handleDeleteClick(resource) : undefined
+            }            
+          />
+        )}          
+      />
 			<Pagination 
         page={page} 
         numPages={numPages} 
@@ -94,4 +103,4 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 	)
 }
 
-export default DataListItems
+export default SortableDataListItems

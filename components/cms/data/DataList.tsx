@@ -1,7 +1,7 @@
 import React from 'react'
 import {
 	DataFetcher,
-	DataListItem,
+	DataItem,
 	DataListItems,
 	DataToolbar,
 	DataForm,
@@ -18,6 +18,7 @@ import {
 } from '../../../types'
 
 export type DataListProps = {
+  sortable?: boolean
 	url: string
 	name: string
 	query?: QueryParamsType
@@ -37,6 +38,7 @@ export type DataListProps = {
 	perPage?: number
 	loadMore?: boolean
 	list?: React.FC<any>
+  sortableList?: React.FC<any>
 	toolbar?: React.FC<any>
 	show?: React.FC<any>
 	edit?: React.FC<any>
@@ -47,6 +49,7 @@ export type DataListProps = {
 	slots?: {
 		toolbar?: any
 		list?: any
+    item?: any
 		show?: any
 		edit?: any
 		create?: any
@@ -62,6 +65,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 	const SLOT_PROPS = {
 		toolbar: {},
 		list: {},
+    item: {},
 		show: {},
 		edit: {},
 		create: {},
@@ -69,7 +73,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 		empty: {},
 	}
 
-	const {
+	const {   
 		resource,
 		enableSearch,
 		enableShow,
@@ -91,7 +95,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 		emptyDescription,
 		toolbar: Toolbar = DataToolbar,
 		list: List = DataListItems,
-		component: Component = DataListItem,
+		component: Component = DataItem,
 		show: Show = DataShow,
 		edit: Edit = DataForm,
 		create: Create = DataForm,
@@ -116,14 +120,17 @@ const DataList: React.FC<DataListProps> = (props) => {
 					sortOptions={sortOptions}
 					{...slots.toolbar}
 				/>
-				<List
-					{...rest}
-					href={href}
-					enableEdit={enableEdit}
-					enableDelete={enableDelete}
-					component={Component}
-					{...slots.list}
-				/>
+        <List
+          {...rest}
+          href={href}
+          enableEdit={enableEdit}
+          enableDelete={enableDelete}
+          component={Component}
+          slots={{            
+            item: slots.item,
+          }}
+          { ...slots.list }
+        />
 				<Edit fields={fields} parentResource={resource} {...slots.edit} />
 				<Create fields={fields} parentResource={resource} {...slots.create} />
 				<Empty

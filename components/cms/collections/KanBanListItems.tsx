@@ -109,7 +109,7 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 			enableLikes,
 			enableRatings,
 		},
-		card: {
+		item: {
 			enableOverlay,
 			enableGradient,
 			buttons,

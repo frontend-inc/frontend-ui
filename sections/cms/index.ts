@@ -19,6 +19,9 @@ export { default as CmsYouTube } from './CmsYouTube'
 export { default as CmsSimilar } from './CmsSimilar'
 export { default as CmsStatistics } from './CmsStatistics'
 
+// Sortable 
+export { default as CmsSortableList } from './CmsSortableList'
+
 // Cms Addons
 export { default as CmsGoogleMap } from './addons/CmsGoogleMap'
 export { default as CmsCalendly } from './addons/CmsCalendly'

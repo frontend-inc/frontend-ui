@@ -14,7 +14,7 @@ import { Box } from '@mui/material'
 
 type CardStyleTypes = 'list' | 'card' | 'avatar' | 'cover' | 'table' | 'text'
 
-type DataListItemProps = {
+type CollectionListItemProps = {
 	buttons: ButtonType[]
 	style: CardStyleTypes
 	displayFields: DisplayFieldType[]
@@ -44,7 +44,7 @@ type DataListItemProps = {
 	enableRatings?: boolean
 }
 
-const CollectionListItem: React.FC<DataListItemProps> = (props) => {
+const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 	const {
 		buttons,
 		resource,
@@ -113,7 +113,11 @@ const CollectionListItem: React.FC<DataListItemProps> = (props) => {
 				</Box>
 			}
 			secondaryAction={
-				<ButtonActions numVisible={0} buttons={buttons} resource={resource} />
+				<ButtonActions 
+          numVisible={0} 
+          buttons={buttons} 
+          resource={resource} 
+        />
 			}
 			slots={{
 				image: {

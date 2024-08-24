@@ -36,7 +36,7 @@ type KanBanBoardProps = {
 	component?: React.FC<any>
 	slots?: {
 		list?: any
-		card?: any
+		item?: any
 	}
 }
 
@@ -56,7 +56,7 @@ const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 		component: Component = KanBanCard,
 		slots = {
 			list: {},
-			card: {},
+			item: {},
 		},
 	} = props
 
@@ -118,7 +118,7 @@ const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 												handleEdit={() => handleEdit(res)}
 												handleDelete={() => handleDelete(res)}
 												component={Component}
-												{...slots.card}
+												{...slots.item}
 											/>
 										))
 									) : (

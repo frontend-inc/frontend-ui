@@ -1,10 +1,15 @@
 import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
-import { Image, TouchableOpacity } from '../..'
+import { Icon, Image, TouchableOpacity } from '../..'
 import { CardProps } from './Card'
 
-const ListItemCard: React.FC<CardProps> = (props) => {
+export type ListCardProps = CardProps & {
+  sortable?: boolean
+}
+
+const ListCard: React.FC<ListCardProps> = (props) => {
 	const {
+    sortable = false,
 		label,
 		primary,
 		secondary,
@@ -26,17 +31,25 @@ const ListItemCard: React.FC<CardProps> = (props) => {
 				spacing={1}
 				flexDirection={{ xs: 'column', sm: 'row' }}
 			>
-				<Box sx={sx.image}>
-					<TouchableOpacity handleClick={handleClick}>
-						<Image
-							label={label}
-							src={image}
-							height={height}
-							alt={primary}
-							{...slots.image}
-						/>
-					</TouchableOpacity>
-				</Box>
+        <Stack direction="row" alignItems='flex-start' spacing={0}>
+          { sortable && (
+            <Icon 
+              name="GripVertical"
+              color='text.secondary'
+            />
+          )}
+          <Box sx={sx.image}>
+            <TouchableOpacity handleClick={handleClick}>
+              <Image
+                label={label}
+                src={image}
+                height={height}
+                alt={primary}
+                {...slots.image}
+              />
+            </TouchableOpacity>
+          </Box>
+        </Stack>
 				<Stack direction="row" spacing={1} sx={sx.contentArea}>
 					<Stack direction="column" sx={sx.content}>
 						<Stack direction="column" spacing={0.5}>
@@ -51,8 +64,8 @@ const ListItemCard: React.FC<CardProps> = (props) => {
 							{actions}
 						</Stack>
 					</Stack>
-					<Stack direction="row" justifyContent="flex-end">
-						{secondaryAction}
+					<Stack direction="row" justifyContent="flex-end">            
+						{ secondaryAction }
 					</Stack>
 				</Stack>
 			</Stack>
@@ -60,7 +73,7 @@ const ListItemCard: React.FC<CardProps> = (props) => {
 	)
 }
 
-export default ListItemCard
+export default ListCard
 
 const sx = {
 	root: {
@@ -72,6 +85,7 @@ const sx = {
 		overflow: 'hidden',
 		borderBottom: '1px solid',
 		borderColor: 'divider',
+    bgcolor: 'background.main',
 	},
 	gradient: {
 		'&::after': {

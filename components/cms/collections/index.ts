@@ -21,6 +21,8 @@ export { default as CollectionForm } from './CollectionForm'
 export { default as CollectionDelete } from './CollectionDelete'
 export { default as CollectionToolbar } from './CollectionToolbar'
 
+export { default as SortableCollectionList } from './SortableCollectionList'
+
 // Media
 export { default as ShowImageModal } from '../modals/ShowImageModal'
 export { default as ShowVideoModal } from '../modals/ShowVideoModal'
