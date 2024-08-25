@@ -116,8 +116,7 @@ const ReferenceCollectionListItems: React.FC<ReferenceCollectionListItemsProps> 
         {references?.map((reference, index) => {
           const target = reference?.target 
           return(
-          <CollectionListItem 
-            { ...slots.item }
+          <CollectionListItem             
             key={index}
             style={style}
             resource={target}
@@ -135,6 +134,7 @@ const ReferenceCollectionListItems: React.FC<ReferenceCollectionListItemsProps> 
             enableRatings={enableRatings}
             enableGradient={enableGradient}
             enableOverlay={enableOverlay}
+            { ...slots.item }
           />
         )})}
       </DataLayout>
