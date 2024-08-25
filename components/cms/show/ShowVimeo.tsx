@@ -21,7 +21,7 @@ const VimeoVideo: React.FC<ShowVimeoProps> = (props) => {
 		<ShowLayout
 			buttons={buttons}
 			resource={resource}
-			displayFields={[]}
+			displayFields={displayFields}
 			{...rest}
 		>
 			<VimeoEmbed src={src} />

@@ -1,80 +1,35 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
 import {
-	DisplayFields,
-	StripePaymentLink,
-	SocialButtons,
-	ButtonActions,
 	Image,
-	AvgRating,
 } from '../..'
-import { ShowProps } from './ShowItem'
-import { buildActions } from '../../../helpers'
+import { ShowCardProps } from './ShowCard'
 
-const ShowList: React.FC<ShowProps> = (props) => {
+const ShowList: React.FC<ShowCardProps> = (props) => {
 	const {
-		buttons,
-		displayFields = [],
-		resource,
-		enableEdit,
-		handleEdit,
-		enableFavorites,
-		enableLikes,
-		enableSharing,
-		enableRatings,
-		enablePayments,
+		image,
+    label,
+    primary,
+    secondary,    
+    actions,
+    secondaryAction,
+    children
 	} = props || {}
-	const { label, title, image, description } = resource || {}
+	
 	return (
 		<Stack sx={sx.root} spacing={4}>
-			{(buttons || enableEdit) && (
-				<Box sx={sx.buttons}>
-					<ButtonActions
-						buttons={buildActions({
-							enableEdit,
-							handleEdit,
-							buttons,
-						})}
-						numVisible={4}
-						resource={resource}
-						justifyContent="center"
-					/>
-				</Box>
-			)}
-			<Stack spacing={3} sx={sx.header}>
-				<Typography color="text.primary" variant="h3">
-					{title}
-				</Typography>
-				{enableRatings == true && (
-					<AvgRating justifyContent="center" resource={resource} enableTotal />
-				)}
-				<DisplayFields
-					alignItems="center"
-					fields={displayFields}
-					resource={resource}
-				/>
-				{enablePayments == true && (
-					<StripePaymentLink
-						resource={resource}
-						buttonText="Checkout"
-						justifyContent="center"
-					/>
-				)}
-			</Stack>
+			{ secondaryAction }			
+      <Typography color="text.primary" variant="h3">
+        {primary}
+      </Typography>							
 			<Box sx={sx.imageContainer}>
-				<Image src={image?.url} alt={title} height={400} label={label} />
+				<Image src={image} alt={primary} height={400} label={label} />
 			</Box>
-			<SocialButtons
-				resource={resource}
-				enableLikes={enableLikes}
-				enableFavorites={enableFavorites}
-				enableSharing={enableSharing}
-			/>
-			<Box sx={sx.content}>
-				<Typography variant="body1" color="text.primary" sx={sx.text}>
-					{description}
-				</Typography>
+			{ actions }
+			<Box sx={sx.content}>		
+        { secondary }		
 			</Box>
+      { children }
 		</Stack>
 	)
 }

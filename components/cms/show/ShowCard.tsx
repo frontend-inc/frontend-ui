@@ -1,48 +1,40 @@
 import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 import {
-	AvgRating,
-	DisplayFields,
-	StripePaymentLink,
-	ButtonActions,
-	Image,
-	SocialButtons,
-	ExpandableText,
+	Image,	
 } from '../..'
-import { ShowProps } from './ShowItem'
-import { buildActions } from '../../../helpers'
 
-const ShowCard: React.FC<ShowProps> = (props) => {
+export type ShowCardProps = {
+  label?: string
+  image?: string
+  primary?: string
+  secondary?: string
+  actions?: React.ReactNode,
+  secondaryAction?: React.ReactNode,  
+  children?: React.ReactNode
+  slots?: {
+    image?: any,
+    content?: any,
+  }
+}
+
+const ShowCard: React.FC<ShowCardProps> = (props) => {
 	const {
-		buttons,
-		resource,
-		displayFields = [],
-		enableEdit,
-		handleEdit,
-		enableLikes,
-		enableFavorites,
-		enableSharing,
-		enableRatings,
-		enablePayments,
+    label,
+    image,
+    primary,
+    secondary,
+    actions,
+    secondaryAction,
+    slots = {
+      image: {},
+      content: {},
+    },
 	} = props || {}
-	const { label, title, image, description } = resource || {}
 
-	if (!resource) return null
 	return (
 		<Stack spacing={2}>
-			{(buttons || enableEdit) && (
-				<Box sx={sx.buttons}>
-					<ButtonActions
-						buttons={buildActions({
-							enableEdit,
-							handleEdit,
-							buttons,
-						})}
-						justifyContent="flex-end"
-						resource={resource}
-					/>
-				</Box>
-			)}
+			<Box sx={ sx.secondaryAction }>{ secondaryAction }</Box>
 			<Box sx={sx.root}>
 				<Stack
 					sx={sx.container}
@@ -54,29 +46,21 @@ const ShowCard: React.FC<ShowProps> = (props) => {
 				>
 					<Stack spacing={2} direction="column" sx={sx.leftPanel}>
 						<Box sx={sx.imageContainer}>
-							<Image src={image?.url} alt={title} height={400} label={label} />
+							<Image 
+                src={image} 
+                alt={primary} 
+                height={400} 
+                label={label} 
+                { ...slots.image }
+              />
 						</Box>
-						<SocialButtons
-							resource={resource}
-							enableLikes={enableLikes}
-							enableFavorites={enableFavorites}
-							enableSharing={enableSharing}
-						/>
+            { actions }						
 					</Stack>
-					<Stack spacing={2} sx={sx.content}>
+					<Stack spacing={2} sx={sx.content} { ...slots.content }>
 						<Typography color="text.primary" variant="h4">
-							{title}
+							{primary}
 						</Typography>
-						{enableRatings == true && (
-							<AvgRating resource={resource} enableTotal />
-						)}
-						{displayFields?.length > 0 && (
-							<DisplayFields fields={displayFields} resource={resource} />
-						)}
-						{enablePayments == true && (
-							<StripePaymentLink resource={resource} buttonText="Checkout" />
-						)}
-						<ExpandableText text={description} />
+            { secondary }						
 					</Stack>
 				</Stack>
 			</Box>
@@ -136,7 +120,7 @@ const sx = {
 	},
 	buttons: {
 		width: '100%',
-	},
+	},  
 	imageContainer: {
 		transition: 'all 0.5s ease-in-out',
 		borderRadius: 1,
@@ -144,12 +128,12 @@ const sx = {
 		minWidth: {
 			sm: 420,
 			xs: '100%',
-		},
+		},    
 	},
 	leftPanel: {
 		width: '100%',
 	},
 	leftPanelBorder: {
 		pb: 2,
-	},
+	},  
 }

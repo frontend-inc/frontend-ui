@@ -4,12 +4,13 @@ import { Box, IconButton } from '@mui/material'
 import { PlaylistAdd } from '@mui/icons-material'
 
 type ReferenceButtonProps = {
+  variant?: 'icon' | 'button'
 	resource: any
 	color?: string
 }
 
 const ReferenceButton: React.FC<ReferenceButtonProps> = (props) => {
-	const { resource, color = 'text.secondary' } = props
+	const { variant = 'icon', resource, color = 'text.secondary' } = props
 
 	const { openReferences, setOpenReferences, setResource } = useResourceContext()
 
@@ -27,11 +28,11 @@ const ReferenceButton: React.FC<ReferenceButtonProps> = (props) => {
 					'&:hover': {
 						color,
 					},
-					...sx.icon,
+					...(variant == 'icon' ? sx.icon : sx.button),          
 				}}
 			>
 				<PlaylistAdd fontSize="small" />
-			</IconButton>
+			</IconButton>      
 		</Box>
 	)
 }

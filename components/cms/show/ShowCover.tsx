@@ -1,79 +1,27 @@
 import React from 'react'
-import { Stack, Box, Typography } from '@mui/material'
+import { Stack } from '@mui/material'
 import {
 	Cover,
-	DisplayFields,
-	BuyNowButton,
-	StripePaymentLink,
-	SocialButtons,
-	ButtonActions,
-	AvgRating,
 } from '../..'
-import { ShowProps } from './ShowItem'
-import { get } from 'lodash'
-import { buildActions } from '../../../helpers'
+import { ShowCardProps } from './ShowCard'
 
-const ShowCover: React.FC<ShowProps> = (props) => {
-	const {
-		buttons,
-		displayFields = [],
-		resource,
-		handleEdit,
-		enableEdit,
-		enableFavorites,
-		enableLikes,
-		enableSharing,
-		enableRatings,
-		enablePayments,
+const ShowCover: React.FC<ShowCardProps> = (props) => {
+	const {		
+    image,
+    primary,
+    secondary,
+    actions,
+    secondaryAction,
 	} = props || {}
-	const { title, image, description } = resource || {}
+	
 	return (
 		<Stack sx={sx.root} spacing={4}>
-			<Cover image={image?.url} height={400} title={title} enableOverlay />
+			<Cover image={image} height={400} title={primary} enableOverlay />
 			<Stack spacing={3} sx={sx.header}>
-				<SocialButtons
-					resource={resource}
-					enableLikes={enableLikes}
-					enableFavorites={enableFavorites}
-					enableSharing={enableSharing}
-				/>
-				{(buttons || enableEdit) && (
-					<Box sx={sx.buttons}>
-						<ButtonActions
-							buttons={buildActions({
-								enableEdit,
-								handleEdit,
-								buttons,
-							})}
-							numVisible={4}
-							resource={resource}
-							justifyContent="center"
-						/>
-					</Box>
-				)}
-				{enableRatings == true && (
-					<AvgRating justifyContent="center" resource={resource} enableTotal />
-				)}
-				{displayFields?.length > 0 && (
-					<DisplayFields
-						alignItems="center"
-						fields={displayFields}
-						resource={resource}
-					/>
-				)}
-				{enablePayments == true && (
-					<StripePaymentLink
-						resource={resource}
-						buttonText="Checkout"
-						justifyContent="center"
-					/>
-				)}
-			</Stack>
-			<Box sx={sx.content}>
-				<Typography variant="body1" color="text.primary" sx={sx.text}>
-					{description}
-				</Typography>
-			</Box>
+				{ actions }
+				{ secondaryAction }
+				{ secondary }
+			</Stack>			
 		</Stack>
 	)
 }
@@ -89,8 +37,7 @@ const sx = {
 	header: {
 		px: 2,
 		maxWidth: 500,
-		width: '100%',
-		textAlign: 'center',
+		width: '100%',		
 	},
 	content: {
 		px: 2,

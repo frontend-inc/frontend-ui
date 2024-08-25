@@ -69,13 +69,17 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 				/>
 			)}
       {enableAddReference == true && (
-				<ReferenceButton 					
+				<ReferenceButton 	
+          variant={variant}				
 					resource={resource}					
 					color={color}
 				/>
 			)}
 			{enableComments == true && (
-				<CommentButton resource={resource} color={color} />
+				<CommentButton 
+          resource={resource} 
+          color={color} 
+        />
 			)}
 			{enableSharing == true && (
 				<ShareButton variant={variant} url={currentPageUrl} />

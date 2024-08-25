@@ -1,8 +1,7 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
 import {
-	DisplayFields,
-	BuyNowButton,
+	DisplayFields,	
 	StripePaymentLink,
 	SocialButtons,
 	ButtonActions,
@@ -10,17 +9,16 @@ import {
 	ExpandableText,
 } from '../..'
 import { ShowProps } from './ShowItem'
-import { get } from 'lodash'
 import { buildActions } from '../../../helpers'
 
 type ShowLayoutProps = ShowProps & {
+  fieldName?: string
+  resource?: any
 	children?: React.ReactNode
 }
 
 const ShowLayout: React.FC<ShowLayoutProps> = (props) => {
 	const {
-		buttons,
-		displayFields = [],
 		resource,
 		children,
 		enableEdit,
@@ -30,6 +28,8 @@ const ShowLayout: React.FC<ShowLayoutProps> = (props) => {
 		enableSharing,
 		enableRatings,
 		enablePayments,
+    buttons=[],
+		displayFields = [],
 	} = props || {}
 
 	const { title, description } = resource || {}
@@ -65,7 +65,9 @@ const ShowLayout: React.FC<ShowLayoutProps> = (props) => {
 					/>
 				)}
 			</Stack>
-			<Box sx={sx.container}>{children}</Box>
+			<Box sx={sx.container}>
+        {children}
+      </Box>
 			<SocialButtons
 				resource={resource}
 				enableLikes={enableLikes}

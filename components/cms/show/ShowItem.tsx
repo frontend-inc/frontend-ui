@@ -8,12 +8,21 @@ import YouTubeVideo from './ShowYouTube'
 import VimeoEmbed from './ShowVimeo'
 import { useForms } from '../../../hooks'
 import { useResourceContext } from 'frontend-js'
+import {
+	AvgRating,
+	DisplayFields,
+	StripePaymentLink,
+	ButtonActions,	
+	SocialButtons,
+	ExpandableText,
+} from '../..'
+import { buildActions } from '../../../helpers'
+import { Box, Stack } from '@mui/material'
 
 export type ShowProps = {
 	handle?: string
 	buttons: ButtonType[]
-	displayFields: DisplayFieldType[]
-	fieldName?: string
+	displayFields: DisplayFieldType[]	
 	url?: string
 	resource: any
 	enableEdit?: boolean
@@ -23,7 +32,9 @@ export type ShowProps = {
 	enableSharing?: boolean
 	enableRatings?: boolean
 	enablePayments?: boolean
+  enableAddReference?: boolean
 	enableUsers?: boolean
+  enableGradient?: boolean
 	enableOverlay?: boolean
 	handleEdit?: (res: any) => void
 }
@@ -31,61 +42,149 @@ export type ShowProps = {
 type ShowStyleTypes = 'card' | 'cover' | 'list' | 'avatar' | 'youtube' | 'vimeo'
 
 export type ShowItemProps = ShowProps & {
-	fieldName: string
-	fields?: FormFieldType[]
 	url: string
 	style: ShowStyleTypes
+  slots: {
+    image?: any
+    content?: any
+  }
 }
 
 const ShowItem: React.FC<ShowItemProps> = (props) => {
-	let { handle } = props
-	if (handle == 'index') handle = undefined
+	
 	const {
 		style = 'article',
-		displayFields = [],
-		fieldName,
+		displayFields = [],		
 		buttons,
-		enableOverlay,
 		enableEdit,
 		enableFavorites,
 		enableLikes,
 		enableSharing,
 		enableRatings,
+    enableAddReference,
 		enablePayments,
+    enableGradient,
+    enableOverlay,
+    slots: defaultSlots = {
+      image: {},
+      content: {}
+    }
 	} = props || {}
 
-	const { resource, openEdit } = useResourceContext()
+	const { resource } = useResourceContext()
 
 	const components = {
 		list: ShowList,
 		cover: ShowCover,
 		card: ShowCard,
 		avatar: ShowAvatar,
-		youtube: YouTubeVideo,
-		vimeo: VimeoEmbed,
 	}
 
 	const Component = components[style] || ShowList
 
 	const { handleEdit } = useForms()
 
+  let slots = {
+    image: {
+      ...defaultSlots.image,
+      enableGradient,
+      enableOverlay 
+    },
+    content: {
+      ...defaultSlots.content
+    }
+  }
+
+  let slotProps = {
+    list: {
+      secondary: {
+        alignItems: 'center'
+      },
+      secondaryAction: {
+        justifyContent: 'center'
+      }
+    },
+    cover: {
+      secondary: {
+        alignItems: 'center'
+      },
+      secondaryAction: {
+        justifyContent: 'center'
+      }
+    },
+    card: {
+      secondary: {
+        alignItems: 'flex-start'
+      },
+      secondaryAction: {
+        justifyContent: 'flex-end'
+      }
+    },
+    avatar: {
+      secondary: {
+        alignItems: 'flex-start'
+      },
+      secondaryAction: {
+        justifyContent: 'flex-end'
+      }
+    },
+  }[style]
+
 	if (!resource?.id) return null
 	return (
-		<Component
-			fieldName={fieldName}
-			resource={resource}
-			buttons={buttons}
-			displayFields={displayFields}
-			enableOverlay={enableOverlay}
-			enableEdit={enableEdit}
-			handleEdit={() => handleEdit(resource)}
-			enableFavorites={enableFavorites}
-			enableLikes={enableLikes}
-			enableSharing={enableSharing}
-			enableRatings={enableRatings}
-			enablePayments={enablePayments}
+		<Component			
+      image={ resource?.image?.url }
+      primary={resource?.title}
+      secondary={
+        <Stack spacing={2} sx={{ width: "100%"}}>
+          <Stack spacing={2} sx={{ width: "100%"}} alignItems={ slotProps?.secondary?.alignItems }>
+            { enableRatings == true && (
+              <AvgRating resource={resource} enableTotal />
+            )}
+            {displayFields?.length > 0 && (
+              <DisplayFields fields={displayFields} resource={resource} />
+            )}
+            {enablePayments == true && (
+              <StripePaymentLink resource={resource} buttonText="Checkout" />
+            )}            
+          </Stack>
+          <ExpandableText text={resource?.description} />
+        </Stack>
+      }
+      actions={        
+        <SocialButtons
+          justifyContent={'center'}
+          resource={resource}
+          enableLikes={enableLikes}
+          enableFavorites={enableFavorites}
+          enableSharing={enableSharing}
+          enableAddReference={enableAddReference}
+        />        
+      }
+      secondaryAction={
+        (buttons || enableEdit) && (
+          <Box sx={sx.buttons}>
+            <ButtonActions
+              justifyContent={ slotProps?.secondaryAction?.justifyContent }
+              buttons={buildActions({
+                enableEdit,
+                handleEdit,
+                buttons,
+              })}              
+              resource={resource}
+            />
+          </Box>
+        )
+      }
+      slots={slots}
 		/>
 	)
 }
 
 export default ShowItem
+
+const sx= {
+  buttons: {
+    width: "100%"
+  }
+}

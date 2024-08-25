@@ -52,7 +52,7 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
 
 	return (
 		<Box>
-			{variant == 'icon' ? (
+			
 				<IconButton
 					onClick={handleClick}
 					sx={{
@@ -60,8 +60,9 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
 						'&:hover': {
 							color,
 						},
-						...sx.icon,
-						...(liked && sx.iconLiked),
+					  ...(variant == 'icon' ? sx.icon : sx.button),
+						...(liked && sx.liked),
+            ...((liked && variant == 'button') && sx.buttonLiked),
 					}}
 				>
 					{liked ? (
@@ -69,26 +70,7 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
 					) : (
 						<FavoriteBorder fontSize="small" />
 					)}
-				</IconButton>
-			) : (
-				<IconButton
-					onClick={handleClick}
-					sx={{
-						color,
-						'&:hover': {
-							color,
-						},
-						...sx.button,
-						...(liked && sx.buttonLiked),
-					}}
-				>
-					{liked ? (
-						<Favorite fontSize="small" />
-					) : (
-						<FavoriteBorder fontSize="small" />
-					)}
-				</IconButton>
-			)}
+				</IconButton>			
 		</Box>
 	)
 }
@@ -97,22 +79,18 @@ export default LikeButton
 
 const sx = {
 	icon: {},
-	iconLiked: {
+	liked: {
+    transition: 'transform 0.2s',
 		color: 'primary.main',
 		'&:hover': {
 			color: 'primary.dark',
 		},
 	},
-	button: {
-		transition: 'transform 0.2s',
+	button: {		
 		border: '1px solid',
 		borderColor: 'divider',
 	},
 	buttonLiked: {
-		borderColor: 'primary.main',
-		color: 'primary.main',
-		'&:hover': {
-			color: 'primary.dark',
-		},
+		borderColor: 'primary.main',		
 	},
 }

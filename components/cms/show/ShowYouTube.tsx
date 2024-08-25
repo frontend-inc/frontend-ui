@@ -21,7 +21,7 @@ const ShowYouTube: React.FC<ShowYouTubeProps> = (props) => {
 		<ShowLayout
 			buttons={buttons}
 			resource={resource}
-			displayFields={[]}
+			displayFields={displayFields}
 			{...rest}
 		>
 			<YouTubeEmbed src={src} />

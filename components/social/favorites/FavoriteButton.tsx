@@ -58,40 +58,25 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 	}, [currentUser, handle])
 
 	return (
-		<Box>
-			{variant == 'icon' ? (
-				<IconButton
-					onClick={handleClick}
-					sx={{
-						color,
-						'&:hover': {
-							color,
-						},
-						...sx.icon,
-						...(isFavorite && sx.iconFavorited),
-					}}
-				>
-					{isFavorite ? (
-						<Bookmark fontSize="small" />
-					) : (
-						<BookmarkBorder fontSize="small" />
-					)}
-				</IconButton>
-			) : (
-				<IconButton
-					sx={{
-						...sx.button,
-						...(isFavorite && sx.buttonFavorited),
-					}}
-					onClick={handleClick}
-				>
-					{isFavorite ? (
-						<Bookmark fontSize="small" />
-					) : (
-						<BookmarkBorder fontSize="small" />
-					)}
-				</IconButton>
-			)}
+		<Box>			
+      <IconButton
+        onClick={handleClick}
+        sx={{
+          color,
+          '&:hover': {
+            color,
+          },
+          ...(variant === 'icon' ? sx.icon : sx.button),
+          ...(isFavorite  && sx.favorited),
+          ...((isFavorite && variant === 'button') && sx.buttonFavorited),
+        }}
+      >
+        {isFavorite ? (
+          <Bookmark fontSize="small" />
+        ) : (
+          <BookmarkBorder fontSize="small" />
+        )}
+      </IconButton>			
 		</Box>
 	)
 }
@@ -100,7 +85,7 @@ export default FavoriteButton
 
 const sx = {
 	icon: {},
-	iconFavorited: {
+	favorited: {
 		color: 'primary.main',
 		'&:hover': {
 			color: 'primary.dark',
@@ -117,10 +102,6 @@ const sx = {
 		},
 	},
 	buttonFavorited: {
-		borderColor: 'primary.main',
-		color: 'primary.main',
-		'&:hover': {
-			color: 'primary.main',
-		},
+		borderColor: 'primary.main',		
 	},
 }

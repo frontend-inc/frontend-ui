@@ -29,11 +29,11 @@ const useForms = (params?: FormParams) => {
 		openEdit,
 		openDelete,
     openShow,    
-    openReference,
+    openReferences,
 		setOpenEdit,
     setOpenDelete,		
     setOpenShow,
-    setOpenReference,
+    setOpenReferences,
 	} = useResourceContext()
 
 	const reloadMany = async () => {
@@ -49,7 +49,7 @@ const useForms = (params?: FormParams) => {
 
   const handleShow = (resource: any) => {
     setResource(resource)
-    setOpenReference(false)
+    setOpenReferences(false)
     setOpenEdit(false)
 		setOpenShow(true)
   }
@@ -60,7 +60,7 @@ const useForms = (params?: FormParams) => {
 			id: undefined,
 		})
 		setOpenShow(false)
-    setOpenReference(false)
+    setOpenReferences(false)
 		setOpenEdit(true)
 	}
 
@@ -68,7 +68,7 @@ const useForms = (params?: FormParams) => {
 		if (!currentUser?.id) return setAuthOpen(true)
 		setResource(resource)
 		setOpenShow(false)
-    setOpenReference(false)
+    setOpenReferences(false)
 		setOpenEdit(true)
 	}
 
@@ -77,7 +77,7 @@ const useForms = (params?: FormParams) => {
 		setResource(resource)
 		setOpenShow(false)
 		setOpenEdit(false)
-    setOpenReference(true)
+    setOpenReferences(true)
   }
 
 	const handleSubmit = async () => {
@@ -143,11 +143,11 @@ const useForms = (params?: FormParams) => {
     openEdit,
     openDelete,
     openShow,        
-    openReference,
+    openReferences,
 		setOpenEdit,		
 		setOpenDelete,
     setOpenShow,
-    setOpenReference
+    setOpenReferences
 	}
 }
 

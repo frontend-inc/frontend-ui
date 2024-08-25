@@ -1,50 +1,27 @@
 import React from 'react'
-import { Avatar, Box, Stack, Typography } from '@mui/material'
-import {
-	DisplayFields,
-	StripePaymentLink,
-	SocialButtons,
-	ButtonActions,
-	AvgRating,
-	ExpandableText,
-} from '../..'
-import { ShowProps } from './ShowItem'
-import { buildActions } from '../../../helpers'
+import { Box, Stack, Typography } from '@mui/material'
+import { ShowCardProps } from './ShowCard'
+import { AvatarImage } from '../../../components'
 
-const ShowAvatar: React.FC<ShowProps> = (props) => {
-	const {
-		buttons,
-		resource,
-		displayFields = [],
-		enableEdit,
-		handleEdit,
-		enableFavorites,
-		enableLikes,
-		enableSharing,
-		enableRatings,
-		enablePayments,
+const ShowAvatar: React.FC<ShowCardProps> = (props) => {
+	const {		
+    image,
+    primary,
+    secondary,
+    actions,
+    secondaryAction,
+    slots,
 	} = props || {}
 
-	const { title, image, description } = resource || {}
 	return (
-		<Stack spacing={2} direction="column" justifyContent="center">
-			{(buttons || enableEdit) && (
-				<Stack
-					sx={sx.buttons}
-					direction={{ sm: 'row', xs: 'column' }}
-					spacing={1}
-				>
-					<ButtonActions
-						buttons={buildActions({
-							enableEdit,
-							handleEdit,
-							buttons,
-						})}
-						resource={resource}
-						justifyContent="flex-end"
-					/>
-				</Stack>
-			)}
+		<Stack spacing={2} direction="column" justifyContent="center">			
+      <Stack
+        sx={sx.buttons}
+        direction={{ sm: 'row', xs: 'column' }}
+        spacing={1}
+      >
+        { secondaryAction }
+      </Stack>			
 			<Box sx={sx.root}>
 				<Stack
 					sx={sx.container}
@@ -53,35 +30,20 @@ const ShowAvatar: React.FC<ShowProps> = (props) => {
 				>
 					<Stack sx={sx.leftPanel} spacing={2} direction="column">
 						<Box sx={sx.imageContainer}>
-							<Avatar
-								sx={{
-									...sx.avatar,
-									height: 200,
-									width: 200,
-								}}
-								src={image?.url}
-								alt={title}
-							>
-								<Box />
-							</Avatar>
+              <AvatarImage 
+                image={ image }
+                alt={ primary }
+                height={ 200 }
+                { ...slots.image }
+              />							
 						</Box>
-						<SocialButtons
-							resource={resource}
-							enableLikes={enableLikes}
-							enableFavorites={enableFavorites}
-							enableSharing={enableSharing}
-						/>
+						{ actions }
 					</Stack>
 					<Stack spacing={1} sx={sx.content}>
 						<Typography color="text.primary" variant="h4">
-							{title}
+							{ primary }
 						</Typography>
-						{enableRatings && <AvgRating resource={resource} enableTotal />}
-						<DisplayFields fields={displayFields} resource={resource} />
-						{enablePayments && (
-							<StripePaymentLink resource={resource} buttonText="Checkout" />
-						)}
-						<ExpandableText text={description} />
+						{ secondary }
 					</Stack>
 				</Stack>
 			</Box>
