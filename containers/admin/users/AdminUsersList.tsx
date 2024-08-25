@@ -14,16 +14,16 @@ type AdminUserListProps = {
 const AdminUsersList: React.FC<AdminUserListProps> = (props) => {
 	const { apiUrl } = useAdmin()
 	const { metafields = [] } = props
+
 	return (
-		<ResourceList
-			enableBorder
-			url={`${apiUrl}/users`}
-			name="user"
+		<ResourceList      		
+			url={`${apiUrl}/users` }
+			name={'user'}
 			enableSearch
 			enableShow
 			enableEdit
 			enableDelete
-			enableCreate
+			enableCreate      
 			sortOptions={[
 				{ name: 'first_name', label: 'First Name' },
 				{ name: 'last_name', label: 'Last Name' },

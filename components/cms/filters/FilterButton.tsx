@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Hidden, Badge, Button } from '@mui/material'
+import { Hidden, Box, Badge, Button } from '@mui/material'
 import { Icon, Popup, Drawer, IconLoading } from '../..'
 import FilterList from './FilterList'
 import { FilterOptionType, SearchFilterOptionType } from '../../..'
@@ -33,7 +33,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 	const handleClose = () => setOpen(false)
 
 	return (
-		<>
+		<Box sx={ sx.root }>
 			<Badge
 				sx={sx.badge}
 				badgeContent={disableFilterCount ? 0 : filters?.length}
@@ -102,16 +102,22 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 					/>
 				</Drawer>
 			</Hidden>
-		</>
+		</Box>
 	)
 }
 
 export default FilterButton
 
 const sx = {
+  root: {
+		width: {
+			sm: 'auto',
+			xs: '100%',
+		},
+	},
 	button: {
 		width: {
-			sm: '100%',
+			sm: 'auto',
 			xs: '100%',
 		},
 	},

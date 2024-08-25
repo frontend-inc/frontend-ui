@@ -2,7 +2,7 @@ import React from 'react'
 import ResourceListItem from './ResourceListItem'
 import { truncate } from '../../../helpers'
 
-export type ResourceProps = {
+export type ResourceItemProps = {
 	resource: any
 	avatar?: React.ReactNode
 	icon?: string
@@ -11,14 +11,17 @@ export type ResourceProps = {
 	handleClick: (resource: any) => void
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
+  handleSelect?: () => void
 	secondaryActions?: React.ReactNode
 	menuActions?: any
 	sortable?: boolean
+  selectable?: boolean
+  selected?: boolean
 	isDragging?: boolean
 	enableBorder?: boolean
 }
 
-const Resource: React.FC<ResourceProps> = (props) => {
+const ResourceItem: React.FC<ResourceItemProps> = (props) => {
 	const {
 		icon,
 		color,
@@ -27,9 +30,12 @@ const Resource: React.FC<ResourceProps> = (props) => {
 		handleClick,
 		handleEdit,
 		handleDelete,
+    handleSelect,
 		secondaryActions,
 		menuActions,
 		sortable,
+    selectable,
+    selected,
 		isDragging = false,
 		enableBorder = false,
 	} = props
@@ -45,13 +51,16 @@ const Resource: React.FC<ResourceProps> = (props) => {
 			handleClick={() => handleClick(resource)}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}
+      handleSelect={ handleSelect }
 			menuActions={menuActions}
 			secondaryActions={secondaryActions}
 			sortable={sortable}
+      selectable={selectable}
+      selected={selected}
 			isDragging={isDragging}
 			enableBorder={enableBorder}
 		/>
 	)
 }
 
-export default Resource
+export default ResourceItem

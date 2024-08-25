@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
 const useSelected = () => {
-	const [selected, setSelected] = useState([])
-	const [selectedIds, setSelectedIds] = useState([])
+	const [selected, setSelected] = useState<any[]>([])
+	const [selectedIds, setSelectedIds] = useState<number[]>([])
 
 	const handleSelect = (item) => {
 		if (selectedIds.find((id) => id === item.id)) {

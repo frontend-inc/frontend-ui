@@ -6,10 +6,13 @@ import {
 	ListItemButton,
 	ListItemText,
 	ListItemIcon,
+  Checkbox
 } from '@mui/material'
 import { Image, Icon, MenuButton } from '../..'
 
 export type ResourceListItemProps = {
+  selectable?: boolean
+  selected?: boolean
 	primary: React.ReactNode
 	secondary?: React.ReactNode
 	avatar?: React.ReactNode
@@ -22,6 +25,7 @@ export type ResourceListItemProps = {
 	handleClick?: (resource: any) => void
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
+  handleSelect?: () => void
 	secondaryActions?: React.ReactNode
 	menuActions?: any
 	sortable?: boolean
@@ -40,12 +44,22 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 		handleClick,
 		handleEdit,
 		handleDelete,
+    handleSelect,
 		secondaryActions,
 		menuActions,
 		sortable,
+    selectable,
+    selected,
 		isDragging = false,
 		enableBorder = false,
 	} = props
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => { 
+    console.log(event.target.checked)
+    if(handleSelect){
+      handleSelect()
+    }    
+  }
 
 	return (
 		<ListItem
@@ -66,10 +80,20 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 				</Stack>
 			}
 		>
+      {selectable && (
+        <ListItemIcon sx={sx.checkbox}>
+          <Checkbox 
+            checked={selected} 
+            color="primary" 
+            size="small"             
+            onChange={ handleChange }
+          />
+        </ListItemIcon>
+      )}
 			<ListItemButton
 				sx={sx.listItemButton}
 				onClick={handleClick ? handleClick : undefined}
-			>
+			>        
 				{sortable && (
 					<ListItemIcon sx={sx.dragHandle}>
 						<Icon name="GripVertical" size={20} color="text.secondary" />
@@ -122,6 +146,9 @@ const sx = {
 	listItemIcon: {
 		mr: 2,
 	},
+  checkbox: {
+    width: 24
+  },
 	dragHandle: {
 		width: 24,
 		cursor: 'grab',

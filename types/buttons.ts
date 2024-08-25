@@ -41,3 +41,10 @@ export type SocialFieldType = {
 	provider: string
 	name: string
 }
+
+export type ResourceButtonType = {
+  color?: 'primary' | 'secondary'
+  variant?: 'contained' | 'outlined'
+  label: string  
+  onClick: (selected: any[]) => void
+}

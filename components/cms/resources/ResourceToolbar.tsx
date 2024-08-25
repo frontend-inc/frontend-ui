@@ -67,26 +67,22 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
 						handleSearch={handleSearch}
 					/>
 				)}
-				{enableFilters && (
-					<Box>
-						<FilterButton
-							filters={activeFilters}
-							handleFilter={handleFilter}
-							handleClear={handleClearFilters}
-							filterOptions={filterOptions}
-						/>
-					</Box>
+				{enableFilters && (	             
+          <FilterButton
+            filters={activeFilters}
+            handleFilter={handleFilter}
+            handleClear={handleClearFilters}
+            filterOptions={filterOptions}
+          />	            
 				)}
-				{enableSorting && (
-					<Box>
-						<SortButton
-							sortBy={query?.sort_by || 'id'}
-							sortDirection={query?.sort_direction || 'desc'}
-							sortOptions={sortOptions}
-							handleSortBy={handleSort}
-							handleSortDirection={handleSortDirection}
-						/>
-					</Box>
+				{enableSorting && (					
+          <SortButton
+            sortBy={query?.sort_by || 'id'}
+            sortDirection={query?.sort_direction || 'desc'}
+            sortOptions={sortOptions}
+            handleSortBy={handleSort}
+            handleSortDirection={handleSortDirection}
+          />					
 				)}
 			</Stack>
 			{enableCreate && (
