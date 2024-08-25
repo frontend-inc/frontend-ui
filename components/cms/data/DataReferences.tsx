@@ -2,15 +2,16 @@ import React from 'react'
 import { Icon, Modal } from '../..'
 import DataReferenceForm from './DataReferenceForm'
 import { Button } from '@mui/material'
-import { useResource, useResourceContext } from 'frontend-js'
+import { QueryParamsType, useResource, useResourceContext } from 'frontend-js'
 
 export type DataReferencesProps = {
 	url: string
+  query?: QueryParamsType
 }
 
 const DataReferences: React.FC<DataReferencesProps> = (props) => {
 
-  const { url } = props || {}
+  const { url, query={} } = props || {}
 
   const {    
     resource,
@@ -62,6 +63,7 @@ const DataReferences: React.FC<DataReferencesProps> = (props) => {
         errors={ errors }
         resource={parentResource}
         handleChange={handleChange}
+        query={ query }
       />  
 		</Modal>
 	)

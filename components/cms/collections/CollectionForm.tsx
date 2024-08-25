@@ -1,10 +1,8 @@
 import React from 'react'
 import { RemoteFormModal } from '../..'
 import { useResourceContext } from 'frontend-js'
-import { FormFieldType } from '../../../types'
 
-export type CollectionFormProps = {
-	fields: FormFieldType[]
+export type CollectionFormProps = {	
 	parentResource?: any
 }
 

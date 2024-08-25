@@ -16,6 +16,7 @@ import {
 	CollectionForm,
 	CollectionDelete,
 	CollectionEmpty,
+  CollectionReferences
 } from '../..'
 
 export type CollectionListProps = {
@@ -55,6 +56,7 @@ export type CollectionListProps = {
 	create?: React.FC<any>
 	destroy?: React.FC<any>
 	empty?: React.FC<any>
+  references?: React.FC<any>
 	slots?: {
 		toolbar?: any
 		list?: any
@@ -63,6 +65,7 @@ export type CollectionListProps = {
 		create?: any
 		destroy?: any
 		empty?: any
+    references?: any
     item?: any
 	}
 	url: string
@@ -120,6 +123,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		create: Create = CollectionForm,
 		destroy: Destroy = CollectionDelete,
 		empty: Empty = CollectionEmpty,
+    references: References = CollectionReferences,
 		slots: defaultSlots = {
 			toolbar: {},
 			list: {},
@@ -128,6 +132,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			edit: {},
 			create: {},
 			destroy: {},
+      references: {},
 			empty: {},
 		},
 	} = props || {}
@@ -193,7 +198,8 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			enableUsers,
 			enableGradient,
 			enableOverlay,      
-    }
+    },
+    references: defaultSlots.references
 	}
 
 	return (
@@ -221,6 +227,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			create={Create}
 			destroy={Destroy}
 			empty={Empty}
+      references={ References }
 			slots={slots}
 		/>
 	)

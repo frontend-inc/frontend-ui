@@ -168,7 +168,7 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
               justifyContent={ slotProps?.secondaryAction?.justifyContent }
               buttons={buildActions({
                 enableEdit,
-                handleEdit,
+                handleEdit: () => handleEdit(resource),
                 buttons,
               })}              
               resource={resource}

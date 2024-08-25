@@ -59,6 +59,7 @@ export type DataListProps = {
 		create?: any
 		destroy?: any
 		empty?: any
+    references?: any
 	}
 	emptyIcon?: string
 	emptyTitle?: string
@@ -74,6 +75,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 		edit: {},
 		create: {},
 		destroy: {},
+    references: {},
 		empty: {},
 	}
 
@@ -157,12 +159,11 @@ const DataList: React.FC<DataListProps> = (props) => {
 					title={emptyTitle}
 					description={emptyDescription}
 					{...slots.destroy}
-				/>
-        { foreignUrl && (
-          <References           
-            url={foreignUrl}
-          />
-        )}
+				/>        
+        <References           
+          url={foreignUrl}
+          { ...slots.references }
+        />        
 			</DataFetcher>
 		</ResourceProvider>
 	)
