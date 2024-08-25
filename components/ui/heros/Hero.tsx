@@ -3,9 +3,9 @@ import { Stack, Box, Typography } from '@mui/material'
 import {
 	Image,
 } from '../..'
-import { ShowCardProps } from './ShowCard'
+import { HeroCardProps } from './HeroCard'
 
-const ShowList: React.FC<ShowCardProps> = (props) => {
+const Hero: React.FC<HeroCardProps> = (props) => {
 	const {
 		image,
     label,
@@ -34,7 +34,7 @@ const ShowList: React.FC<ShowCardProps> = (props) => {
 	)
 }
 
-export default ShowList
+export default Hero
 
 const sx = {
 	root: {

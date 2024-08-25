@@ -5,6 +5,7 @@ import { DataItem, DataLayout } from '../..'
 import { useForms } from '../../../hooks'
 
 export type DataListItemsProps = {
+  selectable?: boolean
   href?: string
 	enableShow?: boolean
 	enableEdit?: boolean
@@ -31,10 +32,13 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 		page,
 		numPages,
 		query = {},
-		setQuery,		
+		setQuery,		    
+    selectedIds,
+    handleSelect 
 	} = useResourceContext()
 
 	const {
+    selectable,
 		enableShow,
 		enableEdit,
 		enableDelete,
@@ -76,8 +80,11 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 			{resources?.map((resource, index) => (
 				<Component
 					key={index}
+          selectable={selectable}
+          selected={ selectedIds?.includes(resource.id) }
 					resource={resource}
 					handleClick={() => handleShowClick(resource)}											
+          handleSelect={() => handleSelect(resource)}
 					enableShow={enableShow}
 					enableEdit={enableEdit}
 					enableDelete={enableDelete}

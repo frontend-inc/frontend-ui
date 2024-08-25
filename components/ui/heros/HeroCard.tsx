@@ -4,7 +4,7 @@ import {
 	Image,	
 } from '../..'
 
-export type ShowCardProps = {
+export type HeroCardProps = {
   label?: string
   image?: string
   primary?: string
@@ -18,7 +18,7 @@ export type ShowCardProps = {
   }
 }
 
-const ShowCard: React.FC<ShowCardProps> = (props) => {
+const HeroCard: React.FC<HeroCardProps> = (props) => {
 	const {
     label,
     image,
@@ -68,7 +68,7 @@ const ShowCard: React.FC<ShowCardProps> = (props) => {
 	)
 }
 
-export default ShowCard
+export default HeroCard
 
 const sx = {
 	root: {

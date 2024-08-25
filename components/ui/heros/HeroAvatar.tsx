@@ -1,9 +1,9 @@
 import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
-import { ShowCardProps } from './ShowCard'
-import { AvatarImage } from '../../../components'
+import { HeroCardProps } from './HeroCard'
+import { AvatarImage } from '../..'
 
-const ShowAvatar: React.FC<ShowCardProps> = (props) => {
+const HeroAvatar: React.FC<HeroCardProps> = (props) => {
 	const {		
     image,
     primary,
@@ -51,7 +51,7 @@ const ShowAvatar: React.FC<ShowCardProps> = (props) => {
 	)
 }
 
-export default ShowAvatar
+export default HeroAvatar
 
 const sx = {
 	root: {

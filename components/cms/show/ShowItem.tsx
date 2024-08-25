@@ -1,11 +1,12 @@
 import React from 'react'
 import { ButtonType, FormFieldType, DisplayFieldType } from '../../../types'
-import ShowList from './ShowList'
-import ShowCard from './ShowCard'
-import ShowAvatar from './ShowAvatar'
-import ShowCover from './ShowCover'
-import YouTubeVideo from './ShowYouTube'
-import VimeoEmbed from './ShowVimeo'
+import { 
+  Hero,
+  HeroAvatar,
+  HeroCard,
+  HeroCover,
+  HeroSnippet
+} from '../../../components'
 import { useForms } from '../../../hooks'
 import { useResourceContext } from 'frontend-js'
 import {
@@ -39,7 +40,12 @@ export type ShowProps = {
 	handleEdit?: (res: any) => void
 }
 
-type ShowStyleTypes = 'card' | 'cover' | 'list' | 'avatar' | 'youtube' | 'vimeo'
+type ShowStyleTypes = 
+  'card' | 
+  'cover' | 
+  'list' | 
+  'avatar' | 
+  'snippet'
 
 export type ShowItemProps = ShowProps & {
 	url: string
@@ -74,13 +80,14 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 	const { resource } = useResourceContext()
 
 	const components = {
-		list: ShowList,
-		cover: ShowCover,
-		card: ShowCard,
-		avatar: ShowAvatar,
+		list: Hero,
+		cover: HeroCover,
+		card: HeroCard,
+		avatar: HeroAvatar,
+    snippet: HeroSnippet
 	}
 
-	const Component = components[style] || ShowList
+	const Component = components[style] || Hero
 
 	const { handleEdit } = useForms()
 
@@ -121,6 +128,14 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
       }
     },
     avatar: {
+      secondary: {
+        alignItems: 'flex-start'
+      },
+      secondaryAction: {
+        justifyContent: 'flex-end'
+      }
+    },
+    snippet: {
       secondary: {
         alignItems: 'flex-start'
       },

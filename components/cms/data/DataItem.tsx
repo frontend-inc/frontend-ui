@@ -3,12 +3,15 @@ import { DataListItem } from '../..'
 
 type DataItemProps = {
   sortable?: boolean
+  selectable?: boolean
+  selected?: boolean 
 	resource: any
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
 	handleClick?: () => void
 	handleEdit?: () => void
 	handleDelete?: () => void
+  handleSelect?: () => void
 	slots?: {
 		item?: any
 		image?: any
@@ -20,12 +23,17 @@ type DataItemProps = {
 const DataItem: React.FC<DataItemProps> = (props) => {
 	const {
     sortable,
+    
+    selectable,
+    selected,
+
 		resource,
 		actions,
 		secondaryAction,
 		handleClick,
 		handleEdit,
 		handleDelete,
+    handleSelect,
 		slots = {
 			item: {},
 			image: {},
@@ -37,6 +45,8 @@ const DataItem: React.FC<DataItemProps> = (props) => {
 	return (
 		<DataListItem
       sortable={sortable}
+      selectable={selectable}
+      selected={selected}      
 			label={label}
 			primary={title}
 			secondary={description}
@@ -46,6 +56,7 @@ const DataItem: React.FC<DataItemProps> = (props) => {
 			handleClick={handleClick}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}
+      handleSelect={handleSelect}
 			slots={slots}
 		/>
 	)

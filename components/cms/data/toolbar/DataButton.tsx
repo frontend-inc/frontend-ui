@@ -2,12 +2,12 @@ import React from 'react'
 import { Button } from '@mui/material'
 import { ResourceButtonType } from '../../../../types'
 
-export type ResourceButtonProps = {
+export type DataButtonProps = {
   button: ResourceButtonType
   selected: any[]
 }
 
-const ResourceButton: React.FC<ResourceButtonProps> = (props) => {
+const DataButton: React.FC<DataButtonProps> = (props) => {
 
   const { button, selected=[] } = props || {}
   
@@ -31,4 +31,4 @@ const ResourceButton: React.FC<ResourceButtonProps> = (props) => {
   )        
 }
 
-export default ResourceButton
+export default DataButton

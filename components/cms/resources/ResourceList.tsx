@@ -17,7 +17,6 @@ import ResourceItem from './ResourceItem'
 import ResourceListItems from './ResourceListItems'
 import ResourceToolbar from './ResourceToolbar'
 import ResourceToolbarModal from './toolbar/ResourceToolbarModal'
-import { useSelected } from '../../../hooks'
 import { ResourceButtonType } from '../../../types'
 
 export type ResourceListProps = {
@@ -121,13 +120,6 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	const [openEdit, setOpenEdit] = useState(false)
 	const [openDelete, setOpenDelete] = useState(false)
 
-  const { 
-    selected,
-		selectedIds,		
-		handleSelect,
-		handleClear,
-  } = useSelected()
-
 	const {
 		delayedLoading: loading,
 		errors,
@@ -149,6 +141,11 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
     totalCount,
 		loadMore,
     paginate,
+
+    selected,
+		selectedIds,		
+		handleSelect,
+		handleClear,
 	} = useResource({
 		name,
 		url,

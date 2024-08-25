@@ -1,21 +1,22 @@
 import React from 'react'
-import { Box, Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography, Checkbox } from '@mui/material'
 import { Icon, Image, TouchableOpacity } from '../..'
 import { CardProps } from './Card'
 
-export type ListCardProps = CardProps & {
-  sortable?: boolean
-}
+export type ListCardProps = CardProps 
 
 const ListCard: React.FC<ListCardProps> = (props) => {
 	const {
     sortable = false,
+    selectable = false,
+    selected = false, 
 		label,
 		primary,
 		secondary,
 		actions,
 		secondaryAction,
-		handleClick,
+		handleClick,    
+    handleSelect,
 		image,
 		height = 180,
 		slots = {
@@ -32,6 +33,14 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 				flexDirection={{ xs: 'column', sm: 'row' }}
 			>
         <Stack direction="row" alignItems='flex-start' spacing={0}>
+          { selectable && (
+            <Checkbox 
+              checked={selected}
+              onChange={handleSelect}
+              color="primary"
+              size="small"
+            />
+          )}
           { sortable && (
             <Icon 
               name="GripVertical"

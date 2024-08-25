@@ -114,8 +114,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
     <Stack direction="column" spacing={2}>
       <DataLayout { ...slots.list } grid={grid}>
         {resources?.map((resource, index) => (
-          <CollectionListItem 
-            { ...slots.item }
+          <CollectionListItem             
             key={index}
             style={style}
             resource={resource}
@@ -133,6 +132,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
             enableRatings={enableRatings}
             enableGradient={enableGradient}
             enableOverlay={enableOverlay}
+            { ...slots.item }
           />
         ))}
       </DataLayout>

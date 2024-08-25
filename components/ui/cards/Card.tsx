@@ -4,6 +4,9 @@ import { Image } from '../..'
 
 export type CardProps = {
 	ref?: any
+  sortable?: boolean
+  selectable?: boolean
+  selected?: boolean  
 	avatar?: React.ReactNode
 	image: string
 	label?: string
@@ -12,6 +15,7 @@ export type CardProps = {
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
 	handleClick?: () => void
+  handleSelect?: () => void
 	height?: number
 	slots?: {
 		item?: any

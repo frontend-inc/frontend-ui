@@ -8,17 +8,20 @@ import {
 	DataDelete,
 	DataShow,
 	DataEmpty, 
-  DataReferences
+  DataReferences,
+  DataToolbarModal
 } from '../..'
 import { ResourceProvider } from 'frontend-js'
 import {
 	FormFieldType,
 	QueryParamsType,
+	ResourceButtonType,
 	SearchFilterOptionType,
 	SortOptionType,
 } from '../../../types'
 
 export type DataListProps = {
+  selectable?: boolean
   sortable?: boolean
 	url: string
   foreignUrl?: string
@@ -43,6 +46,7 @@ export type DataListProps = {
 	list?: React.FC<any>
   sortableList?: React.FC<any>
 	toolbar?: React.FC<any>
+  toolbarModal?: React.FC<any>
 	show?: React.FC<any>
 	edit?: React.FC<any>
 	empty?: React.FC<any>
@@ -50,8 +54,10 @@ export type DataListProps = {
 	destroy?: React.FC<any>
   references?: React.FC<any>
 	component?: React.FC<any>
+  buttons?: ResourceButtonType[]
 	slots?: {
 		toolbar?: any
+    toolbarModal?: any
 		list?: any
     item?: any
 		show?: any
@@ -69,6 +75,7 @@ export type DataListProps = {
 const DataList: React.FC<DataListProps> = (props) => {
 	const SLOT_PROPS = {
 		toolbar: {},
+    toolbarModal: {},
 		list: {},
     item: {},
 		show: {},
@@ -80,6 +87,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 	}
 
 	const {   
+    selectable,
 		resource,
 		enableSearch,
 		enableShow,
@@ -94,14 +102,16 @@ const DataList: React.FC<DataListProps> = (props) => {
     foreignUrl,
 		name,
 		query = {},
-		fields = [],
+		fields = [],    
 		filterOptions = [],
 		sortOptions = [],
 		perPage,
 		emptyIcon,
 		emptyTitle,
 		emptyDescription,
+    buttons = [],
 		toolbar: Toolbar = DataToolbar,
+    toolbarModal: ToolbarModal = DataToolbarModal,
 		list: List = DataListItems,
 		component: Component = DataItem,
 		show: Show = DataShow,
@@ -129,15 +139,23 @@ const DataList: React.FC<DataListProps> = (props) => {
 					sortOptions={sortOptions}
 					{...slots.toolbar}
 				/>
+        <DataToolbarModal 
+          buttons={ buttons }
+          { ...slots.toolbarModal }
+        />
         <List
           {...rest}
+          selectable={selectable}
           href={href}
           enableEdit={enableEdit}
           enableDelete={enableDelete}
           enableAddReference={enableAddReference}
           component={Component}
           slots={{            
-            item: slots.item,
+            item: {
+              ...slots.item,
+              selectable
+            }
           }}
           { ...slots.list }
         />

@@ -21,6 +21,9 @@ const SortableCollectionList: React.FC<CollectionListProps> = (props) => {
       }}
       slots={{
         ...slots,
+        list: {
+          sortable: true
+        },
         item: {
           ...slots.item,
           sortable: true,

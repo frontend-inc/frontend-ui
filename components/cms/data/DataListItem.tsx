@@ -1,9 +1,11 @@
 import React from 'react'
-import { Box, Stack, Typography } from '@mui/material'
+import { Checkbox, Box, Stack, Typography } from '@mui/material'
 import { Icon, Image, MenuButton, TouchableOpacity } from '../..'
 
 type DataListItemProps = {
   sortable?: boolean
+  selectable?: boolean
+  selected?: boolean
 	label?: string
 	primary: string
 	secondary?: string
@@ -14,6 +16,7 @@ type DataListItemProps = {
 	handleClick?: () => void
 	handleEdit?: () => void
 	handleDelete?: () => void
+  handleSelect?: () => void
   handleAddReference?: () => void
 	slots?: {
 		item?: any
@@ -24,6 +27,10 @@ type DataListItemProps = {
 const DataListItem: React.FC<DataListItemProps> = (props) => {
 	const {
     sortable,
+    
+    selectable,
+    selected,
+
 		label,
 		primary,
 		secondary,
@@ -34,11 +41,18 @@ const DataListItem: React.FC<DataListItemProps> = (props) => {
 		handleClick,
 		handleEdit,
 		handleDelete,
+    handleSelect,
 		slots = {
 			item: {},
 			image: {},
 		},
 	} = props || {}
+
+  const handleChange = () => {
+    if (handleSelect) {
+      handleSelect()
+    }
+  }
 
 	return (
 		<Box sx={sx.root}>
@@ -48,6 +62,14 @@ const DataListItem: React.FC<DataListItemProps> = (props) => {
 				flexDirection={{ xs: 'column', sm: 'row' }}
 			>
         <Stack direction="row" alignItems="flex-start">
+          { selectable && (
+            <Checkbox 
+              checked={selected}
+              onChange={handleChange}
+              color="primary"
+              size="small"
+            /> 
+          )}
           { sortable && (
             <Icon 
               name="GripVertical"

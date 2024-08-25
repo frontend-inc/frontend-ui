@@ -3,9 +3,9 @@ import { Stack } from '@mui/material'
 import {
 	Cover,
 } from '../..'
-import { ShowCardProps } from './ShowCard'
+import { HeroCardProps } from './HeroCard'
 
-const ShowCover: React.FC<ShowCardProps> = (props) => {
+const HeroCover: React.FC<HeroCardProps> = (props) => {
 	const {		
     image,
     primary,
@@ -26,7 +26,7 @@ const ShowCover: React.FC<ShowCardProps> = (props) => {
 	)
 }
 
-export default ShowCover
+export default HeroCover
 
 const sx = {
 	root: {

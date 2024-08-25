@@ -79,8 +79,7 @@ const SortableDataListItems: React.FC<SortableDataListItemsProps> = (props) => {
         handleDrop={handleDrop}
         items={resources}
         renderItem={resource => (
-          <Component
-            {...slots.item}
+          <Component            
             sortable
             key={ resource?.id }
             resource={resource}
@@ -91,7 +90,8 @@ const SortableDataListItems: React.FC<SortableDataListItemsProps> = (props) => {
             handleEdit={enableEdit ? () => handleEdit(resource) : undefined}
             handleDelete={
               enableDelete ? () => handleDeleteClick(resource) : undefined
-            }            
+            }       
+            {...slots.item}     
           />
         )}          
       />

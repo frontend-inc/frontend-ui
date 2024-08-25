@@ -1,18 +1,20 @@
 import React from 'react'
 import { Stack, Button } from '@mui/material'
-import ResourceButton from './ResourceButton'
+import { useResourceContext } from 'frontend-js'
 import { ResourceButtonType } from '../../../../types'
+import DataButton from './DataButton'
 
 type ResourceToolbarButtonsProps = {
-  selected: any[]
-  selectedIds: number[] | string[]
+  selected?: any[]
+  selectedIds?: number[] | string[]
   buttons: ResourceButtonType[]  
 }
 
-const ResourceToolbarButtons: React.FC<ResourceToolbarButtonsProps> = (props) => {
+const DataToolbarButtons: React.FC<ResourceToolbarButtonsProps> = (props) => {
 
-  const { 
-    selected,  
+  const { selected } = useResourceContext()
+
+  const {     
     buttons,
   } = props || {}  
 
@@ -21,15 +23,15 @@ const ResourceToolbarButtons: React.FC<ResourceToolbarButtonsProps> = (props) =>
       direction="row"
       spacing={1}
     >
-      { buttons?.map((button, index) => (
-        <ResourceButton
+      { buttons?.map((button, index) => 
+        <DataButton 
           key={ index }
           button={ button }
           selected={ selected }
         />
-      ))}      
+      )}       
     </Stack>
   )
 }
 
-export default ResourceToolbarButtons
+export default DataToolbarButtons
