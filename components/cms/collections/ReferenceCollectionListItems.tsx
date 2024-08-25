@@ -8,7 +8,7 @@ import { CollectionListItem, DataLayout } from '../..'
 import { useForms } from '../../../hooks'
 import { ButtonType, DisplayFieldType } from '../../../types'
 
-export type CollectionListItemsProps = {
+export type ReferenceCollectionListItemsProps = {
 	href?: string
 	style?: 'list' | 'card' | 'avatar' | 'cover' | 'table' | 'text'
 	buttons: ButtonType[]
@@ -30,14 +30,14 @@ export type CollectionListItemsProps = {
   }
 }
 
-const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
+const ReferenceCollectionListItems: React.FC<ReferenceCollectionListItemsProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
 	const {
+    loading,
 		setResource,
-		loading,
-		resources,
+		resources: references,
 		page,
 		numPages,
 		query = {},
@@ -66,19 +66,19 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
     }
 	} = props
 
-	const handleShowClick = (resource) => {
+	const handleShowClick = (target) => {
     if(handleClick){
-      handleClick(resource)
+      handleClick(target)
     } else if(href) {
-			if (clientUrl && href && resource?.handle) {
+			if (clientUrl && href && target?.handle) {
 				window.scrollTo({
 					top: 0,
 					behavior: 'smooth',
 				})
-				router.push(`${clientUrl}${href}/${resource?.handle}`)
+				router.push(`${clientUrl}${href}/${target?.handle}`)
 			}
 		} else {
-			setResource(resource)
+			setResource(target)
 			setOpenShow(true)
 		}
 	}
@@ -113,18 +113,20 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 	return (
     <Stack direction="column" spacing={2}>
       <DataLayout { ...slots.list } grid={grid}>
-        {resources?.map((resource, index) => (
+        {references?.map((reference, index) => {
+          const target = reference?.target 
+          return(
           <CollectionListItem 
             { ...slots.item }
             key={index}
             style={style}
-            resource={resource}
+            resource={target}
             displayFields={displayFields}
-            handleClick={() => handleShowClick(resource)}
+            handleClick={() => handleShowClick(target)}
             enableEdit={enableEdit}
             enableDelete={enableDelete}
-            handleEdit={() => handleEdit(resource)}
-            handleDelete={() => handleDeleteClick(resource)}
+            handleEdit={() => handleEdit(target)}
+            handleDelete={() => handleDeleteClick(target)}
             buttons={ buttons }            
             enableUsers={enableUsers}
             enableComments={enableComments}
@@ -134,7 +136,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
             enableGradient={enableGradient}
             enableOverlay={enableOverlay}
           />
-        ))}
+        )})}
       </DataLayout>
       <LoadMore 
         page={page} 
@@ -145,4 +147,4 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 	)
 }
 
-export default CollectionListItems
+export default ReferenceCollectionListItems

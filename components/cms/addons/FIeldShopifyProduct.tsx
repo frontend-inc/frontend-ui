@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { ProductDetails } from '../../../components/shopify'
 import { useProducts } from 'frontend-shopify'
 import { get } from 'lodash'
 
-export type AddonShopifyProductProps = {
+export type FieldShopifyProductProps = {
 	fieldName: string
 	resource: any
 }
 
-const AddonShopifyProduct: React.FC<AddonShopifyProductProps> = (props) => {
+const FieldShopifyProduct: React.FC<FieldShopifyProductProps> = (props) => {
 	const { resource, fieldName, ...rest } = props || {}
 	const shopifyHandle = get(resource, fieldName)
 
@@ -24,4 +24,4 @@ const AddonShopifyProduct: React.FC<AddonShopifyProductProps> = (props) => {
 	return <ProductDetails shopifyProduct={product} {...rest} />
 }
 
-export default AddonShopifyProduct
+export default FieldShopifyProduct

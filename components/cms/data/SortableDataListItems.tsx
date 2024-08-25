@@ -1,10 +1,10 @@
 import React from 'react'
 import { LoadMore, SortableList } from '../..'
 import { useResourceContext } from 'frontend-js'
-import { DataItem, CollectionListItem, DataLayout } from '../..'
+import { DataItem, DataLayout } from '../..'
 import { useForms } from '../../../hooks'
 
-export type DataListItemsProps = {
+export type SortableDataListItemsProps = {
 	enableShow?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
@@ -19,8 +19,9 @@ export type DataListItemsProps = {
 	}
 }
 
-const SortableDataListItems: React.FC<DataListItemsProps> = (props) => {
-	const {
+const SortableDataListItems: React.FC<SortableDataListItemsProps> = (props) => {
+	
+  const {
 		loading,
 		resources,
 		page,

@@ -22,6 +22,8 @@ export { default as CollectionDelete } from './CollectionDelete'
 export { default as CollectionToolbar } from './CollectionToolbar'
 
 export { default as SortableCollectionList } from './SortableCollectionList'
+export { default as ReferenceCollectionList } from './ReferenceCollectionList'
+export { default as ReferenceCollectionListItems } from './ReferenceCollectionListItems'
 
 // Media
 export { default as ShowImageModal } from '../modals/ShowImageModal'

@@ -11,6 +11,7 @@ import {
 import { SecondaryFields, SocialButtons, ButtonActions } from '../..'
 import { ButtonType, DisplayFieldType } from '../../../types'
 import { Box } from '@mui/material'
+import { buildActions } from '../../../helpers'
 
 type CardStyleTypes = 'list' | 'card' | 'avatar' | 'cover' | 'table' | 'text'
 
@@ -35,7 +36,6 @@ type CollectionListItemProps = {
 	enableGradient?: boolean
 	enableOverlay?: boolean
 	enableEdit?: boolean
-	enableCreate?: boolean
 	enableDelete?: boolean
 	enableUsers?: boolean
 	enableComments?: boolean
@@ -45,12 +45,17 @@ type CollectionListItemProps = {
 }
 
 const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
-	const {
+	
+  const {
 		buttons,
 		resource,
 		displayFields = [],
 		href,
 		handleClick,
+    enableEdit = false,
+    enableDelete = false,
+    handleEdit,
+    handleDelete,
 		enableGradient = false,
 		enableOverlay = false,
 		enableComments = false,
@@ -115,7 +120,13 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 			secondaryAction={
 				<ButtonActions 
           numVisible={0} 
-          buttons={buttons} 
+          buttons={buildActions({
+            enableEdit,
+            enableDelete,
+            handleEdit,
+            handleDelete,
+            buttons,
+          })}
           resource={resource} 
         />
 			}

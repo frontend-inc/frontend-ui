@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section, Heading } from '../../../components'
-import { AddonCalendly } from '../../../components'
-import { AddonCalendlyProps } from '../../../components/cms/addons/AddonCalendly'
+import { FieldCalendly } from '../../../components'
+import { FieldCalendlyProps } from '../../../components/cms/addons/FieldCalendly'
 import { SectionProps, HeadingProps } from '../../../types'
 
-type CmsCalendlyProps = SectionProps & HeadingProps & AddonCalendlyProps
+type CmsCalendlyProps = SectionProps & HeadingProps & FieldCalendlyProps
 
 const CmsCalendly: React.FC<CmsCalendlyProps> = (props) => {
 	const {
@@ -38,7 +38,7 @@ const CmsCalendly: React.FC<CmsCalendlyProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<AddonCalendly {...rest} />
+			<FieldCalendly {...rest} />
 		</Section>
 	)
 }

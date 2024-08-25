@@ -1,9 +1,8 @@
 import React from 'react'
 import { GoogleMap } from '../..'
-import { get } from 'lodash'
 import { DisplayFieldType } from '../../../types'
 
-export type AddonGoogleMapProps = {
+export type FieldGoogleMapProps = {
 	fieldName: string
 	resource: any
 	zoom?: number
@@ -11,7 +10,7 @@ export type AddonGoogleMapProps = {
 	darkTheme?: boolean
 }
 
-const AddonGoogleMap: React.FC<AddonGoogleMapProps> = (props) => {
+const FieldGoogleMap: React.FC<FieldGoogleMapProps> = (props) => {
 	const {
 		resource,
 		zoom = 16,
@@ -29,4 +28,4 @@ const AddonGoogleMap: React.FC<AddonGoogleMapProps> = (props) => {
 	)
 }
 
-export default AddonGoogleMap
+export default FieldGoogleMap

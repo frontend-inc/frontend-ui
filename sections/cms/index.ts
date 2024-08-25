@@ -21,6 +21,7 @@ export { default as CmsStatistics } from './CmsStatistics'
 
 // Sortable 
 export { default as CmsSortableList } from './CmsSortableList'
+export { default as CmsReferenceList } from './CmsReferenceList'
 
 // Cms Addons
 export { default as CmsGoogleMap } from './addons/CmsGoogleMap'

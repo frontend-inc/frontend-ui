@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section } from '../../../components'
-import { AddonShopifyProduct } from '../../../components'
-import { AddonShopifyProductProps } from '../../../components/cms/addons/AddonShopifyProduct'
+import { FieldShopifyProduct } from '../../../components'
+import { FieldShopifyProductProps } from '../../../components/cms/addons/FieldShopifyProduct'
 import { SectionProps } from '../../../types'
 
-type CmsShopifyProductProps = SectionProps & AddonShopifyProductProps
+type CmsShopifyProductProps = SectionProps & FieldShopifyProductProps
 
 const CmsShopifyProduct: React.FC<CmsShopifyProductProps> = (props) => {
 	const {
@@ -28,7 +28,7 @@ const CmsShopifyProduct: React.FC<CmsShopifyProductProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<AddonShopifyProduct {...rest} />
+			<FieldShopifyProduct {...rest} />
 		</Section>
 	)
 }

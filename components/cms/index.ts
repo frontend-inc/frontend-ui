@@ -9,9 +9,9 @@ export { default as DisplayField } from './displayFields/DisplayField'
 export { default as DisplayFields } from './displayFields/DisplayFields'
 export { default as SecondaryFields } from './displayFields/SecondaryFields'
 
-export { default as AddonCalendly } from './addons/AddonCalendly'
-export { default as AddonGoogleMap } from './addons/AddonGoogleMap'
-export { default as AddonShopifyProduct } from './addons/AddonShopifyProduct'
+export { default as FieldCalendly } from './addons/FieldCalendly'
+export { default as FieldGoogleMap } from './addons/FIeldGoogleMap'
+export { default as FieldShopifyProduct } from './addons/FieldShopifyProduct'
 
 export { default as EmailSignup } from './contacts/EmailSignup'
 export { default as LoadMore } from './collections/LoadMore'
