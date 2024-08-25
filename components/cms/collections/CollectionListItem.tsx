@@ -40,6 +40,7 @@ type CollectionListItemProps = {
 	enableUsers?: boolean
 	enableComments?: boolean
 	enableFavorites?: boolean
+  enableAddReference?: boolean
 	enableLikes?: boolean
 	enableRatings?: boolean
 }
@@ -60,6 +61,7 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 		enableOverlay = false,
 		enableComments = false,
 		enableFavorites = false,
+    enableAddReference = false,
 		enableLikes = false,
 		enableRatings = false,
 		enableUsers = false,
@@ -114,6 +116,7 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 						enableLikes={enableLikes}
 						enableFavorites={enableFavorites}
 						enableComments={enableComments}
+            enableAddReference={enableAddReference}
 					/>
 				</Box>
 			}

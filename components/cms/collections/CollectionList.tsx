@@ -31,9 +31,10 @@ export type CollectionListProps = {
 	enableOverlay?: boolean
 
 	enableShow?: boolean
-	enableEdit?: boolean
+	enableEdit?: boolean  
 	enableCreate?: boolean
 	enableDelete?: boolean
+  enableAddReference?: boolean
 	fields?: FormFieldType[]
 	headers?: {
 		label: string
@@ -65,6 +66,7 @@ export type CollectionListProps = {
     item?: any
 	}
 	url: string
+  foreignUrl?: string
 	query?: any
 	resource: any
 	filterUser?: boolean
@@ -76,6 +78,7 @@ export type CollectionListProps = {
 const CollectionList: React.FC<CollectionListProps> = (props) => {
 	const {
 		url,
+    foreignUrl,
 		query,
 		resource,
 		perPage,
@@ -100,6 +103,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		enableEdit,
 		enableCreate,
 		enableDelete,
+    enableAddReference,
 		fields = [],
 
 		enableSearch,
@@ -143,6 +147,14 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
       ...defaultSlots.list,
 			headers,
       style,
+      enableLikes,
+			enableFavorites,
+			enableRatings,
+			enableComments,
+      enableAddReference,
+			enableUsers,
+			enableGradient,
+			enableOverlay,
 		},
 		show: {
       ...defaultSlots.show,
@@ -152,6 +164,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			enableFavorites,
 			enableRatings,
 			enableComments,
+      enableAddReference,
 			enableUsers,
 			enableGradient,
 			enableOverlay,			
@@ -176,6 +189,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			enableFavorites,
 			enableRatings,
 			enableComments,
+      enableAddReference,
 			enableUsers,
 			enableGradient,
 			enableOverlay,      
@@ -185,12 +199,14 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 	return (
 		<DataList
 			url={url}
+      foreignUrl={foreignUrl}
 			name="document"
 			query={searchQuery}
 			fields={fields}
 			enableShow={enableShow}
 			enableCreate={enableCreate}
 			enableEdit={enableEdit}
+      enableAddReference={enableAddReference}
 			enableDelete={enableDelete}
 			enableSearch={enableSearch}
 			enableFilters={enableFilters}

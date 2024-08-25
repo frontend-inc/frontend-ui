@@ -83,7 +83,7 @@ export const typography = {
 	},
 	caption: {
 		fontFamily: 'Inter',
-		fontWeight: 500,
+		fontWeight: 600,
 		textTransform: 'uppercase',
 		fontSize: 12,
 		letterSpacing: '0.03em',

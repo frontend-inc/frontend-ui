@@ -7,7 +7,8 @@ import {
 	DataForm,
 	DataDelete,
 	DataShow,
-	DataEmpty,
+	DataEmpty, 
+  DataReferences
 } from '../..'
 import { ResourceProvider } from 'frontend-js'
 import {
@@ -20,6 +21,7 @@ import {
 export type DataListProps = {
   sortable?: boolean
 	url: string
+  foreignUrl?: string
 	name: string
 	query?: QueryParamsType
 	resource?: any
@@ -33,6 +35,7 @@ export type DataListProps = {
 	enableCreate?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
+  enableAddReference?: boolean
 	enableFilters?: boolean
 	enableSorting?: boolean
 	perPage?: number
@@ -45,6 +48,7 @@ export type DataListProps = {
 	empty?: React.FC<any>
 	create?: React.FC<any>
 	destroy?: React.FC<any>
+  references?: React.FC<any>
 	component?: React.FC<any>
 	slots?: {
 		toolbar?: any
@@ -80,10 +84,12 @@ const DataList: React.FC<DataListProps> = (props) => {
 		enableCreate,
 		enableEdit,
 		enableDelete,
+    enableAddReference,
 		enableFilters,
 		enableSorting,
 		href,
 		url,
+    foreignUrl,
 		name,
 		query = {},
 		fields = [],
@@ -101,6 +107,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 		create: Create = DataForm,
 		destroy: Delete = DataDelete,
 		empty: Empty = DataEmpty,
+    references: References = DataReferences,
 		slots = SLOT_PROPS,
 		loadMore,
 		...rest
@@ -125,6 +132,7 @@ const DataList: React.FC<DataListProps> = (props) => {
           href={href}
           enableEdit={enableEdit}
           enableDelete={enableDelete}
+          enableAddReference={enableAddReference}
           component={Component}
           slots={{            
             item: slots.item,
@@ -150,6 +158,11 @@ const DataList: React.FC<DataListProps> = (props) => {
 					description={emptyDescription}
 					{...slots.destroy}
 				/>
+        { foreignUrl && (
+          <References           
+            url={foreignUrl}
+          />
+        )}
 			</DataFetcher>
 		</ResourceProvider>
 	)

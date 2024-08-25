@@ -25,13 +25,15 @@ const useForms = (params?: FormParams) => {
 		update,
 		destroy,
 		handleChange,
-		removeAttachment,    
+		removeAttachment,        
 		openEdit,
 		openDelete,
-    openShow,
+    openShow,    
+    openReference,
 		setOpenEdit,
     setOpenDelete,		
     setOpenShow,
+    setOpenReference,
 	} = useResourceContext()
 
 	const reloadMany = async () => {
@@ -47,6 +49,8 @@ const useForms = (params?: FormParams) => {
 
   const handleShow = (resource: any) => {
     setResource(resource)
+    setOpenReference(false)
+    setOpenEdit(false)
 		setOpenShow(true)
   }
 
@@ -56,6 +60,7 @@ const useForms = (params?: FormParams) => {
 			id: undefined,
 		})
 		setOpenShow(false)
+    setOpenReference(false)
 		setOpenEdit(true)
 	}
 
@@ -63,8 +68,17 @@ const useForms = (params?: FormParams) => {
 		if (!currentUser?.id) return setAuthOpen(true)
 		setResource(resource)
 		setOpenShow(false)
+    setOpenReference(false)
 		setOpenEdit(true)
 	}
+
+  const handleAddReference = (resource) => {
+		if (!currentUser?.id) return setAuthOpen(true)
+		setResource(resource)
+		setOpenShow(false)
+		setOpenEdit(false)
+    setOpenReference(true)
+  }
 
 	const handleSubmit = async () => {
 		if (!currentUser?.id) return setAuthOpen(true)
@@ -123,14 +137,17 @@ const useForms = (params?: FormParams) => {
 		handleDeleteClick,
 		handleRemove,
     handleShow,
-		handleSubmit,    
-		
+		handleSubmit,   
+    handleAddReference, 
+		    
     openEdit,
     openDelete,
     openShow,        
+    openReference,
 		setOpenEdit,		
 		setOpenDelete,
     setOpenShow,
+    setOpenReference
 	}
 }
 
