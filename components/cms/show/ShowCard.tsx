@@ -34,7 +34,7 @@ const ShowCard: React.FC<ShowCardProps> = (props) => {
 
 	return (
 		<Stack spacing={2}>
-			<Box sx={ sx.secondaryAction }>{ secondaryAction }</Box>
+			{ secondaryAction }
 			<Box sx={sx.root}>
 				<Stack
 					sx={sx.container}
