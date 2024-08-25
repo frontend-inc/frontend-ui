@@ -150,7 +150,7 @@ const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 						enableDragging
 						id={draggedResource?.id}
 						resource={draggedResource}
-						{...slots.card}
+						{...slots.item}
 					/>
 				) : null}
 			</DragOverlay>

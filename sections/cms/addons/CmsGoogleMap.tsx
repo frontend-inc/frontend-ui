@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section, Heading } from '../../../components'
 import { FieldGoogleMap } from '../../../components'
-import { FieldGoogleMapProps } from '../../../components/cms/addons/FIeldGoogleMap'
+import { FieldGoogleMapProps } from '../../../components/cms/addons/FieldGoogleMap'
 import { SectionProps, HeadingProps } from '../../../types'
 
 type CmsGoogleMapProps = SectionProps & HeadingProps & FieldGoogleMapProps

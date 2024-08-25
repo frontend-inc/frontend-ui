@@ -10,7 +10,7 @@ export { default as DisplayFields } from './displayFields/DisplayFields'
 export { default as SecondaryFields } from './displayFields/SecondaryFields'
 
 export { default as FieldCalendly } from './addons/FieldCalendly'
-export { default as FieldGoogleMap } from './addons/FIeldGoogleMap'
+export { default as FieldGoogleMap } from './addons/FieldGoogleMap'
 export { default as FieldShopifyProduct } from './addons/FieldShopifyProduct'
 
 export { default as EmailSignup } from './contacts/EmailSignup'
