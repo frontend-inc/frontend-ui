@@ -24,6 +24,8 @@ export { default as CollectionToolbar } from './CollectionToolbar'
 export { default as SortableCollectionList } from './SortableCollectionList'
 export { default as ReferenceCollectionList } from './ReferenceCollectionList'
 export { default as ReferenceCollectionListItems } from './ReferenceCollectionListItems'
+export { default as SortableReferenceCollectionList } from './SortableReferenceCollectionList'
+export { default as SortableReferenceListItems } from './SortableReferenceListItems'
 
 // Media
 export { default as ShowImageModal } from '../modals/ShowImageModal'
