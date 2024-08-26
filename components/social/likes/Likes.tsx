@@ -1,5 +1,5 @@
 import React from 'react'
-import { CollectionList } from '../..'
+import { CollectionGrid } from '../..'
 import { CollectionListProps } from '../../cms/collections/CollectionList'
 
 const Likes: React.FC<CollectionListProps> = (props) => {
@@ -10,7 +10,7 @@ const Likes: React.FC<CollectionListProps> = (props) => {
 		method: 'likes',
 	}
 
-	return <CollectionList query={query} {...rest} />
+	return <CollectionGrid query={query} {...rest} />
 }
 
 export default Likes

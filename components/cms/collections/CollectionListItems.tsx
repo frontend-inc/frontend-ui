@@ -41,15 +41,14 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		resources,
 		page,
 		numPages,
-		query = {},
-		setQuery,
+    loadMore,
 		setOpenShow,
 	} = useResourceContext()
 
 	const {
     grid = false,
 		buttons = [],
-		style = 'card',
+		style = 'list',
 		href,
     handleClick,
 		displayFields = [],
@@ -90,12 +89,8 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
     handleDeleteClick 
   } = useForms()
 
-	const handlePaginate = () => {
-		let perPage = (query?.per_page || 12) + 12
-		setQuery({
-			...query,
-			per_page: perPage,
-		})
+	const handlePaginate = async () => {
+		await loadMore()
 	}
 
 	return (

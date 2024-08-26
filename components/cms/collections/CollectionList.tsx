@@ -102,7 +102,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		enableGradient,
 		enableOverlay,
 
-		style,
+		style = 'list',
 		buttons = [],
 		displayFields = [],
     circular,

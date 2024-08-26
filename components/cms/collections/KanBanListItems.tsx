@@ -75,7 +75,7 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 				position: index,
 			}
 		})
-		await updatePositions(columnItems)
+		updatePositions(columnItems)
 		await reloadMany()
 	}
 

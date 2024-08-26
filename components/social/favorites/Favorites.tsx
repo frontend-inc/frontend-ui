@@ -1,5 +1,5 @@
 import React from 'react'
-import { CollectionList } from '../..'
+import { CollectionGrid } from '../..'
 import { CollectionListProps } from '../../cms/collections/CollectionList'
 
 const Favorites: React.FC<CollectionListProps> = (props) => {
@@ -10,7 +10,7 @@ const Favorites: React.FC<CollectionListProps> = (props) => {
 		method: 'favorites',
 	}
 
-	return <CollectionList query={query} {...rest} />
+	return <CollectionGrid query={query} {...rest} />
 }
 
 export default Favorites

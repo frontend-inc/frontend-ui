@@ -8,6 +8,7 @@ const CollectionGrid: React.FC<CollectionListProps> = (props) => {
       { ...props}
       grid
       perPage={9} 			
+      style={ props?.style || 'card' }
 		/>
 	)
 }

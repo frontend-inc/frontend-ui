@@ -33,7 +33,8 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 		page,
 		numPages,
 		query = {},
-		setQuery,		    
+		setQuery,		
+    loadMore,    
     selectedIds,
     handleSelect 
 	} = useResourceContext()
@@ -69,12 +70,8 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 		}
 	}
 
-	const handlePaginate = () => {
-		let perPage = (query?.per_page || 12) + 12
-		setQuery({
-			...query,
-			per_page: perPage,
-		})
+	const handlePaginate = async () => {
+		await loadMore()
 	}
 
 	return (

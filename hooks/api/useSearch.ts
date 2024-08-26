@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useQuery, useResourceContext } from 'frontend-js'
+import { useResourceContext } from 'frontend-js'
 import { useFilters } from '..'
 import {
 	SortOptionType,
@@ -53,8 +53,7 @@ const useSearch = (props) => {
 				location: null,
 			}
 		}
-		setQuery(searchQuery)
-		//findMany(searchQuery)
+		findMany(searchQuery)
 	}
 
 	const handleSortBy = (field: SortOptionType) => {
