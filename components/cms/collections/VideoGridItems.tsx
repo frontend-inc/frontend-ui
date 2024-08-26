@@ -6,7 +6,7 @@ import { VideoCard } from '../..'
 import { useForms } from '../../../hooks'
 import { buildActions } from '../../../helpers'
 
-export type VideoListItemsProps = {
+export type VideoGridItemsProps = {
 	url: string
 	enableEdit?: boolean
 	enableDelete?: boolean
@@ -19,7 +19,7 @@ export type VideoListItemsProps = {
 	enableUsers?: boolean
 }
 
-const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
+const VideoGridItems: React.FC<VideoGridItemsProps> = (props) => {
 	const { setResource, resources, page, numPages, loadMore, setOpenShow } =
 		useResourceContext()
 
@@ -81,4 +81,4 @@ const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
 	)
 }
 
-export default VideoListItems
+export default VideoGridItems

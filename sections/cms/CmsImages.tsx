@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { ImageList } from '../../components'
-import { ImageListProps } from '../../components/cms/collections/ImageList'
+import { ImageGrid } from '../../components'
+import { ImageGridProps } from '../../components/cms/collections/ImageGrid'
 import { SectionProps, HeadingProps, FormProps } from '../../types'
 
-type CmsImagesProps = SectionProps & HeadingProps & ImageListProps & FormProps
+type CmsImagesProps = SectionProps & HeadingProps & ImageGridProps & FormProps
 
 const CmsImages: React.FC<CmsImagesProps> = (props) => {
 	const {
@@ -38,7 +38,7 @@ const CmsImages: React.FC<CmsImagesProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<ImageList {...rest} />
+			<ImageGrid {...rest} />
 		</Section>
 	)
 }

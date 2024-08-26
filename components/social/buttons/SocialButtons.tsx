@@ -45,7 +45,7 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 	const router = useRouter()
 	const currentPageUrl = router.asPath
 
-	if (!enableLikes && !enableFavorites && !enableSharing) return null
+	if (!enableLikes && !enableFavorites && !enableSharing && !enableAddReference) return null
 	return (
 		<Stack
 			direction={direction}

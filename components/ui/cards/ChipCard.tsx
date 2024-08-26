@@ -1,17 +1,16 @@
 import React from 'react'
-import {
-	Avatar,
-	Box,
+import {	
 	List,
 	ListItem,
 	ListItemButton,
 	ListItemIcon,
 	ListItemText,
 } from '@mui/material'
+import { AvatarImage } from '../..'
 import { CardProps } from './Card'
 
 const ChipCard: React.FC<CardProps> = (props) => {
-	const {
+	const {    
 		primary,
 		secondary,
 		secondaryAction,
@@ -30,22 +29,14 @@ const ChipCard: React.FC<CardProps> = (props) => {
 					sx={sx.listItemButton}
 					onClick={handleClick && handleClick}
 				>
-					{image && (
-						<ListItemIcon sx={sx.listItemIcon}>
-							<Avatar
-								sx={{
-									...sx.avatar,
-									...(slots?.image?.enableGradient && sx.gradient),
-									...(slots?.image?.enableOverlay && sx.overlay),
-								}}
-								src={image}
-								alt={primary}
-								{...slots.image}
-							>
-								<Box />
-							</Avatar>
-						</ListItemIcon>
-					)}
+          <ListItemIcon sx={sx.listItemIcon}>
+            <AvatarImage 
+              image={ image }
+              alt={ primary }
+              height={44}
+              { ...slots.image }
+            /> 							
+          </ListItemIcon>
 					<ListItemText primary={primary} secondary={secondary} />
 				</ListItemButton>
 			</ListItem>

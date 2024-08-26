@@ -16,7 +16,6 @@ const SortableReferenceCollectionList: React.FC<CollectionListProps> = (props) =
       {...props}   
       url={url}
       resource={resource}   
-      style="list" 
       list={ SortableReferenceListItems }
       component={ CollectionListItem }
       query={{

@@ -21,6 +21,7 @@ import {
 } from '../../../types'
 
 export type DataListProps = {
+  grid?: boolean
   selectable?: boolean
   sortable?: boolean
 	url: string
@@ -87,6 +88,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 	}
 
 	const {   
+    grid = false,
     selectable,
 		resource,
 		enableSearch,
@@ -145,6 +147,7 @@ const DataList: React.FC<DataListProps> = (props) => {
         />
         <List
           {...rest}
+          grid={grid}
           selectable={selectable}
           href={href}
           enableEdit={enableEdit}

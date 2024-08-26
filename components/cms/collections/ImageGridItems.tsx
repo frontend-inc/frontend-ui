@@ -6,7 +6,7 @@ import { ButtonActions, ImageCard, Placeholder } from '../..'
 import { useForms } from '../../../hooks'
 import { buildActions } from '../../../helpers'
 
-export type ListItemsImageProps = {
+export type ImageGridItemsProps = {
 	url: string
 	enableGradient?: boolean
 	enableOverlay?: boolean
@@ -22,7 +22,7 @@ export type ListItemsImageProps = {
 	emptyDescription?: string
 }
 
-const ImageListItems: React.FC<ListItemsImageProps> = (props) => {
+const ImageGridItems: React.FC<ImageGridItemsProps> = (props) => {
 	const {
 		setResource,
 		loading,
@@ -94,4 +94,4 @@ const ImageListItems: React.FC<ListItemsImageProps> = (props) => {
 	)
 }
 
-export default ImageListItems
+export default ImageGridItems

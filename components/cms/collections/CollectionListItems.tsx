@@ -9,6 +9,7 @@ import { useForms } from '../../../hooks'
 import { ButtonType, DisplayFieldType } from '../../../types'
 
 export type CollectionListItemsProps = {
+  grid?: boolean
 	href?: string
 	style?: 'list' | 'card' | 'avatar' | 'cover' | 'table' | 'text'
 	buttons: ButtonType[]
@@ -46,6 +47,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 	} = useResourceContext()
 
 	const {
+    grid = false,
 		buttons = [],
 		style = 'card',
 		href,
@@ -88,20 +90,6 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
     handleDeleteClick 
   } = useForms()
 
-	let grid = false
-
-	const LAYOUTS = {
-		list: false,
-		card: true,
-		avatar: false,
-		cover: true,
-		chip: false,
-		text: false,
-		table: false,
-	}
-
-	grid = LAYOUTS[style]
-
 	const handlePaginate = () => {
 		let perPage = (query?.per_page || 12) + 12
 		setQuery({
@@ -112,7 +100,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 
 	return (
     <Stack direction="column" spacing={2}>
-      <DataLayout { ...slots.list } grid={grid}>
+      <DataLayout { ...slots.list } grid={grid} loading={loading}>
         {resources?.map((resource, index) => (
           <CollectionListItem             
             key={index}

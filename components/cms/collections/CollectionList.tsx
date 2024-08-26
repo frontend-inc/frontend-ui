@@ -20,6 +20,7 @@ import {
 } from '../..'
 
 export type CollectionListProps = {
+  grid?: boolean
 	style: string
 	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
@@ -68,6 +69,8 @@ export type CollectionListProps = {
     references?: any
     item?: any
 	}
+  circular?: boolean
+  disableImage?: boolean  
 	url: string
   foreignUrl?: string
 	query?: any
@@ -80,11 +83,12 @@ export type CollectionListProps = {
 
 const CollectionList: React.FC<CollectionListProps> = (props) => {
 	const {
+    grid = false,
 		url,
     foreignUrl,
 		query,
 		resource,
-		perPage,
+		perPage = 10,
 		filterUser,
 		filterTeam,
 		filterSimilar,
@@ -101,6 +105,8 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		style,
 		buttons = [],
 		displayFields = [],
+    circular,
+    disableImage,
 
 		enableShow,
 		enableEdit,
@@ -187,6 +193,8 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		empty: defaultSlots.empty,
     item: {
       ...defaultSlots.item,
+      circular,
+      disableImage,
       style,
 			buttons,
 			displayFields,
@@ -204,6 +212,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 
 	return (
 		<DataList
+      grid={grid} 
 			url={url}
       foreignUrl={foreignUrl}
 			name="document"

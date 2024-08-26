@@ -1,12 +1,16 @@
 import React from 'react'
 import { Box, Stack, Typography, Checkbox } from '@mui/material'
-import { Icon, Image, TouchableOpacity } from '../..'
+import { Icon, Image, AvatarImage } from '../..'
 import { CardProps } from './Card'
 
-export type ListCardProps = CardProps 
+export type ListCardProps = CardProps & {
+  circular?: boolean
+  disableImage?: boolean
+}
 
 const ListCard: React.FC<ListCardProps> = (props) => {
-	const {
+	const {  
+    circular = false,  
     sortable = false,
     selectable = false,
     selected = false, 
@@ -18,7 +22,8 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 		handleClick,    
     handleSelect,
 		image,
-		height = 180,
+		height = 160,
+    disableImage,
 		slots = {
 			item: {},
 			image: {},
@@ -47,17 +52,29 @@ const ListCard: React.FC<ListCardProps> = (props) => {
               color='text.secondary'
             />
           )}
-          <Box sx={sx.image}>
-            <TouchableOpacity handleClick={handleClick}>
-              <Image
+          { !disableImage && (
+            <Box sx={sx.image}>
+              { circular ? (
+                <AvatarImage                
+                  label={label}
+                  src={image}
+                  height={height}
+                  alt={primary}
+                  handleClick={ handleClick }
+                  {...slots.image}
+                />  
+              ):(
+              <Image                
                 label={label}
                 src={image}
                 height={height}
                 alt={primary}
+                handleClick={ handleClick }
                 {...slots.image}
               />
-            </TouchableOpacity>
+            )}
           </Box>
+        )}
         </Stack>
 				<Stack direction="row" spacing={1} sx={sx.contentArea}>
 					<Stack direction="column" sx={sx.content}>
@@ -114,24 +131,26 @@ const sx = {
 	container: {
 		width: '100%',
 	},
-	image: {
-		pr: {
-			sm: 2,
-			xs: 0,
-		},
-		mr: {
-			sm: 2,
-			xs: 0,
-		},
+	image: {		
 		width: {
-			sm: 220,
+			sm: 180,
 			xs: '100%',
 		},
 		minWidth: {
-			sm: 220,
+			sm: 180,
 			xs: '100%',
 		},
+    mr: {
+      sm: 2,
+      xs: 0
+    },
 		height: '100%',
+    display: 'flex',
+    justifyContent: {
+      xs: 'center',
+      sm: 'flex-start',
+    },
+    alignItems: 'center',
 	},
 	contentArea: {
 		width: '100%',

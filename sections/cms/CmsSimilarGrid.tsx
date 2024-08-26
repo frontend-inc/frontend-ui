@@ -1,12 +1,11 @@
 import React from 'react'
-import { Section, Heading } from '../../components'
-import { VideoGrid } from '../../components'
-import { VideoGridProps } from '../../components/cms/collections/VideoGrid'
-import { SectionProps, HeadingProps, FormProps } from '../../types'
+import { Section, Heading, SimilarGrid } from '../../components'
+import { CollectionListProps } from '../../components/cms/collections/CollectionList'
+import { SectionProps, HeadingProps } from '../../types'
 
-type CmsVideosProps = SectionProps & HeadingProps & VideoGridProps & FormProps
+type CmsListProps = SectionProps & HeadingProps & CollectionListProps
 
-const CmsVideos: React.FC<CmsVideosProps> = (props) => {
+const CmsSimilarGrid: React.FC<CmsListProps> = (props) => {
 	const {
 		label,
 		title,
@@ -38,9 +37,9 @@ const CmsVideos: React.FC<CmsVideosProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<VideoGrid {...rest} />
+			<SimilarGrid {...rest} />
 		</Section>
 	)
 }
 
-export default CmsVideos
+export default CmsSimilarGrid
