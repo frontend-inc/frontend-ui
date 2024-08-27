@@ -27,10 +27,10 @@ const DataReferenceForm: React.FC<DataReferenceFormProps> = (props) => {
       <RemoteAutosuggest        
         errors={errors}
         name={"id"}
-        label="Add"
+        label="Select"
         value={resource?.id}
         displayField="title"
-        direction={"row"}
+        direction={"column"}
         url={url}
         placeholder={"Select"}
         handleChange={handleChange}

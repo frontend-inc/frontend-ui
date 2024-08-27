@@ -11,6 +11,7 @@ export { default as DataToolbar } from '../data/DataToolbar'
 export { default as DataLayout } from '../data/DataLayout'
 export { default as DataReferences } from '../data/DataReferences'
 export { default as DataReferenceForm } from '../data/DataReferenceForm'
+export { default as DataSelectedToolbar } from '../data/DataSelectedToolbar'
 export { default as SortableDataListItems } from './SortableDataListItems'
 
 // Toolbar Modal

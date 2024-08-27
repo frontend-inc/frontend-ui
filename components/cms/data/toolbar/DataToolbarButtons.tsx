@@ -1,12 +1,10 @@
 import React from 'react'
-import { Stack, Button } from '@mui/material'
+import { Stack } from '@mui/material'
 import { useResourceContext } from 'frontend-js'
 import { ResourceButtonType } from '../../../../types'
 import DataButton from './DataButton'
 
 type ResourceToolbarButtonsProps = {
-  selected?: any[]
-  selectedIds?: number[] | string[]
   buttons: ResourceButtonType[]  
 }
 

@@ -11,7 +11,7 @@ export type DataListItemsProps = {
 	enableShow?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
-  enableAddReference?: boolean
+  enableAddToList?: boolean
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
 	handleClick?: (resource: any) => void
@@ -32,8 +32,6 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 		resources,
 		page,
 		numPages,
-		query = {},
-		setQuery,		
     loadMore,    
     selectedIds,
     handleSelect 
@@ -45,7 +43,7 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 		enableShow,
 		enableEdit,
 		enableDelete,
-    enableAddReference,
+    enableAddToList,
 		handleClick,
 		pagination: Pagination = LoadMore,
 		component: Component = DataItem,
@@ -87,13 +85,13 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 					enableShow={enableShow}
 					enableEdit={enableEdit}
 					enableDelete={enableDelete}
-          enableAddReference={enableAddReference}
+          enableAddToList={enableAddToList}
 					handleEdit={enableEdit ? () => handleEdit(resource) : undefined}
 					handleDelete={
 						enableDelete ? () => handleDeleteClick(resource) : undefined
 					}
           handleAddReference={ 
-            enableAddReference ? () => handleAddReference(resource) : undefined            
+            enableAddToList ? () => handleAddReference(resource) : undefined            
           }
 					{...slots.item}
 				/>

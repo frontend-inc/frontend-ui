@@ -32,26 +32,27 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 
 	return (
 		<Box sx={sx.root} {...slots.item}>
+      <Stack direction="row" alignItems='center' spacing={0} width='100%'>
+        { selectable && (
+          <Checkbox 
+            checked={selected}
+            onChange={handleSelect}
+            color="primary"
+          />
+        )}
+        { sortable && (
+          <Icon 
+            name="GripVertical"
+            color='text.secondary'
+          />
+        )}
 			<Stack
 				sx={sx.container}
 				spacing={1}
 				flexDirection={{ xs: 'column', sm: 'row' }}
 			>
         <Stack direction="row" alignItems='flex-start' spacing={0}>
-          { selectable && (
-            <Checkbox 
-              checked={selected}
-              onChange={handleSelect}
-              color="primary"
-              size="small"
-            />
-          )}
-          { sortable && (
-            <Icon 
-              name="GripVertical"
-              color='text.secondary'
-            />
-          )}
+          
           { !disableImage && (
             <Box sx={sx.image}>
               { circular ? (
@@ -95,7 +96,8 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 					</Stack>
 				</Stack>
 			</Stack>
-		</Box>
+    </Stack>
+	</Box>
 	)
 }
 

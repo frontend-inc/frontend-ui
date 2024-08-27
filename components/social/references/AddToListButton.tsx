@@ -3,13 +3,13 @@ import { useResourceContext } from 'frontend-js'
 import { Box, IconButton } from '@mui/material'
 import { PlaylistAdd } from '@mui/icons-material'
 
-type ReferenceButtonProps = {
+type AddToListProps = {
   variant?: 'icon' | 'button'
 	resource: any
 	color?: string
 }
 
-const ReferenceButton: React.FC<ReferenceButtonProps> = (props) => {
+const AddToList: React.FC<AddToListProps> = (props) => {
 	const { variant = 'icon', resource, color = 'text.secondary' } = props
 
 	const { openReferences, setOpenReferences, setResource } = useResourceContext()
@@ -37,7 +37,7 @@ const ReferenceButton: React.FC<ReferenceButtonProps> = (props) => {
 	)
 }
 
-export default ReferenceButton
+export default AddToList
 
 const sx = {
 	icon: {},

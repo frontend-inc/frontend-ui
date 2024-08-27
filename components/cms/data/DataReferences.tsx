@@ -14,7 +14,7 @@ const DataReferences: React.FC<DataReferencesProps> = (props) => {
   const { url, query={} } = props || {}
 
   const {    
-    resource,
+    selectedIds,
     openReferences,
     setOpenReferences,
   } = useResourceContext()
@@ -32,7 +32,7 @@ const DataReferences: React.FC<DataReferencesProps> = (props) => {
 
   const handleSubmit = async () => {
     if(parentResource?.id){
-      await addReferences(parentResource?.id, [resource?.id])
+      await addReferences(parentResource?.id, selectedIds)
       setOpenReferences(false)
     }    
   }
@@ -42,7 +42,7 @@ const DataReferences: React.FC<DataReferencesProps> = (props) => {
       loading={loading}
 			open={openReferences}
 			handleClose={() => setOpenReferences(false)}      
-			title={ resource?.title }
+			title="Add"
       maxWidth="sm"      
 			buttons={
 				<Button

@@ -16,11 +16,13 @@ import {
 	CollectionForm,
 	CollectionDelete,
 	CollectionEmpty,
-  CollectionReferences
+  CollectionReferences,
+  CollectionToolbarModal
 } from '../..'
 
 export type CollectionListProps = {
   grid?: boolean
+  selectable?: boolean
 	style: string
 	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
@@ -36,7 +38,7 @@ export type CollectionListProps = {
 	enableEdit?: boolean  
 	enableCreate?: boolean
 	enableDelete?: boolean
-  enableAddReference?: boolean
+  enableAddToList?: boolean
 	fields?: FormFieldType[]
 	headers?: {
 		label: string
@@ -52,6 +54,7 @@ export type CollectionListProps = {
 	list: React.FC<any>
   component?: React.FC<any>
 	toolbar?: React.FC<any>
+  toolbarModal?: React.FC<any>
 	show?: React.FC<any>
 	edit?: React.FC<any>
 	create?: React.FC<any>
@@ -84,6 +87,7 @@ export type CollectionListProps = {
 const CollectionList: React.FC<CollectionListProps> = (props) => {
 	const {
     grid = false,
+    selectable = false,
 		url,
     foreignUrl,
 		query,
@@ -112,7 +116,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		enableEdit,
 		enableCreate,
 		enableDelete,
-    enableAddReference,
+    enableAddToList,
 		fields = [],
 
 		enableSearch,
@@ -129,6 +133,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		create: Create = CollectionForm,
 		destroy: Destroy = CollectionDelete,
 		empty: Empty = CollectionEmpty,
+    toolbarModal: ToolbarModal = CollectionToolbarModal,
     references: References = CollectionReferences,
 		slots: defaultSlots = {
 			toolbar: {},
@@ -158,11 +163,12 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
       ...defaultSlots.list,
 			headers,
       style,
+      selectable,
       enableLikes,
 			enableFavorites,
 			enableRatings,
 			enableComments,
-      enableAddReference,
+      enableAddToList,
 			enableUsers,
 			enableGradient,
 			enableOverlay,
@@ -175,7 +181,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			enableFavorites,
 			enableRatings,
 			enableComments,
-      enableAddReference,
+      enableAddToList,
 			enableUsers,
 			enableGradient,
 			enableOverlay,			
@@ -195,6 +201,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
       ...defaultSlots.item,
       circular,
       disableImage,
+      selectable,
       style,
 			buttons,
 			displayFields,
@@ -202,7 +209,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			enableFavorites,
 			enableRatings,
 			enableComments,
-      enableAddReference,
+      enableAddToList,
 			enableUsers,
 			enableGradient,
 			enableOverlay,      
@@ -221,7 +228,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			enableShow={enableShow}
 			enableCreate={enableCreate}
 			enableEdit={enableEdit}
-      enableAddReference={enableAddReference}
+      enableAddToList={enableAddToList}
 			enableDelete={enableDelete}
 			enableSearch={enableSearch}
 			enableFilters={enableFilters}
@@ -229,6 +236,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			filterOptions={filterOptions}
 			sortOptions={sortOptions}
 			toolbar={Toolbar}
+      toolbarModal={ ToolbarModal }
 			list={List}
       component={Component}
 			show={Show}

@@ -10,6 +10,7 @@ import { ButtonType, DisplayFieldType } from '../../../types'
 
 export type CollectionListItemsProps = {
   grid?: boolean
+  selectable?: boolean
 	href?: string
 	style?: 'list' | 'card' | 'avatar' | 'cover' | 'text'
 	buttons: ButtonType[]
@@ -17,6 +18,7 @@ export type CollectionListItemsProps = {
 	handleClick?: (resource: any) => void
 	enableGradient?: boolean
 	enableOverlay?: boolean
+  enableAddToList?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
 	enableComments?: boolean
@@ -46,6 +48,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 	} = useResourceContext()
 
 	const {
+    selectable = false,
     grid = false,
 		buttons = [],
 		style = 'list',
@@ -54,6 +57,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		displayFields = [],
 		enableGradient = false,
 		enableOverlay = false,
+    enableAddToList = false,
 		enableEdit = false,
 		enableDelete = false,
 		enableFavorites = false,
@@ -100,6 +104,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
           <CollectionListItem             
             key={index}
             style={style}
+            selectable={selectable}
             resource={resource}
             displayFields={displayFields}
             handleClick={() => handleShowClick(resource)}
@@ -113,6 +118,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
             enableFavorites={enableFavorites}
             enableLikes={enableLikes}
             enableRatings={enableRatings}
+            enableAddToList={enableAddToList}
             enableGradient={enableGradient}
             enableOverlay={enableOverlay}
             { ...slots.item }

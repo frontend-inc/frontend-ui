@@ -25,7 +25,8 @@ const useForms = (params?: FormParams) => {
 		update,
 		destroy,
 		handleChange,
-		removeAttachment,        
+		removeAttachment, 
+    reloadMany,       
 		openEdit,
 		openDelete,
     openShow,    
@@ -35,17 +36,6 @@ const useForms = (params?: FormParams) => {
     setOpenShow,
     setOpenReferences,
 	} = useResourceContext()
-
-	const reloadMany = async () => {
-		if (parentResource?.id) {
-			findMany({
-				...query,
-				belongs_to: parentResource?.id,
-			})
-		} else {
-			findMany(query)
-		}
-	}
 
   const handleShow = (resource: any) => {
     setResource(resource)

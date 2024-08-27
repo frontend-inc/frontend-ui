@@ -32,7 +32,7 @@ export type ShowProps = {
 	enableSharing?: boolean
 	enableRatings?: boolean
 	enablePayments?: boolean
-  enableAddReference?: boolean
+  enableAddToList?: boolean
 	enableUsers?: boolean
   enableGradient?: boolean
 	enableOverlay?: boolean
@@ -66,7 +66,7 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 		enableLikes,
 		enableSharing,
 		enableRatings,
-    enableAddReference,
+    enableAddToList,
 		enablePayments,
     enableGradient,
     enableOverlay,
@@ -172,7 +172,7 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
           enableLikes={enableLikes}
           enableFavorites={enableFavorites}
           enableSharing={enableSharing}
-          enableAddReference={enableAddReference}
+          enableAddToList={enableAddToList}
         />        
       }
       secondaryAction={

@@ -8,6 +8,7 @@ import {
 	TextCard,
 	TableCard,
 } from '../..'
+import { useResourceContext } from 'frontend-js'
 import { SecondaryFields, SocialButtons, ButtonActions } from '../..'
 import { ButtonType, DisplayFieldType } from '../../../types'
 import { Box } from '@mui/material'
@@ -16,6 +17,7 @@ import { buildActions } from '../../../helpers'
 type CardStyleTypes = 'list' | 'avatar' | 'card' | 'cover' | 'text'
 
 type CollectionListItemProps = {
+  selectable?: boolean
 	buttons: ButtonType[]
 	style: CardStyleTypes
 	displayFields: DisplayFieldType[]
@@ -40,14 +42,20 @@ type CollectionListItemProps = {
 	enableUsers?: boolean
 	enableComments?: boolean
 	enableFavorites?: boolean
-  enableAddReference?: boolean
+  enableAddToList?: boolean
 	enableLikes?: boolean
 	enableRatings?: boolean
 }
 
 const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 	
+  const { 
+    selectedIds,
+    handleSelect 
+  } = useResourceContext()
+
   const {
+    selectable,
 		buttons,
 		resource,
 		displayFields = [],
@@ -61,7 +69,7 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 		enableOverlay = false,
 		enableComments = false,
 		enableFavorites = false,
-    enableAddReference = false,
+    enableAddToList = false,
 		enableLikes = false,
 		enableRatings = false,
 		enableUsers = false,
@@ -79,22 +87,13 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 		list: ListCard,
 	}
 
-	const itemProps =
-		{
-			card: {},
-			avatar: {},
-			cover: {},
-			chip: {},
-			table: {},
-			text: {},
-			list: {},
-		}[style] || {}
-
 	let Component = COMPONENTS[style] || Card
 
-	return (
+  return (
 		<Component
-			{...rest}
+      selectable={ selectable }
+      selected={ selectedIds?.includes(resource?.id) }
+      handleSelect={() => handleSelect(resource)}
 			label={resource?.label}
 			image={resource?.image?.url}
 			primary={resource?.title}
@@ -116,7 +115,7 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 						enableLikes={enableLikes}
 						enableFavorites={enableFavorites}
 						enableComments={enableComments}
-            enableAddReference={enableAddReference}
+            enableAddToList={enableAddToList}
 					/>
 				</Box>
 			}
@@ -139,7 +138,6 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 					enableOverlay,
 				},
 			}}
-			{...itemProps}
 		/>
 	)
 }

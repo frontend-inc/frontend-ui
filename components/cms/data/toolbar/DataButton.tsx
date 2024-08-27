@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from '@mui/material'
+import { Icon } from '../../../../components'
 import { ResourceButtonType } from '../../../../types'
 
 export type DataButtonProps = {
@@ -15,6 +16,7 @@ const DataButton: React.FC<DataButtonProps> = (props) => {
     onClick,
     variant = 'contained',
     label = 'Click me',
+    icon,
     color = 'primary',
   } = button || {}
 
@@ -24,6 +26,14 @@ const DataButton: React.FC<DataButtonProps> = (props) => {
       color={ color }
       onClick={
         selected ? () => onClick(selected) : undefined 
+      }
+      startIcon={ 
+        icon && 
+        <Icon 
+          name={icon}
+          size={ 20 }
+          color='text.primary'
+        />        
       }
     >
       { label }

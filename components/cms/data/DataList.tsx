@@ -9,7 +9,7 @@ import {
 	DataShow,
 	DataEmpty, 
   DataReferences,
-  DataToolbarModal
+  DataSelectedToolbar
 } from '../..'
 import { ResourceProvider } from 'frontend-js'
 import {
@@ -39,7 +39,7 @@ export type DataListProps = {
 	enableCreate?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
-  enableAddReference?: boolean
+  enableAddToList?: boolean
 	enableFilters?: boolean
 	enableSorting?: boolean
 	perPage?: number
@@ -96,7 +96,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 		enableCreate,
 		enableEdit,
 		enableDelete,
-    enableAddReference,
+    enableAddToList,
 		enableFilters,
 		enableSorting,
 		href,
@@ -113,7 +113,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 		emptyDescription,
     buttons = [],
 		toolbar: Toolbar = DataToolbar,
-    toolbarModal: ToolbarModal = DataToolbarModal,
+    toolbarModal: ToolbarModal = DataSelectedToolbar,
 		list: List = DataListItems,
 		component: Component = DataItem,
 		show: Show = DataShow,
@@ -141,10 +141,10 @@ const DataList: React.FC<DataListProps> = (props) => {
 					sortOptions={sortOptions}
 					{...slots.toolbar}
 				/>
-        <DataToolbarModal 
-          buttons={ buttons }
+        <ToolbarModal 
           { ...slots.toolbarModal }
-        />
+          buttons={ buttons }
+        />         
         <List
           {...rest}
           grid={grid}
@@ -152,14 +152,8 @@ const DataList: React.FC<DataListProps> = (props) => {
           href={href}
           enableEdit={enableEdit}
           enableDelete={enableDelete}
-          enableAddReference={enableAddReference}
+          enableAddToList={enableAddToList}
           component={Component}
-          slots={{            
-            item: {
-              ...slots.item,
-              selectable
-            }
-          }}
           { ...slots.list }
         />
 				<Edit fields={fields} parentResource={resource} {...slots.edit} />
