@@ -5,9 +5,19 @@ import {
   DataUpdateManyButton 
 } from '../../../components'
 import { useResourceContext } from 'frontend-js'
-import { ResourceButtonType } from '../../../types'
+import { ResourceButtonType, ToolbarButtonType } from '../../../types'
 
-const CollectionToolbarModal: React.FC = () => {
+type CollectionToolbarModalProps = {
+  enableAddToList?: boolean
+  toolbarButtons?: ToolbarButtonType[]
+}
+
+const CollectionToolbarModal: React.FC<CollectionToolbarModalProps> = (props) => {
+
+  const { 
+    enableAddToList,
+    toolbarButtons=[]
+  } = props || {}
 
   const { setOpenReferences } = useResourceContext()
 
@@ -15,31 +25,37 @@ const CollectionToolbarModal: React.FC = () => {
     setOpenReferences(true)
   }
 
-  const buttons: ResourceButtonType[] = [
-    {
+  const buttons: ResourceButtonType[] = []
+
+  if(enableAddToList){
+    buttons.push({
       label: 'Add to List',
       icon: 'ListPlus',
       color: 'secondary',
       variant: 'contained',
       onClick: handleAddReference
-    }
-  ]  
+    })
+  }
 
   return(
     <DataToolbarModal>
       <DataToolbarButtons 
         buttons={ buttons }
       />
-      <DataUpdateManyButton 
-        buttonText="Update Tags"
-        fields={[
-          {
-            label: 'Tags',
-            name: 'tags',
-            variant: 'array'
-          }
-        ]}
-      />
+      { toolbarButtons?.map((button, index) => (
+        <DataUpdateManyButton 
+          key={ index }
+          buttonText={ button?.buttonText }
+          fields={[
+            {
+              icon: button.icon,
+              label: button.label,
+              name: button.name,
+              variant: button.variant 
+            }
+          ]}
+        />
+      ))}      
     </DataToolbarModal>
   )
 }

@@ -96,8 +96,6 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
     await loadMore()    
 	}
 
-  console.log("selectable", selectable, slots)
-
 	return (
     <Stack direction="column" spacing={2}>
       <DataLayout { ...slots.list } grid={grid} loading={loading}>

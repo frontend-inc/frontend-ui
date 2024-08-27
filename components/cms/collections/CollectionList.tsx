@@ -7,6 +7,7 @@ import {
 	FormFieldType,
 	SearchFilterOptionType,
 	SortOptionType,
+  ToolbarButtonType
 } from '../../../types'
 import {
   CollectionListItem,
@@ -40,6 +41,7 @@ export type CollectionListProps = {
 	enableDelete?: boolean
   enableAddToList?: boolean
 	fields?: FormFieldType[]
+  toolbarButtons?: ToolbarButtonType[]
 	headers?: {
 		label: string
 		value: string
@@ -63,6 +65,7 @@ export type CollectionListProps = {
   references?: React.FC<any>
 	slots?: {
 		toolbar?: any
+    toolbarModal?: any
 		list?: any
 		show?: any
 		edit?: any
@@ -118,7 +121,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		enableDelete,
     enableAddToList,
 		fields = [],
-
+    toolbarButtons = [],
 		enableSearch,
 		enableFilters,
 		enableSorting,
@@ -136,7 +139,8 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
     toolbarModal: ToolbarModal = CollectionToolbarModal,
     references: References = CollectionReferencesModal,
 		slots: defaultSlots = {
-			toolbar: {},
+			toolbar: {},      
+      toolbarModal: {},
 			list: {},
       item: {},
 			show: {},
@@ -196,6 +200,11 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		},
 		destroy: defaultSlots.destroy,
 		toolbar: defaultSlots.toolbar,
+    toolbarModal: {
+      ...defaultSlots.toolbarModal,
+      enableAddToList,
+      toolbarButtons
+    },
 		empty: defaultSlots.empty,
     item: {
       ...defaultSlots.item,

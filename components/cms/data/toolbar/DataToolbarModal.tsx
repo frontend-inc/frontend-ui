@@ -35,15 +35,17 @@ const DataToolbarModal: React.FC<DataToolbarModalProps> = (props) => {
           width="100%"
         >            
           <Stack direction="row" spacing={1}>
+            <Box display='flex' alignItems='center'>
+              <IconButton 
+                onClick={ handleClose }
+                sx={ sx.closeButton }
+              >
+                <Icon name="X" size={18} />
+              </IconButton>
+            </Box>
             { children }
           </Stack>
-          <Box sx={ sx.iconButton}>
-            <IconButton 
-              onClick={ handleClose }
-            >
-              <Icon name="X" size={20} />
-            </IconButton>
-          </Box>   
+          
         </Stack>
       </Paper>
     </Collapse>
@@ -63,5 +65,8 @@ const sx = {
   iconButton: {
     width: '40px',
     height: '40px',        
+  },
+  closeButton: {
+    bgcolor: 'secondary.light',
   }
 }

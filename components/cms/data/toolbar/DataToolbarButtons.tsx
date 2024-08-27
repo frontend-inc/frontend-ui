@@ -1,7 +1,7 @@
 import React from 'react'
 import { Stack } from '@mui/material'
 import { useResourceContext } from 'frontend-js'
-import { ResourceButtonType } from '../../../../types'
+import { ResourceButtonType, ToolbarButtonType } from '../../../../types'
 import DataButton from './DataButton'
 
 type ResourceToolbarButtonsProps = {

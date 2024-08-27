@@ -111,7 +111,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 		emptyIcon,
 		emptyTitle,
 		emptyDescription,
-    buttons = [],
+    buttons = [],    
 		toolbar: Toolbar = DataToolbar,
     toolbarModal: ToolbarModal = DataSelectedToolbar,
 		list: List = DataListItems,
