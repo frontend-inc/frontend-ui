@@ -44,7 +44,10 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		page,
 		numPages,
     loadMore,
+    query,
+    findMany,
 		setOpenShow,
+    setInfiniteLoad,
 	} = useResourceContext()
 
 	const {
@@ -94,7 +97,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
   } = useForms()
 
 	const handlePaginate = async () => {
-		await loadMore()
+    await loadMore()    
 	}
 
 	return (
