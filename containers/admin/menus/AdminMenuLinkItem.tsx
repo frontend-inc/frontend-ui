@@ -1,8 +1,8 @@
 import React from 'react'
 import { ResourceListItem } from '../../../components'
-import { ResourceProps } from '../../../components/cms/resources/ResourceItem'
+import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
 
-const AdminMenuLinkItem: React.FC<ResourceProps> = (props) => {
+const AdminMenuLinkItem: React.FC<ResourceItemProps> = (props) => {
 	const {
 		resource: link,
 		sortable,

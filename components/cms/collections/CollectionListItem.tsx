@@ -13,7 +13,7 @@ import { ButtonType, DisplayFieldType } from '../../../types'
 import { Box } from '@mui/material'
 import { buildActions } from '../../../helpers'
 
-type CardStyleTypes = 'list' | 'avatar' | 'cover' | 'table' | 'text'
+type CardStyleTypes = 'list' | 'avatar' | 'card' | 'cover' | 'text'
 
 type CollectionListItemProps = {
 	buttons: ButtonType[]

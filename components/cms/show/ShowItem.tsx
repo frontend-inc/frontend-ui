@@ -24,7 +24,6 @@ export type ShowProps = {
 	handle?: string
 	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]	
-	url?: string
 	resource: any
 	enableEdit?: boolean
 	enableCreate?: boolean
@@ -48,9 +47,9 @@ type ShowStyleTypes =
   'snippet'
 
 export type ShowItemProps = ShowProps & {
-	url: string
+  url?: string
 	style: ShowStyleTypes
-  slots: {
+  slots?: {
     image?: any
     content?: any
   }

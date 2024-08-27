@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import { Comments, Drawer, Modal, ShowSnippet } from '../..'
+import { Comments, Drawer, ShowItem } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { ButtonType, FormFieldType, DisplayFieldType } from '../../../types'
 
@@ -48,7 +48,8 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 			handleClose={() => setOpenShow(false)}
 			title={resource?.title}
 		>
-			<ShowSnippet
+			<ShowItem
+        style="snippet"
 				resource={resource}
 				enableEdit={enableEdit}
 				buttons={buttons}
