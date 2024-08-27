@@ -1,26 +1,17 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import { SecondaryFields, SocialButtons } from '../../../components'
-import { KanBanCard } from '../../../components'
-import { CardProps } from '../../../types'
-import { ButtonActions } from '../../../components'
+import { SecondaryFields, SocialButtons } from '../..'
+import { KanBanCard } from '../..'
+import { ButtonActions } from '../..'
 import { buildActions } from '../../../helpers'
+import { KanBanCardProps } from './CollectionKanBanCard'
 
-export type KanBanCardProps = CardProps & {
-	id: string
-	loading?: boolean
-	ref?: any
-	attributes?: any
-	listeners?: any
-	enableDragging?: boolean
-}
-
-const CollectionKanBanCard: React.FC<KanBanCardProps> = (props) => {
+const ReferenceCollectionKanBanCard: React.FC<KanBanCardProps> = (props) => {
 	const {
 		loading,
 		buttons,
-		resource,
-		displayFields = [],		
+		resource: reference,
+		displayFields = [],
 		handleClick,
 		enableGradient,
 		enableOverlay,
@@ -36,9 +27,11 @@ const CollectionKanBanCard: React.FC<KanBanCardProps> = (props) => {
 		enableUsers,
 	} = props || {}
 
+  const resource = reference?.target 
+
 	return (
 		<KanBanCard
-			id={resource?.id}
+			id={reference?.id}
 			primary={resource?.title}
 			enableDragging={enableDragging}
 			loading={loading}
@@ -86,4 +79,4 @@ const CollectionKanBanCard: React.FC<KanBanCardProps> = (props) => {
 	)
 }
 
-export default CollectionKanBanCard
+export default ReferenceCollectionKanBanCard

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { CollectionListProps } from '../collections/CollectionList'
-import { CollectionKanBanCard, KanBanBoard } from '../../../components'
+import { ReferenceCollectionKanBanCard, KanBanBoard } from '../../../components'
 import { ResourceContext } from 'frontend-js'
 import { useResourceContext, changeDocumentValue } from 'frontend-js'
 import { useForms } from '../../../hooks'
@@ -16,7 +16,7 @@ export type KanBanListItemsProps = CollectionListProps & {
 	enableCreate?: boolean
 }
 
-const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
+const ReferenceKanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 	const {
 		headers,
 		displayFields = [],
@@ -31,11 +31,11 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 		enableSharing,
 		enableUsers,
 		enableGradient,
-		enableOverlay,  
+		enableOverlay,    
     slots: defaultSlots = {
       item: {},
       list: {},
-    },  
+    },
 		...rest
 	} = props
 
@@ -45,13 +45,15 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 		loading,
 		resources,
 		update,
+    updateMany,
 		updatePositions,
 		setResource,
 		reloadMany,
 		setOpenShow,
 	} = useResourceContext()
 
-	const handleClick = (resource) => {
+	const handleClick = (reference) => {
+    const resource = reference?.target
 		setResource(resource)
 		setOpenShow(true)
 	}
@@ -70,7 +72,7 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 	const handleDrop = async (movedItem, value, columns) => {
 		setResource(null)
 		let movedDocument = changeDocumentValue(movedItem, fieldName, value)
-		await update(movedDocument)
+    await updateMany([movedDocument?.id], { [fieldName]: value } )
 
 		let columnItems = Object.keys(columns).map((key) => columns[key])
 		columnItems = columnItems.reduce((acc, val) => acc.concat(val), [])
@@ -81,7 +83,6 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 			}
 		})
 		updatePositions(columnItems)
-		//await reloadMany()
 	}
 
 	const [columns, setColumns] = useState({})
@@ -115,7 +116,7 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 			enableRatings,
       ...defaultSlots.list,
 		},
-		item: {
+		item: {      
 			enableOverlay,
 			enableGradient,
 			buttons,
@@ -141,11 +142,11 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 			enableCreate={enableCreate}
 			handleEdit={handleEdit}
 			handleDelete={handleDeleteClick}
-			handleAdd={handleAdd}
-			slots={slots}
-			component={ CollectionKanBanCard }
+			handleAdd={handleAdd}			
+			component={ ReferenceCollectionKanBanCard }
+      slots={slots}
 		/>
 	)
 }
 
-export default KanBanListItems
+export default ReferenceKanBanListItems

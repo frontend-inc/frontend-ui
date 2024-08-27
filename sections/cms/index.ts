@@ -24,6 +24,7 @@ export { default as CmsStatistics } from './CmsStatistics'
 // Sortable 
 export { default as CmsReferenceList } from './CmsReferenceList'
 export { default as CmsReferenceGrid } from './CmsReferenceGrid'
+export { default as CmsReferenceKanBan } from './CmsReferenceKanBan'
 export { default as CmsSortableList } from './CmsSortableList'
 export { default as CmsSortableReferenceList } from './CmsSortableReferenceList'
 

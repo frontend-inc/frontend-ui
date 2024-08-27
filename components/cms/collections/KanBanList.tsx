@@ -13,7 +13,11 @@ export type KanBanListProps = CollectionListProps & {
 
 const KanBanList: React.FC<KanBanListProps> = (props) => {
 	return (
-		<CollectionList {...props} enableSorting={false} list={KanBanListItems} />
+		<CollectionList 
+      {...props} 
+      enableSorting={false} 
+      list={KanBanListItems} 
+    />
 	)
 }
 

@@ -11,7 +11,7 @@ import { ButtonType, DisplayFieldType } from '../../../types'
 export type CollectionListItemsProps = {
   grid?: boolean
 	href?: string
-	style?: 'list' | 'card' | 'avatar' | 'cover' | 'table' | 'text'
+	style?: 'list' | 'card' | 'avatar' | 'cover' | 'text'
 	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
 	handleClick?: (resource: any) => void

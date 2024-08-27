@@ -10,7 +10,8 @@ import { ButtonType, DisplayFieldType } from '../../../types'
 
 export type ReferenceCollectionListItemsProps = {
 	href?: string
-	style?: 'list' | 'card' | 'avatar' | 'cover' | 'table' | 'text'
+  grid?: boolean
+	style?: 'list' | 'avatar' | 'cover' | 'table' | 'text'
 	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
 	handleClick?: (resource: any) => void
@@ -40,12 +41,12 @@ const ReferenceCollectionListItems: React.FC<ReferenceCollectionListItemsProps> 
 		resources: references,
 		page,
 		numPages,
-		query = {},
-		setQuery,
+		loadMore,
 		setOpenShow,
 	} = useResourceContext()
 
 	const {
+    grid = false,
 		buttons = [],
 		style = 'card',
 		href,
@@ -88,26 +89,8 @@ const ReferenceCollectionListItems: React.FC<ReferenceCollectionListItemsProps> 
     handleDeleteClick 
   } = useForms()
 
-	let grid = false
-
-	const LAYOUTS = {
-		list: false,
-		card: true,
-		avatar: false,
-		cover: true,
-		chip: false,
-		text: false,
-		table: false,
-	}
-
-	grid = LAYOUTS[style]
-
-	const handlePaginate = () => {
-		let perPage = (query?.per_page || 12) + 12
-		setQuery({
-			...query,
-			per_page: perPage,
-		})
+	const handlePaginate = async () => {
+		await loadMore()
 	}
 
 	return (
