@@ -42,7 +42,7 @@ export type SocialFieldType = {
 	name: string
 }
 
-export type ResourceButtonType = {
+export type MultiselectButtonType = {
   color?: 'primary' | 'secondary'
   variant?: 'contained' | 'outlined'
   label: string  

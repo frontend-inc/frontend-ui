@@ -15,7 +15,7 @@ import { ResourceProvider } from 'frontend-js'
 import {
 	FormFieldType,
 	QueryParamsType,
-	ResourceButtonType,
+	MultiselectButtonType,
 	SearchFilterOptionType,
 	SortOptionType,
 } from '../../../types'
@@ -55,7 +55,7 @@ export type DataListProps = {
 	destroy?: React.FC<any>
   references?: React.FC<any>
 	component?: React.FC<any>
-  buttons?: ResourceButtonType[]
+  buttons?: MultiselectButtonType[]
 	slots?: {
 		toolbar?: any
     toolbarModal?: any

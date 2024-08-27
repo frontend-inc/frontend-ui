@@ -1,9 +1,9 @@
 import React from 'react'
 import { Button } from '@mui/material'
-import { ResourceButtonType } from '../../../../types'
+import { MultiselectButtonType } from '../../../../types'
 
 export type ResourceButtonProps = {
-  button: ResourceButtonType
+  button: MultiselectButtonType
   selected: any[]
 }
 

@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Slide } from '@mui/material'
 import { Box, Stack, IconButton } from '@mui/material'
 import { Icon } from '../../..'
 import ResourceToolbarButtons from './ResourceToolbarButtons'
-import { ResourceButtonType } from '../../../../types'
+import { MultiselectButtonType } from '../../../../types'
 
 type ResourceToolbarModalProps = {
   open: boolean
@@ -11,7 +11,7 @@ type ResourceToolbarModalProps = {
   actions: React.ReactNode  
   selected?: any[]
   selectedIds?: number[] | string[]
-  buttons: ResourceButtonType[]
+  buttons: MultiselectButtonType[]
   component?: React.FC<any>    
 }
 

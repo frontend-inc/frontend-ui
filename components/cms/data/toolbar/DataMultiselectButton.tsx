@@ -1,16 +1,17 @@
 import React from 'react'
 import { Button } from '@mui/material'
-import { Icon } from '../../../../components'
-import { ResourceButtonType } from '../../../../types'
+import { Icon } from '../../..'
+import { MultiselectButtonType } from '../../../../types'
+import { useResourceContext } from 'frontend-js'
 
-export type DataButtonProps = {
-  button: ResourceButtonType
-  selected: any[]
+export type DataMultiselectButtonProps = {
+  button: MultiselectButtonType
 }
 
-const DataButton: React.FC<DataButtonProps> = (props) => {
+const DataMultiselectButton: React.FC<DataMultiselectButtonProps> = (props) => {
 
-  const { button, selected=[] } = props || {}
+  const { selected } = useResourceContext()
+  const { button } = props || {}
   
   const { 
     onClick,
@@ -41,4 +42,4 @@ const DataButton: React.FC<DataButtonProps> = (props) => {
   )        
 }
 
-export default DataButton
+export default DataMultiselectButton

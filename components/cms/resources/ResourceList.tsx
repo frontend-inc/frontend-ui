@@ -17,7 +17,7 @@ import ResourceItem from './ResourceItem'
 import ResourceListItems from './ResourceListItems'
 import ResourceToolbar from './ResourceToolbar'
 import ResourceToolbarModal from './toolbar/ResourceToolbarModal'
-import { ResourceButtonType } from '../../../types'
+import { MultiselectButtonType } from '../../../types'
 
 export type ResourceListProps = {
   sortable?: boolean
@@ -57,7 +57,7 @@ export type ResourceListProps = {
 	emptyDescription?: string
 	itemProps?: any
   disableInfiniteLoad?: boolean
-  buttons?: ResourceButtonType[]
+  buttons?: MultiselectButtonType[]
 	slots?: {
 		list?: any
 		edit?: any

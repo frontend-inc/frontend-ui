@@ -1,12 +1,12 @@
 import React from 'react'
 import { Stack, Button } from '@mui/material'
 import ResourceButton from './ResourceButton'
-import { ResourceButtonType } from '../../../../types'
+import { MultiselectButtonType } from '../../../../types'
 
 type ResourceToolbarButtonsProps = {
   selected: any[]
   selectedIds: number[] | string[]
-  buttons: ResourceButtonType[]  
+  buttons: MultiselectButtonType[]  
 }
 
 const ResourceToolbarButtons: React.FC<ResourceToolbarButtonsProps> = (props) => {

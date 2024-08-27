@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
 import { Box, Button } from '@mui/material'
-import { FormFields, Modal } from '../../..'
+import { Icon, FormFields, Modal } from '../../..'
 import { useResourceContext } from 'frontend-js'
 import { FormFieldType } from '../../../../types'
 
-type DataUpdateManyProps = {
+type DataMultiselectUpdateProps = {
   buttonText?: string
+  icon?: string
   fields: FormFieldType[] 
 }
 
-const DataUpdateMany: React.FC<DataUpdateManyProps> = (props) => {
+const DataMultiselectUpdateButton: React.FC<DataMultiselectUpdateProps> = (props) => {
 
   const {
     buttonText='Update',
+    icon,
     fields=[] 
   } = props || {}
 
@@ -43,6 +45,9 @@ const DataUpdateMany: React.FC<DataUpdateManyProps> = (props) => {
         variant='contained'
         color='secondary'
         onClick={() => setOpen(true) }
+        startIcon={ 
+          icon && <Icon name={ icon } size={20} />
+        }
       >
         { buttonText }
       </Button>
@@ -68,4 +73,4 @@ const DataUpdateMany: React.FC<DataUpdateManyProps> = (props) => {
   )
 }
 
-export default DataUpdateMany
+export default DataMultiselectUpdateButton

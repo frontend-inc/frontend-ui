@@ -1,11 +1,11 @@
 import React from 'react'
 import { 
   DataToolbarModal, 
-  DataToolbarButtons,
-  DataUpdateManyButton 
+  DataMultiselectButton,
+  DataMultiselectUpdateButton 
 } from '../../../components'
 import { useResourceContext } from 'frontend-js'
-import { ResourceButtonType, ToolbarButtonType } from '../../../types'
+import { MultiselectButtonType, ToolbarButtonType } from '../../../types'
 
 type CollectionToolbarModalProps = {
   enableAddToList?: boolean
@@ -25,7 +25,7 @@ const CollectionToolbarModal: React.FC<CollectionToolbarModalProps> = (props) =>
     setOpenReferences(true)
   }
 
-  const buttons: ResourceButtonType[] = []
+  const buttons: MultiselectButtonType[] = []
 
   if(enableAddToList){
     buttons.push({
@@ -39,16 +39,19 @@ const CollectionToolbarModal: React.FC<CollectionToolbarModalProps> = (props) =>
 
   return(
     <DataToolbarModal>
-      <DataToolbarButtons 
-        buttons={ buttons }
-      />
-      { toolbarButtons?.map((button, index) => (
-        <DataUpdateManyButton 
+      { buttons.map((button, index) =>  (
+        <DataMultiselectButton 
           key={ index }
+          button={ button }
+        />
+      ))}      
+      { toolbarButtons?.map((button, index) => (
+        <DataMultiselectUpdateButton 
+          key={ index }
+          icon={ button?.icon }
           buttonText={ button?.buttonText }
           fields={[
             {
-              icon: button.icon,
               label: button.label,
               name: button.name,
               variant: button.variant 
