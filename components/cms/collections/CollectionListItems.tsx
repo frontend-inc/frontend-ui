@@ -44,14 +44,11 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		page,
 		numPages,
     loadMore,
-    query,
-    findMany,
 		setOpenShow,
-    setInfiniteLoad,
 	} = useResourceContext()
 
 	const {
-    selectable = false,
+    selectable,
     grid = false,
 		buttons = [],
 		style = 'list',
@@ -69,7 +66,6 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		enableRatings = false,
 		enableComments = false,
     slots={
-      list: {},
       item: {}
     }
 	} = props
@@ -99,6 +95,8 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 	const handlePaginate = async () => {
     await loadMore()    
 	}
+
+  console.log("selectable", selectable, slots)
 
 	return (
     <Stack direction="column" spacing={2}>

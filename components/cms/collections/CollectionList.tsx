@@ -16,7 +16,7 @@ import {
 	CollectionForm,
 	CollectionDelete,
 	CollectionEmpty,
-  CollectionReferences,
+  CollectionReferencesModal,
   CollectionToolbarModal
 } from '../..'
 
@@ -134,7 +134,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		destroy: Destroy = CollectionDelete,
 		empty: Empty = CollectionEmpty,
     toolbarModal: ToolbarModal = CollectionToolbarModal,
-    references: References = CollectionReferences,
+    references: References = CollectionReferencesModal,
 		slots: defaultSlots = {
 			toolbar: {},
 			list: {},
@@ -163,7 +163,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
       ...defaultSlots.list,
 			headers,
       style,
-      selectable,
       enableLikes,
 			enableFavorites,
 			enableRatings,
@@ -175,6 +174,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		},
 		show: {
       ...defaultSlots.show,
+      selectable,
 			displayFields,
 			buttons,
 			enableLikes,
@@ -201,7 +201,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
       ...defaultSlots.item,
       circular,
       disableImage,
-      selectable,
       style,
 			buttons,
 			displayFields,
@@ -219,6 +218,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 
 	return (
 		<DataList
+      selectable={selectable}
       grid={grid} 
 			url={url}
       foreignUrl={foreignUrl}

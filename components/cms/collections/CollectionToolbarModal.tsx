@@ -1,7 +1,8 @@
 import React from 'react'
 import { 
   DataToolbarModal, 
-  DataToolbarButtons 
+  DataToolbarButtons,
+  DataUpdateManyButton 
 } from '../../../components'
 import { useResourceContext } from 'frontend-js'
 import { ResourceButtonType } from '../../../types'
@@ -28,6 +29,16 @@ const CollectionToolbarModal: React.FC = () => {
     <DataToolbarModal>
       <DataToolbarButtons 
         buttons={ buttons }
+      />
+      <DataUpdateManyButton 
+        buttonText="Update Tags"
+        fields={[
+          {
+            label: 'Tags',
+            name: 'tags',
+            variant: 'array'
+          }
+        ]}
       />
     </DataToolbarModal>
   )

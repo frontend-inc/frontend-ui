@@ -8,7 +8,7 @@ import {
 	DataDelete,
 	DataShow,
 	DataEmpty, 
-  DataReferences,
+  DataReferencesModal,
   DataSelectedToolbar
 } from '../..'
 import { ResourceProvider } from 'frontend-js'
@@ -121,7 +121,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 		create: Create = DataForm,
 		destroy: Delete = DataDelete,
 		empty: Empty = DataEmpty,
-    references: References = DataReferences,
+    references: References = DataReferencesModal,
 		slots = SLOT_PROPS,
 		loadMore,
 		...rest
@@ -145,8 +145,7 @@ const DataList: React.FC<DataListProps> = (props) => {
           { ...slots.toolbarModal }
           buttons={ buttons }
         />         
-        <List
-          {...rest}
+        <List    
           grid={grid}
           selectable={selectable}
           href={href}
@@ -154,7 +153,10 @@ const DataList: React.FC<DataListProps> = (props) => {
           enableDelete={enableDelete}
           enableAddToList={enableAddToList}
           component={Component}
-          { ...slots.list }
+          slots={{
+            list: slots.list,
+            item: slots.item
+          }}
         />
 				<Edit fields={fields} parentResource={resource} {...slots.edit} />
 				<Create fields={fields} parentResource={resource} {...slots.create} />

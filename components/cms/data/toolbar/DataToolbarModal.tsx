@@ -34,9 +34,9 @@ const DataToolbarModal: React.FC<DataToolbarModalProps> = (props) => {
           alignItems="center"
           width="100%"
         >            
-          <Box width="100%">
+          <Stack direction="row" spacing={1}>
             { children }
-          </Box>
+          </Stack>
           <Box sx={ sx.iconButton}>
             <IconButton 
               onClick={ handleClose }

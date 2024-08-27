@@ -1,29 +1,39 @@
 import React from 'react'
-import { Box } from '@mui/material'
-import { TextInput, InputLabel } from '../../../components'
+import {
+	Input,
+	FormControl,
+	Typography,
+	Box,
+	InputAdornment,
+} from '@mui/material'
+import { InputLabel } from '../../../components'
 import { SyntheticEventType } from '../../../types'
 
-type NumberRangeInputProps = {
+export type NumberRangeInputProps = {
 	label?: string
 	name: string
 	value?: {
 		min: number
 		max: number
 	}
-	info?: string
 	handleChange: (value: SyntheticEventType) => void
+	currency?: string
+	info?: string
+  startAdornment?: React.ReactNode
 }
 
 const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 	const {
 		value = {
-			min: null,
-			max: null,
+			min: 0,
+			max: 0,
 		},
 		name,
 		label,
 		handleChange,
+		currency = 'usd',
 		info,
+    startAdornment
 	} = props || {}
 
 	const handleMinChange = (ev) => {
@@ -56,20 +66,39 @@ const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 		<Box sx={sx.root}>
 			<InputLabel label={label} info={info} />
 			<Box sx={sx.inputs}>
-				<TextInput
-					type="number"
-					name="min"
-					handleChange={handleMinChange}
-					value={value?.min}
-					placeholder="Min"
-				/>
-				<TextInput
-					type="number"
-					name="max"
-					handleChange={handleMaxChange}
-					value={value?.max}
-					placeholder="Max"
-				/>
+				<FormControl variant="standard">
+					<Input
+						type="number"
+						onChange={handleMinChange}
+						value={value?.min}
+						startAdornment={
+              startAdornment && (
+							<InputAdornment position="start">
+								<Typography color="textPrimary" variant="body2">
+									{currency}
+								</Typography>
+							</InputAdornment>
+              )
+						}
+					/>
+				</FormControl>
+				<Box sx={sx.to}>
+					<Typography variant="body2">to</Typography>
+				</Box>
+				<FormControl variant="standard">
+					<Input
+						type="number"
+						value={value?.max}
+						onChange={handleMaxChange}
+						startAdornment={
+              startAdornment && (
+							<InputAdornment sx={sx.inputAdornment} position="start">
+                { startAdornment }
+							</InputAdornment>
+              )
+						}
+					/>
+				</FormControl>
 			</Box>
 		</Box>
 	)
