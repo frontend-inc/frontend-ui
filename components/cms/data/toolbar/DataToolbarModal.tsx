@@ -1,8 +1,6 @@
 import React from 'react'
 import { Paper, Collapse, Box, Stack, IconButton } from '@mui/material'
 import { Icon } from '../../..'
-import DataToolbarButtons from './DataToolbarButtons'
-import { MultiselectButtonType } from '../../../../types'
 import { useResourceContext } from 'frontend-js'
 
 type DataToolbarModalProps = {

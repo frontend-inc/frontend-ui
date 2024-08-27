@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useQuery } from 'frontend-js'
+import { useResource } from 'frontend-js'
 
 type UseFieldsParams = {
 	url: string
@@ -8,18 +8,20 @@ type UseFieldsParams = {
 const useFields = (props: UseFieldsParams) => {
 	const { url } = props || {}
 
-	const [formFields, setFormFields] = useState([])
-
-	const { resources: dataFormFields } = useQuery({
+	const { 
+    loading,
+    findMany,
+    resources: formFields 
+  } = useResource({
 		url: `${url}/form_fields`,
-		query: {},
+    name: 'field'
 	})
-
+  
 	useEffect(() => {
-		if (dataFormFields) {
-			setFormFields(dataFormFields)
+		if (url) {
+			findMany({})
 		}
-	}, [dataFormFields])
+	}, [url])
 
 	return {
 		formFields,

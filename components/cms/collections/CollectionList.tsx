@@ -16,8 +16,7 @@ import {
 	CollectionShow,
 	CollectionForm,
 	CollectionDelete,
-	CollectionEmpty,
-	CollectionReferencesModal,
+	CollectionEmpty,	
 	CollectionToolbarModal,
 } from '../..'
 
@@ -218,8 +217,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			enableUsers,
 			enableGradient,
 			enableOverlay,
-		},
-		references: defaultSlots.references,
+		}		
 	}
 
 	return (

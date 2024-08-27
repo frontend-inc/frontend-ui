@@ -11,7 +11,7 @@ import { SyntheticEventType } from '../../../types'
 
 export type NumberRangeInputProps = {
 	label?: string
-	name: string
+	name?: string
 	value?: {
 		min: number
 		max: number

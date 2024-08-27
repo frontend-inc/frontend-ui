@@ -3,7 +3,11 @@ import { Typography } from '@mui/material'
 import { NumberRangeInput } from '../../../components'
 import { NumberRangeInputProps } from './NumberRangeInput'
 
-const PriceRangeInput: React.FC<NumberRangeInputProps> = (props) => {
+type PriceRangeInputProps = NumberRangeInputProps & {
+  currency: string
+}
+
+const PriceRangeInput: React.FC<PriceRangeInputProps> = (props) => {
 	const { currency, ...rest } = props || {}
 	return (
 		<NumberRangeInput
