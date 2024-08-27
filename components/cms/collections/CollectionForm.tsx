@@ -2,7 +2,7 @@ import React from 'react'
 import { RemoteFormModal } from '../..'
 import { useResourceContext } from 'frontend-js'
 
-export type CollectionFormProps = {	
+export type CollectionFormProps = {
 	parentResource?: any
 }
 

@@ -33,7 +33,7 @@ const ArrayItemInput: React.FC<ArrayItemInputProps> = (props) => {
 			/>
 			<Box>
 				<IconButton size="small" onClick={() => handleRemove(index)}>
-					<X  />
+					<X />
 				</IconButton>
 			</Box>
 		</Stack>
@@ -97,7 +97,7 @@ const ArrayListInput: React.FC<InputPropsType> = (props) => {
 					variant="contained"
 					color="secondary"
 					onClick={handleAddClick}
-					startIcon={<Plus  />}
+					startIcon={<Plus />}
 				>
 					Add
 				</Button>

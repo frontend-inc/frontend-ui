@@ -40,11 +40,7 @@ const TableFilterButton: React.FC<TableFilterButtonProps> = (props) => {
 						loading ? (
 							<IconLoading color="secondary.contrastText" loading />
 						) : (
-							<Icon
-								name="ListFilter"
-								
-								color="secondary.contrastText"
-							/>
+							<Icon name="ListFilter" color="secondary.contrastText" />
 						)
 					}
 					onClick={handleClick}

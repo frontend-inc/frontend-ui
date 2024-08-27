@@ -7,8 +7,8 @@ import {
 	DataForm,
 	DataDelete,
 	DataShow,
-	DataEmpty, 
-  DataMultiselectToolbar
+	DataEmpty,
+	DataMultiselectToolbar,
 } from '../..'
 import { ResourceProvider } from 'frontend-js'
 import {
@@ -20,11 +20,11 @@ import {
 } from '../../../types'
 
 export type DataListProps = {
-  grid?: boolean
-  selectable?: boolean
-  sortable?: boolean
+	grid?: boolean
+	selectable?: boolean
+	sortable?: boolean
 	url: string
-  foreignUrl?: string
+	foreignUrl?: string
 	name: string
 	query?: QueryParamsType
 	resource?: any
@@ -38,27 +38,27 @@ export type DataListProps = {
 	enableCreate?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
-  enableAddToList?: boolean
+	enableAddToList?: boolean
 	enableFilters?: boolean
 	enableSorting?: boolean
 	perPage?: number
 	loadMore?: boolean
 	list?: React.FC<any>
-  sortableList?: React.FC<any>
+	sortableList?: React.FC<any>
 	toolbar?: React.FC<any>
-  toolbarModal?: React.FC<any>
+	toolbarModal?: React.FC<any>
 	show?: React.FC<any>
 	edit?: React.FC<any>
 	empty?: React.FC<any>
 	create?: React.FC<any>
 	destroy?: React.FC<any>
 	component?: React.FC<any>
-  buttons?: MultiselectButtonType[]
+	buttons?: MultiselectButtonType[]
 	slots?: {
 		toolbar?: any
-    toolbarModal?: any
+		toolbarModal?: any
 		list?: any
-    item?: any
+		item?: any
 		show?: any
 		edit?: any
 		create?: any
@@ -73,9 +73,9 @@ export type DataListProps = {
 const DataList: React.FC<DataListProps> = (props) => {
 	const SLOT_PROPS = {
 		toolbar: {},
-    toolbarModal: {},
+		toolbarModal: {},
 		list: {},
-    item: {},
+		item: {},
 		show: {},
 		edit: {},
 		create: {},
@@ -83,33 +83,33 @@ const DataList: React.FC<DataListProps> = (props) => {
 		empty: {},
 	}
 
-	const {   
-    grid = false,
-    selectable,
+	const {
+		grid = false,
+		selectable,
 		resource,
 		enableSearch,
 		enableShow,
 		enableCreate,
 		enableEdit,
 		enableDelete,
-    enableAddToList,
+		enableAddToList,
 		enableFilters,
 		enableSorting,
 		href,
 		url,
-    foreignUrl,
+		foreignUrl,
 		name,
 		query = {},
-		fields = [],    
+		fields = [],
 		filterOptions = [],
 		sortOptions = [],
 		perPage,
 		emptyIcon,
 		emptyTitle,
 		emptyDescription,
-    buttons = [],    
+		buttons = [],
 		toolbar: Toolbar = DataToolbar,
-    toolbarModal: ToolbarModal = DataMultiselectToolbar,
+		toolbarModal: ToolbarModal = DataMultiselectToolbar,
 		list: List = DataListItems,
 		component: Component = DataItem,
 		show: Show = DataShow,
@@ -123,7 +123,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 	} = props
 
 	return (
-		<ResourceProvider name={name} url={url} foreignUrl={ foreignUrl }>
+		<ResourceProvider name={name} url={url} foreignUrl={foreignUrl}>
 			<DataFetcher query={query}>
 				<Toolbar
 					url={url}
@@ -136,23 +136,20 @@ const DataList: React.FC<DataListProps> = (props) => {
 					sortOptions={sortOptions}
 					{...slots.toolbar}
 				/>
-        <ToolbarModal 
-          { ...slots.toolbarModal }
-          buttons={ buttons }
-        />         
-        <List    
-          grid={grid}
-          selectable={selectable}
-          href={href}
-          enableEdit={enableEdit}
-          enableDelete={enableDelete}
-          enableAddToList={enableAddToList}
-          component={Component}
-          slots={{
-            list: slots.list,
-            item: slots.item
-          }}
-        />
+				<ToolbarModal {...slots.toolbarModal} buttons={buttons} />
+				<List
+					grid={grid}
+					selectable={selectable}
+					href={href}
+					enableEdit={enableEdit}
+					enableDelete={enableDelete}
+					enableAddToList={enableAddToList}
+					component={Component}
+					slots={{
+						list: slots.list,
+						item: slots.item,
+					}}
+				/>
 				<Edit fields={fields} parentResource={resource} {...slots.edit} />
 				<Create fields={fields} parentResource={resource} {...slots.create} />
 				<Empty
@@ -171,7 +168,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 					title={emptyTitle}
 					description={emptyDescription}
 					{...slots.destroy}
-				/>        
+				/>
 			</DataFetcher>
 		</ResourceProvider>
 	)

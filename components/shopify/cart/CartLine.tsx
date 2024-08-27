@@ -120,7 +120,7 @@ const CartLine: React.FC<CartLineProps> = (props) => {
 			}}
 			secondaryAction={
 				<IconButton onClick={handleRemoveLineItem} size="small">
-					<Icon name="X"  />
+					<Icon name="X" />
 				</IconButton>
 			}
 		>

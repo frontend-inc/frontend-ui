@@ -8,13 +8,7 @@ export type ResourceTableProps = ResourceListProps & {
 }
 
 const ResourceTable: React.FC<ResourceTableProps> = (props) => {
-	return(
-    <ResourceList 
-      {...props} 
-      list={TableList} 
-      disableInfiniteLoad
-    />
-  )
+	return <ResourceList {...props} list={TableList} disableInfiniteLoad />
 }
 
 export default ResourceTable

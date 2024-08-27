@@ -210,9 +210,7 @@ const TableFilterForm: React.FC<TableFilterFormProps> = (props) => {
 			</Box>
 			<Button
 				sx={sx.button}
-				startIcon={
-					loading ? <IconLoading loading={loading} /> : <Search  />
-				}
+				startIcon={loading ? <IconLoading loading={loading} /> : <Search />}
 				onClick={handleFilterSearch}
 				fullWidth
 				variant="contained"

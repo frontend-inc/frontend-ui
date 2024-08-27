@@ -11,12 +11,12 @@ export type ResourceItemProps = {
 	handleClick: (resource: any) => void
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
-  handleSelect?: () => void
+	handleSelect?: () => void
 	secondaryActions?: React.ReactNode
 	menuActions?: any
 	sortable?: boolean
-  selectable?: boolean
-  selected?: boolean
+	selectable?: boolean
+	selected?: boolean
 	isDragging?: boolean
 	enableBorder?: boolean
 }
@@ -30,17 +30,17 @@ const ResourceItem: React.FC<ResourceItemProps> = (props) => {
 		handleClick,
 		handleEdit,
 		handleDelete,
-    handleSelect,
+		handleSelect,
 		secondaryActions,
 		menuActions,
 		sortable,
-    selectable,
-    selected,
+		selectable,
+		selected,
 		isDragging = false,
 		enableBorder = false,
 	} = props
 
-  return (
+	return (
 		<ResourceListItem
 			icon={icon}
 			color={color}
@@ -51,12 +51,12 @@ const ResourceItem: React.FC<ResourceItemProps> = (props) => {
 			handleClick={() => handleClick(resource)}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}
-      handleSelect={ handleSelect }
+			handleSelect={handleSelect}
 			menuActions={menuActions}
 			secondaryActions={secondaryActions}
 			sortable={sortable}
-      selectable={selectable}
-      selected={selected}
+			selectable={selectable}
+			selected={selected}
 			isDragging={isDragging}
 			enableBorder={enableBorder}
 		/>

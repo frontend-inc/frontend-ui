@@ -20,16 +20,15 @@ export type SortableDataListItemsProps = {
 }
 
 const SortableDataListItems: React.FC<SortableDataListItemsProps> = (props) => {
-	
-  const {
+	const {
 		loading,
 		resources,
 		page,
 		numPages,
 		query = {},
 		setQuery,
-    updatePositions,
-    reloadMany
+		updatePositions,
+		reloadMany,
 	} = useResourceContext()
 
 	const {
@@ -40,21 +39,17 @@ const SortableDataListItems: React.FC<SortableDataListItemsProps> = (props) => {
 		pagination: Pagination = LoadMore,
 		component: Component = DataItem,
 		slots = {
-      list: {},
-			item: {},			
+			list: {},
+			item: {},
 		},
 	} = props
 
-	const { 
-    handleShow,
-    handleEdit, 
-    handleDeleteClick 
-  } = useForms()
+	const { handleShow, handleEdit, handleDeleteClick } = useForms()
 
 	const handleShowClick = (resource: any) => {
-    if(handleClick){
-      handleClick(resource)
-    }else if (enableShow) {
+		if (handleClick) {
+			handleClick(resource)
+		} else if (enableShow) {
 			handleShow(resource)
 		}
 	}
@@ -67,39 +62,39 @@ const SortableDataListItems: React.FC<SortableDataListItemsProps> = (props) => {
 		})
 	}
 
-  const handleDrop = async (sorted: any) => {
-    await updatePositions(sorted)
-    reloadMany()
-  }
+	const handleDrop = async (sorted: any) => {
+		await updatePositions(sorted)
+		reloadMany()
+	}
 
 	return (
 		<DataLayout {...slots.list} loading={loading}>
-      <SortableList
-        droppableId='sortable'
-        handleDrop={handleDrop}
-        items={resources}
-        renderItem={resource => (
-          <Component            
-            sortable
-            key={ resource?.id }
-            resource={resource}
-            enableShow={enableShow}
-            enableEdit={enableEdit}
-            enableDelete={enableDelete}
-            handleClick={() => handleShowClick(resource)}
-            handleEdit={enableEdit ? () => handleEdit(resource) : undefined}
-            handleDelete={
-              enableDelete ? () => handleDeleteClick(resource) : undefined
-            }       
-            {...slots.item}     
-          />
-        )}          
-      />
-			<Pagination 
-        page={page} 
-        numPages={numPages} 
-        handlePaginate={handlePaginate} 
-      />
+			<SortableList
+				droppableId="sortable"
+				handleDrop={handleDrop}
+				items={resources}
+				renderItem={(resource) => (
+					<Component
+						sortable
+						key={resource?.id}
+						resource={resource}
+						enableShow={enableShow}
+						enableEdit={enableEdit}
+						enableDelete={enableDelete}
+						handleClick={() => handleShowClick(resource)}
+						handleEdit={enableEdit ? () => handleEdit(resource) : undefined}
+						handleDelete={
+							enableDelete ? () => handleDeleteClick(resource) : undefined
+						}
+						{...slots.item}
+					/>
+				)}
+			/>
+			<Pagination
+				page={page}
+				numPages={numPages}
+				handlePaginate={handlePaginate}
+			/>
 		</DataLayout>
 	)
 }

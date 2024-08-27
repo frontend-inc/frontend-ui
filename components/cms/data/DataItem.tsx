@@ -2,16 +2,16 @@ import React from 'react'
 import { DataListItem } from '../..'
 
 type DataItemProps = {
-  sortable?: boolean
-  selectable?: boolean
-  selected?: boolean 
+	sortable?: boolean
+	selectable?: boolean
+	selected?: boolean
 	resource: any
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
 	handleClick?: () => void
 	handleEdit?: () => void
 	handleDelete?: () => void
-  handleSelect?: () => void
+	handleSelect?: () => void
 	slots?: {
 		item?: any
 		image?: any
@@ -22,10 +22,10 @@ type DataItemProps = {
 // into a DataItem UI component
 const DataItem: React.FC<DataItemProps> = (props) => {
 	const {
-    sortable,
-    
-    selectable,
-    selected,
+		sortable,
+
+		selectable,
+		selected,
 
 		resource,
 		actions,
@@ -33,7 +33,7 @@ const DataItem: React.FC<DataItemProps> = (props) => {
 		handleClick,
 		handleEdit,
 		handleDelete,
-    handleSelect,
+		handleSelect,
 		slots = {
 			item: {},
 			image: {},
@@ -44,9 +44,9 @@ const DataItem: React.FC<DataItemProps> = (props) => {
 
 	return (
 		<DataListItem
-      sortable={sortable}
-      selectable={selectable}
-      selected={selected}      
+			sortable={sortable}
+			selectable={selectable}
+			selected={selected}
 			label={label}
 			primary={title}
 			secondary={description}
@@ -56,7 +56,7 @@ const DataItem: React.FC<DataItemProps> = (props) => {
 			handleClick={handleClick}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}
-      handleSelect={handleSelect}
+			handleSelect={handleSelect}
 			slots={slots}
 		/>
 	)

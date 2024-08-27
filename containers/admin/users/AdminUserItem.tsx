@@ -5,24 +5,23 @@ import { ResourceItemProps } from '../../../components/cms/resources/ResourceIte
 import { useAuth } from 'frontend-js'
 
 const AdminUserItem: React.FC<ResourceItemProps> = (props) => {
-	
-  const { 
-    resource: user, 
-    selectable, 
-    selected, 
-    handleClick, 
-    handleEdit, 
-    handleDelete,
-    handleSelect,
-    ...rest 
-  } = props
-	
-  const { currentUser } = useAuth()
+	const {
+		resource: user,
+		selectable,
+		selected,
+		handleClick,
+		handleEdit,
+		handleDelete,
+		handleSelect,
+		...rest
+	} = props
+
+	const { currentUser } = useAuth()
 
 	return (
 		<ResourceListItem
-      selectable={selectable}
-      selected={ selected }
+			selectable={selectable}
+			selected={selected}
 			primary={
 				<Typography variant="body1" color="text.primary">
 					{user?.name} <Label label={user.role} />
@@ -34,8 +33,8 @@ const AdminUserItem: React.FC<ResourceItemProps> = (props) => {
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}
 			handleClick={handleClick}
-      handleSelect={ handleSelect }
-      { ...rest }
+			handleSelect={handleSelect}
+			{...rest}
 		/>
 	)
 }

@@ -9,8 +9,8 @@ import { useForms } from '../../../hooks'
 import { ButtonType, DisplayFieldType } from '../../../types'
 
 export type CollectionListItemsProps = {
-  grid?: boolean
-  selectable?: boolean
+	grid?: boolean
+	selectable?: boolean
 	href?: string
 	style?: 'list' | 'card' | 'avatar' | 'cover' | 'text'
 	buttons: ButtonType[]
@@ -18,7 +18,7 @@ export type CollectionListItemsProps = {
 	handleClick?: (resource: any) => void
 	enableGradient?: boolean
 	enableOverlay?: boolean
-  enableAddToList?: boolean
+	enableAddToList?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
 	enableComments?: boolean
@@ -27,10 +27,10 @@ export type CollectionListItemsProps = {
 	enableRatings?: boolean
 	enableSharing?: boolean
 	enableUsers?: boolean
-  slots?: {
-    list?: any
-    item?: any
-  }
+	slots?: {
+		list?: any
+		item?: any
+	}
 }
 
 const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
@@ -43,21 +43,21 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		resources,
 		page,
 		numPages,
-    loadMore,
+		loadMore,
 		setOpenShow,
 	} = useResourceContext()
 
 	const {
-    selectable,
-    grid = false,
+		selectable,
+		grid = false,
 		buttons = [],
 		style = 'list',
 		href,
-    handleClick,
+		handleClick,
 		displayFields = [],
 		enableGradient = false,
 		enableOverlay = false,
-    enableAddToList = false,
+		enableAddToList = false,
 		enableEdit = false,
 		enableDelete = false,
 		enableFavorites = false,
@@ -65,15 +65,15 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		enableUsers = false,
 		enableRatings = false,
 		enableComments = false,
-    slots={
-      item: {}
-    }
+		slots = {
+			item: {},
+		},
 	} = props
 
 	const handleShowClick = (resource) => {
-    if(handleClick){
-      handleClick(resource)
-    } else if(href) {
+		if (handleClick) {
+			handleClick(resource)
+		} else if (href) {
 			if (clientUrl && href && resource?.handle) {
 				window.scrollTo({
 					top: 0,
@@ -87,49 +87,46 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		}
 	}
 
-	const { 
-    handleEdit, 
-    handleDeleteClick 
-  } = useForms()
+	const { handleEdit, handleDeleteClick } = useForms()
 
 	const handlePaginate = async () => {
-    await loadMore()    
+		await loadMore()
 	}
 
 	return (
-    <Stack direction="column" spacing={2}>
-      <DataLayout { ...slots.list } grid={grid} loading={loading}>
-        {resources?.map((resource, index) => (
-          <CollectionListItem             
-            key={index}
-            style={style}
-            selectable={selectable}
-            resource={resource}
-            displayFields={displayFields}
-            handleClick={() => handleShowClick(resource)}
-            enableEdit={enableEdit}
-            enableDelete={enableDelete}
-            handleEdit={() => handleEdit(resource)}
-            handleDelete={() => handleDeleteClick(resource)}
-            buttons={ buttons }            
-            enableUsers={enableUsers}
-            enableComments={enableComments}
-            enableFavorites={enableFavorites}
-            enableLikes={enableLikes}
-            enableRatings={enableRatings}
-            enableAddToList={enableAddToList}
-            enableGradient={enableGradient}
-            enableOverlay={enableOverlay}
-            { ...slots.item }
-          />
-        ))}
-      </DataLayout>
-      <LoadMore 
-        page={page} 
-        numPages={numPages} 
-        handlePaginate={handlePaginate} 
-      />
-    </Stack>
+		<Stack direction="column" spacing={2}>
+			<DataLayout {...slots.list} grid={grid} loading={loading}>
+				{resources?.map((resource, index) => (
+					<CollectionListItem
+						key={index}
+						style={style}
+						selectable={selectable}
+						resource={resource}
+						displayFields={displayFields}
+						handleClick={() => handleShowClick(resource)}
+						enableEdit={enableEdit}
+						enableDelete={enableDelete}
+						handleEdit={() => handleEdit(resource)}
+						handleDelete={() => handleDeleteClick(resource)}
+						buttons={buttons}
+						enableUsers={enableUsers}
+						enableComments={enableComments}
+						enableFavorites={enableFavorites}
+						enableLikes={enableLikes}
+						enableRatings={enableRatings}
+						enableAddToList={enableAddToList}
+						enableGradient={enableGradient}
+						enableOverlay={enableOverlay}
+						{...slots.item}
+					/>
+				))}
+			</DataLayout>
+			<LoadMore
+				page={page}
+				numPages={numPages}
+				handlePaginate={handlePaginate}
+			/>
+		</Stack>
 	)
 }
 

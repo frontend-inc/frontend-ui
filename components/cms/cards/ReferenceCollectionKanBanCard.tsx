@@ -27,7 +27,7 @@ const ReferenceCollectionKanBanCard: React.FC<KanBanCardProps> = (props) => {
 		enableUsers,
 	} = props || {}
 
-  const resource = reference?.target 
+	const resource = reference?.target
 
 	return (
 		<KanBanCard
@@ -70,7 +70,7 @@ const ReferenceCollectionKanBanCard: React.FC<KanBanCardProps> = (props) => {
 			}
 			slots={{
 				image: {
-          disableBorderRadius: true,
+					disableBorderRadius: true,
 					enableGradient,
 					enableOverlay,
 				},

@@ -104,11 +104,11 @@ const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 								items={columns[header.value]?.map((res) => res.id)}
 								strategy={verticalListSortingStrategy}
 							>
-								<List sx={sx.cardList} { ...slots.list } disablePadding>
+								<List sx={sx.cardList} {...slots.list} disablePadding>
 									{columns[header.value].length > 0 ? (
 										columns[header.value]?.map((res) => (
 											<Component
-                        {...slots.item}
+												{...slots.item}
 												loading={loading}
 												key={res?.id}
 												id={res?.id}
@@ -134,9 +134,7 @@ const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 								variant="contained"
 								color="secondary"
 								onClick={() => handleAdd(header.value)}
-								startIcon={
-									<Icon name="Plus" color="secondary.contrastText"  />
-								}
+								startIcon={<Icon name="Plus" color="secondary.contrastText" />}
 							>
 								Add
 							</Button>

@@ -25,24 +25,24 @@ const useForms = (params?: FormParams) => {
 		update,
 		destroy,
 		handleChange,
-		removeAttachment, 
-    reloadMany,       
+		removeAttachment,
+		reloadMany,
 		openEdit,
 		openDelete,
-    openShow,    
-    openReferences,
+		openShow,
+		openReferences,
 		setOpenEdit,
-    setOpenDelete,		
-    setOpenShow,
-    setOpenReferences,
+		setOpenDelete,
+		setOpenShow,
+		setOpenReferences,
 	} = useResourceContext()
 
-  const handleShow = (resource: any) => {
-    setResource(resource)
-    setOpenReferences(false)
-    setOpenEdit(false)
+	const handleShow = (resource: any) => {
+		setResource(resource)
+		setOpenReferences(false)
+		setOpenEdit(false)
 		setOpenShow(true)
-  }
+	}
 
 	const handleAdd = () => {
 		if (!currentUser?.id) return setAuthOpen(true)
@@ -50,7 +50,7 @@ const useForms = (params?: FormParams) => {
 			id: undefined,
 		})
 		setOpenShow(false)
-    setOpenReferences(false)
+		setOpenReferences(false)
 		setOpenEdit(true)
 	}
 
@@ -58,17 +58,17 @@ const useForms = (params?: FormParams) => {
 		if (!currentUser?.id) return setAuthOpen(true)
 		setResource(resource)
 		setOpenShow(false)
-    setOpenReferences(false)
+		setOpenReferences(false)
 		setOpenEdit(true)
 	}
 
-  const handleAddReference = (resource) => {
+	const handleAddReference = (resource) => {
 		if (!currentUser?.id) return setAuthOpen(true)
 		setResource(resource)
 		setOpenShow(false)
 		setOpenEdit(false)
-    setOpenReferences(true)
-  }
+		setOpenReferences(true)
+	}
 
 	const handleSubmit = async () => {
 		if (!currentUser?.id) return setAuthOpen(true)
@@ -122,22 +122,22 @@ const useForms = (params?: FormParams) => {
 		handleChange,
 
 		handleAdd,
-		handleEdit,    
+		handleEdit,
 		handleDelete,
 		handleDeleteClick,
 		handleRemove,
-    handleShow,
-		handleSubmit,   
-    handleAddReference, 
-		    
-    openEdit,
-    openDelete,
-    openShow,        
-    openReferences,
-		setOpenEdit,		
+		handleShow,
+		handleSubmit,
+		handleAddReference,
+
+		openEdit,
+		openDelete,
+		openShow,
+		openReferences,
+		setOpenEdit,
 		setOpenDelete,
-    setOpenShow,
-    setOpenReferences
+		setOpenShow,
+		setOpenReferences,
 	}
 }
 

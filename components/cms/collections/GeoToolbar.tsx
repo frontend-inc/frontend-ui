@@ -110,9 +110,7 @@ const GeoToolbar: React.FC<CollectionToolbarProps> = (props) => {
 							color="secondary"
 							variant="contained"
 							onClick={handleAdd}
-							startIcon={
-								<Icon name="Plus"  color="secondary.contrastText" />
-							}
+							startIcon={<Icon name="Plus" color="secondary.contrastText" />}
 						>
 							Add
 						</Button>

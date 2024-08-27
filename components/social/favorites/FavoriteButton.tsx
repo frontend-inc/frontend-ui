@@ -58,25 +58,25 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 	}, [currentUser, handle])
 
 	return (
-		<Box>			
-      <IconButton
-        onClick={handleClick}
-        sx={{
-          color,
-          '&:hover': {
-            color,
-          },
-          ...(variant === 'icon' ? sx.icon : sx.button),
-          ...(isFavorite  && sx.favorited),
-          ...((isFavorite && variant === 'button') && sx.buttonFavorited),
-        }}
-      >
-        {isFavorite ? (
-          <Bookmark fontSize="small" />
-        ) : (
-          <BookmarkBorder fontSize="small" />
-        )}
-      </IconButton>			
+		<Box>
+			<IconButton
+				onClick={handleClick}
+				sx={{
+					color,
+					'&:hover': {
+						color,
+					},
+					...(variant === 'icon' ? sx.icon : sx.button),
+					...(isFavorite && sx.favorited),
+					...(isFavorite && variant === 'button' && sx.buttonFavorited),
+				}}
+			>
+				{isFavorite ? (
+					<Bookmark fontSize="small" />
+				) : (
+					<BookmarkBorder fontSize="small" />
+				)}
+			</IconButton>
 		</Box>
 	)
 }
@@ -102,6 +102,6 @@ const sx = {
 		},
 	},
 	buttonFavorited: {
-		borderColor: 'primary.main',		
+		borderColor: 'primary.main',
 	},
 }

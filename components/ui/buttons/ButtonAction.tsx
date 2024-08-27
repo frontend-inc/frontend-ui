@@ -50,7 +50,6 @@ const ButtonAction: React.FC<ActionProps> = (props) => {
 					{!loading && icon && (
 						<Icon
 							name={icon}
-							
 							color={
 								color == 'primary'
 									? 'primary.contrastText'

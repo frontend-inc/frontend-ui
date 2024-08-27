@@ -72,11 +72,7 @@ const VideoGridItems: React.FC<VideoGridItemsProps> = (props) => {
 					/>
 				))}
 			</DataLayout>
-			<LoadMore 
-        page={page} 
-        numPages={numPages} 
-        handlePaginate={loadMore} 
-      />
+			<LoadMore page={page} numPages={numPages} handlePaginate={loadMore} />
 		</Stack>
 	)
 }

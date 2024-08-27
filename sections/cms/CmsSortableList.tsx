@@ -38,9 +38,7 @@ const CmsSortableList: React.FC<CmsSortableListProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-      <SortableCollectionList 
-        {...rest}
-      />			
+			<SortableCollectionList {...rest} />
 		</Section>
 	)
 }

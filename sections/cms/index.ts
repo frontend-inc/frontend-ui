@@ -21,7 +21,7 @@ export { default as CmsSimilarList } from './CmsSimilarList'
 export { default as CmsSimilarGrid } from './CmsSimilarGrid'
 export { default as CmsStatistics } from './CmsStatistics'
 
-// Sortable 
+// Sortable
 export { default as CmsReferenceList } from './CmsReferenceList'
 export { default as CmsReferenceGrid } from './CmsReferenceGrid'
 export { default as CmsReferenceKanBan } from './CmsReferenceKanBan'

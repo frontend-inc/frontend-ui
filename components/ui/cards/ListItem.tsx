@@ -27,7 +27,11 @@ const ListItem: React.FC<CardProps> = (props) => {
 
 	return (
 		<List disablePadding sx={sx.listItem} {...slots.item}>
-			<MuiListItem disablePadding disableGutters secondaryAction={secondaryAction}>
+			<MuiListItem
+				disablePadding
+				disableGutters
+				secondaryAction={secondaryAction}
+			>
 				<ListItemButton
 					sx={{
 						...sx.listItemButton,

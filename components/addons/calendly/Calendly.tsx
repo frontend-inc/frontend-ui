@@ -7,16 +7,16 @@ import { MediaModal } from '../../../components'
 export type CalendlyProps = {
 	calendlyUrl: string
 	enableTheme?: boolean
-  buttonText?: string
+	buttonText?: string
 }
 
 // https://www.npmjs.com/package/react-calendly
 const Calendly: React.FC<CalendlyProps> = (props) => {
-	const { calendlyUrl, buttonText="Schedule time with me" } = props
+	const { calendlyUrl, buttonText = 'Schedule time with me' } = props
 	const { currentUser } = useAuth()
 	const theme = useTheme()
 
-  const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(false)
 
 	const [prefill, setPrefill] = useState({})
 	const [pageSettings, setPageSettings] = useState({})
@@ -46,56 +46,53 @@ const Calendly: React.FC<CalendlyProps> = (props) => {
 
 	if (!calendlyUrl) return null
 	return (
-    <Box sx={ sx.root }>
-      <Button 
-        size="large"
-        variant="contained"
-        color="primary"
-        onClick={() => setOpen(true)}
-      >
-        { buttonText }
-      </Button>
-      <MediaModal 
-        open={ open }
-        handleClose={() => setOpen(false)}
-      >
-        <Box sx={ sx.calendly }>
-          <InlineWidget
-            styles={styles.root}
-            url={calendlyUrl}
-            pageSettings={pageSettings}
-            prefill={prefill}        
-            data-resize="true"
-          />
-        </Box>
-      </MediaModal>
-    </Box>
+		<Box sx={sx.root}>
+			<Button
+				size="large"
+				variant="contained"
+				color="primary"
+				onClick={() => setOpen(true)}
+			>
+				{buttonText}
+			</Button>
+			<MediaModal open={open} handleClose={() => setOpen(false)}>
+				<Box sx={sx.calendly}>
+					<InlineWidget
+						styles={styles.root}
+						url={calendlyUrl}
+						pageSettings={pageSettings}
+						prefill={prefill}
+						data-resize="true"
+					/>
+				</Box>
+			</MediaModal>
+		</Box>
 	)
 }
 
 export default Calendly
 
 const sx = {
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  calendly: {
-    width: {
-      xs: '100%',
-      sm: 620,
-      md: 960,
-    },
-    height: '100%',
-  },
+	root: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	calendly: {
+		width: {
+			xs: '100%',
+			sm: 620,
+			md: 960,
+		},
+		height: '100%',
+	},
 }
 
 const styles = {
 	root: {
-    width: '100%',
+		width: '100%',
 		overflow: 'none',
-    height: '1200px',    
-	},  
+		height: '1200px',
+	},
 }

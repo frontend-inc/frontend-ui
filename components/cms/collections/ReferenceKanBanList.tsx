@@ -13,16 +13,16 @@ export type ReferenceKanBanListProps = CollectionListProps & {
 }
 
 const ReferenceKanBanList: React.FC<ReferenceKanBanListProps> = (props) => {
-  let { resource, url } = props || {}
-  url = `${url}/${resource?.id}/references`
+	let { resource, url } = props || {}
+	url = `${url}/${resource?.id}/references`
 	return (
-		<CollectionList 
-      {...props} 
-      url={url}
-      resource={resource}
-      enableSorting={false} 
-      list={ReferenceKanBanListItems} 
-    />
+		<CollectionList
+			{...props}
+			url={url}
+			resource={resource}
+			enableSorting={false}
+			list={ReferenceKanBanListItems}
+		/>
 	)
 }
 

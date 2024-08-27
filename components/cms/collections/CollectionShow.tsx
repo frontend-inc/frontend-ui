@@ -49,7 +49,7 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 			title={resource?.title}
 		>
 			<ShowItem
-        style="snippet"
+				style="snippet"
 				resource={resource}
 				enableEdit={enableEdit}
 				buttons={buttons}

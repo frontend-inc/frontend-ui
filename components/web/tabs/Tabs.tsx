@@ -51,7 +51,6 @@ const Tabs: React.FC<TabsProps> = (props) => {
 								<Box sx={sx.tabIcon}>
 									<Icon
 										name={item.icon}
-										
 										color={currentTab === i ? 'primary.main' : 'text.primary'}
 									/>
 								</Box>

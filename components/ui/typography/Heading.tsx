@@ -102,6 +102,6 @@ const sx = {
 	},
 	description: {
 		width: '100%',
-    whiteSpace: 'pre-line',
+		whiteSpace: 'pre-line',
 	},
 }

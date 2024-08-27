@@ -5,17 +5,17 @@ import { DataItem, DataLayout } from '../..'
 import { useForms } from '../../../hooks'
 
 export type DataListItemsProps = {
-  grid?: boolean
-  selectable?: boolean
-  href?: string
+	grid?: boolean
+	selectable?: boolean
+	href?: string
 	enableShow?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
-  enableAddToList?: boolean
+	enableAddToList?: boolean
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
 	handleClick?: (resource: any) => void
-  handleAdd?: (resource: any) => void
+	handleAdd?: (resource: any) => void
 	pagination?: React.FC<any>
 	component?: React.FC<any>
 	slots?: {
@@ -25,25 +25,24 @@ export type DataListItemsProps = {
 }
 
 const DataListItems: React.FC<DataListItemsProps> = (props) => {
-	
-  const {
+	const {
 		setResource,
 		loading,
 		resources,
 		page,
 		numPages,
-    loadMore,    
-    selectedIds,
-    handleSelect 
+		loadMore,
+		selectedIds,
+		handleSelect,
 	} = useResourceContext()
 
 	const {
-    grid,
-    selectable,
+		grid,
+		selectable,
 		enableShow,
 		enableEdit,
 		enableDelete,
-    enableAddToList,
+		enableAddToList,
 		handleClick,
 		pagination: Pagination = LoadMore,
 		component: Component = DataItem,
@@ -53,18 +52,14 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 		},
 	} = props
 
-	const {     
-    handleShow,
-    handleEdit, 
-    handleDeleteClick,
-    handleAddReference, 
-  } = useForms()
+	const { handleShow, handleEdit, handleDeleteClick, handleAddReference } =
+		useForms()
 
 	const handleShowClick = (resource: any) => {
-    if(handleClick){
-      handleClick(resource)
-    }else if (enableShow) {
-      handleShow(resource)			
+		if (handleClick) {
+			handleClick(resource)
+		} else if (enableShow) {
+			handleShow(resource)
 		}
 	}
 
@@ -77,30 +72,30 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 			{resources?.map((resource, index) => (
 				<Component
 					key={index}
-          selectable={selectable}
-          selected={ selectedIds?.includes(resource.id) }
+					selectable={selectable}
+					selected={selectedIds?.includes(resource.id)}
 					resource={resource}
-					handleClick={() => handleShowClick(resource)}											
-          handleSelect={() => handleSelect(resource)}
+					handleClick={() => handleShowClick(resource)}
+					handleSelect={() => handleSelect(resource)}
 					enableShow={enableShow}
 					enableEdit={enableEdit}
 					enableDelete={enableDelete}
-          enableAddToList={enableAddToList}
+					enableAddToList={enableAddToList}
 					handleEdit={enableEdit ? () => handleEdit(resource) : undefined}
 					handleDelete={
 						enableDelete ? () => handleDeleteClick(resource) : undefined
 					}
-          handleAddReference={ 
-            enableAddToList ? () => handleAddReference(resource) : undefined            
-          }
+					handleAddReference={
+						enableAddToList ? () => handleAddReference(resource) : undefined
+					}
 					{...slots.item}
 				/>
 			))}
-			<Pagination 
-        page={page} 
-        numPages={numPages} 
-        handlePaginate={handlePaginate} 
-      />
+			<Pagination
+				page={page}
+				numPages={numPages}
+				handlePaginate={handlePaginate}
+			/>
 		</DataLayout>
 	)
 }

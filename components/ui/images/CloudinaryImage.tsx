@@ -38,7 +38,7 @@ const CloudinaryImage: React.FC<CloudinaryImageProps> = (props) => {
 			width={width}
 		/>
 	) : (
-		<FileIcon  />
+		<FileIcon />
 	)
 }
 

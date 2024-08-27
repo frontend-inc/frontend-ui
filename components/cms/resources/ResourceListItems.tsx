@@ -13,7 +13,7 @@ export type ResourceListItemsProps = {
 	headers?: TableHeaderType[]
 	page: number
 	numPages: number
-  totalCount?: number
+	totalCount?: number
 	enableBorder?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
@@ -27,22 +27,16 @@ export type ResourceListItemsProps = {
 }
 
 const ResourceListItems: React.FC<ResourceListItemsProps> = (props) => {
-	const { 
-    page,
-    numPages,
-    handlePaginate,
-    resources, 
-    renderItem 
-  } = props || {}
+	const { page, numPages, handlePaginate, resources, renderItem } = props || {}
 
 	return (
 		<Stack spacing={2} sx={sx.fullWidth}>
 			<List>{resources?.map((resource) => renderItem(resource, props))}</List>
-      <LoadMore
-        page={page}
-        numPages={numPages}
-        handlePaginate={() => handlePaginate(page + 1)}
-      />
+			<LoadMore
+				page={page}
+				numPages={numPages}
+				handlePaginate={() => handlePaginate(page + 1)}
+			/>
 		</Stack>
 	)
 }

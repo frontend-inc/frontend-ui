@@ -16,7 +16,7 @@ export type FormFieldConditionType = {
 }
 
 export type FormFieldType = {
-  icon?: string
+	icon?: string
 	name: string
 	variant: string
 	label?: string
@@ -36,9 +36,9 @@ export type FormFieldType = {
 }
 
 export type ToolbarButtonType = FormFieldType & {
-  color?: 'primary' | 'secondary' 
-  variant?: 'contained' | 'outlined' | 'text'
-  buttonText: string 
+	color?: 'primary' | 'secondary'
+	variant?: 'contained' | 'outlined' | 'text'
+	buttonText: string
 }
 
 export type TableHeaderType = {

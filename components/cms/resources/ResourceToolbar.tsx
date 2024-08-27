@@ -67,22 +67,22 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
 						handleSearch={handleSearch}
 					/>
 				)}
-				{enableFilters && (	             
-          <FilterButton
-            filters={activeFilters}
-            handleFilter={handleFilter}
-            handleClear={handleClearFilters}
-            filterOptions={filterOptions}
-          />	            
+				{enableFilters && (
+					<FilterButton
+						filters={activeFilters}
+						handleFilter={handleFilter}
+						handleClear={handleClearFilters}
+						filterOptions={filterOptions}
+					/>
 				)}
-				{enableSorting && (					
-          <SortButton
-            sortBy={query?.sort_by || 'id'}
-            sortDirection={query?.sort_direction || 'desc'}
-            sortOptions={sortOptions}
-            handleSortBy={handleSort}
-            handleSortDirection={handleSortDirection}
-          />					
+				{enableSorting && (
+					<SortButton
+						sortBy={query?.sort_by || 'id'}
+						sortDirection={query?.sort_direction || 'desc'}
+						sortOptions={sortOptions}
+						handleSortBy={handleSort}
+						handleSortDirection={handleSortDirection}
+					/>
 				)}
 			</Stack>
 			{enableCreate && (
@@ -91,9 +91,7 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
 					color="primary"
 					variant="contained"
 					onClick={handleAdd}
-					startIcon={
-						<Icon name="Plus" color="primary.contrastText"  />
-					}
+					startIcon={<Icon name="Plus" color="primary.contrastText" />}
 				>
 					Add
 				</Button>

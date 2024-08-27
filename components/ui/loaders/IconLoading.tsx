@@ -10,7 +10,6 @@ const IconLoading: React.FC<IconLoadingProps> = (props) => {
 	if (!loading) return null
 	return (
 		<CircularProgress
-			
 			disableShrink
 			sx={{
 				...sx.loader,

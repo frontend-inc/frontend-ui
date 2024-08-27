@@ -81,7 +81,7 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
 				sx={{ p: '10px' }}
 				aria-label="search"
 			>
-				<Icon name="Search"  color="text.secondary" />
+				<Icon name="Search" color="text.secondary" />
 			</IconButton>
 		</Paper>
 	)

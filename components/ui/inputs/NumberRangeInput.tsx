@@ -19,7 +19,7 @@ export type NumberRangeInputProps = {
 	handleChange: (value: SyntheticEventType) => void
 	currency?: string
 	info?: string
-  startAdornment?: React.ReactNode
+	startAdornment?: React.ReactNode
 }
 
 const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
@@ -33,7 +33,7 @@ const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 		handleChange,
 		currency = 'usd',
 		info,
-    startAdornment
+		startAdornment,
 	} = props || {}
 
 	const handleMinChange = (ev) => {
@@ -72,13 +72,13 @@ const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 						onChange={handleMinChange}
 						value={value?.min}
 						startAdornment={
-              startAdornment && (
-							<InputAdornment position="start">
-								<Typography color="textPrimary" variant="body2">
-									{currency}
-								</Typography>
-							</InputAdornment>
-              )
+							startAdornment && (
+								<InputAdornment position="start">
+									<Typography color="textPrimary" variant="body2">
+										{currency}
+									</Typography>
+								</InputAdornment>
+							)
 						}
 					/>
 				</FormControl>
@@ -91,11 +91,11 @@ const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
 						value={value?.max}
 						onChange={handleMaxChange}
 						startAdornment={
-              startAdornment && (
-							<InputAdornment sx={sx.inputAdornment} position="start">
-                { startAdornment }
-							</InputAdornment>
-              )
+							startAdornment && (
+								<InputAdornment sx={sx.inputAdornment} position="start">
+									{startAdornment}
+								</InputAdornment>
+							)
 						}
 					/>
 				</FormControl>

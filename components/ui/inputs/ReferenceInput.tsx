@@ -102,9 +102,7 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
 				onClick={handleAddClick}
 				variant="contained"
 				color="secondary"
-				startIcon={
-					<Icon name="Plus"  color="secondary.contrastText" />
-				}
+				startIcon={<Icon name="Plus" color="secondary.contrastText" />}
 			>
 				Add {contentType}
 			</Button>

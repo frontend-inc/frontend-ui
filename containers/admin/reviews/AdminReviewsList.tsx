@@ -14,12 +14,12 @@ const AdminReviewsList: React.FC = () => {
 			url={`${apiUrl}/reviews`}
 			name="review"
 			enableShow
-			enableSearch      
-			enableDelete            
-      sortOptions={[
-        { name: 'created_at', label: 'Date' },
-        { name: 'rating', label: 'Rating' },
-      ]}
+			enableSearch
+			enableDelete
+			sortOptions={[
+				{ name: 'created_at', label: 'Date' },
+				{ name: 'rating', label: 'Rating' },
+			]}
 			filterOptions={[
 				{
 					field: 'rating',

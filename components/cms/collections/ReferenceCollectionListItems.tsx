@@ -10,7 +10,7 @@ import { ButtonType, DisplayFieldType } from '../../../types'
 
 export type ReferenceCollectionListItemsProps = {
 	href?: string
-  grid?: boolean
+	grid?: boolean
 	style?: 'list' | 'avatar' | 'cover' | 'table' | 'text'
 	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
@@ -25,18 +25,20 @@ export type ReferenceCollectionListItemsProps = {
 	enableRatings?: boolean
 	enableSharing?: boolean
 	enableUsers?: boolean
-  slots?: {
-    list?: any
-    item?: any
-  }
+	slots?: {
+		list?: any
+		item?: any
+	}
 }
 
-const ReferenceCollectionListItems: React.FC<ReferenceCollectionListItemsProps> = (props) => {
+const ReferenceCollectionListItems: React.FC<
+	ReferenceCollectionListItemsProps
+> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useContext(AppContext)
 
 	const {
-    loading,
+		loading,
 		setResource,
 		resources: references,
 		page,
@@ -46,11 +48,11 @@ const ReferenceCollectionListItems: React.FC<ReferenceCollectionListItemsProps> 
 	} = useResourceContext()
 
 	const {
-    grid = false,
+		grid = false,
 		buttons = [],
 		style = 'card',
 		href,
-    handleClick,
+		handleClick,
 		displayFields = [],
 		enableGradient = false,
 		enableOverlay = false,
@@ -61,16 +63,16 @@ const ReferenceCollectionListItems: React.FC<ReferenceCollectionListItemsProps> 
 		enableUsers = false,
 		enableRatings = false,
 		enableComments = false,
-    slots={
-      list: {},
-      item: {}
-    }
+		slots = {
+			list: {},
+			item: {},
+		},
 	} = props
 
 	const handleShowClick = (target) => {
-    if(handleClick){
-      handleClick(target)
-    } else if(href) {
+		if (handleClick) {
+			handleClick(target)
+		} else if (href) {
 			if (clientUrl && href && target?.handle) {
 				window.scrollTo({
 					top: 0,
@@ -84,49 +86,47 @@ const ReferenceCollectionListItems: React.FC<ReferenceCollectionListItemsProps> 
 		}
 	}
 
-	const { 
-    handleEdit, 
-    handleDeleteClick 
-  } = useForms()
+	const { handleEdit, handleDeleteClick } = useForms()
 
 	const handlePaginate = async () => {
 		await loadMore()
 	}
 
 	return (
-    <Stack direction="column" spacing={2}>
-      <DataLayout { ...slots.list } grid={grid}>
-        {references?.map((reference, index) => {
-          const target = reference?.target 
-          return(
-          <CollectionListItem             
-            key={index}
-            style={style}
-            resource={target}
-            displayFields={displayFields}
-            handleClick={() => handleShowClick(target)}
-            enableEdit={enableEdit}
-            enableDelete={enableDelete}
-            handleEdit={() => handleEdit(target)}
-            handleDelete={() => handleDeleteClick(target)}
-            buttons={ buttons }            
-            enableUsers={enableUsers}
-            enableComments={enableComments}
-            enableFavorites={enableFavorites}
-            enableLikes={enableLikes}
-            enableRatings={enableRatings}
-            enableGradient={enableGradient}
-            enableOverlay={enableOverlay}
-            { ...slots.item }
-          />
-        )})}
-      </DataLayout>
-      <LoadMore 
-        page={page} 
-        numPages={numPages} 
-        handlePaginate={handlePaginate} 
-      />
-    </Stack>
+		<Stack direction="column" spacing={2}>
+			<DataLayout {...slots.list} grid={grid}>
+				{references?.map((reference, index) => {
+					const target = reference?.target
+					return (
+						<CollectionListItem
+							key={index}
+							style={style}
+							resource={target}
+							displayFields={displayFields}
+							handleClick={() => handleShowClick(target)}
+							enableEdit={enableEdit}
+							enableDelete={enableDelete}
+							handleEdit={() => handleEdit(target)}
+							handleDelete={() => handleDeleteClick(target)}
+							buttons={buttons}
+							enableUsers={enableUsers}
+							enableComments={enableComments}
+							enableFavorites={enableFavorites}
+							enableLikes={enableLikes}
+							enableRatings={enableRatings}
+							enableGradient={enableGradient}
+							enableOverlay={enableOverlay}
+							{...slots.item}
+						/>
+					)
+				})}
+			</DataLayout>
+			<LoadMore
+				page={page}
+				numPages={numPages}
+				handlePaginate={handlePaginate}
+			/>
+		</Stack>
 	)
 }
 

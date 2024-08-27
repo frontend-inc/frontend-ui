@@ -29,10 +29,10 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
 		<ResourceListItem
 			handleClick={handleClick}
 			primary={
-        <Typography variant="subtitle2" color="text.primary"> 
-          { user?.name}
-        </Typography>
-      }
+				<Typography variant="subtitle2" color="text.primary">
+					{user?.name}
+				</Typography>
+			}
 			avatar={
 				<Stack direction="column" spacing={1} alignItems="center">
 					<UserAvatar size={size} user={user} />

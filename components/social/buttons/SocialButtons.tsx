@@ -5,7 +5,7 @@ import {
 	LikeButton,
 	FavoriteButton,
 	ShareButton,
-  AddToListButton
+	AddToListButton,
 } from '../../../components'
 import { useRouter } from 'next/router'
 
@@ -15,7 +15,7 @@ type SocialButtonsProps = {
 	enableComments?: boolean
 	enableLikes?: boolean
 	enableFavorites?: boolean
-  enableAddToList?: boolean
+	enableAddToList?: boolean
 	enableSharing?: boolean
 	numLikes?: number
 	numFavorites?: number
@@ -33,7 +33,7 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 		enableLikes,
 		enableFavorites,
 		enableSharing,
-    enableAddToList,
+		enableAddToList,
 		numLikes,
 		numFavorites,
 		variant = 'button',
@@ -45,19 +45,16 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 	const router = useRouter()
 	const currentPageUrl = router.asPath
 
-	if (!enableLikes && !enableFavorites && !enableSharing && !enableAddToList) return null
+	if (!enableLikes && !enableFavorites && !enableSharing && !enableAddToList)
+		return null
 	return (
 		<Stack
 			direction={direction}
 			justifyContent={justifyContent}
 			spacing={spacing}
 		>
-      {enableAddToList == true && (
-				<AddToListButton 	
-          variant={variant}				
-					resource={resource}					
-					color={color}
-				/>
+			{enableAddToList == true && (
+				<AddToListButton variant={variant} resource={resource} color={color} />
 			)}
 			{enableLikes == true && (
 				<LikeButton
@@ -76,10 +73,7 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 				/>
 			)}
 			{enableComments == true && (
-				<CommentButton 
-          resource={resource} 
-          color={color} 
-        />
+				<CommentButton resource={resource} color={color} />
 			)}
 			{enableSharing == true && (
 				<ShareButton variant={variant} url={currentPageUrl} />

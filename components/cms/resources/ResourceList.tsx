@@ -20,15 +20,15 @@ import ResourceToolbarModal from './toolbar/ResourceToolbarModal'
 import { MultiselectButtonType } from '../../../types'
 
 export type ResourceListProps = {
-  sortable?: boolean
-  selectable?: boolean
+	sortable?: boolean
+	selectable?: boolean
 	toolbar?: React.FC<any>
 	list?: React.FC<any>
 	edit?: React.FC<any>
 	create?: React.FC<any>
 	show?: React.FC<any>
-  pagination?: React.FC<any>
-  toolbarModal?: React.FC<any>
+	pagination?: React.FC<any>
+	toolbarModal?: React.FC<any>
 	url: string
 	name: string
 	component?: React.FC<any>
@@ -56,16 +56,16 @@ export type ResourceListProps = {
 	emptyTitle?: string
 	emptyDescription?: string
 	itemProps?: any
-  disableInfiniteLoad?: boolean
-  buttons?: MultiselectButtonType[]
+	disableInfiniteLoad?: boolean
+	buttons?: MultiselectButtonType[]
 	slots?: {
 		list?: any
 		edit?: any
 		create?: any
 		show?: any
 		toolbar?: any
-    toolbarModal?: any
-    pagination?: any
+		toolbarModal?: any
+		pagination?: any
 	}
 }
 
@@ -76,21 +76,21 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		create: {},
 		show: {},
 		toolbar: {},
-    toolbarModal: {},
-    pagination: {},
+		toolbarModal: {},
+		pagination: {},
 	}
 
 	const {
-    sortable = false,
-    selectable = false,
+		sortable = false,
+		selectable = false,
 		toolbar: Toolbar = ResourceToolbar,
-    toolbarModal: ToolbarModal = ResourceToolbarModal,
+		toolbarModal: ToolbarModal = ResourceToolbarModal,
 		list: List = ResourceListItems,
 		component: Component = ResourceItem,
 		edit: EditForm = ResourceForm,
 		create: CreateForm = ResourceForm,
 		show: ShowModal = ResourceShow,
-    disableInfiniteLoad = false,
+		disableInfiniteLoad = false,
 		url,
 		name,
 		headers = [],
@@ -98,7 +98,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		filterOptions = [],
 		sortOptions = [],
 		displayFields = [],
-    buttons = [],
+		buttons = [],
 		query: defaultQuery = {},
 		perPage = 20,
 		enableSearch = false,
@@ -138,12 +138,12 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		removeAttachment,
 		page,
 		numPages,
-    totalCount,
+		totalCount,
 		loadMore,
-    paginate,
+		paginate,
 
-    selected,
-		selectedIds,		
+		selected,
+		selectedIds,
 		handleSelect,
 		handleClear,
 	} = useResource({
@@ -167,13 +167,13 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		})
 	}
 
-  const handlePaginate = async (page) => {
-    if(!disableInfiniteLoad){
-      await loadMore()
-    }else{
-      await paginate(page)
-    }
-  }
+	const handlePaginate = async (page) => {
+		if (!disableInfiniteLoad) {
+			await loadMore()
+		} else {
+			await paginate(page)
+		}
+	}
 
 	const handleSort = (field: SortOptionType) => {
 		let sortBy = field?.name
@@ -291,10 +291,10 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		await updatePositions(sorted)
 	}
 
-  const handleSuccess = async () => {
-    await reloadMany()
-    handleClear()
-  }
+	const handleSuccess = async () => {
+		await reloadMany()
+		handleClear()
+	}
 
 	useEffect(() => {
 		if (activeFilters) {
@@ -320,8 +320,8 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-			<Toolbar        
-        selected={ selected }        
+			<Toolbar
+				selected={selected}
 				direction={direction}
 				enableSearch={enableSearch}
 				enableFilters={enableFilters}
@@ -341,91 +341,91 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				query={query}
 				{...slots.toolbar}
 			/>
-      <ToolbarModal 
-        selected={ selected }
-        selectedIds={ selectedIds }
-        open={ selected?.length > 0 }
-        handleClose={ handleClear }
-        buttons={ buttons }
-        onSuccess={ handleSuccess }
-        { ...slots.toolbarModal }
-      />
+			<ToolbarModal
+				selected={selected}
+				selectedIds={selectedIds}
+				open={selected?.length > 0}
+				handleClose={handleClear}
+				buttons={buttons}
+				onSuccess={handleSuccess}
+				{...slots.toolbarModal}
+			/>
 			<Box
 				sx={{
 					...(loading && sx.loading),
 				}}
 			>
-        { !sortable ? (
-				<List
-					query={query}
-					headers={headers}
-					page={page}
-					numPages={numPages}
-          totalCount={totalCount}
-					handlePaginate={handlePaginate}
-          handleSort={handleSort}
-          resources={ resources }
-					renderItem={(resource, props) => (
-						<Component
-							key={resource?.id}
-              selectable={ selectable }
-							resource={resource}   
-              selected={      
-                //@ts-ignore           
-                selectedIds?.includes(resource?.id) 
-              }           
-              enableSelect={ selectable }
-							enableBorder={enableBorder}
-							enableEdit={enableEdit}
-							enableDelete={enableDelete}
-							handleClick={
-								handleClick
-									? () => handleClick(resource)
-									: () => handleShowClick(resource)
-							}
-							handleEdit={() => handleEdit(resource)}
-							handleDelete={() => handleDeleteClick(resource)}
-              handleSelect={() => handleSelect(resource) }
-              { ...props }
-							{...slots.list}              
-						/>
-					)}
-				/>
-        ):(
-          <SortableListItems
-            droppableId="sortable"
-            resources={resources}
-            handleDrop={handleDrop}
-            page={page}
-            numPages={numPages}
-            totalCount={totalCount}
-            handlePaginate={handlePaginate}
-            renderItem={(resource, index) => (
-              <Component
-                key={index}
-                sortable
-                selectable={ selectable }
-                selected={ 
-                  // @ts-ignore
-                  selectedIds?.includes(resource?.id) 
-                }
-                resource={resource}                
-                enableBorder={enableBorder}
-                enableEdit={enableEdit}
-                enableDelete={enableDelete}                
-                handleClick={
-                  handleClick
-                    ? () => handleClick(resource)
-                    : () => handleShowClick(resource)
-                }
-                handleEdit={() => handleEdit(resource)}
-                handleDelete={() => handleDeleteClick(resource)}
-                handleSelect={() => handleSelect(resource) }
-                  {...slots.list}
-              />
-            )}
-          />
-        )}            
+				{!sortable ? (
+					<List
+						query={query}
+						headers={headers}
+						page={page}
+						numPages={numPages}
+						totalCount={totalCount}
+						handlePaginate={handlePaginate}
+						handleSort={handleSort}
+						resources={resources}
+						renderItem={(resource, props) => (
+							<Component
+								key={resource?.id}
+								selectable={selectable}
+								resource={resource}
+								selected={
+									//@ts-ignore
+									selectedIds?.includes(resource?.id)
+								}
+								enableSelect={selectable}
+								enableBorder={enableBorder}
+								enableEdit={enableEdit}
+								enableDelete={enableDelete}
+								handleClick={
+									handleClick
+										? () => handleClick(resource)
+										: () => handleShowClick(resource)
+								}
+								handleEdit={() => handleEdit(resource)}
+								handleDelete={() => handleDeleteClick(resource)}
+								handleSelect={() => handleSelect(resource)}
+								{...props}
+								{...slots.list}
+							/>
+						)}
+					/>
+				) : (
+					<SortableListItems
+						droppableId="sortable"
+						resources={resources}
+						handleDrop={handleDrop}
+						page={page}
+						numPages={numPages}
+						totalCount={totalCount}
+						handlePaginate={handlePaginate}
+						renderItem={(resource, index) => (
+							<Component
+								key={index}
+								sortable
+								selectable={selectable}
+								selected={
+									// @ts-ignore
+									selectedIds?.includes(resource?.id)
+								}
+								resource={resource}
+								enableBorder={enableBorder}
+								enableEdit={enableEdit}
+								enableDelete={enableDelete}
+								handleClick={
+									handleClick
+										? () => handleClick(resource)
+										: () => handleShowClick(resource)
+								}
+								handleEdit={() => handleEdit(resource)}
+								handleDelete={() => handleDeleteClick(resource)}
+								handleSelect={() => handleSelect(resource)}
+								{...slots.list}
+							/>
+						)}
+					/>
+				)}
 				{!loading && resources?.length == 0 && (
 					<Placeholder
 						icon={emptyIcon}

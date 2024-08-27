@@ -143,7 +143,7 @@ const TableList: React.FC<TableProps> = (props) => {
 				</TableBody>
 			</TableContainer>
 			<Pagination
-      	loading={loading}
+				loading={loading}
 				page={page}
 				perPage={perPage}
 				numPages={numPages}

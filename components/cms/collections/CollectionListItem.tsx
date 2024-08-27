@@ -17,7 +17,7 @@ import { buildActions } from '../../../helpers'
 type CardStyleTypes = 'list' | 'avatar' | 'card' | 'cover' | 'text'
 
 type CollectionListItemProps = {
-  selectable?: boolean
+	selectable?: boolean
 	buttons: ButtonType[]
 	style: CardStyleTypes
 	displayFields: DisplayFieldType[]
@@ -42,34 +42,30 @@ type CollectionListItemProps = {
 	enableUsers?: boolean
 	enableComments?: boolean
 	enableFavorites?: boolean
-  enableAddToList?: boolean
+	enableAddToList?: boolean
 	enableLikes?: boolean
 	enableRatings?: boolean
 }
 
 const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
-	
-  const { 
-    selectedIds,
-    handleSelect 
-  } = useResourceContext()
+	const { selectedIds, handleSelect } = useResourceContext()
 
-  const {
-    selectable,
+	const {
+		selectable,
 		buttons,
 		resource,
 		displayFields = [],
 		href,
 		handleClick,
-    enableEdit = false,
-    enableDelete = false,
-    handleEdit,
-    handleDelete,
+		enableEdit = false,
+		enableDelete = false,
+		handleEdit,
+		handleDelete,
 		enableGradient = false,
 		enableOverlay = false,
 		enableComments = false,
 		enableFavorites = false,
-    enableAddToList = false,
+		enableAddToList = false,
 		enableLikes = false,
 		enableRatings = false,
 		enableUsers = false,
@@ -89,11 +85,11 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 
 	let Component = COMPONENTS[style] || Card
 
-  return (
+	return (
 		<Component
-      selectable={ selectable }
-      selected={ selectedIds?.includes(resource?.id) }
-      handleSelect={() => handleSelect(resource)}
+			selectable={selectable}
+			selected={selectedIds?.includes(resource?.id)}
+			handleSelect={() => handleSelect(resource)}
 			label={resource?.label}
 			image={resource?.image?.url}
 			primary={resource?.title}
@@ -115,22 +111,22 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 						enableLikes={enableLikes}
 						enableFavorites={enableFavorites}
 						enableComments={enableComments}
-            enableAddToList={enableAddToList}
+						enableAddToList={enableAddToList}
 					/>
 				</Box>
 			}
 			secondaryAction={
-				<ButtonActions 
-          numVisible={0} 
-          buttons={buildActions({
-            enableEdit,
-            enableDelete,
-            handleEdit,
-            handleDelete,
-            buttons,
-          })}
-          resource={resource} 
-        />
+				<ButtonActions
+					numVisible={0}
+					buttons={buildActions({
+						enableEdit,
+						enableDelete,
+						handleEdit,
+						handleDelete,
+						buttons,
+					})}
+					resource={resource}
+				/>
 			}
 			slots={{
 				image: {

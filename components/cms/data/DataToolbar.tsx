@@ -111,9 +111,7 @@ const DataToolbar: React.FC<DataToolbarProps> = (props) => {
 							color="primary"
 							variant="contained"
 							onClick={handleAdd}
-							startIcon={
-								<Icon name="Plus"  color="primary.contrastText" />
-							}
+							startIcon={<Icon name="Plus" color="primary.contrastText" />}
 						>
 							{buttonText}
 						</Button>

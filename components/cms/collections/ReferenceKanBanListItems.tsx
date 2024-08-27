@@ -11,7 +11,7 @@ export type KanBanListItemsProps = CollectionListProps & {
 		label: string
 		value: string
 	}[]
-  component?: React.ReactNode
+	component?: React.ReactNode
 	enableSharing?: boolean
 	enableCreate?: boolean
 }
@@ -31,11 +31,11 @@ const ReferenceKanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 		enableSharing,
 		enableUsers,
 		enableGradient,
-		enableOverlay,    
-    slots: defaultSlots = {
-      item: {},
-      list: {},
-    },
+		enableOverlay,
+		slots: defaultSlots = {
+			item: {},
+			list: {},
+		},
 		...rest
 	} = props
 
@@ -45,7 +45,7 @@ const ReferenceKanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 		loading,
 		resources,
 		update,
-    updateMany,
+		updateMany,
 		updatePositions,
 		setResource,
 		reloadMany,
@@ -53,7 +53,7 @@ const ReferenceKanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 	} = useResourceContext()
 
 	const handleClick = (reference) => {
-    const resource = reference?.target
+		const resource = reference?.target
 		setResource(resource)
 		setOpenShow(true)
 	}
@@ -72,7 +72,7 @@ const ReferenceKanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 	const handleDrop = async (movedItem, value, columns) => {
 		setResource(null)
 		let movedDocument = changeDocumentValue(movedItem, fieldName, value)
-    await updateMany([movedDocument?.id], { [fieldName]: value } )
+		await updateMany([movedDocument?.id], { [fieldName]: value })
 
 		let columnItems = Object.keys(columns).map((key) => columns[key])
 		columnItems = columnItems.reduce((acc, val) => acc.concat(val), [])
@@ -114,9 +114,9 @@ const ReferenceKanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 			enableFavorites,
 			enableLikes,
 			enableRatings,
-      ...defaultSlots.list,
+			...defaultSlots.list,
 		},
-		item: {      
+		item: {
 			enableOverlay,
 			enableGradient,
 			buttons,
@@ -125,7 +125,7 @@ const ReferenceKanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 			enableFavorites,
 			enableLikes,
 			enableRatings,
-      ...defaultSlots.item,
+			...defaultSlots.item,
 		},
 	}
 
@@ -142,9 +142,9 @@ const ReferenceKanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 			enableCreate={enableCreate}
 			handleEdit={handleEdit}
 			handleDelete={handleDeleteClick}
-			handleAdd={handleAdd}			
-			component={ ReferenceCollectionKanBanCard }
-      slots={slots}
+			handleAdd={handleAdd}
+			component={ReferenceCollectionKanBanCard}
+			slots={slots}
 		/>
 	)
 }

@@ -25,7 +25,7 @@ const SortableReferenceItem: React.FC<SortableReferenceItemProps> = (props) => {
 			}
 		>
 			<ListItemIcon sx={sx.dragHandle}>
-				<Icon name="GripVertical"  color="text.secondary" />
+				<Icon name="GripVertical" color="text.secondary" />
 			</ListItemIcon>
 			<ListItemIcon sx={sx.listItemIcon}>
 				<Image src={image} height={32} width={32} />

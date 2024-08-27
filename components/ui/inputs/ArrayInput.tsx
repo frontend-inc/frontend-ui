@@ -73,7 +73,7 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 							sx={sx.chip}
 							label={option}
 							color="secondary"
-							deleteIcon={<X  />}
+							deleteIcon={<X />}
 							{...getTagProps({ index })}
 						/>
 					))

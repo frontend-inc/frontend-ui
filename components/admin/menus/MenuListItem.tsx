@@ -70,7 +70,7 @@ const MenuListItem: React.FC<MenuListItemProps> = (props) => {
 								bgcolor: color,
 							}}
 						>
-							<Icon  name={icon} />
+							<Icon name={icon} />
 						</Box>
 					</ListItemIcon>
 				)}

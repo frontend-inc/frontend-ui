@@ -4,9 +4,13 @@ import { SortableReferenceCollectionList } from '../../components'
 import { CollectionListProps } from '../../components/cms/collections/CollectionList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsSortableReferenceListProps = SectionProps & HeadingProps & CollectionListProps
+type CmsSortableReferenceListProps = SectionProps &
+	HeadingProps &
+	CollectionListProps
 
-const CmsSortableReferenceList: React.FC<CmsSortableReferenceListProps> = (props) => {
+const CmsSortableReferenceList: React.FC<CmsSortableReferenceListProps> = (
+	props
+) => {
 	const {
 		label,
 		title,
@@ -38,9 +42,7 @@ const CmsSortableReferenceList: React.FC<CmsSortableReferenceListProps> = (props
 				description={description}
 				textAlign={textAlign}
 			/>
-      <SortableReferenceCollectionList 
-        {...rest}
-      />			
+			<SortableReferenceCollectionList {...rest} />
 		</Section>
 	)
 }

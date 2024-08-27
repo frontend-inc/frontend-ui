@@ -17,7 +17,7 @@ const CellLink: React.FC<CellLinkProps> = (props) => {
 					variant="contained"
 					color="secondary"
 					sx={sx.button}
-					startIcon={<ExternalLink  />}
+					startIcon={<ExternalLink />}
 					onClick={handleClick}
 				>
 					{value}

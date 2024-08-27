@@ -1,35 +1,31 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
-import {
-	Image,
-} from '../..'
+import { Image } from '../..'
 import { HeroCardProps } from './HeroCard'
 
 const Hero: React.FC<HeroCardProps> = (props) => {
 	const {
 		image,
-    label,
-    primary,
-    secondary,    
-    actions,
-    secondaryAction,
-    children
+		label,
+		primary,
+		secondary,
+		actions,
+		secondaryAction,
+		children,
 	} = props || {}
-	
+
 	return (
 		<Stack sx={sx.root} spacing={4}>
-			{ secondaryAction }			
-      <Typography color="text.primary" variant="h3">
-        {primary}
-      </Typography>							
+			{secondaryAction}
+			<Typography color="text.primary" variant="h3">
+				{primary}
+			</Typography>
 			<Box sx={sx.imageContainer}>
 				<Image src={image} alt={primary} height={400} label={label} />
 			</Box>
-			{ actions }
-			<Box sx={sx.content}>		
-        { secondary }		
-			</Box>
-      { children }
+			{actions}
+			<Box sx={sx.content}>{secondary}</Box>
+			{children}
 		</Stack>
 	)
 }

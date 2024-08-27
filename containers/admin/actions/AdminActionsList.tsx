@@ -52,29 +52,29 @@ const AdminActionsList: React.FC = () => {
 				emptyDescription="No actions yet."
 			/>
 
-			<Drawer open={open} handleClose={handleClose}>        
-        <ResourceList
-          sortable
-          enableBorder
-          direction="column"
-          //@ts-ignore
-          url={`${apiUrl}/actions/${activeAction?.id}/zaps`}
-          name="zap"
-          enableSearch
-          enableCreate
-          enableEdit
-          enableDelete
-          query={{
-            sort_by: 'position',
-            sort_direction: 'asc',
-          }}
-          edit={AdminZapForm}
-          create={AdminZapForm}
-          component={AdminZapItem}
-          emptyIcon="Zap"
-          emptyTitle="No zaps"
-          emptyDescription="No zaps yet."
-        />
+			<Drawer open={open} handleClose={handleClose}>
+				<ResourceList
+					sortable
+					enableBorder
+					direction="column"
+					//@ts-ignore
+					url={`${apiUrl}/actions/${activeAction?.id}/zaps`}
+					name="zap"
+					enableSearch
+					enableCreate
+					enableEdit
+					enableDelete
+					query={{
+						sort_by: 'position',
+						sort_direction: 'asc',
+					}}
+					edit={AdminZapForm}
+					create={AdminZapForm}
+					component={AdminZapItem}
+					emptyIcon="Zap"
+					emptyTitle="No zaps"
+					emptyDescription="No zaps yet."
+				/>
 			</Drawer>
 		</Stack>
 	)

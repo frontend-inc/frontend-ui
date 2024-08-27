@@ -20,7 +20,7 @@ const CollectionKanBanCard: React.FC<KanBanCardProps> = (props) => {
 		loading,
 		buttons,
 		resource,
-		displayFields = [],		
+		displayFields = [],
 		handleClick,
 		enableGradient,
 		enableOverlay,
@@ -77,7 +77,7 @@ const CollectionKanBanCard: React.FC<KanBanCardProps> = (props) => {
 			}
 			slots={{
 				image: {
-          disableBorderRadius: true,
+					disableBorderRadius: true,
 					enableGradient,
 					enableOverlay,
 				},

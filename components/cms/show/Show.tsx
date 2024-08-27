@@ -9,7 +9,12 @@ const Show: React.FC<ShowProps> = (props) => {
 	const { url, foreignUrl, fields, resource } = props || {}
 
 	return (
-		<ShowContainer url={url} foreignUrl={foreignUrl} fields={fields} resource={resource}>
+		<ShowContainer
+			url={url}
+			foreignUrl={foreignUrl}
+			fields={fields}
+			resource={resource}
+		>
 			<ShowItem {...props} url={url} />
 		</ShowContainer>
 	)

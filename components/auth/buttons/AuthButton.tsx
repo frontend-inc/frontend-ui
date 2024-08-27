@@ -81,7 +81,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 							startIcon={showIcon && <UserAvatar user={currentUser} />}
 							endIcon={
 								<Box>
-									<Icon name="MoreVertical"  />
+									<Icon name="MoreVertical" />
 								</Box>
 							}
 						>

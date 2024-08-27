@@ -4,24 +4,18 @@ import { HeroCardProps } from './HeroCard'
 import { AvatarImage } from '../..'
 
 const HeroAvatar: React.FC<HeroCardProps> = (props) => {
-	const {		
-    image,
-    primary,
-    secondary,
-    actions,
-    secondaryAction,
-    slots,
-	} = props || {}
+	const { image, primary, secondary, actions, secondaryAction, slots } =
+		props || {}
 
 	return (
-		<Stack spacing={2} direction="column" justifyContent="center">			
-      <Stack
-        sx={sx.buttons}
-        direction={{ sm: 'row', xs: 'column' }}
-        spacing={1}
-      >
-        { secondaryAction }
-      </Stack>			
+		<Stack spacing={2} direction="column" justifyContent="center">
+			<Stack
+				sx={sx.buttons}
+				direction={{ sm: 'row', xs: 'column' }}
+				spacing={1}
+			>
+				{secondaryAction}
+			</Stack>
 			<Box sx={sx.root}>
 				<Stack
 					sx={sx.container}
@@ -30,20 +24,20 @@ const HeroAvatar: React.FC<HeroCardProps> = (props) => {
 				>
 					<Stack sx={sx.leftPanel} spacing={2} direction="column">
 						<Box sx={sx.imageContainer}>
-              <AvatarImage 
-                image={ image }
-                alt={ primary }
-                height={ 200 }
-                { ...slots.image }
-              />							
+							<AvatarImage
+								image={image}
+								alt={primary}
+								height={200}
+								{...slots.image}
+							/>
 						</Box>
-						{ actions }
+						{actions}
 					</Stack>
 					<Stack spacing={1} sx={sx.content}>
 						<Typography color="text.primary" variant="h4">
-							{ primary }
+							{primary}
 						</Typography>
-						{ secondary }
+						{secondary}
 					</Stack>
 				</Stack>
 			</Box>

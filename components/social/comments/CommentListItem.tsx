@@ -84,7 +84,7 @@ const CommentListItem: React.FC<CommentListItemProps> = (props) => {
 				}}
 				secondaryAction={
 					<IconButton onClick={handleReply}>
-						<Icon name="MessageSquare"  />
+						<Icon name="MessageSquare" />
 					</IconButton>
 				}
 			>

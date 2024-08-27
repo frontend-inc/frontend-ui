@@ -7,23 +7,23 @@ import {
 	FormFieldType,
 	SearchFilterOptionType,
 	SortOptionType,
-  ToolbarButtonType
+	ToolbarButtonType,
 } from '../../../types'
 import {
-  CollectionListItem,
+	CollectionListItem,
 	CollectionListItems,
 	CollectionToolbar,
 	CollectionShow,
 	CollectionForm,
 	CollectionDelete,
 	CollectionEmpty,
-  CollectionReferencesModal,
-  CollectionToolbarModal
+	CollectionReferencesModal,
+	CollectionToolbarModal,
 } from '../..'
 
 export type CollectionListProps = {
-  grid?: boolean
-  selectable?: boolean
+	grid?: boolean
+	selectable?: boolean
 	style: string
 	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
@@ -36,12 +36,12 @@ export type CollectionListProps = {
 	enableOverlay?: boolean
 
 	enableShow?: boolean
-	enableEdit?: boolean  
+	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
-  enableAddToList?: boolean
+	enableAddToList?: boolean
 	fields?: FormFieldType[]
-  toolbarButtons?: ToolbarButtonType[]
+	toolbarButtons?: ToolbarButtonType[]
 	headers?: {
 		label: string
 		value: string
@@ -54,9 +54,9 @@ export type CollectionListProps = {
 	perPage?: number
 	loadMore?: boolean
 	list: React.FC<any>
-  component?: React.FC<any>
+	component?: React.FC<any>
 	toolbar?: React.FC<any>
-  toolbarModal?: React.FC<any>
+	toolbarModal?: React.FC<any>
 	show?: React.FC<any>
 	edit?: React.FC<any>
 	create?: React.FC<any>
@@ -64,19 +64,19 @@ export type CollectionListProps = {
 	empty?: React.FC<any>
 	slots?: {
 		toolbar?: any
-    toolbarModal?: any
+		toolbarModal?: any
 		list?: any
 		show?: any
 		edit?: any
 		create?: any
 		destroy?: any
 		empty?: any
-    item?: any
+		item?: any
 	}
-  circular?: boolean
-  disableImage?: boolean  
+	circular?: boolean
+	disableImage?: boolean
 	url: string
-  foreignUrl?: string
+	foreignUrl?: string
 	query?: any
 	resource: any
 	filterUser?: boolean
@@ -87,10 +87,10 @@ export type CollectionListProps = {
 
 const CollectionList: React.FC<CollectionListProps> = (props) => {
 	const {
-    grid = false,
-    selectable = false,
+		grid = false,
+		selectable = false,
 		url,
-    foreignUrl,
+		foreignUrl,
 		query,
 		resource,
 		perPage = 10,
@@ -110,16 +110,16 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		style = 'list',
 		buttons = [],
 		displayFields = [],
-    circular,
-    disableImage,
+		circular,
+		disableImage,
 
 		enableShow,
 		enableEdit,
 		enableCreate,
 		enableDelete,
-    enableAddToList,
+		enableAddToList,
 		fields = [],
-    toolbarButtons = [],
+		toolbarButtons = [],
 		enableSearch,
 		enableFilters,
 		enableSorting,
@@ -127,19 +127,19 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		sortOptions = [],
 		headers = [], // Used by KanBan
 		toolbar: Toolbar = CollectionToolbar,
-		list: List = CollectionListItems,    
-    component: Component = CollectionListItem,
+		list: List = CollectionListItems,
+		component: Component = CollectionListItem,
 		show: Show = CollectionShow,
 		edit: Edit = CollectionForm,
 		create: Create = CollectionForm,
 		destroy: Destroy = CollectionDelete,
 		empty: Empty = CollectionEmpty,
-    toolbarModal: ToolbarModal = CollectionToolbarModal,
+		toolbarModal: ToolbarModal = CollectionToolbarModal,
 		slots: defaultSlots = {
-			toolbar: {},      
-      toolbarModal: {},
+			toolbar: {},
+			toolbarModal: {},
 			list: {},
-      item: {},
+			item: {},
 			show: {},
 			edit: {},
 			create: {},
@@ -160,81 +160,81 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 
 	const slots = {
 		list: {
-      ...defaultSlots.list,
+			...defaultSlots.list,
 			headers,
-      style,
-      enableLikes,
+			style,
+			enableLikes,
 			enableFavorites,
 			enableRatings,
 			enableComments,
-      enableAddToList,
+			enableAddToList,
 			enableUsers,
 			enableGradient,
 			enableOverlay,
 		},
 		show: {
-      ...defaultSlots.show,
-      selectable,
+			...defaultSlots.show,
+			selectable,
 			displayFields,
 			buttons,
 			enableLikes,
 			enableFavorites,
 			enableRatings,
 			enableComments,
-      enableAddToList,
+			enableAddToList,
 			enableUsers,
 			enableGradient,
-			enableOverlay,			
+			enableOverlay,
 		},
 		edit: {
-      ...defaultSlots.edit,
+			...defaultSlots.edit,
 			fields,
 		},
 		create: {
-      ...defaultSlots.create,
+			...defaultSlots.create,
 			fields,
 		},
 		destroy: defaultSlots.destroy,
 		toolbar: defaultSlots.toolbar,
-    toolbarModal: {
-      ...defaultSlots.toolbarModal,
-      enableAddToList,
-      enableDelete,
-      toolbarButtons
-    },
+		toolbarModal: {
+			...defaultSlots.toolbarModal,
+			enableAddToList,
+			enableDelete,
+			toolbarButtons,
+		},
 		empty: defaultSlots.empty,
-    item: {
-      ...defaultSlots.item,
-      circular,
-      disableImage,
-      style,
+		item: {
+			...defaultSlots.item,
+			circular,
+			disableImage,
+			style,
 			buttons,
 			displayFields,
 			enableLikes,
 			enableFavorites,
 			enableRatings,
 			enableComments,
-      enableAddToList,
+			enableAddToList,
 			enableUsers,
 			enableGradient,
-			enableOverlay,      
-    },
-    references: defaultSlots.references
+			enableOverlay,
+		},
+		references: defaultSlots.references,
 	}
 
 	return (
 		<DataList
-      selectable={selectable}
-      grid={grid} 
+			selectable={selectable}
+			grid={grid}
 			url={url}
-      foreignUrl={foreignUrl}
+			foreignUrl={foreignUrl}
 			name="document"
 			query={searchQuery}
 			fields={fields}
 			enableShow={enableShow}
 			enableCreate={enableCreate}
 			enableEdit={enableEdit}
-      enableAddToList={enableAddToList}
+			enableAddToList={enableAddToList}
 			enableDelete={enableDelete}
 			enableSearch={enableSearch}
 			enableFilters={enableFilters}
@@ -242,9 +242,9 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			filterOptions={filterOptions}
 			sortOptions={sortOptions}
 			toolbar={Toolbar}
-      toolbarModal={ ToolbarModal }
+			toolbarModal={ToolbarModal}
 			list={List}
-      component={Component}
+			component={Component}
 			show={Show}
 			edit={Edit}
 			create={Create}

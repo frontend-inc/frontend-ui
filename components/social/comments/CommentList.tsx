@@ -47,7 +47,6 @@ const CommentList: React.FC<CommentListProps> = (props) => {
 		handle,
 	})
 
-
 	const handleSubmit = async () => {
 		await createComment(comment)
 		setOpenComment(false)

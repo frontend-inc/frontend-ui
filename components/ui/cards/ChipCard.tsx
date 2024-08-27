@@ -1,5 +1,5 @@
 import React from 'react'
-import {	
+import {
 	List,
 	ListItem,
 	ListItemButton,
@@ -10,7 +10,7 @@ import { AvatarImage } from '../..'
 import { CardProps } from './Card'
 
 const ChipCard: React.FC<CardProps> = (props) => {
-	const {    
+	const {
 		primary,
 		secondary,
 		secondaryAction,
@@ -29,14 +29,14 @@ const ChipCard: React.FC<CardProps> = (props) => {
 					sx={sx.listItemButton}
 					onClick={handleClick && handleClick}
 				>
-          <ListItemIcon sx={sx.listItemIcon}>
-            <AvatarImage 
-              image={ image }
-              alt={ primary }
-              height={44}
-              { ...slots.image }
-            /> 							
-          </ListItemIcon>
+					<ListItemIcon sx={sx.listItemIcon}>
+						<AvatarImage
+							image={image}
+							alt={primary}
+							height={44}
+							{...slots.image}
+						/>
+					</ListItemIcon>
 					<ListItemText primary={primary} secondary={secondary} />
 				</ListItemButton>
 			</ListItem>

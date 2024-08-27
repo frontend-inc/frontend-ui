@@ -10,7 +10,7 @@ export type DataFetcherProps = {
 const DataFetcher: React.FC<DataFetcherProps> = (props) => {
 	const { children, query } = props
 
-  const { findMany } = useResourceContext()  
+	const { findMany } = useResourceContext()
 
 	useEffect(() => {
 		if (query) {

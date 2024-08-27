@@ -9,7 +9,7 @@ const AdminRolesList: React.FC = () => {
 
 	return (
 		<ResourceList
-      sortable
+			sortable
 			url={`${apiUrl}/roles`}
 			name="role"
 			enableCreate

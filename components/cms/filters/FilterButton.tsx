@@ -33,7 +33,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 	const handleClose = () => setOpen(false)
 
 	return (
-		<Box sx={ sx.root }>
+		<Box sx={sx.root}>
 			<Badge
 				sx={sx.badge}
 				badgeContent={disableFilterCount ? 0 : filters?.length}
@@ -54,11 +54,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 						loading ? (
 							<IconLoading loading={loading} />
 						) : (
-							<Icon
-								name="SlidersHorizontal"
-								color="secondary.contrastText"
-								
-							/>
+							<Icon name="SlidersHorizontal" color="secondary.contrastText" />
 						)
 					}
 					onClick={handleClick}
@@ -109,7 +105,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 export default FilterButton
 
 const sx = {
-  root: {
+	root: {
 		width: {
 			sm: 'auto',
 			xs: '100%',

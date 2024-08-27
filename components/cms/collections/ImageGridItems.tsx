@@ -85,11 +85,7 @@ const ImageGridItems: React.FC<ImageGridItemsProps> = (props) => {
 					/>
 				))}
 			</DataLayout>
-			<LoadMore 
-        page={page} 
-        numPages={numPages} 
-        handlePaginate={loadMore} 
-      />
+			<LoadMore page={page} numPages={numPages} handlePaginate={loadMore} />
 		</Stack>
 	)
 }

@@ -83,7 +83,7 @@ const FilterFieldWrapper: React.FC<FilterFieldProps> = (props) => {
 			)}
 			<Box>
 				<IconButton size="small" onClick={() => handleRemove(index)}>
-					<Icon name="X"  />
+					<Icon name="X" />
 				</IconButton>
 			</Box>
 			<Box sx={sx.inputSpacer} />

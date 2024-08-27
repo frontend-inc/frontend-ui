@@ -8,7 +8,7 @@ const ExpandRightButton: React.FC = () => {
 
 	return (
 		<IconButton onClick={toggleLayoutRight} sx={sx.button}>
-			<Icon name="Menu"  />
+			<Icon name="Menu" />
 		</IconButton>
 	)
 }

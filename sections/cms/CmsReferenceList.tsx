@@ -38,9 +38,7 @@ const CmsReferenceList: React.FC<CmsReferenceListProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-      <ReferenceCollectionList 
-        {...rest}
-      />			
+			<ReferenceCollectionList {...rest} />
 		</Section>
 	)
 }

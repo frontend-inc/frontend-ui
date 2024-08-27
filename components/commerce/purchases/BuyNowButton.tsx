@@ -66,18 +66,10 @@ const BuyNowButton: React.FC<BuyNowButtonProps> = (props) => {
 					startIcon={
 						<>
 							{purchased && (
-								<Icon
-									name="CheckCircle"
-									
-									color="primary.contrastText"
-								/>
+								<Icon name="CheckCircle" color="primary.contrastText" />
 							)}
 							{!purchased && availableForSale == true && (
-								<Icon
-									name="CreditCard"
-									
-									color={'primary.contrastText'}
-								/>
+								<Icon name="CreditCard" color={'primary.contrastText'} />
 							)}
 						</>
 					}

@@ -1,5 +1,5 @@
 export const ACTION_TYPES = [
-  { label: 'Manual', value: 'manual' },
+	{ label: 'Manual', value: 'manual' },
 	{ label: 'Resource created', value: 'resources.create' },
 	{ label: 'Resource updated', value: 'resources.save' },
 	{ label: 'Resource deleted', value: 'resources.delete' },

@@ -1,27 +1,19 @@
 import React from 'react'
 import { Stack } from '@mui/material'
-import {
-	Cover,
-} from '../..'
+import { Cover } from '../..'
 import { HeroCardProps } from './HeroCard'
 
 const HeroCover: React.FC<HeroCardProps> = (props) => {
-	const {		
-    image,
-    primary,
-    secondary,
-    actions,
-    secondaryAction,
-	} = props || {}
-	
+	const { image, primary, secondary, actions, secondaryAction } = props || {}
+
 	return (
 		<Stack sx={sx.root} spacing={4}>
 			<Cover image={image} height={400} title={primary} enableOverlay />
 			<Stack spacing={3} sx={sx.header}>
-				{ actions }
-				{ secondaryAction }
-				{ secondary }
-			</Stack>			
+				{actions}
+				{secondaryAction}
+				{secondary}
+			</Stack>
 		</Stack>
 	)
 }
@@ -37,7 +29,7 @@ const sx = {
 	header: {
 		px: 2,
 		maxWidth: 500,
-		width: '100%',		
+		width: '100%',
 	},
 	content: {
 		px: 2,

@@ -106,7 +106,7 @@ const sx = {
 	button: {
 		border: '1px solid',
 		borderColor: 'divider',
-		color: 'text.secondary'
+		color: 'text.secondary',
 	},
 	socialButtons: {
 		width: '100%',

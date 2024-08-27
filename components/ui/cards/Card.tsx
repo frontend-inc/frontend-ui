@@ -4,9 +4,9 @@ import { Image } from '../..'
 
 export type CardProps = {
 	ref?: any
-  sortable?: boolean
-  selectable?: boolean
-  selected?: boolean  
+	sortable?: boolean
+	selectable?: boolean
+	selected?: boolean
 	avatar?: React.ReactNode
 	image: string
 	label?: string
@@ -15,7 +15,7 @@ export type CardProps = {
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
 	handleClick?: () => void
-  handleSelect?: () => void
+	handleSelect?: () => void
 	height?: number
 	slots?: {
 		item?: any
@@ -71,7 +71,7 @@ const Card: React.FC<CardProps> = (props) => {
 							{secondary}
 						</Typography>
 					)}
-      </Box>
+				</Box>
 				<Stack direction="row" justifyContent="space-between">
 					{actions}
 					{secondaryAction}

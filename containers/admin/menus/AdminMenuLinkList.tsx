@@ -17,7 +17,7 @@ const AdminMenuLinkList: React.FC<AdminMenuListProps> = (props) => {
 
 	return (
 		<ResourceList
-      sortable
+			sortable
 			enableBorder
 			url={`${apiUrl}/menus/${menuId}/links`}
 			name="link"

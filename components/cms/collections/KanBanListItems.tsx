@@ -11,7 +11,7 @@ export type KanBanListItemsProps = CollectionListProps & {
 		label: string
 		value: string
 	}[]
-  component?: React.ReactNode
+	component?: React.ReactNode
 	enableSharing?: boolean
 	enableCreate?: boolean
 }
@@ -31,11 +31,11 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 		enableSharing,
 		enableUsers,
 		enableGradient,
-		enableOverlay,  
-    slots: defaultSlots = {
-      item: {},
-      list: {},
-    },  
+		enableOverlay,
+		slots: defaultSlots = {
+			item: {},
+			list: {},
+		},
 		...rest
 	} = props
 
@@ -113,7 +113,7 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 			enableFavorites,
 			enableLikes,
 			enableRatings,
-      ...defaultSlots.list,
+			...defaultSlots.list,
 		},
 		item: {
 			enableOverlay,
@@ -124,7 +124,7 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 			enableFavorites,
 			enableLikes,
 			enableRatings,
-      ...defaultSlots.item,
+			...defaultSlots.item,
 		},
 	}
 
@@ -143,7 +143,7 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 			handleDelete={handleDeleteClick}
 			handleAdd={handleAdd}
 			slots={slots}
-			component={ CollectionKanBanCard }
+			component={CollectionKanBanCard}
 		/>
 	)
 }

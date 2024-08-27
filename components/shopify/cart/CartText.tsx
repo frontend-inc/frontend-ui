@@ -20,7 +20,7 @@ const CartText: React.FC<CartTextProps> = (props) => {
 				<Typography variant="body1" sx={sx.value}>
 					{value}
 				</Typography>
-				{icon && <Icon name={icon}  />}
+				{icon && <Icon name={icon} />}
 			</Stack>
 		</Box>
 	)

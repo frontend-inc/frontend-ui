@@ -32,7 +32,7 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
 	return (
 		<Box onClick={handleDefaultClick}>
 			<IconButton onClick={toggleMenu}>
-				<Icon name={icon}  color={color} />
+				<Icon name={icon} color={color} />
 			</IconButton>
 			<Menu open={open} anchorEl={anchorEl} onClose={closeMenu}>
 				{children}
@@ -40,7 +40,7 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
 					<MenuItem onClick={handleEdit}>
 						{enableIcons && (
 							<ListItemIcon>
-								<Icon name="Pencil"  />
+								<Icon name="Pencil" />
 							</ListItemIcon>
 						)}
 						Edit
@@ -50,7 +50,7 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
 					<MenuItem onClick={handleDelete}>
 						{enableIcons && (
 							<ListItemIcon>
-								<Icon name="Trash"  />
+								<Icon name="Trash" />
 							</ListItemIcon>
 						)}
 						Delete

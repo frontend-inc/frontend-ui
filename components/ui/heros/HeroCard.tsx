@@ -1,40 +1,38 @@
 import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
-import {
-	Image,	
-} from '../..'
+import { Image } from '../..'
 
 export type HeroCardProps = {
-  label?: string
-  image?: string
-  primary?: string
-  secondary?: string
-  actions?: React.ReactNode,
-  secondaryAction?: React.ReactNode,  
-  children?: React.ReactNode
-  slots?: {
-    image?: any,
-    content?: any,
-  }
+	label?: string
+	image?: string
+	primary?: string
+	secondary?: string
+	actions?: React.ReactNode
+	secondaryAction?: React.ReactNode
+	children?: React.ReactNode
+	slots?: {
+		image?: any
+		content?: any
+	}
 }
 
 const HeroCard: React.FC<HeroCardProps> = (props) => {
 	const {
-    label,
-    image,
-    primary,
-    secondary,
-    actions,
-    secondaryAction,
-    slots = {
-      image: {},
-      content: {},
-    },
+		label,
+		image,
+		primary,
+		secondary,
+		actions,
+		secondaryAction,
+		slots = {
+			image: {},
+			content: {},
+		},
 	} = props || {}
 
 	return (
 		<Stack spacing={2}>
-			{ secondaryAction }
+			{secondaryAction}
 			<Box sx={sx.root}>
 				<Stack
 					sx={sx.container}
@@ -46,21 +44,21 @@ const HeroCard: React.FC<HeroCardProps> = (props) => {
 				>
 					<Stack spacing={2} direction="column" sx={sx.leftPanel}>
 						<Box sx={sx.imageContainer}>
-							<Image 
-                src={image} 
-                alt={primary} 
-                height={400} 
-                label={label} 
-                { ...slots.image }
-              />
+							<Image
+								src={image}
+								alt={primary}
+								height={400}
+								label={label}
+								{...slots.image}
+							/>
 						</Box>
-            { actions }						
+						{actions}
 					</Stack>
-					<Stack spacing={2} sx={sx.content} { ...slots.content }>
+					<Stack spacing={2} sx={sx.content} {...slots.content}>
 						<Typography color="text.primary" variant="h4">
 							{primary}
 						</Typography>
-            { secondary }						
+						{secondary}
 					</Stack>
 				</Stack>
 			</Box>
@@ -120,7 +118,7 @@ const sx = {
 	},
 	buttons: {
 		width: '100%',
-	},  
+	},
 	imageContainer: {
 		transition: 'all 0.5s ease-in-out',
 		borderRadius: 1,
@@ -128,12 +126,12 @@ const sx = {
 		minWidth: {
 			sm: 420,
 			xs: '100%',
-		},    
+		},
 	},
 	leftPanel: {
 		width: '100%',
 	},
 	leftPanelBorder: {
 		pb: 2,
-	},  
+	},
 }

@@ -3,9 +3,9 @@ import { Checkbox, Box, Stack, Typography } from '@mui/material'
 import { Icon, Image, MenuButton, TouchableOpacity } from '../..'
 
 type DataListItemProps = {
-  sortable?: boolean
-  selectable?: boolean
-  selected?: boolean
+	sortable?: boolean
+	selectable?: boolean
+	selected?: boolean
 	label?: string
 	primary: string
 	secondary?: string
@@ -16,8 +16,8 @@ type DataListItemProps = {
 	handleClick?: () => void
 	handleEdit?: () => void
 	handleDelete?: () => void
-  handleSelect?: () => void
-  handleAddReference?: () => void
+	handleSelect?: () => void
+	handleAddReference?: () => void
 	slots?: {
 		item?: any
 		image?: any
@@ -26,33 +26,33 @@ type DataListItemProps = {
 
 const DataListItem: React.FC<DataListItemProps> = (props) => {
 	const {
-    sortable,
-    
-    selectable,
-    selected,
+		sortable,
+
+		selectable,
+		selected,
 
 		label,
 		primary,
 		secondary,
 		actions,
 		secondaryAction,
-		height=180,
+		height = 180,
 		image,
 		handleClick,
 		handleEdit,
 		handleDelete,
-    handleSelect,
+		handleSelect,
 		slots = {
 			item: {},
 			image: {},
 		},
 	} = props || {}
 
-  const handleChange = () => {
-    if (handleSelect) {
-      handleSelect()
-    }
-  }
+	const handleChange = () => {
+		if (handleSelect) {
+			handleSelect()
+		}
+	}
 
 	return (
 		<Box sx={sx.root}>
@@ -61,33 +61,28 @@ const DataListItem: React.FC<DataListItemProps> = (props) => {
 				spacing={1}
 				flexDirection={{ xs: 'column', sm: 'row' }}
 			>
-        <Stack direction="row" alignItems="flex-start">
-          { selectable && (
-            <Checkbox 
-              checked={selected}
-              onChange={handleChange}
-              color="primary"
-              size="small"
-            /> 
-          )}
-          { sortable && (
-            <Icon 
-              name="GripVertical"
-              color="text.secondary"
-            />
-          )}
-          <Box sx={sx.image}>
-            <TouchableOpacity handleClick={handleClick}>
-              <Image
-                label={label}
-                src={image}
-                height={height}
-                alt={primary}
-                {...slots.image}
-              />
-            </TouchableOpacity>
-          </Box>
-        </Stack>
+				<Stack direction="row" alignItems="flex-start">
+					{selectable && (
+						<Checkbox
+							checked={selected}
+							onChange={handleChange}
+							color="primary"
+							size="small"
+						/>
+					)}
+					{sortable && <Icon name="GripVertical" color="text.secondary" />}
+					<Box sx={sx.image}>
+						<TouchableOpacity handleClick={handleClick}>
+							<Image
+								label={label}
+								src={image}
+								height={height}
+								alt={primary}
+								{...slots.image}
+							/>
+						</TouchableOpacity>
+					</Box>
+				</Stack>
 				<Stack direction="row" spacing={1} sx={sx.contentArea}>
 					<Stack direction="column" sx={sx.content}>
 						<Stack direction="column" spacing={0.5}>
@@ -127,7 +122,7 @@ const sx = {
 		overflow: 'hidden',
 		borderBottom: '1px solid',
 		borderColor: 'divider',
-    bgcolor: 'background.main',
+		bgcolor: 'background.main',
 	},
 	gradient: {
 		'&::after': {

@@ -38,9 +38,7 @@ const CmsReferenceGrid: React.FC<CmsReferenceGridProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-      <ReferenceCollectionGrid 
-        {...rest}
-      />			
+			<ReferenceCollectionGrid {...rest} />
 		</Section>
 	)
 }
