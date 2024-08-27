@@ -39,7 +39,6 @@ const useForms = (params?: FormParams) => {
 
 	const handleShow = (resource: any) => {
 		setResource(resource)
-		setOpenReferences(false)
 		setOpenEdit(false)
 		setOpenShow(true)
 	}
@@ -49,8 +48,7 @@ const useForms = (params?: FormParams) => {
 		setResource({
 			id: undefined,
 		})
-		setOpenShow(false)
-		setOpenReferences(false)
+		setOpenShow(false)		
 		setOpenEdit(true)
 	}
 
@@ -58,16 +56,7 @@ const useForms = (params?: FormParams) => {
 		if (!currentUser?.id) return setAuthOpen(true)
 		setResource(resource)
 		setOpenShow(false)
-		setOpenReferences(false)
 		setOpenEdit(true)
-	}
-
-	const handleAddReference = (resource) => {
-		if (!currentUser?.id) return setAuthOpen(true)
-		setResource(resource)
-		setOpenShow(false)
-		setOpenEdit(false)
-		setOpenReferences(true)
 	}
 
 	const handleSubmit = async () => {
@@ -127,8 +116,7 @@ const useForms = (params?: FormParams) => {
 		handleDeleteClick,
 		handleRemove,
 		handleShow,
-		handleSubmit,
-		handleAddReference,
+		handleSubmit,		
 
 		openEdit,
 		openDelete,
