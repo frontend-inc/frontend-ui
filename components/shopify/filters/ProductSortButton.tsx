@@ -38,7 +38,7 @@ const ProductSortButton: React.FC<ProductSortButtonProps> = (props) => {
 					variant="contained"
 					color="secondary"
 					onClick={handleOpen}
-					endIcon={<Icon name="ArrowDownUp" size={20} />}
+					endIcon={<Icon name="ArrowDownUp"  />}
 				>
 					{
 						COLLECTION_SORT_OPTIONS.find((option) => option.value === sortKey)

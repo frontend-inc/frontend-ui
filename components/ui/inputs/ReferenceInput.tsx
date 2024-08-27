@@ -103,7 +103,7 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
 				variant="contained"
 				color="secondary"
 				startIcon={
-					<Icon name="Plus" size={20} color="secondary.contrastText" />
+					<Icon name="Plus"  color="secondary.contrastText" />
 				}
 			>
 				Add {contentType}

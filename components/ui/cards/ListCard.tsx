@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Stack, Typography, Checkbox } from '@mui/material'
+import { Link, Box, Stack, Typography, Checkbox } from '@mui/material'
 import { Icon, Image, AvatarImage } from '../..'
 import { CardProps } from './Card'
 
@@ -51,8 +51,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 				spacing={1}
 				flexDirection={{ xs: 'column', sm: 'row' }}
 			>
-        <Stack direction="row" alignItems='flex-start' spacing={0}>
-          
+        <Stack direction="row" alignItems='flex-start' spacing={0}>          
           { !disableImage && (
             <Box sx={sx.image}>
               { circular ? (
@@ -80,9 +79,14 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 				<Stack direction="row" spacing={1} sx={sx.contentArea}>
 					<Stack direction="column" sx={sx.content}>
 						<Stack direction="column" spacing={0.5}>
-							<Typography color="text.primary" variant="subtitle1">
+							<Link 
+                onClick={ handleClick }
+                sx={ sx.link } 
+                color="text.primary" 
+                variant="subtitle1"
+              >
 								{primary}
-							</Typography>
+							</Link>
 							<Typography color="text.secondary" variant="body2">
 								{secondary}
 							</Typography>
@@ -190,4 +194,7 @@ const sx = {
 			xs: 1,
 		},
 	},
+  link: {
+    textDecoration: 'none'
+  }
 }

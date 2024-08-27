@@ -2,12 +2,14 @@ import React from 'react'
 import { 
   DataToolbarModal, 
   DataMultiselectButton,
-  DataMultiselectUpdateButton 
+  DataMultiselectUpdateButton,
+  DataMultiselectAddToListButton,
+  DataMultiselectDeleteButton 
 } from '../../../components'
-import { useResourceContext } from 'frontend-js'
-import { MultiselectButtonType, ToolbarButtonType } from '../../../types'
+import { ToolbarButtonType } from '../../../types'
 
 type CollectionToolbarModalProps = {
+  enableDelete?: boolean
   enableAddToList?: boolean
   toolbarButtons?: ToolbarButtonType[]
 }
@@ -15,36 +17,23 @@ type CollectionToolbarModalProps = {
 const CollectionToolbarModal: React.FC<CollectionToolbarModalProps> = (props) => {
 
   const { 
+    enableDelete,
     enableAddToList,
     toolbarButtons=[]
   } = props || {}
 
-  const { setOpenReferences } = useResourceContext()
-
-  const handleAddReference = (selected: any) => {
-    setOpenReferences(true)
-  }
-
-  const buttons: MultiselectButtonType[] = []
-
-  if(enableAddToList){
-    buttons.push({
-      label: 'Add to List',
-      icon: 'ListPlus',
-      color: 'secondary',
-      variant: 'contained',
-      onClick: handleAddReference
-    })
-  }
-
   return(
     <DataToolbarModal>
-      { buttons.map((button, index) =>  (
-        <DataMultiselectButton 
-          key={ index }
-          button={ button }
+      { enableAddToList && (
+        <DataMultiselectAddToListButton
+          query={{
+            current_user: true
+          }}
         />
-      ))}      
+      )}
+      { enableDelete && (
+        <DataMultiselectDeleteButton />
+      )}
       { toolbarButtons?.map((button, index) => (
         <DataMultiselectUpdateButton 
           key={ index }

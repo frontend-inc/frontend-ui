@@ -39,7 +39,7 @@ const LocationOptionsList: React.FC<LocationOptionsListProps> = (props) => {
 									onClick={() => handleClick(option)}
 								>
 									<ListItemIcon>
-										<Icon name="MapPin" size={20} />
+										<Icon name="MapPin"  />
 									</ListItemIcon>
 									<ListItemText primary={option.value} />
 								</ListItemButton>

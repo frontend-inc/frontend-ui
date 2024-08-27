@@ -44,7 +44,7 @@ const StripePaymentLink: React.FC<StripePaymentLinkProps> = (props) => {
 				onClick={handleClick}
 				disabled={!stripe_payment_link}
 				startIcon={
-					<Icon name="CreditCard" size={20} color="primary.contrastText" />
+					<Icon name="CreditCard"  color="primary.contrastText" />
 				}
 			>
 				{buttonText}

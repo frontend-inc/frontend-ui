@@ -66,7 +66,7 @@ const ButtonTabs: React.FC<ButtonTabsProps> = (props) => {
 					value={tab.value}
 					icon={
 						tab.icon && (
-							<Icon size={20} color="text.secondary" name={tab.icon} />
+							<Icon  color="text.secondary" name={tab.icon} />
 						)
 					}
 				/>

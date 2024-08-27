@@ -92,7 +92,7 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
 					variant="contained"
 					onClick={handleAdd}
 					startIcon={
-						<Icon name="Plus" color="primary.contrastText" size={20} />
+						<Icon name="Plus" color="primary.contrastText"  />
 					}
 				>
 					Add

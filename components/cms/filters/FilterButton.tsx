@@ -57,7 +57,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 							<Icon
 								name="SlidersHorizontal"
 								color="secondary.contrastText"
-								size={20}
+								
 							/>
 						)
 					}

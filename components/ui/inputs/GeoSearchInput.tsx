@@ -133,7 +133,7 @@ const GeoSearchInput: React.FC<GeoSearchInputProps> = (props) => {
 					sx={sx.iconButton}
 					aria-label="search"
 				>
-					<Icon name="Search" size={20} color="text.secondary" />
+					<Icon name="Search"  color="text.secondary" />
 				</IconButton>
 			</Paper>
 			<LocationOptionsList

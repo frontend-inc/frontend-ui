@@ -91,7 +91,7 @@ const AutocompleteInput: React.FC<AutocompleteInput> = (props) => {
 														sx={sx.avatar}
 													/>
 												)}
-												{option?.icon && <Icon name={option.icon} size={20} />}
+												{option?.icon && <Icon name={option.icon}  />}
 											</ListItemIcon>
 											<ListItemText
 												primary={

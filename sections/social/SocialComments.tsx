@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { Comments } from '../../components'
-import { CommentsProps } from '../../components/social/comments/Comments'
+import { CommentList } from '../../components'
+import { CommentListProps } from '../../components/social/comments/CommentList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type SocialCommentsProps = SectionProps & HeadingProps & CommentsProps
+type SocialCommentsProps = SectionProps & HeadingProps & CommentListProps
 
 const SocialComments: React.FC<SocialCommentsProps> = (props) => {
 	const {
@@ -38,7 +38,7 @@ const SocialComments: React.FC<SocialCommentsProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<Comments {...rest} />
+			<CommentList {...rest} />
 		</Section>
 	)
 }

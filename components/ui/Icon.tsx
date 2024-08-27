@@ -10,7 +10,7 @@ type LucideIconProps = {
 }
 
 const LucideIcon: React.FC<LucideIconProps> = (props) => {
-	const { name, color = 'text.primary', size = 24 } = props
+	const { name, color = 'text.primary', size = 20 } = props
 	const theme = useTheme()
 	const Icon = icons[name]
 	if (!Icon) return null

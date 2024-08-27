@@ -52,6 +52,13 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 			justifyContent={justifyContent}
 			spacing={spacing}
 		>
+      {enableAddToList == true && (
+				<AddToListButton 	
+          variant={variant}				
+					resource={resource}					
+					color={color}
+				/>
+			)}
 			{enableLikes == true && (
 				<LikeButton
 					variant={variant}
@@ -65,13 +72,6 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 					variant={variant}
 					handle={resource?.handle}
 					numFavorites={numFavorites}
-					color={color}
-				/>
-			)}
-      {enableAddToList == true && (
-				<AddToListButton 	
-          variant={variant}				
-					resource={resource}					
 					color={color}
 				/>
 			)}

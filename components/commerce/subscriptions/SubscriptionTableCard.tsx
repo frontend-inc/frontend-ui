@@ -52,7 +52,7 @@ const SubscriptionTableCard: React.FC<SubscriptionTableCardProps> = (props) => {
 					{subscriptionPlan?.features?.map((feature, i) => (
 						<ListItem key={i}>
 							<ListItemIcon>
-								<Icon name="Check" size={20} color="text.secondary" />
+								<Icon name="Check"  color="text.secondary" />
 							</ListItemIcon>
 							<ListItemText
 								primary={

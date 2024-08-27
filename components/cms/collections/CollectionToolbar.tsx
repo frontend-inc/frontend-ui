@@ -122,7 +122,7 @@ const CollectionToolbar: React.FC<CollectionToolbarProps> = (props) => {
 							variant="contained"
 							onClick={handleAdd}
 							startIcon={
-								<Icon name="Plus" size={20} color="primary.contrastText" />
+								<Icon name="Plus"  color="primary.contrastText" />
 							}
 						>
 							{buttonText}

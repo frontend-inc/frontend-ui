@@ -25,7 +25,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = (props) => {
 				maxItems={maxLinks}
 				aria-label="breadcrumb"
 				separator={
-					<Icon color="text.secondary" name="ChevronRight" size={20} />
+					<Icon color="text.secondary" name="ChevronRight"  />
 				}
 			>
 				{links.map((link, index) => (

@@ -1,24 +1,23 @@
 import React, { useState, useContext, useEffect } from 'react'
 import {
 	AlertModal,
-	CommentReplyButton,
-	Comment,
+	CommentListItem,
 	CommentForm,
 	LoadMore,
 	Placeholder,
 	AuthGuard,
-} from '../../../components'
+} from '../..'
 import { List, Stack, Collapse, Typography } from '@mui/material'
 import { useComments } from '../../../hooks'
 import { useAuth } from 'frontend-js'
 import { AppContext } from '../../../context'
 
-export type CommentsProps = {
+export type CommentListProps = {
 	handle: string
 	url: string
 }
 
-const Comments: React.FC<CommentsProps> = (props) => {
+const CommentList: React.FC<CommentListProps> = (props) => {
 	const { url, handle } = props
 	const { currentUser } = useAuth()
 
@@ -48,7 +47,6 @@ const Comments: React.FC<CommentsProps> = (props) => {
 		handle,
 	})
 
-	const { setAuthOpen } = useContext(AppContext)
 
 	const handleSubmit = async () => {
 		await createComment(comment)
@@ -102,7 +100,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
 			</AuthGuard>
 			<List disablePadding>
 				{comments?.map((comment, i) => (
-					<Comment
+					<CommentListItem
 						key={i}
 						url={url}
 						handle={handle}
@@ -113,7 +111,6 @@ const Comments: React.FC<CommentsProps> = (props) => {
 			</List>
 			{!loading && comments?.length == 0 && (
 				<Placeholder
-					enableBorder
 					icon="MessageSquare"
 					title="There are no comments."
 					description="Be the first to leave a comment."
@@ -130,7 +127,7 @@ const Comments: React.FC<CommentsProps> = (props) => {
 	)
 }
 
-export default Comments
+export default CommentList
 
 const sx = {
 	root: {

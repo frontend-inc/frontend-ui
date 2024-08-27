@@ -31,7 +31,7 @@ const VideoCard: React.FC<CardProps> = (props) => {
 					<Image src={image} height={360} alt={primary} {...slots.image} />
 				</TouchableOpacity>
 				<IconButton sx={sx.playIcon} onClick={handleClick}>
-					<Icon name="Play" color="common.white" size={20} />
+					<Icon name="Play" color="common.white"  />
 				</IconButton>
 				<Box sx={sx.buttons}>{secondaryAction}</Box>
 				{avatar && <Box sx={sx.avatar}>{avatar}</Box>}

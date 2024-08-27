@@ -160,11 +160,11 @@ const sx = {
 		justifyContent: 'space-between',
 	},
 	dialogContent: {
-		py: 2,
+		my: 2,
 		height: '100%',
 	},
 	disablePadding: {
-		p: 0,
+		m: 0,
 	},
 	dialogActions: {
 		borderTop: '1px solid',

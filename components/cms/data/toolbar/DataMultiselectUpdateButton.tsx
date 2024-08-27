@@ -46,7 +46,7 @@ const DataMultiselectUpdateButton: React.FC<DataMultiselectUpdateProps> = (props
         color='secondary'
         onClick={() => setOpen(true) }
         startIcon={ 
-          icon && <Icon name={ icon } size={20} />
+          icon && <Icon name={ icon }  />
         }
       >
         { buttonText }
@@ -54,7 +54,7 @@ const DataMultiselectUpdateButton: React.FC<DataMultiselectUpdateProps> = (props
       <Modal 
         open={ open }
         handleClose={ handleClose }
-        title="Update"
+        title={`Update selected (${selectedIds.length})`}
         loading={ loading }
       >
         <Box py={2}>

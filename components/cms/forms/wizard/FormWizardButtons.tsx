@@ -30,7 +30,7 @@ const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 				onClick={handlePrevStep}
 				disabled={currentStep == 0}
 				startIcon={
-					<Icon name="ChevronLeft" color="secondary.contrastText" size={20} />
+					<Icon name="ChevronLeft" color="secondary.contrastText"  />
 				}
 			>
 				Prev
@@ -42,7 +42,7 @@ const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 					onClick={handleNextStep}
 					disabled={currentStep == totalSteps}
 					endIcon={
-						<Icon name="ChevronRight" color="primary.contrastText" size={20} />
+						<Icon name="ChevronRight" color="primary.contrastText"  />
 					}
 				>
 					Next

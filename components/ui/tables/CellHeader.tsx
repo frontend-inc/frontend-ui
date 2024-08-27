@@ -31,8 +31,8 @@ const CellHeader: React.FC<CellHeaderProps> = (props) => {
 			endIcon={
 				active && (
 					<>
-						{sortDirection === 'asc' && <Icon name="ChevronUp" size={20} />}
-						{sortDirection === 'desc' && <Icon name="ChevronDown" size={20} />}
+						{sortDirection === 'asc' && <Icon name="ChevronUp"  />}
+						{sortDirection === 'desc' && <Icon name="ChevronDown"  />}
 					</>
 				)
 			}

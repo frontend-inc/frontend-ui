@@ -19,7 +19,7 @@ const CellButton: React.FC<CellButtonProps> = (props) => {
 				variant="contained"
 				sx={sx.button}
 				startIcon={
-					<Icon color="secondary.contrastText" name={icon} size={20} />
+					<Icon color="secondary.contrastText" name={icon}  />
 				}
 				onClick={handleClick && handleClick}
 			>

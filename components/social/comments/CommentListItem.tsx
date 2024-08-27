@@ -15,9 +15,8 @@ import { useComments } from '../../../hooks'
 import { Icon } from '../../../components'
 import moment from 'moment'
 import CommentForm from './CommentForm'
-import { transform } from 'next/dist/build/swc'
 
-type CommentProps = {
+type CommentListItemProps = {
 	url: string
 	handle: string
 	comment: any
@@ -28,7 +27,7 @@ type CommentProps = {
 	handleDelete?: (comment: any) => void
 }
 
-const Comment: React.FC<CommentProps> = (props) => {
+const CommentListItem: React.FC<CommentListItemProps> = (props) => {
 	const {
 		url,
 		handle,
@@ -85,7 +84,7 @@ const Comment: React.FC<CommentProps> = (props) => {
 				}}
 				secondaryAction={
 					<IconButton onClick={handleReply}>
-						<Icon name="MessageSquare" size={20} />
+						<Icon name="MessageSquare"  />
 					</IconButton>
 				}
 			>
@@ -139,7 +138,7 @@ const Comment: React.FC<CommentProps> = (props) => {
 			/>
 			<Collapse in={showReplies}>
 				{parentComment?.replies?.map((reply) => (
-					<Comment
+					<CommentListItem
 						key={reply.id}
 						reply
 						url={url}
@@ -154,7 +153,7 @@ const Comment: React.FC<CommentProps> = (props) => {
 	)
 }
 
-export default Comment
+export default CommentListItem
 
 const sx = {
 	root: {

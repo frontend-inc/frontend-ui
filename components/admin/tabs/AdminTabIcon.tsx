@@ -18,7 +18,7 @@ const LayoutTabIcon: React.FC<LayoutTabIconProps> = (props) => {
 			}}
 			onClick={handleClick}
 		>
-			{icon && <Icon name={icon} size={20} />}
+			{icon && <Icon name={icon}  />}
 		</IconButton>
 	)
 }

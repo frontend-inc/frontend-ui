@@ -42,7 +42,7 @@ const TableFilterButton: React.FC<TableFilterButtonProps> = (props) => {
 						) : (
 							<Icon
 								name="ListFilter"
-								size={20}
+								
 								color="secondary.contrastText"
 							/>
 						)

@@ -26,7 +26,7 @@ const AutocompleteOption: React.FC<AutocompleteOptionProps> = (props) => {
 		<ListItem {...props}>
 			{option?.icon && (
 				<ListItemIcon sx={sx.listItemIcon}>
-					<Icon name={option.icon} size={20} />
+					<Icon name={option.icon}  />
 				</ListItemIcon>
 			)}
 			{option?.image && (
@@ -192,7 +192,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 								(enableClear || handleClear) && (
 									<InputAdornment position="start" sx={sx.inputAdornment}>
 										<IconButton onClick={handleInputClear} size="small">
-											<Icon name="X" color="text.secondary" size={20} />
+											<Icon name="X" color="text.secondary"  />
 										</IconButton>
 									</InputAdornment>
 								)

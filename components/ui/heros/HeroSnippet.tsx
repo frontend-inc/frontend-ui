@@ -1,32 +1,57 @@
 import React from 'react'
 import { Paper, Box, Stack, Typography } from '@mui/material'
 import {
+  AvatarImage,
 	Image,	
 } from '../..'
 import { HeroCardProps } from './HeroCard'
 
-const HeroSnippet: React.FC<HeroCardProps> = (props) => {
-	const {
+type HeroSnippetProps = HeroCardProps & {
+  circular?: boolean
+  disableImage?: boolean
+  slots?: {
+    image?: any
+  }
+}
+
+const HeroSnippet: React.FC<HeroSnippetProps> = (props) => {
+	const {    
 		label,
     image,
     primary,
     secondary,
     actions,
-    secondaryAction,
+    disableImage,
+    circular,
+    slots={
+      image: {},
+    }
 	} = props || {}
 
   return (
 		<Paper elevation={0} sx={sx.paper}>
 			<Stack direction="column" spacing={0} sx={sx.header}>
-				<Box sx={sx.imageContainer}>
-					<Image
-						disableBorderRadius
-						label={label}
-						src={image}
-						alt={primary}
-						height={260}
-					/>
-				</Box>
+          { !disableImage && (
+            <Box sx={sx.imageContainer}>
+              { circular ? (
+                <AvatarImage                
+                  label={label}
+                  src={image}
+                  height={180}
+                  alt={primary}
+                  {...slots.image}
+                />  
+              ):(
+              <Image                
+                label={label}
+                src={image}
+                height={220}
+                alt={primary}
+                {...slots.image}
+              />
+            )}
+          </Box>
+        )}
 				<Stack spacing={0.5} direction="column" p={2} width="100%">
 					{ actions }
 					<Typography variant="subtitle1" color="text.primary">
@@ -61,6 +86,15 @@ const sx = {
 		borderRadius: (theme) =>
 			`${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0 0`,
 		overflow: 'hidden',
+	},
+  image: {		
+		width: '100%',
+    display: 'flex',
+    justifyContent: {
+      xs: 'center',
+      sm: 'flex-start',
+    },
+    alignItems: 'center',
 	},
 	closeButton: {
 		position: 'absolute',

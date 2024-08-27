@@ -128,13 +128,13 @@ const TableToolbar: React.FC<TableToolbarProps> = (props) => {
 									{enableDelete && (
 										//@ts-ignore
 										<IconButton onClick={handleDelete}>
-											<Trash size={20} />
+											<Trash  />
 										</IconButton>
 									)}
 									{enableEdit && (
 										//@ts-ignore
 										<IconButton onClick={handleEdit}>
-											<Edit size={20} />
+											<Edit  />
 										</IconButton>
 									)}
 								</>

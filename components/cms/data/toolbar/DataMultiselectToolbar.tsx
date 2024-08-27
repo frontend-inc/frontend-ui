@@ -2,8 +2,9 @@
 import React from 'react'
 import { 
   DataToolbarModal,
-  DataMultiselectButton,
-  DataMultiselectUpdateButton, 
+  DataMultiselectAddToListButton,
+  DataMultiselectUpdateButton,
+  DataMultiselectDeleteButton, 
 } from '../../..'
 import { MultiselectButtonType, ToolbarButtonType } from '../../../../types'
 
@@ -21,12 +22,8 @@ const DataMultiselectToolbar: React.FC<DataMultiselectToolbarProps> = (props) =>
   
   return(
     <DataToolbarModal>
-      { buttons?.map((button, index) => 
-        <DataMultiselectButton 
-          key={ index }
-          button={ button }
-        />
-      )}  
+      <DataMultiselectAddToListButton />
+      <DataMultiselectDeleteButton />
       { toolbarButtons?.map((button, index) => (
         <DataMultiselectUpdateButton 
           key={ index }

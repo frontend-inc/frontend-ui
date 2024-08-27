@@ -8,8 +8,7 @@ import {
 	DataDelete,
 	DataShow,
 	DataEmpty, 
-  DataReferencesModal,
-  DataSelectedToolbar
+  DataMultiselectToolbar
 } from '../..'
 import { ResourceProvider } from 'frontend-js'
 import {
@@ -53,7 +52,6 @@ export type DataListProps = {
 	empty?: React.FC<any>
 	create?: React.FC<any>
 	destroy?: React.FC<any>
-  references?: React.FC<any>
 	component?: React.FC<any>
   buttons?: MultiselectButtonType[]
 	slots?: {
@@ -66,7 +64,6 @@ export type DataListProps = {
 		create?: any
 		destroy?: any
 		empty?: any
-    references?: any
 	}
 	emptyIcon?: string
 	emptyTitle?: string
@@ -83,7 +80,6 @@ const DataList: React.FC<DataListProps> = (props) => {
 		edit: {},
 		create: {},
 		destroy: {},
-    references: {},
 		empty: {},
 	}
 
@@ -113,7 +109,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 		emptyDescription,
     buttons = [],    
 		toolbar: Toolbar = DataToolbar,
-    toolbarModal: ToolbarModal = DataSelectedToolbar,
+    toolbarModal: ToolbarModal = DataMultiselectToolbar,
 		list: List = DataListItems,
 		component: Component = DataItem,
 		show: Show = DataShow,
@@ -121,14 +117,13 @@ const DataList: React.FC<DataListProps> = (props) => {
 		create: Create = DataForm,
 		destroy: Delete = DataDelete,
 		empty: Empty = DataEmpty,
-    references: References = DataReferencesModal,
 		slots = SLOT_PROPS,
 		loadMore,
 		...rest
 	} = props
 
 	return (
-		<ResourceProvider name={name} url={url}>
+		<ResourceProvider name={name} url={url} foreignUrl={ foreignUrl }>
 			<DataFetcher query={query}>
 				<Toolbar
 					url={url}
@@ -177,10 +172,6 @@ const DataList: React.FC<DataListProps> = (props) => {
 					description={emptyDescription}
 					{...slots.destroy}
 				/>        
-        <References           
-          url={foreignUrl}
-          { ...slots.references }
-        />        
 			</DataFetcher>
 		</ResourceProvider>
 	)

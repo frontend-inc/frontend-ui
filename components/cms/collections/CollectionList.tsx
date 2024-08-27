@@ -62,7 +62,6 @@ export type CollectionListProps = {
 	create?: React.FC<any>
 	destroy?: React.FC<any>
 	empty?: React.FC<any>
-  references?: React.FC<any>
 	slots?: {
 		toolbar?: any
     toolbarModal?: any
@@ -72,7 +71,6 @@ export type CollectionListProps = {
 		create?: any
 		destroy?: any
 		empty?: any
-    references?: any
     item?: any
 	}
   circular?: boolean
@@ -137,7 +135,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		destroy: Destroy = CollectionDelete,
 		empty: Empty = CollectionEmpty,
     toolbarModal: ToolbarModal = CollectionToolbarModal,
-    references: References = CollectionReferencesModal,
 		slots: defaultSlots = {
 			toolbar: {},      
       toolbarModal: {},
@@ -147,7 +144,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			edit: {},
 			create: {},
 			destroy: {},
-      references: {},
 			empty: {},
 		},
 	} = props || {}
@@ -203,6 +199,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
     toolbarModal: {
       ...defaultSlots.toolbarModal,
       enableAddToList,
+      enableDelete,
       toolbarButtons
     },
 		empty: defaultSlots.empty,
@@ -253,7 +250,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			create={Create}
 			destroy={Destroy}
 			empty={Empty}
-      references={ References }
 			slots={slots}
 		/>
 	)

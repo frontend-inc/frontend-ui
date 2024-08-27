@@ -29,7 +29,7 @@ const JsonItem: React.FC<JsonItemProps> = (props) => {
 			disablePadding
 			secondaryAction={
 				<IconButton size="small" onClick={() => handleRemove(index)}>
-					<Icon name="X" size={20} />
+					<Icon name="X"  />
 				</IconButton>
 			}
 		>
@@ -38,11 +38,11 @@ const JsonItem: React.FC<JsonItemProps> = (props) => {
 				onClick={(ev) => handleClick(ev, item, index)}
 			>
 				<ListItemIcon sx={sx.listItemIcon}>
-					<Icon name="GripVertical" size={20} />
+					<Icon name="GripVertical"  />
 				</ListItemIcon>
 				{item?.icon && (
 					<ListItemIcon sx={sx.listItemIcon}>
-						<Icon name={item.icon} size={20} />
+						<Icon name={item.icon}  />
 					</ListItemIcon>
 				)}
 				<ListItemText

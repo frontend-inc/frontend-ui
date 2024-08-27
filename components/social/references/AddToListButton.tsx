@@ -1,7 +1,11 @@
-import React from 'react'
-import { useResourceContext } from 'frontend-js'
-import { Box, IconButton } from '@mui/material'
+import React, { useState } from 'react'
+import { useResource, useResourceContext } from 'frontend-js'
+import { Box, Button, IconButton } from '@mui/material'
 import { PlaylistAdd } from '@mui/icons-material'
+import { Modal } from '../../../components'
+import { RemoteAutosuggest } from '../../../components'
+import { useAuth } from 'frontend-js'
+import { useApp } from '../../../hooks'
 
 type AddToListProps = {
   variant?: 'icon' | 'button'
@@ -10,30 +14,84 @@ type AddToListProps = {
 }
 
 const AddToList: React.FC<AddToListProps> = (props) => {
-	const { variant = 'icon', resource, color = 'text.secondary' } = props
+	const { variant = 'icon', resource: selected, color = 'text.secondary' } = props
 
-	const { openReferences, setOpenReferences, setResource } = useResourceContext()
+  const { currentUser } = useAuth()
+  const { setAuthOpen } = useApp()
+
+  const [open, setOpen] = useState(false)
+  const handleClose = () => setOpen(false)
+	
+  const { foreignUrl } = useResourceContext()
+
+  const {
+    loading,
+    resource,
+    handleChange,
+    addReferences 
+  } = useResource({
+    name: 'document',
+    url: foreignUrl
+  })
 
 	const handleClick = () => {
-		setResource(resource)
-		setOpenReferences(!openReferences)
+    if(!currentUser?.id) return setAuthOpen(true);
+		setOpen(true)
 	}
 
+  const handleSubmit = async () => {
+    if(!currentUser?.id) return setAuthOpen(true);
+    if(resource?.id){
+      await addReferences(resource?.id, [selected?.id])
+      setOpen(false)
+    }    
+  }
+
 	return (
-		<Box>
-			<IconButton
-				onClick={handleClick}
-				sx={{
-					color,
-					'&:hover': {
-						color,
-					},
-					...(variant == 'icon' ? sx.icon : sx.button),          
-				}}
-			>
-				<PlaylistAdd fontSize="small" />
-			</IconButton>      
-		</Box>
+    <>
+      <Box>
+        <IconButton
+          onClick={handleClick}
+          sx={{
+            color,
+            '&:hover': {
+              color,
+            },
+            ...(variant == 'icon' ? sx.icon : sx.button),          
+          }}
+        >
+          <PlaylistAdd fontSize="small" />
+        </IconButton>      
+      </Box>
+      <Modal 
+        title="Add to List"
+        loading={ loading }
+        open={ open }
+        handleClose={handleClose}
+        buttons={
+          <Button 
+            fullWidth
+            onClick={ handleSubmit }
+            variant="contained"
+            color="primary"
+            startIcon={ <PlaylistAdd fontSize="small" /> }
+          >
+            Add to List
+          </Button>
+        }
+      >
+        <RemoteAutosuggest           
+          url={ foreignUrl }
+          name="id"
+          displayField='title'
+          value={ resource?.id }
+          handleChange={ handleChange }
+          defaultQuery={{
+            current_user: true 
+          }}
+        />
+      </Modal>
+    </>
 	)
 }
 

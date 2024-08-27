@@ -58,7 +58,7 @@ const AuthMenu: React.FC<AuthMenuProps> = (props) => {
 					<Divider sx={sx.divider} />
 					<MenuItem onClick={handleLogout}>
 						<ListItemIcon>
-							<Icon name="LogOut" size={20} />
+							<Icon name="LogOut"  />
 						</ListItemIcon>
 						Logout
 					</MenuItem>

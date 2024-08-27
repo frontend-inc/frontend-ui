@@ -96,7 +96,7 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 			>        
 				{sortable && (
 					<ListItemIcon sx={sx.dragHandle}>
-						<Icon name="GripVertical" size={20} color="text.secondary" />
+						<Icon name="GripVertical"  color="text.secondary" />
 					</ListItemIcon>
 				)}
 				{avatar && <ListItemIcon sx={sx.listItemIcon}>{avatar}</ListItemIcon>}

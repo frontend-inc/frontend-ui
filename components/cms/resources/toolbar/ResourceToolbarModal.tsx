@@ -48,7 +48,7 @@ const ResourceToolbarModal: React.FC<ResourceToolbarModalProps> = (props) => {
               <IconButton 
                 onClick={ handleClose }
               >
-                <Icon name="X" size={20} />
+                <Icon name="X"  />
               </IconButton>
             </Box>   
           </Stack>

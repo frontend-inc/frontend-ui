@@ -49,7 +49,7 @@ const FieldWrapper: React.FC<FieldWrapperProps> = (props) => {
 				</Box>
 			)}
 			<Stack direction="row" spacing={1}>
-				{icon && <Icon name={icon} color={color} size={20} />}
+				{icon && <Icon name={icon} color={color}  />}
 				{children}
 			</Stack>
 		</Stack>

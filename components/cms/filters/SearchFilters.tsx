@@ -29,7 +29,7 @@ const ListSearchFilters: React.FC<ListFilterListProps> = (props) => {
 					onClick={toggleMenu}
 					color="secondary"
 					variant="contained"
-					startIcon={<Icon name="SlidersHorizontal" size={20} />}
+					startIcon={<Icon name="SlidersHorizontal"  />}
 				>
 					Filters
 				</Button>

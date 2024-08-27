@@ -23,7 +23,7 @@ export { default as CollectionForm } from './CollectionForm'
 export { default as CollectionDelete } from './CollectionDelete'
 export { default as CollectionToolbar } from './CollectionToolbar'
 export { default as CollectionToolbarModal } from './CollectionToolbarModal'
-export { default as CollectionReferencesModal } from './CollectionReferencesModal'
+export { default as CollectionReferencesModal } from '../../social/references/AddToListModal'
 
 export { default as ReferenceCollectionList } from './ReferenceCollectionList'
 export { default as ReferenceCollectionGrid } from './ReferenceCollectionGrid'
