@@ -41,11 +41,3 @@ export type SocialFieldType = {
 	provider: string
 	name: string
 }
-
-export type MultiselectButtonType = {
-	color?: 'primary' | 'secondary'
-	variant?: 'contained' | 'outlined'
-	label: string
-	icon: string
-	onClick: (selected: any[]) => void
-}

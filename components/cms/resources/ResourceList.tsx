@@ -15,20 +15,20 @@ import ResourceForm from './ResourceForm'
 import ResourceShow from './ResourceShow'
 import ResourceItem from './ResourceItem'
 import ResourceListItems from './ResourceListItems'
+import ResourceHeader from './ResourceHeader'
 import ResourceToolbar from './ResourceToolbar'
-import ResourceToolbarModal from './toolbar/ResourceToolbarModal'
-import { MultiselectButtonType } from '../../../types'
+import { ToolbarButtonType } from '../../../types'
 
 export type ResourceListProps = {
 	sortable?: boolean
 	selectable?: boolean
-	toolbar?: React.FC<any>
+	header?: React.FC<any>
 	list?: React.FC<any>
 	edit?: React.FC<any>
 	create?: React.FC<any>
 	show?: React.FC<any>
 	pagination?: React.FC<any>
-	toolbarModal?: React.FC<any>
+	toolbar?: React.FC<any>
 	url: string
 	name: string
 	component?: React.FC<any>
@@ -57,14 +57,14 @@ export type ResourceListProps = {
 	emptyDescription?: string
 	itemProps?: any
 	disableInfiniteLoad?: boolean
-	buttons?: MultiselectButtonType[]
+	buttons?: ToolbarButtonType[]
 	slots?: {
 		list?: any
 		edit?: any
 		create?: any
 		show?: any
-		toolbar?: any
-		toolbarModal?: any
+    header?: any
+		toolbar?: any	
 		pagination?: any
 	}
 }
@@ -75,16 +75,16 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		edit: {},
 		create: {},
 		show: {},
+		header: {},
 		toolbar: {},
-		toolbarModal: {},
 		pagination: {},
 	}
 
 	const {
 		sortable = false,
 		selectable = false,
+		header: Header = ResourceHeader,
 		toolbar: Toolbar = ResourceToolbar,
-		toolbarModal: ToolbarModal = ResourceToolbarModal,
 		list: List = ResourceListItems,
 		component: Component = ResourceItem,
 		edit: EditForm = ResourceForm,
@@ -320,7 +320,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 
 	return (
 		<Stack spacing={1} sx={sx.root}>
-			<Toolbar
+			<Header
 				selected={selected}
 				direction={direction}
 				enableSearch={enableSearch}
@@ -339,16 +339,16 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				filterOptions={filterOptions}
 				sortOptions={sortOptions}
 				query={query}
-				{...slots.toolbar}
+				{...slots.header}
 			/>
-			<ToolbarModal
+			<Toolbar
 				selected={selected}
 				selectedIds={selectedIds}
 				open={selected?.length > 0}
 				handleClose={handleClear}
 				buttons={buttons}
 				onSuccess={handleSuccess}
-				{...slots.toolbarModal}
+				{...slots.toolbar}
 			/>
 			<Box
 				sx={{

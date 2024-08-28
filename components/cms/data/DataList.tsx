@@ -3,20 +3,21 @@ import {
 	DataFetcher,
 	DataItem,
 	DataListItems,
-	DataToolbar,
+	DataHeader,
 	DataForm,
 	DataDelete,
 	DataShow,
 	DataEmpty,
-	DataMultiselectToolbar,
+	DataToolbar,
 } from '../..'
 import { ResourceProvider } from 'frontend-js'
 import {
+  ToolbarButtonType,
 	FormFieldType,
 	QueryParamsType,
-	MultiselectButtonType,
 	SearchFilterOptionType,
 	SortOptionType,
+  ButtonType,
 } from '../../../types'
 
 export type DataListProps = {
@@ -31,6 +32,7 @@ export type DataListProps = {
 	fields: FormFieldType[]
 	filterOptions: SearchFilterOptionType[]
 	sortOptions: SortOptionType[]
+  buttons?: ButtonType[]
 	href?: string
 	enableSearch?: boolean
 	enableGeoSearch?: boolean
@@ -45,18 +47,18 @@ export type DataListProps = {
 	loadMore?: boolean
 	list?: React.FC<any>
 	sortableList?: React.FC<any>
+	header?: React.FC<any>
 	toolbar?: React.FC<any>
-	toolbarModal?: React.FC<any>
 	show?: React.FC<any>
 	edit?: React.FC<any>
 	empty?: React.FC<any>
 	create?: React.FC<any>
 	destroy?: React.FC<any>
 	component?: React.FC<any>
-	buttons?: MultiselectButtonType[]
+	toolbarButtons?: ToolbarButtonType[]
 	slots?: {
+		header?: any
 		toolbar?: any
-		toolbarModal?: any
 		list?: any
 		item?: any
 		show?: any
@@ -72,8 +74,8 @@ export type DataListProps = {
 
 const DataList: React.FC<DataListProps> = (props) => {
 	const SLOT_PROPS = {
+		header: {},
 		toolbar: {},
-		toolbarModal: {},
 		list: {},
 		item: {},
 		show: {},
@@ -108,8 +110,8 @@ const DataList: React.FC<DataListProps> = (props) => {
 		emptyTitle,
 		emptyDescription,
 		buttons = [],
+		header: Header = DataHeader,
 		toolbar: Toolbar = DataToolbar,
-		toolbarModal: ToolbarModal = DataMultiselectToolbar,
 		list: List = DataListItems,
 		component: Component = DataItem,
 		show: Show = DataShow,
@@ -123,9 +125,13 @@ const DataList: React.FC<DataListProps> = (props) => {
 	} = props
 
 	return (
-		<ResourceProvider name={name} url={url} foreignUrl={foreignUrl}>
+		<ResourceProvider 
+      name={name} 
+      url={url} 
+      foreignUrl={foreignUrl}
+    >
 			<DataFetcher query={query}>
-				<Toolbar
+				<Header
 					url={url}
 					query={query}
 					enableSearch={enableSearch}
@@ -134,9 +140,12 @@ const DataList: React.FC<DataListProps> = (props) => {
 					enableSorting={enableSorting}
 					filterOptions={filterOptions}
 					sortOptions={sortOptions}
-					{...slots.toolbar}
+					{...slots.header}
 				/>
-				<ToolbarModal {...slots.toolbarModal} buttons={buttons} />
+				<Toolbar 
+          {...slots.toolbar} 
+          buttons={buttons} 
+        />
 				<List
 					grid={grid}
 					selectable={selectable}

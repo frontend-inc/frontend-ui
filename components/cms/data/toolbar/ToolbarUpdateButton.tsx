@@ -4,13 +4,13 @@ import { Icon, FormFields, Modal } from '../../..'
 import { useResourceContext } from 'frontend-js'
 import { FormFieldType } from '../../../../types'
 
-type DataMultiselectUpdateProps = {
+type ToolbarUpdateProps = {
 	buttonText?: string
 	icon?: string
 	fields: FormFieldType[]
 }
 
-const DataMultiselectUpdateButton: React.FC<DataMultiselectUpdateProps> = (
+const ToolbarUpdateButton: React.FC<ToolbarUpdateProps> = (
 	props
 ) => {
 	const { buttonText = 'Update', icon, fields = [] } = props || {}
@@ -68,4 +68,4 @@ const DataMultiselectUpdateButton: React.FC<DataMultiselectUpdateProps> = (
 	)
 }
 
-export default DataMultiselectUpdateButton
+export default ToolbarUpdateButton

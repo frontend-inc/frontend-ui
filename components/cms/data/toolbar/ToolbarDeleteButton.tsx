@@ -5,7 +5,7 @@ import { useApp } from '../../../../hooks'
 import { useAuth } from 'frontend-js'
 import { Button } from '@mui/material'
 
-const DataMultiselectDelete: React.FC<any> = () => {
+const ToolbarDeleteButton: React.FC<any> = () => {
 	const { currentUser } = useAuth()
 	const { setAuthOpen } = useApp()
 	const [open, setOpen] = useState(false)
@@ -44,4 +44,4 @@ const DataMultiselectDelete: React.FC<any> = () => {
 	)
 }
 
-export default DataMultiselectDelete
+export default ToolbarDeleteButton

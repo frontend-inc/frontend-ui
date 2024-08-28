@@ -3,11 +3,11 @@ import { Paper, Collapse, Box, Stack, IconButton } from '@mui/material'
 import { Icon } from '../../..'
 import { useResourceContext } from 'frontend-js'
 
-type DataToolbarModalProps = {
+type ToolbarModalProps = {
 	children: React.ReactNode
 }
 
-const DataToolbarModal: React.FC<DataToolbarModalProps> = (props) => {
+const ToolbarModal: React.FC<ToolbarModalProps> = (props) => {
 	const { selected = [], handleClear } = useResourceContext()
 
 	const { children } = props || {}
@@ -40,7 +40,7 @@ const DataToolbarModal: React.FC<DataToolbarModalProps> = (props) => {
 	)
 }
 
-export default DataToolbarModal
+export default ToolbarModal
 
 const sx = {
 	root: {

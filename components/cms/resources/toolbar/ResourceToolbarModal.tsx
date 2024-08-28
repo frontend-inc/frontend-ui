@@ -1,29 +1,19 @@
 import React from 'react'
 import { AppBar, Toolbar, Slide } from '@mui/material'
 import { Box, Stack, IconButton } from '@mui/material'
-import { Icon } from '../../..'
-import ResourceToolbarButtons from './ResourceToolbarButtons'
-import { MultiselectButtonType } from '../../../../types'
+import { Icon } from '../../../'
 
 type ResourceToolbarModalProps = {
 	open: boolean
 	handleClose: () => void
-	actions: React.ReactNode
-	selected?: any[]
-	selectedIds?: number[] | string[]
-	buttons: MultiselectButtonType[]
-	component?: React.FC<any>
+	children: React.ReactNode 
 }
 
 const ResourceToolbarModal: React.FC<ResourceToolbarModalProps> = (props) => {
 	const {
 		open,
-		selected,
-		selectedIds,
-		handleClose,
-		buttons,
-		component: Component = ResourceToolbarButtons,
-		...rest
+    handleClose,
+		children,
 	} = props || {}
 
 	return (
@@ -37,12 +27,7 @@ const ResourceToolbarModal: React.FC<ResourceToolbarModalProps> = (props) => {
 						width="100%"
 					>
 						<Box sx={sx.iconButton}></Box>
-						<Component
-							selected={selected}
-							selectedIds={selectedIds}
-							buttons={buttons}
-							{...rest}
-						/>
+						{ children }
 						<Box sx={sx.iconButton}>
 							<IconButton onClick={handleClose}>
 								<Icon name="X" />

@@ -12,19 +12,18 @@ import {
 import {
 	CollectionListItem,
 	CollectionListItems,
-	CollectionToolbar,
+	CollectionHeader,
 	CollectionShow,
 	CollectionForm,
 	CollectionDelete,
 	CollectionEmpty,	
-	CollectionToolbarModal,
+	CollectionToolbar,
 } from '../..'
 
 export type CollectionListProps = {
 	grid?: boolean
 	selectable?: boolean
 	style: string
-	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
 	enableLikes?: boolean
 	enableFavorites?: boolean
@@ -40,6 +39,7 @@ export type CollectionListProps = {
 	enableDelete?: boolean
 	enableAddToList?: boolean
 	fields?: FormFieldType[]
+  buttons?: ButtonType[]
 	toolbarButtons?: ToolbarButtonType[]
 	headers?: {
 		label: string
@@ -54,16 +54,16 @@ export type CollectionListProps = {
 	loadMore?: boolean
 	list: React.FC<any>
 	component?: React.FC<any>
+	header?: React.FC<any>
 	toolbar?: React.FC<any>
-	toolbarModal?: React.FC<any>
 	show?: React.FC<any>
 	edit?: React.FC<any>
 	create?: React.FC<any>
 	destroy?: React.FC<any>
 	empty?: React.FC<any>
 	slots?: {
+		header?: any
 		toolbar?: any
-		toolbarModal?: any
 		list?: any
 		show?: any
 		edit?: any
@@ -111,6 +111,8 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		displayFields = [],
 		circular,
 		disableImage,
+    
+    toolbarButtons=[],
 
 		enableShow,
 		enableEdit,
@@ -118,14 +120,13 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		enableDelete,
 		enableAddToList,
 		fields = [],
-		toolbarButtons = [],
 		enableSearch,
 		enableFilters,
 		enableSorting,
 		filterOptions = [],
 		sortOptions = [],
 		headers = [], // Used by KanBan
-		toolbar: Toolbar = CollectionToolbar,
+		header: Header = CollectionHeader,
 		list: List = CollectionListItems,
 		component: Component = CollectionListItem,
 		show: Show = CollectionShow,
@@ -133,10 +134,10 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		create: Create = CollectionForm,
 		destroy: Destroy = CollectionDelete,
 		empty: Empty = CollectionEmpty,
-		toolbarModal: ToolbarModal = CollectionToolbarModal,
+		toolbar: Toolbar = CollectionToolbar,
 		slots: defaultSlots = {
+			header: {},
 			toolbar: {},
-			toolbarModal: {},
 			list: {},
 			item: {},
 			show: {},
@@ -194,9 +195,9 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			fields,
 		},
 		destroy: defaultSlots.destroy,
-		toolbar: defaultSlots.toolbar,
-		toolbarModal: {
-			...defaultSlots.toolbarModal,
+		header: defaultSlots.header,
+		toolbar: {
+			...defaultSlots.toolbar,
 			enableAddToList,
 			enableDelete,
 			toolbarButtons,
@@ -239,8 +240,8 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			enableSorting={enableSorting}
 			filterOptions={filterOptions}
 			sortOptions={sortOptions}
+			header={Header}
 			toolbar={Toolbar}
-			toolbarModal={ToolbarModal}
 			list={List}
 			component={Component}
 			show={Show}
