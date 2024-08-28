@@ -16,7 +16,7 @@ export type NumberRangeInputProps = {
 		min: number
 		max: number
 	}
-	handleChange: (value: SyntheticEventType) => void
+	handleChange?: (value: SyntheticEventType) => void
 	currency?: string
 	info?: string
 	startAdornment?: React.ReactNode
