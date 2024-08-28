@@ -92,8 +92,6 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 	const handlePaginate = async () => {
 		await loadMore()
 	}
-  
-  console.log("HREF", href)
 
 	return (
 		<Stack direction="column" spacing={2}>

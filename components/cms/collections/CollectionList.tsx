@@ -223,9 +223,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			enableGradient,
 			enableOverlay,
 		}		
-	}
-
-  console.log("SLOTS", slots.list)
+	}  
 
 	return (
 		<DataList
