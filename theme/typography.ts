@@ -86,14 +86,14 @@ export const typography = {
 		fontWeight: 600,
 		textTransform: 'uppercase',
 		fontSize: 12,
-		letterSpacing: '0.03em',
+		letterSpacing: '0.05em',
 	},
 	overline: {
 		fontFamily: 'Inter',
-		fontWeight: 600,
+		fontWeight: 500,
 		textTransform: 'uppercase',
 		fontSize: 12,
 		lineHeight: '1em',
-		letterSpacing: 'auto',
+    letterSpacing: '0.05em',
 	},
 }

@@ -22,7 +22,7 @@ const Footer: React.FC<FooterProps> = (props) => {
 			<Stack direction="row" divider={<Divider sx={ sx.divider } />} spacing={1}>
 				{menuLinks?.map((menuLink, i) => (
 					//@ts-ignore
-					<Link variant='body2' sx={sx.link} key={i} onClick={() => handleClick(menuLink?.path)}>
+					<Link variant='overline' sx={sx.link} key={i} onClick={() => handleClick(menuLink?.path)}>
 						{menuLink?.name}
 					</Link>
 				))}
