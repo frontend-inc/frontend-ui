@@ -24,6 +24,7 @@ export type CollectionListProps = {
 	grid?: boolean
 	selectable?: boolean
 	style: string
+  href?: string
 	displayFields: DisplayFieldType[]
 	enableLikes?: boolean
 	enableFavorites?: boolean
@@ -107,6 +108,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		enableOverlay,
 
 		style = 'list',
+    href,
 		buttons = [],
 		displayFields = [],
 		circular,
@@ -163,6 +165,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			...defaultSlots.list,
 			headers,
 			style,
+      href,
 			enableLikes,
 			enableFavorites,
 			enableRatings,
@@ -205,6 +208,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		empty: defaultSlots.empty,
 		item: {
 			...defaultSlots.item,
+      href,
 			circular,
 			disableImage,
 			style,

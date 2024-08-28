@@ -86,9 +86,9 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 
 	let slots = {
 		image: {
-			...defaultSlots.image,
 			enableGradient,
 			enableOverlay,
+      ...defaultSlots.image,
 		},
 		content: {
 			...defaultSlots.content,

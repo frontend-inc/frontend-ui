@@ -4,13 +4,11 @@ import {
 	CommentListItem,
 	CommentForm,
 	LoadMore,
-	Placeholder,
 	AuthGuard,
 } from '../..'
 import { List, Stack, Collapse, Typography } from '@mui/material'
 import { useComments } from '../../../hooks'
 import { useAuth } from 'frontend-js'
-import { AppContext } from '../../../context'
 
 export type CommentListProps = {
 	handle: string
@@ -108,13 +106,6 @@ const CommentList: React.FC<CommentListProps> = (props) => {
 					/>
 				))}
 			</List>
-			{!loading && comments?.length == 0 && (
-				<Placeholder
-					icon="MessageSquare"
-					title="There are no comments."
-					description="Be the first to leave a comment."
-				/>
-			)}
 			<LoadMore handlePaginate={loadMore} page={page} numPages={numPages} />
 			<AlertModal
 				loading={loading}

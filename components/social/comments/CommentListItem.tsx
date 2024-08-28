@@ -82,30 +82,30 @@ const CommentListItem: React.FC<CommentListItemProps> = (props) => {
 				sx={{
 					...sx.listItem,
 				}}
-				secondaryAction={
-					<IconButton onClick={handleReply}>
-						<Icon name="MessageSquare" />
-					</IconButton>
-				}
 			>
 				<ListItemIcon sx={sx.listItemIcon}>
 					<UserAvatar user={parentComment?.user} />
 				</ListItemIcon>
 				<ListItemText
 					primary={
-						<Typography
-							variant="body1"
-							color="text.primary"
-							sx={sx.commentText}
-						>
-							{parentComment?.body}
-						</Typography>
+            <Stack spacing={0.5}>
+              <Typography variant="body2" color="text.secondary" sx={sx.caption}>
+                {`@${parentComment?.user?.username}`} -{' '}
+                {moment(parentComment?.created_at).fromNow()}
+              </Typography>
+              <Typography
+                variant="body1"
+                color="text.primary"
+                sx={sx.commentText}
+              >
+                {parentComment?.body}
+              </Typography>
+            </Stack>
 					}
-					secondary={
-						<Typography variant="body2" color="text.secondary" sx={sx.caption}>
-							{`@${parentComment?.user?.username}`} commented{' '}
-							{moment(parentComment?.created_at).fromNow()}
-						</Typography>
+					secondary={            
+            <Link onClick={ handleReply } sx={sx.link}>
+              reply 
+            </Link>             
 					}
 				/>
 			</ListItem>
@@ -192,15 +192,10 @@ const sx = {
 			color: 'text.primary',
 		},
 	},
-	caption: {
-		fontSize: 14,
-	},
-	footerText: {},
 	showReplyButton: {
 		color: 'text.secondary',
 	},
 	divider: {
-		pb: 1,
 		borderBottom: '1px solid',
 		borderColor: 'divider',
 	},

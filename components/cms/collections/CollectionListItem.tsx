@@ -6,7 +6,6 @@ import {
 	AvatarCard,
 	ChipCard,
 	TextCard,
-	TableCard,
 } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { SecondaryFields, SocialButtons, ButtonActions } from '../..'
@@ -78,7 +77,6 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 		avatar: AvatarCard,
 		cover: CoverCard,
 		chip: ChipCard,
-		table: TableCard,
 		text: TextCard,
 		list: ListCard,
 	}
@@ -87,12 +85,13 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 
 	return (
 		<Component
-			selectable={selectable}
-			selected={selectedIds?.includes(resource?.id)}
-			handleSelect={() => handleSelect(resource)}
-			label={resource?.label}
+      label={resource?.label}
 			image={resource?.image?.url}
 			primary={resource?.title}
+      handleClick={ handleClick }
+      selectable={selectable}
+			selected={selectedIds?.includes(resource?.id)}
+			handleSelect={() => handleSelect(resource)}						
 			secondary={
 				<SecondaryFields
 					enableRatings={enableRatings}

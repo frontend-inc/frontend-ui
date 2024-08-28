@@ -18,6 +18,7 @@ export type ShowModalProps = {
 	enableLikes?: boolean
 	enableSharing?: boolean
 	enableRatings?: boolean
+  enableAddToList?: boolean
 	enableUsers?: boolean
 	enablePayments?: boolean
 	handleEdit?: () => void
@@ -36,6 +37,7 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 		enableFavorites,
 		enableSharing,
 		enablePayments,
+    enableAddToList,
 		enableEdit,
 		handleEdit,
 	} = props || {}
@@ -59,7 +61,13 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 				handleEdit={handleEdit}
 				enableLikes={enableLikes}
 				enableFavorites={enableFavorites}
+        enableAddToList={enableAddToList}
 				enableSharing={enableSharing}
+        slots={{
+          image: {
+            disableBorderRadius: true,
+          }
+        }}
 			/>
 			{enableComments && (
 				<Box px={2}>
