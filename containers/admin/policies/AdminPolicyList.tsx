@@ -17,7 +17,7 @@ const AdminPolicysList: React.FC = () => {
 			enableSearch
 			enableDelete
 			query={{
-				sort_by: 'title',
+				sort_by: 'position',
 				sort_direction: 'asc',
 			}}
 			create={AdminPolicyForm}

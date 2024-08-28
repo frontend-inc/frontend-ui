@@ -14,6 +14,7 @@ const AdminPolicyItem: React.FC<AdminPolicyItemProps> = (props) => {
 
 	return (
 		<ResourceListItem
+      sortable
 			icon="FileText"
 			color="primary.main"
 			primary={policy?.title}

@@ -17,10 +17,10 @@ const Footer: React.FC<FooterProps> = (props) => {
 
 	return (
 		<Stack sx={sx.root} spacing={1} direction="column">
-			<Stack direction="row" divider={<Divider />} spacing={1}>
+			<Stack direction="row" divider={<Divider sx={ sx.divider } />} spacing={1}>
 				{menuLinks?.map((menuLink, i) => (
 					//@ts-ignore
-					<Link sx={sx.link} key={i} handleClick={() => handleClick(menuLink)}>
+					<Link variant='body2' sx={sx.link} key={i} onClick={() => handleClick(menuLink?.path)}>
 						{menuLink?.name}
 					</Link>
 				))}
@@ -47,8 +47,6 @@ const sx = {
 		justifyContent: 'center',
 		alignItems: 'center',
 		bgcolor: 'background.default',
-		borderTop: '1px solid',
-		borderColor: 'divider',
 		minHeight: '80px',
 	},
 	container: {
@@ -61,14 +59,16 @@ const sx = {
 		justifyContent: 'space-between',
 		alignItems: 'flex-start',
 	},
-	divider: {
-		borderTop: '1px solid',
-		borderColor: 'divider',
-		width: '96%',
-	},
 	link: {
 		color: 'text.secondary',
 		cursor: 'pointer',
 		textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'underline',
+    }
 	},
+  divider: {
+    borderRight: '1px solid',
+    borderColor: 'divider',    
+  }
 }

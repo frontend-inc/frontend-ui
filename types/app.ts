@@ -14,7 +14,7 @@ export type MenuLinkTypes =
 	| 'url'
 
 export type MenuLinkType = {
-	name: string
+	name: string  
 	path: string
 	header?: boolean
 	url?: string
@@ -27,6 +27,12 @@ export type MenuLinkType = {
 	parent_id?: number | null
 	shopify_handle?: string
 	children: MenuLinkType[] | []
+}
+
+export type PolicyLinkType = {
+  name: string
+  url: string
+  position?: number
 }
 
 export type NotificationTypes =
