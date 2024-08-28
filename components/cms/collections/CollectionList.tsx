@@ -225,6 +225,8 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		}		
 	}
 
+  console.log("SLOTS", slots.list)
+
 	return (
 		<DataList
 			selectable={selectable}

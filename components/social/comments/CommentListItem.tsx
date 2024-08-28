@@ -122,8 +122,8 @@ const CommentListItem: React.FC<CommentListItemProps> = (props) => {
 				<>
 					{!showReplies && (
 						<Box>
-							<Link sx={sx.link} onClick={handleShowReplies}>
-								Show {parentComment?.replies?.length}{' '}
+							<Link variant="body1" sx={sx.link} onClick={handleShowReplies}>
+								show {parentComment?.replies?.length}{' '}
 								{parentComment?.replies?.length > 1 ? 'replies' : 'reply'}
 							</Link>
 						</Box>

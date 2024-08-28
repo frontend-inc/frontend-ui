@@ -154,8 +154,8 @@ const DataList: React.FC<DataListProps> = (props) => {
 					enableDelete={enableDelete}
 					enableAddToList={enableAddToList}
 					component={Component}
-					slots={{
-						list: slots.list,
+          { ...slots.list }
+					slots={{						
 						item: slots.item,
 					}}
 				/>

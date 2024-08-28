@@ -28,7 +28,7 @@ const SecondaryFields: React.FC<SecondaryFieldsProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Stack direction="column" spacing={0}>
+		<Stack direction="column" spacing={1}>
 			{enableRatings == true && (
 				<AvgRating size="small" resource={resource} {...slots.ratings} />
 			)}
