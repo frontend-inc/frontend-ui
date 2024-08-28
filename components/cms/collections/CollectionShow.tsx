@@ -58,7 +58,7 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 				displayFields={displayFields}
 				enableRatings={enableRatings}
 				enablePayments={enablePayments}
-				handleEdit={handleEdit}
+				handleEdit={handleEdit}        
 				enableLikes={enableLikes}
 				enableFavorites={enableFavorites}
         enableAddToList={enableAddToList}

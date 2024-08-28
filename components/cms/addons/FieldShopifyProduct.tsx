@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { ProductDetails } from '../../../components/shopify'
+import { ProductDetails } from '../../shopify'
 import { useProducts } from 'frontend-shopify'
 import { get } from 'lodash'
 
