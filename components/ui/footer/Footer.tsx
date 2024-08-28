@@ -6,8 +6,10 @@ import { SocialLink } from '../..'
 type FooterProps = {
 	menuLinks: MenuLinkType[]
 	socialLinks: {
-		name: string
+		label: string
+    provider: string
 		url: string
+    position: number
 	}[]
 	handleClick: (MenuItem: MenuLinkType) => void
 }
@@ -26,10 +28,12 @@ const Footer: React.FC<FooterProps> = (props) => {
 				))}
 			</Stack>
 			<Stack direction="row" spacing={0}>
-				{socialLinks?.map((link, i) => (
+				{socialLinks
+          ?.sort((a, b) => a?.position - b?.position)
+          ?.map((link, i) => (
 					<SocialLink
 						key={i}
-						provider={link?.name?.toLowerCase()}
+						provider={link?.provider}
 						url={link?.url}
 					/>
 				))}

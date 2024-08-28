@@ -7,10 +7,11 @@ type SocialLinkProps = {
 	provider: string
 	url?: string
 	color?: string
+  size?: number
 }
 
 const SocialLink: React.FC<SocialLinkProps> = (props) => {
-	const { provider, url, color = 'text.primary' } = props || {}
+	const { provider, size=24, url, color = 'text.primary' } = props || {}
 
 	const formatUrl = (username: string) => {
 		switch (provider) {
@@ -59,14 +60,17 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 
 	return (
 		<IconButton size="small" onClick={handleClick}>
-			<SocialIcon network={provider} color={color} style={styles} />
+			<SocialIcon 
+        network={provider} 
+        color={color} 
+        style={{
+          height: size,
+          width: size
+        }}         
+      />
 		</IconButton>
 	)
 }
 
 export default SocialLink
 
-const styles = {
-	height: 24,
-	width: 24,
-}
