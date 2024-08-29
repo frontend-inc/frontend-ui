@@ -7,9 +7,9 @@ type FooterProps = {
 	menuLinks: MenuLinkType[]
 	socialLinks: {
 		label: string
-    provider: string
+		provider: string
 		url: string
-    position: number
+		position: number
 	}[]
 	handleClick: (MenuItem: MenuLinkType) => void
 }
@@ -19,24 +19,25 @@ const Footer: React.FC<FooterProps> = (props) => {
 
 	return (
 		<Stack sx={sx.root} spacing={1} direction="column">
-			<Stack direction="row" divider={<Divider sx={ sx.divider } />} spacing={1}>
+			<Stack direction="row" divider={<Divider sx={sx.divider} />} spacing={1}>
 				{menuLinks?.map((menuLink, i) => (
 					//@ts-ignore
-					<Link variant='overline' sx={sx.link} key={i} onClick={() => handleClick(menuLink?.path)}>
+					<Link
+						variant="overline"
+						sx={sx.link}
+						key={i}
+						onClick={() => handleClick(menuLink?.path)}
+					>
 						{menuLink?.name}
 					</Link>
 				))}
 			</Stack>
 			<Stack direction="row" spacing={0}>
 				{socialLinks
-          ?.sort((a, b) => a?.position - b?.position)
-          ?.map((link, i) => (
-					<SocialLink
-						key={i}
-						provider={link?.provider}
-						url={link?.url}
-					/>
-				))}
+					?.sort((a, b) => a?.position - b?.position)
+					?.map((link, i) => (
+						<SocialLink key={i} provider={link?.provider} url={link?.url} />
+					))}
 			</Stack>
 		</Stack>
 	)
@@ -67,12 +68,12 @@ const sx = {
 		color: 'text.secondary',
 		cursor: 'pointer',
 		textDecoration: 'none',
-    '&:hover': {
-      textDecoration: 'underline',
-    }
+		'&:hover': {
+			textDecoration: 'underline',
+		},
 	},
-  divider: {
-    borderRight: '1px solid',
-    borderColor: 'divider',    
-  }
+	divider: {
+		borderRight: '1px solid',
+		borderColor: 'divider',
+	},
 }

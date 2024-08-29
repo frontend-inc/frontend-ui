@@ -15,15 +15,10 @@ const AdminSocialLinkItem: React.FC<AdminSocialLinkItemProps> = (props) => {
 	return (
 		<ResourceListItem
 			sortable
-			avatar={ 
-        <SocialLink 
-          size={32}
-          provider={socialLink?.provider} 
-        />
-      }
+			avatar={<SocialLink size={32} provider={socialLink?.provider} />}
 			color="primary.main"
 			primary={socialLink?.label}
-			secondary={socialLink?.url}			
+			secondary={socialLink?.url}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}
 		/>

@@ -4,7 +4,7 @@ import { NumberRangeInput } from '../../../components'
 import { NumberRangeInputProps } from './NumberRangeInput'
 
 type PriceRangeInputProps = NumberRangeInputProps & {
-  currency: string
+	currency: string
 }
 
 const PriceRangeInput: React.FC<PriceRangeInputProps> = (props) => {

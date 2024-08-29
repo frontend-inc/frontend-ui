@@ -109,7 +109,7 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 					<ListItemIcon sx={sx.listItemIcon}>
 						<Avatar
 							sx={{
-                ...sx.avatar,
+								...sx.avatar,
 								bgcolor: color,
 							}}
 						>
@@ -141,9 +141,9 @@ const sx = {
 		p: 1,
 		borderRadius: 1,
 	},
-  avatar: {
-    borderRadius: 1,
-  },
+	avatar: {
+		borderRadius: 1,
+	},
 	buttons: {
 		alignItems: 'center',
 	},

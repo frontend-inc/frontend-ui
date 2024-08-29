@@ -7,7 +7,7 @@ const AdminPolicyForm: React.FC<ResourceFormProps> = (props) => {
 		<ResourceForm
 			{...props}
 			fields={[
-        {
+				{
 					label: 'Handle',
 					name: 'handle',
 					variant: 'string',
@@ -19,17 +19,17 @@ const AdminPolicyForm: React.FC<ResourceFormProps> = (props) => {
 					variant: 'string',
 					placeholder: 'Enter title',
 				},
-        {
+				{
 					label: 'Publish Date',
 					name: 'published_at',
-					variant: 'date',					
+					variant: 'date',
 				},
-        {
+				{
 					label: 'Text',
 					name: 'body',
 					variant: 'text',
 					placeholder: 'Enter text...',
-				},				
+				},
 			]}
 		/>
 	)

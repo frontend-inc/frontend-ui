@@ -8,15 +8,15 @@ type UseFieldsParams = {
 const useFields = (props: UseFieldsParams) => {
 	const { url } = props || {}
 
-	const { 
-    loading,
-    findMany,
-    resources: formFields 
-  } = useResource({
+	const {
+		loading,
+		findMany,
+		resources: formFields,
+	} = useResource({
 		url: `${url}/form_fields`,
-    name: 'field'
+		name: 'field',
 	})
-  
+
 	useEffect(() => {
 		if (url) {
 			findMany({})

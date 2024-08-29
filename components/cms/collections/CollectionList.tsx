@@ -16,7 +16,7 @@ import {
 	CollectionShow,
 	CollectionForm,
 	CollectionDelete,
-	CollectionEmpty,	
+	CollectionEmpty,
 	CollectionToolbar,
 } from '../..'
 
@@ -24,7 +24,7 @@ export type CollectionListProps = {
 	grid?: boolean
 	selectable?: boolean
 	style: string
-  href?: string
+	href?: string
 	displayFields: DisplayFieldType[]
 	enableLikes?: boolean
 	enableFavorites?: boolean
@@ -40,7 +40,7 @@ export type CollectionListProps = {
 	enableDelete?: boolean
 	enableAddToList?: boolean
 	fields?: FormFieldType[]
-  buttons?: ButtonType[]
+	buttons?: ButtonType[]
 	toolbarButtons?: ToolbarButtonType[]
 	headers?: {
 		label: string
@@ -108,13 +108,13 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		enableOverlay,
 
 		style = 'list',
-    href,
+		href,
 		buttons = [],
 		displayFields = [],
 		circular,
 		disableImage,
-    
-    toolbarButtons=[],
+
+		toolbarButtons = [],
 
 		enableShow,
 		enableEdit,
@@ -165,7 +165,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			...defaultSlots.list,
 			headers,
 			style,
-      href,
+			href,
 			enableLikes,
 			enableFavorites,
 			enableRatings,
@@ -208,7 +208,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		empty: defaultSlots.empty,
 		item: {
 			...defaultSlots.item,
-      href,
+			href,
 			circular,
 			disableImage,
 			style,
@@ -222,8 +222,8 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			enableUsers,
 			enableGradient,
 			enableOverlay,
-		}		
-	}  
+		},
+	}
 
 	return (
 		<DataList

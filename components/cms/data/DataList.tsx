@@ -12,12 +12,12 @@ import {
 } from '../..'
 import { ResourceProvider } from 'frontend-js'
 import {
-  ToolbarButtonType,
+	ToolbarButtonType,
 	FormFieldType,
 	QueryParamsType,
 	SearchFilterOptionType,
 	SortOptionType,
-  ButtonType,
+	ButtonType,
 } from '../../../types'
 
 export type DataListProps = {
@@ -32,7 +32,7 @@ export type DataListProps = {
 	fields: FormFieldType[]
 	filterOptions: SearchFilterOptionType[]
 	sortOptions: SortOptionType[]
-  buttons?: ButtonType[]
+	buttons?: ButtonType[]
 	href?: string
 	enableSearch?: boolean
 	enableGeoSearch?: boolean
@@ -125,11 +125,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 	} = props
 
 	return (
-		<ResourceProvider 
-      name={name} 
-      url={url} 
-      foreignUrl={foreignUrl}
-    >
+		<ResourceProvider name={name} url={url} foreignUrl={foreignUrl}>
 			<DataFetcher query={query}>
 				<Header
 					url={url}
@@ -142,10 +138,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 					sortOptions={sortOptions}
 					{...slots.header}
 				/>
-				<Toolbar 
-          {...slots.toolbar} 
-          buttons={buttons} 
-        />
+				<Toolbar {...slots.toolbar} buttons={buttons} />
 				<List
 					grid={grid}
 					selectable={selectable}
@@ -154,8 +147,8 @@ const DataList: React.FC<DataListProps> = (props) => {
 					enableDelete={enableDelete}
 					enableAddToList={enableAddToList}
 					component={Component}
-          { ...slots.list }
-					slots={{						
+					{...slots.list}
+					slots={{
 						item: slots.item,
 					}}
 				/>

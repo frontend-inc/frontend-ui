@@ -9,12 +9,17 @@ type SocialLinkProps = {
 	provider: string
 	url?: string
 	color?: string
-  size?: number
+	size?: number
 }
 
 const SocialLink: React.FC<SocialLinkProps> = (props) => {
-	const { provider, size=24, url, color = 'primary.contrastText' } = props || {}
-  
+	const {
+		provider,
+		size = 24,
+		url,
+		color = 'primary.contrastText',
+	} = props || {}
+
 	const formatUrl = (username: string) => {
 		switch (provider) {
 			case 'facebook':
@@ -60,22 +65,21 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 		}
 	}
 
-  const theme = useTheme()
-  const fgColor = get(theme, `palette.${color}`)
+	const theme = useTheme()
+	const fgColor = get(theme, `palette.${color}`)
 
 	return (
 		<IconButton size="small" onClick={handleClick}>
-			<SocialIcon  
-        fgColor={fgColor}
-        network={provider} 
-        style={{
-          height: 32,
-          width: 32
-        }}         
-      />
+			<SocialIcon
+				fgColor={fgColor}
+				network={provider}
+				style={{
+					height: 32,
+					width: 32,
+				}}
+			/>
 		</IconButton>
 	)
 }
 
 export default SocialLink
-

@@ -19,7 +19,7 @@ const AdminMenuLinkList: React.FC<AdminMenuListProps> = (props) => {
 		<ResourceList
 			sortable
 			enableBorder
-      direction="column"
+			direction="column"
 			url={`${apiUrl}/menus/${menuId}/links`}
 			name="link"
 			enableCreate

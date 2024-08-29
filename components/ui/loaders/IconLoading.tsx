@@ -15,7 +15,7 @@ const IconLoading: React.FC<IconLoadingProps> = (props) => {
 				...sx.loader,
 				color,
 			}}
-      size={20}
+			size={20}
 		/>
 	)
 }

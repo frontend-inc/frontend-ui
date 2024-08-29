@@ -6,15 +6,11 @@ import { Icon } from '../../../'
 type ResourceToolbarModalProps = {
 	open: boolean
 	handleClose: () => void
-	children: React.ReactNode 
+	children: React.ReactNode
 }
 
 const ResourceToolbarModal: React.FC<ResourceToolbarModalProps> = (props) => {
-	const {
-		open,
-    handleClose,
-		children,
-	} = props || {}
+	const { open, handleClose, children } = props || {}
 
 	return (
 		<Slide direction="down" in={open}>
@@ -27,7 +23,7 @@ const ResourceToolbarModal: React.FC<ResourceToolbarModalProps> = (props) => {
 						width="100%"
 					>
 						<Box sx={sx.iconButton}></Box>
-						{ children }
+						{children}
 						<Box sx={sx.iconButton}>
 							<IconButton onClick={handleClose}>
 								<Icon name="X" />

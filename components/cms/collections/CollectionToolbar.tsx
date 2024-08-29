@@ -13,9 +13,7 @@ type CollectionToolbarModalProps = {
 	toolbarButtons?: ToolbarButtonType[]
 }
 
-const CollectionToolbar: React.FC<CollectionToolbarModalProps> = (
-	props
-) => {
+const CollectionToolbar: React.FC<CollectionToolbarModalProps> = (props) => {
 	const { enableDelete, enableAddToList, toolbarButtons = [] } = props || {}
 
 	return (

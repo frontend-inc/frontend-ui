@@ -48,7 +48,7 @@ const useForms = (params?: FormParams) => {
 		setResource({
 			id: undefined,
 		})
-		setOpenShow(false)		
+		setOpenShow(false)
 		setOpenEdit(true)
 	}
 
@@ -116,7 +116,7 @@ const useForms = (params?: FormParams) => {
 		handleDeleteClick,
 		handleRemove,
 		handleShow,
-		handleSubmit,		
+		handleSubmit,
 
 		openEdit,
 		openDelete,

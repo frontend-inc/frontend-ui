@@ -5,7 +5,7 @@ import { ResourceProvider } from 'frontend-js'
 
 export type ShowContainerProps = {
 	url: string
-  foreignUrl?: string
+	foreignUrl?: string
 	fields: FormFieldType[]
 	children: React.ReactNode
 	resource: any
@@ -14,7 +14,12 @@ export type ShowContainerProps = {
 const ShowContainer: React.FC<ShowContainerProps> = (props) => {
 	const { url, foreignUrl, resource, children } = props || {}
 	return (
-		<ResourceProvider name="document" resource={resource} url={url} foreignUrl={ foreignUrl }>
+		<ResourceProvider
+			name="document"
+			resource={resource}
+			url={url}
+			foreignUrl={foreignUrl}
+		>
 			{children}
 			<CollectionForm />
 		</ResourceProvider>

@@ -12,17 +12,17 @@ const AdminSocialLinkForm: React.FC<ResourceFormProps> = (props) => {
 					name: 'provider',
 					variant: 'select',
 					options: [
-            {label: 'Instagram', value: 'instagram'},
-            {label: 'Facebook', value: 'facebook'},
-            {label: 'Twitter', value: 'twitter'},
-            {label: 'LinkedIn', value: 'linkedin'},
-            {label: 'YouTube', value: 'youtube'},                        
-            {label: 'TikTok', value: 'tiktok'},
-            {label: 'WhatsApp', value: 'whatsapp'},            
-            {label: 'Github', value: 'github'},
-          ]
+						{ label: 'Instagram', value: 'instagram' },
+						{ label: 'Facebook', value: 'facebook' },
+						{ label: 'Twitter', value: 'twitter' },
+						{ label: 'LinkedIn', value: 'linkedin' },
+						{ label: 'YouTube', value: 'youtube' },
+						{ label: 'TikTok', value: 'tiktok' },
+						{ label: 'WhatsApp', value: 'whatsapp' },
+						{ label: 'Github', value: 'github' },
+					],
 				},
-        {
+				{
 					label: 'URL',
 					name: 'url',
 					variant: 'url',

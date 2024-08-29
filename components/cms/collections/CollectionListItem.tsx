@@ -85,13 +85,13 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 
 	return (
 		<Component
-      label={resource?.label}
+			label={resource?.label}
 			image={resource?.image?.url}
 			primary={resource?.title}
-      handleClick={ handleClick }
-      selectable={selectable}
+			handleClick={handleClick}
+			selectable={selectable}
 			selected={selectedIds?.includes(resource?.id)}
-			handleSelect={() => handleSelect(resource)}						
+			handleSelect={() => handleSelect(resource)}
 			secondary={
 				<SecondaryFields
 					enableRatings={enableRatings}

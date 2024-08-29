@@ -11,11 +11,8 @@ type ToolbarToolbarProps = {
 	buttons?: ToolbarButtonType[]
 }
 
-const ToolbarToolbar: React.FC<ToolbarToolbarProps> = (
-	props
-) => {
-	
-  const { buttons = [] } = props || {}
+const ToolbarToolbar: React.FC<ToolbarToolbarProps> = (props) => {
+	const { buttons = [] } = props || {}
 
 	return (
 		<ToolbarModal>

@@ -94,6 +94,6 @@ export const typography = {
 		textTransform: 'uppercase',
 		fontSize: 12,
 		lineHeight: '1em',
-    letterSpacing: '0.05em',
+		letterSpacing: '0.05em',
 	},
 }

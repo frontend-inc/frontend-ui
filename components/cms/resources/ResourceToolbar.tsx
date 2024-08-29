@@ -9,12 +9,12 @@ type ResourceToolbarModalProps = {
 	selected: any[]
 	selectedIds: number[] | string[]
 	buttons: {
-    color?: 'primary' | 'secondary'
-    variant?: 'contained' | 'outlined'      
-    icon?: string
-    label: string
-    onClick: (selected: any[]) => void
-  }[]
+		color?: 'primary' | 'secondary'
+		variant?: 'contained' | 'outlined'
+		icon?: string
+		label: string
+		onClick: (selected: any[]) => void
+	}[]
 	component?: React.FC<any>
 }
 
@@ -30,17 +30,14 @@ const ResourceToolbar: React.FC<ResourceToolbarModalProps> = (props) => {
 	} = props || {}
 
 	return (
-    <ResourceToolbarModal 
-      open={ open }
-      handleClose={ handleClose }
-    >
-      <Component
-        selected={selected}
-        selectedIds={selectedIds}
-        buttons={buttons}
-        {...rest}
-      />
-    </ResourceToolbarModal>
+		<ResourceToolbarModal open={open} handleClose={handleClose}>
+			<Component
+				selected={selected}
+				selectedIds={selectedIds}
+				buttons={buttons}
+				{...rest}
+			/>
+		</ResourceToolbarModal>
 	)
 }
 

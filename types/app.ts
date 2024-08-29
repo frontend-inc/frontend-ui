@@ -14,7 +14,7 @@ export type MenuLinkTypes =
 	| 'url'
 
 export type MenuLinkType = {
-	name: string  
+	name: string
 	path: string
 	header?: boolean
 	url?: string
@@ -30,9 +30,9 @@ export type MenuLinkType = {
 }
 
 export type PolicyLinkType = {
-  name: string
-  url: string
-  position?: number
+	name: string
+	url: string
+	position?: number
 }
 
 export type NotificationTypes =

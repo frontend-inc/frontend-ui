@@ -10,9 +10,7 @@ type ToolbarUpdateProps = {
 	fields: FormFieldType[]
 }
 
-const ToolbarUpdateButton: React.FC<ToolbarUpdateProps> = (
-	props
-) => {
+const ToolbarUpdateButton: React.FC<ToolbarUpdateProps> = (props) => {
 	const { buttonText = 'Update', icon, fields = [] } = props || {}
 
 	const [open, setOpen] = useState(false)

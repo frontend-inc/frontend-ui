@@ -88,24 +88,28 @@ const CommentListItem: React.FC<CommentListItemProps> = (props) => {
 				</ListItemIcon>
 				<ListItemText
 					primary={
-            <Stack spacing={0.5}>
-              <Typography variant="body2" color="text.secondary" sx={sx.caption}>
-                {`@${parentComment?.user?.username}`} -{' '}
-                {moment(parentComment?.created_at).fromNow()}
-              </Typography>
-              <Typography
-                variant="body1"
-                color="text.primary"
-                sx={sx.commentText}
-              >
-                {parentComment?.body}
-              </Typography>
-            </Stack>
+						<Stack spacing={0.5}>
+							<Typography
+								variant="body2"
+								color="text.secondary"
+								sx={sx.caption}
+							>
+								{`@${parentComment?.user?.username}`} -{' '}
+								{moment(parentComment?.created_at).fromNow()}
+							</Typography>
+							<Typography
+								variant="body1"
+								color="text.primary"
+								sx={sx.commentText}
+							>
+								{parentComment?.body}
+							</Typography>
+						</Stack>
 					}
-					secondary={            
-            <Link onClick={ handleReply } sx={sx.link}>
-              reply 
-            </Link>             
+					secondary={
+						<Link onClick={handleReply} sx={sx.link}>
+							reply
+						</Link>
 					}
 				/>
 			</ListItem>

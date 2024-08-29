@@ -52,8 +52,7 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 		},
 	} = props
 
-	const { handleShow, handleEdit, handleDeleteClick } =
-		useForms()
+	const { handleShow, handleEdit, handleDeleteClick } = useForms()
 
 	const handleShowClick = (resource: any) => {
 		if (handleClick) {
@@ -84,7 +83,7 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 					handleEdit={enableEdit ? () => handleEdit(resource) : undefined}
 					handleDelete={
 						enableDelete ? () => handleDeleteClick(resource) : undefined
-					}					
+					}
 					{...slots.item}
 				/>
 			))}

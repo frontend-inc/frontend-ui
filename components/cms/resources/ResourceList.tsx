@@ -63,8 +63,8 @@ export type ResourceListProps = {
 		edit?: any
 		create?: any
 		show?: any
-    header?: any
-		toolbar?: any	
+		header?: any
+		toolbar?: any
 		pagination?: any
 	}
 }

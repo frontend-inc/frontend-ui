@@ -20,10 +20,10 @@ const SocialIcon: React.FC<SocialIconProps> = (props) => {
 			<ReactSocialIcon
 				/* @ts-ignore */
 				network={provider}
-				style={{ 
-          height: size, 
-          width: size 
-        }}
+				style={{
+					height: size,
+					width: size,
+				}}
 			/>
 		</IconButton>
 	)

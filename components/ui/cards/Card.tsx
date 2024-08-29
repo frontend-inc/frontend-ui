@@ -88,9 +88,9 @@ const sx = {
 		overflow: 'hidden',
 		borderRadius: 1,
 		width: '100%',
-		minWidth: 280,		
+		minWidth: 280,
 		transition: 'box-shadow 0.3s',
-    bgcolor: 'background.paper',
+		bgcolor: 'background.paper',
 		border: '1px solid',
 		borderColor: 'divider',
 		'&:hover': {
@@ -111,10 +111,10 @@ const sx = {
 		display: 'flex',
 		height: '100%',
 		justifyContent: 'space-between',
-		alignItems: 'space-between',		
+		alignItems: 'space-between',
 	},
 	content: {
-		height: '100%',    
+		height: '100%',
 	},
 	title: {
 		width: '100%',
