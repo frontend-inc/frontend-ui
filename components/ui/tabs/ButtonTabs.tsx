@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Tab, Tabs } from '@mui/material'
 import { Icon } from '../..'
+import { useDebounce } from 'use-debounce'
 
 type ButtonTabsProps = {
-	handleChange: (value: string | number) => void
+	handleChange: (value: string | number | boolean) => void
 	options: {
 		icon?: string
 		label?: string
@@ -15,6 +16,8 @@ type ButtonTabsProps = {
 	iconPosition?: 'start' | 'end' | 'top' | 'bottom'
 	variant?: 'fullWidth' | 'scrollable'
 	size?: 'small' | 'large'
+  debounceDelay?: number
+  disableDebounce?: boolean
 }
 
 const ButtonTabs: React.FC<ButtonTabsProps> = (props) => {
@@ -23,18 +26,32 @@ const ButtonTabs: React.FC<ButtonTabsProps> = (props) => {
 		disableBorder = false,
 		handleChange,
 		options,
-		value,
+		value: initialValue,
 		iconPosition = 'start',
 		variant = 'fullWidth',
 		size = 'large',
+    debounceDelay = 500,
+    disableDebounce = false
 	} = props
 
-	const handleInputChange = (
+  const [value, setvalue] = useState(initialValue)
+  const [debouncedValue] = useDebounce(value, debounceDelay)
+	
+  const handleInputChange = (
 		ev: React.ChangeEvent<HTMLInputElement>,
 		value: number | string
 	) => {
-		handleChange(value)
+		setvalue(value)
+    if(disableDebounce){
+      handleChange(value)
+    }
 	}
+
+  useEffect(() => {
+    if(!disableDebounce){
+      handleChange(debouncedValue)
+    }
+  }, [debouncedValue])
 
 	return (
 		<Tabs
@@ -57,11 +74,7 @@ const ButtonTabs: React.FC<ButtonTabsProps> = (props) => {
 				<Tab
 					key={i}
 					disableRipple
-					iconPosition={iconPosition}
-					onClick={
-						//@ts-ignore
-						() => handleChange(tab.value)
-					}
+					iconPosition={iconPosition}					
 					label={tab.label}
 					value={tab.value}
 					icon={tab.icon && <Icon color="text.secondary" name={tab.icon} />}

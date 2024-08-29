@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Stack } from '@mui/material'
 import { ButtonTabs } from '../../../components'
 import { SyntheticEventType } from '../../../types'
 import { InputLabel } from '../../../components'
 import sx from './helpers/styles'
+import { useDebounce } from 'use-debounce'
 
 type TabsInputProps = {
 	name: string
@@ -22,6 +23,8 @@ type TabsInputProps = {
 	size?: 'small' | 'large'
 	direction?: 'row' | 'column'
 	info?: string
+  debounceDelay?: number
+  disableDebounce?: boolean
 }
 
 const TabsInput: React.FC<TabsInputProps> = (props) => {
@@ -38,15 +41,17 @@ const TabsInput: React.FC<TabsInputProps> = (props) => {
 		size = 'large',
 		direction = 'row',
 		info,
+    debounceDelay,
+    disableDebounce,
 	} = props
 
 	const handleInputChange = (value: number | string) => {
-		handleChange({
-			target: {
-				name,
-				value,
-			},
-		})
+    handleChange({
+      target: {
+        name,
+        value,
+      },
+    })
 	}
 
 	return (
@@ -59,7 +64,9 @@ const TabsInput: React.FC<TabsInputProps> = (props) => {
 			direction={direction}
 			spacing={1}
 		>
-			<InputLabel label={label} info={info} />
+      {(label || info) && (
+			  <InputLabel label={label} info={info} />
+      )}
 			<ButtonTabs
 				options={options}
 				value={value}
@@ -69,6 +76,8 @@ const TabsInput: React.FC<TabsInputProps> = (props) => {
 				handleChange={handleInputChange}
 				disableBorder={disableBorder}
 				disablePadding={disablePadding}
+        debounceDelay={debounceDelay}
+        disableDebounce={disableDebounce}
 			/>
 		</Stack>
 	)

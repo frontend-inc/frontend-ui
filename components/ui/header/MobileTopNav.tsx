@@ -74,7 +74,6 @@ const sx = {
 	},
 	appBarNotifications: {
 		position: 'absolute',
-		top: 40,
 	},
 	notifications: {
 		top: '50px',
