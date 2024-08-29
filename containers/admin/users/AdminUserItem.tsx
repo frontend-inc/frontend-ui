@@ -16,8 +16,6 @@ const AdminUserItem: React.FC<ResourceItemProps> = (props) => {
 		...rest
 	} = props
 
-	const { currentUser } = useAuth()
-
 	return (
 		<ResourceListItem
 			selectable={selectable}

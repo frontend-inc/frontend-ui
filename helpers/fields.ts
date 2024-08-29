@@ -4,6 +4,7 @@ export const validateFieldConditions = (
 	conditions: FormFieldConditionType[],
 	item: any
 ) => {
+  if(!item) return;
 	let isValid = true
 	if (conditions?.length > 0) {
 		conditions.forEach((condition) => {

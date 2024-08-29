@@ -142,6 +142,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		loadMore,
 		paginate,
 
+    reloadOne,
 		selected,
 		selectedIds,
 		handleSelect,
@@ -258,8 +259,10 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	}
 
 	const handleShowClick = async (resource) => {
-		if (enableShow) {
-			let resp = await findOne(resource?.id)
+    if(handleClick){
+      handleClick(resource)
+    }else if (enableShow) {
+			let resp = await reloadOne(resource?.id)
 			setResource(resp)
 			setOpenShow(true)
 			setOpenEdit(false)
@@ -378,11 +381,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 								enableBorder={enableBorder}
 								enableEdit={enableEdit}
 								enableDelete={enableDelete}
-								handleClick={
-									handleClick
-										? () => handleClick(resource)
-										: () => handleShowClick(resource)
-								}
+								handleClick={() => handleShowClick(resource)}
 								handleEdit={() => handleEdit(resource)}
 								handleDelete={() => handleDeleteClick(resource)}
 								handleSelect={() => handleSelect(resource)}
