@@ -20,6 +20,7 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 		secondaryAction,
 		handleClick,
 		image,
+    actions, // Todo: rendering actions inteferes with drag/drop 
 		enableDragging,
 		height = 240,
 		slots = {
@@ -62,21 +63,21 @@ const KanBanCard: React.FC<KanBanCardProps> = (props) => {
 						</Typography>
 						<Typography color="text.secondary" variant="body2">
 							{secondary}
-						</Typography>
+						</Typography>   
 					</Stack>
 				</Stack>
 			</Stack>
-			<Box sx={sx.footer}>
-				<Button
-					onClick={handleClick}
-					size="small"
-					variant="contained"
-					color="secondary"
-					sx={sx.button}
-				>
-					Details
-				</Button>
-				<Stack direction="row" alignItems="flex-end">
+			<Box sx={sx.footer}>				            
+        <Button
+          onClick={handleClick}
+          size="small"
+          variant="contained"
+          color="secondary"
+          sx={sx.button}
+        >
+          Details
+        </Button>
+				<Stack direction="row" alignItems="flex-end">          
 					{secondaryAction}
 				</Stack>
 			</Box>

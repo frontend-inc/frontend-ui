@@ -46,6 +46,7 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 		resources,
 		update,
 		updatePositions,
+    updateMany,
 		setResource,
 		reloadMany,
 		setOpenShow,
@@ -69,9 +70,8 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 
 	const handleDrop = async (movedItem, value, columns) => {
 		setResource(null)
-		let movedDocument = changeDocumentValue(movedItem, fieldName, value)
-		await update(movedDocument)
-
+		let movedDocument = changeDocumentValue(movedItem, fieldName, value)		
+    updateMany([movedDocument?.id], { status: value })
 		let columnItems = Object.keys(columns).map((key) => columns[key])
 		columnItems = columnItems.reduce((acc, val) => acc.concat(val), [])
 		columnItems = columnItems.map((item, index) => {
@@ -79,9 +79,8 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 				...item,
 				position: index,
 			}
-		})
-		updatePositions(columnItems)
-		//await reloadMany()
+		})    
+		updatePositions(columnItems)		    
 	}
 
 	const [columns, setColumns] = useState({})
@@ -141,9 +140,9 @@ const KanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 			enableCreate={enableCreate}
 			handleEdit={handleEdit}
 			handleDelete={handleDeleteClick}
-			handleAdd={handleAdd}
-			slots={slots}
-			component={CollectionKanBanCard}
+			handleAdd={handleAdd}			
+			component={CollectionKanBanCard}      
+      slots={slots}      
 		/>
 	)
 }

@@ -36,7 +36,7 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 		enableAddToList,
 		numLikes,
 		numFavorites,
-		variant = 'button',
+		variant = 'icon',
 		justifyContent = 'flex-start',
 		spacing = 1,
 		color,

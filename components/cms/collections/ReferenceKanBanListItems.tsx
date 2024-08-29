@@ -71,9 +71,6 @@ const ReferenceKanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 
 	const handleDrop = async (movedItem, value, columns) => {
 		setResource(null)
-		let movedDocument = changeDocumentValue(movedItem, fieldName, value)
-		await updateMany([movedDocument?.id], { [fieldName]: value })
-
 		let columnItems = Object.keys(columns).map((key) => columns[key])
 		columnItems = columnItems.reduce((acc, val) => acc.concat(val), [])
 		columnItems = columnItems.map((item, index) => {
@@ -82,6 +79,8 @@ const ReferenceKanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 				position: index,
 			}
 		})
+    let movedDocument = changeDocumentValue(movedItem, fieldName, value)
+		await updateMany([movedDocument?.id], { [fieldName]: value })
 		updatePositions(columnItems)
 	}
 
