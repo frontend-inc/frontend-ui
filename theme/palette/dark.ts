@@ -27,7 +27,7 @@ export default {
 	icon: '#787A82',
 	background: {
 		default: '#282C34',
-		paper: '#343842',
+		paper: '#121212',
 		light: '#343842',
 		dark: '#21252C',
 	},

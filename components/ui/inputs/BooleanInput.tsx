@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { TabsInput } from '../..'
 import { SyntheticEventType } from '../../../types'
+import { useDebounce } from 'use-debounce'
 
 type BooleanInputProps = {
 	value: boolean
@@ -12,12 +13,14 @@ type BooleanInputProps = {
 	direction?: 'row' | 'column'
 	size?: 'small' | 'large'
 	info?: string
+  debounceDelay?: number
+  disableDebounce?: boolean
 }
 
 const BooleanInput: React.FC<BooleanInputProps> = (props) => {
 	const {
 		name,
-		value,
+		value: initialValue,
 		handleChange,
 		label,
 		direction = 'row',
@@ -25,17 +28,36 @@ const BooleanInput: React.FC<BooleanInputProps> = (props) => {
 		disableBorder = false,
 		disablePadding = false,
 		info,
+    debounceDelay = 250,
+    disableDebounce = false
 	} = props
 
+  const [value, setValue] = useState(initialValue || false)
+  const [debouncedValue] = useDebounce(value, debounceDelay)
+
 	const handleTabChange = (ev) => {
-		const newValue = ev.target.value
-		handleChange({
-			target: {
-				name,
-				value: newValue == 1 ? true : false,
-			},
-		})
+		const newValue = ev.target.value == 1 ? true : false
+    setValue(newValue)		
+    if(disableDebounce){
+      handleChange({
+        target: {
+          name, 
+          value: newValue
+        }
+      })
+    }
 	}
+
+  useEffect(() => {
+    if(!disableDebounce){
+      handleChange({
+        target: {
+          name, 
+          value: debouncedValue
+        }
+      })
+    }
+  }, [debouncedValue])
 
 	return (
 		<TabsInput

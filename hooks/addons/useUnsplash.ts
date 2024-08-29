@@ -9,7 +9,6 @@ type UseUnsplashParams = {
 
 const useUnsplash = (params: UseUnsplashParams) => {
 	const { apiKey } = params || {}
-	const { api } = useApi()
 	const { loading, loadingWrapper } = useLoadingWrapper()
 
 	const [page, setPage] = useState(1)

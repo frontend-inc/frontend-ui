@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Typography } from '@mui/material'
+import { Stack } from '@mui/material'
 import { ButtonTabs } from '../../../components'
 import { SyntheticEventType } from '../../../types'
 import { InputLabel } from '../../../components'

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useResourceContext } from 'frontend-js'
-import useSWR from 'swr'
 
 export type DataFetcherProps = {
 	query?: any
