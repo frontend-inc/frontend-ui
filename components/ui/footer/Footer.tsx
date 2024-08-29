@@ -11,7 +11,7 @@ type FooterProps = {
 		url: string
 		position: number
 	}[]
-	handleClick: (MenuItem: MenuLinkType) => void
+	handleClick: (path: string) => void
 }
 
 const Footer: React.FC<FooterProps> = (props) => {

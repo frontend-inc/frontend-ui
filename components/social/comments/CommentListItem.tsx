@@ -91,8 +91,7 @@ const CommentListItem: React.FC<CommentListItemProps> = (props) => {
 						<Stack spacing={0.5}>
 							<Typography
 								variant="body2"
-								color="text.secondary"
-								sx={sx.caption}
+								color="text.secondary"								
 							>
 								{`@${parentComment?.user?.username}`} -{' '}
 								{moment(parentComment?.created_at).fromNow()}
