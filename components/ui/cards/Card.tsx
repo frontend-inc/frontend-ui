@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
-import { Image } from '../..'
+import { Image, LightDarkMode } from '../..'
 
 export type CardProps = {
 	ref?: any
@@ -88,9 +88,9 @@ const sx = {
 		overflow: 'hidden',
 		borderRadius: 1,
 		width: '100%',
-		minWidth: 280,
-		bgcolor: 'background.default',
+		minWidth: 280,		
 		transition: 'box-shadow 0.3s',
+    bgcolor: 'background.paper',
 		border: '1px solid',
 		borderColor: 'divider',
 		'&:hover': {
@@ -111,11 +111,10 @@ const sx = {
 		display: 'flex',
 		height: '100%',
 		justifyContent: 'space-between',
-		alignItems: 'space-between',
-		bgcolor: 'background.default',
+		alignItems: 'space-between',		
 	},
 	content: {
-		height: '100%',
+		height: '100%',    
 	},
 	title: {
 		width: '100%',

@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { IconButton } from '@mui/material'
 //@ts-ignore
 import { SocialIcon } from 'react-social-icons'
+import { useTheme } from '@mui/material'
+import { get } from 'lodash'
 
 type SocialLinkProps = {
 	provider: string
@@ -11,8 +13,8 @@ type SocialLinkProps = {
 }
 
 const SocialLink: React.FC<SocialLinkProps> = (props) => {
-	const { provider, size=24, url, color = 'text.primary' } = props || {}
-
+	const { provider, size=24, url, color = 'primary.contrastText' } = props || {}
+  
 	const formatUrl = (username: string) => {
 		switch (provider) {
 			case 'facebook':
@@ -58,14 +60,17 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 		}
 	}
 
+  const theme = useTheme()
+  const fgColor = get(theme, `palette.${color}`)
+
 	return (
 		<IconButton size="small" onClick={handleClick}>
-			<SocialIcon 
+			<SocialIcon  
+        fgColor={fgColor}
         network={provider} 
-        color={color} 
         style={{
-          height: size,
-          width: size
+          height: 32,
+          width: 32
         }}         
       />
 		</IconButton>

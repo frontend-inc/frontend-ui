@@ -29,7 +29,7 @@ const ToolbarModal: React.FC<ToolbarModalProps> = (props) => {
 					<Stack direction="row" spacing={1}>
 						<Box display="flex" alignItems="center">
 							<IconButton onClick={handleClose} sx={sx.closeButton}>
-								<Icon name="X" size={18} />
+								<Icon name="X" size={18} color="secondary.contrastText" />
 							</IconButton>
 						</Box>
 						{children}

@@ -13,7 +13,7 @@ export const sx = {
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
 			border: '1px solid',
 			borderColor: 'divider',
-			bgcolor: 'background.main',
+			bgcolor: 'background.paper',
 			'&:focus': {
 				borderColor: 'primary.main',
 			},

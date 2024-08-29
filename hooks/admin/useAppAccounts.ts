@@ -26,7 +26,7 @@ const useAppAccounts = (props: UseAppAccountsParams) => {
 		destroy: deleteAppAccount,
 		handleChange,
 		handleChangePage,
-		reload: reloadAppAccount,
+		reloadOne: reloadAppAccount,
 		reloadMany: reloadAppAccounts,
 		query,
 		page,

@@ -22,7 +22,7 @@ function useApps(): Record<string, any> {
 		destroy: deleteApp,
 		handleChange,
 		handleChangeApp,
-		reload: reloadApp,
+		reloadOne: reloadApp,
 		reloadMany: reloadApps,
 		query,
 		app: currentApp,

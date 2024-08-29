@@ -112,7 +112,7 @@ const sx = {
 		overflow: 'hidden',
 		borderBottom: '1px solid',
 		borderColor: 'divider',
-		bgcolor: 'background.main',
+    bgcolor: 'background.paper',
 	},
 	gradient: {
 		'&::after': {
