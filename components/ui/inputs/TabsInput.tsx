@@ -64,9 +64,7 @@ const TabsInput: React.FC<TabsInputProps> = (props) => {
 			direction={direction}
 			spacing={1}
 		>
-      {(label || info) && (
-			  <InputLabel label={label} info={info} />
-      )}
+			<InputLabel label={label} info={info} />
 			<ButtonTabs
 				options={options}
 				value={value}
