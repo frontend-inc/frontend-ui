@@ -50,11 +50,8 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 					xs: '100vh',
 				},
 			}}
-		>
-			<Alert />
-			{notifications?.length > 0 && (
-				<Notifications notifications={notifications} />
-			)}
+		>      
+			<Alert />			
 			<Box
 				sx={{
 					...sx.root,
@@ -69,17 +66,20 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 						...(enableNotifications && sx.contentNotifications),
 					}}
 				>
-					<AdminLayoutScroll>
-						<AuthGuard
-							roles={roles}
-							requireAuth={requireAuth}
-							requirePaid={requirePaid}
-							requireTeam={requireTeam}
-						>
-							{children}
-							{footer}
-						</AuthGuard>
-					</AdminLayoutScroll>
+        <AuthGuard
+          roles={roles}
+          requireAuth={requireAuth}
+          requirePaid={requirePaid}
+          requireTeam={requireTeam}
+        >
+          {notifications?.length > 0 && (
+            <Notifications 
+              notifications={notifications} 
+            />
+          )}
+          {children}
+          {footer}						
+        </AuthGuard>
 				</Box>
 			</Box>
 		</Box>
@@ -117,6 +117,7 @@ const sx = {
 		display: 'flex',
 		flexDirection: 'column',
 		width: '100%',
+    overflowY: 'hidden',
 	},
 	contentNotifications: {
 		pb: '45px',
