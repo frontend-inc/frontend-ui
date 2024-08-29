@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Button } from '@mui/material'
 import { ExternalLink } from 'lucide-react'
+import { truncate } from '../../../helpers'
 
 type CellLinkProps = {
 	value: string
@@ -20,7 +21,7 @@ const CellLink: React.FC<CellLinkProps> = (props) => {
 					startIcon={<ExternalLink />}
 					onClick={handleClick}
 				>
-					{value}
+					{truncate(value, 20)}
 				</Button>
 			)}
 		</Box>
