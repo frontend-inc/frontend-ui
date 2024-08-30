@@ -113,7 +113,7 @@ const sx = {
 			minWidth: 44,
 			px: 1,
 			zIndex: 1,
-			color: 'common.white',
+			color: 'text.primary',
 		},
 		'& .MuiTabs-root': {
 			minHeight: 34,
@@ -125,7 +125,7 @@ const sx = {
 			color: 'text.secondary',
 			'&.Mui-selected': {
 				borderRadius: 1,
-				color: 'common.white',
+				color: 'text.primary',
 			},
 		},
 	},

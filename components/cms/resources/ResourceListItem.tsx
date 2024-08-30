@@ -6,6 +6,7 @@ import {
 	ListItemButton,
 	ListItemText,
 	ListItemIcon,
+  Typography,
 	Checkbox,
 } from '@mui/material'
 import { Image, Icon, MenuButton } from '../..'
@@ -55,7 +56,6 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 	} = props
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		console.log(event.target.checked)
 		if (handleSelect) {
 			handleSelect()
 		}
@@ -117,7 +117,12 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 						</Avatar>
 					</ListItemIcon>
 				)}
-				<ListItemText primary={primary} secondary={secondary} />
+				<ListItemText primary={
+          <Typography variant="body1" color="text.primary">
+            { primary }
+          </Typography>
+         } 
+        secondary={secondary} />
 			</ListItemButton>
 		</ListItem>
 	)
@@ -129,12 +134,16 @@ const sx = {
 	root: {
 		p: 0,
 		borderRadius: 1,
-		overflow: 'hidden',
+		overflow: 'hidden',    
+    bgcolor: 'background.paper',    
 	},
 	rootBorder: {
 		border: '1px solid',
-		borderColor: 'divider',
-		bgcolor: 'background.paper',
+		borderColor: 'divider',		
+    transition: 'box-shadow 0.2s',
+    '&:hover': {
+      boxShadow: 1
+    },
 		mb: 1,
 	},
 	listItemButton: {
@@ -159,8 +168,5 @@ const sx = {
 		'&:active': {
 			cursor: 'grabbing',
 		},
-	},
-	isDragging: {
-		border: '2px solid red',
 	},
 }

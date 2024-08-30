@@ -22,7 +22,8 @@ type ThemeProviderProps = {
 }
 
 const ThemeProvider = (props: ThemeProviderProps) => {
-	const {
+	
+  const {
 		children,
 		muiTheme,
 		primaryColor,

@@ -10,6 +10,7 @@ const AdminPolicysList: React.FC = () => {
 	return (
 		<ResourceList
 			sortable
+      enableBorder
 			url={`${apiUrl}/policies`}
 			name="policy"
 			enableCreate
@@ -26,6 +27,11 @@ const AdminPolicysList: React.FC = () => {
 			emptyIcon="FileText"
 			emptyTitle="No policies"
 			emptyDescription="No policies yet."
+      slots={{
+        item: {
+          enableBorder: true
+        }
+      }}
 		/>
 	)
 }

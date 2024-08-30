@@ -60,6 +60,7 @@ export type ResourceListProps = {
 	buttons?: ToolbarButtonType[]
 	slots?: {
 		list?: any
+    item?: any
 		edit?: any
 		create?: any
 		show?: any
@@ -72,6 +73,7 @@ export type ResourceListProps = {
 const ResourceList: React.FC<ResourceListProps> = (props) => {
 	const SLOT_PROPS = {
 		list: {},
+    item: {},
 		edit: {},
 		create: {},
 		show: {},
@@ -385,10 +387,11 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 								handleEdit={() => handleEdit(resource)}
 								handleDelete={() => handleDeleteClick(resource)}
 								handleSelect={() => handleSelect(resource)}
-								{...props}
-								{...slots.list}
+                { ...slots.item }
+								{...props}								
 							/>
 						)}
+            {...slots.list}
 					/>
 				) : (
 					<SortableListItems

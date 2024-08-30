@@ -10,7 +10,7 @@ type LightDarkModeProps = {
 const LightDarkMode: React.FC<LightDarkModeProps> = (props) => {
 	const { mode, children } = props || {}
 
-	const [bgcolor, setBgcolor] = useState('#FFFFFF')
+	const [bgcolor, setBgcolor] = useState('#fcfcfc')
 
 	const { theme: muiTheme } = useContext(ThemeContext)
 
@@ -20,7 +20,7 @@ const LightDarkMode: React.FC<LightDarkModeProps> = (props) => {
 				setBgcolor('#000000')
 				break
 			case 'light':
-				setBgcolor('#FFFFFF')
+				setBgcolor('#fcfcfc')
 				break
 			case 'accent':
 				setBgcolor(muiTheme?.palette?.primary?.main)
