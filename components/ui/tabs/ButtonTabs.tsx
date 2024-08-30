@@ -34,14 +34,14 @@ const ButtonTabs: React.FC<ButtonTabsProps> = (props) => {
     disableDebounce = false
 	} = props
 
-  const [value, setvalue] = useState(initialValue)
+  const [value, setValue] = useState(initialValue)
   const [debouncedValue] = useDebounce(value, debounceDelay)
 	
   const handleInputChange = (
 		ev: React.ChangeEvent<HTMLInputElement>,
 		value: number | string
 	) => {
-		setvalue(value)
+		setValue(value)
     if(disableDebounce){
       handleChange(value)
     }
@@ -52,6 +52,10 @@ const ButtonTabs: React.FC<ButtonTabsProps> = (props) => {
       handleChange(debouncedValue)
     }
   }, [debouncedValue])
+
+  useEffect(() => {
+    setValue(initialValue)
+  }, [initialValue])
 
 	return (
 		<Tabs
