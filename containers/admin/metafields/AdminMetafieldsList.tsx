@@ -1,8 +1,7 @@
 import React from 'react'
 import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
-import { AdminMetafieldItem } from '../..'
-import AdminMetafieldForm from './AdminMetafieldForm'
+import { AdminMetafieldForm, AdminMetafieldItem } from '../..'
 
 const AdminMetafieldsList = () => {
 	const { apiUrl } = useAdmin()

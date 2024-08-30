@@ -134,7 +134,6 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		updatePositions,
 		handleChange,
 		query,
-		findOne,
 		findMany,
 		reloadMany,
 		removeAttachment,

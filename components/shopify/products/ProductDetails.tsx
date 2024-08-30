@@ -80,7 +80,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = (props) => {
 						label={buttonText}
 					/>
 					{metafields && (
-						<ProductMetafields product={product} metafields={metafields} />
+						<ProductMetafields 
+              product={product} 
+              metafields={metafields} 
+            />
 					)}
 					<TrackRecentlyViewed product={product} />
 				</Stack>

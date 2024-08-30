@@ -24,6 +24,7 @@ export type FieldVariantTypes =
 	| 'location'
 	| 'select'
 	| 'shopify_product'
+  | 'shopify_products'
 	| 'shopify_collection'
 	| 'user'
 	| 'team'

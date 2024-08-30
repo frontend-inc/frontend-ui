@@ -6,7 +6,7 @@ import {
 import { useProducts } from 'frontend-shopify'
 
 export type MetafieldVideoProps = {
-	handle: string
+	shopifyProduct: any
 	metafield: MetafieldIdentifierType
 	height?: number
 	controls?: boolean
@@ -15,7 +15,7 @@ export type MetafieldVideoProps = {
 
 const MetafieldVideo: React.FC<MetafieldVideoProps> = (props) => {
 	const {
-		handle,
+		shopifyProduct,
 		metafield,
 		controls = false,
 		autoPlay = false,
@@ -28,10 +28,14 @@ const MetafieldVideo: React.FC<MetafieldVideoProps> = (props) => {
 	const [ogg, setOgg] = useState<string | null>(null)
 
 	useEffect(() => {
-		if (handle && metafield) {
-			findProduct(handle, [metafield])
+		if (shopifyProduct && metafield) {   
+      const metafieldIdentifier = {
+        namespace: metafield?.split('.')[0],
+        key: metafield?.split('.')[1],
+      }   
+			findProduct(shopifyProduct?.handle, [metafieldIdentifier])
 		}
-	}, [handle, metafield])
+	}, [shopifyProduct, metafield])
 
 	useEffect(() => {
 		if (product) {

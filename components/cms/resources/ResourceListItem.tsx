@@ -102,7 +102,12 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 				{avatar && <ListItemIcon sx={sx.listItemIcon}>{avatar}</ListItemIcon>}
 				{!avatar && image && (
 					<ListItemIcon sx={sx.listItemIcon}>
-						<Image src={image} width={32} height={32} alt={image} />
+						<Image 
+              src={image} 
+              width={32} 
+              height={32} 
+              alt={image} 
+            />
 					</ListItemIcon>
 				)}
 				{icon && (
@@ -169,4 +174,7 @@ const sx = {
 			cursor: 'grabbing',
 		},
 	},
+  isDragging: {
+    boxShadow: 2,
+  }
 }

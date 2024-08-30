@@ -243,6 +243,18 @@ export const HABTM_FIELD: FieldVariantType = {
 	color: COLORS.orange[500],
 }
 
+export const SHOPIFY_PRODUCTS_FIELD: FieldVariantType = {
+	icon: 'Shirt',
+	category: 'Reference',
+	db_type: 'string',
+	variant: 'shopify_products',
+	label: 'Shopify products',
+	description: 'Array of Shopify products',
+	array: true,
+	color: COLORS.orange[500],
+}
+
+
 export const FIELD_VARIANTS: FieldVariantType[] = [
 	STRING_FIELD,
 	TEXT_FIELD,
@@ -268,5 +280,6 @@ export const FIELD_VARIANTS: FieldVariantType[] = [
 	VIDEO_FIELD,
 	FILE_FIELD,
 
+  SHOPIFY_PRODUCTS_FIELD,
 	HABTM_FIELD,
 ]
