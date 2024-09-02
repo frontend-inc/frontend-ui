@@ -14,6 +14,7 @@ export const SYSTEM_FIELDS = [
 	'team_id',
 	'label',
 	'shopify_handle',
+  'shopify_products',
 	'published',
 	'status',
 	'locale',

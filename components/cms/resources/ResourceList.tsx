@@ -339,6 +339,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				handleSortDirection={handleSortDirection}
 				handleAdd={handleAdd}
 				keywords={keywords}
+        handleReload={reloadMany}
 				activeFilters={activeFilters}
 				filterOptions={filterOptions}
 				sortOptions={sortOptions}
@@ -352,6 +353,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				handleClose={handleClear}
 				buttons={buttons}
 				onSuccess={handleSuccess}
+        handleReload={reloadMany}
 				{...slots.toolbar}
 			/>
 			<Box
@@ -386,8 +388,8 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 								handleEdit={() => handleEdit(resource)}
 								handleDelete={() => handleDeleteClick(resource)}
 								handleSelect={() => handleSelect(resource)}
-                { ...slots.item }
-								{...props}								
+                handleReload={reloadMany}
+                { ...slots.item }																
 							/>
 						)}
             {...slots.list}
@@ -401,6 +403,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 						numPages={numPages}
 						totalCount={totalCount}
 						handlePaginate={handlePaginate}
+            handleReload={reloadMany}
 						renderItem={(resource, index) => (
 							<Component
 								key={index}
@@ -422,9 +425,11 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 								handleEdit={() => handleEdit(resource)}
 								handleDelete={() => handleDeleteClick(resource)}
 								handleSelect={() => handleSelect(resource)}
-								{...slots.list}
+                handleReload={reloadMany}                
+								{...slots.item}
 							/>
 						)}
+            { ...slots.list}
 					/>
 				)}
 				{!loading && resources?.length == 0 && (
@@ -441,6 +446,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				loading={loading}
 				errors={errors}
 				resource={resource}
+        setResource={setResource}
 				handleChange={handleChange}
 				handleRemove={handleRemove}
 				handleSubmit={handleSubmit}
@@ -453,6 +459,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				loading={loading}
 				errors={errors}
 				resource={resource}
+        setResource={setResource}
 				handleChange={handleChange}
 				handleRemove={handleRemove}
 				handleSubmit={handleSubmit}

@@ -72,11 +72,6 @@ export { default as LayoutContainer } from './layouts/LayoutContainer'
 export { default as LayoutEmpty } from './layouts/LayoutEmpty'
 export { default as Loader } from './loaders/Loader'
 export { default as LayoutScroll } from './layouts/LayoutScroll'
-
-// Input addons
-export { default as LocationInput } from './inputs/addons/LocationInput'
-export { default as ShopifyProductInput } from './inputs/addons/ShopifyProductInput'
-
 export { default as SortableList } from './lists/SortableList'
 export { default as SortableListItem } from './lists/SortableListItem'
 export { default as SelectableListItem } from './lists/SelectableListItem'

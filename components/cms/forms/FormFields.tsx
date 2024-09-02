@@ -12,7 +12,7 @@ export type FormProps = {
 	fields: FormFieldType[]
 	resource: any
 	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-	handleRemove: (name: string) => void
+	handleRemove?: (name: string) => void
 	handleSubmit?: () => void
 	buttonText?: string
 }
@@ -44,7 +44,7 @@ const FormFields: React.FC<FormProps> = (props) => {
 						value={get(resource, field.name) || field?.default}
 						//@ts-ignore
 						handleChange={handleChange}
-						handleRemove={handleRemove}
+						handleRemove={handleRemove ? handleRemove : undefined}
 					/>
 				)
 			})}

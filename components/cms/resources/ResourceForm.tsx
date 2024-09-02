@@ -8,6 +8,7 @@ export type ResourceFormProps = {
 	loading: boolean
 	errors: any
 	resource: any
+  setResource: (resource: any) => void
 	handleChange: (ev: any) => void
 	handleRemove: (field: any) => void
 	handleSubmit: () => void
@@ -21,6 +22,7 @@ const ResourceForm: React.FC<ResourceFormProps> = (props) => {
 		open,
 		handleClose,
 		resource,
+    setResource,
 		handleChange,
 		handleRemove,
 		handleSubmit,

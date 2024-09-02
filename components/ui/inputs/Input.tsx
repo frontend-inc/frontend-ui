@@ -22,6 +22,7 @@ import {
 	ReferenceInput,
 	SearchInput,
 	SelectInput,
+  ShopifyProductsInput,
 	SwitchInput,
 	TabsInput,
 	TextInput,
@@ -52,6 +53,7 @@ type InputVariantType =
 	| 'reference'
 	| 'search'
 	| 'select'
+  | 'shopify_products'
 	| 'switch'
 	| 'tabs'
 	| 'text'
@@ -93,6 +95,7 @@ const Input: React.FC<InputProps> = (props) => {
 		reference: ReferenceInput,
 		search: SearchInput,
 		select: SelectInput,
+    shopify_products: ShopifyProductsInput,
 		switch: SwitchInput,
 		ratings: RatingInput,
 		tabs: TabsInput,

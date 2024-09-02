@@ -23,6 +23,7 @@ export type ResourceListItemsProps = {
 	handleDrop?: (sorted: any[]) => void
 	handlePaginate: (page: number) => void
 	handleSort?: (field: SortOptionType) => void
+  handleReload?: () => void
 	renderItem: (resource: any, props: any) => React.ReactNode
 }
 
