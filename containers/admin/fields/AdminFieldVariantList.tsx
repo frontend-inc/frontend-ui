@@ -37,8 +37,8 @@ const AdminFieldVariantList: React.FC<FieldVariantListProps> = (props) => {
 	}, [visibleFields])
 
 	return (
-			<Box px={2} pb={2}>
-        <Box pb={2}>
+			<Box>
+        <Box px={2} pb={2}>
           <SearchInput
             value={text}
             placeholder="Search fields"
