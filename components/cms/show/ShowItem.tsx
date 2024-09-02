@@ -165,6 +165,7 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 			}
 			actions={
 				<SocialButtons
+          variant="button"
 					justifyContent={'center'}
 					resource={resource}
 					enableLikes={enableLikes}
