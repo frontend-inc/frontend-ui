@@ -71,56 +71,56 @@ const AdminFieldItem: React.FC<AdminFieldItemProps> = (props) => {
 			secondary={field?.name}
 			secondaryActions={
         <>
-        {field.column && !field.array && (
-          <Tooltip title="Search filter field">
-            <IconButton onClick={() => handleUpdateField('filter_field')}>
-              {field.filter_field ? (
-                <FilterAltOutlined color="primary" />
-              ) : (
-                <FilterAltOffOutlined />
-              )}
+          {field.column && !field.array && (
+            <Tooltip title="Search filter field">
+              <IconButton onClick={() => handleUpdateField('filter_field')}>
+                {field.filter_field ? (
+                  <FilterAltOutlined color="primary" />
+                ) : (
+                  <FilterAltOffOutlined />
+                )}
+              </IconButton>
+            </Tooltip>
+          )}
+          {field.column && !field.array && (
+            <Tooltip title="Search sort field">
+              <IconButton onClick={() => handleUpdateField('sort_field')}>
+                {field.sort_field ? (
+                  <SortByAlpha color="primary" />
+                ) : (
+                  <SortByAlpha />
+                )}
+              </IconButton>
+            </Tooltip>
+          )}
+          {(field.column || field.attachment) && field?.name != 'title' && (
+            <Tooltip title="Display in search results">
+              <IconButton onClick={() => handleUpdateField('display_field')}>
+                {field.display_field ? (
+                  <ManageSearch color="primary" />
+                ) : (
+                  <ManageSearch />
+                )}
+              </IconButton>
+            </Tooltip>
+          )}
+          <Tooltip title="Display in forms">
+            <IconButton onClick={() => handleUpdateField('form_field')}>
+              {field.form_field ? <EditNote color="primary" /> : <EditNote />}
             </IconButton>
           </Tooltip>
-        )}
-        {field.column && !field.array && (
-          <Tooltip title="Search sort field">
-            <IconButton onClick={() => handleUpdateField('sort_field')}>
-              {field.sort_field ? (
-                <SortByAlpha color="primary" />
-              ) : (
-                <SortByAlpha />
-              )}
-            </IconButton>
-          </Tooltip>
-        )}
-        {(field.column || field.attachment) && field?.name != 'title' && (
-          <Tooltip title="Display in search results">
-            <IconButton onClick={() => handleUpdateField('display_field')}>
-              {field.display_field ? (
-                <ManageSearch color="primary" />
-              ) : (
-                <ManageSearch />
-              )}
-            </IconButton>
-          </Tooltip>
-        )}
-        <Tooltip title="Display in forms">
-          <IconButton onClick={() => handleUpdateField('form_field')}>
-            {field.form_field ? <EditNote color="primary" /> : <EditNote />}
-          </IconButton>
-        </Tooltip>
-        {(field.column || field.attachment) && (
-          <Tooltip title="Display as table header">
-            <IconButton onClick={() => handleUpdateField('table_header')}>
-              {field.table_header ? (
-                <TableRowsOutlined fontSize="small" color="primary" />
-              ) : (
-                <TableRowsOutlined fontSize="small" />
-              )}
-            </IconButton>
-          </Tooltip>
-        )}      
-        <Label label={field?.variant} />
+          {(field.column || field.attachment) && (
+            <Tooltip title="Display as table header">
+              <IconButton onClick={() => handleUpdateField('table_header')}>
+                {field.table_header ? (
+                  <TableRowsOutlined fontSize="small" color="primary" />
+                ) : (
+                  <TableRowsOutlined fontSize="small" />
+                )}
+              </IconButton>
+            </Tooltip>
+          )}      
+          <Label label={field?.variant} />
         </>
       }
 			handleClick={handleClick}

@@ -4,11 +4,17 @@ import { Image, Placeholder } from '../../..'
 import { SyntheticEventType } from '../../../../types'
 import { useProducts } from 'frontend-shopify'
 import { ShopifyContext } from 'frontend-shopify'
-import { Box, Collapse, Stack } from '@mui/material'
+import { IconButton, Box, Fade, Collapse, Stack } from '@mui/material'
 import { uniq } from 'lodash'
+import { Icon } from '../../../../components'
 
+type ShopifyProductImageProps = {
+  handle: string
+  handleDelete: () => void
+}
 
-const ShopifyProductImage = (handle) => {
+const ShopifyProductImage: React.FC<ShopifyProductImageProps> = (props) => {
+  const { handle, handleDelete } = props
 
   const { product, findProduct } = useProducts()
 
@@ -20,16 +26,25 @@ const ShopifyProductImage = (handle) => {
 
   if(!product) return null;
   return(
-    <Box sx={sx.productCard}>
-      <Image
-        enableGradient
-        disableBorder
-        src={product?.images?.edges?.[0]?.node?.url}
-        alt={product?.title}
-        height={180}
-        width={180}
-      />
-    </Box>
+    <Fade in timeout={350} >
+      <Box sx={sx.productCard}>
+        <Image
+          enableGradient
+          disableBorder
+          src={product?.images?.edges?.[0]?.node?.url}
+          alt={product?.title}
+          height={180}
+          width={180}
+        />
+        <IconButton 
+          size="small"
+          onClick={handleDelete}
+          sx={sx.deleteButton}
+        >
+          <Icon name="X" />
+        </IconButton>
+      </Box>
+    </Fade>
   )
 }
 
@@ -52,6 +67,7 @@ const ShopifyProductsInput: React.FC<AutosuggestProps> = (props) => {
 		handleChange,
 	} = props
 
+  const [currentValue, setCurrentValue] = useState('')
   const [shopifyProducts, setShopifyProducts] = useState([])
 	const { domain, storefrontAccessToken } = useContext(ShopifyContext) as any
 
@@ -80,22 +96,20 @@ const ShopifyProductsInput: React.FC<AutosuggestProps> = (props) => {
 	}, [products])
 
 	useEffect(() => {
-		if (value) {
-			setShopifyProducts(value || [])
+		if (value && Array.isArray(value)) {      
+			setShopifyProducts(value)
 		}
 	}, [value])
 
 	const handleAutocompleteChange = (e) => {
 		const { value } = e.target
-    setShopifyProducts(uniq([
-      ...shopifyProducts,
-      value
-    ]))
-
+    setCurrentValue(value)
+    let uniqProducts = uniq([...shopifyProducts, value])
+    setShopifyProducts(uniqProducts)
 		handleChange({
 			target: {
 				name,
-				value,
+				value: uniqProducts,
 			},
 		})
 	}
@@ -106,12 +120,13 @@ const ShopifyProductsInput: React.FC<AutosuggestProps> = (props) => {
 		})
 	}, [])
 
-  const handleDelete = (product) => {
-    let filtered = setShopifyProducts(shopifyProducts.filter((p) => p !== product))
+  const handleDelete = (handle: string) => {
+    let newProducts = shopifyProducts.filter((product) => product !== handle)
+    setShopifyProducts(newProducts)
     handleChange({
       target: {
         name,
-        value: filtered
+        value: newProducts || []
       }
     })
   }
@@ -127,20 +142,22 @@ const ShopifyProductsInput: React.FC<AutosuggestProps> = (props) => {
 	return (
 		<Stack direction="column" spacing={1} sx={sx.root}>
 			<Collapse in={shopifyProducts?.length > 0}>
-        <Stack direction="row" spacing={1}>
-          { shopifyProducts.map((product) => (
+      <Box sx={ sx.carouselContainer }>
+        <Box sx={ sx.carousel }>
+          { shopifyProducts?.map((handle) => (
             <ShopifyProductImage
-              key={ product}
-              product={product}
-              handleDelete={() => handleDelete(product)}				
+              key={ handle}
+              handle={handle}
+              handleDelete={() => handleDelete(handle)}				
             />
           ))}
-        </Stack>
+        </Box>
+        </Box>
 			</Collapse>
 			<AutocompleteInput
 				name={name}
 				label={label}
-				value={value}
+				value={currentValue}
 				options={options}
 				handleChange={handleAutocompleteChange}
 				handleInputChange={handleInputChange}
@@ -158,7 +175,9 @@ const sx = {
 		width: '100%',
 	},
 	productCard: {
+    position: 'relative',
 		width: 180,
+    minWidth: 180,
 		minHeight: 180,
 		borderRadius: 1,
 		overflow: 'hidden',
@@ -173,4 +192,23 @@ const sx = {
 	productContent: {
 		p: 1,
 	},
+  carouselContainer: {
+  },
+  carousel: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: '10px',
+  },
+  deleteButton: {
+    position: 'absolute',
+    top: 2,
+    right: 2,
+    bgcolor: 'background.default',
+    opacity: 0.5,
+    '&:hover': {
+      bgcolor: 'background.default',
+      opacity: 1,
+    },
+  }
 }

@@ -79,7 +79,7 @@ export const typography = {
 		fontFamily: 'Inter',
 		fontWeight: 600,
 		fontSize: 12,
-		letterSpacing: '0.03em',
+		letterSpacing: '0.03em',    
 	},
 	caption: {
 		fontFamily: 'Inter',
@@ -87,6 +87,9 @@ export const typography = {
 		textTransform: 'uppercase',
 		fontSize: 12,
 		letterSpacing: '0.05em',
+    '@media (max-width:600px)': {
+			fontSize: 12,
+		},
 	},
 	overline: {
 		fontFamily: 'Inter',
@@ -95,5 +98,8 @@ export const typography = {
 		fontSize: 12,
 		lineHeight: '1em',
 		letterSpacing: '0.05em',
+    '@media (max-width:600px)': {
+			fontSize: 12,
+		},
 	},
 }

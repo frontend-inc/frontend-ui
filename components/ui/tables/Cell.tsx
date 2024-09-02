@@ -53,6 +53,7 @@ const Cell: React.FC<CellProps> = (props) => {
 		user: CellUser,
 		team: CellTeam,
 		file: CellFile,
+    shopify_products: CellArray
 	}
 
 	const CellComponent = componentMapper[field.variant]
