@@ -20,6 +20,7 @@ import ResourceToolbar from './ResourceToolbar'
 import { ToolbarButtonType } from '../../../types'
 
 export type ResourceListProps = {
+  grid?: boolean
 	sortable?: boolean
 	selectable?: boolean
 	header?: React.FC<any>
@@ -83,6 +84,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	}
 
 	const {
+    grid = false,
 		sortable = false,
 		selectable = false,
 		header: Header = ResourceHeader,
@@ -284,7 +286,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		setOpenEdit(false)
 		setOpenDelete(false)
 		setResource({})
-		reloadMany()
+		await reloadMany()
 	}
 
 	const handleRemove = async (name) => {
@@ -363,6 +365,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 			>
 				{!sortable ? (
 					<List
+            grid={ grid }
 						query={query}
 						headers={headers}
 						page={page}
@@ -450,6 +453,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				handleChange={handleChange}
 				handleRemove={handleRemove}
 				handleSubmit={handleSubmit}
+        handleReload={reloadMany}
 				fields={fields}
 				{...slots.create}
 			/>
@@ -463,6 +467,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				handleChange={handleChange}
 				handleRemove={handleRemove}
 				handleSubmit={handleSubmit}
+        handleReload={reloadMany}
 				fields={fields}
 				{...slots.edit}
 			/>
@@ -476,6 +481,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				enableDelete={enableDelete}
 				handleEdit={() => handleEdit(resource)}
 				handleDelete={() => handleDeleteClick(resource)}
+        handleReload={reloadMany}
 				{...slots.show}
 			/>
 			<AlertModal

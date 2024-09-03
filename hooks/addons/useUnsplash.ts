@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useLoadingWrapper } from '../../hooks'
-import { useApi } from 'frontend-js'
 import { UnsplashImageType } from '../../types'
 
 type UseUnsplashParams = {

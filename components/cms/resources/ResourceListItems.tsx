@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, List } from '@mui/material'
+import { Box, Stack, List } from '@mui/material'
 import { LoadMore } from '../..'
 import {
 	TableHeaderType,
@@ -8,6 +8,7 @@ import {
 } from '../../../types'
 
 export type ResourceListItemsProps = {
+  grid?: boolean
 	query?: QueryParamsType
 	resources: any[]
 	headers?: TableHeaderType[]
@@ -28,11 +29,19 @@ export type ResourceListItemsProps = {
 }
 
 const ResourceListItems: React.FC<ResourceListItemsProps> = (props) => {
-	const { page, numPages, handlePaginate, resources, renderItem } = props || {}
+	const { page, grid = false, numPages, handlePaginate, resources, renderItem } = props || {}
 
 	return (
 		<Stack spacing={2} sx={sx.fullWidth}>
-			<List>{resources?.map((resource) => renderItem(resource, props))}</List>
+      { !grid ? (
+			<List>
+        {resources?.map((resource) => renderItem(resource, props))}
+      </List>
+      ):(
+        <Box sx={ sx.grid }>
+          {resources?.map((resource) => renderItem(resource, props))}
+        </Box>
+      )}
 			<LoadMore
 				page={page}
 				numPages={numPages}
