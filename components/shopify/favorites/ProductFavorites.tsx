@@ -2,8 +2,7 @@ import React from 'react'
 import { Placeholder } from '../..'
 import { ProductArray } from '..'
 import { Box } from '@mui/material'
-import { useFavorites } from 'frontend-shopify'
-import { useAuth, UserType } from 'frontend-js'
+import { UserType } from '../../../types'
 
 export type ProductFavoritesProps = {
 	href: string
@@ -33,7 +32,7 @@ const ProductFavorites: React.FC<ProductFavoritesProps> = (props) => {
 		<Box sx={sx.root}>
 			<ProductArray
 				href={href}
-				handles={favorites}
+				handles={favorites || []}
 				enableBorder={enableBorder}
 				enableAddToCart={enableAddToCart}
 				enableQuantity={enableQuantity}
