@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAlerts } from 'frontend-ui/hooks'
 import { Icon, Image, Modal } from 'frontend-ui/components'
-import UnsplashLogo from 'containers/addons/unsplash/UnsplashLogo'
+import UnsplashLogo from './UnsplashLogo'
 import {
 	List,
 	ListItem,
