@@ -15,7 +15,6 @@ import {
 	ManageSearch,
 } from '@mui/icons-material'
 import { useResource } from 'frontend-js'
-import { set } from 'zod'
 
 type AdminFieldItemProps = {
   url: string

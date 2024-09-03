@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import {
-	MetafieldIdentifierType,
+	ShopifyMetafieldType,
 	getMetafieldReference,
 } from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'
 
 export type MetafieldVideoProps = {
 	shopifyProduct: any
-	metafield: MetafieldIdentifierType
+	metafield: string
 	height?: number
 	controls?: boolean
 	autoPlay?: boolean
@@ -55,8 +55,8 @@ const MetafieldVideo: React.FC<MetafieldVideoProps> = (props) => {
 			controls={controls}
 			autoPlay={autoPlay}
 		>
-			<source src={mp4} type="video/mp4" />
-			<source src={ogg} type="video/ogg" />
+			{ mp4 && <source src={mp4} type="video/mp4" /> }
+			{ ogg && <source src={ogg} type="video/ogg" /> }
 			Your browser does not support the video tag.
 		</video>
 	)
