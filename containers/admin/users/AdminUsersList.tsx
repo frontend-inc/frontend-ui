@@ -1,5 +1,5 @@
 import React from 'react'
-import { DataList, ResourceList } from '../../../components'
+import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import AdminUserItem from './AdminUserItem'
 import AdminUserForm from './AdminUserForm'

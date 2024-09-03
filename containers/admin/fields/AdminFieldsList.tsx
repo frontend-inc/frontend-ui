@@ -9,11 +9,9 @@ type AdminFieldsListProps = {
 
 const AdminFieldsList: React.FC<AdminFieldsListProps> = (props) => {
 	const { apiUrl } = useAdmin()
-
   const { collectionId } = props || {}
 
-  const url = `${apiUrl}/collections/${collectionId}/fields`
-  
+  const url = `${apiUrl}/collections/${collectionId}/fields`  
   const slots = {
     item: {
       url
