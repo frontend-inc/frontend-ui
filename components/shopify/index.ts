@@ -1,15 +1,7 @@
+export * from './products'
+export * from './cart'
+
 // Cart and Checkout
-export { default as AddToCartButton } from './cart/AddToCartButton'
-export { default as Cart } from './cart/Cart'
-export { default as CartButton } from './cart/CartButton'
-export { default as CartDiscounts } from './cart/CartDiscounts'
-export { default as CartDiscountCode } from './cart/CartDiscountCode'
-export { default as CartLine } from './cart/CartLine'
-export { default as CartLines } from './cart/CartLines'
-export { default as CartTotals } from './cart/CartTotals'
-export { default as CartText } from './cart/CartText'
-export { default as CheckoutButton } from './cart/CheckoutButton'
-export { default as QuickShopButton } from './cart/QuickShopButton'
 export { default as SubscriptionSelector } from './subscription/SubscriptionSelector'
 
 export { default as ProductSortButton } from './filters/ProductSortButton'
@@ -38,32 +30,6 @@ export { default as ProductVariantSelector } from './variants/ProductVariantSele
 export { default as Collections } from './collections/Collections'
 export { default as CollectionCard } from './collections/CollectionCard'
 export { default as CollectionCover } from './collections/CollectionCover'
-
-// Products
-export { default as ProductCard } from './products/ProductCard'
-export { default as ProductCarousel } from './products/ProductCarousel'
-export { default as ProductCollection } from './products/ProductCollection'
-export { default as ProductCollectionCarousel } from './products/ProductCollectionCarousel'
-export { default as ProductInfo } from './products/ProductInfo'
-export { default as ProductDetails } from './products/ProductDetails'
-export { default as ProductDescription } from './products/ProductDescription'
-export { default as ProductFeatured } from './products/ProductFeatured'
-export { default as ProductGrid } from './products/ProductGrid'
-export { default as SwipeableProductImages } from './products/images/SwipeableProductImages'
-export { default as ProductImages } from './products/images/ProductImages'
-export { default as ProductImageCarousel } from './products/images/ProductImageCarousel'
-export { default as ProductImagesSlider } from './products/images/ProductImagesSlider'
-export { default as ProductMetafields } from './products/ProductMetafields'
-export { default as ProductModal } from './products/ProductModal'
-export { default as ProductRecommendations } from './products/ProductRecommendations'
-export { default as ProductSearch } from './products/ProductSearch'
-
-// Metafields
-export { default as Metafields } from './products/metafields/Metafields'
-export { default as MetafieldImage } from './products/metafields/MetafieldImage'
-export { default as MetafieldRichText } from './products/metafields/MetafieldRichText'
-export { default as MetafieldProducts } from './products/metafields/MetafieldProducts'
-export { default as MetafieldVideo } from './products/metafields/MetafieldVideo'
 
 // Context
 export { default as ShopifyStore } from './store/ShopifyStore'

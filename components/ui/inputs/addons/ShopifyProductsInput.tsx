@@ -11,10 +11,12 @@ import { Icon } from '../../../../components'
 type ShopifyProductImageProps = {
   handle: string
   handleDelete: () => void
+  height?: number
+  width?: number
 }
 
 const ShopifyProductImage: React.FC<ShopifyProductImageProps> = (props) => {
-  const { handle, handleDelete } = props
+  const { handle, handleDelete, height = 160, width = 160 } = props
 
   const { product, findProduct } = useProducts()
 
@@ -33,8 +35,8 @@ const ShopifyProductImage: React.FC<ShopifyProductImageProps> = (props) => {
           disableBorder
           src={product?.images?.edges?.[0]?.node?.url}
           alt={product?.title}
-          height={180}
-          width={180}
+          height={height}
+          width={width}
         />
         <IconButton 
           size="small"
@@ -55,6 +57,8 @@ type AutosuggestProps = {
 	placeholder?: string
 	handleChange: (e: SyntheticEventType) => void
 	direction?: 'row' | 'column'
+  height?: number
+  width?: number
 }
 
 const ShopifyProductsInput: React.FC<AutosuggestProps> = (props) => {
@@ -65,14 +69,15 @@ const ShopifyProductsInput: React.FC<AutosuggestProps> = (props) => {
 		placeholder,
 		name = 'shopify_handle',
 		handleChange,
+    height, 
+    width
 	} = props
 
   const [currentValue, setCurrentValue] = useState('')
   const [shopifyProducts, setShopifyProducts] = useState([])
 	const { domain, storefrontAccessToken } = useContext(ShopifyContext) as any
 
-	const { loading, product, products, setProduct, findProduct, findProducts } =
-		useProducts()
+	const { products, setProduct, findProducts } = useProducts()
 
 	const [options, setOptions] = useState([])
 
@@ -148,6 +153,8 @@ const ShopifyProductsInput: React.FC<AutosuggestProps> = (props) => {
             <ShopifyProductImage
               key={ handle}
               handle={handle}
+              height={ height }
+              width={ width }
               handleDelete={() => handleDelete(handle)}				
             />
           ))}
@@ -176,9 +183,9 @@ const sx = {
 	},
 	productCard: {
     position: 'relative',
-		width: 180,
-    minWidth: 180,
-		minHeight: 180,
+		width: 160,
+    minWidth: 160,
+		minHeight: 160,
 		borderRadius: 1,
 		overflow: 'hidden',
 		display: 'flex',

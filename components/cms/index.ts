@@ -1,3 +1,4 @@
+export * from './addons'
 export * from './cards'
 export * from './collections'
 export * from './data'
@@ -8,10 +9,6 @@ export * from './resources'
 export { default as DisplayField } from './displayFields/DisplayField'
 export { default as DisplayFields } from './displayFields/DisplayFields'
 export { default as SecondaryFields } from './displayFields/SecondaryFields'
-
-export { default as FieldCalendly } from './addons/FieldCalendly'
-export { default as FieldGoogleMap } from './addons/FieldGoogleMap'
-export { default as FieldShopifyProduct } from './addons/FieldShopifyProduct'
 
 export { default as EmailSignup } from './contacts/EmailSignup'
 export { default as LoadMore } from './collections/LoadMore'

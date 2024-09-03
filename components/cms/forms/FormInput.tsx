@@ -15,6 +15,7 @@ import {
 	URLInput,
 	NoSpaceInput,
 	ShopifyProductInput,
+  ShopifyProductsInput,
 	ReferenceInput,
 	RemoteAutosuggest,
 } from '../../../components'
@@ -82,6 +83,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		image: ImageInput,
 		json: JSONInput,
 		shopify: ShopifyProductInput,
+    shopify_products: ShopifyProductsInput,
 		habtm: ReferenceInput,
 	}
 
