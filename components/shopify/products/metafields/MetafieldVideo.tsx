@@ -39,7 +39,8 @@ const MetafieldVideo: React.FC<MetafieldVideoProps> = (props) => {
 
 	useEffect(() => {
 		if (product) {
-			let videoRef = getMetafieldReference(product, metafield.key)
+      const key = metafield?.split('.')[1]
+			let videoRef = getMetafieldReference(product, key)
 			let mp4 = videoRef?.sources.find((source) => source.format === 'mp4')
 			let ogg = videoRef?.sources.find((source) => source.format === 'ogg')
 			setMp4(mp4?.url)
