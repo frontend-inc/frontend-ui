@@ -3,7 +3,7 @@ import { AuthScreen, AlertModal, Loader } from '../../../components'
 import { Button, Stack } from '@mui/material'
 import { useAddresses } from 'frontend-shopify'
 import { AddressForm } from '../../../components/shopify'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 import { useRouter } from 'next/router'
 
 type AddressProps = {
@@ -22,7 +22,7 @@ const Address: React.FC<AddressProps> = (props) => {
 		addressId = null
 	}
 
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 	const [showDeleteModal, setShowDeleteModal] = useState(false)
 
 	const { title = 'Customer Addresses', subtitle = 'Manage your addresses' } =

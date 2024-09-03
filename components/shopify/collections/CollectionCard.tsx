@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../../../context'
+import React from 'react'
+import { useApp } from '../../../hooks'
 import { Box, Stack, Typography } from '@mui/material'
 import { Image, TouchableOpacity, LightDarkMode } from '../..'
 import { truncate } from '../../../helpers'
@@ -14,7 +14,7 @@ export type CardProps = {
 }
 
 const CollectionCard: React.FC<CardProps> = (props) => {
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 	const {
 		collection,
 		href,

@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext } from 'react'
-import { AppContext } from '../../../context'
+import React from 'react'
+import { useApp } from '../../../hooks'
 import { Box, Button, Stack, Typography } from '@mui/material'
-import { Image, TouchableOpacity } from '../..'
+import { Image } from '../..'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 
@@ -21,7 +21,7 @@ export type FeaturedCardProps = {
 }
 
 const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 	const {
 		label,
 		title,

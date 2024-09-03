@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../../context'
+import React from 'react'
+import { useApp } from '../../hooks'
 import { useRouter } from 'next/router'
 import { ActionType, UserType } from '../../types'
 import { useLoadingWrapper } from '.'
@@ -27,7 +27,7 @@ const useButtons = (params: UseButtonParams) => {
 	const { api } = useApi()
 
 	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 	const { currentUser } = useAuth()
 
 	const handleClick = async (ev) => {

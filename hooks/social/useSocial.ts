@@ -35,6 +35,14 @@ const useSocial = (params: UseSocialParams) => {
 		return await loadingWrapper(() => api.unfollow(username, params))
 	}
 
+  const shopifyFavorite = async (handle) => {
+		return await loadingWrapper(() => api.shopifyFavorite(handle, params))
+	}
+
+	const shopifyUnfavorite = async (handle) => {
+		return await loadingWrapper(() => api.shopifyUnfavorite(handle, params))
+	}
+
 	return {
 		loading,
 		like,
@@ -43,7 +51,9 @@ const useSocial = (params: UseSocialParams) => {
 		unfavorite,
 		follow,
 		unfollow,
-		loadingWrapper,
+    shopifyFavorite,
+    shopifyUnfavorite,
+    loadingWrapper,
 	}
 }
 

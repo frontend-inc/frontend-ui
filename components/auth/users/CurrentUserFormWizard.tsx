@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 import { Button, Box } from '@mui/material'
 import FormWizardProgress from '../../cms/forms/wizard/FormWizardProgress'
 import FormWizardField from '../../cms/forms/wizard/FormWizardField'
@@ -27,7 +27,7 @@ export type CurrentUserFormWizardProps = {
 
 const CurrentUserFormWizard: React.FC<CurrentUserFormWizardProps> = (props) => {
 	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const { fields = [], buttonText = 'Update Profile', href } = props
 

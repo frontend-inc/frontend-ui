@@ -12,7 +12,7 @@ import { Box, Grid, Stack } from '@mui/material'
 import { SearchInput, Placeholder } from '../..'
 import { ProductSortButton, ProductGrid, ProductSearchFilters } from '..'
 import LoadMore from '../search/LoadMore'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 
 const PER_PAGE = 48
 
@@ -55,7 +55,7 @@ const ProductSearch: React.FC<ProductSearchProps> = (props) => {
 	const [keywords, setKeywords] = useState(String(query).toLowerCase())
 	const first = PER_PAGE
 
-	const { clientUrl } = useContext(AppContext) as any
+	const { clientUrl } = useApp()
 
 	const {
 		loading,

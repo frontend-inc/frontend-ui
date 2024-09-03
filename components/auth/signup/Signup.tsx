@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { AuthScreen, SignupForm } from '../../../components'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
 
@@ -12,7 +12,7 @@ export type SignupProps = {
 }
 
 const Signup: React.FC<SignupProps> = (props) => {
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const {
 		href,

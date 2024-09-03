@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Box, Stack, Typography, Button } from '@mui/material'
 import { Image } from '../..'
 import { useRouter } from 'next/router'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 
 export type CoverProps = {
 	editing?: boolean
@@ -25,7 +25,7 @@ export type CoverProps = {
 
 const Cover: React.FC<CoverProps> = (props) => {
 	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const {
 		title,

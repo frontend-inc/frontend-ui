@@ -1,7 +1,7 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect } from 'react'
 import { useCollections } from 'frontend-shopify'
 import { useRouter } from 'next/router'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 import { Box } from '@mui/material'
 import { CollectionCard } from '../../../components'
 
@@ -18,7 +18,7 @@ const Collections: React.FC<CollectionsProps> = (props) => {
 
 	const { loading, collections, findCollections } = useCollections()
 
-	const { clientUrl } = useContext(AppContext) as any
+	const { clientUrl } = useApp()
 
 	const handleClick = (collection) => {
 		window.scrollTo({

@@ -1,10 +1,10 @@
-import React, { useEffect, useContext } from 'react'
-import { AppContext } from '../../../context'
+import React, { useEffect } from 'react'
 import { useAuth } from 'frontend-js'
 import { FormFields } from '../..'
 import { useAlerts } from '../../../hooks'
 import { useRouter } from 'next/router'
 import { FormFieldType } from '../../../types'
+import { useApp } from '../../../hooks'
 
 export type CurrentUserFormProps = {
 	loading?: boolean
@@ -17,7 +17,7 @@ export type CurrentUserFormProps = {
 
 const UserForm: React.FC<CurrentUserFormProps> = (props) => {
 	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const { href } = props || {}
 	const onSuccess = () => {

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import {
 	ListItem,
 	ListItemText,
@@ -7,7 +7,7 @@ import {
 	Button,
 } from '@mui/material'
 import { useClickOrDrag } from '../../../hooks'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 import { useRouter } from 'next/router'
 import { NotificationType } from '../../../types'
 
@@ -22,7 +22,7 @@ const Notification: React.FC<NotificationProps> = (props) => {
 
 	const { text, path, url, notification_type } = notification || {}
 
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const handleClick = () => {
 		switch (notification_type) {

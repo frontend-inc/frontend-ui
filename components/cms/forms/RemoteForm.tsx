@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 import { useResource } from 'frontend-js'
 import { Loader, FormFields } from '../..'
 import { useAlerts, useFetchForm } from '../../../hooks'
@@ -18,7 +18,7 @@ export type RemoteFormProps = {
 
 const RemoteForm: React.FC<RemoteFormProps> = (props) => {
 	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const { href } = props || {}
 	const onSuccess = () => {

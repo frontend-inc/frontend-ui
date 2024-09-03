@@ -92,6 +92,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 							enableQuantity={enableQuantity}
 							buttonVariant={buttonVariant}
 							size="small"
+              enableFavorites
 						/>
 					)}
 					{enableQuickShop && (

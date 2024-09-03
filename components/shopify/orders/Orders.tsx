@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { AuthScreen, Loader } from '../../../components'
 import { useOrders } from 'frontend-shopify'
 import { OrderList } from '../../../components/shopify'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 import { useRouter } from 'next/router'
 import { getShopifyIdFromGid } from 'frontend-shopify'
 
@@ -14,7 +14,7 @@ type ShopifyCustomerOrdersProps = {
 const ShopifyCustomerOrders: React.FC<ShopifyCustomerOrdersProps> = (props) => {
 	const router = useRouter()
 
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const { title = 'Customer Orders', subtitle = 'Manage your orders' } =
 		props || {}

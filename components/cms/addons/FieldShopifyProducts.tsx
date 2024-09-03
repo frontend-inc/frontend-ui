@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../../../context'
+import React from 'react'
+import { useApp } from '../../../hooks'
 import { ProductArray } from '../../shopify'
 import { useRouter } from 'next/router'
 import { get } from 'lodash'
@@ -15,7 +15,7 @@ const FieldShopifyProducts: React.FC<FieldShopifyProductsProps> = (props) => {
 	const shopifyHandles = get(resource, fieldName) || []
 
   const router = useRouter()
-  const { clientUrl } = useContext(AppContext)
+  const { clientUrl } = useApp()
 
   const handleClick = (product) => {
 		if (href) {

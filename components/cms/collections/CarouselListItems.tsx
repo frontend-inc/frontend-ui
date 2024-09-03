@@ -16,7 +16,7 @@ export type CarouselListItemsProps = CollectionListItemsProps & {
 
 const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const {
 		buttons,

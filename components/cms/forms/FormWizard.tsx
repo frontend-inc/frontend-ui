@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 import { useResource } from 'frontend-js'
 import { Box } from '@mui/material'
 import FormWizardProgress from './wizard/FormWizardProgress'
@@ -30,7 +30,7 @@ export type FormWizardProps = {
 
 const FormWizard: React.FC<FormWizardProps> = (props) => {
 	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const {
 		handle,

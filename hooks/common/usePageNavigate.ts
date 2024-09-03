@@ -1,13 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useRouter } from 'next/router'
-import { AppContext } from '../../context'
+import { useApp } from '../../hooks'
 
 type PageNavigateProps = {
 	baseUrl?: string
 }
 
 const usePageNavigate = (props: PageNavigateProps) => {
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 	const router = useRouter()
 
 	const navigate = (item, page) => {

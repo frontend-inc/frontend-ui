@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React from 'react'
 import { useResourceContext } from 'frontend-js'
 import { Box, Stack } from '@mui/material'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 import { TableHeaderType } from '../../../types'
 import { useRouter } from 'next/router'
 import { TableList } from '../..'
@@ -16,7 +16,7 @@ export type DataTableListProps = DataListItemsProps & {
 
 const DataTableList: React.FC<DataTableListProps> = (props) => {
 	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const {
 		loading,

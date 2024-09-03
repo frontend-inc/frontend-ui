@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 import { useResource } from 'frontend-js'
 import { FormFields } from '../..'
 import { useAlerts } from '../../../hooks'
@@ -20,7 +20,7 @@ export type FormProps = {
 
 const Form: React.FC<FormProps> = (props) => {
 	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const { href } = props || {}
 	const onSuccess = () => {

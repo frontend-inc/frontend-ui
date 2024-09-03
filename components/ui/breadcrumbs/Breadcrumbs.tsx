@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 import { Box, Breadcrumbs as MuiBreadcrumbs, Link } from '@mui/material'
 import { Icon, Label } from '../../../components'
 
@@ -16,7 +16,7 @@ export type BreadcrumbsProps = {
 const Breadcrumbs: React.FC<BreadcrumbsProps> = (props) => {
 	const { links = [], maxLinks = 2 } = props
 
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	if (links.length === 0) return null
 	return (

@@ -20,3 +20,8 @@ export const isFollowing = (user, followUser) => {
 		? true
 		: false
 }
+
+export const isShopifyFavorite = (user, handle) => {
+	return user?.shopify_favorites?.includes(handle) ? true : false
+}
+

@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AuthScreen, AlertModal, Loader } from '../../../components'
 import { Plus } from 'lucide-react'
 import { Button } from '@mui/material'
 import { useAddresses } from 'frontend-shopify'
 import { AddressList } from '../../../components/shopify'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 import { useRouter } from 'next/router'
 import { getShopifyIdFromGid } from 'frontend-shopify'
 
@@ -19,7 +19,7 @@ const Addresses: React.FC<AddressesProps> = (props) => {
 	const [activeAddress, setActiveAddress] = useState(null)
 	const [showDeleteModal, setShowDeleteModal] = useState(false)
 
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const { title = 'Customer Addresses', subtitle = 'Manage your addresses' } =
 		props || {}

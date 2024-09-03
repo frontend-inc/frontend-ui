@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Stack } from '@mui/material'
 import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 import { useRouter } from 'next/router'
 import { CollectionListItem, DataLayout } from '../..'
 import { useForms } from '../../../hooks'
@@ -35,7 +35,7 @@ export type CollectionListItemsProps = {
 
 const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const {
 		setResource,

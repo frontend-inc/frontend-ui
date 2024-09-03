@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../../../context'
+import React from 'react'
+import { useApp } from '../../../hooks'
 import { Swipeable, Cover, Placeholder } from '../..'
 import { useRouter } from 'next/router'
 
@@ -38,7 +38,7 @@ const CoverCarousel: React.FC<CoverCarouselProps> = (props) => {
 		alignItems = 'center',
 	} = props
 
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const handleClick = (item) => {
 		if (!editing && item?.url) {

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { LoginForm, AuthScreen, Loader } from '../..'
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 
 export type LoginProps = {
 	title?: string
@@ -16,7 +16,7 @@ export type LoginProps = {
 }
 
 const Login: React.FC<LoginProps> = (props) => {
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const {
 		href,

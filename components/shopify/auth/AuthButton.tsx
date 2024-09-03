@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { IconButton } from '@mui/material'
 import { useAuth } from 'frontend-shopify'
 import { useMenu } from '../../../hooks'
 import { UserMenu } from '../../../components'
 import { useRouter } from 'next/router'
 import { User } from 'lucide-react'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 
 const AuthButton: React.FC = () => {
 	const router = useRouter()
@@ -13,7 +13,7 @@ const AuthButton: React.FC = () => {
 	const { logout, customer } = useAuth()
 	const { open, anchorEl, closeMenu, toggleMenu } = useMenu()
 
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const handleClick = (path) => {
 		closeMenu()

@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../../../context'
+import React from 'react'
+import { useApp } from '../../../hooks'
 import { ResourceList } from '../..'
 import { DisplayFieldType, SocialFieldType, UserType } from '../../../types'
 import UserListItem from '../cards/UserListItem'
@@ -17,7 +17,7 @@ export type UserListProps = {
 
 const UserList: React.FC<UserListProps> = (props) => {
 	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const {
 		href,

@@ -1,11 +1,13 @@
 import React from 'react'
 import { Placeholder } from '../..'
-import { ProductGrid } from '..'
+import { ProductArray } from '..'
 import { Box } from '@mui/material'
 import { useFavorites } from 'frontend-shopify'
+import { useAuth, UserType } from 'frontend-js'
 
 export type ProductFavoritesProps = {
 	href: string
+  user: UserType
 	perPage?: string
 	enableBorder?: boolean
 	enableAddToCart?: boolean
@@ -17,6 +19,7 @@ export type ProductFavoritesProps = {
 const ProductFavorites: React.FC<ProductFavoritesProps> = (props) => {
 	const {
 		href,
+    user,
 		enableBorder = false,
 		buttonText = 'Add to cart',
 		enableAddToCart,
@@ -24,13 +27,13 @@ const ProductFavorites: React.FC<ProductFavoritesProps> = (props) => {
 		enableQuickShop,
 	} = props || {}
 
-	const { favorites } = useFavorites()
+  const { shopify_favorites: favorites } = user || []
 
 	return (
 		<Box sx={sx.root}>
-			<ProductGrid
+			<ProductArray
 				href={href}
-				products={favorites}
+				handles={favorites}
 				enableBorder={enableBorder}
 				enableAddToCart={enableAddToCart}
 				enableQuantity={enableQuantity}

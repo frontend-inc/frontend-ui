@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import {
 	Button,
 	List,
@@ -11,7 +11,7 @@ import { AuthScreen, Placeholder } from '../..'
 import { useAuth } from 'frontend-shopify'
 import { useRouter } from 'next/router'
 import { User, ShoppingCart, MapPin, LogOut } from 'lucide-react'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 
 type MenuItemProps = {
 	item: {
@@ -71,7 +71,7 @@ const CustomerAccount: React.FC<CustomerAccountProps> = (props) => {
 	} = props || {}
 
 	const router = useRouter()
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const { customer } = useAuth()
 

@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useSegment } from '../../../hooks/addons'
 import { Box } from '@mui/material'
 import { ProductCard } from '../../../components/shopify'
 import { useRouter } from 'next/router'
 import { Carousel } from '../../../components'
 import { ProductType } from 'frontend-shopify'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 
 type ProductCarouselProps = {
 	href: string
@@ -38,7 +38,7 @@ const ProductCarousel: React.FC<ProductCarouselProps> = (props) => {
 		enableOkendoStarRating,
 	} = props
 
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const router = useRouter()
 	const { trackProductClicked } = useSegment()

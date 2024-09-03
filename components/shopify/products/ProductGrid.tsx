@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Box } from '@mui/material'
 import { ProductCard } from '../../../components/shopify'
 import { useRouter } from 'next/router'
 import { useSegment } from '../../../hooks/addons'
 import { ProductType } from 'frontend-shopify'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 
 type ProductGridProps = {
 	href: string
@@ -24,7 +24,7 @@ type ProductGridProps = {
 }
 
 const ProductGrid: React.FC<ProductGridProps> = (props) => {
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const {
 		href = '/products',

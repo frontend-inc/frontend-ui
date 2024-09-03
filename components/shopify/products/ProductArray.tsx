@@ -2,8 +2,11 @@ import React, { useEffect } from 'react';
 import { useProducts } from 'frontend-shopify';
 import { ProductCard } from '../../../components/shopify';
 import { Box } from '@mui/material';
+import { useRouter } from 'next/router';
+import { useApp } from '../../../hooks';
 
 type ProductArrayProps = {
+  href?: string
   handles: string[]
   enableBorder?: boolean
   enableAddToCart?: boolean
@@ -11,11 +14,11 @@ type ProductArrayProps = {
   enableQuantity?: boolean
   enableOkendoStarRating?: boolean
   buttonText?: string  
-  handleClick: (product: any) => void
 }
 
 const ProductArray: React.FC<ProductArrayProps> = (props) => {
   const { 
+    href,
     handles,
     enableBorder = false,
     enableAddToCart = false,
@@ -23,8 +26,17 @@ const ProductArray: React.FC<ProductArrayProps> = (props) => {
     enableQuantity = false,
     enableOkendoStarRating = false,
     buttonText,     
-    handleClick
   } = props;
+
+  const router = useRouter()
+
+  const { clientUrl } = useApp()
+	const handleClick = (product) => {
+		if (href) {
+			const url = `${clientUrl}${href}/${product?.handle}`
+			router.push(url)
+		}
+	}
 
   return(
     <Box sx={sx.grid}>

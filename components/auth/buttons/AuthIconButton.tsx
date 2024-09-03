@@ -4,15 +4,15 @@ import { useMenu } from '../../../hooks'
 import { useAuth } from 'frontend-js'
 import { UserAvatar, UserMenu } from '../..'
 import { useRouter } from 'next/router'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 
-const AuthButton: React.FC = () => {
+const AuthIconButton: React.FC = () => {
 	const router = useRouter()
 
 	const { logout, fetchMe, currentUser } = useAuth()
 	const { open, anchorEl, closeMenu, toggleMenu } = useMenu()
 
-	const { clientUrl } = useContext(AppContext)
+	const { clientUrl } = useApp()
 
 	const handleMenuClick = (ev) => {
 		toggleMenu(ev)
@@ -48,4 +48,4 @@ const AuthButton: React.FC = () => {
 	)
 }
 
-export default AuthButton
+export default AuthIconButton
