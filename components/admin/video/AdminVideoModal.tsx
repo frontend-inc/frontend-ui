@@ -8,7 +8,7 @@ import copy from 'copy-to-clipboard'
 type VideoModalProps = {
 	open: boolean
 	src: string
-	title: string
+	title?: string
 	handleClose: () => void
 	enableCopy?: boolean
 	enableDownload?: boolean

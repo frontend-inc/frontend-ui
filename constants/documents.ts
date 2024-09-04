@@ -137,6 +137,19 @@ export const USER_FIELD: FieldBase = {
 	reference: false,
 }
 
+export const TEAM_FIELD: FieldBase = {
+	label: 'Team',
+	variant: 'team',
+	db_type: 'belongs_to',
+	name: 'team',
+	internal: true,
+	position: 8,
+	array: false,
+	visible: true,
+	editable: false,
+	reference: false,
+}
+
 export const DEFAULT_FIELDS: FieldBase[] = [
 	ID_FIELD,
 	HANDLE_FIELD,
@@ -146,4 +159,5 @@ export const DEFAULT_FIELDS: FieldBase[] = [
 	LOCALE_FIELD,
 	TAGS_FIELD,
 	USER_FIELD,
+  TEAM_FIELD,
 ]

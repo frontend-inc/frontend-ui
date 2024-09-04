@@ -21,6 +21,7 @@ export type AdminPageProps = {
   handleEdit?: (menuItem: AdminMenuType ) => void
   handleDelete?: (menuItem: AdminMenuType ) => void
 	disablePadding?: boolean
+  leftPanel?: React.FC
 	children: React.ReactNode
 }
 
@@ -50,8 +51,8 @@ const AdminPage: React.FC<AdminPageProps> = (props) => {
 
 	return (
 		<>
-    {menuItems && (
-      <AdminLayoutLeft>    
+      {menuItems && (
+        <AdminLayoutLeft>    
           <AdminMenu
             enableEdit={enableEdit} 
             enableDelete={enableDelete}

@@ -65,6 +65,10 @@ export { default as ProfileDetails } from './profiles/ProfileDetails'
 export { default as ProfileInfo } from './profiles/ProfileInfo'
 export { default as ProfileImage } from './profiles/ProfileImage'
 
+// Buttons
+export { default as PrimaryButton } from './buttons/PrimaryButton'
+export { default as SecondaryButton } from './buttons/SecondaryButton'
+
 // Layouts
 export { default as Footer } from './footer/Footer'
 export { default as Header } from './header/Header'
