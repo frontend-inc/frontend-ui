@@ -1,13 +1,12 @@
 import React from 'react'
 import { Stack, Typography } from '@mui/material'
 import UnsplashLogo from './UnsplashLogo'
-import Image from 'next/image'
 
 const PoweredByUnsplash: React.FC = () => {
 	return (
-		<Stack direction="row" sx={sx.root}>
+		<Stack direction="row" spacing={1} sx={sx.root}>
 			<Typography variant="body2" color="text.secondary">
-				Powered by{' '}
+				Powered by
 			</Typography>
 			<UnsplashLogo />
 		</Stack>

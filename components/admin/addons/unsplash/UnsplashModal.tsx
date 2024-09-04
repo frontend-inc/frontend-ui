@@ -75,7 +75,6 @@ const UnsplashModal: React.FC<UnsplashViewerModalProps> = (props) => {
 						onClick={handleUnsplashClick}
 						endIcon={<Icon name={'ExternalLink'} />}
 					>
-						Visit
 						<UnsplashLogo />
 					</Button>
 					<Button
