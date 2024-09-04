@@ -7,8 +7,8 @@ import {
   CardContent,
   CardMedia,
   CardActionArea,	
-  Typography,
 	Checkbox,
+  Typography
 } from '@mui/material'
 import { Image, Icon, MenuButton } from '../..'
 
@@ -73,8 +73,16 @@ const ResourceGridItem: React.FC<ResourceListItemProps> = (props) => {
     >
       <CardHeader 
         avatar={ avatar }  
-        title={ primary }
-        subheader={ secondary }        
+        title={ 
+          <Typography variant="body1" color="text.primary">
+            { primary }
+          </Typography>
+        }
+        subheader={ 
+          <Typography variant="body2" color="text.secondary">
+            { secondary }
+          </Typography>
+         }        
         action={
           <Stack direction="row" spacing={1} sx={sx.buttons}>
             {secondaryActions}

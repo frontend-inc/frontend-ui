@@ -1,8 +1,7 @@
 import React from 'react'
 import { Label, ResourceGridItem } from '../../../components'
-import { FieldIcon } from '../..'
 
-type AdminMetafieldItemProps = {
+type AdminMediaItemProps = {
 	resource: any
 	sortable?: boolean
 	handleClick: () => void
@@ -10,16 +9,17 @@ type AdminMetafieldItemProps = {
 	handleDelete: () => void
 }
 
-const AdminMediaItem: React.FC<AdminMetafieldItemProps> = (props) => {
+const AdminMediaItem: React.FC<AdminMediaItemProps> = (props) => {
 	const { resource, sortable, handleClick, handleDelete } = props
 	return (
 		<ResourceGridItem
 			enableBorder
 			sortable={sortable}
 			image={ resource?.url }              
-			primary={resource?.label}
-			secondary={resource?.content_type}
-			secondaryActions={<Label label={resource?.variant} />}
+			primary={resource?.content_type}
+			secondaryActions={
+        <Label label={resource?.dimensions} />
+      }
 			handleClick={handleClick}
 			handleDelete={handleDelete}
 		/>
