@@ -19,7 +19,8 @@ const UnsplashList: React.FC<UnsplashProps> = (props) => {
 	const [showModal, setShowModal] = useState(false)
 	const [keywords, setKeywords] = useState('')
 
-	const [image, setImage] = useState<UnsplashImageType | Record<string,any>>({})
+  //@ts-ignore
+	const [image, setImage] = useState<UnsplashImageType>({})
 	
   const { loading, uploadFromUrl } = useMedia()
 

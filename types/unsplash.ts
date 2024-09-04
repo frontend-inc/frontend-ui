@@ -21,5 +21,8 @@ export type UnsplashImageType = {
 			large: string
 		}
 		name: string
+    links: {
+      html: string
+    }
 	}
 }
