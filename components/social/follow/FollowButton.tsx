@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { Stack, Typography, Button } from '@mui/material'
+import { Button } from '@mui/material'
 import { isFollowing } from '../../../helpers'
 import { useAuth } from 'frontend-js'
 import { useSocial } from '../../../hooks'
 import { AppContext } from '../../../context'
-import { UserType } from '../../../types'
+import { UserType } from 'frontend-js'
 
 type FollowButtonProps = {
 	user: UserType

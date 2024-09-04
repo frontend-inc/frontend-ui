@@ -19,7 +19,7 @@ type ModalProps = {
 	loading?: boolean
 	handleClose: () => void
 	avatar?: React.ReactNode
-	title?: string
+	title?: string | React.ReactNode
 	subtitle?: string
 	buttons?: any
 	children?: any

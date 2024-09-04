@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { Link, Stack, Divider, Typography } from '@mui/material'
-import { UserType } from '../../../types'
+import React, { useState } from 'react'
+import { Link, Stack, Divider } from '@mui/material'
+import { UserType } from 'frontend-js'
 import FollowModal from './FollowModal'
 
 type FollowButtonGroupProps = {

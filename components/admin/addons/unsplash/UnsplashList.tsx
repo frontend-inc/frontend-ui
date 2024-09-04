@@ -101,6 +101,7 @@ const UnsplashList: React.FC<UnsplashProps> = (props) => {
 				image={image}
 				handleClose={() => setShowModal(false)}
 				handleUpload={handleUpload}
+        apiKey={ apiKey }
 			/>
 		</Box>
 	)

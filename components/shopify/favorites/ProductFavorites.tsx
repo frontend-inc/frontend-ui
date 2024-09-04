@@ -2,7 +2,7 @@ import React from 'react'
 import { Placeholder } from '../..'
 import { ProductArray } from '..'
 import { Box } from '@mui/material'
-import { UserType } from '../../../types'
+import { UserType } from 'frontend-js'
 
 export type ProductFavoritesProps = {
 	href: string
@@ -26,7 +26,7 @@ const ProductFavorites: React.FC<ProductFavoritesProps> = (props) => {
 		enableQuickShop,
 	} = props || {}
 
-  const { shopify_favorites: favorites } = user || []
+  const { shopify_favorites: favorites } = user || {}
 
 	return (
 		<Box sx={sx.root}>

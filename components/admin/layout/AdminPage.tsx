@@ -50,19 +50,19 @@ const AdminPage: React.FC<AdminPageProps> = (props) => {
 
 	return (
 		<>
-    <AdminLayoutLeft>    
-			{menuItems && (
-				<AdminMenu
-          enableEdit={enableEdit} 
-          enableDelete={enableDelete}
-					activeMenu={activeMenu}
-					menuItems={menuItems}
-					handleClick={handleClick}
-          handleEdit={ handleEdit }
-          handleDelete={ handleDelete }          
-				/>
-			)}
-      </AdminLayoutLeft>
+    {menuItems && (
+      <AdminLayoutLeft>    
+          <AdminMenu
+            enableEdit={enableEdit} 
+            enableDelete={enableDelete}
+            activeMenu={activeMenu}
+            menuItems={menuItems}
+            handleClick={handleClick}
+            handleEdit={ handleEdit }
+            handleDelete={ handleDelete }          
+          />
+        </AdminLayoutLeft>
+      )}
 			<AdminLayoutCenter>
 				<AdminHeader title={title} buttons={actions} enableExpandLeftPanel />
 				<Box p={disablePadding ? 0 : 2}>{children}</Box>

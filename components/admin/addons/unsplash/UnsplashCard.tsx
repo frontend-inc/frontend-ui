@@ -7,7 +7,7 @@ import {
 	CardHeader,
 	Button,
 } from '@mui/material'
-import { Image } from 'frontend-ui/components'
+import { Image } from '../../../../components'
 
 type UnplashCardProps = {
 	image?: any

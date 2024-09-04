@@ -1,6 +1,6 @@
 import React from 'react'
-import { useAlerts } from 'frontend-ui/hooks'
-import { Icon, Image, Modal } from 'frontend-ui/components'
+import { useAlerts } from '../../../../hooks'
+import { Icon, Image, Modal } from '../../../../components'
 import UnsplashLogo from './UnsplashLogo'
 import {
 	List,
@@ -17,20 +17,20 @@ import {
 } from '@mui/material'
 import copy from 'copy-to-clipboard'
 import PoweredByUnsplash from './PoweredByUnsplash'
-import { useUnsplash } from 'hooks'
-import { UnsplashImageType } from 'types'
-import { UNSPLASH_API_KEY } from 'lib/constants'
+import { useUnsplash } from '../../../../hooks'
+import { UnsplashImageType } from '../../../../types'
 
 type UnsplashViewerModalProps = {
 	open: boolean
 	loading: boolean
 	image: UnsplashImageType
+  apiKey: string
 	handleUpload: (url: string, filename: string) => void
 	handleClose: () => void
 }
 
 const UnsplashModal: React.FC<UnsplashViewerModalProps> = (props) => {
-	const { loading = false, open, image, handleClose, handleUpload } = props
+	const { loading = false, open, image, handleClose, handleUpload, apiKey } = props
 	const { showAlertSuccess } = useAlerts()
 
 	const handleCopyUrlClick = () => {
@@ -39,7 +39,7 @@ const UnsplashModal: React.FC<UnsplashViewerModalProps> = (props) => {
 	}
 
 	const { fetchDownloadLocation } = useUnsplash({
-    apiKey: UNSPLASH_API_KEY
+    apiKey
   })
 
 	const handleDownloadClick = async () => {

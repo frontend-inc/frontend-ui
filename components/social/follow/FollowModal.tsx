@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Box, Tabs, Tab } from '@mui/material'
 import { Modal, ResourceList } from '../..'
-import { UserType } from '../../../types'
+import { UserType } from 'frontend-js'
 import FollowUser from '../../users/cards/UserListItem'
 
 type FollowModalProps = {

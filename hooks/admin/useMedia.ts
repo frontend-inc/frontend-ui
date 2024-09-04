@@ -41,7 +41,6 @@ const useMedia = () => {
 				io: file,
 				filename: file.name,
 			})
-			return resp?.data
 		} catch (e) {
 			console.log(e)
 		}
@@ -57,7 +56,6 @@ const useMedia = () => {
 					},
 				})
 			)
-			return resp?.data
 		} catch (e) {
 			console.log(e)
 		}
