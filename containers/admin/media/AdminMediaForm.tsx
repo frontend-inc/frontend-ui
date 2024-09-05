@@ -5,12 +5,9 @@ import { Box } from '@mui/material'
 import MediaUploader from './MediaUploader'
 import { UnsplashList } from '../../../components'
 
-type AdminMediaFormProps = ResourceFormProps & {
-  unsplashApiKey: string
-}
 
-const AdminMediaForm: React.FC<AdminMediaFormProps> = (props) => {
-  const { open, handleClose, unsplashApiKey, handleReload } = props || {}
+const AdminMediaForm: React.FC<ResourceFormProps> = (props) => {
+  const { open, handleClose, handleReload } = props || {}
 	
   const [tab, setTab ] = useState(0)
   const handleChange = (newValue: number) => {
@@ -42,7 +39,6 @@ const AdminMediaForm: React.FC<AdminMediaFormProps> = (props) => {
 			{tab == 1 && (
 				<UnsplashList
 					onComplete={handleComplete}
-					apiKey={unsplashApiKey}
 				/>
 			)}
 		</Drawer>

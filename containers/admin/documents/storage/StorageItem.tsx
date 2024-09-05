@@ -38,7 +38,7 @@ const StorageItem: React.FC<StorageItemProps> = (props) => {
 				title={<Label label={item?.content_type?.split('/')[1]} />}
 				action={
 					handleRemoveItem && (
-						<MenuButton size="large">
+						<MenuButton>
 							<MenuItem onClick={() => handleRemoveItem(item)}>
 								<Typography variant="body2" color="textPrimary">
 									Remove

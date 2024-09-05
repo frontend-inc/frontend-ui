@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Icon, Drawer, IconLoading } from 'frontend-ui/components'
+import { Icon, Drawer, IconLoading } from '../../../../components'
 import { Button, Tooltip, IconButton } from '@mui/material'
-import { TextInputPropsType } from 'frontend-ui/types'
+import { TextInputPropsType } from '../../../../types'
 import AiChatForm from './AiChatForm'
 import { useChat } from 'ai/react'
 

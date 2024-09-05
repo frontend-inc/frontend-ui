@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Drawer, ButtonTabs } from '../../../../components'
-import { useStorage } from 'hooks'
+import { useMedia } from '../../../../hooks'
 import { useAlerts } from '../../../../hooks'
 import { Box, Button } from '@mui/material'
 import StorageItem from './StorageItem'
@@ -9,7 +9,6 @@ import StorageItemList from './StorageList'
 import { useRouter } from 'next/router'
 import { UnsplashList } from '../../../../components'
 import { RouterParams } from '../../../../types'
-import { UNSPLASH_API_KEY } from 'lib/constants'
 
 type StorageDrawerProps = {
 	open: boolean
@@ -23,16 +22,18 @@ const StorageDrawer: React.FC<StorageDrawerProps> = (props) => {
 	const router = useRouter()
 	const { app_id: appId } = router?.query as RouterParams
 
-	const [tab, setTab] = useState(0)
+	const [tab, setTab] = useState<number>(0)
 
 	const [selected, setSelected] = useState(null)
 	const [uploaded, setUploaded] = useState(null)
 
 	const { showAlertError } = useAlerts()
 
-	const { deleteResource } = useStorage({
-		appId,
-	})
+	const { deleteResource } = useMedia()
+
+  const handleTabChange = (value: number) => {
+    setTab(value)
+  }
 
 	const handleSelect = (resource) => {
 		setSelected(resource)
@@ -97,7 +98,7 @@ const StorageDrawer: React.FC<StorageDrawerProps> = (props) => {
 						disableBorder
 						disablePadding
 						options={OPTIONS}
-						handleChange={setTab}
+						handleChange={handleTabChange}
 						value={tab}
 					/>
 				</Box>
@@ -127,10 +128,8 @@ const StorageDrawer: React.FC<StorageDrawerProps> = (props) => {
 									handleRemoveItem={handleRemoveItem}
 								/>
 							)}
-							<UnsplashList
-								appId={appId}
+							<UnsplashList								
 								onComplete={handleComplete}
-								apiKey={String(UNSPLASH_API_KEY)}
 							/>
 						</>
 					)}

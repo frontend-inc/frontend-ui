@@ -7,25 +7,9 @@ import {
 } from '../..'
 import { useAdmin } from '../../../hooks' 
 
-type AdminMediaListProps = {
-  unsplashApiKey: string
-}
 
-const AdminMediaList: React.FC<AdminMediaListProps> = (props) => {
-  const { unsplashApiKey } = props || {}
+const AdminMediaList: React.FC = (props) => {
 	const { apiUrl } = useAdmin()
-
-  const slots = {
-    create: {
-      unsplashApiKey
-    },
-    edit: {
-      unsplashApiKey
-    },
-    list: {
-      unsplashApiKey
-    }
-  }
 
 	return (
 		<ResourceList
@@ -46,7 +30,6 @@ const AdminMediaList: React.FC<AdminMediaListProps> = (props) => {
 			emptyIcon="Image"
 			emptyTitle="No uploads"
 			emptyDescription="No uploads yet."
-      slots={ slots }
 		/>
 	)
 }

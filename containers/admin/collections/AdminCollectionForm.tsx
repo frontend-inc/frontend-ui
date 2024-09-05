@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Stack, List } from '@mui/material'
-import { COLLECTION_TEMPLATES } from 'lib/constants/editor/templates/collections'
+import { COLLECTION_TEMPLATES } from '../../../constants'
 import { FormFields, ErrorText } from '../../../components'
 import { MenuListItem } from '../../../components'
 import { MenuList } from '../../../components'

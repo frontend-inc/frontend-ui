@@ -1,5 +1,5 @@
 import React from 'react'
-import { RemoteAutosuggest } from 'frontend-ui/components'
+import { RemoteAutosuggest } from '../../../components'
 import { useAdmin } from '../../../hooks'
 
 type ViewAutosuggestProps = {

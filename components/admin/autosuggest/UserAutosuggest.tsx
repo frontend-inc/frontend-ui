@@ -1,6 +1,6 @@
 import React from 'react'
-import { RemoteAutosuggest } from 'frontend-ui/components'
-import { SyntheticEventType } from 'frontend-ui/types'
+import { RemoteAutosuggest } from '../../../components'
+import { SyntheticEventType } from '../../../types'
 import { useAdmin } from '../../../hooks'
 
 type UserAutosuggestProps = {

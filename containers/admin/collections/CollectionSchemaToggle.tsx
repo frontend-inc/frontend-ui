@@ -1,8 +1,8 @@
 import React from 'react'
 import { Stack, Hidden, Button } from '@mui/material'
-import { Icon } from 'frontend-ui/components'
+import { Icon } from '../../../components'
 import { useRouter } from 'next/router'
-import { RouterParams } from 'frontend-ui/types'
+import { RouterParams } from '../../../types'
 
 type CollectionSchemaToggleProps = {
 	tab?: number

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import { useStorage } from 'hooks'
+import { useMedia } from '../../../../hooks'
 import { Box, Button, CircularProgress } from '@mui/material'
 import { ExpandMore } from '@mui/icons-material'
-import StorageItemListItem from './StorageItem'
+import StorageItem from './StorageItem'
 import { useRouter } from 'next/router'
 import { Placeholder } from '../../../../components'
 import { RouterParams } from '../../../../types'
@@ -18,10 +18,7 @@ const StorageItemList: React.FC<StorageItemListProps> = (props) => {
 	const router = useRouter()
 	const { app_id: appId } = router?.query as RouterParams
 
-	const { loading, resources, findResources, loadMore, page, numPages } =
-		useStorage({
-			appId,
-		})
+	const { loading, resources, findResources, loadMore, page, numPages } = useMedia()
 
 	const handleLoadMore = async () => {
 		await loadMore()
@@ -37,7 +34,7 @@ const StorageItemList: React.FC<StorageItemListProps> = (props) => {
 		<>
 			<Box sx={sx.list}>
 				{resources.map((item, idx) => (
-					<StorageItemListItem
+					<StorageItem
 						key={idx}
 						item={item}
 						size={164}

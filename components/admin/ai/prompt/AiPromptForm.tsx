@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack } from '@mui/material'
-import { TextInput } from 'frontend-ui/components'
+import { TextInput } from '../../../components'
 import { SyntheticEventType } from '@frontend-mui/types'
 
 type AiPromptFormProps = {

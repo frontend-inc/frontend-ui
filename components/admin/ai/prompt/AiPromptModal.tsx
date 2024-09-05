@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Icon, Drawer, IconLoading } from 'frontend-ui/components'
+import { Icon, Drawer, IconLoading } from '../../../components'
 import { Button, Tooltip, IconButton } from '@mui/material'
-import { SyntheticEventType, TextInputPropsType } from 'frontend-ui/types'
+import { SyntheticEventType, TextInputPropsType } from '../../../types'
 import AiPromptForm from './AiPromptForm'
 
 type AiPromptModalProps = TextInputPropsType & {

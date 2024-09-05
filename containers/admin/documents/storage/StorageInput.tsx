@@ -3,16 +3,23 @@ import { Stack, Box, Button } from '@mui/material'
 import StorageImage from './StorageImage'
 import StorageDrawer from './StorageDrawer'
 import { Search } from 'lucide-react'
+import { ImageType } from '../../../../types'
 
 type StorageInputProps = {
 	name: string
-	value: string
+	value: ImageType
 	handleAddAttachment: (field: string, id: number) => void
 	handleRemoveAttachment: (field: string) => void
 }
 
 const StorageInput: React.FC<StorageInputProps> = (props) => {
-	const { name, value, handleAddAttachment, handleRemoveAttachment } = props
+	
+  const { 
+    name, 
+    value, 
+    handleAddAttachment, 
+    handleRemoveAttachment 
+  } = props
 
 	const [open, setOpen] = useState(false)
 	const [openEdit, setOpenEdit] = useState(false)

@@ -7,7 +7,7 @@ export type PrimaryButtonProps = {
   loading?: boolean
   children: string
   onClick: (ev: any) => void
-  icon?: 'string' 
+  icon?: string
   fullWidth?: boolean 
 }
 

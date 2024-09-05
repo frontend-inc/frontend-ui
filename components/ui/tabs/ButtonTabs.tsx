@@ -4,13 +4,13 @@ import { Icon } from '../..'
 import { useDebounce } from 'use-debounce'
 
 type ButtonTabsProps = {
-	handleChange: (value: string | number | boolean) => void
+	handleChange: (value: number) => void
 	options: {
 		icon?: string
 		label?: string
-		value: number | string | boolean
+		value: number
 	}[]
-	value: number | string | boolean
+	value: number
 	disablePadding?: boolean
 	disableBorder?: boolean
 	iconPosition?: 'start' | 'end' | 'top' | 'bottom'

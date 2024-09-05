@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import {
 	List,
 	ListItem,
@@ -6,7 +6,7 @@ import {
 	ListItemText,
 	Stack,
 } from '@mui/material'
-import { TextInput } from 'frontend-ui/components'
+import { TextInput } from '../../../../components'
 
 // Optional but recommended: use the Edge Runtime. This can only be done at the page level, not inside nested components.
 //export const runtime = 'edge';

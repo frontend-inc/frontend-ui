@@ -1,5 +1,5 @@
 import React from 'react'
-import { Label } from 'frontend-ui/components'
+import { Label } from '../../../components'
 import * as COLORS from '@mui/material/colors'
 
 type PublishedLabelProps = {

@@ -5,6 +5,7 @@ import { useMenu } from '../../../../hooks'
 import { useRouter } from 'next/router'
 import { RouterParams } from '../../../../types'
 import { IconLoading } from '../../../../components'
+import { useAdmin } from '../../../../hooks'
 
 type SaveButtonProps = {
 	loading: boolean
@@ -14,6 +15,7 @@ type SaveButtonProps = {
 }
 
 const SaveButton: React.FC<SaveButtonProps> = (props) => {
+  const { clientUrl } = useAdmin()
 	const { loading, document, handleSubmit, fullWidth = false } = props
 
 	const router = useRouter()
@@ -22,14 +24,14 @@ const SaveButton: React.FC<SaveButtonProps> = (props) => {
 
 	const handleSave = () => {
 		closeMenu()
-		handleSubmit(document)
-		router.push(`/admin/${appId}/collections/${collectionId}`)
+		handleSubmit()
+		router.push(`${clientUrl}/collections/${collectionId}`)
 	}
 
 	const handleSaveAndNew = () => {
 		closeMenu()
 		handleSubmit()
-		router.push(`/admin/${appId}/collections/${collectionId}/documents/new`)
+		router.push(`${clientUrl}/collections/${collectionId}/documents/new`)
 	}
 
 	const { open, anchorEl, toggleMenu, closeMenu } = useMenu()

@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { UnsplashContext } from '../../context'
 import { useLoadingWrapper } from '../../hooks'
 import { UnsplashImageType } from '../../types'
 
-type UseUnsplashParams = {
-	apiKey: string
-}
 
-const useUnsplash = (params: UseUnsplashParams) => {
-	const { apiKey } = params || {}
+const useUnsplash = () => {
+	const { unsplashApiKey: apiKey } = useContext(UnsplashContext)
 	const { loading, loadingWrapper } = useLoadingWrapper()
 
 	const [page, setPage] = useState(1)

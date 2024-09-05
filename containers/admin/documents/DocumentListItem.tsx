@@ -6,7 +6,7 @@ import {
 	ListItemButton,
 	ListItemText,
 } from '@mui/material'
-import { PublishedLabel } from 'components'
+import { PublishLabel } from '../../../components'
 import { Image } from '../../../components'
 import { truncate } from '../../../helpers'
 
@@ -25,7 +25,7 @@ const DocumentListItem: React.FC<DocumentListItemProps> = (props) => {
 				...sx.listItem,
 				...(selected && sx.selected),
 			}}
-			secondaryAction={<PublishedLabel published={document?.published} />}
+			secondaryAction={<PublishLabel published={document?.published} />}
 		>
 			<ListItemButton sx={sx.listItemButton} onClick={handleClick}>
 				<ListItemIcon sx={sx.listItemIcon}>

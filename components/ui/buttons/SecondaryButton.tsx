@@ -4,7 +4,7 @@ import { PrimaryButton } from '../..'
 export type SecondaryButtonProps = {
   loading?: boolean
   children: string
-  icon?: 'string'  
+  icon?: string
   onClick: (ev: any) => void
   fullWidth?: boolean
 }

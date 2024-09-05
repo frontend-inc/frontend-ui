@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useDocuments } from 'hooks'
+import { useDocuments } from '../../../../hooks'
 import { SortableList } from '../../../../components'
 import { Box, Button } from '@mui/material'
 import { Search } from '@mui/icons-material'
@@ -113,7 +113,6 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
 			<DocumentListDrawer
 				enableMultipleSelect={enableMultipleSelect}
 				open={open}
-				appId={appId}
 				field={field}
 				handleSubmit={handleSubmit}
 				handleClose={() => setOpen(false)}

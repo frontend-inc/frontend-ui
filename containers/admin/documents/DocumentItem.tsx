@@ -1,14 +1,14 @@
 import React from 'react'
 import { Box, MenuItem, Typography } from '@mui/material'
 import { Label, MenuButton } from '../../../components'
-import { PublishedLabel } from 'components'
+import { PublishLabel } from '../../../components'
 import { DragIndicator } from '@mui/icons-material'
 import { truncate } from '../../../helpers'
 
 type DocumentItemProps = {
 	item?: any
-	handleEditItem?: (item: any) => void
-	handleRemoveItem?: (item: any) => void
+	handleEditItem: (item: any) => void
+	handleRemoveItem: (item: any) => void
 	enableCssFix?: boolean
 }
 
@@ -34,7 +34,7 @@ const DocumentItem: React.FC<DocumentItemProps> = (props) => {
 					</Box>
 					<Box sx={sx.rightContent}>
 						<Box sx={sx.secondaryActions}>
-							<PublishedLabel published={item?.published} />
+							<PublishLabel published={item?.published} />
 							<MenuButton>
 								<MenuItem onClick={() => handleEditItem(item)}>
 									<Typography variant="body2" color="textPrimary">

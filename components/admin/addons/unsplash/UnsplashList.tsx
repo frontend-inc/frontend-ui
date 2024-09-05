@@ -9,12 +9,11 @@ import PoweredByUnsplash from './PoweredByUnsplash'
 import { UnsplashImageType } from '../../../../types'
 
 type UnsplashProps = {
-	apiKey: string
 	onComplete?: (resp: any) => void
 }
 
 const UnsplashList: React.FC<UnsplashProps> = (props) => {
-	const { onComplete, apiKey } = props
+	const { onComplete } = props
 
 	const [showModal, setShowModal] = useState(false)
 	const [keywords, setKeywords] = useState('')
@@ -39,9 +38,7 @@ const UnsplashList: React.FC<UnsplashProps> = (props) => {
 		}
 	}
 
-	const { images, search, loadMore } = useUnsplash({
-		apiKey,
-	})
+	const { images, search, loadMore } = useUnsplash()
 
 	const handleChange = (ev) => {
 		setKeywords(ev.target.value)
