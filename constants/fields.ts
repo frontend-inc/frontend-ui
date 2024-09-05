@@ -33,6 +33,9 @@ export const SYSTEM_FIELDS = [
 	'url',
 ]
 
+
+/* SYSTEM FIELDS */
+
 export const ID_FIELD: FieldBase = {
 	label: 'ID',
 	variant: 'number',
@@ -153,8 +156,7 @@ export const TEAM_FIELD: FieldBase = {
 export const DEFAULT_FIELDS: FieldBase[] = [
 	ID_FIELD,
 	HANDLE_FIELD,
-	TITLE_FIELD,
-	SUBTITLE_FIELD,
+	TITLE_FIELD,	
 	PUBLISHED_FIELD,
 	LOCALE_FIELD,
 	TAGS_FIELD,

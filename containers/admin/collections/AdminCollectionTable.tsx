@@ -305,14 +305,13 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 				//@ts-ignore
 				headers={visibleFields}
 				rows={documents}
-				//@ts-ignore
 				handleClick={handleCellClick}
 				handleEdit={handleEditClick}
 				handleEditSelected={handleEditSelectedClick}
 				handleDelete={handleDeleteSelectedClick}
 				handlePublish={handlePublish}
 				handleUnpublish={handleUnpublish}
-				selected={selected}
+				//selected={selected}
 				query={query}
 				handleClearQuery={handleClearFilters}
 				handleQueryChange={handleQueryChange}

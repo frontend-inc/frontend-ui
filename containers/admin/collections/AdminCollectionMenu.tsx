@@ -195,8 +195,6 @@ const AdminCollectionMenu: React.FC = () => {
 			<Box sx={sx.buttonContainer}>
 				<SecondaryButton
 					onClick={handleCreateCollectionClick}
-					color="secondary"
-					variant="contained"
           icon="Plus"					
 				>
 					Collection

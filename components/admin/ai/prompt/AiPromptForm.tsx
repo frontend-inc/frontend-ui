@@ -1,7 +1,7 @@
 import React from 'react'
 import { Stack } from '@mui/material'
-import { TextInput } from '../../../components'
-import { SyntheticEventType } from '@frontend-mui/types'
+import { TextInput } from '../../../../components'
+import { SyntheticEventType } from '../../../../types'
 
 type AiPromptFormProps = {
 	open: boolean

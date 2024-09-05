@@ -4,7 +4,6 @@ import { ButtonTabs } from '../../../components'
 import { SyntheticEventType } from '../../../types'
 import { InputLabel } from '../../../components'
 import sx from './helpers/styles'
-import { useDebounce } from 'use-debounce'
 
 type TabsInputProps = {
 	name: string
@@ -13,9 +12,9 @@ type TabsInputProps = {
 	options: {
 		icon?: string
 		label?: string
-		value: number | string | boolean
+		value: number
 	}[]
-	value: number | string | boolean
+	value: number
 	disablePadding?: boolean
 	disableBorder?: boolean
 	iconPosition?: 'start' | 'end' | 'top' | 'bottom'
@@ -45,7 +44,7 @@ const TabsInput: React.FC<TabsInputProps> = (props) => {
     disableDebounce,
 	} = props
 
-	const handleInputChange = (value: number | string) => {
+	const handleInputChange = (value: number) => {
     handleChange({
       target: {
         name,

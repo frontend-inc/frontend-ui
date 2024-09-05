@@ -24,13 +24,12 @@ type UnsplashViewerModalProps = {
 	open: boolean
 	loading: boolean
 	image: UnsplashImageType
-  apiKey: string
 	handleUpload: (url: string, filename: string) => void
 	handleClose: () => void
 }
 
 const UnsplashModal: React.FC<UnsplashViewerModalProps> = (props) => {
-	const { loading = false, open, image, handleClose, handleUpload, apiKey } = props
+	const { loading = false, open, image, handleClose, handleUpload } = props
 	const { showAlertSuccess } = useAlerts()
 
 	const handleCopyUrlClick = () => {
@@ -38,9 +37,7 @@ const UnsplashModal: React.FC<UnsplashViewerModalProps> = (props) => {
 		showAlertSuccess('Asset URL copied to clipboard')
 	}
 
-	const { fetchDownloadLocation } = useUnsplash({
-    apiKey
-  })
+	const { fetchDownloadLocation } = useUnsplash()
 
 	const handleDownloadClick = async () => {
 		let downloadUrl = await fetchDownloadLocation(image)

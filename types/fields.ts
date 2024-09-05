@@ -23,7 +23,7 @@ export type FieldVariantTypes =
 	| 'country'
 	| 'location'
 	| 'select'
-	| 'shopify_product'
+	| 'shopify'
   | 'shopify_products'
 	| 'shopify_collection'
 	| 'user'

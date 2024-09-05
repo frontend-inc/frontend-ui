@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-import { Icon, Drawer, IconLoading } from '../../../components'
+import { Icon, Drawer, IconLoading } from '../../../../components'
 import { Button, Tooltip, IconButton } from '@mui/material'
-import { SyntheticEventType, TextInputPropsType } from '../../../types'
+import { SyntheticEventType, TextInputPropsType } from '../../../../types'
 import AiPromptForm from './AiPromptForm'
 
 type AiPromptModalProps = TextInputPropsType & {
 	loading?: boolean
 	label: string
-	handleSubmit: (ev: SyntheticEventType) => void
+	handleSubmit: (ev: any) => void
 }
 
 const AiPromptModal: React.FC<AiPromptModalProps> = (props) => {

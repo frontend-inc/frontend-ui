@@ -7,7 +7,6 @@ import DocumentListDrawer from '../DocumentListDrawer'
 import DocumentEditDrawer from '../DocumentEditDrawer'
 import SortableReferenceItem from './SortableReferenceItem'
 import { useRouter } from 'next/router'
-import { RouterParams } from '../../../../types'
 import { filterReferences } from '../../../../helpers'
 
 type ReferenceInputProps = {
@@ -29,9 +28,6 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
 		enableMultipleSelect = false,
 	} = props
 
-	const router = useRouter()
-	const { app_id: appId } = router?.query as RouterParams
-
 	const [resources, setResources] = useState()
 	const [open, setOpen] = useState(false)
 	const [openEdit, setOpenEdit] = useState(false)
@@ -39,7 +35,6 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
 
 	const { updateReferencePositions } = useDocuments({
 		contentType: collection?.name,
-		appId: appId,
 	})
 
 	const handleSubmit = async (resources) => {
@@ -118,7 +113,6 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
 				handleClose={() => setOpen(false)}
 			/>
 			<DocumentEditDrawer
-				appId={appId}
 				open={openEdit}
 				handleClose={() => setOpenEdit(false)}
 				handleSubmit={handleSubmit}

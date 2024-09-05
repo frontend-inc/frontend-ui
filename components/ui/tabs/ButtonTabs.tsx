@@ -39,7 +39,7 @@ const ButtonTabs: React.FC<ButtonTabsProps> = (props) => {
 	
   const handleInputChange = (
 		ev: React.ChangeEvent<HTMLInputElement>,
-		value: number | string
+		value: number
 	) => {
 		setValue(value)
     if(disableDebounce){

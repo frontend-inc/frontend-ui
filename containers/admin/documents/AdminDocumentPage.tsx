@@ -40,7 +40,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
   const [saveLoading, setSaveLoading] = useState(false)
 	const [publishLoading, setPublishLoading] = useState(false)
 	const [title, setTitle] = useState('')
-	const [activeFields, setActiveFields] = useState(false)
+	const [activeFields, setActiveFields] = useState([])
 	const [documentIds, setDocumentIds] = useState()
 
   const { clientUrl } = useAdmin()
@@ -158,7 +158,8 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 
 	useEffect(() => {
 		if (router?.query) {
-			setDocumentIds(router.query?.ids?.split(','))
+      //@ts-ignore 
+			setDocumentIds(router.query?.ids?.split(',') || [])
 		}
 	}, [router?.query])
 
@@ -194,11 +195,11 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 				<ViewScroll>
 					<Box sx={sx.container}>
 						<AdminDocumentForm
-							errors={errors}
-							appId={appId}
+							errors={errors}							
 							document={document}
 							fields={activeFields}
 							collection={collection}
+              //@ts-ignore
 							handleChange={handleChange}
 							handleAddReferences={handleAddReferences}
 							handleRemoveReferences={handleRemoveReferences}

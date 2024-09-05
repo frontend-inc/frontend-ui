@@ -1,7 +1,7 @@
 import * as COLORS from '@mui/material/colors'
 import { FieldVariantType } from '../../types'
 
-export const AUDIO_FIELD: FieldVariantType = {
+export const AUDIO_FIELD_VARIANT: FieldVariantType = {
 	icon: 'Headphones',
 	category: 'Media',
 	variant: 'audio',
@@ -12,7 +12,7 @@ export const AUDIO_FIELD: FieldVariantType = {
 	color: COLORS.pink[600],
 }
 
-export const EMAIL_FIELD: FieldVariantType = {
+export const EMAIL_FIELD_VARIANT: FieldVariantType = {
 	icon: 'Mail',
 	category: 'Text',
 	variant: 'email',
@@ -23,7 +23,7 @@ export const EMAIL_FIELD: FieldVariantType = {
 	color: COLORS.green[600],
 }
 
-export const PHONE_FIELD: FieldVariantType = {
+export const PHONE_FIELD_VARIANT: FieldVariantType = {
 	icon: 'Phone',
 	category: 'Text',
 	variant: 'phone',
@@ -34,7 +34,7 @@ export const PHONE_FIELD: FieldVariantType = {
 	color: COLORS.green[600],
 }
 
-export const URL_FIELD: FieldVariantType = {
+export const URL_FIELD_VARIANT: FieldVariantType = {
 	icon: 'Link',
 	category: 'Text',
 	variant: 'url',
@@ -45,7 +45,7 @@ export const URL_FIELD: FieldVariantType = {
 	color: COLORS.green[600],
 }
 
-export const TAG_ARRAY_FIELD: FieldVariantType = {
+export const TAG_ARRAY_FIELD_VARIANT: FieldVariantType = {
 	icon: 'List',
 	category: 'Text',
 	variant: 'array',
@@ -56,7 +56,7 @@ export const TAG_ARRAY_FIELD: FieldVariantType = {
 	color: COLORS.deepPurple[500],
 }
 
-export const BOOLEAN_FIELD: FieldVariantType = {
+export const BOOLEAN_FIELD_VARIANT: FieldVariantType = {
 	icon: 'ToggleLeft',
 	category: 'Boolean',
 	variant: 'boolean',
@@ -67,7 +67,7 @@ export const BOOLEAN_FIELD: FieldVariantType = {
 	color: COLORS.lightBlue[500],
 }
 
-export const DATE_FIELD: FieldVariantType = {
+export const DATE_FIELD_VARIANT: FieldVariantType = {
 	icon: 'Calendar',
 	category: 'Date',
 	variant: 'date',
@@ -78,7 +78,7 @@ export const DATE_FIELD: FieldVariantType = {
 	color: COLORS.amber[600],
 }
 
-export const DATETIME_FIELD: FieldVariantType = {
+export const DATETIME_FIELD_VARIANT: FieldVariantType = {
 	icon: 'Clock',
 	category: 'Date',
 	variant: 'datetime',
@@ -89,7 +89,7 @@ export const DATETIME_FIELD: FieldVariantType = {
 	color: COLORS.amber[600],
 }
 
-export const SELECT_FIELD: FieldVariantType = {
+export const SELECT_FIELD_VARIANT: FieldVariantType = {
 	icon: 'ChevronDownSquare',
 	category: 'Text',
 	variant: 'select',
@@ -100,7 +100,7 @@ export const SELECT_FIELD: FieldVariantType = {
 	color: COLORS.deepPurple[500],
 }
 
-export const FLOAT_FIELD: FieldVariantType = {
+export const FLOAT_FIELD_VARIANT: FieldVariantType = {
 	icon: 'Hash',
 	category: 'Numbers',
 	variant: 'float',
@@ -111,7 +111,7 @@ export const FLOAT_FIELD: FieldVariantType = {
 	color: COLORS.purple[500],
 }
 
-export const JSON_FIELD: FieldVariantType = {
+export const JSON_FIELD_VARIANT: FieldVariantType = {
 	icon: 'FileJson',
 	category: 'Data',
 	variant: 'json',
@@ -122,7 +122,7 @@ export const JSON_FIELD: FieldVariantType = {
 	color: COLORS.blue[500],
 }
 
-export const IMAGE_FIELD: FieldVariantType = {
+export const IMAGE_FIELD_VARIANT: FieldVariantType = {
 	icon: 'Image',
 	category: 'Media',
 	variant: 'image',
@@ -133,7 +133,7 @@ export const IMAGE_FIELD: FieldVariantType = {
 	color: COLORS.pink[500],
 }
 
-export const PRICE_FIELD: FieldVariantType = {
+export const PRICE_FIELD_VARIANT: FieldVariantType = {
 	icon: 'DollarSign',
 	category: 'Numbers',
 	variant: 'price',
@@ -144,7 +144,7 @@ export const PRICE_FIELD: FieldVariantType = {
 	color: COLORS.purple[500],
 }
 
-export const LOCATION_FIELD: FieldVariantType = {
+export const LOCATION_FIELD_VARIANT: FieldVariantType = {
 	icon: 'MapPin',
 	category: 'Geographic',
 	variant: 'location',
@@ -155,7 +155,7 @@ export const LOCATION_FIELD: FieldVariantType = {
 	color: COLORS.teal[500],
 }
 
-export const NUMBER_FIELD: FieldVariantType = {
+export const NUMBER_FIELD_VARIANT: FieldVariantType = {
 	icon: 'Hash',
 	category: 'Numbers',
 	variant: 'number',
@@ -166,7 +166,7 @@ export const NUMBER_FIELD: FieldVariantType = {
 	color: COLORS.purple[500],
 }
 
-export const RATING_FIELD: FieldVariantType = {
+export const RATING_FIELD_VARIANT: FieldVariantType = {
 	icon: 'Star',
 	category: 'Numbers',
 	variant: 'rating',
@@ -177,7 +177,7 @@ export const RATING_FIELD: FieldVariantType = {
 	color: COLORS.purple[500],
 }
 
-export const STRING_FIELD: FieldVariantType = {
+export const STRING_FIELD_VARIANT: FieldVariantType = {
 	icon: 'Type',
 	category: 'Text',
 	variant: 'string',
@@ -188,10 +188,10 @@ export const STRING_FIELD: FieldVariantType = {
 	color: COLORS.deepPurple[500],
 }
 
-export const SHOPIFY_FIELD: FieldVariantType = {
+export const SHOPIFY_FIELD_VARIANT: FieldVariantType = {
 	icon: 'ShoppingCart',
 	category: 'Shopify',
-	variant: 'shopify_product',
+	variant: 'shopify',
 	db_type: 'string',
 	label: 'Shopify product',
 	description: 'Shopify product handle',
@@ -199,7 +199,7 @@ export const SHOPIFY_FIELD: FieldVariantType = {
 	color: COLORS.lightGreen[500],
 }
 
-export const TEXT_FIELD: FieldVariantType = {
+export const TEXT_FIELD_VARIANT: FieldVariantType = {
 	icon: 'FileText',
 	category: 'Text',
 	variant: 'text',
@@ -210,7 +210,7 @@ export const TEXT_FIELD: FieldVariantType = {
 	color: COLORS.deepPurple[500],
 }
 
-export const VIDEO_FIELD: FieldVariantType = {
+export const VIDEO_FIELD_VARIANT: FieldVariantType = {
 	icon: 'Video',
 	category: 'Media',
 	variant: 'video',
@@ -221,7 +221,7 @@ export const VIDEO_FIELD: FieldVariantType = {
 	color: COLORS.pink[500],
 }
 
-export const FILE_FIELD: FieldVariantType = {
+export const FILE_FIELD_VARIANT: FieldVariantType = {
 	icon: 'File',
 	category: 'Media',
 	variant: 'file',
@@ -232,7 +232,7 @@ export const FILE_FIELD: FieldVariantType = {
 	color: COLORS.pink[500],
 }
 
-export const HABTM_FIELD: FieldVariantType = {
+export const HABTM_FIELD_VARIANT: FieldVariantType = {
 	icon: 'Repeat',
 	category: 'Reference',
 	db_type: 'habtm',
@@ -243,43 +243,42 @@ export const HABTM_FIELD: FieldVariantType = {
 	color: COLORS.orange[500],
 }
 
-export const SHOPIFY_PRODUCTS_FIELD: FieldVariantType = {
+export const SHOPIFY_PRODUCTS_FIELD_VARIANT: FieldVariantType = {
 	icon: 'Shirt',
-	category: 'Reference',
-	db_type: 'string',
+	category: 'Shopify',
 	variant: 'shopify_products',
-	label: 'Shopify products',
-	description: 'Array of Shopify products',
+	label: 'Shopify Products',
+	db_type: 'string',
+	description: 'Shopify Products',
 	array: true,
-	color: COLORS.orange[500],
+	color: COLORS.pink[500],
 }
 
-
 export const FIELD_VARIANTS: FieldVariantType[] = [
-	STRING_FIELD,
-	TEXT_FIELD,
-	SELECT_FIELD,
-	TAG_ARRAY_FIELD,
+	STRING_FIELD_VARIANT,
+	TEXT_FIELD_VARIANT,
+	SELECT_FIELD_VARIANT,
+	TAG_ARRAY_FIELD_VARIANT,
 
-	EMAIL_FIELD,
-	PHONE_FIELD,
-	URL_FIELD,
+	EMAIL_FIELD_VARIANT,
+	PHONE_FIELD_VARIANT,
+	URL_FIELD_VARIANT,
 
-	BOOLEAN_FIELD,
-	DATE_FIELD,
-	DATETIME_FIELD,
-	FLOAT_FIELD,
-	NUMBER_FIELD,
+	BOOLEAN_FIELD_VARIANT,
+	DATE_FIELD_VARIANT,
+	DATETIME_FIELD_VARIANT,
+	FLOAT_FIELD_VARIANT,
+	NUMBER_FIELD_VARIANT,
 
-	LOCATION_FIELD,
-	RATING_FIELD,
-	PRICE_FIELD,
-	SHOPIFY_FIELD,
+	LOCATION_FIELD_VARIANT,
+	RATING_FIELD_VARIANT,
+	PRICE_FIELD_VARIANT,
+	SHOPIFY_FIELD_VARIANT,
 	// Media fields
-	IMAGE_FIELD,
-	VIDEO_FIELD,
-	FILE_FIELD,
+	IMAGE_FIELD_VARIANT,
+	VIDEO_FIELD_VARIANT,
+	FILE_FIELD_VARIANT,
 
-  SHOPIFY_PRODUCTS_FIELD,
-	HABTM_FIELD,
+	HABTM_FIELD_VARIANT,
+  SHOPIFY_PRODUCTS_FIELD_VARIANT
 ]

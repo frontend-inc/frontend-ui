@@ -11,7 +11,6 @@ type DocumentEditDrawerProps = {
 	open: boolean
 	handleClose: () => void
 	documentId?: string
-	appId?: string
 	collectionId?: string
 	handleSubmit: (items: any[]) => void
 }
@@ -21,7 +20,6 @@ const DocumentEditDrawer: React.FC<DocumentEditDrawerProps> = (props) => {
 		open,
 		handleClose,
 		documentId,
-		appId,
 		collectionId,
 		handleSubmit: handleSubmitItems,
 	} = props
@@ -138,7 +136,6 @@ const DocumentEditDrawer: React.FC<DocumentEditDrawerProps> = (props) => {
 			<Box sx={sx.container}>
         <AdminDocumentForm
           errors={errors}
-          appId={appId}
           document={document}
           fields={activeFields}
           collection={collection}

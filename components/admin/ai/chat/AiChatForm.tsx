@@ -49,7 +49,6 @@ const AiChatForm: React.FC<AiChatFormProps> = (props) => {
 		<Stack direction="column" spacing={1}>
 			<TextInput
 				multiline
-				id="input"
 				label="Write a sentence about ..."
 				name="prompt"
 				placeholder="Enter text..."
