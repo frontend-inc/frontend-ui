@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
 import { Stack, Box, Button } from '@mui/material'
-import StorageImage from './StorageImage'
-import StorageDrawer from './StorageDrawer'
+import MediaImage from './MediaImage'
+import MediaDrawer from './MediaDrawer'
 import { Search } from 'lucide-react'
 import { ImageType } from '../../../../types'
 
-type StorageInputProps = {
+type MediaInputProps = {
 	name: string
 	value: ImageType
 	handleAddAttachment: (field: string, id: number) => void
 	handleRemoveAttachment: (field: string) => void
 }
 
-const StorageInput: React.FC<StorageInputProps> = (props) => {
+const MediaInput: React.FC<MediaInputProps> = (props) => {
 	
   const { 
     name, 
@@ -41,7 +41,7 @@ const StorageInput: React.FC<StorageInputProps> = (props) => {
 
 	return (
 		<Stack spacing={1}>
-			<StorageImage image={value} handleRemove={handleRemove} />
+			<MediaImage image={value} handleRemove={handleRemove} />
 			<Box sx={sx.buttons}>
 				<Button
 					color="secondary"
@@ -52,7 +52,7 @@ const StorageInput: React.FC<StorageInputProps> = (props) => {
 					Browse
 				</Button>
 			</Box>
-			<StorageDrawer
+			<MediaDrawer
 				open={openEdit}
 				handleClose={() => setOpenEdit(false)}
 				handleSubmit={handleSubmit}
@@ -61,7 +61,7 @@ const StorageInput: React.FC<StorageInputProps> = (props) => {
 	)
 }
 
-export default StorageInput
+export default MediaInput
 
 const sx = {
 	root: {

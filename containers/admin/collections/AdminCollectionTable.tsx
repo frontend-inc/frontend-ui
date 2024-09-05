@@ -69,7 +69,7 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 		numPages,
 		totalCount,
 	} = useDocuments({
-		contentType: collectionId,
+		collection: collectionId,
 	})
 
 	const { showAlertSuccess } = useAlerts()

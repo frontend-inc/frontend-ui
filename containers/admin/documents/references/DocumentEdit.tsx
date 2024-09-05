@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import { Drawer } from '../../../components'
-import { useCollections, useDocuments } from '../../../hooks'
+import { Drawer } from '../../../../components'
+import { useCollections, useDocuments } from '../../../../hooks'
 import { Box, Stack } from '@mui/material'
-import AdminDocumentForm from './AdminDocumentForm'
-import PublishButton from './inputs/PublishButton'
-import SaveButton from './inputs/SaveButton'
-import { FieldType } from '../../../types'
+import AdminDocumentForm from '../AdminDocumentForm'
+import PublishButton from '../inputs/PublishButton'
+import SaveButton from '../inputs/SaveButton'
+import { FieldType } from '../../../../types'
 
-type DocumentEditDrawerProps = {
+type DocumentEditProps = {
 	open: boolean
 	handleClose: () => void
 	documentId?: string
-	collectionId?: string
+	collectionId: string
 	handleSubmit: (items: any[]) => void
 }
 
-const DocumentEditDrawer: React.FC<DocumentEditDrawerProps> = (props) => {
+const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 	const {
 		open,
 		handleClose,
@@ -43,7 +43,7 @@ const DocumentEditDrawer: React.FC<DocumentEditDrawerProps> = (props) => {
 		removeReferences,
 		handleChange,
 	} = useDocuments({
-		contentType: collectionId,
+		collection: collectionId,
 	})
 
 	const handleSubmit = async (document) => {
@@ -133,40 +133,40 @@ const DocumentEditDrawer: React.FC<DocumentEditDrawerProps> = (props) => {
 		<Drawer open={open} handleClose={handleClose} title={title}>
       { document && activeFields && (
         <>
-			<Box sx={sx.container}>
-        <AdminDocumentForm
-          errors={errors}
-          document={document}
-          fields={activeFields}
-          collection={collection}
-          handleChange={handleChange}
-          handleAddReferences={handleAddReferences}
-          handleRemoveReferences={handleRemoveReferences}
-          handleAddAttachment={handleAddAttachment}
-          handleRemoveAttachment={handleRemoveAttachment}
-        />
-			</Box>
-			<Stack spacing={2}>
-				<SaveButton
-					fullWidth
-					loading={loading}
-					document={document}
-					handleSubmit={() => handleSubmit(document)}
-				/>
-				<PublishButton
-					fullWidth
-					loading={loading}
-					document={document}
-					handleTogglePublish={handleSubmitAndPublish}
-				/>
-			</Stack>
-      </>
-    )}
+          <Box sx={sx.container}>
+            <AdminDocumentForm
+              errors={errors}
+              document={document}
+              fields={activeFields}
+              collection={collection}
+              handleChange={handleChange}
+              handleAddReferences={handleAddReferences}
+              handleRemoveReferences={handleRemoveReferences}
+              handleAddAttachment={handleAddAttachment}
+              handleRemoveAttachment={handleRemoveAttachment}
+            />
+          </Box>
+          <Stack spacing={2}>
+            <SaveButton
+              fullWidth
+              loading={loading}
+              document={document}
+              handleSubmit={() => handleSubmit(document)}
+            />
+            <PublishButton
+              fullWidth
+              loading={loading}
+              document={document}
+              handleTogglePublish={handleSubmitAndPublish}
+            />
+          </Stack>
+        </>
+      )}
 		</Drawer>
 	)
 }
 
-export default DocumentEditDrawer
+export default DocumentEdit
 
 const sx = {
 	container: {

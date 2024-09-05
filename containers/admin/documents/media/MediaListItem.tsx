@@ -8,13 +8,13 @@ import {
 } from '@mui/material'
 import Image from 'next/image'
 
-type StorageListItemProps = {
+type MediaListItemProps = {
 	item?: any
 	handleClick?: () => void
 	selected?: boolean
 }
 
-const StorageListItem: React.FC<StorageListItemProps> = (props) => {
+const MediaListItem: React.FC<MediaListItemProps> = (props) => {
 	const { item, handleClick, selected = false } = props
 
 	return (
@@ -44,7 +44,7 @@ const StorageListItem: React.FC<StorageListItemProps> = (props) => {
 	)
 }
 
-export default StorageListItem
+export default MediaListItem
 
 const sx = {
 	listItem: {

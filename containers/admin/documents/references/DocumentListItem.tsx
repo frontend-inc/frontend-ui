@@ -6,9 +6,9 @@ import {
 	ListItemButton,
 	ListItemText,
 } from '@mui/material'
-import { PublishLabel } from '../../../components'
-import { Image } from '../../../components'
-import { truncate } from '../../../helpers'
+import { PublishLabel } from '../../../../components'
+import { Image } from '../../../../components'
+import { truncate } from '../../../../helpers'
 
 type DocumentListItemProps = {
 	document?: any

@@ -9,7 +9,7 @@ import {
 import Image from 'next/image'
 import { AttachmentImage, Label, MenuButton } from '../../../../components'
 
-type StorageItemProps = {
+type MediaItemProps = {
 	item?: any
 	size?: number
 	selected?: boolean
@@ -17,7 +17,7 @@ type StorageItemProps = {
 	handleRemoveItem?: (item: any) => void
 }
 
-const StorageItem: React.FC<StorageItemProps> = (props) => {
+const MediaItem: React.FC<MediaItemProps> = (props) => {
 	const { item, size = 180, selected, handleClick, handleRemoveItem } = props
 
 	const [contentType, setContentType] = useState('')
@@ -68,7 +68,7 @@ const StorageItem: React.FC<StorageItemProps> = (props) => {
 	)
 }
 
-export default StorageItem
+export default MediaItem
 
 const sx = {
 	root: {

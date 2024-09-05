@@ -2,17 +2,17 @@ import React, { useEffect } from 'react'
 import { useMedia } from '../../../../hooks'
 import { Box, Button, CircularProgress } from '@mui/material'
 import { ExpandMore } from '@mui/icons-material'
-import StorageItem from './StorageItem'
+import MediaItem from './MediaItem'
 import { useRouter } from 'next/router'
 import { Placeholder } from '../../../../components'
 import { RouterParams } from '../../../../types'
 
-type StorageItemListProps = {
+type MediaItemListProps = {
 	selectedIds: number[]
 	handleSelect: (item: any) => void
 }
 
-const StorageItemList: React.FC<StorageItemListProps> = (props) => {
+const MediaItemList: React.FC<MediaItemListProps> = (props) => {
 	const { selectedIds, handleSelect } = props
 
 	const router = useRouter()
@@ -34,7 +34,7 @@ const StorageItemList: React.FC<StorageItemListProps> = (props) => {
 		<>
 			<Box sx={sx.list}>
 				{resources.map((item, idx) => (
-					<StorageItem
+					<MediaItem
 						key={idx}
 						item={item}
 						size={164}
@@ -67,7 +67,7 @@ const StorageItemList: React.FC<StorageItemListProps> = (props) => {
 	)
 }
 
-export default StorageItemList
+export default MediaItemList
 
 const sx = {
 	list: {

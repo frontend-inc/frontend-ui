@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { useDocuments } from '../../../hooks'
-import { useSelected } from '../../../hooks'
-import { Drawer, SearchInput } from '../../../components'
+import { useDocuments } from '../../../../hooks'
+import { useSelected } from '../../../../hooks'
+import { Drawer, SearchInput } from '../../../../components'
 import { Button, CircularProgress, List } from '@mui/material'
 import { ExpandMore } from '@mui/icons-material'
 import DocumentListItem from './DocumentListItem'
@@ -31,7 +31,7 @@ const DocumentListDrawer: React.FC<DocumentListDrawerProps> = (props) => {
 
 	const { loading, documents, findDocuments, loadMore, page, numPages } =
 		useDocuments({
-			contentType: field?.foreign_collection?.name,
+			collection: field?.foreign_collection?.name,
 		})
 
 	const handleSelectClick = (document) => {

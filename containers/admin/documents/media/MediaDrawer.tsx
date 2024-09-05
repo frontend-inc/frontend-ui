@@ -3,24 +3,19 @@ import { Drawer, ButtonTabs } from '../../../../components'
 import { useMedia } from '../../../../hooks'
 import { useAlerts } from '../../../../hooks'
 import { Box, Button } from '@mui/material'
-import StorageItem from './StorageItem'
-import { MediaUploader} from '../../../../containers'
-import StorageItemList from './StorageList'
-import { useRouter } from 'next/router'
+import MediaItem from './MediaItem'
+import { MediaUploader} from '../../..'
+import MediaItemList from './MediaList'
 import { UnsplashList } from '../../../../components'
-import { RouterParams } from '../../../../types'
 
-type StorageDrawerProps = {
+type MediaDrawerProps = {
 	open: boolean
 	handleClose: () => void
 	handleSubmit: (items: any[]) => void
 }
 
-const StorageDrawer: React.FC<StorageDrawerProps> = (props) => {
+const MediaDrawer: React.FC<MediaDrawerProps> = (props) => {
 	const { open, handleClose, handleSubmit } = props
-
-	const router = useRouter()
-	const { app_id: appId } = router?.query as RouterParams
 
 	const [tab, setTab] = useState<number>(0)
 
@@ -104,7 +99,7 @@ const StorageDrawer: React.FC<StorageDrawerProps> = (props) => {
 				</Box>
 				<Box sx={sx.content}>
 					{tab == 0 && (
-						<StorageItemList
+						<MediaItemList
 							selectedIds={[selected?.id]}
 							handleSelect={handleSelect}
 						/>
@@ -112,7 +107,7 @@ const StorageDrawer: React.FC<StorageDrawerProps> = (props) => {
 					{tab == 1 && (
 						<>
 							{uploaded && (
-								<StorageItem
+								<MediaItem
 									item={uploaded}
 									handleRemoveItem={handleRemoveItem}
 								/>
@@ -123,7 +118,7 @@ const StorageDrawer: React.FC<StorageDrawerProps> = (props) => {
 					{tab == 2 && (
 						<>
 							{uploaded && (
-								<StorageItem
+								<MediaItem
 									item={uploaded}
 									handleRemoveItem={handleRemoveItem}
 								/>
@@ -139,7 +134,7 @@ const StorageDrawer: React.FC<StorageDrawerProps> = (props) => {
 	)
 }
 
-export default StorageDrawer
+export default MediaDrawer
 
 const sx = {
 	icon: {

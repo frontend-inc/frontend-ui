@@ -12,7 +12,7 @@ import {
   ShopifyProductsInput
 } from '../../../../components'
 import ReferenceInput from '../references/ReferenceInput'
-import StorageInput from '../storage/StorageInput'
+import MediaInput from '../media/MediaInput'
 import InputWrapper  from './InputWrapper'
 import { AiChatModal } from '../../../../components'
 import { COUNTRIES, STATES } from '../../../../constants'
@@ -69,9 +69,9 @@ const DocumentInput: React.FC<DocumentInputProps> = (props) => {
 		json: JSONInput,
 		shopify: ShopifyProductInput,
     shopify_products: ShopifyProductsInput,
-    file: StorageInput,
-		image: StorageInput,
-    video: StorageInput,
+    file: MediaInput,
+		image: MediaInput,
+    video: MediaInput,
     habtm: ReferenceInput
 	}
 

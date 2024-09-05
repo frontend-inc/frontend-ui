@@ -62,7 +62,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 		updateDocuments,
 		handleChange,
 	} = useDocuments({
-		contentType: collectionId,
+		collection: collectionId,
 	})
 
 	const handleSubmit = async () => {

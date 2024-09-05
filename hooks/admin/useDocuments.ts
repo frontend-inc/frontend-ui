@@ -3,13 +3,13 @@ import { useApi, useResource } from 'frontend-js'
 import { useAdmin } from '../../hooks'
 
 type UseDocumentProps = {
-	contentType: string | number
+	collection: string | number
 }
 
 const useDocuments = (props: UseDocumentProps) => {
   const { apiUrl } = useAdmin()
 
-	const { contentType } = props
+	const { collection } = props
 	const {
 		loading,
 		delayedLoading,
@@ -56,7 +56,7 @@ const useDocuments = (props: UseDocumentProps) => {
 		endIndex,
 		paginate,
 	} = useResource({
-		url: `${apiUrl}/cms/${contentType}`,
+		url: `${apiUrl}/cms/${collection}`,
 		name: 'document',
 	})
 

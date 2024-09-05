@@ -6,12 +6,12 @@ import {
 import { Image, Icon } from '../../../../components'
 import { ImageType } from '../../../../types'
 
-type StorageImageProps = {
+type MediaImageProps = {
 	image?: ImageType
   handleRemove: () => void
 }
 
-const StorageImage: React.FC<StorageImageProps> = (props) => {
+const MediaImage: React.FC<MediaImageProps> = (props) => {
 	const { image, handleRemove } = props
 	return (
 		<Card sx={sx.root}>
@@ -31,7 +31,7 @@ const StorageImage: React.FC<StorageImageProps> = (props) => {
 	)
 }
 
-export default StorageImage
+export default MediaImage
 
 const sx = {
 	root: {

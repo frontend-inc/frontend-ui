@@ -3,9 +3,9 @@ import { useDocuments } from '../../../../hooks'
 import { SortableList } from '../../../../components'
 import { Box, Button } from '@mui/material'
 import { Search } from '@mui/icons-material'
-import DocumentListDrawer from '../DocumentListDrawer'
-import DocumentEditDrawer from '../DocumentEditDrawer'
-import SortableReferenceItem from './SortableReferenceItem'
+import DocumentList from './DocumentList'
+import DocumentEdit from './DocumentEdit'
+import ReferenceItem from './ReferenceItem'
 import { useRouter } from 'next/router'
 import { filterReferences } from '../../../../helpers'
 
@@ -34,7 +34,7 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
 	const [foreignDocument, setForeignDocument] = useState<any>({})
 
 	const { updateReferencePositions } = useDocuments({
-		contentType: collection?.name,
+		collection: collection?.name,
 	})
 
 	const handleSubmit = async (resources) => {
@@ -83,7 +83,7 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
 					items={resources}
 					handleDrop={handleDrop}
 					renderItem={(item, idx) => (
-						<SortableReferenceItem
+						<ReferenceItem
 							key={idx}
 							item={item}
 							handleEditItem={handleEdit}
@@ -105,14 +105,14 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
 					Add {field?.foreign_collection?.singular_name}
 				</Button>
 			</Box>
-			<DocumentListDrawer
+			<DocumentList
 				enableMultipleSelect={enableMultipleSelect}
 				open={open}
 				field={field}
 				handleSubmit={handleSubmit}
 				handleClose={() => setOpen(false)}
 			/>
-			<DocumentEditDrawer
+			<DocumentEdit
 				open={openEdit}
 				handleClose={() => setOpenEdit(false)}
 				handleSubmit={handleSubmit}
