@@ -33,9 +33,8 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 		direction = 'column',
 		freeSolo = true,
 		info,
+    value
 	} = props
-	let { value } = props
-	if (!value) value = []
 
 	const { error, clearError } = useError({
 		errors,
@@ -54,13 +53,14 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 		})
 	}
 
+  if(!Array.isArray(value)) return null;
 	return (
 		<Stack sx={sx.root} direction={direction} spacing={0}>
 			<InputLabel label={label} info={info} />
 			<Autocomplete
 				multiple
 				freeSolo={freeSolo}
-				defaultValue={value || []}
+        value={value}
 				onChange={handleInputChange}
 				options={options || []}
 				getOptionLabel={(option) => option}
@@ -112,7 +112,7 @@ export const sx = {
 			fontSize: (theme) => theme.typography.body2.fontSize,
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
 			borderRadius: 1,
-			bgcolor: 'background.default',
+			bgcolor: 'background.paper',
 			border: (theme) => `1px solid ${theme.palette.divider}`,
 			//boxShadow: `rgb(0 0 0 / 5%) 0px 2px 4px !important`,
 			width: '100%',

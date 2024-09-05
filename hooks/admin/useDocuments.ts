@@ -1,13 +1,14 @@
 import React from 'react'
-import { useResource } from 'frontend-js/hooks'
+import { useApi, useResource } from 'frontend-js'
 import { useAdmin } from '../../hooks'
 
 type UseDocumentProps = {
-	contentType: string | string[]
+	contentType: string | number
 }
 
 const useDocuments = (props: UseDocumentProps) => {
   const { apiUrl } = useAdmin()
+
 	const { contentType } = props
 	const {
 		loading,
@@ -46,6 +47,8 @@ const useDocuments = (props: UseDocumentProps) => {
 		sortDirection,
 		handleSort,
 		updateReferencePositions,
+    reloadOne: reloadDocument,
+    reloadMany: reloadDocuments,
 		setResource: setDocument,
 		setResources: setDocuments,
 		startIndex,
@@ -86,6 +89,8 @@ const useDocuments = (props: UseDocumentProps) => {
 		handleChangePage,
 		query,
 		setQuery,
+    reloadDocument,
+    reloadDocuments,
 		page,
 		numPages,
 		perPage,

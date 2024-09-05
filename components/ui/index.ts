@@ -64,6 +64,7 @@ export { default as UserMenu } from './UserMenu'
 export { default as ProfileDetails } from './profiles/ProfileDetails'
 export { default as ProfileInfo } from './profiles/ProfileInfo'
 export { default as ProfileImage } from './profiles/ProfileImage'
+export { default as ViewScroll } from './ViewScroll'
 
 // Buttons
 export { default as PrimaryButton } from './buttons/PrimaryButton'
