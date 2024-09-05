@@ -4,8 +4,8 @@ import { Box, Button, CircularProgress } from '@mui/material'
 import { ExpandMore } from '@mui/icons-material'
 import StorageItemListItem from './StorageItem'
 import { useRouter } from 'next/router'
-import { Placeholder } from 'frontend-ui/components'
-import { RouterParams } from 'frontend-ui/types'
+import { Placeholder } from '../../../../components'
+import { RouterParams } from '../../../../types'
 
 type StorageItemListProps = {
 	selectedIds: number[]

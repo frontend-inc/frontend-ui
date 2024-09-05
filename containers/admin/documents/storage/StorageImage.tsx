@@ -3,7 +3,7 @@ import {
   IconButton,
 	Card,
 } from '@mui/material'
-import { Image, Icon } from 'frontend-ui/components'
+import { Image, Icon } from '../../../../components'
 import { ImageType } from '../../../../types'
 
 type StorageImageProps = {

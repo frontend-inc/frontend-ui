@@ -7,7 +7,7 @@ import {
 	CardHeader,
 } from '@mui/material'
 import Image from 'next/image'
-import { AttachmentImage, Label, MenuButton } from 'frontend-ui/components'
+import { AttachmentImage, Label, MenuButton } from '../../../../components'
 
 type StorageItemProps = {
 	item?: any

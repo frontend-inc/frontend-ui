@@ -1,10 +1,10 @@
 import React from 'react'
 import { Button, ButtonGroup, Typography, Menu, MenuItem } from '@mui/material'
 import { ExpandMore } from '@mui/icons-material'
-import { useMenu } from 'frontend-ui/hooks'
+import { useMenu } from '../../../../hooks'
 import { useRouter } from 'next/router'
-import { RouterParams } from 'frontend-ui/types'
-import { IconLoading } from 'frontend-ui/components'
+import { RouterParams } from '../../../../types'
+import { IconLoading } from '../../../../components'
 
 type SaveButtonProps = {
 	loading: boolean

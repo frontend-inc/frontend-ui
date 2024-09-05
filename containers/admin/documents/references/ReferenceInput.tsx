@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDocuments } from 'hooks'
-import { SortableList } from 'frontend-ui/components'
+import { SortableList } from '../../../../components'
 import { Box, Button } from '@mui/material'
 import { Search } from '@mui/icons-material'
 import DocumentListDrawer from '../DocumentListDrawer'

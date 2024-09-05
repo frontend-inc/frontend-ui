@@ -1,9 +1,9 @@
 import React from 'react'
 import { Box, MenuItem, Typography } from '@mui/material'
-import { Label, MenuButton } from 'frontend-ui/components'
+import { Label, MenuButton } from '../../../components'
 import { PublishedLabel } from 'components'
 import { DragIndicator } from '@mui/icons-material'
-import { truncate } from 'frontend-ui/helpers'
+import { truncate } from '../../../helpers'
 
 type DocumentItemProps = {
 	item?: any

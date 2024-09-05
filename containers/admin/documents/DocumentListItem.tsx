@@ -7,8 +7,8 @@ import {
 	ListItemText,
 } from '@mui/material'
 import { PublishedLabel } from 'components'
-import { Image } from 'frontend-ui/components'
-import { truncate } from 'frontend-ui/helpers'
+import { Image } from '../../../components'
+import { truncate } from '../../../helpers'
 
 type DocumentListItemProps = {
 	document?: any
