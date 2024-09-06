@@ -7,13 +7,11 @@ export const ATTACHMENT_FIELDS = ['image', 'video', 'file']
 export const SYSTEM_FIELDS = [
 	'id',
 	'title',
-	'subtitle',
 	'description',
 	'handle',
 	'user_id',
 	'team_id',
 	'label',
-	'shopify_handle',
   'shopify_products',
 	'published',
 	'status',
@@ -27,10 +25,7 @@ export const SYSTEM_FIELDS = [
 	'attachment',
 	'file',
 	'lat',
-	'lng',
-	'email',
-	'phone',
-	'url',
+	'lng'
 ]
 
 
@@ -69,19 +64,6 @@ export const TITLE_FIELD: FieldBase = {
 	db_type: 'string',
 	name: 'title',
 	position: 2,
-	array: false,
-	internal: true,
-	visible: true,
-	editable: true,
-}
-
-export const SUBTITLE_FIELD: FieldBase = {
-	label: 'Subtitle',
-	variant: 'string',
-	reference: false,
-	db_type: 'string',
-	name: 'subtitle',
-	position: 3,
 	array: false,
 	internal: true,
 	visible: true,
