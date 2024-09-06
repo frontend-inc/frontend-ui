@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Autosuggest } from 'frontend-ui/components'
-import { useProducts } from 'frontend-shopify/hooks'
-import { SyntheticEventType } from 'frontend-ui/types'
+import { Autosuggest } from '../../../components'
+import { SyntheticEventType } from '../../../types'
+import { useProducts } from 'frontend-shopify'
 
 type AutosuggestProps = {
 	value?: any
