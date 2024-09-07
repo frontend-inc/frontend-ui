@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
 import { ShopifyMetafieldProducts as MetafieldProducts } from '../../components'
-import { ShopifyMetafieldProductsProps as MetafieldProductsProps } from '../../components/shopify/products/metafields/MetafieldProducts'
+import { ShopifyMetafieldProductsProps as MetafieldProductsProps } from '../../components/shopify/products/metafields/ShopifyMetafieldProducts'
 import { SectionProps, HeadingProps } from '../../types'
 
 type ShopifyMetafieldProductsProps = SectionProps &
