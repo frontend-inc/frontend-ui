@@ -2,14 +2,15 @@ import React, { useState } from 'react'
 import AppContext from './AppContext'
 
 type AppProviderProps = {
-	clientUrl?: string
+  apiUrl: string 
+	clientUrl: string
 	children: React.ReactNode
 	logo?: any
 	name: string
 }
 
 const AppProvider = (props: AppProviderProps) => {
-	const { children, clientUrl, name, logo } = props || {}
+	const { children, apiUrl, clientUrl, name, logo } = props || {}
 
 	const [alert, setAlert] = useState()
 	const [loading, setLoading] = useState(false)
@@ -28,6 +29,7 @@ const AppProvider = (props: AppProviderProps) => {
 		setApp,
 
 		logo,
+    apiUrl,
 		clientUrl,
 
 		alert,

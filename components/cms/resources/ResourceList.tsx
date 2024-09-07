@@ -138,6 +138,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		query,
 		findMany,
 		reloadMany,
+    addAttachment,
 		removeAttachment,
 		page,
 		numPages,
@@ -234,8 +235,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		setOpenCreate(true)
 	}
 
-	const handleEdit = (resource) => {
-		setResource(resource)
+	const handleEdit = async (resource) => {
+    let resp = await reloadOne(resource?.id)
+		setResource(resp)
 		setOpenShow(false)
 		setOpenCreate(false)
 		setOpenEdit(true)
@@ -292,6 +294,14 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	const handleRemove = async (name) => {
 		await removeAttachment(resource?.id, name)
 	}
+
+  const handleRemoveAttachment = async (name) => {
+    await removeAttachment(resource?.id, name)
+  }
+
+  const handleAddAttachment = async (name, attachmentId) => {
+    await addAttachment(resource?.id, name, attachmentId)
+  }
 
 	const handleDrop = async (sorted) => {
 		await updatePositions(sorted)
@@ -452,8 +462,10 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
         setResource={setResource}
 				handleChange={handleChange}
 				handleRemove={handleRemove}
-				handleSubmit={handleSubmit}
-        handleReload={reloadMany}
+        handleAddAttachment={handleAddAttachment}
+        handleRemoveAttachment={handleRemoveAttachment}
+				handleSubmit={handleSubmit}        
+        handleReload={reloadMany}        
 				fields={fields}
 				{...slots.create}
 			/>
@@ -466,8 +478,11 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
         setResource={setResource}
 				handleChange={handleChange}
 				handleRemove={handleRemove}
+        handleAddAttachment={handleAddAttachment}
+        handleRemoveAttachment={handleRemoveAttachment}
 				handleSubmit={handleSubmit}
         handleReload={reloadMany}
+        handleReloadOne={ reloadOne }
 				fields={fields}
 				{...slots.edit}
 			/>

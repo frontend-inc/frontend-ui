@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { ProductDetails } from '../../shopify'
+import { ShopifyProductDetails } from '../../shopify'
 import { useProducts } from 'frontend-shopify'
 import { get } from 'lodash'
 
@@ -21,7 +21,7 @@ const FieldShopifyProduct: React.FC<FieldShopifyProductProps> = (props) => {
 	}, [shopifyHandle])
 
 	if (!product) return null
-	return <ProductDetails shopifyProduct={product} {...rest} />
+	return <ShopifyProductDetails shopifyProduct={product} {...rest} />
 }
 
 export default FieldShopifyProduct

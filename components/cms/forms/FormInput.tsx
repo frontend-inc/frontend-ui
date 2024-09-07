@@ -17,7 +17,7 @@ import {
 	ShopifyProductInput,
   ShopifyProductsInput,
 	ReferenceInput,
-	RemoteAutosuggest,
+	RemoteAutosuggest,  
 } from '../../../components'
 import { FormFieldType, OptionType, SyntheticEventType } from '../../../types'
 
@@ -30,7 +30,7 @@ type FormInputProps = {
 	options: any
 	placeholder?: string
 	handleChange: (e: SyntheticEventType) => void
-	handleRemove: (name: string) => void
+	handleRemove: (name: string) => void  
 	resource?: any
 	url?: string
 	foreignUrl?: string
@@ -84,7 +84,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		json: JSONInput,
 		shopify: ShopifyProductInput,
     shopify_products: ShopifyProductsInput,
-		habtm: ReferenceInput,
+		habtm: ReferenceInput    
 	}
 
 	let inputProps = {
@@ -133,7 +133,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			foreignUrl,
 			contentType,
 			fields,
-		},
+		},   
 	}
 
 	let InputComponent = componentMapper[variant] || TextInput

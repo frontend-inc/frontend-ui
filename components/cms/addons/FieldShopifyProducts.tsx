@@ -1,5 +1,5 @@
 import React from 'react'
-import { ProductArray } from '../../shopify'
+import { ShopifyProductArray } from '../../shopify'
 import { get } from 'lodash'
 
 export type FieldShopifyProductsProps = {
@@ -14,7 +14,7 @@ const FieldShopifyProducts: React.FC<FieldShopifyProductsProps> = (props) => {
 
 	if (shopifyHandles?.length == 0) return null
 	return(
-    <ProductArray   
+    <ShopifyProductArray   
       href={href}
       handles={shopifyHandles} 
       {...rest} 

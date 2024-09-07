@@ -19,11 +19,13 @@ import {
 	ProductEmpty,
 	ProductToolbar,
 } from '../..'
+import { useApp } from '../../../hooks'
 
 export type ProductListProps = {
 	grid?: boolean
 	selectable?: boolean
 	style: string
+  url?: string
 	href?: string
 	displayFields: DisplayFieldType[]
 	enableLikes?: boolean
@@ -82,9 +84,13 @@ export type ProductListProps = {
 }
 
 const ProductList: React.FC<ProductListProps> = (props) => {
+
+  const { apiUrl } = useApp()
+
+  let { url } = props || {}
 	const {
 		grid = false,
-		selectable = false,
+		selectable = false,    
 		foreignUrl,
 		query,
 		resource,
@@ -100,7 +106,7 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		enableOverlay,
 
 		style = 'list',
-		href,
+		href,    
 		buttons = [],
 		displayFields = [],
 		circular,
@@ -141,7 +147,7 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 			empty: {},
 		},
 	} = props || {}
-
+  
 	const searchQuery = buildSearchQuery({
 		query,
 		resource,
@@ -149,6 +155,7 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		filterUser,
 		filterSimilar,
 	})
+
 
 	const slots = {
 		list: {
@@ -212,7 +219,9 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		},
 	}
 
-  const url = '/ecommerce/products'
+  if (!url){
+    url = `${apiUrl}/shop/products`;  
+  }
 
 	return (
 		<DataList

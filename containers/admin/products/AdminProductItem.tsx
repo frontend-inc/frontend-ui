@@ -1,6 +1,5 @@
 import React from 'react'
-import { Typography } from '@mui/material'
-import { DisplayFields, ResourceGridItem } from '../../../components'
+import { PublishLabel, DisplayFields, ResourceGridItem } from '../../../components'
 import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
 
 const AdminProductItem: React.FC<ResourceItemProps> = (props) => {
@@ -20,14 +19,16 @@ const AdminProductItem: React.FC<ResourceItemProps> = (props) => {
 			selectable={selectable}
 			selected={selected}
       label={ product.display_price }
-      image={product?.image?.url}
-			primary={ product?.title }			
+      image={product?.image?.url}				
+      primary={ 
+        <PublishLabel published={product.published} />
+       }		
       secondary={ 
         <DisplayFields 
           resource={ product }
           fields={[
+            { label: 'Title', name: 'title', variant: 'string' },
             { label: 'Price', name: 'price', variant: 'price' },
-            { label: 'Description', name: 'description', variant: 'text' },            
           ]}
         />
       }

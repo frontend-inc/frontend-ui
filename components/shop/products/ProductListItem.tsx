@@ -1,11 +1,7 @@
 import React from 'react'
-import {
-	ListCard,
-	Card,
-	CoverCard,
-	AvatarCard,
-	ChipCard,
-	TextCard,
+import {	
+	ProductCard,	
+  ProductListCard,
 } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { SecondaryFields, SocialButtons, ButtonActions } from '../..'
@@ -31,8 +27,7 @@ type ProductListItemProps = {
 	enableOverlay?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
-	enableUsers?: boolean
-	enableComments?: boolean
+	enableUsers?: boolean	
 	enableFavorites?: boolean
 	enableAddToList?: boolean
 	enableLikes?: boolean
@@ -69,7 +64,7 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 		list: ProductListCard,
 	}
 
-	let Component = COMPONENTS[style] || Card
+	let Component = COMPONENTS[style] || ProductCard
 
 	return (
 		<Component
@@ -96,8 +91,7 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 						justifyContent="flex-start"
 						resource={resource}
 						enableLikes={enableLikes}
-						enableFavorites={enableFavorites}
-						enableComments={enableComments}
+						enableFavorites={enableFavorites}						
 						enableAddToList={enableAddToList}
 					/>
 				</Box>

@@ -48,7 +48,7 @@ const Form: React.FC<FormProps> = (props) => {
 		setResource,
 		update,
 		create,
-		removeAttachment,
+		removeAttachment,    
 		addReferences,
 		handleChange,
 	} = useResource({

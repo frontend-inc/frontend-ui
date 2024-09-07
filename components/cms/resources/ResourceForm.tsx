@@ -10,7 +10,9 @@ export type ResourceFormProps = {
 	resource: any
   setResource: (resource: any) => void
 	handleChange: (ev: any) => void
-	handleRemove: (field: any) => void
+	handleRemove: (string: any) => void
+  handleAddAttachment: (name: string, attachmentId: number) => void
+  handleRemoveAttachment: (name: string) => void
 	handleSubmit: () => void
   handleReload: () => void
 	fields: any[]
@@ -22,9 +24,8 @@ const ResourceForm: React.FC<ResourceFormProps> = (props) => {
 		errors,
 		open,
 		handleClose,
-		resource,
-    setResource,
-		handleChange,
+		resource,    
+		handleChange,    
 		handleRemove,
 		handleSubmit,
 		fields = [],
@@ -51,7 +52,7 @@ const ResourceForm: React.FC<ResourceFormProps> = (props) => {
 				errors={errors}
 				loading={loading}
 				fields={fields}
-				resource={resource}
+				resource={resource}        
 				handleChange={handleChange}
 				handleRemove={handleRemove}
 			/>

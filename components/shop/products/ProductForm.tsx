@@ -1,13 +1,18 @@
 import React from 'react'
-import { RemoteFormModal } from '../..'
+import { FormModal } from '../..'
 import { useResourceContext } from 'frontend-js'
+import { FormFieldType } from '../../../types'
 
 export type ProductFormProps = {
+  fields?: FormFieldType[]
 	parentResource?: any
 }
 
 const ProductForm: React.FC<ProductFormProps> = (props) => {
-	const { parentResource } = props || {}
+	const { 
+    fields=[],
+    parentResource 
+  } = props || {}
 
 	const { url, resource, setResource, reloadMany, openEdit, setOpenEdit } =
 		useResourceContext()
@@ -21,10 +26,11 @@ const ProductForm: React.FC<ProductFormProps> = (props) => {
 	}
 
 	return (
-		<RemoteFormModal
+		<FormModal
 			open={openEdit}
 			handleClose={() => setOpenEdit(false)}
-			url={url}
+			fields={fields}
+      url={url}
 			resource={resource}
 			parentResource={parentResource}
 			handleSuccess={handleSuccess}

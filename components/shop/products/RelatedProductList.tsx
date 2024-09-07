@@ -3,8 +3,8 @@ import { ProductListProps } from './ProductList'
 import { ProductList, RelatedProductListItems } from '../..'
 
 const RelatedProductList: React.FC<ProductListProps> = (props) => {
-	let { url, resource } = props
-	url = `${url}/${resource?.id}/references`
+	let { resource } = props
+	const url = `/ecommerce/products/${resource?.id}/related_products`
 	return (
 		<ProductList
 			{...props}
