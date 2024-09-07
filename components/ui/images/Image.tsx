@@ -97,7 +97,7 @@ const Image: React.FC<ImageProps> = (props) => {
 			</TouchableOpacity>
 			{label && (
 				<Box sx={sx.label}>
-					<Label color="common.white" label={truncate(label, 22)} />
+					<Label darkMode label={truncate(label, 22)} />
 				</Box>
 			)}
 		</Box>

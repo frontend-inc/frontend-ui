@@ -17,20 +17,19 @@ const AdminProductItem: React.FC<ResourceItemProps> = (props) => {
 	return (
 		<ResourceGridItem
 			selectable={selectable}
-			selected={selected}
-      label={ product.display_price }
-      image={product?.image?.url}				
-      primary={ 
-        <PublishLabel published={product.published} />
-       }		
+			selected={selected}      
+      image={product?.image?.url}				      
+      primary={ product?.title }
       secondary={ 
         <DisplayFields 
           resource={ product }
-          fields={[
-            { label: 'Title', name: 'title', variant: 'string' },
+          fields={[            
             { label: 'Price', name: 'price', variant: 'price' },
           ]}
         />
+      }
+      secondaryAction={
+        <PublishLabel published={product?.published} />
       }
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}

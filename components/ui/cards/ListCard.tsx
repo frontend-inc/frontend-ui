@@ -31,7 +31,13 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Box sx={sx.root} {...slots.item}>
+		<Box 
+      sx={{ 
+        ...sx.root,
+        ...(selected && sx.selected),
+      }} 
+      {...slots.item}
+    >
 			<Stack direction="row" alignItems="center" spacing={0} width="100%">
 				{selectable && (
 					<Checkbox
@@ -192,4 +198,8 @@ const sx = {
 	link: {
 		textDecoration: 'none',
 	},
+  selected: {
+    border: '1px solid',
+    borderColor: 'primary.main',
+  }
 }

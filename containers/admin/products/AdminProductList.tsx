@@ -5,6 +5,7 @@ import AdminProductItem from './AdminProductItem'
 import AdminProductForm from './AdminProductForm'
 import AdminProductEditForm from './AdminProductEditForm'
 import AdminProductShow from './AdminProductShow'
+import AdminProductToolbar from './AdminProductToolbar'
 import { MetafieldType } from '../../../types'
 
 type AdminProductListProps = {
@@ -18,6 +19,7 @@ const AdminProductsList: React.FC<AdminProductListProps> = (props) => {
 	return (
 		<ResourceList     
       grid 
+      selectable
 			url={`${apiUrl}/products`}
 			name={'product'}
 			enableSearch
@@ -33,7 +35,8 @@ const AdminProductsList: React.FC<AdminProductListProps> = (props) => {
 			create={AdminProductForm}
 			edit={AdminProductEditForm}
 			show={AdminProductShow}
-			component={AdminProductItem}
+      toolbar={ AdminProductToolbar }
+			component={AdminProductItem}      
 			slots={{
 				edit: {
 					metafields,

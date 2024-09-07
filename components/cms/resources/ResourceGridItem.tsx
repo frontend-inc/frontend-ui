@@ -1,16 +1,15 @@
 import React from 'react'
 import {
 	Stack,
-	Avatar,
+	Box,
   Card,
   CardHeader,
   CardContent,
-  CardMedia,
   CardActionArea,	
 	Checkbox,
   Typography
 } from '@mui/material'
-import { Image,  MenuButton } from '../..'
+import { Image, Label,  MenuButton } from '../..'
 
 export type ResourceListItemProps = {
 	selectable?: boolean
@@ -30,7 +29,7 @@ export type ResourceListItemProps = {
 	handleDelete?: (resource: any) => void
 	handleSelect?: () => void
   handleReload?: () => void
-	secondaryActions?: React.ReactNode
+	secondaryAction?: React.ReactNode
 	menuActions?: any
 	sortable?: boolean
 	isDragging?: boolean
@@ -50,7 +49,7 @@ const ResourceGridItem: React.FC<ResourceListItemProps> = (props) => {
 		handleEdit,
 		handleDelete,
 		handleSelect,
-		secondaryActions,
+		secondaryAction,
 		menuActions,
 		sortable,
 		selectable,
@@ -69,22 +68,30 @@ const ResourceGridItem: React.FC<ResourceListItemProps> = (props) => {
 
     <Card
       sx={{
-        ...sx.root,
-				...(enableBorder && sx.rootBorder),
+        ...sx.root,        
+				...(enableBorder && sx.border),
+        ...(selected && sx.selected),
       }}
     >
       <CardHeader 
+        sx={ sx.cardHeader }
         avatar={ avatar }  
         title={ 
-          <Typography variant="body1" color="text.primary">
-            { primary }
-          </Typography>
+          selectable && (
+            <Checkbox
+              size='small'
+              checked={selected}
+              onChange={handleChange}
+              color="primary"
+              sx={sx.checkbox}
+            />
+          )
         }
         action={
           <Stack direction="row" spacing={1} sx={sx.buttons}>
-            {secondaryActions}
+            {secondaryAction}
             {(menuActions || handleEdit || handleDelete) && (
-              <MenuButton handleEdit={handleEdit} handleDelete={handleDelete}>
+              <MenuButton size="small" handleEdit={handleEdit} handleDelete={handleDelete}>
                 {menuActions}
               </MenuButton>
             )}
@@ -93,18 +100,24 @@ const ResourceGridItem: React.FC<ResourceListItemProps> = (props) => {
       />      
       <CardActionArea onClick={ handleClick }>
         <Image 
+          label={label}
           disableBorderRadius          
           height={160}
           src={ image }
         />
       </CardActionArea>
-      { secondary && (
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            { secondary }
-          </Typography>
-        </CardContent>
-      )}
+        {(primary || secondary) && (
+          <CardContent>
+            <Typography variant="subtitle2" color="text.primary">
+              { primary }
+            </Typography>
+            { secondary && (
+            <Typography variant="body2" color="text.secondary">
+              { secondary }
+            </Typography>   
+            )}       
+          </CardContent>
+        )}
     </Card>
 	)
 }
@@ -114,11 +127,17 @@ export default ResourceGridItem
 const sx = {
 	root: {
 		p: 0,
+    border: '1px solid',
+    borderColor: 'transparent',
 		borderRadius: 1,
 		overflow: 'hidden',    
     bgcolor: 'background.paper',    
-	},
-	rootBorder: {
+	},  
+  selected: {
+    border: '1px solid',
+    borderColor: 'primary.main',
+  },
+	border: {
 		border: '1px solid',
 		borderColor: 'divider',		
     transition: 'box-shadow 0.2s',
@@ -131,11 +150,14 @@ const sx = {
 		p: 1,
 		borderRadius: 1,
 	},
+  cardHeader: {
+    height: 50
+  },
 	avatar: {
 		borderRadius: 1,
 	},
-	buttons: {
-		alignItems: 'center',
+	buttons: {    
+		alignItems: 'center',    
 	},
 	listItemIcon: {
 		mr: 2,

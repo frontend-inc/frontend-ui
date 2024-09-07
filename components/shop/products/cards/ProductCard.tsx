@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography, Checkbox } from '@mui/material'
 import { Image } from '../../..'
 
 export type ProductCardProps = {
