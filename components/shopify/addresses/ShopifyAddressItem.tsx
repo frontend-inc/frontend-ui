@@ -11,9 +11,9 @@ import { AddressType } from 'frontend-shopify'
 
 type ShopifyAddressItemProps = {
 	address: AddressType
-	handleClick?: (id: string) => void
-	handleEdit?: (id: string) => void
-	handleDelete?: (address: AddressType) => void
+	handleClick: (id: string) => void
+	handleEdit: (id: string) => void
+	handleDelete: (address: AddressType) => void
 	disableActions?: boolean
 }
 
@@ -32,13 +32,19 @@ const ShopifyAddressItem: React.FC<ShopifyAddressItemProps> = (props) => {
 			secondaryAction={
 				!disableActions && (
 					<MenuButton>
-						<MenuItem onClick={() => handleEdit(address?.id)}>Edit</MenuItem>
+						<MenuItem onClick={
+              //@ts-ignore
+              () => handleEdit(address?.id)}
+            >Edit</MenuItem>
 						<MenuItem onClick={() => handleDelete(address)}>Delete</MenuItem>
 					</MenuButton>
 				)
 			}
 		>
-			<ListItemButton onClick={() => handleClick(address?.id)} sx={sx.item}>
+			<ListItemButton onClick={
+          //@ts-ignore
+          () => handleClick(address?.id)
+        } sx={sx.item}>
 				<ListItemText
 					primary={
 						<Typography gutterBottom variant="subtitle1">

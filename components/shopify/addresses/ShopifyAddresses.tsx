@@ -3,7 +3,7 @@ import { AuthScreen, AlertModal, Loader } from '../../../components'
 import { Plus } from 'lucide-react'
 import { Button } from '@mui/material'
 import { useAddresses } from 'frontend-shopify'
-import { AddressList } from '../../../components/shopify'
+import { ShopifyAddressList } from '../../../components/shopify'
 import { useApp } from '../../../hooks'
 import { useRouter } from 'next/router'
 import { getShopifyIdFromGid } from 'frontend-shopify'
@@ -47,8 +47,12 @@ const Addresses: React.FC<AddressesProps> = (props) => {
 	}
 
 	const handleDelete = async () => {
-		await deleteCustomerAddress(activeAddress?.id)
-		setShowDeleteModal(false)
+    //@ts-ignore
+    if(activeAddress?.id){
+      //@ts-ignore
+		  await deleteCustomerAddress(activeAddress?.id)    
+		  setShowDeleteModal(false)
+    }
 	}
 
 	useEffect(() => {
@@ -61,7 +65,7 @@ const Addresses: React.FC<AddressesProps> = (props) => {
 		<>
 			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
-				<AddressList
+				<ShopifyAddressList
 					addresses={addresses}
 					handleClick={handleClick}
 					handleEdit={handleEdit}
@@ -79,7 +83,7 @@ const Addresses: React.FC<AddressesProps> = (props) => {
 					open={showDeleteModal}
 					handleClose={() => setShowDeleteModal(false)}
 					handleConfirm={handleDelete}
-				/>
+				/>        
 			</AuthScreen>
 		</>
 	)
