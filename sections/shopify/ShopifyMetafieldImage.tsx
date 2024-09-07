@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section } from '../../components'
-import { MetafieldImage } from '../../components'
-import { MetafieldImageProps } from '../../components/shopify/products/metafields/MetafieldImage'
+import { ShopifyMetafieldImage as MetafieldImage } from '../../components'
+import { ShopifyMetafieldImageProps as MetafieldImageProps } from '../../components/shopify/products/metafields/ShopifyMetafieldImage'
 import { SectionProps } from '../../types'
 
 type ShopifyMetafieldImageProps = SectionProps & MetafieldImageProps

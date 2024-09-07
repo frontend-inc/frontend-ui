@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { List, Stack, Box } from '@mui/material'
 import { AuthButton, StripeCustomerPortalButton, Drawer } from '../..'
-import { ShopifyAuth, CartButton } from '../../shopify'
+import { ShopifyAuth, ShopifyCartButton } from '../../shopify'
 import { AppContext } from '../../../context'
 import SideNavMenuItem from './SideNavMenuItem'
 import { MenuLinkType } from '../../..'
@@ -59,7 +59,7 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 					<Stack direction="column" spacing={1}>
 						{enableShopify && (
 							<>
-								<CartButton variant="sideNav" />
+								<ShopifyCartButton variant="sideNav" />
 								<ShopifyAuth variant="sideNav" />
 							</>
 						)}

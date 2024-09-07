@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section } from '../../components'
-import { MetafieldVideo } from '../../components'
-import { MetafieldVideoProps } from '../../components/shopify/products/metafields/MetafieldVideo'
+import { ShopifyMetafieldVideo as MetafieldVideo } from '../../components'
+import { ShopifyMetafieldVideoProps as MetafieldVideoProps } from '../../components/shopify/products/metafields/ShopifyMetafieldVideo'
 import { SectionProps } from '../../types'
 
 type ShopifyMetafieldVideoProps = SectionProps & MetafieldVideoProps

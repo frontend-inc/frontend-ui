@@ -1,5 +1,5 @@
 import React from 'react'
-import { useApi, useResource } from 'frontend-js'
+import { useResource } from 'frontend-js'
 import { useAdmin } from '..'
 
 
@@ -48,6 +48,7 @@ const useProducts = () => {
     reloadMany: reloadProducts,
 		setResource: setProduct,
 		setResources: setProducts,
+    checkout,
 		startIndex,
 		endIndex,
 		paginate,
@@ -81,6 +82,7 @@ const useProducts = () => {
 		addRelatedProduct,
 		removeRelatedProduct,
 		updateRelatedProductPositions,
+    checkout,
 		addAttachment,
 		removeAttachment,
 		handleChange,

@@ -24,6 +24,7 @@ type ResourceDetailsProps = {
 	handleEdit?: () => void
 	handleDelete?: () => void
 	fields: DisplayFieldType[]
+  direction?: 'row' | 'column'
 }
 
 const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
@@ -42,6 +43,7 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 		enableDelete,
 		handleEdit,
 		handleDelete,
+    direction = 'column'
 	} = props || {}
 
 	return (
@@ -83,7 +85,7 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 						<Stack direction="column" sx={sx.content} spacing={0.5}>
 							{image && (
 								<Box sx={sx.image}>
-									<Image height={160} src={image} />
+									<Image height={220} src={image} />
 								</Box>
 							)}
 							{avatar && avatar}
@@ -100,7 +102,7 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 								//@ts-ignore
 								field={field}
 								resource={resource}
-								direction="row"
+								direction={direction}
 							/>
 						))}
 					</>
@@ -120,6 +122,6 @@ const sx = {
 		alignItems: 'center',
 	},
 	image: {
-		width: '160px',
+		width: '220px',
 	},
 }

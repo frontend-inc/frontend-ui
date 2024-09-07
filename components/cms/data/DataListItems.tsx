@@ -26,7 +26,6 @@ export type DataListItemsProps = {
 
 const DataListItems: React.FC<DataListItemsProps> = (props) => {
 	const {
-		setResource,
 		loading,
 		resources,
 		page,

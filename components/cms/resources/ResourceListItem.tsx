@@ -138,6 +138,7 @@ export default ResourceListItem
 
 const sx = {
 	root: {
+    my: 0.5,
 		p: 0,
 		borderRadius: 1,
 		overflow: 'hidden',    

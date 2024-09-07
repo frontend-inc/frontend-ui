@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section } from '../../components'
-import { ProductDetails } from '../../components/shopify'
-import { ProductDetailsProps } from '../../components/shopify/products/ProductDetails'
+import { ShopifyProductDetails } from '../../components/shopify'
+import { ShopifyProductDetailsProps } from '../../components/shopify/products/ShopifyProductDetails'
 import { SectionProps } from '../../types'
 
-type ShopifyPDPProps = SectionProps & ProductDetailsProps
+type ShopifyPDPProps = SectionProps & ShopifyProductDetailsProps
 
 const ShopifyPDP: React.FC<ShopifyPDPProps> = (props) => {
 	const {
@@ -28,7 +28,7 @@ const ShopifyPDP: React.FC<ShopifyPDPProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<ProductDetails {...rest} />
+			<ShopifyProductDetails {...rest} />
 		</Section>
 	)
 }

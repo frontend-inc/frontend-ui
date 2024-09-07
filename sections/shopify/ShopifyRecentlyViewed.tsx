@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { RecentlyViewed } from '../../components/shopify'
-import { RecentlyViewedProps } from '../../components/shopify/recently-viewed/RecentlyViewed'
+import { ShopifyRecentlyViewed as RecentlyViewed } from '../../components/shopify'
+import { ShopifyRecentlyViewedProps as RecentlyViewedProps } from '../../components/shopify/recently-viewed/ShopifyRecentlyViewed'
 import { SectionProps, HeadingProps } from '../../types'
 
 type ShopifyRecentlyViewedProps = SectionProps &

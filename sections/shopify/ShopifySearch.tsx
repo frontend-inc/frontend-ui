@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { ProductSearch } from '../../components/shopify'
-import { ProductSearchProps } from '../../components/shopify/products/ProductSearch'
+import { ShopifyProductSearch as ProductSearch } from '../../components/shopify'
+import { ShopifyProductSearchProps as ProductSearchProps } from '../../components/shopify/products/ShopifyProductSearch'
 import { SectionProps, HeadingProps } from '../../types'
 
 type ShopifySearchProps = SectionProps & HeadingProps & ProductSearchProps

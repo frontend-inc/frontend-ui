@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { Collections } from '../../components/shopify'
-import { CollectionsProps } from '../../components/shopify/collections/Collections'
+import { ShopifyCollections as Collections } from '../../components/shopify'
+import { ShopifyCollectionsProps as CollectionProps } from '../../components/shopify/collections/ShopifyCollections'
 import { SectionProps, HeadingProps } from '../../types'
 
-type ShopifyCollectionsProps = SectionProps & HeadingProps & CollectionsProps
+type ShopifyCollectionsProps = SectionProps & HeadingProps & CollectionProps
 
 const ShopifyCollections: React.FC<ShopifyCollectionsProps> = (props) => {
 	const {

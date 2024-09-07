@@ -1,10 +1,10 @@
 import React from 'react'
 import {
 	ShopifyProvider,
-	ProductProvider,
-	CollectionProvider,
+	ShopifyProductProvider,
+	ShopifyCollectionProvider,
 } from 'frontend-shopify'
-import { Cart } from '../../../components/shopify'
+import { ShopifyCart } from '../../../components/shopify'
 
 type ShopifyStoreProps = {
 	enableShopify?: boolean
@@ -35,10 +35,12 @@ const ShopifyStore: React.FC<ShopifyStoreProps> = (props) => {
 			customerPortalUrl={customerPortalUrl}
 			storefrontAccessToken={storefrontAccessToken}
 		>
-      <Cart />
-			<ProductProvider>
-				<CollectionProvider>{children}</CollectionProvider>
-			</ProductProvider>
+      <ShopifyCart />
+			<ShopifyProductProvider>
+				<ShopifyCollectionProvider>
+          {children}
+        </ShopifyCollectionProvider>
+			</ShopifyProductProvider>
 		</ShopifyProvider>
 	) : (
 		children

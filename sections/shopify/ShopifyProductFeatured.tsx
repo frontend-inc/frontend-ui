@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section } from '../../components'
-import { ProductFeatured } from '../../components/shopify'
-import { ProductFeaturedProps } from '../../components/shopify/products/ProductFeatured'
+import { ShopifyProductFeatured as ProductFeatured } from '../../components/shopify'
+import { ShopifyProductFeaturedProps as ProductFeaturedProps } from '../../components/shopify/products/ShopifyProductFeatured'
 import { SectionProps } from '../../types'
 
 type ShopifyProductFeaturedProps = SectionProps & ProductFeaturedProps

@@ -10,7 +10,7 @@ import {
 	Checkbox,
   Typography
 } from '@mui/material'
-import { Image, Icon, MenuButton } from '../..'
+import { Image,  MenuButton } from '../..'
 
 export type ResourceListItemProps = {
 	selectable?: boolean
@@ -21,6 +21,7 @@ export type ResourceListItemProps = {
 	icon?: string
 	color?: string
 	layout?: 'list' | 'grid'
+  label?: string
 	title?: string | React.ReactNode
 	description?: string
 	image?: string
@@ -41,6 +42,7 @@ const ResourceGridItem: React.FC<ResourceListItemProps> = (props) => {
 		icon,
 		avatar,
 		color,
+    label,
 		primary,
 		secondary,
 		image,
@@ -78,11 +80,6 @@ const ResourceGridItem: React.FC<ResourceListItemProps> = (props) => {
             { primary }
           </Typography>
         }
-        subheader={ 
-          <Typography variant="body2" color="text.secondary">
-            { secondary }
-          </Typography>
-         }        
         action={
           <Stack direction="row" spacing={1} sx={sx.buttons}>
             {secondaryActions}
@@ -95,11 +92,19 @@ const ResourceGridItem: React.FC<ResourceListItemProps> = (props) => {
         }
       />      
       <CardActionArea onClick={ handleClick }>
-        <CardMedia 
-          sx={{ height: 160 }}
-          image={ image }
+        <Image 
+          disableBorderRadius          
+          height={160}
+          src={ image }
         />
       </CardActionArea>
+      { secondary && (
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
+            { secondary }
+          </Typography>
+        </CardContent>
+      )}
     </Card>
 	)
 }

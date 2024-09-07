@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { ProductFavorites } from '../../components/shopify'
-import { ProductFavoritesProps } from '../../components/shopify/favorites/ProductFavorites'
+import { ShopifyProductFavorites } from '../../components/shopify'
+import { ShopifyProductFavoritesProps } from '../../components/shopify/favorites/ShopifyProductFavorites'
 import { SectionProps, HeadingProps } from '../../types'
 
-type ShopifyFavoritesProps = SectionProps & HeadingProps & ProductFavoritesProps
+type ShopifyFavoritesProps = SectionProps & HeadingProps & ShopifyProductFavoritesProps
 
 const ShopifyFavorites: React.FC<ShopifyFavoritesProps> = (props) => {
 	const {
@@ -38,7 +38,7 @@ const ShopifyFavorites: React.FC<ShopifyFavoritesProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<ProductFavorites {...rest} />
+			<ShopifyProductFavorites {...rest} />
 		</Section>
 	)
 }

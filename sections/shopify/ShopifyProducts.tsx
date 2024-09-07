@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { ProductCollection } from '../../components/shopify'
-import { ProductCollectionProps } from '../../components/shopify/products/ProductCollection'
+import { ShopifyProductCollection as ProductCollection } from '../../components/shopify'
+import { ShopifyProductCollectionProps as ProductCollectionProps } from '../../components/shopify/products/ShopifyProductCollection'
 import { SectionProps, HeadingProps } from '../../types'
 
 type ShopifyProductsProps = SectionProps & HeadingProps & ProductCollectionProps

@@ -35,7 +35,6 @@ export type DataListProps = {
 	buttons?: ButtonType[]
 	href?: string
 	enableSearch?: boolean
-	enableGeoSearch?: boolean
 	enableShow?: boolean
 	enableCreate?: boolean
 	enableEdit?: boolean

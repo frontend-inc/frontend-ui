@@ -20,14 +20,7 @@ type CollectionListItemProps = {
 	buttons: ButtonType[]
 	style: CardStyleTypes
 	displayFields: DisplayFieldType[]
-	resource: any & {
-		label?: string
-		title?: string
-		subtitle?: string
-		image?: string
-		video?: string
-		description: string
-	}
+	resource: any
 	buttonText?: string
 	href?: string
 	handleClick: () => void

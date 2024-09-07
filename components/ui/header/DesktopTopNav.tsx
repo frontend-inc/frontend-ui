@@ -2,7 +2,7 @@ import React from 'react'
 import { AppBar, Box, Hidden, Toolbar } from '@mui/material'
 import { AuthButton, StripeCustomerPortalButton } from '../../../components'
 import Logo from './Logo'
-import { ShopifyAuth, CartButton } from '../../shopify'
+import { ShopifyAuth, ShopifyCartButton } from '../../shopify'
 import { useAuth } from 'frontend-js'
 import { MenuLinkType } from '../../..'
 import TopNavMenuItem from './TopNavMenuItem'
@@ -75,7 +75,7 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 							{enableShopify && (
 								<>
 									<ShopifyAuth />
-									<CartButton />
+									<ShopifyCartButton />
 								</>
 							)}
 						</Box>
