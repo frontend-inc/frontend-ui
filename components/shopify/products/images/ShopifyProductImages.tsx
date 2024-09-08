@@ -3,10 +3,10 @@ import { Hidden } from '@mui/material'
 import ShopifyProductImagesSlider from './ShopifyProductImagesSlider'
 import SwipeableShopifyProductImages from './SwipeableShopifyProductImages'
 import { PDP_IMAGE_HEIGHT } from '../../../../constants/index'
-import { ProductType, ImageType } from 'frontend-shopify'
+import { ShopifyProductType, ImageType } from 'frontend-shopify'
 
 type ShopifyProductImagesProps = {
-	product: ProductType
+	product: ShopifyProductType
 	image: ImageType
 	images: ImageType[]
 	handleClick: (img: ImageType) => void

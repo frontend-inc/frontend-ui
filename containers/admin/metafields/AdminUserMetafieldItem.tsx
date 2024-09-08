@@ -1,6 +1,6 @@
 import React from 'react'
 import { Label, ResourceListItem } from '../../../components'
-import { FieldIcon } from '../../../containers'
+import { FieldIcon } from '../..'
 
 type AdminMetafieldItemProps = {
 	resource: any

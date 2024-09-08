@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Box, Button, Popover } from '@mui/material'
 import { ExpandLess, ExpandMore } from '@mui/icons-material'
-import CheckboxFilterList from './CheckboxGroupInput'
+import CheckboxGroupInput from './CheckboxGroupInput'
 
 type CheckboxFilterButtonProps = {
 	values: any
@@ -53,7 +53,7 @@ const CheckboxFilterButton: React.FC<CheckboxFilterButtonProps> = (props) => {
 					horizontal: 'left',
 				}}
 			>
-				<CheckboxFilterList
+				<CheckboxGroupInput
 					options={options}
 					values={values}
 					// @ts-ignore

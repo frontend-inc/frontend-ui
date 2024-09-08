@@ -10,10 +10,10 @@ import {
 	ShopifySubscriptionSelector,
 } from '..'
 import { ShopifyContext } from 'frontend-shopify'
-import { ProductType, ProductVariantType } from 'frontend-shopify'
+import { ShopifyProductType, ProductVariantType } from 'frontend-shopify'
 
 type ShopifyAddToCartButtonProps = {
-	product: ProductType
+	product: ShopifyProductType
 	variant: ProductVariantType
 	buttonVariant?: 'contained' | 'outlined' | 'text'
 	label?: string

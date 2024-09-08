@@ -11,11 +11,11 @@ import {
 import {
 	useProductDetails,
   ShopifyMetafieldType,
-  ProductType 	
+  ShopifyProductType 	
 } from 'frontend-shopify'
 
 export type ShopifyProductDetailsProps = {
-	shopifyProduct: ProductType
+	shopifyProduct: ShopifyProductType
 	buttonText?: string
 	metafields?: ShopifyMetafieldType[]
 	enableQuantity?: boolean

@@ -30,7 +30,7 @@ const AdminMetafieldForm: React.FC<ResourceFormProps> = (props) => {
 					variant: 'array',
 					conditions: [{ name: 'variant', operator: 'eq', value: 'select' }],
 				},
-			]}
+			]}      
 		/>
 	)
 }

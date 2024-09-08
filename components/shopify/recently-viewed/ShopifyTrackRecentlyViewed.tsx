@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useRecentlyViewed } from 'frontend-shopify'
-import { ProductType } from 'frontend-shopify'
+import { ShopifyProductType } from 'frontend-shopify'
 
 type ShopifyTrackRecentlyViewedProps = {
-	product?: ProductType
+	product?: ShopifyProductType
 }
 
 const ShopifyTrackRecentlyViewed: React.FC<ShopifyTrackRecentlyViewedProps> = (props) => {

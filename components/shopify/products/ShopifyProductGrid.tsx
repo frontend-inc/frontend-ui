@@ -3,13 +3,13 @@ import { Box } from '@mui/material'
 import { ShopifyProductCard } from '../../../components/shopify'
 import { useRouter } from 'next/router'
 import { useSegment } from '../../../hooks/addons'
-import { ProductType } from 'frontend-shopify'
+import { ShopifyProductType } from 'frontend-shopify'
 import { useApp } from '../../../hooks'
 
 type ShopifyProductGridProps = {
 	href: string
 	loading?: boolean
-	products: ProductType[]
+	products: ShopifyProductType[]
 	xs?: number
 	sm?: number
 	md?: number

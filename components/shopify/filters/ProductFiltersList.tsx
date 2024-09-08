@@ -1,5 +1,5 @@
 import React from 'react'
-import { CheckboxFilterList } from '..'
+import CheckboxGroupInput from './CheckboxGroupInput'
 import {
 	SearchFilterType,
 	SearchFilterOptionType,
@@ -35,7 +35,7 @@ const ProductFiltersList: React.FC<ProductFiltersListProps> = (props) => {
 				if (!option) return null
 				return (
 					<MenuList enableBorder disablePadding label={filterType.label}>
-						<CheckboxFilterList
+						<CheckboxGroupInput
 							filters={activeFilters}
 							option={option}
 							handleClick={filterType.array ? handleFilterArray : handleFilter}

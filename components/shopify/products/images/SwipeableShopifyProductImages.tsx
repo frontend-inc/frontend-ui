@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { ProductType } from 'frontend-shopify'
+import { ShopifyProductType } from 'frontend-shopify'
 import SwipeableViews from 'react-swipeable-views'
 import { Image, TouchableOpacity } from '../../../../components'
 import { Box, Stack, MobileStepper } from '@mui/material'
 import { shopifyResizeImage } from 'frontend-shopify'
 
 type SwipeableShopifyProductImagesProps = {
-	product: ProductType
+	product: ShopifyProductType
 	height?: number
 	width?: number
 	handleClick?: () => void

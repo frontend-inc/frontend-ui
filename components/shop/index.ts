@@ -1,5 +1,6 @@
 export * from './products/cards'
 export * from './credit-cards'
+export * from './pdp'
 export * from './products'
 export * from './subscriptions'
 

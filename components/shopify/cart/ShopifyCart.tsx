@@ -16,7 +16,7 @@ type ShopifyCartProps = {
 }
 
 interface ShopifyContextType {
-	cart: any // replace CartType with the actual type of your cart
+	cart: any // replace ShopifyCartType with the actual type of your cart
 	cartOpen: () => void
 	toggleCart: () => void
 }

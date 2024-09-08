@@ -28,8 +28,6 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 		resource,
 	} = props
 
-  console.log("Links", props)
-
 	return (
 		<Stack sx={sx.root} direction="column" spacing={1}>
 			<Breadcrumbs maxLinks={maxLinks} links={links} />

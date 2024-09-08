@@ -1,10 +1,10 @@
 import React from 'react'
 import { Modal } from '../../../components'
 import { ShopifyProductDetails } from '../../../components/shopify'
-import { ShopifyProductProvider, ProductType } from 'frontend-shopify'
+import { ShopifyProductProvider, ShopifyProductType } from 'frontend-shopify'
 
 type ShopifyProductModalProps = {
-	shopifyProduct: ProductType
+	shopifyProduct: ShopifyProductType
 	enableQuantity?: boolean
 	open?: boolean
 	buttonText?: string

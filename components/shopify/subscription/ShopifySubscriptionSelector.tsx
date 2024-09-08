@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Typography, Select, FormControl, MenuItem } from '@mui/material'
 import { getSellingPlanDescription } from 'frontend-shopify'
-import { ProductType } from 'frontend-shopify'
+import { ShopifyProductType } from 'frontend-shopify'
 
 type ShopifySubscriptionSelectorProps = {
-	product: ProductType
+	product: ShopifyProductType
 	handleChange: any
 	activeSellingPlanId?: string
 }

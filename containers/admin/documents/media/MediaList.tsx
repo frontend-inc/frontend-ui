@@ -2,10 +2,8 @@ import React, { useEffect } from 'react'
 import { useMedia } from '../../../../hooks'
 import { Box, Button, CircularProgress } from '@mui/material'
 import { ExpandMore } from '@mui/icons-material'
-import MediaItem from './MediaItem'
-import { useRouter } from 'next/router'
+import MediaListItem from './MediaListItem'
 import { Placeholder } from '../../../../components'
-import { RouterParams } from '../../../../types'
 
 type MediaItemListProps = {
 	selectedIds: number[]
@@ -14,9 +12,6 @@ type MediaItemListProps = {
 
 const MediaItemList: React.FC<MediaItemListProps> = (props) => {
 	const { selectedIds, handleSelect } = props
-
-	const router = useRouter()
-	const { app_id: appId } = router?.query as RouterParams
 
 	const { loading, resources, findResources, loadMore, page, numPages } = useMedia()
 
@@ -34,8 +29,8 @@ const MediaItemList: React.FC<MediaItemListProps> = (props) => {
 		<>
 			<Box sx={sx.list}>
 				{resources.map((item, idx) => (
-					<MediaItem
-						key={idx}
+					<MediaListItem
+						key={item?.id}
 						item={item}
 						size={164}
 						selected={selectedIds.includes(item?.id)}

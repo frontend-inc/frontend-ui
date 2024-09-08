@@ -1,66 +1,101 @@
-import React from 'react'
-import { Label } from '../../../../components'
+import React, { useState, useEffect } from 'react'
 import {
-	ListItem,
-	ListItemIcon,
-	ListItemButton,
-	ListItemText,
+	MenuItem,
+	Typography,
+	Card,
+	CardActionArea,
+	CardHeader,
 } from '@mui/material'
-import Image from 'next/image'
+import { Image, AttachmentImage, Label, MenuButton } from '../../../../components'
 
-type MediaListItemProps = {
+type MediaItemProps = {
 	item?: any
-	handleClick?: () => void
+	size?: number
 	selected?: boolean
+	handleClick?: (item: any) => void
+	handleRemoveItem?: (item: any) => void
 }
 
-const MediaListItem: React.FC<MediaListItemProps> = (props) => {
-	const { item, handleClick, selected = false } = props
+const MediaItem: React.FC<MediaItemProps> = (props) => {
+	const { item, size = 180, selected, handleClick, handleRemoveItem } = props
+
+	const [contentType, setContentType] = useState('')
+
+	useEffect(() => {
+		setContentType(item?.content_type?.split('/')[0])
+	}, [item])
 
 	return (
-		<ListItem
+		<Card
 			sx={{
-				...sx.listItem,
+				...sx.root,
 				...(selected && sx.selected),
 			}}
-			secondaryAction={<Label label={`${item?.width}x${item?.height}`} />}
 		>
-			<ListItemButton onClick={handleClick}>
-				<ListItemIcon>
+			<CardHeader
+				sx={sx.header}
+				title={<Label label={item?.content_type?.split('/')[1]} />}
+				action={
+					handleRemoveItem && (
+						<MenuButton>
+							<MenuItem onClick={() => handleRemoveItem(item)}>
+								<Typography variant="body2" color="textPrimary">
+									Remove
+								</Typography>
+							</MenuItem>
+						</MenuButton>
+					)
+				}
+			/>
+			<CardActionArea onClick={() => (handleClick ? handleClick(item) : null)}>
+				{contentType == 'image' || contentType == 'video' ? (
 					<Image
-						height={50}
-						width={50}
-						src={item?.thumbnail_url}
-						alt={item?.title}
-						style={{
-							width: '100%',
-							objectFit: 'cover',
-						}}
+            disableBorderRadius
+						height={size}
+            width={size}					
+						src={item?.url}
+						alt={item?.content_type}						
+            objectFit={'cover'}						
 					/>
-				</ListItemIcon>
-				<ListItemText primary={<Label label={item?.content_type} />} />
-			</ListItemButton>
-		</ListItem>
+				) : (
+					<AttachmentImage 
+            icon="File" 
+            width={size} 
+            height={size} 
+          />
+				)}
+			</CardActionArea>
+		</Card>
 	)
 }
 
-export default MediaListItem
+export default MediaItem
 
 const sx = {
-	listItem: {
+	root: {
 		borderRadius: 1,
 		bgcolor: 'background.paper',
 		border: '1px solid',
 		borderColor: 'divider',
-		transition: 'border-color 0.2s ease-in-out',
 		p: 0,
-		mb: 1,
+		minWidth: '120px',
+		height: 200,
 	},
 	selected: {
 		borderColor: 'primary.main',
 	},
+	header: {
+		py: 0,
+		px: 1,
+	},
+	gradient: {
+		backgroundImage:
+			'linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73))',
+		minWidth: '120px',
+		height: '100%',
+		backgroundSize: 'cover',
+	},
 	image: {
-		marginRight: '10px',
-		objectFit: 'contain',
+		objectFit: 'cover',
 	},
 }

@@ -4,13 +4,13 @@ import { Box } from '@mui/material'
 import { ShopifyProductCard } from '..'
 import { useRouter } from 'next/router'
 import { Carousel } from '../..'
-import { ProductType } from 'frontend-shopify'
+import { ShopifyProductType } from 'frontend-shopify'
 import { useApp } from '../../../hooks'
 
 type ShopifyProductCarouselProps = {
 	href: string
 	loading?: boolean
-	products: ProductType[]
+	products: ShopifyProductType[]
 	buttonText?: string
 	enableAutoPlay?: boolean
 	enableArrows?: boolean

@@ -47,7 +47,10 @@ const Image: React.FC<ImageProps> = (props) => {
 				height: `${height}px`,
 			}}
 		>
-			<TouchableOpacity handleClick={handleClick ? handleClick : undefined}>
+			<TouchableOpacity 
+        disableBorderRadius={disableBorderRadius}
+        handleClick={handleClick ? handleClick : undefined}
+      >
 				<Box
 					sx={{
 						...sx.root,

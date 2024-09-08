@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { ShopifyProductGrid, ShopifyProductCarousel } from '../../../shopify'
 import {
-	ProductType,
+	ShopifyProductType,
 	getMetafieldReferences,
 } from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'
@@ -17,7 +17,7 @@ const ShopifyMetafieldProducts: React.FC<ShopifyMetafieldProductsProps> = (props
 	const { shopifyProduct, href, layout = 'grid', metafield, ...rest } = props
 
 	const { loading, product, findProduct } = useProducts()
-	const [products, setProducts] = useState<ProductType[] | null>(null)
+	const [products, setProducts] = useState<ShopifyProductType[] | null>(null)
 
 	useEffect(() => {
 		if (shopifyProduct && metafield) {

@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from 'react'
 import { getShopifyIdFromGid } from 'frontend-shopify'
-import { ProductType } from 'frontend-shopify'
+import { ShopifyProductType } from 'frontend-shopify'
 import { useTheme } from '@mui/material'
 
 type OkendoStarRatingProps = {
-	product?: ProductType
+	product?: ShopifyProductType
 }
 
 const OkendoStarRating: React.FC<OkendoStarRatingProps> = (props) => {

@@ -3,18 +3,18 @@ import { Drawer, ButtonTabs } from '../../../../components'
 import { useMedia } from '../../../../hooks'
 import { useAlerts } from '../../../../hooks'
 import { Box, Button } from '@mui/material'
-import MediaItem from './MediaItem'
-import { MediaUploader} from '../../..'
-import MediaItemList from './MediaList'
+import MediaListItem from './MediaListItem'
+import { MediaUploader } from '../../..'
+import MediaList from './MediaList'
 import { UnsplashList } from '../../../../components'
 
-type MediaDrawerProps = {
+type MediaBrowserProps = {
 	open: boolean
 	handleClose: () => void
 	handleSubmit: (items: any[]) => void
 }
 
-const MediaDrawer: React.FC<MediaDrawerProps> = (props) => {
+const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 	const { open, handleClose, handleSubmit } = props
 
 	const [tab, setTab] = useState<number>(0)
@@ -56,18 +56,9 @@ const MediaDrawer: React.FC<MediaDrawerProps> = (props) => {
 	}
 
 	const OPTIONS = [
-		{
-			label: 'Browse',
-			value: 0,
-		},
-		{
-			label: 'Upload',
-			value: 1,
-		},
-		{
-			label: 'Unsplash',
-			value: 2,
-		},
+		{ label: 'Browse', value: 0 },
+		{ label: 'Upload', value: 1 },
+		{ label: 'Unsplash', value: 2 }
 	]
 
 	return (
@@ -99,7 +90,7 @@ const MediaDrawer: React.FC<MediaDrawerProps> = (props) => {
 				</Box>
 				<Box sx={sx.content}>
 					{tab == 0 && (
-						<MediaItemList
+						<MediaList
 							selectedIds={[selected?.id]}
 							handleSelect={handleSelect}
 						/>
@@ -107,7 +98,7 @@ const MediaDrawer: React.FC<MediaDrawerProps> = (props) => {
 					{tab == 1 && (
 						<>
 							{uploaded && (
-								<MediaItem
+								<MediaListItem
 									item={uploaded}
 									handleRemoveItem={handleRemoveItem}
 								/>
@@ -134,7 +125,7 @@ const MediaDrawer: React.FC<MediaDrawerProps> = (props) => {
 	)
 }
 
-export default MediaDrawer
+export default MediaBrowser
 
 const sx = {
 	icon: {

@@ -3,7 +3,7 @@ import {
 	getMetafieldValue,
 	getMetafieldType,
 	ShopifyMetafieldType,
-	ProductType,
+	ShopifyProductType,
 } from 'frontend-shopify'
 import {
 	Accordion,
@@ -25,7 +25,7 @@ const RICH_TEXT_TYPES = ['rich_text_field']
 const SUPPORTED_METAFIELD_TYPES = [...PLAIN_TEXT_TYPES, ...RICH_TEXT_TYPES]
 
 type ShopifyProductMetafieldsProps = {
-	product: ProductType
+	product: ShopifyProductType
 	metafields: ShopifyMetafieldType[]
 }
 

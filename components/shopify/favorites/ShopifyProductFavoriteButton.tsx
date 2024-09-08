@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Button } from '@mui/material'
 import { Icon } from '../..'
 import { useAuth } from 'frontend-js'
-import { ProductType } from 'frontend-shopify'
+import { ShopifyProductType } from 'frontend-shopify'
 import { useApp, useSocial } from '../../../hooks'
 import { isShopifyFavorite } from '../../../helpers'
 
 type ProductFavoriteButtonProps = {
-	product: ProductType
+	product: ShopifyProductType
 }
 
 const ProductFavoriteButton: React.FC<ProductFavoriteButtonProps> = (props) => {

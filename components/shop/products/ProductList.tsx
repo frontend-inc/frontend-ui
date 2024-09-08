@@ -207,7 +207,7 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 			circular,
 			disableImage,
 			style,
-			buttons,
+			buttons,      
 			displayFields,
 			enableLikes,
 			enableFavorites,

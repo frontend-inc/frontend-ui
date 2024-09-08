@@ -19,8 +19,7 @@ const AdminProductToolbar = (props) => {
     handleReload 
   } = props || {}
 
-  const { 
-    loading,
+  const {     
     publish,
     unpublish
   } = useResource({

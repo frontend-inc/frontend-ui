@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AppBar, Box, Hidden, Toolbar, IconButton } from '@mui/material'
 import { Icon } from '../..'
-import { CartButton } from '../../shopify'
+import { ShopifyCartButton } from '../../shopify'
 import { AppContext } from '../../../context'
 import { MenuLinkType } from '../../..'
 import Logo from './Logo'
@@ -55,7 +55,7 @@ const MobileNav = (props: MobileNavProps) => {
 								height={logoHeight - 20}
 							/>
 						</Box>
-						<Box sx={sx.rightMenu}>{enableShopify && <CartButton />}</Box>
+						<Box sx={sx.rightMenu}>{enableShopify && <ShopifyCartButton />}</Box>
 					</Box>
 				</Toolbar>
 			</AppBar>

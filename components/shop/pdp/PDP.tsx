@@ -2,11 +2,14 @@ import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 import { Image } from '../..'
 
-export type HeroCardProps = {
+export type PDPProps = {
 	label?: string
 	image?: string
+  price?: string
+  compareAtPrice?: string
+  availableForSale?: boolean
 	primary?: string
-	secondary?: string
+	secondary?: React.ReactNode
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
 	children?: React.ReactNode
@@ -16,12 +19,15 @@ export type HeroCardProps = {
 	}
 }
 
-const HeroCard: React.FC<HeroCardProps> = (props) => {
+const PDP: React.FC<PDPProps> = (props) => {
 	const {
 		label,
 		image,
 		primary,
 		secondary,
+    price,
+    compareAtPrice,
+    availableForSale,
 		actions,
 		secondaryAction,
 		slots = {
@@ -66,7 +72,7 @@ const HeroCard: React.FC<HeroCardProps> = (props) => {
 	)
 }
 
-export default HeroCard
+export default PDP
 
 const sx = {
 	root: {

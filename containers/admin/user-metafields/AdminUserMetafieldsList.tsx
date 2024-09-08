@@ -1,7 +1,10 @@
 import React from 'react'
 import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
-import { AdminMetafieldForm, AdminMetafieldItem } from '../..'
+import { 
+  AdminUserMetafieldForm, 
+  AdminUserMetafieldItem 
+} from '../..'
 
 const AdminMetafieldsList = () => {
 	const { apiUrl } = useAdmin()
@@ -16,6 +19,11 @@ const AdminMetafieldsList = () => {
 			enableSearch
 			enableDelete
 			query={{
+        filters: {
+          AND: [
+            { metafield_type: { eq: 'User' } },
+          ]
+        },
 				sort_by: 'position',
 				sort_direction: 'asc',
 			}}
@@ -32,9 +40,12 @@ const AdminMetafieldsList = () => {
 					],
 				},
 			]}
-			edit={AdminMetafieldForm}
-			create={AdminMetafieldForm}
-			component={AdminMetafieldItem}
+      defaultValue={{
+        metafield_type: 'User',
+      }}
+			edit={AdminUserMetafieldForm}
+			create={AdminUserMetafieldForm}
+			component={AdminUserMetafieldItem}
 			emptyIcon="MessageSquare"
 			emptyTitle="No metafields"
 			emptyDescription="No metafields yet."

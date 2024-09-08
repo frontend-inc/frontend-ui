@@ -1,9 +1,9 @@
 import React from 'react'
 import { Cover } from '../..'
-import { CollectionType } from 'frontend-shopify'
+import { ShopifyCollectionType } from 'frontend-shopify'
 
 export type ShopifyCollectionCoverProps = {
-	shopifyCollection: CollectionType
+	shopifyCollection: ShopifyCollectionType
 	editing?: boolean
 	height?: number
 	width?: number

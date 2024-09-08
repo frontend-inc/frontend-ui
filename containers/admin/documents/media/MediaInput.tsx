@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Stack, Box, Button } from '@mui/material'
 import MediaImage from './MediaImage'
-import MediaModal from './MediaModal'
+import MediaBrowser from './MediaBrowser'
 import { Search } from 'lucide-react'
 import { ImageType } from '../../../../types'
 
@@ -52,7 +52,7 @@ const MediaInput: React.FC<MediaInputProps> = (props) => {
 					Browse
 				</Button>
 			</Box>
-			<MediaModal
+			<MediaBrowser
 				open={openEdit}
 				handleClose={() => setOpenEdit(false)}
 				handleSubmit={handleSubmit}

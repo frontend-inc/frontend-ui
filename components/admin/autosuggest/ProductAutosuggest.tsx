@@ -1,9 +1,9 @@
 import React from 'react'
-import { RemoteAutosuggest } from '../../../components'
+import { RemoteAutosuggest } from '../..'
 import { QueryParamsType, OptionType } from '../../../types'
 import { useAdmin } from '../../../hooks'
 
-export type MetafieldAutosuggestProps = {
+export type ProductAutosuggestProps = {
 	value: any
 	name?: string
 	query?: QueryParamsType
@@ -16,13 +16,13 @@ export type MetafieldAutosuggestProps = {
 	defaultOptions?: OptionType[]
 }
 
-const MetafieldAutosuggest: React.FC<MetafieldAutosuggestProps> = (props) => {
+const ProductAutosuggest: React.FC<ProductAutosuggestProps> = (props) => {
 	const {
 		value,
 		query = {},
-		name = 'metafield_id',
+		name = 'product_id',
 		label,
-		placeholder = 'Select field',
+		placeholder = 'Select product',
 		handleChange,
 		valueParam = 'id',
 		direction = 'column',
@@ -39,8 +39,8 @@ const MetafieldAutosuggest: React.FC<MetafieldAutosuggestProps> = (props) => {
 			value={value}
 			direction={direction}
 			valueParam={valueParam}
-			displayField={'label'}
-			url={`${apiUrl}/metafields`}
+			displayField='title'
+			url={`${apiUrl}/products`}
 			placeholder={placeholder}
 			handleChange={handleChange}
 			defaultQuery={query}
@@ -49,4 +49,4 @@ const MetafieldAutosuggest: React.FC<MetafieldAutosuggestProps> = (props) => {
 	)
 }
 
-export default MetafieldAutosuggest
+export default ProductAutosuggest

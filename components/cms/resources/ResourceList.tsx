@@ -59,6 +59,7 @@ export type ResourceListProps = {
 	itemProps?: any
 	disableInfiniteLoad?: boolean
 	buttons?: ToolbarButtonType[]
+  defaultValue?: any
 	slots?: {
 		list?: any
     item?: any
@@ -117,6 +118,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		emptyIcon = 'Search',
 		emptyTitle = 'No results found',
 		emptyDescription = 'Try adjusting your search or filters',
+    defaultValue = {}
 	} = props
 
 	const [openShow, setOpenShow] = useState(false)
@@ -249,7 +251,10 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 			if (resource?.id) {
 				resp = await update(resource)
 			} else {
-				resp = await create(resource)
+				resp = await create({
+          ...defaultValue,
+          ...resource
+        })
 			}
 			if (resp?.id) {
 				setResource({})

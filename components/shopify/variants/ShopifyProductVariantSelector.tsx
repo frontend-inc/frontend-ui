@@ -1,10 +1,10 @@
 import React from 'react'
 import ShopifyProductVariantOptions from './ShopifyProductVariantOptions'
 import ShopifyColorVariantOptions from './ShopifyColorVariantOptions'
-import { ProductType } from 'frontend-shopify'
+import { ShopifyProductType } from 'frontend-shopify'
 
 type ShopifyProductVariantSelectorProps = {
-	product: ProductType
+	product: ShopifyProductType
 	selectedOptions: any
 	handleOptionChange: any
 }

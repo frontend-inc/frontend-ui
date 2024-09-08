@@ -71,6 +71,8 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 			label={resource?.label}
 			image={resource?.image?.url}
 			primary={resource?.title}
+      price={resource?.display_price}
+      compareAtPrice={resource?.display_compare_at_price}
 			handleClick={handleClick}
 			selectable={selectable}
 			selected={selectedIds?.includes(resource?.id)}

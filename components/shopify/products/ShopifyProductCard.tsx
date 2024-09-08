@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { Button, Box, Stack, Typography } from '@mui/material'
 import { truncate } from '../../../helpers'
-import { ProductType } from 'frontend-shopify'
+import { ShopifyProductType } from 'frontend-shopify'
 import { ShopifyContext } from 'frontend-shopify'
 import { formatCurrency } from 'frontend-shopify'
 import SwipeableShopifyProductImages from './images/SwipeableShopifyProductImages'
@@ -12,7 +12,7 @@ import {
 import { OkendoStarRating } from '../../addons'
 
 type ShopifyProductCardProps = {
-	product: ProductType
+	product: ShopifyProductType
 	handleClick?: () => void
 	buttonText?: string
 	height?: number

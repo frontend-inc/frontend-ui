@@ -6,6 +6,7 @@ type TouchableOpacityProps = {
 	children: any
 	handleClick?: () => void
 	disableRipple?: boolean
+  disableBorderRadius?: boolean
 	justifyContent?: string
 }
 
@@ -15,6 +16,7 @@ const TouchableOpacity: React.FC<TouchableOpacityProps> = (props) => {
 		justifyContent = 'center',
 		handleClick,
 		disableRipple = false,
+    disableBorderRadius = false,
 	} = props
 
 	const { onMouseDown, onMouseUp } = useClickOrDrag({
@@ -25,6 +27,7 @@ const TouchableOpacity: React.FC<TouchableOpacityProps> = (props) => {
 		<CardActionArea
 			sx={{
 				...sx.root,
+        ...(disableBorderRadius && sx.disableBorderRadius),
 				justifyContent,
 			}}
 			disableRipple={disableRipple}
@@ -50,4 +53,7 @@ const sx = {
 			background: 'transparent',
 		},
 	},
+  disableBorderRadius: {
+    borderRadius: 0
+  }
 }
