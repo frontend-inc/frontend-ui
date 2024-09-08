@@ -28,7 +28,12 @@ const AddToList: React.FC<AddToListProps> = (props) => {
 
 	const { foreignUrl } = useResourceContext()
 
-	const { loading, resource, handleChange, addReferences } = useResource({
+	const { 
+    loading, 
+    resource, 
+    handleChange, 
+    addReferences 
+  } = useResource({
 		name: 'document',
 		url: foreignUrl,
 	})
