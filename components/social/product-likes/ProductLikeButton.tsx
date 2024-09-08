@@ -20,7 +20,7 @@ const ProductLikeButton: React.FC<ProductLikeButtonProps> = (props) => {
 
 	const [liked, setLiked] = useState(false)
 
-  const { productLike, productUnlike } = useSocial()
+  const { likeProduct, unlikeProduct } = useSocial()
 
 	const handleClick = async () => {
 		if (!currentUser?.id) {
@@ -28,10 +28,10 @@ const ProductLikeButton: React.FC<ProductLikeButtonProps> = (props) => {
 		}
 		if (liked) {
 			setLiked(false)
-			await productUnlike(product?.handle)
+			await unlikeProduct(product?.handle)
 		} else {
 			setLiked(true)
-			await productLike(product?.handle)
+			await likeProduct(product?.handle)
 		}
 	}
 

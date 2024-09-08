@@ -7,7 +7,7 @@ export const isLiked = (user, documentId) => {
 }
 
 export const isProductFavorited = (user, productId) => {
-	return user?.product_favorites?.find(
+	return user?.favorite_products?.find(
 		(p: any) => p.id == productId || p.handle == productId
 	)
 		? true
@@ -15,7 +15,7 @@ export const isProductFavorited = (user, productId) => {
 }
 
 export const isProductLiked = (user, productId) => {
-	return user?.product_likes?.find(
+	return user?.liked_products?.find(
 		(p: any) => p.id == productId || p.handle == productId
 	)
 		? true

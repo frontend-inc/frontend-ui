@@ -35,20 +35,20 @@ const useSocial = () => {
 		return await loadingWrapper(() => api.unfollow(username, params))
 	}
 
-  const productLike = async (productId) => {
-		return await loadingWrapper(() => api.productLike(productId, params))
+  const likeProduct = async (productId) => {
+		return await loadingWrapper(() => api.likeProduct(productId, params))
 	}
 
-	const productUnlike = async (productId) => {
-		return await loadingWrapper(() => api.productUnlike(productId, params))
+	const unlikeProduct = async (productId) => {
+		return await loadingWrapper(() => api.unlikeProduct(productId, params))
 	}
 
-	const productFavorite = async (productId) => {
-		return await loadingWrapper(() => api.productFavorite(productId, params))
+	const favoriteProduct = async (productId) => {
+		return await loadingWrapper(() => api.favoriteProduct(productId, params))
 	}
 
-	const productUnfavorite = async (productId) => {
-		return await loadingWrapper(() => api.productUnfavorite(productId, params))
+	const unfavoriteProduct = async (productId) => {
+		return await loadingWrapper(() => api.unfavoriteProduct(productId, params))
 	}
 
   const shopifyFavorite = async (handle) => {
@@ -67,10 +67,10 @@ const useSocial = () => {
 		unfavorite,
 		follow,
 		unfollow,
-    productLike,
-    productUnlike,
-    productFavorite,
-    productUnfavorite,
+    likeProduct,
+    unlikeProduct,
+    favoriteProduct,
+    unfavoriteProduct,
     shopifyFavorite,
     shopifyUnfavorite,
     loadingWrapper,

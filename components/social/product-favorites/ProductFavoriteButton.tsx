@@ -25,7 +25,7 @@ const ProductFavoriteButton: React.FC<ProductFavoriteButtonProps> = (props) => {
 
 	const [isFavorite, setIsFavorite] = useState(false)
 
-	const { favorite, unfavorite } = useSocial()
+	const { favoriteProduct, unfavoriteProduct } = useSocial()
 
 	const handleClick = async (ev) => {
 		if (!currentUser?.id) {
@@ -33,11 +33,11 @@ const ProductFavoriteButton: React.FC<ProductFavoriteButtonProps> = (props) => {
 		}
 		if (isFavorite) {
 			setIsFavorite(false)
-			await unfavorite(product?.handle)
+			await unfavoriteProduct(product?.handle)
 			fetchMe()
 		} else {
 			setIsFavorite(true)
-			await favorite(product?.handle)
+			await favoriteProduct(product?.handle)
 			fetchMe()
 		}
 	}

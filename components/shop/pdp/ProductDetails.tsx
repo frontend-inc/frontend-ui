@@ -103,8 +103,9 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
           size="large"
 					justifyContent={'center'}
 					resource={product}
-					enableLikes={enableLikes}
-					enableFavorites={enableFavorites}
+          product={product}
+					enableProductLikes={enableLikes}
+					enableProductFavorites={enableFavorites}
 					enableSharing={enableSharing}
 					enableAddToList={enableAddToList}
 				/>

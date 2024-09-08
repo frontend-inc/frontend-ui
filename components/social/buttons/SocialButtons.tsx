@@ -6,52 +6,60 @@ import {
 	FavoriteButton,
 	ShareButton,
 	AddToListButton,
+  ProductLikeButton,
+  ProductFavoriteButton,
 } from '../../../components'
 import { useRouter } from 'next/router'
 
 type SocialButtonsProps = {
 	resource: any
+  product?: any
 	direction?: 'row' | 'column'
 	enableComments?: boolean
-	enableLikes?: boolean
+	enableLikes?: boolean  
 	enableFavorites?: boolean
 	enableAddToList?: boolean
 	enableSharing?: boolean
+  enableProductLikes?: boolean
+  enableProductFavorites?: boolean
 	numLikes?: number
 	numFavorites?: number
 	justifyContent?: string
 	size?: 'small' | 'large'
-	color?: string
-	spacing?: number
+	color?: string	
 }
 
 const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 	const {
 		resource,
+    product,
 		direction = 'row',
 		enableComments,
 		enableLikes,
 		enableFavorites,
 		enableSharing,
 		enableAddToList,
+    enableProductLikes,
+    enableProductFavorites,
 		numLikes,
 		numFavorites,
 		size = 'small',
 		justifyContent = 'flex-start',
-		spacing = 1,
 		color,
 	} = props
 
 	const router = useRouter()
 	const currentPageUrl = router.asPath
 
-	if (!enableLikes && !enableFavorites && !enableSharing && !enableAddToList)
+	if (!enableLikes && !enableFavorites && 
+      !enableSharing && !enableAddToList && 
+      !enableProductFavorites && !enableProductLikes)
 		return null
 	return (
 		<Stack
 			direction={direction}
 			justifyContent={justifyContent}
-			spacing={spacing}
+			spacing={size == 'small' ? 0 : 1}
 		>
 			{enableAddToList == true && (
 				<AddToListButton 
@@ -71,11 +79,29 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 			{enableFavorites == true && (
 				<FavoriteButton
 					size={size}
+          color={color}
 					resource={resource}
-					numFavorites={numFavorites}
-					color={color}
+					numFavorites={numFavorites}					
 				/>
 			)}
+
+      {enableProductLikes == true && (
+				<ProductLikeButton
+					size={size}					
+					product={product}
+          color={color}
+					numLikes={numLikes}
+				/>
+			)}
+			{enableProductFavorites == true && (
+				<ProductFavoriteButton
+					size={size}
+					product={product}					
+					color={color}
+          numFavorites={numFavorites}
+				/>
+			)}
+
 			{enableComments == true && (
 				<CommentButton 
           resource={resource} 
