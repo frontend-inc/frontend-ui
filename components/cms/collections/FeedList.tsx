@@ -1,8 +1,8 @@
 import React from 'react'
 import { CollectionList } from '../..'
-import { CollectionListProps } from '../../cms/collections/CollectionList'
+import { CollectionListProps } from './CollectionList'
 
-const Feed: React.FC<CollectionListProps> = (props) => {
+const FeedList: React.FC<CollectionListProps> = (props) => {
 	let { query = {}, ...rest } = props
 
 	query = {
@@ -13,4 +13,4 @@ const Feed: React.FC<CollectionListProps> = (props) => {
 	return <CollectionList query={query} {...rest} />
 }
 
-export default Feed
+export default FeedList

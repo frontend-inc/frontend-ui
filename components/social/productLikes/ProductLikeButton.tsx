@@ -5,7 +5,7 @@ import { useSocial, useApp } from '../../../hooks'
 import { useAuth } from 'frontend-js'
 import { Favorite, FavoriteBorder } from '@mui/icons-material'
 
-type LikeButtonProps = {
+type ProductLikeButtonProps = {
 	resource: any
 	size?: 'small' | 'large'
 	color?: string

@@ -1,13 +1,13 @@
-import React, { useContext } from 'react'
-import { ApiContext } from 'frontend-js'
+import React from 'react'
+import { useApi } from 'frontend-js'
 import { useLoaders } from '..'
 
-type UseSocialParams = {
-	url: string
-}
-
-const useSocial = (params: UseSocialParams) => {
-	const { api } = useContext(ApiContext) as any
+const useSocial = () => {
+	const { api } = useApi()
+  
+  const params = { 
+    url: `/api/v1/social`,
+  }
 
 	const { loading, loadingWrapper } = useLoaders()
 

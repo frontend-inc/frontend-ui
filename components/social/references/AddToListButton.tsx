@@ -8,14 +8,14 @@ import { useAuth } from 'frontend-js'
 import { useApp } from '../../../hooks'
 
 type AddToListProps = {
-	variant?: 'icon' | 'button'
+	size?: 'small' | 'large'
 	resource: any
 	color?: string
 }
 
 const AddToList: React.FC<AddToListProps> = (props) => {
 	const {
-		variant = 'icon',
+		size = 'small',
 		resource: selected,
 		color = 'text.secondary',
 	} = props
@@ -56,7 +56,7 @@ const AddToList: React.FC<AddToListProps> = (props) => {
 						'&:hover': {
 							color,
 						},
-						...(variant == 'icon' ? sx.icon : sx.button),
+						...(size == 'small' ? sx.small : sx.large),
 					}}
 				>
 					<PlaylistAdd fontSize="small" />
@@ -97,8 +97,8 @@ const AddToList: React.FC<AddToListProps> = (props) => {
 export default AddToList
 
 const sx = {
-	icon: {},
-	button: {
+	small: {},
+	large: {
 		border: '1px solid',
 		borderColor: 'divider',
 		bgcolor: 'background.main',

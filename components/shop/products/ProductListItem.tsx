@@ -88,8 +88,7 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 			actions={
 				<Box>
 					<SocialButtons
-						spacing={0}
-						variant="icon"
+						size="large"
 						justifyContent="flex-start"
 						resource={resource}
 						enableLikes={enableLikes}

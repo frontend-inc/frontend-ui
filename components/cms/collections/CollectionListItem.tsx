@@ -96,8 +96,7 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 			actions={
 				<Box>
 					<SocialButtons
-						spacing={0}
-						variant="icon"
+						size="small"
 						justifyContent="flex-start"
 						resource={resource}
 						enableLikes={enableLikes}

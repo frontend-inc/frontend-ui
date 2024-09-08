@@ -1,6 +1,6 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { Favorites } from '../../components'
+import { FavoritesGrid } from '../../components'
 import { SectionProps, HeadingProps } from '../../types'
 import { CollectionListProps } from '../../components/cms/collections/CollectionList'
 
@@ -38,7 +38,7 @@ const SocialFavorites: React.FC<SocialFavoritesProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<Favorites {...rest} />
+			<FavoritesGrid {...rest} />
 		</Section>
 	)
 }

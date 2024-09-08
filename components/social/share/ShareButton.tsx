@@ -6,11 +6,11 @@ import { IosShare } from '@mui/icons-material'
 
 type ShareButtonProps = {
 	url: string
-	variant?: 'icon' | 'button'
+	size?: 'small' | 'large'
 }
 
 const ShareButton: React.FC<ShareButtonProps> = (props) => {
-	const { url, variant = 'icon' } = props
+	const { url, size = 'small' } = props
 	const [open, setOpen] = useState(false)
 
 	const SOCIAL_PROVIDERS = [
@@ -58,12 +58,12 @@ const ShareButton: React.FC<ShareButtonProps> = (props) => {
 
 	return (
 		<Box>
-			{variant == 'icon' ? (
-				<IconButton sx={sx.iconButton} onClick={handleClick}>
+			{size == 'small' ? (
+				<IconButton sx={sx.small} onClick={handleClick}>
 					<IosShare fontSize="small" />
 				</IconButton>
 			) : (
-				<IconButton sx={sx.button} onClick={handleClick}>
+				<IconButton sx={sx.large} onClick={handleClick}>
 					<IosShare fontSize="small" />
 				</IconButton>
 			)}
@@ -98,12 +98,10 @@ const ShareButton: React.FC<ShareButtonProps> = (props) => {
 export default ShareButton
 
 const sx = {
-	iconButton: {
-		border: '1px solid',
-		borderColor: 'divider',
+	small: {
 		color: 'text.secondary',
 	},
-	button: {
+	large: {
 		border: '1px solid',
 		borderColor: 'divider',
 		color: 'text.secondary',
