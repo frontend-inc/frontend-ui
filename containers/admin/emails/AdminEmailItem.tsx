@@ -18,7 +18,7 @@ const EmailItem: React.FC<EmailItemProps> = (props) => {
 			secondary={email.subject}
 			icon="Mail"
 			color={deepPurple[500]}
-			secondaryActions={email?.internal && <Label label="System" />}
+			secondaryAction={email?.internal && <Label label="System" />}
 			handleClick={() => handleEdit(email)}
 			handleEdit={() => handleEdit(email)}
 			handleDelete={email?.internal ? undefined : () => handleDelete(email)}

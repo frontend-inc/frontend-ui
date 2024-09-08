@@ -24,7 +24,7 @@ const AdminSubscriptionPlanItem: React.FC<AdminSubscriptionPlanItemProps> = (
 			icon="CreditCard"
 			primary={subscriptionPlan?.name}
 			secondary={subscriptionPlan?.display_price}
-			secondaryActions={
+			secondaryAction={
 				subscriptionPlan?.label && <Label label={subscriptionPlan?.label} />
 			}
 			color={COLORS.amber[500]}

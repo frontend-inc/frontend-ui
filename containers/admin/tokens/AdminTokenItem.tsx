@@ -31,7 +31,7 @@ const TokenItem: React.FC<TokenItemProps> = (props) => {
 			handleClick={handleCopyToken}
 			handleEdit={!token?.internal ? () => handleEdit(token) : undefined}
 			handleDelete={!token?.internal ? () => handleDelete(token) : undefined}
-			secondaryActions={
+			secondaryAction={
 				<>
 					<Label label={token?.admin ? 'Admin' : 'Public'} />
 					{token.internal && <Label label={'system'} />}

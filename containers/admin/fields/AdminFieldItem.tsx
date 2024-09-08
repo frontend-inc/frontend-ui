@@ -68,7 +68,7 @@ const AdminFieldItem: React.FC<AdminFieldItemProps> = (props) => {
 			avatar={<FieldIcon variant={field?.variant} />}
 			primary={field?.label}
 			secondary={field?.name}
-			secondaryActions={
+			secondaryAction={
         <>
           {field.column && !field.array && (
             <Tooltip title="Search filter field">

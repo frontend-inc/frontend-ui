@@ -5,7 +5,7 @@ import {
   AdminMenu, 
   AdminLayoutScroll,
   AdminLayoutLeft,
-  AdminLayoutCenter 
+  AdminLayoutCenter,  
 } from '../../../components'
 import { AdminMenusType, AdminMenuType } from '../../../types'
 import { useAdmin, useTabs } from '../../../hooks'
@@ -66,7 +66,11 @@ const AdminPage: React.FC<AdminPageProps> = (props) => {
         </AdminLayoutLeft>
       )}
 			<AdminLayoutCenter>
-				<AdminHeader title={title} buttons={actions} enableExpandLeftPanel />
+				<AdminHeader 
+          title={title} 
+          buttons={actions} 
+          enableExpandLeftPanel 
+        />
         <AdminLayoutScroll>				
           <Box p={disablePadding ? 0 : 2}>{children}</Box>
         </AdminLayoutScroll>

@@ -28,7 +28,7 @@ export type ResourceListItemProps = {
 	handleDelete?: (resource: any) => void
 	handleSelect?: () => void
   handleReload?: () => void
-	secondaryActions?: React.ReactNode
+	secondaryAction?: React.ReactNode
 	menuActions?: any
 	sortable?: boolean
 	isDragging?: boolean
@@ -47,7 +47,7 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 		handleEdit,
 		handleDelete,
 		handleSelect,
-		secondaryActions,
+		secondaryAction,
 		menuActions,
 		sortable,
 		selectable,
@@ -72,7 +72,7 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 			disablePadding
 			secondaryAction={
 				<Stack direction="row" spacing={1} sx={sx.buttons}>
-					{secondaryActions}
+					{secondaryAction}
 					{(menuActions || handleEdit || handleDelete) && (
 						<MenuButton handleEdit={handleEdit} handleDelete={handleDelete}>
 							{menuActions}
@@ -102,11 +102,11 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 				)}
 				{avatar && <ListItemIcon sx={sx.listItemIcon}>{avatar}</ListItemIcon>}
 				{!avatar && image && (
-					<ListItemIcon sx={sx.listItemIcon}>
+					<ListItemIcon sx={sx.listItemImage }>
 						<Image 
               src={image} 
-              width={32} 
-              height={32} 
+              width={64} 
+              height={64} 
               alt={image} 
             />
 					</ListItemIcon>
@@ -166,6 +166,10 @@ const sx = {
 	listItemIcon: {
 		mr: 2,
 	},
+  listItemImage: {
+    mr: 2,
+    minWidth: 64,
+  },
 	checkbox: {
 		width: 24,
 	},

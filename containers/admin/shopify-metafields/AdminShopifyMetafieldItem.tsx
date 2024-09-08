@@ -24,7 +24,7 @@ const AdminShopifyMetafieldItem: React.FC<AdminShopifyMetafieldItemProps> = (pro
       }
 			primary={resource?.label}
 			secondary={`${resource?.name}`}
-			secondaryActions={
+			secondaryAction={
         <Label label={resource?.variant} />
       }
 			handleClick={handleClick}

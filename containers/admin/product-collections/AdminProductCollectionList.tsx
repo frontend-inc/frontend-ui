@@ -6,11 +6,16 @@ import AdminProductCollectionCreate from './AdminProductCollectionCreate'
 import AdminProductCollectionEdit from './AdminProductCollectionEdit'
 import AdminProductCollectionShow from './AdminProductCollectionShow'
 import AdminProductCollectionToolbar from './AdminProductCollectionToolbar'
-
-
+import { useRouter } from 'next/router'
 
 const AdminProductCollectionsList: React.FC = () => {
+  const router = useRouter()
+  const { clientUrl } = useAdmin()
 	const { apiUrl } = useAdmin()
+
+  const handleClick = (productCollection) => {
+    router.push(`${clientUrl}/shop/product-collections/${productCollection.handle}/products`)
+  }
 
 	return (
 		<ResourceList     
@@ -19,10 +24,10 @@ const AdminProductCollectionsList: React.FC = () => {
 			url={`${apiUrl}/product_collections`}
 			name={'product_collection'}
 			enableSearch
-			enableShow
 			enableEdit
 			enableDelete
 			enableCreate
+      handleClick={ handleClick }
 			sortOptions={[
 				{ name: 'title', label: 'Title' },				
 				{ name: 'created_at', label: 'Date' },

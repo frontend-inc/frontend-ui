@@ -22,7 +22,7 @@ const AdminCommentItem: React.FC<AdminCommentItemProps> = (props) => {
 			primary={getCommentUserName(comment)}
 			secondary={truncate(comment?.body, 40)}
 			avatar={<UserAvatar user={comment?.user} />}
-			secondaryActions={comment?.flagged && <Label label="Flagged" />}
+			secondaryAction={comment?.flagged && <Label label="Flagged" />}
 			handleClick={handleClick}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}

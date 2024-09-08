@@ -39,7 +39,7 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
 				</Stack>
 			}
 			secondary={<DisplayFields resource={user} fields={displayFields} />}
-			secondaryActions={enableFollowers && <FollowButton user={user} />}
+			secondaryAction={enableFollowers && <FollowButton user={user} />}
 		/>
 	)
 }

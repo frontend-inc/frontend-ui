@@ -26,7 +26,7 @@ const AdminZapItem: React.FC<AdminZapItemProps> = (props) => {
 			color="primary.main"
 			primary={zap?.zap_type}
 			secondary={zap?.url || zap?.email?.name}
-			secondaryActions={<Label label={zap?.event_type} />}
+			secondaryAction={<Label label={zap?.event_type} />}
 			handleClick={handleClick}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}

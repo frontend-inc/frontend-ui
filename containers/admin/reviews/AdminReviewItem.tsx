@@ -27,7 +27,7 @@ const AdminReviewItem: React.FC<AdminReviewItemProps> = (props) => {
 				</Typography>
 			}
 			avatar={<UserAvatar user={review?.user} />}
-			secondaryActions={review?.flagged && <Label label="Flagged" />}
+			secondaryAction={review?.flagged && <Label label="Flagged" />}
 			handleClick={handleClick}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}

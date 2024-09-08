@@ -20,7 +20,7 @@ const AdminActionItem: React.FC<AdminActionItemProps> = (props) => {
 			color="primary.main"
 			primary={resource?.label}
 			secondary={resource?.collection?.name}
-			secondaryActions={<Label label={resource?.event_type} />}
+			secondaryAction={<Label label={resource?.event_type} />}
 			handleClick={handleClick}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}

@@ -19,7 +19,7 @@ const AdminMenuItem: React.FC<ResourceItemProps> = (props) => {
 			icon="FolderTree"
 			color="primary.main"
 			primary={menu?.label}
-			secondaryActions={<>{menu?.internal && <Label label="System" />}</>}
+			secondaryAction={<>{menu?.internal && <Label label="System" />}</>}
 			handleClick={handleClick}
 			handleEdit={!menu?.internal ? handleEdit : undefined}
 			handleDelete={!menu?.internal ? handleDelete : undefined}

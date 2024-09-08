@@ -20,7 +20,7 @@ const AdminRoleItem: React.FC<AdminRoleItemProps> = (props) => {
 			color="primary.main"
 			primary={role?.label}
 			secondary={role?.name}
-			secondaryActions={role?.internal ? <Label label="System" /> : null}
+			secondaryAction={role?.internal ? <Label label="System" /> : null}
 			handleEdit={!role?.internal ? handleEdit : undefined}
 			handleDelete={!role?.internal ? handleDelete : undefined}
 		/>

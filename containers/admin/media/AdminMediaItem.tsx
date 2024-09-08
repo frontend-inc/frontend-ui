@@ -17,7 +17,7 @@ const AdminMediaItem: React.FC<AdminMediaItemProps> = (props) => {
 			sortable={sortable}
 			image={ resource?.url }              
 			primary={resource?.content_type}
-			secondaryActions={
+			secondaryAction={
         <Label label={resource?.dimensions} />
       }
 			handleClick={handleClick}

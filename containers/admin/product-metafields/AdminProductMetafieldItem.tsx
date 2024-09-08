@@ -20,7 +20,7 @@ const AdminMetafieldItem: React.FC<AdminMetafieldItemProps> = (props) => {
 			avatar={<FieldIcon variant={resource?.variant} />}
 			primary={resource?.label}
 			secondary={resource?.name}
-			secondaryActions={<Label label={resource?.variant} />}
+			secondaryAction={<Label label={resource?.variant} />}
 			handleClick={handleClick}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}
