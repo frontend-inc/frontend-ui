@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { Box, IconButton } from '@mui/material'
-import { isLiked } from '../../../helpers'
+import { isProductLiked } from '../../../helpers'
 import { useSocial, useApp } from '../../../hooks'
 import { useAuth } from 'frontend-js'
 import { Favorite, FavoriteBorder } from '@mui/icons-material'
 
 type ProductLikeButtonProps = {
-	resource: any
+	product: any
 	size?: 'small' | 'large'
 	color?: string
 	numLikes?: number
 }
 
-const LikeButton: React.FC<LikeButtonProps> = (props) => {
-	const { resource, color = 'text.secondary', size = 'small' } = props
+const ProductLikeButton: React.FC<ProductLikeButtonProps> = (props) => {
+	const { product, color = 'text.secondary', size = 'small' } = props
 
 	const { currentUser } = useAuth()
 	const { setAuthOpen } = useApp()
 
 	const [liked, setLiked] = useState(false)
 
-  const { like, unlike } = useSocial()
+  const { productLike, productUnlike } = useSocial()
 
 	const handleClick = async () => {
 		if (!currentUser?.id) {
@@ -28,22 +28,22 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
 		}
 		if (liked) {
 			setLiked(false)
-			await unlike(resource?.handle)
+			await productUnlike(product?.handle)
 		} else {
 			setLiked(true)
-			await like(resource?.handle)
+			await productLike(product?.handle)
 		}
 	}
 
 	useEffect(() => {
-		if (currentUser && resource?.handle) {
-			if (isLiked(currentUser, resource?.handle)) {
+		if (currentUser && product?.handle) {
+			if (isProductLiked(currentUser, product?.handle)) {
 				setLiked(true)
 			} else {
 				setLiked(false)
 			}
 		}
-	}, [currentUser, resource?.handle])
+	}, [currentUser, product?.handle])
 
 	return (
 		<Box>
@@ -68,7 +68,7 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
 	)
 }
 
-export default LikeButton
+export default ProductLikeButton
 
 const sx = {
 	small: {},

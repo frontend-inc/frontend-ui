@@ -6,6 +6,22 @@ export const isLiked = (user, documentId) => {
 		: false
 }
 
+export const isProductFavorited = (user, productId) => {
+	return user?.product_favorites?.find(
+		(p: any) => p.id == productId || p.handle == productId
+	)
+		? true
+		: false
+}
+
+export const isProductLiked = (user, productId) => {
+	return user?.product_likes?.find(
+		(p: any) => p.id == productId || p.handle == productId
+	)
+		? true
+		: false
+}
+
 export const isFavorited = (user, documentId) => {
 	return user?.favorites?.find(
 		(d: any) => d.id == documentId || d.handle == documentId

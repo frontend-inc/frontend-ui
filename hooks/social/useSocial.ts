@@ -35,6 +35,22 @@ const useSocial = () => {
 		return await loadingWrapper(() => api.unfollow(username, params))
 	}
 
+  const productLike = async (productId) => {
+		return await loadingWrapper(() => api.productLike(productId, params))
+	}
+
+	const productUnlike = async (productId) => {
+		return await loadingWrapper(() => api.productUnlike(productId, params))
+	}
+
+	const productFavorite = async (productId) => {
+		return await loadingWrapper(() => api.productFavorite(productId, params))
+	}
+
+	const productUnfavorite = async (productId) => {
+		return await loadingWrapper(() => api.productUnfavorite(productId, params))
+	}
+
   const shopifyFavorite = async (handle) => {
 		return await loadingWrapper(() => api.shopifyFavorite(handle, params))
 	}
@@ -51,6 +67,10 @@ const useSocial = () => {
 		unfavorite,
 		follow,
 		unfollow,
+    productLike,
+    productUnlike,
+    productFavorite,
+    productUnfavorite,
     shopifyFavorite,
     shopifyUnfavorite,
     loadingWrapper,

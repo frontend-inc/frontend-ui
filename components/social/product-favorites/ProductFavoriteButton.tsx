@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { Box, IconButton } from '@mui/material'
-import { isFavorited } from '../../../helpers'
+import { isProductFavorited } from '../../../helpers'
 import { useAuth } from 'frontend-js'
 import { useSocial, useApp } from '../../../hooks'
 import { Bookmark, BookmarkBorder } from '@mui/icons-material'
 
-type FavoriteButtonProps = {
-	resource: any
+type ProductFavoriteButtonProps = {
+	product: any
 	size?: 'small' | 'large'
 	color?: string
 	numFavorites?: number
 }
 
-const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
+const ProductFavoriteButton: React.FC<ProductFavoriteButtonProps> = (props) => {
 	const {
-		resource,
+		product,
 		size = 'small',
 		color = 'text.secondary',
 		numFavorites,
@@ -33,24 +33,24 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 		}
 		if (isFavorite) {
 			setIsFavorite(false)
-			await unfavorite(resource?.handle)
+			await unfavorite(product?.handle)
 			fetchMe()
 		} else {
 			setIsFavorite(true)
-			await favorite(resource?.handle)
+			await favorite(product?.handle)
 			fetchMe()
 		}
 	}
 
 	useEffect(() => {
-		if (currentUser && resource?.handle) {
-			if (isFavorited(currentUser, resource?.handle)) {
+		if (currentUser && product?.handle) {
+			if (isProductFavorited(currentUser, product?.handle)) {
 				setIsFavorite(true)
 			} else {
 				setIsFavorite(false)
 			}
 		}
-	}, [currentUser, resource?.handle])
+	}, [currentUser, product?.handle])
 
 	return (
 		<Box>
@@ -75,7 +75,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
 	)
 }
 
-export default FavoriteButton
+export default ProductFavoriteButton
 
 const sx = {
 	small: {},
