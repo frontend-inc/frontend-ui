@@ -25,3 +25,18 @@ export type ProductType = {
   related_products?: ProductType[]  
   data?: any
 }
+
+export type ProductCollectionType = {
+  id?: number
+  label?: string
+  handle?: string
+  title?: string
+  description?: string
+  image?: {
+    url: string
+  }
+  tags?: string[]
+  published?: boolean   
+  data?: any
+  products?: ProductType[]
+}

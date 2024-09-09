@@ -1,11 +1,11 @@
 import React from 'react'
 import { Cover } from '../..'
-import { ShopifyCollectionType } from 'frontend-shopify'
+import { ProductCollectionType } from '../../../types'
 
-export type ShopifyCollectionCoverProps = {
-	shopifyCollection: ShopifyCollectionType
+export type ProductCollectionCoverProps = {
+	productCollection: ProductCollectionType
 	editing?: boolean
-	height?: number	
+	height?: number
 	alignItems?: 'flex-start' | 'center' | 'flex-end'
 	alt?: string
 	handleClick?: () => void
@@ -16,9 +16,9 @@ export type ShopifyCollectionCoverProps = {
 	href?: string
 }
 
-const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (props) => {
+const ProductCollectionCover: React.FC<ProductCollectionCoverProps> = (props) => {
 	const {
-		shopifyCollection,
+		productCollection,
 		handleClick,
 		height = 400,
 		alt = 'image',
@@ -30,7 +30,7 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (props) =>
 		href,
 	} = props
 
-	if (!shopifyCollection) return null
+	if (!productCollection) return null
 	return (
 		<Cover
 			enableOverlay={enableOverlay}
@@ -38,9 +38,9 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (props) =>
 			opacity={opacity}
 			overlayColor={overlayColor}
 			height={height}
-			title={shopifyCollection?.title}
-			description={shopifyCollection?.description}
-			image={shopifyCollection?.image?.url}
+			title={productCollection?.title}
+			description={productCollection?.description}
+			image={productCollection?.image?.url}
 			alt={alt}
 			alignItems={alignItems}
 			href={href}
@@ -49,4 +49,4 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (props) =>
 	)
 }
 
-export default ShopifyCollectionCover
+export default ProductCollectionCover

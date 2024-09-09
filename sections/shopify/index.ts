@@ -1,4 +1,4 @@
-export { default as ShopifyCollectionCoverImage } from './ShopifyCollectionCoverImage'
+export { default as ShopifyCollectionCover } from './ShopifyCollectionCover'
 export { default as ShopifyCollections } from './ShopifyCollections'
 export { default as ShopifyFavorites } from './ShopifyFavorites'
 export { default as ShopifyProductFeatured } from './ShopifyProductFeatured'
