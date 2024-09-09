@@ -30,7 +30,7 @@ type FormInputProps = {
 	options: any
 	placeholder?: string
 	handleChange: (e: SyntheticEventType) => void
-	handleRemove: (name: string) => void  
+	handleRemove?: (name: string) => void  
 	resource?: any
 	url?: string
 	foreignUrl?: string

@@ -19,13 +19,9 @@ const FollowButton: React.FC<FollowButtonProps> = (props) => {
 
 	const [following, setFollowing] = useState(false)
 
-	const { loading, follow, unfollow } = useSocial({
-		url: '/api/v1/social',
-	})
+	const { loading, follow, unfollow } = useSocial()
 
 	const usernameClick = async (ev) => {
-		ev.stopPropagation()
-		ev.preventDefault()
 		if (!currentUser?.id) {
 			return setAuthOpen(true)
 		}

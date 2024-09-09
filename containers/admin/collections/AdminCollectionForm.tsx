@@ -9,11 +9,12 @@ type AdminCollectionFormProps = {
 	collection: any
 	handleChange: (e: any) => void
 	handleTemplateClick: (template: any) => void
-	errors: any
+  handleRemove: (name: string) => void
+	errors: any  
 }
 
 const AdminCollectionForm: React.FC<AdminCollectionFormProps> = (props) => {
-	const { errors, collection, handleTemplateClick, handleChange } = props
+	const { errors, collection, handleTemplateClick, handleChange, handleRemove } = props
 
 	return (
 		<Stack direction="column" spacing={1}>
@@ -22,6 +23,7 @@ const AdminCollectionForm: React.FC<AdminCollectionFormProps> = (props) => {
           errors={errors }
           handleChange={handleChange}
           resource={ collection }
+          handleRemove={handleRemove}
           fields={[
             {
               label: 'Name',

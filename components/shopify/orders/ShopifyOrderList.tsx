@@ -1,10 +1,10 @@
 import React from 'react'
 import { List } from '@mui/material'
-import { OrderType } from 'frontend-shopify'
+import { ShopifyOrderType } from 'frontend-shopify'
 import ShopifyOrderItem from './ShopifyOrderItem'
 
 type ShopifyOrderListProps = {
-	orders: OrderType[]
+	orders: ShopifyOrderType[]
 	handleClick: (id: string) => void
 }
 

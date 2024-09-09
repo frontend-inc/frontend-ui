@@ -6,11 +6,11 @@ import { ShopifyProductType } from 'frontend-shopify'
 import { useApp, useSocial } from '../../../hooks'
 import { isShopifyFavorite } from '../../../helpers'
 
-type ProductFavoriteButtonProps = {
+type ShopifyProductFavoriteButtonProps = {
 	product: ShopifyProductType
 }
 
-const ProductFavoriteButton: React.FC<ProductFavoriteButtonProps> = (props) => {
+const ShopifyProductFavoriteButton: React.FC<ShopifyProductFavoriteButtonProps> = (props) => {
 	const { product } = props
 
   const { setAuthOpen } = useApp()
@@ -21,9 +21,7 @@ const ProductFavoriteButton: React.FC<ProductFavoriteButtonProps> = (props) => {
   const { 
     shopifyFavorite, 
     shopifyUnfavorite 
-  } = useSocial({
-    url: '/api/v1/social',
-  })
+  } = useSocial()
 
 	const handleClick = async () => {
     if(!currentUser?.id) return setAuthOpen(true);
@@ -58,7 +56,7 @@ const ProductFavoriteButton: React.FC<ProductFavoriteButtonProps> = (props) => {
 	)
 }
 
-export default ProductFavoriteButton
+export default ShopifyProductFavoriteButton
 
 const sx = {
 	button: {

@@ -12,7 +12,7 @@ type FormFieldInputProps = {
 	contentType?: string
 	fields?: FormFieldType[]  
 	handleChange: (e: SyntheticEventType) => void
-	handleRemove: (name: string) => void
+	handleRemove?: (name: string) => void
 }
 
 const FormFieldInput: React.FC<FormFieldInputProps> = (props) => {

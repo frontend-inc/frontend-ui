@@ -2,13 +2,13 @@ import React from 'react'
 import { Drawer, FormFields, IconLoading } from '../../../components'
 import { Stack, Button } from '@mui/material'
 import { ResourceFormProps } from '../../../components/cms/resources/ResourceForm'
-import { MetafieldType } from '../../../types'
+import { FormFieldType, MetafieldType } from '../../../types'
 import { 
   MediaInput
 } from '../../../containers'
 
 type AdminProductFormProps = ResourceFormProps & {
-	metafields?: MetafieldType[]
+	metafields?: FormFieldType[]
 }
 
 const AdminProductForm: React.FC<AdminProductFormProps> = (props) => {

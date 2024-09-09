@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
 import { ProductGrid } from '../../components'
-import { ProductListProps } from '../../components/ecommerce/products/ProductList'
+import { ProductListProps } from '../../components/shop/products/ProductList'
 import { SectionProps, HeadingProps } from '../../types'
 
 type ShopProductGridProps = SectionProps & HeadingProps & ProductListProps

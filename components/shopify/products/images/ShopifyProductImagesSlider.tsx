@@ -2,7 +2,7 @@ import React from 'react'
 import { Stack, Box, CardActionArea } from '@mui/material'
 // @ts-ignore
 import Zoom from 'react-medium-image-zoom'
-import { ImageType } from 'frontend-shopify'
+import { ShopifyImageType } from 'frontend-shopify'
 import Image from 'next/image'
 
 type ThumbnailProps = {
@@ -43,9 +43,9 @@ const Thumbnail: React.FC<ThumbnailProps> = (props) => {
 }
 
 type ShopifyProductImageSliderProps = {
-	image: ImageType
-	images: ImageType[]
-	handleClick: (img: ImageType) => void
+	image: ShopifyImageType
+	images: ShopifyImageType[]
+	handleClick: (img: ShopifyImageType) => void
 	height?: number
 	width?: number
 	thumbnailSize?: number

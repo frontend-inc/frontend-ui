@@ -12,7 +12,7 @@ export type FormProps = {
 	fields: FormFieldType[]
 	resource: any
 	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-	handleRemove: (name: string) => void
+	handleRemove?: (name: string) => void
 	handleSubmit?: () => void
 	buttonText?: string
 }

@@ -109,7 +109,7 @@ const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 					{tab == 2 && (
 						<>
 							{uploaded && (
-								<MediaItem
+								<MediaListItem
 									item={uploaded}
 									handleRemoveItem={handleRemoveItem}
 								/>

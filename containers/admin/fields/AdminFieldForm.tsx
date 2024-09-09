@@ -17,6 +17,7 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
     setResource,
 		handleChange,
 		handleSubmit,
+    handleRemove
 	} = props || {}
 
   const handleClick = (field) => {
@@ -81,6 +82,7 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
             errors={errors}
             resource={resource}        
             handleChange={handleChange}
+            handleRemove={handleRemove}
             fields={[
               { label: 'Label', name: 'label', variant: 'string' },
               { 

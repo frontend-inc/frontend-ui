@@ -1,12 +1,12 @@
 import React from 'react'
 import { Button, Stack } from '@mui/material'
 import { TextInput, IconLoading } from '../..'
-import { CustomerType } from 'frontend-shopify'
+import { ShopifyCustomerType } from 'frontend-shopify'
 
 type SignInFormProps = {
 	errors?: any
 	loading?: boolean
-	customer: CustomerType
+	customer: ShopifyCustomerType
 	handleChange: (ev: any) => void
 	handleSubmit: () => void
 	handleForgotPassword: () => void

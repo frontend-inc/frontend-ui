@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section } from '../../components'
 import { ShopifyCollectionCover as CollectionCover } from '../../components/shopify'
-import { ShopifyCollectionCoverProps } from '../../components/shopify/collections/ShopifyCollectionCover'
+import { ShopifyCollectionCoverProps as CollectionCoverProps } from '../../components/shopify/collections/ShopifyCollectionCover'
 import { SectionProps } from '../../types'
 
-type ShopifyCollectionCoverProps = SectionProps & ShopifyCollectionCoverProps
+type ShopifyCollectionCoverProps = SectionProps & CollectionCoverProps
 
 const ShopifyCollectionCover: React.FC<
 	ShopifyCollectionCoverProps

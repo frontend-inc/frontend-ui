@@ -1,11 +1,11 @@
 import React from 'react'
 import { Stack, Button } from '@mui/material'
 import { IconLoading, SwitchInput, TextInput } from '../..'
-import { CustomerType } from 'frontend-shopify'
+import { ShopifyCustomerType } from 'frontend-shopify'
 
 type ShopifyRegisterFormProps = {
 	loading: boolean
-	customer: CustomerType
+	customer: ShopifyCustomerType
 	errors: Record<string, any>
 	handleChange: (ev: any) => void
 	handleSubmit: () => void

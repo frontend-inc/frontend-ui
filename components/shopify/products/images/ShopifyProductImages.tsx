@@ -3,13 +3,13 @@ import { Hidden } from '@mui/material'
 import ShopifyProductImagesSlider from './ShopifyProductImagesSlider'
 import SwipeableShopifyProductImages from './SwipeableShopifyProductImages'
 import { PDP_IMAGE_HEIGHT } from '../../../../constants/index'
-import { ShopifyProductType, ImageType } from 'frontend-shopify'
+import { ShopifyProductType, ShopifyImageType } from 'frontend-shopify'
 
 type ShopifyProductImagesProps = {
 	product: ShopifyProductType
-	image: ImageType
-	images: ImageType[]
-	handleClick: (img: ImageType) => void
+	image: ShopifyImageType
+	images: ShopifyImageType[]
+	handleClick: (img: ShopifyImageType) => void
 }
 
 const ShopifyProductImages: React.FC<ShopifyProductImagesProps> = (props) => {
