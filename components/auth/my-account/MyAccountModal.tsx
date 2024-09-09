@@ -54,14 +54,6 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 		setCurrentTab(newValue)
 	}
 
-	useEffect(() => {
-		if (!currentUser?.id) {
-			fetchMe()
-		} else {
-			setUser(currentUser)
-		}
-	}, [currentUser])
-
 	return (
 		<Modal
 			disablePadding

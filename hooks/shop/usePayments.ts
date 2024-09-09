@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { ApiContext } from 'frontend-js'
+import React from 'react'
+import { useApi } from 'frontend-js'
 import { useLoaders } from '..'
 
 type UsePaymentsProps = {
@@ -8,7 +8,7 @@ type UsePaymentsProps = {
 
 const usePayments = (props: UsePaymentsProps) => {
 	const { url } = props
-	const { api } = useContext(ApiContext) as any
+	const { api } = useApi()
 
 	const { loading, loadingWrapper } = useLoaders()
 

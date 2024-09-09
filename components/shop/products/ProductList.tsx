@@ -218,7 +218,7 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 	}
 
 	if (!url) {
-		url = `${apiUrl}/shop/products`
+		url = `/${apiUrl}/shop/products`
 	}
 
 	return (

@@ -11,14 +11,14 @@ import { ShopifyContext } from 'frontend-shopify'
 import { AppContext } from '../../../context'
 import { Icon } from '../../../components'
 
-type SideNavCartButtonProps = {
+type CartButtonProps = {
 	label?: string
 	icon: string
 	totalQuantity: number
 	handleClick: () => void
 }
 
-const SideNavCartButton: React.FC<SideNavCartButtonProps> = (props) => {
+const CartButton: React.FC<CartButtonProps> = (props) => {
 	const { label = 'Cart', icon, totalQuantity, handleClick } = props
 
 	return (
@@ -45,13 +45,13 @@ const SideNavCartButton: React.FC<SideNavCartButtonProps> = (props) => {
 	)
 }
 
-type TopNavCartButtonProps = {
+type CartIconButtonProps = {
 	icon: string
 	totalQuantity: number
 	handleClick: () => void
 }
 
-const TopNavCartButton: React.FC<TopNavCartButtonProps> = (props) => {
+const CartIconButton: React.FC<CartIconButtonProps> = (props) => {
 	const { icon, totalQuantity, handleClick } = props
 
 	return (
@@ -82,13 +82,13 @@ const ShopifyCartButton: React.FC<ShopifyCartButtonProps> = (props) => {
 	}
 
 	return variant == 'topNav' ? (
-		<TopNavCartButton
+		<CartIconButton
 			icon={icon}
 			handleClick={handleCartClick}
 			totalQuantity={cart?.totalQuantity}
 		/>
 	) : (
-		<SideNavCartButton
+		<CartButton 
 			label={label}
 			icon={icon}
 			handleClick={handleCartClick}

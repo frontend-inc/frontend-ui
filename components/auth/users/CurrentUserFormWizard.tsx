@@ -124,9 +124,7 @@ const CurrentUserFormWizard: React.FC<CurrentUserFormWizardProps> = (props) => {
 	useEffect(() => {
 		if (currentUser?.id) {
 			setUser(currentUser)
-		} else {
-			fetchMe()
-		}
+		} 
 	}, [currentUser])
 
 	return (

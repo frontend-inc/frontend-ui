@@ -1,9 +1,16 @@
 import React from 'react'
-import { useResource } from 'frontend-js'
+import { useResource, useApi } from 'frontend-js'
 import { useAdmin } from '..'
 
-const useProducts = () => {
+const useProductCollections = () => {
 	const { apiUrl } = useAdmin()
+  const { api } = useApi()
+
+  const url = `${apiUrl}/product_collections`
+  const apiParams = {
+		url,
+		name: 'product_collection',
+	}
 
 	const {
 		loading,
@@ -43,14 +50,33 @@ const useProducts = () => {
 		reloadOne: reloadProduct,
 		reloadMany: reloadProducts,
 		setResource: setProduct,
-		setResources: setProducts,		
+		setResources: setProducts,
 		startIndex,
 		endIndex,
 		paginate,
-	} = useResource({
-		url: `${apiUrl}/shop/products`,
-		name: 'product',
-	})
+    loadingWrapper
+	} = useResource(apiParams)
+
+  const addProducts = async (
+		productCollectionId: number ,
+		productIds: number[]
+	) => {
+		return await loadingWrapper(() =>
+			api.addProducts(productCollectionId, productIds, {
+        url,
+        name: 'products'
+      })
+		)
+	}
+
+	const removeProducts = async (productCollectionId: number, productIds: number[]) => {    
+		return await loadingWrapper(() =>
+			api.removeProducts(productCollectionId, productIds, {
+        url,
+        name: 'products'
+      })
+		)
+	}
 
 	return {
 		paginate,
@@ -74,6 +100,10 @@ const useProducts = () => {
 		loadMore,
 		publish,
 		unpublish,
+				
+    addProducts,
+    removeProducts,    
+
 		addAttachment,
 		removeAttachment,
 		handleChange,
@@ -97,4 +127,4 @@ const useProducts = () => {
 	}
 }
 
-export default useProducts
+export default useProductCollections

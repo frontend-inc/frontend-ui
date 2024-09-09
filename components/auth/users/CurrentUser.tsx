@@ -27,12 +27,6 @@ const CurrentUser: React.FC<CurrentUserProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (!currentUser?.id) {
-			fetchMe()
-		}
-	}, [currentUser])
-
-	useEffect(() => {
 		if (currentUser) {
 			setUser(currentUser)
 		}

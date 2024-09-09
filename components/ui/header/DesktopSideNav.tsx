@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack, List, Box, Hidden } from '@mui/material'
-import { AuthButton, StripeCustomerPortalButton } from '../../../components'
+import { AuthButton, CartButton, StripeCustomerPortalButton } from '../../../components'
 import Logo from './Logo'
 import { ShopifyAuth, ShopifyCartButton } from '../../shopify'
 import { HEADER_LOGO_HEIGHT, HEADER_LOGO_WIDTH } from '../../../constants/index'
@@ -80,12 +80,13 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 					</Stack>
 					{(enableAuth || enableShopify) && (
 						<Stack direction="column" spacing={1}>
+              <CartButton size="small" />
 							{enableShopify && (
 								<>
 									<ShopifyCartButton variant="sideNav" editing={editing} />
 									<ShopifyAuth variant="sideNav" />
 								</>
-							)}
+							)}              
 							{enableStripe && <StripeCustomerPortalButton variant="sideNav" />}
 							{enableAuth && (
 								<Box sx={sx.divider}>

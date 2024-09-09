@@ -1,24 +1,16 @@
 import React from 'react'
-import {
-	ResourceToolbarModal,
-	PrimaryButton,
-	SecondaryButton,
+import {	
+	PrimaryButton,	
 } from '../../../../components'
 import { Collapse, Stack } from '@mui/material'
-import { useApi, useResource } from 'frontend-js'
-import { useAdmin } from '../../../../hooks'
+import { useProductCollections } from '../../../../hooks'
 
 const AdminProductToolbar = (props) => {
 	const { productCollectionId, url, handleSuccess } = props || {}
 
 	const { handleClose, selectedIds } = props || {}
 
-	const { addProducts } = useResource({
-		url: url,
-		name: 'products',
-	})
-
-	console.log('URL', url)
+	const { addProducts } = useProductCollections()
 
 	const handleAddProducts = async () => {
 		await addProducts(productCollectionId, selectedIds)

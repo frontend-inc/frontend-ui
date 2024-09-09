@@ -6,6 +6,8 @@ export { default as ThemeContext } from './ThemeContext'
 export { default as ThemeProvider } from './ThemeProvider'
 export { default as ScriptContext } from './ScriptContext'
 export { default as ScriptProvider } from './ScriptProvider'
+export { default as ShopContext } from './ShopContext'
+export { default as ShopProvider } from './ShopProvider'
 
 // Addons
 export { default as StripeContext } from './StripeContext'

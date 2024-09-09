@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Stack, Typography, Checkbox } from '@mui/material'
 import { Image } from '../../..'
+import { AddToCartButton } from '../../../../components'
 
 export type ProductCardProps = {
 	ref?: any
@@ -19,6 +20,7 @@ export type ProductCardProps = {
 	handleClick?: () => void
 	handleSelect?: () => void
 	height?: number
+  addToCart?: React.ReactNode
 	slots?: {
 		item?: any
 		image?: any
@@ -38,6 +40,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 		handleClick,
 		image,
 		height = 240,
+    addToCart,
 		slots = {
 			item: {},
 			image: {},
@@ -65,7 +68,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 					{...slots.image}
 				/>
 			</Box>
-			<Stack spacing={0} sx={sx.cardContent}>
+			<Stack spacing={1} sx={sx.cardContent}>
 				<Box sx={sx.content}>
 					<Typography sx={sx.title} color="text.primary" variant="subtitle1">
 						{primary}
@@ -88,8 +91,9 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 						<Typography color="text.secondary" variant="body2">
 							{secondary}
 						</Typography>
-					)}
+					)}  
 				</Box>
+        { addToCart }        
 				<Stack direction="row" justifyContent="space-between">
 					{actions}
 					{secondaryAction}

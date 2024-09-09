@@ -10,7 +10,8 @@ export type CollectionProductsGridProps = ProductListProps & {
 const CollectionProductsGrid: React.FC<CollectionProductsGridProps> = (
 	props
 ) => {
-	let { query = {}, productCollectionId, ...rest } = props
+	
+  let { query = {}, productCollectionId, ...rest } = props
 
 	query = {
 		...query,

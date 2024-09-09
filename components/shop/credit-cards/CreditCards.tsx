@@ -70,11 +70,6 @@ const CreditCards: React.FC = () => {
 		findCreditCards()
 	}, [])
 
-	useEffect(() => {
-		if (!currentUser?.id) {
-			fetchMe()
-		}
-	}, [currentUser])
 
 	return (
 		<>

@@ -5,6 +5,7 @@ import { SecondaryFields, SocialButtons, ButtonActions } from '../..'
 import { ButtonType, DisplayFieldType } from '../../../types'
 import { Box } from '@mui/material'
 import { buildActions } from '../../../helpers'
+import { AddToCartButton } from '../../../components'
 
 type CardStyleTypes = 'list' | 'card'
 
@@ -108,6 +109,14 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 					resource={resource}
 				/>
 			}
+      addToCart={
+        <Box>
+          <AddToCartButton 
+            availableForSale          
+            productId={ resource?.id }
+          />
+        </Box>
+      }
 			slots={{
 				image: {
 					enableGradient,

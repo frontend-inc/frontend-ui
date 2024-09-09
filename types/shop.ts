@@ -1,5 +1,22 @@
 import { UserType } from './users'
 
+export type LineItemType = {
+  id?: number
+  cart_id?: number
+  product_id: number  
+  product?: ProductType
+  quantity: number
+}
+
+export type CartType = {
+  id?: number
+  uid?: string
+  user_id?: number  
+  line_items: LineItemType[]
+  subtotal?: number
+  user?: UserType
+}
+
 export type ProductType = {
 	id?: number
 	label?: string
@@ -8,8 +25,10 @@ export type ProductType = {
 	description?: string
 	price?: number
 	compare_at_price?: number
+  display_price?: string
+  display_compare_at_price?: string
 	available_for_sale?: boolean
-	image?: {
+	image: {
 		url: string
 	}
 	video?: {

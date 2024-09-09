@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { AppBar, Box, Hidden, Toolbar, IconButton } from '@mui/material'
 import { Icon } from '../..'
+import { CartButton } from '../../../components'
 import { ShopifyCartButton } from '../../shopify'
 import { AppContext } from '../../../context'
 import { MenuLinkType } from '../../..'
@@ -56,6 +57,7 @@ const MobileNav = (props: MobileNavProps) => {
 							/>
 						</Box>
 						<Box sx={sx.rightMenu}>
+              <CartButton />
 							{enableShopify && <ShopifyCartButton />}
 						</Box>
 					</Box>

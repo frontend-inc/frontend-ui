@@ -52,12 +52,6 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 		}
 	}
 
-	useEffect(() => {
-		if (!currentUser?.id) {
-			fetchMe()
-		}
-	}, [currentUser?.id])
-
 	return (
 		<>
 			{!showLabel ? (

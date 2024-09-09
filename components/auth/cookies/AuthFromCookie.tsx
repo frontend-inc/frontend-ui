@@ -11,7 +11,7 @@ const AuthFromCookie: React.FC = () => {
 			if (authToken) {
 				authenticateFromToken(String(authToken))
 				if (!currentUser) {
-					fetchMe()
+					//fetchMe()
 				}
 			}
 		}
