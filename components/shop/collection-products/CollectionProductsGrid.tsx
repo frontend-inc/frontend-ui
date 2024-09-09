@@ -1,13 +1,14 @@
 import React from 'react'
 import { ProductGrid } from '../..'
-import { ProductListProps } from './ProductList'
+import { ProductListProps } from '../products/ProductList'
+import { useRouter } from 'next/router'
 
 export type CollectionProductsGridProps = ProductListProps & {
   productCollectionId: string
 }
 
 const CollectionProductsGrid: React.FC<CollectionProductsGridProps> = (props) => {
-	
+
   let { 
     query = {}, 
     productCollectionId,

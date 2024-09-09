@@ -1,3 +1,4 @@
+export * from './collection-products'
 export * from './products/cards'
 export * from './credit-cards'
 export * from './pdp'

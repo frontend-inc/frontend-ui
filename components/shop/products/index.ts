@@ -24,6 +24,3 @@ export { default as RelatedProductListItems } from './RelatedProductListItems'
 export { default as SortableProductList } from './SortableProductList'
 export { default as SortableRelatedProductList } from './SortableRelatedProductList'
 export { default as SortableRelatedProductListItems } from './SortableRelatedProductListItems'
-
-// Collection Products
-export { default as CollectionProductsGrid } from './CollectionProductsGrid'

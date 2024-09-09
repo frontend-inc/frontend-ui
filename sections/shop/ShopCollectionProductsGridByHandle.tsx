@@ -1,6 +1,6 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionProductsGrid } from '../../components/shop'
+import { CollectionProductsGridByHandle } from '../../components/shop'
 import { CollectionProductsGridProps } from '../../components/shop/collection-products/CollectionProductsGrid'
 import { SectionProps, HeadingProps } from '../../types'
 
@@ -39,7 +39,7 @@ const ShopCollectionProductsGrid: React.FC<ShopCollectionProductsGridProps> = (p
 				description={description}
 				textAlign={textAlign}
 			/>
-			<CollectionProductsGrid {...rest} />
+			<CollectionProductsGridByHandle {...rest} />
 		</Section>
 	)
 }

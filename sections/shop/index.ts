@@ -8,3 +8,4 @@ export { default as ShopProductFavoritesGrid } from './ShopProductFavoritesGrid'
 // Product collections 
 export { default as ShopProductCollectionCover } from './ShopProductCollectionCover'
 export { default as ShopCollectionProductsGrid } from './ShopCollectionProductsGrid'
+export { default as ShopCollectionProductsGridByHandle } from './ShopCollectionProductsGridByHandle'
