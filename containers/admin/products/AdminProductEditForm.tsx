@@ -23,7 +23,6 @@ const AdminProductForm: React.FC<AdminProductFormProps> = (props) => {
     handleChange,
     handleAddAttachment,
     handleRemoveAttachment,
-    handleRemove,
     handleSubmit,    
   } = props || {}
 
@@ -80,10 +79,10 @@ const AdminProductForm: React.FC<AdminProductFormProps> = (props) => {
           <FormFields
             errors={errors}
             loading={loading}
+            //@ts-ignore
             fields={fields}
             resource={resource}        
             handleChange={handleChange}
-            handleRemove={handleRemove}
           />
         </Stack>
       </Drawer>

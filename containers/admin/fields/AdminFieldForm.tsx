@@ -120,7 +120,6 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
                 ],
               },
             ]}
-            handleRemove={() => (null)}
           />
         </>
       )}

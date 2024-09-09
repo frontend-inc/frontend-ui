@@ -11,7 +11,6 @@ type AdminCollectionEditProps = {
 	handleClose: () => void
 	handleChange: (e: any) => void
 	handleSubmit: (collection: any) => void
-  handleRemove: (name: string) => void
 	handleTemplateClick: (template: any) => void
 }
 
@@ -25,7 +24,6 @@ const AdminCollectionEdit: React.FC<AdminCollectionEditProps> = (props) => {
 		handleClose,
 		handleChange,
 		handleSubmit,
-    handleRemove,
 		handleTemplateClick,
 	} = props
 
@@ -53,7 +51,6 @@ const AdminCollectionEdit: React.FC<AdminCollectionEditProps> = (props) => {
         collection={collection}
         handleChange={handleChange}
         handleTemplateClick={handleTemplateClick}
-        handleRemove={handleRemove}
       />
 		</Drawer>
 	)
