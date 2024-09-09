@@ -1,8 +1,6 @@
 import React from 'react'
 import { ButtonType, DisplayFieldType } from '../../../types'
-import {
-	PDP
-} from '../..'
+import { PDP } from '../..'
 import { useForms } from '../../../hooks'
 import { useResourceContext } from 'frontend-js'
 import {
@@ -35,7 +33,7 @@ export type ProductDetailsProps = {
 }
 
 export type ProductProps = ProductDetailsProps & {
-	url?: string	
+	url?: string
 	slots?: {
 		image?: any
 		content?: any
@@ -43,7 +41,7 @@ export type ProductProps = ProductDetailsProps & {
 }
 
 const ProductDetails: React.FC<ProductProps> = (props) => {
-	const {		
+	const {
 		displayFields = [],
 		buttons,
 		enableEdit,
@@ -75,7 +73,6 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 		},
 	}
 
-
 	if (!product?.id) return null
 	return (
 		<PDP
@@ -83,27 +80,23 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 			primary={product?.title}
 			secondary={
 				<Stack spacing={2} sx={{ width: '100%' }}>
-					<Stack
-						spacing={2}
-						sx={{ width: '100%' }}
-						alignItems='flex-start'
-					>
+					<Stack spacing={2} sx={{ width: '100%' }} alignItems="flex-start">
 						{enableRatings == true && (
 							<AvgRating resource={product} enableTotal />
 						)}
 						{displayFields?.length > 0 && (
 							<DisplayFields fields={displayFields} resource={product} />
-						)}						
+						)}
 					</Stack>
 					<ExpandableText text={product?.description} />
 				</Stack>
 			}
 			actions={
 				<SocialButtons
-          size="large"
+					size="large"
 					justifyContent={'center'}
 					resource={product}
-          product={product}
+					product={product}
 					enableProductLikes={enableLikes}
 					enableProductFavorites={enableFavorites}
 					enableSharing={enableSharing}

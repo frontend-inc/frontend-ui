@@ -5,15 +5,15 @@ import { ResourceProvider } from 'frontend-js'
 import { FormFieldType } from '../../../types'
 
 export type ProductContainerProps = ProductDetailsProps & {
-  url: string
-  foreignUrl?: string
-  fields: FormFieldType[]
+	url: string
+	foreignUrl?: string
+	fields: FormFieldType[]
 }
 
 const ProductContainer: React.FC<ProductContainerProps> = (props) => {
-	const { url, foreignUrl, fields=[], product } = props || {}
+	const { url, foreignUrl, fields = [], product } = props || {}
 
-  return (
+	return (
 		<ResourceProvider
 			name="product"
 			resource={product}
@@ -21,9 +21,7 @@ const ProductContainer: React.FC<ProductContainerProps> = (props) => {
 			foreignUrl={foreignUrl}
 		>
 			<ProductDetails {...props} url={url} />
-      <ProductForm  
-        fields={ fields }
-      />
+			<ProductForm fields={fields} />
 		</ResourceProvider>
 	)
 }

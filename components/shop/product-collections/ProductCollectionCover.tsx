@@ -16,7 +16,9 @@ export type ProductCollectionCoverProps = {
 	href?: string
 }
 
-const ProductCollectionCover: React.FC<ProductCollectionCoverProps> = (props) => {
+const ProductCollectionCover: React.FC<ProductCollectionCoverProps> = (
+	props
+) => {
 	const {
 		productCollection,
 		handleClick,

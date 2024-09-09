@@ -12,7 +12,7 @@ export const SYSTEM_FIELDS = [
 	'user_id',
 	'team_id',
 	'label',
-  'shopify_products',
+	'shopify_products',
 	'published',
 	'status',
 	'locale',
@@ -25,9 +25,8 @@ export const SYSTEM_FIELDS = [
 	'attachment',
 	'file',
 	'lat',
-	'lng'
+	'lng',
 ]
-
 
 /* SYSTEM FIELDS */
 
@@ -138,10 +137,10 @@ export const TEAM_FIELD: FieldBase = {
 export const DEFAULT_FIELDS: FieldBase[] = [
 	ID_FIELD,
 	HANDLE_FIELD,
-	TITLE_FIELD,	
+	TITLE_FIELD,
 	PUBLISHED_FIELD,
 	LOCALE_FIELD,
 	TAGS_FIELD,
 	USER_FIELD,
-  TEAM_FIELD,
+	TEAM_FIELD,
 ]

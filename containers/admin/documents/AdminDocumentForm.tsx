@@ -41,22 +41,21 @@ const AdminDocumentForm: React.FC<AdminDocumentFormProps> = (props) => {
 	if (!document) return null
 	return (
 		<Stack spacing={0}>
-			{editableFields?.map((field, i) => (				
-        <AdminDocumentInput
-          key={i}
-          errors={errors}
-          field={field}
-          value={get(document, field?.name)}
-          placeholder={field.label?.toLowerCase()}
-          handleChange={handleChange}
-          document={document}
-
-          collection={collection}
-          handleAddReferences={handleAddReferences}
-          handleRemoveReferences={handleRemoveReferences}
-          handleAddAttachment={handleAddAttachment}
-          handleRemoveAttachment={handleRemoveAttachment}
-        />
+			{editableFields?.map((field, i) => (
+				<AdminDocumentInput
+					key={i}
+					errors={errors}
+					field={field}
+					value={get(document, field?.name)}
+					placeholder={field.label?.toLowerCase()}
+					handleChange={handleChange}
+					document={document}
+					collection={collection}
+					handleAddReferences={handleAddReferences}
+					handleRemoveReferences={handleRemoveReferences}
+					handleAddAttachment={handleAddAttachment}
+					handleRemoveAttachment={handleRemoveAttachment}
+				/>
 			))}
 		</Stack>
 	)

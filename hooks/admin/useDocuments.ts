@@ -7,7 +7,7 @@ type UseDocumentProps = {
 }
 
 const useDocuments = (props: UseDocumentProps) => {
-  const { apiUrl } = useAdmin()
+	const { apiUrl } = useAdmin()
 
 	const { collection } = props
 	const {
@@ -28,7 +28,7 @@ const useDocuments = (props: UseDocumentProps) => {
 		save: saveDocument,
 		destroy: deleteDocument,
 		deleteMany: deleteDocuments,
-    loadMore,
+		loadMore,
 		publish,
 		unpublish,
 		handleChange,
@@ -48,8 +48,8 @@ const useDocuments = (props: UseDocumentProps) => {
 		sortDirection,
 		handleSort,
 		updateReferencePositions,
-    reloadOne: reloadDocument,
-    reloadMany: reloadDocuments,
+		reloadOne: reloadDocument,
+		reloadMany: reloadDocuments,
 		setResource: setDocument,
 		setResources: setDocuments,
 		startIndex,
@@ -79,7 +79,7 @@ const useDocuments = (props: UseDocumentProps) => {
 		createDocument,
 		deleteDocument,
 		deleteDocuments,
-    loadMore,
+		loadMore,
 		publish,
 		unpublish,
 		addReferences,
@@ -91,8 +91,8 @@ const useDocuments = (props: UseDocumentProps) => {
 		handleChangePage,
 		query,
 		setQuery,
-    reloadDocument,
-    reloadDocuments,
+		reloadDocument,
+		reloadDocuments,
 		page,
 		numPages,
 		perPage,

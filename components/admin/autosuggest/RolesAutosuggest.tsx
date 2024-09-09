@@ -15,7 +15,7 @@ const RolesAutosuggest: React.FC<RolesAutosuggestProps> = (props) => {
 
 	const { apiUrl } = useAdmin()
 
-  if(!apiUrl) return null;
+	if (!apiUrl) return null
 	return (
 		<RemoteAutosuggest
 			name={name}

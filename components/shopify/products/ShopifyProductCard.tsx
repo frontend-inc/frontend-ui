@@ -5,10 +5,7 @@ import { ShopifyProductType } from 'frontend-shopify'
 import { ShopifyContext } from 'frontend-shopify'
 import { formatCurrency } from 'frontend-shopify'
 import SwipeableShopifyProductImages from './images/SwipeableShopifyProductImages'
-import { 
-  ShopifyProductModal, 
-  ShopifyAddToCartButton 
-} from '..'
+import { ShopifyProductModal, ShopifyAddToCartButton } from '..'
 import { OkendoStarRating } from '../../addons'
 
 type ShopifyProductCardProps = {
@@ -95,7 +92,7 @@ const ShopifyProductCard: React.FC<ShopifyProductCardProps> = (props) => {
 							enableQuantity={enableQuantity}
 							buttonVariant={buttonVariant}
 							size="small"
-              enableFavorites
+							enableFavorites
 						/>
 					)}
 					{enableQuickShop && (

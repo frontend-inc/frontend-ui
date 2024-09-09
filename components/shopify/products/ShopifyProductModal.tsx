@@ -13,9 +13,9 @@ type ShopifyProductModalProps = {
 
 const ShopifyProductModal: React.FC<ShopifyProductModalProps> = (props) => {
 	const {
-    open = false,
+		open = false,
 		shopifyProduct,
-		enableQuantity,		
+		enableQuantity,
 		handleClose,
 		buttonText,
 	} = props

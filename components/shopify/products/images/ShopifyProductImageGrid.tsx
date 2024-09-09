@@ -15,7 +15,9 @@ type ShopifyProductImageGridProps = {
 	lg?: number
 }
 
-const ShopifyProductImageGrid: React.FC<ShopifyProductImageGridProps> = (props) => {
+const ShopifyProductImageGrid: React.FC<ShopifyProductImageGridProps> = (
+	props
+) => {
 	const {
 		images,
 		handleClick,

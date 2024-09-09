@@ -1,5 +1,5 @@
 import React from 'react'
-import { useMedia ,useAlerts } from '../../../hooks'
+import { useMedia, useAlerts } from '../../../hooks'
 import { DropZone } from '../../../components'
 import { MAX_FILE_SIZE } from '../../../constants'
 
@@ -29,12 +29,7 @@ const MediaUploader: React.FC<MediaUploaderProps> = (props) => {
 		}
 	}
 
-	return(
-    <DropZone 
-      label="Drag-and-drop to upload." 
-      onDrop={handleUpload} 
-    />
-  )
+	return <DropZone label="Drag-and-drop to upload." onDrop={handleUpload} />
 }
 
 export default MediaUploader

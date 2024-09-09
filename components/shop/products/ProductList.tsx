@@ -25,12 +25,12 @@ export type ProductListProps = {
 	grid?: boolean
 	selectable?: boolean
 	style: string
-  url?: string
+	url?: string
 	href?: string
 	displayFields: DisplayFieldType[]
 	enableLikes?: boolean
 	enableFavorites?: boolean
-	enableRatings?: boolean	
+	enableRatings?: boolean
 	enableUsers?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
@@ -84,13 +84,12 @@ export type ProductListProps = {
 }
 
 const ProductList: React.FC<ProductListProps> = (props) => {
+	const { apiUrl } = useApp()
 
-  const { apiUrl } = useApp()
-
-  let { url } = props || {}
+	let { url } = props || {}
 	const {
 		grid = false,
-		selectable = false,    
+		selectable = false,
 		foreignUrl,
 		query,
 		resource,
@@ -106,7 +105,7 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		enableOverlay,
 
 		style = 'list',
-		href,    
+		href,
 		buttons = [],
 		displayFields = [],
 		circular,
@@ -147,7 +146,7 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 			empty: {},
 		},
 	} = props || {}
-  
+
 	const searchQuery = buildSearchQuery({
 		query,
 		resource,
@@ -155,7 +154,6 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		filterUser,
 		filterSimilar,
 	})
-
 
 	const slots = {
 		list: {
@@ -207,7 +205,7 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 			circular,
 			disableImage,
 			style,
-			buttons,      
+			buttons,
 			displayFields,
 			enableLikes,
 			enableFavorites,
@@ -219,9 +217,9 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		},
 	}
 
-  if (!url){
-    url = `${apiUrl}/shop/products`;  
-  }
+	if (!url) {
+		url = `${apiUrl}/shop/products`
+	}
 
 	return (
 		<DataList

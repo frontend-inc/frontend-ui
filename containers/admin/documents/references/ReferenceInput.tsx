@@ -69,7 +69,10 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
 	useEffect(() => {
 		if (field && document) {
 			if (field?.variant == 'habtm') {
-        let references = filterReferences(document, field?.foreign_collection?.class_name)									
+				let references = filterReferences(
+					document,
+					field?.foreign_collection?.class_name
+				)
 				setResources(references || [])
 			}
 		}

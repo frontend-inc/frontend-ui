@@ -9,7 +9,7 @@ type AdminCollectionFormProps = {
 	collection: any
 	handleChange: (e: any) => void
 	handleTemplateClick: (template: any) => void
-	errors: any  
+	errors: any
 }
 
 const AdminCollectionForm: React.FC<AdminCollectionFormProps> = (props) => {
@@ -18,25 +18,25 @@ const AdminCollectionForm: React.FC<AdminCollectionFormProps> = (props) => {
 	return (
 		<Stack direction="column" spacing={1}>
 			<Box p={2}>
-        <FormFields 
-          errors={errors }
-          handleChange={handleChange}
-          resource={ collection }
-          fields={[
-            {
-              label: 'Name',
-              name: 'label',
-              placeholder: 'Name',
-              variant: 'string'
-            },
-            {
-              label: 'API name',
-              name: 'name',
-              placeholder: 'API name',
-              variant: 'nospace'
-            },
-          ]}
-        />				
+				<FormFields
+					errors={errors}
+					handleChange={handleChange}
+					resource={collection}
+					fields={[
+						{
+							label: 'Name',
+							name: 'label',
+							placeholder: 'Name',
+							variant: 'string',
+						},
+						{
+							label: 'API name',
+							name: 'name',
+							placeholder: 'API name',
+							variant: 'nospace',
+						},
+					]}
+				/>
 			</Box>
 			{!collection?.id && (
 				<MenuList enableBorder label="Templates">

@@ -26,9 +26,9 @@ const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 
 	const { deleteResource } = useMedia()
 
-  const handleTabChange = (value: number) => {
-    setTab(value)
-  }
+	const handleTabChange = (value: number) => {
+		setTab(value)
+	}
 
 	const handleSelect = (resource) => {
 		setSelected(resource)
@@ -58,7 +58,7 @@ const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 	const OPTIONS = [
 		{ label: 'Browse', value: 0 },
 		{ label: 'Upload', value: 1 },
-		{ label: 'Unsplash', value: 2 }
+		{ label: 'Unsplash', value: 2 },
 	]
 
 	return (
@@ -114,9 +114,7 @@ const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 									handleRemoveItem={handleRemoveItem}
 								/>
 							)}
-							<UnsplashList								
-								onComplete={handleComplete}
-							/>
+							<UnsplashList onComplete={handleComplete} />
 						</>
 					)}
 				</Box>

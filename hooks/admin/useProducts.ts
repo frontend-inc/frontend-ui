@@ -2,9 +2,8 @@ import React from 'react'
 import { useResource } from 'frontend-js'
 import { useAdmin } from '..'
 
-
 const useProducts = () => {
-  const { apiUrl } = useAdmin()
+	const { apiUrl } = useAdmin()
 
 	const {
 		loading,
@@ -24,7 +23,7 @@ const useProducts = () => {
 		save: saveProduct,
 		destroy: deleteProduct,
 		deleteMany: deleteProducts,
-    loadMore,
+		loadMore,
 		publish,
 		unpublish,
 		handleChange,
@@ -44,11 +43,11 @@ const useProducts = () => {
 		sortDirection,
 		handleSort,
 		updateRelatedProductPositions,
-    reloadOne: reloadProduct,
-    reloadMany: reloadProducts,
+		reloadOne: reloadProduct,
+		reloadMany: reloadProducts,
 		setResource: setProduct,
 		setResources: setProducts,
-    checkout,
+		checkout,
 		startIndex,
 		endIndex,
 		paginate,
@@ -76,21 +75,21 @@ const useProducts = () => {
 		createProduct,
 		deleteProduct,
 		deleteProducts,
-    loadMore,
+		loadMore,
 		publish,
 		unpublish,
 		addRelatedProduct,
 		removeRelatedProduct,
 		updateRelatedProductPositions,
-    checkout,
+		checkout,
 		addAttachment,
 		removeAttachment,
 		handleChange,
 		handleChangePage,
 		query,
 		setQuery,
-    reloadProduct,
-    reloadProducts,
+		reloadProduct,
+		reloadProducts,
 		page,
 		numPages,
 		perPage,

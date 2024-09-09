@@ -29,9 +29,9 @@ const ProductAutosuggest: React.FC<ProductAutosuggestProps> = (props) => {
 		defaultOptions = [],
 	} = props
 
-  const { apiUrl } = useAdmin()
+	const { apiUrl } = useAdmin()
 
-  if(!apiUrl) return null;
+	if (!apiUrl) return null
 	return (
 		<RemoteAutosuggest
 			name={name}
@@ -39,7 +39,7 @@ const ProductAutosuggest: React.FC<ProductAutosuggestProps> = (props) => {
 			value={value}
 			direction={direction}
 			valueParam={valueParam}
-			displayField='title'
+			displayField="title"
 			url={`${apiUrl}/products`}
 			placeholder={placeholder}
 			handleChange={handleChange}

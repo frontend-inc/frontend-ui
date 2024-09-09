@@ -63,7 +63,9 @@ const MENU_ITEMS = [
 	},
 ]
 
-const ShopifyCustomerAccount: React.FC<ShopifyCustomerAccountProps> = (props) => {
+const ShopifyCustomerAccount: React.FC<ShopifyCustomerAccountProps> = (
+	props
+) => {
 	const {
 		loginUrl,
 		title = 'My Account',
@@ -76,8 +78,7 @@ const ShopifyCustomerAccount: React.FC<ShopifyCustomerAccountProps> = (props) =>
 	const { customer } = useAuth()
 
 	const handleLogin = () => {
-    if(loginUrl)
-		  router.push(loginUrl)
+		if (loginUrl) router.push(loginUrl)
 	}
 
 	const handleClick = (path: string) => {

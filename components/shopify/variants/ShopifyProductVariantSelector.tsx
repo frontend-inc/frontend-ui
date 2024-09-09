@@ -9,9 +9,9 @@ type ShopifyProductVariantSelectorProps = {
 	handleOptionChange: any
 }
 
-const ShopifyProductVariantSelector: React.FC<ShopifyProductVariantSelectorProps> = (
-	props
-) => {
+const ShopifyProductVariantSelector: React.FC<
+	ShopifyProductVariantSelectorProps
+> = (props) => {
 	const { product, selectedOptions, handleOptionChange } = props
 
 	const productOption = (optionName) => {

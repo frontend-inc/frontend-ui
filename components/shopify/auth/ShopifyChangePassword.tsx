@@ -36,9 +36,9 @@ const ShopifyChangePassword: React.FC<ShopifyChangePasswordProps> = (props) => {
 	}
 
 	const handleLogin = () => {
-    if(loginUrl){
-		  router.push(loginUrl)
-    }
+		if (loginUrl) {
+			router.push(loginUrl)
+		}
 	}
 
 	return (

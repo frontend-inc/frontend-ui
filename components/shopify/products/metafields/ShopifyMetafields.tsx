@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import {
 	getMetafieldValue,
-	getMetafieldType,  
+	getMetafieldType,
 	ShopifyMetafieldType,
 } from 'frontend-shopify'
 import {
@@ -23,34 +23,39 @@ export type ShopifyProductMetafieldsProps = {
 	metafields: ShopifyMetafieldType[]
 }
 
-const ShopifyProductMetafields: React.FC<ShopifyProductMetafieldsProps> = (props) => {
+const ShopifyProductMetafields: React.FC<ShopifyProductMetafieldsProps> = (
+	props
+) => {
 	const { shopifyProduct, metafields } = props
 
 	const { product, findProduct } = useProducts()
 
 	useEffect(() => {
 		if (shopifyProduct && metafields) {
-      const metafieldIdentifiers = metafields?.map(metafield => ({
-        namespace: metafield.name.split('.')[0],
-        key: metafield.name.split('.')[1],
-      }))
+			const metafieldIdentifiers = metafields?.map((metafield) => ({
+				namespace: metafield.name.split('.')[0],
+				key: metafield.name.split('.')[1],
+			}))
 			findProduct(shopifyProduct?.handle, metafieldIdentifiers)
 		}
 	}, [shopifyProduct, metafields])
-  
+
 	if (!product || !metafields) return null
 	return (
 		<Box sx={sx.root}>
 			{product &&
 				metafields?.map((metafield, index) => {
 					const { label, name } = metafield
-          const key = name.split('.')[1]
+					const key = name.split('.')[1]
 					const type = getMetafieldType(product, key)
 					const value = getMetafieldValue(product, key)
 
 					return (
 						<Accordion sx={sx.accordion} elevation={0} key={index}>
-							<AccordionSummary sx={ sx.accordionSummary } expandIcon={<Icon name="Plus" />}>
+							<AccordionSummary
+								sx={sx.accordionSummary}
+								expandIcon={<Icon name="Plus" />}
+							>
 								<Typography variant="subtitle2">{label}</Typography>
 							</AccordionSummary>
 							<AccordionDetails>
@@ -80,12 +85,12 @@ export default ShopifyProductMetafields
 const sx = {
 	root: {
 		my: 2,
-    borderRadius: 0,
+		borderRadius: 0,
 	},
-  accordionSummary: {
-    borderTop: '1px solid',
-    borderColor: 'divider',
-  },
+	accordionSummary: {
+		borderTop: '1px solid',
+		borderColor: 'divider',
+	},
 	accordion: {
 		borderColor: 'divider',
 		my: '0px !important',

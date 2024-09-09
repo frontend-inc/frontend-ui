@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useProducts } from 'frontend-shopify'
-import { ShopifyProductGrid, ShopifyProductCarousel } from '../../../components/shopify'
+import {
+	ShopifyProductGrid,
+	ShopifyProductCarousel,
+} from '../../../components/shopify'
 import { Box } from '@mui/material'
 
 export type ShopifyProductRecommendationsProps = {
@@ -17,9 +20,9 @@ export type ShopifyProductRecommendationsProps = {
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 }
 
-const ShopifyProductRecommendations: React.FC<ShopifyProductRecommendationsProps> = (
-	props
-) => {
+const ShopifyProductRecommendations: React.FC<
+	ShopifyProductRecommendationsProps
+> = (props) => {
 	const {
 		handle,
 		href,

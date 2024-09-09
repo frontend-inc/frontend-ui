@@ -10,23 +10,19 @@ type AdminShopifyMetafieldItemProps = {
 	handleDelete: () => void
 }
 
-const AdminShopifyMetafieldItem: React.FC<AdminShopifyMetafieldItemProps> = (props) => {
+const AdminShopifyMetafieldItem: React.FC<AdminShopifyMetafieldItemProps> = (
+	props
+) => {
 	const { resource, sortable, handleClick, handleEdit, handleDelete } = props
 
 	return (
 		<ResourceListItem
 			enableBorder
 			sortable={sortable}
-			avatar={
-        <FieldIcon 
-          variant={resource?.variant} 
-        />
-      }
+			avatar={<FieldIcon variant={resource?.variant} />}
 			primary={resource?.label}
 			secondary={`${resource?.name}`}
-			secondaryAction={
-        <Label label={resource?.variant} />
-      }
+			secondaryAction={<Label label={resource?.variant} />}
 			handleClick={handleClick}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Stack, Box, Button, List, Typography } from '@mui/material'
-import { ShopifyAddressItem, ShopifyOrderLineItem } from '../../../components/shopify'
+import {
+	ShopifyAddressItem,
+	ShopifyOrderLineItem,
+} from '../../../components/shopify'
 import { formatCurrency } from 'frontend-shopify'
 import { ShopifyOrderType, OrderLineItemType } from 'frontend-shopify'
 import { ExternalLink } from 'lucide-react'
@@ -23,9 +26,9 @@ const ShopifyOrderDetails: React.FC<ShopifyOrderDetailsProps> = (props) => {
 	}
 
 	const handleSupportClick = () => {
-    if(supportUrl){
-		  router.push(supportUrl)
-    }
+		if (supportUrl) {
+			router.push(supportUrl)
+		}
 	}
 
 	useEffect(() => {

@@ -9,37 +9,39 @@ import AdminProductCollectionToolbar from './AdminProductCollectionToolbar'
 import { useRouter } from 'next/router'
 
 const AdminProductCollectionsList: React.FC = () => {
-  const router = useRouter()
-  const { clientUrl } = useAdmin()
+	const router = useRouter()
+	const { clientUrl } = useAdmin()
 	const { apiUrl } = useAdmin()
 
-  const handleClick = (productCollection) => {
-    router.push(`${clientUrl}/shop/product-collections/${productCollection.handle}/products`)
-  }
+	const handleClick = (productCollection) => {
+		router.push(
+			`${clientUrl}/shop/product-collections/${productCollection.handle}/products`
+		)
+	}
 
 	return (
-		<ResourceList     
-      grid 
-      selectable
+		<ResourceList
+			grid
+			selectable
 			url={`${apiUrl}/product_collections`}
 			name={'product_collection'}
 			enableSearch
 			enableEdit
 			enableDelete
 			enableCreate
-      handleClick={ handleClick }
+			handleClick={handleClick}
 			sortOptions={[
-				{ name: 'title', label: 'Title' },				
+				{ name: 'title', label: 'Title' },
 				{ name: 'created_at', label: 'Date' },
 			]}
 			create={AdminProductCollectionCreate}
 			edit={AdminProductCollectionEdit}
 			show={AdminProductCollectionShow}
-      toolbar={ AdminProductCollectionToolbar }
-			component={AdminProductCollectionItem}      			
-      emptyIcon="ShoppingCard"
-      emptyTitle="No product collections"
-      emptyDescription="No products collections added yet."
+			toolbar={AdminProductCollectionToolbar}
+			component={AdminProductCollectionItem}
+			emptyIcon="ShoppingCard"
+			emptyTitle="No product collections"
+			emptyDescription="No products collections added yet."
 		/>
 	)
 }

@@ -26,7 +26,9 @@ type ShopifyCartQuantityInputProps = {
 	handleRemoveQuantity: (event: any) => void
 }
 
-const ShopifyCartQuantityInput: React.FC<ShopifyCartQuantityInputProps> = (props) => {
+const ShopifyCartQuantityInput: React.FC<ShopifyCartQuantityInputProps> = (
+	props
+) => {
 	const { quantity, handleAddQuantity, handleRemoveQuantity } = props
 
 	return (
@@ -62,14 +64,14 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = (props) => {
 	const {
 		//@ts-ignore
 		product,
-    //@ts-ignore
+		//@ts-ignore
 		price: { amount },
 		//@ts-ignore
-		compareAtPrice: compareAtAmount,    
-		image: { 
-      //@ts-ignore
-      url 
-    },
+		compareAtPrice: compareAtAmount,
+		image: {
+			//@ts-ignore
+			url,
+		},
 	} = merchandise || {}
 
 	const handleUpdateQuantity = async (quantity) => {
@@ -104,16 +106,16 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = (props) => {
 	}
 
 	useEffect(() => {
-    //@ts-ignore
+		//@ts-ignore
 		if (sellingPlanAllocation?.priceAdjustments?.length > 0) {
-      //@ts-ignore
+			//@ts-ignore
 			setPrice(sellingPlanAllocation.priceAdjustments[0].price.amount)
 			setCompareAtPrice(
-        //@ts-ignore
+				//@ts-ignore
 				sellingPlanAllocation.priceAdjustments[0].compareAtPrice.amount
 			)
 		} else {
-      //@ts-ignore
+			//@ts-ignore
 			setPrice(amount)
 			setCompareAtPrice(compareAtAmount?.amount)
 		}
@@ -135,7 +137,7 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = (props) => {
 			<ListItemIcon sx={sx.listItemIcon}>
 				<Badge badgeContent={quantity} color="secondary">
 					<TouchableOpacity handleClick={handleClick}>
-						<Image              
+						<Image
 							alt={line?.merchandise?.product?.title || ''}
 							src={url}
 							height={96}

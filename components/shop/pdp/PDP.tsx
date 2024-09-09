@@ -5,9 +5,9 @@ import { Image } from '../..'
 export type PDPProps = {
 	label?: string
 	image?: string
-  price?: string
-  compareAtPrice?: string
-  availableForSale?: boolean
+	price?: string
+	compareAtPrice?: string
+	availableForSale?: boolean
 	primary?: string
 	secondary?: React.ReactNode
 	actions?: React.ReactNode
@@ -25,9 +25,9 @@ const PDP: React.FC<PDPProps> = (props) => {
 		image,
 		primary,
 		secondary,
-    price,
-    compareAtPrice,
-    availableForSale,
+		price,
+		compareAtPrice,
+		availableForSale,
 		actions,
 		secondaryAction,
 		slots = {

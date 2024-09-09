@@ -18,8 +18,7 @@ type FieldAutosuggestProps = {
 }
 
 const FieldAutosuggest: React.FC<FieldAutosuggestProps> = (props) => {
-
-  const { apiUrl } = useAdmin()
+	const { apiUrl } = useAdmin()
 
 	const {
 		value,
@@ -34,7 +33,7 @@ const FieldAutosuggest: React.FC<FieldAutosuggestProps> = (props) => {
 		defaultOptions = [],
 	} = props
 
-	if (!collectionId || apiUrl) return null;
+	if (!collectionId || apiUrl) return null
 	return (
 		<RemoteAutosuggest
 			name={name}

@@ -16,7 +16,6 @@ const Label: React.FC<LabelProps> = (props) => {
 		<Chip
 			label={label}
 			sx={{
-
 				...sx.chip,
 				...(darkMode && sx.darkMode),
 				...(color && { bgcolor: color }),
@@ -36,7 +35,7 @@ const sx = {
 		cursor: 'pointer',
 		borderRadius: 0.5,
 		boxShadow: '1px 0px 0 0 rgba(0,0,0,0.1)',
-    textTransform: 'uppercase',
+		textTransform: 'uppercase',
 	},
 	darkMode: {
 		bgcolor: 'background.paper',

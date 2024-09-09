@@ -5,7 +5,7 @@ import { ChatBubbleOutline } from '@mui/icons-material'
 
 type CommentButtonProps = {
 	resource: any
-  size?: 'small' | 'large'
+	size?: 'small' | 'large'
 	color?: string
 }
 
@@ -23,11 +23,11 @@ const CommentButton: React.FC<CommentButtonProps> = (props) => {
 		<Box>
 			<IconButton
 				onClick={handleClick}
-				sx={{					
+				sx={{
 					...sx.icon,
-          ...(size == 'large' && sx.large),
-          color,
-          '&:hover': {
+					...(size == 'large' && sx.large),
+					color,
+					'&:hover': {
 						color,
 					},
 				}}
@@ -42,13 +42,13 @@ export default CommentButton
 
 const sx = {
 	icon: {
-    bgcolor: 'background.main',
+		bgcolor: 'background.main',
 		color: 'text.secondary',
 		'&:hover': {
 			bgcolor: 'background.main',
 			color: 'text.secondary',
 		},
-  },
+	},
 	large: {
 		border: '1px solid',
 		borderColor: 'divider',

@@ -4,25 +4,23 @@ import { ProductListProps } from '../products/ProductList'
 import { useRouter } from 'next/router'
 
 export type CollectionProductsGridProps = ProductListProps & {
-  productCollectionId: string
+	productCollectionId: string
 }
 
-const CollectionProductsGridByHandle: React.FC<CollectionProductsGridProps> = (props) => {
+const CollectionProductsGridByHandle: React.FC<CollectionProductsGridProps> = (
+	props
+) => {
+	const router = useRouter()
+	const { handle } = router.query
 
-  const router = useRouter()
-  const { handle } = router.query
+	console.log('Params', router.query)
 
-  console.log("Params", router.query)
-  
-  let { 
-    query = {}, 
-    ...rest 
-  } = props
+	let { query = {}, ...rest } = props
 
 	query = {
 		...query,
 		method: 'collection_products',
-    product_collection_id: handle
+		product_collection_id: handle,
 	}
 
 	return <ProductGrid query={query} {...rest} />

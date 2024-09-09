@@ -10,11 +10,13 @@ const UnsplashProvider = (props: UnsplashProviderProps) => {
 	const { children, apiKey } = props || {}
 
 	const value = {
-		unsplashApiKey: apiKey
+		unsplashApiKey: apiKey,
 	}
 
 	return (
-		<UnsplashContext.Provider value={value}>{children}</UnsplashContext.Provider>
+		<UnsplashContext.Provider value={value}>
+			{children}
+		</UnsplashContext.Provider>
 	)
 }
 

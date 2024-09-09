@@ -24,7 +24,7 @@ type ResourceDetailsProps = {
 	handleEdit?: () => void
 	handleDelete?: () => void
 	fields: DisplayFieldType[]
-  direction?: 'row' | 'column'
+	direction?: 'row' | 'column'
 }
 
 const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
@@ -43,7 +43,7 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 		enableDelete,
 		handleEdit,
 		handleDelete,
-    direction = 'column'
+		direction = 'column',
 	} = props || {}
 
 	return (

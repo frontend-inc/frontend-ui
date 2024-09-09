@@ -15,9 +15,9 @@ type SwipeableShopifyProductImagesProps = {
 	disableBorderRadius?: boolean
 }
 
-const SwipeableShopifyProductImages: React.FC<SwipeableShopifyProductImagesProps> = (
-	props
-) => {
+const SwipeableShopifyProductImages: React.FC<
+	SwipeableShopifyProductImagesProps
+> = (props) => {
 	const {
 		product,
 		height = 320,

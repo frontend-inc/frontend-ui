@@ -56,8 +56,8 @@ const FormFields: React.FC<FormProps> = (props) => {
 					disabled={loading}
 					endIcon={
 						loading ? (
-              <IconLoading color="primary.contrastText" loading={loading} />
-            ) : null
+							<IconLoading color="primary.contrastText" loading={loading} />
+						) : null
 					}
 				>
 					{buttonText}

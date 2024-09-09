@@ -23,7 +23,9 @@ type ShopifyProductCarouselProps = {
 	enableOkendoStarRating?: boolean
 }
 
-const ShopifyProductCarousel: React.FC<ShopifyProductCarouselProps> = (props) => {
+const ShopifyProductCarousel: React.FC<ShopifyProductCarouselProps> = (
+	props
+) => {
 	const {
 		href = '/products',
 		products,

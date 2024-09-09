@@ -28,12 +28,9 @@ const DocumentAutosuggest: React.FC<DocumentAutosuggestProps> = (props) => {
 		direction = 'column',
 	} = props
 
-  const { apiUrl } = useAdmin()
+	const { apiUrl } = useAdmin()
 
-	const { 
-    collection, 
-    findCollection 
-  } = useCollections()
+	const { collection, findCollection } = useCollections()
 
 	useEffect(() => {
 		if (collectionId) {

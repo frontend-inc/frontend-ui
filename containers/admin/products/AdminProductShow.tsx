@@ -21,28 +21,26 @@ const AdminProductShow: React.FC<AdminProductShowProps> = (props) => {
 	} = props || {}
 
 	let fields = [
-    { label: 'Handle', name: 'handle', variant: 'string' },
+		{ label: 'Handle', name: 'handle', variant: 'string' },
 		{ label: 'Title', name: 'title', variant: 'string' },
-		{ label: 'Description', name: 'description', variant: 'text' },		
-    { label: 'Label', name: 'label', variant: 'string' },
-    { label: 'Price', name: 'price', variant: 'number' },
-    { label: 'Compare at price', name: 'compare_at_price', variant: 'number' },
-    { label: 'SKU', name: 'sku', variant: 'string' },
-    { label: 'Subscription', name: 'recurring', variant: 'boolean' },
-    { 
-      label: 'Interval', 
-      name: 'interval', 
-      variant: 'select',
-      options: [
-        { label: 'Day', value: 'day' },
-        { label: 'Week', value: 'week' },
-        { label: 'Month', value: 'month' },
-        { label: 'Year', value: 'year' }
-      ],
-      conditions: [
-        { name: 'recurring', operator: 'eq', value: true }
-      ] 
-    },    
+		{ label: 'Description', name: 'description', variant: 'text' },
+		{ label: 'Label', name: 'label', variant: 'string' },
+		{ label: 'Price', name: 'price', variant: 'number' },
+		{ label: 'Compare at price', name: 'compare_at_price', variant: 'number' },
+		{ label: 'SKU', name: 'sku', variant: 'string' },
+		{ label: 'Subscription', name: 'recurring', variant: 'boolean' },
+		{
+			label: 'Interval',
+			name: 'interval',
+			variant: 'select',
+			options: [
+				{ label: 'Day', value: 'day' },
+				{ label: 'Week', value: 'week' },
+				{ label: 'Month', value: 'month' },
+				{ label: 'Year', value: 'year' },
+			],
+			conditions: [{ name: 'recurring', operator: 'eq', value: true }],
+		},
 		...metafields,
 	]
 
@@ -51,9 +49,9 @@ const AdminProductShow: React.FC<AdminProductShowProps> = (props) => {
 			loading={loading}
 			open={open}
 			handleClose={handleClose}
-      image={ resource?.image?.url }
+			image={resource?.image?.url}
 			primary={resource?.title}
-			secondary={ resource?.description }
+			secondary={resource?.description}
 			label={resource?.display_price}
 			enableEdit={enableEdit}
 			enableDelete={enableDelete}
@@ -61,7 +59,7 @@ const AdminProductShow: React.FC<AdminProductShowProps> = (props) => {
 			handleDelete={handleDelete}
 			resource={resource}
 			fields={fields}
-      direction="column"
+			direction="column"
 		/>
 	)
 }

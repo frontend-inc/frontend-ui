@@ -51,7 +51,9 @@ type ShopifyProductImageSliderProps = {
 	thumbnailSize?: number
 }
 
-const ShopifyProductImageSlider: React.FC<ShopifyProductImageSliderProps> = (props) => {
+const ShopifyProductImageSlider: React.FC<ShopifyProductImageSliderProps> = (
+	props
+) => {
 	const { image, images, handleClick, thumbnailSize = 80 } = props
 
 	return (

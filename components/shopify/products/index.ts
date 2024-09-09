@@ -15,7 +15,6 @@ export { default as ShopifyProductModal } from './ShopifyProductModal'
 export { default as ShopifyProductRecommendations } from './ShopifyProductRecommendations'
 export { default as ShopifyProductSearch } from './ShopifyProductSearch'
 
-
 // Metafields
 export { default as ShopifyMetafields } from './metafields/ShopifyMetafields'
 export { default as ShopifyMetafieldImage } from './metafields/ShopifyMetafieldImage'

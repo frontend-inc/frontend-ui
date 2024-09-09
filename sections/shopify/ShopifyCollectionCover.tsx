@@ -6,9 +6,9 @@ import { SectionProps } from '../../types'
 
 type ShopifyCollectionCoverProps = SectionProps & CollectionCoverProps
 
-const ShopifyCollectionCover: React.FC<
-	ShopifyCollectionCoverProps
-> = (props) => {
+const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
+	props
+) => {
 	const {
 		mode,
 		py,

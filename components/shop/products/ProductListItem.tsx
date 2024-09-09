@@ -1,22 +1,19 @@
 import React from 'react'
-import {	
-	ProductCard,	
-  ProductListCard,
-} from '../..'
+import { ProductCard, ProductListCard } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { SecondaryFields, SocialButtons, ButtonActions } from '../..'
 import { ButtonType, DisplayFieldType } from '../../../types'
 import { Box } from '@mui/material'
 import { buildActions } from '../../../helpers'
 
-type CardStyleTypes = 'list' | 'card' 
+type CardStyleTypes = 'list' | 'card'
 
 type ProductListItemProps = {
 	selectable?: boolean
 	buttons: ButtonType[]
 	style: CardStyleTypes
 	displayFields: DisplayFieldType[]
-	resource: any 
+	resource: any
 	buttonText?: string
 	href?: string
 	handleClick: () => void
@@ -27,7 +24,7 @@ type ProductListItemProps = {
 	enableOverlay?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
-	enableUsers?: boolean	
+	enableUsers?: boolean
 	enableFavorites?: boolean
 	enableAddToList?: boolean
 	enableLikes?: boolean
@@ -71,8 +68,8 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 			label={resource?.label}
 			image={resource?.image?.url}
 			primary={resource?.title}
-      price={resource?.display_price}
-      compareAtPrice={resource?.display_compare_at_price}
+			price={resource?.display_price}
+			compareAtPrice={resource?.display_compare_at_price}
 			handleClick={handleClick}
 			selectable={selectable}
 			selected={selectedIds?.includes(resource?.id)}
@@ -90,10 +87,10 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 					<SocialButtons
 						size="small"
 						justifyContent="flex-start"
-            resource={resource}
+						resource={resource}
 						product={resource}
 						enableProductLikes={enableLikes}
-						enableProductFavorites={enableFavorites}						
+						enableProductFavorites={enableFavorites}
 						enableAddToList={enableAddToList}
 					/>
 				</Box>

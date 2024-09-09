@@ -6,7 +6,7 @@ import {
 	ListItemButton,
 	ListItemText,
 	ListItemIcon,
-  Typography,
+	Typography,
 	Checkbox,
 } from '@mui/material'
 import { Image, Icon, MenuButton } from '../..'
@@ -27,7 +27,7 @@ export type ResourceListItemProps = {
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
 	handleSelect?: () => void
-  handleReload?: () => void
+	handleReload?: () => void
 	secondaryAction?: React.ReactNode
 	menuActions?: any
 	sortable?: boolean
@@ -102,13 +102,8 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 				)}
 				{avatar && <ListItemIcon sx={sx.listItemIcon}>{avatar}</ListItemIcon>}
 				{!avatar && image && (
-					<ListItemIcon sx={sx.listItemImage }>
-						<Image 
-              src={image} 
-              width={64} 
-              height={64} 
-              alt={image} 
-            />
+					<ListItemIcon sx={sx.listItemImage}>
+						<Image src={image} width={64} height={64} alt={image} />
 					</ListItemIcon>
 				)}
 				{icon && (
@@ -123,12 +118,14 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 						</Avatar>
 					</ListItemIcon>
 				)}
-				<ListItemText primary={
-          <Typography variant="body1" color="text.primary">
-            { primary }
-          </Typography>
-         } 
-        secondary={secondary} />
+				<ListItemText
+					primary={
+						<Typography variant="body1" color="text.primary">
+							{primary}
+						</Typography>
+					}
+					secondary={secondary}
+				/>
 			</ListItemButton>
 		</ListItem>
 	)
@@ -138,19 +135,19 @@ export default ResourceListItem
 
 const sx = {
 	root: {
-    my: 0.5,
+		my: 0.5,
 		p: 0,
 		borderRadius: 1,
-		overflow: 'hidden',    
-    bgcolor: 'background.paper',    
+		overflow: 'hidden',
+		bgcolor: 'background.paper',
 	},
 	rootBorder: {
 		border: '1px solid',
-		borderColor: 'divider',		
-    transition: 'box-shadow 0.2s',
-    '&:hover': {
-      boxShadow: 1
-    },
+		borderColor: 'divider',
+		transition: 'box-shadow 0.2s',
+		'&:hover': {
+			boxShadow: 1,
+		},
 		mb: 1,
 	},
 	listItemButton: {
@@ -166,10 +163,10 @@ const sx = {
 	listItemIcon: {
 		mr: 2,
 	},
-  listItemImage: {
-    mr: 2,
-    minWidth: 64,
-  },
+	listItemImage: {
+		mr: 2,
+		minWidth: 64,
+	},
 	checkbox: {
 		width: 24,
 	},
@@ -180,7 +177,7 @@ const sx = {
 			cursor: 'grabbing',
 		},
 	},
-  isDragging: {
-    boxShadow: 2,
-  }
+	isDragging: {
+		boxShadow: 2,
+	},
 }

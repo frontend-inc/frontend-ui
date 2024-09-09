@@ -26,27 +26,19 @@ const AdminViewEdit: React.FC<AdminViewEditProps> = (props) => {
 
 	return (
 		<Drawer
-      loading={loading}
+			loading={loading}
 			open={open}
 			handleClose={handleClose}
-			title='Save view'
+			title="Save view"
 			buttons={
-        <PrimaryButton 
-          loading={loading}
-          onClick={handleSubmit}
-        >
-          Save 
-        </PrimaryButton>        				
+				<PrimaryButton loading={loading} onClick={handleSubmit}>
+					Save
+				</PrimaryButton>
 			}
 		>
-			<AdminViewForm 
-        errors={errors} 
-        view={view} 
-        handleChange={handleChange} 
-      />
+			<AdminViewForm errors={errors} view={view} handleChange={handleChange} />
 		</Drawer>
 	)
 }
 
 export default AdminViewEdit
-

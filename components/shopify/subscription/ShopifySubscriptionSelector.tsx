@@ -9,7 +9,9 @@ type ShopifySubscriptionSelectorProps = {
 	activeSellingPlanId?: string
 }
 
-const ShopifySubscriptionSelector: React.FC<ShopifySubscriptionSelectorProps> = (props) => {
+const ShopifySubscriptionSelector: React.FC<
+	ShopifySubscriptionSelectorProps
+> = (props) => {
 	const { product, activeSellingPlanId = '', handleChange } = props
 	const [sellingPlans, setSellingPlans] = useState<any>(null)
 

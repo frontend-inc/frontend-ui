@@ -16,13 +16,13 @@ import { truncate } from '../../../helpers'
 
 type DocumentEditProps = {
 	appId: string | number
-  collectionId: string | number
-  documentId: string | number
+	collectionId: string | number
+	documentId: string | number
 	errors?: any
 	enablePayments?: boolean
-	enableUsers?: boolean 
-	enableTeams?: boolean 
-	enableShopify?: boolean 
+	enableUsers?: boolean
+	enableTeams?: boolean
+	enableShopify?: boolean
 }
 
 const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
@@ -30,31 +30,31 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 
 	const {
 		appId,
-    documentId,
-    collectionId,
+		documentId,
+		collectionId,
 		enablePayments,
 		enableUsers,
 		enableTeams,
 	} = props
 
-  const [saveLoading, setSaveLoading] = useState(false)
+	const [saveLoading, setSaveLoading] = useState(false)
 	const [publishLoading, setPublishLoading] = useState(false)
 	const [title, setTitle] = useState('')
 	const [activeFields, setActiveFields] = useState([])
 	const [documentIds, setDocumentIds] = useState()
 
-  const { clientUrl } = useAdmin()
+	const { clientUrl } = useAdmin()
 	const { collection, findCollection } = useCollections()
 
 	const {
-    loading,
+		loading,
 		errors,
 		document,
 		setDocument,
-		findDocument,    
+		findDocument,
 		updateDocument,
 		createDocument,
-    reloadDocument,
+		reloadDocument,
 		addReferences,
 		removeReferences,
 		addAttachment,
@@ -110,7 +110,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 
 	const handleRemoveReferences = async (documentIds) => {
 		if (document?.id) {
-			await removeReferences(document.id, documentIds)      
+			await removeReferences(document.id, documentIds)
 			reloadDocument(document.id)
 		}
 	}
@@ -158,7 +158,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 
 	useEffect(() => {
 		if (router?.query) {
-      //@ts-ignore 
+			//@ts-ignore
 			setDocumentIds(router.query?.ids?.split(',') || [])
 		}
 	}, [router?.query])
@@ -195,11 +195,11 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 				<ViewScroll>
 					<Box sx={sx.container}>
 						<AdminDocumentForm
-							errors={errors}							
+							errors={errors}
 							document={document}
 							fields={activeFields}
 							collection={collection}
-              //@ts-ignore
+							//@ts-ignore
 							handleChange={handleChange}
 							handleAddReferences={handleAddReferences}
 							handleRemoveReferences={handleRemoveReferences}

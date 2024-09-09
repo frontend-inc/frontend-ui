@@ -20,7 +20,9 @@ export type ShopifyProductFeaturedProps = {
 	enableQuickShop?: boolean
 }
 
-const ShopifyProductFeatured: React.FC<ShopifyProductFeaturedProps> = (props) => {
+const ShopifyProductFeatured: React.FC<ShopifyProductFeaturedProps> = (
+	props
+) => {
 	const {
 		handle,
 		flexDirection = 'row',

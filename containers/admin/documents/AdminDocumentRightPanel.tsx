@@ -24,7 +24,9 @@ type AdminDocumentRightPanelProps = {
 	enablePlaces?: boolean
 }
 
-const AdminDocumentRightPanel: React.FC<AdminDocumentRightPanelProps> = (props) => {
+const AdminDocumentRightPanel: React.FC<AdminDocumentRightPanelProps> = (
+	props
+) => {
 	const {
 		appId,
 		loading,

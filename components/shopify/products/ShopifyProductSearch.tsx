@@ -10,7 +10,11 @@ import { useSegment } from '../../../hooks/addons'
 import { useRouter } from 'next/router'
 import { Box, Grid, Stack } from '@mui/material'
 import { SearchInput, Placeholder } from '../..'
-import { ShopifyProductSortButton, ShopifyProductGrid, ShopifyProductSearchFilters } from '..'
+import {
+	ShopifyProductSortButton,
+	ShopifyProductGrid,
+	ShopifyProductSearchFilters,
+} from '..'
 import LoadMore from '../search/LoadMore'
 import { useApp } from '../../../hooks'
 

@@ -1,15 +1,12 @@
 import React from 'react'
 import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
-import { 
-  AdminShopifyMetafieldForm, 
-  AdminShopifyMetafieldItem 
-} from '../..'
+import { AdminShopifyMetafieldForm, AdminShopifyMetafieldItem } from '../..'
 
 const AdminShopifyMetafieldsList = () => {
 	const { apiUrl } = useAdmin()
 
-  if(!apiUrl) return null;
+	if (!apiUrl) return null
 	return (
 		<ResourceList
 			sortable
@@ -32,8 +29,8 @@ const AdminShopifyMetafieldsList = () => {
 						{ label: 'String', value: 'string' },
 						{ label: 'Text', value: 'text' },
 						{ label: 'Number', value: 'number' },
-            { label: 'Shopify Products', value: 'products' },
-            { label: 'Shopify Collection', value: 'collection' },
+						{ label: 'Shopify Products', value: 'products' },
+						{ label: 'Shopify Collection', value: 'collection' },
 					],
 				},
 			]}

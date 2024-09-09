@@ -36,11 +36,11 @@ export type FormFieldType = {
 }
 
 export type ToolbarButtonType = FormFieldType & {
-  icon?: string
+	icon?: string
 	color?: 'primary' | 'secondary'
 	variant?: 'contained' | 'outlined' | 'text'
 	buttonText: string
-  onClick?: (selected: any[]) => void
+	onClick?: (selected: any[]) => void
 }
 
 export type TableHeaderType = {

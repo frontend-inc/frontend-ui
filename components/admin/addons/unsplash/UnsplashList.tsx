@@ -18,10 +18,10 @@ const UnsplashList: React.FC<UnsplashProps> = (props) => {
 	const [showModal, setShowModal] = useState(false)
 	const [keywords, setKeywords] = useState('')
 
-  //@ts-ignore
+	//@ts-ignore
 	const [image, setImage] = useState<UnsplashImageType>({})
-	
-  const { loading, uploadFromUrl } = useMedia()
+
+	const { loading, uploadFromUrl } = useMedia()
 
 	const handleUpload = async (url, name) => {
 		try {
@@ -33,7 +33,7 @@ const UnsplashList: React.FC<UnsplashProps> = (props) => {
 			console.log(e)
 		} finally {
 			setShowModal(false)
-      //@ts-ignore
+			//@ts-ignore
 			setImage({})
 		}
 	}
@@ -98,7 +98,7 @@ const UnsplashList: React.FC<UnsplashProps> = (props) => {
 				open={showModal}
 				image={image}
 				handleClose={() => setShowModal(false)}
-				handleUpload={handleUpload}        
+				handleUpload={handleUpload}
 			/>
 		</Box>
 	)

@@ -13,7 +13,8 @@ type MediaItemListProps = {
 const MediaItemList: React.FC<MediaItemListProps> = (props) => {
 	const { selectedIds, handleSelect } = props
 
-	const { loading, resources, findResources, loadMore, page, numPages } = useMedia()
+	const { loading, resources, findResources, loadMore, page, numPages } =
+		useMedia()
 
 	const handleLoadMore = async () => {
 		await loadMore()

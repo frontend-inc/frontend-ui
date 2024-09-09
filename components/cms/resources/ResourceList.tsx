@@ -20,7 +20,7 @@ import ResourceToolbar from './ResourceToolbar'
 import { ToolbarButtonType } from '../../../types'
 
 export type ResourceListProps = {
-  grid?: boolean
+	grid?: boolean
 	sortable?: boolean
 	selectable?: boolean
 	header?: React.FC<any>
@@ -59,10 +59,10 @@ export type ResourceListProps = {
 	itemProps?: any
 	disableInfiniteLoad?: boolean
 	buttons?: ToolbarButtonType[]
-  defaultValue?: any
+	defaultValue?: any
 	slots?: {
 		list?: any
-    item?: any
+		item?: any
 		edit?: any
 		create?: any
 		show?: any
@@ -75,7 +75,7 @@ export type ResourceListProps = {
 const ResourceList: React.FC<ResourceListProps> = (props) => {
 	const SLOT_PROPS = {
 		list: {},
-    item: {},
+		item: {},
 		edit: {},
 		create: {},
 		show: {},
@@ -85,7 +85,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	}
 
 	const {
-    grid = false,
+		grid = false,
 		sortable = false,
 		selectable = false,
 		header: Header = ResourceHeader,
@@ -118,7 +118,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		emptyIcon = 'Search',
 		emptyTitle = 'No results found',
 		emptyDescription = 'Try adjusting your search or filters',
-    defaultValue = {}
+		defaultValue = {},
 	} = props
 
 	const [openShow, setOpenShow] = useState(false)
@@ -140,7 +140,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		query,
 		findMany,
 		reloadMany,
-    addAttachment,
+		addAttachment,
 		removeAttachment,
 		page,
 		numPages,
@@ -148,7 +148,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		loadMore,
 		paginate,
 
-    reloadOne,
+		reloadOne,
 		selected,
 		selectedIds,
 		handleSelect,
@@ -238,7 +238,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	}
 
 	const handleEdit = async (resource) => {
-    let resp = await reloadOne(resource?.id)
+		let resp = await reloadOne(resource?.id)
 		setResource(resp)
 		setOpenShow(false)
 		setOpenCreate(false)
@@ -252,9 +252,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				resp = await update(resource)
 			} else {
 				resp = await create({
-          ...defaultValue,
-          ...resource
-        })
+					...defaultValue,
+					...resource,
+				})
 			}
 			if (resp?.id) {
 				setResource({})
@@ -269,9 +269,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	}
 
 	const handleShowClick = async (resource) => {
-    if(handleClick){
-      handleClick(resource)
-    }else if (enableShow) {
+		if (handleClick) {
+			handleClick(resource)
+		} else if (enableShow) {
 			let resp = await reloadOne(resource?.id)
 			setResource(resp)
 			setOpenShow(true)
@@ -300,13 +300,13 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		await removeAttachment(resource?.id, name)
 	}
 
-  const handleRemoveAttachment = async (name) => {
-    await removeAttachment(resource?.id, name)
-  }
+	const handleRemoveAttachment = async (name) => {
+		await removeAttachment(resource?.id, name)
+	}
 
-  const handleAddAttachment = async (name, attachmentId) => {
-    await addAttachment(resource?.id, name, attachmentId)
-  }
+	const handleAddAttachment = async (name, attachmentId) => {
+		await addAttachment(resource?.id, name, attachmentId)
+	}
 
 	const handleDrop = async (sorted) => {
 		await updatePositions(sorted)
@@ -356,7 +356,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				handleSortDirection={handleSortDirection}
 				handleAdd={handleAdd}
 				keywords={keywords}
-        handleReload={reloadMany}
+				handleReload={reloadMany}
 				activeFilters={activeFilters}
 				filterOptions={filterOptions}
 				sortOptions={sortOptions}
@@ -370,7 +370,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				handleClose={handleClear}
 				buttons={buttons}
 				onSuccess={handleSuccess}
-        handleReload={reloadMany}
+				handleReload={reloadMany}
 				{...slots.toolbar}
 			/>
 			<Box
@@ -380,7 +380,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 			>
 				{!sortable ? (
 					<List
-            grid={ grid }
+						grid={grid}
 						query={query}
 						headers={headers}
 						page={page}
@@ -406,11 +406,11 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 								handleEdit={() => handleEdit(resource)}
 								handleDelete={() => handleDeleteClick(resource)}
 								handleSelect={() => handleSelect(resource)}
-                handleReload={reloadMany}
-                { ...slots.item }																
+								handleReload={reloadMany}
+								{...slots.item}
 							/>
 						)}
-            {...slots.list}
+						{...slots.list}
 					/>
 				) : (
 					<SortableListItems
@@ -421,7 +421,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 						numPages={numPages}
 						totalCount={totalCount}
 						handlePaginate={handlePaginate}
-            handleReload={reloadMany}
+						handleReload={reloadMany}
 						renderItem={(resource, index) => (
 							<Component
 								key={index}
@@ -443,11 +443,11 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 								handleEdit={() => handleEdit(resource)}
 								handleDelete={() => handleDeleteClick(resource)}
 								handleSelect={() => handleSelect(resource)}
-                handleReload={reloadMany}                
+								handleReload={reloadMany}
 								{...slots.item}
 							/>
 						)}
-            { ...slots.list}
+						{...slots.list}
 					/>
 				)}
 				{!loading && resources?.length == 0 && (
@@ -464,13 +464,13 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				loading={loading}
 				errors={errors}
 				resource={resource}
-        setResource={setResource}
+				setResource={setResource}
 				handleChange={handleChange}
 				handleRemove={handleRemove}
-        handleAddAttachment={handleAddAttachment}
-        handleRemoveAttachment={handleRemoveAttachment}
-				handleSubmit={handleSubmit}        
-        handleReload={reloadMany}        
+				handleAddAttachment={handleAddAttachment}
+				handleRemoveAttachment={handleRemoveAttachment}
+				handleSubmit={handleSubmit}
+				handleReload={reloadMany}
 				fields={fields}
 				{...slots.create}
 			/>
@@ -480,14 +480,14 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				loading={loading}
 				errors={errors}
 				resource={resource}
-        setResource={setResource}
+				setResource={setResource}
 				handleChange={handleChange}
 				handleRemove={handleRemove}
-        handleAddAttachment={handleAddAttachment}
-        handleRemoveAttachment={handleRemoveAttachment}
+				handleAddAttachment={handleAddAttachment}
+				handleRemoveAttachment={handleRemoveAttachment}
 				handleSubmit={handleSubmit}
-        handleReload={reloadMany}
-        handleReloadOne={ reloadOne }
+				handleReload={reloadMany}
+				handleReloadOne={reloadOne}
 				fields={fields}
 				{...slots.edit}
 			/>
@@ -501,7 +501,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				enableDelete={enableDelete}
 				handleEdit={() => handleEdit(resource)}
 				handleDelete={() => handleDeleteClick(resource)}
-        handleReload={reloadMany}
+				handleReload={reloadMany}
 				{...slots.show}
 			/>
 			<AlertModal

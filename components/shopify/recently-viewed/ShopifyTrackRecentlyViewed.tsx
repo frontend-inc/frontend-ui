@@ -6,7 +6,9 @@ type ShopifyTrackRecentlyViewedProps = {
 	product?: ShopifyProductType
 }
 
-const ShopifyTrackRecentlyViewed: React.FC<ShopifyTrackRecentlyViewedProps> = (props) => {
+const ShopifyTrackRecentlyViewed: React.FC<ShopifyTrackRecentlyViewedProps> = (
+	props
+) => {
 	const { product } = props
 
 	const { viewProduct } = useRecentlyViewed()

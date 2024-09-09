@@ -8,7 +8,7 @@ import {
 } from '../../../types'
 
 export type ResourceListItemsProps = {
-  grid?: boolean
+	grid?: boolean
 	query?: QueryParamsType
 	resources: any[]
 	headers?: TableHeaderType[]
@@ -24,24 +24,29 @@ export type ResourceListItemsProps = {
 	handleDrop?: (sorted: any[]) => void
 	handlePaginate: (page: number) => void
 	handleSort?: (field: SortOptionType) => void
-  handleReload?: () => void
+	handleReload?: () => void
 	renderItem: (resource: any, props: any) => React.ReactNode
 }
 
 const ResourceListItems: React.FC<ResourceListItemsProps> = (props) => {
-	const { page, grid = false, numPages, handlePaginate, resources, renderItem } = props || {}
+	const {
+		page,
+		grid = false,
+		numPages,
+		handlePaginate,
+		resources,
+		renderItem,
+	} = props || {}
 
 	return (
 		<Stack spacing={2} sx={sx.fullWidth}>
-      { !grid ? (
-			<List>
-        {resources?.map((resource) => renderItem(resource, props))}
-      </List>
-      ):(
-        <Box sx={ sx.grid }>
-          {resources?.map((resource) => renderItem(resource, props))}
-        </Box>
-      )}
+			{!grid ? (
+				<List>{resources?.map((resource) => renderItem(resource, props))}</List>
+			) : (
+				<Box sx={sx.grid}>
+					{resources?.map((resource) => renderItem(resource, props))}
+				</Box>
+			)}
 			<LoadMore
 				page={page}
 				numPages={numPages}
@@ -65,10 +70,10 @@ const sx = {
 	grid: {
 		display: 'grid',
 		gridTemplateColumns: {
-      xl: '1fr 1fr 1fr 1fr 1fr',
-      lg: '1fr 1fr 1fr 1fr',
+			xl: '1fr 1fr 1fr 1fr 1fr',
+			lg: '1fr 1fr 1fr 1fr',
 			md: '1fr 1fr 1fr',
-      sm: '1fr 1fr',
+			sm: '1fr 1fr',
 			xs: '1fr',
 		},
 		gap: '16px',

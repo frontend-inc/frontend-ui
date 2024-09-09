@@ -4,10 +4,10 @@ import { useLoaders } from '..'
 
 const useSocial = () => {
 	const { api } = useApi()
-  
-  const params = { 
-    url: `/api/v1/social`,
-  }
+
+	const params = {
+		url: `/api/v1/social`,
+	}
 
 	const { loading, loadingWrapper } = useLoaders()
 
@@ -35,7 +35,7 @@ const useSocial = () => {
 		return await loadingWrapper(() => api.unfollow(username, params))
 	}
 
-  const likeProduct = async (productId) => {
+	const likeProduct = async (productId) => {
 		return await loadingWrapper(() => api.likeProduct(productId, params))
 	}
 
@@ -51,7 +51,7 @@ const useSocial = () => {
 		return await loadingWrapper(() => api.unfavoriteProduct(productId, params))
 	}
 
-  const shopifyFavorite = async (handle) => {
+	const shopifyFavorite = async (handle) => {
 		return await loadingWrapper(() => api.shopifyFavorite(handle, params))
 	}
 
@@ -67,13 +67,13 @@ const useSocial = () => {
 		unfavorite,
 		follow,
 		unfollow,
-    likeProduct,
-    unlikeProduct,
-    favoriteProduct,
-    unfavoriteProduct,
-    shopifyFavorite,
-    shopifyUnfavorite,
-    loadingWrapper,
+		likeProduct,
+		unlikeProduct,
+		favoriteProduct,
+		unfavoriteProduct,
+		shopifyFavorite,
+		shopifyUnfavorite,
+		loadingWrapper,
 	}
 }
 

@@ -5,7 +5,9 @@ type ShopifyMetafieldRichTextProps = {
 	value: string
 }
 
-const ShopifyMetafieldRichText: React.FC<ShopifyMetafieldRichTextProps> = (props) => {
+const ShopifyMetafieldRichText: React.FC<ShopifyMetafieldRichTextProps> = (
+	props
+) => {
 	let { value } = props
 	if (typeof value === 'string') {
 		value = JSON.parse(value)

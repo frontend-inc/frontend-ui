@@ -16,8 +16,8 @@ type ButtonTabsProps = {
 	iconPosition?: 'start' | 'end' | 'top' | 'bottom'
 	variant?: 'fullWidth' | 'scrollable'
 	size?: 'small' | 'large'
-  debounceDelay?: number
-  disableDebounce?: boolean
+	debounceDelay?: number
+	disableDebounce?: boolean
 }
 
 const ButtonTabs: React.FC<ButtonTabsProps> = (props) => {
@@ -30,32 +30,32 @@ const ButtonTabs: React.FC<ButtonTabsProps> = (props) => {
 		iconPosition = 'start',
 		variant = 'fullWidth',
 		size = 'large',
-    debounceDelay = 500,
-    disableDebounce = false
+		debounceDelay = 500,
+		disableDebounce = false,
 	} = props
 
-  const [value, setValue] = useState(initialValue)
-  const [debouncedValue] = useDebounce(value, debounceDelay)
-	
-  const handleInputChange = (
+	const [value, setValue] = useState(initialValue)
+	const [debouncedValue] = useDebounce(value, debounceDelay)
+
+	const handleInputChange = (
 		ev: React.ChangeEvent<HTMLInputElement>,
 		value: number
 	) => {
 		setValue(value)
-    if(disableDebounce){
-      handleChange(value)
-    }
+		if (disableDebounce) {
+			handleChange(value)
+		}
 	}
 
-  useEffect(() => {
-    if(!disableDebounce){
-      handleChange(debouncedValue)
-    }
-  }, [debouncedValue])
+	useEffect(() => {
+		if (!disableDebounce) {
+			handleChange(debouncedValue)
+		}
+	}, [debouncedValue])
 
-  useEffect(() => {
-    setValue(initialValue)
-  }, [initialValue])
+	useEffect(() => {
+		setValue(initialValue)
+	}, [initialValue])
 
 	return (
 		<Tabs
@@ -78,7 +78,7 @@ const ButtonTabs: React.FC<ButtonTabsProps> = (props) => {
 				<Tab
 					key={i}
 					disableRipple
-					iconPosition={iconPosition}					
+					iconPosition={iconPosition}
 					label={tab.label}
 					value={tab.value}
 					icon={tab.icon && <Icon color="text.secondary" name={tab.icon} />}

@@ -1,10 +1,6 @@
 import React from 'react'
 import { ProductListProps } from './ProductList'
-import {
-	ProductList,
-	ProductListItem,
-	SortableDataListItems,
-} from '../..'
+import { ProductList, ProductListItem, SortableDataListItems } from '../..'
 
 const SortableProductList: React.FC<ProductListProps> = (props) => {
 	const { query, slots = { item: {} } } = props

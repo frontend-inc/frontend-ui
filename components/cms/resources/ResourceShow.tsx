@@ -11,7 +11,7 @@ export type ResourceShowProps = {
 	enableDelete?: boolean
 	handleEdit?: () => void
 	handleDelete?: () => void
-  handleReload: () => void
+	handleReload: () => void
 	fields: any[]
 }
 

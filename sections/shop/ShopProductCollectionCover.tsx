@@ -4,9 +4,12 @@ import { ProductCollectionCover } from '../../components'
 import { ProductCollectionCoverProps } from '../../components/shop/product-collections/ProductCollectionCover'
 import { SectionProps } from '../../types'
 
-type ShopProductCollectionCoverProps = SectionProps & ProductCollectionCoverProps
+type ShopProductCollectionCoverProps = SectionProps &
+	ProductCollectionCoverProps
 
-const ShopProductCollectionCover: React.FC<ShopProductCollectionCoverProps> = (props) => {
+const ShopProductCollectionCover: React.FC<ShopProductCollectionCoverProps> = (
+	props
+) => {
 	const {
 		mode,
 		py,

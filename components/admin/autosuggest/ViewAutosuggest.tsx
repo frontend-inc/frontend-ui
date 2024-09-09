@@ -13,10 +13,9 @@ type ViewAutosuggestProps = {
 }
 
 const ViewAutosuggest: React.FC<ViewAutosuggestProps> = (props) => {
-	
-  const { apiUrl } = useAdmin()
+	const { apiUrl } = useAdmin()
 
-  const {
+	const {
 		value,
 		name = 'view_id',
 		label,
@@ -25,7 +24,7 @@ const ViewAutosuggest: React.FC<ViewAutosuggestProps> = (props) => {
 		placeholder = 'Select view',
 	} = props
 
-  if(!apiUrl) return null;
+	if (!apiUrl) return null
 	return (
 		<RemoteAutosuggest
 			name={name}

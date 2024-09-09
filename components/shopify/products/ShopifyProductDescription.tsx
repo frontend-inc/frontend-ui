@@ -7,7 +7,9 @@ type ShopifyProductDescriptionProps = {
 	color?: string
 }
 
-const ShopifyProductDescription: React.FC<ShopifyProductDescriptionProps> = (props) => {
+const ShopifyProductDescription: React.FC<ShopifyProductDescriptionProps> = (
+	props
+) => {
 	const { product, color = 'text.secondary' } = props
 
 	return (

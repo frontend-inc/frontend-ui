@@ -20,7 +20,7 @@ const LikeButton: React.FC<LikeButtonProps> = (props) => {
 
 	const [liked, setLiked] = useState(false)
 
-  const { like, unlike } = useSocial()
+	const { like, unlike } = useSocial()
 
 	const handleClick = async () => {
 		if (!currentUser?.id) {
@@ -78,7 +78,7 @@ const sx = {
 		'&:hover': {
 			color: 'primary.dark',
 		},
-    borderColor: 'primary.main',
+		borderColor: 'primary.main',
 	},
 	large: {
 		border: '1px solid',

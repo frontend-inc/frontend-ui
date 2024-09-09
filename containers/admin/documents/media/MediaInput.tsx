@@ -13,13 +13,7 @@ type MediaInputProps = {
 }
 
 const MediaInput: React.FC<MediaInputProps> = (props) => {
-	
-  const { 
-    name, 
-    value, 
-    handleAddAttachment, 
-    handleRemoveAttachment 
-  } = props
+	const { name, value, handleAddAttachment, handleRemoveAttachment } = props
 
 	const [open, setOpen] = useState(false)
 	const [openEdit, setOpenEdit] = useState(false)

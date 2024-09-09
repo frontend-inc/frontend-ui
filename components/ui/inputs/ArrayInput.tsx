@@ -33,7 +33,7 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 		direction = 'column',
 		freeSolo = true,
 		info,
-    value
+		value,
 	} = props
 
 	const { error, clearError } = useError({
@@ -53,14 +53,14 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 		})
 	}
 
-  if(!Array.isArray(value)) return null;
+	if (!Array.isArray(value)) return null
 	return (
 		<Stack sx={sx.root} direction={direction} spacing={0}>
 			<InputLabel label={label} info={info} />
 			<Autocomplete
 				multiple
 				freeSolo={freeSolo}
-        value={value}
+				value={value}
 				onChange={handleInputChange}
 				options={options || []}
 				getOptionLabel={(option) => option}

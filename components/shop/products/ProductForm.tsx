@@ -4,15 +4,12 @@ import { useResourceContext } from 'frontend-js'
 import { FormFieldType } from '../../../types'
 
 export type ProductFormProps = {
-  fields?: FormFieldType[]
+	fields?: FormFieldType[]
 	parentResource?: any
 }
 
 const ProductForm: React.FC<ProductFormProps> = (props) => {
-	const { 
-    fields=[],
-    parentResource 
-  } = props || {}
+	const { fields = [], parentResource } = props || {}
 
 	const { url, resource, setResource, reloadMany, openEdit, setOpenEdit } =
 		useResourceContext()
@@ -30,7 +27,7 @@ const ProductForm: React.FC<ProductFormProps> = (props) => {
 			open={openEdit}
 			handleClose={() => setOpenEdit(false)}
 			fields={fields}
-      url={url}
+			url={url}
 			resource={resource}
 			parentResource={parentResource}
 			handleSuccess={handleSuccess}

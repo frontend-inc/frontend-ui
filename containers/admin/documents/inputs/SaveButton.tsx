@@ -15,7 +15,7 @@ type SaveButtonProps = {
 }
 
 const SaveButton: React.FC<SaveButtonProps> = (props) => {
-  const { clientUrl } = useAdmin()
+	const { clientUrl } = useAdmin()
 	const { loading, document, handleSubmit, fullWidth = false } = props
 
 	const router = useRouter()

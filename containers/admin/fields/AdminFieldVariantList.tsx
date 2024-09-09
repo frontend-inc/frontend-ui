@@ -6,7 +6,6 @@ import { SearchInput } from '../../../components'
 import { Box } from '@mui/material'
 import { MenuList } from '../../../components'
 
-
 type FieldVariantListProps = {
 	field: any
 	handleClick: (field: any) => void
@@ -14,8 +13,8 @@ type FieldVariantListProps = {
 
 const AdminFieldVariantList: React.FC<FieldVariantListProps> = (props) => {
 	const { field, handleClick } = props
-	
-  const [visibleFields, setVisibleFields] = useState(FIELD_VARIANTS)
+
+	const [visibleFields, setVisibleFields] = useState(FIELD_VARIANTS)
 	const [groupedFields, setGroupedFields] = useState(
 		groupBy(FIELD_VARIANTS, 'category')
 	)
@@ -37,27 +36,24 @@ const AdminFieldVariantList: React.FC<FieldVariantListProps> = (props) => {
 	}, [visibleFields])
 
 	return (
-			<Box>
-        <Box px={2} pb={2}>
-          <SearchInput
-            value={text}
-            placeholder="Search fields"
-            handleChange={handleChange}
-            handleSearch={() => null}
-          />
-        </Box>
-			{field?.id ? (				
-        <AdminFieldVariantItem
-          field={FIELD_VARIANTS?.find((f) => f.variant == field.variant)}
-          handleClick={() => null}
-        />
+		<Box>
+			<Box px={2} pb={2}>
+				<SearchInput
+					value={text}
+					placeholder="Search fields"
+					handleChange={handleChange}
+					handleSearch={() => null}
+				/>
+			</Box>
+			{field?.id ? (
+				<AdminFieldVariantItem
+					field={FIELD_VARIANTS?.find((f) => f.variant == field.variant)}
+					handleClick={() => null}
+				/>
 			) : (
-				groupedFields && Object.keys(groupedFields).map((key, i) => (
-					<MenuList 
-            enableBorder 
-            key={i} 
-            label={key}
-          >
+				groupedFields &&
+				Object.keys(groupedFields).map((key, i) => (
+					<MenuList enableBorder key={i} label={key}>
 						{groupedFields[key].map((fieldVariant, i) => (
 							<AdminFieldVariantItem
 								field={fieldVariant}

@@ -7,35 +7,34 @@ import { useResource } from 'frontend-js'
 import { ResourceListProps } from '../../../../components/cms/resources/ResourceList'
 
 type AdminProductListItemsProps = ResourceListProps & {
-  url: string
-  productCollectionId: string
-  handleSuccess: () => void
+	url: string
+	productCollectionId: string
+	handleSuccess: () => void
 }
 
 const AdminProductListItems: React.FC<AdminProductListItemsProps> = (props) => {
-  
-  const { url, handleSuccess, productCollectionId } = props || {}
+	const { url, handleSuccess, productCollectionId } = props || {}
 	const { apiUrl } = useAdmin()
-  
+
 	return (
-		<ResourceList   
-      direction='column'  
-      selectable
-      enableSearch 
+		<ResourceList
+			direction="column"
+			selectable
+			enableSearch
 			url={`${apiUrl}/products`}
-			name={'product'}						
-      toolbar={ AdminProductListToolbar }
-			component={AdminProductListItem}      			
-      emptyIcon="Search"
-      emptyTitle="No products"
-      emptyDescription="No products yet."
-      slots={{
-        toolbar: {
-          url,
-          productCollectionId,
-          handleSuccess
-        }
-      }}
+			name={'product'}
+			toolbar={AdminProductListToolbar}
+			component={AdminProductListItem}
+			emptyIcon="Search"
+			emptyTitle="No products"
+			emptyDescription="No products yet."
+			slots={{
+				toolbar: {
+					url,
+					productCollectionId,
+					handleSuccess,
+				},
+			}}
 		/>
 	)
 }

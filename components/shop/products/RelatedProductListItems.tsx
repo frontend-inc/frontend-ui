@@ -31,9 +31,9 @@ export type RelatedProductListItemsProps = {
 	}
 }
 
-const RelatedProductListItems: React.FC<
-	RelatedProductListItemsProps
-> = (props) => {
+const RelatedProductListItems: React.FC<RelatedProductListItemsProps> = (
+	props
+) => {
 	const router = useRouter()
 	const { clientUrl } = useApp()
 

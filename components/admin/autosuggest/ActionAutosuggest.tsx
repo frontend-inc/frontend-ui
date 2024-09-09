@@ -14,8 +14,7 @@ type ActionAutosuggestProps = {
 }
 
 const ActionAutosuggest: React.FC<ActionAutosuggestProps> = (props) => {
-
-  const { apiUrl } = useAdmin()
+	const { apiUrl } = useAdmin()
 
 	const {
 		errors,
@@ -28,7 +27,7 @@ const ActionAutosuggest: React.FC<ActionAutosuggestProps> = (props) => {
 		query: defaultQuery = {},
 	} = props
 
-  if(!apiUrl) return null;
+	if (!apiUrl) return null
 	return (
 		<RemoteAutosuggest
 			enableClear

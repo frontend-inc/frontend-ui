@@ -23,7 +23,9 @@ type ShopifyAddToCartButtonProps = {
 	size?: 'small' | 'medium' | 'large'
 }
 
-const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (props) => {
+const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
+	props
+) => {
 	const { showAlertError } = useAlerts()
 	const { trackAddToCart } = useSegment()
 	const { toggleCart } = useContext(ShopifyContext) as any
@@ -67,7 +69,7 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (props) =>
 				let line = {
 					merchandiseId: variant?.id,
 					quantity,
-					sellingPlanId: activeSellingPlanId,          
+					sellingPlanId: activeSellingPlanId,
 				}
 				cartLineAdd(line)
 				trackAddToCart({

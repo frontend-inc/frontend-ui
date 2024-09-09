@@ -5,7 +5,7 @@ import { ShopifyCollectionType } from 'frontend-shopify'
 export type ShopifyCollectionCoverProps = {
 	shopifyCollection: ShopifyCollectionType
 	editing?: boolean
-	height?: number	
+	height?: number
 	alignItems?: 'flex-start' | 'center' | 'flex-end'
 	alt?: string
 	handleClick?: () => void
@@ -16,7 +16,9 @@ export type ShopifyCollectionCoverProps = {
 	href?: string
 }
 
-const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (props) => {
+const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
+	props
+) => {
 	const {
 		shopifyCollection,
 		handleClick,

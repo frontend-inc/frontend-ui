@@ -15,8 +15,7 @@ type AdminCollectionEditProps = {
 }
 
 const AdminCollectionEdit: React.FC<AdminCollectionEditProps> = (props) => {
-	
-  const {
+	const {
 		loading,
 		errors,
 		open,
@@ -29,7 +28,7 @@ const AdminCollectionEdit: React.FC<AdminCollectionEditProps> = (props) => {
 
 	return (
 		<Drawer
-      loading={loading}
+			loading={loading}
 			open={open}
 			handleClose={handleClose}
 			title={collection?.id ? 'Edit Collection' : 'Add Collection'}
@@ -46,12 +45,12 @@ const AdminCollectionEdit: React.FC<AdminCollectionEditProps> = (props) => {
 				</Button>
 			}
 		>
-      <AdminCollectionForm
-        errors={errors}
-        collection={collection}
-        handleChange={handleChange}
-        handleTemplateClick={handleTemplateClick}
-      />
+			<AdminCollectionForm
+				errors={errors}
+				collection={collection}
+				handleChange={handleChange}
+				handleTemplateClick={handleTemplateClick}
+			/>
 		</Drawer>
 	)
 }

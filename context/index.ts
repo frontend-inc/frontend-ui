@@ -7,7 +7,7 @@ export { default as ThemeProvider } from './ThemeProvider'
 export { default as ScriptContext } from './ScriptContext'
 export { default as ScriptProvider } from './ScriptProvider'
 
-// Addons 
+// Addons
 export { default as StripeContext } from './StripeContext'
 export { default as StripeProvider } from './StripeProvider'
 export { default as UnsplashContext } from './UnsplashContext'

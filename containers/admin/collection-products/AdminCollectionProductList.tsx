@@ -6,38 +6,40 @@ import AdminProductToolbar from './AdminCollectionProductToolbar'
 import AdminCollectionProductsAdd from './AdminCollectionProductsAdd'
 
 type AdminCollectionProductsListProps = {
-  productCollectionId: string
+	productCollectionId: string
 }
 
-const AdminCollectionProductsList: React.FC<AdminCollectionProductsListProps> = (props) => {
-  const { productCollectionId } = props
+const AdminCollectionProductsList: React.FC<
+	AdminCollectionProductsListProps
+> = (props) => {
+	const { productCollectionId } = props
 	const { apiUrl } = useAdmin()
-  const url = `${apiUrl}/product_collections/${productCollectionId}/collection_products`
+	const url = `${apiUrl}/product_collections/${productCollectionId}/collection_products`
 	return (
-		<ResourceList           
-      selectable
-      sortable
+		<ResourceList
+			selectable
+			sortable
 			url={url}
 			name={'collection_products'}
 			enableSearch
-			enableDelete	
-      enableCreate 	
-      toolbar={ AdminProductToolbar }
-			component={AdminProductItem}      			
-      create={ AdminCollectionProductsAdd }
-      emptyIcon="Shirt"
-      emptyTitle="No products"
-      emptyDescription="No products added yet."
-      slots={{        
-        toolbar: {
-          url,
-          productCollectionId 
-        },
-        create: {
-          url: `${apiUrl}/product_collections`,
-          productCollectionId
-        }
-      }}
+			enableDelete
+			enableCreate
+			toolbar={AdminProductToolbar}
+			component={AdminProductItem}
+			create={AdminCollectionProductsAdd}
+			emptyIcon="Shirt"
+			emptyTitle="No products"
+			emptyDescription="No products added yet."
+			slots={{
+				toolbar: {
+					url,
+					productCollectionId,
+				},
+				create: {
+					url: `${apiUrl}/product_collections`,
+					productCollectionId,
+				},
+			}}
 		/>
 	)
 }

@@ -1,9 +1,7 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { ShopifyProductCollectionCarousel as ProductCollectionCarousel} from '../../components/shopify'
-import { 
-  ShopifyProductCollectionCarouselProps as ProductCollectionCarouselProps 
-} from '../../components/shopify/products/ShopifyProductCollectionCarousel'
+import { ShopifyProductCollectionCarousel as ProductCollectionCarousel } from '../../components/shopify'
+import { ShopifyProductCollectionCarouselProps as ProductCollectionCarouselProps } from '../../components/shopify/products/ShopifyProductCollectionCarousel'
 import { SectionProps, HeadingProps } from '../../types'
 
 type ShopifyProductsCarouselProps = SectionProps &

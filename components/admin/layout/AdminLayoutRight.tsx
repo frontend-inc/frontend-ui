@@ -44,7 +44,7 @@ export default AdminLayoutRight
 
 const sx = {
 	root: {
-		height: {      
+		height: {
 			sm: '100vh',
 			xs: '100%',
 		},
@@ -53,6 +53,6 @@ const sx = {
 		'&::-webkit-scrollbar': {
 			display: 'none',
 		},
-    overflowY: 'hidden',
+		overflowY: 'hidden',
 	},
 }

@@ -33,11 +33,13 @@ const ShopifyProductAutosuggest: React.FC<AutosuggestProps> = (props) => {
 
 	useEffect(() => {
 		if (products) {
-			setOptions(products?.map((product) => ({
-        label: product?.title,
-        value: product?.handle,
-        image: product?.images?.edges[0]?.node?.url,
-      })))
+			setOptions(
+				products?.map((product) => ({
+					label: product?.title,
+					value: product?.handle,
+					image: product?.images?.edges[0]?.node?.url,
+				}))
+			)
 		}
 	}, [products])
 
@@ -48,17 +50,17 @@ const ShopifyProductAutosuggest: React.FC<AutosuggestProps> = (props) => {
 	}, [])
 
 	return (
-		<Autosuggest 
-      label={label}
-      name={name}
-      value={value}
-      options={options}
-      placeholder={placeholder}
-      direction={direction}
-      handleChange={handleChange}
-      handleInputChange={handleInputChange} 
-      enableClear     
-    />
+		<Autosuggest
+			label={label}
+			name={name}
+			value={value}
+			options={options}
+			placeholder={placeholder}
+			direction={direction}
+			handleChange={handleChange}
+			handleInputChange={handleInputChange}
+			enableClear
+		/>
 	)
 }
 

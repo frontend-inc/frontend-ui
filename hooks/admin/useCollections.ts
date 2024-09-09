@@ -2,9 +2,9 @@ import React from 'react'
 import { useResource, useApi } from 'frontend-js'
 import { useAdmin } from '../../hooks'
 
-const useCollections = () => {	
+const useCollections = () => {
 	const { api } = useApi()
-  const { apiUrl } = useAdmin()
+	const { apiUrl } = useAdmin()
 
 	const {
 		loading,
@@ -49,9 +49,7 @@ const useCollections = () => {
 
 	const aiGenerateMockData = async (collectionId) => {
 		return await loadingWrapper(() =>
-			api.post(
-				`${apiUrl}/collections/${collectionId}/ai_generate_data`
-			)
+			api.post(`${apiUrl}/collections/${collectionId}/ai_generate_data`)
 		)
 	}
 

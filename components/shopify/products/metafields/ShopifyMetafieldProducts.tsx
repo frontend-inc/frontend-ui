@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ShopifyProductGrid, ShopifyProductCarousel } from '../../../shopify'
-import {
-	ShopifyProductType,
-	getMetafieldReferences,
-} from 'frontend-shopify'
+import { ShopifyProductType, getMetafieldReferences } from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'
 
 export type ShopifyMetafieldProductsProps = {
@@ -13,7 +10,9 @@ export type ShopifyMetafieldProductsProps = {
 	metafield: string
 }
 
-const ShopifyMetafieldProducts: React.FC<ShopifyMetafieldProductsProps> = (props) => {
+const ShopifyMetafieldProducts: React.FC<ShopifyMetafieldProductsProps> = (
+	props
+) => {
 	const { shopifyProduct, href, layout = 'grid', metafield, ...rest } = props
 
 	const { loading, product, findProduct } = useProducts()
@@ -21,17 +20,17 @@ const ShopifyMetafieldProducts: React.FC<ShopifyMetafieldProductsProps> = (props
 
 	useEffect(() => {
 		if (shopifyProduct && metafield) {
-      const metafieldIdentifier = {        
-        namespace: metafield?.split('.')[0],
-        key: metafield?.split('.')[1],
-      }      
+			const metafieldIdentifier = {
+				namespace: metafield?.split('.')[0],
+				key: metafield?.split('.')[1],
+			}
 			findProduct(shopifyProduct?.handle, [metafieldIdentifier])
 		}
 	}, [shopifyProduct, metafield])
 
 	useEffect(() => {
 		if (product && metafield) {
-      const key = metafield?.split('.')[1]
+			const key = metafield?.split('.')[1]
 			setProducts(getMetafieldReferences(product, key))
 		}
 	}, [product, metafield])

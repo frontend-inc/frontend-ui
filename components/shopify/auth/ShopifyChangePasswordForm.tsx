@@ -11,7 +11,9 @@ type ShopifyForgotPasswordFormProps = {
 	handleLogin?: () => void
 }
 
-const ShopifyForgotPasswordForm: React.FC<ShopifyForgotPasswordFormProps> = (props) => {
+const ShopifyForgotPasswordForm: React.FC<ShopifyForgotPasswordFormProps> = (
+	props
+) => {
 	const { errors, customer, handleChange, handleSubmit, handleLogin } = props
 
 	return (

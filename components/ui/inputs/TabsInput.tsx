@@ -22,8 +22,8 @@ type TabsInputProps = {
 	size?: 'small' | 'large'
 	direction?: 'row' | 'column'
 	info?: string
-  debounceDelay?: number
-  disableDebounce?: boolean
+	debounceDelay?: number
+	disableDebounce?: boolean
 }
 
 const TabsInput: React.FC<TabsInputProps> = (props) => {
@@ -40,17 +40,17 @@ const TabsInput: React.FC<TabsInputProps> = (props) => {
 		size = 'large',
 		direction = 'row',
 		info,
-    debounceDelay,
-    disableDebounce,
+		debounceDelay,
+		disableDebounce,
 	} = props
 
 	const handleInputChange = (value: number) => {
-    handleChange({
-      target: {
-        name,
-        value,
-      },
-    })
+		handleChange({
+			target: {
+				name,
+				value,
+			},
+		})
 	}
 
 	return (
@@ -73,8 +73,8 @@ const TabsInput: React.FC<TabsInputProps> = (props) => {
 				handleChange={handleInputChange}
 				disableBorder={disableBorder}
 				disablePadding={disablePadding}
-        debounceDelay={debounceDelay}
-        disableDebounce={disableDebounce}
+				debounceDelay={debounceDelay}
+				disableDebounce={disableDebounce}
 			/>
 		</Stack>
 	)

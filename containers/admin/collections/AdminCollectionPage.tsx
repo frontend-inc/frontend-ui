@@ -15,7 +15,6 @@ import CollectionSchemaToggle from './CollectionSchemaToggle'
 import AdminCollectionMenu from './AdminCollectionMenu'
 import { RouterParams } from '../../../types'
 
-
 const AdminCollectionPage: React.FC = () => {
 	useTabs('collections')
 
@@ -25,7 +24,7 @@ const AdminCollectionPage: React.FC = () => {
 		router?.query as RouterParams
 	if (collectionId == 'index') collectionId = ''
 
-  const { clientUrl } = useAdmin()
+	const { clientUrl } = useAdmin()
 
 	const [openAiModal, setOpenAiModal] = useState(false)
 	const [showViewModal, setShowViewModal] = useState(false)
@@ -73,7 +72,6 @@ const AdminCollectionPage: React.FC = () => {
 			console.log(e)
 		}
 	}
-
 
 	const handleAiGenerateMockData = async () => {
 		await aiGenerateMockData(collectionId)

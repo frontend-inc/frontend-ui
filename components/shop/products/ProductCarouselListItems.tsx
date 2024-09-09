@@ -14,7 +14,9 @@ export type ProductCarouselListItemsProps = ProductListItemsProps & {
 	enableDots?: boolean
 }
 
-const ProductCarouselListItems: React.FC<ProductCarouselListItemsProps> = (props) => {
+const ProductCarouselListItems: React.FC<ProductCarouselListItemsProps> = (
+	props
+) => {
 	const router = useRouter()
 	const { clientUrl } = useApp()
 

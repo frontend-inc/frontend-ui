@@ -3,7 +3,6 @@ import { UnsplashContext } from '../../context'
 import { useLoadingWrapper } from '../../hooks'
 import { UnsplashImageType } from '../../types'
 
-
 const useUnsplash = () => {
 	const { unsplashApiKey: apiKey } = useContext(UnsplashContext)
 	const { loading, loadingWrapper } = useLoadingWrapper()

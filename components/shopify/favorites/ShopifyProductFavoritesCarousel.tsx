@@ -18,9 +18,9 @@ type ShopifyProductFavoritesCarouselProps = {
 	enableDots?: boolean
 }
 
-const ShopifyProductFavoritesCarousel: React.FC<ShopifyProductFavoritesCarouselProps> = (
-	props
-) => {
+const ShopifyProductFavoritesCarousel: React.FC<
+	ShopifyProductFavoritesCarouselProps
+> = (props) => {
 	const {
 		href,
 		title = 'Favorites',

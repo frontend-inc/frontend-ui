@@ -14,7 +14,11 @@ const ShopifyOrderList: React.FC<ShopifyOrderListProps> = (props) => {
 	return (
 		<List disablePadding>
 			{orders?.map((order) => (
-				<ShopifyOrderItem key={order?.id} order={order} handleClick={handleClick} />
+				<ShopifyOrderItem
+					key={order?.id}
+					order={order}
+					handleClick={handleClick}
+				/>
 			))}
 		</List>
 	)

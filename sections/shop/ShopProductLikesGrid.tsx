@@ -32,7 +32,7 @@ const ShopProductLikesGrid: React.FC<ShopProductLikesGridProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Heading
+			<Heading
 				label={label}
 				title={title}
 				description={description}

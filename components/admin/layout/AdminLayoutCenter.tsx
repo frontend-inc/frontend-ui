@@ -8,7 +8,7 @@ type AdminLayoutCenterProps = {
 const LayoutCenter: React.FC<AdminLayoutCenterProps> = (props) => {
 	const { children } = props
 
-	return (    
+	return (
 		<Box sx={sx.root}>
 			<Box sx={sx.content}>{children}</Box>
 		</Box>

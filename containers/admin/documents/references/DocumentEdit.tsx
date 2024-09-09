@@ -47,22 +47,22 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 	})
 
 	const handleSubmit = async (document) => {
-    let resp;
-    if (document?.id) {
-      resp = await updateDocument(document)
-    } else {
-      resp = await createDocument({
-        ...document,
-        content_type: collection?.name,
-      })
-    }
-    if (resp?.id) {
-      handleSubmitItems([resp])
-      findDocument(resp?.data?.id)
-      setDocument({})
-      handleClose()
-    }
-    return resp
+		let resp
+		if (document?.id) {
+			resp = await updateDocument(document)
+		} else {
+			resp = await createDocument({
+				...document,
+				content_type: collection?.name,
+			})
+		}
+		if (resp?.id) {
+			handleSubmitItems([resp])
+			findDocument(resp?.data?.id)
+			setDocument({})
+			handleClose()
+		}
+		return resp
 	}
 
 	const handleSubmitAndPublish = async () => {
@@ -123,7 +123,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 	}, [open, collectionId])
 
 	useEffect(() => {
-    setDocument({})
+		setDocument({})
 		if (open && documentId && collection?.name) {
 			findDocument(documentId)
 		}
@@ -131,37 +131,37 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 
 	return (
 		<Drawer open={open} handleClose={handleClose} title={title}>
-      { document && activeFields && (
-        <>
-          <Box sx={sx.container}>
-            <AdminDocumentForm
-              errors={errors}
-              document={document}
-              fields={activeFields}
-              collection={collection}
-              handleChange={handleChange}
-              handleAddReferences={handleAddReferences}
-              handleRemoveReferences={handleRemoveReferences}
-              handleAddAttachment={handleAddAttachment}
-              handleRemoveAttachment={handleRemoveAttachment}
-            />
-          </Box>
-          <Stack spacing={2}>
-            <SaveButton
-              fullWidth
-              loading={loading}
-              document={document}
-              handleSubmit={() => handleSubmit(document)}
-            />
-            <PublishButton
-              fullWidth
-              loading={loading}
-              document={document}
-              handleTogglePublish={handleSubmitAndPublish}
-            />
-          </Stack>
-        </>
-      )}
+			{document && activeFields && (
+				<>
+					<Box sx={sx.container}>
+						<AdminDocumentForm
+							errors={errors}
+							document={document}
+							fields={activeFields}
+							collection={collection}
+							handleChange={handleChange}
+							handleAddReferences={handleAddReferences}
+							handleRemoveReferences={handleRemoveReferences}
+							handleAddAttachment={handleAddAttachment}
+							handleRemoveAttachment={handleRemoveAttachment}
+						/>
+					</Box>
+					<Stack spacing={2}>
+						<SaveButton
+							fullWidth
+							loading={loading}
+							document={document}
+							handleSubmit={() => handleSubmit(document)}
+						/>
+						<PublishButton
+							fullWidth
+							loading={loading}
+							document={document}
+							handleTogglePublish={handleSubmitAndPublish}
+						/>
+					</Stack>
+				</>
+			)}
 		</Drawer>
 	)
 }

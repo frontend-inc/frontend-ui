@@ -1,24 +1,19 @@
 import React from 'react'
 import { ResourceList } from '../../../components'
-import { 
-  AdminMediaForm, 
-  AdminMediaItem,
-  AdminMediaShow 
-} from '../..'
-import { useAdmin } from '../../../hooks' 
-
+import { AdminMediaForm, AdminMediaItem, AdminMediaShow } from '../..'
+import { useAdmin } from '../../../hooks'
 
 const AdminMediaList: React.FC = (props) => {
 	const { apiUrl } = useAdmin()
 
 	return (
 		<ResourceList
-      grid 
+			grid
 			url={`${apiUrl}/storage`}
 			name="storage"
 			enableCreate
 			enableDelete
-      enableShow
+			enableShow
 			query={{
 				sort_by: 'created_at',
 				sort_direction: 'desc',
@@ -26,7 +21,7 @@ const AdminMediaList: React.FC = (props) => {
 			edit={AdminMediaForm}
 			create={AdminMediaForm}
 			component={AdminMediaItem}
-      show={ AdminMediaShow }
+			show={AdminMediaShow}
 			emptyIcon="Image"
 			emptyTitle="No uploads"
 			emptyDescription="No uploads yet."

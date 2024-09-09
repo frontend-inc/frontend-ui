@@ -193,10 +193,7 @@ const AdminCollectionMenu: React.FC = () => {
 				))}
 			</MenuList>
 			<Box sx={sx.buttonContainer}>
-				<SecondaryButton
-					onClick={handleCreateCollectionClick}
-          icon="Plus"					
-				>
+				<SecondaryButton onClick={handleCreateCollectionClick} icon="Plus">
 					Collection
 				</SecondaryButton>
 			</Box>

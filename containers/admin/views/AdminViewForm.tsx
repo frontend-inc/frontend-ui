@@ -11,19 +11,19 @@ type AdminViewFormProps = {
 const AdminViewForm: React.FC<AdminViewFormProps> = (props) => {
 	const { errors, view, handleChange } = props
 	return (
-    <FormFields 
-      resource={ view }
-      errors={ errors }
-      handleChange={ handleChange }
-      fields={[
-        {
-          label: 'Name',
-          name: 'name',
-          placeholder: 'Name',
-          variant: 'string'
-        },
-      ]}
-    />		
+		<FormFields
+			resource={view}
+			errors={errors}
+			handleChange={handleChange}
+			fields={[
+				{
+					label: 'Name',
+					name: 'name',
+					placeholder: 'Name',
+					variant: 'string',
+				},
+			]}
+		/>
 	)
 }
 

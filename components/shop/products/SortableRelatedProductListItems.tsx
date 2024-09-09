@@ -88,9 +88,13 @@ const SortableRelatedListItems: React.FC<SortableRelatedListItemsProps> = (
 							enableEdit={enableEdit}
 							enableDelete={enableDelete}
 							handleClick={() => handleShowClick(relatedProduct)}
-							handleEdit={enableEdit ? () => handleEdit(relatedProduct) : undefined}
+							handleEdit={
+								enableEdit ? () => handleEdit(relatedProduct) : undefined
+							}
 							handleDelete={
-								enableDelete ? () => handleDeleteClick(relatedProduct) : undefined
+								enableDelete
+									? () => handleDeleteClick(relatedProduct)
+									: undefined
 							}
 						/>
 					)

@@ -4,12 +4,7 @@ import { ProductListProps } from './ProductList'
 
 const ProductGrid: React.FC<ProductListProps> = (props) => {
 	return (
-		<ProductList
-			{...props}
-			grid
-			perPage={9}
-			style={props?.style || 'card'}
-		/>
+		<ProductList {...props} grid perPage={9} style={props?.style || 'card'} />
 	)
 }
 

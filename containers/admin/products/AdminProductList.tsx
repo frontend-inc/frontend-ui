@@ -17,9 +17,9 @@ const AdminProductsList: React.FC<AdminProductListProps> = (props) => {
 	const { metafields = [] } = props
 
 	return (
-		<ResourceList     
-      grid 
-      selectable
+		<ResourceList
+			grid
+			selectable
 			url={`${apiUrl}/products`}
 			name={'product'}
 			enableSearch
@@ -29,14 +29,14 @@ const AdminProductsList: React.FC<AdminProductListProps> = (props) => {
 			enableCreate
 			sortOptions={[
 				{ name: 'price', label: 'Price' },
-				{ name: 'title', label: 'Title' },				
+				{ name: 'title', label: 'Title' },
 				{ name: 'created_at', label: 'Date' },
 			]}
 			create={AdminProductForm}
 			edit={AdminProductEditForm}
 			show={AdminProductShow}
-      toolbar={ AdminProductToolbar }
-			component={AdminProductItem}      
+			toolbar={AdminProductToolbar}
+			component={AdminProductItem}
 			slots={{
 				edit: {
 					metafields,
@@ -45,9 +45,9 @@ const AdminProductsList: React.FC<AdminProductListProps> = (props) => {
 					metafields,
 				},
 			}}
-      emptyIcon="Shirt"
-      emptyTitle="No products"
-      emptyDescription="No products added yet."
+			emptyIcon="Shirt"
+			emptyTitle="No products"
+			emptyDescription="No products added yet."
 		/>
 	)
 }

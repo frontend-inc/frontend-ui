@@ -13,8 +13,8 @@ type BooleanInputProps = {
 	direction?: 'row' | 'column'
 	size?: 'small' | 'large'
 	info?: string
-  debounceDelay?: number
-  disableDebounce?: boolean
+	debounceDelay?: number
+	disableDebounce?: boolean
 }
 
 const BooleanInput: React.FC<BooleanInputProps> = (props) => {
@@ -28,18 +28,18 @@ const BooleanInput: React.FC<BooleanInputProps> = (props) => {
 		disableBorder = false,
 		disablePadding = false,
 		info,
-    debounceDelay,
-    disableDebounce,
+		debounceDelay,
+		disableDebounce,
 	} = props
 
 	const handleTabChange = (ev) => {
 		const newValue = ev.target.value == 1 ? true : false
-    handleChange({
-      target: {
-        name, 
-        value: newValue
-      }
-    })
+		handleChange({
+			target: {
+				name,
+				value: newValue,
+			},
+		})
 	}
 
 	return (
@@ -57,8 +57,8 @@ const BooleanInput: React.FC<BooleanInputProps> = (props) => {
 			]}
 			value={value == true ? 1 : 0}
 			handleChange={handleTabChange}
-      debounceDelay={debounceDelay}
-      disableDebounce={disableDebounce}
+			debounceDelay={debounceDelay}
+			disableDebounce={disableDebounce}
 		/>
 	)
 }

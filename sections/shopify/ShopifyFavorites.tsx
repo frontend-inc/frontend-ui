@@ -4,7 +4,9 @@ import { ShopifyProductFavorites } from '../../components/shopify'
 import { ShopifyProductFavoritesProps } from '../../components/shopify/favorites/ShopifyProductFavorites'
 import { SectionProps, HeadingProps } from '../../types'
 
-type ShopifyFavoritesProps = SectionProps & HeadingProps & ShopifyProductFavoritesProps
+type ShopifyFavoritesProps = SectionProps &
+	HeadingProps &
+	ShopifyProductFavoritesProps
 
 const ShopifyFavorites: React.FC<ShopifyFavoritesProps> = (props) => {
 	const {

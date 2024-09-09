@@ -10,8 +10,8 @@ import {
 } from '..'
 import {
 	useProductDetails,
-  ShopifyMetafieldType,
-  ShopifyProductType 	
+	ShopifyMetafieldType,
+	ShopifyProductType,
 } from 'frontend-shopify'
 
 export type ShopifyProductDetailsProps = {
@@ -80,10 +80,10 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = (props) => {
 						label={buttonText}
 					/>
 					{metafields && (
-						<ShopifyProductMetafields 
-              product={product} 
-              metafields={metafields} 
-            />
+						<ShopifyProductMetafields
+							product={product}
+							metafields={metafields}
+						/>
 					)}
 					<ShopifyTrackRecentlyViewed product={product} />
 				</Stack>

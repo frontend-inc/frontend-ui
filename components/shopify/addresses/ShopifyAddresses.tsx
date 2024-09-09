@@ -47,12 +47,12 @@ const Addresses: React.FC<AddressesProps> = (props) => {
 	}
 
 	const handleDelete = async () => {
-    //@ts-ignore
-    if(activeAddress?.id){
-      //@ts-ignore
-		  await deleteCustomerAddress(activeAddress?.id)    
-		  setShowDeleteModal(false)
-    }
+		//@ts-ignore
+		if (activeAddress?.id) {
+			//@ts-ignore
+			await deleteCustomerAddress(activeAddress?.id)
+			setShowDeleteModal(false)
+		}
 	}
 
 	useEffect(() => {
@@ -83,7 +83,7 @@ const Addresses: React.FC<AddressesProps> = (props) => {
 					open={showDeleteModal}
 					handleClose={() => setShowDeleteModal(false)}
 					handleConfirm={handleDelete}
-				/>        
+				/>
 			</AuthScreen>
 		</>
 	)

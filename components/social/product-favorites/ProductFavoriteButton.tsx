@@ -62,7 +62,7 @@ const ProductFavoriteButton: React.FC<ProductFavoriteButtonProps> = (props) => {
 						color,
 					},
 					...(size === 'small' ? sx.small : sx.large),
-					...(isFavorite && sx.selected),					
+					...(isFavorite && sx.selected),
 				}}
 			>
 				{isFavorite ? (
@@ -84,7 +84,7 @@ const sx = {
 		'&:hover': {
 			color: 'primary.dark',
 		},
-    borderColor: 'primary.main',
+		borderColor: 'primary.main',
 	},
 	large: {
 		border: '1px solid',
@@ -95,5 +95,5 @@ const sx = {
 			bgcolor: 'background.main',
 			color: 'text.secondary',
 		},
-	},	
+	},
 }

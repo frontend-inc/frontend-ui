@@ -31,14 +31,14 @@ const AutocompleteOption: React.FC<AutocompleteOptionProps> = (props) => {
 			)}
 			{option?.image && (
 				<ListItemIcon sx={sx.listItemIcon}>
-          <Image
-            src={option?.image}
-            alt={option?.label}
-            width={32}
-            height={32}
-            //@ts-ignore
-            style={styles.image}
-          />
+					<Image
+						src={option?.image}
+						alt={option?.label}
+						width={32}
+						height={32}
+						//@ts-ignore
+						style={styles.image}
+					/>
 				</ListItemIcon>
 			)}
 			<Typography variant="body1">{option.label}</Typography>
@@ -213,8 +213,8 @@ const styles = {
 		borderRadius: '4px',
 		objectFit: 'cover',
 		marginRight: '0px',
-    height: '32px',
-    width: '32px',
+		height: '32px',
+		width: '32px',
 	},
 }
 

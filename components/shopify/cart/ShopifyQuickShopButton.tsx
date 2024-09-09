@@ -11,7 +11,9 @@ type ShopifyQuickShopButtonProps = {
 	enableQuantity?: boolean
 }
 
-const ShopifyQuickShopButton: React.FC<ShopifyQuickShopButtonProps> = (props) => {
+const ShopifyQuickShopButton: React.FC<ShopifyQuickShopButtonProps> = (
+	props
+) => {
 	const {
 		size,
 		product,

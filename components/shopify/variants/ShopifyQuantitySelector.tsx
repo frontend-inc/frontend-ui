@@ -9,7 +9,9 @@ type ShopifyQuantitySelectorProps = {
 	handleRemoveQuantity: () => void
 }
 
-const ShopifyQuantitySelector: React.FC<ShopifyQuantitySelectorProps> = (props) => {
+const ShopifyQuantitySelector: React.FC<ShopifyQuantitySelectorProps> = (
+	props
+) => {
 	const { size, quantity, handleAddQuantity, handleRemoveQuantity } =
 		props || {}
 

@@ -23,18 +23,18 @@ const CollectionAutosuggest: React.FC<AutosuggestProps> = (props) => {
 		direction = 'column',
 	} = props
 
-
-  const [options, setOptions] = useState([])
+	const [options, setOptions] = useState([])
 	const { collections, findCollections } = useCollections()
-
 
 	useEffect(() => {
 		if (collections) {
-			setOptions(collections?.map((collection) => ({
-        label: collection?.title,
-        value: collection?.handle,
-        image: collection?.image?.url,
-      })))
+			setOptions(
+				collections?.map((collection) => ({
+					label: collection?.title,
+					value: collection?.handle,
+					image: collection?.image?.url,
+				}))
+			)
 		}
 	}, [collections])
 
@@ -43,16 +43,16 @@ const CollectionAutosuggest: React.FC<AutosuggestProps> = (props) => {
 	}, [])
 
 	return (
-		<Autosuggest 
-      label={label}
-      name={name}
-      value={value}
-      options={options}
-      placeholder={placeholder}
-      direction={direction}
-      handleChange={handleChange} 
-      enableClear     
-    />
+		<Autosuggest
+			label={label}
+			name={name}
+			value={value}
+			options={options}
+			placeholder={placeholder}
+			direction={direction}
+			handleChange={handleChange}
+			enableClear
+		/>
 	)
 }
 

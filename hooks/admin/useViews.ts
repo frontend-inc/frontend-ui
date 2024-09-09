@@ -1,7 +1,6 @@
 import { useResource } from 'frontend-js'
 import { useAdmin } from '../../hooks'
 
-
 const useViews = () => {
 	const { apiUrl } = useAdmin()
 	const {

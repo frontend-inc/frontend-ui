@@ -4,19 +4,19 @@ import { useAdmin } from '../../../hooks'
 import { AdminFieldForm, AdminFieldItem } from '../..'
 
 type AdminFieldsListProps = {
-  collectionId: string | number | string[]
+	collectionId: string | number | string[]
 }
 
 const AdminFieldsList: React.FC<AdminFieldsListProps> = (props) => {
 	const { apiUrl } = useAdmin()
-  const { collectionId } = props || {}
+	const { collectionId } = props || {}
 
-  const url = `${apiUrl}/collections/${collectionId}/fields`  
-  const slots = {
-    item: {
-      url
-    }
-  }
+	const url = `${apiUrl}/collections/${collectionId}/fields`
+	const slots = {
+		item: {
+			url,
+		},
+	}
 
 	return (
 		<ResourceList
@@ -50,7 +50,7 @@ const AdminFieldsList: React.FC<AdminFieldsListProps> = (props) => {
 			emptyIcon="Type"
 			emptyTitle="No fields"
 			emptyDescription="No fields yet."
-      slots={slots}
+			slots={slots}
 		/>
 	)
 }

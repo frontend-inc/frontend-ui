@@ -14,8 +14,7 @@ type TeamAutosuggestProps = {
 }
 
 const TeamAutosuggest: React.FC<TeamAutosuggestProps> = (props) => {
-
-  const { apiUrl } = useAdmin()
+	const { apiUrl } = useAdmin()
 
 	const {
 		errors,
@@ -27,13 +26,13 @@ const TeamAutosuggest: React.FC<TeamAutosuggestProps> = (props) => {
 		handleChange,
 	} = props || {}
 
-  if(!apiUrl) return null;
+	if (!apiUrl) return null
 	return (
 		<RemoteAutosuggest
-      enableClear
+			enableClear
 			errors={errors}
 			direction={direction}
-			name={name}			
+			name={name}
 			label={label}
 			value={value}
 			displayField={displayField}

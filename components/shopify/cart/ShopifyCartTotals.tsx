@@ -2,7 +2,10 @@ import React from 'react'
 import { useCart } from 'frontend-shopify'
 import { Stack } from '@mui/material'
 import { formatCurrency } from 'frontend-shopify'
-import { ShopifyCartText, ShopifyCartDiscountCode } from '../../../components/shopify'
+import {
+	ShopifyCartText,
+	ShopifyCartDiscountCode,
+} from '../../../components/shopify'
 
 const ShopifyCartTotals: React.FC = () => {
 	const { cart } = useCart()
@@ -17,10 +20,16 @@ const ShopifyCartTotals: React.FC = () => {
 		<Stack spacing={1}>
 			<ShopifyCartText label={'Subtotal'} value={formatCurrency(subtotal)} />
 			{cart?.discountCodes?.map((discountCode) => (
-				<ShopifyCartDiscountCode key={discountCode?.id} discountCode={discountCode} />
+				<ShopifyCartDiscountCode
+					key={discountCode?.id}
+					discountCode={discountCode}
+				/>
 			))}
 			{discounts > 0 && (
-				<ShopifyCartText label={'Discounts'} value={formatCurrency(-discounts)} />
+				<ShopifyCartText
+					label={'Discounts'}
+					value={formatCurrency(-discounts)}
+				/>
 			)}
 			<ShopifyCartText label={'Tax'} value={formatCurrency(tax)} />
 			<ShopifyCartText label={'Total'} value={formatCurrency(total)} />

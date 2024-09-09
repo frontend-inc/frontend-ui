@@ -15,10 +15,7 @@ import {
 import { ShopifyMetafieldRichText } from '../../shopify'
 import { Icon } from '../../ui'
 
-const PLAIN_TEXT_TYPES = [
-  'single_line_text_field', 
-  'multi_line_text_field'
-]
+const PLAIN_TEXT_TYPES = ['single_line_text_field', 'multi_line_text_field']
 
 const RICH_TEXT_TYPES = ['rich_text_field']
 
@@ -29,7 +26,9 @@ type ShopifyProductMetafieldsProps = {
 	metafields: ShopifyMetafieldType[]
 }
 
-const ShopifyProductMetafields: React.FC<ShopifyProductMetafieldsProps> = (props) => {
+const ShopifyProductMetafields: React.FC<ShopifyProductMetafieldsProps> = (
+	props
+) => {
 	const { product, metafields } = props
 
 	return (
@@ -41,7 +40,9 @@ const ShopifyProductMetafields: React.FC<ShopifyProductMetafieldsProps> = (props
 				return (
 					<Accordion sx={sx.accordion} elevation={0} key={index}>
 						<AccordionSummary expandIcon={<Icon name="ChevronDown" />}>
-							<Typography variant="subtitle2" color="text.primary">{metafield.label}</Typography>
+							<Typography variant="subtitle2" color="text.primary">
+								{metafield.label}
+							</Typography>
 						</AccordionSummary>
 						<AccordionDetails>
 							{PLAIN_TEXT_TYPES.includes(type) && (

@@ -15,11 +15,9 @@ const AdminMediaItem: React.FC<AdminMediaItemProps> = (props) => {
 		<ResourceGridItem
 			enableBorder
 			sortable={sortable}
-			image={ resource?.url }              
+			image={resource?.url}
 			primary={resource?.content_type}
-			secondaryAction={
-        <Label label={resource?.dimensions} />
-      }
+			secondaryAction={<Label label={resource?.dimensions} />}
 			handleClick={handleClick}
 			handleDelete={handleDelete}
 		/>

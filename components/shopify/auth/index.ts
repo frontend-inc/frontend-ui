@@ -1,5 +1,5 @@
 export { default as ShopifyAuth } from './ShopifyAuth'
-export { default as ShopifyCustomer } from './ShopifyCustomer' 
+export { default as ShopifyCustomer } from './ShopifyCustomer'
 export { default as ShopifyChangePassword } from './ShopifyChangePassword'
 export { default as ShopifyChangePasswordForm } from './ShopifyChangePasswordForm'
 export { default as ShopifySignIn } from './ShopifySignIn'

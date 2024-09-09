@@ -12,7 +12,9 @@ type ShopifyCartDiscountCodeProps = {
 	handleDelete?: () => void
 }
 
-const ShopifyCartDiscountCode: React.FC<ShopifyCartDiscountCodeProps> = (props) => {
+const ShopifyCartDiscountCode: React.FC<ShopifyCartDiscountCodeProps> = (
+	props
+) => {
 	const { discountCode } = props
 
 	const { cartRemoveDiscountCode } = useCart()

@@ -33,13 +33,11 @@ const ShopifySignIn: React.FC<ShopifySignInProps> = (props) => {
 	}
 
 	const handleSignup = () => {
-    if(signupUrl)
-		  router.push(signupUrl)
+		if (signupUrl) router.push(signupUrl)
 	}
 
 	const handleForgotPassword = () => {
-    if(forgotPasswordUrl)
-		router.push(forgotPasswordUrl)
+		if (forgotPasswordUrl) router.push(forgotPasswordUrl)
 	}
 
 	return (

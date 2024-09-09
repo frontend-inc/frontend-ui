@@ -4,7 +4,7 @@ import useAdmin from './useAdmin'
 
 const useMedia = () => {
 	const { api } = useApi()
-  const { apiUrl } = useAdmin()
+	const { apiUrl } = useAdmin()
 
 	const {
 		loading,

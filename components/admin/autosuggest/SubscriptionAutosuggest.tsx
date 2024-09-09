@@ -19,8 +19,7 @@ type SubscriptionAutosuggestProps = {
 const SubscriptionAutosuggest: React.FC<SubscriptionAutosuggestProps> = (
 	props
 ) => {
-
-  const { apiUrl } = useAdmin()
+	const { apiUrl } = useAdmin()
 
 	const {
 		value,
@@ -34,7 +33,7 @@ const SubscriptionAutosuggest: React.FC<SubscriptionAutosuggestProps> = (
 		defaultOptions = [],
 	} = props
 
-  if(!apiUrl) return null;
+	if (!apiUrl) return null
 	return (
 		<RemoteAutosuggest
 			name={name}

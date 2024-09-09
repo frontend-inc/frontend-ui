@@ -9,45 +9,41 @@ import { uniq } from 'lodash'
 import { Icon } from '../../../../components'
 
 type ShopifyProductImageProps = {
-  handle: string
-  handleDelete: () => void
-  height?: number
-  width?: number
+	handle: string
+	handleDelete: () => void
+	height?: number
+	width?: number
 }
 
 const ShopifyProductImage: React.FC<ShopifyProductImageProps> = (props) => {
-  const { handle, handleDelete, height = 160, width = 160 } = props
+	const { handle, handleDelete, height = 160, width = 160 } = props
 
-  const { product, findProduct } = useProducts()
+	const { product, findProduct } = useProducts()
 
-  useEffect(() => {
-    if(handle){
-      findProduct(handle)
-    }
-  }, [handle])
+	useEffect(() => {
+		if (handle) {
+			findProduct(handle)
+		}
+	}, [handle])
 
-  if(!product) return null;
-  return(
-    <Fade in timeout={350} >
-      <Box sx={sx.productCard}>
-        <Image
-          enableGradient
-          disableBorder
-          src={product?.images?.edges?.[0]?.node?.url}
-          alt={product?.title}
-          height={height}
-          width={width}
-        />
-        <IconButton 
-          size="small"
-          onClick={handleDelete}
-          sx={sx.deleteButton}
-        >
-          <Icon name="X" />
-        </IconButton>
-      </Box>
-    </Fade>
-  )
+	if (!product) return null
+	return (
+		<Fade in timeout={350}>
+			<Box sx={sx.productCard}>
+				<Image
+					enableGradient
+					disableBorder
+					src={product?.images?.edges?.[0]?.node?.url}
+					alt={product?.title}
+					height={height}
+					width={width}
+				/>
+				<IconButton size="small" onClick={handleDelete} sx={sx.deleteButton}>
+					<Icon name="X" />
+				</IconButton>
+			</Box>
+		</Fade>
+	)
 }
 
 type AutosuggestProps = {
@@ -57,8 +53,8 @@ type AutosuggestProps = {
 	placeholder?: string
 	handleChange: (e: SyntheticEventType) => void
 	direction?: 'row' | 'column'
-  height?: number
-  width?: number
+	height?: number
+	width?: number
 }
 
 const ShopifyProductsInput: React.FC<AutosuggestProps> = (props) => {
@@ -69,12 +65,12 @@ const ShopifyProductsInput: React.FC<AutosuggestProps> = (props) => {
 		placeholder,
 		name = 'shopify_handle',
 		handleChange,
-    height, 
-    width
+		height,
+		width,
 	} = props
 
-  const [currentValue, setCurrentValue] = useState('')
-  const [shopifyProducts, setShopifyProducts] = useState([])
+	const [currentValue, setCurrentValue] = useState('')
+	const [shopifyProducts, setShopifyProducts] = useState([])
 	const { domain, storefrontAccessToken } = useContext(ShopifyContext) as any
 
 	const { products, setProduct, findProducts } = useProducts()
@@ -101,16 +97,16 @@ const ShopifyProductsInput: React.FC<AutosuggestProps> = (props) => {
 	}, [products])
 
 	useEffect(() => {
-		if (value && Array.isArray(value)) {      
+		if (value && Array.isArray(value)) {
 			setShopifyProducts(value)
 		}
 	}, [value])
 
 	const handleAutocompleteChange = (e) => {
 		const { value } = e.target
-    setCurrentValue(value)
-    let uniqProducts = uniq([...shopifyProducts, value])
-    setShopifyProducts(uniqProducts)
+		setCurrentValue(value)
+		let uniqProducts = uniq([...shopifyProducts, value])
+		setShopifyProducts(uniqProducts)
 		handleChange({
 			target: {
 				name,
@@ -125,41 +121,41 @@ const ShopifyProductsInput: React.FC<AutosuggestProps> = (props) => {
 		})
 	}, [])
 
-  const handleDelete = (handle: string) => {
-    let newProducts = shopifyProducts.filter((product) => product !== handle)
-    setShopifyProducts(newProducts)
-    handleChange({
-      target: {
-        name,
-        value: newProducts || []
-      }
-    })
-  }
+	const handleDelete = (handle: string) => {
+		let newProducts = shopifyProducts.filter((product) => product !== handle)
+		setShopifyProducts(newProducts)
+		handleChange({
+			target: {
+				name,
+				value: newProducts || [],
+			},
+		})
+	}
 
-	if (!domain || !storefrontAccessToken){
-    return (
-      <Placeholder
-        title="Shopify setup required"
-        description="Shopify provider is not setup"
-      />
-    )
-  }
+	if (!domain || !storefrontAccessToken) {
+		return (
+			<Placeholder
+				title="Shopify setup required"
+				description="Shopify provider is not setup"
+			/>
+		)
+	}
 	return (
 		<Stack direction="column" spacing={1} sx={sx.root}>
 			<Collapse in={shopifyProducts?.length > 0}>
-      <Box sx={ sx.carouselContainer }>
-        <Box sx={ sx.carousel }>
-          { shopifyProducts?.map((handle) => (
-            <ShopifyProductImage
-              key={ handle}
-              handle={handle}
-              height={ height }
-              width={ width }
-              handleDelete={() => handleDelete(handle)}				
-            />
-          ))}
-        </Box>
-        </Box>
+				<Box sx={sx.carouselContainer}>
+					<Box sx={sx.carousel}>
+						{shopifyProducts?.map((handle) => (
+							<ShopifyProductImage
+								key={handle}
+								handle={handle}
+								height={height}
+								width={width}
+								handleDelete={() => handleDelete(handle)}
+							/>
+						))}
+					</Box>
+				</Box>
 			</Collapse>
 			<AutocompleteInput
 				name={name}
@@ -182,9 +178,9 @@ const sx = {
 		width: '100%',
 	},
 	productCard: {
-    position: 'relative',
+		position: 'relative',
 		width: 160,
-    minWidth: 160,
+		minWidth: 160,
 		minHeight: 160,
 		borderRadius: 1,
 		overflow: 'hidden',
@@ -199,23 +195,22 @@ const sx = {
 	productContent: {
 		p: 1,
 	},
-  carouselContainer: {
-  },
-  carousel: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: '10px',
-  },
-  deleteButton: {
-    position: 'absolute',
-    top: 2,
-    right: 2,
-    bgcolor: 'background.default',
-    opacity: 0.5,
-    '&:hover': {
-      bgcolor: 'background.default',
-      opacity: 1,
-    },
-  }
+	carouselContainer: {},
+	carousel: {
+		display: 'flex',
+		flexDirection: 'row',
+		flexWrap: 'wrap',
+		gap: '10px',
+	},
+	deleteButton: {
+		position: 'absolute',
+		top: 2,
+		right: 2,
+		bgcolor: 'background.default',
+		opacity: 0.5,
+		'&:hover': {
+			bgcolor: 'background.default',
+			opacity: 1,
+		},
+	},
 }

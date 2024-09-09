@@ -2,7 +2,6 @@ import React from 'react'
 import { useResource } from 'frontend-js'
 import { useAdmin } from '../../hooks'
 
-
 const useRoles = () => {
 	const { apiUrl } = useAdmin()
 

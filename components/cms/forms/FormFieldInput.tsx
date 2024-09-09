@@ -10,20 +10,13 @@ type FormFieldInputProps = {
 	url?: string
 	foreignUrl?: string
 	contentType?: string
-	fields?: FormFieldType[]  
+	fields?: FormFieldType[]
 	handleChange: (e: SyntheticEventType) => void
 	handleRemove?: (name: string) => void
 }
 
 const FormFieldInput: React.FC<FormFieldInputProps> = (props) => {
-	const { 
-    resource, 
-    field, 
-    errors, 
-    value, 
-    handleChange, 
-    handleRemove 
-  } = props
+	const { resource, field, errors, value, handleChange, handleRemove } = props
 
 	const {
 		name,
@@ -52,14 +45,12 @@ const FormFieldInput: React.FC<FormFieldInputProps> = (props) => {
 			handleRemove={handleRemove}
 			displayField={displayField}
 			valueParam={valueParam}
-      fields={fields}
-
+			fields={fields}
 			// Reference props
 			url={url}
 			foreignUrl={foreignUrl}
 			resource={resource}
 			contentType={contentType}
-			
 		/>
 	)
 }

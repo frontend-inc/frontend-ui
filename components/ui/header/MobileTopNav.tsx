@@ -55,7 +55,9 @@ const MobileNav = (props: MobileNavProps) => {
 								height={logoHeight - 20}
 							/>
 						</Box>
-						<Box sx={sx.rightMenu}>{enableShopify && <ShopifyCartButton />}</Box>
+						<Box sx={sx.rightMenu}>
+							{enableShopify && <ShopifyCartButton />}
+						</Box>
 					</Box>
 				</Toolbar>
 			</AppBar>

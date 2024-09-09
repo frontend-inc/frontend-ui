@@ -16,9 +16,9 @@ export type ShopifyProductCollectionCarouselProps = {
 	enableOkendoStarRating?: boolean
 }
 
-const ShopifyProductCollectionCarousel: React.FC<ShopifyProductCollectionCarouselProps> = (
-	props
-) => {
+const ShopifyProductCollectionCarousel: React.FC<
+	ShopifyProductCollectionCarouselProps
+> = (props) => {
 	const {
 		handle,
 		href,

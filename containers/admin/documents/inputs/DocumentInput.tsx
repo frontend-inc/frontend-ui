@@ -9,11 +9,11 @@ import {
 	RatingInput,
 	TextInput,
 	ShopifyProductInput,
-  ShopifyProductsInput
+	ShopifyProductsInput,
 } from '../../../../components'
 import ReferenceInput from '../references/ReferenceInput'
 import MediaInput from '../media/MediaInput'
-import InputWrapper  from './InputWrapper'
+import InputWrapper from './InputWrapper'
 import { AiChatModal } from '../../../../components'
 import { COUNTRIES, STATES } from '../../../../constants'
 import { Stack } from '@mui/material'
@@ -26,28 +26,26 @@ type DocumentInputProps = {
 	handleChange: (e: any) => void
 	document?: any
 
-  collection?: any
+	collection?: any
 	handleAddReferences?: (items: any[]) => void
 	handleRemoveReferences?: (items: any[]) => void
 	handleAddAttachment?: (field: any, file: any) => void
 	handleRemoveAttachment?: (field: any, file: any) => void
-
 }
 
 const DocumentInput: React.FC<DocumentInputProps> = (props) => {
-	
-  const { 
-    errors, 
-    field, 
-    value, 
-    handleChange, 
-    document,
-    collection,
-    handleAddReferences,
-    handleRemoveReferences,
-    handleAddAttachment,
-    handleRemoveAttachment 
-  } = props
+	const {
+		errors,
+		field,
+		value,
+		handleChange,
+		document,
+		collection,
+		handleAddReferences,
+		handleRemoveReferences,
+		handleAddAttachment,
+		handleRemoveAttachment,
+	} = props
 
 	const { variant, name, label, options } = field || {}
 
@@ -56,7 +54,7 @@ const DocumentInput: React.FC<DocumentInputProps> = (props) => {
 		country: Autosuggest,
 		state: Autosuggest,
 		string: TextInput,
-		url: TextInput,    
+		url: TextInput,
 		text: TextInput,
 		location: LocationInput,
 		number: TextInput,
@@ -68,11 +66,11 @@ const DocumentInput: React.FC<DocumentInputProps> = (props) => {
 		rating: RatingInput,
 		json: JSONInput,
 		shopify: ShopifyProductInput,
-    shopify_products: ShopifyProductsInput,
-    file: MediaInput,
+		shopify_products: ShopifyProductsInput,
+		file: MediaInput,
 		image: MediaInput,
-    video: MediaInput,
-    habtm: ReferenceInput
+		video: MediaInput,
+		habtm: ReferenceInput,
 	}
 
 	const Component = componentMapper[variant] || TextInput
@@ -81,11 +79,11 @@ const DocumentInput: React.FC<DocumentInputProps> = (props) => {
 		array: {
 			value: value || [],
 		},
-    shopify_products: {
-      value: value || [],
-      height: 180,
+		shopify_products: {
+			value: value || [],
+			height: 180,
 			width: 180,
-    },  
+		},
 		location: {
 			enablePosition: true,
 			lat: document?.lat,
@@ -102,7 +100,7 @@ const DocumentInput: React.FC<DocumentInputProps> = (props) => {
 			options: STATES,
 		},
 		tags: {
-      value: value || [],
+			value: value || [],
 			freeSolo: true,
 		},
 		text: {
@@ -122,33 +120,33 @@ const DocumentInput: React.FC<DocumentInputProps> = (props) => {
 		price: {
 			type: 'number',
 		},
-    habtm: {
-      field,
-      document,
-      collection,
-      handleAddReferences,
-      handleRemoveReferences,
-      enableMultipleSelect: true
-    },
-    image: {
-      field,
-      collection,
-      handleAddAttachment,
-      handleRemoveAttachment
-    },
-    file: {
-      field,
-      collection,
-      handleAddAttachment,
-      handleRemoveAttachment
-    },
-    video: {
-      field,
-      collection,
-      handleAddAttachment,
-      handleRemoveAttachment
-    }        
-	}[variant]  
+		habtm: {
+			field,
+			document,
+			collection,
+			handleAddReferences,
+			handleRemoveReferences,
+			enableMultipleSelect: true,
+		},
+		image: {
+			field,
+			collection,
+			handleAddAttachment,
+			handleRemoveAttachment,
+		},
+		file: {
+			field,
+			collection,
+			handleAddAttachment,
+			handleRemoveAttachment,
+		},
+		video: {
+			field,
+			collection,
+			handleAddAttachment,
+			handleRemoveAttachment,
+		},
+	}[variant]
 
 	return (
 		<InputWrapper title={label} label={variant}>

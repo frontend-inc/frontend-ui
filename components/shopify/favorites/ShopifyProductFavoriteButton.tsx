@@ -10,33 +10,32 @@ type ShopifyProductFavoriteButtonProps = {
 	product: ShopifyProductType
 }
 
-const ShopifyProductFavoriteButton: React.FC<ShopifyProductFavoriteButtonProps> = (props) => {
+const ShopifyProductFavoriteButton: React.FC<
+	ShopifyProductFavoriteButtonProps
+> = (props) => {
 	const { product } = props
 
-  const { setAuthOpen } = useApp()
-  const { currentUser } = useAuth()
+	const { setAuthOpen } = useApp()
+	const { currentUser } = useAuth()
 
-  const [isFavorite, setIsFavorite] = useState(false)
+	const [isFavorite, setIsFavorite] = useState(false)
 
-  const { 
-    shopifyFavorite, 
-    shopifyUnfavorite 
-  } = useSocial()
+	const { shopifyFavorite, shopifyUnfavorite } = useSocial()
 
 	const handleClick = async () => {
-    if(!currentUser?.id) return setAuthOpen(true);
-		if(isFavorite) {      
-      setIsFavorite(false)
-      shopifyUnfavorite(product.handle)
-    }else{      
-      setIsFavorite(true)
-      shopifyFavorite(product.handle)
-    }    
+		if (!currentUser?.id) return setAuthOpen(true)
+		if (isFavorite) {
+			setIsFavorite(false)
+			shopifyUnfavorite(product.handle)
+		} else {
+			setIsFavorite(true)
+			shopifyFavorite(product.handle)
+		}
 	}
 
-  useEffect(() => {
-    setIsFavorite(isShopifyFavorite(currentUser, product.handle))
-  }, [currentUser?.id, product?.handle])
+	useEffect(() => {
+		setIsFavorite(isShopifyFavorite(currentUser, product.handle))
+	}, [currentUser?.id, product?.handle])
 
 	return (
 		<Button

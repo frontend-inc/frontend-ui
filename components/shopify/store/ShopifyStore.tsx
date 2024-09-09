@@ -26,8 +26,8 @@ const ShopifyStore: React.FC<ShopifyStoreProps> = (props) => {
 		shopUrl,
 		storefrontAccessToken,
 	} = props
-	
-	return (enableShopify && domain && storefrontAccessToken) ? (
+
+	return enableShopify && domain && storefrontAccessToken ? (
 		<ShopifyProvider
 			logo={logo}
 			domain={domain}
@@ -35,11 +35,9 @@ const ShopifyStore: React.FC<ShopifyStoreProps> = (props) => {
 			customerPortalUrl={customerPortalUrl}
 			storefrontAccessToken={storefrontAccessToken}
 		>
-      <ShopifyCart />
+			<ShopifyCart />
 			<ShopifyProductProvider>
-				<ShopifyCollectionProvider>
-          {children}
-        </ShopifyCollectionProvider>
+				<ShopifyCollectionProvider>{children}</ShopifyCollectionProvider>
 			</ShopifyProductProvider>
 		</ShopifyProvider>
 	) : (

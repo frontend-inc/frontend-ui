@@ -8,7 +8,7 @@ const AdminMetafieldForm: React.FC<ResourceFormProps> = (props) => {
 			{...props}
 			fields={[
 				{ label: 'Label', name: 'label', variant: 'string' },
-        { label: 'Name', name: 'name', variant: 'nospace' },
+				{ label: 'Name', name: 'name', variant: 'nospace' },
 				{
 					label: 'Type',
 					name: 'variant',
@@ -17,10 +17,18 @@ const AdminMetafieldForm: React.FC<ResourceFormProps> = (props) => {
 						{ icon: 'Type', value: 'string', label: 'String' },
 						{ icon: 'FileText', value: 'text', label: 'Text' },
 						{ icon: 'Hash', value: 'number', label: 'Number' },
-            { icon: 'Shirt', value: 'shopify_products', label: 'Shopify Products' },
-            { icon: 'ShoppingCard', value: 'shopify_collection', label: 'Shopify Collection' },
+						{
+							icon: 'Shirt',
+							value: 'shopify_products',
+							label: 'Shopify Products',
+						},
+						{
+							icon: 'ShoppingCard',
+							value: 'shopify_collection',
+							label: 'Shopify Collection',
+						},
 					],
-				}
+				},
 			]}
 		/>
 	)

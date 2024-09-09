@@ -6,9 +6,7 @@ import {
 	SortableRelatedProductListItems,
 } from '../..'
 
-const SortableRelatedProductList: React.FC<ProductListProps> = (
-	props
-) => {
+const SortableRelatedProductList: React.FC<ProductListProps> = (props) => {
 	const { query, slots = { item: {} } } = props
 	let { url, resource } = props
 	url = `${url}/${resource?.id}/references`

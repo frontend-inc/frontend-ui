@@ -16,7 +16,9 @@ export type ProductCollectionAutosuggestProps = {
 	defaultOptions?: OptionType[]
 }
 
-const ProductCollectionAutosuggest: React.FC<ProductCollectionAutosuggestProps> = (props) => {
+const ProductCollectionAutosuggest: React.FC<
+	ProductCollectionAutosuggestProps
+> = (props) => {
 	const {
 		value,
 		query = {},
@@ -29,9 +31,9 @@ const ProductCollectionAutosuggest: React.FC<ProductCollectionAutosuggestProps> 
 		defaultOptions = [],
 	} = props
 
-  const { apiUrl } = useAdmin()
+	const { apiUrl } = useAdmin()
 
-  if(!apiUrl) return null;
+	if (!apiUrl) return null
 	return (
 		<RemoteAutosuggest
 			name={name}
@@ -39,7 +41,7 @@ const ProductCollectionAutosuggest: React.FC<ProductCollectionAutosuggestProps> 
 			value={value}
 			direction={direction}
 			valueParam={valueParam}
-			displayField='title'
+			displayField="title"
 			url={`${apiUrl}/product_collections`}
 			placeholder={placeholder}
 			handleChange={handleChange}

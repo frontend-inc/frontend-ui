@@ -79,7 +79,7 @@ const ReferenceKanBanListItems: React.FC<KanBanListItemsProps> = (props) => {
 				position: index,
 			}
 		})
-    let movedDocument = changeDocumentValue(movedItem, fieldName, value)
+		let movedDocument = changeDocumentValue(movedItem, fieldName, value)
 		await updateMany([movedDocument?.id], { [fieldName]: value })
 		updatePositions(columnItems)
 	}

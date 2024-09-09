@@ -3,11 +3,7 @@ import { AlertModal } from '../../../components'
 import { useAlerts } from '../../../hooks'
 import { useDocuments, useAdmin } from '../../../hooks'
 import { Table } from '../../../components'
-import {	
-	ImageModal,
-	AdminVideoModal,
-	TextModal,	
-} from '../../../components'
+import { ImageModal, AdminVideoModal, TextModal } from '../../../components'
 import { TableFilterDrawer } from '../../../components'
 import AdminToolbarMenu from './AdminToolbarMenu'
 import { useRouter } from 'next/router'
@@ -235,9 +231,7 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 			per_page: 20,
 		}
 		apiQuery.where(query)
-		router.push(
-			`${clientUrl}/collections/${collection.name}?${apiQuery.url()}`
-		)
+		router.push(`${clientUrl}/collections/${collection.name}?${apiQuery.url()}`)
 	}
 
 	const handleClearFilters = () => {
@@ -251,17 +245,13 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 			keywords: '',
 		}
 		apiQuery.where(query)
-		router.push(
-			`${clientUrl}/collections/${collection.name}?${apiQuery.url()}`
-		)
+		router.push(`${clientUrl}/collections/${collection.name}?${apiQuery.url()}`)
 	}
 
 	const handleSort = (field) => {
 		apiQuery.parseURL(router.query)
 		apiQuery.sort(field?.name)
-		router.push(
-			`${clientUrl}/collections/${collection.name}?${apiQuery.url()}`
-		)
+		router.push(`${clientUrl}/collections/${collection.name}?${apiQuery.url()}`)
 	}
 
 	const handleCellLinkClick = async (value) => {
@@ -286,7 +276,7 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 	useEffect(() => {
 		if (router?.query) {
 			let parsedQuery = apiQuery.parseURL(router.query).query()
-      //@ts-ignore
+			//@ts-ignore
 			findDocuments(parsedQuery)
 		}
 	}, [router?.query])
@@ -324,11 +314,7 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 				totalCount={totalCount}
 				handlePaginate={handlePaginate}
 				disableBorderRadius
-				secondaryActions={					 
-					<AdminToolbarMenu 
-            handleSaveView={handleSaveView} 
-          />
-				}
+				secondaryActions={<AdminToolbarMenu handleSaveView={handleSaveView} />}
 			/>
 			{fields && (
 				<TableFilterDrawer
@@ -363,7 +349,7 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 				open={showDeleteModal}
 				handleClose={() => setShowDeleteModal(false)}
 				handleConfirm={handleDeleteRow}
-			/>			
+			/>
 		</Box>
 	)
 }

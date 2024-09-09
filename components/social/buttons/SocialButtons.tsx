@@ -6,41 +6,41 @@ import {
 	FavoriteButton,
 	ShareButton,
 	AddToListButton,
-  ProductLikeButton,
-  ProductFavoriteButton,
+	ProductLikeButton,
+	ProductFavoriteButton,
 } from '../../../components'
 import { useRouter } from 'next/router'
 
 type SocialButtonsProps = {
 	resource: any
-  product?: any
+	product?: any
 	direction?: 'row' | 'column'
 	enableComments?: boolean
-	enableLikes?: boolean  
+	enableLikes?: boolean
 	enableFavorites?: boolean
 	enableAddToList?: boolean
 	enableSharing?: boolean
-  enableProductLikes?: boolean
-  enableProductFavorites?: boolean
+	enableProductLikes?: boolean
+	enableProductFavorites?: boolean
 	numLikes?: number
 	numFavorites?: number
 	justifyContent?: string
 	size?: 'small' | 'large'
-	color?: string	
+	color?: string
 }
 
 const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 	const {
 		resource,
-    product,
+		product,
 		direction = 'row',
 		enableComments,
 		enableLikes,
 		enableFavorites,
 		enableSharing,
 		enableAddToList,
-    enableProductLikes,
-    enableProductFavorites,
+		enableProductLikes,
+		enableProductFavorites,
 		numLikes,
 		numFavorites,
 		size = 'small',
@@ -51,9 +51,14 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 	const router = useRouter()
 	const currentPageUrl = router.asPath
 
-	if (!enableLikes && !enableFavorites && 
-      !enableSharing && !enableAddToList && 
-      !enableProductFavorites && !enableProductLikes)
+	if (
+		!enableLikes &&
+		!enableFavorites &&
+		!enableSharing &&
+		!enableAddToList &&
+		!enableProductFavorites &&
+		!enableProductLikes
+	)
 		return null
 	return (
 		<Stack
@@ -62,11 +67,7 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 			spacing={size == 'small' ? 0 : 1}
 		>
 			{enableAddToList == true && (
-				<AddToListButton 
-          size={size} 
-          resource={resource} 
-          color={color} 
-        />
+				<AddToListButton size={size} resource={resource} color={color} />
 			)}
 			{enableLikes == true && (
 				<LikeButton
@@ -79,40 +80,34 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 			{enableFavorites == true && (
 				<FavoriteButton
 					size={size}
-          color={color}
+					color={color}
 					resource={resource}
-					numFavorites={numFavorites}					
+					numFavorites={numFavorites}
 				/>
 			)}
 
-      {enableProductLikes == true && (
+			{enableProductLikes == true && (
 				<ProductLikeButton
-					size={size}					
+					size={size}
 					product={product}
-          color={color}
+					color={color}
 					numLikes={numLikes}
 				/>
 			)}
 			{enableProductFavorites == true && (
 				<ProductFavoriteButton
 					size={size}
-					product={product}					
+					product={product}
 					color={color}
-          numFavorites={numFavorites}
+					numFavorites={numFavorites}
 				/>
 			)}
 
 			{enableComments == true && (
-				<CommentButton 
-          resource={resource} 
-          color={color} 
-        />
+				<CommentButton resource={resource} color={color} />
 			)}
 			{enableSharing == true && (
-				<ShareButton 
-          size={size} 
-          url={currentPageUrl} 
-        />
+				<ShareButton size={size} url={currentPageUrl} />
 			)}
 		</Stack>
 	)

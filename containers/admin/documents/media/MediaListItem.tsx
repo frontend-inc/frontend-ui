@@ -6,7 +6,12 @@ import {
 	CardActionArea,
 	CardHeader,
 } from '@mui/material'
-import { Image, AttachmentImage, Label, MenuButton } from '../../../../components'
+import {
+	Image,
+	AttachmentImage,
+	Label,
+	MenuButton,
+} from '../../../../components'
 
 type MediaItemProps = {
 	item?: any
@@ -50,19 +55,15 @@ const MediaItem: React.FC<MediaItemProps> = (props) => {
 			<CardActionArea onClick={() => (handleClick ? handleClick(item) : null)}>
 				{contentType == 'image' || contentType == 'video' ? (
 					<Image
-            disableBorderRadius
+						disableBorderRadius
 						height={size}
-            width={size}					
+						width={size}
 						src={item?.url}
-						alt={item?.content_type}						
-            objectFit={'cover'}						
+						alt={item?.content_type}
+						objectFit={'cover'}
 					/>
 				) : (
-					<AttachmentImage 
-            icon="File" 
-            width={size} 
-            height={size} 
-          />
+					<AttachmentImage icon="File" width={size} height={size} />
 				)}
 			</CardActionArea>
 		</Card>

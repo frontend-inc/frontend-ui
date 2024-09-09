@@ -15,8 +15,7 @@ type UserAutosuggestProps = {
 }
 
 const UserAutosuggest: React.FC<UserAutosuggestProps> = (props) => {
-
-  const { apiUrl } = useAdmin()
+	const { apiUrl } = useAdmin()
 
 	const {
 		errors,
@@ -29,10 +28,10 @@ const UserAutosuggest: React.FC<UserAutosuggestProps> = (props) => {
 		placeholder = 'Select user',
 	} = props || {}
 
-  if(!apiUrl) return null;
+	if (!apiUrl) return null
 	return (
 		<RemoteAutosuggest
-      enableClear
+			enableClear
 			errors={errors}
 			direction={direction}
 			name={name}

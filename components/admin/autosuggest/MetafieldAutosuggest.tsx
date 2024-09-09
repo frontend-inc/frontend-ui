@@ -29,9 +29,9 @@ const MetafieldAutosuggest: React.FC<MetafieldAutosuggestProps> = (props) => {
 		defaultOptions = [],
 	} = props
 
-  const { apiUrl } = useAdmin()
+	const { apiUrl } = useAdmin()
 
-  if(!apiUrl) return null;
+	if (!apiUrl) return null
 	return (
 		<RemoteAutosuggest
 			name={name}

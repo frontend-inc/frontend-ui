@@ -14,8 +14,8 @@ export type ProductCardProps = {
 	secondary?: string | React.ReactNode
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
-  price: string
-  compareAtPrice?: string
+	price: string
+	compareAtPrice?: string
 	handleClick?: () => void
 	handleSelect?: () => void
 	height?: number
@@ -31,8 +31,8 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 		label,
 		primary,
 		secondary,
-    price,
-    compareAtPrice,
+		price,
+		compareAtPrice,
 		actions,
 		secondaryAction,
 		handleClick,
@@ -70,16 +70,20 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 					<Typography sx={sx.title} color="text.primary" variant="subtitle1">
 						{primary}
 					</Typography>
-          <Stack direction="row" spacing={1}>
-            <Typography color="text.primary" variant="caption">
-              {price}
-            </Typography>
-            {compareAtPrice && (
-              <Typography color="text.secondary" variant="caption" sx={ sx.compareAtPrice }>
-                {compareAtPrice}
-              </Typography>
-            )}
-          </Stack>
+					<Stack direction="row" spacing={1}>
+						<Typography color="text.primary" variant="caption">
+							{price}
+						</Typography>
+						{compareAtPrice && (
+							<Typography
+								color="text.secondary"
+								variant="caption"
+								sx={sx.compareAtPrice}
+							>
+								{compareAtPrice}
+							</Typography>
+						)}
+					</Stack>
 					{secondary && (
 						<Typography color="text.secondary" variant="body2">
 							{secondary}
@@ -133,8 +137,8 @@ const sx = {
 	title: {
 		width: '100%',
 	},
-  compareAtPrice: {
-    textDecoration: 'line-through',
-  },
+	compareAtPrice: {
+		textDecoration: 'line-through',
+	},
 	user: {},
 }

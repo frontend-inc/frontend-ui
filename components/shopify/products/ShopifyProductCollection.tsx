@@ -26,7 +26,9 @@ export type ShopifyProductCollectionProps = {
 	enableOkendoStarRating?: boolean
 }
 
-const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (props) => {
+const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (
+	props
+) => {
 	const {
 		handle,
 		href,

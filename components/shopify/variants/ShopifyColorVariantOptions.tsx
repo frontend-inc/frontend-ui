@@ -13,7 +13,9 @@ type ShopifyColorVariantsOptionsProps = {
 	styles?: any
 }
 
-const ShopifyColorVariantsOptions: React.FC<ShopifyColorVariantsOptionsProps> = (props) => {
+const ShopifyColorVariantsOptions: React.FC<
+	ShopifyColorVariantsOptionsProps
+> = (props) => {
 	const { product, name, values, selected, handleChange } = props
 
 	return (

@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {
-	ShopifyMetafieldType,
-	getMetafieldReference,
-} from 'frontend-shopify'
+import { ShopifyMetafieldType, getMetafieldReference } from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'
 
 export type ShopifyMetafieldVideoProps = {
@@ -28,18 +25,18 @@ const ShopifyMetafieldVideo: React.FC<ShopifyMetafieldVideoProps> = (props) => {
 	const [ogg, setOgg] = useState<string | null>(null)
 
 	useEffect(() => {
-		if (shopifyProduct && metafield) {   
-      const metafieldIdentifier = {
-        namespace: metafield?.split('.')[0],
-        key: metafield?.split('.')[1],
-      }   
+		if (shopifyProduct && metafield) {
+			const metafieldIdentifier = {
+				namespace: metafield?.split('.')[0],
+				key: metafield?.split('.')[1],
+			}
 			findProduct(shopifyProduct?.handle, [metafieldIdentifier])
 		}
 	}, [shopifyProduct, metafield])
 
 	useEffect(() => {
 		if (product) {
-      const key = metafield?.split('.')[1]
+			const key = metafield?.split('.')[1]
 			let videoRef = getMetafieldReference(product, key)
 			let mp4 = videoRef?.sources.find((source) => source.format === 'mp4')
 			let ogg = videoRef?.sources.find((source) => source.format === 'ogg')
@@ -56,8 +53,8 @@ const ShopifyMetafieldVideo: React.FC<ShopifyMetafieldVideoProps> = (props) => {
 			controls={controls}
 			autoPlay={autoPlay}
 		>
-			{ mp4 && <source src={mp4} type="video/mp4" /> }
-			{ ogg && <source src={ogg} type="video/ogg" /> }
+			{mp4 && <source src={mp4} type="video/mp4" />}
+			{ogg && <source src={ogg} type="video/ogg" />}
 			Your browser does not support the video tag.
 		</video>
 	)

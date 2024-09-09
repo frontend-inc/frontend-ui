@@ -4,10 +4,13 @@ import { CollectionProductsGridByHandle } from '../../components/shop'
 import { CollectionProductsGridProps } from '../../components/shop/collection-products/CollectionProductsGrid'
 import { SectionProps, HeadingProps } from '../../types'
 
-type ShopCollectionProductsGridProps = CollectionProductsGridProps & 
-  SectionProps & HeadingProps
+type ShopCollectionProductsGridProps = CollectionProductsGridProps &
+	SectionProps &
+	HeadingProps
 
-const ShopCollectionProductsGrid: React.FC<ShopCollectionProductsGridProps> = (props) => {
+const ShopCollectionProductsGrid: React.FC<ShopCollectionProductsGridProps> = (
+	props
+) => {
 	const {
 		label,
 		title,
@@ -33,7 +36,7 @@ const ShopCollectionProductsGrid: React.FC<ShopCollectionProductsGridProps> = (p
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Heading
+			<Heading
 				label={label}
 				title={title}
 				description={description}

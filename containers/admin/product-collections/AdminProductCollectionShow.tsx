@@ -21,10 +21,10 @@ const AdminProductShow: React.FC<AdminProductShowProps> = (props) => {
 	} = props || {}
 
 	let fields = [
-    { label: 'Handle', name: 'handle', variant: 'string' },
+		{ label: 'Handle', name: 'handle', variant: 'string' },
 		{ label: 'Title', name: 'title', variant: 'string' },
-		{ label: 'Description', name: 'description', variant: 'text' },		
-    { label: 'Label', name: 'label', variant: 'string' },
+		{ label: 'Description', name: 'description', variant: 'text' },
+		{ label: 'Label', name: 'label', variant: 'string' },
 		...metafields,
 	]
 
@@ -33,9 +33,9 @@ const AdminProductShow: React.FC<AdminProductShowProps> = (props) => {
 			loading={loading}
 			open={open}
 			handleClose={handleClose}
-      image={ resource?.image?.url }
+			image={resource?.image?.url}
 			primary={resource?.title}
-			secondary={ resource?.description }
+			secondary={resource?.description}
 			label={resource?.display_price}
 			enableEdit={enableEdit}
 			enableDelete={enableDelete}
@@ -43,7 +43,7 @@ const AdminProductShow: React.FC<AdminProductShowProps> = (props) => {
 			handleDelete={handleDelete}
 			resource={resource}
 			fields={fields}
-      direction="column"
+			direction="column"
 		/>
 	)
 }

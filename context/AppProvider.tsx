@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import AppContext from './AppContext'
 
 type AppProviderProps = {
-  apiUrl: string 
+	apiUrl: string
 	clientUrl: string
 	children: React.ReactNode
 	logo?: any
@@ -29,7 +29,7 @@ const AppProvider = (props: AppProviderProps) => {
 		setApp,
 
 		logo,
-    apiUrl,
+		apiUrl,
 		clientUrl,
 
 		alert,

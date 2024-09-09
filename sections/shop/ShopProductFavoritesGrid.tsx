@@ -4,9 +4,13 @@ import { ProductFavoritesGrid } from '../../components/shop'
 import { ProductListProps } from '../../components/shop/products/ProductList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type ShopProductFavoritesGridProps = ProductListProps & SectionProps & HeadingProps
+type ShopProductFavoritesGridProps = ProductListProps &
+	SectionProps &
+	HeadingProps
 
-const ShopProductFavoritesGrid: React.FC<ShopProductFavoritesGridProps> = (props) => {
+const ShopProductFavoritesGrid: React.FC<ShopProductFavoritesGridProps> = (
+	props
+) => {
 	const {
 		label,
 		title,
@@ -32,7 +36,7 @@ const ShopProductFavoritesGrid: React.FC<ShopProductFavoritesGridProps> = (props
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Heading
+			<Heading
 				label={label}
 				title={title}
 				description={description}

@@ -16,8 +16,9 @@ type ShopifyMetafieldAutosuggestProps = {
 	defaultOptions?: OptionType[]
 }
 
-const ShopifyMetafieldAutosuggest: React.FC<ShopifyMetafieldAutosuggestProps> = (props) => {
-
+const ShopifyMetafieldAutosuggest: React.FC<
+	ShopifyMetafieldAutosuggestProps
+> = (props) => {
 	const {
 		value,
 		query = {},
@@ -30,9 +31,9 @@ const ShopifyMetafieldAutosuggest: React.FC<ShopifyMetafieldAutosuggestProps> = 
 		defaultOptions = [],
 	} = props
 
-  const { apiUrl } = useAdmin()
-  
-  if(!apiUrl) return null;
+	const { apiUrl } = useAdmin()
+
+	if (!apiUrl) return null
 	return (
 		<RemoteAutosuggest
 			name={name}
