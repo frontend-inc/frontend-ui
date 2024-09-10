@@ -13,10 +13,10 @@ import {
 import { PriceOptionType, SearchFilterOptionType } from 'frontend-shopify'
 
 export type ShopifyProductCollectionProps = {
-	href: string
+	href?: string
 	handle: string
-	options: SearchFilterOptionType[]
-	priceOptions: PriceOptionType[]
+	options?: SearchFilterOptionType[]
+	priceOptions?: PriceOptionType[]
 	enableFilters?: boolean
 	enableSort?: boolean
 	enableBorder?: boolean
