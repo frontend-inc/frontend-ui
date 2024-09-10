@@ -18,7 +18,6 @@ const AppProvider = (props: AppProviderProps) => {
 
 	const [authOpen, setAuthOpen] = useState(false) // Auth modal
 	const [myAccountOpen, setMyAccountOpen] = useState(false) // My account modal
-	const [creditCardOpen, setCreditCardOpen] = useState(false) // Credit card modal
 	const [menuOpen, setMenuOpen] = useState(false) // Mobile menu
 
 	const [app, setApp] = useState<any>()
@@ -37,9 +36,6 @@ const AppProvider = (props: AppProviderProps) => {
 
 		authOpen,
 		setAuthOpen,
-
-		creditCardOpen,
-		setCreditCardOpen,
 
 		myAccountOpen,
 		setMyAccountOpen,

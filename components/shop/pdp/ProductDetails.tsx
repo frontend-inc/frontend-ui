@@ -9,6 +9,7 @@ import {
 	ButtonActions,
 	SocialButtons,
 	ExpandableText,
+  AddToCartButton
 } from '../..'
 import { buildActions } from '../../../helpers'
 import { Box, Stack } from '@mui/material'
@@ -24,7 +25,6 @@ export type ProductDetailsProps = {
 	enableLikes?: boolean
 	enableSharing?: boolean
 	enableRatings?: boolean
-	enablePayments?: boolean
 	enableAddToList?: boolean
 	enableUsers?: boolean
 	enableGradient?: boolean
@@ -103,6 +103,12 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 					enableAddToList={enableAddToList}
 				/>
 			}
+      addToCart={
+        <AddToCartButton 
+          availableForSale
+          productId={ product?.id } 
+        />
+      }
 			secondaryAction={
 				(buttons || enableEdit) && (
 					<Box sx={sx.buttons}>

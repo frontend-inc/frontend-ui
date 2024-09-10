@@ -20,24 +20,16 @@ type MyAccountMenuProps = {
 }
 
 const MyAccountMenu: React.FC<MyAccountMenuProps> = (props) => {
-	const { tab, enableTeams, enableStripe, handleChange } = props || {}
+	const { enableTeams, handleChange } = props || {}
 
 	const TABS = [{ label: 'My Account', value: 0 }]
 	const TEAM_TABS = [
 		{ label: 'Teams', value: 1 },
 		{ label: 'Members', value: 2 },
 	]
-	const STRIPE_TABS = [
-		{ label: 'Payment', value: 4 },
-		{ label: 'Subscription', value: 6 },
-	]
-
 	let tabs = TABS
 	if (enableTeams) {
 		tabs = [...tabs, ...TEAM_TABS]
-	}
-	if (enableStripe) {
-		tabs = [...tabs, ...STRIPE_TABS]
 	}
 
 	const { currentUser } = useAuth()

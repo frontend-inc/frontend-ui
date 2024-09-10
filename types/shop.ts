@@ -14,6 +14,7 @@ export type CartType = {
   user_id?: number  
   line_items: LineItemType[]
   subtotal?: number
+  display_subtotal?: string
   user?: UserType
 }
 

@@ -10,7 +10,7 @@ export type CreditCardType = {
 	brand: string
 }
 
-export type SubscriptionPlanType = {
+export type SubscriptionType = {
 	id: number
 	label?: string
 	name: string

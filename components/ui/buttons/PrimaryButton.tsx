@@ -5,7 +5,7 @@ import { Button } from '@mui/material'
 export type PrimaryButtonProps = {
 	color?: 'primary' | 'secondary'
 	loading?: boolean
-	children: string
+	children: React.ReactNode
 	onClick: (ev: any) => void
 	icon?: string
 	fullWidth?: boolean

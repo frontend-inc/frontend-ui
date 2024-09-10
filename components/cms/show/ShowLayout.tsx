@@ -2,7 +2,6 @@ import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
 import {
 	DisplayFields,
-	StripePaymentLink,
 	SocialButtons,
 	ButtonActions,
 	AvgRating,
@@ -27,7 +26,6 @@ const ShowLayout: React.FC<ShowLayoutProps> = (props) => {
 		enableLikes,
 		enableSharing,
 		enableRatings,
-		enablePayments,
 		buttons = [],
 		displayFields = [],
 	} = props || {}
@@ -56,13 +54,6 @@ const ShowLayout: React.FC<ShowLayoutProps> = (props) => {
 				{enableRatings == true && <AvgRating resource={resource} enableTotal />}
 				{displayFields?.length > 0 && (
 					<DisplayFields fields={displayFields} resource={resource} />
-				)}
-				{enablePayments == true && (
-					<StripePaymentLink
-						resource={resource}
-						buttonText="Checkout"
-						justifyContent="center"
-					/>
 				)}
 			</Stack>
 			<Box sx={sx.container}>{children}</Box>

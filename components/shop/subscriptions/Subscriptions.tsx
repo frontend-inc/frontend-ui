@@ -2,60 +2,43 @@ import React, { useState, useEffect } from 'react'
 import { useAuth } from 'frontend-js'
 import { Button, List } from '@mui/material'
 import { Loading, SelectableListItem, Placeholder, AlertModal } from '../..'
-import { SubscriptionPlanType } from '../../../types'
+import { SubscriptionType } from '../../../types'
 import { useSubscriptions } from '../../../hooks'
 
-const SubscriptionPlanList: React.FC = (props) => {
+const SubscriptionList: React.FC = (props) => {
 	const {
 		delayedLoading: loading,
-		subscriptionPlans,
-		subscribe,
-		unsubscribe,
-		findSubscriptionPlans,
-		reloadSubscriptionPlans,
+		subscriptions,
+		findSubscriptions,
+		reloadSubscriptions,
 	} = useSubscriptions()
 
 	const { currentUser, fetchMe } = useAuth()
 
 	const [openSubscribeModel, setOpenSubscribeModal] = useState(false)
 	const [openUnsubscribeModal, setOpenUnsubscribeModal] = useState(false)
-	const [activeSubscriptionPlan, setActiveSubscriptionPlan] =
-		useState<SubscriptionPlanType | null>(null)
+	const [activeSubscription, setActiveSubscription] =
+		useState<SubscriptionType | null>(null)
 
 	const handleSubscribe = async () => {
-		let resp
-		if (activeSubscriptionPlan?.id) {
-			resp = await subscribe(activeSubscriptionPlan?.id)
-		}
-		if (resp?.id) {
-			setOpenSubscribeModal(false)
-			await reloadSubscriptionPlans()
-			fetchMe()
-		}
 	}
 
 	const handleUnsubscribe = async () => {
-		const resp = await unsubscribe()
-		if (resp?.id) {
-			setOpenUnsubscribeModal(false)
-			await reloadSubscriptionPlans()
-			fetchMe()
-		}
 	}
 
-	const handleSubscribeClick = (subscriptionPlan) => {
-		setActiveSubscriptionPlan(subscriptionPlan)
+	const handleSubscribeClick = (subscription) => {
+		setActiveSubscription(subscription)
 		setOpenSubscribeModal(true)
 	}
 
 	const handleUnsubscribeClick = () => {
-		setActiveSubscriptionPlan(null)
+		setActiveSubscription(null)
 		setOpenUnsubscribeModal(true)
 	}
 
 	useEffect(() => {
 		if (currentUser?.id) {
-			findSubscriptionPlans()
+			findSubscriptions()
 		}
 	}, [currentUser?.id])
 
@@ -64,22 +47,22 @@ const SubscriptionPlanList: React.FC = (props) => {
 			<Loading loading={loading} />
 			<List>
 				{!loading &&
-					subscriptionPlans?.map((subscriptionPlan) => {
+					subscriptions?.map((subscription) => {
 						const selected =
-							currentUser?.subscription_plan_id === subscriptionPlan.id
+							currentUser?.subscription_id === subscription.id
 						return (
 							<SelectableListItem
-								key={subscriptionPlan.id}
+								key={subscription.id}
 								selected={selected}
 								icon="CreditCard"
-								title={subscriptionPlan.name}
-								description={subscriptionPlan.display_price}
-								handleClick={() => handleSubscribeClick(subscriptionPlan)}
+								title={subscription.name}
+								description={subscription.display_price}
+								handleClick={() => handleSubscribeClick(subscription)}
 							/>
 						)
 					})}
 			</List>
-			{!loading && !subscriptionPlans?.length && (
+			{!loading && !subscriptions?.length && (
 				<Placeholder
 					icon="CreditCard"
 					title="No subscription plans"
@@ -116,4 +99,4 @@ const SubscriptionPlanList: React.FC = (props) => {
 	)
 }
 
-export default SubscriptionPlanList
+export default SubscriptionList

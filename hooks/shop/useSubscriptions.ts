@@ -1,6 +1,6 @@
 import React from 'react'
 import { useApi, useResource } from 'frontend-js'
-import { SubscriptionPlanType } from '../../types'
+import { SubscriptionType } from '../../types'
 
 const useSubscriptions = () => {
 	const { api } = useApi()
@@ -9,13 +9,13 @@ const useSubscriptions = () => {
 		loading,
 		delayedLoading,
 		errors,
-		resource: subscriptionPlan,
-		resources: subscriptionPlans,
-		findOne: findSubscriptionPlan,
-		findMany: findSubscriptionPlans,
+		resource: subscription,
+		resources: subscriptions,
+		findOne: findSubscription,
+		findMany: findSubscriptions,
 		handleChange,
 		handleChangePage,
-		reloadMany: reloadSubscriptionPlans,
+		reloadMany: reloadSubscriptions,
 		query,
 		setQuery,
 		page,
@@ -29,38 +29,23 @@ const useSubscriptions = () => {
 		loadingWrapper,
 		paginate,
 	} = useResource({
-		name: 'subscription_plan',
-		url: '/api/v1/subscription_plans',
+		name: 'subscription',
+		url: '/api/v1/shop/subscriptions',
 	})
 
-	// Pass the DB subscription_plan_id
-	const subscribe = async (subscriptionPlanId) => {
-		return (await loadingWrapper(() =>
-			api.post(`/api/v1/subscription_plans/${subscriptionPlanId}/subscribe`)
-		)) as unknown as SubscriptionPlanType
-	}
-
-	const unsubscribe = async () => {
-		return (await loadingWrapper(() =>
-			api.post(`/api/v1/subscription_plans/unsubscribe`)
-		)) as unknown as SubscriptionPlanType
-	}
 
 	return {
 		loading,
 		delayedLoading,
 		errors,
-		subscriptionPlan,
-		subscriptionPlans,
-		findSubscriptionPlan,
-		findSubscriptionPlans,
-
-		subscribe,
-		unsubscribe,
+		subscription,
+		subscriptions,
+		findSubscription,
+		findSubscriptions,
 
 		handleChange,
 		handleChangePage,
-		reloadSubscriptionPlans,
+		reloadSubscriptions,
 		query,
 		setQuery,
 		page,

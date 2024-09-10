@@ -1,13 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../../../context'
 import { useAuth } from 'frontend-js'
-import { UserAvatar, Icon, Modal, MyAccountForm } from '../../../components'
+import { Icon, Modal, MyAccountForm } from '../../../components'
 import {
 	TeamList,
 	TeamUsersList,
 	TeamUserInvite,
-	SubscriptionPlans,
-	CreditCards,
 } from '../../../components'
 import MyAccountMenu from './MyAccountMenu'
 import { Box, Button } from '@mui/material'
@@ -15,12 +13,11 @@ import { MetafieldType } from '../../../types'
 
 type MyAccountModalProps = {
 	enableTeams?: boolean
-	enableStripe?: boolean
 	metafields?: MetafieldType[]
 }
 
 const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
-	const { enableTeams, enableStripe, metafields } = props || {}
+	const { enableTeams, metafields } = props || {}
 	const { myAccountOpen, setMyAccountOpen } = useContext(AppContext)
 
 	const {
@@ -68,8 +65,7 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 			{currentTab == null ? (
 				<MyAccountMenu
 					tab={currentTab}
-					enableTeams={enableTeams}
-					enableStripe={enableStripe}
+					enableTeams={enableTeams}					
 					handleChange={handleTabChange}
 				/>
 			) : (
@@ -109,8 +105,6 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 						handleCancel={() => setCurrentTab(2)}
 					/>
 				)}
-				{currentTab == 4 && <CreditCards />}
-				{currentTab == 6 && <SubscriptionPlans />}
 			</Box>
 		</Modal>
 	)

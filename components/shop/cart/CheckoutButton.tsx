@@ -2,10 +2,10 @@ import React from 'react'
 import { PrimaryButton } from '../..'
 import { useCart } from '../../../hooks'
 
-
 const CheckoutButton = () => {
   const { 
-    loading,     
+    loading, 
+    cart,    
     checkout 
   } = useCart()
 
@@ -19,14 +19,17 @@ const CheckoutButton = () => {
     window.open(url)
   }
 
+  const cartDisabled = cart?.total_items === 0 ? true : false
+
   return (
     <PrimaryButton 
       fullWidth 
       loading={loading}      
       onClick={handleClick}       
       size="large"
+      disabled={cartDisabled}
     >
-      Checkout 
+      Checkout { !cartDisabled && cart?.display_subtotal }
     </PrimaryButton>
   )
 }

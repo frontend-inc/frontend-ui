@@ -12,7 +12,6 @@ import { useResourceContext } from 'frontend-js'
 import {
 	AvgRating,
 	DisplayFields,
-	StripePaymentLink,
 	ButtonActions,
 	SocialButtons,
 	ExpandableText,
@@ -31,7 +30,6 @@ export type ShowProps = {
 	enableLikes?: boolean
 	enableSharing?: boolean
 	enableRatings?: boolean
-	enablePayments?: boolean
 	enableAddToList?: boolean
 	enableUsers?: boolean
 	enableGradient?: boolean
@@ -61,7 +59,6 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 		enableSharing,
 		enableRatings,
 		enableAddToList,
-		enablePayments,
 		enableGradient,
 		enableOverlay,
 		slots: defaultSlots = {
@@ -155,9 +152,6 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 						)}
 						{displayFields?.length > 0 && (
 							<DisplayFields fields={displayFields} resource={resource} />
-						)}
-						{enablePayments == true && (
-							<StripePaymentLink resource={resource} buttonText="Checkout" />
 						)}
 					</Stack>
 					<ExpandableText text={resource?.description} />

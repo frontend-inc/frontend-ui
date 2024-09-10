@@ -19,7 +19,6 @@ type DocumentEditProps = {
 	collectionId: string | number
 	documentId: string | number
 	errors?: any
-	enablePayments?: boolean
 	enableUsers?: boolean
 	enableTeams?: boolean
 	enableShopify?: boolean
@@ -32,7 +31,6 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 		appId,
 		documentId,
 		collectionId,
-		enablePayments,
 		enableUsers,
 		enableTeams,
 	} = props
@@ -224,7 +222,6 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 					handleTogglePublish={handleTogglePublish}
 					enableUsers={enableUsers}
 					enableTeams={enableTeams}
-					enablePayments={enablePayments}
 				/>
 			</AdminLayoutRight>
 		</>

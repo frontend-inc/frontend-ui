@@ -2,18 +2,18 @@ import React from 'react'
 import { Label, ResourceListItem } from '../../../components'
 import * as COLORS from '@mui/material/colors'
 
-type AdminSubscriptionPlanItemProps = {
+type AdminSubscriptionItemProps = {
 	resource: any
 	handleClick: () => void
 	handleEdit: () => void
 	handleDelete: () => void
 }
 
-const AdminSubscriptionPlanItem: React.FC<AdminSubscriptionPlanItemProps> = (
+const AdminSubscriptionItem: React.FC<AdminSubscriptionItemProps> = (
 	props
 ) => {
 	const {
-		resource: subscriptionPlan,
+		resource: subscription,
 		handleClick,
 		handleEdit,
 		handleDelete,
@@ -22,10 +22,10 @@ const AdminSubscriptionPlanItem: React.FC<AdminSubscriptionPlanItemProps> = (
 	return (
 		<ResourceListItem
 			icon="CreditCard"
-			primary={subscriptionPlan?.name}
-			secondary={subscriptionPlan?.display_price}
+			primary={subscription?.name}
+			secondary={subscription?.display_price}
 			secondaryAction={
-				subscriptionPlan?.label && <Label label={subscriptionPlan?.label} />
+				subscription?.label && <Label label={subscription?.label} />
 			}
 			color={COLORS.amber[500]}
 			handleClick={handleClick}
@@ -35,4 +35,4 @@ const AdminSubscriptionPlanItem: React.FC<AdminSubscriptionPlanItemProps> = (
 	)
 }
 
-export default AdminSubscriptionPlanItem
+export default AdminSubscriptionItem

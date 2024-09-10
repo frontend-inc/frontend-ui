@@ -10,14 +10,14 @@ import {
 	ListItem,
 	ListItemText,
 } from '@mui/material'
-import { SubscriptionPlanType } from '../../../types'
+import { SubscriptionType } from '../../../types'
 import { Label, Icon } from '../..'
 
 type SubscriptionTableCardProps = {
 	selected?: boolean
 	buttonText?: string
 	handleClick: () => void
-	subscriptionPlan: SubscriptionPlanType
+	subscription: SubscriptionType
 }
 
 const SubscriptionTableCard: React.FC<SubscriptionTableCardProps> = (props) => {
@@ -25,7 +25,7 @@ const SubscriptionTableCard: React.FC<SubscriptionTableCardProps> = (props) => {
 		buttonText = 'Subscribe',
 		selected,
 		handleClick,
-		subscriptionPlan,
+		subscription,
 	} = props
 
 	return (
@@ -36,20 +36,20 @@ const SubscriptionTableCard: React.FC<SubscriptionTableCardProps> = (props) => {
 			}}
 		>
 			<Stack sx={sx.content} direction="column" spacing={1}>
-				{subscriptionPlan?.label && (
+				{subscription?.label && (
 					<Box>
-						<Label label={subscriptionPlan.label} />
+						<Label label={subscription.label} />
 					</Box>
 				)}
 				<Typography variant="body1" color="text.secondary">
-					{subscriptionPlan.name}
+					{subscription.name}
 				</Typography>
 				<Typography variant="h5" color="text.primary">
-					{subscriptionPlan.display_price}
+					{subscription.display_price}
 				</Typography>
 				<Divider />
 				<List dense disablePadding>
-					{subscriptionPlan?.features?.map((feature, i) => (
+					{subscription?.features?.map((feature, i) => (
 						<ListItem key={i}>
 							<ListItemIcon>
 								<Icon name="Check" color="text.secondary" />

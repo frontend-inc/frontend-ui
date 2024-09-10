@@ -1,10 +1,9 @@
 import React from 'react'
-import { Collapse, Box, Stack, Divider, Typography } from '@mui/material'
+import { Stack, Divider, Typography } from '@mui/material'
 import PublishButton from './inputs/PublishButton'
 import SaveButton from './inputs/SaveButton'
 import { SyntheticEventType } from 'frontend-js'
 import { TeamAutosuggest, UserAutosuggest } from '../../../components'
-import { TextInput } from '../../../components'
 
 type AdminDocumentRightPanelProps = {
 	appId: string | number
@@ -17,7 +16,6 @@ type AdminDocumentRightPanelProps = {
 	handleChange: (e: SyntheticEventType) => void
 	handleSubmit: () => void
 	handleTogglePublish: () => void
-	enablePayments?: boolean
 	enableUsers?: boolean
 	enableTeams?: boolean
 	enableStripe?: boolean
@@ -27,8 +25,8 @@ type AdminDocumentRightPanelProps = {
 const AdminDocumentRightPanel: React.FC<AdminDocumentRightPanelProps> = (
 	props
 ) => {
+
 	const {
-		appId,
 		loading,
 		publishLoading,
 		errors,
@@ -36,10 +34,8 @@ const AdminDocumentRightPanel: React.FC<AdminDocumentRightPanelProps> = (
 		handleChange,
 		handleSubmit,
 		handleTogglePublish,
-		enablePayments,
 		enableUsers,
 		enableTeams,
-		enableStripe,
 	} = props
 
 	return (
@@ -81,25 +77,6 @@ const AdminDocumentRightPanel: React.FC<AdminDocumentRightPanelProps> = (
 					value={document?.team_id}
 					handleChange={handleChange}
 				/>
-			)}
-			{enableStripe && (
-				<>
-					<Divider />
-					<Collapse in={enablePayments}>
-						<Stack spacing={1}>
-							<TextInput
-								direction="row"
-								name="stripe_payment_link"
-								value={document?.stripe_payment_link}
-								handleChange={handleChange}
-								label="Stripe Link"
-								placeholder="Enter Stripe Payment Link"
-								info="Enter the Stripe payment URL"
-							/>
-							<Box sx={sx.spacer} />
-						</Stack>
-					</Collapse>
-				</>
 			)}
 		</Stack>
 	)
