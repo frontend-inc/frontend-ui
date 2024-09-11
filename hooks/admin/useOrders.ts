@@ -2,7 +2,7 @@ import React from 'react'
 import { useResource } from 'frontend-js'
 import { useAdmin } from '..'
 
-const useProducts = () => {
+const useOrders = () => {
 	const { apiUrl } = useAdmin()
 
 	const {
@@ -13,16 +13,16 @@ const useProducts = () => {
 		empty,
 		editing,
 		isValid,
-		resource: product,
-		resources: products,
-		findOne: findProduct,
-		findMany: findProducts,
-		update: updateProduct,
-		updateMany: updateProducts,
-		create: createProduct,
-		save: saveProduct,
-		destroy: deleteProduct,
-		deleteMany: deleteProducts,
+		resource: order,
+		resources: orders,
+		findOne: findOrder,
+		findMany: findOrders,
+		update: updateOrder,
+		updateMany: updateOrders,
+		create: createOrder,
+		save: saveOrder,
+		destroy: deleteOrder,
+		deleteMany: deleteOrders,
 		loadMore,
 		publish,
 		unpublish,
@@ -40,16 +40,16 @@ const useProducts = () => {
 		sortBy,
 		sortDirection,
 		handleSort,
-		reloadOne: reloadProduct,
-		reloadMany: reloadProducts,
-		setResource: setProduct,
-		setResources: setProducts,		
+		reloadOne: reloadOrder,
+		reloadMany: reloadOrders,
+		setResource: setOrder,
+		setResources: setOrders,		
 		startIndex,
 		endIndex,
 		paginate,
 	} = useResource({
-		url: `${apiUrl}/products`,
-		name: 'product',
+		url: `${apiUrl}/orders`,
+		name: 'order',
 	})
 
 	return {
@@ -61,16 +61,16 @@ const useProducts = () => {
 		empty,
 		editing,
 		isValid,
-		product,
-		products,
-		findProduct,
-		findProducts,
-		saveProduct,
-		updateProduct,
-		updateProducts,
-		createProduct,
-		deleteProduct,
-		deleteProducts,
+		order,
+		orders,
+		findOrder,
+		findOrders,
+		saveOrder,
+		updateOrder,
+		updateOrders,
+		createOrder,
+		deleteOrder,
+		deleteOrders,
 		loadMore,
 		publish,
 		unpublish,
@@ -80,8 +80,8 @@ const useProducts = () => {
 		handleChangePage,
 		query,
 		setQuery,
-		reloadProduct,
-		reloadProducts,
+		reloadOrder,
+		reloadOrders,
 		page,
 		numPages,
 		perPage,
@@ -90,11 +90,11 @@ const useProducts = () => {
 		sortBy,
 		sortDirection,
 		handleSort,
-		setProduct,
-		setProducts,
+		setOrder,
+		setOrders,
 		startIndex,
 		endIndex,
 	}
 }
 
-export default useProducts
+export default useOrders

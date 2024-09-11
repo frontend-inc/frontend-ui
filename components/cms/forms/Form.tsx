@@ -1,126 +1,81 @@
-import React, { useEffect, useContext } from 'react'
-import { useApp } from '../../../hooks'
-import { useResource } from 'frontend-js'
-import { FormFields } from '../..'
-import { useAlerts } from '../../../hooks'
-import { useRouter } from 'next/router'
-import { Paper } from '@mui/material'
+import React from 'react'
+import { Stack, Button } from '@mui/material'
+import FormFields from './FormFields'
+import { get } from 'lodash'
+import { FormFieldType } from '../../../types'
+import { IconLoading } from '../..'
+import { validateFieldConditions } from '../../../helpers'
 
 export type FormProps = {
 	loading?: boolean
+	errors: any
+	fields: FormFieldType[]
 	resource: any
-	parentResource?: any
-	url: string
-	href?: string
+	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+	handleRemove?: (name: string) => void
+  handleAddAttachment?: (name: string, attachmentId: number) => void
+	handleRemoveAttachment?: (name: string) => void
+	handleSubmit: () => void
 	buttonText?: string
-	fields: any[]
-	onSuccessMessage?: string
-	handleSuccess?: (resource: any) => void
   inputOptions?: Record<string, React.FC> 
   inputParams?: Record<string, any>
 }
 
 const Form: React.FC<FormProps> = (props) => {
-	const router = useRouter()
-	const { clientUrl } = useApp()
-
-	const { href } = props || {}
-	const onSuccess = () => {
-		if (href) {
-			router.push(`${clientUrl}${href}`)
-		}
-	}
-
 	const {
-		resource: _resource,
-		parentResource,
-		buttonText = 'Submit',
+		errors,
+		loading,
 		fields,
-		url,
-		onSuccessMessage = 'Submitted successfully!',
-		handleSuccess = onSuccess,
+		resource,
+		handleChange,
+		handleRemove,
+		handleSubmit,
+    handleAddAttachment,
+    handleRemoveAttachment,
+		buttonText = 'Submit',
     inputOptions,
     inputParams,
 	} = props
 
-	const { showAlertSuccess } = useAlerts()
-
-	const {
-		delayedLoading: loading,
-		errors,
-		resource,
-		setResource,
-		update,
-		create,
-		removeAttachment,
-		addReferences,
-		handleChange,
-	} = useResource({
-		name: 'document',
-		url,
-	})
-
-	const handleRemove = async (name) => {
-		if (resource?.id) await removeAttachment(resource.id, name)
-	}
-
-	const handleSubmit = async () => {
-		try {
-			let resp
-			if (resource?.id) {
-				resp = await update(resource)
-			} else {
-				resp = await create(resource)
-				// Handle associated resources
-				if (parentResource?.id) {
-					await addReferences(resp.id, [parentResource.id])
-				}
-			}
-			if (resp?.id) {
-				if (onSuccessMessage) {
-					showAlertSuccess(onSuccessMessage)
-				}
-				if (handleSuccess) {
-					handleSuccess(resp)
-				}
-			}
-		} catch (err) {
-			console.log('Error', err)
-		}
-	}
-
-	useEffect(() => {
-		if (_resource) {
-			setResource(_resource)
-		} else {
-			setResource({
-				title: '',
-			})
-		}
-	}, [_resource])
-
 	return (
-		<Paper sx={sx.paper} elevation={2}>
-			<FormFields
-				loading={loading}
-				errors={errors}
-				fields={fields}
-				resource={resource}
-				handleChange={handleChange}
-				handleRemove={handleRemove}
-				handleSubmit={handleSubmit}
-				buttonText={buttonText}
+		<Stack spacing={1} sx={sx.root}>
+      <FormFields 
+        errors={errors}
+        fields={ fields }
+        resource={ resource }
+        handleChange={ handleChange }
+        handleRemove={ handleRemove }
+        handleAddAttachment={ handleAddAttachment }
+        handleRemoveAttachment={ handleRemoveAttachment }
         inputOptions={inputOptions}
         inputParams={inputParams}
-			/>
-		</Paper>
+      />			
+			{handleSubmit && (
+				<Button
+					size="large"
+					variant="contained"
+					onClick={handleSubmit}
+					disabled={loading}
+					endIcon={
+						loading ? (
+							<IconLoading color="primary.contrastText" loading={loading} />
+						) : null
+					}
+				>
+					{buttonText}
+				</Button>
+			)}
+		</Stack>
 	)
 }
 
 export default Form
 
 const sx = {
-	paper: {
-		p: 4,
+	root: {
+		width: '100%',
+	},
+	button: {
+		mt: 2,
 	},
 }

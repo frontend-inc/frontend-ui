@@ -1,11 +1,11 @@
 import React, { useEffect, useContext } from 'react'
 import { useApp } from '../../../hooks'
 import { useResource } from 'frontend-js'
-import { Loader, FormFields } from '../..'
+import { Loader, Form } from '../..'
 import { useAlerts, useFetchForm } from '../../../hooks'
 import { useRouter } from 'next/router'
 
-export type RemoteFormProps = {
+export type DocumentFormRemoteProps = {
 	loading?: boolean
 	resource: any
 	parentResource?: any
@@ -16,7 +16,7 @@ export type RemoteFormProps = {
 	handleSuccess?: (resource: any) => void
 }
 
-const RemoteForm: React.FC<RemoteFormProps> = (props) => {
+const DocumentFormRemote: React.FC<DocumentFormRemoteProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useApp()
 
@@ -100,7 +100,7 @@ const RemoteForm: React.FC<RemoteFormProps> = (props) => {
 	if (!fields || fields?.length == 0) return null
 	if (_resource?.id && !resource?.id) return <Loader loading />
 	return (
-		<FormFields
+		<Form
 			loading={loading}
 			errors={errors}
 			fields={fields}
@@ -113,4 +113,4 @@ const RemoteForm: React.FC<RemoteFormProps> = (props) => {
 	)
 }
 
-export default RemoteForm
+export default DocumentFormRemote

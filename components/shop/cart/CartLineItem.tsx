@@ -12,7 +12,7 @@ import {
 	ButtonGroup,
 	Button,
 } from '@mui/material'
-import { Image, Icon, TouchableOpacity } from '../../../components'
+import { Image, Icon } from '../../../components'
 import { useRouter } from 'next/router'
 import { LineItemType } from '../../../types'
 

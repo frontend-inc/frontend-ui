@@ -1,5 +1,5 @@
 import React from 'react'
-import { RemoteFormModal } from '../..'
+import { DocumentFormRemoteModal } from '../..'
 import { useResourceContext } from 'frontend-js'
 
 export type CollectionFormProps = {
@@ -21,7 +21,7 @@ const CollectionForm: React.FC<CollectionFormProps> = (props) => {
 	}
 
 	return (
-		<RemoteFormModal
+		<DocumentFormRemoteModal
 			open={openEdit}
 			handleClose={() => setOpenEdit(false)}
 			url={url}

@@ -60,3 +60,49 @@ export type ProductCollectionType = {
 	data?: any
 	products?: ProductType[]
 }
+
+export type OrderLineItemType = {
+  id?: number
+  cart_id?: number
+  product_id: number  
+  product?: ProductType
+  quantity: number
+  product_data?: {
+    handle?: string
+    title?: string
+    description?: string
+    price?: number
+    image_url?: string
+  }
+}
+
+export type OrderType = {
+  id?: number
+  status?: string
+  cart_token?: string
+  number?: number 
+  display_number?: string
+  user_id?: number  
+  user: UserType
+  order_line_items: OrderLineItemType[]
+  total_amount?: number
+  subtotal_amount?: number
+  tax_amount?: number
+  shipping_amount?: number
+  discount_amount?: number
+  display_total?: string
+  display_subtotal?: string  
+  customer_email?: string
+  customer_phone?: string
+  customer_name?: string
+  shipping_address?: string  
+  address1?: string
+  address2?: string
+  city?: string
+  state?: string
+  country?: string
+  zipcode?: string
+  lat?: number
+  lng?: number  
+  stripe_data?: any
+}

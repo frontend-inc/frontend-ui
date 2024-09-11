@@ -1,12 +1,12 @@
 import React from 'react'
 import { Stack, Button } from '@mui/material'
-import FormFieldInput from './FormFieldInput'
+import FormField from './FormField'
 import { get } from 'lodash'
 import { FormFieldType } from '../../../types'
 import { IconLoading } from '../..'
 import { validateFieldConditions } from '../../../helpers'
 
-export type FormProps = {
+export type FormFieldsProps = {
 	loading?: boolean
 	errors: any
 	fields: FormFieldType[]
@@ -21,7 +21,7 @@ export type FormProps = {
   inputParams?: Record<string, any>
 }
 
-const FormFields: React.FC<FormProps> = (props) => {
+const FormFields: React.FC<FormFieldsProps> = (props) => {
 	const {
 		errors,
 		loading,
@@ -29,22 +29,26 @@ const FormFields: React.FC<FormProps> = (props) => {
 		resource,
 		handleChange,
 		handleRemove,
-		handleSubmit,
     handleAddAttachment,
     handleRemoveAttachment,
-		buttonText = 'Submit',
     inputOptions,
     inputParams,
 	} = props
 
 	return (
-		<Stack spacing={1} sx={sx.root}>
+		<Stack 
+      spacing={1} 
+      sx={{
+        ...sx.root,
+        ...(loading && sx.loading),
+      }}
+    >
 			{fields?.map((field, index) => {
 				if (!validateFieldConditions(field?.conditions || [], resource)) {
 					return null
 				}
 				return (
-					<FormFieldInput
+					<FormField
 						key={index}
 						resource={resource}
 						errors={errors}
@@ -59,22 +63,7 @@ const FormFields: React.FC<FormProps> = (props) => {
             inputParams={inputParams}
 					/>
 				)
-			})}
-			{handleSubmit && (
-				<Button
-					size="large"
-					variant="contained"
-					onClick={handleSubmit}
-					disabled={loading}
-					endIcon={
-						loading ? (
-							<IconLoading color="primary.contrastText" loading={loading} />
-						) : null
-					}
-				>
-					{buttonText}
-				</Button>
-			)}
+			})}		
 		</Stack>
 	)
 }
@@ -88,4 +77,7 @@ const sx = {
 	button: {
 		mt: 2,
 	},
+  loading: {
+    opacity: 0.5,
+  }
 }

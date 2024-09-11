@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { SyntheticEventType } from '../../../types'
-import { RemoteFormModal, Icon, InputLabel } from '../../../components'
+import { DocumentFormRemoteModal, Icon, InputLabel } from '../../../components'
 import { Button, Stack } from '@mui/material'
 import { useResource } from 'frontend-js'
 import SortableReferences from './helpers/SortableReferences'
@@ -106,7 +106,7 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
 			>
 				Add {contentType}
 			</Button>
-			<RemoteFormModal
+			<DocumentFormRemoteModal
 				open={open}
 				handleClose={() => setOpen(false)}
 				url={foreignUrl}

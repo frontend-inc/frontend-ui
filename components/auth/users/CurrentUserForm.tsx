@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useAuth } from 'frontend-js'
-import { FormFields } from '../..'
+import { Form } from '../..'
 import { useAlerts } from '../../../hooks'
 import { useRouter } from 'next/router'
 import { FormFieldType } from '../../../types'
@@ -75,7 +75,7 @@ const UserForm: React.FC<CurrentUserFormProps> = (props) => {
 	}, [currentUser])
 
 	return (
-		<FormFields
+		<Form
 			loading={delayedLoading}
 			errors={errors}
 			fields={fields}

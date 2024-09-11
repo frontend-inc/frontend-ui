@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Box } from '@mui/material'
-import { FormFields } from '../../../components'
+import { Form } from '../../../components'
 import { FormFieldType, MetafieldType } from '../../../types'
 import { USER_FORM_FIELDS } from '../../../constants'
 
@@ -39,7 +39,7 @@ const MyAccountForm: React.FC<MyAccountFormProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-			<FormFields
+			<Form
 				loading={loading}
 				errors={errors}
 				//@ts-ignore

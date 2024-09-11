@@ -162,6 +162,7 @@ const sx = {
 	},
 	listItemIcon: {
 		mr: 2,
+    minWidth: 64,
 	},
 	listItemImage: {
 		mr: 2,

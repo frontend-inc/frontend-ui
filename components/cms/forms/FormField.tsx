@@ -2,7 +2,7 @@ import React from 'react'
 import { FormFieldType, SyntheticEventType } from '../../../types'
 import FormInput from './FormInput'
 
-type FormFieldInputProps = {
+type FormFieldProps = {
 	resource: any
 	field: FormFieldType
 	errors?: any
@@ -19,7 +19,7 @@ type FormFieldInputProps = {
   inputParams?: Record<string, any>
 }
 
-const FormFieldInput: React.FC<FormFieldInputProps> = (props) => {
+const FormField: React.FC<FormFieldProps> = (props) => {
 	const { 
     resource, 
     field, 
@@ -74,4 +74,4 @@ const FormFieldInput: React.FC<FormFieldInputProps> = (props) => {
 	)
 }
 
-export default FormFieldInput
+export default FormField

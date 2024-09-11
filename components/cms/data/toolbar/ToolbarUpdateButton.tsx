@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Button } from '@mui/material'
-import { Icon, FormFields, Modal } from '../../..'
+import { Icon, Form, Modal } from '../../..'
 import { useResourceContext } from 'frontend-js'
 import { FormFieldType } from '../../../../types'
 
@@ -51,7 +51,7 @@ const ToolbarUpdateButton: React.FC<ToolbarUpdateProps> = (props) => {
 				loading={loading}
 			>
 				<Box py={2}>
-					<FormFields
+					<Form
 						errors={errors}
 						fields={fields}
 						resource={resource}
