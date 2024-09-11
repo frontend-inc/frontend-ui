@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Box } from '@mui/material'
-import { AuthGuard, Alert, AdminLayoutScroll } from '../../../components'
+import { AuthGuard, Alert, ViewScroll } from '../../../components'
 import { Notifications } from '../../../components'
 import { NotificationType } from '../../../types'
 
@@ -75,8 +75,10 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 						{notifications?.length > 0 && (
 							<Notifications notifications={notifications} />
 						)}
-						{children}
-						{footer}
+            <ViewScroll>
+              {children}
+              {footer}
+            </ViewScroll>            
 					</AuthGuard>
 				</Box>
 			</Box>
@@ -118,7 +120,6 @@ const sx = {
 		overflowY: 'hidden',
 	},
 	contentNotifications: {
-		pb: '45px',
 	},
 	contentSideNav: {
 		pt: {
@@ -130,6 +131,10 @@ const sx = {
 			xs: '100%',
 		},
 		height: '100%',
+    overflowY: 'scroll',
+		'&::-webkit-scrollbar': {
+			display: 'none',
+		},
 	},
 	contentTopNav: {
 		pt: '60px',
