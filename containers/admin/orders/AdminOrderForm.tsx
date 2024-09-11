@@ -1,5 +1,6 @@
 import React from 'react'
 import { ResourceForm, UserAutosuggest } from '../../../components'
+import { ORDER_STATES } from '../../../constants'
 
 type AdminOrderFormProps = {
   open: boolean
@@ -26,13 +27,7 @@ const AdminOrderForm: React.FC<AdminOrderFormProps> = (props) => {
 			label: 'Status',
 			name: 'status',
 			variant: 'select',
-			options: [
-        { label: 'Pending', value: 'pending' },
-        { label: 'Canceled', value: 'canceled' },
-				{ label: 'Completed', value: 'completed' },
-				{ label: 'Refunded', value: 'refunded' },                
-				{ label: 'Exchanged', value: 'exchanged' },
-			],
+			options: ORDER_STATES,
 		},
     { label: 'Customer Name', name: 'customer_name', variant: 'string' },    
     { label: 'Email', name: 'customer_email', variant: 'string' },
