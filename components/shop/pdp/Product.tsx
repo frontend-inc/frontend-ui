@@ -4,14 +4,14 @@ import { ProductDetailsProps } from './ProductDetails'
 import { ResourceProvider } from 'frontend-js'
 import { FormFieldType } from '../../../types'
 
-export type ProductContainerProps = ProductDetailsProps & {
-	url: string
+export type ProductProps = ProductDetailsProps & {
+	url?: string
 	foreignUrl?: string
 	fields: FormFieldType[]
 }
 
-const ProductContainer: React.FC<ProductContainerProps> = (props) => {
-	const { url, foreignUrl, fields = [], product } = props || {}
+const Product: React.FC<ProductProps> = (props) => {
+	const { url='/api/v1/shop/products', foreignUrl, fields = [], product } = props || {}
 
 	return (
 		<ResourceProvider
@@ -20,10 +20,10 @@ const ProductContainer: React.FC<ProductContainerProps> = (props) => {
 			url={url}
 			foreignUrl={foreignUrl}
 		>
-			<ProductDetails {...props} url={url} />
+			<ProductDetails {...props} />
 			<ProductForm fields={fields} />
 		</ResourceProvider>
 	)
 }
 
-export default ProductContainer
+export default Product

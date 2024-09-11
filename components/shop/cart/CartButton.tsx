@@ -13,13 +13,13 @@ import { useCart } from '../../../hooks'
 import { useAuth } from 'frontend-js'
 
 
-type CartSmallButtonProps = {
+type CartIconButtonProps = {
   icon?: string
   totalItems: number
   handleClick: () => void
 }
 
-const CartSmallButton: React.FC<CartSmallButtonProps> = (props) => {
+const CartIconButton: React.FC<CartIconButtonProps> = (props) => {
   
   const { totalItems, handleClick, icon="ShoppingBag"} = props 
   
@@ -34,14 +34,14 @@ const CartSmallButton: React.FC<CartSmallButtonProps> = (props) => {
   )
 }
 
-type CartLargeButtonProps = {
+type CartBtnProps = {
   label?: string
   icon?: string
   totalItems?: number
   handleClick?: () => void
 }
 
-const CartLargeButton: React.FC<CartLargeButtonProps> = (props) => {
+const CartBtn: React.FC<CartBtnProps> = (props) => {
 	const { label = 'Cart', icon='ShoppingBag', totalItems, handleClick } = props
 
 	return (
@@ -75,13 +75,13 @@ const CartLargeButton: React.FC<CartLargeButtonProps> = (props) => {
 
 type CartButtonProps = {
   label?: string
-  size?: 'small' | 'large'
+  variant?: 'icon' | 'button'
   icon?: string
 }
 
 const CartButton: React.FC<CartButtonProps> = (props) => {  
   const { 
-    size='small', 
+    variant='icon', 
     label, 
     icon="ShoppingBag"
   } = props 
@@ -89,14 +89,14 @@ const CartButton: React.FC<CartButtonProps> = (props) => {
   const { cart, cartOpen, setCartOpen } = useCart()
 
   return(
-    size == "small" ? (
-      <CartSmallButton 
+    variant == "icon" ? (
+      <CartIconButton 
         icon={icon}
         handleClick={() => setCartOpen(!cartOpen)}
         totalItems={cart?.total_items}
       />
     ):(
-      <CartLargeButton 
+      <CartBtn 
         icon={icon}
         label={label}
         handleClick={() => setCartOpen(!cartOpen)}

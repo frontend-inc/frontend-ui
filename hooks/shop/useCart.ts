@@ -30,9 +30,9 @@ const useCart = () => {
     )
   }
 
-  const addToCart = async (productId) => {
+  const addToCart = async (productId, quantity=1) => {
 		return await loadingWrapper(() =>
-			api.addToCart(productId, apiParams)
+			api.addToCart(productId, quantity, apiParams)
 		)
 	}
 

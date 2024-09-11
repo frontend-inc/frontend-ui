@@ -1,6 +1,5 @@
 import React from 'react'
-import { Box } from '@mui/material'
-import { CommentList, Drawer, ShowItem } from '../..'
+import { Modal, ProductDetails } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { ButtonType, FormFieldType, DisplayFieldType } from '../../../types'
 
@@ -21,7 +20,6 @@ export type ShowModalProps = {
 	enableAddToList?: boolean
 	enableUsers?: boolean
 	handleEdit?: () => void
-	enableComments?: boolean
 }
 
 const ShowModal: React.FC<ShowModalProps> = (props) => {
@@ -30,7 +28,6 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 	const {
 		buttons = [],
 		displayFields = [],
-		enableComments,
 		enableRatings,
 		enableLikes,
 		enableFavorites,
@@ -42,15 +39,15 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 
 	if (!resource) return null
 	return (
-		<Drawer
+		<Modal
 			disablePadding
 			open={openShow}
 			handleClose={() => setOpenShow(false)}
+      maxWidth='md'
 			title={resource?.title}
 		>
-			<ShowItem
-				style="snippet"
-				resource={resource}
+			<ProductDetails
+				product={resource}
 				enableEdit={enableEdit}
 				buttons={buttons}
 				displayFields={displayFields}
@@ -66,12 +63,7 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 					},
 				}}
 			/>
-			{enableComments && (
-				<Box px={2}>
-					<CommentList url={url} handle={resource?.handle} />
-				</Box>
-			)}
-		</Drawer>
+		</Modal>
 	)
 }
 

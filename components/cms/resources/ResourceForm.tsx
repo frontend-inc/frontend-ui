@@ -15,6 +15,8 @@ export type ResourceFormProps = {
 	handleRemoveAttachment: (name: string) => void
 	handleSubmit: () => void
 	handleReload: () => void
+  inputOptions?: Record<string, React.FC>
+  inputParams?: Record<string, any>
 	fields: any[]
 }
 
@@ -28,7 +30,11 @@ const ResourceForm: React.FC<ResourceFormProps> = (props) => {
 		handleChange,
 		handleRemove,
 		handleSubmit,
+    handleAddAttachment,
+    handleRemoveAttachment,
 		fields = [],
+    inputOptions,
+    inputParams
 	} = props || {}
 
 	return (
@@ -54,7 +60,11 @@ const ResourceForm: React.FC<ResourceFormProps> = (props) => {
 				fields={fields}
 				resource={resource}
 				handleChange={handleChange}
-				handleRemove={handleRemove}
+				handleRemove={handleRemove}        
+        handleAddAttachment={handleAddAttachment}
+        handleRemoveAttachment={handleRemoveAttachment}
+        inputOptions={inputOptions}
+        inputParams={inputParams}        
 			/>
 		</Drawer>
 	)

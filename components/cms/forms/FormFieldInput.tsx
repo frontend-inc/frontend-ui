@@ -13,10 +13,25 @@ type FormFieldInputProps = {
 	fields?: FormFieldType[]
 	handleChange: (e: SyntheticEventType) => void
 	handleRemove?: (name: string) => void
+  handleAddAttachment?: (name: string, attachmentId: number) => void
+	handleRemoveAttachment?: (name: string) => void
+  inputOptions?: Record<string, React.FC> 
+  inputParams?: Record<string, any>
 }
 
 const FormFieldInput: React.FC<FormFieldInputProps> = (props) => {
-	const { resource, field, errors, value, handleChange, handleRemove } = props
+	const { 
+    resource, 
+    field, 
+    errors, 
+    value, 
+    handleChange, 
+    handleRemove, 
+    handleAddAttachment,
+    handleRemoveAttachment,
+    inputOptions, 
+    inputParams 
+  } = props
 
 	const {
 		name,
@@ -29,7 +44,7 @@ const FormFieldInput: React.FC<FormFieldInputProps> = (props) => {
 		contentType,
 		displayField,
 		valueParam,
-		fields,
+		fields,    
 	} = field
 
 	return (
@@ -43,6 +58,8 @@ const FormFieldInput: React.FC<FormFieldInputProps> = (props) => {
 			value={value}
 			handleChange={handleChange}
 			handleRemove={handleRemove}
+      handleAddAttachment={handleAddAttachment}
+      handleRemoveAttachment={handleRemoveAttachment}
 			displayField={displayField}
 			valueParam={valueParam}
 			fields={fields}
@@ -51,6 +68,8 @@ const FormFieldInput: React.FC<FormFieldInputProps> = (props) => {
 			foreignUrl={foreignUrl}
 			resource={resource}
 			contentType={contentType}
+      inputOptions={inputOptions}
+      inputParams={inputParams}
 		/>
 	)
 }

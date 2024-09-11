@@ -6,6 +6,7 @@ import MobileTopNav from './MobileTopNav'
 import DesktopTopNav from './DesktopTopNav'
 import DesktopSideNav from './DesktopSideNav'
 import { MenuLinkType } from '../../../types'
+import { useApp } from '../../../hooks'
 
 type HeaderProps = {
 	editing?: boolean
@@ -23,14 +24,15 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = (props) => {
 	const { logo } = useContext(AppContext)
+  
+  const { enableStripe, enableShopify } = useApp()  
+
 	const {
 		sideNav = false,
 		editing = false,
 		menuItems,
 		handleClick,
 		enableAuth = false,
-		enableStripe = false,
-		enableShopify = false,
 		enableNotifications = false,
 	} = props
 
@@ -67,6 +69,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 			<MobileTopNav
 				editing={editing}
 				logo={logo}
+        enableStripe={enableStripe}
 				enableShopify={enableShopify}
 				enableNotifications={enableNotifications}
 				menuItems={menuItems}

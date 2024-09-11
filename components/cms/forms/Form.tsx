@@ -16,6 +16,8 @@ export type FormProps = {
 	fields: any[]
 	onSuccessMessage?: string
 	handleSuccess?: (resource: any) => void
+  inputOptions?: Record<string, React.FC> 
+  inputParams?: Record<string, any>
 }
 
 const Form: React.FC<FormProps> = (props) => {
@@ -37,6 +39,8 @@ const Form: React.FC<FormProps> = (props) => {
 		url,
 		onSuccessMessage = 'Submitted successfully!',
 		handleSuccess = onSuccess,
+    inputOptions,
+    inputParams,
 	} = props
 
 	const { showAlertSuccess } = useAlerts()
@@ -106,6 +110,8 @@ const Form: React.FC<FormProps> = (props) => {
 				handleRemove={handleRemove}
 				handleSubmit={handleSubmit}
 				buttonText={buttonText}
+        inputOptions={inputOptions}
+        inputParams={inputParams}
 			/>
 		</Paper>
 	)

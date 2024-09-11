@@ -57,7 +57,12 @@ const AdminUserForm: React.FC<AdminUserFormProps> = (props) => {
 		...metafields,
 	]
 
-	return <ResourceForm {...props} fields={fields} />
+	return(
+      <ResourceForm 
+        {...props} 
+        fields={fields} 
+      />
+    )
 }
 
 export default AdminUserForm

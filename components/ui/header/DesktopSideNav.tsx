@@ -79,18 +79,12 @@ const DesktopSideNav = (props: DesktopNavProps) => {
 						</List>
 					</Stack>
 					{(enableAuth || enableShopify) && (
-						<Stack direction="column" spacing={1}>
-              <CartButton size="small" />
-							{enableShopify && (
-								<>
-									<ShopifyCartButton variant="sideNav" editing={editing} />
-									<ShopifyAuth variant="sideNav" />
-								</>
-							)}              
-							{enableStripe && <StripeCustomerPortalButton variant="sideNav" />}
+						<Stack direction="column" spacing={1}>              
+              {enableStripe && <CartButton variant="button" />}
+							{enableShopify && <ShopifyCartButton variant="button" editing={editing} />}              							
 							{enableAuth && (
 								<Box sx={sx.divider}>
-									<AuthButton showLabel editing={editing} />
+									<AuthButton showLabel/>
 								</Box>
 							)}
 						</Stack>

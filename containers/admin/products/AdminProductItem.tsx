@@ -2,7 +2,7 @@ import React from 'react'
 import {
 	PublishLabel,
 	DisplayFields,
-	ResourceGridItem,
+	ResourceListItem,
 } from '../../../components'
 import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
 
@@ -19,7 +19,7 @@ const AdminProductItem: React.FC<ResourceItemProps> = (props) => {
 	} = props
 
 	return (
-		<ResourceGridItem
+		<ResourceListItem
 			selectable={selectable}
 			selected={selected}
 			image={product?.image?.url}

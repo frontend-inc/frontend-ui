@@ -65,13 +65,13 @@ const CartIconButton: React.FC<CartIconButtonProps> = (props) => {
 
 type ShopifyCartButtonProps = {
 	icon?: string
-	variant?: 'topNav' | 'sideNav'
+	variant?: 'icon' | 'button'
 	editing?: boolean
 	label?: string
 }
 
 const ShopifyCartButton: React.FC<ShopifyCartButtonProps> = (props) => {
-	const { variant = 'topNav', label = 'Cart', icon = 'ShoppingCart' } = props
+	const { variant = 'icon', label = 'Cart', icon = 'ShoppingCart' } = props
 
 	const { cart, toggleCart } = useContext(ShopifyContext) as any
 	const { setMenuOpen } = useContext(AppContext)
@@ -81,7 +81,7 @@ const ShopifyCartButton: React.FC<ShopifyCartButtonProps> = (props) => {
 		toggleCart()
 	}
 
-	return variant == 'topNav' ? (
+	return variant == 'icon' ? (
 		<CartIconButton
 			icon={icon}
 			handleClick={handleCartClick}

@@ -1,70 +1,133 @@
-import React, { useState, useEffect } from 'react'
-import { Tabs, Tab } from '@mui/material'
+import React from 'react'
+import {
+	Box,
+	Typography,
+	IconButton,
+	List,
+	ListItem,
+  ListItemIcon,
+	ListItemButton,
+	ListItemText,	
+} from '@mui/material'
+import { useApp } from '../../../hooks'
+import { Icon, UserAvatar } from '../..'
+import { useAuth } from 'frontend-js'
 
-type MyAccountTabsProps = {
+type MyAccountMenuProps = {
 	tab?: number
 	enableTeams?: boolean
 	enableStripe?: boolean
-	handleChange?: (ev: any, newValue: number) => void
+	handleClick: (tab: any) => void
 }
 
-const MyAccountTabs: React.FC<MyAccountTabsProps> = (props) => {
-	const { tab, enableTeams, enableStripe, handleChange } = props || {}
+const MyAccountMenu: React.FC<MyAccountMenuProps> = (props) => {
+	const { enableTeams, handleClick } = props || {}
 
-	const TABS = [{ label: 'Account', value: 0 }]
+  const { app, enableShopify, enableStripe } = useApp()
+
+	const TABS = [
+    { label: 'My Account', value: 0 }
+  ]
 	const TEAM_TABS = [
 		{ label: 'Teams', value: 1 },
 		{ label: 'Members', value: 2 },
 	]
-	const STRIPE_TABS = [
-		{ label: 'Payment', value: 4 },
-		{ label: 'Subscription', value: 6 },
+  const SUBSCRIPTION_TAB = [
+		{ 
+      label: 'Subscription', 
+      value: 4, 
+    },		
 	]
+  const SHOPIFY_TAB = [
+    { 
+      label: 'Order History', 
+      value: 5, 
+    },
+  ]
+
 
 	let tabs = TABS
 	if (enableTeams) {
 		tabs = [...tabs, ...TEAM_TABS]
 	}
-	if (enableStripe) {
-		tabs = [...tabs, ...STRIPE_TABS]
-	}
+  if (enableStripe) {
+    tabs = [...tabs, ...SUBSCRIPTION_TAB]
+  }
+  if (enableShopify) {
+    tabs = [...tabs, ...SHOPIFY_TAB]
+  }
 
-	if (!enableTeams && !enableStripe) return null
+	const { currentUser } = useAuth()
+
 	return (
-		<Tabs
-			value={tab}
-			onChange={handleChange}
-			color="secondary"
-			sx={sx.root}
-			variant="fullWidth"
-		>
-			{tabs?.map((tab, index) => (
-				<Tab
-					disableRipple
-					key={index}
-					sx={sx.tab}
-					label={tab.label}
-					value={tab.value}
-				/>
-			))}
-		</Tabs>
+		<>
+			<Box sx={sx.avatar}>
+				<UserAvatar user={currentUser} size={96} />
+			</Box>
+			<List sx={sx.root} disablePadding>
+				{tabs?.map((tab, index) => (
+					<ListItem
+            disablePadding
+            disableGutters
+						key={index}
+						sx={sx.listItem}
+						secondaryAction={
+              <Box mr={2}>
+                <IconButton>                
+                  <Icon name={ tab?.endIcon ? tab.endIcon : "ChevronRight" } color="text.primary" />
+                </IconButton>
+              </Box>
+						}
+					>
+						<ListItemButton
+							sx={sx.listItemButton}
+							onClick={() => handleClick(tab)}
+						>
+              { tab?.startIcon && (
+                <ListItemIcon>
+                  <Icon name={tab.startIcon} color="text.primary" />
+                </ListItemIcon>
+              )}
+							<ListItemText
+								primary={
+									<Typography
+										sx={sx.menuItem}
+										variant="body1"
+										color="text.primary"
+									>
+										{tab?.label}
+									</Typography>
+								}
+							/>
+						</ListItemButton>
+					</ListItem>
+				))}
+			</List>
+		</>
 	)
 }
 
-export default MyAccountTabs
+export default MyAccountMenu
 
 const sx = {
 	root: {
-		my: 0,
+		p: 0,
+	},
+	listItem: {
+		p: 0,
 		borderBottom: '1px solid',
 		borderColor: 'divider',
-		width: '100%',
-		'& .MuiTab-root': {
-			minWidth: '60px',
-			'&.Mui-selected': {
-				color: 'text.primary',
-			},
-		},
 	},
-	tab: {},
+	menuItem: {
+		pl: 2,
+	},
+	listItemButton: {
+		py: 1,
+	},
+	avatar: {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		p: 2,
+	},
 }

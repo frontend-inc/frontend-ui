@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { List, Stack, Box } from '@mui/material'
-import { CartButton, AuthButton, StripeCustomerPortalButton, Drawer } from '../..'
-import { ShopifyAuth, ShopifyCartButton } from '../../shopify'
+import { CartButton, AuthButton, Drawer } from '../..'
+import { ShopifyCartButton } from '../../shopify'
 import { AppContext } from '../../../context'
 import SideNavMenuItem from './SideNavMenuItem'
 import { MenuLinkType } from '../../..'
@@ -9,7 +9,6 @@ import { useAuth } from 'frontend-js'
 import { filterLinkVisibility } from '../../..'
 
 type MobileDrawerProps = {
-	editing?: boolean
 	menuItems?: MenuLinkType[]
 	handleClick: (path: string) => void
 	enableAuth?: boolean
@@ -21,7 +20,6 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 	const { menuOpen, setMenuOpen } = useContext(AppContext)
 
 	const {
-		editing,
 		menuItems,
 		handleClick,
 		enableAuth,
@@ -56,18 +54,14 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 						))}
 				</List>
 				{(enableAuth || enableShopify) && (
-					<Stack direction="column" spacing={1}>
-            <CartButton size="large" />
-						{enableShopify && (
-							<>
-								<ShopifyCartButton variant="sideNav" />
-								<ShopifyAuth variant="sideNav" />
-							</>
+					<Stack direction="column" spacing={1}>            
+						{enableStripe && <CartButton variant="button" />}
+            {enableShopify && (
+							<ShopifyCartButton variant="button" />
 						)}
-						{enableStripe && <StripeCustomerPortalButton variant="sideNav" />}
 						{enableAuth && (
 							<Box sx={sx.divider}>
-								<AuthButton showLabel editing={editing} />
+								<AuthButton showLabel />
 							</Box>
 						)}
 					</Stack>

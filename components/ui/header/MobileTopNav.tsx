@@ -14,6 +14,7 @@ type MobileNavProps = {
 	logoHeight?: number
 	menuItems?: MenuLinkType[]
 	enableShopify?: boolean
+  enableStripe?: boolean
 	enableNotifications?: boolean
 	handleClick: (path: string) => void
 	position?: 'fixed' | 'relative' | 'absolute'
@@ -27,6 +28,7 @@ const MobileNav = (props: MobileNavProps) => {
 		logoWidth = 120,
 		logoHeight = 50,
 		handleClick,
+    enableStripe = false,
 		enableShopify = false,
 		enableNotifications = false,
 	} = props
@@ -57,7 +59,7 @@ const MobileNav = (props: MobileNavProps) => {
 							/>
 						</Box>
 						<Box sx={sx.rightMenu}>
-              <CartButton />
+              {enableStripe && <CartButton /> }
 							{enableShopify && <ShopifyCartButton />}
 						</Box>
 					</Box>

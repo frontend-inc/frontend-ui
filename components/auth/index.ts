@@ -1,3 +1,5 @@
+export * from './my-account'
+
 export { default as AuthGuard } from './AuthGuard'
 export { default as AuthWall } from './AuthWall'
 export { default as AuthButton } from './buttons/AuthButton'
@@ -12,10 +14,6 @@ export { default as ForgotPasswordForm } from './forgot-password/ForgotPasswordF
 export { default as GoogleLoginButton } from './oauth/GoogleLoginButton'
 export { default as Login } from './login/Login'
 export { default as LoginForm } from './login/LoginForm'
-export { default as MyAccount } from './my-account/MyAccount'
-export { default as MyAccountForm } from './my-account/MyAccountForm'
-export { default as MyAccountModal } from './my-account/MyAccountModal'
-export { default as MyAccountUserItem } from './my-account/MyAccountUserItem'
 export { default as NewPassword } from './forgot-password/NewPassword'
 export { default as NewPasswordForm } from './forgot-password/NewPasswordForm'
 export { default as OneTimePassword } from './one-time-password/OneTimePassword'

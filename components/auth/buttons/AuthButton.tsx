@@ -1,25 +1,23 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Button, Typography, Box, IconButton } from '@mui/material'
-import { useMenu } from '../../../hooks'
+import { useMenu, useApp } from '../../../hooks'
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
 import { Icon, UserAvatar, AuthMenu } from '../..'
-import { AppContext } from '../../../context'
 
 type AuthButtonProps = {
 	showLabel?: boolean
 	showIcon?: boolean
-	editing?: boolean
 }
 
 const AuthButton: React.FC<AuthButtonProps> = (props) => {
-	const { showLabel = false, showIcon = true, editing = false } = props || {}
+	const { showLabel = false, showIcon = true } = props || {}
 
 	const router = useRouter()
 	const { logout, fetchMe, currentUser } = useAuth()
 	const { open, anchorEl, closeMenu, toggleMenu } = useMenu()
 
-	const { clientUrl, setAuthOpen, setMyAccountOpen } = useContext(AppContext)
+	const { clientUrl, setAuthOpen, setMyAccountOpen } = useApp()
 
 	const handleLogin = () => {
 		setAuthOpen(true)
@@ -47,10 +45,14 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 			top: 0,
 			behavior: 'smooth',
 		})
-		if (!editing) {
-			router.push(url)
-		}
+		router.push(url)
 	}
+
+  useEffect(() => {
+    if(!currentUser?.id){
+      fetchMe()
+    }
+  }, [currentUser?.id])
 
 	return (
 		<>
@@ -68,7 +70,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 				</>
 			) : (
 				<>
-					{currentUser ? (
+					{currentUser?.id ? (
 						<Button
 							sx={sx.button}
 							onClick={toggleMenu}

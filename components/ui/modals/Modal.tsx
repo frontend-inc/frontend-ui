@@ -165,6 +165,7 @@ const sx = {
 	},
 	disablePadding: {
 		m: 0,
+    p: 0,
 	},
 	dialogActions: {
 		borderTop: '1px solid',

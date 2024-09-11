@@ -8,6 +8,7 @@ export type PrimaryButtonProps = {
 	children: React.ReactNode
 	onClick: (ev: any) => void
 	icon?: string
+  endIcon?: string
 	fullWidth?: boolean
   size?: 'small' | 'medium' | 'large'
   disabled?: boolean
@@ -19,9 +20,10 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
 		loading,
 		children,
 		onClick,
-		icon,
-		fullWidth,
     size='medium',
+		icon,
+    endIcon,
+		fullWidth,    
     disabled=false
 	} = props
 
@@ -31,8 +33,20 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
 			color={color}
 			variant="contained"
 			onClick={onClick}
-      size={size}
       disabled={disabled}
+      size={size}
+      endIcon={
+        endIcon && (
+          <Icon
+            name={endIcon}
+            color={
+              color == 'primary'
+                ? 'primary.contrastText'
+                : 'secondary.contrastText'
+            }
+          />
+        )
+      }
 			startIcon={
 				<>
 					{loading && <IconLoading loading={loading} />}

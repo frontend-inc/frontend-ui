@@ -18,7 +18,6 @@ const AdminProductsList: React.FC<AdminProductListProps> = (props) => {
 
 	return (
 		<ResourceList
-			grid
 			selectable
 			url={`${apiUrl}/products`}
 			name={'product'}

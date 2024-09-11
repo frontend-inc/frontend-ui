@@ -3,14 +3,13 @@ import { AppBar, Box, Hidden, Toolbar } from '@mui/material'
 import { AuthButton, StripeCustomerPortalButton } from '../../../components'
 import Logo from './Logo'
 import { CartButton } from '../../../components'
-import { ShopifyAuth, ShopifyCartButton } from '../../shopify'
+import { ShopifyCartButton } from '../../shopify'
 import { useAuth } from 'frontend-js'
 import { MenuLinkType } from '../../..'
 import TopNavMenuItem from './TopNavMenuItem'
 import { filterLinkVisibility } from '../../..'
 
 type DesktopNavProps = {
-	editing?: boolean
 	logo: string
 	menuItems?: MenuLinkType[]
 	enableAuth?: boolean
@@ -23,7 +22,6 @@ type DesktopNavProps = {
 
 const DesktopTopNav = (props: DesktopNavProps) => {
 	const {
-		editing,
 		logo,
 		menuItems,
 		handleClick,
@@ -71,19 +69,9 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 								))}
 						</Box>
 						<Box sx={sx.rightMenu}>
-							{enableAuth && <AuthButton editing={editing} />}
-              <CartButton />
-							{enableStripe && (
-                <>
-                  <StripeCustomerPortalButton />
-                </>
-              )}
-							{enableShopify && (
-								<>
-									<ShopifyAuth />
-									<ShopifyCartButton />
-								</>
-							)}
+							{enableAuth && <AuthButton />}
+              {enableStripe && <CartButton /> }							
+							{enableShopify && <ShopifyCartButton /> }
 						</Box>
 					</Box>
 				</Toolbar>

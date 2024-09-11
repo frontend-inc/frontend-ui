@@ -31,6 +31,8 @@ type FormInputProps = {
 	placeholder?: string
 	handleChange: (e: SyntheticEventType) => void
 	handleRemove?: (name: string) => void
+  handleAddAttachment?: (name: string, attachmentId: number) => void
+	handleRemoveAttachment?: (name: string) => void
 	resource?: any
 	url?: string
 	foreignUrl?: string
@@ -39,6 +41,8 @@ type FormInputProps = {
 	displayField?: string //Autosuggest has an optional display field param
 	valueParam?: string // MetafieldAutosuggest has an optional value param
 	fields?: FormFieldType[]
+  inputOptions?: Record<string, React.FC> 
+  inputParams?: Record<string, any>
 }
 
 const FormInput: React.FC<FormInputProps> = (props) => {
@@ -52,6 +56,8 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		placeholder,
 		handleChange,
 		handleRemove,
+    handleAddAttachment,
+    handleRemoveAttachment,
 		resource,
 		url,
 		foreignUrl,
@@ -60,6 +66,8 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		query = {},
 		displayField,
 		valueParam,
+    inputOptions: defaultInputOptions = {},
+    inputParams: defaultInputParams = {},
 	} = props
 
 	let componentMapper = {
@@ -85,6 +93,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		shopify: ShopifyProductInput,
 		shopify_products: ShopifyProductsInput,
 		habtm: ReferenceInput,
+    ...defaultInputOptions
 	}
 
 	let inputProps = {
@@ -115,18 +124,6 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		price: {
 			type: 'number',
 		},
-		image: {
-			handleRemove,
-		},
-		video: {
-			handleRemove,
-		},
-		audio: {
-			handleRemove,
-		},
-		file: {
-			handleRemove,
-		},
 		habtm: {
 			resource,
 			url,
@@ -134,6 +131,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			contentType,
 			fields,
 		},
+    ...defaultInputParams
 	}
 
 	let InputComponent = componentMapper[variant] || TextInput
@@ -145,6 +143,9 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			name={name}
 			value={value || ''}
 			handleChange={handleChange}
+      handleRemove={handleRemove}
+      handleAddAttachment={handleAddAttachment}
+      handleRemoveAttachment={handleRemoveAttachment}
 			placeholder={placeholder}
 			{...inputProps[variant]}
 		/>

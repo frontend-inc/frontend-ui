@@ -33,7 +33,6 @@ export type ProductDetailsProps = {
 }
 
 export type ProductProps = ProductDetailsProps & {
-	url?: string
 	slots?: {
 		image?: any
 		content?: any
@@ -78,6 +77,9 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 		<PDP
 			image={product?.image?.url}
 			primary={product?.title}
+      price={product?.display_price}
+      compareAtPrice={product?.display_compare_at_price}
+      description={product?.description}
 			secondary={
 				<Stack spacing={2} sx={{ width: '100%' }}>
 					<Stack spacing={2} sx={{ width: '100%' }} alignItems="flex-start">
@@ -88,7 +90,6 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 							<DisplayFields fields={displayFields} resource={product} />
 						)}
 					</Stack>
-					<ExpandableText text={product?.description} />
 				</Stack>
 			}
 			actions={
@@ -104,10 +105,12 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 				/>
 			}
       addToCart={
-        <AddToCartButton 
-          availableForSale
-          productId={ product?.id } 
-        />
+        <Box sx={ sx.addToCart }>
+          <AddToCartButton 
+            availableForSale
+            productId={ product?.id } 
+          />
+        </Box>
       }
 			secondaryAction={
 				(buttons || enableEdit) && (
@@ -135,4 +138,8 @@ const sx = {
 	buttons: {
 		width: '100%',
 	},
+  addToCart: {
+    width: '100%',
+    maxWidth: '300px',
+  }
 }

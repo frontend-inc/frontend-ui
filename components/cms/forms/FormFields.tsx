@@ -13,8 +13,12 @@ export type FormProps = {
 	resource: any
 	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 	handleRemove?: (name: string) => void
+  handleAddAttachment?: (name: string, attachmentId: number) => void
+	handleRemoveAttachment?: (name: string) => void
 	handleSubmit?: () => void
 	buttonText?: string
+  inputOptions?: Record<string, React.FC> 
+  inputParams?: Record<string, any>
 }
 
 const FormFields: React.FC<FormProps> = (props) => {
@@ -26,7 +30,11 @@ const FormFields: React.FC<FormProps> = (props) => {
 		handleChange,
 		handleRemove,
 		handleSubmit,
+    handleAddAttachment,
+    handleRemoveAttachment,
 		buttonText = 'Submit',
+    inputOptions,
+    inputParams,
 	} = props
 
 	return (
@@ -45,6 +53,10 @@ const FormFields: React.FC<FormProps> = (props) => {
 						//@ts-ignore
 						handleChange={handleChange}
 						handleRemove={handleRemove}
+            handleAddAttachment={handleAddAttachment}
+            handleRemoveAttachment={handleRemoveAttachment}
+            inputOptions={inputOptions}
+            inputParams={inputParams}
 					/>
 				)
 			})}

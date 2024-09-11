@@ -1,13 +1,13 @@
 import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
-import { Image } from '../..'
+import { Image, ExpandableText } from '../..'
 
 export type PDPProps = {
 	label?: string
 	image?: string
 	price?: string
 	compareAtPrice?: string
-	availableForSale?: boolean
+	description?: string
 	primary?: string
 	secondary?: React.ReactNode
 	actions?: React.ReactNode
@@ -29,7 +29,7 @@ const PDP: React.FC<PDPProps> = (props) => {
     addToCart,
 		price,
 		compareAtPrice,
-		availableForSale,
+    description,
 		actions,
 		secondaryAction,
 		slots = {
@@ -67,20 +67,22 @@ const PDP: React.FC<PDPProps> = (props) => {
 							{primary}
 						</Typography>
             <Stack direction="row" spacing={1}>
-						<Typography color="text.primary" variant="caption">
+						<Typography color="text.primary" variant="subtitle1">
 							{price}
 						</Typography>
 						{compareAtPrice && (
 							<Typography
 								color="text.secondary"
-								variant="caption"
+								variant="subtitle2"
 								sx={sx.compareAtPrice}
 							>
 								{compareAtPrice}
 							</Typography>
 						)}
 					</Stack>
-						{secondary}
+						{ secondary }
+            { addToCart }
+            <ExpandableText text={description} />            
 					</Stack>
 				</Stack>
 			</Box>
@@ -159,4 +161,7 @@ const sx = {
 	leftPanelBorder: {
 		pb: 2,
 	},
+  description: {
+    whiteSpace: 'pre-line'
+  }
 }

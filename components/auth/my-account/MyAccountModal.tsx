@@ -6,18 +6,21 @@ import {
 	TeamList,
 	TeamUsersList,
 	TeamUserInvite,
+  StripeCustomerPortal,
+  ShopifyCustomerPortal 
 } from '../../../components'
-import MyAccountMenu from './MyAccountMenu'
+import MyAccountTabs from './MyAccountTabs'
 import { Box, Button } from '@mui/material'
 import { MetafieldType } from '../../../types'
 
 type MyAccountModalProps = {
 	enableTeams?: boolean
+  enableStripe?: boolean
 	metafields?: MetafieldType[]
 }
 
 const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
-	const { enableTeams, metafields } = props || {}
+	const { enableTeams, enableStripe, metafields } = props || {}
 	const { myAccountOpen, setMyAccountOpen } = useContext(AppContext)
 
 	const {
@@ -47,8 +50,12 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 		await updateMe(user)
 	}
 
-	const handleTabChange = (ev: any, newValue: number) => {
-		setCurrentTab(newValue)
+	const handleClick = (tab: any) => {
+    if(tab.url){
+      window.open(tab.url, '_blank')
+    }else{
+      setCurrentTab(tab.value)
+    }		
 	}
 
 	return (
@@ -63,19 +70,20 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 			}
 		>
 			{currentTab == null ? (
-				<MyAccountMenu
+				<MyAccountTabs
 					tab={currentTab}
 					enableTeams={enableTeams}					
-					handleChange={handleTabChange}
+          enableStripe={enableStripe}
+					handleClick={handleClick}
 				/>
 			) : (
-				<Box px={1}>
+				<Box p={1}>
 					<Button
 						sx={sx.button}
 						color="secondary"
 						variant="contained"
 						startIcon={
-							<Icon name="ChevronLeft" color="text.primary" size={32} />
+							<Icon name="ChevronLeft" color="text.primary" size={24} />
 						}
 						onClick={() => setCurrentTab(null)}
 					>
@@ -105,6 +113,12 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 						handleCancel={() => setCurrentTab(2)}
 					/>
 				)}
+        { currentTab == 4 && (
+          <StripeCustomerPortal />
+        )}        
+        { currentTab == 5 && (
+          <ShopifyCustomerPortal />
+        )}        
 			</Box>
 		</Modal>
 	)

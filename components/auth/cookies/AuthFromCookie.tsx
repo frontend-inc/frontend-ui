@@ -3,7 +3,12 @@ import { useAuth } from 'frontend-js'
 import { getCookie } from 'cookies-next'
 
 const AuthFromCookie: React.FC = () => {
-	const { authCookie, fetchMe, currentUser, authenticateFromToken } = useAuth()
+	const { 
+    authCookie, 
+    fetchMe,
+    currentUser, 
+    authenticateFromToken 
+  } = useAuth()
 
 	useEffect(() => {
 		if (!currentUser?.id) {
@@ -11,7 +16,7 @@ const AuthFromCookie: React.FC = () => {
 			if (authToken) {
 				authenticateFromToken(String(authToken))
 				if (!currentUser) {
-					//fetchMe()
+					fetchMe()
 				}
 			}
 		}

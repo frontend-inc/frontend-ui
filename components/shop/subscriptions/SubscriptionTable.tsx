@@ -4,10 +4,14 @@ import { Stack } from '@mui/material'
 import { Loading, Placeholder } from '../..'
 import SubscriptionTableCard from './SubscriptionTableCard'
 import { useSubscriptions, useApp } from '../../../hooks'
+import { useRouter } from 'next/router'
 
 const SubscriptionTable: React.FC = () => {
+
+  const router = useRouter()
 	const {
 		delayedLoading: loading,
+    subscribe,
 		subscriptions,
 		findSubscriptions,
 	} = useSubscriptions()
@@ -15,33 +19,41 @@ const SubscriptionTable: React.FC = () => {
 	const { currentUser, fetchMe } = useAuth()
   const { setAuthOpen } = useApp()
 
-
-	const handleSubscribeClick = (subscription) => {
-		const { id: userId, stripe_customer_id, credit_card_id } = currentUser || {}
-		if (!userId) return setAuthOpen(true)
+	const handleSubscribe = async (subscription) => {		
+		if (!currentUser?.id) return setAuthOpen(true)
+    let currentUrl = window.location.href
+    let resp = await subscribe(subscription?.id, {
+      success_url: currentUrl,
+      cancel_url: currentUrl
+    })     
+    //@ts-ignore   
+    if(resp?.url){
+      //@ts-ignore
+      router.push(resp.url)
+    }    
 	}
 
 	useEffect(() => {
-		if (currentUser?.id) {
-			findSubscriptions()
-		}
-	}, [currentUser?.id])
+		findSubscriptions()		
+	}, [])
 
 	return (
 		<>
-			<Loading loading={loading} />
-			<Stack sx={sx.table} direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-				{!loading &&
-					subscriptions?.map((subscription) => {
-						const selected =
-							currentUser?.subscription_id === subscription.id
+			<Stack 
+        sx={{
+          ...sx.table,
+          ...(loading && sx.loading)
+        }} 
+        direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+				{ subscriptions?.map((subscription) => {
+						const selected = currentUser?.subscription_id === subscription.id
 						return (
 							<SubscriptionTableCard
 								key={subscription.id}
 								selected={selected}
 								//@ts-ignore
 								subscription={subscription}
-								handleClick={() => handleSubscribeClick(subscription)}
+								handleClick={() => handleSubscribe(subscription)}
 							/>
 						)
 					})}
@@ -65,14 +77,9 @@ const sx = {
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
-	cancelLink: {
-		py: 2,
-	},
-	footerLinks: {
-		width: '100%',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
+  loading: {
+    opacity: 0.5
+  },
 	divider: {
 		height: '100%',
 		borderRight: '1px solid',
