@@ -100,7 +100,7 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 						<Icon name="GripVertical" color="text.secondary" />
 					</ListItemIcon>
 				)}
-				{avatar && <ListItemIcon sx={sx.listItemIcon}>{avatar}</ListItemIcon>}
+				{avatar && <ListItemIcon sx={sx.listItemImage}>{avatar}</ListItemIcon>}
 				{!avatar && image && (
 					<ListItemIcon sx={sx.listItemImage}>
 						<Image src={image} width={64} height={64} alt={image} />
@@ -161,8 +161,7 @@ const sx = {
 		alignItems: 'center',
 	},
 	listItemIcon: {
-		mr: 2,
-    minWidth: 64,
+		mr: 2,    
 	},
 	listItemImage: {
 		mr: 2,

@@ -4,7 +4,8 @@ import { useOrders } from '../../../hooks'
 import { 
   AdminOrderForm,
   AdminOrderDetails, 
-  AdminOrderLineItemList 
+  AdminOrderLineItemList,
+  AdminShipmentList 
 } from '../../../containers'
 
 type AdminOrderProps = {
@@ -54,6 +55,12 @@ const AdminOrder: React.FC<AdminOrderProps> = (props) => {
         Order Items
       </Typography>
       <AdminOrderLineItemList 
+        orderId={order?.id}
+      />
+      <Typography variant="subtitle1" color="text.primary">
+        Shipments
+      </Typography>
+      <AdminShipmentList 
         orderId={order?.id}
       />
       <AdminOrderForm 
