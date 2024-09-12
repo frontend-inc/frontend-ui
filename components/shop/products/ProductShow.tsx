@@ -39,8 +39,7 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 
 	if (!resource) return null
 	return (
-		<Modal
-			disablePadding
+		<Modal		
 			open={openShow}
 			handleClose={() => setOpenShow(false)}
       maxWidth='md'

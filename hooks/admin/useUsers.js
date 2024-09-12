@@ -1,8 +1,9 @@
 import React from 'react'
 import { useResource } from 'frontend-js'
+import { useAdmin } from 'frontend-ui/hooks'
 
-const useUsers = (props) => {
-	const { appId } = props
+const useUsers = () => {
+	const { apiUrl } = useAdmin()
 
 	const {
 		loading,
@@ -31,13 +32,13 @@ const useUsers = (props) => {
 		handleSort,
 		loadingWrapper,
 	} = useResource({
-		url: `/api/v1/admin/apps/${appId}/users`,
+		url: `${apiUrl}/users`,
 		name: 'user',
 	})
 
 	const inviteUser = async (user) => {
 		return await loadingWrapper(() =>
-			api.post(`/api/v1/admin/apps/${appId}/users/invite`, user)
+			api.post(`${apiUrl}/users/invite`, user)
 		)
 	}
 

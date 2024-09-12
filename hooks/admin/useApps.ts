@@ -1,8 +1,10 @@
 import React from 'react'
 import { useApi, useResource } from 'frontend-js'
+import { useAdmin } from 'frontend-ui/hooks'
 
 function useApps(): Record<string, any> {
 	const { api } = useApi()
+  const { apiUrl } = useAdmin()
 
 	const {
 		errors,
@@ -44,13 +46,13 @@ function useApps(): Record<string, any> {
 
 	const publishApp = async (appId: number) => {
 		return await loadingWrapper(() =>
-			api.post(`/api/v1/admin/apps/${appId}/publish`)
+			api.post(`${apiUrl}/publish`)
 		)
 	}
 
 	const buildApp = async (appId: number) => {
 		return await loadingWrapper(() =>
-			api.post(`/api/v1/admin/apps/${appId}/build`)
+			api.post(`${apiUrl}/build`)
 		)
 	}
 

@@ -26,8 +26,6 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 	const {
 		delayedLoading,
 		user,
-		setUser,
-		fetchMe,
 		currentUser,
 		updateMe,
 		handleChange,
@@ -35,7 +33,7 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 		logout,
 	} = useAuth()
 
-	const [currentTab, setCurrentTab] = useState(0)
+	const [currentTab, setCurrentTab] = useState()
 
 	const handleLogout = async () => {
 		await logout()

@@ -1,8 +1,9 @@
 import React from 'react'
 import { useResource } from 'frontend-js'
+import { useAdmin } from 'frontend-ui/hooks'
 
-const useAccounts = (props) => {
-	const { appId } = props
+const useAccounts = () => {
+	const { apiUrl } = useAdmin()
 
 	const {
 		resourceId: accountId,
@@ -31,7 +32,7 @@ const useAccounts = (props) => {
 		sortDirection,
 		handleSort,
 	} = useResource({
-		url: `/api/v1/admin/apps/${appId}/accounts`,
+		url: `${apiUrl}/accounts`,
 		name: 'account',
 	})
 
