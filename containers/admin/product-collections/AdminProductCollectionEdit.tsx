@@ -1,31 +1,19 @@
 import React from 'react'
-import { Drawer, FormFields, IconLoading } from '../../../components'
-import { Stack, Button } from '@mui/material'
+import { ResourceForm } from '../../../components'
 import { ResourceFormProps } from '../../../components/cms/resources/ResourceForm'
-import { FormFieldType, MetafieldType } from '../../../types'
-import { MediaInput } from '../..'
+import { FormFieldType } from '../../../types'
+import { MediaInput } from '../../../containers'
 
 // Todo: Type error if we use MetafieldType
-type AdminProductFormProps = ResourceFormProps & {
+type AdminProductCollectionFormProps = ResourceFormProps & {
 	metafields?: FormFieldType[]
 }
 
-const AdminProductForm: React.FC<AdminProductFormProps> = (props) => {
-	const { metafields = [] } = props || {}
-	const {
-		loading,
-		errors,
-		open,
-		handleClose,
-		resource,
-		handleChange,
-		handleAddAttachment,
-		handleRemoveAttachment,
-		handleRemove,
-		handleSubmit,
-	} = props || {}
+const AdminProductCollectionForm: React.FC<AdminProductCollectionFormProps> = (props) => {
+	const { metafields = [] } = props || {}	
 
 	let fields = [
+    { label: 'Media', name: 'image', variant: 'media' },
 		{ label: 'Handle', name: 'handle', variant: 'string' },
 		{ label: 'Title', name: 'title', variant: 'string' },
 		{ label: 'Description', name: 'description', variant: 'text' },
@@ -33,41 +21,17 @@ const AdminProductForm: React.FC<AdminProductFormProps> = (props) => {
 		...metafields,
 	]
 
+  const inputOptions = {
+    media: MediaInput
+  }
+
 	return (
-		<Drawer
-			open={open}
-			handleClose={handleClose}
-			title={resource?.id ? 'Edit' : 'Add'}
-			buttons={
-				<Button
-					fullWidth
-					variant="contained"
-					color="primary"
-					onClick={handleSubmit}
-					startIcon={<IconLoading loading={loading} />}
-				>
-					{resource?.id ? 'Update' : 'Save'}
-				</Button>
-			}
-		>
-			<Stack spacing={1}>
-				<MediaInput
-					name="image"
-					value={resource?.image}
-					handleAddAttachment={handleAddAttachment}
-					handleRemoveAttachment={handleRemoveAttachment}
-				/>
-				<FormFields
-					errors={errors}
-					loading={loading}
-					fields={fields}
-					resource={resource}
-					handleChange={handleChange}
-					handleRemove={handleRemove}
-				/>
-			</Stack>
-		</Drawer>
+    <ResourceForm 
+      fields={ fields }
+      inputOptions={ inputOptions }
+      { ...props }
+    />		
 	)
 }
 
-export default AdminProductForm
+export default AdminProductCollectionForm

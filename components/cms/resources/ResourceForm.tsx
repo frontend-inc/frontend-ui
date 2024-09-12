@@ -3,24 +3,27 @@ import { Drawer, FormFields, IconLoading } from '../../../components'
 import { Button } from '@mui/material'
 
 export type ResourceFormProps = {
-	open: boolean
-	handleClose: () => void
-	loading: boolean
+  open: boolean
+	handleClose: () => void	
+  loading: boolean  
 	errors: any
 	resource: any
 	setResource: (resource: any) => void
 	handleChange: (ev: any) => void
 	handleRemove?: (string: any) => void
-	handleAddAttachment?: (name: string, attachmentId: number) => void
-	handleRemoveAttachment?: (name: string) => void
+	handleAddAttachment: (name: string, attachmentId: number) => void
+	handleRemoveAttachment: (name: string) => void
 	handleSubmit: () => void
 	handleReload: () => void
   inputOptions?: Record<string, React.FC>
   inputParams?: Record<string, any>
+}
+
+export type FormProps = ResourceFormProps & {	
 	fields: any[]
 }
 
-const ResourceForm: React.FC<ResourceFormProps> = (props) => {
+const ResourceForm: React.FC<FormProps> = (props) => {
 	const {
 		loading,
 		errors,

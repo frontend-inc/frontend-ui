@@ -66,7 +66,6 @@ const AdminOrder: React.FC<AdminOrderProps> = (props) => {
         handleChange={handleChange}
         handleSubmit={ handleSubmit }     
         handleReload={ reloadOrder }
-
       />
     </Stack>
   )
