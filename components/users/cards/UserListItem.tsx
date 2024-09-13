@@ -1,7 +1,6 @@
 import React from 'react'
 import { Stack, Typography } from '@mui/material'
 import {
-	FollowButton,
 	ResourceListItem,
 	UserAvatar,
 	DisplayFields,
@@ -12,7 +11,6 @@ type UserListItemProps = {
 	size?: number
 	resource: UserType
 	displayFields: DisplayFieldType[]
-	enableFollowers?: boolean
 	handleClick?: () => void
 }
 
@@ -21,7 +19,6 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
 		resource: user,
 		size = 44,
 		displayFields = [],
-		enableFollowers,
 		handleClick,
 	} = props || {}
 
@@ -39,7 +36,6 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
 				</Stack>
 			}
 			secondary={<DisplayFields resource={user} fields={displayFields} />}
-			secondaryAction={enableFollowers && <FollowButton user={user} />}
 		/>
 	)
 }

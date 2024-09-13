@@ -4,6 +4,7 @@ export { default as ShopSubscriptionTable } from './ShopSubscriptionTable'
 
 export { default as ShopProductLikesGrid } from './ShopProductLikesGrid'
 export { default as ShopProductFavoritesGrid } from './ShopProductFavoritesGrid'
+export { default as ShopProductReviews } from './ShopProductReviews'
 
 // Product collections
 export { default as ShopProductCollectionCover } from './ShopProductCollectionCover'

@@ -30,16 +30,9 @@ export { default as VerifyPin } from './verify/VerifyPin'
 export { default as VerifyPinForm } from './verify/VerifyPinForm'
 export { default as VerifySendPinForm } from './verify/VerifySendPinForm'
 
-// Teams
-export { default as TeamList } from './teams/TeamList'
-export { default as TeamForm } from './teams/TeamForm'
-export { default as TeamUsersList } from './teams/TeamUsersList'
-export { default as TeamUserForm } from './teams/TeamUserInviteForm'
-export { default as TeamUserInvite } from './teams/TeamUserInvite'
 
 // Users
 export * from './users'
 
 // Lists
 export { default as AuthUserListItem } from './lists/AuthUserListItem'
-export { default as TeamListItem } from './lists/TeamListItem'

@@ -14,11 +14,12 @@ export { default as CmsGeoNearby } from './CmsGeoNearby'
 export { default as CmsVimeo } from './CmsVimeo'
 export { default as CmsYouTube } from './CmsYouTube'
 export { default as CmsSimilarList } from './CmsSimilarList'
-export { default as CmsSimilarGrid } from './CmsSimilarGrid'
+
+export { default as CmsLikes } from './CmsLikes'
+export { default as CmsFavorites } from './CmsFavorites'
 
 // Sortable
 export { default as CmsReferenceList } from './CmsReferenceList'
-export { default as CmsReferenceGrid } from './CmsReferenceGrid'
 
 // Cms Addons
 export { default as CmsGoogleMap } from './addons/CmsGoogleMap'

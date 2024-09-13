@@ -3,10 +3,8 @@ import { Stack, Box, Typography } from '@mui/material'
 import {
 	ButtonActions,
 	UserAvatar,
-	FollowButton,
 	ExpandableText,
 	DisplayFields,
-	FollowButtonGroup,
 	SocialFields,
 } from '../..'
 import { SocialFieldType, DisplayFieldType, ButtonType } from '../../../types'
@@ -14,7 +12,6 @@ import { UserType } from 'frontend-js'
 
 export type UserProfileProps = {
 	user: UserType
-	enableFollowers?: boolean
 	displayFields?: DisplayFieldType[]
 	socialFields?: SocialFieldType[]
 	buttons?: ButtonType[]
@@ -23,7 +20,6 @@ export type UserProfileProps = {
 const UserProfile: React.FC<UserProfileProps> = (props) => {
 	const {
 		user,
-		enableFollowers = false,
 		displayFields = [],
 		socialFields = [],
 		buttons = [],
@@ -52,15 +48,11 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 						{name}
 					</Typography>
 					<Stack direction="column" spacing={1}>
-						{enableFollowers == true && <FollowButtonGroup user={user} />}
 						<DisplayFields resource={user} fields={displayFields} />
 						{about_me && (
 							<ExpandableText text={about_me} color="text.secondary" />
 						)}
 					</Stack>
-				</Stack>
-				<Stack direction="row" height="100%" justifyContent="flex-start">
-					{enableFollowers == true && <FollowButton user={user} />}
 				</Stack>
 				{buttons?.length > 0 && (
 					<Stack direction="row" sx={sx.buttons}>

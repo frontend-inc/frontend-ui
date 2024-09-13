@@ -11,7 +11,6 @@ import copy from 'copy-to-clipboard'
 import { Box } from '@mui/material'
 import {
 	USER_FIELD,
-	TEAM_FIELD,
 	ID_FIELD,
 	PUBLISHED_FIELD,
 } from '../../../constants'
@@ -260,7 +259,7 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 	}
 
 	const handleSetVisibleFields = (fields) => {
-		let startFields = [ID_FIELD, USER_FIELD, TEAM_FIELD]
+		let startFields = [ID_FIELD, USER_FIELD]
 		let endFields = [PUBLISHED_FIELD]
 		let customFields = fields.filter((f) => f.visible)
 		let allFields = [...startFields, ...customFields, ...endFields]

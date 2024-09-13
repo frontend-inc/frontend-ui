@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { ReferenceCollectionGrid } from '../../components'
+import { LikesGrid } from '../../components'
 import { CollectionListProps } from '../../components/cms/collections/CollectionList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsReferenceGridProps = SectionProps & HeadingProps & CollectionListProps
+type CmsLikesProps = SectionProps & HeadingProps & CollectionListProps
 
-const CmsReferenceGrid: React.FC<CmsReferenceGridProps> = (props) => {
+const CmsLikes: React.FC<CmsLikesProps> = (props) => {
 	const {
 		label,
 		title,
@@ -16,7 +16,6 @@ const CmsReferenceGrid: React.FC<CmsReferenceGridProps> = (props) => {
 		py,
 		px,
 		maxWidth,
-		requireAuth,
 		
 		requirePaid,
 		...rest
@@ -24,13 +23,13 @@ const CmsReferenceGrid: React.FC<CmsReferenceGridProps> = (props) => {
 
 	return (
 		<Section
+			requireAuth
+			
+			requirePaid={requirePaid}
 			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-			requireAuth={requireAuth}
-			
-			requirePaid={requirePaid}
 		>
 			<Heading
 				label={label}
@@ -38,9 +37,9 @@ const CmsReferenceGrid: React.FC<CmsReferenceGridProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<ReferenceCollectionGrid {...rest} />
+			<LikesGrid {...rest} />
 		</Section>
 	)
 }
 
-export default CmsReferenceGrid
+export default CmsLikes

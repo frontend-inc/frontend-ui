@@ -72,12 +72,11 @@ export type CollectionListProps = {
 
 const CollectionList: React.FC<CollectionListProps> = (props) => {
 	const {
-		grid = false,
 		url,
 		foreignUrl,
 		query,
 		resource,
-		perPage = 10,
+		perPage = 12,
 		filterSimilar,
 		filterGeo,
 
@@ -87,7 +86,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		enableGradient,
 		enableOverlay,
 
-		style = 'list',
+		style = 'card',
 		href,
 		buttons = [],
 		displayFields = [],
@@ -179,6 +178,15 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			enableOverlay,
 		},
 	}
+
+  const grid = {
+    avatar: false,
+    list: false,
+    text: false,
+    card: true,
+    cover: true 
+  }[style] || false
+
 
 	return (
 		<DataList

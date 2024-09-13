@@ -2,41 +2,33 @@ import React from 'react'
 import { Stack } from '@mui/material'
 import { LoadMore, DataLayout } from '../..'
 import { useResourceContext } from 'frontend-js'
-import {  ImageCard, Placeholder } from '../..'
+import { VideoCard } from '../..'
 import { useForms } from '../../../hooks'
 
-export type ImageGridItemsProps = {
+export type VideoListItemsProps = {
 	url: string
+	enableEdit?: boolean
+	enableDelete?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
 	enableComments?: boolean
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
-	emptyIcon?: string
-	emptyTitle?: string
-	emptyDescription?: string
 }
 
-const ImageGridItems: React.FC<ImageGridItemsProps> = (props) => {
-	const {
-		setResource,
-		loading,
-		resources,
-		page,
-		numPages,
-		loadMore,
-		setOpenShow,
-	} = useResourceContext()
+const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
+	const { setResource, resources, page, numPages, loadMore, setOpenShow } =
+		useResourceContext()
 
 	const {
-		enableGradient = false,
-		enableOverlay = false,
+		enableEdit = false,
+		enableDelete = false,
 		enableFavorites = false,
 		enableLikes = false,
-		emptyIcon,
-		emptyTitle = 'No results found',
-		emptyDescription = 'Try changing your search or filters.',
+		enableComments = false,
+		enableGradient = false,
+		enableOverlay = false,
 		...rest
 	} = props
 
@@ -51,10 +43,10 @@ const ImageGridItems: React.FC<ImageGridItemsProps> = (props) => {
 		<Stack direction="column" spacing={2}>
 			<DataLayout grid>
 				{resources?.map((resource) => (
-					<ImageCard
+					<VideoCard
 						key={resource.id}
 						image={resource?.image?.url}
-						primary={resource?.title}						
+						primary={resource?.title}
 						slots={{
 							image: {
 								enableGradient,
@@ -70,4 +62,4 @@ const ImageGridItems: React.FC<ImageGridItemsProps> = (props) => {
 	)
 }
 
-export default ImageGridItems
+export default VideoListItems

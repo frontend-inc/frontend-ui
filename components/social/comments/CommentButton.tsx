@@ -42,7 +42,6 @@ export default CommentButton
 
 const sx = {
 	icon: {
-		bgcolor: 'background.main',
 		color: 'text.secondary',
 		'&:hover': {
 			bgcolor: 'background.main',

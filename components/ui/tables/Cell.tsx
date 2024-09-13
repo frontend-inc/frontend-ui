@@ -17,7 +17,6 @@ import {
 	CellRating,
 	CellVideo,
 	CellUser,
-	CellTeam,
 } from '../../../components'
 
 type CellProps = {
@@ -51,7 +50,6 @@ const Cell: React.FC<CellProps> = (props) => {
 		string: CellString,
 		select: CellEnum,
 		user: CellUser,
-		team: CellTeam,
 		file: CellFile,
 		shopify_products: CellArray,
 	}

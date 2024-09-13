@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { VideoGrid } from '../../components'
-import { VideoGridProps } from '../../components/cms/collections/VideoGrid'
+import { VideoList } from '../../components'
+import { VideoListProps } from '../../components/cms/collections/VideoList'
 import { SectionProps, HeadingProps, FormProps } from '../../types'
 
-type CmsVideosProps = SectionProps & HeadingProps & VideoGridProps & FormProps
+type CmsVideosProps = SectionProps & HeadingProps & VideoListProps & FormProps
 
 const CmsVideos: React.FC<CmsVideosProps> = (props) => {
 	const {
@@ -38,7 +38,7 @@ const CmsVideos: React.FC<CmsVideosProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<VideoGrid {...rest} />
+			<VideoList {...rest} />
 		</Section>
 	)
 }

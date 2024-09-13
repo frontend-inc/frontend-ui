@@ -43,11 +43,11 @@ const AdminUserForm: React.FC<AdminUserFormProps> = (props) => {
 		{
 			label: 'Role',
 			name: 'role',
-			variant: 'autosuggest',
-			displayField: 'name',
-			valueParam: 'name',
-			url: `${apiUrl}/roles`,
-			query: {},
+			variant: 'select',
+      options: [
+        { label: 'User', value: 'user' },
+        { label: 'Admin', value: 'admin' }
+      ]
 		},
 		{
 			label: 'Paid',

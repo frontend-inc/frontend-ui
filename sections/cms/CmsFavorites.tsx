@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { UserList } from '../../components'
-import { UserListProps } from '../../components/users/lists/UserList'
+import { FavoritesGrid } from '../../components'
 import { SectionProps, HeadingProps } from '../../types'
+import { CollectionListProps } from '../../components/cms/collections/CollectionList'
 
-type UsersProps = SectionProps & HeadingProps & UserListProps
+type CmsFavoritesProps = SectionProps & HeadingProps & CollectionListProps
 
-const Users: React.FC<UsersProps> = (props) => {
+const CmsFavorites: React.FC<CmsFavoritesProps> = (props) => {
 	const {
 		label,
 		title,
@@ -38,9 +38,9 @@ const Users: React.FC<UsersProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<UserList {...rest} />
+			<FavoritesGrid {...rest} />
 		</Section>
 	)
 }
 
-export default Users
+export default CmsFavorites

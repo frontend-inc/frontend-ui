@@ -2,7 +2,7 @@ import React from 'react'
 import { CardActionArea, Grid } from '@mui/material'
 import { Image } from '../../../../components'
 
-type ShopifyProductImageGridProps = {
+type ShopifyProductImageListProps = {
 	images: any
 	loading?: boolean
 	handleClick: any
@@ -15,7 +15,7 @@ type ShopifyProductImageGridProps = {
 	lg?: number
 }
 
-const ShopifyProductImageGrid: React.FC<ShopifyProductImageGridProps> = (
+const ShopifyProductImageList: React.FC<ShopifyProductImageListProps> = (
 	props
 ) => {
 	const {
@@ -41,7 +41,7 @@ const ShopifyProductImageGrid: React.FC<ShopifyProductImageGridProps> = (
 	)
 }
 
-export default ShopifyProductImageGrid
+export default ShopifyProductImageList
 
 const sx = {
 	cardActionArea: {

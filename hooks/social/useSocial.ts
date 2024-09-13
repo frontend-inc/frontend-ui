@@ -27,14 +27,6 @@ const useSocial = () => {
 		return await loadingWrapper(() => api.unfavorite(itemId, params))
 	}
 
-	const follow = async (username) => {
-		return await loadingWrapper(() => api.follow(username, params))
-	}
-
-	const unfollow = async (username) => {
-		return await loadingWrapper(() => api.unfollow(username, params))
-	}
-
 	const likeProduct = async (productId) => {
 		return await loadingWrapper(() => api.likeProduct(productId, params))
 	}
@@ -65,8 +57,6 @@ const useSocial = () => {
 		unlike,
 		favorite,
 		unfavorite,
-		follow,
-		unfollow,
 		likeProduct,
 		unlikeProduct,
 		favoriteProduct,

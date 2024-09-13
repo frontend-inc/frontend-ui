@@ -1,7 +1,5 @@
 export { default as AddToListButton } from './references/AddToListButton'
 export { default as FavoriteButton } from './favorites/FavoriteButton'
-export { default as FollowButton } from './follow/FollowButton'
-export { default as FollowButtonGroup } from './follow/FollowButtonGroup'
 export { default as LikeButton } from './likes/LikeButton'
 export { default as ProductLikeButton } from './product-likes/ProductLikeButton'
 export { default as ProductFavoriteButton } from './product-favorites/ProductFavoriteButton'
