@@ -1,6 +1,6 @@
 import React from 'react'
 import { useResource } from 'frontend-js'
-import { useAdmin } from 'frontend-ui/hooks'
+import { useAdmin } from '../../hooks'
 
 const useUsers = () => {
 	const { apiUrl } = useAdmin()

@@ -33,7 +33,7 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 		logout,
 	} = useAuth()
 
-	const [currentTab, setCurrentTab] = useState()
+	const [currentTab, setCurrentTab] = useState<number>()
 
 	const handleLogout = async () => {
 		await logout()

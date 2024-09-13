@@ -4,8 +4,7 @@ import { useProductCollections } from '../../../hooks'
 import { 
   AdminProductCollectionEdit,
   AdminProductCollectionDetails, 
-  AdminCollectionProductsList, 
-  AdminCollectionProductList
+  AdminCollectionProductList, 
 } from '../../../containers'
 
 type AdminProductCollectionProps = {

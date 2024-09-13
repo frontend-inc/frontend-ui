@@ -1,10 +1,8 @@
 import React from 'react'
 import { Stack, Button } from '@mui/material'
 import FormFields from './FormFields'
-import { get } from 'lodash'
 import { FormFieldType } from '../../../types'
 import { IconLoading } from '../..'
-import { validateFieldConditions } from '../../../helpers'
 
 export type FormProps = {
 	loading?: boolean

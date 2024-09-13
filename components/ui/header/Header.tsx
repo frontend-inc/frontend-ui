@@ -9,7 +9,6 @@ import { MenuLinkType } from '../../../types'
 import { useApp } from '../../../hooks'
 
 type HeaderProps = {
-	editing?: boolean
 	sideNav?: boolean
 	mode?: 'accent' | 'light' | 'dark'
 	logo?: string
@@ -28,8 +27,7 @@ const Header: React.FC<HeaderProps> = (props) => {
   const { enableStripe, enableShopify } = useApp()  
 
 	const {
-		sideNav = false,
-		editing = false,
+		sideNav = false,		
 		menuItems,
 		handleClick,
 		enableAuth = false,
@@ -45,7 +43,6 @@ const Header: React.FC<HeaderProps> = (props) => {
 		>
 			{!sideNav ? (
 				<DesktopTopNav
-					editing={editing}
 					logo={logo}
 					enableAuth={enableAuth}
 					enableStripe={enableStripe}
@@ -56,7 +53,6 @@ const Header: React.FC<HeaderProps> = (props) => {
 				/>
 			) : (
 				<DesktopSideNav
-					editing={editing}
 					logo={logo}
 					enableAuth={enableAuth}
 					enableStripe={enableStripe}
@@ -67,7 +63,6 @@ const Header: React.FC<HeaderProps> = (props) => {
 				/>
 			)}
 			<MobileTopNav
-				editing={editing}
 				logo={logo}
         enableStripe={enableStripe}
 				enableShopify={enableShopify}
@@ -75,8 +70,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 				menuItems={menuItems}
 				handleClick={handleClick}
 			/>
-			<MobileDrawer
-				editing={editing}
+			<MobileDrawer				
 				enableAuth={enableAuth}
 				enableStripe={enableStripe}
 				enableShopify={enableShopify}

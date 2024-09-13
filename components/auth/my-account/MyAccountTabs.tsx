@@ -74,7 +74,7 @@ const MyAccountMenu: React.FC<MyAccountMenuProps> = (props) => {
 						secondaryAction={
               <Box mr={2}>
                 <IconButton>                
-                  <Icon name={ tab?.endIcon ? tab.endIcon : "ChevronRight" } color="text.primary" />
+                  <Icon name={"ChevronRight"} color="text.primary" />
                 </IconButton>
               </Box>
 						}
@@ -83,11 +83,6 @@ const MyAccountMenu: React.FC<MyAccountMenuProps> = (props) => {
 							sx={sx.listItemButton}
 							onClick={() => handleClick(tab)}
 						>
-              { tab?.startIcon && (
-                <ListItemIcon>
-                  <Icon name={tab.startIcon} color="text.primary" />
-                </ListItemIcon>
-              )}
 							<ListItemText
 								primary={
 									<Typography

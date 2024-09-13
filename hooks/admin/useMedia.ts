@@ -1,6 +1,6 @@
 import { useResource } from 'frontend-js'
 import { useApi } from 'frontend-js'
-import useAdmin from './useAdmin'
+import { useAdmin } from '../../hooks'
 
 const useMedia = () => {
 	const { api } = useApi()

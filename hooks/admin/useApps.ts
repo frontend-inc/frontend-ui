@@ -1,6 +1,6 @@
 import React from 'react'
 import { useApi, useResource } from 'frontend-js'
-import { useAdmin } from 'frontend-ui/hooks'
+import { useAdmin } from '../../hooks'
 
 function useApps(): Record<string, any> {
 	const { api } = useApi()

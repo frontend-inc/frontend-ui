@@ -11,12 +11,12 @@ export type ResourceFormProps = {
 	setResource: (resource: any) => void
 	handleChange: (ev: any) => void
 	handleRemove?: (string: any) => void
-	handleAddAttachment: (name: string, attachmentId: number) => void
-	handleRemoveAttachment: (name: string) => void
+	handleAddAttachment?: (name: string, attachmentId: number) => void
+	handleRemoveAttachment?: (name: string) => void
 	handleSubmit: () => void
 	handleReload: () => void
-  inputOptions?: Record<string, React.FC>
-  inputParams?: Record<string, any>
+  inputOptions?: any 
+  inputParams?: any
 }
 
 export type FormProps = ResourceFormProps & {	

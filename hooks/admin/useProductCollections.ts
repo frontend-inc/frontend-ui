@@ -1,6 +1,6 @@
 import React from 'react'
 import { useResource, useApi } from 'frontend-js'
-import { useAdmin } from '..'
+import { useAdmin } from '../../hooks'
 
 const useProductCollections = () => {
 	const { apiUrl } = useAdmin()

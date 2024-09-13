@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormModal } from '../..'
+import { DocumentFormRemoteModal } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { FormFieldType } from '../../../types'
 
@@ -23,10 +23,9 @@ const ProductForm: React.FC<ProductFormProps> = (props) => {
 	}
 
 	return (
-		<FormModal
+		<DocumentFormRemoteModal
 			open={openEdit}
 			handleClose={() => setOpenEdit(false)}
-			fields={fields}
 			url={url}
 			resource={resource}
 			parentResource={parentResource}

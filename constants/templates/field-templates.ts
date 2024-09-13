@@ -1,4 +1,3 @@
-import { array } from "zod"
 
 export const BASE_FIELD_TEMPLATE = {
 	internal: true,
