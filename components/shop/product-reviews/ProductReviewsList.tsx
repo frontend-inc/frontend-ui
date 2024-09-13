@@ -1,4 +1,4 @@
-import ProductReact from 'react'
+import React from 'react'
 import ProductReviewItem from './ProductReviewItem'
 import { LoadMore, DataLayout } from '../..'
 import { useResourceContext } from 'frontend-js'
