@@ -1,12 +1,12 @@
 import * as fields from '../../constants/templates/field-templates'
 import * as COLORS from '@mui/material/colors'
 
-export const COLLECTION_ITEM = {
+export const COLLECTION_CUSTOM = {
 	icon: 'Box',
 	name: 'items',
-	label: 'Blank',
+	label: 'Custom',
 	color: COLORS.deepPurple[500],
-	description: 'An basic item',
+	description: 'Customize your collection',
 	fields: [...fields.BASE_FIELD_TEMPLATES],
 	data: [],
 }
@@ -16,7 +16,7 @@ export const COLLECTION_ARTICLE = {
 	name: 'articles',
 	label: 'Article',
 	color: COLORS.orange[500],
-	description: 'A blog post or article',
+	description: 'Blogs, articles, posts, etc.',
 	fields: [
 		...fields.BASE_FIELD_TEMPLATES,
 		fields.PUBLISHED_AT_FIELD_TEMPLATE,
@@ -29,29 +29,30 @@ export const COLLECTION_PERSON = {
 	name: 'people',
 	label: 'Person',
 	color: COLORS.pink[500],
-	description: 'A person',
+	description: 'People, authors, influencers, etc.',
 	fields: [
 		fields.HANDLE_FIELD_TEMPLATE,
 		fields.IMAGE_FIELD_TEMPLATE,
 		fields.LABEL_FIELD_TEMPLATE,
-		fields.FULL_NAME_FIELD_TEMPLATE,
-		fields.BIO_FIELD_TEMPLATE,
+		fields.NAME_FIELD_TEMPLATE,
+		fields.ABOUT_ME_FIELD_TEMPLATE,
 		fields.TAGS_FIELD_TEMPLATE,
 	],
 }
 
-export const COLLECTION_COMPANY = {
-	icon: 'Building2',
-	name: 'companies',
-	label: 'Company',
+export const COLLECTION_PLACE = {
+	icon: 'MapPin',
+	name: 'places',
+	label: 'Place',
 	color: COLORS.blue[500],
-	description: 'A company',
+	description: 'Companies, restaurants, venues, etc.',
 	fields: [
 		fields.HANDLE_FIELD_TEMPLATE,
 		fields.IMAGE_FIELD_TEMPLATE,
 		fields.LABEL_FIELD_TEMPLATE,
-		fields.COMPANY_FIELD_TEMPLATE,
+		fields.NAME_FIELD_TEMPLATE,
 		fields.DESCRIPTION_FIELD_TEMPLATE,
+    fields.LOCATION_FIELD_TEMPLATE,
 		fields.TAGS_FIELD_TEMPLATE,
 	],
 }
@@ -61,7 +62,7 @@ export const COLLECTION_EVENT = {
 	name: 'events',
 	label: 'Event',
 	color: COLORS.amber[500],
-	description: 'An event with dates',
+	description: 'Meetups, events, conferences, etc.',
 	fields: [
 		...fields.BASE_FIELD_TEMPLATES,
 		fields.START_DATE_FIELD_TEMPLATE,
@@ -70,24 +71,42 @@ export const COLLECTION_EVENT = {
 	],
 }
 
-export const COLLECTION_PRODUCT = {
-	icon: 'ShoppingBag',
-	name: 'products',
-	label: 'Product',
-	color: COLORS.lightGreen[500],
-	description: 'A product for sale',
+export const COLLECTION_VIDEO = {
+	icon: 'Video',
+	name: 'videos',
+	label: 'Video',
+	color: COLORS.amber[500],
+	description: 'Short videos',
 	fields: [
-		...fields.BASE_FIELD_TEMPLATES,
-		fields.PRICE_FIELD_TEMPLATE,
-		fields.COMPARE_AT_PRICE_FIELD_TEMPLATE,
+		fields.IMAGE_FIELD_TEMPLATE,
+    fields.VIDEO_FIELD_TEMPLATE,
+    fields.HANDLE_FIELD_TEMPLATE,
+    fields.TITLE_FIELD_TEMPLATE, 
+    fields.DESCRIPTION_FIELD_TEMPLATE, 
 	],
 }
 
+export const COLLECTION_IMAGE = {
+	icon: 'Image',
+	name: 'images',
+	label: 'Image',
+	color: COLORS.amber[500],
+	description: 'Photos, logos, etc.',
+	fields: [    
+    fields.IMAGE_FIELD_TEMPLATE,
+    fields.HANDLE_FIELD_TEMPLATE,
+    fields.TITLE_FIELD_TEMPLATE,    
+    fields.DESCRIPTION_FIELD_TEMPLATE, 
+	],
+}
+
+
 export const COLLECTION_TEMPLATES = [
-	COLLECTION_ITEM,
+	COLLECTION_CUSTOM,
 	COLLECTION_ARTICLE,
+  COLLECTION_EVENT,
 	COLLECTION_PERSON,
-	COLLECTION_COMPANY,
-	COLLECTION_EVENT,
-	COLLECTION_PRODUCT,
+	COLLECTION_PLACE,
+  COLLECTION_VIDEO,
+  COLLECTION_IMAGE,
 ]

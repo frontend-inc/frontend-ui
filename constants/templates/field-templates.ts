@@ -1,3 +1,5 @@
+import { array } from "zod"
+
 export const BASE_FIELD_TEMPLATE = {
 	internal: true,
 	editable: true,
@@ -7,8 +9,8 @@ export const BASE_FIELD_TEMPLATE = {
 	filterable: true,
 	sortable: true,
 	table_header: true,
-	display_FIELD_TEMPLATE: false,
-	form_FIELD_TEMPLATE: true,
+	display_field: false,
+	form_field: true,
 }
 
 export const HANDLE_FIELD_TEMPLATE = {
@@ -21,8 +23,8 @@ export const HANDLE_FIELD_TEMPLATE = {
 	filterable: true,
 	sortable: true,
 	table_header: true,
-	display_FIELD_TEMPLATE: false,
-	form_FIELD_TEMPLATE: false,
+	display_field: false,
+	form_field: false,
 }
 
 export const LABEL_FIELD_TEMPLATE = {
@@ -50,22 +52,14 @@ export const SUBTITLE_FIELD_TEMPLATE = {
 	filterable: true,
 	sortable: true,
 	table_header: true,
-	display_FIELD_TEMPLATE: true,
-	form_FIELD_TEMPLATE: true,
+	display_field: true,
+	form_field: true,
 }
 
-export const FULL_NAME_FIELD_TEMPLATE = {
+export const NAME_FIELD_TEMPLATE = {
 	...BASE_FIELD_TEMPLATE,
 	name: 'title',
-	label: 'Full name',
-	db_type: 'string',
-	variant: 'string',
-}
-
-export const COMPANY_FIELD_TEMPLATE = {
-	...BASE_FIELD_TEMPLATE,
-	name: 'title',
-	label: 'Company',
+	label: 'Name',
 	db_type: 'string',
 	variant: 'string',
 }
@@ -86,13 +80,13 @@ export const STATUS_FIELD_TEMPLATE = {
 	variant: 'string',
 }
 
-export const BIO_FIELD_TEMPLATE = {
+export const ABOUT_ME_FIELD_TEMPLATE = {
 	...BASE_FIELD_TEMPLATE,
 	name: 'description',
 	label: 'About',
 	db_type: 'text',
 	variant: 'text',
-	display_FIELD_TEMPLATE: true,
+	display_field: true,
 }
 
 export const DESCRIPTION_FIELD_TEMPLATE = {
@@ -101,7 +95,7 @@ export const DESCRIPTION_FIELD_TEMPLATE = {
 	label: 'Description',
 	db_type: 'text',
 	variant: 'text',
-	display_FIELD_TEMPLATE: true,
+	display_field: true,
 }
 
 export const IMAGE_FIELD_TEMPLATE = {
@@ -113,8 +107,8 @@ export const IMAGE_FIELD_TEMPLATE = {
 	filterable: false,
 	sortable: false,
 	table_header: true,
-	display_FIELD_TEMPLATE: false,
-	form_FIELD_TEMPLATE: false,
+	display_field: false,
+	form_field: false,
 }
 
 export const FILE_FIELD_TEMPLATE = {
@@ -127,8 +121,16 @@ export const FILE_FIELD_TEMPLATE = {
 	filterable: false,
 	sortable: false,
 	table_header: true,
-	display_FIELD_TEMPLATE: false,
-	form_FIELD_TEMPLATE: false,
+	display_field: false,
+	form_field: false,
+}
+
+export const LOCATION_FIELD_TEMPLATE = {
+	...BASE_FIELD_TEMPLATE,
+	name: 'location',
+	label: 'Location',
+	db_type: 'string',
+	variant: 'location',
 }
 
 export const PUBLISHED_AT_FIELD_TEMPLATE = {
@@ -276,40 +278,27 @@ export const ZIPCODE_FIELD_TEMPLATE = {
 	variant: 'string',
 }
 
-export const SHOPIFY_PRODUCT_FIELD_TEMPLATE = {
+export const SHOPIFY_PRODUCTS_FIELD_TEMPLATE = {
 	...BASE_FIELD_TEMPLATE,
 	internal: false,
-	name: 'shopify_handle',
-	label: 'Shopify Product',
+	name: 'shopify_products',
+	label: 'Shopify Products',
 	db_type: 'string',
-	variant: 'shopify_product',
+  array: true,
+	variant: 'shopify_products',
 	filterable: false,
 	sortable: false,
 	table_header: false,
-	display_FIELD_TEMPLATE: false,
-	form_FIELD_TEMPLATE: false,
+	display_field: false,
+	form_field: false,
 }
 
-export const SHOPIFY_COLLECTION_FIELD_TEMPLATE = {
-	...BASE_FIELD_TEMPLATE,
-	internal: false,
-	name: 'shopify_handle',
-	label: 'Shopify List',
-	db_type: 'string',
-	variant: 'shopify_collection',
-	filterable: false,
-	sortable: false,
-	table_header: false,
-	display_FIELD_TEMPLATE: false,
-	form_FIELD_TEMPLATE: false,
-}
 
 export const BASE_FIELD_TEMPLATES = [
+  IMAGE_FIELD_TEMPLATE,
 	HANDLE_FIELD_TEMPLATE,
 	LABEL_FIELD_TEMPLATE,
 	TITLE_FIELD_TEMPLATE,
-	SUBTITLE_FIELD_TEMPLATE,
 	DESCRIPTION_FIELD_TEMPLATE,
-	IMAGE_FIELD_TEMPLATE,
-	TAGS_FIELD_TEMPLATE,
+	TAGS_FIELD_TEMPLATE
 ]

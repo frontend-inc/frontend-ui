@@ -251,7 +251,7 @@ export const SHOPIFY_PRODUCTS_FIELD_VARIANT: FieldVariantType = {
 	db_type: 'string',
 	description: 'Shopify Products',
 	array: true,
-	color: COLORS.pink[500],
+	color: COLORS.lightGreen[500],
 }
 
 export const FIELD_VARIANTS: FieldVariantType[] = [
@@ -273,7 +273,6 @@ export const FIELD_VARIANTS: FieldVariantType[] = [
 	LOCATION_FIELD_VARIANT,
 	RATING_FIELD_VARIANT,
 	PRICE_FIELD_VARIANT,
-	SHOPIFY_FIELD_VARIANT,
 	// Media fields
 	IMAGE_FIELD_VARIANT,
 	VIDEO_FIELD_VARIANT,

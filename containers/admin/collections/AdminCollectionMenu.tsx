@@ -107,6 +107,8 @@ const AdminCollectionMenu: React.FC = () => {
 	const handleTemplateClick = (template) => {
 		setCollection({
 			...collection,
+      name: template.name,
+      label: template.label,
 			template,
 		})
 	}
