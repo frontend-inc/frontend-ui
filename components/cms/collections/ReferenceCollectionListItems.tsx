@@ -17,14 +17,10 @@ export type ReferenceCollectionListItemsProps = {
 	handleClick?: (resource: any) => void
 	enableGradient?: boolean
 	enableOverlay?: boolean
-	enableEdit?: boolean
-	enableDelete?: boolean
 	enableComments?: boolean
 	enableFavorites?: boolean
 	enableLikes?: boolean
-	enableRatings?: boolean
 	enableSharing?: boolean
-	enableUsers?: boolean
 	slots?: {
 		list?: any
 		item?: any
@@ -56,12 +52,8 @@ const ReferenceCollectionListItems: React.FC<
 		displayFields = [],
 		enableGradient = false,
 		enableOverlay = false,
-		enableEdit = false,
-		enableDelete = false,
 		enableFavorites = false,
 		enableLikes = false,
-		enableUsers = false,
-		enableRatings = false,
 		enableComments = false,
 		slots = {
 			list: {},
@@ -86,8 +78,6 @@ const ReferenceCollectionListItems: React.FC<
 		}
 	}
 
-	const { handleEdit, handleDeleteClick } = useForms()
-
 	const handlePaginate = async () => {
 		await loadMore()
 	}
@@ -104,16 +94,9 @@ const ReferenceCollectionListItems: React.FC<
 							resource={target}
 							displayFields={displayFields}
 							handleClick={() => handleShowClick(target)}
-							enableEdit={enableEdit}
-							enableDelete={enableDelete}
-							handleEdit={() => handleEdit(target)}
-							handleDelete={() => handleDeleteClick(target)}
 							buttons={buttons}
-							enableUsers={enableUsers}
-							enableComments={enableComments}
 							enableFavorites={enableFavorites}
 							enableLikes={enableLikes}
-							enableRatings={enableRatings}
 							enableGradient={enableGradient}
 							enableOverlay={enableOverlay}
 							{...slots.item}

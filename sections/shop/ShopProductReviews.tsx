@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { Reviews } from '../../components'
-import { ReviewsProps } from '../../components/social/reviews/Reviews'
+import { ProductReviews } from '../../components'
+import { ProductReviewsProps } from '../../components/shop/product-reviews/ProductReviews'
 import { SectionProps, HeadingProps } from '../../types'
 
-type SocialReviewsProps = SectionProps & HeadingProps & ReviewsProps
+type ShopProductReviewsProps = SectionProps & HeadingProps & ProductReviewsProps
 
-const SocialReviews: React.FC<SocialReviewsProps> = (props) => {
+const ShopProductReviews: React.FC<ShopProductReviewsProps> = (props) => {
 	const {
 		label,
 		title,
@@ -17,7 +17,7 @@ const SocialReviews: React.FC<SocialReviewsProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		requireTeam,
+		
 		requirePaid,
 		...rest
 	} = props
@@ -25,7 +25,7 @@ const SocialReviews: React.FC<SocialReviewsProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requireTeam={requireTeam}
+			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}
@@ -38,9 +38,9 @@ const SocialReviews: React.FC<SocialReviewsProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<Reviews {...rest} />
+			<ProductReviews {...rest} />
 		</Section>
 	)
 }
 
-export default SocialReviews
+export default ShopProductReviews

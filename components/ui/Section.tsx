@@ -8,7 +8,6 @@ const Section: React.FC<SectionProps> = (props) => {
 	const {
 		enableTransitions = false,
 		requireAuth = false,
-		requireTeam = false,
 		requirePaid = false,
 		children,
 		mode = 'light',
@@ -53,7 +52,6 @@ const Section: React.FC<SectionProps> = (props) => {
 					>
 						<AuthGuard
 							requireAuth={requireAuth}
-							requireTeam={requireTeam}
 							requirePaid={requirePaid}
 						>
 							{children}

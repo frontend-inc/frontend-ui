@@ -5,6 +5,7 @@ export * from './stripe'
 export * from './pdp'
 export * from './products'
 export * from './product-collections'
+export * from './product-reviews'
 export * from './subscriptions'
 
 export { default as StripeCustomerPortalButton } from './customers/StripeCustomerPortalButton'

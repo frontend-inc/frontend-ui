@@ -3,7 +3,7 @@ import { Stack, ListItem, Button } from '@mui/material'
 import { Drawer, AuthGuard, IconLoading, RatingInput, TextInput } from '../..'
 import { useResourceContext } from 'frontend-js'
 
-type ReviewFormProps = {
+type ProductReviewFormProps = {
 	loading: boolean
 	errors?: any
 	review: any
@@ -11,7 +11,7 @@ type ReviewFormProps = {
 	handleSubmit: () => void
 }
 
-const ReviewForm: React.FC<ReviewFormProps> = (props) => {
+const ProductReviewForm: React.FC<ProductReviewFormProps> = (props) => {
 	const {
 		loading,
 		errors,
@@ -86,7 +86,7 @@ const ReviewForm: React.FC<ReviewFormProps> = (props) => {
 	)
 }
 
-export default ReviewForm
+export default ProductReviewForm
 
 const sx = {
 	root: {

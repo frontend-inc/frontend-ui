@@ -17,7 +17,7 @@ const CmsCarousel: React.FC<CmsCarouselProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		requireTeam,
+		
 		requirePaid,
 		...rest
 	} = props
@@ -29,7 +29,7 @@ const CmsCarousel: React.FC<CmsCarouselProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 			requireAuth={requireAuth}
-			requireTeam={requireTeam}
+			
 			requirePaid={requirePaid}
 		>
 			<Heading

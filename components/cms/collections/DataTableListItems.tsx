@@ -6,7 +6,6 @@ import { TableHeaderType } from '../../../types'
 import { useRouter } from 'next/router'
 import { TableList } from '../..'
 import { DataListItemsProps } from '../data/DataListItems'
-import { useForms } from '../../../hooks'
 
 export type DataTableListProps = DataListItemsProps & {
 	headers: TableHeaderType[]
@@ -33,8 +32,6 @@ const DataTableList: React.FC<DataTableListProps> = (props) => {
 	const {
 		headers,
 		href,
-		enableEdit = false,
-		enableDelete = false,
 		enableShow = false,
 	} = props || {}
 
@@ -51,8 +48,6 @@ const DataTableList: React.FC<DataTableListProps> = (props) => {
 			router.push(`${clientUrl}${href}/${resource?.handle}`)
 		}
 	}
-
-	const { handleEdit, handleDeleteClick } = useForms()
 
 	const handleSort = (field) => {
 		const { name } = field || {}
@@ -77,11 +72,7 @@ const DataTableList: React.FC<DataTableListProps> = (props) => {
 			<Box sx={{ ...(loading && sx.loading) }}>
 				<TableList
 					handleClick={handleCellClick}
-					enableEdit={enableEdit}
-					enableDelete={enableDelete}
 					enableShow={enableShow}
-					handleEdit={handleEdit}
-					handleDelete={handleDeleteClick}
 					handleShow={handleClick}
 					loading={resources && loading}
 					headers={headers}

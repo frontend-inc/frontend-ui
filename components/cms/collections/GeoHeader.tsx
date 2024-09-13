@@ -10,7 +10,7 @@ import {
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch, useForms } from '../../../hooks'
 
-export type CollectionToolbarProps = {
+export type GeoHeaderProps = {
 	query: any
 	url: string
 	enableSearch?: boolean
@@ -18,17 +18,14 @@ export type CollectionToolbarProps = {
 	enableSorting?: boolean
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
-	enableCreate?: boolean
-	handleAdd?: () => void
 }
 
-const GeoToolbar: React.FC<CollectionToolbarProps> = (props) => {
+const GeoHeader: React.FC<GeoHeaderProps> = (props) => {
 	const {
 		url,
 		query: defaultQuery = {},
 		filterOptions = [],
 		sortOptions = [],
-		enableCreate = false,
 		enableSearch = false,
 		enableFilters = false,
 		enableSorting = false,
@@ -53,7 +50,7 @@ const GeoToolbar: React.FC<CollectionToolbarProps> = (props) => {
 
 	const { handleAdd } = useForms()
 
-	if (!enableSearch && !enableFilters && !enableSorting && !enableCreate) {
+	if (!enableSearch && !enableFilters && !enableSorting ) {
 		return null
 	}
 	return (
@@ -99,29 +96,12 @@ const GeoToolbar: React.FC<CollectionToolbarProps> = (props) => {
 						</Box>
 					)}
 				</Stack>
-				{enableCreate && (
-					<Stack
-						spacing={1}
-						direction={{ xs: 'column', sm: 'row' }}
-						alignItems="center"
-					>
-						<Button
-							sx={sx.button}
-							color="secondary"
-							variant="contained"
-							onClick={handleAdd}
-							startIcon={<Icon name="Plus" color="secondary.contrastText" />}
-						>
-							Add
-						</Button>
-					</Stack>
-				)}
 			</Stack>
 		</Stack>
 	)
 }
 
-export default GeoToolbar
+export default GeoHeader
 
 const sx = {
 	root: {

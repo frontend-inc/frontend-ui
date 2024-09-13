@@ -16,7 +16,7 @@ const SocialLikes: React.FC<SocialLikesProps> = (props) => {
 		py,
 		px,
 		maxWidth,
-		requireTeam,
+		
 		requirePaid,
 		...rest
 	} = props
@@ -24,7 +24,7 @@ const SocialLikes: React.FC<SocialLikesProps> = (props) => {
 	return (
 		<Section
 			requireAuth
-			requireTeam={requireTeam}
+			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

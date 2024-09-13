@@ -3,7 +3,7 @@ import { Stack, Divider, Typography } from '@mui/material'
 import PublishButton from './inputs/PublishButton'
 import SaveButton from './inputs/SaveButton'
 import { SyntheticEventType } from 'frontend-js'
-import { TeamAutosuggest, UserAutosuggest } from '../../../components'
+import { UserAutosuggest } from '../../../components'
 
 type AdminDocumentRightPanelProps = {
 	appId: string | number
@@ -17,7 +17,6 @@ type AdminDocumentRightPanelProps = {
 	handleSubmit: () => void
 	handleTogglePublish: () => void
 	enableUsers?: boolean
-	enableTeams?: boolean
 	enableStripe?: boolean
 	enablePlaces?: boolean
 }
@@ -34,8 +33,6 @@ const AdminDocumentRightPanel: React.FC<AdminDocumentRightPanelProps> = (
 		handleChange,
 		handleSubmit,
 		handleTogglePublish,
-		enableUsers,
-		enableTeams,
 	} = props
 
 	return (
@@ -58,26 +55,14 @@ const AdminDocumentRightPanel: React.FC<AdminDocumentRightPanelProps> = (
 				handleSubmit={handleSubmit}
 			/>
 			<Divider />
-			{enableUsers && (
-				<UserAutosuggest
-					direction="row"
-					label="User"
-					errors={errors}
-					name="user_id"
-					value={document?.user_id}
-					handleChange={handleChange}
-				/>
-			)}
-			{enableTeams && (
-				<TeamAutosuggest
-					direction="row"
-					label="Team"
-					errors={errors}
-					name="team_id"
-					value={document?.team_id}
-					handleChange={handleChange}
-				/>
-			)}
+      <UserAutosuggest
+        direction="row"
+        label="User"
+        errors={errors}
+        name="user_id"
+        value={document?.user_id}
+        handleChange={handleChange}
+      />
 		</Stack>
 	)
 }

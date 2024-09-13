@@ -16,7 +16,7 @@ const CmsForm: React.FC<CmsFormProps> = (props) => {
 		py,
 		px,
 		maxWidth,
-		requireTeam,
+		
 		requirePaid,
 		...rest
 	} = props
@@ -24,7 +24,7 @@ const CmsForm: React.FC<CmsFormProps> = (props) => {
 	return (
 		<Section
 			requireAuth
-			requireTeam={requireTeam}
+			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

@@ -17,7 +17,7 @@ const CmsGoogleMap: React.FC<CmsGoogleMapProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		requireTeam,
+		
 		requirePaid,
 		...rest
 	} = props
@@ -25,7 +25,7 @@ const CmsGoogleMap: React.FC<CmsGoogleMapProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requireTeam={requireTeam}
+			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

@@ -1,14 +1,14 @@
 import React from 'react'
-import { ReviewForm } from '../../../components'
-import { DataList } from '../../../components'
-import ReviewsList from './ReviewsList'
+import { ProductReviewForm } from '../..'
+import { DataList } from '../..'
+import ProductReviewsList from './ProductReviewsList'
 
-export type ReviewsProps = {
+export type ProductReviewsProps = {
 	handle: string
 	url: string
 }
 
-const Reviews: React.FC<ReviewsProps> = (props) => {
+const ProductReviews: React.FC<ProductReviewsProps> = (props) => {
 	const { url, handle } = props
 
 	return (
@@ -39,19 +39,19 @@ const Reviews: React.FC<ReviewsProps> = (props) => {
 			enableCreate
 			enableEdit
 			enableDelete
-			list={ReviewsList}
-			edit={ReviewForm}
-			create={ReviewForm}
+			list={ProductReviewsList}
+			edit={ProductReviewForm}
+			create={ProductReviewForm}
 			slots={{
 				toolbar: {
-					buttonText: 'Add Review',
+					buttonText: 'Add Product Review',
 				},
 			}}
 		/>
 	)
 }
 
-export default Reviews
+export default ProductReviews
 
 const sx = {
 	root: {

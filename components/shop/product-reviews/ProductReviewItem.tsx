@@ -10,13 +10,13 @@ import {
 import { UserAvatar } from '../..'
 import moment from 'moment'
 
-type ReviewProps = {
+type ProductReviewProps = {
 	resource: any
 	user?: any
 	handleDelete?: (review: any) => void
 }
 
-const Review: React.FC<ReviewProps> = (props) => {
+const ProductReview: React.FC<ProductReviewProps> = (props) => {
 	const { resource } = props
 
 	return (
@@ -49,7 +49,7 @@ const Review: React.FC<ReviewProps> = (props) => {
 	)
 }
 
-export default Review
+export default ProductReview
 
 const sx = {
 	root: {

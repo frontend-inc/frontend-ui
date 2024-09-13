@@ -12,15 +12,9 @@ export type ShowModalProps = {
 	displayFields: DisplayFieldType[]
 	fields?: FormFieldType[]
 	fieldName?: string
-	enableEdit?: boolean
-	enableCreate?: boolean
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
-	enableRatings?: boolean
-	enableAddToList?: boolean
-	enableUsers?: boolean
-	handleEdit?: () => void
 	enableComments?: boolean
 }
 
@@ -31,13 +25,9 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 		buttons = [],
 		displayFields = [],
 		enableComments,
-		enableRatings,
 		enableLikes,
 		enableFavorites,
 		enableSharing,
-		enableAddToList,
-		enableEdit,
-		handleEdit,
 	} = props || {}
 
 	if (!resource) return null
@@ -51,14 +41,10 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 			<ShowItem
 				style="snippet"
 				resource={resource}
-				enableEdit={enableEdit}
 				buttons={buttons}
 				displayFields={displayFields}
-				enableRatings={enableRatings}
-				handleEdit={handleEdit}
 				enableLikes={enableLikes}
 				enableFavorites={enableFavorites}
-				enableAddToList={enableAddToList}
 				enableSharing={enableSharing}
 				slots={{
 					image: {

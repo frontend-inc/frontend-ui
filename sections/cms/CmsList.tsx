@@ -17,7 +17,6 @@ const CmsList: React.FC<CmsListProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		requireTeam,
 		requirePaid,
 		...rest
 	} = props
@@ -29,7 +28,6 @@ const CmsList: React.FC<CmsListProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 			requireAuth={requireAuth}
-			requireTeam={requireTeam}
 			requirePaid={requirePaid}
 		>
 			<Heading

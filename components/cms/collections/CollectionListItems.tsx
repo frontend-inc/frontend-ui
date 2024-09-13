@@ -18,15 +18,10 @@ export type CollectionListItemsProps = {
 	handleClick?: (resource: any) => void
 	enableGradient?: boolean
 	enableOverlay?: boolean
-	enableAddToList?: boolean
-	enableEdit?: boolean
-	enableDelete?: boolean
 	enableComments?: boolean
 	enableFavorites?: boolean
 	enableLikes?: boolean
-	enableRatings?: boolean
 	enableSharing?: boolean
-	enableUsers?: boolean
 	slots?: {
 		list?: any
 		item?: any
@@ -57,13 +52,8 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		displayFields = [],
 		enableGradient = false,
 		enableOverlay = false,
-		enableAddToList = false,
-		enableEdit = false,
-		enableDelete = false,
 		enableFavorites = false,
 		enableLikes = false,
-		enableUsers = false,
-		enableRatings = false,
 		enableComments = false,
 		slots = {
 			item: {},
@@ -87,8 +77,6 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		}
 	}
 
-	const { handleEdit, handleDeleteClick } = useForms()
-
 	const handlePaginate = async () => {
 		await loadMore()
 	}
@@ -104,17 +92,10 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 						resource={resource}
 						displayFields={displayFields}
 						handleClick={() => handleShowClick(resource)}
-						enableEdit={enableEdit}
-						enableDelete={enableDelete}
-						handleEdit={() => handleEdit(resource)}
-						handleDelete={() => handleDeleteClick(resource)}
 						buttons={buttons}
-						enableUsers={enableUsers}
 						enableComments={enableComments}
 						enableFavorites={enableFavorites}
 						enableLikes={enableLikes}
-						enableRatings={enableRatings}
-						enableAddToList={enableAddToList}
 						enableGradient={enableGradient}
 						enableOverlay={enableOverlay}
 						{...slots.item}

@@ -17,7 +17,7 @@ const SocialFollowing: React.FC<SocialFollowingProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		requireTeam,
+		
 		requirePaid,
 		...rest
 	} = props
@@ -25,7 +25,7 @@ const SocialFollowing: React.FC<SocialFollowingProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requireTeam={requireTeam}
+			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

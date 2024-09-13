@@ -14,13 +14,12 @@ import { Box, Button } from '@mui/material'
 import { MetafieldType } from '../../../types'
 
 type MyAccountModalProps = {
-	enableTeams?: boolean
   enableStripe?: boolean
 	metafields?: MetafieldType[]
 }
 
 const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
-	const { enableTeams, enableStripe, metafields } = props || {}
+	const { enableStripe, metafields } = props || {}
 	const { myAccountOpen, setMyAccountOpen } = useContext(AppContext)
 
 	const {
@@ -70,7 +69,6 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 			{currentTab == null ? (
 				<MyAccountTabs
 					tab={currentTab}
-					enableTeams={enableTeams}					
           enableStripe={enableStripe}
 					handleClick={handleClick}
 				/>
@@ -101,20 +99,10 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 						metafields={metafields}
 					/>
 				)}
-				{currentTab == 1 && <TeamList />}
-				{currentTab == 2 && (
-					<TeamUsersList handleAddUser={() => setCurrentTab(3)} />
-				)}
-				{currentTab == 3 && (
-					<TeamUserInvite
-						handleSuccess={() => setCurrentTab(2)}
-						handleCancel={() => setCurrentTab(2)}
-					/>
-				)}
-        { currentTab == 4 && (
+        { currentTab == 1 && (
           <StripeCustomerPortal />
         )}        
-        { currentTab == 5 && (
+        { currentTab == 2 && (
           <ShopifyCustomerPortal />
         )}        
 			</Box>

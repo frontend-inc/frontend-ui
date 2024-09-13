@@ -15,7 +15,7 @@ const AddonGorgiasContactForm: React.FC<AddonGorgiasContactFormProps> = (
 		px,
 		maxWidth,
 		requireAuth,
-		requireTeam,
+		
 		requirePaid,
 		...rest
 	} = props
@@ -23,7 +23,7 @@ const AddonGorgiasContactForm: React.FC<AddonGorgiasContactFormProps> = (
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requireTeam={requireTeam}
+			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

@@ -15,7 +15,7 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 		px,
 		maxWidth,
 		requireAuth,
-		requireTeam,
+		
 		requirePaid,
 		...rest
 	} = props
@@ -23,7 +23,7 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requireTeam={requireTeam}
+			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

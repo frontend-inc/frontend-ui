@@ -15,7 +15,7 @@ const ShopifyProductFeatured: React.FC<ShopifyProductFeaturedProps> = (
 		px,
 		maxWidth,
 		requireAuth,
-		requireTeam,
+		
 		requirePaid,
 		...rest
 	} = props
@@ -23,7 +23,7 @@ const ShopifyProductFeatured: React.FC<ShopifyProductFeaturedProps> = (
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requireTeam={requireTeam}
+			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

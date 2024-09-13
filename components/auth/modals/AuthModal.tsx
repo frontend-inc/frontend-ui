@@ -15,7 +15,6 @@ import { AppContext } from '../../../context'
 
 type AuthModalProps = {
 	disableUsername?: boolean
-	enableTeams?: boolean
 }
 
 const AuthModal: React.FC<AuthModalProps> = (props) => {

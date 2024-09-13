@@ -21,7 +21,7 @@ const ShopCollectionProductsGrid: React.FC<ShopCollectionProductsGridProps> = (
 		px,
 		maxWidth,
 		requireAuth,
-		requireTeam,
+		
 		requirePaid,
 		...rest
 	} = props
@@ -29,7 +29,7 @@ const ShopCollectionProductsGrid: React.FC<ShopCollectionProductsGridProps> = (
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requireTeam={requireTeam}
+			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

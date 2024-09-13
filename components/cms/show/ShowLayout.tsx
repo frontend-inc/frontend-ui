@@ -4,7 +4,7 @@ import {
 	DisplayFields,
 	SocialButtons,
 	ButtonActions,
-	AvgRating,
+	ProductRating,
 	ExpandableText,
 } from '../..'
 import { ShowProps } from './ShowItem'
@@ -51,7 +51,7 @@ const ShowLayout: React.FC<ShowLayoutProps> = (props) => {
 				<Typography color="text.primary" variant="h3">
 					{title}
 				</Typography>
-				{enableRatings == true && <AvgRating resource={resource} enableTotal />}
+				{enableRatings == true && <ProductRating resource={resource} enableTotal />}
 				{displayFields?.length > 0 && (
 					<DisplayFields fields={displayFields} resource={resource} />
 				)}

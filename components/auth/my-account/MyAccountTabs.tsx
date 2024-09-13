@@ -15,41 +15,34 @@ import { useAuth } from 'frontend-js'
 
 type MyAccountMenuProps = {
 	tab?: number
-	enableTeams?: boolean
 	enableStripe?: boolean
 	handleClick: (tab: any) => void
 }
 
 const MyAccountMenu: React.FC<MyAccountMenuProps> = (props) => {
-	const { enableTeams, handleClick } = props || {}
+	const { handleClick } = props || {}
 
-  const { app, enableShopify, enableStripe } = useApp()
+  const { enableShopify, enableStripe } = useApp()
 
 	const TABS = [
     { label: 'My Account', value: 0 }
   ]
-	const TEAM_TABS = [
-		{ label: 'Teams', value: 1 },
-		{ label: 'Members', value: 2 },
-	]
+	
   const SUBSCRIPTION_TAB = [
 		{ 
       label: 'Subscription', 
-      value: 4, 
+      value: 1, 
     },		
 	]
   const SHOPIFY_TAB = [
     { 
       label: 'Order History', 
-      value: 5, 
+      value: 2, 
     },
   ]
 
 
 	let tabs = TABS
-	if (enableTeams) {
-		tabs = [...tabs, ...TEAM_TABS]
-	}
   if (enableStripe) {
     tabs = [...tabs, ...SUBSCRIPTION_TAB]
   }

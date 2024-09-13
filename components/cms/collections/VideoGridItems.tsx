@@ -1,10 +1,9 @@
 import React from 'react'
 import { Stack } from '@mui/material'
-import { ButtonActions, LoadMore, DataLayout } from '../..'
+import { LoadMore, DataLayout } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { VideoCard } from '../..'
 import { useForms } from '../../../hooks'
-import { buildActions } from '../../../helpers'
 
 export type VideoGridItemsProps = {
 	url: string
@@ -16,7 +15,6 @@ export type VideoGridItemsProps = {
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
-	enableUsers?: boolean
 }
 
 const VideoGridItems: React.FC<VideoGridItemsProps> = (props) => {
@@ -28,7 +26,6 @@ const VideoGridItems: React.FC<VideoGridItemsProps> = (props) => {
 		enableDelete = false,
 		enableFavorites = false,
 		enableLikes = false,
-		enableUsers = false,
 		enableComments = false,
 		enableGradient = false,
 		enableOverlay = false,
@@ -50,18 +47,6 @@ const VideoGridItems: React.FC<VideoGridItemsProps> = (props) => {
 						key={resource.id}
 						image={resource?.image?.url}
 						primary={resource?.title}
-						secondaryAction={
-							<ButtonActions
-								numVisible={0}
-								resource={resource}
-								buttons={buildActions({
-									enableEdit,
-									enableDelete,
-									handleEdit: () => handleEdit(resource),
-									handleDelete: () => handleDeleteClick(resource),
-								})}
-							/>
-						}
 						slots={{
 							image: {
 								enableGradient,

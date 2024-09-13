@@ -13,7 +13,6 @@ const CmsYouTube: React.FC<CmsYouTubeProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		requireTeam,
 		requirePaid,
 		...rest
 	} = props
@@ -21,7 +20,7 @@ const CmsYouTube: React.FC<CmsYouTubeProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requireTeam={requireTeam}
+			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

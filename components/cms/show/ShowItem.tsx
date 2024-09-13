@@ -10,7 +10,7 @@ import {
 import { useForms } from '../../../hooks'
 import { useResourceContext } from 'frontend-js'
 import {
-	AvgRating,
+	ProductRating,
 	DisplayFields,
 	ButtonActions,
 	SocialButtons,
@@ -148,7 +148,7 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 						alignItems={slotProps?.secondary?.alignItems}
 					>
 						{enableRatings == true && (
-							<AvgRating resource={resource} enableTotal />
+							<ProductRating resource={resource} enableTotal />
 						)}
 						{displayFields?.length > 0 && (
 							<DisplayFields fields={displayFields} resource={resource} />

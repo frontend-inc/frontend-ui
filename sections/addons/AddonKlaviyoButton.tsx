@@ -13,7 +13,7 @@ const AddonKlaviyoButton: React.FC<AddonKlaviyoButtonProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		requireTeam,
+		
 		requirePaid,
 		...rest
 	} = props
@@ -21,7 +21,7 @@ const AddonKlaviyoButton: React.FC<AddonKlaviyoButtonProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requireTeam={requireTeam}
+			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

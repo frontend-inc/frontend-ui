@@ -1,7 +1,7 @@
 import React from 'react'
 import { Rating, Stack, Typography } from '@mui/material'
 
-type AvgRatingProps = {
+type ProductRatingProps = {
 	resource: any
 	enableTotal?: boolean
 	size?: 'small' | 'medium' | 'large'
@@ -16,7 +16,7 @@ type AvgRatingProps = {
 		| 'baseline'
 }
 
-const AvgRating: React.FC<AvgRatingProps> = (props) => {
+const ProductRating: React.FC<ProductRatingProps> = (props) => {
 	const {
 		resource,
 		justifyContent = 'flex-start',
@@ -56,4 +56,4 @@ const AvgRating: React.FC<AvgRatingProps> = (props) => {
 	)
 }
 
-export default AvgRating
+export default ProductRating

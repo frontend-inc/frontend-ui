@@ -7,12 +7,12 @@ import { SectionProps } from '../../types'
 type CmsFormWizardProps = SectionProps & FormWizardProps
 
 const CmsFormWizard: React.FC<CmsFormWizardProps> = (props) => {
-	const { mode, py, px, maxWidth, requireTeam, requirePaid, ...rest } = props
+	const { mode, py, px, maxWidth,  requirePaid, ...rest } = props
 
 	return (
 		<Section
 			requireAuth
-			requireTeam={requireTeam}
+			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

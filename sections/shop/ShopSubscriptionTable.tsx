@@ -19,7 +19,7 @@ const ECommerceSubscriptionTable: React.FC<ECommerceSubscriptionTableProps> = (
 		px,
 		maxWidth,
 		requireAuth,
-		requireTeam,
+		
 		requirePaid,
 		...rest
 	} = props
@@ -31,7 +31,7 @@ const ECommerceSubscriptionTable: React.FC<ECommerceSubscriptionTableProps> = (
 			px={px}
 			maxWidth={maxWidth}
 			requireAuth={requireAuth}
-			requireTeam={requireTeam}
+			
 			requirePaid={requirePaid}
 		>
 			<Stack spacing={3}>

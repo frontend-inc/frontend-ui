@@ -4,7 +4,7 @@ import { PDP } from '../..'
 import { useForms } from '../../../hooks'
 import { useResourceContext } from 'frontend-js'
 import {
-	AvgRating,
+	ProductRating,
 	DisplayFields,
 	ButtonActions,
 	SocialButtons,
@@ -84,7 +84,7 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 				<Stack spacing={2} sx={{ width: '100%' }}>
 					<Stack spacing={2} sx={{ width: '100%' }} alignItems="flex-start">
 						{enableRatings == true && (
-							<AvgRating resource={product} enableTotal />
+							<ProductRating resource={product} enableTotal />
 						)}
 						{displayFields?.length > 0 && (
 							<DisplayFields fields={displayFields} resource={product} />

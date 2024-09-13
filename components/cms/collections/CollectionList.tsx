@@ -7,41 +7,29 @@ import {
 	FormFieldType,
 	SearchFilterOptionType,
 	SortOptionType,
-	ToolbarButtonType,
 } from '../../../types'
 import {
 	CollectionListItem,
 	CollectionListItems,
 	CollectionHeader,
 	CollectionShow,
-	CollectionForm,
-	CollectionDelete,
-	CollectionEmpty,
-	CollectionToolbar,
+	CollectionEmpty,	
 } from '../..'
 
 export type CollectionListProps = {
 	grid?: boolean
-	selectable?: boolean
 	style: string
 	href?: string
 	displayFields: DisplayFieldType[]
 	enableLikes?: boolean
 	enableFavorites?: boolean
-	enableRatings?: boolean
 	enableComments?: boolean
-	enableUsers?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
 
 	enableShow?: boolean
-	enableEdit?: boolean
-	enableCreate?: boolean
-	enableDelete?: boolean
-	enableAddToList?: boolean
 	fields?: FormFieldType[]
 	buttons?: ButtonType[]
-	toolbarButtons?: ToolbarButtonType[]
 	headers?: {
 		label: string
 		value: string
@@ -56,7 +44,6 @@ export type CollectionListProps = {
 	list: React.FC<any>
 	component?: React.FC<any>
 	header?: React.FC<any>
-	toolbar?: React.FC<any>
 	show?: React.FC<any>
 	edit?: React.FC<any>
 	create?: React.FC<any>
@@ -79,8 +66,6 @@ export type CollectionListProps = {
 	foreignUrl?: string
 	query?: any
 	resource: any
-	filterUser?: boolean
-	filterTeam?: boolean
 	filterSimilar?: boolean
 	filterGeo?: boolean
 }
@@ -88,22 +73,17 @@ export type CollectionListProps = {
 const CollectionList: React.FC<CollectionListProps> = (props) => {
 	const {
 		grid = false,
-		selectable = false,
 		url,
 		foreignUrl,
 		query,
 		resource,
 		perPage = 10,
-		filterUser,
-		filterTeam,
 		filterSimilar,
 		filterGeo,
 
 		enableLikes,
 		enableFavorites,
-		enableRatings,
 		enableComments,
-		enableUsers,
 		enableGradient,
 		enableOverlay,
 
@@ -114,13 +94,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		circular,
 		disableImage,
 
-		toolbarButtons = [],
-
 		enableShow,
-		enableEdit,
-		enableCreate,
-		enableDelete,
-		enableAddToList,
 		fields = [],
 		enableSearch,
 		enableFilters,
@@ -132,11 +106,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		list: List = CollectionListItems,
 		component: Component = CollectionListItem,
 		show: Show = CollectionShow,
-		edit: Edit = CollectionForm,
-		create: Create = CollectionForm,
-		destroy: Destroy = CollectionDelete,
 		empty: Empty = CollectionEmpty,
-		toolbar: Toolbar = CollectionToolbar,
 		slots: defaultSlots = {
 			header: {},
 			toolbar: {},
@@ -154,8 +124,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		query,
 		resource,
 		perPage,
-		filterUser,
-		filterTeam,
 		filterSimilar,
 		filterGeo,
 	})
@@ -168,24 +136,17 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			href,
 			enableLikes,
 			enableFavorites,
-			enableRatings,
 			enableComments,
-			enableAddToList,
-			enableUsers,
 			enableGradient,
 			enableOverlay,
 		},
 		show: {
 			...defaultSlots.show,
-			selectable,
 			displayFields,
 			buttons,
 			enableLikes,
 			enableFavorites,
-			enableRatings,
 			enableComments,
-			enableAddToList,
-			enableUsers,
 			enableGradient,
 			enableOverlay,
 		},
@@ -201,9 +162,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		header: defaultSlots.header,
 		toolbar: {
 			...defaultSlots.toolbar,
-			enableAddToList,
-			enableDelete,
-			toolbarButtons,
 		},
 		empty: defaultSlots.empty,
 		item: {
@@ -216,10 +174,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			displayFields,
 			enableLikes,
 			enableFavorites,
-			enableRatings,
 			enableComments,
-			enableAddToList,
-			enableUsers,
 			enableGradient,
 			enableOverlay,
 		},
@@ -227,7 +182,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 
 	return (
 		<DataList
-			selectable={selectable}
 			grid={grid}
 			url={url}
 			foreignUrl={foreignUrl}
@@ -235,23 +189,15 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			query={searchQuery}
 			fields={fields}
 			enableShow={enableShow}
-			enableCreate={enableCreate}
-			enableEdit={enableEdit}
-			enableAddToList={enableAddToList}
-			enableDelete={enableDelete}
 			enableSearch={enableSearch}
 			enableFilters={enableFilters}
 			enableSorting={enableSorting}
 			filterOptions={filterOptions}
 			sortOptions={sortOptions}
 			header={Header}
-			toolbar={Toolbar}
 			list={List}
 			component={Component}
 			show={Show}
-			edit={Edit}
-			create={Create}
-			destroy={Destroy}
 			empty={Empty}
 			slots={slots}
 		/>

@@ -13,7 +13,7 @@ const AuthLogin: React.FC<AuthLoginProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		requireTeam,
+		
 		requirePaid,
 		...rest
 	} = props

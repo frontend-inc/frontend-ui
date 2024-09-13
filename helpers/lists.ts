@@ -3,8 +3,6 @@ export const buildSearchQuery = (params) => {
 	const {
 		resource,
 		perPage,
-		filterUser,
-		filterTeam,
 		filterReferences,
 		filterGeo,
 		filterSimilar,
@@ -27,30 +25,6 @@ export const buildSearchQuery = (params) => {
 		query = {
 			...query,
 			resource_id: null,
-		}
-	}
-
-	if (filterUser == true) {
-		query = {
-			...query,
-			current_user: true,
-		}
-	} else {
-		query = {
-			...query,
-			current_user: false,
-		}
-	}
-
-	if (filterTeam == true) {
-		query = {
-			...query,
-			current_team: true,
-		}
-	} else {
-		query = {
-			...query,
-			current_team: false,
 		}
 	}
 

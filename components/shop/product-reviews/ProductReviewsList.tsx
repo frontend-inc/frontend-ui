@@ -1,9 +1,9 @@
-import React from 'react'
-import ReviewItem from './ReviewItem'
-import { LoadMore, DataLayout } from '../../../components'
+import ProductReact from 'react'
+import ProductReviewItem from './ProductReviewItem'
+import { LoadMore, DataLayout } from '../..'
 import { useResourceContext } from 'frontend-js'
 
-const ReviewsList = (props) => {
+const ProductReviewsList = (props) => {
 	const { loading, resources, query, setQuery, page, numPages } =
 		useResourceContext()
 
@@ -19,7 +19,7 @@ const ReviewsList = (props) => {
 		<DataLayout loading={loading}>
 			{!loading &&
 				resources?.map((resource, index) => (
-					<ReviewItem key={index} resource={resource} />
+					<ProductReviewItem key={index} resource={resource} />
 				))}
 			<LoadMore
 				page={page}
@@ -30,4 +30,4 @@ const ReviewsList = (props) => {
 	)
 }
 
-export default ReviewsList
+export default ProductReviewsList

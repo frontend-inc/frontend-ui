@@ -1,5 +1,5 @@
 import React from 'react'
-import { DisplayFields, AvgRating, UserChip } from '../..'
+import { DisplayFields, ProductRating, UserChip } from '../..'
 import { Stack } from '@mui/material'
 
 type SecondaryFieldsProps = {
@@ -30,7 +30,7 @@ const SecondaryFields: React.FC<SecondaryFieldsProps> = (props) => {
 	return (
 		<Stack direction="column" spacing={1}>
 			{enableRatings == true && (
-				<AvgRating size="small" resource={resource} {...slots.ratings} />
+				<ProductRating size="small" resource={resource} {...slots.ratings} />
 			)}
 			<DisplayFields fields={fields} resource={resource} {...slots.fields} />
 			{enableUsers && <UserChip user={resource?.user} {...slots.user} />}
