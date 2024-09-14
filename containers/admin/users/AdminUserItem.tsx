@@ -27,7 +27,7 @@ const AdminUserItem: React.FC<ResourceItemProps> = (props) => {
 			}
 			secondary={`@${user?.username}`}
 			secondaryAction={user.paid && <Label label={'Paid'} />}
-			avatar={<UserAvatar user={user} />}
+			avatar={<UserAvatar user={user} size={44} />}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}
 			handleClick={handleClick}

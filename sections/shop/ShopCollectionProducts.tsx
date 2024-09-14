@@ -1,14 +1,14 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionProductsGridByHandle } from '../../components/shop'
+import { CollectionProductsGrid } from '../../components/shop'
 import { CollectionProductsGridProps } from '../../components/shop/collection-products/CollectionProductsGrid'
 import { SectionProps, HeadingProps } from '../../types'
 
-type ShopCollectionProductsGridProps = CollectionProductsGridProps &
+type ShopCollectionProductsProps = CollectionProductsGridProps &
 	SectionProps &
 	HeadingProps
 
-const ShopCollectionProductsGrid: React.FC<ShopCollectionProductsGridProps> = (
+const ShopCollectionProducts: React.FC<ShopCollectionProductsProps> = (
 	props
 ) => {
 	const {
@@ -42,9 +42,9 @@ const ShopCollectionProductsGrid: React.FC<ShopCollectionProductsGridProps> = (
 				description={description}
 				textAlign={textAlign}
 			/>
-			<CollectionProductsGridByHandle {...rest} />
+			<CollectionProductsGrid {...rest} />
 		</Section>
 	)
 }
 
-export default ShopCollectionProductsGrid
+export default ShopCollectionProducts

@@ -6,7 +6,7 @@ import {
 	useSearchFilters,
 } from 'frontend-shopify'
 import {
-	ShopifyProductGrid,
+	ShopifyProducts,
 	ShopifyProductSortButton,
 	ShopifyProductFilterButton,
 } from '..'
@@ -96,8 +96,8 @@ const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (
 					/>
 				)}
 			</Stack>
-			<ShopifyProductGrid
-				href={href}
+			<ShopifyProducts
+				href={String(href)}
 				loading={loading}
 				products={products}
 				enableBorder={enableBorder}

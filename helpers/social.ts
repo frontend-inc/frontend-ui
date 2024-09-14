@@ -30,13 +30,6 @@ export const isFavorited = (user, documentId) => {
 		: false
 }
 
-export const isFollowing = (user, followUser) => {
-	if (!user || !followUser) return false
-	return user?.following?.find((u: any) => u.username === followUser?.username)
-		? true
-		: false
-}
-
 export const isShopifyFavorite = (user, handle) => {
 	return user?.shopify_favorites?.includes(handle) ? true : false
 }

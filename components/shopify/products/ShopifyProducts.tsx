@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import { ShopifyProductCard } from '../../../components/shopify'
+import { ShopifyProductCard } from '..'
 import { useRouter } from 'next/router'
 import { useSegment } from '../../../hooks/addons'
 import { ShopifyProductType } from 'frontend-shopify'

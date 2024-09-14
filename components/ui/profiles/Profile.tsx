@@ -1,33 +1,47 @@
 import React from 'react'
 import { Box, Stack } from '@mui/material'
-import { ProfileInfo, ProfileImage } from '../../../components'
+import { ProfileInfo, ProfileImage } from '../..'
 
-type ProfileDetailsProps = {
+export type ProfileProps = {
 	src: string
 	title: string
 	description: string
 	label?: string
+  socialLinks?: {
+    label: string
+    value: string
+    url: string
+  }[]
 	buttons?: React.ReactNode
 	disableRing?: boolean
 }
 
-const ProfileDetails: React.FC<ProfileDetailsProps> = (props) => {
-	const { src, disableRing, buttons, title, description, label } = props
+const Profile: React.FC<ProfileProps> = (props) => {
+	const { src, disableRing, buttons, title, description, label, socialLinks=[] } = props
 
 	return (
 		<Stack direction={{ sm: 'row', xs: 'column' }} spacing={2}>
 			<Box sx={sx.avatar}>
-				<ProfileImage disableRing={disableRing} src={src} size={200} />
+				<ProfileImage 
+          disableRing={disableRing} 
+          src={src} 
+          size={200} 
+        />
 			</Box>
 			<Box sx={sx.details}>
-				<ProfileInfo title={title} description={description} label={label} />
+				<ProfileInfo 
+          title={title} 
+          description={description} 
+          label={label} 
+          socialLinks={socialLinks}
+        />
 				{buttons && buttons}
 			</Box>
 		</Stack>
 	)
 }
 
-export default ProfileDetails
+export default Profile
 
 const sx = {
 	avatar: {

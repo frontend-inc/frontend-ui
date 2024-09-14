@@ -1,8 +1,7 @@
 import React from 'react'
 import { useApp } from '../../../hooks'
 import { Box, Button, Stack, Typography } from '@mui/material'
-import { Image } from '../..'
-import { truncate } from '../../../helpers'
+import { ExpandableText, Image } from '../..'
 import { useRouter } from 'next/router'
 
 export type FeaturedCardProps = {
@@ -77,12 +76,12 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 				</Box>
 				<Box sx={sx.content}>
 					<Stack spacing={0} sx={sx.textContent}>
-						<Typography sx={sx.title} variant={'subtitle1'}>
+						<Typography sx={sx.title} variant={'h6'}>
 							{title}
 						</Typography>
-						<Typography variant="body1" sx={sx.description}>
-							{truncate(description, 160)}
-						</Typography>
+            <ExpandableText 
+              text={ description }
+            />						
 						{buttonText && (
 							<Box sx={sx.buttons}>
 								<Button

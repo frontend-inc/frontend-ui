@@ -4,9 +4,9 @@ import { CommentList } from '../../components'
 import { CommentListProps } from '../../components/social/comments/CommentList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type SocialCommentsProps = SectionProps & HeadingProps & CommentListProps
+type CmsCommentsProps = SectionProps & HeadingProps & CommentListProps
 
-const SocialComments: React.FC<SocialCommentsProps> = (props) => {
+const CmsComments: React.FC<CmsCommentsProps> = (props) => {
 	const {
 		label,
 		title,
@@ -43,4 +43,4 @@ const SocialComments: React.FC<SocialCommentsProps> = (props) => {
 	)
 }
 
-export default SocialComments
+export default CmsComments
