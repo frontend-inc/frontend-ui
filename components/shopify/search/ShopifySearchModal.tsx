@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react'
 import { Icon, SearchInput, Placeholder } from '../../../components'
-import { ShopifyProductGrid } from '../../../components/shopify'
+import { ShopifyProducts } from '../../../components/shopify'
 import {
 	AppBar,
 	Stack,
@@ -97,7 +97,7 @@ const ShopifySearchModal: React.FC<ShopifySearchModalProps> = (props) => {
 					</Stack>
 				</AppBar>
 				<Container maxWidth="md">
-					<ShopifyProductGrid
+					<ShopifyProducts
 						href={href}
 						loading={loading}
 						products={products}

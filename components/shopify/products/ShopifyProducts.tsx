@@ -6,7 +6,7 @@ import { useSegment } from '../../../hooks/addons'
 import { ShopifyProductType } from 'frontend-shopify'
 import { useApp } from '../../../hooks'
 
-type ShopifyProductGridProps = {
+type ShopifyProductsProps = {
 	href: string
 	loading?: boolean
 	products: ShopifyProductType[]
@@ -23,7 +23,7 @@ type ShopifyProductGridProps = {
 	enableOkendoStarRating?: boolean
 }
 
-const ShopifyProductGrid: React.FC<ShopifyProductGridProps> = (props) => {
+const ShopifyProducts: React.FC<ShopifyProductsProps> = (props) => {
 	const { clientUrl } = useApp()
 
 	const {
@@ -67,7 +67,7 @@ const ShopifyProductGrid: React.FC<ShopifyProductGridProps> = (props) => {
 	)
 }
 
-export default ShopifyProductGrid
+export default ShopifyProducts
 
 const sx = {
 	item: {

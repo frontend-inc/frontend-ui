@@ -12,7 +12,7 @@ import { Box, Grid, Stack } from '@mui/material'
 import { SearchInput, Placeholder } from '../..'
 import {
 	ShopifyProductSortButton,
-	ShopifyProductGrid,
+	ShopifyProducts,
 	ShopifyProductSearchFilters,
 } from '..'
 import LoadMore from '../search/LoadMore'
@@ -157,7 +157,7 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = (props) => {
 					</Box>
 
 					{products?.length > 0 && (
-						<ShopifyProductGrid
+						<ShopifyProducts
 							href={href}
 							loading={loading}
 							products={products}

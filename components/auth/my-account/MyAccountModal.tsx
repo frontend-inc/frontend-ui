@@ -2,10 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../../../context'
 import { useAuth } from 'frontend-js'
 import { Icon, Modal, MyAccountForm } from '../../../components'
-import {
-	TeamList,
-	TeamUsersList,
-	TeamUserInvite,
+import {	
   StripeCustomerPortal,
   ShopifyCustomerPortal 
 } from '../../../components'

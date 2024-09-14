@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useProducts } from 'frontend-shopify'
 import {
-	ShopifyProductGrid,
+	ShopifyProducts,
 	ShopifyProductCarousel,
 } from '../../../components/shopify'
 import { Box } from '@mui/material'
@@ -73,7 +73,7 @@ const ShopifyProductRecommendations: React.FC<
 	return (
 		<Box sx={sx.root}>
 			{layout == 'grid' && (
-				<ShopifyProductGrid
+				<ShopifyProducts
 					href={href}
 					loading={loading}
 					products={similarProducts}

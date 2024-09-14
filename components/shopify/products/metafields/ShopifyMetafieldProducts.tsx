@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ShopifyProductGrid, ShopifyProductCarousel } from '../../../shopify'
+import { ShopifyProducts, ShopifyProductCarousel } from '../../../shopify'
 import { ShopifyProductType, getMetafieldReferences } from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'
 
@@ -39,7 +39,7 @@ const ShopifyMetafieldProducts: React.FC<ShopifyMetafieldProductsProps> = (
 	return (
 		<>
 			{layout == 'grid' && (
-				<ShopifyProductGrid href={href} products={products} {...rest} />
+				<ShopifyProducts href={href} products={products} {...rest} />
 			)}
 			{layout == 'carousel' && (
 				<ShopifyProductCarousel href={href} products={products} {...rest} />

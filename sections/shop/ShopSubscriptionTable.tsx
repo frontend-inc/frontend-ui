@@ -4,9 +4,9 @@ import { Section, Heading } from '../../components'
 import { SubscriptionTable } from '../../components'
 import { SectionProps, HeadingProps } from '../../types'
 
-type ECommerceSubscriptionTableProps = SectionProps & HeadingProps
+type ShopSubscriptionTableProps = SectionProps & HeadingProps
 
-const ECommerceSubscriptionTable: React.FC<ECommerceSubscriptionTableProps> = (
+const ShopSubscriptionTable: React.FC<ShopSubscriptionTableProps> = (
 	props
 ) => {
 	const {
@@ -47,4 +47,4 @@ const ECommerceSubscriptionTable: React.FC<ECommerceSubscriptionTableProps> = (
 	)
 }
 
-export default ECommerceSubscriptionTable
+export default ShopSubscriptionTable

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Placeholder } from '../..'
-import { ShopifyProductGrid, ShopifyProductCarousel } from '..'
+import { ShopifyProducts, ShopifyProductCarousel } from '..'
 import { Box } from '@mui/material'
 import { useRecentlyViewed } from 'frontend-shopify'
 
@@ -34,7 +34,7 @@ const ShopifyRecentlyViewed: React.FC<ShopifyRecentlyViewedProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			{layout == 'grid' && (
-				<ShopifyProductGrid
+				<ShopifyProducts
 					href={href}
 					products={products}
 					enableBorder={enableBorder}

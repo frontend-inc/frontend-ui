@@ -24,8 +24,7 @@ const ShopProductReviews: React.FC<ShopProductReviewsProps> = (props) => {
 
 	return (
 		<Section
-			requireAuth={requireAuth}
-			
+			requireAuth={requireAuth}			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}
