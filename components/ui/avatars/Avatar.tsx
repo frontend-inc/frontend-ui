@@ -1,9 +1,9 @@
 import React from 'react'
-import { Avatar as MuiAvatar, Typography } from '@mui/material'
-import { Icon } from '../..'
+import { Box, Avatar as MuiAvatar, Typography } from '@mui/material'
 
 type UserAvatarProps = {
-	src: string
+	src?: string
+  variant?: 'circular' | 'rounded' | 'square'
 	label?: string
 	size?: number
 	color?: string
@@ -14,16 +14,18 @@ type UserAvatarProps = {
 const Avatar: React.FC<UserAvatarProps> = (props) => {
 	const {
 		src,
-		color,
+		color='#333333',
 		label,
+    variant='circular',
 		enableGradient = false,
 		enableOverlay = false,
 		size = 40,
 	} = props
+  
 	return (
 		<MuiAvatar
-			variant="rounded"
 			src={src}
+      variant={variant}
 			sx={{
 				...sx.avatar,
 				height: size,
@@ -38,7 +40,7 @@ const Avatar: React.FC<UserAvatarProps> = (props) => {
 					{label}
 				</Typography>
 			) : (
-				<Icon name="User" color="secondary.contrastText" />
+				<Box />
 			)}
 		</MuiAvatar>
 	)
@@ -50,8 +52,7 @@ const sx = {
 	avatar: {
 		display: 'flex',
 		pt: '2px',
-		bgcolor: 'secondary.main',
-		borderRadius: 1,
+		bgcolor: 'secondary.main',		
 	},
 	overlay: {
 		'&::after': {

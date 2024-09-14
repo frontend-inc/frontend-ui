@@ -1,60 +1,142 @@
 import React from 'react'
-import { Box, Stack } from '@mui/material'
-import { ProfileInfo, ProfileImage } from '../..'
+import { Stack, Box, Typography } from '@mui/material'
+import {
+  Avatar,
+	ButtonActions,
+	ExpandableText,
+	SocialLink 
+} from '../..'
+import { ButtonType } from '../../../types'
 
 export type ProfileProps = {
-	src: string
-	title: string
-	description: string
-	label?: string
+	image?: string
+  label?: string
+  title?: string
+  description?: string
   socialLinks?: {
-    label: string
     value: string
+    provider: string
     url: string
   }[]
-	buttons?: React.ReactNode
-	disableRing?: boolean
+	buttons?: ButtonType[]
 }
 
 const Profile: React.FC<ProfileProps> = (props) => {
-	const { src, disableRing, buttons, title, description, label, socialLinks=[] } = props
+	const {
+    label,
+		title,
+    image,
+    description,	
+		socialLinks = [],
+		buttons = [],
+	} = props || {}	
 
 	return (
-		<Stack direction={{ sm: 'row', xs: 'column' }} spacing={2}>
-			<Box sx={sx.avatar}>
-				<ProfileImage 
-          disableRing={disableRing} 
-          src={src} 
-          size={200} 
-        />
-			</Box>
-			<Box sx={sx.details}>
-				<ProfileInfo 
-          title={title} 
-          description={description} 
-          label={label} 
-          socialLinks={socialLinks}
-        />
-				{buttons && buttons}
-			</Box>
-		</Stack>
+		<Box sx={sx.container}>
+			<Stack
+				sx={sx.userContainer}
+				direction={{ sm: 'row', xs: 'column' }}
+				spacing={{ sm: 4, xs: 0 }}
+				alignItems="flex-start"
+			>
+				<Stack direction="column" spacing={1} alignItems="center">
+					<Avatar src={image} size={120} enableGradient />          
+          <Stack direction="row" spacing={0}>
+            { socialLinks?.map((link, index) => (
+              <Box p={'2px'} key={index}>
+                <SocialLink                 
+                  url={ link.url }
+                  size={28}
+                  provider={ link.value }
+                />
+              </Box>
+            ))}
+          </Stack>
+				</Stack>
+				<Stack direction="column" spacing={1}>
+					<Typography variant="caption" color="text.secondary" sx={sx.username}>
+						{label}
+					</Typography>
+					<Typography variant="h6" color="text.primary" sx={sx.name}>
+						{title}
+					</Typography>
+					<Stack direction="column" spacing={1}>						
+						{description && (
+							<ExpandableText text={description} color="text.secondary" />
+						)}
+					</Stack>
+				</Stack>
+				{buttons?.length > 0 && (
+					<Stack direction="row" sx={sx.buttons}>
+						<ButtonActions
+							numVisible={1}
+							buttons={buttons}
+							resource={user}
+							user={user}
+						/>
+					</Stack>
+				)}
+			</Stack>
+		</Box>
 	)
 }
 
 export default Profile
 
 const sx = {
-	avatar: {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	details: {
-		maxWidth: '440px',
+	container: {
 		width: '100%',
 		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'space-between',
+		flexDirection: 'column',
 		alignItems: 'center',
+		justifyContent: 'center',
+		borderRadius: 1,
+	},
+	containerBorder: {
+		border: '1px solid',
+		borderColor: 'divider',
+	},
+	userContainer: {
+		maxWidth: 600,
+	},
+	button: {
+		boxShadow: 0,
+		color: 'text.secondary',
+	},
+	name: {
+		width: '100%',
+		minWidth: 200,
+		textAlign: {
+			sm: 'left',
+			xs: 'center',
+		},
+	},
+	avatar: {
+		width: 110,
+		height: 110,
+	},
+	avatarContainer: {
+		bgcolor: 'common.white',
+		height: 126,
+		width: 126,
+		borderRadius: '100%',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	username: {
+		boxShadow: 0,
+		width: '100%',
+		display: 'flex',
+		justifyContent: {
+			sm: 'flex-start',
+			xs: 'center',
+		},
+	},
+	buttons: {
+		width: '100%',
+		display: 'flex',
+		justifyContent: 'flex-end',
+		alignItems: 'flex-start',
 	},
 }
