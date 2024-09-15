@@ -11,6 +11,9 @@ const AdminCommentShow: React.FC<ResourceShowProps> = (props) => {
 			primary={comment?.user?.name}
 			secondary={`@${comment?.user?.username}`}
 			{...props}
+      fields={[
+        { name: 'body', label: 'Comment', variant: 'text' },        
+      ]}
 		/>
 	)
 }

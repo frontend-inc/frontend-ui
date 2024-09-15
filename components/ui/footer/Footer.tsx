@@ -28,15 +28,15 @@ const Footer: React.FC<FooterProps> = (props) => {
 
 	return (
 		<Stack sx={sx.root} spacing={1} direction="column">
-			<Box sx={sx.logo}>
-				<Logo handleClick={ handleLogoClick } src={logo || appLogo} width={100} height={50} />
-			</Box>
 			<Stack
 				spacing={6}
 				sx={sx.headerLinks}
 				direction={{ sm: 'row', xs: 'column' }}
 			>
 				<Stack sx={sx.footerMenu} direction="row" spacing={3}>
+        <Box sx={sx.logo}>
+          <Logo handleClick={ handleLogoClick } src={logo || appLogo} width={100} height={50} />
+        </Box>
 					<Box sx={sx.gridContainer}>
 						<Box sx={sx.grid}>
 							{links?.map((menuLink, i) => (
@@ -51,6 +51,7 @@ const Footer: React.FC<FooterProps> = (props) => {
 							))}
 						</Box>
 					</Box>
+          <Box sx={sx.spacer} />
 				</Stack>
 			</Stack>
 			<Stack
@@ -99,8 +100,6 @@ const sx = {
 	root: {
 		py: 2,
 		width: '100%',
-		justifyContent: 'center',
-		alignItems: 'center',
 		bgcolor: 'background.default',
 		minHeight: '80px',
 	},
@@ -115,12 +114,13 @@ const sx = {
 		alignItems: 'flex-start',
 	},
 	footerMenu: {
-		py: 3,
+		py: 6,
 		width: '100%',
+    alignItems: 'flex-start'
 	},
 	logo: {
 		width: {
-			sm: '200px',
+			sm: '160px',
 			xs: '100%',
 		},
 		display: 'flex',
