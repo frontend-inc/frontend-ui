@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { ProductGrid } from '../../components'
+import { ProductList } from '../../components'
 import { ProductListProps } from '../../components/shop/products/ProductList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type ShopProductGridProps = SectionProps & HeadingProps & ProductListProps
+type ShopProductListProps = SectionProps & HeadingProps & ProductListProps
 
-const ShopProductGrid: React.FC<ShopProductGridProps> = (props) => {
+const ShopProducts: React.FC<ShopProductsProps> = (props) => {
 	const {
 		label,
 		title,
@@ -38,9 +38,9 @@ const ShopProductGrid: React.FC<ShopProductGridProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<ProductGrid {...rest} />
+			<ProductList {...rest} />
 		</Section>
 	)
 }
 
-export default ShopProductGrid
+export default ShopProducts

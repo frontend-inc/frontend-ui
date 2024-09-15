@@ -88,12 +88,12 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 
 	let { url } = props || {}
 	const {
-		grid = false,
+		grid = true,
 		selectable = false,
 		foreignUrl,
 		query,
 		resource,
-		perPage = 10,
+		perPage = 9,
 		filterUser,
 		filterSimilar,
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { ProductFavoritesGrid } from '../../components/shop'
+import { ProductFavorites } from '../../components/shop'
 import { ProductListProps } from '../../components/shop/products/ProductList'
 import { SectionProps, HeadingProps } from '../../types'
 
@@ -42,7 +42,7 @@ const ShopProductFavoritesGrid: React.FC<ShopProductFavoritesGridProps> = (
 				description={description}
 				textAlign={textAlign}
 			/>
-			<ProductFavoritesGrid {...rest} />
+			<ProductFavorites {...rest} />
 		</Section>
 	)
 }

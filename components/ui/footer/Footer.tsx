@@ -24,7 +24,6 @@ const Footer: React.FC<FooterProps> = (props) => {
 
 	return (
 		<Stack sx={sx.root} spacing={1} direction="column">
-      <Stack sx={ sx.headerLinks } direction={{ sm: 'row', xs: 'column'}}>
         <Box sx={ sx.logo }>
           <Logo 
             src={logo || appLogo} 
@@ -33,19 +32,23 @@ const Footer: React.FC<FooterProps> = (props) => {
             height={50}
           />
         </Box>
+      <Stack spacing={6} sx={ sx.headerLinks } direction={{ sm: 'row', xs: 'column'}}>
         <Stack sx={ sx.footerMenu } direction="row" spacing={3}>
-          {links?.map((menuLink, i) => (
-            <Link
-              variant="subtitle2"
-              sx={sx.link}
-              key={i}
-              onClick={() => handleClick(menuLink?.path)}
-            >
-              {menuLink?.label}
-            </Link>
-          ))}
+          <Box sx={ sx.gridContainer }>
+            <Box sx={ sx.grid }>
+            {links?.map((menuLink, i) => (
+              <Link
+                variant="subtitle2"
+                sx={sx.link}
+                key={i}
+                onClick={() => handleClick(menuLink?.path)}
+              >
+                {menuLink?.label}
+              </Link>
+            ))}
+            </Box>
+          </Box>
         </Stack>
-        <Box sx={ sx.spacer } />
       </Stack>
       <Stack direction={{ sm: 'row', xs: 'column'}} sx={ sx.footerLinks } spacing={2}>
         <Stack direction="row" spacing={1}>
@@ -65,7 +68,7 @@ const Footer: React.FC<FooterProps> = (props) => {
             //@ts-ignore
             <Link
               variant="overline"
-              sx={sx.link}
+              sx={sx.footerLink}
               key={i}
               onClick={() => handleClick(menuLink?.path)}
             >
@@ -102,13 +105,29 @@ const sx = {
 	},
   footerMenu: {
     py: 3,
+    width: '100%'
   },
   logo: {
-    width: '100px',
+    width: {
+      sm: '200px',
+      xs: '100%',
+    },
     display: 'flex',
     justifyContent: 'flex-start',
   },
-	link: {
+  link: {
+    color: 'text.secondary',
+		cursor: 'pointer',
+		textDecoration: 'none',
+		'&:hover': {
+			textDecoration: 'underline',
+		},
+    width: {
+      sm: '200px',
+      xs: '100%',
+    }
+  },
+	footerLink: {
 		color: 'text.secondary',
 		cursor: 'pointer',
 		textDecoration: 'none',
@@ -137,5 +156,27 @@ const sx = {
   },
   spacer: {
     width: '100px',
+  },
+  gridContainer: {
+    pl: {
+      sm: 3,
+      xs: 0 
+    },
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: {
+       lg: '1fr 1fr 1fr 1fr',
+       xs: '1fr 1fr',
+    },
+    gap: 1,
+    width: '100%',
+    maxWidth: {
+      lg: '800px',
+      sm: '400px'
+    }
   }
 }

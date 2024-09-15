@@ -1,13 +1,13 @@
 import React from 'react'
-import { ProductGrid } from '../..'
+import { ProductList } from '../..'
 import { ProductListProps } from '../products/ProductList'
 import { useRouter } from 'next/router'
 
-export type CollectionProductsGridProps = ProductListProps & {
+export type CollectionProductsProps = ProductListProps & {
 	productCollectionId: string
 }
 
-const CollectionProductsGrid: React.FC<CollectionProductsGridProps> = (
+const CollectionProducts: React.FC<CollectionProductsProps> = (
 	props
 ) => {
 	
@@ -19,7 +19,7 @@ const CollectionProductsGrid: React.FC<CollectionProductsGridProps> = (
 		product_collection_id: productCollectionId,
 	}
 
-	return <ProductGrid query={query} {...rest} />
+	return <ProductList query={query} {...rest} />
 }
 
-export default CollectionProductsGrid
+export default CollectionProducts

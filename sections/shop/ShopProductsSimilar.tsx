@@ -1,16 +1,12 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionProducts } from '../../components/shop'
-import { CollectionProductsProps } from '../../components/shop/collection-products/CollectionProducts'
+import { ProductSimilarList } from '../../components/shop'
+import { ProductListProps } from '../../components/shop/products/ProductList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type ShopCollectionProductsProps = CollectionProductsProps &
-	SectionProps &
-	HeadingProps
+type ShopProductsSimilarProps = ProductListProps & SectionProps & HeadingProps
 
-const ShopCollectionProducts: React.FC<ShopCollectionProductsProps> = (
-	props
-) => {
+const ShopProductsSimilar: React.FC<ShopProductsSimilarProps> = (props) => {
 	const {
 		label,
 		title,
@@ -20,14 +16,16 @@ const ShopCollectionProducts: React.FC<ShopCollectionProductsProps> = (
 		py,
 		px,
 		maxWidth,
-		requireAuth,		
+		requireAuth,
+		
 		requirePaid,
 		...rest
 	} = props
 
 	return (
 		<Section
-			requireAuth={requireAuth}			
+			requireAuth={requireAuth}
+			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}
@@ -40,9 +38,9 @@ const ShopCollectionProducts: React.FC<ShopCollectionProductsProps> = (
 				description={description}
 				textAlign={textAlign}
 			/>
-			<CollectionProducts {...rest} />
+			<ProductSimilarList {...rest} />
 		</Section>
 	)
 }
 
-export default ShopCollectionProducts
+export default ShopProductsSimilar

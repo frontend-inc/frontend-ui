@@ -1,6 +1,6 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { ProductLikesGrid } from '../../components/shop'
+import { ProductLikes } from '../../components/shop'
 import { ProductListProps } from '../../components/shop/products/ProductList'
 import { SectionProps, HeadingProps } from '../../types'
 
@@ -38,7 +38,7 @@ const ShopProductLikesGrid: React.FC<ShopProductLikesGridProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<ProductLikesGrid {...rest} />
+			<ProductLikes {...rest} />
 		</Section>
 	)
 }

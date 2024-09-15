@@ -1,2 +1,2 @@
-export { default as CollectionProductsGrid } from './CollectionProductsGrid'
-export { default as CollectionProductsGridByHandle } from './CollectionProductsGridByHandle'
+export { default as CollectionProducts } from './CollectionProducts'
+export { default as CollectionProductsByHandle } from './CollectionProductsByHandle'

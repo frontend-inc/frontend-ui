@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
 import { CollectionProductsGridByHandle } from '../../components/shop'
-import { CollectionProductsGridProps } from '../../components/shop/collection-products/CollectionProductsGrid'
+import { CollectionProductsGridProps } from '../../components/shop/collection-products/CollectionProducts'
 import { SectionProps, HeadingProps } from '../../types'
 
 type ShopCollectionProductsProps = CollectionProductsGridProps &
