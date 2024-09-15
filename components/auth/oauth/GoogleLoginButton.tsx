@@ -26,7 +26,7 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = (props) => {
 
 	const handleLogin = useGoogleLogin({
 		onSuccess: (codeResponse) => setOAuthCredentials(codeResponse),
-		onError: (error) => console.log('Login Failed:', error),
+		onError: (error) => console.log('Google Error:', error),
 	})
 
 	const handleGoogleLogin = async (accessToken) => {

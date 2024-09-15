@@ -12,12 +12,12 @@ import { useShop } from 'frontend-shopify'
 import { Icon } from '../../../components'
 import { useRouter } from 'next/router'
 
-type TopNavShopifyAuthButtonProps = {
+type TopShopifyAuthButtonProps = {
 	handleClick: () => void
 	icon: string
 }
 
-const TopNavShopifyAuthButton: React.FC<TopNavShopifyAuthButtonProps> = (
+const TopShopifyAuthButton: React.FC<TopShopifyAuthButtonProps> = (
 	props
 ) => {
 	const { handleClick, icon } = props
@@ -93,7 +93,7 @@ const ShopifyAuth: React.FC<ShopifyAuthProps> = (props) => {
 
 	if (!customerPortalUrl) return null
 	return variant == 'topNav' ? (
-		<TopNavShopifyAuthButton icon={icon} handleClick={handleClick} />
+		<TopShopifyAuthButton icon={icon} handleClick={handleClick} />
 	) : (
 		<SideNavShopifyAuthButton icon={icon} handleClick={handleClick} />
 	)

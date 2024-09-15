@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
 	Modal,
 	LoginForm,
@@ -11,19 +11,25 @@ import {
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
 import { Tab, Tabs, Box } from '@mui/material'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 
 type AuthModalProps = {
 	disableUsername?: boolean
+  enableGoogle?: boolean
+  handleSuccess?: () => void
 }
 
 const AuthModal: React.FC<AuthModalProps> = (props) => {
-	const { disableUsername = false } = props
+	const {
+    disableUsername = false, 
+    enableGoogle,
+    handleSuccess 
+  } = props
 
 	const router = useRouter()
 	const { app_id: appId } = router.query
 
-	const { authOpen, setAuthOpen } = useContext(AppContext)
+	const { authOpen, setAuthOpen } = useApp()
 
 	const {
 		errors,
@@ -37,7 +43,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 		sendPin,
 	} = useAuth()
 
-	const [tab, setTab] = useState(0)
+	const [tab, setTab] = useState(1)
 
 	const handleTabChange = (ev, newValue) => {
 		setTab(newValue)
@@ -50,9 +56,11 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 		})
 		if (resp?.id) {
 			setAuthOpen(false)
-			//window.location.reload()
+			if(handleSuccess){
+        handleSuccess()
+      }
 		}
-	}
+	}  
 
 	const handleSignup = async () => {
 		let resp = await signup({
@@ -62,7 +70,14 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 		if (resp?.id) {
 			setAuthOpen(false)
 		}
+    if(handleSuccess){
+      handleSuccess()
+    }
 	}
+
+  const handleGoogleSuccess = async () => {
+    setAuthOpen(false)
+  }
 
 	const handleSendPin = async () => {
 		await sendPin({
@@ -108,14 +123,14 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 
 	useEffect(() => {
 		if (authOpen) {
-			setTab(0)
+			setTab(1)
 		}
 	}, [authOpen])
 
 	return (
 		<Modal open={authOpen} handleClose={() => setAuthOpen(false)}>
 			<Box sx={sx.tabsContainer}>
-				<Tabs value={tab} onChange={handleTabChange}>
+				<Tabs value={tab} onChange={handleTabChange} variant="fullWidth">
 					<Tab label="Login" value={0} />
 					<Tab label="Register" value={1} />
 				</Tabs>
@@ -130,6 +145,8 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 						handleSubmit={handleLogin}
 						handleSignup={handleSignupClick}
 						handleForgotPassword={handleForgotPasswordClick}
+            enableGoogle={ enableGoogle }
+            handleGoogleSuccess={handleGoogleSuccess}
 					/>
 				)}
 				{tab === 1 && (
@@ -141,6 +158,8 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 						handleChange={handleChange}
 						handleSubmit={handleSignup}
 						handleLogin={handleLoginClick}
+            enableGoogle={ enableGoogle }
+            handleGoogleSuccess={handleGoogleSuccess}
 					/>
 				)}
 				{tab === 2 && (
@@ -196,6 +215,7 @@ const sx = {
 		justifyContent: 'center',
 	},
 	content: {
+    mt: 1,
 		width: '100%',
 	},
 	tabsContainer: {

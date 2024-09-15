@@ -3,13 +3,12 @@ import { List, Stack, Box } from '@mui/material'
 import { CartButton, AuthButton, Drawer } from '../..'
 import { ShopifyCartButton } from '../../shopify'
 import { AppContext } from '../../../context'
-import SideNavMenuItem from './SideNavMenuItem'
+import SideMenuItem from './SideMenuItem'
 import { MenuLinkType } from '../../..'
 import { useAuth } from 'frontend-js'
-import { filterLinkVisibility } from '../../..'
 
 type MobileDrawerProps = {
-	menuItems?: MenuLinkType[]
+	links?: MenuLinkType[]
 	handleClick: (path: string) => void
 	enableAuth?: boolean
 	enableStripe?: boolean
@@ -20,7 +19,7 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 	const { menuOpen, setMenuOpen } = useContext(AppContext)
 
 	const {
-		menuItems,
+		links,
 		handleClick,
 		enableAuth,
 		enableStripe,
@@ -42,11 +41,8 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 		>
 			<Box sx={sx.sideNavMenu}>
 				<List sx={sx.sideNavMenuItems}>
-					{menuItems
-						?.filter((menuItem) => menuItem.parent_id == null)
-						?.filter((menuItem) => filterLinkVisibility(menuItem, currentUser))
-						?.map((menuItem, index) => (
-							<SideNavMenuItem
+					{links?.map((menuItem, index) => (
+							<SideMenuItem
 								key={index}
 								menuItem={menuItem}
 								handleClick={handleMenuClick}

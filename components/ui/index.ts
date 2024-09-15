@@ -94,3 +94,5 @@ export { default as Debug } from './debug/Debug'
 
 // Theme
 export { default as LightDarkMode } from './theme/LightDarkMode'
+export { default as LightTheme } from './theme/LightTheme'
+export { default as DarkTheme } from './theme/DarkTheme'

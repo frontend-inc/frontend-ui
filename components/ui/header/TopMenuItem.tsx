@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../../../context'
+import React from 'react'
 import {
 	CircularProgress,
 	Box,
@@ -11,16 +10,16 @@ import {
 } from '@mui/material'
 import { useMenu } from '../../../hooks'
 import { MenuLinkType } from '../../..'
-import { Icon } from '../../../components'
+import { Icon } from '../..'
 import { useCollections } from 'frontend-shopify'
 import { useRouter } from 'next/router'
 
-type TopNavMenuItemProps = {
+type TopMenuItemProps = {
 	menuItem: MenuLinkType
 	handleClick: (path: string) => void
 }
 
-const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
+const TopMenuItem: React.FC<TopMenuItemProps> = (props) => {
 	const router = useRouter()
 
 	const { menuItem, handleClick } = props
@@ -68,6 +67,9 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 			<Button
 				sx={sx.menuButton}
 				onClick={(ev) => handleMenuClick(ev, menuItem)}
+        startIcon={ 
+          menuItem?.icon && <Icon name={menuItem.icon} /> 
+        }
 				endIcon={
 					(children?.length > 0 ||
 						menuItem?.link_type == 'shopify_collection') && (
@@ -82,7 +84,7 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 					)
 				}
 			>
-				{menuItem.name}
+				{menuItem.label}
 			</Button>
 			<Menu
 				open={open}
@@ -138,7 +140,7 @@ const TopNavMenuItem: React.FC<TopNavMenuItemProps> = (props) => {
 	)
 }
 
-export default TopNavMenuItem
+export default TopMenuItem
 
 const sx = {
 	menuButton: {

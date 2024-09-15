@@ -108,7 +108,7 @@ const SideNavMenuItem: React.FC<SideNavMenuItemProps> = (props) => {
 					<ListItemText
 						primary={
 							<Typography variant="body1" color="text.primary">
-								{menuItem.name}
+								{menuItem.label}
 							</Typography>
 						}
 					/>

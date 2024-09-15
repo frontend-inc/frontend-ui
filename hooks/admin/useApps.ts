@@ -56,6 +56,12 @@ function useApps(): Record<string, any> {
 		)
 	}
 
+  const generateAI = async (appId: number) => {
+		return await loadingWrapper(() =>
+			api.post(`${apiUrl}/generate_ai`)
+		)
+	}
+
 	return {
 		errors,
 		loading,
@@ -88,6 +94,8 @@ function useApps(): Record<string, any> {
 		handleSort,
 		setApp,
 		setApps,
+    
+    generateAI,
 		publishApp,
 		buildApp,
 	}

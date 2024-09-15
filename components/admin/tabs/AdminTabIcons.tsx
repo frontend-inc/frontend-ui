@@ -32,7 +32,8 @@ const TabIcons: React.FC<TabIconsProps> = (props) => {
 							<Image src={logo} height={24} width={24} alt="logo" />
 						</Button>
 					)}
-					{menuItems?.map((item, index) => (
+					{ Array.isArray(menuItems) && 
+            menuItems?.map((item, index) => (
 						<Box px={1} key={index}>
 							<AdminTabIcon
 								selected={activeTab == item.id}

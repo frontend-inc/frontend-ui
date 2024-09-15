@@ -10,11 +10,11 @@ import { ShopifyContext } from 'frontend-shopify'
 import { AppContext } from '../../../context'
 import { Icon } from '../..'
 
-type TopNavSearchButtonProps = {
+type TopSearchButtonProps = {
 	handleClick: () => void
 }
 
-const TopNavSearchButton: React.FC<TopNavSearchButtonProps> = (props) => {
+const TopSearchButton: React.FC<TopSearchButtonProps> = (props) => {
 	const { handleClick } = props
 
 	return (
@@ -61,7 +61,7 @@ const ShopifySearchButton: React.FC<ShopifySearchButtonProps> = (props) => {
 	}
 
 	return variant == 'topNav' ? (
-		<TopNavSearchButton handleClick={handleToggleSearch} />
+		<TopSearchButton handleClick={handleToggleSearch} />
 	) : (
 		<SideNavSearchButton handleClick={handleToggleSearch} />
 	)

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Button, Stack } from '@mui/material'
-import { Icon, IconLoading } from '../../../../components'
-import { SyntheticEventType } from '../../../../types'
+import { IconLoading, Icon } from '../../../../components'
 
 type FormWizardButtonsProps = {
+  loading?: boolean
 	currentStep: number
 	totalSteps: number
 	buttonText: string
@@ -14,6 +14,7 @@ type FormWizardButtonsProps = {
 
 const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 	const {
+    loading,
 		buttonText,
 		currentStep,
 		totalSteps,
@@ -25,10 +26,11 @@ const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 	return (
 		<Stack direction="row" spacing={1} sx={sx.buttons}>
 			<Button
+        size="large"
 				variant="contained"
 				color="secondary"
+        sx={ sx.prevButton }
 				onClick={handlePrevStep}
-				disabled={currentStep == 0}
 				startIcon={<Icon name="ChevronLeft" color="secondary.contrastText" />}
 			>
 				Prev
@@ -39,7 +41,10 @@ const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 					variant="contained"
 					onClick={handleNextStep}
 					disabled={currentStep == totalSteps}
-					endIcon={<Icon name="ChevronRight" color="primary.contrastText" />}
+					endIcon={
+            loading ? <IconLoading loading /> :
+            <Icon name="ChevronRight" color="primary.contrastText" />
+          }
 				>
 					Next
 				</Button>
@@ -65,4 +70,7 @@ const sx = {
 		justifyContent: 'flex-end',
 		py: 4,
 	},
+  prevButton: {
+    color: 'secondary.contrastText',
+  }
 }

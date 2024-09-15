@@ -10,13 +10,13 @@ import {
 } from '@mui/material'
 import { Icon } from '../..'
 
-type TopNavStripeCustomerPortalButtonProps = {
+type TopStripeCustomerPortalButtonProps = {
 	handleClick: () => void
 	icon: string
 }
 
-const TopNavStripeCustomerPortalButton: React.FC<
-	TopNavStripeCustomerPortalButtonProps
+const TopStripeCustomerPortalButton: React.FC<
+	TopStripeCustomerPortalButtonProps
 > = (props) => {
 	const { handleClick, icon } = props
 
@@ -75,7 +75,7 @@ const StripeCustomerPortalButton: React.FC<StripeCustomerPortalButtonProps> = (
 
 	if (!stripeCustomerPortalUrl) return null
 	return variant == 'topNav' ? (
-		<TopNavStripeCustomerPortalButton icon={icon} handleClick={handleClick} />
+		<TopStripeCustomerPortalButton icon={icon} handleClick={handleClick} />
 	) : (
 		<SideNavStripeCustomerPortalButton icon={icon} handleClick={handleClick} />
 	)

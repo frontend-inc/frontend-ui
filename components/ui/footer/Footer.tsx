@@ -1,10 +1,14 @@
 import React from 'react'
-import { Link, Divider, Stack } from '@mui/material'
+import { Box, Link, Divider, Stack } from '@mui/material'
 import { MenuLinkType } from '../../../types'
 import { SocialLink } from '../..'
+import Logo from '../header/Logo'
+import { useApp } from '../../../hooks'
 
-type FooterProps = {
-	menuLinks: MenuLinkType[]
+export type FooterProps = {
+  logo?: string
+  links: MenuLinkType[]  
+	legalLinks: MenuLinkType[]
 	socialLinks: {
 		label: string
 		provider: string
@@ -15,30 +19,62 @@ type FooterProps = {
 }
 
 const Footer: React.FC<FooterProps> = (props) => {
-	const { handleClick, menuLinks, socialLinks } = props
+	const { logo, handleClick, links, socialLinks, legalLinks } = props  
+  const { logo: appLogo } = useApp()  
 
 	return (
 		<Stack sx={sx.root} spacing={1} direction="column">
-			<Stack direction="row" divider={<Divider sx={sx.divider} />} spacing={1}>
-				{menuLinks?.map((menuLink, i) => (
-					//@ts-ignore
-					<Link
-						variant="overline"
-						sx={sx.link}
-						key={i}
-						onClick={() => handleClick(menuLink?.path)}
-					>
-						{menuLink?.name}
-					</Link>
-				))}
-			</Stack>
-			<Stack direction="row" spacing={0}>
-				{socialLinks
-					?.sort((a, b) => a?.position - b?.position)
-					?.map((link, i) => (
-						<SocialLink key={i} provider={link?.provider} url={link?.url} />
-					))}
-			</Stack>
+      <Stack sx={ sx.headerLinks } direction={{ sm: 'row', xs: 'column'}}>
+        <Box sx={ sx.logo }>
+          <Logo 
+            src={logo || appLogo} 
+            alt="logo" 
+            width={100} 
+            height={50}
+          />
+        </Box>
+        <Stack sx={ sx.footerMenu } direction="row" spacing={3}>
+          {links?.map((menuLink, i) => (
+            <Link
+              variant="subtitle2"
+              sx={sx.link}
+              key={i}
+              onClick={() => handleClick(menuLink?.path)}
+            >
+              {menuLink?.label}
+            </Link>
+          ))}
+        </Stack>
+        <Box sx={ sx.spacer } />
+      </Stack>
+      <Stack direction={{ sm: 'row', xs: 'column'}} sx={ sx.footerLinks } spacing={2}>
+        <Stack direction="row" spacing={1}>
+          {socialLinks
+            ?.sort((a, b) => a?.position - b?.position)
+            ?.map((link, i) => (
+              <SocialLink 
+                key={i} 
+                provider={link?.provider} 
+                url={link?.url} 
+                color='common.black'
+              />
+            ))}
+        </Stack>
+        <Stack direction="row" divider={<Divider sx={sx.divider} />} spacing={1}>
+          {legalLinks?.map((menuLink, i) => (
+            //@ts-ignore
+            <Link
+              variant="overline"
+              sx={sx.link}
+              key={i}
+              onClick={() => handleClick(menuLink?.path)}
+            >
+              {menuLink?.label}
+            </Link>
+          ))}
+        </Stack>
+        <Box sx={ sx.spacer } />
+      </Stack>
 		</Stack>
 	)
 }
@@ -64,6 +100,14 @@ const sx = {
 		justifyContent: 'space-between',
 		alignItems: 'flex-start',
 	},
+  footerMenu: {
+    py: 3,
+  },
+  logo: {
+    width: '100px',
+    display: 'flex',
+    justifyContent: 'flex-start',
+  },
 	link: {
 		color: 'text.secondary',
 		cursor: 'pointer',
@@ -76,4 +120,22 @@ const sx = {
 		borderRight: '1px solid',
 		borderColor: 'divider',
 	},
+  headerLinks: {    
+    width: '100%',    
+    px: 3,    
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderBottom: '1px solid',
+    borderColor: 'divider',
+  },
+  footerLinks: {    
+    width: '100%',
+    py: 1,
+    px: 3,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  spacer: {
+    width: '100px',
+  }
 }

@@ -66,7 +66,7 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 	}
 
 	const theme = useTheme()
-	const fgColor = get(theme, `palette.${color}`)
+	const bgColor = get(theme, `palette.${color}`)
 
 	return (
 		<IconButton
@@ -75,7 +75,7 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
       onClick={handleClick}
     >
 			<SocialIcon
-				fgColor={fgColor}
+				bgColor={bgColor}
 				network={provider}
 				style={{
 					height: size,

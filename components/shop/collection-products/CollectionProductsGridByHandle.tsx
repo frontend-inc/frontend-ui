@@ -13,8 +13,6 @@ const CollectionProductsGridByHandle: React.FC<CollectionProductsGridProps> = (
 	const router = useRouter()
 	const { handle } = router.query
 
-	console.log('Params', router.query)
-
 	let { query = {}, ...rest } = props
 
 	query = {

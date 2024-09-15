@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section } from '../../components'
-import { FormWizard } from '../../components'
-import { FormWizardProps } from '../../components/cms/forms/FormWizard'
+import { DocumentFormWizardModal } from '../../components'
+import { DocumentFormWizardModalProps } from '../../components/cms/forms/DocumentFormWizardModal'
 import { SectionProps } from '../../types'
 
-type CmsFormWizardProps = SectionProps & FormWizardProps
+type CmsFormWizardProps = SectionProps & DocumentFormWizardModalProps
 
 const CmsFormWizard: React.FC<CmsFormWizardProps> = (props) => {
 	const { mode, py, px, maxWidth,  requirePaid, ...rest } = props
@@ -19,7 +19,7 @@ const CmsFormWizard: React.FC<CmsFormWizardProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<FormWizard {...rest} />
+			<DocumentFormWizardModal {...rest} />
 		</Section>
 	)
 }

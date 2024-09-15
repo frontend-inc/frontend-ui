@@ -1,51 +1,50 @@
 import React from 'react'
-import { AppBar, Box, Hidden, Toolbar } from '@mui/material'
-import { AuthButton, StripeCustomerPortalButton } from '../../../components'
+import { IconButton, Box, Hidden } from '@mui/material'
+import { AuthButton, Icon } from '../..'
 import Logo from './Logo'
-import { CartButton } from '../../../components'
+import { CartButton } from '../..'
 import { ShopifyCartButton } from '../../shopify'
-import { useAuth } from 'frontend-js'
+import { useApp } from '../../../hooks'
 import { MenuLinkType } from '../../..'
-import TopNavMenuItem from './TopNavMenuItem'
-import { filterLinkVisibility } from '../../..'
+import TopMenuItem from './TopMenuItem'
 
-type DesktopNavProps = {
+type DesktopHeader = {
 	logo: string
-	menuItems?: MenuLinkType[]
+	links?: MenuLinkType[]
 	enableAuth?: boolean
 	enableShopify?: boolean
 	enableStripe?: boolean
-	enableNotifications?: boolean
 	handleClick: (path: string) => void
-	position?: 'fixed' | 'relative' | 'absolute'
 }
 
-const DesktopTopNav = (props: DesktopNavProps) => {
+const MAX_LINKS = 5
+
+const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 	const {
 		logo,
-		menuItems,
+		links,
 		handleClick,
 		enableAuth = false,
 		enableStripe = false,
 		enableShopify = false,
-		enableNotifications = false,
-		position = 'absolute',
 	} = props
 
-	const { currentUser } = useAuth()
+  const { setMenuOpen } = useApp()
 
 	return (
 		<Hidden mdDown>
-			<AppBar
-				sx={{
-					...sx.appBar,
-					...(enableNotifications && sx.appBarNotifications),
-				}}
-				position={position}
-				elevation={0}
+			<Box
+				sx={ sx.appBar }				
 			>
-				<Toolbar>
-					<Box sx={sx.desktopTopNav}>
+				<Box width={'100%'}>
+					<Box sx={sx.desktop}>
+            { links?.length > MAX_LINKS && (
+              <Box sx={sx.menuButton}>
+                <IconButton onClick={() => setMenuOpen(true)}>
+                  <Icon name="Menu" size={24} />
+                </IconButton>
+              </Box>
+            )}
 						<Box sx={sx.leftMenu}>
 							<Logo
 								src={logo}
@@ -55,13 +54,9 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 							/>
 						</Box>
 						<Box sx={sx.centerMenu}>
-							{menuItems
-								?.filter((menuItem) => menuItem.parent_id == null)
-								?.filter((menuItem) =>
-									filterLinkVisibility(menuItem, currentUser)
-								)
-								?.map((menuItem, index) => (
-									<TopNavMenuItem
+							{links?.length <= MAX_LINKS && 
+                links?.map((menuItem, index) => (
+									<TopMenuItem
 										key={index}
 										menuItem={menuItem}
 										handleClick={handleClick}
@@ -74,26 +69,21 @@ const DesktopTopNav = (props: DesktopNavProps) => {
 							{enableShopify && <ShopifyCartButton /> }
 						</Box>
 					</Box>
-				</Toolbar>
-			</AppBar>
+				</Box>
+			</Box>
 		</Hidden>
 	)
 }
 
-export default DesktopTopNav
+export default DesktopHeader
 
 const sx = {
 	appBar: {
+    width: '100%',
 		height: 64,
-		position: 'absolute',
-		zIndex: (theme) => theme.zIndex.appBar,
 		bgcolor: 'background.default',
 	},
-	appBarNotifications: {
-		position: 'absolute',
-		//top: 40,
-	},
-	desktopTopNav: {
+	desktop: {
 		width: '100%',
 		display: 'flex',
 		flexDirection: 'row',
@@ -122,4 +112,7 @@ const sx = {
 		justifyContent: 'flex-end',
 		height: '60px',
 	},
+  menuButton: {
+    px: 1
+  }
 }

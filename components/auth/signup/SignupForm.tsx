@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack, Button } from '@mui/material'
-import { IconLoading, TextInput } from '../..'
+import { IconLoading, TextInput, GoogleLoginButton } from '../..'
 
 type SignupFormProps = {
 	loading: boolean
@@ -10,6 +10,8 @@ type SignupFormProps = {
 	handleSubmit: () => void
 	handleLogin: false | (() => void)
 	disableUsername?: boolean
+  enableGoogle?: boolean
+  handleGoogleSuccess?: () => void
 }
 
 const SignupForm: React.FC<SignupFormProps> = (props) => {
@@ -18,13 +20,18 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 		errors,
 		user,
 		handleChange,
+    enableGoogle,
 		disableUsername = false,
 		handleSubmit,
 		handleLogin,
+    handleGoogleSuccess
 	} = props || {}
 
 	return (
 		<Stack spacing={1.5}>
+      {enableGoogle && (
+				<GoogleLoginButton handleSuccess={handleGoogleSuccess} />
+			)}
 			{!disableUsername && (
 				<TextInput
 					direction="column"

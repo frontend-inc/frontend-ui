@@ -1,80 +1,58 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Box } from '@mui/material'
-import { AppContext } from '../../../context'
 import MobileDrawer from './MobileDrawer'
-import MobileTopNav from './MobileTopNav'
-import DesktopTopNav from './DesktopTopNav'
-import DesktopSideNav from './DesktopSideNav'
+import MobileHeader from './MobileHeader'
+import DesktopHeader from './DesktopHeader'
 import { MenuLinkType } from '../../../types'
 import { useApp } from '../../../hooks'
 
-type HeaderProps = {
-	sideNav?: boolean
+export type HeaderProps = {
 	mode?: 'accent' | 'light' | 'dark'
 	logo?: string
 	enableAuth?: boolean
 	enableStripe?: boolean
 	enableShopify?: boolean
 	enableNotifications?: boolean
-	bgcolor?: string
-	menuItems: MenuLinkType[]
+	links: MenuLinkType[]
 	handleClick: (path: string) => void
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
-	const { logo } = useContext(AppContext)
-  
-  const { enableStripe, enableShopify } = useApp()  
+	
+  const { logo: appLogo, enableStripe, enableShopify } = useApp()  
 
 	const {
-		sideNav = false,		
-		menuItems,
+    logo,
+		links,
 		handleClick,
 		enableAuth = false,
 		enableNotifications = false,
 	} = props
 
 	return (
-		<Box
-			sx={{
-				...sx.root,
-				...(sideNav && sx.rootSideNav),
-			}}
-		>
-			{!sideNav ? (
-				<DesktopTopNav
-					logo={logo}
-					enableAuth={enableAuth}
-					enableStripe={enableStripe}
-					enableShopify={enableShopify}
-					enableNotifications={enableNotifications}
-					menuItems={menuItems}
-					handleClick={handleClick}
-				/>
-			) : (
-				<DesktopSideNav
-					logo={logo}
-					enableAuth={enableAuth}
-					enableStripe={enableStripe}
-					enableShopify={enableShopify}
-					enableNotifications={enableNotifications}
-					menuItems={menuItems}
-					handleClick={handleClick}
-				/>
-			)}
-			<MobileTopNav
+		<Box sx={sx.root}>
+      <DesktopHeader
+        logo={logo || appLogo}
+        enableAuth={enableAuth}
+        enableStripe={enableStripe}
+        enableShopify={enableShopify}
+        enableNotifications={enableNotifications}
+        links={links}
+        handleClick={handleClick}
+      />
+			<MobileHeader
 				logo={logo}
         enableStripe={enableStripe}
 				enableShopify={enableShopify}
-				enableNotifications={enableNotifications}
-				menuItems={menuItems}
+				enableNotifications
+				links={links}
 				handleClick={handleClick}
 			/>
 			<MobileDrawer				
 				enableAuth={enableAuth}
 				enableStripe={enableStripe}
 				enableShopify={enableShopify}
-				menuItems={menuItems}
+				links={links}
 				handleClick={handleClick}
 			/>
 		</Box>
@@ -85,20 +63,10 @@ export default Header
 
 const sx = {
 	root: {
+    height: 64,
 		width: '100%',
 		display: 'flex',
 		flexDirection: 'row',
-		overflow: 'hidden',
 		bgcolor: 'background.default',
-	},
-	rootSideNav: {
-		width: {
-			md: '280px',
-			xs: '100%',
-		},
-		minWidth: {
-			md: '280px',
-			xs: '100%',
-		},
 	},
 }

@@ -9,28 +9,21 @@ type LayoutContainerProps = {
 	children: React.ReactNode
 	header?: React.ReactNode
 	footer?: React.ReactNode
-	sideNav?: boolean
 	notifications: NotificationType[]
 	offsetY?: number
-	offsetX?: number
-	roles?: string[]
+  roles?: string[]
 	requireAuth?: boolean
-	requireTeam?: boolean
 	requirePaid?: boolean
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 	const {
 		children,
-		header,
-		footer,
 		notifications,
-		sideNav = false,
 		offsetY = 0,
-		roles = [],
 		requireAuth,
-		requireTeam,
 		requirePaid,
+    roles=[]
 	} = props
 
 	const [enableNotifications, setEnableNotifications] = useState(false)
@@ -55,29 +48,17 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 			<Box
 				sx={{
 					...sx.root,
-					...(sideNav && sx.sideNav),
 				}}
 			>
-				{header}
-				<Box
-					sx={{
-						...sx.content,
-						...(sideNav ? sx.contentSideNav : sx.contentTopNav),
-						...(enableNotifications && sx.contentNotifications),
-					}}
-				>
+				<Box sx={ sx.content}>
 					<AuthGuard
 						roles={roles}
 						requireAuth={requireAuth}
 						requirePaid={requirePaid}
-						requireTeam={requireTeam}
-					>
-						{notifications?.length > 0 && (
-							<Notifications notifications={notifications} />
-						)}
+					>						
             <ViewScroll>
+              <Notifications notifications={notifications} />
               {children}
-              {footer}
             </ViewScroll>            
 					</AuthGuard>
 				</Box>
@@ -102,43 +83,11 @@ const sx = {
 		},
 		bgcolor: 'background.default',
 	},
-	sideNav: {
-		display: 'flex',
-		flexDirection: {
-			md: 'row',
-			xs: 'column',
-		},
-		pt: {
-			sm: 0,
-			xs: '60px',
-		},
-	},
 	content: {
 		display: 'flex',
 		flexDirection: 'column',
 		width: '100%',
 		overflowY: 'hidden',
-	},
-	contentNotifications: {
-	},
-	contentSideNav: {
-		pt: {
-			md: 0,
-			sm: '60px',
-		},
-		width: {
-			md: 'calc(100% - 280px)',
-			xs: '100%',
-		},
-		height: '100%',
-    overflowY: 'scroll',
-		'&::-webkit-scrollbar': {
-			display: 'none',
-		},
-	},
-	contentTopNav: {
-		pt: '60px',
-		minHeight: 'calc(100% - 60px)',
 	},
 	page: {
 		width: '100%',

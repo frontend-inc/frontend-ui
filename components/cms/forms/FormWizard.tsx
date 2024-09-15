@@ -1,117 +1,43 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useApp } from '../../../hooks'
-import { useResource } from 'frontend-js'
 import { Box } from '@mui/material'
 import FormWizardProgress from './wizard/FormWizardProgress'
-import FormCard from './wizard/FormCard'
 import FormWizardField from './wizard/FormWizardField'
 import FormWizardButtons from './wizard/FormWizardButtons'
-import { Modal } from '../../../components'
-import { useRouter } from 'next/router'
+import { SyntheticEventType } from '../../../types'
 
 export type FormWizardProps = {
-	handle: string
+  loading?: boolean
+  errors?: any
 	resource?: any
-	url: string
-	variant?: 'contained' | 'outlined' | 'text'
+  setResource: (resource: any) => void
+  handleChange: (ev: SyntheticEventType) => void
+  handleSubmit: () => void
+  handleRemove: (field: any) => void
+  handleAddAttachment: (field: string, attachmentId: number) => void
+  handleRemoveAttachment: (field: string) => void	
+  buttonText?: string
 	fields: any[]
-	startTitle: string
-	startDescription: string
-	startImage: string
-	startButtonText?: string
-	buttonText?: string
-	image: string
-	endTitle: string
-	endDescription: string
-	endImage: string
-	endButtonText: string
-	href?: string
+  handleSuccess?: () => void
 }
 
 const FormWizard: React.FC<FormWizardProps> = (props) => {
-	const router = useRouter()
-	const { clientUrl } = useApp()
 
 	const {
-		handle,
-		resource: _resource,
-		fields = [],
-		url,
-		startTitle,
-		startDescription,
-		startImage,
-		startButtonText = 'Start',
-		buttonText = 'Submit',
-		endTitle,
-		endDescription,
-		endImage,
-		endButtonText,
-		href,
-	} = props
-
-	const [submitted, setSubmitted] = useState(false)
-
-	const {
-		loading,
-		findOne,
 		resource,
-		setResource,
-		update,
-		create,
-		removeAttachment,
-		handleChange,
-	} = useResource({
-		url,
-		name: 'document',
-	})
+    setResource,
+		fields = [],
+    handleChange,
+    handleSubmit,
+    handleRemove,
+    buttonText="Submit",
+    handleAddAttachment,
+    handleRemoveAttachment,		    
+	} = props
 
 	const [currentField, setCurrentField] = useState()
 	const [currentStep, setCurrentStep] = useState(0)
 	const [totalSteps, setTotalSteps] = useState(0)
 	const [fadeIn, setFadeIn] = useState(false)
-	const [open, setOpen] = useState(false)
-
-	const handleStartClick = () => {
-		setCurrentStep(0)
-		setFadeIn(true)
-		setOpen(true)
-	}
-
-	const handleResetForm = () => {
-		setResource({})
-		setSubmitted(false)
-		setCurrentStep(0)
-		setOpen(false)
-	}
-
-	const handleSuccess = () => {
-		if (href) {
-			router.push(`${clientUrl}${href}`)
-		} else {
-			handleResetForm()
-		}
-	}
-
-	const handleRemove = async (name) => {
-		await removeAttachment(resource?.id, name)
-	}
-
-	const handleSubmit = async () => {
-		try {
-			let resp
-			if (resource?.id) {
-				resp = await update(resource)
-			} else {
-				resp = await create(resource)
-			}
-			if (resp?.id) {
-				setSubmitted(true)
-				setOpen(false)
-			}
-		} catch (err) {
-			console.log('Error', err)
-		}
-	}
 
 	const handleNextStep = () => {
 		setFadeIn(false)
@@ -145,63 +71,33 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		}
 	}, [fields, currentStep])
 
-	useEffect(() => {
-		if (_resource?.id) {
-			setResource(_resource)
-		} else if (handle && url) {
-			findOne(handle)
-		}
-	}, [_resource, handle, url])
-
 	return (
 		<Box sx={sx.root}>
-			{!submitted ? (
-				<FormCard
-					title={startTitle}
-					description={startDescription}
-					image={startImage}
-					buttonText={startButtonText}
-					handleClick={handleStartClick}
-				/>
-			) : (
-				<FormCard
-					title={endTitle}
-					description={endDescription}
-					image={endImage}
-					buttonText={endButtonText}
-					handleClick={handleSuccess}
-				/>
-			)}
-			<Modal
-				fullScreen
-				disablePadding
-				open={open}
-				handleClose={() => setOpen(false)}
-			>
-				<FormWizardProgress currentStep={currentStep} totalSteps={totalSteps} />
-				<Box sx={sx.formContainer}>
-					<Box sx={sx.form}>
-						{currentField && (
-							<FormWizardField
-								fadeIn={fadeIn}
-								field={currentField}
-								handleChange={handleChange}
-								handleRemove={handleRemove}
-								resource={resource}
-								setResource={setResource}
-							/>
-						)}
-						<FormWizardButtons
-							currentStep={currentStep}
-							totalSteps={totalSteps}
-							handleNextStep={handleNextStep}
-							handlePrevStep={handlePrevStep}
-							handleSubmit={handleSubmit}
-							buttonText={buttonText}
-						/>
-					</Box>
-				</Box>
-			</Modal>
+      <FormWizardProgress currentStep={currentStep} totalSteps={totalSteps} />
+      <Box sx={sx.formContainer}>
+        <Box sx={sx.form}>
+          {currentField && (
+            <FormWizardField
+              fadeIn={fadeIn}
+              field={currentField}
+              handleChange={handleChange}
+              handleRemove={handleRemove}
+              handleAddAttachment={handleAddAttachment}
+              handleRemoveAttachment={handleRemoveAttachment}
+              resource={resource}
+              setResource={setResource}
+            />
+          )}
+          <FormWizardButtons
+            currentStep={currentStep}
+            totalSteps={totalSteps}
+            handleNextStep={handleNextStep}
+            handlePrevStep={handlePrevStep}
+            handleSubmit={handleSubmit}
+            buttonText={buttonText}
+          />
+        </Box>
+      </Box>
 		</Box>
 	)
 }

@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
-import { AppBar, Box, Hidden, Toolbar, IconButton } from '@mui/material'
+import React from 'react'
+import { Box, Hidden, IconButton } from '@mui/material'
 import { Icon } from '../..'
-import { CartButton } from '../../../components'
+import { CartButton } from '../..'
 import { ShopifyCartButton } from '../../shopify'
-import { AppContext } from '../../../context'
+import { useApp } from '../../../hooks'
 import { MenuLinkType } from '../../..'
 import Logo from './Logo'
 
@@ -12,16 +12,15 @@ type MobileNavProps = {
 	logo: string
 	logoWidth?: number
 	logoHeight?: number
-	menuItems?: MenuLinkType[]
+	links?: MenuLinkType[]
 	enableShopify?: boolean
   enableStripe?: boolean
 	enableNotifications?: boolean
 	handleClick: (path: string) => void
-	position?: 'fixed' | 'relative' | 'absolute'
 }
 
 const MobileNav = (props: MobileNavProps) => {
-	const { setMenuOpen } = useContext(AppContext)
+	const { setMenuOpen } = useApp()
 
 	const {
 		logo,
@@ -30,21 +29,17 @@ const MobileNav = (props: MobileNavProps) => {
 		handleClick,
     enableStripe = false,
 		enableShopify = false,
-		enableNotifications = false,
 	} = props
 
 	return (
 		<Hidden mdUp>
-			<AppBar
+			<Box
 				sx={{
 					...sx.appBar,
-					...(enableNotifications && sx.appBarNotifications),
 				}}
-				position={'absolute'}
-				elevation={0}
 			>
-				<Toolbar>
-					<Box sx={sx.desktopTopNav}>
+				<Box width='100%'>
+					<Box sx={sx.desktopTop}>
 						<Box sx={sx.leftMenu}>
 							<IconButton onClick={() => setMenuOpen(true)}>
 								<Icon name="Menu" size={24} />
@@ -63,8 +58,8 @@ const MobileNav = (props: MobileNavProps) => {
 							{enableShopify && <ShopifyCartButton />}
 						</Box>
 					</Box>
-				</Toolbar>
-			</AppBar>
+				</Box>
+			</Box>
 		</Hidden>
 	)
 }
@@ -74,15 +69,7 @@ export default MobileNav
 const sx = {
 	appBar: {
 		height: 64,
-		position: 'absolute',
-		zIndex: (theme) => theme.zIndex.appBar,
 		bgcolor: 'background.default',
-	},
-	appBarNotifications: {
-		position: 'absolute',
-	},
-	notifications: {
-		top: '50px',
 	},
 	sideNav: {
 		height: '100%',
@@ -101,8 +88,8 @@ const sx = {
 	drawer: {
 		bgcolor: 'background.default',
 	},
-	desktopTopNav: {
-		width: '100%',
+	desktopTop: {
+		width: '100vw',
 		display: 'flex',
 		flexDirection: 'row',
 	},
