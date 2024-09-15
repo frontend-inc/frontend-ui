@@ -134,7 +134,7 @@ const sx = {
 			textDecoration: 'underline',
 		},
 		width: {
-			sm: '200px',
+			sm: '140px',
 			xs: '100%',
 		},
 	},
@@ -175,19 +175,21 @@ const sx = {
 		},
 		width: '100%',
 		display: 'flex',
-		justifyContent: 'center',
+		justifyContent: {
+      sm: 'center',    
+      xs: 'flex-start'
+    }
 	},
 	grid: {
-		display: 'grid',
-		gridTemplateColumns: {
-			lg: '1fr 1fr 1fr 1fr',
-			xs: '1fr 1fr',
-		},
-		gap: 1,
-		width: '100%',
-		maxWidth: {
-			lg: '800px',
-			sm: '400px',
-		},
-	},
+    display: 'flex',
+    flexDirection: {
+      sm: 'row',
+      xs: 'column'
+    },
+    gap: '16px',
+    pl: {
+      sm: 3,
+      xs: 0,
+    }
+  }
 }

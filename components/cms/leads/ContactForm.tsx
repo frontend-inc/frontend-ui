@@ -49,7 +49,6 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			<Container maxWidth="sm">
-        <Paper sx={ sx.paper }>
 				<Heading
 					label={label}
 					title={title}
@@ -72,7 +71,6 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
           handleSubmit={handleSubmit}
           buttonText={buttonText}
         />
-        </Paper>
 			</Container>
 		</Box>
 	)
