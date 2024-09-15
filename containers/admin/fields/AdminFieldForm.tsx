@@ -40,7 +40,6 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
 		{ label: 'Field', value: 0 },
 		{ label: 'Settings', value: 1 },
 		{ label: 'Validate', value: 2 },
-		{ label: 'UI', value: 3 },
 	]
 
 	return (
@@ -151,6 +150,16 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
                   variant: 'boolean',
                 },
                 {
+                  label: 'Validate email',
+                  name: 'validate_email',
+                  variant: 'boolean',
+                },
+                {
+                  label: 'Validate phone number',
+                  name: 'validate_phone',
+                  variant: 'boolean',
+                },
+                {
                   label: 'Validate length',
                   name: 'validate_length',
                   variant: 'boolean',
@@ -245,83 +254,6 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
                 
               ]}
               handleRemove={() => null}
-            />
-          )}
-
-          {tab == 3 && (
-            <FormFields
-              errors={errors}
-              resource={resource}
-              handleChange={handleChange}
-              fields={[
-                {
-                  label: 'Display field',
-                  name: 'display_field',
-                  variant: 'boolean',
-                  conditions: [
-                    {
-                      name: 'variant',
-                      operator: 'nin',
-                      value: ['habtm', 'file', 'audio', 'video', 'image'],
-                    },
-                  ],
-                },
-                {
-                  label: 'Form field',
-                  name: 'form_field',
-                  variant: 'boolean',
-                },
-                {
-                  label: 'Search filter field',
-                  name: 'filter_field',
-                  variant: 'boolean',
-                  conditions: [
-                    {
-                      name: 'variant',
-                      operator: 'nin',
-                      value: [
-                        'habtm',
-                        'file',
-                        'audio',
-                        'video',
-                        'image',
-                        'shopify_products',
-                      ],
-                    },
-                  ],
-                },
-                {
-                  label: 'Search sort field',
-                  name: 'sort_field',
-                  variant: 'boolean',
-                  conditions: [
-                    {
-                      name: 'variant',
-                      operator: 'nin',
-                      value: [
-                        'habtm',
-                        'file',
-                        'audio',
-                        'video',
-                        'image',
-                        'shopify_products',
-                      ],
-                    },
-                  ],
-                },
-                {
-                  label: 'Table header',
-                  name: 'table_header',
-                  variant: 'boolean',
-                  conditions: [
-                    {
-                      name: 'variant',
-                      operator: 'nin',
-                      value: ['habtm', 'shopify_products'],
-                    },
-                  ],
-                },
-              ]}
             />
           )}
         </Box>

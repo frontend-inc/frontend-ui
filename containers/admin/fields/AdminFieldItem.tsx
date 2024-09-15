@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Label, ResourceListItem } from '../../../components'
 import { FieldIcon } from '../..'
-import { IconButton, Tooltip, Box } from '@mui/material'
+import { Stack, Typography, IconButton, Tooltip, Box } from '@mui/material'
 import {
-	EditNote,
 	FilterAltOutlined,
 	FilterAltOffOutlined,
 	SortByAlpha,
-	TableRowsOutlined,
 	ManageSearch,
 } from '@mui/icons-material'
 import { useResource } from 'frontend-js'
@@ -61,8 +59,12 @@ const AdminFieldItem: React.FC<AdminFieldItemProps> = (props) => {
 			enableBorder
 			sortable={sortable}
 			avatar={<FieldIcon variant={field?.variant} />}
-			primary={field?.label}
-			secondary={field?.name}
+			primary={
+        <Stack direction="row" spacing={1}>
+          <Typography variant="body1" color="text.primary">{ field?.label}</Typography>
+          <Label label={ field.variant } />
+        </Stack>
+      }			
 			secondaryAction={
 				<>
 					{field.column && !field.array && (
@@ -98,23 +100,6 @@ const AdminFieldItem: React.FC<AdminFieldItemProps> = (props) => {
 							</IconButton>
 						</Tooltip>
 					)}
-					<Tooltip title="Display in forms">
-						<IconButton onClick={() => handleUpdateField('form_field')}>
-							{field.form_field ? <EditNote color="primary" /> : <EditNote />}
-						</IconButton>
-					</Tooltip>
-					{(field.column || field.attachment) && (
-						<Tooltip title="Display as table header">
-							<IconButton onClick={() => handleUpdateField('table_header')}>
-								{field.table_header ? (
-									<TableRowsOutlined fontSize="small" color="primary" />
-								) : (
-									<TableRowsOutlined fontSize="small" />
-								)}
-							</IconButton>
-						</Tooltip>
-					)}
-					<Label label={field?.variant} />
 				</>
 			}
 			handleClick={handleClick}
