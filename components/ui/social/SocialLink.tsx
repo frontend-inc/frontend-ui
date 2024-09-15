@@ -17,7 +17,7 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 		provider,
 		size = 32,
 		url,
-		color = 'primary.contrastText',
+		color,
 	} = props || {}
 
 	const formatUrl = (username: string) => {

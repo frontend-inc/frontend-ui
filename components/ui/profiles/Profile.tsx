@@ -8,8 +8,7 @@ export type ProfileProps = {
 	label?: string
 	title?: string
 	description?: string
-	socialLinks?: {
-		value: string
+	socialLinks?: {		
 		provider: string
 		url: string
 	}[]
@@ -24,6 +23,8 @@ const Profile: React.FC<ProfileProps> = (props) => {
 		socialLinks = [],
 	} = props || {}
 
+  console.log('ProfileProps', props)
+
 	return (
 		<Box sx={sx.container}>
 			<Stack
@@ -37,7 +38,11 @@ const Profile: React.FC<ProfileProps> = (props) => {
 					<Stack direction="row" spacing={0}>
 						{socialLinks?.map((link, index) => (
 							<Box p={'2px'} key={index}>
-								<SocialLink url={link.url} size={28} provider={link.value} />
+								<SocialLink 
+                  url={link.url} 
+                  size={28} 
+                  provider={link.provider} 
+                />
 							</Box>
 						))}
 					</Stack>

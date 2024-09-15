@@ -33,7 +33,7 @@ const Footer: React.FC<FooterProps> = (props) => {
 				sx={sx.headerLinks}
 				direction={{ sm: 'row', xs: 'column' }}
 			>
-				<Stack sx={sx.footerMenu} direction="row" spacing={3}>
+				<Stack sx={sx.footerMenu} direction={{ sm: 'row', xs: 'column' }} spacing={3}>
         <Box sx={sx.logo}>
           <Logo handleClick={ handleLogoClick } src={logo || appLogo} width={100} height={50} />
         </Box>
@@ -182,6 +182,7 @@ const sx = {
 	},
 	grid: {
     display: 'flex',
+    flexWrap: 'wrap',
     flexDirection: {
       sm: 'row',
       xs: 'column'
