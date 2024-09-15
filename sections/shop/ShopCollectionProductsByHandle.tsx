@@ -1,10 +1,10 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CollectionProductsGridByHandle } from '../../components/shop'
-import { CollectionProductsGridProps } from '../../components/shop/collection-products/CollectionProducts'
+import { CollectionProductsByHandle } from '../../components/shop'
+import { CollectionProductsProps } from '../../components/shop/collection-products/CollectionProducts'
 import { SectionProps, HeadingProps } from '../../types'
 
-type ShopCollectionProductsProps = CollectionProductsGridProps &
+type ShopCollectionProductsProps = CollectionProductsProps &
 	SectionProps &
 	HeadingProps
 
@@ -41,7 +41,7 @@ const ShopCollectionProducts: React.FC<ShopCollectionProductsProps> = (
 				description={description}
 				textAlign={textAlign}
 			/>
-			<CollectionProductsGridByHandle {...rest} />
+			<CollectionProductsByHandle {...rest} />
 		</Section>
 	)
 }

@@ -73,6 +73,13 @@ const CurrentUserFormWizard: React.FC<CurrentUserFormWizardProps> = (props) => {
 	const handleRemove = async () => {
 		await deleteAvatar()
 	}
+ 
+  const handleRemoveAttachment = async () => {
+    await deleteAvatar()
+  }
+
+  const handleAddAttachment = async () => {
+  }  
 
 	const handleSubmit = async () => {
 		try {
@@ -155,6 +162,8 @@ const CurrentUserFormWizard: React.FC<CurrentUserFormWizardProps> = (props) => {
 								handleRemove={handleRemove}
 								resource={user}
 								setResource={setUser}
+                handleAddAttachment={handleAddAttachment}
+                handleRemoveAttachment={handleRemoveAttachment}
 							/>
 						)}
 						<FormWizardButtons

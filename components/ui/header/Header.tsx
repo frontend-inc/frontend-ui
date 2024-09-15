@@ -13,7 +13,7 @@ export type HeaderProps = {
 	enableStripe?: boolean
 	enableShopify?: boolean
 	enableNotifications?: boolean
-	links: MenuLinkType[]
+	links?: MenuLinkType[]
 	handleClick: (path: string) => void
 }
 
@@ -22,10 +22,9 @@ const Header: React.FC<HeaderProps> = (props) => {
 
 	const {
 		logo,
-		links,
+		links=[],
 		handleClick,
 		enableAuth = false,
-		enableNotifications = false,
 	} = props
 
 	return (
@@ -35,19 +34,18 @@ const Header: React.FC<HeaderProps> = (props) => {
 				enableAuth={enableAuth}
 				enableStripe={enableStripe}
 				enableShopify={enableShopify}
-				enableNotifications={enableNotifications}
 				links={links}
 				handleClick={handleClick}
 			/>
 			<MobileHeader
-				logo={logo}
+				logo={logo || appLogo}
 				enableStripe={enableStripe}
 				enableShopify={enableShopify}
 				enableNotifications
 				links={links}
 				handleClick={handleClick}
 			/>
-			<MobileDrawer
+			<MobileDrawer        
 				enableAuth={enableAuth}
 				enableStripe={enableStripe}
 				enableShopify={enableShopify}

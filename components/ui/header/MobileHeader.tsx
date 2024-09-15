@@ -12,7 +12,7 @@ type MobileNavProps = {
 	logo: string
 	logoWidth?: number
 	logoHeight?: number
-	links?: MenuLinkType[]
+	links: MenuLinkType[]
 	enableShopify?: boolean
 	enableStripe?: boolean
 	enableNotifications?: boolean

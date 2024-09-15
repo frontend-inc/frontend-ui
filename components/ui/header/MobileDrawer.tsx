@@ -8,7 +8,7 @@ import { MenuLinkType } from '../../..'
 import { useAuth } from 'frontend-js'
 
 type MobileDrawerProps = {
-	links?: MenuLinkType[]
+	links: MenuLinkType[]
 	handleClick: (path: string) => void
 	enableAuth?: boolean
 	enableStripe?: boolean

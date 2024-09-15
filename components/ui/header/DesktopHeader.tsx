@@ -8,9 +8,9 @@ import { useApp } from '../../../hooks'
 import { MenuLinkType } from '../../..'
 import TopMenuItem from './TopMenuItem'
 
-type DesktopHeader = {
+type DesktopHeaderProps = {
 	logo: string
-	links?: MenuLinkType[]
+	links: MenuLinkType[]
 	enableAuth?: boolean
 	enableShopify?: boolean
 	enableStripe?: boolean

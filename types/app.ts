@@ -14,17 +14,12 @@ export type MenuLinkTypes =
 	| 'url'
 
 export type MenuLinkType = {
-	name: string
-	path: string
-	header?: boolean
+	label: string
+	path: string	
 	url?: string
 	icon?: string
 	link_type?: MenuLinkTypes
-	require_auth?: boolean
 	position: number
-	document_id?: number
-	collection_id?: number
-	parent_id?: number | null
 	shopify_handle?: string
 	children: MenuLinkType[] | []
 }

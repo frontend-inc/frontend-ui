@@ -13,7 +13,6 @@ export type ProfileProps = {
 		provider: string
 		url: string
 	}[]
-	buttons?: ButtonType[]
 }
 
 const Profile: React.FC<ProfileProps> = (props) => {
@@ -23,7 +22,6 @@ const Profile: React.FC<ProfileProps> = (props) => {
 		image,
 		description,
 		socialLinks = [],
-		buttons = [],
 	} = props || {}
 
 	return (
@@ -57,16 +55,6 @@ const Profile: React.FC<ProfileProps> = (props) => {
 						)}
 					</Stack>
 				</Stack>
-				{buttons?.length > 0 && (
-					<Stack direction="row" sx={sx.buttons}>
-						<ButtonActions
-							numVisible={1}
-							buttons={buttons}
-							resource={user}
-							user={user}
-						/>
-					</Stack>
-				)}
 			</Stack>
 		</Box>
 	)

@@ -7,9 +7,9 @@ import { useApp } from '../../../hooks'
 
 export type FooterProps = {
 	logo?: string
-	links: MenuLinkType[]
-	legalLinks: MenuLinkType[]
-	socialLinks: {
+	links?: MenuLinkType[]
+	legalLinks?: MenuLinkType[]
+	socialLinks?: {
 		label: string
 		provider: string
 		url: string
@@ -19,13 +19,17 @@ export type FooterProps = {
 }
 
 const Footer: React.FC<FooterProps> = (props) => {
-	const { logo, handleClick, links, socialLinks, legalLinks } = props
+	const { logo, handleClick, links=[], socialLinks=[], legalLinks=[] } = props
 	const { logo: appLogo } = useApp()
+
+  const handleLogoClick = () => {
+    handleClick('/')
+  }
 
 	return (
 		<Stack sx={sx.root} spacing={1} direction="column">
 			<Box sx={sx.logo}>
-				<Logo src={logo || appLogo} alt="logo" width={100} height={50} />
+				<Logo handleClick={ handleLogoClick } src={logo || appLogo} width={100} height={50} />
 			</Box>
 			<Stack
 				spacing={6}
