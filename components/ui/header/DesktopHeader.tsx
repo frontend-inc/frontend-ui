@@ -113,6 +113,10 @@ const sx = {
 		height: '60px',
 	},
   menuButton: {
-    px: 1
+    pl: 1,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '60px'
   }
 }

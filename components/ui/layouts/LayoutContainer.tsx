@@ -17,7 +17,8 @@ type LayoutContainerProps = {
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
-	const {
+	
+  const {
 		children,
 		notifications,
 		offsetY = 0,
@@ -25,15 +26,7 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 		requirePaid,
     roles=[]
 	} = props
-
-	const [enableNotifications, setEnableNotifications] = useState(false)
-
-	useEffect(() => {
-		if (notifications?.length > 0) {
-			setEnableNotifications(true)
-		}
-	}, [notifications])
-
+	
 	return (
 		<Box
 			sx={{
@@ -56,10 +49,8 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 						requireAuth={requireAuth}
 						requirePaid={requirePaid}
 					>						
-            <ViewScroll>
-              <Notifications notifications={notifications} />
-              {children}
-            </ViewScroll>            
+            <Notifications notifications={notifications} />
+            {children}
 					</AuthGuard>
 				</Box>
 			</Box>
