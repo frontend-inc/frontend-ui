@@ -1,5 +1,6 @@
 export { default as CmsCarousel } from './CmsCarousel'
 export { default as CmsComments } from './CmsComments'
+export { default as CmsContactForm } from './CmsContactForm'
 export { default as CmsDetails } from './CmsDetails'
 export { default as CmsEmailSignup } from './CmsEmailSignup'
 export { default as CmsForm } from './CmsForm'

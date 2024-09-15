@@ -1,2 +1,2 @@
-export { default as AdminContactsList } from './AdminContactsList'
+export { default as AdminContactList } from './AdminContactList'
 export { default as AdminContactItem } from './AdminContactItem'

@@ -1,19 +1,18 @@
 import React from 'react'
 import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
-import { AdminContactItem } from '../../../containers'
-import AdminContactForm from './AdminContactForm'
+import { AdminLeadItem } from '../..'
+import AdminLeadForm from './AdminLeadForm'
 
-const AdminContactsList: React.FC = () => {
+const AdminLeadsList: React.FC = () => {
 	const { apiUrl } = useAdmin()
 
 	return (
 		<ResourceList
 			enableBorder={false}
-			url={`${apiUrl}/contacts`}
-			name="contact"
+			url={`${apiUrl}/leads`}
+			name="lead"
 			enableSearch
-			enableCreate
 			enableEdit
 			enableShow
 			enableDelete
@@ -31,11 +30,14 @@ const AdminContactsList: React.FC = () => {
 				{ name: 'company', label: 'Company', variant: 'string' },
 				{ name: 'message', label: 'Message', variant: 'text' },
 			]}
-			edit={AdminContactForm}
-			create={AdminContactForm}
-			component={AdminContactItem}
+			edit={AdminLeadForm}
+			create={AdminLeadForm}
+			component={AdminLeadItem}
+      emptyIcon='Users'
+      emptyTitle="No leads"
+      emptyDescription='No leads have been submitted yet.'      
 		/>
 	)
 }
 
-export default AdminContactsList
+export default AdminLeadsList

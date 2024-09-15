@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Stack, Button } from '@mui/material'
 import { TypographyVariantsType } from '../../../types'
-import { Heading, TextInput, IconLoading } from '../../../components'
+import { Heading, TextInput, IconLoading } from '../..'
 import { useResource } from 'frontend-js'
 import { useAlerts } from '../../../hooks'
 
