@@ -19,7 +19,6 @@ import {
 	PriceRangeInput,
 	RadioInput,
 	RatingInput,
-	ReferenceInput,
 	SearchInput,
 	SelectInput,
 	ShopifyProductsInput,
@@ -49,8 +48,7 @@ type InputVariantType =
 	| 'numberSlider'
 	| 'phone'
 	| 'priceRange'
-	| 'radio'
-	| 'reference'
+	| 'radio'	
 	| 'search'
 	| 'select'
 	| 'shopify_products'
@@ -91,8 +89,7 @@ const Input: React.FC<InputProps> = (props) => {
 		numberSlider: NumberSliderInput,
 		phone: PhoneInput,
 		priceRange: PriceRangeInput,
-		radio: RadioInput,
-		reference: ReferenceInput,
+		radio: RadioInput,		
 		search: SearchInput,
 		select: SelectInput,
 		shopify_products: ShopifyProductsInput,

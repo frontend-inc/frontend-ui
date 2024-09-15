@@ -3,14 +3,10 @@ import { FormFieldType, SyntheticEventType } from '../../../types'
 import FormInput from './FormInput'
 
 type FormFieldProps = {
-	resource: any
 	field: FormFieldType
 	errors?: any
 	value?: any | any[]
 	url?: string
-	foreignUrl?: string
-	contentType?: string
-	fields?: FormFieldType[]
 	handleChange: (e: SyntheticEventType) => void
 	handleRemove?: (name: string) => void
 	handleAddAttachment?: (name: string, attachmentId: number) => void
@@ -21,7 +17,6 @@ type FormFieldProps = {
 
 const FormField: React.FC<FormFieldProps> = (props) => {
 	const {
-		resource,
 		field,
 		errors,
 		value,
@@ -40,11 +35,8 @@ const FormField: React.FC<FormFieldProps> = (props) => {
 		variant,
 		options,
 		url,
-		foreignUrl,
-		contentType,
 		displayField,
 		valueParam,
-		fields,
 	} = field
 
 	return (
@@ -62,12 +54,8 @@ const FormField: React.FC<FormFieldProps> = (props) => {
 			handleRemoveAttachment={handleRemoveAttachment}
 			displayField={displayField}
 			valueParam={valueParam}
-			fields={fields}
 			// Reference props
 			url={url}
-			foreignUrl={foreignUrl}
-			resource={resource}
-			contentType={contentType}
 			inputOptions={inputOptions}
 			inputParams={inputParams}
 		/>

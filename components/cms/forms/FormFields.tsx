@@ -1,16 +1,15 @@
 import React from 'react'
-import { Stack, Button } from '@mui/material'
+import { Stack } from '@mui/material'
 import FormField from './FormField'
 import { get } from 'lodash'
 import { FormFieldType } from '../../../types'
-import { IconLoading } from '../..'
 import { validateFieldConditions } from '../../../helpers'
 
 export type FormFieldsProps = {
 	loading?: boolean
 	errors: any
+  resource: any
 	fields: FormFieldType[]
-	resource: any
 	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 	handleRemove?: (name: string) => void
 	handleAddAttachment?: (name: string, attachmentId: number) => void
@@ -50,7 +49,6 @@ const FormFields: React.FC<FormFieldsProps> = (props) => {
 				return (
 					<FormField
 						key={index}
-						resource={resource}
 						errors={errors}
 						field={field}
 						value={get(resource, field.name) || field?.default}

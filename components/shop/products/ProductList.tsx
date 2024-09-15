@@ -14,9 +14,7 @@ import {
 	ProductListItems,
 	ProductHeader,
 	ProductShow,
-	ProductDelete,
 	ProductEmpty,
-	ProductToolbar,
 } from '../..'
 import { useApp } from '../../../hooks'
 
@@ -56,11 +54,7 @@ export type ProductListProps = {
 	list: React.FC<any>
 	component?: React.FC<any>
 	header?: React.FC<any>
-	toolbar?: React.FC<any>
 	show?: React.FC<any>
-	edit?: React.FC<any>
-	create?: React.FC<any>
-	destroy?: React.FC<any>
 	empty?: React.FC<any>
 	slots?: {
 		header?: any
@@ -110,13 +104,8 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		circular,
 		disableImage,
 
-		toolbarButtons = [],
 
 		enableShow,
-		enableEdit,
-		enableCreate,
-		enableDelete,
-		enableAddToList,
 		fields = [],
 		enableSearch,
 		enableFilters,
@@ -159,7 +148,6 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 			enableLikes,
 			enableFavorites,
 			enableRatings,
-			enableAddToList,
 			enableUsers,
 			enableGradient,
 			enableOverlay,
@@ -172,7 +160,6 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 			enableLikes,
 			enableFavorites,
 			enableRatings,
-			enableAddToList,
 			enableUsers,
 			enableGradient,
 			enableOverlay,
