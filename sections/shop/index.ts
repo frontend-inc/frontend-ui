@@ -6,6 +6,8 @@ export { default as ShopProductLikes } from './ShopProductLikes'
 export { default as ShopProductFavorites } from './ShopProductFavorites'
 export { default as ShopProductReviews } from './ShopProductReviews'
 
+export { default as ShopProductsSimilar } from './ShopProductsSimilar'
+
 // Product collections
 export { default as ShopProductCollectionCover } from './ShopProductCollectionCover'
 export { default as ShopCollectionProducts } from './ShopCollectionProducts'

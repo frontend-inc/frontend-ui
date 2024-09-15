@@ -8,7 +8,6 @@ import {
 	DisplayFields,
 	ButtonActions,
 	SocialButtons,
-	ExpandableText,
 	AddToCartButton,
 } from '../..'
 import { buildActions } from '../../../helpers'

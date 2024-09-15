@@ -18,11 +18,9 @@ import {
 	NoSpaceInput,
 	ShopifyProductInput,
 	ShopifyProductsInput,
-	ReferenceInput,
 	RemoteAutosuggest,
 } from '../../../components'
-import { FormFieldType, OptionType, SyntheticEventType } from '../../../types'
-import { STATES, COUNTRIES } from '../../../constants'
+import { OptionType, SyntheticEventType } from '../../../types'
 
 type FormInputProps = {
 	variant: any
@@ -36,14 +34,10 @@ type FormInputProps = {
 	handleRemove?: (name: string) => void
 	handleAddAttachment?: (name: string, attachmentId: number) => void
 	handleRemoveAttachment?: (name: string) => void
-	resource?: any
 	url?: string
-	foreignUrl?: string
-	contentType?: string
 	query?: any
 	displayField?: string //Autosuggest has an optional display field param
 	valueParam?: string // MetafieldAutosuggest has an optional value param
-	fields?: FormFieldType[]
 	inputOptions?: Record<string, React.FC>
 	inputParams?: Record<string, any>
 }
@@ -61,11 +55,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		handleRemove,
 		handleAddAttachment,
 		handleRemoveAttachment,
-		resource,
 		url,
-		foreignUrl,
-		fields,
-		contentType,
 		query = {},
 		displayField,
 		valueParam,
@@ -97,7 +87,6 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		json: JSONInput,
 		shopify: ShopifyProductInput,
 		shopify_products: ShopifyProductsInput,
-		habtm: ReferenceInput,
 		...defaultInputOptions,
 	}
 
@@ -128,13 +117,6 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		},
 		price: {
 			type: 'number',
-		},
-		habtm: {
-			resource,
-			url,
-			foreignUrl,
-			contentType,
-			fields,
 		},
 		...defaultInputParams,
 	}

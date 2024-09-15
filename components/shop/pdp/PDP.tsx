@@ -82,7 +82,7 @@ const PDP: React.FC<PDPProps> = (props) => {
 						</Stack>
 						{secondary}
 						{addToCart}
-						<ExpandableText text={description} />
+						<ExpandableText text={description || ''} />
 					</Stack>
 				</Stack>
 			</Box>

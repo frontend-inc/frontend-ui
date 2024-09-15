@@ -14,7 +14,6 @@ import {
 	ProductListItems,
 	ProductHeader,
 	ProductShow,
-	ProductForm,
 	ProductDelete,
 	ProductEmpty,
 	ProductToolbar,
@@ -129,11 +128,7 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		list: List = ProductListItems,
 		component: Component = ProductListItem,
 		show: Show = ProductShow,
-		edit: Edit = ProductForm,
-		create: Create = ProductForm,
-		destroy: Destroy = ProductDelete,
 		empty: Empty = ProductEmpty,
-		toolbar: Toolbar = ProductToolbar,
 		slots: defaultSlots = {
 			header: {},
 			toolbar: {},
@@ -182,22 +177,7 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 			enableGradient,
 			enableOverlay,
 		},
-		edit: {
-			...defaultSlots.edit,
-			fields,
-		},
-		create: {
-			...defaultSlots.create,
-			fields,
-		},
-		destroy: defaultSlots.destroy,
 		header: defaultSlots.header,
-		toolbar: {
-			...defaultSlots.toolbar,
-			enableAddToList,
-			enableDelete,
-			toolbarButtons,
-		},
 		empty: defaultSlots.empty,
 		item: {
 			...defaultSlots.item,
@@ -210,7 +190,6 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 			enableLikes,
 			enableFavorites,
 			enableRatings,
-			enableAddToList,
 			enableUsers,
 			enableGradient,
 			enableOverlay,
@@ -231,23 +210,15 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 			query={searchQuery}
 			fields={fields}
 			enableShow={enableShow}
-			enableCreate={enableCreate}
-			enableEdit={enableEdit}
-			enableAddToList={enableAddToList}
-			enableDelete={enableDelete}
 			enableSearch={enableSearch}
 			enableFilters={enableFilters}
 			enableSorting={enableSorting}
 			filterOptions={filterOptions}
 			sortOptions={sortOptions}
 			header={Header}
-			toolbar={Toolbar}
 			list={List}
 			component={Component}
-			show={Show}
-			edit={Edit}
-			create={Create}
-			destroy={Destroy}
+			show={Show}			
 			empty={Empty}
 			slots={slots}
 		/>

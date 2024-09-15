@@ -1,5 +1,5 @@
 import React from 'react'
-import { ProductDetails, ProductForm } from '../..'
+import { ProductDetails } from '../..'
 import { ProductDetailsProps } from './ProductDetails'
 import { ResourceProvider } from 'frontend-js'
 import { FormFieldType } from '../../../types'
@@ -26,7 +26,6 @@ const Product: React.FC<ProductProps> = (props) => {
 			foreignUrl={foreignUrl}
 		>
 			<ProductDetails {...props} />
-			<ProductForm fields={fields} />
 		</ResourceProvider>
 	)
 }

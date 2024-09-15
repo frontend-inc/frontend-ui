@@ -9,6 +9,4 @@ export { default as FormField } from './FormField'
 
 // Document forms
 export { default as DocumentForm } from './DocumentForm'
-export { default as DocumentFormRemote } from './DocumentFormRemote'
-export { default as DocumentFormRemoteModal } from './DocumentFormRemoteModal'
 export { default as DocumentFormWizardModal } from './DocumentFormWizardModal'
