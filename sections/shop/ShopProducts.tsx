@@ -4,7 +4,7 @@ import { ProductList } from '../../components'
 import { ProductListProps } from '../../components/shop/products/ProductList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type ShopProductListProps = SectionProps & HeadingProps & ProductListProps
+type ShopProductsProps = SectionProps & HeadingProps & ProductListProps
 
 const ShopProducts: React.FC<ShopProductsProps> = (props) => {
 	const {

@@ -1,22 +1,26 @@
 import React from 'react'
-import { ShowContainer, ShowItem } from '../..'
-import { ShowContainerProps } from './ShowContainer'
+import { ShowItem } from '../..'
 import { ShowItemProps } from './ShowItem'
+import { ResourceProvider } from 'frontend-js'
 
-export type ShowProps = ShowContainerProps & ShowItemProps
+export type ShowProps =  ShowItemProps & {
+  url: string
+  foreignUrl?: string
+  resource?: any
+}
 
 const Show: React.FC<ShowProps> = (props) => {
-	const { url, foreignUrl, fields, resource } = props || {}
+	const { url, foreignUrl, resource } = props || {}
 
 	return (
-		<ShowContainer
+		<ResourceProvider
+      name="document"
 			url={url}
 			foreignUrl={foreignUrl}
-			fields={fields}
 			resource={resource}
 		>
 			<ShowItem {...props} url={url} />
-		</ShowContainer>
+		</ResourceProvider>
 	)
 }
 

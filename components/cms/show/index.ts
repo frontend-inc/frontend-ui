@@ -1,6 +1,5 @@
 export { default as Show } from './Show'
 export { default as ShowItem } from './ShowItem'
-export { default as ShowContainer } from './ShowContainer'
 export { default as ShowLayout } from './ShowLayout'
 export { default as ShowList } from '../../ui/heros/Hero'
 export { default as ShowCover } from '../../ui/heros/HeroCover'
