@@ -10,7 +10,7 @@ type StripeProviderProps = {
 const StripeProvider = (props: StripeProviderProps) => {
 	const { children, publishableKey, customerPortalUrl } = props || {}
 
-	const value = {    
+	const value = {
 		stripeCustomerPortalUrl: customerPortalUrl,
 		stripePublishableKey: publishableKey,
 	}

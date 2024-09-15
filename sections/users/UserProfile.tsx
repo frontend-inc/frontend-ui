@@ -13,7 +13,7 @@ const CmsUser: React.FC<CmsUserProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -21,7 +21,6 @@ const CmsUser: React.FC<CmsUserProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

@@ -13,7 +13,7 @@ const AddonOkendoReviews: React.FC<AddonOkendoReviewsProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -21,7 +21,6 @@ const AddonOkendoReviews: React.FC<AddonOkendoReviewsProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

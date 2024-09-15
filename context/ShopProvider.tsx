@@ -10,11 +10,11 @@ const ShopProvider = (props: ShopProviderProps) => {
 	const { children } = props || {}
 
 	const [cartOpen, setCartOpen] = useState(false)
-  const [cart, setCart] = useState<CartType>()  
+	const [cart, setCart] = useState<CartType>()
 
 	const value = {
 		cart,
-    setCart,
+		setCart,
 		cartOpen,
 		setCartOpen,
 	}

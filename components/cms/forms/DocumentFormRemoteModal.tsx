@@ -8,7 +8,9 @@ export type DocumentFormRemoteModalProps = DocumentFormRemoteProps & {
 	handleClose: () => void
 }
 
-const DocumentFormRemoteModal: React.FC<DocumentFormRemoteModalProps> = (props) => {
+const DocumentFormRemoteModal: React.FC<DocumentFormRemoteModalProps> = (
+	props
+) => {
 	const { title, open, handleClose, ...rest } = props
 
 	return (

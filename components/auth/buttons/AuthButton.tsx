@@ -48,11 +48,11 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 		router.push(url)
 	}
 
-  useEffect(() => {
-    if(!currentUser?.id){
-      fetchMe()
-    }
-  }, [currentUser?.id])
+	useEffect(() => {
+		if (!currentUser?.id) {
+			fetchMe()
+		}
+	}, [currentUser?.id])
 
 	return (
 		<>

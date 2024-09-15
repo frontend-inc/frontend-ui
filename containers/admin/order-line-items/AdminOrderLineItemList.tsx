@@ -5,12 +5,13 @@ import AdminOrderLineItem from './AdminOrderLineItem'
 import AdminOrderLineItemToolbar from './AdminOrderLineItemToolbar'
 
 type AdminOrderLineItemsListProps = {
-  orderId: string
+	orderId: string
 }
 
-const AdminOrderLineItemsList: React.FC<AdminOrderLineItemsListProps> = (props) => {
-
-  const { orderId } = props || {}
+const AdminOrderLineItemsList: React.FC<AdminOrderLineItemsListProps> = (
+	props
+) => {
+	const { orderId } = props || {}
 	const { apiUrl } = useAdmin()
 
 	return (
@@ -20,12 +21,12 @@ const AdminOrderLineItemsList: React.FC<AdminOrderLineItemsListProps> = (props) 
 			name={'order'}
 			enableSearch
 			enableEdit
-      query={{
-        sort_by: 'created_at',
-        sort_direction: 'desc'
-      }}
-      component={AdminOrderLineItem}			
-			toolbar={AdminOrderLineItemToolbar}			
+			query={{
+				sort_by: 'created_at',
+				sort_direction: 'desc',
+			}}
+			component={AdminOrderLineItem}
+			toolbar={AdminOrderLineItemToolbar}
 			emptyIcon="Shirt"
 			emptyTitle="No order line items"
 			emptyDescription="No order line items."

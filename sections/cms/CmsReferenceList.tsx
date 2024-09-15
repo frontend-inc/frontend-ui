@@ -17,7 +17,7 @@ const CmsReferenceList: React.FC<CmsReferenceListProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -29,7 +29,6 @@ const CmsReferenceList: React.FC<CmsReferenceListProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 		>
 			<Heading

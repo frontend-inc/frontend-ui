@@ -21,7 +21,7 @@ const ShopCollectionProducts: React.FC<ShopCollectionProductsProps> = (
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -29,7 +29,6 @@ const ShopCollectionProducts: React.FC<ShopCollectionProductsProps> = (
 	return (
 		<Section
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

@@ -69,11 +69,7 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 	const bgColor = get(theme, `palette.${color}`)
 
 	return (
-		<IconButton
-      sx={ sx.iconButton }      
-      size="small" 
-      onClick={handleClick}
-    >
+		<IconButton sx={sx.iconButton} size="small" onClick={handleClick}>
 			<SocialIcon
 				bgColor={bgColor}
 				network={provider}
@@ -89,7 +85,7 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 export default SocialLink
 
 const sx = {
-  iconButton: {
-    p: '2px',
-  }
+	iconButton: {
+		p: '2px',
+	},
 }

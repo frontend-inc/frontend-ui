@@ -17,7 +17,7 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -25,7 +25,6 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

@@ -10,9 +10,7 @@ const LikesGrid: React.FC<CollectionListProps> = (props) => {
 		method: 'likes',
 	}
 
-	return(
-    <CollectionList query={query} {...rest} />
-  )
+	return <CollectionList query={query} {...rest} />
 }
 
 export default LikesGrid

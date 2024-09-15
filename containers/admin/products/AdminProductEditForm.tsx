@@ -12,7 +12,7 @@ const AdminProductForm: React.FC<AdminProductFormProps> = (props) => {
 	const { metafields = [] } = props || {}
 
 	let fields = [
-    { label: 'Image', name: 'image', variant: 'media' },
+		{ label: 'Image', name: 'image', variant: 'media' },
 		{ label: 'Handle', name: 'handle', variant: 'string' },
 		{ label: 'Title', name: 'title', variant: 'string' },
 		{ label: 'Description', name: 'description', variant: 'text' },
@@ -36,17 +36,11 @@ const AdminProductForm: React.FC<AdminProductFormProps> = (props) => {
 		...metafields,
 	]
 
-  const inputOptions = {
-    media: MediaInput
-  }
+	const inputOptions = {
+		media: MediaInput,
+	}
 
-	return (
-		<ResourceForm 
-      { ...props }
-      fields={fields}
-      inputOptions={inputOptions}      
-    />
-	)
+	return <ResourceForm {...props} fields={fields} inputOptions={inputOptions} />
 }
 
 export default AdminProductForm

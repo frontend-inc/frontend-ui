@@ -26,12 +26,7 @@ type DocumentEditProps = {
 const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 	const router = useRouter()
 
-	const {
-		appId,
-		documentId,
-		collectionId,
-		enableUsers,
-	} = props
+	const { appId, documentId, collectionId, enableUsers } = props
 
 	const [saveLoading, setSaveLoading] = useState(false)
 	const [publishLoading, setPublishLoading] = useState(false)

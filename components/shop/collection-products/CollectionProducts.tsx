@@ -7,11 +7,8 @@ export type CollectionProductsProps = ProductListProps & {
 	productCollectionId: string
 }
 
-const CollectionProducts: React.FC<CollectionProductsProps> = (
-	props
-) => {
-	
-  let { query = {}, productCollectionId, ...rest } = props
+const CollectionProducts: React.FC<CollectionProductsProps> = (props) => {
+	let { query = {}, productCollectionId, ...rest } = props
 
 	query = {
 		...query,

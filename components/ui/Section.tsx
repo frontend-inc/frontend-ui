@@ -50,10 +50,7 @@ const Section: React.FC<SectionProps> = (props) => {
 							maxWidth: width,
 						}}
 					>
-						<AuthGuard
-							requireAuth={requireAuth}
-							requirePaid={requirePaid}
-						>
+						<AuthGuard requireAuth={requireAuth} requirePaid={requirePaid}>
 							{children}
 						</AuthGuard>
 					</Box>

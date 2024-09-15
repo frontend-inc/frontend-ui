@@ -17,9 +17,7 @@ type TopShopifyAuthButtonProps = {
 	icon: string
 }
 
-const TopShopifyAuthButton: React.FC<TopShopifyAuthButtonProps> = (
-	props
-) => {
+const TopShopifyAuthButton: React.FC<TopShopifyAuthButtonProps> = (props) => {
 	const { handleClick, icon } = props
 
 	return (

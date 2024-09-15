@@ -2,16 +2,16 @@ import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../../../context'
 import { useAuth } from 'frontend-js'
 import { Icon, Modal, MyAccountForm } from '../../../components'
-import {	
-  StripeCustomerPortal,
-  ShopifyCustomerPortal 
+import {
+	StripeCustomerPortal,
+	ShopifyCustomerPortal,
 } from '../../../components'
 import MyAccountTabs from './MyAccountTabs'
 import { Box, Button } from '@mui/material'
 import { MetafieldType } from '../../../types'
 
 type MyAccountModalProps = {
-  enableStripe?: boolean
+	enableStripe?: boolean
 	metafields?: MetafieldType[]
 }
 
@@ -45,11 +45,11 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 	}
 
 	const handleClick = (tab: any) => {
-    if(tab.url){
-      window.open(tab.url, '_blank')
-    }else{
-      setCurrentTab(tab.value)
-    }		
+		if (tab.url) {
+			window.open(tab.url, '_blank')
+		} else {
+			setCurrentTab(tab.value)
+		}
 	}
 
 	return (
@@ -66,7 +66,7 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 			{currentTab == null ? (
 				<MyAccountTabs
 					tab={currentTab}
-          enableStripe={enableStripe}
+					enableStripe={enableStripe}
 					handleClick={handleClick}
 				/>
 			) : (
@@ -96,12 +96,8 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 						metafields={metafields}
 					/>
 				)}
-        { currentTab == 1 && (
-          <StripeCustomerPortal />
-        )}        
-        { currentTab == 2 && (
-          <ShopifyCustomerPortal />
-        )}        
+				{currentTab == 1 && <StripeCustomerPortal />}
+				{currentTab == 2 && <ShopifyCustomerPortal />}
 			</Box>
 		</Modal>
 	)

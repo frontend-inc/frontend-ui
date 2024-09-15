@@ -2,7 +2,7 @@ import React from 'react'
 import { Stack } from '@mui/material'
 import { LoadMore, DataLayout } from '../..'
 import { useResourceContext } from 'frontend-js'
-import {  ImageCard } from '../..'
+import { ImageCard } from '../..'
 import { useForms } from '../../../hooks'
 
 export type ImageListItemsProps = {
@@ -54,7 +54,7 @@ const ImageListItems: React.FC<ImageListItemsProps> = (props) => {
 					<ImageCard
 						key={resource.id}
 						image={resource?.image?.url}
-						primary={resource?.title}						
+						primary={resource?.title}
 						slots={{
 							image: {
 								enableGradient,

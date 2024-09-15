@@ -5,21 +5,18 @@ import CartLineItems from './CartLineItems'
 import CheckoutButton from './CheckoutButton'
 
 const Cart: React.FC = () => {
+	const { cartOpen, setCartOpen } = useCart()
 
-  const { cartOpen, setCartOpen } = useCart()
-
-  return(
-    <Drawer
-      open={ cartOpen }
-      handleClose={() => setCartOpen(false)}
-      title="My Cart"
-      buttons={
-        <CheckoutButton />
-      }
-    >
-      <CartLineItems />
-    </Drawer>
-  )
+	return (
+		<Drawer
+			open={cartOpen}
+			handleClose={() => setCartOpen(false)}
+			title="My Cart"
+			buttons={<CheckoutButton />}
+		>
+			<CartLineItems />
+		</Drawer>
+	)
 }
 
 export default Cart

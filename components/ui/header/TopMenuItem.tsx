@@ -67,9 +67,7 @@ const TopMenuItem: React.FC<TopMenuItemProps> = (props) => {
 			<Button
 				sx={sx.menuButton}
 				onClick={(ev) => handleMenuClick(ev, menuItem)}
-        startIcon={ 
-          menuItem?.icon && <Icon name={menuItem.icon} /> 
-        }
+				startIcon={menuItem?.icon && <Icon name={menuItem.icon} />}
 				endIcon={
 					(children?.length > 0 ||
 						menuItem?.link_type == 'shopify_collection') && (

@@ -6,32 +6,31 @@ import FormWizardButtons from './wizard/FormWizardButtons'
 import { SyntheticEventType } from '../../../types'
 
 export type FormWizardProps = {
-  loading?: boolean
-  errors?: any
+	loading?: boolean
+	errors?: any
 	resource?: any
-  setResource: (resource: any) => void
-  handleChange: (ev: SyntheticEventType) => void
-  handleSubmit: () => void
-  handleRemove: (field: any) => void
-  handleAddAttachment: (field: string, attachmentId: number) => void
-  handleRemoveAttachment: (field: string) => void	
-  buttonText?: string
+	setResource: (resource: any) => void
+	handleChange: (ev: SyntheticEventType) => void
+	handleSubmit: () => void
+	handleRemove: (field: any) => void
+	handleAddAttachment: (field: string, attachmentId: number) => void
+	handleRemoveAttachment: (field: string) => void
+	buttonText?: string
 	fields: any[]
-  handleSuccess?: () => void
+	handleSuccess?: () => void
 }
 
 const FormWizard: React.FC<FormWizardProps> = (props) => {
-
 	const {
 		resource,
-    setResource,
+		setResource,
 		fields = [],
-    handleChange,
-    handleSubmit,
-    handleRemove,
-    buttonText="Submit",
-    handleAddAttachment,
-    handleRemoveAttachment,		    
+		handleChange,
+		handleSubmit,
+		handleRemove,
+		buttonText = 'Submit',
+		handleAddAttachment,
+		handleRemoveAttachment,
 	} = props
 
 	const [currentField, setCurrentField] = useState()
@@ -73,31 +72,31 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-      <FormWizardProgress currentStep={currentStep} totalSteps={totalSteps} />
-      <Box sx={sx.formContainer}>
-        <Box sx={sx.form}>
-          {currentField && (
-            <FormWizardField
-              fadeIn={fadeIn}
-              field={currentField}
-              handleChange={handleChange}
-              handleRemove={handleRemove}
-              handleAddAttachment={handleAddAttachment}
-              handleRemoveAttachment={handleRemoveAttachment}
-              resource={resource}
-              setResource={setResource}
-            />
-          )}
-          <FormWizardButtons
-            currentStep={currentStep}
-            totalSteps={totalSteps}
-            handleNextStep={handleNextStep}
-            handlePrevStep={handlePrevStep}
-            handleSubmit={handleSubmit}
-            buttonText={buttonText}
-          />
-        </Box>
-      </Box>
+			<FormWizardProgress currentStep={currentStep} totalSteps={totalSteps} />
+			<Box sx={sx.formContainer}>
+				<Box sx={sx.form}>
+					{currentField && (
+						<FormWizardField
+							fadeIn={fadeIn}
+							field={currentField}
+							handleChange={handleChange}
+							handleRemove={handleRemove}
+							handleAddAttachment={handleAddAttachment}
+							handleRemoveAttachment={handleRemoveAttachment}
+							resource={resource}
+							setResource={setResource}
+						/>
+					)}
+					<FormWizardButtons
+						currentStep={currentStep}
+						totalSteps={totalSteps}
+						handleNextStep={handleNextStep}
+						handlePrevStep={handlePrevStep}
+						handleSubmit={handleSubmit}
+						buttonText={buttonText}
+					/>
+				</Box>
+			</Box>
 		</Box>
 	)
 }

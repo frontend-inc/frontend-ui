@@ -101,7 +101,7 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 					</ListItemIcon>
 				)}
 				{avatar && <ListItemIcon sx={sx.listItemIcon}>{avatar}</ListItemIcon>}
-        {image && (
+				{image && (
 					<ListItemIcon sx={sx.listItemImage}>
 						<Image src={image} width={64} height={64} alt={image} />
 					</ListItemIcon>
@@ -161,13 +161,13 @@ const sx = {
 		alignItems: 'center',
 	},
 	listItemIcon: {
-		mr: 2,    
+		mr: 2,
 	},
-	listItemImage: {		
-    mr: 2,
+	listItemImage: {
+		mr: 2,
 		minWidth: 64,
-    display: 'flex',
-    justifyContent: 'flex-end',
+		display: 'flex',
+		justifyContent: 'flex-end',
 	},
 	checkbox: {
 		width: 24,

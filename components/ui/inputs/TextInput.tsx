@@ -11,7 +11,7 @@ type TextInputProps = TextInputPropsType & {
 	onFocus?: () => void
 	debounceDelay?: number
 	disableDebounce?: boolean
-  fontSize?: number
+	fontSize?: number
 }
 
 const TextInput: React.FC<TextInputProps> = (props) => {
@@ -32,7 +32,7 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 		onBlur,
 		onFocus,
 		info,
-    fontSize,
+		fontSize,
 		debounceDelay = 350,
 		disableDebounce = false,
 	} = props
@@ -84,13 +84,13 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 						rows={rows}
 						error={error ? true : false}
 						sx={{
-							...sx.inputBase,              
+							...sx.inputBase,
 							...((error && sx.inputError) || {}),
 							...styles,
-              '& input, & .MuiInputBase-inputMultiline': {
-                ...sx.inputBase['& input, & .MuiInputBase-inputMultiline'],
-                fontSize
-              }      
+							'& input, & .MuiInputBase-inputMultiline': {
+								...sx.inputBase['& input, & .MuiInputBase-inputMultiline'],
+								fontSize,
+							},
 						}}
 						multiline={multiline}
 						autoComplete="off"

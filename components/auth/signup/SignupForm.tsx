@@ -10,8 +10,8 @@ type SignupFormProps = {
 	handleSubmit: () => void
 	handleLogin: false | (() => void)
 	disableUsername?: boolean
-  enableGoogle?: boolean
-  handleGoogleSuccess?: () => void
+	enableGoogle?: boolean
+	handleGoogleSuccess?: () => void
 }
 
 const SignupForm: React.FC<SignupFormProps> = (props) => {
@@ -20,16 +20,16 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 		errors,
 		user,
 		handleChange,
-    enableGoogle,
+		enableGoogle,
 		disableUsername = false,
 		handleSubmit,
 		handleLogin,
-    handleGoogleSuccess
+		handleGoogleSuccess,
 	} = props || {}
 
 	return (
 		<Stack spacing={1.5}>
-      {enableGoogle && (
+			{enableGoogle && (
 				<GoogleLoginButton handleSuccess={handleGoogleSuccess} />
 			)}
 			{!disableUsername && (

@@ -22,9 +22,7 @@ type CartQuantityInputProps = {
 	handleRemoveQuantity: (event: any) => void
 }
 
-const CartQuantityInput: React.FC<CartQuantityInputProps> = (
-	props
-) => {
+const CartQuantityInput: React.FC<CartQuantityInputProps> = (props) => {
 	const { quantity, handleAddQuantity, handleRemoveQuantity } = props
 
 	return (
@@ -50,17 +48,12 @@ const CartLineItem: React.FC<CartLineItemProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useApp()
 
-	const { 
-    loading, 
-    addQuantity, 
-    removeQuantity, 
-    removeFromCart  
-  } = useCart()
+	const { loading, addQuantity, removeQuantity, removeFromCart } = useCart()
 
 	const { setCartOpen } = useCart()
 
 	const { id, quantity, product } = lineItem || {}
-	
+
 	const handleAddQuantity = async () => {
 		await addQuantity(product?.id)
 	}
@@ -92,16 +85,16 @@ const CartLineItem: React.FC<CartLineItemProps> = (props) => {
 			}
 		>
 			<ListItemIcon sx={sx.listItemIcon}>
-				<Badge badgeContent={quantity} color="secondary">					
-          <Box sx={ sx.image }>
-            <Image
-              alt={product?.title || ''}
-              src={product?.image?.url}
-              height={96}
-              width={96}
-              handleClick={ handleClick }
-            />		
-          </Box>			
+				<Badge badgeContent={quantity} color="secondary">
+					<Box sx={sx.image}>
+						<Image
+							alt={product?.title || ''}
+							src={product?.image?.url}
+							height={96}
+							width={96}
+							handleClick={handleClick}
+						/>
+					</Box>
 				</Badge>
 			</ListItemIcon>
 			<ListItemText
@@ -109,9 +102,7 @@ const CartLineItem: React.FC<CartLineItemProps> = (props) => {
 				secondary={
 					<Stack spacing={0.5}>
 						<Stack direction="row" spacing={1}>
-							<Typography variant="body2">
-								{ product?.display_price }
-							</Typography>
+							<Typography variant="body2">{product?.display_price}</Typography>
 						</Stack>
 						<Box>
 							<CartQuantityInput
@@ -164,8 +155,8 @@ const sx = {
 		alignItems: 'flex-end',
 		justifyContent: 'space-between',
 	},
-  image: {
-    width: 96,
-    height: 96,
-  }
+	image: {
+		width: 96,
+		height: 96,
+	},
 }

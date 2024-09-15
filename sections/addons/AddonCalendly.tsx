@@ -13,7 +13,7 @@ const AddonCalendly: React.FC<AddonCalendlyProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -21,7 +21,6 @@ const AddonCalendly: React.FC<AddonCalendlyProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

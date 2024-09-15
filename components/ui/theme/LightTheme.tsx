@@ -11,14 +11,13 @@ type LightThemeProps = {
 const LightTheme: React.FC<LightThemeProps> = (props) => {
 	const { children } = props || {}
 	return (
-		<ThemeProvider 
-      theme={
-        createTheme({
-          ...muiTheme,
-          //@ts-ignore 
-          palette: light 
-        })
-    }>
+		<ThemeProvider
+			theme={createTheme({
+				...muiTheme,
+				//@ts-ignore
+				palette: light,
+			})}
+		>
 			{children}
 		</ThemeProvider>
 	)

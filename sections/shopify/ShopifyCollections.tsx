@@ -17,7 +17,7 @@ const ShopifyCollections: React.FC<ShopifyCollectionsProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -25,7 +25,6 @@ const ShopifyCollections: React.FC<ShopifyCollectionsProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

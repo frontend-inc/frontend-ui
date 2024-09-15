@@ -13,7 +13,7 @@ const CmsVimeo: React.FC<CmsVimeoProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -21,7 +21,6 @@ const CmsVimeo: React.FC<CmsVimeoProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

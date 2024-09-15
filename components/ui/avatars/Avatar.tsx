@@ -3,7 +3,7 @@ import { Box, Avatar as MuiAvatar, Typography } from '@mui/material'
 
 type UserAvatarProps = {
 	src?: string
-  variant?: 'circular' | 'rounded' | 'square'
+	variant?: 'circular' | 'rounded' | 'square'
 	label?: string
 	size?: number
 	color?: string
@@ -14,18 +14,18 @@ type UserAvatarProps = {
 const Avatar: React.FC<UserAvatarProps> = (props) => {
 	const {
 		src,
-		color='#333333',
+		color = '#333333',
 		label,
-    variant='circular',
+		variant = 'circular',
 		enableGradient = false,
 		enableOverlay = false,
 		size = 40,
 	} = props
-  
+
 	return (
 		<MuiAvatar
 			src={src}
-      variant={variant}
+			variant={variant}
 			sx={{
 				...sx.avatar,
 				height: size,
@@ -52,7 +52,7 @@ const sx = {
 	avatar: {
 		display: 'flex',
 		pt: '2px',
-		bgcolor: 'secondary.main',		
+		bgcolor: 'secondary.main',
 	},
 	overlay: {
 		'&::after': {

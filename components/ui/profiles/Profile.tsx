@@ -1,35 +1,30 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
-import {
-  Avatar,
-	ButtonActions,
-	ExpandableText,
-	SocialLink 
-} from '../..'
+import { Avatar, ButtonActions, ExpandableText, SocialLink } from '../..'
 import { ButtonType } from '../../../types'
 
 export type ProfileProps = {
 	image?: string
-  label?: string
-  title?: string
-  description?: string
-  socialLinks?: {
-    value: string
-    provider: string
-    url: string
-  }[]
+	label?: string
+	title?: string
+	description?: string
+	socialLinks?: {
+		value: string
+		provider: string
+		url: string
+	}[]
 	buttons?: ButtonType[]
 }
 
 const Profile: React.FC<ProfileProps> = (props) => {
 	const {
-    label,
+		label,
 		title,
-    image,
-    description,	
+		image,
+		description,
 		socialLinks = [],
 		buttons = [],
-	} = props || {}	
+	} = props || {}
 
 	return (
 		<Box sx={sx.container}>
@@ -40,18 +35,14 @@ const Profile: React.FC<ProfileProps> = (props) => {
 				alignItems="flex-start"
 			>
 				<Stack direction="column" spacing={1} alignItems="center">
-					<Avatar src={image} size={120} enableGradient />          
-          <Stack direction="row" spacing={0}>
-            { socialLinks?.map((link, index) => (
-              <Box p={'2px'} key={index}>
-                <SocialLink                 
-                  url={ link.url }
-                  size={28}
-                  provider={ link.value }
-                />
-              </Box>
-            ))}
-          </Stack>
+					<Avatar src={image} size={120} enableGradient />
+					<Stack direction="row" spacing={0}>
+						{socialLinks?.map((link, index) => (
+							<Box p={'2px'} key={index}>
+								<SocialLink url={link.url} size={28} provider={link.value} />
+							</Box>
+						))}
+					</Stack>
 				</Stack>
 				<Stack direction="column" spacing={1}>
 					<Typography variant="caption" color="text.secondary" sx={sx.username}>
@@ -60,7 +51,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
 					<Typography variant="h6" color="text.primary" sx={sx.name}>
 						{title}
 					</Typography>
-					<Stack direction="column" spacing={1}>						
+					<Stack direction="column" spacing={1}>
 						{description && (
 							<ExpandableText text={description} color="text.secondary" />
 						)}

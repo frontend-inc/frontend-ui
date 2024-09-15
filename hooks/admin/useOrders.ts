@@ -43,7 +43,7 @@ const useOrders = () => {
 		reloadOne: reloadOrder,
 		reloadMany: reloadOrders,
 		setResource: setOrder,
-		setResources: setOrders,		
+		setResources: setOrders,
 		startIndex,
 		endIndex,
 		paginate,

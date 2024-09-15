@@ -29,22 +29,20 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 		enableShopify = false,
 	} = props
 
-  const { setMenuOpen } = useApp()
+	const { setMenuOpen } = useApp()
 
 	return (
 		<Hidden mdDown>
-			<Box
-				sx={ sx.appBar }				
-			>
+			<Box sx={sx.appBar}>
 				<Box width={'100%'}>
 					<Box sx={sx.desktop}>
-            { links?.length > MAX_LINKS && (
-              <Box sx={sx.menuButton}>
-                <IconButton onClick={() => setMenuOpen(true)}>
-                  <Icon name="Menu" size={24} />
-                </IconButton>
-              </Box>
-            )}
+						{links?.length > MAX_LINKS && (
+							<Box sx={sx.menuButton}>
+								<IconButton onClick={() => setMenuOpen(true)}>
+									<Icon name="Menu" size={24} />
+								</IconButton>
+							</Box>
+						)}
 						<Box sx={sx.leftMenu}>
 							<Logo
 								src={logo}
@@ -54,8 +52,8 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 							/>
 						</Box>
 						<Box sx={sx.centerMenu}>
-							{links?.length <= MAX_LINKS && 
-                links?.map((menuItem, index) => (
+							{links?.length <= MAX_LINKS &&
+								links?.map((menuItem, index) => (
 									<TopMenuItem
 										key={index}
 										menuItem={menuItem}
@@ -65,8 +63,8 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 						</Box>
 						<Box sx={sx.rightMenu}>
 							{enableAuth && <AuthButton />}
-              {enableStripe && <CartButton /> }							
-							{enableShopify && <ShopifyCartButton /> }
+							{enableStripe && <CartButton />}
+							{enableShopify && <ShopifyCartButton />}
 						</Box>
 					</Box>
 				</Box>
@@ -79,7 +77,7 @@ export default DesktopHeader
 
 const sx = {
 	appBar: {
-    width: '100%',
+		width: '100%',
 		height: 64,
 		bgcolor: 'background.default',
 	},
@@ -112,11 +110,11 @@ const sx = {
 		justifyContent: 'flex-end',
 		height: '60px',
 	},
-  menuButton: {
-    pl: 1,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '60px'
-  }
+	menuButton: {
+		pl: 1,
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		height: '60px',
+	},
 }

@@ -4,4 +4,3 @@ export { default as MyAccountModal } from './MyAccountModal'
 export { default as MyAccountUserItem } from './MyAccountUserItem'
 export { default as ShopifyCustomerPortal } from './ShopifyCustomerPortal'
 export { default as StripeCustomerPortal } from './StripeCustomerPortal'
-

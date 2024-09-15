@@ -13,7 +13,7 @@ const CmsShopifyProduct: React.FC<CmsShopifyProductProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -21,7 +21,6 @@ const CmsShopifyProduct: React.FC<CmsShopifyProductProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

@@ -1,4 +1,3 @@
-
 export const BASE_FIELD_TEMPLATE = {
 	internal: true,
 	editable: true,
@@ -283,7 +282,7 @@ export const SHOPIFY_PRODUCTS_FIELD_TEMPLATE = {
 	name: 'shopify_products',
 	label: 'Shopify Products',
 	db_type: 'string',
-  array: true,
+	array: true,
 	variant: 'shopify_products',
 	filterable: false,
 	sortable: false,
@@ -292,12 +291,11 @@ export const SHOPIFY_PRODUCTS_FIELD_TEMPLATE = {
 	form_field: false,
 }
 
-
 export const BASE_FIELD_TEMPLATES = [
-  IMAGE_FIELD_TEMPLATE,
+	IMAGE_FIELD_TEMPLATE,
 	HANDLE_FIELD_TEMPLATE,
 	LABEL_FIELD_TEMPLATE,
 	TITLE_FIELD_TEMPLATE,
 	DESCRIPTION_FIELD_TEMPLATE,
-	TAGS_FIELD_TEMPLATE
+	TAGS_FIELD_TEMPLATE,
 ]

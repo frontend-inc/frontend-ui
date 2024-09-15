@@ -30,7 +30,6 @@ type CollectionListItemProps = {
 }
 
 const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
-
 	const {
 		buttons,
 		resource,
@@ -63,12 +62,7 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 			image={resource?.image?.url}
 			primary={resource?.title}
 			handleClick={handleClick}
-			secondary={
-				<SecondaryFields
-					fields={displayFields}
-					resource={resource}
-				/>
-			}
+			secondary={<SecondaryFields fields={displayFields} resource={resource} />}
 			actions={
 				<Box>
 					<SocialButtons
@@ -82,11 +76,7 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 				</Box>
 			}
 			secondaryAction={
-				<ButtonActions
-					numVisible={0}
-					buttons={buttons}
-					resource={resource}
-				/>
+				<ButtonActions numVisible={0} buttons={buttons} resource={resource} />
 			}
 			slots={{
 				image: {

@@ -79,9 +79,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 						<Typography sx={sx.title} variant={'h6'}>
 							{title}
 						</Typography>
-            <ExpandableText 
-              text={ description }
-            />						
+						<ExpandableText text={description} />
 						{buttonText && (
 							<Box sx={sx.buttons}>
 								<Button

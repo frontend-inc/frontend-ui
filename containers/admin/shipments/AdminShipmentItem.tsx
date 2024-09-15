@@ -1,13 +1,9 @@
 import React from 'react'
-import {
-	Label,  
-	ResourceListItem,
-} from '../../../components'
+import { Label, ResourceListItem } from '../../../components'
 import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
 
 const AdminShipment: React.FC<ResourceItemProps> = (props) => {
-	
-  const {
+	const {
 		resource: shipment,
 		selectable,
 		selected,
@@ -18,18 +14,17 @@ const AdminShipment: React.FC<ResourceItemProps> = (props) => {
 		...rest
 	} = props
 
-  
 	return (
 		<ResourceListItem
 			selectable={selectable}
 			selected={selected}
-      color="secondary.main"
-      icon="Package"      
+			color="secondary.main"
+			icon="Package"
 			primary={shipment.carrier}
-			secondary={	shipment.tracking_code }
+			secondary={shipment.tracking_code}
 			secondaryAction={<Label label={shipment?.status} />}
 			handleEdit={handleEdit}
-      handleDelete={handleDelete}
+			handleDelete={handleDelete}
 			handleClick={handleClick}
 			handleSelect={handleSelect}
 			{...rest}
@@ -40,8 +35,8 @@ const AdminShipment: React.FC<ResourceItemProps> = (props) => {
 export default AdminShipment
 
 const sx = {
-  image: {
-    height: 64,
-    width: 64,
-  }
+	image: {
+		height: 64,
+		width: 64,
+	},
 }

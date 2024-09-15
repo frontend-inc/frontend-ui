@@ -6,13 +6,21 @@ type AppProviderProps = {
 	clientUrl: string
 	children: React.ReactNode
 	logo?: any
-  enableShopify?: boolean
-  enableStripe?: boolean
+	enableShopify?: boolean
+	enableStripe?: boolean
 	name: string
 }
 
 const AppProvider = (props: AppProviderProps) => {
-	const { children, apiUrl, clientUrl, enableShopify, enableStripe, name, logo } = props || {}
+	const {
+		children,
+		apiUrl,
+		clientUrl,
+		enableShopify,
+		enableStripe,
+		name,
+		logo,
+	} = props || {}
 
 	const [alert, setAlert] = useState()
 	const [loading, setLoading] = useState(false)
@@ -45,8 +53,8 @@ const AppProvider = (props: AppProviderProps) => {
 		menuOpen,
 		setMenuOpen,
 
-    enableShopify,
-    enableStripe,
+		enableShopify,
+		enableStripe,
 
 		loading,
 		loaded,

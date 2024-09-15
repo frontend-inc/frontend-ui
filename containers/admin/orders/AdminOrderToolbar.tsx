@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import {
-  FormModal,
+	FormModal,
 	ResourceToolbarModal,
 	PrimaryButton,
-	AlertModal
+	AlertModal,
 } from '../../../components'
 import { Stack } from '@mui/material'
 import { useOrders, useAdmin } from '../../../hooks'
@@ -13,15 +13,9 @@ const AdminOrderToolbar = (props) => {
 
 	const { open, handleClose, selectedIds, handleReload } = props || {}
 
-  const [openModal, setOpenModal] = useState(false)
+	const [openModal, setOpenModal] = useState(false)
 
-	const {
-    loading, 
-    errors,
-    order,
-    handleChange,    
-    updateOrders 
-  } = useOrders()
+	const { loading, errors, order, handleChange, updateOrders } = useOrders()
 
 	const handleUpdateClick = async () => {
 		setOpenModal(true)
@@ -36,35 +30,31 @@ const AdminOrderToolbar = (props) => {
 	return (
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
 			<Stack direction="row" spacing={1}>
-				<PrimaryButton 
-          onClick={handleUpdateClick}
-        >
-          Update
-        </PrimaryButton>
+				<PrimaryButton onClick={handleUpdateClick}>Update</PrimaryButton>
 			</Stack>
-      <FormModal 
-        errors={errors}
-        open={ openModal }
-        handleClose={ () => setOpenModal(false) }
-        title="Update Orders"
-        fields={[
-            { 
-              label: 'Status', 
-              name: 'status', 
-              variant: 'select', 
-              options: [
-                { label: 'Pending', value: 'pending' },
-                { label: 'Canceled', value: 'canceled' },
-                { label: 'Completed', value: 'completed' },
-                { label: 'Refunded', value: 'refunded' },                
-                { label: 'Exchanged', value: 'exchanged' },
-              ]
-          }
-        ]}
-        resource={ order }
-        handleChange={ handleChange }    
-        handleSubmit={ handleSubmit }    
-      />
+			<FormModal
+				errors={errors}
+				open={openModal}
+				handleClose={() => setOpenModal(false)}
+				title="Update Orders"
+				fields={[
+					{
+						label: 'Status',
+						name: 'status',
+						variant: 'select',
+						options: [
+							{ label: 'Pending', value: 'pending' },
+							{ label: 'Canceled', value: 'canceled' },
+							{ label: 'Completed', value: 'completed' },
+							{ label: 'Refunded', value: 'refunded' },
+							{ label: 'Exchanged', value: 'exchanged' },
+						],
+					},
+				]}
+				resource={order}
+				handleChange={handleChange}
+				handleSubmit={handleSubmit}
+			/>
 		</ResourceToolbarModal>
 	)
 }

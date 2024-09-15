@@ -5,8 +5,8 @@ import { UserType } from '../../../types'
 
 type UserChipProps = {
 	user: UserType
-  enableUsername?: boolean
-  enableEmail?: boolean
+	enableUsername?: boolean
+	enableEmail?: boolean
 	size?: number
 }
 
@@ -17,21 +17,21 @@ const UserChip: React.FC<UserChipProps> = (props) => {
 	return (
 		<Stack sx={sx.root} direction="row" spacing={1}>
 			<UserAvatar user={user} size={size} />
-      <Stack sx={sx.root} direction="column" spacing={0}>
-        <Typography variant="caption" color="text.secondary">
-          {user?.name}
-        </Typography>
-        {(enableEmail && user?.email) && (
-          <Typography variant="caption" color="text.secondary">
-            {user?.email}
-          </Typography>
-        )}
-        { enableUsername && (
-          <Typography variant="caption" color="text.secondary">
-            @{user?.username}
-          </Typography>
-        )}
-      </Stack>
+			<Stack sx={sx.root} direction="column" spacing={0}>
+				<Typography variant="caption" color="text.secondary">
+					{user?.name}
+				</Typography>
+				{enableEmail && user?.email && (
+					<Typography variant="caption" color="text.secondary">
+						{user?.email}
+					</Typography>
+				)}
+				{enableUsername && (
+					<Typography variant="caption" color="text.secondary">
+						@{user?.username}
+					</Typography>
+				)}
+			</Stack>
 		</Stack>
 	)
 }

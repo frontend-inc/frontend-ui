@@ -16,7 +16,7 @@ const AuthUserForm: React.FC<AuthUserFormProps> = (props) => {
 		py,
 		px,
 		maxWidth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -24,7 +24,6 @@ const AuthUserForm: React.FC<AuthUserFormProps> = (props) => {
 	return (
 		<Section
 			requireAuth
-			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

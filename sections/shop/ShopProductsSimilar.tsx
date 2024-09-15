@@ -17,7 +17,7 @@ const ShopProductsSimilar: React.FC<ShopProductsSimilarProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -25,7 +25,6 @@ const ShopProductsSimilar: React.FC<ShopProductsSimilarProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

@@ -18,11 +18,10 @@ export type HeaderProps = {
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
-	
-  const { logo: appLogo, enableStripe, enableShopify } = useApp()  
+	const { logo: appLogo, enableStripe, enableShopify } = useApp()
 
 	const {
-    logo,
+		logo,
 		links,
 		handleClick,
 		enableAuth = false,
@@ -31,24 +30,24 @@ const Header: React.FC<HeaderProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-      <DesktopHeader
-        logo={logo || appLogo}
-        enableAuth={enableAuth}
-        enableStripe={enableStripe}
-        enableShopify={enableShopify}
-        enableNotifications={enableNotifications}
-        links={links}
-        handleClick={handleClick}
-      />
+			<DesktopHeader
+				logo={logo || appLogo}
+				enableAuth={enableAuth}
+				enableStripe={enableStripe}
+				enableShopify={enableShopify}
+				enableNotifications={enableNotifications}
+				links={links}
+				handleClick={handleClick}
+			/>
 			<MobileHeader
 				logo={logo}
-        enableStripe={enableStripe}
+				enableStripe={enableStripe}
 				enableShopify={enableShopify}
 				enableNotifications
 				links={links}
 				handleClick={handleClick}
 			/>
-			<MobileDrawer				
+			<MobileDrawer
 				enableAuth={enableAuth}
 				enableStripe={enableStripe}
 				enableShopify={enableShopify}
@@ -63,7 +62,7 @@ export default Header
 
 const sx = {
 	root: {
-    height: 64,
+		height: 64,
 		width: '100%',
 		display: 'flex',
 		flexDirection: 'row',

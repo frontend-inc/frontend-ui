@@ -11,22 +11,21 @@ type LayoutContainerProps = {
 	footer?: React.ReactNode
 	notifications: NotificationType[]
 	offsetY?: number
-  roles?: string[]
+	roles?: string[]
 	requireAuth?: boolean
 	requirePaid?: boolean
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
-	
-  const {
+	const {
 		children,
 		notifications,
 		offsetY = 0,
 		requireAuth,
 		requirePaid,
-    roles=[]
+		roles = [],
 	} = props
-	
+
 	return (
 		<Box
 			sx={{
@@ -43,14 +42,14 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 					...sx.root,
 				}}
 			>
-				<Box sx={ sx.content}>
+				<Box sx={sx.content}>
 					<AuthGuard
 						roles={roles}
 						requireAuth={requireAuth}
 						requirePaid={requirePaid}
-					>						
-            <Notifications notifications={notifications} />
-            {children}
+					>
+						<Notifications notifications={notifications} />
+						{children}
 					</AuthGuard>
 				</Box>
 			</Box>

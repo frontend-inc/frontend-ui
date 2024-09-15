@@ -13,12 +13,12 @@ export type FormFieldsProps = {
 	resource: any
 	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 	handleRemove?: (name: string) => void
-  handleAddAttachment?: (name: string, attachmentId: number) => void
+	handleAddAttachment?: (name: string, attachmentId: number) => void
 	handleRemoveAttachment?: (name: string) => void
 	handleSubmit?: () => void
 	buttonText?: string
-  inputOptions?: Record<string, React.FC> 
-  inputParams?: Record<string, any>
+	inputOptions?: Record<string, React.FC>
+	inputParams?: Record<string, any>
 }
 
 const FormFields: React.FC<FormFieldsProps> = (props) => {
@@ -29,20 +29,20 @@ const FormFields: React.FC<FormFieldsProps> = (props) => {
 		resource,
 		handleChange,
 		handleRemove,
-    handleAddAttachment,
-    handleRemoveAttachment,
-    inputOptions,
-    inputParams,
+		handleAddAttachment,
+		handleRemoveAttachment,
+		inputOptions,
+		inputParams,
 	} = props
 
 	return (
-		<Stack 
-      spacing={1} 
-      sx={{
-        ...sx.root,
-        ...(loading && sx.loading),
-      }}
-    >
+		<Stack
+			spacing={1}
+			sx={{
+				...sx.root,
+				...(loading && sx.loading),
+			}}
+		>
 			{fields?.map((field, index) => {
 				if (!validateFieldConditions(field?.conditions || [], resource)) {
 					return null
@@ -57,13 +57,13 @@ const FormFields: React.FC<FormFieldsProps> = (props) => {
 						//@ts-ignore
 						handleChange={handleChange}
 						handleRemove={handleRemove}
-            handleAddAttachment={handleAddAttachment}
-            handleRemoveAttachment={handleRemoveAttachment}
-            inputOptions={inputOptions}
-            inputParams={inputParams}
+						handleAddAttachment={handleAddAttachment}
+						handleRemoveAttachment={handleRemoveAttachment}
+						inputOptions={inputOptions}
+						inputParams={inputParams}
 					/>
 				)
-			})}		
+			})}
 		</Stack>
 	)
 }
@@ -77,7 +77,7 @@ const sx = {
 	button: {
 		mt: 2,
 	},
-  loading: {
-    opacity: 0.5,
-  }
+	loading: {
+		opacity: 0.5,
+	},
 }

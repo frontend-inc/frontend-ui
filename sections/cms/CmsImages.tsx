@@ -17,7 +17,7 @@ const CmsImages: React.FC<CmsImagesProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -29,7 +29,6 @@ const CmsImages: React.FC<CmsImagesProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 		>
 			<Heading

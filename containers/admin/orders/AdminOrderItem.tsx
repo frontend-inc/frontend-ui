@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-	Label,
-	DisplayFields,
-	ResourceListItem,
-} from '../../../components'
+import { Label, DisplayFields, ResourceListItem } from '../../../components'
 import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
 
 const AdminOrderItem: React.FC<ResourceItemProps> = (props) => {
@@ -18,7 +14,7 @@ const AdminOrderItem: React.FC<ResourceItemProps> = (props) => {
 		...rest
 	} = props
 
-  const product = order?.order_line_items[0]?.product
+	const product = order?.order_line_items[0]?.product
 
 	return (
 		<ResourceListItem
@@ -29,10 +25,7 @@ const AdminOrderItem: React.FC<ResourceItemProps> = (props) => {
 			secondary={
 				<DisplayFields
 					resource={order}
-					fields={[
-            { label: 'Name', name: 'customer_name', variant: 'string' },
-          ]}
-          
+					fields={[{ label: 'Name', name: 'customer_name', variant: 'string' }]}
 				/>
 			}
 			secondaryAction={<Label label={order?.status} />}

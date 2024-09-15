@@ -32,16 +32,16 @@ const TabIcons: React.FC<TabIconsProps> = (props) => {
 							<Image src={logo} height={24} width={24} alt="logo" />
 						</Button>
 					)}
-					{ Array.isArray(menuItems) && 
-            menuItems?.map((item, index) => (
-						<Box px={1} key={index}>
-							<AdminTabIcon
-								selected={activeTab == item.id}
-								icon={item.icon}
-								handleClick={() => handleClick(item)}
-							/>
-						</Box>
-					))}
+					{Array.isArray(menuItems) &&
+						menuItems?.map((item, index) => (
+							<Box px={1} key={index}>
+								<AdminTabIcon
+									selected={activeTab == item.id}
+									icon={item.icon}
+									handleClick={() => handleClick(item)}
+								/>
+							</Box>
+						))}
 				</Box>
 			</Box>
 			<Stack

@@ -9,11 +9,13 @@ type AdminProductCollectionFormProps = ResourceFormProps & {
 	metafields?: FormFieldType[]
 }
 
-const AdminProductCollectionForm: React.FC<AdminProductCollectionFormProps> = (props) => {
-	const { metafields = [] } = props || {}	
+const AdminProductCollectionForm: React.FC<AdminProductCollectionFormProps> = (
+	props
+) => {
+	const { metafields = [] } = props || {}
 
 	let fields = [
-    { label: 'Media', name: 'image', variant: 'media' },
+		{ label: 'Media', name: 'image', variant: 'media' },
 		{ label: 'Handle', name: 'handle', variant: 'string' },
 		{ label: 'Title', name: 'title', variant: 'string' },
 		{ label: 'Description', name: 'description', variant: 'text' },
@@ -21,17 +23,11 @@ const AdminProductCollectionForm: React.FC<AdminProductCollectionFormProps> = (p
 		...metafields,
 	]
 
-  const inputOptions = {
-    media: MediaInput
-  }
+	const inputOptions = {
+		media: MediaInput,
+	}
 
-	return (
-    <ResourceForm 
-      fields={ fields }
-      inputOptions={ inputOptions }
-      { ...props }
-    />		
-	)
+	return <ResourceForm fields={fields} inputOptions={inputOptions} {...props} />
 }
 
 export default AdminProductCollectionForm

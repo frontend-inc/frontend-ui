@@ -17,7 +17,7 @@ const CmsComments: React.FC<CmsCommentsProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -25,7 +25,6 @@ const CmsComments: React.FC<CmsCommentsProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

@@ -44,7 +44,7 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
 
 	return (
 		<Drawer
-      disablePadding
+			disablePadding
 			open={open}
 			handleClose={handleClose}
 			title={resource?.id ? 'Edit' : 'Add'}
@@ -77,186 +77,185 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
 								handleClick={() => null}
 							/>
 						)}
-            { resource?.id ? (
-              <FormFields
-                errors={errors}
-                resource={resource}
-                handleChange={handleChange}
-                handleRemove={handleRemove}
-                fields={[{ label: 'Label', name: 'label', variant: 'string' }]}
-              />
-            ):(
-              <FormFields
-                errors={errors}
-                resource={resource}
-                handleChange={handleChange}
-                handleRemove={handleRemove}
-                fields={[
-                  { label: 'Label', name: 'label', variant: 'string' },
-                  {
-                    label: 'API name',
-                    name: 'name',
-                    variant: 'nospace',
-                    conditions: [
-                      {
-                        name: 'variant',
-                        operator: 'nin',
-                        value: [
-                          'image',
-                          'file',
-                          'video',
-                          'audio',
-                          'habtm',
-                          'shopify_products',
-                          'url',
-                          'email',
-                          'phone',
-                        ],
-                      },
-                    ],
-                  },
-                  {
-                    label: 'Options',
-                    name: 'options',
-                    variant: 'array',
-                    conditions: [
-                      {
-                        name: 'variant',
-                        operator: 'eq',
-                        value: 'select',
-                      },
-                    ],
-                  },
-                ]}
-              />
-              )}
-            </Box>
-          )}
-          <Box px={2}>
-          {tab == 2 && (
-            <FormFields
-              errors={errors}
-              resource={resource}
-              handleChange={handleChange}
-              fields={[
-                {
-                  label: 'Validate required',
-                  name: 'validate_required',
-                  variant: 'boolean',
-                },
-                {
-                  label: 'Validate unique',
-                  name: 'validate_unique',
-                  variant: 'boolean',
-                },
-                {
-                  label: 'Validate email',
-                  name: 'validate_email',
-                  variant: 'boolean',
-                },
-                {
-                  label: 'Validate phone number',
-                  name: 'validate_phone',
-                  variant: 'boolean',
-                },
-                {
-                  label: 'Validate length',
-                  name: 'validate_length',
-                  variant: 'boolean',
-                },
-                {
-                  label: 'Minimum text length',
-                  name: 'validate_length_min',
-                  variant: 'number',
-                  conditions: [
-                    {
-                      name: 'validate_length',
-                      operator: 'eq',
-                      value: true,
-                    },
-                  ],
-                },
-                {
-                  label: 'Maximum text length',
-                  name: 'validate_length_max',
-                  variant: 'number',
-                  conditions: [
-                    {
-                      name: 'validate_length',
-                      operator: 'eq',
-                      value: true,
-                    },
-                  ],
-                },
-                {
-                  label: 'Validate number range',
-                  name: 'validate_numericality',
-                  variant: 'boolean',
-                },
-                {
-                  label: 'Minimum number',
-                  name: 'validate_length_min',
-                  variant: 'number',
-                  conditions: [
-                    {
-                      name: 'validate_numericality',
-                      operator: 'eq',
-                      value: true,
-                    },
-                  ],
-                },
-                {
-                  label: 'Maximum number',
-                  name: 'validate_length_max',
-                  variant: 'number',
-                  conditions: [
-                    {
-                      name: 'validate_numericality',
-                      operator: 'eq',
-                      value: true,
-                    },
-                  ],
-                },							
-                {
-                  label: 'Validate format',
-                  name: 'validate_format',
-                  variant: 'boolean',
-                },
-                {
-                  label: 'Regex format',
-                  name: 'validate_format_regext',
-                  variant: 'string',
-                  conditions: [
-                    {
-                      name: 'validate_format',
-                      operator: 'eq',
-                      value: true,
-                    },
-                  ],
-                },	
-                {
-                  label: 'Validate inclusion',
-                  name: 'validate_inclusion',
-                  variant: 'boolean',
-                },													
-                {
-                  label: 'Allowed values',
-                  name: 'validate_inclusion_options',
-                  variant: 'array',
-                  conditions: [
-                    {
-                      name: 'validate_inclusion',
-                      operator: 'eq',
-                      value: true,
-                    },
-                  ],
-                },
-                
-              ]}
-              handleRemove={() => null}
-            />
-          )}
-        </Box>
+						{resource?.id ? (
+							<FormFields
+								errors={errors}
+								resource={resource}
+								handleChange={handleChange}
+								handleRemove={handleRemove}
+								fields={[{ label: 'Label', name: 'label', variant: 'string' }]}
+							/>
+						) : (
+							<FormFields
+								errors={errors}
+								resource={resource}
+								handleChange={handleChange}
+								handleRemove={handleRemove}
+								fields={[
+									{ label: 'Label', name: 'label', variant: 'string' },
+									{
+										label: 'API name',
+										name: 'name',
+										variant: 'nospace',
+										conditions: [
+											{
+												name: 'variant',
+												operator: 'nin',
+												value: [
+													'image',
+													'file',
+													'video',
+													'audio',
+													'habtm',
+													'shopify_products',
+													'url',
+													'email',
+													'phone',
+												],
+											},
+										],
+									},
+									{
+										label: 'Options',
+										name: 'options',
+										variant: 'array',
+										conditions: [
+											{
+												name: 'variant',
+												operator: 'eq',
+												value: 'select',
+											},
+										],
+									},
+								]}
+							/>
+						)}
+					</Box>
+				)}
+				<Box px={2}>
+					{tab == 2 && (
+						<FormFields
+							errors={errors}
+							resource={resource}
+							handleChange={handleChange}
+							fields={[
+								{
+									label: 'Validate required',
+									name: 'validate_required',
+									variant: 'boolean',
+								},
+								{
+									label: 'Validate unique',
+									name: 'validate_unique',
+									variant: 'boolean',
+								},
+								{
+									label: 'Validate email',
+									name: 'validate_email',
+									variant: 'boolean',
+								},
+								{
+									label: 'Validate phone number',
+									name: 'validate_phone',
+									variant: 'boolean',
+								},
+								{
+									label: 'Validate length',
+									name: 'validate_length',
+									variant: 'boolean',
+								},
+								{
+									label: 'Minimum text length',
+									name: 'validate_length_min',
+									variant: 'number',
+									conditions: [
+										{
+											name: 'validate_length',
+											operator: 'eq',
+											value: true,
+										},
+									],
+								},
+								{
+									label: 'Maximum text length',
+									name: 'validate_length_max',
+									variant: 'number',
+									conditions: [
+										{
+											name: 'validate_length',
+											operator: 'eq',
+											value: true,
+										},
+									],
+								},
+								{
+									label: 'Validate number range',
+									name: 'validate_numericality',
+									variant: 'boolean',
+								},
+								{
+									label: 'Minimum number',
+									name: 'validate_length_min',
+									variant: 'number',
+									conditions: [
+										{
+											name: 'validate_numericality',
+											operator: 'eq',
+											value: true,
+										},
+									],
+								},
+								{
+									label: 'Maximum number',
+									name: 'validate_length_max',
+									variant: 'number',
+									conditions: [
+										{
+											name: 'validate_numericality',
+											operator: 'eq',
+											value: true,
+										},
+									],
+								},
+								{
+									label: 'Validate format',
+									name: 'validate_format',
+									variant: 'boolean',
+								},
+								{
+									label: 'Regex format',
+									name: 'validate_format_regext',
+									variant: 'string',
+									conditions: [
+										{
+											name: 'validate_format',
+											operator: 'eq',
+											value: true,
+										},
+									],
+								},
+								{
+									label: 'Validate inclusion',
+									name: 'validate_inclusion',
+									variant: 'boolean',
+								},
+								{
+									label: 'Allowed values',
+									name: 'validate_inclusion_options',
+									variant: 'array',
+									conditions: [
+										{
+											name: 'validate_inclusion',
+											operator: 'eq',
+											value: true,
+										},
+									],
+								},
+							]}
+							handleRemove={() => null}
+						/>
+					)}
+				</Box>
 			</Box>
 		</Drawer>
 	)

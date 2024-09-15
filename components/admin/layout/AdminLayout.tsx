@@ -12,7 +12,13 @@ type AdminLayoutProps = {
 }
 
 const AdminLayout: React.FC<AdminLayoutProps> = (props) => {
-	const { logo, children, handleClick, menuItems=[], secondaryActions } = props
+	const {
+		logo,
+		children,
+		handleClick,
+		menuItems = [],
+		secondaryActions,
+	} = props
 
 	return (
 		<Box sx={sx.root}>

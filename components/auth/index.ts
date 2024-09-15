@@ -30,7 +30,6 @@ export { default as VerifyPin } from './verify/VerifyPin'
 export { default as VerifyPinForm } from './verify/VerifyPinForm'
 export { default as VerifySendPinForm } from './verify/VerifySendPinForm'
 
-
 // Users
 export * from './users'
 

@@ -29,11 +29,7 @@ const DataTableList: React.FC<DataTableListProps> = (props) => {
 		totalCount,
 	} = useResourceContext()
 
-	const {
-		headers,
-		href,
-		enableShow = false,
-	} = props || {}
+	const { headers, href, enableShow = false } = props || {}
 
 	const handleCellClick = (value, row, field) => {
 		// Todo: manage cell buttons

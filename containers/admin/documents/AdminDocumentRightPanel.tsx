@@ -24,7 +24,6 @@ type AdminDocumentRightPanelProps = {
 const AdminDocumentRightPanel: React.FC<AdminDocumentRightPanelProps> = (
 	props
 ) => {
-
 	const {
 		loading,
 		publishLoading,
@@ -55,14 +54,14 @@ const AdminDocumentRightPanel: React.FC<AdminDocumentRightPanelProps> = (
 				handleSubmit={handleSubmit}
 			/>
 			<Divider />
-      <UserAutosuggest
-        direction="row"
-        label="User"
-        errors={errors}
-        name="user_id"
-        value={document?.user_id}
-        handleChange={handleChange}
-      />
+			<UserAutosuggest
+				direction="row"
+				label="User"
+				errors={errors}
+				name="user_id"
+				value={document?.user_id}
+				handleChange={handleChange}
+			/>
 		</Stack>
 	)
 }

@@ -5,9 +5,9 @@ import {
 	IconButton,
 	List,
 	ListItem,
-  ListItemIcon,
+	ListItemIcon,
 	ListItemButton,
-	ListItemText,	
+	ListItemText,
 } from '@mui/material'
 import { useApp } from '../../../hooks'
 import { Icon, UserAvatar } from '../..'
@@ -22,33 +22,30 @@ type MyAccountMenuProps = {
 const MyAccountMenu: React.FC<MyAccountMenuProps> = (props) => {
 	const { handleClick } = props || {}
 
-  const { enableShopify, enableStripe } = useApp()
+	const { enableShopify, enableStripe } = useApp()
 
-	const TABS = [
-    { label: 'My Account', value: 0 }
-  ]
-	
-  const SUBSCRIPTION_TAB = [
-		{ 
-      label: 'Subscription', 
-      value: 1, 
-    },		
+	const TABS = [{ label: 'My Account', value: 0 }]
+
+	const SUBSCRIPTION_TAB = [
+		{
+			label: 'Subscription',
+			value: 1,
+		},
 	]
-  const SHOPIFY_TAB = [
-    { 
-      label: 'Order History', 
-      value: 2, 
-    },
-  ]
-
+	const SHOPIFY_TAB = [
+		{
+			label: 'Order History',
+			value: 2,
+		},
+	]
 
 	let tabs = TABS
-  if (enableStripe) {
-    tabs = [...tabs, ...SUBSCRIPTION_TAB]
-  }
-  if (enableShopify) {
-    tabs = [...tabs, ...SHOPIFY_TAB]
-  }
+	if (enableStripe) {
+		tabs = [...tabs, ...SUBSCRIPTION_TAB]
+	}
+	if (enableShopify) {
+		tabs = [...tabs, ...SHOPIFY_TAB]
+	}
 
 	const { currentUser } = useAuth()
 
@@ -60,16 +57,16 @@ const MyAccountMenu: React.FC<MyAccountMenuProps> = (props) => {
 			<List sx={sx.root} disablePadding>
 				{tabs?.map((tab, index) => (
 					<ListItem
-            disablePadding
-            disableGutters
+						disablePadding
+						disableGutters
 						key={index}
 						sx={sx.listItem}
 						secondaryAction={
-              <Box mr={2}>
-                <IconButton>                
-                  <Icon name={"ChevronRight"} color="text.primary" />
-                </IconButton>
-              </Box>
+							<Box mr={2}>
+								<IconButton>
+									<Icon name={'ChevronRight'} color="text.primary" />
+								</IconButton>
+							</Box>
 						}
 					>
 						<ListItemButton

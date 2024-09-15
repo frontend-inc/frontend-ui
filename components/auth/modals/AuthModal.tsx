@@ -15,16 +15,12 @@ import { useApp } from '../../../hooks'
 
 type AuthModalProps = {
 	disableUsername?: boolean
-  enableGoogle?: boolean
-  handleSuccess?: () => void
+	enableGoogle?: boolean
+	handleSuccess?: () => void
 }
 
 const AuthModal: React.FC<AuthModalProps> = (props) => {
-	const {
-    disableUsername = false, 
-    enableGoogle,
-    handleSuccess 
-  } = props
+	const { disableUsername = false, enableGoogle, handleSuccess } = props
 
 	const router = useRouter()
 	const { app_id: appId } = router.query
@@ -56,11 +52,11 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 		})
 		if (resp?.id) {
 			setAuthOpen(false)
-			if(handleSuccess){
-        handleSuccess()
-      }
+			if (handleSuccess) {
+				handleSuccess()
+			}
 		}
-	}  
+	}
 
 	const handleSignup = async () => {
 		let resp = await signup({
@@ -70,14 +66,14 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 		if (resp?.id) {
 			setAuthOpen(false)
 		}
-    if(handleSuccess){
-      handleSuccess()
-    }
+		if (handleSuccess) {
+			handleSuccess()
+		}
 	}
 
-  const handleGoogleSuccess = async () => {
-    setAuthOpen(false)
-  }
+	const handleGoogleSuccess = async () => {
+		setAuthOpen(false)
+	}
 
 	const handleSendPin = async () => {
 		await sendPin({
@@ -145,8 +141,8 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 						handleSubmit={handleLogin}
 						handleSignup={handleSignupClick}
 						handleForgotPassword={handleForgotPasswordClick}
-            enableGoogle={ enableGoogle }
-            handleGoogleSuccess={handleGoogleSuccess}
+						enableGoogle={enableGoogle}
+						handleGoogleSuccess={handleGoogleSuccess}
 					/>
 				)}
 				{tab === 1 && (
@@ -158,8 +154,8 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 						handleChange={handleChange}
 						handleSubmit={handleSignup}
 						handleLogin={handleLoginClick}
-            enableGoogle={ enableGoogle }
-            handleGoogleSuccess={handleGoogleSuccess}
+						enableGoogle={enableGoogle}
+						handleGoogleSuccess={handleGoogleSuccess}
 					/>
 				)}
 				{tab === 2 && (
@@ -215,7 +211,7 @@ const sx = {
 		justifyContent: 'center',
 	},
 	content: {
-    mt: 1,
+		mt: 1,
 		width: '100%',
 	},
 	tabsContainer: {

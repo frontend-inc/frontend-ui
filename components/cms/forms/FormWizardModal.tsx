@@ -5,28 +5,17 @@ import { Modal } from '../..'
 import { FormWizardProps } from './FormWizard'
 
 export type FormWizardModalProps = FormWizardProps & {
-  open: boolean
-  handleClose: () => void
+	open: boolean
+	handleClose: () => void
 }
 
 const FormWizardModal: React.FC<FormWizardModalProps> = (props) => {
-
-	const {
-		open,
-    handleClose,
-	} = props || {}
+	const { open, handleClose } = props || {}
 
 	return (
 		<Box sx={sx.root}>
-			<Modal
-				fullScreen
-				disablePadding
-				open={open}
-				handleClose={handleClose}
-			>
-				<FormWizard 
-          {...props}
-        />
+			<Modal fullScreen disablePadding open={open} handleClose={handleClose}>
+				<FormWizard {...props} />
 			</Modal>
 		</Box>
 	)

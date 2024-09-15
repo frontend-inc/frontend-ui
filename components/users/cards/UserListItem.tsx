@@ -1,10 +1,6 @@
 import React from 'react'
 import { Stack, Typography } from '@mui/material'
-import {
-	ResourceListItem,
-	UserAvatar,
-	DisplayFields,
-} from '../..'
+import { ResourceListItem, UserAvatar, DisplayFields } from '../..'
 import { DisplayFieldType, UserType } from '../../../types'
 
 type UserListItemProps = {

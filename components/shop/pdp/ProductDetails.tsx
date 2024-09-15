@@ -9,7 +9,7 @@ import {
 	ButtonActions,
 	SocialButtons,
 	ExpandableText,
-  AddToCartButton
+	AddToCartButton,
 } from '../..'
 import { buildActions } from '../../../helpers'
 import { Box, Stack } from '@mui/material'
@@ -77,9 +77,9 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 		<PDP
 			image={product?.image?.url}
 			primary={product?.title}
-      price={product?.display_price}
-      compareAtPrice={product?.display_compare_at_price}
-      description={product?.description}
+			price={product?.display_price}
+			compareAtPrice={product?.display_compare_at_price}
+			description={product?.description}
 			secondary={
 				<Stack spacing={2} sx={{ width: '100%' }}>
 					<Stack spacing={2} sx={{ width: '100%' }} alignItems="flex-start">
@@ -104,14 +104,11 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 					enableAddToList={enableAddToList}
 				/>
 			}
-      addToCart={
-        <Box sx={ sx.addToCart }>
-          <AddToCartButton 
-            availableForSale
-            productId={ product?.id } 
-          />
-        </Box>
-      }
+			addToCart={
+				<Box sx={sx.addToCart}>
+					<AddToCartButton availableForSale productId={product?.id} />
+				</Box>
+			}
 			secondaryAction={
 				(buttons || enableEdit) && (
 					<Box sx={sx.buttons}>
@@ -138,8 +135,8 @@ const sx = {
 	buttons: {
 		width: '100%',
 	},
-  addToCart: {
-    width: '100%',
-    maxWidth: '300px',
-  }
+	addToCart: {
+		width: '100%',
+		maxWidth: '300px',
+	},
 }

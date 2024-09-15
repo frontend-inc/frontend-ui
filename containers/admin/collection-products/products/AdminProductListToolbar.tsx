@@ -1,7 +1,5 @@
 import React from 'react'
-import {	
-	PrimaryButton,	
-} from '../../../../components'
+import { PrimaryButton } from '../../../../components'
 import { Collapse, Stack } from '@mui/material'
 import { useProductCollections } from '../../../../hooks'
 

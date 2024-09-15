@@ -13,7 +13,7 @@ const CmsEmailSignup: React.FC<CmsEmailSignupProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -21,7 +21,6 @@ const CmsEmailSignup: React.FC<CmsEmailSignupProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

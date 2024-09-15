@@ -88,7 +88,7 @@ const ShopifyCartButton: React.FC<ShopifyCartButtonProps> = (props) => {
 			totalQuantity={cart?.totalQuantity}
 		/>
 	) : (
-		<CartButton 
+		<CartButton
 			label={label}
 			icon={icon}
 			handleClick={handleCartClick}

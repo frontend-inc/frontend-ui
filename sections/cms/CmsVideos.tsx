@@ -17,7 +17,7 @@ const CmsVideos: React.FC<CmsVideosProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -29,7 +29,6 @@ const CmsVideos: React.FC<CmsVideosProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 		>
 			<Heading

@@ -19,7 +19,7 @@ const ShopifyFavorites: React.FC<ShopifyFavoritesProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -27,7 +27,6 @@ const ShopifyFavorites: React.FC<ShopifyFavoritesProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

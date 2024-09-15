@@ -18,13 +18,7 @@ type MobileDrawerProps = {
 const MobileDrawer = (props: MobileDrawerProps) => {
 	const { menuOpen, setMenuOpen } = useContext(AppContext)
 
-	const {
-		links,
-		handleClick,
-		enableAuth,
-		enableStripe,
-		enableShopify,
-	} = props
+	const { links, handleClick, enableAuth, enableStripe, enableShopify } = props
 
 	const { currentUser } = useAuth()
 	const handleMenuClick = (path: string) => {
@@ -42,19 +36,17 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 			<Box sx={sx.sideNavMenu}>
 				<List sx={sx.sideNavMenuItems}>
 					{links?.map((menuItem, index) => (
-							<SideMenuItem
-								key={index}
-								menuItem={menuItem}
-								handleClick={handleMenuClick}
-							/>
-						))}
+						<SideMenuItem
+							key={index}
+							menuItem={menuItem}
+							handleClick={handleMenuClick}
+						/>
+					))}
 				</List>
 				{(enableAuth || enableShopify) && (
-					<Stack direction="column" spacing={1}>            
+					<Stack direction="column" spacing={1}>
 						{enableStripe && <CartButton variant="button" />}
-            {enableShopify && (
-							<ShopifyCartButton variant="button" />
-						)}
+						{enableShopify && <ShopifyCartButton variant="button" />}
 						{enableAuth && (
 							<Box sx={sx.divider}>
 								<AuthButton showLabel />

@@ -11,7 +11,12 @@ export type ProductProps = ProductDetailsProps & {
 }
 
 const Product: React.FC<ProductProps> = (props) => {
-	const { url='/api/v1/shop/products', foreignUrl, fields = [], product } = props || {}
+	const {
+		url = '/api/v1/shop/products',
+		foreignUrl,
+		fields = [],
+		product,
+	} = props || {}
 
 	return (
 		<ResourceProvider

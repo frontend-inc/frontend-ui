@@ -5,7 +5,7 @@ import { SubscriptionType } from '../../types'
 const useSubscriptions = () => {
 	const { api } = useApi()
 
-  const apiParams = {
+	const apiParams = {
 		name: 'subscription',
 		url: '/api/v1/shop/subscriptions',
 	}
@@ -35,22 +35,23 @@ const useSubscriptions = () => {
 		paginate,
 	} = useResource(apiParams)
 
-  type SubscriptionOptionsType = {
-    success_url: string,
-    cancel_url: string,
-  }
+	type SubscriptionOptionsType = {
+		success_url: string
+		cancel_url: string
+	}
 
-  const subscribe = async (subscriptionId, options: SubscriptionOptionsType) => {
-    return await loadingWrapper(() => 
-      api.subscribe(subscriptionId, options, apiParams)
-    )    
-  }
+	const subscribe = async (
+		subscriptionId,
+		options: SubscriptionOptionsType
+	) => {
+		return await loadingWrapper(() =>
+			api.subscribe(subscriptionId, options, apiParams)
+		)
+	}
 
-  const unsubscribe = async () => {
-    return await loadingWrapper(() => 
-      api.unsubscribe(apiParams)
-    )    
-  }
+	const unsubscribe = async () => {
+		return await loadingWrapper(() => api.unsubscribe(apiParams))
+	}
 
 	return {
 		loading,
@@ -60,8 +61,8 @@ const useSubscriptions = () => {
 		subscriptions,
 		findSubscription,
 		findSubscriptions,
-    subscribe,
-    unsubscribe,
+		subscribe,
+		unsubscribe,
 
 		handleChange,
 		handleChangePage,

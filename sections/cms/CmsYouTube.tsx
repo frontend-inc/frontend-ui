@@ -7,20 +7,11 @@ import { SectionProps } from '../../types'
 type CmsYouTubeProps = SectionProps & ShowYouTubeProps
 
 const CmsYouTube: React.FC<CmsYouTubeProps> = (props) => {
-	const {
-		mode,
-		py,
-		px,
-		maxWidth,
-		requireAuth,
-		requirePaid,
-		...rest
-	} = props
+	const { mode, py, px, maxWidth, requireAuth, requirePaid, ...rest } = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

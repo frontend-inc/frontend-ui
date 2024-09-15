@@ -1,12 +1,7 @@
 export const buildSearchQuery = (params) => {
 	let { query = {} } = params || {}
-	const {
-		resource,
-		perPage,
-		filterReferences,
-		filterGeo,
-		filterSimilar,
-	} = params || {}
+	const { resource, perPage, filterReferences, filterGeo, filterSimilar } =
+		params || {}
 
 	if (perPage) {
 		query = {

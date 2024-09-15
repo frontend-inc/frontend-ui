@@ -13,7 +13,7 @@ const CmsShow: React.FC<CmsShowProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		style,
 		...rest
@@ -22,7 +22,6 @@ const CmsShow: React.FC<CmsShowProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={style == 'cover' ? 0 : py}

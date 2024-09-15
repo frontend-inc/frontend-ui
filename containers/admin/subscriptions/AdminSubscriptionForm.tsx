@@ -4,28 +4,24 @@ import { ResourceFormProps } from '../../../components/cms/resources/ResourceFor
 import { MediaInput } from '../../../containers'
 
 const AdminSubscriptionForm: React.FC<ResourceFormProps> = (props) => {
+	const { handleAddAttachment, handleRemoveAttachment } = props || {}
 
-  const {
-    handleAddAttachment,
-    handleRemoveAttachment,
-  } = props || {}
+	const inputOptions = {
+		media: MediaInput,
+	}
 
-  const inputOptions = {
-    media: MediaInput
-  }
-
-  const inputParams = {
-    media: {
-      handleAddAttachment,
-      handleRemoveAttachment,
-    }
-  }
+	const inputParams = {
+		media: {
+			handleAddAttachment,
+			handleRemoveAttachment,
+		},
+	}
 
 	return (
 		<ResourceForm
 			{...props}
-      inputOptions={inputOptions}
-      inputParams={inputParams}
+			inputOptions={inputOptions}
+			inputParams={inputParams}
 			fields={[
 				{ name: 'label', label: 'Label', variant: 'string' },
 				{ name: 'name', label: 'Name', variant: 'string' },

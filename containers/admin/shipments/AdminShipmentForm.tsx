@@ -12,13 +12,13 @@ const AdminShipmentForm: React.FC<ResourceFormProps> = (props) => {
 					name: 'carrier',
 					variant: 'select',
 					placeholder: 'Select carrier',
-          options: [
-            { label: 'DHL', value: 'dhl' },
-            { label: 'FedEx', value: 'fedex' },            
-            { label: 'UPS', value: 'ups' },
-            { label: 'USPS', value: 'usps' },                        
-            { label: 'Other', value: 'other' },
-          ]
+					options: [
+						{ label: 'DHL', value: 'dhl' },
+						{ label: 'FedEx', value: 'fedex' },
+						{ label: 'UPS', value: 'ups' },
+						{ label: 'USPS', value: 'usps' },
+						{ label: 'Other', value: 'other' },
+					],
 				},
 				{
 					label: 'Tracking code',
@@ -26,14 +26,14 @@ const AdminShipmentForm: React.FC<ResourceFormProps> = (props) => {
 					variant: 'string',
 					placeholder: 'Tracking Code',
 				},
-        {
+				{
 					label: 'Delivery status',
 					name: 'status',
-					variant: 'select',					
-          options: [
-            { label: 'Shipped', value: 'pending' },
-            { label: 'Delivered', value: 'delivered' },            
-          ]
+					variant: 'select',
+					options: [
+						{ label: 'Shipped', value: 'pending' },
+						{ label: 'Delivered', value: 'delivered' },
+					],
 				},
 			]}
 		/>

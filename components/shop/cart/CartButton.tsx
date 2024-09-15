@@ -1,59 +1,56 @@
 import React, { useEffect } from 'react'
-import { 
-  Badge, 
-  IconButton,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Typography   
+import {
+	Badge,
+	IconButton,
+	ListItem,
+	ListItemButton,
+	ListItemIcon,
+	ListItemText,
+	Typography,
 } from '@mui/material'
 import { Icon } from '../../../components'
 import { useCart } from '../../../hooks'
 import { useAuth } from 'frontend-js'
 
-
 type CartIconButtonProps = {
-  icon?: string
-  totalItems: number
-  handleClick: () => void
+	icon?: string
+	totalItems: number
+	handleClick: () => void
 }
 
 const CartIconButton: React.FC<CartIconButtonProps> = (props) => {
-  
-  const { totalItems, handleClick, icon="ShoppingBag"} = props 
-  
-  return(
-    <IconButton 
-      onClick={handleClick}
-    >
-      <Badge color="primary" badgeContent={totalItems}>
-        <Icon name={ icon } size={24} /> 
-      </Badge>
-    </IconButton>
-  )
+	const { totalItems, handleClick, icon = 'ShoppingBag' } = props
+
+	return (
+		<IconButton onClick={handleClick}>
+			<Badge color="primary" badgeContent={totalItems}>
+				<Icon name={icon} size={24} />
+			</Badge>
+		</IconButton>
+	)
 }
 
 type CartBtnProps = {
-  label?: string
-  icon?: string
-  totalItems?: number
-  handleClick?: () => void
+	label?: string
+	icon?: string
+	totalItems?: number
+	handleClick?: () => void
 }
 
 const CartBtn: React.FC<CartBtnProps> = (props) => {
-	const { label = 'Cart', icon='ShoppingBag', totalItems, handleClick } = props
+	const {
+		label = 'Cart',
+		icon = 'ShoppingBag',
+		totalItems,
+		handleClick,
+	} = props
 
 	return (
 		<ListItem
 			disablePadding
 			disableGutters
 			secondaryAction={
-				<Badge 
-          badgeContent={totalItems} 
-          color="primary" 
-          sx={sx.badge} 
-        />
+				<Badge badgeContent={totalItems} color="primary" sx={sx.badge} />
 			}
 		>
 			<ListItemButton sx={sx.listItemButton} onClick={handleClick}>
@@ -72,40 +69,32 @@ const CartBtn: React.FC<CartBtnProps> = (props) => {
 	)
 }
 
-
 type CartButtonProps = {
-  label?: string
-  variant?: 'icon' | 'button'
-  icon?: string
+	label?: string
+	variant?: 'icon' | 'button'
+	icon?: string
 }
 
-const CartButton: React.FC<CartButtonProps> = (props) => {  
-  const { 
-    variant='icon', 
-    label, 
-    icon="ShoppingBag"
-  } = props 
+const CartButton: React.FC<CartButtonProps> = (props) => {
+	const { variant = 'icon', label, icon = 'ShoppingBag' } = props
 
-  const { cart, cartOpen, setCartOpen } = useCart()
+	const { cart, cartOpen, setCartOpen } = useCart()
 
-  return(
-    variant == "icon" ? (
-      <CartIconButton 
-        icon={icon}
-        handleClick={() => setCartOpen(!cartOpen)}
-        totalItems={cart?.total_items}
-      />
-    ):(
-      <CartBtn 
-        icon={icon}
-        label={label}
-        handleClick={() => setCartOpen(!cartOpen)}
-        totalItems={cart?.total_items}
-      />
-    )
-  )
+	return variant == 'icon' ? (
+		<CartIconButton
+			icon={icon}
+			handleClick={() => setCartOpen(!cartOpen)}
+			totalItems={cart?.total_items}
+		/>
+	) : (
+		<CartBtn
+			icon={icon}
+			label={label}
+			handleClick={() => setCartOpen(!cartOpen)}
+			totalItems={cart?.total_items}
+		/>
+	)
 }
-
 
 export default CartButton
 

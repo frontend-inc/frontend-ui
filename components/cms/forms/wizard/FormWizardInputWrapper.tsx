@@ -2,15 +2,17 @@ import React from 'react'
 import { Fade, Typography, Stack } from '@mui/material'
 
 export type FormWizardInputWrapperProps = {
-  title: string
-  description?: string	  
+	title: string
+	description?: string
 	fadeIn: boolean
-  timeout?: number
-  children: React.ReactNode	
+	timeout?: number
+	children: React.ReactNode
 }
 
-const FormWizardInputWrapper: React.FC<FormWizardInputWrapperProps> = (props) => {
-	const { fadeIn, title, description, children, timeout=350 } = props
+const FormWizardInputWrapper: React.FC<FormWizardInputWrapperProps> = (
+	props
+) => {
+	const { fadeIn, title, description, children, timeout = 350 } = props
 
 	return (
 		<Fade in={fadeIn} timeout={timeout}>
@@ -27,7 +29,7 @@ const FormWizardInputWrapper: React.FC<FormWizardInputWrapperProps> = (props) =>
 						{description}
 					</Typography>
 				</Stack>
-				{ children }
+				{children}
 			</Stack>
 		</Fade>
 	)

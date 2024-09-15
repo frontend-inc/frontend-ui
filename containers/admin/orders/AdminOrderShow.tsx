@@ -16,9 +16,9 @@ const AdminProductShow: React.FC<ResourceShowProps> = (props) => {
 	} = props || {}
 
 	let fields = [
-    { label: 'Number', name: 'display_number', variant: 'string' },
-    { label: 'Subtotal', name: 'display_subtotal', variant: 'string' },
-    { label: 'Total', name: 'display_total', variant: 'string' },
+		{ label: 'Number', name: 'display_number', variant: 'string' },
+		{ label: 'Subtotal', name: 'display_subtotal', variant: 'string' },
+		{ label: 'Total', name: 'display_total', variant: 'string' },
 	]
 
 	return (

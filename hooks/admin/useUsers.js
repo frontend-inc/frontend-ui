@@ -37,9 +37,7 @@ const useUsers = () => {
 	})
 
 	const inviteUser = async (user) => {
-		return await loadingWrapper(() =>
-			api.post(`${apiUrl}/users/invite`, user)
-		)
+		return await loadingWrapper(() => api.post(`${apiUrl}/users/invite`, user))
 	}
 
 	return {

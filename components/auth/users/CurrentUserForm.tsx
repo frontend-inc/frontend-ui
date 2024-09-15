@@ -71,7 +71,7 @@ const UserForm: React.FC<CurrentUserFormProps> = (props) => {
 	useEffect(() => {
 		if (currentUser?.id) {
 			setUser(currentUser)
-		} 
+		}
 	}, [currentUser])
 
 	return (

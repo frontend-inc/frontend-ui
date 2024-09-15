@@ -37,10 +37,10 @@ const AdminUserForm: React.FC<AdminUserFormProps> = (props) => {
 			label: 'Role',
 			name: 'role',
 			variant: 'select',
-      options: [
-        { label: 'User', value: 'user' },
-        { label: 'Admin', value: 'admin' }
-      ]
+			options: [
+				{ label: 'User', value: 'user' },
+				{ label: 'Admin', value: 'admin' },
+			],
 		},
 		{
 			label: 'Paid',

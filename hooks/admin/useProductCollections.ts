@@ -4,10 +4,10 @@ import { useAdmin } from '../../hooks'
 
 const useProductCollections = () => {
 	const { apiUrl } = useAdmin()
-  const { api } = useApi()
+	const { api } = useApi()
 
-  const url = `${apiUrl}/product_collections`
-  const apiParams = {
+	const url = `${apiUrl}/product_collections`
+	const apiParams = {
 		url,
 		name: 'product_collection',
 	}
@@ -54,27 +54,30 @@ const useProductCollections = () => {
 		startIndex,
 		endIndex,
 		paginate,
-    loadingWrapper
+		loadingWrapper,
 	} = useResource(apiParams)
 
-  const addProducts = async (
-		productCollectionId: number ,
+	const addProducts = async (
+		productCollectionId: number,
 		productIds: number[]
 	) => {
 		return await loadingWrapper(() =>
 			api.addProducts(productCollectionId, productIds, {
-        url,
-        name: 'products'
-      })
+				url,
+				name: 'products',
+			})
 		)
 	}
 
-	const removeProducts = async (productCollectionId: number, productIds: number[]) => {    
+	const removeProducts = async (
+		productCollectionId: number,
+		productIds: number[]
+	) => {
 		return await loadingWrapper(() =>
 			api.removeProducts(productCollectionId, productIds, {
-        url,
-        name: 'products'
-      })
+				url,
+				name: 'products',
+			})
 		)
 	}
 
@@ -100,9 +103,9 @@ const useProductCollections = () => {
 		loadMore,
 		publish,
 		unpublish,
-				
-    addProducts,
-    removeProducts,    
+
+		addProducts,
+		removeProducts,
 
 		addAttachment,
 		removeAttachment,

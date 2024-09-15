@@ -9,11 +9,7 @@ import AdminToolbarMenu from './AdminToolbarMenu'
 import { useRouter } from 'next/router'
 import copy from 'copy-to-clipboard'
 import { Box } from '@mui/material'
-import {
-	USER_FIELD,
-	ID_FIELD,
-	PUBLISHED_FIELD,
-} from '../../../constants'
+import { USER_FIELD, ID_FIELD, PUBLISHED_FIELD } from '../../../constants'
 import { ApiQuery } from 'frontend-js'
 import { RouterParams } from '../../../types'
 

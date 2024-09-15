@@ -16,7 +16,7 @@ const CmsGeoNearbyList: React.FC<CmsListProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -28,7 +28,6 @@ const CmsGeoNearbyList: React.FC<CmsListProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 		>
 			<Heading

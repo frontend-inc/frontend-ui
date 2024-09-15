@@ -3,9 +3,9 @@ import { Drawer, FormFields, IconLoading } from '../../../components'
 import { Button } from '@mui/material'
 
 export type ResourceFormProps = {
-  open: boolean
-	handleClose: () => void	
-  loading: boolean  
+	open: boolean
+	handleClose: () => void
+	loading: boolean
 	errors: any
 	resource: any
 	setResource: (resource: any) => void
@@ -15,11 +15,11 @@ export type ResourceFormProps = {
 	handleRemoveAttachment?: (name: string) => void
 	handleSubmit: () => void
 	handleReload: () => void
-  inputOptions?: any 
-  inputParams?: any
+	inputOptions?: any
+	inputParams?: any
 }
 
-export type FormProps = ResourceFormProps & {	
+export type FormProps = ResourceFormProps & {
 	fields: any[]
 }
 
@@ -33,11 +33,11 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 		handleChange,
 		handleRemove,
 		handleSubmit,
-    handleAddAttachment,
-    handleRemoveAttachment,
+		handleAddAttachment,
+		handleRemoveAttachment,
 		fields = [],
-    inputOptions,
-    inputParams
+		inputOptions,
+		inputParams,
 	} = props || {}
 
 	return (
@@ -63,11 +63,11 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 				fields={fields}
 				resource={resource}
 				handleChange={handleChange}
-				handleRemove={handleRemove}        
-        handleAddAttachment={handleAddAttachment}
-        handleRemoveAttachment={handleRemoveAttachment}
-        inputOptions={inputOptions}
-        inputParams={inputParams}        
+				handleRemove={handleRemove}
+				handleAddAttachment={handleAddAttachment}
+				handleRemoveAttachment={handleRemoveAttachment}
+				inputOptions={inputOptions}
+				inputParams={inputParams}
 			/>
 		</Drawer>
 	)

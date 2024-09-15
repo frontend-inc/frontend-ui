@@ -19,7 +19,7 @@ const ShopifyMetafields: React.FC<ShopifyMetafieldsProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -27,7 +27,6 @@ const ShopifyMetafields: React.FC<ShopifyMetafieldsProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

@@ -11,14 +11,13 @@ type DarkThemeProps = {
 const DarkTheme: React.FC<DarkThemeProps> = (props) => {
 	const { children } = props || {}
 	return (
-		<ThemeProvider 
-      theme={
-        createTheme({
-          ...muiTheme,
-          //@ts-ignore 
-          palette: dark 
-        })
-    }>
+		<ThemeProvider
+			theme={createTheme({
+				...muiTheme,
+				//@ts-ignore
+				palette: dark,
+			})}
+		>
 			{children}
 		</ThemeProvider>
 	)

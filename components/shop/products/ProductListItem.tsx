@@ -109,14 +109,11 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 					resource={resource}
 				/>
 			}
-      addToCart={
-        <Box>
-          <AddToCartButton 
-            availableForSale          
-            productId={ resource?.id }
-          />
-        </Box>
-      }
+			addToCart={
+				<Box>
+					<AddToCartButton availableForSale productId={resource?.id} />
+				</Box>
+			}
 			slots={{
 				image: {
 					enableGradient,

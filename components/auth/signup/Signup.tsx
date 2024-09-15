@@ -9,7 +9,7 @@ export type SignupProps = {
 	loginUrl: string
 	title?: string
 	subtitle?: string
-  enableGoogle?: boolean
+	enableGoogle?: boolean
 }
 
 const Signup: React.FC<SignupProps> = (props) => {
@@ -20,7 +20,7 @@ const Signup: React.FC<SignupProps> = (props) => {
 		loginUrl,
 		title = 'Sign Up',
 		subtitle = 'Register your account',
-    enableGoogle = false,
+		enableGoogle = false,
 	} = props
 
 	const router = useRouter()
@@ -39,8 +39,8 @@ const Signup: React.FC<SignupProps> = (props) => {
 			;`${clientUrl}${loginUrl}`
 		}
 	}
-  
-  const handleGoogleSuccess = () => {
+
+	const handleGoogleSuccess = () => {
 		router.push(`${clientUrl}${href}`)
 	}
 
@@ -53,8 +53,8 @@ const Signup: React.FC<SignupProps> = (props) => {
 				handleChange={handleChange}
 				handleSubmit={handleSubmit}
 				handleLogin={loginUrl ? handleLogin : false}
-        enableGoogle={enableGoogle}
-        handleGoogleSuccess={ handleGoogleSuccess }
+				enableGoogle={enableGoogle}
+				handleGoogleSuccess={handleGoogleSuccess}
 			/>
 		</AuthScreen>
 	)

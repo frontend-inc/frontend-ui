@@ -25,7 +25,9 @@ export type DocumentFormWizardModalProps = {
 	href?: string
 }
 
-const DocumentFormWizardModal: React.FC<DocumentFormWizardModalProps> = (props) => {
+const DocumentFormWizardModal: React.FC<DocumentFormWizardModalProps> = (
+	props
+) => {
 	const router = useRouter()
 	const { clientUrl } = useApp()
 
@@ -55,14 +57,14 @@ const DocumentFormWizardModal: React.FC<DocumentFormWizardModalProps> = (props) 
 		setResource,
 		update,
 		create,
-    addAttachment,
+		addAttachment,
 		removeAttachment,
 		handleChange,
 	} = useResource({
 		url,
 		name: 'document',
 	})
-	
+
 	const [open, setOpen] = useState(false)
 
 	const handleStartClick = () => {
@@ -83,7 +85,7 @@ const DocumentFormWizardModal: React.FC<DocumentFormWizardModalProps> = (props) 
 		}
 	}
 
-  const handleAddAttachment = async (name, attachmentId) => {
+	const handleAddAttachment = async (name, attachmentId) => {
 		await addAttachment(resource?.id, name, attachmentId)
 	}
 
@@ -91,7 +93,7 @@ const DocumentFormWizardModal: React.FC<DocumentFormWizardModalProps> = (props) 
 		await removeAttachment(resource?.id, name)
 	}
 
-  const handleRemoveAttachment = async (name) => {
+	const handleRemoveAttachment = async (name) => {
 		await removeAttachment(resource?.id, name)
 	}
 
@@ -111,7 +113,7 @@ const DocumentFormWizardModal: React.FC<DocumentFormWizardModalProps> = (props) 
 			console.log('Error', err)
 		}
 	}
-	
+
 	useEffect(() => {
 		if (_resource?.id) {
 			setResource(_resource)
@@ -139,19 +141,19 @@ const DocumentFormWizardModal: React.FC<DocumentFormWizardModalProps> = (props) 
 					handleClick={handleSuccess}
 				/>
 			)}
-      <FormWizardModal 
-        open={open}
-        handleClose={() => setOpen(false)}
-        resource={resource}
-        setResource={setResource}
-        fields={ fields }        
-        handleChange={handleChange}
-        handleRemove={handleRemove}
-        handleSubmit={handleSubmit}
-        handleAddAttachment={handleAddAttachment}
-        handleRemoveAttachment={handleRemoveAttachment}
-        buttonText={buttonText}        
-      /> 
+			<FormWizardModal
+				open={open}
+				handleClose={() => setOpen(false)}
+				resource={resource}
+				setResource={setResource}
+				fields={fields}
+				handleChange={handleChange}
+				handleRemove={handleRemove}
+				handleSubmit={handleSubmit}
+				handleAddAttachment={handleAddAttachment}
+				handleRemoveAttachment={handleRemoveAttachment}
+				buttonText={buttonText}
+			/>
 		</Box>
 	)
 }

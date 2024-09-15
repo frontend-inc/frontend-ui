@@ -11,7 +11,7 @@ export type PDPProps = {
 	primary?: string
 	secondary?: React.ReactNode
 	actions?: React.ReactNode
-  addToCart?: React.ReactNode
+	addToCart?: React.ReactNode
 	secondaryAction?: React.ReactNode
 	children?: React.ReactNode
 	slots?: {
@@ -26,10 +26,10 @@ const PDP: React.FC<PDPProps> = (props) => {
 		image,
 		primary,
 		secondary,
-    addToCart,
+		addToCart,
 		price,
 		compareAtPrice,
-    description,
+		description,
 		actions,
 		secondaryAction,
 		slots = {
@@ -66,23 +66,23 @@ const PDP: React.FC<PDPProps> = (props) => {
 						<Typography color="text.primary" variant="h4">
 							{primary}
 						</Typography>
-            <Stack direction="row" spacing={1}>
-						<Typography color="text.primary" variant="subtitle1">
-							{price}
-						</Typography>
-						{compareAtPrice && (
-							<Typography
-								color="text.secondary"
-								variant="subtitle2"
-								sx={sx.compareAtPrice}
-							>
-								{compareAtPrice}
+						<Stack direction="row" spacing={1}>
+							<Typography color="text.primary" variant="subtitle1">
+								{price}
 							</Typography>
-						)}
-					</Stack>
-						{ secondary }
-            { addToCart }
-            <ExpandableText text={description} />            
+							{compareAtPrice && (
+								<Typography
+									color="text.secondary"
+									variant="subtitle2"
+									sx={sx.compareAtPrice}
+								>
+									{compareAtPrice}
+								</Typography>
+							)}
+						</Stack>
+						{secondary}
+						{addToCart}
+						<ExpandableText text={description} />
 					</Stack>
 				</Stack>
 			</Box>
@@ -113,7 +113,7 @@ const sx = {
 			xs: 'center',
 		},
 	},
-  compareAtPrice: {
+	compareAtPrice: {
 		textDecoration: 'line-through',
 	},
 	image: {
@@ -161,7 +161,7 @@ const sx = {
 	leftPanelBorder: {
 		pb: 2,
 	},
-  description: {
-    whiteSpace: 'pre-line'
-  }
+	description: {
+		whiteSpace: 'pre-line',
+	},
 }

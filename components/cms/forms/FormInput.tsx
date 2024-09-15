@@ -3,7 +3,7 @@ import {
 	AttachmentInput,
 	Autosuggest,
 	ArrayInput,
-  CountryInput,
+	CountryInput,
 	DateInput,
 	EmailInput,
 	ImageInput,
@@ -11,7 +11,7 @@ import {
 	LocationInput,
 	PhoneInput,
 	RatingInput,
-  StateInput,
+	StateInput,
 	SwitchInput,
 	TextInput,
 	URLInput,
@@ -34,7 +34,7 @@ type FormInputProps = {
 	placeholder?: string
 	handleChange: (e: SyntheticEventType) => void
 	handleRemove?: (name: string) => void
-  handleAddAttachment?: (name: string, attachmentId: number) => void
+	handleAddAttachment?: (name: string, attachmentId: number) => void
 	handleRemoveAttachment?: (name: string) => void
 	resource?: any
 	url?: string
@@ -44,8 +44,8 @@ type FormInputProps = {
 	displayField?: string //Autosuggest has an optional display field param
 	valueParam?: string // MetafieldAutosuggest has an optional value param
 	fields?: FormFieldType[]
-  inputOptions?: Record<string, React.FC> 
-  inputParams?: Record<string, any>
+	inputOptions?: Record<string, React.FC>
+	inputParams?: Record<string, any>
 }
 
 const FormInput: React.FC<FormInputProps> = (props) => {
@@ -59,8 +59,8 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		placeholder,
 		handleChange,
 		handleRemove,
-    handleAddAttachment,
-    handleRemoveAttachment,
+		handleAddAttachment,
+		handleRemoveAttachment,
 		resource,
 		url,
 		foreignUrl,
@@ -69,14 +69,14 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		query = {},
 		displayField,
 		valueParam,
-    inputOptions: defaultInputOptions = {},
-    inputParams: defaultInputParams = {},
+		inputOptions: defaultInputOptions = {},
+		inputParams: defaultInputParams = {},
 	} = props
 
 	let componentMapper = {
 		autosuggest: RemoteAutosuggest,
 		array: ArrayInput,
-    country: CountryInput,
+		country: CountryInput,
 		string: TextInput,
 		file: AttachmentInput,
 		email: EmailInput,
@@ -91,14 +91,14 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		datetime: DateInput,
 		boolean: SwitchInput,
 		select: Autosuggest,
-    state: StateInput,
+		state: StateInput,
 		rating: RatingInput,
 		image: ImageInput,
 		json: JSONInput,
 		shopify: ShopifyProductInput,
 		shopify_products: ShopifyProductsInput,
 		habtm: ReferenceInput,
-    ...defaultInputOptions
+		...defaultInputOptions,
 	}
 
 	let inputProps = {
@@ -128,7 +128,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		},
 		price: {
 			type: 'number',
-		},    
+		},
 		habtm: {
 			resource,
 			url,
@@ -136,7 +136,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			contentType,
 			fields,
 		},
-    ...defaultInputParams
+		...defaultInputParams,
 	}
 
 	let InputComponent = componentMapper[variant] || TextInput
@@ -148,9 +148,9 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			name={name}
 			value={value || ''}
 			handleChange={handleChange}
-      handleRemove={handleRemove}
-      handleAddAttachment={handleAddAttachment}
-      handleRemoveAttachment={handleRemoveAttachment}
+			handleRemove={handleRemove}
+			handleAddAttachment={handleAddAttachment}
+			handleRemoveAttachment={handleRemoveAttachment}
 			placeholder={placeholder}
 			{...inputProps[variant]}
 		/>

@@ -9,9 +9,7 @@ type AdminSubscriptionItemProps = {
 	handleDelete: () => void
 }
 
-const AdminSubscriptionItem: React.FC<AdminSubscriptionItemProps> = (
-	props
-) => {
+const AdminSubscriptionItem: React.FC<AdminSubscriptionItemProps> = (props) => {
 	const {
 		resource: subscription,
 		handleClick,

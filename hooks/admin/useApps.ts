@@ -4,7 +4,7 @@ import { useAdmin } from '../../hooks'
 
 function useApps(): Record<string, any> {
 	const { api } = useApi()
-  const { apiUrl } = useAdmin()
+	const { apiUrl } = useAdmin()
 
 	const {
 		errors,
@@ -45,21 +45,15 @@ function useApps(): Record<string, any> {
 	})
 
 	const publishApp = async (appId: number) => {
-		return await loadingWrapper(() =>
-			api.post(`${apiUrl}/publish`)
-		)
+		return await loadingWrapper(() => api.post(`${apiUrl}/publish`))
 	}
 
 	const buildApp = async (appId: number) => {
-		return await loadingWrapper(() =>
-			api.post(`${apiUrl}/build`)
-		)
+		return await loadingWrapper(() => api.post(`${apiUrl}/build`))
 	}
 
-  const generateAI = async (appId: number) => {
-		return await loadingWrapper(() =>
-			api.post(`${apiUrl}/generate_ai`)
-		)
+	const generateAI = async (appId: number) => {
+		return await loadingWrapper(() => api.post(`${apiUrl}/generate_ai`))
 	}
 
 	return {
@@ -94,8 +88,8 @@ function useApps(): Record<string, any> {
 		handleSort,
 		setApp,
 		setApps,
-    
-    generateAI,
+
+		generateAI,
 		publishApp,
 		buildApp,
 	}

@@ -21,7 +21,7 @@ const ShopProductFavoritesGrid: React.FC<ShopProductFavoritesGridProps> = (
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -29,7 +29,6 @@ const ShopProductFavoritesGrid: React.FC<ShopProductFavoritesGridProps> = (
 	return (
 		<Section
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

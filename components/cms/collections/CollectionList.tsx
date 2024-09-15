@@ -13,7 +13,7 @@ import {
 	CollectionListItems,
 	CollectionHeader,
 	CollectionShow,
-	CollectionEmpty,	
+	CollectionEmpty,
 } from '../..'
 
 export type CollectionListProps = {
@@ -179,14 +179,14 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		},
 	}
 
-  const grid = {
-    avatar: false,
-    list: false,
-    text: false,
-    card: true,
-    cover: true 
-  }[style] || false
-
+	const grid =
+		{
+			avatar: false,
+			list: false,
+			text: false,
+			card: true,
+			cover: true,
+		}[style] || false
 
 	return (
 		<DataList

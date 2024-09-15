@@ -17,7 +17,7 @@ const ShopProducts: React.FC<ShopProductsProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -29,7 +29,6 @@ const ShopProducts: React.FC<ShopProductsProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 		>
 			<Heading

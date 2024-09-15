@@ -16,7 +16,7 @@ const CmsLikes: React.FC<CmsLikesProps> = (props) => {
 		py,
 		px,
 		maxWidth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -24,7 +24,6 @@ const CmsLikes: React.FC<CmsLikesProps> = (props) => {
 	return (
 		<Section
 			requireAuth
-			
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}

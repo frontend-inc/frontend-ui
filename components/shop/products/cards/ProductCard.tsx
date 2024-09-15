@@ -20,7 +20,7 @@ export type ProductCardProps = {
 	handleClick?: () => void
 	handleSelect?: () => void
 	height?: number
-  addToCart?: React.ReactNode
+	addToCart?: React.ReactNode
 	slots?: {
 		item?: any
 		image?: any
@@ -40,7 +40,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 		handleClick,
 		image,
 		height = 240,
-    addToCart,
+		addToCart,
 		slots = {
 			item: {},
 			image: {},
@@ -91,9 +91,9 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 						<Typography color="text.secondary" variant="body2">
 							{secondary}
 						</Typography>
-					)}  
+					)}
 				</Box>
-        { addToCart }        
+				{addToCart}
 				<Stack direction="row" justifyContent="space-between">
 					{actions}
 					{secondaryAction}
@@ -108,7 +108,7 @@ export default ProductCard
 const sx = {
 	root: {
 		overflow: 'hidden',
-		borderRadius: 1,		
+		borderRadius: 1,
 		width: 280,
 		transition: 'box-shadow 0.3s',
 		bgcolor: 'background.paper',

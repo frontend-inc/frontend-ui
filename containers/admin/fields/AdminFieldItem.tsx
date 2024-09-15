@@ -60,11 +60,13 @@ const AdminFieldItem: React.FC<AdminFieldItemProps> = (props) => {
 			sortable={sortable}
 			avatar={<FieldIcon variant={field?.variant} />}
 			primary={
-        <Stack direction="row" spacing={1}>
-          <Typography variant="body1" color="text.primary">{ field?.label}</Typography>
-          <Label label={ field.variant } />
-        </Stack>
-      }			
+				<Stack direction="row" spacing={1}>
+					<Typography variant="body1" color="text.primary">
+						{field?.label}
+					</Typography>
+					<Label label={field.variant} />
+				</Stack>
+			}
 			secondaryAction={
 				<>
 					{field.column && !field.array && (

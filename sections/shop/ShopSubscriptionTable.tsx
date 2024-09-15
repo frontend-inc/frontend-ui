@@ -6,9 +6,7 @@ import { SectionProps, HeadingProps } from '../../types'
 
 type ShopSubscriptionTableProps = SectionProps & HeadingProps
 
-const ShopSubscriptionTable: React.FC<ShopSubscriptionTableProps> = (
-	props
-) => {
+const ShopSubscriptionTable: React.FC<ShopSubscriptionTableProps> = (props) => {
 	const {
 		label,
 		title,
@@ -19,7 +17,7 @@ const ShopSubscriptionTable: React.FC<ShopSubscriptionTableProps> = (
 		px,
 		maxWidth,
 		requireAuth,
-		
+
 		requirePaid,
 		...rest
 	} = props
@@ -31,7 +29,6 @@ const ShopSubscriptionTable: React.FC<ShopSubscriptionTableProps> = (
 			px={px}
 			maxWidth={maxWidth}
 			requireAuth={requireAuth}
-			
 			requirePaid={requirePaid}
 		>
 			<Stack spacing={3}>

@@ -43,7 +43,7 @@ const useProducts = () => {
 		reloadOne: reloadProduct,
 		reloadMany: reloadProducts,
 		setResource: setProduct,
-		setResources: setProducts,		
+		setResources: setProducts,
 		startIndex,
 		endIndex,
 		paginate,

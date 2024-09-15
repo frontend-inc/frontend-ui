@@ -3,7 +3,7 @@ import { Button, Stack } from '@mui/material'
 import { IconLoading, Icon } from '../../../../components'
 
 type FormWizardButtonsProps = {
-  loading?: boolean
+	loading?: boolean
 	currentStep: number
 	totalSteps: number
 	buttonText: string
@@ -14,7 +14,7 @@ type FormWizardButtonsProps = {
 
 const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 	const {
-    loading,
+		loading,
 		buttonText,
 		currentStep,
 		totalSteps,
@@ -26,10 +26,10 @@ const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 	return (
 		<Stack direction="row" spacing={1} sx={sx.buttons}>
 			<Button
-        size="large"
+				size="large"
 				variant="contained"
 				color="secondary"
-        sx={ sx.prevButton }
+				sx={sx.prevButton}
 				onClick={handlePrevStep}
 				startIcon={<Icon name="ChevronLeft" color="secondary.contrastText" />}
 			>
@@ -42,9 +42,12 @@ const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 					onClick={handleNextStep}
 					disabled={currentStep == totalSteps}
 					endIcon={
-            loading ? <IconLoading loading /> :
-            <Icon name="ChevronRight" color="primary.contrastText" />
-          }
+						loading ? (
+							<IconLoading loading />
+						) : (
+							<Icon name="ChevronRight" color="primary.contrastText" />
+						)
+					}
 				>
 					Next
 				</Button>
@@ -70,7 +73,7 @@ const sx = {
 		justifyContent: 'flex-end',
 		py: 4,
 	},
-  prevButton: {
-    color: 'secondary.contrastText',
-  }
+	prevButton: {
+		color: 'secondary.contrastText',
+	},
 }

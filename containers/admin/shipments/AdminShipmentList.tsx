@@ -6,29 +6,28 @@ import AdminShipmentToolbar from './AdminShipmentToolbar'
 import AdminShipmentForm from './AdminShipmentForm'
 
 type AdminShipmentsListProps = {
-  orderId: string
+	orderId: string
 }
 
 const AdminShipmentsList: React.FC<AdminShipmentsListProps> = (props) => {
-
-  const { orderId } = props || {}
+	const { orderId } = props || {}
 	const { apiUrl } = useAdmin()
 
 	return (
-		<ResourceList			
+		<ResourceList
 			url={`${apiUrl}/orders/${orderId}/shipments`}
 			name={'shipment'}
 			enableSearch
-      enableCreate
+			enableCreate
 			enableEdit
-      query={{
-        sort_by: 'created_at',
-        sort_direction: 'desc'
-      }}
-      component={AdminShipment}			
-      edit={ AdminShipmentForm }
-      create={ AdminShipmentForm }
-			toolbar={AdminShipmentToolbar}			
+			query={{
+				sort_by: 'created_at',
+				sort_direction: 'desc',
+			}}
+			component={AdminShipment}
+			edit={AdminShipmentForm}
+			create={AdminShipmentForm}
+			toolbar={AdminShipmentToolbar}
 			emptyIcon="Package"
 			emptyTitle="No shipments"
 			emptyDescription="No shipments yet."

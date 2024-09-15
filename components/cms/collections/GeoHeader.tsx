@@ -50,7 +50,7 @@ const GeoHeader: React.FC<GeoHeaderProps> = (props) => {
 
 	const { handleAdd } = useForms()
 
-	if (!enableSearch && !enableFilters && !enableSorting ) {
+	if (!enableSearch && !enableFilters && !enableSorting) {
 		return null
 	}
 	return (
