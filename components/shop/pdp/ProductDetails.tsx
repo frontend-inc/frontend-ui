@@ -18,14 +18,10 @@ export type ProductDetailsProps = {
 	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
 	product: any
-	enableEdit?: boolean
-	enableCreate?: boolean
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
 	enableRatings?: boolean
-	enableAddToList?: boolean
-	enableUsers?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
 	handleEdit?: (res: any) => void
@@ -42,12 +38,10 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 	const {
 		displayFields = [],
 		buttons,
-		enableEdit,
 		enableFavorites,
 		enableLikes,
 		enableSharing,
 		enableRatings,
-		enableAddToList,
 		enableGradient,
 		enableOverlay,
 		slots: defaultSlots = {
@@ -100,7 +94,6 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 					enableProductLikes={enableLikes}
 					enableProductFavorites={enableFavorites}
 					enableSharing={enableSharing}
-					enableAddToList={enableAddToList}
 				/>
 			}
 			addToCart={
@@ -109,15 +102,11 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 				</Box>
 			}
 			secondaryAction={
-				(buttons || enableEdit) && (
+				buttons && (
 					<Box sx={sx.buttons}>
 						<ButtonActions
 							justifyContent={'flex-end'}
-							buttons={buildActions({
-								enableEdit,
-								handleEdit: () => handleEdit(product),
-								buttons,
-							})}
+							buttons={buttons}
 							resource={product}
 						/>
 					</Box>

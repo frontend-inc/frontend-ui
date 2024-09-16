@@ -9,17 +9,11 @@ export type ShowModalProps = {
 	enableOverlay?: boolean
 	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
-	fields?: FormFieldType[]
 	fieldName?: string
-	enableEdit?: boolean
-	enableCreate?: boolean
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
 	enableRatings?: boolean
-	enableAddToList?: boolean
-	enableUsers?: boolean
-	handleEdit?: () => void
 }
 
 const ShowModal: React.FC<ShowModalProps> = (props) => {
@@ -32,9 +26,6 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 		enableLikes,
 		enableFavorites,
 		enableSharing,
-		enableAddToList,
-		enableEdit,
-		handleEdit,
 	} = props || {}
 
 	if (!resource) return null
@@ -47,14 +38,11 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 		>
 			<ProductDetails
 				product={resource}
-				enableEdit={enableEdit}
 				buttons={buttons}
 				displayFields={displayFields}
 				enableRatings={enableRatings}
-				handleEdit={handleEdit}
 				enableLikes={enableLikes}
 				enableFavorites={enableFavorites}
-				enableAddToList={enableAddToList}
 				enableSharing={enableSharing}
 				slots={{
 					image: {

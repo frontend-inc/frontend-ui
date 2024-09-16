@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonType, FormFieldType, DisplayFieldType } from '../../../types'
+import { ButtonType, DisplayFieldType } from '../../../types'
 import {
 	Hero,
 	HeroAvatar,
@@ -7,16 +7,13 @@ import {
 	HeroCover,
 	HeroSnippet,
 } from '../../../components'
-import { useForms } from '../../../hooks'
 import { useResourceContext } from 'frontend-js'
 import {
-	ProductRating,
 	DisplayFields,
 	ButtonActions,
 	SocialButtons,
 	ExpandableText,
 } from '../..'
-import { buildActions } from '../../../helpers'
 import { Box, Stack } from '@mui/material'
 
 export type ShowProps = {
@@ -24,17 +21,13 @@ export type ShowProps = {
 	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
 	resource: any
-	enableEdit?: boolean
-	enableCreate?: boolean
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
 	enableRatings?: boolean
-	enableAddToList?: boolean
 	enableUsers?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
-	handleEdit?: (res: any) => void
 }
 
 type ShowStyleTypes = 'card' | 'cover' | 'list' | 'avatar' | 'snippet'
@@ -53,12 +46,9 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 		style = 'article',
 		displayFields = [],
 		buttons,
-		enableEdit,
 		enableFavorites,
 		enableLikes,
 		enableSharing,
-		enableRatings,
-		enableAddToList,
 		enableGradient,
 		enableOverlay,
 		slots: defaultSlots = {
@@ -78,8 +68,6 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 	}
 
 	const Component = components[style] || Hero
-
-	const { handleEdit } = useForms()
 
 	let slots = {
 		image: {
@@ -147,9 +135,6 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 						sx={{ width: '100%' }}
 						alignItems={slotProps?.secondary?.alignItems}
 					>
-						{enableRatings == true && (
-							<ProductRating resource={resource} enableTotal />
-						)}
 						{displayFields?.length > 0 && (
 							<DisplayFields fields={displayFields} resource={resource} />
 						)}
@@ -165,19 +150,14 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 					enableLikes={enableLikes}
 					enableFavorites={enableFavorites}
 					enableSharing={enableSharing}
-					enableAddToList={enableAddToList}
 				/>
 			}
 			secondaryAction={
-				(buttons || enableEdit) && (
+				buttons && (
 					<Box sx={sx.buttons}>
 						<ButtonActions
 							justifyContent={slotProps?.secondaryAction?.justifyContent}
-							buttons={buildActions({
-								enableEdit,
-								handleEdit: () => handleEdit(resource),
-								buttons,
-							})}
+							buttons={buttons}
 							resource={resource}
 						/>
 					</Box>

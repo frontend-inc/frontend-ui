@@ -39,7 +39,6 @@ export type DataListProps = {
 	enableCreate?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
-	enableAddToList?: boolean
 	enableFilters?: boolean
 	enableSorting?: boolean
 	perPage?: number
@@ -92,8 +91,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 		enableShow,
 		enableCreate,
 		enableEdit,
-		enableDelete,
-		enableAddToList,
+		enableDelete,		
 		enableFilters,
 		enableSorting,
 		href,
@@ -144,7 +142,6 @@ const DataList: React.FC<DataListProps> = (props) => {
 					href={href}
 					enableEdit={enableEdit}
 					enableDelete={enableDelete}
-					enableAddToList={enableAddToList}
 					component={Component}
 					{...slots.list}
 					slots={{

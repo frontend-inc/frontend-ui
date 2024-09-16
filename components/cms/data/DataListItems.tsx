@@ -11,7 +11,6 @@ export type DataListItemsProps = {
 	enableShow?: boolean
 	enableEdit?: boolean
 	enableDelete?: boolean
-	enableAddToList?: boolean
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
 	handleClick?: (resource: any) => void
@@ -41,7 +40,6 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 		enableShow,
 		enableEdit,
 		enableDelete,
-		enableAddToList,
 		handleClick,
 		pagination: Pagination = LoadMore,
 		component: Component = DataItem,
@@ -78,7 +76,6 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 					enableShow={enableShow}
 					enableEdit={enableEdit}
 					enableDelete={enableDelete}
-					enableAddToList={enableAddToList}
 					handleEdit={enableEdit ? () => handleEdit(resource) : undefined}
 					handleDelete={
 						enableDelete ? () => handleDeleteClick(resource) : undefined

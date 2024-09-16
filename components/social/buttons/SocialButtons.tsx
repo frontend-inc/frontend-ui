@@ -18,7 +18,6 @@ type SocialButtonsProps = {
 	enableComments?: boolean
 	enableLikes?: boolean
 	enableFavorites?: boolean
-	enableAddToList?: boolean
 	enableSharing?: boolean
 	enableProductLikes?: boolean
 	enableProductFavorites?: boolean
@@ -38,7 +37,6 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 		enableLikes,
 		enableFavorites,
 		enableSharing,
-		enableAddToList,
 		enableProductLikes,
 		enableProductFavorites,
 		numLikes,
@@ -55,7 +53,6 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 		!enableLikes &&
 		!enableFavorites &&
 		!enableSharing &&
-		!enableAddToList &&
 		!enableProductFavorites &&
 		!enableProductLikes
 	)
@@ -66,9 +63,6 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 			justifyContent={justifyContent}
 			spacing={size == 'small' ? 0 : 1}
 		>
-			{enableAddToList == true && (
-				<AddToListButton size={size} resource={resource} color={color} />
-			)}
 			{enableLikes == true && (
 				<LikeButton
 					size={size}

@@ -10,7 +10,6 @@ import { ButtonType, DisplayFieldType } from '../../../types'
 
 export type ProductListItemsProps = {
 	grid?: boolean
-	selectable?: boolean
 	href?: string
 	style?: 'list' | 'card' | 'avatar' | 'cover' | 'text'
 	buttons: ButtonType[]
@@ -18,15 +17,11 @@ export type ProductListItemsProps = {
 	handleClick?: (resource: any) => void
 	enableGradient?: boolean
 	enableOverlay?: boolean
-	enableAddToList?: boolean
-	enableEdit?: boolean
-	enableDelete?: boolean
 	enableComments?: boolean
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableRatings?: boolean
 	enableSharing?: boolean
-	enableUsers?: boolean
 	slots?: {
 		list?: any
 		item?: any
@@ -48,7 +43,6 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 	} = useResourceContext()
 
 	const {
-		selectable,
 		grid = false,
 		buttons = [],
 		style = 'list',
@@ -56,13 +50,9 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 		handleClick,
 		displayFields = [],
 		enableGradient = false,
-		enableOverlay = false,
-		enableAddToList = false,
-		enableEdit = false,
-		enableDelete = false,
+		enableOverlay = false,		
 		enableFavorites = false,
-		enableLikes = false,
-		enableUsers = false,
+		enableLikes = false,		
 		enableRatings = false,
 		enableComments = false,
 		slots = {
@@ -100,21 +90,16 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 					<ProductListItem
 						key={index}
 						style={style}
-						selectable={selectable}
 						resource={resource}
 						displayFields={displayFields}
 						handleClick={() => handleShowClick(resource)}
-						enableEdit={enableEdit}
-						enableDelete={enableDelete}
 						handleEdit={() => handleEdit(resource)}
 						handleDelete={() => handleDeleteClick(resource)}
 						buttons={buttons}
-						enableUsers={enableUsers}
 						enableComments={enableComments}
 						enableFavorites={enableFavorites}
 						enableLikes={enableLikes}
 						enableRatings={enableRatings}
-						enableAddToList={enableAddToList}
 						enableGradient={enableGradient}
 						enableOverlay={enableOverlay}
 						{...slots.item}

@@ -31,15 +31,9 @@ export type ProductListProps = {
 	enableUsers?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
-
 	enableShow?: boolean
-	enableEdit?: boolean
-	enableCreate?: boolean
-	enableDelete?: boolean
-	enableAddToList?: boolean
 	fields?: FormFieldType[]
 	buttons?: ButtonType[]
-	toolbarButtons?: ToolbarButtonType[]
 	headers?: {
 		label: string
 		value: string
@@ -58,12 +52,8 @@ export type ProductListProps = {
 	empty?: React.FC<any>
 	slots?: {
 		header?: any
-		toolbar?: any
 		list?: any
 		show?: any
-		edit?: any
-		create?: any
-		destroy?: any
 		empty?: any
 		item?: any
 	}
@@ -72,7 +62,6 @@ export type ProductListProps = {
 	foreignUrl?: string
 	query?: any
 	resource: any
-	filterUser?: boolean
 	filterSimilar?: boolean
 }
 
@@ -87,7 +76,6 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		query,
 		resource,
 		perPage = 9,
-		filterUser,
 		filterSimilar,
 
 		enableLikes,
@@ -120,13 +108,9 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		empty: Empty = ProductEmpty,
 		slots: defaultSlots = {
 			header: {},
-			toolbar: {},
 			list: {},
 			item: {},
 			show: {},
-			edit: {},
-			create: {},
-			destroy: {},
 			empty: {},
 		},
 	} = props || {}
@@ -135,7 +119,6 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		query,
 		resource,
 		perPage,
-		filterUser,
 		filterSimilar,
 	})
 

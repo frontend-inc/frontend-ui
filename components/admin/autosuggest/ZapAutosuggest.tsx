@@ -23,7 +23,7 @@ const ZapAutosuggest: React.FC<ZapAutosuggestProps> = (props) => {
 		direction = 'column',
 		label,
 		handleChange,
-		placeholder = 'Select action',
+		placeholder = 'Select',
 		query: defaultQuery = {},
 	} = props
 
