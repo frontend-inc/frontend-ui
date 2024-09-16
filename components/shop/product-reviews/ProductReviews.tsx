@@ -9,11 +9,11 @@ export type ProductReviewsProps = {
 }
 
 const ProductReviews: React.FC<ProductReviewsProps> = (props) => {
-	const { url, handle } = props
+	const { handle } = props
 
 	return (
 		<DataList
-			url={`${url}/${handle}/reviews`}
+			url={`/api/v1/shop/products/${handle}/reviews`}
 			name="review"
 			enableSearch
 			enableSorting
@@ -47,6 +47,8 @@ const ProductReviews: React.FC<ProductReviewsProps> = (props) => {
 					buttonText: 'Add Product Review',
 				},
 			}}
+      emptyTitle='No reviews yet'
+      emptyDescription='Be the first to leave a review'
 		/>
 	)
 }

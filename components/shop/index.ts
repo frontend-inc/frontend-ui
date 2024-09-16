@@ -1,11 +1,12 @@
 export * from './cart'
 export * from './collection-products'
+export * from './metafields'
 export * from './products/cards'
-export * from './stripe'
 export * from './pdp'
 export * from './products'
 export * from './product-collections'
 export * from './product-reviews'
+export * from './stripe'
 export * from './subscriptions'
 
 export { default as StripeCustomerPortalButton } from './customers/StripeCustomerPortalButton'

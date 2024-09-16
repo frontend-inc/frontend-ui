@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack } from '@mui/material'
-import { AccordionItem, Placeholder } from '../../../components'
+import { AccordionItem, Placeholder, Text } from '../../../components'
 
 export type AccordionProps = {
 	items?: {
@@ -19,8 +19,12 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 			{items?.map((item, i) => (
 				<AccordionItem
 					key={i}
-					title={item?.title}
-					description={item?.description}
+					primary={item?.title}
+					secondary={
+            <Text variant="body1" color="text.primary">
+						 { item?.description }
+					  </Text>
+          }            
 					image={item?.image}
 				/>
 			))}

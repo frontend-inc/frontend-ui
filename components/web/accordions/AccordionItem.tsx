@@ -1,28 +1,36 @@
 import React from 'react'
-import { Stack, Typography } from '@mui/material'
-import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
-import { Image, Icon, Text } from '../..'
+import { Stack, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
+import { Image, Icon } from '../..'
 
 type AccordionProps = {
-	title: string
-	description: string
+	primary: string
+	secondary: React.ReactNode 
 	image?: string
-	icon?: 'Plus' | 'ChevronDown'
+	icon?: string 
+  startIcon?: string
+  disablePadding?: boolean
 }
 
 const AccordionItem: React.FC<AccordionProps> = (props) => {
-	const { title, description, icon = 'Plus', image } = props
+	const { primary, secondary, startIcon, icon = 'Plus', disablePadding, image } = props
 
 	return (
-		<Accordion sx={sx.root} elevation={0}>
+		<Accordion 
+      sx={{ 
+        ...sx.root, 
+        ...(disablePadding && sx.disablePadding)
+      }} 
+      elevation={0}
+    >
 			<AccordionSummary expandIcon={<Icon name={icon} />}>
-				<Typography variant="subtitle1">{title}</Typography>
+        <Stack direction="row" spacing={1}>
+          { startIcon && <Icon name={startIcon} size={20} /> } 
+          <Typography variant="subtitle1">{primary}</Typography>
+        </Stack>
 			</AccordionSummary>
 			<AccordionDetails sx={sx.accordionDetails}>
 				<Stack direction="row" spacing={2}>
-					<Text variant="body1" color="text.primary">
-						{description}
-					</Text>
+					{ secondary }
 					{image && <Image src={image} height={240} />}
 				</Stack>
 			</AccordionDetails>
@@ -40,6 +48,9 @@ const sx = {
 		py: 1,
 		borderRadius: 0,
 	},
+  disablePadding: {
+    py: 0,
+  },
 	imageContainer: {
 		width: 256,
 		height: 256,

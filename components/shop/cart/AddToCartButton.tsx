@@ -1,6 +1,7 @@
 import React from 'react'
 import { PrimaryButton } from '../../../components'
 import { useCart } from '../../../hooks'
+import { Box } from '@mui/material'
 
 type AddToCartButtonProps = {
 	productId: string
@@ -17,15 +18,23 @@ const AddToCartButton = (props: AddToCartButtonProps) => {
 	}
 
 	return (
-		<PrimaryButton
-			loading={loading}
-			onClick={handleClick}
-			disabled={!availableForSale}
-			size="large"
-		>
-			Add to Cart
-		</PrimaryButton>
+    <Box sx={ sx.button }>    
+      <PrimaryButton
+        loading={loading}
+        onClick={handleClick}
+        disabled={!availableForSale}
+        size="large"
+      >
+        Add to Cart
+      </PrimaryButton>
+    </Box> 
 	)
 }
 
 export default AddToCartButton
+
+const sx = {
+  button: {
+    maxWidth: '300px',    
+  }
+}

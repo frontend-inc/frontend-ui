@@ -5,12 +5,11 @@ import { useForms } from '../../../hooks'
 import { useResourceContext } from 'frontend-js'
 import {
 	ProductRating,
-	DisplayFields,
+	DisplayMetafields,
 	ButtonActions,
 	SocialButtons,
 	AddToCartButton,
 } from '../..'
-import { buildActions } from '../../../helpers'
 import { Box, Stack } from '@mui/material'
 
 export type ProductDetailsProps = {
@@ -79,9 +78,6 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 						{enableRatings == true && (
 							<ProductRating resource={product} enableTotal />
 						)}
-						{displayFields?.length > 0 && (
-							<DisplayFields fields={displayFields} resource={product} />
-						)}
 					</Stack>
 				</Stack>
 			}
@@ -97,9 +93,15 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 				/>
 			}
 			addToCart={
-				<Box sx={sx.addToCart}>
+				<Stack spacing={2}>
 					<AddToCartButton availableForSale productId={product?.id} />
-				</Box>
+          {displayFields?.length > 0 && (
+          <DisplayMetafields 
+            fields={displayFields} 
+            resource={product} 
+          />
+        )}
+				</Stack>
 			}
 			secondaryAction={
 				buttons && (
