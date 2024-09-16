@@ -1,4 +1,3 @@
-export * from './admin/actions'
 export * from './admin/collection-products'
 export * from './admin/collections'
 export * from './admin/comments'

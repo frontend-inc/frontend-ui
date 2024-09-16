@@ -1,8 +1,8 @@
 import React from 'react'
-import { RemoteAutosuggest } from '../../../components'
+import { RemoteAutosuggest } from '../..'
 import { useAdmin } from '../../../hooks'
 
-type ActionAutosuggestProps = {
+type ZapAutosuggestProps = {
 	errors?: any
 	value: any
 	name?: string
@@ -13,13 +13,13 @@ type ActionAutosuggestProps = {
 	placeholder?: string
 }
 
-const ActionAutosuggest: React.FC<ActionAutosuggestProps> = (props) => {
+const ZapAutosuggest: React.FC<ZapAutosuggestProps> = (props) => {
 	const { apiUrl } = useAdmin()
 
 	const {
 		errors,
 		value,
-		name = 'action_id',
+		name = 'zap_id',
 		direction = 'column',
 		label,
 		handleChange,
@@ -37,7 +37,7 @@ const ActionAutosuggest: React.FC<ActionAutosuggestProps> = (props) => {
 			value={value}
 			displayField="name"
 			direction={direction}
-			url={`${apiUrl}/actions`}
+			url={`${apiUrl}/zaps`}
 			placeholder={placeholder}
 			handleChange={handleChange}
 			defaultQuery={defaultQuery}
@@ -45,4 +45,4 @@ const ActionAutosuggest: React.FC<ActionAutosuggestProps> = (props) => {
 	)
 }
 
-export default ActionAutosuggest
+export default ZapAutosuggest

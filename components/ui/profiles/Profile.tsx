@@ -33,7 +33,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
 				spacing={{ sm: 4, xs: 0 }}
 				alignItems="flex-start"
 			>
-				<Stack direction="column" spacing={1} alignItems="center">
+				<Stack direction="column" spacing={1} width='100%' alignItems="center">
 					<Avatar src={image} size={120} enableGradient />
 					<Stack direction="row" spacing={0}>
 						{socialLinks?.map((link, index) => (
