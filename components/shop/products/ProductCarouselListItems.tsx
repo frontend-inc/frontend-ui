@@ -29,10 +29,7 @@ const ProductCarouselListItems: React.FC<ProductCarouselListItemsProps> = (
 		enableDots = false,
 		enableGradient = false,
 		enableOverlay = false,
-		enableEdit = false,
-		enableDelete = false,
 		enableRatings = false,
-		enableUsers = false,
 		enableFavorites = false,
 		enableLikes = false,
 	} = props
@@ -83,16 +80,11 @@ const ProductCarouselListItems: React.FC<ProductCarouselListItemsProps> = (
 							style="card"
 							resource={resource}
 							displayFields={displayFields}
-							enableEdit={enableEdit}
-							enableDelete={enableDelete}
-							handleEdit={() => handleEdit(resource)}
-							handleDelete={() => handleDeleteClick(resource)}
 							handleClick={() => handleClick(resource)}
 							enableGradient={enableGradient}
 							enableOverlay={enableOverlay}
 							enableFavorites={enableFavorites}
 							enableRatings={enableRatings}
-							enableUsers={enableUsers}
 							enableLikes={enableLikes}
 						/>
 					</Box>

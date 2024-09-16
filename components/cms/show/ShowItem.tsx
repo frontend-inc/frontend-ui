@@ -24,7 +24,6 @@ export type ShowProps = {
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
-	enableRatings?: boolean
 	enableUsers?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean

@@ -4,11 +4,9 @@ import {
 	DisplayFields,
 	SocialButtons,
 	ButtonActions,
-	ProductRating,
 	ExpandableText,
 } from '../..'
 import { ShowProps } from './ShowItem'
-import { buildActions } from '../../../helpers'
 
 type ShowLayoutProps = ShowProps & {
 	fieldName?: string
@@ -20,12 +18,9 @@ const ShowLayout: React.FC<ShowLayoutProps> = (props) => {
 	const {
 		resource,
 		children,
-		enableEdit,
-		handleEdit,
 		enableFavorites,
 		enableLikes,
 		enableSharing,
-		enableRatings,
 		buttons = [],
 		displayFields = [],
 	} = props || {}
@@ -33,14 +28,10 @@ const ShowLayout: React.FC<ShowLayoutProps> = (props) => {
 	const { title, description } = resource || {}
 	return (
 		<Stack sx={sx.root} spacing={4}>
-			{(buttons || enableEdit) && (
+			{buttons && (
 				<Box sx={sx.buttons}>
 					<ButtonActions
-						buttons={buildActions({
-							enableEdit,
-							handleEdit,
-							buttons,
-						})}
+						buttons={buttons}
 						numVisible={4}
 						resource={resource}
 						justifyContent="center"
@@ -51,9 +42,6 @@ const ShowLayout: React.FC<ShowLayoutProps> = (props) => {
 				<Typography color="text.primary" variant="h3">
 					{title}
 				</Typography>
-				{enableRatings == true && (
-					<ProductRating resource={resource} enableTotal />
-				)}
 				{displayFields?.length > 0 && (
 					<DisplayFields fields={displayFields} resource={resource} />
 				)}
