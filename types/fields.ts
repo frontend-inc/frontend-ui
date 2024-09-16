@@ -23,9 +23,8 @@ export type FieldVariantTypes =
 	| 'country'
 	| 'location'
 	| 'select'
-	| 'shopify'
+	| 'products'
 	| 'shopify_products'
-	| 'shopify_collection'
 	| 'user'
 	| 'team'
 
@@ -50,6 +49,7 @@ export type FieldCategoryType =
 	| 'Data'
 	| 'Boolean'
 	| 'Reference'
+  | 'Shop'
 	| 'Shopify'
 
 export type FieldVariantType = {

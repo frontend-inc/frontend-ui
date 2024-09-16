@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Stack } from '@mui/material'
-import AdminDocumentInput from './inputs/DocumentInput'
-import { FieldType, SyntheticEventType } from '../../../types'
+import AdminDocumentInput from './AdminDocumentInput'
+import { FieldType, ProductType, SyntheticEventType } from '../../../types'
 import { get } from 'lodash'
 
 type AdminDocumentFormProps = {
@@ -14,6 +14,9 @@ type AdminDocumentFormProps = {
 	handleRemoveReferences: (items: any[]) => void
 	handleAddAttachment: (field: string, id: number) => void
 	handleRemoveAttachment: (field: string) => void
+  handleAddProducts: (products: ProductType[]) => void
+  handleRemoveProducts: (products: ProductType[]) => void
+  handleUpdateProductPositions: (sorted: number[]) => void
 }
 
 const AdminDocumentForm: React.FC<AdminDocumentFormProps> = (props) => {
@@ -27,6 +30,9 @@ const AdminDocumentForm: React.FC<AdminDocumentFormProps> = (props) => {
 		handleRemoveReferences,
 		handleAddAttachment,
 		handleRemoveAttachment,
+    handleAddProducts,
+    handleRemoveProducts,
+    handleUpdateProductPositions
 	} = props
 
 	const [editableFields, setEditableFields] = useState<FieldType[]>([])
@@ -55,6 +61,9 @@ const AdminDocumentForm: React.FC<AdminDocumentFormProps> = (props) => {
 					handleRemoveReferences={handleRemoveReferences}
 					handleAddAttachment={handleAddAttachment}
 					handleRemoveAttachment={handleRemoveAttachment}
+          handleAddProducts={handleAddProducts}
+          handleRemoveProducts={handleRemoveProducts}
+          handleUpdateProductPositions={handleUpdateProductPositions}
 				/>
 			))}
 		</Stack>

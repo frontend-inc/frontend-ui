@@ -7,7 +7,6 @@ import {
 	FormFieldType,
 	SearchFilterOptionType,
 	SortOptionType,
-	ToolbarButtonType,
 } from '../../../types'
 import {
 	ProductListItem,

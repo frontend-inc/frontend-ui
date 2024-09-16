@@ -8,8 +8,14 @@ type UseDocumentProps = {
 
 const useDocuments = (props: UseDocumentProps) => {
 	const { apiUrl } = useAdmin()
-
+  const { api } = useApi()
 	const { collection } = props
+
+  const apiParams = {
+		url: `${apiUrl}/cms/${collection}`,
+		name: 'document',
+	}
+
 	const {
 		loading,
 		delayedLoading,
@@ -34,8 +40,6 @@ const useDocuments = (props: UseDocumentProps) => {
 		handleChange,
 		handleChangePage,
 		updatePositions,
-		addReferences,
-		removeReferences,
 		addAttachment,
 		removeAttachment,
 		query,
@@ -47,7 +51,6 @@ const useDocuments = (props: UseDocumentProps) => {
 		sortBy,
 		sortDirection,
 		handleSort,
-		updateReferencePositions,
 		reloadOne: reloadDocument,
 		reloadMany: reloadDocuments,
 		setResource: setDocument,
@@ -55,10 +58,48 @@ const useDocuments = (props: UseDocumentProps) => {
 		startIndex,
 		endIndex,
 		paginate,
-	} = useResource({
-		url: `${apiUrl}/cms/${collection}`,
-		name: 'document',
-	})
+    loadingWrapper
+	} = useResource(apiParams)
+
+
+	const addReferences = async (
+		sourceId: number,
+		targetIds: number[]
+	) => {
+		return await loadingWrapper(() =>
+			api.addReferences(sourceId, targetIds, apiParams)
+		)
+	}
+
+	const removeReferences = async (sourceId: number, targetIds: number[]) => {    
+		return await loadingWrapper(() =>
+			api.removeReferences(sourceId, targetIds, apiParams)
+		)
+	}
+
+  const updateReferencePositions = async (id: number, sorted: any[]) => {
+    return await api.updateReferencePositions(id, sorted, apiParams)
+	}  
+
+  const addProductReferences = async (
+		documentId: number,
+		productIds: number[]
+	) => {
+		return await loadingWrapper(() =>
+			api.addProductReferences(documentId, productIds, apiParams)
+		)
+	}
+
+	const removeProductReferences = async (documentId: number, productIds: number[]) => {    
+		return await loadingWrapper(() =>
+			api.removeProductReferences(documentId, productIds, apiParams)
+		)
+	}
+
+  const updateProductReferencePositions = async (id: number, sorted: any[]) => {
+    return await api.updateProductReferencePositions(id, sorted, apiParams)
+	}
+
 
 	return {
 		paginate,
@@ -82,9 +123,14 @@ const useDocuments = (props: UseDocumentProps) => {
 		loadMore,
 		publish,
 		unpublish,
+
 		addReferences,
 		removeReferences,
 		updateReferencePositions,
+    addProductReferences,
+    removeProductReferences,
+    updateProductReferencePositions,
+
 		addAttachment,
 		removeAttachment,
 		handleChange,

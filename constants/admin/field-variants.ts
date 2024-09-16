@@ -243,6 +243,17 @@ export const HABTM_FIELD_VARIANT: FieldVariantType = {
 	color: COLORS.orange[500],
 }
 
+export const SHOP_PRODUCTS_FIELD_VARIANT: FieldVariantType = {
+	icon: 'Box',
+	category: 'Shop',
+	variant: 'products',
+	label: 'Products',
+	db_type: 'habtm',
+	description: 'Products from the shop',
+	array: true,
+	color: COLORS.lightGreen[500],
+}
+
 export const SHOPIFY_PRODUCTS_FIELD_VARIANT: FieldVariantType = {
 	icon: 'Shirt',
 	category: 'Shopify',
@@ -273,11 +284,12 @@ export const FIELD_VARIANTS: FieldVariantType[] = [
 	LOCATION_FIELD_VARIANT,
 	RATING_FIELD_VARIANT,
 	PRICE_FIELD_VARIANT,
-	// Media fields
-	IMAGE_FIELD_VARIANT,
+
+  IMAGE_FIELD_VARIANT,
 	VIDEO_FIELD_VARIANT,
 	FILE_FIELD_VARIANT,
 
 	HABTM_FIELD_VARIANT,
+  SHOP_PRODUCTS_FIELD_VARIANT,
 	SHOPIFY_PRODUCTS_FIELD_VARIANT,
 ]

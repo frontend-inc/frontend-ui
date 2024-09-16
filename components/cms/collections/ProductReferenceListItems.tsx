@@ -7,10 +7,8 @@ import { useRouter } from 'next/router'
 import { ProductListItem, DataLayout } from '../..'
 import { ButtonType, DisplayFieldType } from '../../../types'
 
-export type ProductListItemsProps = {
-	grid?: boolean
+export type ProductReferenceListItemsProps = {
 	href?: string
-	style?: 'list' | 'card' | 'avatar' | 'cover' | 'text'
 	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
 	handleClick?: (resource: any) => void
@@ -26,14 +24,14 @@ export type ProductListItemsProps = {
 	}
 }
 
-const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
+const ProductReferenceListItems: React.FC<ProductReferenceListItemsProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useApp()
 
 	const {
 		setResource,
 		loading,
-		resources,
+		resources: productReferences,
 		page,
 		numPages,
 		loadMore,
@@ -41,9 +39,7 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 	} = useResourceContext()
 
 	const {
-		grid = false,
 		buttons = [],
-		style = 'list',
 		href,
 		handleClick,
 		displayFields = [],
@@ -80,11 +76,12 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 
 	return (
 		<Stack direction="column" spacing={2}>
-			<DataLayout {...slots.list} grid={grid} loading={loading}>
-				{resources?.map((resource, index) => (
+			<DataLayout {...slots.list} grid loading={loading}>
+				{productReferences?.map((reference, index) => {          
+          const resource = reference?.product 
+          return (
 					<ProductListItem
 						key={index}
-						style={style}
 						resource={resource}
 						displayFields={displayFields}
 						handleClick={() => handleShowClick(resource)}
@@ -96,7 +93,7 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 						enableOverlay={enableOverlay}
 						{...slots.item}
 					/>
-				))}
+				)})}
 			</DataLayout>
 			<LoadMore
 				page={page}
@@ -107,4 +104,4 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 	)
 }
 
-export default ProductListItems
+export default ProductReferenceListItems

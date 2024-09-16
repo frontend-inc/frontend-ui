@@ -48,6 +48,9 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 		reloadDocument,
 		addReferences,
 		removeReferences,
+    addProductReferences,
+    removeProductReferences,
+    updateProductReferencePositions,
 		addAttachment,
 		removeAttachment,
 		updateDocuments,
@@ -105,6 +108,24 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 			reloadDocument(document.id)
 		}
 	}
+
+  const handleAddProducts = async (productIds) => {
+		if (document?.id) {
+			await addProductReferences(document?.id, productIds)
+			reloadDocument(document?.id)
+		}
+	}
+
+	const handleRemoveProducts = async (productIds) => {
+		if (document?.id) {
+			await removeProductReferences(document.id, productIds)
+			reloadDocument(document.id)
+		}
+	}
+
+  const handleUpdateProductPositions = async (sorted) => {
+    await updateProductReferencePositions(document?.id, sorted)
+  }
 
 	const handleAddAttachment = async (field, documentId) => {
 		if (document?.id) {
@@ -196,6 +217,9 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 							handleRemoveReferences={handleRemoveReferences}
 							handleAddAttachment={handleAddAttachment}
 							handleRemoveAttachment={handleRemoveAttachment}
+              handleAddProducts={handleAddProducts}
+              handleRemoveProducts={handleRemoveProducts}
+              handleUpdateProductPositions={handleUpdateProductPositions}
 						/>
 					</Box>
 				</ViewScroll>

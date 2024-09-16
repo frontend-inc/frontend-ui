@@ -38,7 +38,7 @@ const DocumentAutosuggest: React.FC<DocumentAutosuggestProps> = (props) => {
 		}
 	}, [collectionId])
 
-	if (!collection || apiUrl) return null
+	if (!collection || !apiUrl) return null
 	return (
 		<RemoteAutosuggest
 			enableClear

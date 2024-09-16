@@ -12,6 +12,11 @@ export { default as SimilarList } from './SimilarList'
 export { default as VideoList } from './VideoList'
 export { default as VideoListItems } from './VideoListItems'
 
+// Products
+export { default as ProductReferenceList } from './ProductReferenceList'
+export { default as ProductReferenceListItems } from './ProductReferenceListItems'
+
+
 // Collections
 export { default as CollectionEmpty } from './CollectionEmpty'
 export { default as CollectionList } from './CollectionList'

@@ -41,6 +41,8 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 		removeAttachment,
 		addReferences,
 		removeReferences,
+    addProductReferences,
+    removeProductReferences,
 		handleChange,
 	} = useDocuments({
 		collection: collectionId,
@@ -86,6 +88,16 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 
 	const handleRemoveReferences = async (documentIds) => {
 		await removeReferences(document?.id, documentIds)
+		findDocument(document?.id)
+	}
+
+  const handleAddProducts = async (productIds) => {
+		await addProductReferences(document?.id, productIds)
+		findDocument(document?.id)
+	}
+
+	const handleRemoveProducts = async (productIds) => {
+		await removeProductReferences(document?.id, productIds)
 		findDocument(document?.id)
 	}
 
@@ -144,6 +156,8 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 							handleRemoveReferences={handleRemoveReferences}
 							handleAddAttachment={handleAddAttachment}
 							handleRemoveAttachment={handleRemoveAttachment}
+              handleAddProducts={handleAddProducts}
+              handleRemoveProducts={handleRemoveProducts}
 						/>
 					</Box>
 					<Stack spacing={2}>

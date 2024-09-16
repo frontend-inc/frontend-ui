@@ -8,15 +8,17 @@ import {
 	JSONInput,
 	RatingInput,
 	TextInput,
-	ShopifyProductInput,
+  StateInput,
+  CountryInput,
 	ShopifyProductsInput,
-} from '../../../../components'
-import ReferenceInput from '../references/ReferenceInput'
-import MediaInput from '../media/MediaInput'
-import InputWrapper from './InputWrapper'
-import { AiChatModal } from '../../../../components'
-import { COUNTRIES, STATES } from '../../../../constants'
+} from '../../../components'
+import ReferenceInput from './references/ReferenceInput'
+import ProductsInput from './products/ProductsInput'
+import MediaInput from './media/MediaInput'
+import InputWrapper from './inputs/InputWrapper'
+import { AiChatModal } from '../../../components'
 import { Stack } from '@mui/material'
+import { ProductType } from '../../../types'
 
 type DocumentInputProps = {
 	errors?: any
@@ -25,15 +27,17 @@ type DocumentInputProps = {
 	placeholder?: string
 	handleChange: (e: any) => void
 	document?: any
-
 	collection?: any
 	handleAddReferences?: (items: any[]) => void
 	handleRemoveReferences?: (items: any[]) => void
 	handleAddAttachment?: (field: any, file: any) => void
 	handleRemoveAttachment?: (field: any, file: any) => void
+  handleAddProducts?: (products: ProductType[]) => void
+  handleRemoveProducts?: (products: ProductType[]) => void
+  handleUpdateProductPositions?: (sorted: number[]) => void
 }
 
-const DocumentInput: React.FC<DocumentInputProps> = (props) => {
+const AdminDocumentInput: React.FC<DocumentInputProps> = (props) => {
 	const {
 		errors,
 		field,
@@ -45,14 +49,17 @@ const DocumentInput: React.FC<DocumentInputProps> = (props) => {
 		handleRemoveReferences,
 		handleAddAttachment,
 		handleRemoveAttachment,
+    handleAddProducts,
+    handleRemoveProducts,
+    handleUpdateProductPositions
 	} = props
 
 	const { variant, name, label, options } = field || {}
 
 	let componentMapper = {
 		array: ArrayInput,
-		country: Autosuggest,
-		state: Autosuggest,
+		country: CountryInput,
+		state: StateInput,
 		string: TextInput,
 		url: TextInput,
 		text: TextInput,
@@ -65,7 +72,7 @@ const DocumentInput: React.FC<DocumentInputProps> = (props) => {
 		select: Autosuggest,
 		rating: RatingInput,
 		json: JSONInput,
-		shopify: ShopifyProductInput,
+		products: ProductsInput,
 		shopify_products: ShopifyProductsInput,
 		file: MediaInput,
 		image: MediaInput,
@@ -92,13 +99,7 @@ const DocumentInput: React.FC<DocumentInputProps> = (props) => {
 			height: 180,
 			width: 180,
 			zoom: 15,
-		},
-		country: {
-			options: COUNTRIES,
-		},
-		state: {
-			options: STATES,
-		},
+		},		
 		tags: {
 			value: value || [],
 			freeSolo: true,
@@ -114,6 +115,13 @@ const DocumentInput: React.FC<DocumentInputProps> = (props) => {
 					label: opt,
 				})) || [],
 		},
+    products: {
+      document,
+      value: value || [],
+      handleAddProducts,
+      handleRemoveProducts,
+      handleUpdateProductPositions
+    },
 		number: {
 			type: 'number',
 		},
@@ -166,7 +174,7 @@ const DocumentInput: React.FC<DocumentInputProps> = (props) => {
 	)
 }
 
-export default DocumentInput
+export default AdminDocumentInput
 
 const sx = {
 	stack: {

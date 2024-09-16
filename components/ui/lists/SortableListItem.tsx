@@ -3,13 +3,13 @@ import { Typography, ListItem, ListItemIcon, ListItemText } from '@mui/material'
 import { DragIndicator } from '@mui/icons-material'
 
 type SortableListItemProps = {
-	title?: string
-	subtitle?: string
+	primary?: string | React.ReactNode
+	secondary?: string | React.ReactNode 
 	isDragging?: boolean
 }
 
 const SortableListItem: React.FC<SortableListItemProps> = (props) => {
-	const { title, subtitle, isDragging } = props
+	const { primary, secondary, isDragging } = props
 
 	return (
 		<ListItem
@@ -23,16 +23,8 @@ const SortableListItem: React.FC<SortableListItemProps> = (props) => {
 				<DragIndicator sx={sx.icon} />
 			</ListItemIcon>
 			<ListItemText
-				primary={
-					<Typography variant="body1" color="text.primary">
-						{title}
-					</Typography>
-				}
-				secondary={
-					<Typography variant="body2" color="text.secondary">
-						{subtitle}
-					</Typography>
-				}
+				primary={ primary } 				
+				secondary={ secondary }									
 			/>
 		</ListItem>
 	)

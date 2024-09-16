@@ -4,13 +4,13 @@ import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd'
 
 type SortableListProps = {
 	items: any[]
-	droppableId: string
+	droppableId?: string
 	renderItem: (item: any, index: number, props: any) => React.ReactNode
 	handleDrop: (items: any[]) => void
 }
 
 const SortableList: React.FC<SortableListProps> = (props) => {
-	const { items, droppableId, renderItem, handleDrop } = props
+	const { items, droppableId="sortable-list", renderItem, handleDrop } = props
 
 	const [sorted, setSorted] = useState(items)
 
