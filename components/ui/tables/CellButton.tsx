@@ -3,7 +3,7 @@ import { Box, Button } from '@mui/material'
 import { Icon } from '../../../components'
 
 type CellButtonProps = {
-	children: string
+	children: string | number
 	icon: string
 	handleClick?: (value: any, row?: any, field?: any) => void
 }

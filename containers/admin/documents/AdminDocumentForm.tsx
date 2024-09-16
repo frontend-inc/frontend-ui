@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Stack } from '@mui/material'
 import AdminDocumentInput from './AdminDocumentInput'
-import { FieldType, ProductType, SyntheticEventType } from '../../../types'
+import { FieldType, ProductType } from '../../../types'
 import { get } from 'lodash'
 
 type AdminDocumentFormProps = {
@@ -9,7 +9,7 @@ type AdminDocumentFormProps = {
 	fields: FieldType[]
 	document: any
 	collection: any
-	handleChange: (e: SyntheticEventType) => void
+	handleChange: (e: any) => void
 	handleAddReferences: (items: any[]) => void
 	handleRemoveReferences: (items: any[]) => void
 	handleAddAttachment: (field: string, id: number) => void

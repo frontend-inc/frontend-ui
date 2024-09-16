@@ -188,17 +188,6 @@ export const STRING_FIELD_VARIANT: FieldVariantType = {
 	color: COLORS.deepPurple[500],
 }
 
-export const SHOPIFY_FIELD_VARIANT: FieldVariantType = {
-	icon: 'ShoppingCart',
-	category: 'Shopify',
-	variant: 'shopify',
-	db_type: 'string',
-	label: 'Shopify product',
-	description: 'Shopify product handle',
-	array: false,
-	color: COLORS.lightGreen[500],
-}
-
 export const TEXT_FIELD_VARIANT: FieldVariantType = {
 	icon: 'FileText',
 	category: 'Text',
