@@ -21,8 +21,8 @@ const AdminProductCollectionsList: React.FC = () => {
 
 	return (
 		<ResourceList
-			grid
 			selectable
+      sortable
 			url={`${apiUrl}/product_collections`}
 			name={'product_collection'}
 			enableSearch
