@@ -4,7 +4,6 @@ import { Carousel } from '../..'
 import { useApp } from '../../../hooks'
 import { useRouter } from 'next/router'
 import ProductListItem from './ProductListItem'
-import { useForms } from '../../../hooks'
 import { ProductListItemsProps } from '../products/ProductListItems'
 import { useResourceContext } from 'frontend-js'
 
@@ -33,8 +32,6 @@ const ProductCarouselListItems: React.FC<ProductCarouselListItemsProps> = (
 		enableFavorites = false,
 		enableLikes = false,
 	} = props
-
-	const { handleEdit, handleDeleteClick } = useForms()
 
 	const { setOpenShow, loading, resources, setResource } = useResourceContext()
 

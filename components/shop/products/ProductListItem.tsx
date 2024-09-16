@@ -1,17 +1,13 @@
 import React from 'react'
-import { ProductCard, ProductListCard } from '../..'
+import { ProductCard } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { SecondaryFields, SocialButtons, ButtonActions } from '../..'
 import { ButtonType, DisplayFieldType } from '../../../types'
 import { Box } from '@mui/material'
-import { buildActions } from '../../../helpers'
 import { AddToCartButton } from '../../../components'
-
-type CardStyleTypes = 'list' | 'card'
 
 type ProductListItemProps = {
 	buttons: ButtonType[]
-	style: CardStyleTypes
 	displayFields: DisplayFieldType[]
 	resource: any
 	buttonText?: string
@@ -41,19 +37,13 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 		enableLikes = false,
 		enableRatings = false,
 		enableUsers = false,
-		style = 'card',
 		...rest
 	} = props
 
-	const COMPONENTS = {
-		card: ProductCard,
-		list: ProductListCard,
-	}
 
-	let Component = COMPONENTS[style] || ProductCard
 
 	return (
-		<Component
+		<ProductCard
 			label={resource?.label}
 			image={resource?.image?.url}
 			primary={resource?.title}

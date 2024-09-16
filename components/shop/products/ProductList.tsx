@@ -20,7 +20,6 @@ import { useApp } from '../../../hooks'
 export type ProductListProps = {
 	grid?: boolean
 	selectable?: boolean
-	style: string
 	url?: string
 	href?: string
 	displayFields: DisplayFieldType[]
@@ -32,11 +31,7 @@ export type ProductListProps = {
 	enableOverlay?: boolean
 	enableShow?: boolean
 	fields?: FormFieldType[]
-	buttons?: ButtonType[]
-	headers?: {
-		label: string
-		value: string
-	}[]
+	buttons?: ButtonType[]	
 	enableSearch?: boolean
 	enableFilters?: boolean
 	enableSorting?: boolean
@@ -45,7 +40,7 @@ export type ProductListProps = {
 	perPage?: number
 	loadMore?: boolean
 	list: React.FC<any>
-	component?: React.FC<any>
+  component?: React.FC<any>
 	header?: React.FC<any>
 	show?: React.FC<any>
 	empty?: React.FC<any>
@@ -55,9 +50,7 @@ export type ProductListProps = {
 		show?: any
 		empty?: any
 		item?: any
-	}
-	circular?: boolean
-	disableImage?: boolean
+	}	
 	foreignUrl?: string
 	query?: any
 	resource: any
@@ -84,14 +77,9 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		enableGradient,
 		enableOverlay,
 
-		style = 'list',
 		href,
 		buttons = [],
 		displayFields = [],
-		circular,
-		disableImage,
-
-
 		enableShow,
 		fields = [],
 		enableSearch,
@@ -99,10 +87,9 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		enableSorting,
 		filterOptions = [],
 		sortOptions = [],
-		headers = [], // Used by KanBan
 		header: Header = ProductHeader,
 		list: List = ProductListItems,
-		component: Component = ProductListItem,
+    component: Component = ProductListItem,
 		show: Show = ProductShow,
 		empty: Empty = ProductEmpty,
 		slots: defaultSlots = {
@@ -124,8 +111,6 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 	const slots = {
 		list: {
 			...defaultSlots.list,
-			headers,
-			style,
 			href,
 			enableLikes,
 			enableFavorites,
@@ -151,9 +136,6 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		item: {
 			...defaultSlots.item,
 			href,
-			circular,
-			disableImage,
-			style,
 			buttons,
 			displayFields,
 			enableLikes,
