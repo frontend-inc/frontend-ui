@@ -23,8 +23,6 @@ type ProductListItemProps = {
 }
 
 const ProductListItem: React.FC<ProductListItemProps> = (props) => {
-	const { selectedIds, handleSelect } = useResourceContext()
-
 	const {
 		buttons,
 		resource,
@@ -40,8 +38,6 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 		...rest
 	} = props
 
-
-
 	return (
 		<ProductCard
 			label={resource?.label}
@@ -50,8 +46,6 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 			price={resource?.display_price}
 			compareAtPrice={resource?.display_compare_at_price}
 			handleClick={handleClick}
-			selected={selectedIds?.includes(resource?.id)}
-			handleSelect={() => handleSelect(resource)}
 			secondary={
 				<SecondaryFields
 					enableRatings={enableRatings}

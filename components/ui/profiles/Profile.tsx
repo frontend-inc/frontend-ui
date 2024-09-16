@@ -23,8 +23,6 @@ const Profile: React.FC<ProfileProps> = (props) => {
 		socialLinks = [],
 	} = props || {}
 
-  console.log('ProfileProps', props)
-
 	return (
 		<Box sx={sx.container}>
 			<Stack

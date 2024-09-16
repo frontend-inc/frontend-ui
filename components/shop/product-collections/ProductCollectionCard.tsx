@@ -8,10 +8,7 @@ import { useRouter } from 'next/router'
 export type ProductCardProps = {
   label?: string
 	primary: string
-  image?: {
-    url: string 
-  }
-	href?: string
+  image?: string 
 	handleClick?: () => void
   slots?: {
     image?: any
@@ -19,35 +16,25 @@ export type ProductCardProps = {
 }
 
 const ProductCollectionCard: React.FC<ProductCardProps> = (props) => {
-	const { clientUrl } = useApp()
-	const {
+
+  const {
     label,
 		primary,
     image,
-		href,
 		handleClick,
     slots={
       image: {}
     }		
 	} = props || {}
-
-	const router = useRouter()
-
-	const handleItemClick = () => {
-		if (handleClick) {
-			handleClick()
-		} else if (href) {
-			router.push(`${clientUrl}${href}`)
-		}
-	}
+	
 
 	return (
 		<LightDarkMode mode="dark">
 			<Stack spacing={1} sx={sx.root}>
-				<TouchableOpacity handleClick={handleItemClick}>
+				<TouchableOpacity handleClick={handleClick}>
 					<Image
 						label={label}
-						src={image?.url}
+						src={image}
 						height={400}
 						alt={primary}
             { ...slots.image }						
