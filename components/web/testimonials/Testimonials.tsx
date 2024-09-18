@@ -3,10 +3,11 @@ import { Box } from '@mui/material'
 import TestimonialsGrid from './TestimonialsGrid'
 import SwipeableTestimonials from './SwipeableTestimonials'
 import { Placeholder } from '../..'
+import { TestimonialType } from '../../../types'
 
 export type TestimonialsProps = {
 	layout?: 'grid' | 'carousel'
-	items: Record<string, any>[]
+	items: TestimonialType[]
 	enableAutoPlay?: boolean
 	enableArrows?: boolean
 }

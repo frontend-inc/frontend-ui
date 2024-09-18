@@ -34,15 +34,8 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
 			setAuthOpen(true)
 			return
 		}
-		if (!price.url) return
-		switch (price?.price_type) {
-			case 'stripe_payment_link':
-				let url = `${price.stripe_payment_url}?client_reference_id=${currentUser.id}&email=${currentUser.email}`
-				window.open(url, '_blank')
-				break
-			case 'url':
-				router.push(price.url)
-				break
+		if (price.url){
+      router.push(price.url)    
 		}
 	}
 
@@ -59,9 +52,6 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
 				</Typography>
 				<Typography variant="h5" color="text.primary">
 					{formatCurrency(price.price, 0)}
-					{price.recurring &&
-						price.recurring_rate &&
-						`/${price.recurring_rate}`}
 				</Typography>
 				<Divider />
 				<List disablePadding>
@@ -70,7 +60,7 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
 							<ListItemText
 								primary={
 									<Typography variant="body1" color="text.primary">
-										{feature?.label}
+										{feature}
 									</Typography>
 								}
 							/>

@@ -6,11 +6,11 @@ import { StarBorderOutlined, Star } from '@mui/icons-material'
 import Rating from '@mui/material/Rating'
 
 type TestimonialProps = {
-	author: string
-	text: string
-	rating: number
-	image: string
-	size: 'small' | 'large'
+  author: string
+  text: string
+  rating?: number
+  image?: string
+  size?: 'small' | 'large'
 }
 
 const TestimonialCard: React.FC<TestimonialProps> = (props) => {
@@ -31,7 +31,7 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 						)}
 					</Box>
 					{text && (
-						<Typography sx={sx.text} variant={'subtitle1'} color="text.primary">
+						<Typography sx={sx.text} variant='subtitle2' color="text.primary">
 							<FormatQuote sx={sx.quote}></FormatQuote>
 							{truncate(text, 240)}
 						</Typography>

@@ -1,6 +1,7 @@
+export { default as CarouselList } from './CarouselList'
+export { default as CarouselCoverList } from './CarouselCoverList'
 export { default as DataTableList } from './DataTableList'
 export { default as DataTableListItems } from './DataTableListItems'
-export { default as CarouselList } from './CarouselList'
 export { default as FavoritesGrid } from './FavoritesList'
 export { default as GeoList } from './GeoList'
 export { default as GeoNearbyList } from './GeoNearbyList'
@@ -15,7 +16,6 @@ export { default as VideoListItems } from './VideoListItems'
 // Products
 export { default as ProductReferenceList } from './ProductReferenceList'
 export { default as ProductReferenceListItems } from './ProductReferenceListItems'
-
 
 // Collections
 export { default as CollectionEmpty } from './CollectionEmpty'

@@ -20,7 +20,6 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 
 	const { links, handleClick, enableAuth, enableStripe, enableShopify } = props
 
-	const { currentUser } = useAuth()
 	const handleMenuClick = (path: string) => {
 		setMenuOpen(false)
 		handleClick(path)

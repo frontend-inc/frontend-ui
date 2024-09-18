@@ -29,8 +29,9 @@ const AdminCollectionMenu: React.FC = () => {
 		collection,
 		collections,
 		deleteCollection,
-		findCollections,
+		findCollections,    
 		setCollection,
+    setCollections,
 		handleChange,
 		updateCollection,
 		createCollection,
@@ -95,10 +96,16 @@ const AdminCollectionMenu: React.FC = () => {
 
 	const handleDeleteCollection = async () => {
 		try {
+      setCollection({})
 			await deleteCollection(activeCollection.id)
-			setShowDeleteModal(false)
-			setCollection({})
-			findCollections()
+      setCollections(collections.filter((c) => c.id !== activeCollection.id))
+      if(collectionId == activeCollection.name) {
+        let nextCollection = collections.filter(
+          (c) => c.name !== activeCollection.name
+        )[0]        
+        router.push(`/admin/${appId}/collections/${nextCollection?.name}`)
+      }
+			setShowDeleteModal(false)						
 		} catch (e) {
 			console.log(e)
 		}
@@ -107,8 +114,8 @@ const AdminCollectionMenu: React.FC = () => {
 	const handleTemplateClick = (template) => {
 		setCollection({
 			...collection,
-			name: template.name,
-			label: template.label,
+			name: collection.name || template.name,
+			label: collection.label || template.label,
 			template,
 		})
 	}
@@ -169,15 +176,6 @@ const AdminCollectionMenu: React.FC = () => {
 			findViews()
 		}
 	}, [viewId])
-
-	useEffect(() => {
-		if (!collection?.collection_type) {
-			setCollection({
-				...collection,
-				collection_type: 'post',
-			})
-		}
-	}, [collection])
 
 	return (
 		<Box sx={sx.root}>

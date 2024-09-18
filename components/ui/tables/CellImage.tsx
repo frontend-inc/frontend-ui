@@ -1,7 +1,7 @@
 import React from 'react'
 import { CardActionArea } from '@mui/material'
 import { Image } from '../../../components'
-import { imageFromVideoUrl } from '../../../helpers'
+import { cloudinaryImageFromVideoUrl } from '../../../helpers'
 
 type CellImageProps = {
 	value: {
@@ -13,7 +13,7 @@ type CellImageProps = {
 
 const CellImage: React.FC<CellImageProps> = (props) => {
 	const { value, size = 64, handleClick } = props
-	let src = imageFromVideoUrl(value?.url)
+	let src = cloudinaryImageFromVideoUrl(value?.url)
 	return (
 		<CardActionArea sx={{ p: 0 }} onClick={handleClick}>
 			<Image

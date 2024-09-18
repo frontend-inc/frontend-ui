@@ -14,6 +14,7 @@ export type ShopifyCollectionCoverProps = {
 	opacity?: number
 	overlayColor?: string
 	href?: string
+  buttonText?: string
 }
 
 const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
@@ -22,7 +23,7 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 	const {
 		shopifyCollection,
 		handleClick,
-		height = 400,
+		height,
 		alt = 'image',
 		enableGradient = false,
 		enableOverlay = false,
@@ -30,6 +31,7 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 		alignItems = 'center',
 		overlayColor = '#000000',
 		href,
+    buttonText
 	} = props
 
 	if (!shopifyCollection) return null
@@ -47,6 +49,7 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 			alignItems={alignItems}
 			href={href}
 			handleClick={handleClick}
+      buttonText={buttonText}
 		/>
 	)
 }

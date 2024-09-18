@@ -4,9 +4,9 @@ import { EmailSignup } from '../../components'
 import { EmailSignupProps } from '../../components/cms/newsletter/EmailSignup'
 import { SectionProps } from '../../types'
 
-type CmsEmailSignupProps = SectionProps & EmailSignupProps
+type UIEmailSignupProps = SectionProps & EmailSignupProps
 
-const CmsEmailSignup: React.FC<CmsEmailSignupProps> = (props) => {
+const UIEmailSignup: React.FC<UIEmailSignupProps> = (props) => {
 	const {
 		mode,
 		py,
@@ -32,4 +32,4 @@ const CmsEmailSignup: React.FC<CmsEmailSignupProps> = (props) => {
 	)
 }
 
-export default CmsEmailSignup
+export default UIEmailSignup

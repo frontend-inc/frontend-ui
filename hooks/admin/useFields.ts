@@ -1,19 +1,19 @@
 import React from 'react'
 import { useResource } from 'frontend-js'
+import { useApi } from 'frontend-js'
 import { useAdmin } from '..'
 
-type UseFieldParams = {
-  collectionId: string | number 
+type UseFieldsParams = {
+  collectionId: string
 }
 
-const useFields = (props: UseFieldParams) => {
-	const { apiUrl } = useAdmin()
+const useFields = (props: UseFieldsParams) => {
+
   const { collectionId } = props || {}
+	const { apiUrl } = useAdmin()
 
 	const {
 		loading,
-		delayedLoading,
-		loaded,
 		errors,
 		empty,
 		editing,
@@ -60,8 +60,6 @@ const useFields = (props: UseFieldParams) => {
 	return {
 		paginate,
 		loading,
-		loaded,
-		delayedLoading,
 		errors,
 		empty,
 		editing,

@@ -47,7 +47,7 @@ const useCollections = () => {
 		)
 	}
 
-	const aiGenerateMockData = async (collectionId) => {
+	const aiGenerateData = async (collectionId) => {
 		return await loadingWrapper(() =>
 			api.post(`${apiUrl}/collections/${collectionId}/ai_generate_data`)
 		)
@@ -83,7 +83,7 @@ const useCollections = () => {
 		setCollection,
 		setCollections,
 		exportCSV,
-		aiGenerateMockData,
+		aiGenerateData,
 	}
 }
 

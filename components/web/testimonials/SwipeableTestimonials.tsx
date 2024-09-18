@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import { Placeholder, Swipeable } from '../..'
+import { Swipeable } from '../..'
 import TestimonialCard from './TestimonialCard'
 
 type SwipeableTestimonialsProps = {

@@ -10,11 +10,8 @@ const UICover: React.FC<UICoverProps> = (props) => {
 	const {
 		enableTransitions,
 		mode,
-		py,
-		px,
 		maxWidth,
 		requireAuth,
-
 		requirePaid,
 		...rest
 	} = props
@@ -23,8 +20,8 @@ const UICover: React.FC<UICoverProps> = (props) => {
 		<Section
 			enableTransitions={enableTransitions}
 			mode={mode}
-			py={py}
-			px={px}
+			py={0}
+			px={0}
 			maxWidth={maxWidth}
 		>
 			<Cover {...rest} />

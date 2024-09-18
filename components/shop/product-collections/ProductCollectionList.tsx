@@ -53,6 +53,7 @@ const ProductCollectionList: React.FC<ProductCollectionListProps> = (props) => {
 		enableSorting,
 		filterOptions = [],
 		sortOptions = [],		
+    list: List = DataList,
     component: Component = ProductCollectionListItem,		
 		slots: defaultSlots = {
 			header: {},
@@ -79,15 +80,10 @@ const ProductCollectionList: React.FC<ProductCollectionListProps> = (props) => {
 			enableOverlay,
 		},
 	}
-
-	if (!url) {
-		url = `/${apiUrl}/shop/product_collections`
-	}
-
 	return (
 		<DataList
 			grid
-			url={url}
+			url={`${apiUrl}/shop/product_collections`}
 			foreignUrl={foreignUrl}
 			name="product_collection"
       fields={[]}
@@ -101,6 +97,7 @@ const ProductCollectionList: React.FC<ProductCollectionListProps> = (props) => {
 			enableSorting={enableSorting}
 			filterOptions={filterOptions}
 			sortOptions={sortOptions}
+      list={List}
 			component={Component}
 			slots={slots}
 		/>
