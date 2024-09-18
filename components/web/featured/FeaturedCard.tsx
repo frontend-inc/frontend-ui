@@ -47,20 +47,16 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 	}
 
 	return (
-		<Box
-			sx={{
-				...sx.root,
-				...(enableBorder && sx.rootBorder),
-			}}
-		>
-			<Box
-				sx={{
-					...sx.imageContainer,
-					flexDirection: {
-						sm: flexDirection,
-						xs: 'column',
-					},
-				}}
+			<Stack 
+        direction={{
+          sm: flexDirection,
+          xs: 'column',
+        }}
+        alignItems='center'
+        spacing={{
+          sm: 4,
+          xs: 1
+        }}				
 			>
 				<Box sx={sx.image}>
 					<Image
@@ -73,29 +69,26 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 						enableGradient={enableGradient}
 						disableBorderRadius={enableBorder}
 					/>
-				</Box>
-				<Box sx={sx.content}>
-					<Stack spacing={0} sx={sx.textContent}>
-						<Typography sx={sx.title} variant={'h6'}>
-							{title}
-						</Typography>
-						<ExpandableText text={description} />
-						{buttonText && (
-							<Box sx={sx.buttons}>
-								<Button
-									size="large"
-									variant="contained"
-									color="primary"
-									onClick={handleItemClick}
-								>
-									{buttonText}
-								</Button>
-							</Box>
-						)}
-					</Stack>
-				</Box>
-			</Box>
-		</Box>
+				</Box>				
+        <Stack spacing={1} sx={sx.content}>
+          <Typography sx={sx.title} variant={'h6'}>
+            {title}
+          </Typography>
+          { description && <ExpandableText text={description} /> }
+          {buttonText && (
+            <Box sx={sx.buttons}>
+              <Button
+                size="large"
+                variant="contained"
+                color="primary"
+                onClick={handleItemClick}
+              >
+                {buttonText}
+              </Button>
+            </Box>
+          )}
+        </Stack>
+			</Stack>
 	)
 }
 
@@ -126,11 +119,10 @@ const sx = {
 		height: '100%',
 		width: {
 			xs: '100%',
-			sm: '55%',
+			sm: '50%',
 		},
 	},
 	buttons: {
-		mt: 2,
 		display: 'flex',
 		justifyContent: {
 			sm: 'flex-start',
@@ -139,29 +131,26 @@ const sx = {
 		width: '100%',
 	},
 	content: {
-		display: 'flex',
 		justifyContent: {
 			sm: 'flex-start',
 			xs: 'center',
 		},
 		width: {
-			sm: '45%',
+			sm: '50%',
 			xs: '100%',
 		},
-		alignItems: 'center',
-		height: '100%',
+		alignItems: 'flex-start',    
+    height: '100%',
 	},
 	textContent: {
-		p: 2,
 		display: 'flex',
-		justifyContent: 'center',
+		justifyContent: 'flex-start',
 		height: '100%',
 		width: '100%',
 	},
 	title: {
 		width: '100%',
 		color: 'text.primary',
-		my: 1,
 		textAlign: {
 			sm: 'left',
 			xs: 'center',

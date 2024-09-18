@@ -54,7 +54,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 				)}
 				{description && (
 					<Typography
-						variant="body1"
+						variant="subtitle2"
 						color="text.secondary"
 						sx={{
 							...sx.description,

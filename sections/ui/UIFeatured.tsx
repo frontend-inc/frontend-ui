@@ -3,6 +3,7 @@ import { Section, Heading } from '../../components'
 import { Featured } from '../../components'
 import { FeaturedProps } from '../../components/web/featured/Featured'
 import { SectionProps, HeadingProps } from '../../types'
+import { Stack } from '@mui/material'
 
 type UIFeaturedProps = SectionProps & HeadingProps & FeaturedProps
 
@@ -31,14 +32,16 @@ const UIFeatured: React.FC<UIFeaturedProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Heading
-				label={label}
-				title={title}
-				description={description}
-				textAlign={'center'}
-				textVariant="h3"
-			/>
-			<Featured {...rest} />
+      <Stack direction='column' spacing={2}>
+        <Heading
+          label={label}
+          title={title}
+          description={description}
+          textAlign={'center'}
+          textVariant="h3"
+        />
+        <Featured {...rest} />
+      </Stack>
 		</Section>
 	)
 }

@@ -47,13 +47,13 @@ export const typography = {
 	subtitle1: {
 		fontFamily: 'Instrument Sans',
 		fontSize: 17,
-		fontWeight: 600,
+		fontWeight: 500,
 		lineHeight: '1.5em',
 		textTransform: 'none',
 	},
 	subtitle2: {
 		fontFamily: 'Instrument Sans',
-		fontWeight: 600,
+		fontWeight: 500,
 		fontSize: 16,
 		lineHeight: '1.5em',
 	},
