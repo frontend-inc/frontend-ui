@@ -4,7 +4,6 @@ import { Carousel } from '../..'
 import { useApp } from '../../../hooks'
 import { useRouter } from 'next/router'
 import CollectionListItem from './CollectionListItem'
-import { useForms } from '../../../hooks'
 import { CollectionListItemsProps } from '../collections/CollectionListItems'
 import { useResourceContext } from 'frontend-js'
 

@@ -17,7 +17,6 @@ const CmsCarousel: React.FC<CmsCarouselProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		requirePaid,
 		...rest
 	} = props

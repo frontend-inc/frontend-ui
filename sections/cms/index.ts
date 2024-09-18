@@ -1,4 +1,5 @@
 export { default as CmsCarousel } from './CmsCarousel'
+export { default as CmsCoverCarousel } from './CmsCoverCarousel'
 export { default as CmsComments } from './CmsComments'
 export { default as CmsDetails } from './CmsDetails'
 export { default as CmsForm } from './CmsForm'

@@ -27,14 +27,12 @@ const ProductCollectionListItem: React.FC<ProductCollectionListItemProps> = (pro
   const router = useRouter()
 
   const handleShowClick = () => {
-		if (href) {
-			if (clientUrl && href && resource?.handle) {
-				window.scrollTo({
-					top: 0,
-					behavior: 'smooth',
-				})
-				router.push(`${clientUrl}${href}/${resource?.handle}`)
-			}
+		if (clientUrl && href && resource?.handle) {			
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+      router.push(`${clientUrl}${href}/${resource?.handle}`)			
 		}else if(handleClick){
       handleClick()
     }
