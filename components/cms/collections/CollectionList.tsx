@@ -85,8 +85,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		enableComments,
 		enableGradient,
 		enableOverlay,
-    enableAutoPlay,
-    enableArrows,
 
 		style = 'card',
 		href,
