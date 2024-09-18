@@ -60,13 +60,17 @@ export type PriceType = {
 	label: string
 	title: string
 	price: number
-	price_type: 'stripe_payment_link' | 'url'
-	features: {
-		label: string
-	}[]
+	features: string[]
 	recurring?: boolean
-	recurring_rate?: string
+	interval?: string
 	buttonText: string
 	url?: string
-	stripe_payment_url?: string
+}
+
+export type TestimonialType = {
+  rating: number 
+  title: string 
+  description: string
+  image: string 
+  size?: 'small' | 'large'
 }

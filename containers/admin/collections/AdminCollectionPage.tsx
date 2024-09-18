@@ -39,7 +39,7 @@ const AdminCollectionPage: React.FC = () => {
 		setView,
 	} = useViews()
 
-	const { loading, collection, findCollection, aiGenerateMockData } =
+	const { loading, collection, findCollection, aiGenerateData } =
 		useCollections()
 
 	const handleSaveView = async () => {
@@ -74,9 +74,11 @@ const AdminCollectionPage: React.FC = () => {
 	}
 
 	const handleAiGenerateMockData = async () => {
-		await aiGenerateMockData(collectionId)
+		await aiGenerateData(collectionId)
 		setOpenAiModal(false)
-		await findCollection(collectionId)
+		router.push(
+      `${clientUrl}/collections/${collectionId}?page=1&per_page=10`
+    )
 	}
 
 	const handleAddClick = () => {

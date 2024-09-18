@@ -4,9 +4,9 @@ import { ContactForm } from '../../components'
 import { ContactFormProps } from '../../components/cms/leads/ContactForm'
 import { SectionProps } from '../../types'
 
-type CmsContactFormProps = SectionProps & ContactFormProps
+type UIContactFormProps = SectionProps & ContactFormProps
 
-const CmsContactForm: React.FC<CmsContactFormProps> = (props) => {
+const UIContactForm: React.FC<UIContactFormProps> = (props) => {
 	const {
 		mode,
 		py,
@@ -32,4 +32,4 @@ const CmsContactForm: React.FC<CmsContactFormProps> = (props) => {
 	)
 }
 
-export default CmsContactForm
+export default UIContactForm

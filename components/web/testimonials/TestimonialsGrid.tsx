@@ -1,11 +1,11 @@
 import React from 'react'
 import { Grid, Box } from '@mui/material'
-import { Icon, Placeholder } from '../..'
 import TestimonialCard from './TestimonialCard'
+import { TestimonialType } from '../../../types'
 
 type TestimonialsGridProps = {
 	size?: 'small' | 'large'
-	items: Record<string, any>[]
+	items: TestimonialType[]
 }
 
 const TestimonialsGrid: React.FC<TestimonialsGridProps> = (props) => {

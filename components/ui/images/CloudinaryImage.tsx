@@ -1,6 +1,6 @@
 import React from 'react'
 import { File as FileIcon } from 'lucide-react'
-import { resize, imageFromVideoUrl } from '../../../helpers'
+import { resizeCloudinaryImage, cloudinaryImageFromVideoUrl } from '../../../helpers'
 import { VIDEO_FORMATS, IMAGE_OR_VIDEO_FORMATS } from '../../../constants/index'
 import { Image } from '../../../components'
 
@@ -16,13 +16,13 @@ const CloudinaryImage: React.FC<CloudinaryImageProps> = (props) => {
 	let imageUrl = src
 	//@ts-ignore
 	if (VIDEO_FORMATS.includes(fileExtension)) {
-		imageUrl = imageFromVideoUrl(src)
+		imageUrl = cloudinaryImageFromVideoUrl(src)
 	} else {
 		// convert all images to jpg to ensure that they render correctly
-		imageUrl = src.substr(0, src.lastIndexOf('.')) + '.jpg'
+		imageUrl = src.slice(0, src.lastIndexOf('.')) + '.jpg';
 	}
 
-	const resizedImageUrl = resize(imageUrl, {
+	const resizedImageUrl = resizeCloudinaryImage(imageUrl, {
 		width: width,
 		height: height,
 	})

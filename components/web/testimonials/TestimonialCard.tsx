@@ -6,11 +6,11 @@ import { StarBorderOutlined, Star } from '@mui/icons-material'
 import Rating from '@mui/material/Rating'
 
 type TestimonialProps = {
-	author: string
-	text: string
-	rating: number
-	image: string
-	size: 'small' | 'large'
+  author: string
+  text: string
+  rating?: number
+  image?: string
+  size?: 'small' | 'large'
 }
 
 const TestimonialCard: React.FC<TestimonialProps> = (props) => {
