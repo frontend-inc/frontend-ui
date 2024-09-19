@@ -8,7 +8,7 @@ type UICoverCarouselProps = SectionProps & CoverCarouselProps
 
 const UICoverCarousel: React.FC<UICoverCarouselProps> = (props) => {
 	const {
-		mode,
+		mode='dark',
 		maxWidth,
 		requireAuth,
 		requirePaid,

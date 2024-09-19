@@ -44,15 +44,15 @@ function useApps(): Record<string, any> {
 		name: 'app',
 	})
 
-	const publishApp = async (appId: number) => {
+	const publishApp = async () => {
 		return await loadingWrapper(() => api.post(`${apiUrl}/publish`))
 	}
 
-	const buildApp = async (appId: number) => {
+	const buildApp = async () => {
 		return await loadingWrapper(() => api.post(`${apiUrl}/build`))
 	}
 
-	const generateAI = async (appId: number) => {
+	const generateAI = async () => {
 		return await loadingWrapper(() => api.post(`${apiUrl}/generate_ai`))
 	}
 

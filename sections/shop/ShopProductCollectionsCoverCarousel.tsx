@@ -1,5 +1,5 @@
 import React from 'react'
-import { Section, Heading } from '../../components'
+import { Section } from '../../components'
 import { ProductCollectionCarouselCoverList } from '../../components'
 import { ProductCollectionCarouselCoverListProps } from '../../components/shop/product-collections/ProductCollectionCarouselCoverList'
 import { SectionProps } from '../../types'
@@ -8,7 +8,7 @@ type ShopProductCollectionsCoverCarouselProps = SectionProps & ProductCollection
 
 const ShopProductCollectionsCoverCarousel: React.FC<ShopProductCollectionsCoverCarouselProps> = (props) => {
 	const {
-		mode,
+		mode='dark',
 		py,
 		px,
 		maxWidth,

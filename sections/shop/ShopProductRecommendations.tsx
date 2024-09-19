@@ -4,9 +4,9 @@ import { ProductSimilarList } from '../../components/shop'
 import { ProductListProps } from '../../components/shop/products/ProductList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type ShopProductsSimilarProps = ProductListProps & SectionProps & HeadingProps
+type ShopProductRecommendationsProps = ProductListProps & SectionProps & HeadingProps
 
-const ShopProductsSimilar: React.FC<ShopProductsSimilarProps> = (props) => {
+const ShopProductRecommendations: React.FC<ShopProductRecommendationsProps> = (props) => {
 	const {
 		label,
 		title,
@@ -42,4 +42,4 @@ const ShopProductsSimilar: React.FC<ShopProductsSimilarProps> = (props) => {
 	)
 }
 
-export default ShopProductsSimilar
+export default ShopProductRecommendations

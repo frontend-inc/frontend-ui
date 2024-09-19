@@ -10,6 +10,7 @@ import {
 import { SecondaryFields, SocialButtons, ButtonActions } from '../..'
 import { ButtonType, DisplayFieldType } from '../../../types'
 import { Box } from '@mui/material'
+import { resizeCloudinaryImage } from '../../../helpers'
 
 type CardStyleTypes = 'list' | 'avatar' | 'card' | 'cover' | 'text'
 
@@ -59,7 +60,7 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 	return (
 		<Component
 			label={resource?.label}
-			image={resource?.image?.url}
+			image={resizeCloudinaryImage(resource?.image?.url, { width: 800, height: 800 })}
 			primary={resource?.title}
 			handleClick={handleClick}
 			secondary={<SecondaryFields fields={displayFields} resource={resource} />}

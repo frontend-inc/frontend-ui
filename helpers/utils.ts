@@ -83,7 +83,7 @@ export const groupResourcesByField = (resources, fieldName, allowedValues) => {
 export const resizeCloudinaryImage = (src, { width, height, transform = 'fill' }) => {
 	if (!src) return null
 	let index = src.indexOf('/upload') + 7 // 7 is number of chars in '/upload'
-	let params = [`/c_${transform}`]
+	let params = [`/c_${transform},q_auto`]
 	if (width && width > 0) params.push(`w_${width}`)
 	if (height && height > 0) params.push(`h_${height}`)
 	let transformedUrl =

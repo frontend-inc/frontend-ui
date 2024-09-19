@@ -8,7 +8,7 @@ type ShopifyCollectionsCoverCarouselsProps = SectionProps & CollectionsCoverCaro
 
 const ShopifyCollectionsCoverCarousel: React.FC<ShopifyCollectionsCoverCarouselsProps> = (props) => {
 	const {
-		mode,
+		mode='dark',
 		py,
 		px,
 		maxWidth,

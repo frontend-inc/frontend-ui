@@ -11,7 +11,7 @@ const ShopProductCollectionCover: React.FC<ShopProductCollectionCoverProps> = (
 	props
 ) => {
 	const {
-		mode,
+		mode='dark',
 		py,
 		px,
 		maxWidth,
