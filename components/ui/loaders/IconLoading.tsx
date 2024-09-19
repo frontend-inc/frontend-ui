@@ -4,9 +4,10 @@ import { CircularProgress } from '@mui/material'
 type IconLoadingProps = {
 	loading: boolean
 	color?: string
+  size?: number
 }
 const IconLoading: React.FC<IconLoadingProps> = (props) => {
-	const { loading = false, color = 'primary.contrastText' } = props
+	const { loading = false, size=20, color = 'primary.contrastText' } = props
 	if (!loading) return null
 	return (
 		<CircularProgress
@@ -15,7 +16,7 @@ const IconLoading: React.FC<IconLoadingProps> = (props) => {
 				...sx.loader,
 				color,
 			}}
-			size={20}
+			size={size}
 		/>
 	)
 }
