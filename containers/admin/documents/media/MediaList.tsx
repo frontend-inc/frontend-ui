@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useMedia } from '../../../../hooks'
-import { Box, Button, CircularProgress } from '@mui/material'
+import { Stack, Box, Button } from '@mui/material'
 import { ExpandMore } from '@mui/icons-material'
 import MediaListItem from './MediaListItem'
-import { Placeholder } from '../../../../components'
+import { Placeholder, IconLoading } from '../../../../components'
 
 type MediaItemListProps = {
 	selectedIds: number[]
@@ -27,7 +27,7 @@ const MediaItemList: React.FC<MediaItemListProps> = (props) => {
 	}, [])
 
 	return (
-		<>
+		<Stack direction="column" spacing={1} width={'100%'}>
 			<Box sx={sx.list}>
 				{resources.map((item, idx) => (
 					<MediaListItem
@@ -53,13 +53,13 @@ const MediaItemList: React.FC<MediaItemListProps> = (props) => {
 					variant="contained"
 					onClick={handleLoadMore}
 					endIcon={
-						loading ? <CircularProgress disableShrink /> : <ExpandMore />
+						loading ? <IconLoading loading /> : <ExpandMore />
 					}
 				>
 					Load More
 				</Button>
 			)}
-		</>
+		</Stack>
 	)
 }
 

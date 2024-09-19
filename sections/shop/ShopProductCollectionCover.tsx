@@ -25,9 +25,9 @@ const ShopProductCollectionCover: React.FC<ShopProductCollectionCoverProps> = (
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
-			py={py}
-			px={px}
+			mode={'dark'}
+			py={0}
+			px={0}
 			maxWidth={maxWidth}
 		>
 			<ProductCollectionCover {...rest} />

@@ -8,7 +8,9 @@ type UICoverCarouselProps = SectionProps & CoverCarouselProps
 
 const UICoverCarousel: React.FC<UICoverCarouselProps> = (props) => {
 	const {
-		mode='dark',
+    mode,
+    px,
+    py,		
 		maxWidth,
 		requireAuth,
 		requirePaid,
@@ -19,7 +21,7 @@ const UICoverCarousel: React.FC<UICoverCarouselProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			mode={'dark'}
 			py={0}
 			px={0}
 			maxWidth={maxWidth}

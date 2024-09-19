@@ -15,7 +15,6 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 		px,
 		maxWidth,
 		requireAuth,
-
 		requirePaid,
 		...rest
 	} = props
@@ -24,9 +23,9 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
-			py={py}
-			px={px}
+			mode={'dark'}
+			py={0}
+			px={0}
 			maxWidth={maxWidth}
 		>
 			<CollectionCover {...rest} />
