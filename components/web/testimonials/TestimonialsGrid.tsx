@@ -12,23 +12,19 @@ const TestimonialsGrid: React.FC<TestimonialsGridProps> = (props) => {
 	const { size = 'small', items = [] } = props
 
 	return (
-		<Box sx={sx.root}>
-			<Grid container spacing={0}>
-				{items?.map((testimonial, i) => (
-					<Grid item key={i} xs={12} sm={6} md={4}>
-						<Box sx={sx.item}>
-							<TestimonialCard
-								key={i}
-								size={size}
-								image={testimonial.image}
-								author={testimonial.title}
-								rating={testimonial.rating}
-								text={testimonial.description}
-							/>
-						</Box>
-					</Grid>
-				))}
-			</Grid>
+		<Box sx={sx.root}>			
+      {items?.map((testimonial, i) => (
+          <Box sx={sx.item}>
+            <TestimonialCard
+              key={i}
+              size={size}
+              image={testimonial.image}
+              author={testimonial.title}
+              rating={testimonial.rating}
+              text={testimonial.description}
+            />
+          </Box>
+      ))}
 		</Box>
 	)
 }
@@ -36,9 +32,13 @@ const TestimonialsGrid: React.FC<TestimonialsGridProps> = (props) => {
 export default TestimonialsGrid
 
 const sx = {
-	root: {},
-	item: {
-		p: 2,
+	root: {    
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+    gap: '16px',
+    pb: 1,    
+  },
+	item: {		
 		height: '100%',
 		width: '100%',
 		display: 'flex',

@@ -18,21 +18,10 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>
-			<Stack spacing={0} sx={sx.content}>
-				<Box sx={sx.testimonial}>
-					<Box sx={sx.ratingContainer}>
-						{rating && (
-							<Rating
-								readOnly
-								value={rating}
-								icon={<Star sx={sx.rating} />}
-								emptyIcon={<StarBorderOutlined sx={sx.emptyRating} />}
-							/>
-						)}
-					</Box>
+			<Stack spacing={1} sx={sx.content}>
+				<Box sx={sx.testimonial}>					
 					{text && (
 						<Typography sx={sx.text} variant='subtitle2' color="text.primary">
-							<FormatQuote sx={sx.quote}></FormatQuote>
 							{truncate(text, 240)}
 						</Typography>
 					)}
@@ -63,6 +52,9 @@ const sx = {
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'flex-end',
+    width: '100%',
+    p: 2,
+    borderRadius: 1,
 	},
 	gradient: {
 		'&::after': {
