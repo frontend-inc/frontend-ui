@@ -1,9 +1,9 @@
 import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 import { ButtonType, TypographyVariantsType } from '../../../types'
-import { ButtonActions } from '../../../components'
+import { ButtonActions } from '../..'
 
-export type CTAProps = {
+export type CallToActionProps = {
 	label?: string
 	title: string
 	description: string
@@ -13,7 +13,7 @@ export type CTAProps = {
 }
 
 // Call To Action
-const CTA: React.FC<CTAProps> = (props) => {
+const CallToAction: React.FC<CallToActionProps> = (props) => {
 	const { label, title, description, buttons } = props || {}
 
 	return (
@@ -53,7 +53,7 @@ const CTA: React.FC<CTAProps> = (props) => {
 	)
 }
 
-export default CTA
+export default CallToAction
 
 const sx = {
 	root: {

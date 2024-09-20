@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack } from '@mui/material'
-import { AccordionItem, Placeholder, Text } from '../../../components'
+import { Container, AccordionItem, Placeholder, Text } from '../../../components'
 
 export type AccordionProps = {
 	items?: {
@@ -15,27 +15,29 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 	const { items = [] } = props
 
 	return (
-		<Stack spacing={1} sx={sx.root}>
-			{items?.map((item, i) => (
-				<AccordionItem
-					key={i}
-					primary={item?.title}
-					secondary={
-            <Text variant="body1" color="text.primary">
-						 { item?.description }
-					  </Text>
-          }            
-					image={item?.image}
-				/>
-			))}
-			{items?.length == 0 && (
-				<Placeholder
-					icon="Search"
-					title="No content"
-					description="Your content will appear here."
-				/>
-			)}
-		</Stack>
+    <Container maxWidth='md'>
+      <Stack spacing={1} sx={sx.root}>
+        {items?.map((item, i) => (
+          <AccordionItem
+            key={i}
+            primary={item?.title}
+            secondary={
+              <Text variant="body1" color="text.primary">
+              { item?.description }
+              </Text>
+            }            
+            image={item?.image}
+          />
+        ))}
+        {items?.length == 0 && (
+          <Placeholder
+            icon="Search"
+            title="No content"
+            description="Your content will appear here."
+          />
+        )}      
+      </Stack>
+    </Container>
 	)
 }
 

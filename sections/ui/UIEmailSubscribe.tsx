@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section } from '../../components'
-import { EmailSignup } from '../../components'
-import { EmailSignupProps } from '../../components/cms/newsletter/EmailSignup'
+import { EmailSubscribe } from '../../components'
+import { EmailSubscribeProps } from '../../components/cms/newsletter/EmailSubscribe'
 import { SectionProps } from '../../types'
 
-type UIEmailSignupProps = SectionProps & EmailSignupProps
+type UIEmailSubscribeProps = SectionProps & EmailSubscribeProps
 
-const UIEmailSignup: React.FC<UIEmailSignupProps> = (props) => {
+const UIEmailSubscribe: React.FC<UIEmailSubscribeProps> = (props) => {
 	const {
 		mode,
 		py,
@@ -27,9 +27,9 @@ const UIEmailSignup: React.FC<UIEmailSignupProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<EmailSignup {...rest} />
+			<EmailSubscribe {...rest} />
 		</Section>
 	)
 }
 
-export default UIEmailSignup
+export default UIEmailSubscribe

@@ -36,7 +36,7 @@ const UIAccordion: React.FC<UIAccordionProps> = (props) => {
 				title={title}
 				description={description}
 				textAlign={'center'}
-				textVariant="h3"
+				
 			/>
 			<Accordion {...rest} />
 		</Section>

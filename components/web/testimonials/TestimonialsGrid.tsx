@@ -14,16 +14,16 @@ const TestimonialsGrid: React.FC<TestimonialsGridProps> = (props) => {
 	return (
 		<Box sx={sx.root}>			
       {items?.map((testimonial, i) => (
-          <Box sx={sx.item}>
-            <TestimonialCard
-              key={i}
-              size={size}
-              image={testimonial.image}
-              author={testimonial.title}
-              rating={testimonial.rating}
-              text={testimonial.description}
-            />
-          </Box>
+        <Box sx={sx.item}>
+          <TestimonialCard
+            key={i}
+            size={size}
+            image={testimonial.image}
+            author={testimonial.title}
+            rating={testimonial.rating}
+            text={testimonial.description}
+          />
+        </Box>
       ))}
 		</Box>
 	)

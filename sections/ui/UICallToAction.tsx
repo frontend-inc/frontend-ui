@@ -1,12 +1,12 @@
 import React from 'react'
 import { Section } from '../../components'
-import { CTA } from '../../components'
-import { CTAProps } from '../../components/web/CTA/CTA'
+import { CallToAction } from '../../components'
+import { CallToActionProps } from '../../components/web/cta/CallToAction'
 import { SectionProps } from '../../types'
 
-type UICTAProps = SectionProps & CTAProps
+type UICallToActionProps = SectionProps & CallToActionProps
 
-const UICTA: React.FC<UICTAProps> = (props) => {
+const UICallToAction: React.FC<UICallToActionProps> = (props) => {
 	const {
 		mode,
 		py,
@@ -27,9 +27,9 @@ const UICTA: React.FC<UICTAProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<CTA {...rest} />
+			<CallToAction {...rest} />
 		</Section>
 	)
 }
 
-export default UICTA
+export default UICallToAction

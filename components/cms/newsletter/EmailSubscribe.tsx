@@ -5,7 +5,7 @@ import { Heading, TextInput, IconLoading } from '../..'
 import { useResource } from 'frontend-js'
 import { useAlerts } from '../../../hooks'
 
-export type EmailSignupProps = {
+export type EmailSubscribeProps = {
 	label?: string
 	title: string
 	description: string
@@ -17,13 +17,13 @@ export type EmailSignupProps = {
 }
 
 // Call To Action
-const EmailSignup: React.FC<EmailSignupProps> = (props) => {
+const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 	const { showAlertSuccess } = useAlerts()
 	const {
 		label,
 		title,
 		description,
-		textVariant = 'h3',
+		textVariant,
 		buttonText = 'Subscribe',
 	} = props || {}
 
@@ -82,7 +82,7 @@ const EmailSignup: React.FC<EmailSignupProps> = (props) => {
 	)
 }
 
-export default EmailSignup
+export default EmailSubscribe
 
 const sx = {
 	root: {

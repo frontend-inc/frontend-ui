@@ -1,9 +1,7 @@
 import React from 'react'
-import { Avatar, Box, Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import { truncate } from '../../../helpers'
-import { FormatQuote } from '@mui/icons-material'
-import { StarBorderOutlined, Star } from '@mui/icons-material'
-import Rating from '@mui/material/Rating'
+import { Avatar } from '../../../components'
 
 type TestimonialProps = {
   author: string
@@ -36,7 +34,7 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 							&mdash; {author}
 						</Typography>
 					)}
-					<Avatar src={image} sx={sx.avatar} />
+					<Avatar src={image} size={64} />
 				</Stack>
 			</Stack>
 		</Box>
