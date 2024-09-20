@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import TestimonialsGrid from './TestimonialsGrid'
+import TestimonialCards from './TestimonialCards'
 import SwipeableTestimonials from './SwipeableTestimonials'
 import { Placeholder } from '../..'
 import { TestimonialType } from '../../../types'
@@ -24,7 +24,7 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 					enableArrows={enableArrows}
 				/>
 			) : (
-				<TestimonialsGrid items={items} />
+				<TestimonialCards items={items} />
 			)}
 			{items?.length == 0 && (
 				<Placeholder

@@ -35,26 +35,26 @@ const Heading: React.FC<HeadingProps> = (props) => {
 				direction={'column'}
 				spacing={0}
 			>
-				{label && (
-					<Typography variant="caption" color="text.secondary">
-						{label}
-					</Typography>
-				)}
-				{title && (
-					<Typography
-						variant={textVariant}
-						color="text.primary"
-						sx={{
-							...sx.title,
-							textAlign: textAlign,
-						}}
-					>
-						{title}
-					</Typography>
-				)}
+          {label && (
+            <Typography variant="caption" color="text.secondary">
+              {label}
+            </Typography>
+          )}
+          {title && (
+            <Typography
+              variant={textVariant}
+              color="text.primary"
+              sx={{
+                ...sx.title,
+                textAlign: textAlign,
+              }}
+            >
+              {title}
+            </Typography>
+          )}
 				{description && (
 					<Typography
-						variant="subtitle2"
+						variant="body1"
 						color="text.secondary"
 						sx={{
 							...sx.description,
@@ -63,9 +63,9 @@ const Heading: React.FC<HeadingProps> = (props) => {
 					>
 						{description}
 					</Typography>
-				)}
-			</Stack>
+				)}      
 			{buttons}
+      </Stack>
 		</Box>
 	)
 }

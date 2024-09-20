@@ -12,7 +12,7 @@ const Section: React.FC<SectionProps> = (props) => {
 		children,
 		mode = 'light',
 		maxWidth,
-		py = 10,
+		py = 9,
 		px = 3,
 	} = props
 
