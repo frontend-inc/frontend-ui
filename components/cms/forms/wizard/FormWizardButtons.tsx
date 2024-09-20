@@ -37,6 +37,7 @@ const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 			</Button>
 			{currentStep != totalSteps ? (
 				<Button
+          sx={ sx.button }
 					size="large"
 					variant="contained"
 					onClick={handleNextStep}
@@ -53,10 +54,14 @@ const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 				</Button>
 			) : (
 				<Button
+          sx={ sx.button }
 					size="large"
 					variant="contained"
 					onClick={handleSubmit}
 					disabled={currentStep != totalSteps}
+          endIcon={					
+						loading && <IconLoading loading />            
+          }
 				>
 					{buttonText}
 				</Button>
@@ -68,12 +73,29 @@ const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 export default FormWizardButtons
 
 const sx = {
-	buttons: {
-		width: '100%',
-		justifyContent: 'flex-end',
-		py: 4,
+	buttons: {    
+		width: '100%',    
+		justifyContent: 'center',
+		py: 2,
+    px: 2,
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
+    borderTop: '2px solid',
+    borderColor: 'divider',
+    bgcolor: 'background.paper',
 	},
+  button: {
+    width: {
+      sm: '260px',
+      xs: '100%',
+    }
+  },
 	prevButton: {
+    width: {
+      sm: '260px',
+      xs: '100%',
+    },
 		color: 'secondary.contrastText',
 	},
 }
