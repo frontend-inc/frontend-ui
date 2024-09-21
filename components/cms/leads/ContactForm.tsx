@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Paper, Container } from '@mui/material'
-import { TypographyVariantsType } from '../../../types'
+import { FormFieldType, TypographyVariantsType } from '../../../types'
 import { Heading, Form } from '../..'
 import { useResource } from 'frontend-js'
 import { useAlerts } from '../../../hooks'
@@ -12,6 +12,7 @@ export type ContactFormProps = {
 	buttonText?: string
 	textVariant?: TypographyVariantsType
 	href?: string
+  metafields?: FormFieldType[]
 	handleClick?: () => void
 }
 
@@ -22,7 +23,8 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 		label,
 		title,
 		description,
-		textVariant = 'h3',
+		textVariant,
+    metafields=[],
 		buttonText = 'Send Message',
 	} = props || {}
 
@@ -59,11 +61,10 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 				<Form 
           loading={delayedLoading}
           fields={[
-            { label: 'Name', name: 'name', variant: 'string' },
-            { label: 'Email', name: 'email', variant: 'string' },
-            { label: 'Phone', name: 'phone', variant: 'string' },
-            { label: 'Company', name: 'company', variant: 'string' },
-            { label: 'Message', name: 'message', variant: 'text' },
+            { label: 'Name', name: 'name', placeholder: 'Full name', variant: 'string' },
+            { label: 'Email', name: 'email', placeholder: 'Email', variant: 'string' },
+            ...metafields,
+            { label: 'Message', name: 'message', placeholder: 'Leave a message', variant: 'text' },
           ]}
           resource={lead}
           handleChange={handleChange}

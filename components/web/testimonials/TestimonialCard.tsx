@@ -17,25 +17,25 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			<Stack spacing={1} sx={sx.content}>
-				<Box sx={sx.testimonial}>					
-					{text && (
-						<Typography sx={sx.text} variant='subtitle2' color="text.primary">
-							{truncate(text, 240)}
-						</Typography>
-					)}
+				<Box sx={sx.testimonial}>		
+          <Stack direction="column" spacing={1} sx={sx.text}>								
+            {text && (
+              <Typography variant='subtitle2' color="text.primary">
+                {truncate(text, 240)}
+              </Typography>
+            )}
+            {author && (
+              <Typography
+                sx={sx.author}
+                variant={size == 'small' ? 'caption' : 'body1'}
+                color="text.secondary"
+              >
+                &mdash; {author}
+              </Typography>
+            )}
+          </Stack>
 				</Box>
-				<Stack direction="column" spacing={1} sx={sx.author}>
-					{author && (
-						<Typography
-							sx={sx.author}
-							variant={size == 'small' ? 'caption' : 'body1'}
-							color="text.secondary"
-						>
-							&mdash; {author}
-						</Typography>
-					)}
-					<Avatar src={image} size={64} />
-				</Stack>
+				<Avatar src={image} size={64} />          
 			</Stack>
 		</Box>
 	)
@@ -51,24 +51,11 @@ const sx = {
 		alignItems: 'center',
 		justifyContent: 'flex-end',
     width: '100%',
-    p: 2,
-    borderRadius: 1,
-	},
-	gradient: {
-		'&::after': {
-			content: '""',
-			borderRadius: '50%',
-			position: 'absolute',
-			bottom: 0,
-			left: 0,
-			width: '100%',
-			height: '100%',
-			background: 'linear-gradient(to top, rgb(0,0,0,0.5), transparent)',
-		},
+    minHeight: '200px'
 	},
 	rootBorder: {
 		border: '1px solid',
-		borderColor: 'grey.300',
+		borderColor: 'divider',
 		p: 1,
 		borderRadius: 1,
 	},
@@ -91,8 +78,6 @@ const sx = {
 	},
 	author: {
 		color: 'text.secondary',
-		alignItems: 'center',
-		minHeight: '44px',
 	},
 	text: {
 		textAlign: 'center',
@@ -100,19 +85,6 @@ const sx = {
 	testimonial: {
 		display: 'flex',
 		flexDirection: 'column',
-		alignItems: 'center',
-		my: 2,
-	},
-	quote: {
-		transform: 'rotateY(180deg)',
-	},
-	rating: {
-		color: 'primary.main',
-	},
-	ratingContainer: {
-		height: 26,
-	},
-	emptyRating: {
-		color: 'text.secondary',
-	},
+		alignItems: 'center',	
+	}
 }

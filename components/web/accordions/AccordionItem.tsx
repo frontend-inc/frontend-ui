@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
+import { Stack, Box, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
 import { Image, Icon } from '../..'
 
 type AccordionProps = {
@@ -31,7 +31,6 @@ const AccordionItem: React.FC<AccordionProps> = (props) => {
 			<AccordionDetails sx={sx.accordionDetails}>
 				<Stack direction="row" spacing={2}>
 					{ secondary }
-					{image && <Image src={image} height={240} />}
 				</Stack>
 			</AccordionDetails>
 		</Accordion>
@@ -59,4 +58,8 @@ const sx = {
 	accordionDetails: {
 		bgcolor: 'background.default',
 	},
+  image: {
+    width: 160,
+		height: 160,
+  }
 }

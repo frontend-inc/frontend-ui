@@ -7,7 +7,9 @@ export default {
 		root: {
 			whiteSpace: 'nowrap',
 		},
-		sizeSmall: {},
+		sizeSmall: {
+      height: 40
+    },
 		sizeLarge: {},
 		outlined: {},
 		contained: {},

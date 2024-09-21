@@ -23,10 +23,9 @@ const Accordion: React.FC<AccordionProps> = (props) => {
             primary={item?.title}
             secondary={
               <Text variant="body1" color="text.primary">
-              { item?.description }
+                { item?.description }
               </Text>
             }            
-            image={item?.image}
           />
         ))}
         {items?.length == 0 && (
