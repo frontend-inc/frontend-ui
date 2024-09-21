@@ -1,18 +1,17 @@
 import React from 'react'
-import { useStripe } from '../../../../hooks'
+import { useStripeConnect } from '../../../../hooks'
 import { SvgIcon, Button } from '@mui/material'
 
 type StripeLogoProps = {
   width?: number
 }
 
-
 const StripeConnectButton: React.FC = () => {
   
   const { 
     loading, 
     stripeConnect 
-  } = useStripe()
+  } = useStripeConnect()
 
   const handleClick = async () => {    
     let url = window.location.href

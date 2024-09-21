@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStripe } from '../../../hooks'
+import { useStripeCustomerPortal } from '../../../hooks'
 import { Button } from '@mui/material'
 
 const StripeCustomerPortalButton: React.FC = () => {
@@ -7,7 +7,7 @@ const StripeCustomerPortalButton: React.FC = () => {
   const { 
     loading, 
     stripeCustomerPortal 
-  } = useStripe()
+  } = useStripeCustomerPortal()
 
   const handleClick = async () => {    
     let url = window.location.href

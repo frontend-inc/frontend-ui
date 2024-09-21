@@ -1,1 +1,1 @@
-export { default as useStripe } from './useStripe'
+export { default as useStripeCustomerPortal } from './useStripeCustomerPortal'

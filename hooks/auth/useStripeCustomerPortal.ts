@@ -1,8 +1,8 @@
 import React from 'react'
 import { useApi } from 'frontend-js'
-import { useApp, useLoadingWrapper } from '../../hooks'
+import { useApp, useLoadingWrapper } from '..'
 
-const useStripe = () => {
+const useStripeCustomerPortal = () => {
   const { api } = useApi()
   const { apiUrl } = useApp()
 
@@ -24,4 +24,4 @@ const useStripe = () => {
   }
 }
 
-export default useStripe
+export default useStripeCustomerPortal
