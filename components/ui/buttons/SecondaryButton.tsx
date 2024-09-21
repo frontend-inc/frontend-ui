@@ -1,13 +1,8 @@
 import React from 'react'
 import { PrimaryButton } from '../..'
+import { PrimaryButtonProps } from './PrimaryButton'
 
-export type SecondaryButtonProps = {
-	loading?: boolean
-	children: string
-	icon?: string
-	onClick: (ev: any) => void
-	fullWidth?: boolean
-}
+export type SecondaryButtonProps = PrimaryButtonProps
 
 const SecondaryButton: React.FC<SecondaryButtonProps> = (props) => {
 	return <PrimaryButton {...props} color="secondary" />
