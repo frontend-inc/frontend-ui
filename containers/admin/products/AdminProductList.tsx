@@ -6,6 +6,7 @@ import AdminProductForm from './AdminProductForm'
 import AdminProductEditForm from './AdminProductEditForm'
 import AdminProductShow from './AdminProductShow'
 import AdminProductToolbar from './AdminProductToolbar'
+import AdminProductHeader from './AdminProductHeader'
 import { MetafieldType } from '../../../types'
 
 type AdminProductListProps = {
@@ -34,6 +35,7 @@ const AdminProductsList: React.FC<AdminProductListProps> = (props) => {
 			create={AdminProductForm}
 			edit={AdminProductEditForm}
 			show={AdminProductShow}
+      header={ AdminProductHeader }
 			toolbar={AdminProductToolbar}
 			component={AdminProductItem}
 			slots={{

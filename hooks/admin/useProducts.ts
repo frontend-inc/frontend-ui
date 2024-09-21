@@ -1,9 +1,10 @@
 import React from 'react'
-import { useResource } from 'frontend-js'
+import { useApi, useResource } from 'frontend-js'
 import { useAdmin } from '../../hooks'
 
 const useProducts = () => {
 	const { apiUrl } = useAdmin()
+  const { api } = useApi()
 
 	const {
 		loading,
@@ -47,10 +48,17 @@ const useProducts = () => {
 		startIndex,
 		endIndex,
 		paginate,
+    loadingWrapper
 	} = useResource({
 		url: `${apiUrl}/products`,
 		name: 'product',
 	})
+
+  const generateAiProducts = async () => {
+    return loadingWrapper(() => 
+      api.post(`${apiUrl}/products/generate_ai_products`)
+    )
+  }
 
 	return {
 		paginate,
@@ -71,6 +79,8 @@ const useProducts = () => {
 		createProduct,
 		deleteProduct,
 		deleteProducts,
+    generateAiProducts,
+
 		loadMore,
 		publish,
 		unpublish,

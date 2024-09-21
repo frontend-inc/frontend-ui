@@ -4,9 +4,9 @@ import { Swipeable, Cover } from '../..'
 import { useApp } from '../../../hooks'
 import { useRouter } from 'next/router'
 import { useResourceContext } from 'frontend-js'
-import { CoverProps } from '../../../components/web/covers/Cover'
+import { CoverProps } from '../../web/covers/Cover'
 
-export type ProductCollectionCarouselCoverListItemsProps = CoverProps & {
+export type ProductCollectionCoverCarouselListItemsProps = CoverProps & {
   href?: string
   height?: number
   enableAutoPlay?: boolean
@@ -15,7 +15,7 @@ export type ProductCollectionCarouselCoverListItemsProps = CoverProps & {
   enableOverlay?: boolean
 }
 
-const ProductCollectionCarouselCoverListItems: React.FC<ProductCollectionCarouselCoverListItemsProps> = (props) => {
+const ProductCollectionCoverCarouselListItems: React.FC<ProductCollectionCoverCarouselListItemsProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useApp()
 
@@ -65,7 +65,7 @@ const ProductCollectionCarouselCoverListItems: React.FC<ProductCollectionCarouse
 	)
 }
 
-export default ProductCollectionCarouselCoverListItems
+export default ProductCollectionCoverCarouselListItems
 
 const sx = {
 	root: {

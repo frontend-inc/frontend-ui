@@ -8,7 +8,7 @@ import {
 	SyntheticEventType,
 } from '../../../types'
 
-type ResourceHeaderProps = {
+export type ResourceHeaderProps = {
 	direction?: 'row' | 'column'
 	enableSearch: boolean
 	enableFilters: boolean
@@ -21,11 +21,13 @@ type ResourceHeaderProps = {
 	handleSort: (field: any) => void
 	handleSortDirection: (sortDirection: 'asc' | 'desc') => void
 	handleAdd: () => void
+  handleReload?: () => void
 	keywords: string
 	activeFilters: FilterOptionType[]
 	filterOptions: SearchFilterOptionType[]
 	sortOptions: SortOptionType[]
 	query: any
+  secondaryAction?: React.ReactNode
 }
 
 const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
@@ -46,6 +48,7 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 		activeFilters,
 		filterOptions,
 		sortOptions,
+    secondaryAction,
 		query = {},
 	} = props || {}
 
@@ -85,17 +88,20 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 					/>
 				)}
 			</Stack>
-			{enableCreate && (
-				<Button
-					sx={sx.button}
-					color="primary"
-					variant="contained"
-					onClick={handleAdd}
-					startIcon={<Icon name="Plus" color="primary.contrastText" />}
-				>
-					Add
-				</Button>
-			)}
+      <Stack direction="row" spacing={1} sx={ sx.secondaryActions }>
+        {secondaryAction}
+        {(enableCreate || secondaryAction) && (
+          <Button
+            sx={sx.button}
+            color="primary"
+            variant="contained"
+            onClick={handleAdd}
+            startIcon={<Icon name="Plus" color="primary.contrastText" />}
+          >
+            Add
+          </Button>
+        )}
+      </Stack>
 		</Stack>
 	)
 }
@@ -113,4 +119,8 @@ const sx = {
 			xs: '100%',
 		},
 	},
+  secondaryActions: {
+    width: '100%',
+    justifyContent: 'flex-end',
+  },
 }

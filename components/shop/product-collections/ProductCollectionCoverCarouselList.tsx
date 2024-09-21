@@ -1,15 +1,15 @@
 import React from 'react'
 import { ProductCollectionList } from '../..'
 import { ProductCollectionListProps } from './ProductCollectionList'
-import ProductCollectionCoverListItems from './ProductCollectionCarouselCoverListItems'
+import ProductCollectionCoverListItems from './ProductCollectionCoverCarouselListItems'
 
-export type ProductCollectionCarouselCoverListProps = ProductCollectionListProps & {
+export type ProductCollectionCoverCarouselListProps = ProductCollectionListProps & {
   enableArrows?: boolean
   enableAutoPlay?: boolean
   buttonText?: string
 }
 
-const ProductCollectionCarouselCoverList: React.FC<ProductCollectionCarouselCoverListProps> = (props) => {
+const ProductCollectionCoverCarouselList: React.FC<ProductCollectionCoverCarouselListProps> = (props) => {
 
   const { enableArrows, enableAutoPlay, buttonText } = props || {}
 
@@ -30,4 +30,4 @@ const ProductCollectionCarouselCoverList: React.FC<ProductCollectionCarouselCove
   )
 }
 
-export default ProductCollectionCarouselCoverList
+export default ProductCollectionCoverCarouselList

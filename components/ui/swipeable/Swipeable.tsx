@@ -9,10 +9,11 @@ type SwipeableProps = {
 	children: React.ReactNode[]
 	enableAutoPlay?: boolean
 	enableArrows?: boolean
+  interval?: number
 }
 
 const Swipeable: React.FC<SwipeableProps> = (props) => {
-	const { children = [], enableArrows = false, enableAutoPlay = false } = props
+	const { children = [], interval=5000, enableArrows = false, enableAutoPlay = false } = props
 
 	const [activeStep, setActiveStep] = useState(0)
 
@@ -47,6 +48,7 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
 				index={activeStep}
 				onChangeIndex={handleStepChange}
 				enableMouseEvents
+        interval={interval}
 			>
 				{children}
 			</SwipeableComponent>

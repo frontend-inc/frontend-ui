@@ -4,7 +4,7 @@ import { Icon, FilterButton, SortButton, SearchInput } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch, useForms } from '../../../hooks'
 
-export type DataToolbarProps = {
+export type DataHeaderProps = {
 	query: any
 	url: string
 	enableSearch?: boolean
@@ -16,12 +16,13 @@ export type DataToolbarProps = {
 	handleAdd?: () => void
 	component?: React.FC<any>
 	buttonText?: string
+  secondaryAction?: React.ReactNode 
 	slots?: {
 		search?: any
 	}
 }
 
-const DataToolbar: React.FC<DataToolbarProps> = (props) => {
+const DataHeader: React.FC<DataHeaderProps> = (props) => {
 	const {
 		url,
 		query: defaultQuery = {},
@@ -32,6 +33,7 @@ const DataToolbar: React.FC<DataToolbarProps> = (props) => {
 		enableFilters = false,
 		enableSorting = false,
 		buttonText = 'Add',
+    secondaryAction,
 		component: SearchComponent = SearchInput,
 		slots = {
 			search: {},
@@ -100,7 +102,7 @@ const DataToolbar: React.FC<DataToolbarProps> = (props) => {
 						</Box>
 					)}
 				</Stack>
-				{enableCreate && (
+				{(enableCreate || secondaryAction) && (
 					<Stack
 						spacing={1}
 						direction={{ xs: 'column', sm: 'row' }}
@@ -122,7 +124,7 @@ const DataToolbar: React.FC<DataToolbarProps> = (props) => {
 	)
 }
 
-export default DataToolbar
+export default DataHeader
 
 const sx = {
 	root: {
