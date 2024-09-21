@@ -6,7 +6,7 @@ export type HeroCardProps = {
 	label?: string
 	image?: string
 	primary?: string
-	secondary?: string
+	secondary?: React.ReactNode 
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
 	children?: React.ReactNode

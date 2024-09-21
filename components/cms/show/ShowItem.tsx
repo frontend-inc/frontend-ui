@@ -1,7 +1,7 @@
 import React from 'react'
 import { ButtonType, DisplayFieldType } from '../../../types'
 import {
-	Hero,
+	HeroList,
 	HeroAvatar,
 	HeroCard,
 	HeroCover,
@@ -59,14 +59,14 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 	const { resource } = useResourceContext()
 
 	const components = {
-		list: Hero,
+		list: HeroList,
 		cover: HeroCover,
 		card: HeroCard,
 		avatar: HeroAvatar,
 		snippet: HeroSnippet,
 	}
 
-	const Component = components[style] || Hero
+	const Component = components[style] || HeroList
 
 	let slots = {
 		image: {

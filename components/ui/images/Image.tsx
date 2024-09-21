@@ -44,7 +44,7 @@ const Image: React.FC<ImageProps> = (props) => {
 			sx={{
 				position: 'relative',
 				width: '100%',
-				height: `${height}px`,
+				height: objectFit == 'cover' ? `${height}px` : 'auto',
 			}}
 		>
 			<TouchableOpacity
@@ -54,7 +54,7 @@ const Image: React.FC<ImageProps> = (props) => {
 				<Box
 					sx={{
 						...sx.root,
-						height: `${height}px`,
+						height: objectFit == 'cover' ? `${height}px` : 'auto',
 						minWidth: width ? `${width}px` : '100%',
 						...(!disableBorderRadius && sx.borderRadius),
 						'&::after': {
@@ -79,9 +79,9 @@ const Image: React.FC<ImageProps> = (props) => {
 							width={1600}
 							layout="responsive"
 							style={{
-								height: `${height}px`,
-								width: width ? `min(${width}px, 100vw)` : '100%',
-								minHeight: `${height}px`,
+								height: objectFit == 'cover' ? `${height}px` : 'auto',
+                minHeight: objectFit == 'cover' ? `${height}px` : 'auto',
+								width: width ? `min(${width}px, 100vw)` : '100%',								
 								objectFit,
 								borderRadius: !disableBorderRadius
 									? `${theme.shape.borderRadius}px`

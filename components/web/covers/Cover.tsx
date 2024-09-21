@@ -55,10 +55,10 @@ const Cover: React.FC<CoverProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			<Image
+      	disableBorderRadius
 				src={image}
 				alt={alt}
 				height={height}
-				disableBorderRadius
 				bgcolor={overlayColor}
 				enableGradient={enableGradient}
 				enableOverlay={enableOverlay}

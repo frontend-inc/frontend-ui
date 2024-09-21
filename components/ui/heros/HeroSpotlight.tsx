@@ -1,0 +1,99 @@
+import React from 'react'
+import { Stack, Box, Typography } from '@mui/material'
+import { Container, Image } from '../..'
+import { HeroCardProps } from './HeroCard'
+
+const HeroSpotlight: React.FC<HeroCardProps> = (props) => {
+	const {
+		image,
+		label,
+		primary,
+		secondary,
+		actions,
+		secondaryAction,
+		children,
+    slots={
+      image: {}
+    }
+	} = props || {}
+
+	return (
+    <Box sx={ sx.gradient }>
+      <Container maxWidth="md">
+        <Stack sx={sx.root} spacing={4}>
+          {actions}
+          <Typography color="text.primary" variant="h1" sx={ sx.header }>
+            {primary}
+          </Typography>
+          {secondaryAction}
+          {secondary}
+          {children}
+          <Box sx={sx.imageContainer}>
+            <Image               
+              src={image} 
+              alt={primary} 
+              height={500} 
+              label={label}  
+              objectFit='contain'
+              { ...slots.image }           
+            />
+          </Box>
+        </Stack>
+      </Container>
+    </Box>
+	)
+}
+
+export default HeroSpotlight
+
+const sx = {
+	root: {
+		width: '100%',
+		justifyContent: 'flex-start',
+		alignItems: 'center',
+    px: 2
+	},
+	rootBorder: {
+		border: '1px solid',
+		borderColor: 'divider',
+		pb: 2,
+	},
+	header: {
+		maxWidth: 600,
+		width: '100%',
+		textAlign: 'center',
+	},
+	content: {
+		width: '100%',
+		maxWidth: {
+			sm: 500,
+			xs: '100%',
+		},
+	},
+	text: {
+		width: '100%',
+		whiteSpace: 'pre-line',
+	},
+	caption: {
+		color: 'text.secondary',
+	},
+	buttons: {
+		justifyContent: 'center',
+		width: {
+			sm: 'auto',
+			xs: '100%',
+		},
+	},
+	imageContainer: {
+		width: '100%',
+		borderRadius: 1,
+    boxShadow: 6,
+	},
+  gradient: { 
+    pt: 8, 
+    pb: 2,
+    height: 'auto',
+    width: '100%',    
+	  background: theme => `radial-gradient(ellipse 100% 95% at center bottom, ${theme.palette.primary.main}, rgba(0, 0, 0, 1))`
+	},
+}

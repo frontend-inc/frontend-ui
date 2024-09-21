@@ -3,7 +3,6 @@ import { Section } from '../../components'
 import { Image } from '../../components'
 import { ImageProps } from '../../components/ui/images/Image'
 import { SectionProps } from '../../types'
-import { Box } from '@mui/material'
 
 type UIImageProps = SectionProps & ImageProps
 
@@ -14,7 +13,6 @@ const UIImage: React.FC<UIImageProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		requirePaid,
 		...rest
 	} = props

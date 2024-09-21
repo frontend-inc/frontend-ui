@@ -4,7 +4,9 @@ import { HeroCardProps } from './HeroCard'
 import { AvatarImage } from '../..'
 
 const HeroAvatar: React.FC<HeroCardProps> = (props) => {
-	const { image, primary, secondary, actions, secondaryAction, slots } =
+	const { image, primary, secondary, actions, secondaryAction, slots={
+    image: {}
+  } } =
 		props || {}
 
 	return (
