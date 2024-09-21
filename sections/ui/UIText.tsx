@@ -26,6 +26,7 @@ const UIText: React.FC<UITextProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
+      {/* @ts-ignore */}
 			<Text {...rest} />
 		</Section>
 	)

@@ -1,9 +1,13 @@
 import React from 'react'
 import { Stack, Typography } from '@mui/material'
 import { Container, Heading } from '../..'
-import { HeadingProps, TypographyVariantsType } from '../../../types'
+import { TypographyVariantsType } from '../../../types'
 
-export type TextProps = HeadingProps & {
+export type TextProps = {
+  title: string
+  description?: string
+  label?: string
+  textAlign?: 'center' | 'left' 
 	text: string
   textVariant?: TypographyVariantsType
   html?: boolean
