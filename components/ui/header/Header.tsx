@@ -18,12 +18,14 @@ export type HeaderProps = {
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
-	const { logo: appLogo, enableStripe, enableShopify } = useApp()
+	const { logo: appLogo } = useApp()
 
 	const {
 		logo,
 		links=[],
 		handleClick,
+    enableStripe, 
+    enableShopify,
 		enableAuth = false,
 	} = props
 

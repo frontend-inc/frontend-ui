@@ -28,7 +28,7 @@ const MyAccountMenu: React.FC<MyAccountMenuProps> = (props) => {
 
 	const SUBSCRIPTION_TAB = [
 		{
-			label: 'Subscription',
+			label: 'Manage Billing',
 			value: 1,
 		},
 	]

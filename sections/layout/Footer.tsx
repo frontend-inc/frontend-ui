@@ -1,5 +1,5 @@
 import React from 'react'
-import { LightDarkMode, Footer as AppFooter } from '../../components'
+import { LightDarkMode, Footer } from '../../components'
 import { FooterProps } from '../../components/ui/footer/Footer'
 import { useRouter } from 'next/router'
 
@@ -7,7 +7,7 @@ type LayoutFooterProps = FooterProps & {
 	mode: 'accent' | 'light' | 'dark'
 }
 
-const Footer: React.FC<LayoutFooterProps> = (props) => {
+const AppFooter: React.FC<LayoutFooterProps> = (props) => {
 	const router = useRouter()
 	const { mode, links=[], ...rest } = props || {}
 
@@ -17,7 +17,7 @@ const Footer: React.FC<LayoutFooterProps> = (props) => {
 
 	return (
 		<LightDarkMode mode={mode}>
-			<AppFooter 
+			<Footer 
         {...rest} 
         links={links}
         handleClick={handleClick} 
@@ -26,4 +26,4 @@ const Footer: React.FC<LayoutFooterProps> = (props) => {
 	)
 }
 
-export default Footer
+export default AppFooter

@@ -8,5 +8,3 @@ export * from './product-collections'
 export * from './product-reviews'
 export * from './stripe'
 export * from './subscriptions'
-
-export { default as StripeCustomerPortalButton } from './customers/StripeCustomerPortalButton'

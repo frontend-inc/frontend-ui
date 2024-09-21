@@ -1,5 +1,5 @@
 import React from 'react'
-import { LightDarkMode, Header as AppHeader } from '../../components'
+import { LightDarkMode, Header } from '../../components'
 import { HeaderProps } from '../../components/ui/header/Header'
 import { useRouter } from 'next/router'
 import { useApp } from '../../hooks'
@@ -8,7 +8,7 @@ type LayoutHeaderProps = HeaderProps & {
 	mode: 'accent' | 'light' | 'dark'
 }
 
-const Header: React.FC<LayoutHeaderProps> = (props) => {
+const AppHeader: React.FC<LayoutHeaderProps> = (props) => {
 	const router = useRouter()
 	const { mode, ...rest } = props || {}
 
@@ -24,9 +24,9 @@ const Header: React.FC<LayoutHeaderProps> = (props) => {
 
 	return (
 		<LightDarkMode mode={mode}>
-			<AppHeader {...rest} handleClick={handleClick} />
+			<Header {...rest} handleClick={handleClick} />
 		</LightDarkMode>
 	)
 }
 
-export default Header
+export default AppHeader

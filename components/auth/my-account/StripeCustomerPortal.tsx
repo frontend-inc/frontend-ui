@@ -1,18 +1,7 @@
 import React from 'react'
-import { Placeholder, PrimaryButton } from '../../../components'
-import { useAlerts, useApp } from '../../../hooks'
+import { Placeholder, StripeCustomerPortalButton } from '../../../components'
 
 const StripeCustomerPortal = () => {
-	const { app } = useApp()
-	const { showAlertError } = useAlerts()
-
-	const handleClick = () => {
-		if (app?.stripe_customer_portal_url) {
-			window.open(app.stripe_customer_portal_url, '_blank')
-		} else {
-			showAlertError('Stripe Customer Portal not enabled.')
-		}
-	}
 
 	return (
 		<Placeholder
@@ -20,9 +9,7 @@ const StripeCustomerPortal = () => {
 			title="Stripe Customer Portal"
 			description="Manage your subscription and order history."
 			buttons={
-				<PrimaryButton onClick={handleClick} icon="ExternalLink">
-					Open Customer Portal
-				</PrimaryButton>
+        <StripeCustomerPortalButton />				
 			}
 		/>
 	)
