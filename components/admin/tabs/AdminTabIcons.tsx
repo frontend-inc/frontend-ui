@@ -92,10 +92,14 @@ const sx = {
 		mb: 2,
 	},
 	logoButton: {
-		p: 0,
+		p: 0,    
 		m: 0,
-		height: 24,
-		width: 24,
+    pb: '5px',
+		height: 40,
+		width: '100%',
+    borderRadius: 0,
+    borderBottom: '1px solid',
+    borderColor: 'divider',
 		'&:hover': {
 			backgroundColor: 'transparent',
 		},
