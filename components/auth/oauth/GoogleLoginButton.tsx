@@ -46,7 +46,6 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = (props) => {
 		//@ts-ignore
 		<Button
 			sx={sx.button}
-			size="large"
 			variant="contained"
 			color="secondary"
 			onClick={handleLogin}
