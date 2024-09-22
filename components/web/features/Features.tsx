@@ -1,7 +1,7 @@
 import React from 'react'
-import { Box, Grid } from '@mui/material'
+import { Box } from '@mui/material'
 import Feature from './Feature'
-import { Placeholder } from '../../../components'
+import { Container, Placeholder } from '../../../components'
 
 export type FeaturesProps = {
 	items: {
@@ -15,7 +15,7 @@ const Features: React.FC<FeaturesProps> = (props) => {
 	const { items = [] } = props || {}
 
 	return (
-		<>
+		<Container maxWidth="md">
 			<Box sx={ sx.grid }>
 				{items?.map((item, i) => (					
           <Box sx={sx.item}>
@@ -34,7 +34,7 @@ const Features: React.FC<FeaturesProps> = (props) => {
 					description="No features to display."
 				/>
 			)}
-		</>
+		</Container>
 	)
 }
 

@@ -48,6 +48,7 @@ export default HeroSpotlight
 
 const sx = {
 	root: {
+    px: 2,
 		width: '100%',
 		justifyContent: 'flex-start',
 		alignItems: 'center',
