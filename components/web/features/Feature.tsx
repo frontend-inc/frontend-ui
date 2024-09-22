@@ -21,9 +21,7 @@ const Feature: React.FC<FeatureProps> = (props) => {
 			}}
 		>
 			{icon && (
-				<Avatar sx={sx.avatar}>
-					<Icon name={icon} color="primary.contrastText" size={24} />
-				</Avatar>
+				<Icon name={icon} color="primary.main" size={24} />
 			)}
 			<Stack direction="column" spacing={1}>
 				<Typography sx={sx.text} color="text.primary" variant="subtitle1">
@@ -43,8 +41,8 @@ const sx = {
 	root: {
 		p: 2,
 		width: '100%',
-		justifyContent: 'center',
-		alignItems: 'center',
+		justifyContent: 'flex-start',
+		alignItems: 'flex-start',
 		borderRadius: 1,
 	},
 	avatar: {
@@ -53,7 +51,7 @@ const sx = {
 		width: '54px',
 	},
 	title: {
-		textAlign: 'center',
+		textAlign: 'left',
 		color: 'grey.900',
 		'& span': {
 			color: 'primary.main',
@@ -61,7 +59,7 @@ const sx = {
 	},
 	text: {
 		maxWidth: '280px',
-		textAlign: 'center',
+		textAlign: 'left',
 		'& span': {
 			color: 'primary.main',
 		},

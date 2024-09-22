@@ -51,7 +51,6 @@ const sx = {
 		width: '100%',
 		justifyContent: 'flex-start',
 		alignItems: 'center',
-    px: 2
 	},
 	rootBorder: {
 		border: '1px solid',
@@ -91,7 +90,7 @@ const sx = {
 	},
   gradient: { 
     pt: 8, 
-    pb: 2,
+    pb: 0,
     height: 'auto',
     width: '100%',    
 	  background: theme => `radial-gradient(ellipse 100% 95% at center bottom, ${theme.palette.primary.main}, rgba(0, 0, 0, 1))`

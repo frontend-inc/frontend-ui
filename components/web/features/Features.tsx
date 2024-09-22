@@ -16,24 +16,22 @@ const Features: React.FC<FeaturesProps> = (props) => {
 
 	return (
 		<>
-			<Grid container spacing={0}>
-				{items?.map((item, i) => (
-					<Grid item xs={12} sm={4} md={4} key={i}>
-						<Box sx={sx.item}>
-							<Feature
-								icon={item?.icon}
-								title={item?.title}
-								description={item?.description}
-							/>
-						</Box>
-					</Grid>
+			<Box sx={ sx.grid }>
+				{items?.map((item, i) => (					
+          <Box sx={sx.item}>
+            <Feature
+              icon={item?.icon}
+              title={item?.title}
+              description={item?.description}
+            />
+          </Box>
 				))}
-			</Grid>
+			</Box>
 			{items?.length == 0 && (
 				<Placeholder
 					icon="Zap"
 					title="No features"
-					description="Your features will appear here."
+					description="No features to display."
 				/>
 			)}
 		</>
@@ -49,5 +47,15 @@ const sx = {
 	},
 	item: {
 		p: 2,
+    maxWidth: 280
 	},
+  grid: {
+		display: 'grid',
+		gridTemplateColumns: {
+      md: '1fr 1fr 1fr',
+      sm: '1fr 1fr',
+      xs: '1fr',
+    },
+		gap: 2,			
+  }
 }

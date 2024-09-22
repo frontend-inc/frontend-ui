@@ -5,12 +5,8 @@ import { useMenu } from '../../../hooks'
 import { UserMenu, UserAvatar } from '../..'
 import { useRouter } from 'next/router'
 
-type TabAuthProps = {
-	loginUrl?: string
-}
 
-const TabAuth: React.FC<TabAuthProps> = (props) => {
-	const { loginUrl = '/login' } = props || {}
+const TabAuth: React.FC = (props) => {
 
 	const router = useRouter()
 	const { logout, currentUser } = useAuth()
@@ -27,7 +23,7 @@ const TabAuth: React.FC<TabAuthProps> = (props) => {
 
 	const handleLogoutClick = () => {
 		logout()
-		router.push(loginUrl)
+		router.push('/')
 	}
 
 	if (!currentUser) return null
