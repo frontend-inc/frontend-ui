@@ -13,6 +13,7 @@ type DocumentAutosuggestProps = {
 	query?: any
 	placeholder?: string
 	enableSearchRemote?: boolean
+  valueParam?: string
 	direction?: 'row' | 'column'
 }
 
@@ -24,6 +25,7 @@ const DocumentAutosuggest: React.FC<DocumentAutosuggestProps> = (props) => {
 		collectionId,
 		label,
 		handleChange,
+    valueParam = 'id',
 		placeholder = 'Select',
 		direction = 'column',
 	} = props
@@ -48,6 +50,7 @@ const DocumentAutosuggest: React.FC<DocumentAutosuggestProps> = (props) => {
 			label={label}
 			value={value}
 			displayField="title"
+      valueParam={valueParam}
 			url={`${apiUrl}/cms/${collection?.name}`}
 			placeholder={placeholder}
 			handleChange={handleChange}

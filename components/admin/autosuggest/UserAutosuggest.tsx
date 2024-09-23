@@ -11,6 +11,7 @@ type UserAutosuggestProps = {
 	placeholder?: string
 	direction?: 'row' | 'column'
 	displayField?: string
+  valueParam?: string
 	handleChange: (ev: SyntheticEventType) => void
 }
 
@@ -24,6 +25,7 @@ const UserAutosuggest: React.FC<UserAutosuggestProps> = (props) => {
 		value,
 		direction = 'column',
 		displayField = 'username',
+    valueParam = 'id',
 		handleChange,
 		placeholder = 'Select user',
 	} = props || {}
@@ -38,6 +40,7 @@ const UserAutosuggest: React.FC<UserAutosuggestProps> = (props) => {
 			label={label}
 			value={value}
 			displayField={displayField}
+      valueParam={valueParam}
 			imageField={'avatar.url'}
 			url={`${apiUrl}/users`}
 			placeholder={placeholder}

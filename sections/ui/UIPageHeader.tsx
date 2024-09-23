@@ -23,7 +23,7 @@ const UIPageHeader: React.FC<UIPageHeaderProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			mode={mode}
-			py={py}
+			py={2}
 			px={px}
 			maxWidth={maxWidth}
 		>

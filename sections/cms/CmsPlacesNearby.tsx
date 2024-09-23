@@ -1,12 +1,11 @@
 import React from 'react'
-import { Section, Heading } from '../../components'
-import { GeoList } from '../../components'
-import { GeoListProps } from '../../components/cms/collections/GeoList'
-import { SectionProps, HeadingProps, FormProps } from '../../types'
+import { Section, Heading, GeoNearbyList } from '../../components'
+import { CollectionListProps } from '../../components/cms/collections/CollectionList'
+import { SectionProps, HeadingProps } from '../../types'
 
-type CmsGeoListProps = SectionProps & HeadingProps & GeoListProps & FormProps
+type CmsListProps = SectionProps & HeadingProps & CollectionListProps
 
-const CmsGeoList: React.FC<CmsGeoListProps> = (props) => {
+const CmsPlacesNearbyList: React.FC<CmsListProps> = (props) => {
 	const {
 		label,
 		title,
@@ -37,9 +36,9 @@ const CmsGeoList: React.FC<CmsGeoListProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<GeoList {...rest} />
+			<GeoNearbyList {...rest} />
 		</Section>
 	)
 }
 
-export default CmsGeoList
+export default CmsPlacesNearbyList
