@@ -2,7 +2,7 @@ import React from 'react'
 import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { DataItem, DataLayout } from '../..'
-import { useForms } from '../../../hooks'
+import { useCollectionForms } from '../../../hooks'
 
 export type DataListItemsProps = {
 	grid?: boolean
@@ -49,7 +49,7 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 		},
 	} = props
 
-	const { handleShow, handleEdit, handleDeleteClick } = useForms()
+	const { handleShow, handleEdit, handleDeleteClick } = useCollectionForms()
 
 	const handleShowClick = (resource: any) => {
 		if (handleClick) {

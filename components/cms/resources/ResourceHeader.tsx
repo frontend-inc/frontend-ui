@@ -9,6 +9,7 @@ import {
 } from '../../../types'
 
 export type ResourceHeaderProps = {
+  buttonText?: string
 	direction?: 'row' | 'column'
 	enableSearch: boolean
 	enableFilters: boolean
@@ -33,6 +34,7 @@ export type ResourceHeaderProps = {
 const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 	const {
 		direction = 'row',
+    buttonText='Add',
 		enableSearch,
 		enableFilters,
 		enableSorting,
@@ -88,7 +90,7 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 					/>
 				)}
 			</Stack>
-      <Stack direction="row" spacing={1} sx={ sx.secondaryActions }>
+      <Stack direction={{ xs: 'column', sm: direction }} spacing={1} sx={ sx.secondaryActions }>
         {secondaryAction}
         {(enableCreate || secondaryAction) && (
           <Button
@@ -98,7 +100,7 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
             onClick={handleAdd}
             startIcon={<Icon name="Plus" color="primary.contrastText" />}
           >
-            Add
+            { buttonText }
           </Button>
         )}
       </Stack>

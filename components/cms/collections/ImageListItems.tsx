@@ -3,7 +3,7 @@ import { Stack } from '@mui/material'
 import { LoadMore, DataLayout } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { ImageCard } from '../..'
-import { useForms } from '../../../hooks'
+import { useCollectionForms } from '../../../hooks'
 
 export type ImageListItemsProps = {
 	url: string
@@ -45,7 +45,7 @@ const ImageListItems: React.FC<ImageListItemsProps> = (props) => {
 		setOpenShow(true)
 	}
 
-	const { handleEdit, handleDeleteClick } = useForms()
+	const { handleEdit, handleDeleteClick } = useCollectionForms()
 
 	return (
 		<Stack direction="column" spacing={2}>

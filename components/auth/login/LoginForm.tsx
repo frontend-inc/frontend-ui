@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Button, Divider, Stack } from '@mui/material'
 import { GoogleLoginButton, TextInput, IconLoading } from '../..'
 

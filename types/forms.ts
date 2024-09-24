@@ -49,3 +49,61 @@ export type TableHeaderType = {
 	variant: string
 	sortable: boolean
 }
+
+
+export type QuestionTypeType = 
+  'string' | 
+  'text' |
+  'number' |
+  'boolean' |
+  'select' | 
+  'date' | 
+  'radio' | 
+  'checkbox' |
+  'email' |
+  'phone' | 
+  'url'   
+
+export type FormQuestionType = {
+  question_id?: number
+  form_id?: number
+  position?: number
+  question?: QuestionType
+  form?: FormType
+}
+
+export type QuestionType = {
+  id?: number
+  label?: string
+  handle?: string
+  title?: string
+  description?: string
+  question_type?: QuestionTypeType
+  image?: {
+    url: string
+  }	
+}
+
+export type AnswerType = {
+  title?: string
+  question_id?: number
+  points?: number
+  image?: {
+    url: string
+  }
+  position?: number
+}
+
+export type FormType = {
+	id?: number
+	label?: string
+	handle?: string
+	title?: string
+	description?: string
+	image?: {
+		url: string
+	}	
+	published?: boolean	
+  form_questions?: FormQuestionType[]
+	quetions?: QuestionType[]
+}

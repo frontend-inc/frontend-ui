@@ -8,6 +8,7 @@ export { default as ResourceListItem } from './ResourceListItem'
 export { default as ResourceListItems } from './ResourceListItems'
 export { default as ResourceHeader } from './ResourceHeader'
 export { default as ResourceForm } from './ResourceForm'
+export { default as ResourceModal } from './ResourceModal'
 export { default as ResourceTable } from './ResourceTable'
 export { default as SortableListItems } from './SortableListItems'
 

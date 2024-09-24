@@ -1,5 +1,5 @@
 import React from 'react'
-import { ResourceDetails } from '../../../components'
+import { ResourceModal, ResourceDetails } from '../../../components'
 import { ResourceShowProps } from '../../../components/cms/resources/ResourceShow'
 import { DisplayFieldType } from '../../../types'
 
@@ -45,22 +45,25 @@ const AdminProductShow: React.FC<AdminProductShowProps> = (props) => {
 	]
 
 	return (
-		<ResourceDetails
-			loading={loading}
-			open={open}
-			handleClose={handleClose}
-			image={resource?.image?.url}
-			primary={resource?.title}
-			secondary={resource?.description}
-			label={resource?.display_price}
-			enableEdit={enableEdit}
-			enableDelete={enableDelete}
-			handleEdit={handleEdit}
-			handleDelete={handleDelete}
-			resource={resource}
-			fields={fields}
-			direction="column"
-		/>
+    <ResourceModal 
+      loading={loading}
+      open={open}
+      handleClose={handleClose}
+      enableEdit={enableEdit}
+      enableDelete={enableDelete}
+      handleEdit={handleEdit}
+      handleDelete={handleDelete}
+    >
+      <ResourceDetails
+        image={resource?.image?.url}
+        primary={resource?.title}
+        secondary={resource?.description}
+        label={resource?.display_price}
+        resource={resource}
+        fields={fields}
+        direction="column"
+      />
+    </ResourceModal>
 	)
 }
 

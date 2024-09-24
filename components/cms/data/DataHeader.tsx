@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Box, Stack } from '@mui/material'
 import { Icon, FilterButton, SortButton, SearchInput } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
-import { useSearch, useForms } from '../../../hooks'
+import { useSearch, useCollectionForms } from '../../../hooks'
 
 export type DataHeaderProps = {
 	query: any
@@ -55,7 +55,7 @@ const DataHeader: React.FC<DataHeaderProps> = (props) => {
 		query: defaultQuery,
 	})
 
-	const { handleAdd } = useForms()
+	const { handleAdd } = useCollectionForms()
 
 	if (!enableSearch && !enableFilters && !enableSorting && !enableCreate) {
 		return null

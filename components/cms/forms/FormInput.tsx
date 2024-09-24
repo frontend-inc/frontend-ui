@@ -104,8 +104,9 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		select: {
 			// Handle both array of strings and array of objects
 			options: options?.map((option: OptionType) => ({
+        icon: option.icon,
 				label: option.label || option,
-				value: option.value || option,
+				value: option.value || option,        
 			})),
 		},
 		number: {

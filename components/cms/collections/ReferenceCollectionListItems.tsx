@@ -5,7 +5,7 @@ import { useResourceContext } from 'frontend-js'
 import { useApp } from '../../../hooks'
 import { useRouter } from 'next/router'
 import { CollectionListItem, DataLayout } from '../..'
-import { useForms } from '../../../hooks'
+import { useCollectionForms } from '../../../hooks'
 import { ButtonType, DisplayFieldType } from '../../../types'
 
 export type ReferenceCollectionListItemsProps = {

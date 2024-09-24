@@ -53,7 +53,7 @@ const ArrayInput: React.FC<ArrayInputProps> = (props) => {
 		})
 	}
 
-	if (!Array.isArray(value)) return null
+	//if (!Array.isArray(value)) return null
 	return (
 		<Stack sx={sx.root} direction={direction} spacing={0}>
 			<InputLabel label={label} info={info} />

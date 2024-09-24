@@ -2,11 +2,11 @@ import React, { useContext } from 'react'
 import { AppContext } from '../../context'
 import { useAuth, useResourceContext } from 'frontend-js'
 
-type FormParams = {
+type CollectionFormParams = {
 	parentResource?: any
 }
 
-const useForms = (params?: FormParams) => {
+const useCollectionForms = (params?: CollectionFormParams) => {
 	const { parentResource } = params || {}
 
 	const { currentUser } = useAuth()
@@ -129,4 +129,4 @@ const useForms = (params?: FormParams) => {
 	}
 }
 
-export default useForms
+export default useCollectionForms

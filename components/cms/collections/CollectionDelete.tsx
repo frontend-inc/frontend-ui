@@ -1,12 +1,12 @@
 import React from 'react'
 import { AlertModal } from '../..'
-import { useForms } from '../../../hooks'
+import { useCollectionForms } from '../../../hooks'
 import { useResourceContext } from 'frontend-js'
 
 const CollectionDelete: React.FC = () => {
 	const { openDelete, setOpenDelete } = useResourceContext()
 
-	const { handleDelete } = useForms()
+	const { handleDelete } = useCollectionForms()
 
 	return (
 		<AlertModal

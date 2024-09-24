@@ -1,7 +1,7 @@
 import React from 'react'
 import { ButtonType, DisplayFieldType } from '../../../types'
 import { PDP } from '../..'
-import { useForms } from '../../../hooks'
+import { useCollectionForms } from '../../../hooks'
 import { useResourceContext } from 'frontend-js'
 import {
 	ProductRating,
@@ -51,7 +51,7 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 
 	const { resource: product } = useResourceContext()
 
-	const { handleEdit } = useForms()
+	const { handleEdit } = useCollectionForms()
 
 	let slots = {
 		image: {

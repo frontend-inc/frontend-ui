@@ -8,7 +8,7 @@ import {
 	GeoSearchInput,
 } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
-import { useSearch, useForms } from '../../../hooks'
+import { useSearch, useCollectionForms } from '../../../hooks'
 
 export type GeoHeaderProps = {
 	query: any
@@ -48,7 +48,7 @@ const GeoHeader: React.FC<GeoHeaderProps> = (props) => {
 		query: defaultQuery,
 	})
 
-	const { handleAdd } = useForms()
+	const { handleAdd } = useCollectionForms()
 
 	if (!enableSearch && !enableFilters && !enableSorting) {
 		return null

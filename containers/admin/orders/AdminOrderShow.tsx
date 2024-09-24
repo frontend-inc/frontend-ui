@@ -1,7 +1,6 @@
 import React from 'react'
-import { ResourceDetails } from '../../../components'
+import { ResourceModal, ResourceDetails } from '../../../components'
 import { ResourceShowProps } from '../../../components/cms/resources/ResourceShow'
-import { DisplayFieldType } from '../../../types'
 
 const AdminProductShow: React.FC<ResourceShowProps> = (props) => {
 	const {
@@ -22,22 +21,25 @@ const AdminProductShow: React.FC<ResourceShowProps> = (props) => {
 	]
 
 	return (
-		<ResourceDetails
-			loading={loading}
-			open={open}
-			handleClose={handleClose}
-			image={resource?.product?.image?.url}
-			primary={resource?.display_number}
-			secondary={resource?.display_total}
-			label={resource?.status}
-			enableEdit={enableEdit}
-			enableDelete={enableDelete}
-			handleEdit={handleEdit}
-			handleDelete={handleDelete}
-			resource={resource}
-			fields={fields}
-			direction="column"
-		/>
+    <ResourceModal 
+      loading={loading}
+      open={open}
+      handleClose={handleClose}
+      enableEdit={enableEdit}
+      enableDelete={enableDelete}
+      handleEdit={handleEdit}
+      handleDelete={handleDelete}
+    >
+      <ResourceDetails
+        image={resource?.product?.image?.url}
+        primary={resource?.display_number}
+        secondary={resource?.display_total}
+        label={resource?.status}
+        resource={resource}
+        fields={fields}
+        direction="column"
+      />
+    </ResourceModal>
 	)
 }
 

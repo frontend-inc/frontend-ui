@@ -1,5 +1,5 @@
 import React from 'react'
-import { UserAvatar, ResourceDetails } from '../../../components'
+import { UserAvatar, ResourceModal, ResourceDetails } from '../../../components'
 import { ResourceShowProps } from '../../../components/cms/resources/ResourceShow'
 import { DisplayFieldType } from '../../../types'
 
@@ -28,21 +28,24 @@ const AdminUserShow: React.FC<AdminUserShowProps> = (props) => {
 	]
 
 	return (
-		<ResourceDetails
-			loading={loading}
-			open={open}
-			handleClose={handleClose}
-			avatar={<UserAvatar user={resource} size={96} />}
-			primary={resource?.name}
-			secondary={`@${resource?.username}`}
-			label={resource?.role}
-			enableEdit={enableEdit}
-			enableDelete={enableDelete}
-			handleEdit={handleEdit}
-			handleDelete={handleDelete}
-			resource={resource}
-			fields={fields}
-		/>
+    <ResourceModal 
+      loading={loading}
+      open={open}
+      handleClose={handleClose}
+      enableEdit={enableEdit}
+      enableDelete={enableDelete}
+      handleEdit={handleEdit}
+      handleDelete={handleDelete}
+    >
+      <ResourceDetails
+        avatar={<UserAvatar user={resource} size={96} />}
+        primary={resource?.name}
+        secondary={`@${resource?.username}`}
+        label={resource?.role}
+        resource={resource}
+        fields={fields}
+      />
+    </ResourceModal>
 	)
 }
 

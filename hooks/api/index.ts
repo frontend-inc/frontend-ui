@@ -1,3 +1,3 @@
 export { default as useFilters } from './useFilters'
-export { default as useForms } from './useForms'
+export { default as useCollectionForms } from './useCollectionForms'
 export { default as useSearch } from './useSearch'

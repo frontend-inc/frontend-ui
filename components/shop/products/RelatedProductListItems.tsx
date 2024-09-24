@@ -5,7 +5,7 @@ import { useResourceContext } from 'frontend-js'
 import { useApp } from '../../../hooks'
 import { useRouter } from 'next/router'
 import { ProductListItem, DataLayout } from '../..'
-import { useForms } from '../../../hooks'
+import { useCollectionForms } from '../../../hooks'
 import { ButtonType, DisplayFieldType } from '../../../types'
 
 export type RelatedProductListItemsProps = {
@@ -86,7 +86,7 @@ const RelatedProductListItems: React.FC<RelatedProductListItemsProps> = (
 		}
 	}
 
-	const { handleEdit, handleDeleteClick } = useForms()
+	const { handleEdit, handleDeleteClick } = useCollectionForms()
 
 	const handlePaginate = async () => {
 		await loadMore()
