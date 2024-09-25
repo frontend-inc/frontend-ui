@@ -31,7 +31,7 @@ type QuestionVariantType = {
 }
 
 export const SINGLE_CHOICE_QUESTION_VARIANT: QuestionVariantType = {
-	icon: 'ListTodos',
+	icon: 'ListTodo',
 	label: 'Single Choice',
   variant: 'single_choice',
 	description: 'Select a single option',

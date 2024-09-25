@@ -32,13 +32,15 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 
 	return (		
     <Stack direction="column" sx={sx.content} spacing={1}>
-      <Box sx={sx.image}>
-        <Image 
-          height={220} 
-          src={image} 
-          label={ label }
-        />
-      </Box>
+      { image && (
+        <Box sx={sx.image}>
+          <Image 
+            height={220} 
+            src={image} 
+            label={ label }
+          />
+        </Box>
+      )}
       {avatar && avatar}
       <Typography variant="h5" color='text.primary'>{primary}</Typography>
       {secondary && (

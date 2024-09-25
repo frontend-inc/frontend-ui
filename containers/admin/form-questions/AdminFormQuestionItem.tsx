@@ -30,7 +30,6 @@ const AdminFormQuestionItem: React.FC<ResourceItemProps> = (props) => {
           variant={question?.variant}
         />
       }    			
-
 			handleDelete={handleDelete}
 			handleClick={handleClick}
 			handleSelect={handleSelect}

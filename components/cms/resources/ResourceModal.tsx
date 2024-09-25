@@ -14,6 +14,7 @@ export type ResourceModalProps = {
 	enableDelete?: boolean
 	handleEdit?: () => void
 	handleDelete?: () => void
+  disablePadding?: boolean
   children?: any
 }
 
@@ -28,6 +29,7 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 		enableDelete,
 		handleEdit,
 		handleDelete,
+    disablePadding
 	} = props || {}
 
 	return (
@@ -35,6 +37,7 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 			open={open}
 			handleClose={handleClose}
       title={title}
+      disablePadding={disablePadding}
 			buttons={
 				(enableEdit || enableDelete) && (
 					<Stack direction="row" spacing={1} sx={{ width: '100%' }}>
