@@ -73,6 +73,8 @@ const DisplayField: React.FC<FieldProps> = (props) => {
 		price: FieldPrice,
 		email: FieldString,
 		phone: FieldString,
+    single_choice: FieldString,
+    multiple_choice: FieldArray 
 	}
 
 	const variantProps = {

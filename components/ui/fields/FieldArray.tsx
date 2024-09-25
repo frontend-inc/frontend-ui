@@ -14,10 +14,9 @@ const FieldArray: React.FC<FieldArrayProps> = (props) => {
 	return (
 		<FieldWrapper label={label} color={color} {...rest}>
 			<Box sx={sx.stack}>
-				{Array.isArray(values) &&
-					values?.map((value, index) => (
-						<Chip key={index} label={value} sx={sx.chip} size="small" />
-					))}
+				{Array.isArray(values) && values?.map((value, index) => (
+					<Chip key={index} label={value} sx={sx.chip} size="small" />
+				))}
 			</Box>
 		</FieldWrapper>
 	)

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Box } from '@mui/material'
 import {
 	AdminHeader,
@@ -6,12 +6,15 @@ import {
 	AdminLayoutScroll,
 	AdminLayoutLeft,
 	AdminLayoutCenter,
-} from '../../../components'
+  Placeholder,
+  CircularLoader
+} from '../..'
 import { AdminMenusType, AdminMenuType } from '../../../types'
-import { useAdmin, useTabs } from '../../../hooks'
+import { useAdmin, useApps, useTabs } from '../../../hooks'
 import { useRouter } from 'next/router'
+import { ShopifyProvider } from 'frontend-shopify'
 
-export type AdminPageProps = {
+export type AdminShopifyPageProps = {
 	title: string
 	actions?: React.ReactNode
 	activeTab: string
@@ -26,9 +29,13 @@ export type AdminPageProps = {
 	children: React.ReactNode
 }
 
-const AdminPage: React.FC<AdminPageProps> = (props) => {
+const AdminShopifyPage: React.FC<AdminShopifyPageProps> = (props) => {
 	const router = useRouter()  
 	const { clientUrl } = useAdmin()  
+
+  const { app_id: appId } = router.query
+
+  const { loading, app, findApp } = useApps()
 
 	const {
 		title,
@@ -50,8 +57,29 @@ const AdminPage: React.FC<AdminPageProps> = (props) => {
 		router.push(`${clientUrl}${menuItem.value}`)
 	}
 
+  useEffect(() => {
+    if(appId){
+      findApp(appId)
+    }
+  }, [appId])
+
+  if(loading){
+    return <CircularLoader size={64} />  
+  }
+  if(!app?.shopify_domain || !app?.shopify_storefront_access_token){
+    return(
+      <Placeholder 
+        title="Please connect your Shopify store"
+        description="You need to connect your Shopify store to use this feature"
+      />
+    )
+  }  
 	return (
-		<>
+		<ShopifyProvider 
+      shopUrl='/admin/shop'
+      domain={app.shopify_domain}
+      storefrontAccessToken={app.shopify_storefront_access_token}
+    >
 			{menuItems && (
 				<AdminLayoutLeft>
 					<AdminMenu
@@ -71,8 +99,8 @@ const AdminPage: React.FC<AdminPageProps> = (props) => {
 					<Box p={disablePadding ? 0 : 2}>{children}</Box>
 				</AdminLayoutScroll>
 			</AdminLayoutCenter>
-		</>
+		</ShopifyProvider>
 	)
 }
 
-export default AdminPage
+export default AdminShopifyPage

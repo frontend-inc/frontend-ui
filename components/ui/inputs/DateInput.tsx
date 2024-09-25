@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FormControl, InputBase, Typography } from '@mui/material'
+import { Stack, InputBase } from '@mui/material'
 import moment from 'moment'
 import { sx } from './helpers/styles'
 import { InputLabel } from '../../../components'
@@ -18,6 +18,7 @@ type DateInputProps = {
 const DateInput: React.FC<DateInputProps> = (props) => {
 	const {
 		errors,
+    direction,
 		required,
 		label,
 		info,
@@ -38,7 +39,7 @@ const DateInput: React.FC<DateInputProps> = (props) => {
 	let selectedDate = moment(value).format('yyyy-MM-DD')
 
 	return (
-		<FormControl fullWidth>
+		<Stack direction={direction} spacing={0.5}>
 			<InputLabel label={label} info={info} />
 			<InputBase
 				error={error}
@@ -52,7 +53,7 @@ const DateInput: React.FC<DateInputProps> = (props) => {
 				onChange={handleInputChange}
 				value={selectedDate}
 			/>
-		</FormControl>
+		</Stack>
 	)
 }
 

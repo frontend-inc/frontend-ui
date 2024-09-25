@@ -1,7 +1,8 @@
 import React from 'react'
-import { Image, PrimaryButton } from '../../../components'
+import { Image, SecondaryButton, PrimaryButton } from '../../../components'
 import { Paper, Stack, Box, Typography } from '@mui/material'
 import { FormType } from '../../../types'
+import { useRouter } from 'next/router'
 
 type AdminFormProps = {
 	form: FormType
@@ -11,7 +12,16 @@ type AdminFormProps = {
 const AdminFormDetails: React.FC<
 	AdminFormProps
 > = (props) => {
-	const { form, handleEdit } = props || {}
+ 
+  const router = useRouter()
+  const { app_id: appId } = router.query || {}
+
+  const { form, handleEdit } = props || {}
+
+  const handleResponses = () => {
+    router.push(`/admin/${appId}/users/forms/${form.handle}/responses`)
+  }
+	
 	return (
 		<Paper sx={sx.paper}>
 			<Stack direction="row" sx={sx.root} spacing={1}>
@@ -33,8 +43,9 @@ const AdminFormDetails: React.FC<
 						</Typography>
 					</Stack>
 				</Stack>
-				<Stack>
-					<PrimaryButton onClick={handleEdit}>Edit</PrimaryButton>
+				<Stack direction="row" spacing={1}>
+          <SecondaryButton onClick={handleEdit}>Edit</SecondaryButton>
+          <PrimaryButton onClick={handleResponses}>View Responses</PrimaryButton>					
 				</Stack>
 			</Stack>
 		</Paper>

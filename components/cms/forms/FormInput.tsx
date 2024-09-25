@@ -5,6 +5,7 @@ import {
 	ArrayInput,
 	CountryInput,
 	DateInput,
+  DividerInput,
 	EmailInput,
 	ImageInput,
 	JSONInput,
@@ -87,8 +88,11 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		image: ImageInput,
     media: MediaInput,
 		json: JSONInput,
+    divider: DividerInput,
 		shopify_product: ShopifyProductInput,
 		shopify_products: ShopifyProductsInput,
+    single_choice: Autosuggest,
+    multiple_choice: ArrayInput,
 		...defaultInputOptions,
 	}
 
@@ -104,6 +108,14 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			rows: 6,
 		},
 		select: {
+			// Handle both array of strings and array of objects
+			options: options?.map((option: OptionType) => ({
+        icon: option.icon,
+				label: option.label || option,
+				value: option.value || option,        
+			})),
+		},
+    single_choice: {
 			// Handle both array of strings and array of objects
 			options: options?.map((option: OptionType) => ({
         icon: option.icon,

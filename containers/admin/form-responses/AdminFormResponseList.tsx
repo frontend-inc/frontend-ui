@@ -1,10 +1,11 @@
-import React from 'react'
-import { ResourceList } from '../../../components'
-import { useAdmin } from '../../../hooks'
+import React, { useEffect, useState } from 'react'
+import { ResourceTable } from '../../../components'
+import { useAdmin, useFormBuilder } from '../../../hooks'
 import AdminFormResponseItem from './AdminFormResponseItem'
 import AdminFormResponseToolbar from './AdminFormResponseToolbar'
 import AdminFormResponseShow from './AdminFormResponseShow'
 import AdminFormResponseEdit from './AdminFormResponseEdit'
+import { TableHeaderType } from '../../../types'
 
 type AdminFormResponsesListProps = {
 	formId: string
@@ -13,14 +14,47 @@ type AdminFormResponsesListProps = {
 const AdminFormResponsesList: React.FC<
 	AdminFormResponsesListProps
 > = (props) => {
+
 	const { formId } = props
 	const { apiUrl } = useAdmin()
 	const url = `${apiUrl}/forms/${formId}/form_responses`
+
+  const { loading, form, findForm } = useFormBuilder()
+
+  const [headers, setHeaders] = useState<TableHeaderType[]>([])
+
+  useEffect(() => {
+    if(formId){
+      findForm(formId)
+    }
+  }, [formId])
+
+  useEffect(() => {
+    if(form?.id){
+      let newHeaders = [
+        { name: 'name', label: 'Name', sortable: true, variant: 'string' },
+        { name: 'email', label: 'Email', sortable: true, variant: 'string' },
+      ]
+      let formHeaders = form?.questions?.map((question) => ({
+        label: question.name,
+        name: question.name,
+        variant: question.variant,
+        sortable: true,        
+      }))
+      setHeaders([
+        ...newHeaders,
+        ...formHeaders        
+      ])
+    }
+  }, [form])
+
+  if(!headers.length) return null;
 	return (
-		<ResourceList
+		<ResourceTable
 			selectable
 			url={url}
-			name={'form_questions'}
+      headers={headers}
+			name={'form_response'}
 			enableSearch      
       enableShow
       enableEdit 
@@ -32,7 +66,6 @@ const AdminFormResponsesList: React.FC<
       sortOptions={[
         { name: 'name', label: 'Name' },
         { name: 'email', label: 'Email' },
-        { name: 'created_at', label: 'Date' },        
       ]}    
 			emptyIcon="ListCheck"
 			emptyTitle="No responses"
