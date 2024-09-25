@@ -1,7 +1,7 @@
 import React from 'react'
 import { ResourceForm } from '../../../components'
 import { ResourceFormProps } from '../../../components/cms/resources/ResourceForm'
-import { MediaInput } from '../../../containers'
+import { MediaInput } from '../../../components'
 
 const AdminSubscriptionForm: React.FC<ResourceFormProps> = (props) => {
 	const { handleAddAttachment, handleRemoveAttachment } = props || {}

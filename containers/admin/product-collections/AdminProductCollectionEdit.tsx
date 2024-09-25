@@ -2,7 +2,7 @@ import React from 'react'
 import { ResourceForm } from '../../../components'
 import { ResourceFormProps } from '../../../components/cms/resources/ResourceForm'
 import { FormFieldType } from '../../../types'
-import { MediaInput } from '../../../containers'
+import { MediaInput } from '../../../components/'
 
 // Todo: Type error if we use MetafieldType
 type AdminProductCollectionFormProps = ResourceFormProps & {

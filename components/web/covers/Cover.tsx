@@ -6,7 +6,7 @@ import { useApp } from '../../../hooks'
 
 export type CoverProps = {
 	editing?: boolean
-	title?: string
+	title?: string | React.ReactNode
 	description?: string
 	buttonText?: string
 	textVariant?: 'h1' | 'h2' | 'h3'
