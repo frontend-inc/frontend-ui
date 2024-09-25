@@ -1,12 +1,12 @@
 import React from 'react'
-import { Box, Stack, Typography, Button } from '@mui/material'
-import { Image } from '../../../../components'
+import { Avatar, Box, Stack, Button } from '@mui/material'
+import { Icon, Heading, Image } from '../../../../components'
+import { HeadingProps } from '../../../../types'
 
-type FormCardProps = {
-	title: string
-	description: string
-	image: string
+type FormCardProps = HeadingProps & {
+	image?: string
 	buttonText: string
+  checkMark?: boolean
 	handleClick: () => void
 }
 
@@ -15,23 +15,24 @@ const FormCard: React.FC<FormCardProps> = (props) => {
 		title,
 		description,
 		image,
+    checkMark,
 		handleClick,
 		buttonText = 'Continue',
 	} = props
 
 	return (
 		<Stack direction="column" sx={sx.root} spacing={2}>
-			{image && <Image src={image} height={400} />}
-			{title && (
-				<Typography variant="h4" color="text.primary">
-					{title}
-				</Typography>
-			)}
-			{description && (
-				<Typography variant="body1" color="text.secondary">
-					{description}
-				</Typography>
-			)}
+      { checkMark && (
+        <Avatar sx={ sx.avatar }>
+          <Icon name="Check" color='primary.contrasText' />
+        </Avatar>
+      )}
+			{image && <Image src={image} height={320} />}
+      <Heading 
+        title={ title }
+        description={ description }
+        textAlign='center'
+      />			
 			<Box>
 				<Button onClick={handleClick} variant="contained" color="primary">
 					{buttonText}
@@ -49,4 +50,9 @@ const sx = {
 		display: 'flex',
 		alignItems: 'center',
 	},
+  avatar: {
+    height: 64,
+    width: 64,
+    bgcolor: 'primary.main',
+  }
 }

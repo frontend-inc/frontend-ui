@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { 
-  FormWizard, 
-  FormWizardModal
+  Icon,
+  FormCard,
+  FormWizardModal,
 } from '../..'
-import { Box, Button } from '@mui/material'
+import { Avatar, Box } from '@mui/material'
 import { useForms, useFormResponse } from '../../../hooks'
+import { HeadingProps } from '../../../types'
 
-export type DataFormWizardProps = {
-  buttonText?: string
+export type DataFormWizardProps = HeadingProps &{
   formId: number
   handleSuccess?: (resource: any) => void
 }
@@ -15,11 +16,10 @@ export type DataFormWizardProps = {
 const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
 
   const [open, setOpen] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
 
-  const { 
+  const {     
     formId, 
-    buttonText="Start",    
-    handleSuccess 
   } = props || {}
 
   const { 
@@ -41,6 +41,11 @@ const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
     formId
   })
 
+  const handleSuccess = () => {
+    setOpen(false)
+    setSubmitted(true)
+  }
+
   const handleSubmit = async () => {
     let resp;
     if(formResponse?.id){
@@ -48,8 +53,10 @@ const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
     }else{
       resp = await createFormResponse(formResponse)
     }
-    if(resp?.id && handleSuccess){
-      handleSuccess(resp)
+    if(resp?.id){
+      handleSuccess()
+      setOpen(false)
+      setSubmitted(true)
     }
   }
 
@@ -61,6 +68,12 @@ const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
     addAttachment(formResponse?.id, name, attachmentId)
   }  
 
+  const handleResetForm = () => {
+    setFormResponse({})
+    setOpen(false)
+    setSubmitted(false)
+  }
+
   useEffect(() => {
     if (formId) {
       findForm(formId)
@@ -69,27 +82,36 @@ const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
 
   return(
     <Box sx={ sx.root }>
-    <Button 
-      onClick={() => setOpen(true)}
-      variant="contained"
-      color="primary"
-      size="large"
-    >
-      { buttonText }
-    </Button>
-    <FormWizardModal 
-      open={ open }
-      handleClose={() => setOpen(false)}
-      loading={ loading || responseLoading }
-      resource={ formResponse }
-      setResource={ setFormResponse }
-      handleChange={ handleChange }
-      handleSubmit={ handleSubmit }      
-      fields={ form?.questions }   
-      handleRemove={ handleRemove }   
-      handleRemoveAttachment={ handleRemove }
-      handleAddAttachment={ handleAddAttachment }
-    /> 
+      { !submitted ? (
+        <FormCard 
+          image={ form?.image?.url }
+          title={ form?.title }
+          description={ form?.description }
+          buttonText={ form?.button_text || 'Get Started' }
+          handleClick={ () => setOpen(true) }
+        />        
+      ):(
+        <FormCard 
+          checkMark
+          title={ form?.end_title }
+          description={ form?.end_description }
+          buttonText={ form?.end_button_text }
+          handleClick={ handleResetForm }
+        /> 
+      )}
+      <FormWizardModal 
+        open={ open }
+        handleClose={() => setOpen(false)}
+        loading={ loading || responseLoading }
+        resource={ formResponse }
+        setResource={ setFormResponse }
+        handleChange={ handleChange }
+        handleSubmit={ handleSubmit }      
+        fields={ form?.questions }   
+        handleRemove={ handleRemove }   
+        handleRemoveAttachment={ handleRemove }
+        handleAddAttachment={ handleAddAttachment }
+      /> 
     </Box>
   )
 }
@@ -103,5 +125,14 @@ const sx = {
     justifyContent: 'center',
     alignItems: 'center',
     padding: 2
+  },
+  iconContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  avatar: {
+    bgcolor: 'primary.main',
   }
 }
