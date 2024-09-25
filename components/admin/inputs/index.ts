@@ -1,5 +1,3 @@
 export { default as MediaInput } from './MediaInput'
 export { default as MediaUploader } from './MediaUploader'
 export { default as MediaBrowser } from './MediaBrowser'
-export { default as PageLinkInput } from './PageLinkInput'
-export { default as PageLinkInputModal } from './PageLinkInputModal'
