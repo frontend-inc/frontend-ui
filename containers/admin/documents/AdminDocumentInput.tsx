@@ -14,9 +14,8 @@ import {
 } from '../../../components'
 import ReferenceInput from './references/ReferenceInput'
 import ProductsInput from './products/ProductsInput'
-import MediaInput from './media/MediaInput'
 import InputWrapper from './inputs/InputWrapper'
-import { AiChatModal } from '../../../components'
+import { MediaInput, AiChatModal } from '../../../components'
 import { Stack } from '@mui/material'
 import { ProductType } from '../../../types'
 

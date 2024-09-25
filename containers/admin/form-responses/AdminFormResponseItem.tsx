@@ -1,15 +1,12 @@
 import React from 'react'
 import {
-	PublishLabel,
 	ResourceListItem,
 } from '../../../components'
 import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
-import QuestionIcon from './QuestionIcon'
 
-const AdminQuestionItem: React.FC<ResourceItemProps> = (props) => {
+const AdminFormResponseItem: React.FC<ResourceItemProps> = (props) => {
 	const {
-		resource: question,
-    sortable,
+		resource,
 		selectable,
 		selected,
 		handleClick,
@@ -21,16 +18,11 @@ const AdminQuestionItem: React.FC<ResourceItemProps> = (props) => {
 
 	return (
 		<ResourceListItem
-      sortable={sortable}
 			selectable={selectable}
-			selected={selected}  
-      avatar={
-        <QuestionIcon 
-          variant={question?.variant}
-        />
-      }    			
-			primary={question?.title}			
-			handleEdit={handleEdit}
+			selected={selected}
+			image={resource?.image?.url}
+			primary={resource?.name}		      
+      secondary={resource?.email}
 			handleDelete={handleDelete}
 			handleClick={handleClick}
 			handleSelect={handleSelect}
@@ -39,4 +31,4 @@ const AdminQuestionItem: React.FC<ResourceItemProps> = (props) => {
 	)
 }
 
-export default AdminQuestionItem
+export default AdminFormResponseItem

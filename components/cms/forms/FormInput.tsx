@@ -19,6 +19,7 @@ import {
 	ShopifyProductInput,
 	ShopifyProductsInput,
 	RemoteAutosuggest,
+  MediaInput,
 } from '../../../components'
 import { OptionType, SyntheticEventType } from '../../../types'
 
@@ -84,8 +85,9 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		state: StateInput,
 		rating: RatingInput,
 		image: ImageInput,
+    media: MediaInput,
 		json: JSONInput,
-		shopify: ShopifyProductInput,
+		shopify_product: ShopifyProductInput,
 		shopify_products: ShopifyProductsInput,
 		...defaultInputOptions,
 	}
@@ -119,6 +121,9 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		price: {
 			type: 'number',
 		},
+    media: {
+      handleRemove: handleRemove,
+    },
 		...defaultInputParams,
 	}
 

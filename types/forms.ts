@@ -51,7 +51,17 @@ export type TableHeaderType = {
 }
 
 
-export type QuestionTypeType = 
+export type FormQuestionType = {
+  question_id?: number
+  form_id?: number
+  position?: number
+  question?: QuestionType
+  form?: FormType
+}
+
+export type QuestionVariantType = 
+  'single_choice' |
+  'multiple_choice' |
   'string' | 
   'text' |
   'number' |
@@ -62,15 +72,9 @@ export type QuestionTypeType =
   'checkbox' |
   'email' |
   'phone' | 
-  'url'   
-
-export type FormQuestionType = {
-  question_id?: number
-  form_id?: number
-  position?: number
-  question?: QuestionType
-  form?: FormType
-}
+  'url'   | 
+  'image' | 
+  'file'
 
 export type QuestionType = {
   id?: number
@@ -78,20 +82,26 @@ export type QuestionType = {
   handle?: string
   title?: string
   description?: string
-  question_type?: QuestionTypeType
+  variant?: QuestionVariantType
   image?: {
     url: string
   }	
 }
 
 export type AnswerType = {
+  id?: number
   title?: string
+  description?: string
+  position?: number
   question_id?: number
+  value?: string | number
   points?: number
   image?: {
     url: string
   }
-  position?: number
+  video?: {
+    url: string
+  }
 }
 
 export type FormType = {

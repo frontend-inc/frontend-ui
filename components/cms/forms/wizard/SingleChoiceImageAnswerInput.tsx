@@ -1,19 +1,19 @@
 import React from 'react'
-import MultipleChoiceInput from './MultipleChoiceInput'
-import { MultipleChoiceInputProps } from './MultipleChoiceInput'
+import MultipleChoiceAnswerInput from './MultipleChoiceAnswerInput'
+import { MultipleChoiceAnswerInputProps } from './MultipleChoiceAnswerInput'
 
-const SingleChoiceInput: React.FC<MultipleChoiceInputProps> = (props) => {
+const SingleChoiceInput: React.FC<MultipleChoiceAnswerInputProps> = (props) => {
 	const {
 		label,
 		direction = 'column',
 		name,
 		value,
-		options,
+    answers,
 		handleChange,
 	} = props
 
 	return (
-		<MultipleChoiceInput
+		<MultipleChoiceAnswerInput
 			layout="grid"
 			multiSelect={false}
 			direction={direction}
@@ -21,7 +21,7 @@ const SingleChoiceInput: React.FC<MultipleChoiceInputProps> = (props) => {
 			label={label}
 			value={value}
 			handleChange={handleChange}
-			options={options}
+      answers={answers}
 		/>
 	)
 }

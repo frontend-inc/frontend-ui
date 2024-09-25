@@ -6,7 +6,6 @@ import { Search } from '@mui/icons-material'
 import DocumentList from './DocumentList'
 import DocumentEdit from './DocumentEdit'
 import ReferenceItem from './ReferenceItem'
-import { useRouter } from 'next/router'
 import { filterReferences } from '../../../../helpers'
 
 type ReferenceInputProps = {

@@ -33,7 +33,7 @@ const AdminQuestionShow: React.FC<AdminQuestionShowProps> = (props) => {
       handleDelete={handleDelete}
     >
       <ResourceDetails 
-        label={ resource?.question?.question_type }
+        label={ resource?.question?.variant }
         image={ resource?.question?.image?.url }
         primary={ resource?.question?.title }
         secondary={ resource?.question?.description }
@@ -43,7 +43,7 @@ const AdminQuestionShow: React.FC<AdminQuestionShowProps> = (props) => {
       { [
           'single_choice',
           'multiple_choice'
-        ].includes(resource?.question?.question_type) && (
+        ].includes(resource?.question?.variant) && (
         <Stack direction="column" width={'100%'} spacing={1}>
           <Divider sx={ sx.divider } />
           <Typography variant="subtitle1" color='text.primary'>

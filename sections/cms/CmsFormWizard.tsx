@@ -1,24 +1,24 @@
 import React from 'react'
 import { Section } from '../../components'
-import { DocumentFormWizardModal } from '../../components'
-import { DocumentFormWizardModalProps } from '../../components/cms/forms/DocumentFormWizardModal'
+import { DataFormWizard } from '../../components'
+import { DataFormWizardProps } from '../../components/cms/forms/DataFormWizardModal'
 import { SectionProps } from '../../types'
 
-type CmsFormWizardProps = SectionProps & DocumentFormWizardModalProps
+type CmsFormWizardProps = SectionProps & DataFormWizardProps
 
 const CmsFormWizard: React.FC<CmsFormWizardProps> = (props) => {
-	const { mode, py, px, maxWidth, requirePaid, ...rest } = props
+	const { mode, py, px, maxWidth, requireAuth, requirePaid, ...rest } = props
 
 	return (
 		<Section
-			requireAuth
+			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<DocumentFormWizardModal {...rest} />
+			<DataFormWizard {...rest} />
 		</Section>
 	)
 }

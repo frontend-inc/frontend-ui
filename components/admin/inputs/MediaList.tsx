@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { useMedia } from '../../../../hooks'
+import { useMedia } from '../../../hooks'
 import { Stack, Box, Button } from '@mui/material'
 import { ExpandMore } from '@mui/icons-material'
 import MediaListItem from './MediaListItem'
-import { Placeholder, IconLoading } from '../../../../components'
+import { Placeholder, IconLoading } from '../../../components'
 
 type MediaItemListProps = {
 	selectedIds: number[]

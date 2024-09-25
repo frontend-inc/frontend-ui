@@ -3,6 +3,7 @@ import FormInput from '../FormInput'
 import FormWizardInputWrapper from './FormWizardInputWrapper'
 import FormWizardInput from './FormWizardInput'
 import { get } from 'lodash'
+import { AnswerType } from '../../../../types'
 
 export type FormWizardProps = {
 	field: {
@@ -13,6 +14,7 @@ export type FormWizardProps = {
 		placeholder: string
 		name: string
 		options: any
+    answers?: AnswerType[]
 	}
 	handleChange: (ev: any) => void
 	handleRemove: (name: string) => void
@@ -25,9 +27,7 @@ export type FormWizardProps = {
 
 const WIZARD_FIELD_VARIENTS = [
 	'multiple_choice',
-	'multiple_choice_images',
 	'single_choice',
-	'single_choice_image',
 ]
 
 const FormWizardField: React.FC<FormWizardProps> = (props) => {
@@ -48,6 +48,7 @@ const FormWizardField: React.FC<FormWizardProps> = (props) => {
 							placeholder={field.placeholder}
 							variant={field.variant}
 							options={field.options}
+              answers={ field.answers }
 							value={get(resource, field.name)}
 							handleChange={handleChange}
 						/>

@@ -3,7 +3,7 @@ import { Stack, Box, Button } from '@mui/material'
 import MediaImage from './MediaImage'
 import MediaBrowser from './MediaBrowser'
 import { Search } from 'lucide-react'
-import { ImageType } from '../../../../types'
+import { ImageType } from '../../../types'
 
 type MediaInputProps = {
 	name: string
@@ -35,7 +35,10 @@ const MediaInput: React.FC<MediaInputProps> = (props) => {
 
 	return (
 		<Stack spacing={1}>
-			<MediaImage image={value} handleRemove={handleRemove} />
+			<MediaImage 
+        image={value} 
+        handleRemove={handleRemove} 
+      />
 			<Box sx={sx.buttons}>
 				<Button
 					color="secondary"

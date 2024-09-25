@@ -1,7 +1,7 @@
 import React from 'react'
 import { IconButton, Card } from '@mui/material'
-import { Image, Icon } from '../../../../components'
-import { ImageType } from '../../../../types'
+import { Image, Icon } from '../../../components'
+import { ImageType } from '../../../types'
 
 type MediaImageProps = {
 	image?: ImageType

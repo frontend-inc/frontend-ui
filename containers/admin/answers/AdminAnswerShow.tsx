@@ -21,9 +21,8 @@ const AdminQuestionShow: React.FC<AdminQuestionShowProps> = (props) => {
 	} = props || {}
 
 	let fields = [
-		{ label: 'Handle', name: 'handle', variant: 'string' },
-		{ label: 'Title', name: 'title', variant: 'string' },
-		{ label: 'Description', name: 'description', variant: 'text' },		
+    { label: 'Value', name: 'value', variant: 'string' },		
+    { label: 'Points', name: 'points', variant: 'number' },		
 	]
 
 	return (

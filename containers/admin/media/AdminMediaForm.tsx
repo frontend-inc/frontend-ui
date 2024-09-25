@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Drawer, ButtonTabs } from '../../../components'
 import { ResourceFormProps } from '../../../components/cms/resources/ResourceForm'
 import { Box } from '@mui/material'
-import MediaUploader from './MediaUploader'
+import { MediaUploader } from '../../../components'
 import { UnsplashList } from '../../../components'
 
 const AdminMediaForm: React.FC<ResourceFormProps> = (props) => {

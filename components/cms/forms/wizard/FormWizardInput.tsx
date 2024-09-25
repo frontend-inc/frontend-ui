@@ -1,9 +1,7 @@
 import React from 'react'
-import { SyntheticEventType } from '../../../../types'
-import MultipleChoiceInput from '../inputs/MultipleChoiceInput'
-import MultipleChoiceImagesInput from '../inputs/MultipleChoiceImagesInput'
-import SingleChoiceInput from '../inputs/SingleChoiceInput'
-import SingleChoiceImageInput from '../inputs/SingleChoiceImageInput'
+import { SyntheticEventType, AnswerType } from '../../../../types'
+import MultipleChoiceInput from './MultipleChoiceAnswerInput'
+import SingleChoiceInput from './SingleChoiceAnswerInput'
 
 type FormInputProps = {
 	variant: any
@@ -13,6 +11,7 @@ type FormInputProps = {
 	value?: any | any[]
 	options: any
 	placeholder?: string
+  answers?: AnswerType[]
 	handleChange: (e: SyntheticEventType) => void
 }
 
@@ -24,6 +23,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		errors,
 		value,
 		options,
+    answers=[],
 		placeholder,
 		handleChange,
 	} = props
@@ -31,8 +31,6 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 	let componentMapper = {
 		single_choice: SingleChoiceInput,
 		multiple_choice: MultipleChoiceInput,
-		single_choice_image: SingleChoiceImageInput,
-		multiple_choice_images: MultipleChoiceImagesInput,
 	}
 
 	let InputComponent = componentMapper[variant]
@@ -44,6 +42,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			name={name}
 			value={value}
 			options={options}
+      answers={answers}
 			handleChange={handleChange}
 			placeholder={placeholder}
 		/>

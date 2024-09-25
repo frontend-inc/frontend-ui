@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
-import { Drawer, ButtonTabs } from '../../../../components'
-import { useMedia } from '../../../../hooks'
-import { useAlerts } from '../../../../hooks'
+import { useMedia } from '../../../hooks'
+import { useAlerts } from '../../../hooks'
 import { Box, Button } from '@mui/material'
 import MediaListItem from './MediaListItem'
-import { MediaUploader } from '../../..'
 import MediaList from './MediaList'
-import { UnsplashList } from '../../../../components'
+import { 
+  Drawer, 
+  ButtonTabs, 
+  MediaUploader, 
+  UnsplashList 
+} from '../../../components'
 
 type MediaBrowserProps = {
 	open: boolean

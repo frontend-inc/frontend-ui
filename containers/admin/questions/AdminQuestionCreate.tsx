@@ -9,7 +9,7 @@ const AdminQuestionCreate: React.FC<ResourceFormProps> = (props) => {
 		{ label: 'Question', name: 'title', variant: 'string' },
     { label: 'Description', name: 'description', variant: 'text' },
     { label: 'API name', name: 'name', variant: 'nospace' },
-    { label: 'Question type', name: 'question_type', variant: 'select', 
+    { label: 'Question type', name: 'variant', variant: 'select', 
       options: [
         { icon: 'ListChecks', value: 'multiple_choice', label: 'Multiple choice' },
         { icon: 'ListTodo', value: 'single_choice', label: 'Single choice' },
@@ -32,7 +32,7 @@ const AdminQuestionCreate: React.FC<ResourceFormProps> = (props) => {
       name: 'options', 
       variant: 'array', 
       conditions: [
-        { name: 'question_type', operator: 'eq', value: 'select' }
+        { name: 'variant', operator: 'eq', value: 'select' }
       ],
       default: []
     }  

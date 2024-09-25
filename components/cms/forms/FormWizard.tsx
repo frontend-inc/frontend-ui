@@ -34,9 +34,9 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 	} = props
 
 	const [currentField, setCurrentField] = useState()
-	const [currentStep, setCurrentStep] = useState(0)
+	const [currentStep, setCurrentStep] = useState(1)
 	const [totalSteps, setTotalSteps] = useState(0)
-	const [fadeIn, setFadeIn] = useState(false)
+	const [fadeIn, setFadeIn] = useState(true)
 
 	const handleNextStep = () => {
 		setFadeIn(false)
@@ -52,7 +52,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 
 	const handlePrevStep = () => {
 		const nextStep = currentStep - 1
-		if (nextStep < 0) {
+		if (nextStep < 1) {
 			return
 		}
 		setCurrentStep(nextStep)
@@ -66,9 +66,9 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 
 	useEffect(() => {
 		if (fields) {
-			setCurrentField(fields[currentStep])
+			setCurrentField(fields[currentStep-1])
 		}
-	}, [fields, currentStep])
+	}, [fields, currentStep])  
 
 	return (
 		<Box sx={sx.root}>

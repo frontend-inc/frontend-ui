@@ -1,4 +1,3 @@
-export * from './media'
 export * from './references'
 export * from './inputs'
 export { default as AdminDocumentPage } from './AdminDocumentPage'

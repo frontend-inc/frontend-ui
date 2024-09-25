@@ -24,12 +24,12 @@ const AdminReviewShow: React.FC<ResourceShowProps> = (props) => {
       handleEdit={handleEdit}
       handleDelete={handleDelete}
     >
-		<ResourceDetails
-			image={review?.document?.image?.url}
-			primary={review?.user?.name}
-			secondary={`@${review?.user?.username}`}
-			{...props}
-		/>
+      <ResourceDetails
+        image={review?.document?.image?.url}
+        primary={review?.user?.name}
+        secondary={`@${review?.user?.username}`}
+        {...props}
+      />
     </ResourceModal>
 	)
 }

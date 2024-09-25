@@ -11,7 +11,7 @@ import {
 	AttachmentImage,
 	Label,
 	MenuButton,
-} from '../../../../components'
+} from '../../../components'
 
 type MediaItemProps = {
 	item?: any

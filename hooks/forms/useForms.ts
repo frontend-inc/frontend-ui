@@ -1,12 +1,11 @@
 import React from 'react'
 import { useResource, useApi } from 'frontend-js'
-import { useAdmin } from '..'
+import { useApp } from '..'
 
 const useForms = () => {
-	const { apiUrl } = useAdmin()
-	const { api } = useApi()
+	const { apiUrl } = useApp()
 
-	const url = `${apiUrl}/forms`
+	const url = `${apiUrl}/cms/forms`
 	const apiParams = {
 		url,
 		name: 'form',
@@ -31,8 +30,6 @@ const useForms = () => {
 		destroy: deleteForm,
 		deleteMany: deleteForms,
 		loadMore,
-		publish,
-		unpublish,
 		handleChange,
 		handleChangePage,
 		updatePositions,
@@ -57,30 +54,6 @@ const useForms = () => {
 		loadingWrapper,
 	} = useResource(apiParams)
 
-	const addQuestions = async (
-		formId: number,
-		questionIds: number[]
-	) => {
-		return await loadingWrapper(() =>
-			api.addQuestions(formId, questionIds, {
-				url,
-				name: 'questions',
-			})
-		)
-	}
-
-	const removeQuestions = async (
-		formId: number,
-		questionIds: number[]
-	) => {
-		return await loadingWrapper(() =>
-			api.removeQuestions(formId, questionIds, {
-				url,
-				name: 'questions',
-			})
-		)
-	}
-
 	return {
 		paginate,
 		loading,
@@ -101,12 +74,6 @@ const useForms = () => {
 		deleteForm,
 		deleteForms,
 		loadMore,
-		publish,
-		unpublish,
-
-		addQuestions,
-		removeQuestions,
-
 		addAttachment,
 		removeAttachment,
 		handleChange,

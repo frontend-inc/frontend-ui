@@ -27,7 +27,7 @@ const AdminFormQuestionItem: React.FC<ResourceItemProps> = (props) => {
 			primary={question?.title}		
       avatar={
         <QuestionIcon 
-          variant={question?.question_type}
+          variant={question?.variant}
         />
       }    			
 

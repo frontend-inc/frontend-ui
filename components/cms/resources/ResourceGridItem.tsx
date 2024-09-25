@@ -34,6 +34,9 @@ export type ResourceListItemProps = {
 	sortable?: boolean
 	isDragging?: boolean
 	enableBorder?: boolean
+  slots?: {
+    image?: any
+  }
 }
 
 const ResourceGridItem: React.FC<ResourceListItemProps> = (props) => {
@@ -56,6 +59,9 @@ const ResourceGridItem: React.FC<ResourceListItemProps> = (props) => {
 		selected,
 		isDragging = false,
 		enableBorder = false,
+    slots={
+      image: {}
+    }
 	} = props
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -102,7 +108,13 @@ const ResourceGridItem: React.FC<ResourceListItemProps> = (props) => {
 				}
 			/>
 			<CardActionArea onClick={handleClick}>
-				<Image label={label} disableBorderRadius height={160} src={image} />
+				<Image 
+          label={label} 
+          disableBorderRadius 
+          height={160} 
+          src={image} 
+          { ...slots.image }
+        />
 			</CardActionArea>
 			{(primary || secondary) && (
 				<CardContent>

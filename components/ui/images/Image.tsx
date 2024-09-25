@@ -43,7 +43,7 @@ const Image: React.FC<ImageProps> = (props) => {
 		<Box
 			sx={{
 				position: 'relative',
-				width: '100%',
+				maxWidth: width ? `${width}px` : '100%',
 				height: objectFit == 'cover' ? `${height}px` : 'auto',
 			}}
 		>
