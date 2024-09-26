@@ -43,7 +43,8 @@ const Spotlight: React.FC<SpotlightProps> = (props) => {
             </Typography>          
             {secondary}
           </Stack>
-          {actions}          
+          { actions }    
+          { children }      
           <Box sx={sx.imageContainer}>
             <Image               
               src={image} 
