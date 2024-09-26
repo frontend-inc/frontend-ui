@@ -1,61 +1,39 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
-import { Container, Image } from '../..'
+import { Container, Image, SpotlightList } from '../..'
+import { ButtonType } from '../../../types'
 
 export type SpotlightProps = {
-	label?: string
-	image?: string
+  label?: string
+  title?: string
+  description?: string
+  image?: string
   logos?: string[]
-	primary?: string | React.ReactNode
-	secondary?: React.ReactNode 
-	actions?: React.ReactNode
-	secondaryAction?: React.ReactNode
-	children?: React.ReactNode
-	slots?: {
-		image?: any
-		content?: any
-	}
+  style?: 'card' | 'cover' | 'list' | 'avatar' | 'spotlight'
+  buttons?: ButtonType[]
 }
 
 const Spotlight: React.FC<SpotlightProps> = (props) => {
 	const {
 		image,
 		label,
-		primary,
-		secondary,
-		actions,
+		title,
+		description,
+		buttons=[],
     logos=[],
-		secondaryAction,
-		children,
-    slots={
-      image: {}
-    }
 	} = props || {}
 
 	return (
-    <Box sx={ sx.gradient }>
-      <Container maxWidth="md">
-        <Stack sx={sx.root} spacing={4}>
-          {actions}
-          <Typography color="text.primary" variant="h1" sx={ sx.header }>
-            {primary}
-          </Typography>
-          {secondaryAction}
-          {secondary}
-          {children}
-          <Box sx={sx.imageContainer}>
-            <Image               
-              src={image} 
-              alt={primary} 
-              height={500} 
-              label={label}  
-              objectFit='contain'
-              { ...slots.image }           
-            />
-          </Box>
-        </Stack>
-      </Container>
-    </Box>
+    <SpotlightList 
+      label={label}
+      primary={title }
+      secondary={ 
+        <Typography variant="subtitle1" color="text.secondary">
+          { description }
+        </Typography>
+      }
+      image={ image }
+    />
 	)
 }
 

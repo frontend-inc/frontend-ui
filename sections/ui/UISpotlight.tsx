@@ -1,7 +1,7 @@
 import React from 'react'
 import { Section } from '../../components'
 import { Spotlight } from '../../components'
-import { SpotlightProps } from '../../components/ui/spotlights/Spotlight'
+import { SpotlightProps } from '../../components/ui/spotlights/SpotlightList'
 import { SectionProps } from '../../types'
 
 type UISpotlightProps = SectionProps & SpotlightProps
@@ -14,11 +14,8 @@ const UISpotlight: React.FC<UISpotlightProps> = (props) => {
 		maxWidth,
 		requireAuth,
 		requirePaid,
-    style,
 		...rest
 	} = props
-
-  const fullWidth = style == 'spotlight' || style == 'cover' ? true : false
 
 	return (
 		<Section
