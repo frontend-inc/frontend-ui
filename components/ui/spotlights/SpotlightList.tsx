@@ -10,7 +10,7 @@ export type SpotlightProps = {
 	secondary?: React.ReactNode 
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
-	children?: React.ReactNode
+	children?: React.ReactNode  
 	slots?: {
 		image?: any
 		content?: any
@@ -33,9 +33,9 @@ const Spotlight: React.FC<SpotlightProps> = (props) => {
 	} = props || {}
 
 	return (
-    <Box sx={ sx.gradient }>
+    <Box sx={ sx.root }>
       <Container maxWidth="md">
-        <Stack sx={sx.root} spacing={6}>          
+        <Stack sx={sx.container} spacing={6}>          
           <Stack sx={sx.header} spacing={2}>          
             <Box><Label label={ label } /></Box>
             <Typography color="text.primary" variant="h1" sx={ sx.header }>
@@ -63,17 +63,19 @@ const Spotlight: React.FC<SpotlightProps> = (props) => {
 export default Spotlight
 
 const sx = {
-	root: {
+  root: {
+    pt: 8, 
+    pb: 0,
+    height: 'auto',
+    width: '100%',  
+    background: theme => `radial-gradient(ellipse 100% 95% at center bottom, ${theme.palette.primary.main}, rgba(0, 0, 0, 1))`
+  },
+	container: {
     px: 2,
 		width: '100%',
 		justifyContent: 'flex-start',
 		alignItems: 'center',
-	},
-	rootBorder: {
-		border: '1px solid',
-		borderColor: 'divider',
-		pb: 2,
-	},
+	},	
 	header: {
 		maxWidth: 600,
 		width: '100%',
@@ -104,12 +106,5 @@ const sx = {
 		width: '100%',
 		borderRadius: 1,
     boxShadow: 6,
-	},
-  gradient: { 
-    pt: 8, 
-    pb: 0,
-    height: 'auto',
-    width: '100%',    
-	  background: theme => `radial-gradient(ellipse 100% 95% at center bottom, ${theme.palette.primary.main}, rgba(0, 0, 0, 1))`
-	},
+	},  
 }
