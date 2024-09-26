@@ -31,19 +31,22 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 	const {
 		errors,
 		delayedLoading,
-		resource: lead,
-		setResource: setLead,
+		resource: contact,
+		setResource: setContact,
 		handleChange,
 		create,
 	} = useResource({
-		name: 'lead',
-		url: `/api/v1/leads`,
+		name: 'contact',
+		url: `/api/v1/contacts`,
 	})
 
 	const handleSubmit = async () => {
-		let resp = await create(lead)
+		let resp = await create({ 
+      ...contact,
+      source: 'contact',
+    })
 		if (resp?.id) {
-			setLead({})
+			setContact({})
 			showAlertSuccess('Thank you for contacting us!')
 		}
 	}
@@ -65,8 +68,9 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
             { label: 'Email', name: 'email', placeholder: 'Email', variant: 'string' },
             ...metafields,
             { label: 'Message', name: 'message', placeholder: 'Leave a message', variant: 'text' },
+            { label: 'Join our newsletter', name: 'accepts_marketing', variant: 'boolean' },
           ]}
-          resource={lead}
+          resource={contact}
           handleChange={handleChange}
           errors={errors}
           handleSubmit={handleSubmit}

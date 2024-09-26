@@ -17,6 +17,18 @@ const AdminContactList: React.FC = () => {
 			enableEdit
 			enableShow
 			enableDelete
+      filterOptions={[
+        {
+          field: 'source', 
+          label: 'Source', 
+          variant: 'multiple_choice', 
+          options: [            
+            { label: 'Newsletter', value: 'newsletter' },
+            { label: 'Contact Us', value: 'contact' },            
+            { label: 'Form', value: 'form' },
+          ]            
+        }
+      ]}
 			sortOptions={[
 				{ name: 'created_at', label: 'Date' },
 				{ name: 'name', label: 'Name' },
@@ -29,7 +41,10 @@ const AdminContactList: React.FC = () => {
 				{ name: 'email', label: 'Email', variant: 'string' },
 				{ name: 'phone', label: 'Phone', variant: 'string' },
 				{ name: 'company', label: 'Company', variant: 'string' },
+        { name: 'reason', label: 'Reason', variant: 'string' },
+        { name: 'source', label: 'Source', variant: 'string' },
 				{ name: 'message', label: 'Message', variant: 'text' },
+        { name: 'accepts_marketing', label: 'Accepts marketing', variant: 'boolean' },
 			]}
 			edit={AdminContactForm}
 			create={AdminContactForm}

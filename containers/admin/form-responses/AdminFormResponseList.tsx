@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { ResourceTable } from '../../../components'
-import { useAdmin, useFormBuilder } from '../../../hooks'
+import { useAdmin, useAdminForms } from '../../../hooks'
 import AdminFormResponseItem from './AdminFormResponseItem'
 import AdminFormResponseToolbar from './AdminFormResponseToolbar'
 import AdminFormResponseShow from './AdminFormResponseShow'
@@ -19,7 +19,7 @@ const AdminFormResponsesList: React.FC<
 	const { apiUrl } = useAdmin()
 	const url = `${apiUrl}/forms/${formId}/form_responses`
 
-  const { loading, form, findForm } = useFormBuilder()
+  const { loading, form, findForm } = useAdminForms()
 
   const [headers, setHeaders] = useState<TableHeaderType[]>([])
 
@@ -31,20 +31,13 @@ const AdminFormResponsesList: React.FC<
 
   useEffect(() => {
     if(form?.id){
-      let newHeaders = [
-        { name: 'name', label: 'Name', sortable: true, variant: 'string' },
-        { name: 'email', label: 'Email', sortable: true, variant: 'string' },
-      ]
       let formHeaders = form?.questions?.map((question) => ({
         label: question.name,
         name: question.name,
         variant: question.variant,
         sortable: true,        
       }))
-      setHeaders([
-        ...newHeaders,
-        ...formHeaders        
-      ])
+      setHeaders(formHeaders)
     }
   }, [form])
 
@@ -69,7 +62,7 @@ const AdminFormResponsesList: React.FC<
       ]}    
 			emptyIcon="ListCheck"
 			emptyTitle="No responses"
-			emptyDescription="No forms have been submitted yet."
+			emptyDescription="No forms have been submitted yet."      
 			slots={{
 				toolbar: {
 					url,

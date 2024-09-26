@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Stack, Typography } from '@mui/material'
-import { useFormBuilder } from '../../../hooks'
+import { useAdminForms } from '../../../hooks'
 import {
 	AdminFormEdit,
 	AdminFormDetails,
@@ -29,7 +29,7 @@ const AdminForm: React.FC<AdminFormProps> = (
 		reloadForm,
 		addAttachment,
 		removeAttachment,
-	} = useFormBuilder()
+	} = useAdminForms()
 
 	const handleEdit = () => {
 		setOpen(true)

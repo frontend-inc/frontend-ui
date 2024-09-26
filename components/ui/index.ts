@@ -3,6 +3,7 @@ export * from './fields'
 export * from './tables'
 export * from './cards'
 export * from './heros'
+export * from './spotlights'
 export * from './profiles'
 
 export { default as ButtonActions } from './buttons/ButtonActions'

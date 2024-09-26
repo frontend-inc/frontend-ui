@@ -2,7 +2,7 @@ import React from 'react'
 import { useResource, useApi } from 'frontend-js'
 import { useAdmin } from '..'
 
-const useFormBuilder = () => {
+const useAdminForms = () => {
 	const { apiUrl } = useAdmin()
 	const { api } = useApi()
 
@@ -130,4 +130,4 @@ const useFormBuilder = () => {
 	}
 }
 
-export default useFormBuilder
+export default useAdminForms

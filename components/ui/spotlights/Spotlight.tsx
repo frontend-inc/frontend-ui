@@ -1,15 +1,30 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
 import { Container, Image } from '../..'
-import { HeroCardProps } from './HeroCard'
 
-const HeroSpotlight: React.FC<HeroCardProps> = (props) => {
+export type SpotlightProps = {
+	label?: string
+	image?: string
+  logos?: string[]
+	primary?: string | React.ReactNode
+	secondary?: React.ReactNode 
+	actions?: React.ReactNode
+	secondaryAction?: React.ReactNode
+	children?: React.ReactNode
+	slots?: {
+		image?: any
+		content?: any
+	}
+}
+
+const Spotlight: React.FC<SpotlightProps> = (props) => {
 	const {
 		image,
 		label,
 		primary,
 		secondary,
 		actions,
+    logos=[],
 		secondaryAction,
 		children,
     slots={
@@ -44,7 +59,7 @@ const HeroSpotlight: React.FC<HeroCardProps> = (props) => {
 	)
 }
 
-export default HeroSpotlight
+export default Spotlight
 
 const sx = {
 	root: {

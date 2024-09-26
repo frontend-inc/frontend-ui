@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { 
-  Icon,
   FormCard,
   FormWizardModal,
 } from '../..'
-import { Avatar, Box } from '@mui/material'
-import { useForms, useFormResponse } from '../../../hooks'
+import { Box } from '@mui/material'
+import { useForms, useContacts } from '../../../hooks'
 import { HeadingProps } from '../../../types'
 
 export type DataFormWizardProps = HeadingProps &{
@@ -30,14 +29,14 @@ const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
 
   const {
     loading: responseLoading,
-    formResponse,
-    setFormResponse,    
+    contact,
+    setContact,    
     handleChange,
-    createFormResponse,
-    updateFormResponse,
+    updateContact,
     removeAttachment,
-    addAttachment,     
-  } = useFormResponse({
+    addAttachment,  
+    submitForm   
+  } = useContacts({
     formId
   })
 
@@ -48,10 +47,13 @@ const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
 
   const handleSubmit = async () => {
     let resp;
-    if(formResponse?.id){
-      resp = await updateFormResponse(formResponse)
+    if(contact?.id){
+      resp = await updateContact({ 
+        ...contact,
+        form_id: form?.id
+      })
     }else{
-      resp = await createFormResponse(formResponse)
+      resp = await submitForm(contact)
     }
     if(resp?.id){
       handleSuccess()
@@ -61,15 +63,15 @@ const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
   }
 
   const handleRemove = (name: string) => {
-    removeAttachment(formResponse?.id, name)
+    removeAttachment(contact?.id, name)
   }
 
   const handleAddAttachment = (name: string, attachmentId: number) => {
-    addAttachment(formResponse?.id, name, attachmentId)
+    addAttachment(contact?.id, name, attachmentId)
   }  
 
   const handleResetForm = () => {
-    setFormResponse({})
+    setContact({})
     setOpen(false)
     setSubmitted(false)
   }
@@ -103,8 +105,8 @@ const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
         open={ open }
         handleClose={() => setOpen(false)}
         loading={ loading || responseLoading }
-        resource={ formResponse }
-        setResource={ setFormResponse }
+        resource={ contact }
+        setResource={ setContact }
         handleChange={ handleChange }
         handleSubmit={ handleSubmit }      
         fields={ form?.questions }   

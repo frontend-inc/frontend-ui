@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ResourceModal, ResourceDetails } from '../../../components'
 import { ResourceShowProps } from '../../../components/cms/resources/ResourceShow'
-import { useFormBuilder } from '../../../hooks'
+import { useAdminForms } from '../../../hooks'
 
 type AdminFormResponseShowProps = ResourceShowProps & {
   formId: string | number 
@@ -24,19 +24,13 @@ const AdminFormResponseShow: React.FC<AdminFormResponseShowProps> = (props) => {
     loading: formLoading,
     form, 
     findForm 
-   } = useFormBuilder()
+   } = useAdminForms()
 
    useEffect(() => {
     if(formId){
       findForm(formId)
     }
    }, [formId])
-
-   useEffect(() => {
-    if(form){
-      console.log(form)
-    }
-   }, [form])
 
 	return (
     <ResourceModal 
