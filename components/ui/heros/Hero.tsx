@@ -3,8 +3,7 @@ import {
   HeroAvatar,
   HeroCard,
   HeroCover,
-  HeroList,
-  HeroSpotlight,
+  HeroList,  
   ButtonActions 
 } from '../../../components'
 import { Typography } from '@mui/material'
