@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
-import { Placeholder, IconLogos } from '../..'
+import { Placeholder, BrandLogos } from '../..'
 
 export type LogosProps = {
 	title?: string
@@ -20,16 +20,18 @@ const Logos: React.FC<LogosProps> = (props) => {
 					{title}
 				</Typography>
 			)}
-			<Stack sx={sx.logos} direction="row" spacing={4}>
-			<IconLogos logos={ logos } />
-			{logos?.length === 0 && (
-				<Placeholder
-					icon="Image"
-					title="No logos"
-					description="Logos will appear here"
-				/>
-			)}
-		</Stack>
+        <BrandLogos 
+          logos={ logos } 
+          width={128}
+          height={48}
+        />
+        {logos?.length === 0 && (
+          <Placeholder
+            icon="Image"
+            title="No logos"
+            description="Logos will appear here"
+          />
+        )}
   </Stack>
 	)
 }
@@ -46,15 +48,5 @@ const sx = {
 		width: '100%',
 		textAlign: 'center',
 		mb: 4,
-	},
-	logos: {
-		overflowX: 'scroll',
-		'&::-webkit-scrollbar': {
-			display: 'none',
-		},
-		justifyContent: {
-			sm: 'center',
-			xs: 'flex-start',
-		},
-	},
+	},	
 }

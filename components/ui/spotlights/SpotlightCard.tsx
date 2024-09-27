@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Stack, Box, Typography } from '@mui/material'
-import { Label, Image, IconLogos } from '../..'
+import { Label, Image, BrandLogos } from '../..'
 import { SpotlightListProps } from './SpotlightList'
 
 const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
@@ -35,7 +35,7 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
           { secondary }       
           { actions }     
           { logos?.length > 0 && (
-              <IconLogos logos={ logos } />             
+              <BrandLogos logos={ logos } />             
             )}
           { children }      
         </Stack>          

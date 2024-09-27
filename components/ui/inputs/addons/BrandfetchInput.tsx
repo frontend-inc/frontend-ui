@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, Button, Stack, Box, Typography, Collapse } from '@mui/material'
-import { IconLoading, Image, SearchInput, InputLabel, Drawer, TouchableOpacity } from '../../..'
+import { Label, Image, InputLabel, Drawer, BrandfetchAutosuggest, TouchableOpacity } from '../../..'
 import { useBrandfetch } from '../../../../hooks'
 
 type BrandfetchInputProps = {
@@ -21,33 +21,29 @@ const BrandfetchInput: React.FC<BrandfetchInputProps> = (props) => {
     handleChange 
   } = props || {}
 
-  const { 
-    loading,
-    logos,
-    searchLogos,
+  const {     
+    brand,
+    fetchBrand,
     resizeLogo
   } = useBrandfetch()
 
   const [open, setOpen] = useState(false)
-  const [keywords, setKeywords] = useState('')
 
-  const handleClick = (logo) => {
-    const url = resizeLogo(logo?.icon, { width: 128, height: 128 })
+  const handleLogoClick = (format) => {
+    console.log('format', format)
+    const url = format.src 
     handleChange({ target: { name, value: url } })
     setOpen(false)
   }    
 
-  const handleKeywordChange = (e) => setKeywords(e.target.value)
-
-  const handleSearch = async () => {
-    await searchLogos(keywords)
+  const handleBrandChange = (ev) => {    
+    const { value } = ev.target    
+    fetchBrand(value)
   }
 
   const handleDelete = () => {
     handleChange({ target: { name, value: '' } })
   }
-
-  console.log('logos', logos)
 
   return (
     <>    
@@ -60,7 +56,7 @@ const BrandfetchInput: React.FC<BrandfetchInputProps> = (props) => {
             height={ 128 }
             width={ 128 }
             alt="logo"
-            enableGradient 
+            objectFit='contain'
             enableDelete
             handleDelete={ handleDelete }
           />      
@@ -81,36 +77,34 @@ const BrandfetchInput: React.FC<BrandfetchInputProps> = (props) => {
       handleClose={() => setOpen(false)}
     >
       <Stack direction="column" spacing={1}>
-        <SearchInput 
-          value={ keywords }
-          handleChange={ handleKeywordChange }
-          handleSearch={ handleSearch }
-        />      
-        <Button 
-          color="secondary"
-          variant="contained"
-          onClick={ handleSearch }          
-        >
-          { !loading ? 'Search' : <IconLoading /> } 
-        </Button>
+        <BrandfetchAutosuggest                     
+          handleChange={ handleBrandChange }
+        />                
         <Typography variant="caption">
           Powered by <Link href="https://www.brandfetch.com" target="_blank">
             Brandfetch.com
           </Link>
         </Typography>
         <Box sx={ sx.grid }>
-        { Array.isArray(logos) && 
-          logos?.map((logo) => (
-            <TouchableOpacity key={logo?.brandId} handleClick={() => handleClick(logo) }>
-              <Box sx={ sx.logo }>            
-                <Image 
-                  src={ resizeLogo(logo?.icon, { width: 128, height: 128 }) }
-                  height={ 64 }
-                  width={ 64 }
-                  alt="logo"                
-                />            
-            </Box>
-          </TouchableOpacity>          
+        { brand?.logos?.map((logo) => (
+          <>
+            { logo?.formats?.filter(f => f.format != 'svg').map((format) => (              
+              <Stack direction="column" spacing={1} sx={ sx.card }>
+                <TouchableOpacity handleClick={() => handleLogoClick(format)}>
+                <Box sx={ sx.logo }>
+                  <Image 
+                    src={ format?.src }                
+                    height={128}                
+                    width={128}
+                    alt={ logo?.domain }  
+                    objectFit='contain'              
+                  />                
+                </Box>                
+                </TouchableOpacity>
+                <Box><Label label={ format.format } /></Box>
+              </Stack>
+            ))}            
+          </>
         ))}
       </Box>
       </Stack>
@@ -124,18 +118,27 @@ export default BrandfetchInput
 const sx = {
   grid: {    
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(64px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(128px, 1fr))',
     gap: 1
   },
   logo: {
+    position: 'relative',
     borderRadius: 1,
     overflow: 'hidden',
-    height: 64,
-    width: 64,
-    '&:hover': {
-      border: '2px solid',
-      borderColor: 'primary.main',
-    }
+    height: 128,
+    width: 128,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',    
   },
+  card: {
+    bgcolor: 'background.paper',
+    p: 1,
+    borderRadius: 1,
+    transition: 'box-shadow 0.3s',
+    '&:hover': {
+      boxShadow: 2
+    }
+  }
   
 }

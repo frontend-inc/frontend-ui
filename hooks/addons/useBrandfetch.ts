@@ -15,10 +15,25 @@ const useBrandfetch = () => {
   const { apiKey } = useContext(BrandfetchContext) as any
 	const { loading, loadingWrapper } = useLoadingWrapper()
 
-  const [logos, setLogos] = useState<TBrandfetchLogo[]>([])
+  const [brand, setBrand] = useState<TBrandfetchLogo[]>([])
+  const [brands, setBrands] = useState<TBrandfetchLogo[]>([])
 
-	const searchLogos = async (keywords) => {
-    setLogos([])
+  const fetchBrand = async (domain) => {    
+    let resp = await loadingWrapper(() => 
+      fetch(`https://api.brandfetch.io/v2/brands/${domain}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`
+        }
+      })
+    )
+    const data = await resp?.json()
+    setBrand(data)
+    return data
+  }
+
+	const fetchBrands = async (keywords) => {
+    setBrands([])
 		let resp = await loadingWrapper(() => 
       fetch(`https://api.brandfetch.io/v2/search/${encodeURIComponent(keywords)}`, {
         method: 'GET',
@@ -28,7 +43,7 @@ const useBrandfetch = () => {
       })
     )
     const data = await resp?.json()
-    setLogos(data)
+    setBrands(data)
 		return data
 	}
 
@@ -40,11 +55,14 @@ const useBrandfetch = () => {
   }
 
 	return {
-		loading,
-    logos,
+		loading,    
     resizeLogo,
-    setLogos,
-		searchLogos,
+    brand,
+    setBrand,
+    brands,
+    setBrands,
+    fetchBrand,
+		fetchBrands,
 	}
 }
 

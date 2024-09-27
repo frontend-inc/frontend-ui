@@ -2,29 +2,35 @@ import React from "react"
 import { Stack, Box } from "@mui/material"
 import Image from "next/image"
 
-type IconLogosProps = {
+type BrandLogosProps = {
+  height?: number
+  width?: number
   logos: {
     title: string 
     image: string    
   }[]
 }
 
-const IconLogos: React.FC<IconLogosProps> = (props) => {
-  const { logos=[] } = props || {}
+const BrandLogos: React.FC<BrandLogosProps> = (props) => {
+  const { logos=[], height=48, width=128 } = props || {}
 
   return(
-    <Stack direction="row" spacing={2} sx={ sx.logos }>
+    <Stack direction="row" spacing={3} sx={ sx.logos }>
     { logos.map((logo, i) => (
-      <Box sx={ sx.logo }>
+      <Box sx={{
+        ...sx.logo,
+        height,
+        maxWidth: width, 
+      }}>
         <Image 
           key={i} 
           src={logo.image}                     
-          height={48} 
-          width={48}
+          height={height} 
+          width={width}
           style={{
             objectFit: 'contain',
-            height: 48,
-            width: 48
+            height,
+            width
           }}
           layout="responsive"
           alt={ logo?.title }
@@ -35,16 +41,22 @@ const IconLogos: React.FC<IconLogosProps> = (props) => {
   )
 }
 
-export default IconLogos
+export default BrandLogos
 
 const sx = {
-  logos: {
-    justifyContent: 'center',
+  logos: {    
     alignItems: 'center',
+    overflowX: 'scroll',
+		'&::-webkit-scrollbar': {
+			display: 'none',
+		},
+		justifyContent: {
+			sm: 'center',
+			xs: 'flex-start',
+		},
   },
-  logo: {
-    height: 48,
-    width: 48,
+  logo: {    
+    width: '100%',    
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
