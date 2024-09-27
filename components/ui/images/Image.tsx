@@ -123,7 +123,7 @@ export default Image
 const sx = {
 	root: {
 		cursor: 'pointer',
-		position: 'relative',
+		position: 'relative',    
 		width: '100%',
 		display: 'flex',
 		alignItems: 'center',

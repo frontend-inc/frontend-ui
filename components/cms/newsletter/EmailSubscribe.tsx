@@ -75,10 +75,9 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 						sx={sx.button}
 						variant="contained"
 						color="primary"
-						onClick={handleSubmit}
-						startIcon={<IconLoading loading={delayedLoading} />}
+						onClick={handleSubmit}						
 					>
-						{buttonText}
+						{delayedLoading ? <IconLoading /> : buttonText }
 					</Button>
 				</Stack>
 			</Stack>

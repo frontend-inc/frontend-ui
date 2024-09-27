@@ -46,9 +46,9 @@ const useMedia = () => {
 		}
 	}
 
-	const uploadFromUrl = async (url, name = 'unsplash-photo') => {
+	const uploadFromUrl = async (url, name = 'photo') => {
 		try {
-			let resp = await loadingWrapper(() =>
+			return await loadingWrapper(() =>
 				api.post(`${apiUrl}/storage/upload_from_url`, {
 					storage: {
 						url: url,

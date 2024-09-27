@@ -8,7 +8,8 @@ import {
   Drawer, 
   ButtonTabs, 
   MediaUploader, 
-  UnsplashList 
+  UnsplashList, 
+  BrandfetchInput
 } from '../../../components'
 
 type MediaBrowserProps = {
@@ -23,7 +24,7 @@ const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 	const [tab, setTab] = useState<number>(0)
 
 	const [selected, setSelected] = useState(null)
-	const [uploaded, setUploaded] = useState(null)
+	const [uploaded, setUploaded] = useState<any>(null)
 
 	const { showAlertError } = useAlerts()
 
@@ -38,8 +39,8 @@ const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 	}
 
 	// Upload methods
-	const handleRemoveItem = async () => {
-		await deleteResource(uploaded.id)
+	const handleRemove = async (item) => {
+		await deleteResource(item.id)
 		setUploaded(null)
 	}
 
@@ -62,6 +63,7 @@ const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 		{ label: 'Browse', value: 0 },
 		{ label: 'Upload', value: 1 },
 		{ label: 'Unsplash', value: 2 },
+    { label: 'Logos', value: 3 },
 	]
 
 	return (
@@ -103,7 +105,7 @@ const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 							{uploaded && (
 								<MediaListItem
 									item={uploaded}
-									handleRemoveItem={handleRemoveItem}
+									handleRemove={() => handleRemove(uploaded)}
 								/>
 							)}
 							<MediaUploader onComplete={handleComplete} />
@@ -114,12 +116,17 @@ const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 							{uploaded && (
 								<MediaListItem
 									item={uploaded}
-									handleRemoveItem={handleRemoveItem}
+									handleRemove={() => handleRemove(uploaded)}
 								/>
 							)}
 							<UnsplashList onComplete={handleComplete} />
 						</>
 					)}
+          { tab == 3 && (
+            <BrandfetchInput 
+              onComplete={ handleComplete }
+            />
+          )}
 				</Box>
 			</Box>
 		</Drawer>

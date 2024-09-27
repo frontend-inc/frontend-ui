@@ -5,17 +5,24 @@ import { ExpandMore } from '@mui/icons-material'
 import MediaListItem from './MediaListItem'
 import { Placeholder, IconLoading } from '../../../components'
 
-type MediaItemListProps = {
+type MediaListProps = {
 	selectedIds: number[]
 	handleSelect: (item: any) => void
 }
 
-const MediaItemList: React.FC<MediaItemListProps> = (props) => {
+const MediaList: React.FC<MediaListProps> = (props) => {
 	const { selectedIds, handleSelect } = props
 
-	const { loading, resources, findResources, loadMore, page, numPages } =
+	const { loading, resources, findResources, deleteResource, reloadResources, loadMore, page, numPages } =
 		useMedia()
 
+
+
+  const handleRemove = async (resource: any) => {
+    await deleteResource(resource.id)
+    reloadResources()
+  }
+  
 	const handleLoadMore = async () => {
 		await loadMore()
 	}
@@ -36,6 +43,7 @@ const MediaItemList: React.FC<MediaItemListProps> = (props) => {
 						size={164}
 						selected={selectedIds.includes(item?.id)}
 						handleClick={() => handleSelect(item)}
+            handleRemove={() => handleRemove(item)}
 					/>
 				))}
 			</Box>
@@ -53,7 +61,7 @@ const MediaItemList: React.FC<MediaItemListProps> = (props) => {
 					variant="contained"
 					onClick={handleLoadMore}
 					endIcon={
-						loading ? <IconLoading loading /> : <ExpandMore />
+						loading ? <IconLoading /> : <ExpandMore />
 					}
 				>
 					Load More
@@ -63,7 +71,7 @@ const MediaItemList: React.FC<MediaItemListProps> = (props) => {
 	)
 }
 
-export default MediaItemList
+export default MediaList
 
 const sx = {
 	list: {

@@ -2,6 +2,17 @@ import React, { useState, useContext } from 'react'
 import { useLoadingWrapper } from '..'
 import { BrandfetchContext } from '../../context'
 
+type TBrandfetchBrand = {
+  id: string
+  logos: {
+    domain: string
+    formats: {
+      src: string
+      format: 'png' | 'jpg' | 'svg' | 'webp' 
+    }[]
+  }[]
+}
+
 type TBrandfetchLogo = {
   brandId: string
   claimed: boolean
@@ -15,7 +26,7 @@ const useBrandfetch = () => {
   const { apiKey } = useContext(BrandfetchContext) as any
 	const { loading, loadingWrapper } = useLoadingWrapper()
 
-  const [brand, setBrand] = useState<TBrandfetchLogo[]>([])
+  const [brand, setBrand] = useState<TBrandfetchBrand>()
   const [brands, setBrands] = useState<TBrandfetchLogo[]>([])
 
   const fetchBrand = async (domain) => {    

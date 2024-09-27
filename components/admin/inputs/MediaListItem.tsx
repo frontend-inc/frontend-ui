@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {
 	MenuItem,
 	Typography,
+  Box,
 	Card,
 	CardActionArea,
 	CardHeader,
@@ -18,11 +19,11 @@ type MediaItemProps = {
 	size?: number
 	selected?: boolean
 	handleClick?: (item: any) => void
-	handleRemoveItem?: (item: any) => void
+	handleRemove?: () => void
 }
 
 const MediaItem: React.FC<MediaItemProps> = (props) => {
-	const { item, size = 180, selected, handleClick, handleRemoveItem } = props
+	const { item, size = 180, selected, handleClick, handleRemove } = props
 
 	const [contentType, setContentType] = useState('')
 
@@ -41,9 +42,9 @@ const MediaItem: React.FC<MediaItemProps> = (props) => {
 				sx={sx.header}
 				title={<Label label={item?.content_type?.split('/')[1]} />}
 				action={
-					handleRemoveItem && (
+					handleRemove && (
 						<MenuButton>
-							<MenuItem onClick={() => handleRemoveItem(item)}>
+							<MenuItem onClick={handleRemove}>
 								<Typography variant="body2" color="textPrimary">
 									Remove
 								</Typography>
@@ -51,21 +52,22 @@ const MediaItem: React.FC<MediaItemProps> = (props) => {
 						</MenuButton>
 					)
 				}
-			/>
-			<CardActionArea onClick={() => (handleClick ? handleClick(item) : null)}>
+			/>			
 				{contentType == 'image' || contentType == 'video' ? (
-					<Image
-						disableBorderRadius
-						height={size}
-						width={size}
-						src={item?.url}
-						alt={item?.content_type}
-						objectFit={'cover'}
-					/>
+          <Box sx={ sx.image }>
+            <Image
+              disableBorderRadius
+              height={size}
+              width={size}
+              src={item?.url}
+              alt={item?.content_type}
+              objectFit={'contain'}
+              handleClick={() => (handleClick ? handleClick(item) : null)}
+            />
+          </Box>
 				) : (
 					<AttachmentImage icon="File" width={size} height={size} />
-				)}
-			</CardActionArea>
+				)}			
 		</Card>
 	)
 }
@@ -75,8 +77,7 @@ export default MediaItem
 const sx = {
 	root: {
 		borderRadius: 1,
-		bgcolor: 'background.paper',
-		border: '1px solid',
+		bgcolor: 'background.paper',		
 		borderColor: 'divider',
 		p: 0,
 		minWidth: '120px',
@@ -87,7 +88,8 @@ const sx = {
 	},
 	header: {
 		py: 0,
-		px: 1,
+		px: 1,    
+    alignItems: 'center'
 	},
 	gradient: {
 		backgroundImage:
@@ -97,6 +99,10 @@ const sx = {
 		backgroundSize: 'cover',
 	},
 	image: {
-		objectFit: 'cover',
+    height: 160,         
+		display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden'
 	},
 }
