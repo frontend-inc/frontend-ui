@@ -56,7 +56,7 @@ const BrandfetchInput: React.FC<BrandfetchInputProps> = (props) => {
       <Stack direction="column" spacing={1}>
         <Collapse in={value}>        
           <Image 
-            src={ resizeLogo(value, { width: 128, height: 128 }) }
+            src={ resizeLogo(value, { width: 256, height: 256 }) }
             height={ 128 }
             width={ 128 }
             alt="logo"
@@ -105,8 +105,8 @@ const BrandfetchInput: React.FC<BrandfetchInputProps> = (props) => {
               <Box sx={ sx.logo }>            
                 <Image 
                   src={ resizeLogo(logo?.icon, { width: 128, height: 128 }) }
-                  height={ 128 }
-                  width={ 128 }
+                  height={ 64 }
+                  width={ 64 }
                   alt="logo"                
                 />            
             </Box>
@@ -124,14 +124,14 @@ export default BrandfetchInput
 const sx = {
   grid: {    
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(128px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(64px, 1fr))',
     gap: 1
   },
   logo: {
     borderRadius: 1,
     overflow: 'hidden',
-    height: 128,
-    width: 128,
+    height: 64,
+    width: 64,
     '&:hover': {
       border: '2px solid',
       borderColor: 'primary.main',

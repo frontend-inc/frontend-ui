@@ -1,18 +1,17 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
-import { Placeholder } from '../..'
-import { Image } from '../../../components'
+import { Placeholder, IconLogos } from '../..'
 
 export type LogosProps = {
 	title?: string
-	items?: {
+	logos: {
 		image: string
-		title?: string
+		title: string
 	}[]
 }
 
 const Logos: React.FC<LogosProps> = (props) => {
-	const { title, items = [] } = props
+	const { title, logos = [] } = props
 
 	return (
 		<Stack spacing={0} sx={sx.root}>
@@ -22,20 +21,8 @@ const Logos: React.FC<LogosProps> = (props) => {
 				</Typography>
 			)}
 			<Stack sx={sx.logos} direction="row" spacing={4}>
-				{items?.map((item, index) => (
-					<Box width={120} key={index}>
-						<Image
-							key={index}
-							alt="Logo"
-							src={item?.image}
-							height={60}
-							width={120}
-							disableBorderRadius
-						/>
-					</Box>
-				))}
-			</Stack>
-			{items?.length === 0 && (
+			<IconLogos logos={ logos } />
+			{logos?.length === 0 && (
 				<Placeholder
 					icon="Image"
 					title="No logos"
@@ -43,6 +30,7 @@ const Logos: React.FC<LogosProps> = (props) => {
 				/>
 			)}
 		</Stack>
+  </Stack>
 	)
 }
 

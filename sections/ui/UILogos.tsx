@@ -23,7 +23,7 @@ const UILogos: React.FC<UILogosProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			mode={mode}
-			py={py}
+			py={3}
 			px={px}
 			maxWidth={maxWidth}
 		>
