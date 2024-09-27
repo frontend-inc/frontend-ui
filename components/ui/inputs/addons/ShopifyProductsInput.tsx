@@ -37,10 +37,9 @@ const ShopifyProductImage: React.FC<ShopifyProductImageProps> = (props) => {
 					alt={product?.title}
 					height={height}
 					width={width}
+          enableDelete
+          handleDelete={handleDelete}
 				/>
-				<IconButton size="small" onClick={handleDelete} sx={sx.deleteButton}>
-					<Icon name="X" />
-				</IconButton>
 			</Box>
 		</Fade>
 	)
@@ -202,15 +201,5 @@ const sx = {
 		flexWrap: 'wrap',
 		gap: '10px',
 	},
-	deleteButton: {
-		position: 'absolute',
-		top: 2,
-		right: 2,
-		bgcolor: 'background.default',
-		opacity: 0.5,
-		'&:hover': {
-			bgcolor: 'background.default',
-			opacity: 1,
-		},
-	},
+	
 }

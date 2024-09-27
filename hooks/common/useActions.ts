@@ -1,5 +1,5 @@
 import React from 'react'
-import { useApp } from '../../hooks'
+import { useApp } from '..'
 import { useRouter } from 'next/router'
 import { ActionType, UserType } from '../../types'
 import { useLoadingWrapper } from '.'

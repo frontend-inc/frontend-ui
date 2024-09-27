@@ -1,18 +1,15 @@
 import React from 'react'
 import { Button } from '@mui/material'
-import { useButtons } from '../../../hooks'
-import { ActionType } from '../../../types'
 import { IconLoading, Icon } from '../..'
+import { useRouter } from 'next/router'
 
 type ActionProps = {
 	icon?: string
 	color?: 'primary' | 'secondary'
 	size?: 'small' | 'medium' | 'large'
 	variant?: 'text' | 'outlined' | 'contained'
-	action: ActionType
-	actionId?: number
-	path?: string
-	resource?: any
+  url?: string
+	path: string
 	onClick?: () => void
 	children: React.ReactNode
 }
@@ -21,23 +18,24 @@ const ButtonAction: React.FC<ActionProps> = (props) => {
 	const {
 		children,
 		icon,
-		action,
+    url,
 		path,
-		actionId,
 		onClick,
 		color = 'secondary',
 		variant = 'contained',
 		size = 'medium',
-		resource,
 		...rest
 	} = props
 
-	const { loading, handleClick } = useButtons({
-		action,
-		actionId,
-		path,
-		resource,
-	})
+  const router = useRouter()
+
+	const handleClick = () => {
+    if(url){
+      window.open(url, '_blank')
+    }else{
+      router.push(path)
+    }
+  }
 
 	return (
 		<Button
@@ -46,8 +44,7 @@ const ButtonAction: React.FC<ActionProps> = (props) => {
 			size={size}
 			startIcon={
 				<>
-					<IconLoading loading={loading} />
-					{!loading && icon && (
+					{icon && (
 						<Icon
 							name={icon}
 							color={

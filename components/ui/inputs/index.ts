@@ -41,6 +41,4 @@ export { default as DropZone } from './helpers/DropZone'
 export { default as InputLabel } from './helpers/InputLabel'
 
 // Addons
-export { default as LocationInput } from './addons/LocationInput'
-export { default as ShopifyProductInput } from './addons/ShopifyProductInput'
-export { default as ShopifyProductsInput } from './addons/ShopifyProductsInput'
+export * from './addons'

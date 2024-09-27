@@ -31,8 +31,7 @@ const Hero: React.FC<HeroProps> = (props) => {
     card: HeroCard,
     cover: HeroCover,
     list: HeroList,
-    avatar: HeroAvatar,
-    spotlight: HeroSpotlight
+    avatar: HeroAvatar
   }[style] || HeroList 
 
   return(

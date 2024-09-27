@@ -1,6 +1,6 @@
 import React from 'react'
-import { Label, NoImage, TouchableOpacity } from '../../../components'
-import { Box, useTheme } from '@mui/material'
+import { Label, NoImage, Icon, TouchableOpacity } from '../../../components'
+import { Fade, Box, IconButton, useTheme } from '@mui/material'
 import { truncate } from '../../../helpers'
 import NextImage from 'next/image'
 
@@ -13,11 +13,13 @@ export type ImageProps = {
 	alt?: string
 	bgcolor?: string
 	opacity?: number
+  enableDelete?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
 	disableBorder?: boolean
 	disableBorderRadius?: boolean
 	handleClick?: () => void
+  handleDelete?: () => void
 }
 
 const Image: React.FC<ImageProps> = (props) => {
@@ -34,12 +36,15 @@ const Image: React.FC<ImageProps> = (props) => {
 		enableGradient = false,
 		disableBorder = false,
 		disableBorderRadius = false,
+    enableDelete = false,
 		handleClick,
+    handleDelete
 	} = props
 
 	const theme = useTheme()
 
 	return (
+    <Fade in timeout={350}>
 		<Box
 			sx={{
 				position: 'relative',
@@ -103,7 +108,13 @@ const Image: React.FC<ImageProps> = (props) => {
 					<Label darkMode label={truncate(label, 22)} />
 				</Box>
 			)}
+      { enableDelete && (
+      <IconButton size="small" onClick={handleDelete} sx={sx.deleteButton}>
+        <Icon name="X" />
+      </IconButton>
+      )}
 		</Box>
+    </Fade>
 	)
 }
 
@@ -153,5 +164,16 @@ const sx = {
 		position: 'absolute',
 		right: 15,
 		top: 10,
+	},
+  deleteButton: {
+		position: 'absolute',
+		top: 2,
+		right: 2,
+		bgcolor: 'background.default',
+		opacity: 0.5,
+		'&:hover': {
+			bgcolor: 'background.default',
+			opacity: 1,
+		},
 	},
 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Stack, Box, Typography } from '@mui/material'
-import { Container, Image, SpotlightList } from '../..'
+import { Typography } from '@mui/material'
+import { ButtonActions, SpotlightList, SpotlightCard } from '../..'
 import { ButtonType } from '../../../types'
 
 export type SpotlightProps = {
@@ -8,23 +8,32 @@ export type SpotlightProps = {
   title?: string
   description?: string
   image?: string
-  logos?: string[]
-  style?: 'card' | 'cover' | 'list' | 'avatar' | 'spotlight'
+  logos: {
+    image: string 
+    title: string
+  }[]
+  style?: 'card' | 'list'
   buttons?: ButtonType[]
 }
 
 const Spotlight: React.FC<SpotlightProps> = (props) => {
 	const {
+    style = 'list',
 		image,
 		label,
 		title,
 		description,
-		buttons=[],
     logos=[],
+		buttons=[],
 	} = props || {}
 
+  const Component = {
+    list: SpotlightList,
+    card: SpotlightCard,
+  }[style] || SpotlightList
+
 	return (
-    <SpotlightList 
+    <Component 
       label={label}
       primary={title }
       secondary={ 
@@ -32,6 +41,14 @@ const Spotlight: React.FC<SpotlightProps> = (props) => {
           { description }
         </Typography>
       }
+      actions={
+        <ButtonActions 
+          buttons={ buttons }
+          size="large"
+          justifyContent={ style == 'card' ? 'flex-start' : 'center' }
+        />        
+      }
+      logos={ logos }
       image={ image }
     />
 	)

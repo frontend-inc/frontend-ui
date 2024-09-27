@@ -7,7 +7,7 @@ import {
 	ChipCard,
 	TextCard,
 } from '../..'
-import { SecondaryFields, SocialButtons, ButtonActions } from '../..'
+import { SecondaryFields, SocialButtons, ButtonMenus } from '../..'
 import { ButtonType, DisplayFieldType } from '../../../types'
 import { Box } from '@mui/material'
 import { resizeCloudinaryImage } from '../../../helpers'
@@ -77,7 +77,7 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 				</Box>
 			}
 			secondaryAction={
-				<ButtonActions numVisible={0} buttons={buttons} resource={resource} />
+				<ButtonMenus numVisible={0} buttons={buttons} resource={resource} />
 			}
 			slots={{
 				image: {

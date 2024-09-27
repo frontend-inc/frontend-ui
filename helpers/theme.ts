@@ -7,7 +7,7 @@ export const buildMuiPalette = (palette) => {
 	const primaryText =
 		contrast > 10 ? darken(bgColor, 0.9) : lighten(bgColor, 0.9)
 	const secondaryText =
-		contrast > 10 ? darken(bgColor, 0.7) : lighten(bgColor, 0.7)
+		contrast > 10 ? darken(bgColor, 0.7) : lighten(bgColor, 1.0)
 	const divider = contrast > 10 ? darken(bgColor, 0.12) : lighten(bgColor, 0.12)
 
 	let muiPalette = {

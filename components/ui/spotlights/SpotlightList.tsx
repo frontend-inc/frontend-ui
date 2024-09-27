@@ -1,11 +1,14 @@
 import React from 'react'
 import { Stack, Box, Typography } from '@mui/material'
-import { Container, Label, Image } from '../..'
+import { Container, IconLogos, Label, Image } from '../..'
 
-export type SpotlightProps = {
+export type SpotlightListProps = {
 	label?: string
 	image?: string
-  logos?: string[]
+  logos?: {
+    image: string 
+    title: string 
+  }[]
 	primary?: string | React.ReactNode
 	secondary?: React.ReactNode 
 	actions?: React.ReactNode
@@ -17,7 +20,7 @@ export type SpotlightProps = {
 	}
 }
 
-const Spotlight: React.FC<SpotlightProps> = (props) => {
+const Spotlight: React.FC<SpotlightListProps> = (props) => {
 	const {
 		image,
 		label,
@@ -36,14 +39,17 @@ const Spotlight: React.FC<SpotlightProps> = (props) => {
     <Box sx={ sx.root }>
       <Container maxWidth="md">
         <Stack sx={sx.container} spacing={6}>          
-          <Stack sx={sx.header} spacing={2}>          
+          <Stack sx={sx.header} spacing={3}>          
             <Box><Label label={ label } /></Box>
             <Typography color="text.primary" variant="h1" sx={ sx.header }>
               {primary}
             </Typography>          
-            {secondary}
-          </Stack>
-          { actions }    
+            { secondary }       
+            { actions }     
+            { logos?.length > 0 && (
+              <IconLogos logos={ logos } />             
+            )}
+          </Stack>          
           { children }      
           <Box sx={sx.imageContainer}>
             <Image               
@@ -107,4 +113,13 @@ const sx = {
 		borderRadius: 1,
     boxShadow: 6,
 	},  
+  logos: {
+    p: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logo: {
+    height: 64,
+    width: 64
+  }
 }

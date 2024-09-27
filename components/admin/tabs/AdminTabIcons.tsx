@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
 import { AdminContext } from '../../../context'
 import { Button, Divider, Box, Stack } from '@mui/material'
-import AdminTabAuth from './AdminTabAuth'
+import AdminTabAuth from './AuthIconButton'
 import AdminTabIcon from './AdminTabIcon'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { AuthIconButton } from '.'
 
 type TabIconsProps = {
 	logo?: string
@@ -21,6 +22,10 @@ const TabIcons: React.FC<TabIconsProps> = (props) => {
 
 	const handleHomeClick = () => {
 		router.push('/admin')
+	}
+
+  const handleMyAccountClick = () => {
+		router.push('/my-account')
 	}
 
 	return (
@@ -51,7 +56,9 @@ const TabIcons: React.FC<TabIconsProps> = (props) => {
 				sx={sx.bottomTabs}
 			>
 				{secondaryActions}
-				<AdminTabAuth />
+				<AuthIconButton 
+          handleClick={ handleMyAccountClick }
+        />
 			</Stack>
 		</Box>
 	)
