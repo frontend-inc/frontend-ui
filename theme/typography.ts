@@ -28,7 +28,7 @@ export const typography = {
 	},
 	h4: {
 		fontFamily: 'Instrument Sans',
-		fontSize: 28,
+		fontSize: 26,
 		fontWeight: 500,
 		'@media (max-width:600px)': {
 			fontSize: 22,
@@ -37,23 +37,29 @@ export const typography = {
 	h5: {
 		fontFamily: 'Instrument Sans',
 		fontWeight: 500,
-		fontSize: 26,
+		fontSize: 24,
+    '@media (max-width:600px)': {
+			fontSize: 20,
+		},
 	},
 	h6: {
 		fontFamily: 'Instrument Sans',
 		fontWeight: 500,
-		fontSize: 24,
+		fontSize: 20,
+    '@media (max-width:600px)': {
+			fontSize: 18,
+		},
 	},
 	subtitle1: {
 		fontFamily: 'Instrument Sans',
 		fontSize: 17,
-		fontWeight: 600,
+		fontWeight: 500,
 		lineHeight: '1.5em',
 		textTransform: 'none',
 	},
 	subtitle2: {
 		fontFamily: 'Instrument Sans',
-		fontWeight: 600,
+		fontWeight: 500,
 		fontSize: 16,
 		lineHeight: '1.5em',
 	},

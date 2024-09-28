@@ -37,8 +37,7 @@ const sx = {
 	root: {
 		display: 'grid',
 		gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-		gap: '16px',
-		pb: 1,
+		gap: '16px',		
 	},
 	item: {
 		height: '100%',

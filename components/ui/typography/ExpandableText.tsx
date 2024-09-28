@@ -1,25 +1,27 @@
 import React, { useState } from 'react'
 import { Stack, Typography, Link } from '@mui/material'
+import { TypographyVariantsType } from '../../../types'
 
 const MAX_CHARS = 200
 
 type ExpandableTextProps = {
 	text: string
+  variant?: TypographyVariantsType
 	maxChars?: number
 	color?: string
 }
 
 const ExpandableText: React.FC<ExpandableTextProps> = (props) => {
-	const { text, color = 'text.primary', maxChars = MAX_CHARS } = props || {}
+	const { text, color = 'text.primary', variant='body1', maxChars = MAX_CHARS } = props || {}
 	const [open, setOpen] = useState(false)
 	return (
 		<Stack direction="column" spacing={0}>
 			{open ? (
-				<Typography variant="body1" color={color} sx={sx.text}>
+				<Typography variant={variant} color={color} sx={sx.text}>
 					{text}
 				</Typography>
 			) : (
-				<Typography variant="body1" color={color} sx={sx.text}>
+				<Typography variant={variant} color={color} sx={sx.text}>
 					{text?.slice(0, maxChars)}
 				</Typography>
 			)}

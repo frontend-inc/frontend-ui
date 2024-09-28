@@ -1,3 +1,5 @@
+export * from './testimonials'
+
 // Web
 export { default as Accordion } from './accordions/Accordion'
 export { default as AccordionItem } from './accordions/AccordionItem'
@@ -15,7 +17,3 @@ export { default as PriceTable } from './prices/PriceTable'
 export { default as PriceTableCard } from './prices/PriceTableCard'
 export { default as Tabs } from './tabs/Tabs'
 export { default as TabItem } from './tabs/TabContent'
-export { default as Testimonials } from './testimonials/Testimonials'
-export { default as TestimonialCards } from './testimonials/TestimonialCards'
-export { default as TestimonialCard } from './testimonials/TestimonialCard'
-export { default as SwipeableTestimonials } from './testimonials/SwipeableTestimonials'

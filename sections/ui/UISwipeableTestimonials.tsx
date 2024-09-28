@@ -5,9 +5,9 @@ import { TestimonialsProps } from '../../components/web/testimonials/Testimonial
 import { SectionProps, HeadingProps } from '../../types'
 import { Stack } from '@mui/material'
 
-type UITestimonialsProps = SectionProps & HeadingProps & TestimonialsProps
+type UISwipeableTestimonialsProps = SectionProps & HeadingProps & TestimonialsProps
 
-const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
+const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (props) => {
 	const {
 		label,
 		title,
@@ -39,10 +39,10 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 					description={description}
 					textAlign={'center'}
 				/>
-				<Testimonials {...rest} layout='grid' />
+				<Testimonials {...rest} layout='carousel' />
 			</Stack>
 		</Section>
 	)
 }
 
-export default UITestimonials
+export default UISwipeableTestimonials

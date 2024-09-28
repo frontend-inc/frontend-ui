@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from '@mui/material'
 import { Swipeable } from '../..'
-import TestimonialCard from './TestimonialCard'
+import SwipeableTestimonialCard from './SwipeableTestimonialCard'
 
 type SwipeableTestimonialsProps = {
 	items: Record<string, any>[]
@@ -16,9 +16,14 @@ const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
 		<Box>
 			<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
 				{items?.map((testimonial, i) => (
-					<Box sx={sx.item} key={i}>
-						<TestimonialCard
-							size="large"
+					<Box 
+            sx={{ 
+              ...sx.item,
+              ...(enableArrows && sx.itemArrows)
+            }} 
+            key={i}
+          >
+						<SwipeableTestimonialCard							
 							image={testimonial.image}
 							author={testimonial.title}
 							rating={testimonial.rating}
@@ -43,4 +48,7 @@ const sx = {
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
+  itemArrows: {
+    px: 6,
+  }
 }

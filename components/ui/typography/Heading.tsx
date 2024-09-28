@@ -18,7 +18,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		title,
 		description,
 		textAlign = 'left',
-		textVariant = 'h6',
+		textVariant = 'h4',
 		enableBorder = false,
 		secondaryAction,
 	} = props || {}
