@@ -67,7 +67,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
 				}
 				startIcon={
 					<>
-						{loading && loading && <IconLoading />}
+						{loading && <IconLoading />}
 						{icon && (
 							<Icon
 								name={icon}
