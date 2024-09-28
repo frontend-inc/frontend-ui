@@ -58,7 +58,7 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 					color="primary"
 					onClick={handleSubmit}
 					variant="contained"
-					endIcon={<IconLoading loading={loading} />}
+					endIcon={loading && <IconLoading />}
 				>
 					Sign In
 				</Button>

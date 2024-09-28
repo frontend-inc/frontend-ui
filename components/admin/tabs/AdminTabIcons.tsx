@@ -21,7 +21,7 @@ const TabIcons: React.FC<TabIconsProps> = (props) => {
 	const router = useRouter()
 
 	const handleHomeClick = () => {
-		router.push('/admin')
+		router.push('/dashboard')
 	}
 
   const handleMyAccountClick = () => {

@@ -60,7 +60,7 @@ const AiChatModal: React.FC<AiChatModalProps> = (props) => {
 						onClick={handleChatSubmit}
 						startIcon={
 							loading ? (
-								<IconLoading loading={loading} />
+								loading && <IconLoading />
 							) : (
 								<Icon name="Sparkles" color="primary.contrastText" />
 							)

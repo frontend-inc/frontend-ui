@@ -59,7 +59,7 @@ const ShopifyRegisterForm: React.FC<ShopifyRegisterFormProps> = (props) => {
 				color="primary"
 				onClick={handleSubmit}
 				variant="contained"
-				startIcon={<IconLoading loading={loading} />}
+				startIcon={loading && <IconLoading />}
 			>
 				Register
 			</Button>

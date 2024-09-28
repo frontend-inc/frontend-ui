@@ -62,7 +62,7 @@ const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
 					color="secondary"
 					onClick={handleFormSubmit}
 				>
-					{loading ? <IconLoading loading={loading} /> : `${buttonText}`}
+					{loading ? loading && <IconLoading /> : `${buttonText}`}
 				</Button>
 			</Stack>
 		</Stack>

@@ -87,7 +87,7 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 				color="primary"
 				onClick={handleSubmit}
 				variant="contained"
-				startIcon={<IconLoading loading={loading} />}
+				startIcon={loading && <IconLoading />}
 			>
 				Register
 			</Button>

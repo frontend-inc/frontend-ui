@@ -39,7 +39,7 @@ const AiPromptModal: React.FC<AiPromptModalProps> = (props) => {
 						onClick={handleSubmit}
 						startIcon={
 							loading ? (
-								<IconLoading loading={loading} />
+								loading && <IconLoading />
 							) : (
 								<Icon name="Sparkles" color="primary.contrastText" />
 							)

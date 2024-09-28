@@ -51,7 +51,7 @@ const AIChat: React.FC<AIChatProps> = (props) => {
 				variant="contained"
 				color="primary"
 				onClick={handleChatSubmit}
-				startIcon={<IconLoading loading={loading} />}
+				startIcon={loading && <IconLoading />}
 			>
 				{!loading && buttonText}
 			</Button>

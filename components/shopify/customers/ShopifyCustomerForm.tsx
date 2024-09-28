@@ -48,7 +48,7 @@ const ShopifyCustomerForm: React.FC<ShopifyCustomerFormProps> = (props) => {
 			/>
 			<Button
 				color="secondary"
-				endIcon={<IconLoading loading={loading} />}
+				endIcon={loading && <IconLoading />}
 				variant="contained"
 				onClick={handleSubmit}
 			>

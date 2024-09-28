@@ -33,7 +33,7 @@ const ShopifyCheckoutButton: React.FC<ShopifyCheckoutButtonProps> = (props) => {
 			onClick={handleCheckoutClick}
 			variant="contained"
 			size={size}
-			endIcon={<IconLoading loading={loading} />}
+			endIcon={loading && <IconLoading />}
 		>
 			Checkout
 		</Button>

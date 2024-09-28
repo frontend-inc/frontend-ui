@@ -29,7 +29,7 @@ const OneTimePasswordForm: React.FC<OneTimePasswordFormProps> = (props) => {
 				variant="contained"
 				color="primary"
 				onClick={handleSubmit}
-				endIcon={<IconLoading loading={loading} />}
+				endIcon={loading && <IconLoading />}
 			>
 				Send One-Time Password
 			</Button>

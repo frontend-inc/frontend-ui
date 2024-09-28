@@ -36,7 +36,7 @@ const AlertModal: React.FC<AlertModalProps> = (props) => {
 						variant="contained"
 						color="primary"
 						onClick={handleConfirm}
-						startIcon={<IconLoading loading={loading} />}
+						startIcon={loading && <IconLoading />}
 					>
 						Confirm
 					</Button>

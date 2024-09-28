@@ -48,7 +48,7 @@ const ProductReviewForm: React.FC<ProductReviewFormProps> = (props) => {
 					variant="contained"
 					onClick={handleSubmit}
 					disabled={loading}
-					startIcon={<IconLoading loading={loading} />}
+					startIcon={loading && <IconLoading />}
 				>
 					Submit
 				</Button>

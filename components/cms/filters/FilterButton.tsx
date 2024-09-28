@@ -52,7 +52,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 					variant="contained"
 					startIcon={
 						loading ? (
-							<IconLoading loading={loading} />
+							loading && <IconLoading />
 						) : (
 							<Icon name="SlidersHorizontal" color="secondary.contrastText" />
 						)

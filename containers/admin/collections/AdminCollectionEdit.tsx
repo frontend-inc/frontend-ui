@@ -39,7 +39,7 @@ const AdminCollectionEdit: React.FC<AdminCollectionEditProps> = (props) => {
 					color="primary"
 					variant="contained"
 					onClick={handleSubmit}
-					startIcon={<IconLoading loading={loading} />}
+					startIcon={loading && <IconLoading />}
 				>
 					{collection?.id ? 'Update' : 'Save'}
 				</Button>

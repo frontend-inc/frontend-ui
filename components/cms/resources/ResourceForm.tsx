@@ -53,7 +53,7 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 					variant="contained"
 					color="primary"
 					onClick={handleSubmit}
-					startIcon={<IconLoading loading={loading} />}
+					startIcon={loading && <IconLoading />}
 				>
 					{resource?.id ? 'Update' : 'Save'}
 				</Button>

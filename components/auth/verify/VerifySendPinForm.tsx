@@ -30,7 +30,7 @@ const SendPinForm: React.FC<SendPinFormProps> = (props) => {
 				variant="contained"
 				color="primary"
 				onClick={handleSubmit}
-				startIcon={<IconLoading loading={loading} />}
+				startIcon={loading && <IconLoading />}
 			>
 				Send Verification Pin
 			</Button>

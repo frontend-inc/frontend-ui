@@ -30,7 +30,7 @@ const ForgotPasswordForm: React.FC<ForgotPasswordFormProps> = (props) => {
 				variant="contained"
 				color="primary"
 				onClick={handleSubmit}
-				startIcon={<IconLoading loading={loading} />}
+				startIcon={loading && <IconLoading />}
 			>
 				Send Instructions
 			</Button>

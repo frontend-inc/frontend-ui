@@ -40,7 +40,7 @@ const ResetPasswordForm: React.FC<ResetPasswordFormProps> = (props) => {
 				variant="contained"
 				color="primary"
 				onClick={handleSubmit}
-				endIcon={<IconLoading loading={loading} />}
+				endIcon={loading && <IconLoading />}
 			>
 				Save and Continue
 			</Button>

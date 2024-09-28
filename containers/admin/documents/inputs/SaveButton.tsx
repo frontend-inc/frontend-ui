@@ -49,7 +49,7 @@ const SaveButton: React.FC<SaveButtonProps> = (props) => {
 				}}
 			>
 				<Button
-					endIcon={<IconLoading loading={loading} />}
+					endIcon={loading && <IconLoading />}
 					sx={sx.button}
 					onClick={handleSubmit}
 				>
