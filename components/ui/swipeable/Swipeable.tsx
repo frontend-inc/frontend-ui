@@ -3,6 +3,7 @@ import SwipeableViews from 'react-swipeable-views'
 import { Icon } from '../..'
 import { autoPlay } from 'react-swipeable-views-utils'
 import { Box, IconButton } from '@mui/material'
+
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
 type SwipeableProps = {

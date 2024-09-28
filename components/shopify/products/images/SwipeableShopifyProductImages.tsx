@@ -22,7 +22,6 @@ const SwipeableShopifyProductImages: React.FC<
 		product,
 		height = 320,
 		handleClick,
-		objectFit = 'cover',
 		disableBorderRadius = false,
 		responsiveHeight = false,
 	} = props
