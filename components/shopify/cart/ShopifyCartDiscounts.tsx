@@ -33,7 +33,8 @@ const ShopifyCartDiscountCodeInput: React.FC = () => {
 					variant="contained"
 					sx={sx.button}
 					endIcon={
-						loading && <IconLoading color="secondary.contrastText" />
+						loading && 
+              <IconLoading color="secondary.contrastText" />
 					}
 				>
 					Apply
