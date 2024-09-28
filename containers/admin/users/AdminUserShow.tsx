@@ -28,24 +28,24 @@ const AdminUserShow: React.FC<AdminUserShowProps> = (props) => {
 	]
 
 	return (
-    <ResourceModal 
-      loading={loading}
-      open={open}
-      handleClose={handleClose}
-      enableEdit={enableEdit}
-      enableDelete={enableDelete}
-      handleEdit={handleEdit}
-      handleDelete={handleDelete}
-    >
-      <ResourceDetails
-        avatar={<UserAvatar user={resource} size={96} />}
-        primary={resource?.name}
-        secondary={`@${resource?.username}`}
-        label={resource?.role}
-        resource={resource}
-        fields={fields}
-      />
-    </ResourceModal>
+		<ResourceModal
+			loading={loading}
+			open={open}
+			handleClose={handleClose}
+			enableEdit={enableEdit}
+			enableDelete={enableDelete}
+			handleEdit={handleEdit}
+			handleDelete={handleDelete}
+		>
+			<ResourceDetails
+				avatar={<UserAvatar user={resource} size={96} />}
+				primary={resource?.name}
+				secondary={`@${resource?.username}`}
+				label={resource?.role}
+				resource={resource}
+				fields={fields}
+			/>
+		</ResourceModal>
 	)
 }
 

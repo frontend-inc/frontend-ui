@@ -66,9 +66,9 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 
 	useEffect(() => {
 		if (fields) {
-			setCurrentField(fields[currentStep-1])
+			setCurrentField(fields[currentStep - 1])
 		}
-	}, [fields, currentStep])  
+	}, [fields, currentStep])
 
 	return (
 		<Box sx={sx.root}>

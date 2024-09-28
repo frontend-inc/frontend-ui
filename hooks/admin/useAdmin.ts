@@ -2,8 +2,7 @@ import React, { useContext } from 'react'
 import { AdminContext } from '../../context'
 
 const useAdmin = () => {
-
-  const {
+	const {
 		apiUrl,
 		clientUrl,
 		loading,
@@ -19,7 +18,7 @@ const useAdmin = () => {
 		toggleLayoutRight,
 	} = useContext(AdminContext)
 
-	return {    
+	return {
 		apiUrl,
 		clientUrl,
 		loading,

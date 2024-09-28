@@ -12,9 +12,9 @@ const HeroList: React.FC<HeroCardProps> = (props) => {
 		actions,
 		secondaryAction,
 		children,
-    slots={
-      image: {}
-    }
+		slots = {
+			image: {},
+		},
 	} = props || {}
 
 	return (
@@ -24,13 +24,13 @@ const HeroList: React.FC<HeroCardProps> = (props) => {
 				{primary}
 			</Typography>
 			<Box sx={sx.imageContainer}>
-				<Image 
-          src={image} 
-          alt={primary} 
-          height={400} 
-          label={label} 
-          { ...slots.image }
-        />
+				<Image
+					src={image}
+					alt={primary}
+					height={400}
+					label={label}
+					{...slots.image}
+				/>
 			</Box>
 			{actions}
 			<Box sx={sx.content}>{secondary}</Box>

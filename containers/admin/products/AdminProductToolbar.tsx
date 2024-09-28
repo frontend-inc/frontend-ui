@@ -11,12 +11,7 @@ import { useAdmin } from '../../../hooks'
 const AdminProductToolbar = (props) => {
 	const { apiUrl } = useAdmin()
 
-	const { 
-    open,
-    handleClose, 
-    selectedIds, 
-    handleReload 
-  } = props || {}
+	const { open, handleClose, selectedIds, handleReload } = props || {}
 
 	const { publish, unpublish, deleteMany } = useResource({
 		url: `${apiUrl}/products`,
@@ -35,23 +30,20 @@ const AdminProductToolbar = (props) => {
 		handleClose()
 	}
 
-  const handleDelete = async () => {
-    await deleteMany(selectedIds)
-    handleReload()
-    handleClose()
-  }
+	const handleDelete = async () => {
+		await deleteMany(selectedIds)
+		handleReload()
+		handleClose()
+	}
 
 	return (
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
 			<Stack direction="row" spacing={1}>
 				<PrimaryButton onClick={handlePublish}>Publish</PrimaryButton>
 				<SecondaryButton onClick={handleUnpublish}>Unpublish</SecondaryButton>
-        <SecondaryButton 
-          alert 
-          onClick={handleDelete}
-        >
-          Delete
-        </SecondaryButton>
+				<SecondaryButton alert onClick={handleDelete}>
+					Delete
+				</SecondaryButton>
 			</Stack>
 		</ResourceToolbarModal>
 	)

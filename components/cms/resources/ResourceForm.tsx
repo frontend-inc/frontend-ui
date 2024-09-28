@@ -3,12 +3,12 @@ import { Drawer, FormFields, IconLoading } from '../../../components'
 import { Button } from '@mui/material'
 
 export type ResourceFormProps = {
-  title?: string
+	title?: string
 	open: boolean
 	handleClose: () => void
 	loading: boolean
 	errors: any
-	resource: any  
+	resource: any
 	setResource: (resource: any) => void
 	handleChange: (ev: any) => void
 	handleRemove?: (string: any) => void
@@ -28,7 +28,7 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 	const {
 		loading,
 		errors,
-    title,
+		title,
 		open,
 		handleClose,
 		resource,
@@ -46,7 +46,7 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 		<Drawer
 			open={open}
 			handleClose={handleClose}
-			title={title ? title : (resource?.id ? 'Edit' : 'Add')}
+			title={title ? title : resource?.id ? 'Edit' : 'Add'}
 			buttons={
 				<Button
 					fullWidth

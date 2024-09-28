@@ -12,7 +12,9 @@ type AdminQuestionListItemsProps = ResourceListProps & {
 	handleSuccess: () => void
 }
 
-const AdminQuestionListItems: React.FC<AdminQuestionListItemsProps> = (props) => {
+const AdminQuestionListItems: React.FC<AdminQuestionListItemsProps> = (
+	props
+) => {
 	const { url, handleSuccess, formId, ...rest } = props || {}
 	const { apiUrl } = useAdmin()
 
@@ -21,13 +23,13 @@ const AdminQuestionListItems: React.FC<AdminQuestionListItemsProps> = (props) =>
 			direction="column"
 			selectable
 			enableSearch
-      enableCreate
-      enableDelete 
+			enableCreate
+			enableDelete
 			url={`${apiUrl}/questions`}
-			name='question'
+			name="question"
 			toolbar={AdminQuestionListToolbar}
 			component={AdminQuestionListItem}
-      create={ AdminQuestionCreate }
+			create={AdminQuestionCreate}
 			emptyIcon="Search"
 			emptyTitle="No questions"
 			emptyDescription="No questions yet."
@@ -37,9 +39,9 @@ const AdminQuestionListItems: React.FC<AdminQuestionListItemsProps> = (props) =>
 					formId,
 					handleSuccess,
 				},
-        header: {
-          buttonText: 'New Question',
-        }
+				header: {
+					buttonText: 'New Question',
+				},
 			}}
 		/>
 	)

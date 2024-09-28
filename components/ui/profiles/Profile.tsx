@@ -8,20 +8,14 @@ export type ProfileProps = {
 	label?: string
 	title?: string
 	description?: string
-	socialLinks?: {		
+	socialLinks?: {
 		provider: string
 		url: string
 	}[]
 }
 
 const Profile: React.FC<ProfileProps> = (props) => {
-	const {
-		label,
-		title,
-		image,
-		description,
-		socialLinks = [],
-	} = props || {}
+	const { label, title, image, description, socialLinks = [] } = props || {}
 
 	return (
 		<Box sx={sx.container}>
@@ -31,16 +25,12 @@ const Profile: React.FC<ProfileProps> = (props) => {
 				spacing={{ sm: 4, xs: 0 }}
 				alignItems="flex-start"
 			>
-				<Stack direction="column" spacing={1} width='100%' alignItems="center">
+				<Stack direction="column" spacing={1} width="100%" alignItems="center">
 					<Avatar src={image} size={120} enableGradient />
 					<Stack direction="row" spacing={0}>
 						{socialLinks?.map((link, index) => (
 							<Box p={'2px'} key={index}>
-								<SocialLink 
-                  url={link.url} 
-                  size={28} 
-                  provider={link.provider} 
-                />
+								<SocialLink url={link.url} size={28} provider={link.provider} />
 							</Box>
 						))}
 					</Stack>

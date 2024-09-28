@@ -13,13 +13,13 @@ export type ImageProps = {
 	alt?: string
 	bgcolor?: string
 	opacity?: number
-  enableDelete?: boolean
+	enableDelete?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
 	disableBorder?: boolean
 	disableBorderRadius?: boolean
 	handleClick?: () => void
-  handleDelete?: () => void
+	handleDelete?: () => void
 }
 
 const Image: React.FC<ImageProps> = (props) => {
@@ -36,85 +36,85 @@ const Image: React.FC<ImageProps> = (props) => {
 		enableGradient = false,
 		disableBorder = false,
 		disableBorderRadius = false,
-    enableDelete = false,
+		enableDelete = false,
 		handleClick,
-    handleDelete
+		handleDelete,
 	} = props
 
 	const theme = useTheme()
 
 	return (
-    <Fade in timeout={350}>
-		<Box
-			sx={{
-				position: 'relative',
-				maxWidth: width ? `${width}px` : '100%',
-				height: objectFit == 'cover' ? `${height}px` : 'auto',
-			}}
-		>
-			<TouchableOpacity
-				disableBorderRadius={disableBorderRadius}
-				handleClick={handleClick ? handleClick : undefined}
+		<Fade in timeout={350}>
+			<Box
+				sx={{
+					position: 'relative',
+					maxWidth: width ? `${width}px` : '100%',
+					height: objectFit == 'cover' ? `${height}px` : 'auto',
+				}}
 			>
-				<Box
-					sx={{
-						...sx.root,
-						height: objectFit == 'cover' ? `${height}px` : 'auto',
-						minWidth: width ? `${width}px` : '100%',
-						...(!disableBorderRadius && sx.borderRadius),
-						'&::after': {
-							...sx.afterBase,
-							...(enableOverlay && sx.overlay),
-							...(!enableOverlay && enableGradient && sx.gradient),
-							...(!disableBorderRadius && sx.borderRadius),
-							...(!enableOverlay &&
-								!disableBorderRadius &&
-								enableGradient &&
-								sx.borderRadius),
-							bgcolor,
-							opacity,
-						},
-					}}
+				<TouchableOpacity
+					disableBorderRadius={disableBorderRadius}
+					handleClick={handleClick ? handleClick : undefined}
 				>
-					{src ? (
-						<NextImage
-							src={src}
-							alt={alt}
-							height={1600}
-							width={1600}
-							layout="responsive"
-							style={{
-								height: objectFit == 'cover' ? `${height}px` : 'auto',
-                minHeight: objectFit == 'cover' ? `${height}px` : 'auto',
-								width: width ? `min(${width}px, 100vw)` : '100%',								
-								objectFit,
-								borderRadius: !disableBorderRadius
-									? `${theme.shape.borderRadius}px`
-									: '0px',
-							}}
-						/>
-					) : (
-						<NoImage
-							height={height}
-							width={width}
-							disableBorder={disableBorder}
-							disableBorderRadius={disableBorderRadius}
-						/>
-					)}
-				</Box>
-			</TouchableOpacity>
-			{label && (
-				<Box sx={sx.label}>
-					<Label darkMode label={truncate(label, 22)} />
-				</Box>
-			)}
-      { enableDelete && (
-      <IconButton size="small" onClick={handleDelete} sx={sx.deleteButton}>
-        <Icon name="X" />
-      </IconButton>
-      )}
-		</Box>
-    </Fade>
+					<Box
+						sx={{
+							...sx.root,
+							height: objectFit == 'cover' ? `${height}px` : 'auto',
+							minWidth: width ? `${width}px` : '100%',
+							...(!disableBorderRadius && sx.borderRadius),
+							'&::after': {
+								...sx.afterBase,
+								...(enableOverlay && sx.overlay),
+								...(!enableOverlay && enableGradient && sx.gradient),
+								...(!disableBorderRadius && sx.borderRadius),
+								...(!enableOverlay &&
+									!disableBorderRadius &&
+									enableGradient &&
+									sx.borderRadius),
+								bgcolor,
+								opacity,
+							},
+						}}
+					>
+						{src ? (
+							<NextImage
+								src={src}
+								alt={alt}
+								height={1600}
+								width={1600}
+								layout="responsive"
+								style={{
+									height: objectFit == 'cover' ? `${height}px` : 'auto',
+									minHeight: objectFit == 'cover' ? `${height}px` : 'auto',
+									width: width ? `min(${width}px, 100vw)` : '100%',
+									objectFit,
+									borderRadius: !disableBorderRadius
+										? `${theme.shape.borderRadius}px`
+										: '0px',
+								}}
+							/>
+						) : (
+							<NoImage
+								height={height}
+								width={width}
+								disableBorder={disableBorder}
+								disableBorderRadius={disableBorderRadius}
+							/>
+						)}
+					</Box>
+				</TouchableOpacity>
+				{label && (
+					<Box sx={sx.label}>
+						<Label darkMode label={truncate(label, 22)} />
+					</Box>
+				)}
+				{enableDelete && (
+					<IconButton size="small" onClick={handleDelete} sx={sx.deleteButton}>
+						<Icon name="X" />
+					</IconButton>
+				)}
+			</Box>
+		</Fade>
 	)
 }
 
@@ -123,7 +123,7 @@ export default Image
 const sx = {
 	root: {
 		cursor: 'pointer',
-		position: 'relative',    
+		position: 'relative',
 		width: '100%',
 		display: 'flex',
 		alignItems: 'center',
@@ -165,7 +165,7 @@ const sx = {
 		right: 15,
 		top: 10,
 	},
-  deleteButton: {
+	deleteButton: {
 		position: 'absolute',
 		top: 2,
 		right: 2,

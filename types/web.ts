@@ -68,9 +68,9 @@ export type PriceType = {
 }
 
 export type TestimonialType = {
-  rating: number 
-  title: string 
-  description: string
-  image: string 
-  size?: 'small' | 'large'
+	rating: number
+	title: string
+	description: string
+	image: string
+	size?: 'small' | 'large'
 }

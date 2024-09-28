@@ -57,10 +57,7 @@ const useAdminForms = () => {
 		loadingWrapper,
 	} = useResource(apiParams)
 
-	const addQuestions = async (
-		formId: number,
-		questionIds: number[]
-	) => {
+	const addQuestions = async (formId: number, questionIds: number[]) => {
 		return await loadingWrapper(() =>
 			api.addQuestions(formId, questionIds, {
 				url,
@@ -69,10 +66,7 @@ const useAdminForms = () => {
 		)
 	}
 
-	const removeQuestions = async (
-		formId: number,
-		questionIds: number[]
-	) => {
+	const removeQuestions = async (formId: number, questionIds: number[]) => {
 		return await loadingWrapper(() =>
 			api.removeQuestions(formId, questionIds, {
 				url,

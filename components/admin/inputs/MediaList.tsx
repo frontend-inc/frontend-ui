@@ -13,16 +13,22 @@ type MediaListProps = {
 const MediaList: React.FC<MediaListProps> = (props) => {
 	const { selectedIds, handleSelect } = props
 
-	const { loading, resources, findResources, deleteResource, reloadResources, loadMore, page, numPages } =
-		useMedia()
+	const {
+		loading,
+		resources,
+		findResources,
+		deleteResource,
+		reloadResources,
+		loadMore,
+		page,
+		numPages,
+	} = useMedia()
 
+	const handleRemove = async (resource: any) => {
+		await deleteResource(resource.id)
+		reloadResources()
+	}
 
-
-  const handleRemove = async (resource: any) => {
-    await deleteResource(resource.id)
-    reloadResources()
-  }
-  
 	const handleLoadMore = async () => {
 		await loadMore()
 	}
@@ -43,7 +49,7 @@ const MediaList: React.FC<MediaListProps> = (props) => {
 						size={164}
 						selected={selectedIds.includes(item?.id)}
 						handleClick={() => handleSelect(item)}
-            handleRemove={() => handleRemove(item)}
+						handleRemove={() => handleRemove(item)}
 					/>
 				))}
 			</Box>
@@ -60,9 +66,7 @@ const MediaList: React.FC<MediaListProps> = (props) => {
 					color="secondary"
 					variant="contained"
 					onClick={handleLoadMore}
-					endIcon={
-						loading ? <IconLoading /> : <ExpandMore />
-					}
+					endIcon={loading ? <IconLoading /> : <ExpandMore />}
 				>
 					Load More
 				</Button>

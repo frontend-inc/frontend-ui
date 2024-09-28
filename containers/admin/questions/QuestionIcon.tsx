@@ -13,7 +13,7 @@ const QuestionIcon: React.FC<QuestionIconProps> = (props) => {
 
 	const question = QUESTION_VARIANTS.find((q) => q.variant === variant)
 
-  if(!question) return null;
+	if (!question) return null
 	return (
 		<Box
 			sx={{
@@ -30,7 +30,7 @@ export default QuestionIcon
 
 const sx = {
 	iconContainer: {
-	  minWidth: '40px',
+		minWidth: '40px',
 		minHeight: '40px',
 		borderRadius: 1,
 		bgcolor: 'primary.main',

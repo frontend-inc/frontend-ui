@@ -6,11 +6,11 @@ const ProductReferenceList: React.FC<ProductListProps> = (props) => {
 	let { url, resource } = props
 	url = `${url}/${resource?.id}/product_references`
 	return (
-		<ProductList 
+		<ProductList
 			{...props}
 			url={url}
 			resource={resource}
-      list={ ProductReferenceListItems}
+			list={ProductReferenceListItems}
 		/>
 	)
 }

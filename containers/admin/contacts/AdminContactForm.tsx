@@ -8,7 +8,11 @@ const AdminContactForm: React.FC<ResourceFormProps> = (props) => {
 		{ name: 'email', label: 'Email', variant: 'string' },
 		{ name: 'phone', label: 'Phone', variant: 'string' },
 		{ name: 'company', label: 'Company', variant: 'string' },
-    { name: 'accepts_marketing', label: 'Accepts marketing', variant: 'boolean' }				
+		{
+			name: 'accepts_marketing',
+			label: 'Accepts marketing',
+			variant: 'boolean',
+		},
 	]
 
 	return <ResourceForm {...props} fields={FORM_FIELDS} />

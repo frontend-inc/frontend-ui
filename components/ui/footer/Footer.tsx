@@ -19,12 +19,18 @@ export type FooterProps = {
 }
 
 const Footer: React.FC<FooterProps> = (props) => {
-	const { logo, handleClick, links=[], socialLinks=[], legalLinks=[] } = props
+	const {
+		logo,
+		handleClick,
+		links = [],
+		socialLinks = [],
+		legalLinks = [],
+	} = props
 	const { logo: appLogo } = useApp()
 
-  const handleLogoClick = () => {
-    handleClick('/')
-  }
+	const handleLogoClick = () => {
+		handleClick('/')
+	}
 
 	return (
 		<Stack sx={sx.root} spacing={1} direction="column">
@@ -33,10 +39,19 @@ const Footer: React.FC<FooterProps> = (props) => {
 				sx={sx.headerLinks}
 				direction={{ sm: 'row', xs: 'column' }}
 			>
-				<Stack sx={sx.footerMenu} direction={{ sm: 'row', xs: 'column' }} spacing={3}>
-        <Box sx={sx.logo}>
-          <Logo handleClick={ handleLogoClick } src={logo || appLogo} width={100} height={50} />
-        </Box>
+				<Stack
+					sx={sx.footerMenu}
+					direction={{ sm: 'row', xs: 'column' }}
+					spacing={3}
+				>
+					<Box sx={sx.logo}>
+						<Logo
+							handleClick={handleLogoClick}
+							src={logo || appLogo}
+							width={100}
+							height={50}
+						/>
+					</Box>
 					<Box sx={sx.gridContainer}>
 						<Box sx={sx.grid}>
 							{links?.map((menuLink, i) => (
@@ -51,7 +66,7 @@ const Footer: React.FC<FooterProps> = (props) => {
 							))}
 						</Box>
 					</Box>
-          <Box sx={sx.spacer} />
+					<Box sx={sx.spacer} />
 				</Stack>
 			</Stack>
 			<Stack
@@ -116,7 +131,7 @@ const sx = {
 	footerMenu: {
 		py: 6,
 		width: '100%',
-    alignItems: 'flex-start'
+		alignItems: 'flex-start',
 	},
 	logo: {
 		width: {
@@ -176,21 +191,21 @@ const sx = {
 		width: '100%',
 		display: 'flex',
 		justifyContent: {
-      sm: 'center',    
-      xs: 'flex-start'
-    }
+			sm: 'center',
+			xs: 'flex-start',
+		},
 	},
 	grid: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: {
-      sm: 'row',
-      xs: 'column'
-    },
-    gap: '16px',
-    pl: {
-      sm: 3,
-      xs: 0,
-    }
-  }
+		display: 'flex',
+		flexWrap: 'wrap',
+		flexDirection: {
+			sm: 'row',
+			xs: 'column',
+		},
+		gap: '16px',
+		pl: {
+			sm: 3,
+			xs: 0,
+		},
+	},
 }

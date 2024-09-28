@@ -15,7 +15,7 @@ export type MenuLinkTypes =
 
 export type MenuLinkType = {
 	label: string
-	path: string	
+	path: string
 	url?: string
 	icon?: string
 	link_type?: MenuLinkTypes

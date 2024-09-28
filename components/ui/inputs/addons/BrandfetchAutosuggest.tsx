@@ -19,7 +19,7 @@ const BrandfetchAutosuggest: React.FC<AutosuggestProps> = (props) => {
 		direction = 'column',
 		placeholder,
 		name = 'domain',
-		handleChange,    
+		handleChange,
 	} = props
 
 	const { loading, brands, fetchBrands } = useBrandfetch()
@@ -27,7 +27,7 @@ const BrandfetchAutosuggest: React.FC<AutosuggestProps> = (props) => {
 	const [options, setOptions] = useState<any>([])
 
 	const handleInputChange = (newValue) => {
-		fetchBrands(newValue)		
+		fetchBrands(newValue)
 	}
 
 	useEffect(() => {
@@ -36,33 +36,32 @@ const BrandfetchAutosuggest: React.FC<AutosuggestProps> = (props) => {
 				brands?.map((brand) => ({
 					label: brand.domain,
 					value: brand.domain,
-					image: brand.icon
+					image: brand.icon,
 				}))
 			)
 		}
 	}, [brands])
 
-  const handleAutocompleteChange = (e) => {
-    handleChange({
-      target: {
-        name,
-        value: e.target.value
-      }
-    })
-  }
-
+	const handleAutocompleteChange = (e) => {
+		handleChange({
+			target: {
+				name,
+				value: e.target.value,
+			},
+		})
+	}
 
 	return (
-    <AutocompleteInput
-      name={name}
-      label={label}
-      value={value}
-      options={options}
-      handleChange={handleAutocompleteChange}
-      handleInputChange={handleInputChange}
-      direction={direction}
-      placeholder={placeholder}
-    />
+		<AutocompleteInput
+			name={name}
+			label={label}
+			value={value}
+			options={options}
+			handleChange={handleAutocompleteChange}
+			handleInputChange={handleInputChange}
+			direction={direction}
+			placeholder={placeholder}
+		/>
 	)
 }
 

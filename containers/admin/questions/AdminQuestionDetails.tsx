@@ -8,9 +8,7 @@ type AdminQuestionProps = {
 	handleEdit: () => void
 }
 
-const AdminQuestionDetails: React.FC<
-	AdminQuestionProps
-> = (props) => {
+const AdminQuestionDetails: React.FC<AdminQuestionProps> = (props) => {
 	const { question, handleEdit } = props || {}
 	return (
 		<Paper sx={sx.paper}>

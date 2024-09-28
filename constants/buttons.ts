@@ -12,5 +12,5 @@ export const BUTTON_ACTIONS_CMS = [
 	{ value: 'email', label: 'Email' },
 	{ value: 'sms', label: 'Text message' },
 	{ value: 'phone', label: 'Phone call' },
-	{ value: 'download', label: 'Download' }	
+	{ value: 'download', label: 'Download' },
 ]

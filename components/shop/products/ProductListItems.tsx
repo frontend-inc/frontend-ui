@@ -15,7 +15,7 @@ export type ProductListItemsProps = {
 	displayFields: DisplayFieldType[]
 	handleClick?: (resource: any) => void
 	enableGradient?: boolean
-	enableOverlay?: boolean	
+	enableOverlay?: boolean
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableRatings?: boolean
@@ -48,9 +48,9 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 		handleClick,
 		displayFields = [],
 		enableGradient = false,
-		enableOverlay = false,		
+		enableOverlay = false,
 		enableFavorites = false,
-		enableLikes = false,		
+		enableLikes = false,
 		enableRatings = false,
 		slots = {
 			item: {},

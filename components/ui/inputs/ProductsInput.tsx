@@ -38,36 +38,35 @@ type AutosuggestProps = {
 	name?: string
 	label?: string
 	placeholder?: string
-	handleChange: (e: SyntheticEventType) => void		
-  handleAddProducts?: (productIds: string[] | number[]) => void
-  handleRemoveProducts?: (productIds: string[] | number[]) => void
+	handleChange: (e: SyntheticEventType) => void
+	handleAddProducts?: (productIds: string[] | number[]) => void
+	handleRemoveProducts?: (productIds: string[] | number[]) => void
 }
 
 const ProductsInput: React.FC<AutosuggestProps> = (props) => {
-
-  const [productId, setProductId] = useState<number>()
+	const [productId, setProductId] = useState<number>()
 
 	const {
 		value: products = [],
 		label,
 		placeholder,
-		name = 'product_id',    
-    handleAddProducts,
-    handleRemoveProducts,
+		name = 'product_id',
+		handleAddProducts,
+		handleRemoveProducts,
 	} = props
 
-  const handleInputChange = async (ev) => {
-    const id = ev?.target?.value
-    setProductId(id)
-    console.log('productId', id)
-    //await handleAddProducts([id: productId])
-  }
+	const handleInputChange = async (ev) => {
+		const id = ev?.target?.value
+		setProductId(id)
+		console.log('productId', id)
+		//await handleAddProducts([id: productId])
+	}
 
-  const handleDelete = async (productId) => {
-    console.log('productId', productId)
-    //await handleRemoveProducts([id: productId])
-  }
-	
+	const handleDelete = async (productId) => {
+		console.log('productId', productId)
+		//await handleRemoveProducts([id: productId])
+	}
+
 	return (
 		<Stack direction="column" spacing={1} sx={sx.root}>
 			<Collapse in={products?.length > 0}>
@@ -76,7 +75,7 @@ const ProductsInput: React.FC<AutosuggestProps> = (props) => {
 						{products?.map((product) => (
 							<ProductImage
 								key={product?.id}
-								product={product}								
+								product={product}
 								handleDelete={() => handleDelete(product?.id)}
 							/>
 						))}
@@ -85,10 +84,10 @@ const ProductsInput: React.FC<AutosuggestProps> = (props) => {
 			</Collapse>
 			<ProductAutosuggest
 				name={name}
-				label={label}     
-        value={productId}   
-        valueParam='id'
-				handleChange={handleInputChange}        
+				label={label}
+				value={productId}
+				valueParam="id"
+				handleChange={handleInputChange}
 				placeholder={placeholder}
 			/>
 		</Stack>

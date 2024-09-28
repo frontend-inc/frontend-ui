@@ -6,27 +6,25 @@ import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 
 export type ProductCardProps = {
-  label?: string
+	label?: string
 	primary: string
-  image?: string 
+	image?: string
 	handleClick?: () => void
-  slots?: {
-    image?: any
-  }	
+	slots?: {
+		image?: any
+	}
 }
 
 const ProductCollectionCard: React.FC<ProductCardProps> = (props) => {
-
-  const {
-    label,
+	const {
+		label,
 		primary,
-    image,
+		image,
 		handleClick,
-    slots={
-      image: {}
-    }		
+		slots = {
+			image: {},
+		},
 	} = props || {}
-	
 
 	return (
 		<LightDarkMode mode="dark">
@@ -37,7 +35,7 @@ const ProductCollectionCard: React.FC<ProductCardProps> = (props) => {
 						src={image}
 						height={400}
 						alt={primary}
-            { ...slots.image }						
+						{...slots.image}
 					/>
 				</TouchableOpacity>
 				<Stack spacing={1} sx={sx.cover}>
@@ -83,7 +81,7 @@ const sx = {
 	},
 	description: {
 		maxWidth: '320px',
-	},	
+	},
 	fullWidth: {
 		width: '100%',
 	},

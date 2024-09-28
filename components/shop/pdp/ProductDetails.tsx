@@ -95,12 +95,9 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 			addToCart={
 				<Stack spacing={2}>
 					<AddToCartButton availableForSale productId={product?.id} />
-          {displayFields?.length > 0 && (
-          <DisplayMetafields 
-            fields={displayFields} 
-            resource={product} 
-          />
-        )}
+					{displayFields?.length > 0 && (
+						<DisplayMetafields fields={displayFields} resource={product} />
+					)}
 				</Stack>
 			}
 			secondaryAction={

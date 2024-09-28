@@ -10,7 +10,7 @@ type SortableListProps = {
 }
 
 const SortableList: React.FC<SortableListProps> = (props) => {
-	const { items, droppableId="sortable-list", renderItem, handleDrop } = props
+	const { items, droppableId = 'sortable-list', renderItem, handleDrop } = props
 
 	const [sorted, setSorted] = useState(items)
 

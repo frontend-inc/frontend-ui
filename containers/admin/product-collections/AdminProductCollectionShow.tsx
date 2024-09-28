@@ -29,25 +29,25 @@ const AdminProductShow: React.FC<AdminProductShowProps> = (props) => {
 	]
 
 	return (
-    <ResourceModal 
-      loading={loading}
-      open={open}
-      handleClose={handleClose}
-      enableEdit={enableEdit}
-      enableDelete={enableDelete}
-      handleEdit={handleEdit}
-      handleDelete={handleDelete}
-    >
-      <ResourceDetails
-        image={resource?.image?.url}
-        primary={resource?.title}
-        secondary={resource?.description}
-        label={resource?.display_price}
-        resource={resource}
-        fields={fields}
-        direction="column"
-      />
-    </ResourceModal>
+		<ResourceModal
+			loading={loading}
+			open={open}
+			handleClose={handleClose}
+			enableEdit={enableEdit}
+			enableDelete={enableDelete}
+			handleEdit={handleEdit}
+			handleDelete={handleDelete}
+		>
+			<ResourceDetails
+				image={resource?.image?.url}
+				primary={resource?.title}
+				secondary={resource?.description}
+				label={resource?.display_price}
+				resource={resource}
+				fields={fields}
+				direction="column"
+			/>
+		</ResourceModal>
 	)
 }
 

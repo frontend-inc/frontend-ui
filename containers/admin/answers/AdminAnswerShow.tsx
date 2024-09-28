@@ -8,7 +8,6 @@ type AdminQuestionShowProps = ResourceShowProps & {
 }
 
 const AdminQuestionShow: React.FC<AdminQuestionShowProps> = (props) => {
-
 	const {
 		resource,
 		loading,
@@ -21,29 +20,29 @@ const AdminQuestionShow: React.FC<AdminQuestionShowProps> = (props) => {
 	} = props || {}
 
 	let fields = [
-    { label: 'Value', name: 'value', variant: 'string' },		
-    { label: 'Points', name: 'points', variant: 'number' },		
+		{ label: 'Value', name: 'value', variant: 'string' },
+		{ label: 'Points', name: 'points', variant: 'number' },
 	]
 
 	return (
-    <ResourceModal 
-      loading={loading}
-      open={open}
-      handleClose={handleClose}
-      enableEdit={enableEdit}
-      enableDelete={enableDelete}
-      handleEdit={handleEdit}
-      handleDelete={handleDelete}
-    >
-      <ResourceDetails
-        image={resource?.image?.url}
-        primary={resource?.title}
-        secondary={resource?.description}
-        resource={resource}
-        fields={fields}
-        direction="column"
-      />
-    </ResourceModal>
+		<ResourceModal
+			loading={loading}
+			open={open}
+			handleClose={handleClose}
+			enableEdit={enableEdit}
+			enableDelete={enableDelete}
+			handleEdit={handleEdit}
+			handleDelete={handleDelete}
+		>
+			<ResourceDetails
+				image={resource?.image?.url}
+				primary={resource?.title}
+				secondary={resource?.description}
+				resource={resource}
+				fields={fields}
+				direction="column"
+			/>
+		</ResourceModal>
 	)
 }
 

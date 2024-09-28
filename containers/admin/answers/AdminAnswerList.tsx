@@ -8,28 +8,27 @@ import AdminAnswerShow from './AdminAnswerShow'
 import AdminAnswerToolbar from './AdminAnswerToolbar'
 import { ResourceListProps } from '../../../components/cms/resources/ResourceList'
 
-
 type AdminAnswerListProps = {
-  questionId: string | number 
-  direction?: 'row' | 'column'
+	questionId: string | number
+	direction?: 'row' | 'column'
 }
 
 const AdminAnswersList: React.FC<AdminAnswerListProps> = (props) => {
-	const { questionId, direction='row' } = props || {}
+	const { questionId, direction = 'row' } = props || {}
 	const { apiUrl } = useAdmin()
-  
-  const url = `${apiUrl}/questions/${questionId}/answers`
+
+	const url = `${apiUrl}/questions/${questionId}/answers`
 
 	return (
 		<ResourceList
-      direction={direction}
-      sortable
+			direction={direction}
+			sortable
 			url={url}
 			name={'answer'}
 			enableEdit
 			enableDelete
 			enableCreate
-      enableShow
+			enableShow
 			create={AdminAnswerCreate}
 			edit={AdminAnswerEdit}
 			show={AdminAnswerShow}

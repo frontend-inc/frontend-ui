@@ -47,48 +47,48 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 	}
 
 	return (
-			<Stack 
-        direction={{
-          sm: flexDirection,
-          xs: 'column',
-        }}
-        alignItems='center'
-        spacing={{
-          sm: 4,
-          xs: 1
-        }}				
-			>
-				<Box sx={sx.image}>
-					<Image
-						label={label}
-						src={image}
-						height={320}
-						objectFit={objectFit}
-						alt={title}
-						enableOverlay={enableOverlay}
-						enableGradient={enableGradient}
-						disableBorderRadius={enableBorder}
-					/>
-				</Box>				
-        <Stack spacing={1} sx={sx.content}>
-          <Typography sx={sx.title} variant={'h6'}>
-            {title}
-          </Typography>
-          { description && <ExpandableText text={description} /> }
-          {buttonText && (
-            <Box sx={sx.buttons}>
-              <Button
-                size="large"
-                variant="contained"
-                color="primary"
-                onClick={handleItemClick}
-              >
-                {buttonText}
-              </Button>
-            </Box>
-          )}
-        </Stack>
+		<Stack
+			direction={{
+				sm: flexDirection,
+				xs: 'column',
+			}}
+			alignItems="center"
+			spacing={{
+				sm: 4,
+				xs: 1,
+			}}
+		>
+			<Box sx={sx.image}>
+				<Image
+					label={label}
+					src={image}
+					height={320}
+					objectFit={objectFit}
+					alt={title}
+					enableOverlay={enableOverlay}
+					enableGradient={enableGradient}
+					disableBorderRadius={enableBorder}
+				/>
+			</Box>
+			<Stack spacing={1} sx={sx.content}>
+				<Typography sx={sx.title} variant={'h6'}>
+					{title}
+				</Typography>
+				{description && <ExpandableText text={description} />}
+				{buttonText && (
+					<Box sx={sx.buttons}>
+						<Button
+							size="large"
+							variant="contained"
+							color="primary"
+							onClick={handleItemClick}
+						>
+							{buttonText}
+						</Button>
+					</Box>
+				)}
 			</Stack>
+		</Stack>
 	)
 }
 
@@ -139,8 +139,8 @@ const sx = {
 			sm: '50%',
 			xs: '100%',
 		},
-		alignItems: 'flex-start',    
-    height: '100%',
+		alignItems: 'flex-start',
+		height: '100%',
 	},
 	textContent: {
 		display: 'flex',

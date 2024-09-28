@@ -6,7 +6,7 @@ import { ButtonType } from '../../../types'
 import { UserType } from 'frontend-js'
 import { MenuButton } from '../..'
 
-type ButtonActionsProps = {  
+type ButtonActionsProps = {
 	buttons: ButtonType[]
 	resource?: any
 	user?: UserType
@@ -17,11 +17,7 @@ type ButtonActionsProps = {
 }
 
 const ButtonActions: React.FC<ButtonActionsProps> = (props) => {
-	const {
-		buttons,		
-		size,
-		justifyContent,
-	} = props
+	const { buttons, size, justifyContent } = props
 
 	return (
 		<Stack
@@ -41,16 +37,16 @@ const ButtonActions: React.FC<ButtonActionsProps> = (props) => {
 					direction={{ sm: 'row', xs: 'column' }}
 					spacing={1}
 				>
-					{buttons.map((button, index) => {						
+					{buttons.map((button, index) => {
 						return (
 							<ButtonAction
 								key={index}
 								color={button?.color}
 								icon={button?.icon}
 								path={button?.path}
-                url={ button?.url }
+								url={button?.url}
 								//@ts-ignore
-                size={ size }
+								size={size}
 								onClick={button?.onClick}
 								variant={button?.variant || 'contained'}
 							>

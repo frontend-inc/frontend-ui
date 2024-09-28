@@ -35,10 +35,7 @@ const MediaInput: React.FC<MediaInputProps> = (props) => {
 
 	return (
 		<Stack spacing={1}>
-			<MediaImage 
-        image={value} 
-        handleRemove={handleRemove} 
-      />
+			<MediaImage image={value} handleRemove={handleRemove} />
 			<Box sx={sx.buttons}>
 				<Button
 					color="secondary"

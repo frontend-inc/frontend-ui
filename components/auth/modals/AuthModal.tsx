@@ -73,9 +73,9 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 
 	const handleGoogleSuccess = async () => {
 		setAuthOpen(false)
-    if (handleSuccess) {
-      handleSuccess()
-    }
+		if (handleSuccess) {
+			handleSuccess()
+		}
 	}
 
 	const handleSendPin = async () => {

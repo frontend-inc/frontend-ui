@@ -8,12 +8,8 @@ type AdminFormQuestionsAddProps = ResourceFormProps & {
 	formId: string
 }
 
-const AdminFormQuestionsAdd: React.FC<AdminFormQuestionsAddProps> = (
-	props
-) => {
-
-	const { open, handleClose, handleReload, url, formId } =
-		props || {}
+const AdminFormQuestionsAdd: React.FC<AdminFormQuestionsAddProps> = (props) => {
+	const { open, handleClose, handleReload, url, formId } = props || {}
 
 	return (
 		<Drawer open={open} handleClose={handleClose} title="Add Questions">

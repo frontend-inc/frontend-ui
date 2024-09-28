@@ -16,7 +16,7 @@ export type DataHeaderProps = {
 	handleAdd?: () => void
 	component?: React.FC<any>
 	buttonText?: string
-  secondaryAction?: React.ReactNode 
+	secondaryAction?: React.ReactNode
 	slots?: {
 		search?: any
 	}
@@ -33,7 +33,7 @@ const DataHeader: React.FC<DataHeaderProps> = (props) => {
 		enableFilters = false,
 		enableSorting = false,
 		buttonText = 'Add',
-    secondaryAction,
+		secondaryAction,
 		component: SearchComponent = SearchInput,
 		slots = {
 			search: {},

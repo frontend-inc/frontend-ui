@@ -76,9 +76,7 @@ const AdminCollectionPage: React.FC = () => {
 	const handleAiGenerateMockData = async () => {
 		await aiGenerateData(collectionId)
 		setOpenAiModal(false)
-		router.push(
-      `${clientUrl}/collections/${collectionId}?page=1&per_page=10`
-    )
+		router.push(`${clientUrl}/collections/${collectionId}?page=1&per_page=10`)
 	}
 
 	const handleAddClick = () => {

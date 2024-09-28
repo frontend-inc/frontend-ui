@@ -31,7 +31,7 @@ export type ProductListProps = {
 	enableOverlay?: boolean
 	enableShow?: boolean
 	fields?: FormFieldType[]
-	buttons?: ButtonType[]	
+	buttons?: ButtonType[]
 	enableSearch?: boolean
 	enableFilters?: boolean
 	enableSorting?: boolean
@@ -40,7 +40,7 @@ export type ProductListProps = {
 	perPage?: number
 	loadMore?: boolean
 	list: React.FC<any>
-  component?: React.FC<any>
+	component?: React.FC<any>
 	header?: React.FC<any>
 	show?: React.FC<any>
 	empty?: React.FC<any>
@@ -50,7 +50,7 @@ export type ProductListProps = {
 		show?: any
 		empty?: any
 		item?: any
-	}	
+	}
 	foreignUrl?: string
 	query?: any
 	resource: any
@@ -89,7 +89,7 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		sortOptions = [],
 		header: Header = ProductHeader,
 		list: List = ProductListItems,
-    component: Component = ProductListItem,
+		component: Component = ProductListItem,
 		show: Show = ProductShow,
 		empty: Empty = ProductEmpty,
 		slots: defaultSlots = {
@@ -169,7 +169,7 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 			header={Header}
 			list={List}
 			component={Component}
-			show={Show}			
+			show={Show}
 			empty={Empty}
 			slots={slots}
 		/>

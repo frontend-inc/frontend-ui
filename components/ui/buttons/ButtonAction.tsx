@@ -8,7 +8,7 @@ type ActionProps = {
 	color?: 'primary' | 'secondary'
 	size?: 'small' | 'medium' | 'large'
 	variant?: 'text' | 'outlined' | 'contained'
-  url?: string
+	url?: string
 	path: string
 	onClick?: () => void
 	children: React.ReactNode
@@ -18,7 +18,7 @@ const ButtonAction: React.FC<ActionProps> = (props) => {
 	const {
 		children,
 		icon,
-    url,
+		url,
 		path,
 		onClick,
 		color = 'secondary',
@@ -27,15 +27,15 @@ const ButtonAction: React.FC<ActionProps> = (props) => {
 		...rest
 	} = props
 
-  const router = useRouter()
+	const router = useRouter()
 
 	const handleClick = () => {
-    if(url){
-      window.open(url, '_blank')
-    }else{
-      router.push(path)
-    }
-  }
+		if (url) {
+			window.open(url, '_blank')
+		} else {
+			router.push(path)
+		}
+	}
 
 	return (
 		<Button

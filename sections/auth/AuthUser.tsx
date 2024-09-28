@@ -7,15 +7,7 @@ import { SectionProps } from '../../types'
 type AuthUserProps = SectionProps & CurrentUserProps
 
 const AuthUser: React.FC<AuthUserProps> = (props) => {
-	const {
-		mode,
-		py,
-		px,
-		maxWidth,
-		requireAuth,
-		requirePaid,
-		...rest
-	} = props
+	const { mode, py, px, maxWidth, requireAuth, requirePaid, ...rest } = props
 
 	return (
 		<Section

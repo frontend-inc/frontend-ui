@@ -40,12 +40,7 @@ const DataItem: React.FC<DataItemProps> = (props) => {
 		},
 	} = props || {}
 
-	const { 
-    label, 
-    title, 
-    image, 
-    description 
-  } = resource || {}
+	const { label, title, image, description } = resource || {}
 
 	return (
 		<DataListItem

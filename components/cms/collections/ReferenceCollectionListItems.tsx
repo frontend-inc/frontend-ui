@@ -96,7 +96,7 @@ const ReferenceCollectionListItems: React.FC<
 							handleClick={() => handleShowClick(target)}
 							buttons={buttons}
 							enableFavorites={enableFavorites}
-              enableComments={enableComments}
+							enableComments={enableComments}
 							enableLikes={enableLikes}
 							enableGradient={enableGradient}
 							enableOverlay={enableOverlay}

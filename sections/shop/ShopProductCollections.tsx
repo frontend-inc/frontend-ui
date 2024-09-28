@@ -4,9 +4,13 @@ import { ProductCollectionList } from '../../components'
 import { ProductCollectionListProps } from '../../components/shop/product-collections/ProductCollectionList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type ShopProductCollectionsProps = SectionProps & HeadingProps & ProductCollectionListProps
+type ShopProductCollectionsProps = SectionProps &
+	HeadingProps &
+	ProductCollectionListProps
 
-const ShopProductCollections: React.FC<ShopProductCollectionsProps> = (props) => {
+const ShopProductCollections: React.FC<ShopProductCollectionsProps> = (
+	props
+) => {
 	const {
 		label,
 		title,

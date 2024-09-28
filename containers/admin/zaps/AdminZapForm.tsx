@@ -8,10 +8,10 @@ const AdminZapForm: React.FC<ResourceFormProps> = (props) => {
 	const { apiUrl } = useAdmin()
 
 	const FORM_FIELDS = [
-    {
+		{
 			label: 'Name',
 			name: 'name',
-			variant: 'string',			
+			variant: 'string',
 		},
 		{
 			label: 'Zap',

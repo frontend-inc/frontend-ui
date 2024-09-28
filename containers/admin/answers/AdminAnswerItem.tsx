@@ -1,14 +1,11 @@
 import React from 'react'
-import {
-	PublishLabel,
-	ResourceListItem,
-} from '../../../components'
+import { PublishLabel, ResourceListItem } from '../../../components'
 import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
 
 const AdminAnswerItem: React.FC<ResourceItemProps> = (props) => {
 	const {
 		resource: question,
-    sortable,
+		sortable,
 		selectable,
 		selected,
 		handleClick,
@@ -20,11 +17,11 @@ const AdminAnswerItem: React.FC<ResourceItemProps> = (props) => {
 
 	return (
 		<ResourceListItem
-      sortable={sortable}
+			sortable={sortable}
 			selectable={selectable}
 			selected={selected}
 			image={question?.image?.url}
-			primary={question?.title}			
+			primary={question?.title}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}
 			handleClick={handleClick}

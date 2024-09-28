@@ -1,9 +1,5 @@
 import React from 'react'
-import {	
-	Image,
-	Field,
-	Label,
-} from '../../../components'
+import { Image, Field, Label } from '../../../components'
 import { Box, Stack, Typography } from '@mui/material'
 import { DisplayFieldType } from '../../../types'
 
@@ -30,33 +26,33 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 		direction = 'column',
 	} = props || {}
 
-	return (		
-    <Stack direction="column" sx={sx.content} spacing={1}>
-      { image && (
-        <Box sx={sx.image}>
-          <Image 
-            height={220} 
-            src={image} 
-            label={ label }
-          />
-        </Box>
-      )}
-      {avatar && avatar}
-      <Typography variant="h5" color='text.primary'>{primary}</Typography>
-      {secondary && (
-        <Typography variant="body2" color='text.secondary'>{secondary}</Typography>
-      )}
-      {fields?.map((field, index) => (
-        <Field
-          enableBorder
-          key={index}
-          //@ts-ignore
-          field={field}
-          resource={resource}
-          direction={direction}
-        />
-      ))}
-    </Stack>
+	return (
+		<Stack direction="column" sx={sx.content} spacing={1}>
+			{image && (
+				<Box sx={sx.image}>
+					<Image height={220} src={image} label={label} />
+				</Box>
+			)}
+			{avatar && avatar}
+			<Typography variant="h5" color="text.primary">
+				{primary}
+			</Typography>
+			{secondary && (
+				<Typography variant="body2" color="text.secondary">
+					{secondary}
+				</Typography>
+			)}
+			{fields?.map((field, index) => (
+				<Field
+					enableBorder
+					key={index}
+					//@ts-ignore
+					field={field}
+					resource={resource}
+					direction={direction}
+				/>
+			))}
+		</Stack>
 	)
 }
 

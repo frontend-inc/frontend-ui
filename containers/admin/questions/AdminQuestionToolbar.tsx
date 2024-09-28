@@ -1,8 +1,5 @@
 import React from 'react'
-import {
-	ResourceToolbarModal,
-	SecondaryButton,
-} from '../../../components'
+import { ResourceToolbarModal, SecondaryButton } from '../../../components'
 import { Stack } from '@mui/material'
 import { useResource } from 'frontend-js'
 import { useAdmin } from '../../../hooks'
@@ -17,21 +14,18 @@ const AdminQuestionToolbar = (props) => {
 		name: 'question',
 	})
 
-  const handleDelete = async () => {
-    await deleteMany(selectedIds)
-    handleReload()
-    handleClose()
-  }
+	const handleDelete = async () => {
+		await deleteMany(selectedIds)
+		handleReload()
+		handleClose()
+	}
 
 	return (
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
 			<Stack direction="row" spacing={1}>
-        <SecondaryButton 
-          alert 
-          onClick={handleDelete}
-        >
-          Delete
-        </SecondaryButton>
+				<SecondaryButton alert onClick={handleDelete}>
+					Delete
+				</SecondaryButton>
 			</Stack>
 		</ResourceToolbarModal>
 	)

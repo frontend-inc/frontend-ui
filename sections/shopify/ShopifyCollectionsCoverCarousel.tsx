@@ -4,11 +4,14 @@ import { ShopifyCollectionsCoverCarousel as CollectionsCoverCarousel } from '../
 import { ShopifyCollectionsCoverCarouselProps as CollectionsCoverCarouselProps } from '../../components/shopify/collections/ShopifyCollectionsCoverCarousel'
 import { SectionProps } from '../../types'
 
-type ShopifyCollectionsCoverCarouselsProps = SectionProps & CollectionsCoverCarouselProps
+type ShopifyCollectionsCoverCarouselsProps = SectionProps &
+	CollectionsCoverCarouselProps
 
-const ShopifyCollectionsCoverCarousel: React.FC<ShopifyCollectionsCoverCarouselsProps> = (props) => {
+const ShopifyCollectionsCoverCarousel: React.FC<
+	ShopifyCollectionsCoverCarouselsProps
+> = (props) => {
 	const {
-		mode='dark',
+		mode = 'dark',
 		py,
 		px,
 		maxWidth,
@@ -23,7 +26,7 @@ const ShopifyCollectionsCoverCarousel: React.FC<ShopifyCollectionsCoverCarousels
 			requirePaid={requirePaid}
 			mode={'dark'}
 			py={0}
-			px={0}			
+			px={0}
 		>
 			<CollectionsCoverCarousel {...rest} />
 		</Section>

@@ -19,9 +19,7 @@ type AdminFormQuestionToolbarProps = {
 const AdminFormQuestionToolbar: React.FC<AdminFormQuestionToolbarProps> = (
 	props
 ) => {
-
-	const { open, url, handleClose, selectedIds, handleReload } =
-		props || {}
+	const { open, url, handleClose, selectedIds, handleReload } = props || {}
 
 	const { publish, unpublish, deleteMany } = useResource({
 		url: url,

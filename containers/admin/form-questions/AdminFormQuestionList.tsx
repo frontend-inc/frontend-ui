@@ -10,9 +10,9 @@ type AdminFormQuestionsListProps = {
 	formId: string
 }
 
-const AdminFormQuestionsList: React.FC<
-	AdminFormQuestionsListProps
-> = (props) => {
+const AdminFormQuestionsList: React.FC<AdminFormQuestionsListProps> = (
+	props
+) => {
 	const { formId } = props
 	const { apiUrl } = useAdmin()
 	const url = `${apiUrl}/forms/${formId}/form_questions`
@@ -23,13 +23,13 @@ const AdminFormQuestionsList: React.FC<
 			url={url}
 			name={'form_questions'}
 			enableSearch
-      enableShow
+			enableShow
 			enableDelete
 			enableCreate
 			toolbar={AdminFormQuestionToolbar}
 			component={AdminFormQuestionItem}
 			create={AdminFormQuestionsAdd}
-      show={ AdminQuestionShow }
+			show={AdminQuestionShow}
 			emptyIcon="Question"
 			emptyTitle="No questions"
 			emptyDescription="No questions added yet."
@@ -38,9 +38,9 @@ const AdminFormQuestionsList: React.FC<
 					url,
 					formId,
 				},
-        show: {
-          url: `${apiUrl}/questions`,
-        },
+				show: {
+					url: `${apiUrl}/questions`,
+				},
 				create: {
 					url: `${apiUrl}/questions`,
 					formId,

@@ -36,7 +36,6 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 				title={title}
 				description={description}
 				textAlign={'center'}
-				
 			/>
 			<Features {...rest} />
 		</Section>

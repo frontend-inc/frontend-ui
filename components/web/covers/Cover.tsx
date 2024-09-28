@@ -55,7 +55,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			<Image
-      	disableBorderRadius
+				disableBorderRadius
 				src={image}
 				alt={alt}
 				height={height}

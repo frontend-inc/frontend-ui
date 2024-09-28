@@ -18,7 +18,7 @@ type DateInputProps = {
 const DateInput: React.FC<DateInputProps> = (props) => {
 	const {
 		errors,
-    direction,
+		direction,
 		required,
 		label,
 		info,

@@ -32,15 +32,15 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Stack direction="column" spacing={3} sx={{ width: '100%'}}>
-        <Heading
-          label={label}
-          title={title}
-          description={description}
-          textAlign={'center'}				
-        />
-        <Testimonials {...rest} />
-      </Stack>
+			<Stack direction="column" spacing={3} sx={{ width: '100%' }}>
+				<Heading
+					label={label}
+					title={title}
+					description={description}
+					textAlign={'center'}
+				/>
+				<Testimonials {...rest} />
+			</Stack>
 		</Section>
 	)
 }

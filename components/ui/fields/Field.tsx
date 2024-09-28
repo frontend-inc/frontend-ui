@@ -34,7 +34,7 @@ export type FieldElementProps = {
 type FieldProps = {
 	field: DisplayFieldType
 	resource?: any
-	label?: string | null 
+	label?: string | null
 	color?: string
 	direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse'
 	variant?: TypographyVariantsType
@@ -42,11 +42,17 @@ type FieldProps = {
 	enableBorder?: boolean
 	disablePadding?: boolean
 	dateFormat?: string
-  disableLabel?: boolean
+	disableLabel?: boolean
 }
 
 const Field: React.FC<FieldProps> = (props) => {
-	const { field, resource, disableLabel, dateFormat = 'MM/DD/YYYYY', ...rest } = props
+	const {
+		field,
+		resource,
+		disableLabel,
+		dateFormat = 'MM/DD/YYYYY',
+		...rest
+	} = props
 	let { variant: fieldVariant, label } = field
 	let value = get(resource, field?.name)
 	if (!value) {
@@ -83,9 +89,9 @@ const Field: React.FC<FieldProps> = (props) => {
 		price: FieldPrice,
 	}
 
-  if(disableLabel) {
-    label = null 
-  }
+	if (disableLabel) {
+		label = null
+	}
 	const Component = components[fieldVariant] || FieldString
 
 	return <Component value={value} label={label} {...rest} />

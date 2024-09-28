@@ -91,7 +91,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 		enableShow,
 		enableCreate,
 		enableEdit,
-		enableDelete,		
+		enableDelete,
 		enableFilters,
 		enableSorting,
 		href,

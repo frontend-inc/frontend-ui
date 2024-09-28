@@ -8,12 +8,7 @@ const HeroCover: React.FC<HeroCardProps> = (props) => {
 
 	return (
 		<Stack sx={sx.root} spacing={4}>
-			<Cover 
-        image={image} 
-        height={400} 
-        title={primary} 
-        enableOverlay 
-      />
+			<Cover image={image} height={400} title={primary} enableOverlay />
 			<Stack spacing={3} sx={sx.header}>
 				{actions}
 				{secondaryAction}

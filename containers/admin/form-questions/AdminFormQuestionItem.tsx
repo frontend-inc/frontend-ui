@@ -1,7 +1,5 @@
 import React from 'react'
-import {
-	ResourceListItem,
-} from '../../../components'
+import { ResourceListItem } from '../../../components'
 import { QuestionIcon } from '../../../containers'
 import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
 
@@ -24,12 +22,8 @@ const AdminFormQuestionItem: React.FC<ResourceItemProps> = (props) => {
 			selectable={selectable}
 			selected={selected}
 			image={question?.image?.url}
-			primary={question?.title}		
-      avatar={
-        <QuestionIcon 
-          variant={question?.variant}
-        />
-      }    			
+			primary={question?.title}
+			avatar={<QuestionIcon variant={question?.variant} />}
 			handleDelete={handleDelete}
 			handleClick={handleClick}
 			handleSelect={handleSelect}

@@ -27,8 +27,8 @@ export type AdminPageProps = {
 }
 
 const AdminPage: React.FC<AdminPageProps> = (props) => {
-	const router = useRouter()  
-	const { clientUrl } = useAdmin()  
+	const router = useRouter()
+	const { clientUrl } = useAdmin()
 
 	const {
 		title,

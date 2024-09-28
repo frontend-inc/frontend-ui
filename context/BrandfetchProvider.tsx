@@ -10,7 +10,7 @@ const BrandfetchProvider = (props: BrandfetchProviderProps) => {
 	const { children, apiKey } = props || {}
 
 	const value = {
-		apiKey
+		apiKey,
 	}
 
 	return (

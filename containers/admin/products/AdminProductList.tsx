@@ -35,7 +35,7 @@ const AdminProductsList: React.FC<AdminProductListProps> = (props) => {
 			create={AdminProductForm}
 			edit={AdminProductEditForm}
 			show={AdminProductShow}
-      header={ AdminProductHeader }
+			header={AdminProductHeader}
 			toolbar={AdminProductToolbar}
 			component={AdminProductItem}
 			slots={{

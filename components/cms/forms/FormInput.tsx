@@ -5,7 +5,7 @@ import {
 	ArrayInput,
 	CountryInput,
 	DateInput,
-  DividerInput,
+	DividerInput,
 	EmailInput,
 	ImageInput,
 	JSONInput,
@@ -20,7 +20,7 @@ import {
 	ShopifyProductInput,
 	ShopifyProductsInput,
 	RemoteAutosuggest,
-  MediaInput,
+	MediaInput,
 } from '../../../components'
 import { OptionType, SyntheticEventType } from '../../../types'
 
@@ -86,13 +86,13 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		state: StateInput,
 		rating: RatingInput,
 		image: ImageInput,
-    media: MediaInput,
+		media: MediaInput,
 		json: JSONInput,
-    divider: DividerInput,
+		divider: DividerInput,
 		shopify_product: ShopifyProductInput,
 		shopify_products: ShopifyProductsInput,
-    single_choice: Autosuggest,
-    multiple_choice: ArrayInput,
+		single_choice: Autosuggest,
+		multiple_choice: ArrayInput,
 		...defaultInputOptions,
 	}
 
@@ -110,17 +110,17 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		select: {
 			// Handle both array of strings and array of objects
 			options: options?.map((option: OptionType) => ({
-        icon: option.icon,
+				icon: option.icon,
 				label: option.label || option,
-				value: option.value || option,        
+				value: option.value || option,
 			})),
 		},
-    single_choice: {
+		single_choice: {
 			// Handle both array of strings and array of objects
 			options: options?.map((option: OptionType) => ({
-        icon: option.icon,
+				icon: option.icon,
 				label: option.label || option,
-				value: option.value || option,        
+				value: option.value || option,
 			})),
 		},
 		number: {
@@ -133,9 +133,9 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		price: {
 			type: 'number',
 		},
-    media: {
-      handleRemove: handleRemove,
-    },
+		media: {
+			handleRemove: handleRemove,
+		},
 		...defaultInputParams,
 	}
 

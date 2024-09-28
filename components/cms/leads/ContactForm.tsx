@@ -12,7 +12,7 @@ export type ContactFormProps = {
 	buttonText?: string
 	textVariant?: TypographyVariantsType
 	href?: string
-  metafields?: FormFieldType[]
+	metafields?: FormFieldType[]
 	handleClick?: () => void
 }
 
@@ -24,7 +24,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 		title,
 		description,
 		textVariant,
-    metafields=[],
+		metafields = [],
 		buttonText = 'Send Message',
 	} = props || {}
 
@@ -41,10 +41,10 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 	})
 
 	const handleSubmit = async () => {
-		let resp = await create({ 
-      ...contact,
-      source: 'contact',
-    })
+		let resp = await create({
+			...contact,
+			source: 'contact',
+		})
 		if (resp?.id) {
 			setContact({})
 			showAlertSuccess('Thank you for contacting us!')
@@ -61,21 +61,40 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 					textVariant={textVariant}
 					textAlign="center"
 				/>
-				<Form 
-          loading={delayedLoading}
-          fields={[
-            { label: 'Name', name: 'name', placeholder: 'Full name', variant: 'string' },
-            { label: 'Email', name: 'email', placeholder: 'Email', variant: 'string' },
-            ...metafields,
-            { label: 'Message', name: 'message', placeholder: 'Leave a message', variant: 'text' },
-            { label: 'Join our newsletter', name: 'accepts_marketing', variant: 'boolean' },
-          ]}
-          resource={contact}
-          handleChange={handleChange}
-          errors={errors}
-          handleSubmit={handleSubmit}
-          buttonText={buttonText}
-        />
+				<Form
+					loading={delayedLoading}
+					fields={[
+						{
+							label: 'Name',
+							name: 'name',
+							placeholder: 'Full name',
+							variant: 'string',
+						},
+						{
+							label: 'Email',
+							name: 'email',
+							placeholder: 'Email',
+							variant: 'string',
+						},
+						...metafields,
+						{
+							label: 'Message',
+							name: 'message',
+							placeholder: 'Leave a message',
+							variant: 'text',
+						},
+						{
+							label: 'Join our newsletter',
+							name: 'accepts_marketing',
+							variant: 'boolean',
+						},
+					]}
+					resource={contact}
+					handleChange={handleChange}
+					errors={errors}
+					handleSubmit={handleSubmit}
+					buttonText={buttonText}
+				/>
 			</Container>
 		</Box>
 	)
@@ -102,8 +121,8 @@ const sx = {
 		color: 'text.secondary',
 		textAlign: 'center',
 		maxWidth: '600px',
-	},	
-  paper: {
-    p: 3,
-  }
+	},
+	paper: {
+		p: 3,
+	},
 }

@@ -8,8 +8,8 @@ import {
 	JSONInput,
 	RatingInput,
 	TextInput,
-  StateInput,
-  CountryInput,
+	StateInput,
+	CountryInput,
 	ShopifyProductsInput,
 } from '../../../components'
 import ReferenceInput from './references/ReferenceInput'
@@ -31,9 +31,9 @@ type DocumentInputProps = {
 	handleRemoveReferences?: (items: any[]) => void
 	handleAddAttachment?: (field: any, file: any) => void
 	handleRemoveAttachment?: (field: any, file: any) => void
-  handleAddProducts?: (products: ProductType[]) => void
-  handleRemoveProducts?: (products: ProductType[]) => void
-  handleUpdateProductPositions?: (sorted: number[]) => void
+	handleAddProducts?: (products: ProductType[]) => void
+	handleRemoveProducts?: (products: ProductType[]) => void
+	handleUpdateProductPositions?: (sorted: number[]) => void
 }
 
 const AdminDocumentInput: React.FC<DocumentInputProps> = (props) => {
@@ -48,9 +48,9 @@ const AdminDocumentInput: React.FC<DocumentInputProps> = (props) => {
 		handleRemoveReferences,
 		handleAddAttachment,
 		handleRemoveAttachment,
-    handleAddProducts,
-    handleRemoveProducts,
-    handleUpdateProductPositions
+		handleAddProducts,
+		handleRemoveProducts,
+		handleUpdateProductPositions,
 	} = props
 
 	const { variant, name, label, options } = field || {}
@@ -98,7 +98,7 @@ const AdminDocumentInput: React.FC<DocumentInputProps> = (props) => {
 			height: 180,
 			width: 180,
 			zoom: 15,
-		},		
+		},
 		tags: {
 			value: value || [],
 			freeSolo: true,
@@ -114,13 +114,13 @@ const AdminDocumentInput: React.FC<DocumentInputProps> = (props) => {
 					label: opt,
 				})) || [],
 		},
-    products: {
-      document,
-      value: value || [],
-      handleAddProducts,
-      handleRemoveProducts,
-      handleUpdateProductPositions
-    },
+		products: {
+			document,
+			value: value || [],
+			handleAddProducts,
+			handleRemoveProducts,
+			handleUpdateProductPositions,
+		},
 		number: {
 			type: 'number',
 		},

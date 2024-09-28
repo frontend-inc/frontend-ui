@@ -4,7 +4,7 @@ import { useAdmin } from '../../hooks'
 
 const useProducts = () => {
 	const { apiUrl } = useAdmin()
-  const { api } = useApi()
+	const { api } = useApi()
 
 	const {
 		loading,
@@ -48,17 +48,17 @@ const useProducts = () => {
 		startIndex,
 		endIndex,
 		paginate,
-    loadingWrapper
+		loadingWrapper,
 	} = useResource({
 		url: `${apiUrl}/products`,
 		name: 'product',
 	})
 
-  const generateAiProducts = async () => {
-    return loadingWrapper(() => 
-      api.post(`${apiUrl}/products/generate_ai_products`)
-    )
-  }
+	const generateAiProducts = async () => {
+		return loadingWrapper(() =>
+			api.post(`${apiUrl}/products/generate_ai_products`)
+		)
+	}
 
 	return {
 		paginate,
@@ -79,7 +79,7 @@ const useProducts = () => {
 		createProduct,
 		deleteProduct,
 		deleteProducts,
-    generateAiProducts,
+		generateAiProducts,
 
 		loadMore,
 		publish,

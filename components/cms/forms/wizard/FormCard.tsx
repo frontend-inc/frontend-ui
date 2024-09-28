@@ -6,7 +6,7 @@ import { HeadingProps } from '../../../../types'
 type FormCardProps = HeadingProps & {
 	image?: string
 	buttonText: string
-  checkMark?: boolean
+	checkMark?: boolean
 	handleClick: () => void
 }
 
@@ -15,24 +15,20 @@ const FormCard: React.FC<FormCardProps> = (props) => {
 		title,
 		description,
 		image,
-    checkMark,
+		checkMark,
 		handleClick,
 		buttonText = 'Continue',
 	} = props
 
 	return (
 		<Stack direction="column" sx={sx.root} spacing={2}>
-      { checkMark && (
-        <Avatar sx={ sx.avatar }>
-          <Icon name="Check" color='primary.contrasText' />
-        </Avatar>
-      )}
+			{checkMark && (
+				<Avatar sx={sx.avatar}>
+					<Icon name="Check" color="primary.contrasText" />
+				</Avatar>
+			)}
 			{image && <Image src={image} height={320} />}
-      <Heading 
-        title={ title }
-        description={ description }
-        textAlign='center'
-      />			
+			<Heading title={title} description={description} textAlign="center" />
 			<Box>
 				<Button onClick={handleClick} variant="contained" color="primary">
 					{buttonText}
@@ -50,9 +46,9 @@ const sx = {
 		display: 'flex',
 		alignItems: 'center',
 	},
-  avatar: {
-    height: 64,
-    width: 64,
-    bgcolor: 'primary.main',
-  }
+	avatar: {
+		height: 64,
+		width: 64,
+		bgcolor: 'primary.main',
+	},
 }

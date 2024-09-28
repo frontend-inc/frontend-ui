@@ -12,15 +12,15 @@ export type PrimaryButtonProps = {
 	fullWidth?: boolean
 	size?: 'small' | 'medium' | 'large'
 	disabled?: boolean
-  alert?: boolean
-  title?: string
-  description?: string
+	alert?: boolean
+	title?: string
+	description?: string
 }
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
 	const {
 		color = 'primary',
-    alert=false,
+		alert = false,
 		loading,
 		children,
 		onClick,
@@ -29,68 +29,68 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
 		endIcon,
 		fullWidth,
 		disabled = false,
-    title,
-    description 
+		title,
+		description,
 	} = props
 
-  const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(false)
 
-  const handleClick = async (ev) => {
-    if(alert && !open){
-      setOpen(true)
-    }else{
-      await onClick(ev)
-      setOpen(false)
-    }
-  }
+	const handleClick = async (ev) => {
+		if (alert && !open) {
+			setOpen(true)
+		} else {
+			await onClick(ev)
+			setOpen(false)
+		}
+	}
 
 	return (
-    <>
-      <Button
-        fullWidth={fullWidth}
-        color={color}
-        variant="contained"
-        onClick={handleClick}
-        disabled={disabled}
-        size={size}
-        endIcon={
-          endIcon && (
-            <Icon
-              name={endIcon}
-              color={
-                color == 'primary'
-                  ? 'primary.contrastText'
-                  : 'secondary.contrastText'
-              }
-            />
-          )
-        }
-        startIcon={
-          <>
-            {loading && loading && <IconLoading />}
-            {icon && (
-              <Icon
-                name={icon}
-                color={
-                  color == 'primary'
-                    ? 'primary.contrastText'
-                    : 'secondary.contrastText'
-                }
-              />
-            )}
-          </>
-        }
-      >
-        {children}
-      </Button>
-      <AlertModal 
-        open={open}
-        title={title}
-        description={description}
-        handleClose={() => setOpen(false)}
-        handleConfirm={ handleClick }
-      />
-    </>
+		<>
+			<Button
+				fullWidth={fullWidth}
+				color={color}
+				variant="contained"
+				onClick={handleClick}
+				disabled={disabled}
+				size={size}
+				endIcon={
+					endIcon && (
+						<Icon
+							name={endIcon}
+							color={
+								color == 'primary'
+									? 'primary.contrastText'
+									: 'secondary.contrastText'
+							}
+						/>
+					)
+				}
+				startIcon={
+					<>
+						{loading && loading && <IconLoading />}
+						{icon && (
+							<Icon
+								name={icon}
+								color={
+									color == 'primary'
+										? 'primary.contrastText'
+										: 'secondary.contrastText'
+								}
+							/>
+						)}
+					</>
+				}
+			>
+				{children}
+			</Button>
+			<AlertModal
+				open={open}
+				title={title}
+				description={description}
+				handleClose={() => setOpen(false)}
+				handleConfirm={handleClick}
+			/>
+		</>
 	)
 }
 

@@ -38,7 +38,6 @@ const UICards: React.FC<UICardsProps> = (props) => {
 					title={title}
 					description={description}
 					textAlign={'center'}
-					
 				/>
 				<Cards {...rest} />
 			</Stack>

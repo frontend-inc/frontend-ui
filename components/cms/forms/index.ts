@@ -7,7 +7,7 @@ export { default as FormWizardModal } from './FormWizardModal'
 export { default as FormInput } from './FormInput'
 export { default as FormField } from './FormField'
 
-// Data Forms 
+// Data Forms
 export { default as DataFormWizard } from './DataFormWizardModal'
 
 // Document forms

@@ -107,7 +107,7 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
 													'video',
 													'audio',
 													'habtm',
-                          'products',
+													'products',
 													'shopify_products',
 												],
 											},

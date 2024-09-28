@@ -33,9 +33,9 @@ const AdminLeadsList: React.FC = () => {
 			edit={AdminLeadForm}
 			create={AdminLeadForm}
 			component={AdminLeadItem}
-      emptyIcon='Users'
-      emptyTitle="No leads"
-      emptyDescription='No leads have been submitted yet.'      
+			emptyIcon="Users"
+			emptyTitle="No leads"
+			emptyDescription="No leads have been submitted yet."
 		/>
 	)
 }

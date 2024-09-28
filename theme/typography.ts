@@ -62,7 +62,7 @@ export const typography = {
 		textTransform: 'none',
 		fontWeight: 500,
 		fontSize: 14,
-    lineHeight: '2.0em',
+		lineHeight: '2.0em',
 		'@media (max-width:600px)': {
 			fontSize: 15,
 		},
@@ -72,7 +72,7 @@ export const typography = {
 		textTransform: 'none',
 		fontWeight: 500,
 		fontSize: 13,
-    lineHeight: '2.0em',
+		lineHeight: '2.0em',
 		'@media (max-width:600px)': {
 			fontSize: 16,
 		},

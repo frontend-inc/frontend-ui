@@ -9,7 +9,7 @@ type LayoutFooterProps = FooterProps & {
 
 const AppFooter: React.FC<LayoutFooterProps> = (props) => {
 	const router = useRouter()
-	const { mode, links=[], ...rest } = props || {}
+	const { mode, links = [], ...rest } = props || {}
 
 	const handleClick = (path: string) => {
 		router.push(path)
@@ -17,11 +17,7 @@ const AppFooter: React.FC<LayoutFooterProps> = (props) => {
 
 	return (
 		<LightDarkMode mode={mode}>
-			<Footer 
-        {...rest} 
-        links={links}
-        handleClick={handleClick} 
-      />
+			<Footer {...rest} links={links} handleClick={handleClick} />
 		</LightDarkMode>
 	)
 }

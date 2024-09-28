@@ -8,13 +8,9 @@ type AdminProviderProps = {
 }
 
 const AdminProvider: React.FC<AdminProviderProps> = (props) => {
-	const { 
-    children, 
-    apiUrl, 
-    clientUrl 
-  } = props
+	const { children, apiUrl, clientUrl } = props
 
-  const [app, setApp] = useState()
+	const [app, setApp] = useState()
 	const [loading, setLoading] = useState(false)
 	const [openMenu, setOpenMenu] = useState(false)
 
@@ -33,8 +29,8 @@ const AdminProvider: React.FC<AdminProviderProps> = (props) => {
 		loading,
 		setLoading,
 
-    app,
-    setApp,
+		app,
+		setApp,
 
 		apiUrl,
 		clientUrl,

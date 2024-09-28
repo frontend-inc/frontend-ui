@@ -29,9 +29,9 @@ const AdminCollectionMenu: React.FC = () => {
 		collection,
 		collections,
 		deleteCollection,
-		findCollections,    
+		findCollections,
 		setCollection,
-    setCollections,
+		setCollections,
 		handleChange,
 		updateCollection,
 		createCollection,
@@ -96,16 +96,16 @@ const AdminCollectionMenu: React.FC = () => {
 
 	const handleDeleteCollection = async () => {
 		try {
-      setCollection({})
+			setCollection({})
 			await deleteCollection(activeCollection.id)
-      setCollections(collections.filter((c) => c.id !== activeCollection.id))
-      if(collectionId == activeCollection.name) {
-        let nextCollection = collections.filter(
-          (c) => c.name !== activeCollection.name
-        )[0]        
-        router.push(`/admin/${appId}/collections/${nextCollection?.name}`)
-      }
-			setShowDeleteModal(false)						
+			setCollections(collections.filter((c) => c.id !== activeCollection.id))
+			if (collectionId == activeCollection.name) {
+				let nextCollection = collections.filter(
+					(c) => c.name !== activeCollection.name
+				)[0]
+				router.push(`/admin/${appId}/collections/${nextCollection?.name}`)
+			}
+			setShowDeleteModal(false)
 		} catch (e) {
 			console.log(e)
 		}

@@ -32,16 +32,15 @@ const UIFeatured: React.FC<UIFeaturedProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Stack direction='column' spacing={2}>
-        <Heading
-          label={label}
-          title={title}
-          description={description}
-          textAlign={'center'}
-          
-        />
-        <Featured {...rest} />
-      </Stack>
+			<Stack direction="column" spacing={2}>
+				<Heading
+					label={label}
+					title={title}
+					description={description}
+					textAlign={'center'}
+				/>
+				<Featured {...rest} />
+			</Stack>
 		</Section>
 	)
 }

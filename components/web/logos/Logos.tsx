@@ -20,19 +20,15 @@ const Logos: React.FC<LogosProps> = (props) => {
 					{title}
 				</Typography>
 			)}
-        <BrandLogos 
-          logos={ logos } 
-          width={128}
-          height={48}
-        />
-        {logos?.length === 0 && (
-          <Placeholder
-            icon="Image"
-            title="No logos"
-            description="Logos will appear here"
-          />
-        )}
-  </Stack>
+			<BrandLogos logos={logos} width={128} height={48} />
+			{logos?.length === 0 && (
+				<Placeholder
+					icon="Image"
+					title="No logos"
+					description="Logos will appear here"
+				/>
+			)}
+		</Stack>
 	)
 }
 
@@ -48,5 +44,5 @@ const sx = {
 		width: '100%',
 		textAlign: 'center',
 		mb: 4,
-	},	
+	},
 }

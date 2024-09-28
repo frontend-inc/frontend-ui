@@ -6,40 +6,37 @@ import { ShopifyCollectionCover, Swipeable } from '../..'
 
 export type ShopifyCollectionsCoverCarouselProps = {
 	href: string
-  enableArrows?: boolean
-  enableAutoPlay?: boolean
+	enableArrows?: boolean
+	enableAutoPlay?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
-  buttonText?: string
+	buttonText?: string
 }
 
-const ShopifyCollections: React.FC<ShopifyCollectionsCoverCarouselProps> = (props) => {
-	
-  const { 
-    href, 
-    enableGradient = false, 
-    enableOverlay = false,
-    enableArrows = false,
-    enableAutoPlay = false,
-    buttonText 
-  } = props
+const ShopifyCollections: React.FC<ShopifyCollectionsCoverCarouselProps> = (
+	props
+) => {
+	const {
+		href,
+		enableGradient = false,
+		enableOverlay = false,
+		enableArrows = false,
+		enableAutoPlay = false,
+		buttonText,
+	} = props
 
 	const router = useRouter()
 
-	const { 
-    loading, 
-    collections, 
-    findCollections 
-  } = useCollections()
+	const { loading, collections, findCollections } = useCollections()
 
 	const { clientUrl } = useApp()
 
-	const handleClick = (collection) => {		
+	const handleClick = (collection) => {
 		if (href) {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      })
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth',
+			})
 			router.push(`${clientUrl}${href}/${collection?.handle}`)
 		}
 	}
@@ -49,18 +46,15 @@ const ShopifyCollections: React.FC<ShopifyCollectionsCoverCarouselProps> = (prop
 	}, [])
 
 	return (
-		<Swipeable
-      enableAutoPlay={enableAutoPlay}
-      enableArrows={enableArrows}
-    >
+		<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
 			{collections?.map((collection, index) => (
-				<ShopifyCollectionCover 
+				<ShopifyCollectionCover
 					key={index}
 					shopifyCollection={collection}
 					handleClick={() => handleClick(collection)}
 					enableGradient={enableGradient}
 					enableOverlay={enableOverlay}
-          buttonText={buttonText}
+					buttonText={buttonText}
 				/>
 			))}
 		</Swipeable>
@@ -68,4 +62,3 @@ const ShopifyCollections: React.FC<ShopifyCollectionsCoverCarouselProps> = (prop
 }
 
 export default ShopifyCollections
-

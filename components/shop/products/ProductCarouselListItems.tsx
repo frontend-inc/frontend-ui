@@ -73,7 +73,7 @@ const ProductCarouselListItems: React.FC<ProductCarouselListItemsProps> = (
 						}}
 					>
 						<ProductListItem
-							buttons={buttons}							
+							buttons={buttons}
 							resource={resource}
 							displayFields={displayFields}
 							handleClick={() => handleClick(resource)}

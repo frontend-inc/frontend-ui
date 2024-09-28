@@ -9,7 +9,7 @@ import { ResourceItemProps } from '../../../components/cms/resources/ResourceIte
 const AdminProductItem: React.FC<ResourceItemProps> = (props) => {
 	const {
 		resource: product,
-    sortable,
+		sortable,
 		selectable,
 		selected,
 		handleClick,
@@ -21,7 +21,7 @@ const AdminProductItem: React.FC<ResourceItemProps> = (props) => {
 
 	return (
 		<ResourceListItem
-      sortable={sortable}
+			sortable={sortable}
 			selectable={selectable}
 			selected={selected}
 			image={product?.image?.url}

@@ -388,12 +388,12 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 						totalCount={totalCount}
 						handlePaginate={handlePaginate}
 						handleSort={handleSort}
-            enableEdit={enableEdit}
-            enableDelete={enableDelete}
-            enableShow={enableShow}
-            handleEdit={handleEdit}
-            handleShow={handleShowClick}
-            handleDelete={handleDeleteClick}
+						enableEdit={enableEdit}
+						enableDelete={enableDelete}
+						enableShow={enableShow}
+						handleEdit={handleEdit}
+						handleShow={handleShowClick}
+						handleDelete={handleDeleteClick}
 						resources={resources}
 						renderItem={(resource, props) => (
 							<Component

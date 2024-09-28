@@ -50,58 +50,57 @@ export type TableHeaderType = {
 	sortable: boolean
 }
 
-
 export type FormQuestionType = {
-  question_id?: number
-  form_id?: number
-  position?: number
-  question?: QuestionType
-  form?: FormType
+	question_id?: number
+	form_id?: number
+	position?: number
+	question?: QuestionType
+	form?: FormType
 }
 
-export type QuestionVariantType = 
-  'single_choice' |
-  'multiple_choice' |
-  'string' | 
-  'text' |
-  'number' |
-  'boolean' |
-  'select' | 
-  'date' | 
-  'radio' | 
-  'checkbox' |
-  'email' |
-  'phone' | 
-  'url'   | 
-  'image' | 
-  'file'
+export type QuestionVariantType =
+	| 'single_choice'
+	| 'multiple_choice'
+	| 'string'
+	| 'text'
+	| 'number'
+	| 'boolean'
+	| 'select'
+	| 'date'
+	| 'radio'
+	| 'checkbox'
+	| 'email'
+	| 'phone'
+	| 'url'
+	| 'image'
+	| 'file'
 
 export type QuestionType = {
-  id?: number
-  label?: string
-  handle?: string
-  title?: string
-  description?: string
-  variant?: QuestionVariantType
-  image?: {
-    url: string
-  }	
+	id?: number
+	label?: string
+	handle?: string
+	title?: string
+	description?: string
+	variant?: QuestionVariantType
+	image?: {
+		url: string
+	}
 }
 
 export type AnswerType = {
-  id?: number
-  title?: string
-  description?: string
-  position?: number
-  question_id?: number
-  value?: string | number
-  points?: number
-  image?: {
-    url: string
-  }
-  video?: {
-    url: string
-  }
+	id?: number
+	title?: string
+	description?: string
+	position?: number
+	question_id?: number
+	value?: string | number
+	points?: number
+	image?: {
+		url: string
+	}
+	video?: {
+		url: string
+	}
 }
 
 export type FormType = {
@@ -112,8 +111,8 @@ export type FormType = {
 	description?: string
 	image?: {
 		url: string
-	}	
-	published?: boolean	
-  form_questions?: FormQuestionType[]
+	}
+	published?: boolean
+	form_questions?: FormQuestionType[]
 	quetions?: QuestionType[]
 }

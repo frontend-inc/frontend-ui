@@ -14,9 +14,7 @@ const AdminFormsList: React.FC = () => {
 	const { apiUrl } = useAdmin()
 
 	const handleClick = (form) => {
-		router.push(
-			`${clientUrl}/users/forms/${form.handle}/questions`
-		)
+		router.push(`${clientUrl}/users/forms/${form.handle}/questions`)
 	}
 
 	return (

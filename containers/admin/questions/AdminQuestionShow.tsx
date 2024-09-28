@@ -10,9 +10,8 @@ type AdminQuestionShowProps = ResourceShowProps & {
 }
 
 const AdminQuestionShow: React.FC<AdminQuestionShowProps> = (props) => {
-
 	const {
-    open,
+		open,
 		handleClose,
 		resource,
 		loading,
@@ -23,48 +22,48 @@ const AdminQuestionShow: React.FC<AdminQuestionShowProps> = (props) => {
 	} = props || {}
 
 	return (
-    <ResourceModal  
-      loading={loading}
-      open={open} 
-      handleClose={handleClose}
-      enableDelete={enableDelete}
-      enableEdit={enableEdit}
-      handleEdit={handleEdit}
-      handleDelete={handleDelete}
-    >
-      <ResourceDetails 
-        direction="row"
-        label={ resource?.question?.variant }
-        image={ resource?.question?.image?.url }
-        primary={ resource?.question?.title }
-        secondary={ resource?.question?.description }
-        resource={ resource?.question }        
-        fields={[]}
-      />
-        <Stack direction="column" width={'100%'} spacing={2}>
-          <Box sx={ sx.divider } />
-          <Typography variant="subtitle1" color='text.primary'>
-            Answer Choices
-          </Typography>
-          <Typography variant="body2" color='text.secondary'>
-            For single choice and multiple choice questions
-          </Typography>
-          <AdminAnswerList
-            direction="column"
-            questionId={resource?.question_id} 
-          />
-        </Stack>
-    </ResourceModal>
+		<ResourceModal
+			loading={loading}
+			open={open}
+			handleClose={handleClose}
+			enableDelete={enableDelete}
+			enableEdit={enableEdit}
+			handleEdit={handleEdit}
+			handleDelete={handleDelete}
+		>
+			<ResourceDetails
+				direction="row"
+				label={resource?.question?.variant}
+				image={resource?.question?.image?.url}
+				primary={resource?.question?.title}
+				secondary={resource?.question?.description}
+				resource={resource?.question}
+				fields={[]}
+			/>
+			<Stack direction="column" width={'100%'} spacing={2}>
+				<Box sx={sx.divider} />
+				<Typography variant="subtitle1" color="text.primary">
+					Answer Choices
+				</Typography>
+				<Typography variant="body2" color="text.secondary">
+					For single choice and multiple choice questions
+				</Typography>
+				<AdminAnswerList
+					direction="column"
+					questionId={resource?.question_id}
+				/>
+			</Stack>
+		</ResourceModal>
 	)
 }
 
 export default AdminQuestionShow
 
 const sx = {
-  divider: {
-    borderBottom: '1px solid',
-    borderColor: 'divider',  
-    pt: 2,  
-    my: 2
-  }
+	divider: {
+		borderBottom: '1px solid',
+		borderColor: 'divider',
+		pt: 2,
+		my: 2,
+	},
 }

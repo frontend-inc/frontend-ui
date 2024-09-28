@@ -4,12 +4,12 @@ import { useAlerts } from '../../../hooks'
 import { Box, Button } from '@mui/material'
 import MediaListItem from './MediaListItem'
 import MediaList from './MediaList'
-import { 
-  Drawer, 
-  ButtonTabs, 
-  MediaUploader, 
-  UnsplashList, 
-  BrandfetchInput
+import {
+	Drawer,
+	ButtonTabs,
+	MediaUploader,
+	UnsplashList,
+	BrandfetchInput,
 } from '../../../components'
 
 type MediaBrowserProps = {
@@ -63,7 +63,7 @@ const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 		{ label: 'Browse', value: 0 },
 		{ label: 'Upload', value: 1 },
 		{ label: 'Unsplash', value: 2 },
-    { label: 'Logos', value: 3 },
+		{ label: 'Logos', value: 3 },
 	]
 
 	return (
@@ -122,11 +122,7 @@ const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 							<UnsplashList onComplete={handleComplete} />
 						</>
 					)}
-          { tab == 3 && (
-            <BrandfetchInput 
-              onComplete={ handleComplete }
-            />
-          )}
+					{tab == 3 && <BrandfetchInput onComplete={handleComplete} />}
 				</Box>
 			</Box>
 		</Drawer>

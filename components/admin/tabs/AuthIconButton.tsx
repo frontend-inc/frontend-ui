@@ -6,35 +6,35 @@ import { UserMenu, UserAvatar } from '../..'
 import { useRouter } from 'next/router'
 
 type AuthIconButtonProps = {
-  handleClick: () => void
+	handleClick: () => void
 }
 
 const AuthIconButton: React.FC<AuthIconButtonProps> = (props) => {
-  const { handleClick } = props || {}
+	const { handleClick } = props || {}
 	const router = useRouter()
 	const { logout, currentUser } = useAuth()
-	
-  const { open, anchorEl, toggleMenu } = useMenu()
+
+	const { open, anchorEl, toggleMenu } = useMenu()
 
 	const handleLogoutClick = () => {
 		logout()
 		router.push('/')
 	}
 
-  if(!currentUser) return null;
+	if (!currentUser) return null
 	return (
-    <>
-      <IconButton size="small" sx={sx.button} onClick={toggleMenu}>
-        <UserAvatar user={currentUser} />
-      </IconButton>
-      <UserMenu
-        open={open}
-        anchorEl={anchorEl}
-        toggleMenu={toggleMenu}
-        handleLogoutClick={handleLogoutClick}
-        handleClick={handleClick}
-      />
-    </>
+		<>
+			<IconButton size="small" sx={sx.button} onClick={toggleMenu}>
+				<UserAvatar user={currentUser} />
+			</IconButton>
+			<UserMenu
+				open={open}
+				anchorEl={anchorEl}
+				toggleMenu={toggleMenu}
+				handleLogoutClick={handleLogoutClick}
+				handleClick={handleClick}
+			/>
+		</>
 	)
 }
 

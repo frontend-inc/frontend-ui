@@ -5,9 +5,7 @@ import {
 	SearchFilterOptionType,
 	SortOptionType,
 } from '../../../types'
-import {
-	ProductCollectionListItem,
-} from '../..'
+import { ProductCollectionListItem } from '../..'
 import { useApp } from '../../../hooks'
 
 export type ProductCollectionListProps = {
@@ -15,15 +13,15 @@ export type ProductCollectionListProps = {
 	href?: string
 	enableGradient?: boolean
 	enableOverlay?: boolean
-	buttons?: ButtonType[]	
+	buttons?: ButtonType[]
 	enableSearch?: boolean
 	enableFilters?: boolean
 	enableSorting?: boolean
 	filterOptions?: SearchFilterOptionType[]
-	sortOptions?: SortOptionType[]	
+	sortOptions?: SortOptionType[]
 	loadMore?: boolean
 	list: React.FC<any>
-  component?: React.FC<any>
+	component?: React.FC<any>
 	header?: React.FC<any>
 	empty?: React.FC<any>
 	slots?: {
@@ -41,7 +39,7 @@ const ProductCollectionList: React.FC<ProductCollectionListProps> = (props) => {
 	const { apiUrl } = useApp()
 
 	let { url } = props || {}
-	const {		
+	const {
 		foreignUrl,
 		query,
 		enableGradient,
@@ -52,9 +50,9 @@ const ProductCollectionList: React.FC<ProductCollectionListProps> = (props) => {
 		enableFilters,
 		enableSorting,
 		filterOptions = [],
-		sortOptions = [],		
-    list: List = DataList,
-    component: Component = ProductCollectionListItem,		
+		sortOptions = [],
+		list: List = DataList,
+		component: Component = ProductCollectionListItem,
 		slots: defaultSlots = {
 			header: {},
 			list: {},
@@ -69,13 +67,13 @@ const ProductCollectionList: React.FC<ProductCollectionListProps> = (props) => {
 			href,
 			enableGradient,
 			enableOverlay,
-		},		
+		},
 		header: defaultSlots.header,
 		empty: defaultSlots.empty,
 		item: {
 			...defaultSlots.item,
 			href,
-			buttons,			
+			buttons,
 			enableGradient,
 			enableOverlay,
 		},
@@ -86,18 +84,18 @@ const ProductCollectionList: React.FC<ProductCollectionListProps> = (props) => {
 			url={`${apiUrl}/shop/product_collections`}
 			foreignUrl={foreignUrl}
 			name="product_collection"
-      fields={[]}
-			query={{ 
-        ...query,
-        sort_by: 'position',
-        sort_direction: 'asc'
-      }}
+			fields={[]}
+			query={{
+				...query,
+				sort_by: 'position',
+				sort_direction: 'asc',
+			}}
 			enableSearch={enableSearch}
 			enableFilters={enableFilters}
 			enableSorting={enableSorting}
 			filterOptions={filterOptions}
 			sortOptions={sortOptions}
-      list={List}
+			list={List}
 			component={Component}
 			slots={slots}
 		/>

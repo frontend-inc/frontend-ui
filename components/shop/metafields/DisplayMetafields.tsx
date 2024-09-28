@@ -15,17 +15,13 @@ const DisplayMetafields: React.FC<DisplayMetafieldsProps> = (props) => {
 	const { fields, resource, alignItems = 'flex-start' } = props || {}
 
 	return (
-		<Stack
-			sx={sx.root}
-			direction={'column'}
-			spacing={0}
-		>
+		<Stack sx={sx.root} direction={'column'} spacing={0}>
 			{fields?.map((field, index) => (
-				<DisplayMetafield          
+				<DisplayMetafield
 					key={index}
 					field={field}
 					resource={resource}
-          disablePadding
+					disablePadding
 				/>
 			))}
 		</Stack>
@@ -36,8 +32,8 @@ export default DisplayMetafields
 
 const sx = {
 	root: {
-    borderTop: '1px solid',
-    borderColor: 'divider',
+		borderTop: '1px solid',
+		borderColor: 'divider',
 		width: '100%',
 	},
 }

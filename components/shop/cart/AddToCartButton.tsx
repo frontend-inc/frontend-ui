@@ -18,23 +18,23 @@ const AddToCartButton = (props: AddToCartButtonProps) => {
 	}
 
 	return (
-    <Box sx={ sx.button }>    
-      <PrimaryButton
-        loading={loading}
-        onClick={handleClick}
-        disabled={!availableForSale}
-        size="large"
-      >
-        Add to Cart
-      </PrimaryButton>
-    </Box> 
+		<Box sx={sx.button}>
+			<PrimaryButton
+				loading={loading}
+				onClick={handleClick}
+				disabled={!availableForSale}
+				size="large"
+			>
+				Add to Cart
+			</PrimaryButton>
+		</Box>
 	)
 }
 
 export default AddToCartButton
 
 const sx = {
-  button: {
-    maxWidth: '300px',    
-  }
+	button: {
+		maxWidth: '300px',
+	},
 }

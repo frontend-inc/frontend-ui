@@ -10,87 +10,88 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
 		primary,
 		secondary,
 		actions,
-    logos=[],
+		logos = [],
 		children,
-    slots={
-      image: {}
-    }
+		slots = {
+			image: {},
+		},
 	} = props || {}
 
 	return (
-    <Box sx={ sx.root }>
-      <Container maxWidth="lg">
-      <Stack 
-        direction={{ 
-          md: 'row', 
-          xs: 'column'
-        }} 
-        spacing={6}
-      >          
-        <Stack sx={sx.header} spacing={3}>          
-          <Box><Label label={ label } /></Box>
-          <Typography color="text.primary" variant="h1" sx={ sx.title }>
-            {primary}
-          </Typography>          
-          { secondary }       
-          { actions }     
-          { logos?.length > 0 && (
-              <BrandLogos logos={ logos } />             
-            )}
-          { children }      
-        </Stack>          
-        <Box sx={sx.imageContainer}>
-          <Image               
-            src={image} 
-            alt={primary} 
-            height={400} 
-            objectFit='cover'
-            { ...slots.image }           
-          />
-        </Box>
-      </Stack>
-      </Container>
-    </Box>
+		<Box sx={sx.root}>
+			<Container maxWidth="lg">
+				<Stack
+					direction={{
+						md: 'row',
+						xs: 'column',
+					}}
+					spacing={6}
+				>
+					<Stack sx={sx.header} spacing={3}>
+						<Box>
+							<Label label={label} />
+						</Box>
+						<Typography color="text.primary" variant="h1" sx={sx.title}>
+							{primary}
+						</Typography>
+						{secondary}
+						{actions}
+						{logos?.length > 0 && <BrandLogos logos={logos} />}
+						{children}
+					</Stack>
+					<Box sx={sx.imageContainer}>
+						<Image
+							src={image}
+							alt={primary}
+							height={400}
+							objectFit="cover"
+							{...slots.image}
+						/>
+					</Box>
+				</Stack>
+			</Container>
+		</Box>
 	)
 }
 
 export default SpotlightCard
 
 const sx = {
-  root: {
-    pt: 20,
-    py: 8, 
-    px: {
-      md: 4,
-      xs: 0
-    },
-    height: 'auto',
-    width: '100%',  
-    background: theme => `radial-gradient(ellipse 100% 95% at center bottom, ${theme.palette.primary.main}, rgba(0, 0, 0, 1))`
-  },
+	root: {
+		pt: 20,
+		py: 8,
+		px: {
+			md: 4,
+			xs: 0,
+		},
+		height: 'auto',
+		width: '100%',
+		background: (theme) =>
+			`radial-gradient(ellipse 100% 95% at center bottom, ${theme.palette.primary.main}, rgba(0, 0, 0, 1))`,
+	},
 	container: {
-    px: 2,
+		px: 2,
 		width: '100%',
 		justifyContent: 'flex-start',
 		alignItems: 'flex-start',
-	},	
-  title: {
-    textAlign: {
-      md: 'left',
-      xs: 'center'
-    }
-  },
+	},
+	title: {
+		textAlign: {
+			md: 'left',
+			xs: 'center',
+		},
+	},
 	header: {
-    alignItems: {
-      md: 'flex-start',
-      xs: 'center'
-    },
-    justifyContent: 'center',
+		alignItems: {
+			md: 'flex-start',
+			xs: 'center',
+		},
+		justifyContent: 'center',
 		maxWidth: {
-      md: 600,
-      xs: '100%',
-    },
-		width: '100%',		
+			md: 600,
+			xs: '100%',
+		},
+		width: '100%',
 	},
 	content: {
 		width: '100%',
@@ -114,20 +115,20 @@ const sx = {
 		},
 	},
 	imageContainer: {
-    minWidth: {
-      md: 400,
-      xs: '100%',
-    },
+		minWidth: {
+			md: 400,
+			xs: '100%',
+		},
 		borderRadius: 1,
-    boxShadow: 6,
-	},  
-  logos: {
-    p: 2,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
-  logo: {
-    height: 30,
-    width: 120
-  }
+		boxShadow: 6,
+	},
+	logos: {
+		p: 2,
+		justifyContent: 'flex-start',
+		alignItems: 'center',
+	},
+	logo: {
+		height: 30,
+		width: 120,
+	},
 }

@@ -93,7 +93,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		circular,
 		disableImage,
 		enableShow,
-    
+
 		fields = [],
 		enableSearch,
 		enableFilters,

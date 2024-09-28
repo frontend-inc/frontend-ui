@@ -1,12 +1,9 @@
 import React from 'react'
-import {
-	Drawer,	
-	CircularLoader,
-} from '../..'
+import { Drawer, CircularLoader } from '../..'
 import { Button, Stack } from '@mui/material'
 
 export type ResourceModalProps = {
-  title?: string
+	title?: string
 	open: boolean
 	handleClose: () => void
 	loading?: boolean
@@ -14,14 +11,14 @@ export type ResourceModalProps = {
 	enableDelete?: boolean
 	handleEdit?: () => void
 	handleDelete?: () => void
-  disablePadding?: boolean
-  children?: any
+	disablePadding?: boolean
+	children?: any
 }
 
 const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 	const {
 		loading,
-    title,
+		title,
 		open,
 		handleClose,
 		children,
@@ -29,15 +26,15 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 		enableDelete,
 		handleEdit,
 		handleDelete,
-    disablePadding
+		disablePadding,
 	} = props || {}
 
 	return (
-    <Drawer
+		<Drawer
 			open={open}
 			handleClose={handleClose}
-      title={title}
-      disablePadding={disablePadding}
+			title={title}
+			disablePadding={disablePadding}
 			buttons={
 				(enableEdit || enableDelete) && (
 					<Stack direction="row" spacing={1} sx={{ width: '100%' }}>
@@ -65,12 +62,8 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 				)
 			}
 		>
-	  {loading == true ? (
-	    <CircularLoader size={44} />
-		):(		
-      children
-    )}        
-    </Drawer>
+			{loading == true ? <CircularLoader size={44} /> : children}
+		</Drawer>
 	)
 }
 

@@ -5,34 +5,32 @@ import { useAdminForms } from '../../../hooks'
 import { FormFieldType } from '../../../types'
 
 type AdminFormResponseEditProps = ResourceFormProps & {
-  formId: string 
+	formId: string
 }
 
 const AdminFormResponseEdit: React.FC<AdminFormResponseEditProps> = (props) => {
+	const { formId } = props || {}
 
-  const { formId } = props || {}
+	const { loading, form, findForm } = useAdminForms()
 
-  const { loading, form, findForm } = useAdminForms()
+	const [fields, setFields] = useState<FormFieldType[]>([])
 
-  const [fields, setFields] = useState<FormFieldType[]>([])
+	useEffect(() => {
+		if (formId) {
+			findForm(formId)
+		}
+	}, [formId])
 
-  useEffect(() => {
-    if(formId){
-      findForm(formId)
-    }
-  }, [formId])
-
-  useEffect(() => {
-    if(form?.id){
-      let formFields = form?.questions?.map((question) => ({
-        label: question.title,
-        name: question.name,
-        variant: question.variant,
-      }))
-      setFields(formFields)
-    }
-  }, [form])
-
+	useEffect(() => {
+		if (form?.id) {
+			let formFields = form?.questions?.map((question) => ({
+				label: question.title,
+				name: question.name,
+				variant: question.variant,
+			}))
+			setFields(formFields)
+		}
+	}, [form])
 
 	return <ResourceForm {...props} fields={fields} />
 }

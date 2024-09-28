@@ -8,7 +8,7 @@ import { validateFieldConditions } from '../../../helpers'
 export type FormFieldsProps = {
 	loading?: boolean
 	errors: any
-  resource: any
+	resource: any
 	fields: FormFieldType[]
 	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 	handleRemove?: (name: string) => void

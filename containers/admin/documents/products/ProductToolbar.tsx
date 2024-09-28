@@ -1,8 +1,5 @@
 import React from 'react'
-import {
-	ResourceToolbarModal,
-	PrimaryButton,
-} from '../../../../components'
+import { ResourceToolbarModal, PrimaryButton } from '../../../../components'
 import { Collapse, Stack } from '@mui/material'
 
 type ProductToolbarProps = {
@@ -13,13 +10,9 @@ type ProductToolbarProps = {
 	handleReload: () => void
 }
 
-const ProductToolbar: React.FC<ProductToolbarProps> = (
-	props
-) => {
-
+const ProductToolbar: React.FC<ProductToolbarProps> = (props) => {
 	const { open, handleAddProducts, handleClose, selectedIds, handleReload } =
 		props || {}
-
 
 	const handleAdd = async () => {
 		await handleAddProducts(selectedIds)
@@ -29,13 +22,10 @@ const ProductToolbar: React.FC<ProductToolbarProps> = (
 
 	return (
 		<Collapse in={open}>
-			<Stack direction="row" spacing={1} sx={ sx.toolbar }>
-				<PrimaryButton 
-          fullWidth 
-          onClick={handleAdd}
-        >
-          Add Products
-        </PrimaryButton>								
+			<Stack direction="row" spacing={1} sx={sx.toolbar}>
+				<PrimaryButton fullWidth onClick={handleAdd}>
+					Add Products
+				</PrimaryButton>
 			</Stack>
 		</Collapse>
 	)
@@ -44,7 +34,7 @@ const ProductToolbar: React.FC<ProductToolbarProps> = (
 export default ProductToolbar
 
 const sx = {
-  toolbar: {
-    width: '100%'
-  }
+	toolbar: {
+		width: '100%',
+	},
 }

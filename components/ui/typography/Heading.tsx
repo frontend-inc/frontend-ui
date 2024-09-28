@@ -9,7 +9,7 @@ type HeadingProps = {
 	textAlign?: 'left' | 'center'
 	textVariant?: TypographyVariantsType
 	enableBorder?: boolean
-  secondaryAction?: React.ReactNode
+	secondaryAction?: React.ReactNode
 }
 
 const Heading: React.FC<HeadingProps> = (props) => {
@@ -20,54 +20,54 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		textAlign = 'left',
 		textVariant = 'h6',
 		enableBorder = false,
-    secondaryAction
+		secondaryAction,
 	} = props || {}
 
 	if (!title && !description && !label) return null
 	return (
 		<Box sx={sx.root}>
-      <Stack sx={ sx.toolbar } direction={{ sm: 'row', xs: 'column'}}>
-        <Stack
-          sx={{
-            ...sx.stack,
-            ...(enableBorder && sx.border),
-            alignItems: textAlign,
-          }}
-          direction={'column'}
-          spacing={0}
-        >
-            {label && (
-              <Typography variant="caption" color="text.secondary">
-                {label}
-              </Typography>
-            )}
-            {title && (
-              <Typography
-                variant={textVariant}
-                color="text.primary"
-                sx={{
-                  ...sx.title,
-                  textAlign: textAlign,
-                }}
-              >
-                {title}
-              </Typography>
-            )}
-          {description && (
-            <Typography
-              variant="body1"
-              color="text.secondary"
-              sx={{
-                ...sx.description,
-                textAlign: textAlign,
-              }}
-            >
-              {description}
-            </Typography>
-          )}      
-        </Stack>
-        { secondaryAction }
-      </Stack>
+			<Stack sx={sx.toolbar} direction={{ sm: 'row', xs: 'column' }}>
+				<Stack
+					sx={{
+						...sx.stack,
+						...(enableBorder && sx.border),
+						alignItems: textAlign,
+					}}
+					direction={'column'}
+					spacing={0}
+				>
+					{label && (
+						<Typography variant="caption" color="text.secondary">
+							{label}
+						</Typography>
+					)}
+					{title && (
+						<Typography
+							variant={textVariant}
+							color="text.primary"
+							sx={{
+								...sx.title,
+								textAlign: textAlign,
+							}}
+						>
+							{title}
+						</Typography>
+					)}
+					{description && (
+						<Typography
+							variant="body1"
+							color="text.secondary"
+							sx={{
+								...sx.description,
+								textAlign: textAlign,
+							}}
+						>
+							{description}
+						</Typography>
+					)}
+				</Stack>
+				{secondaryAction}
+			</Stack>
 		</Box>
 	)
 }
@@ -106,9 +106,9 @@ const sx = {
 		width: '100%',
 		whiteSpace: 'pre-line',
 	},
-  toolbar: {
-    width: '100%',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  }
+	toolbar: {
+		width: '100%',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+	},
 }

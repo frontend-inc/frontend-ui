@@ -4,9 +4,13 @@ import { ProductReferenceList } from '../../components'
 import { ProductListProps } from '../../components/shop/products/ProductList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsProductReferenceListProps = SectionProps & HeadingProps & ProductListProps
+type CmsProductReferenceListProps = SectionProps &
+	HeadingProps &
+	ProductListProps
 
-const CmsProductReferenceList: React.FC<CmsProductReferenceListProps> = (props) => {
+const CmsProductReferenceList: React.FC<CmsProductReferenceListProps> = (
+	props
+) => {
 	const {
 		label,
 		title,

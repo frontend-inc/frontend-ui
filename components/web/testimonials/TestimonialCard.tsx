@@ -4,11 +4,11 @@ import { truncate } from '../../../helpers'
 import { Avatar } from '../../../components'
 
 type TestimonialProps = {
-  author: string
-  text: string
-  rating?: number
-  image?: string
-  size?: 'small' | 'large'
+	author: string
+	text: string
+	rating?: number
+	image?: string
+	size?: 'small' | 'large'
 }
 
 const TestimonialCard: React.FC<TestimonialProps> = (props) => {
@@ -17,25 +17,25 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 	return (
 		<Box sx={sx.root}>
 			<Stack spacing={1} sx={sx.content}>
-				<Box sx={sx.testimonial}>		
-          <Stack direction="column" spacing={1} sx={sx.text}>								
-            {text && (
-              <Typography variant='subtitle2' color="text.primary">
-                {truncate(text, 240)}
-              </Typography>
-            )}
-            {author && (
-              <Typography
-                sx={sx.author}
-                variant={size == 'small' ? 'caption' : 'body1'}
-                color="text.secondary"
-              >
-                &mdash; {author}
-              </Typography>
-            )}
-          </Stack>
+				<Box sx={sx.testimonial}>
+					<Stack direction="column" spacing={1} sx={sx.text}>
+						{text && (
+							<Typography variant="subtitle2" color="text.primary">
+								{truncate(text, 240)}
+							</Typography>
+						)}
+						{author && (
+							<Typography
+								sx={sx.author}
+								variant={size == 'small' ? 'caption' : 'body1'}
+								color="text.secondary"
+							>
+								&mdash; {author}
+							</Typography>
+						)}
+					</Stack>
 				</Box>
-				<Avatar src={image} size={64} />          
+				<Avatar src={image} size={64} />
 			</Stack>
 		</Box>
 	)
@@ -50,8 +50,8 @@ const sx = {
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'flex-end',
-    width: '100%',
-    minHeight: '200px'
+		width: '100%',
+		minHeight: '200px',
 	},
 	rootBorder: {
 		border: '1px solid',
@@ -85,6 +85,6 @@ const sx = {
 	testimonial: {
 		display: 'flex',
 		flexDirection: 'column',
-		alignItems: 'center',	
-	}
+		alignItems: 'center',
+	},
 }

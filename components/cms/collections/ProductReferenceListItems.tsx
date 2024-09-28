@@ -13,7 +13,7 @@ export type ProductReferenceListItemsProps = {
 	displayFields: DisplayFieldType[]
 	handleClick?: (resource: any) => void
 	enableGradient?: boolean
-	enableOverlay?: boolean	
+	enableOverlay?: boolean
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableRatings?: boolean
@@ -24,7 +24,9 @@ export type ProductReferenceListItemsProps = {
 	}
 }
 
-const ProductReferenceListItems: React.FC<ProductReferenceListItemsProps> = (props) => {
+const ProductReferenceListItems: React.FC<ProductReferenceListItemsProps> = (
+	props
+) => {
 	const router = useRouter()
 	const { clientUrl } = useApp()
 
@@ -44,9 +46,9 @@ const ProductReferenceListItems: React.FC<ProductReferenceListItemsProps> = (pro
 		handleClick,
 		displayFields = [],
 		enableGradient = false,
-		enableOverlay = false,		
+		enableOverlay = false,
 		enableFavorites = false,
-		enableLikes = false,		
+		enableLikes = false,
 		enableRatings = false,
 		slots = {
 			item: {},
@@ -77,23 +79,24 @@ const ProductReferenceListItems: React.FC<ProductReferenceListItemsProps> = (pro
 	return (
 		<Stack direction="column" spacing={2}>
 			<DataLayout {...slots.list} grid loading={loading}>
-				{productReferences?.map((reference, index) => {          
-          const resource = reference?.product 
-          return (
-					<ProductListItem
-						key={index}
-						resource={resource}
-						displayFields={displayFields}
-						handleClick={() => handleShowClick(resource)}
-						buttons={buttons}
-						enableFavorites={enableFavorites}
-						enableLikes={enableLikes}
-						enableRatings={enableRatings}
-						enableGradient={enableGradient}
-						enableOverlay={enableOverlay}
-						{...slots.item}
-					/>
-				)})}
+				{productReferences?.map((reference, index) => {
+					const resource = reference?.product
+					return (
+						<ProductListItem
+							key={index}
+							resource={resource}
+							displayFields={displayFields}
+							handleClick={() => handleShowClick(resource)}
+							buttons={buttons}
+							enableFavorites={enableFavorites}
+							enableLikes={enableLikes}
+							enableRatings={enableRatings}
+							enableGradient={enableGradient}
+							enableOverlay={enableOverlay}
+							{...slots.item}
+						/>
+					)
+				})}
 			</DataLayout>
 			<LoadMore
 				page={page}

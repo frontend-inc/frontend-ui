@@ -13,12 +13,7 @@ type SocialLinkProps = {
 }
 
 const SocialLink: React.FC<SocialLinkProps> = (props) => {
-	const {
-		provider,
-		size = 32,
-		url,
-		color,
-	} = props || {}
+	const { provider, size = 32, url, color } = props || {}
 
 	const formatUrl = (username: string) => {
 		switch (provider) {

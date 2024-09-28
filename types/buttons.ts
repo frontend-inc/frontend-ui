@@ -21,7 +21,7 @@ export type ButtonType = {
 	variant?: 'contained' | 'outlined' | 'text'
 	url?: string
 	path?: string
-	onClick?: (ev: any) => void			
+	onClick?: (ev: any) => void
 }
 
 export type SocialFieldType = {

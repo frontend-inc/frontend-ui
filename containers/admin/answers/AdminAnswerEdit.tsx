@@ -1,14 +1,18 @@
 import React from 'react'
 import { Button, Box } from '@mui/material'
-import { Drawer, FormFields, IconLoading, ResourceForm } from '../../../components'
+import {
+	Drawer,
+	FormFields,
+	IconLoading,
+	ResourceForm,
+} from '../../../components'
 import { ResourceFormProps } from '../../../components/cms/resources/ResourceForm'
 
 const AdminAnswerEdit: React.FC<ResourceFormProps> = (props) => {
-
-  const { 
-    loading,
+	const {
+		loading,
 		errors,
-    title,
+		title,
 		open,
 		handleClose,
 		resource,
@@ -16,53 +20,60 @@ const AdminAnswerEdit: React.FC<ResourceFormProps> = (props) => {
 		handleRemove,
 		handleSubmit,
 		handleAddAttachment,
-		handleRemoveAttachment,	
+		handleRemoveAttachment,
 		inputOptions,
-		inputParams
-   } = props || {}
+		inputParams,
+	} = props || {}
 
-	let fields = [    
+	let fields = [
 		{ label: 'Answer', name: 'title', variant: 'string' },
-    { label: 'Value', name: 'value', variant: 'string' },
-    { label: 'Image', name: 'image', variant: 'media' },     
-    { label: 'If selected, assign product and points', name: 'results', variant: 'divider' },     
-    { label: 'Points', name: 'points', variant: 'number' },           
-    { label: 'Shopify product', name: 'shopify_product', variant: 'shopify_product' },
+		{ label: 'Value', name: 'value', variant: 'string' },
+		{ label: 'Image', name: 'image', variant: 'media' },
+		{
+			label: 'If selected, assign product and points',
+			name: 'results',
+			variant: 'divider',
+		},
+		{ label: 'Points', name: 'points', variant: 'number' },
+		{
+			label: 'Shopify product',
+			name: 'shopify_product',
+			variant: 'shopify_product',
+		},
 	]
 
-	return(
-    <Drawer
-    open={open}
-    handleClose={handleClose}
-    title={title ? title : (resource?.id ? 'Edit' : 'Add')}
-    buttons={
-      <Button
-        fullWidth
-        variant="contained"
-        color="primary"
-        onClick={handleSubmit}
-        startIcon={loading && <IconLoading />}
-      >
-        {resource?.id ? 'Update' : 'Save'}
-      </Button>
-    }
-  >
-    <FormFields
-      errors={errors}
-      loading={loading}
-      fields={fields}
-      resource={resource}
-      handleChange={handleChange}
-      handleRemove={handleRemove}
-      handleAddAttachment={handleAddAttachment}
-      handleRemoveAttachment={handleRemoveAttachment}
-      inputOptions={inputOptions}
-      inputParams={inputParams}
-    />
-    <Box sx={{ height: 240 }} />
-  </Drawer>
-
-  )
+	return (
+		<Drawer
+			open={open}
+			handleClose={handleClose}
+			title={title ? title : resource?.id ? 'Edit' : 'Add'}
+			buttons={
+				<Button
+					fullWidth
+					variant="contained"
+					color="primary"
+					onClick={handleSubmit}
+					startIcon={loading && <IconLoading />}
+				>
+					{resource?.id ? 'Update' : 'Save'}
+				</Button>
+			}
+		>
+			<FormFields
+				errors={errors}
+				loading={loading}
+				fields={fields}
+				resource={resource}
+				handleChange={handleChange}
+				handleRemove={handleRemove}
+				handleAddAttachment={handleAddAttachment}
+				handleRemoveAttachment={handleRemoveAttachment}
+				inputOptions={inputOptions}
+				inputParams={inputParams}
+			/>
+			<Box sx={{ height: 240 }} />
+		</Drawer>
+	)
 }
 
 export default AdminAnswerEdit

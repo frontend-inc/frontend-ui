@@ -7,15 +7,7 @@ import { SectionProps } from '../../types'
 type UISpotlightProps = SectionProps & SpotlightProps
 
 const UISpotlight: React.FC<UISpotlightProps> = (props) => {
-	const {
-		mode,
-		py,
-		px,
-		maxWidth,
-		requireAuth,
-		requirePaid,
-		...rest
-	} = props
+	const { mode, py, px, maxWidth, requireAuth, requirePaid, ...rest } = props
 
 	return (
 		<Section

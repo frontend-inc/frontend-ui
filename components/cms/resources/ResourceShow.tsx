@@ -3,7 +3,7 @@ import ResourceDetails from './ResourceDetails'
 import ResourceModal from './ResourceModal'
 
 export type ResourceShowProps = {
-  title?: string
+	title?: string
 	open: boolean
 	handleClose: () => void
 	loading: boolean
@@ -20,7 +20,7 @@ export type ResourceShowProps = {
 const ResourceShow: React.FC<ResourceShowProps> = (props) => {
 	const {
 		loading,
-    title,
+		title,
 		open,
 		handleClose,
 		resource,
@@ -32,24 +32,24 @@ const ResourceShow: React.FC<ResourceShowProps> = (props) => {
 	} = props || {}
 
 	return (
-    <ResourceModal 
-      loading={loading}
-      open={open}
-      handleClose={handleClose}
-      enableEdit={enableEdit}
-      enableDelete={enableDelete}
-      handleEdit={handleEdit}
-      handleDelete={handleDelete}
-    >
-      <ResourceDetails
-        label={resource?.label}
-        image={resource?.image?.url}
-        primary={resource?.title}
-        secondary={resource?.description}
-        resource={resource}
-        fields={fields}
-      />
-    </ResourceModal>
+		<ResourceModal
+			loading={loading}
+			open={open}
+			handleClose={handleClose}
+			enableEdit={enableEdit}
+			enableDelete={enableDelete}
+			handleEdit={handleEdit}
+			handleDelete={handleDelete}
+		>
+			<ResourceDetails
+				label={resource?.label}
+				image={resource?.image?.url}
+				primary={resource?.title}
+				secondary={resource?.description}
+				resource={resource}
+				fields={fields}
+			/>
+		</ResourceModal>
 	)
 }
 

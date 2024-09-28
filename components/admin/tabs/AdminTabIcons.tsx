@@ -24,7 +24,7 @@ const TabIcons: React.FC<TabIconsProps> = (props) => {
 		router.push('/dashboard')
 	}
 
-  const handleMyAccountClick = () => {
+	const handleMyAccountClick = () => {
 		router.push('/my-account')
 	}
 
@@ -56,9 +56,7 @@ const TabIcons: React.FC<TabIconsProps> = (props) => {
 				sx={sx.bottomTabs}
 			>
 				{secondaryActions}
-				<AuthIconButton 
-          handleClick={ handleMyAccountClick }
-        />
+				<AuthIconButton handleClick={handleMyAccountClick} />
 			</Stack>
 		</Box>
 	)
@@ -99,14 +97,14 @@ const sx = {
 		mb: 2,
 	},
 	logoButton: {
-		p: 0,    
+		p: 0,
 		m: 0,
-    pb: '5px',
+		pb: '5px',
 		height: 40,
 		width: '100%',
-    borderRadius: 0,
-    borderBottom: '1px solid',
-    borderColor: 'divider',
+		borderRadius: 0,
+		borderBottom: '1px solid',
+		borderColor: 'divider',
 		'&:hover': {
 			backgroundColor: 'transparent',
 		},

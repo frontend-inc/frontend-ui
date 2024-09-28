@@ -4,11 +4,14 @@ import { ProductCollectionCoverCarouselList } from '../../components'
 import { ProductCollectionCoverCarouselListProps } from '../../components/shop/product-collections/ProductCollectionCoverCarouselList'
 import { SectionProps } from '../../types'
 
-type ShopProductCollectionCoverCarouselProps = SectionProps & ProductCollectionCoverCarouselListProps
+type ShopProductCollectionCoverCarouselProps = SectionProps &
+	ProductCollectionCoverCarouselListProps
 
-const ShopProductCollectionCoverCarousel: React.FC<ShopProductCollectionCoverCarouselProps> = (props) => {
+const ShopProductCollectionCoverCarousel: React.FC<
+	ShopProductCollectionCoverCarouselProps
+> = (props) => {
 	const {
-		mode='dark',
+		mode = 'dark',
 		py,
 		px,
 		maxWidth,

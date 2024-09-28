@@ -1,6 +1,6 @@
 import React from 'react'
 import { Label, ResourceGridItem } from '../../../components'
-import { resizeCloudinaryImage  } from '../../../helpers'
+import { resizeCloudinaryImage } from '../../../helpers'
 
 type AdminMediaItemProps = {
 	resource: any
@@ -16,8 +16,8 @@ const AdminMediaItem: React.FC<AdminMediaItemProps> = (props) => {
 		<ResourceGridItem
 			enableBorder
 			sortable={sortable}
-      //@ts-ignore 
-			image={ resizeCloudinaryImage(resource?.url, { width: 800, height: 800 }) }
+			//@ts-ignore
+			image={resizeCloudinaryImage(resource?.url, { width: 800, height: 800 })}
 			primary={resource?.content_type}
 			secondaryAction={<Label label={resource?.dimensions} />}
 			handleClick={handleClick}

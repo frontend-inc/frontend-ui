@@ -20,7 +20,7 @@ const AdminQuestionsList: React.FC = () => {
 			enableEdit
 			enableDelete
 			enableCreate
-      enableShow
+			enableShow
 			sortOptions={[
 				{ name: 'title', label: 'Title' },
 				{ name: 'created_at', label: 'Date' },

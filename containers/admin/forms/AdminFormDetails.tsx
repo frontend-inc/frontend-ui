@@ -9,19 +9,16 @@ type AdminFormProps = {
 	handleEdit: () => void
 }
 
-const AdminFormDetails: React.FC<
-	AdminFormProps
-> = (props) => {
- 
-  const router = useRouter()
-  const { app_id: appId } = router.query || {}
+const AdminFormDetails: React.FC<AdminFormProps> = (props) => {
+	const router = useRouter()
+	const { app_id: appId } = router.query || {}
 
-  const { form, handleEdit } = props || {}
+	const { form, handleEdit } = props || {}
 
-  const handleResponses = () => {
-    router.push(`/admin/${appId}/users/forms/${form.handle}/responses`)
-  }
-	
+	const handleResponses = () => {
+		router.push(`/admin/${appId}/users/forms/${form.handle}/responses`)
+	}
+
 	return (
 		<Paper sx={sx.paper}>
 			<Stack direction="row" sx={sx.root} spacing={1}>
@@ -44,8 +41,10 @@ const AdminFormDetails: React.FC<
 					</Stack>
 				</Stack>
 				<Stack direction="row" spacing={1}>
-          <SecondaryButton onClick={handleEdit}>Edit</SecondaryButton>
-          <PrimaryButton onClick={handleResponses}>View Responses</PrimaryButton>					
+					<SecondaryButton onClick={handleEdit}>Edit</SecondaryButton>
+					<PrimaryButton onClick={handleResponses}>
+						View Responses
+					</PrimaryButton>
 				</Stack>
 			</Stack>
 		</Paper>

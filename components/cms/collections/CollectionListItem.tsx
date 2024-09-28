@@ -60,7 +60,10 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 	return (
 		<Component
 			label={resource?.label}
-			image={resizeCloudinaryImage(resource?.image?.url, { width: 800, height: 800 })}
+			image={resizeCloudinaryImage(resource?.image?.url, {
+				width: 800,
+				height: 800,
+			})}
 			primary={resource?.title}
 			handleClick={handleClick}
 			secondary={<SecondaryFields fields={displayFields} resource={resource} />}

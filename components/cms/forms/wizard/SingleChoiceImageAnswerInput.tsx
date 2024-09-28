@@ -8,7 +8,7 @@ const SingleChoiceInput: React.FC<MultipleChoiceAnswerInputProps> = (props) => {
 		direction = 'column',
 		name,
 		value,
-    answers,
+		answers,
 		handleChange,
 	} = props
 
@@ -21,7 +21,7 @@ const SingleChoiceInput: React.FC<MultipleChoiceAnswerInputProps> = (props) => {
 			label={label}
 			value={value}
 			handleChange={handleChange}
-      answers={answers}
+			answers={answers}
 		/>
 	)
 }

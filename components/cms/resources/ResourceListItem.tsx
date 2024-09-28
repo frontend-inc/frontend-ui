@@ -33,9 +33,9 @@ export type ResourceListItemProps = {
 	sortable?: boolean
 	isDragging?: boolean
 	enableBorder?: boolean
-  slots?: {
-    image?: any
-  }
+	slots?: {
+		image?: any
+	}
 }
 
 const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
@@ -57,9 +57,9 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 		selected,
 		isDragging = false,
 		enableBorder = false,
-    slots={
-      image: {}
-    }
+		slots = {
+			image: {},
+		},
 	} = props
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,9 +71,9 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 	return (
 		<ListItem
 			sx={{
-				...sx.root,        
+				...sx.root,
 				...(enableBorder && sx.rootBorder),
-        ...(selected && sx.selected),
+				...(selected && sx.selected),
 				...(isDragging && sx.isDragging),
 			}}
 			disablePadding
@@ -110,13 +110,13 @@ const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
 				{avatar && <ListItemIcon sx={sx.listItemIcon}>{avatar}</ListItemIcon>}
 				{image && (
 					<ListItemIcon sx={sx.listItemImage}>
-						<Image 
-              src={image} 
-              width={64} 
-              height={64}
-              alt={image} 
-              { ...slots.image }
-            />
+						<Image
+							src={image}
+							width={64}
+							height={64}
+							alt={image}
+							{...slots.image}
+						/>
 					</ListItemIcon>
 				)}
 				{icon && (
@@ -163,10 +163,10 @@ const sx = {
 		},
 		mb: 1,
 	},
-  selected: {
-    border: '1px solid',
-    borderColor: 'primary.main',
-  },
+	selected: {
+		border: '1px solid',
+		borderColor: 'primary.main',
+	},
 	listItemButton: {
 		p: 1,
 		borderRadius: 1,

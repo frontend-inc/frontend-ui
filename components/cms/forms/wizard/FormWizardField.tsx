@@ -14,7 +14,7 @@ export type FormWizardProps = {
 		placeholder: string
 		name: string
 		options: any
-    answers?: AnswerType[]
+		answers?: AnswerType[]
 	}
 	handleChange: (ev: any) => void
 	handleRemove: (name: string) => void
@@ -25,10 +25,7 @@ export type FormWizardProps = {
 	setResource: (resource: any) => void
 }
 
-const WIZARD_FIELD_VARIENTS = [
-	'multiple_choice',
-	'single_choice',
-]
+const WIZARD_FIELD_VARIENTS = ['multiple_choice', 'single_choice']
 
 const FormWizardField: React.FC<FormWizardProps> = (props) => {
 	const { field, fadeIn, resource, handleChange, handleRemove } = props
@@ -48,7 +45,7 @@ const FormWizardField: React.FC<FormWizardProps> = (props) => {
 							placeholder={field.placeholder}
 							variant={field.variant}
 							options={field.options}
-              answers={ field.answers }
+							answers={field.answers}
 							value={get(resource, field.name)}
 							handleChange={handleChange}
 						/>

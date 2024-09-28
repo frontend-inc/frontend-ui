@@ -20,9 +20,7 @@ const Feature: React.FC<FeatureProps> = (props) => {
 				...(enableBorder && sx.enableBorder),
 			}}
 		>
-			{icon && (
-				<Icon name={icon} color="primary.main" size={24} />
-			)}
+			{icon && <Icon name={icon} color="primary.main" size={24} />}
 			<Stack direction="column" spacing={1}>
 				<Typography sx={sx.text} color="text.primary" variant="subtitle1">
 					{title}

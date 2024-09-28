@@ -13,21 +13,26 @@ const AdminContactItem: React.FC<AdminContactItemProps> = (props) => {
 	const { resource: contact, handleClick, handleEdit, handleDelete } = props
 
 	return (
-		<ResourceListItem      
+		<ResourceListItem
 			primary={
-        <Stack direction="row" spacing={1}>
-          { contact?.name && <Typography variant="body1" color='text.primary'>{contact?.name}</Typography> }
-          <Label label={contact?.source} />
-        </Stack>
-      }        
+				<Stack direction="row" spacing={1}>
+					{contact?.name && (
+						<Typography variant="body1" color="text.primary">
+							{contact?.name}
+						</Typography>
+					)}
+					<Label label={contact?.source} />
+				</Stack>
+			}
 			secondary={contact?.email}
 			avatar={
-        <UserAvatar user={{ 
-          ...contact,
-          name: contact?.name || contact?.email,
-        }} 
-        />
-      }
+				<UserAvatar
+					user={{
+						...contact,
+						name: contact?.name || contact?.email,
+					}}
+				/>
+			}
 			handleClick={handleClick}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}

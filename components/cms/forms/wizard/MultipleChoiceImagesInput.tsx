@@ -9,8 +9,8 @@ const MultipleChoiceImagesInput: React.FC<MultipleChoiceAnswerInputProps> = (
 		label,
 		direction = 'column',
 		name,
-		value,		
-    answers,
+		value,
+		answers,
 		handleChange,
 	} = props
 
@@ -22,8 +22,8 @@ const MultipleChoiceImagesInput: React.FC<MultipleChoiceAnswerInputProps> = (
 			name={name}
 			label={label}
 			value={value}
-			handleChange={handleChange}			
-      answers={answers}
+			handleChange={handleChange}
+			answers={answers}
 		/>
 	)
 }

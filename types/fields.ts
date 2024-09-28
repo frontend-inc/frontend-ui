@@ -49,7 +49,7 @@ export type FieldCategoryType =
 	| 'Data'
 	| 'Boolean'
 	| 'Reference'
-  | 'Shop'
+	| 'Shop'
 	| 'Shopify'
 
 export type FieldVariantType = {

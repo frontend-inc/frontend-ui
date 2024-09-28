@@ -6,8 +6,8 @@ import {
 	AdminLayoutScroll,
 	AdminLayoutLeft,
 	AdminLayoutCenter,
-  Placeholder,
-  CircularLoader
+	Placeholder,
+	CircularLoader,
 } from '../..'
 import { AdminMenusType, AdminMenuType } from '../../../types'
 import { useAdmin, useApps, useTabs } from '../../../hooks'
@@ -30,12 +30,12 @@ export type AdminShopifyPageProps = {
 }
 
 const AdminShopifyPage: React.FC<AdminShopifyPageProps> = (props) => {
-	const router = useRouter()  
-	const { clientUrl } = useAdmin()  
+	const router = useRouter()
+	const { clientUrl } = useAdmin()
 
-  const { app_id: appId } = router.query
+	const { app_id: appId } = router.query
 
-  const { loading, app, findApp } = useApps()
+	const { loading, app, findApp } = useApps()
 
 	const {
 		title,
@@ -57,29 +57,29 @@ const AdminShopifyPage: React.FC<AdminShopifyPageProps> = (props) => {
 		router.push(`${clientUrl}${menuItem.value}`)
 	}
 
-  useEffect(() => {
-    if(appId){
-      findApp(appId)
-    }
-  }, [appId])
+	useEffect(() => {
+		if (appId) {
+			findApp(appId)
+		}
+	}, [appId])
 
-  if(loading){
-    return <CircularLoader size={64} />  
-  }
-  if(!app?.shopify_domain || !app?.shopify_storefront_access_token){
-    return(
-      <Placeholder 
-        title="Please connect your Shopify store"
-        description="You need to connect your Shopify store to use this feature"
-      />
-    )
-  }  
+	if (loading) {
+		return <CircularLoader size={64} />
+	}
+	if (!app?.shopify_domain || !app?.shopify_storefront_access_token) {
+		return (
+			<Placeholder
+				title="Please connect your Shopify store"
+				description="You need to connect your Shopify store to use this feature"
+			/>
+		)
+	}
 	return (
-		<ShopifyProvider 
-      shopUrl='/admin/shop'
-      domain={app.shopify_domain}
-      storefrontAccessToken={app.shopify_storefront_access_token}
-    >
+		<ShopifyProvider
+			shopUrl="/admin/shop"
+			domain={app.shopify_domain}
+			storefrontAccessToken={app.shopify_storefront_access_token}
+		>
 			{menuItems && (
 				<AdminLayoutLeft>
 					<AdminMenu

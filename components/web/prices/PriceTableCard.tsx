@@ -34,8 +34,8 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
 			setAuthOpen(true)
 			return
 		}
-		if (price.url){
-      router.push(price.url)    
+		if (price.url) {
+			router.push(price.url)
 		}
 	}
 

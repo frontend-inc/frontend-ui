@@ -14,7 +14,7 @@ export type ShopifyCollectionCoverProps = {
 	opacity?: number
 	overlayColor?: string
 	href?: string
-  buttonText?: string
+	buttonText?: string
 }
 
 const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
@@ -31,7 +31,7 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 		alignItems = 'center',
 		overlayColor = '#000000',
 		href,
-    buttonText
+		buttonText,
 	} = props
 
 	if (!shopifyCollection) return null
@@ -48,7 +48,7 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 			alignItems={alignItems}
 			href={href}
 			handleClick={handleClick}
-      buttonText={buttonText}
+			buttonText={buttonText}
 		/>
 	)
 }

@@ -12,8 +12,7 @@ type AdminLayoutProps = {
 }
 
 const AdminLayout: React.FC<AdminLayoutProps> = (props) => {
-	
-  const {
+	const {
 		logo,
 		children,
 		handleClick,

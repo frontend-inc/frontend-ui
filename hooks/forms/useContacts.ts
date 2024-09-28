@@ -4,14 +4,14 @@ import { useApp } from '..'
 import { useApi } from 'frontend-js'
 
 type UseContactParams = {
-  formId?: number | string 
+	formId?: number | string
 }
 
 const useContacts = (params: UseContactParams) => {
-  const { formId } = params || {}
+	const { formId } = params || {}
 	const { apiUrl } = useApp()
 
-  const { api } = useApi()
+	const { api } = useApi()
 	const url = `${apiUrl}/cms/contacts`
 	const apiParams = {
 		url,
@@ -26,7 +26,7 @@ const useContacts = (params: UseContactParams) => {
 		empty,
 		editing,
 		isValid,
-    handleChange,
+		handleChange,
 		resource: contact,
 		resources: contacts,
 		findOne: findContact,
@@ -61,13 +61,13 @@ const useContacts = (params: UseContactParams) => {
 		loadingWrapper,
 	} = useResource(apiParams)
 
-  const submitForm = async (contact) => {
-    const url = `${apiUrl}/cms/forms/${formId}/form_responses`
-    const payload = {
-      contact
-    }
-    return await loadingWrapper(() => api.post(url, payload))
-  }
+	const submitForm = async (contact) => {
+		const url = `${apiUrl}/cms/forms/${formId}/form_responses`
+		const payload = {
+			contact,
+		}
+		return await loadingWrapper(() => api.post(url, payload))
+	}
 
 	return {
 		paginate,
@@ -88,7 +88,7 @@ const useContacts = (params: UseContactParams) => {
 		createContact,
 		deleteContact,
 		deleteContacts,
-    submitForm,
+		submitForm,
 		loadMore,
 		addAttachment,
 		removeAttachment,
@@ -110,7 +110,7 @@ const useContacts = (params: UseContactParams) => {
 		setContacts,
 		startIndex,
 		endIndex,
-    loadingWrapper 
+		loadingWrapper,
 	}
 }
 

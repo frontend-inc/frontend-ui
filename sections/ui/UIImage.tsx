@@ -7,15 +7,7 @@ import { SectionProps } from '../../types'
 type UIImageProps = SectionProps & ImageProps
 
 const UIImage: React.FC<UIImageProps> = (props) => {
-	const {
-		mode,
-		py,
-		px,
-		maxWidth,
-		requireAuth,
-		requirePaid,
-		...rest
-	} = props
+	const { mode, py, px, maxWidth, requireAuth, requirePaid, ...rest } = props
 
 	return (
 		<Section

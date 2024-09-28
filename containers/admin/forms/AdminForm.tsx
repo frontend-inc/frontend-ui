@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Stack, Typography } from '@mui/material'
 import { useAdminForms } from '../../../hooks'
-import {
-	AdminFormEdit,
-	AdminFormDetails,
-	AdminFormQuestionList,
-} from '../..'
+import { AdminFormEdit, AdminFormDetails, AdminFormQuestionList } from '../..'
 
 type AdminFormProps = {
 	formId: string
 }
 
-const AdminForm: React.FC<AdminFormProps> = (
-	props
-) => {
+const AdminForm: React.FC<AdminFormProps> = (props) => {
 	const [open, setOpen] = useState(false)
 
 	const { formId } = props || {}
@@ -59,16 +53,11 @@ const AdminForm: React.FC<AdminFormProps> = (
 
 	return (
 		<Stack direction="column" spacing={1}>
-			<AdminFormDetails
-				form={form}
-				handleEdit={handleEdit}
-			/>
+			<AdminFormDetails form={form} handleEdit={handleEdit} />
 			<Typography variant="subtitle1" color="text.primary">
 				Questions
 			</Typography>
-			<AdminFormQuestionList 
-        formId={form?.id} 
-      />
+			<AdminFormQuestionList formId={form?.id} />
 			<AdminFormEdit
 				open={open}
 				handleClose={() => setOpen(false)}

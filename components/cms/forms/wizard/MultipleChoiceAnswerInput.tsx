@@ -9,21 +9,23 @@ export type MultipleChoiceAnswerInputProps = {
 	direction?: 'row' | 'column'
 	name: string
 	value?: any
-  answers: AnswerType[]
+	answers: AnswerType[]
 	handleChange: (e: any) => void
 	multiSelect?: boolean
 }
 
-const MultipleChoiceAnswerInput: React.FC<MultipleChoiceAnswerInputProps> = (props) => {
+const MultipleChoiceAnswerInput: React.FC<MultipleChoiceAnswerInputProps> = (
+	props
+) => {
 	const {
 		label,
 		layout = 'list',
-    multiSelect = true,
+		multiSelect = true,
 		direction = 'column',
 		name,
 		value,
 		handleChange,
-    answers=[],
+		answers = [],
 	} = props
 
 	const [selected, setSelected] = useState(value || [])
@@ -60,19 +62,19 @@ const MultipleChoiceAnswerInput: React.FC<MultipleChoiceAnswerInputProps> = (pro
 				<List disablePadding sx={sx.list}>
 					{answers?.map((answer, idx) => (
 						<ResourceListItem
-              enableBorder
-              selected={ selected?.includes(answer.value) }
-              image={ answer?.image?.url }
-              primary={ answer.title }
-              secondary={ answer.description }
-              handleClick={() => handleSelect(answer.value)}
-              slots={{
-                image: {
-                  height: 120,
-                  width: 120
-                }
-              }}
-            />
+							enableBorder
+							selected={selected?.includes(answer.value)}
+							image={answer?.image?.url}
+							primary={answer.title}
+							secondary={answer.description}
+							handleClick={() => handleSelect(answer.value)}
+							slots={{
+								image: {
+									height: 120,
+									width: 120,
+								},
+							}}
+						/>
 					))}
 				</List>
 			)}
@@ -81,19 +83,19 @@ const MultipleChoiceAnswerInput: React.FC<MultipleChoiceAnswerInputProps> = (pro
 					{answers?.map((answer, idx) => (
 						<Box sx={sx.item} key={idx}>
 							<ResourceGridItem
-                enableBorder
-                selected={ selected?.includes(answer.value) }
-                image={ answer?.image?.url }
-                primary={ answer.title }
-                secondary={ answer.description }
-                handleClick={() => handleSelect(answer.value)}
-                slots={{
-                  image: {
-                    height: 120,
-                    width: 120
-                  }
-                }}
-              />
+								enableBorder
+								selected={selected?.includes(answer.value)}
+								image={answer?.image?.url}
+								primary={answer.title}
+								secondary={answer.description}
+								handleClick={() => handleSelect(answer.value)}
+								slots={{
+									image: {
+										height: 120,
+										width: 120,
+									},
+								}}
+							/>
 						</Box>
 					))}
 				</Box>

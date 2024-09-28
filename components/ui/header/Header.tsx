@@ -22,10 +22,10 @@ const Header: React.FC<HeaderProps> = (props) => {
 
 	const {
 		logo,
-		links=[],
+		links = [],
 		handleClick,
-    enableStripe, 
-    enableShopify,
+		enableStripe,
+		enableShopify,
 		enableAuth = false,
 	} = props
 
@@ -47,7 +47,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 				links={links}
 				handleClick={handleClick}
 			/>
-			<MobileDrawer        
+			<MobileDrawer
 				enableAuth={enableAuth}
 				enableStripe={enableStripe}
 				enableShopify={enableShopify}

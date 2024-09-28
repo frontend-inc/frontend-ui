@@ -6,38 +6,34 @@ import { useProducts } from '../../../hooks'
 type AdminProductHeaderProps = ResourceHeaderProps
 
 const AdminProductHeader: React.FC<AdminProductHeaderProps> = (props) => {
+	const { handleReload } = props || {}
 
-  const { handleReload } = props || {}
+	const { loading, generateAiProducts } = useProducts()
 
-  const {
-    loading,
-    generateAiProducts 
-  } = useProducts()
-
-  return(
-      <ResourceHeader 
-        { ...props }
-        secondaryAction={
-          <AiButton 
-            loading={loading}
-            title='Generate products using AI'
-            description='Generate products using AI'
-            handleClick={ generateAiProducts }
-          />
-        }
-      />
-  )
+	return (
+		<ResourceHeader
+			{...props}
+			secondaryAction={
+				<AiButton
+					loading={loading}
+					title="Generate products using AI"
+					description="Generate products using AI"
+					handleClick={generateAiProducts}
+				/>
+			}
+		/>
+	)
 }
 
 export default AdminProductHeader
 
 const sx = {
-  iconButton: {
-    minWidth: 44,
-    borderRadius: 1,
-    bgcolor: 'secondary.main',
-    '&:hover': {
-      bgcolor: 'secondary.dark'
-    }
-  }
+	iconButton: {
+		minWidth: 44,
+		borderRadius: 1,
+		bgcolor: 'secondary.main',
+		'&:hover': {
+			bgcolor: 'secondary.dark',
+		},
+	},
 }

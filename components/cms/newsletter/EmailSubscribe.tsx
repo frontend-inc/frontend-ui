@@ -40,11 +40,11 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 	})
 
 	const handleSubmit = async () => {
-		let resp = await create({ 
-      ...contact,
-      source: 'newsletter',
-      accepts_marketing: true
-    })
+		let resp = await create({
+			...contact,
+			source: 'newsletter',
+			accepts_marketing: true,
+		})
 		if (resp?.id) {
 			setContact({})
 			showAlertSuccess('Thank you for subscribing!')
@@ -75,9 +75,9 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 						sx={sx.button}
 						variant="contained"
 						color="primary"
-						onClick={handleSubmit}						
+						onClick={handleSubmit}
 					>
-						{delayedLoading ? <IconLoading /> : buttonText }
+						{delayedLoading ? <IconLoading /> : buttonText}
 					</Button>
 				</Stack>
 			</Stack>

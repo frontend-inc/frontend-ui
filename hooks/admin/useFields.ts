@@ -4,12 +4,11 @@ import { useApi } from 'frontend-js'
 import { useAdmin } from '..'
 
 type UseFieldsParams = {
-  collectionId: string
+	collectionId: string
 }
 
 const useFields = (props: UseFieldsParams) => {
-
-  const { collectionId } = props || {}
+	const { collectionId } = props || {}
 	const { apiUrl } = useAdmin()
 
 	const {

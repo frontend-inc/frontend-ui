@@ -22,28 +22,28 @@ const AdminFormShow: React.FC<AdminFormShowProps> = (props) => {
 	let fields = [
 		{ label: 'Handle', name: 'handle', variant: 'string' },
 		{ label: 'Title', name: 'title', variant: 'string' },
-		{ label: 'Description', name: 'description', variant: 'text' },		
+		{ label: 'Description', name: 'description', variant: 'text' },
 	]
 
 	return (
-    <ResourceModal 
-      loading={loading}
-      open={open}
-      handleClose={handleClose}
-      enableEdit={enableEdit}
-      enableDelete={enableDelete}
-      handleEdit={handleEdit}
-      handleDelete={handleDelete}
-    >
-      <ResourceDetails
-        image={resource?.image?.url}
-        primary={resource?.title}
-        secondary={resource?.description}
-        resource={resource}
-        fields={fields}
-        direction="column"
-      />
-    </ResourceModal>
+		<ResourceModal
+			loading={loading}
+			open={open}
+			handleClose={handleClose}
+			enableEdit={enableEdit}
+			enableDelete={enableDelete}
+			handleEdit={handleEdit}
+			handleDelete={handleDelete}
+		>
+			<ResourceDetails
+				image={resource?.image?.url}
+				primary={resource?.title}
+				secondary={resource?.description}
+				resource={resource}
+				fields={fields}
+				direction="column"
+			/>
+		</ResourceModal>
 	)
 }
 

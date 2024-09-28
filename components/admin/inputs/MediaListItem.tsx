@@ -2,17 +2,12 @@ import React, { useState, useEffect } from 'react'
 import {
 	MenuItem,
 	Typography,
-  Box,
+	Box,
 	Card,
 	CardActionArea,
 	CardHeader,
 } from '@mui/material'
-import {
-	Image,
-	AttachmentImage,
-	Label,
-	MenuButton,
-} from '../../../components'
+import { Image, AttachmentImage, Label, MenuButton } from '../../../components'
 
 type MediaItemProps = {
 	item?: any
@@ -52,22 +47,22 @@ const MediaItem: React.FC<MediaItemProps> = (props) => {
 						</MenuButton>
 					)
 				}
-			/>			
-				{contentType == 'image' || contentType == 'video' ? (
-          <Box sx={ sx.image }>
-            <Image
-              disableBorderRadius
-              height={size}
-              width={size}
-              src={item?.url}
-              alt={item?.content_type}
-              objectFit={'contain'}
-              handleClick={() => (handleClick ? handleClick(item) : null)}
-            />
-          </Box>
-				) : (
-					<AttachmentImage icon="File" width={size} height={size} />
-				)}			
+			/>
+			{contentType == 'image' || contentType == 'video' ? (
+				<Box sx={sx.image}>
+					<Image
+						disableBorderRadius
+						height={size}
+						width={size}
+						src={item?.url}
+						alt={item?.content_type}
+						objectFit={'contain'}
+						handleClick={() => (handleClick ? handleClick(item) : null)}
+					/>
+				</Box>
+			) : (
+				<AttachmentImage icon="File" width={size} height={size} />
+			)}
 		</Card>
 	)
 }
@@ -77,7 +72,7 @@ export default MediaItem
 const sx = {
 	root: {
 		borderRadius: 1,
-		bgcolor: 'background.paper',		
+		bgcolor: 'background.paper',
 		borderColor: 'divider',
 		p: 0,
 		minWidth: '120px',
@@ -88,8 +83,8 @@ const sx = {
 	},
 	header: {
 		py: 0,
-		px: 1,    
-    alignItems: 'center'
+		px: 1,
+		alignItems: 'center',
 	},
 	gradient: {
 		backgroundImage:
@@ -99,10 +94,10 @@ const sx = {
 		backgroundSize: 'cover',
 	},
 	image: {
-    height: 160,         
+		height: 160,
 		display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    overflow: 'hidden'
+		alignItems: 'center',
+		justifyContent: 'center',
+		overflow: 'hidden',
 	},
 }

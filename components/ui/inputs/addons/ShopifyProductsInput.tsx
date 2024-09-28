@@ -37,8 +37,8 @@ const ShopifyProductImage: React.FC<ShopifyProductImageProps> = (props) => {
 					alt={product?.title}
 					height={height}
 					width={width}
-          enableDelete
-          handleDelete={handleDelete}
+					enableDelete
+					handleDelete={handleDelete}
 				/>
 			</Box>
 		</Fade>
@@ -201,5 +201,4 @@ const sx = {
 		flexWrap: 'wrap',
 		gap: '10px',
 	},
-	
 }

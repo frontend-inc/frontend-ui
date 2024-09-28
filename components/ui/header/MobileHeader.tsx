@@ -32,22 +32,22 @@ const MobileNav = (props: MobileNavProps) => {
 
 	return (
 		<Hidden mdUp>
-			<Box sx={ sx.appBar }>
-        <Stack direction="row" spacing={1} sx={{ width: '100%'}}>
-          <IconButton onClick={() => setMenuOpen(true)}>
-            <Icon name="Menu" size={24} />
-          </IconButton>
-          <Logo
-            handleClick={() => handleClick('/')}
-            src={logo}
-            width={logoWidth}
-            height={logoHeight - 20}
-          />
-          <Box sx={sx.rightMenu}>
-            {enableStripe && <CartButton />}
-            {enableShopify && <ShopifyCartButton />}
-          </Box>
-        </Stack>
+			<Box sx={sx.appBar}>
+				<Stack direction="row" spacing={1} sx={{ width: '100%' }}>
+					<IconButton onClick={() => setMenuOpen(true)}>
+						<Icon name="Menu" size={24} />
+					</IconButton>
+					<Logo
+						handleClick={() => handleClick('/')}
+						src={logo}
+						width={logoWidth}
+						height={logoHeight - 20}
+					/>
+					<Box sx={sx.rightMenu}>
+						{enableStripe && <CartButton />}
+						{enableShopify && <ShopifyCartButton />}
+					</Box>
+				</Stack>
 			</Box>
 		</Hidden>
 	)
@@ -57,7 +57,7 @@ export default MobileNav
 
 const sx = {
 	appBar: {
-    width: '100%',
+		width: '100%',
 		height: 64,
 		bgcolor: 'background.default',
 	},
@@ -66,7 +66,7 @@ const sx = {
 	},
 	header: {
 		width: '100%',
-	},	
+	},
 	rightMenu: {
 		width: '100px',
 		display: 'flex',

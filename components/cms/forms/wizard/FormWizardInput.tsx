@@ -11,7 +11,7 @@ type FormInputProps = {
 	value?: any | any[]
 	options: any
 	placeholder?: string
-  answers?: AnswerType[]
+	answers?: AnswerType[]
 	handleChange: (e: SyntheticEventType) => void
 }
 
@@ -23,7 +23,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		errors,
 		value,
 		options,
-    answers=[],
+		answers = [],
 		placeholder,
 		handleChange,
 	} = props
@@ -42,7 +42,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			name={name}
 			value={value}
 			options={options}
-      answers={answers}
+			answers={answers}
 			handleChange={handleChange}
 			placeholder={placeholder}
 		/>

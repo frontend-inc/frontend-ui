@@ -7,58 +7,57 @@ import { useResourceContext } from 'frontend-js'
 import { CoverProps } from '../../../components/web/covers/Cover'
 
 export type CarouselCoverListItemsProps = CoverProps & {
-  href?: string
-  height?: number
-  enableAutoPlay?: boolean
-  enableArrows?: boolean
-  enableGradient?: boolean
-  enableOverlay?: boolean
+	href?: string
+	height?: number
+	enableAutoPlay?: boolean
+	enableArrows?: boolean
+	enableGradient?: boolean
+	enableOverlay?: boolean
 }
 
-const CarouselCoverListItems: React.FC<CarouselCoverListItemsProps> = (props) => {
+const CarouselCoverListItems: React.FC<CarouselCoverListItemsProps> = (
+	props
+) => {
 	const router = useRouter()
 	const { clientUrl } = useApp()
 
 	const {
-    href,
+		href,
 		height,
-    buttonText,
+		buttonText,
 		enableAutoPlay = true,
 		enableArrows = false,
 		enableGradient = false,
 		enableOverlay = false,
 	} = props
 
-	const { loading, resources } = useResourceContext()  
+	const { loading, resources } = useResourceContext()
 
 	const handleClick = (resource) => {
-    if (clientUrl && href && resource?.handle) {
-      router.push(`${clientUrl}${href}/${resource?.handle}`)
-    }
+		if (clientUrl && href && resource?.handle) {
+			router.push(`${clientUrl}${href}/${resource?.handle}`)
+		}
 	}
 
 	return (
 		<Box
 			sx={{
-				...sx.root,        
+				...sx.root,
 				...(loading && sx.loading),
-        height
+				height,
 			}}
 		>
-			<Swipeable
-				enableAutoPlay={enableAutoPlay}
-				enableArrows={enableArrows}
-			>
-				{resources?.map((resource, index) => (					
-          <Cover
-            key={index}
-            image={ resource?.image?.url }
-            title={ resource?.title }
-            handleClick={() => handleClick(resource)}
-            enableGradient={enableGradient}
-            enableOverlay={enableOverlay}
-            buttonText={ buttonText }
-          />
+			<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
+				{resources?.map((resource, index) => (
+					<Cover
+						key={index}
+						image={resource?.image?.url}
+						title={resource?.title}
+						handleClick={() => handleClick(resource)}
+						enableGradient={enableGradient}
+						enableOverlay={enableOverlay}
+						buttonText={buttonText}
+					/>
 				))}
 			</Swipeable>
 		</Box>

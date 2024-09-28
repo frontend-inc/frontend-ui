@@ -12,7 +12,7 @@ import {
 	CellLocation,
 	CellString,
 	CellShopify,
-  CellProducts,
+	CellProducts,
 	CellText,
 	CellPrice,
 	CellRating,
@@ -52,9 +52,9 @@ const Cell: React.FC<CellProps> = (props) => {
 		select: CellEnum,
 		user: CellUser,
 		file: CellFile,
-    multiple_choice: CellArray,
-    single_choice: CellString,    
-    products: CellProducts,
+		multiple_choice: CellArray,
+		single_choice: CellString,
+		products: CellProducts,
 		shopify_products: CellArray,
 	}
 

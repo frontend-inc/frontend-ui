@@ -22,7 +22,7 @@ const AdminProductCollectionsList: React.FC = () => {
 	return (
 		<ResourceList
 			selectable
-      sortable
+			sortable
 			url={`${apiUrl}/product_collections`}
 			name={'product_collection'}
 			enableSearch

@@ -3,7 +3,7 @@ import { Box, Avatar as MuiAvatar, Typography } from '@mui/material'
 
 type UserAvatarProps = {
 	src?: string
-	variant?: 'circular' | 'rounded' 
+	variant?: 'circular' | 'rounded'
 	label?: string
 	size?: number
 	color?: string

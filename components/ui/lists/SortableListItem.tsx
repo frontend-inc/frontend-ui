@@ -4,7 +4,7 @@ import { DragIndicator } from '@mui/icons-material'
 
 type SortableListItemProps = {
 	primary?: string | React.ReactNode
-	secondary?: string | React.ReactNode 
+	secondary?: string | React.ReactNode
 	isDragging?: boolean
 }
 
@@ -22,10 +22,7 @@ const SortableListItem: React.FC<SortableListItemProps> = (props) => {
 			<ListItemIcon sx={sx.dragHandle}>
 				<DragIndicator sx={sx.icon} />
 			</ListItemIcon>
-			<ListItemText
-				primary={ primary } 				
-				secondary={ secondary }									
-			/>
+			<ListItemText primary={primary} secondary={secondary} />
 		</ListItem>
 	)
 }

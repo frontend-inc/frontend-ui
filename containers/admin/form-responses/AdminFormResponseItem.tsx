@@ -1,7 +1,5 @@
 import React from 'react'
-import {
-	ResourceListItem,
-} from '../../../components'
+import { ResourceListItem } from '../../../components'
 import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
 
 const AdminFormResponseItem: React.FC<ResourceItemProps> = (props) => {
@@ -21,8 +19,8 @@ const AdminFormResponseItem: React.FC<ResourceItemProps> = (props) => {
 			selectable={selectable}
 			selected={selected}
 			image={resource?.image?.url}
-			primary={resource?.name}		      
-      secondary={resource?.email}
+			primary={resource?.name}
+			secondary={resource?.email}
 			handleDelete={handleDelete}
 			handleClick={handleClick}
 			handleSelect={handleSelect}

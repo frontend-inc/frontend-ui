@@ -7,15 +7,7 @@ import { SectionProps, HeadingProps } from '../../types'
 type UITextProps = SectionProps & HeadingProps & TextProps
 
 const UIText: React.FC<UITextProps> = (props) => {
-	const {
-		mode,
-		py,
-		px,
-		maxWidth,
-		requireAuth,
-		requirePaid,
-		...rest
-	} = props
+	const { mode, py, px, maxWidth, requireAuth, requirePaid, ...rest } = props
 
 	return (
 		<Section
@@ -26,7 +18,7 @@ const UIText: React.FC<UITextProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-      {/* @ts-ignore */}
+			{/* @ts-ignore */}
 			<Text {...rest} />
 		</Section>
 	)

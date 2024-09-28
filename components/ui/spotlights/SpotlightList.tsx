@@ -5,15 +5,15 @@ import { Container, BrandLogos, Label, Image } from '../..'
 export type SpotlightListProps = {
 	label?: string
 	image?: string
-  logos?: {
-    image: string 
-    title: string 
-  }[]
+	logos?: {
+		image: string
+		title: string
+	}[]
 	primary?: string | React.ReactNode
-	secondary?: React.ReactNode 
+	secondary?: React.ReactNode
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
-	children?: React.ReactNode  
+	children?: React.ReactNode
 	slots?: {
 		image?: any
 		content?: any
@@ -27,61 +27,62 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 		primary,
 		secondary,
 		actions,
-    logos=[],
+		logos = [],
 		secondaryAction,
 		children,
-    slots={
-      image: {}
-    }
+		slots = {
+			image: {},
+		},
 	} = props || {}
 
 	return (
-    <Box sx={ sx.root }>
-      <Container maxWidth="md">
-        <Stack sx={sx.container} spacing={6}>          
-          <Stack sx={sx.header} spacing={3}>          
-            <Box><Label label={ label } /></Box>
-            <Typography color="text.primary" variant="h1" sx={ sx.header }>
-              {primary}
-            </Typography>          
-            { secondary }       
-            { actions }     
-            { logos?.length > 0 && (
-              <BrandLogos logos={ logos } />             
-            )}
-          </Stack>          
-          { children }      
-          <Box sx={sx.imageContainer}>
-            <Image               
-              src={image} 
-              alt={primary} 
-              height={500} 
-              objectFit='contain'
-              { ...slots.image }           
-            />
-          </Box>
-        </Stack>
-      </Container>
-    </Box>
+		<Box sx={sx.root}>
+			<Container maxWidth="md">
+				<Stack sx={sx.container} spacing={6}>
+					<Stack sx={sx.header} spacing={3}>
+						<Box>
+							<Label label={label} />
+						</Box>
+						<Typography color="text.primary" variant="h1" sx={sx.header}>
+							{primary}
+						</Typography>
+						{secondary}
+						{actions}
+						{logos?.length > 0 && <BrandLogos logos={logos} />}
+					</Stack>
+					{children}
+					<Box sx={sx.imageContainer}>
+						<Image
+							src={image}
+							alt={primary}
+							height={500}
+							objectFit="contain"
+							{...slots.image}
+						/>
+					</Box>
+				</Stack>
+			</Container>
+		</Box>
 	)
 }
 
 export default Spotlight
 
 const sx = {
-  root: {
-    pt: 8, 
-    pb: 0,
-    height: 'auto',
-    width: '100%',  
-    background: theme => `radial-gradient(ellipse 100% 95% at center bottom, ${theme.palette.primary.main}, rgba(0, 0, 0, 1))`
-  },
+	root: {
+		pt: 8,
+		pb: 0,
+		height: 'auto',
+		width: '100%',
+		background: (theme) =>
+			`radial-gradient(ellipse 100% 95% at center bottom, ${theme.palette.primary.main}, rgba(0, 0, 0, 1))`,
+	},
 	container: {
-    px: 2,
+		px: 2,
 		width: '100%',
 		justifyContent: 'flex-start',
 		alignItems: 'center',
-	},	
+	},
 	header: {
 		maxWidth: 600,
 		width: '100%',
@@ -111,15 +112,15 @@ const sx = {
 	imageContainer: {
 		width: '100%',
 		borderRadius: 1,
-    boxShadow: 6,
-	},  
-  logos: {
-    p: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  logo: {
-    height: 64,
-    width: 64
-  }
+		boxShadow: 6,
+	},
+	logos: {
+		p: 2,
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	logo: {
+		height: 64,
+		width: 64,
+	},
 }

@@ -156,7 +156,7 @@ const useTheme = (props: ThemeProps) => {
 
 		if (bodyFont) {
 			typography = {
-        subtitle1: {
+				subtitle1: {
 					...typography.subtitle1,
 					fontFamily: bodyFont,
 				},
@@ -209,7 +209,7 @@ const useTheme = (props: ThemeProps) => {
 		bgcolor,
 		textPrimary,
 		textSecondary,
-		headerFont,    
+		headerFont,
 		bodyFont,
 		borderRadius,
 		muiTheme,
