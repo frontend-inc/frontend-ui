@@ -9,7 +9,7 @@ type ActionProps = {
 	size?: 'small' | 'medium' | 'large'
 	variant?: 'text' | 'outlined' | 'contained'
 	url?: string
-	path: string
+	path?: string
 	onClick?: () => void
 	children: React.ReactNode
 }
@@ -32,7 +32,7 @@ const ButtonAction: React.FC<ActionProps> = (props) => {
 	const handleClick = () => {
 		if (url) {
 			window.open(url, '_blank')
-		} else {
+		} else if(path){      
 			router.push(path)
 		}
 	}

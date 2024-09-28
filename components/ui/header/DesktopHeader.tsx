@@ -1,16 +1,17 @@
 import React from 'react'
 import { IconButton, Box, Hidden } from '@mui/material'
-import { AuthButton, Icon } from '../..'
+import { ButtonActions, AuthButton, Icon } from '../..'
 import Logo from './Logo'
 import { CartButton } from '../..'
 import { ShopifyCartButton } from '../../shopify'
 import { useApp } from '../../../hooks'
-import { MenuLinkType } from '../../..'
+import { ButtonType, MenuLinkType } from '../../..'
 import TopMenuItem from './TopMenuItem'
 
 type DesktopHeaderProps = {
 	logo: string
 	links: MenuLinkType[]
+  buttons: ButtonType[]
 	enableAuth?: boolean
 	enableShopify?: boolean
 	enableStripe?: boolean
@@ -23,6 +24,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 	const {
 		logo,
 		links,
+    buttons,
 		handleClick,
 		enableAuth = false,
 		enableStripe = false,
@@ -62,9 +64,14 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 								))}
 						</Box>
 						<Box sx={sx.rightMenu}>
+              { buttons?.length > 0 && (
+                <Box sx={{ mr: 1 }}>
+                  <ButtonActions size="small" buttons={buttons} />
+                </Box>
+              )}
 							{enableAuth && <AuthButton />}
 							{enableStripe && <CartButton />}
-							{enableShopify && <ShopifyCartButton />}
+							{enableShopify && <ShopifyCartButton />}              
 						</Box>
 					</Box>
 				</Box>

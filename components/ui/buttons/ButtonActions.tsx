@@ -1,10 +1,8 @@
 import React from 'react'
 import { Stack } from '@mui/material'
 import ButtonAction from './ButtonAction'
-import ButtonMenu from './ButtonMenu'
 import { ButtonType } from '../../../types'
 import { UserType } from 'frontend-js'
-import { MenuButton } from '../..'
 
 type ButtonActionsProps = {
 	buttons: ButtonType[]

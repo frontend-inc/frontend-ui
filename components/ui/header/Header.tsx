@@ -3,12 +3,13 @@ import { Box } from '@mui/material'
 import MobileDrawer from './MobileDrawer'
 import MobileHeader from './MobileHeader'
 import DesktopHeader from './DesktopHeader'
-import { MenuLinkType } from '../../../types'
+import { ButtonType, MenuLinkType } from '../../../types'
 import { useApp } from '../../../hooks'
 
 export type HeaderProps = {
 	mode?: 'accent' | 'light' | 'dark'
 	logo?: string
+  buttons?: ButtonType[]
 	enableAuth?: boolean
 	enableStripe?: boolean
 	enableShopify?: boolean
@@ -23,6 +24,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 	const {
 		logo,
 		links = [],
+    buttons = [],
 		handleClick,
 		enableStripe,
 		enableShopify,
@@ -37,6 +39,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 				enableStripe={enableStripe}
 				enableShopify={enableShopify}
 				links={links}
+        buttons={buttons}
 				handleClick={handleClick}
 			/>
 			<MobileHeader
@@ -45,13 +48,14 @@ const Header: React.FC<HeaderProps> = (props) => {
 				enableShopify={enableShopify}
 				enableNotifications
 				links={links}
+        buttons={buttons}
 				handleClick={handleClick}
 			/>
 			<MobileDrawer
 				enableAuth={enableAuth}
 				enableStripe={enableStripe}
 				enableShopify={enableShopify}
-				links={links}
+				links={links}        
 				handleClick={handleClick}
 			/>
 		</Box>

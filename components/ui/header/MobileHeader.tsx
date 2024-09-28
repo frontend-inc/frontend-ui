@@ -1,10 +1,9 @@
 import React from 'react'
 import { Stack, Box, Hidden, IconButton } from '@mui/material'
-import { Icon } from '../..'
-import { CartButton } from '../..'
+import { CartButton, ButtonActions, Icon } from '../..'
 import { ShopifyCartButton } from '../../shopify'
 import { useApp } from '../../../hooks'
-import { MenuLinkType } from '../../..'
+import { ButtonType, MenuLinkType } from '../../..'
 import Logo from './Logo'
 
 type MobileNavProps = {
@@ -12,6 +11,7 @@ type MobileNavProps = {
 	logoWidth?: number
 	logoHeight?: number
 	links: MenuLinkType[]
+  buttons: ButtonType[]
 	enableShopify?: boolean
 	enableStripe?: boolean
 	enableNotifications?: boolean
@@ -26,6 +26,7 @@ const MobileNav = (props: MobileNavProps) => {
 		logoWidth = 120,
 		logoHeight = 50,
 		handleClick,
+    buttons,
 		enableStripe = false,
 		enableShopify = false,
 	} = props
@@ -33,7 +34,7 @@ const MobileNav = (props: MobileNavProps) => {
 	return (
 		<Hidden mdUp>
 			<Box sx={sx.appBar}>
-				<Stack direction="row" spacing={1} sx={{ width: '100%' }}>
+				<Stack direction="row" spacing={1} sx={sx.header}>
 					<IconButton onClick={() => setMenuOpen(true)}>
 						<Icon name="Menu" size={24} />
 					</IconButton>
@@ -44,8 +45,13 @@ const MobileNav = (props: MobileNavProps) => {
 						height={logoHeight - 20}
 					/>
 					<Box sx={sx.rightMenu}>
+            { buttons?.length > 0 && (
+              <Box sx={{ mr: 1 }}>
+                <ButtonActions size="small" buttons={buttons} />
+              </Box>
+            )}
 						{enableStripe && <CartButton />}
-						{enableShopify && <ShopifyCartButton />}
+						{enableShopify && <ShopifyCartButton />}            
 					</Box>
 				</Stack>
 			</Box>
@@ -66,6 +72,7 @@ const sx = {
 	},
 	header: {
 		width: '100%',
+    alignItems: 'center'
 	},
 	rightMenu: {
 		width: '100px',
