@@ -53,6 +53,7 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 					{children}
 					<Box sx={sx.imageContainer}>
 						<Image
+              disableBorderRadius
 							src={image}
 							alt={primary}
 							height={500}
@@ -111,7 +112,8 @@ const sx = {
 	},
 	imageContainer: {
 		width: '100%',
-		borderRadius: 1,
+    overflow: 'hidden',
+		borderRadius: theme => `${2 * theme.shape.borderRadius}px ${2 * theme.shape.borderRadius}px 0 0`,
 		boxShadow: 6,
 	},
 	logos: {

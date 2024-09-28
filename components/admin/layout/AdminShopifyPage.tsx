@@ -76,7 +76,7 @@ const AdminShopifyPage: React.FC<AdminShopifyPageProps> = (props) => {
 	}
 	return (
 		<ShopifyProvider
-			shopUrl="/admin/shop"
+			shopUrl="/editor/shop"
 			domain={app.shopify_domain}
 			storefrontAccessToken={app.shopify_storefront_access_token}
 		>

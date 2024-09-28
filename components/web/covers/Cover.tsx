@@ -20,7 +20,7 @@ export type CoverProps = {
 	enableOverlay?: boolean
 	opacity?: number
 	overlayColor?: string
-	href?: string
+	path?: string
 }
 
 const Cover: React.FC<CoverProps> = (props) => {
@@ -30,8 +30,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 	const {
 		title,
 		description,
-		textVariant = 'h2',
-		buttonText,
+		textVariant = 'h2',		
 		handleClick,
 		image,
 		height = 520,
@@ -41,14 +40,15 @@ const Cover: React.FC<CoverProps> = (props) => {
 		opacity = 0.65,
 		alignItems = 'center',
 		overlayColor = '#000000',
-		href,
+    buttonText,
+		path,
 	} = props
 
 	const handleItemClick = () => {
 		if (handleClick) {
 			return handleClick()
-		} else if (href) {
-			router.push(`${clientUrl}${href}`)
+		} else if (path) {
+			router.push(`${clientUrl}${path}`)
 		}
 	}
 

@@ -48,7 +48,11 @@ const Image: React.FC<ImageProps> = (props) => {
 			<Box
 				sx={{
 					position: 'relative',
-					maxWidth: width ? `${width}px` : '100%',
+          width: "100%",
+					maxWidth: { 
+            sm: width ? `${width}px` : '100%',
+            xs: '100%'
+          },
 					height: objectFit == 'cover' ? `${height}px` : 'auto',
 				}}
 			>
@@ -80,8 +84,8 @@ const Image: React.FC<ImageProps> = (props) => {
 							<NextImage
 								src={src}
 								alt={alt}
-								height={1600}
-								width={1600}
+								height={1200}
+								width={1200}
 								layout="responsive"
 								style={{
 									height: objectFit == 'cover' ? `${height}px` : 'auto',

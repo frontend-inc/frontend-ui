@@ -82,7 +82,7 @@ export const groupResourcesByField = (resources, fieldName, allowedValues) => {
 // https://cloudinary.com/documentation/resizing_and_cropping
 export const resizeCloudinaryImage = (
 	src,
-	{ width, height, transform = 'fill' }
+	{ width, height, transform = 'fill' } // fit | fill | crop | scale | pad | lfill | limit
 ) => {
 	if (!src) return null
 	let index = src.indexOf('/upload') + 7 // 7 is number of chars in '/upload'

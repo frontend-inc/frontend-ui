@@ -61,7 +61,7 @@ const AdminCollectionMenu: React.FC = () => {
 	const [showModal, setShowModal] = useState(false)
 
 	const handleClick = async (collection) => {
-		router.push(`/admin/${appId}/collections/${collection?.name}`)
+		router.push(`/dashboard/${appId}/collections/${collection?.name}`)
 	}
 
 	const handleEditCollectionClick = (collection) => {
@@ -83,7 +83,7 @@ const AdminCollectionMenu: React.FC = () => {
 		}
 		if (resp?.id) {
 			reloadCollections()
-			router.push(`/admin/${appId}/collections/${resp?.name}`)
+			router.push(`/dashboard/${appId}/collections/${resp?.name}`)
 			setCollection({})
 			setShowModal(false)
 		}
@@ -103,7 +103,7 @@ const AdminCollectionMenu: React.FC = () => {
 				let nextCollection = collections.filter(
 					(c) => c.name !== activeCollection.name
 				)[0]
-				router.push(`/admin/${appId}/collections/${nextCollection?.name}`)
+				router.push(`/dashboard/${appId}/collections/${nextCollection?.name}`)
 			}
 			setShowDeleteModal(false)
 		} catch (e) {
@@ -123,7 +123,7 @@ const AdminCollectionMenu: React.FC = () => {
 	const handleViewClick = async (view) => {
 		apiQuery.where(view?.query)
 		router.push(
-			`/admin/${appId}/collections/${
+			`/dashboard/${appId}/collections/${
 				view?.collection?.name
 			}?${apiQuery.url()}&view_id=${view?.id}`
 		)

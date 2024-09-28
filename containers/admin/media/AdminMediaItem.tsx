@@ -17,11 +17,18 @@ const AdminMediaItem: React.FC<AdminMediaItemProps> = (props) => {
 			enableBorder
 			sortable={sortable}
 			//@ts-ignore
-			image={resizeCloudinaryImage(resource?.url, { width: 800, height: 800 })}
+			image={resource?.url}
 			primary={resource?.content_type}
 			secondaryAction={<Label label={resource?.dimensions} />}
 			handleClick={handleClick}
 			handleDelete={handleDelete}
+      slots={{
+        image: {
+          height: 160,
+          width: 320,          
+          objectFit: 'contain',
+        }
+      }}
 		/>
 	)
 }

@@ -17,7 +17,7 @@ const CollectionSchemaToggle: React.FC<CollectionSchemaToggleProps> = (
 	const { tab = 0 } = props
 
 	const handleClick = (path) => {
-		router.push(`/admin/${appId}/${path}/${collectionId}`)
+		router.push(`/dashboard/${appId}/${path}/${collectionId}`)
 	}
 
 	return (

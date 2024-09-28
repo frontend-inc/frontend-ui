@@ -148,9 +148,7 @@ const sx = {
 		p: 0,
 		px: 1,
 		pl: 3,
-		bgcolor: 'background.default',
-		borderBottom: '1px solid',
-		borderColor: 'divider',
+		bgcolor: 'background.default',		
 	},
 	dialogTitleContent: {
 		height: '50px',

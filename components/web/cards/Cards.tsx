@@ -5,10 +5,11 @@ import { useRouter } from 'next/router'
 
 type CardType = {
 	label?: string
-	title?: string
+	title: string
 	description: string
 	image: string
 	buttonText?: string
+  path?: string
 	url?: string
 }
 
@@ -26,8 +27,8 @@ const Cards: React.FC<CardsProps> = (props) => {
 	const { items, enableGradient, enableOverlay } = props || {}
 
 	const handleClick = (card: CardType) => {
-		if (card?.url) {
-			router.push(card.url)
+		if (card?.path) {
+			router.push(card.path)
 		}
 	}
 

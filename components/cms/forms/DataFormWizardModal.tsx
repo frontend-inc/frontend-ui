@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { FormCard, FormWizardModal } from '../..'
+import { Container, FormCard, FormWizardModal } from '../..'
 import { Box } from '@mui/material'
 import { useForms, useContacts } from '../../../hooks'
 import { HeadingProps } from '../../../types'
@@ -73,38 +73,40 @@ const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
 	}, [formId])
 
 	return (
-		<Box sx={sx.root}>
-			{!submitted ? (
-				<FormCard
-					image={form?.image?.url}
-					title={form?.title}
-					description={form?.description}
-					buttonText={form?.button_text || 'Get Started'}
-					handleClick={() => setOpen(true)}
-				/>
-			) : (
-				<FormCard
-					checkMark
-					title={form?.end_title}
-					description={form?.end_description}
-					buttonText={form?.end_button_text}
-					handleClick={handleResetForm}
-				/>
-			)}
-			<FormWizardModal
-				open={open}
-				handleClose={() => setOpen(false)}
-				loading={loading || responseLoading}
-				resource={contact}
-				setResource={setContact}
-				handleChange={handleChange}
-				handleSubmit={handleSubmit}
-				fields={form?.questions}
-				handleRemove={handleRemove}
-				handleRemoveAttachment={handleRemove}
-				handleAddAttachment={handleAddAttachment}
-			/>
-		</Box>
+    <Container maxWidth="md">
+      <Box sx={sx.root}>
+        {!submitted ? (
+          <FormCard
+            image={form?.image?.url}
+            title={form?.title}
+            description={form?.description}
+            buttonText={form?.button_text || 'Get Started'}
+            handleClick={() => setOpen(true)}
+          />
+        ) : (
+          <FormCard
+            checkMark
+            title={form?.end_title}
+            description={form?.end_description}
+            buttonText={form?.end_button_text}
+            handleClick={handleResetForm}
+          />
+        )}
+        <FormWizardModal
+          open={open}
+          handleClose={() => setOpen(false)}
+          loading={loading || responseLoading}
+          resource={contact}
+          setResource={setContact}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          fields={form?.questions}
+          handleRemove={handleRemove}
+          handleRemoveAttachment={handleRemove}
+          handleAddAttachment={handleAddAttachment}
+        />
+      </Box>
+    </Container>
 	)
 }
 
@@ -116,7 +118,6 @@ const sx = {
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
-		padding: 2,
 	},
 	iconContainer: {
 		display: 'flex',

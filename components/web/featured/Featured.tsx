@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Stack } from '@mui/material'
-import { Placeholder } from '../../../components'
+import { Container, Placeholder } from '../../../components'
 import FeaturedCard from './FeaturedCard'
 
 export type FeaturedProps = {
@@ -11,6 +11,7 @@ export type FeaturedProps = {
 		description?: string
 		image?: string
 		buttonText?: string
+    path?: string
 		url?: string
 	}[]
 	enableGradient?: boolean
@@ -27,7 +28,7 @@ const Featured: React.FC<FeaturedProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Box>
+		<Container maxWidth='md'>
 			<Stack spacing={6}>
 				{items?.map((item, i) => (
 					<FeaturedCard
@@ -35,9 +36,9 @@ const Featured: React.FC<FeaturedProps> = (props) => {
 						label={item?.label}
 						title={item?.title}
 						description={item?.description}
-						image={item?.image}
+						image={item?.image}            
 						buttonText={item?.buttonText}
-						href={item?.url}
+						href={item?.path}
 						flexDirection={i % 2 === 0 ? 'row' : 'row-reverse'}
 						enableBorder={enableBorder}
 						enableGradient={enableGradient}
@@ -52,7 +53,7 @@ const Featured: React.FC<FeaturedProps> = (props) => {
 					description="Your featured content will appear here."
 				/>
 			)}
-		</Box>
+		</Container>
 	)
 }
 

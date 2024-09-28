@@ -16,7 +16,7 @@ const AdminFormDetails: React.FC<AdminFormProps> = (props) => {
 	const { form, handleEdit } = props || {}
 
 	const handleResponses = () => {
-		router.push(`/admin/${appId}/users/forms/${form.handle}/responses`)
+		router.push(`/dashboard/${appId}/users/forms/${form.handle}/responses`)
 	}
 
 	return (
