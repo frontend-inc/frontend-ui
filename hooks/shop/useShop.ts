@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { ShopContext } from '../../context'
 
 const useShop = () => {
-	const { cart, setCart, cartOpen, setCartOpen } = useContext(
+	const { cartCookie, cart, setCart, cartOpen, setCartOpen } = useContext(
 		ShopContext
 	) as any
 
@@ -11,6 +11,7 @@ const useShop = () => {
 		setCart,
 		cartOpen,
 		setCartOpen,
+    cartCookie
 	}
 }
 

@@ -66,9 +66,6 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 					/>
 				</Box>
 			}
-			secondaryAction={
-				<ButtonActions numVisible={0} buttons={buttons} resource={resource} />
-			}
 			addToCart={
 				<Box>
 					<AddToCartButton availableForSale productId={resource?.id} />

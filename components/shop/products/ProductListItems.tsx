@@ -83,7 +83,7 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 			<DataLayout {...slots.list} grid={grid} loading={loading}>
 				{resources?.map((resource, index) => (
 					<ProductListItem
-						key={index}
+						key={resource?.id}
 						style={style}
 						resource={resource}
 						displayFields={displayFields}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
 	Badge,
 	IconButton,
@@ -10,7 +10,7 @@ import {
 } from '@mui/material'
 import { Icon } from '../../../components'
 import { useCart } from '../../../hooks'
-import { useAuth } from 'frontend-js'
+import { getCookie, setCookie } from 'cookies-next'
 
 type CartIconButtonProps = {
 	icon?: string
@@ -77,8 +77,25 @@ type CartButtonProps = {
 
 const CartButton: React.FC<CartButtonProps> = (props) => {
 	const { variant = 'icon', label, icon = 'ShoppingBag' } = props
+  
+	const { cartCookie, cart, cartOpen, setCartOpen, createCart, fetchCart } = useCart()
+  
+  const [cartId, setCartId] = useState(String(getCookie(cartCookie)))
 
-	const { cart, cartOpen, setCartOpen } = useCart()
+  useEffect(() => {
+    if(!cartId) {      
+      createCart()      
+    }else{
+      fetchCart(cartId)
+    }
+  }, [cartId])
+
+  useEffect(() => {
+    if(cartCookie && cart?.uid) {
+      setCartId(cart?.uid)
+      setCookie(cartCookie, cart?.uid)
+    }
+  }, [cartCookie, cart?.uid])
 
 	return variant == 'icon' ? (
 		<CartIconButton

@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { useApi, useAuth } from 'frontend-js'
 import { useShop } from '../../hooks'
+import { setCookie, getCookie } from 'cookies-next'
 import useSWR from 'swr'
 
 const useCart = () => {
 	const { api } = useApi()
 
-	const { cart, setCart, cartOpen, setCartOpen } = useShop()
+	const { 
+    cartCookie, 
+    cart, 
+    setCart, 
+    cartOpen, 
+    setCartOpen 
+  } = useShop()
 
 	const [loading, setLoading] = useState(false)
 	const [errors, setErrors] = useState(null)
@@ -16,40 +23,43 @@ const useCart = () => {
 		name: 'cart',
 	}
 
-	const { currentUser } = useAuth()
-	const cacheKey = cartOpen && currentUser?.id ? true : false
-	const fetcher = () => loadingWrapper(() => api.fetchCart(apiParams))
-	useSWR([cacheKey], fetcher, {
-		revalidateOnFocus: true,
-		revalidateOnReconnect: true,
-	})
+  const [cartId, setCartId] = useState(getCookie(cartCookie))
+	
+  const fetchCart = async (cartId) => {
+		return await loadingWrapper(() => api.fetchCart(cartId, apiParams))
+	}
 
-	const fetchCart = async () => {
-		return await loadingWrapper(() => api.fetchCart(apiParams))
+	const createCart = async () => {
+		return await loadingWrapper(() => api.createCart(apiParams))
 	}
 
 	const addToCart = async (productId, quantity = 1) => {
+    if(!cartId) return "Cart not found";
 		return await loadingWrapper(() =>
-			api.addToCart(productId, quantity, apiParams)
+			api.addToCart(cartId, productId, quantity, apiParams)
 		)
 	}
 
 	const removeFromCart = async (productId) => {
-		return await loadingWrapper(() => api.removeFromCart(productId, apiParams))
+    if(!cartId) return "Cart not found";
+		return await loadingWrapper(() => api.removeFromCart(cartId, productId, apiParams))
 	}
 
 	const addQuantity = async (productId) => {
-		return await loadingWrapper(() => api.addQuantity(productId, apiParams))
+    if(!cartId) return "Cart not found";
+		return await loadingWrapper(() => api.addQuantity(cartId, productId, apiParams))
 	}
 
 	const removeQuantity = async (productId) => {
-		return await loadingWrapper(() => api.removeQuantity(productId, apiParams))
+    if(!cartId) return "Cart not found";
+		return await loadingWrapper(() => api.removeQuantity(cartId, productId, apiParams))
 	}
 
 	const checkout = async (options) => {
 		try {
+      if(!cartId) return "Cart not found";
 			setLoading(true)
-			return await api.checkout(cart?.id, options, apiParams)
+			return await api.checkout(cartId, options, apiParams)
 		} catch (error) {
 			console.log(error)
 			setErrors(error)
@@ -73,10 +83,25 @@ const useCart = () => {
 			setLoading(false)
 		}
 	}
+  
+  useEffect(() => {
+    let cartUid = getCookie(cartCookie)    
+    if(!cartUid) {
+      createCart()
+        .then((resp) => {
+          setCartId(resp.data.uid)
+          setCookie(cartCookie, resp.data.uid)
+        })
+    } else {
+      setCartId(cartUid)
+    }
+  }, [cartCookie])
 
 	return {
+    cartCookie,
 		loading,
 		errors,
+    createCart,
 		fetchCart,
 		cart,
 		cartOpen,

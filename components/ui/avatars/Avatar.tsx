@@ -16,7 +16,7 @@ const Avatar: React.FC<UserAvatarProps> = (props) => {
 		src,
 		color = '#333333',
 		label,
-		variant = 'circular',
+		variant = 'rounded',
 		enableGradient = false,
 		enableOverlay = false,
 		size = 40,

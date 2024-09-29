@@ -11,24 +11,12 @@ type ProductEmptyProps = {
 
 const ProductEmpty: React.FC<ProductEmptyProps> = (props) => {
 	const { resources } = useResourceContext()
-	const { icon, title, description } = props || {}
+	const { icon='ShoppingCart', title='No products', description='No products available.' } = props || {}
 
-	if (resources?.length > 0) return null
-	return (
-		<Box sx={sx.root}>
-			<Placeholder icon={icon} title={title} description={description} />
-		</Box>
+  if(resources?.length > 0) return null;
+  return (		
+		<Placeholder enableBorder icon={icon} title={title} description={description} />		
 	)
 }
 
 export default ProductEmpty
-
-const sx = {
-	root: {
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		padding: 2,
-	},
-}

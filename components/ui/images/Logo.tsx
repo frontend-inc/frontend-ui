@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { EmptyImage } from '../../../components'
+import { NoImage } from '../../../components'
 import { useTheme } from '@mui/material'
 
 type LogoProps = {
@@ -28,7 +28,7 @@ const Logo: React.FC<LogoProps> = (props) => {
 			}}
 		/>
 	) : (
-		<EmptyImage height={height} />
+		<NoImage height={height} />
 	)
 }
 

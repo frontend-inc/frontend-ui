@@ -60,10 +60,7 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 	return (
 		<Component
 			label={resource?.label}
-			image={resizeCloudinaryImage(resource?.image?.url, {
-				width: 800,
-				height: 800,
-			})}
+			image={resource?.image?.url}
 			primary={resource?.title}
 			handleClick={handleClick}
 			secondary={<SecondaryFields fields={displayFields} resource={resource} />}
@@ -78,10 +75,7 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 						enableComments={enableComments}
 					/>
 				</Box>
-			}
-			secondaryAction={
-				<ButtonMenus numVisible={0} buttons={buttons} resource={resource} />
-			}
+			}			
 			slots={{
 				image: {
 					enableGradient,
