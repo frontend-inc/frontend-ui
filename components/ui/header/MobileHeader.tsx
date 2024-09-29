@@ -34,16 +34,18 @@ const MobileNav = (props: MobileNavProps) => {
 	return (
 		<Hidden mdUp>
 			<Box sx={sx.appBar}>
-				<Stack direction="row" spacing={1} sx={sx.header}>
-					<IconButton onClick={() => setMenuOpen(true)}>
-						<Icon name="Menu" size={24} />
-					</IconButton>
-					<Logo
-						handleClick={() => handleClick('/')}
-						src={logo}
-						width={logoWidth}
-						height={logoHeight - 20}
-					/>
+				<Stack direction="row" spacing={0} sx={sx.header}>
+          <Stack direction="row" justifyContent="flex-start" sx={ sx.leftMenu}>
+            <IconButton onClick={() => setMenuOpen(true)}>
+              <Icon name="Menu" size={24} />
+            </IconButton>
+            <Logo
+              handleClick={() => handleClick('/')}
+              src={logo}
+              width={logoWidth}
+              height={logoHeight - 20}
+            />
+          </Stack>
 					<Box sx={sx.rightMenu}>
             { buttons?.length > 0 && (
               <Box sx={{ mr: 1 }}>
@@ -72,14 +74,17 @@ const sx = {
 	},
 	header: {
 		width: '100%',
-    alignItems: 'center'
+    alignItems: 'space-between',
 	},
 	rightMenu: {
-		width: '100px',
+		width: '100%',
 		display: 'flex',
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'flex-end',
-		height: '60px',
+	},
+  leftMenu: {
+    height: 60,
+    alignItems: 'center'
 	},
 }

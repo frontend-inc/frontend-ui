@@ -4,10 +4,15 @@ import {
 	Typography,
 	Box,
 	Card,
-	CardActionArea,
 	CardHeader,
 } from '@mui/material'
-import { Image, AttachmentImage, Label, MenuButton } from '../../../components'
+import { 
+  TouchableOpacity, 
+  Image,
+  AttachmentImage, 
+  Label,
+  MenuButton 
+} from '../../../components'
 
 type MediaItemProps = {
 	item?: any
@@ -49,6 +54,9 @@ const MediaItem: React.FC<MediaItemProps> = (props) => {
 				}
 			/>
 			{contentType == 'image' || contentType == 'video' ? (
+        <TouchableOpacity 						
+          handleClick={() => (handleClick ? handleClick(item) : null)}
+        >
 				<Box sx={sx.image}>
 					<Image
 						disableBorderRadius
@@ -57,9 +65,9 @@ const MediaItem: React.FC<MediaItemProps> = (props) => {
 						src={item?.url}
 						alt={item?.content_type}
 						objectFit={'contain'}
-						handleClick={() => (handleClick ? handleClick(item) : null)}
 					/>
 				</Box>
+        </TouchableOpacity>
 			) : (
 				<AttachmentImage icon="File" width={size} height={size} />
 			)}
@@ -73,12 +81,14 @@ const sx = {
 	root: {
 		borderRadius: 1,
 		bgcolor: 'background.paper',
-		borderColor: 'divider',
 		p: 0,
 		minWidth: '120px',
 		height: 200,
+    border: '1px solid',
+    borderColor: 'transparent',
 	},
 	selected: {
+    border: '1px solid',
 		borderColor: 'primary.main',
 	},
 	header: {

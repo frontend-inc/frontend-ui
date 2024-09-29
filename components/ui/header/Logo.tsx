@@ -24,14 +24,11 @@ const Logo: React.FC<LogoProps> = (props) => {
 		// @ts-ignore
 		<Button disableRipple sx={sx.root} onClick={handleClick}>
 			{src && (
-				<Image
+				<img
 					src={src}
 					alt="logo"
-					width={160}
-					height={160}
+					height={height}
 					style={{
-						maxHeight: '50px',
-						maxWidth: '120px',
 						objectFit: 'contain',
 					}}
 				/>
