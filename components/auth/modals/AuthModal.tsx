@@ -10,7 +10,7 @@ import {
 } from '../..'
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
-import { Tab, Tabs, Box } from '@mui/material'
+import { Typography, Stack } from '@mui/material'
 import { useApp } from '../../../hooks'
 
 type AuthModalProps = {
@@ -127,14 +127,14 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 	}, [authOpen])
 
 	return (
-		<Modal open={authOpen} handleClose={() => setAuthOpen(false)}>
-			<Box sx={sx.tabsContainer}>
-				<Tabs value={tab} onChange={handleTabChange} variant="fullWidth">
-					<Tab label="Login" value={0} />
-					<Tab label="Register" value={1} />
-				</Tabs>
-			</Box>
-			<Box px={4} sx={sx.content}>
+		<Modal       
+      open={authOpen} 
+      handleClose={() => setAuthOpen(false)}
+    >
+			<Stack direction="column" spacing={2} px={4}>
+        <Typography variant="h4" color='text.primary'>
+          { tab == 0 ? 'Login' : tab == 1 ? 'Signup' : tab == 2 ? 'Forgot Password' : tab == 3 ? 'Verify Pin' : tab == 4 ? 'Resend Pin' : 'Reset Password' }
+        </Typography>
 				{tab === 0 && (
 					<LoginForm
 						errors={errors}
@@ -201,7 +201,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 						handleLogin={handleLoginClick}
 					/>
 				)}
-			</Box>
+			</Stack>
 		</Modal>
 	)
 }
@@ -217,7 +217,7 @@ const sx = {
 		mt: 1,
 		width: '100%',
 	},
-	tabsContainer: {
+	tabsContainer: {    
 		width: '100%',
 		display: 'flex',
 		justifyContent: 'center',

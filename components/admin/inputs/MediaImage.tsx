@@ -5,11 +5,12 @@ import { ImageType } from '../../../types'
 
 type MediaImageProps = {
 	image?: ImageType
+  objectFit?: 'cover' | 'contain'
 	handleRemove: () => void
 }
 
 const MediaImage: React.FC<MediaImageProps> = (props) => {
-	const { image, handleRemove } = props
+	const { image, objectFit='cover', handleRemove } = props
 	return (
 		<Card sx={sx.root}>
 			<Image
@@ -18,6 +19,7 @@ const MediaImage: React.FC<MediaImageProps> = (props) => {
 				width={160}
 				src={image?.url}
 				alt={'media'}
+        objectFit={objectFit}
 			/>
 			{image?.url && (
 				<IconButton size="small" sx={sx.iconButton} onClick={handleRemove}>

@@ -68,6 +68,14 @@ const useCart = () => {
 		}
 	}
 
+  const handleCreateCart = async () => {
+    let resp = await createCart()
+    if(resp?.data?.uid) {       
+        setCartId(resp?.data?.uid)
+        setCookie(cartCookie, resp?.data?.uid)
+    }
+  }
+
 	const loadingWrapper = async (fn) => {
 		try {
 			setErrors(null)
@@ -87,11 +95,7 @@ const useCart = () => {
   useEffect(() => {
     let cartUid = getCookie(cartCookie)    
     if(!cartUid) {
-      createCart()
-        .then((resp) => {
-          setCartId(resp.data.uid)
-          setCookie(cartCookie, resp.data.uid)
-        })
+      handleCreateCart()
     } else {
       setCartId(cartUid)
     }

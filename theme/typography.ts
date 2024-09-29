@@ -20,9 +20,9 @@ export const typography = {
 		fontFamily: 'Instrument Sans',
 		fontWeight: 600,
 		textIndent: 0,
-		fontSize: 34,
+		fontSize: 32,
 		'@media (max-width:600px)': {
-			fontSize: 30,
+			fontSize: 28,
 		},
 		lineHeight: '1.3em',
 	},
@@ -86,8 +86,9 @@ export const typography = {
 	button: {
 		fontFamily: 'Roboto',
 		fontWeight: 600,
-		fontSize: 12,
+		fontSize: 14,
 		letterSpacing: '0.03em',
+    textTransform: 'none',
 	},
 	caption: {
 		fontFamily: 'Roboto',

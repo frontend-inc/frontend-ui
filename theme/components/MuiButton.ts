@@ -4,7 +4,7 @@ export default {
 		disableRipple: true,
 	},
 	styleOverrides: {
-		root: {
+		root: {      
 			whiteSpace: 'nowrap',
 		},
 		sizeSmall: {

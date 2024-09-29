@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import { AdminContext } from '../../../context'
 import { Button, Divider, Box, Stack } from '@mui/material'
-import AdminTabAuth from './AuthIconButton'
+import AdminTabAuth from './AdminAuthIconButton'
 import AdminTabIcon from './AdminTabIcon'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { AuthIconButton } from '.'
+import { AdminAuthIconButton } from '.'
 
 type TabIconsProps = {
 	logo?: string
@@ -56,7 +56,7 @@ const TabIcons: React.FC<TabIconsProps> = (props) => {
 				sx={sx.bottomTabs}
 			>
 				{secondaryActions}
-				<AuthIconButton handleClick={handleMyAccountClick} />
+				<AdminAuthIconButton handleClick={handleMyAccountClick} />
 			</Stack>
 		</Box>
 	)

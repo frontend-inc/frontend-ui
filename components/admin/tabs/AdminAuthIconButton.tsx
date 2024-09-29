@@ -1,15 +1,15 @@
 import React from 'react'
-import { Button, IconButton, MenuItem } from '@mui/material'
+import { IconButton } from '@mui/material'
 import { useAuth } from 'frontend-js'
-import { useMenu, useApp } from '../../../hooks'
+import { useMenu } from '../../../hooks'
 import { UserMenu, UserAvatar } from '../..'
 import { useRouter } from 'next/router'
 
-type AuthIconButtonProps = {
+type AdminAuthIconButtonProps = {
 	handleClick: () => void
 }
 
-const AuthIconButton: React.FC<AuthIconButtonProps> = (props) => {
+const AdminAuthIconButton: React.FC<AdminAuthIconButtonProps> = (props) => {
 	const { handleClick } = props || {}
 	const router = useRouter()
 	const { logout, currentUser } = useAuth()
@@ -38,7 +38,7 @@ const AuthIconButton: React.FC<AuthIconButtonProps> = (props) => {
 	)
 }
 
-export default AuthIconButton
+export default AdminAuthIconButton
 
 const sx = {
 	button: {

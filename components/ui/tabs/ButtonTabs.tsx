@@ -48,7 +48,7 @@ const ButtonTabs: React.FC<ButtonTabsProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (debouncedValue >= 0 && !disableDebounce) {
+		if (debouncedValue != initialValue && !disableDebounce) {
 			handleChange(debouncedValue)
 		}
 	}, [debouncedValue])

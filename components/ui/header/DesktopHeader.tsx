@@ -69,9 +69,9 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
                   <ButtonActions size="small" buttons={buttons} />
                 </Box>
               )}
-							{enableAuth && <AuthButton />}
-							{enableStripe && <CartButton />}
-							{enableShopify && <ShopifyCartButton />}              
+							{enableAuth == true && <AuthButton />}
+							{enableStripe == true && <CartButton />}
+							{enableShopify == true && <ShopifyCartButton />}              
 						</Box>
 					</Box>
 				</Box>

@@ -147,7 +147,7 @@ const sx = {
 	dialogTitleContainer: {
 		p: 0,
 		px: 1,
-		pl: 3,
+		pl: 2,
 		bgcolor: 'background.default',		
 	},
 	dialogTitleContent: {
@@ -158,7 +158,7 @@ const sx = {
 		justifyContent: 'space-between',
 	},
 	dialogContent: {
-		my: 2,
+		mb: 2,
 		height: '100%',
 	},
 	disablePadding: {

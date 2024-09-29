@@ -26,8 +26,8 @@ const Header: React.FC<HeaderProps> = (props) => {
 		links = [],
     buttons = [],
 		handleClick,
-		enableStripe,
-		enableShopify,
+		enableStripe = false,
+		enableShopify = false,
 		enableAuth = false,
 	} = props
 
