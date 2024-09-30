@@ -110,6 +110,7 @@ const sx = {
 		height: '60px',
 	},
 	rightMenu: {
+    pr: 1,
 		width: '200px',
 		display: 'flex',
 		flexDirection: 'row',
