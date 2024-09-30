@@ -2,9 +2,12 @@ import React from 'react'
 import { PrimaryButton } from '../..'
 import { useCart } from '../../../hooks'
 import { useAlerts } from '../../../hooks'
+import { useRouter } from 'next/router'
 
 const CheckoutButton = () => {
 	const { loading, cart, checkout } = useCart()
+
+  const router = useRouter()
 
   const { showAlertError } = useAlerts()
 
@@ -18,9 +21,7 @@ const CheckoutButton = () => {
       showAlertError(resp.errors)
     }else{
       let url = resp?.data?.url
-      if(url){
-        window.open(url)
-      }		
+      router.push(url)      
     }    
 	}
 
