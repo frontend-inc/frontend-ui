@@ -150,6 +150,8 @@ const sx = {
 	root: {
 		my: 0.5,
 		p: 0,
+    border: '1px solid',
+    borderColor: 'transparent',
 		borderRadius: 1,
 		overflow: 'hidden',
 		bgcolor: 'background.paper',

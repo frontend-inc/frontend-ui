@@ -18,6 +18,7 @@ type ModalProps = {
 	open: boolean
 	loading?: boolean
 	handleClose: () => void
+  icon?: string
 	avatar?: React.ReactNode
 	title?: string | React.ReactNode
 	subtitle?: string
@@ -39,6 +40,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 		loading = false,
 		handleClose,
 		avatar,
+    icon,
 		title,
 		subtitle,
 		buttons,
@@ -83,6 +85,9 @@ const Modal: React.FC<ModalProps> = (props) => {
 					<Box sx={sx.dialogTitleContent}>
 						<Stack direction="row" alignItems="center" spacing={1}>
 							{avatar}
+              { icon && (
+                <Icon name={ icon } />
+              )}
 							<Typography variant="subtitle1" color="textPrimary" sx={sx.title}>
 								{title}
 							</Typography>

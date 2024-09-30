@@ -54,9 +54,13 @@ const useProducts = () => {
 		name: 'product',
 	})
 
-	const generateAiProducts = async () => {
+	const aiGenerate = async (prompt) => {
 		return loadingWrapper(() =>
-			api.post(`${apiUrl}/products/generate_ai_products`)
+			api.post(`${apiUrl}/products/ai_generate`, {
+        ai: {
+          prompt: prompt
+        }        
+      })
 		)
 	}
 
@@ -79,7 +83,8 @@ const useProducts = () => {
 		createProduct,
 		deleteProduct,
 		deleteProducts,
-		generateAiProducts,
+		
+    aiGenerate,
 
 		loadMore,
 		publish,

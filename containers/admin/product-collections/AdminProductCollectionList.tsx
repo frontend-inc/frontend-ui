@@ -6,6 +6,7 @@ import AdminProductCollectionCreate from './AdminProductCollectionCreate'
 import AdminProductCollectionEdit from './AdminProductCollectionEdit'
 import AdminProductCollectionShow from './AdminProductCollectionShow'
 import AdminProductCollectionToolbar from './AdminProductCollectionToolbar'
+import AdminProductCollectionHeader from './AdminProductCollectionHeader'
 import { useRouter } from 'next/router'
 
 const AdminProductCollectionsList: React.FC = () => {
@@ -37,6 +38,7 @@ const AdminProductCollectionsList: React.FC = () => {
 			create={AdminProductCollectionCreate}
 			edit={AdminProductCollectionEdit}
 			show={AdminProductCollectionShow}
+      header={AdminProductCollectionHeader}
 			toolbar={AdminProductCollectionToolbar}
 			component={AdminProductCollectionItem}
 			emptyIcon="ShoppingCard"

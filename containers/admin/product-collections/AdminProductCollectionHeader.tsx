@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import { ResourceHeader } from '../../../components'
 import { ResourceHeaderProps } from '../../../components/cms/resources/ResourceHeader'
-import { useProducts } from '../../../hooks'
+import { useProductCollections } from '../../../hooks'
 import { Form, Modal, Icon } from '../../../components'
 import { IconButton } from '@mui/material'
 
 type AdminProductHeaderProps = ResourceHeaderProps
 
-const AdminProductHeader: React.FC<AdminProductHeaderProps> = (props) => {
+const AdminProductCollectionHeader: React.FC<AdminProductHeaderProps> = (props) => {
 	const { handleReload } = props || {}
 
-	const { loading, aiGenerate } = useProducts()
+	const { loading, aiGenerate } = useProductCollections()
 
   const [open, setOpen] = useState(false)
   
@@ -39,7 +39,7 @@ const AdminProductHeader: React.FC<AdminProductHeaderProps> = (props) => {
         </IconButton>
         <Modal
           icon="Wand"
-          title='Generate Products'
+          title='Generate Product Collections'
           loading={loading}
           open={open}
           handleClose={() => setOpen(false)}                  
@@ -51,14 +51,14 @@ const AdminProductHeader: React.FC<AdminProductHeaderProps> = (props) => {
             fields={[
               {                
                 name: 'prompt',
-                label: 'Describe the products to generate',
+                label: 'Describe the product collections to generate',
                 variant: 'text',
                 placeholder: '',
                 default: ''                
               },
             ]}
             handleSubmit={handleGenerateAiProducts}
-            buttonText="Generate Products"
+            buttonText="Generate with AI"
           />
         </Modal>
       </>
@@ -67,7 +67,7 @@ const AdminProductHeader: React.FC<AdminProductHeaderProps> = (props) => {
 	)
 }
 
-export default AdminProductHeader
+export default AdminProductCollectionHeader
 
 const sx = {
 	iconButton: {

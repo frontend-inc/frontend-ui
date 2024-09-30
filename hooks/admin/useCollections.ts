@@ -49,7 +49,7 @@ const useCollections = () => {
 
 	const aiGenerateData = async (collectionId) => {
 		return await loadingWrapper(() =>
-			api.post(`${apiUrl}/collections/${collectionId}/ai_generate_data`)
+			api.post(`${apiUrl}/collections/${collectionId}/ai_generate`)
 		)
 	}
 
