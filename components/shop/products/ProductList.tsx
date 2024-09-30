@@ -85,8 +85,6 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		enableSearch,
 		enableFilters,
 		enableSorting,
-		filterOptions = [],
-		sortOptions = [],
 		header: Header = ProductHeader,
 		list: List = ProductListItems,
 		component: Component = ProductListItem,
@@ -150,6 +148,16 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 	if (!url) {
 		url = `${apiUrl}/shop/products`
 	}
+
+  const filterOptions = [
+    { field: 'average_rating', label: 'Rating', variant: 'ratings_scale' },
+  ]
+
+  const sortOptions = [
+    { name: 'created_at', label: 'Newest' },
+    { name: 'price', label: 'Price' },
+    { name: 'title', label: 'Title' },
+  ]
 
 	return (
 		<DataList
