@@ -223,6 +223,7 @@ const sx: any = {
 		width: '100%',
 	},
 	inputBase: {
+    boxShadow: 1,
 		width: '100%',
 		'& input': {
 			'-webkit-appearance': 'none',
@@ -234,8 +235,7 @@ const sx: any = {
 			borderRadius: 1,
 			fontSize: (theme) => theme.typography.body2.fontSize,
 			fontFamily: (theme) => theme.typography.body2.fontFamily,
-			bgcolor: 'background.paper',
-			border: (theme) => `1px solid ${theme.palette.divider}`,
+			bgcolor: 'background.paper',			
 			'&:focus': {
 				border: (theme) => `1px solid ${theme.palette.primary.light}`,
 			},

@@ -1,7 +1,7 @@
 import React from 'react'
-import { Section, Heading } from '../../components'
+import { Section } from '../../components'
 import { Text } from '../../components'
-import { TextProps } from '../../components/web/text/Text'
+import { TextProps } from '../../components/ui/typography/Text'
 import { SectionProps, HeadingProps } from '../../types'
 
 type UITextProps = SectionProps & HeadingProps & TextProps
@@ -18,7 +18,6 @@ const UIText: React.FC<UITextProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			{/* @ts-ignore */}
 			<Text {...rest} />
 		</Section>
 	)

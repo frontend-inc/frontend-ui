@@ -1,53 +1,63 @@
 import React from 'react'
-import { Typography } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
+import { Container, Heading } from '../..'
+import { TypographyVariantsType } from '../../../types'
 
-type TextProps = {
-	children: string
-	variant?:
-		| 'h1'
-		| 'h2'
-		| 'h3'
-		| 'h4'
-		| 'h5'
-		| 'h6'
-		| 'subtitle1'
-		| 'subtitle2'
-		| 'body1'
-		| 'body2'
-		| 'caption'
-		| 'button'
-		| 'overline'
-		| undefined
-	color?: string
-	textAlign?: 'left' | 'center' | 'right' | 'justify' | undefined
+export type TextProps = {
+	title: string
+	description: string
+	label?: string
+	textAlign?: 'center' | 'left'
+	textVariant?: TypographyVariantsType
+	html?: boolean
 }
 
+// Call To Action
 const Text: React.FC<TextProps> = (props) => {
 	const {
-		children,
-		variant = 'body1',
-		color = 'text.primary',
+		label,
+		title,
+		description,
 		textAlign,
+		textVariant,
+		html = false,
 	} = props || {}
 
 	return (
-		<Typography
-			variant={variant}
-			color={color}
-			sx={{
-				...sx.root,
-				textAlign,
-			}}
-		>
-			{children}
-		</Typography>
+		<Container maxWidth="md">
+			<Stack spacing={2} direction="column" sx={sx.container}>
+				<Heading
+					label={label}
+					title={title}
+					textAlign={textAlign}
+					textVariant={textVariant}
+				/>
+				{html ? (
+					<Typography variant="body1" color="text.primary" sx={sx.text}>
+						<div dangerouslySetInnerHTML={{ __html: description }} />
+					</Typography>
+				) : (
+					<Typography variant="body1" color="text.primary" sx={sx.text}>
+						{description}
+					</Typography>
+				)}
+			</Stack>
+		</Container>
 	)
 }
 
 export default Text
 
 const sx = {
-	root: {
+	container: {
+		px: {
+			md: 12,
+			sm: 8,
+			xs: 0,
+		},
+	},
+	text: {
 		whiteSpace: 'pre-wrap',
+		textAlign: 'justify',
 	},
 }

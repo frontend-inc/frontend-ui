@@ -3,6 +3,7 @@ import { Section, Heading } from '../../components'
 import { CollectionProducts } from '../../components/shop'
 import { CollectionProductsProps } from '../../components/shop/collection-products/CollectionProducts'
 import { SectionProps, HeadingProps } from '../../types'
+import { Stack } from '@mui/material'
 
 type ShopCollectionProductsProps = CollectionProductsProps &
 	SectionProps &
@@ -34,13 +35,15 @@ const ShopCollectionProducts: React.FC<ShopCollectionProductsProps> = (
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Heading
-				label={label}
-				title={title}
-				description={description}
-				textAlign={textAlign}
-			/>
-			<CollectionProducts {...rest} />
+      <Stack direction="column" spacing={1}>			
+        <Heading
+          label={label}
+          title={title}
+          description={description}
+          textAlign={textAlign}
+        />
+        <CollectionProducts {...rest} />
+      </Stack>
 		</Section>
 	)
 }
