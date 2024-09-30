@@ -163,7 +163,7 @@ const sx = {
 		justifyContent: 'space-between',
 	},
 	dialogContent: {
-		mb: 2,
+		my: 1,
 		height: '100%',
 	},
 	disablePadding: {
