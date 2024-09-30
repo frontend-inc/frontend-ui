@@ -65,7 +65,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 						</Box>
 						<Box sx={sx.rightMenu}>
               { buttons?.length > 0 && (
-                <Box sx={{ mr: 1 }}>
+                <Box sx={{ pr: 1 }}>
                   <ButtonActions size="small" buttons={buttons} />
                 </Box>
               )}
