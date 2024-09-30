@@ -44,6 +44,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 			/>
 			<MobileHeader
 				logo={logo || appLogo}
+        enableAuth={enableAuth}
 				enableStripe={enableStripe}
 				enableShopify={enableShopify}
 				enableNotifications

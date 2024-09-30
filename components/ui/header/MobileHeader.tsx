@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack, Box, Hidden, IconButton } from '@mui/material'
-import { CartButton, ButtonActions, Icon } from '../..'
+import { CartButton, ButtonActions, Icon, AuthButton } from '../..'
 import { ShopifyCartButton } from '../../shopify'
 import { useApp } from '../../../hooks'
 import { ButtonType, MenuLinkType } from '../../..'
@@ -12,6 +12,7 @@ type MobileNavProps = {
 	logoHeight?: number
 	links: MenuLinkType[]
   buttons: ButtonType[]
+  enableAuth?: boolean
 	enableShopify?: boolean
 	enableStripe?: boolean
 	enableNotifications?: boolean
@@ -27,6 +28,7 @@ const MobileNav = (props: MobileNavProps) => {
 		logoHeight = 50,
 		handleClick,
     buttons,
+    enableAuth = false,
 		enableStripe = false,
 		enableShopify = false,
 	} = props
@@ -52,6 +54,7 @@ const MobileNav = (props: MobileNavProps) => {
                 <ButtonActions size="small" buttons={buttons} />
               </Box>
             )}
+            {enableAuth && <AuthButton />}
 						{enableStripe && <CartButton />}
 						{enableShopify && <ShopifyCartButton />}            
 					</Box>
@@ -77,6 +80,7 @@ const sx = {
     alignItems: 'space-between',
 	},
 	rightMenu: {
+    pr: 1,
 		width: '100%',
 		display: 'flex',
 		flexDirection: 'row',
