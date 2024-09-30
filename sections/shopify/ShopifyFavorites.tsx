@@ -19,7 +19,6 @@ const ShopifyFavorites: React.FC<ShopifyFavoritesProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		requirePaid,
 		...rest
 	} = props

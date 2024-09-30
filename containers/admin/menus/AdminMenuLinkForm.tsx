@@ -11,13 +11,13 @@ const AdminMenuLinkForm: React.FC<ResourceFormProps> = (props) => {
 			{...props}
 			fields={[
 				{
-					label: 'Name',
-					name: 'name',
+					label: 'Label',
+					name: 'label',
 					variant: 'string',
-					placeholder: 'Link name',
+					placeholder: 'Label',
 				},
 				{
-					label: 'Link type',
+					label: 'Goto',
 					name: 'variant',
 					variant: 'select',
 					options: [
