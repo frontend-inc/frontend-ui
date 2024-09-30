@@ -38,7 +38,6 @@ export type ProductCollectionListProps = {
 const ProductCollectionList: React.FC<ProductCollectionListProps> = (props) => {
 	const { apiUrl } = useApp()
 
-	let { url } = props || {}
 	const {
 		foreignUrl,
 		query,

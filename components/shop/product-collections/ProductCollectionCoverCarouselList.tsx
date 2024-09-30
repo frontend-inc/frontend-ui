@@ -8,18 +8,20 @@ export type ProductCollectionCoverCarouselListProps =
 		enableArrows?: boolean
 		enableAutoPlay?: boolean
 		buttonText?: string
+    height?: number
 	}
 
 const ProductCollectionCoverCarouselList: React.FC<
 	ProductCollectionCoverCarouselListProps
 > = (props) => {
-	const { enableArrows, enableAutoPlay, buttonText } = props || {}
+	const { enableArrows, enableAutoPlay, height, buttonText } = props || {}
 
 	const slots = {
 		list: {
 			enableArrows,
 			enableAutoPlay,
 			buttonText,
+      height
 		},
 	}
 
