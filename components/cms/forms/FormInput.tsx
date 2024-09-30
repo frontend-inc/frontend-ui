@@ -103,9 +103,13 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			valueParam,
 			defaultQuery: query,
 		},
+    string: {
+      disableDebounce: true
+    },
 		text: {
 			multiline: true,
 			rows: 6,
+      disableDebounce: true
 		},
 		select: {
 			// Handle both array of strings and array of objects
