@@ -1,14 +1,12 @@
 import React from 'react'
-import { Button, Box, Stack } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 import {
-	Icon,
 	FilterButton,
 	SortButton,
 	SearchInput,
-	GeoSearchInput,
 } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
-import { useSearch, useCollectionForms } from '../../../hooks'
+import { useSearch } from '../../../hooks'
 
 export type ProductHeaderProps = {
 	query: any
@@ -16,12 +14,8 @@ export type ProductHeaderProps = {
 	enableSearch?: boolean
 	enableFilters?: boolean
 	enableSorting?: boolean
-	enableGeoSearch?: boolean
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
-	enableCreate?: boolean
-	buttonText?: string
-	handleAdd?: () => void
 }
 
 const ProductHeader: React.FC<ProductHeaderProps> = (props) => {
@@ -30,20 +24,15 @@ const ProductHeader: React.FC<ProductHeaderProps> = (props) => {
 		query: defaultQuery = {},
 		filterOptions = [],
 		sortOptions = [],
-		enableCreate = false,
 		enableSearch = false,
-		enableGeoSearch = false,
 		enableFilters = false,
 		enableSorting = false,
-		buttonText = 'Add',
 	} = props
 
 	const {
 		query,
 		keywords,
 		handleKeywordChange,
-		location,
-		handleLocationChange,
 		handleSearch,
 		handleSortBy,
 		handleSortDirection,
@@ -55,9 +44,7 @@ const ProductHeader: React.FC<ProductHeaderProps> = (props) => {
 		query: defaultQuery,
 	})
 
-	const { handleAdd } = useCollectionForms()
-
-	if (!enableSearch && !enableFilters && !enableSorting && !enableCreate) {
+	if (!enableSearch && !enableFilters && !enableSorting) {
 		return null
 	}
 	return (
@@ -72,19 +59,10 @@ const ProductHeader: React.FC<ProductHeaderProps> = (props) => {
 					direction={{ xs: 'column', sm: 'row' }}
 					alignItems="center"
 				>
-					{enableSearch && !enableGeoSearch && (
+					{enableSearch && (
 						<SearchInput
 							value={keywords}
 							handleChange={handleKeywordChange}
-							handleSearch={handleSearch}
-						/>
-					)}
-					{enableGeoSearch && !enableSearch && (
-						<GeoSearchInput
-							value={keywords}
-							location={location}
-							handleChange={handleKeywordChange}
-							handleLocationChange={handleLocationChange}
 							handleSearch={handleSearch}
 						/>
 					)}
@@ -110,23 +88,6 @@ const ProductHeader: React.FC<ProductHeaderProps> = (props) => {
 						</Box>
 					)}
 				</Stack>
-				{enableCreate && (
-					<Stack
-						spacing={1}
-						direction={{ xs: 'column', sm: 'row' }}
-						alignItems="center"
-					>
-						<Button
-							sx={sx.button}
-							color="primary"
-							variant="contained"
-							onClick={handleAdd}
-							startIcon={<Icon name="Plus" color="primary.contrastText" />}
-						>
-							{buttonText}
-						</Button>
-					</Stack>
-				)}
 			</Stack>
 		</Stack>
 	)

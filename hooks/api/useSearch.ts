@@ -57,14 +57,14 @@ const useSearch = (props) => {
 	}
 
 	const handleSortBy = (field: SortOptionType) => {
-		setQuery({
+		findMany({
 			...query,
 			sort_by: field?.name,
 		})
 	}
 
 	const handleSortDirection = (sortDirection: 'asc' | 'desc') => {
-		setQuery({
+		findMany({
 			...query,
 			sort_direction: sortDirection,
 		})

@@ -150,7 +150,11 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 	}
 
   const filterOptions = [
-    { field: 'average_rating', label: 'Rating', variant: 'ratings_scale' },
+    { 
+      field: 'average_rating', 
+      label: 'Rating', 
+      variant: 'ratings_scale' 
+    }
   ]
 
   const sortOptions = [
@@ -172,8 +176,8 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 			enableSearch={enableSearch}
 			enableFilters={enableFilters}
 			enableSorting={enableSorting}
-			filterOptions={filterOptions}
 			sortOptions={sortOptions}
+      filterOptions={[]}
 			header={Header}
 			list={List}
 			component={Component}
