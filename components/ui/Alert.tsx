@@ -38,7 +38,12 @@ const Alert: React.FC<AlertProps> = (props) => {
 	}, [alert])
 
 	useEffect(() => {
-		if (open) setTimeout(() => setOpen(false), 2500)
+		if (open){
+      setTimeout(() => {
+        setOpen(false)
+        setAlert(null)
+      }, 10000)
+    }
 	}, [open])
 
 	return (

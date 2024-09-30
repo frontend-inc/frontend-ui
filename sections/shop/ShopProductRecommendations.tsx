@@ -3,6 +3,7 @@ import { Section, Heading } from '../../components'
 import { ProductSimilarList } from '../../components/shop'
 import { ProductListProps } from '../../components/shop/products/ProductList'
 import { SectionProps, HeadingProps } from '../../types'
+import { Stack } from '@mui/material'
 
 type ShopProductRecommendationsProps = ProductListProps &
 	SectionProps &
@@ -35,13 +36,15 @@ const ShopProductRecommendations: React.FC<ShopProductRecommendationsProps> = (
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Heading
-				label={label}
-				title={title}
-				description={description}
-				textAlign={textAlign}
-			/>
-			<ProductSimilarList {...rest} />
+      <Stack direction="column" spacing={1}>
+        <Heading
+          label={label}
+          title={title}
+          description={description}
+          textAlign={textAlign}
+        />
+        <ProductSimilarList {...rest} />
+      </Stack>
 		</Section>
 	)
 }

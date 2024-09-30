@@ -51,8 +51,6 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 
 	const { resource: product } = useResourceContext()
 
-	const { handleEdit } = useCollectionForms()
-
 	let slots = {
 		image: {
 			enableGradient,

@@ -62,7 +62,7 @@ const PDP: React.FC<PDPProps> = (props) => {
 						</Box>
 						{actions}
 					</Stack>
-					<Stack spacing={2} sx={sx.content} {...slots.content}>
+					<Stack spacing={2} sx={sx.rightPanel} {...slots.content}>
 						<Typography color="text.primary" variant="h4">
 							{primary}
 						</Typography>
@@ -130,8 +130,17 @@ const sx = {
 		width: '100%',
 		textAlign: 'center',
 	},
-	content: {
-		width: '100%',
+  leftPanel: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+	},
+	rightPanel: {
+		width: {
+      sm: '100%',
+      xs: '100%',
+    },
 		maxWidth: {
 			sm: 500,
 			xs: '100%',
@@ -146,21 +155,18 @@ const sx = {
 	buttons: {
 		width: '100%',
 	},
-	imageContainer: {
-		transition: 'all 0.5s ease-in-out',
+	imageContainer: {    
 		borderRadius: 1,
 		width: '100%',
 		minWidth: {
 			sm: 420,
 			xs: '100%',
 		},
-	},
-	leftPanel: {
-		width: '100%',
-	},
-	leftPanelBorder: {
-		pb: 2,
-	},
+    maxWidth: {
+      sm: 640,
+      xs: '100%',    
+    }
+	},		
 	description: {
 		whiteSpace: 'pre-line',
 	},

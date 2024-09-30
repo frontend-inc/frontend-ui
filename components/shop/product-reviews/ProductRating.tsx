@@ -31,6 +31,7 @@ const ProductRating: React.FC<ProductRatingProps> = (props) => {
 			direction="row"
 			spacing={1}
 		>
+      { rating > 0 ? (
 			<Rating
 				size={size}
 				value={rating}
@@ -42,6 +43,11 @@ const ProductRating: React.FC<ProductRatingProps> = (props) => {
 					},
 				}}
 			/>
+      ):(
+        <Typography color={'text.secondary'} variant="body2" sx={ sx.noReviews}>
+          No reviews yet
+        </Typography>
+      )}
 			{rating > 0 && (
 				<Typography color={'text.secondary'} variant="caption">
 					({rating})
@@ -57,3 +63,9 @@ const ProductRating: React.FC<ProductRatingProps> = (props) => {
 }
 
 export default ProductRating
+
+const sx = {
+  noReviews: {
+    fontStyle: 'italic',
+  }
+}
