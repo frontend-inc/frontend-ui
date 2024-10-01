@@ -8,7 +8,7 @@ type ShopProductDetailsProps = ProductProps & SectionProps
 
 const ShopProductDetails: React.FC<ShopProductDetailsProps> = (props) => {
 	const {
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -22,7 +22,7 @@ const ShopProductDetails: React.FC<ShopProductDetailsProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

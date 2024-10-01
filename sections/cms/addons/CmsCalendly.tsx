@@ -12,7 +12,7 @@ const CmsCalendly: React.FC<CmsCalendlyProps> = (props) => {
 		title,
 		description,
 		textAlign,
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -26,7 +26,7 @@ const CmsCalendly: React.FC<CmsCalendlyProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

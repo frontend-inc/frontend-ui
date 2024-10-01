@@ -13,7 +13,7 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (props) 
 		title,
 		description,
 		textAlign,
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -27,7 +27,7 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (props) 
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

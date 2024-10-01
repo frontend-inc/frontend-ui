@@ -8,7 +8,7 @@ type UICallToActionProps = SectionProps & CallToActionProps
 
 const UICallToAction: React.FC<UICallToActionProps> = (props) => {
 	const {
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -22,7 +22,7 @@ const UICallToAction: React.FC<UICallToActionProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

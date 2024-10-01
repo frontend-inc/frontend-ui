@@ -16,7 +16,7 @@ const ShopProductFavoritesGrid: React.FC<ShopProductFavoritesGridProps> = (
 		title,
 		description,
 		textAlign,
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -30,7 +30,7 @@ const ShopProductFavoritesGrid: React.FC<ShopProductFavoritesGridProps> = (
 		<Section
 			requireAuth
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

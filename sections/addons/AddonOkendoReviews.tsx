@@ -8,7 +8,7 @@ type AddonOkendoReviewsProps = SectionProps & OkendoReviewsProps
 
 const AddonOkendoReviews: React.FC<AddonOkendoReviewsProps> = (props) => {
 	const {
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -22,7 +22,7 @@ const AddonOkendoReviews: React.FC<AddonOkendoReviewsProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

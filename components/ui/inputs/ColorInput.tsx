@@ -107,19 +107,6 @@ const ColorInput: React.FC<ColorInputProps> = (props) => {
 		}
 	}
 
-	useEffect(() => {
-		if (value) {
-			setHex(value)
-			setText(value)
-			handleChange({
-				target: {
-					name,
-					value,
-				},
-			})
-		}
-	}, [value])
-
 	return (
 		<Stack direction="column" spacing={1} sx={sx.root}>
 			<InputLabel label={label} info={info} />

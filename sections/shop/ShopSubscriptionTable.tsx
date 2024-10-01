@@ -12,7 +12,7 @@ const ShopSubscriptionTable: React.FC<ShopSubscriptionTableProps> = (props) => {
 		title,
 		description,
 		textAlign = 'center',
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -24,7 +24,7 @@ const ShopSubscriptionTable: React.FC<ShopSubscriptionTableProps> = (props) => {
 
 	return (
 		<Section
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

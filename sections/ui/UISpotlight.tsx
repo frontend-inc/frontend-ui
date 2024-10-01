@@ -1,19 +1,19 @@
 import React from 'react'
 import { Section } from '../../components'
 import { Spotlight } from '../../components'
-import { SpotlightProps } from '../../components/ui/spotlights/SpotlightList'
+import { SpotlightProps } from '../../components/ui/spotlights/Spotlight'
 import { SectionProps } from '../../types'
 
 type UISpotlightProps = SectionProps & SpotlightProps
 
 const UISpotlight: React.FC<UISpotlightProps> = (props) => {
-	const { mode, py, px, maxWidth, requireAuth, requirePaid, ...rest } = props
+	const { bgColor, py, px, maxWidth, requireAuth, requirePaid, ...rest } = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={0}
 			px={0}
 			maxWidth={maxWidth}

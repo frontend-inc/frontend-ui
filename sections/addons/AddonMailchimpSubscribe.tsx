@@ -16,7 +16,7 @@ const AddonMailchimpSubscribe: React.FC<AddonMailchimpSubscribeProps> = (
 		title,
 		description,
 		textAlign,
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -30,7 +30,7 @@ const AddonMailchimpSubscribe: React.FC<AddonMailchimpSubscribeProps> = (
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

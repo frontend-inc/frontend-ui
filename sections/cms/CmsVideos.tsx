@@ -12,7 +12,7 @@ const CmsVideos: React.FC<CmsVideosProps> = (props) => {
 		title,
 		description,
 		textAlign,
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -24,7 +24,7 @@ const CmsVideos: React.FC<CmsVideosProps> = (props) => {
 
 	return (
 		<Section
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

@@ -14,7 +14,7 @@ const ShopifyFavorites: React.FC<ShopifyFavoritesProps> = (props) => {
 		title,
 		description,
 		textAlign,
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -27,7 +27,7 @@ const ShopifyFavorites: React.FC<ShopifyFavoritesProps> = (props) => {
 		<Section
 			requireAuth
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

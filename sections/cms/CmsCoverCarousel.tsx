@@ -7,7 +7,7 @@ import { SectionProps } from '../../types'
 type CmsCoverCarouselProps = SectionProps & CarouselListProps
 
 const CmsCoverCarousel: React.FC<CmsCoverCarouselProps> = (props) => {
-	const { mode, py, px, maxWidth, requireAuth, requirePaid, ...rest } = props
+	const { bgColor, py, px, maxWidth, requireAuth, requirePaid, ...rest } = props
 
 	return (
 		<Section

@@ -14,7 +14,7 @@ const ShopifyRecentlyViewed: React.FC<ShopifyRecentlyViewedProps> = (props) => {
 		title,
 		description,
 		textAlign,
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -28,7 +28,7 @@ const ShopifyRecentlyViewed: React.FC<ShopifyRecentlyViewedProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

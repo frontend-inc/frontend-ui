@@ -8,7 +8,7 @@ type UILogosProps = SectionProps & LogosProps
 
 const UILogos: React.FC<UILogosProps> = (props) => {
 	const {
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -22,7 +22,7 @@ const UILogos: React.FC<UILogosProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={3}
 			px={px}
 			maxWidth={maxWidth}

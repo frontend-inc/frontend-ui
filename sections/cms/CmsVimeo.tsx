@@ -8,7 +8,7 @@ type CmsVimeoProps = SectionProps & ShowVimeoProps
 
 const CmsVimeo: React.FC<CmsVimeoProps> = (props) => {
 	const {
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -22,7 +22,7 @@ const CmsVimeo: React.FC<CmsVimeoProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

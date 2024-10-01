@@ -17,7 +17,7 @@ const ShopCollectionProductsCarousel: React.FC<ShopCollectionProductsCarouselPro
 		title,
 		description,
 		textAlign,
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -30,7 +30,7 @@ const ShopCollectionProductsCarousel: React.FC<ShopCollectionProductsCarouselPro
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

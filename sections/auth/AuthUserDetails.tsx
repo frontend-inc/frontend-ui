@@ -8,7 +8,7 @@ type AuthUserDetailsProps = SectionProps & CurrentUserDetailsProps
 
 const AuthUserDetails: React.FC<AuthUserDetailsProps> = (props) => {
 	const {
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -22,7 +22,7 @@ const AuthUserDetails: React.FC<AuthUserDetailsProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

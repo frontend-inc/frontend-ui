@@ -16,7 +16,7 @@ const ShopProductCollections: React.FC<ShopProductCollectionsProps> = (
 		title,
 		description,
 		textAlign,
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -28,7 +28,7 @@ const ShopProductCollections: React.FC<ShopProductCollectionsProps> = (
 
 	return (
 		<Section
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

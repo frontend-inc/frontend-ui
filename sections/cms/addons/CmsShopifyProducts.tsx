@@ -8,7 +8,7 @@ type CmsShopifyProductProps = SectionProps & FieldShopifyProductsProps
 
 const CmsShopifyProducts: React.FC<CmsShopifyProductProps> = (props) => {
 	const {
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -22,7 +22,7 @@ const CmsShopifyProducts: React.FC<CmsShopifyProductProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

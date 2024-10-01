@@ -7,7 +7,7 @@ type AddonStripeBuyButtonProps = SectionProps & StripeBuyButtonProps
 
 const AddonStripeBuyButton: React.FC<AddonStripeBuyButtonProps> = (props) => {
 	const {
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -21,7 +21,7 @@ const AddonStripeBuyButton: React.FC<AddonStripeBuyButtonProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

@@ -12,7 +12,7 @@ const CmsForm: React.FC<CmsFormProps> = (props) => {
 		title,
 		description,
 		textAlign,
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -25,7 +25,7 @@ const CmsForm: React.FC<CmsFormProps> = (props) => {
 		<Section
 			requireAuth
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

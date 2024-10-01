@@ -8,7 +8,7 @@ type UIEmailSubscribeProps = SectionProps & EmailSubscribeProps
 
 const UIEmailSubscribe: React.FC<UIEmailSubscribeProps> = (props) => {
 	const {
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -22,7 +22,7 @@ const UIEmailSubscribe: React.FC<UIEmailSubscribeProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

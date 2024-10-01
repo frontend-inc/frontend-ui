@@ -8,7 +8,7 @@ type CmsUserProps = SectionProps & UserProfileProps
 
 const CmsUser: React.FC<CmsUserProps> = (props) => {
 	const {
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -22,7 +22,7 @@ const CmsUser: React.FC<CmsUserProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

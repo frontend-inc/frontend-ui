@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { Fade, Box } from '@mui/material'
 import { muiTheme } from '../../theme'
-import { AuthGuard, LightDarkMode } from '../../components'
+import { AuthGuard } from '../../components'
 import { SectionProps } from '../../types'
+import { ThemeProvider } from '../../context'
 
 const Section: React.FC<SectionProps> = (props) => {
 	const {
@@ -10,7 +11,7 @@ const Section: React.FC<SectionProps> = (props) => {
 		requireAuth = false,
 		requirePaid = false,
 		children,
-		mode = 'light',
+		bgColor = '#ffffff',
 		maxWidth,
 		py = 6,
 		px = 3,
@@ -38,7 +39,7 @@ const Section: React.FC<SectionProps> = (props) => {
 	}, [maxWidth])
 
 	return (
-		<LightDarkMode mode={mode}>
+		<ThemeProvider muiTheme={muiTheme} bgcolor={bgColor}>
 			<Fade in={true} timeout={1000}>
 				<Box sx={sx.root}>
 					<Box
@@ -56,7 +57,7 @@ const Section: React.FC<SectionProps> = (props) => {
 					</Box>
 				</Box>
 			</Fade>
-		</LightDarkMode>
+		</ThemeProvider>
 	)
 }
 

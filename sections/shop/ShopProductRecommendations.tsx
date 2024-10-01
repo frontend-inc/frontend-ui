@@ -17,7 +17,7 @@ const ShopProductRecommendations: React.FC<ShopProductRecommendationsProps> = (
 		title,
 		description,
 		textAlign,
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -31,7 +31,7 @@ const ShopProductRecommendations: React.FC<ShopProductRecommendationsProps> = (
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

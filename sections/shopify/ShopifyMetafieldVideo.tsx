@@ -8,7 +8,7 @@ type ShopifyMetafieldVideoProps = SectionProps & MetafieldVideoProps
 
 const ShopifyMetafieldVideo: React.FC<ShopifyMetafieldVideoProps> = (props) => {
 	const {
-		mode,
+		bgColor,
 		py,
 		px,
 		maxWidth,
@@ -22,7 +22,7 @@ const ShopifyMetafieldVideo: React.FC<ShopifyMetafieldVideoProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={mode}
+			bgColor={bgColor}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

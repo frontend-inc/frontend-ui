@@ -7,7 +7,7 @@ import { SectionProps } from '../../types'
 type UIHeroProps = SectionProps & HeroProps
 
 const UIHero: React.FC<UIHeroProps> = (props) => {
-	const { mode, py, px, maxWidth, requireAuth, requirePaid, style, ...rest } =
+	const { bgColor, py, px, maxWidth, requireAuth, requirePaid, style, ...rest } =
 		props
 
 	const fullWidth = style == 'spotlight' || style == 'cover' ? true : false
