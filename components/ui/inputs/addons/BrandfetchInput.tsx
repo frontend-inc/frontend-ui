@@ -19,8 +19,6 @@ const BrandfetchInput: React.FC<BrandfetchInputProps> = (props) => {
 
 	const { resizeLogo, brand, fetchBrand } = useBrandfetch()
 
-	const [selected, setSelected] = useState(null)
-
 	const { loading, uploadFromUrl } = useMedia()
 
 	const handleBrandChange = (ev) => {
