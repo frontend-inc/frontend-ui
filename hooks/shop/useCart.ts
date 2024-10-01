@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useApi, useAuth } from 'frontend-js'
 import { useShop } from '../../hooks'
 import { setCookie, getCookie } from 'cookies-next'
-import useSWR from 'swr'
+import { CartType } from '../../types'
 
 const useCart = () => {
 	const { api } = useApi()
@@ -69,10 +69,10 @@ const useCart = () => {
 	}
 
   const handleCreateCart = async () => {
-    let resp = await createCart()
+    let resp: any = await createCart()
     if(resp?.data?.uid) {       
-        setCartId(resp?.data?.uid)
-        setCookie(cartCookie, resp?.data?.uid)
+      setCartId(resp?.data?.uid)
+      setCookie(cartCookie, resp?.data?.uid)
     }
   }
 

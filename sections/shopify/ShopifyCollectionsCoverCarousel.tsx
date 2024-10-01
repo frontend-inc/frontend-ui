@@ -11,7 +11,7 @@ const ShopifyCollectionsCoverCarousel: React.FC<
 	ShopifyCollectionsCoverCarouselsProps
 > = (props) => {
 	const {
-		mode = 'dark',
+		bgColor = '#000000',
 		py,
 		px,
 		maxWidth,
@@ -24,7 +24,7 @@ const ShopifyCollectionsCoverCarousel: React.FC<
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={'dark'}
+			bgColor={'#000000'}
 			py={0}
 			px={0}
 		>

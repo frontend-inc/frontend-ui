@@ -22,7 +22,7 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = (props) => {
 	const { handleSuccess } = props
 	const { loading, googleLogin } = useAuth()
 	const [OAuthCredentials, setOAuthCredentials] =
-		useState<OAuthCredentialsType>(null)
+		useState<OAuthCredentialsType | null>(null)
 
 	const handleLogin = useGoogleLogin({
 		onSuccess: (codeResponse) => setOAuthCredentials(codeResponse),
@@ -51,7 +51,7 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = (props) => {
 			onClick={handleLogin}
 			startIcon={
 				loading ? (
-					<IconLoading color="secondary.contrastText" loading={loading} />
+					<IconLoading color="secondary.contrastText" />
 				) : (
 					<Box sx={sx.icon} dangerouslySetInnerHTML={{ __html: GoogleIcon }} />
 				)

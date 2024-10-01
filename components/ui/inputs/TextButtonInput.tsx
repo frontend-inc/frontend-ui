@@ -41,7 +41,7 @@ const TextButtonInput: React.FC<TextButtonInputProps> = (props) => {
 				color={color}
 				sx={sx.button}
 				onClick={onClick}
-				startIcon={loading ? <IconLoading loading /> : null}
+				startIcon={loading ? <IconLoading /> : null}
 			>
 				{children}
 			</Button>

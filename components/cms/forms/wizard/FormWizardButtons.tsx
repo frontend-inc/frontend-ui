@@ -44,7 +44,7 @@ const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 					disabled={currentStep == totalSteps}
 					endIcon={
 						loading ? (
-							<IconLoading loading />
+							<IconLoading />
 						) : (
 							<Icon name="ChevronRight" color="primary.contrastText" />
 						)

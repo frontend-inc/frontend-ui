@@ -38,7 +38,7 @@ const TableFilterButton: React.FC<TableFilterButtonProps> = (props) => {
 					variant="contained"
 					startIcon={
 						loading ? (
-							<IconLoading color="secondary.contrastText" loading />
+							<IconLoading color="secondary.contrastText" />
 						) : (
 							<Icon name="ListFilter" color="secondary.contrastText" />
 						)

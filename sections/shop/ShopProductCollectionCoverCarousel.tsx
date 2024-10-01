@@ -11,7 +11,7 @@ const ShopProductCollectionCoverCarousel: React.FC<
 	ShopProductCollectionCoverCarouselProps
 > = (props) => {
 	const {
-		mode = 'dark',
+		bgColor = '#000000',
 		py,
 		px,
 		maxWidth,
@@ -22,7 +22,7 @@ const ShopProductCollectionCoverCarousel: React.FC<
 
 	return (
 		<Section
-			mode={'dark'}
+			bgColor={'#000000'}
 			py={0}
 			px={0}
 			requireAuth={requireAuth}

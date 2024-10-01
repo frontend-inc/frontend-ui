@@ -1,6 +1,5 @@
 import React from 'react'
 import { Box, Stack, Typography } from '@mui/material'
-import { Text } from '../../index'
 
 type TabItemProps = {
 	title: string
@@ -40,9 +39,9 @@ const TabItem: React.FC<TabItemProps> = (props) => {
 				<Typography variant="subtitle1" color="text.primary">
 					{title}
 				</Typography>
-				<Text variant="body1" color="text.secondary">
+				<Typography variant="body1" color="text.secondary">
 					{description}
-				</Text>
+				</Typography>
 			</Stack>
 		</Stack>
 	)

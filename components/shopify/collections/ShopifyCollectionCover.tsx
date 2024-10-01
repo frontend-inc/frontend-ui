@@ -46,7 +46,7 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 			image={shopifyCollection?.image?.url}
 			alt={alt}
 			alignItems={alignItems}
-			href={href}
+			path={href}
 			handleClick={handleClick}
 			buttonText={buttonText}
 		/>

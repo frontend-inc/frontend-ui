@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { AutocompleteInput } from '../../..'
 import { SyntheticEventType } from '../../../../types'
-import { useBrandfetch } from '@frontend-mui/hooks'
+import { useBrandfetch } from '../../../../hooks'
 import { Box } from '@mui/material'
 
 type AutosuggestProps = {

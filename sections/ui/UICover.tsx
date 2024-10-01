@@ -21,7 +21,7 @@ const UICover: React.FC<UICoverProps> = (props) => {
 	return (
 		<Section
 			enableTransitions={enableTransitions}
-			mode={'dark'}
+			bgColor={'#000000'}
 			py={0}
 			px={0}
 			maxWidth={maxWidth}
