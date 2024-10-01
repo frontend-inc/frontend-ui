@@ -12,13 +12,14 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
 		actions,
 		logos = [],
 		children,
+    styles={},
 		slots = {
 			image: {},
 		},
 	} = props || {}
 
 	return (
-		<Box sx={sx.root}>
+		<Box sx={{ ...sx.root, ...styles }}>
 			<Container maxWidth="lg">
 				<Stack
 					direction={{
@@ -28,16 +29,17 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
 					spacing={6}
 				>
 					<Stack sx={sx.header} spacing={3}>
+            { label && (
 						<Box>
 							<Label label={label} />
 						</Box>
+            )}
 						<Typography color="text.primary" variant="h1" sx={sx.title}>
 							{primary}
 						</Typography>
-						{secondary}
-						{actions}
+						{secondary && secondary}
+						{actions && actions}
 						{logos?.length > 0 && <BrandLogos logos={logos} />}
-						{children}
 					</Stack>
 					<Box sx={sx.imageContainer}>
 						<Image
@@ -66,8 +68,6 @@ const sx = {
 		},
 		height: 'auto',
 		width: '100%',
-		background: (theme) =>
-			`radial-gradient(ellipse 100% 95% at center bottom, ${theme.palette.primary.main}, rgba(0, 0, 0, 1))`,
 	},
 	container: {
 		px: 2,

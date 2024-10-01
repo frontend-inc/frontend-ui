@@ -13,7 +13,7 @@ export type SpotlightListProps = {
 	secondary?: React.ReactNode
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
-	children?: React.ReactNode
+  styles?: any
 	slots?: {
 		image?: any
 		content?: any
@@ -28,29 +28,29 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 		secondary,
 		actions,
 		logos = [],
-		secondaryAction,
-		children,
+    styles={},
 		slots = {
 			image: {},
 		},
 	} = props || {}
 
 	return (
-		<Box sx={sx.root}>
+		<Box sx={{ ...sx.root, ...styles }}>
 			<Container maxWidth="md">
 				<Stack sx={sx.container} spacing={6}>
 					<Stack sx={sx.header} spacing={3}>
+            { label && (
 						<Box>
 							<Label label={label} />
-						</Box>
+						</Box>      
+            )}      
 						<Typography color="text.primary" variant="h1" sx={sx.header}>
 							{primary}
 						</Typography>
-						{secondary}
-						{actions}
+						{secondary && secondary}
+						{actions && actions}
 						{logos?.length > 0 && <BrandLogos logos={logos} />}
 					</Stack>
-					{children}
 					<Box sx={sx.imageContainer}>
 						<Image
               disableBorderRadius
@@ -75,8 +75,6 @@ const sx = {
 		pb: 0,
 		height: 'auto',
 		width: '100%',
-		background: (theme) =>
-			`radial-gradient(ellipse 100% 95% at center bottom, ${theme.palette.primary.main}, rgba(0, 0, 0, 1))`,
 	},
 	container: {
 		px: 2,

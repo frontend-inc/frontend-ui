@@ -13,7 +13,7 @@ const UISpotlight: React.FC<UISpotlightProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode={'dark'}
+			mode={mode}
 			py={0}
 			px={0}
 			maxWidth={maxWidth}
