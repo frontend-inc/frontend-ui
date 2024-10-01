@@ -15,10 +15,16 @@ export default CarouselLeftArrow
 const sx = {
 	root: {
 		position: 'absolute',
-		left: 24,
+		left: 20,
     top: '28%',  
-    height: 48,
-    width: 48,  
+    height: {
+      sm: 48,
+      xs: 32
+    },
+    width: {
+      sm: 48,
+      xs: 32
+    },
     boxShadow: 4,
     opacity: 0.8,    
 		bgcolor: 'background.paper',

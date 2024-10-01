@@ -68,7 +68,6 @@ const ProductCarouselListItems: React.FC<ProductCarouselListItemsProps> = (
 						key={index}
 						sx={{
 							...sx.item,
-							mb: enableArrows ? 4 : 1,
 							pb: enableDots ? 4 : 1,
 						}}
 					>
@@ -102,7 +101,7 @@ const sx = {
 	grid: {
 		display: 'grid',
 		gridTemplateColumns: {
-			md: '1fr 1fr 1fr',
+			md: 'repeat(auto-fill, minmax(160px, 1fr))',
 			xs: '1fr',
 		},
 		gap: '16px',
