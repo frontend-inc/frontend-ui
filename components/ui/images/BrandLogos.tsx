@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Box } from '@mui/material'
+import { Stack, Box, Typography } from '@mui/material'
 import Image from 'next/image'
 
 type BrandLogosProps = {
@@ -24,9 +24,9 @@ const BrandLogos: React.FC<BrandLogosProps> = (props) => {
 						maxWidth: width,
 					}}
 				>
-					<Image
+					<Image            
 						key={i}
-						src={logo.image}
+						src={logo?.image}
 						height={height}
 						width={width}
 						style={{
@@ -62,7 +62,6 @@ const sx = {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		borderRadius: 1,
 		overflow: 'hidden',
-	},
+	}  
 }

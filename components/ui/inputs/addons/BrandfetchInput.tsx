@@ -50,8 +50,8 @@ const BrandfetchInput: React.FC<BrandfetchInputProps> = (props) => {
 						<>
 							{logo?.formats
 								?.filter((f) => f.format != 'svg')
-								.map((format) => (
-									<Stack direction="column" spacing={1} sx={sx.card}>
+								.map((format, index) => (
+									<Stack key={ `${logo.domain}-${index}`} direction="column" spacing={1} sx={sx.card}>
 										<TouchableOpacity
 											handleClick={() => handleClick(format, logo)}
 										>

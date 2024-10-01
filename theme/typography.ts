@@ -92,11 +92,10 @@ export const typography = {
 	},
 	caption: {
 		fontFamily: 'Roboto',
-		fontWeight: 600,
-		fontSize: 13,
-		letterSpacing: '-0.05em',
+		fontWeight: 500,
+		fontSize: 15,
 		'@media (max-width:600px)': {
-			fontSize: 12,
+			fontSize: 15,
 		},
 	},
 	overline: {

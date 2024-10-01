@@ -1,19 +1,23 @@
 import React from 'react'
-import { Section } from '../../components'
+import { Section, Heading } from '../../components'
 import { Logos } from '../../components'
 import { LogosProps } from '../../components/web/logos/Logos'
-import { SectionProps } from '../../types'
+import { SectionProps, HeadingProps } from '../../types'
+import { Stack } from '@mui/material'
 
-type UILogosProps = SectionProps & LogosProps
+type UILogosProps = SectionProps & HeadingProps & LogosProps
 
 const UILogos: React.FC<UILogosProps> = (props) => {
 	const {
+    label,
+		title,
+		description,
+		textAlign,
 		bgColor,
 		py,
 		px,
 		maxWidth,
 		requireAuth,
-
 		requirePaid,
 		...rest
 	} = props
@@ -27,7 +31,15 @@ const UILogos: React.FC<UILogosProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Logos {...rest} />
+      <Stack direction="column" spacing={1}>
+        <Heading 
+          label={ label }
+          title={ title }
+          description={ description }
+          textAlign={'center'}
+        />
+			  <Logos {...rest} />
+      </Stack>
 		</Section>
 	)
 }

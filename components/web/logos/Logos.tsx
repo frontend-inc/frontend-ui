@@ -15,11 +15,6 @@ const Logos: React.FC<LogosProps> = (props) => {
 
 	return (
 		<Stack spacing={0} sx={sx.root}>
-			{title && (
-				<Typography variant="caption" color="text.secondary" sx={sx.title}>
-					{title}
-				</Typography>
-			)}
 			<BrandLogos logos={logos} width={128} height={48} />
 			{logos?.length === 0 && (
 				<Placeholder
