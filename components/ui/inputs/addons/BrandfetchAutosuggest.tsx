@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { AutocompleteInput } from '../../..'
 import { SyntheticEventType } from '../../../../types'
 import { useBrandfetch } from '@frontend-mui/hooks'
+import { Box } from '@mui/material'
 
 type AutosuggestProps = {
 	value?: any
@@ -52,16 +53,18 @@ const BrandfetchAutosuggest: React.FC<AutosuggestProps> = (props) => {
 	}
 
 	return (
-		<AutocompleteInput
-			name={name}
-			label={label}
-			value={value}
-			options={options}
-			handleChange={handleAutocompleteChange}
-			handleInputChange={handleInputChange}
-			direction={direction}
-			placeholder={placeholder}
-		/>
+    <Box sx={{ width: '100%', maxWidth: 380 }}>
+      <AutocompleteInput
+        name={name}
+        label={label}
+        value={value}
+        options={options}
+        handleChange={handleAutocompleteChange}
+        handleInputChange={handleInputChange}
+        direction={direction}
+        placeholder={placeholder}
+      />
+    </Box>
 	)
 }
 

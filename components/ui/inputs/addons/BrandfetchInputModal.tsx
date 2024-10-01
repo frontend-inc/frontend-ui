@@ -16,7 +16,6 @@ const BrandfetchInputModal: React.FC<BrandfetchInputProps> = (props) => {
 	const [open, setOpen] = useState(false)
 
 	const handleBrandChange = (storage: any) => {
-		console.log('storage', storage)
 		handleChange({
 			target: {
 				name,

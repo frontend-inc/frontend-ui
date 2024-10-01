@@ -81,7 +81,7 @@ const sx = {
 	list: {
 		mt: 2,
 		display: 'grid',
-		gridTemplateColumns: '1fr 1fr',
+		gridTemplateColumns: 'repeat(auto-fill, minmax(164px, 1fr))',
 		gap: '10px',
 	},
 }

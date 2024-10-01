@@ -62,8 +62,8 @@ const BrandfetchInput: React.FC<BrandfetchInputProps> = (props) => {
 											<Box sx={sx.logo}>
 												<Image
 													src={format?.src}
-													height={128}
-													width={128}
+													height={164}
+													width={164}
 													alt={logo?.domain}
 													objectFit="contain"
 												/>
@@ -86,15 +86,15 @@ export default BrandfetchInput
 const sx = {
 	grid: {
 		display: 'grid',
-		gridTemplateColumns: 'repeat(auto-fill, minmax(128px, 1fr))',
+		gridTemplateColumns: 'repeat(auto-fill, minmax(164px, 1fr))',
 		gap: 1,
 	},
 	logo: {
 		position: 'relative',
 		borderRadius: 1,
 		overflow: 'hidden',
-		height: 128,
-		width: 128,
+		height: 164,
+		width: 164,
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',

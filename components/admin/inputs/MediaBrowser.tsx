@@ -5,7 +5,7 @@ import { Box, Button } from '@mui/material'
 import MediaListItem from './MediaListItem'
 import MediaList from './MediaList'
 import {
-	Drawer,
+	Modal,
 	ButtonTabs,
 	MediaUploader,
 	UnsplashList,
@@ -67,19 +67,19 @@ const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 	]
 
 	return (
-		<Drawer
+		<Modal
+      maxWidth="md"
 			disablePadding
 			open={open}
 			handleClose={handleClose}
 			title={'Browse Media'}
 			buttons={
 				<Button
-					fullWidth
 					variant="contained"
 					color="primary"
 					onClick={handleAttach}
 				>
-					Save
+					Save Media
 				</Button>
 			}
 		>
@@ -125,7 +125,7 @@ const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 					{tab == 3 && <BrandfetchInput onComplete={handleComplete} />}
 				</Box>
 			</Box>
-		</Drawer>
+		</Modal>
 	)
 }
 
@@ -141,5 +141,6 @@ const sx = {
 	},
 	content: {
 		p: 2,
+    minHeight: '50vh',
 	},
 }

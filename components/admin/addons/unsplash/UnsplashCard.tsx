@@ -32,8 +32,8 @@ const UnplashCard: React.FC<UnplashCardProps> = (props) => {
 		>
 			<CardActionArea onClick={() => (handleClick ? handleClick(image) : null)}>
 				<Image
-					height={164}
-					width={164}
+					height={120}
+					width={180}
 					src={image?.urls?.small}
 					alt={image?.alt_description}
 					objectFit="cover"

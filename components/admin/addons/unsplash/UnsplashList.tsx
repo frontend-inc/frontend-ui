@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useUnsplash, useMedia } from '../../../../hooks'
-import { Button, Box } from '@mui/material'
-import { Icon, TextInput } from '../../../../components'
+import { Button, Stack, Box } from '@mui/material'
+import { SearchInput } from '../../../../components'
 import UnsplashCard from './UnsplashCard'
 import UnsplashModal from './UnsplashModal'
 import { ExpandMore } from '@mui/icons-material'
@@ -58,24 +58,17 @@ const UnsplashList: React.FC<UnsplashProps> = (props) => {
 	}
 
 	return (
-		<Box sx={sx.root}>
-			<TextInput
-				name="keywords"
-				value={keywords}
-				placeholder="Search unsplash..."
-				handleChange={handleChange}
-			/>
-			<Button
-				sx={sx.button}
-				fullWidth
-				onClick={handleSearch}
-				variant="contained"
-				color="secondary"
-				endIcon={<Icon name="Search" color="secondary.contrastText" />}
-			>
-				Search
-			</Button>
-			<PoweredByUnsplash />
+		<Box sx={sx.root}>    
+      <Stack spacing={1}>
+        <SearchInput
+          name="keywords"
+          value={keywords}
+          placeholder="Search unsplash..."
+          handleChange={handleChange}
+          handleSearch={handleSearch}
+        />			
+        <PoweredByUnsplash />
+      </Stack>  
 			<Box sx={sx.grid}>
 				{images?.map((image, i) => (
 					<UnsplashCard key={i} image={image} handleClick={handleImageClick} />
@@ -116,7 +109,7 @@ const sx = {
 	grid: {
 		mt: 2,
 		display: 'grid',
-		gridTemplateColumns: '1fr 1fr',
+		gridTemplateColumns: 'repeat(auto-fill, minmax(164px, 1fr))',
 		gap: '10px',
 	},
 	unsplashLogo: {
