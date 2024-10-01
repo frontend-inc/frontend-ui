@@ -16,7 +16,6 @@ const MediaImage: React.FC<MediaImageProps> = (props) => {
 			<Image
 				disableBorderRadius
 				height={160}
-				width={160}
 				src={image?.url}
 				alt={'media'}
         objectFit={objectFit}
@@ -39,7 +38,6 @@ const sx = {
 		border: '1px solid',
 		borderColor: 'divider',
 		p: 0,
-		width: 160,
 		height: 160,
 		position: 'relative',
 	},

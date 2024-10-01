@@ -30,10 +30,7 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 		<Box
 			sx={{
 				...sx.layout,
-				height: {
-					sm: `calc(100vh - ${offsetY}px)`,
-					xs: '100vh',
-				},
+        height: '100%'
 			}}
 		>
 			<Alert />
@@ -62,7 +59,6 @@ export default LayoutContainer
 const sx = {
 	layout: {
 		width: '100%',
-		overflowY: 'hidden',
 	},
 	root: {
 		width: '100%',
@@ -77,7 +73,6 @@ const sx = {
 		display: 'flex',
 		flexDirection: 'column',
 		width: '100%',
-		overflowY: 'hidden',
 	},
 	page: {
 		width: '100%',
