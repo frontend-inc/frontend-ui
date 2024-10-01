@@ -110,7 +110,7 @@ const sx = {
 		width: '100%',
     overflow: 'hidden',
 		borderRadius: 2,	
-    maxHeight: 800,
+    maxHeight: 640,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',	
