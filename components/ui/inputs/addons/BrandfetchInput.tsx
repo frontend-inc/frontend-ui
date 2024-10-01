@@ -8,6 +8,7 @@ import {
 	CircularLoader,
 } from '../../..'
 import { Link, Stack, Box, Typography } from '@mui/material'
+import PoweredByBrandfetch from './PoweredByBrandfetch'
 
 type BrandfetchInputProps = {
 	onComplete: (resource: any) => void
@@ -41,12 +42,7 @@ const BrandfetchInput: React.FC<BrandfetchInputProps> = (props) => {
 	return (
 		<Stack direction="column" spacing={1}>
 			<BrandfetchAutosuggest handleChange={handleBrandChange} />
-			<Typography variant="caption">
-				Powered by{' '}
-				<Link href="https://www.brandfetch.com" target="_blank">
-					Brandfetch.com
-				</Link>
-			</Typography>
+			<PoweredByBrandfetch />
 			{loading && <CircularLoader />}
 			<Box sx={sx.grid}>
 				{!loading &&

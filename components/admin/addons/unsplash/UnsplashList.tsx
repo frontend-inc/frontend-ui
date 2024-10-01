@@ -59,7 +59,7 @@ const UnsplashList: React.FC<UnsplashProps> = (props) => {
 
 	return (
 		<Box sx={sx.root}>    
-      <Stack spacing={1}>
+      <Stack spacing={1} sx={ sx.searchInput }>
         <SearchInput
           name="keywords"
           value={keywords}

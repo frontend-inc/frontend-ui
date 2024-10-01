@@ -84,7 +84,8 @@ const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 			}
 		>
 			<Box>
-				<Box p={1}>
+        <Box sx={ sx.buttonsContainer }>
+				<Box sx={ sx.buttonTabs }>
 					<ButtonTabs
 						disableBorder
 						disablePadding
@@ -93,6 +94,7 @@ const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 						value={tab}
 					/>
 				</Box>
+        </Box>
 				<Box sx={sx.content}>
 					{tab == 0 && (
 						<MediaList
@@ -143,4 +145,14 @@ const sx = {
 		p: 2,
     minHeight: '50vh',
 	},
+  buttonsContainer: {
+    px: 2,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonTabs: {
+    width: '100%',
+    maxWidth: 600
+  }
 }

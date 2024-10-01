@@ -11,7 +11,6 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
 		secondary,
 		actions,
 		logos = [],
-		children,
     styles={},
 		slots = {
 			image: {},
@@ -28,7 +27,7 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
 					}}
 					spacing={6}
 				>
-					<Stack sx={sx.header} spacing={3}>
+					<Stack sx={sx.leftPanel} spacing={2}>
             { label && (
 						<Box>
 							<Label label={label} />
@@ -41,7 +40,7 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
 						{actions && actions}
 						{logos?.length > 0 && <BrandLogos logos={logos} />}
 					</Stack>
-					<Box sx={sx.imageContainer}>
+					<Box sx={sx.rightPanel}>
 						<Image
 							src={image}
 							alt={primary}
@@ -62,10 +61,6 @@ const sx = {
 	root: {
 		pt: 20,
 		py: 8,
-		px: {
-			md: 4,
-			xs: 0,
-		},
 		height: 'auto',
 		width: '100%',
 	},
@@ -81,17 +76,21 @@ const sx = {
 			xs: 'center',
 		},
 	},
-	header: {
+	leftPanel: {
 		alignItems: {
 			md: 'flex-start',
 			xs: 'center',
 		},
 		justifyContent: 'center',
+
 		maxWidth: {
 			md: 600,
 			xs: '100%',
 		},
-		width: '100%',
+		width: {
+      md: '50%',
+      xs: '100%',
+    }
 	},
 	content: {
 		width: '100%',
@@ -114,13 +113,11 @@ const sx = {
 			xs: '100%',
 		},
 	},
-	imageContainer: {
-		minWidth: {
-			md: 400,
-			xs: '100%',
-		},
-		borderRadius: 1,
-		boxShadow: 6,
+	rightPanel: {
+    width: {
+      md: '50%',
+      xs: '100%',    
+    },
 	},
 	logos: {
 		p: 2,

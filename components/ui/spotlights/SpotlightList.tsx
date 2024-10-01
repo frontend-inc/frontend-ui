@@ -38,7 +38,7 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 		<Box sx={{ ...sx.root, ...styles }}>
 			<Container maxWidth="md">
 				<Stack sx={sx.container} spacing={6}>
-					<Stack sx={sx.header} spacing={3}>
+					<Stack sx={sx.header} spacing={2}>
             { label && (
 						<Box>
 							<Label label={label} />
@@ -111,8 +111,7 @@ const sx = {
 	imageContainer: {
 		width: '100%',
     overflow: 'hidden',
-		borderRadius: theme => `${2 * theme.shape.borderRadius}px ${2 * theme.shape.borderRadius}px 0 0`,
-		boxShadow: 6,
+		borderRadius: 2,		
 	},
 	logos: {
 		p: 2,
