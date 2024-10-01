@@ -34,7 +34,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 						alignItems: textAlign,
 					}}
 					direction={'column'}
-					spacing={0}
+					spacing={0.5}
 				>
 					{label && (
 						<Typography variant="caption" color="text.secondary">

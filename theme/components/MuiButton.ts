@@ -13,6 +13,9 @@ export default {
 		sizeMedium: {
 			height: 44,
 		},
+    sizeLarge: {
+      height: 48
+    },
 		outlined: {},
 		contained: {},
 	},

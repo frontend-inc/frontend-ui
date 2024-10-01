@@ -4,12 +4,13 @@ import { useCart } from '../../../hooks'
 import { Box } from '@mui/material'
 
 type AddToCartButtonProps = {
+  size?: 'small' | 'medium' | 'large'
 	productId: string
 	availableForSale?: boolean
 }
 
 const AddToCartButton = (props: AddToCartButtonProps) => {
-	const { productId, availableForSale } = props
+	const { productId, size="medium", availableForSale } = props
 	const { loading, setCartOpen, addToCart } = useCart()
 
 	const handleClick = async () => {
@@ -23,7 +24,7 @@ const AddToCartButton = (props: AddToCartButtonProps) => {
 				loading={loading}
 				onClick={handleClick}
 				disabled={!availableForSale}
-				size="large"
+				size={size}
 			>
 				Add to Cart
 			</PrimaryButton>

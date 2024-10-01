@@ -93,9 +93,8 @@ export const typography = {
 	caption: {
 		fontFamily: 'Roboto',
 		fontWeight: 600,
-		textTransform: 'uppercase',
-		fontSize: 12,
-		letterSpacing: '0.05em',
+		fontSize: 13,
+		letterSpacing: '-0.05em',
 		'@media (max-width:600px)': {
 			fontSize: 12,
 		},
