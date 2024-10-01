@@ -106,7 +106,7 @@ const sx = {
 		bgcolor: 'primary.main',
 		color: 'primary.contrastText',
 		'&:hover': {
-			bgcolor: 'primary.main',
+			bgcolor: 'primary.dark',
 		},
 		boxShadow: 1,
 	},

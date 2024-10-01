@@ -48,8 +48,8 @@ const sx = {
 			sm: '100vh',
 			xs: '100%',
 		},
-		width: 360,
-		minWidth: 360,
+		width: 300,
+		minWidth: 300,
 		'&::-webkit-scrollbar': {
 			display: 'none',
 		},
