@@ -18,7 +18,7 @@ const AdminMenuLinkForm: React.FC<ResourceFormProps> = (props) => {
 				},
 				{
 					label: 'Goto',
-					name: 'variant',
+					name: 'link_type',
 					variant: 'select',
 					options: [
 						{ value: 'page', label: 'Page', icon: 'StickyNote' },
@@ -30,7 +30,7 @@ const AdminMenuLinkForm: React.FC<ResourceFormProps> = (props) => {
 					name: 'url',
 					variant: 'string',
 					placeholder: 'URL',
-					conditions: [{ name: 'variant', operator: 'eq', value: 'url' }],
+					conditions: [{ name: 'link_type', operator: 'eq', value: 'url' }],
 				},
 				{
 					label: 'Page',
@@ -40,7 +40,7 @@ const AdminMenuLinkForm: React.FC<ResourceFormProps> = (props) => {
 					displayField: 'title',
 					url: `${apiUrl}/pages`,
 					query: {},
-					conditions: [{ name: 'variant', operator: 'eq', value: 'page' }],
+					conditions: [{ name: 'link_type', operator: 'eq', value: 'page' }],
 				},
 			]}
 		/>
