@@ -68,7 +68,7 @@ const ProductCarouselListItems: React.FC<ProductCarouselListItemsProps> = (
 						key={index}
 						sx={{
 							...sx.item,
-							pt: enableArrows ? 5 : 1,
+							mb: enableArrows ? 4 : 1,
 							pb: enableDots ? 4 : 1,
 						}}
 					>

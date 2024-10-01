@@ -1,4 +1,5 @@
 export { default as ProductCarouselList } from './ProductCarouselList'
+export { default as ProductCarouselListItems } from './ProductCarouselListItems'
 export { default as ProductSimilarList } from './ProductSimilarList'
 
 // Products

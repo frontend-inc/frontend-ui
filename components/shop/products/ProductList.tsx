@@ -177,7 +177,8 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 			enableFilters={enableFilters}
 			enableSorting={enableSorting}
 			sortOptions={sortOptions}
-      filterOptions={[]}
+      //@ts-ignore
+      filterOptions={filterOptions}
 			header={Header}
 			list={List}
 			component={Component}

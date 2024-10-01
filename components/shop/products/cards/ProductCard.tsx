@@ -65,7 +65,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 			</Box>
 			<Stack spacing={1} sx={sx.cardContent}>
 				<Box sx={sx.content}>
-					<Typography sx={sx.title} color="text.primary" variant="subtitle1">
+					<Typography sx={sx.title} color="text.primary" variant="body1">
 						{primary}
 					</Typography>
 					<Stack direction="row" spacing={1}>

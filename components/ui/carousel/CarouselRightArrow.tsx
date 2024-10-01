@@ -15,12 +15,16 @@ export default CarouselRightArrow
 const sx = {
 	root: {
 		position: 'absolute',
-		right: 0,
-		top: 20,
-		transform: 'translateY(-50%)',
-		bgcolor: 'secondary.main',
+		right: 24,
+    top: '28%',    
+    height: 48,
+    width: 48,
+    boxShadow: 4,
+    opacity: 0.8,	
+		bgcolor: 'background.paper',
 		'&:hover': {
-			bgcolor: 'secondary.dark',
+      opacity: 1.0,
+			bgcolor: 'background.paper',
 		},
 	},
 }

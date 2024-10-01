@@ -5,7 +5,7 @@ import { Icon } from '../..'
 const CarouselLeftArrow: React.FC = (props) => {
 	return (
 		<IconButton {...props} sx={sx.root}>
-			<Icon name="ChevronLeft" />
+			<Icon name="ChevronLeft" color='text.primary' />
 		</IconButton>
 	)
 }
@@ -15,12 +15,16 @@ export default CarouselLeftArrow
 const sx = {
 	root: {
 		position: 'absolute',
-		left: 0,
-		top: 20,
-		transform: 'translateY(-50%)',
-		bgcolor: 'secondary.main',
+		left: 24,
+    top: '28%',  
+    height: 48,
+    width: 48,  
+    boxShadow: 4,
+    opacity: 0.8,    
+		bgcolor: 'background.paper',
 		'&:hover': {
-			bgcolor: 'secondary.dark',
+      opacity: 0.9,
+      bgcolor: 'background.paper',
 		},
 	},
 }
