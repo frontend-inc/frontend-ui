@@ -1,10 +1,9 @@
 import React from 'react'
-import { Stack } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 import {
 	Container,
 	AccordionItem,
 	Placeholder,
-	Text,
 } from '../../../components'
 
 export type AccordionProps = {
@@ -27,9 +26,9 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 						key={i}
 						primary={item?.title}
 						secondary={
-							<Text variant="body1" color="text.primary">
+							<Typography variant="body1" color="text.primary" sx={ sx.text }>
 								{item?.description}
-							</Text>
+							</Typography>
 						}
 					/>
 				))}
@@ -58,4 +57,7 @@ const sx = {
 		mb: 2,
 	},
 	accordionSummary: {},
+  text: {
+    whiteSpace: 'pre-line',
+  }
 }

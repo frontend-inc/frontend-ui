@@ -10,18 +10,14 @@ import { useApp } from '../../../hooks'
 const ShopifyAuthButton: React.FC = () => {
 	const router = useRouter()
 
+
 	const { logout, customer } = useAuth()
 	const { open, anchorEl, closeMenu, toggleMenu } = useMenu()
+	const { clientUrl, setMyAccountOpen } = useApp()
 
-	const { clientUrl } = useApp()
-
-	const handleClick = (path) => {
+	const handleClick = () => {
 		closeMenu()
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth',
-		})
-		router.push(`${clientUrl}/${path}`)
+    setMyAccountOpen(true)		
 	}
 
 	const handleLogoutClick = () => {

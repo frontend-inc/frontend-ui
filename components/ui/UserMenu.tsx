@@ -18,7 +18,7 @@ type UserMenuProps = {
 	toggleMenu: (ev: any) => void
 	handleLogoutClick: () => void
 	children?: React.ReactNode
-	handleClick: (path: string) => void
+	handleClick: () => void
 }
 
 const UserMenu: React.FC<UserMenuProps> = (props) => {

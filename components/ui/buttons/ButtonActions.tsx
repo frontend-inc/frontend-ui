@@ -45,7 +45,6 @@ const ButtonActions: React.FC<ButtonActionsProps> = (props) => {
 								url={button?.url}
 								//@ts-ignore
 								size={size}
-								onClick={button?.onClick}
 								variant={button?.variant || 'contained'}
 							>
 								{button?.label}

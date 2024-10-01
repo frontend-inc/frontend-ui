@@ -45,7 +45,7 @@ const ProductCollectionCover: React.FC<ProductCollectionCoverProps> = (
 			image={productCollection?.image?.url}
 			alt={alt}
 			alignItems={alignItems}
-			href={href}
+			path={href}
 			handleClick={handleClick}
 		/>
 	)

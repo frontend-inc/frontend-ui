@@ -10,7 +10,6 @@ type ActionProps = {
 	variant?: 'text' | 'outlined' | 'contained'
 	url?: string
 	path?: string
-	onClick?: () => void
 	children: React.ReactNode
 }
 
@@ -20,7 +19,6 @@ const ButtonAction: React.FC<ActionProps> = (props) => {
 		icon,
 		url,
 		path,
-		onClick,
 		color = 'secondary',
 		variant = 'contained',
 		size = 'medium',
@@ -56,7 +54,7 @@ const ButtonAction: React.FC<ActionProps> = (props) => {
 					)}
 				</>
 			}
-			onClick={onClick ? onClick : handleClick}
+			onClick={handleClick}
 			variant={variant}
 			color={color}
 			{...rest}

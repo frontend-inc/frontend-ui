@@ -59,7 +59,7 @@ const FormWizardButtons: React.FC<FormWizardButtonsProps> = (props) => {
 					variant="contained"
 					onClick={handleSubmit}
 					disabled={currentStep != totalSteps}
-					endIcon={loading && <IconLoading loading />}
+					endIcon={loading && <IconLoading />}
 				>
 					{buttonText}
 				</Button>
