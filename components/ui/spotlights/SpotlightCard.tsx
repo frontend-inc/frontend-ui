@@ -59,8 +59,8 @@ export default SpotlightCard
 
 const sx = {
 	root: {
-		pt: 20,
-		py: 8,
+		pt: 16,
+		py: 6,
 		height: 'auto',
 		width: '100%',
 	},

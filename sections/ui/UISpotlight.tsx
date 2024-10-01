@@ -14,7 +14,7 @@ const UISpotlight: React.FC<UISpotlightProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
-			py={0}
+			py={py}
 			px={0}
 			maxWidth={maxWidth}
 		>

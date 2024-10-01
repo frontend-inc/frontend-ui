@@ -56,7 +56,7 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
               disableBorderRadius
 							src={image}
 							alt={primary}
-							height={500}
+							height={600}
 							objectFit="contain"
 							{...slots.image}
 						/>
@@ -71,8 +71,6 @@ export default Spotlight
 
 const sx = {
 	root: {
-		pt: 8,
-		pb: 0,
 		height: 'auto',
 		width: '100%',
 	},
@@ -111,7 +109,11 @@ const sx = {
 	imageContainer: {
 		width: '100%',
     overflow: 'hidden',
-		borderRadius: 2,		
+		borderRadius: 2,	
+    maxHeight: 800,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',	
 	},
 	logos: {
 		p: 2,
