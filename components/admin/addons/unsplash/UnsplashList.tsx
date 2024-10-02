@@ -75,16 +75,17 @@ const UnsplashList: React.FC<UnsplashProps> = (props) => {
 				))}
 			</Box>
 			{images?.length > 0 && images?.length % 10 == 0 && (
-				<Button
-					sx={sx.loadMore}
-					fullWidth
-					color="secondary"
-					variant="contained"
-					endIcon={<ExpandMore />}
-					onClick={handleLoadMore}
-				>
-					Load More
-				</Button>
+        <Box sx={ sx.loadMoreContainer }>
+          <Button
+            sx={sx.loadMore}
+            color="secondary"
+            variant="contained"
+            endIcon={<ExpandMore />}
+            onClick={handleLoadMore}
+          >
+            Load More
+          </Button>
+        </Box>
 			)}
 			<UnsplashModal
 				loading={loading}
@@ -115,6 +116,13 @@ const sx = {
 	unsplashLogo: {
 		mt: 2,
 		justifyContent: 'flex-start',
+		alignItems: 'center',
+	},
+  loadMoreContainer: {
+    mt: 2,
+    width: '100%',
+    display: 'flex',		
+		justifyContent: 'center',
 		alignItems: 'center',
 	},
 	loadMore: {

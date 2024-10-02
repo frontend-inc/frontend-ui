@@ -103,26 +103,10 @@ const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 						/>
 					)}
 					{tab == 1 && (
-						<>
-							{uploaded && (
-								<MediaListItem
-									item={uploaded}
-									handleRemove={() => handleRemove(uploaded)}
-								/>
-							)}
-							<MediaUploader onComplete={handleComplete} />
-						</>
+						<MediaUploader onComplete={handleComplete} />
 					)}
 					{tab == 2 && (
-						<>
-							{uploaded && (
-								<MediaListItem
-									item={uploaded}
-									handleRemove={() => handleRemove(uploaded)}
-								/>
-							)}
-							<UnsplashList onComplete={handleComplete} />
-						</>
+						<UnsplashList onComplete={handleComplete} />
 					)}
 					{tab == 3 && <BrandfetchInput onComplete={handleComplete} />}
 				</Box>
