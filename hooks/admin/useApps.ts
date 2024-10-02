@@ -40,7 +40,7 @@ function useApps(): Record<string, any> {
 		setResources: setApps,
 		loadingWrapper,
 	} = useResource({
-		url: `/api/v1/admin/apps`,
+		url: '/api/v1/admin/apps',
 		name: 'app',
 	})
 
@@ -52,8 +52,8 @@ function useApps(): Record<string, any> {
 		return await loadingWrapper(() => api.post(`${apiUrl}/build`))
 	}
 
-	const generateAI = async () => {
-		return await loadingWrapper(() => api.post(`${apiUrl}/generate_ai`))
+	const generateAI = async (appId) => {
+		return await loadingWrapper(() => api.post(`/api/v1/admin/apps/${appId}/generate_ai`))
 	}
 
 	return {
