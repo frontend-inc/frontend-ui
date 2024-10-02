@@ -86,6 +86,12 @@ const useCart = () => {
 		}
 	}
 
+  useEffect(() => {
+    if(cart?.uid){
+      setCartId(cart?.uid)
+    }
+  }, [cart?.uid])
+
 	return {
     cartId,
     cartCookie,
