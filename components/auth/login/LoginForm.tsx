@@ -30,7 +30,7 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 	} = props
 
 	return (
-		<Stack sx={sx.root} spacing={2} divider={<Divider />}>
+		<Stack sx={sx.root} spacing={2}>
 			{enableGoogle && (
 				<GoogleLoginButton handleSuccess={handleGoogleSuccess} />
 			)}

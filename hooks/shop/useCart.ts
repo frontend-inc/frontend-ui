@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react'
-import { useApi, useAuth } from 'frontend-js'
+import { useApi } from 'frontend-js'
 import { useShop } from '../../hooks'
-import { setCookie, getCookie } from 'cookies-next'
-import { CartType } from '../../types'
+import { getCookie, setCookie } from 'cookies-next'
+import { useDebounce } from 'use-debounce'
 
 const useCart = () => {
 	const { api } = useApi()
 
-	const { 
-    cartCookie, 
+	const {     
+    cartCookie,     
     cart, 
     setCart, 
     cartOpen, 
     setCartOpen 
   } = useShop()
+  
 
+  const [cartId, setCartId] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const [errors, setErrors] = useState(null)
 
@@ -22,8 +24,6 @@ const useCart = () => {
 		url: '/api/v1/shop/carts',
 		name: 'cart',
 	}
-
-  const [cartId, setCartId] = useState(getCookie(cartCookie))
 	
   const fetchCart = async (cartId) => {
 		return await loadingWrapper(() => api.fetchCart(cartId, apiParams))
@@ -67,15 +67,7 @@ const useCart = () => {
 			setLoading(false)
 		}
 	}
-
-  const handleCreateCart = async () => {
-    let resp: any = await createCart()
-    if(resp?.data?.uid) {       
-      setCartId(resp?.data?.uid)
-      setCookie(cartCookie, resp?.data?.uid)
-    }
-  }
-
+  
 	const loadingWrapper = async (fn) => {
 		try {
 			setErrors(null)
@@ -83,7 +75,9 @@ const useCart = () => {
 			const resp = await fn()
 			if (resp?.data?.id) {
 				setCart(resp.data)
+        setCartId(resp?.data?.uid)
 			}
+      return resp?.data
 		} catch (error) {
 			console.log(error)
 			setErrors(error)
@@ -91,17 +85,9 @@ const useCart = () => {
 			setLoading(false)
 		}
 	}
-  
-  useEffect(() => {
-    let cartUid = getCookie(cartCookie)    
-    if(!cartUid) {
-      handleCreateCart()
-    } else {
-      setCartId(cartUid)
-    }
-  }, [cartCookie])
 
 	return {
+    cartId,
     cartCookie,
 		loading,
 		errors,
