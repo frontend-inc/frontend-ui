@@ -2,6 +2,7 @@ import React from 'react'
 import {
 	Box,
 	Stack,
+  Typography,
 	ListItem,
 	ListItemButton,
 	ListItemText,
@@ -74,7 +75,24 @@ const MenuListItem: React.FC<MenuListItemProps> = (props) => {
 						</Box>
 					</ListItemIcon>
 				)}
-				<ListItemText primary={title} secondary={description} />
+				<ListItemText 
+          primary={
+            <Typography 
+              color="text.primary" 
+              variant="body1"
+            >
+              { title }
+            </Typography>
+          }
+         secondary={
+            <Typography 
+              color="text.secondary" 
+              variant="body2"
+            >
+              { description }
+            </Typography>
+          } 
+         />
 			</ListItemButton>
 		</ListItem>
 	)
