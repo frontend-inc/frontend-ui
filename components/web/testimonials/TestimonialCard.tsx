@@ -19,7 +19,7 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 			<Stack spacing={1} sx={sx.content}>
 				<Box sx={sx.testimonial}>
           {text && (
-            <ExpandableText color='text.secondary' text={text} />            
+            <ExpandableText variant="subtitle1" color='text.secondary' text={`"${text}"`} />            
           )}											
 				</Box>
         <Stack direction="row" spacing={1} sx={ sx.author }>
