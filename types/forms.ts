@@ -11,13 +11,13 @@ export type DisplayFieldType = {
 
 export type FormFieldConditionType = {
 	name: string
-	operator: 'eq' | 'neq' | 'in' | 'nin'
+	operator: 'eq' | 'neq' | 'in' | 'nin' | string
 	value: any
 }
 
 export type FormFieldType = {
 	icon?: string
-	name: string
+	name?: string
 	variant: string
 	label?: string
 	options?: OptionType[]
@@ -26,13 +26,14 @@ export type FormFieldType = {
 	// Used by ReferenceInput
 	resource?: any
 	url?: string
-	foreignUrl?: string
 	fields?: FormFieldType[]
-	contentType?: string
 	displayField?: string
 	valueParam?: string
 	query?: any
 	default?: any
+} | {
+  label: string
+  variant: 'divider'
 }
 
 export type ToolbarButtonType = FormFieldType & {
