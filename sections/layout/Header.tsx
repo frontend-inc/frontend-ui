@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { useApp } from '../../hooks'
 
 type LayoutHeaderProps = HeaderProps & {
-	bgColor: 'string'
+	bgColor: string
 }
 
 const AppHeader: React.FC<LayoutHeaderProps> = (props) => {

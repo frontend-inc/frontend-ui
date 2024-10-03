@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { useApp } from '../../hooks'
 
 type LayoutFooterProps = FooterProps & {
-	bgColor: 'string'
+	bgColor: string
 }
 
 const AppFooter: React.FC<LayoutFooterProps> = (props) => {

@@ -3,7 +3,7 @@ import { ThemeProvider } from '../../../context'
 import { ThemeContext } from '../../../context'
 
 type BackgroundColorProps = {
-	bgColor: 'string'
+	bgColor: string
 	children: React.ReactNode
 }
 

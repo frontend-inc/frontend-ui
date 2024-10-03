@@ -7,7 +7,6 @@ import { ButtonType, MenuLinkType } from '../../../types'
 import { useApp } from '../../../hooks'
 
 export type HeaderProps = {
-	mode?: 'accent' | 'light' | 'dark'
 	logo?: string
   buttons?: ButtonType[]
 	enableAuth?: boolean
