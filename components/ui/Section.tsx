@@ -3,7 +3,8 @@ import { Fade, Box } from '@mui/material'
 import { muiTheme } from '../../theme'
 import { AuthGuard } from '../../components'
 import { SectionProps } from '../../types'
-import { ThemeProvider } from '../../context'
+import { ThemeProvider, ThemeContext } from '../../context'
+
 
 const Section: React.FC<SectionProps> = (props) => {
 	const {
@@ -20,6 +21,8 @@ const Section: React.FC<SectionProps> = (props) => {
 	const [width, setWidth] = useState<string | number>(
 		muiTheme.breakpoints.values.md
 	)
+
+  const { theme: currentTheme } = useContext(ThemeContext)
 
 	// Since breakpoints are modified to
 	// to compensate for the extra width of the Editor
@@ -39,7 +42,7 @@ const Section: React.FC<SectionProps> = (props) => {
 	}, [maxWidth])
 
 	return (
-		<ThemeProvider muiTheme={muiTheme} bgcolor={bgColor}>
+		<ThemeProvider muiTheme={currentTheme} bgcolor={bgColor}>
 			<Fade in={true} timeout={1000}>
 				<Box sx={sx.root}>
 					<Box

@@ -47,18 +47,18 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 	}
 
 	return (
-		<Stack
-			direction={{
-				sm: flexDirection,
-				xs: 'column',
-			}}
+		<Stack			
 			alignItems="center"
 			spacing={{
 				sm: 4,
 				xs: 1,
 			}}
+      direction={{
+				sm: flexDirection,
+				xs: 'column',
+			}}
 		>
-			<Box sx={sx.image}>
+			<Box sx={sx.leftPanel}>
 				<Image
 					label={label}
 					src={image}
@@ -70,7 +70,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 					disableBorderRadius={enableBorder}
 				/>
 			</Box>
-			<Stack spacing={1} sx={sx.content}>
+			<Stack spacing={1} sx={sx.rightPanel}>
 				<Typography sx={sx.title} variant={'h6'}>
 					{title}
 				</Typography>
@@ -112,25 +112,19 @@ const sx = {
 		border: '1px solid',
 		borderColor: 'divider',
 	},
-	image: {
+	leftPanel: {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
 		height: '100%',
+    minWidth: '50%',
 		width: {
 			xs: '100%',
 			sm: '50%',
 		},
 	},
-	buttons: {
-		display: 'flex',
-		justifyContent: {
-			sm: 'flex-start',
-			xs: 'center',
-		},
-		width: '100%',
-	},
-	content: {
+  rightPanel: {
+    minWidth: '50%',
 		justifyContent: {
 			sm: 'flex-start',
 			xs: 'center',
@@ -142,6 +136,14 @@ const sx = {
 		alignItems: 'flex-start',
 		height: '100%',
 	},
+	buttons: {
+		display: 'flex',
+		justifyContent: {
+			sm: 'flex-start',
+			xs: 'center',
+		},
+		width: '100%',
+	},	
 	textContent: {
 		display: 'flex',
 		justifyContent: 'flex-start',

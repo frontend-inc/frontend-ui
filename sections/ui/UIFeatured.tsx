@@ -18,7 +18,6 @@ const UIFeatured: React.FC<UIFeaturedProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		requirePaid,
 		...rest
 	} = props

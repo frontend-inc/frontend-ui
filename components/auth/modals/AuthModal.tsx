@@ -41,9 +41,6 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 
 	const [tab, setTab] = useState(1)
 
-	const handleTabChange = (ev, newValue) => {
-		setTab(newValue)
-	}
 
 	const handleLogin = async () => {
 		let resp = await login({

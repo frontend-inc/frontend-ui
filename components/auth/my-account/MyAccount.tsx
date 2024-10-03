@@ -14,7 +14,7 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 	const {
 		loading,
 		user,
-		setUser,
+		fetchMe,
 		currentUser,
 		updateMe,
 		handleChange,
@@ -34,6 +34,12 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 		await logout()
 		router.push(redirectUrl)
 	}
+
+  useEffect(() => {
+    if(!currentUser?.id){
+      fetchMe()
+    }
+  }, [currentUser?.id])
 
 	return (
 		<>

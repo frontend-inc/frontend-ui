@@ -1,8 +1,8 @@
 import React from 'react'
 import { Button, Box } from '@mui/material'
 import { Form } from '../../../components'
-import { FormFieldType, MetafieldType } from '../../../types'
-import { USER_FORM_FIELDS } from '../../../constants'
+import { MetafieldType } from '../../../types'
+import { ACCOUNT_FORM_FIELDS } from '../../../constants'
 
 type MyAccountFormProps = {
 	loading?: boolean
@@ -26,7 +26,7 @@ const MyAccountForm: React.FC<MyAccountFormProps> = (props) => {
 		handleDeleteAvatar,
 	} = props
 
-	let formFields = USER_FORM_FIELDS
+	let formFields = ACCOUNT_FORM_FIELDS
 
 	formFields = [
 		...formFields,

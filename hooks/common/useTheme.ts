@@ -56,7 +56,7 @@ const useTheme = (props: ThemeProps) => {
 			}
 		}
 
-		if (deviceSize == 'mobile') {
+		if (deviceSize == 'mobile') {      
 			breakpoints = {
 				values: {
 					xs: 0,
