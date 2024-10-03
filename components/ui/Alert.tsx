@@ -6,7 +6,6 @@ import {
 	List,
 	ListItem,
 	ListItemButton,
-	ListItemSecondaryAction,
 	ListItemText,
 	Paper,
 	Slide,

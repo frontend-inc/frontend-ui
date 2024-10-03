@@ -10,7 +10,6 @@ type LayoutContainerProps = {
 	header?: React.ReactNode
 	footer?: React.ReactNode
 	notifications: NotificationType[]
-	offsetY?: number
 	roles?: string[]
 	requireAuth?: boolean
 	requirePaid?: boolean
@@ -20,7 +19,6 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 	const {
 		children,
 		notifications,
-		offsetY = 0,
 		requireAuth,
 		requirePaid,
 		roles = [],

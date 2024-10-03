@@ -17,8 +17,7 @@ type ThemeProviderProps = {
 	textPrimary?: string //color
 	textSecondary?: string //color
 	deviceSize?: 'mobile' | 'tablet' | 'desktop'
-	offsetX?: number
-	offsetY?: number
+	offsetX?: number	
 }
 
 const ThemeProvider = (props: ThemeProviderProps) => {
