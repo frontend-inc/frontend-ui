@@ -2,7 +2,7 @@ import React from 'react'
 import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import AdminProductItem from './AdminProductItem'
-import AdminProductForm from './AdminProductForm'
+import AdminProductCreateForm from './AdminProductCreateForm'
 import AdminProductEditForm from './AdminProductEditForm'
 import AdminProductShow from './AdminProductShow'
 import AdminProductToolbar from './AdminProductToolbar'
@@ -32,7 +32,7 @@ const AdminProductsList: React.FC<AdminProductListProps> = (props) => {
 				{ name: 'title', label: 'Title' },
 				{ name: 'created_at', label: 'Date' },
 			]}
-			create={AdminProductForm}
+			create={AdminProductCreateForm}
 			edit={AdminProductEditForm}
 			show={AdminProductShow}
 			header={AdminProductHeader}
