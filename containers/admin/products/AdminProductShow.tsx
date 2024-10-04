@@ -23,20 +23,7 @@ const AdminProductShow: React.FC<AdminProductShowProps> = (props) => {
 	let fields = [
 		{ label: 'Price', name: 'price', variant: 'number' },
 		{ label: 'Compare at price', name: 'compare_at_price', variant: 'number' },
-		{ label: 'SKU', name: 'sku', variant: 'string' },
-		{ label: 'Subscription', name: 'recurring', variant: 'boolean' },
-		{
-			label: 'Interval',
-			name: 'interval',
-			variant: 'select',
-			options: [
-				{ label: 'Day', value: 'day' },
-				{ label: 'Week', value: 'week' },
-				{ label: 'Month', value: 'month' },
-				{ label: 'Year', value: 'year' },
-			],
-			conditions: [{ name: 'recurring', operator: 'eq', value: true }],
-		},
+		{ label: 'SKU', name: 'sku', variant: 'string' },		
 		...metafields,
 	]
 
