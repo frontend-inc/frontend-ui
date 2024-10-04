@@ -92,7 +92,7 @@ const sx = {
 		px: 2,
 		pt: 1,
 		bgcolor: 'background.paper',
-		height: 'calc(100vh - 60px)',
+		height: 'calc(100vh - 50px)',
 		overflowY: 'scroll',
 		'&::-webkit-scrollbar': {
 			display: 'none',
