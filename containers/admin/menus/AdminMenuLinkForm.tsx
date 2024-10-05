@@ -17,7 +17,7 @@ const AdminMenuLinkForm: React.FC<ResourceFormProps> = (props) => {
 					placeholder: 'Label',
 				},
 				{
-					label: 'Goto',
+					label: 'Link to',
 					name: 'link_type',
 					variant: 'select',
 					options: [
