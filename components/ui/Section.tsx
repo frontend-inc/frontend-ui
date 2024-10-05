@@ -5,7 +5,6 @@ import { AuthGuard } from '../../components'
 import { SectionProps } from '../../types'
 import { ThemeProvider, ThemeContext } from '../../context'
 
-
 const Section: React.FC<SectionProps> = (props) => {
 	const {
 		enableTransitions = false,

@@ -105,7 +105,7 @@ const sx = {
 			borderRight: '1px solid',
 			borderBottom: '1px solid',
 			borderColor: 'background.default',
-			bgcolor: 'secondary.light',
+			bgcolor: 'background.fill',
 			zIndex: 0,
 		},
 		'& .MuiButtonBase-root': {
