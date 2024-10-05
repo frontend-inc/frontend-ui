@@ -10,9 +10,7 @@ type ThemeProps = {
 	textSecondary?: string
 	borderRadius?: number
 	bodyFont?: string
-	headerFont?: string
-	offsetX?: number
-	deviceSize?: 'mobile' | 'tablet' | 'desktop'
+	headerFont?: string	
 }
 
 const useTheme = (props: ThemeProps) => {
@@ -24,9 +22,7 @@ const useTheme = (props: ThemeProps) => {
 		bgcolor,
 		borderRadius,
 		bodyFont,
-		headerFont,
-		offsetX = 0,
-		deviceSize = 'desktop',
+		headerFont,			
 	} = props || {}
 
 	const [theme, setTheme] = useState(muiTheme)
@@ -43,43 +39,7 @@ const useTheme = (props: ThemeProps) => {
 		let palette = { ...newTheme.palette }
 		let typography = { ...newTheme.typography }
 		let shape = { ...newTheme.shape }
-
-		if (offsetX > 0) {
-			breakpoints = {
-				values: {
-					xs: 0,
-					sm: breakpoints.values.sm + offsetX,
-					md: breakpoints.values.md + offsetX,
-					lg: breakpoints.values.lg + offsetX,
-					xl: breakpoints.values.xl + offsetX,
-				},
-			}
-		}
-
-		if (deviceSize == 'mobile') {      
-			breakpoints = {
-				values: {
-					xs: 0,
-					sm: 5000,
-					md: 5000,
-					lg: 5000,
-					xl: 5000,
-				},
-			}
-		}
-
-		if (deviceSize == 'tablet') {
-			breakpoints = {
-				values: {
-					xs: 0,
-					sm: 0,
-					md: 5000,
-					lg: 5000,
-					xl: 5000,
-				},
-			}
-		}
-
+			
 		if (primaryColor) {
 			palette = {
 				...palette,
@@ -202,9 +162,7 @@ const useTheme = (props: ThemeProps) => {
 			typography,
 			shape,
 		})
-	}, [
-		offsetX,
-		deviceSize,
+	}, [				
 		primaryColor,
 		bgcolor,
 		textPrimary,
