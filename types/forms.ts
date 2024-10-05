@@ -23,7 +23,6 @@ export type FormFieldType = {
 	options?: OptionType[]
 	placeholder?: string
 	conditions?: FormFieldConditionType[]
-	// Used by ReferenceInput
 	resource?: any
 	url?: string
 	fields?: FormFieldType[]
@@ -31,10 +30,7 @@ export type FormFieldType = {
 	valueParam?: string
 	query?: any
 	default?: any
-} | {
-  label: string
-  variant: 'divider'
-}
+} 
 
 export type ToolbarButtonType = FormFieldType & {
 	icon?: string
