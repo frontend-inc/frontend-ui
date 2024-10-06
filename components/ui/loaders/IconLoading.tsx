@@ -1,28 +1,22 @@
 import React from 'react'
-import { CircularProgress } from '@mui/material'
+import { Loader2 } from 'lucide-react'
+import { cn } from '../../../shadcn/lib/utils'
 
 type IconLoadingProps = {
-	color?: string
-	size?: number
-}
-const IconLoading: React.FC<IconLoadingProps> = (props) => {
-	const { size = 20, color = 'primary.contrastText' } = props
-	return (
-		<CircularProgress
-			disableShrink
-			sx={{
-				...sx.loader,
-				color,
-			}}
-			size={size}
-		/>
-	)
+  color?: string
+  size?: number
+  className?: string
 }
 
-export default IconLoading
-
-const sx = {
-	loader: {
-		color: 'primary.contrastText',
-	},
+export default function IconLoading({ size = 20, color = 'text-secondary', className }: IconLoadingProps) {
+  return (
+    <Loader2
+      className={cn(
+        'animate-spin',
+        color,
+        className
+      )}
+      size={size}
+    />
+  )
 }

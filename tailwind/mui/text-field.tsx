@@ -14,7 +14,7 @@ interface TextFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement
   type?: 'text' | 'number' | 'email' | 'password' | 'tel' | 'url' | 'search' | 'date' | 'time' | 'datetime-local'
 }
 
-export default function TextField({
+function TextField({
   label,
   helperText,
   error = false,
@@ -68,4 +68,8 @@ export default function TextField({
       )}
     </div>
   )
+}
+
+export { 
+  TextField 
 }

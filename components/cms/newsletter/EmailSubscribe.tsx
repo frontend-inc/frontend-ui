@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Stack, Button } from '@mui/material'
+import { Box, Stack, Button } from '../../../tailwind'
 import { TypographyVariantsType } from '../../../types'
 import { Heading, TextInput, IconLoading } from '../..'
 import { useResource } from 'frontend-js'
@@ -52,79 +52,40 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 	}
 
 	return (
-		<Box sx={sx.root}>
-			<Stack sx={sx.content} direction="column" spacing={1}>
-				<Heading
-					label={label}
-					title={title}
-					description={description}
-					textVariant={textVariant}
-					textAlign="center"
-				/>
-				<Stack sx={sx.inputContainer} direction="row" spacing={0}>
-					<TextInput
-						errors={errors}
-						name="email"
-						value={contact?.email}
-						handleChange={handleChange}
-						placeholder="Enter your email"
-						type="email"
-						styles={sx.input}
-					/>
-					<Button
-						sx={sx.button}
-						variant="contained"
-						color="primary"
-						onClick={handleSubmit}
-					>
-						{delayedLoading ? <IconLoading /> : buttonText}
-					</Button>
-				</Stack>
-			</Stack>
-		</Box>
+    <Stack direction="column" spacing={1}>
+      <Heading
+        label={label}
+        title={title}
+        description={description}
+        textVariant={textVariant}
+        textAlign="center"
+      />
+      <Stack 
+        justifyContent='center' 
+        alignItems='center' 
+        direction="row" 
+        spacing={1}
+      >
+        <TextInput            
+          errors={errors}
+          name="email"
+          value={contact?.email}
+          handleChange={handleChange}
+          placeholder="Enter your email"
+          type="email" 
+          className="rounded-l-md rounded-r-none border-r-0"           
+        />
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleSubmit}
+          className="rounded-l-none rounded-r-md"
+        >
+          {delayedLoading ? <IconLoading /> : buttonText}
+        </Button>
+      </Stack>
+    </Stack>
 	)
 }
 
 export default EmailSubscribe
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-	content: {
-		width: '100%',
-		alignItems: 'center',
-	},
-	label: {
-		textAlign: 'center',
-	},
-	title: {
-		textAlign: 'center',
-		color: 'text.primary',
-	},
-	description: {
-		color: 'text.secondary',
-		textAlign: 'center',
-		maxWidth: '600px',
-	},
-	inputContainer: {
-		textAlign: 'center',
-		width: '100%',
-		maxWidth: 420,
-		display: 'flex',
-		alignItems: 'flex-end',
-	},
-	input: {
-		'& .MuiInputBase-input': {
-			borderRadius: (theme) =>
-				`${theme.shape.borderRadius}px 0 0 ${theme.shape.borderRadius}px`,
-		},
-	},
-	button: {
-		boxShadow: 1,
-		minWidth: 120,
-		height: 42,
-		borderRadius: (theme) =>
-			`0 ${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0`,
-	},
-}
