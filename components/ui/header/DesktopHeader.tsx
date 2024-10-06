@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconButton, Box, Hidden } from '@mui/material'
+import { IconButton, Box, Hidden } from '../../../tailwind'
 import { ButtonActions, AuthButton, Icon } from '../..'
 import Logo from './Logo'
 import { CartButton } from '../..'
@@ -9,120 +9,75 @@ import { ButtonType, MenuLinkType } from '../../..'
 import TopMenuItem from './TopMenuItem'
 
 type DesktopHeaderProps = {
-	logo: string
-	links: MenuLinkType[]
+  logo: string
+  links: MenuLinkType[]
   buttons: ButtonType[]
-	enableAuth?: boolean
-	enableShopify?: boolean
-	enableStripe?: boolean
-	handleClick: (path: string) => void
+  enableAuth?: boolean
+  enableShopify?: boolean
+  enableStripe?: boolean
+  handleClick: (path: string) => void
 }
 
 const MAX_LINKS = 5
 
 const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
-	const {
-		logo,
-		links,
+  const {
+    logo,
+    links,
     buttons,
-		handleClick,
-		enableAuth = false,
-		enableStripe = false,
-		enableShopify = false,
-	} = props
+    handleClick,
+    enableAuth = false,
+    enableStripe = false,
+    enableShopify = false,
+  } = props
 
-	const { setMenuOpen } = useApp()
+  const { setMenuOpen } = useApp()
 
-	return (
-		<Hidden mdDown>
-			<Box sx={sx.appBar}>
-				<Box width={'100%'}>
-					<Box sx={sx.desktop}>
-						{links?.length > MAX_LINKS && (
-							<Box sx={sx.menuButton}>
-								<IconButton onClick={() => setMenuOpen(true)}>
-									<Icon name="Menu" size={24} />
-								</IconButton>
-							</Box>
-						)}
-						<Box sx={sx.leftMenu}>
-							<Logo
-								src={logo}
-								width={120}
-								height={40}
-								handleClick={() => handleClick('/')}
-							/>
-						</Box>
-						<Box sx={sx.centerMenu}>
-							{links?.length <= MAX_LINKS &&
-								links?.map((menuItem, index) => (
-									<TopMenuItem
-										key={index}
-										menuItem={menuItem}
-										handleClick={handleClick}
-									/>
-								))}
-						</Box>
-						<Box sx={sx.rightMenu}>
-              { buttons?.length > 0 && (
-                <Box sx={{ pr: 1 }}>
+  return (
+    <Hidden down="md">
+      <Box className="w-full h-16 bg-background">
+        <Box className="w-full">
+          <Box className="w-full flex flex-row">
+            {links?.length > MAX_LINKS && (
+              <Box className="pl-1 flex items-center justify-center h-[60px]">
+                <IconButton color='ghost' onClick={() => setMenuOpen(true)}>
+                  <Icon name="Menu" size={24} />
+                </IconButton>
+              </Box>
+            )}
+            <Box className="w-[200px] h-[60px] flex flex-row items-center justify-start">
+              <Logo
+                src={logo}
+                width={120}
+                height={40}
+                handleClick={() => handleClick('/')}
+              />
+            </Box>
+            <Box className="flex flex-row items-center justify-center w-full h-[60px]">
+              {links?.length <= MAX_LINKS &&
+                links?.map((menuItem, index) => (
+                  <TopMenuItem
+                    key={index}
+                    menuItem={menuItem}
+                    handleClick={handleClick}
+                  />
+                ))}
+            </Box>
+            <Box className="w-[200px] flex flex-row items-center justify-end h-[60px] pr-1">
+              {buttons?.length > 0 && (
+                <Box className="pr-1">
                   <ButtonActions size="small" buttons={buttons} />
                 </Box>
               )}
-							{enableAuth == true && <AuthButton />}
-							{enableStripe == true && <CartButton />}
-							{enableShopify == true && <ShopifyCartButton />}              
-						</Box>
-					</Box>
-				</Box>
-			</Box>
-		</Hidden>
-	)
+              {enableAuth && <AuthButton />}
+              {enableStripe && <CartButton />}
+              {enableShopify && <ShopifyCartButton />}
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Hidden>
+  )
 }
 
 export default DesktopHeader
-
-const sx = {
-	appBar: {
-		width: '100%',
-		height: 64,
-		bgcolor: 'background.default',
-	},
-	desktop: {
-		width: '100%',
-		display: 'flex',
-		flexDirection: 'row',
-	},
-	leftMenu: {
-		width: '200px',
-		height: '60px',
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'flex-start',
-	},
-	centerMenu: {
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'center',
-		width: '100%',
-		height: '60px',
-	},
-	rightMenu: {
-    pr: 1,
-		width: '200px',
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'flex-end',
-		height: '60px',
-	},
-	menuButton: {
-		pl: 1,
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-		height: '60px',
-	},
-}

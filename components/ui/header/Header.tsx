@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { Box } from '../../../tailwind'
 import MobileDrawer from './MobileDrawer'
 import MobileHeader from './MobileHeader'
 import DesktopHeader from './DesktopHeader'
@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 	} = props
 
 	return (
-		<Box sx={sx.root}>
+		<Box className='dark h-[64px] w-full'>
 			<DesktopHeader
 				logo={logo || appLogo}
 				enableAuth={enableAuth}
@@ -63,13 +63,3 @@ const Header: React.FC<HeaderProps> = (props) => {
 }
 
 export default Header
-
-const sx = {
-	root: {
-		height: 64,
-		width: '100%',
-		display: 'flex',
-		flexDirection: 'row',
-		bgcolor: 'background.default',
-	},
-}

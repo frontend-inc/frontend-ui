@@ -1,6 +1,19 @@
 import React, { forwardRef } from "react"
 import { cn } from "../../shadcn/lib/utils"
 
+// List Component
+const List = forwardRef<
+  HTMLUListElement,
+  React.HTMLAttributes<HTMLUListElement>
+>(({ className, ...props }, ref) => (
+  <ul
+    ref={ref}
+    className={cn("w-full", className)}
+    {...props}
+  />
+))
+List.displayName = "List"
+
 // ListItem Component
 const ListItem = forwardRef<
   HTMLLIElement,
@@ -72,6 +85,7 @@ const ListItemIcon = forwardRef<
 ListItemIcon.displayName = "ListItemIcon"
 
 export { 
+  List,
   ListItem, 
   ListItemText, 
   ListItemButton, 

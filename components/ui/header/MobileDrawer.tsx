@@ -1,11 +1,10 @@
 import React, { useContext } from 'react'
-import { List, Stack, Box } from '@mui/material'
-import { CartButton, AuthButton, Drawer } from '../..'
+import { List, Stack, Box, Drawer } from '../../../tailwind'
+import { CartButton, AuthButton } from '../..'
 import { ShopifyCartButton } from '../../shopify'
 import { AppContext } from '../../../context'
 import SideMenuItem from './SideMenuItem'
 import { MenuLinkType } from '../../..'
-import { useAuth } from 'frontend-js'
 
 type MobileDrawerProps = {
 	links: MenuLinkType[]
@@ -13,12 +12,13 @@ type MobileDrawerProps = {
 	enableAuth?: boolean
 	enableStripe?: boolean
 	enableShopify?: boolean
+  mode?: 'dark' | 'light'
 }
 
 const MobileDrawer = (props: MobileDrawerProps) => {
 	const { menuOpen, setMenuOpen } = useContext(AppContext)
 
-	const { links, handleClick, enableAuth, enableStripe, enableShopify } = props
+	const { links, mode = 'dark', handleClick, enableAuth, enableStripe, enableShopify } = props
 
 	const handleMenuClick = (path: string) => {
 		setMenuOpen(false)
@@ -28,12 +28,12 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 	return (
 		<Drawer
 			open={menuOpen}
-			handleClose={() => setMenuOpen(false)}
+			onClose={() => setMenuOpen(false)}
 			anchor="left"
-			styles={sx.drawer}
+			mode='dark'
 		>
-			<Box sx={sx.sideNavMenu}>
-				<List sx={sx.sideNavMenuItems}>
+			<Box>
+				<List>
 					{links?.map((menuItem, index) => (
 						<SideMenuItem
 							key={index}

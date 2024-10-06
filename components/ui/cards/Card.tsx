@@ -25,6 +25,7 @@ export type CardProps = {
   }
 }
 
+// @ts-ignore 
 const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   const {
     label,

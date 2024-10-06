@@ -2,7 +2,7 @@ import React from 'react';
 import { Button as ShadcnButton, ButtonProps as ShadcnButtonProps } from '../../shadcn/ui/button';
 import { cn } from '../../shadcn/lib/utils';
 
-type IconButtonColor = 'primary' | 'secondary';
+type IconButtonColor = 'primary' | 'secondary' | 'ghost';
 type IconButtonVariant = 'rounded' | 'circular';
 
 interface IconButtonProps extends Omit<ShadcnButtonProps, 'size' | 'variant'> {
@@ -12,7 +12,7 @@ interface IconButtonProps extends Omit<ShadcnButtonProps, 'size' | 'variant'> {
 }
 
 const IconButton: React.FC<IconButtonProps> = ({ 
-  color = 'primary', 
+  color = 'ghost', 
   variant = 'rounded',
   className,
   children,
@@ -21,6 +21,7 @@ const IconButton: React.FC<IconButtonProps> = ({
 
   const colorMap: Record<IconButtonColor, ShadcnButtonProps['variant']> = {
     primary: 'default',
+    ghost: 'ghost',
     secondary: 'secondary'
   };
 

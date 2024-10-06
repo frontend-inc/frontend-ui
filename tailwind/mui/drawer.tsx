@@ -4,11 +4,9 @@ import {
   SheetContent, 
   SheetHeader, 
   SheetTitle, 
-  SheetClose,
   SheetFooter,
   SheetDescription 
 } from '../../shadcn/ui/sheet'
-import { Button } from '../../shadcn/ui/button'
 import { cn } from '../../shadcn/lib/utils'
 
 type AnchorPosition = 'left' | 'right' | 'top' | 'bottom';
@@ -19,8 +17,11 @@ interface DrawerProps {
   title?: string;
   description?: string;
   children: React.ReactNode;
+  footer?: React.ReactNode;
   disablePadding?: boolean;
   anchor?: AnchorPosition;
+  mode?: 'dark' | 'light';
+  className?: string;
 }
 
 const Drawer: React.FC<DrawerProps> = ({ 
@@ -28,9 +29,12 @@ const Drawer: React.FC<DrawerProps> = ({
   onClose, 
   title, 
   description, 
+  footer,
   children, 
   disablePadding = false,
-  anchor = 'right'
+  anchor = 'right',
+  mode = 'light',
+  className
 }) => {
   const contentClass = cn(
     'flex flex-col',
@@ -47,9 +51,15 @@ const Drawer: React.FC<DrawerProps> = ({
     }
   );
 
+  const modeClass = mode === 'dark' ? 'dark' : 'light';
+
   return (
     <Sheet open={open} onOpenChange={onClose}>
-      <SheetContent side={anchor} className={contentClass}>
+      <SheetContent 
+        side={anchor} 
+        className={cn(contentClass, modeClass, className)}
+        iconColor={ mode === 'dark' ? 'white' : 'black' }
+      >
         {(title || description) && (
           <SheetHeader>
             {title && <SheetTitle>{title}</SheetTitle>}
@@ -60,9 +70,7 @@ const Drawer: React.FC<DrawerProps> = ({
           {children}
         </div>
         <SheetFooter>
-          <SheetClose asChild>
-            <Button type="submit">Close</Button>
-          </SheetClose>
+          { footer }
         </SheetFooter>
       </SheetContent>
     </Sheet>
