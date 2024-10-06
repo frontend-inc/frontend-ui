@@ -11,7 +11,7 @@ export const FONTS = [
 	{ label: 'Manrope', value: 'Manrope' },
 	{ label: 'Open Sans', value: 'Open Sans' },
 	{ label: 'Pacifico', value: 'Pacifico' },
-	{ label: 'Playfair Disney', value: 'Playfair Disney' },
+	{ label: 'Playfair Display', value: 'Playfair Display' },
 	{ label: 'Poppins', value: 'Poppins' },
 	{ label: 'PT Sans', value: 'PT Sans' },
 	{ label: 'PT Serif', value: 'PT Serif' },

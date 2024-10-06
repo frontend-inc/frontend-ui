@@ -1,52 +1,59 @@
 import React from 'react'
+import { cn } from '../../shadcn/lib/utils'
 
 type StackProps = {
   children: React.ReactNode
-  direction?: 'row' | 'column'
-  spacing?: 'none' | 'small' | 'medium' | 'large'
-  align?: 'start' | 'center' | 'end' | 'stretch'
-  justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'
+  direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse'
+  spacing?: number
+  alignItems?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline'
+  justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
   divider?: React.ReactNode
+  className?: string
 }
 
-const spacingClasses = {
-  none: '',
-  small: 'space-x-2 space-y-2',
-  medium: 'space-x-4 space-y-4',
-  large: 'space-x-6 space-y-6',
+const directionClasses = {
+  row: 'flex-col sm:flex-row',
+  'row-reverse': 'flex-col sm:flex-row-reverse',
+  column: 'flex-col',
+  'column-reverse': 'flex-col-reverse',
 }
 
-const alignClasses = {
-  start: 'items-start',
-  center: 'items-center',
-  end: 'items-end',
-  stretch: 'items-stretch',
+const alignItemsClasses = {
+  'flex-start': 'items-start',
+  'flex-end': 'items-end',
+  'center': 'items-center',
+  'stretch': 'items-stretch',
+  'baseline': 'items-baseline',
 }
 
-const justifyClasses = {
-  start: 'justify-start',
-  center: 'justify-center',
-  end: 'justify-end',
-  between: 'justify-between',
-  around: 'justify-around',
-  evenly: 'justify-evenly',
+const justifyContentClasses = {
+  'flex-start': 'justify-start',
+  'flex-end': 'justify-end',
+  'center': 'justify-center',
+  'space-between': 'justify-between',
+  'space-around': 'justify-around',
+  'space-evenly': 'justify-evenly',
 }
 
 export default function Stack({
   children,
   direction = 'column',
-  spacing = 'medium',
-  align = 'start',
-  justify = 'start',
+  spacing = 0,
+  alignItems = 'flex-start',
+  justifyContent = 'flex-start',
   divider,
+  className,
 }: StackProps) {
-  const stackClasses = [
-    'flex',
-    direction === 'row' ? 'flex-row' : 'flex-col',
-    spacingClasses[spacing],
-    alignClasses[align],
-    justifyClasses[justify],
-  ].join(' ')
+  const spacingClass = spacing > 0 ? `space-y-${spacing} sm:space-y-0 sm:space-x-${spacing}` : ''
+
+  const stackClasses = cn(
+    'flex w-full',
+    directionClasses[direction],
+    spacingClass,
+    alignItemsClasses[alignItems],
+    justifyContentClasses[justifyContent],
+    className
+  )
 
   const childrenArray = React.Children.toArray(children)
 
@@ -56,7 +63,12 @@ export default function Stack({
         <React.Fragment key={index}>
           {child}
           {divider && index < childrenArray.length - 1 && (
-            <div className={direction === 'row' ? 'mx-2' : 'my-2'}>{divider}</div>
+            <div className={cn(
+              direction.includes('row') ? `my-${spacing} sm:my-0 sm:mx-${spacing}` : `my-${spacing}`,
+              direction === 'row-reverse' ? 'sm:rotate-180' : ''
+            )}>
+              {divider}
+            </div>
           )}
         </React.Fragment>
       ))}
@@ -64,6 +76,4 @@ export default function Stack({
   )
 }
 
-export {
-  Stack 
-}
+export { Stack }
