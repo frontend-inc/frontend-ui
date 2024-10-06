@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Box, Chip } from '@mui/material'
+import { Stack, Box, Chip } from '../../../tailwind'
 import { FieldWrapper } from '../../../components'
 
 type FieldArrayProps = {

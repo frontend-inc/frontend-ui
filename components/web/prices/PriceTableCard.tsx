@@ -1,3 +1,4 @@
+
 import React, { useContext } from 'react'
 import {
 	Stack,
@@ -8,7 +9,7 @@ import {
 	List,
 	ListItem,
 	ListItemText,
-} from '@mui/material'
+} from '../../../tailwind'
 import { PriceType } from '../../../types'
 import { useRouter } from 'next/router'
 import { Label } from '../..'
@@ -22,11 +23,8 @@ type PriceCardProps = {
 
 const PriceCard: React.FC<PriceCardProps> = (props) => {
 	const router = useRouter()
-
 	const { setAuthOpen } = useContext(AppContext) as any
-
 	const { price } = props
-
 	const { currentUser } = useAuth()
 
 	const handleClick = () => {
@@ -40,26 +38,26 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
 	}
 
 	return (
-		<Box sx={sx.root}>
-			<Stack sx={sx.content} direction="column" spacing={1}>
+		<Box className="w-full border border-divider rounded p-2 flex flex-col justify-between">
+			<Stack className="min-h-[300px]" direction="column" spacing={1}>
 				{price?.label && (
 					<Box>
 						<Label label={price.label} />
 					</Box>
 				)}
-				<Typography variant="body1" color="text.secondary">
+				<Typography variant="body1" className="text-secondary">
 					{price.title}
 				</Typography>
-				<Typography variant="h5" color="text.primary">
+				<Typography variant="h5" className="text-primary">
 					{formatCurrency(price.price, 0)}
 				</Typography>
 				<Divider />
-				<List disablePadding>
+				<List>
 					{price?.features?.map((feature, i) => (
 						<ListItem key={i}>
 							<ListItemText
 								primary={
-									<Typography variant="body1" color="text.primary">
+									<Typography variant="body1" className="text-primary">
 										{feature}
 									</Typography>
 								}
@@ -71,8 +69,6 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
 			<Button
 				onClick={handleClick}
 				variant="contained"
-				color="primary"
-				fullWidth
 			>
 				{price.buttonText}
 			</Button>
@@ -81,24 +77,3 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
 }
 
 export default PriceCard
-
-const sx = {
-	root: {
-		width: '100%',
-		border: '1px solid',
-		borderColor: 'divider',
-		borderRadius: 1,
-		p: 2,
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'space-between',
-	},
-	content: {
-		minHeight: 300,
-	},
-	features: {
-		whiteSpace: 'pre-line',
-		color: 'text.primary',
-		mb: 0,
-	},
-}

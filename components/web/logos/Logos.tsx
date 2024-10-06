@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Box, Typography } from '@mui/material'
+import { Stack } from '../../../tailwind'
 import { Placeholder, BrandLogos } from '../..'
 
 export type LogosProps = {
@@ -11,10 +11,10 @@ export type LogosProps = {
 }
 
 const Logos: React.FC<LogosProps> = (props) => {
-	const { title, logos = [] } = props
+	const { logos = [] } = props
 
 	return (
-		<Stack spacing={0} sx={sx.root}>
+		<Stack spacing={0} className='w-full'>
 			<BrandLogos logos={logos} width={128} height={48} />
 			{logos?.length === 0 && (
 				<Placeholder
@@ -28,16 +28,3 @@ const Logos: React.FC<LogosProps> = (props) => {
 }
 
 export default Logos
-
-const sx = {
-	root: {
-		width: '100%',
-		py: 1,
-		bgcolor: 'background.main',
-	},
-	title: {
-		width: '100%',
-		textAlign: 'center',
-		mb: 4,
-	},
-}

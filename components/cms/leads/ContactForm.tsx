@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Paper, Container } from '@mui/material'
+import { Box, Container } from '../../../tailwind'
 import { FormFieldType, TypographyVariantsType } from '../../../types'
 import { Heading, Form } from '../..'
 import { useResource } from 'frontend-js'

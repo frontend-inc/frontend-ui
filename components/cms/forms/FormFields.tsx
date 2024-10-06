@@ -1,9 +1,10 @@
 import React from 'react'
-import { Stack } from '@mui/material'
+import { Stack } from '../../../tailwind'
 import FormField from './FormField'
 import { get } from 'lodash'
 import { FormFieldType } from '../../../types'
 import { validateFieldConditions } from '../../../helpers'
+import { cn } from '../../../shadcn/lib/utils'
 
 export type FormFieldsProps = {
 	loading?: boolean
@@ -37,10 +38,8 @@ const FormFields: React.FC<FormFieldsProps> = (props) => {
 	return (
 		<Stack
 			spacing={1}
-			sx={{
-				...sx.root,
-				...(loading && sx.loading),
-			}}
+      direction="column"
+      className={'w-full'}			
 		>
 			{fields?.map((field, index) => {
 				if (!validateFieldConditions(field?.conditions || [], resource)) {

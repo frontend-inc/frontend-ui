@@ -2,90 +2,77 @@ import React, { useState } from 'react'
 import SwipeableViews from 'react-swipeable-views'
 import { Icon } from '../..'
 import { autoPlay } from 'react-swipeable-views-utils'
-import { Box, IconButton } from '@mui/material'
+import { Box, IconButton } from '../../../tailwind'
+import { cn } from "../../../shadcn/lib/utils"
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
 type SwipeableProps = {
-	children: React.ReactNode[]
-	enableAutoPlay?: boolean
-	enableArrows?: boolean
-	interval?: number
+  children: React.ReactNode[]
+  enableAutoPlay?: boolean
+  enableArrows?: boolean
+  interval?: number
+  className?: string
 }
 
 const Swipeable: React.FC<SwipeableProps> = (props) => {
-	const {
-		children = [],
-		interval = 5000,
-		enableArrows = false,
-		enableAutoPlay = false,
-	} = props
+  const {
+    children = [],
+    interval = 5000,
+    enableArrows = false,
+    enableAutoPlay = false,
+    className,
+  } = props
 
-	const [activeStep, setActiveStep] = useState(0)
+  const [activeStep, setActiveStep] = useState(0)
 
-	const handleStepChange = (step: number) => {
-		setActiveStep(step)
-	}
+  const handleStepChange = (step: number) => {
+    setActiveStep(step)
+  }
 
-	const handlePrev = () => {
-		if (activeStep === 0) {
-			setActiveStep(children?.length - 1)
-		} else {
-			setActiveStep((prevActiveStep) => prevActiveStep - 1)
-		}
-	}
+  const handlePrev = () => {
+    if (activeStep === 0) {
+      setActiveStep(children?.length - 1)
+    } else {
+      setActiveStep((prevActiveStep) => prevActiveStep - 1)
+    }
+  }
 
-	const handleNext = () => {
-		if (activeStep === children?.length - 1) {
-			setActiveStep(0)
-		} else {
-			setActiveStep((prevActiveStep) => prevActiveStep + 1)
-		}
-	}
+  const handleNext = () => {
+    if (activeStep === children?.length - 1) {
+      setActiveStep(0)
+    } else {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1)
+    }
+  }
 
-	const SwipeableComponent = enableAutoPlay
-		? AutoPlaySwipeableViews
-		: SwipeableViews
+  const SwipeableComponent = enableAutoPlay
+    ? AutoPlaySwipeableViews
+    : SwipeableViews
 
-	return (
-		<Box sx={sx.root}>
-			<SwipeableComponent
-				axis={'x'}
-				index={activeStep}
-				onChangeIndex={handleStepChange}
-				enableMouseEvents
-				interval={interval}
-			>
-				{children}
-			</SwipeableComponent>
-			{enableArrows && (
-				<Box sx={sx.buttons}>
-					<IconButton onClick={handlePrev}>
-						<Icon name="ChevronLeft" size={32} />
-					</IconButton>
-					<IconButton onClick={handleNext}>
-						<Icon name="ChevronRight" size={32} />
-					</IconButton>
-				</Box>
-			)}
-		</Box>
-	)
+  return (
+    <Box className={cn("w-full relative", className)}>
+      <SwipeableComponent
+        axis={'x'}
+        index={activeStep}
+        onChangeIndex={handleStepChange}
+        enableMouseEvents
+        interval={interval}
+      >
+        {children}
+      </SwipeableComponent>
+      {enableArrows && (
+        <Box className="absolute top-1/2 transform -translate-y-1/2 flex justify-between w-full z-10">
+          <IconButton color='ghost' onClick={handlePrev} className="ml-2">
+            <Icon name="ChevronLeft" size={32} />
+          </IconButton>
+          <IconButton color='ghost' onClick={handleNext} className="mr-2">
+            <Icon name="ChevronRight" size={32} />
+          </IconButton>
+        </Box>
+      )}
+    </Box>
+  )
 }
 
 export default Swipeable
-
-const sx = {
-	root: {
-		width: '100%',
-		position: 'relative',
-	},
-	buttons: {
-		position: 'absolute',
-		top: '50%',
-		transform: 'translateY(-50%)',
-		display: 'flex',
-		justifyContent: 'space-between',
-		width: '100%',
-		zIndex: 1,
-	},
-}

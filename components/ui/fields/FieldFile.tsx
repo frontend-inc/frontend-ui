@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Link } from '@mui/material'
+import { Stack, Link } from '../../../tailwind'
 import { Icon, Label, FieldWrapper } from '../../../components'
 
 type FieldFileProps = {
