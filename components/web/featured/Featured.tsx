@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Stack } from '@mui/material'
+import { Box, Stack } from '../../../tailwind'
 import { Container, Placeholder } from '../../../components'
 import FeaturedCard from './FeaturedCard'
 

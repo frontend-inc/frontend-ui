@@ -1,6 +1,6 @@
 import React from 'react'
 import { useApp } from '../../../hooks'
-import { Box, Button, Stack, Typography } from '@mui/material'
+import { Box, Button, Stack, Typography } from '../../../tailwind'
 import { ExpandableText, Image } from '../..'
 import { useRouter } from 'next/router'
 
@@ -49,16 +49,10 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 	return (
 		<Stack			
 			alignItems="center"
-			spacing={{
-				sm: 4,
-				xs: 1,
-			}}
-      direction={{
-				sm: flexDirection,
-				xs: 'column',
-			}}
+			spacing={4}
+      direction={flexDirection}
 		>
-			<Box sx={sx.leftPanel}>
+			<Box className='w-full md:1-1/2'>
 				<Image
 					label={label}
 					src={image}
@@ -70,13 +64,13 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 					disableBorderRadius={enableBorder}
 				/>
 			</Box>
-			<Stack spacing={1} sx={sx.rightPanel}>
-				<Typography sx={sx.title} variant={'h6'}>
+			<Stack spacing={1} className='w-full md:1-1/2'>
+				<Typography variant={'h6'}>
 					{title}
 				</Typography>
 				{description && <ExpandableText text={description} />}
 				{buttonText && (
-					<Box sx={sx.buttons}>
+					<Stack direction="row" spacing={1}>
 						<Button
 							size="large"
 							variant="contained"
@@ -85,7 +79,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 						>
 							{buttonText}
 						</Button>
-					</Box>
+					</Stack>
 				)}
 			</Stack>
 		</Stack>
@@ -93,77 +87,3 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 }
 
 export default FeaturedCard
-
-const sx = {
-	root: {
-		width: '100%',
-		display: 'flex',
-		borderRadius: 1,
-	},
-	imageContainer: {
-		width: '100%',
-		position: 'relative',
-		display: 'flex',
-		flexDirection: 'row',
-		borderRadius: 1,
-		overflow: 'hidden',
-	},
-	rootBorder: {
-		border: '1px solid',
-		borderColor: 'divider',
-	},
-	leftPanel: {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		height: '100%',
-    minWidth: '50%',
-		width: {
-			xs: '100%',
-			sm: '50%',
-		},
-	},
-  rightPanel: {
-    minWidth: '50%',
-		justifyContent: {
-			sm: 'flex-start',
-			xs: 'center',
-		},
-		width: {
-			sm: '50%',
-			xs: '100%',
-		},
-		alignItems: 'flex-start',
-		height: '100%',
-	},
-	buttons: {
-		display: 'flex',
-		justifyContent: {
-			sm: 'flex-start',
-			xs: 'center',
-		},
-		width: '100%',
-	},	
-	textContent: {
-		display: 'flex',
-		justifyContent: 'flex-start',
-		height: '100%',
-		width: '100%',
-	},
-	title: {
-		width: '100%',
-		color: 'text.primary',
-		textAlign: {
-			sm: 'left',
-			xs: 'center',
-		},
-	},
-	description: {
-		width: '100%',
-		color: 'text.secondary',
-		textAlign: {
-			sm: 'left',
-			xs: 'center',
-		},
-	},
-}
