@@ -1,54 +1,65 @@
 import React from 'react'
-import { Button } from '@mui/material'
-import { IconLoading, Placeholder, Modal } from '../../../components'
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "../../../shadcn/ui/alert-dialog"
+import { Button } from "../../../shadcn/ui/button"
+import { IconLoading } from '../../../components'
+import { cn } from "../../../shadcn/lib/utils"
 
 type AlertModalProps = {
-	loading?: boolean
-	title?: string
-	description?: string
-	icon?: string
-	open: boolean
-	handleClose: () => void
-	handleConfirm: any
+  loading?: boolean
+  title?: string
+  description?: string
+  icon?: string
+  open: boolean
+  handleClose: () => void
+  handleConfirm: () => void
 }
 
-const AlertModal: React.FC<AlertModalProps> = (props) => {
-	const {
-		loading = false,
-		title = 'Please confirm or cancel this action.',
-		description = 'This action is not reversable.',
-		icon = 'CircleAlert',
-		open,
-		handleClose,
-		handleConfirm,
-	} = props
-
-	return (
-		<Modal
-			open={open}
-			loading={loading}
-			buttons={
-				<>
-					<Button variant="contained" color="secondary" onClick={handleClose}>
-						Cancel
-					</Button>
-					<Button
-						variant="contained"
-						color="primary"
-						onClick={handleConfirm}
-						startIcon={loading && <IconLoading />}
-					>
-						Confirm
-					</Button>
-				</>
-			}
-			handleClose={handleClose}
-		>
-			{!loading && (
-				<Placeholder icon={icon} title={title} description={description} />
-			)}
-		</Modal>
-	)
+const AlertModal: React.FC<AlertModalProps> = ({
+  loading = false,
+  title = 'Please confirm or cancel this action.',
+  description = 'This action is not reversable.',
+  icon = 'CircleAlert',
+  open,
+  handleClose,
+  handleConfirm,
+}) => {
+  return (
+    <AlertDialog open={open} onOpenChange={handleClose}>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>{title}</AlertDialogTitle>
+          <AlertDialogDescription>{description}</AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel asChild>
+            <Button variant="secondary" onClick={handleClose}>
+              Cancel
+            </Button>
+          </AlertDialogCancel>
+          <AlertDialogAction asChild>
+            <Button
+              variant="default"
+              onClick={handleConfirm}
+              className={cn(loading && "cursor-not-allowed opacity-50")}
+              disabled={loading}
+            >
+              {loading && <IconLoading />}
+              Confirm
+            </Button>
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  )
 }
 
 export default AlertModal

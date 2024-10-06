@@ -1,188 +1,105 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { cn } from "../../../shadcn/lib/utils"
 import {
-	Box,
-	Button,
-	Dialog,
-	DialogActions,
-	DialogContent,
-	DialogTitle,
-	Stack,
-	Typography,
-	IconButton,
-} from '@mui/material'
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "../../../shadcn/ui/dialog"
+import { Button } from "../../../shadcn/ui/button"
 import { Icon, Loader } from '../../../components'
-import { useResponsive } from '../../../hooks'
-import { muiTheme } from '../../../theme'
 
 type ModalProps = {
-	open: boolean
-	loading?: boolean
-	handleClose: () => void
+  open: boolean
+  loading?: boolean
+  handleClose: () => void
   icon?: string
-	avatar?: React.ReactNode
-	title?: string | React.ReactNode
-	subtitle?: string
-	buttons?: any
-	children?: any
-	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-	secondaryActions?: any
-	disablePadding?: boolean
-	fullScreen?: boolean
-	enableCancel?: boolean
-	hideBackdrop?: boolean
-	disableClose?: boolean
-	disableHeader?: boolean
+  avatar?: React.ReactNode
+  title?: string | React.ReactNode
+  subtitle?: string
+  buttons?: React.ReactNode
+  children?: React.ReactNode
+  maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  secondaryActions?: React.ReactNode
+  disablePadding?: boolean
+  fullScreen?: boolean
+  enableCancel?: boolean
+  hideBackdrop?: boolean
+  disableClose?: boolean
+  disableHeader?: boolean
 }
 
-const Modal: React.FC<ModalProps> = (props) => {
-	const {
-		open,
-		loading = false,
-		handleClose,
-		avatar,
-    icon,
-		title,
-		subtitle,
-		buttons,
-		children,
-		maxWidth = 'sm',
-		secondaryActions,
-		disablePadding = false,
-		fullScreen,
-		enableCancel = false,
-		hideBackdrop = false,
-		disableClose = false,
-		disableHeader = false,
-	} = props
+const Modal: React.FC<ModalProps> = ({
+  open,
+  loading = false,
+  handleClose,
+  avatar,
+  icon,
+  title,
+  subtitle,
+  buttons,
+  children,
+  secondaryActions,
+  disablePadding = false,
+  fullScreen,
+  enableCancel = false,
+  disableClose = false,
+  disableHeader = false,
+}) => {
 
-	const { isMobile } = useResponsive()
-
-	return (
-		<Dialog
-			sx={{
-				...sx.root,
-				// Manually reset the maxWidth breakpoints
-				// since these are modifed in the Editor
-				'& .MuiDialog-paper': {
-					bgcolor: 'background.default',
-					maxWidth: {
-						sm:
-							isMobile || fullScreen
-								? '100vw'
-								: muiTheme.breakpoints.values[maxWidth],
-						xs: '100vw',
-					},
-				},
-			}}
-			fullWidth
-			fullScreen={isMobile || fullScreen === true}
-			open={open}
-			onClose={handleClose}
-			hideBackdrop={hideBackdrop}
-		>
-			{!disableHeader && (
-				<DialogTitle sx={sx.dialogTitleContainer}>
-					<Box sx={sx.dialogTitleContent}>
-						<Stack direction="row" alignItems="center" spacing={1}>
-							{avatar}
-              { icon && (
-                <Icon name={ icon } />
+  return (
+    <Dialog open={open} onOpenChange={handleClose}>
+      <DialogContent className={cn(
+        "bg-background",
+        fullScreen ? "w-screen h-screen" : 'w-full',
+        "rounded-md",
+        "overflow-hidden"        
+      )}>
+        {!disableHeader && (
+          <DialogHeader className="px-2 py-1">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                {avatar}
+                {icon && <Icon name={icon} />}
+                <DialogTitle className="text-foreground">{title}</DialogTitle>
+              </div>
+              {!loading && (
+                <div className="flex items-center">
+                  {secondaryActions}
+                  {!disableClose && (
+                    <Button variant="ghost" size="icon" onClick={handleClose}>
+                      <Icon name="X" />
+                    </Button>
+                  )}
+                </div>
               )}
-							<Typography variant="subtitle1" color="textPrimary" sx={sx.title}>
-								{title}
-							</Typography>
-						</Stack>
-						{!loading && (
-							<Box sx={sx.secondaryActions}>
-								{secondaryActions && secondaryActions}
-								{!disableClose && (
-									<IconButton onClick={handleClose}>
-										<Icon name="X" />
-									</IconButton>
-								)}
-							</Box>
-						)}
-					</Box>
-				</DialogTitle>
-			)}
-			<DialogContent
-				sx={{
-					...sx.dialogContent,
-					...(disablePadding && sx.disablePadding),
-				}}
-			>
-				{subtitle && (
-					<Typography variant="body1" mt={1}>
-						{subtitle}
-					</Typography>
-				)}
-				<Loader loading={loading} />
-				{!loading && <Box sx={sx.content}>{children}</Box>}
-			</DialogContent>
-
-			{!loading && (
-				<>
-					{(enableCancel || buttons) && (
-						<DialogActions sx={sx.dialogActions}>
-							{enableCancel && (
-								<Button
-									variant="contained"
-									color="secondary"
-									onClick={handleClose}
-								>
-									Cancel
-								</Button>
-							)}
-							{buttons && buttons}
-						</DialogActions>
-					)}
-				</>
-			)}
-		</Dialog>
-	)
+            </div>
+          </DialogHeader>
+        )}
+        <div className={cn(
+          "my-1 h-full",
+          disablePadding && "m-0 p-0"
+        )}>
+          {subtitle && (
+            <p className="text-sm text-muted-foreground mt-1">{subtitle}</p>
+          )}
+          <Loader loading={loading} />
+          {!loading && <div className="h-full w-full">{children}</div>}
+        </div>
+        {!loading && (enableCancel || buttons) && (
+          <DialogFooter className="border-t border-border bg-background">
+            {enableCancel && (
+              <Button variant="secondary" onClick={handleClose}>
+                Cancel
+              </Button>
+            )}
+            {buttons}
+          </DialogFooter>
+        )}
+      </DialogContent>
+    </Dialog>
+  )
 }
 
 export default Modal
-
-const sx = {
-	root: {
-		borderRadius: 1,
-	},
-	title: {},
-	dialogTitleContainer: {
-		p: 0,
-		px: 1,
-		pl: 2,
-		bgcolor: 'background.default',		
-	},
-	dialogTitleContent: {
-		height: '50px',
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-between',
-	},
-	dialogContent: {
-		my: 1,
-		height: '100%',
-	},
-	disablePadding: {
-		m: 0,
-		p: 0,
-	},
-	dialogActions: {
-		borderTop: '1px solid',
-		borderColor: 'divider',
-		bgcolor: 'background.default',
-	},
-	secondaryActions: {
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'flex-end',
-		alignItems: 'center',
-	},
-	content: {
-		height: '100%',
-		width: '100%',
-	},
-}
