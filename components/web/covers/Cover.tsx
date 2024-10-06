@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Stack, Typography, Button } from '@mui/material'
+import { Box, Stack, Typography, Button } from '../../../tailwind'
 import { Image } from '../..'
 import { useRouter } from 'next/router'
 import { useApp } from '../../../hooks'
@@ -30,7 +30,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 	const {
 		title,
 		description,
-		textVariant = 'h2',		
+		textVariant = 'h3',		
 		handleClick,
 		image,
 		height = 520,
@@ -53,7 +53,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 	}
 
 	return (
-		<Box sx={sx.root}>
+		<Box className="dark relative">
 			<Image
 				disableBorderRadius
 				src={image}
@@ -65,24 +65,17 @@ const Cover: React.FC<CoverProps> = (props) => {
 				opacity={opacity}
 			/>
 			<Stack
-				sx={{
-					...sx.stack,
-					height: `${height}px`,
-				}}
+        className={`h-[${height}px] absolute top-0 left-0 w-full h-full justify-center items-center px-3 sm:px-0`}				
 			>
 				<Stack
 					direction="column"
 					spacing={1}
 					alignItems={alignItems}
-					sx={sx.content}
 				>
 					{title && (
 						<Typography
 							variant={textVariant}
-							color="common.white"
-							sx={{
-								textAlign: alignItems === 'center' ? 'center' : 'left',
-							}}
+              textAlign={ alignItems === 'center' ? 'center' : 'left'}							
 						>
 							{title}
 						</Typography>
@@ -91,15 +84,13 @@ const Cover: React.FC<CoverProps> = (props) => {
 						<Typography
 							variant="subtitle2"
 							color="text.primary"
-							sx={{
-								textAlign: alignItems === 'center' ? 'center' : 'left',
-							}}
+              textAlign={ alignItems === 'center' ? 'center' : 'left'}							
 						>
 							{description}
 						</Typography>
 					)}
 					{buttonText && (
-						<Box py={2}>
+						<Box className='py-2'>
 							<Button
 								size="large"
 								onClick={handleItemClick}

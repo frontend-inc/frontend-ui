@@ -44,12 +44,19 @@ export default function Stack({
   divider,
   className,
 }: StackProps) {
-  const spacingClass = spacing > 0 ? `space-y-${spacing} sm:space-y-0 sm:space-x-${spacing}` : ''
+  
+  const getSpacingClass = () => {
+    if (spacing === 0) return ''
+    if (direction.includes('row')) {
+      return `space-y-${spacing} sm:space-y-0 sm:space-x-${spacing}`
+    }
+    return `space-y-${spacing}`
+  }
 
   const stackClasses = cn(
     'flex w-full',
     directionClasses[direction],
-    spacingClass,
+    getSpacingClass(),
     alignItemsClasses[alignItems],
     justifyContentClasses[justifyContent],
     className

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Icon } from '../..'
-import { Stack, Avatar, Typography } from '@mui/material'
+import { Avatar, Stack, Typography } from '../../../tailwind'
 
 type FeatureProps = {
 	icon?: string
@@ -10,22 +10,19 @@ type FeatureProps = {
 }
 
 const Feature: React.FC<FeatureProps> = (props) => {
-	const { icon, title, description, enableBorder = false } = props || {}
+	const { icon, title, description } = props || {}
 	return (
 		<Stack
-			direction="column"
-			spacing={1}
-			sx={{
-				...sx.root,
-				...(enableBorder && sx.enableBorder),
-			}}
+			direction="column"      
+			spacing={2}			
+      alignItems='center'
 		>
-			{icon && <Icon name={icon} color="primary.main" size={24} />}
-			<Stack direction="column" spacing={1}>
-				<Typography sx={sx.text} color="text.primary" variant="subtitle1">
+			{icon && <Avatar><Icon name={icon} color="primary.main" /></Avatar>}
+			<Stack direction="column" spacing={1} alignItems='center'>
+				<Typography color="text.primary" variant="subtitle1">
 					{title}
 				</Typography>
-				<Typography sx={sx.text} color="text.secondary" variant="body1">
+				<Typography color="text.secondary" variant="body1">
 					{description}
 				</Typography>
 			</Stack>
