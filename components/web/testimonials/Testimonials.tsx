@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { Stack } from '../../../tailwind'
 import TestimonialCards from './TestimonialCards'
 import SwipeableTestimonials from './SwipeableTestimonials'
 import { Placeholder } from '../..'
@@ -16,7 +16,7 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 	const { layout = 'grid', enableArrows, enableAutoPlay, items = [] } = props
 
 	return (
-		<Box sx={sx.root}>
+		<Stack direction="column" className='w-full'>
 			{layout == 'carousel' ? (
 				<SwipeableTestimonials
 					items={items}
@@ -33,7 +33,7 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 					description="Your testimonials will appear here."
 				/>
 			)}
-		</Box>
+		</Stack>
 	)
 }
 

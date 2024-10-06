@@ -1,7 +1,6 @@
 import React from 'react'
-import { Box, Stack, Typography } from '@mui/material'
-import { truncate } from '../../../helpers'
-import { Avatar, ExpandableText } from '../../../components'
+import { Avatar, Box, Stack, Typography } from '../../../tailwind'
+import { ExpandableText } from '../../../components'
 
 type TestimonialProps = {
 	author: string
@@ -15,15 +14,15 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 	const { author, text, image = '' } = props || {}
 
 	return (
-		<Box sx={sx.root}>
-			<Stack spacing={1} sx={sx.content}>
+		<Box className={'h-[320px] border border-zinc-200 p-4'}>
+			<Stack justifyContent='space-between' className={'h-full'}>
 				<Box sx={sx.testimonial}>
           {text && (
             <ExpandableText variant="subtitle1" color='text.secondary' text={`"${text}"`} />            
           )}											
 				</Box>
-        <Stack direction="row" spacing={1} sx={ sx.author }>
-          <Avatar src={image} size={48} />
+        <Stack direction="row" spacing={2}>
+          <Avatar src={image} />
           <Typography variant="body2" color="text.secondary">
             &mdash; {author}
           </Typography>

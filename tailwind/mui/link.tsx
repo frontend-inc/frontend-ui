@@ -1,22 +1,30 @@
 import { Button } from "../../shadcn/ui/button"
-import Link from "next/link"
+import NextLink from "next/link"
 import { ButtonProps } from "../../shadcn/ui/button"
 import { LinkProps } from "next/link"
-import { ReactNode } from "react"
+import { ReactNode, MouseEvent } from "react"
 
-interface LinkButtonProps extends ButtonProps {
+interface LinkButtonProps {
   href: LinkProps["href"]
   children: ReactNode
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void
 }
 
-function LinkButton({ href, children, ...props }: LinkButtonProps) {
+function Link({ href, children, onClick, ...props }: LinkButtonProps) {
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (onClick) {
+      event.preventDefault();
+      onClick(event)
+    }    
+  }
+
   return (
     <Button variant='link' asChild {...props}>
-      <Link href={href}>{children}</Link>
+      <NextLink href={href} onClick={handleClick}>{children}</NextLink>
     </Button>
   )
 }
 
 export {
-  LinkButton
+  Link
 }

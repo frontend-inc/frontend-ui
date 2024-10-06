@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Stack, Typography, Link } from '@mui/material'
+import { Stack, Typography, Link } from '../../../tailwind'
 import { TypographyVariantsType } from '../../../types'
 
 const MAX_CHARS = 200
@@ -17,16 +17,16 @@ const ExpandableText: React.FC<ExpandableTextProps> = (props) => {
 	return (
 		<Stack direction="column" spacing={0}>
 			{open ? (
-				<Typography variant={variant} color={color} sx={sx.text}>
+				<Typography variant={variant}>
 					{text}
 				</Typography>
 			) : (
-				<Typography variant={variant} color={color} sx={sx.text}>
+				<Typography variant={variant}>
 					{text?.slice(0, maxChars)}
 				</Typography>
 			)}
 			{text?.length > maxChars && (
-				<Link onClick={() => setOpen(!open)} sx={sx.link}>
+				<Link onClick={() => setOpen(!open)}>
 					{open ? 'See less' : '... See all'}
 				</Link>
 			)}
