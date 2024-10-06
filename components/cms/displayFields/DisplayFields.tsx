@@ -1,7 +1,7 @@
 import React from 'react'
 import { DisplayField } from '../..'
 import { DisplayFieldType } from '../../../types'
-import { Stack } from '@mui/material'
+import { Stack } from '../../../tailwind'
 
 type DisplayFieldsProps = {
 	fields: DisplayFieldType[]

@@ -1,6 +1,6 @@
 import React from 'react'
 import { DisplayFields, ProductRating, UserChip } from '../..'
-import { Stack } from '@mui/material'
+import { Stack } from '../../../tailwind'
 
 type SecondaryFieldsProps = {
 	resource: any

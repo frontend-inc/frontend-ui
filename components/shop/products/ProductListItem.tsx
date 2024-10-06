@@ -1,9 +1,8 @@
 import React from 'react'
 import { ProductCard } from '../..'
-import { useResourceContext } from 'frontend-js'
 import { SecondaryFields, SocialButtons, ButtonActions } from '../..'
 import { ButtonType, DisplayFieldType } from '../../../types'
-import { Box } from '@mui/material'
+import { Box } from '../../../tailwind'
 import { AddToCartButton } from '../../../components'
 
 type ProductListItemProps = {
