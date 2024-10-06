@@ -14,7 +14,7 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 	const { author, text, image = '' } = props || {}
 
 	return (
-		<Box className={'h-[320px] border border-zinc-200 p-4'}>
+		<Box className={'p-4 h-[320px] border border-zinc-200 p-4 rounded-lg'}>
 			<Stack justifyContent='space-between' className={'h-full'}>
 				<Box sx={sx.testimonial}>
           {text && (
