@@ -3,7 +3,7 @@ import { Input } from '../../shadcn/ui/input'
 import { Label } from '../../shadcn/ui/label'
 import { cn } from '../../shadcn/lib/utils'
 
-interface TextFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'> {
+interface TextFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'type'> {
   label?: string
   helperText?: string
   error?: boolean
@@ -11,9 +11,10 @@ interface TextFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement
   name: string
   value: string
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  type?: 'text' | 'number' | 'email' | 'password' | 'tel' | 'url' | 'search' | 'date' | 'time' | 'datetime-local'
 }
 
-function TextField({
+export default function TextField({
   label,
   helperText,
   error = false,
@@ -23,6 +24,7 @@ function TextField({
   name,
   value,
   onChange,
+  type = 'text',
   ...props
 }: TextFieldProps) {
   const inputId = id || name || label?.toLowerCase().replace(/\s+/g, '-')
@@ -45,6 +47,7 @@ function TextField({
         name={name}
         value={value}
         onChange={onChange}
+        type={type}
         className={cn(
           'transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
           error && 'border-destructive focus:ring-destructive',
@@ -65,8 +68,4 @@ function TextField({
       )}
     </div>
   )
-}
-
-export { 
-  TextField 
 }

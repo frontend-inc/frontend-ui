@@ -1,5 +1,6 @@
 import React from 'react'
 import { cn } from '../../shadcn/lib/utils'
+import { sxTw } from '../utils'
 
 type BoxProps = {
   children?: React.ReactNode
@@ -31,6 +32,7 @@ type BoxProps = {
   borderRadius?: string
   boxShadow?: string
   className?: string
+  sx?: Record<string, any>
   [x: string]: any // Allow any other props
 }
 
@@ -64,8 +66,12 @@ const Box: React.FC<BoxProps> = ({
   borderRadius,
   boxShadow,
   className,
+  sx={},
   ...rest
 }) => {
+
+  const sxClassNames = sxTw(sx)
+
   const classes = cn(
     m && `m-${m}`,
     mt && `mt-${mt}`,
@@ -93,7 +99,8 @@ const Box: React.FC<BoxProps> = ({
     color && `text-${color}`,
     borderRadius && `rounded-${borderRadius}`,
     boxShadow && `shadow-${boxShadow}`,
-    className
+    sxClassNames,
+    className,    
   )
 
   return (

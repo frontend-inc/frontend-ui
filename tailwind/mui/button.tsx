@@ -1,25 +1,49 @@
 
 import React from 'react';
-import { Button as ShadcnButton } from '../../shadcn/ui/button';
+import { Button as ShadcnButton, ButtonProps as ShadcnButtonProps } from '../../shadcn/ui/button';
 import { cn } from '../../shadcn/lib/utils';
 
-interface ButtonProps {
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+type ButtonSize = 'small' | 'medium' | 'large';
+type ButtonColor = 'primary' | 'secondary';
+
+interface ButtonProps extends Omit<ShadcnButtonProps, 'size' | 'variant'> {
+  size?: ButtonSize;
+  color?: ButtonColor;
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary';
-  disabled?: boolean;
+  startIcon?: React.ReactNode;
+  endIcon?: React.ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({ onClick, children, variant = 'primary', disabled }) => {
-  const variantClasses = variant === 'primary' ? 'bg-primary text-white' : 'bg-secondary text-black';
+const Button: React.FC<ButtonProps> = ({ 
+  size = 'medium', 
+  color = 'primary', 
+  className,
+  children,
+  startIcon,
+  endIcon,
+  ...props 
+}) => {
+  const sizeMap: Record<ButtonSize, ShadcnButtonProps['size']> = {
+    small: 'sm',
+    medium: 'default',
+    large: 'lg'
+  };
+
+  const colorMap: Record<ButtonColor, ShadcnButtonProps['variant']> = {
+    primary: 'default',
+    secondary: 'secondary'
+  };
 
   return (
     <ShadcnButton
-      onClick={onClick}
-      disabled={disabled}
-      className={cn('px-4 py-2 rounded-md', variantClasses)}
+      size={sizeMap[size]}
+      variant={colorMap[color]}
+      className={cn('flex items-center justify-center', className)}
+      {...props}
     >
+      {startIcon && <span className="mr-2">{startIcon}</span>}
       {children}
+      {endIcon && <span className="ml-2">{endIcon}</span>}
     </ShadcnButton>
   );
 };
