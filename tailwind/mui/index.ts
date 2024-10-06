@@ -1,6 +1,7 @@
 export * from './box'
 export * from './button'
 export * from './drawer'
+export * from './link'
 export * from './list-item'
 export * from './paper'
 export * from './stack' 
