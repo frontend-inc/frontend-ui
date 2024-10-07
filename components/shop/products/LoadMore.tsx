@@ -1,6 +1,5 @@
 import React from 'react'
-import { Box, Button } from '@mui/material'
-import { Waypoint } from 'react-waypoint'
+import { Button } from '../../../tailwind'
 import { Icon } from '../../../components'
 
 type LoadMoreProps = {
@@ -13,22 +12,20 @@ type LoadMoreProps = {
 const LoadMore: React.FC<LoadMoreProps> = (props) => {
 	const { page, numPages, handlePaginate, enableInfiniteLoad = false } = props
 
+  if(page >= numPages) return null;
 	return (
-		<Box sx={sx.root}>
-			{page < numPages && (
-				<>
-					{enableInfiniteLoad && <Waypoint onEnter={handlePaginate} />}
-					<Button
-						color="secondary"
-						variant="contained"
-						onClick={handlePaginate}
-						endIcon={<Icon name="ChevronDown" color="secondary.contrastText" />}
-					>
-						Load More
-					</Button>
-				</>
-			)}
-		</Box>
+		<div className='flex flex-row w-full justify-center items-center'>		
+      <Button
+        color="secondary"
+        variant="contained"
+        onClick={handlePaginate}
+        endIcon={
+          <Icon name="ChevronDown" />
+        }
+      >
+        Load More
+      </Button>
+		</div>
 	)
 }
 

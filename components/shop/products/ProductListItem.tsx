@@ -1,6 +1,6 @@
 import React from 'react'
 import { ProductCard } from '../..'
-import { SecondaryFields, SocialButtons, ButtonActions } from '../..'
+import { SecondaryFields, SocialButtons } from '../..'
 import { ButtonType, DisplayFieldType } from '../../../types'
 import { Box } from '../../../tailwind'
 import { AddToCartButton } from '../../../components'

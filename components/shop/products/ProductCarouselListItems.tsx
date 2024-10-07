@@ -1,5 +1,4 @@
 import React from 'react'
-import { Stack } from '../../../tailwind'
 import { Carousel } from '../..'
 import { useApp } from '../../../hooks'
 import { useRouter } from 'next/router'
