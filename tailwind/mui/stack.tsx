@@ -38,7 +38,7 @@ const justifyContentClasses = {
 export default function Stack({
   children,
   direction = 'column',
-  spacing = 0,
+  spacing = 4,
   alignItems = 'flex-start',
   justifyContent = 'flex-start',
   divider,
@@ -47,10 +47,11 @@ export default function Stack({
   
   const getSpacingClass = () => {
     if (spacing === 0) return ''
-    if (direction.includes('row')) {
-      return `space-y-${spacing} sm:space-y-0 sm:space-x-${spacing}`
-    }
-    return `space-y-${spacing}`
+    if (direction == 'row' || direction == 'row-reverse') {
+      return `space-y-${spacing} space-x-${spacing}`
+    }else{
+      return `space-y-${spacing}`
+    }    
   }
 
   const stackClasses = cn(

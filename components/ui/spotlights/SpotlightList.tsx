@@ -1,127 +1,70 @@
 import React from 'react'
-import { Stack, Box, Typography } from '@mui/material'
+import { Stack, Box, Typography } from '../../../tailwind'
 import { Container, BrandLogos, Label, Image } from '../..'
 
 export type SpotlightListProps = {
-	label?: string
-	image?: string
-	logos?: {
-		image: string
-		title: string
-	}[]
-	primary?: string | React.ReactNode
-	secondary?: React.ReactNode
-	actions?: React.ReactNode
-	secondaryAction?: React.ReactNode
+  label?: string
+  image?: string
+  logos?: {
+    image: string
+    title: string
+  }[]
+  primary?: string | React.ReactNode
+  secondary?: React.ReactNode
+  actions?: React.ReactNode
+  secondaryAction?: React.ReactNode
   styles?: any
-	slots?: {
-		image?: any
-		content?: any
-	}
+  slots?: {
+    image?: any
+    content?: any
+  }
 }
 
 const Spotlight: React.FC<SpotlightListProps> = (props) => {
-	const {
-		image,
-		label,
-		primary,
-		secondary,
-		actions,
-		logos = [],
-    styles={},
-		slots = {
-			image: {},
-		},
-	} = props || {}
+  const {
+    image,
+    label,
+    primary,
+    secondary,
+    actions,
+    logos = [],
+    styles = {},
+    slots = {
+      image: {},
+    },
+  } = props || {}
 
-	return (
-		<Box sx={{ ...sx.root, ...styles }}>
-			<Container maxWidth="md">
-				<Stack sx={sx.container} spacing={6}>
-					<Stack sx={sx.header} spacing={2}>
-            { label && (
-						<Box>
-							<Label label={label} />
-						</Box>      
-            )}      
-						<Typography color="text.primary" variant="h1" sx={sx.header}>
-							{primary}
-						</Typography>
-						{secondary && secondary}
-						{actions && actions}
-						{logos?.length > 0 && <BrandLogos logos={logos} />}
-					</Stack>
-					<Box sx={sx.imageContainer}>
-						<Image
+  return (
+    <Box className={'h-auto w-full'}>
+      <Container maxWidth="md">
+        <Stack className="px-2 w-full justify-start items-center" spacing={10}>
+          <Stack spacing={10} alignItems='center' className="max-w-[600px] h-full w-full text-center">
+            {label && (
+              <Box className='w-full flex justify-center'>
+                <Label label={label} />
+              </Box>
+            )}
+            <Typography variant="h2" className="max-w-[600px] w-full text-center">
+              {primary}
+            </Typography>
+            {secondary && secondary}
+            {actions && actions}
+            {logos?.length > 0 && <BrandLogos logos={logos} />}
+          </Stack>
+          <Box className="w-full overflow-hidden rounded-md max-h-[640px] flex items-center justify-center">
+            <Image
               disableBorderRadius
-							src={image}
-							alt={primary}
-							height={600}
-							objectFit="contain"
-							{...slots.image}
-						/>
-					</Box>
-				</Stack>
-			</Container>
-		</Box>
-	)
+              src={image}
+              alt={primary}
+              height={600}
+              objectFit="contain"
+              {...slots.image}
+            />
+          </Box>
+        </Stack>
+      </Container>
+    </Box>
+  )
 }
 
 export default Spotlight
-
-const sx = {
-	root: {
-		height: 'auto',
-		width: '100%',
-	},
-	container: {
-		px: 2,
-		width: '100%',
-		justifyContent: 'flex-start',
-		alignItems: 'center',
-	},
-	header: {
-		maxWidth: 600,
-		width: '100%',
-		textAlign: 'center',
-	},
-	content: {
-		width: '100%',
-		maxWidth: {
-			sm: 500,
-			xs: '100%',
-		},
-	},
-	text: {
-		width: '100%',
-		whiteSpace: 'pre-line',
-	},
-	caption: {
-		color: 'text.secondary',
-	},
-	buttons: {
-		justifyContent: 'center',
-		width: {
-			sm: 'auto',
-			xs: '100%',
-		},
-	},
-	imageContainer: {
-		width: '100%',
-    overflow: 'hidden',
-		borderRadius: 2,	
-    maxHeight: 640,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',	
-	},
-	logos: {
-		p: 2,
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	logo: {
-		height: 64,
-		width: 64,
-	},
-}

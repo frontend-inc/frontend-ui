@@ -1,131 +1,59 @@
 import React from 'react'
-import { Container, Stack, Box, Typography } from '@mui/material'
+import { Container, Stack, Typography } from '../../../tailwind'
 import { Label, Image, BrandLogos } from '../..'
 import { SpotlightListProps } from './SpotlightList'
 
 const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
-	const {
-		image,
-		label,
-		primary,
-		secondary,
-		actions,
-		logos = [],
-    styles={},
-		slots = {
-			image: {},
-		},
-	} = props || {}
+  const {
+    image,
+    label,
+    primary,
+    secondary,
+    actions,
+    logos = [],
+    styles = {},
+    slots = {
+      image: {},
+    },
+  } = props || {}
 
-	return (
-		<Box sx={{ ...sx.root, ...styles }}>
-			<Container maxWidth="lg">
-				<Stack
-					direction={{
-						md: 'row',
-						xs: 'column',
-					}}
-					spacing={6}
-				>
-					<Stack sx={sx.leftPanel} spacing={2}>
-            { label && (
-						<Box>
-							<Label label={label} />
-						</Box>
+  return (
+    <div className={'pt-16 py-6 h-auto w-full'}>
+      <Container maxWidth="xl">
+        <Stack
+          direction={'row'}
+          spacing={6}
+        >
+          <Stack spacing={4} className="sm:min-h-[400px] md:items-start xs:items-center justify-center md:max-w-[600px] xs:max-w-full md:w-1/2 xs:w-full">
+            {label && (
+              <div>
+                <Label label={label} />
+              </div>
             )}
-						<Typography color="text.primary" variant="h1" sx={sx.title}>
-							{primary}
-						</Typography>
-						{secondary && secondary}
-						{actions && actions}
-						{logos?.length > 0 && <BrandLogos logos={logos} />}
-					</Stack>
-					<Box sx={sx.rightPanel}>
-						<Image
-							src={image}
-							alt={primary}
-							height={400}
-							objectFit="cover"
-							{...slots.image}
-						/>
-					</Box>
-				</Stack>
-			</Container>
-		</Box>
-	)
+            <Typography 
+              color="text.primary" 
+              variant="h2" 
+              className="md:text-left xs:text-center"
+            >
+              {primary}
+            </Typography>
+            {secondary && secondary}
+            {actions && actions}
+            {logos?.length > 0 && <BrandLogos logos={logos} />}
+          </Stack>
+          <div className="md:w-1/2 w-full">
+            <Image
+              src={image}
+              alt={typeof primary === 'string' ? primary : 'Spotlight image'}
+              height={400}
+              objectFit="cover"
+              {...slots.image}
+            />
+          </div>
+        </Stack>
+      </Container>
+    </div>
+  )
 }
 
 export default SpotlightCard
-
-const sx = {
-	root: {
-		pt: 16,
-		py: 6,
-		height: 'auto',
-		width: '100%',
-	},
-	container: {
-		px: 2,
-		width: '100%',
-		justifyContent: 'flex-start',
-		alignItems: 'flex-start',
-	},
-	title: {
-		textAlign: {
-			md: 'left',
-			xs: 'center',
-		},
-	},
-	leftPanel: {
-		alignItems: {
-			md: 'flex-start',
-			xs: 'center',
-		},
-		justifyContent: 'center',
-
-		maxWidth: {
-			md: 600,
-			xs: '100%',
-		},
-		width: {
-      md: '50%',
-      xs: '100%',
-    }
-	},
-	content: {
-		width: '100%',
-		maxWidth: {
-			md: 600,
-			xs: '100%',
-		},
-	},
-	text: {
-		width: '100%',
-		whiteSpace: 'pre-line',
-	},
-	caption: {
-		color: 'text.secondary',
-	},
-	buttons: {
-		justifyContent: 'center',
-		width: {
-			sm: 'auto',
-			xs: '100%',
-		},
-	},
-	rightPanel: {
-    width: {
-      md: '50%',
-      xs: '100%',    
-    },
-	},
-	logos: {
-		p: 2,
-		justifyContent: 'flex-start',
-		alignItems: 'center',
-	},
-	logo: {
-		height: 30,
-		width: 120,
-	},
-}

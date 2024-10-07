@@ -51,10 +51,8 @@ const Modal: React.FC<ModalProps> = ({
   return (
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className={cn(
-        "bg-background",
-        fullScreen ? "w-screen h-screen" : 'w-full',
-        "rounded-md",
-        "overflow-hidden"        
+        "bg-background rounded-md overflow-hidden max-h-[600px] overflow-y-scroll",
+        fullScreen ? "w-screen h-screen" : 'w-full',        
       )}>
         {!disableHeader && (
           <DialogHeader className="px-2 py-1">
@@ -67,18 +65,13 @@ const Modal: React.FC<ModalProps> = ({
               {!loading && (
                 <div className="flex items-center">
                   {secondaryActions}
-                  {!disableClose && (
-                    <Button variant="ghost" size="icon" onClick={handleClose}>
-                      <Icon name="X" />
-                    </Button>
-                  )}
                 </div>
               )}
             </div>
           </DialogHeader>
         )}
         <div className={cn(
-          "my-1 h-full",
+          "my-1 h-full overflow-y-auto",
           disablePadding && "m-0 p-0"
         )}>
           {subtitle && (
