@@ -32,7 +32,7 @@ const Typography: React.FC<TypographyProps> = ({
 	children,
 }) => {
 	const baseClasses = cn(
-		color === 'text.primary' ? 'text-primary' : 'text-muted-foreground',
+		color === 'text.primary' ? 'text-foreground' : 'text-muted-foreground',
 		'whitespace-pre-line'
 	)
 
@@ -48,7 +48,7 @@ const Typography: React.FC<TypographyProps> = ({
 		button: 'text-base font-medium uppercase tracking-widest',
 		body1: 'text-base',
 		body2: 'text-sm',
-		caption: 'text-xs',
+		caption: 'text-xs uppercase tracking-widest',
 		overline: 'text-xs uppercase tracking-widest',
 	}
 

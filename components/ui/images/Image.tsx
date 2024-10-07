@@ -15,6 +15,7 @@ interface ResponsiveImageProps {
 	enableGradient?: boolean
 	disableBorderRadius?: boolean
 	className?: string
+  handleClick?: () => void
 }
 
 export default function ResponsiveImage({
@@ -26,6 +27,7 @@ export default function ResponsiveImage({
 	enableOverlay = false,
 	enableGradient = false,
 	disableBorderRadius = false,
+  handleClick,
 	className,
 }: ResponsiveImageProps) {
 	const [isHovered, setIsHovered] = useState(false)
@@ -38,6 +40,7 @@ export default function ResponsiveImage({
 				'relative overflow-hidden',
 				className
 			)}
+      onClick={ handleClick ? handleClick : undefined }
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
 		>

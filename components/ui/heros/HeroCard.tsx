@@ -1,6 +1,7 @@
 import React from 'react'
 import { cn } from '../../../shadcn/lib/utils'
 import { Image } from '../..'
+import { Typography } from '../../../tailwind'
 
 export type HeroCardProps = {
 	label?: string
@@ -54,7 +55,7 @@ const HeroCard: React.FC<HeroCardProps> = (props) => {
 						)}
 						{...slots.content}
 					>
-						<h4 className="text-primary text-2xl font-bold">{primary}</h4>
+						<Typography variant="h4">{primary}</Typography>
 						{secondary}
 					</div>
 				</div>

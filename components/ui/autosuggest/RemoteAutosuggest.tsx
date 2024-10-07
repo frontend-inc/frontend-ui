@@ -51,7 +51,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		name: name,
 	})
 
-	const { loading, delayedLoading, resources, findMany } = useResource({
+	const { loading, delayedLoading, resources, findOne, findMany } = useResource({
 		url: url,
 		name: name,
 	})
@@ -61,8 +61,6 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 
 	const handleInputChange = (newValue) => {
 		if (error) clearError()
-		findOption(newValue)
-
 		if (enableRemoteSearch && !loading) {
 			//@ts-ignore
 			findMany({
@@ -83,34 +81,32 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 
 	const findOption = async (value) => {
 		if (!value) return null
-		let resource = resources.find((resource) => resource[displayField] == value)
-		if (resource) {
-			setOption({
-				label: get(resource, displayField),
-				value: get(resource, valueParam),
-			})
+		let resource = await findOne(value)
+		if (resource?.id) {
+			setOptions([
+        ...options,
+        {
+				  label: get(resource, displayField),
+				  value: get(resource, valueParam),
+			  }
+      ])
 		}
 	}
 
-	useEffect(() => {
-		if (resources) {
-			setOptions([...formatResources(resources), ...defaultOptions])
+  useEffect(() => {
+		if (value && url) {
+			findOption(value)
 		}
-	}, [resources])
+	}, [value, url])
 
 	useEffect(() => {
-		if (value && resources?.length > 0) {
-			let resource = resources.find(
-				(resource) => get(resource, valueParam) == value
-			)
-			if (resource) {
-				setOption({
-					label: get(resource, displayField),
-					value: get(resource, valueParam),
-				})
-			}
+		if (resources) {
+			setOptions([
+        ...formatResources(resources), 
+        ...defaultOptions
+      ])
 		}
-	}, [value, resources])
+	}, [resources])
 
 	useEffect(() => {
 		if (url) {
@@ -122,16 +118,6 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		}
 	}, [url])
 
-	useEffect(() => {
-		if (Object.keys(defaultQuery)?.length > 0 && url) {
-			//@ts-ignore
-			findMany({
-				...defaultQuery,
-				per_page: perPage,
-			})
-		}
-	}, [defaultQuery])
-
 	if (!displayField) return null
 	return (
 		<Autosuggest
@@ -140,7 +126,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 			direction={direction}
 			label={label}
 			name={name}
-			value={option}
+			value={value}
 			options={options}
 			placeholder={placeholder}
 			handleChange={handleChange}

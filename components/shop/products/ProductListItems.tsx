@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack } from '@mui/material'
+import { Stack } from '../../../tailwind'
 import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { useApp } from '../../../hooks'

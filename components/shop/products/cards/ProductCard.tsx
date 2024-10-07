@@ -47,27 +47,28 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 			<Stack
 				ref={ref}
 				className={cn(
-					'w-full overflow-hidden rounded-sm transition-shadow duration-300 hover:shadow-md bg-background border border-border',
-					`min-h-[${height + 80}px]`
+					'w-full overflow-hidden rounded-lg transition-shadow duration-300 hover:shadow-md bg-background border border-border',
 				)}
 				{...slots.item}
 			>
-				<Box className="h-[230px] min-h-[230px] w-full relative overflow-hidden">
+				<Box className="min-h-[240px] w-full relative overflow-hidden">
 					<Image
 						src={image}
 						height={height}
 						alt={primary}
 						label={label}
+            aspectRatio={1.0}
 						handleClick={handleClick}
-						className="object-cover w-full h-full"
+            objectFit='cover'
+						className=" w-full h-full"
 						{...slots.image}
 					/>
 				</Box>
 				<Stack
-					className="p-4 space-y-4 w-full h-full justify-between items-between"
+					className="px-4 py-1 space-y-4 w-full justify-between items-between"
 					spacing={1}
 				>
-					<Box className="h-full">
+					<div>
 						<Typography variant="subtitle1">{primary}</Typography>
 						<Stack direction="row" className="space-x-2">
 							<Typography className="text-sm text-foreground" variant="caption">
@@ -81,13 +82,13 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 						</Stack>
 						{secondary && (
 							<Typography
-								className="text-sm text-muted-foreground mt-1"
+								className="text-sm text-muted-foreground"
 								variant="body2"
 							>
 								{secondary}
 							</Typography>
 						)}
-					</Box>
+					</div>
 					{addToCart}
 					<Stack direction="row" className="justify-between">
 						{actions}

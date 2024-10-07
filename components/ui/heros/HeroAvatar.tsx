@@ -34,7 +34,7 @@ const HeroAvatar: React.FC<HeroCardProps> = (props) => {
 						{actions}
 					</div>
 					<div className="w-full flex flex-col space-y-1">
-						<h4 className="text-primary text-2xl font-bold">{primary}</h4>
+						<h4 className="text-foreground text-2xl font-bold">{primary}</h4>
 						{secondary}
 					</div>
 				</div>

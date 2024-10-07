@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, IconButton, Tooltip, Typography } from '@mui/material'
+import { Box, IconButton, Tooltip, Typography } from '../../../../tailwind'
 import { Icon } from '../../../../components'
 
 type InputLabelProps = {
@@ -11,7 +11,7 @@ const InfoLabel: React.FC<InputLabelProps> = (props) => {
 	const { label, info } = props
 
 	return (
-		<Box sx={sx.root}>
+		<div className="min-w-[100px] flex flex-row gap-2">
 			{label && (
 				<Typography variant="caption" color="text.secondary">
 					{label}
@@ -19,22 +19,13 @@ const InfoLabel: React.FC<InputLabelProps> = (props) => {
 			)}
 			{info && (
 				<Tooltip title={info}>
-					<IconButton size="small">
+					<IconButton>
 						<Icon name="Info" size={16} color="text.secondary" />
 					</IconButton>
 				</Tooltip>
 			)}
-		</Box>
+		</div>
 	)
 }
 
 export default InfoLabel
-
-const sx = {
-	root: {
-		minWidth: '110px',
-		display: 'flex',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-	},
-}
