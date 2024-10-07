@@ -45,7 +45,7 @@ const PDP: React.FC<PDPProps> = (props) => {
       <Box className="w-full flex justify-center items-center">
         <Stack
           className={cn(
-            'md:space-x-10'
+            'sm:space-x-10'
           )}
           direction={'row'}
           spacing={5}
@@ -59,7 +59,7 @@ const PDP: React.FC<PDPProps> = (props) => {
                 src={image}
                 alt={primary}
                 height={400}
-                aspectRatio={1.0}
+                aspectRatio={4/3}
                 label={label}
                 {...slots.image}
               />

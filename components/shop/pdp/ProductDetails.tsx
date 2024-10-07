@@ -1,7 +1,6 @@
 import React from 'react'
 import { ButtonType, DisplayFieldType } from '../../../types'
 import { PDP } from '../..'
-import { useCollectionForms } from '../../../hooks'
 import { useResourceContext } from 'frontend-js'
 import {
 	ProductRating,
@@ -10,7 +9,7 @@ import {
 	SocialButtons,
 	AddToCartButton,
 } from '../..'
-import { Box, Stack } from '@mui/material'
+import { Box, Stack } from '../../../tailwind'
 
 export type ProductDetailsProps = {
 	handle?: string

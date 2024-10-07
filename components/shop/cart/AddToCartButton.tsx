@@ -1,16 +1,16 @@
 import React from 'react'
-import { PrimaryButton } from '../../../components'
+import { Button } from '../../../tailwind'
 import { useCart } from '../../../hooks'
-import { Box } from '@mui/material'
 
 type AddToCartButtonProps = {
 	size?: 'small' | 'medium' | 'large'
 	productId: string
+  fullWidth?: boolean
 	availableForSale?: boolean
 }
 
 const AddToCartButton = (props: AddToCartButtonProps) => {
-	const { productId, size = 'medium', availableForSale } = props
+	const { productId, size = 'medium', fullWidth, availableForSale } = props
 	const { loading, setCartOpen, addToCart } = useCart()
 
 	const handleClick = async () => {
@@ -19,23 +19,16 @@ const AddToCartButton = (props: AddToCartButtonProps) => {
 	}
 
 	return (
-		<Box sx={sx.button}>
-			<PrimaryButton
-				loading={loading}
-				onClick={handleClick}
-				disabled={!availableForSale}
-				size={size}
-			>
-				Add to Cart
-			</PrimaryButton>
-		</Box>
+    <Button
+      fullWidth={fullWidth}
+      loading={loading}
+      onClick={handleClick}
+      disabled={!availableForSale}
+      size={size}
+    >
+      Add to Cart
+    </Button>
 	)
 }
 
 export default AddToCartButton
-
-const sx = {
-	button: {
-		maxWidth: '300px',
-	},
-}

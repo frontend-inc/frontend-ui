@@ -44,7 +44,6 @@ const Modal: React.FC<ModalProps> = ({
 	disablePadding = false,
 	fullScreen,
 	enableCancel = false,
-	disableClose = false,
 	disableHeader = false,
 }) => {
 	return (
@@ -75,9 +74,6 @@ const Modal: React.FC<ModalProps> = ({
 						disablePadding && 'm-0 p-0'
 					)}
 				>
-					{subtitle && (
-						<p className="text-sm text-muted-foreground mt-1">{subtitle}</p>
-					)}
 					<Loader loading={loading} />
 					{!loading && <div className="h-full w-full">{children}</div>}
 				</div>

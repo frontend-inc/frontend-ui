@@ -1,11 +1,12 @@
 import React from 'react'
-import { Box, Stack } from '@mui/material'
+import { Stack } from '../../../tailwind'
 import { Carousel } from '../..'
 import { useApp } from '../../../hooks'
 import { useRouter } from 'next/router'
 import ProductListItem from './ProductListItem'
 import { ProductListItemsProps } from '../products/ProductListItems'
 import { useResourceContext } from 'frontend-js'
+import { cn } from '../../../shadcn/lib/utils'
 
 export type ProductCarouselListItemsProps = ProductListItemsProps & {
 	enableAutoPlay?: boolean
@@ -51,12 +52,11 @@ const ProductCarouselListItems: React.FC<ProductCarouselListItemsProps> = (
 	}
 
 	return (
-		<Stack
-			spacing={1}
-			sx={{
-				...sx.root,
-				...(loading && sx.loading),
-			}}
+		<div			
+			className={cn(
+        'w-full',
+        loading && 'opacity-50',
+      )}        
 		>
 			<Carousel
 				enableDots={enableDots}
@@ -64,12 +64,9 @@ const ProductCarouselListItems: React.FC<ProductCarouselListItemsProps> = (
 				enableArrows={enableArrows}
 			>
 				{resources?.map((resource, index) => (
-					<Box
+					<div
 						key={index}
-						sx={{
-							...sx.item,
-							pb: enableDots ? 4 : 1,
-						}}
+            className={'px-2'}
 					>
 						<ProductListItem
 							buttons={buttons}
@@ -82,31 +79,11 @@ const ProductCarouselListItems: React.FC<ProductCarouselListItemsProps> = (
 							enableRatings={enableRatings}
 							enableLikes={enableLikes}
 						/>
-					</Box>
+					</div>
 				))}
 			</Carousel>
-		</Stack>
+		</div>
 	)
 }
 
 export default ProductCarouselListItems
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-	loading: {
-		opacity: 0.5,
-	},
-	grid: {
-		display: 'grid',
-		gridTemplateColumns: {
-			md: 'repeat(auto-fill, minmax(160px, 1fr))',
-			xs: '1fr',
-		},
-		gap: '16px',
-	},
-	item: {
-		p: 1,
-	},
-}

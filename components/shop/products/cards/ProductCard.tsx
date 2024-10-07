@@ -17,6 +17,7 @@ export type ProductCardProps = {
 	handleClick?: () => void
 	height?: number
 	addToCart?: React.ReactNode
+  disableBorder?: boolean
 	slots?: {
 		item?: any
 		image?: any
@@ -37,6 +38,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 			image,
 			height = 240,
 			addToCart,
+      disableBorder,
 			slots = {
 				item: {},
 				image: {},
@@ -44,12 +46,12 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 		} = props
 
 		return (
-			<Stack
-				ref={ref}
+			<div 
+        ref={ref}
 				className={cn(
-					'w-full overflow-hidden rounded-lg transition-shadow duration-300 hover:shadow-md bg-background border border-border',
-				)}
-				{...slots.item}
+          !disableBorder && 'border border-border hover:shadow-md',
+					'w-full overflow-hidden rounded-lg transition-shadow duration-300 bg-background',          
+				)}				
 			>
 				<Box className="min-h-[240px] w-full relative overflow-hidden">
 					<Image
@@ -57,9 +59,9 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 						height={height}
 						alt={primary}
 						label={label}
-            aspectRatio={1.0}
+            aspectRatio={4/3}
 						handleClick={handleClick}            						
-            disableBorderRadius
+            disableBorderRadius={!disableBorder}
 						{...slots.image}
 					/>
 				</Box>
@@ -94,7 +96,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 						{secondaryAction}
 					</Stack>
 				</Stack>
-			</Stack>
+			</div>
 		)
 	}
 )

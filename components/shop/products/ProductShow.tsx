@@ -1,12 +1,11 @@
 import React from 'react'
-import { Modal, ProductDetails } from '../..'
+import { Modal, ProductListItem } from '../..'
 import { useResourceContext } from 'frontend-js'
-import { ButtonType, FormFieldType, DisplayFieldType } from '../../../types'
+import { ButtonType, DisplayFieldType } from '../../../types'
 
 export type ShowModalProps = {
 	handle?: string
 	enableBorder?: boolean
-	enableOverlay?: boolean
 	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
 	fieldName?: string
@@ -14,6 +13,8 @@ export type ShowModalProps = {
 	enableLikes?: boolean
 	enableSharing?: boolean
 	enableRatings?: boolean
+  enableGradient?: boolean
+	enableOverlay?: boolean
 }
 
 const ShowModal: React.FC<ShowModalProps> = (props) => {
@@ -26,6 +27,8 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 		enableLikes,
 		enableFavorites,
 		enableSharing,
+    enableGradient,
+    enableOverlay
 	} = props || {}
 
 	if (!resource) return null
@@ -34,21 +37,18 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 			open={openShow}
 			handleClose={() => setOpenShow(false)}
 			maxWidth="md"
-			title={resource?.title}
 		>
-			<ProductDetails
-				product={resource}
+			<ProductListItem 
+        disableBorder
 				buttons={buttons}
-				displayFields={displayFields}
-				enableRatings={enableRatings}
-				enableLikes={enableLikes}
-				enableFavorites={enableFavorites}
-				enableSharing={enableSharing}
-				slots={{
-					image: {
-						disableBorderRadius: true,
-					},
-				}}
+        resource={resource}
+        handleClick={() => setOpenShow(false)}
+        displayFields={displayFields}        
+        enableGradient={enableGradient}
+        enableOverlay={enableOverlay}
+        enableFavorites={enableFavorites}
+        enableLikes={enableLikes}
+        enableRatings={enableRatings}  
 			/>
 		</Modal>
 	)

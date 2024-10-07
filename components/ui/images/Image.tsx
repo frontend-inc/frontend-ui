@@ -35,8 +35,6 @@ export default function ResponsiveImage({
 	return (
 		<div
 			className={cn(
-				width && `w-[${width}px]`,
-				height && `h-[${height}px]`,
 				'relative overflow-hidden',
         !disableBorderRadius && 'rounded-lg',
 				className

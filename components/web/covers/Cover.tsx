@@ -3,6 +3,7 @@ import { Box, Stack, Typography, Button } from '../../../tailwind'
 import { Image } from '../..'
 import { useRouter } from 'next/router'
 import { useApp } from '../../../hooks'
+import { cn } from '../../../shadcn/lib/utils'
 
 export type CoverProps = {
 	editing?: boolean
@@ -33,7 +34,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 		textVariant = 'h3',
 		handleClick,
 		image,
-		height = 520,
+		height = 400,
 		alt = 'image',
 		enableGradient = false,
 		enableOverlay = false,
@@ -53,19 +54,24 @@ const Cover: React.FC<CoverProps> = (props) => {
 	}
 
 	return (
-		<Box className="dark relative w-full">
+		<div className={cn(
+      "dark relative w-full"
+    )}>
 			<Image
 				disableBorderRadius
 				src={image}
 				alt={alt}
-				height={height}
+        aspectRatio={3.0}
 				bgcolor={overlayColor}
 				enableGradient={enableGradient}
 				enableOverlay={enableOverlay}
 				opacity={opacity}
 			/>
 			<Stack
-				className={`h-[${height}px] absolute top-0 left-0 w-full h-full justify-center items-center px-3 sm:px-0`}
+				className={cn(
+          height && `h-[${height}px]`,
+          `absolute top-0 left-0 w-full h-full justify-center items-center px-3 sm:px-0`
+        )}
 			>
 				<Stack direction="column" spacing={1} alignItems={alignItems}>
 					{title && (
@@ -98,31 +104,8 @@ const Cover: React.FC<CoverProps> = (props) => {
 					)}
 				</Stack>
 			</Stack>
-		</Box>
+		</div>
 	)
 }
 
 export default Cover
-
-const sx = {
-	root: {
-		p: 0,
-		width: '100%',
-		position: 'relative',
-	},
-	stack: {
-		position: 'absolute',
-		top: 0,
-		left: 0,
-		width: '100%',
-		justifyContent: 'center',
-		alignItems: 'center',
-		px: {
-			sm: 0,
-			xs: 3,
-		},
-	},
-	content: {
-		maxWidth: '720px',
-	},
-}
