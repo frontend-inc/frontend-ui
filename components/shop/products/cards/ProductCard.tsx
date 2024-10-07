@@ -58,9 +58,8 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 						alt={primary}
 						label={label}
             aspectRatio={1.0}
-						handleClick={handleClick}
-            objectFit='cover'
-						className=" w-full h-full"
+						handleClick={handleClick}            						
+            disableBorderRadius
 						{...slots.image}
 					/>
 				</Box>

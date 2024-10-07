@@ -38,6 +38,7 @@ export default function ResponsiveImage({
 				width && `w-[${width}px]`,
 				height && `h-[${height}px]`,
 				'relative overflow-hidden',
+        !disableBorderRadius && 'rounded-lg',
 				className
 			)}
       onClick={ handleClick ? handleClick : undefined }

@@ -48,7 +48,7 @@ const Typography: React.FC<TypographyProps> = ({
 		button: 'text-base font-medium uppercase tracking-widest',
 		body1: 'text-base',
 		body2: 'text-sm',
-		caption: 'text-xs uppercase tracking-widest',
+		caption: 'text-sm',
 		overline: 'text-xs uppercase tracking-widest',
 	}
 
