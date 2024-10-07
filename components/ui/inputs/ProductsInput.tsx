@@ -58,12 +58,10 @@ const ProductsInput: React.FC<AutosuggestProps> = (props) => {
 	const handleInputChange = async (ev) => {
 		const id = ev?.target?.value
 		setProductId(id)
-		console.log('productId', id)
 		//await handleAddProducts([id: productId])
 	}
 
 	const handleDelete = async (productId) => {
-		console.log('productId', productId)
 		//await handleRemoveProducts([id: productId])
 	}
 

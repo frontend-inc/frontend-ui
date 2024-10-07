@@ -1,101 +1,74 @@
 import React from 'react'
-import { useApp } from '../../../hooks'
-import { Box, Stack, Typography } from '@mui/material'
-import { Image, TouchableOpacity, LightDarkMode } from '../..'
-import { truncate } from '../../../helpers'
-import { useRouter } from 'next/router'
+import { cn } from '../../../shadcn/lib/utils'
+import { Box, Stack, Typography } from '../../../tailwind'
+import { Image } from '../..'
 
-export type ProductCardProps = {
+export type ProductCollectionCardProps = {
+	ref?: React.Ref<HTMLDivElement>
+	avatar?: React.ReactNode
+	image: string
 	label?: string
 	primary: string
-	image?: string
+	secondary?: string | React.ReactNode
+	actions?: React.ReactNode
+	secondaryAction?: React.ReactNode
+	price: string
+	compareAtPrice?: string
 	handleClick?: () => void
+	height?: number
+	addToCart?: React.ReactNode
+  disableBorder?: boolean
 	slots?: {
+		item?: any
 		image?: any
 	}
 }
 
-const ProductCollectionCard: React.FC<ProductCardProps> = (props) => {
-	const {
-		label,
-		primary,
-		image,
-		handleClick,
-		slots = {
-			image: {},
-		},
-	} = props || {}
+const ProductCollectionCard = React.forwardRef<HTMLDivElement, ProductCollectionCardProps>(
+	(props, ref) => {
+		const {
+			label,
+			primary,
+			handleClick,
+			image,
+			height = 240,
+      disableBorder,
+			slots = {
+				item: {},
+				image: {},
+			},
+		} = props
 
-	return (
-		<LightDarkMode mode="dark">
-			<Stack spacing={1} sx={sx.root}>
-				<TouchableOpacity handleClick={handleClick}>
+		return (
+			<div 
+        ref={ref}
+				className={cn(
+          !disableBorder && 'border border-border hover:shadow-md',
+					'w-full overflow-hidden rounded-lg transition-shadow duration-300 bg-background',          
+				)}				
+			>
+				<Box className="min-h-[240px] w-full relative overflow-hidden">
 					<Image
-						label={label}
 						src={image}
-						height={400}
+						height={height}
 						alt={primary}
+						label={label}
+            aspectRatio={4/3}
+						handleClick={handleClick}            						
+            disableBorderRadius={!disableBorder}
 						{...slots.image}
 					/>
-				</TouchableOpacity>
-				<Stack spacing={1} sx={sx.cover}>
-					<Stack
-						sx={sx.fullWidth}
-						spacing={1}
-						direction={'row'}
-						alignItems="center"
-					>
-						<Box sx={sx.contentContainer}>
-							<Stack sx={sx.content} direction="column" spacing={0}>
-								<Box sx={sx.fullWidth}>
-									<Typography color="text.primary" variant="subtitle2">
-										{truncate(primary, 60)}
-									</Typography>
-								</Box>
-							</Stack>
-						</Box>
-					</Stack>
-				</Stack>
-			</Stack>
-		</LightDarkMode>
-	)
-}
+				</Box>
+				<div
+					className="px-4 pt-2 pb-4 w-full"					
+				>
+					<Typography variant="subtitle1">{primary}</Typography>						
+				</div>
+			</div>
+		)
+	}
+)
+
+ProductCollectionCard.displayName = 'ProductCollectionCard'
 
 export default ProductCollectionCard
-
-const sx = {
-	root: {
-		position: 'relative',
-		flexDirection: 'column',
-		overflow: 'hidden',
-		width: '100%',
-		borderRadius: 1,
-	},
-	cover: {
-		width: '100%',
-		position: 'absolute',
-		bottom: 0,
-		left: 0,
-		zIndex: 1,
-		p: 1,
-	},
-	description: {
-		maxWidth: '320px',
-	},
-	fullWidth: {
-		width: '100%',
-	},
-	contentContainer: {
-		px: 0,
-		width: '100%',
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'flex-start',
-	},
-	content: {
-		width: '100%',
-		justifyContent: 'space-between',
-		alignItems: 'flex-end',
-	},
-}

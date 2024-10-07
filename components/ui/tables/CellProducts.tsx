@@ -7,7 +7,6 @@ type CellProductsProps = {
 
 const CellProducts: React.FC<CellProductsProps> = (props) => {
 	const { value } = props
-	console.log('CellProducts', value)
 	return <CellButton icon="Box">Products</CellButton>
 }
 

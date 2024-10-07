@@ -5,7 +5,10 @@ import {
 	SearchFilterOptionType,
 	SortOptionType,
 } from '../../../types'
-import { ProductCollectionListItem } from '../..'
+import { 
+  ProductCollectionListItem,
+  ProductCollectionListItems  
+} from '../..'
 import { useApp } from '../../../hooks'
 
 export type ProductCollectionListProps = {
@@ -50,8 +53,6 @@ const ProductCollectionList: React.FC<ProductCollectionListProps> = (props) => {
 		enableSorting,
 		filterOptions = [],
 		sortOptions = [],
-		list: List = DataList,
-		component: Component = ProductCollectionListItem,
 		slots: defaultSlots = {
 			header: {},
 			list: {},
@@ -94,8 +95,8 @@ const ProductCollectionList: React.FC<ProductCollectionListProps> = (props) => {
 			enableSorting={enableSorting}
 			filterOptions={filterOptions}
 			sortOptions={sortOptions}
-			list={List}
-			component={Component}
+			list={ProductCollectionListItems}
+			component={ProductCollectionListItem}
 			slots={slots}
 		/>
 	)

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { DataItem, DataLayout } from '../..'
