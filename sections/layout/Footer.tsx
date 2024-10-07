@@ -1,11 +1,12 @@
 import React from 'react'
-import { BackgroundColor, Footer } from '../../components'
+import { LightDarkMode, Footer } from '../../components'
 import { FooterProps } from '../../components/ui/footer/Footer'
 import { useRouter } from 'next/router'
 import { useApp } from '../../hooks'
 
 type LayoutFooterProps = FooterProps & {
 	bgColor: string
+  mode: 'light' | 'dark'
 }
 
 const AppFooter: React.FC<LayoutFooterProps> = (props) => {
@@ -23,9 +24,9 @@ const AppFooter: React.FC<LayoutFooterProps> = (props) => {
 	}
 
 	return (
-		<BackgroundColor bgColor={bgColor} mode={mode}>
+		<LightDarkMode mode={mode}>
 			<Footer {...rest} links={links} handleClick={handleClick} />
-		</BackgroundColor>
+		</LightDarkMode>
 	)
 }
 

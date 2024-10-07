@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 	} = props
 
 	return (
-		<Box className="dark h-[64px] w-full">
+		<Box className="h-[64px] w-full">
 			<DesktopHeader
 				logo={logo || appLogo}
 				enableAuth={enableAuth}

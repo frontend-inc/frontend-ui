@@ -3,7 +3,7 @@ import { List, Stack, Box, Drawer } from '../../../tailwind'
 import { CartButton, AuthButton } from '../..'
 import { ShopifyCartButton } from '../../shopify'
 import { AppContext } from '../../../context'
-import SideMenuItem from './SideMenuItem'
+import MobileDrawerLink from './MobileDrawerLink'
 import { MenuLinkType } from '../../..'
 
 type MobileDrawerProps = {
@@ -12,7 +12,6 @@ type MobileDrawerProps = {
 	enableAuth?: boolean
 	enableStripe?: boolean
 	enableShopify?: boolean
-	mode?: 'dark' | 'light'
 }
 
 const MobileDrawer = (props: MobileDrawerProps) => {
@@ -20,7 +19,6 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 
 	const {
 		links,
-		mode = 'dark',
 		handleClick,
 		enableAuth,
 		enableStripe,
@@ -40,9 +38,9 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 			mode="dark"
 		>
 			<Box>
-				<List>
+				<List className={'space-y-2'}>
 					{links?.map((menuItem, index) => (
-						<SideMenuItem
+						<MobileDrawerLink
 							key={index}
 							menuItem={menuItem}
 							handleClick={handleMenuClick}
@@ -54,9 +52,9 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 						{enableStripe && <CartButton variant="button" />}
 						{enableShopify && <ShopifyCartButton variant="button" />}
 						{enableAuth && (
-							<Box sx={sx.divider}>
+							<div className="w-full border-t border-divider pt-1.5">
 								<AuthButton showLabel />
-							</Box>
+							</div>
 						)}
 					</Stack>
 				)}
@@ -66,30 +64,3 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 }
 
 export default MobileDrawer
-
-const sx = {
-	drawer: {
-		bgcolor: 'background.default',
-	},
-	menuButton: {
-		justifyContent: 'flex-start',
-		bgcolor: 'background.default',
-		color: 'text.primary',
-	},
-	sideNavMenu: {
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'space-between',
-		height: 'calc(100vh - 100px)',
-		width: '100%',
-	},
-	sideNavMenuItems: {
-		width: '100%',
-	},
-	divider: {
-		width: '100%',
-		borderTop: '1px solid',
-		borderColor: 'divider',
-		pt: 1.5,
-	},
-}

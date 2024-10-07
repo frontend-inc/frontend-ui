@@ -12,6 +12,7 @@ type ButtonVariant = 'contained' | 'outlined' | 'text'
 interface ButtonProps extends Omit<ShadcnButtonProps, 'size' | 'variant'> {
 	size?: ButtonSize
 	color?: ButtonColor
+  fullWidth?: boolean
 	variant?: ButtonVariant
 	children: React.ReactNode
 	startIcon?: React.ReactNode
@@ -22,6 +23,7 @@ const Button: React.FC<ButtonProps> = ({
 	size = 'medium',
 	color = 'primary',
 	variant = 'contained',
+  fullWidth,
 	className,
 	children,
 	startIcon,
@@ -49,7 +51,7 @@ const Button: React.FC<ButtonProps> = ({
 					'bg-secondary text-secondary-foreground hover:bg-secondary/90',
 				outlined:
 					'border border-secondary text-secondary hover:bg-secondary/10',
-				text: 'text-secondary hover:bg-secondary/10',
+				text: 'text-primary hover:bg-secondary/10',
 			},
 		}
 
@@ -59,7 +61,9 @@ const Button: React.FC<ButtonProps> = ({
 	return (
 		<ShadcnButton
 			size={sizeMap[size]}
+      variant='ghost'
 			className={cn(
+        fullWidth && 'w-full',
 				'flex items-center justify-center',
 				getVariantClasses(color, variant),
 				variant === 'text' && 'shadow-none',

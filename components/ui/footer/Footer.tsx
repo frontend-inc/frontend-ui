@@ -1,212 +1,110 @@
 import React from 'react'
-import { Box, Link, Divider, Stack } from '@mui/material'
+import { Button, Divider, Stack } from '../../../tailwind'
 import { MenuLinkType } from '../../../types'
 import { SocialLink } from '../..'
 import Logo from '../header/Logo'
 import { useApp } from '../../../hooks'
+import { cn } from '../../../shadcn/lib/utils'
 
 export type FooterProps = {
-	logo?: string
-	links?: MenuLinkType[]
-	legalLinks?: MenuLinkType[]
-	socialLinks?: {
-		label: string
-		provider: string
-		url: string
-		position: number
-	}[]
-	handleClick: (path: string) => void
+  logo?: string
+  links?: MenuLinkType[]
+  legalLinks?: MenuLinkType[]
+  socialLinks?: {
+    label: string
+    provider: string
+    url: string
+    position: number
+  }[]
+  handleClick: (path: string) => void
 }
 
 const Footer: React.FC<FooterProps> = (props) => {
-	const {
-		logo,
-		handleClick,
-		links = [],
-		socialLinks = [],
-		legalLinks = [],
-	} = props
+  const {
+    logo,
+    handleClick,
+    links = [],
+    socialLinks = [],
+    legalLinks = [],
+  } = props
 
-	const { logo: appLogo } = useApp()
+  const { logo: appLogo } = useApp()
 
-	const handleLogoClick = () => {
-		handleClick('/')
-	}
+  const handleLogoClick = () => {
+    handleClick('/')
+  }
 
-	return (
-		<Stack sx={sx.root} spacing={1} direction="column">
-			<Stack
-				spacing={6}
-				sx={sx.headerLinks}
-				direction={{ sm: 'row', xs: 'column' }}
-			>
-				<Stack
-					sx={sx.footerMenu}
-					direction={{ sm: 'row', xs: 'column' }}
-					spacing={3}
-				>
-					<Box sx={sx.logo}>
-						<Logo
-							handleClick={handleLogoClick}
-							src={logo || appLogo}
-							width={100}
-							height={50}
-						/>
-					</Box>
-					<Box sx={sx.gridContainer}>
-						<Box sx={sx.grid}>
-							{links?.map((menuLink, i) => (
-								<Link
-									variant="subtitle2"
-									sx={sx.link}
-									key={i}
-									onClick={() => handleClick(menuLink?.path)}
-								>
-									{menuLink?.label}
-								</Link>
-							))}
-						</Box>
-					</Box>
-					<Box sx={sx.spacer} />
-				</Stack>
-			</Stack>
-			<Stack
-				direction={{ sm: 'row', xs: 'column' }}
-				sx={sx.footerLinks}
-				spacing={2}
-			>
-				<Stack direction="row" spacing={1}>
-					{socialLinks
-						?.sort((a, b) => a?.position - b?.position)
-						?.map((link, i) => (
-							<SocialLink
-								key={i}
-								provider={link?.provider}
-								url={link?.url}
-								color="common.black"
-							/>
-						))}
-				</Stack>
-				<Stack
-					direction="row"
-					divider={<Divider sx={sx.divider} />}
-					spacing={1}
-				>
-					{legalLinks?.map((menuLink, i) => (
-						//@ts-ignore
-						<Link
-							variant="overline"
-							sx={sx.footerLink}
-							key={i}
-							onClick={() => handleClick(menuLink?.path)}
-						>
-							{menuLink?.label}
-						</Link>
-					))}
-				</Stack>
-				<Box sx={sx.spacer} />
-			</Stack>
-		</Stack>
-	)
+  return (
+    <Stack className="py-2 w-full bg-background min-h-[80px]" spacing={1} direction="column">
+      <Stack
+        spacing={6}
+        className="w-full px-3 items-center justify-between border-b border-divider"
+        direction="row"
+      >
+        <Stack
+          className="py-6 w-full items-start"
+          direction="row"
+          spacing={3}
+        >
+          <div className="w-full sm:w-[160px] flex justify-start">
+            <Logo
+              handleClick={handleLogoClick}
+              src={logo || appLogo}
+              width={100}
+              height={50}
+            />
+          </div>
+          <div className="w-full flex justify-start sm:justify-center sm:pl-3">
+            <div className="flex flex-wrap flex-col sm:flex-row gap-4 sm:pl-3">
+              {links?.map((menuLink, i) => (
+                <Button
+                  variant="text"
+                  key={i}
+                  onClick={() => handleClick(menuLink?.path)}
+                >
+                  {menuLink?.label}
+                </Button>
+              ))}
+            </div>
+          </div>
+          <div className="w-[100px]" />
+        </Stack>
+      </Stack>
+      <Stack
+        direction="column"
+        className="w-full py-1 px-3 items-center justify-between"
+        spacing={2}
+      >
+        <Stack direction="row" spacing={1}>
+          {socialLinks
+            ?.sort((a, b) => a?.position - b?.position)
+            ?.map((link, i) => (
+              <SocialLink
+                key={i}
+                provider={link?.provider}
+                url={link?.url}
+                color="common.black"
+              />
+            ))}
+        </Stack>
+        <Stack
+          direction="row"
+          spacing={1}
+          className='w-full items-center'
+        >
+          {legalLinks?.map((menuLink, i) => (
+            <Button
+              variant="text"
+              key={i}
+              onClick={() => handleClick(menuLink?.path)}
+            >
+              {menuLink?.label}
+            </Button>
+          ))}
+        </Stack>
+      </Stack>
+    </Stack>
+  )
 }
 
 export default Footer
-
-const sx = {
-	root: {
-		py: 2,
-		width: '100%',
-		bgcolor: 'background.default',
-		minHeight: '80px',
-	},
-	container: {
-		width: '100%',
-		display: 'flex',
-		flexDirection: {
-			xs: 'column',
-			sm: 'row',
-		},
-		justifyContent: 'space-between',
-		alignItems: 'flex-start',
-	},
-	footerMenu: {
-		py: 6,
-		width: '100%',
-		alignItems: 'flex-start',
-	},
-	logo: {
-		width: {
-			sm: '160px',
-			xs: '100%',
-		},
-		display: 'flex',
-		justifyContent: 'flex-start',
-	},
-	link: {
-		color: 'text.secondary',
-		cursor: 'pointer',
-		textDecoration: 'none',
-		'&:hover': {
-			textDecoration: 'underline',
-		},
-		width: {
-			sm: '140px',
-			xs: '100%',
-		},
-	},
-	footerLink: {
-		color: 'text.secondary',
-		cursor: 'pointer',
-		textDecoration: 'none',
-		'&:hover': {
-			textDecoration: 'underline',
-		},
-	},
-	divider: {
-		borderRight: '1px solid',
-		borderColor: 'divider',
-	},
-	headerLinks: {
-		width: '100%',
-		px: 3,
-		alignItems: 'center',
-		justifyContent: 'space-between',
-		borderBottom: '1px solid',
-		borderColor: 'divider',
-	},
-	footerLinks: {
-		width: '100%',
-		py: 1,
-		px: 3,
-		alignItems: 'center',
-		justifyContent: 'space-between',
-	},
-	spacer: {
-		width: '100px',
-	},
-	gridContainer: {
-		pl: {
-			sm: 3,
-			xs: 0,
-		},
-		width: '100%',
-		display: 'flex',
-		justifyContent: {
-			sm: 'center',
-			xs: 'flex-start',
-		},
-	},
-	grid: {
-		display: 'flex',
-		flexWrap: 'wrap',
-		flexDirection: {
-			sm: 'row',
-			xs: 'column',
-		},
-		gap: '16px',
-		pl: {
-			sm: 3,
-			xs: 0,
-		},
-	},
-}

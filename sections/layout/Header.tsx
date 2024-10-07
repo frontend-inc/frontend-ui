@@ -1,11 +1,12 @@
 import React from 'react'
-import { BackgroundColor, Header } from '../../components'
+import { LightDarkMode, BackgroundColor, Header } from '../../components'
 import { HeaderProps } from '../../components/ui/header/Header'
 import { useRouter } from 'next/router'
 import { useApp } from '../../hooks'
 
 type LayoutHeaderProps = HeaderProps & {
 	bgColor: string
+  mode: 'light' | 'dark'
 }
 
 const AppHeader: React.FC<LayoutHeaderProps> = (props) => {
@@ -23,9 +24,9 @@ const AppHeader: React.FC<LayoutHeaderProps> = (props) => {
 	}
 
 	return (
-		<BackgroundColor bgColor={bgColor} mode={mode}>
-			<Header {...rest} handleClick={handleClick} />
-		</BackgroundColor>
+    <LightDarkMode mode={mode}>
+      <Header {...rest} handleClick={handleClick} />
+    </LightDarkMode>
 	)
 }
 

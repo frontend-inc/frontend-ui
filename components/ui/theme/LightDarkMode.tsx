@@ -9,7 +9,7 @@ type LightDarkModeProps = {
 const LightDarkMode: React.FC<LightDarkModeProps> = (props) => {
 	const { mode, children } = props || {}
 
-	return <div className={cn(mode === 'dark' && 'dark')}>{children}</div>
+	return <div className={cn(mode === 'dark' ? 'dark' : 'light')}>{children}</div>
 }
 
 export default LightDarkMode
