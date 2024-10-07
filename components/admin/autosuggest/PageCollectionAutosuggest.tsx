@@ -11,14 +11,16 @@ type PageCollectionAutosuggestProps = {
 	query?: any
 	valueParam?: string
 	direction?: 'row' | 'column'
-  collectionId: string
+	collectionId: string
 }
 
-const PageCollectionAutosuggest: React.FC<PageCollectionAutosuggestProps> = (props) => {
+const PageCollectionAutosuggest: React.FC<PageCollectionAutosuggestProps> = (
+	props
+) => {
 	const { apiUrl } = useAdmin()
 
 	const {
-    collectionId,
+		collectionId,
 		errors,
 		value,
 		name = 'page_id',
@@ -29,7 +31,7 @@ const PageCollectionAutosuggest: React.FC<PageCollectionAutosuggestProps> = (pro
 		direction = 'column',
 	} = props
 
-  if(!collectionId) return null;
+	if (!collectionId) return null
 	return (
 		<RemoteAutosuggest
 			direction={direction}
@@ -43,15 +45,15 @@ const PageCollectionAutosuggest: React.FC<PageCollectionAutosuggestProps> = (pro
 			placeholder="Select page"
 			handleChange={handleChange}
 			defaultQuery={{
-        filters: {
-          AND: [
-            { collection_id: { eq: collectionId } },
-            {
-              page_type: { eq: 'cms' },
-            },
-          ],
-        },
-      }}
+				filters: {
+					AND: [
+						{ collection_id: { eq: collectionId } },
+						{
+							page_type: { eq: 'cms' },
+						},
+					],
+				},
+			}}
 			enableClear
 		/>
 	)

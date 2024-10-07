@@ -30,7 +30,7 @@ export type FormFieldType = {
 	valueParam?: string
 	query?: any
 	default?: any
-} 
+}
 
 export type ToolbarButtonType = FormFieldType & {
 	icon?: string

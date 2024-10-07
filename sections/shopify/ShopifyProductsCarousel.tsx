@@ -17,6 +17,7 @@ const ShopifyProductsCarousel: React.FC<ShopifyProductsCarouselProps> = (
 		description,
 		textAlign,
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -31,6 +32,7 @@ const ShopifyProductsCarousel: React.FC<ShopifyProductsCarouselProps> = (
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

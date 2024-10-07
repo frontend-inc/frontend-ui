@@ -9,7 +9,7 @@ type CardType = {
 	description: string
 	image: string
 	buttonText?: string
-  path?: string
+	path?: string
 	url?: string
 }
 

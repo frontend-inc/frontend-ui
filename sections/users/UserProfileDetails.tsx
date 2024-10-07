@@ -9,6 +9,7 @@ type CmsUserDetailsProps = SectionProps & UserDetailsProps
 const CmsUserDetails: React.FC<CmsUserDetailsProps> = (props) => {
 	const {
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -23,6 +24,7 @@ const CmsUserDetails: React.FC<CmsUserDetailsProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

@@ -9,6 +9,7 @@ type AddonSwirlVideosProps = SectionProps & SwirlVideosProps
 const AddonSwirlVideos: React.FC<AddonSwirlVideosProps> = (props) => {
 	const {
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -23,6 +24,7 @@ const AddonSwirlVideos: React.FC<AddonSwirlVideosProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

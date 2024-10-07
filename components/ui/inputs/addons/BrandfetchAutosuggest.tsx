@@ -53,18 +53,18 @@ const BrandfetchAutosuggest: React.FC<AutosuggestProps> = (props) => {
 	}
 
 	return (
-    <Box sx={{ width: '100%', maxWidth: 380 }}>
-      <AutocompleteInput
-        name={name}
-        label={label}
-        value={value}
-        options={options}
-        handleChange={handleAutocompleteChange}
-        handleInputChange={handleInputChange}
-        direction={direction}
-        placeholder={placeholder}
-      />
-    </Box>
+		<Box sx={{ width: '100%', maxWidth: 380 }}>
+			<AutocompleteInput
+				name={name}
+				label={label}
+				value={value}
+				options={options}
+				handleChange={handleAutocompleteChange}
+				handleInputChange={handleInputChange}
+				direction={direction}
+				placeholder={placeholder}
+			/>
+		</Box>
 	)
 }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Box, Typography } from '../../tailwind'
+import { Stack, Typography } from '../../tailwind'
 import { Icon } from '../../components'
 
 type PlaceholderProps = {
@@ -11,18 +11,10 @@ type PlaceholderProps = {
 }
 
 const Placeholder: React.FC<PlaceholderProps> = (props) => {
-	const {
-		icon,
-		title,
-		description,
-		buttons,
-		color = 'text.secondary',
-	} = props
+	const { icon, title, description, buttons, color = 'text.secondary' } = props
 
 	return (
-		<Box
-      className='w-full p-4 flex flex-col justify-center items-center'			
-		>
+		<div className="w-full p-4 flex flex-col justify-center items-center">
 			<Stack spacing={1} alignItems="center">
 				{icon && <Icon name={icon} size={24} color={color} />}
 				<Typography variant="subtitle2" color="text.primary">
@@ -31,9 +23,13 @@ const Placeholder: React.FC<PlaceholderProps> = (props) => {
 				<Typography variant="body1" color="text.secondary">
 					{description}
 				</Typography>
-				{buttons && <Stack direction="row" spacing={1}>{buttons}</Stack>}
+				{buttons && (
+					<Stack direction="row" spacing={1}>
+						{buttons}
+					</Stack>
+				)}
 			</Stack>
-		</Box>
+		</div>
 	)
 }
 export default Placeholder

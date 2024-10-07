@@ -5,15 +5,20 @@ import { TestimonialsProps } from '../../components/web/testimonials/Testimonial
 import { SectionProps, HeadingProps } from '../../types'
 import { Stack } from '@mui/material'
 
-type UISwipeableTestimonialsProps = SectionProps & HeadingProps & TestimonialsProps
+type UISwipeableTestimonialsProps = SectionProps &
+	HeadingProps &
+	TestimonialsProps
 
-const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (props) => {
+const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
+	props
+) => {
 	const {
 		label,
 		title,
 		description,
 		textAlign,
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -28,6 +33,7 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (props) 
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
@@ -39,7 +45,7 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (props) 
 					description={description}
 					textAlign={'center'}
 				/>
-				<Testimonials {...rest} layout='carousel' />
+				<Testimonials {...rest} layout="carousel" />
 			</Stack>
 		</Section>
 	)

@@ -13,6 +13,7 @@ const CmsCarousel: React.FC<CmsCarouselProps> = (props) => {
 		description,
 		textAlign,
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -24,6 +25,7 @@ const CmsCarousel: React.FC<CmsCarouselProps> = (props) => {
 	return (
 		<Section
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

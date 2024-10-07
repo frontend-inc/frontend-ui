@@ -58,34 +58,34 @@ const UnsplashList: React.FC<UnsplashProps> = (props) => {
 	}
 
 	return (
-		<Box sx={sx.root}>    
-      <Stack spacing={1}>
-        <SearchInput
-          name="keywords"
-          value={keywords}
-          placeholder="Search unsplash..."
-          handleChange={handleChange}
-          handleSearch={handleSearch}
-        />			
-        <PoweredByUnsplash />
-      </Stack>  
+		<Box sx={sx.root}>
+			<Stack spacing={1}>
+				<SearchInput
+					name="keywords"
+					value={keywords}
+					placeholder="Search unsplash..."
+					handleChange={handleChange}
+					handleSearch={handleSearch}
+				/>
+				<PoweredByUnsplash />
+			</Stack>
 			<Box sx={sx.grid}>
 				{images?.map((image, i) => (
 					<UnsplashCard key={i} image={image} handleClick={handleImageClick} />
 				))}
 			</Box>
 			{images?.length > 0 && images?.length % 10 == 0 && (
-        <Box sx={ sx.loadMoreContainer }>
-          <Button
-            sx={sx.loadMore}
-            color="secondary"
-            variant="contained"
-            endIcon={<ExpandMore />}
-            onClick={handleLoadMore}
-          >
-            Load More
-          </Button>
-        </Box>
+				<Box sx={sx.loadMoreContainer}>
+					<Button
+						sx={sx.loadMore}
+						color="secondary"
+						variant="contained"
+						endIcon={<ExpandMore />}
+						onClick={handleLoadMore}
+					>
+						Load More
+					</Button>
+				</Box>
 			)}
 			<UnsplashModal
 				loading={loading}
@@ -118,10 +118,10 @@ const sx = {
 		justifyContent: 'flex-start',
 		alignItems: 'center',
 	},
-  loadMoreContainer: {
-    mt: 2,
-    width: '100%',
-    display: 'flex',		
+	loadMoreContainer: {
+		mt: 2,
+		width: '100%',
+		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
 	},

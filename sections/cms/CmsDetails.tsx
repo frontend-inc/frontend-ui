@@ -9,6 +9,7 @@ type CmsDetailsProps = SectionProps & DetailsProps
 const CmsDetails: React.FC<CmsDetailsProps> = (props) => {
 	const {
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -23,6 +24,7 @@ const CmsDetails: React.FC<CmsDetailsProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

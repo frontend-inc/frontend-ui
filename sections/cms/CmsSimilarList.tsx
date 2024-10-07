@@ -12,6 +12,7 @@ const CmsSimilar: React.FC<CmsListProps> = (props) => {
 		description,
 		textAlign,
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -24,6 +25,7 @@ const CmsSimilar: React.FC<CmsListProps> = (props) => {
 	return (
 		<Section
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

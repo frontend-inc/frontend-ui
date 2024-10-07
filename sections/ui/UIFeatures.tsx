@@ -13,6 +13,7 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 		description,
 		textAlign,
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -27,6 +28,7 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

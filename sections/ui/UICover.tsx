@@ -10,6 +10,7 @@ const UICover: React.FC<UICoverProps> = (props) => {
 	const {
 		enableTransitions,
 		bgColor,
+		mode,
 		px,
 		py,
 		maxWidth,

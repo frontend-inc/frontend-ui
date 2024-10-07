@@ -47,12 +47,8 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 	}
 
 	return (
-		<Stack			
-			alignItems="center"
-			spacing={4}
-      direction={flexDirection}
-		>
-			<Box className='w-full md:1-1/2'>
+		<Stack alignItems="center" spacing={4} direction={flexDirection}>
+			<Box className="w-full md:1-1/2">
 				<Image
 					label={label}
 					src={image}
@@ -64,10 +60,8 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 					disableBorderRadius={enableBorder}
 				/>
 			</Box>
-			<Stack spacing={1} className='w-full md:1-1/2'>
-				<Typography variant={'h6'}>
-					{title}
-				</Typography>
+			<Stack spacing={1} className="w-full md:1-1/2">
+				<Typography variant={'h6'}>{title}</Typography>
 				{description && <ExpandableText text={description} />}
 				{buttonText && (
 					<Stack direction="row" spacing={1}>

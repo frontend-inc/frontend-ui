@@ -17,8 +17,8 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 	const { label, title, description, buttons } = props || {}
 
 	return (
-		<Box className='w-full'>
-			<Stack alignItems='center' direction="column" spacing={1}>
+		<Box className="w-full">
+			<Stack alignItems="center" direction="column" spacing={1}>
 				{label && (
 					<Typography color="text.secondary" variant="caption">
 						{label}
@@ -30,10 +30,7 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 					</Typography>
 				)}
 				{description && (
-					<Typography
-						variant="subtitle2"
-						color="text.secondary"
-					>
+					<Typography variant="subtitle2" color="text.secondary">
 						{description}
 					</Typography>
 				)}
@@ -53,4 +50,3 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 }
 
 export default CallToAction
-

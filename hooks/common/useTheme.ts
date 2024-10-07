@@ -10,7 +10,7 @@ type ThemeProps = {
 	textSecondary?: string
 	borderRadius?: number
 	bodyFont?: string
-	headerFont?: string	
+	headerFont?: string
 }
 
 const useTheme = (props: ThemeProps) => {
@@ -22,7 +22,7 @@ const useTheme = (props: ThemeProps) => {
 		bgcolor,
 		borderRadius,
 		bodyFont,
-		headerFont,			
+		headerFont,
 	} = props || {}
 
 	const [theme, setTheme] = useState(muiTheme)
@@ -39,7 +39,7 @@ const useTheme = (props: ThemeProps) => {
 		let palette = { ...newTheme.palette }
 		let typography = { ...newTheme.typography }
 		let shape = { ...newTheme.shape }
-			
+
 		if (primaryColor) {
 			palette = {
 				...palette,
@@ -162,7 +162,7 @@ const useTheme = (props: ThemeProps) => {
 			typography,
 			shape,
 		})
-	}, [				
+	}, [
 		primaryColor,
 		bgcolor,
 		textPrimary,

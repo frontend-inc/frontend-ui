@@ -13,6 +13,7 @@ const ShopifyCollections: React.FC<ShopifyCollectionsProps> = (props) => {
 		description,
 		textAlign,
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -27,6 +28,7 @@ const ShopifyCollections: React.FC<ShopifyCollectionsProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

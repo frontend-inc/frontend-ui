@@ -28,7 +28,7 @@ const LayoutContainer: React.FC<LayoutContainerProps> = (props) => {
 		<Box
 			sx={{
 				...sx.layout,
-        height: '100%'
+				height: '100%',
 			}}
 		>
 			<Alert />

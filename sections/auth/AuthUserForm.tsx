@@ -13,6 +13,7 @@ const AuthUserForm: React.FC<AuthUserFormProps> = (props) => {
 		description,
 		textAlign,
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -26,6 +27,7 @@ const AuthUserForm: React.FC<AuthUserFormProps> = (props) => {
 			requireAuth
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

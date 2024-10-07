@@ -11,7 +11,7 @@ const useShop = () => {
 		setCart,
 		cartOpen,
 		setCartOpen,
-    cartCookie
+		cartCookie,
 	}
 }
 

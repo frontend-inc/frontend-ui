@@ -9,11 +9,12 @@ type UILogosProps = SectionProps & HeadingProps & LogosProps
 
 const UILogos: React.FC<UILogosProps> = (props) => {
 	const {
-    label,
+		label,
 		title,
 		description,
 		textAlign,
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -27,19 +28,20 @@ const UILogos: React.FC<UILogosProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={3}
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Stack direction="column" spacing={1}>
-        <Heading 
-          label={ label }
-          title={ title }
-          description={ description }
-          textAlign={'center'}
-        />
-			  <Logos {...rest} />
-      </Stack>
+			<Stack direction="column" spacing={1}>
+				<Heading
+					label={label}
+					title={title}
+					description={description}
+					textAlign={'center'}
+				/>
+				<Logos {...rest} />
+			</Stack>
 		</Section>
 	)
 }

@@ -6,7 +6,7 @@ import { InputLabel } from '../../../components'
 
 type DateInputProps = {
 	errors?: any
-  direction?: 'row' | 'column'
+	direction?: 'row' | 'column'
 	required?: boolean
 	label?: string
 	name: string

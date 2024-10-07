@@ -25,7 +25,7 @@ const Text: React.FC<TextProps> = (props) => {
 
 	return (
 		<Container maxWidth="md">
-			<Stack spacing={2} direction="column" >
+			<Stack spacing={2} direction="column">
 				<Heading
 					label={label}
 					title={title}
@@ -37,9 +37,7 @@ const Text: React.FC<TextProps> = (props) => {
 						<div dangerouslySetInnerHTML={{ __html: description }} />
 					</Typography>
 				) : (
-					<Typography variant="body1">
-						{description}
-					</Typography>
+					<Typography variant="body1">{description}</Typography>
 				)}
 			</Stack>
 		</Container>
@@ -47,4 +45,3 @@ const Text: React.FC<TextProps> = (props) => {
 }
 
 export default Text
-

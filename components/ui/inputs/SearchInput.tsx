@@ -69,7 +69,7 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
 				onChange={handleInputChange}
 				onKeyDown={(e) => {
 					if (e.key === 'Enter') {
-						e.preventDefault();
+						e.preventDefault()
 						handleSearch(text)
 					}
 				}}

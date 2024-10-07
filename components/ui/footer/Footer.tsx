@@ -26,7 +26,7 @@ const Footer: React.FC<FooterProps> = (props) => {
 		socialLinks = [],
 		legalLinks = [],
 	} = props
-  
+
 	const { logo: appLogo } = useApp()
 
 	const handleLogoClick = () => {

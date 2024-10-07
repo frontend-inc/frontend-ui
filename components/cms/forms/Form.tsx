@@ -55,9 +55,7 @@ const Form: React.FC<FormProps> = (props) => {
 					onClick={handleSubmit}
 					disabled={loading}
 					endIcon={
-						loading ? (
-							<IconLoading color="primary.contrastText"/>
-						) : null
+						loading ? <IconLoading color="primary.contrastText" /> : null
 					}
 				>
 					{buttonText}

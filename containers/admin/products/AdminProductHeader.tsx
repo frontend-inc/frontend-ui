@@ -12,56 +12,56 @@ const AdminProductHeader: React.FC<AdminProductHeaderProps> = (props) => {
 
 	const { loading, aiGenerate } = useProducts()
 
-  const [open, setOpen] = useState(false)
-  
-  const [prompt, setPrompt] = useState({ text: '' })
-  const handleChange = (ev) => {
-    setPrompt({
-      text: ev.target.value
-    })
-  }
+	const [open, setOpen] = useState(false)
 
-  const handleGenerateAiProducts = async () => {
-    await aiGenerate(prompt.text)
-    setOpen(false)
-    if(handleReload){
-      handleReload()
-    }
-  }
+	const [prompt, setPrompt] = useState({ text: '' })
+	const handleChange = (ev) => {
+		setPrompt({
+			text: ev.target.value,
+		})
+	}
+
+	const handleGenerateAiProducts = async () => {
+		await aiGenerate(prompt.text)
+		setOpen(false)
+		if (handleReload) {
+			handleReload()
+		}
+	}
 
 	return (
 		<ResourceHeader
 			{...props}
 			secondaryAction={
 				<>
-        <IconButton sx={sx.iconButton} onClick={() => setOpen(true)}>
-          <Icon name="Wand" />
-        </IconButton>
-        <Modal
-          icon="Wand"
-          title='Generate Products'
-          loading={loading}
-          open={open}
-          handleClose={() => setOpen(false)}                  
-        >
-          <Form   
-            errors={{}}          
-            resource={ prompt }
-            handleChange={ handleChange }
-            fields={[
-              {                
-                name: 'prompt',
-                label: 'Describe the products to generate',
-                variant: 'text',
-                placeholder: '',
-                default: ''                
-              },
-            ]}
-            handleSubmit={handleGenerateAiProducts}
-            buttonText="Generate Products"
-          />
-        </Modal>
-      </>
+					<IconButton sx={sx.iconButton} onClick={() => setOpen(true)}>
+						<Icon name="Wand" />
+					</IconButton>
+					<Modal
+						icon="Wand"
+						title="Generate Products"
+						loading={loading}
+						open={open}
+						handleClose={() => setOpen(false)}
+					>
+						<Form
+							errors={{}}
+							resource={prompt}
+							handleChange={handleChange}
+							fields={[
+								{
+									name: 'prompt',
+									label: 'Describe the products to generate',
+									variant: 'text',
+									placeholder: '',
+									default: '',
+								},
+							]}
+							handleSubmit={handleGenerateAiProducts}
+							buttonText="Generate Products"
+						/>
+					</Modal>
+				</>
 			}
 		/>
 	)

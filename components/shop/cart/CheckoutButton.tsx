@@ -7,22 +7,22 @@ import { useRouter } from 'next/router'
 const CheckoutButton = () => {
 	const { loading, cart, checkout } = useCart()
 
-  const router = useRouter()
+	const router = useRouter()
 
-  const { showAlertError } = useAlerts()
+	const { showAlertError } = useAlerts()
 
 	const handleClick = async () => {
 		let currentUrl = window.location.href
 		let resp = await checkout({
 			success_url: currentUrl,
 			cancel_url: currentUrl,
-		})    
-    if(resp?.errors){
-      showAlertError(resp.errors)
-    }else{
-      let url = resp?.data?.url
-      router.push(url)      
-    }    
+		})
+		if (resp?.errors) {
+			showAlertError(resp.errors)
+		} else {
+			let url = resp?.data?.url
+			router.push(url)
+		}
 	}
 
 	const cartDisabled = cart?.total_items === 0 ? true : false

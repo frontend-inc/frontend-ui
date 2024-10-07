@@ -4,7 +4,7 @@ export default {
 		disableRipple: true,
 	},
 	styleOverrides: {
-		root: {      
+		root: {
 			whiteSpace: 'nowrap',
 		},
 		sizeSmall: {
@@ -13,9 +13,9 @@ export default {
 		sizeMedium: {
 			height: 44,
 		},
-    sizeLarge: {
-      height: 48
-    },
+		sizeLarge: {
+			height: 48,
+		},
 		outlined: {},
 		contained: {},
 	},

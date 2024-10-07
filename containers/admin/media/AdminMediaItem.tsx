@@ -22,13 +22,13 @@ const AdminMediaItem: React.FC<AdminMediaItemProps> = (props) => {
 			secondaryAction={<Label label={resource?.dimensions} />}
 			handleClick={handleClick}
 			handleDelete={handleDelete}
-      slots={{
-        image: {
-          height: 160,
-          width: 320,          
-          objectFit: 'contain',
-        }
-      }}
+			slots={{
+				image: {
+					height: 160,
+					width: 320,
+					objectFit: 'contain',
+				},
+			}}
 		/>
 	)
 }

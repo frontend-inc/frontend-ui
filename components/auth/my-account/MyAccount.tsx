@@ -35,11 +35,11 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 		router.push(redirectUrl)
 	}
 
-  useEffect(() => {
-    if(!currentUser?.id){
-      fetchMe()
-    }
-  }, [currentUser?.id])
+	useEffect(() => {
+		if (!currentUser?.id) {
+			fetchMe()
+		}
+	}, [currentUser?.id])
 
 	return (
 		<>

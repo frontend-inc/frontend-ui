@@ -3,4 +3,3 @@ export const NOTIFICATION_OPTIONS = [
 	{ value: 'page', label: 'Page', icon: 'StickyNote' },
 	{ value: 'url', label: 'URL', icon: 'ExternalLink' },
 ]
-

@@ -10,7 +10,7 @@ type LayoutHeaderProps = HeaderProps & {
 
 const AppHeader: React.FC<LayoutHeaderProps> = (props) => {
 	const router = useRouter()
-	const { bgColor, ...rest } = props || {}
+	const { bgColor, mode, ...rest } = props || {}
 
 	const { clientUrl } = useApp()
 
@@ -23,7 +23,7 @@ const AppHeader: React.FC<LayoutHeaderProps> = (props) => {
 	}
 
 	return (
-		<BackgroundColor bgColor={bgColor}>
+		<BackgroundColor bgColor={bgColor} mode={mode}>
 			<Header {...rest} handleClick={handleClick} />
 		</BackgroundColor>
 	)

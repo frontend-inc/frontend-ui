@@ -9,6 +9,7 @@ type UIContactFormProps = SectionProps & ContactFormProps
 const UIContactForm: React.FC<UIContactFormProps> = (props) => {
 	const {
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -23,6 +24,7 @@ const UIContactForm: React.FC<UIContactFormProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

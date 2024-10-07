@@ -75,7 +75,7 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 						enableComments={enableComments}
 					/>
 				</Box>
-			}			
+			}
 			slots={{
 				image: {
 					enableGradient,

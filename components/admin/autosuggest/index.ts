@@ -19,5 +19,3 @@ export { default as ShopifyCollectionAutosuggest } from './ShopifyCollectionAuto
 export { default as UserAutosuggest } from './UserAutosuggest'
 export { default as UserMetafieldAutosuggest } from './UserMetafieldAutosuggest'
 export { default as ViewAutosuggest } from './ViewAutosuggest'
-
-

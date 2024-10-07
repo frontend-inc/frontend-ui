@@ -9,15 +9,16 @@ type ShopCollectionProductsCarouselProps = CollectionProductsCarouselProps &
 	SectionProps &
 	HeadingProps
 
-const ShopCollectionProductsCarousel: React.FC<ShopCollectionProductsCarouselProps> = (
-	props
-) => {
+const ShopCollectionProductsCarousel: React.FC<
+	ShopCollectionProductsCarouselProps
+> = (props) => {
 	const {
 		label,
 		title,
 		description,
 		textAlign,
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -31,19 +32,20 @@ const ShopCollectionProductsCarousel: React.FC<ShopCollectionProductsCarouselPro
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Stack direction="column" spacing={1}>			
-        <Heading
-          label={label}
-          title={title}
-          description={description}
-          textAlign={textAlign}
-        />
-        <CollectionProductsCarousel {...rest} />
-      </Stack>
+			<Stack direction="column" spacing={1}>
+				<Heading
+					label={label}
+					title={title}
+					description={description}
+					textAlign={textAlign}
+				/>
+				<CollectionProductsCarousel {...rest} />
+			</Stack>
 		</Section>
 	)
 }

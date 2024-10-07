@@ -3,7 +3,7 @@ import ShopContext from './ShopContext'
 import { CartType } from '../types'
 
 type ShopProviderProps = {
-  cartCookie: string 
+	cartCookie: string
 	children: React.ReactNode
 }
 
@@ -14,11 +14,11 @@ const ShopProvider = (props: ShopProviderProps) => {
 	const [cart, setCart] = useState<CartType | {}>({})
 
 	const value = {
-		cart,    
+		cart,
 		setCart,
 		cartOpen,
 		setCartOpen,
-    cartCookie,
+		cartCookie,
 	}
 
 	return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>

@@ -16,14 +16,14 @@ const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
 		<Box>
 			<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
 				{items?.map((testimonial, i) => (
-					<Box 
-            sx={{ 
-              ...sx.item,
-              ...(enableArrows && sx.itemArrows)
-            }} 
-            key={i}
-          >
-						<SwipeableTestimonialCard							
+					<Box
+						sx={{
+							...sx.item,
+							...(enableArrows && sx.itemArrows),
+						}}
+						key={i}
+					>
+						<SwipeableTestimonialCard
 							image={testimonial.image}
 							author={testimonial.title}
 							rating={testimonial.rating}
@@ -48,7 +48,7 @@ const sx = {
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
-  itemArrows: {
-    px: 6,
-  }
+	itemArrows: {
+		px: 6,
+	},
 }

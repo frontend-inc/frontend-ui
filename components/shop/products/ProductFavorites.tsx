@@ -10,13 +10,7 @@ const ProductFavorites: React.FC<ProductListProps> = (props) => {
 		method: 'favorites',
 	}
 
-	return(
-    <ProductList 
-      query={query} 
-      {...rest} 
-    />
-
-  )
+	return <ProductList query={query} {...rest} />
 }
 
 export default ProductFavorites

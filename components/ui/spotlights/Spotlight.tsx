@@ -38,19 +38,20 @@ const Spotlight: React.FC<SpotlightProps> = (props) => {
 			label={label}
 			primary={title}
 			secondary={
-        description && (
-				<Typography variant="subtitle1" color="text.secondary">
-					{description}
-				</Typography>
-        )
+				description && (
+					<Typography variant="subtitle1" color="text.secondary">
+						{description}
+					</Typography>
+				)
 			}
 			actions={
-        buttons?.length > 0 &&
-          <ButtonActions
-            buttons={buttons}
-            size="large"
-            justifyContent={style == 'card' ? 'flex-start' : 'center'}
-          />
+				buttons?.length > 0 && (
+					<ButtonActions
+						buttons={buttons}
+						size="large"
+						justifyContent={style == 'card' ? 'flex-start' : 'center'}
+					/>
+				)
 			}
 			logos={logos}
 			image={image}

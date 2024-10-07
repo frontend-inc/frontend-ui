@@ -81,16 +81,15 @@ const useProductCollections = () => {
 		)
 	}
 
-  const aiGenerate = async (prompt) => {
+	const aiGenerate = async (prompt) => {
 		return loadingWrapper(() =>
 			api.post(`${apiUrl}/product_collections/ai_generate`, {
-        ai: {
-          prompt: prompt
-        }        
-      })
+				ai: {
+					prompt: prompt,
+				},
+			})
 		)
 	}
-
 
 	return {
 		paginate,
@@ -139,7 +138,7 @@ const useProductCollections = () => {
 		startIndex,
 		endIndex,
 
-    aiGenerate
+		aiGenerate,
 	}
 }
 

@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { MenuItem, Typography, Box, Card, CardHeader } from '@mui/material'
 import {
-	MenuItem,
-	Typography,
-	Box,
-	Card,
-	CardHeader,
-} from '@mui/material'
-import { 
-  TouchableOpacity, 
-  Image,
-  AttachmentImage, 
-  Label,
-  MenuButton 
+	TouchableOpacity,
+	Image,
+	AttachmentImage,
+	Label,
+	MenuButton,
 } from '../../../components'
 
 type MediaItemProps = {
@@ -54,20 +48,20 @@ const MediaItem: React.FC<MediaItemProps> = (props) => {
 				}
 			/>
 			{contentType == 'image' || contentType == 'video' ? (
-        <TouchableOpacity 						
-          handleClick={() => (handleClick ? handleClick(item) : null)}
-        >
-				<Box sx={sx.image}>
-					<Image
-						disableBorderRadius
-						height={size}
-						width={size}
-						src={item?.url}
-						alt={item?.content_type}
-						objectFit={'contain'}
-					/>
-				</Box>
-        </TouchableOpacity>
+				<TouchableOpacity
+					handleClick={() => (handleClick ? handleClick(item) : null)}
+				>
+					<Box sx={sx.image}>
+						<Image
+							disableBorderRadius
+							height={size}
+							width={size}
+							src={item?.url}
+							alt={item?.content_type}
+							objectFit={'contain'}
+						/>
+					</Box>
+				</TouchableOpacity>
 			) : (
 				<AttachmentImage icon="File" width={size} height={size} />
 			)}
@@ -84,11 +78,11 @@ const sx = {
 		p: 0,
 		minWidth: '120px',
 		height: 200,
-    border: '1px solid',
-    borderColor: 'transparent',
+		border: '1px solid',
+		borderColor: 'transparent',
 	},
 	selected: {
-    border: '1px solid',
+		border: '1px solid',
 		borderColor: 'primary.main',
 	},
 	header: {

@@ -18,6 +18,7 @@ const ShopCollectionProducts: React.FC<ShopCollectionProductsProps> = (
 		description,
 		textAlign,
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -31,19 +32,20 @@ const ShopCollectionProducts: React.FC<ShopCollectionProductsProps> = (
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Stack direction="column" spacing={1}>			
-        <Heading
-          label={label}
-          title={title}
-          description={description}
-          textAlign={textAlign}
-        />
-        <CollectionProducts {...rest} />
-      </Stack>
+			<Stack direction="column" spacing={1}>
+				<Heading
+					label={label}
+					title={title}
+					description={description}
+					textAlign={textAlign}
+				/>
+				<CollectionProducts {...rest} />
+			</Stack>
 		</Section>
 	)
 }

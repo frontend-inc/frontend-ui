@@ -18,6 +18,7 @@ const ShopProductRecommendations: React.FC<ShopProductRecommendationsProps> = (
 		description,
 		textAlign,
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -32,19 +33,20 @@ const ShopProductRecommendations: React.FC<ShopProductRecommendationsProps> = (
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Stack direction="column" spacing={1}>
-        <Heading
-          label={label}
-          title={title}
-          description={description}
-          textAlign={textAlign}
-        />
-        <ProductSimilarList {...rest} />
-      </Stack>
+			<Stack direction="column" spacing={1}>
+				<Heading
+					label={label}
+					title={title}
+					description={description}
+					textAlign={textAlign}
+				/>
+				<ProductSimilarList {...rest} />
+			</Stack>
 		</Section>
 	)
 }

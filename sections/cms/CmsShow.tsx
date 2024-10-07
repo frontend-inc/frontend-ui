@@ -9,6 +9,7 @@ type CmsShowProps = SectionProps & ShowProps
 const CmsShow: React.FC<CmsShowProps> = (props) => {
 	const {
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -24,6 +25,7 @@ const CmsShow: React.FC<CmsShowProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={style == 'cover' ? 0 : py}
 			px={style == 'cover' ? 0 : px}
 			maxWidth={maxWidth}

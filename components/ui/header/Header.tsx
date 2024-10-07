@@ -8,7 +8,7 @@ import { useApp } from '../../../hooks'
 
 export type HeaderProps = {
 	logo?: string
-  buttons?: ButtonType[]
+	buttons?: ButtonType[]
 	enableAuth?: boolean
 	enableStripe?: boolean
 	enableShopify?: boolean
@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 	const {
 		logo,
 		links = [],
-    buttons = [],
+		buttons = [],
 		handleClick,
 		enableStripe = false,
 		enableShopify = false,
@@ -31,31 +31,31 @@ const Header: React.FC<HeaderProps> = (props) => {
 	} = props
 
 	return (
-		<Box className='dark h-[64px] w-full'>
+		<Box className="dark h-[64px] w-full">
 			<DesktopHeader
 				logo={logo || appLogo}
 				enableAuth={enableAuth}
 				enableStripe={enableStripe}
 				enableShopify={enableShopify}
 				links={links}
-        buttons={buttons}
+				buttons={buttons}
 				handleClick={handleClick}
 			/>
 			<MobileHeader
 				logo={logo || appLogo}
-        enableAuth={enableAuth}
+				enableAuth={enableAuth}
 				enableStripe={enableStripe}
 				enableShopify={enableShopify}
 				enableNotifications
 				links={links}
-        buttons={buttons}
+				buttons={buttons}
 				handleClick={handleClick}
 			/>
 			<MobileDrawer
 				enableAuth={enableAuth}
 				enableStripe={enableStripe}
 				enableShopify={enableShopify}
-				links={links}        
+				links={links}
 				handleClick={handleClick}
 			/>
 		</Box>

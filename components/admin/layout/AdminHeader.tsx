@@ -31,7 +31,7 @@ const AdminHeader: React.FC<AdminHeaderProps> = (props) => {
 
 	return (
 		<Box
-      className='dark'
+			className="dark"
 			sx={{
 				...sx.root,
 				...(disableBorder && sx.disableBorder),

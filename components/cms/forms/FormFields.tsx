@@ -36,11 +36,7 @@ const FormFields: React.FC<FormFieldsProps> = (props) => {
 	} = props
 
 	return (
-		<Stack
-			spacing={1}
-      direction="column"
-      className={'w-full'}			
-		>
+		<Stack spacing={1} direction="column" className={'w-full'}>
 			{fields?.map((field, index) => {
 				if (!validateFieldConditions(field?.conditions || [], resource)) {
 					return null

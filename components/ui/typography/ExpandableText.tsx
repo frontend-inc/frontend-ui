@@ -6,24 +6,25 @@ const MAX_CHARS = 200
 
 type ExpandableTextProps = {
 	text: string
-  variant?: TypographyVariantsType
+	variant?: TypographyVariantsType
 	maxChars?: number
 	color?: string
 }
 
 const ExpandableText: React.FC<ExpandableTextProps> = (props) => {
-	const { text, color = 'text.primary', variant='body1', maxChars = MAX_CHARS } = props || {}
+	const {
+		text,
+		color = 'text.primary',
+		variant = 'body1',
+		maxChars = MAX_CHARS,
+	} = props || {}
 	const [open, setOpen] = useState(false)
 	return (
 		<Stack direction="column" spacing={0}>
 			{open ? (
-				<Typography variant={variant}>
-					{text}
-				</Typography>
+				<Typography variant={variant}>{text}</Typography>
 			) : (
-				<Typography variant={variant}>
-					{text?.slice(0, maxChars)}
-				</Typography>
+				<Typography variant={variant}>{text?.slice(0, maxChars)}</Typography>
 			)}
 			{text?.length > maxChars && (
 				<Link onClick={() => setOpen(!open)}>

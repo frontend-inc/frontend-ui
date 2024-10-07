@@ -1,10 +1,6 @@
 import React from 'react'
 import { Box, Stack } from '@mui/material'
-import {
-	FilterButton,
-	SortButton,
-	SearchInput,
-} from '../..'
+import { FilterButton, SortButton, SearchInput } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch } from '../../../hooks'
 

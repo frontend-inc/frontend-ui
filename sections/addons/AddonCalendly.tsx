@@ -9,6 +9,7 @@ export type AddonCalendlyProps = SectionProps & CalendlyProps
 const AddonCalendly: React.FC<AddonCalendlyProps> = (props) => {
 	const {
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -23,6 +24,7 @@ const AddonCalendly: React.FC<AddonCalendlyProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

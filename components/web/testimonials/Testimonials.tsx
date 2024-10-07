@@ -16,7 +16,7 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 	const { layout = 'grid', enableArrows, enableAutoPlay, items = [] } = props
 
 	return (
-		<Stack direction="column" className='w-full'>
+		<Stack direction="column" className="w-full">
 			{layout == 'carousel' ? (
 				<SwipeableTestimonials
 					items={items}
@@ -57,5 +57,5 @@ const sx = {
 		flexDirection: 'column',
 		justifyContent: 'flex-end',
 		alignItems: 'center',
-	},	
+	},
 }

@@ -10,9 +10,9 @@ type LayoutFooterProps = FooterProps & {
 
 const AppFooter: React.FC<LayoutFooterProps> = (props) => {
 	const router = useRouter()
-	const { bgColor, links = [], ...rest } = props || {}
+	const { bgColor, mode, links = [], ...rest } = props || {}
 
-  const { clientUrl } = useApp()
+	const { clientUrl } = useApp()
 
 	const handleClick = (path: string) => {
 		window.scrollTo({
@@ -23,7 +23,7 @@ const AppFooter: React.FC<LayoutFooterProps> = (props) => {
 	}
 
 	return (
-		<BackgroundColor bgColor={bgColor}>
+		<BackgroundColor bgColor={bgColor} mode={mode}>
 			<Footer {...rest} links={links} handleClick={handleClick} />
 		</BackgroundColor>
 	)

@@ -116,13 +116,15 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 					variant={buttonVariant}
 					size={size}
 					startIcon={
-						loading && <IconLoading
-							color={
-								buttonVariant == 'contained'
-									? 'primary.contrastText'
-									: 'primary.main'
-							}							
-						/>
+						loading && (
+							<IconLoading
+								color={
+									buttonVariant == 'contained'
+										? 'primary.contrastText'
+										: 'primary.main'
+								}
+							/>
+						)
 					}
 				>
 					{label}

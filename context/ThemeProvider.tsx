@@ -15,7 +15,7 @@ type ThemeProviderProps = {
 	bodyFont?: string
 	borderRadius?: number
 	textPrimary?: string //color
-	textSecondary?: string //color	
+	textSecondary?: string //color
 }
 
 const ThemeProvider = (props: ThemeProviderProps) => {
@@ -39,7 +39,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 		textSecondary,
 		headerFont,
 		bodyFont,
-		borderRadius
+		borderRadius,
 	})
 
 	const value = {

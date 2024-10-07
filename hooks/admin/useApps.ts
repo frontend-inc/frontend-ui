@@ -53,7 +53,9 @@ function useApps(): Record<string, any> {
 	}
 
 	const generateAI = async (appId) => {
-		return await loadingWrapper(() => api.post(`/api/v1/admin/apps/${appId}/generate_ai`))
+		return await loadingWrapper(() =>
+			api.post(`/api/v1/admin/apps/${appId}/generate_ai`)
+		)
 	}
 
 	return {

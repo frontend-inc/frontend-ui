@@ -5,12 +5,20 @@ import { useRouter } from 'next/router'
 
 export type CollectionProductsCarouselProps = ProductListProps & {
 	productCollectionId: string
-  enableArrows?: boolean
-  enableAutoplay?: boolean
+	enableArrows?: boolean
+	enableAutoplay?: boolean
 }
 
-const CollectionProductsCarousel: React.FC<CollectionProductsCarouselProps> = (props) => {
-	let { query = {}, productCollectionId, enableArrows, enableAutoplay, ...rest } = props
+const CollectionProductsCarousel: React.FC<CollectionProductsCarouselProps> = (
+	props
+) => {
+	let {
+		query = {},
+		productCollectionId,
+		enableArrows,
+		enableAutoplay,
+		...rest
+	} = props
 
 	query = {
 		...query,
@@ -18,14 +26,21 @@ const CollectionProductsCarousel: React.FC<CollectionProductsCarouselProps> = (p
 		product_collection_id: productCollectionId,
 	}
 
-  const slots = {
-    list: {
-      enableArrows,
-      enableAutoplay
-    }
-  }
+	const slots = {
+		list: {
+			enableArrows,
+			enableAutoplay,
+		},
+	}
 
-	return <ProductList {...rest} query={query} list={ ProductCarouselListItems } slots={ slots } />
+	return (
+		<ProductList
+			{...rest}
+			query={query}
+			list={ProductCarouselListItems}
+			slots={slots}
+		/>
+	)
 }
 
 export default CollectionProductsCarousel

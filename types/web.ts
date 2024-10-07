@@ -14,6 +14,7 @@ export type SectionProps = {
 	children?: React.ReactNode
 	enableTransitions?: boolean
 	bgColor?: string
+	mode?: 'dark' | 'light'
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 	py?: number
 	px?: number

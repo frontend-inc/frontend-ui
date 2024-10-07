@@ -130,17 +130,17 @@ const sx = {
 		width: '100%',
 		textAlign: 'center',
 	},
-  leftPanel: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
+	leftPanel: {
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 	rightPanel: {
 		width: {
-      sm: '100%',
-      xs: '100%',
-    },
+			sm: '100%',
+			xs: '100%',
+		},
 		maxWidth: {
 			sm: 500,
 			xs: '100%',
@@ -155,18 +155,18 @@ const sx = {
 	buttons: {
 		width: '100%',
 	},
-	imageContainer: {    
+	imageContainer: {
 		borderRadius: 1,
 		width: '100%',
 		minWidth: {
 			sm: 420,
 			xs: '100%',
 		},
-    maxWidth: {
-      sm: 640,
-      xs: '100%',    
-    }
-	},		
+		maxWidth: {
+			sm: 640,
+			xs: '100%',
+		},
+	},
 	description: {
 		whiteSpace: 'pre-line',
 	},

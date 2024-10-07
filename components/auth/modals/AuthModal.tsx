@@ -41,7 +41,6 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 
 	const [tab, setTab] = useState(1)
 
-
 	const handleLogin = async () => {
 		let resp = await login({
 			...user,
@@ -124,14 +123,21 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 	}, [authOpen])
 
 	return (
-		<Modal       
-      open={authOpen} 
-      handleClose={() => setAuthOpen(false)}
-    >
+		<Modal open={authOpen} handleClose={() => setAuthOpen(false)}>
 			<Stack direction="column" spacing={2} px={4}>
-        <Typography variant="h4" color='text.primary'>
-          { tab == 0 ? 'Login' : tab == 1 ? 'Signup' : tab == 2 ? 'Forgot Password' : tab == 3 ? 'Verify Pin' : tab == 4 ? 'Resend Pin' : 'Reset Password' }
-        </Typography>
+				<Typography variant="h4" color="text.primary">
+					{tab == 0
+						? 'Login'
+						: tab == 1
+						? 'Signup'
+						: tab == 2
+						? 'Forgot Password'
+						: tab == 3
+						? 'Verify Pin'
+						: tab == 4
+						? 'Resend Pin'
+						: 'Reset Password'}
+				</Typography>
 				{tab === 0 && (
 					<LoginForm
 						errors={errors}
@@ -214,7 +220,7 @@ const sx = {
 		mt: 1,
 		width: '100%',
 	},
-	tabsContainer: {    
+	tabsContainer: {
 		width: '100%',
 		display: 'flex',
 		justifyContent: 'center',

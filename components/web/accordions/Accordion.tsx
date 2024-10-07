@@ -1,10 +1,6 @@
 import React from 'react'
 import { Stack } from '../../../tailwind'
-import {
-	Container,
-	AccordionItem,
-	Placeholder,
-} from '../../../components'
+import { Container, AccordionItem, Placeholder } from '../../../components'
 
 export type AccordionProps = {
 	items?: {

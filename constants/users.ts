@@ -47,5 +47,5 @@ export const USER_ADDRESS_FIELDS = [
 export const ACCOUNT_FORM_FIELDS = [
 	{ name: 'avatar', variant: 'image' },
 	{ label: 'First name', name: 'first_name', variant: 'string' },
-	{ label: 'Last name', name: 'last_name', variant: 'string' },	
+	{ label: 'Last name', name: 'last_name', variant: 'string' },
 ]

@@ -7,61 +7,63 @@ import { IconButton } from '@mui/material'
 
 type AdminProductHeaderProps = ResourceHeaderProps
 
-const AdminProductCollectionHeader: React.FC<AdminProductHeaderProps> = (props) => {
+const AdminProductCollectionHeader: React.FC<AdminProductHeaderProps> = (
+	props
+) => {
 	const { handleReload } = props || {}
 
 	const { loading, aiGenerate } = useProductCollections()
 
-  const [open, setOpen] = useState(false)
-  
-  const [prompt, setPrompt] = useState({ text: '' })
-  const handleChange = (ev) => {
-    setPrompt({
-      text: ev.target.value
-    })
-  }
+	const [open, setOpen] = useState(false)
 
-  const handleGenerateAiProducts = async () => {
-    await aiGenerate(prompt.text)
-    setOpen(false)
-    if(handleReload){
-      handleReload()
-    }
-  }
+	const [prompt, setPrompt] = useState({ text: '' })
+	const handleChange = (ev) => {
+		setPrompt({
+			text: ev.target.value,
+		})
+	}
+
+	const handleGenerateAiProducts = async () => {
+		await aiGenerate(prompt.text)
+		setOpen(false)
+		if (handleReload) {
+			handleReload()
+		}
+	}
 
 	return (
 		<ResourceHeader
 			{...props}
 			secondaryAction={
 				<>
-        <IconButton sx={sx.iconButton} onClick={() => setOpen(true)}>
-          <Icon name="Wand" />
-        </IconButton>
-        <Modal
-          icon="Wand"
-          title='Generate Product Collections'
-          loading={loading}
-          open={open}
-          handleClose={() => setOpen(false)}                  
-        >
-          <Form   
-            errors={{}}          
-            resource={ prompt }
-            handleChange={ handleChange }
-            fields={[
-              {                
-                name: 'prompt',
-                label: 'Describe the product collections to generate',
-                variant: 'text',
-                placeholder: '',
-                default: ''                
-              },
-            ]}
-            handleSubmit={handleGenerateAiProducts}
-            buttonText="Generate with AI"
-          />
-        </Modal>
-      </>
+					<IconButton sx={sx.iconButton} onClick={() => setOpen(true)}>
+						<Icon name="Wand" />
+					</IconButton>
+					<Modal
+						icon="Wand"
+						title="Generate Product Collections"
+						loading={loading}
+						open={open}
+						handleClose={() => setOpen(false)}
+					>
+						<Form
+							errors={{}}
+							resource={prompt}
+							handleChange={handleChange}
+							fields={[
+								{
+									name: 'prompt',
+									label: 'Describe the product collections to generate',
+									variant: 'text',
+									placeholder: '',
+									default: '',
+								},
+							]}
+							handleSubmit={handleGenerateAiProducts}
+							buttonText="Generate with AI"
+						/>
+					</Modal>
+				</>
 			}
 		/>
 	)

@@ -13,6 +13,7 @@ const ShopProductLikesGrid: React.FC<ShopProductLikesGridProps> = (props) => {
 		description,
 		textAlign,
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -24,9 +25,10 @@ const ShopProductLikesGrid: React.FC<ShopProductLikesGridProps> = (props) => {
 
 	return (
 		<Section
-      requireAuth
+			requireAuth
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

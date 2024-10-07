@@ -9,6 +9,7 @@ type ShopifyPDPProps = SectionProps & ShopifyProductDetailsProps
 const ShopifyPDP: React.FC<ShopifyPDPProps> = (props) => {
 	const {
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -23,6 +24,7 @@ const ShopifyPDP: React.FC<ShopifyPDPProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

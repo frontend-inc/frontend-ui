@@ -85,4 +85,3 @@ export { default as Swipeable } from './swipeable/Swipeable'
 
 // Debug
 export { default as Debug } from './debug/Debug'
-

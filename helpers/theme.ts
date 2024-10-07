@@ -4,7 +4,7 @@ export const buildMuiPalette = (palette) => {
 	const bgColor = palette.background.default
 	const contrast = getContrastRatio(bgColor, '#000000')
 	const paper = lighten(bgColor, 0.05)
-  const fill = contrast > 10 ? darken(bgColor, 0.05) : lighten(bgColor, 0.05)
+	const fill = contrast > 10 ? darken(bgColor, 0.05) : lighten(bgColor, 0.05)
 	const primaryText =
 		contrast > 10 ? darken(bgColor, 0.9) : lighten(bgColor, 0.9)
 	const secondaryText =
@@ -17,7 +17,7 @@ export const buildMuiPalette = (palette) => {
 			default: bgColor,
 			main: bgColor,
 			paper: paper,
-      fill: fill
+			fill: fill,
 		},
 		divider: divider,
 		text: {

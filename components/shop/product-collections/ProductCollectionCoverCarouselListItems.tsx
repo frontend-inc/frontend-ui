@@ -52,7 +52,7 @@ const ProductCollectionCoverCarouselListItems: React.FC<
 					<Cover
 						key={index}
 						image={resource?.image?.url}
-            height={height}
+						height={height}
 						title={resource?.title}
 						handleClick={() => handleClick(resource)}
 						enableGradient={enableGradient}

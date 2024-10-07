@@ -30,7 +30,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 	const {
 		title,
 		description,
-		textVariant = 'h3',		
+		textVariant = 'h3',
 		handleClick,
 		image,
 		height = 520,
@@ -40,7 +40,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 		opacity = 0.65,
 		alignItems = 'center',
 		overlayColor = '#000000',
-    buttonText,
+		buttonText,
 		path,
 	} = props
 
@@ -65,17 +65,13 @@ const Cover: React.FC<CoverProps> = (props) => {
 				opacity={opacity}
 			/>
 			<Stack
-        className={`h-[${height}px] absolute top-0 left-0 w-full h-full justify-center items-center px-3 sm:px-0`}				
+				className={`h-[${height}px] absolute top-0 left-0 w-full h-full justify-center items-center px-3 sm:px-0`}
 			>
-				<Stack
-					direction="column"
-					spacing={1}
-					alignItems={alignItems}
-				>
+				<Stack direction="column" spacing={1} alignItems={alignItems}>
 					{title && (
 						<Typography
 							variant={textVariant}
-              textAlign={ alignItems === 'center' ? 'center' : 'left'}							
+							textAlign={alignItems === 'center' ? 'center' : 'left'}
 						>
 							{title}
 						</Typography>
@@ -84,13 +80,13 @@ const Cover: React.FC<CoverProps> = (props) => {
 						<Typography
 							variant="subtitle2"
 							color="text.primary"
-              textAlign={ alignItems === 'center' ? 'center' : 'left'}							
+							textAlign={alignItems === 'center' ? 'center' : 'left'}
 						>
 							{description}
 						</Typography>
 					)}
 					{buttonText && (
-						<Box className='py-2'>
+						<Box className="py-2">
 							<Button
 								size="large"
 								onClick={handleItemClick}

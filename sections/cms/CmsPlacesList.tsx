@@ -13,6 +13,7 @@ const CmsPlacesList: React.FC<CmsPlacesListProps> = (props) => {
 		description,
 		textAlign,
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -25,6 +26,7 @@ const CmsPlacesList: React.FC<CmsPlacesListProps> = (props) => {
 	return (
 		<Section
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

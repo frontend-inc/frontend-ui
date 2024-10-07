@@ -14,6 +14,7 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 		description,
 		textAlign,
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -28,6 +29,7 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
@@ -39,7 +41,7 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 					description={description}
 					textAlign={'center'}
 				/>
-				<Testimonials {...rest} layout='grid' />
+				<Testimonials {...rest} layout="grid" />
 			</Stack>
 		</Section>
 	)

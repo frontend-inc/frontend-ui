@@ -8,7 +8,7 @@ type BackgroundColorProps = {
 }
 
 const BackgroundColor: React.FC<BackgroundColorProps> = (props) => {
-	const { bgColor='#fcfcfc', children } = props || {}
+	const { bgColor = '#fcfcfc', children } = props || {}
 	const { theme: muiTheme } = useContext(ThemeContext)
 	return (
 		<ThemeProvider muiTheme={muiTheme} bgcolor={bgColor}>

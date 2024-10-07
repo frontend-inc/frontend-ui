@@ -14,7 +14,7 @@ const Logos: React.FC<LogosProps> = (props) => {
 	const { logos = [] } = props
 
 	return (
-		<Stack spacing={0} className='w-full'>
+		<Stack spacing={0} className="w-full">
 			<BrandLogos logos={logos} width={128} height={48} />
 			{logos?.length === 0 && (
 				<Placeholder

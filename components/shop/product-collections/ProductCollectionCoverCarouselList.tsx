@@ -8,7 +8,7 @@ export type ProductCollectionCoverCarouselListProps =
 		enableArrows?: boolean
 		enableAutoPlay?: boolean
 		buttonText?: string
-    height?: number
+		height?: number
 	}
 
 const ProductCollectionCoverCarouselList: React.FC<
@@ -21,7 +21,7 @@ const ProductCollectionCoverCarouselList: React.FC<
 			enableArrows,
 			enableAutoPlay,
 			buttonText,
-      height
+			height,
 		},
 	}
 

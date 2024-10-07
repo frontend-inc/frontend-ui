@@ -10,14 +10,13 @@ import { useApp } from '../../../hooks'
 const ShopifyAuthButton: React.FC = () => {
 	const router = useRouter()
 
-
 	const { logout, customer } = useAuth()
 	const { open, anchorEl, closeMenu, toggleMenu } = useMenu()
 	const { clientUrl, setMyAccountOpen } = useApp()
 
 	const handleClick = () => {
 		closeMenu()
-    setMyAccountOpen(true)		
+		setMyAccountOpen(true)
 	}
 
 	const handleLogoutClick = () => {

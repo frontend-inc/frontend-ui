@@ -38,7 +38,7 @@ export const typography = {
 		fontFamily: 'Instrument Sans',
 		fontWeight: 500,
 		fontSize: 24,
-    '@media (max-width:600px)': {
+		'@media (max-width:600px)': {
 			fontSize: 20,
 		},
 	},
@@ -46,7 +46,7 @@ export const typography = {
 		fontFamily: 'Instrument Sans',
 		fontWeight: 500,
 		fontSize: 20,
-    '@media (max-width:600px)': {
+		'@media (max-width:600px)': {
 			fontSize: 18,
 		},
 	},
@@ -88,7 +88,7 @@ export const typography = {
 		fontWeight: 600,
 		fontSize: 14,
 		letterSpacing: '0.03em',
-    textTransform: 'none',
+		textTransform: 'none',
 	},
 	caption: {
 		fontFamily: 'Roboto',

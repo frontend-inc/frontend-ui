@@ -7,7 +7,7 @@ import { useCart } from '../../../hooks'
 const CartLineItems: React.FC = () => {
 	const { cart } = useCart()
 
-  if(!cart?.uid) return null;
+	if (!cart?.uid) return null
 	if (cart?.line_items.length === 0) {
 		return (
 			<Placeholder

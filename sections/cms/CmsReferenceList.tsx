@@ -13,6 +13,7 @@ const CmsReferenceList: React.FC<CmsReferenceListProps> = (props) => {
 		description,
 		textAlign,
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -25,6 +26,7 @@ const CmsReferenceList: React.FC<CmsReferenceListProps> = (props) => {
 	return (
 		<Section
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

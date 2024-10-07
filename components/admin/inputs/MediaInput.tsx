@@ -8,13 +8,19 @@ import { ImageType } from '../../../types'
 type MediaInputProps = {
 	name: string
 	value: ImageType
-  objectFit?: 'cover' | 'contain'
+	objectFit?: 'cover' | 'contain'
 	handleAddAttachment: (field: string, id: number) => void
 	handleRemoveAttachment: (field: string) => void
 }
 
 const MediaInput: React.FC<MediaInputProps> = (props) => {
-	const { name, value, objectFit='cover', handleAddAttachment, handleRemoveAttachment } = props
+	const {
+		name,
+		value,
+		objectFit = 'cover',
+		handleAddAttachment,
+		handleRemoveAttachment,
+	} = props
 
 	const [open, setOpen] = useState(false)
 	const [openEdit, setOpenEdit] = useState(false)
@@ -35,7 +41,7 @@ const MediaInput: React.FC<MediaInputProps> = (props) => {
 	}
 
 	return (
-		<Stack spacing={1} sx={{ width: "100%" }}>
+		<Stack spacing={1} sx={{ width: '100%' }}>
 			<Box sx={sx.buttons}>
 				<Button
 					color="secondary"

@@ -12,13 +12,13 @@ type FeatureProps = {
 const Feature: React.FC<FeatureProps> = (props) => {
 	const { icon, title, description } = props || {}
 	return (
-		<Stack
-			direction="column"      
-			spacing={2}			
-      alignItems='center'
-		>
-			{icon && <Avatar><Icon name={icon} color="primary.main" /></Avatar>}
-			<Stack direction="column" spacing={1} alignItems='center'>
+		<Stack direction="column" spacing={2} alignItems="center">
+			{icon && (
+				<Avatar>
+					<Icon name={icon} color="primary.main" />
+				</Avatar>
+			)}
+			<Stack direction="column" spacing={1} alignItems="center">
 				<Typography color="text.primary" variant="subtitle1">
 					{title}
 				</Typography>

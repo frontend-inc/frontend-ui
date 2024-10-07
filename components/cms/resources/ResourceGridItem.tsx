@@ -108,15 +108,15 @@ const ResourceGridItem: React.FC<ResourceListItemProps> = (props) => {
 				}
 			/>
 			<CardActionArea onClick={handleClick}>
-        <Box sx={ sx.image }>
-          <Image
-            label={label}
-            disableBorderRadius
-            height={160}
-            src={image}
-            {...slots.image}
-          />
-        </Box>
+				<Box sx={sx.image}>
+					<Image
+						label={label}
+						disableBorderRadius
+						height={160}
+						src={image}
+						{...slots.image}
+					/>
+				</Box>
 			</CardActionArea>
 			{(primary || secondary) && (
 				<CardContent>
@@ -187,11 +187,11 @@ const sx = {
 	isDragging: {
 		boxShadow: 2,
 	},
-  image: {
-    overflow: 'hidden',
-    height: 160,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
+	image: {
+		overflow: 'hidden',
+		height: 160,
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
 }

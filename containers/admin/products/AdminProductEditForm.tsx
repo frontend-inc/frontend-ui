@@ -19,7 +19,7 @@ const AdminProductForm: React.FC<AdminProductFormProps> = (props) => {
 		{ label: 'Label', name: 'label', variant: 'string' },
 		{ label: 'Price', name: 'price', variant: 'number' },
 		{ label: 'Compare at price', name: 'compare_at_price', variant: 'number' },
-		{ label: 'SKU', name: 'sku', variant: 'string' },		
+		{ label: 'SKU', name: 'sku', variant: 'string' },
 		...metafields,
 	]
 

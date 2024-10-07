@@ -12,13 +12,20 @@ type MobileDrawerProps = {
 	enableAuth?: boolean
 	enableStripe?: boolean
 	enableShopify?: boolean
-  mode?: 'dark' | 'light'
+	mode?: 'dark' | 'light'
 }
 
 const MobileDrawer = (props: MobileDrawerProps) => {
 	const { menuOpen, setMenuOpen } = useContext(AppContext)
 
-	const { links, mode = 'dark', handleClick, enableAuth, enableStripe, enableShopify } = props
+	const {
+		links,
+		mode = 'dark',
+		handleClick,
+		enableAuth,
+		enableStripe,
+		enableShopify,
+	} = props
 
 	const handleMenuClick = (path: string) => {
 		setMenuOpen(false)
@@ -30,7 +37,7 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 			open={menuOpen}
 			onClose={() => setMenuOpen(false)}
 			anchor="left"
-			mode='dark'
+			mode="dark"
 		>
 			<Box>
 				<List>

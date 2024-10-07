@@ -23,7 +23,7 @@ const AdminProductShow: React.FC<AdminProductShowProps> = (props) => {
 	let fields = [
 		{ label: 'Price', name: 'price', variant: 'number' },
 		{ label: 'Compare at price', name: 'compare_at_price', variant: 'number' },
-		{ label: 'SKU', name: 'sku', variant: 'string' },		
+		{ label: 'SKU', name: 'sku', variant: 'string' },
 		...metafields,
 	]
 
@@ -38,10 +38,10 @@ const AdminProductShow: React.FC<AdminProductShowProps> = (props) => {
 			handleDelete={handleDelete}
 		>
 			<ResourceDetails
-        label={ resource?.label }
+				label={resource?.label}
 				image={resource?.image?.url}
 				primary={resource?.title}
-				secondary={resource?.description}				
+				secondary={resource?.description}
 				resource={resource}
 				fields={fields}
 				direction="column"

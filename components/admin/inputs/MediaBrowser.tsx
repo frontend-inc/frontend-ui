@@ -68,33 +68,29 @@ const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 
 	return (
 		<Modal
-      maxWidth="md"
+			maxWidth="md"
 			disablePadding
 			open={open}
 			handleClose={handleClose}
 			title={'Browse Media'}
 			buttons={
-				<Button
-					variant="contained"
-					color="primary"
-					onClick={handleAttach}
-				>
+				<Button variant="contained" color="primary" onClick={handleAttach}>
 					Save Media
 				</Button>
 			}
 		>
 			<Box>
-        <Box sx={ sx.buttonsContainer }>
-				<Box sx={ sx.buttonTabs }>
-					<ButtonTabs
-						disableBorder
-						disablePadding
-						options={OPTIONS}
-						handleChange={handleTabChange}
-						value={tab}
-					/>
+				<Box sx={sx.buttonsContainer}>
+					<Box sx={sx.buttonTabs}>
+						<ButtonTabs
+							disableBorder
+							disablePadding
+							options={OPTIONS}
+							handleChange={handleTabChange}
+							value={tab}
+						/>
+					</Box>
 				</Box>
-        </Box>
 				<Box sx={sx.content}>
 					{tab == 0 && (
 						<MediaList
@@ -102,12 +98,8 @@ const MediaBrowser: React.FC<MediaBrowserProps> = (props) => {
 							handleSelect={handleSelect}
 						/>
 					)}
-					{tab == 1 && (
-						<MediaUploader onComplete={handleComplete} />
-					)}
-					{tab == 2 && (
-						<UnsplashList onComplete={handleComplete} />
-					)}
+					{tab == 1 && <MediaUploader onComplete={handleComplete} />}
+					{tab == 2 && <UnsplashList onComplete={handleComplete} />}
 					{tab == 3 && <BrandfetchInput onComplete={handleComplete} />}
 				</Box>
 			</Box>
@@ -127,16 +119,16 @@ const sx = {
 	},
 	content: {
 		p: 2,
-    minHeight: '50vh',
+		minHeight: '50vh',
 	},
-  buttonsContainer: {
-    px: 2,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonTabs: {
-    width: '100%',
-    maxWidth: 600
-  }
+	buttonsContainer: {
+		px: 2,
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	buttonTabs: {
+		width: '100%',
+		maxWidth: 600,
+	},
 }

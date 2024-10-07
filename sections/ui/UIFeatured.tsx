@@ -14,6 +14,7 @@ const UIFeatured: React.FC<UIFeaturedProps> = (props) => {
 		description,
 		textAlign,
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -27,6 +28,7 @@ const UIFeatured: React.FC<UIFeaturedProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

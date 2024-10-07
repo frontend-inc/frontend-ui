@@ -52,39 +52,39 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 	}
 
 	return (
-    <Stack direction="column" spacing={1}>
-      <Heading
-        label={label}
-        title={title}
-        description={description}
-        textVariant={textVariant}
-        textAlign="center"
-      />
-      <Stack 
-        justifyContent='center' 
-        alignItems='center' 
-        direction="row" 
-        spacing={1}
-      >
-        <TextInput            
-          errors={errors}
-          name="email"
-          value={contact?.email}
-          handleChange={handleChange}
-          placeholder="Enter your email"
-          type="email" 
-          className="rounded-l-md rounded-r-none border-r-0"           
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleSubmit}
-          className="rounded-l-none rounded-r-md"
-        >
-          {delayedLoading ? <IconLoading /> : buttonText}
-        </Button>
-      </Stack>
-    </Stack>
+		<Stack direction="column" spacing={1}>
+			<Heading
+				label={label}
+				title={title}
+				description={description}
+				textVariant={textVariant}
+				textAlign="center"
+			/>
+			<Stack
+				justifyContent="center"
+				alignItems="center"
+				direction="row"
+				spacing={1}
+			>
+				<TextInput
+					errors={errors}
+					name="email"
+					value={contact?.email}
+					handleChange={handleChange}
+					placeholder="Enter your email"
+					type="email"
+					className="rounded-l-md rounded-r-none border-r-0"
+				/>
+				<Button
+					variant="contained"
+					color="primary"
+					onClick={handleSubmit}
+					className="rounded-l-none rounded-r-md"
+				>
+					{delayedLoading ? <IconLoading /> : buttonText}
+				</Button>
+			</Stack>
+		</Stack>
 	)
 }
 

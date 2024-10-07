@@ -14,6 +14,7 @@ const ShopProducts: React.FC<ShopProductsProps> = (props) => {
 		description,
 		textAlign,
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -26,21 +27,22 @@ const ShopProducts: React.FC<ShopProductsProps> = (props) => {
 	return (
 		<Section
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 		>
-      <Stack direction="column" spacing={1}>
-        <Heading
-          label={label}
-          title={title}
-          description={description}
-          textAlign={textAlign}
-        />
-			  <ProductList {...rest} />
-      </Stack>
+			<Stack direction="column" spacing={1}>
+				<Heading
+					label={label}
+					title={title}
+					description={description}
+					textAlign={textAlign}
+				/>
+				<ProductList {...rest} />
+			</Stack>
 		</Section>
 	)
 }

@@ -30,7 +30,7 @@ const ButtonAction: React.FC<ActionProps> = (props) => {
 	const handleClick = () => {
 		if (url) {
 			window.open(url, '_blank')
-		} else if(path){      
+		} else if (path) {
 			router.push(path)
 		}
 	}

@@ -17,6 +17,7 @@ const ShopifyMetafieldProducts: React.FC<ShopifyMetafieldProductsProps> = (
 		description,
 		textAlign,
 		bgColor,
+		mode,
 		py,
 		px,
 		maxWidth,
@@ -31,6 +32,7 @@ const ShopifyMetafieldProducts: React.FC<ShopifyMetafieldProductsProps> = (
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 			bgColor={bgColor}
+			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}

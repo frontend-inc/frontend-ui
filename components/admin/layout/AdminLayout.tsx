@@ -21,7 +21,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = (props) => {
 	} = props
 
 	return (
-		<Box className='dark' sx={sx.root}>
+		<Box className="dark" sx={sx.root}>
 			<Alert anchorBottom />
 			<AdminLayoutTabs>
 				<AdminTabIcons

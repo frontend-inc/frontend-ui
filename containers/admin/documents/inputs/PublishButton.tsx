@@ -30,14 +30,15 @@ const PublishButton: React.FC<PublishButtonProps> = (props) => {
 				</>
 			}
 			endIcon={
-        loading && 
-          <IconLoading
-            color={
-              document?.published
-                ? 'success.contrastText'
-                : 'primary.contrastText'
-            }
-          />
+				loading && (
+					<IconLoading
+						color={
+							document?.published
+								? 'success.contrastText'
+								: 'primary.contrastText'
+						}
+					/>
+				)
 			}
 		>
 			{document?.published ? 'Published' : 'Publish'}

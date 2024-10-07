@@ -137,7 +137,7 @@ const sx = {
 	},
 	button: {
 		px: 0,
-    height: '28px',
+		height: '28px',
 		color: 'text.primary',
 		border: 'none !important',
 		fontSize: (theme) => theme.typography.overline.fontSize,

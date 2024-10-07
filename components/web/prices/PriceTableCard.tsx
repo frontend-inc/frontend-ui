@@ -1,4 +1,3 @@
-
 import React, { useContext } from 'react'
 import {
 	Stack,
@@ -19,20 +18,20 @@ import { formatCurrency } from 'frontend-shopify'
 
 type PriceCardProps = {
 	label?: string
-  title: string
-  description?: string
-  features?: string[]
-  price: string
-  buttonText?: string
-  url?: string
+	title: string
+	description?: string
+	features?: string[]
+	price: string
+	buttonText?: string
+	url?: string
 }
 
 const PriceCard: React.FC<PriceCardProps> = (props) => {
 	const router = useRouter()
 	const { setAuthOpen } = useContext(AppContext) as any
-	const { label, title, description, features, buttonText, price, url  } = props
+	const { label, title, description, features, buttonText, price, url } = props
 
-	const handleClick = () => {		
+	const handleClick = () => {
 		if (url) {
 			router.push(url)
 		}
@@ -46,31 +45,22 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
 						<Label label={label} />
 					</Box>
 				)}
-				<Typography variant="body1">
-					{title}
-				</Typography>
-				<Typography variant="h5">
-					{price}
-				</Typography>
+				<Typography variant="body1">{title}</Typography>
+				<Typography variant="h5">{price}</Typography>
 				<Divider />
 				<List>
 					{features?.map((feature, i) => (
 						<ListItem key={i}>
-							<ListItemText
-								primary={feature}
-							/>
+							<ListItemText primary={feature} />
 						</ListItem>
 					))}
 				</List>
 			</Stack>
-      { buttonText && (
-			<Button
-				onClick={handleClick}
-				variant="contained"
-			>
-				{buttonText}
-			</Button>
-      )}
+			{buttonText && (
+				<Button onClick={handleClick} variant="contained">
+					{buttonText}
+				</Button>
+			)}
 		</Box>
 	)
 }

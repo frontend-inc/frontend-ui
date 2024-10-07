@@ -11,8 +11,8 @@ type MobileNavProps = {
 	logoWidth?: number
 	logoHeight?: number
 	links: MenuLinkType[]
-  buttons: ButtonType[]
-  enableAuth?: boolean
+	buttons: ButtonType[]
+	enableAuth?: boolean
 	enableShopify?: boolean
 	enableStripe?: boolean
 	enableNotifications?: boolean
@@ -27,8 +27,8 @@ const MobileNav = (props: MobileNavProps) => {
 		logoWidth = 120,
 		logoHeight = 50,
 		handleClick,
-    buttons,
-    enableAuth = false,
+		buttons,
+		enableAuth = false,
 		enableStripe = false,
 		enableShopify = false,
 	} = props
@@ -37,26 +37,26 @@ const MobileNav = (props: MobileNavProps) => {
 		<Hidden mdUp>
 			<Box sx={sx.appBar}>
 				<Stack direction="row" spacing={0} sx={sx.header}>
-          <Stack direction="row" justifyContent="flex-start" sx={ sx.leftMenu}>
-            <IconButton onClick={() => setMenuOpen(true)}>
-              <Icon name="Menu" size={24} />
-            </IconButton>
-            <Logo
-              handleClick={() => handleClick('/')}
-              src={logo}
-              width={logoWidth}
-              height={logoHeight - 20}
-            />
-          </Stack>
+					<Stack direction="row" justifyContent="flex-start" sx={sx.leftMenu}>
+						<IconButton onClick={() => setMenuOpen(true)}>
+							<Icon name="Menu" size={24} />
+						</IconButton>
+						<Logo
+							handleClick={() => handleClick('/')}
+							src={logo}
+							width={logoWidth}
+							height={logoHeight - 20}
+						/>
+					</Stack>
 					<Box sx={sx.rightMenu}>
-            { buttons?.length > 0 && (
-              <Box sx={{ mr: 1 }}>
-                <ButtonActions size="small" buttons={buttons} />
-              </Box>
-            )}
-            {enableAuth && <AuthButton />}
+						{buttons?.length > 0 && (
+							<Box sx={{ mr: 1 }}>
+								<ButtonActions size="small" buttons={buttons} />
+							</Box>
+						)}
+						{enableAuth && <AuthButton />}
 						{enableStripe && <CartButton />}
-						{enableShopify && <ShopifyCartButton />}            
+						{enableShopify && <ShopifyCartButton />}
 					</Box>
 				</Stack>
 			</Box>
@@ -77,18 +77,18 @@ const sx = {
 	},
 	header: {
 		width: '100%',
-    alignItems: 'space-between',
+		alignItems: 'space-between',
 	},
 	rightMenu: {
-    pr: 1,
+		pr: 1,
 		width: '100%',
 		display: 'flex',
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'flex-end',
 	},
-  leftMenu: {
-    height: 60,
-    alignItems: 'center'
+	leftMenu: {
+		height: 60,
+		alignItems: 'center',
 	},
 }

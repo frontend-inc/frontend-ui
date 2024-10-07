@@ -11,7 +11,7 @@ export type FeaturedProps = {
 		description?: string
 		image?: string
 		buttonText?: string
-    path?: string
+		path?: string
 		url?: string
 	}[]
 	enableGradient?: boolean
@@ -28,7 +28,7 @@ const Featured: React.FC<FeaturedProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Container maxWidth='md'>
+		<Container maxWidth="md">
 			<Stack spacing={6}>
 				{items?.map((item, i) => (
 					<FeaturedCard
@@ -36,7 +36,7 @@ const Featured: React.FC<FeaturedProps> = (props) => {
 						label={item?.label}
 						title={item?.title}
 						description={item?.description}
-						image={item?.image}            
+						image={item?.image}
 						buttonText={item?.buttonText}
 						href={item?.path}
 						flexDirection={i % 2 === 0 ? 'row' : 'row-reverse'}

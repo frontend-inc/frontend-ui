@@ -15,18 +15,22 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 
 	return (
 		<Box className={'p-4 h-[320px] border border-zinc-200 p-4 rounded-lg'}>
-			<Stack justifyContent='space-between' className={'h-full'}>
+			<Stack justifyContent="space-between" className={'h-full'}>
 				<Box sx={sx.testimonial}>
-          {text && (
-            <ExpandableText variant="subtitle1" color='text.secondary' text={`"${text}"`} />            
-          )}											
+					{text && (
+						<ExpandableText
+							variant="subtitle1"
+							color="text.secondary"
+							text={`"${text}"`}
+						/>
+					)}
 				</Box>
-        <Stack direction="row" spacing={2}>
-          <Avatar src={image} />
-          <Typography variant="body2" color="text.secondary">
-            &mdash; {author}
-          </Typography>
-        </Stack>
+				<Stack direction="row" spacing={2}>
+					<Avatar src={image} />
+					<Typography variant="body2" color="text.secondary">
+						&mdash; {author}
+					</Typography>
+				</Stack>
 			</Stack>
 		</Box>
 	)
@@ -42,12 +46,12 @@ const sx = {
 		alignItems: 'flex-start',
 		justifyContent: 'flex-end',
 		width: '100%',
-		minHeight: '320px',        
-    p: 2,
-    borderRadius: 1,
-    border: '1px solid',
-    borderColor: 'divider',
-    bgcolor: 'background.paper',
+		minHeight: '320px',
+		p: 2,
+		borderRadius: 1,
+		border: '1px solid',
+		borderColor: 'divider',
+		bgcolor: 'background.paper',
 	},
 	content: {
 		width: '100%',
@@ -74,8 +78,8 @@ const sx = {
 		flexDirection: 'column',
 		alignItems: 'center',
 	},
-  author: {
-    width: '100%',    
-    alignItems: 'center'
-  }
+	author: {
+		width: '100%',
+		alignItems: 'center',
+	},
 }
