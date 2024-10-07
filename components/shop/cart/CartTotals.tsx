@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Typography } from '@mui/material'
+import { Stack, Typography } from '../../../tailwind'
 import { useCart } from '../../../hooks'
 
 const CartTotals: React.FC = () => {

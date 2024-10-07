@@ -1,5 +1,5 @@
 import React from 'react'
-import { PrimaryButton } from '../..'
+import { Button } from '../../../tailwind'
 import { useCart } from '../../../hooks'
 import { useAlerts } from '../../../hooks'
 import { useRouter } from 'next/router'
@@ -28,15 +28,14 @@ const CheckoutButton = () => {
 	const cartDisabled = cart?.total_items === 0 ? true : false
 
 	return (
-		<PrimaryButton
+		<Button
 			fullWidth
 			loading={loading}
 			onClick={handleClick}
 			size="large"
-			disabled={cartDisabled}
 		>
 			Checkout {!cartDisabled && cart?.display_subtotal}
-		</PrimaryButton>
+		</Button>
 	)
 }
 

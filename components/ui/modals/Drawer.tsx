@@ -4,10 +4,9 @@ import {
 	Sheet,
 	SheetContent,
 	SheetHeader,
+  SheetFooter,
 	SheetTitle,
 } from '../../../shadcn/ui/sheet'
-import { Button } from '../../../shadcn/ui/button'
-import { Icon } from '../../../components'
 
 type DrawerProps = {
 	open: boolean
@@ -49,23 +48,22 @@ const Drawer: React.FC<DrawerProps> = ({
 					className
 				)}
 			>
-				<SheetHeader className="h-[50px]">
-					<SheetTitle className="text-sm font-normal text-muted-foreground">
+				<SheetHeader>
+					<SheetTitle>
 						{title}
 					</SheetTitle>
 				</SheetHeader>
 				<div
 					className={cn(
 						'flex-grow overflow-y-auto',
-						buttons ? 'pb-[60px]' : 'pb-4'
 					)}
 				>
 					{children}
 				</div>
 				{buttons && (
-					<div className="absolute bottom-0 left-0 w-full h-[60px] border-t bg-background flex items-center p-2">
+					<SheetFooter>
 						{buttons}
-					</div>
+          </SheetFooter>
 				)}
 			</SheetContent>
 		</Sheet>

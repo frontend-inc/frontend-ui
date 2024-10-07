@@ -1,5 +1,5 @@
 import React from 'react'
-import { List } from '@mui/material'
+import { List } from '../../../tailwind'
 import CartLineItem from './CartLineItem'
 import { Placeholder } from '../../../components'
 import { useCart } from '../../../hooks'
