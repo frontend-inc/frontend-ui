@@ -1,114 +1,52 @@
 import React from 'react'
-import { Stack, Box, Typography } from '@mui/material'
-import { Avatar, ButtonActions, ExpandableText, SocialLink } from '../..'
-import { ButtonType } from '../../../types'
+import { Image, Label, ExpandableText, SocialLink } from '../..'
+import { Typography } from '../../../tailwind'
+import { cn } from '../../../shadcn/lib/utils'
 
 export type ProfileProps = {
-	image?: string
-	label?: string
-	title?: string
-	description?: string
-	socialLinks?: {
-		provider: string
-		url: string
-	}[]
+  image: string
+  label?: string
+  title?: string
+  description?: string
+  socialLinks?: {
+    provider: string
+    url: string
+  }[]
 }
 
 const Profile: React.FC<ProfileProps> = (props) => {
-	const { label, title, image, description, socialLinks = [] } = props || {}
+  const { label, title, image, description, socialLinks = [] } = props || {}
 
-	return (
-		<Box sx={sx.container}>
-			<Stack
-				sx={sx.userContainer}
-				direction={{ sm: 'row', xs: 'column' }}
-				spacing={{ sm: 4, xs: 0 }}
-				alignItems="flex-start"
-			>
-				<Stack direction="column" spacing={1} width="100%" alignItems="center">
-					<Avatar src={image} size={120} enableGradient />
-					<Stack direction="row" spacing={0}>
-						{socialLinks?.map((link, index) => (
-							<Box p={'2px'} key={index}>
-								<SocialLink url={link.url} size={28} provider={link.provider} />
-							</Box>
-						))}
-					</Stack>
-				</Stack>
-				<Stack direction="column" spacing={1}>
-					<Typography variant="caption" color="text.secondary" sx={sx.username}>
-						{label}
-					</Typography>
-					<Typography variant="h6" color="text.primary" sx={sx.name}>
-						{title}
-					</Typography>
-					<Stack direction="column" spacing={1}>
-						{description && (
-							<ExpandableText text={description} color="text.secondary" />
-						)}
-					</Stack>
-				</Stack>
-			</Stack>
-		</Box>
-	)
+  return (
+    <div className="w-full flex flex-col items-center justify-center rounded">
+      <div className="w-full max-w-[600px] flex flex-col sm:flex-row items-start sm:space-x-4 space-y-4 sm:space-y-0">
+        <div className="flex flex-col items-center space-y-1">
+          <div className="h-[200px] w-[200px]">
+            <Image 
+              src={image} 
+              aspectRatio={1.0} 
+            />
+          </div>
+          <div className="flex flex-row">
+            {socialLinks?.map((link, index) => (
+              <div className="p-[2px]" key={index}>
+                <SocialLink url={link.url} size={28} provider={link.provider} />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col space-y-1 w-full sm:w-auto">
+          <Label label={label} />          
+          <Typography variant="h5">          
+            {title}
+          </Typography>          
+          {description && (
+            <ExpandableText text={description} />
+          )}          
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default Profile
-
-const sx = {
-	container: {
-		width: '100%',
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		justifyContent: 'center',
-		borderRadius: 1,
-	},
-	containerBorder: {
-		border: '1px solid',
-		borderColor: 'divider',
-	},
-	userContainer: {
-		maxWidth: 600,
-	},
-	button: {
-		boxShadow: 0,
-		color: 'text.secondary',
-	},
-	name: {
-		width: '100%',
-		minWidth: 200,
-		textAlign: {
-			sm: 'left',
-			xs: 'center',
-		},
-	},
-	avatar: {
-		width: 110,
-		height: 110,
-	},
-	avatarContainer: {
-		bgcolor: 'common.white',
-		height: 126,
-		width: 126,
-		borderRadius: '100%',
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-	username: {
-		boxShadow: 0,
-		width: '100%',
-		display: 'flex',
-		justifyContent: {
-			sm: 'flex-start',
-			xs: 'center',
-		},
-	},
-	buttons: {
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'flex-end',
-		alignItems: 'flex-start',
-	},
-}

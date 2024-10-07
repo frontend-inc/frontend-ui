@@ -58,11 +58,11 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>((p
           alt={primary}
           label={label}
           handleClick={handleClick}
-          className="object-cover w-full h-full"
+          disableBorderRadius          
           {...slots.image}
         />
       </div>
-      <CardContent className="p-4 w-full flex flex-col justify-between h-full">
+      <CardContent className="py-2 w-full flex flex-col justify-between h-full">
         <div className="h-full">
           <Typography variant="h6">{primary}</Typography>
           {secondary && (

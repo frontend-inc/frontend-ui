@@ -8,11 +8,12 @@ import { cn } from '../../../shadcn/lib/utils'
 interface ResponsiveImageProps {
   src: string
   alt: string
-  width: number
-  height: number
+  width?: number
+  height?: number
   aspectRatio?: number
   enableOverlay?: boolean
   enableGradient?: boolean
+  disableBorderRadius?: boolean
   className?: string
 }
 
@@ -20,10 +21,11 @@ export default function ResponsiveImage({
   src,
   alt,
   width=800,
-  height=600,
+  height=450,
   aspectRatio = 16 / 9,
   enableOverlay = false,
   enableGradient = false,
+  disableBorderRadius = false,
   className,
 }: ResponsiveImageProps) {
   const [isHovered, setIsHovered] = useState(false)
@@ -31,6 +33,8 @@ export default function ResponsiveImage({
   return (
     <div
       className={cn(
+        width && `w-[${width}px]`,
+        height && `h-[${height}px]`,
         "relative overflow-hidden",
         className
       )}
@@ -51,7 +55,10 @@ export default function ResponsiveImage({
           />
         ):(
           <div 
-            className={'rounded-lg h-full w-full bg-gradient-to-br from-black to-gray-600'} 
+            className={cn(
+              !disableBorderRadius && 'rounded-lg',
+              'h-full w-full bg-gradient-to-br from-black to-gray-600'
+            )} 
           />
         )}
       </AspectRatio>
