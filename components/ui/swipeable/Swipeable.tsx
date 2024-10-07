@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import SwipeableViews from 'react-swipeable-views'
 import { Icon } from '../..'
 import { autoPlay } from 'react-swipeable-views-utils'
-import { Box, IconButton } from '../../../tailwind'
+import { IconButton } from '../../../tailwind'
 import { cn } from "../../../shadcn/lib/utils"
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
@@ -51,7 +51,7 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
     : SwipeableViews
 
   return (
-    <Box className={cn("w-full relative", className)}>
+    <div className={cn("w-full relative", className)}>
       <SwipeableComponent
         axis={'x'}
         index={activeStep}
@@ -62,16 +62,16 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
         {children}
       </SwipeableComponent>
       {enableArrows && (
-        <Box className="absolute top-1/2 transform -translate-y-1/2 flex justify-between w-full z-10">
+        <div className="absolute top-1/2 transform -translate-y-1/2 flex justify-between w-full z-10">
           <IconButton color='ghost' onClick={handlePrev} className="ml-2">
             <Icon name="ChevronLeft" size={32} />
           </IconButton>
           <IconButton color='ghost' onClick={handleNext} className="mr-2">
             <Icon name="ChevronRight" size={32} />
           </IconButton>
-        </Box>
+        </div>
       )}
-    </Box>
+    </div>
   )
 }
 

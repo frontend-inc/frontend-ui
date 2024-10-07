@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { AspectRatio } from '../../../shadcn/ui/aspect-ratio'
 import { cn } from '../../../shadcn/lib/utils'
 
-interface CustomImageProps {
+interface ResponsiveImageProps {
   src: string
   alt: string
   width: number
@@ -16,7 +16,7 @@ interface CustomImageProps {
   className?: string
 }
 
-export default function CustomImage({
+export default function ResponsiveImage({
   src,
   alt,
   width=800,
@@ -25,7 +25,7 @@ export default function CustomImage({
   enableOverlay = false,
   enableGradient = false,
   className,
-}: CustomImageProps) {
+}: ResponsiveImageProps) {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
