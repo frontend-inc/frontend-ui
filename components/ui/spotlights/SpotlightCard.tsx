@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Stack, Typography } from '../../../tailwind'
+import { Container, Typography } from '../../../tailwind'
 import { Label, Image, BrandLogos } from '../..'
 import { SpotlightListProps } from './SpotlightList'
 
@@ -20,11 +20,10 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
   return (
     <div className={'pt-16 py-6 h-auto w-full'}>
       <Container maxWidth="xl">
-        <Stack
-          direction={'row'}
-          spacing={6}
+        <div
+          className='flex flex-col sm:flex-row sm:space-x-10 space-y-4'
         >
-          <Stack spacing={4} className="sm:min-h-[400px] md:items-start xs:items-center justify-center md:max-w-[600px] xs:max-w-full md:w-1/2 xs:w-full">
+          <div className="flex flex-col space-y-6 sm:min-h-[400px] md:items-start xs:items-center justify-center md:max-w-[600px] xs:max-w-full md:w-1/2 xs:w-full">
             {label && (
               <div>
                 <Label label={label} />
@@ -40,7 +39,7 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
             {secondary && secondary}
             {actions && actions}
             {logos?.length > 0 && <BrandLogos logos={logos} />}
-          </Stack>
+          </div>
           <div className="md:w-1/2 w-full">
             <Image
               src={image}
@@ -50,7 +49,7 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
               {...slots.image}
             />
           </div>
-        </Stack>
+        </div>
       </Container>
     </div>
   )

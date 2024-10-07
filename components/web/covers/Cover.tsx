@@ -53,7 +53,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 	}
 
 	return (
-		<Box className="dark relative">
+		<Box className="dark relative w-full">
 			<Image
 				disableBorderRadius
 				src={image}

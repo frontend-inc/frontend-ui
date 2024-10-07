@@ -1,77 +1,57 @@
 import React from 'react'
-import { Avatar, Box } from '@mui/material'
+import { cn } from '../../../shadcn/lib/utils'
 
 export type AvatarImageProps = {
-	image: string
-	alt: string
-	height?: number
-	enableGradient?: boolean
-	enableOverlay?: boolean
-	slots?: {
-		image?: any
-	}
+  image: string
+  alt: string
+  height?: number
+  enableGradient?: boolean
+  enableOverlay?: boolean
+  slots?: {
+    image?: any
+  }
 }
 
 const AvatarImage: React.FC<AvatarImageProps> = (props) => {
-	const {
-		image,
-		alt,
-		height = 64,
-		enableGradient = false,
-		enableOverlay = false,
-		slots = {
-			image: {},
-		},
-	} = props
+  const {
+    image,
+    alt,
+    height = 64,
+    enableGradient = false,
+    enableOverlay = false,
+    slots = {
+      image: {},
+    },
+  } = props
 
-	return (
-		<Avatar
-			sx={{
-				...sx.avatar,
-				...(enableGradient && sx.gradient),
-				...(enableOverlay && sx.overlay),
-				height: `${height}px`,
-				width: `${height}px`,
-			}}
-			src={image}
-			alt={alt}
-			{...slots.image}
-		>
-			<Box />
-		</Avatar>
-	)
+  return (
+    <div
+      className={cn(
+        "relative h-[200px] rounded-full overflow-hidden",
+        `h-[${height}px] w-[${height}px]`
+      )}
+      {...slots.image}
+    >
+      { image ? (
+      <img
+        src={image}
+        alt={alt}
+        className="w-full h-full object-cover"
+      />
+      ):(
+        <div
+          className={`rounded-full bg-gradient-to-br from-black to-gray-600`}
+          style={{ width: `${height}px`, height: `${height}px` }}
+        ></div>
+      )}
+      {enableGradient && (
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-full" />
+      )}
+      {enableOverlay && (
+        <div className="absolute inset-0 bg-black/50 rounded-full" />
+      )}
+    </div>
+  )
 }
 
 export default AvatarImage
-
-const sx = {
-	avatar: {
-		height: '64px',
-		width: '64px',
-		backgroundImage: 'linear-gradient(45deg, #888888, #222222,#000000)',
-	},
-	gradient: {
-		'&::after': {
-			content: '""',
-			borderRadius: '50%',
-			position: 'absolute',
-			bottom: 0,
-			left: 0,
-			width: '100%',
-			height: '100%',
-			background: 'linear-gradient(to top, rgb(0,0,0,0.5), transparent)',
-		},
-	},
-	overlay: {
-		'&::after': {
-			content: '""',
-			borderRadius: '50%',
-			position: 'absolute',
-			bottom: 0,
-			left: 0,
-			width: '100%',
-			height: '100%',
-			background: 'rgb(0,0,0,0.5)',
-		},
-	},
-}

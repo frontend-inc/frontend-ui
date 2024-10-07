@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Box, Typography } from '@mui/material'
+import { Container, Stack, Box, Typography } from '../../../tailwind'
 import { Image } from '../..'
 import { HeroCardProps } from './HeroCard'
 
@@ -18,12 +18,13 @@ const HeroList: React.FC<HeroCardProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Stack sx={sx.root} spacing={4}>
+    <Container maxWidth="lg">
+		<Stack className="w-full justify-start items-center space-y-4">
 			{secondaryAction}
 			<Typography color="text.primary" variant="h3">
 				{primary}
 			</Typography>
-			<Box sx={sx.imageContainer}>
+			<div className="w-full rounded">
 				<Image
 					src={image}
 					alt={primary}
@@ -31,55 +32,13 @@ const HeroList: React.FC<HeroCardProps> = (props) => {
 					label={label}
 					{...slots.image}
 				/>
-			</Box>
+			</div>
 			{actions}
-			<Box sx={sx.content}>{secondary}</Box>
+			<div className="w-full max-w-[500px] sm:max-w-full">{secondary}</div>
 			{children}
 		</Stack>
+    </Container>
 	)
 }
 
 export default HeroList
-
-const sx = {
-	root: {
-		width: '100%',
-		justifyContent: 'flex-start',
-		alignItems: 'center',
-	},
-	rootBorder: {
-		border: '1px solid',
-		borderColor: 'divider',
-		pb: 2,
-	},
-	header: {
-		maxWidth: 500,
-		width: '100%',
-		textAlign: 'center',
-	},
-	content: {
-		width: '100%',
-		maxWidth: {
-			sm: 500,
-			xs: '100%',
-		},
-	},
-	text: {
-		width: '100%',
-		whiteSpace: 'pre-line',
-	},
-	caption: {
-		color: 'text.secondary',
-	},
-	buttons: {
-		justifyContent: 'center',
-		width: {
-			sm: 'auto',
-			xs: '100%',
-		},
-	},
-	imageContainer: {
-		width: '100%',
-		borderRadius: 1,
-	},
-}

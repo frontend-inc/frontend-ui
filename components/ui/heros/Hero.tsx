@@ -6,7 +6,7 @@ import {
 	HeroList,
 	ButtonActions,
 } from '../../../components'
-import { Typography } from '@mui/material'
+import { Typography } from '../../../tailwind'
 import { ButtonType } from '../../../types'
 
 export type HeroProps = {

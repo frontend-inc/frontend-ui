@@ -16,7 +16,7 @@ const UIHero: React.FC<UIHeroProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			bgColor={fullWidth ? '#000000' : bgColor}
+			bgColor={bgColor}
 			py={fullWidth ? 0 : py}
 			px={fullWidth ? 0 : px}
 			maxWidth={maxWidth}

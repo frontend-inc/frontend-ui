@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Typography } from '@mui/material'
+import { Stack, Typography } from '../../../tailwind'
 import { Container, Heading } from '../..'
 import { TypographyVariantsType } from '../../../types'
 
@@ -25,7 +25,7 @@ const Text: React.FC<TextProps> = (props) => {
 
 	return (
 		<Container maxWidth="md">
-			<Stack spacing={2} direction="column" sx={sx.container}>
+			<Stack spacing={2} direction="column" >
 				<Heading
 					label={label}
 					title={title}
@@ -33,11 +33,11 @@ const Text: React.FC<TextProps> = (props) => {
 					textVariant={textVariant}
 				/>
 				{html ? (
-					<Typography variant="body1" color="text.primary" sx={sx.text}>
+					<Typography variant="body1">
 						<div dangerouslySetInnerHTML={{ __html: description }} />
 					</Typography>
 				) : (
-					<Typography variant="body1" color="text.primary" sx={sx.text}>
+					<Typography variant="body1">
 						{description}
 					</Typography>
 				)}
@@ -48,16 +48,3 @@ const Text: React.FC<TextProps> = (props) => {
 
 export default Text
 
-const sx = {
-	container: {
-		px: {
-			md: 12,
-			sm: 8,
-			xs: 0,
-		},
-	},
-	text: {
-		whiteSpace: 'pre-wrap',
-		textAlign: 'justify',
-	},
-}

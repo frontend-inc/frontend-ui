@@ -1,183 +1,66 @@
-import React from 'react'
-import { Label, NoImage, Icon, TouchableOpacity } from '../../../components'
-import { Fade, Box, IconButton, useTheme } from '@mui/material'
-import { truncate } from '../../../helpers'
-import NextImage from 'next/image'
+'use client'
 
-export type ImageProps = {
-	src?: string
-	height: number
-	width?: number
-	objectFit?: 'cover' | 'contain'
-	label?: string
-	alt?: string
-	bgcolor?: string
-	opacity?: number
-	enableDelete?: boolean
-	enableGradient?: boolean
-	enableOverlay?: boolean
-	disableBorder?: boolean
-	disableBorderRadius?: boolean
-	handleClick?: () => void
-	handleDelete?: () => void
+import { useState } from 'react'
+import Image from 'next/image'
+import { AspectRatio } from '../../../shadcn/ui/aspect-ratio'
+import { cn } from '../../../shadcn/lib/utils'
+
+interface CustomImageProps {
+  src: string
+  alt: string
+  width: number
+  height: number
+  aspectRatio?: number
+  enableOverlay?: boolean
+  enableGradient?: boolean
+  className?: string
 }
 
-const Image: React.FC<ImageProps> = (props) => {
-	const {
-		src = null,
-		height,
-		width,
-		objectFit = 'cover',
-		alt = 'image',
-		label,
-		bgcolor = '#000000',
-		opacity = 0.5,
-		enableOverlay = false,
-		enableGradient = false,
-		disableBorder = false,
-		disableBorderRadius = false,
-		enableDelete = false,
-		handleClick,
-		handleDelete,
-	} = props
+export default function CustomImage({
+  src,
+  alt,
+  width=800,
+  height=600,
+  aspectRatio = 16 / 9,
+  enableOverlay = false,
+  enableGradient = false,
+  className,
+}: CustomImageProps) {
+  const [isHovered, setIsHovered] = useState(false)
 
-	const theme = useTheme()
-
-	return (
-		<Fade in timeout={350}>
-			<Box
-				sx={{
-					position: 'relative',
-          width: "100%",
-					maxWidth: { 
-            sm: width ? `${width}px` : '100%',
-            xs: '100%'
-          },
-					height: objectFit == 'cover' ? `${height}px` : 'auto',
-				}}
-			>
-				<TouchableOpacity
-					disableBorderRadius={disableBorderRadius}
-					handleClick={handleClick ? handleClick : undefined}
-				>
-					<Box
-						sx={{
-							...sx.root,
-							height: objectFit == 'cover' ? `${height}px` : 'auto',
-							minWidth: width ? `${width}px` : '100%',
-							...(!disableBorderRadius && sx.borderRadius),
-							'&::after': {
-								...sx.afterBase,
-								...(enableOverlay && sx.overlay),
-								...(!enableOverlay && enableGradient && sx.gradient),
-								...(!disableBorderRadius && sx.borderRadius),
-								...(!enableOverlay &&
-									!disableBorderRadius &&
-									enableGradient &&
-									sx.borderRadius),
-								bgcolor,
-								opacity,
-							},
-						}}
-					>
-						{src ? (
-							<NextImage
-								src={src}
-								alt={alt}
-								height={1200}
-								width={1200}
-								layout="responsive"
-								style={{
-									height: objectFit == 'cover' ? `${height}px` : 'auto',
-									minHeight: objectFit == 'cover' ? `${height}px` : 'auto',
-									width: width ? `min(${width}px, 100vw)` : '100%',
-									objectFit,
-									borderRadius: !disableBorderRadius
-										? `${theme.shape.borderRadius}px`
-										: '0px',
-								}}
-							/>
-						) : (
-							<NoImage
-								height={height}
-								width={width}
-								disableBorder={disableBorder}
-								disableBorderRadius={disableBorderRadius}
-							/>
-						)}
-					</Box>
-				</TouchableOpacity>
-				{label && (
-					<Box sx={sx.label}>
-						<Label darkMode label={truncate(label, 22)} />
-					</Box>
-				)}
-				{enableDelete && (
-					<IconButton size="small" onClick={handleDelete} sx={sx.deleteButton}>
-						<Icon name="X" />
-					</IconButton>
-				)}
-			</Box>
-		</Fade>
-	)
-}
-
-export default Image
-
-const sx = {
-	root: {
-		cursor: 'pointer',
-		position: 'relative',
-		width: '100%',
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-		overflow: 'hidden',
-	},
-	label: {
-		position: 'absolute',
-		left: 15,
-		top: 15,
-	},
-	labelBottom: {
-		position: 'absolute',
-		left: 15,
-		bottom: 15,
-	},
-	borderRadius: {
-		borderRadius: 1,
-	},
-	afterBase: {
-		content: '""',
-		position: 'absolute',
-		bottom: 0,
-		left: 0,
-		width: '100%',
-		bgcolor: 'transparent',
-		opacity: 0,
-	},
-	overlay: {
-		height: '100%',
-	},
-	gradient: {
-		height: '100%',
-		background:
-			'linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%)',
-	},
-	secondaryActions: {
-		position: 'absolute',
-		right: 15,
-		top: 10,
-	},
-	deleteButton: {
-		position: 'absolute',
-		top: 2,
-		right: 2,
-		bgcolor: 'background.default',
-		opacity: 0.5,
-		'&:hover': {
-			bgcolor: 'background.default',
-			opacity: 1,
-		},
-	},
+  return (
+    <div
+      className={cn(
+        "relative overflow-hidden",
+        className
+      )}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <AspectRatio ratio={aspectRatio}>
+        { src ? (
+        <Image
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          className={cn(
+            "object-cover w-full h-full transition-transform duration-3000 ease-in-out",
+            isHovered && "scale-110"
+          )}
+        />
+        ):(
+          <div 
+            className={'rounded-lg h-full w-full bg-gradient-to-br from-black to-gray-600'} 
+          />
+        )}
+      </AspectRatio>
+      {enableOverlay && (
+        <div className="absolute inset-0 bg-black bg-opacity-40" />
+      )}
+      {enableGradient && (
+        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" />
+      )}
+    </div>
+  )
 }

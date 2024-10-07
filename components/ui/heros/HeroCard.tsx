@@ -1,137 +1,68 @@
 import React from 'react'
-import { Box, Stack, Typography } from '@mui/material'
+import { cn } from '../../../shadcn/lib/utils'
 import { Image } from '../..'
 
 export type HeroCardProps = {
-	label?: string
-	image?: string
-	primary?: string | React.ReactNode
-	secondary?: React.ReactNode
-	actions?: React.ReactNode
-	secondaryAction?: React.ReactNode
-	children?: React.ReactNode
-	slots?: {
-		image?: any
-		content?: any
-	}
+  label?: string
+  image?: string
+  primary?: string | React.ReactNode
+  secondary?: React.ReactNode
+  actions?: React.ReactNode
+  secondaryAction?: React.ReactNode
+  children?: React.ReactNode
+  slots?: {
+    image?: any
+    content?: any
+  }
 }
 
 const HeroCard: React.FC<HeroCardProps> = (props) => {
-	const {
-		label,
-		image,
-		primary,
-		secondary,
-		actions,
-		secondaryAction,
-		slots = {
-			image: {},
-			content: {},
-		},
-	} = props || {}
+  const {
+    label,
+    image,
+    primary,
+    secondary,
+    actions,
+    secondaryAction,
+    slots = {
+      image: {},
+      content: {},
+    },
+  } = props || {}
 
-	return (
-		<Stack spacing={2}>
-			{secondaryAction}
-			<Box sx={sx.root}>
-				<Stack
-					sx={sx.container}
-					direction={{
-						md: 'row',
-						xs: 'column',
-					}}
-					spacing={4}
-				>
-					<Stack spacing={2} direction="column" sx={sx.leftPanel}>
-						<Box sx={sx.imageContainer}>
-							<Image
-								src={image}
-								alt={primary}
-								height={400}
-								label={label}
-								{...slots.image}
-							/>
-						</Box>
-						{actions}
-					</Stack>
-					<Stack spacing={2} sx={sx.content} {...slots.content}>
-						<Typography color="text.primary" variant="h4">
-							{primary}
-						</Typography>
-						{secondary}
-					</Stack>
-				</Stack>
-			</Box>
-		</Stack>
-	)
+  return (
+    <div className="flex flex-col space-y-2">
+      {secondaryAction}
+      <div className="w-full flex justify-center items-center">
+        <div className="w-full flex flex-col md:flex-row gap-4 md:space-y-0 md:space-x-4 justify-start items-center md:items-start">
+          <div className="w-full md:w-1/2 flex flex-col gap-2">
+            <div className="w-full min-w-full sm:min-w-[420px] transition-all duration-500 ease-in-out rounded">
+              <Image
+                src={image}
+                alt={typeof primary === 'string' ? primary : 'Hero image'}
+                height={400}
+                label={label}
+                {...slots.image}
+              />
+            </div>
+            {actions}
+          </div>
+          <div 
+            className={cn(
+              "w-full md:w-1/2 max-w-full md:max-w-[500px] flex flex-col space-y-2",
+              slots.content.className
+            )}
+            {...slots.content}
+          >
+            <h4 className="text-primary text-2xl font-bold">
+              {primary}
+            </h4>
+            {secondary}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default HeroCard
-
-const sx = {
-	root: {
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	rootBorder: {
-		overflow: 'hidden',
-		borderRadius: 1,
-		border: '1px solid',
-		borderColor: 'divider',
-	},
-	container: {
-		width: '100%',
-		justifyContent: 'flex-start',
-		alignItems: {
-			md: 'flex-start',
-			xs: 'center',
-		},
-	},
-	image: {
-		height: {
-			sm: 256,
-			xs: 180,
-		},
-		width: {
-			sm: 256,
-			xs: 180,
-		},
-	},
-	header: {
-		width: '100%',
-		textAlign: 'center',
-	},
-	content: {
-		width: '100%',
-		maxWidth: {
-			sm: 500,
-			xs: '100%',
-		},
-	},
-	contentBorder: {
-		p: 2,
-	},
-	caption: {
-		color: 'text.secondary',
-	},
-	buttons: {
-		width: '100%',
-	},
-	imageContainer: {
-		transition: 'all 0.5s ease-in-out',
-		borderRadius: 1,
-		width: '100%',
-		minWidth: {
-			sm: 420,
-			xs: '100%',
-		},
-	},
-	leftPanel: {
-		width: '100%',
-	},
-	leftPanelBorder: {
-		pb: 2,
-	},
-}

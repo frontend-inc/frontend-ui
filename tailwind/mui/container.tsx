@@ -31,8 +31,7 @@ function Container({
         'w-full mx-auto',
         maxWidthClasses[maxWidth],
         !disableGutters && 'px-4 sm:px-6 md:px-8',
-        fixed && 'fixed left-0 right-0',
-        'bg-background text-foreground',
+        fixed && 'fixed left-0 right-0',        
         className
       )}
       {...props}

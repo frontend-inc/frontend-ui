@@ -35,10 +35,10 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
   } = props || {}
 
   return (
-    <Box className={'h-auto w-full'}>
+    <div className='h-auto w-full'>
       <Container maxWidth="md">
-        <Stack className="px-2 w-full justify-start items-center" spacing={10}>
-          <Stack spacing={10} alignItems='center' className="max-w-[600px] h-full w-full text-center">
+        <div className="flex flex-col space-y-3 px-2 w-full justify-start items-center">
+          <div className="flex flex-col space-y-5 max-w-[600px] h-full w-full text-center">
             {label && (
               <Box className='w-full flex justify-center'>
                 <Label label={label} />
@@ -50,8 +50,8 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
             {secondary && secondary}
             {actions && actions}
             {logos?.length > 0 && <BrandLogos logos={logos} />}
-          </Stack>
-          <Box className="w-full overflow-hidden rounded-md max-h-[640px] flex items-center justify-center">
+          </div>
+          <div className="w-full overflow-hidden rounded-md max-h-[640px] flex items-center justify-center">
             <Image
               disableBorderRadius
               src={image}
@@ -60,10 +60,10 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
               objectFit="contain"
               {...slots.image}
             />
-          </Box>
-        </Stack>
+          </div>
+        </div>
       </Container>
-    </Box>
+    </div>
   )
 }
 
