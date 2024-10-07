@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { InputBase } from '@mui/material'
-import { Box, Stack, TextField } from '../../../tailwind'
+import { Box, Stack, InputBase } from '@mui/material'
 import { InputLabel, ErrorText } from '../../../components'
 import { sx } from './helpers/styles'
 import { useError } from '../../../hooks'
@@ -8,26 +7,32 @@ import { TextInputPropsType } from '../../../types'
 import { useDebounce } from 'use-debounce'
 
 type TextInputProps = TextInputPropsType & {
+	onBlur?: () => void
+	onFocus?: () => void
 	debounceDelay?: number
 	disableDebounce?: boolean
 	fontSize?: number
-  fullWidth?: boolean
-  className?: string
 }
 
 const TextInput: React.FC<TextInputProps> = (props) => {
 	const {
 		label,
-		type='text',
+		type,
 		name,
+		margin,
 		value = '',
 		multiline,
 		handleChange,
 		rows,
 		placeholder,
+		disabled,
 		errors,
-    fullWidth = false,
-    className,
+		direction = 'column',
+		styles = {},
+		onBlur,
+		onFocus,
+		info,
+		fontSize,
 		debounceDelay = 350,
 		disableDebounce = false,
 	} = props
@@ -64,22 +69,46 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 	}, [value])
 
 	return (
-		<Box>
-      <TextField 
-        type={type}
-        label={label}
-        helperText={error}
-        error={error ? true : false}
-        fullWidth={fullWidth}
-        id={name}
-        name={name}
-        value={text}
-        onChange={handleInputChange}
-        placeholder={placeholder}
-        className={ className }
-      />
-			<ErrorText error={error} />
-			</Box>
+		<>
+			<Stack
+				sx={{
+					...sx.stack,
+					...(direction == 'row' && !multiline && sx.stackVertical),
+				}}
+				direction={direction}
+				spacing={0.5}
+			>
+				<InputLabel label={label} info={info} />
+				<Box sx={sx.inputContainer}>
+					<InputBase
+						rows={rows}
+						error={error ? true : false}
+						sx={{
+							...sx.inputBase,
+							...((error && sx.inputError) || {}),
+							...styles,
+							'& input, & .MuiInputBase-inputMultiline': {
+								...sx.inputBase['& input, & .MuiInputBase-inputMultiline'],
+								fontSize,
+							},
+						}}
+						multiline={multiline}
+						autoComplete="off"
+						fullWidth
+						type={type}
+						name={name}
+						margin={margin}
+						disabled={disabled}
+						placeholder={placeholder}
+						onChange={handleInputChange}
+						value={text}
+						onBlur={onBlur && onBlur}
+						onFocus={onFocus && onFocus}
+					/>
+					<ErrorText error={error} />
+				</Box>
+			</Stack>
+		</>
 	)
 }
 
