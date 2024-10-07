@@ -39,16 +39,16 @@ export default function ResponsiveImage({
     >
       <AspectRatio ratio={aspectRatio}>
         { src ? (
-        <Image
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          className={cn(
-            "object-cover w-full h-full transition-transform duration-3000 ease-in-out",
-            isHovered && "scale-110"
-          )}
-        />
+          <Image
+            src={src}
+            alt={alt}
+            width={width}
+            height={height}
+            className={cn(
+              "object-cover w-full h-full transition-transform duration-3000 ease-in-out",
+              isHovered && "scale-110"
+            )}
+          />
         ):(
           <div 
             className={'rounded-lg h-full w-full bg-gradient-to-br from-black to-gray-600'} 

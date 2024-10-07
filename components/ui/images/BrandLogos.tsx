@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Box, Typography } from '@mui/material'
+import { Stack, Box } from '@mui/material'
 import Image from 'next/image'
 
 type BrandLogosProps = {
@@ -15,14 +15,11 @@ const BrandLogos: React.FC<BrandLogosProps> = (props) => {
 	const { logos = [], height = 48, width = 128 } = props || {}
 
 	return (
-		<Stack direction="row" spacing={3} sx={sx.logos}>
+    <div className='mx-auto px-4'>
+		<div className={'flex flex-wrap w-full justify-center items-center gap-4 sm:flex-nowrap'}>
 			{logos.map((logo, i) => (
-				<Box
-					sx={{
-						...sx.logo,
-						height,
-						maxWidth: width,
-					}}
+				<div					
+          className={'p-4 max-h-[50px] max-w-[140px] rounded-lg w-full flex items-center justify-center'}
 				>
 					<Image            
 						key={i}
@@ -37,9 +34,10 @@ const BrandLogos: React.FC<BrandLogosProps> = (props) => {
 						layout="responsive"
 						alt={logo?.title}
 					/>
-				</Box>
+				</div>
 			))}
-		</Stack>
+		</div>
+    </div>
 	)
 }
 
