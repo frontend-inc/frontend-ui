@@ -18,60 +18,59 @@ import { AppContext } from '../../../context'
 import { formatCurrency } from 'frontend-shopify'
 
 type PriceCardProps = {
-	price: PriceType
+	label?: string
+  title: string
+  description?: string
+  features?: string[]
+  price: string
+  buttonText?: string
+  url?: string
 }
 
 const PriceCard: React.FC<PriceCardProps> = (props) => {
 	const router = useRouter()
 	const { setAuthOpen } = useContext(AppContext) as any
-	const { price } = props
-	const { currentUser } = useAuth()
+	const { label, title, description, features, buttonText, price, url  } = props
 
-	const handleClick = () => {
-		if (!currentUser) {
-			setAuthOpen(true)
-			return
-		}
-		if (price.url) {
-			router.push(price.url)
+	const handleClick = () => {		
+		if (url) {
+			router.push(url)
 		}
 	}
 
 	return (
 		<Box className="w-full border border-divider rounded p-2 flex flex-col justify-between">
 			<Stack className="min-h-[300px]" direction="column" spacing={1}>
-				{price?.label && (
+				{label && (
 					<Box>
-						<Label label={price.label} />
+						<Label label={label} />
 					</Box>
 				)}
-				<Typography variant="body1" className="text-secondary">
-					{price.title}
+				<Typography variant="body1">
+					{title}
 				</Typography>
-				<Typography variant="h5" className="text-primary">
-					{formatCurrency(price.price, 0)}
+				<Typography variant="h5">
+					{price}
 				</Typography>
 				<Divider />
 				<List>
-					{price?.features?.map((feature, i) => (
+					{features?.map((feature, i) => (
 						<ListItem key={i}>
 							<ListItemText
-								primary={
-									<Typography variant="body1" className="text-primary">
-										{feature}
-									</Typography>
-								}
+								primary={feature}
 							/>
 						</ListItem>
 					))}
 				</List>
 			</Stack>
+      { buttonText && (
 			<Button
 				onClick={handleClick}
 				variant="contained"
 			>
-				{price.buttonText}
+				{buttonText}
 			</Button>
+      )}
 		</Box>
 	)
 }

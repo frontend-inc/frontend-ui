@@ -34,7 +34,6 @@ const FormField: React.FC<FormFieldProps> = (props) => {
 		placeholder,
 		variant,
 		options,
-		url,
 		displayField,
 		valueParam,
 	} = field
@@ -54,8 +53,6 @@ const FormField: React.FC<FormFieldProps> = (props) => {
 			handleRemoveAttachment={handleRemoveAttachment}
 			displayField={displayField}
 			valueParam={valueParam}
-			// Reference props
-			url={url}
 			inputOptions={inputOptions}
 			inputParams={inputParams}
 		/>

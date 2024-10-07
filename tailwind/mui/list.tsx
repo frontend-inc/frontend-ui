@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react"
+import { Typography } from "./typography"
 import { cn } from "../../shadcn/lib/utils"
 
 // List Component
@@ -44,10 +45,10 @@ const ListItemText = forwardRef<
     {...props}
   >
     {primary && (
-      <span className="text-sm font-medium leading-none">{primary}</span>
+      <Typography variant="body1">{primary}</Typography>      
     )}
     {secondary && (
-      <span className="text-xs text-muted-foreground mt-1">{secondary}</span>
+      <Typography variant="body2">{secondary}</Typography>            
     )}
   </div>
 ))
