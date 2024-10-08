@@ -21,6 +21,7 @@ type ShopifyProductCardProps = {
   enableQuantity?: boolean
   enableQuickShop?: boolean
   enableOkendoStarRating?: boolean
+  disableBorder?: boolean
   buttonVariant?: 'contained' | 'outlined' | 'text'
 }
 
@@ -35,6 +36,7 @@ export default function ShopifyProductCard({
   enableOkendoStarRating = false,
   buttonVariant = 'contained',
   buttonText,
+  disableBorder=false
 }: ShopifyProductCardProps) {
   const [open, setOpen] = useState(false)
   const { setSearchOpen } = useContext(ShopifyContext) as any
@@ -52,7 +54,12 @@ export default function ShopifyProductCard({
   }
 
   return (
-    <Card className={'rounded-lg overflow-hidden'}>
+    <div 
+				className={cn(
+          !disableBorder && 'border border-border hover:shadow-md',
+					'w-full overflow-hidden rounded-lg transition-shadow duration-300 bg-background',          
+				)}				
+			>
       <SwipeableShopifyProductImages
         product={product}
         height={height}
@@ -100,6 +107,6 @@ export default function ShopifyProductCard({
         enableQuantity={enableQuantity}
         buttonText={buttonText}
       />
-    </Card>
+    </div>
   )
 }

@@ -15,12 +15,13 @@ const LucideIcon: React.FC<LucideIconProps> = ({
 	className,
 	size = 20,
 }) => {
+
 	const Icon = icons[name]
 	if (!Icon) return null
 
 	return (
 		//@ts-ignore
-		<Icon className={cn(color, className)} size={size} />
+		<Icon className={cn(color, className, 'w-5 h-5')} size={size} />
 	)
 }
 
