@@ -1,14 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react'
-import { Icon, SearchInput, Placeholder } from '../../../components'
+import { SearchInput, Placeholder } from '../../../components'
 import { ShopifyProducts } from '../../../components/shopify'
-import {
-	AppBar,
-	Stack,
-	SwipeableDrawer,
-	Container,
-	Box,
-	IconButton,
-} from '@mui/material'
+import { Drawer } from '../../../tailwind'
 import { ShopifyContext } from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
@@ -27,7 +20,6 @@ const ShopifySearchModal: React.FC<ShopifySearchModalProps> = (props) => {
 		ShopifyContext
 	) as any
 
-	const [expanded, setExpanded] = useState(false)
 	const [keywords, setKeywords] = useState('')
 
 	const { loading, products, setProducts, searchProducts } = useProducts()
@@ -40,8 +32,7 @@ const ShopifySearchModal: React.FC<ShopifySearchModalProps> = (props) => {
 		handleClear()
 		setMenuOpen(false)
 		setSearchOpen(false)
-		setProducts(null)
-		setExpanded(false)
+		setProducts(null)		
 	}
 
 	const handleClear = () => setKeywords('')
@@ -49,8 +40,7 @@ const ShopifySearchModal: React.FC<ShopifySearchModalProps> = (props) => {
 	const handleSearch = (keywords) => {
 		if (keywords?.length >= MIN_ANALYTICS_CHARS) {
 			trackProductsSearched(keywords)
-		}
-		setExpanded(true)
+		}		
 		searchProducts({ query: keywords })
 	}
 
@@ -59,64 +49,37 @@ const ShopifySearchModal: React.FC<ShopifySearchModalProps> = (props) => {
 			handleSearch(keywords)
 		} else {
 			setProducts(null)
-			setExpanded(false)
 		}
 	}, [keywords])
 
 	return (
-		<SwipeableDrawer
-			onOpen={() => null}
+		<Drawer
 			open={searchOpen}
-			anchor="top"
-			onClose={handleClose}
-			PaperProps={{ sx: sx.paper }}
+      onClose={handleClose}
+			anchor="top"						
 		>
-			<Box
-				sx={{
-					...sx.container,
-					...(expanded && sx.expandedModal),
-				}}
-			>
-				<AppBar elevation={0} position="sticky" color="transparent">
-					<Stack sx={sx.searchContainer} direction="row" spacing={1}>
-						<Box sx={sx.spacer}></Box>
-						<Box sx={sx.searchInput}>
-							<SearchInput
-								name="keywords"
-								value={keywords}
-								handleChange={handleChange}
-								handleSearch={handleSearch}
-								placeholder={'Search...'}
-							/>
-						</Box>
-						<Box sx={sx.spacer}>
-							<IconButton onClick={handleClose}>
-								<Icon name="X" size={24} />
-							</IconButton>
-						</Box>
-					</Stack>
-				</AppBar>
-				<Container maxWidth="md">
-					<ShopifyProducts
-						href={href}
-						loading={loading}
-						products={products}
-						xs={12}
-						sm={12}
-						md={6}
-						lg={6}
-						xl={6}
-					/>
-					{keywords?.length > 0 && !loading && products?.length == 0 && (
-						<Placeholder
-							icon={'search'}
-							title="No search results"
-							description="Try another search term"
-						/>
-					)}
-				</Container>
-			</Box>
-		</SwipeableDrawer>
+      <div className='w-full flex flex-row justify-center'>
+        <SearchInput
+          name="keywords"
+          value={keywords}
+          handleChange={handleChange}
+          handleSearch={handleSearch}
+          placeholder={'Search...'}
+        />
+      </div>
+      <ShopifyProducts
+        href={href}
+        loading={loading}
+        products={products}
+      />
+      {keywords?.length > 0 && !loading && products?.length == 0 && (
+        <Placeholder
+          icon={'search'}
+          title="No search results"
+          description="Try another search term"
+        />
+      )}
+		</Drawer>
 	)
 }
 

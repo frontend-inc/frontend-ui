@@ -4,6 +4,7 @@ import { truncate } from '../../../helpers'
 import { ShopifyProductType } from 'frontend-shopify'
 import { ShopifyContext } from 'frontend-shopify'
 import { formatCurrency } from 'frontend-shopify'
+import { Card, CardContent } from '../../../shadcn/ui/card'
 import SwipeableShopifyProductImages from './images/SwipeableShopifyProductImages'
 import { ShopifyProductModal, ShopifyAddToCartButton } from '..'
 import { OkendoStarRating } from '../../addons'
@@ -51,20 +52,15 @@ export default function ShopifyProductCard({
   }
 
   return (
-    <div className={cn(
-      "flex flex-col overflow-hidden rounded",
-      enableBorder && "border border-divider"
-    )}>
+    <Card>
       <SwipeableShopifyProductImages
         product={product}
         height={height}
         handleClick={handleItemClick}
         disableBorderRadius={enableBorder}
       />
-      <div className="p-4 pt-0 space-y-4">
-        <div className={cn(
-          "flex flex-col py-1",
-        )}>
+      <CardContent>
+        <div className="flex flex-col py-1">
           <Typography color="text.primary" variant="subtitle2">
             {truncate(product?.title)}
           </Typography>
@@ -96,7 +92,7 @@ export default function ShopifyProductCard({
             </Button>
           )}
         </div>
-      </div>
+      </CardContent>
       <ShopifyProductModal
         open={open}
         handleClose={() => setOpen(false)}
@@ -104,6 +100,6 @@ export default function ShopifyProductCard({
         enableQuantity={enableQuantity}
         buttonText={buttonText}
       />
-    </div>
+    </Card>
   )
 }

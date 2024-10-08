@@ -1,7 +1,6 @@
 import React from 'react'
 import { Placeholder } from '../..'
 import { ShopifyProducts, ShopifyProductCarousel } from '..'
-import { Box } from '@mui/material'
 import { useRecentlyViewed } from 'frontend-shopify'
 
 export type ShopifyRecentlyViewedProps = {
@@ -32,7 +31,7 @@ const ShopifyRecentlyViewed: React.FC<ShopifyRecentlyViewedProps> = (props) => {
 	const { products } = useRecentlyViewed()
 
 	return (
-		<Box sx={sx.root}>
+		<div className='w-full'>
 			{layout == 'grid' && (
 				<ShopifyProducts
 					href={href}
@@ -59,14 +58,8 @@ const ShopifyRecentlyViewed: React.FC<ShopifyRecentlyViewedProps> = (props) => {
 					description={'You have no recently viewed products.'}
 				/>
 			)}
-		</Box>
+		</div>
 	)
 }
 
 export default ShopifyRecentlyViewed
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-}
