@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { Card, CardContent } from '../../../shadcn/ui/card'
-import { Checkbox } from "../../../tailwind"
+import { Checkbox } from "../../../shadcn/ui/checkbox"
 import { Icon, Image, AvatarImage } from '../..'
 import { CardProps } from './Card'
 import { Typography, Stack } from '../../../tailwind'
@@ -26,7 +25,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
     handleClick,
     handleSelect,
     image,
-    height = 160,
+    size = 140,
     disableImage,
     slots = {
       item: {},
@@ -38,10 +37,12 @@ const ListCard: React.FC<ListCardProps> = (props) => {
     <div className="p-4 border-b border-border last:border-b-0 hover:bg-gray-50 transition-colors duration-200">
       <Stack direction="row" alignItems="center" spacing={0} className="w-full">
         {selectable && (
-          <Checkbox
-            checked={selected}
-            onChange={handleSelect}
-          />
+          <div className='mr-2'>
+            <Checkbox
+              value={selected ? true : false}
+              handleChange={ handleSelect }
+            />
+          </div>
         )}
         {sortable && <Icon name="GripVertical" className="text-muted-foreground" />}
         <Stack          
@@ -50,35 +51,35 @@ const ListCard: React.FC<ListCardProps> = (props) => {
           className="justify-start items-start"
         >
           {!disableImage && (
-          <Stack 
-            direction="row" 
-            className={"flex-start w-[180px]"} 
-            spacing={0}>
-              <div className="w-full mr-0 sm:mr-2 h-full flex justify-center sm:justify-start items-center">
-                {circular ? (
-                  <AvatarImage
-                    label={label}
-                    src={image}
-                    height={height}
-                    alt={primary}
-                    onClick={handleClick}
-                    {...slots.image}
-                  />
-                ) : (
-                  <Image
-                    label={label}
-                    src={image}
-                    height={height}
-                    alt={primary}
-                    aspectRatio={1.0}
-                    onClick={handleClick}
-                    {...slots.image}
-                  />
-                )}
-              </div>
-          </Stack>
+          <div className="flex-start w-[180px]">
+            <div className="w-full pr-2 h-full flex justify-center sm:justify-start items-center">
+              {circular ? (
+                <AvatarImage
+                  label={label}
+                  src={image}
+                  height={size}
+                  alt={primary}
+                  onClick={handleClick}
+                  {...slots.image}
+                />
+              ) : (
+                <Image
+                  label={label}
+                  src={image}
+                  height={size}
+                  alt={primary}
+                  aspectRatio={1.0}
+                  onClick={handleClick}
+                  {...slots.image}
+                />
+              )}
+            </div>
+          </div>
           )}
-          <div className='flex flex-col justify-between h-[150px] w-full'>
+          <div 
+            className={
+              'h-[140px] flex flex-col justify-between w-full'
+            }>
             <Stack direction="column" spacing={1}>
               <Link
                 href="#"

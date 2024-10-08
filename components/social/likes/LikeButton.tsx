@@ -45,20 +45,19 @@ export default function LikeButton({
 
   return (
     <div>
-      <IconButton 
+      <IconButton         
         onClick={handleClick} 
         className={cn(
           variant == 'circular' ? 'rounded-full' : 'rounded-lg',
           size === 'large' && 'border border-divider',
-          liked && 'bg-primary hover:bg-primary-dark',
           'transition-transform duration-200',
-          (size === 'large' && liked) && 'transform scale-110'
+          liked && 'transform scale-110'
         )}
       >
         <Heart 
           className={cn(
-            "w-4 h-4",
-            liked ? "text-primary-foreground" : "text-foreground"
+            "w-5 h-5 text-foreground",
+            liked ? "fill-current" : "stroke-current"
           )}
         />
       </IconButton>

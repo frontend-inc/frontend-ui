@@ -37,6 +37,7 @@ const IconButton: React.FC<IconButtonProps> = ({
 			size="icon"
 			variant={colorMap[color]}
 			className={cn(
+        'bg-transparent hover:bg-primary/10',
 				'flex items-center justify-center',
 				variantClasses[variant],
 				className

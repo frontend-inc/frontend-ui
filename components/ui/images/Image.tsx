@@ -53,7 +53,7 @@ export default function ResponsiveImage({
 						height={height}
 						className={cn(
 							'object-cover w-full h-full transition-transform duration-3000 ease-in-out',
-							isHovered && 'scale-110'
+							isHovered && 'scale-105'
 						)}
 					/>
 				) : (

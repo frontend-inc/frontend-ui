@@ -14,7 +14,7 @@ export type CardProps = {
 	selectable?: boolean
 	selected?: boolean
 	avatar?: React.ReactNode
-	image: string
+  image?: string
 	label?: string
 	primary: string
 	secondary?: string | React.ReactNode
@@ -22,7 +22,7 @@ export type CardProps = {
 	secondaryAction?: React.ReactNode
 	handleClick?: () => void
 	handleSelect?: () => void
-	height?: number
+	size?: number
 	slots?: {
 		item?: any
 		image?: any
@@ -40,7 +40,7 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 			secondaryAction,
 			handleClick,
 			image,
-			height = 240,
+			size = 240,
 			slots = {
 				item: {},
 				image: {},
@@ -60,7 +60,7 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 				>
 					<Image
 						src={image}
-						height={height}
+						height={size}
 						alt={primary}
 						label={label}
 						handleClick={handleClick}

@@ -35,6 +35,7 @@ const CoverCard: React.FC<CardProps> = (props) => {
             alt={primary}
             aspectRatio={4/5}
             className={cn("w-full", slots.image.className)}
+            {...slots.image}
           />
         </TouchableOpacity>
         <div className="absolute bottom-0 left-0 z-10 w-full p-3">

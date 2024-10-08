@@ -4,29 +4,36 @@ import { cn } from '../../shadcn/lib/utils'
 
 interface CheckboxProps {
 	name: string
-	value: string
-	onChange: (checked: boolean) => void
-	checked: boolean
+	value: boolean
+	handleChange: (ev: any) => void
 	label?: string
 	className?: string
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({
 	name,
-	value,
-	onChange,
-	checked,
+	value=false,
+	handleChange,
 	label,
 	className,
 }) => {
+
+  const handleClick = () => {    
+    handleChange({
+      target: {
+        name,
+        value: !value 
+      }
+    })    
+  }
+
 	return (
 		<div className={cn('flex items-center space-x-2', className)}>
 			<ShadcnCheckbox
 				id={name}
 				name={name}
-				value={value}
-				checked={checked}
-				onCheckedChange={onChange}
+				checked={value}
+				onClick={handleClick}
 			/>
 			{label && (
 				<label

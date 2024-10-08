@@ -50,18 +50,18 @@ export default function FavoriteButton({
       <IconButton 
         onClick={handleClick} 
         className={cn(
-          'transition-transform duration-200',
           variant == 'circular' ? 'rounded-full' : 'rounded-lg',
           size === 'large' && 'border border-divider',
-          (size === 'large' && isFavorite) && 'transform scale-110',
-          isFavorite && 'bg-primary hover:bg-primary-dark'
+          'transition-transform duration-200',
+          isFavorite && 'transform scale-110',
         )}
-      >
-        {isFavorite ? (
-          <Bookmark className="text-primary-foreground w-4 h-4" />
-        ) : (
-          <Bookmark className="text-foreground w-4 h-4" />
-        )}
+      >        
+        <Bookmark 
+          className={cn(
+            "w-5 h-5 text-foreground",
+            isFavorite ? "fill-current" : "stroke-current"
+          )}
+        />
       </IconButton>
     </div>
   )

@@ -7,9 +7,8 @@ import {
 	ChipCard,
 	TextCard,
 } from '../..'
-import { SecondaryFields, SocialButtons, ButtonMenus } from '../..'
+import { SecondaryFields, SocialButtons } from '../..'
 import { ButtonType, DisplayFieldType } from '../../../types'
-import { Box } from '@mui/material'
 import { resizeCloudinaryImage } from '../../../helpers'
 
 type CardStyleTypes = 'list' | 'avatar' | 'card' | 'cover' | 'text'
