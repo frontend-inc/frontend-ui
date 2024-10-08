@@ -1,7 +1,6 @@
 import React from 'react'
-import { Icon, Placeholder } from '../..'
+import { Placeholder } from '../..'
 import { ShopifyProductCarousel } from '..'
-import { Box, Typography } from '@mui/material'
 import { useFavorites } from 'frontend-shopify'
 
 type ShopifyProductFavoritesCarouselProps = {
@@ -23,7 +22,6 @@ const ShopifyProductFavoritesCarousel: React.FC<
 > = (props) => {
 	const {
 		href,
-		title = 'Favorites',
 		enableBorder = false,
 		buttonText = 'Add to cart',
 		enableAddToCart,
@@ -38,12 +36,7 @@ const ShopifyProductFavoritesCarousel: React.FC<
 	const { favorites } = useFavorites()
 
 	return (
-		<Box sx={sx.root}>
-			{title && (
-				<Typography mb={1} color="textPrimary" variant="h5">
-					{title}
-				</Typography>
-			)}
+		<div className='w-full'>			
 			<ShopifyProductCarousel
 				href={href}
 				products={favorites}
@@ -63,14 +56,8 @@ const ShopifyProductFavoritesCarousel: React.FC<
 					description={'You have no favorites yet'}
 				/>
 			)}
-		</Box>
+		</div>
 	)
 }
 
 export default ShopifyProductFavoritesCarousel
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-}

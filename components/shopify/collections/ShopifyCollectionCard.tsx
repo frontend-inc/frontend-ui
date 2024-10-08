@@ -1,124 +1,77 @@
 import React from 'react'
-import { useApp } from '../../../hooks'
-import { Box, Stack, Typography } from '@mui/material'
-import { Image, TouchableOpacity } from '../..'
-import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
+import { Typography } from '../../../tailwind'
+import { Card, CardContent } from "../../../shadcn/ui/card"
+import { Button } from "../../../shadcn/ui/button"
+import { useApp } from '../../../hooks'
+import { truncate } from '../../../helpers'
+import { Image } from '../../../components'
 
 export type ShopifyCardProps = {
-	collection?: any
-	href?: string
-	handleClick?: () => void
-	enableGradient?: boolean
-	enableOverlay?: boolean
+  collection?: {
+    label?: string
+    title?: string
+    image?: {
+      url: string
+    }
+  }
+  href?: string
+  handleClick?: () => void
+  enableGradient?: boolean
+  enableOverlay?: boolean
 }
 
-const ShopifyCollectionCard: React.FC<ShopifyCardProps> = (props) => {
-	const { clientUrl } = useApp()
-	const {
-		collection,
-		href,
-		handleClick,
-		enableGradient = false,
-		enableOverlay = false,
-	} = props || {}
+export default function ShopifyCollectionCard({
+  collection,
+  href,
+  handleClick,
+  enableGradient = false,
+  enableOverlay = false,
+}: ShopifyCardProps) {
+  const { clientUrl } = useApp()
+  const router = useRouter()
 
-	const { label, title, image } = collection || {}
-	const router = useRouter()
+  const { label, title, image } = collection || {}
 
-	const handleItemClick = () => {
-		if (handleClick) {
-			handleClick()
-		} else if (href) {
-			router.push(`${clientUrl}${href}`)
-		}
-	}
+  const handleItemClick = () => {
+    if (handleClick) {
+      handleClick()
+    } else if (href) {
+      router.push(`${clientUrl}${href}`)
+    }
+  }
 
-	return (
-		<div className="dark">
-			<Stack spacing={1} sx={sx.root}>
-				<TouchableOpacity handleClick={handleItemClick}>
-					<Image
-						label={label}
-						src={image?.url}
-						height={400}
-						alt={title}
-						enableGradient={enableGradient}
-						enableOverlay={enableOverlay}
-					/>
-				</TouchableOpacity>
-				<Stack spacing={1} sx={sx.cover}>
-					<Stack
-						sx={sx.fullWidth}
-						spacing={1}
-						direction={'row'}
-						alignItems="center"
-					>
-						<Box sx={sx.contentContainer}>
-							<Stack sx={sx.content} direction="column" spacing={0}>
-								<Box sx={sx.fullWidth}>
-									<Typography color="text.primary" variant="subtitle2">
-										{truncate(title, 60)}
-									</Typography>
-								</Box>
-							</Stack>
-						</Box>
-					</Stack>
-				</Stack>
-			</Stack>
-		</div>
-	)
-}
-
-export default ShopifyCollectionCard
-
-const sx = {
-	root: {
-		position: 'relative',
-		flexDirection: 'column',
-		overflow: 'hidden',
-		width: '100%',
-		borderRadius: 1,
-	},
-	cover: {
-		width: '100%',
-		position: 'absolute',
-		bottom: 0,
-		left: 0,
-		zIndex: 1,
-		p: 1,
-	},
-	description: {
-		maxWidth: '320px',
-	},
-	button: {
-		bgcolor: 'common.white',
-		color: 'common.black',
-		'&:hover': {
-			color: 'common.black',
-			bgcolor: 'common.white',
-			opacity: 0.9,
-		},
-	},
-	fullWidth: {
-		width: '100%',
-	},
-	contentContainer: {
-		px: 0,
-		width: '100%',
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'flex-start',
-	},
-	content: {
-		width: '100%',
-		justifyContent: 'space-between',
-		alignItems: 'flex-end',
-	},
-	buttons: {
-		display: 'flex',
-		justifyContent: 'space-between',
-		flexDirection: 'row',
-	},
+  return (
+    <Card className="relative w-full rounded-lg">
+      <div className="relative w-full h-full">
+        <Image
+          src={image?.url}
+          alt={title || 'Collection image'}
+          layout="fill"
+          label={label}
+          aspectRatio={1.0}
+          objectFit="cover"
+          enableGradient={enableGradient}
+          enableOverlay={enableOverlay}          
+        />
+      </div>
+      <div className="dark absolute bottom-0 left-0 w-full p-4 z-10">
+        <div className="flex items-center justify-between w-full">
+          <div className="flex flex-col items-start justify-center">
+            <Typography variant="body1" className='font-bold'>
+              {truncate(title || '', 60)}
+            </Typography>            
+          </div>
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={handleItemClick}
+            className="bg-white text-black hover:bg-white/90"
+          >
+            Browse
+          </Button>
+        </div>
+      </div>
+    </Card>
+  )
 }

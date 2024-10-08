@@ -1,6 +1,6 @@
 import React from 'react'
 import { cn } from '../../../shadcn/lib/utils'
-import { Box, Stack, Typography } from '../../../tailwind'
+import { Box, Typography } from '../../../tailwind'
 import { Image } from '../..'
 
 export type ProductCollectionCardProps = {

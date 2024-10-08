@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { useCollections } from 'frontend-shopify'
 import { useRouter } from 'next/router'
 import { useApp } from '../../../hooks'
-import { Box } from '@mui/material'
 import { ShopifyCollectionCard } from '../../../components'
+import { cn } from '../../../shadcn/lib/utils'
 
 export type ShopifyCollectionsProps = {
 	href: string
@@ -35,7 +35,12 @@ const ShopifyCollections: React.FC<ShopifyCollectionsProps> = (props) => {
 	}, [])
 
 	return (
-		<Box sx={sx.grid}>
+		<div
+      className={cn(
+        "w-full grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(360px,1fr))] gap-4 pb-1",           
+        loading && "opacity-50"
+      )}
+    >
 			{collections?.map((collection, index) => (
 				<ShopifyCollectionCard
 					key={index}
@@ -45,7 +50,7 @@ const ShopifyCollections: React.FC<ShopifyCollectionsProps> = (props) => {
 					enableOverlay={enableOverlay}
 				/>
 			))}
-		</Box>
+		</div>
 	)
 }
 

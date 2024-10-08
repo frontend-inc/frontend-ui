@@ -1,7 +1,6 @@
 import React from 'react'
 import { Placeholder } from '../..'
 import { ShopifyProductArray } from '..'
-import { Box } from '@mui/material'
 import { UserType } from 'frontend-js'
 
 export type ShopifyProductFavoritesProps = {
@@ -31,7 +30,7 @@ const ShopifyProductFavorites: React.FC<ShopifyProductFavoritesProps> = (
 	const { shopify_favorites: favorites } = user || {}
 
 	return (
-		<Box sx={sx.root}>
+		<div className='w-full'>
 			<ShopifyProductArray
 				href={href}
 				handles={favorites || []}
@@ -48,14 +47,8 @@ const ShopifyProductFavorites: React.FC<ShopifyProductFavoritesProps> = (
 					description={'You have no favorites yet.'}
 				/>
 			)}
-		</Box>
+		</div>
 	)
 }
 
 export default ShopifyProductFavorites
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-}

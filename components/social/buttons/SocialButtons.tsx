@@ -1,5 +1,4 @@
 import React from 'react'
-import { Stack } from '../../../tailwind'
 import { cn } from '../../../shadcn/lib/utils'
 import {
 	CommentButton,
