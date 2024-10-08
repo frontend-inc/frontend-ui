@@ -63,18 +63,21 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 			image={resource?.image?.url}
 			primary={resource?.title}
 			handleClick={handleClick}
-			secondary={<SecondaryFields fields={displayFields} resource={resource} />}
+			secondary={
+        <SecondaryFields 
+          fields={displayFields} 
+          resource={resource} 
+        />
+      }
 			actions={
-				<Box>
-					<SocialButtons
-						size="small"
-						justifyContent="flex-start"
-						resource={resource}
-						enableLikes={enableLikes}
-						enableFavorites={enableFavorites}
-						enableComments={enableComments}
-					/>
-				</Box>
+        <SocialButtons
+          size="small"
+          justifyContent="flex-start"
+          resource={resource}
+          enableLikes={enableLikes}
+          enableFavorites={enableFavorites}
+          enableComments={enableComments}
+        />
 			}
 			slots={{
 				image: {

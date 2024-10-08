@@ -1,205 +1,107 @@
 import React from 'react'
-import { Link, Box, Stack, Typography, Checkbox } from '@mui/material'
+import Link from 'next/link'
+import { Card, CardContent } from '../../../shadcn/ui/card'
+import { Checkbox } from "../../../tailwind"
 import { Icon, Image, AvatarImage } from '../..'
 import { CardProps } from './Card'
+import { Typography, Stack } from '../../../tailwind'
+import { cn } from '../../../shadcn/lib/utils'
 
 export type ListCardProps = CardProps & {
-	circular?: boolean
-	disableImage?: boolean
+  circular?: boolean
+  disableImage?: boolean
 }
 
 const ListCard: React.FC<ListCardProps> = (props) => {
-	const {
-		circular = false,
-		sortable = false,
-		selectable = false,
-		selected = false,
-		label,
-		primary,
-		secondary,
-		actions,
-		secondaryAction,
-		handleClick,
-		handleSelect,
-		image,
-		height = 160,
-		disableImage,
-		slots = {
-			item: {},
-			image: {},
-		},
-	} = props || {}
+  const {
+    circular = false,
+    sortable = false,
+    selectable = false,
+    selected = false,
+    label,
+    primary,
+    secondary,
+    actions,
+    secondaryAction,
+    handleClick,
+    handleSelect,
+    image,
+    height = 160,
+    disableImage,
+    slots = {
+      item: {},
+      image: {},
+    },
+  } = props || {}
 
-	return (
-		<Box
-			sx={{
-				...sx.root,
-				...(selected && sx.selected),
-			}}
-			{...slots.item}
-		>
-			<Stack direction="row" alignItems="center" spacing={0} width="100%">
-				{selectable && (
-					<Checkbox
-						checked={selected}
-						onChange={handleSelect}
-						color="primary"
-					/>
-				)}
-				{sortable && <Icon name="GripVertical" color="text.secondary" />}
-				<Stack
-					sx={sx.container}
-					spacing={1}
-					flexDirection={{ xs: 'column', sm: 'row' }}
-				>
-					<Stack direction="row" alignItems="flex-start" spacing={0}>
-						{!disableImage && (
-							<Box sx={sx.image}>
-								{circular ? (
-									<AvatarImage
-										label={label}
-										src={image}
-										height={height}
-										alt={primary}
-										handleClick={handleClick}
-										{...slots.image}
-									/>
-								) : (
-									<Image
-										label={label}
-										src={image}
-										height={height}
-										alt={primary}
-										handleClick={handleClick}
-										{...slots.image}
-									/>
-								)}
-							</Box>
-						)}
-					</Stack>
-					<Stack direction="row" spacing={1} sx={sx.contentArea}>
-						<Stack direction="column" sx={sx.content}>
-							<Stack direction="column" spacing={0.5}>
-								<Link
-									onClick={handleClick}
-									sx={sx.link}
-									color="text.primary"
-									variant="subtitle1"
-								>
-									{primary}
-								</Link>
-								<Typography color="text.secondary" variant="body2">
-									{secondary}
-								</Typography>
-							</Stack>
-							<Stack direction="row" justifyContent="flex-end">
-								{actions}
-							</Stack>
-						</Stack>
-						<Stack direction="row" justifyContent="flex-end">
-							{secondaryAction}
-						</Stack>
-					</Stack>
-				</Stack>
-			</Stack>
-		</Box>
-	)
+  return (
+    <div className="p-4 border-b border-border last:border-b-0 hover:bg-gray-50 transition-colors duration-200">
+      <Stack direction="row" alignItems="center" spacing={0} className="w-full">
+        {selectable && (
+          <Checkbox
+            checked={selected}
+            onChange={handleSelect}
+          />
+        )}
+        {sortable && <Icon name="GripVertical" className="text-muted-foreground" />}
+        <Stack          
+          spacing={1}
+          direction={'row'}
+          className="justify-start items-start"
+        >
+          {!disableImage && (
+          <Stack 
+            direction="row" 
+            className={"flex-start w-[180px]"} 
+            spacing={0}>
+              <div className="w-full mr-0 sm:mr-2 h-full flex justify-center sm:justify-start items-center">
+                {circular ? (
+                  <AvatarImage
+                    label={label}
+                    src={image}
+                    height={height}
+                    alt={primary}
+                    onClick={handleClick}
+                    {...slots.image}
+                  />
+                ) : (
+                  <Image
+                    label={label}
+                    src={image}
+                    height={height}
+                    alt={primary}
+                    aspectRatio={1.0}
+                    onClick={handleClick}
+                    {...slots.image}
+                  />
+                )}
+              </div>
+          </Stack>
+          )}
+          <div className='flex flex-col justify-between h-[150px] w-full'>
+            <Stack direction="column" spacing={1}>
+              <Link
+                href="#"
+                onClick={handleClick}
+                className="text-foreground no-underline"
+              >
+                <Typography variant="subtitle1">
+                  {primary}
+                </Typography>
+              </Link>
+              <Typography variant="body2" className="text-muted-foreground">
+                {secondary}
+              </Typography>
+            </Stack>    
+            <div className='flex flex-row justify-between items-center w-full'>
+              {actions}
+              {secondaryAction}            
+            </div>      
+          </div>
+        </Stack>
+      </Stack>
+    </div>
+  )
 }
 
 export default ListCard
-
-const sx = {
-	root: {
-		width: '100%',
-		display: 'flex',
-		flexDirection: 'row',
-		pt: 1,
-		pb: 2,
-		overflow: 'hidden',
-		borderBottom: '1px solid',
-		borderColor: 'divider',
-		bgcolor: 'background.paper',
-	},
-	gradient: {
-		'&::after': {
-			content: '""',
-			position: 'absolute',
-			bottom: 0,
-			left: 0,
-			width: '100%',
-			height: '50%',
-			background: 'linear-gradient(to top, rgb(0,0,0,0.5), transparent)',
-		},
-	},
-	rootBorder: {
-		border: '1px solid',
-		borderColor: 'divider',
-	},
-	container: {
-		width: '100%',
-	},
-	image: {
-		width: {
-			sm: 180,
-			xs: '100%',
-		},
-		minWidth: {
-			sm: 180,
-			xs: '100%',
-		},
-		mr: {
-			sm: 2,
-			xs: 0,
-		},
-		height: '100%',
-		display: 'flex',
-		justifyContent: {
-			xs: 'center',
-			sm: 'flex-start',
-		},
-		alignItems: 'center',
-	},
-	contentArea: {
-		width: '100%',
-	},
-	contentAreaBorder: {
-		pr: 1,
-	},
-	content: {
-		width: '100%',
-		justifyContent: 'space-between',
-		alignItems: 'flex-start',
-		height: '100%',
-		py: {
-			sm: 0,
-			xs: 1,
-		},
-	},
-	contentBorder: {
-		px: {
-			sm: 0,
-			xs: 2,
-		},
-	},
-	description: {
-		maxWidth: '320px',
-	},
-	buttons: {
-		display: 'flex',
-		flexDirection: 'column',
-	},
-	buttonsBorder: {
-		px: 1,
-		pb: {
-			sm: 0,
-			xs: 1,
-		},
-	},
-	link: {
-		textDecoration: 'none',
-	},
-	selected: {
-		border: '1px solid',
-		borderColor: 'primary.main',
-	},
-}

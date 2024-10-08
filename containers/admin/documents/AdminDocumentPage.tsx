@@ -62,9 +62,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 	const handleSubmit = async () => {
 		let resp
 		setSaveLoading(true)
-		if (documentIds) {
-			resp = await updateDocuments(documentIds, document)
-		} else if (document?.id) {
+		if (document?.id) {
 			resp = await updateDocument(document)
 		} else {
 			resp = await createDocument({

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Typography } from '@mui/material'
+import { Stack, Typography } from '../../../tailwind'
 import { TypographyVariantsType } from '../../../types'
 import { cn } from '../../../shadcn/lib/utils'
 

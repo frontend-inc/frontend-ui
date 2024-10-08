@@ -78,7 +78,7 @@ const Modal: React.FC<ModalProps> = ({
 					{!loading && <div className="h-full w-full">{children}</div>}
 				</div>
 				{!loading && (enableCancel || buttons) && (
-					<DialogFooter className="border-t border-border bg-background">
+					<DialogFooter>
 						{enableCancel && (
 							<Button variant="secondary" onClick={handleClose}>
 								Cancel

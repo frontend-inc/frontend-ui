@@ -35,6 +35,7 @@ export default function ResponsiveImage({
 	return (
 		<div
 			className={cn(
+        'w-full h-full',
 				'relative overflow-hidden',
         !disableBorderRadius && 'rounded-lg',
 				className
@@ -62,7 +63,7 @@ export default function ResponsiveImage({
 							'h-full w-full bg-gradient-to-br from-black to-gray-600'
 						)}
 					/>
-				)}
+				)}        
 			</AspectRatio>
 			{enableOverlay && (
 				<div className="absolute inset-0 bg-black bg-opacity-40" />
