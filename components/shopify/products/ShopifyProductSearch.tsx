@@ -16,7 +16,7 @@ import {
 } from '..'
 import LoadMore from '../search/LoadMore'
 import { useApp } from '../../../hooks'
-import { cn } from "@/lib/utils"
+import { cn } from "../../../shadcn/lib/utils"
 
 const PER_PAGE = 48
 
