@@ -30,7 +30,7 @@ const Section: React.FC<SectionProps> = (props) => {
 		<div
 			className={cn(
 				mode == 'dark' && 'dark',
-				'w-full',
+				'w-full bg-background',
 				py && `py-${py}`,
 				px && `px-${px}`
 			)}

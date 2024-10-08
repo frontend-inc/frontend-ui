@@ -3,11 +3,11 @@ import { ProductList } from '../..'
 import { ProductListProps } from '../products/ProductList'
 import { useRouter } from 'next/router'
 
-export type CollectionProductsGridProps = ProductListProps & {
+export type CollectionProductsByHandleProps = ProductListProps & {
 	productCollectionId: string
 }
 
-const CollectionProductsByHandle: React.FC<CollectionProductsGridProps> = (
+const CollectionProductsByHandle: React.FC<CollectionProductsByHandleProps> = (
 	props
 ) => {
 	const router = useRouter()
