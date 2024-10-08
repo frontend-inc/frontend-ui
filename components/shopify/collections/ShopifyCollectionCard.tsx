@@ -1,7 +1,7 @@
 import React from 'react'
 import { useApp } from '../../../hooks'
 import { Box, Stack, Typography } from '@mui/material'
-import { Image, TouchableOpacity, LightDarkMode } from '../..'
+import { Image, TouchableOpacity } from '../..'
 import { truncate } from '../../../helpers'
 import { useRouter } from 'next/router'
 
@@ -35,7 +35,7 @@ const ShopifyCollectionCard: React.FC<ShopifyCardProps> = (props) => {
 	}
 
 	return (
-		<LightDarkMode mode="dark">
+		<div className="dark">
 			<Stack spacing={1} sx={sx.root}>
 				<TouchableOpacity handleClick={handleItemClick}>
 					<Image
@@ -66,7 +66,7 @@ const ShopifyCollectionCard: React.FC<ShopifyCardProps> = (props) => {
 					</Stack>
 				</Stack>
 			</Stack>
-		</LightDarkMode>
+		</div>
 	)
 }
 

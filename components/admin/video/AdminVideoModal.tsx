@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useAlerts } from '../../../hooks'
-import { Modal, LightDarkMode } from '../..'
+import { Modal } from '../..'
 import { Box, Button } from '@mui/material'
 import { Link, Download } from 'lucide-react'
 import copy from 'copy-to-clipboard'
@@ -41,7 +41,7 @@ const VideoModal: React.FC<VideoModalProps> = (props) => {
 	}
 
 	return (
-		<LightDarkMode mode="dark">
+		<div className="dark">
 			<Modal
 				fullScreen
 				open={open}
@@ -77,7 +77,7 @@ const VideoModal: React.FC<VideoModalProps> = (props) => {
 					<video src={src} controls muted autoPlay />
 				</Box>
 			</Modal>
-		</LightDarkMode>
+		</div>
 	)
 }
 

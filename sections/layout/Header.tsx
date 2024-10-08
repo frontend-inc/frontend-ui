@@ -1,5 +1,5 @@
 import React from 'react'
-import { LightDarkMode, BackgroundColor, Header } from '../../components'
+import { Header } from '../../components'
 import { HeaderProps } from '../../components/ui/header/Header'
 import { useRouter } from 'next/router'
 import { useApp } from '../../hooks'
@@ -24,9 +24,9 @@ const AppHeader: React.FC<LayoutHeaderProps> = (props) => {
 	}
 
 	return (
-    <LightDarkMode mode={mode}>
+    <div className={mode}>
       <Header {...rest} handleClick={handleClick} />
-    </LightDarkMode>
+    </div>
 	)
 }
 

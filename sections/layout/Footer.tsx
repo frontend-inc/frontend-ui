@@ -1,5 +1,5 @@
 import React from 'react'
-import { LightDarkMode, Footer } from '../../components'
+import { Footer } from '../../components'
 import { FooterProps } from '../../components/ui/footer/Footer'
 import { useRouter } from 'next/router'
 import { useApp } from '../../hooks'
@@ -24,9 +24,9 @@ const AppFooter: React.FC<LayoutFooterProps> = (props) => {
 	}
 
 	return (
-		<LightDarkMode mode={mode}>
+		<div className={mode}>
 			<Footer {...rest} links={links} handleClick={handleClick} />
-		</LightDarkMode>
+		</div>
 	)
 }
 
