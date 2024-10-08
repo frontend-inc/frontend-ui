@@ -27,12 +27,11 @@ const HeroCard: React.FC<HeroCardProps> = (props) => {
 		secondaryAction,
 		slots = {
 			image: {},
-			content: {},
 		},
 	} = props || {}
 
 	return (
-		<div className="flex flex-col space-y-2">
+		<div className="flex flex-col space-y-2 overflow-hidden">
 			{secondaryAction}
 			<div className="w-full flex justify-center items-center">
 				<div className="w-full flex flex-col md:flex-row gap-4 space-y-4 md:space-y-0 md:space-x-4 justify-start items-center md:items-start">
@@ -47,11 +46,7 @@ const HeroCard: React.FC<HeroCardProps> = (props) => {
 						{actions}
 					</div>
 					<div
-						className={cn(
-							'w-full md:w-1/2 max-w-full md:max-w-[500px] flex flex-col space-y-2',
-							slots.content.className
-						)}
-						{...slots.content}
+						className='w-full md:w-1/2 max-w-full md:max-w-[500px] flex flex-col space-y-2'
 					>
 						<Typography variant="h4">{primary}</Typography>
 						{secondary}
