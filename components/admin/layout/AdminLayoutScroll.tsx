@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { ScrollArea } from '../../../shadcn/ui/scroll-area'
 
 type AdminLayoutScrollProps = {
 	children: React.ReactNode
@@ -8,29 +8,13 @@ type AdminLayoutScrollProps = {
 }
 
 const AdminLayoutScroll: React.FC<AdminLayoutScrollProps> = (props) => {
-	const { children, ref, pb = 0 } = props || {}
+	const { children } = props || {}
 
 	return (
-		<Box
-			ref={ref && ref}
-			sx={{
-				...sx.root,
-				pb: pb,
-			}}
-		>
+    <ScrollArea>		
 			{children}
-		</Box>
+    </ScrollArea>
 	)
 }
 
 export default AdminLayoutScroll
-
-const sx = {
-	root: {
-		height: 'calc(100vh - 50px)',
-		overflowY: 'scroll',
-		'&::-webkit-scrollbar': {
-			display: 'none',
-		},
-	},
-}

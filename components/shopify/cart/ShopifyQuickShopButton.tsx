@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ShopifyProductModal } from '../../../components/shopify'
-import { Button } from '@mui/material'
+import { Button } from '../../../tailwind'
 
 type ShopifyQuickShopButtonProps = {
 	size?: 'small' | 'medium' | 'large'

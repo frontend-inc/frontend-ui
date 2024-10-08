@@ -70,7 +70,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 					spacing={1}
 				>
 					<div>
-						<Typography variant="subtitle1">{primary}</Typography>
+						<Typography variant="subtitle2">{primary}</Typography>
 						<Stack direction="row" className="space-x-2">
 							<Typography className="text-sm text-foreground" variant="caption">
 								{price}

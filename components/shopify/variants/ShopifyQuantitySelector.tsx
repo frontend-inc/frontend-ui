@@ -1,52 +1,47 @@
 import React from 'react'
-import { Button, ButtonGroup } from '@mui/material'
+import { Button } from "../../../shadcn/ui/button"
 import { Plus, Minus } from 'lucide-react'
+import { cn } from "../../../shadcn/lib/utils"
 
 type ShopifyQuantitySelectorProps = {
-	quantity: number
-	size?: 'small' | 'medium' | 'large'
-	handleAddQuantity: () => void
-	handleRemoveQuantity: () => void
+  quantity: number
+  handleAddQuantity: () => void
+  handleRemoveQuantity: () => void
 }
 
-const ShopifyQuantitySelector: React.FC<ShopifyQuantitySelectorProps> = (
-	props
-) => {
-	const { size, quantity, handleAddQuantity, handleRemoveQuantity } =
-		props || {}
+export default function ShopifyQuantitySelector({
+  quantity,
+  handleAddQuantity,
+  handleRemoveQuantity
+}: ShopifyQuantitySelectorProps) {
+  
+  const buttonClasses = cn(
+    "w-[32px] p-0 min-w-[32px]",
+    "w-full text-secondary-foreground border-secondary",
+  )
 
-	return (
-		<ButtonGroup
-			variant="contained"
-			color="secondary"
-			sx={{
-				...(size == 'small' && sx.buttonGroupSmall),
-			}}
-		>
-			<Button sx={sx.button} onClick={handleRemoveQuantity}>
-				<Minus size={size == 'large' ? 24 : 16} />
-			</Button>
-			<Button sx={sx.button}>{quantity}</Button>
-			<Button sx={sx.button} onClick={handleAddQuantity}>
-				<Plus size={size == 'large' ? 24 : 16} />
-			</Button>
-		</ButtonGroup>
-	)
-}
-
-export default ShopifyQuantitySelector
-
-const sx = {
-	buttonGroupSmall: {
-		height: '40px',
-		'& .MuiButton-root': {
-			minWidth: '30px',
-		},
-	},
-	button: {
-		px: 0,
-		width: '100%',
-		color: 'secondary.contrastText',
-		border: 'none !important',
-	},
+  return (
+    <div className="inline-flex min-w-[96px] rounded-md shadow-sm" role="group">
+      <Button
+        variant="secondary"
+        className={cn(buttonClasses, "rounded-r-none border-r-0")}
+        onClick={handleRemoveQuantity}
+      >
+        <Minus className='h-5 w-5' />
+      </Button>
+      <Button
+        variant="secondary"
+        className={cn(buttonClasses, "rounded-none border-x")}
+      >
+        {quantity}
+      </Button>
+      <Button
+        variant="secondary"
+        className={cn(buttonClasses, "rounded-l-none border-l-0")}
+        onClick={handleAddQuantity}
+      >
+        <Plus className='h-5 w-5' />
+      </Button>
+    </div>
+  )
 }

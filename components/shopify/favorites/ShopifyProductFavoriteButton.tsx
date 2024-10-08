@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import { Button } from '@mui/material'
-import { Icon } from '../..'
+import { Heart } from 'lucide-react'
+import { IconButton } from '../../../tailwind'
 import { useAuth } from 'frontend-js'
 import { ShopifyProductType } from 'frontend-shopify'
 import { useApp, useSocial } from '../../../hooks'
 import { isShopifyFavorite } from '../../../helpers'
+import { cn } from '../../../shadcn/lib/utils'
 
 type ShopifyProductFavoriteButtonProps = {
 	product: ShopifyProductType
+  variant?: 'rounded' | 'circular'
+  size?: 'small' | 'large'
 }
 
-const ShopifyProductFavoriteButton: React.FC<
-	ShopifyProductFavoriteButtonProps
-> = (props) => {
-	const { product } = props
+const ShopifyProductFavoriteButton: React.FC<ShopifyProductFavoriteButtonProps> = ({
+  product,
+  variant = 'rounded',
+  size,
+}) => {	
 
 	const { setAuthOpen } = useApp()
 	const { currentUser } = useAuth()
@@ -38,20 +42,24 @@ const ShopifyProductFavoriteButton: React.FC<
 	}, [currentUser?.id, product?.handle])
 
 	return (
-		<Button
-			size="large"
-			onClick={handleClick}
-			variant="contained"
-			color={isFavorite ? 'primary' : 'secondary'}
-			sx={{
-				...sx.button,
-			}}
-		>
-			<Icon
-				name="Heart"
-				color={isFavorite ? 'primary.contrastText' : 'secondary.contrastText'}
-			/>
-		</Button>
+    <IconButton 
+    onClick={handleClick} 
+    className={cn(
+      'min-w-[40px]',
+      variant == 'circular' ? 'rounded-full' : 'rounded-lg',
+      size === 'large' && 'border border-divider',
+      'transition-transform duration-200',
+      isFavorite && 'transform scale-110',
+    )}
+  >        
+    <Heart 
+      className={cn(
+        "w-5 h-5 text-foreground",
+        isFavorite ? "fill-current" : "stroke-current"
+      )}
+    />
+  </IconButton>
+
 	)
 }
 

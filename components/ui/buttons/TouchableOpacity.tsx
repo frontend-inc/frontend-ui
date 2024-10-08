@@ -1,6 +1,5 @@
 import React from 'react'
 import { useClickOrDrag } from '../../../hooks'
-import { CardActionArea } from '@mui/material'
 
 type TouchableOpacityProps = {
 	children: any
@@ -13,10 +12,7 @@ type TouchableOpacityProps = {
 const TouchableOpacity: React.FC<TouchableOpacityProps> = (props) => {
 	const {
 		children,
-		justifyContent = 'center',
 		handleClick,
-		disableRipple = false,
-		disableBorderRadius = false,
 	} = props
 
 	const { onMouseDown, onMouseUp } = useClickOrDrag({
@@ -24,36 +20,14 @@ const TouchableOpacity: React.FC<TouchableOpacityProps> = (props) => {
 	})
 
 	return (
-		<CardActionArea
-			sx={{
-				...sx.root,
-				...(disableBorderRadius && sx.disableBorderRadius),
-				justifyContent,
-			}}
-			disableRipple={disableRipple}
-			onMouseDown={onMouseDown}
-			onMouseUp={onMouseUp}
-		>
-			{children}
-		</CardActionArea>
+		<button 
+      onMouseDown={onMouseDown} 
+      onMouseUp={onMouseUp} 
+      className="focus:outline-none"
+    >
+      { children }
+    </button>
 	)
 }
 
 export default TouchableOpacity
-
-const sx = {
-	root: {
-		p: 0,
-		cursor: 'pointer !important',
-		overflow: 'hidden',
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center',
-		'.MuiCardActionArea-focusHighlight': {
-			background: 'transparent',
-		},
-	},
-	disableBorderRadius: {
-		borderRadius: 0,
-	},
-}

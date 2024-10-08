@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
 import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
-import { Button } from '@mui/material'
-import { IconLoading } from '../../../components'
+import { Button } from '../../../tailwind'
 
 type ShopifyCheckoutButtonProps = {
 	size?: 'small' | 'medium' | 'large'
 }
 
 const ShopifyCheckoutButton: React.FC<ShopifyCheckoutButtonProps> = (props) => {
-	const { size = 'large' } = props
 	const [loading, setLoading] = useState(false)
 	const { cart } = useCart()
 
@@ -32,8 +30,8 @@ const ShopifyCheckoutButton: React.FC<ShopifyCheckoutButtonProps> = (props) => {
 			color="primary"
 			onClick={handleCheckoutClick}
 			variant="contained"
-			size={size}
-			endIcon={loading && <IconLoading />}
+			size='large'
+      loading={loading}			
 		>
 			Checkout
 		</Button>

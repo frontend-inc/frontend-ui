@@ -73,11 +73,10 @@ const Button: React.FC<ButtonProps> = ({
         variant === 'text' && 'shadow-none',
         className
       )}
-      disabled={disabled || loading}
       {...props}
     >
       {loading ? (
-        <Loader2 className="h-4 w-4 animate-spin text-foreground" />
+        <Loader2 className="h-4 w-4 animate-spin text-primary-foreground" />
       ) : (
         <>
           {startIcon && <span className="mr-2">{startIcon}</span>}

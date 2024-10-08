@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {
 	Badge,
-  Button,
 	IconButton,
 } from '../../../tailwind'
 import { useCart } from '../../../hooks'

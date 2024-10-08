@@ -14,7 +14,8 @@ interface TextFieldProps
 	fullWidth?: boolean
 	name: string
 	value: string
-	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  placeholder?: string
+	handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 	type?:
 		| 'text'
 		| 'number'
@@ -37,7 +38,8 @@ function TextField({
 	id,
 	name,
 	value,
-	onChange,
+	handleChange,
+  placeholder,
 	type = 'text',
 	...props
 }: TextFieldProps) {
@@ -60,15 +62,16 @@ function TextField({
 				id={inputId}
 				name={name}
 				value={value}
-				onChange={onChange}
+				onChange={handleChange}
 				type={type}
+        placeholder={placeholder}
 				className={cn(
+          'text-foreground',
 					'transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
 					error && 'border-destructive focus:ring-destructive',
 					fullWidth && 'w-full',
 					className
 				)}
-				{...props}
 			/>
 			{helperText && (
 				<p

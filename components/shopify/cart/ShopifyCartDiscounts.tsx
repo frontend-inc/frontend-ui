@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useCart } from 'frontend-shopify'
-import { Button, Stack } from '@mui/material'
-import { TextInput, IconLoading } from '../../../components'
+import { Button, TextField } from '../../../tailwind'
 
 const ShopifyCartDiscountCodeInput: React.FC = () => {
 	const [discountCode, setDiscountCode] = useState<string | null>(null)
@@ -18,50 +17,26 @@ const ShopifyCartDiscountCodeInput: React.FC = () => {
 	const handleChange = (e) => setDiscountCode(e.target.value)
 
 	return (
-		<Stack>
-			<Stack direction="row" spacing={0} alignItems="center">
-				<TextInput
+      <div className="px-1 flex flex-row justify-center items center space-x-1">
+				<TextField
+          fullWidth
 					name="discountCode"
 					value={discountCode}
 					handleChange={handleChange}
 					placeholder="Enter discount code"
-					styles={sx.input}
+					className="rounded-l-md rounded-r-none border-r-0"
 				/>
 				<Button
 					onClick={handleSubmit}
 					color="secondary"
 					variant="contained"
-					sx={sx.button}
-					endIcon={loading && <IconLoading color="secondary.contrastText" />}
+          className="rounded-l-none rounded-r-md"
+          loading={ loading }					
 				>
 					Apply
 				</Button>
-			</Stack>
-		</Stack>
+			</div>
 	)
 }
 
 export default ShopifyCartDiscountCodeInput
-
-const sx = {
-	removeCodes: {
-		display: 'flex',
-		justifyContent: 'flex-start',
-		width: '100%',
-	},
-	clearButton: {
-		color: 'text.secondary',
-	},
-	input: {
-		'& .MuiInputBase-input': {
-			borderRadius: (theme) =>
-				`${theme.shape.borderRadius}px 0 0 ${theme.shape.borderRadius}px`,
-		},
-	},
-	button: {
-		mt: '4px',
-		height: 42,
-		borderRadius: (theme) =>
-			`0 ${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0`,
-	},
-}

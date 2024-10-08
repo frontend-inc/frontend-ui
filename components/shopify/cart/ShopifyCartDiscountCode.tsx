@@ -1,81 +1,40 @@
 import React from 'react'
 import { Icon } from '../../../components'
-import { IconButton, Button, Stack, Box, Typography } from '@mui/material'
+import { IconButton, Label, Typography } from '../../../tailwind'
 import { useCart } from 'frontend-shopify'
 import { useLoaders } from '../../../hooks'
+import { cn } from "../../../shadcn/lib/utils"
 
 type ShopifyCartDiscountCodeProps = {
-	discountCode: {
-		code: string
-		applicable: boolean
-	}
-	handleDelete?: () => void
+  discountCode: {
+    code: string
+    applicable: boolean
+  }
+  handleDelete?: () => void
 }
 
-const ShopifyCartDiscountCode: React.FC<ShopifyCartDiscountCodeProps> = (
-	props
-) => {
-	const { discountCode } = props
+export default function ShopifyCartDiscountCode({ discountCode }: ShopifyCartDiscountCodeProps) {
+  const { cartRemoveDiscountCode } = useCart()
+  const { loading, loadingWrapper } = useLoaders()
 
-	const { cartRemoveDiscountCode } = useCart()
-	const { loading, loadingWrapper } = useLoaders()
+  const handleDelete = async () => {
+    await loadingWrapper(() => cartRemoveDiscountCode(discountCode.code))
+  }
 
-	const handleDelete = async () => {
-		await loadingWrapper(() => cartRemoveDiscountCode(discountCode.code))
-	}
-
-	return (
-		<Box
-			sx={{
-				...sx.root,
-				...(loading && sx.loading),
-				...(!discountCode?.applicable && sx.disabled),
-			}}
-		>
-			<Typography variant="body1" sx={sx.label}>
-				Discount code
-			</Typography>
-			<Stack spacing={0.5} direction="row" sx={sx.codeContent}>
-				<Icon name="Tag" size={18} />
-				<Typography variant="button" sx={sx.discountCode}>
-					{discountCode.code}
-				</Typography>
-				<IconButton onClick={handleDelete} size="small">
-					<Icon name="X" size={18} />
-				</IconButton>
-			</Stack>
-		</Box>
-	)
-}
-
-export default ShopifyCartDiscountCode
-
-const sx = {
-	root: {
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		width: '100%',
-	},
-	label: {
-		color: 'text.secondary',
-	},
-	value: {
-		textAlign: 'right',
-	},
-	codeContent: {
-		display: 'flex',
-		justifyContent: 'flex-end',
-		alignItems: 'center',
-	},
-	discountCode: {
-		cursor: 'pointer',
-		color: 'text.secondary',
-	},
-	disabled: {
-		opacity: 0.5,
-	},
-	loading: {
-		opacity: 0.5,
-	},
+  return (
+    <div className={cn(
+      "flex flex-row justify-between w-full",
+      loading && "opacity-50",      
+    )}>
+      <Typography variant="body1">
+        Discounts
+      </Typography>
+      <div className="flex flex-row items-center space-x-2">
+        <Label label={ discountCode.code } />
+        <IconButton onClick={handleDelete}>          
+          <Icon name="Trash" size={20} />
+        </IconButton>
+      </div>
+    </div>
+  )
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
-import { Box, Stack } from '@mui/material'
+import { Stack } from '../../../tailwind'
 import { ShopifyContext } from 'frontend-shopify'
 import { Drawer, Placeholder } from '../..'
 import {
@@ -13,12 +13,6 @@ import {
 
 type ShopifyCartProps = {
 	title?: string
-}
-
-interface ShopifyContextType {
-	cart: any // replace ShopifyCartType with the actual type of your cart
-	cartOpen: () => void
-	toggleCart: () => void
 }
 
 const ShopifyCart: React.FC<ShopifyCartProps> = (props) => {
@@ -41,21 +35,26 @@ const ShopifyCart: React.FC<ShopifyCartProps> = (props) => {
 			open={cartOpen}
 			handleClose={toggleCart}
 			title={title}
+      buttons={
+        <ShopifyCheckoutButton />
+      }
 		>
 			{cart?.lines?.edges?.length > 0 ? (
-				<Stack sx={sx.root} spacing={4}>
+        <div className='flex flex-col justify-between h-full'>
+				<div className='flex flex-col space-y-4'>
 					<ShopifyCartLines />
-					<ShopifyCartDiscounts />
-					<ShopifyCartTotals />
-					<ShopifyCheckoutButton />
-				</Stack>
+					<ShopifyCartDiscounts />				
+				</div>
+        <ShopifyCartTotals />
+        </div>
 			) : (
-				<Box sx={sx.empty}>
+				<div className="h-1/2 flex flex-cols justify-center items-center">
 					<Placeholder
+            icon={'ShoppingCart'}
 						title="Your cart is empty"
-						description="Items you add to your cart will siteear here."
+						description="Continue shopping to add items to your cart"
 					/>
-				</Box>
+				</div>
 			)}
 		</Drawer>
 	)
@@ -63,36 +62,3 @@ const ShopifyCart: React.FC<ShopifyCartProps> = (props) => {
 
 export default ShopifyCart
 
-const sx = {
-	root: {
-		width: '100%',
-		maxWidth: {
-			xs: '100vw',
-			sm: '100%',
-		},
-	},
-	stickyPanel: {
-		zIndex: 100,
-		borderTop: '1px solid',
-		borderColor: 'divider',
-		position: {
-			xs: 'fixed',
-			sm: 'static',
-		},
-		bottom: {
-			xs: '0',
-			sm: 'unset',
-		},
-		pb: {
-			xs: 4,
-			sm: 0,
-		},
-		width: {
-			xs: 'calc(100% - 64px)',
-			sm: 'unset',
-		},
-	},
-	empty: {
-		mt: '100px',
-	},
-}

@@ -4,36 +4,42 @@ import { Image, Icon } from '../../../components'
 import { Typography } from '../../../tailwind'
 import { useRouter } from 'next/router'
 import { LineItemType } from '../../../types'
+import { Button } from '../../../shadcn/ui/button'
 import { cn } from '../../../shadcn/lib/utils'
+import { Plus, Minus } from 'lucide-react'
 
 type CartQuantityInputProps = {
   quantity: number
   handleAddQuantity: (event: any) => void
   handleRemoveQuantity: (event: any) => void
+  buttonClasses?: string
 }
 
 const CartQuantityInput: React.FC<CartQuantityInputProps> = (props) => {
-  const { quantity, handleAddQuantity, handleRemoveQuantity } = props
+  const { buttonClasses='w-[32px] p-0', quantity, handleAddQuantity, handleRemoveQuantity } = props
 
   return (
     <div className="inline-flex rounded-md shadow-sm" role="group">
-      <button
+      <Button
+        variant="secondary"
+        className={cn(buttonClasses, "rounded-r-none border-r-0")}
         onClick={handleRemoveQuantity}
-        className="px-2 py-1 text-sm font-medium text-foreground bg-background border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
       >
-        <Icon name="Minus" size={16} />
-      </button>
-      <button
-        className="px-2 py-1 text-sm font-medium text-foreground bg-background border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+        <Minus size={20} />
+      </Button>
+      <Button
+        variant="secondary"
+        className={cn(buttonClasses, "rounded-none border-x")}
       >
         {quantity}
-      </button>
-      <button
+      </Button>
+      <Button
+        variant="secondary"
+        className={cn(buttonClasses, "rounded-l-none border-l-0")}
         onClick={handleAddQuantity}
-        className="px-2 py-1 text-sm font-medium text-foreground bg-background border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
       >
-        <Icon name="Plus" size={16} />
-      </button>
+        <Plus size={20} />
+      </Button>
     </div>
   )
 }

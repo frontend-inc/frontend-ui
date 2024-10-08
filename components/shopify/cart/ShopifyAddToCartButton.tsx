@@ -2,8 +2,7 @@ import React, { useState, useContext } from 'react'
 import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
 import { useAlerts } from '../../../hooks'
-import { Stack, Button } from '@mui/material'
-import { IconLoading } from '../..'
+import { Button } from '../../../tailwind'
 import {
 	ShopifyProductFavoriteButton,
 	ShopifyQuantitySelector,
@@ -32,7 +31,6 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 	const { loading, cartLineAdd } = useCart()
 
 	const {
-		size = 'large',
 		label = 'Add to Cart',
 		product,
 		variant,
@@ -88,7 +86,7 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 
 	if (!product) return null
 	return (
-		<Stack direction="column" spacing={1} sx={sx.fullWidth}>
+		<div className="flex flex-col space-y-2">
 			{enableSubscription && (
 				<ShopifySubscriptionSelector
 					product={product}
@@ -96,10 +94,9 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 					handleChange={handleSellingPlanChange}
 				/>
 			)}
-			<Stack direction="row" spacing={1} sx={sx.fullWidth}>
+			<div className='flex flex-row space-x-2 justify-content items-center'>
 				{enableQuantity == true && (
 					<ShopifyQuantitySelector
-						size={size}
 						quantity={quantity}
 						handleAddQuantity={handleAddQuantity}
 						handleRemoveQuantity={handleRemoveQuantity}
@@ -107,31 +104,19 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 				)}
 				<Button
 					fullWidth
-					sx={{
-						...sx.addToCartButton,
-						...(size == 'small' && sx.addToCartButtonSmall),
-					}}
-					color="primary"
 					onClick={handleAddToCart}
 					variant={buttonVariant}
-					size={size}
-					startIcon={
-						loading && (
-							<IconLoading
-								color={
-									buttonVariant == 'contained'
-										? 'primary.contrastText'
-										: 'primary.main'
-								}
-							/>
-						)
-					}
+          loading={ loading }					
 				>
 					{label}
 				</Button>
-				{enableFavorites && <ShopifyProductFavoriteButton product={product} />}
-			</Stack>
-		</Stack>
+				{enableFavorites && (
+          <ShopifyProductFavoriteButton 
+            product={product} 
+          />
+        )}
+			</div>
+		</div>
 	)
 }
 

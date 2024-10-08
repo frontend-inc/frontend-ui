@@ -1,6 +1,6 @@
 import React from 'react'
 import { useCart } from 'frontend-shopify'
-import { Stack } from '@mui/material'
+import { Stack } from '../../../tailwind'
 import { formatCurrency } from 'frontend-shopify'
 import {
 	ShopifyCartText,

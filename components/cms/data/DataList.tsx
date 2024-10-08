@@ -124,6 +124,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 	return (
 		<ResourceProvider name={name} url={url} foreignUrl={foreignUrl}>
 			<DataFetcher query={query}>
+        <div className="flex flex-col space-y-2">
 				<Header
 					url={url}
 					query={query}
@@ -167,6 +168,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 					description={emptyDescription}
 					{...slots.destroy}
 				/>
+        </div>
 			</DataFetcher>
 		</ResourceProvider>
 	)
