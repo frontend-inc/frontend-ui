@@ -48,7 +48,7 @@ export default function SwipeableShopifyProductImages({
               key={image.id} 
               className="w-full overflow-hidden"
               onMouseDown={onMouseDown}
-              onAbort={onMouseUp}
+              onMouseUp={onMouseUp}              
             >              
               <Image
                 src={image?.url}

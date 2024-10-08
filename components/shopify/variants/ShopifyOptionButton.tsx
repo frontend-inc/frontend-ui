@@ -1,41 +1,40 @@
 import React from 'react'
-import { Button } from '@mui/material'
+import { Button } from "../../../shadcn/ui/button"
+import { cn } from "../../../shadcn/lib/utils"
 
 type ShopifyOptionButtonProps = {
-	value: string
-	name: string
-	active: boolean
-	handleClick: any
-	children: any
-	width?: number
-	justifyContent?: string
+  value: string
+  name: string
+  active: boolean
+  handleClick: (name: string, value: string) => void
+  children: React.ReactNode
+  width?: number
+  justifyContent?: string
 }
 
-const ShopifyOptionButton: React.FC<ShopifyOptionButtonProps> = (props) => {
-	const { value, name, active, handleClick, children } = props
-
-	return (
-		<Button
-			sx={{
-				...sx.button,
-				...(active && sx.active),
-			}}
-			variant="contained"
-			color={active ? 'primary' : 'secondary'}
-			onClick={() => handleClick(name, value)}
-		>
-			{children}
-		</Button>
-	)
+const ShopifyOptionButton: React.FC<ShopifyOptionButtonProps> = ({
+  value,
+  name,
+  active,
+  handleClick,
+  children,
+  width,
+  justifyContent
+}) => {
+  return (
+    <Button
+      className={cn(
+        "whitespace-nowrap",
+        active ? "opacity-100" : "opacity-80",
+        width && `w-${width}`,
+        justifyContent && `justify-${justifyContent}`
+      )}
+      variant={active ? "default" : "secondary"}
+      onClick={() => handleClick(name, value)}
+    >
+      {children}
+    </Button>
+  )
 }
 
 export default ShopifyOptionButton
-
-const sx = {
-	active: {
-		opacity: 1,
-	},
-	button: {
-		textWrap: 'nowrap',
-	},
-}

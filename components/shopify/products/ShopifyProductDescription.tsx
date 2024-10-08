@@ -1,5 +1,6 @@
 import React from 'react'
-import { Typography } from '@mui/material'
+import { AccordionItem } from '../../../components'
+import { Typography } from '../../../tailwind'
 import { ShopifyProductType } from 'frontend-shopify'
 
 type ShopifyProductDescriptionProps = {
@@ -10,19 +11,17 @@ type ShopifyProductDescriptionProps = {
 const ShopifyProductDescription: React.FC<ShopifyProductDescriptionProps> = (
 	props
 ) => {
-	const { product, color = 'text.secondary' } = props
+	const { product } = props
 
+  if(!product?.description || product?.description?.length == 0) return null;
 	return (
-		<Typography variant="body2" color={color} sx={sx.description}>
-			{product?.description}
-		</Typography>
+    <AccordionItem
+      primary='Description'
+      secondary={ 
+        product?.description 
+      }
+    />		
 	)
 }
 
 export default ShopifyProductDescription
-
-const sx = {
-	description: {
-		whiteSpace: 'pre-wrap',
-	},
-}

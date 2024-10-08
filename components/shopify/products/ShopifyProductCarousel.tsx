@@ -1,6 +1,5 @@
 import React from 'react'
 import { useSegment } from '../../../hooks/addons'
-import { Box } from '@mui/material'
 import { ShopifyProductCard } from '..'
 import { useRouter } from 'next/router'
 import { Carousel } from '../..'
@@ -53,39 +52,30 @@ const ShopifyProductCarousel: React.FC<ShopifyProductCarouselProps> = (
 	}
 
 	return (
-		<Box sx={sx.root}>
-			<Carousel
-				enableAutoPlay={enableAutoPlay}
-				enableArrows={enableArrows}
-				enableDots={enableDots}
-			>
-				{products?.map((product) => (
-					<Box sx={sx.item} key={product.id}>
-						<ShopifyProductCard
-							product={product}
-							handleClick={() => handleClick(product)}
-							buttonText={buttonText}
-							enableBorder={enableBorder}
-							enableAddToCart={enableAddToCart}
-							enableQuickShop={enableQuickShop}
-							enableQuantity={enableQuantity}
-							enableOkendoStarRating={enableOkendoStarRating}
-						/>
-					</Box>
-				))}
-			</Carousel>
-		</Box>
+    <Carousel
+      enableAutoPlay={enableAutoPlay}
+      enableArrows={enableArrows}
+      enableDots={enableDots}
+    >
+      {products?.map((product) => (
+        <div 
+          key={product.id}
+          className='px-10 pb-4'
+        >
+          <ShopifyProductCard
+            product={product}
+            handleClick={() => handleClick(product)}
+            buttonText={buttonText}
+            enableBorder={enableBorder}
+            enableAddToCart={enableAddToCart}
+            enableQuickShop={enableQuickShop}
+            enableQuantity={enableQuantity}
+            enableOkendoStarRating={enableOkendoStarRating}
+          />
+        </div>
+      ))}
+    </Carousel>
 	)
 }
 
 export default ShopifyProductCarousel
-
-const sx = {
-	root: {
-		maxWidth: '100%',
-	},
-	item: {
-		px: '10px',
-		pb: 4,
-	},
-}

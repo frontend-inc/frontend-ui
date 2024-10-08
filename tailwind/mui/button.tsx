@@ -34,6 +34,7 @@ const Button: React.FC<ButtonProps> = ({
   disabled,
   ...props
 }) => {
+  
   const sizeMap: Record<ButtonSize, ShadcnButtonProps['size']> = {
     small: 'sm',
     medium: 'default',

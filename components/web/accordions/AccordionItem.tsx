@@ -5,15 +5,12 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from '../../../shadcn/ui/accordion'
+import { Typography } from '../../../tailwind'
 import { cn } from '../../../shadcn/lib/utils'
-import { Icon } from '../..'
 
 type AccordionItemProps = {
 	primary: string
 	secondary: React.ReactNode
-	image?: string
-	icon?: string
-	startIcon?: string
 	disablePadding?: boolean
 }
 
@@ -21,10 +18,7 @@ const AccordionItemComponent: React.FC<AccordionItemProps> = (props) => {
 	const {
 		primary,
 		secondary,
-		startIcon,
-		icon = 'Plus',
 		disablePadding,
-		image,
 	} = props
 
 	return (
@@ -37,12 +31,12 @@ const AccordionItemComponent: React.FC<AccordionItemProps> = (props) => {
 				)}
 			>
 				<AccordionTrigger className="hover:no-underline">
-					<div className="flex items-center space-x-1">
-						<span className="text-lg font-medium">{primary}</span>
-					</div>
+          <Typography variant="subtitle1">
+            {primary}
+          </Typography>					
 				</AccordionTrigger>
 				<AccordionContent className="bg-background">
-					<div className="flex space-x-2">{secondary}</div>
+        <Typography variant="body1" className='text-muted-foreground'>{secondary}</Typography>
 				</AccordionContent>
 			</AccordionItem>
 		</Accordion>

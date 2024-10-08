@@ -6,14 +6,12 @@ import {
 	ShopifyProductType,
 } from 'frontend-shopify'
 import {
-	Accordion,
-	AccordionDetails,
-	AccordionSummary,
-	Box,
-	Typography,
-} from '@mui/material'
+	AccordionItem
+} from '../../../components'
+import { 
+  Typography
+} from '../../../tailwind'
 import { ShopifyMetafieldRichText } from '../../shopify'
-import { Icon } from '../../ui'
 
 const PLAIN_TEXT_TYPES = ['single_line_text_field', 'multi_line_text_field']
 
@@ -32,32 +30,31 @@ const ShopifyProductMetafields: React.FC<ShopifyProductMetafieldsProps> = (
 	const { product, metafields } = props
 
 	return (
-		<Box sx={sx.root}>
+		<div className='w-full'>
 			{metafields?.map((metafield, index) => {
 				const type = getMetafieldType(product, metafield.name)
 				const value = getMetafieldValue(product, metafield.name)
 				if (!SUPPORTED_METAFIELD_TYPES.includes(type)) return null
 				return (
-					<Accordion sx={sx.accordion} elevation={0} key={index}>
-						<AccordionSummary expandIcon={<Icon name="ChevronDown" />}>
-							<Typography variant="subtitle2" color="text.primary">
-								{metafield.label}
-							</Typography>
-						</AccordionSummary>
-						<AccordionDetails>
-							{PLAIN_TEXT_TYPES.includes(type) && (
-								<Typography variant="body1" color="text.secondary">
+          <AccordionItem 
+            //@ts-ignore
+            primary={metafield.label}
+            secondary={
+              <div>
+              {PLAIN_TEXT_TYPES.includes(type) && (
+								<Typography variant="body1">
 									{value}
 								</Typography>
 							)}
 							{RICH_TEXT_TYPES.includes(type) && (
 								<ShopifyMetafieldRichText value={value} />
 							)}
-						</AccordionDetails>
-					</Accordion>
+              </div>
+            }
+          />					
 				)
 			})}
-		</Box>
+		</div>
 	)
 }
 

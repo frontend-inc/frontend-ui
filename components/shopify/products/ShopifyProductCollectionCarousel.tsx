@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { Stack } from '@mui/material'
 import { useCollections } from 'frontend-shopify'
 import { ShopifyProductCarousel } from '../../../components/shopify'
 
@@ -41,21 +40,19 @@ const ShopifyProductCollectionCarousel: React.FC<
 	}, [handle])
 
 	return (
-		<Stack spacing={2}>
-			<ShopifyProductCarousel
-				href={href}
-				loading={loading}
-				products={products}
-				enableAutoPlay={enableAutoPlay}
-				enableArrows={enableArrows}
-				enableDots={enableDots}
-				enableBorder={enableBorder}
-				enableAddToCart={enableAddToCart}
-				enableQuickShop={enableQuickShop}
-				enableQuantity={enableQuantity}
-				enableOkendoStarRating={enableOkendoStarRating}
-			/>
-		</Stack>
+    <ShopifyProductCarousel
+      href={href}
+      loading={loading}
+      products={products}
+      enableAutoPlay={enableAutoPlay}
+      enableArrows={enableArrows}
+      enableDots={enableDots}
+      enableBorder={enableBorder}
+      enableAddToCart={enableAddToCart}
+      enableQuickShop={enableQuickShop}
+      enableQuantity={enableQuantity}
+      enableOkendoStarRating={enableOkendoStarRating}
+    />
 	)
 }
 

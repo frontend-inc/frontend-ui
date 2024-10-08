@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Stack } from '@mui/material'
 import {
 	ProductSortKeyType,
 	useCollections,
@@ -77,8 +76,8 @@ const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (
 	}, [handle, filters, sortKey, reverse])
 
 	return (
-		<Stack spacing={2}>
-			<Stack direction="row" spacing={1}>
+		<div className="flex flex-col space-y-2">
+			<div className="flex flex-row space-x-2">
 				{enableFilters && (
 					<ShopifyProductFilterButton
 						filters={filters}
@@ -95,7 +94,7 @@ const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (
 						handleClick={handleSortClick}
 					/>
 				)}
-			</Stack>
+			</div>
 			<ShopifyProducts
 				href={String(href)}
 				loading={loading}
@@ -106,7 +105,7 @@ const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (
 				enableQuantity={enableQuantity}
 				enableOkendoStarRating={enableOkendoStarRating}
 			/>
-		</Stack>
+		</div>
 	)
 }
 

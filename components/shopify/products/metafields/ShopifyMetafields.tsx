@@ -4,15 +4,9 @@ import {
 	getMetafieldType,
 	ShopifyMetafieldType,
 } from 'frontend-shopify'
-import {
-	Accordion,
-	AccordionDetails,
-	AccordionSummary,
-	Box,
-	Typography,
-} from '@mui/material'
 import { ShopifyMetafieldRichText } from '../../../shopify'
-import { Icon } from '../../../ui'
+import { AccordionItem } from '../../../../components'
+import { Typography } from '../../../../tailwind'
 import { useProducts } from 'frontend-shopify'
 
 const PLAIN_TEXT_TYPES = ['single_line_text_field', 'multi_line_text_field']
@@ -42,7 +36,7 @@ const ShopifyProductMetafields: React.FC<ShopifyProductMetafieldsProps> = (
 
 	if (!product || !metafields) return null
 	return (
-		<Box sx={sx.root}>
+		<div className='w-full'>
 			{product &&
 				metafields?.map((metafield, index) => {
 					const { label, name } = metafield
@@ -51,48 +45,26 @@ const ShopifyProductMetafields: React.FC<ShopifyProductMetafieldsProps> = (
 					const value = getMetafieldValue(product, key)
 
 					return (
-						<Accordion sx={sx.accordion} elevation={0} key={index}>
-							<AccordionSummary
-								sx={sx.accordionSummary}
-								expandIcon={<Icon name="Plus" />}
-							>
-								<Typography variant="subtitle2">{label}</Typography>
-							</AccordionSummary>
-							<AccordionDetails>
-								{PLAIN_TEXT_TYPES.includes(type) && (
-									<Typography variant="body1" color="textSecondary">
-										{value}
-									</Typography>
-								)}
-								{RICH_TEXT_TYPES.includes(type) && (
-									<ShopifyMetafieldRichText value={value} />
-								)}
-								{!value && (
-									<Typography variant="body1" color="textSecondary">
-										Information coming soon.
-									</Typography>
-								)}
-							</AccordionDetails>
-						</Accordion>
+            <AccordionItem 
+              primary={ label ? label : '' }
+              secondary={
+                <div>
+                  {PLAIN_TEXT_TYPES.includes(type) && (
+                    <Typography variant="body1">
+                      {value}
+                    </Typography>
+                  )}
+                  {RICH_TEXT_TYPES.includes(type) && (
+                    <ShopifyMetafieldRichText value={value} />
+                  )}
+                </div>
+              }
+            />						
 					)
 				})}
-		</Box>
+		</div>
 	)
 }
 
 export default ShopifyProductMetafields
 
-const sx = {
-	root: {
-		my: 2,
-		borderRadius: 0,
-	},
-	accordionSummary: {
-		borderTop: '1px solid',
-		borderColor: 'divider',
-	},
-	accordion: {
-		borderColor: 'divider',
-		my: '0px !important',
-	},
-}

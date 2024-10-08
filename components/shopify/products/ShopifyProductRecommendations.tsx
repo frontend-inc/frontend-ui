@@ -4,7 +4,6 @@ import {
 	ShopifyProducts,
 	ShopifyProductCarousel,
 } from '../../../components/shopify'
-import { Box } from '@mui/material'
 
 export type ShopifyProductRecommendationsProps = {
 	handle?: string
@@ -71,7 +70,7 @@ const ShopifyProductRecommendations: React.FC<
 	}, [handle])
 
 	return (
-		<Box sx={sx.root}>
+		<div className='w-full'>
 			{layout == 'grid' && (
 				<ShopifyProducts
 					href={href}
@@ -98,14 +97,8 @@ const ShopifyProductRecommendations: React.FC<
 					buttonText={buttonText}
 				/>
 			)}
-		</Box>
+		</div>
 	)
 }
 
 export default ShopifyProductRecommendations
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Modal } from '../../../components'
-import { ShopifyProductDetails } from '../../../components/shopify'
-import { ShopifyProductProvider, ShopifyProductType } from 'frontend-shopify'
+import { ShopifyProductCard } from '../../../components/shopify'
+import { ShopifyProductType } from 'frontend-shopify'
 
 type ShopifyProductModalProps = {
 	shopifyProduct: ShopifyProductType
@@ -22,13 +22,11 @@ const ShopifyProductModal: React.FC<ShopifyProductModalProps> = (props) => {
 
 	return (
 		<Modal open={open} handleClose={handleClose} maxWidth={'md'}>
-			<ShopifyProductProvider>
-				<ShopifyProductDetails
-					shopifyProduct={shopifyProduct}
-					enableQuantity={enableQuantity}
-					buttonText={buttonText}
-				/>
-			</ShopifyProductProvider>
+      <ShopifyProductCard
+        product={shopifyProduct}
+        enableQuantity={enableQuantity}
+        buttonText={buttonText}
+      />
 		</Modal>
 	)
 }
