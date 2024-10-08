@@ -1,87 +1,68 @@
 import React, { useEffect, useState } from 'react'
-import { Box, IconButton } from '@mui/material'
 import { isProductLiked } from '../../../helpers'
 import { useSocial, useApp } from '../../../hooks'
 import { useAuth } from 'frontend-js'
-import { Favorite, FavoriteBorder } from '@mui/icons-material'
+import { Heart } from 'lucide-react'
+import { IconButton } from '../../../tailwind'
+import { cn } from '../../../shadcn/lib/utils'
 
 type ProductLikeButtonProps = {
-	product: any
-	size?: 'small' | 'large'
-	color?: string
-	numLikes?: number
+  product: any
+  size?: 'small' | 'large'
+  color?: string
+  numLikes?: number
 }
 
-const ProductLikeButton: React.FC<ProductLikeButtonProps> = (props) => {
-	const { product, color = 'text.secondary', size = 'small' } = props
+export default function ProductLikeButton({ 
+  product, 
+  color = 'text-secondary', 
+  size = 'small',
+  numLikes 
+}: ProductLikeButtonProps) {
+  const { currentUser } = useAuth()
+  const { setAuthOpen } = useApp()
 
-	const { currentUser } = useAuth()
-	const { setAuthOpen } = useApp()
+  const [liked, setLiked] = useState(false)
 
-	const [liked, setLiked] = useState(false)
+  const { likeProduct, unlikeProduct } = useSocial()
 
-	const { likeProduct, unlikeProduct } = useSocial()
+  const handleClick = async () => {
+    if (!currentUser?.id) {
+      return setAuthOpen(true)
+    }
+    if (liked) {
+      setLiked(false)
+      await unlikeProduct(product?.handle)
+    } else {
+      setLiked(true)
+      await likeProduct(product?.handle)
+    }
+  }
 
-	const handleClick = async () => {
-		if (!currentUser?.id) {
-			return setAuthOpen(true)
-		}
-		if (liked) {
-			setLiked(false)
-			await unlikeProduct(product?.handle)
-		} else {
-			setLiked(true)
-			await likeProduct(product?.handle)
-		}
-	}
+  useEffect(() => {
+    if (currentUser && product?.handle) {
+      setLiked(isProductLiked(currentUser, product?.handle))
+    }
+  }, [currentUser, product?.handle])
 
-	useEffect(() => {
-		if (currentUser && product?.handle) {
-			if (isProductLiked(currentUser, product?.handle)) {
-				setLiked(true)
-			} else {
-				setLiked(false)
-			}
-		}
-	}, [currentUser, product?.handle])
-
-	return (
-		<Box>
-			<IconButton
-				onClick={handleClick}
-				sx={{
-					color,
-					'&:hover': {
-						color,
-					},
-					...(size == 'small' ? sx.small : sx.large),
-					...(liked && sx.selected),
-				}}
-			>
-				{liked ? (
-					<Favorite fontSize="small" />
-				) : (
-					<FavoriteBorder fontSize="small" />
-				)}
-			</IconButton>
-		</Box>
-	)
-}
-
-export default ProductLikeButton
-
-const sx = {
-	small: {},
-	selected: {
-		transition: 'transform 0.2s',
-		color: 'primary.main',
-		'&:hover': {
-			color: 'primary.dark',
-		},
-		borderColor: 'primary.main',
-	},
-	large: {
-		border: '1px solid',
-		borderColor: 'divider',
-	},
+  return (
+    <div>
+      <IconButton 
+        onClick={handleClick} 
+        className={cn(          
+          size === 'large' && 'border border-divider',
+          (size === 'large' && liked) && 'bg-primary hover:bg-primary-dark',
+          'transition-transform duration-200',
+          liked && 'transform scale-110'
+        )}
+      >
+        <Heart 
+          className={cn(
+            "w-5 h-5 text-foreground",
+            liked ? "fill-current" : "stroke-current"
+          )}
+        />
+      </IconButton>
+    </div>
+  )
 }
