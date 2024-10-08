@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { cn } from "../../../shadcn/lib/utils"
+import { cn } from "../../../../shadcn/lib/utils"
 
 type ShopifyMetafieldRichTextProps = {
   value: string
