@@ -19,12 +19,12 @@ const HeroList: React.FC<HeroCardProps> = (props) => {
 
 	return (
 		<Container maxWidth="lg">
-			<Stack className="w-full justify-start items-center space-y-4">
+			<Stack className="w-full justify-start items-center space-y-6">
 				{secondaryAction}
 				<Typography color="text.primary" variant="h3">
 					{primary}
 				</Typography>
-				<div className="w-full rounded">
+				<div className="w-full rounded py-10">
 					<Image
 						src={image}
 						alt={primary}

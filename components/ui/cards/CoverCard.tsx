@@ -1,6 +1,6 @@
 import React from 'react'
 import { cn } from "../../../shadcn/lib/utils"
-import { Image, TouchableOpacity, LightDarkMode } from '../..'
+import { Image, TouchableOpacity } from '../..'
 import { Typography } from '../../../tailwind'
 import { CardProps } from './Card'
 
@@ -21,11 +21,10 @@ const CoverCard: React.FC<CardProps> = (props) => {
   } = props || {}
 
   return (
-    <LightDarkMode mode="dark">
+    <div className='dark'>
       <div 
         className={cn(
           "relative flex flex-col overflow-hidden w-full rounded",
-          slots.item.className
         )}
       >
         <TouchableOpacity handleClick={handleClick}>
@@ -34,32 +33,28 @@ const CoverCard: React.FC<CardProps> = (props) => {
             src={image}
             height={height}
             alt={primary}
-            aspectRatio={3/4}
+            aspectRatio={4/5}
             className={cn("w-full", slots.image.className)}
           />
         </TouchableOpacity>
-        <div className="absolute bottom-0 left-0 z-10 w-full p-1">
-          <div className="flex flex-row items-center w-full space-x-1">
-            <div className="flex flex-col justify-center items-start w-full px-0">
-              <div className="flex flex-col justify-between items-end w-full">
-                <div className="w-full">
-                  <Typography variant="subtitle1">
-                    {primary}
-                  </Typography>
-                  <Typography variant="body2">
-                    {secondary}
-                  </Typography>
-                  <div className="flex flex-row justify-between">
-                    {actions}
-                    {secondaryAction}
-                  </div>
-                </div>
+        <div className="absolute bottom-0 left-0 z-10 w-full p-3">
+          <div className="flex flex-col justify-between items-end w-full">
+            <div className="w-full">
+              <Typography variant="subtitle1">
+                {primary}
+              </Typography>
+              <Typography variant="body2">
+                {secondary}
+              </Typography>
+              <div className="flex flex-row justify-between">
+                {actions}
+                {secondaryAction}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </LightDarkMode>
+    </div>
   )
 }
 

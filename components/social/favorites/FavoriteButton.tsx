@@ -1,99 +1,68 @@
 import React, { useEffect, useState } from 'react'
-import { Box, IconButton } from '@mui/material'
 import { isFavorited } from '../../../helpers'
 import { useAuth } from 'frontend-js'
 import { useSocial, useApp } from '../../../hooks'
-import { Bookmark, BookmarkBorder } from '@mui/icons-material'
+import { Bookmark,  } from 'lucide-react'
+import { IconButton } from '../../../tailwind'
+import { cn } from '../../../shadcn/lib/utils'
 
 type FavoriteButtonProps = {
-	resource: any
-	size?: 'small' | 'large'
-	color?: string
-	numFavorites?: number
+  resource: any
+  size?: 'small' | 'large'
+  variant?: 'rounded' | 'circular'
 }
 
-const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
-	const {
-		resource,
-		size = 'small',
-		color = 'text.secondary',
-		numFavorites,
-	} = props
+export default function FavoriteButton({ 
+  resource, 
+  size = 'small', 
+  variant = 'rounded'
+}: FavoriteButtonProps) {
+  const { fetchMe, currentUser } = useAuth()
+  const { setAuthOpen } = useApp()
 
-	const { fetchMe, currentUser } = useAuth()
-	const { setAuthOpen } = useApp()
+  const [isFavorite, setIsFavorite] = useState(false)
 
-	const [isFavorite, setIsFavorite] = useState(false)
+  const { favorite, unfavorite } = useSocial()
 
-	const { favorite, unfavorite } = useSocial()
+  const handleClick = async (ev: React.MouseEvent) => {
+    if (!currentUser?.id) {
+      return setAuthOpen(true)
+    }
+    if (isFavorite) {
+      setIsFavorite(false)
+      await unfavorite(resource?.handle)
+      fetchMe()
+    } else {
+      setIsFavorite(true)
+      await favorite(resource?.handle)
+      fetchMe()
+    }
+  }
 
-	const handleClick = async (ev) => {
-		if (!currentUser?.id) {
-			return setAuthOpen(true)
-		}
-		if (isFavorite) {
-			setIsFavorite(false)
-			await unfavorite(resource?.handle)
-			fetchMe()
-		} else {
-			setIsFavorite(true)
-			await favorite(resource?.handle)
-			fetchMe()
-		}
-	}
+  useEffect(() => {
+    if (currentUser && resource?.handle) {
+      setIsFavorite(isFavorited(currentUser, resource?.handle))
+    }
+  }, [currentUser, resource?.handle])
 
-	useEffect(() => {
-		if (currentUser && resource?.handle) {
-			if (isFavorited(currentUser, resource?.handle)) {
-				setIsFavorite(true)
-			} else {
-				setIsFavorite(false)
-			}
-		}
-	}, [currentUser, resource?.handle])
-
-	return (
-		<Box>
-			<IconButton
-				onClick={handleClick}
-				sx={{
-					color,
-					'&:hover': {
-						color,
-					},
-					...(size === 'small' ? sx.small : sx.large),
-					...(isFavorite && sx.selected),
-				}}
-			>
-				{isFavorite ? (
-					<Bookmark fontSize="small" />
-				) : (
-					<BookmarkBorder fontSize="small" />
-				)}
-			</IconButton>
-		</Box>
-	)
-}
-
-export default FavoriteButton
-
-const sx = {
-	small: {},
-	selected: {
-		color: 'primary.main',
-		'&:hover': {
-			color: 'primary.dark',
-		},
-		borderColor: 'primary.main',
-	},
-	large: {
-		border: '1px solid',
-		borderColor: 'divider',
-		bgcolor: 'background.main',
-		color: 'text.secondary',
-		'&:hover': {
-			bgcolor: 'background.main',
-			color: 'text.secondary',
-		},
-	},
+  return (
+    <div>
+      <IconButton 
+        onClick={handleClick} 
+        className={cn(
+          'transition-transform duration-200',
+          variant == 'circular' ? 'rounded-full' : 'rounded-lg',
+          size === 'large' && 'border border-divider',
+          (size === 'large' && isFavorite) && 'transform scale-110',
+          isFavorite && 'bg-primary hover:bg-primary-dark'
+        )}
+      >
+        {isFavorite ? (
+          <Bookmark className="text-primary-foreground w-4 h-4" />
+        ) : (
+          <Bookmark className="text-foreground w-4 h-4" />
+        )}
+      </IconButton>
+    </div>
+  )
 }
