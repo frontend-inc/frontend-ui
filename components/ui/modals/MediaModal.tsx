@@ -1,44 +1,39 @@
 import React from 'react'
-import { Box, Backdrop, IconButton } from '@mui/material'
-import { Icon } from '../../../components'
+import { Backdrop } from '../../../tailwind'
+import { X } from 'lucide-react'
+import { cn } from "../../../shadcn/lib/utils"
 
-export type ShowImageModalProps = {
-	open: boolean
-	handleClose: () => void
-	children: React.ReactNode
+export type MediaModalProps = {
+  open: boolean
+  handleClose: () => void
+  children: React.ReactNode
 }
 
-const MediaModal: React.FC<ShowImageModalProps> = (props) => {
-	const { open, handleClose, children } = props || {}
+export default function MediaModal({ open, handleClose, children }: MediaModalProps) {
+  if (!open) return null
 
-	return (
-		<Backdrop open={open} onClick={handleClose} sx={sx.root}>
-			<Box sx={sx.imageContainer}>{children}</Box>
-			<IconButton sx={sx.closeButton} onClick={handleClose}>
-				<Icon name="X" color="common.white" />
-			</IconButton>
-		</Backdrop>
-	)
-}
-
-export default MediaModal
-
-const sx = {
-	root: {
-		zIndex: 9999,
-	},
-	closeButton: {
-		position: 'absolute',
-		top: 20,
-		right: 20,
-		bgcolor: 'rgb(0,0,0,0.5)',
-	},
-	imageContainer: {
-		borderRadius: 1,
-		overflow: 'hidden',
-		maxWidth: 'calc(100vw - 50px)',
-		maxHeight: 'calc(100vh - 50px)',
-		position: 'relative',
-		zIndex: 999,
-	},
+  return (
+    <Backdrop open={open} onClick={handleClose}>    
+      <div 
+        className={cn(
+          "relative rounded overflow-hidden",
+          "max-w-[calc(100vw-50px)] max-h-[calc(100vh-50px)]",
+          "z-[50]"
+        )}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {children}
+      </div>
+      <button
+        className={cn(
+          "absolute top-5 right-5 p-2 rounded-full",
+          "bg-black bg-opacity-50 hover:bg-opacity-75",
+          "transition-colors duration-200"
+        )}
+        onClick={handleClose}
+      >
+        <X className="h-6 w-6 text-white" />
+      </button>
+    </Backdrop>
+  )
 }

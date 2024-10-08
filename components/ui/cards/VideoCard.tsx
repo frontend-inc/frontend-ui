@@ -1,92 +1,69 @@
 import React from 'react'
-import {
-	UserChip,
-	FavoriteButton,
-	Image,
-	ButtonActions,
-	TouchableOpacity,
-	LightDarkMode,
-	Icon,
-} from '../..'
-import { IconButton, Box } from '@mui/material'
-import { CardProps } from './Card'
+import { Image, TouchableOpacity, Icon } from '../..'
+import { cn } from "../../../shadcn/lib/utils"
 
-const VideoCard: React.FC<CardProps> = (props) => {
-	const {
-		avatar,
-		primary,
-		secondaryAction,
-		handleClick,
-		image,
-		slots = {
-			item: {},
-			image: {},
-		},
-	} = props || {}
-
-	return (
-		<LightDarkMode mode="dark">
-			<Box sx={sx.root} {...slots.item}>
-				<TouchableOpacity handleClick={handleClick}>
-					<Image src={image} height={360} alt={primary} {...slots.image} />
-				</TouchableOpacity>
-				<IconButton sx={sx.playIcon} onClick={handleClick}>
-					<Icon name="Play" color="common.white" />
-				</IconButton>
-				<Box sx={sx.buttons}>{secondaryAction}</Box>
-				{avatar && <Box sx={sx.avatar}>{avatar}</Box>}
-			</Box>
-		</LightDarkMode>
-	)
+export type CardProps = {
+  avatar?: React.ReactNode
+  primary?: string
+  secondaryAction?: React.ReactNode
+  handleClick?: () => void
+  image?: string
+  slots?: {
+    item?: any
+    image?: any
+  }
 }
 
-export default VideoCard
-
-const sx = {
-	root: {
-		position: 'relative',
-		flexDirection: 'column',
-		overflow: 'hidden',
-		borderRadius: 1,
-		transition: 'box-shadow 0.3s',
-		'&:hover': {
-			boxShadow: 2,
-		},
-	},
-	gradient: {
-		'&::after': {
-			content: '""',
-			position: 'absolute',
-			bottom: 0,
-			left: 0,
-			width: '100%',
-			height: '50%',
-			background: 'linear-gradient(to top, rgb(0,0,0,0.5), transparent)',
-		},
-	},
-	buttons: {
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'flex-end',
-		position: 'absolute',
-		top: 10,
-		right: 10,
-	},
-	playIcon: {
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'flex-end',
-		position: 'absolute',
-		top: 'calc(50% - 20px)',
-		right: 'calc(50% - 20px)',
-		bgcolor: 'rgb(0,0,0,0.5)',
-	},
-	avatar: {
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'flex-end',
-		position: 'absolute',
-		bottom: 10,
-		left: 10,
-	},
+export default function VideoCard({
+  avatar,
+  primary,
+  secondaryAction,
+  handleClick,
+  image,
+  slots = {
+    item: {},
+    image: {},
+  },
+}: CardProps) {
+  return (
+    <div className="dark">
+      <div 
+        className={cn(
+          "relative flex flex-col overflow-hidden rounded",
+          "transition-shadow duration-300 hover:shadow-md",
+          "after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1/2",
+          "after:bg-gradient-to-t after:from-black/50 after:to-transparent"
+        )}
+        {...slots.item}
+      >
+        <TouchableOpacity handleClick={handleClick}>
+          <Image 
+            src={image} 
+            height={360} 
+            alt={primary} 
+            className="w-full h-auto"
+            {...slots.image} 
+          />
+        </TouchableOpacity>
+        <button 
+          className={cn(
+            "absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
+            "flex items-center justify-center",
+            "w-10 h-10 rounded-full bg-black/50"
+          )}
+          onClick={handleClick}
+        >
+          <Icon name="Play" className="text-white" />
+        </button>
+        <div className="absolute top-2.5 right-2.5 flex flex-row justify-end">
+          {secondaryAction}
+        </div>
+        {avatar && (
+          <div className="absolute bottom-2.5 left-2.5 flex flex-row justify-end">
+            {avatar}
+          </div>
+        )}
+      </div>
+    </div>
+  )
 }

@@ -7,15 +7,13 @@ type DataLayoutProps = {
   children: React.ReactNode
 }
 
-const DataLayout: React.FC<DataLayoutProps> = (props) => {
-  const { loading, grid = false, children } = props
-
+export default function DataLayout({ loading, grid = false, children }: DataLayoutProps) {
   return (
     <div
       className={cn(
         "w-full",
         grid 
-          ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pb-1" 
+          ? "grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(400px,1fr))] gap-4 pb-1" 
           : "flex flex-col gap-4",
         loading && "opacity-50"
       )}
@@ -24,5 +22,3 @@ const DataLayout: React.FC<DataLayoutProps> = (props) => {
     </div>
   )
 }
-
-export default DataLayout

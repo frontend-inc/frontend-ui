@@ -1,7 +1,6 @@
 import React from 'react'
 import { DisplayMetafield } from '../..'
 import { DisplayFieldType } from '../../../types'
-import { Stack } from '@mui/material'
 
 type DisplayMetafieldsProps = {
 	fields: DisplayFieldType[]
@@ -12,10 +11,10 @@ type DisplayMetafieldsProps = {
 }
 
 const DisplayMetafields: React.FC<DisplayMetafieldsProps> = (props) => {
-	const { fields, resource, alignItems = 'flex-start' } = props || {}
+	const { fields, resource } = props || {}
 
 	return (
-		<Stack sx={sx.root} direction={'column'} spacing={0}>
+		<div className='flex flex-col'>
 			{fields?.map((field, index) => (
 				<DisplayMetafield
 					key={index}
@@ -24,16 +23,8 @@ const DisplayMetafields: React.FC<DisplayMetafieldsProps> = (props) => {
 					disablePadding
 				/>
 			))}
-		</Stack>
+		</div>
 	)
 }
 
 export default DisplayMetafields
-
-const sx = {
-	root: {
-		borderTop: '1px solid',
-		borderColor: 'divider',
-		width: '100%',
-	},
-}

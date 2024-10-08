@@ -1,84 +1,44 @@
 import React from 'react'
-import { Box, Avatar as MuiAvatar, Typography } from '@mui/material'
+import { Avatar, AvatarImage, AvatarFallback } from "../../../shadcn/ui/avatar"
+import { cn } from "../../../shadcn/lib/utils"
 
 type UserAvatarProps = {
-	src?: string
-	variant?: 'circular' | 'rounded'
-	label?: string
-	size?: number
-	color?: string
-	enableGradient?: boolean
-	enableOverlay?: boolean
+  src?: string
+  variant?: 'circular' | 'rounded'
+  label?: string
+  size?: number
+  color?: string
+  enableGradient?: boolean
+  enableOverlay?: boolean
 }
 
-const Avatar: React.FC<UserAvatarProps> = (props) => {
-	const {
-		src,
-		color = '#333333',
-		label,
-		variant = 'rounded',
-		enableGradient = false,
-		enableOverlay = false,
-		size = 40,
-	} = props
+export default function UserAvatar({
+  src,
+  color = '#990000',
+  label,
+  variant = 'rounded',
+  size = 40,
+}: UserAvatarProps) {
 
-	return (
-		<MuiAvatar
-			src={src}
-			variant={variant}
-			sx={{
-				...sx.avatar,
-				height: size,
-				width: size,
-				bgcolor: src ? 'common.white' : color,
-				...(enableGradient && sx.gradient),
-				...(enableOverlay && sx.overlay),
-			}}
-		>
-			{label ? (
-				<Typography variant="button" color="background.default" sx={sx.label}>
-					{label}
-				</Typography>
-			) : (
-				<Box />
-			)}
-		</MuiAvatar>
-	)
-}
-
-export default Avatar
-
-const sx = {
-	avatar: {
-		display: 'flex',
-		pt: '2px',
-		bgcolor: 'secondary.main',
-	},
-	overlay: {
-		'&::after': {
-			content: '""',
-			borderRadius: 1,
-			position: 'absolute',
-			bottom: 0,
-			left: 0,
-			width: '100%',
-			height: '100%',
-			background: 'rgb(0,0,0,0.5)',
-		},
-	},
-	gradient: {
-		'&::after': {
-			content: '""',
-			borderRadius: 1,
-			position: 'absolute',
-			bottom: 0,
-			left: 0,
-			width: '100%',
-			height: '100%',
-			background: 'linear-gradient(to top, rgb(0,0,0,0.3), transparent)',
-		},
-	},
-	label: {
-		textTransform: 'uppercase',
-	},
+  const avatarClasses = cn(
+    variant === 'circular' ? 'rounded-full' : 'rounded',
+  )
+  return (
+    <Avatar 
+      className={avatarClasses}
+      style={{
+        width: size,
+        height: size,
+      }}
+    >
+      <AvatarImage 
+        src={src} 
+        alt="Avatar" 
+        className="object-cover" 
+      />
+      <AvatarFallback className={'bg-primary'}>
+        {label ? label.slice(0, 2) : null}
+      </AvatarFallback>
+    </Avatar>
+  )
 }

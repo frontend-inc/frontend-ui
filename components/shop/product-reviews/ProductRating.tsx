@@ -1,5 +1,5 @@
 import React from 'react'
-import { Rating, Stack, Typography } from '@mui/material'
+import { Rating, Stack, Typography } from '../../../tailwind'
 
 type ProductRatingProps = {
 	resource: any
@@ -12,8 +12,6 @@ type ProductRatingProps = {
 		| 'space-between'
 		| 'space-around'
 		| 'space-evenly'
-		| 'stretch'
-		| 'baseline'
 }
 
 const ProductRating: React.FC<ProductRatingProps> = (props) => {
@@ -33,15 +31,8 @@ const ProductRating: React.FC<ProductRatingProps> = (props) => {
 		>
 			{rating > 0 ? (
 				<Rating
-					size={size}
 					value={rating}
 					readOnly
-					sx={{
-						color: 'primary.main',
-						'& .MuiRating-iconEmpty': {
-							color: 'text.secondary',
-						},
-					}}
 				/>
 			) : (
 				<Typography color={'text.secondary'} variant="body2" sx={sx.noReviews}>

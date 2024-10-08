@@ -1,111 +1,60 @@
 import React from 'react'
-import {
-	Stack,
-	Box,
-	Button,
-	Divider,
-	Typography,
-	List,
-	ListItemIcon,
-	ListItem,
-	ListItemText,
-} from '@mui/material'
+import { Check } from 'lucide-react'
+import { cn } from "../../../shadcn/lib/utils"
+import { Button } from "../../../shadcn/ui/button"
+import { Card, CardContent, CardFooter, CardHeader } from "../../../shadcn/ui/card"
+import { Badge } from "../../../shadcn/ui/badge"
 import { SubscriptionType } from '../../../types'
-import { Label, Icon } from '../..'
+import { Typography } from '../../../tailwind'
 
 type SubscriptionTableCardProps = {
-	selected?: boolean
-	buttonText?: string
-	handleClick: () => void
-	subscription: SubscriptionType
+  selected?: boolean
+  buttonText?: string
+  handleClick: () => void
+  subscription: SubscriptionType
 }
 
-const SubscriptionTableCard: React.FC<SubscriptionTableCardProps> = (props) => {
-	const {
-		buttonText = 'Subscribe',
-		selected,
-		handleClick,
-		subscription,
-	} = props
-
-	return (
-		<Box
-			sx={{
-				...sx.root,
-				...(selected && sx.selected),
-			}}
-		>
-			<Stack sx={sx.content} direction="column" spacing={1}>
-				{subscription?.label && (
-					<Box>
-						<Label label={subscription.label} />
-					</Box>
-				)}
-				<Typography variant="body1" color="text.secondary">
-					{subscription.name}
-				</Typography>
-				<Typography variant="h5" color="text.primary">
-					{subscription.display_price}
-				</Typography>
-				<Divider />
-				<List dense disablePadding>
-					{subscription?.features?.map((feature, i) => (
-						<ListItem key={i}>
-							<ListItemIcon>
-								<Icon name="Check" color="text.secondary" />
-							</ListItemIcon>
-							<ListItemText
-								primary={
-									<Typography variant="body1" color="text.primary">
-										{feature}
-									</Typography>
-								}
-							/>
-						</ListItem>
-					))}
-				</List>
-			</Stack>
-			<Button
-				onClick={handleClick}
-				variant="contained"
-				color="primary"
-				fullWidth
-			>
-				{buttonText}
-			</Button>
-		</Box>
-	)
-}
-
-export default SubscriptionTableCard
-
-const sx = {
-	root: {
-		width: '100%',
-		p: 2,
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'space-between',
-		maxWidth: 400,
-		border: '1px solid',
-		borderColor: 'divider',
-		borderRadius: 1,
-		transition: 'all 0.3s ease-in-out',
-		'&:hover': {
-			boxShadow: 6,
-		},
-	},
-	content: {
-		minHeight: 300,
-	},
-	features: {
-		whiteSpace: 'pre-line',
-		color: 'text.primary',
-		mb: 0,
-	},
-	selected: {
-		border: '3px solid',
-		borderColor: 'primary.main',
-		transform: 'scale(1.05)',
-	},
+export default function SubscriptionTableCard({
+  buttonText = 'Subscribe',
+  selected,
+  handleClick,
+  subscription
+}: SubscriptionTableCardProps) {
+  return (
+    <Card className={cn(
+      "w-full max-w-sm",
+      "transition-all duration-300 ease-in-out",
+      "hover:shadow-lg hover:border-primary hover:border-3",
+    )}>
+      <CardHeader>
+        <div className="flex justify-between items-center">
+          {subscription?.label && (
+            <Badge variant="secondary">
+              {subscription.label}
+            </Badge>
+          )}
+        </div>
+        <Typography color='text.secondary' variant="subtitle1">{ subscription?.name }</Typography>        
+        <Typography variant="h4">{ subscription.display_price }</Typography>        
+      </CardHeader>
+      <CardContent>
+        <div className="mt-2 space-y-4  min-h-[150px]">
+          {subscription?.features?.map((feature, i) => (
+            <div key={i} className="flex items-start">
+              <Check className="w-5 h-5 mx-2 text-primary" />
+              <span className="text-sm">{feature}</span>
+            </div>
+          ))}
+        </div>
+      </CardContent>
+      <CardFooter>
+        <Button 
+          onClick={handleClick} 
+          className="w-full"          
+        >
+          {buttonText}
+        </Button>
+      </CardFooter>
+    </Card>
+  )
 }

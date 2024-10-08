@@ -3,9 +3,9 @@ import { Star, StarHalf } from 'lucide-react'
 import { cn } from '../../shadcn/lib/utils'
 
 interface RatingProps {
-	name: string
+	name?: string
 	value: number
-	onChange: (value: number) => void
+	onChange?: (value: number) => void
 	max?: number
 	precision?: 0.5 | 1
 	size?: 'sm' | 'md' | 'lg'

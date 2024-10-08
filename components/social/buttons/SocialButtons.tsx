@@ -1,11 +1,11 @@
 import React from 'react'
-import { Stack } from '@mui/material'
+import { Stack } from '../../../tailwind'
+import { cn } from '../../../shadcn/lib/utils'
 import {
 	CommentButton,
 	LikeButton,
 	FavoriteButton,
 	ShareButton,
-	AddToListButton,
 	ProductLikeButton,
 	ProductFavoriteButton,
 } from '../../../components'
@@ -21,9 +21,7 @@ type SocialButtonsProps = {
 	enableSharing?: boolean
 	enableProductLikes?: boolean
 	enableProductFavorites?: boolean
-	numLikes?: number
-	numFavorites?: number
-	justifyContent?: string
+	justifyContent?: 'flex-start' | 'center' | 'flex-end'
 	size?: 'small' | 'large'
 	color?: string
 }
@@ -39,8 +37,6 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 		enableSharing,
 		enableProductLikes,
 		enableProductFavorites,
-		numLikes,
-		numFavorites,
 		size = 'small',
 		justifyContent = 'flex-start',
 		color,
@@ -58,25 +54,25 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 	)
 		return null
 	return (
-		<Stack
-			direction={direction}
-			justifyContent={justifyContent}
-			spacing={size == 'small' ? 0 : 1}
+		<div
+      className={cn(
+        'flex',        
+        size == 'small' ? 'space-x-1' : 'space-x-2',
+        direction == 'row' && 'flex-row',
+        justifyContent == 'flex-start' && 'justify-start',
+        justifyContent == 'center' && 'justify-center',        
+      )}
 		>
 			{enableLikes == true && (
 				<LikeButton
 					size={size}
-					color={color}
 					resource={resource}
-					numLikes={numLikes}
 				/>
 			)}
 			{enableFavorites == true && (
 				<FavoriteButton
 					size={size}
-					color={color}
 					resource={resource}
-					numFavorites={numFavorites}
 				/>
 			)}
 
@@ -85,7 +81,6 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 					size={size}
 					product={product}
 					color={color}
-					numLikes={numLikes}
 				/>
 			)}
 			{enableProductFavorites == true && (
@@ -93,17 +88,16 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 					size={size}
 					product={product}
 					color={color}
-					numFavorites={numFavorites}
 				/>
 			)}
 
 			{enableComments == true && (
-				<CommentButton resource={resource} color={color} />
+				<CommentButton resource={resource} />
 			)}
 			{enableSharing == true && (
 				<ShareButton size={size} url={currentPageUrl} />
 			)}
-		</Stack>
+		</div>
 	)
 }
 

@@ -1,40 +1,35 @@
 import React, { useContext } from 'react'
 import { ResourceContext } from 'frontend-js'
-import { Hidden, Grid } from '@mui/material'
 import { GoogleMap, CollectionListItems } from '../..'
 import { CollectionListItemsProps } from './CollectionListItems'
 
 export type GeoListListProps = CollectionListItemsProps & {
-	url: string
+  url: string
 }
 
-const GeoListItems: React.FC<GeoListListProps> = (props) => {
-	const { url, displayFields, ...rest } = props
+export default function GeoListItems({ url, displayFields, ...rest }: GeoListListProps) {
+  const { resources } = useContext(ResourceContext) as any
 
-	const { resources } = useContext(ResourceContext) as any
-
-	return (
-		<Grid container spacing={2}>
-			<Grid item sm={12} md={7}>
-				<CollectionListItems
-					{...rest}
-					displayFields={displayFields}
-					style="list"
-				/>
-			</Grid>
-			<Grid item sm={12} md={5}>
-				<Hidden smDown>
-					<GoogleMap
-						enableBorder
-						zoom={15}
-						height={380}
-						resources={resources}
-						displayFields={displayFields}
-					/>
-				</Hidden>
-			</Grid>
-		</Grid>
-	)
+  return (
+    <div className="flex flex-col md:flex-row -mx-2">
+      <div className="w-full md:w-7/12 px-2 mb-4 md:mb-0">
+        <CollectionListItems
+          {...rest}
+          displayFields={displayFields}
+          style="list"
+        />
+      </div>
+      <div className="w-full md:w-5/12 px-2">
+        <div className="hidden md:block">
+          <GoogleMap
+            enableBorder
+            zoom={15}
+            height={380}
+            resources={resources}
+            displayFields={displayFields}
+          />
+        </div>
+      </div>
+    </div>
+  )
 }
-
-export default GeoListItems

@@ -1,9 +1,8 @@
 import React from 'react'
-import { Stack } from '@mui/material'
+import { Stack } from '../../../tailwind'
 import { LoadMore, DataLayout } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { VideoCard } from '../..'
-import { useCollectionForms } from '../../../hooks'
 
 export type VideoListItemsProps = {
 	url: string
@@ -36,8 +35,6 @@ const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
 		setResource(resource)
 		setOpenShow(true)
 	}
-
-	const { handleEdit, handleDeleteClick } = useCollectionForms()
 
 	return (
 		<Stack direction="column" spacing={2}>

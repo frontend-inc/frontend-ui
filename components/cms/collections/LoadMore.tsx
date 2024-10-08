@@ -1,44 +1,30 @@
 import React from 'react'
-import { Box, Button } from '@mui/material'
-import { Waypoint } from 'react-waypoint'
-import { Icon } from '../../../components'
+import { Button } from "../../../shadcn/ui/button"
+import { ChevronDown } from "lucide-react"
 
 type LoadMoreProps = {
-	page: number
-	numPages: number
-	handlePaginate: () => void
-	enableInfiniteLoad?: boolean
+  page: number
+  numPages: number
+  handlePaginate: () => void
 }
 
-const LoadMore: React.FC<LoadMoreProps> = (props) => {
-	const { page, numPages, handlePaginate, enableInfiniteLoad = false } = props
-
-	return (
-		<Box sx={sx.root}>
-			{page < numPages && (
-				<>
-					{enableInfiniteLoad && <Waypoint onEnter={handlePaginate} />}
-					<Button
-						color="secondary"
-						variant="contained"
-						onClick={handlePaginate}
-						endIcon={<Icon name="ChevronDown" color="secondary.contrastText" />}
-					>
-						Load More
-					</Button>
-				</>
-			)}
-		</Box>
-	)
-}
-
-export default LoadMore
-
-const sx = {
-	root: {
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
+export default function LoadMore({
+  page,
+  numPages,
+  handlePaginate,
+}: LoadMoreProps) {
+  return (
+    <div className="w-full flex justify-center items-center">
+      {page < numPages && (      
+        <Button
+          variant="secondary"
+          onClick={handlePaginate}
+          className="flex items-center"
+        >
+          Load More
+          <ChevronDown className="ml-2 h-4 w-4" />
+        </Button>
+      )}
+    </div>
+  )
 }

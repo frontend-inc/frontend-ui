@@ -1,102 +1,41 @@
 import React from 'react'
 import {
-	Stack,
-	ListItem,
-	ListItemIcon,
-	ListItemText,
-	Typography,
-	Rating,
-} from '@mui/material'
+  Typography,
+  Rating,
+} from '../../../tailwind'
 import { UserAvatar } from '../..'
 import moment from 'moment'
+import { cn } from '../../../shadcn/lib/utils'
 
 type ProductReviewItemProps = {
-	resource: any
-	user?: any
-	handleDelete?: (review: any) => void
+  resource: any
+  user?: any
+  handleDelete?: (review: any) => void
 }
 
-const ProductReviewItem: React.FC<ProductReviewItemProps> = (props) => {
-	const { resource } = props
-
-	return (
-		<ListItem sx={sx.listItem}>
-			<ListItemIcon sx={sx.listItemIcon}>
-				<UserAvatar user={resource?.user} />
-			</ListItemIcon>
-			<ListItemText
-				primary={<Rating readOnly sx={sx.rating} value={resource.rating} />}
-				secondary={
-					<Stack direction="column" spacing={1}>
-						<Typography variant="body1" color="text.primary">
-							{resource?.title}
-						</Typography>
-						<Typography
-							variant="body2"
-							color="text.secondary"
-							sx={sx.reviewText}
-						>
-							{resource.body}
-						</Typography>
-						<Typography variant="body2" color="text.secondary" sx={sx.caption}>
-							{`@${resource?.user?.username}`} reviewed{' '}
-							{moment(resource?.created_at).fromNow()}
-						</Typography>
-					</Stack>
-				}
-			/>
-		</ListItem>
-	)
-}
-
-export default ProductReviewItem
-
-const sx = {
-	root: {
-		py: 1,
-	},
-	rating: {
-		color: 'primary.main',
-	},
-	listItem: {
-		pb: 1,
-		borderBottom: '1px solid',
-		borderColor: 'divider',
-		alignItems: 'flex-start',
-		'&:hover .MuiBox-root': {
-			display: 'block',
-		},
-	},
-	listItemIcon: {
-		mt: 1,
-		mr: 2,
-	},
-	reviewText: {
-		mb: 1,
-		color: 'text.primary',
-		whiteSpace: 'pre-wrap',
-		'& span': {
-			fontWeight: 500,
-		},
-	},
-	content: {
-		width: '100%',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-	},
-	link: {
-		cursor: 'pointer',
-		color: 'text.secondary',
-		'&:hover': {
-			color: 'text.primary',
-		},
-	},
-	caption: {
-		fontSize: 14,
-	},
-	divider: {
-		pb: 1,
-		borderBottom: '1px solid',
-		borderColor: 'divider',
-	},
+export default function ProductReviewItem({ resource }: ProductReviewItemProps) {
+  return (
+    <div className="flex items-start py-4 border-b border-divider hover:bg-gray-50">
+      <div className="mr-4 mt-1">
+        <UserAvatar user={resource?.user} />
+      </div>
+      <div className="flex-grow">
+        <Rating readOnly value={resource.rating} className="text-primary mb-2" />
+        <div className="space-y-3">
+          <Typography variant="body1">
+            {resource?.title}
+          </Typography>
+          <Typography
+            variant="body1"
+          >
+            {resource.body}
+          </Typography>
+          <Typography variant="body2" color="text.secondary" className="text-sm">
+            {`@${resource?.user?.username}`} reviewed{' '}
+            {moment(resource?.created_at).fromNow()}
+          </Typography>
+        </div>
+      </div>
+    </div>
+  )
 }
