@@ -52,7 +52,7 @@ export default function ShopifyProductCard({
   }
 
   return (
-    <Card>
+    <Card className={'rounded-lg overflow-hidden'}>
       <SwipeableShopifyProductImages
         product={product}
         height={height}
