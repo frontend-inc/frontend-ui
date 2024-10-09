@@ -1,5 +1,5 @@
 import React from 'react'
-import { Label } from '../../../components'
+import { Label } from '../../../tailwind'
 
 type CellLabelProps = {
 	value: string

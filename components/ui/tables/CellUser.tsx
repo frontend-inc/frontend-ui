@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Chip, Button, Typography } from '@mui/material'
+import { Button } from '../../../tailwind'
 import { UserType } from 'frontend-js'
 import { UserAvatar } from '../../../components'
 
@@ -13,33 +13,18 @@ const CellUser: React.FC<CellUserProps> = (props) => {
 	const { value: user, handleClick } = props
 	if (!user?.id) return null
 	return (
-		<Box sx={sx.cell}>
+		<div className='w-full flex flex-row justify-start'>
 			<Button
-				sx={sx.button}
 				size="small"
 				color="secondary"
 				variant="contained"
 				onClick={handleClick}
 				startIcon={<UserAvatar size={28} user={user} />}
-			>
-				<Typography variant="caption">
-					{user?.first_name} {user?.last_name}
-				</Typography>
+			>				
+				{user?.first_name} {user?.last_name}				
 			</Button>
-		</Box>
+		</div>
 	)
 }
 
 export default CellUser
-
-const sx = {
-	cell: {
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'flex-start',
-	},
-	button: {
-		borderRadius: 1,
-		bgcolor: 'transparent',
-	},
-}

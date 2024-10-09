@@ -5,7 +5,7 @@ import { cn } from '../../shadcn/lib/utils'
 interface SwitchProps {
 	name?: string
 	value?: string | number | readonly string[]
-	onChange?: (checked: boolean) => void
+	handleChange?: (checked: boolean) => void
 	label?: string
 	className?: string
 }
@@ -13,7 +13,7 @@ interface SwitchProps {
 const Switch = React.forwardRef<
 	React.ElementRef<typeof SwitchPrimitives.Root>,
 	SwitchProps
->(({ className, name, value, onChange, label, ...props }, ref) => (
+>(({ className, name, value, handleChange, label, ...props }, ref) => (
 	<div className="flex items-center">
 		<SwitchPrimitives.Root
 			className={cn(
@@ -22,7 +22,7 @@ const Switch = React.forwardRef<
 			)}
 			name={name}
 			value={value}
-			onCheckedChange={onChange}
+			onCheckedChange={handleChange}
 			{...props}
 			ref={ref}
 		>

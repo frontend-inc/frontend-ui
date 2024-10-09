@@ -1,5 +1,4 @@
 import React from 'react'
-import { CardActionArea } from '@mui/material'
 import { Image } from '../../../components'
 import { cloudinaryImageFromVideoUrl } from '../../../helpers'
 
@@ -12,19 +11,17 @@ type CellImageProps = {
 }
 
 const CellImage: React.FC<CellImageProps> = (props) => {
-	const { value, size = 64, handleClick } = props
+	const { value, handleClick } = props
 	let src = cloudinaryImageFromVideoUrl(value?.url)
-	return (
-		<CardActionArea sx={{ p: 0 }} onClick={handleClick}>
-			<Image
-				disableBorder
-				disableBorderRadius
-				src={src}
-				width={size}
-				height={size}
-				alt={'Image'}
-			/>
-		</CardActionArea>
+	return (		
+    <div className='max-h-[64px] max-w-[64px]'>
+      <Image				
+        src={src}
+        aspectRatio={4/3}
+        alt={'Image'}
+        handleClick={ handleClick }
+      />		
+    </div>
 	)
 }
 

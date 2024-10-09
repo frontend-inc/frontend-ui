@@ -1,6 +1,5 @@
 import React from 'react'
-import { Button } from '@mui/material'
-import { Image, NoImage } from '../../../components'
+import { CellImage } from '../../../components'
 import { cloudinaryImageFromVideoUrl } from '../../../helpers'
 
 type CellVideoProps = {
@@ -13,16 +12,11 @@ type CellVideoProps = {
 
 const CellVideo: React.FC<CellVideoProps> = (props) => {
 	const { value, handleClick, size = 64 } = props
-	if (!value?.url) return <NoImage height={size} width={size} />
 	return (
-		<Button sx={sx.root} onClick={handleClick}>
-			<Image
-				src={cloudinaryImageFromVideoUrl(value?.url)}
-				// @ts-ignore
-				width={size}
-				height={size}
-			/>
-		</Button>
+    <CellImage 
+      value={ cloudinaryImageFromVideoUrl(value?.url) }
+      handleClick={ handleClick }
+    />		
 	)
 }
 

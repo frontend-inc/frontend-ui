@@ -16,6 +16,7 @@ export type ShopifyCardProps = {
     }
   }
   href?: string
+  buttonText?: string
   handleClick?: () => void
   enableGradient?: boolean
   enableOverlay?: boolean
@@ -25,6 +26,7 @@ export default function ShopifyCollectionCard({
   collection,
   href,
   handleClick,
+  buttonText,
   enableGradient = false,
   enableOverlay = false,
 }: ShopifyCardProps) {
@@ -62,14 +64,16 @@ export default function ShopifyCollectionCard({
               {truncate(title || '', 60)}
             </Typography>            
           </div>
-          <Button
-            variant="secondary"
-            size="sm"
-            onClick={handleItemClick}
-            className="bg-white text-black hover:bg-white/90"
-          >
-            Browse
-          </Button>
+          { buttonText && (
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={handleItemClick}
+              className="bg-white text-black hover:bg-white/90"
+            >
+              Browse
+            </Button>
+          )}
         </div>
       </div>
     </Card>

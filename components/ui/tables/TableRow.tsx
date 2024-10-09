@@ -1,7 +1,8 @@
 import React from 'react'
-import { Stack, Button, Checkbox, TableRow as MuiTableRow } from '@mui/material'
 import { Cell, TableCell } from '../../../components'
+import { Stack, Button, Checkbox } from '../../../tailwind'
 import { get } from 'lodash'
+import { TableRow as ShadcnTableRow } from '../../../shadcn/ui/table'
 
 type TableRowProps = {
 	row: any
@@ -37,19 +38,20 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 	const selected = selectedIds?.includes(row?.id) ? true : false
 
 	return (
-		<MuiTableRow sx={sx.root} selected={selected}>
+		<ShadcnTableRow sx={sx.root} selected={selected}>
 			{enableSelect && (
 				<TableCell small align={'center'} sticky>
-					<Checkbox
-						checked={selected}
-						onChange={handleSelect ? () => handleSelect(row) : undefined}
-						value="true"
-					/>
+          <div className='mx-2'>
+            <Checkbox
+              value={selected}
+              handleChange={handleSelect ? () => handleSelect(row) : undefined}
+            />
+          </div>
 				</TableCell>
 			)}
 			{(enableEdit || enableDelete) && (
 				<TableCell small align="center">
-					<Stack direction="row" spacing={1}>
+					<div className='flex flex-row space-x-1'>
 						{enableShow && (
 							<Button
 								size="small"
@@ -80,7 +82,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 								Delete
 							</Button>
 						)}
-					</Stack>
+					</div>
 				</TableCell>
 			)}
 			{fields?.map((field, index) => {
@@ -98,7 +100,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 					</TableCell>
 				)
 			})}
-		</MuiTableRow>
+		</ShadcnTableRow>
 	)
 }
 

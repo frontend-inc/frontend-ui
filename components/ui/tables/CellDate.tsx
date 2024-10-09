@@ -14,7 +14,3 @@ const CellDate: React.FC<CellDateProps> = (props) => {
 }
 
 export default CellDate
-
-const sx = {
-	root: {},
-}

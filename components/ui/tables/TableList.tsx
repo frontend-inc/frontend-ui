@@ -1,18 +1,21 @@
 import React from 'react'
 import {
-	Box,
-	TableBody,
 	Typography,
-	TableRow as MuiTableRow,
-	TableCell as MuiTableCell,
-} from '@mui/material'
+} from '../../../tailwind'
 import {
-	TableContainer,
 	TableHeaders,
 	TableRow,
 	Pagination,
 	Placeholder,
 } from '../../../components'
+import { 
+  Table,
+  TableHeader,
+  TableBody,
+  TableCell as ShadcnTableCell,
+  TableRow as ShadcnTableRow
+} from '../../../shadcn/ui/table'
+import { cn } from '../../../shadcn/lib/utils'
 
 type TableProps = {
 	title?: string
@@ -34,7 +37,6 @@ type TableProps = {
 	numPages?: number
 	totalCount?: number
 	query: any
-	styles?: any
 	selected?: any
 	selectedIds?: any
 	handleSelect?: (row: any) => void
@@ -73,31 +75,30 @@ const TableList: React.FC<TableProps> = (props) => {
 		perPage,
 		numPages,
 		totalCount,
-		styles = {},
 		emptyIcon = 'Search',
 		emptyTitle = 'No results found',
 		emptyDescription = 'Try adjusting your search or filters',
 	} = props
 
 	return (
-		<Box
-			sx={{
-				...sx.root,
-				...(disableBorderRadius && sx.disableBorderRadius),
-			}}
+		<div
+      className={cn(
+        'w-full',
+        !disableBorderRadius && 'rounded-lg overflow-hidden',
+      )}			
 		>
 			{(title || toolbar) && (
-				<Box p={1} sx={sx.toolbar}>
+				<div className='p-2 min-h-[40px] w-full'>
 					{title && (
 						<Typography variant="subtitle1" color="text.primary">
 							{title}
 						</Typography>
 					)}
 					{toolbar && toolbar}
-				</Box>
+				</div>
 			)}
-			<TableContainer styles={styles}>
-				<TableBody>
+			<Table>
+				<TableHeader>
 					<TableHeaders
 						enableEdit={enableEdit}
 						enableSelect={enableSelect}
@@ -112,6 +113,8 @@ const TableList: React.FC<TableProps> = (props) => {
 						handleSort={handleSort}
 						handleSelectAll={handleSelectAll}
 					/>
+        </TableHeader>
+        <TableBody>
 					{resources?.map((row) => (
 						<TableRow
 							key={row?.id}
@@ -130,18 +133,18 @@ const TableList: React.FC<TableProps> = (props) => {
 						/>
 					))}
 					{!loading && resources?.length == 0 && (
-						<MuiTableRow>
-							<MuiTableCell colSpan={headers?.length + 1}>
+						<ShadcnTableRow>
+							<ShadcnTableCell className={'w-[100px]'}>
 								<Placeholder
 									icon={emptyIcon}
 									title={emptyTitle}
 									description={emptyDescription}
 								/>
-							</MuiTableCell>
-						</MuiTableRow>
+							</ShadcnTableCell>
+						</ShadcnTableRow>
 					)}
 				</TableBody>
-			</TableContainer>
+			</Table>
 			<Pagination
 				loading={loading}
 				page={page}
@@ -150,25 +153,8 @@ const TableList: React.FC<TableProps> = (props) => {
 				totalCount={totalCount}
 				handlePaginate={handlePaginate}
 			/>
-		</Box>
+		</div>
 	)
 }
 
 export default TableList
-
-const sx = {
-	root: {
-		overflow: 'hidden',
-	},
-	rootBorder: {
-		border: '1px solid',
-		borderColor: 'divider',
-	},
-	disableBorderRadius: {
-		borderRadius: 0,
-	},
-	toolbar: {
-		minHeight: 40,
-		width: '100%',
-	},
-}

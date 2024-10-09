@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Stack, Button } from '@mui/material'
-import { Label } from '../../../components'
+import { Label, Button } from '../../../tailwind'
 
 type CellArrayProps = {
 	value: string[]
@@ -13,12 +12,14 @@ const CellArray: React.FC<CellArrayProps> = (props) => {
 	const MAX_TAGS = 2
 
 	const [open, setOpen] = useState(false)
-	const [visibleTags, setVisibleTags] = useState<string[]>([])
+	const [visibleTags, setVisibleTags] = useState<string[] | null>([])
 
 	const handleToggleSeeAll = () => {
 		if (open) {
 			setOpen(false)
-			setVisibleTags(values.slice(0, MAX_TAGS))
+      if(values){
+			  setVisibleTags(values.slice(0, MAX_TAGS))
+      }
 		} else {
 			setOpen(true)
 			setVisibleTags(values)
@@ -32,30 +33,17 @@ const CellArray: React.FC<CellArrayProps> = (props) => {
 	}, [values])
 
 	return (
-		<Stack direction="row" spacing={0.5}>
+		<div className='flex flex-row gap-2 flex-wrap'>
 			{visibleTags?.map((value, index) => (
 				<Label key={index} label={value} />
 			))}
-			{!open && visibleTags?.length > MAX_TAGS && (
-				<Button sx={sx.button} onClick={handleToggleSeeAll}>
+			{(!open && visibleTags && visibleTags?.length > MAX_TAGS) && (
+				<Button onClick={handleToggleSeeAll}>
 					<Label label={`...`} />
 				</Button>
 			)}
-		</Stack>
+		</div>
 	)
 }
 
 export default CellArray
-
-const sx = {
-	root: {
-		display: 'flex',
-		flexWrap: 'wrap',
-		width: '200px',
-	},
-	button: {
-		p: 0,
-		minWidth: '30px',
-		height: '26px',
-	},
-}

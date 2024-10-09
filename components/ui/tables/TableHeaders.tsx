@@ -1,6 +1,7 @@
 import React from 'react'
-import { Checkbox, Box, TableRow } from '@mui/material'
+import { Checkbox, Box } from '../../../tailwind'
 import { CellHeader, TableCell } from '../../../components'
+import { TableRow } from '../../../shadcn/ui/table'
 
 type TableHeaderProps = {
 	sortBy?: string
@@ -12,7 +13,7 @@ type TableHeaderProps = {
 	enableDelete?: boolean
 	enableShow?: boolean
 	handleSort: (e: any) => void
-	handleSelectAll?: (e: any) => void
+	handleSelectAll: (e: any) => void
 }
 
 const TableHeaders: React.FC<TableHeaderProps> = (props) => {
@@ -35,7 +36,10 @@ const TableHeaders: React.FC<TableHeaderProps> = (props) => {
 		<TableRow>
 			{enableSelect && (
 				<TableCell variant="head" sticky header small>
-					<Checkbox checked={checked} onChange={handleSelectAll} value="true" />
+          <div className='mx-2'>
+            {/* @ts-ignore */}
+					  <Checkbox value={checked} handleChange={handleSelectAll} />
+          </div>
 				</TableCell>
 			)}
 			{(enableEdit || enableDelete || enableShow) && (

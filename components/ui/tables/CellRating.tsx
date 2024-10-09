@@ -1,6 +1,5 @@
 import React from 'react'
-import Rating from '@mui/material/Rating'
-import { StarBorderOutlined, Star } from '@mui/icons-material'
+import { Rating } from '../../../tailwind'
 
 type CellRatingProps = {
 	value: number
@@ -12,19 +11,8 @@ const CellRating: React.FC<CellRatingProps> = (props) => {
 		<Rating
 			readOnly
 			value={value}
-			icon={<Star sx={sx.rating} />}
-			emptyIcon={<StarBorderOutlined sx={sx.emptyRating} />}
 		/>
 	)
 }
 
 export default CellRating
-
-const sx = {
-	rating: {
-		color: 'primary.main',
-	},
-	emptyRating: {
-		color: 'text.secondary',
-	},
-}

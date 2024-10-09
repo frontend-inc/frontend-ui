@@ -1,66 +1,43 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Typography } from '@mui/material'
-import { Icon } from '../../../components'
+import { Button } from "../../../shadcn/ui/button"
+import { ChevronUp } from "lucide-react"
+import { cn } from "../../../shadcn/lib/utils"
 
 type CellHeaderProps = {
-	field: any
-	sortBy: string
-	sortDirection: string
-	handleSort: (header: any) => void
+  field: {
+    name: string
+    label: string
+  }
+  sortBy: string
+  sortDirection: string
+  handleSort: (header: any) => void
 }
 
-const CellHeader: React.FC<CellHeaderProps> = (props) => {
-	const { field, sortBy, sortDirection, handleSort } = props
+export default function CellHeader({ field, sortBy, sortDirection, handleSort }: CellHeaderProps) {
+  const [active, setActive] = useState(false)
 
-	const [active, setActive] = useState(false)
+  useEffect(() => {
+    setActive(sortBy === field?.name)
+  }, [field, sortBy])
 
-	useEffect(() => {
-		if (sortBy === field?.name) {
-			setActive(true)
-		} else {
-			setActive(false)
-		}
-	}, [field, sortBy])
-
-	return (
-		<Button
-			sx={sx.root}
-			disableRipple
-			fullWidth
-			onClick={() => handleSort(field)}
-			endIcon={
-				active && (
-					<>
-						{sortDirection === 'asc' && <Icon name="ChevronUp" />}
-						{sortDirection === 'desc' && <Icon name="ChevronDown" />}
-					</>
-				)
-			}
-		>
-			<Typography variant="overline" color="text.primary">
-				{field?.label}
-			</Typography>
-		</Button>
-	)
-}
-
-export default CellHeader
-
-const sx = {
-	root: {
-		borderRadius: 0,
-		width: '100%',
-		height: 44,
-	},
-	icon: {
-		visibility: 'hidden',
-		color: 'primary.main',
-		height: 20,
-		width: 20,
-	},
-	sortIcon: {
-		height: 20,
-		width: 20,
-		color: 'text.secondary',
-	},
+  return (
+    <Button
+      variant="ghost"
+      className={cn(
+        "w-full h-11 rounded-none flex justify-between items-center px-2",
+        "hover:bg-accent hover:text-accent-foreground"
+      )}
+      onClick={() => handleSort(field)}
+    >
+      <span className="font-medium">{field?.label}</span>
+      {active && (
+        <span className={cn(
+          "transition-transform duration-200",
+          sortDirection === 'desc' && "rotate-180"
+        )}>
+          <ChevronUp className="h-5 w-5 text-primary" />
+        </span>
+      )}
+    </Button>
+  )
 }

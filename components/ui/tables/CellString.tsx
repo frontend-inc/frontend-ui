@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography } from '@mui/material'
+import { Typography } from '../../../tailwind'
 import { TypographyVariantsType } from '../../../types'
 
 type CellStringProps = {
@@ -10,7 +10,7 @@ type CellStringProps = {
 const CellString: React.FC<CellStringProps> = (props) => {
 	const { value, variant = 'body2' } = props
 	return (
-		<Typography sx={sx.text} variant={variant}>
+		<Typography variant={variant}>
 			{value}
 		</Typography>
 	)
