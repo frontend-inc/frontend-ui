@@ -1,7 +1,14 @@
 import React from 'react'
-import { MenuItem, ListItemIcon, Box, IconButton, Menu } from '@mui/material'
 import { useMenu } from '../../hooks'
-import { Icon } from '../../components'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../../shadcn/ui/dropdown-menu"
+import { Button } from '../../shadcn/ui/button'
+import { MoreVertical, Pencil, Trash } from "lucide-react"
+
 
 type MenuButtonProps = {
 	children?: React.ReactNode
@@ -16,50 +23,35 @@ type MenuButtonProps = {
 const MenuButton: React.FC<MenuButtonProps> = (props) => {
 	const {
 		children,
-		icon = 'Ellipsis',
-		color,
-		enableIcons = false,
 		handleEdit,
 		handleDelete,
-		size = 'medium',
 	} = props
 
-	const { open, anchorEl, closeMenu, toggleMenu } = useMenu()
-
-	// Ensure menu closes after click
-	const handleDefaultClick = (e) => {
-		if (open) closeMenu()
-	}
 
 	return (
-		<Box onClick={handleDefaultClick}>
-			<IconButton size={size} onClick={toggleMenu}>
-				<Icon name={icon} color={color} />
-			</IconButton>
-			<Menu open={open} anchorEl={anchorEl} onClose={closeMenu}>
-				{children}
-				{handleEdit && (
-					<MenuItem onClick={handleEdit}>
-						{enableIcons && (
-							<ListItemIcon>
-								<Icon name="Pencil" />
-							</ListItemIcon>
-						)}
-						Edit
-					</MenuItem>
-				)}
-				{handleDelete && (
-					<MenuItem onClick={handleDelete}>
-						{enableIcons && (
-							<ListItemIcon>
-								<Icon name="Trash" />
-							</ListItemIcon>
-						)}
-						Delete
-					</MenuItem>
-				)}
-			</Menu>
-		</Box>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="h-8 w-8 p-0">
+          <span className="sr-only">Open menu</span>
+          <MoreVertical className="h-4 w-4 text-foreground" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-[160px]">
+        { children }
+        { handleEdit && (
+        <DropdownMenuItem onClick={handleEdit}>
+          <Pencil className="mr-2 h-4 w-4" />
+          <span>Edit</span>
+        </DropdownMenuItem>
+        )}
+        { handleDelete && (
+        <DropdownMenuItem onClick={handleDelete}>
+          <Trash className="mr-2 h-4 w-4" />
+          <span>Delete</span>
+        </DropdownMenuItem>
+        )}
+      </DropdownMenuContent>
+    </DropdownMenu>		
 	)
 }
 

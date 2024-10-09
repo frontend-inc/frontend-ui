@@ -1,112 +1,63 @@
 import React, { useContext } from 'react'
 import { AdminContext } from '../../../context'
-import { Button, Divider, Box, Stack } from '@mui/material'
+import { IconButton } from '../../../tailwind'
+import { Separator } from '../../../shadcn/ui/separator'
 import AdminTabAuth from './AdminAuthIconButton'
 import AdminTabIcon from './AdminTabIcon'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { AdminAuthIconButton } from '.'
 
 type TabIconsProps = {
-	logo?: string
-	menuItems: any
-	handleClick: any
-	secondaryActions?: React.ReactNode
+  logo?: string
+  menuItems: any[]
+  handleClick: (item: any) => void
+  secondaryActions?: React.ReactNode
 }
 
-const TabIcons: React.FC<TabIconsProps> = (props) => {
-	const { logo, menuItems, handleClick, secondaryActions } = props
-	const { activeTab } = useContext(AdminContext)
+export default function TabIcons({ logo, menuItems, handleClick, secondaryActions }: TabIconsProps) {
+  const { activeTab } = useContext(AdminContext)
+  const router = useRouter()
 
-	const router = useRouter()
+  const handleHomeClick = () => {
+    router.push('/dashboard')
+  }
 
-	const handleHomeClick = () => {
-		router.push('/dashboard')
-	}
+  const handleMyAccountClick = () => {
+    router.push('/my-account')
+  }
 
-	const handleMyAccountClick = () => {
-		router.push('/my-account')
-	}
-
-	return (
-		<Box sx={sx.root}>
-			<Box width="100%">
-				<Box sx={sx.menuItems}>
-					{logo && (
-						<Button sx={sx.logoButton} onClick={handleHomeClick}>
-							<Image src={logo} height={24} width={24} alt="logo" />
-						</Button>
-					)}
-					{Array.isArray(menuItems) &&
-						menuItems?.map((item, index) => (
-							<Box px={1} key={index}>
-								<AdminTabIcon
-									selected={activeTab == item.id}
-									icon={item.icon}
-									handleClick={() => handleClick(item)}
-								/>
-							</Box>
-						))}
-				</Box>
-			</Box>
-			<Stack
-				direction="column"
-				spacing={1}
-				divider={<Divider />}
-				sx={sx.bottomTabs}
-			>
-				{secondaryActions}
-				<AdminAuthIconButton handleClick={handleMyAccountClick} />
-			</Stack>
-		</Box>
-	)
-}
-
-export default TabIcons
-
-const sx = {
-	root: {
-		width: '100%',
-		height: '100%',
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		justifyContent: 'space-between',
-		borderRight: '1px solid',
-		borderColor: 'divider',
-	},
-	icon: {
-		color: 'primary.contrastText',
-	},
-	menuItems: {
-		my: 1,
-		display: 'flex',
-		justifyContent: 'center',
-		width: '100%',
-		flexDirection: 'column',
-		overflow: 'none',
-		gap: '10px',
-	},
-	logo: {
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	bottomTabs: {
-		mb: 2,
-	},
-	logoButton: {
-		p: 0,
-		m: 0,
-		pb: '5px',
-		height: 40,
-		width: '100%',
-		borderRadius: 0,
-		borderBottom: '1px solid',
-		borderColor: 'divider',
-		'&:hover': {
-			backgroundColor: 'transparent',
-		},
-	},
+  return (
+    <div className="w-full h-full flex flex-col items-center justify-between border-r border-border">
+        <div className="w-full flex flex-col items-center justify-center space-y-3 pt-0">
+          <div className="h-[50px] w-full flex flex-col items-center justify-center border border-bottom">
+          {logo && (
+            <IconButton
+              className="w-full rounded-none"
+              onClick={handleHomeClick}
+            >
+              <Image src={logo} height={24} width={24} alt="logo" />
+            </IconButton>
+          )}
+          </div>
+          {Array.isArray(menuItems) &&
+            menuItems?.map((item, index) => (
+              <AdminTabIcon
+                key={index}
+                selected={activeTab == item.id}
+                icon={item.icon}
+                handleClick={() => handleClick(item)}
+              />
+          ))}
+        </div>
+      <div className="flex flex-col space-y-1 mb-2">
+        {secondaryActions && (
+          <>
+            {secondaryActions}
+            <Separator className="my-2" />
+          </>
+        )}
+        <AdminTabAuth handleClick={handleMyAccountClick} />
+      </div>
+    </div>
+  )
 }

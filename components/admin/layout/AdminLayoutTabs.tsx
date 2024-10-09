@@ -1,38 +1,19 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { cn } from "../../../shadcn/lib/utils"
 
 type AdminLayoutTabsProps = {
-	children: React.ReactNode
+  children: React.ReactNode
 }
 
-const AdminLayoutTabs: React.FC<AdminLayoutTabsProps> = (props) => {
-	const { children } = props || {}
-
-	return (
-		<Box sx={sx.root}>
-			<Box sx={sx.icons}>{children}</Box>
-		</Box>
-	)
-}
-
-export default AdminLayoutTabs
-
-const sx = {
-	root: {
-		width: '60px',
-		height: '100vh',
-		bgcolor: 'background.main',
-	},
-	icons: {
-		width: '100%',
-		height: '100%',
-		display: 'flex',
-		flexDirection: 'column',
-		gap: {
-			xs: '5px',
-			sm: 0,
-		},
-		alignItems: 'center',
-		justifyContent: 'space-between',
-	},
+export default function AdminLayoutTabs({ children }: AdminLayoutTabsProps) {
+  return (
+    <div className="w-[60px] h-screen bg-background">
+      <div className={cn(
+        "w-full h-full flex flex-col items-center justify-between",
+        "xs:gap-[5px] sm:gap-0"
+      )}>
+        {children}
+      </div>
+    </div>
+  )
 }

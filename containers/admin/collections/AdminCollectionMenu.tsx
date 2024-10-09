@@ -183,8 +183,7 @@ const AdminCollectionMenu: React.FC = () => {
 				{collections.map((collection) => (
 					<MenuListItem
 						key={collection.id}
-						title={collection?.label}
-						icon="Database"
+						title={collection?.label}						
 						selected={!viewId && collectionId == collection?.name}
 						handleClick={() => handleClick(collection)}
 						handleEdit={() => handleEditCollectionClick(collection)}

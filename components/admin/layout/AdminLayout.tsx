@@ -1,64 +1,41 @@
 import React from 'react'
-import { Box } from '@mui/material'
-import { StyleProps } from '../../../types'
-import { Alert, AdminLayoutTabs, AdminTabIcons } from '../../../components'
+import { AdminLayoutTabs, AdminTabIcons } from '../../../components'
+import { cn } from '../../../shadcn/lib/utils'
 
 type AdminLayoutProps = {
-	logo?: string
-	handleClick?: (item: any) => void
-	menuItems?: any[]
-	secondaryActions?: React.ReactNode
-	children: React.ReactNode
+  logo?: string
+  handleClick: (item: any) => void
+  menuItems?: any[]
+  secondaryActions?: React.ReactNode
+  children: React.ReactNode
 }
 
-const AdminLayout: React.FC<AdminLayoutProps> = (props) => {
-	const {
-		logo,
-		children,
-		handleClick,
-		menuItems = [],
-		secondaryActions,
-	} = props
-
-	return (
-		<Box className="dark" sx={sx.root}>
-			<Alert anchorBottom />
-			<AdminLayoutTabs>
-				<AdminTabIcons
-					logo={logo}
-					handleClick={handleClick}
-					menuItems={menuItems}
-					secondaryActions={secondaryActions}
-				/>
-			</AdminLayoutTabs>
-			<Box sx={sx.content}>{children}</Box>
-		</Box>
-	)
-}
-
-export default AdminLayout
-
-const sx: StyleProps = {
-	root: {
-		width: '100vw',
-		overflowX: 'hidden',
-		'&::-webkit-scrollbar': {
-			display: 'none',
-		},
-		display: 'flex',
-		flexDirection: 'row',
-		minHeight: '100vh',
-	},
-	content: {
-		width: 'calc(100vw - 60px)',
-		overflowX: 'hidden',
-		'&::-webkit-scrollbar': {
-			display: 'none',
-		},
-		display: 'flex',
-		flexDirection: {
-			sm: 'row',
-			xs: 'column',
-		},
-	},
+export default function AdminLayout({
+  logo,
+  children,
+  handleClick,
+  menuItems = [],
+  secondaryActions,
+}: AdminLayoutProps) {
+  return (
+    <div className={cn(
+      "dark w-screen overflow-x-hidden scrollbar-hide",
+      "flex flex-row min-h-screen"
+    )}>      
+      <AdminLayoutTabs>
+        <AdminTabIcons
+          logo={logo}
+          handleClick={handleClick}
+          menuItems={menuItems}
+          secondaryActions={secondaryActions}
+        />
+      </AdminLayoutTabs>
+      <div className={cn(
+        "w-[calc(100vw-60px)] overflow-x-hidden scrollbar-hide",
+        "flex sm:flex-row xs:flex-col"
+      )}>
+        {children}
+      </div>
+    </div>
+  )
 }

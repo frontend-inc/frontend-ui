@@ -1,5 +1,5 @@
 import React from 'react'
-import { AdminLayoutLeft, MenuList, MenuListItem } from '../../../components'
+import { MenuList, MenuListItem } from '../../../components'
 import { AdminMenusType } from '../../../types'
 
 type AdminMenuItemsProps = {

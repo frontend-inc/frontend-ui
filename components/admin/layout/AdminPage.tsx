@@ -10,6 +10,7 @@ import {
 import { AdminMenusType, AdminMenuType } from '../../../types'
 import { useAdmin, useTabs } from '../../../hooks'
 import { useRouter } from 'next/router'
+import { cn } from '../../../shadcn/lib/utils'
 
 export type AdminPageProps = {
 	title: string
@@ -68,7 +69,12 @@ const AdminPage: React.FC<AdminPageProps> = (props) => {
 			<AdminLayoutCenter>
 				<AdminHeader title={title} buttons={actions} enableExpandLeftPanel />
 				<AdminLayoutScroll>
-					<Box p={disablePadding ? 0 : 2}>{children}</Box>
+          <div className={cn(
+            disablePadding ? 'p-0' : 'p-2',
+          )}
+          >
+            {children}
+					</div>
 				</AdminLayoutScroll>
 			</AdminLayoutCenter>
 		</>

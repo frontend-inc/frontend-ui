@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconButton } from '@mui/material'
+import { IconButton } from '../../../tailwind'
 import { useAuth } from 'frontend-js'
 import { useMenu } from '../../../hooks'
 import { UserMenu, UserAvatar } from '../..'
@@ -24,7 +24,7 @@ const AdminAuthIconButton: React.FC<AdminAuthIconButtonProps> = (props) => {
 	if (!currentUser) return null
 	return (
 		<>
-			<IconButton size="small" sx={sx.button} onClick={toggleMenu}>
+			<IconButton onClick={toggleMenu}>
 				<UserAvatar user={currentUser} />
 			</IconButton>
 			<UserMenu
@@ -39,18 +39,3 @@ const AdminAuthIconButton: React.FC<AdminAuthIconButtonProps> = (props) => {
 }
 
 export default AdminAuthIconButton
-
-const sx = {
-	button: {
-		color: 'primary.contrastText',
-	},
-	avatar: {
-		height: 32,
-		width: 32,
-		bgcolor: 'secondary.main',
-	},
-	name: {
-		fontSize: 13,
-		fontWeight: 600,
-	},
-}

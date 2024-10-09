@@ -1,45 +1,29 @@
 import React from 'react'
-import { IconButton } from '@mui/material'
+import { IconButton } from "../../../tailwind"
+import { cn } from "../../../shadcn/lib/utils"
 import { Icon } from '../../../components'
 
 type LayoutTabIconProps = {
-	icon: any
-	selected?: boolean
-	handleClick?: any
+  icon: string
+  selected?: boolean
+  handleClick?: () => void
 }
 
-const LayoutTabIcon: React.FC<LayoutTabIconProps> = (props) => {
-	const { icon, selected = false, handleClick } = props
-	return (
-		<IconButton
-			sx={{
-				...sx.root,
-				...(selected && sx.selected),
-			}}
-			onClick={handleClick}
-		>
-			{icon && <Icon name={icon} />}
-		</IconButton>
-	)
-}
-
-export default LayoutTabIcon
-
-const sx = {
-	root: {
-		color: 'secondary.contrastText',
-		justifyContent: 'center',
-		minWidth: '30px',
-		borderRadius: 1,
-		bgcolor: 'transparent',
-		'&:hover': {
-			bgcolor: 'secondary.main',
-		},
-	},
-	selected: {
-		bgcolor: 'primary.main',
-		'&:hover': {
-			bgcolor: 'primary.main',
-		},
-	},
+export default function LayoutTabIcon({ icon, selected = false, handleClick }: LayoutTabIconProps) {
+  return (
+    <IconButton
+      className={cn(
+        "bg-transparent hover:bg-secondary",
+        selected && "bg-primary hover:bg-primary"
+      )}
+      onClick={handleClick}
+    >
+      <Icon name={icon} 
+        className={cn(
+          'w-5 h-5',
+          selected && 'text-primary-foreground'
+        )} 
+      />
+    </IconButton>
+  )
 }

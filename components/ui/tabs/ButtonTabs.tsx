@@ -7,10 +7,10 @@ type ButtonTabsProps = {
   options: {
     icon?: string
     label?: string
-    value: string
+    value: string | number 
   }[]
   className?: string
-  value: string  
+  value: string | number 
 }
 
 export default function ButtonTabs({

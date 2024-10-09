@@ -1,6 +1,5 @@
 import React from 'react'
-import { Stack, Hidden, Button } from '@mui/material'
-import { Icon } from '../../../components'
+import { ButtonTabs } from '../../../components'
 import { useRouter } from 'next/router'
 import { RouterParams } from '../../../types'
 
@@ -14,41 +13,28 @@ const CollectionSchemaToggle: React.FC<CollectionSchemaToggleProps> = (
 	const router = useRouter()
 	const { app_id: appId, collection_id: collectionId } =
 		router?.query as RouterParams
-	const { tab = 0 } = props
+	
+    const { tab = 0 } = props
 
-	const handleClick = (path) => {
-		router.push(`/dashboard/${appId}/${path}/${collectionId}`)
+	const handleClick = (value) => {
+    if(value == 0) {
+      router.push(`/dashboard/${appId}/collections/${collectionId}`)
+      return
+    }else{
+      router.push(`/dashboard/${appId}/schema/${collectionId}`)
+      return
+    }		
 	}
 
 	return (
-		<Stack direction="row" spacing={0.5}>
-			<Hidden smDown>
-				<Button
-					color="secondary"
-					sx={{
-						...sx.button,
-						...(tab == 0 && sx.selected),
-					}}
-					variant={tab == 0 ? 'contained' : 'text'}
-					onClick={() => handleClick('collections')}
-					startIcon={<Icon name="Database" color="secondary.contrastText" />}
-				>
-					Content
-				</Button>
-				<Button
-					sx={{
-						...sx.button,
-						...(tab == 1 && sx.selected),
-					}}
-					variant={tab == 1 ? 'contained' : 'text'}
-					color="secondary"
-					onClick={() => handleClick('schema')}
-					startIcon={<Icon name="Type" color="secondary.contrastText" />}
-				>
-					Fields
-				</Button>
-			</Hidden>
-		</Stack>
+    <ButtonTabs
+       options={[
+          { label: 'Content', value: 0, icon: 'Database' },
+          { label: 'Fields', value: 1, icon: 'Type' },
+       ]}
+      handleChange={handleClick}
+      value={tab}
+    />		
 	)
 }
 
