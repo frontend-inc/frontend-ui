@@ -42,13 +42,16 @@ const Drawer: React.FC<DrawerProps> = ({
 				side={side}
 				className={cn(
 					mode,
-					disablePadding && 'p-0',
+					disablePadding && 'px-0',
 					'flex flex-col',
-					fullWidth ? 'w-screen max-w-full' : 'w-full max-w-sm sm:max-w-md',
+					fullWidth ? 'w-screen max-w-full' : 'w-full max-w-xs',
 					className
 				)}
 			>
-				<SheetHeader>
+				<SheetHeader 
+          className={cn(
+            disablePadding && 'px-4'
+          )}>
 					<SheetTitle>
 						{title}
 					</SheetTitle>

@@ -24,7 +24,7 @@ export default function SubscriptionTableCard({
     <Card className={cn(
       "w-full max-w-sm",
       "transition-all duration-300 ease-in-out",
-      "hover:shadow-lg hover:border-primary hover:border-3",
+      "hover:shadow-lg",
     )}>
       <CardHeader>
         <div className="flex justify-between items-center">

@@ -15,7 +15,7 @@ export const COLLECTION_ARTICLE = {
 	icon: 'FileText',
 	name: 'articles',
 	label: 'Article',
-	color: COLORS.orange[500],
+	color: 'bg-orange-500',
 	description: 'Blogs, articles, posts, etc.',
 	fields: [
 		...fields.BASE_FIELD_TEMPLATES,

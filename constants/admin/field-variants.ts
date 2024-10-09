@@ -152,7 +152,7 @@ export const LOCATION_FIELD_VARIANT: FieldVariantType = {
 	label: 'Location',
 	description: 'Address with coordinates',
 	array: false,
-	color: COLORS.teal[500],
+	color: 'bg-teal-500',
 }
 
 export const NUMBER_FIELD_VARIANT: FieldVariantType = {
@@ -229,7 +229,7 @@ export const HABTM_FIELD_VARIANT: FieldVariantType = {
 	label: 'Reference',
 	description: 'Connect one or more items',
 	array: false,
-	color: COLORS.orange[500],
+	color: 'bg-orange-500',
 }
 
 export const SHOP_PRODUCTS_FIELD_VARIANT: FieldVariantType = {

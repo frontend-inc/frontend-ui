@@ -27,7 +27,7 @@ const TokenItem: React.FC<TokenItemProps> = (props) => {
 			primary={token?.name}
 			secondary={truncate(token?.api_key, 20)}
 			icon="Key"
-			color={token?.internal ? COLORS.deepPurple[500] : COLORS.teal[500]}
+			color={token?.internal ? COLORS.deepPurple[500] : 'bg-teal-500'}
 			handleClick={handleCopyToken}
 			handleEdit={!token?.internal ? () => handleEdit(token) : undefined}
 			handleDelete={!token?.internal ? () => handleDelete(token) : undefined}

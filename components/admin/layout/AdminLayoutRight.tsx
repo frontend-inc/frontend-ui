@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Hidden, Box } from '@mui/material'
+import { Hidden } from '@mui/material'
 import { useAdmin } from '../../../hooks'
 import { Drawer } from '../../../components'
 import { useResponsive } from '../../../hooks'
@@ -24,7 +24,7 @@ const AdminLayoutRight: React.FC<AdminLayoutRightProps> = (props) => {
 	return (
 		<>
 			<Hidden smDown>
-				{openLayoutRight && <Box sx={sx.root}>{children}</Box>}
+				{openLayoutRight && <div className='dark w-[300px] min-w-[300px] h-screen'>{children}</div>}
 			</Hidden>
 			<Hidden smUp>
 				<Drawer
@@ -41,18 +41,3 @@ const AdminLayoutRight: React.FC<AdminLayoutRightProps> = (props) => {
 }
 
 export default AdminLayoutRight
-
-const sx = {
-	root: {
-		height: {
-			sm: '100vh',
-			xs: '100%',
-		},
-		width: 300,
-		minWidth: 300,
-		'&::-webkit-scrollbar': {
-			display: 'none',
-		},
-		overflowY: 'hidden',
-	},
-}

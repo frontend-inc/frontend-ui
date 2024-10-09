@@ -131,7 +131,7 @@ export const LOCATION_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'Location',
 	description: 'Address with coordinates',
 	variant: 'location',
-	color: COLORS.teal[500],
+	color: 'bg-teal-500',
 }
 
 export const NUMBER_QUESTION_VARIANT: QuestionVariantType = {
