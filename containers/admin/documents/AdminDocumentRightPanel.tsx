@@ -1,9 +1,10 @@
 import React from 'react'
-import { Stack, Divider, Typography } from '@mui/material'
+import { Typography } from '../../../tailwind'
 import PublishButton from './inputs/PublishButton'
 import SaveButton from './inputs/SaveButton'
 import { SyntheticEventType } from 'frontend-js'
 import { UserAutosuggest } from '../../../components'
+import { Separator } from '../../../shadcn/ui/separator'
 
 type AdminDocumentRightPanelProps = {
 	appId: string | number
@@ -35,16 +36,19 @@ const AdminDocumentRightPanel: React.FC<AdminDocumentRightPanelProps> = (
 	} = props
 
 	return (
-		<Stack direction="column" spacing={2} sx={sx.rightContent}>
+		<div className="dark bg-background h-full p-3 flex flex-col space-y-6">
+      <div className="flex flex-col space-y-3">
+        <Typography variant="caption" color="text.secondary">
+          Publish
+        </Typography>
+        <PublishButton
+          loading={publishLoading}
+          document={document}
+          handleTogglePublish={handleTogglePublish}
+        />
+      </div>
+      <div className="flex flex-col space-y-3">
 			<Typography variant="caption" color="text.secondary">
-				Publish
-			</Typography>
-			<PublishButton
-				loading={publishLoading}
-				document={document}
-				handleTogglePublish={handleTogglePublish}
-			/>
-			<Typography mt={2} variant="caption" color="text.secondary">
 				Last saved {document?.last_saved_at}
 			</Typography>
 			<SaveButton
@@ -53,7 +57,8 @@ const AdminDocumentRightPanel: React.FC<AdminDocumentRightPanelProps> = (
 				document={document}
 				handleSubmit={handleSubmit}
 			/>
-			<Divider />
+      </div>
+			<Separator />
 			<UserAutosuggest
 				direction="row"
 				label="User"
@@ -62,7 +67,7 @@ const AdminDocumentRightPanel: React.FC<AdminDocumentRightPanelProps> = (
 				value={document?.user_id}
 				handleChange={handleChange}
 			/>
-		</Stack>
+		</div>
 	)
 }
 

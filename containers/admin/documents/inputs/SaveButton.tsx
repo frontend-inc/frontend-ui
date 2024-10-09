@@ -1,98 +1,75 @@
+'use client'
+
 import React from 'react'
-import { Button, ButtonGroup, Typography, Menu, MenuItem } from '@mui/material'
-import { ExpandMore } from '@mui/icons-material'
-import { useMenu } from '../../../../hooks'
+import { Button } from "@/shadcn/ui/button"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/shadcn/ui/dropdown-menu"
+import { ChevronDown, Loader2 } from "lucide-react"
+import { cn } from "@/shadcn/lib/utils"
 import { useRouter } from 'next/router'
-import { RouterParams } from '../../../../types'
-import { IconLoading } from '../../../../components'
 import { useAdmin } from '../../../../hooks'
 
 type SaveButtonProps = {
-	loading: boolean
-	document: any
-	handleSubmit: () => void
-	fullWidth?: boolean
+  loading: boolean
+  document: any
+  handleSubmit: () => void
+  fullWidth?: boolean
 }
 
-const SaveButton: React.FC<SaveButtonProps> = (props) => {
-	const { clientUrl } = useAdmin()
-	const { loading, document, handleSubmit, fullWidth = false } = props
+const SaveButton: React.FC<SaveButtonProps> = ({ 
+  loading, 
+  document, 
+  handleSubmit, 
+  fullWidth = false 
+}) => {
+  const { clientUrl } = useAdmin()
+  const router = useRouter()
+  const { app_id: appId, collection_id: collectionId } = router?.query
 
-	const router = useRouter()
-	const { app_id: appId, collection_id: collectionId } =
-		router?.query as RouterParams
+  const handleSave = () => {
+    handleSubmit()
+    router.push(`${clientUrl}/collections/${collectionId}`)
+  }
 
-	const handleSave = () => {
-		closeMenu()
-		handleSubmit()
-		router.push(`${clientUrl}/collections/${collectionId}`)
-	}
+  const handleSaveAndNew = () => {
+    handleSubmit()
+    router.push(`${clientUrl}/collections/${collectionId}/documents/new`)
+  }
 
-	const handleSaveAndNew = () => {
-		closeMenu()
-		handleSubmit()
-		router.push(`${clientUrl}/collections/${collectionId}/documents/new`)
-	}
-
-	const { open, anchorEl, toggleMenu, closeMenu } = useMenu()
-
-	return (
-		<>
-			<ButtonGroup
-				variant="contained"
-				color="primary"
-				fullWidth
-				sx={{
-					...sx.saveButton,
-					...(loading && sx.loading),
-					...(fullWidth && sx.fullWidth),
-				}}
-			>
-				<Button
-					endIcon={loading && <IconLoading />}
-					sx={sx.button}
-					onClick={handleSubmit}
-				>
-					{document?.id ? 'Save' : 'Create'}
-				</Button>
-				<Button sx={sx.expandMore} onClick={toggleMenu}>
-					<ExpandMore />
-				</Button>
-			</ButtonGroup>
-			<Menu open={open} anchorEl={anchorEl} onClose={closeMenu}>
-				<MenuItem onClick={handleSave}>
-					<Typography variant="body2" color="textPrimary">
-						Save and close
-					</Typography>
-				</MenuItem>
-				<MenuItem onClick={handleSaveAndNew}>
-					<Typography variant="body2" color="textPrimary">
-						Save and create new
-					</Typography>
-				</MenuItem>
-			</Menu>
-		</>
-	)
+  return (
+    <div className={cn("flex", fullWidth ? "w-full" : "w-auto sm:w-auto")}>
+      <Button
+        variant="default"
+        className={cn(
+          "w-full h-9 rounded-r-none bg-blue-500 hover:bg-blue-600 text-white",
+          loading && "opacity-70 cursor-not-allowed"
+        )}
+        onClick={handleSubmit}
+        disabled={loading}
+      >
+        <span className="mr-2">{document?.id ? 'Save' : 'Create'}</span>
+        {loading && <Loader2 className="w-4 h-4 animate-spin" />}
+      </Button>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button
+            variant="default"
+            size='sm'
+            className="h-9 px-2 rounded-l-none bg-blue-500 hover:bg-blue-600 text-white"
+          >
+            <ChevronDown className="h-4 w-4" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuItem onClick={handleSave}>
+            Save and close
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={handleSaveAndNew}>
+            Save and create new
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
+  )
 }
 
 export default SaveButton
-
-const sx = {
-	button: {
-		height: 36,
-	},
-	saveButton: {
-		width: {
-			sm: 'auto',
-			xs: '100%',
-		},
-	},
-	fullWidth: {
-		width: '100%',
-	},
-	expandMore: {
-		height: 36,
-		width: '30px',
-	},
-	loading: {},
-}

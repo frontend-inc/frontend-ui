@@ -1,75 +1,57 @@
+'use client'
+
 import React from 'react'
-import { Button } from '@mui/material'
-import { Icon, IconLoading } from '../../../../components'
+import { Button } from "@/shadcn/ui/button"
+import { CheckCircle, Loader2 } from "lucide-react"
+import { cn } from "@/shadcn/lib/utils"
 
 type PublishButtonProps = {
-	loading: boolean
-	document: any
-	handleTogglePublish: () => void
-	fullWidth?: boolean
+  loading: boolean
+  document: any
+  handleTogglePublish: () => void
+  fullWidth?: boolean
 }
 
-const PublishButton: React.FC<PublishButtonProps> = (props) => {
-	const { loading, document, handleTogglePublish, fullWidth = false } = props
+const PublishButton: React.FC<PublishButtonProps> = ({   
+  document, 
+  handleTogglePublish, 
+  fullWidth = false 
+}) => {
+  const isPublished = document?.published
 
-	return (
-		<Button
-			variant="contained"
-			sx={{
-				...sx.root,
-				...(document?.published && sx.published),
-				...(loading && sx.loading),
-				...(fullWidth && sx.fullWidth),
-			}}
-			onClick={handleTogglePublish}
-			startIcon={
-				<>
-					{document?.published && (
-						<Icon name="CheckCircle" color="success.contrastText" />
-					)}
-				</>
-			}
-			endIcon={
-				loading && (
-					<IconLoading
-						color={
-							document?.published
-								? 'success.contrastText'
-								: 'primary.contrastText'
-						}
-					/>
-				)
-			}
-		>
-			{document?.published ? 'Published' : 'Publish'}
-		</Button>
-	)
+  return (
+    <Button
+      variant={isPublished ? "secondary" : "default"}
+      className={cn(
+        "bg-green-500 hover:bg-green-600 text-white relative overflow-hidden transition-all duration-300",
+        isPublished ? "justify-center" : "justify-center",
+        fullWidth && "w-full",
+        "h-10 px-4"
+      )}
+      onClick={handleTogglePublish}      
+    >
+      <div className={cn(
+        "flex items-center transition-all duration-300",
+        isPublished ? "space-x-2" : "space-x-0"
+      )}>
+        
+        <span className={cn(
+          "transition-all duration-300",
+          isPublished ? "translate-x-0" : "translate-x-0"
+        )}>
+          {isPublished ? 'Published' : 'Publish'}
+        </span> 
+        <span className={cn(
+          "transition-all duration-300 flex items-center",
+          isPublished 
+            ? "opacity-100 animate-slide-fade-in" 
+            : "opacity-0"
+        )}>
+          <CheckCircle className="w-5 h-5" />
+        </span>       
+      </div>
+    </Button>
+  )
 }
 
 export default PublishButton
-
-const sx = {
-	root: {
-		height: 36,
-		width: {
-			sm: 'auto',
-			xs: '100%',
-		},
-		border: 'none',
-		boxShadow: 'none',
-		transition: 'all 0.3s ease-in-out',
-	},
-	published: {
-		color: 'success.contrastText',
-		bgcolor: 'success.main',
-		'&:hover': {
-			color: 'success.contrastText',
-			border: 'none',
-			bgcolor: 'success.dark',
-		},
-	},
-	fullWidth: {
-		width: '100%',
-	},
-	loading: {},
-}
