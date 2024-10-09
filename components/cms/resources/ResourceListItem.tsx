@@ -1,204 +1,116 @@
 import React from 'react'
+import { cn } from "../../../shadcn/lib/utils"
+import { Avatar, AvatarFallback, AvatarImage } from "../../../shadcn/ui/avatar"
+import { Checkbox } from "../../../shadcn/ui/checkbox"
+import { Button } from "../../../shadcn/ui/button"
 import {
-	Stack,
-	Avatar,
-	ListItem,
-	ListItemButton,
-	ListItemText,
-	ListItemIcon,
-	Typography,
-	Checkbox,
-} from '@mui/material'
-import { Image, Icon, MenuButton } from '../..'
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../../../shadcn/ui/dropdown-menu"
+import { GripVertical, MoreVertical } from "lucide-react"
+import Image from 'next/image'
+import { Typography } from "../../../tailwind"
 
 export type ResourceListItemProps = {
-	selectable?: boolean
-	selected?: boolean
-	primary: React.ReactNode
-	secondary?: React.ReactNode
-	avatar?: React.ReactNode
-	icon?: string
-	color?: string
-	layout?: 'list' | 'grid'
-	title?: string | React.ReactNode
-	description?: string
-	image?: string
-	handleClick?: (resource: any) => void
-	handleEdit?: (resource: any) => void
-	handleDelete?: (resource: any) => void
-	handleSelect?: () => void
-	handleReload?: () => void
-	secondaryAction?: React.ReactNode
-	menuActions?: any
-	sortable?: boolean
-	isDragging?: boolean
-	enableBorder?: boolean
-	slots?: {
-		image?: any
-	}
+  selectable?: boolean
+  selected?: boolean
+  primary: React.ReactNode
+  secondary?: React.ReactNode
+  avatar?: React.ReactNode
+  icon?: string
+  color?: string
+  image?: string
+  handleClick?: (resource: any) => void
+  handleEdit?: (resource: any) => void
+  handleDelete?: (resource: any) => void
+  handleSelect?: () => void
+  secondaryAction?: React.ReactNode
+  menuActions?: React.ReactNode
+  sortable?: boolean
+  isDragging?: boolean
+  enableBorder?: boolean
 }
 
-const ResourceListItem: React.FC<ResourceListItemProps> = (props) => {
-	const {
-		icon,
-		avatar,
-		color,
-		primary,
-		secondary,
-		image,
-		handleClick,
-		handleEdit,
-		handleDelete,
-		handleSelect,
-		secondaryAction,
-		menuActions,
-		sortable,
-		selectable,
-		selected,
-		isDragging = false,
-		enableBorder = false,
-		slots = {
-			image: {},
-		},
-	} = props
-
-	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		if (handleSelect) {
-			handleSelect()
-		}
-	}
-
-	return (
-		<ListItem
-			sx={{
-				...sx.root,
-				...(enableBorder && sx.rootBorder),
-				...(selected && sx.selected),
-				...(isDragging && sx.isDragging),
-			}}
-			disablePadding
-			secondaryAction={
-				<Stack direction="row" spacing={1} sx={sx.buttons}>
-					{secondaryAction}
-					{(menuActions || handleEdit || handleDelete) && (
-						<MenuButton handleEdit={handleEdit} handleDelete={handleDelete}>
-							{menuActions}
-						</MenuButton>
-					)}
-				</Stack>
-			}
-		>
-			{selectable && (
-				<ListItemIcon sx={sx.checkbox}>
-					<Checkbox
-						checked={selected}
-						color="primary"
-						size="small"
-						onChange={handleChange}
-					/>
-				</ListItemIcon>
-			)}
-			<ListItemButton
-				sx={sx.listItemButton}
-				onClick={handleClick ? handleClick : undefined}
-			>
-				{sortable && (
-					<ListItemIcon sx={sx.dragHandle}>
-						<Icon name="GripVertical" color="text.secondary" />
-					</ListItemIcon>
-				)}
-				{avatar && <ListItemIcon sx={sx.listItemIcon}>{avatar}</ListItemIcon>}
-				{image && (
-					<ListItemIcon sx={sx.listItemImage}>
-						<Image
-							src={image}
-							width={64}
-							height={64}
-							alt={image}
-							{...slots.image}
-						/>
-					</ListItemIcon>
-				)}
-				{icon && (
-					<ListItemIcon sx={sx.listItemIcon}>
-						<Avatar
-							sx={{
-								...sx.avatar,
-								bgcolor: color,
-							}}
-						>
-							<Icon name={icon} size={20} color={'primary.contrastText'} />
-						</Avatar>
-					</ListItemIcon>
-				)}
-				<ListItemText
-					primary={
-						<Typography variant="body1" color="text.primary">
-							{primary}
-						</Typography>
-					}
-					secondary={secondary}
-				/>
-			</ListItemButton>
-		</ListItem>
-	)
-}
-
-export default ResourceListItem
-
-const sx = {
-	root: {
-		my: 0.5,
-		p: 0,
-		border: '1px solid',
-		borderColor: 'transparent',
-		borderRadius: 1,
-		overflow: 'hidden',
-		bgcolor: 'background.paper',
-	},
-	rootBorder: {
-		border: '1px solid',
-		borderColor: 'divider',
-		transition: 'box-shadow 0.2s',
-		'&:hover': {
-			boxShadow: 1,
-		},
-		mb: 1,
-	},
-	selected: {
-		border: '1px solid',
-		borderColor: 'primary.main',
-	},
-	listItemButton: {
-		p: 1,
-		borderRadius: 1,
-	},
-	avatar: {
-		borderRadius: 1,
-	},
-	buttons: {
-		alignItems: 'center',
-	},
-	listItemIcon: {
-		mr: 2,
-	},
-	listItemImage: {
-		mr: 2,
-		minWidth: 64,
-		display: 'flex',
-		justifyContent: 'flex-end',
-	},
-	checkbox: {
-		width: 24,
-	},
-	dragHandle: {
-		width: 24,
-		cursor: 'grab',
-		'&:active': {
-			cursor: 'grabbing',
-		},
-	},
-	isDragging: {
-		boxShadow: 2,
-	},
+export default function ResourceListItem({
+  icon,
+  avatar,
+  color,
+  primary,
+  secondary,
+  image,
+  handleClick,
+  handleEdit,
+  handleDelete,
+  handleSelect,
+  secondaryAction,
+  menuActions,
+  sortable,
+  selectable,
+  selected,
+  isDragging = false,
+  enableBorder = false,
+}: ResourceListItemProps) {
+  return (
+    <div
+      className={cn(
+        "p-1 rounded overflow-hidden bg-background hover:bg-accent",
+        "border border-transparent",
+        enableBorder && "border-border hover:shadow-md mb-1 transition-shadow duration-200",
+        selected && "border-primary",
+        isDragging && "shadow-md"
+      )}
+    >
+      <div className="flex items-center p-1 rounded">
+        {selectable && (
+          <Checkbox
+            checked={selected}
+            onCheckedChange={handleSelect}
+            className="mr-2"
+          />
+        )}
+        {sortable && (
+          <GripVertical className="w-6 h-6 mr-2 text-muted-foreground cursor-grab active:cursor-grabbing" />
+        )}
+        {avatar && <div className="mr-2">{avatar}</div>}
+        {image && (
+          <div className="mr-2 min-w-[64px] flex justify-end">
+            <Image src={image} width={64} height={64} alt={image} />
+          </div>
+        )}
+        {icon && (
+          <Avatar className={cn("mr-2 rounded", color)}>
+            <AvatarFallback>{icon}</AvatarFallback>
+          </Avatar>
+        )}
+        <div className="flex-grow cursor-pointer" onClick={handleClick}>
+          <Typography variant="body1">{primary}</Typography>
+          {secondary && <Typography variant="body2" color="text.secondary">{secondary}</Typography>}
+        </div>
+        <div className="flex items-center space-x-1">
+          {secondaryAction}
+          {(menuActions || handleEdit || handleDelete) && (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="h-8 w-8 p-0">
+                  <span className="sr-only">Open menu</span>
+                  <MoreVertical className="h-4 w-4 text-foreground" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                {menuActions}
+                {handleEdit && (
+                  <DropdownMenuItem onClick={() => handleEdit({})}>Edit</DropdownMenuItem>
+                )}
+                {handleDelete && (
+                  <DropdownMenuItem onClick={() => handleDelete({})}>Delete</DropdownMenuItem>
+                )}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
+        </div>
+      </div>
+    </div>
+  )
 }

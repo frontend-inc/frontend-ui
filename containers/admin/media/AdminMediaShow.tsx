@@ -1,9 +1,8 @@
 import React from 'react'
 import { useAlerts } from '../../../hooks'
-import { Modal } from '../../../components'
-import { Box, Button } from '@mui/material'
+import { Image, Modal } from '../../../components'
+import { Box, Button } from '../../../tailwind'
 import copy from 'copy-to-clipboard'
-import Image from 'next/image'
 
 type AdminMediaShowProps = {
 	open: boolean
@@ -30,8 +29,7 @@ const AdminMediaShow: React.FC<AdminMediaShowProps> = (props) => {
 	return (
 		<Modal
 			open={open}
-			handleClose={handleClose}
-			title={resource?.filename}
+			handleClose={handleClose}			
 			maxWidth="md"
 			disablePadding
 			buttons={
@@ -49,48 +47,20 @@ const AdminMediaShow: React.FC<AdminMediaShowProps> = (props) => {
 				</>
 			}
 		>
-			<Box sx={sx.root}>
+			<div className="w-full h-full">
 				{IMAGE_REGEX.test(resource?.content_type) && (
 					<Image
 						alt={resource?.public_id}
 						src={resource.url}
-						height={resource.height || 500}
-						width={resource.width || 500}
-						layout="responsive"
-						style={{
-							maxWidth: '640px',
-							maxHeight: '640px',
-							objectFit: 'contain',
-						}}
+						aspectRatio={4/3}						
 					/>
 				)}
 				{VIDEO_REGEX.test(resource?.content_type) && (
-					<video src={resource.url} controls muted autoPlay style={sx.video} />
+					<video src={resource.url} controls muted autoPlay />
 				)}
-			</Box>
+			</div>
 		</Modal>
 	)
 }
 
 export default AdminMediaShow
-
-const sx = {
-	root: {
-		width: '100%',
-		height: '100%',
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'center',
-		minHeight: '500px',
-	},
-	image: {
-		maxHeight: '100vh',
-		maxWidth: '100vw',
-	},
-	video: {
-		width: '100%',
-		height: 'auto',
-		maxHeight: '100%',
-	},
-}

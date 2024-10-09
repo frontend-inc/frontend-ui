@@ -1,6 +1,6 @@
 import React from 'react'
 import { Drawer, CircularLoader } from '../..'
-import { Button, Stack } from '@mui/material'
+import { Button, Stack } from '../../../tailwind'
 
 export type ResourceModalProps = {
 	title?: string
@@ -37,7 +37,7 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 			disablePadding={disablePadding}
 			buttons={
 				(enableEdit || enableDelete) && (
-					<Stack direction="row" spacing={1} sx={{ width: '100%' }}>
+					<div className="w-fill flex flex-row space-x-2">
 						{enableEdit && (
 							<Button
 								fullWidth
@@ -58,7 +58,7 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 								Delete
 							</Button>
 						)}
-					</Stack>
+					</div>
 				)
 			}
 		>

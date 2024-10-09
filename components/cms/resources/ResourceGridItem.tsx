@@ -1,197 +1,115 @@
 import React from 'react'
+import { cn } from "../../../shadcn/lib/utils"
+import { Card, CardHeader, CardContent, CardFooter } from "../../../shadcn/ui/card"
+import { Checkbox } from "../../../shadcn/ui/checkbox"
+import { Button } from "../../../shadcn/ui/button"
+import { Typography } from "../../../tailwind"
 import {
-	Stack,
-	Box,
-	Card,
-	CardHeader,
-	CardContent,
-	CardActionArea,
-	Checkbox,
-	Typography,
-} from '@mui/material'
-import { Image, Label, MenuButton } from '../..'
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../../../shadcn/ui/dropdown-menu"
+import { MoreVertical } from "lucide-react"
+import Image from 'next/image'
 
-export type ResourceListItemProps = {
-	selectable?: boolean
-	selected?: boolean
-	primary: React.ReactNode
-	secondary?: React.ReactNode
-	avatar?: React.ReactNode
-	icon?: string
-	color?: string
-	layout?: 'list' | 'grid'
-	label?: string
-	title?: string | React.ReactNode
-	description?: string
-	image?: string
-	handleClick?: (resource: any) => void
-	handleEdit?: (resource: any) => void
-	handleDelete?: (resource: any) => void
-	handleSelect?: () => void
-	handleReload?: () => void
-	secondaryAction?: React.ReactNode
-	menuActions?: any
-	sortable?: boolean
-	isDragging?: boolean
-	enableBorder?: boolean
-	slots?: {
-		image?: any
-	}
+export type ResourceGridItemProps = {
+  selectable?: boolean
+  selected?: boolean
+  primary: React.ReactNode
+  secondary?: React.ReactNode
+  avatar?: React.ReactNode
+  icon?: string
+  color?: string
+  label?: string
+  image?: string
+  handleClick?: (resource: any) => void
+  handleEdit?: (resource: any) => void
+  handleDelete?: (resource: any) => void
+  handleSelect?: () => void
+  secondaryAction?: React.ReactNode
+  menuActions?: React.ReactNode
+  sortable?: boolean
+  isDragging?: boolean
+  enableBorder?: boolean
 }
 
-const ResourceGridItem: React.FC<ResourceListItemProps> = (props) => {
-	const {
-		icon,
-		avatar,
-		color,
-		label,
-		primary,
-		secondary,
-		image,
-		handleClick,
-		handleEdit,
-		handleDelete,
-		handleSelect,
-		secondaryAction,
-		menuActions,
-		sortable,
-		selectable,
-		selected,
-		isDragging = false,
-		enableBorder = false,
-		slots = {
-			image: {},
-		},
-	} = props
-
-	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		if (handleSelect) {
-			handleSelect()
-		}
-	}
-
-	return (
-		<Card
-			sx={{
-				...sx.root,
-				...(enableBorder && sx.border),
-				...(selected && sx.selected),
-			}}
-		>
-			<CardHeader
-				sx={sx.cardHeader}
-				avatar={avatar}
-				title={
-					selectable && (
-						<Checkbox
-							size="small"
-							checked={selected}
-							onChange={handleChange}
-							color="primary"
-							sx={sx.checkbox}
-						/>
-					)
-				}
-				action={
-					<Stack direction="row" spacing={1} sx={sx.buttons}>
-						{secondaryAction}
-						{(menuActions || handleEdit || handleDelete) && (
-							<MenuButton
-								size="small"
-								handleEdit={handleEdit}
-								handleDelete={handleDelete}
-							>
-								{menuActions}
-							</MenuButton>
-						)}
-					</Stack>
-				}
-			/>
-			<CardActionArea onClick={handleClick}>
-				<Box sx={sx.image}>
-					<Image
-						label={label}
-						disableBorderRadius
-						height={160}
-						src={image}
-						{...slots.image}
-					/>
-				</Box>
-			</CardActionArea>
-			{(primary || secondary) && (
-				<CardContent>
-					<Typography variant="subtitle2" color="text.primary">
-						{primary}
-					</Typography>
-					{secondary && (
-						<Typography variant="body2" color="text.secondary">
-							{secondary}
-						</Typography>
-					)}
-				</CardContent>
-			)}
-		</Card>
-	)
-}
-
-export default ResourceGridItem
-
-const sx = {
-	root: {
-		p: 0,
-		border: '1px solid',
-		borderColor: 'transparent',
-		borderRadius: 1,
-		overflow: 'hidden',
-		bgcolor: 'background.paper',
-	},
-	selected: {
-		border: '1px solid',
-		borderColor: 'primary.main',
-	},
-	border: {
-		border: '1px solid',
-		borderColor: 'divider',
-		transition: 'box-shadow 0.2s',
-		'&:hover': {
-			boxShadow: 1,
-		},
-		mb: 1,
-	},
-	listItemButton: {
-		p: 1,
-		borderRadius: 1,
-	},
-	cardHeader: {
-		height: 50,
-	},
-	avatar: {
-		borderRadius: 1,
-	},
-	buttons: {
-		alignItems: 'center',
-	},
-	listItemIcon: {
-		mr: 2,
-	},
-	checkbox: {
-		width: 24,
-	},
-	dragHandle: {
-		width: 24,
-		cursor: 'grab',
-		'&:active': {
-			cursor: 'grabbing',
-		},
-	},
-	isDragging: {
-		boxShadow: 2,
-	},
-	image: {
-		overflow: 'hidden',
-		height: 160,
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
+export default function ResourceGridItem({
+  selectable,
+  selected,
+  primary,
+  secondary,
+  avatar,
+  label,
+  image,
+  handleClick,
+  handleEdit,
+  handleDelete,
+  handleSelect,
+  secondaryAction,
+  menuActions,
+  enableBorder = false,
+}: ResourceGridItemProps) {
+  return (
+    <Card className={cn(
+      "overflow-hidden bg-background",
+      "border border-transparent",
+      enableBorder && "border-border hover:shadow-md transition-shadow duration-200",
+      selected && "border-primary"
+    )}>
+      <CardHeader className="h-[50px] p-2 flex justify-between items-center">
+        {selectable && (
+          <Checkbox
+            checked={selected}
+            onCheckedChange={handleSelect}
+          />
+        )}
+        {avatar}
+        <div className="flex flex-row justify-between w-full space-x-1">
+          {secondaryAction}
+          {(menuActions || handleEdit || handleDelete) && (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="h-8 w-8 p-0">
+                  <span className="sr-only">Open menu</span>
+                  <MoreVertical className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                {menuActions}
+                {handleEdit && (
+                  <DropdownMenuItem onClick={() => handleEdit({})}>Edit</DropdownMenuItem>
+                )}
+                {handleDelete && (
+                  <DropdownMenuItem onClick={() => handleDelete({})}>Delete</DropdownMenuItem>
+                )}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
+        </div>
+      </CardHeader>
+      <div 
+        className="overflow-hidden h-40 flex items-center justify-center cursor-pointer"
+        onClick={handleClick}
+      >
+        {image && (
+          <Image
+            src={image}
+            alt={label || "Resource image"}
+            width={320}
+            height={160}
+            className="object-cover w-full h-full"
+          />
+        )}
+      </div>
+      {(primary || secondary) && (
+        <CardContent className="p-4">
+          <Typography variant="body1">{primary}</Typography>
+          {secondary && (
+            <Typography variant="body2">{secondary}</Typography>
+          )}
+        </CardContent>
+      )}
+    </Card>
+  )
 }

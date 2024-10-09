@@ -20,7 +20,7 @@ interface SidebarMenuItemProps {
 export default function SidebarMenuItem({ title, secondaryActions, handleClick, handleEdit, handleDelete }: SidebarMenuItemProps) {
   return (
     <div className="flex items-center justify-between py-2 pl-4 px-2 hover:bg-accent rounded-md group">
-      <button onClick={ handleClick } className="focus:outline-none">
+      <button onClick={ handleClick } className="w-full focus:outline-none">
         <Typography variant="body1">
           {title}
         </Typography>

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Box, Stack, List } from '@mui/material'
 import { LoadMore } from '../..'
 import {
 	TableHeaderType,
@@ -39,43 +38,21 @@ const ResourceListItems: React.FC<ResourceListItemsProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Stack spacing={2} sx={sx.fullWidth}>
+		<div className="w-full flex flex-col space-y-3" >
 			{!grid ? (
-				<List>{resources?.map((resource) => renderItem(resource, props))}</List>
+				<ul className="flex flex-col gap-2">{resources?.map((resource) => renderItem(resource, props))}</ul>
 			) : (
-				<Box sx={sx.grid}>
+				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 					{resources?.map((resource) => renderItem(resource, props))}
-				</Box>
+				</div>
 			)}
 			<LoadMore
 				page={page}
 				numPages={numPages}
 				handlePaginate={() => handlePaginate(page + 1)}
 			/>
-		</Stack>
+		</div>
 	)
 }
 
 export default ResourceListItems
-
-const sx = {
-	fullWidth: {
-		width: '100%',
-	},
-	list: {
-		display: 'flex',
-		flexDirection: 'column',
-		gap: '8px',
-	},
-	grid: {
-		display: 'grid',
-		gridTemplateColumns: {
-			xl: '1fr 1fr 1fr 1fr 1fr',
-			lg: '1fr 1fr 1fr 1fr',
-			md: '1fr 1fr 1fr',
-			sm: '1fr 1fr',
-			xs: '1fr',
-		},
-		gap: '16px',
-	},
-}
