@@ -64,7 +64,10 @@ const Drawer: React.FC<DrawerProps> = ({
 					{children}
 				</div>
 				{buttons && (
-					<SheetFooter>
+					<SheetFooter
+            className={cn(
+              disablePadding && 'px-4'
+            )}>          
 						{buttons}
           </SheetFooter>
 				)}

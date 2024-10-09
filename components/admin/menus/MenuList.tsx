@@ -28,11 +28,11 @@ export default function SidebarMenuHeader({
       <Button       
         variant="ghost" 
         className={cn(
-          "py-6 w-full justify-between px-4",          
+          "py-6 w-full justify-between px-3",          
         )}
         onClick={() => setOpen(!open)}
       >
-        <Typography variant="body1">{label}</Typography>
+        <Typography variant="body2">{label}</Typography>
         <ChevronRight
           className={cn(            
             "text-foreground h-4 w-4 transition-transform duration-200",
