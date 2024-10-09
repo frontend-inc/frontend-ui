@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Box, Button } from '@mui/material'
+import { Stack, Button } from '../../../tailwind'
 import { Icon, SearchInput, FilterButton, SortButton } from '../..'
 import {
 	SortOptionType,
@@ -56,13 +56,13 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 
 	return (
 		<Stack
-			direction={{ xs: 'column', sm: direction }}
-			sx={sx.buttons}
+			direction={direction}
+			className='w-full align-center justify-between'
 			spacing={1}
 		>
 			<Stack
 				alignItems="center"
-				direction={{ xs: 'column', sm: direction }}
+				direction={direction}
 				spacing={1}
 			>
 				{enableSearch && (
@@ -91,16 +91,14 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 				)}
 			</Stack>
 			<Stack
-				direction={{ xs: 'column', sm: direction }}
+				direction={direction}
 				spacing={1}
-				sx={sx.secondaryActions}
+				className='w-full justify-center sm:justify-end'
 			>
 				{secondaryAction}
 				{(enableCreate || secondaryAction) && (
 					<Button
-						sx={sx.button}
-						color="primary"
-						variant="contained"
+            className="w-full sm:w-auto"												
 						onClick={handleAdd}
 						startIcon={<Icon name="Plus" color="primary.contrastText" />}
 					>
@@ -113,20 +111,3 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 }
 
 export default ResourceHeader
-
-const sx = {
-	buttons: {
-		width: '100%',
-		justifyContent: 'space-between',
-	},
-	button: {
-		width: {
-			sm: 'auto',
-			xs: '100%',
-		},
-	},
-	secondaryActions: {
-		width: '100%',
-		justifyContent: 'flex-end',
-	},
-}

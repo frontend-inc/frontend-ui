@@ -1,106 +1,68 @@
-import React, { useState } from 'react'
-import {
-	ButtonGroup,
-	Button,
-	ListItem,
-	ListItemIcon,
-	ListItemText,
-	ListItemButton,
-	Typography,
-	Radio,
-} from '@mui/material'
-import { MenuList } from '../..'
-import { SORT_DIRECTIONS } from '../../../constants/index'
+import React from 'react'
+import { cn } from "../../../shadcn/lib/utils"
+import { Button } from "../../../shadcn/ui/button"
+import { Check } from "lucide-react"
 import { SortOptionType } from '../../../types'
+import { Typography } from '../../../tailwind'
+
+// Assuming SORT_DIRECTIONS is imported from a constants file
+const SORT_DIRECTIONS = [
+  { value: 'asc', label: 'Ascending' },
+  { value: 'desc', label: 'Descending' },
+]
 
 type SortListProps = {
-	sortOptions: SortOptionType[]
-	sortBy: string
-	sortDirection: 'asc' | 'desc'
-	handleSortBy: (field: SortOptionType) => void
-	handleSortDirection: (sortDirection: 'asc' | 'desc') => void
+  sortOptions: SortOptionType[]
+  sortBy: string
+  sortDirection: 'asc' | 'desc'
+  handleSortBy: (field: SortOptionType) => void
+  handleSortDirection: (sortDirection: 'asc' | 'desc') => void
 }
 
-const SortList: React.FC<SortListProps> = (props) => {
-	const {
-		sortOptions,
-		sortBy,
-		sortDirection,
-		handleSortBy,
-		handleSortDirection,
-	} = props
-
-	return (
-		<>
-			<MenuList disablePadding label="Sort by">
-				{sortOptions?.map((sortOption: any) => (
-					<ListItem disablePadding disableGutters sx={sx.listItem}>
-						<ListItemButton
-							sx={sx.listItemButton}
-							disableRipple
-							onClick={() => handleSortBy(sortOption)}
-						>
-							<ListItemIcon sx={sx.listItemIcon}>
-								<Radio
-									checked={sortBy == sortOption?.name}
-									onChange={() => handleSortBy(sortOption)}
-								/>
-							</ListItemIcon>
-							<ListItemText
-								primary={
-									<Typography variant="button">{sortOption?.label}</Typography>
-								}
-							/>
-						</ListItemButton>
-					</ListItem>
-				))}
-			</MenuList>
-			<MenuList disablePadding label="Direction">
-				{SORT_DIRECTIONS.map((direction, i) => (
-					<ListItem disablePadding key={i} sx={sx.listItem}>
-						<ListItemButton
-							sx={sx.listItemButton}
-							disableRipple
-							onClick={() => handleSortDirection(direction?.value)}
-						>
-							<ListItemIcon sx={sx.listItemIcon}>
-								<Radio
-									checked={sortDirection == direction?.value}
-									onChange={() => handleSortDirection(direction?.value)}
-								/>
-							</ListItemIcon>
-							<ListItemText
-								primary={
-									<Typography color="text.primary" variant="button">
-										{direction?.label}
-									</Typography>
-								}
-							/>
-						</ListItemButton>
-					</ListItem>
-				))}
-			</MenuList>
-		</>
-	)
-}
-
-export default SortList
-
-const sx = {
-	listItem: {
-		py: 0,
-	},
-	listItemButton: {
-		p: 0,
-	},
-	listItemIcon: {
-		minWidth: '40px',
-	},
-	sortDirectionButton: {
-		width: '32px',
-		borderLeft: 'none',
-		'&:hover': {
-			borderLeft: 'none',
-		},
-	},
+export default function SortList({
+  sortOptions,
+  sortBy,
+  sortDirection,
+  handleSortBy,
+  handleSortDirection,
+}: SortListProps) {
+  return (
+    <div className="p-4 space-y-2">      
+      <Typography variant="body2">Sort by</Typography>
+        <div className="space-y-2">
+          {sortOptions?.map((sortOption) => (
+            <Button
+              key={sortOption.name}
+              variant="outline"
+              className={cn(
+                "w-full justify-start hover:bg-primary/10",
+                sortBy === sortOption.name && "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground"
+              )}
+              onClick={() => handleSortBy(sortOption)}
+            >
+              <span className="flex-1 text-left">{sortOption.label}</span>
+              {sortBy === sortOption.name && <Check className="w-4 h-4 ml-2" />}
+            </Button>
+          ))}
+        </div>
+      
+        <Typography variant="body2">Direction</Typography>
+        <div className="space-y-2">
+          {SORT_DIRECTIONS.map((direction) => (
+            <Button
+              key={direction.value}              
+              variant="outline"
+              className={cn(
+                "w-full justify-start hover:bg-primary hover:text-primary-foreground",
+                sortDirection === direction.value && "bg-primary text-primary-foreground"
+              )}
+              onClick={() => handleSortDirection(direction.value as 'asc' | 'desc')}
+            >
+              <span className="flex-1 text-left">{direction.label}</span>
+              {sortDirection === direction.value && <Check className="w-4 h-4 ml-2" />}
+            </Button>
+          ))}
+        </div>
+      </div>    
+  )
 }

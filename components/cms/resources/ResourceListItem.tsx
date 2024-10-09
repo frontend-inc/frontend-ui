@@ -10,8 +10,8 @@ import {
   DropdownMenuTrigger,
 } from "../../../shadcn/ui/dropdown-menu"
 import { GripVertical, MoreVertical } from "lucide-react"
-import Image from 'next/image'
 import { Typography } from "../../../tailwind"
+import { Image } from '../../../components'
 
 export type ResourceListItemProps = {
   selectable?: boolean
@@ -55,19 +55,18 @@ export default function ResourceListItem({
   return (
     <div
       className={cn(
-        "p-1 rounded overflow-hidden bg-background hover:bg-accent",
+        "p-1 rounded-lg overflow-hidden bg-background hover:bg-accent",
         "border border-transparent",
         enableBorder && "border-border hover:shadow-md mb-1 transition-shadow duration-200",
         selected && "border-primary",
         isDragging && "shadow-md"
       )}
     >
-      <div className="flex items-center p-1 rounded">
+      <div className="flex items-center p-1 rounded space-x-4">
         {selectable && (
           <Checkbox
             checked={selected}
             onCheckedChange={handleSelect}
-            className="mr-2"
           />
         )}
         {sortable && (
@@ -75,8 +74,8 @@ export default function ResourceListItem({
         )}
         {avatar && <div className="mr-2">{avatar}</div>}
         {image && (
-          <div className="mr-2 min-w-[64px] flex justify-end">
-            <Image src={image} width={64} height={64} alt={image} />
+          <div className="mr-2 w-[72px] h-[72px]">
+            <Image src={image} aspectRatio={1.0} alt={image} />
           </div>
         )}
         {icon && (

@@ -13,6 +13,7 @@ import { MoreVertical, Pencil, Trash } from "lucide-react"
 interface SidebarMenuItemProps {
   title: string
   secondaryActions?: React.ReactNode
+  handleClick: () => void
   handleEdit?: () => void
   handleDelete?: () => void
 }
@@ -21,7 +22,7 @@ export default function SidebarMenuItem({ title, secondaryActions, handleClick, 
   return (
     <div className="flex items-center justify-between py-2 pl-4 px-2 hover:bg-accent rounded-md group">
       <button onClick={ handleClick } className="w-full focus:outline-none">
-        <Typography variant="body1">
+        <Typography variant="body2">
           {title}
         </Typography>
       </button>
