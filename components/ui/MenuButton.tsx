@@ -27,7 +27,6 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
 		handleDelete,
 	} = props
 
-
 	return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -36,18 +35,16 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
           <MoreVertical className="h-4 w-4 text-foreground" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-[160px]">
+      <DropdownMenuContent align="end" className="w-[100px]">
         { children }
         { handleEdit && (
-        <DropdownMenuItem onClick={handleEdit}>
-          <Pencil className="mr-2 h-4 w-4" />
-          <span>Edit</span>
+        <DropdownMenuItem onClick={handleEdit}>          
+          Edit
         </DropdownMenuItem>
         )}
         { handleDelete && (
         <DropdownMenuItem onClick={handleDelete}>
-          <Trash className="mr-2 h-4 w-4" />
-          <span>Delete</span>
+          Delete
         </DropdownMenuItem>
         )}
       </DropdownMenuContent>

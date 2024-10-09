@@ -11,7 +11,7 @@ type AdminSubscriptionItemProps = {
 
 const AdminSubscriptionItem: React.FC<AdminSubscriptionItemProps> = (props) => {
 	const {
-		resource: subscription,
+  resource: subscription,
 		handleClick,
 		handleEdit,
 		handleDelete,

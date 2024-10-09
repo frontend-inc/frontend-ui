@@ -5,7 +5,7 @@ type StackProps = {
 	children: React.ReactNode
 	direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse'
 	spacing?: number
-	alignItems?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline'
+	alignItems?: 'flex-start' | 'flex-end' | 'center' 
 	justifyContent?:
 		| 'flex-start'
 		| 'flex-end'

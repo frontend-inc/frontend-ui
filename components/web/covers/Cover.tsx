@@ -57,20 +57,35 @@ const Cover: React.FC<CoverProps> = (props) => {
 		<div className={cn(
       "dark relative w-full"
     )}>
-			<Image
-				disableBorderRadius
-				src={image}
-				alt={alt}
-        aspectRatio={3.0}
-				bgcolor={overlayColor}
-				enableGradient={enableGradient}
-				enableOverlay={enableOverlay}
-				opacity={opacity}
-			/>
-			<Stack
+      <div className="hidden sm:block">
+        <Image
+          disableBorderRadius
+          src={image}
+          alt={alt}
+          aspectRatio={2.5}
+          bgcolor={overlayColor}
+          enableGradient={enableGradient}
+          enableOverlay={enableOverlay}
+          opacity={opacity}
+        />
+      </div>
+      <div className="block sm:hidden">
+        <Image
+          disableBorderRadius
+          src={image}
+          alt={alt}
+          aspectRatio={1.0}
+          bgcolor={overlayColor}
+          enableGradient={enableGradient}
+          enableOverlay={enableOverlay}
+          opacity={opacity}
+        />
+      </div>
+			<div
 				className={cn(
+          'flex flex-col items-center justify-center',
           height && `h-[${height}px]`,
-          `absolute top-0 left-0 w-full h-full justify-center items-center px-3 sm:px-0`
+          `absolute top-0 left-0 w-full h-full px-3 sm:px-0`
         )}
 			>
 				<Stack direction="column" spacing={1} alignItems={alignItems}>
@@ -103,7 +118,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 						</Box>
 					)}
 				</Stack>
-			</Stack>
+			</div>
 		</div>
 	)
 }

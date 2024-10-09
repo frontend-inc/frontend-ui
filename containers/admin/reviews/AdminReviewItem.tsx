@@ -6,7 +6,7 @@ import {
 	ResourceListItem,
 } from '../../../components'
 import { truncate } from '../../../helpers'
-import { Typography } from '@mui/material'
+import { Typography } from '../../../tailwind'
 
 type AdminReviewItemProps = {
 	resource: any
@@ -20,7 +20,7 @@ const AdminReviewItem: React.FC<AdminReviewItemProps> = (props) => {
 
 	return (
 		<ResourceListItem
-			primary={<FieldRating size="small" value={review?.rating} />}
+			primary={<FieldRating size="sm" value={review?.rating} />}
 			secondary={
 				<Typography variant="body2" color="text.secondary">
 					{truncate(review?.title, 40)}

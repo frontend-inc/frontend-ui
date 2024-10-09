@@ -1,30 +1,46 @@
+"use client"
+
 import React from 'react'
-import { PrimaryButton } from '../../../../components'
-import { Collapse, Stack } from '@mui/material'
+import { Button } from "../../../../shadcn/ui/button"
+import { Collapsible, CollapsibleContent } from "../../../../shadcn/ui/collapsible"
 import { useProductCollections } from '../../../../hooks'
+import { Plus } from "lucide-react"
 
-const AdminProductToolbar = (props) => {
-	const { productCollectionId, url, handleSuccess } = props || {}
-
-	const { handleClose, selectedIds } = props || {}
-
-	const { addProducts } = useProductCollections()
-
-	const handleAddProducts = async () => {
-		await addProducts(productCollectionId, selectedIds)
-		handleSuccess()
-		handleClose()
-	}
-
-	return (
-		<Collapse in={selectedIds?.length > 0}>
-			<Stack direction="row" spacing={1}>
-				<PrimaryButton fullWidth onClick={handleAddProducts} icon="Plus">
-					Add
-				</PrimaryButton>
-			</Stack>
-		</Collapse>
-	)
+interface AdminProductToolbarProps {
+  productCollectionId?: string
+  url?: string
+  handleSuccess: () => void
+  handleClose: () => void
+  selectedIds?: string[]
 }
 
-export default AdminProductToolbar
+export default function AdminProductToolbar({
+  productCollectionId,
+  url,
+  handleSuccess,
+  handleClose,
+  selectedIds = []
+}: AdminProductToolbarProps) {
+  const { addProducts } = useProductCollections()
+
+  const handleAddProducts = async () => {
+    if (productCollectionId) {
+      await addProducts(productCollectionId, selectedIds)
+      handleSuccess()
+      handleClose()
+    }
+  }
+
+  return (
+    <Collapsible open={selectedIds.length > 0}>
+      <CollapsibleContent className="space-y-2">
+        <div className="flex space-x-2">
+          <Button className="w-full" onClick={handleAddProducts}>
+            <Plus className="mr-2 h-4 w-4" />
+            Add
+          </Button>
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
+  )
+}

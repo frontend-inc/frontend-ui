@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button } from '@mui/material'
-import { Repeat } from '@mui/icons-material'
+import { Button } from '../../../tailwind'
 import { FieldWrapper } from '../../../components'
+import { Repeat2 } from 'lucide-react'
 
 type FieldReferenceProps = {
 	value?: any
@@ -20,9 +20,8 @@ const FieldReference: React.FC<FieldReferenceProps> = (props) => {
 		<FieldWrapper label={label} color={color} {...rest}>
 			<Button
 				color="primary"
-				variant="outlined"
-				sx={sx.button}
-				endIcon={<Repeat />}
+				variant="outlined"				
+				endIcon={<Repeat2 className='w-5 h-5' />}
 				onClick={handleClick}
 			>
 				{value}
@@ -32,19 +31,3 @@ const FieldReference: React.FC<FieldReferenceProps> = (props) => {
 }
 
 export default FieldReference
-
-const sx = {
-	cell: {
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'flex-start',
-	},
-	avatar: {
-		bgcolor: 'background.paper',
-	},
-	button: {
-		textTransform: 'none',
-		fontFamily: (theme) => theme.typography.body2.fontFamily,
-		letterSpacing: 0,
-	},
-}

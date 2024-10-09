@@ -63,15 +63,15 @@ export default function ResourceListItem({
       )}
     >
       <div className="flex items-center p-1 rounded space-x-4">
+        {sortable && (
+          <GripVertical className="w-5 h-5 text-muted-foreground cursor-grab active:cursor-grabbing" />
+        )}
         {selectable && (
           <Checkbox
             checked={selected}
             onCheckedChange={handleSelect}
           />
-        )}
-        {sortable && (
-          <GripVertical className="w-6 h-6 mr-2 text-muted-foreground cursor-grab active:cursor-grabbing" />
-        )}
+        )}        
         {avatar && <div className="mr-2">{avatar}</div>}
         {image && (
           <div className="mr-2 w-[72px] h-[72px]">

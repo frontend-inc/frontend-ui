@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
-import { Box, Stack } from '@mui/material'
 import { SortableListItems, AlertModal, Placeholder } from '../..'
 import {
 	FormFieldType,
@@ -18,6 +17,7 @@ import ResourceListItems from './ResourceListItems'
 import ResourceHeader from './ResourceHeader'
 import ResourceToolbar from './ResourceToolbar'
 import { ToolbarButtonType } from '../../../types'
+import { cn }  from '../../../shadcn/lib/utils'
 
 export type ResourceListProps = {
 	grid?: boolean
@@ -340,7 +340,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	const enableSorting = sortOptions?.length > 0
 
 	return (
-		<Stack spacing={1} sx={sx.root}>
+		<div className='flex flex-col space-y-1'>
 			<Header
 				selected={selected}
 				direction={direction}
@@ -373,10 +373,10 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				handleReload={reloadMany}
 				{...slots.toolbar}
 			/>
-			<Box
-				sx={{
-					...(loading && sx.loading),
-				}}
+			<div 
+        className={cn(
+          loading && 'opacity-50',
+        )}				
 			>
 				{!sortable ? (
 					<List
@@ -463,7 +463,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 						description={emptyDescription}
 					/>
 				)}
-			</Box>
+			</div>
 			<CreateForm
 				open={openCreate}
 				handleClose={() => setOpenCreate(false)}
@@ -517,32 +517,8 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				description="This action cannot be reversed."
 				handleConfirm={handleDelete}
 			/>
-		</Stack>
+		</div>
 	)
 }
 
 export default ResourceList
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-	content: {
-		width: '100%',
-	},
-	layout: {
-		width: '100%',
-	},
-	form: {
-		width: '100%',
-	},
-	fullWidth: {
-		width: '100%',
-	},
-	item: {
-		p: 2,
-	},
-	loading: {
-		opacity: 0.5,
-	},
-}

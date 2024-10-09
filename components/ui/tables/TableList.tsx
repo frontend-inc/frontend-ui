@@ -97,7 +97,7 @@ const TableList: React.FC<TableProps> = (props) => {
 					{toolbar && toolbar}
 				</div>
 			)}
-			<Table>
+			<Table className="scrollbar-hide">
 				<TableHeader>
 					<TableHeaders
 						enableEdit={enableEdit}

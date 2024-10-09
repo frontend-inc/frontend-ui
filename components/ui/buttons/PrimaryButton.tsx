@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { IconLoading, Icon, AlertModal } from '../../../components'
-import { Button } from '@mui/material'
+import { Button } from '../../../tailwind'
 
 export type PrimaryButtonProps = {
 	color?: 'primary' | 'secondary'

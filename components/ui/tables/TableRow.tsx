@@ -38,7 +38,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 	const selected = selectedIds?.includes(row?.id) ? true : false
 
 	return (
-		<ShadcnTableRow sx={sx.root} selected={selected}>
+		<ShadcnTableRow>
 			{enableSelect && (
 				<TableCell small align={'center'} sticky>
           <div className='mx-2'>

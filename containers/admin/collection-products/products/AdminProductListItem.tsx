@@ -5,7 +5,6 @@ import {
 	ResourceListItem,
 } from '../../../../components'
 import { ResourceItemProps } from '../../../../components/cms/resources/ResourceItem'
-import { Stack, Box } from '@mui/material'
 
 const AdminProductItem: React.FC<ResourceItemProps> = (props) => {
 	const {
@@ -26,15 +25,13 @@ const AdminProductItem: React.FC<ResourceItemProps> = (props) => {
 			image={product?.image?.url}
 			primary={product?.title}
 			secondary={
-				<Stack spacing={1}>
+				<div className='flex flex-col space-y-1'>
 					<DisplayFields
 						resource={product}
 						fields={[{ label: 'Price', name: 'price', variant: 'price' }]}
-					/>
-					<Box>
-						<PublishLabel published={product?.published} />
-					</Box>
-				</Stack>
+					/>					
+					<PublishLabel published={product?.published} />					
+				</div>
 			}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}

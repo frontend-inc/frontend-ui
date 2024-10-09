@@ -1,33 +1,23 @@
 import React from 'react'
-import { Label } from '../../../components'
-import * as COLORS from '@mui/material/colors'
+import { Badge } from '../../../shadcn/ui/badge'
+import { cn } from "../../../shadcn/lib/utils"
 
 type PublishedLabelProps = {
-	published?: boolean
+  published?: boolean
 }
 
-const PublishedLabel: React.FC<PublishedLabelProps> = (props) => {
-	const { published = false } = props
-	return (
-		<Label
-			label={published ? 'Published' : 'Draft'}
-			styles={{
-				...sx.draft,
-				...(published && sx.published),
-			}}
-		/>
-	)
-}
-
-export default PublishedLabel
-
-const sx = {
-	draft: {
-		color: 'primary.contrastText',
-		bgcolor: 'primary.main',
-	},
-	published: {
-		color: 'success.contrastText',
-		bgcolor: 'success.main',
-	},
+export default function PublishedLabel({ published = false }: PublishedLabelProps) {
+  return (
+    <Badge
+      variant="outline"
+      className={cn(
+        "px-2 py-1 text-xs font-semibold",
+        published
+          ? "bg-green-100 text-green-800 border-green-200"
+          : "bg-blue-100 text-blue-800 border-blue-200"
+      )}
+    >
+      {published ? 'Published' : 'Draft'}
+    </Badge>
+  )
 }
