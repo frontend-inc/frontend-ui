@@ -1,50 +1,54 @@
-import React from 'react'
-import { List } from '@mui/material'
+'use client'
+
+import React, { useState } from 'react'
 import { NotificationType } from '../../../types'
 import { Notification } from '../../../components'
 import SwipeableViews from 'react-swipeable-views'
+import { cn } from '../../../shadcn/lib/utils'
 
-type NotificationProps = {
-	notifications: NotificationType[]
+type NotificationsProps = {
+  notifications: NotificationType[]
 }
 
-const Notifications: React.FC<NotificationProps> = (props) => {
-	const { notifications } = props
+export default function Notifications({ notifications }: NotificationsProps) {
+  const [activeStep, setActiveStep] = useState(0)
 
-	const [activeStep, setActiveStep] = React.useState(0)
-	const handleStepChange = (step: number) => {
-		setActiveStep(step)
-	}
+  const handleStepChange = (step: number) => {
+    setActiveStep(step)
+  }
 
-	if (!notifications?.length) return null
-	return (
-		<List sx={sx.root}>
-			<SwipeableViews
-				axis={'x'}
-				index={activeStep}
-				onChangeIndex={handleStepChange}
-				enableMouseEvents
-			>
-				{notifications?.map((notification, i) => (
-					<Notification key={i} notification={notification} />
-				))}
-			</SwipeableViews>
-		</List>
-	)
-}
+  if (!notifications?.length) return null
 
-export default Notifications
-
-const sx = {
-	root: {
-		width: '100%',
-		position: 'relative',
-		top: 0,
-		left: 0,
-		p: 0,
-		height: 44,
-	},
-	item: {
-		width: '100%',
-	},
+  return (
+    <div className="w-full relative top-0 left-0 p-0 h-11">
+      <SwipeableViews
+        axis={'x'}
+        index={activeStep}
+        onChangeIndex={handleStepChange}
+        enableMouseEvents
+        containerStyle={{
+          transition: 'transform 0.35s cubic-bezier(0.15, 0.3, 0.25, 1) 0s'
+        }}
+        className="w-full h-full"
+      >
+        {notifications.map((notification, i) => (
+          <div key={i} className="w-full">
+            <Notification notification={notification} />
+          </div>
+        ))}
+      </SwipeableViews>
+      <div className="absolute bottom-1 left-0 right-0 flex justify-center space-x-2">
+        {notifications.map((_, index) => (
+          <button
+            key={index}
+            className={cn(
+              "w-2 h-2 rounded-full transition-colors duration-200",
+              index === activeStep ? "bg-primary" : "bg-gray-300"
+            )}
+            onClick={() => setActiveStep(index)}
+          />
+        ))}
+      </div>
+    </div>
+  )
 }

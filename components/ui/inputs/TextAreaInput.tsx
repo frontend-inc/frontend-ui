@@ -1,30 +1,31 @@
 import React, { useState, useEffect } from 'react'
-import { Input } from '../../../shadcn/ui/input'
-import { InputLabel, ErrorText } from '../../../components'
+import { Textarea } from '../../../shadcn/ui/textarea'
+import { InputLabel, ErrorText } from '../..'
 import { useError } from '../../../hooks'
 import { TextInputPropsType } from '../../../types'
 import { useDebounce } from 'use-debounce'
 import { cn } from '../../../shadcn/lib/utils'
 
-type TextInputProps = TextInputPropsType & {
+type TextAreaProps = Omit<TextInputPropsType, 'type'> & {
   debounceDelay?: number
   disableDebounce?: boolean
+  rows?: number
 }
 
-export default function TextInput({
+export default function TextAreaInput({
   label,
-  type,
   name,
   value = '',
   handleChange,
   placeholder,
   disabled,
   errors,
-  direction = 'column',  
+  direction = 'column',
   info,
   debounceDelay = 350,
   disableDebounce = false,
-}: TextInputProps) {
+  rows = 3,
+}: TextAreaProps) {
   const [text, setText] = useState(value)
   const [debouncedText] = useDebounce(text, debounceDelay)
 
@@ -33,7 +34,7 @@ export default function TextInput({
     name,
   })
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     clearError()
     setText(e.target.value)
     if (disableDebounce) {
@@ -48,7 +49,7 @@ export default function TextInput({
           name,
           value: debouncedText,
         },
-      } as React.ChangeEvent<HTMLInputElement>)
+      } as React.ChangeEvent<HTMLTextAreaElement>)
     }
   }, [debouncedText])
 
@@ -59,22 +60,21 @@ export default function TextInput({
   return (
     <div className={cn(
       "flex flex-col gap-1 w-full",
-      direction === 'row' && "sm:flex-row sm:items-center"
+      direction === 'row' && "sm:flex-row sm:items-start"
     )}>
       <InputLabel label={label} info={info} />
       <div className="relative w-full">
-        <Input
+        <Textarea
           className={cn(
-            "w-full text-foreground",
+            "w-full text-foreground resize-none",
             error && "border-red-500",
-          )}          
-          type={type}
+          )}
           name={name}
           disabled={disabled}
           placeholder={placeholder}
-          onChange={handleInputChange}
+          onChange={handleTextAreaChange}
           value={text}
-          autoComplete='off'
+          rows={rows}
         />
         <ErrorText error={error} />
       </div>

@@ -33,7 +33,7 @@ const CellArray: React.FC<CellArrayProps> = (props) => {
 	}, [values])
 
 	return (
-		<div className='flex flex-row gap-2 flex-wrap'>
+		<div className='flex flex-row gap-2'>
 			{visibleTags?.map((value, index) => (
 				<Label key={index} label={value} />
 			))}

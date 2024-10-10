@@ -1,75 +1,72 @@
-import React, { useState } from 'react'
-import { TextInput } from '../../../components'
+import React, { useState, useEffect } from 'react'
+import { Textarea } from '../../../shadcn/ui/textarea'
+import { InputLabel, ErrorText } from '../../../components'
 import { InputPropsType } from '../../../types'
+import { cn } from '../../../shadcn/lib/utils'
 
 type JSONInputProps = InputPropsType
 
-const JSONInput: React.FC<JSONInputProps> = (props) => {
-	const { errors, value, name, label, info, placeholder, handleChange } = props
+export default function JSONInput({
+  errors,
+  value,
+  name,
+  label,
+  info,
+  placeholder,
+  handleChange
+}: JSONInputProps) {
+  const defaultValue = value ? JSON.stringify(value, null, 2) : '{}'
+  const [jsonValue, setJsonValue] = useState(defaultValue)
+  const [jsonError, setJsonError] = useState<string | null>(null)
 
-	const defaultValue = value ? JSON.stringify(value, null, 2) : '{}'
-	const [jsonValue, setJsonValue] = useState(defaultValue)
-	const [jsonError, setJsonError] = useState({})
+  useEffect(() => {
+    setJsonValue(value ? JSON.stringify(value, null, 2) : '{}')
+  }, [value])
 
-	const isValidJSON = (str: string) => {
-		try {
-			if (
-				JSON.parse(str) &&
-				(str === '{}' || Object.keys(JSON.parse(str)).length > 0)
-			) {
-				return true
-			} else {
-				setJsonError({
-					[name]: 'Invalid JSON',
-				})
-				return false
-			}
-		} catch (e) {
-			setJsonError({
-				[name]: 'Invalid JSON',
-			})
-			return false
-		}
-	}
+  const isValidJSON = (str: string) => {
+    try {
+      JSON.parse(str)
+      return true
+    } catch (e) {
+      return false
+    }
+  }
 
-	const handleJSONChange = (ev) => {
-		setJsonError({})
-		const { value } = ev.target
-		if (isValidJSON(value)) {
-			handleChange({
-				target: {
-					name,
-					value: JSON.parse(value),
-				},
-			})
-		}
-		setJsonValue(value)
-	}
+  const handleJSONChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newValue = e.target.value
+    setJsonValue(newValue)
 
-	const prettyJson = (json) => {
-		if (json.constructor == Object) {
-			return JSON.stringify(json, null, 2)
-		} else {
-			return json
-		}
-	}
+    if (isValidJSON(newValue)) {
+      setJsonError(null)
+      handleChange({
+        target: {
+          name,
+          value: JSON.parse(newValue),
+        },
+      })
+    } else {
+      setJsonError('Invalid JSON')
+    }
+  }
 
-	return (
-		<TextInput
-			errors={{
-				...errors,
-				...jsonError,
-			}}
-			multiline
-			rows={4}
-			value={prettyJson(jsonValue)}
-			placeholder={placeholder}
-			handleChange={handleJSONChange}
-			name={name}
-			label={label}
-			info={info}
-		/>
-	)
+  const allErrors = { ...errors, ...(jsonError ? { [name]: jsonError } : {}) }
+  const hasError = Object.keys(allErrors).length > 0
+
+  return (
+    <div className="w-full">
+      <InputLabel label={label} info={info} />
+      <Textarea
+        className={cn(
+          "font-mono",
+          hasError && "border-red-500 focus-visible:ring-red-500"
+        )}
+        value={jsonValue}
+        placeholder={placeholder}
+        onChange={handleJSONChange}
+        name={name}
+        rows={6}
+      />
+      {hasError && <ErrorText error={allErrors[name]} />}
+    </div>
+  )
 }
-
-export default JSONInput

@@ -12,7 +12,7 @@ import {
 	ErrorInput,
 	ImageInput,
 	JsonArrayInput,
-	NoSpaceInput,
+	SnakeCaseInput,
 	NumberRangeInput,
 	NumberSliderInput,
 	PhoneInput,
@@ -25,6 +25,7 @@ import {
 	SwitchInput,
 	TabsInput,
 	TextInput,
+  TextAreaInput,
 	URLInput,
 } from './index'
 import { OptionType } from 'frontend-js'
@@ -84,7 +85,7 @@ const Input: React.FC<InputProps> = (props) => {
 		error: ErrorInput,
 		image: ImageInput,
 		jsonArray: JsonArrayInput,
-		noSpace: NoSpaceInput,
+		noSpace: SnakeCaseInput,
 		numberRange: NumberRangeInput,
 		numberSlider: NumberSliderInput,
 		phone: PhoneInput,
@@ -96,7 +97,7 @@ const Input: React.FC<InputProps> = (props) => {
 		switch: SwitchInput,
 		ratings: RatingInput,
 		tabs: TabsInput,
-		text: TextInput,
+		text: TextAreaInput,
 		url: URLInput,
 	}
 

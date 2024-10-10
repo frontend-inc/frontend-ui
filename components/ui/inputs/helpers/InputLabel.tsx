@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, IconButton, Tooltip, Typography } from '../../../../tailwind'
+import { IconButton, Tooltip, Typography } from '../../../../tailwind'
 import { Icon } from '../../../../components'
 
 type InputLabelProps = {

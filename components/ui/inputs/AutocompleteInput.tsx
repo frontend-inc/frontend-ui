@@ -1,162 +1,83 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { TextInput, Icon } from '../..'
-import {
-	Avatar,
-	Paper,
-	Stack,
-	Box,
-	List,
-	ListItem,
-	ListItemButton,
-	ListItemIcon,
-	ListItemText,
-	Typography,
-	ClickAwayListener,
-} from '@mui/material'
 import { TextInputPropsType } from '../../../types'
+import { cn } from '../../../shadcn/lib/utils'
+import { Avatar, AvatarFallback, AvatarImage } from '../../../shadcn/ui/avatar'
+import { useClickOutside } from '@raddix/use-click-outside';
 
 type AutocompleteInput = TextInputPropsType & {
-	handleInputChange: (keywords: string) => void
+  handleInputChange: (keywords: string) => void
 }
 
-const AutocompleteInput: React.FC<AutocompleteInput> = (props) => {
-	const {
-		name = 'title',
-		value = '',
-		label,
-		placeholder = 'Search',
-		handleChange,
-		handleInputChange,
-		options = [],
-		direction = 'column',
-		info,
-	} = props || {}
+export default function AutocompleteInput({
+  name = 'title',
+  value = '',
+  label,
+  placeholder = 'Search',
+  handleChange,
+  handleInputChange,
+  options = [],
+  direction = 'column',
+  info,
+}: AutocompleteInput) {
+  const [open, setOpen] = useState(false)
+  const wrapperRef = useRef<HTMLDivElement>(null)
 
-	const [open, setOpen] = useState(false)
+  const handleClick = (option: any) => {
+    setOpen(false)
+    handleChange({
+      target: {
+        name: name,
+        value: option?.value,
+      },
+    })
+  }
 
-	const handleClick = (option) => {
-		setOpen(false)
-		handleChange({
-			target: {
-				name: name,
-				value: option?.value,
-			},
-		})
-	}
+  const handleKeywordChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    let { value } = ev.target
+    handleInputChange(value)
+    if (options?.length > 0) setOpen(true)
+    if (value == '') {
+      setOpen(false)
+    }
+  }
 
-	const handleKeywordChange = (ev) => {
-		let { value } = ev.target
-		handleInputChange(value)
-		if (options?.length > 0) setOpen(true)
-		if (value == '') {
-			setOpen(false)
-		}
-	}
+  useClickOutside(wrapperRef, () => setOpen(false))
 
-	return (
-		<ClickAwayListener onClickAway={() => setOpen(false)}>
-			<Stack width={'100%'} direction="column" spacing={0}>
-				<TextInput
-					name={name}
-					label={label}
-					value={value}
-					options={options}
-					handleChange={handleKeywordChange}
-					direction={direction}
-					placeholder={placeholder}
-					onFocus={() => setOpen(!open)}
-					info={info}
-				/>
-				<Box sx={sx.anchor}>
-					{open && (
-						<Paper
-							elevation={2}
-							sx={{
-								...sx.paper,
-								height: options?.length * 64,
-							}}
-						>
-							<List dense sx={sx.list}>
-								{options?.map((option, index) => (
-									<ListItem>
-										<ListItemButton
-											sx={sx.listItemButton}
-											onClick={() => handleClick(option)}
-										>
-											<ListItemIcon sx={sx.listItemIcon}>
-												{option?.image && (
-													<Avatar
-														alt={option.label}
-														src={option.image}
-														sx={sx.avatar}
-													/>
-												)}
-												{option?.icon && <Icon name={option.icon} />}
-											</ListItemIcon>
-											<ListItemText
-												primary={
-													<Typography variant="body1" sx={sx.label}>
-														{option.label}
-													</Typography>
-												}
-											/>
-										</ListItemButton>
-									</ListItem>
-								))}
-							</List>
-						</Paper>
-					)}
-				</Box>
-			</Stack>
-		</ClickAwayListener>
-	)
-}
-export default AutocompleteInput
-
-const sx = {
-	anchor: {
-		position: 'relative',
-	},
-	paper: {
-		p: 0,
-		position: 'absolute',
-		top: 2,
-		left: 0,
-		width: '100%',
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
-		maxHeight: '220px',
-		overflowY: 'scroll',
-		zIndex: (theme) => theme.zIndex.modal,
-	},
-	avatar: {
-		borderRadius: 1,
-		height: 32,
-		width: 32,
-	},
-	list: {
-		bgcolor: 'background.paper',
-		position: 'absolute',
-		top: 0,
-		left: 0,
-		right: 0,
-		width: '100%',
-		zIndex: 1,
-	},
-	listItemButton: {
-		px: 1,
-		py: 0,
-		height: 44,
-	},
-	listItemIcon: {
-		width: 32,
-		minWidth: 32,
-		mr: 2,
-	},
-	mapContainer: {
-		overflow: 'hidden',
-	},
-	label: {
-		width: '100%',
-		textAlign: 'left',
-	},
+  return (
+    <div className="w-full relative" ref={wrapperRef}>
+      <TextInput
+        name={name}
+        label={label}
+        value={value}
+        options={options}
+        handleChange={handleKeywordChange}
+        direction={direction}
+        placeholder={placeholder}              
+        info={info}
+      />
+      {open && options.length > 0 && (
+        <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
+          {options.map((option, index) => (
+            <div
+              key={index}
+              onClick={() => handleClick(option)}
+              className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100"
+            >
+              <div className="mr-2 flex-shrink-0">
+                {option?.image && (
+                  <Avatar className="h-8 w-8">
+                    <AvatarImage src={option.image} alt={option.label} />
+                    <AvatarFallback>{option.label[0]}</AvatarFallback>
+                  </Avatar>
+                )}
+                {option?.icon && <Icon name={option.icon} className="h-5 w-5" />}
+              </div>
+              <span className="flex-grow text-sm">{option.label}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
 }

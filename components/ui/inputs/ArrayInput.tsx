@@ -1,156 +1,102 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useError } from '../../../hooks'
-import { Stack, Popper, Autocomplete, Chip, TextField } from '@mui/material'
 import { InputLabel, ErrorText } from '../../../components'
 import { X } from 'lucide-react'
 import { SyntheticEventType } from '../../../types'
-
-const CustomPopper = function (props) {
-	return <Popper {...props} sx={sx.popper} placement="bottom" />
-}
+import { cn } from '../../../shadcn/lib/utils'
+import { Input } from '../../../shadcn/ui/input'
+import { Badge } from '../../../shadcn/ui/badge'
 
 type ArrayInputProps = {
-	errors?: any
-	value?: any
-	label?: string
-	name: string
-	options?: any[]
-	placeholder?: string
-	handleChange: (e: SyntheticEventType) => void
-	direction?: 'row' | 'column'
-	freeSolo?: boolean
-	info?: string
+  errors?: any
+  value?: string[]
+  label?: string
+  name: string
+  placeholder?: string
+  handleChange: (e: SyntheticEventType) => void
+  direction?: 'row' | 'column'
+  info?: string
 }
 
-const ArrayInput: React.FC<ArrayInputProps> = (props) => {
-	const {
-		errors,
-		label,
-		name,
-		options,
-		placeholder,
-		handleChange,
-		direction = 'column',
-		freeSolo = true,
-		info,
-		value,
-	} = props
+export default function ArrayInput({
+  errors,
+  label,
+  name,
+  placeholder,
+  handleChange,
+  direction = 'column',
+  info,
+  value = [],
+}: ArrayInputProps) {
+  const { error, clearError } = useError({ errors, name })
+  const [inputValue, setInputValue] = useState('')
 
-	const { error, clearError } = useError({
-		errors,
-		name,
-	})
+  const handleInputChange = (newValues: string[]) => {
+    if (error) clearError()
+    handleChange({
+      target: {
+        name,
+        value: newValues,
+      },
+    } as SyntheticEventType)
+  }
 
-	const handleInputChange = (ev, values) => {
-		if (error) clearError()
+  const addTag = (tag: string) => {
+    const trimmedTag = tag.trim()
+    if (trimmedTag && !value.includes(trimmedTag)) {
+      handleInputChange([...value, trimmedTag])
+    }
+    setInputValue('')
+  }
 
-		let newValues = values.filter((value) => value != null)
-		handleChange({
-			target: {
-				name,
-				value: newValues,
-			},
-		})
-	}
+  const removeTag = (tagToRemove: string) => {
+    handleInputChange(value.filter((tag) => tag !== tagToRemove))
+  }
 
-	//if (!Array.isArray(value)) return null
-	return (
-		<Stack sx={sx.root} direction={direction} spacing={0.5}>
-			<InputLabel label={label} info={info} />
-			<Autocomplete
-				multiple
-				freeSolo={freeSolo}
-				value={value}
-				onChange={handleInputChange}
-				options={options || []}
-				getOptionLabel={(option) => option}
-				PopperComponent={CustomPopper}
-				clearIcon={<X />}
-				renderTags={(tagValue, getTagProps) =>
-					Array.isArray(tagValue) &&
-					tagValue.map((option, index) => (
-						<Chip
-							sx={sx.chip}
-							label={option}
-							color="secondary"
-							deleteIcon={<X />}
-							{...getTagProps({ index })}
-						/>
-					))
-				}
-				renderInput={(params) => (
-					<TextField
-						{...params}
-						color="primary"
-						sx={{
-							...sx.textField,
-							...((error && sx.inputError) || {}),
-						}}
-						placeholder={placeholder}
-						margin="dense"
-						variant="outlined"
-					/>
-				)}
-			/>
-			<ErrorText error={error} />
-		</Stack>
-	)
-}
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' || e.key === ',') {
+      e.preventDefault()
+      addTag(inputValue)
+    } else if (e.key === 'Backspace' && inputValue === '' && value.length > 0) {
+      e.preventDefault()
+      const newValues = [...value]
+      newValues.pop()
+      handleInputChange(newValues)
+    }
+  }
 
-export default ArrayInput
-
-export const sx = {
-	root: {
-		width: '100%',
-	},
-	textField: {
-		my: 0,
-		'& .MuiOutlinedInput-root': {
-			minWidth: '230px',
-			p: '4px',
-			color: 'text.secondary',
-			fontSize: (theme) => theme.typography.body2.fontSize,
-			fontFamily: (theme) => theme.typography.body2.fontFamily,
-			borderRadius: 1,
-			bgcolor: 'background.paper',
-			border: (theme) => `1px solid ${theme.palette.divider}`,
-			//boxShadow: `rgb(0 0 0 / 5%) 0px 2px 4px !important`,
-			width: '100%',
-			'& fieldset': {
-				border: `1px solid transparent`,
-			},
-			'&:hover fieldset': {
-				border: `1px solid transparent`,
-			},
-			'&.Mui-focused fieldset': {
-				border: (theme) => `0px solid ${theme.palette.primary.light}`,
-			},
-		},
-		root: {
-			width: '100%',
-			height: 26,
-		},
-	},
-	inputError: {
-		'& .MuiOutlinedInput-root': {
-			border: '2px solid',
-			borderColor: 'error.main',
-		},
-	},
-	icon: {
-		height: 20,
-		width: 20,
-		color: 'text.primary',
-	},
-	popper: {
-		fontWeight: (theme) => theme.typography.body2.fontWeight,
-		fontFamily: (theme) => theme.typography.body2.fontFamily,
-	},
-	chip: {
-		borderRadius: '4px',
-	},
-	label: {
-		width: '100px',
-		minWidth: '100px',
-	},
+  return (
+    <div className={cn("flex w-full", direction === 'row' ? "flex-row items-center" : "flex-col")}>
+      <InputLabel label={label} info={info} />
+      <div className="relative w-full">
+        <div className={cn(
+          "flex flex-wrap gap-2 p-1 border rounded-md min-h-[42px]",
+          error && "border-red-500"
+        )}>
+          {value.map((tag) => (
+            <Badge key={tag} variant="secondary" className="text-sm">
+              {tag}
+              <button
+                type="button"
+                className="ml-1 hover:bg-secondary rounded-full"
+                onClick={() => removeTag(tag)}
+              >
+                <X className="h-3 w-3" />
+              </button>
+            </Badge>
+          ))}
+          <Input
+            type="text"
+            placeholder={placeholder}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            onBlur={() => addTag(inputValue)}
+            className="text-foreground flex-1 px-0 py-0 text-sm border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+          />
+        </div>
+        <ErrorText error={error} />
+      </div>
+    </div>
+  )
 }

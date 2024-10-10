@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography } from '@mui/material'
+import { Typography } from '../../../../tailwind'
 
 type ErrorTextProps = {
 	error?: string
@@ -10,18 +10,10 @@ const ErrorText: React.FC<ErrorTextProps> = (props) => {
 
 	if (!error) return null
 	return (
-		<Typography variant="overline" sx={sx.root}>
+		<Typography variant="overline" className='text-destructive'>
 			{error}
 		</Typography>
 	)
 }
 
 export default ErrorText
-
-const sx = {
-	root: {
-		pt: 1,
-		color: 'error.main',
-		fontSize: '0.75rem',
-	},
-}

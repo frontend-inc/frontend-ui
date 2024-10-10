@@ -1,76 +1,68 @@
 import React from 'react'
-import {
-	Checkbox,
-	FormControl,
-	FormControlLabel,
-	FormGroup,
-	Typography,
-} from '@mui/material'
+import { Checkbox } from "../../../shadcn/ui/checkbox"
 import { InputLabel } from '../../../components'
 import { OptionType } from '../../../types'
+import { cn } from "../../../shadcn/lib/utils"
 
 type CheckboxGroupInputProps = {
-	errors: any
-	name: string
-	label: string
-	value?: string[]
-	options: OptionType[]
-	info?: string
-	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  errors: any
+  name: string
+  label: string
+  value?: string[]
+  options: OptionType[]
+  info?: string
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const CheckboxGroupInput: React.FC<CheckboxGroupInputProps> = (props) => {
-	const {
-		errors,
-		label,
-		name,
-		value: values = [],
-		options,
-		handleChange,
-		info,
-	} = props || {}
+export default function CheckboxGroupInput({
+  errors,
+  label,
+  name,
+  value: values = [],
+  options,
+  handleChange,
+  info,
+}: CheckboxGroupInputProps) {
+  const handleCheckboxChange = (checked: boolean, value: string) => {
+    let newValues = checked
+      ? [...values, value]
+      : values.filter((v) => v !== value)
 
-	const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		e.preventDefault()
-		let value = e.target.value
-		let newValues = values.includes(value)
-			? values.filter((v) => v != value)
-			: [...values, value]
+    handleChange({
+      target: {
+        name: name,
+        // @ts-ignore
+        value: newValues,
+      },
+    }) 
+  }
 
-		handleChange({
-			target: {
-				name: name,
-				//@ts-ignore
-				value: newValues,
-			},
-		})
-	}
-
-	return (
-		<FormControl>
-			<FormGroup>
-				<InputLabel label={label} info={info} />
-				{options?.map((option, idx) => (
-					<FormControlLabel
-						key={idx}
-						control={
-							<Checkbox
-								name={name}
-								checked={values.includes(String(option.value)) ? true : false}
-								onChange={handleCheckboxChange}
-								value={option.value}
-							/>
-						}
-						label={
-							<Typography variant="body2" color="textSecondary">
-								{option.label}
-							</Typography>
-						}
-					/>
-				))}
-			</FormGroup>
-		</FormControl>
-	)
+  return (
+    <div className="w-full">
+      <InputLabel label={label} info={info} />
+      <div className="space-y-2">
+        {options?.map((option, idx) => (
+          <div key={idx} className="flex items-center space-x-2">
+            <Checkbox
+              id={`${name}-${option.value}`}
+              checked={values.includes(String(option.value))}
+              onCheckedChange={(checked) => handleCheckboxChange(checked as boolean, String(option.value))}
+            />
+            <label
+              htmlFor={`${name}-${option.value}`}
+              className={cn(
+                "text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+                errors && errors[name] ? "text-red-500" : "text-gray-500"
+              )}
+            >
+              {option.label}
+            </label>
+          </div>
+        ))}
+      </div>
+      {errors && errors[name] && (
+        <p className="mt-2 text-sm text-red-500">{errors[name]}</p>
+      )}
+    </div>
+  )
 }
-
-export default CheckboxGroupInput

@@ -23,8 +23,6 @@ export default function CustomTableCell({
     "px-1 min-w-[100px] bg-background overflow-x-auto whitespace-nowrap max-w-[240px] scrollbar-hide",
     small && "min-w-[40px] w-[40px]",
     sticky && "sticky left-0 z-20",
-    header && "border-b border-border p-0",
-    header && sticky && "z-30 border-b-[3px]",
     {
       'text-center': align === 'center',
       'text-right': align === 'right',

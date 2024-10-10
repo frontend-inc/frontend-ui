@@ -1,73 +1,44 @@
 import React from 'react'
-import { Typography, ListItem, ListItemIcon, ListItemText } from '@mui/material'
 import { Icon, Image, MenuButton } from '../../..'
+import { cn } from '../../../../shadcn/lib/utils'
+import { Typography } from '../../../../tailwind'
 
 type SortableReferenceItemProps = {
-	image?: string
-	title: string
-	isDragging?: boolean
-	handleDelete: () => void
-	handleEdit: () => void
+  image?: string
+  title: string
+  isDragging?: boolean
+  handleDelete: () => void
+  handleEdit: () => void
 }
 
-const SortableReferenceItem: React.FC<SortableReferenceItemProps> = (props) => {
-	const { image, title, isDragging, handleDelete, handleEdit } = props
-
-	return (
-		<ListItem
-			disableGutters
-			sx={{
-				...sx.item,
-				...(isDragging && sx.isDragging),
-			}}
-			secondaryAction={
-				<MenuButton handleDelete={handleDelete} handleEdit={handleEdit} />
-			}
-		>
-			<ListItemIcon sx={sx.dragHandle}>
-				<Icon name="GripVertical" color="text.secondary" />
-			</ListItemIcon>
-			<ListItemIcon sx={sx.listItemIcon}>
-				<Image src={image} height={32} width={32} />
-			</ListItemIcon>
-			<ListItemText
-				primary={
-					<Typography variant="body1" color="text.primary">
-						{title}
-					</Typography>
-				}
-			/>
-		</ListItem>
-	)
-}
-
-export default SortableReferenceItem
-
-const sx = {
-	item: {
-		px: 1,
-		bgcolor: 'background.paper',
-		transition: 'box-shadow 0.2s',
-		border: '1px solid',
-		borderColor: 'divider',
-		borderRadius: 1,
-		my: 0.5,
-		'&:hover': {
-			boxShadow: 2,
-		},
-	},
-	icon: {
-		color: 'text.secondary',
-	},
-	isDragging: {
-		boxShadow: 2,
-	},
-	listItemIcon: {
-		mr: 2,
-		width: 32,
-		height: 32,
-	},
-	dragHandle: {
-		cursor: 'grab',
-	},
+export default function SortableReferenceItem({
+  image,
+  title,
+  isDragging,
+  handleDelete,
+  handleEdit
+}: SortableReferenceItemProps) {
+  return (
+    <div className={cn(
+      "flex items-center justify-between",
+      "px-1 py-2",      
+      "transition-shadow duration-200",
+      "border border-border",
+      "rounded",
+      "my-1",
+      "hover:shadow-md",
+      isDragging && "shadow-md"
+    )}>
+      <div className="flex items-center">
+        <div className="mr-2 cursor-grab">
+          <Icon name="GripVertical" />
+        </div>
+        <div className="mr-2 w-8 h-8">
+          <Image src={image} height={32} width={32} />
+        </div>
+        <Typography variant="body1">{title}</Typography>
+      </div>
+      <MenuButton handleDelete={handleDelete} handleEdit={handleEdit} />
+    </div>
+  )
 }

@@ -17,8 +17,7 @@ type SearchInputProps = {
   placeholder?: string
   fullWidth?: boolean
   handleChange: (e: SyntheticEventType) => void
-  handleSearch: (keywords: string) => void
-  styles?: React.CSSProperties
+  handleSearch: (keywords: string) => void  
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({
@@ -27,8 +26,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   value,
   placeholder = 'Search...',
   handleChange,
-  handleSearch,
-  styles = {},
+  handleSearch  
 }) => {
   const [text, setText] = useState(value)
   const [debouncedValue] = useDebounce(text, 500)
@@ -63,8 +61,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
       className={cn(
         "flex items-center w-full border border-input rounded-md transition-shadow hover:shadow-md",
         fullWidth ? "w-full" : "max-w-[400px] min-w-[320px] sm:min-w-full",
-      )}
-      style={styles}
+      )}      
     >
       <Input
         type="text"

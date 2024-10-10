@@ -25,7 +25,7 @@ const AdminUserForm: React.FC<AdminUserFormProps> = (props) => {
 		{
 			label: 'Username',
 			name: 'username',
-			variant: 'nospaces',
+			variant: 'snake_cases',
 		},
 		{
 			label: 'Email',

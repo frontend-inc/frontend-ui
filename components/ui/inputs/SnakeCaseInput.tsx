@@ -1,13 +1,12 @@
 import React from 'react'
-import { TextInput } from '../../../components'
+import { TextInput } from '../..'
 import { InputPropsType } from '../../../types'
 
-type NoSpaceInputPropsType = InputPropsType & {
+type SnakeCaseInputPropsType = InputPropsType & {
 	joinChar?: string
-	disableLowerCase?: boolean
 }
 
-const NoSpaceInput: React.FC<NoSpaceInputPropsType> = (props) => {
+const SnakeCaseInput: React.FC<SnakeCaseInputPropsType> = (props) => {
 	const {
 		errors,
 		joinChar = '_',
@@ -19,15 +18,12 @@ const NoSpaceInput: React.FC<NoSpaceInputPropsType> = (props) => {
 		placeholder,
 		handleChange,
 		disabled,
-		disableLowerCase,
 	} = props
 
 	const handleInputChange = (ev) => {
 		let { value } = ev.target
 		value = value.replace(' ', joinChar)
-		if (!disableLowerCase) {
-			value = value.toLowerCase()
-		}
+		value = value.toLowerCase()
 		handleChange({
 			target: {
 				name,
@@ -52,8 +48,4 @@ const NoSpaceInput: React.FC<NoSpaceInputPropsType> = (props) => {
 	)
 }
 
-export default NoSpaceInput
-
-const sx = {
-	root: {},
-}
+export default SnakeCaseInput

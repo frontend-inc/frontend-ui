@@ -8,7 +8,7 @@ const AdminMetafieldForm: React.FC<ResourceFormProps> = (props) => {
 			{...props}
 			fields={[
 				{ label: 'Label', name: 'label', variant: 'string' },
-				{ label: 'Name', name: 'name', variant: 'nospace' },
+				{ label: 'Name', name: 'name', variant: 'snake_case' },
 				{
 					label: 'Type',
 					name: 'variant',

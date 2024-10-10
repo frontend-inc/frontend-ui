@@ -1,6 +1,7 @@
 import React from 'react'
 import { Tabs, TabsList, TabsTrigger } from "../../../shadcn/ui/tabs"
 import { Icon } from '../../../components'
+import { cn } from "../../../shadcn/lib/utils"
 
 type ButtonTabsProps = {
   handleChange: (value: string) => void
@@ -10,6 +11,7 @@ type ButtonTabsProps = {
     value: string | number 
   }[]
   className?: string
+  fullWidth?: boolean
   value: string | number 
 }
 
@@ -17,12 +19,13 @@ export default function ButtonTabs({
   handleChange,
   options,
   value,
-  className='w-full'
+  className,
+  fullWidth
 }: ButtonTabsProps) {
 
   return (
     <Tabs value={value} onValueChange={handleChange}>
-      <TabsList className={className}>
+      <TabsList className={cn(className, fullWidth && 'w-full')}>
         {options.map((tab, i) => {        
           return (
             <TabsTrigger

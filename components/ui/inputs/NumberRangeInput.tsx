@@ -1,126 +1,98 @@
 import React from 'react'
-import {
-	Input,
-	FormControl,
-	Typography,
-	Box,
-	InputAdornment,
-} from '@mui/material'
 import { InputLabel } from '../../../components'
 import { SyntheticEventType } from '../../../types'
+import { Input } from "../../../shadcn/ui/input"
+import { cn } from "../../../shadcn/lib/utils"
 
 export type NumberRangeInputProps = {
-	label?: string
-	name?: string
-	value?: {
-		min: number
-		max: number
-	}
-	handleChange?: (value: SyntheticEventType) => void
-	currency?: string
-	info?: string
-	startAdornment?: React.ReactNode
+  label?: string
+  name?: string
+  value?: {
+    min: number
+    max: number
+  }
+  handleChange?: (value: SyntheticEventType) => void
+  currency?: string
+  info?: string
+  startAdornment?: React.ReactNode
 }
 
-const NumberRangeInput: React.FC<NumberRangeInputProps> = (props) => {
-	const {
-		value = {
-			min: 0,
-			max: 0,
-		},
-		name,
-		label,
-		handleChange,
-		currency = 'usd',
-		info,
-		startAdornment,
-	} = props || {}
+export default function NumberRangeInput({
+  value = {
+    min: 0,
+    max: 0,
+  },
+  name,
+  label,
+  handleChange,
+  currency = 'usd',
+  info,
+  startAdornment,
+}: NumberRangeInputProps) {
+  const handleMinChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    const min = ev.target.value
+    handleChange?.({
+      target: {
+        name: name,
+        value: {
+          ...value,
+          min: Number(min),
+        },
+      },
+    } as SyntheticEventType)
+  }
 
-	const handleMinChange = (ev) => {
-		const { value: min } = ev.target
-		handleChange({
-			target: {
-				name: name,
-				value: {
-					...value,
-					min,
-				},
-			},
-		})
-	}
+  const handleMaxChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    const max = ev.target.value
+    handleChange?.({
+      target: {
+        name: name,
+        value: {
+          ...value,
+          max: Number(max),
+        },
+      },
+    } as SyntheticEventType)
+  }
 
-	const handleMaxChange = (ev) => {
-		const { value: max } = ev.target
-		handleChange({
-			target: {
-				name: name,
-				value: {
-					...value,
-					max,
-				},
-			},
-		})
-	}
-
-	return (
-		<Box sx={sx.root}>
-			<InputLabel label={label} info={info} />
-			<Box sx={sx.inputs}>
-				<FormControl variant="standard">
-					<Input
-						type="number"
-						onChange={handleMinChange}
-						value={value?.min}
-						startAdornment={
-							startAdornment && (
-								<InputAdornment position="start">
-									<Typography color="textPrimary" variant="body2">
-										{currency}
-									</Typography>
-								</InputAdornment>
-							)
-						}
-					/>
-				</FormControl>
-				<Box sx={sx.to}>
-					<Typography variant="body2">to</Typography>
-				</Box>
-				<FormControl variant="standard">
-					<Input
-						type="number"
-						value={value?.max}
-						onChange={handleMaxChange}
-						startAdornment={
-							startAdornment && (
-								<InputAdornment sx={sx.inputAdornment} position="start">
-									{startAdornment}
-								</InputAdornment>
-							)
-						}
-					/>
-				</FormControl>
-			</Box>
-		</Box>
-	)
-}
-
-export default NumberRangeInput
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-	inputs: {
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-between',
-		width: '100%',
-	},
-	inputAdornment: {
-		color: 'text.primary',
-	},
-	to: {
-		mx: 2,
-	},
+  return (
+    <div className="w-full">
+      <InputLabel label={label} info={info} />
+      <div className="flex flex-row items-center justify-between w-full">
+        <div className="relative flex-1">
+          {startAdornment && (
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <span className="text-sm text-gray-500">{currency}</span>
+            </div>
+          )}
+          <Input
+            type="number"
+            onChange={handleMinChange}
+            value={value?.min}
+            className={cn(
+              "pr-2",
+              startAdornment && "pl-8"
+            )}
+          />
+        </div>
+        <div className="mx-2 text-sm text-gray-500">to</div>
+        <div className="relative flex-1">
+          {startAdornment && (
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              {startAdornment}
+            </div>
+          )}
+          <Input
+            type="number"
+            value={value?.max}
+            onChange={handleMaxChange}
+            className={cn(
+              "pr-2",
+              startAdornment && "pl-8"
+            )}
+          />
+        </div>
+      </div>
+    </div>
+  )
 }

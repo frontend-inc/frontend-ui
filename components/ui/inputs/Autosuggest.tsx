@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import { Stack } from "../../../tailwind"
 import { InputLabel } from "../../../components"
 import { Check, ChevronsUpDown } from "lucide-react"
 
@@ -26,7 +25,7 @@ type AutosuggestProps = {
   name: string
   value: string | number
   handleChange: (ev: SyntheticEventType) => void
-  handleInputChange: (value: string) => void
+  handleInputChange?: (value: string) => void
   options: OptionType[]
 }
 
@@ -74,20 +73,22 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
   if (options.length === 0) return null
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <Stack direction="column">
+      <div className="flex flex-col space-y-2 w-full">
         <InputLabel label={label} info={ info } />
       <PopoverTrigger asChild>
         <Button
-          variant="default"
+          variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between text-secondary"
+          className={cn(
+            "min-w-[220px] w-full text-foreground justify-between font-normal",            
+          )}
         >
             {selectedOption?.label || 'Select...'}            
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      </Stack>
+      </div>
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandInput 

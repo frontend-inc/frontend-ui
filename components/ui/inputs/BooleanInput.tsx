@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { TabsInput } from '../..'
 import { SyntheticEventType } from '../../../types'
-import { useDebounce } from 'use-debounce'
 
 type BooleanInputProps = {
 	value: boolean

@@ -16,7 +16,7 @@ const AdminMenuForm: React.FC<ResourceFormProps> = (props) => {
 				{
 					label: 'API name',
 					name: 'name',
-					variant: 'nospace',
+					variant: 'snake_case',
 					placeholder: 'Name',
 				},
 			]}

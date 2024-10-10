@@ -33,7 +33,7 @@ const AdminCollectionForm: React.FC<AdminCollectionFormProps> = (props) => {
 							label: 'API name',
 							name: 'name',
 							placeholder: 'API name',
-							variant: 'nospace',
+							variant: 'snake_case',
 						},
 						{
 							label: 'Description',
