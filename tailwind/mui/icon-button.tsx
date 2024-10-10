@@ -35,7 +35,7 @@ const IconButton: React.FC<IconButtonProps> = ({
 	return (
 		<ShadcnButton
 			size="icon"
-			variant={colorMap[color]}
+			variant={'ghost'}
 			className={cn(
         'bg-transparent hover:bg-primary/10',
 				'flex items-center justify-center',

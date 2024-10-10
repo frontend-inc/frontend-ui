@@ -40,7 +40,8 @@ const Drawer: React.FC<DrawerProps> = ({
 		<Sheet open={open} onOpenChange={handleClose}>
 			<SheetContent
 				side={side}
-				className={cn(                 
+				className={cn(  
+          mode == 'light' ? 'light' : 'dark',               
 					disablePadding && 'px-0',
 					'flex flex-col',
 					fullWidth ? 'w-screen max-w-full' : 'w-full max-w-xs',
