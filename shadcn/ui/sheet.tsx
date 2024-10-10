@@ -60,7 +60,7 @@ const SheetContent = React.forwardRef<
 	SheetContentProps
 >(
 	(
-		{ side = 'right', iconColor = 'white', className, children, ...props },
+		{ side = 'right', iconColor = 'text-primary-foreground', className, children, ...props },
 		ref
 	) => (
 		<SheetPortal>

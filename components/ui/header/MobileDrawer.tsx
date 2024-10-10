@@ -34,8 +34,7 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 		<Drawer
 			open={menuOpen}
 			onClose={() => setMenuOpen(false)}
-			anchor="left"
-			mode="dark"
+			anchor="left"			
 		>
 			<Box>
 				<List className={'space-y-2'}>

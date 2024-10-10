@@ -53,12 +53,13 @@ const SearchInput: React.FC<SearchInputProps> = ({
   }, [value])
 
   return (
+    <div className="max-w-[400px] w-full">
     <form 
       onSubmit={(e) => {
         e.preventDefault()
         handleSearch(text)
       }}
-      className={cn(
+      className={cn(        
         "flex items-center w-full border border-input rounded-md transition-shadow hover:shadow-md",
         fullWidth ? "w-full" : "max-w-[400px] min-w-[320px] sm:min-w-full",
       )}      
@@ -79,6 +80,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
         <span className="sr-only">Search</span>
       </IconButton>
     </form>
+    </div>
   )
 }
 

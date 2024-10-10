@@ -24,7 +24,7 @@ const AddToCartButton = (props: AddToCartButtonProps) => {
       loading={loading}
       onClick={handleClick}
       disabled={!availableForSale}
-      size={size}
+      size={size}      
     >
       Add to Cart
     </Button>
