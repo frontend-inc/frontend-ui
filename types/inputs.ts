@@ -61,10 +61,8 @@ export type InputPropsType = {
 
 export type TextInputPropsType = InputPropsType & {
 	direction?: 'row' | 'column'
-	type?: string
-	margin?: 'dense' | 'none'
-	multiline?: boolean
-	rows?: number
+	type?: string	
+	className?: string
 }
 
 export type SelectInputPropsType = InputPropsType & {

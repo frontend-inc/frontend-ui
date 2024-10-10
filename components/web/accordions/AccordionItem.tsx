@@ -11,32 +11,26 @@ import { cn } from '../../../shadcn/lib/utils'
 type AccordionItemProps = {
 	primary: string
 	secondary: React.ReactNode
-	disablePadding?: boolean
 }
 
 const AccordionItemComponent: React.FC<AccordionItemProps> = (props) => {
 	const {
 		primary,
 		secondary,
-		disablePadding,
 	} = props
 
 	return (
 		<Accordion type="single" collapsible className="w-full">
 			<AccordionItem
-				value="item"
-				className={cn(
-					'bg-background border-divider my-0',
-					disablePadding ? 'py-0' : 'py-1'
-				)}
+				value="item"				
 			>
 				<AccordionTrigger className="hover:no-underline">
-          <Typography variant="subtitle1">
+          <Typography variant="body1">
             {primary}
           </Typography>					
 				</AccordionTrigger>
-				<AccordionContent className="bg-background">
-        <Typography variant="body1" className='text-muted-foreground'>{secondary}</Typography>
+				<AccordionContent>
+          <Typography variant="body2" className='text-muted-foreground'>{secondary}</Typography>
 				</AccordionContent>
 			</AccordionItem>
 		</Accordion>

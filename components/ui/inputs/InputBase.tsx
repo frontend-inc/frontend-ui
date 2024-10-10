@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { Input } from '../../../shadcn/ui/input'
-import { InputLabel, ErrorText } from '../../../components'
+import { ErrorText } from '../../../components'
 import { useError } from '../../../hooks'
 import { TextInputPropsType } from '../../../types'
 import { useDebounce } from 'use-debounce'
 import { cn } from '../../../shadcn/lib/utils'
 
-type TextInputProps = TextInputPropsType & {
+type InputBaseProps = TextInputPropsType & {
   debounceDelay?: number
   disableDebounce?: boolean
 }
 
-export default function TextInput({
-  label,
+export default function InputBase({
   type,
   name,
   value = '',
@@ -20,12 +19,10 @@ export default function TextInput({
   placeholder,
   disabled,
   errors,
-  direction = 'column',  
-  info,
   className,
   debounceDelay = 350,
   disableDebounce = false,
-}: TextInputProps) {
+}: InputBaseProps) {
   const [text, setText] = useState(value)
   const [debouncedText] = useDebounce(text, debounceDelay)
 
@@ -58,28 +55,22 @@ export default function TextInput({
   }, [value])
 
   return (
-    <div className={cn(
-      "flex flex-col w-full",
-      direction === 'row' && "sm:flex-row sm:items-center"
-    )}>
-      <InputLabel label={label} info={info} />
-      <div className="relative w-full">
-        <Input
-          className={cn(
-            className,
-            "w-full text-foreground",
-            error && "border-red-500",
-          )}          
-          type={type}
-          name={name}
-          disabled={disabled}
-          placeholder={placeholder}
-          onChange={handleInputChange}
-          value={text}
-          autoComplete='off'
-        />
-        <ErrorText error={error} />
-      </div>
+    <div className="relative w-full">
+      <Input
+        className={cn(
+          className,
+          "w-full text-foreground",
+          error && "border border-destructive",
+        )}          
+        type={type}
+        name={name}
+        disabled={disabled}
+        placeholder={placeholder}
+        onChange={handleInputChange}
+        value={text}
+        autoComplete='off'
+      />
+      <ErrorText error={error} />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import React from 'react'
-import { Box, Stack, Button } from '../../../tailwind'
+import { Button } from '../../../tailwind'
 import { TypographyVariantsType } from '../../../types'
-import { Heading, TextInput, IconLoading } from '../..'
+import { Heading, InputBase } from '../..'
 import { useResource } from 'frontend-js'
 import { useAlerts } from '../../../hooks'
 
@@ -60,8 +60,9 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 				textVariant={textVariant}
 				textAlign="center"
 			/>
-        <div className="flex flex-row justify-center items center space-x-1">
-          <TextInput
+      <div className='flex flex-row justify-center items-center'>
+        <div className="max-w-[360px] w-full p-1 flex flex-row justify-center items-center">
+          <InputBase
             errors={errors}
             name="email"
             value={contact?.email}
@@ -80,6 +81,7 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
             {buttonText}
           </Button>
 			  </div>
+      </div>
 		</div>
 	)
 }

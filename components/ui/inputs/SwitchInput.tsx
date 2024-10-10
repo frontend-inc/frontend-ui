@@ -31,8 +31,8 @@ export default function SwitchInput({
     <div className="w-full">
       <InputLabel label={label} info={info} />
       <div className={cn(
-        "w-full flex flex-col rounded-md py-0.5 px-4 text-sm",
-        !disableBorder && "border-2 border-input focus-within:border-primary",
+        "w-full flex flex-col rounded-md py-1 text-sm",
+        !disableBorder && "focus-within:border-primary",
       )}>
         <div className="flex items-center space-x-2">
           <Switch
@@ -40,7 +40,7 @@ export default function SwitchInput({
             checked={value}
             onCheckedChange={onCheckedChange}
           />
-          <Label htmlFor={name} className="text-base text-foreground">
+          <Label htmlFor={name} className="text-base text-muted-foreground">
             {placeholder}
           </Label>
         </div>

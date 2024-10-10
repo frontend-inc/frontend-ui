@@ -36,7 +36,7 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 
 	return (
 		<div className="h-auto w-full">
-			<Container maxWidth="md">
+			<Container maxWidth="lg">
 				<div className="flex flex-col space-y-4 px-2 w-full justify-start items-center">
 					<div className="flex flex-col space-y-2 max-w-[800px] h-full w-full text-center">
 						{label && (

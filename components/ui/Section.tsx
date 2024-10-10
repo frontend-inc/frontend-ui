@@ -22,8 +22,8 @@ const Section: React.FC<SectionProps> = (props) => {
 		bgColor,
 		mode,
 		maxWidth,
-		py = 6,
-		px = 3,
+		py = 12,
+		px = 6,
 	} = props
 
 	return (
@@ -31,8 +31,8 @@ const Section: React.FC<SectionProps> = (props) => {
 			className={cn(
 				mode == 'dark' && 'dark',
 				'w-full bg-background',
-				py && `py-${py}`,
-				px && `px-${px}`
+				py > 0 && `py-${12}`,
+        px && `px-${px}`
 			)}
 			style={{ backgroundColor: bgColor }}
 		>

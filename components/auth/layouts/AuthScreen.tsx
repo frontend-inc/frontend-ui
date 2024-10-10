@@ -1,63 +1,31 @@
 import React from 'react'
-import { Paper, Box, Typography } from '@mui/material'
-import { Container } from '../../../components'
+import { Card, CardContent } from "../../../shadcn/ui/card"
+import { Typography } from '../../../tailwind'
 
 type AuthScreenProps = {
-	title: string
-	subtitle?: string
-	children: React.ReactNode
+  title: string
+  subtitle?: string
+  children: React.ReactNode
 }
 
-const AuthScreen: React.FC<AuthScreenProps> = (props) => {
-	const { title, subtitle, children } = props
-
-	return (
-		<Container maxWidth="sm">
-			<Paper elevation={0} sx={sx.paper}>
-				<Box sx={sx.titles}>
-					<Typography variant="h4" sx={sx.title}>
-						{title}
-					</Typography>
-					{subtitle && (
-						<Typography variant="body2" color="text.secondary" sx={sx.subtitle}>
-							{subtitle}
-						</Typography>
-					)}
-				</Box>
-				{children}
-			</Paper>
-		</Container>
-	)
-}
-
-export default AuthScreen
-
-const sx = {
-	root: {
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		justifyContent: 'center',
-		bgcolor: 'background.default',
-	},
-	titles: {
-		mb: 1,
-	},
-	title: {
-		textAlign: 'center',
-	},
-	subtitle: {
-		textAlign: 'center',
-	},
-	paper: {
-		width: '100%',
-		p: {
-			sm: 4,
-			xs: 2,
-		},
-		border: '1px solid',
-		borderColor: 'divider',
-		borderRadius: 1,
-		bgcolor: 'background.paper',
-	},
+export default function AuthScreen({ title, subtitle, children }: AuthScreenProps) {
+  return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-md">
+      <Card className="w-full p-4 sm:p-6 border border-border rounded-lg bg-background">
+        <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <Typography variant="h4" className="text-center font-bold">
+              {title}
+            </Typography>
+            {subtitle && (
+              <Typography variant="body2" color="text.secondary" className="text-center">
+                {subtitle}
+              </Typography>
+            )}
+          </div>
+          {children}
+        </CardContent>
+      </Card>
+    </div>
+  )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Button } from '@mui/material'
+import { Stack, Button } from '../../../tailwind'
 import FormFields from './FormFields'
 import { FormFieldType } from '../../../types'
 import { IconLoading } from '../..'
@@ -36,7 +36,7 @@ const Form: React.FC<FormProps> = (props) => {
 	} = props
 
 	return (
-		<Stack spacing={1} sx={sx.root}>
+		<div className='flex flex-col space-y-4'>
 			<FormFields
 				errors={errors}
 				fields={fields}
@@ -61,17 +61,8 @@ const Form: React.FC<FormProps> = (props) => {
 					{buttonText}
 				</Button>
 			)}
-		</Stack>
+		</div>
 	)
 }
 
 export default Form
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-	button: {
-		mt: 2,
-	},
-}

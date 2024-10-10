@@ -15,7 +15,7 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 	const { items = [] } = props
 
 	return (
-		<Container maxWidth="md">
+		<Container maxWidth="lg">
 			<div className='flex flex-col'>
 				{items?.map((item, i) => (
 					<AccordionItem

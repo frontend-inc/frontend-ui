@@ -1,37 +1,23 @@
 import React from 'react'
-import { Box, LinearProgress } from '@mui/material'
-import { Label } from '../../../../components'
+import { Progress } from "../../../../shadcn/ui/progress"
+import { Badge } from "../../../../shadcn/ui/badge"
 
 type FormWizardProgressProps = {
-	currentStep: number
-	totalSteps: number
+  currentStep: number
+  totalSteps: number
 }
 
-const FormWizardProgress: React.FC<FormWizardProgressProps> = (props) => {
-	const { currentStep, totalSteps } = props
+export default function FormWizardProgress({ currentStep, totalSteps }: FormWizardProgressProps) {
+  const progressValue = (currentStep / totalSteps) * 100
 
-	return (
-		<>
-			<LinearProgress
-				sx={sx.linearProgress}
-				variant="determinate"
-				value={(currentStep / totalSteps) * 100}
-			/>
-			<Box sx={sx.label}>
-				<Label label={`Step ${currentStep} of ${totalSteps}`} />
-			</Box>
-		</>
-	)
-}
-
-export default FormWizardProgress
-
-const sx = {
-	linearProgress: {
-		width: '100%',
-		height: '10px',
-	},
-	label: {
-		m: 2,
-	},
+  return (
+    <div className="w-full">
+      <Progress value={progressValue} className="w-full h-2.5 rounded-none" />
+      <div className="m-4">
+        <Badge className="text-sm font-medium">
+          Step {currentStep} of {totalSteps}
+        </Badge>
+      </div>
+    </div>
+  )
 }

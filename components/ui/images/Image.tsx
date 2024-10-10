@@ -15,6 +15,7 @@ interface ResponsiveImageProps {
 	enableOverlay?: boolean
 	enableGradient?: boolean
 	disableBorderRadius?: boolean
+  disableZoom?: boolean
 	className?: string
   handleClick?: () => void
 }
@@ -24,11 +25,12 @@ export default function ResponsiveImage({
 	alt,
 	width = 800,
 	height = 450,
-  objectFit,
+  objectFit='cover',
 	aspectRatio = 16 / 9,
 	enableOverlay = false,
 	enableGradient = false,
 	disableBorderRadius = false,
+  disableZoom = false,
   handleClick,
 	className,
 }: ResponsiveImageProps) {
@@ -56,7 +58,7 @@ export default function ResponsiveImage({
 						className={cn(
               objectFit == 'cover' ? 'object-cover' : 'object-contain',
 							'w-full h-full transition-transform duration-3000 ease-in-out',
-							isHovered && 'scale-105'
+							!disableZoom && isHovered && 'scale-105'
 						)}
 					/>
 				) : (
@@ -67,13 +69,13 @@ export default function ResponsiveImage({
 						)}
 					/>
 				)}        
-			</AspectRatio>
-			{enableOverlay && (
+        {enableOverlay && (
 				<div className="absolute inset-0 bg-black bg-opacity-40" />
-			)}
-			{enableGradient && (
-				<div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" />
-			)}
+        )}
+        {enableGradient && (
+          <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" />
+        )}
+			</AspectRatio>			
 		</div>
 	)
 }

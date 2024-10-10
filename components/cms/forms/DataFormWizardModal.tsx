@@ -72,7 +72,7 @@ const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
 	}, [formId])
 
 	return (
-		<Container maxWidth="md">
+		<Container maxWidth="lg">
 			<div className="flex flex-col space-y-2">
 				{!submitted ? (
 					<FormCard

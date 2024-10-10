@@ -213,7 +213,7 @@ export default function ColorInput({
           <div className="mt-2">
             <Input
               placeholder="#RRGGBB"
-              value={value.startsWith('#') ? value : ''}
+              value={value?.startsWith('#') ? value : ''}
               onChange={handleHexColorChange}
             />
           </div>

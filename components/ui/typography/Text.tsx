@@ -24,7 +24,7 @@ const Text: React.FC<TextProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Container maxWidth="md">
+		<Container maxWidth="lg">
 			<Stack spacing={2} direction="column">
 				<Heading
 					label={label}

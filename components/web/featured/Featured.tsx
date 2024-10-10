@@ -28,7 +28,7 @@ const Featured: React.FC<FeaturedProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Container maxWidth="md">
+		<Container maxWidth="lg">
 			<Stack spacing={6}>
 				{items?.map((item, i) => (
 					<FeaturedCard

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Fade, Typography, Stack } from '@mui/material'
+import { Fade, Typography, Stack } from '../../../../tailwind'
 
 export type FormWizardInputWrapperProps = {
 	title: string
@@ -12,26 +12,28 @@ export type FormWizardInputWrapperProps = {
 const FormWizardInputWrapper: React.FC<FormWizardInputWrapperProps> = (
 	props
 ) => {
-	const { fadeIn, title, description, children, timeout = 350 } = props
+	
+  const { fadeIn, title, description, children } = props
 
 	return (
-		<Fade in={fadeIn} timeout={timeout}>
-			<Stack direction="column" spacing={3}>
-				<Stack direction="column" spacing={1}>
-					<Typography sx={sx.title} variant="h4" color="text.primary">
+    <Fade in={fadeIn}>
+			<div className='flex flex-col space-y-4'>
+        <div className='p-1 flex flex-col space-y-2'>
+					<Typography variant="h4" color="text.primary">
 						{title}
 					</Typography>
 					<Typography
-						sx={sx.description}
 						variant="body1"
 						color="text.secondary"
 					>
 						{description}
 					</Typography>
-				</Stack>
-				{children}
-			</Stack>
-		</Fade>
+				</div>
+        <div className='p-1'>
+				  {children}
+        </div>
+			</div>
+    </Fade>
 	)
 }
 
