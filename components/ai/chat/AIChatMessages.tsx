@@ -1,57 +1,38 @@
 import React from 'react'
-import {
-	Avatar,
-	List,
-	ListItem,
-	ListItemButton,
-	ListItemText,
-	ListItemIcon,
-} from '@mui/material'
+import { Avatar, AvatarImage } from "../../../shadcn/ui/avatar"
+import { ScrollArea } from "../../../shadcn/ui/scroll-area"
+import { cn } from "../../../shadcn/lib/utils"
 
 type AIChatMessagesProps = {
-	avatar?: string
-	messages: any[]
+  avatar?: string
+  messages: any[]
 }
 
 const AIChatMessages: React.FC<AIChatMessagesProps> = (props) => {
-	const { avatar, messages } = props
+  const { avatar, messages } = props
 
-	return (
-		<List disablePadding>
-			{messages
-				?.filter((message) => message.role != 'system')
-				?.map((message, i) => (
-					<ListItem key={i} disablePadding sx={sx.listItem}>
-						<ListItemIcon sx={sx.listItemIcon}>
-							{avatar && message.role == 'assistant' && <Avatar src={avatar} />}
-						</ListItemIcon>
-						<ListItemButton sx={sx.listItemButton}>
-							<ListItemText sx={sx.text} primary={message.content} />
-						</ListItemButton>
-					</ListItem>
-				))}
-		</List>
-	)
+  return (
+    <ScrollArea className="h-[calc(100vh-200px)]">
+      <ul className="list-none p-0">
+        {messages
+          ?.filter((message) => message.role != 'system')
+          ?.map((message, i) => (
+            <li key={i} className="mb-1 flex items-start">
+              <div className="mr-2 w-4">
+                {avatar && message.role == 'assistant' && (
+                  <Avatar>
+                    <AvatarImage src={avatar} alt="AI Assistant" />
+                  </Avatar>
+                )}
+              </div>
+              <button className="flex-grow p-1 rounded text-left hover:bg-accent">
+                <p className="text-foreground whitespace-pre-line">{message.content}</p>
+              </button>
+            </li>
+          ))}
+      </ul>
+    </ScrollArea>
+  )
 }
 
 export default AIChatMessages
-
-const sx = {
-	listItem: {
-		mb: 1,
-	},
-	listItemIcon: {
-		mr: 2,
-		width: 4,
-	},
-	listItemButton: {
-		p: 1,
-		borderRadius: 1,
-	},
-	text: {
-		color: 'text.primary',
-		'& .MuiListItemText-primary': {
-			whiteSpace: 'pre-line',
-		},
-	},
-}

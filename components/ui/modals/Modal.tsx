@@ -37,7 +37,6 @@ const Modal: React.FC<ModalProps> = ({
 	avatar,
 	icon,
 	title,
-	subtitle,
 	buttons,
 	children,
 	secondaryActions,
@@ -50,7 +49,7 @@ const Modal: React.FC<ModalProps> = ({
 		<Dialog open={open} onOpenChange={handleClose}>
 			<DialogContent
 				className={cn(
-					'bg-background rounded-md overflow-hidden max-h-[600px] overflow-y-scroll',
+					'dark bg-background rounded-md overflow-hidden max-h-[600px] overflow-y-scroll',
 					fullScreen ? 'w-screen h-screen' : 'w-full'
 				)}
 			>

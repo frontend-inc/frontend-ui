@@ -1,28 +1,20 @@
 import React from 'react'
-import { Typography, Chip } from '@mui/material'
+import { Badge } from '../../shadcn/ui/badge'
 
 type LabelProps = {
 	label?: string
-	color?: string
-	darkMode?: boolean
-	styles?: React.CSSProperties
+	variant?: string 
+  className?: string	
 }
 
 const Label: React.FC<LabelProps> = (props) => {
-	const { label, darkMode = false, color, styles } = props
+	const { label, variant, className } = props
 
 	if (!label) return null
 	return (
-		<Chip
-			label={label}
-			sx={{
-				...sx.chip,
-				...(darkMode && sx.darkMode),
-				...(color && { bgcolor: color }),
-				...styles,
-			}}
-			size="small"
-		/>
+    <Badge variant={ variant } className={ className }>
+      { label }
+    </Badge>
 	)
 }
 

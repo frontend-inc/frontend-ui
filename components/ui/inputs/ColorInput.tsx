@@ -1,256 +1,224 @@
-import React, { useEffect, useState } from 'react'
-import {
-	Stack,
-	Tooltip,
-	IconButton,
-	Button,
-	Typography,
-	Box,
-	Slider,
-} from '@mui/material'
-import { ExpandMore } from '@mui/icons-material'
-import * as COLORS from '@mui/material/colors'
-import { InputLabel, Popup, TextInput } from '../../../components'
-import { SyntheticEventType } from '../../../types'
-import { useMenu } from '../../../hooks'
-import { MUI_COLORS, HEX_COLORS } from '../../../constants/index'
+'use client'
 
-type TransparentColorProps = {
-	value?: string
-	handleClick?: (e: any) => void
-}
+import React, { useState, useMemo } from 'react'
+import { InputLabel } from '../../../components'
+import { Button } from "../../../shadcn/ui/button"
+import { Input } from "../../../shadcn/ui/input"
+import { Slider } from "../../../shadcn/ui/slider"
+import { Popover, PopoverContent, PopoverTrigger } from "../../../shadcn/ui/popover"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../../../shadcn/ui/tooltip"
+import { ChevronDown } from "lucide-react"
+import { cn } from "../../../shadcn/lib/utils"
 
-const TransparentColor: React.FC<TransparentColorProps> = (props) => {
-	const { value = 'Ban', handleClick } = props
-	return (
-		<Tooltip title="Transparent">
-			<Box
-				sx={{
-					...sx.color,
-					...sx.transparent,
-					...(value == '' && sx.selected),
-					bgcolor: '#FFF',
-				}}
-				onClick={handleClick}
-			/>
-		</Tooltip>
-	)
+const TAILWIND_COLORS = ['slate', 'gray', 'zinc', 'neutral', 'stone', 'red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose']
+
+const TAILWIND_COLOR_MAP = {
+  slate: {
+    100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1', 400: '#94a3b8',
+    500: '#64748b', 600: '#475569', 700: '#334155', 800: '#1e293b', 900: '#0f172a'
+  },
+  gray: {
+    100: '#f3f4f6', 200: '#e5e7eb', 300: '#d1d5db', 400: '#9ca3af',
+    500: '#6b7280', 600: '#4b5563', 700: '#374151', 800: '#1f2937', 900: '#111827'
+  },
+  zinc: {
+    100: '#f4f4f5', 200: '#e4e4e7', 300: '#d4d4d8', 400: '#a1a1aa',
+    500: '#71717a', 600: '#52525b', 700: '#3f3f46', 800: '#27272a', 900: '#18181b'
+  },
+  neutral: {
+    100: '#f5f5f5', 200: '#e5e5e5', 300: '#d4d4d4', 400: '#a3a3a3',
+    500: '#737373', 600: '#525252', 700: '#404040', 800: '#262626', 900: '#171717'
+  },
+  stone: {
+    100: '#f5f5f4', 200: '#e7e5e4', 300: '#d6d3d1', 400: '#a8a29e',
+    500: '#78716c', 600: '#57534e', 700: '#44403c', 800: '#292524', 900: '#1c1917'
+  },
+  red: {
+    100: '#fee2e2', 200: '#fecaca', 300: '#fca5a5', 400: '#f87171',
+    500: '#ef4444', 600: '#dc2626', 700: '#b91c1c', 800: '#991b1b', 900: '#7f1d1d'
+  },
+  orange: {
+    100: '#ffedd5', 200: '#fed7aa', 300: '#fdba74', 400: '#fb923c',
+    500: '#f97316', 600: '#ea580c', 700: '#c2410c', 800: '#9a3412', 900: '#7c2d12'
+  },
+  amber: {
+    100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d', 400: '#fbbf24',
+    500: '#f59e0b', 600: '#d97706', 700: '#b45309', 800: '#92400e', 900: '#78350f'
+  },
+  yellow: {
+    100: '#fef9c3', 200: '#fef08a', 300: '#fde047', 400: '#facc15',
+    500: '#eab308', 600: '#ca8a04', 700: '#a16207', 800: '#854d0e', 900: '#713f12'
+  },
+  lime: {
+    100: '#ecfccb', 200: '#d9f99d', 300: '#bef264', 400: '#a3e635',
+    500: '#84cc16', 600: '#65a30d', 700: '#4d7c0f', 800: '#3f6212', 900: '#365314'
+  },
+  green: {
+    100: '#dcfce7', 200: '#bbf7d0', 300: '#86efac', 400: '#4ade80',
+    500: '#22c55e', 600: '#16a34a', 700: '#15803d', 800: '#166534', 900: '#14532d'
+  },
+  emerald: {
+    100: '#d1fae5', 200: '#a7f3d0', 300: '#6ee7b7', 400: '#34d399',
+    500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b'
+  },
+  teal: {
+    100: '#ccfbf1', 200: '#99f6e4', 300: '#5eead4', 400: '#2dd4bf',
+    500: '#14b8a6', 600: '#0d9488', 700: '#0f766e', 800: '#115e59', 900: '#134e4a'
+  },
+  cyan: {
+    100: '#cffafe', 200: '#a5f3fc', 300: '#67e8f9', 400: '#22d3ee',
+    500: '#06b6d4', 600: '#0891b2', 700: '#0e7490', 800: '#155e75', 900: '#164e63'
+  },
+  sky: {
+    100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc', 400: '#38bdf8',
+    500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e'
+  },
+  blue: {
+    100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa',
+    500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a'
+  },
+  indigo: {
+    100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc', 400: '#818cf8',
+    500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 800: '#3730a3', 900: '#312e81'
+  },
+  violet: {
+    100: '#ede9fe', 200: '#ddd6fe', 300: '#c4b5fd', 400: '#a78bfa',
+    500: '#8b5cf6', 600: '#7c3aed', 700: '#6d28d9', 800: '#5b21b6', 900: '#4c1d95'
+  },
+  purple: {
+    100: '#f3e8ff', 200: '#e9d5ff', 300: '#d8b4fe', 400: '#c084fc',
+    500: '#a855f7', 600: '#9333ea', 700: '#7e22ce', 800: '#6b21a8', 900: '#581c87'
+  },
+  fuchsia: {
+    100: '#fae8ff', 200: '#f5d0fe', 300: '#f0abfc', 400: '#e879f9',
+    500: '#d946ef', 600: '#c026d3', 700: '#a21caf', 800: '#86198f', 900: '#701a75'
+  },
+  pink: {
+    100: '#fce7f3', 200: '#fbcfe8', 300: '#f9a8d4', 400: '#f472b6',
+    500: '#ec4899', 600: '#db2777', 700: '#be185d', 800: '#9d174d', 900: '#831843'
+  },
+  rose: {
+    100: '#ffe4e6', 200: '#fecdd3', 300: '#fda4af', 400: '#fb7185',
+    500: '#f43f5e', 600: '#e11d48', 700: '#be123c', 800: '#9f1239', 900: '#881337'
+  },
 }
 
 type ColorInputProps = {
-	label?: string
-	placeholder?: string
-	name: string
-	value: string
-	handleChange: (e: SyntheticEventType) => void
-	errors?: any
-	disableTone?: boolean
-	info?: string
+  label?: string
+  placeholder?: string
+  name: string
+  value: string
+  handleChange: (e: { target: { name: string; value: string } }) => void
+  errors?: any
+  disableTone?: boolean
+  info?: string
 }
 
-const ColorInput: React.FC<ColorInputProps> = (props) => {
-	const {
-		label,
-		name,
-		value,
-		placeholder = 'Color',
-		disableTone = false,
-		handleChange,
-		info,
-	} = props
+export default function ColorInput({
+  label,
+  name,
+  value,
+  placeholder = 'Color',
+  disableTone = false,
+  handleChange,
+  info,
+}: ColorInputProps) {
+  const [tone, setTone] = useState(500)
+  const [selectedColor, setSelectedColor] = useState('')
 
-	const [tone, setTone] = useState(500)
-	const [hex, setHex] = useState(value || '')
-	const [text, setText] = useState(value || '')
+  const handleToneChange = (newTone: number[]) => {
+    setTone(newTone[0])
+    if (selectedColor) {
+      handleColorChange(selectedColor, newTone[0])
+    }
+  }
 
-	const { open, anchorEl, openMenu, closeMenu } = useMenu()
+  const handleColorChange = (color: string, shade: number = tone) => {
+    const newColor = TAILWIND_COLOR_MAP[color][shade]
+    setSelectedColor(color)
+    handleChange({
+      target: {
+        name,
+        value: newColor,
+      },
+    })
+  }
 
-	const handleToneChange = (ev, newTone) => {
-		setTone(newTone)
-	}
+  const handleHexColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let hexColor = e.target.value
+    handleChange({
+      target: {
+        name,
+        value: hexColor,
+      },
+    })
+  }
 
-	const handleColorChange = (color) => {
-		const hexColor = COLORS[color][tone]
-		handleChange({
-			target: {
-				name,
-				value: hexColor,
-			},
-		})
-		setHex(hexColor)
-		closeMenu()
-	}
+  const selectedColorName = useMemo(() => {
+    for (const [colorName, shades] of Object.entries(TAILWIND_COLOR_MAP)) {
+      if (Object.values(shades).includes(value)) {
+        return colorName
+      }
+    }
+    return ''
+  }, [value])
 
-	const handleHexColorChange = (hexColor) => {
-		handleChange({
-			target: {
-				name,
-				value: hexColor,
-			},
-		})
-		setHex(hexColor)
-		closeMenu()
-	}
-
-	const handleTextChange = (ev) => {
-		let { value } = ev.target
-		if (!value.startsWith('#')) {
-			value = `#${value}`
-		}
-		if (value?.length == 7) {
-			handleChange({
-				target: {
-					name,
-					value,
-				},
-			})
-		}
-	}
-
-	return (
-		<Stack direction="column" spacing={1} sx={sx.root}>
-			<InputLabel label={label} info={info} />
-			<Button
-				sx={sx.button}
-				fullWidth
-				variant="contained"
-				color="secondary"
-				endIcon={
-					<Stack direction="row" spacing={0}>
-						<Tooltip title={value}>
-							<IconButton>
-								{value ? (
-									<Box
-										sx={{
-											...sx.color,
-											bgcolor: value,
-										}}
-									/>
-								) : (
-									<TransparentColor value={value} handleClick={openMenu} />
-								)}
-							</IconButton>
-						</Tooltip>
-						<IconButton size="small">
-							<ExpandMore />
-						</IconButton>
-					</Stack>
-				}
-				onClick={openMenu}
-			>
-				{placeholder}
-			</Button>
-			<Popup open={open} anchorEl={anchorEl} handleClose={closeMenu}>
-				<Stack spacing={2} direction="column" sx={sx.root}>
-					<Box sx={sx.grid}>
-						{HEX_COLORS.map((hexColor) => (
-							<Tooltip title={hexColor.label}>
-								<Box
-									sx={{
-										...sx.color,
-										...(hex == hexColor?.value && sx.selected),
-										bgcolor: hexColor?.value,
-									}}
-									onClick={() => handleHexColorChange(hexColor?.value)}
-								/>
-							</Tooltip>
-						))}
-						<TransparentColor
-							value={hex}
-							handleClick={() => handleHexColorChange('')}
-						/>
-					</Box>
-					<Box sx={sx.grid}>
-						{MUI_COLORS.map((color) => (
-							<Tooltip title={color} key={color}>
-								<Box
-									sx={{
-										...sx.color,
-										...(hex == COLORS[color][tone] && sx.selected),
-										bgcolor: COLORS[color][tone],
-									}}
-									onClick={() => handleColorChange(color)}
-								/>
-							</Tooltip>
-						))}
-					</Box>
-					{!disableTone && (
-						<Stack spacing={0} sx={sx.slider}>
-							<Typography variant="caption" color="textSecondary">
-								Color tone
-							</Typography>
-							<Slider
-								aria-label="Color tone"
-								defaultValue={[100, 900]}
-								onChange={handleToneChange}
-								step={100}
-								min={100}
-								max={900}
-								value={tone}
-							/>
-						</Stack>
-					)}
-					<Box sx={sx.input}>
-						<TextInput
-							name={name}
-							value={text}
-							handleChange={handleTextChange}
-						/>
-					</Box>
-				</Stack>
-			</Popup>
-		</Stack>
-	)
-}
-
-export default ColorInput
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-	button: {
-		py: 0,
-		justifyContent: 'space-between',
-		border: '2px solid',
-		borderColor: 'divider',
-		color: 'text.primary',
-		bgcolor: 'background.paper',
-		fontSize: (theme) => theme.typography.body1.fontSize,
-		fontWeight: (theme) => theme.typography.body1.fontWeight,
-		'&:hover': {
-			bgcolor: 'background.paper',
-			borderColor: 'primary.main',
-		},
-	},
-	grid: {
-		display: 'grid',
-		gridTemplateColumns: 'repeat(7, 1fr)',
-		gap: '4px',
-	},
-	slider: {
-		width: '100%',
-	},
-	color: {
-		border: '2px solid',
-		borderColor: 'divider',
-		borderRadius: '8px',
-		height: '32px',
-		width: '32px',
-		transition: 'all 0.3s ease',
-		cursor: 'pointer',
-		'&:hover': {
-			transform: 'scale(1.1)',
-		},
-	},
-	selected: {
-		borderColor: 'common.white',
-	},
-	input: {
-		width: '100%',
-	},
-	transparent: {
-		background:
-			'linear-gradient(to top left,rgba(0,0,0,0) 0%,rgba(0,0,0,0) calc(50% - 0.8px),rgba(0,0,0,0.4) 50%,rgba(0,0,0,0) calc(50% + 0.8px),rgba(0,0,0,0) 100%)',
-	},
+  return (
+    <div className="w-full space-y-2">
+      <InputLabel label={label} info={info} />      
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button variant="outline" className="text-foreground w-full justify-between">
+            {placeholder}
+            <div className="flex items-center space-x-2">
+              <div className="h-6 w-6 rounded border" style={{ backgroundColor: value }}></div>
+              <ChevronDown className="h-4 w-4 opacity-50" />
+            </div>
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-64">
+          <div className="grid grid-cols-7 gap-1 mb-2">
+            {TAILWIND_COLORS.map((color) => (
+              <TooltipProvider key={color}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      className={cn(
+                        'h-8 w-8 rounded-md border',
+                        selectedColorName === color && 'ring-2 ring-offset-2 ring-offset-background'
+                      )}
+                      style={{ backgroundColor: TAILWIND_COLOR_MAP[color][tone] }}
+                      onClick={() => handleColorChange(color)}
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{color}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            ))}
+          </div>
+          {!disableTone && (
+            <div className="space-y-2">
+              <label className="text-sm font-medium leading-none">Color tone</label>
+              <Slider
+                min={100}
+                max={900}
+                step={100}
+                value={[tone]}
+                onValueChange={handleToneChange}
+              />
+            </div>
+          )}
+          <div className="mt-2">
+            <Input
+              placeholder="#RRGGBB"
+              value={value.startsWith('#') ? value : ''}
+              onChange={handleHexColorChange}
+            />
+          </div>
+        </PopoverContent>
+      </Popover>
+    </div>
+  )
 }

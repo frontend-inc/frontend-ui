@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { Icon, IconLoading } from '../../../components'
-import { Stack, Button } from '@mui/material'
+import {  Button } from '../../../tailwind'
 import { TextInputPropsType } from '../../../types'
 import AIChatForm from './AIChatForm'
 import AIChatMessages from './AIChatMessages'
@@ -37,7 +36,7 @@ const AIChat: React.FC<AIChatProps> = (props) => {
 	}
 
 	return (
-		<Stack direction="column" spacing={2}>
+		<div className="flex flex-col space-y-2">
 			<AIChatMessages avatar={avatar} messages={messages} />
 			<AIChatForm
 				label={label}
@@ -51,11 +50,11 @@ const AIChat: React.FC<AIChatProps> = (props) => {
 				variant="contained"
 				color="primary"
 				onClick={handleChatSubmit}
-				startIcon={loading && <IconLoading />}
+				loading={loading}
 			>
-				{!loading && buttonText}
+				{buttonText}
 			</Button>
-		</Stack>
+		</div>
 	)
 }
 

@@ -70,8 +70,8 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 					/>
 				</div>
 				<CardContent className={'px-4 pt-3'}>					
-          <Typography variant="subtitle1">{primary}</Typography>
-          {secondary && <Typography variant="body1">{secondary}</Typography>}					
+          <Typography variant="body1">{primary}</Typography>
+          {secondary && <Typography variant="body2" color='text-muted-foreground'>{secondary}</Typography>}					
 				</CardContent>
 				<CardFooter className="flex justify-between">
 					{actions}

@@ -50,7 +50,7 @@ const Badge: React.FC<BadgeProps> = ({
 	const shouldShow = !invisible && (showZero || badgeContent !== 0)
 
 	const badgeClasses = cn(
-		'absolute -top-2 -right-2 flex items-center justify-center',
+		'text-foreground absolute -top-2 -right-2 flex items-center justify-center',
 		variant === 'standard'
 			? 'min-w-[20px] h-5 px-1 rounded-full text-xs font-bold'
 			: 'w-3 h-3 rounded-full',

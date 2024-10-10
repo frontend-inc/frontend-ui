@@ -33,10 +33,10 @@ const Cards: React.FC<CardsProps> = (props) => {
 	}
 
 	return (
-		<Box>
-			<Grid container spacing={1}>
+		<div>
+			<Grid container>
 				{items?.map((item, i) => (
-					<Grid item xs={12} sm={6} md={4} key={i}>
+					<Grid item sm={6} md={4} key={i}>
 						<Card
 							image={item?.image}
 							primary={item?.title}
@@ -59,7 +59,7 @@ const Cards: React.FC<CardsProps> = (props) => {
 					description="Your content will appear here."
 				/>
 			)}
-		</Box>
+		</div>
 	)
 }
 

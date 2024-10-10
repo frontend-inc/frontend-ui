@@ -37,28 +37,29 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 	return (
 		<div className="h-auto w-full">
 			<Container maxWidth="md">
-				<div className="flex flex-col space-y-3 px-2 w-full justify-start items-center">
-					<div className="flex flex-col space-y-5 max-w-[800px] h-full w-full text-center">
+				<div className="flex flex-col space-y-4 px-2 w-full justify-start items-center">
+					<div className="flex flex-col space-y-2 max-w-[800px] h-full w-full text-center">
 						{label && (
 							<div className="w-full flex justify-center">
 								<Label label={label} />
 							</div>
 						)}
-						<Typography variant="h2" textAlign="center">
+						<Typography variant="h2" textAlign="center" className='tracking-tight'>
 							{primary}
 						</Typography>
 
 						{secondary && secondary}
 						{actions && actions}
 						{logos?.length > 0 && <BrandLogos logos={logos} />}
-						<Image
-							disableBorderRadius
-							src={image}
-							alt={primary}
-							height={600}
-							objectFit="cover"
-							{...slots.image}
-						/>
+            <div className="relative shadow-xl rounded-lg overflow-hidden">
+              <Image							
+                src={image}
+                alt={primary}
+                height={600}
+                objectFit="cover"
+                {...slots.image}
+              />              
+            </div>
 					</div>
 				</div>
 			</Container>

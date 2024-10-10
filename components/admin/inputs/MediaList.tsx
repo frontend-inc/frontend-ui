@@ -1,87 +1,82 @@
+'use client'
+
 import React, { useEffect } from 'react'
 import { useMedia } from '../../../hooks'
-import { Stack, Box, Button } from '@mui/material'
-import { ExpandMore } from '@mui/icons-material'
+import { ChevronDown } from "lucide-react"
 import MediaListItem from './MediaListItem'
 import { Placeholder, IconLoading } from '../../../components'
+import { Button } from "@/shadcn/ui/button"
+import { cn } from "@/shadcn/lib/utils"
 
 type MediaListProps = {
-	selectedIds: number[]
-	handleSelect: (item: any) => void
+  selectedIds: number[]
+  handleSelect: (item: any) => void
 }
 
-const MediaList: React.FC<MediaListProps> = (props) => {
-	const { selectedIds, handleSelect } = props
+const MediaList: React.FC<MediaListProps> = ({ selectedIds, handleSelect }) => {
+  const {
+    loading,
+    resources,
+    findResources,
+    deleteResource,
+    reloadResources,
+    loadMore,
+    page,
+    numPages,
+  } = useMedia()
 
-	const {
-		loading,
-		resources,
-		findResources,
-		deleteResource,
-		reloadResources,
-		loadMore,
-		page,
-		numPages,
-	} = useMedia()
+  const handleRemove = async (resource: any) => {
+    await deleteResource(resource.id)
+    reloadResources()
+  }
 
-	const handleRemove = async (resource: any) => {
-		await deleteResource(resource.id)
-		reloadResources()
-	}
+  const handleLoadMore = async () => {
+    await loadMore()
+  }
 
-	const handleLoadMore = async () => {
-		await loadMore()
-	}
+  useEffect(() => {
+    findResources({
+      page: 1,
+    })
+  }, [])
 
-	useEffect(() => {
-		findResources({
-			page: 1,
-		})
-	}, [])
-
-	return (
-		<Stack direction="column" spacing={1} width={'100%'}>
-			<Box sx={sx.list}>
-				{resources.map((item, idx) => (
-					<MediaListItem
-						key={item?.id}
-						item={item}
-						size={164}
-						selected={selectedIds.includes(item?.id)}
-						handleClick={() => handleSelect(item)}
-						handleRemove={() => handleRemove(item)}
-					/>
-				))}
-			</Box>
-			{resources?.length == 0 && (
-				<Placeholder
-					icon={'Image'}
-					title="No media"
-					description="Upload or import media."
-				/>
-			)}
-			{numPages > page && (
-				<Button
-					fullWidth
-					color="secondary"
-					variant="contained"
-					onClick={handleLoadMore}
-					endIcon={loading ? <IconLoading /> : <ExpandMore />}
-				>
-					Load More
-				</Button>
-			)}
-		</Stack>
-	)
+  return (
+    <div className="flex flex-col space-y-4 w-full">
+      <div className="mt-2 grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-2">
+        {resources.map((item) => (
+          <MediaListItem
+            key={item?.id}
+            item={item}
+            size={164}
+            selected={selectedIds.includes(item?.id)}
+            handleClick={() => handleSelect(item)}
+            handleRemove={() => handleRemove(item)}
+          />
+        ))}
+      </div>
+      {resources?.length === 0 && (
+        <Placeholder
+          icon={'Image'}
+          title="No media"
+          description="Upload or import media."
+        />
+      )}
+      {numPages > page && (
+        <Button
+          variant="secondary"
+          className="w-full"
+          onClick={handleLoadMore}
+        >
+          {loading ? (
+            <IconLoading className="mr-2 h-4 w-4" />
+          ) : (
+            <ChevronDown className="mr-2 h-4 w-4" />
+          )}
+          Load More
+        </Button>
+      )}
+    </div>
+  )
 }
 
 export default MediaList
-
-const sx = {
-	list: {
-		mt: 2,
-		display: 'grid',
-		gridTemplateColumns: 'repeat(auto-fill, minmax(164px, 1fr))',
-		gap: '10px',
-	},
-}
