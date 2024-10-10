@@ -10,7 +10,7 @@ import {
 } from '../..'
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/router'
-import { Typography, Stack } from '@mui/material'
+import { Typography, Stack } from '../../../tailwind'
 import { useApp } from '../../../hooks'
 
 type AuthModalProps = {
@@ -124,8 +124,8 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 
 	return (
 		<Modal open={authOpen} handleClose={() => setAuthOpen(false)}>
-			<Stack direction="column" spacing={2} px={4}>
-				<Typography variant="h4" color="text.primary">
+			<div className="flex flex-col space-y-3 px-4">
+				<Typography variant="h5" className='pb-2' color="text.primary">
 					{tab == 0
 						? 'Login'
 						: tab == 1
@@ -204,25 +204,9 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 						handleLogin={handleLoginClick}
 					/>
 				)}
-			</Stack>
+			</div>
 		</Modal>
 	)
 }
 
 export default AuthModal
-
-const sx = {
-	logo: {
-		display: 'flex',
-		justifyContent: 'center',
-	},
-	content: {
-		mt: 1,
-		width: '100%',
-	},
-	tabsContainer: {
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-	},
-}

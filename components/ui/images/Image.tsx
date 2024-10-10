@@ -10,6 +10,7 @@ interface ResponsiveImageProps {
 	alt: string
 	width?: number
 	height?: number
+  objectFit?: 'cover' | 'contain'
 	aspectRatio?: number
 	enableOverlay?: boolean
 	enableGradient?: boolean
@@ -23,6 +24,7 @@ export default function ResponsiveImage({
 	alt,
 	width = 800,
 	height = 450,
+  objectFit,
 	aspectRatio = 16 / 9,
 	enableOverlay = false,
 	enableGradient = false,
@@ -52,7 +54,8 @@ export default function ResponsiveImage({
 						width={width}
 						height={height}
 						className={cn(
-							'object-cover w-full h-full transition-transform duration-3000 ease-in-out',
+              objectFit == 'cover' ? 'object-cover' : 'object-contain',
+							'w-full h-full transition-transform duration-3000 ease-in-out',
 							isHovered && 'scale-105'
 						)}
 					/>

@@ -34,7 +34,9 @@ export default function ButtonTabs({
               className={`w-full flex items-center justify-center space-x-2`}
             >
               { tab.icon && (
-                <Icon name={ tab.icon } /> 
+                <Icon name={ tab.icon } className={cn(
+                  tab.label && 'mr-2',
+                )} /> 
               )}
               { tab.label && tab.label }
             </TabsTrigger>

@@ -17,6 +17,7 @@ type DrawerProps = {
 	buttons?: React.ReactNode
 	children: React.ReactNode
 	disablePadding?: boolean	
+  mode?: 'light' | 'dark'
 	className?: string
 	fullWidth?: boolean
 }
@@ -30,6 +31,7 @@ const Drawer: React.FC<DrawerProps> = ({
 	buttons,
 	disablePadding = false,
 	fullWidth = false,	
+  mode = 'light',
 	className,
 }) => {
 	const side = anchor === 'left' || anchor === 'right' ? anchor : 'right'
@@ -38,7 +40,7 @@ const Drawer: React.FC<DrawerProps> = ({
 		<Sheet open={open} onOpenChange={handleClose}>
 			<SheetContent
 				side={side}
-				className={cn(
+				className={cn(                 
 					disablePadding && 'px-0',
 					'flex flex-col',
 					fullWidth ? 'w-screen max-w-full' : 'w-full max-w-xs',

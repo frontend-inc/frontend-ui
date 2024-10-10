@@ -9,6 +9,7 @@ type AdminLayoutCenterProps = {
 export default function AdminLayoutCenter({ children }: AdminLayoutCenterProps) {
   return (
     <div className={cn(
+      'dark',
       "bg-background w-full h-screen overflow-hidden",
       "flex flex-col justify-between"
     )}>

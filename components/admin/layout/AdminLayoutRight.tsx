@@ -22,7 +22,7 @@ const AdminLayoutRight: React.FC<AdminLayoutRightProps> = (props) => {
 	}, [breakpoint])
 
 	return (
-		<>
+		<div className='dark'>
 			<Hidden smDown>
 				{openLayoutRight && (
           <div className='dark border-l border-border w-[300px] min-w-[300px] h-screen'>{children}</div>
@@ -38,7 +38,7 @@ const AdminLayoutRight: React.FC<AdminLayoutRightProps> = (props) => {
 					{children}
 				</Drawer>
 			</Hidden>
-		</>
+		</div>
 	)
 }
 

@@ -30,15 +30,17 @@ export default function TextButtonInput({
         onChange={handleChange}
         placeholder={placeholder}
         className={cn(
+          "py-3",
           "rounded-r-none",
           "focus-visible:ring-0 focus-visible:ring-offset-0",
           "border-r-0"
         )}
       />
       <Button
+        size='sm'
         variant={color === 'primary' ? 'default' : 'secondary'}
         className={cn(
-          "h-[43px] px-3 rounded-l-none",
+          "h-[43px] px-3 py-0 rounded-l-none",
           "focus-visible:ring-0 focus-visible:ring-offset-0"
         )}
         onClick={onClick}
