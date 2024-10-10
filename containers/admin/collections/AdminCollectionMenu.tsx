@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Box } from '@mui/material'
 import { MenuList, AlertModal, SecondaryButton } from '../../../components'
 import { MenuListItem } from '../../../components'
 import { useCollections, useViews } from '../../../hooks'
@@ -178,7 +177,7 @@ const AdminCollectionMenu: React.FC = () => {
 	}, [viewId])
 
 	return (
-		<Box sx={sx.root}>
+		<div className='flex flex-col'>
 			<MenuList label={'Collections'}>
 				{collections.map((collection) => (
 					<MenuListItem
@@ -191,11 +190,11 @@ const AdminCollectionMenu: React.FC = () => {
 					/>
 				))}
 			</MenuList>
-			<Box sx={sx.buttonContainer}>
+			<div className='w-full mx-2 mb-2'>
 				<SecondaryButton onClick={handleCreateCollectionClick} icon="Plus">
 					Collection
 				</SecondaryButton>
-			</Box>
+			</div>
 			{views.length > 0 && (
 				<MenuList label="Views" enableBorder>
 					{views?.map((view) => (
@@ -244,21 +243,8 @@ const AdminCollectionMenu: React.FC = () => {
 				handleClose={() => setShowDeleteModal(false)}
 				handleConfirm={handleDeleteCollection}
 			/>
-		</Box>
+		</div>
 	)
 }
 
 export default AdminCollectionMenu
-
-const sx = {
-	root: {
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'flex-start',
-	},
-	buttonContainer: {
-		mt: 0,
-		mx: 2,
-		mb: 2,
-	},
-}

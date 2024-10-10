@@ -16,9 +16,8 @@ const DisplayFields: React.FC<DisplayFieldsProps> = (props) => {
 
 	return (
 		<Stack
-			sx={sx.root}
 			direction={'column'}
-			spacing={0.5}
+			spacing={1}
 			alignItems={alignItems}
 		>
 			{fields?.map((field, index) => (

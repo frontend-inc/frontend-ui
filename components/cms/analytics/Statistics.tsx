@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Stack } from '@mui/material'
 import { useStatistics } from '../../../hooks'
-import { mergeFilters } from '../../../helpers'
 import Statistic from './Statistic'
 
 export type StatisticsProps = {
@@ -37,13 +35,7 @@ const Statistics: React.FC<StatisticsProps> = (props) => {
 	}, [url])
 
 	return (
-		<Stack
-			direction={{
-				sm: 'row',
-				xs: 'column',
-			}}
-			spacing={2}
-		>
+		<div className='flex flex-col space-y-2 md:flex-row md:space-x-2'>		
 			{metaFields?.map((metaField, i) => (
 				<Statistic
 					key={i}
@@ -54,7 +46,7 @@ const Statistics: React.FC<StatisticsProps> = (props) => {
 					enableBorder={enableBorder}
 				/>
 			))}
-		</Stack>
+		</div>
 	)
 }
 

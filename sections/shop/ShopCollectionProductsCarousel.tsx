@@ -3,7 +3,6 @@ import { Section, Heading } from '../../components'
 import { CollectionProductsCarousel } from '../../components/shop'
 import { CollectionProductsCarouselProps } from '../../components/shop/collection-products/CollectionProductsCarousel'
 import { SectionProps, HeadingProps } from '../../types'
-import { Stack } from '@mui/material'
 
 type ShopCollectionProductsCarouselProps = CollectionProductsCarouselProps &
 	SectionProps &
@@ -37,7 +36,7 @@ const ShopCollectionProductsCarousel: React.FC<
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Stack direction="column" spacing={1}>
+			<div className='flex flex-col space-y-2'>
 				<Heading
 					label={label}
 					title={title}
@@ -45,7 +44,7 @@ const ShopCollectionProductsCarousel: React.FC<
 					textAlign={textAlign}
 				/>
 				<CollectionProductsCarousel {...rest} />
-			</Stack>
+			</div>
 		</Section>
 	)
 }

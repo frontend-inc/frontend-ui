@@ -1,5 +1,4 @@
 import React from 'react'
-import { Box } from '../../../tailwind'
 import { Image, FieldWrapper } from '../../../components'
 
 type FieldImageProps = {
@@ -17,25 +16,16 @@ const FieldImage: React.FC<FieldImageProps> = (props) => {
 	if (!value) return null
 	return (
 		<FieldWrapper color={color} label={label} {...rest}>
-			<Box
-				sx={{
-					height,
-					width: width ? width : undefined,
-				}}
+			<div 
+        style={{
+          height: `${height}px`,
+          width: width ? `${width}px` : 'auto',
+        }}				
 			>
-				<Image src={value?.url || value} height={height} />
-			</Box>
+				<Image alt={'Image'} src={value?.url || value} height={height} />
+			</div>
 		</FieldWrapper>
 	)
 }
 
 export default FieldImage
-
-const sx = {
-	imageContainer: {
-		borderRadius: 1,
-		height: 140,
-		width: 140,
-		overflow: 'none',
-	},
-}

@@ -1,6 +1,5 @@
 import React from 'react'
 import { DisplayFields, ProductRating, UserChip } from '../..'
-import { Stack } from '../../../tailwind'
 
 type SecondaryFieldsProps = {
 	resource: any
@@ -28,13 +27,13 @@ const SecondaryFields: React.FC<SecondaryFieldsProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Stack direction="column" spacing={1}>
+		<div className='flex flex-col space-y-1'>
 			{enableRatings == true && (
 				<ProductRating size="small" resource={resource} {...slots.ratings} />
 			)}
 			<DisplayFields fields={fields} resource={resource} {...slots.fields} />
 			{enableUsers && <UserChip user={resource?.user} {...slots.user} />}
-		</Stack>
+		</div>
 	)
 }
 

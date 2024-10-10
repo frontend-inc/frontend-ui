@@ -1,5 +1,4 @@
 import React from 'react'
-import { Stack } from '../../../tailwind'
 import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { useApp } from '../../../hooks'
@@ -82,7 +81,7 @@ const ReferenceCollectionListItems: React.FC<
 	}
 
 	return (
-		<Stack direction="column" spacing={2}>
+		<div className="flex flex-col space-y-2 w-full">
 			<DataLayout {...slots.list} grid={grid}>
 				{references?.map((reference, index) => {
 					const target = reference?.target
@@ -109,7 +108,7 @@ const ReferenceCollectionListItems: React.FC<
 				numPages={numPages}
 				handlePaginate={handlePaginate}
 			/>
-		</Stack>
+		</div>
 	)
 }
 

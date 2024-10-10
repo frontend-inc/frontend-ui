@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { Box } from '@mui/material'
 import {
 	AdminHeader,
 	AdminMenu,
@@ -96,7 +95,7 @@ const AdminShopifyPage: React.FC<AdminShopifyPageProps> = (props) => {
 			<AdminLayoutCenter>
 				<AdminHeader title={title} buttons={actions} enableExpandLeftPanel />
 				<AdminLayoutScroll>
-					<Box p={disablePadding ? 0 : 2}>{children}</Box>
+					<div className='p-2'>{children}</div>
 				</AdminLayoutScroll>
 			</AdminLayoutCenter>
 		</ShopifyProvider>

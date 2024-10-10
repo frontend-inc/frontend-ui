@@ -3,7 +3,6 @@ import { Section, Heading } from '../../components'
 import { Logos } from '../../components'
 import { LogosProps } from '../../components/web/logos/Logos'
 import { SectionProps, HeadingProps } from '../../types'
-import { Stack } from '@mui/material'
 
 type UILogosProps = SectionProps & HeadingProps & LogosProps
 
@@ -33,7 +32,7 @@ const UILogos: React.FC<UILogosProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Stack direction="column" spacing={1}>
+			<div className='flex flex-col space-y-2'>
 				<Heading
 					label={label}
 					title={title}
@@ -41,7 +40,7 @@ const UILogos: React.FC<UILogosProps> = (props) => {
 					textAlign={'center'}
 				/>
 				<Logos {...rest} />
-			</Stack>
+			</div>
 		</Section>
 	)
 }

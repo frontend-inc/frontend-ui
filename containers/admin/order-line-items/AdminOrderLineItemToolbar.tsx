@@ -3,15 +3,10 @@ import {
 	FormModal,
 	ResourceToolbarModal,
 	PrimaryButton,
-	SecondaryButton,
 } from '../../../components'
-import { Stack } from '@mui/material'
-import { useResource } from 'frontend-js'
 import { useOrders, useAdmin } from '../../../hooks'
 
 const AdminOrderLineItemToolbar = (props) => {
-	const { apiUrl } = useAdmin()
-
 	const { open, handleClose, selectedIds, handleReload } = props || {}
 
 	const [openModal, setOpenModal] = useState(false)
@@ -28,9 +23,9 @@ const AdminOrderLineItemToolbar = (props) => {
 
 	return (
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
-			<Stack direction="row" spacing={1}>
+			<div>
 				<PrimaryButton onClick={handleUpdateClick}>Update</PrimaryButton>
-			</Stack>
+			</div>
 			<FormModal
 				errors={errors}
 				open={openModal}

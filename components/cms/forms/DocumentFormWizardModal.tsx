@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useApp } from '../../../hooks'
 import { useResource } from 'frontend-js'
-import { Box } from '@mui/material'
 import FormWizardModal from './FormWizardModal'
 import FormCard from './wizard/FormCard'
 import { useRouter } from 'next/router'
@@ -123,7 +122,7 @@ const DocumentFormWizardModal: React.FC<DocumentFormWizardModalProps> = (
 	}, [_resource, handle, url])
 
 	return (
-		<Box sx={sx.root}>
+		<div className="flex flex-col space-y-2 w-full">
 			{!submitted ? (
 				<FormCard
 					title={startTitle}
@@ -154,7 +153,7 @@ const DocumentFormWizardModal: React.FC<DocumentFormWizardModalProps> = (
 				handleRemoveAttachment={handleRemoveAttachment}
 				buttonText={buttonText}
 			/>
-		</Box>
+		</div>
 	)
 }
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Stack } from '@mui/material'
 import { LoadMore, DataLayout } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { ImageCard } from '../..'
@@ -45,10 +44,9 @@ const ImageListItems: React.FC<ImageListItemsProps> = (props) => {
 		setOpenShow(true)
 	}
 
-	const { handleEdit, handleDeleteClick } = useCollectionForms()
 
 	return (
-		<Stack direction="column" spacing={2}>
+		<div className='flex flex-col space-y-2 w-full'>
 			<DataLayout grid>
 				{resources?.map((resource) => (
 					<ImageCard
@@ -66,7 +64,7 @@ const ImageListItems: React.FC<ImageListItemsProps> = (props) => {
 				))}
 			</DataLayout>
 			<LoadMore page={page} numPages={numPages} handlePaginate={loadMore} />
-		</Stack>
+		</div>
 	)
 }
 

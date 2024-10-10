@@ -1,5 +1,4 @@
 import React from 'react'
-import { Stack } from '../../../tailwind'
 import FormField from './FormField'
 import { get } from 'lodash'
 import { FormFieldType } from '../../../types'
@@ -36,7 +35,7 @@ const FormFields: React.FC<FormFieldsProps> = (props) => {
 	} = props
 
 	return (
-		<Stack spacing={1} direction="column" className={'w-full'}>
+		<div className="flex flex-col space-y-1 w-full">
 			{fields?.map((field, index) => {
 				if (!validateFieldConditions(field?.conditions || [], resource)) {
 					return null
@@ -57,20 +56,8 @@ const FormFields: React.FC<FormFieldsProps> = (props) => {
 					/>
 				)
 			})}
-		</Stack>
+		</div>
 	)
 }
 
 export default FormFields
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-	button: {
-		mt: 2,
-	},
-	loading: {
-		opacity: 0.5,
-	},
-}

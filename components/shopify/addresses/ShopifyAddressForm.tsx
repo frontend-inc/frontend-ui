@@ -1,5 +1,4 @@
 import React from 'react'
-import { Stack } from '@mui/material'
 import { TextInput } from '../../../components'
 
 type AddressFormProps = {
@@ -11,7 +10,7 @@ const AddressForm: React.FC<AddressFormProps> = (props) => {
 	const { address, handleChange } = props
 
 	return (
-		<Stack spacing={1}>
+		<div className='flex flex-col space-y-2'>
 			<TextInput
 				placeholder="First name"
 				name="firstName"
@@ -60,7 +59,7 @@ const AddressForm: React.FC<AddressFormProps> = (props) => {
 				value={address?.zip || ''}
 				handleChange={handleChange}
 			/>
-		</Stack>
+		</div>
 	)
 }
 

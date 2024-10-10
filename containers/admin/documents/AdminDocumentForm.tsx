@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Stack } from '@mui/material'
 import AdminDocumentInput from './AdminDocumentInput'
 import { FieldType, ProductType } from '../../../types'
 import { get } from 'lodash'
@@ -46,7 +45,7 @@ const AdminDocumentForm: React.FC<AdminDocumentFormProps> = (props) => {
 
 	if (!document) return null
 	return (
-		<Stack spacing={0}>
+		<div className='flex flex-col'>
 			{editableFields?.map((field, i) => (
 				<AdminDocumentInput
 					key={i}
@@ -66,7 +65,7 @@ const AdminDocumentForm: React.FC<AdminDocumentFormProps> = (props) => {
 					handleUpdateProductPositions={handleUpdateProductPositions}
 				/>
 			))}
-		</Stack>
+		</div>
 	)
 }
 

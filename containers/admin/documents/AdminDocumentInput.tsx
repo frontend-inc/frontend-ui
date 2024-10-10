@@ -5,7 +5,6 @@ import {
 	ArrayInput,
 	CheckboxInput,
 	DateInput,
-	JSONInput,
 	RatingInput,
 	TextInput,
   TextAreaInput,
@@ -17,7 +16,6 @@ import ReferenceInput from './references/ReferenceInput'
 import ProductsInput from './products/ProductsInput'
 import InputWrapper from './inputs/InputWrapper'
 import { MediaInput, AiChatModal } from '../../../components'
-import { Stack } from '@mui/material'
 import { ProductType } from '../../../types'
 
 type DocumentInputProps = {
@@ -70,8 +68,7 @@ const AdminDocumentInput: React.FC<DocumentInputProps> = (props) => {
 		datetime: DateInput,
 		boolean: CheckboxInput,
 		select: Autosuggest,
-		rating: RatingInput,
-		json: JSONInput,
+		rating: RatingInput,		
 		products: ProductsInput,
 		shopify_products: ShopifyProductsInput,
 		file: MediaInput,
@@ -103,11 +100,7 @@ const AdminDocumentInput: React.FC<DocumentInputProps> = (props) => {
 		tags: {
 			value: value || [],
 			freeSolo: true,
-		},
-		text: {
-			multiline: true,
-			rows: 6,
-		},
+		},		
 		select: {
 			options:
 				options?.map((opt) => ({
@@ -158,7 +151,7 @@ const AdminDocumentInput: React.FC<DocumentInputProps> = (props) => {
 
 	return (
 		<InputWrapper title={label} label={variant}>
-			<Stack sx={sx.stack} direction="row" spacing={1} alignItems="center">
+			<div className='flex flex-row justify-between align-start space-x-2'>
 				<Component
 					errors={errors}
 					name={name}
@@ -169,15 +162,9 @@ const AdminDocumentInput: React.FC<DocumentInputProps> = (props) => {
 				{['string', 'text'].includes(variant) && name !== 'handle' && (
 					<AiChatModal name={name} value={value} handleChange={handleChange} />
 				)}
-			</Stack>
+			</div>
 		</InputWrapper>
 	)
 }
 
 export default AdminDocumentInput
-
-const sx = {
-	stack: {
-		width: '100%',
-	},
-}

@@ -3,9 +3,7 @@ import {
 	FormModal,
 	ResourceToolbarModal,
 	PrimaryButton,
-	AlertModal,
 } from '../../../components'
-import { Stack } from '@mui/material'
 import { useOrders, useAdmin } from '../../../hooks'
 
 const AdminOrderToolbar = (props) => {
@@ -29,9 +27,9 @@ const AdminOrderToolbar = (props) => {
 
 	return (
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
-			<Stack direction="row" spacing={1}>
+			<div>
 				<PrimaryButton onClick={handleUpdateClick}>Update</PrimaryButton>
-			</Stack>
+			</div>
 			<FormModal
 				errors={errors}
 				open={openModal}

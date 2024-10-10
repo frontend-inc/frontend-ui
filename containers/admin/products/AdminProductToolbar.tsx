@@ -4,7 +4,6 @@ import {
 	PrimaryButton,
 	SecondaryButton,
 } from '../../../components'
-import { Stack } from '@mui/material'
 import { useResource } from 'frontend-js'
 import { useAdmin } from '../../../hooks'
 
@@ -38,13 +37,13 @@ const AdminProductToolbar = (props) => {
 
 	return (
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
-			<Stack direction="row" spacing={1}>
+			<div className='flex flex-row justify-center items-center space-x-2'>
 				<PrimaryButton onClick={handlePublish}>Publish</PrimaryButton>
 				<SecondaryButton onClick={handleUnpublish}>Unpublish</SecondaryButton>
 				<SecondaryButton alert onClick={handleDelete}>
 					Delete
 				</SecondaryButton>
-			</Stack>
+			</div>
 		</ResourceToolbarModal>
 	)
 }

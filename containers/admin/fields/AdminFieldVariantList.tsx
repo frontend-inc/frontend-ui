@@ -3,7 +3,6 @@ import AdminFieldVariantItem from './AdminFieldVariantItem'
 import { FIELD_VARIANTS } from '../../../constants'
 import { groupBy } from '../../../helpers'
 import { SearchInput } from '../../../components'
-import { Box } from '@mui/material'
 import { MenuList } from '../../../components'
 
 type FieldVariantListProps = {
@@ -36,22 +35,22 @@ const AdminFieldVariantList: React.FC<FieldVariantListProps> = (props) => {
 	}, [visibleFields])
 
 	return (
-		<Box>
-			<Box pb={2} px={2}>
+		<div>
+			<div className='pb-2 px-2'>
 				<SearchInput
 					value={text}
 					placeholder="Search fields"
 					handleChange={handleChange}
 					handleSearch={() => null}
 				/>
-			</Box>
+			</div>
 			{field?.id ? (
-				<Box px={2}>
+				<div className='px-2'>
 					<AdminFieldVariantItem
 						field={FIELD_VARIANTS?.find((f) => f.variant == field.variant)}
 						handleClick={() => null}
 					/>
-				</Box>
+				</div>
 			) : (
 				groupedFields &&
 				Object.keys(groupedFields).map((key, i) => (
@@ -65,7 +64,7 @@ const AdminFieldVariantList: React.FC<FieldVariantListProps> = (props) => {
 					</MenuList>
 				))
 			)}
-		</Box>
+		</div>
 	)
 }
 

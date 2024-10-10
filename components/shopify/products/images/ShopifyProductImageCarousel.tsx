@@ -1,38 +1,29 @@
 import React from 'react'
-import { Box } from '@mui/material'
 import { CarouselImage, TouchableOpacity } from '../../..'
 import { useProductContext } from 'frontend-shopify'
+import Image from 'next/image'
+import { AspectRatio } from '../../../../shadcn/ui/aspect-ratio'
 
 const ShopifyProductImageCarousel: React.FC = () => {
 	const { images, handleImageClick } = useProductContext()
 	return (
 		<CarouselImage>
 			{images?.map((image) => (
-				<Box sx={sx.image} key={image.id}>
+				<div className='w-full h-full pb-1' key={image.id}>
 					<TouchableOpacity handleClick={() => handleImageClick(image)}>
-						<Box
-							component="img"
-							src={image?.url?.url}
-							sx={{
-								...sx.image,
-								height: '512px',
-							}}
-							alt={image?.altText}
-						/>
+            <AspectRatio ratio={4/3}>
+              <Image
+                src={image?.url?.url}
+                height={1200}
+                width={1200}                
+                alt={image?.altText}
+              />
+            </AspectRatio>
 					</TouchableOpacity>
-				</Box>
+				</div>
 			))}
 		</CarouselImage>
 	)
 }
 
 export default ShopifyProductImageCarousel
-
-const sx = {
-	image: {
-		width: '100%',
-		height: '100%',
-		objectFit: 'contain',
-		pb: 1,
-	},
-}

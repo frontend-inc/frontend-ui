@@ -1,6 +1,6 @@
 import React from 'react'
-import { Stack } from '../../../tailwind'
-import { Container, AccordionItem, Placeholder } from '../../../components'
+import { Container, Stack } from '../../../tailwind'
+import { AccordionItem, Placeholder } from '../../../components'
 
 export type AccordionProps = {
 	items?: {
@@ -16,7 +16,7 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 
 	return (
 		<Container maxWidth="md">
-			<Stack spacing={0}>
+			<div className='flex flex-col'>
 				{items?.map((item, i) => (
 					<AccordionItem
 						key={i}
@@ -31,7 +31,7 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 						description="Your content will appear here."
 					/>
 				)}
-			</Stack>
+			</div>
 		</Container>
 	)
 }

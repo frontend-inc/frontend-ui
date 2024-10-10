@@ -1,7 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
-import { Stack } from '../../../tailwind'
 import { ShopifyContext } from 'frontend-shopify'
 import { Drawer, Placeholder } from '../..'
 import {

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Stack } from '../../../tailwind'
 import PriceTableCard from './PriceTableCard'
 import { PriceType } from '../../..'
 import { Placeholder } from '../..'

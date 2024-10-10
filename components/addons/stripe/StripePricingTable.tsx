@@ -1,5 +1,4 @@
 import React from 'react'
-import { Box } from '@mui/material'
 
 export type StripePricingTableProps = {
 	pricingTableId: string
@@ -13,23 +12,14 @@ const StripePricingTable: React.FC<StripePricingTableProps> = (props) => {
 	const { pricingTableId, publishableKey } = props
 	if (!pricingTableId || !publishableKey) return null
 	return (
-		<Box sx={sx.root}>
+		<div className='flex flex-row justify-center items-center'>
 			{/* @ts-ignore */}
 			<stripe-pricing-table
 				pricing-table-id={pricingTableId}
 				publishable-key={publishableKey}
 			/>
-		</Box>
+		</div>
 	)
 }
 
 export default StripePricingTable
-
-const sx = {
-	root: {
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-}

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Stack } from '../../../tailwind'
-import { Container, Placeholder } from '../../../components'
+import { Container, Stack } from '../../../tailwind'
+import { Placeholder } from '../../../components'
 import FeaturedCard from './FeaturedCard'
 
 export type FeaturedProps = {

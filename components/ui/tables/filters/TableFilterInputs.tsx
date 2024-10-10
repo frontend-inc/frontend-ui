@@ -1,5 +1,4 @@
 import React from 'react'
-import { Box } from '@mui/material'
 import TableFilterInput from './TableFilterInput'
 
 type FilterInputProps = {
@@ -16,7 +15,7 @@ const FilterInputs: React.FC<FilterInputProps> = (props) => {
 		<>
 			{Array.isArray(filters) &&
 				filters?.map((filter, index) => (
-					<Box key={index}>
+					<div key={index}>
 						<TableFilterInput
 							index={index}
 							filter={filter}
@@ -24,7 +23,7 @@ const FilterInputs: React.FC<FilterInputProps> = (props) => {
 							handleChange={handleChange}
 							handleRemove={handleRemove}
 						/>
-					</Box>
+					</div>
 				))}
 		</>
 	)

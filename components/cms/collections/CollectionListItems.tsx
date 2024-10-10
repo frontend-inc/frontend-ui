@@ -1,11 +1,9 @@
 import React from 'react'
-import { Stack } from '@mui/material'
 import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { useApp } from '../../../hooks'
 import { useRouter } from 'next/router'
 import { CollectionListItem, DataLayout } from '../..'
-import { useCollectionForms } from '../../../hooks'
 import { ButtonType, DisplayFieldType } from '../../../types'
 
 export type CollectionListItemsProps = {
@@ -82,7 +80,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 	}
 
 	return (
-		<Stack direction="column" spacing={2}>
+		<div className='flex flex-col w-full space-y-2'>
 			<DataLayout {...slots.list} grid={grid} loading={loading}>
 				{resources?.map((resource, index) => (
 					<CollectionListItem
@@ -107,7 +105,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 				numPages={numPages}
 				handlePaginate={handlePaginate}
 			/>
-		</Stack>
+		</div>
 	)
 }
 

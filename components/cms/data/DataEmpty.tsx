@@ -1,6 +1,5 @@
 import React from 'react'
 import { Placeholder } from '../../../components'
-import { Box } from '@mui/material'
 import { useResourceContext } from 'frontend-js'
 
 type DataEmptyProps = {
@@ -15,20 +14,10 @@ const DataEmpty: React.FC<DataEmptyProps> = (props) => {
 
 	if (resources?.length > 0) return null
 	return (
-		<Box sx={sx.root}>
+		<div className='flex justify-center items-center px-2'>
 			<Placeholder icon={icon} title={title} description={description} />
-		</Box>
+		</div>
 	)
 }
 
 export default DataEmpty
-
-const sx = {
-	root: {
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		padding: 2,
-	},
-}

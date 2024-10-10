@@ -1,10 +1,8 @@
 import React from 'react'
 import {
 	ResourceToolbarModal,
-	PrimaryButton,
 	SecondaryButton,
 } from '../../../components'
-import { Stack } from '@mui/material'
 import { useResource } from 'frontend-js'
 
 type AdminFormQuestionToolbarProps = {
@@ -34,9 +32,7 @@ const AdminFormQuestionToolbar: React.FC<AdminFormQuestionToolbarProps> = (
 
 	return (
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
-			<Stack direction="row" spacing={1}>
-				<SecondaryButton onClick={handleDelete}>Delete</SecondaryButton>
-			</Stack>
+			<SecondaryButton onClick={handleDelete}>Delete</SecondaryButton>
 		</ResourceToolbarModal>
 	)
 }

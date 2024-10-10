@@ -1,5 +1,4 @@
 import React from 'react'
-import { Stack } from '@mui/material'
 import { SortableList, LoadMore } from '../..'
 import { ResourceListItemsProps } from './ResourceListItems'
 
@@ -28,7 +27,7 @@ const SortableListItems: React.FC<SortableListItemsProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Stack spacing={2}>
+		<div className='flex flex-col space-y-2'>
 			<SortableList
 				droppableId={droppableId}
 				items={resources}
@@ -42,7 +41,7 @@ const SortableListItems: React.FC<SortableListItemsProps> = (props) => {
 				handlePaginate={() => handlePaginate(page + 1)}
 				{...slots.pagination}
 			/>
-		</Stack>
+		</div>
 	)
 }
 

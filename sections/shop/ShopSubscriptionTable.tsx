@@ -1,5 +1,4 @@
 import React from 'react'
-import { Stack } from '@mui/material'
 import { Section, Heading } from '../../components'
 import { SubscriptionTable } from '../../components'
 import { SectionProps, HeadingProps } from '../../types'
@@ -33,7 +32,7 @@ const ShopSubscriptionTable: React.FC<ShopSubscriptionTableProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 		>
-			<Stack spacing={3}>
+			<div className='flex flex-col space-y-4'>
 				<Heading
 					label={label}
 					title={title}
@@ -41,7 +40,7 @@ const ShopSubscriptionTable: React.FC<ShopSubscriptionTableProps> = (props) => {
 					textAlign={textAlign}
 				/>
 				<SubscriptionTable />
-			</Stack>
+			</div>
 		</Section>
 	)
 }

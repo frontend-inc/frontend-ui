@@ -1,7 +1,6 @@
 import React from 'react'
 import { Typography } from '../../../tailwind'
 import { TypographyVariantsType } from '../../../types'
-import { cn } from '../../../shadcn/lib/utils'
 
 type HeadingProps = {
 	label?: string

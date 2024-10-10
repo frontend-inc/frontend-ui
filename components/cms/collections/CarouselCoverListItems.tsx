@@ -1,10 +1,10 @@
 import React from 'react'
-import { Box } from '@mui/material'
 import { Swipeable, Cover } from '../..'
 import { useApp } from '../../../hooks'
 import { useRouter } from 'next/router'
 import { useResourceContext } from 'frontend-js'
 import { CoverProps } from '../../../components/web/covers/Cover'
+import { cn } from '../../../shadcn/lib/utils'
 
 export type CarouselCoverListItemsProps = CoverProps & {
 	href?: string
@@ -40,12 +40,12 @@ const CarouselCoverListItems: React.FC<CarouselCoverListItemsProps> = (
 	}
 
 	return (
-		<Box
-			sx={{
-				...sx.root,
-				...(loading && sx.loading),
-				height,
-			}}
+		<div 
+      className={cn(
+        'w-full',
+        loading && 'opacity-50',
+        height && `h-[${height}px]`,        
+      )}
 		>
 			<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
 				{resources?.map((resource, index) => (
@@ -60,17 +60,9 @@ const CarouselCoverListItems: React.FC<CarouselCoverListItemsProps> = (
 					/>
 				))}
 			</Swipeable>
-		</Box>
+		</div>
 	)
 }
 
 export default CarouselCoverListItems
 
-const sx = {
-	root: {
-		width: '100%',
-	},
-	loading: {
-		opacity: 0.5,
-	},
-}

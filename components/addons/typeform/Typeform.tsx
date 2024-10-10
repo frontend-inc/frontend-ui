@@ -1,6 +1,5 @@
 import React from 'react'
 import Script from 'next/script'
-import { Box } from '@mui/material'
 
 export type TypeformProps = {
 	typeformId?: string
@@ -8,26 +7,16 @@ export type TypeformProps = {
 }
 
 const Typeform: React.FC<TypeformProps> = (props) => {
-	const { typeformId, justifyContent = 'center' } = props
+	const { typeformId } = props
 	if (!typeformId) return null
 	return (
-		<Box
-			sx={{
-				...sx.root,
-				justifyContent,
-			}}
+		<div
+			className='w-full flex justify-center'
 		>
 			<div data-tf-live={typeformId}></div>
 			<Script src="//embed.typeform.com/next/embed.js" />
-		</Box>
+		</div>
 	)
 }
 
 export default Typeform
-
-const sx = {
-	root: {
-		display: 'flex',
-		justifyContent: 'center',
-	},
-}

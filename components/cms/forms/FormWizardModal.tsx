@@ -1,5 +1,4 @@
 import React from 'react'
-import { Box } from '@mui/material'
 import FormWizard from './FormWizard'
 import { Modal } from '../..'
 import { FormWizardProps } from './FormWizard'

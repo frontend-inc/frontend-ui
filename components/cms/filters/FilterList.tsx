@@ -1,6 +1,5 @@
 import React from 'react'
 import FilterListInput from './FilterListInput'
-import { Stack } from '@mui/material'
 
 type FilterListProps = {
 	filters: any
@@ -12,7 +11,7 @@ const FilterList: React.FC<FilterListProps> = (props) => {
 	const { filters = [], filterOptions = [], handleFilter } = props || {}
 
 	return (
-		<Stack spacing={0}>
+		<div className="flex flex-col">
 			{filterOptions?.map((filterOption, index) => (
 				<FilterListInput
 					key={index}
@@ -21,7 +20,7 @@ const FilterList: React.FC<FilterListProps> = (props) => {
 					handleFilter={handleFilter}
 				/>
 			))}
-		</Stack>
+		</div>
 	)
 }
 

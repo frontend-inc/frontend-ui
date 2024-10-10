@@ -1,5 +1,4 @@
 import React from 'react'
-import { Stack } from '@mui/material'
 import { TextInput } from '../../../../components'
 import { SyntheticEventType } from '../../../../types'
 
@@ -20,7 +19,7 @@ const AiPromptForm: React.FC<AiPromptFormProps> = (props) => {
 	} = props
 
 	return (
-		<Stack direction="column" spacing={1}>
+		<div className="flex flex-col space-y-2">
 			<TextInput
 				multiline
 				label={label}
@@ -29,7 +28,7 @@ const AiPromptForm: React.FC<AiPromptFormProps> = (props) => {
 				value={value}
 				handleChange={handleChange}
 			/>
-		</Stack>
+		</div>
 	)
 }
 

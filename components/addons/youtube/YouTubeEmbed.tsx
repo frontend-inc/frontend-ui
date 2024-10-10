@@ -1,5 +1,4 @@
 import React from 'react'
-import { Box } from '@mui/material'
 
 type YouTubeEmbedProps = {
 	src: string
@@ -11,7 +10,7 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = (props) => {
 	const { src, height = 315, width = 560 } = props
 
 	return (
-		<Box sx={sx.root}>
+		<div>
 			<iframe
 				width={width}
 				height={height}
@@ -24,14 +23,8 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = (props) => {
 					width: '100%',
 				}}
 			/>
-		</Box>
+		</div>
 	)
 }
 
 export default YouTubeEmbed
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-}

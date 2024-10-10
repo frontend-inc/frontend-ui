@@ -1,5 +1,4 @@
 import React from 'react'
-import { Stack } from '../../../tailwind'
 import TestimonialCards from './TestimonialCards'
 import SwipeableTestimonials from './SwipeableTestimonials'
 import { Placeholder } from '../..'
@@ -16,7 +15,7 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 	const { layout = 'grid', enableArrows, enableAutoPlay, items = [] } = props
 
 	return (
-		<Stack direction="column" className="w-full">
+		<div className='flex flex-col w-full'>
 			{layout == 'carousel' ? (
 				<SwipeableTestimonials
 					items={items}
@@ -33,29 +32,8 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 					description="Your testimonials will appear here."
 				/>
 			)}
-		</Stack>
+		</div>
 	)
 }
 
 export default Testimonials
-
-const sx = {
-	root: {
-		display: 'flex',
-		flexDirection: 'column',
-		maxWidth: '100%',
-		overflowX: 'scroll',
-		'&::-webkit-scrollbar': {
-			display: 'none',
-		},
-	},
-	item: {
-		p: 2,
-		height: '100%',
-		width: '100%',
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'flex-end',
-		alignItems: 'center',
-	},
-}

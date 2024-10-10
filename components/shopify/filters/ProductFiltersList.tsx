@@ -5,7 +5,6 @@ import {
 	SearchFilterOptionType,
 	PriceOptionType,
 } from 'frontend-shopify'
-import { Stack } from '@mui/material'
 import { SHOPIFY_SEARCH_FILTERS } from '../../../constants'
 import RadioPriceRangeInput from './RadioPriceRangeInput'
 import { MenuList } from '../../../components'
@@ -28,13 +27,13 @@ const ProductFiltersList: React.FC<ProductFiltersListProps> = (props) => {
 	} = props
 
 	return (
-		<Stack spacing={0}>
+		<div className='flex flex-col'>
 			{SHOPIFY_SEARCH_FILTERS.map((filterType, i) => {
 				let activeFilters = filters?.filter((f) => f.name == filterType.value)
 				let option = options?.find((o) => o.name == filterType.value)
 				if (!option) return null
 				return (
-					<MenuList enableBorder disablePadding label={filterType.label}>
+					<MenuList enableBorder label={filterType.label}>
 						<CheckboxGroupInput
 							filters={activeFilters}
 							option={option}
@@ -44,7 +43,7 @@ const ProductFiltersList: React.FC<ProductFiltersListProps> = (props) => {
 				)
 			})}
 			{priceOptions?.length > 0 && (
-				<MenuList enableBorder disablePadding label="Price">
+				<MenuList enableBorder label="Price">
 					<RadioPriceRangeInput
 						filters={filters}
 						options={priceOptions}
@@ -52,7 +51,7 @@ const ProductFiltersList: React.FC<ProductFiltersListProps> = (props) => {
 					/>
 				</MenuList>
 			)}
-		</Stack>
+		</div>
 	)
 }
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Stack } from '../../../tailwind'
 import { LoadMore, DataLayout } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { VideoCard } from '../..'
@@ -37,7 +36,7 @@ const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
 	}
 
 	return (
-		<Stack direction="column" spacing={2}>
+		<div className="flex flex-col space-y-2 w-full">
 			<DataLayout grid>
 				{resources?.map((resource) => (
 					<VideoCard
@@ -55,7 +54,7 @@ const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
 				))}
 			</DataLayout>
 			<LoadMore page={page} numPages={numPages} handlePaginate={loadMore} />
-		</Stack>
+		</div>
 	)
 }
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Stack } from '../../../tailwind'
 import { FilterButton, SortButton, SearchInput } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch } from '../../../hooks'
@@ -45,17 +44,11 @@ const ProductHeader: React.FC<ProductHeaderProps> = (props) => {
     return null
   }
   return (
-    <Stack direction="column" spacing={1} className="mb-4">
-      <Stack
-        justifyContent="space-between"
-        direction={'row'}
-        spacing={1}
+    <div className='flex flex-col space-y-2 mb-4'>
+      <div 
+        className='flex flex-row justify-between items-center space-x-1'        
       >
-        <Stack
-          spacing={1}
-          direction={'row'}
-          alignItems="center"
-        >
+        <div className='flex flex-row justify-center items-center'>
           {enableSearch && (
             <SearchInput
               value={keywords}
@@ -84,9 +77,9 @@ const ProductHeader: React.FC<ProductHeaderProps> = (props) => {
               />
             </div>
           )}
-        </Stack>
-      </Stack>
-    </Stack>
+        </div>
+      </div>
+    </div>
   )
 }
 

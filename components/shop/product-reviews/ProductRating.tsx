@@ -18,7 +18,6 @@ const ProductRating: React.FC<ProductRatingProps> = (props) => {
 	const {
 		resource,
 		justifyContent = 'flex-start',
-		size = 'medium',
 		enableTotal = false,
 	} = props || {}
 	const { avg_rating: rating, num_reviews: numReviews } = resource || {}

@@ -1,36 +1,32 @@
 import React from 'react'
-import { Box } from '@mui/material'
 import { Icon } from '../../../components'
+import { cn } from "@/shadcn/lib/utils"
 
 type AttachmentImageProps = {
-	icon?: string
-	height: number
-	width?: number
+  icon?: string
+  height: number
+  width?: number
+  className?: string
 }
 
-const AttachmentImage: React.FC<AttachmentImageProps> = (props) => {
-	const { height = 64, width = 64, icon = 'File' } = props
-
-	return (
-		<Box
-			sx={{
-				...sx.image,
-				height: `${height}px`,
-				width: width ? `${width}px` : '100%',
-			}}
-		>
-			<Icon name={icon} size={24} />
-		</Box>
-	)
+const AttachmentImage: React.FC<AttachmentImageProps> = ({ 
+  height = 64, 
+  width = 64, 
+  icon = 'File',
+  className
+}) => {
+  return (
+    <div 
+      className={cn(
+        "flex items-center justify-center bg-primary",
+        height ? `h-[${height}px]` : "h-auto",
+        width ? `w-[${width}px]` : "w-full",
+        className
+      )}      
+    >
+      <Icon name={icon} size={24} />
+    </div>
+  )
 }
 
 export default AttachmentImage
-
-const sx = {
-	image: {
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-		bgcolor: 'background.paper',
-	},
-}

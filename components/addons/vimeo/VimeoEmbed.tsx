@@ -1,38 +1,25 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { AspectRatio } from '../../../shadcn/ui/aspect-ratio'
 
 type VimeoEmbedProps = {
 	src: string
+  aspectRatio?: number
 }
 
 const VimeoEmbed: React.FC<VimeoEmbedProps> = (props) => {
-	const { src } = props
+	const { src, aspectRatio=16/9 } = props
 
 	return (
-		<Box sx={sx.root}>
+		<AspectRatio ratio={aspectRatio}>
 			<iframe
 				src={src}
 				width="800px"
 				height="450px"
-				style={{
-					position: 'absolute',
-					top: '0px',
-					left: '0px',
-					width: '100%',
-					height: '100%',
-				}}
+        className="w-full h-full absolute top-0 left-0"				
 				frameBorder="0"
 			></iframe>
-		</Box>
+		</AspectRatio>
 	)
 }
 
 export default VimeoEmbed
-
-const sx = {
-	root: {
-		paddingBottom: '56.25%',
-		maxWidth: '100%',
-		position: 'relative',
-	},
-}

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Container, FormCard, FormWizardModal } from '../..'
-import { Box } from '@mui/material'
 import { useForms, useContacts } from '../../../hooks'
 import { HeadingProps } from '../../../types'
 
@@ -74,7 +73,7 @@ const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
 
 	return (
 		<Container maxWidth="md">
-			<Box sx={sx.root}>
+			<div className="flex flex-col space-y-2">
 				{!submitted ? (
 					<FormCard
 						image={form?.image?.url}
@@ -105,27 +104,9 @@ const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
 					handleRemoveAttachment={handleRemove}
 					handleAddAttachment={handleAddAttachment}
 				/>
-			</Box>
+			</div>
 		</Container>
 	)
 }
 
 export default DataFormWizard
-
-const sx = {
-	root: {
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	iconContainer: {
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	avatar: {
-		bgcolor: 'primary.main',
-	},
-}

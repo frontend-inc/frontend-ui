@@ -1,6 +1,5 @@
 import React from 'react'
 import { Placeholder } from '../..'
-import { Box } from '@mui/material'
 import { useResourceContext } from 'frontend-js'
 
 type ProductEmptyProps = {
@@ -20,7 +19,6 @@ const ProductEmpty: React.FC<ProductEmptyProps> = (props) => {
 	if (resources?.length > 0) return null
 	return (
 		<Placeholder
-			enableBorder
 			icon={icon}
 			title={title}
 			description={description}

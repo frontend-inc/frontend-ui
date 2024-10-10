@@ -1,7 +1,7 @@
 import React from 'react'
-import { Box } from '@mui/material'
 import { Swipeable } from '../..'
 import SwipeableTestimonialCard from './SwipeableTestimonialCard'
+import { cn } from "../../../shadcn/lib/utils"
 
 type SwipeableTestimonialsProps = {
 	items: Record<string, any>[]
@@ -13,14 +13,14 @@ const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
 	const { enableAutoPlay = false, enableArrows = false, items = [] } = props
 
 	return (
-		<Box>
+		<div>
 			<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
 				{items?.map((testimonial, i) => (
-					<Box
-						sx={{
-							...sx.item,
-							...(enableArrows && sx.itemArrows),
-						}}
+					<div 
+            className={cn(
+              "flex items-center justify-center p-2",
+              enableArrows && "px-6",
+            )}
 						key={i}
 					>
 						<SwipeableTestimonialCard
@@ -29,26 +29,11 @@ const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
 							rating={testimonial.rating}
 							text={testimonial.description}
 						/>
-					</Box>
+					</div>
 				))}
 			</Swipeable>
-		</Box>
+		</div>
 	)
 }
 
 export default SwipeableTestimonials
-
-const sx = {
-	item: {
-		p: 2,
-		height: '100%',
-		width: '100%',
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	itemArrows: {
-		px: 6,
-	},
-}

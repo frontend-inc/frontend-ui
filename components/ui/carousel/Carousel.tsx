@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Carousel from 'react-multi-carousel'
-import { Box } from '@mui/material'
 import { getCarouselResponsive } from '../../../helpers'
 import { useTheme } from '@mui/material/styles'
 import CarouselDot from './CarouselDot'
@@ -38,12 +37,7 @@ const ReactCarousel: React.FC<CarouselProps> = (props) => {
 	}, [theme?.breakpoints])
 
 	return (
-		<Box
-			sx={{
-				...sx.root,
-				...(styles && styles),
-			}}
-		>
+		<div className='w-full'>
 			{responsive && children && (
 				<Carousel
 					responsive={responsive}
@@ -60,7 +54,7 @@ const ReactCarousel: React.FC<CarouselProps> = (props) => {
 					{children}
 				</Carousel>
 			)}
-		</Box>
+		</div>
 	)
 }
 

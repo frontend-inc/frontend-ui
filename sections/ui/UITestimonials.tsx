@@ -3,7 +3,6 @@ import { Section, Heading } from '../../components'
 import { Testimonials } from '../../components'
 import { TestimonialsProps } from '../../components/web/testimonials/Testimonials'
 import { SectionProps, HeadingProps } from '../../types'
-import { Stack } from '@mui/material'
 
 type UITestimonialsProps = SectionProps & HeadingProps & TestimonialsProps
 
@@ -19,7 +18,6 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		requirePaid,
 		...rest
 	} = props
@@ -34,7 +32,7 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Stack direction="column" spacing={3} sx={{ width: '100%' }}>
+			<div className='flex flex-col space-y-2 w-full'>
 				<Heading
 					label={label}
 					title={title}
@@ -42,7 +40,7 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 					textAlign={'center'}
 				/>
 				<Testimonials {...rest} layout="grid" />
-			</Stack>
+			</div>
 		</Section>
 	)
 }

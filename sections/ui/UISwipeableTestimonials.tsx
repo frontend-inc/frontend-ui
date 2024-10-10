@@ -3,7 +3,6 @@ import { Section, Heading } from '../../components'
 import { Testimonials } from '../../components'
 import { TestimonialsProps } from '../../components/web/testimonials/Testimonials'
 import { SectionProps, HeadingProps } from '../../types'
-import { Stack } from '@mui/material'
 
 type UISwipeableTestimonialsProps = SectionProps &
 	HeadingProps &
@@ -38,7 +37,7 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Stack direction="column" spacing={3} sx={{ width: '100%' }}>
+			<div className='flex flex-col space-y-2 w-full'>
 				<Heading
 					label={label}
 					title={title}
@@ -46,7 +45,7 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 					textAlign={'center'}
 				/>
 				<Testimonials {...rest} layout="carousel" />
-			</Stack>
+			</div>
 		</Section>
 	)
 }

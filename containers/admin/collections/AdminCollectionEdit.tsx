@@ -1,6 +1,6 @@
 import React from 'react'
 import { IconLoading, Drawer } from '../../../components'
-import { Button } from '@mui/material'
+import { Button } from '../../../tailwind'
 import AdminCollectionForm from './AdminCollectionForm'
 
 type AdminCollectionEditProps = {

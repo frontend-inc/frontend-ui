@@ -2,7 +2,6 @@ import React from 'react'
 import { ProductCard } from '../..'
 import { SecondaryFields, SocialButtons } from '../..'
 import { ButtonType, DisplayFieldType } from '../../../types'
-import { Box } from '../../../tailwind'
 import { AddToCartButton } from '../../../components'
 
 type ProductListItemProps = {
@@ -56,7 +55,7 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 				/>
 			}
 			actions={
-				<Box>
+				<div>
 					<SocialButtons
 						size="small"
 						justifyContent="flex-start"
@@ -65,7 +64,7 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 						enableProductLikes={enableLikes}
 						enableProductFavorites={enableFavorites}
 					/>
-				</Box>
+				</div>
 			}
 			addToCart={
         <AddToCartButton 

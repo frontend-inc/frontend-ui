@@ -1,5 +1,4 @@
 import React from 'react'
-import { Box } from '@mui/material'
 import { CommentList, Drawer, ShowItem } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { ButtonType, FormFieldType, DisplayFieldType } from '../../../types'
@@ -53,9 +52,9 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 				}}
 			/>
 			{enableComments && (
-				<Box px={2}>
+				<div className="px-2">
 					<CommentList url={url} handle={resource?.handle} />
-				</Box>
+				</div>
 			)}
 		</Drawer>
 	)

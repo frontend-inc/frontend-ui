@@ -1,5 +1,4 @@
 import React from 'react'
-import { Stack } from '../../../tailwind'
 import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { useApp } from '../../../hooks'
@@ -79,7 +78,7 @@ const ProductCollectionListItems: React.FC<ProductCollectionListItemsProps> = (p
 	}
 
 	return (
-		<Stack direction="column" spacing={2}>
+		<div className="flex flex-col space-y-2 w-full">
 			<DataLayout {...slots.list} grid={grid} loading={loading}>
 				{resources?.map((resource,) => (
 					<ProductCollectionListItem
@@ -103,7 +102,7 @@ const ProductCollectionListItems: React.FC<ProductCollectionListItemsProps> = (p
 				numPages={numPages}
 				handlePaginate={handlePaginate}
 			/>
-		</Stack>
+		</div>
 	)
 }
 

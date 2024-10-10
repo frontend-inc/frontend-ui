@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { ViewScroll } from '../../../components'
 import {
 	AdminHeader,
 	AdminLayoutCenter,
@@ -13,6 +12,7 @@ import { ChevronLeft } from 'lucide-react'
 import { useRouter } from 'next/router'
 import { useAdmin, useDocuments, useCollections } from '../../../hooks'
 import { truncate } from '../../../helpers'
+import { ScrollArea } from '../../../shadcn/ui/scroll-area'
 
 type DocumentEditProps = {
 	appId: string | number
@@ -202,7 +202,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 					}
 					buttons={<PublishLabel published={document?.published} />}
 				/>
-				<ViewScroll>
+				<ScrollArea>
 					<Box sx={sx.container}>
 						<AdminDocumentForm
 							errors={errors}
@@ -220,7 +220,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 							handleUpdateProductPositions={handleUpdateProductPositions}
 						/>
 					</Box>
-				</ViewScroll>
+				</ScrollArea>
 			</AdminLayoutCenter>
 			<AdminLayoutRight>
 				<AdminHeader title="Publish" />

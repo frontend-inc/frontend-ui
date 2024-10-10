@@ -8,7 +8,6 @@ import { TableFilterDrawer } from '../../../components'
 import AdminToolbarMenu from './AdminToolbarMenu'
 import { useRouter } from 'next/router'
 import copy from 'copy-to-clipboard'
-import { Box } from '@mui/material'
 import { USER_FIELD, ID_FIELD, PUBLISHED_FIELD } from '../../../constants'
 import { ApiQuery } from 'frontend-js'
 import { RouterParams } from '../../../types'
@@ -277,12 +276,8 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 	}, [router?.query])
 
 	return (
-		<Box>
+		<div>
 			<Table
-				styles={{
-					...sx.table,
-					...(openLayoutLeft && sx.tableLayoutLeft),
-				}}
 				enableSelect
 				enableEdit
 				enableDelete
@@ -345,27 +340,8 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 				handleClose={() => setShowDeleteModal(false)}
 				handleConfirm={handleDeleteRow}
 			/>
-		</Box>
+		</div>
 	)
 }
 
 export default AdminCollectionTable
-
-const sx = {
-	table: {
-		height: {
-			sm: 'calc(100vh - 170px)',
-			xs: 'calc(100vh - 170px)',
-		},
-		width: 'calc(100vw - 60px)',
-	},
-	tableLayoutLeft: {
-		width: {
-			sm: 'calc(100vw - 380px)',
-			xs: 'calc(100vw - 60px)',
-		},
-	},
-	button: {
-		textWrap: 'no-wrap',
-	},
-}

@@ -3,7 +3,6 @@ import { Section, Heading } from '../../components'
 import { Cards } from '../../components'
 import { CardsProps } from '../../components/web/cards/Cards'
 import { SectionProps, HeadingProps } from '../../types'
-import { Stack } from '@mui/material'
 
 type UICardsProps = SectionProps & HeadingProps & CardsProps
 
@@ -34,7 +33,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Stack spacing={2}>
+			<div className='flex flex-col space-y-2'>
 				<Heading
 					label={label}
 					title={title}
@@ -42,7 +41,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 					textAlign={'center'}
 				/>
 				<Cards {...rest} />
-			</Stack>
+			</div>
 		</Section>
 	)
 }

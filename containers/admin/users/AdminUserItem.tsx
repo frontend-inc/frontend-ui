@@ -1,8 +1,7 @@
 import React from 'react'
-import { Typography } from '@mui/material'
+import { Typography } from '../../../tailwind'
 import { Label, UserAvatar, ResourceListItem } from '../../../components'
 import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
-import { useAuth } from 'frontend-js'
 
 const AdminUserItem: React.FC<ResourceItemProps> = (props) => {
 	const {

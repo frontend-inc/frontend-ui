@@ -1,5 +1,4 @@
 import React from 'react'
-import { Box } from '../../../tailwind'
 import MobileDrawer from './MobileDrawer'
 import MobileHeader from './MobileHeader'
 import DesktopHeader from './DesktopHeader'
@@ -31,7 +30,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 	} = props
 
 	return (
-		<Box className="h-[64px] w-full">
+		<div className="h-[64px] w-full">
 			<DesktopHeader
 				logo={logo || appLogo}
 				enableAuth={enableAuth}
@@ -58,7 +57,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 				links={links}
 				handleClick={handleClick}
 			/>
-		</Box>
+		</div>
 	)
 }
 

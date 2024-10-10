@@ -1,38 +1,25 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { cn } from "../../shadcn/lib/utils"
 
 type PaperProps = {
-	children: React.ReactNode
-	styles?: any
-	p?: number
+  children: React.ReactNode
+  className?: string
+  p?: number
 }
 
-const Paper: React.FC<PaperProps> = (props) => {
-	const { children, styles } = props
-
-	return (
-		<Box
-			p={props.p || 2}
-			sx={{
-				...sx.root,
-				...styles,
-			}}
-			{...props}
-		>
-			{children}
-		</Box>
-	)
+const Paper: React.FC<PaperProps> = ({ children, className, p = 2, ...props }) => {
+  return (
+    <div
+      className={cn(
+        "w-full rounded bg-background border border-border shadow-none",
+        `p-${p}`,
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  )
 }
 
 export default Paper
-
-const sx = {
-	root: {
-		width: '100%',
-		borderRadius: 1,
-		bgcolor: 'background.paper',
-		boxShadow: 0,
-		border: '1px solid',
-		borderColor: 'divider',
-	},
-}

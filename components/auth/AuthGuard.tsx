@@ -1,6 +1,5 @@
 import React from 'react'
 import { useAuth } from 'frontend-js'
-import { Box } from '@mui/material'
 import { Heading, AuthWall, PayWall } from '..'
 
 export type AuthGuardProps = {
@@ -26,13 +25,13 @@ const AuthGuard: React.FC<AuthGuardProps> = (props) => {
 	}
 	if (requireTeam && !currentUser?.team_id) {
 		return (
-			<Box sx={sx.center}>
+			<div className='flex w-full h-screen justify-center items-center'>
 				<Heading
 					textAlign="center"
 					title="Team required"
 					description="You must be a member of a team."
 				/>
-			</Box>
+			</div>
 		)
 	}
 	if (
@@ -41,13 +40,13 @@ const AuthGuard: React.FC<AuthGuardProps> = (props) => {
 		currentUser?.role !== 'admin'
 	) {
 		return (
-			<Box sx={sx.center}>
+			<div className='flex w-full h-screen justify-center items-center'>
 				<Heading
 					textAlign="center"
 					title="Unauthorized"
 					description="You are not authorized to access this page."
 				/>
-			</Box>
+			</div>
 		)
 	}
 	if (requirePaid && !currentUser?.paid) {
@@ -58,13 +57,3 @@ const AuthGuard: React.FC<AuthGuardProps> = (props) => {
 
 export default AuthGuard
 
-const sx = {
-	center: {
-		width: '100%',
-		height: '100vh',
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-}

@@ -3,7 +3,6 @@ import { Section, Heading } from '../../components'
 import { ProductList } from '../../components'
 import { ProductListProps } from '../../components/shop/products/ProductList'
 import { SectionProps, HeadingProps } from '../../types'
-import { Stack } from '@mui/material'
 
 type ShopProductsProps = SectionProps & HeadingProps & ProductListProps
 
@@ -34,7 +33,7 @@ const ShopProducts: React.FC<ShopProductsProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 		>
-			<Stack direction="column" spacing={1}>
+			<div className='flex flex-col space-y-2'>
 				<Heading
 					label={label}
 					title={title}
@@ -42,7 +41,7 @@ const ShopProducts: React.FC<ShopProductsProps> = (props) => {
 					textAlign={textAlign}
 				/>
 				<ProductList {...rest} />
-			</Stack>
+			</div>
 		</Section>
 	)
 }

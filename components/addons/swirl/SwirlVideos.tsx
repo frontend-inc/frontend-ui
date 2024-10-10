@@ -1,5 +1,4 @@
 import React from 'react'
-import { Box } from '@mui/material'
 import { SwirlShortVideos } from 'swirl-short-videos-typescript'
 
 export type SwirlVideosProps = {
@@ -12,21 +11,14 @@ const SwirlVideos: React.FC<SwirlVideosProps> = (props) => {
 	const { dataCode, dataPlaylistCode, serverType = 'prod' } = props
 
 	return (
-		<Box sx={sx.root}>
+		<div className='min-h-[100px] w-full'>
 			<SwirlShortVideos
 				dataCode={dataCode}
 				dataPlalistCode={dataPlaylistCode}
 				serverType={serverType}
 			/>
-		</Box>
+		</div>
 	)
 }
 
 export default SwirlVideos
-
-const sx = {
-	root: {
-		width: '100%',
-		minHeight: 100,
-	},
-}

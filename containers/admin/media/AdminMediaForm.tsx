@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Drawer, ButtonTabs } from '../../../components'
 import { ResourceFormProps } from '../../../components/cms/resources/ResourceForm'
-import { Box } from '@mui/material'
 import { MediaUploader } from '../../../components'
 import { UnsplashList } from '../../../components'
 
@@ -19,17 +18,21 @@ const AdminMediaForm: React.FC<ResourceFormProps> = (props) => {
 	}
 
 	return (
-		<Drawer open={open} handleClose={handleClose} title="Upload an Asset">
-			<Box sx={sx.tabs}>
+		<Drawer 
+      mode='dark' 
+      open={open} 
+      handleClose={handleClose} title="Upload an Asset">
+			<div className='mb-2'>
 				<ButtonTabs
-					options={[
+          fullWidth 
+					options={[            
 						{ label: 'Upload', value: 0 },
 						{ label: 'Unsplash', value: 1 },
 					]}
 					value={tab}
 					handleChange={handleChange}
 				/>
-			</Box>
+			</div>
 			{tab == 0 && <MediaUploader onComplete={handleComplete} />}
 			{tab == 1 && <UnsplashList onComplete={handleComplete} />}
 		</Drawer>
@@ -37,9 +40,3 @@ const AdminMediaForm: React.FC<ResourceFormProps> = (props) => {
 }
 
 export default AdminMediaForm
-
-const sx = {
-	tabs: {
-		mb: 2,
-	},
-}

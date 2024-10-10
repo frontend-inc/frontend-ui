@@ -1,7 +1,6 @@
 import React from 'react'
 import { SocialFieldType } from '../../../types'
 import { SocialField } from '../..'
-import { Stack } from '@mui/material'
 
 export type SocialFieldsProps = {
 	resource: any
@@ -12,11 +11,11 @@ const SocialFields: React.FC<SocialFieldsProps> = (props) => {
 	const { resource, fields } = props || {}
 
 	return (
-		<Stack direction="row" spacing={0}>
+		<div className='flex flex-row'>
 			{fields?.map((field, i) => (
 				<SocialField key={i} field={field} resource={resource} />
 			))}
-		</Stack>
+		</div>
 	)
 }
 

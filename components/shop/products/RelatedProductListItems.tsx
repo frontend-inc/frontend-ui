@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import { Stack } from '@mui/material'
+import React from 'react'
 import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { useApp } from '../../../hooks'
@@ -93,7 +92,7 @@ const RelatedProductListItems: React.FC<RelatedProductListItemsProps> = (
 	}
 
 	return (
-		<Stack direction="column" spacing={2}>
+		<div className="flex flex-col space-y-2 w-full">
 			<DataLayout {...slots.list} grid={grid}>
 				{references?.map((reference, index) => {
 					const target = reference?.target
@@ -126,7 +125,7 @@ const RelatedProductListItems: React.FC<RelatedProductListItemsProps> = (
 				numPages={numPages}
 				handlePaginate={handlePaginate}
 			/>
-		</Stack>
+		</div>
 	)
 }
 

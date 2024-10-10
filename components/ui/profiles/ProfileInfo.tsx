@@ -1,5 +1,4 @@
 import React from 'react'
-import { Stack } from '@mui/material'
 import { SocialLink, FieldString, FieldText } from '../../../components'
 
 type ProfileInfoProps = {
@@ -16,20 +15,20 @@ type ProfileInfoProps = {
 const ProfileInfo: React.FC<ProfileInfoProps> = (props) => {
 	const { title, description, label, socialLinks = [] } = props
 	return (
-		<Stack direction="column" spacing={1}>
-			<Stack direction="column">
+		<div className='flex flex-col space-y-2'>
+			<div className='flex flex-col'>
 				<FieldString value={label} variant="caption" color="text.secondary" />
 				<FieldString value={title} />
 				{socialLinks?.length > 0 && (
-					<Stack direction="row" spacing={1}>
+					<div className='flex flex-row space-x-1'>
 						{socialLinks?.map((link, index) => (
 							<SocialLink key={index} provider={link.value} url={link.url} />
 						))}
-					</Stack>
+					</div>
 				)}
 				<FieldText value={description} variant="body2" color="text.secondary" />
-			</Stack>
-		</Stack>
+			</div>
+		</div>
 	)
 }
 

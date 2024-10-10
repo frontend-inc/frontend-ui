@@ -1,6 +1,5 @@
 import React from 'react'
 import { useCart } from 'frontend-shopify'
-import { Stack } from '../../../tailwind'
 import { formatCurrency } from 'frontend-shopify'
 import {
 	ShopifyCartText,
@@ -17,7 +16,7 @@ const ShopifyCartTotals: React.FC = () => {
 
 	if (!cart) return null
 	return (
-		<Stack spacing={1}>
+		<div className='flex flex-col space-y-2'>
 			<ShopifyCartText label={'Subtotal'} value={formatCurrency(subtotal)} />
 			{cart?.discountCodes?.map((discountCode) => (
 				<ShopifyCartDiscountCode
@@ -33,7 +32,7 @@ const ShopifyCartTotals: React.FC = () => {
 			)}
 			<ShopifyCartText label={'Tax'} value={formatCurrency(tax)} />
 			<ShopifyCartText label={'Total'} value={formatCurrency(total)} />
-		</Stack>
+		</div>
 	)
 }
 
