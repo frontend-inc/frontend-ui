@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAlerts } from '../../../hooks'
 import { Modal } from '../..'
-import { Box, Button } from '@mui/material'
+import { Button } from '../../../tailwind'
 import { Link, Download } from 'lucide-react'
 import copy from 'copy-to-clipboard'
 
@@ -73,23 +73,12 @@ const VideoModal: React.FC<VideoModalProps> = (props) => {
 					</>
 				}
 			>
-				<Box sx={sx.root}>
+				<div className='flex flex-row justify-center items-center w-full h-full'>
 					<video src={src} controls muted autoPlay />
-				</Box>
+				</div>
 			</Modal>
 		</div>
 	)
 }
 
 export default VideoModal
-
-const sx = {
-	root: {
-		width: '100%',
-		height: '100%',
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-}

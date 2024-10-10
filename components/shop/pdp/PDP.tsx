@@ -1,7 +1,6 @@
 import React from 'react'
-import { Box, Stack, Typography } from '../../../tailwind'
+import { Typography } from '../../../tailwind'
 import { Image, ExpandableText } from '../..'
-import { cn } from '../../../shadcn/lib/utils'
 
 export type PDPProps = {
   label?: string
@@ -40,21 +39,15 @@ const PDP: React.FC<PDPProps> = (props) => {
   } = props || {}
 
   return (
-    <Stack spacing={4}>
+    <div className='flex flex-col space-y-2'>
       {secondaryAction}
-      <Box className="w-full flex justify-center items-center">
-        <Stack
-          className={cn(
-            'sm:space-x-10'
-          )}
-          direction={'row'}
-          spacing={5}
+      <div className="w-full flex justify-center items-center">
+        <div
+          className='flex flex-row sm:space-x-10'          
         >
-          <Stack spacing={4} direction="column" className="w-full md:w-1/2 flex flex-col justify-center items-center">
-            <Box 
-              className={cn(
-                "rounded-lg w-full",
-              )}>
+          <div className="w-full md:w-1/2 flex flex-col space-y-5 justify-center items-center">
+            <div 
+              className="rounded-lg w-full">
               <Image
                 src={image}
                 alt={primary}
@@ -63,16 +56,14 @@ const PDP: React.FC<PDPProps> = (props) => {
                 label={label}
                 {...slots.image}
               />
-            </Box>
+            </div>
             {actions}
-          </Stack>
-          <Stack spacing={4} className={cn(
-            "w-full md:w-1/2",
-          )} {...slots.content}>
-            <Typography color="text.primary" variant="h3">
+          </div>
+          <div className="w-full md:w-1/2 flex flex-col space-y-3">          
+            <Typography variant="h3">
               {primary}
             </Typography>
-            <Stack direction="row" spacing={1}>
+            <div className="flex flex-row space-x-2">
               <Typography color="text.primary" variant="h6">
                 {price}
               </Typography>
@@ -85,14 +76,14 @@ const PDP: React.FC<PDPProps> = (props) => {
                   {compareAtPrice}
                 </Typography>
               )}
-            </Stack>
+            </div>
             {secondary}
             {addToCart}
             <ExpandableText text={description || ''} />
-          </Stack>
-        </Stack>
-      </Box>
-    </Stack>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 

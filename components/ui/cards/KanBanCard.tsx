@@ -1,159 +1,103 @@
 import React from 'react'
-import { Box, Button, Stack, Typography } from '@mui/material'
+import { Button } from "../../../shadcn/ui/button"
+import { Card, CardContent, CardFooter } from "../../../shadcn/ui/card"
 import { Image } from '../../../components'
 import { useSortable } from '@dnd-kit/sortable'
-import { CardProps } from './Card'
+import { CSS } from '@dnd-kit/utilities'
+import { cn } from "../../../shadcn/lib/utils"
 
-type KanBanCardProps = CardProps & {
-	loading?: boolean
-	id: string
-	enableDragging?: boolean
+export type CardProps = {
+  id: string
+  loading?: boolean
+  label?: string
+  primary: string
+  secondary?: string
+  secondaryAction?: React.ReactNode
+  handleClick?: () => void
+  image?: string
+  actions?: React.ReactNode
+  enableDragging?: boolean
+  height?: number
+  slots?: {
+    item?: React.HTMLAttributes<HTMLDivElement>
+    image?: React.ComponentProps<typeof Image>
+  }
 }
 
-const KanBanCard: React.FC<KanBanCardProps> = (props) => {
-	const {
-		id,
-		loading,
-		label,
-		primary,
-		secondary,
-		secondaryAction,
-		handleClick,
-		image,
-		actions, // Todo: rendering actions inteferes with drag/drop
-		enableDragging,
-		height = 240,
-		slots = {
-			item: {},
-			image: {},
-		},
-	} = props || {}
+const KanBanCard: React.FC<CardProps> = (props) => {
+  const {
+    id,
+    loading,
+    label,
+    primary,
+    secondary,
+    secondaryAction,
+    handleClick,
+    image,
+    enableDragging,
+    height = 240,
+    slots = {
+      item: {},
+      image: {},
+    },
+  } = props
 
-	const { attributes, listeners, setNodeRef } = useSortable({
-		id: id,
-	})
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+    id: id,
+  })
 
-	return (
-		<Stack
-			direction="column"
-			sx={{
-				...sx.root,
-				...(loading && sx.rootLoading),
-				...(enableDragging && sx.rootDragging),
-			}}
-			{...slots.item}
-		>
-			<Stack direction="column" ref={setNodeRef} {...attributes} {...listeners}>
-				{image && (
-					<Box sx={sx.image}>
-						<Image
-							label={label}
-							src={image}
-							height={height}
-							alt={primary}
-							handleClick={handleClick}
-							{...slots.image}
-						/>
-					</Box>
-				)}
-				<Stack direction="row" alignItems="flex-start">
-					<Stack direction="column" spacing={0.5} sx={sx.content}>
-						<Typography sx={sx.title} color="text.primary" variant="subtitle1">
-							{primary}
-						</Typography>
-						<Typography color="text.secondary" variant="body2">
-							{secondary}
-						</Typography>
-					</Stack>
-				</Stack>
-			</Stack>
-			<Box sx={sx.footer}>
-				<Button
-					onClick={handleClick}
-					size="small"
-					variant="contained"
-					color="secondary"
-					sx={sx.button}
-				>
-					Details
-				</Button>
-				<Stack direction="row" alignItems="flex-end">
-					{secondaryAction}
-				</Stack>
-			</Box>
-		</Stack>
-	)
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  }
+
+  return (
+    <Card 
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+      className={cn(
+        "w-[260px] my-1 cursor-pointer overflow-hidden transition-shadow duration-300 hover:shadow-md",
+        loading && "opacity-50",
+        enableDragging && "shadow-md rotate-3"
+      )}
+      {...slots.item}
+    >
+      {image && (
+        <div className="overflow-hidden rounded-t-lg">
+          <Image
+            label={label}
+            src={image}
+            height={height}
+            alt={primary}
+            handleClick={handleClick}
+            className="w-full object-cover"
+            {...slots.image}
+          />
+        </div>
+      )}
+      <CardContent className="p-4">
+        <h3 className="text-lg font-semibold text-primary mb-1">{primary}</h3>
+        {secondary && <p className="text-sm text-muted-foreground">{secondary}</p>}
+      </CardContent>
+      <CardFooter className="flex justify-between p-4">
+        <Button
+          onClick={handleClick}
+          size="sm"
+          variant="secondary"
+          className="uppercase"
+        >
+          Details
+        </Button>
+        {secondaryAction && (
+          <div className="flex items-end">
+            {secondaryAction}
+          </div>
+        )}
+      </CardFooter>
+    </Card>
+  )
 }
 
 export default KanBanCard
-
-const sx = {
-	root: {
-		p: 0,
-		my: 1,
-		width: 260,
-		cursor: 'pointer',
-		borderRadius: 1,
-		border: '1px solid',
-		borderColor: 'divider',
-		bgcolor: 'background.default',
-		transition: 'box-shadow 0.3s',
-		overflow: 'hidden',
-		'&:hover': {
-			boxShadow: 2,
-		},
-	},
-	rootDragging: {
-		boxShadow: 2,
-		transform: 'rotate(3deg)',
-	},
-	rootLoading: {
-		opacity: 0.5,
-	},
-	dragHandle: {
-		width: 32,
-		minWidth: 32,
-		height: '100%',
-		display: 'flex',
-		alignItems: 'flex-start',
-		justifyContent: 'center',
-		py: 1,
-		cursor: 'grab',
-		'&:active': {
-			cursor: 'grabbing',
-		},
-	},
-	button: {
-		textTransform: 'uppercase',
-	},
-	image: {
-		overflow: 'hidden',
-		borderRadius: (theme) => `${theme.spacing(1)}px ${theme.spacing(1)}px 0 0`,
-		width: '100%',
-	},
-	content: {
-		width: '100%',
-		justifyContent: 'flex-start',
-		alignItems: 'flex-start',
-		height: '100%',
-		p: 1,
-	},
-	header: {
-		ml: 1,
-		borderBottom: '1px solid',
-		borderColor: 'divider',
-	},
-	title: {
-		width: '100%',
-	},
-	description: {
-		maxWidth: '240px',
-	},
-	footer: {
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'space-between',
-		px: 1,
-		pb: 1,
-	},
-}

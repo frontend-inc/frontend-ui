@@ -27,7 +27,7 @@ const Section: React.FC<SectionProps> = (props) => {
 	} = props
 
 	return (
-		<div
+		<section
 			className={cn(
 				mode == 'dark' && 'dark',
 				'w-full bg-background',
@@ -53,7 +53,7 @@ const Section: React.FC<SectionProps> = (props) => {
 					</AuthGuard>
 				</div>
 			</div>
-		</div>
+		</section>
 	)
 }
 

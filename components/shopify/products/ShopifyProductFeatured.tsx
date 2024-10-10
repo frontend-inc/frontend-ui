@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { ShopifyAddToCartButton, ShopifyQuickShopButton } from '..'
-import { Box, Stack, Typography } from '../../../tailwind'
+import { Stack, Typography } from '../../../tailwind'
 import { truncate } from '../../../helpers'
 import SwipeableShopifyProductImages from './images/SwipeableShopifyProductImages'
 import { formatCurrency } from 'frontend-shopify'
@@ -60,14 +60,14 @@ const ShopifyProductFeatured: React.FC<ShopifyProductFeaturedProps> = ({
         direction={flexDirection}
         className="w-full"
       >
-        <Box className="px-1 flex justify-end items-center">
+        <div className="px-1 flex justify-end items-center">
           <SwipeableShopifyProductImages
             product={product}
             height={height}
             width={width}
             handleClick={handleItemClick}
           />
-        </Box>
+        </div>
         <Stack spacing={2} className="justify-center items-start h-full">
           <div>
             <Typography color="text.primary" variant="h3">

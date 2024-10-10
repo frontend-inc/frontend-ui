@@ -1,7 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import { TextInput, Icon } from '../..'
 import { TextInputPropsType } from '../../../types'
-import { cn } from '../../../shadcn/lib/utils'
 import { Avatar, AvatarFallback, AvatarImage } from '../../../shadcn/ui/avatar'
 import { useClickOutside } from '@raddix/use-click-outside';
 

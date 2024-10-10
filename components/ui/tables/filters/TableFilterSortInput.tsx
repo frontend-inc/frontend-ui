@@ -1,81 +1,57 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
+import { Typography } from '../../../../tailwind'
 import { Autosuggest } from '../../..'
 import { OptionType } from '../../../../types'
 
 type TableFilterSortProps = {
-	label: string
-	fieldOptions: OptionType[]
-	sortBy?: string
-	sortDirection?: 'asc' | 'desc'
-	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  label: string
+  fieldOptions: OptionType[]
+  sortBy?: string
+  sortDirection?: 'asc' | 'desc'
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const SORT_DIRECTIONS = [
-	{ label: 'descreasing', value: 'asc' },
-	{ label: 'increasing', value: 'desc' },
+  { label: 'decreasing', value: 'desc' },
+  { label: 'increasing', value: 'asc' },
 ]
 
-const TableFilterSortInput: React.FC<TableFilterSortProps> = (props) => {
-	const {
-		label,
-		sortBy = '',
-		sortDirection = '',
-		fieldOptions,
-		handleChange,
-	} = props
-
-	return (
-		<Box sx={sx.inputField}>
-			{label && (
-				<Box sx={sx.inputLabel}>
-					<Typography variant="subtitle2" color="textSecondary">
-						{label}
-					</Typography>
-				</Box>
-			)}
-			<Box sx={sx.inputSortBy}>
-				<Autosuggest
-					name={'sort_by'}
-					options={fieldOptions}
-					placeholder="Sort field"
-					value={sortBy}
-					handleChange={handleChange}
-				/>
-			</Box>
-			<Box sx={sx.inputSortDirection}>
-				<Autosuggest
-					name={'sort_direction'}
-					options={SORT_DIRECTIONS}
-					placeholder="Sort direction"
-					value={sortDirection || ''}
-					handleChange={handleChange}
-				/>
-			</Box>
-		</Box>
-	)
+const TableFilterSortInput: React.FC<TableFilterSortProps> = ({
+  label,
+  sortBy = '',
+  sortDirection = '',
+  fieldOptions=[],
+  handleChange,
+}) => {
+  return (
+    <div className="flex flex-row items-center justify-start py-2 px-0">
+      {label && (
+        <div className="min-w-[100px]">
+          <Typography variant="subtitle2" className="text-foreground">
+            {label}
+          </Typography>
+        </div>
+      )}
+      <div className="min-w-[200px] mr-4">
+        <Autosuggest
+          name="sort_by"
+          options={fieldOptions}
+          placeholder="Sort field"
+          value={sortBy}
+          handleChange={handleChange}
+        />
+      </div>
+      <div className="w-full mr-12">
+        <Autosuggest
+          name="sort_direction"
+          options={SORT_DIRECTIONS}
+          placeholder="Sort direction"
+          value={sortDirection}
+          handleChange={handleChange}
+        />
+      </div>
+    </div>
+  )
 }
 
 export default TableFilterSortInput
-
-const sx = {
-	inputField: {
-		py: 0.5,
-		px: 0,
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'flex-start',
-	},
-	inputLabel: {
-		minWidth: '100px',
-	},
-	inputSortBy: {
-		minWidth: '200px',
-		mr: 1,
-	},
-	inputSortDirection: {
-		width: '100%',
-		mr: 3,
-	},
-}

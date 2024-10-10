@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { Box, Stack } from '@mui/material'
+import React, { useState } from 'react'
 import { ProductType } from '../../../../types'
 import {
 	Drawer,
@@ -39,7 +38,7 @@ const ProductsInput: React.FC<ProductsInputProps> = (props) => {
 	}
 
 	return (
-		<Stack sx={sx.root}>
+		<div className="w-full">
 			<SortableList
 				handleDrop={handleUpdateProductPositions}
 				items={sortBy(document?.product_references, 'position')}
@@ -54,9 +53,9 @@ const ProductsInput: React.FC<ProductsInputProps> = (props) => {
 					/>
 				)}
 			/>
-			<Box>
+			<div>
 				<SecondaryButton onClick={handleAddClick}>Add Products</SecondaryButton>
-			</Box>
+			</div>
 			<Drawer open={open} handleClose={() => setOpen(false)}>
 				<ResourceList
 					selectable
@@ -72,14 +71,8 @@ const ProductsInput: React.FC<ProductsInputProps> = (props) => {
 					}}
 				/>
 			</Drawer>
-		</Stack>
+		</div>
 	)
 }
 
 export default ProductsInput
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-}

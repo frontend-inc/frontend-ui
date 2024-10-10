@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box, Typography } from '../../../tailwind'
-import { Container, BrandLogos, Label, Image } from '../..'
+import { Container, Typography } from '../../../tailwind'
+import { BrandLogos, Label, Image } from '../..'
 
 export type SpotlightListProps = {
 	label?: string

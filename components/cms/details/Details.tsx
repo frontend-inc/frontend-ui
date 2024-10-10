@@ -1,7 +1,7 @@
 import React from 'react'
-import { Box, Grid } from '@mui/material'
 import { Field } from '../..'
 import { DisplayFieldType } from '../../../types'
+import { cn } from '../../../shadcn/lib/utils'
 
 export type DetailsProps = {
 	displayFields: DisplayFieldType[]
@@ -16,35 +16,25 @@ const Details: React.FC<DetailsProps> = (props) => {
 	const { resource, displayFields, enableBorder = false } = props
 
 	return (
-		<Box sx={sx.root}>
-			<Grid container spacing={1}>
-				{document &&
-					displayFields?.map((field, i) => (
-						<Grid
-							key={i}
-							item
-							xs={12}
-							sm={FULL_WIDTH_VARIANTS.includes(field?.variant) ? 12 : 6}
-						>
-							<Field
-								field={field}
-								enableBorder={enableBorder}
-								resource={resource}
-							/>
-						</Grid>
-					))}
-			</Grid>
-		</Box>
+  <div className="w-full grid">
+    {document &&
+      displayFields?.map((field, i) => (
+        <div
+          key={i} 
+          className={cn(
+            'grid-span-1',
+            FULL_WIDTH_VARIANTS.includes(field?.variant) ? 'sm:grid-span-3' : 'sm:grid-span-1'
+          )}
+        >
+          <Field
+            field={field}
+            enableBorder={enableBorder}
+            resource={resource}
+          />
+        </div>
+      ))}
+  </div>
 	)
 }
 
 export default Details
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-	itemFullWidth: {
-		gridColumn: 'span 3',
-	},
-}

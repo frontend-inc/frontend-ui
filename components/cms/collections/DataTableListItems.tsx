@@ -1,11 +1,11 @@
 import React from 'react'
 import { useResourceContext } from 'frontend-js'
-import { Box, Stack } from '@mui/material'
 import { useApp } from '../../../hooks'
 import { TableHeaderType } from '../../../types'
 import { useRouter } from 'next/router'
 import { TableList } from '../..'
 import { DataListItemsProps } from '../data/DataListItems'
+import { cn } from '../../../shadcn/lib/utils'
 
 export type DataTableListProps = DataListItemsProps & {
 	headers: TableHeaderType[]
@@ -64,8 +64,8 @@ const DataTableList: React.FC<DataTableListProps> = (props) => {
 	}
 
 	return (
-		<Stack spacing={1} sx={sx.root}>
-			<Box sx={{ ...(loading && sx.loading) }}>
+		<div className='flex flex-col space-y-2'>
+			<div className={cn(loading && 'opacity-50')}>
 				<TableList
 					handleClick={handleCellClick}
 					enableShow={enableShow}
@@ -81,66 +81,9 @@ const DataTableList: React.FC<DataTableListProps> = (props) => {
 					totalCount={totalCount}
 					handlePaginate={handlePaginate}
 				/>
-			</Box>
-		</Stack>
+			</div>
+		</div>
 	)
 }
 
 export default DataTableList
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-	content: {
-		width: '100%',
-	},
-	list: {
-		display: 'flex',
-		flexDirection: 'column',
-		gap: '16px',
-	},
-	grid: {
-		display: 'grid',
-		gridTemplateColumns: {
-			md: '1fr 1fr 1fr',
-			xs: '1fr',
-		},
-		gap: '16px',
-	},
-	item: {
-		p: 2,
-	},
-	button: {
-		width: {
-			sm: 'auto',
-			xs: '100%',
-		},
-	},
-	filtersContainer: {
-		mr: {
-			sm: 2,
-			xs: 0,
-		},
-		mb: {
-			sm: 0,
-			xs: 2,
-		},
-	},
-	toolbar: {
-		alignItems: 'center',
-		justifyContent: 'flex-end',
-	},
-	loading: {
-		opacity: 0.7,
-	},
-	circularProgress: {
-		color: 'primary.main',
-	},
-	fullWidth: {
-		width: {
-			sm: 'auto',
-			xs: '100%',
-		},
-	},
-}

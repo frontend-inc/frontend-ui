@@ -1,6 +1,6 @@
 import React from 'react'
 import { cn } from '../../../shadcn/lib/utils'
-import { Box, Typography } from '../../../tailwind'
+import { Typography } from '../../../tailwind'
 import { Image } from '../..'
 
 export type ProductCollectionCardProps = {
@@ -47,7 +47,7 @@ const ProductCollectionCard = React.forwardRef<HTMLDivElement, ProductCollection
 					'w-full overflow-hidden rounded-lg transition-shadow duration-300 bg-background',          
 				)}				
 			>
-				<Box className="min-h-[240px] w-full relative overflow-hidden">
+				<div className="min-h-[240px] w-full relative overflow-hidden">
 					<Image
 						src={image}
 						height={height}
@@ -58,7 +58,7 @@ const ProductCollectionCard = React.forwardRef<HTMLDivElement, ProductCollection
             disableBorderRadius={!disableBorder}
 						{...slots.image}
 					/>
-				</Box>
+				</div>
 				<div
 					className="px-4 pt-2 pb-4 w-full"					
 				>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Stack } from '@mui/material'
+import { Stack } from '../../../tailwind'
 import { Carousel } from '../..'
 import { useApp } from '../../../hooks'
 import { useRouter } from 'next/router'
@@ -48,12 +48,11 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 	}
 
 	return (
-		<Stack
-			spacing={1}
-			sx={{
-				...sx.root,
-				...(loading && sx.loading),
-			}}
+		<div 
+      className={cn(
+        'grid grid-cols-1 md:grid-cols-3 gap-4',        
+        loading && 'opacity-50',
+      )}
 		>
 			<Carousel
 				enableDots={enableDots}
@@ -61,13 +60,13 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 				enableArrows={enableArrows}
 			>
 				{resources?.map((resource, index) => (
-					<Box
-						key={index}
-						sx={{
-							...sx.item,
-							pt: enableArrows ? 5 : 1,
-							pb: enableDots ? 4 : 1,
-						}}
+					<div 
+            className={cn(
+              'p-1',
+              enableArrows && 'pt-5',
+              enableDots && 'pb-4',
+            )}
+						key={index}						
 					>
 						<CollectionListItem
 							buttons={buttons}
@@ -80,31 +79,12 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 							enableFavorites={enableFavorites}
 							enableLikes={enableLikes}
 						/>
-					</Box>
+					</div>
 				))}
 			</Carousel>
-		</Stack>
+		</div>
 	)
 }
 
 export default CarouselListItems
 
-const sx = {
-	root: {
-		width: '100%',
-	},
-	loading: {
-		opacity: 0.5,
-	},
-	grid: {
-		display: 'grid',
-		gridTemplateColumns: {
-			md: '1fr 1fr 1fr',
-			xs: '1fr',
-		},
-		gap: '16px',
-	},
-	item: {
-		p: 1,
-	},
-}

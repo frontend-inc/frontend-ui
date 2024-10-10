@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Typography } from '@mui/material'
+import React, { useState } from 'react'
+import { Typography } from '../../../tailwind'
 import {
 	AdvancedMarker,
 	Pin,
@@ -9,7 +9,6 @@ import {
 import { GoogleMarkerType, DisplayFieldType } from '../../../types'
 import { useTheme } from '@mui/material/styles'
 import { Image, DisplayFields } from '../../../components'
-import { Box, Stack } from '@mui/material'
 
 export type GoogleMarkerProps = {
 	marker: GoogleMarkerType
@@ -32,8 +31,6 @@ const GoogleMarker: React.FC<GoogleMarkerProps> = (props) => {
 	const [markerRef, setMarkerRef] = useAdvancedMarkerRef()
 	const [infoWindowShown, setInfoWindowShown] = useState(false)
 
-	const theme = useTheme()
-
 	const handleMarkerClick = (ev) => {
 		setInfoWindowShown(!infoWindowShown)
 	}
@@ -50,25 +47,25 @@ const GoogleMarker: React.FC<GoogleMarkerProps> = (props) => {
 				position={position}
 				onClick={handleMarkerClick}
 			>
-				<Pin
-					background={theme.palette.primary.main}
-					borderColor={theme.palette.primary.main}
-					glyphColor={theme.palette.primary.contrastText}
-				/>
+				<Pin />
 			</AdvancedMarker>
 			{infoWindowShown && (
 				<InfoWindow anchor={setMarkerRef} onClose={handleClose}>
-					<Stack direction="column" spacing={1} sx={sx.infoWindow}>
+					<div className='flex flex-col space-y-2 min-w-[160px]'>
 						{resource?.image?.url && (
-							<Box sx={sx.imageContainer}>
-								<Image height={64} width={64} src={resource?.image?.url} />
-							</Box>
+							<div className='w-[64px] h-[64px]'>
+								<Image 
+                  alt={resource?.title }
+                  aspectRatio={1.0} 
+                  src={resource?.image?.url} 
+                />
+							</div>
 						)}
-						<Typography variant="subtitle2" color="grey.900">
+						<Typography variant="subtitle2" color="text-gray-900">
 							{marker?.label}
 						</Typography>
 						<DisplayFields fields={displayFields} resource={resource} />
-					</Stack>
+					</div>
 				</InfoWindow>
 			)}
 		</>

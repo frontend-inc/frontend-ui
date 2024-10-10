@@ -1,204 +1,202 @@
+"use client"
+
 import React, { useEffect, useState, useContext } from 'react'
-import { AutocompleteInput } from '../../..'
-import { Image, Placeholder } from '../../..'
-import { SyntheticEventType } from '../../../../types'
 import { useProducts } from 'frontend-shopify'
 import { ShopifyContext } from 'frontend-shopify'
-import { IconButton, Box, Fade, Collapse, Stack } from '@mui/material'
 import { uniq } from 'lodash'
-import { Icon } from '../../../../components'
+import { X } from 'lucide-react'
 
 type ShopifyProductImageProps = {
-	handle: string
-	handleDelete: () => void
-	height?: number
-	width?: number
+  handle: string
+  handleDelete: () => void
+  height?: number
+  width?: number
 }
 
-const ShopifyProductImage: React.FC<ShopifyProductImageProps> = (props) => {
-	const { handle, handleDelete, height = 160, width = 160 } = props
+const ShopifyProductImage: React.FC<ShopifyProductImageProps> = ({ handle, handleDelete, height = 160, width = 160 }) => {
+  const { product, findProduct } = useProducts()
 
-	const { product, findProduct } = useProducts()
+  useEffect(() => {
+    if (handle) {
+      findProduct(handle)
+    }
+  }, [handle, findProduct])
 
-	useEffect(() => {
-		if (handle) {
-			findProduct(handle)
-		}
-	}, [handle])
+  if (!product) return null
 
-	if (!product) return null
-	return (
-		<Fade in timeout={350}>
-			<Box sx={sx.productCard}>
-				<Image
-					enableGradient
-					disableBorder
-					src={product?.images?.edges?.[0]?.node?.url}
-					alt={product?.title}
-					height={height}
-					width={width}
-					enableDelete
-					handleDelete={handleDelete}
-				/>
-			</Box>
-		</Fade>
-	)
+  return (
+    <div className="relative group animate-fade-in">
+      <img
+        src={product.images?.edges?.[0]?.node?.url}
+        alt={product.title}
+        className="rounded-md transition-shadow duration-300 group-hover:shadow-lg"
+        style={{ height, width }}
+      />
+      <button
+        onClick={handleDelete}
+        className="absolute top-2 right-2 p-1 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        aria-label="Delete product"
+      >
+        <X className="w-4 h-4 text-gray-600" />
+      </button>
+    </div>
+  )
 }
 
 type AutosuggestProps = {
-	value?: any
-	name?: string
-	label?: string
-	placeholder?: string
-	handleChange: (e: SyntheticEventType) => void
-	direction?: 'row' | 'column'
-	height?: number
-	width?: number
+  value?: string[]
+  name?: string
+  label?: string
+  placeholder?: string
+  handleChange: (e: { target: { name: string; value: string[] } }) => void
+  direction?: 'row' | 'column'
+  height?: number
+  width?: number
 }
 
-const ShopifyProductsInput: React.FC<AutosuggestProps> = (props) => {
-	const {
-		value,
-		label,
-		direction = 'column',
-		placeholder,
-		name = 'shopify_handle',
-		handleChange,
-		height,
-		width,
-	} = props
+const ShopifyProductsInput: React.FC<AutosuggestProps> = ({
+  value = [],
+  label,
+  direction = 'column',
+  placeholder,
+  name = 'shopify_handle',
+  handleChange,
+  height,
+  width,
+}) => {
+  const [currentValue, setCurrentValue] = useState('')
+  const [shopifyProducts, setShopifyProducts] = useState<string[]>(value)
+  const { domain, storefrontAccessToken } = useContext(ShopifyContext) as any
 
-	const [currentValue, setCurrentValue] = useState('')
-	const [shopifyProducts, setShopifyProducts] = useState([])
-	const { domain, storefrontAccessToken } = useContext(ShopifyContext) as any
+  const { products, setProduct, findProducts } = useProducts()
 
-	const { products, setProduct, findProducts } = useProducts()
+  const [options, setOptions] = useState<{ label: string; value: string; image: string }[]>([])
+  const [isLoading, setIsLoading] = useState(false)
 
-	const [options, setOptions] = useState([])
+  const handleInputChange = async (newValue: string) => {
+    setIsLoading(true)
+    try {
+      await findProducts(newValue)
+      if (newValue === '') {
+        setProduct(null)
+      }
+    } catch (error) {
+      console.error('Error fetching products:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
-	const handleInputChange = (newValue) => {
-		findProducts(newValue)
-		if (newValue == '') {
-			setProduct(null)
-		}
-	}
+  useEffect(() => {
+    if (products) {
+      setOptions(
+        products.map((product) => ({
+          label: product.title,
+          value: product.handle,
+          image: product.images?.edges?.[0]?.node?.url,
+        }))
+      )
+    }
+  }, [products])
 
-	useEffect(() => {
-		if (products) {
-			setOptions(
-				products?.map((product) => ({
-					label: product.title,
-					value: product.handle,
-					image: product.images?.edges?.[0]?.node?.url,
-				}))
-			)
-		}
-	}, [products])
+  useEffect(() => {
+    if (value && Array.isArray(value)) {
+      setShopifyProducts(value)
+    }
+  }, [value])
 
-	useEffect(() => {
-		if (value && Array.isArray(value)) {
-			setShopifyProducts(value)
-		}
-	}, [value])
+  const handleAutocompleteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target
+    setCurrentValue(value)
+    const uniqProducts = uniq([...shopifyProducts, value])
+    setShopifyProducts(uniqProducts)
+    handleChange({
+      target: {
+        name,
+        value: uniqProducts,
+      },
+    })
+  }
 
-	const handleAutocompleteChange = (e) => {
-		const { value } = e.target
-		setCurrentValue(value)
-		let uniqProducts = uniq([...shopifyProducts, value])
-		setShopifyProducts(uniqProducts)
-		handleChange({
-			target: {
-				name,
-				value: uniqProducts,
-			},
-		})
-	}
+  useEffect(() => {
+    findProducts({
+      first: 10,
+    })
+  }, [findProducts])
 
-	useEffect(() => {
-		findProducts({
-			first: 10,
-		})
-	}, [])
+  const handleDelete = (handle: string) => {
+    const newProducts = shopifyProducts.filter((product) => product !== handle)
+    setShopifyProducts(newProducts)
+    handleChange({
+      target: {
+        name,
+        value: newProducts,
+      },
+    })
+  }
 
-	const handleDelete = (handle: string) => {
-		let newProducts = shopifyProducts.filter((product) => product !== handle)
-		setShopifyProducts(newProducts)
-		handleChange({
-			target: {
-				name,
-				value: newProducts || [],
-			},
-		})
-	}
+  if (!domain || !storefrontAccessToken) {
+    return (
+      <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4" role="alert">
+        <p className="font-bold">Shopify setup required</p>
+        <p>Shopify provider is not setup</p>
+      </div>
+    )
+  }
 
-	if (!domain || !storefrontAccessToken) {
-		return (
-			<Placeholder
-				title="Shopify setup required"
-				description="Shopify provider is not setup"
-			/>
-		)
-	}
-	return (
-		<Stack direction="column" spacing={1} sx={sx.root}>
-			<Collapse in={shopifyProducts?.length > 0}>
-				<Box sx={sx.carouselContainer}>
-					<Box sx={sx.carousel}>
-						{shopifyProducts?.map((handle) => (
-							<ShopifyProductImage
-								key={handle}
-								handle={handle}
-								height={height}
-								width={width}
-								handleDelete={() => handleDelete(handle)}
-							/>
-						))}
-					</Box>
-				</Box>
-			</Collapse>
-			<AutocompleteInput
-				name={name}
-				label={label}
-				value={currentValue}
-				options={options}
-				handleChange={handleAutocompleteChange}
-				handleInputChange={handleInputChange}
-				direction={direction}
-				placeholder={placeholder}
-			/>
-		</Stack>
-	)
+  return (
+    <div className="w-full space-y-4">
+      {shopifyProducts.length > 0 && (
+        <div className="overflow-x-auto">
+          <div className="flex flex-wrap gap-4">
+            {shopifyProducts.map((handle) => (
+              <ShopifyProductImage
+                key={handle}
+                handle={handle}
+                height={height}
+                width={width}
+                handleDelete={() => handleDelete(handle)}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+      <div className={`flex ${direction === 'column' ? 'flex-col' : 'flex-row'} gap-2`}>
+        {label && (
+          <label htmlFor={name} className="block text-sm font-medium text-gray-700">
+            {label}
+          </label>
+        )}
+        <div className="relative">
+          <input
+            type="text"
+            id={name}
+            name={name}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            placeholder={placeholder}
+            value={currentValue}
+            onChange={handleAutocompleteChange}
+            onInput={(e) => handleInputChange((e.target as HTMLInputElement).value)}
+            list="product-options"
+            aria-autocomplete="list"
+            aria-expanded={options.length > 0}
+          />
+          {isLoading && (
+            <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+              <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-blue-500"></div>
+            </div>
+          )}
+          <datalist id="product-options">
+            {options.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </datalist>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default ShopifyProductsInput
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-	productCard: {
-		position: 'relative',
-		width: 160,
-		minWidth: 160,
-		minHeight: 160,
-		borderRadius: 1,
-		overflow: 'hidden',
-		display: 'flex',
-		flexDirection: 'column',
-		p: 0,
-		transition: 'box-shadow 0.3s',
-		'&:hover': {
-			boxShadow: 2,
-		},
-	},
-	productContent: {
-		p: 1,
-	},
-	carouselContainer: {},
-	carousel: {
-		display: 'flex',
-		flexDirection: 'row',
-		flexWrap: 'wrap',
-		gap: '10px',
-	},
-}

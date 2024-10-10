@@ -7,7 +7,7 @@ import {
 	ShopifyCustomerPortal,
 } from '../../../components'
 import MyAccountTabs from './MyAccountTabs'
-import { Box, Button } from '@mui/material'
+import { Button } from '../../../tailwind'
 import { MetafieldType } from '../../../types'
 
 type MyAccountModalProps = {
@@ -70,7 +70,7 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 					handleClick={handleClick}
 				/>
 			) : (
-				<Box p={1}>
+				<div className='p-1'>
 					<Button
 						sx={sx.button}
 						color="secondary"
@@ -82,9 +82,9 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 					>
 						Back
 					</Button>
-				</Box>
+				</div>
 			)}
-			<Box sx={sx.content}>
+			<div className='p-2'>
 				{currentTab == 0 && (
 					<MyAccountForm
 						loading={delayedLoading}
@@ -98,25 +98,9 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 				)}
 				{currentTab == 1 && <StripeCustomerPortal />}
 				{currentTab == 2 && <ShopifyCustomerPortal />}
-			</Box>
+			</div>
 		</Modal>
 	)
 }
 
 export default MyAccountModal
-
-const sx = {
-	content: {
-		p: 2,
-	},
-	button: {
-		color: 'text.primary',
-		bgcolor: 'background.paper',
-		boxShadow: 0,
-		'&:hover': {
-			color: 'text.primary',
-			boxShadow: 0,
-			bgcolor: 'background.paper',
-		},
-	},
-}

@@ -1,45 +1,41 @@
 import React from 'react'
-import { Box, Slider } from '@mui/material'
+import { Slider } from "../../../shadcn/ui/slider"
+import { cn } from "../../../shadcn/lib/utils"
 
 type SliderInputProps = {
-	label?: string
-	name: string
-	value?: number[]
-	handleChange: (ev: any) => void
-	min: number
-	max: number
-	stepSize?: number
+  label?: string
+  name: string
+  value?: number[]
+  handleChange: (value: number[]) => void
+  min: number
+  max: number
+  stepSize?: number
+  className?: string
 }
 
 const SliderInput: React.FC<SliderInputProps> = (props) => {
-	const {
-		value,
-		name,
-		handleChange,
-		min = 0,
-		max = 10,
-		stepSize = 1,
-	} = props || {}
+  const {
+    value = [],
+    name,
+    handleChange,
+    min = 0,
+    max = 10,
+    stepSize = 1,
+    className,
+  } = props
 
-	return (
-		<Slider
-			sx={sx.root}
-			name={name}
-			defaultValue={value}
-			valueLabelDisplay="auto"
-			onChange={handleChange}
-			step={stepSize}
-			min={min}
-			max={max}
-			value={value}
-		/>
-	)
+  return (
+    <Slider
+      name={name}
+      defaultValue={value}
+      onValueChange={handleChange}
+      step={stepSize}
+      min={min}
+      max={max}
+      value={value}
+      className={cn("w-full", className)}
+    />
+  )
 }
 
 export default SliderInput
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-}

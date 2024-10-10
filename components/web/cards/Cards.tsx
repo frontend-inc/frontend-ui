@@ -1,5 +1,4 @@
 import React from 'react'
-import { Box, Grid } from '../../../tailwind'
 import { Card, Placeholder } from '../..'
 import { useRouter } from 'next/router'
 
@@ -34,9 +33,9 @@ const Cards: React.FC<CardsProps> = (props) => {
 
 	return (
 		<div>
-			<Grid container>
+			    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 				{items?.map((item, i) => (
-					<Grid item sm={6} md={4} key={i}>
+					<div key={i}>
 						<Card
 							image={item?.image}
 							primary={item?.title}
@@ -49,9 +48,9 @@ const Cards: React.FC<CardsProps> = (props) => {
 								},
 							}}
 						/>
-					</Grid>
+					</div>
 				))}
-			</Grid>
+			</div>
 			{items?.length == 0 && (
 				<Placeholder
 					icon="Search"

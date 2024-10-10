@@ -1,74 +1,42 @@
 import React from 'react'
-import { Box, Stack, Typography } from '@mui/material'
+import { Typography } from '../../../tailwind'
 
 type SimplePageProps = {
-	title: string
-	body: string
-	publishedAt?: string
-	html?: boolean
-	disablePadding?: boolean
+  title: string
+  body: string
+  publishedAt?: string
+  html?: boolean
+  disablePadding?: boolean
 }
 
-const SimplePage: React.FC<SimplePageProps> = (props) => {
-	let {
-		title,
-		body,
-		publishedAt,
-		html = false,
-		disablePadding = false,
-	} = props || {}
-	return (
-		<Box
-			sx={{
-				...sx.root,
-				...(disablePadding && sx.rootDisablePadding),
-			}}
-		>
-			<Stack direction="column" spacing={2} sx={sx.content}>
-				<Typography variant="h2" color="text.primary" sx={sx.title}>
-					{title}
-				</Typography>
-				<Typography variant="caption" sx={sx.caption}>
-					Last updated {publishedAt}
-				</Typography>
-				{html ? (
-					<Typography variant="body1" color="text.primary" sx={sx.text}>
-						<div dangerouslySetInnerHTML={{ __html: body }} />
-					</Typography>
-				) : (
-					<Typography variant="body1" color="text.primary" sx={sx.text}>
-						{body}
-					</Typography>
-				)}
-			</Stack>
-		</Box>
-	)
+const SimplePage: React.FC<SimplePageProps> = ({
+  title,
+  body,
+  publishedAt,
+  html = false,
+  disablePadding = false,
+}) => {
+  return (
+    <div className={`w-full flex justify-center items-start ${disablePadding ? '' : 'p-6'}`}>
+      <div className="w-full max-w-3xl space-y-4">
+        <Typography variant="h2" color="text.primary" className="text-center">
+          {title}
+        </Typography>
+        <Typography variant="caption" className="block text-center">
+          Last updated {publishedAt}
+        </Typography>
+        {html ? (
+          <Typography variant="body1" color="text.primary" className="whitespace-pre-line">
+            <div dangerouslySetInnerHTML={{ __html: body }} />
+          </Typography>
+        ) : (
+          <Typography variant="body1" color="text.primary" className="whitespace-pre-line">
+            {body}
+          </Typography>
+        )}
+      </div>
+    </div>
+  )
 }
 
 export default SimplePage
-
-const sx = {
-	root: {
-		width: '100%',
-		p: 6,
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'flex-start',
-	},
-	rootDisablePadding: {
-		p: 0,
-	},
-	content: {
-		width: '100%',
-		maxWidth: 800,
-	},
-	title: {
-		textAlign: 'center',
-	},
-	caption: {
-		textAlign: 'center',
-	},
-	text: {
-		whiteSpace: 'pre-line',
-	},
-}

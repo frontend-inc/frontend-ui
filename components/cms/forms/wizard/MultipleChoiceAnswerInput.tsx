@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Box, List, Stack, Typography } from '@mui/material'
+import { Typography } from '../../../../tailwind'
 import { ResourceListItem, ResourceGridItem } from '../../..'
 import { AnswerType } from '../../../../types'
 
@@ -21,7 +21,6 @@ const MultipleChoiceAnswerInput: React.FC<MultipleChoiceAnswerInputProps> = (
 		label,
 		layout = 'list',
 		multiSelect = true,
-		direction = 'column',
 		name,
 		value,
 		handleChange,
@@ -54,34 +53,29 @@ const MultipleChoiceAnswerInput: React.FC<MultipleChoiceAnswerInputProps> = (
 	}, [selected])
 
 	return (
-		<Stack sx={sx.stack} direction={direction} spacing={1}>
-			<Typography variant="caption" sx={sx.label} gutterBottom>
+		<div className='flex flex-col space-y-2'>
+			<Typography variant="caption">
 				{label}
 			</Typography>
 			{layout === 'list' && (
-				<List disablePadding sx={sx.list}>
-					{answers?.map((answer, idx) => (
+				<ul>
+					{answers?.map((answer, i) => (
 						<ResourceListItem
+              key={i}
 							enableBorder
 							selected={selected?.includes(answer.value)}
 							image={answer?.image?.url}
 							primary={answer.title}
 							secondary={answer.description}
-							handleClick={() => handleSelect(answer.value)}
-							slots={{
-								image: {
-									height: 120,
-									width: 120,
-								},
-							}}
+							handleClick={() => handleSelect(answer.value)}							
 						/>
 					))}
-				</List>
+				</ul>
 			)}
 			{layout == 'grid' && (
-				<Box sx={sx.grid}>
+				<div className='grid grid-col-1 sm:grid-col-2 md:grid-col-3 w-full gap-2'>
 					{answers?.map((answer, idx) => (
-						<Box sx={sx.item} key={idx}>
+						<div key={idx}>
 							<ResourceGridItem
 								enableBorder
 								selected={selected?.includes(answer.value)}
@@ -89,46 +83,13 @@ const MultipleChoiceAnswerInput: React.FC<MultipleChoiceAnswerInputProps> = (
 								primary={answer.title}
 								secondary={answer.description}
 								handleClick={() => handleSelect(answer.value)}
-								slots={{
-									image: {
-										height: 120,
-										width: 120,
-									},
-								}}
 							/>
-						</Box>
+						</div>
 					))}
-				</Box>
+				</div>
 			)}
-		</Stack>
+		</div>
 	)
 }
 
 export default MultipleChoiceAnswerInput
-
-const sx = {
-	list: {
-		width: '100%',
-	},
-	grid: {
-		display: 'grid',
-		gridTemplateColumns: '1fr 1fr',
-		gap: '10px',
-	},
-	item: {
-		width: '100%',
-		gridColumn: 'span 1',
-	},
-	label: {
-		mb: 0,
-		minWidth: '100px',
-		color: 'text.secondary',
-	},
-	stack: {
-		width: '100%',
-		alignItems: 'flex-start',
-	},
-	stackVertical: {
-		alignItems: 'center',
-	},
-}

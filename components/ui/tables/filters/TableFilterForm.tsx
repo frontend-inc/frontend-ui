@@ -1,264 +1,165 @@
+"use client"
+
 import React, { useState, useEffect } from 'react'
-import { Box, Button } from '@mui/material'
+import { Plus, Search, FilterIcon, Loader } from 'lucide-react'
 import { FILTERABLE_TYPES, SORTABLE_TYPES } from '../../../../constants/index'
-import { FilterList } from '@mui/icons-material'
-import { Plus, Search } from 'lucide-react'
-import {
-	IconLoading,
-	TableFilterInputs,
-	TableFilterKeywordsInput,
-	TableFilterSortInput,
-} from '../../..'
 import { OptionType } from '../../../../types'
 
+// Updated import paths
+import { TableFilterInputs } from '../../../../components'
+import { TableFilterKeywordsInput } from '../../../../components'
+import { TableFilterSortInput } from '../../../../components'
+
 type TableFilterFormProps = {
-	loading: boolean
-	query: any
-	fields: any[]
-	handleChange: (e: any) => void
-	handleSearch: (e: any) => void
-	handleClearFilters: () => void
+  loading: boolean
+  query: any
+  fields: any[]
+  handleChange: (e: any) => void
+  handleSearch: (e: any) => void
+  handleClearFilters: () => void
 }
 
-const TableFilterForm: React.FC<TableFilterFormProps> = (props) => {
-	const {
-		loading,
-		query,
-		fields,
-		handleChange,
-		handleSearch,
-		handleClearFilters,
-	} = props
+export default function TableFilterForm({
+  loading,
+  query,
+  fields,
+  handleChange,
+  handleSearch,
+  handleClearFilters,
+}: TableFilterFormProps) {
+  const [filterOptions, setFilterOptions] = useState<Record<string, any>[]>([])
+  const [sortOptions, setSortOptions] = useState<OptionType[]>([])
+  const [activeFilters, setActiveFilters] = useState<Record<string, any>[]>([])
 
-	const [filterOptions, setFilterOptions] = useState<Record<string, any>[]>([])
-	const [sortOptions, setSortOptions] = useState<OptionType[]>([])
-	const [activeFilters, setActiveFilters] = useState<Record<string, any>[]>([])
+  const defaultFilter = {
+    where: 'AND',
+    field: 'id',
+    operator: 'eq',
+    value: '',
+  }
 
-	let defaultFilter = {
-		where: 'AND',
-		field: 'id',
-		operator: 'eq',
-		value: '',
-	}
+  const handleFilterChange = (ev: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const { name, value } = ev.target
+    setActiveFilters(prevFilters => {
+      const updatedFilters = [...prevFilters]
+      updatedFilters[index] = {
+        ...updatedFilters[index],
+        [name]: value,
+        ...(name === 'field' && { operator: '', value: '' }),
+      }
+      return updatedFilters
+    })
+  }
 
-	const handleFilterChange = (ev, index) => {
-		let filter = activeFilters[index]
-		let { name, value } = ev.target
+  const handleAddFilter = () => {
+    setActiveFilters(prevFilters => [...prevFilters, defaultFilter])
+  }
 
-		let updatedFilter = {
-			...filter,
-			[name]: value,
-		}
+  const handleRemoveFilter = (index: number) => {
+    setActiveFilters(prevFilters => prevFilters.filter((_, i) => i !== index))
+  }
 
-		// reset the filter
-		if (name === 'field') {
-			updatedFilter = {
-				...updatedFilter,
-				operator: '',
-				value: '',
-			}
-		}
+  const handleFilterSearch = () => {
+    const filters = activeFilters.reduce((acc, { where, field, operator, value }) => {
+      if (!acc[where]) acc[where] = []
+      acc[where].push({ [field]: { [operator]: value } })
+      return acc
+    }, {} as Record<string, any[]>)
 
-		let updatedFilters = [...activeFilters]
-		updatedFilters[index] = updatedFilter
-		setActiveFilters(updatedFilters)
-	}
+    const searchQuery = {
+      page: 1,
+      keywords: query?.keywords || '',
+      per_page: query?.per_page || 20,
+      sort_by: query?.sort_by || 'id',
+      sort_direction: query?.sort_direction || 'desc',
+      filters,
+    }
 
-	const handleAddFilter = () => {
-		let updatedFilters = [...activeFilters, defaultFilter]
-		setActiveFilters(updatedFilters)
-	}
+    handleSearch(searchQuery)
+  }
 
-	const handleRemoveFilter = (index) => {
-		let updatedFilters = activeFilters.filter((f, i) => i != index)
-		setActiveFilters(updatedFilters)
-	}
+  const handleFilterFields = (fields: any[], filterFn: (field: any) => boolean) => {
+    return fields
+      .filter(filterFn)
+      .map(field => ({
+        label: field.label,
+        value: field.name,
+        variant: field.variant,
+        db_type: field.db_type,
+        options: field.options,
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label))
+  }
 
-	const handleFilterSearch = () => {
-		let filters = {}
-		activeFilters.forEach((filter) => {
-			let { where, field, operator, value } = filter
-			if (!filters[where]) {
-				filters[where] = []
-			}
-			filters = {
-				...filters,
-				[where]: [
-					...filters[where],
-					{
-						[field]: {
-							[operator]: value,
-						},
-					},
-				],
-			}
-		})
+  useEffect(() => {
+    if (fields) {
+      setFilterOptions(handleFilterFields(fields, field => FILTERABLE_TYPES.includes(field?.variant)))
+      setSortOptions(handleFilterFields(fields, field => SORTABLE_TYPES.includes(field?.variant)))
+    }
+  }, [fields])
 
-		let searchQuery = {
-			page: 1,
-			keywords: query?.keywords || '',
-			per_page: query?.per_page || 20,
-			sort_by: query?.sort_by || 'id',
-			sort_direction: query?.sort_direction || 'desc',
-			filters: filters,
-		}
+  useEffect(() => {
+    if (query?.filters) {
+      const formattedFilters = Object.entries(query.filters).flatMap(([where, filters]) =>
+        (filters as any[]).map(filter => {
+          const [field] = Object.keys(filter)
+          const [operator] = Object.keys(filter[field])
+          return { where, field, operator, value: filter[field][operator] }
+        })
+      )
+      setActiveFilters(formattedFilters)
+    }
+  }, [query])
 
-		handleSearch(searchQuery)
-	}
-
-	const handleFilters = (fields) => {
-		const filter = (field: any) => FILTERABLE_TYPES.includes(field?.variant)
-		let filters = handleFilterFields(fields, filter)
-		setFilterOptions(filters)
-	}
-
-	const handleSort = (fields) => {
-		const filter = (field: any) => SORTABLE_TYPES.includes(field?.variant)
-		let filters = handleFilterFields(fields, filter)
-		setSortOptions(filters)
-	}
-
-	const handleFilterFields = (
-		fields: any[],
-		filterFn: (fields: any) => any
-	) => {
-		return fields
-			.filter(filterFn)
-			.map((field) => ({
-				label: field.label,
-				value: field.name,
-				variant: field.variant,
-				db_type: field.db_type,
-				options: field.options,
-			}))
-			.sort((a, b) => a.label.localeCompare(b.label))
-	}
-
-	const formatFilterArray = (filters) => {
-		let formattedFilters = []
-		if (typeof filters === 'object') {
-			Object.keys(filters).forEach((where) => {
-				filters[where].forEach((filter) => {
-					let field = Object.keys(filter)[0]
-					let operator = Object.keys(filter[field])[0]
-					let value = filter[field][operator]
-					//@ts-ignore
-					formattedFilters.push({
-						where: where,
-						field: field,
-						operator: operator,
-						value: value,
-					})
-				})
-			})
-			setActiveFilters(formattedFilters)
-		}
-		return formattedFilters
-	}
-
-	useEffect(() => {
-		if (query?.filters) {
-			formatFilterArray(query?.filters)
-		}
-	}, [query])
-
-	useEffect(() => {
-		if (fields) {
-			handleFilters(fields)
-			handleSort(fields)
-		}
-	}, [fields])
-
-	return (
-		<Box>
-			<Box sx={sx.searchBar}>
-				<TableFilterKeywordsInput
-					label="keywords"
-					value={query?.keywords}
-					handleChange={handleChange}
-					handleSearch={handleFilterSearch}
-				/>
-			</Box>
-			<Box sx={sx.searchBar}>
-				<TableFilterSortInput
-					label="sort by"
-					fieldOptions={sortOptions}
-					handleChange={handleChange}
-					sortBy={query?.sort_by}
-					sortDirection={query?.sort_direction}
-				/>
-			</Box>
-			<TableFilterInputs
-				filters={activeFilters}
-				fieldOptions={filterOptions}
-				handleChange={handleFilterChange}
-				handleRemove={handleRemoveFilter}
-			/>
-			<Box sx={sx.inputField}>
-				<Box sx={sx.inputLabel}></Box>
-				<Box>
-					<Button
-						variant="contained"
-						color="secondary"
-						startIcon={<Plus />}
-						onClick={handleAddFilter}
-						sx={sx.addFilterButton}
-					>
-						Filter
-					</Button>
-				</Box>
-			</Box>
-			<Button
-				sx={sx.button}
-				startIcon={loading ? loading && <IconLoading /> : <Search />}
-				onClick={handleFilterSearch}
-				fullWidth
-				variant="contained"
-				color="primary"
-			>
-				Search
-			</Button>
-			<Button
-				sx={sx.button}
-				startIcon={<FilterList />}
-				onClick={handleClearFilters}
-				fullWidth
-				variant="contained"
-				color="secondary"
-			>
-				Reset filters
-			</Button>
-		</Box>
-	)
-}
-
-export default TableFilterForm
-
-const sx = {
-	button: {
-		mt: 2,
-	},
-	searchBar: {
-		width: '100%',
-	},
-	inputField: {
-		py: 0.5,
-		px: 0,
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'flex-start',
-	},
-	inputLabel: {
-		minWidth: '100px',
-	},
-	addFilterButton: {
-		maxWidth: '160px',
-		width: { sm: '100%' },
-	},
-	icon: {
-		height: '20px',
-		width: '20px',
-		color: 'icon',
-	},
+  return (
+    <div className="space-y-4">
+      <div className="w-full">
+        <TableFilterKeywordsInput
+          label="keywords"
+          value={query?.keywords}
+          handleChange={handleChange}
+          handleSearch={handleFilterSearch}
+        />
+      </div>
+      <div className="w-full">
+        <TableFilterSortInput
+          label="sort by"
+          fieldOptions={sortOptions}
+          handleChange={handleChange}
+          sortBy={query?.sort_by}
+          sortDirection={query?.sort_direction}
+        />
+      </div>
+      <TableFilterInputs
+        filters={activeFilters}
+        fieldOptions={filterOptions}
+        handleChange={handleFilterChange}
+        handleRemove={handleRemoveFilter}
+      />
+      <div className="flex items-center">
+        <div className="flex-grow"></div>
+        <button
+          className="px-4 py-2 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/90 transition-colors duration-200 flex items-center space-x-2"
+          onClick={handleAddFilter}
+        >
+          <Plus className="w-4 h-4" />
+          <span>Filter</span>
+        </button>
+      </div>
+      <button
+        className="w-full px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors duration-200 flex items-center justify-center space-x-2"
+        onClick={handleFilterSearch}
+      >
+        {loading ? <Loader className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" />}
+        <span>Search</span>
+      </button>
+      <button
+        className="w-full px-4 py-2 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/90 transition-colors duration-200 flex items-center justify-center space-x-2"
+        onClick={handleClearFilters}
+      >
+        <FilterIcon className="w-4 h-4" />
+        <span>Reset filters</span>
+      </button>
+    </div>
+  )
 }

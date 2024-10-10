@@ -14,7 +14,7 @@ import {
 	SocialButtons,
 	ExpandableText,
 } from '../..'
-import { Box, Stack } from '@mui/material'
+
 
 export type ShowProps = {
 	handle?: string
@@ -128,18 +128,14 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 			image={resource?.image?.url}
 			primary={resource?.title}
 			secondary={
-				<Stack spacing={2} sx={{ width: '100%' }}>
-					<Stack
-						spacing={2}
-						sx={{ width: '100%' }}
-						alignItems={slotProps?.secondary?.alignItems}
-					>
+				<div className='w-full flex flex-col space-y-2'>
+					<div className='w-full h-full flex flex-col space-y-2'>					
 						{displayFields?.length > 0 && (
 							<DisplayFields fields={displayFields} resource={resource} />
 						)}
-					</Stack>
+					</div>
 					<ExpandableText text={resource?.description} />
-				</Stack>
+				</div>
 			}
 			actions={
 				<SocialButtons
@@ -153,13 +149,13 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 			}
 			secondaryAction={
 				buttons && (
-					<Box sx={sx.buttons}>
+					<div className='w-full'>
 						<ButtonActions
 							justifyContent={slotProps?.secondaryAction?.justifyContent}
 							buttons={buttons}
 							resource={resource}
 						/>
-					</Box>
+					</div>
 				)
 			}
 			slots={slots}
@@ -168,9 +164,3 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 }
 
 export default ShowItem
-
-const sx = {
-	buttons: {
-		width: '100%',
-	},
-}

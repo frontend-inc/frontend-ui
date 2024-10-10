@@ -1,65 +1,41 @@
 import React from 'react'
-import { Box, Button } from '@mui/material'
+import { Button } from "../../../shadcn/ui/button"
+import { cn } from "../../../shadcn/lib/utils"
 
 type CarouselDotProps = {
-	onClick?: () => void
-	styles?: any
-	index?: number
-	active?: boolean
-	onMove?: () => void
-	carouselState?: {
-		currentSlide: number
-		deviceType: string
-	}
+  onClick?: () => void
+  styles?: React.CSSProperties
+  index?: number
+  active?: boolean
+  onMove?: () => void
+  carouselState?: {
+    currentSlide: number
+    deviceType: string
+  }
 }
 
 const CarouselDot: React.FC<CarouselDotProps> = (props) => {
-	const { onClick, active, index, onMove, styles = {}, ...rest } = props
+  const { onClick, active, index, onMove, styles = {}, ...rest } = props
 
-	const {
-		carouselState: { currentSlide, deviceType },
-	} = rest
+  const {
+    carouselState: { currentSlide, deviceType },
+  } = rest
 
-	// onMove means if dragging or swiping in progress.
-	// active is provided by this lib for checking if the item is active or not.
-	return (
-		<Button
-			disableRipple
-			sx={sx.button}
-			className={active ? 'active' : 'inactive'}
-			onClick={() => onClick()}
-		>
-			<Box
-				sx={{
-					...sx.dot,
-					...(active && sx.dotActive),
-					...styles,
-				}}
-			/>
-		</Button>
-	)
+  return (
+    <Button
+      variant="ghost"
+      className="py-1 px-0 shadow-none mx-0 hover:shadow-none hover:bg-transparent"
+      onClick={() => onClick?.()}
+    >
+      <div
+        className={cn(
+          "w-full h-1 bg-gray-200 transition-all duration-300 ease-in-out",
+          active && "bg-primary",
+        )}
+        style={styles}
+      />
+    </Button>
+  )
 }
 
 export default CarouselDot
-
-const sx = {
-	button: {
-		py: 1,
-		px: 0,
-		boxShadow: 0,
-		mx: '0px',
-		'&:hover': {
-			boxShadow: 0,
-			bgcolor: 'transparent',
-		},
-	},
-	dot: {
-		width: '100%',
-		height: '4px',
-		bgcolor: 'grey.200',
-		transition: 'all 0.3s ease-in-out',
-	},
-	dotActive: {
-		bgcolor: 'primary.main',
-	},
-}

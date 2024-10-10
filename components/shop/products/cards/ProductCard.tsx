@@ -1,6 +1,6 @@
 import React from 'react'
 import { cn } from '../../../../shadcn/lib/utils'
-import { Box, Stack, Typography } from '../../../../tailwind'
+import { Typography } from '../../../../tailwind'
 import { Image } from '../../..'
 
 export type ProductCardProps = {
@@ -53,7 +53,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 					'w-full overflow-hidden rounded-lg transition-shadow duration-300 bg-background',          
 				)}				
 			>
-				<Box className="min-h-[240px] w-full relative overflow-hidden">
+				<div className="min-h-[240px] w-full relative overflow-hidden">
 					<Image
 						src={image}
 						height={height}
@@ -64,14 +64,13 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
             disableBorderRadius={!disableBorder}
 						{...slots.image}
 					/>
-				</Box>
-				<Stack
-					className="px-4 py-1 space-y-4 w-full justify-between items-between"
-					spacing={1}
+				</div>
+				<div
+					className="px-4 py-1 flex flex-row space-y-4 w-full justify-between items-between"					
 				>
 					<div>
 						<Typography variant="subtitle2">{primary}</Typography>
-						<Stack direction="row" className="space-x-2">
+						<div className="flex flex-row space-x-2">
 							<Typography className="text-sm text-foreground" variant="caption">
 								{price}
 							</Typography>
@@ -80,7 +79,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 									{compareAtPrice}
 								</Typography>
 							)}
-						</Stack>
+						</div>
 						{secondary && (
 							<Typography
 								className="text-sm text-muted-foreground"
@@ -91,11 +90,11 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 						)}
 					</div>
 					{addToCart}
-					<Stack direction="row" className="justify-between">
+					<div className="flex flex-row justify-between">
 						{actions}
 						{secondaryAction}
-					</Stack>
-				</Stack>
+					</div>
+				</div>
 			</div>
 		)
 	}

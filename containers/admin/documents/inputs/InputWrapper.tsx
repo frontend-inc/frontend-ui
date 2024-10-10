@@ -1,106 +1,60 @@
 import React, { useState } from 'react'
 import { Label } from '../../../../components'
-import { Box, IconButton, Typography, Collapse } from '@mui/material'
+import { IconButton, Typography, Collapse } from '../../../../tailwind'
 import { KeyboardArrowDown } from '@mui/icons-material'
+import { cn } from "../../../../shadcn/lib/utils"
 
 type DocumentInputWrapperProps = {
-	title: string
-	label: string
-	children: any
-	defaultOpen?: boolean
-	expandable?: boolean
-	disablePadding?: boolean
+  title: string
+  label: string
+  children: React.ReactNode
+  defaultOpen?: boolean
+  expandable?: boolean
+  disablePadding?: boolean
 }
 
 const DocumentInputWrapper: React.FC<DocumentInputWrapperProps> = (props) => {
-	const {
-		title,
-		label,
-		children,
-		defaultOpen = true,
-		expandable = false,
-		disablePadding = false,
-	} = props
+  const {
+    title,
+    label,
+    children,
+    defaultOpen = true,
+    expandable = false,
+    disablePadding = false,
+  } = props
 
-	const [open, setOpen] = useState(defaultOpen)
+  const [open, setOpen] = useState(defaultOpen)
 
-	return (
-		<Box
-			sx={{
-				...sx.root,
-				...(!disablePadding && sx.padding),
-			}}
-		>
-			{expandable && (
-				<Box>
-					<IconButton size={'small'} onClick={() => setOpen(!open)}>
-						<KeyboardArrowDown
-							sx={{
-								...sx.icon,
-								...(!open && sx.rotateIcon),
-							}}
-						/>
-					</IconButton>
-				</Box>
-			)}
-			<Box sx={sx.inputField}>
-				<Box sx={sx.inputLabel}>
-					<Typography variant="overline" color="text.secondary">
-						{title}
-					</Typography>
-					<Label label={label} />
-				</Box>
-				<Collapse in={open}>{children}</Collapse>
-			</Box>
-		</Box>
-	)
+  return (
+    <div className={cn(
+      "w-full flex flex-row justify-start items-start",
+      !disablePadding && "pb-2"
+    )}>
+      {expandable && (
+        <div>
+          <IconButton onClick={() => setOpen(!open)}>
+            <KeyboardArrowDown
+              className={cn(
+                "h-5 w-5 rounded text-gray-500 bg-gray-100 transition-transform duration-200",
+                !open && "rotate-[-90deg]"
+              )}
+            />
+          </IconButton>
+        </div>
+      )}
+      <div className={cn(
+        "flex-grow sm:flex-grow-[0.5] w-full pr-0 pl-1 border-l-3 border-transparent hover:border-primary transition-colors duration-300 ease-in-out"
+      )}>
+        <div className="flex flex-row justify-between items-center">
+          <Typography variant="overline" color="text.secondary">
+            {title}
+          </Typography>
+          <Label label={label} />
+        </div>
+        <Collapse in={open}>{children}</Collapse>
+      </div>
+    </div>
+  )
 }
 
 export default DocumentInputWrapper
-
-const sx = {
-	root: {
-		width: '100%',
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'flex-start',
-		alignItems: 'flex-start',
-	},
-	padding: {
-		pb: 2,
-	},
-	inputLabel: {
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-	},
-	inputField: {
-		flexGrow: {
-			xs: 1,
-			sm: 0.5,
-		},
-		width: '100%',
-
-		pr: 0,
-		pl: 1,
-		borderLeft: '3px solid',
-		borderColor: 'transparent',
-		transition: 'border-color 0.3s ease-in-out',
-		'&:hover': {
-			borderColor: 'primary.main',
-		},
-	},
-	icon: {
-		height: 20,
-		width: 20,
-		borderRadius: 1,
-		color: 'text.secondary',
-		bgcolor: 'background.hover',
-		transition: '0.2s',
-		transform: 'rotate(0)',
-	},
-	rotateIcon: {
-		transform: 'rotate(-90deg)',
-	},
-}

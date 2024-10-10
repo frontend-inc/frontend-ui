@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAlerts } from '../../../hooks'
 import { Image, Modal } from '../../../components'
-import { Box, Button } from '../../../tailwind'
+import { Button } from '../../../tailwind'
 import copy from 'copy-to-clipboard'
 
 type AdminMediaShowProps = {

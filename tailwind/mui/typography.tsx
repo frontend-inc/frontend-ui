@@ -16,7 +16,7 @@ interface TypographyProps {
 		| 'button'
 		| 'caption'
 		| 'overline'
-	color?: 'text.primary' | 'text.secondary'
+	color?: string
 	textAlign?: 'left' | 'center' | 'right'
 	fontFamily?: string
 	className?: string
@@ -32,7 +32,9 @@ const Typography: React.FC<TypographyProps> = ({
 	children,
 }) => {
 	const baseClasses = cn(
-		color === 'text.primary' ? 'text-foreground' : 'text-muted-foreground',
+		color === 'text.primary' && 'text-foreground',
+    color == 'text.secondary' && 'text-muted-foreground',
+    color,
 		'whitespace-pre-line'
 	)
 

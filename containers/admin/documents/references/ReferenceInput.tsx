@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useDocuments } from '../../../../hooks'
 import { SortableList } from '../../../../components'
-import { Box, Button } from '@mui/material'
-import { Search } from '@mui/icons-material'
+import { Button } from '../../../../tailwind'
+import { Search } from 'lucide-react'
 import DocumentList from './DocumentList'
 import DocumentEdit from './DocumentEdit'
 import ReferenceItem from './ReferenceItem'
@@ -78,7 +78,7 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
 	}, [field, document])
 
 	return (
-		<Box>
+		<div className='w-full'>
 			{resources && field && (
 				<SortableList
 					droppableId={'sortable-documents'}
@@ -94,19 +94,19 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
 					)}
 				/>
 			)}
-			<Box sx={sx.buttons}>
+			<div className="flex flex-row space-x-1">
 				<Button
 					color="secondary"
 					variant="contained"
 					onClick={() => setOpen(true)}
-					startIcon={<Search />}
+					startIcon={<Search className='w-5 h-5 text-foreground' />}
 				>
 					Choose {field?.foreign_collection?.plural_name}
 				</Button>
 				<Button color="secondary" variant="contained" onClick={handleAddClick}>
 					Add {field?.foreign_collection?.singular_name}
 				</Button>
-			</Box>
+			</div>
 			<DocumentList
 				enableMultipleSelect={enableMultipleSelect}
 				open={open}
@@ -121,25 +121,8 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
 				documentId={foreignDocument?.id}
 				collectionId={field?.foreign_collection?.name}
 			/>
-		</Box>
+		</div>
 	)
 }
 
 export default ReferenceInput
-
-const sx = {
-	root: {
-		height: '100%',
-	},
-	icon: {
-		color: 'icon',
-	},
-	content: {
-		overflow: 'hidden',
-	},
-	buttons: {
-		display: 'flex',
-		flexDirection: 'row',
-		gap: '5px',
-	},
-}

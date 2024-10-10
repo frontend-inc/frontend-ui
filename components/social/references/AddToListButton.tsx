@@ -1,107 +1,93 @@
 import React, { useState } from 'react'
 import { useResource, useResourceContext } from 'frontend-js'
-import { Box, Button, IconButton } from '@mui/material'
-import { PlaylistAdd } from '@mui/icons-material'
+import { Button } from "../../../shadcn/ui/button"
 import { Modal } from '../../../components'
+import { PlaylistAdd } from 'lucide-react'
 import { RemoteAutosuggest } from '../../../components'
 import { useAuth } from 'frontend-js'
 import { useApp } from '../../../hooks'
+import { cn } from "../../../shadcn/lib/utils"
 
 type AddToListProps = {
-	size?: 'small' | 'large'
-	resource: any
-	color?: string
+  size?: 'small' | 'large'
+  resource: any
+  color?: string
+  className?: string
 }
 
 const AddToList: React.FC<AddToListProps> = (props) => {
-	const { size = 'small', resource: selected, color = 'text.secondary' } = props
+  const { size = 'small', resource: selected, color = 'text-secondary', className } = props
 
-	const { currentUser } = useAuth()
-	const { setAuthOpen } = useApp()
+  const { currentUser } = useAuth()
+  const { setAuthOpen } = useApp()
 
-	const [open, setOpen] = useState(false)
-	const handleClose = () => setOpen(false)
+  const [open, setOpen] = useState(false)
+  const handleClose = () => setOpen(false)
 
-	const { foreignUrl } = useResourceContext()
+  const { foreignUrl } = useResourceContext()
 
-	const { loading, resource, handleChange, addReferences } = useResource({
-		name: 'document',
-		url: foreignUrl,
-	})
+  const { loading, resource, handleChange, addReferences } = useResource({
+    name: 'document',
+    url: foreignUrl,
+  })
 
-	const handleClick = () => {
-		if (!currentUser?.id) return setAuthOpen(true)
-		setOpen(true)
-	}
+  const handleClick = () => {
+    if (!currentUser?.id) return setAuthOpen(true)
+    setOpen(true)
+  }
 
-	const handleSubmit = async () => {
-		if (!currentUser?.id) return setAuthOpen(true)
-		if (resource?.id) {
-			await addReferences(resource?.id, [selected?.id])
-			setOpen(false)
-		}
-	}
+  const handleSubmit = async () => {
+    if (!currentUser?.id) return setAuthOpen(true)
+    if (resource?.id) {
+      await addReferences(resource?.id, [selected?.id])
+      setOpen(false)
+    }
+  }
 
-	return (
-		<>
-			<Box>
-				<IconButton
-					onClick={handleClick}
-					sx={{
-						color,
-						'&:hover': {
-							color,
-						},
-						...(size == 'small' ? sx.small : sx.large),
-					}}
-				>
-					<PlaylistAdd fontSize="small" />
-				</IconButton>
-			</Box>
-			<Modal
-				title="Add to List"
-				loading={loading}
-				open={open}
-				handleClose={handleClose}
-				buttons={
-					<Button
-						fullWidth
-						onClick={handleSubmit}
-						variant="contained"
-						color="primary"
-						startIcon={<PlaylistAdd fontSize="small" />}
-					>
-						Add to List
-					</Button>
-				}
-			>
-				<RemoteAutosuggest
-					url={foreignUrl}
-					name="id"
-					displayField="title"
-					value={resource?.id}
-					handleChange={handleChange}
-					defaultQuery={{
-						current_user: true,
-					}}
-				/>
-			</Modal>
-		</>
-	)
+  return (
+    <>
+      <Button
+        variant="ghost"
+        size={size}
+        onClick={handleClick}
+        className={cn(
+          "p-2",
+          size === 'large' && "border border-border bg-background hover:bg-background",
+          color,
+          className
+        )}
+      >
+        <PlaylistAdd className="h-4 w-4" />
+      </Button>
+      <Modal
+        title="Add to List"
+        loading={loading}
+        open={open}
+        handleClose={handleClose}
+        buttons={
+          <Button
+            className="w-full"
+            onClick={handleSubmit}
+            variant="default"
+          >
+            <PlaylistAdd className="mr-2 h-5 w-5 text-foreground" />
+            Add to List
+          </Button>
+        }
+      >
+        <RemoteAutosuggest
+          url={foreignUrl}
+          name="id"
+          displayField="title"
+          value={resource?.id}
+          handleChange={handleChange}
+          defaultQuery={{
+            current_user: true,
+          }}
+        />
+      </Modal>
+    </>
+  )
 }
 
 export default AddToList
-
-const sx = {
-	small: {},
-	large: {
-		border: '1px solid',
-		borderColor: 'divider',
-		bgcolor: 'background.main',
-		color: 'text.secondary',
-		'&:hover': {
-			bgcolor: 'background.main',
-			color: 'text.secondary',
-		},
-	},
-}

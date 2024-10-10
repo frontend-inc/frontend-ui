@@ -1,112 +1,60 @@
-import React, { useState } from 'react'
-import { Box, Stack } from '@mui/material'
-import { Icon, Placeholder } from '../../../components'
-import { Tabs as MuiTabs, Tab as MuiTab } from '@mui/material'
+"use client"
+
+import React from 'react'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "../../../shadcn/ui/tabs"
+import { Icon } from '../../../components'
 import TabContent from './TabContent'
 
 export type TabsProps = {
-	direction?: 'row' | 'column'
-	items?: {
-		icon?: string
-		label: string
-		title: string
-		description: string
-		image?: string
-	}[]
-	editing?: boolean
+  items?: {
+    icon?: string
+    label: string
+    title: string
+    description: string
+    image?: string
+  }[]
+  editing?: boolean
 }
 
-const Tabs: React.FC<TabsProps> = (props) => {
-	const [currentTab, setCurrentTab] = useState(0)
-
-	const { items = [], direction = 'row' } = props
-
-	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-		setCurrentTab(newValue)
-	}
-
-	return (
-		<Stack
-			spacing={1}
-			direction={direction == 'column' ? 'row' : 'column'}
-			sx={sx.root}
-		>
-			<MuiTabs
-				centered
-				orientation={direction == 'column' ? 'vertical' : 'horizontal'}
-				value={currentTab}
-				onChange={handleChange}
-				color="primary"
-				sx={{
-					...sx.tabs,
-					...(direction === 'column' && sx.verticalTabs),
-				}}
-			>
-				{items?.map((item, i) => (
-					<MuiTab
-						label={item.label}
-						value={i}
-						icon={
-							item.icon ? (
-								<Box sx={sx.tabIcon}>
-									<Icon
-										name={item.icon}
-										color={currentTab === i ? 'primary.main' : 'text.primary'}
-									/>
-								</Box>
-							) : (
-								''
-							)
-						}
-						iconPosition="start"
-					/>
-				))}
-			</MuiTabs>
-			{items?.map((item, i) => (
-				<TabContent
-					key={i}
-					active={i == currentTab}
-					title={item?.title}
-					description={item?.description}
-					image={item?.image}
-				/>
-			))}
-			{items?.length === 0 && (
-				<Placeholder
-					icon="Search"
-					title="No content"
-					description="Your content will appear here."
-				/>
-			)}
-		</Stack>
-	)
+const CustomTabs: React.FC<TabsProps> = ({ items = [] }) => {
+  return (
+    <Tabs defaultValue="0" className="w-full">
+      <TabsList className="flex justify-center mb-4">
+        {items.map((item, i) => (
+          <TabsTrigger
+            key={i}
+            value={i.toString()}
+            className="flex items-center justify-center"
+          >
+            {item.icon && (
+              <Icon
+                name={item.icon}
+                className="w-5 h-5 mr-2 text-current"
+              />
+            )}
+            {item.label}
+          </TabsTrigger>
+        ))}
+      </TabsList>
+      {items.map((item, i) => (
+        <TabsContent key={i} value={i.toString()}>
+          <TabContent
+            active={true}
+            title={item.title}
+            description={item.description}
+            image={item.image}
+          />
+        </TabsContent>
+      ))}
+      {items.length === 0 && (
+        <div className="flex flex-col items-center justify-center p-8 text-center">
+          <Icon name="Search" className="w-12 h-12 text-gray-400 mb-4" />
+          <h2 className="text-xl font-semibold mb-2">No content</h2>
+          <p className="text-gray-600">Your content will appear here.</p>
+        </div>
+      )}
+    </Tabs>
+  )
 }
 
-export default Tabs
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-	tabs: {
-		color: 'text.primary',
-		'& .MuiButtonBase-root': {
-			color: 'text.primary',
-		},
-		'& .MuiButtonBase-root.Mui-selected': {
-			color: 'text.primary',
-		},
-	},
-	title: {
-		width: '100%',
-		textAlign: 'center',
-		mb: 2,
-	},
-	tabIcon: {
-		mb: '-4px',
-		mr: 1,
-	},
-	verticalTabs: {
-		width: 160,
-	},
-}
+export default CustomTabs

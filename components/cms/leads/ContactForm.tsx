@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Container } from '../../../tailwind'
+import { Container } from '../../../tailwind'
 import { FormFieldType, TypographyVariantsType } from '../../../types'
 import { Heading, Form } from '../..'
 import { useResource } from 'frontend-js'
@@ -52,7 +52,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 	}
 
 	return (
-		<Box sx={sx.root}>
+		<div sx={sx.root}>
 			<Container maxWidth="sm">
 				<Heading
 					label={label}
@@ -96,7 +96,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 					buttonText={buttonText}
 				/>
 			</Container>
-		</Box>
+		</div>
 	)
 }
 

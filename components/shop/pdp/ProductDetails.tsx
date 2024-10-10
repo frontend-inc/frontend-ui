@@ -9,7 +9,6 @@ import {
 	SocialButtons,
 	AddToCartButton,
 } from '../..'
-import { Box, Stack } from '../../../tailwind'
 
 export type ProductDetailsProps = {
 	handle?: string
@@ -70,13 +69,11 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 			compareAtPrice={product?.display_compare_at_price}
 			description={product?.description}
 			secondary={
-				<Stack spacing={2} sx={{ width: '100%' }}>
-					<Stack spacing={2} sx={{ width: '100%' }} alignItems="flex-start">
-						{enableRatings == true && (
-							<ProductRating resource={product} enableTotal />
-						)}
-					</Stack>
-				</Stack>
+				<div className="w-full">
+          {enableRatings == true && (
+            <ProductRating resource={product} enableTotal />
+          )}
+				</div>
 			}
 			actions={
 				<SocialButtons
@@ -90,7 +87,7 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 				/>
 			}
 			addToCart={
-				<Stack spacing={2}>
+				<div className="flex flex-row space-x-2">
 					<AddToCartButton
 						size="large"
 						availableForSale
@@ -99,17 +96,15 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 					{displayFields?.length > 0 && (
 						<DisplayMetafields fields={displayFields} resource={product} />
 					)}
-				</Stack>
+				</div>
 			}
 			secondaryAction={
 				buttons && (
-					<Box sx={sx.buttons}>
-						<ButtonActions
-							justifyContent={'flex-end'}
-							buttons={buttons}
-							resource={product}
-						/>
-					</Box>
+          <ButtonActions
+            justifyContent={'end'}
+            buttons={buttons}
+            resource={product}
+          />
 				)
 			}
 			slots={slots}
@@ -118,13 +113,3 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 }
 
 export default ProductDetails
-
-const sx = {
-	buttons: {
-		width: '100%',
-	},
-	addToCart: {
-		width: '100%',
-		maxWidth: '300px',
-	},
-}

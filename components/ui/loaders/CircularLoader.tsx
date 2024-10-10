@@ -1,29 +1,17 @@
 import React from 'react'
-import { Box, CircularProgress } from '@mui/material'
+import { CircularProgress } from '../../../tailwind'
 
 type LoaderProps = {
 	size?: number
 }
 
 const Loader: React.FC<LoaderProps> = (props) => {
-	const { size = 32 } = props
 
 	return (
-		<Box sx={sx.root}>
-			<CircularProgress disableShrink color="primary" size={size} />
-		</Box>
+		<div className="w-full h-full flex justify-center items-center">
+			<CircularProgress />
+		</div>
 	)
 }
 
 export default Loader
-
-const sx = {
-	root: {
-		p: 6,
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		height: '100%',
-	},
-}

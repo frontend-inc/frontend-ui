@@ -1,30 +1,18 @@
 import React from 'react'
 import Login from './login/Login'
 import { AuthLayout } from '../../components'
-import { Box, Container } from '@mui/material'
+import { Container } from '../../tailwind'
 
 const AuthWall: React.FC = () => {
 	return (
 		<Container maxWidth="sm">
-			<Box sx={sx.root}>
+			<div className='w-full h-full flex flex-row justify-center items-center pt-[20px] md:pt-[200px]'>
 				<AuthLayout>
 					<Login />
 				</AuthLayout>
-			</Box>
+			</div>
 		</Container>
 	)
 }
 
 export default AuthWall
-
-const sx = {
-	root: {
-		width: '100%',
-		height: 'calc(100vh - 120px)',
-		gap: '40px',
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-}

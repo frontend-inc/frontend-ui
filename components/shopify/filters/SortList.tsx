@@ -1,60 +1,47 @@
 import React from 'react'
-import {
-	ListItemText,
-	ListItemIcon,
-	Box,
-	Radio,
-	MenuItem,
-	Typography,
-} from '@mui/material'
+import { RadioGroup, RadioGroupItem } from "../../../shadcn/ui/radio-group"
+import { Label } from "../../../shadcn/ui/label"
 
 type SortListProps = {
-	enableIcons?: boolean
-	value: any
-	reverse?: any
-	options: any
-	handleClick: any
+  enableIcons?: boolean
+  value: string
+  reverse?: boolean
+  options: Array<{
+    value: string
+    reverse?: boolean
+    label: string
+  }>
+  handleClick: (value: string, reverse?: boolean) => void
 }
 
 const SortList: React.FC<SortListProps> = (props) => {
-	const { value, reverse, options, handleClick } = props || {}
+  const { value, reverse, options, handleClick } = props || {}
 
-	return (
-		<Box sx={sx.root}>
-			{options?.map((option, index) => (
-				<MenuItem
-					key={index}
-					disableGutters
-					selected={option.value === value && option.reverse === reverse}
-					onClick={() => handleClick(option?.value, option?.reverse)}
-				>
-					<ListItemIcon sx={sx.listItemIcon}>
-						<Radio
-							checked={option.value == value && option.reverse == reverse}
-							onChange={() => handleClick(option?.value, option?.reverse)}
-						/>
-					</ListItemIcon>
-					<ListItemText
-						primary={<Typography variant="button">{option?.label}</Typography>}
-					/>
-				</MenuItem>
-			))}
-		</Box>
-	)
+  return (
+    <RadioGroup
+      value={`${value}-${reverse}`}
+      onValueChange={(newValue) => {
+        const [value, reverse] = newValue.split('-')
+        handleClick(value, reverse === 'true')
+      }}
+      className="space-y-1"
+    >
+      {options?.map((option, index) => (
+        <div key={index} className="flex items-center space-x-2">
+          <RadioGroupItem
+            value={`${option.value}-${option.reverse}`}
+            id={`option-${index}`}
+          />
+          <Label
+            htmlFor={`option-${index}`}
+            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          >
+            {option.label}
+          </Label>
+        </div>
+      ))}
+    </RadioGroup>
+  )
 }
 
 export default SortList
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-	icon: {
-		color: 'primary.main',
-		height: '20px',
-		width: '20px',
-	},
-	listItemIcon: {
-		justifyContent: 'center',
-	},
-}

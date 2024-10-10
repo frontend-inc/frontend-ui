@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box, Stack, Typography } from '@mui/material'
-import { ResourceModal, ResourceDetails } from '../../../components'
+import { Typography } from '../../../tailwind'
+import { ResourceModal, ResourceDetails, DividerInput } from '../../../components'
 import { ResourceShowProps } from '../../../components/cms/resources/ResourceShow'
 import { DisplayFieldType } from '../../../types'
 import { AdminAnswerList } from '../../../containers'
@@ -40,8 +40,8 @@ const AdminQuestionShow: React.FC<AdminQuestionShowProps> = (props) => {
 				resource={resource?.question}
 				fields={[]}
 			/>
-			<Stack direction="column" width={'100%'} spacing={2}>
-				<Box sx={sx.divider} />
+			<div className="flex flex-col space-y-3">
+        <div className="w-full h-[1px] border-top-1 border-border" />
 				<Typography variant="subtitle1" color="text.primary">
 					Answer Choices
 				</Typography>
@@ -52,7 +52,7 @@ const AdminQuestionShow: React.FC<AdminQuestionShowProps> = (props) => {
 					direction="column"
 					questionId={resource?.question_id}
 				/>
-			</Stack>
+			</div>
 		</ResourceModal>
 	)
 }

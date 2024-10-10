@@ -1,6 +1,6 @@
 import React from 'react'
-import { Image, Field, Label } from '../../../components'
-import { Box, Stack, Typography } from '@mui/material'
+import { Image, Field } from '../../../components'
+import { Typography } from '../../../tailwind'
 import { DisplayFieldType } from '../../../types'
 
 type ResourceDetailsProps = {
@@ -27,11 +27,14 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Stack direction="column" sx={sx.content} spacing={1}>
+		<div className='w-full flex flex-col space-y-2'>
 			{image && (
-				<Box sx={sx.image}>
-					<Image height={220} src={image} label={label} />
-				</Box>
+				<div className='w-full h-[200px]'>
+					<Image 
+            src={image} 
+            label={label} 
+          />
+				</div>
 			)}
 			{avatar && avatar}
 			<Typography variant="h5" color="text.primary">
@@ -52,7 +55,7 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 					direction={direction}
 				/>
 			))}
-		</Stack>
+		</div>
 	)
 }
 

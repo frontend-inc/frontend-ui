@@ -1,62 +1,49 @@
 import React, { useState } from 'react'
-import { Box, LinearProgress, IconButton } from '@mui/material'
-import { ChevronLeft, ChevronRight } from '@mui/icons-material'
+import { Button } from "../../../shadcn/ui/button"
+import { Progress } from "../../../shadcn/ui/progress"
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { cn } from "../../../shadcn/lib/utils"
 
 type CarouselProgressProps = {
-	children: React.ReactNode[]
+  children: React.ReactNode[]
+  className?: string
 }
 
-const CarouselProgress: React.FC<CarouselProgressProps> = (props) => {
-	const { children } = props
-	const [currentStep, setCurrentStep] = useState(0)
+const CarouselProgress: React.FC<CarouselProgressProps> = ({ children, className }) => {
+  const [currentStep, setCurrentStep] = useState(0)
 
-	const handleNextStep = () => {
-		let nextStep = currentStep + 1
-		if (nextStep > children.length - 1) {
-			nextStep = 0
-		}
-		setCurrentStep(nextStep)
-	}
+  const handleNextStep = () => {
+    let nextStep = currentStep + 1
+    if (nextStep > children.length - 1) {
+      nextStep = 0
+    }
+    setCurrentStep(nextStep)
+  }
 
-	const handlePrevStep = () => {
-		let nextStep = currentStep - 1
-		if (nextStep == 0) {
-			nextStep = children.length - 1
-		}
-		setCurrentStep(nextStep)
-	}
+  const handlePrevStep = () => {
+    let nextStep = currentStep - 1
+    if (nextStep < 0) {
+      nextStep = children.length - 1
+    }
+    setCurrentStep(nextStep)
+  }
 
-	return (
-		<Box>
-			<Box>{children[currentStep]}</Box>
-			<Box sx={sx.controls}>
-				<LinearProgress color="primary" variant="determinate" value={80} />
-				<Box sx={sx.buttons}>
-					<IconButton onClick={handlePrevStep}>
-						<ChevronLeft />
-					</IconButton>
-					<IconButton onClick={handleNextStep}>
-						<ChevronRight />
-					</IconButton>
-				</Box>
-			</Box>
-		</Box>
-	)
+  return (
+    <div className={cn("space-y-4", className)}>
+      <div>{children[currentStep]}</div>
+      <div className="flex flex-col items-center space-y-2">
+        <Progress value={((currentStep + 1) / children.length) * 100} className="w-full" />
+        <div className="flex justify-center items-center space-x-4">
+          <Button variant="outline" size="icon" onClick={handlePrevStep}>
+            <ChevronLeft className="h-4 w-4" />
+          </Button>
+          <Button variant="outline" size="icon" onClick={handleNextStep}>
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default CarouselProgress
-
-const sx = {
-	buttons: {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		gap: '20px',
-	},
-	controls: {
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-}

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Drawer } from '../../../../components'
 import { useCollections, useDocuments } from '../../../../hooks'
-import { Box, Stack } from '@mui/material'
 import AdminDocumentForm from '../AdminDocumentForm'
 import PublishButton from '../inputs/PublishButton'
 import SaveButton from '../inputs/SaveButton'
@@ -151,7 +150,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 		<Drawer open={open} handleClose={handleClose} title={title}>
 			{document && activeFields && (
 				<>
-					<Box sx={sx.container}>
+					<div className="w-screen sm:w-auto">
 						<AdminDocumentForm
 							errors={errors}
 							document={document}
@@ -166,8 +165,8 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 							handleRemoveProducts={handleRemoveProducts}
 							handleUpdateProductPositions={handleUpdateProductPositions}
 						/>
-					</Box>
-					<Stack spacing={2}>
+					</div>
+					<div className="flex flex-col space-y-3">
 						<SaveButton
 							fullWidth
 							loading={loading}
@@ -180,7 +179,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 							document={document}
 							handleTogglePublish={handleSubmitAndPublish}
 						/>
-					</Stack>
+					</div>
 				</>
 			)}
 		</Drawer>
@@ -189,18 +188,3 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 
 export default DocumentEdit
 
-const sx = {
-	container: {
-		width: {
-			sm: 'auto',
-			xs: '100vw',
-		},
-	},
-	icon: {
-		height: 28,
-		width: 28,
-	},
-	progressLoader: {
-		p: 0,
-	},
-}

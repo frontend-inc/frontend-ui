@@ -24,6 +24,7 @@ type AutosuggestProps = {
   info?: string
   name: string
   value: string | number
+  placeholder?: string
   handleChange: (ev: SyntheticEventType) => void
   handleInputChange?: (value: string) => void
   options: OptionType[]
@@ -35,6 +36,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
     info,
     name,
     value,
+    placeholder="Search...",
     handleChange,
     handleInputChange,
     options = [],
@@ -91,9 +93,9 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
       </div>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput 
+          <CommandInput             
             onValueChange={ handleCommandChange }
-            placeholder="Search option..." 
+            placeholder={placeholder}
           />
           <CommandList>
             <CommandEmpty>No option found.</CommandEmpty>

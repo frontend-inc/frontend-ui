@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Stack, Typography } from '../../../tailwind'
+import { Typography } from '../../../tailwind'
 import { ButtonType, TypographyVariantsType } from '../../../types'
 import { ButtonActions } from '../..'
 
@@ -17,8 +17,8 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 	const { label, title, description, buttons } = props || {}
 
 	return (
-		<Box className="w-full">
-			<Stack alignItems="center" direction="column" spacing={1}>
+		<div className="w-full">
+			<div className="flex flex-col items-center space-y-2">
 				{label && (
 					<Typography color="text.secondary" variant="caption">
 						{label}
@@ -35,17 +35,17 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 					</Typography>
 				)}
 				{buttons?.length > 0 && (
-					<Stack direction="row" spacing={1}>
+					<div>
 						<ButtonActions
 							resource={[]}
 							buttons={buttons}
 							size="large"
 							justifyContent="center"
 						/>
-					</Stack>
+					</div>
 				)}
-			</Stack>
-		</Box>
+			</div>
+		</div>
 	)
 }
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Button } from '@mui/material'
+import { Button } from '../../../../tailwind'
 import { Icon, Form, Modal } from '../../..'
 import { useResourceContext } from 'frontend-js'
 import { FormFieldType } from '../../../../types'
@@ -50,7 +50,7 @@ const ToolbarUpdateButton: React.FC<ToolbarUpdateProps> = (props) => {
 				title={`Update selected (${selectedIds.length})`}
 				loading={loading}
 			>
-				<Box py={2}>
+				<div className="p-2">
 					<Form
 						errors={errors}
 						fields={fields}
@@ -60,7 +60,7 @@ const ToolbarUpdateButton: React.FC<ToolbarUpdateProps> = (props) => {
 						handleRemove={handleRemove}
 						handleSubmit={handleSubmit}
 					/>
-				</Box>
+				</div>
 			</Modal>
 		</>
 	)

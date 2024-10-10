@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button } from '@mui/material'
+import { Button } from '../../../tailwind'
 
 // Reference:
 // https://help.klaviyo.com/hc/en-us/articles/4418052317339
@@ -27,25 +27,12 @@ const KlaviyoButton: React.FC<KlaviyoButtonProps> = (props) => {
 
 	if (!formId) return null
 	return (
-		<Box
-			sx={{
-				...sx.root,
-				justifyContent,
-			}}
-		>
+		<div className='flex flex-row justify-center'>
 			<Button variant={variant} onClick={handleClick}>
 				{buttonText}
 			</Button>
-		</Box>
+		</div>
 	)
 }
 
 export default KlaviyoButton
-
-const sx = {
-	root: {
-		display: 'flex',
-		flexDirection: 'row',
-		width: '100%',
-	},
-}

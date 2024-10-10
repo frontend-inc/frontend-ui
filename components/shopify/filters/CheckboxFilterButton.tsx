@@ -1,88 +1,61 @@
 import React, { useState } from 'react'
-import { Box, Button, Popover } from '@mui/material'
-import { ExpandLess, ExpandMore } from '@mui/icons-material'
-import CheckboxGroupInput from './CheckboxGroupInput'
+import { Button } from "../../../shadcn/ui/button"
+import { Popover, PopoverContent, PopoverTrigger } from "../../../shadcn/ui/popover"
+import { ChevronUp, ChevronDown } from "lucide-react"
+import CheckboxGroupInput from './ShopifyCheckboxFilterList'
 
 type CheckboxFilterButtonProps = {
-	values: any
-	handleClick: any
-	label: string
-	options: any
+  values: any
+  handleClick: any
+  label: string
+  options: any
 }
 
 const CheckboxFilterButton: React.FC<CheckboxFilterButtonProps> = (props) => {
-	const { values, handleClick, label, options } = props
+  const { values, handleClick, label, options } = props
 
-	const [anchorEl, setAnchorEl] = useState(null)
-	const open = Boolean(anchorEl)
-	const [timer, setTimer] = useState<any>()
+  const [open, setOpen] = useState(false)
+  const [timer, setTimer] = useState<NodeJS.Timeout | null>(null)
 
-	const handleButtonClick = (event) => {
-		setAnchorEl(event.currentTarget)
-	}
+  const handleButtonClick = () => {
+    setOpen(true)
+  }
 
-	const handleMenuItemClick = (ev, value) => {
-		clearTimeout(timer)
-		handleClick(value)
-		setTimer(setTimeout(() => setAnchorEl(null), 2000))
-	}
+  const handleMenuItemClick = (ev: React.MouseEvent, value: any) => {
+    if (timer) clearTimeout(timer)
+    handleClick(value)
+    setTimer(setTimeout(() => setOpen(false), 2000))
+  }
 
-	const handleClose = () => {
-		setAnchorEl(null)
-	}
+  const handleClose = () => {
+    setOpen(false)
+  }
 
-	return (
-		<Box>
-			<Button
-				id="filter-button"
-				aria-controls="filter-menu"
-				aria-haspopup="true"
-				aria-expanded={open ? 'true' : undefined}
-				onClick={handleButtonClick}
-				endIcon={open ? <ExpandLess /> : <ExpandMore />}
-			>
-				{label}
-			</Button>
-			<Popover
-				id="filter-menu"
-				anchorEl={anchorEl}
-				open={open}
-				onClose={handleClose}
-				anchorOrigin={{
-					vertical: 'bottom',
-					horizontal: 'left',
-				}}
-			>
-				<CheckboxGroupInput
-					options={options}
-					values={values}
-					// @ts-ignore
-					handleClick={handleMenuItemClick}
-				/>
-			</Popover>
-		</Box>
-	)
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          variant="outline"
+          className="flex items-center justify-between"
+          onClick={handleButtonClick}
+        >
+          {label}
+          {open ? (
+            <ChevronUp className="ml-2 h-4 w-4" />
+          ) : (
+            <ChevronDown className="ml-2 h-4 w-4" />
+          )}
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-56">
+        <CheckboxGroupInput
+          options={options}
+          values={values}
+          handleClick={handleMenuItemClick}
+        />
+      </PopoverContent>
+    </Popover>
+  )
 }
 
 export default CheckboxFilterButton
-
-const sx = {
-	checkboxIcon: {
-		color: 'primary.main',
-	},
-	checkboxFilled: {
-		height: 18,
-		width: 18,
-		borderRadius: '2px',
-		mx: '4px',
-		backgroundColor: 'primary.main',
-	},
-	checkboxOutlined: {
-		height: 18,
-		width: 18,
-		borderRadius: '2px',
-		border: '2px solid',
-		mx: '4px',
-		borderColor: 'primary.main',
-	},
-}

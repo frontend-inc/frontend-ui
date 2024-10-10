@@ -1,5 +1,4 @@
 import React from 'react'
-import { Box, Stack, List } from '@mui/material'
 import { COLLECTION_TEMPLATES } from '../../../constants'
 import { FormFields, ErrorText } from '../../../components'
 import { MenuListItem } from '../../../components'
@@ -16,8 +15,8 @@ const AdminCollectionForm: React.FC<AdminCollectionFormProps> = (props) => {
 	const { errors, collection, handleTemplateClick, handleChange } = props
 
 	return (
-		<Stack direction="column" spacing={1}>
-			<Box p={2}>
+		<div className='flex flex-col space-y-2'>
+			<div className='p-2'>
 				<FormFields
 					errors={errors}
 					handleChange={handleChange}
@@ -43,10 +42,10 @@ const AdminCollectionForm: React.FC<AdminCollectionFormProps> = (props) => {
 						},
 					]}
 				/>
-			</Box>
+			</div>
 			{!collection?.id && (
 				<MenuList enableBorder label="Templates">
-					<List sx={{ my: 0 }}>
+					<ul>
 						{COLLECTION_TEMPLATES.map((template) => (
 							<MenuListItem
 								selected={collection.template == template}
@@ -57,7 +56,7 @@ const AdminCollectionForm: React.FC<AdminCollectionFormProps> = (props) => {
 								handleClick={() => handleTemplateClick(template)}
 							/>
 						))}
-					</List>
+					</ul>
 				</MenuList>
 			)}
 			<ErrorText
@@ -65,7 +64,7 @@ const AdminCollectionForm: React.FC<AdminCollectionFormProps> = (props) => {
 					errors?.collection_type && `collection type ${errors.collection_type}`
 				}
 			/>
-		</Stack>
+		</div>
 	)
 }
 

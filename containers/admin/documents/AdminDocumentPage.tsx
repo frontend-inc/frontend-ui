@@ -5,7 +5,7 @@ import {
 	AdminLayoutRight,
 } from '../../../components'
 import { PublishLabel } from '../../../components'
-import { Box, IconButton } from '@mui/material'
+import { IconButton } from '../../../tailwind'
 import AdminDocumentForm from './AdminDocumentForm'
 import AdminDocumentRightPanel from './AdminDocumentRightPanel'
 import { ChevronLeft } from 'lucide-react'
@@ -196,14 +196,14 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 					enableExpandRightPanel
 					title={title}
 					primaryActions={
-						<IconButton size="small" onClick={handleBackClick}>
+						<IconButton onClick={handleBackClick}>
 							<ChevronLeft />
 						</IconButton>
 					}
 					buttons={<PublishLabel published={document?.published} />}
 				/>
 				<ScrollArea>
-					<Box sx={sx.container}>
+					<div className='p-2'>
 						<AdminDocumentForm
 							errors={errors}
 							document={document}
@@ -219,7 +219,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 							handleRemoveProducts={handleRemoveProducts}
 							handleUpdateProductPositions={handleUpdateProductPositions}
 						/>
-					</Box>
+					</div>
 				</ScrollArea>
 			</AdminLayoutCenter>
 			<AdminLayoutRight>
@@ -243,33 +243,3 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 }
 
 export default DocumentEdit
-
-const sx = {
-	root: {
-		height: '100%',
-		width: '100%',
-	},
-	container: {
-		p: 2,
-	},
-	icon: {
-		height: 28,
-		width: 28,
-	},
-	progressLoader: {
-		p: 0,
-	},
-	rightContent: {
-		px: 2,
-		py: 1,
-		bgcolor: 'background.paper',
-		height: '100%',
-	},
-	spacer: {
-		height: '50px',
-	},
-	buttons: {
-		height: '100%',
-		alignItems: 'center',
-	},
-}
