@@ -1,131 +1,94 @@
 import React, { useState } from 'react'
 import { useUnsplash, useMedia } from '../../../../hooks'
-import { Button, Stack, Box } from '@mui/material'
 import { SearchInput } from '../../../../components'
 import UnsplashCard from './UnsplashCard'
 import UnsplashModal from './UnsplashModal'
-import { ExpandMore } from '@mui/icons-material'
 import PoweredByUnsplash from './PoweredByUnsplash'
 import { UnsplashImageType } from '../../../../types'
+import { Button } from "../../../../shadcn/ui/button"
+import { ChevronDown } from "lucide-react"
 
 type UnsplashProps = {
-	onComplete?: (resp: any) => void
+  onComplete?: (resp: any) => void
 }
 
-const UnsplashList: React.FC<UnsplashProps> = (props) => {
-	const { onComplete } = props
+const UnsplashList: React.FC<UnsplashProps> = ({ onComplete }) => {
+  const [showModal, setShowModal] = useState(false)
+  const [keywords, setKeywords] = useState('')
+  const [image, setImage] = useState<UnsplashImageType>({})
 
-	const [showModal, setShowModal] = useState(false)
-	const [keywords, setKeywords] = useState('')
+  const { loading, uploadFromUrl } = useMedia()
+  const { images, search, loadMore } = useUnsplash()
 
-	//@ts-ignore
-	const [image, setImage] = useState<UnsplashImageType>({})
+  const handleUpload = async (url: string, name: string) => {
+    try {
+      let resp = await uploadFromUrl(url, name)
+      if (onComplete) {
+        onComplete(resp)
+      }
+    } catch (e) {
+      console.error('Error uploading image:', e)
+    } finally {
+      setShowModal(false)
+      setImage({})
+    }
+  }
 
-	const { loading, uploadFromUrl } = useMedia()
+  const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    setKeywords(ev.target.value)
+  }
 
-	const handleUpload = async (url, name) => {
-		try {
-			let resp = await uploadFromUrl(url, name)
-			if (onComplete) {
-				onComplete(resp)
-			}
-		} catch (e) {
-			console.log(e)
-		} finally {
-			setShowModal(false)
-			//@ts-ignore
-			setImage({})
-		}
-	}
+  const handleSearch = async () => {
+    await search(keywords)
+  }
 
-	const { images, search, loadMore } = useUnsplash()
+  const handleLoadMore = async () => {
+    await loadMore(keywords)
+  }
 
-	const handleChange = (ev) => {
-		setKeywords(ev.target.value)
-	}
+  const handleImageClick = (image: UnsplashImageType) => {
+    setImage(image)
+    setShowModal(true)
+  }
 
-	const handleSearch = async () => {
-		await search(keywords)
-	}
-
-	const handleLoadMore = async () => {
-		await loadMore(keywords)
-	}
-
-	const handleImageClick = (image) => {
-		setImage(image)
-		setShowModal(true)
-	}
-
-	return (
-		<Box sx={sx.root}>
-			<Stack spacing={1}>
-				<SearchInput
-					name="keywords"
-					value={keywords}
-					placeholder="Search unsplash..."
-					handleChange={handleChange}
-					handleSearch={handleSearch}
-				/>
-				<PoweredByUnsplash />
-			</Stack>
-			<Box sx={sx.grid}>
-				{images?.map((image, i) => (
-					<UnsplashCard key={i} image={image} handleClick={handleImageClick} />
-				))}
-			</Box>
-			{images?.length > 0 && images?.length % 10 == 0 && (
-				<Box sx={sx.loadMoreContainer}>
-					<Button
-						sx={sx.loadMore}
-						color="secondary"
-						variant="contained"
-						endIcon={<ExpandMore />}
-						onClick={handleLoadMore}
-					>
-						Load More
-					</Button>
-				</Box>
-			)}
-			<UnsplashModal
-				loading={loading}
-				open={showModal}
-				image={image}
-				handleClose={() => setShowModal(false)}
-				handleUpload={handleUpload}
-			/>
-		</Box>
-	)
+  return (
+    <div className="w-full">
+      <div className="space-y-4">
+        <SearchInput
+          name="keywords"
+          value={keywords}
+          placeholder="Search unsplash..."
+          handleChange={handleChange}
+          handleSearch={handleSearch}
+        />
+        <PoweredByUnsplash />
+      </div>
+      <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        {images?.map((image, i) => (
+          <UnsplashCard key={i} image={image} handleClick={handleImageClick} />
+        ))}
+      </div>
+      {images?.length > 0 && images?.length % 10 === 0 && (
+        <div className="mt-4 flex justify-center">
+          <Button
+            variant="outline"
+            className="my-2"
+            onClick={handleLoadMore}
+          >
+            Load More
+            <ChevronDown className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+      )}
+      <UnsplashModal
+        loading={loading}
+        open={showModal}
+        image={image}
+        handleClose={() => setShowModal(false)}
+        handleUpload={handleUpload}
+      />
+    </div>
+  )
 }
 
 export default UnsplashList
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-	button: {
-		my: 1,
-	},
-	grid: {
-		mt: 2,
-		display: 'grid',
-		gridTemplateColumns: 'repeat(auto-fill, minmax(164px, 1fr))',
-		gap: '10px',
-	},
-	unsplashLogo: {
-		mt: 2,
-		justifyContent: 'flex-start',
-		alignItems: 'center',
-	},
-	loadMoreContainer: {
-		mt: 2,
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	loadMore: {
-		my: 2,
-	},
-}

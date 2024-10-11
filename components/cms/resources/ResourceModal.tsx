@@ -31,6 +31,7 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 
 	return (
 		<Drawer
+      mode='dark'  
 			open={open}
 			handleClose={handleClose}
 			title={title}

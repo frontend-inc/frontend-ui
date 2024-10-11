@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Icon, Drawer, IconLoading } from '../../../../components'
-import { Button, Tooltip, IconButton } from '@mui/material'
-import { SyntheticEventType, TextInputPropsType } from '../../../../types'
+import { Tooltip, Button, IconButton } from '../../../../tailwind'
+import { TextInputPropsType } from '../../../../types'
 import AiPromptForm from './AiPromptForm'
+import { Sparkles } from 'lucide-react'
 
 type AiPromptModalProps = TextInputPropsType & {
 	loading?: boolean
@@ -23,11 +24,12 @@ const AiPromptModal: React.FC<AiPromptModalProps> = (props) => {
 	return (
 		<>
 			<Tooltip title="Use AI to generate text">
-				<IconButton size="small" onClick={() => setOpen(!open)}>
-					<Icon name="Sparkles" color="text.primary" />
+				<IconButton onClick={() => setOpen(!open)}>
+					<Sparkles className='w-5 h-5 text-foreground' />
 				</IconButton>
 			</Tooltip>
 			<Drawer
+        mode='dark'
 				title={label}
 				open={open}
 				handleClose={() => setOpen(false)}
@@ -37,15 +39,12 @@ const AiPromptModal: React.FC<AiPromptModalProps> = (props) => {
 						variant="contained"
 						color="primary"
 						onClick={handleSubmit}
-						startIcon={
-							loading ? (
-								loading && <IconLoading />
-							) : (
-								<Icon name="Sparkles" color="primary.contrastText" />
-							)
-						}
+            loading={ loading }
+            startIcon={ 
+              !loading && <Icon name="Sparkles" />
+            }
 					>
-						{!loading && `Generate`}
+						Generate 
 					</Button>
 				}
 			>

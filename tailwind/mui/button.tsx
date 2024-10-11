@@ -76,15 +76,13 @@ const Button: React.FC<ButtonProps> = ({
       )}
       {...props}
     >
-      {loading ? (
-        <Loader2 className="h-4 w-4 animate-spin text-primary-foreground" />
-      ) : (
-        <>
-          {startIcon && <span className="mr-2">{startIcon}</span>}
-          {children}
-          {endIcon && <span className="ml-2">{endIcon}</span>}
-        </>
-      )}
+        {loading ? (
+          <Loader2 className="h-4 w-4 mr-2 animate-spin text-primary-foreground" />
+        ):(
+          startIcon && <span className="mr-2">{startIcon}</span>
+        )}          
+        {children}
+        {!loading && endIcon && <span className="ml-2">{endIcon}</span>}      
     </ShadcnButton>
   )
 }

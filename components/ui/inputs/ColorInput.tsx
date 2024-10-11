@@ -9,7 +9,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "../../../shadcn/ui/popo
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../../../shadcn/ui/tooltip"
 import { ChevronDown } from "lucide-react"
 import { cn } from "../../../shadcn/lib/utils"
-import { TAILWIND_COLORS, TAILWIND_COLOR_PICKER_MAP } from '../../../constants'
+import { TAILWIND_COLORS, TAILWIND_COLOR_PICKER_MAP, TAILWIND_COLOR_MAP } from '../../../constants'
 
 type ColorInputProps = {
   label?: string

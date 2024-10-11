@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Hidden } from '@mui/material'
+import { Hidden } from '../../../tailwind'
 import { useAdmin } from '../../../hooks'
 import { Drawer } from '../../../components'
 import { useResponsive } from '../../../hooks'
@@ -30,6 +30,7 @@ const AdminLayoutRight: React.FC<AdminLayoutRightProps> = (props) => {
 			</Hidden>
 			<Hidden smUp>
 				<Drawer
+          mode='dark'
 					disablePadding
 					title={title}
 					open={openLayoutRight}

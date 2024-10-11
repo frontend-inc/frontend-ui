@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button, Divider, Stack } from '@mui/material'
-import { GoogleLoginButton, TextInput, IconLoading } from '../..'
+import { Button } from '../../../tailwind'
+import { GoogleLoginButton, TextInput } from '../..'
 
 type LoginFormProps = {
 	errors?: any
@@ -30,11 +30,11 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 	} = props
 
 	return (
-		<Stack sx={sx.root} spacing={2}>
+		<div className='flex flex-col space-y-4 w-full'>
 			{enableGoogle && (
 				<GoogleLoginButton handleSuccess={handleGoogleSuccess} />
 			)}
-			<Stack spacing={1.5}>
+			<div className='flex flex-col space-y-4'>
 				<TextInput
 					errors={errors}
 					label="Email"
@@ -52,13 +52,14 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 					placeholder="Password"
 					handleChange={handleChange}
 				/>
+			</div>
+      <div className='flex flex-col space-y-2'>
 				<Button
 					fullWidth
-					size="large"
 					color="primary"
 					onClick={handleSubmit}
 					variant="contained"
-					endIcon={loading && <IconLoading />}
+          loading={ loading }					
 				>
 					Sign In
 				</Button>
@@ -76,7 +77,7 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 					<Button
 						fullWidth
 						color="secondary"
-						variant="contained"
+						variant="text"
 						onClick={handleForgotPassword}
 					>
 						Forgot password?
@@ -86,24 +87,15 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 					<Button
 						fullWidth
 						color="secondary"
-						variant="contained"
+						variant="text"
 						onClick={handleOneTimePassword}
 					>
 						One-time password
 					</Button>
 				)}
-			</Stack>
-		</Stack>
+        </div>
+		</div>
 	)
 }
 
 export default LoginForm
-
-const sx = {
-	root: {
-		mt: 2,
-	},
-	button: {
-		color: 'text.primary',
-	},
-}

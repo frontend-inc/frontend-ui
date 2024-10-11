@@ -41,7 +41,7 @@ export default function SidebarMenuHeader({
         />
       </Button>
       {open && (
-        <div className="pl-2 flex flex-col space-y-2 pb-2">
+        <div className="p-2 flex flex-col space-y-2">
           {children}
         </div>
       )}

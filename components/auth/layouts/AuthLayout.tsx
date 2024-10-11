@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Box } from '@mui/material'
+import { Container } from '../../../tailwind'
 
 type AuthLayoutProps = {
 	children: React.ReactNode
@@ -9,22 +9,10 @@ const AuthLayout: React.FC<AuthLayoutProps> = (props) => {
 	const { children } = props
 
 	return (
-		<Box sx={sx.root}>
+		<div className='h-screen flex flex-col justify-center items-center'>
 			<Container maxWidth="sm">{children}</Container>
-		</Box>
+		</div>
 	)
 }
 
 export default AuthLayout
-
-const sx = {
-	root: {
-		width: '100%',
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		justifyContent: 'center',
-		height: '100vh',
-		bgcolor: 'background.default',
-	},
-}

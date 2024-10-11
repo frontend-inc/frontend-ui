@@ -47,7 +47,7 @@ const ShopifyCart: React.FC<ShopifyCartProps> = (props) => {
         <ShopifyCartTotals />
         </div>
 			) : (
-				<div className="h-1/2 flex flex-cols justify-center items-center">
+				<div className="h-1/2 flex flex-col justify-center items-center">
 					<Placeholder
             icon={'ShoppingCart'}
 						title="Your cart is empty"

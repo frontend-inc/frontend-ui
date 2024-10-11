@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
-import { Button, Stack } from '@mui/material'
+import React from 'react'
+import { Button } from '../../../tailwind'
 import { IconLoading, TextInput } from '../../../components'
-import { useAuth } from 'frontend-js'
-import { getCookie } from 'cookies-next'
 
 type ResetPasswordFormProps = {
 	loading: boolean
@@ -18,7 +16,7 @@ const ResetPasswordForm: React.FC<ResetPasswordFormProps> = (props) => {
 		props
 
 	return (
-		<Stack spacing={1}>
+		<div className="flex flex-col space-y-2">
 			<TextInput
 				errors={errors}
 				name="password"
@@ -49,7 +47,7 @@ const ResetPasswordForm: React.FC<ResetPasswordFormProps> = (props) => {
 					Back to login
 				</Button>
 			)}
-		</Stack>
+		</div>
 	)
 }
 

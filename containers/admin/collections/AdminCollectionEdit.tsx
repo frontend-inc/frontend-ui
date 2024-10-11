@@ -28,6 +28,7 @@ const AdminCollectionEdit: React.FC<AdminCollectionEditProps> = (props) => {
 
 	return (
 		<Drawer
+      mode='dark'
 			loading={loading}
 			open={open}
 			handleClose={handleClose}

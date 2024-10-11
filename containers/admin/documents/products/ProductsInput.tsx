@@ -56,7 +56,7 @@ const ProductsInput: React.FC<ProductsInputProps> = (props) => {
 			<div>
 				<SecondaryButton onClick={handleAddClick}>Add Products</SecondaryButton>
 			</div>
-			<Drawer open={open} handleClose={() => setOpen(false)}>
+			<Drawer mode="dark" open={open} handleClose={() => setOpen(false)}>
 				<ResourceList
 					selectable
 					enableSearch

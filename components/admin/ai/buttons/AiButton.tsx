@@ -1,53 +1,44 @@
 import React, { useState } from 'react'
-import { IconButton } from '@mui/material'
-import { Icon, AlertModal } from '../../../../components'
+import { AlertModal } from '../../../../components'
+import { IconButton } from "../../../../tailwind"
+import { Sparkle } from "lucide-react"
 
 type AiButtonProps = {
-	loading?: boolean
-	icon?: string
-	title?: string
-	description?: string
-	handleClick: () => void
+  loading?: boolean
+  icon?: string
+  title?: string
+  description?: string
+  handleClick: () => void
 }
 
-const AiButton: React.FC<AiButtonProps> = (props) => {
-	const {
-		loading,
-		icon = 'Wand',
-		title = 'Do you want to use AI?',
-		description = 'This action may take a while to complete.',
-		handleClick,
-	} = props || {}
+const AiButton: React.FC<AiButtonProps> = ({
+  loading = false,
+  icon = 'Wand',
+  title = 'Do you want to use AI?',
+  description = 'This action may take a while to complete.',
+  handleClick,
+}) => {
+  const [open, setOpen] = useState(false)
 
-	const [open, setOpen] = useState(false)
-
-	return (
-		<>
-			<IconButton sx={sx.iconButton} onClick={() => setOpen(true)}>
-				<Icon name="Wand" />
-			</IconButton>
-			<AlertModal
-				loading={loading}
-				open={open}
-				handleClose={() => setOpen(false)}
-				icon="Wand"
-				title={title}
-				description={description}
-				handleConfirm={handleClick}
-			/>
-		</>
-	)
+  return (
+    <>
+      <IconButton
+        variant="secondary"
+        onClick={() => setOpen(true)}
+      >
+        <Sparkle className="w-5 h-5" />
+      </IconButton>
+      <AlertModal
+        loading={loading}
+        open={open}
+        handleClose={() => setOpen(false)}
+        icon={icon}
+        title={title}
+        description={description}
+        handleConfirm={handleClick}
+      />
+    </>
+  )
 }
 
 export default AiButton
-
-const sx = {
-	iconButton: {
-		minWidth: 44,
-		borderRadius: 1,
-		bgcolor: 'secondary.main',
-		'&:hover': {
-			bgcolor: 'secondary.dark',
-		},
-	},
-}

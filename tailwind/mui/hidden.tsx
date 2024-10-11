@@ -1,55 +1,34 @@
 import React from 'react'
-import { cn } from '../../shadcn/lib/utils'
+import { useMediaQuery } from 'react-responsive'
 
-type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
-
-interface HiddenProps {
-	children: React.ReactNode
-	only?: Breakpoint | Breakpoint[]
-	up?: Breakpoint
-	down?: Breakpoint
-	className?: string
+type HiddenProps = {
+  children: React.ReactNode
+  smDown?: boolean
+  smUp?: boolean
+  mdDown?: boolean
+  mdUp?: boolean
 }
 
-const breakpointMap: Record<Breakpoint, string> = {
-	xs: 'sm',
-	sm: 'md',
-	md: 'lg',
-	lg: 'xl',
-	xl: '2xl',
-	'2xl': '',
+const Hidden: React.FC<HiddenProps> = ({ children, smDown, smUp, mdDown, mdUp }) => {
+  const isSmallScreen = useMediaQuery({ maxWidth: 639 })
+  const isMediumScreen = useMediaQuery({ minWidth: 640, maxWidth: 767 })
+  const isLargeScreen = useMediaQuery({ minWidth: 768 })
+
+  const shouldHide = () => {
+    if (smDown && (isSmallScreen || isMediumScreen)) return true
+    if (smUp && (isMediumScreen || isLargeScreen)) return true
+    if (mdDown && (isSmallScreen || isMediumScreen)) return true
+    if (mdUp && isLargeScreen) return true
+    return false
+  }
+
+  if (shouldHide()) {
+    return null
+  }
+
+  return <>{children}</>
 }
 
-const Hidden: React.FC<HiddenProps> = ({
-	children,
-	only,
-	up,
-	down,
-	className,
-}) => {
-	const getHiddenClasses = () => {
-		if (only) {
-			if (Array.isArray(only)) {
-				return only.map((bp) => `hidden ${breakpointMap[bp]}:block`).join(' ')
-			}
-			return `hidden ${breakpointMap[only]}:block`
-		}
-
-		if (up) {
-			return `hidden ${breakpointMap[up]}:block`
-		}
-
-		if (down) {
-			const nextBreakpoint = breakpointMap[down]
-			return nextBreakpoint ? `${nextBreakpoint}:hidden` : 'hidden'
-		}
-
-		return ''
-	}
-
-	const hiddenClasses = getHiddenClasses()
-
-	return <div className={cn(hiddenClasses, className)}>{children}</div>
+export { 
+  Hidden
 }
-
-export { Hidden }

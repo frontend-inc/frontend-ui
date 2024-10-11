@@ -1,98 +1,67 @@
 import React, { useEffect } from 'react'
-import {
-	List,
-	ListItem,
-	ListItemButton,
-	ListItemText,
-	Stack,
-} from '@mui/material'
-import { TextInput } from '../../../../components'
+import { TextAreaInput } from '../../../../components'
+import { Button } from "../../../../shadcn/ui/button"
+import { ScrollArea } from "../../../../shadcn/ui/scroll-area"
 
-// Optional but recommended: use the Edge Runtime. This can only be done at the page level, not inside nested components.
-//export const runtime = 'edge';
 type AiChatFormProps = {
-	id?: string
-	open: boolean
-	prompt: string
-	handleClick: (text: string) => void
-	messages: any[]
-	setMessages: any
-	input: string
-	handleInputChange: any
+  id?: string
+  open: boolean
+  prompt: string
+  handleClick: (text: string) => void
+  messages: any[]
+  setMessages: React.Dispatch<React.SetStateAction<any[]>>
+  input: string
+  handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const AiChatForm: React.FC<AiChatFormProps> = (props) => {
-	const {
-		open,
-		prompt,
-		handleClick,
+const AiChatForm: React.FC<AiChatFormProps> = ({
+  open,
+  prompt,
+  handleClick,
+  messages,
+  setMessages,
+  input,
+  handleInputChange,
+}) => {
+  useEffect(() => {
+    if (open) {
+      setMessages([
+        {
+          id: 'openai-chat',
+          role: 'system',
+          content: prompt,
+        },
+      ])
+    }
+  }, [open, prompt, setMessages])
 
-		messages,
-		setMessages,
-		input,
-		handleInputChange,
-	} = props
-
-	useEffect(() => {
-		if (open) {
-			setMessages([
-				{
-					id: 'openai-chat',
-					role: 'system',
-					content: prompt,
-				},
-			])
-		}
-	}, [open])
-
-	return (
-		<Stack direction="column" spacing={1}>
-			<TextInput
-				multiline
-				label="Write a sentence about ..."
-				name="prompt"
-				placeholder="Enter text..."
-				value={input}
-				handleChange={handleInputChange}
-			/>
-			<List disablePadding>
-				{messages
-					.filter((message) => message.role == 'assistant')
-					.map((message, i) => (
-						<ListItem key={i} disablePadding sx={sx.listItem}>
-							<ListItemButton
-								sx={sx.listItemButton}
-								onClick={() => handleClick(message.content)}
-							>
-								<ListItemText sx={sx.text} primary={message.content} />
-							</ListItemButton>
-						</ListItem>
-					))}
-			</List>
-		</Stack>
-	)
+  return (
+    <div className="flex flex-col space-y-4">
+      <TextAreaInput
+        label="Write a sentence about ..."
+        name="prompt"
+        placeholder="Enter text..."
+        value={input}
+        handleChange={handleInputChange}
+      />
+      <ScrollArea className="h-[300px] w-full rounded-md border">
+        <div className="p-4">
+          {messages
+            .filter((message) => message.role === 'assistant')
+            .map((message, i) => (
+              <Button
+                key={i}
+                variant="outline"
+                className="w-full justify-start mb-2 p-4 text-left whitespace-pre-line hover:border-primary"
+                onClick={() => handleClick(message.content)}
+              >
+                {message.content}
+              </Button>
+            ))}
+        </div>
+      </ScrollArea>
+    </div>
+  )
 }
 
 export default AiChatForm
-
-const sx = {
-	listItem: {
-		mb: 1,
-	},
-	listItemButton: {
-		border: '1px solid',
-		borderColor: 'divider',
-		bgcolor: 'background.paper',
-		p: 1,
-		borderRadius: 1,
-		'&:hover': {
-			borderColor: 'primary.main',
-			bgcolor: 'background.paper',
-		},
-	},
-	text: {
-		'& .MuiListItemText-primary': {
-			whiteSpace: 'pre-line',
-		},
-	},
-}

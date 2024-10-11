@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Button } from '@mui/material'
+import { Button } from '../../../tailwind'
 import { IconLoading, TextInput, GoogleLoginButton } from '../..'
 
 type SignupFormProps = {
@@ -28,11 +28,11 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Stack spacing={2.5}>
+		<div className="flex flex-col space-y-4 w-full">
 			{enableGoogle && (
 				<GoogleLoginButton handleSuccess={handleGoogleSuccess} />
 			)}
-			<Stack spacing={1}>
+			<div className="flex flex-col space-y-4 w-full">
 				{!disableUsername && (
 					<TextInput
 						direction="column"
@@ -44,7 +44,7 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 						handleChange={handleChange}
 					/>
 				)}
-				<Stack direction="row" spacing={1}>
+				<div className="flex flex-row space-x-3 w-full items-center">
 					<TextInput
 						errors={errors}
 						direction="column"
@@ -63,7 +63,7 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 						placeholder="Last name"
 						handleChange={handleChange}
 					/>
-				</Stack>
+				</div>
 				<TextInput
 					errors={errors}
 					direction="column"
@@ -83,8 +83,8 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 					placeholder="Password"
 					handleChange={handleChange}
 				/>
-			</Stack>
-			<Stack spacing={1}>
+			</div>
+			<div className="flex flex-col space-y-3 w-full">
 				<Button
 					fullWidth
 					color="primary"
@@ -98,14 +98,14 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 					<Button
 						fullWidth
 						color="secondary"
-						variant="contained"
+						variant="text"
 						onClick={handleLogin}
 					>
 						Already have an account? Sign in
 					</Button>
 				)}
-			</Stack>
-		</Stack>
+			</div>
+		</div>
 	)
 }
 

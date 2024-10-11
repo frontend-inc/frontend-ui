@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Stack } from '@mui/material'
+import { Button } from '../../../tailwind'
 import { IconLoading, TextInput } from '../..'
 
 type ForgotPasswordFormProps = {
@@ -16,7 +16,7 @@ const ForgotPasswordForm: React.FC<ForgotPasswordFormProps> = (props) => {
 		props
 
 	return (
-		<Stack spacing={1}>
+		<div className='flex flex-col space-y-2'>
 			<TextInput
 				label="Email"
 				errors={errors}
@@ -35,11 +35,11 @@ const ForgotPasswordForm: React.FC<ForgotPasswordFormProps> = (props) => {
 				Send Instructions
 			</Button>
 			{handleLogin && (
-				<Button fullWidth color="primary" onClick={handleLogin}>
+				<Button fullWidth variant="text" onClick={handleLogin}>
 					Back to Login
 				</Button>
 			)}
-		</Stack>
+		</div>
 	)
 }
 

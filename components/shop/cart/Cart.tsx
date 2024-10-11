@@ -8,7 +8,7 @@ const Cart: React.FC = () => {
 	const { cartOpen, setCartOpen } = useCart()
 
 	return (
-		<Drawer
+		<Drawer    
 			open={cartOpen}
 			handleClose={() => setCartOpen(false)}
 			title="My Cart"

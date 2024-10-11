@@ -1,19 +1,16 @@
 import React, { useContext, useEffect } from 'react'
-import { Button } from '@mui/material'
+import { Button } from '../../../tailwind'
 import { useAuth } from 'frontend-js'
-import { Icon } from '../../../components'
 import { AppContext } from '../../../context'
 
 export type SignInButtonProps = {
-	showIcon?: boolean
-	color?: 'primary' | 'secondary'
 	buttonText?: string
 }
 
 const SignInButton: React.FC<SignInButtonProps> = (props) => {
-	const { color = 'primary', buttonText = 'Sign In' } = props || {}
+	const {  buttonText = 'Sign In' } = props || {}
 
-	const { fetchMe, currentUser } = useAuth()
+	const { currentUser } = useAuth()
 
 	const { setAuthOpen } = useContext(AppContext)
 
@@ -24,9 +21,7 @@ const SignInButton: React.FC<SignInButtonProps> = (props) => {
 	if (currentUser?.id) return null
 	return (
 		<Button
-			sx={sx.button}
-			variant="contained"
-			color={color}
+      fullWidth						
 			onClick={handleLogin}
 		>
 			{buttonText}
@@ -35,10 +30,3 @@ const SignInButton: React.FC<SignInButtonProps> = (props) => {
 }
 
 export default SignInButton
-
-const sx = {
-	button: {
-		width: '100%',
-		justifyContent: 'flex-start',
-	},
-}

@@ -147,7 +147,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 	}, [open, collection?.name, documentId])
 
 	return (
-		<Drawer open={open} handleClose={handleClose} title={title}>
+		<Drawer mode="dark" open={open} handleClose={handleClose} title={title}>
 			{document && activeFields && (
 				<>
 					<div className="w-screen sm:w-auto">

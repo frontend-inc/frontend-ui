@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Stack } from '@mui/material'
+import { Button } from '../../../tailwind'
 import { IconLoading, TextInput } from '../..'
 
 type NewPasswordFormProps = {
@@ -16,7 +16,7 @@ const NewPasswordForm: React.FC<NewPasswordFormProps> = (props) => {
 		props
 
 	return (
-		<Stack spacing={1}>
+		<div className='flex flex-col space-y-2'>
 			<TextInput
 				errors={errors}
 				name="password"
@@ -47,7 +47,7 @@ const NewPasswordForm: React.FC<NewPasswordFormProps> = (props) => {
 					Back to Login
 				</Button>
 			)}
-		</Stack>
+		</div>
 	)
 }
 

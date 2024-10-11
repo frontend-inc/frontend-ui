@@ -1,112 +1,68 @@
 import React, { useState, useEffect } from 'react'
-import {
-	Typography,
-	Stack,
-	ListItem,
-	ListItemButton,
-	ListItemIcon,
-	ListItemText,
-} from '@mui/material'
 import { UserAvatar, Label, MenuButton } from '../..'
 import { UserType } from 'frontend-js'
 import { useAuth } from 'frontend-js'
+import { Button } from "../../../shadcn/ui/button"
 
 type AuthUserListItemProps = {
-	user: UserType
-	selected?: boolean
-	isAdmin?: boolean
-	handleClick: () => void
-	handleEdit: (user: UserType) => null
-	handleDelete: (user: UserType) => null
+  user: UserType
+  selected?: boolean
+  isAdmin?: boolean
+  handleClick: () => void
+  handleEdit: (user: UserType) => void
+  handleDelete: (user: UserType) => void
 }
 
-const AuthUserListItem: React.FC<AuthUserListItemProps> = (props) => {
-	const {
-		user,
-		selected = false,
-		isAdmin = false,
-		handleClick,
-		handleEdit,
-		handleDelete,
-	} = props
+const AuthUserListItem: React.FC<AuthUserListItemProps> = ({
+  user,
+  selected = false,
+  isAdmin = false,
+  handleClick,
+  handleEdit,
+  handleDelete,
+}) => {
+  const [canEdit, setCanEdit] = useState(false)
+  const [canDelete, setCanDelete] = useState(false)
 
-	const [canEdit, setCanEdit] = useState(false)
-	const [canDelete, setCanDelete] = useState(false)
+  const { currentUser } = useAuth()
 
-	const { currentUser } = useAuth()
+  useEffect(() => {
+    if (isAdmin && user?.role !== 'admin') {
+      setCanEdit(true)
+    }
+    if (isAdmin && (user?.role !== 'admin' || user?.id == currentUser?.id)) {
+      setCanDelete(true)
+    }
+  }, [user, isAdmin, currentUser])
 
-	useEffect(() => {
-		if (isAdmin && user?.role !== 'admin') {
-			setCanEdit(true)
-		}
-		if (isAdmin && (user?.role !== 'admin' || user?.id == currentUser?.id)) {
-			setCanDelete(true)
-		}
-	}, [user, isAdmin])
-
-	return (
-		<ListItem
-			sx={{
-				...sx.root,
-				...(selected && sx.selected),
-			}}
-			disableGutters
-			secondaryAction={
-				(canEdit || canDelete) && (
-					<MenuButton
-						handleEdit={canEdit && (() => handleEdit(user))}
-						handleDelete={canDelete && (() => handleDelete(user))}
-					/>
-				)
-			}
-		>
-			<ListItemButton onClick={handleClick}>
-				<ListItemIcon sx={sx.listItemIcon}>
-					<UserAvatar user={user} />
-				</ListItemIcon>
-				<ListItemText
-					primary={
-						<Stack direction="row" spacing={1}>
-							<Typography variant="body1" color="text.primary">
-								{user.name}
-							</Typography>
-							{user?.role && <Label label={user?.role} />}
-						</Stack>
-					}
-					secondary={
-						<Typography variant="body2" color="text.secondary">
-							{user.email}
-						</Typography>
-					}
-				/>
-			</ListItemButton>
-		</ListItem>
-	)
+  return (
+    <li className={`p-0 rounded-md ${selected ? 'border-3 border-primary' : ''}`}>
+      <Button
+        variant="ghost"
+        className="w-full justify-start px-2 py-3"
+        onClick={handleClick}
+      >
+        <div className="flex items-center w-full">
+          <div className="mr-4">
+            <UserAvatar user={user} />
+          </div>
+          <div className="flex-grow">
+            <div className="flex items-center space-x-2">
+              <span className="text-sm font-medium">{user.name}</span>
+              {user?.role && <Label label={user?.role} />}
+            </div>
+            <span className="text-xs text-muted-foreground">{user.email}</span>
+          </div>
+          {(canEdit || canDelete) && (
+            <MenuButton
+              handleEdit={canEdit ? () => handleEdit(user) : undefined}
+              handleDelete={canDelete ? () => handleDelete(user) : undefined}
+            />
+          )}
+        </div>
+      </Button>
+    </li>
+  )
 }
 
 export default AuthUserListItem
-
-const sx = {
-	root: {
-		p: 0,
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
-	},
-	selected: {
-		border: '3px solid',
-		borderColor: 'primary.main',
-	},
-	listItemIcon: {
-		mr: 2,
-	},
-	avatar: {
-		bgcolor: 'primary.main',
-	},
-	icon: {
-		color: 'text.primary',
-	},
-	secondaryActions: {
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'flex-end',
-	},
-}

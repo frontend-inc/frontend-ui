@@ -1,60 +1,40 @@
 import React from 'react'
-import { IconButton, Card } from '@mui/material'
 import { Image, Icon } from '../../../components'
 import { ImageType } from '../../../types'
+import { Button } from "@/shadcn/ui/button"
+import { Card, CardContent } from "@/shadcn/ui/card"
 
 type MediaImageProps = {
-	image?: ImageType
-	objectFit?: 'cover' | 'contain'
-	handleRemove: () => void
+  image?: ImageType
+  objectFit?: 'cover' | 'contain'
+  handleRemove: () => void
 }
 
-const MediaImage: React.FC<MediaImageProps> = (props) => {
-	const { image, objectFit = 'cover', handleRemove } = props
-	return (
-		<Card sx={sx.root}>
-			<Image
-				disableBorderRadius
-				height={160}
-				src={image?.url}
-				alt={'media'}
-				objectFit={objectFit}
-			/>
-			{image?.url && (
-				<IconButton size="small" sx={sx.iconButton} onClick={handleRemove}>
-					<Icon name="X" />
-				</IconButton>
-			)}
-		</Card>
-	)
+const MediaImage: React.FC<MediaImageProps> = ({ image, objectFit = 'cover', handleRemove }) => {
+  return (
+    <Card className="relative h-40 p-0 rounded border border-border bg-background">
+      <CardContent className="p-0 h-full">
+        <Image
+          disableBorderRadius
+          height={160}
+          src={image?.url}
+          alt={'media'}
+          objectFit={objectFit}
+          className="w-full h-full"
+        />
+        {image?.url && (
+          <Button
+            variant="secondary"
+            size="icon"
+            className="absolute top-1 right-1 opacity-50 hover:opacity-100 bg-background text-foreground"
+            onClick={handleRemove}
+          >
+            <Icon name="X" className="h-4 w-4" />
+          </Button>
+        )}
+      </CardContent>
+    </Card>
+  )
 }
 
 export default MediaImage
-
-const sx = {
-	root: {
-		borderRadius: 1,
-		bgcolor: 'background.paper',
-		border: '1px solid',
-		borderColor: 'divider',
-		p: 0,
-		height: 160,
-		position: 'relative',
-	},
-	iconButton: {
-		position: 'absolute',
-		top: 5,
-		right: 5,
-		opacity: 0.5,
-		bgcolor: 'background.main',
-		color: 'common.white',
-		'&:hover': {
-			opacity: 1,
-			bgcolor: 'background.main',
-		},
-	},
-	header: {
-		py: 0,
-		px: 1,
-	},
-}

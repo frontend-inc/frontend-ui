@@ -39,10 +39,10 @@ const Typography: React.FC<TypographyProps> = ({
 	)
 
 	const variantClasses = {
-		h1: 'text-6xl font-bold',
-		h2: 'text-5xl font-bold',
-		h3: 'text-4xl font-bold',
-		h4: 'text-3xl font-bold',
+		h1: 'text-6xl font-bold tracking-tight',
+		h2: 'text-5xl font-bold tracking-tight',
+		h3: 'text-4xl font-bold tracking-tight',
+		h4: 'text-3xl font-bold tracking-tight',
 		h5: 'text-2xl font-bold',
 		h6: 'text-xl font-medium',
 		subtitle1: 'text-lg font-medium',

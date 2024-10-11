@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Box } from '@mui/material'
+import { Button } from '../../../tailwind'
 import { Form } from '../../../components'
 import { MetafieldType } from '../../../types'
 import { ACCOUNT_FORM_FIELDS } from '../../../constants'
@@ -38,7 +38,7 @@ const MyAccountForm: React.FC<MyAccountFormProps> = (props) => {
 	]
 
 	return (
-		<Box sx={sx.root}>
+		<div className='flex flex-col space-y-2 w-full'>
 			<Form
 				loading={loading}
 				errors={errors}
@@ -53,7 +53,7 @@ const MyAccountForm: React.FC<MyAccountFormProps> = (props) => {
 			<Button color="secondary" variant="contained" onClick={handleLogout}>
 				Logout
 			</Button>
-		</Box>
+		</div>
 	)
 }
 

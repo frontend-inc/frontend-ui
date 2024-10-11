@@ -15,7 +15,9 @@ const AdminCollectionProductsAdd: React.FC<AdminCollectionProductsAddProps> = (
 		props || {}
 
 	return (
-		<Drawer open={open} handleClose={handleClose} title="Add Products">
+		<Drawer 
+      mode='dark'
+      open={open} handleClose={handleClose} title="Add Products">
 			<AdminProductListItems
 				name={'collection_product'}
 				url={url}
