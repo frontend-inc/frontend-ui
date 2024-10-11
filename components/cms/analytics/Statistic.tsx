@@ -1,6 +1,7 @@
 import React from 'react'
-import { Stack, Box, Typography } from '@mui/material'
+import { Typography } from '../../../tailwind'
 import { Icon } from '../../../components'
+import { Card } from '../../../shadcn/ui/card'
 
 export type StatisticProps = {
 	value: number
@@ -11,27 +12,24 @@ export type StatisticProps = {
 }
 
 export const Statistic: React.FC<StatisticProps> = (props) => {
-	const { value, label, icon, direction = 'row', enableBorder = false } = props
+	const { value, label, icon } = props
 
 	return (
-		<Stack
-			spacing={direction === 'row' ? 1 : 0}
-			direction={direction}
-			sx={{
-				...sx.root,
-				...(enableBorder && sx.rootBorder),
-			}}
-		>
-			<Box>
+    <Card>
+		<div className='flex flex-row space-x-2 justify-start items-center'>
+			<div className="mr-2">
 				<Icon name={icon} size={24} />
-			</Box>
-			<Typography variant="h6" color="textPrimary">
-				{value}
-			</Typography>
-			<Typography variant="caption" color="textSecondary">
-				{label}
-			</Typography>
-		</Stack>
+			</div>
+      <div className='flex flex-col space-y-1'>
+        <Typography variant="subtitle1" className="font-bold tracking-tight">
+          {value}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {label}
+        </Typography>
+      </div>
+		</div>
+    </Card>
 	)
 }
 

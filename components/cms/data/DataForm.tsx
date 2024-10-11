@@ -1,6 +1,6 @@
 import React from 'react'
 import { Drawer, FormFields, IconLoading } from '../..'
-import { Button } from '@mui/material'
+import { Button } from '../../../tailwind'
 import { useResourceContext } from 'frontend-js'
 
 export type DataFormProps = {
@@ -38,7 +38,7 @@ const DataForm: React.FC<DataFormProps> = (props) => {
 					variant="contained"
 					color="primary"
 					onClick={handleSubmit}
-					startIcon={loading && <IconLoading />}
+					loading={loading}
 				>
 					{resource?.id ? 'Update' : 'Save'}
 				</Button>

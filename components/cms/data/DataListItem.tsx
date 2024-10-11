@@ -26,10 +26,8 @@ type DataListItemProps = {
 const DataListItem: React.FC<DataListItemProps> = (props) => {
 	const {
 		sortable,
-
 		selectable,
 		selected,
-
 		label,
 		primary,
 		secondary,

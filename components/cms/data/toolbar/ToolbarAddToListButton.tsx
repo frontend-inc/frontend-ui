@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Icon, Modal, RemoteAutosuggest } from '../../..'
-import { Button } from '@mui/material'
+import { Button } from '../../../../tailwind'
 import { QueryParamsType, useResource, useResourceContext } from 'frontend-js'
 
 export type DataAddToListProps = {
