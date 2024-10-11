@@ -1,10 +1,10 @@
 import React from 'react'
-import { Button, Divider, Stack } from '../../../tailwind'
+import { Stack } from '../../../tailwind'
+import { Button } from '../../../shadcn/ui/button'
 import { MenuLinkType } from '../../../types'
 import { SocialLink } from '../..'
 import Logo from '../header/Logo'
 import { useApp } from '../../../hooks'
-import { cn } from '../../../shadcn/lib/utils'
 
 export type FooterProps = {
   logo?: string
@@ -58,7 +58,8 @@ const Footer: React.FC<FooterProps> = (props) => {
             <div className="flex flex-wrap flex-col sm:flex-row gap-4 sm:pl-3">
               {links?.map((menuLink, i) => (
                 <Button
-                  variant="text"
+                  className='text-foreground'
+                  variant="ghost"
                   key={i}
                   onClick={() => handleClick(menuLink?.path)}
                 >
@@ -93,9 +94,10 @@ const Footer: React.FC<FooterProps> = (props) => {
           className='w-full items-center'
         >
           {legalLinks?.map((menuLink, i) => (
-            <Button
-              variant="text"
+            <Button              
+              variant="link"
               key={i}
+              className='text-muted-foreground'
               onClick={() => handleClick(menuLink?.path)}
             >
               {menuLink?.label}
