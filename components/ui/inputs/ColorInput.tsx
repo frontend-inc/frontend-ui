@@ -43,8 +43,13 @@ export default function ColorInput({
   }
 
   const handleColorChange = (color: string, shade: number = tone) => {
-    if(!color || !shade) return;
-    const newColor = TAILWIND_COLOR_PICKER_MAP[color][shade]
+    if(!color) return;
+    let newColor;
+    if (color === 'white' || color === 'black') {
+      newColor = color === 'white' ? '#FFFFFF' : '#000000';
+    } else {
+      newColor = TAILWIND_COLOR_PICKER_MAP[color][shade];
+    }
     setSelectedColor(color)
     handleChange({
       target: {
@@ -75,6 +80,8 @@ export default function ColorInput({
   }
 
   const selectedColorName = useMemo(() => {
+    if (value === '#FFFFFF') return 'white';
+    if (value === '#000000') return 'black';
     for (const [colorName, shades] of Object.entries(TAILWIND_COLOR_MAP)) {
       if (Object.values(shades).includes(value)) {
         return colorName
@@ -97,14 +104,14 @@ export default function ColorInput({
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-64">
-          <div className="grid grid-cols-7 gap-1 mb-2">
-          <TooltipProvider>
+          <div className="grid grid-cols-7 gap-3 mb-2">
+            <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                <button
+                  <button
                     className={cn(
                       'relative bg-white h-8 w-8 rounded-md border overflow-hidden',
-                      selectedColorName === null && 'ring-2 ring-offset-2 ring-offset-background'
+                      value === '' && 'ring-2 ring-offset-2 ring-offset-background'
                     )}
                     onClick={handleRemoveColor}
                   >
@@ -119,6 +126,40 @@ export default function ColorInput({
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    className={cn(
+                      'h-8 w-8 rounded-md border',
+                      selectedColorName === 'white' && 'ring-2 ring-offset-2 ring-offset-background'
+                    )}
+                    style={{ backgroundColor: '#FFFFFF' }}
+                    onClick={() => handleColorChange('white')}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>White</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    className={cn(
+                      'h-8 w-8 rounded-md border',
+                      selectedColorName === 'black' && 'ring-2 ring-offset-2 ring-offset-background'
+                    )}
+                    style={{ backgroundColor: '#000000' }}
+                    onClick={() => handleColorChange('black')}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Black</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
             {Object.keys(TAILWIND_COLOR_PICKER_MAP).map((color) => (
               <TooltipProvider key={color}>
                 <Tooltip>
@@ -126,7 +167,7 @@ export default function ColorInput({
                     <button
                       className={cn(
                         'h-8 w-8 rounded-md border',
-                        selectedColorName === color && 'ring-2 ring-offset-2 ring-offset-background'
+                        value === TAILWIND_COLOR_PICKER_MAP[color][tone] && 'ring-2 ring-offset-2 ring-offset-background'
                       )}
                       style={{ backgroundColor: TAILWIND_COLOR_PICKER_MAP[color][tone] }}
                       onClick={() => handleColorChange(color)}
