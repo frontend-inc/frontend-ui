@@ -19,23 +19,26 @@ const CartQuantityInput: React.FC<CartQuantityInputProps> = (props) => {
   const { buttonClasses='w-[32px] p-0', quantity, handleAddQuantity, handleRemoveQuantity } = props
 
   return (
-    <div className="inline-flex rounded-md shadow-sm" role="group">
+    <div className="inline-flex rounded-md" role="group">
       <Button
+        size='sm'
         variant="secondary"
-        className={cn(buttonClasses, "rounded-r-none border-r-0")}
+        className={cn(buttonClasses, "rounded-r-none border-none")}
         onClick={handleRemoveQuantity}
       >
         <Minus size={20} />
       </Button>
       <Button
+        size='sm'
         variant="secondary"
-        className={cn(buttonClasses, "rounded-none border-x")}
+        className={cn(buttonClasses, "rounded-none border-none")}
       >
         {quantity}
       </Button>
       <Button
+        size='sm'
         variant="secondary"
-        className={cn(buttonClasses, "rounded-l-none border-l-0")}
+        className={cn(buttonClasses, "rounded-l-none border-none")}
         onClick={handleAddQuantity}
       >
         <Plus size={20} />
@@ -111,7 +114,7 @@ const CartLineItem: React.FC<CartLineItemProps> = (props) => {
         onClick={handleRemoveFromCart}
         className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
       >
-        <Icon name="X" />
+        <Icon name="X" className='h-4 w-4 text-muted-foreground' />
       </button>
     </div>
   )

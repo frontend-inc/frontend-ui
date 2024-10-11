@@ -2,19 +2,19 @@ import React, { useContext } from 'react'
 import { AdminContext } from '../../../context'
 import { IconButton } from '../../../tailwind'
 import { Separator } from '../../../shadcn/ui/separator'
-import AdminTabAuth from './AdminAuthIconButton'
+import AdminAuthButton from './AdminAuthButton'
 import AdminTabIcon from './AdminTabIcon'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
-type TabIconsProps = {
+type AdminTabIconsProps = {
   logo?: string
   menuItems: any[]
   handleClick: (item: any) => void
   secondaryActions?: React.ReactNode
 }
 
-export default function TabIcons({ logo, menuItems, handleClick, secondaryActions }: TabIconsProps) {
+export default function AdminTabIcons({ logo, menuItems, handleClick, secondaryAction }: AdminTabIconsProps) {
   const { activeTab } = useContext(AdminContext)
   const router = useRouter()
 
@@ -27,7 +27,7 @@ export default function TabIcons({ logo, menuItems, handleClick, secondaryAction
   }
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-between border-r border-border">
+      <div className="w-full h-full flex flex-col items-center justify-between border-r border-border">
         <div className="w-full flex flex-col items-center justify-center space-y-3 pt-0">
           <div className="h-[50px] w-full flex flex-col items-center justify-center border border-bottom">
           {logo && (
@@ -49,14 +49,14 @@ export default function TabIcons({ logo, menuItems, handleClick, secondaryAction
               />
           ))}
         </div>
-      <div className="flex flex-col space-y-1 mb-2">
-        {secondaryActions && (
+      <div className="flex flex-col space-y-3 pb-4 mb-2">
+        {secondaryAction && (
           <>
-            {secondaryActions}
+            {secondaryAction}
             <Separator className="my-2" />
           </>
         )}
-        <AdminTabAuth handleClick={handleMyAccountClick} />
+        <AdminAuthButton handleClick={handleMyAccountClick} />
       </div>
     </div>
   )

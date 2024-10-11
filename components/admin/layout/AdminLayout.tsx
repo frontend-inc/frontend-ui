@@ -6,7 +6,7 @@ type AdminLayoutProps = {
   logo?: string
   handleClick: (item: any) => void
   menuItems?: any[]
-  secondaryActions?: React.ReactNode
+  secondaryAction?: React.ReactNode
   children: React.ReactNode
 }
 
@@ -15,26 +15,28 @@ export default function AdminLayout({
   children,
   handleClick,
   menuItems = [],
-  secondaryActions,
+  secondaryAction,
 }: AdminLayoutProps) {
   return (
-    <div className={cn(
-      "dark w-screen overflow-x-hidden scrollbar-hide",
-      "flex flex-row min-h-screen"
-    )}>      
-      <AdminLayoutTabs>
-        <AdminTabIcons
-          logo={logo}
-          handleClick={handleClick}
-          menuItems={menuItems}
-          secondaryActions={secondaryActions}
-        />
-      </AdminLayoutTabs>
+    <div className='dark w-full'>
       <div className={cn(
-        "w-[calc(100vw-60px)] overflow-x-hidden scrollbar-hide",
-        "flex sm:flex-row xs:flex-col"
-      )}>
-        {children}
+        "blue w-screen overflow-x-hidden scrollbar-hide",
+        "flex flex-row min-h-screen"
+      )}>   
+        <AdminLayoutTabs>
+          <AdminTabIcons
+            logo={logo}
+            handleClick={handleClick}
+            menuItems={menuItems}
+            secondaryAction={secondaryAction}
+          />
+        </AdminLayoutTabs>
+        <div className={cn(
+          "w-[calc(100vw-60px)] overflow-x-hidden scrollbar-hide",
+          "flex sm:flex-row xs:flex-col"
+        )}>
+          {children}
+        </div>   
       </div>
     </div>
   )

@@ -21,7 +21,7 @@ const LucideIcon: React.FC<LucideIconProps> = ({
 
 	return (
 		//@ts-ignore
-		<Icon className={cn(color, className, 'w-5 h-5')} size={size} />
+		<Icon className={cn('w-5 h-5', color, className)} size={size} />
 	)
 }
 

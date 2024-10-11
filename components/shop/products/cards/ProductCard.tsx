@@ -66,7 +66,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 					/>
 				</div>
 				<div
-					className="px-4 py-1 flex flex-row space-y-4 w-full justify-between items-between"					
+					className="px-4 py-1 flex flex-col space-y-4 w-full justify-between items-between"					
 				>
 					<div>
 						<Typography variant="subtitle2">{primary}</Typography>

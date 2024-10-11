@@ -60,19 +60,19 @@ export default function SwipeableShopifyProductImages({
             </div>
           ))}
         </SwipeableViews>
-      {maxSteps > 1 && (
-        <div className="absolute bottom-2 left-0 right-0 flex justify-center">
-          {Array.from({ length: maxSteps }).map((_, index) => (
-            <div
-              key={index}
-              className={cn(
-                "w-2 h-2 rounded-full mx-1",
-                index === activeStep ? "bg-primary" : "bg-gray-300"
-              )}
-            />
-          ))}
-        </div>
-      )}
+        {maxSteps > 1 && (
+          <div className="absolute bottom-2 left-0 right-0 flex justify-center">
+            {Array.from({ length: maxSteps }).map((_, index) => (
+              <div
+                key={index}
+                className={cn(
+                  "w-2 h-2 rounded-full mx-1",
+                  index === activeStep ? "bg-primary" : "bg-gray-300"
+                )}
+              />
+            ))}
+          </div>
+        )}
     </div>
   )
 }

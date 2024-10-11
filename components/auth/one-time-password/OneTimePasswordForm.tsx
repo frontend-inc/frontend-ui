@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Stack } from '@mui/material'
+import { Button } from '../../../tailwind'
 import { IconLoading, TextInput } from '../..'
 
 type OneTimePasswordFormProps = {
@@ -16,7 +16,7 @@ const OneTimePasswordForm: React.FC<OneTimePasswordFormProps> = (props) => {
 		props
 
 	return (
-		<Stack spacing={1}>
+		<div className="flex flex-col space-y-3 w-full">
 			<TextInput
 				errors={errors}
 				name="email"
@@ -38,7 +38,7 @@ const OneTimePasswordForm: React.FC<OneTimePasswordFormProps> = (props) => {
 					Back to Login
 				</Button>
 			)}
-		</Stack>
+		</div>
 	)
 }
 

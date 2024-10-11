@@ -4,7 +4,8 @@ import React, { useState } from 'react'
 import { NotificationType } from '../../../types'
 import { Notification } from '../../../components'
 import SwipeableViews from 'react-swipeable-views'
-import { cn } from '../../../shadcn/lib/utils'
+import { IconButton } from "../../../tailwind"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 type NotificationsProps = {
   notifications: NotificationType[]
@@ -15,6 +16,14 @@ export default function Notifications({ notifications }: NotificationsProps) {
 
   const handleStepChange = (step: number) => {
     setActiveStep(step)
+  }
+
+  const handlePrev = () => {
+    setActiveStep((prevStep) => (prevStep - 1 + notifications.length) % notifications.length)
+  }
+
+  const handleNext = () => {
+    setActiveStep((prevStep) => (prevStep + 1) % notifications.length)
   }
 
   if (!notifications?.length) return null
@@ -37,18 +46,28 @@ export default function Notifications({ notifications }: NotificationsProps) {
           </div>
         ))}
       </SwipeableViews>
-      <div className="absolute bottom-1 left-0 right-0 flex justify-center space-x-2">
-        {notifications.map((_, index) => (
-          <button
-            key={index}
-            className={cn(
-              "w-2 h-2 rounded-full transition-colors duration-200",
-              index === activeStep ? "bg-primary" : "bg-gray-300"
-            )}
-            onClick={() => setActiveStep(index)}
-          />
-        ))}
+      { notifications?.length > 0 && (
+        <>
+          <div className="absolute top-0 left-0 bottom-0 flex items-center">
+            <IconButton
+              onClick={handlePrev}
+              className="px-1 py-2"
+            >
+              <ChevronLeft className="h-5 w-5 text-primary-foreground" />
+              <span className="sr-only">Previous notification</span>
+            </IconButton>
+          </div>
+          <div className="absolute top-0 left-[32px] bottom-0 flex items-center">
+            <IconButton
+              onClick={handleNext}
+              className="h-full px-1 py-2"
+            >
+              <ChevronRight className="h-5 w-5 text-primary-foreground" />
+              <span className="sr-only">Next notification</span>
+            </IconButton>
+          </div>
+          </>
+          )}
       </div>
-    </div>
   )
 }

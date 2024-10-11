@@ -1,56 +1,54 @@
 import React from 'react'
-import {
-	ListItemIcon,
-	ListItemText,
-	Typography,
-	Divider,
-	Badge,
-	Box,
-	Menu,
-	MenuItem,
-} from '@mui/material'
-import { Icon, UserAvatar } from '../../components'
+import { UserAvatar } from '../../components'
 import { useAuth } from 'frontend-js'
+import { Button } from "../../shadcn/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../../shadcn/ui/dropdown-menu"
+import { LogOut } from "lucide-react"
 
 type UserMenuProps = {
-	open: boolean
-	anchorEl: HTMLElement | null
-	toggleMenu: (ev: any) => void
-	handleLogoutClick: () => void
-	children?: React.ReactNode
-	handleClick: () => void
+  handleLogoutClick: () => void
+  children?: React.ReactNode
+  handleClick: () => void
 }
 
-const UserMenu: React.FC<UserMenuProps> = (props) => {
-	const { open, anchorEl, toggleMenu, handleLogoutClick, handleClick } = props
+const UserMenu: React.FC<UserMenuProps> = ({
+  handleLogoutClick,
+  handleClick,
+  children
+}) => {
 
-	const { currentUser } = useAuth()
+  const { currentUser } = useAuth()
 
-	return (
-		<Menu open={open} onClose={toggleMenu} anchorEl={anchorEl}>
-			<MenuItem onClick={handleClick}>
-				<ListItemIcon>
-					<UserAvatar size={28} user={currentUser} />
-				</ListItemIcon>
-				<ListItemText
-					primary={
-						<>
-							<Typography variant="body1" color="text.primary">
-								{currentUser?.name}
-							</Typography>
-						</>
-					}
-				/>
-			</MenuItem>
-			<Divider />
-			<MenuItem onClick={handleLogoutClick}>
-				<ListItemIcon>
-					<Icon name="LogOut" />
-				</ListItemIcon>
-				Sign Out
-			</MenuItem>
-		</Menu>
-	)
+  return (
+    <div className="flex w-full justify-center">
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="h-8 w-8 rounded-full">
+          <UserAvatar size={36} user={currentUser} />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56" align="end" forceMount>
+        <DropdownMenuItem onClick={handleClick}>
+          <div className="flex items-center">            
+            <span className="text-sm font-medium">{currentUser?.name}</span>
+          </div>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem onClick={handleLogoutClick}>
+          <LogOut className="mr-2 h-4 w-4" />
+          <span>Sign Out</span>
+        </DropdownMenuItem>
+        {children}
+      </DropdownMenuContent>
+    </DropdownMenu>
+    </div>
+  )
 }
 
 export default UserMenu

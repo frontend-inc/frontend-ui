@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button } from '@mui/material'
+import { Button } from '../../../tailwind'
 import { VerifyPinForm, VerifySendPinForm, AuthScreen, Loader } from '../..'
 import { useAuth } from 'frontend-js'
 
@@ -52,33 +52,34 @@ const VerifyPin: React.FC<VerifyPinProps> = (props) => {
 		<>
 			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
-				{!showVerifyPin ? (
-					<VerifySendPinForm
-						errors={errors}
-						user={user}
-						handleChange={handleChange}
-						handleSubmit={handleSendPin}
-						handleLogin={handleLogin}
-					/>
-				) : (
-					<VerifyPinForm
-						errors={errors}
-						user={user}
-						handleChange={handleChange}
-						handleSubmit={handleVerifyPin}
-						handleResendPin={handleResendPin}
-					/>
-				)}
-				{loginUrl && (
-					<Button
-						sx={sx.button}
-						fullWidth
-						onClick={handleLogin}
-						color="primary"
-					>
-						Back to login
-					</Button>
-				)}
+        <div className="flex flex-col space-y-3">
+          {!showVerifyPin ? (
+            <VerifySendPinForm
+              errors={errors}
+              user={user}
+              handleChange={handleChange}
+              handleSubmit={handleSendPin}
+              handleLogin={handleLogin}
+            />
+          ) : (
+            <VerifyPinForm
+              errors={errors}
+              user={user}
+              handleChange={handleChange}
+              handleSubmit={handleVerifyPin}
+              handleResendPin={handleResendPin}
+            />
+          )}
+          {loginUrl && (
+            <Button
+              fullWidth
+              onClick={handleLogin}
+              color="primary"
+            >
+              Back to login
+            </Button>
+          )}
+        </div>
 			</AuthScreen>
 		</>
 	)
@@ -86,8 +87,3 @@ const VerifyPin: React.FC<VerifyPinProps> = (props) => {
 
 export default VerifyPin
 
-const sx = {
-	button: {
-		mt: 1,
-	},
-}

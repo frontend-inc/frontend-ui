@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Stack } from '@mui/material'
+import { Button } from '../../../tailwind'
 
 type OneTimePasswordVerifyFormProps = {
 	verified: boolean
@@ -13,7 +13,7 @@ const OneTimePasswordVerifyForm: React.FC<OneTimePasswordVerifyFormProps> = (
 	const { verified = false, handleRedirect, handleLogin } = props
 
 	return (
-		<Stack spacing={1}>
+		<div className='flex flex-col space-y-3'>
 			{verified ? (
 				<Button
 					fullWidth
@@ -28,7 +28,7 @@ const OneTimePasswordVerifyForm: React.FC<OneTimePasswordVerifyFormProps> = (
 					Back to Login
 				</Button>
 			)}
-		</Stack>
+		</div>
 	)
 }
 

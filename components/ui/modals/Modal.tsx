@@ -24,6 +24,7 @@ type ModalProps = {
 	secondaryActions?: React.ReactNode
 	disablePadding?: boolean
 	fullScreen?: boolean
+  mode?: 'dark' | 'light'
 	enableCancel?: boolean
 	hideBackdrop?: boolean
 	disableClose?: boolean
@@ -42,6 +43,7 @@ const Modal: React.FC<ModalProps> = ({
 	secondaryActions,
 	disablePadding = false,
 	fullScreen,
+  mode,
 	enableCancel = false,
 	disableHeader = false,
 }) => {
@@ -49,7 +51,8 @@ const Modal: React.FC<ModalProps> = ({
 		<Dialog open={open} onOpenChange={handleClose}>
 			<DialogContent
 				className={cn(
-					'dark bg-background rounded-md overflow-hidden max-h-[600px] overflow-y-scroll',
+          mode,
+					'bg-background rounded-md overflow-hidden max-h-[600px] overflow-y-scroll',
 					fullScreen ? 'w-screen h-screen' : 'w-full'
 				)}
 			>

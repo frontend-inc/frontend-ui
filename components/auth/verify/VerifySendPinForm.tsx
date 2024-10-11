@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Stack } from '@mui/material'
+import { Button } from '../../../tailwind'
 import { IconLoading, TextInput } from '../..'
 
 type SendPinFormProps = {
@@ -16,7 +16,7 @@ const SendPinForm: React.FC<SendPinFormProps> = (props) => {
 		props
 
 	return (
-		<Stack spacing={1}>
+		<div className='flex flex-col space-y-3'>
 			<TextInput
 				errors={errors}
 				label="Email"
@@ -35,11 +35,11 @@ const SendPinForm: React.FC<SendPinFormProps> = (props) => {
 				Send Verification Pin
 			</Button>
 			{handleLogin && (
-				<Button fullWidth color="primary" onClick={handleLogin}>
+				<Button fullWidth variant="text" color="primary" onClick={handleLogin}>
 					Cancel
 				</Button>
 			)}
-		</Stack>
+		</div>
 	)
 }
 

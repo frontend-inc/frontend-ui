@@ -1,6 +1,6 @@
 import React from 'react'
 import { useStripeCustomerPortal } from '../../../hooks'
-import { Button } from '@mui/material'
+import { Button } from '../../../tailwind'
 
 const StripeCustomerPortalButton: React.FC = () => {
 	const { loading, stripeCustomerPortal } = useStripeCustomerPortal()

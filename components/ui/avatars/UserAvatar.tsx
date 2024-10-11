@@ -12,6 +12,7 @@ const UserAvatar: React.FC<UserAvatarProps> = (props) => {
 	const { user, size = 36, enableGradient = false } = props
 	return (
 		<Avatar
+      variant='rounded'
 			color={user?.color}
 			label={getInitials(user?.name)}
 			size={size}

@@ -14,14 +14,13 @@ type UserAvatarProps = {
 
 export default function UserAvatar({
   src,
-  color = '#990000',
   label,
   variant = 'rounded',
   size = 40,
 }: UserAvatarProps) {
 
   const avatarClasses = cn(
-    variant === 'circular' ? 'rounded-full' : 'rounded',
+    variant === 'circular' ? 'rounded-full' : 'rounded-lg',
   )
   return (
     <Avatar 
@@ -36,7 +35,7 @@ export default function UserAvatar({
         alt="Avatar" 
         className="object-cover" 
       />
-      <AvatarFallback className={'bg-primary'}>
+      <AvatarFallback className={cn(avatarClasses, 'bg-primary')}>
         {label ? label.slice(0, 2) : null}
       </AvatarFallback>
     </Avatar>
