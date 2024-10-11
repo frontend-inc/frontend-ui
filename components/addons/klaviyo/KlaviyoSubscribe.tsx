@@ -1,99 +1,72 @@
 import React, { useState } from 'react'
-import { Stack, Button } from '@mui/material'
+import { Button } from '../../../tailwind'
 import { TextInput, IconLoading } from '../..'
 import { useAlerts, useKlaviyo } from '../../../hooks'
 
 export type KlaviyoSubscribeProps = {
-	listId: string
-	apiKey: string
-	buttonText?: string
+  listId: string
+  apiKey: string
+  buttonText?: string
 }
 
 const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
-	const { listId, apiKey, buttonText = 'Subscribe' } = props || {}
+  const { listId, apiKey, buttonText = 'Subscribe' } = props || {}
 
-	const { showAlertError, showAlertSuccess } = useAlerts()
+  const { showAlertError, showAlertSuccess } = useAlerts()
 
-	const { loading, handleSubmit } = useKlaviyo({
-		apiKey,
-	})
+  const { loading, handleSubmit } = useKlaviyo({
+    apiKey,
+  })
 
-	const [email, setEmail] = useState('')
+  const [email, setEmail] = useState('')
 
-	const handleFormSubmit = async () => {
-		if (!email || !email?.includes('@')) {
-			return showAlertError('Please enter a valid email')
-		}
-		if (!listId) {
-			return showAlertError('Please enter a klaviyo list ID')
-		}
-		if (!apiKey) {
-			return showAlertError('Please enter your public klaviyo API key')
-		}
-		try {
-			await handleSubmit({
-				email,
-				listId,
-			})
-			showAlertSuccess('You have been subscribed to our newsletter!')
-		} catch (e) {
-			console.log('Error', e)
-		}
-	}
+  const handleFormSubmit = async () => {
+    if (!email || !email?.includes('@')) {
+      return showAlertError('Please enter a valid email')
+    }
+    if (!listId) {
+      return showAlertError('Please enter a klaviyo list ID')
+    }
+    if (!apiKey) {
+      return showAlertError('Please enter your public klaviyo API key')
+    }
+    try {
+      await handleSubmit({
+        email,
+        listId,
+      })
+      showAlertSuccess('You have been subscribed to our newsletter!')
+    } catch (e) {
+      console.log('Error', e)
+    }
+  }
 
-	const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-		setEmail(ev.target.value)
-	}
+  const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(ev.target.value)
+  }
 
-	return (
-		<Stack direction="column" spacing={2} sx={sx.root}>
-			<Stack direction="row" spacing={0} sx={sx.form}>
-				<TextInput
-					direction="row"
-					placeholder={'Enter email...'}
-					name="email"
-					value={email}
-					handleChange={handleChange}
-					styles={sx.input}
-				/>
-				<Button
-					sx={sx.button}
-					variant="contained"
-					color="secondary"
-					onClick={handleFormSubmit}
-				>
-					{loading ? loading && <IconLoading /> : `${buttonText}`}
-				</Button>
-			</Stack>
-		</Stack>
-	)
+  return (
+    <div className="py-2 w-full flex flex-col items-center justify-center">
+      <div className="flex flex-row max-w-[400px]">
+        <TextInput
+          direction="row"
+          placeholder={'Enter email...'}
+          name="email"
+          value={email}
+          handleChange={handleChange}
+          className="rounded-r-none"
+        />
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={handleFormSubmit}
+          className="min-w-[120px] rounded-l-none"
+        >
+          {loading ? <IconLoading /> : buttonText}
+        </Button>
+      </div>
+    </div>
+  )
 }
 
 export default KlaviyoSubscribe
-
-const sx = {
-	root: {
-		py: 2,
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	form: {
-		maxWidth: 400,
-	},
-	text: {
-		pt: 2,
-	},
-	button: {
-		minWidth: 120,
-		borderRadius: (theme) =>
-			`0 ${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0`,
-	},
-	input: {
-		'& .MuiInputBase-input': {
-			borderRadius: (theme) =>
-				`${theme.shape.borderRadius}px 0 0 ${theme.shape.borderRadius}px`,
-		},
-	},
-}

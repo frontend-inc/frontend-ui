@@ -1,10 +1,6 @@
 import React from 'react'
 import { useStripeConnect } from '../../../../hooks'
-import { SvgIcon, Button } from '@mui/material'
-
-type StripeLogoProps = {
-	width?: number
-}
+import { Button } from '../../../../tailwind'
 
 const StripeConnectButton: React.FC = () => {
 	const { loading, stripeConnect } = useStripeConnect()
@@ -21,8 +17,8 @@ const StripeConnectButton: React.FC = () => {
 		<Button
 			variant="contained"
 			color="primary"
-			sx={sx.stripeButton}
 			onClick={handleClick}
+      className='bg-[#6772E5] hover:bg-[#6772E5]'
 		>
 			{loading ? 'Connecting...' : 'Connect with Stripe'}
 		</Button>
@@ -30,12 +26,3 @@ const StripeConnectButton: React.FC = () => {
 }
 
 export default StripeConnectButton
-
-const sx = {
-	stripeButton: {
-		bgcolor: '#6772E5',
-		'&:hover': {
-			bgcolor: '#6772E5',
-		},
-	},
-}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Stack } from '../../../tailwind'
+import { Container } from '../../../tailwind'
 import { Placeholder } from '../../../components'
 import FeaturedCard from './FeaturedCard'
 
@@ -29,7 +29,7 @@ const Featured: React.FC<FeaturedProps> = (props) => {
 
 	return (
 		<Container maxWidth="lg">
-			<Stack spacing={6}>
+			<div className='w-full flex flex-col space-y-3'>
 				{items?.map((item, i) => (
 					<FeaturedCard
 						key={i}
@@ -45,7 +45,7 @@ const Featured: React.FC<FeaturedProps> = (props) => {
 						enableOverlay={enableOverlay}
 					/>
 				))}
-			</Stack>
+			</div>
 			{items?.length == 0 && (
 				<Placeholder
 					icon="LayoutList"

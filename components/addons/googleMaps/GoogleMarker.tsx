@@ -7,7 +7,6 @@ import {
 	InfoWindow,
 } from '@vis.gl/react-google-maps'
 import { GoogleMarkerType, DisplayFieldType } from '../../../types'
-import { useTheme } from '@mui/material/styles'
 import { Image, DisplayFields } from '../../../components'
 
 export type GoogleMarkerProps = {

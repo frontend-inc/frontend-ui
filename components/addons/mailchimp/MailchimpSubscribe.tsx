@@ -1,95 +1,68 @@
 import React, { useEffect, useState } from 'react'
-import { Stack, Button } from '@mui/material'
+import { Button } from '../../../tailwind'
 import { TextInput, IconLoading } from '../..'
 import { useMailChimpForm } from 'use-mailchimp-form'
 import { useAlerts } from '../../../hooks'
 
 export type MailchimpSubscribeProps = {
-	formId: string
-	buttonText?: string
+  formId: string
+  buttonText?: string
 }
 
 const MailchimpSubscribe: React.FC<MailchimpSubscribeProps> = (props) => {
-	const { formId, buttonText = 'Subscribe' } = props || {}
+  const { formId, buttonText = 'Subscribe' } = props || {}
 
-	const { loading, error, success, message, handleSubmit } =
-		useMailChimpForm(formId)
+  const { loading, error, success, message, handleSubmit } =
+    useMailChimpForm(formId)
 
-	const { showAlertSuccess } = useAlerts()
+  const { showAlertSuccess } = useAlerts()
 
-	const [email, setEmail] = useState('')
+  const [email, setEmail] = useState('')
 
-	const handleFormSubmit = async () => {
-		if (!email || !email?.includes('@')) {
-			return showAlertSuccess('Please enter a valid email')
-		}
-		if (!formId) {
-			return showAlertSuccess('Please enter a mailchimp form ID')
-		}
-		handleSubmit({
-			EMAIL: email,
-		})
-	}
+  const handleFormSubmit = async () => {
+    if (!email || !email?.includes('@')) {
+      return showAlertSuccess('Please enter a valid email')
+    }
+    if (!formId) {
+      return showAlertSuccess('Please enter a mailchimp form ID')
+    }
+    handleSubmit({
+      EMAIL: email,
+    })
+  }
 
-	const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-		setEmail(ev.target.value)
-	}
+  const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(ev.target.value)
+  }
 
-	useEffect(() => {
-		if (message) {
-			showAlertSuccess(message)
-		}
-	}, [message])
+  useEffect(() => {
+    if (message) {
+      showAlertSuccess(message)
+    }
+  }, [message, showAlertSuccess])
 
-	return (
-		<Stack direction="column" spacing={2} sx={sx.root}>
-			<Stack direction="row" spacing={0} sx={sx.form}>
-				<TextInput
-					direction="row"
-					placeholder="Enter email..."
-					name="EMAIL"
-					value={email}
-					handleChange={handleChange}
-					styles={sx.input}
-				/>
-				<Button
-					sx={sx.button}
-					variant="contained"
-					color="secondary"
-					onClick={handleFormSubmit}
-				>
-					{loading ? loading && <IconLoading /> : `${buttonText}`}
-				</Button>
-			</Stack>
-		</Stack>
-	)
+  return (
+    <div className="py-2 w-full flex flex-col items-center justify-center">
+      <div className="flex flex-row max-w-[400px]">
+        <TextInput
+          direction="row"
+          placeholder="Enter email..."
+          name="EMAIL"
+          value={email}
+          handleChange={handleChange}
+          className="rounded-r-none"
+        />
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={handleFormSubmit}
+          className="min-w-[120px] rounded-l-none"
+        >
+          {loading ? <IconLoading /> : buttonText}
+        </Button>
+      </div>
+    </div>
+  )
 }
 
 export default MailchimpSubscribe
-
-const sx = {
-	root: {
-		py: 2,
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	form: {
-		maxWidth: 400,
-	},
-	text: {
-		pt: 2,
-	},
-	button: {
-		minWidth: 120,
-		borderRadius: (theme) =>
-			`0 ${theme.shape.borderRadius}px ${theme.shape.borderRadius}px 0`,
-	},
-	input: {
-		'& .MuiInputBase-input': {
-			borderRadius: (theme) =>
-				`${theme.shape.borderRadius}px 0 0 ${theme.shape.borderRadius}px`,
-		},
-	},
-}

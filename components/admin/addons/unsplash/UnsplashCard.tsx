@@ -1,94 +1,55 @@
 import React from 'react'
-import {
-	Avatar,
-	Link,
-	Card,
-	CardActionArea,
-	CardHeader,
-	Button,
-} from '@mui/material'
 import { Image } from '../../../../components'
+import { Avatar, AvatarFallback, AvatarImage } from "@/shadcn/ui/avatar"
+import { Button } from "@/shadcn/ui/button"
+import { Card, CardHeader, CardContent } from "@/shadcn/ui/card"
+import { cn } from "@/shadcn/lib/utils"
 
 type UnplashCardProps = {
-	image?: any
-	selected?: boolean
-	handleClick?: (image: any) => void
+  image?: any
+  selected?: boolean
+  handleClick?: (image: any) => void
 }
 
-const UnplashCard: React.FC<UnplashCardProps> = (props) => {
-	const { image, selected, handleClick } = props
+const UnplashCard: React.FC<UnplashCardProps> = ({ image, selected, handleClick }) => {
+  const handleProfileClick = (user: any) => {
+    let url = user?.links?.html + '?utm_source=frontend.co&utm_medium=referral'
+    window.open(url, '_blank')
+  }
 
-	const handleProfileClick = (user) => {
-		let url = user?.links?.html + '?utm_source=frontend.co&utm_medium=referral'
-		window.open(url, '_blank')
-	}
-
-	return (
-		<Card
-			sx={{
-				...sx.root,
-				...(selected && sx.selected),
-			}}
-		>
-			<CardActionArea onClick={() => (handleClick ? handleClick(image) : null)}>
-				<Image
-					height={120}
-					width={180}
-					src={image?.urls?.small}
-					alt={image?.alt_description}
-					objectFit="cover"
-					disableBorderRadius
-				/>
-			</CardActionArea>
-			<CardHeader
-				sx={sx.cardHeader}
-				title={
-					<Button
-						startIcon={
-							<Avatar sx={sx.avatar} src={image?.user?.profile_image?.medium} />
-						}
-						sx={sx.button}
-						onClick={() => handleProfileClick(image?.user)}
-					>
-						{image?.user?.name}
-					</Button>
-				}
-			/>
-		</Card>
-	)
+  return (
+    <Card className={cn(
+      "rounded bg-background border border-border p-0",
+      selected && "border-primary"
+    )}>
+      <div 
+        className="cursor-pointer" 
+        onClick={() => handleClick && handleClick(image)}
+      >
+        <Image
+          height={120}
+          width={180}
+          src={image?.urls?.small}
+          alt={image?.alt_description}
+          objectFit="cover"
+          disableBorderRadius
+        />
+      </div>
+      <CardHeader className="p-1">
+        <Button
+          variant="ghost"
+          className="text-xs text-muted-foreground hover:text-foreground flex items-center space-x-2 p-0"
+          onClick={() => handleProfileClick(image?.user)}
+        >
+          <Avatar className="h-6 w-6">
+            <AvatarImage src={image?.user?.profile_image?.medium} alt={image?.user?.name} />
+            <AvatarFallback>{image?.user?.name?.charAt(0)}</AvatarFallback>
+          </Avatar>
+          <span className="break-words">{image?.user?.name}</span>
+        </Button>
+      </CardHeader>
+    </Card>
+  )
 }
 
 export default UnplashCard
-
-const sx = {
-	root: {
-		borderRadius: 1,
-		bgcolor: 'background.paper',
-		border: '1px solid',
-		borderColor: 'divider',
-		p: 0,
-	},
-	selected: {
-		borderColor: 'primary.main',
-	},
-	header: {},
-	image: {
-		objectFit: 'cover',
-	},
-	avatar: {
-		height: 24,
-		width: 24,
-	},
-	button: {
-		fontSize: 12,
-		textDecoration: 'none',
-		color: 'text.secondary',
-		flexWrap: 'break-word',
-		'&:hover': {
-			color: 'text.primary',
-		},
-	},
-	cardHeader: {
-		p: 0.5,
-	},
-}
