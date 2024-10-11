@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Stack, Typography } from '@mui/material'
+import { Typography } from '../../../tailwind'
 import { useOrders } from '../../../hooks'
 import {
 	AdminOrderForm,
@@ -45,7 +45,7 @@ const AdminOrder: React.FC<AdminOrderProps> = (props) => {
 	}, [orderId])
 
 	return (
-		<Stack direction="column" spacing={1}>
+		<div className="flex flex-col space-y-2">
 			<AdminOrderDetails order={order} handleEdit={handleEdit} />
 			<Typography variant="subtitle1" color="text.primary">
 				Order Items
@@ -66,7 +66,7 @@ const AdminOrder: React.FC<AdminOrderProps> = (props) => {
 				handleSubmit={handleSubmit}
 				handleReload={reloadOrder}
 			/>
-		</Stack>
+		</div>
 	)
 }
 

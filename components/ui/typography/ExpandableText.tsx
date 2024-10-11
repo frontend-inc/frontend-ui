@@ -36,14 +36,3 @@ const ExpandableText: React.FC<ExpandableTextProps> = (props) => {
 }
 
 export default ExpandableText
-
-const sx = {
-	text: {
-		width: '100%',
-		whiteSpace: 'pre-line',
-	},
-	link: {
-		cursor: 'pointer',
-		color: 'text.secondary',
-	},
-}

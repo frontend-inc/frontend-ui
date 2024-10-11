@@ -4,10 +4,9 @@ import {
 	ButtonTabs,
 	IconLoading,
 	FormFields,
-	ResourceForm,
 } from '../../../components'
 import { ResourceFormProps } from '../../../components/cms/resources/ResourceForm'
-import { Button, Box } from '@mui/material'
+import { Button } from '../../../tailwind'
 import AdminFieldVariantList from './AdminFieldVariantList'
 import AdminFieldVariantListItem from './AdminFieldVariantListItem'
 import { FIELD_VARIANTS } from '../../../constants'
@@ -61,15 +60,15 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
 				</Button>
 			}
 		>
-			<Box p={2}>
+			<div className="p-2">
 				<ButtonTabs value={tab} options={TABS} handleChange={setTab} />
-			</Box>
+			</div>
 			{tab == 0 && (
 				<AdminFieldVariantList field={resource} handleClick={handleClick} />
 			)}
-			<Box>
+			<div>
 				{tab == 1 && (
-					<Box px={2}>
+					<div className="px-2">
 						{resource?.variant && (
 							<AdminFieldVariantListItem
 								field={FIELD_VARIANTS?.find(
@@ -129,9 +128,9 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
 								]}
 							/>
 						)}
-					</Box>
+					</div>
 				)}
-				<Box px={2}>
+				<div className="px-2">
 					{tab == 2 && (
 						<FormFields
 							errors={errors}
@@ -254,8 +253,8 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
 							handleRemove={() => null}
 						/>
 					)}
-				</Box>
-			</Box>
+				</div>
+			</div>
 		</Drawer>
 	)
 }

@@ -106,15 +106,3 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 
 export default TableRow
 
-const sx = {
-	root: {
-		height: '50px',
-		'&:hover .MuiTableCell-root': {
-			bgcolor: 'secondary.main',
-		},
-	},
-	editIcon: {
-		height: '20px',
-		width: '20px',
-	},
-}

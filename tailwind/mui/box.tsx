@@ -56,7 +56,7 @@ type BoxProps = {
 	[x: string]: any // Allow any other props
 }
 
-const Box: React.FC<BoxProps> = ({
+const Box: React.FC<divProps> = ({
 	children,
 	component: Component = 'div',
 	m,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Stack, Typography } from '@mui/material'
+import { Typography } from '../../../tailwind'
 import { useProductCollections } from '../../../hooks'
 import {
 	AdminProductCollectionEdit,
@@ -58,7 +58,7 @@ const AdminProductCollection: React.FC<AdminProductCollectionProps> = (
 	}, [productCollectionId])
 
 	return (
-		<Stack direction="column" spacing={1}>
+		<div className='flex flex-col space-y-3'>
 			<AdminProductCollectionDetails
 				productCollection={productCollection}
 				handleEdit={handleEdit}
@@ -80,7 +80,7 @@ const AdminProductCollection: React.FC<AdminProductCollectionProps> = (
 				handleAddAttachment={handleAddAttachment}
 				handleRemoveAttachment={handleRemoveAttachment}
 			/>
-		</Stack>
+		</div>
 	)
 }
 

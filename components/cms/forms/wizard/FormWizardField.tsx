@@ -68,14 +68,3 @@ const FormWizardField: React.FC<FormWizardProps> = (props) => {
 }
 
 export default FormWizardField
-
-const sx = {
-	title: {
-		textAlign: 'left',
-		width: '100%',
-	},
-	description: {
-		textAlign: 'left',
-		width: '100%',
-	},
-}

@@ -36,7 +36,7 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 			onClose={() => setMenuOpen(false)}
 			anchor="left"			
 		>
-			<Box>
+			<div>
 				<List className={'space-y-2'}>
 					{links?.map((menuItem, index) => (
 						<MobileDrawerLink
@@ -57,7 +57,7 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 						)}
 					</Stack>
 				)}
-			</Box>
+			</div>
 		</Drawer>
 	)
 }

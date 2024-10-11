@@ -47,24 +47,3 @@ const BrandLogos: React.FC<BrandLogosProps> = (props) => {
 }
 
 export default BrandLogos
-
-const sx = {
-	logos: {
-		alignItems: 'center',
-		overflowX: 'scroll',
-		'&::-webkit-scrollbar': {
-			display: 'none',
-		},
-		justifyContent: {
-			sm: 'center',
-			xs: 'flex-start',
-		},
-	},
-	logo: {
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		overflow: 'hidden',
-	},
-}

@@ -35,17 +35,3 @@ export const Statistic: React.FC<StatisticProps> = (props) => {
 
 export default Statistic
 
-const sx = {
-	root: {
-		p: 1,
-		borderRadius: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
-		width: '100%',
-	},
-	rootBorder: {
-		p: 2,
-		border: '1px solid',
-		borderColor: 'divider',
-	},
-}

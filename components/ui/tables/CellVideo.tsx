@@ -21,9 +21,3 @@ const CellVideo: React.FC<CellVideoProps> = (props) => {
 }
 
 export default CellVideo
-
-const sx = {
-	root: {
-		p: 0,
-	},
-}

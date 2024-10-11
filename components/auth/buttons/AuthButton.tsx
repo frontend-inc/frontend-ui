@@ -76,9 +76,9 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 							onClick={toggleMenu}
 							startIcon={showIcon && <UserAvatar user={currentUser} />}
 							endIcon={
-								<Box>
+								<div>
 									<Icon name="MoreVertical" />
-								</Box>
+								</div>
 							}
 						>
 							<Typography variant="body1" color="text.primary" sx={sx.username}>
@@ -113,22 +113,3 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 }
 
 export default AuthButton
-
-const sx = {
-	expandMore: {
-		width: '34px',
-	},
-	icon: {
-		color: 'text.primary',
-	},
-	button: {
-		boxShadow: 0,
-		width: '100%',
-		color: 'text.primary',
-		justifyContent: 'flex-start',
-	},
-	username: {
-		width: '100%',
-		textAlign: 'left',
-	},
-}

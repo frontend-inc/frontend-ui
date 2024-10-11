@@ -60,12 +60,3 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 }
 
 export default ResourceDetails
-
-const sx = {
-	content: {
-		width: '100%',
-	},
-	image: {
-		width: '100%',
-	},
-}

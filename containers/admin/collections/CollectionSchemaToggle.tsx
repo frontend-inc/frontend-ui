@@ -39,16 +39,3 @@ const CollectionSchemaToggle: React.FC<CollectionSchemaToggleProps> = (
 }
 
 export default CollectionSchemaToggle
-
-const sx = {
-	button: {
-		color: 'text.secondary',
-	},
-	selected: {
-		color: 'secondary.contrastText',
-		bgcolor: 'secondary.main',
-	},
-	icon: {
-		color: 'secondary.contrastText',
-	},
-}

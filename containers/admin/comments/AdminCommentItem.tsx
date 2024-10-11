@@ -1,7 +1,6 @@
 import React from 'react'
 import { UserAvatar, Label, ResourceListItem } from '../../../components'
 import { truncate } from '../../../helpers'
-import { Stack, Typography } from '@mui/material'
 
 type AdminCommentItemProps = {
 	resource: any

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Label } from '../../../../components'
 import { IconButton, Typography, Collapse } from '../../../../tailwind'
-import { KeyboardArrowDown } from '@mui/icons-material'
+import { ChevronDown } from 'lucide-react'
 import { cn } from "../../../../shadcn/lib/utils"
 
 type DocumentInputWrapperProps = {
@@ -33,7 +33,7 @@ const DocumentInputWrapper: React.FC<DocumentInputWrapperProps> = (props) => {
       {expandable && (
         <div>
           <IconButton onClick={() => setOpen(!open)}>
-            <KeyboardArrowDown
+            <ChevronDown
               className={cn(
                 "h-5 w-5 rounded text-gray-500 bg-gray-100 transition-transform duration-200",
                 !open && "rotate-[-90deg]"

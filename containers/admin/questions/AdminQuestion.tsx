@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Stack, Typography } from '@mui/material'
+import { Typography } from '../../../tailwind'
 import { useAdminForms } from '../../../hooks'
 import { AdminFormEdit, AdminFormDetails, AdminFormQuestionList } from '../..'
 
@@ -52,7 +52,7 @@ const AdminForm: React.FC<AdminFormProps> = (props) => {
 	}, [formId])
 
 	return (
-		<Stack direction="column" spacing={1}>
+		<div className='flex flex-col space-y-3'>
 			<AdminFormDetails form={form} handleEdit={handleEdit} />
 			<Typography variant="subtitle1" color="text.primary">
 				Questions
@@ -71,7 +71,7 @@ const AdminForm: React.FC<AdminFormProps> = (props) => {
 				handleAddAttachment={handleAddAttachment}
 				handleRemoveAttachment={handleRemoveAttachment}
 			/>
-		</Stack>
+		</div>
 	)
 }
 

@@ -27,21 +27,3 @@ const FieldFile: React.FC<FieldFileProps> = (props) => {
 }
 
 export default FieldFile
-
-const sx = {
-	link: {
-		color: 'text.secondary',
-		textDecoration: 'none',
-		'&:hover': {
-			color: 'text.primary',
-			textDecoration: 'underline',
-		},
-	},
-	cell: {
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-between',
-		p: '0.5rem',
-	},
-}

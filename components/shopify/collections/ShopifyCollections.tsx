@@ -55,16 +55,3 @@ const ShopifyCollections: React.FC<ShopifyCollectionsProps> = (props) => {
 }
 
 export default ShopifyCollections
-
-const sx = {
-	grid: {
-		width: '100%',
-		display: 'grid',
-		gridTemplateColumns: {
-			md: '1fr 1fr 1fr',
-			xs: '1fr',
-		},
-		gap: '16px',
-		pb: 1,
-	},
-}

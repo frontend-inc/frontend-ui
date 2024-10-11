@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconButton } from '@mui/material'
+import { IconButton } from '../../../tailwind'
 //@ts-ignore
 import { SocialIcon as ReactSocialIcon } from 'react-social-icons'
 
@@ -14,7 +14,7 @@ type SocialIconProps = {
 const SocialIcon: React.FC<SocialIconProps> = (props) => {
 	const { provider, handleClick, size = 20 } = props || {}
 	return (
-		<IconButton size="small" onClick={handleClick}>
+		<IconButton onClick={handleClick}>
 			<ReactSocialIcon
 				/* @ts-ignore */
 				network={provider}

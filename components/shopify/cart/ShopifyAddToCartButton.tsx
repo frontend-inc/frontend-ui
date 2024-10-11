@@ -121,20 +121,3 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 }
 
 export default ShopifyAddToCartButton
-
-const sx = {
-	root: {
-		display: 'flex',
-		flexDirection: 'row',
-		gap: '10px',
-	},
-	addToCartButton: {
-		minWidth: '60px',
-	},
-	addToCartButtonSmall: {
-		height: '40px',
-	},
-	fullWidth: {
-		width: '100%',
-	},
-}

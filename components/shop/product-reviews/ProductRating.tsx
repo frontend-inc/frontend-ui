@@ -53,9 +53,3 @@ const ProductRating: React.FC<ProductRatingProps> = (props) => {
 }
 
 export default ProductRating
-
-const sx = {
-	noReviews: {
-		fontStyle: 'italic',
-	},
-}

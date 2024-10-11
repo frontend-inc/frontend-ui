@@ -1,5 +1,4 @@
 import React from 'react'
-import { TypographyVariant } from '@mui/material'
 import { ButtonType } from './buttons'
 import { DisplayFieldType, FormFieldType } from './forms'
 

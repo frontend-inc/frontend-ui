@@ -1,11 +1,10 @@
 import * as fields from '../../constants/templates/field-templates'
-import * as COLORS from '@mui/material/colors'
 
 export const COLLECTION_CUSTOM = {
 	icon: 'Box',
 	name: 'items',
 	label: 'Custom',
-	color: COLORS.deepPurple[500],
+	color: 'bg-purple-500',
 	description: 'Customize your collection',
 	fields: [...fields.BASE_FIELD_TEMPLATES],
 	data: [],
@@ -28,7 +27,7 @@ export const COLLECTION_PERSON = {
 	icon: 'User',
 	name: 'people',
 	label: 'Person',
-	color: COLORS.pink[500],
+	color: 'bg-pink-500',
 	description: 'People, authors, influencers, etc.',
 	fields: [
 		fields.HANDLE_FIELD_TEMPLATE,
@@ -44,7 +43,7 @@ export const COLLECTION_PLACE = {
 	icon: 'MapPin',
 	name: 'places',
 	label: 'Place',
-	color: COLORS.blue[500],
+	color: 'bg-blue-500',
 	description: 'Companies, restaurants, venues, etc.',
 	fields: [
 		fields.HANDLE_FIELD_TEMPLATE,
@@ -61,7 +60,7 @@ export const COLLECTION_EVENT = {
 	icon: 'Calendar',
 	name: 'events',
 	label: 'Event',
-	color: COLORS.amber[500],
+	color: 'bg-amber-500',
 	description: 'Meetups, events, conferences, etc.',
 	fields: [
 		...fields.BASE_FIELD_TEMPLATES,
@@ -75,7 +74,7 @@ export const COLLECTION_VIDEO = {
 	icon: 'Video',
 	name: 'videos',
 	label: 'Video',
-	color: COLORS.amber[500],
+	color: 'bg-amber-500',
 	description: 'Short videos',
 	fields: [
 		fields.IMAGE_FIELD_TEMPLATE,
@@ -90,7 +89,7 @@ export const COLLECTION_IMAGE = {
 	icon: 'Image',
 	name: 'images',
 	label: 'Image',
-	color: COLORS.amber[500],
+	color: 'bg-amber-500',
 	description: 'Photos, logos, etc.',
 	fields: [
 		fields.IMAGE_FIELD_TEMPLATE,

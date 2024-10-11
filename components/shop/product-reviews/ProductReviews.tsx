@@ -54,15 +54,3 @@ const ProductReviews: React.FC<ProductReviewsProps> = (props) => {
 }
 
 export default ProductReviews
-
-const sx = {
-	root: {
-		py: 2,
-		pb: 1.5,
-		borderColor: 'divider',
-	},
-	reviewHeader: {
-		alignItems: 'center',
-		justifyContent: 'space-between',
-	},
-}

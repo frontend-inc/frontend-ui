@@ -18,25 +18,3 @@ const FieldBoolean: React.FC<FieldBooleanProps> = (props) => {
 }
 
 export default FieldBoolean
-
-const sx = {
-	button: {
-		textTransform: 'none',
-		fontFamily: (theme) => theme.typography.body2.fontFamily,
-		letterSpacing: 0,
-	},
-	buttonTrue: {
-		color: 'success.dark',
-		bgcolor: 'success.light',
-		'&:hover': {
-			bgcolor: 'success.light',
-		},
-	},
-	buttonFalse: {
-		color: 'error.dark',
-		bgcolor: 'error.light',
-		'&:hover': {
-			bgcolor: 'error.light',
-		},
-	},
-}

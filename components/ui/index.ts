@@ -5,7 +5,6 @@ export * from './fields'
 export * from './tables'
 export * from './cards'
 export * from './heros'
-export * from './theme'
 export * from './spotlights'
 export * from './profiles'
 

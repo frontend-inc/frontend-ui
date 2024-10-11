@@ -41,13 +41,3 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = (props) => {
 }
 
 export default ShopifyProductDetails
-
-const sx = {
-	price: {
-		'& span': {
-			textDecoration: 'line-through',
-			color: 'text.secondary',
-			ml: 1,
-		},
-	},
-}

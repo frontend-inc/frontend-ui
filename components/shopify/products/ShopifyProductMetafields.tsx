@@ -59,14 +59,3 @@ const ShopifyProductMetafields: React.FC<ShopifyProductMetafieldsProps> = (
 }
 
 export default ShopifyProductMetafields
-
-const sx = {
-	root: {
-		my: 2,
-	},
-	accordion: {
-		borderTop: '1px solid',
-		borderColor: 'divider',
-		my: '0px !important',
-	},
-}

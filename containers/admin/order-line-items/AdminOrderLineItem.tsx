@@ -5,7 +5,7 @@ import {
 	DisplayFields,
 	ResourceListItem,
 } from '../../../components'
-import { Badge, Box } from '@mui/material'
+import { Badge } from '../../../tailwind'
 import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
 
 const AdminOrderLineItem: React.FC<ResourceItemProps> = (props) => {
@@ -26,15 +26,15 @@ const AdminOrderLineItem: React.FC<ResourceItemProps> = (props) => {
 			selected={selected}
 			image={orderLineItem?.product_data?.image_url}
 			avatar={
-				<Badge badgeContent={2} color="secondary">
-					<Box sx={sx.image}>
+				<Badge badgeContent={2}>
+					<div className="w-[64px] h-[64px]">
 						<Image
 							alt={orderLineItem?.product_data?.title || ''}
 							src={orderLineItem?.product_data?.image_url}
 							height={64}
 							width={64}
 						/>
-					</Box>
+					</div>
 				</Badge>
 			}
 			primary={orderLineItem.product_data?.title}
@@ -56,10 +56,3 @@ const AdminOrderLineItem: React.FC<ResourceItemProps> = (props) => {
 }
 
 export default AdminOrderLineItem
-
-const sx = {
-	image: {
-		height: 64,
-		width: 64,
-	},
-}

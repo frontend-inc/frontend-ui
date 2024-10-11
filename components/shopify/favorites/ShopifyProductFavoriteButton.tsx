@@ -64,11 +64,3 @@ const ShopifyProductFavoriteButton: React.FC<ShopifyProductFavoriteButtonProps> 
 }
 
 export default ShopifyProductFavoriteButton
-
-const sx = {
-	button: {
-		minWidth: '44px',
-		p: 0,
-		borderRadius: 1,
-	},
-}

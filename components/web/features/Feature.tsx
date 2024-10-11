@@ -31,36 +31,3 @@ const Feature: React.FC<FeatureProps> = (props) => {
 }
 
 export default Feature
-
-const sx = {
-	root: {
-		p: 2,
-		width: '100%',
-		justifyContent: 'flex-start',
-		alignItems: 'flex-start',
-		borderRadius: 1,
-	},
-	avatar: {
-		bgcolor: 'primary.main',
-		height: '54px',
-		width: '54px',
-	},
-	title: {
-		textAlign: 'left',
-		color: 'grey.900',
-		'& span': {
-			color: 'primary.main',
-		},
-	},
-	text: {
-		maxWidth: '280px',
-		textAlign: 'left',
-		'& span': {
-			color: 'primary.main',
-		},
-	},
-	enableBorder: {
-		border: '1px solid',
-		borderColor: 'divider',
-	},
-}

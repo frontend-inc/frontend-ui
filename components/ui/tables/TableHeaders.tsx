@@ -44,7 +44,7 @@ const TableHeaders: React.FC<TableHeaderProps> = (props) => {
 			)}
 			{(enableEdit || enableDelete || enableShow) && (
 				<TableCell variant="head" header small>
-					<Box></Box>
+					<div></div>
 				</TableCell>
 			)}
 			{fields?.map((field, index) => (

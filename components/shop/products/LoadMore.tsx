@@ -31,11 +31,3 @@ const LoadMore: React.FC<LoadMoreProps> = (props) => {
 
 export default LoadMore
 
-const sx = {
-	root: {
-		width: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-}

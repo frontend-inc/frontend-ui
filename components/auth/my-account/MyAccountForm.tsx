@@ -58,12 +58,3 @@ const MyAccountForm: React.FC<MyAccountFormProps> = (props) => {
 }
 
 export default MyAccountForm
-
-const sx = {
-	root: {
-		width: '100%',
-		display: 'flex',
-		flexDirection: 'column',
-		gap: 2,
-	},
-}

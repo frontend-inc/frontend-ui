@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Box, Chip } from '../../../tailwind'
+import { Box, Chip } from '../../../tailwind'
 import { FieldWrapper } from '../../../components'
 
 type FieldArrayProps = {
@@ -13,30 +13,14 @@ const FieldArray: React.FC<FieldArrayProps> = (props) => {
 	const { value: values, color, label, ...rest } = props
 	return (
 		<FieldWrapper label={label} color={color} {...rest}>
-			<Box sx={sx.stack}>
+			<div sx={sx.stack}>
 				{Array.isArray(values) &&
 					values?.map((value, index) => (
 						<Chip key={index} label={value} sx={sx.chip} size="small" />
 					))}
-			</Box>
+			</div>
 		</FieldWrapper>
 	)
 }
 
 export default FieldArray
-
-const sx = {
-	chip: {
-		fontFamily: (theme) => theme.typography.button.fontFamily,
-		letterSpacing: 0,
-		borderRadius: (theme) => `${theme.shape.borderRadius}px`,
-	},
-	stack: {
-		display: 'flex',
-		flexWrap: 'wrap',
-		gap: '8px',
-		alignItems: 'flex-start',
-		justifyContent: 'flex-start',
-		width: '100%',
-	},
-}

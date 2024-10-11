@@ -72,17 +72,3 @@ const GoogleMarker: React.FC<GoogleMarkerProps> = (props) => {
 }
 
 export default GoogleMarker
-
-const sx = {
-	infoWindow: {
-		height: 'auto',
-		width: 'auto',
-		minWidth: 160,
-	},
-	imageContainer: {
-		height: 64,
-		width: 64,
-		overflow: 'hidden',
-		borderRadius: 1,
-	},
-}

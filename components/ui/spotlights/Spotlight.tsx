@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography } from '@mui/material'
+import { Typography } from '../../../tailwind'
 import { ButtonActions, SpotlightList, SpotlightCard } from '../..'
 import { ButtonType } from '../../../types'
 
@@ -48,8 +48,6 @@ const Spotlight: React.FC<SpotlightProps> = (props) => {
 				buttons?.length > 0 && (
 					<ButtonActions
 						buttons={buttons}
-						size="large"
-						justifyContent={style == 'card' ? 'flex-start' : 'center'}
 					/>
 				)
 			}

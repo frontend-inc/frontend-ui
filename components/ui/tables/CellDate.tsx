@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography } from '@mui/material'
+import { Typography } from '../../../tailwind'
 import { TypographyVariantsType } from '../../../types'
 import moment from 'moment'
 

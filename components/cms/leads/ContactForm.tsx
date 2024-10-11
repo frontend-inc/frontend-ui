@@ -52,7 +52,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 	}
 
 	return (
-		<div sx={sx.root}>
+		<div className='w-full'>
 			<Container maxWidth="sm">
 				<Heading
 					label={label}
@@ -101,28 +101,3 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 }
 
 export default ContactForm
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-	content: {
-		width: '100%',
-		alignItems: 'center',
-	},
-	label: {
-		textAlign: 'center',
-	},
-	title: {
-		textAlign: 'center',
-		color: 'text.primary',
-	},
-	description: {
-		color: 'text.secondary',
-		textAlign: 'center',
-		maxWidth: '600px',
-	},
-	paper: {
-		p: 3,
-	},
-}

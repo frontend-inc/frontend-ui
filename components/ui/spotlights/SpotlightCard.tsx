@@ -11,7 +11,6 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
 		secondary,
 		actions,
 		logos = [],
-		styles = {},
 		slots = {
 			image: {},
 		},
@@ -38,14 +37,13 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
 						{actions && actions}
 						{logos?.length > 0 && <BrandLogos logos={logos} />}
 					</div>
-					<div className="md:w-1/2 w-full flex flex-col justify-center">
+					<div className="md:w-1/2 w-full p-2 flex flex-col justify-center">
 						<Image
 							src={image}
 							alt={typeof primary === 'string' ? primary : 'Spotlight image'}
 							height={400}
 							aspectRatio={3 / 2}
 							objectFit="cover"
-							{...slots.image}
 						/>
 					</div>
 				</div>

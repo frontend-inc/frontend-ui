@@ -59,11 +59,3 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = (props) => {
 
 export default GoogleLoginButton
 
-const sx = {
-	button: {
-		position: 'relative',
-	},
-	icon: {
-		mb: '-6px',
-	},
-}

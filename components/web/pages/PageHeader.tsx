@@ -42,9 +42,9 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 					textAlign="left"
 				/>
 				{buttons?.length > 0 && (
-					<Box className="flex items-start justify-end sm:pb-0 xs:pb-1">
+					<div className="flex items-start justify-end sm:pb-0 xs:pb-1">
 						<ButtonActions buttons={buttons} resource={resource} />
-					</Box>
+					</div>
 				)}
 			</Stack>
 		</Stack>

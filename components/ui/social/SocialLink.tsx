@@ -1,9 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { IconButton } from '@mui/material'
+import React from 'react'
+import { IconButton } from '../../../tailwind'
 //@ts-ignore
 import { SocialIcon } from 'react-social-icons'
-import { useTheme } from '@mui/material'
-import { get } from 'lodash'
 
 type SocialLinkProps = {
 	provider: string
@@ -60,13 +58,10 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 		}
 	}
 
-	const theme = useTheme()
-	const bgColor = get(theme, `palette.${color}`)
 
 	return (
-		<IconButton sx={sx.iconButton} size="small" onClick={handleClick}>
+		<IconButton className='p-2' onClick={handleClick}>
 			<SocialIcon
-				bgColor={bgColor}
 				network={provider}
 				style={{
 					height: size,
@@ -78,9 +73,3 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 }
 
 export default SocialLink
-
-const sx = {
-	iconButton: {
-		p: '2px',
-	},
-}

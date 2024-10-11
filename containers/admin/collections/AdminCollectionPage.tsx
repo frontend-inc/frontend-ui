@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Stack, IconButton, Button } from '@mui/material'
+import { IconButton, Button } from '../../../tailwind'
 import {
 	AdminHeader,
 	AdminLayoutLeft,
@@ -99,7 +99,7 @@ const AdminCollectionPage: React.FC = () => {
 					enableExpandLeftPanel
 					buttons={
 						collectionId && (
-							<Stack direction="row" spacing={1}>
+							<div className='flex flex-row items-center space-x-2'>
 								<Button
 									variant="contained"
 									color="primary"
@@ -115,7 +115,7 @@ const AdminCollectionPage: React.FC = () => {
 								>
 									<Icon name="Sparkles" color="text.primary" />
 								</IconButton>
-							</Stack>
+							</div>
 						)
 					}
 					secondaryActions={<CollectionSchemaToggle tab={0} />}
@@ -156,13 +156,3 @@ const AdminCollectionPage: React.FC = () => {
 }
 
 export default AdminCollectionPage
-
-const sx = {
-	iconButton: {
-		width: 40,
-		height: 40,
-		border: '1px solid',
-		borderColor: 'divider',
-		borderRadius: 1,
-	},
-}

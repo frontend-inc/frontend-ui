@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Typography } from '@mui/material'
+import { Typography } from '../../../tailwind'
 import { ResourceListItem, UserAvatar, DisplayFields } from '../..'
 import { DisplayFieldType, UserType } from '../../../types'
 
@@ -27,9 +27,7 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
 				</Typography>
 			}
 			avatar={
-				<Stack direction="column" spacing={1} alignItems="center">
-					<UserAvatar size={size} user={user} />
-				</Stack>
+				<UserAvatar size={size} user={user} />
 			}
 			secondary={<DisplayFields resource={user} fields={displayFields} />}
 		/>

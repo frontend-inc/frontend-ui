@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { Hidden } from '../../../tailwind'
 import { useAdmin } from '../../../hooks'
 import { Drawer } from '../../../components'
-import { useResponsive } from '../../../hooks'
 
 type AdminLayoutRightProps = {
 	title?: string
@@ -12,14 +11,6 @@ type AdminLayoutRightProps = {
 const AdminLayoutRight: React.FC<AdminLayoutRightProps> = (props) => {
 	const { children, title } = props
 	const { openLayoutRight, setOpenLayoutRight } = useAdmin()
-
-	const { breakpoint } = useResponsive()
-
-	useEffect(() => {
-		if (breakpoint == 'md' || breakpoint == 'sm') {
-			setOpenLayoutRight(false)
-		}
-	}, [breakpoint])
 
 	return (
 		<div className='dark'>

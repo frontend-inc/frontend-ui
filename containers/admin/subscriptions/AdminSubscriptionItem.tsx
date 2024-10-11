@@ -1,6 +1,5 @@
 import React from 'react'
 import { Label, ResourceListItem } from '../../../components'
-import * as COLORS from '@mui/material/colors'
 
 type AdminSubscriptionItemProps = {
 	resource: any
@@ -25,7 +24,7 @@ const AdminSubscriptionItem: React.FC<AdminSubscriptionItemProps> = (props) => {
 			secondaryAction={
 				subscription?.label && <Label label={subscription?.label} />
 			}
-			color={COLORS.amber[500]}
+			color={'bg-amber-500'}
 			handleClick={handleClick}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}

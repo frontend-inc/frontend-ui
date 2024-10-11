@@ -58,12 +58,3 @@ const AdminQuestionShow: React.FC<AdminQuestionShowProps> = (props) => {
 }
 
 export default AdminQuestionShow
-
-const sx = {
-	divider: {
-		borderBottom: '1px solid',
-		borderColor: 'divider',
-		pt: 2,
-		my: 2,
-	},
-}

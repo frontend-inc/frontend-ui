@@ -33,9 +33,3 @@ const DisplayFields: React.FC<DisplayFieldsProps> = (props) => {
 }
 
 export default DisplayFields
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-}

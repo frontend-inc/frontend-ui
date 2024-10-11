@@ -38,14 +38,3 @@ const FormWizardInputWrapper: React.FC<FormWizardInputWrapperProps> = (
 }
 
 export default FormWizardInputWrapper
-
-const sx = {
-	title: {
-		textAlign: 'left',
-		width: '100%',
-	},
-	description: {
-		textAlign: 'left',
-		width: '100%',
-	},
-}

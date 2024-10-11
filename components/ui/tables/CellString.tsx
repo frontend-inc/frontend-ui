@@ -17,9 +17,3 @@ const CellString: React.FC<CellStringProps> = (props) => {
 }
 
 export default CellString
-
-const sx = {
-	text: {
-		whiteSpace: 'nowrap',
-	},
-}

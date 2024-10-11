@@ -33,10 +33,3 @@ const AdminShipment: React.FC<ResourceItemProps> = (props) => {
 }
 
 export default AdminShipment
-
-const sx = {
-	image: {
-		height: 64,
-		width: 64,
-	},
-}

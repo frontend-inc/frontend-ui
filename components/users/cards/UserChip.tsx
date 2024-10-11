@@ -1,46 +1,29 @@
 import React from 'react'
 import { UserAvatar } from '../..'
-import { Stack, Typography } from '@mui/material'
 import { UserType } from '../../../types'
 
 type UserChipProps = {
-	user: UserType
-	enableUsername?: boolean
-	enableEmail?: boolean
-	size?: number
+  user: UserType
+  enableUsername?: boolean
+  enableEmail?: boolean
+  size?: number
 }
 
-const UserChip: React.FC<UserChipProps> = (props) => {
-	const { user, enableEmail, enableUsername, size = 24 } = props
+export default function UserChip({ user, enableEmail, enableUsername, size = 24 }: UserChipProps) {
+  if (!user?.name) return null
 
-	if (!user?.name) return null
-	return (
-		<Stack sx={sx.root} direction="row" spacing={1}>
-			<UserAvatar user={user} size={size} />
-			<Stack sx={sx.root} direction="column" spacing={0}>
-				<Typography variant="caption" color="text.secondary">
-					{user?.name}
-				</Typography>
-				{enableEmail && user?.email && (
-					<Typography variant="caption" color="text.secondary">
-						{user?.email}
-					</Typography>
-				)}
-				{enableUsername && (
-					<Typography variant="caption" color="text.secondary">
-						@{user?.username}
-					</Typography>
-				)}
-			</Stack>
-		</Stack>
-	)
-}
-
-export default UserChip
-
-const sx = {
-	root: {
-		py: 0.5,
-		alignItems: 'center',
-	},
+  return (
+    <div className="flex items-center py-0.5 space-x-2">
+      <UserAvatar user={user} size={size} />
+      <div className="flex flex-col py-0.5">
+        <span className="text-xs text-muted-foreground">{user.name}</span>
+        {enableEmail && user?.email && (
+          <span className="text-xs text-muted-foreground">{user.email}</span>
+        )}
+        {enableUsername && (
+          <span className="text-xs text-muted-foreground">@{user.username}</span>
+        )}
+      </div>
+    </div>
+  )
 }

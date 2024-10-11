@@ -1,6 +1,5 @@
 import React from 'react'
 import { PrimaryButton, ResourceToolbarModal } from '../../../../components'
-import { Collapse, Stack } from '@mui/material'
 import { useAdminForms } from '../../../../hooks'
 
 const AdminProductToolbar = (props) => {
@@ -18,11 +17,9 @@ const AdminProductToolbar = (props) => {
 
 	return (
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
-			<Stack direction="row" spacing={1}>
-				<PrimaryButton fullWidth onClick={handleAddQuestions} icon="Plus">
-					Add Questions
-				</PrimaryButton>
-			</Stack>
+      <PrimaryButton fullWidth onClick={handleAddQuestions} icon="Plus">
+        Add Questions
+      </PrimaryButton>
 		</ResourceToolbarModal>
 	)
 }

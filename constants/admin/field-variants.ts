@@ -1,4 +1,3 @@
-import * as COLORS from '@mui/material/colors'
 import { FieldVariantType } from '../../types'
 
 export const AUDIO_FIELD_VARIANT: FieldVariantType = {
@@ -9,7 +8,7 @@ export const AUDIO_FIELD_VARIANT: FieldVariantType = {
 	label: 'Audio',
 	description: 'Audio URL',
 	array: false,
-	color: COLORS.pink[600],
+	color: 'bg-pink-500',
 }
 
 export const EMAIL_FIELD_VARIANT: FieldVariantType = {
@@ -20,7 +19,7 @@ export const EMAIL_FIELD_VARIANT: FieldVariantType = {
 	label: 'Email',
 	description: 'Email address',
 	array: false,
-	color: COLORS.green[600],
+	color: 'bg-green-500',
 }
 
 export const PHONE_FIELD_VARIANT: FieldVariantType = {
@@ -31,7 +30,7 @@ export const PHONE_FIELD_VARIANT: FieldVariantType = {
 	label: 'Phone',
 	description: 'Phone number',
 	array: false,
-	color: COLORS.green[600],
+	color: 'bg-green-500',
 }
 
 export const URL_FIELD_VARIANT: FieldVariantType = {
@@ -42,7 +41,7 @@ export const URL_FIELD_VARIANT: FieldVariantType = {
 	label: 'URL',
 	description: 'Website URL',
 	array: false,
-	color: COLORS.green[600],
+	color: 'bg-green-500',
 }
 
 export const TAG_ARRAY_FIELD_VARIANT: FieldVariantType = {
@@ -53,7 +52,7 @@ export const TAG_ARRAY_FIELD_VARIANT: FieldVariantType = {
 	db_type: 'string',
 	description: 'Multiple keywords',
 	array: true,
-	color: COLORS.deepPurple[500],
+	color: 'bg-purple-500',
 }
 
 export const BOOLEAN_FIELD_VARIANT: FieldVariantType = {
@@ -64,7 +63,7 @@ export const BOOLEAN_FIELD_VARIANT: FieldVariantType = {
 	label: 'Switch',
 	description: 'True or false switch',
 	array: false,
-	color: COLORS.lightBlue[500],
+	color: 'bg-sky-500',
 }
 
 export const DATE_FIELD_VARIANT: FieldVariantType = {
@@ -75,7 +74,7 @@ export const DATE_FIELD_VARIANT: FieldVariantType = {
 	label: 'Date',
 	description: 'Calendar date',
 	array: false,
-	color: COLORS.amber[600],
+	color: 'bg-amber-500',
 }
 
 export const DATETIME_FIELD_VARIANT: FieldVariantType = {
@@ -86,7 +85,7 @@ export const DATETIME_FIELD_VARIANT: FieldVariantType = {
 	label: 'DateTime',
 	description: 'Date and time',
 	array: false,
-	color: COLORS.amber[600],
+	color: 'bg-amber-500',
 }
 
 export const SELECT_FIELD_VARIANT: FieldVariantType = {
@@ -97,7 +96,7 @@ export const SELECT_FIELD_VARIANT: FieldVariantType = {
 	db_type: 'string',
 	description: 'Select menu of choices',
 	array: false,
-	color: COLORS.deepPurple[500],
+	color: 'bg-purple-500',
 }
 
 export const FLOAT_FIELD_VARIANT: FieldVariantType = {
@@ -108,7 +107,7 @@ export const FLOAT_FIELD_VARIANT: FieldVariantType = {
 	label: 'Float',
 	description: 'Numbers with decimals',
 	array: false,
-	color: COLORS.purple[500],
+	color: 'bg-purple-500',
 }
 
 export const JSON_FIELD_VARIANT: FieldVariantType = {
@@ -119,7 +118,7 @@ export const JSON_FIELD_VARIANT: FieldVariantType = {
 	label: 'JSON',
 	description: 'JSON field',
 	array: false,
-	color: COLORS.blue[500],
+	color: 'bg-blue-500',
 }
 
 export const IMAGE_FIELD_VARIANT: FieldVariantType = {
@@ -130,7 +129,7 @@ export const IMAGE_FIELD_VARIANT: FieldVariantType = {
 	label: 'Image',
 	description: 'Image URL',
 	array: false,
-	color: COLORS.pink[500],
+	color: 'bg-pink-500',
 }
 
 export const PRICE_FIELD_VARIANT: FieldVariantType = {
@@ -141,7 +140,7 @@ export const PRICE_FIELD_VARIANT: FieldVariantType = {
 	label: 'Price',
 	description: 'Currency in USD',
 	array: false,
-	color: COLORS.purple[500],
+	color: 'bg-purple-500',
 }
 
 export const LOCATION_FIELD_VARIANT: FieldVariantType = {
@@ -163,7 +162,7 @@ export const NUMBER_FIELD_VARIANT: FieldVariantType = {
 	label: 'Number',
 	description: 'Integer values.',
 	array: false,
-	color: COLORS.purple[500],
+	color: 'bg-purple-500',
 }
 
 export const RATING_FIELD_VARIANT: FieldVariantType = {
@@ -174,7 +173,7 @@ export const RATING_FIELD_VARIANT: FieldVariantType = {
 	label: 'Rating',
 	description: 'Five-star ratings',
 	array: false,
-	color: COLORS.purple[500],
+	color: 'bg-purple-500',
 }
 
 export const STRING_FIELD_VARIANT: FieldVariantType = {
@@ -185,7 +184,7 @@ export const STRING_FIELD_VARIANT: FieldVariantType = {
 	label: 'Short text',
 	description: 'Single line of text',
 	array: false,
-	color: COLORS.deepPurple[500],
+	color: 'bg-purple-500',
 }
 
 export const TEXT_FIELD_VARIANT: FieldVariantType = {
@@ -196,7 +195,7 @@ export const TEXT_FIELD_VARIANT: FieldVariantType = {
 	label: 'Long text',
 	description: 'Paragraph of text',
 	array: false,
-	color: COLORS.deepPurple[500],
+	color: 'bg-purple-500',
 }
 
 export const VIDEO_FIELD_VARIANT: FieldVariantType = {
@@ -207,7 +206,7 @@ export const VIDEO_FIELD_VARIANT: FieldVariantType = {
 	db_type: 'string',
 	description: 'Video URL',
 	array: false,
-	color: COLORS.pink[500],
+	color: 'bg-pink-500',
 }
 
 export const FILE_FIELD_VARIANT: FieldVariantType = {
@@ -218,7 +217,7 @@ export const FILE_FIELD_VARIANT: FieldVariantType = {
 	db_type: 'text',
 	description: 'Upload an attachment',
 	array: false,
-	color: COLORS.pink[500],
+	color: 'bg-pink-500',
 }
 
 export const HABTM_FIELD_VARIANT: FieldVariantType = {
@@ -240,7 +239,7 @@ export const SHOP_PRODUCTS_FIELD_VARIANT: FieldVariantType = {
 	db_type: 'habtm',
 	description: 'Products from the shop',
 	array: true,
-	color: COLORS.lightGreen[500],
+	color: 'bg-lime-500',
 }
 
 export const SHOPIFY_PRODUCTS_FIELD_VARIANT: FieldVariantType = {
@@ -251,7 +250,7 @@ export const SHOPIFY_PRODUCTS_FIELD_VARIANT: FieldVariantType = {
 	db_type: 'string',
 	description: 'Shopify Products',
 	array: true,
-	color: COLORS.lightGreen[500],
+	color: 'bg-lime-500',
 }
 
 export const FIELD_VARIANTS: FieldVariantType[] = [

@@ -1,4 +1,3 @@
-import * as COLORS from '@mui/material/colors'
 
 type QuestionVariantTypeType =
 	| 'single_choice'
@@ -35,7 +34,7 @@ export const SINGLE_CHOICE_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'Single Choice',
 	variant: 'single_choice',
 	description: 'Select a single option',
-	color: COLORS.deepPurple[500],
+	color: 'bg-purple-500',
 }
 
 export const MULTIPLE_CHOICE_QUESTION_VARIANT: QuestionVariantType = {
@@ -43,7 +42,7 @@ export const MULTIPLE_CHOICE_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'Select Multiple',
 	variant: 'multiple_choice',
 	description: 'Select multiple options',
-	color: COLORS.purple[500],
+	color: 'bg-purple-500',
 }
 
 export const AUDIO_QUESTION_VARIANT: QuestionVariantType = {
@@ -51,7 +50,7 @@ export const AUDIO_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'Audio',
 	variant: 'audio',
 	description: 'Audio URL',
-	color: COLORS.pink[600],
+	color: 'bg-pink-500',
 }
 
 export const EMAIL_QUESTION_VARIANT: QuestionVariantType = {
@@ -59,7 +58,7 @@ export const EMAIL_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'Email',
 	description: 'Email address',
 	variant: 'email',
-	color: COLORS.green[600],
+	color: 'bg-green-500',
 }
 
 export const PHONE_QUESTION_VARIANT: QuestionVariantType = {
@@ -67,7 +66,7 @@ export const PHONE_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'Phone',
 	description: 'Phone number',
 	variant: 'phone',
-	color: COLORS.green[600],
+	color: 'bg-green-500',
 }
 
 export const URL_QUESTION_VARIANT: QuestionVariantType = {
@@ -75,7 +74,7 @@ export const URL_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'URL',
 	description: 'Website URL',
 	variant: 'url',
-	color: COLORS.green[600],
+	color: 'bg-green-500',
 }
 
 export const TAG_QUESTION_VARIANT: QuestionVariantType = {
@@ -83,7 +82,7 @@ export const TAG_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'Tags',
 	description: 'Multiple keywords',
 	variant: 'array',
-	color: COLORS.deepPurple[500],
+	color: 'bg-purple-500',
 }
 
 export const BOOLEAN_QUESTION_VARIANT: QuestionVariantType = {
@@ -91,7 +90,7 @@ export const BOOLEAN_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'Switch',
 	description: 'True or false switch',
 	variant: 'boolean',
-	color: COLORS.lightBlue[500],
+	color: 'bg-sky-500',
 }
 
 export const DATE_QUESTION_VARIANT: QuestionVariantType = {
@@ -99,7 +98,7 @@ export const DATE_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'Date',
 	description: 'Calendar date',
 	variant: 'date',
-	color: COLORS.amber[600],
+	color: 'bg-amber-500',
 }
 
 export const SELECT_QUESTION_VARIANT: QuestionVariantType = {
@@ -107,7 +106,7 @@ export const SELECT_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'Select',
 	description: 'Select menu of choices',
 	variant: 'select',
-	color: COLORS.deepPurple[500],
+	color: 'bg-purple-500',
 }
 
 export const IMAGE_QUESTION_VARIANT: QuestionVariantType = {
@@ -115,7 +114,7 @@ export const IMAGE_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'Image',
 	description: 'Image URL',
 	variant: 'image',
-	color: COLORS.pink[500],
+	color: 'bg-pink-500',
 }
 
 export const PRICE_QUESTION_VARIANT: QuestionVariantType = {
@@ -123,7 +122,7 @@ export const PRICE_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'Price',
 	description: 'Currency in USD',
 	variant: 'price',
-	color: COLORS.purple[500],
+	color: 'bg-purple-500',
 }
 
 export const LOCATION_QUESTION_VARIANT: QuestionVariantType = {
@@ -139,7 +138,7 @@ export const NUMBER_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'Number',
 	description: 'Integer values.',
 	variant: 'number',
-	color: COLORS.purple[500],
+	color: 'bg-purple-500',
 }
 
 export const RATING_QUESTION_VARIANT: QuestionVariantType = {
@@ -147,7 +146,7 @@ export const RATING_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'Rating',
 	description: 'Five-star ratings',
 	variant: 'rating',
-	color: COLORS.purple[500],
+	color: 'bg-purple-500',
 }
 
 export const STRING_QUESTION_VARIANT: QuestionVariantType = {
@@ -155,7 +154,7 @@ export const STRING_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'Short text',
 	description: 'Single line of text',
 	variant: 'string',
-	color: COLORS.deepPurple[500],
+	color: 'bg-purple-500',
 }
 
 export const TEXT_QUESTION_VARIANT: QuestionVariantType = {
@@ -163,7 +162,7 @@ export const TEXT_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'Long text',
 	description: 'Paragraph of text',
 	variant: 'text',
-	color: COLORS.deepPurple[500],
+	color: 'bg-purple-500',
 }
 
 export const VIDEO_QUESTION_VARIANT: QuestionVariantType = {
@@ -171,7 +170,7 @@ export const VIDEO_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'Video',
 	description: 'Video URL',
 	variant: 'video',
-	color: COLORS.pink[500],
+	color: 'bg-pink-500',
 }
 
 export const FILE_QUESTION_VARIANT: QuestionVariantType = {
@@ -179,7 +178,7 @@ export const FILE_QUESTION_VARIANT: QuestionVariantType = {
 	label: 'File',
 	description: 'Upload an attachment',
 	variant: 'file',
-	color: COLORS.pink[500],
+	color: 'bg-pink-500',
 }
 
 export const QUESTION_VARIANTS: QuestionVariantType[] = [

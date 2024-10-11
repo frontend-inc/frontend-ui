@@ -38,12 +38,12 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
 	}
 
 	return (
-		<Box className="w-full border border-divider rounded p-2 flex flex-col justify-between">
+		<div className="w-full border border-divider rounded p-2 flex flex-col justify-between">
 			<Stack className="min-h-[300px]" direction="column" spacing={1}>
 				{label && (
-					<Box>
+					<div>
 						<Label label={label} />
-					</Box>
+					</div>
 				)}
 				<Typography variant="body1">{title}</Typography>
 				<Typography variant="h5">{price}</Typography>
@@ -61,7 +61,7 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
 					{buttonText}
 				</Button>
 			)}
-		</Box>
+		</div>
 	)
 }
 

@@ -15,12 +15,3 @@ const GorgiasContactForm: React.FC<GorgiasContactFormProps> = (props) => {
 }
 
 export default GorgiasContactForm
-
-const sx = {
-	root: {
-		height: '100%',
-		minHeight: '1100px',
-		width: '100%',
-		border: 'none',
-	},
-}

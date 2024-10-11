@@ -1,6 +1,6 @@
 import React from 'react'
 import { Label, UserAvatar, ResourceListItem } from '../../../components'
-import { Typography, Stack } from '@mui/material'
+import { Typography } from '../../../tailwind'
 
 type AdminContactItemProps = {
 	resource: any
@@ -15,14 +15,14 @@ const AdminContactItem: React.FC<AdminContactItemProps> = (props) => {
 	return (
 		<ResourceListItem
 			primary={
-				<Stack direction="row" spacing={1}>
+				<div className='flex flex-row space-x-1 items-center'>
 					{contact?.name && (
 						<Typography variant="body1" color="text.primary">
 							{contact?.name}
 						</Typography>
 					)}
 					<Label label={contact?.source} />
-				</Stack>
+				</div>
 			}
 			secondary={contact?.email}
 			avatar={

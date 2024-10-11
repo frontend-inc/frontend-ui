@@ -3,7 +3,7 @@ import { ResourceHeader } from '../../../components'
 import { ResourceHeaderProps } from '../../../components/cms/resources/ResourceHeader'
 import { useProducts } from '../../../hooks'
 import { Form, Modal, Icon } from '../../../components'
-import { IconButton } from '@mui/material'
+import { IconButton } from '../../../tailwind'
 
 type AdminProductHeaderProps = ResourceHeaderProps
 
@@ -34,7 +34,7 @@ const AdminProductHeader: React.FC<AdminProductHeaderProps> = (props) => {
 			{...props}
 			secondaryAction={
 				<>
-					<IconButton sx={sx.iconButton} onClick={() => setOpen(true)}>
+					<IconButton onClick={() => setOpen(true)}>
 						<Icon name="Wand" />
 					</IconButton>
 					<Modal
@@ -68,14 +68,3 @@ const AdminProductHeader: React.FC<AdminProductHeaderProps> = (props) => {
 }
 
 export default AdminProductHeader
-
-const sx = {
-	iconButton: {
-		minWidth: 44,
-		borderRadius: 1,
-		bgcolor: 'secondary.main',
-		'&:hover': {
-			bgcolor: 'secondary.dark',
-		},
-	},
-}

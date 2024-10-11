@@ -1,10 +1,9 @@
 import React from 'react'
-import { Button, Box } from '@mui/material'
+import { Button } from '../../../tailwind'
 import {
 	Drawer,
 	FormFields,
 	IconLoading,
-	ResourceForm,
 } from '../../../components'
 import { ResourceFormProps } from '../../../components/cms/resources/ResourceForm'
 
@@ -72,7 +71,6 @@ const AdminAnswerEdit: React.FC<ResourceFormProps> = (props) => {
 				inputOptions={inputOptions}
 				inputParams={inputParams}
 			/>
-			<Box sx={{ height: 240 }} />
 		</Drawer>
 	)
 }

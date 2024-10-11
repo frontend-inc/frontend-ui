@@ -1,6 +1,5 @@
 import React from 'react'
 import { ResourceListItem, Label } from '../../../components'
-import { deepPurple } from '@mui/material/colors'
 
 type EmailItemProps = {
 	resource: any
@@ -17,7 +16,7 @@ const EmailItem: React.FC<EmailItemProps> = (props) => {
 			primary={email.name}
 			secondary={email.subject}
 			icon="Mail"
-			color={deepPurple[500]}
+			color={'bg-purple-500'}
 			secondaryAction={email?.internal && <Label label="System" />}
 			handleClick={() => handleEdit(email)}
 			handleEdit={() => handleEdit(email)}
@@ -27,25 +26,3 @@ const EmailItem: React.FC<EmailItemProps> = (props) => {
 }
 
 export default EmailItem
-
-const sx = {
-	root: {
-		p: 0,
-		borderRadius: 1,
-		border: '2px solid',
-		borderColor: 'divider',
-		bgcolor: 'background.paper',
-		'&:hover': {
-			borderColor: 'primary.main',
-		},
-		my: 1,
-	},
-	secondaryActions: {
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'flex-end',
-	},
-	listItemButton: {
-		p: 2,
-	},
-}

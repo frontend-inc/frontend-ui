@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useDocuments } from '../../../../hooks'
 import { useSelected } from '../../../../hooks'
 import { Drawer, SearchInput } from '../../../../components'
-import { Button, CircularProgress, List } from '@mui/material'
-import { ExpandMore } from '@mui/icons-material'
+import { Button, CircularProgress } from '../../../../tailwind'
+import { ChevronDown } from 'lucide-react'
 import DocumentListItem from './DocumentListItem'
 
 type DocumentListDrawerProps = {
@@ -99,7 +99,7 @@ const DocumentListDrawer: React.FC<DocumentListDrawerProps> = (props) => {
 				handleSearch={handleSearch}
 				placeholder={`Search ${field?.foreign_collection?.plural_name}...`}
 			/>
-			<List>
+			<ul>
 				{documents?.map((document, idx) => (
 					<DocumentListItem
 						key={idx}
@@ -108,13 +108,13 @@ const DocumentListDrawer: React.FC<DocumentListDrawerProps> = (props) => {
 						handleClick={() => handleSelectClick(document)}
 					/>
 				))}
-			</List>
+			</ul>
 			{numPages > page && (
 				<Button
 					fullWidth
 					onClick={handleLoadMore}
 					endIcon={
-						loading ? <CircularProgress disableShrink /> : <ExpandMore />
+						loading ? <CircularProgress /> : <ChevronDown className="w-5 h-5 text-foreground" />
 					}
 				>
 					Load More
