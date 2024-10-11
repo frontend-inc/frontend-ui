@@ -21,75 +21,24 @@ const FilterListInput: React.FC<FilterListInputProps> = (props) => {
 		return _filters.map((f) => f.value)
 	}
 
+  const Component = {
+    'boolean': CheckboxBooleanFilter,
+    'date_range': CheckboxDatesPastFilter,
+    'date_range_past': CheckboxDatesPastFilter,
+    'date_range_future': CheckboxDatesFutureFilter,
+    'multiple_choice': CheckboxFilter,
+    'number_range': CheckboxNumberRangeFilter,
+    'ratings_scale': CheckboxRatingsFilter,
+  }[filterOption?.variant]
+
 	return (
-		<>
-			{filterOption.variant == 'boolean' && (
-				<CheckboxBooleanFilter
-					field={filterOption?.field}
-					label={filterOption?.label}
-					values={findFilterValues(filterOption?.field, filters)}
-					handleClick={handleFilter}
-				/>
-			)}
-
-			{filterOption.variant == 'date_range' && (
-				// Todo: Update to use date range component
-				<CheckboxDatesPastFilter
-					field={filterOption?.field}
-					label={filterOption?.label}
-					values={findFilterValues(filterOption?.field, filters)}
-					handleClick={handleFilter}
-				/>
-			)}
-			{filterOption.variant == 'date_range_past' && (
-				<CheckboxDatesPastFilter
-					field={filterOption?.field}
-					label={filterOption?.label}
-					values={findFilterValues(filterOption?.field, filters)}
-					handleClick={handleFilter}
-				/>
-			)}
-
-			{filterOption.variant == 'date_range_future' && (
-				<CheckboxDatesFutureFilter
-					field={filterOption?.field}
-					label={filterOption?.label}
-					values={findFilterValues(filterOption?.field, filters)}
-					handleClick={handleFilter}
-				/>
-			)}
-
-			{filterOption.variant == 'multiple_choice' && (
-				<CheckboxFilter
-					field={filterOption?.field}
-					label={filterOption?.label}
-					values={findFilterValues(filterOption?.field, filters)}
-					// @ts-ignore
-					options={filterOption.options}
-					handleClick={handleFilter}
-				/>
-			)}
-
-			{filterOption.variant == 'number_range' && (
-				<CheckboxNumberRangeFilter
-					field={filterOption?.field}
-					label={filterOption?.label}
-					values={findFilterValues(filterOption?.field, filters)}
-					// @ts-ignore
-					options={filterOption.options}
-					handleClick={handleFilter}
-				/>
-			)}
-
-			{filterOption.variant == 'ratings_scale' && (
-				<CheckboxRatingsFilter
-					field={filterOption?.field}
-					label={filterOption?.label}
-					values={findFilterValues(filterOption?.field, filters)}
-					handleClick={handleFilter}
-				/>
-			)}
-		</>
+    <Component 
+      field={filterOption?.field}
+      label={filterOption?.label}
+      values={findFilterValues(filterOption?.field, filters)}
+      handleClick={handleFilter}
+      options={filterOption.options}
+    />		
 	)
 }
 

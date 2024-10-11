@@ -3,7 +3,7 @@ import { Icon, AlertModal } from '../../..'
 import { useResourceContext } from 'frontend-js'
 import { useApp } from '../../../../hooks'
 import { useAuth } from 'frontend-js'
-import { Button } from '@mui/material'
+import { Button } from '../../../../tailwind'
 
 const ToolbarDeleteButton: React.FC<any> = () => {
 	const { currentUser } = useAuth()

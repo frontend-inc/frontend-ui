@@ -15,7 +15,7 @@ type CheckboxFilterProps = {
 	options?: OptionType[]
 	values?: any
 	handleClick: (filter: FilterOptionType) => void
-	label?: string
+	label: string
 	icon?: React.ReactNode
 	disablePadding?: boolean
 	defaultClosed?: boolean
@@ -30,16 +30,10 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 		options,
 		values,
 		handleClick,
-		disablePadding = true,
-		defaultClosed = false,
 	} = props
 
 	return (
-		<MenuList
-			label={label}
-			disablePadding={disablePadding}
-			defaultClosed={defaultClosed}
-		>
+		<MenuList label={label}>
 			{options?.map((option, index) => (
 				<CheckboxFilterItem
 					key={index}

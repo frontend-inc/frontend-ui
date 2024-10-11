@@ -1,57 +1,48 @@
 import React from 'react'
 import ListFilterList from './FilterList'
-import { Button, Hidden } from '@mui/material'
-import { Icon, Drawer } from '../..'
+import { Hidden } from '../../../tailwind'
+import { Button } from "../../../shadcn/ui/button"
+import { Drawer } from '../..'
 import { useMenu } from '../../../hooks'
+import { Icon } from '../..'
 
 type ListFilterListProps = {
-	filters: any
-	filterOptions: any
-	handleFilter: any
+  filters: any
+  filterOptions: any
+  handleFilter: any
 }
 
-const ListSearchFilters: React.FC<ListFilterListProps> = (props) => {
-	const { filters = [], filterOptions = [], handleFilter } = props
-	const { open, toggleMenu, closeMenu } = useMenu()
+const SearchFilters: React.FC<ListFilterListProps> = ({ filters = [], filterOptions = [], handleFilter }) => {
+  const { open, toggleMenu, closeMenu } = useMenu()
 
-	return (
-		<>
-			<Hidden smDown>
-				<ListFilterList
-					filters={filters}
-					filterOptions={filterOptions}
-					handleFilter={handleFilter}
-				/>
-			</Hidden>
-			<Hidden smUp>
-				<Button
-					sx={sx.button}
-					onClick={toggleMenu}
-					color="secondary"
-					variant="contained"
-					startIcon={<Icon name="SlidersHorizontal" />}
-				>
-					Filters
-				</Button>
-				<Drawer open={open} handleClose={closeMenu} anchor="right">
-					<ListFilterList
-						filters={filters}
-						filterOptions={filterOptions}
-						handleFilter={handleFilter}
-					/>
-				</Drawer>
-			</Hidden>
-		</>
-	)
+  return (
+    <>
+      <div className="hidden sm:block">
+        <ListFilterList
+          filters={filters}
+          filterOptions={filterOptions}
+          handleFilter={handleFilter}
+        />
+      </div>
+      <Hidden smUp>
+        <Button
+          variant="secondary"
+          className="w-full"
+          onClick={toggleMenu}
+        >
+          <Icon name="SlidersHorizontal" className="mr-2 h-4 w-4" />
+          Filters
+        </Button>
+        <Drawer open={open} handleClose={closeMenu}>
+          <ListFilterList
+            filters={filters}
+            filterOptions={filterOptions}
+            handleFilter={handleFilter}
+          />
+        </Drawer>
+      </Hidden>
+    </>
+  )
 }
 
-export default ListSearchFilters
-
-const sx = {
-	button: {
-		width: {
-			sm: 'auto',
-			xs: '100%',
-		},
-	},
-}
+export default SearchFilters

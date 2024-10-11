@@ -1,5 +1,5 @@
 import React from 'react'
-import { Paper, Collapse, Box, Stack, IconButton } from '@mui/material'
+import { Collapse, IconButton } from '../../../../tailwind'
 import { Icon } from '../../..'
 import { useResourceContext } from 'frontend-js'
 
@@ -19,42 +19,18 @@ const ToolbarModal: React.FC<ToolbarModalProps> = (props) => {
 
 	return (
 		<Collapse in={open}>
-			<Paper elevation={0} sx={sx.root}>
-				<Stack
-					direction="row"
-					justifyContent="space-between"
-					alignItems="center"
-					width="100%"
-				>
-					<Stack direction="row" spacing={1}>
-						<Box display="flex" alignItems="center">
-							<IconButton onClick={handleClose} sx={sx.closeButton}>
-								<Icon name="X" size={18} color="secondary.contrastText" />
-							</IconButton>
-						</Box>
+			<div>
+				<div className="flex flex-row justify-between items-center w-full">
+					<div className='flex flex-row space-x-1 items-center'>
+            <IconButton onClick={handleClose}>
+              <Icon name="X" />
+            </IconButton>
 						{children}
-					</Stack>
-				</Stack>
-			</Paper>
+					</div>
+				</div>
+			</div>
 		</Collapse>
 	)
 }
 
 export default ToolbarModal
-
-const sx = {
-	root: {
-		mb: 1,
-	},
-	appBar: {
-		m: 0,
-		top: '-10px',
-	},
-	iconButton: {
-		width: '40px',
-		height: '40px',
-	},
-	closeButton: {
-		bgcolor: 'secondary.light',
-	},
-}

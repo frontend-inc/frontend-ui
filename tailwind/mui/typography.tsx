@@ -47,7 +47,7 @@ const Typography: React.FC<TypographyProps> = ({
 		h6: 'text-xl font-medium',
 		subtitle1: 'text-lg font-medium',
 		subtitle2: 'text-base font-medium',
-		button: 'text-base font-medium uppercase tracking-widest',
+		button: 'text-base',
 		body1: 'text-base',
 		body2: 'text-sm',
 		caption: 'text-sm',

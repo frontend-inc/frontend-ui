@@ -4,6 +4,7 @@ import { Button } from "../../../shadcn/ui/button"
 import { Check } from "lucide-react"
 import { SortOptionType } from '../../../types'
 import { Typography } from '../../../tailwind'
+import { MenuList } from '../../../components'
 
 // Assuming SORT_DIRECTIONS is imported from a constants file
 const SORT_DIRECTIONS = [
@@ -27,9 +28,9 @@ export default function SortList({
   handleSortDirection,
 }: SortListProps) {
   return (
-    <div className="p-4 space-y-2">      
-      <Typography variant="body2">Sort by</Typography>
-        <div className="space-y-2">
+    <ul>      
+      <MenuList label="Sort By">
+        <ul className="space-y-2">
           {sortOptions?.map((sortOption) => (
             <Button
               key={sortOption.name}
@@ -44,10 +45,10 @@ export default function SortList({
               {sortBy === sortOption.name && <Check className="w-4 h-4 ml-2" />}
             </Button>
           ))}
-        </div>
-      
-        <Typography variant="body2">Direction</Typography>
-        <div className="space-y-2">
+        </ul>
+      </MenuList>      
+      <MenuList label="Direction" enableBorder>
+        <ul className="space-y-2">
           {SORT_DIRECTIONS.map((direction) => (
             <Button
               key={direction.value}              
@@ -62,7 +63,8 @@ export default function SortList({
               {sortDirection === direction.value && <Check className="w-4 h-4 ml-2" />}
             </Button>
           ))}
-        </div>
-      </div>    
+          </ul>
+        </MenuList>
+      </ul>    
   )
 }
