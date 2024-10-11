@@ -4,7 +4,7 @@ import React from 'react'
 import { Button } from "@/shadcn/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/shadcn/ui/dropdown-menu"
 import { ChevronDown, Loader2 } from "lucide-react"
-import { cn } from "@/shadcn/lib/utils"
+import { cn } from "../../../../shadcn/lib/utils"
 import { useRouter } from 'next/router'
 import { useAdmin } from '../../../../hooks'
 

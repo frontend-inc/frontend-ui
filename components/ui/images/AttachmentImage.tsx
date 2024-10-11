@@ -1,6 +1,6 @@
 import React from 'react'
 import { Icon } from '../../../components'
-import { cn } from "@/shadcn/lib/utils"
+import { cn } from "../../../shadcn/lib/utils"
 
 type AttachmentImageProps = {
   icon?: string

@@ -6,7 +6,7 @@ import { Button } from "../../../shadcn/ui/button"
 import { Popover, PopoverContent, PopoverTrigger } from "../../../shadcn/ui/popover"
 import { ArrowUp, ArrowDown } from "lucide-react"
 import SortList from './SortList'
-import { SortOptionType } from '@/types'
+import { SortOptionType } from '../../../types'
 
 type SortButtonProps = {
   loading?: boolean

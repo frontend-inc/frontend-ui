@@ -3,7 +3,6 @@ import FormWizardProgress from './wizard/FormWizardProgress'
 import FormWizardField from './wizard/FormWizardField'
 import FormWizardButtons from './wizard/FormWizardButtons'
 import { SyntheticEventType } from '../../../types'
-import { cn } from "@/shadcn/lib/utils"
 
 export type FormWizardProps = {
   loading?: boolean

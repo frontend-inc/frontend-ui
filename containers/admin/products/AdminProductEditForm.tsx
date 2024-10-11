@@ -4,11 +4,11 @@ import { ResourceFormProps } from '../../../components/cms/resources/ResourceFor
 import { FormFieldType } from '../../../types'
 import { MediaInput } from '../../../components'
 
-type AdminProductFormProps = ResourceFormProps & {
+type AdminProductEditFormProps = ResourceFormProps & {
 	metafields?: FormFieldType[]
 }
 
-const AdminProductForm: React.FC<AdminProductFormProps> = (props) => {
+const AdminProductEditForm: React.FC<AdminProductEditFormProps> = (props) => {
 	const { metafields = [] } = props || {}
 
 	let fields = [
@@ -30,4 +30,4 @@ const AdminProductForm: React.FC<AdminProductFormProps> = (props) => {
 	return <ResourceForm {...props} fields={fields} inputOptions={inputOptions} />
 }
 
-export default AdminProductForm
+export default AdminProductEditForm

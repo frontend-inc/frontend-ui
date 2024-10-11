@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "../../../shadcn/ui/dropdown-menu"
 import { MoreVertical, Pencil, Trash } from "lucide-react"
-import { Icon } from '@/components'
+import { Icon } from '../../../components'
 
 interface SidebarMenuItemProps {
   title: string

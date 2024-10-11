@@ -12,11 +12,12 @@ type AdminProductCollectionCoverProps = {
 const AdminProductCollectionDetails: React.FC<AdminProductCollectionCoverProps> = (props) => {
   const { productCollection, handleEdit } = props || {}
   return (
-    <div className="bg-white p-4 rounded-lg shadow">
+    <div className="bg-white/5 p-4 rounded-lg shadow">
       <div className="flex flex-row justify-between items-start w-full">
         <div className="flex flex-row space-x-4">
           <div className="w-24 h-24">
             <Image
+              aspectRatio={1.0}
               src={productCollection?.image?.url}
               alt={productCollection?.title}
               width={96}

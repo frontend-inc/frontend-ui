@@ -7,8 +7,8 @@ import {
   AttachmentImage,
   Label,
 } from '../../../components'
-import { Button } from "@/shadcn/ui/button"
-import { Card, CardHeader } from "@/shadcn/ui/card"
+import { Button } from "../../../shadcn/ui/button"
+import { Card, CardHeader } from "../../../shadcn/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,7 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "@/shadcn/ui/dropdown-menu"
 import { MoreHorizontal } from "lucide-react"
-import { cn } from "@/shadcn/lib/utils"
+import { cn } from "../../../shadcn/lib/utils"
 
 type MediaItemProps = {
   item?: any

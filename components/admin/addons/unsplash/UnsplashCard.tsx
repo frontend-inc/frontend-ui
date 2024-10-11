@@ -1,9 +1,9 @@
 import React from 'react'
 import { Image } from '../../../../components'
-import { Avatar, AvatarFallback, AvatarImage } from "@/shadcn/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "../../../../shadcn/ui/avatar"
 import { Button } from "@/shadcn/ui/button"
-import { Card, CardHeader, CardContent } from "@/shadcn/ui/card"
-import { cn } from "@/shadcn/lib/utils"
+import { Card, CardHeader } from "../../../../shadcn/ui/card"
+import { cn } from "../../../../shadcn/lib/utils"
 
 type UnplashCardProps = {
   image?: any

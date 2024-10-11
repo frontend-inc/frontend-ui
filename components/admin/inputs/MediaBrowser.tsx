@@ -3,7 +3,6 @@
 import React, { useState } from 'react'
 import { useMedia } from '../../../hooks'
 import { useAlerts } from '../../../hooks'
-import MediaListItem from './MediaListItem'
 import MediaList from './MediaList'
 import {
   Modal,
@@ -12,9 +11,7 @@ import {
   UnsplashList,
   BrandfetchInput,
 } from '../../../components'
-import { Button } from "@/shadcn/ui/button"
-import { Tabs, TabsList, TabsTrigger } from "@/shadcn/ui/tabs"
-import { cn } from "@/shadcn/lib/utils"
+import { Button } from "../../../shadcn/ui/button"
 
 type MediaBrowserProps = {
   open: boolean

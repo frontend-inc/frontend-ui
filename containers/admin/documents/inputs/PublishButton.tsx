@@ -1,9 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Button } from "@/shadcn/ui/button"
-import { CheckCircle, Loader2 } from "lucide-react"
-import { cn } from "@/shadcn/lib/utils"
+import { Button } from "../../../..//shadcn/ui/button"
+import { CheckCircle } from "lucide-react"
+import { cn } from "../../../../shadcn/lib/utils"
 
 type PublishButtonProps = {
   loading: boolean

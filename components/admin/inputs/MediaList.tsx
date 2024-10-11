@@ -5,8 +5,7 @@ import { useMedia } from '../../../hooks'
 import { ChevronDown } from "lucide-react"
 import MediaListItem from './MediaListItem'
 import { Placeholder, IconLoading } from '../../../components'
-import { Button } from "@/shadcn/ui/button"
-import { cn } from "@/shadcn/lib/utils"
+import { Button } from "../../../shadcn/ui/button"
 
 type MediaListProps = {
   selectedIds: number[]

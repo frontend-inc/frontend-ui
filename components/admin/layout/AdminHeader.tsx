@@ -1,7 +1,7 @@
 import React from 'react'
 import { cn } from "../../../shadcn/lib/utils"
 import { Typography } from '../../../tailwind'
-import { ExpandLeftButton, ExpandRightButton } from '@/components'
+import { ExpandLeftButton, ExpandRightButton } from '../../../components'
 import { useAdmin } from '../../../hooks'
 
 type AdminHeaderProps = {

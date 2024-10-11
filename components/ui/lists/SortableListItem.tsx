@@ -1,6 +1,6 @@
 import React from 'react'
-import { Typography } from '@/tailwind'
-import { cn } from "@/shadcn/lib/utils"
+import { Typography } from '../../../tailwind'
+import { cn } from "../../../shadcn/lib/utils"
 import { GripVertical } from "lucide-react"
 
 type SortableListItemProps = {

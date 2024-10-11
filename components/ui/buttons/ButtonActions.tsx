@@ -1,8 +1,7 @@
 import React from 'react'
 import ButtonAction from './ButtonAction'
 import { ButtonType } from '../../../types'
-import { UserType } from 'frontend-js'
-import { cn } from "@/shadcn/lib/utils"
+import { cn } from "../../../shadcn/lib/utils"
 
 type ButtonActionsProps = {
   buttons: ButtonType[]
