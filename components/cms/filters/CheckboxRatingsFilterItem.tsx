@@ -21,16 +21,14 @@ const CheckboxRatingsFilterItem: React.FC<CheckboxRatingsFilterItemProps> = (pro
       >
         <div className="mr-2">
           <Checkbox
-            checked={values.includes(option.value)}
+            checked={values?.includes(option.value)}
             onCheckedChange={handleClick}
           />
         </div>
-        <div className="flex-grow">
           <Rating
             readOnly
             value={Number(option?.value)}
           />
-        </div>
       </button>
     </li>
   )
