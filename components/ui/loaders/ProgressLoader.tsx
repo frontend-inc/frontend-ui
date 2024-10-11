@@ -1,46 +1,15 @@
-import React from 'react'
-import { LinearProgress, Box } from '@mui/material'
+import React from "react"
+import { Progress } from "../../../shadcn/ui/progress"
 
-type ProgressLoaderProps = {
-	size?: number
-	styles?: any
-	borderWidth?: number
-}
-
-const ProgressLoader: React.FC<ProgressLoaderProps> = (props) => {
-	const { size = 48, styles = {}, borderWidth = 4 } = props
-
-	return (
-		<Box
-			sx={{
-				...sx.root,
-				...styles,
-			}}
-		>
-			<Box sx={sx.box}>
-				<LinearProgress color="primary" sx={sx.progress} />
-			</Box>
-		</Box>
-	)
-}
-
-export default ProgressLoader
-
-const sx = {
-	root: {
-		p: 6,
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	box: {
-		position: 'relative',
-	},
-	progress: {
-		height: '4px',
-		width: '220px',
-		bgcolor: 'transparent',
-		color: 'primary.dark',
-		borderRadius: '4px',
-	},
+export default function ProgressLoader() {
+  return (
+    <div className="p-6 flex justify-center items-center">
+      <div className="relative">
+        <Progress 
+          className="h-1 w-[220px] bg-transparent rounded" 
+          value={100}
+        />
+      </div>
+    </div>
+  )
 }

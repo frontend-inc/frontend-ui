@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button } from '@mui/material'
-import { IconLoading, Icon } from '../..'
+import { Button } from '../../../tailwind'
+import { Icon } from '../..'
 import { useRouter } from 'next/router'
 
 type ActionProps = {
@@ -38,11 +38,9 @@ const ButtonAction: React.FC<ActionProps> = (props) => {
 	return (
 		<Button
 			fullWidth
-			sx={sx.button}
 			size={size}
 			startIcon={
-				<>
-					{icon && (
+				icon && (
 						<Icon
 							name={icon}
 							color={
@@ -51,8 +49,7 @@ const ButtonAction: React.FC<ActionProps> = (props) => {
 									: 'secondary.contrastText'
 							}
 						/>
-					)}
-				</>
+        )
 			}
 			onClick={handleClick}
 			variant={variant}
@@ -65,12 +62,3 @@ const ButtonAction: React.FC<ActionProps> = (props) => {
 }
 
 export default ButtonAction
-
-const sx = {
-	button: {
-		width: {
-			sm: 'auto',
-			xs: '100%',
-		},
-	},
-}

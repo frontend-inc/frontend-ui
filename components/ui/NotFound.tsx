@@ -1,41 +1,13 @@
 import React from 'react'
-import { Stack, Divider, Typography } from '@mui/material'
-import { Icon } from '../../components'
 
 const NotFound: React.FC = () => {
-	return (
-		<Stack
-			sx={sx.root}
-			direction={{ sm: 'row', xs: 'column' }}
-			divider={<Divider sx={sx.divider} />}
-			spacing={2}
-			alignItems={'center'}
-		>
-			<Typography color="text.primary" variant="h1">
-				404
-			</Typography>
-			<Typography color="text.secondary" variant="subtitle2">
-				Page not found
-			</Typography>
-		</Stack>
-	)
+  return (
+    <div className="flex flex-col sm:flex-row items-center justify-center w-full h-full text-center p-4 space-y-4 sm:space-y-0 sm:space-x-4">
+      <h1 className="text-4xl font-bold text-primary">404</h1>
+      <div className="hidden sm:block w-0.5 h-20 bg-divider"></div>
+      <p className="text-lg text-muted-foreground">Page not found</p>
+    </div>
+  )
 }
 
 export default NotFound
-
-const sx = {
-	root: {
-		height: '100%',
-		justifyContent: 'center',
-		alignItems: 'center',
-		textAlign: 'center',
-		width: '100%',
-		p: 2,
-	},
-	divider: {
-		height: 80,
-		width: 2,
-		bgcolor: 'divider',
-		display: { xs: 'none', sm: 'block' },
-	},
-}

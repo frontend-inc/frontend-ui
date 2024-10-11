@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Stack } from '@mui/material'
+import { Button } from '../../../tailwind'
 import { ShopifyCustomerType } from 'frontend-shopify'
 import { TextInput, IconLoading } from '../..'
 
@@ -14,7 +14,7 @@ const ShopifyCustomerForm: React.FC<ShopifyCustomerFormProps> = (props) => {
 	const { loading, customer, handleChange, handleSubmit } = props
 
 	return (
-		<Stack spacing={1}>
+		<div className='flex flex-col space-y-3'>
 			<TextInput
 				placeholder="First Name"
 				name="firstName"
@@ -54,7 +54,7 @@ const ShopifyCustomerForm: React.FC<ShopifyCustomerFormProps> = (props) => {
 			>
 				Update Account
 			</Button>
-		</Stack>
+		</div>
 	)
 }
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import { List } from '@mui/material'
 import { ShopifyAddressType } from 'frontend-shopify'
 import ShopifyAddressItem from './ShopifyAddressItem'
 
@@ -14,7 +13,7 @@ const AddressList: React.FC<AddressListProps> = (props) => {
 	const { addresses, handleClick, handleEdit, handleDelete } = props || {}
 
 	return (
-		<List disablePadding>
+		<ul>
 			{addresses?.map((address) => (
 				<ShopifyAddressItem
 					key={address?.id}
@@ -24,7 +23,7 @@ const AddressList: React.FC<AddressListProps> = (props) => {
 					handleDelete={handleDelete}
 				/>
 			))}
-		</List>
+		</ul>
 	)
 }
 

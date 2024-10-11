@@ -1,60 +1,47 @@
 import React from 'react'
-import { Button } from '@mui/material'
 import Image from 'next/image'
+import { Button } from "../../../shadcn/ui/button"
 import EmptyImage from '../NoImage'
 
 const LOGO_WIDTH = 160
 const LOGO_HEIGHT = 60
 
 type LogoProps = {
-	src: string
-	width?: number
-	height?: number
-	handleClick: (path: string) => void
+  src: string
+  width?: number
+  height?: number
+  handleClick: (path: string) => void
 }
 
-const Logo: React.FC<LogoProps> = (props) => {
-	const {
-		src,
-		width = LOGO_WIDTH,
-		height = LOGO_HEIGHT,
-		handleClick,
-	} = props || {}
-
-	return (
-		// @ts-ignore
-		<Button disableRipple sx={sx.root} onClick={handleClick}>
-			{src?.length > 1 ? (
-				<Image
-					src={src}
-					alt="logo"
-					width={width ? Number(width) : LOGO_WIDTH}
-					height={height ? Number(height) : LOGO_HEIGHT}
-					//@ts-ignore
-					style={styles.image}
-				/>
-			) : (
-				<EmptyImage
-					width={width ? Number(width) : LOGO_WIDTH}
-					height={height ? Number(height) : LOGO_HEIGHT}
-				/>
-			)}
-		</Button>
-	)
+const Logo: React.FC<LogoProps> = ({ 
+  src, 
+  width = LOGO_WIDTH, 
+  height = LOGO_HEIGHT, 
+  handleClick 
+}) => {
+  return (
+    <Button 
+      variant="ghost" 
+      className="p-0 hover:bg-transparent focus:bg-transparent"
+      onClick={() => handleClick('/')}
+    >
+      {src?.length > 1 ? (
+        <Image
+          src={src}
+          alt="logo"
+          width={width}
+          height={height}
+          className="object-contain"
+          priority
+        />
+      ) : (
+        <EmptyImage
+          width={width}
+          height={height}
+        />
+      )}
+    </Button>
+  )
 }
 
 export default Logo
-
-const sx = {
-	root: {
-		'&:hover': {
-			background: 'transparent',
-		},
-	},
-}
-
-const styles = {
-	image: {
-		objectFit: 'contain',
-	},
-}

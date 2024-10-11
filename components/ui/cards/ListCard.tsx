@@ -3,8 +3,7 @@ import Link from 'next/link'
 import { Checkbox } from "../../../shadcn/ui/checkbox"
 import { Icon, Image, AvatarImage } from '../..'
 import { CardProps } from './Card'
-import { Typography, Stack } from '../../../tailwind'
-import { cn } from '../../../shadcn/lib/utils'
+import { Typography } from '../../../tailwind'
 
 export type ListCardProps = CardProps & {
   circular?: boolean
@@ -35,23 +34,19 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 
   return (
     <div className="p-4 border-b border-border last:border-b-0 hover:bg-gray-50 transition-colors duration-200">
-      <Stack direction="row" alignItems="center" spacing={0} className="w-full">
+      <div className="flex flex-row items-center w-full">
         {selectable && (
           <div className='mr-2'>
             <Checkbox
-              value={selected ? true : false}
-              handleChange={ handleSelect }
+              checked={selected}
+              onCheckedChange={handleSelect}
             />
           </div>
         )}
         {sortable && <Icon name="GripVertical" className="text-muted-foreground" />}
-        <Stack          
-          spacing={1}
-          direction={'row'}
-          className="justify-start items-start"
-        >
+        <div className="flex flex-row justify-start items-start space-x-4 flex-grow">
           {!disableImage && (
-          <div className="flex-start w-[180px]">
+          <div className="flex-shrink-0 w-[180px]">
             <div className="w-full pr-2 h-full flex justify-center sm:justify-start items-center">
               {circular ? (
                 <AvatarImage
@@ -76,11 +71,8 @@ const ListCard: React.FC<ListCardProps> = (props) => {
             </div>
           </div>
           )}
-          <div 
-            className={
-              'h-[140px] flex flex-col justify-between w-full'
-            }>
-            <Stack direction="column" spacing={1}>
+          <div className="flex flex-col justify-between h-[140px] flex-grow">
+            <div className="flex flex-col space-y-1">
               <Link
                 href="#"
                 onClick={handleClick}
@@ -93,14 +85,14 @@ const ListCard: React.FC<ListCardProps> = (props) => {
               <Typography variant="body2" className="text-muted-foreground">
                 {secondary}
               </Typography>
-            </Stack>    
+            </div>    
             <div className='flex flex-row justify-between items-center w-full'>
               {actions}
               {secondaryAction}            
             </div>      
           </div>
-        </Stack>
-      </Stack>
+        </div>
+      </div>
     </div>
   )
 }

@@ -1,5 +1,4 @@
 export * from './buttons'
-export * from './carousel'
 export * from './documents'
 export * from './lists'
 export * from './utils'

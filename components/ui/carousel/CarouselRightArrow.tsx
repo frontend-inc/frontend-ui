@@ -1,36 +1,20 @@
 import React from 'react'
-import { IconButton } from '@mui/material'
+import { Button } from "../../../shadcn/ui/button"
 import { Icon } from '../../../components'
 
-const CarouselRightArrow: React.FC = (props) => {
-	return (
-		<IconButton {...props} sx={sx.root}>
-			<Icon name="ChevronRight" />
-		</IconButton>
-	)
+interface CarouselRightArrowProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+
+const CarouselRightArrow: React.FC<CarouselRightArrowProps> = (props) => {
+  return (
+    <Button
+      variant="outline"
+      size="icon"
+      className="absolute right-5 top-[28%] h-8 w-8 sm:h-12 sm:w-12 shadow-md opacity-80 hover:opacity-100 bg-background hover:bg-background"
+    >
+      <Icon name="ChevronRight" className="h-4 w-4 sm:h-6 sm:w-6 text-foreground" />
+      <span className="sr-only">Next slide</span>
+    </Button>
+  )
 }
 
 export default CarouselRightArrow
-
-const sx = {
-	root: {
-		position: 'absolute',
-		right: 20,
-		top: '28%',
-		height: {
-			sm: 48,
-			xs: 32,
-		},
-		width: {
-			sm: 48,
-			xs: 32,
-		},
-		boxShadow: 4,
-		opacity: 0.8,
-		bgcolor: 'background.paper',
-		'&:hover': {
-			opacity: 1.0,
-			bgcolor: 'background.paper',
-		},
-	},
-}

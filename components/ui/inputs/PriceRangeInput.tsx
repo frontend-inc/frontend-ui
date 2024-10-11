@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography } from '@mui/material'
+import { Typography } from '../../../tailwind'
 import { NumberRangeInput } from '../../../components'
 import { NumberRangeInputProps } from './NumberRangeInput'
 
@@ -13,7 +13,7 @@ const PriceRangeInput: React.FC<PriceRangeInputProps> = (props) => {
 		<NumberRangeInput
 			{...rest}
 			startAdornment={
-				<Typography color="textPrimary" variant="body2">
+				<Typography color="text.primary" variant="body2">
 					{currency}
 				</Typography>
 			}

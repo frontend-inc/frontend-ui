@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Carousel from 'react-multi-carousel'
-import { getCarouselResponsive } from '../../../helpers'
-import { useTheme } from '@mui/material/styles'
 import CarouselDot from './CarouselDot'
 import CarouselLeftArrow from './CarouselLeftArrow'
 import CarouselRightArrow from './CarouselRightArrow'
@@ -19,22 +17,32 @@ type CarouselProps = {
 }
 
 const ReactCarousel: React.FC<CarouselProps> = (props) => {
-	const theme = useTheme()
-	const [responsive, setResponsive] = useState<any>(null)
 
 	const {
-		editing = false,
 		children,
 		enableAutoPlay = false,
 		enableArrows = false,
 		enableDots = true,
-		styles = {},
 	} = props
 
-	useEffect(() => {
-		//@ts-ignore
-		setResponsive(getCarouselResponsive(theme))
-	}, [theme?.breakpoints])
+	const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 1280, min: 1024 },
+      items: 3,
+    },
+    desktop: {
+      breakpoint: { max: 1024, min: 768 },
+      items: 3,
+    },
+    tablet: {
+      breakpoint: { max: 768, min: 640 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 640, min: 0 },
+      items: 1,
+    },
+  };
 
 	return (
 		<div className='w-full'>
@@ -59,9 +67,3 @@ const ReactCarousel: React.FC<CarouselProps> = (props) => {
 }
 
 export default ReactCarousel
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-}

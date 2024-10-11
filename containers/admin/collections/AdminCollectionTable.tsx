@@ -3,7 +3,7 @@ import { AlertModal } from '../../../components'
 import { useAlerts } from '../../../hooks'
 import { useDocuments, useAdmin } from '../../../hooks'
 import { Table } from '../../../components'
-import { ImageModal, AdminVideoModal, TextModal } from '../../../components'
+import { ImageModal, AdminVideoModal } from '../../../components'
 import { TableFilterDrawer } from '../../../components'
 import AdminToolbarMenu from './AdminToolbarMenu'
 import { useRouter } from 'next/router'
@@ -33,14 +33,12 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 	const [activeSrc, setActiveSrc] = useState('')
 	const [activeImage, setActiveImage] = useState('')
 
-	const [activeText, setActiveText] = useState('')
-	const [showTextModal, setShowTextModal] = useState(false)
 	const [showImageModal, setShowImageModal] = useState(false)
 	const [showVideoModal, setShowVideoModal] = useState(false)
 	const [showFilters, setShowFilters] = useState(false)
 	const [visibleFields, setVisibleFields] = useState<any[]>()
 
-	const { openLayoutLeft, clientUrl } = useAdmin()
+	const { clientUrl } = useAdmin()
 
 	const {
 		query,
@@ -137,10 +135,7 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 				break
 			case 'file':
 				handleCellFileClick(value)
-				break
-			case 'text':
-				handleCellStringClick(value)
-				break
+				break			
 		}
 	}
 
@@ -164,12 +159,6 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 		}
 	}
 
-	const handleCellStringClick = (value) => {
-		if (value) {
-			setShowTextModal(true)
-			setActiveText(value)
-		}
-	}
 
 	const handleCellBelongsToClick = async (params) => {
 		const { value: resource, field: belongsToField } = params || {}
@@ -318,11 +307,6 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 					handleClearFilters={handleClearFilters}
 				/>
 			)}
-			<TextModal
-				open={showTextModal}
-				text={activeText}
-				handleClose={() => setShowTextModal(false)}
-			/>
 			<ImageModal
 				open={showImageModal}
 				image={activeImage}

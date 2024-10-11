@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAlerts } from '../../../hooks'
 import { Modal } from '../../../components'
-import { Button } from '@mui/material'
+import { Button } from '../../../tailwind'
 import copy from 'copy-to-clipboard'
 import Image from 'next/image'
 

@@ -1,39 +1,29 @@
 import React from 'react'
 import { useDroppable } from '@dnd-kit/core'
-import { Typography, Stack } from '@mui/material'
-import { Icon } from '../../../components'
+import { cn } from "../../../shadcn/lib/utils"
 
-const Droppable = ({ id }) => {
-	const { isOver, setNodeRef } = useDroppable({
-		id,
-	})
+interface DroppableProps {
+  id: string
+  children?: React.ReactNode
+}
 
-	return (
-		<Stack
-			direction="row"
-			spacing={1}
-			sx={{
-				...sx.root,
-				...(isOver && sx.isOver),
-			}}
-			ref={setNodeRef}
-		></Stack>
-	)
+const Droppable: React.FC<DroppableProps> = ({ id, children }) => {
+  const { isOver, setNodeRef } = useDroppable({
+    id,
+  })
+
+  return (
+    <div
+      ref={setNodeRef}
+      className={cn(
+        "flex flex-row items-center justify-center w-[260px] h-full p-2 rounded",
+        "border border-border",
+        isOver && "border-primary"
+      )}
+    >
+      {children}
+    </div>
+  )
 }
 
 export default Droppable
-
-const sx = {
-	root: {
-		borderRadius: 1,
-		width: 260,
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-		p: 2,
-		height: '100%',
-	},
-	isOver: {
-		borderColor: 'primary.main',
-	},
-}

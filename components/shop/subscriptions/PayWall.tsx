@@ -1,32 +1,19 @@
 import React from 'react'
 import { Heading, SubscriptionTable } from '../../../components'
-import { Stack, Box } from '@mui/material'
 
 const PayWall: React.FC = () => {
 	return (
-		<Box sx={sx.root}>
+		<div className='flex flex-col space-y-4'>
 			<Heading
 				title="Subscription required"
 				description="Please subscribe below to continue"
 				textAlign="center"
 			/>
-			<Box width={'100%'}>
+			<div className='w-full'>
 				<SubscriptionTable />
-			</Box>
-		</Box>
+			</div>
+		</div>
 	)
 }
 
 export default PayWall
-
-const sx = {
-	root: {
-		height: 'calc(100vh - 120px)',
-		width: '100%',
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'center',
-		gap: '40px',
-	},
-}

@@ -1,94 +1,68 @@
 import React from 'react'
-import { Stack, Box, Hidden, IconButton } from '@mui/material'
 import { CartButton, ButtonActions, Icon, AuthButton } from '../..'
 import { ShopifyCartButton } from '../../shopify'
 import { useApp } from '../../../hooks'
 import { ButtonType, MenuLinkType } from '../../..'
 import Logo from './Logo'
+import { Button } from "../../../shadcn/ui/button"
 
-type MobileNavProps = {
-	logo: string
-	logoWidth?: number
-	logoHeight?: number
-	links: MenuLinkType[]
-	buttons: ButtonType[]
-	enableAuth?: boolean
-	enableShopify?: boolean
-	enableStripe?: boolean
-	enableNotifications?: boolean
-	handleClick: (path: string) => void
+type MobileHeaderProps = {
+  logo: string
+  logoWidth?: number
+  logoHeight?: number
+  links: MenuLinkType[]
+  buttons: ButtonType[]
+  enableAuth?: boolean
+  enableShopify?: boolean
+  enableStripe?: boolean
+  enableNotifications?: boolean
+  handleClick: (path: string) => void
 }
 
-const MobileNav = (props: MobileNavProps) => {
-	const { setMenuOpen } = useApp()
+const MobileHeader: React.FC<MobileHeaderProps> = ({
+  logo,
+  logoWidth = 120,
+  logoHeight = 50,
+  handleClick,
+  buttons,
+  enableAuth = false,
+  enableStripe = false,
+  enableShopify = false,
+}) => {
+  const { setMenuOpen } = useApp()
 
-	const {
-		logo,
-		logoWidth = 120,
-		logoHeight = 50,
-		handleClick,
-		buttons,
-		enableAuth = false,
-		enableStripe = false,
-		enableShopify = false,
-	} = props
-
-	return (
-		<Hidden mdUp>
-			<Box sx={sx.appBar}>
-				<Stack direction="row" spacing={0} sx={sx.header}>
-					<Stack direction="row" justifyContent="flex-start" sx={sx.leftMenu}>
-						<IconButton onClick={() => setMenuOpen(true)}>
-							<Icon name="Menu" size={24} />
-						</IconButton>
-						<Logo
-							handleClick={() => handleClick('/')}
-							src={logo}
-							width={logoWidth}
-							height={logoHeight - 20}
-						/>
-					</Stack>
-					<Box sx={sx.rightMenu}>
-						{buttons?.length > 0 && (
-							<Box sx={{ mr: 1 }}>
-								<ButtonActions size="small" buttons={buttons} />
-							</Box>
-						)}
-						{enableAuth && <AuthButton />}
-						{enableStripe && <CartButton />}
-						{enableShopify && <ShopifyCartButton />}
-					</Box>
-				</Stack>
-			</Box>
-		</Hidden>
-	)
+  return (
+    <div className="md:hidden w-full h-16 bg-background">
+      <div className="flex justify-between items-center h-full px-4">
+        <div className="flex items-center">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="mr-2"
+            onClick={() => setMenuOpen(true)}
+          >
+            <Icon name="Menu" size={24} />
+          </Button>
+          <Logo
+            handleClick={() => handleClick('/')}
+            src={logo}
+            width={logoWidth}
+            height={logoHeight - 20}
+          />
+        </div>
+        <div className="flex items-center">
+          {buttons?.length > 0 && (
+            <div className="mr-2">
+              <ButtonActions size="small" buttons={buttons} />
+            </div>
+          )}
+          {enableAuth && <AuthButton />}
+          {enableStripe && <CartButton />}
+          {enableShopify && <ShopifyCartButton />}
+        </div>
+      </div>
+    </div>
+  )
 }
 
-export default MobileNav
-
-const sx = {
-	appBar: {
-		width: '100%',
-		height: 64,
-		bgcolor: 'background.default',
-	},
-	drawer: {
-		bgcolor: 'background.default',
-	},
-	header: {
-		width: '100%',
-		alignItems: 'space-between',
-	},
-	rightMenu: {
-		pr: 1,
-		width: '100%',
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'flex-end',
-	},
-	leftMenu: {
-		height: 60,
-		alignItems: 'center',
-	},
-}
+export default MobileHeader

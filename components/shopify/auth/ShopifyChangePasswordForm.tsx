@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Stack } from '@mui/material'
+import { Button } from '../../../tailwind'
 import { TextInput } from '../..'
 import { ShopifyCustomerType } from 'frontend-shopify'
 
@@ -17,7 +17,7 @@ const ShopifyForgotPasswordForm: React.FC<ShopifyForgotPasswordFormProps> = (
 	const { errors, customer, handleChange, handleSubmit, handleLogin } = props
 
 	return (
-		<Stack spacing={1}>
+		<div className='flex flex-col space-y-2'>
 			<TextInput
 				errors={errors}
 				name="email"
@@ -36,14 +36,14 @@ const ShopifyForgotPasswordForm: React.FC<ShopifyForgotPasswordFormProps> = (
 			{handleLogin && (
 				<Button
 					fullWidth
-					variant="outlined"
+					variant="text"
 					color="primary"
 					onClick={handleLogin}
 				>
 					Back to Login
 				</Button>
 			)}
-		</Stack>
+		</div>
 	)
 }
 

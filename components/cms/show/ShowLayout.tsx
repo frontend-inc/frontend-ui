@@ -1,105 +1,61 @@
 import React from 'react'
-import { Stack, Box, Typography } from '@mui/material'
 import {
-	DisplayFields,
-	SocialButtons,
-	ButtonActions,
-	ExpandableText,
+  DisplayFields,
+  SocialButtons,
+  ButtonActions,
+  ExpandableText,
 } from '../..'
+import { Typography } from '../../../tailwind'
 import { ShowProps } from './ShowItem'
 
 type ShowLayoutProps = ShowProps & {
-	fieldName?: string
-	resource?: any
-	children?: React.ReactNode
+  fieldName?: string
+  resource?: any
+  children?: React.ReactNode
 }
 
 const ShowLayout: React.FC<ShowLayoutProps> = (props) => {
-	const {
-		resource,
-		children,
-		enableFavorites,
-		enableLikes,
-		enableSharing,
-		buttons = [],
-		displayFields = [],
-	} = props || {}
+  const {
+    resource,
+    children,
+    enableFavorites,
+    enableLikes,
+    enableSharing,
+    buttons = [],
+    displayFields = [],
+  } = props || {}
 
-	const { title, description } = resource || {}
-	return (
-		<Stack sx={sx.root} spacing={4}>
-			{buttons && (
-				<Box sx={sx.buttons}>
-					<ButtonActions
-						buttons={buttons}
-						numVisible={4}
-						resource={resource}
-						justifyContent="center"
-					/>
-				</Box>
-			)}
-			<Stack spacing={3} sx={sx.header}>
-				<Typography color="text.primary" variant="h3">
-					{title}
-				</Typography>
-				{displayFields?.length > 0 && (
-					<DisplayFields fields={displayFields} resource={resource} />
-				)}
-			</Stack>
-			<Box sx={sx.container}>{children}</Box>
-			<SocialButtons
-				resource={resource}
-				enableLikes={enableLikes}
-				enableFavorites={enableFavorites}
-				enableSharing={enableSharing}
-			/>
-			<Box sx={sx.content}>
-				<ExpandableText text={description} />
-			</Box>
-		</Stack>
-	)
+  const { title, description } = resource || {}
+
+  return (
+    <div className="flex flex-col items-center justify-start w-full space-y-8">
+      {buttons && (
+        <div className="w-full sm:w-auto flex justify-center">
+          <ButtonActions
+            buttons={buttons}
+            resource={resource}
+            justifyContent="center"
+          />
+        </div>
+      )}
+      <div className="flex flex-col items-center space-y-6 max-w-[500px] w-full text-center">
+        <Typography variant="h4">{title}</Typography>
+        {displayFields?.length > 0 && (
+          <DisplayFields fields={displayFields} resource={resource} />
+        )}
+      </div>
+      <div className="w-full rounded">{children}</div>
+      <SocialButtons
+        resource={resource}
+        enableLikes={enableLikes}
+        enableFavorites={enableFavorites}
+        enableSharing={enableSharing}
+      />
+      <div className="w-full max-w-[500px] sm:max-w-full">
+        <ExpandableText text={description} />
+      </div>
+    </div>
+  )
 }
 
 export default ShowLayout
-
-const sx = {
-	root: {
-		width: '100%',
-		justifyContent: 'flex-start',
-		alignItems: 'center',
-	},
-	rootBorder: {
-		border: '1px solid',
-		borderColor: 'divider',
-	},
-	header: {
-		maxWidth: 500,
-		width: '100%',
-		textAlign: 'center',
-	},
-	content: {
-		width: '100%',
-		maxWidth: {
-			sm: 500,
-			xs: '100%',
-		},
-	},
-	text: {
-		width: '100%',
-		whiteSpace: 'pre-line',
-	},
-	caption: {
-		color: 'text.secondary',
-	},
-	buttons: {
-		justifyContent: 'center',
-		width: {
-			sm: 'auto',
-			xs: '100%',
-		},
-	},
-	container: {
-		width: '100%',
-		borderRadius: 1,
-	},
-}

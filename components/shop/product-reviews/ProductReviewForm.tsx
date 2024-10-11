@@ -1,102 +1,87 @@
 import React from 'react'
-import { Stack, ListItem, Button } from '@mui/material'
-import { Drawer, AuthGuard, IconLoading, RatingInput, TextInput } from '../..'
+import { Button } from "@/shadcn/ui/button"
+import { Drawer, AuthGuard, IconLoading, RatingInput, TextAreaInput, TextInput } from '../..'
 import { useResourceContext } from 'frontend-js'
 
 type ProductReviewFormProps = {
-	loading: boolean
-	errors?: any
-	review: any
-	handleChange: (ev: any) => void
-	handleSubmit: () => void
+  loading: boolean
+  errors?: any
+  review: any
+  handleChange: (ev: any) => void
+  handleSubmit: () => void
 }
 
-const ProductReviewForm: React.FC<ProductReviewFormProps> = (props) => {
-	const {
-		loading,
-		errors,
-		handleChange,
-		create,
-		update,
-		resource,
-		reloadMany,
-		openEdit,
-		setOpenEdit,
-	} = useResourceContext()
+const ProductReviewForm: React.FC<ProductReviewFormProps> = () => {
+  const {
+    loading,
+    errors,
+    handleChange,
+    create,
+    update,
+    resource,
+    reloadMany,
+    openEdit,
+    setOpenEdit,
+  } = useResourceContext()
 
-	const handleSubmit = async () => {
-		let resp
-		if (resource?.id) {
-			resp = await update(resource)
-		} else {
-			resp = await create(resource)
-		}
-		if (resp?.id) {
-			setOpenEdit(false)
-			reloadMany()
-		}
-	}
+  const handleSubmit = async () => {
+    let resp
+    if (resource?.id) {
+      resp = await update(resource)
+    } else {
+      resp = await create(resource)
+    }
+    if (resp?.id) {
+      setOpenEdit(false)
+      reloadMany()
+    }
+  }
 
-	return (
-		<Drawer
-			title="Leave a review"
-			open={openEdit}
-			handleClose={() => setOpenEdit(false)}
-			buttons={
-				<Button
-					fullWidth
-					variant="contained"
-					onClick={handleSubmit}
-					disabled={loading}
-					startIcon={loading && <IconLoading />}
-				>
-					Submit
-				</Button>
-			}
-		>
-			<AuthGuard>
-				<ListItem disableGutters>
-					<Stack sx={sx.form} direction="column" spacing={1}>
-						<RatingInput
-							errors={errors}
-							name="rating"
-							value={resource?.rating}
-							handleChange={handleChange}
-						/>
-						<TextInput
-							errors={errors}
-							name="title"
-							value={resource?.title}
-							handleChange={handleChange}
-							placeholder="Review summary..."
-						/>
-						<TextInput
-							errors={errors}
-							multiline
-							rows={4}
-							name="body"
-							value={resource?.body}
-							handleChange={handleChange}
-							placeholder="Leave a review..."
-						/>
-					</Stack>
-				</ListItem>
-			</AuthGuard>
-		</Drawer>
-	)
+  return (
+    <Drawer
+      title="Leave a review"
+      open={openEdit}
+      handleClose={() => setOpenEdit(false)}
+      buttons={
+        <Button
+          className="w-full"
+          variant="default"
+          onClick={handleSubmit}
+          disabled={loading}
+        >
+          {loading && <IconLoading className="mr-2 h-4 w-4" />}
+          Submit
+        </Button>
+      }
+    >
+      <AuthGuard>
+        <div className="p-4">
+          <div className="flex flex-col space-y-4 w-full items-start">
+            <RatingInput
+              errors={errors}
+              name="rating"
+              value={resource?.rating}
+              handleChange={handleChange}
+            />
+            <TextInput
+              errors={errors}
+              name="title"
+              value={resource?.title}
+              handleChange={handleChange}
+              placeholder="Review summary..."
+            />
+            <TextAreaInput
+              errors={errors}
+              name="body"
+              value={resource?.body}
+              handleChange={handleChange}
+              placeholder="Leave a review..."
+            />
+          </div>
+        </div>
+      </AuthGuard>
+    </Drawer>
+  )
 }
 
 export default ProductReviewForm
-
-const sx = {
-	root: {
-		alignItems: 'flex-start',
-	},
-	form: {
-		width: '100%',
-		alignItems: 'flex-start',
-	},
-	paper: {
-		width: '100%',
-	},
-}

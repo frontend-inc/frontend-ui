@@ -4,7 +4,7 @@ import { useResource } from 'frontend-js'
 import { Form } from '../..'
 import { useAlerts } from '../../../hooks'
 import { useRouter } from 'next/router'
-import { Paper } from '@mui/material'
+import { Card } from '../../../shadcn/ui/card'
 
 export type DocumentFormProps = {
 	loading?: boolean
@@ -100,7 +100,7 @@ const DocumentForm: React.FC<DocumentFormProps> = (props) => {
 	}, [_resource])
 
 	return (
-		<Paper sx={sx.paper} elevation={2}>
+		<Card>
 			<Form
 				loading={loading}
 				errors={errors}
@@ -113,14 +113,8 @@ const DocumentForm: React.FC<DocumentFormProps> = (props) => {
 				inputOptions={inputOptions}
 				inputParams={inputParams}
 			/>
-		</Paper>
+		</Card>
 	)
 }
 
 export default DocumentForm
-
-const sx = {
-	paper: {
-		p: 4,
-	},
-}

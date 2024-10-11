@@ -1,19 +1,18 @@
-import React from 'react'
-import { SvgIcon, Link, Stack, Typography } from '@mui/material'
+import React from "react"
+import Link from "next/link"
 
-const PoweredByBrandfetch: React.FC = () => {
-	return (
-		<Stack direction="row" spacing={0} sx={sx.root}>
-			<Typography variant="body2" color="text.secondary">
-				Powered by
-			</Typography>
-			<Link
-				href="https://brandfetch.io"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<SvgIcon sx={{ width: 100 }}>
-					<svg
+export default function PoweredByBrandfetch() {
+  return (
+    <div className="flex items-start justify-start space-x-1">
+      <p className="text-sm text-muted-foreground">Powered by</p>
+      <div className="w-[100px]">
+        <Link
+          href="https://brandfetch.io"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center"
+        >
+         <svg
 						width="677"
 						height="182"
 						viewBox="0 0 677 182"
@@ -24,18 +23,8 @@ const PoweredByBrandfetch: React.FC = () => {
 							fill="#ffffff"
 						/>
 					</svg>
-				</SvgIcon>
-			</Link>
-		</Stack>
-	)
-}
-
-export default PoweredByBrandfetch
-
-const sx = {
-	root: {
-		display: 'flex',
-		justifyContent: 'flex-start',
-		alignItems: 'flex-start',
-	},
+        </Link>
+      </div>
+    </div>
+  )
 }

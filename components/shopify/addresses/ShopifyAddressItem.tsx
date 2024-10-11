@@ -1,100 +1,68 @@
 import React from 'react'
-import {
-	Typography,
-	ListItem,
-	ListItemButton,
-	ListItemText,
-	MenuItem,
-} from '@mui/material'
+import { Typography } from '../../../tailwind'
+import { Button } from "../../../shadcn/ui/button"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/shadcn/ui/dropdown-menu"
 import { MenuButton } from '../../../components'
 import { ShopifyAddressType } from 'frontend-shopify'
 
 type ShopifyAddressItemProps = {
-	address: ShopifyAddressType
-	handleClick: (id: string) => void
-	handleEdit: (id: string) => void
-	handleDelete: (address: ShopifyAddressType) => void
-	disableActions?: boolean
+  address: ShopifyAddressType
+  handleClick: (id: string) => void
+  handleEdit: (id: string) => void
+  handleDelete: (address: ShopifyAddressType) => void
+  disableActions?: boolean
 }
 
 const ShopifyAddressItem: React.FC<ShopifyAddressItemProps> = (props) => {
-	const {
-		address,
-		handleClick,
-		handleEdit,
-		handleDelete,
-		disableActions = false,
-	} = props
+  const {
+    address,
+    handleClick,
+    handleEdit,
+    handleDelete,
+    disableActions = false,
+  } = props
 
-	return (
-		<ListItem
-			disableGutters
-			secondaryAction={
-				!disableActions && (
-					<MenuButton>
-						<MenuItem
-							onClick={
-								//@ts-ignore
-								() => handleEdit(address?.id)
-							}
-						>
-							Edit
-						</MenuItem>
-						<MenuItem onClick={() => handleDelete(address)}>Delete</MenuItem>
-					</MenuButton>
-				)
-			}
-		>
-			<ListItemButton
-				onClick={
-					//@ts-ignore
-					() => handleClick(address?.id)
-				}
-				sx={sx.item}
-			>
-				<ListItemText
-					primary={
-						<Typography gutterBottom variant="subtitle1">
-							{address?.firstName} {address?.lastName}
-						</Typography>
-					}
-					secondary={
-						<>
-							<Typography gutterBottom variant="body2" color="textSecondary">
-								{address.address1}
-							</Typography>
-							{address.address2 && (
-								<Typography gutterBottom variant="body2" color="textSecondary">
-									{address.address2}
-								</Typography>
-							)}
-							<Typography gutterBottom variant="body2" color="textSecondary">
-								{address?.city}, {address?.province} {address?.zip}
-							</Typography>
-						</>
-					}
-				/>
-			</ListItemButton>
-		</ListItem>
-	)
+  return (
+    <div className="flex justify-between items-center w-full p-2">
+      <Button
+        variant="ghost"
+        className="flex-grow text-left justify-start rounded-lg"
+        onClick={() => handleClick(address?.id)}
+      >
+        <div>
+          <Typography variant="subtitle1">
+            {address?.firstName} {address?.lastName}
+          </Typography>
+          <Typography variant="body2" color="textSecondary">
+            {address.address1}
+          </Typography>
+          {address.address2 && (
+            <Typography variant="body2" color="textSecondary">
+              {address.address2}
+            </Typography>
+          )}
+          <Typography variant="body2" color="textSecondary">
+            {address?.city}, {address?.province} {address?.zip}
+          </Typography>
+        </div>
+      </Button>
+      {!disableActions && (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <MenuButton />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem onSelect={() => handleEdit(address?.id)}>
+              Edit
+            </DropdownMenuItem>
+            <DropdownMenuItem onSelect={() => handleDelete(address)}>
+              Delete
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )}
+    </div>
+  )
 }
 
 export default ShopifyAddressItem
-
-const sx = {
-	root: {},
-	button: {
-		p: 0,
-	},
-	item: {
-		borderRadius: '10px',
-		m: 0,
-		width: '100%',
-		maxWidth: '100%',
-	},
-	card: {
-		borderRadius: '10px',
-		backgroundColor: 'primary.contrastText',
-		borderColor: 'common.card',
-	},
-}

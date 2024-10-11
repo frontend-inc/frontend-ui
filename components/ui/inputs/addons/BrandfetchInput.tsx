@@ -1,110 +1,80 @@
 import React, { useState } from 'react'
 import { useBrandfetch, useMedia } from '../../../../hooks'
 import {
-	Image,
-	Label,
-	TouchableOpacity,
-	BrandfetchAutosuggest,
-	CircularLoader,
+  Image,
+  Label,
+  TouchableOpacity,
+  BrandfetchAutosuggest,
+  CircularLoader,
 } from '../../..'
-import { Link, Stack, Box, Typography } from '@mui/material'
 import PoweredByBrandfetch from './PoweredByBrandfetch'
 
 type BrandfetchInputProps = {
-	onComplete: (resource: any) => void
+  onComplete: (resource: any) => void
 }
 
 const BrandfetchInput: React.FC<BrandfetchInputProps> = (props) => {
-	const { onComplete } = props || {}
+  const { onComplete } = props || {}
 
-	const { resizeLogo, brand, fetchBrand } = useBrandfetch()
+  const { resizeLogo, brand, fetchBrand } = useBrandfetch()
 
-	const { loading, uploadFromUrl } = useMedia()
+  const { loading, uploadFromUrl } = useMedia()
 
-	const handleBrandChange = (ev) => {
-		const { value } = ev.target
-		fetchBrand(value)
-	}
+  const handleBrandChange = (ev) => {
+    const { value } = ev.target
+    fetchBrand(value)
+  }
 
-	const handleClick = async (logoFormat, logo) => {
-		const { src, format } = logoFormat || {}
-		let domain = logo?.domain || 'logo'
-		const filename = domain + '.' + format
-		const resizedUrl = resizeLogo(src, { width: 512, height: 512 })
-		const resp = await uploadFromUrl(resizedUrl, filename)
-		if (onComplete) {
-			onComplete(resp)
-		}
-	}
+  const handleClick = async (logoFormat, logo) => {
+    const { src, format } = logoFormat || {}
+    let domain = logo?.domain || 'logo'
+    const filename = domain + '.' + format
+    const resizedUrl = resizeLogo(src, { width: 512, height: 512 })
+    const resp = await uploadFromUrl(resizedUrl, filename)
+    if (onComplete) {
+      onComplete(resp)
+    }
+  }
 
-	return (
-		<Stack direction="column" spacing={1}>
-			<BrandfetchAutosuggest handleChange={handleBrandChange} />
-			<PoweredByBrandfetch />
-			{loading && <CircularLoader />}
-			<Box sx={sx.grid}>
-				{!loading &&
-					brand?.logos?.map((logo) => (
-						<>
-							{logo?.formats
-								?.filter((f) => f.format != 'svg')
-								.map((format, index) => (
-									<Stack
-										key={`${logo.domain}-${index}`}
-										direction="column"
-										spacing={1}
-										sx={sx.card}
-									>
-										<TouchableOpacity
-											handleClick={() => handleClick(format, logo)}
-										>
-											<Box sx={sx.logo}>
-												<Image
-													src={format?.src}
-													height={164}
-													width={164}
-													alt={logo?.domain}
-													objectFit="contain"
-												/>
-											</Box>
-										</TouchableOpacity>
-										<Box>
-											<Label label={format.format} />
-										</Box>
-									</Stack>
-								))}
-						</>
-					))}
-			</Box>
-		</Stack>
-	)
+  return (
+    <div className="flex flex-col space-y-4">
+      <BrandfetchAutosuggest handleChange={handleBrandChange} />
+      <PoweredByBrandfetch />
+      {loading && <CircularLoader />}
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(164px,1fr))] gap-4">
+        {!loading &&
+          brand?.logos?.map((logo) => (
+            <React.Fragment key={logo.domain}>
+              {logo?.formats
+                ?.filter((f) => f.format != 'svg')
+                .map((format, index) => (
+                  <div
+                    key={`${logo.domain}-${index}`}
+                    className="flex flex-col space-y-4 bg-background p-4 rounded transition-shadow duration-300 hover:shadow-md"
+                  >
+                    <TouchableOpacity
+                      handleClick={() => handleClick(format, logo)}
+                    >
+                      <div className="relative rounded overflow-hidden h-[164px] w-[164px] flex items-center justify-center">
+                        <Image
+                          src={format?.src}
+                          height={164}
+                          width={164}
+                          alt={logo?.domain}
+                          objectFit="contain"
+                        />
+                      </div>
+                    </TouchableOpacity>
+                    <div>
+                      <Label label={format.format} />
+                    </div>
+                  </div>
+                ))}
+            </React.Fragment>
+          ))}
+      </div>
+    </div>
+  )
 }
 
 export default BrandfetchInput
-
-const sx = {
-	grid: {
-		display: 'grid',
-		gridTemplateColumns: 'repeat(auto-fill, minmax(164px, 1fr))',
-		gap: 1,
-	},
-	logo: {
-		position: 'relative',
-		borderRadius: 1,
-		overflow: 'hidden',
-		height: 164,
-		width: 164,
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-	card: {
-		bgcolor: 'background.paper',
-		p: 1,
-		borderRadius: 1,
-		transition: 'box-shadow 0.3s',
-		'&:hover': {
-			boxShadow: 2,
-		},
-	},
-}

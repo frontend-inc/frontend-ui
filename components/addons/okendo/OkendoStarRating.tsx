@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import { getShopifyIdFromGid } from 'frontend-shopify'
 import { ShopifyProductType } from 'frontend-shopify'
-import { useTheme } from '@mui/material'
 
 type OkendoStarRatingProps = {
 	product?: ShopifyProductType
@@ -9,7 +8,6 @@ type OkendoStarRatingProps = {
 
 const OkendoStarRating: React.FC<OkendoStarRatingProps> = (props) => {
 	const { product } = props
-	const theme = useTheme()
 	const widgetContainer = useRef(null)
 
 	const initialiseWidget = () =>
@@ -31,7 +29,7 @@ const OkendoStarRating: React.FC<OkendoStarRatingProps> = (props) => {
 	if (!product?.id) return null
 	return (
 		<div
-			style={{ color: theme?.palette?.text.secondary }}
+			///style={{ color }}
 			ref={widgetContainer}
 			data-oke-star-rating
 			data-oke-reviews-product-id={`shopify-${getShopifyIdFromGid(

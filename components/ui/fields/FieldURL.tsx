@@ -1,45 +1,31 @@
 import React from 'react'
-import { Link } from '@mui/material'
+import Link from 'next/link'
 import { FieldWrapper } from '../../../components'
 
 type FieldURLProps = {
-	value?: any
-	handleClick?: () => void
-	label?: string
-	rest?: any
-	color?: string
+  value?: string
+  label?: string
+  color?: string
+  [key: string]: any // for ...rest props
 }
 
 const FieldURL: React.FC<FieldURLProps> = (props) => {
-	const { value, label, color, handleClick, ...rest } = props
+  const { value, label, color, ...rest } = props
 
-	return (
-		<FieldWrapper label={label} color={color} {...rest}>
-			{value && (
-				<Link href={value} sx={sx.link}>
-					{value}
-				</Link>
-			)}
-		</FieldWrapper>
-	)
+  return (
+    <FieldWrapper label={label} color={color} {...rest}>
+      {value && (
+        <Link 
+          className="p-0 h-auto text-muted-foreground hover:text-foreground" 
+          href={value} 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          {value}
+        </Link>
+      )}
+    </FieldWrapper>
+  )
 }
 
 export default FieldURL
-
-const sx = {
-	link: {
-		color: 'text.secondary',
-		textDecoration: 'none',
-		'&:hover': {
-			color: 'text.primary',
-			textDecoration: 'underline',
-		},
-	},
-	cell: {
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-between',
-		p: '0.5rem',
-	},
-}

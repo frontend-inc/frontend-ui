@@ -1,6 +1,6 @@
 import React from 'react'
-import { Drawer, FormFields, IconLoading } from '../../../components'
-import { Button } from '@mui/material'
+import { Drawer, FormFields } from '../../../components'
+import { Button } from '../../../tailwind'
 
 export type ResourceFormProps = {
 	title?: string
@@ -53,7 +53,7 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 					variant="contained"
 					color="primary"
 					onClick={handleSubmit}
-					startIcon={loading && <IconLoading />}
+          loading={loading}					
 				>
 					{resource?.id ? 'Update' : 'Save'}
 				</Button>

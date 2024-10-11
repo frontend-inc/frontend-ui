@@ -6,9 +6,6 @@ import { cn } from "@/shadcn/lib/utils"
 
 type ButtonActionsProps = {
   buttons: ButtonType[]
-  resource?: any
-  user?: UserType
-  numVisible?: number
   color?: string
   size?: 'small' | 'medium' | 'large'
   justifyContent?: 'start' | 'center' | 'end'
@@ -19,9 +16,6 @@ const ButtonActions: React.FC<ButtonActionsProps> = ({
   size,
   justifyContent = 'start',
   color,
-  resource,
-  user,
-  numVisible,
 }) => {
   return (
     <div className={cn(

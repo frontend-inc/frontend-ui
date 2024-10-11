@@ -1,69 +1,45 @@
 import React from 'react'
-import { Button, IconButton, Typography, Box, Chip } from '@mui/material'
-import { Close } from '@mui/icons-material'
+import { Button } from "@/shadcn/ui/button"
+import { X } from "lucide-react"
 
 type ShopifySearchTagsProps = {
-	tags?: any
-	handleClick: any
-	handleClearAll: any
+  tags?: string[]
+  handleClick: (tag: string) => void
+  handleClearAll: () => void
 }
 
 const ShopifySearchTags: React.FC<ShopifySearchTagsProps> = (props) => {
-	const { tags = [], handleClick, handleClearAll } = props
-	if (!tags) return null
-	return (
-		<Box sx={sx.searchTags}>
-			{tags?.map((tag, index) => (
-				<Chip
-					key={index}
-					label={
-						<Box sx={sx.chip}>
-							<Typography variant="caption">{tag}</Typography>
-							<IconButton sx={sx.iconButton} onClick={() => handleClick(tag)}>
-								<Close sx={sx.icon} />
-							</IconButton>
-						</Box>
-					}
-					variant="outlined"
-					onClick={() => handleClick(tag)}
-					sx={sx.chip}
-				/>
-			))}
-			<Button onClick={handleClearAll} variant="text">
-				Clear All
-			</Button>
-		</Box>
-	)
+  const { tags = [], handleClick, handleClearAll } = props
+  
+  if (!tags) return null
+
+  return (
+    <div className="mb-6 flex flex-row justify-start items-center gap-2 overflow-x-auto scrollbar-hide">
+      {tags.map((tag, index) => (
+        <div
+          key={index}
+          className="flex items-center px-2 py-1 rounded-full border border-gray-300 bg-white"
+        >
+          <span className="text-xs uppercase">{tag}</span>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="ml-1 p-0 hover:bg-transparent"
+            onClick={() => handleClick(tag)}
+          >
+            <X className="h-4 w-4 text-primary" />
+          </Button>
+        </div>
+      ))}
+      <Button
+        variant="ghost"
+        className="text-primary"
+        onClick={handleClearAll}
+      >
+        Clear All
+      </Button>
+    </div>
+  )
 }
 
 export default ShopifySearchTags
-
-const sx = {
-	searchTags: {
-		mb: 3,
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'flex-start',
-		alignItems: 'center',
-		gap: '10px',
-		overflowX: 'scroll',
-		'&::-webkit-scrollbar': {
-			display: 'none',
-		},
-	},
-	chip: {
-		textTransform: 'uppercase',
-	},
-	icon: {
-		color: 'primary.main',
-		height: '20px',
-		width: '20px',
-	},
-	iconButton: {
-		p: 0,
-		'&:hover': {
-			backgroundColor: 'transparent',
-		},
-		ml: '6px',
-	},
-}

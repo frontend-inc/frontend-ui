@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthScreen, AlertModal, Loader } from '../..'
-import { Button, Stack } from '@mui/material'
+import { Button } from '../../../tailwind'
 import { useAddresses } from 'frontend-shopify'
 import { ShopifyAddressForm } from '..'
 import { useApp } from '../../../hooks'
@@ -65,7 +65,7 @@ const Address: React.FC<AddressProps> = (props) => {
 		<>
 			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
-				<Stack spacing={1}>
+				<div className='flex flex-col space-y-3'>
 					<ShopifyAddressForm address={address} handleChange={handleChange} />
 					<Button
 						fullWidth
@@ -83,7 +83,7 @@ const Address: React.FC<AddressProps> = (props) => {
 					>
 						Delete Address
 					</Button>
-				</Stack>
+				</div>
 				<AlertModal
 					open={showDeleteModal}
 					handleClose={() => setShowDeleteModal(false)}

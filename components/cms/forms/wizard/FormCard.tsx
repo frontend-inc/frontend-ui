@@ -1,54 +1,42 @@
 import React from 'react'
-import { Avatar, Box, Stack, Button } from '@mui/material'
+import { Button } from "../../../../shadcn/ui/button"
+import { Avatar } from "../../../../shadcn/ui/avatar"
 import { Icon, Heading, Image } from '../../../../components'
 import { HeadingProps } from '../../../../types'
 
 type FormCardProps = HeadingProps & {
-	image?: string
-	buttonText: string
-	checkMark?: boolean
-	handleClick: () => void
+  image?: string
+  buttonText: string
+  checkMark?: boolean
+  handleClick: () => void
 }
 
 const FormCard: React.FC<FormCardProps> = (props) => {
-	const {
-		title,
-		description,
-		image,
-		checkMark,
-		handleClick,
-		buttonText = 'Continue',
-	} = props
+  const {
+    title,
+    description,
+    image,
+    checkMark,
+    handleClick,
+    buttonText = 'Continue',
+  } = props
 
-	return (
-		<Stack direction="column" sx={sx.root} spacing={2}>
-			{checkMark && (
-				<Avatar sx={sx.avatar}>
-					<Icon name="Check" color="primary.contrasText" />
-				</Avatar>
-			)}
-			{image && <Image src={image} height={320} />}
-			<Heading title={title} description={description} textAlign="center" />
-			<Box>
-				<Button onClick={handleClick} variant="contained" color="primary">
-					{buttonText}
-				</Button>
-			</Box>
-		</Stack>
-	)
+  return (
+    <div className="flex flex-col items-center space-y-4">
+      {checkMark && (
+        <Avatar className="h-12 w-12 bg-primary text-primary-foreground">
+          <Icon name="Check" className="h-6 w-6" />
+        </Avatar>
+      )}
+      {image && <Image src={image} height={320} alt={title || 'Form image'} className="w-full object-cover" />}
+      <Heading title={title} description={description} textAlign="center" />
+      <div>
+        <Button onClick={handleClick} variant="default">
+          {buttonText}
+        </Button>
+      </div>
+    </div>
+  )
 }
 
 export default FormCard
-
-const sx = {
-	root: {
-		width: '100%',
-		display: 'flex',
-		alignItems: 'center',
-	},
-	avatar: {
-		height: 64,
-		width: 64,
-		bgcolor: 'primary.main',
-	},
-}

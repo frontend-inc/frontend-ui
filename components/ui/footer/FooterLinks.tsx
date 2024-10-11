@@ -1,57 +1,41 @@
 import React from 'react'
-import {
-	List,
-	ListSubheader,
-	ListItem,
-	ListItemButton,
-	ListItemText,
-	Typography,
-} from '@mui/material'
+import Link from 'next/link'
 
 type FooterLinksProps = {
-	menuItem: any
-	handleClick: (path: string) => void
+  menuItem: {
+    label: string
+    children?: Array<{
+      label: string
+      path: string
+    }>
+  }
+  handleClick: (path: string) => void
 }
 
-const FooterLinks: React.FC<FooterLinksProps> = (props) => {
-	const { menuItem, handleClick } = props
-	const { children } = menuItem || {}
+const FooterLinks: React.FC<FooterLinksProps> = ({ menuItem, handleClick }) => {
+  const { children } = menuItem || {}
 
-	return (
-		<List
-			sx={sx.list}
-			component="nav"
-			subheader={
-				<ListSubheader sx={sx.listSubheader}>{menuItem?.label}</ListSubheader>
-			}
-		>
-			{children?.map((link, i) => (
-				<ListItem key={i} disablePadding dense>
-					<ListItemButton onClick={() => handleClick(link.path)}>
-						<ListItemText
-							primary={
-								<Typography variant="body1" color="text.primary">
-									{link.label}
-								</Typography>
-							}
-						/>
-					</ListItemButton>
-				</ListItem>
-			))}
-		</List>
-	)
+  return (
+    <nav className="min-w-[150px] w-full sm:w-auto">
+      <h3 className="mb-2 text-sm font-semibold text-foreground">{menuItem?.label}</h3>
+      <ul className="space-y-2">
+        {children?.map((link, i) => (
+          <li key={i}>
+            <Link
+              href={link.path}
+              onClick={(e) => {
+                e.preventDefault()
+                handleClick(link.path)
+              }}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
 }
 
 export default FooterLinks
-
-const sx = {
-	listSubheader: {
-		bgcolor: 'transparent',
-	},
-	list: {
-		minWidth: {
-			sm: 150,
-			xs: '100%',
-		},
-	},
-}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { AuthScreen, AlertModal, Loader } from '../../../components'
 import { Plus } from 'lucide-react'
-import { Button } from '@mui/material'
+import { Button } from '../../../tailwind'
 import { useAddresses } from 'frontend-shopify'
 import { ShopifyAddressList } from '../../../components/shopify'
 import { useApp } from '../../../hooks'

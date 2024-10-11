@@ -7,9 +7,6 @@ export type AvatarImageProps = {
 	height?: number
 	enableGradient?: boolean
 	enableOverlay?: boolean
-	slots?: {
-		image?: any
-	}
 }
 
 const AvatarImage: React.FC<AvatarImageProps> = (props) => {
@@ -19,18 +16,14 @@ const AvatarImage: React.FC<AvatarImageProps> = (props) => {
 		height = 64,
 		enableGradient = false,
 		enableOverlay = false,
-		slots = {
-			image: {},
-		},
 	} = props
 
 	return (
 		<div
 			className={cn(
-				'relative h-[200px] rounded-full overflow-hidden',
+				'relative h-[64px] rounded-full overflow-hidden',
 				`h-[${height}px] w-[${height}px]`
 			)}
-			{...slots.image}
 		>
 			{image ? (
 				<img src={image} alt={alt} className="w-full h-full object-cover" />

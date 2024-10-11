@@ -1,57 +1,48 @@
 import React, { useState, useEffect } from 'react'
-import { Typography, Select, FormControl, MenuItem } from '@mui/material'
 import { getSellingPlanDescription } from 'frontend-shopify'
 import { ShopifyProductType } from 'frontend-shopify'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../shadcn/ui/select"
 
 type ShopifySubscriptionSelectorProps = {
-	product: ShopifyProductType
-	handleChange: any
-	activeSellingPlanId?: string
+  product: ShopifyProductType
+  handleChange: (value: string) => void
+  activeSellingPlanId?: string
 }
 
-const ShopifySubscriptionSelector: React.FC<
-	ShopifySubscriptionSelectorProps
-> = (props) => {
-	const { product, activeSellingPlanId = '', handleChange } = props
-	const [sellingPlans, setSellingPlans] = useState<any>(null)
+const ShopifySubscriptionSelector: React.FC<ShopifySubscriptionSelectorProps> = (props) => {
+  const { product, activeSellingPlanId = '', handleChange } = props
+  const [sellingPlans, setSellingPlans] = useState<any[]>([])
 
-	useEffect(() => {
-		if (product) {
-			const subscriptions =
-				// @ts-ignore
-				product?.sellingPlanGroups?.edges[0]?.node?.sellingPlans?.edges //@ts-ignore
-					?.map(({ node }) => node)
-			setSellingPlans(subscriptions)
-		}
-	}, [product])
+  useEffect(() => {
+    if (product) {
+      const subscriptions =
+        product?.sellingPlanGroups?.edges[0]?.node?.sellingPlans?.edges
+          ?.map(({ node }: any) => node) || []
+      setSellingPlans(subscriptions)
+    }
+  }, [product])
 
-	if (!sellingPlans || sellingPlans?.length == 0) return null
-	return (
-		<FormControl variant="outlined" sx={sx.root}>
-			<Select onChange={handleChange} value={activeSellingPlanId || ''}>
-				<MenuItem value={''}>
-					<Typography variant="body1" sx={sx.emptySelect}>
-						No subscription
-					</Typography>
-				</MenuItem>
-				{sellingPlans?.map((sellingPlan) => (
-					<MenuItem key={sellingPlan.id} value={sellingPlan.id}>
-						{sellingPlan?.name} - {getSellingPlanDescription(sellingPlan)}
-					</MenuItem>
-				))}
-			</Select>
-		</FormControl>
-	)
+  if (!sellingPlans || sellingPlans.length === 0) return null
+
+  return (
+    <div className="w-full">
+      <Select onValueChange={handleChange} value={activeSellingPlanId}>
+        <SelectTrigger className="w-full">
+          <SelectValue placeholder="Select a subscription" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="">
+            <span className="text-foreground italic">No subscription</span>
+          </SelectItem>
+          {sellingPlans.map((sellingPlan) => (
+            <SelectItem key={sellingPlan.id} value={sellingPlan.id}>
+              {sellingPlan?.name} - {getSellingPlanDescription(sellingPlan)}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  )
 }
 
 export default ShopifySubscriptionSelector
-
-const sx = {
-	root: {
-		width: '100%',
-	},
-	emptySelect: {
-		color: 'text.secondary',
-		fontStyle: 'italic',
-	},
-}

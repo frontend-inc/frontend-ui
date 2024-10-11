@@ -1,5 +1,5 @@
 import React from 'react'
-import { Hidden } from '@mui/material'
+import { Hidden } from '../../../../tailwind'
 import ShopifyProductImagesSlider from './ShopifyProductImagesSlider'
 import SwipeableShopifyProductImages from './SwipeableShopifyProductImages'
 import { PDP_IMAGE_HEIGHT } from '../../../../constants/index'

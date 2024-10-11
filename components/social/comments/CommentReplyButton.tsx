@@ -1,19 +1,23 @@
 import React from 'react'
-import { Button } from '@mui/material'
+import { Button } from "../../../shadcn/ui/button"
 
 type CommentReplyButtonProps = {
-	reply?: boolean
-	handleClick: () => void
+  reply?: boolean
+  handleClick: () => void
 }
 
 const CommentReplyButton: React.FC<CommentReplyButtonProps> = (props) => {
-	const { reply, handleClick } = props
+  const { reply, handleClick } = props
 
-	return (
-		<Button variant="contained" color="secondary" onClick={handleClick}>
-			{reply ? 'Reply' : 'Leave a Comment'}
-		</Button>
-	)
+  return (
+    <Button
+      variant="secondary"
+      onClick={handleClick}
+      className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
+    >
+      {reply ? 'Reply' : 'Leave a Comment'}
+    </Button>
+  )
 }
 
 export default CommentReplyButton
