@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import { InputLabel } from '../../../components'
 import { Button } from "../../../shadcn/ui/button"
 import { Input } from "../../../shadcn/ui/input"
@@ -9,7 +9,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "../../../shadcn/ui/popo
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../../../shadcn/ui/tooltip"
 import { ChevronDown } from "lucide-react"
 import { cn } from "../../../shadcn/lib/utils"
-import { TAILWIND_COLORS, TAILWIND_COLOR_PICKER_MAP, TAILWIND_COLOR_MAP } from '../../../constants'
+import { TAILWIND_COLOR_PICKER_MAP, TAILWIND_COLOR_MAP } from '../../../constants'
 
 type ColorInputProps = {
   label?: string
@@ -31,8 +31,9 @@ export default function ColorInput({
   handleChange,
   info,
 }: ColorInputProps) {
+  
   const [tone, setTone] = useState(500)
-  const [selectedColor, setSelectedColor] = useState('')
+  const [selectedColor, setSelectedColor] = useState('slate')
 
   const handleToneChange = (newTone: number[]) => {
     setTone(newTone[0])
@@ -42,6 +43,7 @@ export default function ColorInput({
   }
 
   const handleColorChange = (color: string, shade: number = tone) => {
+    if(!color || !shade) return;
     const newColor = TAILWIND_COLOR_PICKER_MAP[color][shade]
     setSelectedColor(color)
     handleChange({
@@ -60,6 +62,16 @@ export default function ColorInput({
         value: hexColor,
       },
     })
+  }
+
+  const handleRemoveColor = () => {
+    handleChange({
+      target: {
+        name,
+        value: '',
+      },
+    })
+    setSelectedColor('')
   }
 
   const selectedColorName = useMemo(() => {
@@ -86,7 +98,28 @@ export default function ColorInput({
         </PopoverTrigger>
         <PopoverContent className="w-64">
           <div className="grid grid-cols-7 gap-1 mb-2">
-            {TAILWIND_COLORS.map((color) => (
+          <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                <button
+                    className={cn(
+                      'relative bg-white h-8 w-8 rounded-md border overflow-hidden',
+                      selectedColorName === null && 'ring-2 ring-offset-2 ring-offset-background'
+                    )}
+                    onClick={handleRemoveColor}
+                  >
+                    <span className="sr-only">Remove color</span>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-[1px] h-[140%] bg-gray-300 rotate-45 transform origin-center"></div>
+                    </div>
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Remove color</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            {Object.keys(TAILWIND_COLOR_PICKER_MAP).map((color) => (
               <TooltipProvider key={color}>
                 <Tooltip>
                   <TooltipTrigger asChild>
