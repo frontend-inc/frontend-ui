@@ -34,7 +34,7 @@ const ProductRating: React.FC<ProductRatingProps> = (props) => {
 					readOnly
 				/>
 			) : (
-				<Typography color={'text.secondary'} variant="body2" sx={sx.noReviews}>
+				<Typography color={'text.secondary'} variant="body2">
 					No reviews yet
 				</Typography>
 			)}

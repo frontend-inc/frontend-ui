@@ -72,7 +72,6 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 			) : (
 				<div className='p-1'>
 					<Button
-						sx={sx.button}
 						color="secondary"
 						variant="contained"
 						startIcon={

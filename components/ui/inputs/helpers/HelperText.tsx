@@ -9,7 +9,7 @@ const HelperText: React.FC<HelperTextProps> = (props) => {
 	const { text } = props || {}
 	if (!text) return null
 	return (
-		<Typography variant="caption" sx={sx.root}>
+		<Typography variant="caption">
 			{text}
 		</Typography>
 	)

@@ -16,7 +16,7 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 	return (
 		<div className={'p-4 h-[320px] border border-zinc-200 p-4 rounded-lg'}>
 			<Stack justifyContent="space-between" className={'h-full'}>
-				<div sx={sx.testimonial}>
+				<div>
 					{text && (
 						<ExpandableText
 							variant="subtitle1"

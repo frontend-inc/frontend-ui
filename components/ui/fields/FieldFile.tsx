@@ -17,7 +17,7 @@ const FieldFile: React.FC<FieldFileProps> = (props) => {
 			<Stack direction="row" spacing={1}>
 				<Icon name="File" color="text.primary" />
 				{value?.content_type && (
-					<Link color={color} href={value?.url} sx={sx.link} target="_blank">
+					<Link color={color} href={value?.url} target="_blank">
 						{value?.content_type}
 					</Link>
 				)}

@@ -27,7 +27,7 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = (props) => {
 			</Typography>
 			{enableOkendoStarRating && <OkendoStarRating product={product} />}
       <div className="flex flex-row space-x-2">
-        <Typography color="text.primary" variant="h6" sx={sx.price}>
+        <Typography color="text.primary" variant="h6">
           {price && formatCurrency(price)}				
         </Typography>
         {compareAtPrice && (

@@ -72,7 +72,6 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 				<>
 					{currentUser?.id ? (
 						<Button
-							sx={sx.button}
 							onClick={toggleMenu}
 							startIcon={showIcon && <UserAvatar user={currentUser} />}
 							endIcon={
@@ -81,13 +80,12 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 								</div>
 							}
 						>
-							<Typography variant="body1" color="text.primary" sx={sx.username}>
+							<Typography variant="body1" color="text.primary">
 								{currentUser?.username}
 							</Typography>
 						</Button>
 					) : (
 						<Button
-							sx={sx.button}
 							onClick={handleLogin}
 							startIcon={showIcon && <Icon name="User" size={24} />}
 						>

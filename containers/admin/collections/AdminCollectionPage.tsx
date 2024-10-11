@@ -109,8 +109,6 @@ const AdminCollectionPage: React.FC = () => {
 									Add
 								</Button>
 								<IconButton
-									size="small"
-									sx={sx.iconButton}
 									onClick={() => setOpenAiModal(true)}
 								>
 									<Icon name="Sparkles" color="text.primary" />
