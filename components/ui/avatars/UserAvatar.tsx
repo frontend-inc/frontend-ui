@@ -6,18 +6,19 @@ type UserAvatarProps = {
 	user: any
 	size?: number
 	enableGradient?: boolean
+  className?: string
 }
 
 const UserAvatar: React.FC<UserAvatarProps> = (props) => {
-	const { user, size = 36, enableGradient = false } = props
+	const { user, size = 36, className, enableGradient = false } = props
 	return (
 		<Avatar
       variant='rounded'
-			color={user?.color}
 			label={getInitials(user?.name)}
 			size={size}
 			src={user?.avatar?.url}
 			enableGradient={enableGradient}
+      className={className}
 		/>
 	)
 }

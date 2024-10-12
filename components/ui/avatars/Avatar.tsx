@@ -8,6 +8,7 @@ type UserAvatarProps = {
   label?: string
   size?: number
   color?: string
+  className?: string
   enableGradient?: boolean
   enableOverlay?: boolean
 }
@@ -17,6 +18,7 @@ export default function UserAvatar({
   label,
   variant = 'rounded',
   size = 40,
+  className,
 }: UserAvatarProps) {
 
   const avatarClasses = cn(
@@ -24,7 +26,7 @@ export default function UserAvatar({
   )
   return (
     <Avatar 
-      className={avatarClasses}
+      className={cn(avatarClasses, className)}
       style={{
         width: size,
         height: size,

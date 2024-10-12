@@ -74,8 +74,8 @@ const Modal: React.FC<ModalProps> = ({
         <ScrollArea className='max-h-[450px]'>
 				<div
 					className={cn(
-						'my-1 h-full overflow-y-auto',
-						disablePadding && 'm-0 p-0'
+						'h-full overflow-y-auto',
+						'm-0 p-0'
 					)}
 				>
 					<Loader loading={loading} />

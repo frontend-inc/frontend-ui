@@ -55,13 +55,14 @@ export default function ResourceListItem({
   return (
     <div
       className={cn(
-        "p-1 rounded-lg overflow-hidden hover:bg-accent",
+        "p-1 rounded-lg overflow-hidden bg-background hover:bg-accent",
         "border border-transparent",
         enableBorder && "border-border hover:shadow-md mb-1 transition-shadow duration-200",
         selected && "border-primary",
+        isDragging && "shadow-md"
       )}
     >
-      <div className="rounded-lg flex items-center p-1 space-x-4">
+      <div className="flex items-center p-1 rounded space-x-4">
         {sortable && (
           <GripVertical className="w-5 h-5 text-muted-foreground cursor-grab active:cursor-grabbing" />
         )}
@@ -74,15 +75,17 @@ export default function ResourceListItem({
         {avatar && <div className="mr-2">{avatar}</div>}
         {image && (
           <div className="mr-2 w-[72px] h-[72px]">
-            <button className='w-full h-full rounded-lg focus:outline-none focus:ring-2' onClick={handleClick}>
+            <button className='w-full h-full focus:outline-none focus:ring-2' onClick={handleClick}>
               <Image src={image} aspectRatio={1.0} alt={image} />
             </button>
           </div>
         )}
         {icon && (
-          <Avatar className={cn("mr-2 rounded", color)}>
-            <AvatarFallback><Icon name={icon} /></AvatarFallback>
-          </Avatar>
+          <button className='focus:outline-none focus:ring-2' onClick={handleClick}>
+            <Avatar className={cn("mr-2 rounded", color)}>
+              <AvatarFallback><Icon name={icon} /></AvatarFallback>
+            </Avatar>
+          </button>
         )}
         <div className="flex-grow cursor-pointer" onClick={handleClick}>
           <Typography variant="body1">{primary}</Typography>
