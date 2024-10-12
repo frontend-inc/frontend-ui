@@ -1,28 +1,29 @@
 import React from 'react'
 import { Image, FieldWrapper } from '../../../components'
+import { FieldElementProps } from './Field'
 
-type FieldImageProps = {
-	value?: any
-	label?: string
-	rest?: any
+type FieldImageProps = FieldElementProps & {
 	height?: number
-	width?: number
-	handleClick?: () => void
-	color?: string
+	width?: number	
 }
 
 const FieldImage: React.FC<FieldImageProps> = (props) => {
-	const { label, value, height = 140, width, color, ...rest } = props
+	const { label, value, height = 140, width, color, disableLabel } = props
 	if (!value) return null
 	return (
-		<FieldWrapper color={color} label={label} {...rest}>
+		<FieldWrapper color={color} label={label} disableLabel={disableLabel}>
 			<div 
         style={{
           height: `${height}px`,
           width: width ? `${width}px` : 'auto',
         }}				
 			>
-				<Image alt={'Image'} src={value?.url || value} height={height} />
+				<Image 
+          aspectRatio={1.0} 
+          alt={label || 'Image'} 
+          src={value?.url || value} 
+          height={height} 
+        />
 			</div>
 		</FieldWrapper>
 	)

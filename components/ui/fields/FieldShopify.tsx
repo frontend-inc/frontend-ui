@@ -1,18 +1,10 @@
 import React from 'react'
 import { FieldString } from '../..'
 import { TypographyVariantsType } from '../../../types'
+import { FieldElementProps } from './Field'
 
-type FieldShopifyProps = {
-	value?: any
-	label?: string
-	placeholder?: string
-	variant?: TypographyVariantsType
-	color?: string
-	rest?: any
-}
-
-const FieldShopify: React.FC<FieldShopifyProps> = (props) => {
-	const { value, label, variant, color, placeholder, ...rest } = props
+const FieldShopify: React.FC<FieldElementProps> = (props) => {
+	const { value, label, variant, color, placeholder, disableLabel } = props
 	return (
 		<FieldString
 			variant={variant}
@@ -20,7 +12,7 @@ const FieldShopify: React.FC<FieldShopifyProps> = (props) => {
 			label={label}
 			color={color}
 			placeholder={placeholder}
-			{...rest}
+			disableLabel={disableLabel}
 		/>
 	)
 }

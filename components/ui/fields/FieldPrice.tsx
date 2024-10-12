@@ -1,13 +1,8 @@
 import React from 'react'
 import { FieldString } from '../../../components'
-import { TypographyVariantsType } from '../../../types'
+import { FieldElementProps } from './Field'
 
-type FieldPriceProps = {
-	value?: any
-	label?: string
-	placeholder?: string
-	variant?: TypographyVariantsType
-	color?: string
+type FieldPriceProps = FieldElementProps & {	
 	rest?: any
 	currency?: string
 	digits?: number
@@ -18,11 +13,7 @@ const FieldPrice: React.FC<FieldPriceProps> = (props) => {
 		value,
 		currency = 'USD',
 		digits = 2,
-		label,
-		variant,
-		color,
-		placeholder,
-		...rest
+    rest 
 	} = props
 
 	const price = new Intl.NumberFormat('en-US', {
@@ -34,11 +25,7 @@ const FieldPrice: React.FC<FieldPriceProps> = (props) => {
 
 	return (
 		<FieldString
-			variant={variant}
-			value={isNaN(value) ? '-' : price}
-			label={label}
-			color={color}
-			placeholder={placeholder}
+			value={isNaN(value) ? '-' : price}			
 			{...rest}
 		/>
 	)

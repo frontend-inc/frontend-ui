@@ -1,26 +1,11 @@
 import React from 'react'
 import { FieldString } from '../..'
-import { TypographyVariantsType } from '../../../types'
+import { FieldElementProps } from './Field'
 
-type FieldLocationProps = {
-	value?: any
-	label?: string
-	placeholder?: string
-	variant?: TypographyVariantsType
-	color?: string
-	rest?: any
-}
-
-const FieldLocation: React.FC<FieldLocationProps> = (props) => {
-	const { value, label, variant, color, placeholder, ...rest } = props
+const FieldLocation: React.FC<FieldElementProps> = (props) => {
 	return (
-		<FieldString
-			variant={variant}
-			value={value}
-			label={label}
-			color={color}
-			placeholder={placeholder}
-			{...rest}
+		<FieldString			
+			{...props}
 		/>
 	)
 }

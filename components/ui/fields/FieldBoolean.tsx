@@ -1,17 +1,11 @@
 import React from 'react'
 import { Label, FieldWrapper } from '../../../components'
+import { FieldElementProps } from './Field'
 
-type FieldBooleanProps = {
-	value?: boolean
-	label?: string
-	rest?: any
-	color?: string
-}
-
-const FieldBoolean: React.FC<FieldBooleanProps> = (props) => {
-	const { value, label, color, ...rest } = props
+const FieldBoolean: React.FC<FieldElementProps> = (props) => {
+	const { value, label, color, disableLabel } = props
 	return (
-		<FieldWrapper label={label} color={color} {...rest}>
+		<FieldWrapper label={label} color={color} disableLabel={disableLabel}>
 			<Label label={value ? 'true' : 'false'} />
 		</FieldWrapper>
 	)

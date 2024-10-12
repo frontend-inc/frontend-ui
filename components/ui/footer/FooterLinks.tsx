@@ -22,7 +22,7 @@ const FooterLinks: React.FC<FooterLinksProps> = ({ menuItem, handleClick }) => {
         {children?.map((link, i) => (
           <li key={i}>
             <Link
-              href={link.path}
+              href={link.path || '#'}
               onClick={(e) => {
                 e.preventDefault()
                 handleClick(link.path)

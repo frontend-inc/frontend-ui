@@ -12,11 +12,18 @@ const FieldString: React.FC<FieldElementProps> = (props) => {
 		placeholder,
 		variant = 'body1',
 		alignItems,
+    disableLabel=false,
 		...rest
 	} = props
 
 	return (
-		<FieldWrapper alignItems={alignItems} label={label} color={color} {...rest}>
+		<FieldWrapper 
+      alignItems={alignItems} 
+      label={label} 
+      color={color} 
+      disableLabel={disableLabel}
+      {...rest}
+    >
 			<Typography variant={variant} color={color}>
 				{truncate(value || placeholder, 50)}
 			</Typography>

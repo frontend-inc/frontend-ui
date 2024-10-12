@@ -1,15 +1,9 @@
 import React from 'react'
 import { ExpandableText, FieldWrapper } from '../../../components'
-import { TypographyVariantsType } from '../../../types'
+import { FieldElementProps } from './Field'
 
-type FieldTextProps = {
-	value?: any
-	label?: string
-	placeholder?: string
-	variant?: TypographyVariantsType
-	color?: string
-	maxChars?: number
-	rest?: any
+type FieldTextProps = FieldElementProps & {	
+	maxChars?: number	
 }
 
 const FieldText: React.FC<FieldTextProps> = (props) => {
@@ -19,11 +13,12 @@ const FieldText: React.FC<FieldTextProps> = (props) => {
 		variant,
 		color,
 		placeholder,
+    disableLabel,
 		maxChars = 80,
 		...rest
 	} = props
 	return (
-		<FieldWrapper label={label} color={color} {...rest}>
+		<FieldWrapper label={label} color={color} disableLabel={disableLabel}>
 			<ExpandableText text={value || placeholder} maxChars={maxChars} />
 		</FieldWrapper>
 	)

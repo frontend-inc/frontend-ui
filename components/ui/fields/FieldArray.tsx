@@ -4,15 +4,15 @@ import { FieldWrapper } from '../../../components'
 
 type FieldArrayProps = {
 	value?: any[]
-	label?: string
-	rest?: any
-	color?: string
+	label?: string	
+  disableLabel?: boolean
+	direction?: 'row' | 'column'
 }
 
 const FieldArray: React.FC<FieldArrayProps> = (props) => {
-	const { value: values, color, label, ...rest } = props
+	const { value: values, disableLabel, label, direction } = props
 	return (
-		<FieldWrapper label={label} color={color} {...rest}>
+		<FieldWrapper disableLabel={disableLabel} label={label} direction={direction}>
 			<div className="flex flex-row gap-2">
 				{Array.isArray(values) &&
 					values?.map((value, index) => (

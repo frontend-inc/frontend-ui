@@ -27,7 +27,7 @@ const ExpandableText: React.FC<ExpandableTextProps> = (props) => {
 				<Typography variant={variant}>{text?.slice(0, maxChars)}</Typography>
 			)}
 			{text?.length > maxChars && (
-				<Link onClick={() => setOpen(!open)}>
+				<Link href="#" onClick={() => setOpen(!open)}>
 					{open ? 'See less' : '... See all'}
 				</Link>
 			)}

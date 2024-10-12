@@ -1,19 +1,12 @@
 import React from 'react'
 import { NoImage, FieldWrapper } from '../../../components'
+import { FieldElementProps } from './Field'
 
-type FieldVideoProps = {
-	value?: any
-	handleClick?: (item: any) => void
-	label?: string
-	rest?: any
-	color?: string
-}
-
-const FieldVideo: React.FC<FieldVideoProps> = (props) => {
-	const { value, label, color, handleClick, ...rest } = props
+const FieldVideo: React.FC<FieldElementProps> = (props) => {
+	const { value, label, color, disableLabel, } = props
 
 	return (
-		<FieldWrapper label={label} color={color} {...rest}>
+		<FieldWrapper label={label} color={color} disableLabel={disableLabel}>
 			{value ? <video src={value} controls muted autoPlay /> : <NoImage />}
 		</FieldWrapper>
 	)

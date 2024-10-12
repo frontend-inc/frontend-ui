@@ -1,26 +1,40 @@
 import React from 'react'
 import { DisplayField } from '../..'
 import { DisplayFieldType } from '../../../types'
+import { cn } from '../../../shadcn/lib/utils'
 
 type DisplayFieldsProps = {
 	fields: DisplayFieldType[]
 	resource: any
-	enableTitle?: boolean
-	enableRatings?: boolean
-	alignItems?: 'flex-start' | 'center' | 'flex-end'
+  direction?: 'row' | 'column'
+  disableBorder?: boolean
+  disableLabel?: boolean
+	className?: string 
 }
 
 const DisplayFields: React.FC<DisplayFieldsProps> = (props) => {
-	const { fields, resource, alignItems = 'flex-start' } = props || {}
+	const { 
+    className, 
+    fields, 
+    disableBorder=false, 
+    direction='row', 
+    resource,
+    disableLabel
+   } = props || {}
 
 	return (
-		<div className="flex flex-row space-x-2">	
+		<div className={cn(
+      'flex',
+      direction == 'row' ? 'flex-row space-x-2' : 'flex-col space-y-2',
+      className
+    )}>	
 			{fields?.map((field, index) => (
 				<DisplayField
 					key={index}
 					field={field}
 					resource={resource}
-					alignItems={alignItems}
+          disableBorder={disableBorder}		
+          disableLabel={disableLabel}			
 				/>
 			))}
 		</div>

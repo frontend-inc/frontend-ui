@@ -17,40 +17,30 @@ import {
 import { DisplayFieldType, TypographyVariantsType } from '../../../types'
 import { get } from 'lodash'
 import { truncate } from '../../../helpers'
-
-export type FieldElementProps = {
-	label?: string
-	value: any
-	color?: string
-	direction?: 'row' | 'column'
-	variant?: TypographyVariantsType
-	placeholder?: string
-	enableBorder?: boolean
-	disablePadding?: boolean
-}
+import { cn } from '../../../shadcn/lib/utils'
 
 type FieldProps = {
 	label?: string
 	color?: string
-	direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse'
-	variant?: TypographyVariantsType
+	direction?: 'row' | 'column' 
 	placeholder?: string
-	enableBorder?: boolean
-	disablePadding?: boolean
 	field: DisplayFieldType
 	resource?: any
-	alignItems?: 'flex-start' | 'center' | 'flex-end'
+  disableBorder?: boolean
+  disableLabel?: boolean
 }
 
 const DisplayField: React.FC<FieldProps> = (props) => {
 	const {
 		field,
 		resource,
+    disableBorder=false,
+    disableLabel=false,
 		color = 'text.secondary',
-		alignItems = 'flex-start',
+		
 		...rest
 	} = props
-	const { name, variant: fieldVariant, icon } = field
+	const { name, label, variant: fieldVariant, icon } = field
 	let value = get(resource, name)
 	if (!value || value?.length == 0) return null
 
@@ -95,16 +85,20 @@ const DisplayField: React.FC<FieldProps> = (props) => {
 
 	if (!value || value == '') return null
 	return (
-		<Component
-			disablePadding
-			icon={icon}
-			variant="caption"
-			color={color}
-			value={value}
-			alignItems={alignItems}
-			{...componentProps}
-			{...rest}
-		/>
+    <div className={cn(
+      !disableBorder && 'border border-border p-2 rounded-md',
+    )}>
+      <Component
+        label={label}        
+        icon={icon}
+        variant="caption"
+        color={color}
+        value={value}
+        disableLabel={disableLabel}        
+        {...componentProps}
+        {...rest}
+      />
+    </div>
 	)
 }
 

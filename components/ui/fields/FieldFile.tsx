@@ -1,23 +1,16 @@
 import React from 'react'
 import { Stack, Link } from '../../../tailwind'
-import { Icon, Label, FieldWrapper } from '../../../components'
+import { Icon, FieldWrapper } from '../../../components'
+import { FieldElementProps } from './Field'
 
-type FieldFileProps = {
-	value?: any
-	handleClick?: () => void
-	label?: string
-	rest?: any
-	color?: string
-}
-
-const FieldFile: React.FC<FieldFileProps> = (props) => {
-	const { value, label, color = 'text.secondary', handleClick, ...rest } = props
+const FieldFile: React.FC<FieldElementProps> = (props) => {
+	const { value, label, color = 'text.secondary', disableLabel } = props
 	return (
-		<FieldWrapper label={label} color={color} {...rest}>
+		<FieldWrapper label={label} color={color} disableLabel={disableLabel}>
 			<Stack direction="row" spacing={1}>
 				<Icon name="File" color="text.primary" />
 				{value?.content_type && (
-					<Link color={color} href={value?.url} target="_blank">
+					<Link href={value?.url || '#'}>
 						{value?.content_type}
 					</Link>
 				)}

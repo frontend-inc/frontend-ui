@@ -3,7 +3,7 @@ import { DisplayFields, ProductRating, UserChip } from '../..'
 
 type SecondaryFieldsProps = {
 	resource: any
-	fields
+	fields: any[]
 	enableRatings?: boolean
 	enableUsers?: boolean
 	slots?: {

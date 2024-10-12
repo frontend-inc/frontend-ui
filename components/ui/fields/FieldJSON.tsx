@@ -1,15 +1,9 @@
 import React from 'react'
-import { FieldWrapper, FieldString } from '../../../components'
+import { FieldString } from '../../../components'
+import { FieldElementProps } from './Field'
 
-type FieldJSONProps = {
-	value?: any
-	label?: string
-	rest?: any
-	color?: string
-}
-
-const FieldJSON: React.FC<FieldJSONProps> = (props) => {
-	const { value, label, ...rest } = props
+const FieldJSON: React.FC<FieldElementProps> = (props) => {
+	const { value, ...rest } = props
 	return <FieldString {...rest} value={JSON.stringify(value, null, 2)} />
 }
 

@@ -1,20 +1,17 @@
 import React from 'react'
 import { FieldWrapper, Avatar } from '../../../components'
+import { FieldElementProps } from './Field'
 
-type FieldAvatarProps = {
-	value?: any
+type FieldAvatarProps =FieldElementProps & {
 	size?: number
-	rounded?: boolean
-	label?: string
-	rest?: any
-	color?: string
+  variant?: 'circle' | 'rounded' 		
 }
 
 const FieldAvatar: React.FC<FieldAvatarProps> = (props) => {
-	const { value, label, color, size = 32, ...rest } = props
+	const { value, label, color, size = 32, variant, disableLabel, } = props
 	return (
-		<FieldWrapper label={label} color={color} {...rest}>
-			<Avatar src={value} />
+		<FieldWrapper label={label} color={color} disableLabel={disableLabel} >
+			<Avatar src={value} size={size} variant={variant} />
 		</FieldWrapper>
 	)
 }

@@ -26,7 +26,7 @@ export default function SidebarMenuItem({ selected=false, title, color='bg-trans
   return (
     <div className={cn(
       "flex items-center justify-between py-2 pl-4 px-2 hover:bg-white/10 rounded-md group",
-      selected && "bg-accent text-accent-foreground",
+      selected && "bg-white/10 text-foreground",
     )}>
       <button onClick={ handleClick } className="w-full flex gap-2 items-center focus:outline-none">
         { icon && (

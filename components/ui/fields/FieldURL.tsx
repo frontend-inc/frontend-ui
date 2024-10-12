@@ -1,23 +1,18 @@
 import React from 'react'
 import Link from 'next/link'
 import { FieldWrapper } from '../../../components'
+import { FieldElementProps } from './Field'
 
-type FieldURLProps = {
-  value?: string
-  label?: string
-  color?: string
-  [key: string]: any // for ...rest props
-}
 
-const FieldURL: React.FC<FieldURLProps> = (props) => {
-  const { value, label, color, ...rest } = props
+const FieldURL: React.FC<FieldElementProps> = (props) => {
+  const { value, label, color, disableLabel } = props
 
   return (
-    <FieldWrapper label={label} color={color} {...rest}>
+    <FieldWrapper label={label} color={color} disableLabel={disableLabel}>
       {value && (
         <Link 
           className="p-0 h-auto text-muted-foreground hover:text-foreground" 
-          href={value} 
+          href={value || '#'} 
           target="_blank" 
           rel="noopener noreferrer"
         >

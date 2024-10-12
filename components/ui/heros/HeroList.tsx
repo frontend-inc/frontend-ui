@@ -34,7 +34,9 @@ const HeroList: React.FC<HeroCardProps> = (props) => {
 					/>
 				</div>
 				{actions}
-				<div className="w-full max-w-[500px] sm:max-w-full">{secondary}</div>
+				<div className="w-full max-w-[500px] sm:max-w-full">
+          {secondary}
+        </div>
 				{children}
 			</Stack>
 		</Container>
