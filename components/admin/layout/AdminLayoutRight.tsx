@@ -13,10 +13,10 @@ const AdminLayoutRight: React.FC<AdminLayoutRightProps> = (props) => {
 	const { openLayoutRight, setOpenLayoutRight } = useAdmin()
 
 	return (
-		<div className='dark'>
+		<div>
 			<Hidden smDown>
 				{openLayoutRight && (
-          <div className='dark border-l border-border w-[300px] min-w-[300px] h-screen'>{children}</div>
+          <div className='border-l border-border w-[300px] min-w-[300px] h-screen'>{children}</div>
         )}
 			</Hidden>
 			<Hidden smUp>

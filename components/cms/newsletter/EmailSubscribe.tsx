@@ -4,6 +4,7 @@ import { TypographyVariantsType } from '../../../types'
 import { Heading, InputBase } from '../..'
 import { useResource } from 'frontend-js'
 import { useAlerts } from '../../../hooks'
+import { Container } from '../../../tailwind'
 
 export type EmailSubscribeProps = {
 	label?: string
@@ -52,6 +53,7 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 	}
 
 	return (
+    <Container maxWidth="md">
 		<div className="flex flex-col space-y-1">
 			<Heading
 				label={label}
@@ -83,6 +85,7 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 			  </div>
       </div>
 		</div>
+    </Container>
 	)
 }
 

@@ -1,6 +1,8 @@
 import React from 'react'
+import { Label } from '../../../components'
 import { Typography } from '../../../tailwind'
 import { TypographyVariantsType } from '../../../types'
+import { cn } from '../../../shadcn/lib/utils'
 
 type HeadingProps = {
 	label?: string
@@ -26,11 +28,15 @@ const Heading: React.FC<HeadingProps> = (props) => {
 	return (
 		<div className="p-4 w-full flex justify-between items-center flex-col sm:flex-row">
 			<div className="w-full flex flex-col justify-between">
-				<div className='flex flex-col'>
+				<div className='flex flex-col space-y-2'>
 					{label && (
-            <Typography variant='caption' textAlign={textAlign}>
-              { label  }
-            </Typography>
+            <div className={
+              cn(                
+                textAlign === 'center' && 'text-center', textAlign === 'right' && 'text-right'
+              )
+            }>
+            <Label variant='outline' label={label} />            
+            </div> 
 					)}
 					{title && (
 						<Typography variant={textVariant} textAlign={textAlign}>
