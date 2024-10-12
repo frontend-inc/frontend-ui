@@ -7,6 +7,7 @@ import {
 	DialogTitle,
 	DialogFooter,
 } from '../../../shadcn/ui/dialog'
+import { ScrollArea } from '../../../shadcn/ui/scroll-area'
 import { Button } from '../../../shadcn/ui/button'
 import { Icon, Loader } from '../../../components'
 
@@ -70,6 +71,7 @@ const Modal: React.FC<ModalProps> = ({
 						</div>
 					</DialogHeader>
 				)}
+        <ScrollArea className='max-h-[450px]'>
 				<div
 					className={cn(
 						'my-1 h-full overflow-y-auto',
@@ -79,6 +81,7 @@ const Modal: React.FC<ModalProps> = ({
 					<Loader loading={loading} />
 					{!loading && <div className="h-full w-full">{children}</div>}
 				</div>
+        </ScrollArea>
 				{!loading && (enableCancel || buttons) && (
 					<DialogFooter>
 						{enableCancel && (

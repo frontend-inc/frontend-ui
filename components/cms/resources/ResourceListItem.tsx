@@ -75,7 +75,9 @@ export default function ResourceListItem({
         {avatar && <div className="mr-2">{avatar}</div>}
         {image && (
           <div className="mr-2 w-[72px] h-[72px]">
-            <Image src={image} aspectRatio={1.0} alt={image} />
+            <button className='w-full h-full rounded-lg focus:outline-none focus:ring-2' onClick={handleClick}>
+              <Image src={image} aspectRatio={1.0} alt={image} />
+            </button>
           </div>
         )}
         {icon && (

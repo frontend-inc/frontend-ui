@@ -32,6 +32,7 @@ export default function AdminProductToolbar({
   }
 
   return (
+    <div className="sticky top-0 z-10 pb-2 shadow-md bg-background">
     <Collapsible open={selectedIds.length > 0}>
       <CollapsibleContent className="space-y-2">
         <div className="flex space-x-2">
@@ -42,5 +43,6 @@ export default function AdminProductToolbar({
         </div>
       </CollapsibleContent>
     </Collapsible>
+    </div>
   )
 }

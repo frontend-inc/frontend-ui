@@ -100,7 +100,7 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 					<Button
             className="w-full sm:w-auto"												
 						onClick={handleAdd}
-						startIcon={<Icon name="Plus" color="primary.contrastText" />}
+						startIcon={<Icon name="Plus" className="text-primary-foreground" />}
 					>
 						{buttonText}
 					</Button>

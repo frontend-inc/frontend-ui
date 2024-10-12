@@ -22,7 +22,7 @@ const ProductToolbar: React.FC<ProductToolbarProps> = (props) => {
 
   return (
     <Collapse in={open}>
-      <div className="w-full flex flex-row space-x-1">
+      <div className="w-full flex flex-row space-x-1 pb-10">
         <Button className="w-full" onClick={handleAdd}>
           Add Products
         </Button>

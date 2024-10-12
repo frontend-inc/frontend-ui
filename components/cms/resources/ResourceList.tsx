@@ -340,7 +340,18 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	const enableSorting = sortOptions?.length > 0
 
 	return (
-		<div className='flex flex-col space-y-1'>
+    <>
+      <Toolbar
+        selected={selected}
+        selectedIds={selectedIds}
+        open={selected?.length > 0}
+        handleClose={handleClear}
+        buttons={buttons}
+        onSuccess={handleSuccess}
+        handleReload={reloadMany}
+        {...slots.toolbar}
+      />
+  		<div className='flex flex-col space-y-3'>
 			<Header
 				selected={selected}
 				direction={direction}
@@ -362,16 +373,6 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				sortOptions={sortOptions}
 				query={query}
 				{...slots.header}
-			/>
-			<Toolbar
-				selected={selected}
-				selectedIds={selectedIds}
-				open={selected?.length > 0}
-				handleClose={handleClear}
-				buttons={buttons}
-				onSuccess={handleSuccess}
-				handleReload={reloadMany}
-				{...slots.toolbar}
 			/>
 			<div 
         className={cn(
@@ -518,6 +519,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 				handleConfirm={handleDelete}
 			/>
 		</div>
+    </>
 	)
 }
 

@@ -43,7 +43,7 @@ export default function SortableList({ items, droppableId = 'sortable-list', ren
       <Droppable droppableId={String(droppableId)}>
         {(provided) => (
           <div className="w-full" {...provided.droppableProps} ref={provided.innerRef}>
-            <ul className="w-full overflow-y-scroll scrollbar-hide">
+            <ul className="w-full space-y-2 overflow-y-scroll scrollbar-hide">
               {sorted?.map((item, index) => (
                 <Draggable
                   key={item?.id || index}

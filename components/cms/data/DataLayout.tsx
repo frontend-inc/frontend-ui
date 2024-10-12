@@ -14,7 +14,7 @@ export default function DataLayout({ loading, grid = false, children }: DataLayo
         "w-full",
         grid 
           ? "grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(360px,1fr))] gap-4 pb-1" 
-          : "flex flex-col gap-4",
+          : "flex flex-col space-y-4",
         loading && "opacity-50"
       )}
     >
