@@ -11,7 +11,7 @@ import {
 } from "../../../shadcn/ui/dropdown-menu"
 import { GripVertical, MoreVertical } from "lucide-react"
 import { Typography } from "../../../tailwind"
-import { Image } from '../../../components'
+import { Image, Icon } from '../../../components'
 
 export type ResourceListItemProps = {
   selectable?: boolean
@@ -80,7 +80,7 @@ export default function ResourceListItem({
         )}
         {icon && (
           <Avatar className={cn("mr-2 rounded", color)}>
-            <AvatarFallback>{icon}</AvatarFallback>
+            <AvatarFallback><Icon name={icon} /></AvatarFallback>
           </Avatar>
         )}
         <div className="flex-grow cursor-pointer" onClick={handleClick}>

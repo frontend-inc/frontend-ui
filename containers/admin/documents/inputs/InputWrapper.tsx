@@ -51,7 +51,7 @@ const DocumentInputWrapper: React.FC<DocumentInputWrapperProps> = (props) => {
           </Typography>
           <Label label={label} />
         </div>
-        <Collapse in={open}>{children}</Collapse>
+        {children}
       </div>
     </div>
   )

@@ -38,7 +38,7 @@ const AiChatModal: React.FC<AiChatModalProps> = (props) => {
     })
   }
 
-  const handleChatSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
+  const handleChatSubmit = (ev) => {
     setLoading(true)
     handleSubmit(ev)
   }
@@ -51,7 +51,7 @@ const AiChatModal: React.FC<AiChatModalProps> = (props) => {
             <IconButton                            
               onClick={() => setOpen(!open)}
             >
-              <Icon name="Sparkles" />
+              <Icon name="Wand" />
             </IconButton>
           </TooltipTrigger>
           <TooltipContent>
@@ -60,23 +60,18 @@ const AiChatModal: React.FC<AiChatModalProps> = (props) => {
         </Tooltip>
       </TooltipProvider>
       <Drawer   
-        mode="dark"   	
         title={label}
         open={open}
         handleClose={() => setOpen(false)}
         buttons={
           <Button
-            className="w-full"
-            variant="default"
+            fullWidth 
             onClick={handleChatSubmit}
             loading={loading}
             startIcon={ 
-              !loading &&             
-              <Icon name="Sparkles" />
+              <Icon name="Sparkles" className='text-primary-foreground' />
             }
-          >
-            
-            
+          >                      
             Generate 
           </Button>
         }

@@ -59,16 +59,16 @@ export default function TextInput({
 
   return (
     <div className={cn(
-      "flex flex-col w-full",
+      "flex flex-col w-full space-y-2",
       direction === 'row' && "sm:flex-row sm:items-center"
     )}>
       <InputLabel label={label} info={info} />
       <div className="relative w-full">
         <Input
           className={cn(
-            className,
             "w-full text-foreground",
-            error && "border-red-500",
+            error && "border-destructive",
+            className,
           )}          
           type={type}
           name={name}

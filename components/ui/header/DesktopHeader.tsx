@@ -44,7 +44,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
               </IconButton>
             </div>
           )}
-          <div className="w-[200px] h-[60px] flex flex-row items-center justify-start">
+          <div className="w-[200px] h-[60px] mx-4 flex flex-row items-center justify-start">
             <Logo
               src={logo}
               width={120}

@@ -14,6 +14,7 @@ import AdminCollectionTable from './AdminCollectionTable'
 import CollectionSchemaToggle from './CollectionSchemaToggle'
 import AdminCollectionMenu from './AdminCollectionMenu'
 import { RouterParams } from '../../../types'
+import { Plus } from 'lucide-react'
 
 const AdminCollectionPage: React.FC = () => {
 	useTabs('collections')
@@ -104,14 +105,14 @@ const AdminCollectionPage: React.FC = () => {
 									variant="contained"
 									color="primary"
 									onClick={handleAddClick}
-									startIcon={<Icon name="Plus" color="primary.contrastText" />}
+									startIcon={<Plus className="w-5 h-5 text-primary-foreground" />}
 								>
 									Add
 								</Button>
 								<IconButton
 									onClick={() => setOpenAiModal(true)}
 								>
-									<Icon name="Sparkles" color="text.primary" />
+									<Icon name="Wand" color="text.primary" />
 								</IconButton>
 							</div>
 						)

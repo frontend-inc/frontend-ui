@@ -40,7 +40,7 @@ type TableProps = {
 	selected?: any
 	selectedIds?: any
 	handleSelect?: (row: any) => void
-	handleSelectAll?: () => void
+	handleSelectAll: () => void
 	handleSort: (field: any) => void
 	handlePaginate: (page: number) => void
 	emptyIcon?: string
@@ -132,19 +132,17 @@ const TableList: React.FC<TableProps> = (props) => {
 							handleSelect={handleSelect}
 						/>
 					))}
-					{!loading && resources?.length == 0 && (
-						<ShadcnTableRow>
-							<ShadcnTableCell className={'w-[100px]'}>
-								<Placeholder
-									icon={emptyIcon}
-									title={emptyTitle}
-									description={emptyDescription}
-								/>
-							</ShadcnTableCell>
-						</ShadcnTableRow>
-					)}
 				</TableBody>
 			</Table>
+      {!loading && resources?.length == 0 && (
+        <div className="py-12 px-4 w-full h-full flex flex-row items-center justify-center">
+          <Placeholder
+            icon={emptyIcon}
+            title={emptyTitle}
+            description={emptyDescription}
+          />
+        </div>
+      )}
 			<Pagination
 				loading={loading}
 				page={page}

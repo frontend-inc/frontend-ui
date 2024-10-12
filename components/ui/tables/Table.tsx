@@ -29,8 +29,7 @@ type TableProps = {
 	handleSearch: (keywords: any) => void
 	handleKeywordSearch: (keywords: string) => void
 	handleSort: (field: any) => void
-	disableBorderRadius?: boolean
-	styles?: any
+	disableBorderRadius?: boolean	
 	emptyIcon?: string
 	emptyTitle?: string
 	emptyDescription?: string
@@ -68,7 +67,6 @@ const Table: React.FC<TableProps> = (props) => {
 		totalCount,
 		handlePaginate,
 		disableBorderRadius = false,
-		styles = {},
 		emptyIcon,
 		emptyTitle,
 		emptyDescription,
@@ -146,7 +144,6 @@ const Table: React.FC<TableProps> = (props) => {
 				emptyIcon={emptyIcon}
 				emptyTitle={emptyTitle}
 				emptyDescription={emptyDescription}
-				styles={styles}
 			/>
 			<TableFilterPopup
 				loading={loading}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Button } from "@/shadcn/ui/button"
-import { Pagination as ShadcnPagination } from "../../shadcn/ui/pagination"
+import { PaginationContent, PaginationItem, Pagination as ShadcnPagination } from "../../shadcn/ui/pagination"
 import { Loader2 } from "lucide-react"
 
 type PaginationProps = {
@@ -42,7 +42,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
   }, [page, numPages, totalCount, perPage])
 
   return (
-    <div className="pt-4 pb-4 mb-8 flex flex-row justify-between items-center border-t border-divider w-full">
+    <div className="p-2 flex flex-row justify-between items-center border-t border-divider w-full">
       <div className="hidden sm:block mx-2">
         {loading ? (
           <Loader2 className="h-6 w-6 animate-spin text-primary" />
@@ -52,20 +52,21 @@ const Pagination: React.FC<PaginationProps> = (props) => {
           </p>
         )}
       </div>
+      <div>
       <ShadcnPagination>
-        <ShadcnPagination.Content>
-          <ShadcnPagination.Item>
+        <PaginationContent>
+          <PaginationItem>
             <Button
               variant="outline"
-              size="sm"
               onClick={() => handleChangePage(Math.max(1, pageNumber - 1))}
               disabled={pageNumber === 1}
+              className='text-foreground'
             >
               Previous
             </Button>
-          </ShadcnPagination.Item>
+          </PaginationItem>
           {Array.from({ length: numPages }, (_, i) => i + 1).map((num) => (
-            <ShadcnPagination.Item key={num}>
+            <PaginationItem key={num}>
               <Button
                 variant={num === pageNumber ? "default" : "outline"}
                 size="sm"
@@ -73,20 +74,21 @@ const Pagination: React.FC<PaginationProps> = (props) => {
               >
                 {num}
               </Button>
-            </ShadcnPagination.Item>
+            </PaginationItem>
           ))}
-          <ShadcnPagination.Item>
+          <PaginationItem>
             <Button
               variant="outline"
-              size="sm"
               onClick={() => handleChangePage(Math.min(numPages, pageNumber + 1))}
               disabled={pageNumber === numPages}
+              className='text-foreground'
             >
               Next
             </Button>
-          </ShadcnPagination.Item>
-        </ShadcnPagination.Content>
+          </PaginationItem>
+        </PaginationContent>
       </ShadcnPagination>
+      </div>
     </div>
   )
 }

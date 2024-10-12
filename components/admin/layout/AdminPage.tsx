@@ -69,7 +69,7 @@ const AdminPage: React.FC<AdminPageProps> = (props) => {
 				<AdminHeader title={title} buttons={actions} enableExpandLeftPanel />
 				<AdminLayoutScroll>
           <div className={cn(
-            disablePadding ? 'p-0' : 'p-2',
+            disablePadding ? 'p-0' : 'p-4',
           )}
           >
             {children}

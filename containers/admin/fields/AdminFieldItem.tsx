@@ -70,7 +70,7 @@ const AdminFieldItem: React.FC<AdminFieldItemProps> = (props) => {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <IconButton onClick={() => handleUpdateField('filter_field')}>
-                    <FilterIcon className={field.filter_field ? "text-primary" : ""} />
+                    <FilterIcon className={field.filter_field ? "text-foreground" : "text-muted-foreground"} />
                   </IconButton>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -84,7 +84,7 @@ const AdminFieldItem: React.FC<AdminFieldItemProps> = (props) => {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <IconButton onClick={() => handleUpdateField('sort_field')}>
-                    <SortAsc className={field.sort_field ? "text-primary" : ""} />
+                    <SortAsc className={field.sort_field ? "text-foreground" : "text-muted-foreground"} />
                   </IconButton>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -98,7 +98,7 @@ const AdminFieldItem: React.FC<AdminFieldItemProps> = (props) => {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <IconButton onClick={() => handleUpdateField('display_field')}>
-                    <Search className={field.display_field ? "text-primary" : ""} />
+                    <Search className={field.display_field ? "text-foreground" : "text-muted-foreground"} />
                   </IconButton>
                 </TooltipTrigger>
                 <TooltipContent>

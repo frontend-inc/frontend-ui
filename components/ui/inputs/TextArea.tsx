@@ -12,7 +12,7 @@ type TextAreaProps = Omit<TextInputPropsType, 'type'> & {
   rows?: number
 }
 
-export default function TextAreaInput({
+export default function TextArea({
   label,
   name,
   value = '',
@@ -59,7 +59,7 @@ export default function TextAreaInput({
 
   return (
     <div className={cn(
-      "flex flex-col gap-1 w-full",
+      "flex flex-col space-y-2 w-full",
       direction === 'row' && "sm:flex-row sm:items-start"
     )}>
       <InputLabel label={label} info={info} />

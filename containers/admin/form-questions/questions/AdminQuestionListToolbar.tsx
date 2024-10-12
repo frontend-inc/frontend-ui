@@ -1,5 +1,6 @@
 import React from 'react'
-import { PrimaryButton, ResourceToolbarModal } from '../../../../components'
+import { ResourceToolbarModal } from '../../../../components'
+import { Button } from '../../../../shadcn/ui/button'
 import { useAdminForms } from '../../../../hooks'
 
 const AdminProductToolbar = (props) => {
@@ -17,9 +18,9 @@ const AdminProductToolbar = (props) => {
 
 	return (
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
-      <PrimaryButton fullWidth onClick={handleAddQuestions} icon="Plus">
+      <Button onClick={handleAddQuestions} icon="Plus">
         Add Questions
-      </PrimaryButton>
+      </Button>
 		</ResourceToolbarModal>
 	)
 }

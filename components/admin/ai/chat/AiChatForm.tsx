@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { TextAreaInput } from '../../../../components'
+import { TextArea } from '../../../../components'
 import { Button } from "../../../../shadcn/ui/button"
 import { ScrollArea } from "../../../../shadcn/ui/scroll-area"
 
@@ -23,6 +23,7 @@ const AiChatForm: React.FC<AiChatFormProps> = ({
   input,
   handleInputChange,
 }) => {
+
   useEffect(() => {
     if (open) {
       setMessages([
@@ -36,29 +37,28 @@ const AiChatForm: React.FC<AiChatFormProps> = ({
   }, [open, prompt, setMessages])
 
   return (
-    <div className="flex flex-col space-y-4">
-      <TextAreaInput
+    <div className="flex p-2 flex-col space-y-4">
+      <TextArea
         label="Write a sentence about ..."
         name="prompt"
         placeholder="Enter text..."
         value={input}
         handleChange={handleInputChange}
       />
-      <ScrollArea className="h-[300px] w-full rounded-md border">
-        <div className="p-4">
-          {messages
-            .filter((message) => message.role === 'assistant')
-            .map((message, i) => (
-              <Button
-                key={i}
-                variant="outline"
-                className="w-full justify-start mb-2 p-4 text-left whitespace-pre-line hover:border-primary"
-                onClick={() => handleClick(message.content)}
-              >
-                {message.content}
-              </Button>
-            ))}
-        </div>
+      <ScrollArea className="max-h-[calc(100vh-120px)] w-full">
+        <ul className="flex flex-col space-y-2">
+        {messages
+          .filter((message) => message.role === 'assistant')
+          .map((message, i) => (
+            <li
+              key={i}
+              className="cursor-pointer border border-border hover:border-primary rounded-lg p-2 text-sm w-full justify-start mb-2 text-left whitespace-pre-line"
+              onClick={() => handleClick(message.content)}
+            >
+              {message.content}
+            </li>
+          ))}
+        </ul>
       </ScrollArea>
     </div>
   )

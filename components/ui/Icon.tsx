@@ -11,7 +11,7 @@ type LucideIconProps = {
 
 const LucideIcon: React.FC<LucideIconProps> = ({
 	name,
-	color = 'text-foreground',
+	color,
 	className,
 	size = 20,
 }) => {
@@ -21,7 +21,7 @@ const LucideIcon: React.FC<LucideIconProps> = ({
 
 	return (
 		//@ts-ignore
-		<Icon className={cn('w-5 h-5', color, className)} size={size} />
+		<Icon className={cn('w-5 h-5 text-foreground', color, className)} size={size} />
 	)
 }
 

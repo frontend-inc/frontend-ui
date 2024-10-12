@@ -7,7 +7,7 @@ import {
 	DateInput,
 	RatingInput,
 	TextInput,
-  TextAreaInput,
+  TextArea,
 	StateInput,
 	CountryInput,
 	ShopifyProductsInput,
@@ -17,6 +17,7 @@ import ProductsInput from './products/ProductsInput'
 import InputWrapper from './inputs/InputWrapper'
 import { MediaInput, AiChatModal } from '../../../components'
 import { ProductType } from '../../../types'
+import { Tooltip } from '@/shadcn/ui/tooltip'
 
 type DocumentInputProps = {
 	errors?: any
@@ -60,7 +61,7 @@ const AdminDocumentInput: React.FC<DocumentInputProps> = (props) => {
 		state: StateInput,
 		string: TextInput,
 		url: TextInput,
-		text: TextAreaInput,
+		text: TextArea,
 		location: LocationInput,
 		number: TextInput,
 		price: TextInput,
@@ -150,20 +151,21 @@ const AdminDocumentInput: React.FC<DocumentInputProps> = (props) => {
 	}[variant]
 
 	return (
-		<InputWrapper title={label} label={variant}>
-			<div className='flex flex-row justify-between align-start space-x-2'>
+			<div className='flex flex-row justify-between items-start space-x-2'>
 				<Component
+          label={ label }
 					errors={errors}
 					name={name}
 					value={value}
 					handleChange={handleChange}
 					{...inputProps}
-				/>
-				{['string', 'text'].includes(variant) && name !== 'handle' && (
-					<AiChatModal name={name} value={value} handleChange={handleChange} />
+				/>        
+				{variant == 'text' && (
+          <div className="mt-6">            
+					  <AiChatModal name={name} value={value} handleChange={handleChange} />
+          </div>
 				)}
 			</div>
-		</InputWrapper>
 	)
 }
 

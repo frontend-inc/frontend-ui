@@ -15,12 +15,16 @@ const CellImage: React.FC<CellImageProps> = (props) => {
 	let src = cloudinaryImageFromVideoUrl(value?.url)
 	return (		
     <div className='max-h-[64px] max-w-[64px]'>
-      <Image				
-        src={src}
-        aspectRatio={4/3}
-        alt={'Image'}
-        handleClick={ handleClick }
-      />		
+      <button 
+        className='w-full h-full rounded-lg focus:outline-none focus:ring-2'
+        onClick={ handleClick }
+      >
+        <Image				
+          src={src}
+          aspectRatio={1.0}
+          alt={'Image'}        
+        />		
+      </button>
     </div>
 	)
 }

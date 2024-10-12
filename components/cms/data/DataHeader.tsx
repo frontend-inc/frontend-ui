@@ -98,7 +98,7 @@ const DataHeader: React.FC<DataHeaderProps> = (props) => {
         {(enableCreate || secondaryAction) && (
           <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-1">
             <Button
-              className="w-full sm:w-auto"
+              className="sm:w-auto"
               color="primary"
               variant="contained"
               onClick={handleAdd}

@@ -23,7 +23,7 @@ export default function AdminFormDetails(props: AdminFormProps) {
 
   return (
     <Card className="p-4">
-      <div className="flex flex-row justify-between items-center w-full">
+      <div className="flex flex-row justify-between items-start w-full">
         <div className="flex flex-row space-x-4">
           <div className="w-24 h-24">
             <Image
@@ -31,6 +31,7 @@ export default function AdminFormDetails(props: AdminFormProps) {
               alt={form?.title}
               width={96}
               height={96}
+              aspectRatio={1.0}
             />
           </div>
           <div className="flex flex-col space-y-1">

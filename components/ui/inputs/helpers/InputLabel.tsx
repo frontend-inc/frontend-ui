@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconButton, Tooltip, Typography } from '../../../../tailwind'
+import { IconButton, Tooltip } from '../../../../tailwind'
 import { Icon } from '../../../../components'
 
 type InputLabelProps = {
@@ -7,15 +7,15 @@ type InputLabelProps = {
 	info?: string
 }
 
-const InfoLabel: React.FC<InputLabelProps> = (props) => {
+const InputLabel: React.FC<InputLabelProps> = (props) => {
 	const { label, info } = props
 
 	return (
 		<div className="min-w-[100px] flex flex-row gap-2">
 			{label && (
-				<Typography variant="caption" color="text.secondary">
+				<label className="text-sm text-bold text-foreground">
 					{label}
-				</Typography>
+				</label>
 			)}
 			{info && (
 				<Tooltip title={info}>
@@ -28,4 +28,4 @@ const InfoLabel: React.FC<InputLabelProps> = (props) => {
 	)
 }
 
-export default InfoLabel
+export default InputLabel

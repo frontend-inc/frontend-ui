@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from "@/shadcn/ui/button"
-import { Drawer, AuthGuard, IconLoading, RatingInput, TextAreaInput, TextInput } from '../..'
+import { Drawer, AuthGuard, IconLoading, RatingInput, TextArea, TextInput } from '../..'
 import { useResourceContext } from 'frontend-js'
 
 type ProductReviewFormProps = {
@@ -70,7 +70,7 @@ const ProductReviewForm: React.FC<ProductReviewFormProps> = () => {
               handleChange={handleChange}
               placeholder="Review summary..."
             />
-            <TextAreaInput
+            <TextArea
               errors={errors}
               name="body"
               value={resource?.body}

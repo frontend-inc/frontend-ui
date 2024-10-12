@@ -16,10 +16,10 @@ const QuestionIcon: React.FC<QuestionIconProps> = ({ variant, size = 40 }) => {
   return (
     <div
       className={cn(
+        question.color,
         "flex items-center justify-center rounded",
       )}
-      style={{ 
-        backgroundColor: question.color,
+      style={{         
         minWidth: `${size}px`, 
         minHeight: `${size}px`,
         width: `${size}px`,

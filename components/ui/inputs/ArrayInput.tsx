@@ -66,7 +66,7 @@ export default function ArrayInput({
   }
 
   return (
-    <div className={cn("flex w-full", direction === 'row' ? "flex-row items-center" : "flex-col")}>
+    <div className={cn("flex w-full space-y-2", direction === 'row' ? "flex-row items-center" : "flex-col")}>
       <InputLabel label={label} info={info} />
       <div className="relative w-full">
         <div className={cn(

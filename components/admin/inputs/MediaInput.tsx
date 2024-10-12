@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { Button } from "@/shadcn/ui/button"
-import { Card, CardContent } from "@/shadcn/ui/card"
+import { Image, InputLabel } from '../../../components'
 import MediaBrowser from './MediaBrowser'
-import { Search } from "lucide-react"
+import { Search, X } from "lucide-react"
 import { ImageType } from '../../../types'
+import { cn } from '../../../shadcn/lib/utils'
 
 type MediaInputProps = {
   name: string
+  label?: string
   value: ImageType
   objectFit?: 'cover' | 'contain'
   handleAddAttachment: (field: string, id: number) => void
@@ -15,6 +17,7 @@ type MediaInputProps = {
 
 const MediaInput: React.FC<MediaInputProps> = ({
   name,
+  label='Media',
   value,
   objectFit = 'cover',
   handleAddAttachment,
@@ -39,25 +42,43 @@ const MediaInput: React.FC<MediaInputProps> = ({
   }
 
   return (
-    <Card className="w-full">
-      <CardContent className="p-4 space-y-4">
-        <div className="flex flex-row gap-2">
+    <div> 
+      <div className="flex flex-col space-y-2">
+        <InputLabel label={ label } />
+          <div className="w-[140px] h-[140px]">
+          <Image 
+            alt={label}
+            src={ value?.url }
+            aspectRatio={1.0}
+            objectFit={ objectFit }
+          />
+        </div>
+        <div className="flex flex-row">
           <Button
             variant="secondary"
             onClick={handleAddClick}
-            className="flex items-center"
+            className={cn(
+              "flex items-center rounded-lg rounded-r-none",
+            )}
           >
             <Search className="mr-2 h-4 w-4" />
             Browse
           </Button>
+          <Button
+            variant="secondary"
+            onClick={handleRemove}
+            className="px-2 rounded-lg rounded-l-none"
+          >          
+            <X className="w-5 h-5 text-foreground" />
+          </Button>
         </div>
-        <MediaBrowser
-          open={openEdit}
-          handleClose={() => setOpenEdit(false)}
-          handleSubmit={handleSubmit}
-        />
-      </CardContent>
-    </Card>
+      </div>
+      <MediaBrowser
+        open={openEdit}
+        handleClose={() => setOpenEdit(false)}
+        handleSubmit={handleSubmit}
+      />
+    </div>
   )
 }
 

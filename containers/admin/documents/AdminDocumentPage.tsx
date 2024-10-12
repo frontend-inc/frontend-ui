@@ -196,14 +196,14 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 					enableExpandRightPanel
 					title={title}
 					primaryActions={
-						<IconButton onClick={handleBackClick}>
-							<ChevronLeft />
+						<IconButton className="mr-2" onClick={handleBackClick}>
+							<ChevronLeft className="text-foreground" />
 						</IconButton>
 					}
 					buttons={<PublishLabel published={document?.published} />}
 				/>
 				<ScrollArea>
-					<div className='p-2'>
+					<div className='p-4'>
 						<AdminDocumentForm
 							errors={errors}
 							document={document}

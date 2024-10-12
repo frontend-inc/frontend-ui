@@ -14,10 +14,10 @@ const FieldIcon: React.FC<FieldIconProps> = ({ variant, size = 36 }) => {
   return (
     <div
       className={cn(
+        field?.color,
         "p-[5px] mr-1 rounded-lg flex items-center justify-center",
       )}
-      style={{ 
-        backgroundColor: field?.color, 
+      style={{         
         width: `${size}px`, 
         height: `${size}px` 
       }}

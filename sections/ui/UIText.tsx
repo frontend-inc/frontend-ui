@@ -1,6 +1,6 @@
 import React from 'react'
 import { Section } from '../../components'
-import { Text } from '../../components'
+import { Typography } from '../../tailwind'
 import { TextProps } from '../../components/ui/typography/Text'
 import { SectionProps, HeadingProps } from '../../types'
 
@@ -20,7 +20,7 @@ const UIText: React.FC<UITextProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Text {...rest} />
+			<Typography variant="body1" {...rest} />
 		</Section>
 	)
 }

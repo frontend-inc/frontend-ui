@@ -25,7 +25,7 @@ import {
 	SwitchInput,
 	TabsInput,
 	TextInput,
-  TextAreaInput,
+  TextArea,
 	URLInput,
 } from './index'
 import { OptionType } from 'frontend-js'
@@ -97,7 +97,7 @@ const Input: React.FC<InputProps> = (props) => {
 		switch: SwitchInput,
 		ratings: RatingInput,
 		tabs: TabsInput,
-		text: TextAreaInput,
+		text: TextArea,
 		url: URLInput,
 	}
 
