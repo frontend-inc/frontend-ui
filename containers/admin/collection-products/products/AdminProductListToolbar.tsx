@@ -7,16 +7,14 @@ import { useProductCollections } from '../../../../hooks'
 import { Plus } from "lucide-react"
 
 interface AdminProductToolbarProps {
-  productCollectionId?: string
-  url?: string
+  productCollectionId?: number
   handleSuccess: () => void
   handleClose: () => void
-  selectedIds?: string[]
+  selectedIds?: number[]
 }
 
 export default function AdminProductToolbar({
   productCollectionId,
-  url,
   handleSuccess,
   handleClose,
   selectedIds = []
@@ -33,16 +31,16 @@ export default function AdminProductToolbar({
 
   return (
     <div className="sticky top-0 z-10 pb-2 shadow-md bg-background">
-    <Collapsible open={selectedIds.length > 0}>
-      <CollapsibleContent className="space-y-2">
-        <div className="flex space-x-2">
-          <Button className="w-full" onClick={handleAddProducts}>
-            <Plus className="mr-2 h-4 w-4" />
-            Add
-          </Button>
-        </div>
-      </CollapsibleContent>
-    </Collapsible>
+      <Collapsible open={selectedIds.length > 0}>
+        <CollapsibleContent className="space-y-2">
+          <div className="flex space-x-2">
+            <Button className="w-full" onClick={handleAddProducts}>
+              <Plus className="mr-2 h-4 w-4" />
+              Add
+            </Button>
+          </div>
+        </CollapsibleContent>
+      </Collapsible>
     </div>
   )
 }

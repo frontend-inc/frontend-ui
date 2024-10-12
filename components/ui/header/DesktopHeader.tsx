@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconButton, Box, Hidden } from '../../../tailwind'
+import { IconButton } from '../../../tailwind'
 import { ButtonActions, AuthButton, Icon } from '../..'
 import Logo from './Logo'
 import { CartButton } from '../..'
