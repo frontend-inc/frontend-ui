@@ -15,8 +15,8 @@ export default function ResourceToolbarModal({ open, handleClose, children }: Re
   return (
     <div
       className={cn(
-        "fixed bg-secondary top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out transform -translate-y-full",        
-        open && "translate-y-0"
+        "fixed bg-secondary top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out transform -translate-y-[76px]",        
+        open && "-translate-y-[10px]"
       )}
     >
       <div className="text-secondary-foreground shadow-md">

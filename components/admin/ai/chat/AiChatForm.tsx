@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
-import { TextArea } from '../../../../components'
-import { Button } from "../../../../shadcn/ui/button"
+import { Drawer, TextArea } from '../../../../components'
 import { ScrollArea } from "../../../../shadcn/ui/scroll-area"
 
 type AiChatFormProps = {

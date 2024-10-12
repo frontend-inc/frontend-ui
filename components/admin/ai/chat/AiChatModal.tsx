@@ -60,6 +60,7 @@ const AiChatModal: React.FC<AiChatModalProps> = (props) => {
         </Tooltip>
       </TooltipProvider>
       <Drawer   
+        mode='dark'
         title={label}
         open={open}
         handleClose={() => setOpen(false)}
@@ -69,7 +70,7 @@ const AiChatModal: React.FC<AiChatModalProps> = (props) => {
             onClick={handleChatSubmit}
             loading={loading}
             startIcon={ 
-              <Icon name="Sparkles" className='text-primary-foreground' />
+              <Icon name="Zap" className='text-primary-foreground' />
             }
           >                      
             Generate 

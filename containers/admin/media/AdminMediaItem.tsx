@@ -17,9 +17,13 @@ const AdminMediaItem: React.FC<AdminMediaItemProps> = (props) => {
 			enableBorder
 			sortable={sortable}
 			//@ts-ignore
-			image={resource?.url}
-			primary={resource?.content_type}
-			secondaryAction={<Label label={resource?.dimensions} />}
+			image={resource?.url}			
+			secondaryAction={
+        <Label 
+          variant="secondary"
+          label={resource?.content_type} 
+        />
+      }
 			handleClick={handleClick}
 			handleDelete={handleDelete}
 			slots={{

@@ -3,15 +3,16 @@ import { Badge } from '../../shadcn/ui/badge'
 
 type LabelProps = {
 	label?: string
+  variant?: 'default' | 'secondary' | 'destructive' | 'outline'
   className?: string	
 }
 
 const Label: React.FC<LabelProps> = (props) => {
-	const { label, className } = props
+	const { label, variant, className } = props
 
 	if (!label) return null
 	return (
-    <Badge className={ className }>
+    <Badge variant={variant} className={ className }>
       { label }
     </Badge>
 	)

@@ -32,6 +32,9 @@ export type ResourceGridItemProps = {
   sortable?: boolean
   isDragging?: boolean
   enableBorder?: boolean
+  slots?: {
+    image?: any 
+  }
 }
 
 export default function ResourceGridItem({
@@ -49,6 +52,7 @@ export default function ResourceGridItem({
   secondaryAction,
   menuActions,
   enableBorder = false,
+  slots = {}
 }: ResourceGridItemProps) {
   return (
     <Card className={cn(
@@ -99,6 +103,7 @@ export default function ResourceGridItem({
             width={320}
             height={160}
             className="object-cover w-full h-full"
+            { ...slots.image }
           />
         )}
       </div>

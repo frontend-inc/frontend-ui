@@ -35,11 +35,11 @@ const MediaItem: React.FC<MediaItemProps> = ({ item, size = 180, selected, handl
 
   return (
     <Card className={cn(
-      "rounded-md bg-background p-0 min-w-[120px] h-[200px] border border-transparent",
+      "rounded-md bg-background p-0 min-w-[120px] h-[208px] border border-transparent",
       selected && "border-primary"
     )}>
-      <CardHeader className="py-0 px-1 flex flex-row justify-between items-center">
-        <Label label={item?.content_type?.split('/')[1]} />
+      <CardHeader className="py-1 px-1 flex flex-row justify-between items-center">
+        <Label variant='outline' label={item?.content_type?.split('/')[1]} />
         {handleRemove && (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -61,6 +61,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ item, size = 180, selected, handl
         >
           <div className="h-[180px] w-[208px] flex items-center justify-center overflow-hidden">
             <Image
+              disableBorderRadius              
               aspectRatio={4/3}
               src={item?.url}
               alt={item?.content_type}              

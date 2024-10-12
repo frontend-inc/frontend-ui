@@ -55,14 +55,13 @@ export default function ResourceListItem({
   return (
     <div
       className={cn(
-        "p-1 rounded-lg overflow-hidden bg-background hover:bg-accent",
+        "p-1 rounded-lg overflow-hidden hover:bg-accent",
         "border border-transparent",
         enableBorder && "border-border hover:shadow-md mb-1 transition-shadow duration-200",
         selected && "border-primary",
-        isDragging && "shadow-md"
       )}
     >
-      <div className="flex items-center p-1 rounded space-x-4">
+      <div className="rounded-lg flex items-center p-1 space-x-4">
         {sortable && (
           <GripVertical className="w-5 h-5 text-muted-foreground cursor-grab active:cursor-grabbing" />
         )}

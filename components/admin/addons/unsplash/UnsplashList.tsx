@@ -63,7 +63,7 @@ const UnsplashList: React.FC<UnsplashProps> = ({ onComplete }) => {
         />
         <PoweredByUnsplash />
       </div>
-      <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <div className="mt-4 grid grid-cols-2 gap-4">
         {images?.map((image, i) => (
           <UnsplashCard key={i} image={image} handleClick={handleImageClick} />
         ))}
@@ -72,15 +72,15 @@ const UnsplashList: React.FC<UnsplashProps> = ({ onComplete }) => {
         <div className="mt-4 flex justify-center">
           <Button
             variant="outline"
-            className="my-2"
+            className="my-2 text-foreground"
             onClick={handleLoadMore}
           >
             Load More
-            <ChevronDown className="ml-2 h-4 w-4" />
+            <ChevronDown className="ml-2 h-4 w-4 text-foreground" />
           </Button>
         </div>
       )}
-      <UnsplashModal
+      <UnsplashModal        
         loading={loading}
         open={showModal}
         image={image}

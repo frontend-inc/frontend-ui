@@ -23,7 +23,7 @@ const TouchableOpacity: React.FC<TouchableOpacityProps> = (props) => {
 		<button 
       onMouseDown={onMouseDown} 
       onMouseUp={onMouseUp} 
-      className="focus:outline-none"
+      className="focus:outline-none focus:ring-2 rounded-lg"
     >
       { children }
     </button>
