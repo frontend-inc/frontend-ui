@@ -14,7 +14,6 @@ const AuthSignup: React.FC<AuthSignupProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		requirePaid,
 		...rest
 	} = props

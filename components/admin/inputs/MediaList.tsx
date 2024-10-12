@@ -41,12 +41,11 @@ const MediaList: React.FC<MediaListProps> = ({ selectedIds, handleSelect }) => {
 
   return (
     <div className="flex flex-col space-y-4 w-full">
-      <div className="mt-2 grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-2">
+      <div className="mt-2 grid grid-cols-2 gap-4">
         {resources.map((item) => (
           <MediaListItem
             key={item?.id}
             item={item}
-            size={164}
             selected={selectedIds.includes(item?.id)}
             handleClick={() => handleSelect(item)}
             handleRemove={() => handleRemove(item)}

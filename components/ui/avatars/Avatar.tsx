@@ -37,7 +37,7 @@ export default function UserAvatar({
         alt="Avatar" 
         className="object-cover" 
       />
-      <AvatarFallback className={cn(avatarClasses, 'bg-primary')}>
+      <AvatarFallback className={cn(avatarClasses, 'bg-primary text-primary-foreground')}>
         {label ? label.slice(0, 2) : null}
       </AvatarFallback>
     </Avatar>

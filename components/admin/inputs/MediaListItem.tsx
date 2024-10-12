@@ -20,13 +20,12 @@ import { cn } from "../../../shadcn/lib/utils"
 
 type MediaItemProps = {
   item?: any
-  size?: number
   selected?: boolean
   handleClick?: (item: any) => void
   handleRemove?: () => void
 }
 
-const MediaItem: React.FC<MediaItemProps> = ({ item, size = 180, selected, handleClick, handleRemove }) => {
+const MediaItem: React.FC<MediaItemProps> = ({ item, selected, handleClick, handleRemove }) => {
   const [contentType, setContentType] = useState('')
 
   useEffect(() => {
@@ -59,7 +58,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ item, size = 180, selected, handl
         <TouchableOpacity
           handleClick={() => handleClick && handleClick(item)}
         >
-          <div className="h-[180px] w-[208px] flex items-center justify-center overflow-hidden">
+          <div className="h-[160px] w-[180px] flex items-center justify-center overflow-hidden">
             <Image
               disableBorderRadius              
               aspectRatio={4/3}
@@ -69,7 +68,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ item, size = 180, selected, handl
           </div>
         </TouchableOpacity>
       ) : (
-        <AttachmentImage icon="File" width={size} height={size} />
+        <AttachmentImage icon="File" width={64} height={64} />
       )}
     </Card>
   )
