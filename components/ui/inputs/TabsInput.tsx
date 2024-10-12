@@ -14,32 +14,19 @@ type TabsInputProps = {
     value: number
   }[]
   value: number
-  disablePadding?: boolean
-  disableBorder?: boolean
-  iconPosition?: 'start' | 'end' | 'top' | 'bottom'
   variant?: 'fullWidth' | 'scrollable'
-  size?: 'small' | 'large'
   direction?: 'row' | 'column'
   info?: string
-  debounceDelay?: number
-  disableDebounce?: boolean
 }
 
 export default function TabsInput({
   name,
   label,
-  disablePadding = false,
-  disableBorder = false,
   handleChange,
   options,
   value,
-  iconPosition = 'start',
-  variant = 'fullWidth',
-  size = 'large',
   direction = 'row',
   info,
-  debounceDelay,
-  disableDebounce,
 }: TabsInputProps) {
   const handleInputChange = (value: string) => {
     handleChange({
@@ -60,11 +47,7 @@ export default function TabsInput({
       <Tabs
         defaultValue={value.toString()}
         onValueChange={handleInputChange}
-        className={cn(
-          disablePadding ? "p-0" : "p-1",
-          disableBorder ? "border-0" : "border border-input",
-          "rounded-md"
-        )}
+        className="rounded-md"
       >
         <TabsList className={cn(
           "w-full",
@@ -75,16 +58,13 @@ export default function TabsInput({
               key={option.value}
               value={option.value.toString()}
               className={cn(
-                "flex items-center",
-                size === 'small' ? "text-sm" : "text-base",
-                iconPosition === 'start' || iconPosition === 'end' ? "flex-row" : "flex-col",
-                iconPosition === 'end' || iconPosition === 'bottom' ? "flex-row-reverse" : ""
+                "flex items-center text-sm",
               )}
             >
               {option.icon && (
                 <span className={cn(
                   "inline-block",
-                  iconPosition === 'start' || iconPosition === 'end' ? "mr-2" : "mb-1"
+                  icon && "mr-2"
                 )}>
                   {option.icon}
                 </span>

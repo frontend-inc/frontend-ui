@@ -38,7 +38,7 @@ export default function ButtonTabs({
                   tab.label && 'mr-2',
                 )} /> 
               )}
-              { tab.label && tab.label }
+              <span className='text-sm'>{ tab?.label }</span>
             </TabsTrigger>
           )
         })}

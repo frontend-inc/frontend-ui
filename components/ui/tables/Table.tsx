@@ -123,6 +123,11 @@ const Table: React.FC<TableProps> = (props) => {
 						handlePublish={handlePublish}
 						handleUnpublish={handleUnpublish}
 						secondaryActions={secondaryActions}
+
+            fields={headers}
+            handleSearch={handleSearch}
+            handleChange={handleQueryChange}
+            handleClearFilters={handleClearQuery}    
 					/>
 				}
 				headers={headers}

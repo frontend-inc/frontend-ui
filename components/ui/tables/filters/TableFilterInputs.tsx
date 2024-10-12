@@ -12,20 +12,19 @@ const FilterInputs: React.FC<FilterInputProps> = (props) => {
 	const { filters, fieldOptions, handleChange, handleRemove } = props
 
 	return (
-		<>
+		<div>
 			{Array.isArray(filters) &&
 				filters?.map((filter, index) => (
-					<div key={index}>
-						<TableFilterInput
-							index={index}
-							filter={filter}
-							fieldOptions={fieldOptions}
-							handleChange={handleChange}
-							handleRemove={handleRemove}
-						/>
-					</div>
-				))}
-		</>
+          <TableFilterInput
+            key={index}
+            index={index}
+            filter={filter}
+            fieldOptions={fieldOptions}
+            handleChange={handleChange}
+            handleRemove={handleRemove}
+          />
+      ))}
+		</div>
 	)
 }
 

@@ -11,7 +11,9 @@ import {
   FILTER_OPERATORS,
 } from '../../../../constants/index'
 import { X } from 'lucide-react'
-import { TextInput, Autosuggest, ArrayInput } from '../../../../components'
+import { TextInput, SelectInput, Autosuggest, ArrayInput, TabsInput } from '../../../../components'
+import { Separator } from '../../../../shadcn/ui/separator'
+import { IconButton } from '../../../../tailwind'
 import {
   OptionType,
   FilterOptionType,
@@ -45,54 +47,40 @@ const FilterFieldWrapper: React.FC<FilterFieldProps> = ({
     operatorOptions = FILTER_OPERATORS[field?.db_type || 'integer']
   }
 
-  return (
-    <div className="grid grid-cols-[0.5fr_1fr_1fr_1fr_0.5fr] gap-0 border-t border-dotted border-gray-300 mt-4 pt-4">
-      <div className="col-span-1 min-w-[100px] mb-1">
-        <span className="text-sm font-medium text-gray-500 lowercase">
-          where
-        </span>
-      </div>
-      <div className="col-span-1 min-w-[100px] mr-1">
-        <Autosuggest
+  return (    
+    <>
+    <Separator />
+    <div className="flex flex-row justify-start items-start">
+      <div>
+        <TabsInput
+          direction='column'
           name="where"
           options={WHERE_OPTIONS}
           placeholder="where"
           value={filter?.where || 'AND'}
           handleChange={(ev) => handleChange(ev, index)}
         />
-      </div>
-      <div className="col-span-1 min-w-[100px] mr-1">
-        <Autosuggest
-          name="field"
-          options={fieldOptions}
-          placeholder="field"
-          value={filter?.field || ''}
-          handleChange={(ev) => handleChange(ev, index)}
-        />
-      </div>
-      {filter?.field && (
-        <div className="col-span-1 min-w-[100px]">
-          <Autosuggest
-            name="operator"
-            placeholder="…"
-            options={operatorOptions}
-            value={filter?.operator || ''}
-            handleChange={(ev) => handleChange(ev, index)}
-          />
-        </div>
-      )}
-      <div>
-        <button
-          className="p-1 text-gray-500 hover:text-gray-700 transition-colors duration-200"
-          onClick={() => handleRemove(index)}
-        >
-          <X className="w-5 h-5" />
-        </button>
-      </div>
-      <div className="col-span-1" />
-      <div className="col-span-3 w-full my-1">
+        <div className="flex flex-col space-y-2">
+          <div className="flex flex-row space-x-2">
+            <SelectInput
+              name="field"
+              options={fieldOptions}
+              placeholder="field"
+              value={filter?.field || ''}
+              handleChange={(ev) => handleChange(ev, index)}
+            />
+            {filter?.field && (
+              <SelectInput
+                name="operator"
+                placeholder="…"
+                options={operatorOptions}
+                value={filter?.operator || ''}
+                handleChange={(ev) => handleChange(ev, index)}
+              />
+              )}
+          </div>
         {BOOLEAN_FIELDS.includes(field?.db_type) && (
-          <Autosuggest
+          <SelectInput
             name="value"
             placeholder="true or false"
             options={BOOLEAN_OPTIONS}
@@ -104,7 +92,7 @@ const FilterFieldWrapper: React.FC<FilterFieldProps> = ({
         {DATE_FIELDS.includes(field?.variant) && (
           <>
             {['gte', 'lte'].includes(filter?.operator) ? (
-              <Autosuggest
+              <SelectInput
                 name="value"
                 placeholder="date since"
                 options={DATE_RANGE_OPTIONS}
@@ -165,8 +153,17 @@ const FilterFieldWrapper: React.FC<FilterFieldProps> = ({
             handleChange={(ev) => handleChange(ev, index)}
           />
         )}
+        </div>    
+      </div>
+      <div className='mt-1 pr-2'>
+      <IconButton           
+        onClick={() => handleRemove(index)}
+      >
+        <X className="w-5 h-5 text-foreground" />
+      </IconButton>        
       </div>
     </div>
+   </>                 
   )
 }
 

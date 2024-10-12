@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react'
 import { Plus, Search, FilterIcon, Loader } from 'lucide-react'
 import { FILTERABLE_TYPES, SORTABLE_TYPES } from '../../../../constants/index'
 import { OptionType } from '../../../../types'
+import { Button } from '../../../../shadcn/ui/button'
+import { Badge } from '../../../../shadcn/ui/badge'
 
 // Updated import paths
 import { TableFilterInputs } from '../../../../components'
@@ -112,16 +114,13 @@ export default function TableFilterForm({
   }, [query])
 
   return (
-    <div className="space-y-4">
-      <div className="w-full">
+    <div className="space-y-2">
         <TableFilterKeywordsInput
           label="keywords"
           value={query?.keywords}
           handleChange={handleChange}
           handleSearch={handleFilterSearch}
         />
-      </div>
-      <div className="w-full">
         <TableFilterSortInput
           label="sort by"
           fieldOptions={sortOptions}
@@ -129,23 +128,20 @@ export default function TableFilterForm({
           sortBy={query?.sort_by}
           sortDirection={query?.sort_direction}
         />
-      </div>
-      <TableFilterInputs
-        filters={activeFilters}
-        fieldOptions={filterOptions}
-        handleChange={handleFilterChange}
-        handleRemove={handleRemoveFilter}
-      />
-      <div className="flex items-center">
-        <div className="flex-grow"></div>
-        <button
-          className="px-4 py-2 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/90 transition-colors duration-200 flex items-center space-x-2"
+        <TableFilterInputs
+          filters={activeFilters}
+          fieldOptions={filterOptions}
+          handleChange={handleFilterChange}
+          handleRemove={handleRemoveFilter}
+        />
+        <Button
+          variant="secondary"
+          className='text-foreground'
           onClick={handleAddFilter}
         >
-          <Plus className="w-4 h-4" />
+          <Plus className="w-4 h-4 text-foreground" />
           <span>Filter</span>
-        </button>
-      </div>
+        </Button>
       <button
         className="w-full px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors duration-200 flex items-center justify-center space-x-2"
         onClick={handleFilterSearch}

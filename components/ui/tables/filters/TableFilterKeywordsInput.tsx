@@ -1,5 +1,6 @@
 import React from 'react'
 import { SearchInput } from '../../..'
+import { Typography } from '../../../../tailwind'
 
 type FilterKeywordProps = {
   label?: string
@@ -15,23 +16,14 @@ const FilterKeywordsInput: React.FC<FilterKeywordProps> = ({
   handleSearch
 }) => {
   return (
-    <div className="flex flex-row items-center justify-start py-2 px-0">
-      {label && (
-        <div className="min-w-[100px]">
-          <span className="text-sm font-medium text-gray-500">
-            {label}
-          </span>
-        </div>
-      )}
-      <div className="w-full mr-8 flex flex-row items-center justify-start">
-        <SearchInput
-          name={label}
-          value={value}
-          placeholder="Keywords"
-          handleChange={handleChange}
-          handleSearch={handleSearch}
-        />
-      </div>
+    <div className="flex flex-col space-y-2">
+      <SearchInput
+        name={label}
+        value={value}
+        placeholder="Keywords"
+        handleChange={handleChange}
+        handleSearch={handleSearch}
+      />
     </div>
   )
 }
