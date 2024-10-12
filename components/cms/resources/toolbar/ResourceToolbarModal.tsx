@@ -27,10 +27,10 @@ export default function ResourceToolbarModal({ open, handleClose, children }: Re
             <Button
               variant="ghost"
               size="icon"
-              className="w-10 h-10"
+              className="w-8 h-8 hover:bg-gray-100"
               onClick={handleClose}
             >
-              <X className="h-5 w-5" />
+              <X className="h-5 w-5 text-secondary-foreground" />
             </Button>
           </div>
         </div>

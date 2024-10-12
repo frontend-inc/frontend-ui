@@ -43,7 +43,7 @@ const AdminAnswerEdit: React.FC<ResourceFormProps> = (props) => {
 
 	return (
 		<Drawer
-      mode='dark'
+      mode="editor"
 			open={open}
 			handleClose={handleClose}
 			title={title ? title : resource?.id ? 'Edit' : 'Add'}

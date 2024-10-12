@@ -1,7 +1,6 @@
 import React from 'react'
 import { DisplayField } from '../..'
 import { DisplayFieldType } from '../../../types'
-import { Stack } from '../../../tailwind'
 
 type DisplayFieldsProps = {
 	fields: DisplayFieldType[]
@@ -15,11 +14,7 @@ const DisplayFields: React.FC<DisplayFieldsProps> = (props) => {
 	const { fields, resource, alignItems = 'flex-start' } = props || {}
 
 	return (
-		<Stack
-			direction={'column'}
-			spacing={1}
-			alignItems={alignItems}
-		>
+		<div className="flex flex-row space-x-2">	
 			{fields?.map((field, index) => (
 				<DisplayField
 					key={index}
@@ -28,7 +23,7 @@ const DisplayFields: React.FC<DisplayFieldsProps> = (props) => {
 					alignItems={alignItems}
 				/>
 			))}
-		</Stack>
+		</div>
 	)
 }
 

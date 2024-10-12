@@ -27,9 +27,7 @@ export default function SidebarMenuHeader({
     )}>
       <Button       
         variant="ghost" 
-        className={cn(
-          "py-6 w-full justify-between px-3",          
-        )}
+        className="py-6 w-full justify-between px-3"
         onClick={() => setOpen(!open)}
       >
         <Typography variant="body2">{label}</Typography>

@@ -26,7 +26,7 @@ const AdminViewEdit: React.FC<AdminViewEditProps> = (props) => {
 
 	return (
 		<Drawer
-      mode="dark"
+      mode="editor"
 			loading={loading}
 			open={open}
 			handleClose={handleClose}

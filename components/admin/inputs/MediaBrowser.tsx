@@ -64,7 +64,7 @@ const MediaBrowser: React.FC<MediaBrowserProps> = ({ open, handleClose, handleSu
 
   return (
     <Modal
-      mode="dark"
+      mode="editor"
       maxWidth="md"
       disablePadding
       open={open}

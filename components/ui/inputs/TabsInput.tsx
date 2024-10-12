@@ -14,8 +14,6 @@ type TabsInputProps = {
     value: number
   }[]
   value: number
-  variant?: 'fullWidth' | 'scrollable'
-  direction?: 'row' | 'column'
   info?: string
 }
 
@@ -25,7 +23,6 @@ export default function TabsInput({
   handleChange,
   options,
   value,
-  direction = 'row',
   info,
 }: TabsInputProps) {
   const handleInputChange = (value: string) => {
@@ -40,7 +37,7 @@ export default function TabsInput({
   return (
     <div className={cn(
       "flex",
-      direction === 'row' ? "flex-row items-center" : "flex-col",
+      "flex-row items-center",
       "justify-between w-full space-y-1"
     )}>
       <InputLabel label={label} info={info} />
@@ -51,7 +48,6 @@ export default function TabsInput({
       >
         <TabsList className={cn(
           "w-full",
-          size === 'small' ? "h-8" : "h-10"
         )}>
           {options.map((option) => (
             <TabsTrigger

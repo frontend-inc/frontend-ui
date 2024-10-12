@@ -69,7 +69,7 @@ const MediaInput: React.FC<MediaInputProps> = ({
             onClick={handleRemove}
             className="px-2 rounded-lg rounded-l-none"
           >          
-            <X className="w-5 h-5 text-foreground" />
+            <X className="w-5 h-5 text-secondary-foreground" />
           </Button>
         </div>
       </div>

@@ -19,7 +19,7 @@ const AdminMediaForm: React.FC<ResourceFormProps> = (props) => {
 
 	return (
 		<Drawer 
-      mode='dark' 
+      mode="editor" 
       open={open} 
       handleClose={handleClose} title="Upload an Asset">
 			<div className='mb-2'>

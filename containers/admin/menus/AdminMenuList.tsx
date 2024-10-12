@@ -39,7 +39,7 @@ const AdminMenuList = () => {
 				emptyDescription="No menus yet."
 			/>
 			<Drawer
-        mode="dark"
+        mode="editor"
 				open={open}
 				handleClose={() => setOpen(false)}
 				title={activeMenu?.label}

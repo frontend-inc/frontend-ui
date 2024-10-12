@@ -18,9 +18,9 @@ export default function AdminLayout({
   secondaryAction,
 }: AdminLayoutProps) {
   return (
-    <div className='dark blue w-full'>
+    <div className='editor w-full'>
       <div className={cn(
-        "blue w-screen overflow-x-hidden scrollbar-hide",
+        "w-screen overflow-x-hidden scrollbar-hide",
         "flex flex-row min-h-screen"
       )}>   
         <AdminLayoutTabs>

@@ -22,7 +22,7 @@ type ModalProps = {
 	children?: React.ReactNode
 	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 	secondaryActions?: React.ReactNode
-  mode?: 'dark' | 'light'	
+  mode?: string
 }
 
 const Modal: React.FC<ModalProps> = ({

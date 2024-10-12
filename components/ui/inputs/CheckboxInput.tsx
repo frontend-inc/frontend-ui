@@ -47,7 +47,8 @@ export default function CheckboxInput({
           <Checkbox
             id={name}
             checked={value}
-            onCheckedChange={handleCheckboxChange}
+            onCheckedChange={handleCheckboxChange}            
+            className='border-secondary'
           />
           <label
             htmlFor={name}

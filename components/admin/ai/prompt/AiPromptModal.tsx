@@ -29,7 +29,7 @@ const AiPromptModal: React.FC<AiPromptModalProps> = (props) => {
 				</IconButton>
 			</Tooltip>
 			<Drawer
-        mode='dark'
+        mode="editor"
 				title={label}
 				open={open}
 				handleClose={() => setOpen(false)}

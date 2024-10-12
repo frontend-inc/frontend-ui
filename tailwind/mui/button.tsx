@@ -53,7 +53,7 @@ const Button: React.FC<ButtonProps> = ({
       },
       secondary: {
         contained:
-          'bg-secondary text-secondary-foreground hover:bg-secondary/90',
+          'bg-secondary text-secondary-foreground hover:text-secondary-foreground hover:bg-secondary/90',
         outlined:
           'border border-secondary text-secondary hover:bg-secondary/10',
         text: 'text-primary hover:bg-secondary/10',

@@ -25,7 +25,7 @@ interface SidebarMenuItemProps {
 export default function SidebarMenuItem({ selected=false, title, color='bg-transparent', icon, secondaryActions, handleClick, handleEdit, handleDelete }: SidebarMenuItemProps) {
   return (
     <div className={cn(
-      "flex items-center justify-between py-2 pl-4 px-2 hover:bg-accent rounded-md group",
+      "flex items-center justify-between py-2 pl-4 px-2 hover:bg-white/10 rounded-md group",
       selected && "bg-accent text-accent-foreground",
     )}>
       <button onClick={ handleClick } className="w-full flex gap-2 items-center focus:outline-none">

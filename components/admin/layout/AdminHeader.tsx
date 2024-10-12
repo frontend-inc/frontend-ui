@@ -28,7 +28,7 @@ export default function AdminHeader({
 
   return (
     <div className={cn(
-      "dark w-full flex flex-row items-center h-[50px] min-h-[50px] px-2 bg-background",
+      "w-full flex flex-row items-center h-[50px] min-h-[50px] px-2 bg-background",
       !disableBorder && "border-b border-border"
     )}>
       <div className="grid grid-cols-3 gap-1 w-full">
@@ -36,7 +36,7 @@ export default function AdminHeader({
           {enableExpandLeftPanel && !openLayoutLeft && <ExpandLeftButton />}
           {primaryActions}
           {title && (
-            <Typography variant="body2" className="leading-none break-keep text-primary">
+            <Typography variant="body1" className="leading-none break-keep text-foreground">
               {title}
             </Typography>
           )}

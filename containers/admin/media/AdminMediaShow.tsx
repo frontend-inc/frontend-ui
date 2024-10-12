@@ -28,7 +28,7 @@ const AdminMediaShow: React.FC<AdminMediaShowProps> = (props) => {
 
 	return (
 		<Modal
-      mode="dark"
+      mode="editor"
 			open={open}
 			handleClose={handleClose}			
 			maxWidth="md"

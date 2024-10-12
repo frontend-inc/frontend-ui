@@ -28,7 +28,7 @@ const ImageModal: React.FC<ImageModalProps> = (props) => {
 
 	return (
 		<Modal
-      mode='dark'
+      mode="editor"
 			open={open}
 			handleClose={handleClose}
 			title={title}

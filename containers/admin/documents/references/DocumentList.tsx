@@ -77,7 +77,7 @@ const DocumentListDrawer: React.FC<DocumentListDrawerProps> = (props) => {
 
 	return (
 		<Drawer
-      mode="dark"
+      mode="editor"
 			open={open}
 			title={`Add ${field?.foreign_collection?.singular_name}`}
 			handleClose={handleClose}

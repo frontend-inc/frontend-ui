@@ -27,7 +27,7 @@ const TableFilterDrawer: React.FC<TableFilterDrawerProps> = (props) => {
 
 	return (
 		<Drawer 
-      mode='dark'
+      mode="editor"
       open={open} handleClose={handleClose} title="search">
 			<TableFilterForm
 				loading={loading}

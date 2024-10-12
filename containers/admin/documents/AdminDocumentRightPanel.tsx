@@ -36,7 +36,7 @@ const AdminDocumentRightPanel: React.FC<AdminDocumentRightPanelProps> = (
 	} = props
 
 	return (
-		<div className="dark bg-background h-full p-3 flex flex-col space-y-6">
+		<div className="bg-background h-full p-3 flex flex-col space-y-6">
       <div className="flex flex-col space-y-3">
         <Typography variant="caption" color="text.secondary">
           Publish

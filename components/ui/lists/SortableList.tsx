@@ -43,7 +43,7 @@ export default function SortableList({ items, droppableId = 'sortable-list', ren
       <Droppable droppableId={String(droppableId)}>
         {(provided) => (
           <div className="w-full" {...provided.droppableProps} ref={provided.innerRef}>
-            <ul className="w-full space-y-2 overflow-y-scroll scrollbar-hide">
+            <div className="flex flex-col space-y-2 w-full overflow-y-scroll scrollbar-hide">
               {sorted?.map((item, index) => (
                 <Draggable
                   key={item?.id || index}
@@ -51,13 +51,12 @@ export default function SortableList({ items, droppableId = 'sortable-list', ren
                   index={index}
                 >
                   {(provided, snapshot) => (
-                    <li
+                    <div
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                       className={cn(
-                        "transition-colors duration-200",
-                        snapshot.isDragging && "bg-secondary"
+                        "transition-colors duration-200",                        
                       )}
                     >
                       {renderItem(
@@ -68,11 +67,11 @@ export default function SortableList({ items, droppableId = 'sortable-list', ren
                         index,
                         { items, droppableId, renderItem, handleDrop }
                       )}
-                    </li>
+                    </div>
                   )}
                 </Draggable>
               ))}
-            </ul>
+            </div>
             {provided.placeholder}
           </div>
         )}

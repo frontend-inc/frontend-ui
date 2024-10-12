@@ -12,7 +12,7 @@ const AdminFormQuestionsAdd: React.FC<AdminFormQuestionsAddProps> = (props) => {
 	const { open, handleClose, handleReload, url, formId } = props || {}
 
 	return (
-		<Drawer  mode="dark" open={open} handleClose={handleClose} title="Add Questions">
+		<Drawer  mode="editor" open={open} handleClose={handleClose} title="Add Questions">
 			<AdminQuestionListItems
 				name={'form_question'}
 				url={url}

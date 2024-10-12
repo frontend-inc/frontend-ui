@@ -21,7 +21,7 @@ const AdminLayoutRight: React.FC<AdminLayoutRightProps> = (props) => {
 			</Hidden>
 			<Hidden smUp>
 				<Drawer
-          mode='dark'
+          mode="editor"
 					disablePadding
 					title={title}
 					open={openLayoutRight}

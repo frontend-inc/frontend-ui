@@ -43,7 +43,7 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
 
 	return (
 		<Drawer
-      mode="dark"
+      mode="editor"
 			disablePadding
 			open={open}
 			handleClose={handleClose}

@@ -52,7 +52,7 @@ const FieldWrapper: React.FC<FieldWrapperProps> = (props) => {
     <div className={wrapperClasses}>
       {label && (
         <div className={labelClasses}>
-          <span className={`text-xs ${color}`}>{label}</span>
+          <span className='text-sm text-muted-foreground text-semibold'>{label}</span>
         </div>
       )}
       <div className="flex flex-row space-x-1">

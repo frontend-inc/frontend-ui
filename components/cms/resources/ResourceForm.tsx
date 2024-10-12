@@ -44,6 +44,7 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 
 	return (
 		<Drawer
+      mode="editor"
 			open={open}
 			handleClose={handleClose}
 			title={title ? title : resource?.id ? 'Edit' : 'Add'}

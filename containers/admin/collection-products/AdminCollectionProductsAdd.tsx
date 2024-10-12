@@ -16,7 +16,7 @@ const AdminCollectionProductsAdd: React.FC<AdminCollectionProductsAddProps> = (
 
 	return (
 		<Drawer 
-      mode='dark'
+      mode="editor"
       open={open} handleClose={handleClose} title="Add Products">
 			<AdminProductListItems
 				name={'collection_product'}

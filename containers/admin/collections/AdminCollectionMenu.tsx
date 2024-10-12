@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { MenuList, AlertModal, SecondaryButton } from '../../../components'
+import { MenuList, AlertModal } from '../../../components'
+import { Button } from '../../../tailwind'
 import { MenuListItem } from '../../../components'
 import { useCollections, useViews } from '../../../hooks'
 import AdminCollectionEdit from './AdminCollectionEdit'
@@ -7,6 +8,7 @@ import AdminViewEdit from '../views/AdminViewEdit'
 import { ApiQuery } from 'frontend-js'
 import { RouterParams } from '../../../types'
 import { useRouter } from 'next/router'
+import { Plus } from 'lucide-react'
 
 const AdminCollectionMenu: React.FC = () => {
 	const router = useRouter()
@@ -191,9 +193,13 @@ const AdminCollectionMenu: React.FC = () => {
 				))}
 			</MenuList>
 			<div className='w-full mx-2 mb-2'>
-				<SecondaryButton onClick={handleCreateCollectionClick} icon="Plus">
+				<Button 
+          color="secondary"
+          onClick={handleCreateCollectionClick} 
+          startIcon={ <Plus className='w-4 h-4 text-secondary-foreground' /> }
+        >
 					Collection
-				</SecondaryButton>
+				</Button>
 			</div>
 			{views.length > 0 && (
 				<MenuList label="Views" enableBorder>
