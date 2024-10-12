@@ -10,9 +10,9 @@ const FieldString: React.FC<FieldElementProps> = (props) => {
 		label,
 		color = 'text.primary',
 		placeholder,
-		variant = 'body1',
 		alignItems,
 		disableLabel = false,
+    className,
 		...rest
 	} = props
 
@@ -24,7 +24,7 @@ const FieldString: React.FC<FieldElementProps> = (props) => {
 			disableLabel={disableLabel}
 			{...rest}
 		>
-			<Typography variant={variant} color={color}>
+			<Typography variant='body1' color='text-foreground' className={className}>
 				{truncate(value || placeholder, 50)}
 			</Typography>
 		</FieldWrapper>

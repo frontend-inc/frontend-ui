@@ -33,6 +33,7 @@ const ResourceShow: React.FC<ResourceShowProps> = (props) => {
 
 	return (
 		<ResourceModal
+      title={title}
 			loading={loading}
 			open={open}
 			handleClose={handleClose}

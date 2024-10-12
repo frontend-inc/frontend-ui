@@ -14,7 +14,6 @@ const AuthUserDetails: React.FC<AuthUserDetailsProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		requirePaid,
 		...rest
 	} = props

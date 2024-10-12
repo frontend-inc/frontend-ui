@@ -16,7 +16,7 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			bgColor={'#000000'}
+			mode='dark'
 			py={0}
 			px={0}
 			maxWidth={maxWidth}

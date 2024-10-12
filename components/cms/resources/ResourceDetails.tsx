@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Field } from '../../../components'
+import { DisplayFields, Image, Field } from '../../../components'
 import { Typography } from '../../../tailwind'
 import { DisplayFieldType } from '../../../types'
 
@@ -30,7 +30,11 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 		<div className="w-full flex flex-col space-y-2">
 			{image && (
 				<div className="w-full h-[200px]">
-					<Image src={image} label={label} />
+					<Image 
+            alt={label} 
+            src={image} 
+            label={label} 
+          />
 				</div>
 			)}
 			{avatar && avatar}
@@ -42,16 +46,11 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 					{secondary}
 				</Typography>
 			)}
-			{fields?.map((field, index) => (
-				<Field
-					enableBorder
-					key={index}
-					//@ts-ignore
-					field={field}
-					resource={resource}
-					direction={direction}
-				/>
-			))}
+      <DisplayFields 
+        fields={fields} 
+        resource={resource}
+        direction={direction}
+      />
 		</div>
 	)
 }
