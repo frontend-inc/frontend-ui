@@ -55,7 +55,6 @@ const UnsplashModal: React.FC<UnsplashViewerModalProps> = ({
       handleClose={handleClose}
       title={<PoweredByUnsplash />}
       maxWidth="md"
-      disablePadding
       buttons={
         <>
           <Button
