@@ -15,7 +15,7 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 	const { layout = 'grid', enableArrows, enableAutoPlay, items = [] } = props
 
 	return (
-		<div className='flex flex-col w-full'>
+		<div className="flex flex-col w-full">
 			{layout == 'carousel' ? (
 				<SwipeableTestimonials
 					items={items}

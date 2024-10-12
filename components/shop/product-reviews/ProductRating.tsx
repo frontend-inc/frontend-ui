@@ -29,10 +29,7 @@ const ProductRating: React.FC<ProductRatingProps> = (props) => {
 			spacing={1}
 		>
 			{rating > 0 ? (
-				<Rating
-					value={rating}
-					readOnly
-				/>
+				<Rating value={rating} readOnly />
 			) : (
 				<Typography color={'text.secondary'} variant="body2">
 					No reviews yet

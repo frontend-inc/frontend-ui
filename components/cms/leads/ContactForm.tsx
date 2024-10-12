@@ -52,7 +52,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 	}
 
 	return (
-		<div className='w-full'>
+		<div className="w-full">
 			<Container maxWidth="sm">
 				<Heading
 					label={label}

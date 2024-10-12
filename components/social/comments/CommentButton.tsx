@@ -5,31 +5,29 @@ import { IconButton } from '../../../tailwind'
 import { cn } from '../../../shadcn/lib/utils'
 
 type CommentButtonProps = {
-  resource: any
-  size?: 'small' | 'large'
+	resource: any
+	size?: 'small' | 'large'
 }
 
-export default function CommentButton({ 
-  resource, 
-  size = 'small', 
+export default function CommentButton({
+	resource,
+	size = 'small',
 }: CommentButtonProps) {
-  const { openShow, setOpenShow, setResource } = useResourceContext()
+	const { openShow, setOpenShow, setResource } = useResourceContext()
 
-  const handleClick = () => {
-    setResource(resource)
-    setOpenShow(!openShow)
-  }
+	const handleClick = () => {
+		setResource(resource)
+		setOpenShow(!openShow)
+	}
 
-  return (
-    <div>
-      <IconButton
-        onClick={handleClick}
-        className={cn(
-          size === 'large' && 'border border-divider'
-        )}
-      >
-        <MessageCircle className="text-foreground w-4 h-4" />
-      </IconButton>
-    </div>
-  )
+	return (
+		<div>
+			<IconButton
+				onClick={handleClick}
+				className={cn(size === 'large' && 'border border-divider')}
+			>
+				<MessageCircle className="text-foreground w-4 h-4" />
+			</IconButton>
+		</div>
+	)
 }

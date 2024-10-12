@@ -18,7 +18,7 @@ type ProductListItemProps = {
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableRatings?: boolean
-  disableBorder?: boolean
+	disableBorder?: boolean
 }
 
 const ProductListItem: React.FC<ProductListItemProps> = (props) => {
@@ -34,7 +34,7 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 		enableLikes = false,
 		enableRatings = false,
 		enableUsers = false,
-    disableBorder = false,
+		disableBorder = false,
 		...rest
 	} = props
 
@@ -67,14 +67,14 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 				</div>
 			}
 			addToCart={
-        <AddToCartButton 
-          availableForSale 
-          fullWidth 
-          productId={resource?.id} 
-          size='large'
-        />
+				<AddToCartButton
+					availableForSale
+					fullWidth
+					productId={resource?.id}
+					size="large"
+				/>
 			}
-      disableBorder={disableBorder}
+			disableBorder={disableBorder}
 			slots={{
 				image: {
 					enableGradient,

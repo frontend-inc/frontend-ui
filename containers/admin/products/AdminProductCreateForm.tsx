@@ -7,7 +7,9 @@ type AdminProductCreateFormProps = ResourceFormProps & {
 	metafields: MetafieldType[]
 }
 
-const AdminProductCreateForm: React.FC<AdminProductCreateFormProps> = (props) => {
+const AdminProductCreateForm: React.FC<AdminProductCreateFormProps> = (
+	props
+) => {
 	const { metafields = [] } = props || {}
 
 	let fields = [

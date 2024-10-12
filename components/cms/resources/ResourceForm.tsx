@@ -44,7 +44,7 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 
 	return (
 		<Drawer
-      mode="editor"
+			mode="editor"
 			open={open}
 			handleClose={handleClose}
 			title={title ? title : resource?.id ? 'Edit' : 'Add'}
@@ -54,7 +54,7 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 					variant="contained"
 					color="primary"
 					onClick={handleSubmit}
-          loading={loading}					
+					loading={loading}
 				>
 					{resource?.id ? 'Update' : 'Save'}
 				</Button>

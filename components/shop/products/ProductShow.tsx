@@ -13,7 +13,7 @@ export type ShowModalProps = {
 	enableLikes?: boolean
 	enableSharing?: boolean
 	enableRatings?: boolean
-  enableGradient?: boolean
+	enableGradient?: boolean
 	enableOverlay?: boolean
 }
 
@@ -27,28 +27,24 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 		enableLikes,
 		enableFavorites,
 		enableSharing,
-    enableGradient,
-    enableOverlay
+		enableGradient,
+		enableOverlay,
 	} = props || {}
 
 	if (!resource) return null
 	return (
-		<Modal
-			open={openShow}
-			handleClose={() => setOpenShow(false)}
-			maxWidth="md"
-		>
-			<ProductListItem 
-        disableBorder
+		<Modal open={openShow} handleClose={() => setOpenShow(false)} maxWidth="md">
+			<ProductListItem
+				disableBorder
 				buttons={buttons}
-        resource={resource}
-        handleClick={() => setOpenShow(false)}
-        displayFields={displayFields}        
-        enableGradient={enableGradient}
-        enableOverlay={enableOverlay}
-        enableFavorites={enableFavorites}
-        enableLikes={enableLikes}
-        enableRatings={enableRatings}  
+				resource={resource}
+				handleClick={() => setOpenShow(false)}
+				displayFields={displayFields}
+				enableGradient={enableGradient}
+				enableOverlay={enableOverlay}
+				enableFavorites={enableFavorites}
+				enableLikes={enableLikes}
+				enableRatings={enableRatings}
 			/>
 		</Modal>
 	)

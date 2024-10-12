@@ -41,15 +41,15 @@ const ButtonAction: React.FC<ActionProps> = (props) => {
 			size={size}
 			startIcon={
 				icon && (
-						<Icon
-							name={icon}
-							color={
-								color == 'primary'
-									? 'primary.contrastText'
-									: 'secondary.contrastText'
-							}
-						/>
-        )
+					<Icon
+						name={icon}
+						color={
+							color == 'primary'
+								? 'primary.contrastText'
+								: 'secondary.contrastText'
+						}
+					/>
+				)
 			}
 			onClick={handleClick}
 			variant={variant}

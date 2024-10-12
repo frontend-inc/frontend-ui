@@ -32,14 +32,14 @@ const AiChatForm: React.FC<AiChatFormProps> = (props) => {
 	}, [prompt])
 
 	return (
-    <TextInput
-      multiline
-      label={label}
-      name="prompt"
-      placeholder="Enter text..."
-      value={input}
-      handleChange={handleInputChange}
-    />
+		<TextInput
+			multiline
+			label={label}
+			name="prompt"
+			placeholder="Enter text..."
+			value={input}
+			handleChange={handleInputChange}
+		/>
 	)
 }
 

@@ -94,7 +94,7 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 					handleChange={handleSellingPlanChange}
 				/>
 			)}
-			<div className='flex flex-row space-x-2 justify-content items-center'>
+			<div className="flex flex-row space-x-2 justify-content items-center">
 				{enableQuantity == true && (
 					<ShopifyQuantitySelector
 						quantity={quantity}
@@ -106,15 +106,11 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 					fullWidth
 					onClick={handleAddToCart}
 					variant={buttonVariant}
-          loading={ loading }					
+					loading={loading}
 				>
 					{label}
 				</Button>
-				{enableFavorites && (
-          <ShopifyProductFavoriteButton 
-            product={product} 
-          />
-        )}
+				{enableFavorites && <ShopifyProductFavoriteButton product={product} />}
 			</div>
 		</div>
 	)

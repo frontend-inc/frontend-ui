@@ -70,9 +70,9 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 			description={product?.description}
 			secondary={
 				<div className="w-full">
-          {enableRatings == true && (
-            <ProductRating resource={product} enableTotal />
-          )}
+					{enableRatings == true && (
+						<ProductRating resource={product} enableTotal />
+					)}
 				</div>
 			}
 			actions={
@@ -100,11 +100,11 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 			}
 			secondaryAction={
 				buttons && (
-          <ButtonActions
-            justifyContent={'end'}
-            buttons={buttons}
-            resource={product}
-          />
+					<ButtonActions
+						justifyContent={'end'}
+						buttons={buttons}
+						resource={product}
+					/>
 				)
 			}
 			slots={slots}

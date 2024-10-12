@@ -30,11 +30,11 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 	} = props
 
 	return (
-		<div className='flex flex-col space-y-4 w-full'>
+		<div className="flex flex-col space-y-4 w-full">
 			{enableGoogle && (
 				<GoogleLoginButton handleSuccess={handleGoogleSuccess} />
 			)}
-			<div className='flex flex-col space-y-4'>
+			<div className="flex flex-col space-y-4">
 				<TextInput
 					errors={errors}
 					label="Email"
@@ -53,13 +53,13 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 					handleChange={handleChange}
 				/>
 			</div>
-      <div className='flex flex-col space-y-2'>
+			<div className="flex flex-col space-y-2">
 				<Button
 					fullWidth
 					color="primary"
 					onClick={handleSubmit}
 					variant="contained"
-          loading={ loading }					
+					loading={loading}
 				>
 					Sign In
 				</Button>
@@ -93,7 +93,7 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 						One-time password
 					</Button>
 				)}
-        </div>
+			</div>
 		</div>
 	)
 }

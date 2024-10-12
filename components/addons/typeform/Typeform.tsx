@@ -10,9 +10,7 @@ const Typeform: React.FC<TypeformProps> = (props) => {
 	const { typeformId } = props
 	if (!typeformId) return null
 	return (
-		<div
-			className='w-full flex justify-center'
-		>
+		<div className="w-full flex justify-center">
 			<div data-tf-live={typeformId}></div>
 			<Script src="//embed.typeform.com/next/embed.js" />
 		</div>

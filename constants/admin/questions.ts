@@ -1,4 +1,3 @@
-
 type QuestionVariantTypeType =
 	| 'single_choice'
 	| 'multiple_choice'

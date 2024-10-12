@@ -124,51 +124,51 @@ const DataList: React.FC<DataListProps> = (props) => {
 	return (
 		<ResourceProvider name={name} url={url} foreignUrl={foreignUrl}>
 			<DataFetcher query={query}>
-        <div className="flex flex-col space-y-2">
-				<Header
-					url={url}
-					query={query}
-					enableSearch={enableSearch}
-					enableCreate={enableCreate}
-					enableFilters={enableFilters}
-					enableSorting={enableSorting}
-					filterOptions={filterOptions}
-					sortOptions={sortOptions}
-					{...slots.header}
-				/>
-				<Toolbar {...slots.toolbar} buttons={buttons} />
-				<List
-					grid={grid}
-					selectable={selectable}
-					href={href}
-					enableEdit={enableEdit}
-					enableDelete={enableDelete}
-					component={Component}
-					{...slots.list}
-					slots={{
-						item: slots.item,
-					}}
-				/>
-				<Edit fields={fields} parentResource={resource} {...slots.edit} />
-				<Create fields={fields} parentResource={resource} {...slots.create} />
-				<Empty
-					icon={emptyIcon}
-					title={emptyTitle}
-					description={emptyDescription}
-					{...slots.empty}
-				/>
-				<Show
-					enableEdit={enableEdit}
-					enableDelete={enableDelete}
-					{...slots.show}
-				/>
-				<Delete
-					icon={emptyIcon}
-					title={emptyTitle}
-					description={emptyDescription}
-					{...slots.destroy}
-				/>
-        </div>
+				<div className="flex flex-col space-y-2">
+					<Header
+						url={url}
+						query={query}
+						enableSearch={enableSearch}
+						enableCreate={enableCreate}
+						enableFilters={enableFilters}
+						enableSorting={enableSorting}
+						filterOptions={filterOptions}
+						sortOptions={sortOptions}
+						{...slots.header}
+					/>
+					<Toolbar {...slots.toolbar} buttons={buttons} />
+					<List
+						grid={grid}
+						selectable={selectable}
+						href={href}
+						enableEdit={enableEdit}
+						enableDelete={enableDelete}
+						component={Component}
+						{...slots.list}
+						slots={{
+							item: slots.item,
+						}}
+					/>
+					<Edit fields={fields} parentResource={resource} {...slots.edit} />
+					<Create fields={fields} parentResource={resource} {...slots.create} />
+					<Empty
+						icon={emptyIcon}
+						title={emptyTitle}
+						description={emptyDescription}
+						{...slots.empty}
+					/>
+					<Show
+						enableEdit={enableEdit}
+						enableDelete={enableDelete}
+						{...slots.show}
+					/>
+					<Delete
+						icon={emptyIcon}
+						title={emptyTitle}
+						description={emptyDescription}
+						{...slots.destroy}
+					/>
+				</div>
 			</DataFetcher>
 		</ResourceProvider>
 	)

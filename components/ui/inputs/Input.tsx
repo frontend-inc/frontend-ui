@@ -25,7 +25,7 @@ import {
 	SwitchInput,
 	TabsInput,
 	TextInput,
-  TextArea,
+	TextArea,
 	URLInput,
 } from './index'
 import { OptionType } from 'frontend-js'

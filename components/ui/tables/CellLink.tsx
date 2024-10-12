@@ -11,7 +11,7 @@ type CellLinkProps = {
 const CellLink: React.FC<CellLinkProps> = (props) => {
 	const { value, handleClick } = props
 	return (
-		<div className='w-full'>
+		<div className="w-full">
 			{value && (
 				<Button
 					size="small"

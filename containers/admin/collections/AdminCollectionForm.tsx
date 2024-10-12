@@ -15,8 +15,8 @@ const AdminCollectionForm: React.FC<AdminCollectionFormProps> = (props) => {
 	const { errors, collection, handleTemplateClick, handleChange } = props
 
 	return (
-		<div className='flex flex-col space-y-2'>
-			<div className='p-2'>
+		<div className="flex flex-col space-y-2">
+			<div className="p-2">
 				<FormFields
 					errors={errors}
 					handleChange={handleChange}

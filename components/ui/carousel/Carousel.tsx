@@ -17,7 +17,6 @@ type CarouselProps = {
 }
 
 const ReactCarousel: React.FC<CarouselProps> = (props) => {
-
 	const {
 		children,
 		enableAutoPlay = false,
@@ -26,26 +25,26 @@ const ReactCarousel: React.FC<CarouselProps> = (props) => {
 	} = props
 
 	const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 1280, min: 1024 },
-      items: 3,
-    },
-    desktop: {
-      breakpoint: { max: 1024, min: 768 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 768, min: 640 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 640, min: 0 },
-      items: 1,
-    },
-  };
+		superLargeDesktop: {
+			breakpoint: { max: 1280, min: 1024 },
+			items: 3,
+		},
+		desktop: {
+			breakpoint: { max: 1024, min: 768 },
+			items: 3,
+		},
+		tablet: {
+			breakpoint: { max: 768, min: 640 },
+			items: 2,
+		},
+		mobile: {
+			breakpoint: { max: 640, min: 0 },
+			items: 1,
+		},
+	}
 
 	return (
-		<div className='w-full'>
+		<div className="w-full">
 			{responsive && children && (
 				<Carousel
 					responsive={responsive}

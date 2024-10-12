@@ -12,7 +12,7 @@ const StripePricingTable: React.FC<StripePricingTableProps> = (props) => {
 	const { pricingTableId, publishableKey } = props
 	if (!pricingTableId || !publishableKey) return null
 	return (
-		<div className='flex flex-row justify-center items-center'>
+		<div className="flex flex-row justify-center items-center">
 			{/* @ts-ignore */}
 			<stripe-pricing-table
 				pricing-table-id={pricingTableId}

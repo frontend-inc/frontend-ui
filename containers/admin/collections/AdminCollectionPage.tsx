@@ -100,18 +100,18 @@ const AdminCollectionPage: React.FC = () => {
 					enableExpandLeftPanel
 					buttons={
 						collectionId && (
-							<div className='flex flex-row items-center space-x-2'>
+							<div className="flex flex-row items-center space-x-2">
 								<Button
 									variant="contained"
 									color="primary"
 									onClick={handleAddClick}
-									startIcon={<Plus className="w-5 h-5 text-primary-foreground" />}
+									startIcon={
+										<Plus className="w-5 h-5 text-primary-foreground" />
+									}
 								>
 									Add
 								</Button>
-								<IconButton
-									onClick={() => setOpenAiModal(true)}
-								>
+								<IconButton onClick={() => setOpenAiModal(true)}>
 									<Icon name="Wand" color="text.primary" />
 								</IconButton>
 							</div>

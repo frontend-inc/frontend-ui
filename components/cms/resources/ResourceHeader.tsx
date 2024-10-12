@@ -57,14 +57,10 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 	return (
 		<Stack
 			direction={direction}
-			className='w-full align-center justify-between'
+			className="w-full align-center justify-between"
 			spacing={1}
 		>
-			<Stack
-				alignItems="center"
-				direction={direction}
-				spacing={1}
-			>
+			<Stack alignItems="center" direction={direction} spacing={1}>
 				{enableSearch && (
 					<SearchInput
 						value={keywords}
@@ -93,12 +89,12 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 			<Stack
 				direction={direction}
 				spacing={1}
-				className='w-full justify-center sm:justify-end'
+				className="w-full justify-center sm:justify-end"
 			>
 				{secondaryAction}
 				{(enableCreate || secondaryAction) && (
 					<Button
-            className="w-full sm:w-auto"												
+						className="w-full sm:w-auto"
 						onClick={handleAdd}
 						startIcon={<Icon name="Plus" className="text-primary-foreground" />}
 					>

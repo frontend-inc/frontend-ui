@@ -40,12 +40,12 @@ const CarouselCoverListItems: React.FC<CarouselCoverListItemsProps> = (
 	}
 
 	return (
-		<div 
-      className={cn(
-        'w-full',
-        loading && 'opacity-50',
-        height && `h-[${height}px]`,        
-      )}
+		<div
+			className={cn(
+				'w-full',
+				loading && 'opacity-50',
+				height && `h-[${height}px]`
+			)}
 		>
 			<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
 				{resources?.map((resource, index) => (
@@ -65,4 +65,3 @@ const CarouselCoverListItems: React.FC<CarouselCoverListItemsProps> = (
 }
 
 export default CarouselCoverListItems
-

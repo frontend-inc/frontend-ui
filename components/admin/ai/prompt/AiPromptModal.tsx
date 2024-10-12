@@ -25,11 +25,11 @@ const AiPromptModal: React.FC<AiPromptModalProps> = (props) => {
 		<>
 			<Tooltip title="Use AI to generate text">
 				<IconButton onClick={() => setOpen(!open)}>
-					<Sparkles className='w-5 h-5 text-foreground' />
+					<Sparkles className="w-5 h-5 text-foreground" />
 				</IconButton>
 			</Tooltip>
 			<Drawer
-        mode="editor"
+				mode="editor"
 				title={label}
 				open={open}
 				handleClose={() => setOpen(false)}
@@ -39,12 +39,10 @@ const AiPromptModal: React.FC<AiPromptModalProps> = (props) => {
 						variant="contained"
 						color="primary"
 						onClick={handleSubmit}
-            loading={ loading }
-            startIcon={ 
-              !loading && <Icon name="Sparkles" />
-            }
+						loading={loading}
+						startIcon={!loading && <Icon name="Sparkles" />}
 					>
-						Generate 
+						Generate
 					</Button>
 				}
 			>

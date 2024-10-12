@@ -7,7 +7,6 @@ import {
 import { useOrders, useAdmin } from '../../../hooks'
 
 const AdminShipmentToolbar = (props) => {
-
 	const { open, handleClose, selectedIds, handleReload } = props || {}
 
 	const [openModal, setOpenModal] = useState(false)

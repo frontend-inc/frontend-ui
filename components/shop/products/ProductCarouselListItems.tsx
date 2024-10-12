@@ -51,22 +51,14 @@ const ProductCarouselListItems: React.FC<ProductCarouselListItemsProps> = (
 	}
 
 	return (
-		<div			
-			className={cn(
-        'w-full',
-        loading && 'opacity-50',
-      )}        
-		>
+		<div className={cn('w-full', loading && 'opacity-50')}>
 			<Carousel
 				enableDots={enableDots}
 				enableAutoPlay={enableAutoPlay}
 				enableArrows={enableArrows}
 			>
 				{resources?.map((resource, index) => (
-					<div
-						key={index}
-            className={'px-2'}
-					>
+					<div key={index} className={'px-2'}>
 						<ProductListItem
 							buttons={buttons}
 							resource={resource}

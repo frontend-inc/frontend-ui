@@ -10,11 +10,7 @@ type AdminLayoutScrollProps = {
 const AdminLayoutScroll: React.FC<AdminLayoutScrollProps> = (props) => {
 	const { children } = props || {}
 
-	return (
-    <ScrollArea>		
-			{children}
-    </ScrollArea>
-	)
+	return <ScrollArea>{children}</ScrollArea>
 }
 
 export default AdminLayoutScroll

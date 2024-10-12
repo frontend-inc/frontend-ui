@@ -31,7 +31,7 @@ const ShopifyRecentlyViewed: React.FC<ShopifyRecentlyViewedProps> = (props) => {
 	const { products } = useRecentlyViewed()
 
 	return (
-		<div className='w-full'>
+		<div className="w-full">
 			{layout == 'grid' && (
 				<ShopifyProducts
 					href={href}

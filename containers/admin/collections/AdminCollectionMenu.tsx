@@ -179,12 +179,12 @@ const AdminCollectionMenu: React.FC = () => {
 	}, [viewId])
 
 	return (
-		<div className='flex flex-col'>
+		<div className="flex flex-col">
 			<MenuList label={'Collections'}>
 				{collections.map((collection) => (
 					<MenuListItem
 						key={collection.id}
-						title={collection?.label}						
+						title={collection?.label}
 						selected={!viewId && collectionId == collection?.name}
 						handleClick={() => handleClick(collection)}
 						handleEdit={() => handleEditCollectionClick(collection)}
@@ -192,12 +192,12 @@ const AdminCollectionMenu: React.FC = () => {
 					/>
 				))}
 			</MenuList>
-			<div className='w-full mx-2 mb-2'>
-				<Button 
-          color="secondary"
-          onClick={handleCreateCollectionClick} 
-          startIcon={ <Plus className='w-4 h-4 text-secondary-foreground' /> }
-        >
+			<div className="w-full mx-2 mb-2">
+				<Button
+					color="secondary"
+					onClick={handleCreateCollectionClick}
+					startIcon={<Plus className="w-4 h-4 text-secondary-foreground" />}
+				>
 					Collection
 				</Button>
 			</div>

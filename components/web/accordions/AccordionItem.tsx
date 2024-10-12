@@ -14,23 +14,18 @@ type AccordionItemProps = {
 }
 
 const AccordionItemComponent: React.FC<AccordionItemProps> = (props) => {
-	const {
-		primary,
-		secondary,
-	} = props
+	const { primary, secondary } = props
 
 	return (
 		<Accordion type="single" collapsible className="w-full">
-			<AccordionItem
-				value="item"				
-			>
+			<AccordionItem value="item">
 				<AccordionTrigger className="hover:no-underline">
-          <Typography variant="body1">
-            {primary}
-          </Typography>					
+					<Typography variant="body1">{primary}</Typography>
 				</AccordionTrigger>
 				<AccordionContent>
-          <Typography variant="body2" className='text-muted-foreground'>{secondary}</Typography>
+					<Typography variant="body2" className="text-muted-foreground">
+						{secondary}
+					</Typography>
 				</AccordionContent>
 			</AccordionItem>
 		</Accordion>

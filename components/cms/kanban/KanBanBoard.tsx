@@ -79,80 +79,78 @@ const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 	}, [initialColumns])
 
 	if (headers.length === 0) return null
-  return (
-    <DndContext
-      sensors={sensors}
-      collisionDetection={closestCenter}
-      onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
-    >
-      <div className="flex flex-row space-x-1 px-0.5 py-2 w-full overflow-x-scroll">
-        {headers?.map((header) => (
-          <div
-            key={header.value}
-            className="flex flex-col space-y-1 justify-between p-1 w-[280px] min-w-[280px] overflow-x-hidden rounded shadow-md hover:shadow-lg transition-shadow duration-200"
-          >
-            <div>
-              <Typography variant="subtitle2" color="text.primary">
-                {header.label}
-              </Typography>
-              <SortableContext
-                key={header.value}
-                items={columns[header.value]?.map((res) => res.id)}
-                strategy={verticalListSortingStrategy}
-              >
-                <ul
-                  className="w-[260px] max-h-screen overflow-y-scroll overflow-x-hidden scrollbar-hide"
-                >
-                  {columns[header.value].length > 0 ? (
-                    columns[header.value]?.map((res) => (
-                      <Component
-                        {...slots.item}
-                        loading={loading}
-                        key={res?.id}
-                        id={res?.id}
-                        resource={res}
-                        handleClick={() => handleClick(res)}
-                        enableEdit={enableEdit}
-                        enableDelete={enableDelete}
-                        handleEdit={() => handleEdit(res)}
-                        handleDelete={() => handleDelete(res)}
-                        component={Component}
-                      />
-                    ))
-                  ) : (
-                    <Droppable id={header.value} />
-                  )}
-                  <Droppable id={header.value} />
-                </ul>
-              </SortableContext>
-            </div>
-            {enableCreate && (
-              <Button
-                fullWidth
-                variant="contained"
-                color="secondary"
-                onClick={() => handleAdd(header.value)}
-                startIcon={<Icon name="Plus" color="secondary.contrastText" />}
-              >
-                Add
-              </Button>
-            )}
-          </div>
-        ))}
-      </div>
-      <DragOverlay>
-        {draggedResource ? (
-          <Component
-            enableDragging
-            id={draggedResource?.id}
-            resource={draggedResource}
-            {...slots.item}
-          />
-        ) : null}
-      </DragOverlay>
-    </DndContext>
-  )
+	return (
+		<DndContext
+			sensors={sensors}
+			collisionDetection={closestCenter}
+			onDragStart={handleDragStart}
+			onDragEnd={handleDragEnd}
+		>
+			<div className="flex flex-row space-x-1 px-0.5 py-2 w-full overflow-x-scroll">
+				{headers?.map((header) => (
+					<div
+						key={header.value}
+						className="flex flex-col space-y-1 justify-between p-1 w-[280px] min-w-[280px] overflow-x-hidden rounded shadow-md hover:shadow-lg transition-shadow duration-200"
+					>
+						<div>
+							<Typography variant="subtitle2" color="text.primary">
+								{header.label}
+							</Typography>
+							<SortableContext
+								key={header.value}
+								items={columns[header.value]?.map((res) => res.id)}
+								strategy={verticalListSortingStrategy}
+							>
+								<ul className="w-[260px] max-h-screen overflow-y-scroll overflow-x-hidden scrollbar-hide">
+									{columns[header.value].length > 0 ? (
+										columns[header.value]?.map((res) => (
+											<Component
+												{...slots.item}
+												loading={loading}
+												key={res?.id}
+												id={res?.id}
+												resource={res}
+												handleClick={() => handleClick(res)}
+												enableEdit={enableEdit}
+												enableDelete={enableDelete}
+												handleEdit={() => handleEdit(res)}
+												handleDelete={() => handleDelete(res)}
+												component={Component}
+											/>
+										))
+									) : (
+										<Droppable id={header.value} />
+									)}
+									<Droppable id={header.value} />
+								</ul>
+							</SortableContext>
+						</div>
+						{enableCreate && (
+							<Button
+								fullWidth
+								variant="contained"
+								color="secondary"
+								onClick={() => handleAdd(header.value)}
+								startIcon={<Icon name="Plus" color="secondary.contrastText" />}
+							>
+								Add
+							</Button>
+						)}
+					</div>
+				))}
+			</div>
+			<DragOverlay>
+				{draggedResource ? (
+					<Component
+						enableDragging
+						id={draggedResource?.id}
+						resource={draggedResource}
+						{...slots.item}
+					/>
+				) : null}
+			</DragOverlay>
+		</DndContext>
+	)
 
 	function handleDragStart(event) {
 		const { active } = event

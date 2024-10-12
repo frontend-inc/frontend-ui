@@ -6,7 +6,7 @@ import { useApp } from '../../hooks'
 
 type LayoutHeaderProps = HeaderProps & {
 	bgColor: string
-  mode: 'light' | 'dark'
+	mode: 'light' | 'dark'
 }
 
 const AppHeader: React.FC<LayoutHeaderProps> = (props) => {
@@ -24,9 +24,9 @@ const AppHeader: React.FC<LayoutHeaderProps> = (props) => {
 	}
 
 	return (
-    <div className={mode}>
-      <Header {...rest} handleClick={handleClick} />
-    </div>
+		<div className={mode}>
+			<Header {...rest} handleClick={handleClick} />
+		</div>
 	)
 }
 

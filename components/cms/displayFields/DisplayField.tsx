@@ -22,22 +22,22 @@ import { cn } from '../../../shadcn/lib/utils'
 type FieldProps = {
 	label?: string
 	color?: string
-	direction?: 'row' | 'column' 
+	direction?: 'row' | 'column'
 	placeholder?: string
 	field: DisplayFieldType
 	resource?: any
-  disableBorder?: boolean
-  disableLabel?: boolean
+	disableBorder?: boolean
+	disableLabel?: boolean
 }
 
 const DisplayField: React.FC<FieldProps> = (props) => {
 	const {
 		field,
 		resource,
-    disableBorder=false,
-    disableLabel=false,
+		disableBorder = false,
+		disableLabel = false,
 		color = 'text.secondary',
-		
+
 		...rest
 	} = props
 	const { name, label, variant: fieldVariant, icon } = field
@@ -85,20 +85,20 @@ const DisplayField: React.FC<FieldProps> = (props) => {
 
 	if (!value || value == '') return null
 	return (
-    <div className={cn(
-      !disableBorder && 'border border-border p-2 rounded-md',
-    )}>
-      <Component
-        label={label}        
-        icon={icon}
-        variant="caption"
-        color={color}
-        value={value}
-        disableLabel={disableLabel}        
-        {...componentProps}
-        {...rest}
-      />
-    </div>
+		<div
+			className={cn(!disableBorder && 'border border-border p-2 rounded-md')}
+		>
+			<Component
+				label={label}
+				icon={icon}
+				variant="caption"
+				color={color}
+				value={value}
+				disableLabel={disableLabel}
+				{...componentProps}
+				{...rest}
+			/>
+		</div>
 	)
 }
 

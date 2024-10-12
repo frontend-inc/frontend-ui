@@ -32,7 +32,7 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<div className='flex flex-col space-y-2 w-full'>
+			<div className="flex flex-col space-y-2 w-full">
 				<Heading
 					label={label}
 					title={title}

@@ -19,10 +19,7 @@ const AdminAuthButton: React.FC<AdminAuthButtonProps> = (props) => {
 
 	if (!currentUser) return null
 	return (
-    <UserMenu
-      handleLogoutClick={handleLogoutClick}
-      handleClick={handleClick}
-    />
+		<UserMenu handleLogoutClick={handleLogoutClick} handleClick={handleClick} />
 	)
 }
 

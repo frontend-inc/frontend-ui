@@ -14,7 +14,7 @@ export type CardProps = {
 	selectable?: boolean
 	selected?: boolean
 	avatar?: React.ReactNode
-  image?: string
+	image?: string
 	label?: string
 	primary: string
 	secondary?: string | React.ReactNode
@@ -50,28 +50,28 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 		return (
 			<ShadcnCard
 				ref={ref}
-				className={cn(
-					'w-full overflow-hidden transition-shadow duration-300 ',
-				)}
+				className={cn('w-full overflow-hidden transition-shadow duration-300 ')}
 				{...slots.item}
 			>
-				<div
-					className={`w-full relative overflow-hidden`}
-				>
+				<div className={`w-full relative overflow-hidden`}>
 					<Image
 						src={image}
 						height={size}
 						alt={primary}
 						label={label}
 						handleClick={handleClick}
-            aspectRatio={4/3}
+						aspectRatio={4 / 3}
 						disableBorderRadius
 						{...slots.image}
 					/>
 				</div>
-				<CardContent className={'px-4 pt-3'}>					
-          <Typography variant="body1">{primary}</Typography>
-          {secondary && <Typography variant="body2" color='text-muted-foreground'>{secondary}</Typography>}					
+				<CardContent className={'px-4 pt-3'}>
+					<Typography variant="body1">{primary}</Typography>
+					{secondary && (
+						<Typography variant="body2" color="text-muted-foreground">
+							{secondary}
+						</Typography>
+					)}
 				</CardContent>
 				<CardFooter className="flex justify-between">
 					{actions}

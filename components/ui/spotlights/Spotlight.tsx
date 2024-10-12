@@ -44,13 +44,7 @@ const Spotlight: React.FC<SpotlightProps> = (props) => {
 					</Typography>
 				)
 			}
-			actions={
-				buttons?.length > 0 && (
-					<ButtonActions
-						buttons={buttons}
-					/>
-				)
-			}
+			actions={buttons?.length > 0 && <ButtonActions buttons={buttons} />}
 			logos={logos}
 			image={image}
 		/>

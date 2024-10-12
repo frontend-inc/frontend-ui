@@ -13,9 +13,7 @@ const InputLabel: React.FC<InputLabelProps> = (props) => {
 	return (
 		<div className="min-w-[100px] flex flex-row gap-2">
 			{label && (
-				<label className="text-sm text-bold text-foreground">
-					{label}
-				</label>
+				<label className="text-sm text-bold text-foreground">{label}</label>
 			)}
 			{info && (
 				<Tooltip title={info}>

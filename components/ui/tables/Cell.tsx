@@ -36,7 +36,7 @@ const Cell: React.FC<CellProps> = (props) => {
 		email: CellString,
 		phone: CellString,
 		image: CellImage,
-		video: CellVideo,		
+		video: CellVideo,
 		url: CellLink,
 		rating: CellRating,
 		number: CellString,

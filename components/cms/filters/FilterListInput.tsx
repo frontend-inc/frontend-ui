@@ -21,24 +21,24 @@ const FilterListInput: React.FC<FilterListInputProps> = (props) => {
 		return _filters.map((f) => f.value)
 	}
 
-  const Component = {
-    'boolean': CheckboxBooleanFilter,
-    'date_range': CheckboxDatesPastFilter,
-    'date_range_past': CheckboxDatesPastFilter,
-    'date_range_future': CheckboxDatesFutureFilter,
-    'multiple_choice': CheckboxFilter,
-    'number_range': CheckboxNumberRangeFilter,
-    'ratings_scale': CheckboxRatingsFilter,
-  }[filterOption?.variant]
+	const Component = {
+		boolean: CheckboxBooleanFilter,
+		date_range: CheckboxDatesPastFilter,
+		date_range_past: CheckboxDatesPastFilter,
+		date_range_future: CheckboxDatesFutureFilter,
+		multiple_choice: CheckboxFilter,
+		number_range: CheckboxNumberRangeFilter,
+		ratings_scale: CheckboxRatingsFilter,
+	}[filterOption?.variant]
 
 	return (
-    <Component 
-      field={filterOption?.field}
-      label={filterOption?.label}
-      values={findFilterValues(filterOption?.field, filters)}
-      handleClick={handleFilter}
-      options={filterOption.options}
-    />		
+		<Component
+			field={filterOption?.field}
+			label={filterOption?.label}
+			values={findFilterValues(filterOption?.field, filters)}
+			handleClick={handleFilter}
+			options={filterOption.options}
+		/>
 	)
 }
 

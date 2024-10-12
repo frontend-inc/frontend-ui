@@ -8,11 +8,10 @@ type MobileDrawerLinkProps = {
 }
 
 const MobileDrawerLink: React.FC<MobileDrawerLinkProps> = (props) => {
-
 	const { menuItem, handleClick } = props
 
-  const handleMenuClick = (menuItem) => {
-	if (menuItem?.link_type == 'url') {
+	const handleMenuClick = (menuItem) => {
+		if (menuItem?.link_type == 'url') {
 			window.open(menuItem.url, '_blank')
 		} else {
 			handleClick(menuItem.path)
@@ -20,14 +19,14 @@ const MobileDrawerLink: React.FC<MobileDrawerLinkProps> = (props) => {
 	}
 
 	return (
-    <Button 
-      fullWidth
-      variant="text"
-      className='justify-start'
-      onClick={() => handleMenuClick(menuItem)}
-      >
-      {menuItem.label}
-    </Button>    		
+		<Button
+			fullWidth
+			variant="text"
+			className="justify-start"
+			onClick={() => handleMenuClick(menuItem)}
+		>
+			{menuItem.label}
+		</Button>
 	)
 }
 

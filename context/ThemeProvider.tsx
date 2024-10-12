@@ -14,14 +14,14 @@ type ThemeProviderProps = {
 
 const ThemeProvider = (props: ThemeProviderProps) => {
 	const {
-    primaryColor,
+		primaryColor,
 		bgcolor,
 		textPrimary,
 		textSecondary,
 		headerFont,
 		bodyFont,
 		borderRadius,
-		children		
+		children,
 	} = props || {}
 
 	const value = {
@@ -34,11 +34,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 		borderRadius,
 	}
 
-	return (
-		<ThemeContext.Provider value={value}>
-				{children}
-		</ThemeContext.Provider>
-	)
+	return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 }
 
 export default ThemeProvider

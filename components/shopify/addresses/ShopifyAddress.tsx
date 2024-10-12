@@ -65,7 +65,7 @@ const Address: React.FC<AddressProps> = (props) => {
 		<>
 			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
-				<div className='flex flex-col space-y-3'>
+				<div className="flex flex-col space-y-3">
 					<ShopifyAddressForm address={address} handleChange={handleChange} />
 					<Button
 						fullWidth

@@ -25,7 +25,9 @@ export type ProductCollectionListItemsProps = {
 	}
 }
 
-const ProductCollectionListItems: React.FC<ProductCollectionListItemsProps> = (props) => {
+const ProductCollectionListItems: React.FC<ProductCollectionListItemsProps> = (
+	props
+) => {
 	const router = useRouter()
 	const { clientUrl } = useApp()
 
@@ -80,7 +82,7 @@ const ProductCollectionListItems: React.FC<ProductCollectionListItemsProps> = (p
 	return (
 		<div className="flex flex-col space-y-2 w-full">
 			<DataLayout {...slots.list} grid={grid} loading={loading}>
-				{resources?.map((resource,) => (
+				{resources?.map((resource) => (
 					<ProductCollectionListItem
 						key={resource?.id}
 						style={style}

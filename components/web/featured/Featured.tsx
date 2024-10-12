@@ -29,7 +29,7 @@ const Featured: React.FC<FeaturedProps> = (props) => {
 
 	return (
 		<Container maxWidth="lg">
-			<div className='w-full flex flex-col space-y-3'>
+			<div className="w-full flex flex-col space-y-3">
 				{items?.map((item, i) => (
 					<FeaturedCard
 						key={i}

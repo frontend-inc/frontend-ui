@@ -36,11 +36,11 @@ const ShopifyCollections: React.FC<ShopifyCollectionsProps> = (props) => {
 
 	return (
 		<div
-      className={cn(
-        "w-full grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(360px,1fr))] gap-4 pb-1",           
-        loading && "opacity-50"
-      )}
-    >
+			className={cn(
+				'w-full grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(360px,1fr))] gap-4 pb-1',
+				loading && 'opacity-50'
+			)}
+		>
 			{collections?.map((collection, index) => (
 				<ShopifyCollectionCard
 					key={index}

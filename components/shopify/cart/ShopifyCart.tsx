@@ -34,22 +34,20 @@ const ShopifyCart: React.FC<ShopifyCartProps> = (props) => {
 			open={cartOpen}
 			handleClose={toggleCart}
 			title={title}
-      buttons={
-        <ShopifyCheckoutButton />
-      }
+			buttons={<ShopifyCheckoutButton />}
 		>
 			{cart?.lines?.edges?.length > 0 ? (
-        <div className='flex flex-col justify-between h-full'>
-				<div className='flex flex-col space-y-4'>
-					<ShopifyCartLines />
-					<ShopifyCartDiscounts />				
+				<div className="flex flex-col justify-between h-full">
+					<div className="flex flex-col space-y-4">
+						<ShopifyCartLines />
+						<ShopifyCartDiscounts />
+					</div>
+					<ShopifyCartTotals />
 				</div>
-        <ShopifyCartTotals />
-        </div>
 			) : (
 				<div className="h-1/2 flex flex-col justify-center items-center">
 					<Placeholder
-            icon={'ShoppingCart'}
+						icon={'ShoppingCart'}
 						title="Your cart is empty"
 						description="Continue shopping to add items to your cart"
 					/>
@@ -60,4 +58,3 @@ const ShopifyCart: React.FC<ShopifyCartProps> = (props) => {
 }
 
 export default ShopifyCart
-

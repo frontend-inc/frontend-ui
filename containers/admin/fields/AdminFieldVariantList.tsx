@@ -36,7 +36,7 @@ const AdminFieldVariantList: React.FC<FieldVariantListProps> = (props) => {
 
 	return (
 		<div>
-			<div className='pb-2 px-2'>
+			<div className="pb-2 px-2">
 				<SearchInput
 					value={text}
 					placeholder="Search fields"
@@ -45,7 +45,7 @@ const AdminFieldVariantList: React.FC<FieldVariantListProps> = (props) => {
 				/>
 			</div>
 			{field?.id ? (
-				<div className='px-2'>
+				<div className="px-2">
 					<AdminFieldVariantItem
 						field={FIELD_VARIANTS?.find((f) => f.variant == field.variant)}
 						handleClick={() => null}

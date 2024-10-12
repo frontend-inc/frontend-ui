@@ -18,9 +18,9 @@ const AdminProductToolbar = (props) => {
 
 	return (
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
-      <Button onClick={handleAddQuestions} icon="Plus">
-        Add Questions
-      </Button>
+			<Button onClick={handleAddQuestions} icon="Plus">
+				Add Questions
+			</Button>
 		</ResourceToolbarModal>
 	)
 }

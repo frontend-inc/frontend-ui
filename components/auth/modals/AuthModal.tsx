@@ -123,20 +123,24 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 	}, [authOpen])
 
 	return (
-		<Modal       
-      title={tab == 0
-        ? 'Login'
-        : tab == 1
-        ? 'Signup'
-        : tab == 2
-        ? 'Forgot Password'
-        : tab == 3
-        ? 'Verify Pin'
-        : tab == 4
-        ? 'Resend Pin'
-        : 'Reset Password'}
-      description="Register or login"
-      open={authOpen} handleClose={() => setAuthOpen(false)}>
+		<Modal
+			title={
+				tab == 0
+					? 'Login'
+					: tab == 1
+					? 'Signup'
+					: tab == 2
+					? 'Forgot Password'
+					: tab == 3
+					? 'Verify Pin'
+					: tab == 4
+					? 'Resend Pin'
+					: 'Reset Password'
+			}
+			description="Register or login"
+			open={authOpen}
+			handleClose={() => setAuthOpen(false)}
+		>
 			<div className="flex flex-col space-y-3">
 				{tab === 0 && (
 					<LoginForm

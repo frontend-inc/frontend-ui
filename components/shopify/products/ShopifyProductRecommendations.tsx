@@ -70,7 +70,7 @@ const ShopifyProductRecommendations: React.FC<
 	}, [handle])
 
 	return (
-		<div className='w-full'>
+		<div className="w-full">
 			{layout == 'grid' && (
 				<ShopifyProducts
 					href={href}

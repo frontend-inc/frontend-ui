@@ -12,16 +12,16 @@ const CellButton: React.FC<CellButtonProps> = (props) => {
 	const { children, icon, handleClick } = props
 
 	return (
-    <Button
-      fullWidth 
-      size="small"
-      color="secondary"
-      variant="contained"
-      startIcon={<Icon name={icon} />}
-      onClick={handleClick && handleClick}
-    >
-      {children}
-    </Button>
+		<Button
+			fullWidth
+			size="small"
+			color="secondary"
+			variant="contained"
+			startIcon={<Icon name={icon} />}
+			onClick={handleClick && handleClick}
+		>
+			{children}
+		</Button>
 	)
 }
 

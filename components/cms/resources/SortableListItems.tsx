@@ -27,7 +27,7 @@ const SortableListItems: React.FC<SortableListItemsProps> = (props) => {
 	} = props || {}
 
 	return (
-		<div className='flex flex-col space-y-2'>
+		<div className="flex flex-col space-y-2">
 			<SortableList
 				droppableId={droppableId}
 				items={resources}

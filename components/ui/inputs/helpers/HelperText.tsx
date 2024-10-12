@@ -8,11 +8,7 @@ type HelperTextProps = {
 const HelperText: React.FC<HelperTextProps> = (props) => {
 	const { text } = props || {}
 	if (!text) return null
-	return (
-		<Typography variant="caption">
-			{text}
-		</Typography>
-	)
+	return <Typography variant="caption">{text}</Typography>
 }
 
 export default HelperText

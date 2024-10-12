@@ -15,12 +15,12 @@ type ProfileInfoProps = {
 const ProfileInfo: React.FC<ProfileInfoProps> = (props) => {
 	const { title, description, label, socialLinks = [] } = props
 	return (
-		<div className='flex flex-col space-y-2'>
-			<div className='flex flex-col'>
+		<div className="flex flex-col space-y-2">
+			<div className="flex flex-col">
 				<FieldString value={label} variant="caption" color="text.secondary" />
 				<FieldString value={title} />
 				{socialLinks?.length > 0 && (
-					<div className='flex flex-row space-x-1'>
+					<div className="flex flex-row space-x-1">
 						{socialLinks?.map((link, index) => (
 							<SocialLink key={index} provider={link.value} url={link.url} />
 						))}

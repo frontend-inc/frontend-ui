@@ -77,7 +77,7 @@ const DocumentListDrawer: React.FC<DocumentListDrawerProps> = (props) => {
 
 	return (
 		<Drawer
-      mode="editor"
+			mode="editor"
 			open={open}
 			title={`Add ${field?.foreign_collection?.singular_name}`}
 			handleClose={handleClose}
@@ -114,7 +114,11 @@ const DocumentListDrawer: React.FC<DocumentListDrawerProps> = (props) => {
 					fullWidth
 					onClick={handleLoadMore}
 					endIcon={
-						loading ? <CircularProgress /> : <ChevronDown className="w-5 h-5 text-foreground" />
+						loading ? (
+							<CircularProgress />
+						) : (
+							<ChevronDown className="w-5 h-5 text-foreground" />
+						)
 					}
 				>
 					Load More

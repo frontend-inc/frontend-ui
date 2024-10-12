@@ -45,7 +45,7 @@ const AdminDocumentForm: React.FC<AdminDocumentFormProps> = (props) => {
 
 	if (!document) return null
 	return (
-		<div className='flex flex-col space-y-3'>
+		<div className="flex flex-col space-y-3">
 			{editableFields?.map((field, i) => (
 				<AdminDocumentInput
 					key={i}

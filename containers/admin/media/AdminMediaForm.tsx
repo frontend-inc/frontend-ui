@@ -18,14 +18,16 @@ const AdminMediaForm: React.FC<ResourceFormProps> = (props) => {
 	}
 
 	return (
-		<Drawer 
-      mode="editor" 
-      open={open} 
-      handleClose={handleClose} title="Upload an Asset">
-			<div className='mb-2'>
+		<Drawer
+			mode="editor"
+			open={open}
+			handleClose={handleClose}
+			title="Upload an Asset"
+		>
+			<div className="mb-2">
 				<ButtonTabs
-          fullWidth 
-					options={[            
+					fullWidth
+					options={[
 						{ label: 'Upload', value: 0 },
 						{ label: 'Unsplash', value: 1 },
 					]}

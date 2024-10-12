@@ -36,10 +36,10 @@ const TableHeaders: React.FC<TableHeaderProps> = (props) => {
 		<TableRow>
 			{enableSelect && (
 				<TableCell variant="head" sticky header small>
-          <div className='mx-2'>
-            {/* @ts-ignore */}
-					  <Checkbox value={checked} handleChange={handleSelectAll} />
-          </div>
+					<div className="mx-2">
+						{/* @ts-ignore */}
+						<Checkbox value={checked} handleChange={handleSelectAll} />
+					</div>
 				</TableCell>
 			)}
 			{(enableEdit || enableDelete || enableShow) && (

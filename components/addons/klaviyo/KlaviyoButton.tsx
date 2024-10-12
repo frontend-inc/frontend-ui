@@ -27,7 +27,7 @@ const KlaviyoButton: React.FC<KlaviyoButtonProps> = (props) => {
 
 	if (!formId) return null
 	return (
-		<div className='flex flex-row justify-center'>
+		<div className="flex flex-row justify-center">
 			<Button variant={variant} onClick={handleClick}>
 				{buttonText}
 			</Button>

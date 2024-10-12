@@ -44,9 +44,8 @@ const ImageListItems: React.FC<ImageListItemsProps> = (props) => {
 		setOpenShow(true)
 	}
 
-
 	return (
-		<div className='flex flex-col space-y-2 w-full'>
+		<div className="flex flex-col space-y-2 w-full">
 			<DataLayout grid>
 				{resources?.map((resource) => (
 					<ImageCard

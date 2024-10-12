@@ -35,7 +35,7 @@ const Statistics: React.FC<StatisticsProps> = (props) => {
 	}, [url])
 
 	return (
-		<div className='flex flex-col space-y-2 md:flex-row md:space-x-2'>		
+		<div className="flex flex-col space-y-2 md:flex-row md:space-x-2">
 			{metaFields?.map((metaField, i) => (
 				<Statistic
 					key={i}

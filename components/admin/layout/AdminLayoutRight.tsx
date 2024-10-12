@@ -16,12 +16,14 @@ const AdminLayoutRight: React.FC<AdminLayoutRightProps> = (props) => {
 		<div>
 			<Hidden smDown>
 				{openLayoutRight && (
-          <div className='border-l border-border w-[300px] min-w-[300px] h-screen'>{children}</div>
-        )}
+					<div className="border-l border-border w-[300px] min-w-[300px] h-screen">
+						{children}
+					</div>
+				)}
 			</Hidden>
 			<Hidden smUp>
 				<Drawer
-          mode="editor"
+					mode="editor"
 					disablePadding
 					title={title}
 					open={openLayoutRight}

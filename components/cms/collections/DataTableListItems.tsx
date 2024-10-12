@@ -64,7 +64,7 @@ const DataTableList: React.FC<DataTableListProps> = (props) => {
 	}
 
 	return (
-		<div className='flex flex-col space-y-2'>
+		<div className="flex flex-col space-y-2">
 			<div className={cn(loading && 'opacity-50')}>
 				<TableList
 					handleClick={handleCellClick}

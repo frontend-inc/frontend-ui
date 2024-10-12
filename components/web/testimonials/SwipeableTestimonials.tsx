@@ -1,7 +1,7 @@
 import React from 'react'
 import { Swipeable } from '../..'
 import SwipeableTestimonialCard from './SwipeableTestimonialCard'
-import { cn } from "../../../shadcn/lib/utils"
+import { cn } from '../../../shadcn/lib/utils'
 
 type SwipeableTestimonialsProps = {
 	items: Record<string, any>[]
@@ -16,11 +16,11 @@ const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
 		<div>
 			<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
 				{items?.map((testimonial, i) => (
-					<div 
-            className={cn(
-              "flex items-center justify-center p-2",
-              enableArrows && "px-6",
-            )}
+					<div
+						className={cn(
+							'flex items-center justify-center p-2',
+							enableArrows && 'px-6'
+						)}
 						key={i}
 					>
 						<SwipeableTestimonialCard

@@ -43,7 +43,7 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
 
 	return (
 		<Drawer
-      mode="editor"
+			mode="editor"
 			disablePadding
 			open={open}
 			handleClose={handleClose}
@@ -61,7 +61,12 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
 			}
 		>
 			<div className="p-2">
-				<ButtonTabs fullWidth value={tab} options={TABS} handleChange={setTab} />
+				<ButtonTabs
+					fullWidth
+					value={tab}
+					options={TABS}
+					handleChange={setTab}
+				/>
 			</div>
 			{tab == 0 && (
 				<AdminFieldVariantList field={resource} handleClick={handleClick} />

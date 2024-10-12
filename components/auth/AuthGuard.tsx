@@ -25,7 +25,7 @@ const AuthGuard: React.FC<AuthGuardProps> = (props) => {
 	}
 	if (requireTeam && !currentUser?.team_id) {
 		return (
-			<div className='flex w-full h-screen justify-center items-center'>
+			<div className="flex w-full h-screen justify-center items-center">
 				<Heading
 					textAlign="center"
 					title="Team required"
@@ -40,7 +40,7 @@ const AuthGuard: React.FC<AuthGuardProps> = (props) => {
 		currentUser?.role !== 'admin'
 	) {
 		return (
-			<div className='flex w-full h-screen justify-center items-center'>
+			<div className="flex w-full h-screen justify-center items-center">
 				<Heading
 					textAlign="center"
 					title="Unauthorized"
@@ -56,4 +56,3 @@ const AuthGuard: React.FC<AuthGuardProps> = (props) => {
 }
 
 export default AuthGuard
-

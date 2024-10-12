@@ -30,7 +30,7 @@ const ShopifyProductFavorites: React.FC<ShopifyProductFavoritesProps> = (
 	const { shopify_favorites: favorites } = user || {}
 
 	return (
-		<div className='w-full'>
+		<div className="w-full">
 			<ShopifyProductArray
 				href={href}
 				handles={favorites || []}

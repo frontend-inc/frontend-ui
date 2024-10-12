@@ -5,7 +5,7 @@ import { Plus } from 'lucide-react'
 import { useMenu } from '../../../hooks'
 import { SortableList, InputLabel, Drawer } from '../..'
 import {
-  Icon,
+	Icon,
 	ArrayInput,
 	Autosuggest,
 	BooleanInput,
@@ -23,75 +23,80 @@ type JsonbFieldProps = {
 }
 
 const JsonbField: React.FC<JsonbFieldProps> = (props) => {
-	const {
-		item,
-		handleChange,
-		field,
-		direction = 'column',		
-	} = props
+	const { item, handleChange, field, direction = 'column' } = props
 
-  const Component = {
-    'boolean': BooleanInput,
-    'string': TextInput,
-    'array': ArrayInput,
-    'text': TextInput,
-    'number': TextInput,
-    'select': Autosuggest,
-    'rating': RatingInput
-  }[field.type]
+	const Component = {
+		boolean: BooleanInput,
+		string: TextInput,
+		array: ArrayInput,
+		text: TextInput,
+		number: TextInput,
+		select: Autosuggest,
+		rating: RatingInput,
+	}[field.type]
 
-  const { label, name, placeholder, options } = field || {}
-  const value = item[field.name]
+	const { label, name, placeholder, options } = field || {}
+	const value = item[field.name]
 
-  if(!Component) return null;
-	return (		
-    <Component 
-      label={label}
-      name={name}
-      value={value}
-      handleChange={handleChange}
-      placeholder={placeholder}
-      direction={direction}
-      options={ options }
-    />
+	if (!Component) return null
+	return (
+		<Component
+			label={label}
+			name={name}
+			value={value}
+			handleChange={handleChange}
+			placeholder={placeholder}
+			direction={direction}
+			options={options}
+		/>
 	)
 }
 
 type JsonbItemProps = {
-  index: number
-  item: any
-  titleField: string
-  handleClick: (event: React.MouseEvent, item: any, index: number) => void
-  handleRemove: (index: number) => void
+	index: number
+	item: any
+	titleField: string
+	handleClick: (event: React.MouseEvent, item: any, index: number) => void
+	handleRemove: (index: number) => void
 }
 
-function JsonbItem({ index, item, titleField, handleClick, handleRemove }: JsonbItemProps) {
-  return (
-    <li className={`p-0 w-full rounded border border-gray-200 bg-white my-1 ${item.isDragging ? 'shadow-lg' : ''}`}>
-      <div className="flex items-center">
-        <button
-          className="flex-grow flex items-center py-2 px-4 rounded hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          onClick={(ev) => handleClick(ev, item, index)}
-        >
-          <span className="mr-2 cursor-grab">
-            <Icon name="GripVertical" />
-          </span>
-          {item?.icon && (
-            <span className="mr-2">
-              <Icon name={item.icon} />
-            </span>
-          )}
-          <span className="text-gray-900">{item[titleField]}</span>
-        </button>
-        <button
-          className="p-2 text-gray-400 hover:text-gray-600 focus:outline-none"
-          onClick={() => handleRemove(index)}
-        >
-          <Icon name="X" />
-        </button>
-      </div>
-    </li>
-  )
+function JsonbItem({
+	index,
+	item,
+	titleField,
+	handleClick,
+	handleRemove,
+}: JsonbItemProps) {
+	return (
+		<li
+			className={`p-0 w-full rounded border border-gray-200 bg-white my-1 ${
+				item.isDragging ? 'shadow-lg' : ''
+			}`}
+		>
+			<div className="flex items-center">
+				<button
+					className="flex-grow flex items-center py-2 px-4 rounded hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+					onClick={(ev) => handleClick(ev, item, index)}
+				>
+					<span className="mr-2 cursor-grab">
+						<Icon name="GripVertical" />
+					</span>
+					{item?.icon && (
+						<span className="mr-2">
+							<Icon name={item.icon} />
+						</span>
+					)}
+					<span className="text-gray-900">{item[titleField]}</span>
+				</button>
+				<button
+					className="p-2 text-gray-400 hover:text-gray-600 focus:outline-none"
+					onClick={() => handleRemove(index)}
+				>
+					<Icon name="X" />
+				</button>
+			</div>
+		</li>
+	)
 }
 
 type JsonbInputProps = InputPropsType & {
@@ -192,7 +197,7 @@ const JsonbInput: React.FC<JsonbInputProps> = (props) => {
 	}, [fields])
 
 	return (
-		<div className='flex flex-col space-y-2'>
+		<div className="flex flex-col space-y-2">
 			<InputLabel label={label} info={info} />
 			<SortableList
 				droppableId={`json-array-${name}`}
@@ -234,18 +239,18 @@ const JsonbInput: React.FC<JsonbInputProps> = (props) => {
 					</Button>
 				}
 			>
-        <div className='flex flex-col space-y-2'>
-        {fields.map((field, i) => (
-            <JsonbField
-              key={i}
-              index={i}
-              item={activeItem}
-              field={field}
-              handleChange={handleInputChange}
-              direction="column"
-            />
-        ))}
-        </div>
+				<div className="flex flex-col space-y-2">
+					{fields.map((field, i) => (
+						<JsonbField
+							key={i}
+							index={i}
+							item={activeItem}
+							field={field}
+							handleChange={handleInputChange}
+							direction="column"
+						/>
+					))}
+				</div>
 			</Drawer>
 		</div>
 	)

@@ -9,16 +9,16 @@ const ShopifyProductImageCarousel: React.FC = () => {
 	return (
 		<CarouselImage>
 			{images?.map((image) => (
-				<div className='w-full h-full pb-1' key={image.id}>
+				<div className="w-full h-full pb-1" key={image.id}>
 					<TouchableOpacity handleClick={() => handleImageClick(image)}>
-            <AspectRatio ratio={4/3}>
-              <Image
-                src={image?.url?.url}
-                height={1200}
-                width={1200}                
-                alt={image?.altText}
-              />
-            </AspectRatio>
+						<AspectRatio ratio={4 / 3}>
+							<Image
+								src={image?.url?.url}
+								height={1200}
+								width={1200}
+								alt={image?.altText}
+							/>
+						</AspectRatio>
 					</TouchableOpacity>
 				</div>
 			))}

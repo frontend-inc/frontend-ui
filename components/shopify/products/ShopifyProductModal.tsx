@@ -22,11 +22,11 @@ const ShopifyProductModal: React.FC<ShopifyProductModalProps> = (props) => {
 
 	return (
 		<Modal open={open} handleClose={handleClose} maxWidth={'md'}>
-      <ShopifyProductCard
-        product={shopifyProduct}
-        enableQuantity={enableQuantity}
-        buttonText={buttonText}
-      />
+			<ShopifyProductCard
+				product={shopifyProduct}
+				enableQuantity={enableQuantity}
+				buttonText={buttonText}
+			/>
 		</Modal>
 	)
 }

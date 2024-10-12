@@ -135,7 +135,7 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 				break
 			case 'file':
 				handleCellFileClick(value)
-				break			
+				break
 		}
 	}
 
@@ -158,7 +158,6 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 			window.open(file.url, '_blank')
 		}
 	}
-
 
 	const handleCellBelongsToClick = async (params) => {
 		const { value: resource, field: belongsToField } = params || {}

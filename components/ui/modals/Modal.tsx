@@ -3,7 +3,7 @@ import { cn } from '../../../shadcn/lib/utils'
 import {
 	Dialog,
 	DialogContent,
-  DialogDescription,
+	DialogDescription,
 	DialogHeader,
 	DialogTitle,
 	DialogFooter,
@@ -22,7 +22,7 @@ type ModalProps = {
 	children?: React.ReactNode
 	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 	secondaryActions?: React.ReactNode
-  mode?: string
+	mode?: string
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -33,35 +33,27 @@ const Modal: React.FC<ModalProps> = ({
 	buttons,
 	children,
 	description,
-  mode,
+	mode,
 }) => {
 	return (
 		<Dialog open={open} onOpenChange={handleClose}>
 			<DialogContent
 				className={cn(
-          mode,
-					'bg-background rounded-md overflow-hidden max-h-[600px] overflow-y-scroll',
+					mode,
+					'bg-background rounded-md overflow-hidden max-h-[600px] overflow-y-scroll'
 				)}
 			>
-					<DialogHeader className="flex-shrink-0">
-					  <DialogTitle className="text-foreground">{title}</DialogTitle>
-            { description && <DialogDescription>{ description }</DialogDescription> }							 
-					</DialogHeader>
-          <ScrollArea className="max-h-[465px]">
-          <div className="space-y-4 px-4">
-					  <Loader loading={loading} />
-					  {!loading && (
-              <div className="h-full w-full">
-                {children}
-              </div>
-            )}
-          </div> 
-          </ScrollArea>				
-				{ !loading && buttons && (
-					<DialogFooter>						
-						{buttons}
-					</DialogFooter>
-				)}
+				<DialogHeader className="flex-shrink-0">
+					<DialogTitle className="text-foreground">{title}</DialogTitle>
+					{description && <DialogDescription>{description}</DialogDescription>}
+				</DialogHeader>
+				<ScrollArea className="max-h-[465px]">
+					<div className="space-y-4 px-4">
+						<Loader loading={loading} />
+						{!loading && <div className="h-full w-full">{children}</div>}
+					</div>
+				</ScrollArea>
+				{!loading && buttons && <DialogFooter>{buttons}</DialogFooter>}
 			</DialogContent>
 		</Dialog>
 	)

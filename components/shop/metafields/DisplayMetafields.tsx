@@ -14,7 +14,7 @@ const DisplayMetafields: React.FC<DisplayMetafieldsProps> = (props) => {
 	const { fields, resource } = props || {}
 
 	return (
-		<div className='flex flex-col'>
+		<div className="flex flex-col">
 			{fields?.map((field, index) => (
 				<DisplayMetafield
 					key={index}

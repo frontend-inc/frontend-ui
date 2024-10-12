@@ -21,10 +21,10 @@ const ToolbarModal: React.FC<ToolbarModalProps> = (props) => {
 		<Collapse in={open}>
 			<div>
 				<div className="flex flex-row justify-between items-center w-full">
-					<div className='flex flex-row space-x-1 items-center'>
-            <IconButton onClick={handleClose}>
-              <Icon name="X" />
-            </IconButton>
+					<div className="flex flex-row space-x-1 items-center">
+						<IconButton onClick={handleClose}>
+							<Icon name="X" />
+						</IconButton>
 						{children}
 					</div>
 				</div>

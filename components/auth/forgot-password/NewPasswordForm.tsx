@@ -16,7 +16,7 @@ const NewPasswordForm: React.FC<NewPasswordFormProps> = (props) => {
 		props
 
 	return (
-		<div className='flex flex-col space-y-2'>
+		<div className="flex flex-col space-y-2">
 			<TextInput
 				errors={errors}
 				name="password"

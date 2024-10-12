@@ -5,7 +5,7 @@ import { useCart } from '../../../hooks'
 type AddToCartButtonProps = {
 	size?: 'small' | 'medium' | 'large'
 	productId: string
-  fullWidth?: boolean
+	fullWidth?: boolean
 	availableForSale?: boolean
 }
 
@@ -19,15 +19,15 @@ const AddToCartButton = (props: AddToCartButtonProps) => {
 	}
 
 	return (
-    <Button
-      fullWidth={fullWidth}
-      loading={loading}
-      onClick={handleClick}
-      disabled={!availableForSale}
-      size={size}      
-    >
-      Add to Cart
-    </Button>
+		<Button
+			fullWidth={fullWidth}
+			loading={loading}
+			onClick={handleClick}
+			disabled={!availableForSale}
+			size={size}
+		>
+			Add to Cart
+		</Button>
 	)
 }
 

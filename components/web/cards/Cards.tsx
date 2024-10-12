@@ -33,7 +33,7 @@ const Cards: React.FC<CardsProps> = (props) => {
 
 	return (
 		<div>
-			    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 				{items?.map((item, i) => (
 					<div key={i}>
 						<Card

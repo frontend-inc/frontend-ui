@@ -29,7 +29,7 @@ type TableProps = {
 	handleSearch: (keywords: any) => void
 	handleKeywordSearch: (keywords: string) => void
 	handleSort: (field: any) => void
-	disableBorderRadius?: boolean	
+	disableBorderRadius?: boolean
 	emptyIcon?: string
 	emptyTitle?: string
 	emptyDescription?: string
@@ -123,11 +123,10 @@ const Table: React.FC<TableProps> = (props) => {
 						handlePublish={handlePublish}
 						handleUnpublish={handleUnpublish}
 						secondaryActions={secondaryActions}
-
-            fields={headers}
-            handleSearch={handleSearch}
-            handleChange={handleQueryChange}
-            handleClearFilters={handleClearQuery}    
+						fields={headers}
+						handleSearch={handleSearch}
+						handleChange={handleQueryChange}
+						handleClearFilters={handleClearQuery}
 					/>
 				}
 				headers={headers}

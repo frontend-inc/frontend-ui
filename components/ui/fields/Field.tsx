@@ -25,8 +25,8 @@ export type FieldElementProps = {
 	direction?: 'row' | 'column'
 	variant?: TypographyVariantsType
 	alignItems?: 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline'
-	placeholder?: string	
-  disableLabel?: boolean
+	placeholder?: string
+	disableLabel?: boolean
 	dateFormat?: string
 }
 

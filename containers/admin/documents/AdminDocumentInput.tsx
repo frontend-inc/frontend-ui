@@ -7,7 +7,7 @@ import {
 	DateInput,
 	RatingInput,
 	TextInput,
-  TextArea,
+	TextArea,
 	StateInput,
 	CountryInput,
 	ShopifyProductsInput,
@@ -69,7 +69,7 @@ const AdminDocumentInput: React.FC<DocumentInputProps> = (props) => {
 		datetime: DateInput,
 		boolean: CheckboxInput,
 		select: Autosuggest,
-		rating: RatingInput,		
+		rating: RatingInput,
 		products: ProductsInput,
 		shopify_products: ShopifyProductsInput,
 		file: MediaInput,
@@ -101,7 +101,7 @@ const AdminDocumentInput: React.FC<DocumentInputProps> = (props) => {
 		tags: {
 			value: value || [],
 			freeSolo: true,
-		},		
+		},
 		select: {
 			options:
 				options?.map((opt) => ({
@@ -151,21 +151,21 @@ const AdminDocumentInput: React.FC<DocumentInputProps> = (props) => {
 	}[variant]
 
 	return (
-			<div className='flex flex-row justify-between items-start space-x-2'>
-				<Component
-          label={ label }
-					errors={errors}
-					name={name}
-					value={value}
-					handleChange={handleChange}
-					{...inputProps}
-				/>        
-				{variant == 'text' && (
-          <div className="mt-6">            
-					  <AiChatModal name={name} value={value} handleChange={handleChange} />
-          </div>
-				)}
-			</div>
+		<div className="flex flex-row justify-between items-start space-x-2">
+			<Component
+				label={label}
+				errors={errors}
+				name={name}
+				value={value}
+				handleChange={handleChange}
+				{...inputProps}
+			/>
+			{variant == 'text' && (
+				<div className="mt-6">
+					<AiChatModal name={name} value={value} handleChange={handleChange} />
+				</div>
+			)}
+		</div>
 	)
 }
 

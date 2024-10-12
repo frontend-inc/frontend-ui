@@ -10,7 +10,7 @@ const AddressForm: React.FC<AddressFormProps> = (props) => {
 	const { address, handleChange } = props
 
 	return (
-		<div className='flex flex-col space-y-2'>
+		<div className="flex flex-col space-y-2">
 			<TextInput
 				placeholder="First name"
 				name="firstName"

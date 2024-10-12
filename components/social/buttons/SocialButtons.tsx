@@ -54,45 +54,27 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 		return null
 	return (
 		<div
-      className={cn(
-        'flex',        
-        size == 'small' ? 'space-x-1' : 'space-x-2',
-        direction == 'row' && 'flex-row',
-        justifyContent == 'flex-start' && 'justify-start',
-        justifyContent == 'center' && 'justify-center',        
-      )}
-		>
-			{enableLikes == true && (
-				<LikeButton
-					size={size}
-					resource={resource}
-				/>
+			className={cn(
+				'flex',
+				size == 'small' ? 'space-x-1' : 'space-x-2',
+				direction == 'row' && 'flex-row',
+				justifyContent == 'flex-start' && 'justify-start',
+				justifyContent == 'center' && 'justify-center'
 			)}
+		>
+			{enableLikes == true && <LikeButton size={size} resource={resource} />}
 			{enableFavorites == true && (
-				<FavoriteButton
-					size={size}
-					resource={resource}
-				/>
+				<FavoriteButton size={size} resource={resource} />
 			)}
 
 			{enableProductLikes == true && (
-				<ProductLikeButton
-					size={size}
-					product={product}
-					color={color}
-				/>
+				<ProductLikeButton size={size} product={product} color={color} />
 			)}
 			{enableProductFavorites == true && (
-				<ProductFavoriteButton
-					size={size}
-					product={product}
-					color={color}
-				/>
+				<ProductFavoriteButton size={size} product={product} color={color} />
 			)}
 
-			{enableComments == true && (
-				<CommentButton resource={resource} />
-			)}
+			{enableComments == true && <CommentButton resource={resource} />}
 			{enableSharing == true && (
 				<ShareButton size={size} url={currentPageUrl} />
 			)}

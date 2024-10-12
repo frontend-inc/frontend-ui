@@ -41,17 +41,17 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 		<ShadcnTableRow>
 			{enableSelect && (
 				<TableCell small align={'center'} sticky>
-          <div className='mx-2'>
-            <Checkbox
-              value={selected}
-              handleChange={handleSelect ? () => handleSelect(row) : undefined}
-            />
-          </div>
+					<div className="mx-2">
+						<Checkbox
+							value={selected}
+							handleChange={handleSelect ? () => handleSelect(row) : undefined}
+						/>
+					</div>
 				</TableCell>
 			)}
 			{(enableEdit || enableDelete) && (
 				<TableCell small align="center">
-					<div className='flex flex-row space-x-1'>
+					<div className="flex flex-row space-x-1">
 						{enableShow && (
 							<Button
 								size="small"
@@ -105,4 +105,3 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 }
 
 export default TableRow
-

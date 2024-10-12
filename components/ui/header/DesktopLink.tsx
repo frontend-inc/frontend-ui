@@ -9,7 +9,6 @@ type DesktopLinkProps = {
 }
 
 const DesktopLink: React.FC<DesktopLinkProps> = (props) => {
-
 	const { menuItem, handleClick } = props
 
 	const handleMenuClick = () => {
@@ -21,14 +20,10 @@ const DesktopLink: React.FC<DesktopLinkProps> = (props) => {
 	}
 
 	return (
-    <Button
-      variant="text"
-      onClick={ handleMenuClick }
-    >
-      {menuItem.label}
-    </Button>
+		<Button variant="text" onClick={handleMenuClick}>
+			{menuItem.label}
+		</Button>
 	)
 }
 
 export default DesktopLink
-

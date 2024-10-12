@@ -1,19 +1,17 @@
 import React from 'react'
-import {
-	Typography,
-} from '../../../tailwind'
+import { Typography } from '../../../tailwind'
 import {
 	TableHeaders,
 	TableRow,
 	Pagination,
 	Placeholder,
 } from '../../../components'
-import { 
-  Table,
-  TableHeader,
-  TableBody,
-  TableCell as ShadcnTableCell,
-  TableRow as ShadcnTableRow
+import {
+	Table,
+	TableHeader,
+	TableBody,
+	TableCell as ShadcnTableCell,
+	TableRow as ShadcnTableRow,
 } from '../../../shadcn/ui/table'
 import { cn } from '../../../shadcn/lib/utils'
 
@@ -82,13 +80,13 @@ const TableList: React.FC<TableProps> = (props) => {
 
 	return (
 		<div
-      className={cn(
-        'w-full',
-        !disableBorderRadius && 'rounded-lg overflow-hidden',
-      )}			
+			className={cn(
+				'w-full',
+				!disableBorderRadius && 'rounded-lg overflow-hidden'
+			)}
 		>
 			{(title || toolbar) && (
-				<div className='p-2 min-h-[40px] w-full'>
+				<div className="p-2 min-h-[40px] w-full">
 					{title && (
 						<Typography variant="subtitle1" color="text.primary">
 							{title}
@@ -113,8 +111,8 @@ const TableList: React.FC<TableProps> = (props) => {
 						handleSort={handleSort}
 						handleSelectAll={handleSelectAll}
 					/>
-        </TableHeader>
-        <TableBody>
+				</TableHeader>
+				<TableBody>
 					{resources?.map((row) => (
 						<TableRow
 							key={row?.id}
@@ -134,15 +132,15 @@ const TableList: React.FC<TableProps> = (props) => {
 					))}
 				</TableBody>
 			</Table>
-      {!loading && resources?.length == 0 && (
-        <div className="py-12 px-4 w-full h-full flex flex-row items-center justify-center">
-          <Placeholder
-            icon={emptyIcon}
-            title={emptyTitle}
-            description={emptyDescription}
-          />
-        </div>
-      )}
+			{!loading && resources?.length == 0 && (
+				<div className="py-12 px-4 w-full h-full flex flex-row items-center justify-center">
+					<Placeholder
+						icon={emptyIcon}
+						title={emptyTitle}
+						description={emptyDescription}
+					/>
+				</div>
+			)}
 			<Pagination
 				loading={loading}
 				page={page}

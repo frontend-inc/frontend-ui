@@ -73,7 +73,7 @@ const VideoModal: React.FC<VideoModalProps> = (props) => {
 					</>
 				}
 			>
-				<div className='flex flex-row justify-center items-center w-full h-full'>
+				<div className="flex flex-row justify-center items-center w-full h-full">
 					<video src={src} controls muted autoPlay />
 				</div>
 			</Modal>

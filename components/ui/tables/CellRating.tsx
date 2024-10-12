@@ -7,12 +7,7 @@ type CellRatingProps = {
 
 const CellRating: React.FC<CellRatingProps> = (props) => {
 	const { value = 0 } = props
-	return (
-		<Rating
-			readOnly
-			value={value}
-		/>
-	)
+	return <Rating readOnly value={value} />
 }
 
 export default CellRating

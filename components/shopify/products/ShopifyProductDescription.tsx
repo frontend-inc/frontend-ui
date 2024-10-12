@@ -13,14 +13,9 @@ const ShopifyProductDescription: React.FC<ShopifyProductDescriptionProps> = (
 ) => {
 	const { product } = props
 
-  if(!product?.description || product?.description?.length == 0) return null;
+	if (!product?.description || product?.description?.length == 0) return null
 	return (
-    <AccordionItem
-      primary='Description'
-      secondary={ 
-        product?.description 
-      }
-    />		
+		<AccordionItem primary="Description" secondary={product?.description} />
 	)
 }
 

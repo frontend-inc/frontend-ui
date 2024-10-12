@@ -52,38 +52,33 @@ const VerifyPin: React.FC<VerifyPinProps> = (props) => {
 		<>
 			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
-        <div className="flex flex-col space-y-3">
-          {!showVerifyPin ? (
-            <VerifySendPinForm
-              errors={errors}
-              user={user}
-              handleChange={handleChange}
-              handleSubmit={handleSendPin}
-              handleLogin={handleLogin}
-            />
-          ) : (
-            <VerifyPinForm
-              errors={errors}
-              user={user}
-              handleChange={handleChange}
-              handleSubmit={handleVerifyPin}
-              handleResendPin={handleResendPin}
-            />
-          )}
-          {loginUrl && (
-            <Button
-              fullWidth
-              onClick={handleLogin}
-              color="primary"
-            >
-              Back to login
-            </Button>
-          )}
-        </div>
+				<div className="flex flex-col space-y-3">
+					{!showVerifyPin ? (
+						<VerifySendPinForm
+							errors={errors}
+							user={user}
+							handleChange={handleChange}
+							handleSubmit={handleSendPin}
+							handleLogin={handleLogin}
+						/>
+					) : (
+						<VerifyPinForm
+							errors={errors}
+							user={user}
+							handleChange={handleChange}
+							handleSubmit={handleVerifyPin}
+							handleResendPin={handleResendPin}
+						/>
+					)}
+					{loginUrl && (
+						<Button fullWidth onClick={handleLogin} color="primary">
+							Back to login
+						</Button>
+					)}
+				</div>
 			</AuthScreen>
 		</>
 	)
 }
 
 export default VerifyPin
-

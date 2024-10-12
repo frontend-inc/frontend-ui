@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {  Button } from '../../../tailwind'
+import { Button } from '../../../tailwind'
 import { TextInputPropsType } from '../../../types'
 import AIChatForm from './AIChatForm'
 import AIChatMessages from './AIChatMessages'

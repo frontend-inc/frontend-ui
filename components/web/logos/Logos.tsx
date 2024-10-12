@@ -13,7 +13,7 @@ const Logos: React.FC<LogosProps> = (props) => {
 	const { logos = [] } = props
 
 	return (
-		<div className='flex flex-col w-full'>
+		<div className="flex flex-col w-full">
 			<BrandLogos logos={logos} width={128} height={48} />
 			{logos?.length === 0 && (
 				<Placeholder

@@ -32,7 +32,7 @@ const ShopSubscriptionTable: React.FC<ShopSubscriptionTableProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 		>
-			<div className='flex flex-col space-y-4'>
+			<div className="flex flex-col space-y-4">
 				<Heading
 					label={label}
 					title={title}

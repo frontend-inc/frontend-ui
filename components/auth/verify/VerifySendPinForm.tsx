@@ -16,7 +16,7 @@ const SendPinForm: React.FC<SendPinFormProps> = (props) => {
 		props
 
 	return (
-		<div className='flex flex-col space-y-3'>
+		<div className="flex flex-col space-y-3">
 			<TextInput
 				errors={errors}
 				label="Email"

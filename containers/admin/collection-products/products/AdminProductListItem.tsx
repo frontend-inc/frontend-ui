@@ -25,12 +25,12 @@ const AdminProductItem: React.FC<ResourceItemProps> = (props) => {
 			image={product?.image?.url}
 			primary={product?.title}
 			secondary={
-				<div className='flex flex-col space-y-1'>
+				<div className="flex flex-col space-y-1">
 					<DisplayFields
 						resource={product}
 						fields={[{ label: 'Price', name: 'price', variant: 'price' }]}
-					/>					
-					<PublishLabel published={product?.published} />					
+					/>
+					<PublishLabel published={product?.published} />
 				</div>
 			}
 			handleEdit={handleEdit}

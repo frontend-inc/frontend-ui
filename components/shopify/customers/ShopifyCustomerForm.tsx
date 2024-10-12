@@ -14,7 +14,7 @@ const ShopifyCustomerForm: React.FC<ShopifyCustomerFormProps> = (props) => {
 	const { loading, customer, handleChange, handleSubmit } = props
 
 	return (
-		<div className='flex flex-col space-y-3'>
+		<div className="flex flex-col space-y-3">
 			<TextInput
 				placeholder="First Name"
 				name="firstName"

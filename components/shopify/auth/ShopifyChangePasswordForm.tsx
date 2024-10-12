@@ -17,7 +17,7 @@ const ShopifyForgotPasswordForm: React.FC<ShopifyForgotPasswordFormProps> = (
 	const { errors, customer, handleChange, handleSubmit, handleLogin } = props
 
 	return (
-		<div className='flex flex-col space-y-2'>
+		<div className="flex flex-col space-y-2">
 			<TextInput
 				errors={errors}
 				name="email"
@@ -34,12 +34,7 @@ const ShopifyForgotPasswordForm: React.FC<ShopifyForgotPasswordFormProps> = (
 				Send Instructions
 			</Button>
 			{handleLogin && (
-				<Button
-					fullWidth
-					variant="text"
-					color="primary"
-					onClick={handleLogin}
-				>
+				<Button fullWidth variant="text" color="primary" onClick={handleLogin}>
 					Back to Login
 				</Button>
 			)}

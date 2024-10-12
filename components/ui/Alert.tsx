@@ -7,24 +7,21 @@ export type AlertProps = {
 }
 
 const Alert: React.FC<AlertProps> = (props) => {
-
 	const { alert, setAlert } = useContext(AppContext)
 
 	useEffect(() => {
 		if (alert && alert?.message) {
 			toast(alert?.status, {
-        description: alert?.message,
-        action: {
-          label: "Close",
-          onClick: () => setAlert(null),
-        },
-      })
+				description: alert?.message,
+				action: {
+					label: 'Close',
+					onClick: () => setAlert(null),
+				},
+			})
 		}
 	}, [alert])
 
-	return (
-    <Toaster />		
-	)
+	return <Toaster />
 }
 
 export default Alert

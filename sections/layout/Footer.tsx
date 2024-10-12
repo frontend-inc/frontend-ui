@@ -6,7 +6,7 @@ import { useApp } from '../../hooks'
 
 type LayoutFooterProps = FooterProps & {
 	bgColor: string
-  mode: 'light' | 'dark'
+	mode: 'light' | 'dark'
 }
 
 const AppFooter: React.FC<LayoutFooterProps> = (props) => {

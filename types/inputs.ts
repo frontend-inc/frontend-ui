@@ -61,7 +61,7 @@ export type InputPropsType = {
 
 export type TextInputPropsType = InputPropsType & {
 	direction?: 'row' | 'column'
-	type?: string	
+	type?: string
 	className?: string
 }
 

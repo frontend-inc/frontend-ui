@@ -51,10 +51,12 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		name: name,
 	})
 
-	const { loading, delayedLoading, resources, findOne, findMany } = useResource({
-		url: url,
-		name: name,
-	})
+	const { loading, delayedLoading, resources, findOne, findMany } = useResource(
+		{
+			url: url,
+			name: name,
+		}
+	)
 
 	const [option, setOption] = useState<OptionType>()
 	const [options, setOptions] = useState<OptionType[]>([])
@@ -84,16 +86,16 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		let resource = await findOne(value)
 		if (resource?.id) {
 			setOptions([
-        ...options,
-        {
-				  label: get(resource, displayField),
-				  value: get(resource, valueParam),
-			  }
-      ])
+				...options,
+				{
+					label: get(resource, displayField),
+					value: get(resource, valueParam),
+				},
+			])
 		}
 	}
 
-  useEffect(() => {
+	useEffect(() => {
 		if (value && url) {
 			findOption(value)
 		}
@@ -101,10 +103,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 
 	useEffect(() => {
 		if (resources) {
-			setOptions([
-        ...formatResources(resources), 
-        ...defaultOptions
-      ])
+			setOptions([...formatResources(resources), ...defaultOptions])
 		}
 	}, [resources])
 

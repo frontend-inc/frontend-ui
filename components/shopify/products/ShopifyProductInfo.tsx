@@ -21,21 +21,25 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = (props) => {
 
 	if (!product) return null
 	return (
-		<div className='flex flex-col space-y-2'>
+		<div className="flex flex-col space-y-2">
 			<Typography color="text.primary" variant="h4">
 				{product.title}
 			</Typography>
 			{enableOkendoStarRating && <OkendoStarRating product={product} />}
-      <div className="flex flex-row space-x-2">
-        <Typography color="text.primary" variant="h6">
-          {price && formatCurrency(price)}				
-        </Typography>
-        {compareAtPrice && (
-          <Typography variant="subtitle2" color="text.secondary" className='line-through'>
-            {formatCurrency(compareAtPrice)}
-          </Typography>
-          )}
-        </div>
+			<div className="flex flex-row space-x-2">
+				<Typography color="text.primary" variant="h6">
+					{price && formatCurrency(price)}
+				</Typography>
+				{compareAtPrice && (
+					<Typography
+						variant="subtitle2"
+						color="text.secondary"
+						className="line-through"
+					>
+						{formatCurrency(compareAtPrice)}
+					</Typography>
+				)}
+			</div>
 		</div>
 	)
 }

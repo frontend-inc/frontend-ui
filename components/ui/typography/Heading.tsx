@@ -8,7 +8,7 @@ type HeadingProps = {
 	label?: string
 	title?: string
 	description?: string
-	textAlign?: 'left' | 'center' | 'right' 
+	textAlign?: 'left' | 'center' | 'right'
 	textVariant?: TypographyVariantsType
 	enableBorder?: boolean
 	secondaryAction?: React.ReactNode
@@ -28,15 +28,16 @@ const Heading: React.FC<HeadingProps> = (props) => {
 	return (
 		<div className="p-4 w-full flex justify-between items-center flex-col sm:flex-row">
 			<div className="w-full flex flex-col justify-between">
-				<div className='flex flex-col space-y-2'>
+				<div className="flex flex-col space-y-2">
 					{label && (
-            <div className={
-              cn(                
-                textAlign === 'center' && 'text-center', textAlign === 'right' && 'text-right'
-              )
-            }>
-            <Label variant='outline' label={label} />            
-            </div> 
+						<div
+							className={cn(
+								textAlign === 'center' && 'text-center',
+								textAlign === 'right' && 'text-right'
+							)}
+						>
+							<Label variant="outline" label={label} />
+						</div>
 					)}
 					{title && (
 						<Typography variant={textVariant} textAlign={textAlign}>
@@ -44,7 +45,11 @@ const Heading: React.FC<HeadingProps> = (props) => {
 						</Typography>
 					)}
 					{description && (
-						<Typography variant="body1" className='text-muted-foreground' textAlign={textAlign}>
+						<Typography
+							variant="body1"
+							className="text-muted-foreground"
+							textAlign={textAlign}
+						>
 							{description}
 						</Typography>
 					)}

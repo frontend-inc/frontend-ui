@@ -1,5 +1,5 @@
-const xs = 0 
-const sm = 640 
+const xs = 0
+const sm = 640
 const md = 768
 const lg = 1024
 const xl = 1280

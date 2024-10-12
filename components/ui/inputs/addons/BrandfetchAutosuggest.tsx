@@ -52,7 +52,7 @@ const BrandfetchAutosuggest: React.FC<AutosuggestProps> = (props) => {
 	}
 
 	return (
-		<div className='w-full max-w-[380px]'>
+		<div className="w-full max-w-[380px]">
 			<AutocompleteInput
 				name={name}
 				label={label}

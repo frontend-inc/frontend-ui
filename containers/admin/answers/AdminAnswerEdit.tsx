@@ -1,10 +1,6 @@
 import React from 'react'
 import { Button } from '../../../tailwind'
-import {
-	Drawer,
-	FormFields,
-	IconLoading,
-} from '../../../components'
+import { Drawer, FormFields, IconLoading } from '../../../components'
 import { ResourceFormProps } from '../../../components/cms/resources/ResourceForm'
 
 const AdminAnswerEdit: React.FC<ResourceFormProps> = (props) => {
@@ -43,7 +39,7 @@ const AdminAnswerEdit: React.FC<ResourceFormProps> = (props) => {
 
 	return (
 		<Drawer
-      mode="editor"
+			mode="editor"
 			open={open}
 			handleClose={handleClose}
 			title={title ? title : resource?.id ? 'Edit' : 'Add'}

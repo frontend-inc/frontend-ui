@@ -12,7 +12,6 @@ type LogoProps = {
 const Logo: React.FC<LogoProps> = (props) => {
 	const { src = null, height = 50, width = 120, alt = 'Logo' } = props
 
-
 	return src ? (
 		<Image
 			src={src}

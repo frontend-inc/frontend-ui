@@ -52,29 +52,26 @@ const ShopifyProductCarousel: React.FC<ShopifyProductCarouselProps> = (
 	}
 
 	return (
-    <Carousel
-      enableAutoPlay={enableAutoPlay}
-      enableArrows={enableArrows}
-      enableDots={enableDots}
-    >
-      {products?.map((product) => (
-        <div 
-          key={product.id}
-          className='px-10 pb-4'
-        >
-          <ShopifyProductCard
-            product={product}
-            handleClick={() => handleClick(product)}
-            buttonText={buttonText}
-            enableBorder={enableBorder}
-            enableAddToCart={enableAddToCart}
-            enableQuickShop={enableQuickShop}
-            enableQuantity={enableQuantity}
-            enableOkendoStarRating={enableOkendoStarRating}
-          />
-        </div>
-      ))}
-    </Carousel>
+		<Carousel
+			enableAutoPlay={enableAutoPlay}
+			enableArrows={enableArrows}
+			enableDots={enableDots}
+		>
+			{products?.map((product) => (
+				<div key={product.id} className="px-10 pb-4">
+					<ShopifyProductCard
+						product={product}
+						handleClick={() => handleClick(product)}
+						buttonText={buttonText}
+						enableBorder={enableBorder}
+						enableAddToCart={enableAddToCart}
+						enableQuickShop={enableQuickShop}
+						enableQuantity={enableQuantity}
+						enableOkendoStarRating={enableOkendoStarRating}
+					/>
+				</div>
+			))}
+		</Carousel>
 	)
 }
 

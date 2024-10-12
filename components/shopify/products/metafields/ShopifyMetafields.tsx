@@ -36,7 +36,7 @@ const ShopifyProductMetafields: React.FC<ShopifyProductMetafieldsProps> = (
 
 	if (!product || !metafields) return null
 	return (
-		<div className='w-full'>
+		<div className="w-full">
 			{product &&
 				metafields?.map((metafield, index) => {
 					const { label, name } = metafield
@@ -45,21 +45,19 @@ const ShopifyProductMetafields: React.FC<ShopifyProductMetafieldsProps> = (
 					const value = getMetafieldValue(product, key)
 
 					return (
-            <AccordionItem 
-              primary={ label ? label : '' }
-              secondary={
-                <div>
-                  {PLAIN_TEXT_TYPES.includes(type) && (
-                    <Typography variant="body1">
-                      {value}
-                    </Typography>
-                  )}
-                  {RICH_TEXT_TYPES.includes(type) && (
-                    <ShopifyMetafieldRichText value={value} />
-                  )}
-                </div>
-              }
-            />						
+						<AccordionItem
+							primary={label ? label : ''}
+							secondary={
+								<div>
+									{PLAIN_TEXT_TYPES.includes(type) && (
+										<Typography variant="body1">{value}</Typography>
+									)}
+									{RICH_TEXT_TYPES.includes(type) && (
+										<ShopifyMetafieldRichText value={value} />
+									)}
+								</div>
+							}
+						/>
 					)
 				})}
 		</div>
@@ -67,4 +65,3 @@ const ShopifyProductMetafields: React.FC<ShopifyProductMetafieldsProps> = (
 }
 
 export default ShopifyProductMetafields
-

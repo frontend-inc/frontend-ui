@@ -58,9 +58,8 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 		}
 	}
 
-
 	return (
-		<IconButton className='p-2' onClick={handleClick}>
+		<IconButton className="p-2" onClick={handleClick}>
 			<SocialIcon
 				network={provider}
 				style={{

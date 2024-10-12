@@ -27,13 +27,10 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 	} = props || {}
 
 	return (
-		<div className='w-full flex flex-col space-y-2'>
+		<div className="w-full flex flex-col space-y-2">
 			{image && (
-				<div className='w-full h-[200px]'>
-					<Image 
-            src={image} 
-            label={label} 
-          />
+				<div className="w-full h-[200px]">
+					<Image src={image} label={label} />
 				</div>
 			)}
 			{avatar && avatar}

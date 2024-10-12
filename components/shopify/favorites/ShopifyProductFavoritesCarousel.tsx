@@ -36,7 +36,7 @@ const ShopifyProductFavoritesCarousel: React.FC<
 	const { favorites } = useFavorites()
 
 	return (
-		<div className='w-full'>			
+		<div className="w-full">
 			<ShopifyProductCarousel
 				href={href}
 				products={favorites}

@@ -52,7 +52,7 @@ const AdminForm: React.FC<AdminFormProps> = (props) => {
 	}, [formId])
 
 	return (
-		<div className='flex flex-col space-y-3'>
+		<div className="flex flex-col space-y-3">
 			<AdminFormDetails form={form} handleEdit={handleEdit} />
 			<Typography variant="subtitle1" color="text.primary">
 				Questions

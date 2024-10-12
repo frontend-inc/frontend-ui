@@ -21,7 +21,7 @@ const AdminAnswerToolbar = (props) => {
 
 	return (
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
-			<div className='flex flex-row space-x-1'>
+			<div className="flex flex-row space-x-1">
 				<SecondaryButton alert onClick={handleDelete}>
 					Delete
 				</SecondaryButton>

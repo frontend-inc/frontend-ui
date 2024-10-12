@@ -9,16 +9,13 @@ import { cn } from '../../../shadcn/lib/utils'
 
 type ShopifyProductFavoriteButtonProps = {
 	product: ShopifyProductType
-  variant?: 'rounded' | 'circular'
-  size?: 'small' | 'large'
+	variant?: 'rounded' | 'circular'
+	size?: 'small' | 'large'
 }
 
-const ShopifyProductFavoriteButton: React.FC<ShopifyProductFavoriteButtonProps> = ({
-  product,
-  variant = 'rounded',
-  size,
-}) => {	
-
+const ShopifyProductFavoriteButton: React.FC<
+	ShopifyProductFavoriteButtonProps
+> = ({ product, variant = 'rounded', size }) => {
 	const { setAuthOpen } = useApp()
 	const { currentUser } = useAuth()
 
@@ -42,24 +39,23 @@ const ShopifyProductFavoriteButton: React.FC<ShopifyProductFavoriteButtonProps> 
 	}, [currentUser?.id, product?.handle])
 
 	return (
-    <IconButton 
-    onClick={handleClick} 
-    className={cn(
-      'min-w-[40px]',
-      variant == 'circular' ? 'rounded-full' : 'rounded-lg',
-      size === 'large' && 'border border-divider',
-      'transition-transform duration-200',
-      isFavorite && 'transform scale-110',
-    )}
-  >        
-    <Heart 
-      className={cn(
-        "w-5 h-5 text-foreground",
-        isFavorite ? "fill-current" : "stroke-current"
-      )}
-    />
-  </IconButton>
-
+		<IconButton
+			onClick={handleClick}
+			className={cn(
+				'min-w-[40px]',
+				variant == 'circular' ? 'rounded-full' : 'rounded-lg',
+				size === 'large' && 'border border-divider',
+				'transition-transform duration-200',
+				isFavorite && 'transform scale-110'
+			)}
+		>
+			<Heart
+				className={cn(
+					'w-5 h-5 text-foreground',
+					isFavorite ? 'fill-current' : 'stroke-current'
+				)}
+			/>
+		</IconButton>
 	)
 }
 

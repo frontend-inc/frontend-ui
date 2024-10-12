@@ -36,7 +36,7 @@ const Form: React.FC<FormProps> = (props) => {
 	} = props
 
 	return (
-		<div className='flex flex-col space-y-4'>
+		<div className="flex flex-col space-y-4">
 			<FormFields
 				errors={errors}
 				fields={fields}

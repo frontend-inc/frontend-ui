@@ -12,20 +12,19 @@ interface CheckboxProps {
 
 const Checkbox: React.FC<CheckboxProps> = ({
 	name,
-	value=false,
+	value = false,
 	handleChange,
 	label,
 	className,
 }) => {
-
-  const handleClick = () => {    
-    handleChange({
-      target: {
-        name,
-        value: !value 
-      }
-    })    
-  }
+	const handleClick = () => {
+		handleChange({
+			target: {
+				name,
+				value: !value,
+			},
+		})
+	}
 
 	return (
 		<div className={cn('flex items-center space-x-2', className)}>

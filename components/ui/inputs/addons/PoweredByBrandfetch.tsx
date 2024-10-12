@@ -1,18 +1,18 @@
-import React from "react"
-import Link from "next/link"
+import React from 'react'
+import Link from 'next/link'
 
 export default function PoweredByBrandfetch() {
-  return (
-    <div className="flex items-start justify-start space-x-1">
-      <p className="text-sm text-muted-foreground">Powered by</p>
-      <div className="w-[100px]">
-        <Link
-          href="https://brandfetch.io"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center"
-        >
-         <svg
+	return (
+		<div className="flex items-start justify-start space-x-1">
+			<p className="text-sm text-muted-foreground">Powered by</p>
+			<div className="w-[100px]">
+				<Link
+					href="https://brandfetch.io"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="flex items-center"
+				>
+					<svg
 						width="677"
 						height="182"
 						viewBox="0 0 677 182"
@@ -23,8 +23,8 @@ export default function PoweredByBrandfetch() {
 							fill="#ffffff"
 						/>
 					</svg>
-        </Link>
-      </div>
-    </div>
-  )
+				</Link>
+			</div>
+		</div>
+	)
 }

@@ -13,10 +13,10 @@ type CellVideoProps = {
 const CellVideo: React.FC<CellVideoProps> = (props) => {
 	const { value, handleClick, size = 64 } = props
 	return (
-    <CellImage 
-      value={ cloudinaryImageFromVideoUrl(value?.url) }
-      handleClick={ handleClick }
-    />		
+		<CellImage
+			value={cloudinaryImageFromVideoUrl(value?.url)}
+			handleClick={handleClick}
+		/>
 	)
 }
 

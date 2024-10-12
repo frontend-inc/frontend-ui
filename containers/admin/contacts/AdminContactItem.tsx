@@ -15,7 +15,7 @@ const AdminContactItem: React.FC<AdminContactItemProps> = (props) => {
 	return (
 		<ResourceListItem
 			primary={
-				<div className='flex flex-row space-x-1 items-center'>
+				<div className="flex flex-row space-x-1 items-center">
 					{contact?.name && (
 						<Typography variant="body1" color="text.primary">
 							{contact?.name}

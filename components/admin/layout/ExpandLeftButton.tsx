@@ -8,7 +8,7 @@ const ExpandLeftButton: React.FC = () => {
 
 	return (
 		<IconButton onClick={toggleLayoutLeft}>
-			<Icon name='Menu' />
+			<Icon name="Menu" />
 		</IconButton>
 	)
 }

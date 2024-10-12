@@ -14,7 +14,7 @@ interface TextFieldProps
 	fullWidth?: boolean
 	name: string
 	value: string
-  placeholder?: string
+	placeholder?: string
 	handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 	type?:
 		| 'text'
@@ -39,7 +39,7 @@ function TextField({
 	name,
 	value,
 	handleChange,
-  placeholder,
+	placeholder,
 	type = 'text',
 	...props
 }: TextFieldProps) {
@@ -64,9 +64,9 @@ function TextField({
 				value={value}
 				onChange={handleChange}
 				type={type}
-        placeholder={placeholder}
+				placeholder={placeholder}
 				className={cn(
-          'text-foreground',
+					'text-foreground',
 					'transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
 					error && 'border-destructive focus:ring-destructive',
 					fullWidth && 'w-full',

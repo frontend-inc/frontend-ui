@@ -30,8 +30,8 @@ const ShopifyCheckoutButton: React.FC<ShopifyCheckoutButtonProps> = (props) => {
 			color="primary"
 			onClick={handleCheckoutClick}
 			variant="contained"
-			size='large'
-      loading={loading}			
+			size="large"
+			loading={loading}
 		>
 			Checkout
 		</Button>

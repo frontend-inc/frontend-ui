@@ -27,7 +27,7 @@ const AdminProductCollectionForm: React.FC<AdminProductCollectionFormProps> = (
 		media: MediaInput,
 	}
 
-	return <ResourceForm  {...props} fields={fields} inputOptions={inputOptions} />
+	return <ResourceForm {...props} fields={fields} inputOptions={inputOptions} />
 }
 
 export default AdminProductCollectionForm

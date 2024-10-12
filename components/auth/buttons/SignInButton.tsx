@@ -8,7 +8,7 @@ export type SignInButtonProps = {
 }
 
 const SignInButton: React.FC<SignInButtonProps> = (props) => {
-	const {  buttonText = 'Sign In' } = props || {}
+	const { buttonText = 'Sign In' } = props || {}
 
 	const { currentUser } = useAuth()
 
@@ -20,10 +20,7 @@ const SignInButton: React.FC<SignInButtonProps> = (props) => {
 
 	if (currentUser?.id) return null
 	return (
-		<Button
-      fullWidth						
-			onClick={handleLogin}
-		>
+		<Button fullWidth onClick={handleLogin}>
 			{buttonText}
 		</Button>
 	)

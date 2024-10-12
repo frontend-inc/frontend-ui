@@ -80,7 +80,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 	}
 
 	return (
-		<div className='flex flex-col w-full space-y-2'>
+		<div className="flex flex-col w-full space-y-2">
 			<DataLayout {...slots.list} grid={grid} loading={loading}>
 				{resources?.map((resource, index) => (
 					<CollectionListItem

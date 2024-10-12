@@ -15,15 +15,15 @@ const FilterInputs: React.FC<FilterInputProps> = (props) => {
 		<div>
 			{Array.isArray(filters) &&
 				filters?.map((filter, index) => (
-          <TableFilterInput
-            key={index}
-            index={index}
-            filter={filter}
-            fieldOptions={fieldOptions}
-            handleChange={handleChange}
-            handleRemove={handleRemove}
-          />
-      ))}
+					<TableFilterInput
+						key={index}
+						index={index}
+						filter={filter}
+						fieldOptions={fieldOptions}
+						handleChange={handleChange}
+						handleRemove={handleRemove}
+					/>
+				))}
 		</div>
 	)
 }

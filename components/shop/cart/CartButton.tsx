@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {
-	Badge,
-	IconButton,
-} from '../../../tailwind'
+import { Badge, IconButton } from '../../../tailwind'
 import { useCart } from '../../../hooks'
 import { Icon } from '../../../components'
 import { getCookie, setCookie } from 'cookies-next'
@@ -63,7 +60,7 @@ const CartButton: React.FC<CartButtonProps> = (props) => {
 		}
 	}, [debouncedLoaded])
 
-	return(
+	return (
 		<IconButton onClick={() => setCartOpen(!cartOpen)}>
 			<Badge color="primary" badgeContent={cart?.total_items}>
 				<Icon name={icon} size={24} />

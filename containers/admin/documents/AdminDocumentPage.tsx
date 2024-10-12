@@ -203,7 +203,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 					buttons={<PublishLabel published={document?.published} />}
 				/>
 				<ScrollArea>
-					<div className='p-4'>
+					<div className="p-4">
 						<AdminDocumentForm
 							errors={errors}
 							document={document}

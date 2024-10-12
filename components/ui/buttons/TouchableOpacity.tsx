@@ -10,23 +10,20 @@ type TouchableOpacityProps = {
 }
 
 const TouchableOpacity: React.FC<TouchableOpacityProps> = (props) => {
-	const {
-		children,
-		handleClick,
-	} = props
+	const { children, handleClick } = props
 
 	const { onMouseDown, onMouseUp } = useClickOrDrag({
 		onClick: handleClick,
 	})
 
 	return (
-		<button 
-      onMouseDown={onMouseDown} 
-      onMouseUp={onMouseUp} 
-      className="focus:outline-none focus:ring-2 rounded-lg"
-    >
-      { children }
-    </button>
+		<button
+			onMouseDown={onMouseDown}
+			onMouseUp={onMouseUp}
+			className="focus:outline-none focus:ring-2 rounded-lg"
+		>
+			{children}
+		</button>
 	)
 }
 

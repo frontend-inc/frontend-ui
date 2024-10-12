@@ -38,7 +38,7 @@ const MyAccountForm: React.FC<MyAccountFormProps> = (props) => {
 	]
 
 	return (
-		<div className='flex flex-col space-y-2 w-full'>
+		<div className="flex flex-col space-y-2 w-full">
 			<Form
 				loading={loading}
 				errors={errors}

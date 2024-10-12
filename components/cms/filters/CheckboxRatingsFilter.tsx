@@ -20,12 +20,7 @@ type CheckboxFilterProps = {
 }
 
 const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
-	const {
-		label,
-		field,
-		values,
-		handleClick,
-	} = props
+	const { label, field, values, handleClick } = props
 
 	let RATING_OPTIONS = [
 		{ label: '5 Star', value: 5 },

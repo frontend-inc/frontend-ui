@@ -12,28 +12,22 @@ export type FormWizardInputWrapperProps = {
 const FormWizardInputWrapper: React.FC<FormWizardInputWrapperProps> = (
 	props
 ) => {
-	
-  const { fadeIn, title, description, children } = props
+	const { fadeIn, title, description, children } = props
 
 	return (
-    <Fade in={fadeIn}>
-			<div className='flex flex-col space-y-4'>
-        <div className='p-1 flex flex-col space-y-2'>
+		<Fade in={fadeIn}>
+			<div className="flex flex-col space-y-4">
+				<div className="p-1 flex flex-col space-y-2">
 					<Typography variant="h4" color="text.primary">
 						{title}
 					</Typography>
-					<Typography
-						variant="body1"
-						color="text.secondary"
-					>
+					<Typography variant="body1" color="text.secondary">
 						{description}
 					</Typography>
 				</div>
-        <div className='p-1'>
-				  {children}
-        </div>
+				<div className="p-1">{children}</div>
 			</div>
-    </Fade>
+		</Fade>
 	)
 }
 

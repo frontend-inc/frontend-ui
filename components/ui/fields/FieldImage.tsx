@@ -4,7 +4,7 @@ import { FieldElementProps } from './Field'
 
 type FieldImageProps = FieldElementProps & {
 	height?: number
-	width?: number	
+	width?: number
 }
 
 const FieldImage: React.FC<FieldImageProps> = (props) => {
@@ -12,18 +12,18 @@ const FieldImage: React.FC<FieldImageProps> = (props) => {
 	if (!value) return null
 	return (
 		<FieldWrapper color={color} label={label} disableLabel={disableLabel}>
-			<div 
-        style={{
-          height: `${height}px`,
-          width: width ? `${width}px` : 'auto',
-        }}				
+			<div
+				style={{
+					height: `${height}px`,
+					width: width ? `${width}px` : 'auto',
+				}}
 			>
-				<Image 
-          aspectRatio={1.0} 
-          alt={label || 'Image'} 
-          src={value?.url || value} 
-          height={height} 
-        />
+				<Image
+					aspectRatio={1.0}
+					alt={label || 'Image'}
+					src={value?.url || value}
+					height={height}
+				/>
 			</div>
 		</FieldWrapper>
 	)

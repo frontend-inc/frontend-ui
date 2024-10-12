@@ -17,9 +17,9 @@ const CellArray: React.FC<CellArrayProps> = (props) => {
 	const handleToggleSeeAll = () => {
 		if (open) {
 			setOpen(false)
-      if(values){
-			  setVisibleTags(values.slice(0, MAX_TAGS))
-      }
+			if (values) {
+				setVisibleTags(values.slice(0, MAX_TAGS))
+			}
 		} else {
 			setOpen(true)
 			setVisibleTags(values)
@@ -33,11 +33,11 @@ const CellArray: React.FC<CellArrayProps> = (props) => {
 	}, [values])
 
 	return (
-		<div className='flex flex-row gap-2'>
+		<div className="flex flex-row gap-2">
 			{visibleTags?.map((value, index) => (
 				<Label key={index} label={value} />
 			))}
-			{(!open && visibleTags && visibleTags?.length > MAX_TAGS) && (
+			{!open && visibleTags && visibleTags?.length > MAX_TAGS && (
 				<Button onClick={handleToggleSeeAll}>
 					<Label label={`...`} />
 				</Button>

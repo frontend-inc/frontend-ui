@@ -4,7 +4,7 @@ import {
 	Sheet,
 	SheetContent,
 	SheetHeader,
-  SheetFooter,
+	SheetFooter,
 	SheetTitle,
 } from '../../../shadcn/ui/sheet'
 
@@ -16,8 +16,8 @@ type DrawerProps = {
 	handleClose: () => void
 	buttons?: React.ReactNode
 	children: React.ReactNode
-	disablePadding?: boolean	
-  mode?: string
+	disablePadding?: boolean
+	mode?: string
 	className?: string
 	fullWidth?: boolean
 }
@@ -30,8 +30,8 @@ const Drawer: React.FC<DrawerProps> = ({
 	children,
 	buttons,
 	disablePadding = false,
-	fullWidth = false,	
-  mode = 'light',
+	fullWidth = false,
+	mode = 'light',
 	className,
 }) => {
 	const side = anchor === 'left' || anchor === 'right' ? anchor : 'right'
@@ -40,36 +40,22 @@ const Drawer: React.FC<DrawerProps> = ({
 		<Sheet open={open} onOpenChange={handleClose}>
 			<SheetContent
 				side={side}
-				className={cn(  
-          mode,               
+				className={cn(
+					mode,
 					disablePadding && 'px-0',
 					'flex flex-col',
 					fullWidth ? 'w-screen max-w-full' : 'w-full max-w-xs',
 					className
 				)}
 			>
-				<SheetHeader 
-          className={cn(
-            disablePadding && 'px-4'
-          )}>
-					<SheetTitle>
-						{title}
-					</SheetTitle>
+				<SheetHeader className={cn(disablePadding && 'px-4')}>
+					<SheetTitle>{title}</SheetTitle>
 				</SheetHeader>
-				<div
-					className={cn(
-						'flex-grow overflow-y-auto',
-					)}
-				>
-					{children}
-				</div>
+				<div className={cn('flex-grow overflow-y-auto')}>{children}</div>
 				{buttons && (
-					<SheetFooter
-            className={cn(
-              disablePadding && 'px-4'
-            )}>          
+					<SheetFooter className={cn(disablePadding && 'px-4')}>
 						{buttons}
-          </SheetFooter>
+					</SheetFooter>
 				)}
 			</SheetContent>
 		</Sheet>

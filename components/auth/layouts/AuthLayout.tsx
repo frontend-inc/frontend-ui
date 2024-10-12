@@ -9,7 +9,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = (props) => {
 	const { children } = props
 
 	return (
-		<div className='h-screen flex flex-col justify-center items-center'>
+		<div className="h-screen flex flex-col justify-center items-center">
 			<Container maxWidth="sm">{children}</Container>
 		</div>
 	)

@@ -2,8 +2,8 @@ import React from 'react'
 import { ExpandableText, FieldWrapper } from '../../../components'
 import { FieldElementProps } from './Field'
 
-type FieldTextProps = FieldElementProps & {	
-	maxChars?: number	
+type FieldTextProps = FieldElementProps & {
+	maxChars?: number
 }
 
 const FieldText: React.FC<FieldTextProps> = (props) => {
@@ -13,7 +13,7 @@ const FieldText: React.FC<FieldTextProps> = (props) => {
 		variant,
 		color,
 		placeholder,
-    disableLabel,
+		disableLabel,
 		maxChars = 80,
 		...rest
 	} = props

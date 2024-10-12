@@ -15,10 +15,10 @@ const ShowImageModal: React.FC<ShowImageModalProps> = (props) => {
 	if (!resource) return null
 	return (
 		<MediaModal open={openShow} handleClose={() => setOpenShow(false)}>
-			<div className={cn("w-full min-w-[80vw]")}>
+			<div className={cn('w-full min-w-[80vw]')}>
 				<Image
-          alt={resource?.title}
-          aspectRatio={16/9}
+					alt={resource?.title}
+					aspectRatio={16 / 9}
 					src={resource?.image?.url}
 					enableGradient={enableGradient}
 				/>

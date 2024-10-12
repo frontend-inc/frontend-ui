@@ -58,7 +58,7 @@ const AdminProductCollection: React.FC<AdminProductCollectionProps> = (
 	}, [productCollectionId])
 
 	return (
-		<div className='flex flex-col space-y-3'>
+		<div className="flex flex-col space-y-3">
 			<AdminProductCollectionDetails
 				productCollection={productCollection}
 				handleEdit={handleEdit}

@@ -26,9 +26,7 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
 					{user?.name}
 				</Typography>
 			}
-			avatar={
-				<UserAvatar size={size} user={user} />
-			}
+			avatar={<UserAvatar size={size} user={user} />}
 			secondary={<DisplayFields resource={user} fields={displayFields} />}
 		/>
 	)

@@ -33,8 +33,8 @@ const Typography: React.FC<TypographyProps> = ({
 }) => {
 	const baseClasses = cn(
 		color === 'text.primary' && 'text-foreground',
-    color == 'text.secondary' && 'text-muted-foreground',
-    color,
+		color == 'text.secondary' && 'text-muted-foreground',
+		color,
 		'whitespace-pre-line'
 	)
 

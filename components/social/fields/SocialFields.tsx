@@ -11,7 +11,7 @@ const SocialFields: React.FC<SocialFieldsProps> = (props) => {
 	const { resource, fields } = props || {}
 
 	return (
-		<div className='flex flex-row'>
+		<div className="flex flex-row">
 			{fields?.map((field, i) => (
 				<SocialField key={i} field={field} resource={resource} />
 			))}

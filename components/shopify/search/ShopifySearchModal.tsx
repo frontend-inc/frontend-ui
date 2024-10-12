@@ -32,7 +32,7 @@ const ShopifySearchModal: React.FC<ShopifySearchModalProps> = (props) => {
 		handleClear()
 		setMenuOpen(false)
 		setSearchOpen(false)
-		setProducts(null)		
+		setProducts(null)
 	}
 
 	const handleClear = () => setKeywords('')
@@ -40,7 +40,7 @@ const ShopifySearchModal: React.FC<ShopifySearchModalProps> = (props) => {
 	const handleSearch = (keywords) => {
 		if (keywords?.length >= MIN_ANALYTICS_CHARS) {
 			trackProductsSearched(keywords)
-		}		
+		}
 		searchProducts({ query: keywords })
 	}
 
@@ -53,35 +53,26 @@ const ShopifySearchModal: React.FC<ShopifySearchModalProps> = (props) => {
 	}, [keywords])
 
 	return (
-		<Drawer
-			open={searchOpen}
-      onClose={handleClose}
-			anchor="top"						
-		>
-      <div className='w-full flex flex-row justify-center'>
-        <SearchInput
-          name="keywords"
-          value={keywords}
-          handleChange={handleChange}
-          handleSearch={handleSearch}
-          placeholder={'Search...'}
-        />
-      </div>
-      <ShopifyProducts
-        href={href}
-        loading={loading}
-        products={products}
-      />
-      {keywords?.length > 0 && !loading && products?.length == 0 && (
-        <Placeholder
-          icon={'search'}
-          title="No search results"
-          description="Try another search term"
-        />
-      )}
+		<Drawer open={searchOpen} onClose={handleClose} anchor="top">
+			<div className="w-full flex flex-row justify-center">
+				<SearchInput
+					name="keywords"
+					value={keywords}
+					handleChange={handleChange}
+					handleSearch={handleSearch}
+					placeholder={'Search...'}
+				/>
+			</div>
+			<ShopifyProducts href={href} loading={loading} products={products} />
+			{keywords?.length > 0 && !loading && products?.length == 0 && (
+				<Placeholder
+					icon={'search'}
+					title="No search results"
+					description="Try another search term"
+				/>
+			)}
 		</Drawer>
 	)
 }
 
 export default ShopifySearchModal
-

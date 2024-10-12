@@ -16,7 +16,7 @@ const ForgotPasswordForm: React.FC<ForgotPasswordFormProps> = (props) => {
 		props
 
 	return (
-		<div className='flex flex-col space-y-2'>
+		<div className="flex flex-col space-y-2">
 			<TextInput
 				label="Email"
 				errors={errors}

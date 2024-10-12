@@ -33,7 +33,7 @@ const ShopProducts: React.FC<ShopProductsProps> = (props) => {
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
 		>
-			<div className='flex flex-col space-y-2'>
+			<div className="flex flex-col space-y-2">
 				<Heading
 					label={label}
 					title={title}

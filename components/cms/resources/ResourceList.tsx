@@ -17,7 +17,7 @@ import ResourceListItems from './ResourceListItems'
 import ResourceHeader from './ResourceHeader'
 import ResourceToolbar from './ResourceToolbar'
 import { ToolbarButtonType } from '../../../types'
-import { cn }  from '../../../shadcn/lib/utils'
+import { cn } from '../../../shadcn/lib/utils'
 
 export type ResourceListProps = {
 	grid?: boolean
@@ -340,186 +340,182 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	const enableSorting = sortOptions?.length > 0
 
 	return (
-    <>
-      <Toolbar
-        selected={selected}
-        selectedIds={selectedIds}
-        open={selected?.length > 0}
-        handleClose={handleClear}
-        buttons={buttons}
-        onSuccess={handleSuccess}
-        handleReload={reloadMany}
-        {...slots.toolbar}
-      />
-  		<div className='flex flex-col space-y-3'>
-			<Header
+		<>
+			<Toolbar
 				selected={selected}
-				direction={direction}
-				enableSearch={enableSearch}
-				enableFilters={enableFilters}
-				enableSorting={enableSorting}
-				enableCreate={enableCreate}
-				handleSearch={handleSearch}
-				handleKeywordChange={handleKeywordChange}
-				handleFilter={handleFilter}
-				handleClearFilters={handleClearFilters}
-				handleSort={handleSort}
-				handleSortDirection={handleSortDirection}
-				handleAdd={handleAdd}
-				keywords={keywords}
+				selectedIds={selectedIds}
+				open={selected?.length > 0}
+				handleClose={handleClear}
+				buttons={buttons}
+				onSuccess={handleSuccess}
 				handleReload={reloadMany}
-				activeFilters={activeFilters}
-				filterOptions={filterOptions}
-				sortOptions={sortOptions}
-				query={query}
-				{...slots.header}
+				{...slots.toolbar}
 			/>
-			<div 
-        className={cn(
-          loading && 'opacity-50',
-        )}				
-			>
-				{!sortable ? (
-					<List
-						grid={grid}
-						query={query}
-						headers={headers}
-						page={page}
-						numPages={numPages}
-						totalCount={totalCount}
-						handlePaginate={handlePaginate}
-						handleSort={handleSort}
-						enableEdit={enableEdit}
-						enableDelete={enableDelete}
-						enableShow={enableShow}
-						handleEdit={handleEdit}
-						handleShow={handleShowClick}
-						handleDelete={handleDeleteClick}
-						resources={resources}
-						renderItem={(resource, props) => (
-							<Component
-								key={resource?.id}
-								selectable={selectable}
-								resource={resource}
-								selected={
-									//@ts-ignore
-									selectedIds?.includes(resource?.id)
-								}
-								enableSelect={selectable}
-								enableBorder={enableBorder}
-								enableEdit={enableEdit}
-								enableDelete={enableDelete}
-								handleClick={() => handleShowClick(resource)}
-								handleEdit={() => handleEdit(resource)}
-								handleDelete={() => handleDeleteClick(resource)}
-								handleSelect={() => handleSelect(resource)}
-								handleReload={reloadMany}
-								{...slots.item}
-							/>
-						)}
-						{...slots.list}
-					/>
-				) : (
-					<SortableListItems
-						droppableId="sortable"
-						resources={resources}
-						handleDrop={handleDrop}
-						page={page}
-						numPages={numPages}
-						totalCount={totalCount}
-						handlePaginate={handlePaginate}
-						handleReload={reloadMany}
-						renderItem={(resource, index) => (
-							<Component
-								key={index}
-								sortable
-								selectable={selectable}
-								selected={
-									// @ts-ignore
-									selectedIds?.includes(resource?.id)
-								}
-								resource={resource}
-								enableBorder={enableBorder}
-								enableEdit={enableEdit}
-								enableDelete={enableDelete}
-								handleClick={
-									handleClick
-										? () => handleClick(resource)
-										: () => handleShowClick(resource)
-								}
-								handleEdit={() => handleEdit(resource)}
-								handleDelete={() => handleDeleteClick(resource)}
-								handleSelect={() => handleSelect(resource)}
-								handleReload={reloadMany}
-								{...slots.item}
-							/>
-						)}
-						{...slots.list}
-					/>
-				)}
-				{!loading && resources?.length == 0 && (
-					<Placeholder
-						icon={emptyIcon}
-						title={emptyTitle}
-						description={emptyDescription}
-					/>
-				)}
+			<div className="flex flex-col space-y-3">
+				<Header
+					selected={selected}
+					direction={direction}
+					enableSearch={enableSearch}
+					enableFilters={enableFilters}
+					enableSorting={enableSorting}
+					enableCreate={enableCreate}
+					handleSearch={handleSearch}
+					handleKeywordChange={handleKeywordChange}
+					handleFilter={handleFilter}
+					handleClearFilters={handleClearFilters}
+					handleSort={handleSort}
+					handleSortDirection={handleSortDirection}
+					handleAdd={handleAdd}
+					keywords={keywords}
+					handleReload={reloadMany}
+					activeFilters={activeFilters}
+					filterOptions={filterOptions}
+					sortOptions={sortOptions}
+					query={query}
+					{...slots.header}
+				/>
+				<div className={cn(loading && 'opacity-50')}>
+					{!sortable ? (
+						<List
+							grid={grid}
+							query={query}
+							headers={headers}
+							page={page}
+							numPages={numPages}
+							totalCount={totalCount}
+							handlePaginate={handlePaginate}
+							handleSort={handleSort}
+							enableEdit={enableEdit}
+							enableDelete={enableDelete}
+							enableShow={enableShow}
+							handleEdit={handleEdit}
+							handleShow={handleShowClick}
+							handleDelete={handleDeleteClick}
+							resources={resources}
+							renderItem={(resource, props) => (
+								<Component
+									key={resource?.id}
+									selectable={selectable}
+									resource={resource}
+									selected={
+										//@ts-ignore
+										selectedIds?.includes(resource?.id)
+									}
+									enableSelect={selectable}
+									enableBorder={enableBorder}
+									enableEdit={enableEdit}
+									enableDelete={enableDelete}
+									handleClick={() => handleShowClick(resource)}
+									handleEdit={() => handleEdit(resource)}
+									handleDelete={() => handleDeleteClick(resource)}
+									handleSelect={() => handleSelect(resource)}
+									handleReload={reloadMany}
+									{...slots.item}
+								/>
+							)}
+							{...slots.list}
+						/>
+					) : (
+						<SortableListItems
+							droppableId="sortable"
+							resources={resources}
+							handleDrop={handleDrop}
+							page={page}
+							numPages={numPages}
+							totalCount={totalCount}
+							handlePaginate={handlePaginate}
+							handleReload={reloadMany}
+							renderItem={(resource, index) => (
+								<Component
+									key={index}
+									sortable
+									selectable={selectable}
+									selected={
+										// @ts-ignore
+										selectedIds?.includes(resource?.id)
+									}
+									resource={resource}
+									enableBorder={enableBorder}
+									enableEdit={enableEdit}
+									enableDelete={enableDelete}
+									handleClick={
+										handleClick
+											? () => handleClick(resource)
+											: () => handleShowClick(resource)
+									}
+									handleEdit={() => handleEdit(resource)}
+									handleDelete={() => handleDeleteClick(resource)}
+									handleSelect={() => handleSelect(resource)}
+									handleReload={reloadMany}
+									{...slots.item}
+								/>
+							)}
+							{...slots.list}
+						/>
+					)}
+					{!loading && resources?.length == 0 && (
+						<Placeholder
+							icon={emptyIcon}
+							title={emptyTitle}
+							description={emptyDescription}
+						/>
+					)}
+				</div>
+				<CreateForm
+					open={openCreate}
+					handleClose={() => setOpenCreate(false)}
+					loading={loading}
+					errors={errors}
+					resource={resource}
+					setResource={setResource}
+					handleChange={handleChange}
+					handleRemove={handleRemove}
+					handleAddAttachment={handleAddAttachment}
+					handleRemoveAttachment={handleRemoveAttachment}
+					handleSubmit={handleSubmit}
+					handleReload={reloadMany}
+					fields={fields}
+					{...slots.create}
+				/>
+				<EditForm
+					open={openEdit}
+					handleClose={() => setOpenEdit(false)}
+					loading={loading}
+					errors={errors}
+					resource={resource}
+					setResource={setResource}
+					handleChange={handleChange}
+					handleRemove={handleRemove}
+					handleAddAttachment={handleAddAttachment}
+					handleRemoveAttachment={handleRemoveAttachment}
+					handleSubmit={handleSubmit}
+					handleReload={reloadMany}
+					handleReloadOne={reloadOne}
+					fields={fields}
+					{...slots.edit}
+				/>
+				<ShowModal
+					loading={loading}
+					open={openShow}
+					handleClose={() => setOpenShow(false)}
+					fields={displayFields}
+					resource={resource}
+					enableEdit={enableEdit}
+					enableDelete={enableDelete}
+					handleEdit={() => handleEdit(resource)}
+					handleDelete={() => handleDeleteClick(resource)}
+					handleReload={reloadMany}
+					{...slots.show}
+				/>
+				<AlertModal
+					open={openDelete}
+					handleClose={() => setOpenDelete(false)}
+					title="Are you sure you want to delete this item?"
+					description="This action cannot be reversed."
+					handleConfirm={handleDelete}
+				/>
 			</div>
-			<CreateForm
-				open={openCreate}
-				handleClose={() => setOpenCreate(false)}
-				loading={loading}
-				errors={errors}
-				resource={resource}
-				setResource={setResource}
-				handleChange={handleChange}
-				handleRemove={handleRemove}
-				handleAddAttachment={handleAddAttachment}
-				handleRemoveAttachment={handleRemoveAttachment}
-				handleSubmit={handleSubmit}
-				handleReload={reloadMany}
-				fields={fields}
-				{...slots.create}
-			/>
-			<EditForm
-				open={openEdit}
-				handleClose={() => setOpenEdit(false)}
-				loading={loading}
-				errors={errors}
-				resource={resource}
-				setResource={setResource}
-				handleChange={handleChange}
-				handleRemove={handleRemove}
-				handleAddAttachment={handleAddAttachment}
-				handleRemoveAttachment={handleRemoveAttachment}
-				handleSubmit={handleSubmit}
-				handleReload={reloadMany}
-				handleReloadOne={reloadOne}
-				fields={fields}
-				{...slots.edit}
-			/>
-			<ShowModal
-				loading={loading}
-				open={openShow}
-				handleClose={() => setOpenShow(false)}
-				fields={displayFields}
-				resource={resource}
-				enableEdit={enableEdit}
-				enableDelete={enableDelete}
-				handleEdit={() => handleEdit(resource)}
-				handleDelete={() => handleDeleteClick(resource)}
-				handleReload={reloadMany}
-				{...slots.show}
-			/>
-			<AlertModal
-				open={openDelete}
-				handleClose={() => setOpenDelete(false)}
-				title="Are you sure you want to delete this item?"
-				description="This action cannot be reversed."
-				handleConfirm={handleDelete}
-			/>
-		</div>
-    </>
+		</>
 	)
 }
 

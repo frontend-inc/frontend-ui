@@ -70,7 +70,7 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 					handleClick={handleClick}
 				/>
 			) : (
-				<div className='p-1'>
+				<div className="p-1">
 					<Button
 						color="secondary"
 						variant="contained"
@@ -83,7 +83,7 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 					</Button>
 				</div>
 			)}
-			<div className='p-2'>
+			<div className="p-2">
 				{currentTab == 0 && (
 					<MyAccountForm
 						loading={delayedLoading}

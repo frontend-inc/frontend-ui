@@ -16,7 +16,7 @@ const ShopifyCartTotals: React.FC = () => {
 
 	if (!cart) return null
 	return (
-		<div className='flex flex-col space-y-2'>
+		<div className="flex flex-col space-y-2">
 			<ShopifyCartText label={'Subtotal'} value={formatCurrency(subtotal)} />
 			{cart?.discountCodes?.map((discountCode) => (
 				<ShopifyCartDiscountCode

@@ -40,12 +40,7 @@ const ProductCollectionCoverCarouselListItems: React.FC<
 	}
 
 	return (
-		<div
-      className={cn(
-        'w-full',
-        loading && 'opacity-50'
-      )}			
-		>
+		<div className={cn('w-full', loading && 'opacity-50')}>
 			<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
 				{resources?.map((resource, index) => (
 					<Cover
@@ -65,4 +60,3 @@ const ProductCollectionCoverCarouselListItems: React.FC<
 }
 
 export default ProductCollectionCoverCarouselListItems
-

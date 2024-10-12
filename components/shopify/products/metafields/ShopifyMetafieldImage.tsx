@@ -16,10 +16,7 @@ export type ShopifyMetafieldImageProps = {
 }
 
 const ShopifyMetafieldImage: React.FC<ShopifyMetafieldImageProps> = (props) => {
-	const {
-		handle,
-		metafield,
-	} = props
+	const { handle, metafield } = props
 
 	const { loading, product, findProduct } = useProducts()
 	const [src, setSrc] = useState<string | null>(null)
@@ -39,9 +36,9 @@ const ShopifyMetafieldImage: React.FC<ShopifyMetafieldImageProps> = (props) => {
 	if (!src) return null
 	return (
 		<Image
-      // @ts-ignore 
+			// @ts-ignore
 			image={src}
-			alt={product?.title}									
+			alt={product?.title}
 		/>
 	)
 }

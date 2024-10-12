@@ -40,19 +40,19 @@ const ShopifyProductCollectionCarousel: React.FC<
 	}, [handle])
 
 	return (
-    <ShopifyProductCarousel
-      href={href}
-      loading={loading}
-      products={products}
-      enableAutoPlay={enableAutoPlay}
-      enableArrows={enableArrows}
-      enableDots={enableDots}
-      enableBorder={enableBorder}
-      enableAddToCart={enableAddToCart}
-      enableQuickShop={enableQuickShop}
-      enableQuantity={enableQuantity}
-      enableOkendoStarRating={enableOkendoStarRating}
-    />
+		<ShopifyProductCarousel
+			href={href}
+			loading={loading}
+			products={products}
+			enableAutoPlay={enableAutoPlay}
+			enableArrows={enableArrows}
+			enableDots={enableDots}
+			enableBorder={enableBorder}
+			enableAddToCart={enableAddToCart}
+			enableQuickShop={enableQuickShop}
+			enableQuantity={enableQuantity}
+			enableOkendoStarRating={enableOkendoStarRating}
+		/>
 	)
 }
 

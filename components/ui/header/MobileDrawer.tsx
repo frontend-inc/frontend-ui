@@ -17,13 +17,7 @@ type MobileDrawerProps = {
 const MobileDrawer = (props: MobileDrawerProps) => {
 	const { menuOpen, setMenuOpen } = useContext(AppContext)
 
-	const {
-		links,
-		handleClick,
-		enableAuth,
-		enableStripe,
-		enableShopify,
-	} = props
+	const { links, handleClick, enableAuth, enableStripe, enableShopify } = props
 
 	const handleMenuClick = (path: string) => {
 		setMenuOpen(false)
@@ -31,11 +25,7 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 	}
 
 	return (
-		<Drawer
-			open={menuOpen}
-			onClose={() => setMenuOpen(false)}
-			anchor="left"			
-		>
+		<Drawer open={menuOpen} onClose={() => setMenuOpen(false)} anchor="left">
 			<div>
 				<List className={'space-y-2'}>
 					{links?.map((menuItem, index) => (

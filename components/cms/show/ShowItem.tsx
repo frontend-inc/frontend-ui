@@ -15,7 +15,6 @@ import {
 	ExpandableText,
 } from '../..'
 
-
 export type ShowProps = {
 	handle?: string
 	buttons: ButtonType[]
@@ -128,16 +127,16 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 			image={resource?.image?.url}
 			primary={resource?.title}
 			secondary={
-				<div className='w-full flex flex-col space-y-6'>
-					<div className='w-full h-full flex flex-col space-y-2'>					
+				<div className="w-full flex flex-col space-y-6">
+					<div className="w-full h-full flex flex-col space-y-2">
 						{displayFields?.length > 0 && (
-							<DisplayFields 
-                disableLabel
-                disableBorder
-                direction='column'                
-                fields={displayFields} 
-                resource={resource}                 
-              />
+							<DisplayFields
+								disableLabel
+								disableBorder
+								direction="column"
+								fields={displayFields}
+								resource={resource}
+							/>
 						)}
 					</div>
 					<ExpandableText text={resource?.description} />
@@ -155,10 +154,10 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 			}
 			secondaryAction={
 				buttons && (
-					<div className='w-full'>
+					<div className="w-full">
 						<ButtonActions
 							justifyContent={slotProps?.secondaryAction?.justifyContent}
-							buttons={buttons}							
+							buttons={buttons}
 						/>
 					</div>
 				)

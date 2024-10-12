@@ -78,7 +78,7 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
 	}, [field, document])
 
 	return (
-		<div className='w-full'>
+		<div className="w-full">
 			{resources && field && (
 				<SortableList
 					droppableId={'sortable-documents'}
@@ -99,7 +99,7 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
 					color="secondary"
 					variant="contained"
 					onClick={() => setOpen(true)}
-					startIcon={<Search className='w-5 h-5 text-foreground' />}
+					startIcon={<Search className="w-5 h-5 text-foreground" />}
 				>
 					Choose {field?.foreign_collection?.plural_name}
 				</Button>

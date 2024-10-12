@@ -28,9 +28,9 @@ const AdminMediaShow: React.FC<AdminMediaShowProps> = (props) => {
 
 	return (
 		<Modal
-      mode="editor"
+			mode="editor"
 			open={open}
-			handleClose={handleClose}			
+			handleClose={handleClose}
 			maxWidth="md"
 			disablePadding
 			buttons={
@@ -53,7 +53,7 @@ const AdminMediaShow: React.FC<AdminMediaShowProps> = (props) => {
 					<Image
 						alt={resource?.public_id}
 						src={resource.url}
-						aspectRatio={4/3}						
+						aspectRatio={4 / 3}
 					/>
 				)}
 				{VIDEO_REGEX.test(resource?.content_type) && (

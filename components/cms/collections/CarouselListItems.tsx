@@ -48,11 +48,11 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 	}
 
 	return (
-		<div 
-      className={cn(
-        'grid grid-cols-1 md:grid-cols-3 gap-4',        
-        loading && 'opacity-50',
-      )}
+		<div
+			className={cn(
+				'grid grid-cols-1 md:grid-cols-3 gap-4',
+				loading && 'opacity-50'
+			)}
 		>
 			<Carousel
 				enableDots={enableDots}
@@ -60,13 +60,9 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 				enableArrows={enableArrows}
 			>
 				{resources?.map((resource, index) => (
-					<div 
-            className={cn(
-              'p-1',
-              enableArrows && 'pt-5',
-              enableDots && 'pb-4',
-            )}
-						key={index}						
+					<div
+						className={cn('p-1', enableArrows && 'pt-5', enableDots && 'pb-4')}
+						key={index}
 					>
 						<CollectionListItem
 							buttons={buttons}
@@ -87,4 +83,3 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 }
 
 export default CarouselListItems
-

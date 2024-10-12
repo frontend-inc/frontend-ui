@@ -53,39 +53,39 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 	}
 
 	return (
-    <Container maxWidth="md">
-		<div className="flex flex-col space-y-1">
-			<Heading
-				label={label}
-				title={title}
-				description={description}
-				textVariant={textVariant}
-				textAlign="center"
-			/>
-      <div className='flex flex-row justify-center items-center'>
-        <div className="max-w-[360px] w-full p-1 flex flex-row justify-center items-center">
-          <InputBase
-            errors={errors}
-            name="email"
-            value={contact?.email}
-            handleChange={handleChange}
-            placeholder="Enter your email"
-            type="email"
-            className="rounded-l-md rounded-r-none border-r-0"
-          />
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleSubmit}
-            className="rounded-l-none rounded-r-md"
-            loading={ delayedLoading }
-          >
-            {buttonText}
-          </Button>
-			  </div>
-      </div>
-		</div>
-    </Container>
+		<Container maxWidth="md">
+			<div className="flex flex-col space-y-1">
+				<Heading
+					label={label}
+					title={title}
+					description={description}
+					textVariant={textVariant}
+					textAlign="center"
+				/>
+				<div className="flex flex-row justify-center items-center">
+					<div className="max-w-[360px] w-full p-1 flex flex-row justify-center items-center">
+						<InputBase
+							errors={errors}
+							name="email"
+							value={contact?.email}
+							handleChange={handleChange}
+							placeholder="Enter your email"
+							type="email"
+							className="rounded-l-md rounded-r-none border-r-0"
+						/>
+						<Button
+							variant="contained"
+							color="primary"
+							onClick={handleSubmit}
+							className="rounded-l-none rounded-r-md"
+							loading={delayedLoading}
+						>
+							{buttonText}
+						</Button>
+					</div>
+				</div>
+			</div>
+		</Container>
 	)
 }
 

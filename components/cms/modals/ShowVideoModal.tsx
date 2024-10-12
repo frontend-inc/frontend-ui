@@ -9,10 +9,15 @@ const ShowVideoModal: React.FC<ShowVideoModalProps> = (props) => {
 
 	if (!resource) return null
 	return (
-		<MediaModal open={openShow} handleClose={() => setOpenShow(false)}>      
-      <div className="w-full min-w-[80vw]">
-			  <video src={resource?.video?.url} controls height={'100%'} width="100%" />
-      </div>
+		<MediaModal open={openShow} handleClose={() => setOpenShow(false)}>
+			<div className="w-full min-w-[80vw]">
+				<video
+					src={resource?.video?.url}
+					controls
+					height={'100%'}
+					width="100%"
+				/>
+			</div>
 		</MediaModal>
 	)
 }

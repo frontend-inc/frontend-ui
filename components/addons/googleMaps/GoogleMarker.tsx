@@ -50,14 +50,14 @@ const GoogleMarker: React.FC<GoogleMarkerProps> = (props) => {
 			</AdvancedMarker>
 			{infoWindowShown && (
 				<InfoWindow anchor={setMarkerRef} onClose={handleClose}>
-					<div className='flex flex-col space-y-2 min-w-[160px]'>
+					<div className="flex flex-col space-y-2 min-w-[160px]">
 						{resource?.image?.url && (
-							<div className='w-[64px] h-[64px]'>
-								<Image 
-                  alt={resource?.title }
-                  aspectRatio={1.0} 
-                  src={resource?.image?.url} 
-                />
+							<div className="w-[64px] h-[64px]">
+								<Image
+									alt={resource?.title}
+									aspectRatio={1.0}
+									src={resource?.image?.url}
+								/>
 							</div>
 						)}
 						<Typography variant="subtitle2" color="text-gray-900">

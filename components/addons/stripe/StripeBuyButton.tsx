@@ -13,7 +13,7 @@ const StripeBuyButton: React.FC<StripeBuyButtonProps> = (props) => {
 
 	if (!buyButtonId || !publishableKey) return null
 	return (
-		<div className='w-full flex justify-center items-center'>
+		<div className="w-full flex justify-center items-center">
 			{/* @ts-ignore */}
 			<stripe-buy-button
 				buy-button-id={buyButtonId}

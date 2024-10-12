@@ -53,27 +53,25 @@ const MultipleChoiceAnswerInput: React.FC<MultipleChoiceAnswerInputProps> = (
 	}, [selected])
 
 	return (
-		<div className='flex flex-col space-y-2'>
-			<Typography variant="caption">
-				{label}
-			</Typography>
+		<div className="flex flex-col space-y-2">
+			<Typography variant="caption">{label}</Typography>
 			{layout === 'list' && (
 				<ul>
 					{answers?.map((answer, i) => (
 						<ResourceListItem
-              key={i}
+							key={i}
 							enableBorder
 							selected={selected?.includes(answer.value)}
 							image={answer?.image?.url}
 							primary={answer.title}
 							secondary={answer.description}
-							handleClick={() => handleSelect(answer.value)}							
+							handleClick={() => handleSelect(answer.value)}
 						/>
 					))}
 				</ul>
 			)}
 			{layout == 'grid' && (
-				<div className='grid grid-col-1 sm:grid-col-2 md:grid-col-3 w-full gap-2'>
+				<div className="grid grid-col-1 sm:grid-col-2 md:grid-col-3 w-full gap-2">
 					{answers?.map((answer, idx) => (
 						<div key={idx}>
 							<ResourceGridItem

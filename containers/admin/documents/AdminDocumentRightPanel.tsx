@@ -37,27 +37,27 @@ const AdminDocumentRightPanel: React.FC<AdminDocumentRightPanelProps> = (
 
 	return (
 		<div className="bg-background h-full p-3 flex flex-col space-y-6">
-      <div className="flex flex-col space-y-3">
-        <Typography variant="caption" color="text.secondary">
-          Publish
-        </Typography>
-        <PublishButton
-          loading={publishLoading}
-          document={document}
-          handleTogglePublish={handleTogglePublish}
-        />
-      </div>
-      <div className="flex flex-col space-y-3">
-			<Typography variant="caption" color="text.secondary">
-				Last saved {document?.last_saved_at}
-			</Typography>
-			<SaveButton
-				fullWidth
-				loading={loading}
-				document={document}
-				handleSubmit={handleSubmit}
-			/>
-      </div>
+			<div className="flex flex-col space-y-3">
+				<Typography variant="caption" color="text.secondary">
+					Publish
+				</Typography>
+				<PublishButton
+					loading={publishLoading}
+					document={document}
+					handleTogglePublish={handleTogglePublish}
+				/>
+			</div>
+			<div className="flex flex-col space-y-3">
+				<Typography variant="caption" color="text.secondary">
+					Last saved {document?.last_saved_at}
+				</Typography>
+				<SaveButton
+					fullWidth
+					loading={loading}
+					document={document}
+					handleSubmit={handleSubmit}
+				/>
+			</div>
 			<Separator />
 			<UserAutosuggest
 				direction="row"

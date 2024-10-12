@@ -3,8 +3,8 @@ import { Badge } from '../../shadcn/ui/badge'
 
 type LabelProps = {
 	label?: string
-  variant?: 'default' | 'secondary' | 'destructive' | 'outline'
-  className?: string	
+	variant?: 'default' | 'secondary' | 'destructive' | 'outline'
+	className?: string
 }
 
 const Label: React.FC<LabelProps> = (props) => {
@@ -12,9 +12,9 @@ const Label: React.FC<LabelProps> = (props) => {
 
 	if (!label) return null
 	return (
-    <Badge variant={variant} className={ className }>
-      { label }
-    </Badge>
+		<Badge variant={variant} className={className}>
+			{label}
+		</Badge>
 	)
 }
 

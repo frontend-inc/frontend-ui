@@ -27,7 +27,7 @@ const SecondaryFields: React.FC<SecondaryFieldsProps> = (props) => {
 	} = props || {}
 
 	return (
-		<div className='flex flex-col space-y-1'>
+		<div className="flex flex-col space-y-1">
 			{enableRatings == true && (
 				<ProductRating size="small" resource={resource} {...slots.ratings} />
 			)}

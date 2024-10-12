@@ -44,22 +44,26 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 								<Label label={label} />
 							</div>
 						)}
-						<Typography variant="h2" textAlign="center" className='tracking-tight'>
+						<Typography
+							variant="h2"
+							textAlign="center"
+							className="tracking-tight"
+						>
 							{primary}
 						</Typography>
 
 						{secondary && secondary}
 						{actions && actions}
 						{logos?.length > 0 && <BrandLogos logos={logos} />}
-            <div className="relative shadow-xl rounded-lg overflow-hidden">
-              <Image							
-                src={image}
-                alt={primary}
-                height={600}
-                objectFit="cover"
-                {...slots.image}
-              />              
-            </div>
+						<div className="relative shadow-xl rounded-lg overflow-hidden">
+							<Image
+								src={image}
+								alt={primary}
+								height={600}
+								objectFit="cover"
+								{...slots.image}
+							/>
+						</div>
 					</div>
 				</div>
 			</Container>

@@ -37,7 +37,7 @@ const AdminProductToolbar = (props) => {
 
 	return (
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
-			<div className='flex flex-row justify-center items-center space-x-2'>
+			<div className="flex flex-row justify-center items-center space-x-2">
 				<PrimaryButton onClick={handlePublish}>Publish</PrimaryButton>
 				<SecondaryButton onClick={handleUnpublish}>Unpublish</SecondaryButton>
 				<SecondaryButton alert onClick={handleDelete}>

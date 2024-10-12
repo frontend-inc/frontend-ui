@@ -7,66 +7,66 @@ import { cn } from '../../../shadcn/lib/utils'
 type JSONInputProps = InputPropsType
 
 export default function JSONInput({
-  errors,
-  value,
-  name,
-  label,
-  info,
-  placeholder,
-  handleChange
+	errors,
+	value,
+	name,
+	label,
+	info,
+	placeholder,
+	handleChange,
 }: JSONInputProps) {
-  const defaultValue = value ? JSON.stringify(value, null, 2) : '{}'
-  const [jsonValue, setJsonValue] = useState(defaultValue)
-  const [jsonError, setJsonError] = useState<string | null>(null)
+	const defaultValue = value ? JSON.stringify(value, null, 2) : '{}'
+	const [jsonValue, setJsonValue] = useState(defaultValue)
+	const [jsonError, setJsonError] = useState<string | null>(null)
 
-  useEffect(() => {
-    setJsonValue(value ? JSON.stringify(value, null, 2) : '{}')
-  }, [value])
+	useEffect(() => {
+		setJsonValue(value ? JSON.stringify(value, null, 2) : '{}')
+	}, [value])
 
-  const isValidJSON = (str: string) => {
-    try {
-      JSON.parse(str)
-      return true
-    } catch (e) {
-      return false
-    }
-  }
+	const isValidJSON = (str: string) => {
+		try {
+			JSON.parse(str)
+			return true
+		} catch (e) {
+			return false
+		}
+	}
 
-  const handleJSONChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const newValue = e.target.value
-    setJsonValue(newValue)
+	const handleJSONChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+		const newValue = e.target.value
+		setJsonValue(newValue)
 
-    if (isValidJSON(newValue)) {
-      setJsonError(null)
-      handleChange({
-        target: {
-          name,
-          value: JSON.parse(newValue),
-        },
-      })
-    } else {
-      setJsonError('Invalid JSON')
-    }
-  }
+		if (isValidJSON(newValue)) {
+			setJsonError(null)
+			handleChange({
+				target: {
+					name,
+					value: JSON.parse(newValue),
+				},
+			})
+		} else {
+			setJsonError('Invalid JSON')
+		}
+	}
 
-  const allErrors = { ...errors, ...(jsonError ? { [name]: jsonError } : {}) }
-  const hasError = Object.keys(allErrors).length > 0
+	const allErrors = { ...errors, ...(jsonError ? { [name]: jsonError } : {}) }
+	const hasError = Object.keys(allErrors).length > 0
 
-  return (
-    <div className="w-full">
-      <InputLabel label={label} info={info} />
-      <Textarea
-        className={cn(
-          "font-mono",
-          hasError && "border-red-500 focus-visible:ring-red-500"
-        )}
-        value={jsonValue}
-        placeholder={placeholder}
-        onChange={handleJSONChange}
-        name={name}
-        rows={6}
-      />
-      {hasError && <ErrorText error={allErrors[name]} />}
-    </div>
-  )
+	return (
+		<div className="w-full">
+			<InputLabel label={label} info={info} />
+			<Textarea
+				className={cn(
+					'font-mono',
+					hasError && 'border-red-500 focus-visible:ring-red-500'
+				)}
+				value={jsonValue}
+				placeholder={placeholder}
+				onChange={handleJSONChange}
+				name={name}
+				rows={6}
+			/>
+			{hasError && <ErrorText error={allErrors[name]} />}
+		</div>
+	)
 }

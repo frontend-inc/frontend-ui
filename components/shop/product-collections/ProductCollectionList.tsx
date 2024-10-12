@@ -5,10 +5,7 @@ import {
 	SearchFilterOptionType,
 	SortOptionType,
 } from '../../../types'
-import { 
-  ProductCollectionListItem,
-  ProductCollectionListItems  
-} from '../..'
+import { ProductCollectionListItem, ProductCollectionListItems } from '../..'
 import { useApp } from '../../../hooks'
 
 export type ProductCollectionListProps = {

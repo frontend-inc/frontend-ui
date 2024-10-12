@@ -95,7 +95,7 @@ const AdminShopifyPage: React.FC<AdminShopifyPageProps> = (props) => {
 			<AdminLayoutCenter>
 				<AdminHeader title={title} buttons={actions} enableExpandLeftPanel />
 				<AdminLayoutScroll>
-					<div className='p-2'>{children}</div>
+					<div className="p-2">{children}</div>
 				</AdminLayoutScroll>
 			</AdminLayoutCenter>
 		</ShopifyProvider>

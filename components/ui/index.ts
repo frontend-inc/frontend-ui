@@ -61,4 +61,3 @@ export { default as Pagination } from './Pagination'
 
 // Media
 export { default as Swipeable } from './swipeable/Swipeable'
-
