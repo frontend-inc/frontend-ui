@@ -19,7 +19,6 @@ export default function LayoutTabIcon({
 	return (
 		<IconButton
 			className={cn(
-				'bg-transparent hover:bg-secondary/10',
 				selected && 'bg-primary hover:bg-primary'
 			)}
 			onClick={handleClick}

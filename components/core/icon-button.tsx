@@ -34,7 +34,7 @@ const IconButton: React.FC<IconButtonProps> = ({
 			size="icon"
 			variant='ghost'
 			className={cn(
-				'min-w-[36px] min-h-[36px] bg-transparent hover:bg-secondary/10',
+				'min-w-[36px] min-h-[36px] bg-transparent hover:bg-muted',
 				'flex items-center justify-center',
 				variantClasses[variant],
 				className
