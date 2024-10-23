@@ -52,14 +52,12 @@ const Sheet: React.FC<SheetProps> = ({
 					className
 				)}
 			>
-				<SheetHeader className={'relative'}>
           <SheetClose asChild>
             <Button
               variant="ghost"              
               className={ 
-                cn(
-                  disablePadding ? "right-4" : "right-0",
-                  "p-2 absolute top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
+                cn(                  
+                  "m-2 p-2 absolute right-0 top-0 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
                 )
               }
             >
@@ -67,6 +65,7 @@ const Sheet: React.FC<SheetProps> = ({
               <span className="sr-only">Close</span>
             </Button>
           </SheetClose>
+				<SheetHeader className='mt-4'>
 					<SheetTitle className={cn(
             disablePadding && "px-4"
           )}>{title}</SheetTitle>
