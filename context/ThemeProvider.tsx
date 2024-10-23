@@ -4,22 +4,19 @@ import React from 'react'
 import ThemeContext from './ThemeContext'
 
 type ThemeProviderProps = {
-	children: React.ReactNode
-	primaryColor?: string
-	bgcolor?: string
+  mode?: string	
+	primaryColor?: string	
 	headerFont?: string
 	bodyFont?: string
 	borderRadius?: number
-	textPrimary?: string //color
-	textSecondary?: string //color
+  children: React.ReactNode
 }
 
 const ThemeProvider = (props: ThemeProviderProps) => {
-	const {
+	
+  const {
+    mode,
 		primaryColor,
-		bgcolor,
-		textPrimary,
-		textSecondary,
 		headerFont,
 		bodyFont,
 		borderRadius,
@@ -27,10 +24,8 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 	} = props || {}
 
 	const value = {
+    mode,
 		primaryColor,
-		bgcolor,
-		textPrimary,
-		textSecondary,
 		headerFont,
 		bodyFont,
 		borderRadius,

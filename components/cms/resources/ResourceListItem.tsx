@@ -57,7 +57,7 @@ export default function ResourceListItem({
 	return (
 		<div
 			className={cn(
-				'bg-background border border-border hover:bg-muted p-1 rounded-lg overflow-hidden ',
+				'bg-background border border-border hover:bg-muted/50 p-1 rounded-lg overflow-hidden ',
 				enableBorder &&
 					'border-border hover:shadow-md mb-1 transition-shadow duration-200',
 				selected && 'border-primary'
@@ -68,7 +68,7 @@ export default function ResourceListItem({
 					<GripVertical className="w-5 h-5 text-muted-foreground cursor-grab active:cursor-grabbing" />
 				)}
 				{selectable && (
-					<Checkbox checked={selected} onCheckedChange={handleSelect} />
+					<Checkbox className='text-foreground' checked={selected} onCheckedChange={handleSelect} />
 				)}
 				{avatar && <div className="mr-2">{avatar}</div>}
 				{image && (
