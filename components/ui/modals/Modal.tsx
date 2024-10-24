@@ -57,7 +57,7 @@ export default function Modal({
           <X className="h-5 w-5 text-foreground" />
           <span className="sr-only">Close</span>
         </DialogClose>
-        <DialogHeader className="relative">
+        <DialogHeader className="relative mt-4">
           <DialogTitle className="text-foreground">{title}</DialogTitle>
           {description && <DialogDescription>{description}</DialogDescription>}
         </DialogHeader>
