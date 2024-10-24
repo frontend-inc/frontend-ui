@@ -96,7 +96,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 					</Button>
 				</PopoverTrigger>
 			</div>
-			<PopoverContent className="w-[200px] p-0">
+			<PopoverContent className="bg-background w-[240px] p-0">
 				<Command>
 					<CommandInput
 						onValueChange={handleCommandChange}

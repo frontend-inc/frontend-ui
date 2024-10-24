@@ -9,7 +9,7 @@ import {
 	DropdownMenuTrigger,
 } from 'frontend-shadcn'
 import { Button } from 'frontend-shadcn'
-import { MoreVertical, Pencil, Trash } from 'lucide-react'
+import { MoreVertical } from 'lucide-react'
 
 type MenuButtonProps = {
 	children?: React.ReactNode
@@ -32,13 +32,13 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
 					<MoreVertical className="h-4 w-4 text-foreground" />
 				</Button>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent align="end" className="w-[100px]">
+			<DropdownMenuContent align="end" className="bg-background w-[100px]">
 				{children}
 				{handleEdit && (
-					<DropdownMenuItem onClick={handleEdit}>Edit</DropdownMenuItem>
+					<DropdownMenuItem className='text-foreground' onClick={handleEdit}>Edit</DropdownMenuItem>
 				)}
 				{handleDelete && (
-					<DropdownMenuItem onClick={handleDelete}>Delete</DropdownMenuItem>
+					<DropdownMenuItem  className='text-foreground' onClick={handleDelete}>Delete</DropdownMenuItem>
 				)}
 			</DropdownMenuContent>
 		</DropdownMenu>

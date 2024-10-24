@@ -111,7 +111,7 @@ export default function ResourceListItem({
 									<MoreVertical className="h-4 w-4 text-foreground" />
 								</Button>
 							</DropdownMenuTrigger>
-							<DropdownMenuContent align="end">
+							<DropdownMenuContent className="bg-background" align="end">
 								{menuActions}
 								{handleEdit && (
 									<DropdownMenuItem onClick={() => handleEdit({})}>
