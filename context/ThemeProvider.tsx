@@ -39,7 +39,10 @@ const ThemeProvider = (props: ThemeProviderProps) => {
     if(bodyFont){
       document.documentElement.style.setProperty('--font-body', bodyFont)  
     }        
-  }, [headerFont, bodyFont])
+    if(borderRadius){
+      document.documentElement.style.setProperty('--border-radius', '0.0em')
+    }
+  }, [headerFont, bodyFont, borderRadius])
 
 	return(
     <ThemeContext.Provider value={value}>
