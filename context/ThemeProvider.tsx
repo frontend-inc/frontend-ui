@@ -31,7 +31,11 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 		borderRadius,
 	}
 
-	return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+	return(
+    <ThemeContext.Provider value={value}>
+      {children}
+    </ThemeContext.Provider>
+  )
 }
 
 export default ThemeProvider

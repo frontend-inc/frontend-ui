@@ -10,6 +10,7 @@ import {
 	DrawerHeader,
 	DrawerTitle,
 } from 'frontend-shadcn'
+import { useTheme } from '../../../hooks'
 import { Button } from 'frontend-shadcn'
 import { X } from 'lucide-react'
 
@@ -34,9 +35,12 @@ export default function CustomDrawer({
 	children,
 	buttons,
 }: CustomDrawerProps) {
+
+  const { mode } = useTheme()
+
 	return (
 		<Drawer open={open} onOpenChange={handleClose}>
-			<DrawerContent className="alwaze">
+			<DrawerContent className={ mode }>
 				<DrawerHeader>
 					<div className="flex w-full justify-end">
 						<DrawerClose asChild>

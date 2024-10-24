@@ -1,7 +1,8 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { cn } from 'frontend-shadcn'
+import { useTheme } from '../../hooks'
 
 interface TypographyProps {
 	variant:
@@ -28,11 +29,12 @@ interface TypographyProps {
 const Typography: React.FC<TypographyProps> = ({
 	variant,
 	color = 'text.primary',
-	textAlign = 'left',
-	fontFamily = 'Inter',
+	textAlign = 'left',	
 	className,
 	children,
 }) => {
+
+  const { headerFont, bodyFont } = useTheme()
   
 	const baseClasses = cn(
 		color === 'text.primary' && 'text-foreground',
@@ -63,13 +65,20 @@ const Typography: React.FC<TypographyProps> = ({
 		right: 'text-right',
 	}
 
-	const fontFamilyClass = `font-['${fontFamily}']`
+  const [fontFamily, setFontFamily] = useState<string | null>(null)
+
+  useEffect(() => {
+    console.log('headerFont', headerFont)
+    if(headerFont){
+      setFontFamily(`font-['${headerFont}']`)
+    }
+  }, [headerFont])
 
 	return (
 		<div
 			className={cn(
 				baseClasses,
-				fontFamilyClass,
+				fontFamily,
 				variantClasses[variant],
 				alignmentClasses[textAlign],
 				className

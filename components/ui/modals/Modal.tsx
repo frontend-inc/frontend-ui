@@ -12,6 +12,7 @@ import {
   DialogTitle,
   DialogFooter,
 } from 'frontend-shadcn'
+import { useTheme } from '../../../hooks'
 import { ScrollArea } from 'frontend-shadcn'
 import { Loader } from '../../../components'
 import { X } from 'lucide-react'
@@ -27,7 +28,6 @@ type ModalProps = {
   children?: React.ReactNode
   maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   secondaryActions?: React.ReactNode
-  mode?: string
 }
 
 export default function Modal({
@@ -38,8 +38,10 @@ export default function Modal({
   buttons,
   children,
   description,
-  mode,
 }: ModalProps) {
+
+  const { mode } = useTheme()
+
   return (
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogOverlay className="bg-black/50" />
@@ -64,7 +66,7 @@ export default function Modal({
             {loading ? (
               <Loader loading={loading} />
             ) : (
-              <div className="h-full w-full">{children}</div>
+              <div className="w-full">{children}</div>
             )}
           </div>
         </ScrollArea>

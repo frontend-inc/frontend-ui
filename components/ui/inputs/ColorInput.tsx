@@ -120,14 +120,14 @@ export default function ColorInput({
 						</div>
 					</Button>
 				</PopoverTrigger>
-				<PopoverContent className="w-64">
-					<div className="grid grid-cols-7 gap-3 mb-2">
+				<PopoverContent className="bg-background w-64">
+					<div className="bg-background grid grid-cols-7 gap-3 mb-2">
 						<TooltipProvider>
 							<Tooltip>
 								<TooltipTrigger asChild>
 									<button
 										className={cn(
-											'relative bg-white h-8 w-8 rounded-md border overflow-hidden',
+											'relative bg-white h-8 w-8 rounded-md overflow-hidden',
 											value === '' &&
 												'ring-2 ring-offset-2 ring-offset-background'
 										)}
