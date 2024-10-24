@@ -38,10 +38,10 @@ const ThemeProvider = (props: ThemeProviderProps) => {
     }
     if(bodyFont){
       document.documentElement.style.setProperty('--font-body', bodyFont)  
-    }        
+    }            
     if(borderRadius){
-      document.documentElement.style.setProperty('--border-radius', '0.0em')
-    }
+      document.documentElement.style.setProperty('--radius', `${borderRadius}px`)  
+    }    
   }, [headerFont, bodyFont, borderRadius])
 
 	return(
