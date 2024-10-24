@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import GoogleFontLoader from 'react-google-font-loader'
 
+
 type FontLoaderProps = {
   headerFont: string
 	bodyFont: string 
@@ -14,23 +15,22 @@ const FontLoader: React.FC<FontLoaderProps> = ({ headerFont, bodyFont }) => {
 	useEffect(() => {
 		if (headerFont || bodyFont) {
 			let fonts = [
-				{ font: 'Inter', weights: [400, 600, 700, 800] },
-				{ font: 'Roboto', weights: [400, 600, 700, 800] },
+				{ font: 'Inter', weights: [400, 600, 700, 800, 900] },
+				{ font: 'Roboto', weights: [400, 600, 700, 800, 900] },
 			]
 			if (headerFont) {
 				fonts.push({
 					font: headerFont,
-					weights: [400, 600, 700, 800],
+					weights: [400, 600, 700, 800, 900],
 				})
 			}
 			if (bodyFont) {
 				fonts.push({
 					font: bodyFont,
-					weights: [400, 600, 700, 800],
+					weights: [400, 600, 700, 800, 900],
 				})
 			}
 			setGoogleFonts(fonts)
-
 		}
 	}, [headerFont, bodyFont])
 
