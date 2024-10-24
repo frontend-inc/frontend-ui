@@ -41,7 +41,7 @@ const AdminAnswerEdit: React.FC<ResourceFormProps> = (props) => {
 
 	return (
 		<Sheet
-			mode="editor"
+			
 			open={open}
 			handleClose={handleClose}
 			title={title ? title : resource?.id ? 'Edit' : 'Add'}

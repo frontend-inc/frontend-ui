@@ -149,7 +149,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 	}, [open, collection?.name, documentId])
 
 	return (
-		<Sheet mode="editor" open={open} handleClose={handleClose} title={title}>
+		<Sheet  open={open} handleClose={handleClose} title={title}>
 			{document && activeFields && (
 				<>
 					<div className="w-screen sm:w-auto">

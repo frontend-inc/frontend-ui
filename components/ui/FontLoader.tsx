@@ -31,8 +31,6 @@ const FontLoader: React.FC<FontLoaderProps> = ({ headerFont, bodyFont }) => {
 			}
 			setGoogleFonts(fonts)
 
-      document.documentElement.style.setProperty('--font-sans', headerFont)
-      document.documentElement.style.setProperty('--font-serif', bodyFont)  
 		}
 	}, [headerFont, bodyFont])
 

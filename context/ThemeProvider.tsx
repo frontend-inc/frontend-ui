@@ -1,7 +1,8 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import ThemeContext from './ThemeContext'
+import { cn } from 'frontend-shadcn'
 
 type ThemeProviderProps = {
   mode?: string	
@@ -31,9 +32,20 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 		borderRadius,
 	}
 
+  useEffect(() => {
+    if(headerFont){
+      document.documentElement.style.setProperty('--font-header', headerFont)
+    }
+    if(bodyFont){
+      document.documentElement.style.setProperty('--font-body', bodyFont)  
+    }        
+  }, [headerFont, bodyFont])
+
 	return(
     <ThemeContext.Provider value={value}>
-      {children}
+      <div className={cn(mode, 'w-full')}>
+        {children}
+      </div>
     </ThemeContext.Provider>
   )
 }

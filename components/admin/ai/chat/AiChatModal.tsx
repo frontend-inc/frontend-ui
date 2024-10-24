@@ -60,7 +60,7 @@ const AiChatModal: React.FC<AiChatModalProps> = (props) => {
 				</Tooltip>
 			</TooltipProvider>
 			<Sheet
-				mode="editor"
+				
 				title={label}
 				open={open}
 				handleClose={() => setOpen(false)}

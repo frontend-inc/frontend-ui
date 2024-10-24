@@ -15,7 +15,7 @@ const AdminFormQuestionsAdd: React.FC<AdminFormQuestionsAddProps> = (props) => {
 
 	return (
 		<Sheet
-			mode="editor"
+			
 			open={open}
 			handleClose={handleClose}
 			title="Add Questions"

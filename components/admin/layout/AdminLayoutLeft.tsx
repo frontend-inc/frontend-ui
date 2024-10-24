@@ -37,7 +37,7 @@ export default function AdminLayoutLeft({
 			<Hidden smUp>
 				<Sheet
 					disablePadding
-					mode="editor"
+					
 					anchor="left"
 					open={openLayoutLeft}
 					handleClose={() => setOpenLayoutLeft(false)}

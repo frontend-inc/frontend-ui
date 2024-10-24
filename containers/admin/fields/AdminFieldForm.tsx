@@ -45,7 +45,7 @@ const {
 
 	return (
 		<Sheet
-			mode="editor"
+			
 			disablePadding
 			open={open}
 			handleClose={handleClose}

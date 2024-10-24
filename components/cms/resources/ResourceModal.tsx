@@ -33,7 +33,7 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 
 	return (
 		<Sheet
-			mode="editor"
+			
 			open={open}
 			handleClose={handleClose}
 			title={title}

@@ -30,7 +30,7 @@ const AdminCollectionEdit: React.FC<AdminCollectionEditProps> = (props) => {
 
 	return (
 		<Sheet
-			mode="editor"
+			
 			loading={loading}
 			open={open}
 			handleClose={handleClose}

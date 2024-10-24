@@ -31,7 +31,7 @@ const AiPromptModal: React.FC<AiPromptModalProps> = (props) => {
 				</IconButton>
 			</Tooltip>
 			<Sheet
-				mode="editor"
+				
 				title={label}
 				open={open}
 				handleClose={() => setOpen(false)}

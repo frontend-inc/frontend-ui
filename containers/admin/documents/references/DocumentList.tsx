@@ -79,7 +79,7 @@ const DocumentListSheet: React.FC<DocumentListSheetProps> = (props) => {
 
 	return (
 		<Sheet
-			mode="editor"
+			
 			open={open}
 			title={`Add ${field?.foreign_collection?.singular_name}`}
 			handleClose={handleClose}

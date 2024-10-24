@@ -18,7 +18,7 @@ const AdminCollectionProductsAdd: React.FC<AdminCollectionProductsAddProps> = (
 
 	return (
 		<Sheet
-			mode="editor"
+			
 			open={open}
 			handleClose={handleClose}
 			title="Add Products"

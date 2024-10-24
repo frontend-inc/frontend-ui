@@ -58,7 +58,7 @@ const UnsplashModal: React.FC<UnsplashViewerModalProps> = ({
 
 	return (
 		<Modal
-			mode="editor"
+			
 			open={open}
 			loading={loading}
 			handleClose={handleClose}

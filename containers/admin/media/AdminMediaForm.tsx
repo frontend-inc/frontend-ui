@@ -21,7 +21,7 @@ const AdminMediaForm: React.FC<ResourceFormProps> = (props) => {
 
 	return (
 		<Sheet
-			mode="editor"
+			
 			open={open}
 			handleClose={handleClose}
 			title="Upload an Asset"

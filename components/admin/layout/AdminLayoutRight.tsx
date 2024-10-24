@@ -25,7 +25,7 @@ const AdminLayoutRight: React.FC<AdminLayoutRightProps> = (props) => {
 			</Hidden>
 			<Hidden smUp>
 				<Sheet
-					mode="editor"
+					
 					disablePadding
 					title={title}
 					open={openLayoutRight}
