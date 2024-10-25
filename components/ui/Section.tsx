@@ -32,7 +32,7 @@ const Section: React.FC<SectionProps> = (props) => {
 			className={cn(
 				mode == 'dark' && 'dark',
 				'w-full bg-background',
-				py > 0 && `py-${12}`,
+				py > 0 && 'py-[60px]',
 				px && `px-${px}`
 			)}
 			style={{ backgroundColor: bgColor }}

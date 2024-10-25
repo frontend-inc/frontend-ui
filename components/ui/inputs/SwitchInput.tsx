@@ -39,7 +39,11 @@ export default function SwitchInput({
 				)}
 			>
 				<div className="flex items-center space-x-2">
-					<Switch id={name} checked={value} onCheckedChange={onCheckedChange} />
+					<Switch 
+            id={name} 
+            checked={value} 
+            onCheckedChange={onCheckedChange}                         
+          />
 					<Label htmlFor={name} className="text-base text-muted-foreground">
 						{placeholder}
 					</Label>
