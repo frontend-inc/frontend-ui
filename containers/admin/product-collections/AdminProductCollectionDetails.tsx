@@ -4,7 +4,7 @@ import React from 'react'
 import { Image } from '../../../components'
 import { Typography } from '../../../components/core'
 import { ProductCollectionType } from '../../../types'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 
 type AdminProductCollectionCoverProps = {
 	productCollection: ProductCollectionType

@@ -2,7 +2,7 @@
 
 import React, { useContext } from 'react'
 import { ShopifyContext } from 'frontend-shopify'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { Typography } from '../../core'
 import { useShop } from 'frontend-shopify'
 import { Icon } from '../../../components'

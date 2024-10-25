@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { InlineWidget } from 'react-calendly'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { useAuth } from 'frontend-js'
 import { MediaModal } from '../../../components'
 

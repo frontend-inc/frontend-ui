@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { ChevronUp } from 'lucide-react'
 import { cn } from 'frontend-shadcn'
 

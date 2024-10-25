@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { Image, InputLabel } from '../../../components'
 import MediaBrowser from './MediaBrowser'
 import { Search, X } from 'lucide-react'

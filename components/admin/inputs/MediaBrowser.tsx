@@ -11,7 +11,7 @@ import {
 	UnsplashList,
 	BrandfetchInput,
 } from '../../../components'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 
 type MediaBrowserProps = {
 	open: boolean

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { UserAvatar, Label, MenuButton } from '../..'
 import { UserType } from 'frontend-js'
 import { useAuth } from 'frontend-js'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 
 type AuthUserListItemProps = {
 	user: UserType

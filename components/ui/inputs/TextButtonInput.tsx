@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Input } from 'frontend-shadcn'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { Loader2 } from 'lucide-react'
 import { cn } from 'frontend-shadcn'
 import { TextInputPropsType } from '../../../types'

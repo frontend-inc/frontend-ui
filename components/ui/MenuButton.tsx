@@ -8,7 +8,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from 'frontend-shadcn'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../components'
 import { MoreVertical } from 'lucide-react'
 
 type MenuButtonProps = {

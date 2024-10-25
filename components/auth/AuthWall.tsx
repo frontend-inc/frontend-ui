@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Placeholder } from '../../components'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../components'
 import { useApp } from '../../hooks'
 
 const AuthWall: React.FC = () => {

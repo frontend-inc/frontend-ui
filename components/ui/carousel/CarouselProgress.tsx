@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { Progress } from 'frontend-shadcn'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { cn } from 'frontend-shadcn'

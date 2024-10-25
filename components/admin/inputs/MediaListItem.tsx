@@ -7,7 +7,7 @@ import {
 	AttachmentImage,
 	Label,
 } from '../../../components'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { Card, CardHeader } from 'frontend-shadcn'
 import {
 	DropdownMenu,

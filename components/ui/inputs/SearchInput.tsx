@@ -6,9 +6,7 @@ import { SyntheticEventType } from '../../../types'
 import { Search } from 'lucide-react'
 import { cn } from 'frontend-shadcn'
 import { Input } from 'frontend-shadcn'
-import { Button } from 'frontend-shadcn'
 import { IconButton } from '../../core'
-import { Separator } from 'frontend-shadcn'
 
 type SearchInputProps = {
 	name?: string

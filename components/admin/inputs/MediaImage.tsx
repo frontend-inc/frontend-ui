@@ -3,7 +3,7 @@
 import React from 'react'
 import { Image, Icon } from '../../../components'
 import { ImageType } from '../../../types'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { Card, CardContent } from 'frontend-shadcn'
 
 type MediaImageProps = {

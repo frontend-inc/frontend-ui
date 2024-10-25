@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../../components'
 import { Collapse } from '../../../../components/core'
 
 type ProductToolbarProps = {

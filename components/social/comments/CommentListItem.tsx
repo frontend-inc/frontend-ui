@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { Collapse, Typography } from '../../core'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { UserAvatar } from '../../../components'
 import { useComments } from '../../../hooks'
 import moment from 'moment'

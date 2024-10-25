@@ -8,7 +8,7 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from 'frontend-shadcn'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { cn } from 'frontend-shadcn'
 import { CalendarIcon } from 'lucide-react'
 import { InputLabel } from '../../../components'

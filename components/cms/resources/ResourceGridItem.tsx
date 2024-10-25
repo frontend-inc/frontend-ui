@@ -9,7 +9,7 @@ import {
 	CardFooter,
 } from 'frontend-shadcn'
 import { Checkbox } from 'frontend-shadcn'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { Typography } from '../../core'
 import {
 	DropdownMenu,

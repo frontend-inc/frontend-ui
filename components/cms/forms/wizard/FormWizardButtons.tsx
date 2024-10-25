@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../../components'
 import { ChevronLeft, ChevronRight, Loader2 } from 'lucide-react'
 import { cn } from 'frontend-shadcn'
 

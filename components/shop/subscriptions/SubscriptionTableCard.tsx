@@ -3,7 +3,7 @@
 import React from 'react'
 import { Check } from 'lucide-react'
 import { cn } from 'frontend-shadcn'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import {
 	Card,
 	CardContent,

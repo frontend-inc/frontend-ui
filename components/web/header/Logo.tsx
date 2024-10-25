@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 
 const LOGO_WIDTH = 120
 const LOGO_HEIGHT = 60

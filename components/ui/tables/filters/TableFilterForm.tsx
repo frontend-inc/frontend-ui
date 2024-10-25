@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { Plus, Search, FilterIcon, Loader } from 'lucide-react'
 import { FILTERABLE_TYPES, SORTABLE_TYPES } from '../../../../constants/index'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../../components'
 import { TableFilterInputs } from '../../../../components'
 import { TableFilterKeywordsInput } from '../../../../components'
 import { TableFilterSortInput } from '../../../../components'

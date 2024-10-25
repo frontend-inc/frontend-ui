@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { cn } from 'frontend-shadcn'
-import { Button } from 'frontend-shadcn'
-import { Typography } from '../../core'
+import { Button } from '../../../components'
+import { Typography } from '../../../components'
 import {
 	DropdownMenu,
 	DropdownMenuContent,

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { Image } from '../../../components'
 import { formatCurrency } from 'frontend-shopify'
 import moment from 'moment'

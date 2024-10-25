@@ -4,15 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { SearchInput } from '../../../components'
 import { IconButton, Hidden } from '../../core'
 import { Edit, Filter, Trash } from 'lucide-react'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { Badge } from '../../core'
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from 'frontend-shadcn'
-import { ListFilter } from 'lucide-react'
-import TableFilterForm from './filters/TableFilterForm'
 import TableFilterButton from './filters/TableFilterButton'
 
 type TableToolbarProps = {

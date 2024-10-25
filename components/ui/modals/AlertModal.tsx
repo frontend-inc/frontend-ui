@@ -11,7 +11,7 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 } from 'frontend-shadcn'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { IconLoading } from '../../../components'
 import { cn } from 'frontend-shadcn'
 

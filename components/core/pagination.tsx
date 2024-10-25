@@ -3,7 +3,7 @@
 import React from 'react'
 import { cn } from 'frontend-shadcn'
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../components'
 
 interface PaginationProps {
 	count: number

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../../components'
 // @ts-ignore
 import Zoom from 'react-medium-image-zoom'
 import { ShopifyImageType } from 'frontend-shopify'

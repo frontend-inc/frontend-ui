@@ -7,7 +7,7 @@ import UnsplashCard from './UnsplashCard'
 import UnsplashModal from './UnsplashModal'
 import PoweredByUnsplash from './PoweredByUnsplash'
 import { SyntheticEventType, UnsplashImageType } from '../../../../types'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../../components'
 import { ChevronDown } from 'lucide-react'
 
 type UnsplashProps = {

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { useResource, useResourceContext } from 'frontend-js'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { Modal } from '../../../components'
 import { Plus } from 'lucide-react'
 import { RemoteAutosuggest } from '../../../components'

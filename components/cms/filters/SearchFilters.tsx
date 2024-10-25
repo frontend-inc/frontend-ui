@@ -3,7 +3,7 @@
 import React from 'react'
 import ListFilterList from './FilterList'
 import { Hidden } from '../../core'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { Sheet } from '../..'
 import { useMenu } from '../../../hooks'
 import { Icon } from '../..'

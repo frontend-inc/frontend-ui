@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { X } from 'lucide-react'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../../components'
 import { cn } from 'frontend-shadcn'
 
 interface ResourceToolbarModalProps {

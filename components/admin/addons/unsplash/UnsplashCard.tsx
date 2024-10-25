@@ -7,7 +7,7 @@ import {
 	AvatarFallback,
 	AvatarImage,
 } from 'frontend-shadcn'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../../components'
 import { Card, CardHeader } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
 

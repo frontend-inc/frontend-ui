@@ -6,7 +6,7 @@ import { Typography } from '../../../components/core'
 import { FormType } from '../../../types'
 import { useRouter, useParams } from 'next/navigation'
 import { Card } from 'frontend-shadcn'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 
 type AdminFormProps = {
 	form: FormType

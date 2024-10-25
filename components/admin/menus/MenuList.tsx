@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { cn } from 'frontend-shadcn'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { Typography } from '../../core'
 import { ChevronRight } from 'lucide-react'
 

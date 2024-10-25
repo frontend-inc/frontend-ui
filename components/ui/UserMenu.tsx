@@ -3,7 +3,7 @@
 import React from 'react'
 import { UserAvatar } from '../../components'
 import { useAuth } from 'frontend-js'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../components'
 import {
 	DropdownMenu,
 	DropdownMenuContent,

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { cn } from 'frontend-shadcn'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import {
 	Popover,
 	PopoverContent,
@@ -50,7 +50,7 @@ export default function SortButton({
 							)}
 						</Button>
 					</PopoverTrigger>
-					<PopoverContent className="w-80 p-0">
+					<PopoverContent className="bg-background w-80 p-0">
 						<SortList
 							sortOptions={sortOptions}
 							sortBy={sortBy}

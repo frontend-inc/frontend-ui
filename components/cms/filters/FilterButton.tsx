@@ -5,7 +5,7 @@ import { Icon, Sheet, IconLoading } from '../..'
 import FilterList from './FilterList'
 import { Hidden } from '../../core'
 import { FilterOptionType, SearchFilterOptionType } from '../../..'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { Badge } from 'frontend-shadcn'
 import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
 

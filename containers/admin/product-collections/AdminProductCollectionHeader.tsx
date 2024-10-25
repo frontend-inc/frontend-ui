@@ -5,7 +5,7 @@ import { ResourceHeader } from '../../../components'
 import { ResourceHeaderProps } from '../../../components/cms/resources/ResourceHeader'
 import { useProductCollections } from '../../../hooks'
 import { Form, Modal, Icon } from '../../../components'
-import { IconButton } from '../../../components/core'
+import { Button } from '../../../components'
 
 type AdminProductHeaderProps = ResourceHeaderProps
 
@@ -38,9 +38,10 @@ const AdminProductCollectionHeader: React.FC<AdminProductHeaderProps> = (
 			{...props}
 			secondaryAction={
 				<>
-					<IconButton onClick={() => setOpen(true)}>
-						<Icon name="Wand" />
-					</IconButton>
+					<Button variant="secondary" className="hover:bg-secondary/50" onClick={() => setOpen(true)}>
+						<Icon name="Zap" className='text-secondary-foreground mr-2' />
+            Generate 
+					</Button>
 					<Modal
 						icon="Wand"
 						title="Generate Product Collections"

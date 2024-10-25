@@ -66,7 +66,7 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 		>
 			<div 
         className={cn(
-          "w-full flex flex-col space-y-2 align-center justify-between",
+          "w-full flex flex-col space-y-2 items-center justify-start",
           direction == 'row' && 'sm:flex-row sm:space-x-2 sm:space-y-0'
         )}					
       >
@@ -102,8 +102,9 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
         )}	
 			>
 				{secondaryAction}
-				{(enableCreate || secondaryAction) && (
+				{(enableCreate || secondaryAction) && (          
 					<Button
+            size="default"
 						className="w-full sm:w-auto"
 						onClick={handleAdd}
 						startIcon={<Icon name="Plus" className="text-primary-foreground" />}

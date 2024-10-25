@@ -6,7 +6,7 @@ import { Icon, UserChip, Label, PrimaryButton } from '../../../components'
 import { OrderType } from '../../../types'
 import copy from 'copy-to-clipboard'
 import { useAlerts } from '../../../hooks'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 
 type AdminOrderDetailsProps = {
 	loading?: boolean

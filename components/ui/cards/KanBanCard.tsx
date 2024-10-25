@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { Card, CardContent, CardFooter } from 'frontend-shadcn'
 import { Image } from '../../../components'
 import { useSortable } from '@dnd-kit/sortable'

@@ -4,7 +4,7 @@ import React from 'react'
 import { useApp } from '../../../hooks'
 import { UserAvatar } from '../..'
 import { useAuth } from 'frontend-js'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { ChevronRight } from 'lucide-react'
 
 type MyAccountTabsProps = {

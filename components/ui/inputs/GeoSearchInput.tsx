@@ -6,7 +6,7 @@ import { SyntheticEventType } from '../../../types'
 import { Icon } from '../..'
 import { useGooglePlaces } from '../../../hooks'
 import { Input } from 'frontend-shadcn'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { cn } from 'frontend-shadcn'
 
 type GeoSearchInputProps = {

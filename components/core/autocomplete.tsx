@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { Check, ChevronsUpDown } from 'lucide-react'
 import { cn } from 'frontend-shadcn'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../components'
 import {
 	Command,
 	CommandEmpty,

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Typography } from '../../core'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import {
 	DropdownMenu,
 	DropdownMenuContent,

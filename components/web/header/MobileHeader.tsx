@@ -6,7 +6,7 @@ import { ShopifyCartButton } from '../../shopify'
 import { useApp } from '../../../hooks'
 import { ButtonType, MenuLinkType } from '../../..'
 import Logo from './Logo'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 
 type MobileHeaderProps = {
 	logo: string

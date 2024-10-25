@@ -4,7 +4,7 @@ import React from 'react'
 import { Image } from '../../../components'
 import { Typography } from '../../../components/core'
 import { QuestionType } from '../../../types'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 
 type AdminQuestionProps = {
 	question: QuestionType

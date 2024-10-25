@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo, useEffect } from 'react'
 import { InputLabel } from '../../../components'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { Input } from 'frontend-shadcn'
 import { Slider } from 'frontend-shadcn'
 import {

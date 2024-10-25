@@ -2,10 +2,9 @@
 
 import React from 'react'
 import { cn } from 'frontend-shadcn'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { Check } from 'lucide-react'
 import { SortOptionType } from '../../../types'
-import { Typography } from '../../core'
 import { MenuList } from '../../../components'
 
 // Assuming SORT_DIRECTIONS is imported from a constants file

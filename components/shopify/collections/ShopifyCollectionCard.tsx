@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { Typography } from '../../core'
 import { Card } from 'frontend-shadcn'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { useApp } from '../../../hooks'
 import { truncate } from '../../../helpers'
 import { Image } from '../../../components'

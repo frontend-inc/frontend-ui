@@ -11,7 +11,7 @@ import {
 	DrawerTitle,
 } from 'frontend-shadcn'
 import { useTheme } from '../../../hooks'
-import { Button } from 'frontend-shadcn'
+import { Button } from '../../../components'
 import { X } from 'lucide-react'
 
 type CustomDrawerProps = {
