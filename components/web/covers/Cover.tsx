@@ -93,6 +93,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 				>
 					{title && (
 						<Typography
+              className="text-foreground"
 							variant={textVariant}
 							textAlign={alignItems === 'center' ? 'center' : 'left'}
 						>
@@ -101,6 +102,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 					)}
 					{description && (
 						<Typography
+              className="text-foreground"
 							variant="subtitle2"
 							textAlign={alignItems === 'center' ? 'center' : 'left'}
 						>

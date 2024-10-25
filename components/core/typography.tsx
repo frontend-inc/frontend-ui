@@ -1,8 +1,7 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { cn } from 'frontend-shadcn'
-import { useTheme } from '../../hooks'
 
 interface TypographyProps {
 	variant:
@@ -32,7 +31,6 @@ const Typography: React.FC<TypographyProps> = ({
 	className,
 	children,
 }) => {
-	const { headerFont, bodyFont } = useTheme()
 
 	const variantClasses = {
 		h1: 'text-6xl font-semibold tracking-tight',
@@ -75,6 +73,7 @@ const Typography: React.FC<TypographyProps> = ({
 	return (
 		<div
 			className={cn(
+        'text-foreground',
 				fontFamily[variant],
 				variantClasses[variant],
 				alignmentClasses[textAlign],
