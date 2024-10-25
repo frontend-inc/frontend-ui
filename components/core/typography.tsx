@@ -28,24 +28,11 @@ interface TypographyProps {
 
 const Typography: React.FC<TypographyProps> = ({
 	variant,
-	color = 'text.primary',
 	textAlign = 'left',
 	className,
 	children,
 }) => {
 	const { headerFont, bodyFont } = useTheme()
-
-	useEffect(() => {
-		console.log('headerFont', headerFont)
-		console.log('bodyFont', bodyFont)
-	}, [headerFont, bodyFont])
-
-	const baseClasses = cn(
-		color === 'text.primary' && 'text-foreground',
-		color == 'text.secondary' && 'text-muted-foreground',
-		color,
-		'whitespace-pre-line'
-	)
 
 	const variantClasses = {
 		h1: 'text-6xl font-semibold tracking-tight',
@@ -88,7 +75,6 @@ const Typography: React.FC<TypographyProps> = ({
 	return (
 		<div
 			className={cn(
-				baseClasses,
 				fontFamily[variant],
 				variantClasses[variant],
 				alignmentClasses[textAlign],

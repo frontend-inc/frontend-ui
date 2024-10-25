@@ -19,7 +19,7 @@ const AdminWebhookItem: React.FC<AdminWebhookItemProps> = (props) => {
 			enableBorder
 			sortable={sortable}
 			icon="Webhook"
-			color="primary.main"
+			
 			primary={resource?.event_type}
 			secondary={resource?.collection?.name}
 			secondaryAction={<Label label={resource?.event_type} />}

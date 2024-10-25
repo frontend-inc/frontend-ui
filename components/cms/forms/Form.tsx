@@ -51,13 +51,10 @@ const Form: React.FC<FormProps> = (props) => {
 				inputParams={inputParams}
 			/>
 			{handleSubmit && (
-				<Button
-					size="medium"
+				<Button					
 					onClick={handleSubmit}
 					disabled={loading}
-					endIcon={
-						loading ? <IconLoading color="primary.contrastText" /> : null
-					}
+          loading={ loading }					
 				>
 					{buttonText}
 				</Button>

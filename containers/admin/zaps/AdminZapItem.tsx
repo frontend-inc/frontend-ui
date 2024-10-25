@@ -25,7 +25,7 @@ const AdminZapItem: React.FC<AdminZapItemProps> = (props) => {
 			enableBorder
 			sortable={sortable}
 			icon={zap.zap_type === 'email' ? 'Mail' : 'Webhook'}
-			color="primary.main"
+			
 			primary={zap?.zap_type}
 			secondary={zap?.url || zap?.email?.name}
 			secondaryAction={<Label label={zap?.event_type} />}

@@ -20,7 +20,6 @@ const AdminShipment: React.FC<ResourceItemProps> = (props) => {
 		<ResourceListItem
 			selectable={selectable}
 			selected={selected}
-			color="secondary.main"
 			icon="Package"
 			primary={shipment.carrier}
 			secondary={shipment.tracking_code}

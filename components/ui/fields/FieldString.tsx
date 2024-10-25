@@ -10,7 +10,6 @@ const FieldString: React.FC<FieldElementProps> = (props) => {
 	const {
 		value,
 		label,
-		color = 'text.primary',
 		placeholder,
 		alignItems,
 		disableLabel = false,
@@ -21,8 +20,7 @@ const FieldString: React.FC<FieldElementProps> = (props) => {
 	return (
 		<FieldWrapper
 			alignItems={alignItems}
-			label={label}
-			color={color}
+			label={label}			
 			disableLabel={disableLabel}
 			{...rest}
 		>

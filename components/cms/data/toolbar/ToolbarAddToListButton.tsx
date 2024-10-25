@@ -52,7 +52,7 @@ const DataAddToList: React.FC<DataAddToListProps> = (props) => {
 					<Button
 						fullWidth
 						onClick={handleSubmit}
-						startIcon={<Icon name="Plus" color="primary.contrastText" />}
+						startIcon={<Icon name="Plus"  />}
 					>
 						Add
 					</Button>

@@ -57,9 +57,10 @@ const MailchimpSubscribe: React.FC<MailchimpSubscribeProps> = (props) => {
 				<Button
 					color="secondary"
 					onClick={handleFormSubmit}
+          loading={ loading }
 					className="min-w-[120px] rounded-l-none"
 				>
-					{loading ? <IconLoading /> : buttonText}
+					{buttonText}
 				</Button>
 			</div>
 		</div>

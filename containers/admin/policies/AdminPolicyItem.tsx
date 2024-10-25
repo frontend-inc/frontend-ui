@@ -25,7 +25,7 @@ const AdminPolicyItem: React.FC<AdminPolicyItemProps> = (props) => {
 			sortable
 			enableBorder={enableBorder}
 			icon="StickyNote"
-			color="primary.main"
+			
 			primary={policy?.title}
 			secondary={`/policies/${policy?.handle}`}
 			handleEdit={handleEdit}
