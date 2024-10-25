@@ -29,8 +29,6 @@ const ForgotPasswordForm: React.FC<ForgotPasswordFormProps> = (props) => {
 			/>
 			<Button
 				fullWidth
-				variant="contained"
-				color="primary"
 				onClick={handleSubmit}
 				startIcon={loading && <IconLoading />}
 			>

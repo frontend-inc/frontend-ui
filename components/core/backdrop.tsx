@@ -24,7 +24,7 @@ const Backdrop = ({
 				'bg-black fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-300 ease-in-out',
 				open ? 'opacity-60' : 'opacity-0 pointer-events-none',
 				className
-			)}			
+			)}
 			{...props}
 		>
 			{children}

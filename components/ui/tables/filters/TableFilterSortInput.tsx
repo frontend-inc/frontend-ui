@@ -6,9 +6,9 @@ import { SelectInput } from '../../..'
 type TableFilterSortProps = {
 	label: string
 	fieldOptions: {
-    label: string 
-    value: string 
-  }[]
+		label: string
+		value: string
+	}[]
 	sortBy?: string
 	sortDirection?: 'asc' | 'desc'
 	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void

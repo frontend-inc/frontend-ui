@@ -23,11 +23,7 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
 	return (
 		<ResourceListItem
 			handleClick={handleClick}
-			primary={
-				<Typography variant="subtitle2" >
-					{user?.name}
-				</Typography>
-			}
+			primary={<Typography variant="subtitle2">{user?.name}</Typography>}
 			avatar={<UserAvatar size={size} user={user} />}
 			secondary={<DisplayFields resource={user} fields={displayFields} />}
 		/>

@@ -8,8 +8,8 @@ export type CardProps = {
 	primary?: string
 	secondaryAction?: React.ReactNode
 	handleClick?: () => void
-  height?: number
-	image?: string	
+	height?: number
+	image?: string
 	slots?: {
 		image?: any
 	}
@@ -21,7 +21,7 @@ export default function ImageCard({
 	handleClick,
 	image,
 	height = 260,
-	slots = {		
+	slots = {
 		image: {},
 	},
 }: CardProps) {
@@ -31,11 +31,11 @@ export default function ImageCard({
 				className={cn(
 					'relative flex flex-col overflow-hidden rounded',
 					'transition-shadow duration-300 hover:shadow-md'
-				)}				
+				)}
 			>
 				<TouchableOpacity handleClick={handleClick}>
 					<Image
-						src={image}            
+						src={image}
 						height={height}
 						alt={primary}
 						className="w-full h-auto object-cover"

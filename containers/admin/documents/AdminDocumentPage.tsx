@@ -168,8 +168,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 		}
 	}, [documentId])
 
-
-  const searchParams = useSearchParams() 
+	const searchParams = useSearchParams()
 
 	useEffect(() => {
 		if (searchParams) {

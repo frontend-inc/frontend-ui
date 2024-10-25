@@ -31,7 +31,7 @@ const AdminOrderDetails: React.FC<AdminOrderDetailsProps> = (props) => {
 	return (
 		<div className={`grid grid-cols-2 gap-4 ${loading ? 'opacity-50' : ''}`}>
 			<div className="flex flex-row space-x-1">
-				<Typography variant="subtitle1" >
+				<Typography variant="subtitle1">
 					Order {order.display_number}
 				</Typography>
 				<Label label={order?.status} />

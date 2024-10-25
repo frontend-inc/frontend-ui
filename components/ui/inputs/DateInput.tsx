@@ -3,11 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import moment from 'moment'
 import { Calendar } from 'frontend-shadcn'
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from 'frontend-shadcn'
+import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
 import { Button } from '../../../components'
 import { cn } from 'frontend-shadcn'
 import { CalendarIcon } from 'lucide-react'
@@ -93,11 +89,7 @@ export default function DateInput({
 					</Button>
 				</PopoverTrigger>
 				<PopoverContent className="w-auto p-0">
-					<Calendar
-						mode="single"
-						selected={date}
-						onSelect={handleDateSelect}
-					/>
+					<Calendar mode="single" selected={date} onSelect={handleDateSelect} />
 				</PopoverContent>
 			</Popover>
 			{error && <p className="text-sm text-red-500">This field is required</p>}

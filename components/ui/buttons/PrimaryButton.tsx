@@ -52,8 +52,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
 			<Button
 				fullWidth={fullWidth}
 				color={color}
-				variant="contained"
-        //@ts-ignore
+				//@ts-ignore
 				onClick={handleClick}
 				disabled={disabled}
 				size={size}
@@ -92,7 +91,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
 				title={title}
 				description={description}
 				handleClose={() => setOpen(false)}
-        //@ts-ignore
+				//@ts-ignore
 				handleConfirm={handleClick}
 			/>
 		</>

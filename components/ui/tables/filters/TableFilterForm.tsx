@@ -27,7 +27,9 @@ export default function TableFilterForm({
 	handleClearFilters,
 }: TableFilterFormProps) {
 	const [filterOptions, setFilterOptions] = useState<Record<string, any>[]>([])
-	const [sortOptions, setSortOptions] = useState<{ label: string, value: string }[]>([])
+	const [sortOptions, setSortOptions] = useState<
+		{ label: string; value: string }[]
+	>([])
 	const [activeFilters, setActiveFilters] = useState<Record<string, any>[]>([])
 
 	const defaultFilter = {
@@ -37,10 +39,7 @@ export default function TableFilterForm({
 		value: '',
 	}
 
-	const handleFilterChange = (
-		ev: SyntheticEventType,
-		index: number
-	) => {
+	const handleFilterChange = (ev: SyntheticEventType, index: number) => {
 		const { name, value } = ev.target
 		setActiveFilters((prevFilters) => {
 			const updatedFilters = [...prevFilters]
@@ -80,7 +79,7 @@ export default function TableFilterForm({
 			filters,
 		}
 
-    handleSearch(searchQuery)
+		handleSearch(searchQuery)
 	}
 
 	const handleFilterFields = (
@@ -115,27 +114,27 @@ export default function TableFilterForm({
 	}, [fields])
 
 	useEffect(() => {
-    if (query && query.filters) {
-      // Use Object.keys to iterate over query.filters
-      const formattedFilters = Object.keys(query.filters)
-        .map(where => {
-          const filters = query.filters[where];
-          // Use map to iterate over filters and format them
-          return filters.map(filter => {
-            const field = Object.keys(filter)[0];
-            const operator = Object.keys(filter[field])[0];
-            const value = filter[field][operator];
-  
-            return { where, field, operator, value };
-          });
-        })
-        // Use reduce to flatten the resulting arrays
-        .reduce((acc, curr) => acc.concat(curr), []);
-  
-      // Set active filters
-      setActiveFilters(formattedFilters);
-    }
-  }, [query]);
+		if (query && query.filters) {
+			// Use Object.keys to iterate over query.filters
+			const formattedFilters = Object.keys(query.filters)
+				.map((where) => {
+					const filters = query.filters[where]
+					// Use map to iterate over filters and format them
+					return filters.map((filter) => {
+						const field = Object.keys(filter)[0]
+						const operator = Object.keys(filter[field])[0]
+						const value = filter[field][operator]
+
+						return { where, field, operator, value }
+					})
+				})
+				// Use reduce to flatten the resulting arrays
+				.reduce((acc, curr) => acc.concat(curr), [])
+
+			// Set active filters
+			setActiveFilters(formattedFilters)
+		}
+	}, [query])
 
 	return (
 		<div className="space-y-2">

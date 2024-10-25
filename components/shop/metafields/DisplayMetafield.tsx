@@ -15,7 +15,7 @@ const DisplayMetafield: React.FC<DisplayMetafieldProps> = (props) => {
 
 	return (
 		<AccordionItem
-			primary={field.label}			
+			primary={field.label}
 			secondary={<Field disableLabel field={field} resource={resource} />}
 		/>
 	)

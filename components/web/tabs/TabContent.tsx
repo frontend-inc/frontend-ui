@@ -38,9 +38,7 @@ const TabItem: React.FC<TabItemProps> = ({
 				</div>
 			)}
 			<div className="flex flex-col gap-4 w-full">
-				<Typography variant="subtitle1" >
-					{title}
-				</Typography>
+				<Typography variant="subtitle1">{title}</Typography>
 				<Typography variant="body1" className="text-muted-foreground">
 					{description}
 				</Typography>

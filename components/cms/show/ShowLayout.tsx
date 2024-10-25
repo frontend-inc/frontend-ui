@@ -33,10 +33,7 @@ const ShowLayout: React.FC<ShowLayoutProps> = (props) => {
 		<div className="flex flex-col items-center justify-start w-full space-y-8">
 			{buttons && (
 				<div className="w-full sm:w-auto flex justify-center">
-					<ButtonActions
-						buttons={buttons}						
-						justifyContent="center"
-					/>
+					<ButtonActions buttons={buttons} justifyContent="center" />
 				</div>
 			)}
 			<div className="flex flex-col items-center space-y-6 max-w-[500px] w-full text-center">

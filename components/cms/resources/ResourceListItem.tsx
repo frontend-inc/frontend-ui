@@ -28,7 +28,7 @@ export type ResourceListItemProps = {
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
 	handleSelect?: () => void
-  handleReload?: () => void
+	handleReload?: () => void
 	secondaryAction?: React.ReactNode
 	menuActions?: React.ReactNode
 	sortable?: boolean
@@ -68,7 +68,11 @@ export default function ResourceListItem({
 					<GripVertical className="w-5 h-5 text-muted-foreground cursor-grab active:cursor-grabbing" />
 				)}
 				{selectable && (
-					<Checkbox className='text-foreground' checked={selected} onCheckedChange={handleSelect} />
+					<Checkbox
+						className="text-foreground"
+						checked={selected}
+						onCheckedChange={handleSelect}
+					/>
 				)}
 				{avatar && <div className="mr-2">{avatar}</div>}
 				{image && (
@@ -86,7 +90,7 @@ export default function ResourceListItem({
 						className="focus:outline-none focus:ring-2"
 						onClick={handleClick}
 					>
-						<Avatar className='mr-2 rounded'>
+						<Avatar className="mr-2 rounded">
 							<AvatarFallback className={color}>
 								<Icon name={icon} />
 							</AvatarFallback>

@@ -24,7 +24,7 @@ const ShopProductCollectionCoverCarousel: React.FC<
 
 	return (
 		<Section
-			mode='dark'
+			mode="dark"
 			py={0}
 			px={0}
 			requireAuth={requireAuth}

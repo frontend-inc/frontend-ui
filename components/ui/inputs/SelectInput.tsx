@@ -17,11 +17,11 @@ type SelectInputPropsType = {
 	direction?: 'column' | 'row'
 	name: string
 	value: string
-  placeholder?: string
-	options?: { 
-    value: string | number | boolean
-    label: string 
-  }[]
+	placeholder?: string
+	options?: {
+		value: string | number | boolean
+		label: string
+	}[]
 	handleChange: (e: SyntheticEventType) => void
 	info?: string
 }
@@ -56,11 +56,11 @@ export default function SelectInput({
 				</SelectTrigger>
 				<SelectContent>
 					{options?.map((option, idx) => (
-						<SelectItem 
-              key={idx} 
-              // @ts-ignore
-              value={option.value}
-            >
+						<SelectItem
+							key={idx}
+							// @ts-ignore
+							value={option.value}
+						>
 							{option.label}
 						</SelectItem>
 					))}

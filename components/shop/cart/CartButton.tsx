@@ -13,7 +13,7 @@ type CartIconButtonProps = {
 	handleClick: () => void
 }
 
-type CartButtonProps = {	
+type CartButtonProps = {
 	icon?: string
 }
 
@@ -62,7 +62,7 @@ const CartButton: React.FC<CartButtonProps> = (props) => {
 
 	return (
 		<IconButton onClick={() => setCartOpen(!cartOpen)}>
-			<Badge color="primary" badgeContent={cart?.total_items}>
+			<Badge badgeContent={cart?.total_items}>
 				<Icon name={icon} size={24} />
 			</Badge>
 		</IconButton>

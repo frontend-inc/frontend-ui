@@ -1,9 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Typography, Button } from '../../core'
+import { Typography, Button } from '../../../components'
 import { Image } from '../..'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useApp } from '../../../hooks'
 import { cn } from 'frontend-shadcn'
 
@@ -101,7 +101,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 					)}
 					{description && (
 						<Typography
-							variant="subtitle2"							
+							variant="subtitle2"
 							textAlign={alignItems === 'center' ? 'center' : 'left'}
 						>
 							{description}
@@ -109,11 +109,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 					)}
 					{buttonText && (
 						<div className="py-2">
-							<Button
-								size="large"
-								onClick={handleItemClick}
-								variant="contained"
-							>
+							<Button size="lg" onClick={handleItemClick} variant="default">
 								{buttonText}
 							</Button>
 						</div>

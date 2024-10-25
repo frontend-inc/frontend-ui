@@ -15,7 +15,7 @@ const useFacebookPixel = (props: FacebookPixelProps) => {
 		debug: false,
 	}
 
-  const pathname = usePathname()
+	const pathname = usePathname()
 
 	useEffect(() => {
 		const trackFbPageView = async () => {

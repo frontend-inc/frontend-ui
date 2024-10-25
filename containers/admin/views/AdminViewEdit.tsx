@@ -28,7 +28,6 @@ const AdminViewEdit: React.FC<AdminViewEditProps> = (props) => {
 
 	return (
 		<Sheet
-			
 			loading={loading}
 			open={open}
 			handleClose={handleClose}

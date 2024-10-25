@@ -44,7 +44,8 @@ const BrandfetchInput: React.FC<BrandfetchInputProps> = (props) => {
 			<PoweredByBrandfetch />
 			{loading && <CircularLoader />}
 			<div className="grid grid-cols-[repeat(auto-fill,minmax(164px,1fr))] gap-4">
-				{!loading && brand?.logos?.map((logo) => (
+				{!loading &&
+					brand?.logos?.map((logo) => (
 						<React.Fragment key={logo.domain}>
 							{logo?.formats
 								?.filter((f) => f.format != 'svg')

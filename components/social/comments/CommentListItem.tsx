@@ -80,11 +80,7 @@ const CommentListItem: React.FC<CommentListItemProps> = (props) => {
 							{`@${parentComment?.user?.username}`} -{' '}
 							{moment(parentComment?.created_at).fromNow()}
 						</Typography>
-						<Typography
-							variant="body1"
-							
-							className="mb-2 whitespace-pre-wrap"
-						>
+						<Typography variant="body1" className="mb-2 whitespace-pre-wrap">
 							{parentComment?.body}
 						</Typography>
 					</div>

@@ -49,7 +49,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 						)}
 						Filters
 						{!disableFilterCount && filters?.length > 0 && (
-							<Badge className="absolute -top-1 -right-1" color="primary">
+							<Badge className="absolute -top-1 -right-1">
 								{filters.length}
 							</Badge>
 						)}

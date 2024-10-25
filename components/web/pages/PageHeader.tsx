@@ -19,13 +19,7 @@ export type PageHeaderProps = {
 }
 
 const PageHeader: React.FC<PageHeaderProps> = (props) => {
-	const {
-		label,
-		title,
-		description,
-		links,
-		buttons,
-	} = props
+	const { label, title, description, links, buttons } = props
 
 	return (
 		<div className="w-full flex flex-col space-y-1">

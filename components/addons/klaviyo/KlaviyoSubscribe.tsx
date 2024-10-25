@@ -59,7 +59,6 @@ const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
 					className="rounded-r-none"
 				/>
 				<Button
-					variant="contained"
 					color="secondary"
 					onClick={handleFormSubmit}
 					className="min-w-[120px] rounded-l-none"

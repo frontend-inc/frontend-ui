@@ -14,15 +14,11 @@ import {
 	CommandItem,
 	CommandList,
 } from 'frontend-shadcn'
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from 'frontend-shadcn'
+import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
 import { OptionType, SyntheticEventType } from 'frontend-js'
 
 type AutosuggestProps = {
-  errors?: any 
+	errors?: any
 	label?: string
 	info?: string
 	name: string
@@ -31,7 +27,7 @@ type AutosuggestProps = {
 	handleChange: (ev: SyntheticEventType) => void
 	handleInputChange?: (value: string) => void
 	options: OptionType[]
-  enableClear?: boolean
+	enableClear?: boolean
 }
 
 const Autosuggest: React.FC<AutosuggestProps> = (props) => {

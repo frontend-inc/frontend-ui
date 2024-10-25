@@ -58,18 +58,18 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 	} = props || {}
 
 	return (
-		<div 
-      className={cn(
-        "flex flex-col space-y-2 w-full align-center justify-between",
-        direction == 'row' && 'sm:flex-row sm:space-x-2 sm:space-y-0'
-      )}					
+		<div
+			className={cn(
+				'flex flex-col space-y-2 w-full align-center justify-between',
+				direction == 'row' && 'sm:flex-row sm:space-x-2 sm:space-y-0'
+			)}
 		>
-			<div 
-        className={cn(
-          "w-full flex flex-col space-y-2 items-center justify-start",
-          direction == 'row' && 'sm:flex-row sm:space-x-2 sm:space-y-0'
-        )}					
-      >
+			<div
+				className={cn(
+					'w-full flex flex-col space-y-2 items-center justify-start',
+					direction == 'row' && 'sm:flex-row sm:space-x-2 sm:space-y-0'
+				)}
+			>
 				{enableSearch && (
 					<SearchInput
 						value={keywords}
@@ -97,14 +97,14 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 			</div>
 			<div
 				className={cn(
-          "flex flex-col space-y-2 w-full align-center justify-end",
-          direction == 'row' && 'sm:flex-row sm:space-x-2 sm:space-y-0'
-        )}	
+					'flex flex-col space-y-2 w-full align-center justify-end',
+					direction == 'row' && 'sm:flex-row sm:space-x-2 sm:space-y-0'
+				)}
 			>
 				{secondaryAction}
-				{(enableCreate || secondaryAction) && (          
+				{(enableCreate || secondaryAction) && (
 					<Button
-            size="default"
+						size="default"
 						className="w-full sm:w-auto"
 						onClick={handleAdd}
 						startIcon={<Icon name="Plus" className="text-primary-foreground" />}

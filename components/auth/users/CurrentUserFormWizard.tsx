@@ -137,19 +137,10 @@ const CurrentUserFormWizard: React.FC<CurrentUserFormWizardProps> = (props) => {
 
 	return (
 		<div className="w-full flex flex-col justify-between items-center">
-			<Button
-				onClick={handleStartClick}
-				variant="contained"
-				color="primary"
-				size="large"
-				className="mb-4"
-			>
+			<Button onClick={handleStartClick} size="lg" className="mb-4">
 				{buttonText}
 			</Button>
-			<Modal
-				open={open}
-				handleClose={() => setOpen(false)}
-			>
+			<Modal open={open} handleClose={() => setOpen(false)}>
 				<FormWizardProgress currentStep={currentStep} totalSteps={totalSteps} />
 				<div className="flex flex-col justify-center items-center w-full h-[calc(100vh-200px)]">
 					<div className="px-2 py-4 w-full max-w-[600px]">

@@ -12,7 +12,7 @@ type ExpandableTextProps = {
 	variant?: TypographyVariantsType
 	maxChars?: number
 	color?: string
-  className?: string
+	className?: string
 }
 
 const ExpandableText: React.FC<ExpandableTextProps> = (props) => {
@@ -27,12 +27,12 @@ const ExpandableText: React.FC<ExpandableTextProps> = (props) => {
 		<div className="flex flex-col">
 			{open ? (
 				<Typography variant={variant} className={className}>
-          {text}
-        </Typography>
+					{text}
+				</Typography>
 			) : (
 				<Typography variant={variant} className={className}>
-          {text?.slice(0, maxChars)}
-        </Typography>
+					{text?.slice(0, maxChars)}
+				</Typography>
 			)}
 			{text?.length > maxChars && (
 				<Link href="#" onClick={() => setOpen(!open)}>

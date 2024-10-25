@@ -65,9 +65,7 @@ const AdminProductCollection: React.FC<AdminProductCollectionProps> = (
 				productCollection={productCollection}
 				handleEdit={handleEdit}
 			/>
-			<Typography variant="subtitle1" >
-				Products
-			</Typography>
+			<Typography variant="subtitle1">Products</Typography>
 			<AdminCollectionProductList productCollectionId={productCollection?.id} />
 			<AdminProductCollectionEdit
 				open={open}

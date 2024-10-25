@@ -2,11 +2,7 @@
 
 import React from 'react'
 import { Button } from '../../../components'
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from 'frontend-shadcn'
+import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
 import {
 	Tooltip,
 	TooltipContent,

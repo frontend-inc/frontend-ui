@@ -25,9 +25,7 @@ const AdminAnswerDetails: React.FC<AdminAnswerProps> = (props) => {
 						/>
 					</div>
 					<div className="flex flex-col">
-						<Typography variant="subtitle1" >
-							{question?.title}
-						</Typography>
+						<Typography variant="subtitle1">{question?.title}</Typography>
 						<Typography variant="body2" className="text-muted-foreground">
 							{question?.description}
 						</Typography>

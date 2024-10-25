@@ -41,7 +41,7 @@ const ProductCollectionCover: React.FC<ProductCollectionCoverProps> = (
 			height={height}
 			title={productCollection?.title}
 			description={productCollection?.description}
-      //@ts-ignore 
+			//@ts-ignore
 			image={productCollection?.image?.url}
 			alt={alt}
 			alignItems={alignItems}

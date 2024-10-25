@@ -1,12 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import {
-	Sheet,
-	ButtonTabs,
-	IconLoading,
-	FormFields,
-} from '../../../components'
+import { Sheet, ButtonTabs, IconLoading, FormFields } from '../../../components'
 import { ResourceFormProps } from '../../../components/cms/resources/ResourceForm'
 import { Button } from '../../../components/core'
 import AdminFieldVariantList from './AdminFieldVariantList'
@@ -14,7 +9,7 @@ import AdminFieldVariantListItem from './AdminFieldVariantListItem'
 import { FIELD_VARIANTS } from '../../../constants'
 
 const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
-const {
+	const {
 		loading,
 		errors,
 		open,
@@ -45,7 +40,6 @@ const {
 
 	return (
 		<Sheet
-			
 			disablePadding
 			open={open}
 			handleClose={handleClose}
@@ -53,8 +47,6 @@ const {
 			buttons={
 				<Button
 					fullWidth
-					variant="contained"
-					color="primary"
 					onClick={handleSubmit}
 					startIcon={loading && <IconLoading />}
 				>

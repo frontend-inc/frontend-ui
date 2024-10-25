@@ -55,7 +55,7 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 	}
 
 	return (
-    <div className="container mx-auto max-w-screen-md">		
+		<div className="container mx-auto max-w-screen-md">
 			<div className="flex flex-col space-y-1">
 				<Heading
 					label={label}
@@ -76,8 +76,6 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 							className="rounded-l-md rounded-r-none border-r-0"
 						/>
 						<Button
-							variant="contained"
-							color="primary"
 							onClick={handleSubmit}
 							className="rounded-l-none rounded-r-md"
 							loading={delayedLoading}

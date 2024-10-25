@@ -54,7 +54,6 @@ const VideoModal: React.FC<VideoModalProps> = (props) => {
 						{enableCopy && (
 							<Button
 								color="secondary"
-								variant="contained"
 								startIcon={<Link />}
 								onClick={handleCopyUrlClick}
 							>
@@ -62,12 +61,7 @@ const VideoModal: React.FC<VideoModalProps> = (props) => {
 							</Button>
 						)}
 						{enableDownload && (
-							<Button
-								color="primary"
-								variant="contained"
-								startIcon={<Download />}
-								onClick={handleDownloadClick}
-							>
+							<Button startIcon={<Download />} onClick={handleDownloadClick}>
 								Download
 							</Button>
 						)}

@@ -37,15 +37,13 @@ const NewPasswordForm: React.FC<NewPasswordFormProps> = (props) => {
 			/>
 			<Button
 				fullWidth
-				variant="contained"
-				color="primary"
 				onClick={handleSubmit}
 				endIcon={loading && <IconLoading />}
 			>
 				Save and Continue
 			</Button>
 			{handleLogin && (
-				<Button fullWidth color="primary" onClick={handleLogin}>
+				<Button fullWidth onClick={handleLogin}>
 					Back to Login
 				</Button>
 			)}

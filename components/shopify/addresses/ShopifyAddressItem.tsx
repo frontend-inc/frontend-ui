@@ -34,7 +34,7 @@ const ShopifyAddressItem: React.FC<ShopifyAddressItemProps> = (props) => {
 			<Button
 				variant="ghost"
 				className="flex-grow text-left justify-start rounded-lg"
-        //@ts-ignore 
+				//@ts-ignore
 				onClick={() => handleClick(address?.id)}
 			>
 				<div>
@@ -60,7 +60,7 @@ const ShopifyAddressItem: React.FC<ShopifyAddressItemProps> = (props) => {
 						<MenuButton />
 					</DropdownMenuTrigger>
 					<DropdownMenuContent>
-            {/* @ts-ignore */}
+						{/* @ts-ignore */}
 						<DropdownMenuItem onSelect={() => handleEdit(address?.id)}>
 							Edit
 						</DropdownMenuItem>

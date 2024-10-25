@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import * as React from 'react'
 import { Check, ChevronsUpDown } from 'lucide-react'
@@ -11,11 +11,7 @@ import {
 	CommandInput,
 	CommandItem,
 } from 'frontend-shadcn'
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from 'frontend-shadcn'
+import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
 
 interface AutocompleteOption {
 	label: string

@@ -34,7 +34,11 @@ const UserMenu: React.FC<UserMenuProps> = ({
 						<UserAvatar size={36} user={currentUser} />
 					</Button>
 				</DropdownMenuTrigger>
-				<DropdownMenuContent className="bg-background w-56" align="end" forceMount>
+				<DropdownMenuContent
+					className="bg-background w-56"
+					align="end"
+					forceMount
+				>
 					<DropdownMenuItem onClick={handleClick}>
 						<div className="flex items-center">
 							<span className="text-sm font-medium">{currentUser?.name}</span>

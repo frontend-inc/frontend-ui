@@ -24,7 +24,7 @@ export default function SwipeableShopifyProductImages({
 	disableBorderRadius = false,
 }: SwipeableShopifyProductImagesProps) {
 	const [activeStep, setActiveStep] = useState(0)
-  // @ts-ignore
+	// @ts-ignore
 	const maxSteps = product?.images?.edges?.length || 0
 
 	const handleStepChange = (step: number) => {
@@ -43,7 +43,7 @@ export default function SwipeableShopifyProductImages({
 				onChangeIndex={handleStepChange}
 				enableMouseEvents
 			>
-        {/* @ts-ignore */}
+				{/* @ts-ignore */}
 				{product?.images?.edges.map(({ node: image }: any) => (
 					<div
 						key={image.id}

@@ -29,17 +29,16 @@ interface TypographyProps {
 const Typography: React.FC<TypographyProps> = ({
 	variant,
 	color = 'text.primary',
-	textAlign = 'left',	
+	textAlign = 'left',
 	className,
 	children,
 }) => {
+	const { headerFont, bodyFont } = useTheme()
 
-  const { headerFont, bodyFont } = useTheme()
-  
-  useEffect(() => {
-    console.log('headerFont', headerFont)
-    console.log('bodyFont', bodyFont)
-  }, [headerFont, bodyFont])
+	useEffect(() => {
+		console.log('headerFont', headerFont)
+		console.log('bodyFont', bodyFont)
+	}, [headerFont, bodyFont])
 
 	const baseClasses = cn(
 		color === 'text.primary' && 'text-foreground',
@@ -64,7 +63,7 @@ const Typography: React.FC<TypographyProps> = ({
 		overline: 'text-xs uppercase tracking-widest',
 	}
 
-  const fontFamily = {
+	const fontFamily = {
 		h1: 'font-header',
 		h2: 'font-header',
 		h3: 'font-header',
@@ -77,7 +76,7 @@ const Typography: React.FC<TypographyProps> = ({
 		body1: 'font-body',
 		body2: 'font-body',
 		caption: 'font-body',
-		overline: 'font-body'
+		overline: 'font-body',
 	}
 
 	const alignmentClasses = {
@@ -94,7 +93,7 @@ const Typography: React.FC<TypographyProps> = ({
 				variantClasses[variant],
 				alignmentClasses[textAlign],
 				className
-			)}      
+			)}
 		>
 			{children}
 		</div>

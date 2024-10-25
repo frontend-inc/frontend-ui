@@ -27,16 +27,11 @@ const ShopifyForgotPasswordForm: React.FC<ShopifyForgotPasswordFormProps> = (
 				placeholder="Enter your email"
 				handleChange={handleChange}
 			/>
-			<Button
-				fullWidth
-				variant="contained"
-				color="primary"
-				onClick={handleSubmit}
-			>
+			<Button fullWidth onClick={handleSubmit}>
 				Send Instructions
 			</Button>
 			{handleLogin && (
-				<Button fullWidth variant="text" color="primary" onClick={handleLogin}>
+				<Button fullWidth variant="text" onClick={handleLogin}>
 					Back to Login
 				</Button>
 			)}

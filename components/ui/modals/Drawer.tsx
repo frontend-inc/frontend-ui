@@ -35,12 +35,11 @@ export default function CustomDrawer({
 	children,
 	buttons,
 }: CustomDrawerProps) {
-
-  const { mode } = useTheme()
+	const { mode } = useTheme()
 
 	return (
 		<Drawer open={open} onOpenChange={handleClose}>
-			<DrawerContent className={ mode }>
+			<DrawerContent className={mode}>
 				<DrawerHeader>
 					<div className="flex w-full justify-end">
 						<DrawerClose asChild>

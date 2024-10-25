@@ -3,10 +3,9 @@
 import React, { useEffect, useState } from 'react'
 import GoogleFontLoader from 'react-google-font-loader'
 
-
 type FontLoaderProps = {
-  headerFont: string
-	bodyFont: string 
+	headerFont: string
+	bodyFont: string
 }
 
 const FontLoader: React.FC<FontLoaderProps> = ({ headerFont, bodyFont }) => {

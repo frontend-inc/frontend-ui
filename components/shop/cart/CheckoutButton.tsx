@@ -30,7 +30,7 @@ const CheckoutButton = () => {
 	const cartDisabled = cart?.total_items === 0 ? true : false
 
 	return (
-		<Button fullWidth loading={loading} onClick={handleClick} size="large">
+		<Button fullWidth loading={loading} onClick={handleClick} size="lg">
 			Checkout {!cartDisabled && cart?.display_subtotal}
 		</Button>
 	)

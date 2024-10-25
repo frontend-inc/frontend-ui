@@ -31,15 +31,12 @@ const AiPromptModal: React.FC<AiPromptModalProps> = (props) => {
 				</IconButton>
 			</Tooltip>
 			<Sheet
-				
 				title={label}
 				open={open}
 				handleClose={() => setOpen(false)}
 				buttons={
 					<Button
 						fullWidth
-						variant="contained"
-						color="primary"
 						onClick={handleSubmit}
 						loading={loading}
 						startIcon={!loading && <Icon name="Sparkles" />}

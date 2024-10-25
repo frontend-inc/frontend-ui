@@ -219,7 +219,6 @@ const JsonbInput: React.FC<JsonbInputProps> = (props) => {
 			<div>
 				<Button
 					color="secondary"
-					variant="contained"
 					onClick={handleAddClick}
 					startIcon={<Plus size={24} />}
 				>
@@ -231,12 +230,7 @@ const JsonbInput: React.FC<JsonbInputProps> = (props) => {
 				open={open}
 				handleClose={closeMenu}
 				buttons={
-					<Button
-						fullWidth
-						variant="contained"
-						color="primary"
-						onClick={handleSubmit}
-					>
+					<Button fullWidth onClick={handleSubmit}>
 						Save
 					</Button>
 				}

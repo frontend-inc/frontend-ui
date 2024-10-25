@@ -2,11 +2,7 @@
 
 import React, { useState } from 'react'
 import { Button } from '../../../components'
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from 'frontend-shadcn'
+import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
 import { Sheet, SheetContent, SheetTrigger } from 'frontend-shadcn'
 import SortList from './SortList'
 import { COLLECTION_SORT_OPTIONS } from 'frontend-shopify'

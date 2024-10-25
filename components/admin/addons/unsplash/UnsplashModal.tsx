@@ -5,12 +5,7 @@ import { useAlerts } from '../../../../hooks'
 import { Icon, Image, Modal } from '../../../../components'
 import UnsplashLogo from './UnsplashLogo'
 import { Avatar } from 'frontend-shadcn'
-import {
-	Button,
-	IconButton,
-	Typography,
-	CircularProgress,
-} from '../../../core'
+import { Button, IconButton, Typography, CircularProgress } from '../../../core'
 import copy from 'copy-to-clipboard'
 import PoweredByUnsplash from './PoweredByUnsplash'
 import { useUnsplash } from '../../../../hooks'
@@ -58,7 +53,6 @@ const UnsplashModal: React.FC<UnsplashViewerModalProps> = ({
 
 	return (
 		<Modal
-			
 			open={open}
 			loading={loading}
 			handleClose={handleClose}
@@ -68,7 +62,6 @@ const UnsplashModal: React.FC<UnsplashViewerModalProps> = ({
 				<>
 					<Button
 						color="secondary"
-						variant="contained"
 						onClick={handleUnsplashClick}
 						className="flex items-center"
 					>
@@ -77,18 +70,13 @@ const UnsplashModal: React.FC<UnsplashViewerModalProps> = ({
 					</Button>
 					<Button
 						color="secondary"
-						variant="contained"
 						onClick={handleCopyUrlClick}
 						className="flex items-center"
 					>
 						<Icon name="Copy" className="mr-2" />
 						Copy URL
 					</Button>
-					<Button
-						variant="contained"
-						onClick={handleDownloadClick}
-						className="flex items-center"
-					>
+					<Button onClick={handleDownloadClick} className="flex items-center">
 						<Icon name="Download" className="mr-2 text-primary-contrast" />
 						Import
 					</Button>
@@ -108,7 +96,7 @@ const UnsplashModal: React.FC<UnsplashViewerModalProps> = ({
 							<div className="flex items-center">
 								<IconButton onClick={handleUserClick} className="mr-3">
 									<Avatar
-                    // @ts-ignore
+										// @ts-ignore
 										src={image?.user?.profile_image?.large}
 										alt={image?.user?.name}
 									/>

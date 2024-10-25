@@ -41,15 +41,12 @@ const AdminAnswerEdit: React.FC<ResourceFormProps> = (props) => {
 
 	return (
 		<Sheet
-			
 			open={open}
 			handleClose={handleClose}
 			title={title ? title : resource?.id ? 'Edit' : 'Add'}
 			buttons={
 				<Button
 					fullWidth
-					variant="contained"
-					color="primary"
 					onClick={handleSubmit}
 					startIcon={loading && <IconLoading />}
 				>

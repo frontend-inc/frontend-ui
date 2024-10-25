@@ -29,15 +29,13 @@ const SendPinForm: React.FC<SendPinFormProps> = (props) => {
 			/>
 			<Button
 				fullWidth
-				variant="contained"
-				color="primary"
 				onClick={handleSubmit}
 				startIcon={loading && <IconLoading />}
 			>
 				Send Verification Pin
 			</Button>
 			{handleLogin && (
-				<Button fullWidth variant="text" color="primary" onClick={handleLogin}>
+				<Button fullWidth variant="text" onClick={handleLogin}>
 					Cancel
 				</Button>
 			)}

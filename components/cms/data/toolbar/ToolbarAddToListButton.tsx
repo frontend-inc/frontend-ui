@@ -36,7 +36,6 @@ const DataAddToList: React.FC<DataAddToListProps> = (props) => {
 	return (
 		<>
 			<Button
-				variant="contained"
 				color="secondary"
 				onClick={handleAddClick}
 				startIcon={<Icon name="ListPlus" />}
@@ -52,8 +51,6 @@ const DataAddToList: React.FC<DataAddToListProps> = (props) => {
 				buttons={
 					<Button
 						fullWidth
-						variant="contained"
-						color="primary"
 						onClick={handleSubmit}
 						startIcon={<Icon name="Plus" color="primary.contrastText" />}
 					>

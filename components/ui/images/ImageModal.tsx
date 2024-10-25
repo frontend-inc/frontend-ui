@@ -30,23 +30,16 @@ const ImageModal: React.FC<ImageModalProps> = (props) => {
 
 	return (
 		<Modal
-			
 			open={open}
 			handleClose={handleClose}
 			title={title}
 			maxWidth="md"
 			buttons={
 				<>
-					<Button
-						color="secondary"
-						variant="contained"
-						onClick={handleCopyUrlClick}
-					>
+					<Button color="secondary" onClick={handleCopyUrlClick}>
 						Copy URL
 					</Button>
-					<Button variant="contained" onClick={handleDownloadClick}>
-						Download
-					</Button>
+					<Button onClick={handleDownloadClick}>Download</Button>
 				</>
 			}
 		>

@@ -52,7 +52,7 @@ const MyAccountForm: React.FC<MyAccountFormProps> = (props) => {
 				handleSubmit={handleSubmit}
 				buttonText="Save"
 			/>
-			<Button color="secondary" variant="contained" onClick={handleLogout}>
+			<Button color="secondary" onClick={handleLogout}>
 				Logout
 			</Button>
 		</div>

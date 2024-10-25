@@ -79,17 +79,11 @@ const DocumentListSheet: React.FC<DocumentListSheetProps> = (props) => {
 
 	return (
 		<Sheet
-			
 			open={open}
 			title={`Add ${field?.foreign_collection?.singular_name}`}
 			handleClose={handleClose}
 			buttons={
-				<Button
-					fullWidth
-					variant="contained"
-					disabled={!selected}
-					onClick={handleAddClick}
-				>
+				<Button fullWidth disabled={!selected} onClick={handleAddClick}>
 					Add
 				</Button>
 			}

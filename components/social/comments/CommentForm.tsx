@@ -20,7 +20,7 @@ const CommentForm: React.FC<CommentFormProps> = (props) => {
 			<div className="pl-0">
 				<div className="flex flex-col space-y-4 w-full items-start">
 					<TextInput
-						errors={errors}						
+						errors={errors}
 						name="body"
 						value={comment?.body}
 						handleChange={handleChange}

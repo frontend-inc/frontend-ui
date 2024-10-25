@@ -5,13 +5,23 @@ import { Section } from '../../components'
 import { Typography } from '../../components/core'
 import { SectionProps, HeadingProps } from '../../types'
 
-type UITextProps = SectionProps & HeadingProps & { 
-  text?: string
-}
+type UITextProps = SectionProps &
+	HeadingProps & {
+		text?: string
+	}
 
 const UIText: React.FC<UITextProps> = (props) => {
-	const { bgColor, mode, py, px, maxWidth, requireAuth, requirePaid, text, ...rest } =
-		props
+	const {
+		bgColor,
+		mode,
+		py,
+		px,
+		maxWidth,
+		requireAuth,
+		requirePaid,
+		text,
+		...rest
+	} = props
 
 	return (
 		<Section
@@ -23,9 +33,7 @@ const UIText: React.FC<UITextProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Typography variant="body1">
-        { text }
-      </Typography>
+			<Typography variant="body1">{text}</Typography>
 		</Section>
 	)
 }

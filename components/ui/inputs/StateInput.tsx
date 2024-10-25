@@ -13,7 +13,7 @@ const StateInput: React.FC<SelectInputPropsType> = (props) => {
 			name={name}
 			label={label}
 			value={value}
-      //@ts-ignore
+			//@ts-ignore
 			options={STATES}
 			handleChange={handleChange}
 		/>

@@ -22,9 +22,13 @@ const FieldArray: React.FC<FieldArrayProps> = (props) => {
 			<div className="flex flex-row gap-2">
 				{Array.isArray(values) &&
 					values?.map((value, index) => (
-						<Badge variant="secondary" className="px-3 py-1 rounded-full" key={index}>
-              { value }
-            </Badge>
+						<Badge
+							variant="secondary"
+							className="px-3 py-1 rounded-full"
+							key={index}
+						>
+							{value}
+						</Badge>
 					))}
 			</div>
 		</FieldWrapper>

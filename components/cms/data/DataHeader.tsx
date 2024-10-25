@@ -99,12 +99,7 @@ const DataHeader: React.FC<DataHeaderProps> = (props) => {
 				</div>
 				{(enableCreate || secondaryAction) && (
 					<div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-1">
-						<Button
-							className="sm:w-auto"
-							color="primary"
-							variant="contained"
-							onClick={handleAdd}
-						>
+						<Button className="sm:w-auto" onClick={handleAdd}>
 							<Icon name="Plus" className="mr-2 text-primary-foreground" />
 							{buttonText}
 						</Button>

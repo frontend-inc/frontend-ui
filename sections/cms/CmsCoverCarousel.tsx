@@ -14,7 +14,7 @@ const CmsCoverCarousel: React.FC<CmsCoverCarouselProps> = (props) => {
 
 	return (
 		<Section
-			mode='dark'
+			mode="dark"
 			py={0}
 			px={0}
 			requireAuth={requireAuth}

@@ -30,7 +30,6 @@ const ToolbarDeleteButton: React.FC<any> = () => {
 		<>
 			<Button
 				onClick={handleDeleteClick}
-				variant="contained"
 				color="secondary"
 				startIcon={<Icon name="Trash" />}
 			>

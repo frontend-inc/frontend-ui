@@ -22,15 +22,11 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 		<div className="w-full">
 			<div className="flex flex-col items-center space-y-2">
 				{label && (
-					<Typography className="text-muted-foreground"variant="caption">
+					<Typography className="text-muted-foreground" variant="caption">
 						{label}
 					</Typography>
 				)}
-				{title && (
-					<Typography variant={'h3'} >
-						{title}
-					</Typography>
-				)}
+				{title && <Typography variant={'h3'}>{title}</Typography>}
 				{description && (
 					<Typography variant="subtitle2" className="text-muted-foreground">
 						{description}
@@ -38,9 +34,9 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 				)}
 				{buttons?.length > 0 && (
 					<div>
-						<ButtonActions							
+						<ButtonActions
 							buttons={buttons}
-							size="large"
+							size="lg"
 							justifyContent="center"
 						/>
 					</div>

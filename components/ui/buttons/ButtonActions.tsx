@@ -40,7 +40,7 @@ const ButtonActions: React.FC<ButtonActionsProps> = ({
 							icon={button?.icon}
 							path={button?.path}
 							url={button?.url}
-							size={size}							
+							size={size}
 						>
 							{button?.label}
 						</ButtonAction>

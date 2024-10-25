@@ -23,7 +23,6 @@ const IconButton: React.FC<IconButtonProps> = ({
 	children,
 	...props
 }) => {
-	
 	const variantClasses: Record<IconButtonVariant, string> = {
 		rounded: 'rounded-md',
 		circular: 'rounded-full',
@@ -32,7 +31,7 @@ const IconButton: React.FC<IconButtonProps> = ({
 	return (
 		<ShadcnButton
 			size="icon"
-			variant='ghost'
+			variant="ghost"
 			className={cn(
 				'min-w-[36px] min-h-[36px] bg-transparent hover:bg-muted',
 				'flex items-center justify-center',

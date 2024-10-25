@@ -46,7 +46,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 			...contact,
 			source: 'contact',
 		})
-    showAlertSuccess('Thank you for contacting us!')
+		showAlertSuccess('Thank you for contacting us!')
 		if (resp?.id) {
 			setContact({})
 			showAlertSuccess('Thank you for contacting us!')
@@ -55,7 +55,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 
 	return (
 		<div className="w-full">
-      <div className="container mx-auto max-w-screen-md">			
+			<div className="container mx-auto max-w-screen-md">
 				<Heading
 					label={label}
 					title={title}

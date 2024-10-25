@@ -43,11 +43,7 @@ const SignInForm: React.FC<SignInFormProps> = (props) => {
 				placeholder="Password"
 				handleChange={handleChange}
 			/>
-			<Button
-				className="w-full"
-				onClick={handleSubmit}
-				disabled={loading}
-			>
+			<Button className="w-full" onClick={handleSubmit} disabled={loading}>
 				Sign In
 				{loading && <IconLoading className="ml-2 h-4 w-4 animate-spin" />}
 			</Button>

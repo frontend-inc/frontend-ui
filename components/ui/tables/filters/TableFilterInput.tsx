@@ -36,9 +36,9 @@ type FilterFieldProps = {
 	index: number
 	filter: FilterOptionType
 	fieldOptions: {
-    label: string 
-    value: string 
-  }[]
+		label: string
+		value: string
+	}[]
 	handleChange: (e: SyntheticEventType, index: number) => void
 	handleRemove: (index: number) => void
 }
@@ -51,11 +51,11 @@ const FilterFieldWrapper: React.FC<FilterFieldProps> = ({
 	handleRemove,
 }) => {
 	let field
-	let operatorOptions: { value: string, label: string }[] = []
+	let operatorOptions: { value: string; label: string }[] = []
 
 	if (filter.field) {
 		field = fieldOptions.find((f) => f.value == filter.field)
-    //@ts-ignore
+		//@ts-ignore
 		operatorOptions = FILTER_OPERATORS[field?.db_type || 'integer']
 	}
 
@@ -64,10 +64,10 @@ const FilterFieldWrapper: React.FC<FilterFieldProps> = ({
 			<Separator />
 			<div className="flex flex-row justify-start items-start">
 				<div>
-					<TabsInput            
-						name="where"            
+					<TabsInput
+						name="where"
 						options={BOOLEAN_OPTIONS}
-            value={filter?.where || 'AND'}
+						value={filter?.where || 'AND'}
 						handleChange={(ev) => handleChange(ev, index)}
 					/>
 					<div className="flex flex-col space-y-2">

@@ -16,12 +16,7 @@ const StripeConnectButton: React.FC = () => {
 	}
 
 	return (
-		<Button
-			variant="contained"
-			color="primary"
-			onClick={handleClick}
-			className="bg-[#6772E5] hover:bg-[#6772E5]"
-		>
+		<Button onClick={handleClick} className="bg-[#6772E5] hover:bg-[#6772E5]">
 			{loading ? 'Connecting...' : 'Connect with Stripe'}
 		</Button>
 	)

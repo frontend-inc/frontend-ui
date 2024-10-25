@@ -1,7 +1,11 @@
 'use client'
 
 import React from 'react'
-import { Avatar as ShadcnAvatar, AvatarImage, AvatarFallback } from 'frontend-shadcn'
+import {
+	Avatar as ShadcnAvatar,
+	AvatarImage,
+	AvatarFallback,
+} from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
 
 type AvatarProps = {
@@ -22,11 +26,10 @@ export default function Avatar({
 	size = 40,
 	className,
 }: AvatarProps) {
-
 	const avatarClasses = cn(
 		variant === 'circular' ? 'rounded-full' : 'rounded-lg'
 	)
-  
+
 	return (
 		<ShadcnAvatar
 			className={cn(avatarClasses, className)}

@@ -37,7 +37,7 @@ const ShopifyOrderDetails: React.FC<ShopifyOrderDetailsProps> = (props) => {
 
 	useEffect(() => {
 		if (order) {
-      // @ts-ignore
+			// @ts-ignore
 			setListItems(order?.lineItems?.edges.map((e) => e.node))
 		}
 	}, [order])
@@ -67,12 +67,12 @@ const ShopifyOrderDetails: React.FC<ShopifyOrderDetailsProps> = (props) => {
 			{shippingAddress && (
 				<>
 					<h3 className="text-lg font-semibold">Shipping Details</h3>
-          
-					<ShopifyAddressItem 
-            disableActions 
-            // @ts-ignore
-            address={shippingAddress} 
-          />
+
+					<ShopifyAddressItem
+						disableActions
+						// @ts-ignore
+						address={shippingAddress}
+					/>
 				</>
 			)}
 			<Button

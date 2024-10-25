@@ -96,7 +96,6 @@ const ArrayListInput: React.FC<InputPropsType> = (props) => {
 				))}
 			<div>
 				<Button
-					variant="contained"
 					color="secondary"
 					onClick={handleAddClick}
 					startIcon={<Plus className="w-5 h-5 text-foreground" />}

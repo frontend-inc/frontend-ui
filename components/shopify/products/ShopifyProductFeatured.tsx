@@ -33,8 +33,7 @@ const ShopifyProductFeatured: React.FC<ShopifyProductFeaturedProps> = ({
 	enableQuantity = false,
 	enableQuickShop = false,
 }) => {
-	
-  const { loading, product, findProduct } = useProducts()
+	const { loading, product, findProduct } = useProducts()
 
 	const handleItemClick = () => {
 		if (handleClick) {
@@ -50,12 +49,8 @@ const ShopifyProductFeatured: React.FC<ShopifyProductFeaturedProps> = ({
 
 	if (!product) return null
 	return (
-		<div
-			className={cn(
-				'flex flex-row rounded overflow-hidden',
-			)}
-		>
-			<div className='flex flex-row space-x-3 w-full'>
+		<div className={cn('flex flex-row rounded overflow-hidden')}>
+			<div className="flex flex-row space-x-3 w-full">
 				<div className="px-1 flex justify-end items-center">
 					<SwipeableShopifyProductImages
 						product={product}
@@ -66,9 +61,7 @@ const ShopifyProductFeatured: React.FC<ShopifyProductFeaturedProps> = ({
 				</div>
 				<div className="w-full flex flex-row justify-center items-start h-full">
 					<div className="flex flex-col space-y-2">
-						<Typography variant="h3">
-							{product?.title}
-						</Typography>
+						<Typography variant="h3">{product?.title}</Typography>
 						<Typography
 							className="text-muted-foreground"
 							variant="body2"
@@ -76,11 +69,11 @@ const ShopifyProductFeatured: React.FC<ShopifyProductFeaturedProps> = ({
 						>
 							{truncate(product?.description, 60)}
 						</Typography>
-						<Typography className="text-muted-foreground"variant="body2">
+						<Typography className="text-muted-foreground" variant="body2">
 							{formatCurrency(product?.priceRange?.minVariantPrice?.amount)}
 						</Typography>
 					</div>
-					<div className="flex flex-col space-y-3">											
+					<div className="flex flex-col space-y-3">
 						{enableAddToCart && (
 							<ShopifyAddToCartButton
 								product={product}
@@ -91,7 +84,7 @@ const ShopifyProductFeatured: React.FC<ShopifyProductFeaturedProps> = ({
 						)}
 						{enableQuickShop && (
 							<ShopifyQuickShopButton
-								size="large"
+								size="lg"
 								product={product}
 								color={enableAddToCart ? 'secondary' : 'primary'}
 								buttonText={buttonText}

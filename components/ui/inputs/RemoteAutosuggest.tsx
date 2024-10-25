@@ -22,9 +22,9 @@ export type RemoteAutosuggestProps = {
 	direction?: 'row' | 'column'
 	defaultQuery?: QueryParamsType
 	defaultOptions?: {
-    label: string 
-    value: string 
-  }[]
+		label: string
+		value: string
+	}[]
 	enableRemoteSearch?: boolean
 	enableClear?: boolean
 	perPage?: number
@@ -54,12 +54,10 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		name: name,
 	})
 
-	const { loading, resources, findOne, findMany } = useResource(
-		{
-			url: url,
-			name: name,
-		}
-	)
+	const { loading, resources, findOne, findMany } = useResource({
+		url: url,
+		name: name,
+	})
 
 	const [options, setOptions] = useState<OptionType[]>([])
 

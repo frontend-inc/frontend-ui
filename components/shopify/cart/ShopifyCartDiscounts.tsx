@@ -31,7 +31,6 @@ const ShopifyCartDiscountCodeInput: React.FC = () => {
 			<Button
 				onClick={handleSubmit}
 				color="secondary"
-				variant="contained"
 				className="rounded-l-none rounded-r-md"
 				loading={loading}
 			>

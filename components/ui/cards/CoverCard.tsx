@@ -6,18 +6,18 @@ import { Image, TouchableOpacity } from '../..'
 import { Typography } from '../../core'
 
 type CoverCardProps = {
-  label?: string
-  primary?: string
-  secondary?: string
-  actions?: React.ReactNode
-  secondaryAction?: React.ReactNode
-  handleClick: () => void
-  image: string
-  height?: number
-  slots?: {
-    item?: any
-    image?: any
-  }
+	label?: string
+	primary?: string
+	secondary?: string
+	actions?: React.ReactNode
+	secondaryAction?: React.ReactNode
+	handleClick: () => void
+	image: string
+	height?: number
+	slots?: {
+		item?: any
+		image?: any
+	}
 }
 
 const CoverCard: React.FC<CoverCardProps> = (props) => {

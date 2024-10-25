@@ -22,8 +22,7 @@ const AdminCollectionPage: React.FC = () => {
 
 	const apiQuery = new ApiQuery()
 	const router = useRouter()
-	let { collection_id: collectionId, app_id: appId } =
-		useParams() as any
+	let { collection_id: collectionId, app_id: appId } = useParams() as any
 	if (collectionId == 'index') collectionId = ''
 
 	const { clientUrl } = useAdmin()
@@ -103,8 +102,6 @@ const AdminCollectionPage: React.FC = () => {
 						collectionId && (
 							<div className="flex flex-row items-center space-x-2">
 								<Button
-									variant="contained"
-									color="primary"
 									onClick={handleAddClick}
 									startIcon={
 										<Plus className="w-5 h-5 text-primary-foreground" />
@@ -118,7 +115,7 @@ const AdminCollectionPage: React.FC = () => {
 							</div>
 						)
 					}
-					secondaryActions={<CollectionSchemaToggle tab='content' />}
+					secondaryActions={<CollectionSchemaToggle tab="content" />}
 				/>
 				{collectionId ? (
 					<AdminCollectionTable
@@ -127,7 +124,7 @@ const AdminCollectionPage: React.FC = () => {
 					/>
 				) : (
 					<Placeholder
-						icon='Database'
+						icon="Database"
 						title="No collection."
 						description="Select or create a CMS collection."
 					/>

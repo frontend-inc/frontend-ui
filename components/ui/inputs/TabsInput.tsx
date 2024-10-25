@@ -27,12 +27,11 @@ export default function TabsInput({
 	value,
 	info,
 }: TabsInputProps) {
-  
 	const handleInputChange = (value: string) => {
 		handleChange({
 			target: {
 				name,
-				value
+				value,
 			},
 		})
 	}
@@ -55,9 +54,7 @@ export default function TabsInput({
 							className={cn('flex items-center text-sm')}
 						>
 							{option.icon && (
-								<span className={'inline-block mr-2'}>
-									{option.icon}
-								</span>
+								<span className={'inline-block mr-2'}>{option.icon}</span>
 							)}
 							{option.label}
 						</TabsTrigger>

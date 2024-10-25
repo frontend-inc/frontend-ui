@@ -1,9 +1,7 @@
 'use client'
 
 import React from 'react'
-import {
-	ResourceToolbarModal,	
-} from '../../../components'
+import { ResourceToolbarModal } from '../../../components'
 import { Button } from '../../../components'
 import { useResource } from 'frontend-js'
 import { useAdmin } from '../../../hooks'
@@ -40,7 +38,9 @@ const AdminProductCollectionToolbar = (props) => {
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
 			<div className="flex flex-row space-x-2">
 				<Button onClick={handlePublish}>Publish</Button>
-				<Button variant="secondary" onClick={handleUnpublish}>Unpublish</Button>
+				<Button variant="secondary" onClick={handleUnpublish}>
+					Unpublish
+				</Button>
 				<Button variant="secondary" onClick={handleDelete}>
 					Delete
 				</Button>

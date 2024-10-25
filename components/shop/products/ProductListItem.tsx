@@ -48,12 +48,9 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 			compareAtPrice={resource?.display_compare_at_price}
 			handleClick={handleClick}
 			secondary={
-        <div className="flex flex-col space-y-2">
-          <DisplayFields 
-            fields={displayFields}
-            resource={resource}
-          />
-        </div>
+				<div className="flex flex-col space-y-2">
+					<DisplayFields fields={displayFields} resource={resource} />
+				</div>
 			}
 			actions={
 				<div>
@@ -72,7 +69,7 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 					availableForSale
 					fullWidth
 					productId={resource?.id}
-					size="large"
+					size="lg"
 				/>
 			}
 			disableBorder={disableBorder}

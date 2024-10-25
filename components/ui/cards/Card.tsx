@@ -3,11 +3,7 @@
 import React from 'react'
 import { cn } from 'frontend-shadcn'
 import { Typography } from '../../core'
-import {
-	Card as ShadcnCard,
-	CardContent,
-	CardFooter,
-} from 'frontend-shadcn'
+import { Card as ShadcnCard, CardContent, CardFooter } from 'frontend-shadcn'
 import { Image } from '../..'
 
 export type CardProps = {

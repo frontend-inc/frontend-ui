@@ -23,11 +23,11 @@ export default function SubscriptionTable() {
 	const handleSubscribe = async (subscription: any) => {
 		if (!currentUser?.id) return setAuthOpen(true)
 		let currentUrl = window.location.href
-		let resp = await subscribe(subscription?.id, {
+		let resp = (await subscribe(subscription?.id, {
 			success_url: currentUrl,
 			cancel_url: currentUrl,
-		}) as any
-		if (resp?.url) {      
+		})) as any
+		if (resp?.url) {
 			router.push(resp.url)
 		}
 	}

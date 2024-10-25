@@ -8,11 +8,15 @@ import { Table } from '../../../components'
 import { ImageModal, AdminVideoModal } from '../../../components'
 import { TableFilterDrawer } from '../../../components'
 import AdminToolbarMenu from './AdminToolbarMenu'
-import { useRouter, useParams, usePathname, useSearchParams } from 'next/navigation'
+import {
+	useRouter,
+	useParams,
+	usePathname,
+	useSearchParams,
+} from 'next/navigation'
 import copy from 'copy-to-clipboard'
 import { USER_FIELD, ID_FIELD, PUBLISHED_FIELD } from '../../../constants'
 import { ApiQuery } from 'frontend-js'
-
 
 type AdminCollectionTableProps = {
 	collection: any
@@ -221,7 +225,7 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 	const handleClearFilters = () => {
 		setShowFilters(false)
 		let query = {
-			...useParams() as any,
+			...(useParams() as any),
 			filters: {
 				AND: [],
 				OR: [],
@@ -257,14 +261,14 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 		}
 	}, [fields])
 
-  const searchParams = useSearchParams()
+	const searchParams = useSearchParams()
 
-	useEffect(() => {    
+	useEffect(() => {
 		if (searchParams) {
-      const queryObject = {};
-      searchParams.forEach((value, key) => {
-        queryObject[key] = value;
-      });    
+			const queryObject = {}
+			searchParams.forEach((value, key) => {
+				queryObject[key] = value
+			})
 
 			let parsedQuery = apiQuery.parseURL(queryObject).query()
 			findDocuments(parsedQuery)

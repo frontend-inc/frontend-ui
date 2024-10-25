@@ -74,7 +74,7 @@ export default function ShopifyProductCard({
 						{truncate(product?.title)}
 					</Typography>
 					{enableOkendoStarRating && <OkendoStarRating product={product} />}
-					<Typography className="text-muted-foreground"variant="body2">
+					<Typography className="text-muted-foreground" variant="body2">
 						{formatCurrency(product?.priceRange?.minVariantPrice?.amount)}
 					</Typography>
 				</div>
@@ -82,7 +82,7 @@ export default function ShopifyProductCard({
 					{enableAddToCart && (
 						<ShopifyAddToCartButton
 							product={product}
-              /* @ts-ignore */
+							/* @ts-ignore */
 							variant={product?.variants?.edges[0]?.node}
 							label={buttonText}
 							enableQuantity={enableQuantity}
@@ -93,7 +93,6 @@ export default function ShopifyProductCard({
 					)}
 					{enableQuickShop && (
 						<Button
-							variant="contained"
 							color="secondary"
 							onClick={handleQuickShop}
 							className="w-full"

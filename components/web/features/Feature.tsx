@@ -17,17 +17,15 @@ const Feature: React.FC<FeatureProps> = (props) => {
 	return (
 		<div className="flex flex-col space-y-3 justify-center">
 			{icon && (
-        <Avatar>
-          <AvatarFallback className="bg-primary">          
-            <Icon name={icon} color="text-primary-foreground" />
-          </AvatarFallback>
-        </Avatar>
+				<Avatar>
+					<AvatarFallback className="bg-primary">
+						<Icon name={icon} color="text-primary-foreground" />
+					</AvatarFallback>
+				</Avatar>
 			)}
 			<div className="flex flex-col justify-center space-y-2">
-				<Typography variant="subtitle1">
-					{title}
-				</Typography>
-				<Typography className="text-muted-foreground"variant="body1">
+				<Typography variant="subtitle1">{title}</Typography>
+				<Typography className="text-muted-foreground" variant="body1">
 					{description}
 				</Typography>
 			</div>

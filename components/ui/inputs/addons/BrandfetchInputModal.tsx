@@ -46,11 +46,7 @@ const BrandfetchInputModal: React.FC<BrandfetchInputProps> = (props) => {
 						/>
 					</Collapse>
 					<div>
-						<Button
-							onClick={() => setOpen(true)}
-							color="secondary"
-							variant="contained"
-						>
+						<Button onClick={() => setOpen(true)} color="secondary">
 							Browse
 						</Button>
 					</div>

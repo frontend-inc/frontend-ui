@@ -18,7 +18,6 @@ const CellButton: React.FC<CellButtonProps> = (props) => {
 			fullWidth
 			size="small"
 			color="secondary"
-			variant="contained"
 			startIcon={<Icon name={icon} />}
 			onClick={handleClick && handleClick}
 		>

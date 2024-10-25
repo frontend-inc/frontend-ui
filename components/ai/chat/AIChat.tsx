@@ -47,13 +47,7 @@ const AIChat: React.FC<AIChatProps> = (props) => {
 				input={input}
 				handleInputChange={handleInputChange}
 			/>
-			<Button
-				fullWidth
-				variant="contained"
-				color="primary"
-				onClick={handleChatSubmit}
-				loading={loading}
-			>
+			<Button fullWidth onClick={handleChatSubmit} loading={loading}>
 				{buttonText}
 			</Button>
 		</div>

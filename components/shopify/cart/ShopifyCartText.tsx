@@ -11,7 +11,7 @@ type ShopifyCartTextProps = {
 
 export default function ShopifyCartText({
 	label,
-	value,	
+	value,
 }: ShopifyCartTextProps) {
 	return (
 		<div className="flex flex-row justify-between w-full">

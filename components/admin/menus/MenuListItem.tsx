@@ -18,7 +18,7 @@ interface SidebarMenuItemProps {
 	icon?: string
 	color?: string
 	selected?: boolean
-  description?: string
+	description?: string
 	secondaryActions?: React.ReactNode
 	handleClick: () => void
 	handleEdit?: () => void

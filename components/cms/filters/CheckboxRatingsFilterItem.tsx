@@ -8,9 +8,9 @@ import { OptionType } from '../../../types'
 type CheckboxRatingsFilterItemProps = {
 	label?: string
 	option: {
-    label: string 
-    value: number 
-  }
+		label: string
+		value: number
+	}
 	values?: any[]
 	handleClick: () => void
 }

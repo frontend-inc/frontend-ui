@@ -17,8 +17,7 @@ type ShopifyCustomerOrderProps = {
 }
 
 const ShopifyCustomerOrder: React.FC<ShopifyCustomerOrderProps> = (props) => {
-	
-  let { order_id: orderId } = useParams() as any
+	let { order_id: orderId } = useParams() as any
 
 	if (orderId == 'new') {
 		orderId = null

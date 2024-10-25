@@ -3,11 +3,7 @@
 import React, { useState } from 'react'
 import { cn } from 'frontend-shadcn'
 import { Button } from '../../../components'
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from 'frontend-shadcn'
+import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
 import { ArrowUp, ArrowDown } from 'lucide-react'
 import SortList from './SortList'
 import { SortOptionType } from '../../../types'

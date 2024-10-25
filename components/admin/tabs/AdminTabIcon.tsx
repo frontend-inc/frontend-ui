@@ -18,9 +18,7 @@ export default function LayoutTabIcon({
 }: LayoutTabIconProps) {
 	return (
 		<IconButton
-			className={cn(
-				selected && 'bg-primary hover:bg-primary'
-			)}
+			className={cn(selected && 'bg-primary hover:bg-primary')}
 			onClick={handleClick}
 		>
 			<Icon

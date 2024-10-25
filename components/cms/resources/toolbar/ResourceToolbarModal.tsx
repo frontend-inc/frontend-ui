@@ -19,8 +19,8 @@ export default function ResourceToolbarModal({
 	return (
 		<div
 			className={cn(
-        !open && 'hidden',
-				'fixed bg-secondary top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out ',
+				!open && 'hidden',
+				'fixed bg-secondary top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out '
 			)}
 		>
 			<div className="text-secondary-foreground shadow-md">

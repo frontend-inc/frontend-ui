@@ -38,7 +38,6 @@ type TableProps = {
 }
 
 const Table: React.FC<TableProps> = (props) => {
-
 	const {
 		loading,
 		headers,
@@ -96,52 +95,52 @@ const Table: React.FC<TableProps> = (props) => {
 	}
 
 	return (
-    <TableList
-      loading={loading}
-      disableBorderRadius={disableBorderRadius}
-      query={query}
-      toolbar={
-        <TableToolbar
-          loading={loading}
-          query={query}
-          selected={selected}
-          handleKeywordSearch={handleKeywordSearch}
-          handleKeywordChange={handleKeywordChange}
-          handleClearQuery={handleClearQuery}
-          enableEdit={enableEdit}
-          enableDelete={enableDelete}
-          handleDelete={handleDelete}
-          handleEdit={handleEditSelected}
-          handlePublish={handlePublish}
-          handleUnpublish={handleUnpublish}
-          secondaryActions={secondaryActions}
-          fields={headers}
-          handleFilter={handleSearch}
-          handleSearch={handleSearch}
-          handleChange={handleQueryChange}
-          handleClearFilters={handleClearQuery}
-        />
-      }
-      headers={headers}
-      resources={rows}
-      enableEdit={enableEdit}
-      enableSelect={enableSelect}
-      selected={selected}
-      selectedIds={selectedIds}
-      handleClick={handleClick}
-      handleEdit={handleEdit}
-      handleSelect={handleSelect}
-      handleSort={handleSort}
-      handleSelectAll={handleSelectAll}
-      page={page}
-      perPage={perPage}
-      numPages={numPages}
-      totalCount={totalCount}
-      handlePaginate={handlePaginate}
-      emptyIcon={emptyIcon}
-      emptyTitle={emptyTitle}
-      emptyDescription={emptyDescription}
-    />				
+		<TableList
+			loading={loading}
+			disableBorderRadius={disableBorderRadius}
+			query={query}
+			toolbar={
+				<TableToolbar
+					loading={loading}
+					query={query}
+					selected={selected}
+					handleKeywordSearch={handleKeywordSearch}
+					handleKeywordChange={handleKeywordChange}
+					handleClearQuery={handleClearQuery}
+					enableEdit={enableEdit}
+					enableDelete={enableDelete}
+					handleDelete={handleDelete}
+					handleEdit={handleEditSelected}
+					handlePublish={handlePublish}
+					handleUnpublish={handleUnpublish}
+					secondaryActions={secondaryActions}
+					fields={headers}
+					handleFilter={handleSearch}
+					handleSearch={handleSearch}
+					handleChange={handleQueryChange}
+					handleClearFilters={handleClearQuery}
+				/>
+			}
+			headers={headers}
+			resources={rows}
+			enableEdit={enableEdit}
+			enableSelect={enableSelect}
+			selected={selected}
+			selectedIds={selectedIds}
+			handleClick={handleClick}
+			handleEdit={handleEdit}
+			handleSelect={handleSelect}
+			handleSort={handleSort}
+			handleSelectAll={handleSelectAll}
+			page={page}
+			perPage={perPage}
+			numPages={numPages}
+			totalCount={totalCount}
+			handlePaginate={handlePaginate}
+			emptyIcon={emptyIcon}
+			emptyTitle={emptyTitle}
+			emptyDescription={emptyDescription}
+		/>
 	)
 }
 

@@ -22,7 +22,7 @@ const AiPromptForm: React.FC<AiPromptFormProps> = (props) => {
 
 	return (
 		<div className="flex flex-col space-y-2">
-			<TextInput				
+			<TextInput
 				label={label}
 				name="prompt"
 				placeholder={placeholder}

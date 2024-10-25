@@ -5,52 +5,46 @@ import ThemeContext from './ThemeContext'
 import { cn } from 'frontend-shadcn'
 
 type ThemeProviderProps = {
-  mode?: string	
-	primaryColor?: string	
+	mode?: string
+	primaryColor?: string
 	headerFont?: string
 	bodyFont?: string
 	borderRadius?: number
-  children: React.ReactNode
+	children: React.ReactNode
 }
 
 const ThemeProvider = (props: ThemeProviderProps) => {
-	
-  const {
-    mode,
-		primaryColor,
-		headerFont,
-		bodyFont,
-		borderRadius,
-		children,
-	} = props || {}
+	const { mode, primaryColor, headerFont, bodyFont, borderRadius, children } =
+		props || {}
 
 	const value = {
-    mode,
+		mode,
 		primaryColor,
 		headerFont,
 		bodyFont,
 		borderRadius,
 	}
 
-  useEffect(() => {
-    if(headerFont){
-      document.documentElement.style.setProperty('--font-header', headerFont)
-    }
-    if(bodyFont){
-      document.documentElement.style.setProperty('--font-body', bodyFont)  
-    }            
-    if(borderRadius){
-      document.documentElement.style.setProperty('--radius', `${borderRadius}px`)  
-    }    
-  }, [headerFont, bodyFont, borderRadius])
+	useEffect(() => {
+		if (headerFont) {
+			document.documentElement.style.setProperty('--font-header', headerFont)
+		}
+		if (bodyFont) {
+			document.documentElement.style.setProperty('--font-body', bodyFont)
+		}
+		if (borderRadius) {
+			document.documentElement.style.setProperty(
+				'--radius',
+				`${borderRadius}px`
+			)
+		}
+	}, [headerFont, bodyFont, borderRadius])
 
-	return(
-    <ThemeContext.Provider value={value}>
-      <div className={cn(mode, 'w-full')}>
-        {children}
-      </div>
-    </ThemeContext.Provider>
-  )
+	return (
+		<ThemeContext.Provider value={value}>
+			<div className={cn(mode, 'w-full')}>{children}</div>
+		</ThemeContext.Provider>
+	)
 }
 
 export default ThemeProvider

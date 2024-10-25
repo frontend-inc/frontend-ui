@@ -2,11 +2,7 @@
 
 import React from 'react'
 import { Button } from '../../../components'
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from 'frontend-shadcn'
+import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
 import { Sheet, SheetContent, SheetTrigger } from 'frontend-shadcn'
 import { useMenu } from '../../../hooks'
 import { ListFilter } from 'lucide-react'

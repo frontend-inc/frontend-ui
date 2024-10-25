@@ -58,7 +58,7 @@ const ProductsInput: React.FC<ProductsInputProps> = (props) => {
 			<div>
 				<SecondaryButton onClick={handleAddClick}>Add Products</SecondaryButton>
 			</div>
-			<Sheet  open={open} handleClose={() => setOpen(false)}>
+			<Sheet open={open} handleClose={() => setOpen(false)}>
 				<ResourceList
 					selectable
 					enableSearch

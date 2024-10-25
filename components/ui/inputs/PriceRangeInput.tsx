@@ -14,11 +14,7 @@ const PriceRangeInput: React.FC<PriceRangeInputProps> = (props) => {
 	return (
 		<NumberRangeInput
 			{...rest}
-			startAdornment={
-				<Typography variant="body2">
-					{currency}
-				</Typography>
-			}
+			startAdornment={<Typography variant="body2">{currency}</Typography>}
 		/>
 	)
 }

@@ -19,7 +19,6 @@ const LoadMore: React.FC<LoadMoreProps> = (props) => {
 		<div className="flex flex-row w-full justify-center items-center">
 			<Button
 				color="secondary"
-				variant="contained"
 				onClick={handlePaginate}
 				endIcon={<Icon name="ChevronDown" />}
 			>

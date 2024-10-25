@@ -101,7 +101,7 @@ const CartLineItem: React.FC<CartLineItemProps> = (props) => {
 					</span>
 					<Image
 						alt={product?.title || ''}
-            // @ts-ignore
+						// @ts-ignore
 						src={product?.image?.url}
 						height={96}
 						width={96}
@@ -112,7 +112,7 @@ const CartLineItem: React.FC<CartLineItemProps> = (props) => {
 				</div>
 				<div className="flex flex-col space-y-2">
 					<Typography variant="body1">{product?.title}</Typography>
-					<Typography className="text-muted-foreground"variant="body2">
+					<Typography className="text-muted-foreground" variant="body2">
 						{product?.display_price}
 					</Typography>
 					<CartQuantityInput

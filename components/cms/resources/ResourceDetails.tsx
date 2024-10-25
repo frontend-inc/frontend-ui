@@ -32,27 +32,21 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 		<div className="w-full flex flex-col space-y-2">
 			{image && (
 				<div className="w-full h-[200px]">
-					<Image 
-            alt={label} 
-            src={image} 
-            label={label} 
-          />
+					<Image alt={label} src={image} label={label} />
 				</div>
 			)}
 			{avatar && avatar}
-			<Typography variant="h5" >
-				{primary}
-			</Typography>
+			<Typography variant="h5">{primary}</Typography>
 			{secondary && (
 				<Typography variant="body2" className="text-muted-foreground">
 					{secondary}
 				</Typography>
 			)}
-      <DisplayFields 
-        fields={fields} 
-        resource={resource}
-        direction={direction}
-      />
+			<DisplayFields
+				fields={fields}
+				resource={resource}
+				direction={direction}
+			/>
 		</div>
 	)
 }

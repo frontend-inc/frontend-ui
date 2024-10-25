@@ -33,7 +33,6 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 
 	return (
 		<Sheet
-			
 			open={open}
 			handleClose={handleClose}
 			title={title}
@@ -42,22 +41,12 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 				(enableEdit || enableDelete) && (
 					<div className="w-fill flex flex-row space-x-2">
 						{enableEdit && (
-							<Button
-								fullWidth
-								variant="contained"
-								color="primary"
-								onClick={handleEdit}
-							>
+							<Button fullWidth onClick={handleEdit}>
 								Edit
 							</Button>
 						)}
 						{enableDelete && (
-							<Button
-								fullWidth
-								variant="contained"
-								color="secondary"
-								onClick={handleDelete}
-							>
+							<Button fullWidth color="secondary" onClick={handleDelete}>
 								Delete
 							</Button>
 						)}

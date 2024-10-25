@@ -49,13 +49,9 @@ const AdminOrder: React.FC<AdminOrderProps> = (props) => {
 	return (
 		<div className="flex flex-col space-y-2">
 			<AdminOrderDetails order={order} handleEdit={handleEdit} />
-			<Typography variant="subtitle1" >
-				Order Items
-			</Typography>
+			<Typography variant="subtitle1">Order Items</Typography>
 			<AdminOrderLineItemList orderId={order?.id} />
-			<Typography variant="subtitle1" >
-				Shipments
-			</Typography>
+			<Typography variant="subtitle1">Shipments</Typography>
 			<AdminShipmentList orderId={order?.id} />
 			<AdminOrderForm
 				open={open}

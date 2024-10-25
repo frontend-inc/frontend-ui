@@ -130,11 +130,7 @@ export default function AttachmentInput({
 					onDelete={onRemove}
 				/>
 			)}
-			{!attachment?.url && !src && (
-        <DropZone 
-          onDrop={onDrop}          
-        />				
-			)}
+			{!attachment?.url && !src && <DropZone onDrop={onDrop} />}
 		</div>
 	)
 }

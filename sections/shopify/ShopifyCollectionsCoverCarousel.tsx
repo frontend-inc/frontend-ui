@@ -26,7 +26,7 @@ const ShopifyCollectionsCoverCarousel: React.FC<
 		<Section
 			requireAuth={requireAuth}
 			requirePaid={requirePaid}
-			mode='dark'
+			mode="dark"
 			py={0}
 			px={0}
 		>

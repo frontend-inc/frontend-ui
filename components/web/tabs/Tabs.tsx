@@ -1,12 +1,7 @@
 'use client'
 
 import React from 'react'
-import {
-	Tabs,
-	TabsList,
-	TabsTrigger,
-	TabsContent,
-} from 'frontend-shadcn'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from 'frontend-shadcn'
 import { Icon } from '../../../components'
 import TabContent from './TabContent'
 

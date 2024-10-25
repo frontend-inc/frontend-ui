@@ -38,9 +38,13 @@ const AdminProductCollectionHeader: React.FC<AdminProductHeaderProps> = (
 			{...props}
 			secondaryAction={
 				<>
-					<Button variant="secondary" className="hover:bg-secondary/50" onClick={() => setOpen(true)}>
-						<Icon name="Zap" className='text-secondary-foreground mr-2' />
-            Generate 
+					<Button
+						variant="secondary"
+						className="hover:bg-secondary/50"
+						onClick={() => setOpen(true)}
+					>
+						<Icon name="Zap" className="text-secondary-foreground mr-2" />
+						Generate
 					</Button>
 					<Modal
 						icon="Wand"

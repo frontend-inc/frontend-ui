@@ -55,7 +55,6 @@ const MailchimpSubscribe: React.FC<MailchimpSubscribeProps> = (props) => {
 					className="rounded-r-none"
 				/>
 				<Button
-					variant="contained"
 					color="secondary"
 					onClick={handleFormSubmit}
 					className="min-w-[120px] rounded-l-none"

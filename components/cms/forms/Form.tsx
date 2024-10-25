@@ -53,7 +53,6 @@ const Form: React.FC<FormProps> = (props) => {
 			{handleSubmit && (
 				<Button
 					size="medium"
-					variant="contained"
 					onClick={handleSubmit}
 					disabled={loading}
 					endIcon={

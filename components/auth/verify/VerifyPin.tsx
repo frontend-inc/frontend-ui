@@ -73,7 +73,7 @@ const VerifyPin: React.FC<VerifyPinProps> = (props) => {
 						/>
 					)}
 					{loginUrl && (
-						<Button fullWidth onClick={handleLogin} color="primary">
+						<Button fullWidth onClick={handleLogin}>
 							Back to login
 						</Button>
 					)}

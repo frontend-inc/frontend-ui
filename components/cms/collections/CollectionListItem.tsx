@@ -64,15 +64,15 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 			image={resource?.image?.url}
 			primary={resource?.title}
 			handleClick={handleClick}
-      // @ts-ignore
+			// @ts-ignore
 			secondary={
-        <DisplayFields 
-          disableBorder 
-          disableLabel
-          fields={displayFields} 
-          resource={resource} 
-        />
-      }
+				<DisplayFields
+					disableBorder
+					disableLabel
+					fields={displayFields}
+					resource={resource}
+				/>
+			}
 			actions={
 				<SocialButtons
 					size="small"

@@ -2,11 +2,7 @@
 
 import React from 'react'
 import { Image } from '../../../../components'
-import {
-	Avatar,
-	AvatarFallback,
-	AvatarImage,
-} from 'frontend-shadcn'
+import { Avatar, AvatarFallback, AvatarImage } from 'frontend-shadcn'
 import { Button } from '../../../../components'
 import { Card, CardHeader } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'

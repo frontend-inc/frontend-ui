@@ -61,7 +61,7 @@ export type PriceType = {
 	id?: number
 	label: string
 	title: string
-  description?: string
+	description?: string
 	price: number
 	features: string[]
 	recurring?: boolean

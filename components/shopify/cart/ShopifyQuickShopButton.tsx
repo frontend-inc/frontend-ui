@@ -33,12 +33,7 @@ const ShopifyQuickShopButton: React.FC<ShopifyQuickShopButtonProps> = (
 
 	return (
 		<>
-			<Button
-				size={size}
-				color={color}
-				variant="contained"
-				onClick={handleQuickShop}
-			>
+			<Button size={size} color={color} onClick={handleQuickShop}>
 				{quickShopButtonText}
 			</Button>
 			<ShopifyProductModal

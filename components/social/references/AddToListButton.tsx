@@ -54,7 +54,7 @@ const AddToList: React.FC<AddToListProps> = (props) => {
 	return (
 		<>
 			<Button
-				variant="ghost"				
+				variant="ghost"
 				onClick={handleClick}
 				className={cn(
 					'p-2',
@@ -83,7 +83,7 @@ const AddToList: React.FC<AddToListProps> = (props) => {
 					name="id"
 					displayField="title"
 					value={resource?.id}
-          //@ts-ignore
+					//@ts-ignore
 					handleChange={handleChange}
 					defaultQuery={{
 						current_user: true,

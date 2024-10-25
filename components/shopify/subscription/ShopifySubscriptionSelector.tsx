@@ -26,7 +26,7 @@ const ShopifySubscriptionSelector: React.FC<
 	useEffect(() => {
 		if (product) {
 			const subscriptions =
-        //@ts-ignore
+				//@ts-ignore
 				product?.sellingPlanGroups?.edges[0]?.node?.sellingPlans?.edges?.map(
 					({ node }: any) => node
 				) || []

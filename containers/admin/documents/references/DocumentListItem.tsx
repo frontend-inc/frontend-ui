@@ -36,11 +36,7 @@ const DocumentListItem: React.FC<DocumentListItemProps> = (props) => {
 					/>
 				</div>
 				<div className="flex-grow">
-					<Typography
-						variant="body2"
-						
-						className="max-w-[146px]"
-					>
+					<Typography variant="body2" className="max-w-[146px]">
 						{truncate(document?.title)}
 					</Typography>
 				</div>

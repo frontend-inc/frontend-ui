@@ -35,13 +35,7 @@ const DataForm: React.FC<DataFormProps> = (props) => {
 			handleClose={() => setOpenEdit(false)}
 			title={resource?.id ? 'Edit' : 'Add'}
 			buttons={
-				<Button
-					fullWidth
-					variant="contained"
-					color="primary"
-					onClick={handleSubmit}
-					loading={loading}
-				>
+				<Button fullWidth onClick={handleSubmit} loading={loading}>
 					{resource?.id ? 'Update' : 'Save'}
 				</Button>
 			}

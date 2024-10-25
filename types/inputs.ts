@@ -2,7 +2,8 @@
 
 import React from 'react'
 
-export type SyntheticEventType = React.ChangeEvent<HTMLInputElement>
+export type SyntheticEventType =
+	| React.ChangeEvent<HTMLInputElement>
 	| {
 			target: {
 				name: string

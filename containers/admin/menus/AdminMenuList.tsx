@@ -41,7 +41,6 @@ const AdminMenuList = () => {
 				emptyDescription="No menus yet."
 			/>
 			<Sheet
-				
 				open={open}
 				handleClose={() => setOpen(false)}
 				title={activeMenu?.label}

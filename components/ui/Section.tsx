@@ -12,7 +12,7 @@ const maxWidthClasses: Record<ContainerMaxWidth, string> = {
 	sm: 'container mx-auto max-w-screen-sm',
 	md: 'container mx-auto max-w-screen-md',
 	lg: 'container mx-auto max-w-screen-lg',
-	xl: 'container mx-auto max-w-screen-xl'
+	xl: 'container mx-auto max-w-screen-xl',
 }
 
 const Section: React.FC<SectionProps> = (props) => {

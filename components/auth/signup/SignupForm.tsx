@@ -89,9 +89,7 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 			<div className="flex flex-col space-y-3 w-full">
 				<Button
 					fullWidth
-					color="primary"
 					onClick={handleSubmit}
-					variant="contained"
 					startIcon={loading && <IconLoading />}
 				>
 					Register

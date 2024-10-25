@@ -1,10 +1,7 @@
 'use client'
 
 import React, { useContext } from 'react'
-import {
-	Button,
-	Typography,
-} from '../../core'
+import { Button, Typography } from '../../core'
 import { useRouter } from 'next/navigation'
 import { Label } from '../..'
 import { AppContext } from '../../../context'
@@ -12,16 +9,16 @@ import { Separator } from 'frontend-shadcn'
 
 type PriceCardProps = {
 	label?: string
-	title: string  
+	title: string
 	description?: string
 	features?: string[]
-	price: string | number   
+	price: string | number
 	buttonText?: string
 	url?: string
 }
 
 const PriceCard: React.FC<PriceCardProps> = (props) => {
-	const router = useRouter()	
+	const router = useRouter()
 	const { label, title, features, buttonText, price, url } = props
 
 	const handleClick = () => {
@@ -44,18 +41,12 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
 				<ul>
 					{features?.map((feature, i) => (
 						<li key={i}>
-							<Typography variant="body1">
-                { feature }
-              </Typography>
+							<Typography variant="body1">{feature}</Typography>
 						</li>
 					))}
 				</ul>
 			</div>
-			{buttonText && (
-				<Button onClick={handleClick} variant="contained">
-					{buttonText}
-				</Button>
-			)}
+			{buttonText && <Button onClick={handleClick}>{buttonText}</Button>}
 		</div>
 	)
 }

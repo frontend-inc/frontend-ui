@@ -5,11 +5,7 @@ import { InputLabel } from '../../../components'
 import { Button } from '../../../components'
 import { Input } from 'frontend-shadcn'
 import { Slider } from 'frontend-shadcn'
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from 'frontend-shadcn'
+import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
 import {
 	Tooltip,
 	TooltipContent,

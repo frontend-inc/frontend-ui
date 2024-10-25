@@ -14,12 +14,7 @@ const AdminFormQuestionsAdd: React.FC<AdminFormQuestionsAddProps> = (props) => {
 	const { open, handleClose, handleReload, url, formId } = props || {}
 
 	return (
-		<Sheet
-			
-			open={open}
-			handleClose={handleClose}
-			title="Add Questions"
-		>
+		<Sheet open={open} handleClose={handleClose} title="Add Questions">
 			<AdminQuestionListItems
 				name={'form_question'}
 				url={url}

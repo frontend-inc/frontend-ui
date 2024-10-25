@@ -20,12 +20,7 @@ const AdminMediaForm: React.FC<ResourceFormProps> = (props) => {
 	}
 
 	return (
-		<Sheet
-			
-			open={open}
-			handleClose={handleClose}
-			title="Upload an Asset"
-		>
+		<Sheet open={open} handleClose={handleClose} title="Upload an Asset">
 			<div className="mb-2">
 				<ButtonTabs
 					fullWidth

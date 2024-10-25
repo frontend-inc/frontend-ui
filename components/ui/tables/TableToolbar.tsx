@@ -72,17 +72,17 @@ const TableToolbar: React.FC<TableToolbarProps> = (props) => {
 						handleSearch={handleKeywordSearch}
 					/>
 				</div>
-					<div className="relative flex flex-row justify-start items-center">
-            <TableFilterButton 
-              badgeCount={badgeCount}
-              loading={loading}
-              query={query}
-              fields={fields}
-              handleChange={handleChange}
-              handleSearch={handleSearch}
-              handleClear={handleClearFilters}
-            />
-					</div>				
+				<div className="relative flex flex-row justify-start items-center">
+					<TableFilterButton
+						badgeCount={badgeCount}
+						loading={loading}
+						query={query}
+						fields={fields}
+						handleChange={handleChange}
+						handleSearch={handleSearch}
+						handleClear={handleClearFilters}
+					/>
+				</div>
 			</div>
 			<div className="w-60 flex flex-row justify-end items-center">
 				<div className="flex flex-row justify-start items-center">

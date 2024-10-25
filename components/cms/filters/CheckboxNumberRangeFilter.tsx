@@ -24,18 +24,10 @@ type CheckboxNumberRangeFilterProps = {
 const CheckboxNumberRangeFilter: React.FC<CheckboxNumberRangeFilterProps> = (
 	props
 ) => {
-	const {
-		label,
-		field,
-		options,
-		values,
-		handleClick,
-	} = props
+	const { label, field, options, values, handleClick } = props
 
 	return (
-		<MenuList
-			label={label || 'Filter'}
-		>
+		<MenuList label={label || 'Filter'}>
 			{options?.map((option, index) => (
 				<CheckboxNumberRangeFilterItem
 					key={index}

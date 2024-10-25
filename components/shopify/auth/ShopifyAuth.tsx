@@ -44,9 +44,7 @@ const MobileShopifyAuthButton: React.FC<MobileShopifyAuthButtonProps> = (
 					<Icon name={icon} />
 				</div>
 				<div>
-					<Typography variant="button" >
-						Orders
-					</Typography>
+					<Typography variant="button">Orders</Typography>
 				</div>
 			</div>
 		</Button>

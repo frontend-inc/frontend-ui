@@ -32,7 +32,7 @@ const UnsplashList: React.FC<UnsplashProps> = ({ onComplete }) => {
 			console.error('Error uploading image:', e)
 		} finally {
 			setShowModal(false)
-      //@ts-ignore
+			//@ts-ignore
 			setImage({})
 		}
 	}
@@ -86,7 +86,7 @@ const UnsplashList: React.FC<UnsplashProps> = ({ onComplete }) => {
 			<UnsplashModal
 				loading={loading}
 				open={showModal}
-        //@ts-ignore
+				//@ts-ignore
 				image={image}
 				handleClose={() => setShowModal(false)}
 				handleUpload={handleUpload}

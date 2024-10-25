@@ -68,8 +68,7 @@ const MediaBrowser: React.FC<MediaBrowserProps> = ({
 
 	return (
 		<Modal
-			
-			maxWidth="md"			
+			maxWidth="md"
 			open={open}
 			handleClose={handleClose}
 			title={'Browse Media'}

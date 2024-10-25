@@ -43,7 +43,7 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 			opacity={opacity}
 			height={height}
 			title={shopifyCollection?.title}
-      // @ts-ignore
+			// @ts-ignore
 			image={shopifyCollection?.image?.url}
 			alt={alt}
 			alignItems={alignItems}

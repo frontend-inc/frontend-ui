@@ -2,12 +2,7 @@
 
 import React from 'react'
 import { cn } from 'frontend-shadcn'
-import {
-	Card,
-	CardHeader,
-	CardContent,
-	CardFooter,
-} from 'frontend-shadcn'
+import { Card, CardHeader, CardContent, CardFooter } from 'frontend-shadcn'
 import { Checkbox } from 'frontend-shadcn'
 import { Button } from '../../../components'
 import { Typography } from '../../core'

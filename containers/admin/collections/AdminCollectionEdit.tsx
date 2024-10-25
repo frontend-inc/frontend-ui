@@ -30,7 +30,6 @@ const AdminCollectionEdit: React.FC<AdminCollectionEditProps> = (props) => {
 
 	return (
 		<Sheet
-			
 			loading={loading}
 			open={open}
 			handleClose={handleClose}
@@ -39,8 +38,6 @@ const AdminCollectionEdit: React.FC<AdminCollectionEditProps> = (props) => {
 			buttons={
 				<Button
 					fullWidth
-					color="primary"
-					variant="contained"
 					onClick={handleSubmit}
 					startIcon={loading && <IconLoading />}
 				>

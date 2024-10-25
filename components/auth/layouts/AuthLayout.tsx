@@ -9,11 +9,7 @@ type AuthLayoutProps = {
 const AuthLayout: React.FC<AuthLayoutProps> = (props) => {
 	const { children } = props
 
-	return (
-		<div className="w-full container mx-auto">
-			{children}
-		</div>
-	)
+	return <div className="w-full container mx-auto">{children}</div>
 }
 
 export default AuthLayout

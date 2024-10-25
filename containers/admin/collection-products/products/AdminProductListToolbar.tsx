@@ -2,10 +2,7 @@
 
 import React from 'react'
 import { Button } from '../../../../components'
-import {
-	Collapsible,
-	CollapsibleContent,
-} from 'frontend-shadcn'
+import { Collapsible, CollapsibleContent } from 'frontend-shadcn'
 import { useProductCollections } from '../../../../hooks'
 import { Plus } from 'lucide-react'
 

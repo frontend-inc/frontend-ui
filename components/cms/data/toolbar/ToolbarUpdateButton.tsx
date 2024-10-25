@@ -39,7 +39,6 @@ const ToolbarUpdateButton: React.FC<ToolbarUpdateProps> = (props) => {
 	return (
 		<>
 			<Button
-				variant="contained"
 				color="secondary"
 				onClick={() => setOpen(true)}
 				startIcon={icon && <Icon name={icon} />}

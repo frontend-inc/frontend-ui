@@ -25,12 +25,12 @@ const ResourceToolbarButtons: React.FC<ResourceToolbarButtonsProps> = (
 		<div className="flex flex-row space-x-2">
 			{buttons?.map((button, index) => (
 				<Button
-					key={index}					
+					key={index}
 					onClick={
 						selected && button?.onClick
 							? () => button?.onClick(selected)
 							: undefined
-					}					
+					}
 				>
 					{button?.icon && (
 						<Icon name={button?.icon} className="mr-2 h-4 w-4" />

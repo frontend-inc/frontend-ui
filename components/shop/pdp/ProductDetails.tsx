@@ -79,7 +79,7 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 			}
 			actions={
 				<SocialButtons
-					size="large"
+					size="lg"
 					justifyContent={'center'}
 					resource={product}
 					product={product}
@@ -90,23 +90,14 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 			}
 			addToCart={
 				<div className="flex flex-row space-x-2">
-					<AddToCartButton
-						size="large"
-						availableForSale
-						productId={product?.id}
-					/>
+					<AddToCartButton size="lg" availableForSale productId={product?.id} />
 					{displayFields?.length > 0 && (
 						<DisplayMetafields fields={displayFields} resource={product} />
 					)}
 				</div>
 			}
 			secondaryAction={
-				buttons && (
-					<ButtonActions
-						justifyContent={'end'}
-						buttons={buttons}
-					/>
-				)
+				buttons && <ButtonActions justifyContent={'end'} buttons={buttons} />
 			}
 			slots={slots}
 		/>

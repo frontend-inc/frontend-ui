@@ -71,12 +71,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 				{description && <ExpandableText text={description} />}
 				{buttonText && (
 					<div className="flex flex-row gap-4">
-						<Button
-							size="large"
-							variant="contained"
-							color="primary"
-							onClick={handleItemClick}
-						>
+						<Button size="lg" onClick={handleItemClick}>
 							{buttonText}
 						</Button>
 					</div>

@@ -52,7 +52,7 @@ const ProductCollectionList: React.FC<ProductCollectionListProps> = (props) => {
 		enableSorting,
 		filterOptions = [],
 		sortOptions = [],
-    list: List = ProductCollectionListItems,
+		list: List = ProductCollectionListItems,
 		slots: defaultSlots = {
 			header: {},
 			list: {},

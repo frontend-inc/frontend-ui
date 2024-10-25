@@ -32,19 +32,11 @@ const SimplePage: React.FC<SimplePageProps> = ({
 					Last updated {publishedAt}
 				</Typography>
 				{html ? (
-					<Typography
-						variant="body1"
-						
-						className="whitespace-pre-line"
-					>
+					<Typography variant="body1" className="whitespace-pre-line">
 						<div dangerouslySetInnerHTML={{ __html: body }} />
 					</Typography>
 				) : (
-					<Typography
-						variant="body1"
-						
-						className="whitespace-pre-line"
-					>
+					<Typography variant="body1" className="whitespace-pre-line">
 						{body}
 					</Typography>
 				)}

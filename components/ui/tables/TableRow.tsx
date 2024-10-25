@@ -45,9 +45,9 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 				<TableCell small align={'center'} sticky>
 					<div className="mx-2">
 						<Checkbox
-              name={`select-${row.id}`}
+							name={`select-${row.id}`}
 							value={selected}
-              //@ts-ignore 
+							//@ts-ignore
 							handleChange={handleSelect ? () => handleSelect(row) : undefined}
 						/>
 					</div>
@@ -59,7 +59,6 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 						{enableShow && (
 							<Button
 								size="small"
-								variant="contained"
 								color="secondary"
 								onClick={handleShow ? () => handleShow(row) : undefined}
 							>
@@ -69,7 +68,6 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 						{enableEdit && (
 							<Button
 								size="small"
-								variant="contained"
 								color="secondary"
 								onClick={handleEdit ? () => handleEdit(row) : undefined}
 							>
@@ -79,7 +77,6 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 						{enableDelete && (
 							<Button
 								size="small"
-								variant="contained"
 								color="secondary"
 								onClick={handleDelete ? () => handleDelete(row) : undefined}
 							>

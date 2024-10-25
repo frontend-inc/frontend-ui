@@ -69,20 +69,10 @@ const Address: React.FC<AddressProps> = (props) => {
 			<AuthScreen title={title} subtitle={subtitle}>
 				<div className="flex flex-col space-y-3">
 					<ShopifyAddressForm address={address} handleChange={handleChange} />
-					<Button
-						fullWidth
-						variant="contained"
-						color="primary"
-						onClick={handleSubmit}
-					>
+					<Button fullWidth onClick={handleSubmit}>
 						Save Address
 					</Button>
-					<Button
-						fullWidth
-						variant="outlined"
-						color="primary"
-						onClick={handleDeleteClick}
-					>
+					<Button fullWidth variant="outlined" onClick={handleDeleteClick}>
 						Delete Address
 					</Button>
 				</div>

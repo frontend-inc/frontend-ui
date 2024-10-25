@@ -36,8 +36,16 @@ const AdminMenu: React.FC<AdminMenuProps> = (props) => {
 							title={menuItem.label}
 							icon={menuItem.icon}
 							handleClick={() => handleClick(menuItem)}
-							handleDelete={(enableDelete && handleDelete) ? () => handleDelete(menuItem) : undefined}
-							handleEdit={(enableEdit && handleEdit) ? () => handleEdit(menuItem) : undefined}
+							handleDelete={
+								enableDelete && handleDelete
+									? () => handleDelete(menuItem)
+									: undefined
+							}
+							handleEdit={
+								enableEdit && handleEdit
+									? () => handleEdit(menuItem)
+									: undefined
+							}
 							selected={activeMenu === menuItem.value}
 						/>
 					))}

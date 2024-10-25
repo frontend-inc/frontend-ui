@@ -35,10 +35,14 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
 			<DropdownMenuContent align="end" className="bg-background w-[100px]">
 				{children}
 				{handleEdit && (
-					<DropdownMenuItem className='text-foreground' onClick={handleEdit}>Edit</DropdownMenuItem>
+					<DropdownMenuItem className="text-foreground" onClick={handleEdit}>
+						Edit
+					</DropdownMenuItem>
 				)}
 				{handleDelete && (
-					<DropdownMenuItem  className='text-foreground' onClick={handleDelete}>Delete</DropdownMenuItem>
+					<DropdownMenuItem className="text-foreground" onClick={handleDelete}>
+						Delete
+					</DropdownMenuItem>
 				)}
 			</DropdownMenuContent>
 		</DropdownMenu>

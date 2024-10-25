@@ -17,16 +17,11 @@ const OneTimePasswordVerifyForm: React.FC<OneTimePasswordVerifyFormProps> = (
 	return (
 		<div className="flex flex-col space-y-3">
 			{verified ? (
-				<Button
-					fullWidth
-					variant="contained"
-					color="primary"
-					onClick={handleRedirect}
-				>
+				<Button fullWidth onClick={handleRedirect}>
 					Success! You can now continue
 				</Button>
 			) : (
-				<Button fullWidth color="primary" onClick={handleLogin}>
+				<Button fullWidth onClick={handleLogin}>
 					Back to Login
 				</Button>
 			)}

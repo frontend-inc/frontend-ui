@@ -95,9 +95,7 @@ const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 						className="flex flex-col space-y-1 justify-between p-1 w-[280px] min-w-[280px] overflow-x-hidden rounded shadow-md hover:shadow-lg transition-shadow duration-200"
 					>
 						<div>
-							<Typography variant="subtitle2" >
-								{header.label}
-							</Typography>
+							<Typography variant="subtitle2">{header.label}</Typography>
 							<SortableContext
 								key={header.value}
 								items={columns[header.value]?.map((res) => res.id)}
@@ -130,7 +128,6 @@ const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 						{enableCreate && (
 							<Button
 								fullWidth
-								variant="contained"
 								color="secondary"
 								onClick={() => handleAdd(header.value)}
 								startIcon={<Icon name="Plus" color="secondary.contrastText" />}

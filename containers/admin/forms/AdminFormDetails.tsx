@@ -37,9 +37,7 @@ export default function AdminFormDetails(props: AdminFormProps) {
 						/>
 					</div>
 					<div className="flex flex-col space-y-1">
-						<Typography variant="subtitle1" >
-							{form?.title}
-						</Typography>
+						<Typography variant="subtitle1">{form?.title}</Typography>
 						<Typography variant="body2" className="text-muted-foreground">
 							{form?.description}
 						</Typography>

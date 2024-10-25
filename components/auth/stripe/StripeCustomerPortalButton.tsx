@@ -16,7 +16,7 @@ const StripeCustomerPortalButton: React.FC = () => {
 	}
 
 	return (
-		<Button variant="contained" color="primary" onClick={handleClick}>
+		<Button onClick={handleClick}>
 			{loading ? 'Connecting...' : 'Manage Payments with Stripe'}
 		</Button>
 	)

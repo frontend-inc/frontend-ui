@@ -8,11 +8,7 @@ import {
 	Pagination,
 	Placeholder,
 } from '../../../components'
-import {
-	Table,
-	TableHeader,
-	TableBody,
-} from 'frontend-shadcn'
+import { Table, TableHeader, TableBody } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
 
 type TableProps = {
@@ -87,11 +83,7 @@ const TableList: React.FC<TableProps> = (props) => {
 		>
 			{(title || toolbar) && (
 				<div className="p-2 min-h-[40px] w-full">
-					{title && (
-						<Typography variant="subtitle1" >
-							{title}
-						</Typography>
-					)}
+					{title && <Typography variant="subtitle1">{title}</Typography>}
 					{toolbar && toolbar}
 				</div>
 			)}

@@ -27,14 +27,7 @@ const ShopifyCheckoutButton: React.FC<ShopifyCheckoutButtonProps> = (props) => {
 	}
 
 	return (
-		<Button
-			fullWidth
-			color="primary"
-			onClick={handleCheckoutClick}
-			variant="contained"
-			size="large"
-			loading={loading}
-		>
+		<Button fullWidth onClick={handleCheckoutClick} size="lg" loading={loading}>
 			Checkout
 		</Button>
 	)

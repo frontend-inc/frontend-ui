@@ -99,13 +99,12 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
 			<div className="flex flex-row space-x-1">
 				<Button
 					color="secondary"
-					variant="contained"
 					onClick={() => setOpen(true)}
 					startIcon={<Search className="w-5 h-5 text-foreground" />}
 				>
 					Choose {field?.foreign_collection?.plural_name}
 				</Button>
-				<Button color="secondary" variant="contained" onClick={handleAddClick}>
+				<Button color="secondary" onClick={handleAddClick}>
 					Add {field?.foreign_collection?.singular_name}
 				</Button>
 			</div>

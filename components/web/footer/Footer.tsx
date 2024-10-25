@@ -36,12 +36,8 @@ const Footer: React.FC<FooterProps> = (props) => {
 	}
 
 	return (
-		<div
-			className="flex flex-col space-y-2 py-2 w-full bg-background min-h-[80px]"			
-		>
-			<div				
-				className="flex flex-row space-x-10 w-full px-3 items-center justify-between border-b border-divider"				
-			>
+		<div className="flex flex-col space-y-2 py-2 w-full bg-background min-h-[80px]">
+			<div className="flex flex-row space-x-10 w-full px-3 items-center justify-between border-b border-divider">
 				<div className="flex flex-row space-x-4 py-6 w-full items-start">
 					<div className="w-full sm:w-[160px] flex justify-start">
 						<Logo

@@ -13,7 +13,7 @@ export type ProductCollectionCardProps = {
 	primary: string
 	secondary?: string | React.ReactNode
 	actions?: React.ReactNode
-	secondaryAction?: React.ReactNode	
+	secondaryAction?: React.ReactNode
 	compareAtPrice?: string
 	handleClick?: () => void
 	height?: number

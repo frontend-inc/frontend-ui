@@ -48,7 +48,7 @@ const AdminPage: React.FC<AdminPageProps> = (props) => {
 
 	useTabs(activeTab)
 
-	const handleClick = (menuItem) => {    
+	const handleClick = (menuItem) => {
 		router.push(`${clientUrl}${menuItem.value}`)
 	}
 

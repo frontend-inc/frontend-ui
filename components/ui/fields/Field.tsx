@@ -30,7 +30,7 @@ export type FieldElementProps = {
 	placeholder?: string
 	disableLabel?: boolean
 	dateFormat?: string
-  className?: string
+	className?: string
 }
 
 type FieldProps = {
@@ -44,16 +44,11 @@ type FieldProps = {
 	enableBorder?: boolean
 	disablePadding?: boolean
 	dateFormat?: string
-	disableLabel?: boolean  
+	disableLabel?: boolean
 }
 
 const Field: React.FC<FieldProps> = (props) => {
-	const {
-		field,
-		resource,
-		dateFormat = 'MM/DD/YYYYY',
-		...rest
-	} = props
+	const { field, resource, dateFormat = 'MM/DD/YYYYY', ...rest } = props
 	let { variant: fieldVariant, label } = field
 	let value = get(resource, field?.name)
 	if (!value) {

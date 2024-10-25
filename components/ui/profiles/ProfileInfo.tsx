@@ -19,7 +19,11 @@ const ProfileInfo: React.FC<ProfileInfoProps> = (props) => {
 	return (
 		<div className="flex flex-col space-y-2">
 			<div className="flex flex-col">
-				<FieldString value={label} variant="caption" className="text-muted-foreground"/>
+				<FieldString
+					value={label}
+					variant="caption"
+					className="text-muted-foreground"
+				/>
 				<FieldString value={title} />
 				{socialLinks?.length > 0 && (
 					<div className="flex flex-row space-x-1">
@@ -28,7 +32,11 @@ const ProfileInfo: React.FC<ProfileInfoProps> = (props) => {
 						))}
 					</div>
 				)}
-				<FieldText value={description} variant="body2" className="text-muted-foreground"/>
+				<FieldText
+					value={description}
+					variant="body2"
+					className="text-muted-foreground"
+				/>
 			</div>
 		</div>
 	)

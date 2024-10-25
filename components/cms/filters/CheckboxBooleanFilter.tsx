@@ -15,7 +15,7 @@ type CheckboxFilterProps = {
 	options?: OptionType[]
 	values?: any
 	handleClick: (filter: FilterOptionType) => void
-	label: string	
+	label: string
 }
 
 type BooleanOptionType = {
@@ -37,7 +37,7 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = (props) => {
 			{BOOLEAN_OPTIONS?.map((option, index) => (
 				<CheckboxFilterItem
 					key={index}
-					values={values}          
+					values={values}
 					option={option}
 					handleClick={() =>
 						handleClick({

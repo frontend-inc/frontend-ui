@@ -20,7 +20,7 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
 
 	return (
 		<div className={'pt-16 py-6 h-auto w-full'}>
-      <div className="container mx-auto max-w-screen-xl">			
+			<div className="container mx-auto max-w-screen-xl">
 				<div className="flex flex-col sm:flex-row md:space-x-4 space-y-4">
 					<div className="flex flex-col space-y-6 sm:min-h-[400px] md:items-start xs:items-center justify-center md:max-w-[600px] xs:max-w-full md:w-1/2 xs:w-full">
 						{label && (
@@ -28,11 +28,7 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
 								<Label label={label} />
 							</div>
 						)}
-						<Typography
-							
-							variant="h2"
-							className="md:text-left xs:text-center"
-						>
+						<Typography variant="h2" className="md:text-left xs:text-center">
 							{primary}
 						</Typography>
 						{secondary && secondary}

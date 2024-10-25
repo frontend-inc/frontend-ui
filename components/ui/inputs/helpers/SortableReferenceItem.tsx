@@ -38,7 +38,7 @@ export default function SortableReferenceItem({
 					<Icon name="GripVertical" />
 				</div>
 				<div className="mr-2 w-8 h-8">
-					<Image alt='image' src={image} height={32} width={32} />
+					<Image alt="image" src={image} height={32} width={32} />
 				</div>
 				<Typography variant="body1">{title}</Typography>
 			</div>

@@ -19,7 +19,6 @@ const CellUser: React.FC<CellUserProps> = (props) => {
 			<Button
 				size="small"
 				color="secondary"
-				variant="contained"
 				onClick={handleClick}
 				startIcon={<UserAvatar size={28} user={user} />}
 			>
