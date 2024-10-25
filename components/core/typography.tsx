@@ -33,13 +33,13 @@ const Typography: React.FC<TypographyProps> = ({
 }) => {
 
 	const variantClasses = {
-		h1: 'text-6xl font-semibold tracking-tight',
-		h2: 'text-5xl font-semibold tracking-tight',
-		h3: 'text-4xl font-medium',
-		h4: 'text-3xl font-medium',
-		h5: 'text-2xl font-medium',
-		h6: 'text-xl font-medium',
-		subtitle1: 'text-lg font-medium',
+		h1: 'text-5xl font-semibold tracking-tight',
+		h2: 'text-4xl font-semibold tracking-tight',
+		h3: 'text-3xl font-medium',
+		h4: 'text-2xl font-medium',
+		h5: 'text-xl font-medium',
+		h6: 'text-lg font-medium',
+		subtitle1: 'text-md font-medium',
 		subtitle2: 'text-base font-medium',
 		button: 'text-base',
 		body1: 'text-base',

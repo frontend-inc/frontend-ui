@@ -5,7 +5,7 @@ import { useMedia } from '../../../hooks'
 import { useAlerts } from '../../../hooks'
 import MediaList from './MediaList'
 import {
-	Modal,
+	Sheet,
 	ButtonTabs,
 	MediaUploader,
 	UnsplashList,
@@ -67,8 +67,7 @@ const MediaBrowser: React.FC<MediaBrowserProps> = ({
 	]
 
 	return (
-		<Modal
-			maxWidth="md"
+		<Sheet
 			open={open}
 			handleClose={handleClose}
 			title={'Browse Media'}
@@ -101,7 +100,7 @@ const MediaBrowser: React.FC<MediaBrowserProps> = ({
 					{tab === '3' && <BrandfetchInput onComplete={handleComplete} />}
 				</div>
 			</div>
-		</Modal>
+		</Sheet>
 	)
 }
 

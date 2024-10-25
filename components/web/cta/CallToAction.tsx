@@ -26,7 +26,7 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 						{label}
 					</Typography>
 				)}
-				{title && <Typography variant={'h3'}>{title}</Typography>}
+				{title && <Typography variant={'h4'}>{title}</Typography>}
 				{description && (
 					<Typography variant="subtitle2" className="text-muted-foreground">
 						{description}
