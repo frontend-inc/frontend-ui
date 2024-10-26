@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Container, Typography } from '../../core'
+import { Typography } from '../../core'
 import { BrandLogos, Label, Image } from '../..'
 
 export type SpotlightListProps = {

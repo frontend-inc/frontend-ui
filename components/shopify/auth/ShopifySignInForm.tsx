@@ -48,14 +48,14 @@ const SignInForm: React.FC<SignInFormProps> = (props) => {
 				{loading && <IconLoading className="ml-2 h-4 w-4 animate-spin" />}
 			</Button>
 			{handleSignup && (
-				<Button className="w-full" variant="text" onClick={handleSignup}>
+				<Button className="w-full" variant="ghost" onClick={handleSignup}>
 					No account? Sign up
 				</Button>
 			)}
 			{handleForgotPassword && (
 				<Button
 					className="w-full"
-					variant="text"
+					variant="ghost"
 					onClick={handleForgotPassword}
 				>
 					Forgot password?

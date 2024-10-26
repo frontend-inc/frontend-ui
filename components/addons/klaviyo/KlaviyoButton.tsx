@@ -9,14 +9,13 @@ export type KlaviyoButtonProps = {
 	formId?: string
 	justifyContent?: string
 	buttonText?: string
-	variant?: 'text' | 'outlined' | 'contained'
+	variant?: 'default' | 'secondary' | 'ghost' | 'link'
 }
 
 const KlaviyoButton: React.FC<KlaviyoButtonProps> = (props) => {
 	const {
 		formId,
-		justifyContent = 'center',
-		variant = 'contained',
+		variant = 'default',
 		buttonText = 'Subscribe',
 	} = props || {}
 

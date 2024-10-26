@@ -62,7 +62,7 @@ const GoogleMarker: React.FC<GoogleMarkerProps> = (props) => {
 								/>
 							</div>
 						)}
-						<Typography variant="subtitle2" color="text-gray-900">
+						<Typography variant="subtitle2" className="text-gray-900">
 							{marker?.label}
 						</Typography>
 						<DisplayFields fields={displayFields} resource={resource} />

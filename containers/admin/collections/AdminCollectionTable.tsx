@@ -11,7 +11,6 @@ import AdminToolbarMenu from './AdminToolbarMenu'
 import {
 	useRouter,
 	useParams,
-	usePathname,
 	useSearchParams,
 } from 'next/navigation'
 import copy from 'copy-to-clipboard'
@@ -271,6 +270,7 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 			})
 
 			let parsedQuery = apiQuery.parseURL(queryObject).query()
+      //@ts-ignore
 			findDocuments(parsedQuery)
 		}
 	}, [searchParams])

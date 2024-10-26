@@ -7,8 +7,7 @@ import { cn } from 'frontend-shadcn'
 
 type ButtonActionsProps = {
 	buttons: ButtonType[]
-	color?: string
-	size?: 'small' | 'medium' | 'large'
+	size?: 'sm' | 'default' | 'lg'
 	justifyContent?: 'start' | 'center' | 'end'
 }
 
@@ -16,7 +15,6 @@ const ButtonActions: React.FC<ButtonActionsProps> = ({
 	buttons,
 	size,
 	justifyContent = 'start',
-	color,
 }) => {
 	return (
 		<div

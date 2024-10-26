@@ -56,8 +56,7 @@ const AdminOrderDetails: React.FC<AdminOrderDetailsProps> = (props) => {
 					</div>
 					<Typography
 						variant="overline"
-						className="text-muted-foreground"
-						className="whitespace-pre-line"
+						className="text-muted-foreground whitespace-pre-line"
 					>
 						{order.shipping_address}
 					</Typography>

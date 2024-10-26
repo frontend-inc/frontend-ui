@@ -98,7 +98,7 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 					<Button
 						fullWidth
 						color="secondary"
-						variant="text"
+						variant="ghost"
 						onClick={handleLogin}
 					>
 						Already have an account? Sign in

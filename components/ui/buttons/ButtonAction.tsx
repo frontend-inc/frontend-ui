@@ -3,25 +3,25 @@
 import React from 'react'
 import { Button } from '../../core'
 import { Icon } from '../..'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
-type ActionProps = {
+type ButtonActionProps = {
 	icon?: string
-	color?: 'primary' | 'secondary'
-	size?: 'small' | 'medium' | 'large'
+	variant?: 'default' | 'secondary' | 'ghost'
+  size?: 'sm' | 'default' | 'lg'
 	url?: string
 	path?: string
 	children: React.ReactNode
 }
 
-const ButtonAction: React.FC<ActionProps> = (props) => {
+const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 	const {
 		children,
 		icon,
 		url,
 		path,
-		color = 'secondary',
-		size = 'medium',
+		variant = 'secondary',
+		size = 'default',
 		...rest
 	} = props
 
@@ -44,15 +44,15 @@ const ButtonAction: React.FC<ActionProps> = (props) => {
 					<Icon
 						name={icon}
 						color={
-							color == 'primary'
-								? 'primary.contrastText'
-								: 'secondary.contrastText'
+							variant == 'default'
+								? 'text-primary-foreground'
+								: 'text-secondary-foreground'
 						}
 					/>
 				)
 			}
 			onClick={handleClick}
-			color={color}
+			variant={variant}
 			{...rest}
 		>
 			{children}

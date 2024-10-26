@@ -35,7 +35,7 @@ const ForgotPasswordForm: React.FC<ForgotPasswordFormProps> = (props) => {
 				Send Instructions
 			</Button>
 			{handleLogin && (
-				<Button fullWidth variant="text" onClick={handleLogin}>
+				<Button fullWidth variant="ghost" onClick={handleLogin}>
 					Back to Login
 				</Button>
 			)}

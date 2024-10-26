@@ -23,7 +23,7 @@ const MobileDrawerLink: React.FC<MobileDrawerLinkProps> = (props) => {
 	return (
 		<Button
 			fullWidth
-			variant="text"
+			variant="ghost"
 			className="justify-start"
 			onClick={() => handleMenuClick(menuItem)}
 		>

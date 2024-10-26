@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Button } from '../../../components/core'
 import { Typography } from '../../../components/core'
 import { Icon, UserChip, Label, PrimaryButton } from '../../../components'
@@ -54,9 +54,8 @@ const AdminOrderDetails: React.FC<AdminOrderDetailsProps> = (props) => {
 						</Button>
 					</div>
 					<Typography
-						variant="overline"
-						className="text-muted-foreground"
-						className="whitespace-pre-line"
+						variant="overline"						
+						className="text-muted-foreground whitespace-pre-line"
 					>
 						{order.shipping_address}
 					</Typography>

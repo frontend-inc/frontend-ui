@@ -31,7 +31,7 @@ const ShopifyForgotPasswordForm: React.FC<ShopifyForgotPasswordFormProps> = (
 				Send Instructions
 			</Button>
 			{handleLogin && (
-				<Button fullWidth variant="text" onClick={handleLogin}>
+				<Button fullWidth variant="ghost" onClick={handleLogin}>
 					Back to Login
 				</Button>
 			)}

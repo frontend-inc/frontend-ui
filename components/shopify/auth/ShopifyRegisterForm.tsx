@@ -60,7 +60,7 @@ const ShopifyRegisterForm: React.FC<ShopifyRegisterFormProps> = (props) => {
 				{loading && <IconLoading className="mr-2 h-4 w-4 animate-spin" />}
 				Register
 			</Button>
-			<Button className="w-full" variant="text" onClick={handleLogin}>
+			<Button className="w-full" variant="ghost" onClick={handleLogin}>
 				Already have an account? Sign in
 			</Button>
 		</div>
