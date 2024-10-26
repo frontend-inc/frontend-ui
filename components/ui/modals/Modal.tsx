@@ -60,7 +60,7 @@ export default function Modal({
 					<DialogTitle className="text-foreground">{title}</DialogTitle>
 					{description && <DialogDescription>{description}</DialogDescription>}
 				</DialogHeader>
-				<ScrollArea className="max-h-[400px]">
+				<ScrollArea className="max-h-[440px]">
 					<div className="space-y-4 p-4">
 						{loading ? (
 							<Loader loading={loading} />
