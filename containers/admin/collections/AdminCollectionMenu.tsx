@@ -194,11 +194,16 @@ const AdminCollectionMenu: React.FC = () => {
 					/>
 				))}
 			</MenuList>
-			<div className="w-full mx-2 mb-2">
+			<div className="px-4">
 				<Button
 					color="secondary"
-					onClick={handleCreateCollectionClick}
-					startIcon={<Plus className="w-4 h-4 text-secondary-foreground" />}
+					onClick={handleCreateCollectionClick}					
+          className="group"
+					startIcon={
+						<div className="group-hover:rotate-180 transition-transform duration-300 ease-in-out">
+							<Plus className="text-primary-foreground h-5 w-5" />
+						</div>
+					}
 				>
 					Collection
 				</Button>

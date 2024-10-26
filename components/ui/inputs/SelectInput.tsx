@@ -54,10 +54,10 @@ export default function SelectInput({
 				<SelectTrigger className="w-full min-w-[165px] h-10 bg-background border border-input shadow-none rounded">
 					<SelectValue placeholder="Select an option" />
 				</SelectTrigger>
-				<SelectContent>
+				<SelectContent className="bg-background min-w-[165px]">
 					{options?.map((option, idx) => (
 						<SelectItem
-							key={idx}
+							key={idx}              
 							// @ts-ignore
 							value={option.value}
 						>

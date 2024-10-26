@@ -19,7 +19,7 @@ type SheetProps = {
 	open: boolean
 	loading?: boolean
 	title?: string
-	anchor?: 'left' | 'right' | 'top' | 'bottom'
+	side?: 'left' | 'right' 
 	handleClose: () => void
 	buttons?: React.ReactNode
 	children: React.ReactNode
@@ -32,16 +32,20 @@ type SheetProps = {
 const Sheet: React.FC<SheetProps> = ({
 	open,
 	title,
-	anchor = 'right',
+	side = 'right',
 	handleClose,
 	children,
 	buttons,
 	disablePadding = false,
 	className,
 }) => {
+  
 	const { mode } = useTheme()
-
-	const side = anchor === 'left' || anchor === 'right' ? anchor : 'right'
+	
+  const animationClasses = {
+    left: 'slide-in-from-left',
+    right: 'slide-in-from-right',    
+  }
 
 	return (
 		<ShadcnSheet open={open} onOpenChange={handleClose}>
@@ -51,7 +55,9 @@ const Sheet: React.FC<SheetProps> = ({
 				className={cn(
 					mode,
 					disablePadding && 'px-0',
-					'flex flex-col w-screen sm:max-w-sm sm:w-full',
+					'flex flex-col w-screen sm:max-w-[300px] sm:w-full',
+          'animate-in duration-300',
+          animationClasses[side],
 					className
 				)}
 			>

@@ -27,10 +27,8 @@ import {
 	FilterOptionType,
 	SyntheticEventType,
 } from '../../../../types'
+import TableWhereInput from './TableWhereInput'
 
-type FieldOption = FilterOptionType & {
-	db_type: string
-}
 
 type FilterFieldProps = {
 	index: number
@@ -64,12 +62,13 @@ const FilterFieldWrapper: React.FC<FilterFieldProps> = ({
 			<Separator />
 			<div className="flex flex-row justify-start items-start">
 				<div>
-					<TabsInput
-						name="where"
-						options={BOOLEAN_OPTIONS}
-						value={filter?.where || 'AND'}
-						handleChange={(ev) => handleChange(ev, index)}
-					/>
+          <div className="w-full pt-1">
+            <TableWhereInput 
+              name="where"
+              value={ filter?.where || 'AND' }
+              handleChange={ (ev) => handleChange(ev, index) }
+            />					
+          </div>
 					<div className="flex flex-col space-y-2">
 						<div className="flex flex-row space-x-2">
 							<SelectInput

@@ -16,8 +16,8 @@ const CellLink: React.FC<CellLinkProps> = (props) => {
 		<div className="w-full">
 			{value && (
 				<Button
-					size="small"
-					color="secondary"
+					size="sm"
+					variant="secondary"
 					startIcon={<ExternalLink />}
 					onClick={handleClick}
 				>

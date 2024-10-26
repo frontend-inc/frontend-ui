@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { Sheet, TextArea } from '../../../../components'
+import { TextArea } from '../../../../components'
 import { ScrollArea } from 'frontend-shadcn'
 
 type AiChatFormProps = {
@@ -46,7 +46,7 @@ const AiChatForm: React.FC<AiChatFormProps> = ({
 				handleChange={handleInputChange}
 			/>
 			<ScrollArea className="max-h-[calc(100vh-120px)] w-full">
-				<ul className="flex flex-col space-y-2">
+				<ul className="flex flex-col text-foreground space-y-2">
 					{messages
 						.filter((message) => message.role === 'assistant')
 						.map((message, i) => (

@@ -17,8 +17,8 @@ const CellUser: React.FC<CellUserProps> = (props) => {
 	return (
 		<div className="w-full flex flex-row justify-start">
 			<Button
-				size="small"
-				color="secondary"
+				size="sm"
+				variant="secondary"
 				onClick={handleClick}
 				startIcon={<UserAvatar size={28} user={user} />}
 			>

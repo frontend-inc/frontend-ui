@@ -5,7 +5,7 @@ import { Icon, Sheet } from '../../../../components'
 import { TextInputPropsType } from '../../../../types'
 import AiChatForm from './AiChatForm'
 import { useChat } from 'ai/react'
-import { IconButton, Button } from '../../../core'
+import { Button } from '../../../core'
 import {
 	Tooltip,
 	TooltipContent,
@@ -50,12 +50,18 @@ const AiChatModal: React.FC<AiChatModalProps> = (props) => {
 			<TooltipProvider>
 				<Tooltip>
 					<TooltipTrigger asChild>
-						<IconButton onClick={() => setOpen(!open)}>
-							<Icon name="Wand" />
-						</IconButton>
+						<Button 
+              className="bg-blue-500 text-white hover:bg-blue-700"
+              startIcon={
+                <Icon name="Zap" />
+              }
+              onClick={() => setOpen(!open)}
+            >
+              Generate 
+						</Button>
 					</TooltipTrigger>
 					<TooltipContent>
-						<p>Use AI to generate text</p>
+						Use AI to generate text
 					</TooltipContent>
 				</Tooltip>
 			</TooltipProvider>
@@ -66,9 +72,10 @@ const AiChatModal: React.FC<AiChatModalProps> = (props) => {
 				buttons={
 					<Button
 						fullWidth
+            className="bg-blue-500 text-white hover:bg-blue-700"
 						onClick={handleChatSubmit}
 						loading={loading}
-						startIcon={<Icon name="Zap" className="text-primary-foreground" />}
+						startIcon={<Icon name="Zap" className="text-white" />}
 					>
 						Generate
 					</Button>

@@ -32,7 +32,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         size="icon"
         variant="ghost"
         className={cn(
-          'min-w-[36px] min-h-[36px] text-foreground bg-transparent hover:bg-muted',
+          'min-w-[36px] min-h-[36px] text-foreground bg-transparent hover:bg-black/20',
           'flex items-center justify-center',
           variantClasses[variant],
           className

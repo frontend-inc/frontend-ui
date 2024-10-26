@@ -54,7 +54,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 				</TableCell>
 			)}
 			{(enableEdit || enableDelete) && (
-				<TableCell small align="center">
+				<TableCell small>
 					<div className="flex flex-row space-x-1">
 						{enableShow && (
 							<Button
@@ -67,8 +67,8 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 						)}
 						{enableEdit && (
 							<Button
-								size="small"
-								color="secondary"
+								size="sm"
+								variant="secondary"
 								onClick={handleEdit ? () => handleEdit(row) : undefined}
 							>
 								Edit
@@ -76,8 +76,8 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 						)}
 						{enableDelete && (
 							<Button
-								size="small"
-								color="secondary"
+								size="sm"
+								variant="secondary"
 								onClick={handleDelete ? () => handleDelete(row) : undefined}
 							>
 								Delete
