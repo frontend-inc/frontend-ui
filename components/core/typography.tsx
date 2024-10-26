@@ -17,10 +17,8 @@ interface TypographyProps {
 		| 'body2'
 		| 'button'
 		| 'caption'
-		| 'overline'
-	color?: string
+		| 'overline'	
 	textAlign?: 'left' | 'center' | 'right'
-	fontFamily?: string
 	className?: string
 	children: React.ReactNode
 }

@@ -2,14 +2,16 @@
 
 import React from 'react'
 import { useAlerts } from '../../../../hooks'
-import { Icon, Image, Modal } from '../../../../components'
+import { Icon,Modal } from '../../../../components'
 import UnsplashLogo from './UnsplashLogo'
-import { Avatar } from 'frontend-shadcn'
-import { Button, IconButton, Typography, CircularProgress } from '../../../core'
+import { AspectRatio } from 'frontend-shadcn'
+import { Button, Typography, CircularProgress } from '../../../../components'
 import copy from 'copy-to-clipboard'
 import PoweredByUnsplash from './PoweredByUnsplash'
 import { useUnsplash } from '../../../../hooks'
 import { UnsplashImageType } from '../../../../types'
+import Image from 'next/image'
+import Link from 'next/link'
 
 type UnsplashViewerModalProps = {
 	open: boolean
@@ -61,19 +63,21 @@ const UnsplashModal: React.FC<UnsplashViewerModalProps> = ({
 			buttons={
 				<>
 					<Button
-						color="secondary"
+            variant="secondary"
 						onClick={handleUnsplashClick}
 						className="flex items-center"
+            endIcon={ 
+              <Icon name="ExternalLink" className="text-secondary-foreground" />
+            }
 					>
-						<UnsplashLogo />
-						<Icon name="ExternalLink" className="ml-2" />
+						<UnsplashLogo className='fill-white' />						
 					</Button>
 					<Button
-						color="secondary"
+            variant="secondary"
 						onClick={handleCopyUrlClick}
 						className="flex items-center"
 					>
-						<Icon name="Copy" className="mr-2" />
+						<Icon name="Copy" className="text-secondary-foreground mr-2" />
 						Copy URL
 					</Button>
 					<Button onClick={handleDownloadClick} className="flex items-center">
@@ -85,31 +89,36 @@ const UnsplashModal: React.FC<UnsplashViewerModalProps> = ({
 		>
 			{!loading ? (
 				<div className="flex flex-col w-full">
+          
 					<Image
 						alt={image?.alt_description}
 						src={image?.urls?.regular}
-						height={520}
-						className="max-h-screen max-w-full"
+						height={250}
+            width={500}  
+            className="object-cover max-h-[250px] w-full rounded-lg"          
 					/>
-					<div className="px-4 py-2 w-full flex flex-row justify-between items-start">
+          
+					<div className="py-2 w-full flex flex-row justify-between items-start">
 						<div className="w-full">
 							<div className="flex items-center">
-								<IconButton onClick={handleUserClick} className="mr-3">
-									<Avatar
+								<button className="relative w-[32px] h-[32px] rounded-full mr-2" onClick={handleUserClick}>
+									<Image
 										// @ts-ignore
-										src={image?.user?.profile_image?.large}
+										src={image?.user?.profile_image?.small}
 										alt={image?.user?.name}
+                    layout="fill"
+                    className='object-cover rounded-full'
 									/>
-								</IconButton>
+								</button>
 								<div>
-									<a
+									<Link
 										href={`${image?.user?.links?.html}?utm_source=frontend.co&utm_medium=referral`}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="text-sm text-gray-600 hover:text-gray-900 no-underline"
+										className="text-sm text-foreground hover:text-foreground/90"
 									>
 										{image?.user?.name}
-									</a>
+									</Link>
 									<Typography variant="body2" className="text-gray-500 w-full">
 										{image?.description}
 									</Typography>

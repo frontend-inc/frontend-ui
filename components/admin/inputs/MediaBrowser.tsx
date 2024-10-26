@@ -77,8 +77,8 @@ const MediaBrowser: React.FC<MediaBrowserProps> = ({
 				</Button>
 			}
 		>
-			<div className="flex flex-col h-full">
-				<div className="px-4 flex justify-center items-center">
+			<div className="flex flex-col space-y-3 h-full">
+				<div className="flex justify-center items-center">
 					<div className="w-full max-w-[600px]">
 						<ButtonTabs
 							fullWidth
@@ -88,7 +88,6 @@ const MediaBrowser: React.FC<MediaBrowserProps> = ({
 						/>
 					</div>
 				</div>
-				<div className="p-4 min-h-[50vh]">
 					{tab === '0' && (
 						<MediaList
 							selectedIds={[selected?.id]}
@@ -99,7 +98,6 @@ const MediaBrowser: React.FC<MediaBrowserProps> = ({
 					{tab === '2' && <UnsplashList onComplete={handleComplete} />}
 					{tab === '3' && <BrandfetchInput onComplete={handleComplete} />}
 				</div>
-			</div>
 		</Sheet>
 	)
 }

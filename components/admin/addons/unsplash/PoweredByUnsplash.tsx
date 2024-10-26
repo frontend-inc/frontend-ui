@@ -10,7 +10,7 @@ const PoweredByUnsplash: React.FC = () => {
 			<Typography variant="body2" className="text-muted-foreground">
 				Powered by
 			</Typography>
-			<UnsplashLogo />
+			<UnsplashLogo className={'fill-white'} />
 		</div>
 	)
 }

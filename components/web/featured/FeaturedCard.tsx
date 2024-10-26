@@ -4,7 +4,8 @@ import React from 'react'
 import { useApp } from '../../../hooks'
 import { Button, Typography } from '../../core'
 import { ExpandableText, Image } from '../..'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
+import { cn } from 'frontend-shadcn'
 
 export type FeaturedCardProps = {
 	label?: string
@@ -50,9 +51,10 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 
 	return (
 		<div
-			className={`flex items-center gap-4 ${
-				flexDirection === 'row-reverse' ? 'flex-row-reverse' : 'flex-row'
-			} flex-wrap md:flex-nowrap`}
+			className={cn(
+        'flex items-center gap-6 flex-wrap md:flex-nowrap',
+        flexDirection === 'row-reverse' ? 'flex-row-reverse' : 'flex-row'
+      )}
 		>
 			<div className="w-full md:w-1/2">
 				<Image
@@ -67,7 +69,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 				/>
 			</div>
 			<div className="flex flex-col gap-4 w-full md:w-1/2">
-				<Typography variant={'h6'}>{title}</Typography>
+				<Typography variant='h6'>{title}</Typography>
 				{description && <ExpandableText text={description} />}
 				{buttonText && (
 					<div className="flex flex-row gap-4">
