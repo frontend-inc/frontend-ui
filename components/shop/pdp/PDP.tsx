@@ -41,10 +41,10 @@ const PDP: React.FC<PDPProps> = (props) => {
 	} = props || {}
 
 	return (
-		<div className="flex flex-col space-y-2">
+		<div className="flex flex-col space-y-2 w-full">
 			{secondaryAction}
 			<div className="w-full flex justify-center items-center">
-				<div className="flex flex-row sm:space-x-10">
+				<div className="flex flex-col space-y-3 sm:flex-row sm:space-x-10 sm:space-y-0 w-full">
 					<div className="w-full md:w-1/2 flex flex-col space-y-5 justify-center items-center">
 						<div className="rounded-lg w-full">
 							<Image
@@ -64,9 +64,8 @@ const PDP: React.FC<PDPProps> = (props) => {
 							<Typography variant="h6">{price}</Typography>
 							{compareAtPrice && (
 								<Typography
-									className="text-muted-foreground"
 									variant="subtitle2"
-									className="line-through"
+									className="text-muted-foreground line-through"
 								>
 									{compareAtPrice}
 								</Typography>

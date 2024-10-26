@@ -79,7 +79,7 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 			}
 			actions={
 				<SocialButtons
-					size="lg"
+          size="large"
 					justifyContent={'center'}
 					resource={product}
 					product={product}

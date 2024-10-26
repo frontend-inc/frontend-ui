@@ -5,14 +5,14 @@ import { Button } from '../../core'
 import { useCart } from '../../../hooks'
 
 type AddToCartButtonProps = {
-	size?: 'small' | 'medium' | 'large'
+	size?: 'sm' | 'default' | 'lg'
 	productId: string
 	fullWidth?: boolean
 	availableForSale?: boolean
 }
 
 const AddToCartButton = (props: AddToCartButtonProps) => {
-	const { productId, size = 'medium', fullWidth, availableForSale } = props
+	const { productId, size = 'default', fullWidth, availableForSale } = props
 	const { loading, setCartOpen, addToCart } = useCart()
 
 	const handleClick = async () => {
