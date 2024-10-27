@@ -9,7 +9,7 @@ type ThemeProviderProps = {
 	primaryColor?: string
 	headerFont?: string
 	bodyFont?: string
-	borderRadius?: number
+	borderRadius: number
 	children: React.ReactNode
 }
 
@@ -32,10 +32,9 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 		if (bodyFont) {
 			document.documentElement.style.setProperty('--font-body', bodyFont)
 		}
-		if (borderRadius) {
+		if (borderRadius >= 0) {
 			document.documentElement.style.setProperty(
-				'--radius',
-				`${borderRadius}px`
+				'--radius', `${borderRadius}px`
 			)
 		}
 	}, [headerFont, bodyFont, borderRadius])
