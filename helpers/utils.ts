@@ -26,7 +26,7 @@ export const truncate = (str, length = 60) => {
 export function getInitials(name) {
 	if (!name) return ''
 	// Trim any extra spaces and split the name into parts based on spaces
-	const parts = name.trim().split(/\s+/)
+	const parts = name.toUpperCase().trim().split(/\s+/)
 
 	// Check if we have at least two parts (multiple words)
 	if (parts.length >= 2) {

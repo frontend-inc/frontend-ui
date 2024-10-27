@@ -3,14 +3,14 @@
 import React, { useState, useContext } from 'react'
 import { AppContext } from '../../../context'
 import { useAuth } from 'frontend-js'
-import { Icon, Modal, MyAccountForm } from '../../../components'
+import { Button, Modal, MyAccountForm } from '../../../components'
 import {
 	StripeCustomerPortal,
 	ShopifyCustomerPortal,
 } from '../../../components'
 import MyAccountTabs from './MyAccountTabs'
-import { Button } from '../../core'
 import { MetafieldType } from '../../../types'
+import { ChevronLeft } from 'lucide-react'
 
 type MyAccountModalProps = {
 	enableStripe?: boolean
@@ -24,7 +24,6 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 	const {
 		delayedLoading,
 		user,
-		currentUser,
 		updateMe,
 		handleChange,
 		deleteAvatar,
@@ -57,45 +56,29 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 	return (
 		<Modal
 			open={myAccountOpen}
-			handleClose={() => setMyAccountOpen(false)}
-			title={
-				currentUser?.id
-					? `${currentUser?.first_name} ${currentUser?.last_name}`
-					: 'My Account'
-			}
+			handleClose={
+        currentTab != 0 ? () => setCurrentTab(0) : () => setMyAccountOpen(false)}
 		>
-			{currentTab == null ? (
+			{currentTab == 0 && (
 				<MyAccountTabs
 					tab={currentTab}
 					enableStripe={enableStripe}
 					handleClick={handleClick}
 				/>
-			) : (
-				<div className="p-1">
-					<Button
-						color="secondary"
-						startIcon={<Icon name="ChevronLeft" size={24} />}
-						onClick={() => setCurrentTab(null)}
-					>
-						Back
-					</Button>
-				</div>
 			)}
-			<div className="p-2">
-				{currentTab == 0 && (
-					<MyAccountForm
-						loading={delayedLoading}
-						user={user}
-						handleChange={handleChange}
-						handleSubmit={handleSubmit}
-						handleDeleteAvatar={handleDeleteAvatar}
-						handleLogout={handleLogout}
-						metafields={metafields}
-					/>
-				)}
-				{currentTab == 1 && <StripeCustomerPortal />}
-				{currentTab == 2 && <ShopifyCustomerPortal />}
-			</div>
+      {currentTab == 1 && (
+        <MyAccountForm
+          loading={delayedLoading}
+          user={user}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          handleDeleteAvatar={handleDeleteAvatar}
+          handleLogout={handleLogout}
+          metafields={metafields}
+        />
+      )}
+      {currentTab == 2 && <StripeCustomerPortal />}
+      {currentTab == 3 && <ShopifyCustomerPortal />}
 		</Modal>
 	)
 }

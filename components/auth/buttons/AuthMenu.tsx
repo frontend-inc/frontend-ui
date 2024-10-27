@@ -15,9 +15,6 @@ import {
 } from 'frontend-shadcn'
 
 type AuthMenuProps = {
-	open: boolean
-	anchorEl: HTMLElement | null
-	toggleMenu: (e: React.MouseEvent<HTMLElement>) => void
 	handleLogin: () => void
 	handleLogout: () => void
 	handleSignup: () => void
@@ -26,9 +23,6 @@ type AuthMenuProps = {
 }
 
 const AuthMenu: React.FC<AuthMenuProps> = ({
-	open,
-	anchorEl,
-	toggleMenu,
 	handleLogout,
 	handleLogin,
 	handleSignup,
@@ -37,10 +31,7 @@ const AuthMenu: React.FC<AuthMenuProps> = ({
 	const { currentUser } = useAuth()
 
 	return (
-		<DropdownMenu
-			open={open}
-			onOpenChange={(isOpen) => !isOpen && toggleMenu(null as any)}
-		>
+		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<Button variant="ghost" className="h-8 w-8 rounded-full">
 					<UserAvatar size={32} user={currentUser} />

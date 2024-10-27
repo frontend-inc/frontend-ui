@@ -17,18 +17,18 @@ const MyAccountTabs: React.FC<MyAccountTabsProps> = ({ handleClick }) => {
 	const { enableShopify, enableStripe } = useApp()
 	const { currentUser } = useAuth()
 
-	const TABS = [{ label: 'My Account', value: 0 }]
+	const TABS = [{ label: 'My Account', value: 1 }]
 
 	const SUBSCRIPTION_TAB = [
 		{
 			label: 'Manage Billing',
-			value: 1,
+			value: 2,
 		},
 	]
 	const SHOPIFY_TAB = [
 		{
 			label: 'Order History',
-			value: 2,
+			value: 3,
 		},
 	]
 
@@ -43,7 +43,7 @@ const MyAccountTabs: React.FC<MyAccountTabsProps> = ({ handleClick }) => {
 	return (
 		<div className="w-full">
 			<div className="flex justify-center items-center p-4">
-				<UserAvatar user={currentUser} size={96} />
+				<UserAvatar variant="circular" user={currentUser} size={64} />
 			</div>
 			<ul className="divide-y divide-border">
 				{tabs?.map((tab, index) => (

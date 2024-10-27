@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import { Button, Typography, IconButton } from '../../core'
 import { useMenu, useApp } from '../../../hooks'
 import { useAuth } from 'frontend-js'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter,  } from 'next/navigation'
 import { Icon, UserAvatar, AuthMenu } from '../..'
 
 type AuthButtonProps = {
@@ -26,7 +26,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 		closeMenu()
 	}
 
-	const handleSignup = () => {
+	const handleAuthenticate = () => {
 		setAuthOpen(true)
 		closeMenu()
 	}
@@ -34,20 +34,6 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 	const handleMyAccount = () => {
 		setMyAccountOpen(true)
 		closeMenu()
-	}
-
-	const handleLogout = async () => {
-		await logout()
-		router.push(clientUrl)
-	}
-
-	const handleClick = (url) => {
-		closeMenu()
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth',
-		})
-		router.push(url)
 	}
 
 	useEffect(() => {
@@ -61,8 +47,8 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 			{!showLabel ? (
 				<>
 					{currentUser?.id ? (
-						<IconButton onClick={toggleMenu}>
-							<UserAvatar user={currentUser} />
+						<IconButton onClick={handleMyAccount}>
+							<UserAvatar size={28} user={currentUser} />
 						</IconButton>
 					) : (
 						<IconButton onClick={handleLogin}>
@@ -74,7 +60,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 				<>
 					{currentUser?.id ? (
 						<Button
-							onClick={toggleMenu}
+							onClick={handleMyAccount}
 							startIcon={showIcon && <UserAvatar user={currentUser} />}
 							endIcon={
 								<div>
@@ -93,18 +79,6 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 						</Button>
 					)}
 				</>
-			)}
-			{currentUser && (
-				<AuthMenu
-					open={open}
-					anchorEl={anchorEl}
-					toggleMenu={toggleMenu}
-					handleLogin={handleLogin}
-					handleSignup={handleSignup}
-					handleMyAccount={handleMyAccount}
-					handleLogout={handleLogout}
-					handleClick={handleClick}
-				/>
 			)}
 		</>
 	)

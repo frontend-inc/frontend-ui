@@ -24,7 +24,6 @@ const MyAccountForm: React.FC<MyAccountFormProps> = (props) => {
 		user,
 		handleSubmit,
 		handleChange,
-		handleLogout,
 		handleDeleteAvatar,
 	} = props
 
@@ -52,9 +51,6 @@ const MyAccountForm: React.FC<MyAccountFormProps> = (props) => {
 				handleSubmit={handleSubmit}
 				buttonText="Save"
 			/>
-			<Button color="secondary" onClick={handleLogout}>
-				Logout
-			</Button>
 		</div>
 	)
 }
