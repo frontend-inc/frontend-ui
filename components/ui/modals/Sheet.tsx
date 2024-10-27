@@ -49,7 +49,7 @@ const Sheet: React.FC<SheetProps> = ({
 
 	return (
 		<ShadcnSheet open={open} onOpenChange={handleClose}>
-			<SheetOverlay className="bg-black/50" />
+			<SheetOverlay className="bg-black/50 top-0" />
 			<SheetContent
 				side={side}
 				className={cn(
