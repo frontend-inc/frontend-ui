@@ -61,7 +61,7 @@ export default function ProductLikeButton({
 				<Heart
 					className={cn(
 						'w-5 h-5 text-foreground',
-						liked ? 'fill-current' : 'stroke-current'
+						liked ? 'fill-primary stroke-primary' : 'fill-none stroke-current'
 					)}
 				/>
 			</IconButton>

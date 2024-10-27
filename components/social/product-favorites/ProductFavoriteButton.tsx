@@ -60,13 +60,13 @@ export default function ProductFavoriteButton({
 						'border border-divider bg-background text-secondary hover:bg-background hover:text-secondary',
 					isFavorite && 'text-primary hover:text-primary-dark border-primary',
 					'transition-transform duration-200',
-					isFavorite && 'transform scale-110'
+          isFavorite && 'transform scale-110'
 				)}
 			>
 				<Bookmark
 					className={cn(
 						'w-4 h-4 text-foreground',
-						isFavorite ? 'fill-current ' : 'stroke-current'
+						isFavorite ? 'fill-primary stroke-primary' : 'fill-none stroke-current'
 					)}
 				/>
 			</IconButton>

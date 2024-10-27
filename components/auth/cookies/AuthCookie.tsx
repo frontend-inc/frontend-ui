@@ -19,10 +19,6 @@ const AuthCookie: React.FC = () => {
     }
 	}, [])
 
-  useEffect(() => {
-    console.log("Auth Cookie", authCookie)
-	}, [authCookie])
-
 	return null
 }
 

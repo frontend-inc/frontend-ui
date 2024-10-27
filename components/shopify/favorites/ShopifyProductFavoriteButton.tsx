@@ -54,7 +54,7 @@ const ShopifyProductFavoriteButton: React.FC<
 			<Heart
 				className={cn(
 					'w-5 h-5 text-foreground',
-					isFavorite ? 'fill-current' : 'stroke-current'
+					isFavorite ? 'fill-primary' : 'stroke-current'
 				)}
 			/>
 		</IconButton>

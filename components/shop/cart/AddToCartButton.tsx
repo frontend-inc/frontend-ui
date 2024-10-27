@@ -8,15 +8,23 @@ type AddToCartButtonProps = {
 	size?: 'sm' | 'default' | 'lg'
 	productId: string
 	fullWidth?: boolean
+  buttonText?: string
 	availableForSale?: boolean
 }
 
 const AddToCartButton = (props: AddToCartButtonProps) => {
-	const { productId, size = 'default', fullWidth, availableForSale } = props
+	
+  const { 
+    productId, 
+    buttonText='Add to Cart', 
+    size = 'default', 
+    fullWidth, 
+    availableForSale 
+  } = props
+  
 	const { loading, setCartOpen, addToCart } = useCart()
 
 	const handleClick = async () => {
-    console.log('Add to cart button clicked', productId)
 		await addToCart(productId)
 		setCartOpen(true)
 	}
@@ -28,8 +36,9 @@ const AddToCartButton = (props: AddToCartButtonProps) => {
 			onClick={handleClick}
 			disabled={!availableForSale}
 			size={size}
+      className="min-w-[160px]"
 		>
-			Add to Cart
+			{ buttonText }
 		</Button>
 	)
 }

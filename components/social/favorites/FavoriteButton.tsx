@@ -59,11 +59,13 @@ export default function FavoriteButton({
 				)}
 			>
 				<Bookmark
-					className={cn(
-						'w-5 h-5 text-foreground',
-						isFavorite ? 'fill-current' : 'stroke-current'
-					)}
-				/>
+          className={cn(
+            'w-5 h-5',
+            isFavorite
+              ? 'fill-primary stroke-primary'
+              : 'stroke-current fill-none'
+          )}
+        />
 			</IconButton>
 		</div>
 	)
