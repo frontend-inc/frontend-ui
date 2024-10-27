@@ -16,6 +16,7 @@ const AddToCartButton = (props: AddToCartButtonProps) => {
 	const { loading, setCartOpen, addToCart } = useCart()
 
 	const handleClick = async () => {
+    console.log('Add to cart button clicked', productId)
 		await addToCart(productId)
 		setCartOpen(true)
 	}
