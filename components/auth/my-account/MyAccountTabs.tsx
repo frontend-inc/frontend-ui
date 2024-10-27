@@ -32,6 +32,13 @@ const MyAccountTabs: React.FC<MyAccountTabsProps> = ({ handleClick }) => {
 		},
 	]
 
+  const LOGOUT_TAB = [
+    {
+      label: 'Logout',
+      value: 4,
+    }
+  ]
+
 	let tabs = TABS
 	if (enableStripe) {
 		tabs = [...tabs, ...SUBSCRIPTION_TAB]
@@ -39,6 +46,8 @@ const MyAccountTabs: React.FC<MyAccountTabsProps> = ({ handleClick }) => {
 	if (enableShopify) {
 		tabs = [...tabs, ...SHOPIFY_TAB]
 	}
+
+  tabs = [...tabs, ...LOGOUT_TAB]
 
 	return (
 		<div className="w-full">

@@ -45,10 +45,14 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 		await updateMe(user)
 	}
 
-	const handleClick = (tab: any) => {
+	const handleClick = async (tab: any) => {
 		if (tab.url) {
 			window.open(tab.url, '_blank')
-		} else {
+		} else if(tab.value == 4) {  
+      setCurrentTab(0)
+      setMyAccountOpen(false)    
+      await logout()
+    } else {
 			setCurrentTab(tab.value)
 		}
 	}
