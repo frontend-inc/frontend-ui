@@ -1,16 +1,15 @@
 'use client'
 
-import React, { useState, useContext } from 'react'
-import { AppContext } from '../../../context'
+import React, { useState } from 'react'
+import { useApp } from '../../../hooks'
 import { useAuth } from 'frontend-js'
-import { Button, Modal, MyAccountForm } from '../../../components'
+import { Modal, MyAccountForm } from '../../../components'
 import {
 	StripeCustomerPortal,
 	ShopifyCustomerPortal,
 } from '../../../components'
 import MyAccountTabs from './MyAccountTabs'
 import { MetafieldType } from '../../../types'
-import { ChevronLeft } from 'lucide-react'
 
 type MyAccountModalProps = {
 	enableStripe?: boolean
@@ -19,7 +18,7 @@ type MyAccountModalProps = {
 
 const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 	const { enableStripe, metafields } = props || {}
-	const { myAccountOpen, setMyAccountOpen } = useContext(AppContext)
+	const { myAccountOpen, setMyAccountOpen } = useApp()
 
 	const {
 		delayedLoading,
@@ -31,11 +30,6 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 	} = useAuth()
 
 	const [currentTab, setCurrentTab] = useState<number>()
-
-	const handleLogout = async () => {
-		await logout()
-		setMyAccountOpen(false)
-	}
 
 	const handleDeleteAvatar = async () => {
 		await deleteAvatar()
@@ -77,7 +71,6 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           handleDeleteAvatar={handleDeleteAvatar}
-          handleLogout={handleLogout}
           metafields={metafields}
         />
       )}

@@ -1,9 +1,8 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useCart } from '../../../hooks'
 import { getCookie, setCookie } from 'cookies-next'
-import { useDebounce } from 'use-debounce'
 
 type CartCookieProps = {
 	icon?: string
@@ -11,8 +10,7 @@ type CartCookieProps = {
 
 const CartCookie: React.FC<CartCookieProps> = () => {
 
-	const [loaded, setLoaded] = useState(false)
-	const [debouncedLoaded] = useDebounce(loaded, 1000)
+  const mounted = useRef(false)
 
 	const { cart, fetchCart, createCart, cartCookie } = useCart()
 
@@ -37,18 +35,12 @@ const CartCookie: React.FC<CartCookieProps> = () => {
 		}
 	}
 
-	// Fix: We create an artificial useEffect
-	// since handleFindOrCreateCart event was firing twice
-	// for unknown reasons
 	useEffect(() => {
-		setLoaded(true)
-	}, [])
-
-	useEffect(() => {
-		if (debouncedLoaded == true) {
+    if(!mounted.current) {
+      mounted.current = true    
 			handleFindOrCreateCart()
 		}
-	}, [debouncedLoaded])
+	}, [])
 
 	return null
 }

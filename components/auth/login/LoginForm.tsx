@@ -60,7 +60,7 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 					Sign In
 				</Button>
 				{handleSignup && (
-					<Button fullWidth color="secondary" onClick={handleSignup}>
+					<Button fullWidth variant="ghost" onClick={handleSignup}>
 						No account? Sign up
 					</Button>
 				)}

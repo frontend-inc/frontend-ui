@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../core'
 import { Form } from '../../../components'
 import { MetafieldType } from '../../../types'
 import { ACCOUNT_FORM_FIELDS } from '../../../constants'
@@ -14,7 +13,6 @@ type MyAccountFormProps = {
 	handleChange: (ev: any) => void
 	handleSubmit: () => void
 	handleDeleteAvatar: () => void
-	handleLogout: () => void
 }
 
 const MyAccountForm: React.FC<MyAccountFormProps> = (props) => {

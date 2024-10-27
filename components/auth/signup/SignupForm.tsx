@@ -11,7 +11,6 @@ type SignupFormProps = {
 	handleChange: (ev: any) => void
 	handleSubmit: () => void
 	handleLogin: false | (() => void)
-	disableUsername?: boolean
 	enableGoogle?: boolean
 	handleGoogleSuccess?: () => void
 }
@@ -23,7 +22,6 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 		user,
 		handleChange,
 		enableGoogle,
-		disableUsername = false,
 		handleSubmit,
 		handleLogin,
 		handleGoogleSuccess,
@@ -35,17 +33,6 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 				<GoogleLoginButton handleSuccess={handleGoogleSuccess} />
 			)}
 			<div className="flex flex-col space-y-4 w-full">
-				{!disableUsername && (
-					<TextInput
-						direction="column"
-						errors={errors}
-						name="username"
-						label="Username"
-						value={user?.username}
-						placeholder="Username"
-						handleChange={handleChange}
-					/>
-				)}
 				<div className="flex flex-row space-x-3 w-full items-center">
 					<TextInput
 						errors={errors}

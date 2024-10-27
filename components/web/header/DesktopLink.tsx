@@ -3,7 +3,6 @@
 import React from 'react'
 import { Button } from '../../core'
 import { MenuLinkType } from '../../..'
-import { Icon } from '../..'
 
 type DesktopLinkProps = {
 	menuItem: MenuLinkType
