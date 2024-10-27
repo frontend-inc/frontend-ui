@@ -22,7 +22,7 @@ const DesktopLink: React.FC<DesktopLinkProps> = (props) => {
 	}
 
 	return (
-		<Button variant="ghost" onClick={handleMenuClick}>
+		<Button variant="ghost" className='text-foreground' onClick={handleMenuClick}>
 			{menuItem.label}
 		</Button>
 	)
