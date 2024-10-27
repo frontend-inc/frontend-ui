@@ -40,8 +40,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 				<div className="flex flex-col space-y-1">
 					<Typography
 						variant="caption"
-						className="text-muted-foreground"
-						className="w-full flex justify-center sm:justify-start"
+						className="text-muted-foreground w-full flex justify-center sm:justify-start"
 					>
 						@{username}
 					</Typography>

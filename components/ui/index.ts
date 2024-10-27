@@ -44,10 +44,6 @@ export { default as SocialIcon } from './social/SocialIcon'
 export { default as UserAvatar } from './avatars/UserAvatar'
 export { default as UserMenu } from './UserMenu'
 
-// Buttons
-export { default as PrimaryButton } from './buttons/PrimaryButton'
-export { default as SecondaryButton } from './buttons/SecondaryButton'
-
 // Layouts
 export { default as LayoutContainer } from './layouts/LayoutContainer'
 export { default as Loader } from './loaders/Loader'

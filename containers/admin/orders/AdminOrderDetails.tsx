@@ -1,9 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components/core'
 import { Typography } from '../../../components/core'
-import { Icon, UserChip, Label, PrimaryButton } from '../../../components'
+import { Icon, UserChip, Label, Button } from '../../../components'
 import { OrderType } from '../../../types'
 import copy from 'copy-to-clipboard'
 import { useAlerts } from '../../../hooks'
@@ -37,7 +36,7 @@ const AdminOrderDetails: React.FC<AdminOrderDetailsProps> = (props) => {
 				<Label label={order?.status} />
 			</div>
 			<div className="flex justify-end items-start">
-				<PrimaryButton onClick={handleEdit}>Edit</PrimaryButton>
+				<Button onClick={handleEdit}>Edit</Button>
 			</div>
 			<div className="bg-white p-4 rounded-lg shadow">
 				<div className="flex flex-col">

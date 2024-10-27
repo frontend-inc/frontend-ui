@@ -4,7 +4,7 @@ import React from 'react'
 import { FilterIcon, Search } from 'lucide-react'
 import { SyntheticEventType } from '../../../../types'
 import TableFilterForm from './TableFilterForm'
-import { Button } from '../../../components'
+import { Button } from '../../../../components'
 import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
 
 type FilterMenuProps = {

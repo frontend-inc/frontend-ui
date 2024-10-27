@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import {
 	FormModal,
 	ResourceToolbarModal,
-	PrimaryButton,
+	Button,
 } from '../../../components'
 import { useOrders, useAdmin } from '../../../hooks'
 
@@ -30,7 +30,7 @@ const AdminOrderToolbar = (props) => {
 	return (
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
 			<div>
-				<PrimaryButton onClick={handleUpdateClick}>Update</PrimaryButton>
+				<Button onClick={handleUpdateClick}>Update</Button>
 			</div>
 			<FormModal
 				errors={errors}

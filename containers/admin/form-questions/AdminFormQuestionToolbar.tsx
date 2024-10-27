@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { ResourceToolbarModal, SecondaryButton } from '../../../components'
+import { ResourceToolbarModal, Button } from '../../../components'
 import { useResource } from 'frontend-js'
 
 type AdminFormQuestionToolbarProps = {
@@ -43,7 +43,7 @@ const AdminFormQuestionToolbar: React.FC<AdminFormQuestionToolbarProps> = (
 
 	return (
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
-			<SecondaryButton onClick={handleDelete}>Remove</SecondaryButton>
+			<Button variant="secondary" onClick={handleDelete}>Remove</Button>
 		</ResourceToolbarModal>
 	)
 }

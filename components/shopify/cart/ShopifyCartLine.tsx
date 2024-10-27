@@ -9,7 +9,7 @@ import Image from 'next/image'
 import { Badge, Typography } from '../../core'
 import { Icon } from '../../../components'
 import { formatCurrency } from 'frontend-shopify'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { CartLineType } from 'frontend-shopify'
 import { cn } from 'frontend-shadcn'
 

@@ -18,7 +18,7 @@ const FieldReference: React.FC<FieldReferenceProps> = (props) => {
 	return (
 		<FieldWrapper label={label} color={color} disableLabel={disableLabel}>
 			<Button
-				variant="outlined"
+				variant="ghost"
 				endIcon={<Repeat2 className="w-5 h-5" />}
 				onClick={handleClick}
 			>

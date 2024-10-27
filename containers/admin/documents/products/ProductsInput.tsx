@@ -5,7 +5,7 @@ import { ProductType } from '../../../../types'
 import {
 	Sheet,
 	ResourceList,
-	SecondaryButton,
+	Button,
 	SortableList,
 } from '../../../../components'
 import ProductListItem from './ProductListItem'
@@ -56,7 +56,7 @@ const ProductsInput: React.FC<ProductsInputProps> = (props) => {
 				)}
 			/>
 			<div>
-				<SecondaryButton onClick={handleAddClick}>Add Products</SecondaryButton>
+				<Button variant="secondary" onClick={handleAddClick}>Add Products</Button>
 			</div>
 			<Sheet open={open} handleClose={() => setOpen(false)}>
 				<ResourceList

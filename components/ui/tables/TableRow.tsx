@@ -42,7 +42,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 	return (
 		<ShadcnTableRow>
 			{enableSelect && (
-				<TableCell small align={'center'} sticky>
+				<TableCell small sticky>
 					<div className="mx-2">
 						<Checkbox
 							name={`select-${row.id}`}
@@ -58,7 +58,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 					<div className="flex flex-row space-x-1">
 						{enableShow && (
 							<Button
-								size="small"
+								size="sm"
 								color="secondary"
 								onClick={handleShow ? () => handleShow(row) : undefined}
 							>

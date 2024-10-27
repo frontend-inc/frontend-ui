@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Image, PrimaryButton } from '../../../components'
+import { Image, Button } from '../../../components'
 import { Typography } from '../../../components/core'
 import { AnswerType } from '../../../types'
 
@@ -32,7 +32,7 @@ const AdminAnswerDetails: React.FC<AdminAnswerProps> = (props) => {
 					</div>
 				</div>
 				<div>
-					<PrimaryButton onClick={handleEdit}>Edit</PrimaryButton>
+					<Button onClick={handleEdit}>Edit</Button>
 				</div>
 			</div>
 		</div>

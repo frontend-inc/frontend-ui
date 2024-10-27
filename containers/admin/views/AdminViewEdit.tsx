@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { PrimaryButton, Sheet } from '../../../components'
+import { Button, Sheet } from '../../../components'
 import AdminViewForm from './AdminViewForm'
 import { SyntheticEventType } from 'frontend-js'
 
@@ -33,9 +33,9 @@ const AdminViewEdit: React.FC<AdminViewEditProps> = (props) => {
 			handleClose={handleClose}
 			title="Save view"
 			buttons={
-				<PrimaryButton loading={loading} onClick={handleSubmit}>
+				<Button loading={loading} onClick={handleSubmit}>
 					Save
-				</PrimaryButton>
+				</Button>
 			}
 		>
 			<AdminViewForm errors={errors} view={view} handleChange={handleChange} />

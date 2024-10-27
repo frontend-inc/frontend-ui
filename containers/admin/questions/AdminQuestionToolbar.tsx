@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { ResourceToolbarModal, SecondaryButton } from '../../../components'
+import { ResourceToolbarModal, AlertButton } from '../../../components'
 import { useResource } from 'frontend-js'
 import { useAdmin } from '../../../hooks'
 
@@ -24,9 +24,9 @@ const AdminQuestionToolbar = (props) => {
 	return (
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
 			<div>
-				<SecondaryButton alert onClick={handleDelete}>
+				<AlertButton variant="secondary" onClick={handleDelete}>
 					Delete
-				</SecondaryButton>
+				</AlertButton>
 			</div>
 		</ResourceToolbarModal>
 	)

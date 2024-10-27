@@ -72,7 +72,7 @@ const Address: React.FC<AddressProps> = (props) => {
 					<Button fullWidth onClick={handleSubmit}>
 						Save Address
 					</Button>
-					<Button fullWidth variant="outlined" onClick={handleDeleteClick}>
+					<Button fullWidth variant="ghost" onClick={handleDeleteClick}>
 						Delete Address
 					</Button>
 				</div>

@@ -55,7 +55,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = ({
 				<div className="flex items-center">
 					{buttons?.length > 0 && (
 						<div className="mr-2">
-							<ButtonActions size="small" buttons={buttons} />
+							<ButtonActions size="sm" buttons={buttons} />
 						</div>
 					)}
 					{enableAuth && <AuthButton />}

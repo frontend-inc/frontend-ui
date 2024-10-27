@@ -3,8 +3,7 @@
 import React from 'react'
 import {
 	ResourceToolbarModal,
-	PrimaryButton,
-	SecondaryButton,
+	AlertButton,
 } from '../../../components'
 import { useResource } from 'frontend-js'
 import { useAdmin } from '../../../hooks'
@@ -40,11 +39,11 @@ const AdminProductCollectionToolbar = (props) => {
 	return (
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
 			<div className="flex flex-row space-x-2 justify-center items-center">
-				<PrimaryButton onClick={handlePublish}>Publish</PrimaryButton>
-				<SecondaryButton onClick={handleUnpublish}>Unpublish</SecondaryButton>
-				<SecondaryButton alert onClick={handleDelete}>
+				<Button onClick={handlePublish}>Publish</Button>
+				<Button variant="secondary" onClick={handleUnpublish}>Unpublish</Button>
+				<AlertButton variant="secondary" onClick={handleDelete}>
 					Delete
-				</SecondaryButton>
+				</AlertButton>
 			</div>
 		</ResourceToolbarModal>
 	)

@@ -75,7 +75,7 @@ const Addresses: React.FC<AddressesProps> = (props) => {
 				/>
 				<Button
 					fullWidth
-					variant="outlined"
+					variant="ghost"
 					onClick={handleAddAddress}
 					startIcon={<Plus />}
 				>

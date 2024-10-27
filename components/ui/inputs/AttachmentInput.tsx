@@ -8,7 +8,6 @@ import { AttachmentInputProps } from '../../../types'
 import { cn } from 'frontend-shadcn'
 import { Button } from '../../../components'
 import { Avatar, AvatarFallback } from 'frontend-shadcn'
-import { CloudUpload } from 'lucide-react'
 import { DropZone } from '../../../components'
 
 const IMAGE_WIDTH = 140

@@ -67,7 +67,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 					<div className="w-[200px] flex flex-row items-center justify-end h-[60px] pr-1">
 						{buttons?.length > 0 && (
 							<div className="pr-1">
-								<ButtonActions size="small" buttons={buttons} />
+								<ButtonActions size="sm" buttons={buttons} />
 							</div>
 						)}
 						{enableAuth && <AuthButton />}

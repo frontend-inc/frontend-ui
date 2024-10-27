@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Placeholder, PrimaryButton } from '../../../components'
+import { Placeholder, Button } from '../../../components'
 import { useAlerts, useApp } from '../../../hooks'
 
 const ShopifyCustomerPortal = () => {
@@ -22,9 +22,9 @@ const ShopifyCustomerPortal = () => {
 			title="Shopify Customer Portal"
 			description="Manage your order history and returns."
 			buttons={
-				<PrimaryButton onClick={handleClick} endIcon="ExternalLink">
+				<Button onClick={handleClick} endIcon="ExternalLink">
 					Open Customer Portal
-				</PrimaryButton>
+				</Button>
 			}
 		/>
 	)

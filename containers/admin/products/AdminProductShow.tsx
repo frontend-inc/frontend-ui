@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { ResourceModal, ResourceDetails, Product } from '../../../components'
+import { ResourceModal, ResourceDetails } from '../../../components'
 import { ResourceShowProps } from '../../../components/cms/resources/ResourceShow'
 import { DisplayFieldType } from '../../../types'
 
