@@ -5,7 +5,7 @@ import { ShopifyProductModal } from '../../../components/shopify'
 import { Button } from '../../core'
 
 type ShopifyQuickShopButtonProps = {
-	size?: 'small' | 'medium' | 'large'
+	size?: 'sm' | 'default' | 'lg'
 	color?: 'primary' | 'secondary'
 	buttonText?: string
 	quickShopButtonText?: string
@@ -16,6 +16,7 @@ type ShopifyQuickShopButtonProps = {
 const ShopifyQuickShopButton: React.FC<ShopifyQuickShopButtonProps> = (
 	props
 ) => {
+
 	const {
 		size,
 		product,

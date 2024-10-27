@@ -41,15 +41,15 @@ const ShopifyAddressItem: React.FC<ShopifyAddressItemProps> = (props) => {
 					<Typography variant="subtitle1">
 						{address?.firstName} {address?.lastName}
 					</Typography>
-					<Typography variant="body2" color="textSecondary">
+					<Typography variant="body2">
 						{address.address1}
 					</Typography>
 					{address.address2 && (
-						<Typography variant="body2" color="textSecondary">
+						<Typography variant="body2">
 							{address.address2}
 						</Typography>
 					)}
-					<Typography variant="body2" color="textSecondary">
+					<Typography variant="body2">
 						{address?.city}, {address?.province} {address?.zip}
 					</Typography>
 				</div>

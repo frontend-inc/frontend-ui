@@ -32,7 +32,7 @@ const ShopifyCart: React.FC<ShopifyCartProps> = (props) => {
 
 	return (
 		<Sheet
-			anchor="right"
+			side="right"
 			open={cartOpen}
 			handleClose={toggleCart}
 			title={title}

@@ -3,7 +3,7 @@
 import React, { useEffect, useContext, useState } from 'react'
 import { SearchInput, Placeholder } from '../../../components'
 import { ShopifyProducts } from '../../../components/shopify'
-import { Sheet } from '../../core'
+import { Drawer } from '../../../components'
 import { ShopifyContext } from 'frontend-shopify'
 import { useProducts } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
@@ -55,7 +55,7 @@ const ShopifySearchModal: React.FC<ShopifySearchModalProps> = (props) => {
 	}, [keywords])
 
 	return (
-		<Sheet open={searchOpen} onClose={handleClose} anchor="top">
+		<Drawer open={searchOpen} handleClose={handleClose}>
 			<div className="w-full flex flex-row justify-center">
 				<SearchInput
 					name="keywords"
@@ -73,7 +73,7 @@ const ShopifySearchModal: React.FC<ShopifySearchModalProps> = (props) => {
 					description="Try another search term"
 				/>
 			)}
-		</Sheet>
+		</Drawer>
 	)
 }
 

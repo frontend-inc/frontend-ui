@@ -18,7 +18,6 @@ const ShopifyProductFeatured: React.FC<ShopifyProductFeaturedProps> = (
 		px,
 		maxWidth,
 		requireAuth,
-
 		requirePaid,
 		...rest
 	} = props

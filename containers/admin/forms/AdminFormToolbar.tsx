@@ -2,6 +2,7 @@
 
 import React from 'react'
 import {
+  Button,
 	ResourceToolbarModal,
 	AlertButton,
 } from '../../../components'

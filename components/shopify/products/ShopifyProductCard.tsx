@@ -24,7 +24,7 @@ type ShopifyProductCardProps = {
 	enableQuickShop?: boolean
 	enableOkendoStarRating?: boolean
 	disableBorder?: boolean
-	buttonVariant?: 'contained' | 'outlined' | 'text'
+	buttonVariant?: 'default' | 'secondary' | 'ghost'
 }
 
 export default function ShopifyProductCard({
@@ -36,7 +36,7 @@ export default function ShopifyProductCard({
 	enableQuantity = false,
 	enableQuickShop = false,
 	enableOkendoStarRating = false,
-	buttonVariant = 'contained',
+	buttonVariant = 'default',
 	buttonText,
 	disableBorder = false,
 }: ShopifyProductCardProps) {

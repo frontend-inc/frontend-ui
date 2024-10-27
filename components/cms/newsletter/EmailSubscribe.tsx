@@ -6,7 +6,6 @@ import { TypographyVariantsType } from '../../../types'
 import { Heading, InputBase } from '../..'
 import { useResource } from 'frontend-js'
 import { useAlerts } from '../../../hooks'
-import { Container } from '../../core'
 
 export type EmailSubscribeProps = {
 	label?: string

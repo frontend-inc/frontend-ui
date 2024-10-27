@@ -33,7 +33,8 @@ const ShopifyProductFeatured: React.FC<ShopifyProductFeaturedProps> = ({
 	enableQuantity = false,
 	enableQuickShop = false,
 }) => {
-	const { loading, product, findProduct } = useProducts()
+	
+  const { product, findProduct } = useProducts()
 
 	const handleItemClick = () => {
 		if (handleClick) {
@@ -63,9 +64,8 @@ const ShopifyProductFeatured: React.FC<ShopifyProductFeaturedProps> = ({
 					<div className="flex flex-col space-y-2">
 						<Typography variant="h3">{product?.title}</Typography>
 						<Typography
-							className="text-muted-foreground"
 							variant="body2"
-							className="max-w-[320px]"
+							className="text-muted-foreground max-w-[320px]"
 						>
 							{truncate(product?.description, 60)}
 						</Typography>

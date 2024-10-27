@@ -16,7 +16,7 @@ import { ShopifyProductType, ProductVariantType } from 'frontend-shopify'
 type ShopifyAddToCartButtonProps = {
 	product: ShopifyProductType
 	variant: ProductVariantType
-	buttonVariant?: 'contained' | 'outlined' | 'text'
+	buttonVariant?: 'default' | 'secondary' | 'ghost'
 	label?: string
 	enableQuantity?: boolean
 	enableSubscription?: boolean
@@ -36,7 +36,7 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 		label = 'Add to Cart',
 		product,
 		variant,
-		buttonVariant = 'contained',
+		buttonVariant = 'default',
 		enableQuantity = false,
 		enableSubscription = false,
 		enableFavorites = false,

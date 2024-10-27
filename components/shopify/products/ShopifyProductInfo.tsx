@@ -31,8 +31,7 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = (props) => {
 				{compareAtPrice && (
 					<Typography
 						variant="subtitle2"
-						className="text-muted-foreground"
-						className="line-through"
+						className="text-muted-foreground line-through"
 					>
 						{formatCurrency(compareAtPrice)}
 					</Typography>

@@ -31,8 +31,7 @@ export default function ProductReviewItem({
 					<Typography variant="body1">{resource.body}</Typography>
 					<Typography
 						variant="body2"
-						className="text-muted-foreground"
-						className="text-sm"
+						className="text-muted-foreground text-sm"
 					>
 						{`@${resource?.user?.username}`} reviewed{' '}
 						{moment(resource?.created_at).fromNow()}
