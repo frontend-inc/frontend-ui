@@ -1,6 +1,7 @@
 export const buildSearchQuery = (params) => {
 	let { query = {} } = params || {}
-	const { resource, perPage, filterReferences, filterGeo, filterSimilar } =
+	
+  const { resource, perPage, filterReferences, filterGeo, filterSimilar } =
 		params || {}
 
 	if (perPage) {
@@ -14,11 +15,15 @@ export const buildSearchQuery = (params) => {
 		query = {
 			...query,
 			method: 'references',
+      sort_by: 'position',
+      sort_direction: 'asc',
 			resource_id: resource.id,
 		}
 	} else {
 		query = {
 			...query,
+      sort_by: 'position',
+      sort_direction: 'asc',
 			resource_id: null,
 		}
 	}

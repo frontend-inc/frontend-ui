@@ -35,6 +35,10 @@ const AdminDocumentsList: React.FC<AdminDocumentListProps> = (props) => {
         { name: 'position', label: 'Position' },
         { name: 'title', label: 'Title' },        
       ]}
+      query={{
+        sort_by: 'position',
+        sort_direction: 'asc'
+      }}
 			create={AdminDocumentCreateForm}
 			edit={AdminDocumentEditForm}
 			show={AdminDocumentShow}

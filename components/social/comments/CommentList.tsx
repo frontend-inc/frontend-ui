@@ -69,7 +69,7 @@ const CommentList: React.FC<CommentListProps> = (props) => {
 	return (
 		<div className="flex flex-col space-y-4 border-divider">
 			<div className="flex flex-col space-y-2 w-full items-start justify-between">
-				<div className="text-lg font-semibold text-primary">
+				<div className="text-lg font-semibold text-foreground">
 					Comments ({totalCount})
 				</div>
 			</div>
