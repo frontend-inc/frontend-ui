@@ -12,7 +12,6 @@ import {
 	AlertDialogTitle,
 } from 'frontend-shadcn'
 import { Button } from '../../../components'
-import { IconLoading } from '../../../components'
 import { cn } from 'frontend-shadcn'
 
 type AlertModalProps = {
@@ -52,8 +51,8 @@ const AlertModal: React.FC<AlertModalProps> = ({
 							onClick={handleConfirm}
 							className={cn(loading && 'cursor-not-allowed opacity-50')}
 							disabled={loading}
-						>
-							{loading && <IconLoading />}
+              loading={ loading }
+						>							
 							Confirm
 						</Button>
 					</AlertDialogAction>
