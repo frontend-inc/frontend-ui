@@ -30,19 +30,21 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 		enableOverlay = false,
 		enableFavorites = false,
 		enableLikes = false,
+    slots={
+      item: {},
+      image: {},
+    }
 	} = props
 
 	const { setOpenShow, loading, resources, setResource } = useResourceContext()
 
 	const handleClick = (resource) => {
-		if (href) {
-			if (clientUrl && href && resource?.handle) {
-				window.scrollTo({
-					top: 0,
-					behavior: 'smooth',
-				})
-				router.push(`${clientUrl}${href}/${resource?.handle}`)
-			}
+    if (clientUrl && href && resource?.handle) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+      router.push(`${clientUrl}${href}/${resource?.handle}`)
 		} else {
 			setResource(resource)
 			setOpenShow(true)
@@ -52,7 +54,7 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				'grid grid-cols-1 md:grid-cols-3 gap-4',
+				'w-full',
 				loading && 'opacity-50'
 			)}
 		>
@@ -63,7 +65,11 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 			>
 				{resources?.map((resource, index) => (
 					<div
-						className={cn('p-1', enableArrows && 'pt-5', enableDots && 'pb-4')}
+						className={cn(
+              'p-1 w-full', 
+              enableArrows && 'pt-5', 
+              enableDots && 'pb-4'
+            )}
 						key={index}
 					>
 						<CollectionListItem
@@ -76,6 +82,7 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 							enableOverlay={enableOverlay}
 							enableFavorites={enableFavorites}
 							enableLikes={enableLikes}
+              { ...slots.item }
 						/>
 					</div>
 				))}

@@ -2,10 +2,13 @@
 
 import React from 'react'
 import { DataList } from '../../../components'
-import { buildSearchQuery } from '../../../helpers'
+import { 
+  buildDisplayFields, 
+  buildSearchQuery,
+  buildSortFields 
+} from '../../../helpers'
 import {
 	ButtonType,
-	DisplayFieldType,
 	FormFieldType,
 	SearchFilterOptionType,
 	SortOptionType,
@@ -22,12 +25,24 @@ export type CollectionListProps = {
 	grid?: boolean
 	style: string
 	href?: string
-	displayFields: DisplayFieldType[]
+
 	enableLikes?: boolean
 	enableFavorites?: boolean
 	enableComments?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
+
+  displaySubtitle?: boolean
+  displayCategory?: boolean
+  displayLocation?: boolean
+  displayDescription?: boolean
+  displayTags?: boolean
+
+  sortTitle?: boolean 
+  sortPosition?: boolean
+  sortDate?: boolean
+  sortPublished?: boolean
+  sortPrice?: boolean
 
 	enableShow?: boolean
 	fields?: FormFieldType[]
@@ -82,16 +97,28 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		filterSimilar,
 		filterGeo,
 
+    displaySubtitle,
+    displayCategory,
+    displayLocation,
+    displayDescription,
+    displayTags,
+
 		enableLikes,
 		enableFavorites,
 		enableComments,
-		enableGradient,
+
+    sortTitle,
+    sortPosition,
+    sortDate,
+    sortPublished,
+    sortPrice,   
+    
+    enableGradient,
 		enableOverlay,
 
 		style = 'card',
 		href,
 		buttons = [],
-		displayFields = [],
 		circular,
 		disableImage,
 		enableShow,
@@ -101,7 +128,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		enableFilters,
 		enableSorting,
 		filterOptions = [],
-		sortOptions = [],
 		headers = [], // Used by KanBan
 		header: Header = CollectionHeader,
 		list: List = CollectionListItems,
@@ -128,6 +154,22 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		filterSimilar,
 		filterGeo,
 	})
+
+  const displayFields = buildDisplayFields({
+    displaySubtitle,
+    displayCategory,
+    displayLocation,
+    displayDescription,
+    displayTags,
+  })
+
+  const sortOptions = buildSortFields({
+    sortTitle,
+    sortPosition,
+    sortDate,
+    sortPublished,
+    sortPrice,      
+  })
 
 	const slots = {
 		list: {

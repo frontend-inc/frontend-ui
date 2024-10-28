@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useResourceContext } from 'frontend-js'
-import { MessageCircle } from 'lucide-react'
+import { MessageSquare } from 'lucide-react'
 import { IconButton } from '../../core'
 import { cn } from 'frontend-shadcn'
 
@@ -28,7 +28,7 @@ export default function CommentButton({
 				onClick={handleClick}
 				className={cn(size === 'large' && 'border border-divider')}
 			>
-				<MessageCircle className="text-foreground w-4 h-4" />
+				<MessageSquare className="text-foreground w-5 h-5" />
 			</IconButton>
 		</div>
 	)

@@ -48,10 +48,10 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 		return (
 			<ShadcnCard
 				ref={ref}
-				className={cn('w-full overflow-hidden transition-shadow duration-300 ')}
+				className={cn('w-full overflow-hidden')}
 				{...slots.item}
 			>
-				<div className={`w-full relative overflow-hidden`}>
+				<div className='w-full relative overflow-hidden'>
 					<Image
 						src={image}
 						height={size}

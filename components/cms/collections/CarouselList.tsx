@@ -8,7 +8,12 @@ import CarouselListItems from './CarouselListItems'
 export type CarouselListProps = CollectionListProps
 
 const CarouselList: React.FC<CarouselListProps> = (props) => {
-	return <CollectionList {...props} list={CarouselListItems} />
+	return(
+    <CollectionList 
+      {...props} 
+      list={CarouselListItems} 
+    />
+  )
 }
 
 export default CarouselList

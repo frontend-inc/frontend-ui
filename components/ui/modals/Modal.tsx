@@ -48,7 +48,7 @@ export default function Modal({
         className={cn(
           mode,
           'max-w-screen-md bg-background rounded-md overflow-hidden',
-          'fixed transform -translate-x-1/2 -translate-y-1/2',
+          'fixed transform -translate-x-[50%] -translate-y-[50%] top-1/2 left-1/2',
           'fade-in duration-300 scale-in',
           'data-[state=closed]:opacity-0 duration-0'
         )}

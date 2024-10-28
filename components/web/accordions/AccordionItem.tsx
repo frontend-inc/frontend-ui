@@ -8,6 +8,7 @@ import {
 	AccordionTrigger,
 } from 'frontend-shadcn'
 import { Typography } from '../../core'
+import { ChevronDown } from 'lucide-react'
 
 type AccordionItemProps = {
 	primary: string
@@ -20,7 +21,7 @@ const AccordionItemComponent: React.FC<AccordionItemProps> = (props) => {
 	return (
 		<Accordion type="single" collapsible className="w-full">
 			<AccordionItem value="item">
-				<AccordionTrigger className="hover:no-underline">
+				<AccordionTrigger>
 					<Typography variant="body1">{primary}</Typography>
 				</AccordionTrigger>
 				<AccordionContent>
