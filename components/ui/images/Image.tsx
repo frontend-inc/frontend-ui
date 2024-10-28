@@ -82,7 +82,7 @@ export default function ResponsiveImage({
 				{label && (
 					<Badge
 						variant="secondary"
-						className="absolute font-medium px-2 py-1 top-3 left-3 bg-opacity-20 backdrop-blur-md text-black border-none"
+						className="absolute font-medium px-2 py-1 uppercase text-xs tracking-wider top-3 left-3 bg-opacity-20 backdrop-blur-md text-foreground border-none"
 					>
 						{label}
 					</Badge>

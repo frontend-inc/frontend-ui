@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Sheet, FormFields } from '../../../components'
+import { Drawer, Sheet, FormFields } from '../../../components'
 import { Button } from '../../core'
 
 export type ResourceFormProps = {
@@ -45,7 +45,7 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Sheet
+		<Drawer
 			open={open}
 			handleClose={handleClose}
 			title={title ? title : resource?.id ? 'Edit' : 'Add'}
@@ -67,7 +67,7 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 				inputOptions={inputOptions}
 				inputParams={inputParams}
 			/>
-		</Sheet>
+		</Drawer>
 	)
 }
 

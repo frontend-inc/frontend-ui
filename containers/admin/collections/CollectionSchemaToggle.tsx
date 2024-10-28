@@ -12,6 +12,7 @@ type CollectionSchemaToggleProps = {
 const CollectionSchemaToggle: React.FC<CollectionSchemaToggleProps> = (
 	props
 ) => {
+  
 	const router = useRouter()
 	const { app_id: appId, collection_id: collectionId } = useParams() as any
 

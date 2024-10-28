@@ -55,7 +55,7 @@ const UnsplashList: React.FC<UnsplashProps> = ({ onComplete }) => {
 	}
 
 	return (
-		<div className="w-full">
+		<div className="w-full flex flex-col justify-center items-center">
 			<div className="space-y-4">
 				<SearchInput
 					name="keywords"

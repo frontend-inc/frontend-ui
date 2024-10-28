@@ -8,7 +8,7 @@ import AdminFormCreate from './AdminFormCreate'
 import AdminFormEdit from './AdminFormEdit'
 import AdminFormShow from './AdminFormShow'
 import AdminFormToolbar from './AdminFormToolbar'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 const AdminFormsList: React.FC = () => {
 	const router = useRouter()

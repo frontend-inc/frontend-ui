@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Sheet, CircularLoader } from '../..'
+import { Drawer, CircularLoader } from '../..'
 import { Button } from '../../core'
 
 export type ResourceModalProps = {
@@ -32,7 +32,7 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Sheet
+		<Drawer
 			open={open}
 			handleClose={handleClose}
 			title={title}
@@ -54,8 +54,12 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 				)
 			}
 		>
-			{loading == true ? <CircularLoader size={44} /> : children}
-		</Sheet>
+			{loading == true ? (
+        <div className="min-h-[400px] flex flex-col items-center justify-center">
+          <CircularLoader size='lg' />
+        </div>
+      ) : children}
+		</Drawer>
 	)
 }
 

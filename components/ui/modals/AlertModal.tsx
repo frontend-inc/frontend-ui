@@ -12,7 +12,7 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 } from 'frontend-shadcn'
-import { Button } from '../../../components'
+import { Button, CircularLoader } from '../../../components'
 import { cn } from 'frontend-shadcn'
 
 type AlertModalProps = {
@@ -37,12 +37,22 @@ const AlertModal: React.FC<AlertModalProps> = ({
 		<AlertDialog open={open} onOpenChange={handleClose}>
       <AlertDialogOverlay className="bg-black/50" />
 			<AlertDialogContent
-        className='rounded-lg fixed transform -translate-x-1/2 -translate-y-1/2'
+        className={cn(
+          'max-w-screen-md bg-background rounded-md overflow-hidden',
+          'fixed transform -translate-x-[50%] -translate-y-[50%] top-1/2 left-1/2',
+          'fade-in duration-300 scale-in',
+          'data-[state=closed]:opacity-0 duration-0'
+        )}
       >
 				<AlertDialogHeader>
 					<AlertDialogTitle>{title}</AlertDialogTitle>
 					<AlertDialogDescription>{description}</AlertDialogDescription>
 				</AlertDialogHeader>
+        {loading && (
+          <div className="flex flex-col items-center justify-center">
+            <CircularLoader size='lg' />
+          </div>
+        )}
 				<AlertDialogFooter>
 					<AlertDialogCancel asChild>
 						<Button variant="secondary" onClick={handleClose}>

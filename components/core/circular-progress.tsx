@@ -5,7 +5,7 @@ import { cn } from 'frontend-shadcn'
 import { Loader2 } from 'lucide-react'
 
 interface CircularProgressProps {
-	size?: 'sm' | 'md' | 'lg'
+	size?: 'sm' | 'md' | 'lg' | 'xl'
 	color?: 'primary' | 'secondary' | 'success' | 'error' | 'warning' | 'info'
 	thickness?: number
 	value?: number
@@ -17,6 +17,7 @@ const sizeClasses = {
 	sm: 'w-4 h-4',
 	md: 'w-8 h-8',
 	lg: 'w-12 h-12',
+  xl: 'w-16 h-16',
 }
 
 const colorClasses = {

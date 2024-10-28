@@ -74,7 +74,16 @@ export default function ResourceListItem({
 						onCheckedChange={handleSelect}
 					/>
 				)}
-				{avatar && <div className="mr-2">{avatar}</div>}
+				{avatar && (
+          <div className="mr-2">
+            <button
+							className="w-full h-full focus:outline-none focus:ring-2"
+							onClick={handleClick}
+						>
+              {avatar}
+            </button>
+          </div>
+        )}
 				{image && (
 					<div className="mr-2 w-[72px] h-[72px]">
 						<button

@@ -4,7 +4,6 @@ import React from 'react'
 import { Button } from '../../core'
 import FormFields from './FormFields'
 import { FormFieldType } from '../../../types'
-import { IconLoading } from '../..'
 
 export type FormProps = {
 	loading?: boolean
@@ -51,7 +50,7 @@ const Form: React.FC<FormProps> = (props) => {
 				inputParams={inputParams}
 			/>
 			{handleSubmit && (
-				<Button					
+				<Button	
 					onClick={handleSubmit}
 					disabled={loading}
           loading={ loading }					

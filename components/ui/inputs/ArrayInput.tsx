@@ -82,7 +82,7 @@ export default function ArrayInput({
 						error && 'border-red-500'
 					)}
 				>
-					{value.map((tag) => (
+					{Array.isArray(value) && value?.map((tag) => (
 						<Badge key={tag} variant="secondary" className="px-2 py-1 text-sm">
 							{tag}
 							<button

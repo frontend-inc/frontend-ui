@@ -1,16 +1,17 @@
 'use client'
 
 import React from 'react'
-import { CircularProgress } from '../../core'
+import { CircularProgress } from '../../../components'
 
 type LoaderProps = {
-	size?: number
+	size?: 'sm' | 'md' | 'lg' | 'xl'
 }
 
 const Loader: React.FC<LoaderProps> = (props) => {
+  const { size = 'sm' } = props || {}
 	return (
 		<div className="w-full h-full flex justify-center items-center">
-			<CircularProgress />
+			<CircularProgress size={size} />
 		</div>
 	)
 }

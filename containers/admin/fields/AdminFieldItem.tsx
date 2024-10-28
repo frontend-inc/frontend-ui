@@ -62,77 +62,9 @@ const AdminFieldItem: React.FC<AdminFieldItemProps> = (props) => {
 			enableBorder
 			sortable={sortable}
 			avatar={<FieldIcon variant={field?.variant} />}
-			primary={
-				<div className="flex flex-row space-x-1">
-					<Typography variant="body1">{field?.label}</Typography>
-					<Label label={field.variant} />
-				</div>
-			}
+			primary={field?.label}
 			secondaryAction={
-				<>
-					{field.column && !field.array && (
-						<TooltipProvider>
-							<Tooltip>
-								<TooltipTrigger asChild>
-									<IconButton onClick={() => handleUpdateField('filter_field')}>
-										<FilterIcon
-											className={
-												field.filter_field
-													? 'text-foreground'
-													: 'text-muted-foreground'
-											}
-										/>
-									</IconButton>
-								</TooltipTrigger>
-								<TooltipContent>
-									<p>Search filter field</p>
-								</TooltipContent>
-							</Tooltip>
-						</TooltipProvider>
-					)}
-					{field.column && !field.array && (
-						<TooltipProvider>
-							<Tooltip>
-								<TooltipTrigger asChild>
-									<IconButton onClick={() => handleUpdateField('sort_field')}>
-										<SortAsc
-											className={
-												field.sort_field
-													? 'text-foreground'
-													: 'text-muted-foreground'
-											}
-										/>
-									</IconButton>
-								</TooltipTrigger>
-								<TooltipContent>
-									<p>Search sort field</p>
-								</TooltipContent>
-							</Tooltip>
-						</TooltipProvider>
-					)}
-					{(field.column || field.attachment) && field?.name != 'title' && (
-						<TooltipProvider>
-							<Tooltip>
-								<TooltipTrigger asChild>
-									<IconButton
-										onClick={() => handleUpdateField('display_field')}
-									>
-										<Search
-											className={
-												field.display_field
-													? 'text-foreground'
-													: 'text-muted-foreground'
-											}
-										/>
-									</IconButton>
-								</TooltipTrigger>
-								<TooltipContent>
-									<p>Display in search results</p>
-								</TooltipContent>
-							</Tooltip>
-						</TooltipProvider>
-					)}
-				</>
+        <Label label={field.variant} />
 			}
 			handleClick={handleClick}
 			handleEdit={handleEdit}

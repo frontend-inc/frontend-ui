@@ -41,7 +41,7 @@ const MediaList: React.FC<MediaListProps> = ({ selectedIds, handleSelect }) => {
 
 	return (
 		<div className="flex flex-col space-y-4 w-full">
-			<div className="mt-2 grid grid-cols-2 gap-4">
+			<div className="mt-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
 				{resources.map((item) => (
 					<MediaListItem
 						key={item?.id}

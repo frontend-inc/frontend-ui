@@ -27,9 +27,9 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 		fields = [],
 		direction = 'column',
 	} = props || {}
-
+  
 	return (
-		<div className="w-full flex flex-col space-y-2">
+		<div className="w-full flex flex-col space-y-3">
 			{image && (
 				<div className="w-full h-[200px]">
 					<Image alt={label} src={image} label={label} />
