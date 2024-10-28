@@ -3,6 +3,7 @@
 import React from 'react'
 import {
 	AlertDialog,
+  AlertDialogOverlay,
 	AlertDialogAction,
 	AlertDialogCancel,
 	AlertDialogContent,
@@ -34,7 +35,10 @@ const AlertModal: React.FC<AlertModalProps> = ({
 }) => {
 	return (
 		<AlertDialog open={open} onOpenChange={handleClose}>
-			<AlertDialogContent>
+      <AlertDialogOverlay className="bg-black/50" />
+			<AlertDialogContent
+        className='rounded-lg fixed transform -translate-x-1/2 -translate-y-1/2'
+      >
 				<AlertDialogHeader>
 					<AlertDialogTitle>{title}</AlertDialogTitle>
 					<AlertDialogDescription>{description}</AlertDialogDescription>

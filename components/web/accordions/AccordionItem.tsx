@@ -8,7 +8,6 @@ import {
 	AccordionTrigger,
 } from 'frontend-shadcn'
 import { Typography } from '../../core'
-import { cn } from 'frontend-shadcn'
 
 type AccordionItemProps = {
 	primary: string
