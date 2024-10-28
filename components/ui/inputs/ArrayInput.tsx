@@ -83,14 +83,14 @@ export default function ArrayInput({
 					)}
 				>
 					{value.map((tag) => (
-						<Badge key={tag} variant="secondary" className="text-sm">
+						<Badge key={tag} variant="secondary" className="px-2 py-1 text-sm">
 							{tag}
 							<button
 								type="button"
 								className="ml-1 hover:bg-secondary rounded-full"
 								onClick={() => removeTag(tag)}
 							>
-								<X className="h-3 w-3" />
+								<X className="h-4 w-4" />
 							</button>
 						</Badge>
 					))}

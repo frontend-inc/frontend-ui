@@ -63,7 +63,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           startIcon && <span className="mr-2">{startIcon}</span>
         )}
         {children}
-        {!loading && endIcon && <span className="w-full flex flex-row justify-end ml-2">{endIcon}</span>}
+        {!loading && endIcon && <span className="ml-2">{endIcon}</span>}
       </ShadcnButton>
 		)
 	}
