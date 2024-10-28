@@ -24,6 +24,7 @@ type CheckboxNumberRangeFilterProps = {
 const CheckboxNumberRangeFilter: React.FC<CheckboxNumberRangeFilterProps> = (
 	props
 ) => {
+  
 	const { label, field, options, values, handleClick } = props
 
 	return (

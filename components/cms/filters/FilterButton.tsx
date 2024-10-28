@@ -47,11 +47,6 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 								className="text-secondary-foreground"
 							/>
             }      
-            endIcon={!disableFilterCount && filters?.length > 0 && (
-							<Badge className="w-[32px] h-[20px] flex flex-row items-center justify-center rounded-full">
-								{filters.length}
-							</Badge>
-						)}      
 					>																			
 						Filters						
 					</Button>
