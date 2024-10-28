@@ -16,7 +16,7 @@ type CheckboxDatesFutureFilterProps = {
 const CheckboxDatesFutureFilter: React.FC<CheckboxDatesFutureFilterProps> = (
 	props
 ) => {
-	const { label, field, values, handleClick, disablePadding = false } = props
+	const { label, field, values, handleClick } = props
 
 	let OPTIONS = [
 		{ label: 'Next day', value: '1_day' },

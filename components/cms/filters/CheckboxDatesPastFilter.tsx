@@ -16,7 +16,7 @@ type CheckboxDatesPastFilterProps = {
 const CheckboxDatesPastFilter: React.FC<CheckboxDatesPastFilterProps> = (
 	props
 ) => {
-	const { label, field, values, handleClick, disablePadding = false } = props
+	const { label, field, values, handleClick } = props
 
 	let OPTIONS = [
 		{ label: 'Today', value: 'current_time' },

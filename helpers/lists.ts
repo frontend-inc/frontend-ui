@@ -173,3 +173,20 @@ export const buildSortFields = (params: SortFieldParams) => {
 
   return sortFields
 }
+
+export const buildFilterFields = (params: { filterChoices: string[] }) => {
+  
+  const { filterChoices } = params || {}
+    
+  let categoryFilter = {
+    label: 'Filter',
+    name: 'category',
+    variant: 'multiple_choice',
+    options: filterChoices?.map((option) => ({
+      label: option,
+      value: option 
+    }))
+  }        
+
+  return [categoryFilter]
+}

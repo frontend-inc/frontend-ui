@@ -8,6 +8,7 @@ import { FilterOptionType, SearchFilterOptionType } from '../../..'
 import { Button } from '../../../components'
 import { Badge } from 'frontend-shadcn'
 import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
+import { cn } from 'frontend-shadcn'
 
 export type FilterButtonProps = {
 	filters?: FilterOptionType[]
@@ -35,24 +36,24 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 				<PopoverTrigger asChild>
 					<Button
 						variant="secondary"
-						className={`relative w-full sm:w-auto ${
-							filters?.length > 0 ? 'border-r-0' : ''
-						}`}
-					>
-						{loading ? (
-							<IconLoading className="mr-2" />
-						) : (
-							<Icon
+            loading={loading}
+						className={cn(
+              'relative w-full sm:w-auto',
+              filters?.length > 0 && 'border-r-0'
+            )}
+            startIcon={
+              <Icon
 								name="SlidersHorizontal"
-								className="mr-2 text-secondary-foreground"
+								className="text-secondary-foreground"
 							/>
-						)}
-						Filters
-						{!disableFilterCount && filters?.length > 0 && (
-							<Badge className="absolute -top-1 -right-1">
+            }      
+            endIcon={!disableFilterCount && filters?.length > 0 && (
+							<Badge className="w-[32px] h-[20px] flex flex-row items-center justify-center rounded-full">
 								{filters.length}
 							</Badge>
-						)}
+						)}      
+					>																			
+						Filters						
 					</Button>
 				</PopoverTrigger>
 				<PopoverContent className="w-80 p-0">

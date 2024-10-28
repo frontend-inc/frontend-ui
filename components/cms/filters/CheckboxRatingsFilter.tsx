@@ -1,13 +1,47 @@
 'use client'
 
 import React from 'react'
-import CheckboxRatingsFilterItem from './CheckboxRatingsFilterItem'
 import {
 	FilterOperatorType,
 	FilterWhereType,
 	FilterOptionType,
 } from '../../../types'
 import { MenuList } from '../..'
+import { Checkbox } from 'frontend-shadcn'
+import { Rating } from '../../../components'
+
+type CheckboxRatingsFilterItemProps = {
+	label?: string
+	option: {
+		label: string
+		value: number
+	}
+	values?: any[]
+	handleClick: () => void
+}
+
+const CheckboxRatingsFilterItem: React.FC<CheckboxRatingsFilterItemProps> = (
+	props
+) => {
+	const { values = [], option, handleClick } = props
+
+	return (
+		<li className="list-none">
+			<button
+				className="flex items-center w-full px-0 py-2 hover:bg-accent hover:text-accent-foreground"
+				onClick={handleClick}
+			>
+				<div className="mr-2">
+					<Checkbox
+						checked={values?.includes(option.value)}
+						onCheckedChange={handleClick}
+					/>
+				</div>
+				<Rating readOnly value={Number(option?.value)} />
+			</button>
+		</li>
+	)
+}
 
 type CheckboxFilterProps = {
 	field: string

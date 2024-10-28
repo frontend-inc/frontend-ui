@@ -5,13 +5,12 @@ import { DataList } from '../../../components'
 import { 
   buildDisplayFields, 
   buildSearchQuery,
-  buildSortFields 
+  buildSortFields,
+  buildFilterFields 
 } from '../../../helpers'
 import {
 	ButtonType,
 	FormFieldType,
-	SearchFilterOptionType,
-	SortOptionType,
 } from '../../../types'
 import {
 	CollectionListItem,
@@ -25,6 +24,12 @@ export type CollectionListProps = {
 	grid?: boolean
 	style: string
 	href?: string
+
+  enableSearch?: boolean
+	enableFilters?: boolean
+	enableSorting?: boolean
+
+  filterChoices?: string[]
 
 	enableLikes?: boolean
 	enableFavorites?: boolean
@@ -51,11 +56,6 @@ export type CollectionListProps = {
 		label: string
 		value: string
 	}[]
-	enableSearch?: boolean
-	enableFilters?: boolean
-	enableSorting?: boolean
-	filterOptions?: SearchFilterOptionType[]
-	sortOptions?: SortOptionType[]
 	perPage?: number
 	loadMore?: boolean
 	list: React.FC<any>
@@ -127,7 +127,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		enableSearch,
 		enableFilters,
 		enableSorting,
-		filterOptions = [],
+		filterChoices = [],
 		headers = [], // Used by KanBan
 		header: Header = CollectionHeader,
 		list: List = CollectionListItems,
@@ -169,6 +169,10 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
     sortDate,
     sortPublished,
     sortPrice,      
+  })
+
+  const filterOptions = buildFilterFields({
+    filterChoices,
   })
 
 	const slots = {
