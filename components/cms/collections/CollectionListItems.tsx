@@ -61,7 +61,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 	} = props
 
 	const handleShowClick = (resource) => {
-		if (handleClick) {
+    if (handleClick) {
 			handleClick(resource)
 		} else if (href) {
 			if (clientUrl && href && resource?.handle) {

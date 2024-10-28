@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { CommentList, Sheet, ShowItem } from '../..'
+import { CommentList, Drawer, ShowItem } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { ButtonType, FormFieldType, DisplayFieldType } from '../../../types'
 
@@ -33,7 +33,7 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 
 	if (!resource) return null
 	return (
-		<Sheet
+		<Drawer
 			disablePadding
 			open={openShow}
 			handleClose={() => setOpenShow(false)}
@@ -46,19 +46,14 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 				displayFields={displayFields}
 				enableLikes={enableLikes}
 				enableFavorites={enableFavorites}
-				enableSharing={enableSharing}
-				slots={{
-					image: {
-						disableBorderRadius: true,
-					},
-				}}
+				enableSharing={enableSharing}				
 			/>
 			{enableComments && (
 				<div className="px-2">
 					<CommentList url={url} handle={resource?.handle} />
 				</div>
 			)}
-		</Sheet>
+		</Drawer>
 	)
 }
 

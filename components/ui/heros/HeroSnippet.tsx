@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { Card } from 'frontend-shadcn'
 import { AvatarImage, Image } from '../..'
 import { Typography } from '../../core'
 
@@ -34,7 +33,6 @@ export default function HeroSnippet({
 	},
 }: HeroSnippetProps) {
 	return (
-		<Card className="w-full">
 			<div className="flex flex-col w-full">
 				{!disableImage && (
 					<div className="w-full overflow-hidden rounded-t-[inherit]">
@@ -63,6 +61,5 @@ export default function HeroSnippet({
 					{secondary}
 				</div>
 			</div>
-		</Card>
 	)
 }
