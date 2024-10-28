@@ -27,7 +27,7 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
 			db_type: field.db_type,
 			variant: field.variant,
 		})
-		setTab(1)
+		setTab('settings')
 	}
 
 	const [tab, setTab] = useState<any>('field')
