@@ -7,7 +7,7 @@ import { DataItem, DataLayout } from '../..'
 import { useCollectionForms } from '../../../hooks'
 
 export type DataListItemsProps = {
-	grid?: boolean
+	layout?: 'list' | 'grid' | 'slider'
 	selectable?: boolean
 	href?: string
 	enableShow?: boolean
@@ -37,7 +37,7 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 	} = useResourceContext()
 
 	const {
-		grid,
+		layout = 'list',
 		selectable,
 		enableShow,
 		enableEdit,
@@ -66,7 +66,7 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 	}
 
 	return (
-		<DataLayout {...slots.list} grid={grid} loading={loading}>
+		<DataLayout {...slots.list} layout={layout} loading={loading}>
 			{resources?.map((resource, index) => (
 				<Component
 					key={index}

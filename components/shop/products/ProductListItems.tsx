@@ -4,12 +4,11 @@ import React from 'react'
 import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { useApp } from '../../../hooks'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { ProductListItem, DataLayout } from '../..'
 import { ButtonType, DisplayFieldType } from '../../../types'
 
 export type ProductListItemsProps = {
-	grid?: boolean
 	href?: string
 	style?: 'list' | 'card' | 'avatar' | 'cover' | 'text'
 	buttons: ButtonType[]
@@ -42,7 +41,6 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 	} = useResourceContext()
 
 	const {
-		grid = false,
 		buttons = [],
 		style = 'list',
 		href,
@@ -81,7 +79,7 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 
 	return (
 		<div className="flex flex-col space-y-2 w-full">
-			<DataLayout {...slots.list} grid={grid} loading={loading}>
+			<DataLayout {...slots.list} layout='grid' loading={loading}>
 				{resources?.map((resource, index) => (
 					<ProductListItem
 						key={resource?.id}

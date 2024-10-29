@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { CarouselImage, TouchableOpacity } from '../../..'
+import { TouchableOpacity } from '../../..'
 import { useProductContext } from 'frontend-shopify'
 import Image from 'next/image'
 import { AspectRatio } from 'frontend-shadcn'
@@ -9,7 +9,7 @@ import { AspectRatio } from 'frontend-shadcn'
 const ShopifyProductImageCarousel: React.FC = () => {
 	const { images, handleImageClick } = useProductContext()
 	return (
-		<CarouselImage>
+		<div>
 			{images?.map((image) => (
 				<div className="w-full h-full pb-1" key={image.id}>
 					<TouchableOpacity handleClick={() => handleImageClick(image)}>
@@ -24,7 +24,7 @@ const ShopifyProductImageCarousel: React.FC = () => {
 					</TouchableOpacity>
 				</div>
 			))}
-		</CarouselImage>
+		</div>
 	)
 }
 

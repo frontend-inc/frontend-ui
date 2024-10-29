@@ -10,7 +10,7 @@ import { ButtonType, DisplayFieldType } from '../../../types'
 
 export type ReferenceCollectionListItemsProps = {
 	href?: string
-	grid?: boolean
+	layout?: 'list' | 'grid' | 'slider'
 	style?: 'list' | 'avatar' | 'cover' | 'table' | 'text'
 	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
@@ -44,7 +44,7 @@ const ReferenceCollectionListItems: React.FC<
 	} = useResourceContext()
 
 	const {
-		grid = false,
+		layout = 'list',
 		buttons = [],
 		style = 'card',
 		href,
@@ -84,7 +84,7 @@ const ReferenceCollectionListItems: React.FC<
 
 	return (
 		<div className="flex flex-col space-y-2 w-full">
-			<DataLayout {...slots.list} grid={grid}>
+			<DataLayout {...slots.list} layout={layout}>
 				{references?.map((reference, index) => {
 					const target = reference?.target
 					return (

@@ -4,12 +4,12 @@ import React from 'react'
 import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { useApp } from '../../../hooks'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { CollectionListItem, DataLayout } from '../..'
 import { ButtonType, DisplayFieldType } from '../../../types'
 
 export type CollectionListItemsProps = {
-	grid?: boolean
+	layout?: 'list' | 'grid' | 'slider'
 	selectable?: boolean
 	href?: string
 	style?: 'list' | 'card' | 'avatar' | 'cover' | 'text'
@@ -44,7 +44,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 
 	const {
 		selectable,
-		grid = false,
+		layout = 'list',
 		buttons = [],
 		style = 'list',
 		href,
@@ -83,7 +83,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 
 	return (
 		<div className="flex flex-col w-full space-y-2">
-			<DataLayout {...slots.list} grid={grid} loading={loading}>
+			<DataLayout {...slots.list} layout={layout} loading={loading}>
 				{resources?.map((resource, index) => (
 					<CollectionListItem
 						key={index}

@@ -79,7 +79,7 @@ const ProductReferenceListItems: React.FC<ProductReferenceListItemsProps> = (
 
 	return (
 		<div className="flex flex-col space-y-2">
-			<DataLayout {...slots.list} grid loading={loading}>
+			<DataLayout {...slots.list} layout="grid" loading={loading}>
 				{productReferences?.map((reference, index) => {
 					const resource = reference?.product
 					return (

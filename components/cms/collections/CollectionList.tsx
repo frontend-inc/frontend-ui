@@ -227,18 +227,18 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		},
 	}
 
-	const grid =
+	const layout =
 		{
-			avatar: false,
-			list: false,
-			text: false,
-			card: true,
-			cover: true,
-		}[style] || false
+			avatar: 'list',
+			list: 'list',
+			text: 'list',
+			card: 'grid',
+			cover: 'grid',
+		}[style] || 'list'
 
 	return (
 		<DataList
-			grid={grid}
+      layout={layout}
 			url={url}
 			foreignUrl={foreignUrl}
 			name="document"

@@ -47,7 +47,7 @@ const ImageListItems: React.FC<ImageListItemsProps> = (props) => {
 
 	return (
 		<div className="flex flex-col space-y-2 w-full">
-			<DataLayout grid>
+			<DataLayout layout="grid">
 				{resources?.map((resource) => (
 					<ImageCard
 						key={resource.id}

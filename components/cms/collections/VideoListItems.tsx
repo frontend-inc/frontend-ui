@@ -39,7 +39,7 @@ const VideoListItems: React.FC<VideoListItemsProps> = (props) => {
 
 	return (
 		<div className="flex flex-col space-y-2 w-full">
-			<DataLayout grid>
+			<DataLayout layout="grid">
 				{resources?.map((resource) => (
 					<VideoCard
 						key={resource.id}

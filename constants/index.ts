@@ -1,6 +1,5 @@
 export * from './admin'
 export * from './buttons'
-export * from './carousel'
 export * from './colors'
 export * from './countries'
 export * from './fields'

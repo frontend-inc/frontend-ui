@@ -2,21 +2,21 @@
 
 import React from 'react'
 import { useApp } from '../../../hooks'
-import { useRouter } from 'next/navigation'
+import { useRouter, useParams } from 'next/navigation'
 import CollectionListItem from './CollectionListItem'
 import { CollectionListItemsProps } from '../collections/CollectionListItems'
 import { useResourceContext } from 'frontend-js'
 import { cn } from 'frontend-shadcn'
 import { 
-  AspectRatio,
-  ScrollArea,
-  ScrollBar 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselNext, 
+  CarouselPrevious, 
 } from 'frontend-shadcn'
 
 export type CarouselListItemsProps = CollectionListItemsProps & {
 	enableAutoPlay?: boolean
-	enableArrows?: boolean
-	enableDots?: boolean
 }
 
 const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
@@ -27,8 +27,6 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 		buttons,
 		href,
 		displayFields,
-		enableAutoPlay = true,
-		enableArrows = false,
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
@@ -55,15 +53,17 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 	}
 
 	return (
-      <ScrollArea 
-        className={cn(
-				  'w-full whitespace-nowrap pb-4',
-				  loading && 'opacity-50'
-			  )}
-      >
-        <div className="flex flex-row w-full">
-          {resources?.map((resource, index) => (                      
-              <div key={index} className="w-[280px] sm:w-[360px] p-2">
+		<div
+			className={cn(
+				'w-full',
+				loading && 'opacity-50'
+			)}
+		>
+			<Carousel>
+        <CarouselContent>
+				{resources?.map((resource, index) => (
+          <CarouselItem className="sm:basis-1/2 lg:basis-1/3" key={index}>
+            <div className='p-1'>
               <CollectionListItem
                 buttons={buttons}
                 style="card"
@@ -72,15 +72,18 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
                 handleClick={() => handleClick(resource)}
                 enableGradient={enableGradient}
                 enableOverlay={enableOverlay}
-                enableFavori tes={enableFavorites}
+                enableFavorites={enableFavorites}
                 enableLikes={enableLikes}
                 { ...slots.item }
-              />            
+              />
             </div>
-          ))}
-        </div>
-      <ScrollBar orientation="horizontal" />
-		</ScrollArea>
+          </CarouselItem>
+				))}
+        </CarouselContent>
+        <CarouselPrevious className="hidden sm:flex" />
+        <CarouselNext className="hidden sm:flex" />
+			</Carousel>
+		</div>
 	)
 }
 

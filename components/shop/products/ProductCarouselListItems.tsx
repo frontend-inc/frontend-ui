@@ -1,13 +1,19 @@
 'use client'
 
 import React from 'react'
-import { Carousel } from '../..'
 import { useApp } from '../../../hooks'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import ProductListItem from './ProductListItem'
 import { ProductListItemsProps } from '../products/ProductListItems'
 import { useResourceContext } from 'frontend-js'
 import { cn } from 'frontend-shadcn'
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselNext, 
+  CarouselPrevious, 
+} from 'frontend-shadcn'
 
 export type ProductCarouselListItemsProps = ProductListItemsProps & {
 	enableAutoPlay?: boolean
@@ -25,9 +31,6 @@ const ProductCarouselListItems: React.FC<ProductCarouselListItemsProps> = (
 		buttons,
 		href,
 		displayFields,
-		enableAutoPlay = true,
-		enableArrows = false,
-		enableDots = false,
 		enableGradient = false,
 		enableOverlay = false,
 		enableRatings = false,
@@ -53,27 +56,34 @@ const ProductCarouselListItems: React.FC<ProductCarouselListItemsProps> = (
 	}
 
 	return (
-		<div className={cn('w-full', loading && 'opacity-50')}>
-			<Carousel
-				enableDots={enableDots}
-				enableAutoPlay={enableAutoPlay}
-				enableArrows={enableArrows}
-			>
+		<div
+			className={cn(
+				'w-full',
+				loading && 'opacity-50'
+			)}
+		>
+			<Carousel>
+        <CarouselContent>
 				{resources?.map((resource, index) => (
-					<div key={index} className={'px-2'}>
-						<ProductListItem
-							buttons={buttons}
-							resource={resource}
-							displayFields={displayFields}
-							handleClick={() => handleClick(resource)}
-							enableGradient={enableGradient}
-							enableOverlay={enableOverlay}
-							enableFavorites={enableFavorites}
-							enableRatings={enableRatings}
-							enableLikes={enableLikes}
-						/>
-					</div>
+					<CarouselItem className="sm:basis-1/2 lg:basis-1/3" key={index}>
+            <div className='p-1'>        
+              <ProductListItem
+                buttons={buttons}
+                resource={resource}
+                displayFields={displayFields}
+                handleClick={() => handleClick(resource)}
+                enableGradient={enableGradient}
+                enableOverlay={enableOverlay}
+                enableFavorites={enableFavorites}
+                enableRatings={enableRatings}
+                enableLikes={enableLikes}
+              />
+            </div>
+          </CarouselItem>
 				))}
+        </CarouselContent>
+        <CarouselPrevious className="hidden sm:flex" />
+        <CarouselNext className="hidden sm:flex" />
 			</Carousel>
 		</div>
 	)
