@@ -1,13 +1,22 @@
 'use client'
 
 import React from 'react'
-import { Carousel } from '../..'
 import { useApp } from '../../../hooks'
 import { useRouter, useParams } from 'next/navigation'
 import CollectionListItem from './CollectionListItem'
 import { CollectionListItemsProps } from '../collections/CollectionListItems'
 import { useResourceContext } from 'frontend-js'
 import { cn } from 'frontend-shadcn'
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselNext, 
+  CarouselPrevious,
+  ScrollArea,
+  ScrollBar 
+} from 'frontend-shadcn'
+import Autoplay from "embla-carousel-autoplay"
 
 export type CarouselListItemsProps = CollectionListItemsProps & {
 	enableAutoPlay?: boolean
@@ -25,7 +34,6 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 		displayFields,
 		enableAutoPlay = true,
 		enableArrows = false,
-		enableDots = false,
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
@@ -52,42 +60,32 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 	}
 
 	return (
-		<div
-			className={cn(
-				'w-full',
-				loading && 'opacity-50'
-			)}
-		>
-			<Carousel
-				enableDots={enableDots}
-				enableAutoPlay={enableAutoPlay}
-				enableArrows={enableArrows}
-			>
-				{resources?.map((resource, index) => (
-					<div
-						className={cn(
-              'p-1 w-full', 
-              enableArrows && 'pt-5', 
-              enableDots && 'pb-4'
-            )}
-						key={index}
-					>
-						<CollectionListItem
-							buttons={buttons}
-							style="card"
-							resource={resource}
-							displayFields={displayFields}
-							handleClick={() => handleClick(resource)}
-							enableGradient={enableGradient}
-							enableOverlay={enableOverlay}
-							enableFavorites={enableFavorites}
-							enableLikes={enableLikes}
-              { ...slots.item }
-						/>
-					</div>
-				))}
-			</Carousel>
-		</div>
+      <ScrollArea 
+        className={cn(
+				  'w-full whitespace-nowrap pb-4',
+				  loading && 'opacity-50'
+			  )}
+      >
+        <div className="flex flex-row w-full">
+          {resources?.map((resource, index) => (          
+            <div className='p-1 w-[280px]' key={index}>
+              <CollectionListItem
+                buttons={buttons}
+                style="card"
+                resource={resource}
+                displayFields={displayFields}
+                handleClick={() => handleClick(resource)}
+                enableGradient={enableGradient}
+                enableOverlay={enableOverlay}
+                enableFavori tes={enableFavorites}
+                enableLikes={enableLikes}
+                { ...slots.item }
+              />
+            </div>
+          ))}
+        </div>
+      <ScrollBar orientation="horizontal" />
+		</ScrollArea>
 	)
 }
 

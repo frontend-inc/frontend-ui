@@ -43,7 +43,9 @@ export default function Modal({
         className={mode }
       >        
         <DialogHeader className="mt-4">
-          <DialogTitle>{title}</DialogTitle>
+          <DialogTitle>
+            <span className='text-foreground'>{title}</span>
+          </DialogTitle>
           {description && <DialogDescription>{description}</DialogDescription>}
         </DialogHeader>
         <ScrollArea className="max-h-[440px]">

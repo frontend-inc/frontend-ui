@@ -63,7 +63,7 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 						{...slots.image}
 					/>
 				</div>
-				<CardContent className={'px-4 pt-3'}>
+				<CardContent className='px-4 pt-3 overflow-hidden'>
 					<Typography variant="body1">{primary}</Typography>
 					{secondary && (
 						<Typography variant="body2" className="text-muted-foreground">
