@@ -11,6 +11,7 @@ import {
   DrawerTitle,
   DrawerPortal,
   DrawerOverlay,
+  ScrollArea,
 } from 'frontend-shadcn'
 import { useTheme } from '../../../hooks'
 import { Button } from '../../../components'
@@ -47,12 +48,14 @@ export default function CustomDrawer({
       onOpenChange={handleClose}      
     >
       <DrawerPortal>
-        <DrawerContent className={cn(
+        <DrawerContent 
+          shouldScaleBackground
+          className={cn(
           mode, 
         )}>
-          <DrawerHeader className="sticky top-0 z-10 bg-background">
+          <DrawerHeader>
             <div className="flex w-full justify-end">
-              <DrawerClose asChild>
+              <DrawerClose>
                 <Button variant="ghost" size="icon">
                   <X className="h-5 w-5" />
                   <span className="sr-only">Close</span>
@@ -62,11 +65,9 @@ export default function CustomDrawer({
 
             {title && (
               <DrawerTitle>
-                <div className="flex flex-row justify-center w-full">
-                  <div className="flex flex-row max-w-screen-md w-full">
-                    <div className="text-3xl text-foreground">{title}</div>
-                  </div>
-                </div>
+                <h1 className="flex items-center justify-center w-full text-3xl text-foreground">
+                  {title}
+                </h1>
               </DrawerTitle>
             )}
             {description && (
@@ -78,13 +79,17 @@ export default function CustomDrawer({
                 </div>
               </DrawerDescription>
             )}
-          </DrawerHeader>
-          <div className="flex-grow overflow-y-auto px-4 flex flex-col items-center">
-            <div className="max-w-screen-md w-full">{children}</div>
-          </div>
+          </DrawerHeader>          
+          <ScrollArea>
+            <div className="flex justify-center w-full py-6">
+              <div className="max-w-screen-md w-full max-h-[70vh]">{children}</div>
+            </div>
+          </ScrollArea>          
           {!loading && buttons && (
-            <DrawerFooter className="px-10 pb-6 flex flex-row justify-center sticky bottom-0 bg-background">
-              <div className="w-full max-w-screen-md">{buttons}</div>
+            <DrawerFooter className='w-full flex items-center justify-center'>
+              <div className='w-full max-w-screen-md'>
+                {buttons}
+              </div>
             </DrawerFooter>
           )}
         </DrawerContent>
