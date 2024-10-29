@@ -5,7 +5,6 @@ import FormField from './FormField'
 import { get } from 'lodash'
 import { FormFieldType } from '../../../types'
 import { validateFieldConditions } from '../../../helpers'
-import { cn } from 'frontend-shadcn'
 
 export type FormFieldsProps = {
 	loading?: boolean

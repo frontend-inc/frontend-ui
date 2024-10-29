@@ -70,7 +70,7 @@ export default function TextInput({
 			<div className="relative w-full">
 				<Input
 					className={cn(
-						'w-full text-foreground bg-background',
+            'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
 						error && 'border-destructive',
 						className
 					)}

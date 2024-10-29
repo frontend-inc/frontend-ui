@@ -24,7 +24,7 @@ const FieldArray: React.FC<FieldArrayProps> = (props) => {
 					values?.map((value, index) => (
 						<Badge
 							variant="secondary"
-							className="px-3 py-1 rounded-full"
+							className="px-2 rounded-full whitespace-nowrap truncate"
 							key={index}
 						>
 							{value}
