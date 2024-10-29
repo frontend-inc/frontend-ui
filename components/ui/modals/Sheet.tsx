@@ -56,8 +56,14 @@ const Sheet: React.FC<SheetProps> = ({
 						{title}
 					</SheetTitle>
 				</SheetHeader>
-        {children}
-        <SheetFooter className={cn(disablePadding && 'px-4')}>
+        <div className="h-full max-h-[calc(100vh-150px)] overflow-y-auto">
+          {children}
+        </div>
+        <SheetFooter className={cn(
+          'py-4',
+          disablePadding && 'px-4'
+          )}
+        >
           {buttons}
         </SheetFooter>
 			</SheetContent>
