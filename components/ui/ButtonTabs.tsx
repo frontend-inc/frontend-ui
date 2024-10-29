@@ -34,12 +34,7 @@ export default function ButtonTabs({
 						<TabsTrigger
 							key={i}
 							value={tab.value.toString()}
-							className={cn(
-								'w-full flex items-center justify-center gap-2 transition-all',
-								'data-[state=active]:bg-background data-[state=active]:text-foreground',
-								'data-[state=active]:shadow-sm',
-								'hover:bg-muted-foreground/10'
-							)}
+							className='w-full'
 						>
 							{tab.icon && <Icon name={tab.icon} className="h-5 w-5" />}
 							{tab.label && <span className="text-sm">{tab.label}</span>}

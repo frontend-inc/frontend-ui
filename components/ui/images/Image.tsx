@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { AspectRatio } from 'frontend-shadcn'
 import { Badge } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
+import { truncate } from '../../../helpers'
 
 export interface ResponsiveImageProps {
 	src: string
@@ -84,7 +85,7 @@ export default function ResponsiveImage({
 						variant="secondary"
 						className="absolute font-medium px-2 py-1 uppercase text-xs tracking-wider top-3 left-3 bg-opacity-20 backdrop-blur-md text-foreground border-none"
 					>
-						{label}
+						{truncate(label, 14)}
 					</Badge>
 				)}
 			</AspectRatio>
