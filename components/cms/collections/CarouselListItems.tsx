@@ -2,21 +2,16 @@
 
 import React from 'react'
 import { useApp } from '../../../hooks'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import CollectionListItem from './CollectionListItem'
 import { CollectionListItemsProps } from '../collections/CollectionListItems'
 import { useResourceContext } from 'frontend-js'
 import { cn } from 'frontend-shadcn'
 import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem, 
-  CarouselNext, 
-  CarouselPrevious,
+  AspectRatio,
   ScrollArea,
   ScrollBar 
 } from 'frontend-shadcn'
-import Autoplay from "embla-carousel-autoplay"
 
 export type CarouselListItemsProps = CollectionListItemsProps & {
 	enableAutoPlay?: boolean
@@ -67,8 +62,8 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 			  )}
       >
         <div className="flex flex-row w-full">
-          {resources?.map((resource, index) => (          
-            <div className='p-1 w-[280px]' key={index}>
+          {resources?.map((resource, index) => (                      
+              <div key={index} className="w-[280px] sm:w-[360px] p-2">
               <CollectionListItem
                 buttons={buttons}
                 style="card"
@@ -80,7 +75,7 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
                 enableFavori tes={enableFavorites}
                 enableLikes={enableLikes}
                 { ...slots.item }
-              />
+              />            
             </div>
           ))}
         </div>
