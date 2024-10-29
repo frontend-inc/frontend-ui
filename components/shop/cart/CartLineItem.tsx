@@ -124,9 +124,9 @@ const CartLineItem: React.FC<CartLineItemProps> = (props) => {
 			</div>
 			<button
 				onClick={handleRemoveFromCart}
-				className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+        className='focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-sm p-1 mr-1'
 			>
-				<Icon name="X" className="h-4 w-4 text-muted-foreground" />
+				<Icon name="X" className="h-4 w-4 text-muted-foreground hover:text-foreground" />
 			</button>
 		</div>
 	)
