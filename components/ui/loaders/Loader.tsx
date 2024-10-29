@@ -19,7 +19,7 @@ export default function Loader({ loading }: LoaderProps) {
 				'w-full h-full min-h-[200px]'
 			)}
 		>
-			<Loader2 className="text-foreground w-12 h-12 animate-spin text-primary" />
+			<Loader2 className="w-12 h-12 animate-spin text-primary" />
 		</div>
 	)
 }

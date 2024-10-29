@@ -49,8 +49,6 @@ export default function CustomDrawer({
       <DrawerPortal>
         <DrawerContent className={cn(
           mode, 
-          'w-full rounded-t-xl overflow-hidden',
-          'fixed bottom-0 left-0 right-0 z-50 p-6'
         )}>
           <DrawerHeader className="sticky top-0 z-10 bg-background">
             <div className="flex w-full justify-end">

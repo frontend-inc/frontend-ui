@@ -35,7 +35,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 	} = props || {}
 
 	return (
-		<div className="p-4 border-b border-border last:border-b-0 hover:bg-gray-50 transition-colors duration-200">
+		<div className="p-4 border-b border-border last:border-b-0 hover:bg-muted/50 transition-colors duration-200">
 			<div className="flex flex-row items-center w-full">
 				{selectable && (
 					<div className="mr-2">

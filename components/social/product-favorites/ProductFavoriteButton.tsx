@@ -11,15 +11,11 @@ import { cn } from 'frontend-shadcn'
 type ProductFavoriteButtonProps = {
 	product: any
 	size?: 'small' | 'large'
-	color?: string
-	numFavorites?: number
 }
 
 export default function ProductFavoriteButton({
 	product,
 	size = 'small',
-	color = 'text-secondary',
-	numFavorites,
 }: ProductFavoriteButtonProps) {
 	const { fetchMe, currentUser } = useAuth()
 	const { setAuthOpen } = useApp()
@@ -54,8 +50,6 @@ export default function ProductFavoriteButton({
 			<IconButton
 				onClick={handleClick}
 				className={cn(
-					color,
-					`hover:${color}`,
 					size === 'large' &&
 						'border border-divider bg-background text-secondary hover:bg-background hover:text-secondary',
 					isFavorite && 'text-primary hover:text-primary-dark border-primary',
@@ -65,7 +59,7 @@ export default function ProductFavoriteButton({
 			>
 				<Bookmark
 					className={cn(
-						'w-4 h-4 text-foreground',
+						'w-5 h-5 text-foreground',
 						isFavorite ? 'fill-primary stroke-primary' : 'fill-none stroke-current'
 					)}
 				/>
