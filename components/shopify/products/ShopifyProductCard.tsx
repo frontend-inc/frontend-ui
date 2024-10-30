@@ -22,7 +22,6 @@ type ShopifyProductCardProps = {
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
 	enableQuickShop?: boolean
-	enableOkendoStarRating?: boolean
 	disableBorder?: boolean
 	buttonVariant?: 'default' | 'secondary' | 'ghost'
 }
@@ -35,7 +34,6 @@ export default function ShopifyProductCard({
 	enableAddToCart = false,
 	enableQuantity = false,
 	enableQuickShop = false,
-	enableOkendoStarRating = false,
 	buttonVariant = 'default',
 	buttonText,
 	disableBorder = false,
@@ -73,7 +71,6 @@ export default function ShopifyProductCard({
 					<Typography variant="subtitle2">
 						{truncate(product?.title)}
 					</Typography>
-					{enableOkendoStarRating && <OkendoStarRating product={product} />}
 					<Typography className="text-muted-foreground" variant="body2">
 						{formatCurrency(product?.priceRange?.minVariantPrice?.amount)}
 					</Typography>

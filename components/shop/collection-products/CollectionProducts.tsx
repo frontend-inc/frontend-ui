@@ -3,22 +3,18 @@
 import React from 'react'
 import { ProductList } from '../..'
 import { ProductListProps } from '../products/ProductList'
-import { useRouter, useParams } from 'next/navigation'
+import { useApp } from '../../../hooks'
 
 export type CollectionProductsProps = ProductListProps & {
 	productCollectionId: string
 }
 
 const CollectionProducts: React.FC<CollectionProductsProps> = (props) => {
-	let { query = {}, productCollectionId, ...rest } = props
+	let { productCollectionId, ...rest } = props
+  const { apiUrl } = useApp()
+  const url = `${apiUrl}/shop/product_collections/${productCollectionId}/products`
 
-	query = {
-		...query,
-		method: 'collection_products',
-		product_collection_id: productCollectionId,
-	}
-
-	return <ProductList query={query} {...rest} />
+	return <ProductList {...props} url={url} />
 }
 
 export default CollectionProducts

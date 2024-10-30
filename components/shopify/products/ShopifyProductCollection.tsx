@@ -24,7 +24,6 @@ export type ShopifyProductCollectionProps = {
 	enableAddToCart?: boolean
 	enableQuickShop?: boolean
 	enableQuantity?: boolean
-	enableOkendoStarRating?: boolean
 }
 
 const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (
@@ -41,7 +40,6 @@ const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (
 		enableAddToCart = false,
 		enableQuickShop = false,
 		enableQuantity = false,
-		enableOkendoStarRating = false,
 	} = props
 
 	const [query, setQuery] = useState<Record<string, any>>({})
@@ -105,7 +103,6 @@ const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (
 				enableAddToCart={enableAddToCart}
 				enableQuickShop={enableQuickShop}
 				enableQuantity={enableQuantity}
-				enableOkendoStarRating={enableOkendoStarRating}
 			/>
 		</div>
 	)

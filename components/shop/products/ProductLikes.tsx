@@ -3,16 +3,13 @@
 import React from 'react'
 import { ProductList } from '../..'
 import { ProductListProps } from './ProductList'
+import { useApp } from '../../../hooks'
 
 const ProductLikes: React.FC<ProductListProps> = (props) => {
-	let { query = {}, ...rest } = props
+  const { apiUrl } = useApp()
+  const url = `${apiUrl}/shop/products/likes`
 
-	query = {
-		...query,
-		method: 'likes',
-	}
-
-	return <ProductList query={query} {...rest} />
+	return <ProductList {...props} url={url} />
 }
 
 export default ProductLikes

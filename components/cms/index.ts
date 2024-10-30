@@ -1,4 +1,3 @@
-export * from './addons'
 export * from './collections'
 export * from './data'
 export * from './forms'

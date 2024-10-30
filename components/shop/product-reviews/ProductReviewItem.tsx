@@ -16,7 +16,7 @@ export default function ProductReviewItem({
 	resource,
 }: ProductReviewItemProps) {
 	return (
-		<div className="flex items-start py-4 border-b border-divider hover:bg-gray-50">
+		<div className="w-full flex items-start py-4 border-b border-divider hover:bg-muted/50">
 			<div className="mr-4 mt-1">
 				<UserAvatar user={resource?.user} />
 			</div>

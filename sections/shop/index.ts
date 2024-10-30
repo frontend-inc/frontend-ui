@@ -11,7 +11,5 @@ export { default as ShopProductRecommendations } from './ShopProductRecommendati
 // Product collections
 export { default as ShopProductCollectionCover } from './ShopProductCollectionCover'
 export { default as ShopProductCollections } from './ShopProductCollections'
-export { default as ShopProductCollectionCoverCarousel } from './ShopProductCollectionCoverCarousel'
 export { default as ShopCollectionProducts } from './ShopCollectionProducts'
 export { default as ShopCollectionProductsCarousel } from './ShopCollectionProductsCarousel'
-export { default as ShopCollectionProductsByHandle } from './ShopCollectionProductsByHandle'

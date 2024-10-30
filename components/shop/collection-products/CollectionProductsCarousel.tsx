@@ -3,7 +3,7 @@
 import React from 'react'
 import { ProductList, ProductCarouselListItems } from '../..'
 import { ProductListProps } from '../products/ProductList'
-import { useRouter, useParams } from 'next/navigation'
+import { useApp } from '../../../hooks'
 
 export type CollectionProductsCarouselProps = ProductListProps & {
 	productCollectionId: string
@@ -14,19 +14,16 @@ export type CollectionProductsCarouselProps = ProductListProps & {
 const CollectionProductsCarousel: React.FC<CollectionProductsCarouselProps> = (
 	props
 ) => {
-	let {
-		query = {},
+
+
+  const { apiUrl } = useApp()
+	const {
 		productCollectionId,
 		enableArrows,
 		enableAutoplay,
 		...rest
 	} = props
 
-	query = {
-		...query,
-		method: 'collection_products',
-		product_collection_id: productCollectionId,
-	}
 
 	const slots = {
 		list: {
@@ -35,10 +32,13 @@ const CollectionProductsCarousel: React.FC<CollectionProductsCarouselProps> = (
 		},
 	}
 
+  const url = `${apiUrl}/shop/product_collections/${productCollectionId}/products`
+
 	return (
 		<ProductList
 			{...rest}
-			query={query}
+			
+      url={ url }
 			list={ProductCarouselListItems}
 			slots={slots}
 		/>

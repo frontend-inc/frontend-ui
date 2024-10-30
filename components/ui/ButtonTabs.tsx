@@ -36,7 +36,15 @@ export default function ButtonTabs({
 							value={tab.value.toString()}
 							className='w-full'
 						>
-							{tab.icon && <Icon name={tab.icon} className="h-5 w-5" />}
+							{tab.icon && (
+                <Icon 
+                  name={tab.icon} 
+                  className={cn(
+                    "h-5 w-5",
+                    tab.label && "mr-2"
+                  )} 
+                />
+              )}
 							{tab.label && <span className="text-sm">{tab.label}</span>}
 						</TabsTrigger>
 					)

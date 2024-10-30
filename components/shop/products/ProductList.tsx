@@ -20,10 +20,9 @@ import {
 import { useApp } from '../../../hooks'
 
 export type ProductListProps = {
-	grid?: boolean
+	layout?: 'grid' | 'list' | 'slider'
 	selectable?: boolean
 	url?: string
-	href?: string
 	displayFields: DisplayFieldType[]
 	enableLikes?: boolean
 	enableFavorites?: boolean
@@ -53,33 +52,26 @@ export type ProductListProps = {
 		empty?: any
 		item?: any
 	}
-	foreignUrl?: string
 	query?: any
 	resource: any
-	filterSimilar?: boolean
 }
 
 const ProductList: React.FC<ProductListProps> = (props) => {
 	const { apiUrl } = useApp()
 
-	let { url } = props || {}
 	const {
-		grid = true,
+		layout = 'grid',
 		selectable = false,
-		foreignUrl,
 		query,
 		resource,
 		perPage = 9,
-		filterSimilar,
-
 		enableLikes,
 		enableFavorites,
 		enableRatings,
 		enableUsers,
 		enableGradient,
 		enableOverlay,
-
-		href,
+    url = `${apiUrl}/shop/products`,
 		buttons = [],
 		displayFields = [],
 		enableShow,
@@ -105,13 +97,11 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		query,
 		resource,
 		perPage,
-		filterSimilar,
 	})
 
 	const slots = {
 		list: {
 			...defaultSlots.list,
-			href,
 			enableLikes,
 			enableFavorites,
 			enableRatings,
@@ -135,7 +125,6 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		empty: defaultSlots.empty,
 		item: {
 			...defaultSlots.item,
-			href,
 			buttons,
 			displayFields,
 			enableLikes,
@@ -145,10 +134,6 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 			enableGradient,
 			enableOverlay,
 		},
-	}
-
-	if (!url) {
-		url = `${apiUrl}/shop/products`
 	}
 
 	const filterOptions = [
@@ -168,9 +153,8 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 	return (
 		<DataList
 			selectable={selectable}
-			grid={grid}
+			layout={layout}
 			url={url}
-			foreignUrl={foreignUrl}
 			name="product"
 			query={searchQuery}
 			fields={fields}

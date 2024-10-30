@@ -20,10 +20,9 @@ export type ShowModalProps = {
 }
 
 const ShowModal: React.FC<ShowModalProps> = (props) => {
-	const { openShow, setOpenShow, resource, url } = useResourceContext()
+	const { openShow, setOpenShow, resource } = useResourceContext()
 
 	const {
-		buttons = [],
 		displayFields = [],
 		enableRatings,
 		enableLikes,
@@ -37,8 +36,6 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 	return (
 		<Modal open={openShow} handleClose={() => setOpenShow(false)} maxWidth="md">
 			<ProductListItem
-				disableBorder
-				buttons={buttons}
 				resource={resource}
 				handleClick={() => setOpenShow(false)}
 				displayFields={displayFields}

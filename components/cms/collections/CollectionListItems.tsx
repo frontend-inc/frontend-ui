@@ -29,8 +29,6 @@ export type CollectionListItemsProps = {
 }
 
 const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
-	const router = useRouter()
-	const { clientUrl } = useApp()
 
 	const {
 		setResource,
@@ -47,7 +45,6 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		layout = 'list',
 		buttons = [],
 		style = 'list',
-		href,
 		handleClick,
 		displayFields = [],
 		enableGradient = false,
@@ -63,15 +60,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 	const handleShowClick = (resource) => {
     if (handleClick) {
 			handleClick(resource)
-		} else if (href) {
-			if (clientUrl && href && resource?.handle) {
-				window.scrollTo({
-					top: 0,
-					behavior: 'smooth',
-				})
-				router.push(`${clientUrl}${href}/${resource?.handle}`)
-			}
-		} else {
+		} else {					
 			setResource(resource)
 			setOpenShow(true)
 		}

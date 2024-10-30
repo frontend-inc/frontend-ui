@@ -52,15 +52,13 @@ export default function ProductFavoriteButton({
 				className={cn(
 					size === 'large' &&
 						'border border-divider bg-background text-secondary hover:bg-background hover:text-secondary',
-					isFavorite && 'text-primary hover:text-primary-dark border-primary',
-					'transition-transform duration-200',
-          isFavorite && 'transform scale-110'
+					isFavorite && 'text-primary hover:text-primary-dark border-primary ring-offset-2 ring-2 ring-ring',
 				)}
 			>
 				<Bookmark
 					className={cn(
 						'w-5 h-5 text-foreground',
-						isFavorite ? 'fill-primary stroke-primary' : 'fill-none stroke-current'
+						isFavorite ? 'fill-primary' : 'fill-none '
 					)}
 				/>
 			</IconButton>

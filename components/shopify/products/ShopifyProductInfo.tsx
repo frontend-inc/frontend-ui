@@ -10,7 +10,6 @@ type ShopifyProductDetailsProps = {
 	product?: ShopifyProductType
 	price?: number
 	compareAtPrice?: number
-	enableOkendoStarRating?: boolean
 }
 
 const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = (props) => {
@@ -18,14 +17,12 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = (props) => {
 		product,
 		price,
 		compareAtPrice,
-		enableOkendoStarRating = false,
 	} = props
 
 	if (!product) return null
 	return (
 		<div className="flex flex-col space-y-2">
 			<Typography variant="h4">{product.title}</Typography>
-			{enableOkendoStarRating && <OkendoStarRating product={product} />}
 			<div className="flex flex-row space-x-2">
 				<Typography variant="h6">{price && formatCurrency(price)}</Typography>
 				{compareAtPrice && (

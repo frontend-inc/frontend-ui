@@ -13,8 +13,7 @@ export const SYSTEM_FIELDS = [
 	'handle',
 	'user_id',
 	'team_id',
-	'label',
-	'shopify_products',
+	'label',	
 	'published',
 	'status',
 	'locale',
@@ -28,6 +27,11 @@ export const SYSTEM_FIELDS = [
 	'file',
 	'lat',
 	'lng',
+  'youtube_video',
+  'vimeo_video',  
+  'soundcloud_audio',  
+  'calendly_url',  
+  'shopify_product'
 ]
 
 /* SYSTEM FIELDS */

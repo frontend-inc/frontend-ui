@@ -29,7 +29,7 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 		logout,
 	} = useAuth()
 
-	const [currentTab, setCurrentTab] = useState<number>()
+	const [currentTab, setCurrentTab] = useState<number>(0)
 
 	const handleDeleteAvatar = async () => {
 		await deleteAvatar()

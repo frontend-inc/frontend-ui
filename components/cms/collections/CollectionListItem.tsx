@@ -36,7 +36,6 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 		buttons,
 		resource,
 		displayFields = [],
-		href,
 		handleClick,
 		enableGradient = false,
 		enableOverlay = false,
@@ -58,11 +57,24 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 
 	let Component = COMPONENTS[style] || Card
 
+  let typographyClasses = {
+    card: 'text-sm',
+		avatar: 'text-sm',
+		cover: 'text-sm',
+		chip: 'text-sm',
+		text: 'text-lg font-semibold',
+		list: 'text-sm'
+  }
+
 	return (
 		<Component
 			label={resource?.label}
 			image={resource?.image?.url}
-			primary={resource?.title}
+			primary={
+        <div className={ typographyClasses[style] }>
+          { resource?.title }
+        </div>
+      }
 			handleClick={handleClick}
 			// @ts-ignore
 			secondary={

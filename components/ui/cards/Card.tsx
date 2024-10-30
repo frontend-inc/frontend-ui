@@ -14,7 +14,7 @@ export type CardProps = {
 	avatar?: React.ReactNode
 	image?: string
 	label?: string
-	primary: string
+	primary: string | React.ReactNode
 	secondary?: string | React.ReactNode
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode

@@ -1,4 +1,5 @@
 export type FieldVariantTypes =
+  | 'avatar'
 	| 'array'
 	| 'audio'
 	| 'email'
@@ -22,11 +23,13 @@ export type FieldVariantTypes =
 	| 'state'
 	| 'country'
 	| 'location'
-	| 'select'
-	| 'products'
-	| 'shopify_products'
-	| 'user'
-	| 'team'
+	| 'select'	
+  | 'youtube_video'
+  | 'vimeo_video'
+  | 'soundcloud_audio'
+  | 'calendly_url'
+	| 'shopify_product'
+	| 'user'	
 
 export type FieldDbType =
 	| 'string'
@@ -49,8 +52,9 @@ export type FieldCategoryType =
 	| 'Data'
 	| 'Boolean'
 	| 'Reference'
-	| 'Shop'
-	| 'Shopify'
+	| 'Shop'	
+  | 'Shopify'
+  | 'Addon'
 
 export type FieldVariantType = {
 	icon: string

@@ -1,6 +1,5 @@
 export * from './cart'
 export * from './collection-products'
-export * from './metafields'
 export * from './products/cards'
 export * from './pdp'
 export * from './products'

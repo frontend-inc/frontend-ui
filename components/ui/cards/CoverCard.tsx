@@ -4,23 +4,9 @@ import React from 'react'
 import { cn } from 'frontend-shadcn'
 import { Image, TouchableOpacity } from '../..'
 import { Typography } from '../../core'
+import { CardProps } from './Card'
 
-type CoverCardProps = {
-	label?: string
-	primary?: string
-	secondary?: string
-	actions?: React.ReactNode
-	secondaryAction?: React.ReactNode
-	handleClick: () => void
-	image: string
-	height?: number
-	slots?: {
-		item?: any
-		image?: any
-	}
-}
-
-const CoverCard: React.FC<CoverCardProps> = (props) => {
+const CoverCard: React.FC<CardProps> = (props) => {
 	const {
 		label,
 		primary,
@@ -29,7 +15,6 @@ const CoverCard: React.FC<CoverCardProps> = (props) => {
 		secondaryAction,
 		handleClick,
 		image,
-		height = 340,
 		slots = {
 			item: {},
 			image: {},
@@ -45,7 +30,7 @@ const CoverCard: React.FC<CoverCardProps> = (props) => {
 					<Image
 						label={label}
 						src={image}
-						height={height}
+						height={340}
 						alt={primary}
 						aspectRatio={4 / 5}
 						className={cn('w-full', slots.image.className)}

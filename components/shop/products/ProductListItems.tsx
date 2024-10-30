@@ -13,7 +13,7 @@ export type ProductListItemsProps = {
 	style?: 'list' | 'card' | 'avatar' | 'cover' | 'text'
 	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
-	handleClick?: (resource: any) => void
+	handleClick: (resource: any) => void
 	enableGradient?: boolean
 	enableOverlay?: boolean
 	enableFavorites?: boolean
@@ -27,8 +27,6 @@ export type ProductListItemsProps = {
 }
 
 const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
-	const router = useRouter()
-	const { clientUrl } = useApp()
 
 	const {
 		setResource,
@@ -43,7 +41,6 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 	const {
 		buttons = [],
 		style = 'list',
-		href,
 		handleClick,
 		displayFields = [],
 		enableGradient = false,
@@ -56,22 +53,6 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 		},
 	} = props
 
-	const handleShowClick = (resource) => {
-		if (handleClick) {
-			handleClick(resource)
-		} else if (href) {
-			if (clientUrl && href && resource?.handle) {
-				window.scrollTo({
-					top: 0,
-					behavior: 'smooth',
-				})
-				router.push(`${clientUrl}${href}/${resource?.handle}`)
-			}
-		} else {
-			setResource(resource)
-			setOpenShow(true)
-		}
-	}
 
 	const handlePaginate = async () => {
 		await loadMore()
@@ -86,7 +67,7 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 						style={style}
 						resource={resource}
 						displayFields={displayFields}
-						handleClick={() => handleShowClick(resource)}
+						handleClick={() => handleClick(resource)}
 						buttons={buttons}
 						enableFavorites={enableFavorites}
 						enableLikes={enableLikes}

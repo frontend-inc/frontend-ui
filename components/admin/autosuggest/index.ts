@@ -1,4 +1,3 @@
-export { default as ZapAutosuggest } from './ZapAutosuggest'
 export { default as CollectionAutosuggest } from './CollectionAutosuggest'
 export { default as DocumentAutosuggest } from './DocumentAutosuggest'
 export { default as FieldAutosuggest } from './FieldAutosuggest'

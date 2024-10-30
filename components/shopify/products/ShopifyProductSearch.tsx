@@ -34,7 +34,6 @@ export type ShopifyProductSearchProps = {
 	enableAddToCart?: boolean
 	enableQuickShop?: boolean
 	enableQuantity?: boolean
-	enableOkendoStarRating?: boolean
 }
 
 const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
@@ -47,7 +46,6 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
 	enableAddToCart = false,
 	enableQuickShop = false,
 	enableQuantity = false,
-	enableOkendoStarRating = false,
 }) => {
 	const router = useRouter()
 	const { trackProductsSearched } = useSegment()
@@ -179,7 +177,6 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
 							enableAddToCart={enableAddToCart}
 							enableQuickShop={enableQuickShop}
 							enableQuantity={enableQuantity}
-							enableOkendoStarRating={enableOkendoStarRating}
 						/>
 					)}
 

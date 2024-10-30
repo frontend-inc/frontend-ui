@@ -35,7 +35,6 @@ export type DataListProps = {
 	filterOptions: SearchFilterOptionType[]
 	sortOptions: SortOptionType[]
 	buttons?: ButtonType[]
-	href?: string
 	enableSearch?: boolean
 	enableShow?: boolean
 	enableCreate?: boolean
@@ -96,7 +95,6 @@ const DataList: React.FC<DataListProps> = (props) => {
 		enableDelete,
 		enableFilters,
 		enableSorting,
-		href,
 		url,
 		foreignUrl,
 		name,
@@ -142,7 +140,6 @@ const DataList: React.FC<DataListProps> = (props) => {
 					<List
 						layout={layout}
 						selectable={selectable}
-						href={href}
 						enableEdit={enableEdit}
 						enableDelete={enableDelete}
 						component={Component}

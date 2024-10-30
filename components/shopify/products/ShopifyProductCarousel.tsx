@@ -16,7 +16,6 @@ import {
 } from 'frontend-shadcn'
 
 type ShopifyProductCarouselProps = {
-	href: string
 	loading?: boolean
 	products: ShopifyProductType[]
 	buttonText?: string
@@ -28,7 +27,6 @@ type ShopifyProductCarouselProps = {
 	enableAddToCart?: boolean
 	enableQuickShop?: boolean
 	enableQuantity?: boolean
-	enableOkendoStarRating?: boolean
 }
 
 const ShopifyProductCarousel: React.FC<ShopifyProductCarouselProps> = (
@@ -36,26 +34,18 @@ const ShopifyProductCarousel: React.FC<ShopifyProductCarouselProps> = (
 ) => {
 	const {
     loading,
-		href = '/products',
 		products,
 		buttonText = 'Add to cart',
 		enableBorder = false,
 		enableAddToCart,
 		enableQuickShop,
 		enableQuantity = false,
-		enableOkendoStarRating,
 	} = props
 
-	const { clientUrl } = useApp()
-
-	const router = useRouter()
 	const { trackProductClicked } = useSegment()
 
 	const handleClick = (product) => {
-		if (href) {
-			const url = `${clientUrl}${href}/${product?.handle}`
-			router.push(url)
-		}
+    console.log("Product clicked", product)
 	}
 
 	return (
@@ -78,7 +68,6 @@ const ShopifyProductCarousel: React.FC<ShopifyProductCarouselProps> = (
                   enableAddToCart={enableAddToCart}
                   enableQuickShop={enableQuickShop}
                   enableQuantity={enableQuantity}
-                  enableOkendoStarRating={enableOkendoStarRating}
                 />
               </div>
             </CarouselItem>

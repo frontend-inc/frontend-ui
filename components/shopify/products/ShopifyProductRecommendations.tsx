@@ -16,7 +16,6 @@ export type ShopifyProductRecommendationsProps = {
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
 	enableQuickShop?: boolean
-	enableOkendoStarRating?: boolean
 	buttonText?: string
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 }
@@ -34,7 +33,6 @@ const ShopifyProductRecommendations: React.FC<
 		enableAddToCart,
 		enableQuantity,
 		enableQuickShop,
-		enableOkendoStarRating,
 	} = props || {}
 
 	const [similarProducts, setSimilarProducts] = useState<any>()
@@ -82,20 +80,17 @@ const ShopifyProductRecommendations: React.FC<
 					enableAddToCart={enableAddToCart}
 					enableQuantity={enableQuantity}
 					enableQuickShop={enableQuickShop}
-					enableOkendoStarRating={enableOkendoStarRating}
 					buttonText={buttonText}
 				/>
 			)}
 			{layout == 'carousel' && (
 				<ShopifyProductCarousel
-					href={href}
 					loading={loading}
 					products={similarProducts}
 					enableBorder={enableBorder}
 					enableAddToCart={enableAddToCart}
 					enableQuantity={enableQuantity}
 					enableQuickShop={enableQuickShop}
-					enableOkendoStarRating={enableOkendoStarRating}
 					buttonText={buttonText}
 				/>
 			)}

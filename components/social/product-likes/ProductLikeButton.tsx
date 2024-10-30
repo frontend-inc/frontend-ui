@@ -53,9 +53,7 @@ export default function ProductLikeButton({
 				onClick={handleClick}
 				className={cn(
 					size === 'large' && 'border border-divider',
-					size === 'large' && liked && 'bg-primary hover:bg-primary-dark',
 					'transition-transform duration-200',
-					liked && 'transform scale-110'
 				)}
 			>
 				<Heart

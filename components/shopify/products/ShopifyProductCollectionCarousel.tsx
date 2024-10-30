@@ -14,7 +14,6 @@ export type ShopifyProductCollectionCarouselProps = {
 	enableAddToCart?: boolean
 	enableQuickShop?: boolean
 	enableQuantity?: boolean
-	enableOkendoStarRating?: boolean
 }
 
 const ShopifyProductCollectionCarousel: React.FC<
@@ -30,7 +29,6 @@ const ShopifyProductCollectionCarousel: React.FC<
 		enableAddToCart = false,
 		enableQuickShop = false,
 		enableQuantity = false,
-		enableOkendoStarRating = false,
 	} = props
 
 	const { loading, products, findCollection } = useCollections()
@@ -43,7 +41,6 @@ const ShopifyProductCollectionCarousel: React.FC<
 
 	return (
 		<ShopifyProductCarousel
-			href={href}
 			loading={loading}
 			products={products}
 			enableAutoPlay={enableAutoPlay}
@@ -53,7 +50,6 @@ const ShopifyProductCollectionCarousel: React.FC<
 			enableAddToCart={enableAddToCart}
 			enableQuickShop={enableQuickShop}
 			enableQuantity={enableQuantity}
-			enableOkendoStarRating={enableOkendoStarRating}
 		/>
 	)
 }

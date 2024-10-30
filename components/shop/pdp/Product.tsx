@@ -1,29 +1,42 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ProductDetails } from '../..'
 import { ProductDetailsProps } from './ProductDetails'
-import { ResourceProvider } from 'frontend-js'
-import { FormFieldType } from '../../../types'
+import { ResourceProvider, useResource } from 'frontend-js'
 
 export type ProductProps = ProductDetailsProps & {
-	url?: string
 	foreignUrl?: string
-	fields: FormFieldType[]
+	productId: string | number 
 }
 
 const Product: React.FC<ProductProps> = (props) => {
-	const {
-		url = '/api/v1/shop/products',
+	
+  const {		
 		foreignUrl,
-		product,
+		productId,
 	} = props || {}
+
+  const { 
+    loading, 
+    resource: product,
+    findOne: findProduct,     
+  } = useResource({
+    url: '/api/v1/shop/products',
+    name: 'product'
+  })
+
+  useEffect(() => {
+    if(productId){
+      findProduct(productId)
+    }
+  }, [productId])  
 
 	return (
 		<ResourceProvider
 			name="product"
 			resource={product}
-			url={url}
+			url={'/api/v1/shop/products'}
 			foreignUrl={foreignUrl}
 		>
 			<ProductDetails {...props} />

@@ -3,14 +3,11 @@
 import React from 'react'
 import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
-import { useApp } from '../../../hooks'
-import { useRouter } from 'next/navigation'
 import { ProductCollectionListItem, DataLayout } from '../..'
 import { ButtonType, DisplayFieldType } from '../../../types'
 
 export type ProductCollectionListItemsProps = {
 	layout?: 'list' | 'grid' | 'slider'
-	href?: string
 	style?: 'list' | 'card' | 'avatar' | 'cover' | 'text'
 	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
@@ -30,8 +27,6 @@ export type ProductCollectionListItemsProps = {
 const ProductCollectionListItems: React.FC<ProductCollectionListItemsProps> = (
 	props
 ) => {
-	const router = useRouter()
-	const { clientUrl } = useApp()
 
 	const {
 		setResource,
@@ -47,7 +42,6 @@ const ProductCollectionListItems: React.FC<ProductCollectionListItemsProps> = (
 		layout = 'list',
 		buttons = [],
 		style = 'list',
-		href,
 		handleClick,
 		displayFields = [],
 		enableGradient = false,
@@ -63,14 +57,6 @@ const ProductCollectionListItems: React.FC<ProductCollectionListItemsProps> = (
 	const handleShowClick = (resource) => {
 		if (handleClick) {
 			handleClick(resource)
-		} else if (href) {
-			if (clientUrl && href && resource?.handle) {
-				window.scrollTo({
-					top: 0,
-					behavior: 'smooth',
-				})
-				router.push(`${clientUrl}${href}/${resource?.handle}`)
-			}
 		} else {
 			setResource(resource)
 			setOpenShow(true)

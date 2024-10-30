@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { ShopifyProductArray } from '../../shopify'
+import { ShopifyProductArray } from '../../../shopify'
 import { get } from 'lodash'
 
 export type FieldShopifyProductsProps = {

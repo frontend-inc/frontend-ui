@@ -7,12 +7,10 @@ import {
 	ShopifyProductInfo,
 	ShopifyProductImages,
 	ShopifyProductVariantSelector,
-	ShopifyProductMetafields,
 	ShopifyTrackRecentlyViewed,
 } from '..'
 import {
 	useProductDetails,
-	ShopifyMetafieldType,
 	ShopifyProductType,
 } from 'frontend-shopify'
 import { cn } from 'frontend-shadcn'
@@ -20,21 +18,17 @@ import { cn } from 'frontend-shadcn'
 export type ShopifyProductDetailsProps = {
 	shopifyProduct: ShopifyProductType
 	buttonText?: string
-	metafields?: ShopifyMetafieldType[]
 	enableQuantity?: boolean
 	enableFavorites?: boolean
 	enableSubscription?: boolean
-	enableOkendoStarRating?: boolean
 }
 
 const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = ({
 	shopifyProduct: product,
 	buttonText,
-	metafields,
 	enableQuantity = true,
 	enableSubscription = true,
 	enableFavorites,
-	enableOkendoStarRating,
 }) => {
 	const {
 		price,
@@ -66,7 +60,6 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = ({
 							product={product}
 							price={price}
 							compareAtPrice={compareAtPrice}
-							enableOkendoStarRating={enableOkendoStarRating}
 						/>
 						<ShopifyProductVariantSelector
 							product={product}
@@ -83,12 +76,6 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = ({
 						/>
 					</div>
 					<ShopifyProductDescription product={product} />
-					{metafields && (
-						<ShopifyProductMetafields
-							product={product}
-							metafields={metafields}
-						/>
-					)}
 					<ShopifyTrackRecentlyViewed product={product} />
 				</div>
 			</div>

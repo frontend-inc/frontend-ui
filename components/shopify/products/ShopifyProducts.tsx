@@ -21,7 +21,6 @@ type ShopifyProductsProps = {
 	enableAddToCart?: boolean
 	enableQuickShop?: boolean
 	enableQuantity?: boolean
-	enableOkendoStarRating?: boolean
 }
 
 const ShopifyProducts: React.FC<ShopifyProductsProps> = ({
@@ -32,7 +31,6 @@ const ShopifyProducts: React.FC<ShopifyProductsProps> = ({
 	enableAddToCart,
 	enableQuickShop,
 	enableQuantity,
-	enableOkendoStarRating,
 }) => {
 	const { clientUrl } = useApp()
 	const router = useRouter()
@@ -56,7 +54,6 @@ const ShopifyProducts: React.FC<ShopifyProductsProps> = ({
 						enableAddToCart={enableAddToCart}
 						enableQuickShop={enableQuickShop}
 						enableQuantity={enableQuantity}
-						enableOkendoStarRating={enableOkendoStarRating}
 						buttonText={buttonText}
 					/>
 				</div>

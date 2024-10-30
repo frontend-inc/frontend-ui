@@ -55,7 +55,6 @@ export default function FavoriteButton({
 					variant == 'circular' ? 'rounded-full' : 'rounded-lg',
 					size === 'large' && 'border border-divider',
 					'transition-transform duration-200',
-					isFavorite && 'transform scale-110'
 				)}
 			>
 				<Bookmark

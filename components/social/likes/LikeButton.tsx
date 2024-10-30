@@ -52,8 +52,6 @@ export default function LikeButton({
 				className={cn(
 					variant == 'circular' ? 'rounded-full' : 'rounded-lg',
 					size === 'large' && 'border border-divider',
-					'transition-transform duration-200',
-					liked && 'transform scale-110'
 				)}
 			>
 				<Heart

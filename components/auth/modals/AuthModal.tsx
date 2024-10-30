@@ -11,20 +11,15 @@ import {
 	VerifySendPinForm,
 } from '../..'
 import { useAuth } from 'frontend-js'
-import { useRouter, useParams } from 'next/navigation'
 import { useApp } from '../../../hooks'
 
 type AuthModalProps = {
-	disableUsername?: boolean
 	enableGoogle?: boolean
 	handleSuccess?: () => void
 }
 
 const AuthModal: React.FC<AuthModalProps> = (props) => {
-	const { disableUsername = false, enableGoogle, handleSuccess } = props
-
-	const router = useRouter()
-	const { app_id: appId } = useParams() as any
+	const { enableGoogle, handleSuccess } = props
 
 	const { authOpen, setAuthOpen } = useApp()
 
@@ -43,10 +38,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 	const [tab, setTab] = useState(1)
 
 	const handleLogin = async () => {
-		let resp = await login({
-			...user,
-			app_id: appId,
-		})
+		let resp = await login(user)
 		if (resp?.id) {
 			setAuthOpen(false)
 			if (handleSuccess) {
@@ -56,10 +48,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 	}
 
 	const handleSignup = async () => {
-		let resp = await signup({
-			...user,
-			app_id: appId,
-		})
+		let resp = await signup(user)
 		if (resp?.id) {
 			setAuthOpen(false)
 		}
@@ -76,10 +65,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 	}
 
 	const handleSendPin = async () => {
-		await sendPin({
-			...user,
-			app_id: appId,
-		})
+		await sendPin(user)
 		setTab(3)
 	}
 
@@ -101,12 +87,12 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 		}
 	}
 
-	const handleSignupClick = () => {
-		setTab(1)
+  const handleLoginClick = () => {
+		setTab(0)
 	}
 
-	const handleLoginClick = () => {
-		setTab(0)
+	const handleSignupClick = () => {
+		setTab(1)
 	}
 
 	const handleForgotPasswordClick = () => {
@@ -116,12 +102,6 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 	const handleResendPinClick = () => {
 		setTab(4)
 	}
-
-	useEffect(() => {
-		if (authOpen) {
-			setTab(1)
-		}
-	}, [authOpen])
 
 	return (
 		<Modal
@@ -158,7 +138,6 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 				)}
 				{tab === 1 && (
 					<SignupForm
-						disableUsername={disableUsername}
 						errors={errors}
 						loading={loading}
 						user={user}

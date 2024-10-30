@@ -6,16 +6,16 @@ import { DataList } from '../..'
 import ProductReviewsList from './ProductReviewsList'
 
 export type ProductReviewsProps = {
-	handle: string
-	url: string
+	productId: string
 }
 
 const ProductReviews: React.FC<ProductReviewsProps> = (props) => {
-	const { handle } = props
+	const { productId } = props
 
+  if(!productId) return null
 	return (
 		<DataList
-			url={`/api/v1/shop/products/${handle}/reviews`}
+			url={`/api/v1/shop/products/${productId}/reviews`}
 			name="review"
 			enableSearch
 			enableSorting

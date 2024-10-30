@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Calendly } from '../..'
+import { Calendly } from '../../..'
 import { get } from 'lodash'
 
 export type FieldCalendlyProps = {

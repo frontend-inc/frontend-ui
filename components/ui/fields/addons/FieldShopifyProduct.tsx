@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { ShopifyProductDetails } from '../../shopify'
+import { ShopifyProductDetails } from '../../../shopify'
 import { useProducts } from 'frontend-shopify'
 import { get } from 'lodash'
 

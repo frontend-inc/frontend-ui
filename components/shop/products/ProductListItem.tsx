@@ -7,16 +7,13 @@ import { ButtonType, DisplayFieldType } from '../../../types'
 import { AddToCartButton } from '../../../components'
 
 type ProductListItemProps = {
-	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
 	resource: any
 	buttonText?: string
-	href?: string
 	handleClick: () => void
 	enableBorder?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
-	enableUsers?: boolean
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableRatings?: boolean
@@ -25,17 +22,14 @@ type ProductListItemProps = {
 
 const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 	const {
-		buttons,
 		resource,
 		displayFields = [],
-		href,
 		handleClick,
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
 		enableLikes = false,
 		enableRatings = false,
-		enableUsers = false,
 		disableBorder = false,
 	} = props
 

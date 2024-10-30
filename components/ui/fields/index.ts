@@ -1,3 +1,5 @@
+export * from './addons'
+
 export { default as Field } from './Field'
 export { default as FieldArray } from './FieldArray'
 export { default as FieldBoolean } from './FieldBoolean'

@@ -220,38 +220,61 @@ export const FILE_FIELD_VARIANT: FieldVariantType = {
 	color: 'bg-pink-500',
 }
 
-export const HABTM_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Repeat',
-	category: 'Reference',
-	db_type: 'habtm',
-	variant: 'habtm',
-	label: 'Reference',
-	description: 'Connect one or more items',
-	array: false,
-	color: 'bg-orange-500',
-}
-
-export const SHOP_PRODUCTS_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Box',
-	category: 'Shop',
-	variant: 'products',
-	label: 'Products',
-	db_type: 'habtm',
-	description: 'Products from the shop',
-	array: true,
-	color: 'bg-lime-500',
-}
-
-export const SHOPIFY_PRODUCTS_FIELD_VARIANT: FieldVariantType = {
+export const SHOPIFY_PRODUCT_FIELD_VARIANT: FieldVariantType = {
 	icon: 'Shirt',
 	category: 'Shopify',
-	variant: 'shopify_products',
-	label: 'Shopify Products',
+	variant: 'shopify_product',
+	label: 'Shopify Product',
 	db_type: 'string',
-	description: 'Shopify Products',
+	description: 'Shopify Product',
 	array: true,
 	color: 'bg-lime-500',
 }
+
+export const YOUTUBE_VIDEO_FIELD_VARIANT: FieldVariantType = {
+	icon: 'Video',
+	category: 'Addon',
+	variant: 'youtube_video',
+	label: 'YouTube Video',
+	db_type: 'string',
+	description: 'YouTube Video',
+	array: true,
+	color: 'bg-pink-500',
+}
+
+export const VIMEO_VIDEO_FIELD_VARIANT: FieldVariantType = {
+	icon: 'Video',
+	category: 'Addon',
+	variant: 'vimeo_video',
+	label: 'Vimeo Video',
+	db_type: 'string',
+	description: 'Vimeo Video',
+	array: true,
+	color: 'bg-pink-500',
+}
+
+export const SOUNDCLOUND_AUDIO_FIELD_VARIANT: FieldVariantType = {
+	icon: 'Song',
+	category: 'Addon',
+	variant: 'soundcloud_audio',
+	label: 'Soundcloud Audio',
+	db_type: 'string',
+	description: 'Soundcloud Audio',
+	array: true,
+	color: 'bg-pink-500',
+}
+
+export const CALENDLY_URL_FIELD_VARIANT: FieldVariantType = {
+	icon: 'Clock',
+	category: 'Addon',
+	variant: 'calendly_url',
+	label: 'Calendly URL',
+	db_type: 'string',
+	description: 'Calendly URL',
+	array: true,
+	color: 'bg-pink-500',
+}
+
 
 export const FIELD_VARIANTS: FieldVariantType[] = [
 	STRING_FIELD_VARIANT,
@@ -277,7 +300,9 @@ export const FIELD_VARIANTS: FieldVariantType[] = [
 	VIDEO_FIELD_VARIANT,
 	FILE_FIELD_VARIANT,
 
-	HABTM_FIELD_VARIANT,
-	SHOP_PRODUCTS_FIELD_VARIANT,
-	SHOPIFY_PRODUCTS_FIELD_VARIANT,
+	SHOPIFY_PRODUCT_FIELD_VARIANT,
+  YOUTUBE_VIDEO_FIELD_VARIANT,
+  VIMEO_VIDEO_FIELD_VARIANT,
+  SOUNDCLOUND_AUDIO_FIELD_VARIANT,
+  CALENDLY_URL_FIELD_VARIANT
 ]

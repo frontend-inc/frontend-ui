@@ -13,7 +13,6 @@ type ProductArrayProps = {
 	enableAddToCart?: boolean
 	enableQuickShop?: boolean
 	enableQuantity?: boolean
-	enableOkendoStarRating?: boolean
 	buttonText?: string
 }
 
@@ -24,7 +23,6 @@ const ProductArray: React.FC<ProductArrayProps> = ({
 	enableAddToCart = false,
 	enableQuickShop = false,
 	enableQuantity = false,
-	enableOkendoStarRating = false,
 	buttonText,
 }) => {
 	const router = useRouter()
@@ -55,7 +53,6 @@ const ProductArray: React.FC<ProductArrayProps> = ({
 							enableAddToCart={enableAddToCart}
 							enableQuickShop={enableQuickShop}
 							enableQuantity={enableQuantity}
-							enableOkendoStarRating={enableOkendoStarRating}
 							buttonText={buttonText}
 						/>
 					</div>
