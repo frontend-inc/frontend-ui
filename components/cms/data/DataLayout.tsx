@@ -12,7 +12,7 @@ type DataLayoutProps = {
 
 export default function DataLayout({
 	loading,
-	layout = 'list',
+	layout = 'grid',
 	children,
 }: DataLayoutProps) {
 	return (
