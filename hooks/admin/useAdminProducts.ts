@@ -2,9 +2,9 @@
 
 import React from 'react'
 import { useApi, useResource } from 'frontend-js'
-import { useAdmin } from '../../hooks'
+import { useAdmin } from '..'
 
-const useProducts = () => {
+const useAdminProducts = () => {
 	const { apiUrl } = useAdmin()
 	const { api } = useApi()
 
@@ -114,4 +114,4 @@ const useProducts = () => {
 	}
 }
 
-export default useProducts
+export default useAdminProducts

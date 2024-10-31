@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react'
 import { AuthScreen, Loader } from '../../../components'
-import { useOrders } from 'frontend-shopify'
+import { useAdminOrders } from 'frontend-shopify'
 import { ShopifyOrderList } from '../../../components/shopify'
 import { useApp } from '../../../hooks'
 import { useRouter, useParams } from 'next/navigation'
@@ -21,7 +21,7 @@ const ShopifyCustomerOrders: React.FC<ShopifyCustomerOrdersProps> = (props) => {
 	const { title = 'Customer Orders', subtitle = 'Manage your orders' } =
 		props || {}
 
-	const { loading, orders, findCustomerOrders } = useOrders()
+	const { loading, orders, findCustomerOrders } = useAdminOrders()
 
 	const handleClick = (order) => {
 		let orderId = getShopifyIdFromGid(order?.id)

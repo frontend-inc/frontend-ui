@@ -81,8 +81,8 @@ export default function CustomDrawer({
             )}
           </DrawerHeader>          
           <ScrollArea>
-            <div className="flex justify-center w-full py-6">
-              <div className="max-w-screen-md w-full max-h-[78vh]">{children}</div>
+            <div className="flex justify-center w-full py-6 px-6 sm:px-0">
+              <div className="max-w-screen-md w-full min-h-[50vh] max-h-[75vh]">{children}</div>
             </div>
           </ScrollArea>          
           {!loading && buttons && (

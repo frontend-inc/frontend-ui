@@ -4,7 +4,7 @@ import React from 'react'
 import { useResource, useApi } from 'frontend-js'
 import { useAdmin } from '../../hooks'
 
-const useProductCollections = () => {
+const useAdminProductCollections = () => {
 	const { apiUrl } = useAdmin()
 	const { api } = useApi()
 
@@ -144,4 +144,4 @@ const useProductCollections = () => {
 	}
 }
 
-export default useProductCollections
+export default useAdminProductCollections

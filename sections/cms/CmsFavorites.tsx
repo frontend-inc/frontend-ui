@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { FavoritesGrid } from '../../components'
+import { FavoritesList } from '../../components'
 import { SectionProps, HeadingProps } from '../../types'
 import { CollectionListProps } from '../../components/cms/collections/CollectionList'
 
@@ -41,7 +41,7 @@ const CmsFavorites: React.FC<CmsFavoritesProps> = (props) => {
 				description={description}
 				textAlign={textAlign}
 			/>
-			<FavoritesGrid {...rest} />
+			<FavoritesList {...rest} />
 		</Section>
 	)
 }

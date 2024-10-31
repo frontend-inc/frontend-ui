@@ -6,7 +6,7 @@ import { Typography } from '../../core'
 import { truncate } from '../../../helpers'
 import SwipeableShopifyProductImages from './images/SwipeableShopifyProductImages'
 import { formatCurrency } from 'frontend-shopify'
-import { useProducts } from 'frontend-shopify'
+import { useAdminProducts } from 'frontend-shopify'
 import { cn } from 'frontend-shadcn'
 
 export type ShopifyProductFeaturedProps = {
@@ -34,7 +34,7 @@ const ShopifyProductFeatured: React.FC<ShopifyProductFeaturedProps> = ({
 	enableQuickShop = false,
 }) => {
 	
-  const { product, findProduct } = useProducts()
+  const { product, findProduct } = useAdminProducts()
 
 	const handleItemClick = () => {
 		if (handleClick) {

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useContext } from 'react'
 import { AuthScreen, Loader } from '../..'
-import { useOrders } from 'frontend-shopify'
+import { useAdminOrders } from 'frontend-shopify'
 import { ShopifyOrderDetails } from '..'
 import { useParams } from 'next/navigation'
 import moment from 'moment'
@@ -23,7 +23,7 @@ const ShopifyCustomerOrder: React.FC<ShopifyCustomerOrderProps> = (props) => {
 		orderId = null
 	}
 
-	const { loading, order, findCustomerOrder } = useOrders()
+	const { loading, order, findCustomerOrder } = useAdminOrders()
 
 	useEffect(() => {
 		if (orderId) {

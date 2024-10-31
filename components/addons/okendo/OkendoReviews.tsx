@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react'
 import { getShopifyIdFromGid } from 'frontend-shopify'
-import { useProducts } from 'frontend-shopify'
+import { useAdminProducts } from 'frontend-shopify'
 import Head from 'next/head'
 
 export type OkendoReviewsProps = {
@@ -13,7 +13,7 @@ export type OkendoReviewsProps = {
 const OkendoReviews: React.FC<OkendoReviewsProps> = (props) => {
 	const { handle, subscriberId } = props || {}
 
-	const { loading, product, findProduct } = useProducts()
+	const { loading, product, findProduct } = useAdminProducts()
 
 	const widgetContainer = useRef(null)
 

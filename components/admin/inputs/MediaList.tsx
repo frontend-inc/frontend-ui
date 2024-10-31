@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { useMedia } from '../../../hooks'
+import { useAdminMedia } from '../../../hooks'
 import { ChevronDown } from 'lucide-react'
 import MediaListItem from './MediaListItem'
 import { Placeholder, IconLoading } from '../../../components'
@@ -22,7 +22,7 @@ const MediaList: React.FC<MediaListProps> = ({ selectedIds, handleSelect }) => {
 		loadMore,
 		page,
 		numPages,
-	} = useMedia()
+	} = useAdminMedia()
 
 	const handleRemove = async (resource: any) => {
 		await deleteResource(resource.id)

@@ -80,7 +80,6 @@ export type CollectionListProps = {
 	circular?: boolean
 	disableImage?: boolean
 	url: string
-	foreignUrl?: string
 	query?: any
 	resource: any
 	filterSimilar?: boolean
@@ -90,7 +89,6 @@ export type CollectionListProps = {
 const CollectionList: React.FC<CollectionListProps> = (props) => {
 	const {
 		url,
-		foreignUrl,
 		query,
 		resource,
 		perPage = 12,
@@ -240,7 +238,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
       //@ts-ignore
       layout={layout}
 			url={url}
-			foreignUrl={foreignUrl}
 			name="document"
 			query={searchQuery}
 			fields={fields}

@@ -3,13 +3,15 @@
 import React from 'react'
 import { Button } from '../../core'
 import { useCart } from '../../../hooks'
+import { cn } from 'frontend-shadcn'
 
 type AddToCartButtonProps = {
 	size?: 'sm' | 'default' | 'lg'
-	productId: string
+	productId: string | number
 	fullWidth?: boolean
   buttonText?: string
 	availableForSale?: boolean
+  className?: string
 }
 
 const AddToCartButton = (props: AddToCartButtonProps) => {
@@ -18,8 +20,8 @@ const AddToCartButton = (props: AddToCartButtonProps) => {
     productId, 
     buttonText='Add to Cart', 
     size = 'default', 
-    fullWidth, 
-    availableForSale 
+    fullWidth,     
+    availableForSale,
   } = props
   
 	const { loading, setCartOpen, addToCart } = useCart()
@@ -36,7 +38,7 @@ const AddToCartButton = (props: AddToCartButtonProps) => {
 			onClick={handleClick}
 			disabled={!availableForSale}
 			size={size}
-      className="min-w-[160px]"
+      className={"w-full min-w-[160px]"}
 		>
 			{ buttonText }
 		</Button>

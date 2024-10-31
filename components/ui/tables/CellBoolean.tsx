@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Label } from '../../../components'
+import { Badge } from '../../../components'
 
 type CellBooleanProps = {
 	value: boolean
@@ -9,7 +9,11 @@ type CellBooleanProps = {
 
 const CellBoolean: React.FC<CellBooleanProps> = (props) => {
 	const { value } = props
-	return <Label label={value ? 'True' : 'False'} />
+	return(
+    <Badge>
+      {value ? 'True' : 'False'}
+    </Badge>
+  )
 }
 
 export default CellBoolean

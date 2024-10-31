@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { Typography } from '../../../components/core'
-import { useOrders } from '../../../hooks'
+import { useAdminOrders } from '../../../hooks'
 import {
 	AdminOrderForm,
 	AdminOrderDetails,
@@ -28,7 +28,7 @@ const AdminOrder: React.FC<AdminOrderProps> = (props) => {
 		updateOrder,
 		findOrder,
 		reloadOrder,
-	} = useOrders()
+	} = useAdminOrders()
 
 	const handleEdit = () => {
 		setOpen(true)

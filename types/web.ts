@@ -29,12 +29,6 @@ export type FormProps = {
 	createFields?: FormFieldType[]
 }
 
-export type ForeignProps = {
-	resource: any
-	foreignUrl: string
-	foreignContentType: string
-}
-
 export type CardProps = {
 	ref?: any
 	buttons: ButtonType[]

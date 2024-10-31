@@ -4,12 +4,8 @@ import React, { useContext } from 'react'
 import { AppContext } from '../../context'
 import { useAuth, useResourceContext } from 'frontend-js'
 
-type CollectionFormParams = {
-	parentResource?: any
-}
 
-const useCollectionForms = (params?: CollectionFormParams) => {
-	const { parentResource } = params || {}
+const useCollectionForms = () => {
 
 	const { currentUser } = useAuth()
 
@@ -18,8 +14,6 @@ const useCollectionForms = (params?: CollectionFormParams) => {
 	const {
 		delayedLoading: loading,
 		errors,
-		query = {},
-		findMany,
 		resource,
 		setResource,
 		addReferences,
@@ -69,9 +63,6 @@ const useCollectionForms = (params?: CollectionFormParams) => {
 				resp = await update(resource)
 			} else {
 				resp = await create(resource)
-				if (parentResource?.id && resp?.id) {
-					await addReferences(resp.id, [parentResource?.id])
-				}
 				setResource({})
 			}
 			if (resp?.id) {

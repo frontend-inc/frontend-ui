@@ -3,7 +3,7 @@
 import React from 'react'
 import { Button } from '../../../../components'
 import { Collapsible, CollapsibleContent } from 'frontend-shadcn'
-import { useProductCollections } from '../../../../hooks'
+import { useAdminProductCollections } from '../../../../hooks'
 import { Plus } from 'lucide-react'
 
 interface AdminProductToolbarProps {
@@ -19,7 +19,7 @@ export default function AdminProductToolbar({
 	handleClose,
 	selectedIds = [],
 }: AdminProductToolbarProps) {
-	const { addProducts } = useProductCollections()
+	const { addProducts } = useAdminProductCollections()
 
 	const handleAddProducts = async () => {
 		if (productCollectionId) {

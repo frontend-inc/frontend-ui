@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { useDocuments } from '../../../../hooks'
+import { useAdminDocuments } from '../../../../hooks'
 import { useSelected } from '../../../../hooks'
 import { Sheet, SearchInput } from '../../../../components'
 import { Button, CircularProgress } from '../../../../components/core'
@@ -32,7 +32,7 @@ const DocumentListSheet: React.FC<DocumentListSheetProps> = (props) => {
 		useSelected()
 
 	const { loading, documents, findDocuments, loadMore, page, numPages } =
-		useDocuments({
+		useAdminDocuments({
 			collection: field?.foreign_collection?.name,
 		})
 

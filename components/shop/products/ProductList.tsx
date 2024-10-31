@@ -23,7 +23,6 @@ export type ProductListProps = {
 	layout?: 'grid' | 'list' | 'slider'
 	selectable?: boolean
 	url?: string
-	displayFields: DisplayFieldType[]
 	enableLikes?: boolean
 	enableFavorites?: boolean
 	enableRatings?: boolean
@@ -32,7 +31,6 @@ export type ProductListProps = {
 	enableOverlay?: boolean
 	enableShow?: boolean
 	fields?: FormFieldType[]
-	buttons?: ButtonType[]
 	enableSearch?: boolean
 	enableFilters?: boolean
 	enableSorting?: boolean
@@ -40,7 +38,7 @@ export type ProductListProps = {
 	sortOptions?: SortOptionType[]
 	perPage?: number
 	loadMore?: boolean
-	list: React.FC<any>
+	list?: React.FC<any>
 	component?: React.FC<any>
 	header?: React.FC<any>
 	show?: React.FC<any>
@@ -53,7 +51,6 @@ export type ProductListProps = {
 		item?: any
 	}
 	query?: any
-	resource: any
 }
 
 const ProductList: React.FC<ProductListProps> = (props) => {
@@ -63,7 +60,6 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		layout = 'grid',
 		selectable = false,
 		query,
-		resource,
 		perPage = 9,
 		enableLikes,
 		enableFavorites,
@@ -72,8 +68,6 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		enableGradient,
 		enableOverlay,
     url,
-		buttons = [],
-		displayFields = [],
 		enableShow,
 		fields = [],
 		enableSearch,
@@ -95,7 +89,6 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 
 	const searchQuery = buildSearchQuery({
 		query,
-		resource,
 		perPage,
 	})
 
@@ -112,8 +105,6 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		show: {
 			...defaultSlots.show,
 			selectable,
-			displayFields,
-			buttons,
 			enableLikes,
 			enableFavorites,
 			enableRatings,
@@ -125,8 +116,6 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		empty: defaultSlots.empty,
 		item: {
 			...defaultSlots.item,
-			buttons,
-			displayFields,
 			enableLikes,
 			enableFavorites,
 			enableRatings,

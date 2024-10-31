@@ -4,7 +4,7 @@ import React from 'react'
 import { Typography, Button } from '../../../components'
 import { Image } from '../..'
 import { useRouter } from 'next/navigation'
-import { useApp } from '../../../hooks'
+import { useApp, useNavigate } from '../../../hooks'
 import { cn } from 'frontend-shadcn'
 
 export type CoverProps = {
@@ -26,8 +26,6 @@ export type CoverProps = {
 }
 
 const Cover: React.FC<CoverProps> = (props) => {
-	const router = useRouter()
-	const { clientUrl } = useApp()
 
 	const {
 		title,
@@ -39,19 +37,14 @@ const Cover: React.FC<CoverProps> = (props) => {
 		alt = 'image',
 		enableGradient = false,
 		enableOverlay = false,
-		opacity = 0.65,
 		alignItems = 'center',
 		buttonText,
 		path,
 	} = props
 
-	const handleItemClick = () => {
-		if (handleClick) {
-			return handleClick()
-		} else if (path) {
-			router.push(`${clientUrl}${path}`)
-		}
-	}
+  const onClick = useNavigate({
+    handleClick 
+  })
 
 	return (
 		<div className={cn('dark relative w-full')}>
@@ -111,7 +104,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 					)}
 					{buttonText && (
 						<div className="py-2">
-							<Button size="lg" onClick={handleItemClick} variant="default">
+							<Button size="lg" onClick={() => onClick(path)} variant="default">
 								{buttonText}
 							</Button>
 						</div>

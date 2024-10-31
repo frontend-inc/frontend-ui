@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { Autosuggest } from '../../../components'
 import { SyntheticEventType } from '../../../types'
-import { useProducts } from 'frontend-shopify'
+import { useAdminProducts } from 'frontend-shopify'
 
 type AutosuggestProps = {
 	value?: any
@@ -23,7 +23,7 @@ const ShopifyProductAutosuggest: React.FC<AutosuggestProps> = (props) => {
 		handleChange,
 	} = props
 
-	const { products, findProducts } = useProducts()
+	const { products, findProducts } = useAdminProducts()
 
 	const [options, setOptions] = useState([])
 

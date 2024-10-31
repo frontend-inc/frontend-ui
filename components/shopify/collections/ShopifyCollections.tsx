@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { useCollections } from 'frontend-shopify'
+import { useAdminCollections } from 'frontend-shopify'
 import { useRouter, useParams } from 'next/navigation'
 import { useApp } from '../../../hooks'
 import { ShopifyCollectionCard } from '../../../components'
@@ -18,7 +18,7 @@ const ShopifyCollections: React.FC<ShopifyCollectionsProps> = (props) => {
 
 	const router = useRouter()
 
-	const { loading, collections, findCollections } = useCollections()
+	const { loading, collections, findCollections } = useAdminCollections()
 
 	const { clientUrl } = useApp()
 

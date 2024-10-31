@@ -7,19 +7,24 @@ import ProductReviewsList from './ProductReviewsList'
 
 export type ProductReviewsProps = {
 	productId: string
+  enableSearch?: boolean
+  enableSorting?: boolean
+  enableFilters?: boolean
+  enableCreate?: boolean
 }
 
 const ProductReviews: React.FC<ProductReviewsProps> = (props) => {
-	const { productId } = props
+	const { productId, enableSearch, enableFilters, enableSorting, enableCreate } = props
 
   if(!productId) return null
 	return (
 		<DataList
 			url={`/api/v1/shop/products/${productId}/reviews`}
 			name="review"
-			enableSearch
-			enableSorting
-			enableFilters
+			enableSearch={enableSearch}
+			enableSorting={enableSorting}
+			enableFilters={enableFilters}
+      enableCreate={enableCreate}
 			fields={[]}
 			sortOptions={[
 				{
@@ -38,9 +43,6 @@ const ProductReviews: React.FC<ProductReviewsProps> = (props) => {
 					variant: 'ratings_scale',
 				},
 			]}
-			enableCreate
-			enableEdit
-			enableDelete
 			list={ProductReviewsList}
 			edit={ProductReviewForm}
 			create={ProductReviewForm}

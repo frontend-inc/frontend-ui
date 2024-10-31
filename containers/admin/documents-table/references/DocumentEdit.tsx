@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { Sheet } from '../../../../components'
-import { useCollections, useDocuments } from '../../../../hooks'
+import { useAdminCollections, useAdminDocuments } from '../../../../hooks'
 import AdminDocumentForm from '../AdminDocumentForm'
 import PublishButton from '../inputs/PublishButton'
 import SaveButton from '../inputs/SaveButton'
@@ -28,7 +28,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 	const [title, setTitle] = useState<string>(null)
 	const [activeFields, setActiveFields] = useState<FieldType[]>(null)
 
-	const { collection, findCollection } = useCollections()
+	const { collection, findCollection } = useAdminCollections()
 
 	const {
 		loading,
@@ -46,7 +46,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 		removeProductReferences,
 		updateProductReferencePositions,
 		handleChange,
-	} = useDocuments({
+	} = useAdminDocuments({
 		collection: collectionId,
 	})
 

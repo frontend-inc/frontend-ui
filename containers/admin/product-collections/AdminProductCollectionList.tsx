@@ -3,13 +3,13 @@
 import React from 'react'
 import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
-import AdminProductCollectionItem from './AdminProductCollectionItem'
+import AdminProductCollectionItem from './AdminProductCollectionListItem'
 import AdminProductCollectionCreate from './AdminProductCollectionCreate'
 import AdminProductCollectionEdit from './AdminProductCollectionEdit'
 import AdminProductCollectionShow from './AdminProductCollectionShow'
 import AdminProductCollectionToolbar from './AdminProductCollectionToolbar'
 import AdminProductCollectionHeader from './AdminProductCollectionHeader'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 const AdminProductCollectionsList: React.FC = () => {
 	const router = useRouter()

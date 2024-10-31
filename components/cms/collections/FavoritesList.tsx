@@ -4,7 +4,7 @@ import React from 'react'
 import { CollectionList } from '../..'
 import { CollectionListProps } from './CollectionList'
 
-const FavoritesGrid: React.FC<CollectionListProps> = (props) => {
+const FavoritesList: React.FC<CollectionListProps> = (props) => {
 	let { query = {}, ...rest } = props
 
 	query = {
@@ -15,4 +15,4 @@ const FavoritesGrid: React.FC<CollectionListProps> = (props) => {
 	return <CollectionList query={query} {...rest} />
 }
 
-export default FavoritesGrid
+export default FavoritesList

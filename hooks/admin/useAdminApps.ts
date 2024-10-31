@@ -2,9 +2,9 @@
 
 import React from 'react'
 import { useApi, useResource } from 'frontend-js'
-import { useAdmin } from '../../hooks'
+import { useAdmin } from '..'
 
-function useApps(): Record<string, any> {
+function useAdminApps(): Record<string, any> {
 	const { api } = useApi()
 	const { apiUrl } = useAdmin()
 
@@ -99,4 +99,4 @@ function useApps(): Record<string, any> {
 	}
 }
 
-export default useApps
+export default useAdminApps

@@ -38,7 +38,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 								textAlign === 'right' && 'text-right'
 							)}
 						>
-							<Label variant="outline" label={label} />
+							<Label label={label} />
 						</div>
 					)}
 					{title && (

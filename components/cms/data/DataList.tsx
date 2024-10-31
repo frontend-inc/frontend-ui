@@ -27,7 +27,6 @@ export type DataListProps = {
 	selectable?: boolean
 	sortable?: boolean
 	url: string
-	foreignUrl?: string
 	name: string
 	query?: QueryParamsType
 	resource?: any
@@ -96,7 +95,6 @@ const DataList: React.FC<DataListProps> = (props) => {
 		enableFilters,
 		enableSorting,
 		url,
-		foreignUrl,
 		name,
 		query = {},
 		fields = [],
@@ -122,7 +120,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 	} = props
 
 	return (
-		<ResourceProvider name={name} url={url} foreignUrl={foreignUrl}>
+		<ResourceProvider name={name} url={url}>
 			<DataFetcher query={query}>
 				<div className="flex flex-col space-y-2">
 					<Header
@@ -148,8 +146,14 @@ const DataList: React.FC<DataListProps> = (props) => {
 							item: slots.item,
 						}}
 					/>
-					<Edit fields={fields} parentResource={resource} {...slots.edit} />
-					<Create fields={fields} parentResource={resource} {...slots.create} />
+					<Edit 
+            fields={fields} 
+            {...slots.edit} 
+          />
+					<Create 
+            fields={fields} 
+            {...slots.create} 
+          />
 					<Empty
 						icon={emptyIcon}
 						title={emptyTitle}

@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { ResourceHeader } from '../../../components'
 import { ResourceHeaderProps } from '../../../components/cms/resources/ResourceHeader'
-import { useDocuments, useCollections } from '../../../hooks'
+import { useAdminDocuments, useAdminCollections } from '../../../hooks'
 import { Form, Modal, Icon } from '../../../components'
 import { Button } from '../../../components/core'
 
@@ -14,11 +14,11 @@ type AdminDocumentHeaderProps = ResourceHeaderProps & {
 const AdminDocumentHeader: React.FC<AdminDocumentHeaderProps> = (props) => {
 	const { handleReload, collectionId } = props || {}
 
-	const { loading } = useDocuments({
+	const { loading } = useAdminDocuments({
     collection: collectionId
   })
   
-  const { loading: collectionLoading, aiGenerate } = useCollections()
+  const { loading: collectionLoading, aiGenerate } = useAdminCollections()
 
 	const [open, setOpen] = useState(false)
 

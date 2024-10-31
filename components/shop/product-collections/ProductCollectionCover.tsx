@@ -1,43 +1,48 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Cover } from '../..'
-import { ProductCollectionType } from '../../../types'
+import { useProductCollections } from '../../../hooks'
 
 export type ProductCollectionCoverProps = {
-	productCollection: ProductCollectionType
-	editing?: boolean
 	height?: number
 	alignItems?: 'flex-start' | 'center' | 'flex-end'
 	alt?: string
 	handleClick?: () => void
 	enableGradient?: boolean
 	enableOverlay?: boolean
-	opacity?: number
-	href?: string
+  productCollectionId: string | number 
 }
 
 const ProductCollectionCover: React.FC<ProductCollectionCoverProps> = (
 	props
 ) => {
+
 	const {
-		productCollection,
 		handleClick,
 		height = 400,
 		alt = 'image',
 		enableGradient = false,
 		enableOverlay = true,
-		opacity = 0.5,
 		alignItems = 'center',
-		href,
+    productCollectionId,
 	} = props
+
+  const { 
+    productCollection,
+    findProductCollection,
+  } = useProductCollections()
+
+  useEffect(() => {
+    if(productCollectionId){
+      findProductCollection(productCollectionId)
+    }
+  }, [productCollectionId])
+
 
 	if (!productCollection) return null
 	return (
 		<Cover
-			enableOverlay={enableOverlay}
-			enableGradient={enableGradient}
-			opacity={opacity}
 			height={height}
 			title={productCollection?.title}
 			description={productCollection?.description}
@@ -45,8 +50,9 @@ const ProductCollectionCover: React.FC<ProductCollectionCoverProps> = (
 			image={productCollection?.image?.url}
 			alt={alt}
 			alignItems={alignItems}
-			path={href}
 			handleClick={handleClick}
+      enableOverlay={enableOverlay}
+			enableGradient={enableGradient}
 		/>
 	)
 }

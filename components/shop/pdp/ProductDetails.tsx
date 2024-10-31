@@ -90,6 +90,7 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
           availableForSale 
           size="lg" 
           productId={product?.id} 
+          className="max-w-[360px]"
         />					
 			}
 			slots={slots}

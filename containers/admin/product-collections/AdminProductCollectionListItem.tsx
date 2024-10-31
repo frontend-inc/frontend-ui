@@ -30,6 +30,8 @@ const AdminProductItem: React.FC<ResourceItemProps> = (props) => {
 			primary={product?.title}
 			secondary={
 				<DisplayFields
+          disableBorder
+          disableLabel
 					resource={product}
 					fields={[{ label: 'Price', name: 'price', variant: 'price' }]}
 				/>

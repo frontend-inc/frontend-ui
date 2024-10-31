@@ -17,7 +17,7 @@ export default function DataLayout({
 }: DataLayoutProps) {
 	return (
     <div className={cn(
-      'w-full',
+      'w-full',  
       loading && 'opacity-50'
     )}>
     { layout == 'grid' && (
@@ -26,7 +26,7 @@ export default function DataLayout({
       </div>  
     )}
     { layout == 'list' && (
-      <div className='w-full flex flex-col space-y-4 border border-red-500'>
+      <div className='w-full flex flex-col space-y-4'>
         {children}
       </div> 
     )}

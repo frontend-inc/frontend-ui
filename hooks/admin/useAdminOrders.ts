@@ -4,7 +4,7 @@ import React from 'react'
 import { useResource } from 'frontend-js'
 import { useAdmin } from '../../hooks'
 
-const useOrders = () => {
+const useAdminOrders = () => {
 	const { apiUrl } = useAdmin()
 
 	const {
@@ -99,4 +99,4 @@ const useOrders = () => {
 	}
 }
 
-export default useOrders
+export default useAdminOrders

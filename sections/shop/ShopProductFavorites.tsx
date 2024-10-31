@@ -6,11 +6,11 @@ import { ProductFavorites } from '../../components/shop'
 import { ProductListProps } from '../../components/shop/products/ProductList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type ShopProductFavoritesGridProps = ProductListProps &
+type ShopProductFavoritesListProps = ProductListProps &
 	SectionProps &
 	HeadingProps
 
-const ShopProductFavoritesGrid: React.FC<ShopProductFavoritesGridProps> = (
+const ShopProductFavoritesList: React.FC<ShopProductFavoritesListProps> = (
 	props
 ) => {
 	const {
@@ -50,4 +50,4 @@ const ShopProductFavoritesGrid: React.FC<ShopProductFavoritesGridProps> = (
 	)
 }
 
-export default ShopProductFavoritesGrid
+export default ShopProductFavoritesList

@@ -42,9 +42,12 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 			compareAtPrice={resource?.display_compare_at_price}
 			handleClick={handleClick}
 			secondary={
-				<div className="flex flex-col space-y-2">
-					<DisplayFields fields={displayFields} resource={resource} />
-				</div>
+        <DisplayFields 
+          disableBorder
+          disableLabel
+          fields={displayFields} 
+          resource={resource} 
+        />				
 			}
 			actions={
 				<div>

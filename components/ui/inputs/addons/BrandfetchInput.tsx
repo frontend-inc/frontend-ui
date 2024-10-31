@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useBrandfetch, useMedia } from '../../../../hooks'
+import { useBrandfetch, useAdminMedia } from '../../../../hooks'
 import {
 	Image,
 	Label,
@@ -20,7 +20,7 @@ const BrandfetchInput: React.FC<BrandfetchInputProps> = (props) => {
 
 	const { resizeLogo, brand, fetchBrand } = useBrandfetch()
 
-	const { loading, uploadFromUrl } = useMedia()
+	const { loading, uploadFromUrl } = useAdminMedia()
 
 	const handleBrandChange = (ev) => {
 		const { value } = ev.target

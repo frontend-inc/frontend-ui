@@ -42,6 +42,8 @@ const AdminOrderLineItem: React.FC<ResourceItemProps> = (props) => {
 			primary={orderLineItem.product_data?.title}
 			secondary={
 				<DisplayFields
+          disableBorder
+          disableLabel
 					resource={orderLineItem}
 					fields={[
 						{ label: 'Price', name: 'product_data.price', variant: 'price' },

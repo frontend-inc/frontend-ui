@@ -2,8 +2,6 @@
 
 import React from 'react'
 import { ProductCollectionCard } from '../..'
-import { useApp } from '../../../hooks'
-import { useRouter } from 'next/navigation'
 
 type ProductCollectionListItemProps = {
 	resource: any

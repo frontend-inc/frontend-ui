@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useMedia } from '../../../hooks'
+import { useAdminMedia } from '../../../hooks'
 import { useAlerts } from '../../../hooks'
 import MediaList from './MediaList'
 import {
@@ -29,7 +29,7 @@ const MediaBrowser: React.FC<MediaBrowserProps> = ({
 	const [uploaded, setUploaded] = useState<any>(null)
 
 	const { showAlertError } = useAlerts()
-	const { deleteResource } = useMedia()
+	const { deleteResource } = useAdminMedia()
 
 	const handleTabChange = (value: string) => {
 		setTab(value)

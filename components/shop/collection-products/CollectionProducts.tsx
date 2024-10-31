@@ -14,7 +14,11 @@ const CollectionProducts: React.FC<CollectionProductsProps> = (props) => {
   const { apiUrl } = useApp()
   const url = `${apiUrl}/shop/product_collections/${productCollectionId}/products`
 
-	return <ProductList {...props} url={url} />
+	return(
+    <ProductList 
+      {...props} 
+      url={url} />
+    )
 }
 
 export default CollectionProducts

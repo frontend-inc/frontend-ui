@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { Typography } from '../../../components/core'
-import { useProductCollections } from '../../../hooks'
+import { useAdminProductCollections } from '../../../hooks'
 import {
 	AdminProductCollectionEdit,
 	AdminProductCollectionDetails,
@@ -31,7 +31,7 @@ const AdminProductCollection: React.FC<AdminProductCollectionProps> = (
 		reloadProductCollection,
 		addAttachment,
 		removeAttachment,
-	} = useProductCollections()
+	} = useAdminProductCollections()
 
 	const handleEdit = () => {
 		setOpen(true)

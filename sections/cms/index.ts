@@ -8,5 +8,4 @@ export { default as CmsShow } from './CmsShow'
 export { default as CmsSimilarList } from './CmsSimilarList'
 
 export { default as CmsComments } from './CmsComments'
-export { default as CmsLikes } from './CmsLikes'
 export { default as CmsFavorites } from './CmsFavorites'

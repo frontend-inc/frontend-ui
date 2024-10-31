@@ -12,7 +12,7 @@ import AdminDocumentForm from './AdminDocumentForm'
 import AdminDocumentRightPanel from './AdminDocumentRightPanel'
 import { ChevronLeft } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useAdmin, useDocuments, useCollections } from '../../../hooks'
+import { useAdmin, useAdminDocuments, useAdminCollections } from '../../../hooks'
 import { truncate } from '../../../helpers'
 import { ScrollArea } from 'frontend-shadcn'
 
@@ -37,7 +37,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 	const [documentIds, setDocumentIds] = useState()
 
 	const { clientUrl } = useAdmin()
-	const { collection, findCollection } = useCollections()
+	const { collection, findCollection } = useAdminCollections()
 
 	const {
 		loading,
@@ -57,7 +57,7 @@ const DocumentEdit: React.FC<DocumentEditProps> = (props) => {
 		removeAttachment,
 		updateDocuments,
 		handleChange,
-	} = useDocuments({
+	} = useAdminDocuments({
 		collection: collectionId,
 	})
 

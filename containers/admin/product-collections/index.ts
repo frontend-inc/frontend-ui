@@ -3,5 +3,5 @@ export { default as AdminProductCollectionDetails } from './AdminProductCollecti
 export { default as AdminProductCollectionCreate } from './AdminProductCollectionCreate'
 export { default as AdminProductCollectionEdit } from './AdminProductCollectionEdit'
 export { default as AdminProductCollectionList } from './AdminProductCollectionList'
-export { default as AdminProductCollectionItem } from './AdminProductCollectionItem'
+export { default as AdminProductCollectionListItem } from './AdminProductCollectionListItem'
 export { default as AdminProductCollectionShow } from './AdminProductCollectionShow'

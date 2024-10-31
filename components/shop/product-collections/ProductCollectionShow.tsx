@@ -1,16 +1,14 @@
 'use client'
 
 import React from 'react'
-import { Drawer, ProductDetails, ProductReviews } from '../..'
+import { Drawer, Image, Typography, CollectionProducts } from '../..'
 import { useResourceContext } from 'frontend-js'
 
 export type ShowModalProps = {
 	handle?: string
-	enableBorder?: boolean
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
-	enableRatings?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
 }
@@ -19,7 +17,6 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 	const { openShow, setOpenShow, resource } = useResourceContext()
 
 	const {
-		enableRatings,
 		enableLikes,
 		enableFavorites,
 		enableGradient,
@@ -28,23 +25,25 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 
 	if (!resource) return null
 	return (
-		<Drawer open={openShow} handleClose={() => setOpenShow(false)}>
+		<Drawer 
+      title={resource?.title}
+      open={openShow} 
+      handleClose={() => setOpenShow(false)}
+    >
       <div className="w-full flex flex-row justify-center pb-10">
-        <div className="md:max-w-screen-sm flex flex-col space-y-[20px]">
-          <ProductDetails
-            direction="column"
-            product={resource}              
+        <div className="w-full md:max-w-screen-sm flex flex-col space-y-[40px]">        
+          <div className="w-full flex flex-col space-y-3">
+            <Typography variant="body1" className="text-muted-foreground">
+              {resource?.description}
+            </Typography>	
+          </div>
+          <CollectionProducts 
             enableGradient={enableGradient}
             enableOverlay={enableOverlay}
-            enableFavorites={enableFavorites}
             enableLikes={enableLikes}
-            enableRatings={enableRatings}
+            enableFavorites={enableFavorites}
+            productCollectionId={resource.id}
           />
-          { enableRatings && (
-            <ProductReviews
-              productId={resource?.id}
-            />
-          )}
         </div>
       </div>
 		</Drawer>

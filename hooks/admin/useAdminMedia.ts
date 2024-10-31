@@ -2,7 +2,7 @@ import { useResource } from 'frontend-js'
 import { useApi } from 'frontend-js'
 import { useAdmin } from '../../hooks'
 
-const useMedia = () => {
+const useAdminMedia = () => {
 	const { api } = useApi()
 	const { apiUrl } = useAdmin()
 
@@ -88,4 +88,4 @@ const useMedia = () => {
 	}
 }
 
-export default useMedia
+export default useAdminMedia

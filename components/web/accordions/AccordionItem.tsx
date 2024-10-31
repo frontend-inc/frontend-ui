@@ -20,7 +20,7 @@ const AccordionItemComponent: React.FC<AccordionItemProps> = (props) => {
 
 	return (
 		<Accordion type="single" collapsible className="w-full">
-			<AccordionItem value="item">
+			<AccordionItem value="item hover:underline-none hover:bg-muted/50">
 				<AccordionTrigger>
 					<Typography variant="body1">{primary}</Typography>
 				</AccordionTrigger>

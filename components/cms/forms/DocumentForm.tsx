@@ -5,13 +5,12 @@ import { useApp } from '../../../hooks'
 import { useResource } from 'frontend-js'
 import { Form } from '../..'
 import { useAlerts } from '../../../hooks'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { Card } from 'frontend-shadcn'
 
 export type DocumentFormProps = {
 	loading?: boolean
 	resource: any
-	parentResource?: any
 	url: string
 	href?: string
 	buttonText?: string
@@ -27,7 +26,8 @@ const DocumentForm: React.FC<DocumentFormProps> = (props) => {
 	const { clientUrl } = useApp()
 
 	const { href } = props || {}
-	const onSuccess = () => {
+	
+  const onSuccess = () => {
 		if (href) {
 			router.push(`${clientUrl}${href}`)
 		}
@@ -35,7 +35,6 @@ const DocumentForm: React.FC<DocumentFormProps> = (props) => {
 
 	const {
 		resource: _resource,
-		parentResource,
 		buttonText = 'Submit',
 		fields,
 		url,
@@ -55,7 +54,6 @@ const DocumentForm: React.FC<DocumentFormProps> = (props) => {
 		update,
 		create,
 		removeAttachment,
-		addReferences,
 		handleChange,
 	} = useResource({
 		name: 'document',
@@ -73,10 +71,6 @@ const DocumentForm: React.FC<DocumentFormProps> = (props) => {
 				resp = await update(resource)
 			} else {
 				resp = await create(resource)
-				// Handle associated resources
-				if (parentResource?.id) {
-					await addReferences(resp.id, [parentResource.id])
-				}
 			}
 			if (resp?.id) {
 				if (onSuccessMessage) {

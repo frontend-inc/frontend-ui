@@ -1,4 +1,3 @@
-export { default as AddToListButton } from './references/AddToListButton'
 export { default as FavoriteButton } from './favorites/FavoriteButton'
 export { default as LikeButton } from './likes/LikeButton'
 export { default as ProductLikeButton } from './product-likes/ProductLikeButton'

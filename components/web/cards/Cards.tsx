@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { Card, Placeholder, Button } from '../..'
-import { useRouter } from 'next/navigation'
 import { useNavigate } from '../../../hooks'
 
 type CardType = {
@@ -25,11 +24,10 @@ export type CardsProps = {
 }
 
 const Cards: React.FC<CardsProps> = (props) => {
-	const router = useRouter()
 
 	const { items, enableGradient, enableOverlay } = props || {}
 
-	const { handleClick } = useNavigate()
+	const onClick = useNavigate()
 
 	return (
 		<div>
@@ -45,13 +43,13 @@ const Cards: React.FC<CardsProps> = (props) => {
                 item?.buttonText && (
                   <Button 
                     fullWidth
-                    onClick={() => handleClick(item?.path)}
+                    onClick={() => onClick(item?.path)}
                   >
                     {item?.buttonText}
                   </Button>
                 )
               }
-							handleClick={() => handleClick(item?.path)}
+							handleClick={() => onClick(item?.path)}
 							slots={{
 								image: {
 									enableGradient,

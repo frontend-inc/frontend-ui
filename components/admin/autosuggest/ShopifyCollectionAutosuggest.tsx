@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { Autosuggest } from '../../../components'
 import { SyntheticEventType } from '../../../types'
-import { useCollections } from 'frontend-shopify'
+import { useAdminCollections } from 'frontend-shopify'
 
 type AutosuggestProps = {
 	value?: any
@@ -26,7 +26,7 @@ const CollectionAutosuggest: React.FC<AutosuggestProps> = (props) => {
 	} = props
 
 	const [options, setOptions] = useState([])
-	const { collections, findCollections } = useCollections()
+	const { collections, findCollections } = useAdminCollections()
 
 	useEffect(() => {
 		if (collections) {

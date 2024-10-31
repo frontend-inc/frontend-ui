@@ -1,23 +1,24 @@
 'use client'
 
 import React from 'react'
-import { Badge } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
 
 type LabelProps = {
-	label?: string
-	variant?: 'default' | 'secondary' | 'destructive' | 'outline'
+	label?: string	
 	className?: string
 }
 
 const Label: React.FC<LabelProps> = (props) => {
-	const { label, variant, className } = props
+	const { label, className } = props
 
 	if (!label) return null
 	return (
-		<Badge variant={variant} className={cn('px-4', className)}>
+		<div className={cn(
+      'text-xs text-semibold text-uppercase tracking-widest',
+      className
+    )}>
 			{label}
-		</Badge>
+		</div>
 	)
 }
 

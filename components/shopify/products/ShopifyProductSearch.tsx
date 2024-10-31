@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import {
 	PriceOptionType,
 	SearchFilterOptionType,
-	useProducts,
+	useAdminProducts,
 	useSearchFilters,
 } from 'frontend-shopify'
 import { ProductSortKeyType } from 'frontend-shopify'
@@ -60,7 +60,7 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
 		products,
 		findProducts,
 		searchProducts,
-	} = useProducts()
+	} = useAdminProducts()
 
 	const [sortKey, setSortKey] =
 		useState<ProductSortKeyType>('COLLECTION_DEFAULT')

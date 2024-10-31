@@ -2,9 +2,9 @@
 
 import React from 'react'
 import { useResource } from 'frontend-js'
-import { useAdmin } from '../../hooks'
+import { useAdmin } from '..'
 
-const useAccounts = () => {
+const useAdminAccounts = () => {
 	const { apiUrl } = useAdmin()
 
 	const {
@@ -67,4 +67,4 @@ const useAccounts = () => {
 	}
 }
 
-export default useAccounts
+export default useAdminAccounts

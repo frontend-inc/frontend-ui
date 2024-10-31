@@ -7,7 +7,7 @@ import {
 	AdminLayoutCenter,
 } from '../../../components'
 import { Placeholder } from '../../../components'
-import { useTabs, useCollections } from '../../../hooks'
+import { useTabs, useAdminCollections } from '../../../hooks'
 import { useParams } from 'next/navigation'
 import CollectionSchemaToggle from './CollectionSchemaToggle'
 import AdminCollectionMenu from './AdminCollectionMenu'
@@ -20,7 +20,7 @@ const AdminCollectionPage: React.FC = () => {
 	let { collection_id: collectionId } = useParams() as any
 	if (collectionId == 'index') collectionId = undefined;
 
-  const { collection, findCollection } = useCollections()
+  const { collection, findCollection } = useAdminCollections()
 
 	useEffect(() => {
 		if (collectionId) {

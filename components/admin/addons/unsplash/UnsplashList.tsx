@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useUnsplash, useMedia } from '../../../../hooks'
+import { useUnsplash, useAdminMedia } from '../../../../hooks'
 import { SearchInput } from '../../../../components'
 import UnsplashCard from './UnsplashCard'
 import UnsplashModal from './UnsplashModal'
@@ -19,7 +19,7 @@ const UnsplashList: React.FC<UnsplashProps> = ({ onComplete }) => {
 	const [keywords, setKeywords] = useState('')
 	const [image, setImage] = useState<UnsplashImageType>()
 
-	const { loading, uploadFromUrl } = useMedia()
+	const { loading, uploadFromUrl } = useAdminMedia()
 	const { images, search, loadMore } = useUnsplash()
 
 	const handleUpload = async (url: string, name: string) => {

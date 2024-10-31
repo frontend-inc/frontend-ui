@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState, useContext } from 'react'
-import { useProducts } from 'frontend-shopify'
+import { useAdminProducts } from 'frontend-shopify'
 import { ShopifyContext } from 'frontend-shopify'
 import { uniq } from 'lodash'
 import { X } from 'lucide-react'
@@ -19,7 +19,7 @@ const ShopifyProductImage: React.FC<ShopifyProductImageProps> = ({
 	height = 160,
 	width = 160,
 }) => {
-	const { product, findProduct } = useProducts()
+	const { product, findProduct } = useAdminProducts()
 
 	useEffect(() => {
 		if (handle) {
@@ -73,7 +73,7 @@ const ShopifyProductsInput: React.FC<AutosuggestProps> = ({
 	const [shopifyProducts, setShopifyProducts] = useState<string[]>(value)
 	const { domain, storefrontAccessToken } = useContext(ShopifyContext) as any
 
-	const { products, setProduct, findProducts } = useProducts()
+	const { products, setProduct, findProducts } = useAdminProducts()
 
 	const [options, setOptions] = useState<
 		{ label: string; value: string; image: string }[]

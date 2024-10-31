@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { useCollections } from '../../../hooks'
+import { useAdminCollections } from '../../../hooks'
 import { RemoteAutosuggest } from '../../../components'
 import { useAdmin } from '../../../hooks'
 
@@ -34,7 +34,7 @@ const DocumentAutosuggest: React.FC<DocumentAutosuggestProps> = (props) => {
 
 	const { apiUrl } = useAdmin()
 
-	const { collection, findCollection } = useCollections()
+	const { collection, findCollection } = useAdminCollections()
 
 	useEffect(() => {
 		if (collectionId) {

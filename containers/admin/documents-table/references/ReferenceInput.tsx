@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { useDocuments } from '../../../../hooks'
+import { useAdminDocuments } from '../../../../hooks'
 import { SortableList } from '../../../../components'
 import { Button } from '../../../../components/core'
 import { Search } from 'lucide-react'
@@ -34,7 +34,7 @@ const ReferenceInput: React.FC<ReferenceInputProps> = (props) => {
 	const [openEdit, setOpenEdit] = useState(false)
 	const [foreignDocument, setForeignDocument] = useState<any>({})
 
-	const { updateReferencePositions } = useDocuments({
+	const { updateReferencePositions } = useAdminDocuments({
 		collection: collection?.name,
 	})
 

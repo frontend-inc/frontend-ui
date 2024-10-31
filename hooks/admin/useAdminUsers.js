@@ -4,7 +4,7 @@ import React from 'react'
 import { useResource } from 'frontend-js'
 import { useAdmin } from '../../hooks'
 
-const useUsers = () => {
+const useAdminUsers = () => {
 	const { apiUrl } = useAdmin()
 
 	const {
@@ -71,4 +71,4 @@ const useUsers = () => {
 	}
 }
 
-export default useUsers
+export default useAdminUsers

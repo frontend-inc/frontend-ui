@@ -9,7 +9,7 @@ type UseFieldsParams = {
 	collectionId: string
 }
 
-const useFields = (props: UseFieldsParams) => {
+const useAdminFields = (props: UseFieldsParams) => {
 	const { collectionId } = props || {}
 	const { apiUrl } = useAdmin()
 
@@ -101,4 +101,4 @@ const useFields = (props: UseFieldsParams) => {
 	}
 }
 
-export default useFields
+export default useAdminFields

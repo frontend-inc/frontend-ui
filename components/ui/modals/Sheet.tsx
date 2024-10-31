@@ -4,10 +4,7 @@ import React from 'react'
 import { cn } from 'frontend-shadcn'
 import { useTheme } from '../../../hooks'
 import {
-	Button,
-	SheetOverlay,
 	Sheet as ShadcnSheet,
-	SheetClose,
 	SheetContent,
 	SheetHeader,
 	SheetFooter,
@@ -47,6 +44,7 @@ const Sheet: React.FC<SheetProps> = ({
 				side={side}
 				className={cn(
 					mode,
+          'w-full sm:w-[300px]',
 					disablePadding && 'px-0',
 					className
 				)}

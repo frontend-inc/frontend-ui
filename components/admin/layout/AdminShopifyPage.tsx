@@ -11,7 +11,7 @@ import {
 	CircularLoader,
 } from '../..'
 import { AdminMenusType, AdminMenuType } from '../../../types'
-import { useAdmin, useApps, useTabs } from '../../../hooks'
+import { useAdmin, useAdminApps, useTabs } from '../../../hooks'
 import { useRouter, useParams } from 'next/navigation'
 import { ShopifyProvider } from 'frontend-shopify'
 
@@ -36,7 +36,7 @@ const AdminShopifyPage: React.FC<AdminShopifyPageProps> = (props) => {
 
 	const { app_id: appId } = useParams() as any
 
-	const { loading, app, findApp } = useApps()
+	const { loading, app, findApp } = useAdminApps()
 
 	const {
 		title,

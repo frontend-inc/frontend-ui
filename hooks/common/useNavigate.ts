@@ -4,18 +4,30 @@ import React from 'react'
 import { useRouter } from 'next/navigation'
 import { useApp } from '..'
 
-const useNavigation = () => {
+type UseNavigateParams = {
+  handleClick?: (ev?: any) => void
+}
+
+const useNavigate = (params?: UseNavigateParams) => {
+  const { handleClick } = params || {}
+
   const { clientUrl } = useApp()
 
   const router = useRouter()
 
-  const handleClick = (path: string) => {
-    router.push(`${clientUrl}${path}`)
+  const onClick = (path?: string) => {
+    if(handleClick){
+      handleClick()
+    }else if(path){
+      window.scrollTo({
+				top: 0,
+				behavior: 'smooth',
+			})
+      router.push(`${clientUrl}${path}`)
+    }    
   }
 
-	return { 
-    handleClick 
-  }
+	return onClick    
 }
 
-export default useNavigation
+export default useNavigate

@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { ResourceHeader } from '../../../components'
 import { ResourceHeaderProps } from '../../../components/cms/resources/ResourceHeader'
-import { useProducts } from '../../../hooks'
+import { useAdminProducts } from '../../../hooks'
 import { Form, Modal, Icon } from '../../../components'
 import { IconButton } from '../../../components/core'
 
@@ -12,7 +12,7 @@ type AdminProductHeaderProps = ResourceHeaderProps
 const AdminProductHeader: React.FC<AdminProductHeaderProps> = (props) => {
 	const { handleReload } = props || {}
 
-	const { loading, aiGenerate } = useProducts()
+	const { loading, aiGenerate } = useAdminProducts()
 
 	const [open, setOpen] = useState(false)
 

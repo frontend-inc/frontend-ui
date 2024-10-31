@@ -7,15 +7,17 @@ import {
 	SearchFilterOptionType,
 	SortOptionType,
 } from '../../../types'
-import { ProductCollectionListItem, ProductCollectionListItems } from '../..'
+import { 
+  ProductCollectionShow,
+  ProductCollectionListItem, 
+  ProductCollectionListItems 
+} from '../..'
 import { useApp } from '../../../hooks'
 
 export type ProductCollectionListProps = {
 	url?: string
-	href?: string
 	enableGradient?: boolean
 	enableOverlay?: boolean
-	buttons?: ButtonType[]
 	enableSearch?: boolean
 	enableFilters?: boolean
 	enableSorting?: boolean
@@ -32,7 +34,6 @@ export type ProductCollectionListProps = {
 		empty?: any
 		item?: any
 	}
-	foreignUrl?: string
 	query?: any
 	resource: any
 }
@@ -41,18 +42,14 @@ const ProductCollectionList: React.FC<ProductCollectionListProps> = (props) => {
 	const { apiUrl } = useApp()
 
 	const {
-		foreignUrl,
 		query,
 		enableGradient,
 		enableOverlay,
-		href,
-		buttons = [],
 		enableSearch,
 		enableFilters,
 		enableSorting,
 		filterOptions = [],
-		sortOptions = [],
-		list: List = ProductCollectionListItems,
+		sortOptions = [],		
 		slots: defaultSlots = {
 			header: {},
 			list: {},
@@ -64,7 +61,6 @@ const ProductCollectionList: React.FC<ProductCollectionListProps> = (props) => {
 	const slots = {
 		list: {
 			...defaultSlots.list,
-			href,
 			enableGradient,
 			enableOverlay,
 		},
@@ -72,17 +68,14 @@ const ProductCollectionList: React.FC<ProductCollectionListProps> = (props) => {
 		empty: defaultSlots.empty,
 		item: {
 			...defaultSlots.item,
-			href,
-			buttons,
 			enableGradient,
 			enableOverlay,
 		},
 	}
 	return (
 		<DataList
-			grid
+			layout="grid"
 			url={`${apiUrl}/shop/product_collections`}
-			foreignUrl={foreignUrl}
 			name="product_collection"
 			fields={[]}
 			query={{
@@ -95,7 +88,8 @@ const ProductCollectionList: React.FC<ProductCollectionListProps> = (props) => {
 			enableSorting={enableSorting}
 			filterOptions={filterOptions}
 			sortOptions={sortOptions}
-			list={List}
+			list={ProductCollectionListItems}
+      show={ProductCollectionShow}
 			component={ProductCollectionListItem}
 			slots={slots}
 		/>

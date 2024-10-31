@@ -3,7 +3,6 @@
 import React from 'react'
 import {
 	ToolbarModal,
-	ToolbarAddToListButton,
 	ToolbarUpdateButton,
 	ToolbarDeleteButton,
 } from '../..'
@@ -18,7 +17,6 @@ const ToolbarToolbar: React.FC<ToolbarToolbarProps> = (props) => {
 
 	return (
 		<ToolbarModal>
-			<ToolbarAddToListButton />
 			<ToolbarDeleteButton />
 			{buttons?.map((button, index) => (
 				<ToolbarUpdateButton

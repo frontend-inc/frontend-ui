@@ -8,7 +8,7 @@ type UseDocumentProps = {
 	collection: string | number
 }
 
-const useDocuments = (props: UseDocumentProps) => {
+const useAdminDocuments = (props: UseDocumentProps) => {
 	const { apiUrl } = useAdmin()
 	const { api } = useApi()
 	const { collection } = props
@@ -154,4 +154,4 @@ const useDocuments = (props: UseDocumentProps) => {
 	}
 }
 
-export default useDocuments
+export default useAdminDocuments

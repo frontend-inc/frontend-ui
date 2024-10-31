@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useMedia, useAlerts } from '../../../hooks'
+import { useAdminMedia, useAlerts } from '../../../hooks'
 import { DropZone } from '../../../components'
 import { MAX_FILE_SIZE } from '../../../constants'
 
@@ -14,7 +14,7 @@ const MediaUploader: React.FC<MediaUploaderProps> = (props) => {
 
 	const { showAlertError } = useAlerts()
 
-	const { uploadFile } = useMedia()
+	const { uploadFile } = useAdminMedia()
 
 	const handleUpload = async (file) => {
 		try {

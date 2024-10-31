@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Sheet, FormFields, IconLoading } from '../..'
+import { Sheet, FormFields } from '../..'
 import { Button } from '../../core'
 import { useResourceContext } from 'frontend-js'
 

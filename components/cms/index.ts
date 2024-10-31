@@ -14,7 +14,6 @@ export { default as FilterButton } from './filters/FilterButton'
 export { default as KanBanBoard } from '../cms/kanban/KanBanBoard'
 export { default as SortButton } from './sorts/SortButton'
 export { default as SearchFilters } from '../cms/filters/SearchFilters'
-export { default as Statistics } from './analytics/Statistics'
 
 // Details
 export { default as Details } from './details/Details'

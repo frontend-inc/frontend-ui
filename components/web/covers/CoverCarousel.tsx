@@ -1,9 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useApp } from '../../../hooks'
 import { Swipeable, Cover, Placeholder } from '../..'
-import { useRouter, useParams } from 'next/navigation'
 
 export type CoverCarouselProps = {
 	items: {
@@ -11,7 +9,7 @@ export type CoverCarouselProps = {
 		description?: string
 		image: string
 		buttonText?: string
-		url?: string
+		path?: string
 	}[]
 	editing?: boolean
 	enableAutoPlay?: boolean
@@ -25,30 +23,15 @@ export type CoverCarouselProps = {
 }
 
 const CoverCarousel: React.FC<CoverCarouselProps> = (props) => {
-	const router = useRouter()
 
 	const {
-		editing = false,
 		items = [],
 		enableOverlay = false,
-		opacity = 0.5,
 		enableGradient = false,
 		enableArrows = false,
 		enableAutoPlay = false,
 		alignItems = 'center',
 	} = props
-
-	const { clientUrl } = useApp()
-
-	const handleClick = (item) => {
-		if (!editing && item?.url) {
-			window.scrollTo({
-				top: 0,
-				behavior: 'smooth',
-			})
-			router.push(`${clientUrl}${item?.url}`)
-		}
-	}
 
 	return (
 		<>
@@ -56,15 +39,13 @@ const CoverCarousel: React.FC<CoverCarouselProps> = (props) => {
 				{items?.map((item, index) => (
 					<Cover
 						key={index}
-						editing={editing}
 						title={item?.title}
 						description={item?.description}
 						image={item?.image}
 						buttonText={item?.buttonText}
+            path={item?.path}
 						enableOverlay={enableOverlay}
 						enableGradient={enableGradient}
-						opacity={opacity}
-						handleClick={() => handleClick(item)}
 						alignItems={alignItems}
 					/>
 				))}

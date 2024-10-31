@@ -5,7 +5,7 @@ import { SearchInput, Placeholder } from '../../../components'
 import { ShopifyProducts } from '../../../components/shopify'
 import { Drawer } from '../../../components'
 import { ShopifyContext } from 'frontend-shopify'
-import { useProducts } from 'frontend-shopify'
+import { useAdminProducts } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
 
 type ShopifySearchModalProps = {
@@ -24,7 +24,7 @@ const ShopifySearchModal: React.FC<ShopifySearchModalProps> = (props) => {
 
 	const [keywords, setKeywords] = useState('')
 
-	const { loading, products, setProducts, searchProducts } = useProducts()
+	const { loading, products, setProducts, searchProducts } = useAdminProducts()
 
 	const handleChange = (ev) => {
 		setKeywords(ev.target.value)

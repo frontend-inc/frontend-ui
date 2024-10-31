@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { AlertModal } from '../../../components'
 import { useAlerts } from '../../../hooks'
-import { useDocuments, useAdmin } from '../../../hooks'
+import { useAdminDocuments, useAdmin } from '../../../hooks'
 import { Table } from '../../../components'
 import { ImageModal, AdminVideoModal } from '../../../components'
 import { TableFilterDrawer } from '../../../components'
@@ -61,7 +61,7 @@ const AdminCollectionTable: React.FC<AdminCollectionTableProps> = (props) => {
 		perPage,
 		numPages,
 		totalCount,
-	} = useDocuments({
+	} = useAdminDocuments({
 		collection: collectionId,
 	})
 

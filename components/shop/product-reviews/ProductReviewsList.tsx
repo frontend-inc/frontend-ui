@@ -23,8 +23,8 @@ const ProductReviewsList = (props) => {
 		})
 	}
 
-	return (
-		<DataLayout loading={loading}>
+	return (    
+		<DataLayout layout="list" loading={loading}>
 			{!loading &&
 				resources?.map((resource, index) => (
 					<ProductReviewItem key={index} resource={resource} />

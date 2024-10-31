@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { useProducts } from 'frontend-shopify'
+import { useAdminProducts } from 'frontend-shopify'
 import { ShopifyProductCard } from '..'
 import { useRouter, useParams } from 'next/navigation'
 import { useApp } from '../../../hooks'
@@ -38,7 +38,7 @@ const ProductArray: React.FC<ProductArrayProps> = ({
 	return (
 		<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-full">
 			{handles?.map((handle) => {
-				const { product, findProduct } = useProducts()
+				const { product, findProduct } = useAdminProducts()
 				useEffect(() => {
 					findProduct(handle)
 				}, [handle, findProduct])

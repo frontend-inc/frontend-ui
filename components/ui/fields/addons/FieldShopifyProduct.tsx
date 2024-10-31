@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react'
 import { ShopifyProductDetails } from '../../../shopify'
-import { useProducts } from 'frontend-shopify'
+import { useAdminProducts } from 'frontend-shopify'
 import { get } from 'lodash'
 
 export type FieldShopifyProductProps = {
@@ -14,7 +14,7 @@ const FieldShopifyProduct: React.FC<FieldShopifyProductProps> = (props) => {
 	const { resource, fieldName, ...rest } = props || {}
 	const shopifyHandle = get(resource, fieldName)
 
-	const { loading, product, findProduct } = useProducts()
+	const { loading, product, findProduct } = useAdminProducts()
 
 	useEffect(() => {
 		if (shopifyHandle) {

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { MenuList, AlertModal } from '../../../components'
 import { Button } from '../../../components/core'
 import { MenuListItem } from '../../../components'
-import { useCollections, useViews } from '../../../hooks'
+import { useAdminCollections, useViews } from '../../../hooks'
 import AdminCollectionEdit from './AdminCollectionEdit'
 import AdminViewEdit from '../views/AdminViewEdit'
 import { ApiQuery } from 'frontend-js'
@@ -39,7 +39,7 @@ const AdminCollectionMenu: React.FC = () => {
 		updateCollection,
 		createCollection,
 		reloadCollections,
-	} = useCollections()
+	} = useAdminCollections()
 
 	const {
 		loading: viewLoading,

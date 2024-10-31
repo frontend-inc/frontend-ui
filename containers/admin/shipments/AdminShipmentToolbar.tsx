@@ -6,14 +6,14 @@ import {
 	ResourceToolbarModal,
 	Button,
 } from '../../../components'
-import { useOrders, useAdmin } from '../../../hooks'
+import { useAdminOrders, useAdmin } from '../../../hooks'
 
 const AdminShipmentToolbar = (props) => {
 	const { open, handleClose, selectedIds, handleReload } = props || {}
 
 	const [openModal, setOpenModal] = useState(false)
 
-	const { loading, errors, order, handleChange, updateOrders } = useOrders()
+	const { loading, errors, order, handleChange, updateOrders } = useAdminOrders()
 
 	const handleUpdateClick = async () => {}
 

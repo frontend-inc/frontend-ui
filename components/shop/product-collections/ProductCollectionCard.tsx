@@ -16,7 +16,6 @@ export type ProductCollectionCardProps = {
 	secondaryAction?: React.ReactNode
 	compareAtPrice?: string
 	handleClick?: () => void
-	height?: number
 	addToCart?: React.ReactNode
 	disableBorder?: boolean
 	slots?: {
@@ -34,7 +33,6 @@ const ProductCollectionCard = React.forwardRef<
 		primary,
 		handleClick,
 		image,
-		height = 240,
 		disableBorder,
 		slots = {
 			item: {},
@@ -53,7 +51,7 @@ const ProductCollectionCard = React.forwardRef<
 			<div className="min-h-[240px] w-full relative overflow-hidden">
 				<Image
 					src={image}
-					height={height}
+					height={240}
 					alt={primary}
 					label={label}
 					aspectRatio={4 / 3}

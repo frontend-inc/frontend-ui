@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
+import React from 'react'
+import { useDebounce } from 'use-debounce'
 
 interface UseDelayedLoadingProps {
 	loading: boolean
@@ -9,29 +10,12 @@ interface UseDelayedLoadingProps {
 function useDelayedLoading({
 	loading,
 	delay = 500,
-	callback,
 }: UseDelayedLoadingProps): Record<any, boolean> {
-	const [isLoading, setIsLoading] = useState<boolean>(loading)
-	const timerRef = useRef<NodeJS.Timeout | null>(null)
-
-	useEffect(() => {
-		if (loading) {
-			setIsLoading(true)
-			if (timerRef.current) clearTimeout(timerRef.current)
-		} else {
-			timerRef.current = setTimeout(() => {
-				setIsLoading(false)
-				if (callback) callback()
-			}, delay)
-		}
-
-		return () => {
-			if (timerRef.current) clearTimeout(timerRef.current)
-		}
-	}, [loading, delay, callback])
+	
+  const [debouncedLoading] = useDebounce(loading, delay)
 
 	return {
-		loading: isLoading,
+		loading: debouncedLoading,
 	}
 }
 
