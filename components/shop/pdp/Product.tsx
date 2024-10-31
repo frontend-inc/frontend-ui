@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react'
 import { ProductDetails } from '../..'
 import { ProductDetailsProps } from './ProductDetails'
-import { ResourceProvider, useResource } from 'frontend-js'
+import { useResource } from 'frontend-js'
 
 export type ProductProps = ProductDetailsProps & {
 	foreignUrl?: string
@@ -32,15 +32,12 @@ const Product: React.FC<ProductProps> = (props) => {
     }
   }, [productId])  
 
+  if(!product?.id) return null;
 	return (
-		<ResourceProvider
-			name="product"
-			resource={product}
-			url={'/api/v1/shop/products'}
-			foreignUrl={foreignUrl}
-		>
-			<ProductDetails {...props} />
-		</ResourceProvider>
+    <ProductDetails 
+      {...props} 
+      product={product}
+    />
 	)
 }
 

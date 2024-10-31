@@ -1,16 +1,18 @@
 'use client'
 
 import React from 'react'
-import { Card, Placeholder } from '../..'
-import { useRouter, useParams } from 'next/navigation'
+import { Card, Placeholder, Button } from '../..'
+import { useRouter } from 'next/navigation'
+import { useNavigate } from '../../../hooks'
 
 type CardType = {
 	label?: string
 	title: string
+  subtitle?: string
 	description: string
 	image: string
 	buttonText?: string
-	path?: string
+	path: string
 	url?: string
 }
 
@@ -27,11 +29,7 @@ const Cards: React.FC<CardsProps> = (props) => {
 
 	const { items, enableGradient, enableOverlay } = props || {}
 
-	const handleClick = (card: CardType) => {
-		if (card?.path) {
-			router.push(card.path)
-		}
-	}
+	const { handleClick } = useNavigate()
 
 	return (
 		<div>
@@ -40,9 +38,20 @@ const Cards: React.FC<CardsProps> = (props) => {
 					<div key={i}>
 						<Card
 							image={item?.image}
-							primary={item?.title}
-							secondary={item?.description}
-							handleClick={() => handleClick(item)}
+							primary={item?.title}              
+							secondary={item?.subtitle}
+              tertiary={item?.description}
+              actions={ 
+                item?.buttonText && (
+                  <Button 
+                    fullWidth
+                    onClick={() => handleClick(item?.path)}
+                  >
+                    {item?.buttonText}
+                  </Button>
+                )
+              }
+							handleClick={() => handleClick(item?.path)}
 							slots={{
 								image: {
 									enableGradient,

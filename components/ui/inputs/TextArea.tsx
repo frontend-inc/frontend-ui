@@ -70,9 +70,8 @@ export default function TextArea({
 			<div className="relative w-full">
 				<Textarea
 					className={cn(
-            'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
 						'w-full resize-none min-w-[230px]',
-						error && 'border-red-500'
+						error && 'border-destructive',
 					)}
 					name={name}
 					disabled={disabled}

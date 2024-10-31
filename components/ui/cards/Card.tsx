@@ -16,6 +16,7 @@ export type CardProps = {
 	label?: string
 	primary: string | React.ReactNode
 	secondary?: string | React.ReactNode
+  tertiary?: string | React.ReactNode
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
 	handleClick?: () => void
@@ -34,6 +35,7 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 			label,
 			primary,
 			secondary,
+      tertiary,
 			actions,
 			secondaryAction,
 			handleClick,
@@ -68,6 +70,11 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 					{secondary && (
 						<Typography variant="body2" className="text-muted-foreground">
 							{secondary}
+						</Typography>
+					)}
+          {tertiary && (
+						<Typography variant="body2" className="text-muted-foreground">
+							{tertiary}
 						</Typography>
 					)}
 				</CardContent>

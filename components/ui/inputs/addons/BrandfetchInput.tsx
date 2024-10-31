@@ -39,8 +39,10 @@ const BrandfetchInput: React.FC<BrandfetchInputProps> = (props) => {
 	}
 
 	return (
-		<div className="flex flex-col space-y-4">
-			<BrandfetchAutosuggest handleChange={handleBrandChange} />
+		<div className="flex flex-col space-y-4 w-full">
+      <div className="w-full flex flex-row justify-center items-center">
+			  <BrandfetchAutosuggest handleChange={handleBrandChange} />
+      </div>
 			<PoweredByBrandfetch />
 			{loading && <CircularLoader />}
 			<div className="grid grid-cols-[repeat(auto-fill,minmax(164px,1fr))] gap-4">

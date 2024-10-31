@@ -42,7 +42,7 @@ const DocumentAutosuggest: React.FC<DocumentAutosuggestProps> = (props) => {
 		}
 	}, [collectionId])
 
-	if (!collection || !apiUrl) return null
+	if (!collection?.name || !apiUrl) return null;
 	return (
 		<RemoteAutosuggest
 			enableClear
@@ -53,7 +53,7 @@ const DocumentAutosuggest: React.FC<DocumentAutosuggestProps> = (props) => {
 			value={value}
 			displayField="title"
 			valueParam={valueParam}
-			url={`${apiUrl}/cms/${collection?.name}`}
+			url={`${apiUrl}/${collection?.name}`}
 			placeholder={placeholder}
 			handleChange={handleChange}
 		/>

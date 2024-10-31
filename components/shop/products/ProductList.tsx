@@ -71,7 +71,7 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		enableUsers,
 		enableGradient,
 		enableOverlay,
-    url = `${apiUrl}/shop/products`,
+    url,
 		buttons = [],
 		displayFields = [],
 		enableShow,
@@ -154,7 +154,7 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		<DataList
 			selectable={selectable}
 			layout={layout}
-			url={url}
+			url={url || `${apiUrl}/shop/products`}
 			name="product"
 			query={searchQuery}
 			fields={fields}

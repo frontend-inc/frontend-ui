@@ -35,7 +35,7 @@ const FieldAutosuggest: React.FC<FieldAutosuggestProps> = (props) => {
 		defaultOptions = [],
 	} = props
 
-	if (!collectionId || apiUrl) return null
+	if (!collectionId || !apiUrl) return null
 	return (
 		<RemoteAutosuggest
 			name={name}

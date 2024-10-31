@@ -227,8 +227,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		},
 	}
 
-	const layout =
-		{
+	const layout = {
 			avatar: 'list',
 			list: 'list',
 			text: 'list',
@@ -238,6 +237,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 
 	return (
 		<DataList
+      //@ts-ignore
       layout={layout}
 			url={url}
 			foreignUrl={foreignUrl}
@@ -248,6 +248,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			enableSearch={enableSearch}
 			enableFilters={enableFilters}
 			enableSorting={enableSorting}
+      //@ts-ignore
 			filterOptions={filterOptions}
 			sortOptions={sortOptions}
 			header={Header}

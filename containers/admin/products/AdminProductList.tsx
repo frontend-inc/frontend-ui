@@ -21,6 +21,7 @@ const AdminProductsList: React.FC<AdminProductListProps> = (props) => {
 
 	return (
 		<ResourceList
+      sortable
 			selectable
 			url={`${apiUrl}/products`}
 			name={'product'}
@@ -30,10 +31,15 @@ const AdminProductsList: React.FC<AdminProductListProps> = (props) => {
 			enableDelete
 			enableCreate
 			sortOptions={[
+        { name: 'position', label: 'Default' },
 				{ name: 'price', label: 'Price' },
 				{ name: 'title', label: 'Title' },
 				{ name: 'created_at', label: 'Date' },
 			]}
+      query={{
+        sort_by: 'position',
+        sort_direction: 'asc'
+      }}
 			create={AdminProductCreateForm}
 			edit={AdminProductEditForm}
 			show={AdminProductShow}

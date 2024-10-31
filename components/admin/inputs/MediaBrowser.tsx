@@ -77,8 +77,8 @@ const MediaBrowser: React.FC<MediaBrowserProps> = ({
 				</Button>
 			}
 		>
-			<div className="w-full min-w-screen-lg sm:min-w-[400px] flex flex-col items-center space-y-3 h-full min-h-[420px]">
-				<div className="flex justify-center items-center">					
+			<div className="w-full flex flex-col items-center space-y-3 h-full min-h-[420px]">
+				<div className="w-full">					
           <ButtonTabs
             fullWidth
             options={OPTIONS}

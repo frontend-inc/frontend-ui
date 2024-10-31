@@ -22,6 +22,7 @@ const AdminProductItem: React.FC<ResourceItemProps> = (props) => {
 
 	return (
 		<ResourceListItem
+      sortable
 			selectable={selectable}
 			selected={selected}
 			image={product?.image?.url}

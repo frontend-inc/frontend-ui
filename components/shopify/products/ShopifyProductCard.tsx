@@ -9,7 +9,6 @@ import { formatCurrency } from 'frontend-shopify'
 import { CardContent } from 'frontend-shadcn'
 import SwipeableShopifyProductImages from './images/SwipeableShopifyProductImages'
 import { ShopifyProductModal, ShopifyAddToCartButton } from '..'
-import { OkendoStarRating } from '../../addons'
 import { cn } from 'frontend-shadcn'
 
 type ShopifyProductCardProps = {
@@ -50,7 +49,9 @@ export default function ShopifyProductCard({
 			window.scrollTo({ top: 0, behavior: 'smooth' })
 			setSearchOpen(false)
 			handleClick()
-		}
+		}else{
+      setOpen(true)
+    }
 	}
 
 	return (

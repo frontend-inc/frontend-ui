@@ -8,7 +8,6 @@ import { ShopifyProductType } from 'frontend-shopify'
 import { useApp } from '../../../hooks'
 
 type ShopifyProductsProps = {
-	href: string
 	loading?: boolean
 	products: ShopifyProductType[]
 	xs?: number
@@ -24,7 +23,6 @@ type ShopifyProductsProps = {
 }
 
 const ShopifyProducts: React.FC<ShopifyProductsProps> = ({
-	href = '/products',
 	products,
 	buttonText = 'Add to cart',
 	enableBorder = false,
@@ -32,24 +30,13 @@ const ShopifyProducts: React.FC<ShopifyProductsProps> = ({
 	enableQuickShop,
 	enableQuantity,
 }) => {
-	const { clientUrl } = useApp()
-	const router = useRouter()
-	const { trackProductClicked } = useSegment()
 
-	const handleClick = (product) => {
-		if (href) {
-			const url = `${clientUrl}${href}/${product?.handle}`
-			router.push(url)
-		}
-	}
-
-	return (
+  return (
 		<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-full">
 			{products?.map((product) => (
 				<div className="p-1" key={product?.id}>
 					<ShopifyProductCard
 						product={product}
-						handleClick={() => handleClick(product)}
 						enableBorder={enableBorder}
 						enableAddToCart={enableAddToCart}
 						enableQuickShop={enableQuickShop}

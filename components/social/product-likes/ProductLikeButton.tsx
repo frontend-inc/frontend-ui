@@ -17,9 +17,7 @@ type ProductLikeButtonProps = {
 
 export default function ProductLikeButton({
 	product,
-	color = 'text-secondary',
 	size = 'small',
-	numLikes,
 }: ProductLikeButtonProps) {
 	const { currentUser } = useAuth()
 	const { setAuthOpen } = useApp()

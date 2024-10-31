@@ -23,7 +23,6 @@ import { cn } from 'frontend-shadcn'
 const PER_PAGE = 48
 
 export type ShopifyProductSearchProps = {
-	href: string
 	handle: string
 	options?: SearchFilterOptionType[]
 	priceOptions?: PriceOptionType[]
@@ -37,7 +36,6 @@ export type ShopifyProductSearchProps = {
 }
 
 const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
-	href,
 	options,
 	priceOptions,
 	enableFilters = false,
@@ -48,20 +46,15 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
 	enableQuantity = false,
 }) => {
 	const router = useRouter()
-	const { trackProductsSearched } = useSegment()
 
 	let { page_id: pageId, handle } = useParams() as any
 	if (handle == 'index' || handle == undefined) handle = ''
-	const [query, setQuery] = useState(handle)
 
 	const [keywords, setKeywords] = useState(String(query).toLowerCase())
 	const first = PER_PAGE
 
-	const { clientUrl } = useApp()
-
 	const {
 		loading,
-		errors,
 		cursor,
 		hasNextPage,
 		products,
@@ -84,10 +77,7 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
 	}
 
 	const handleSearch = (keywords) => {
-		if (keywords?.length > 0) {
-			trackProductsSearched(keywords)
-		}
-		router.push(`${clientUrl}/${pageId}/${keywords.split(' ').join('-')}`)
+		setKeywords(keywords)
 	}
 
 	const handleLoadMore = (after) => {
@@ -104,22 +94,17 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
 	}
 
 	useEffect(() => {
-		if (query?.length > 0 || filters?.length > 0) {
-			let searchKeywords = decodeURI(String(query)).split('-')?.join(' ')
+		if (filters?.length > 0) {
 			let filterQuery = formatQueryFilters(filters)
 			searchProducts({
-				query: `${searchKeywords} ${filterQuery}`,
+				query: `${keywords} ${filterQuery}`,
 			})
 		} else {
 			findProducts({
 				first: 20,
 			})
 		}
-	}, [query, filters])
-
-	useEffect(() => {
-		setQuery(handle)
-	}, [handle])
+	}, [filters])
 
 	return (
 		<div className="pt-2">
@@ -166,7 +151,6 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
 
 					{products?.length > 0 && (
 						<ShopifyProducts
-							href={href}
 							loading={loading}
 							products={products}
 							xs={12}

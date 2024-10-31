@@ -1,22 +1,19 @@
 'use client'
 
 import React from 'react'
-import { ButtonType, DisplayFieldType } from '../../../types'
 import { PDP } from '../..'
 import { useResourceContext } from 'frontend-js'
 import {
 	ProductRating,
-	DisplayMetafields,
-	ButtonActions,
 	SocialButtons,
 	AddToCartButton,
 } from '../..'
+import { ProductType } from '../../../types'
 
 export type ProductDetailsProps = {
-	handle?: string
-	buttons: ButtonType[]
-	displayFields: DisplayFieldType[]
-	product: any
+	handle?: string	
+  direction?: 'row' | 'column'
+	product: ProductType
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
@@ -35,8 +32,8 @@ export type ProductProps = ProductDetailsProps & {
 
 const ProductDetails: React.FC<ProductProps> = (props) => {
 	const {
-		displayFields = [],
-		buttons,
+    direction,
+    product,
 		enableFavorites,
 		enableLikes,
 		enableSharing,
@@ -49,7 +46,6 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 		},
 	} = props || {}
 
-	const { resource: product } = useResourceContext()
 
 	let slots = {
 		image: {
@@ -65,6 +61,7 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 	if (!product?.id) return null
 	return (
 		<PDP
+      direction={direction}
 			image={product?.image?.url}
 			primary={product?.title}
 			price={product?.display_price}
@@ -89,15 +86,11 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 				/>
 			}
 			addToCart={
-				<div className="flex flex-row space-x-2">
-					<AddToCartButton size="lg" availableForSale productId={product?.id} />
-					{displayFields?.length > 0 && (
-						<DisplayMetafields fields={displayFields} resource={product} />
-					)}
-				</div>
-			}
-			secondaryAction={
-				buttons && <ButtonActions justifyContent={'end'} buttons={buttons} />
+				<AddToCartButton 
+          availableForSale 
+          size="lg" 
+          productId={product?.id} 
+        />					
 			}
 			slots={slots}
 		/>

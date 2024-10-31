@@ -21,12 +21,12 @@ export default function DataLayout({
       loading && 'opacity-50'
     )}>
     { layout == 'grid' && (
-    <div className='grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 pb-1'>      
+    <div className='w-full grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 pb-1'>      
       {children}
       </div>  
     )}
     { layout == 'list' && (
-      <div className='flex flex-col space-y-4'>
+      <div className='w-full flex flex-col space-y-4 border border-red-500'>
         {children}
       </div> 
     )}

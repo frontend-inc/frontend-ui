@@ -1,24 +1,38 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ShowItem } from '../..'
 import { ShowItemProps } from './ShowItem'
-import { ResourceProvider } from 'frontend-js'
+import { ResourceProvider, useResource } from 'frontend-js'
 
 export type ShowProps = ShowItemProps & {
-	url: string
-	foreignUrl?: string
+	documentId?: string
+  url: string
 	resource?: any
 }
 
 const Show: React.FC<ShowProps> = (props) => {
-	const { url, foreignUrl, resource } = props || {}
+	const { documentId, url } = props || {}
+
+  const { 
+    loading,
+    resource,
+    findOne 
+  } = useResource({
+    url,
+    name: 'document',
+  })
+
+  useEffect(() => {
+    if(documentId){
+      findOne(documentId)
+    }
+  }, [documentId])
 
 	return (
 		<ResourceProvider
 			name="document"
 			url={url}
-			foreignUrl={foreignUrl}
 			resource={resource}
 		>
 			<ShowItem {...props} url={url} />

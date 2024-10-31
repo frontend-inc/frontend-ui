@@ -3,13 +3,10 @@
 import React from 'react'
 import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
-import { useApp } from '../../../hooks'
-import { useRouter } from 'next/navigation'
 import { ProductListItem, DataLayout } from '../..'
 import { ButtonType, DisplayFieldType } from '../../../types'
 
 export type ProductListItemsProps = {
-	href?: string
 	style?: 'list' | 'card' | 'avatar' | 'cover' | 'text'
 	buttons: ButtonType[]
 	displayFields: DisplayFieldType[]
@@ -29,8 +26,8 @@ export type ProductListItemsProps = {
 const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 
 	const {
-		setResource,
 		loading,
+    setResource,
 		resources,
 		page,
 		numPages,
@@ -54,6 +51,16 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 	} = props
 
 
+  const handleShowClick = (product: any) => {
+    if(handleClick) {
+      handleClick(product)
+      return
+    }else{
+      setResource(product)
+      setOpenShow(true)
+    }    
+  }
+
 	const handlePaginate = async () => {
 		await loadMore()
 	}
@@ -67,7 +74,7 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 						style={style}
 						resource={resource}
 						displayFields={displayFields}
-						handleClick={() => handleClick(resource)}
+						handleClick={() => handleShowClick(resource)}
 						buttons={buttons}
 						enableFavorites={enableFavorites}
 						enableLikes={enableLikes}

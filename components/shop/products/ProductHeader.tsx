@@ -4,7 +4,6 @@ import React from 'react'
 import { FilterButton, SortButton, SearchInput } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch } from '../../../hooks'
-import { cn } from 'frontend-shadcn'
 
 export type ProductHeaderProps = {
 	query: any
@@ -46,9 +45,9 @@ const ProductHeader: React.FC<ProductHeaderProps> = (props) => {
 		return null
 	}
 	return (
-		<div className="flex flex-col space-y-2 mb-4">
-			<div className="flex flex-row justify-between items-center space-x-1">
-				<div className="flex flex-row justify-center items-center">
+		<div className="flex flex-col space-y-1 mb-1">
+			<div className="flex flex-col sm:flex-row justify-between space-y-1 sm:space-y-0 sm:space-x-1">
+				<div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-1">
 					{enableSearch && (
 						<SearchInput
 							value={keywords}

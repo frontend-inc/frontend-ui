@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Modal, ProductListItem } from '../..'
+import { Drawer, ProductDetails } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { ButtonType, DisplayFieldType } from '../../../types'
 
@@ -34,18 +34,21 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 
 	if (!resource) return null
 	return (
-		<Modal open={openShow} handleClose={() => setOpenShow(false)} maxWidth="md">
-			<ProductListItem
-				resource={resource}
-				handleClick={() => setOpenShow(false)}
-				displayFields={displayFields}
-				enableGradient={enableGradient}
-				enableOverlay={enableOverlay}
-				enableFavorites={enableFavorites}
-				enableLikes={enableLikes}
-				enableRatings={enableRatings}
-			/>
-		</Modal>
+		<Drawer open={openShow} handleClose={() => setOpenShow(false)}>
+      <div className="w-full flex flex-row justify-center pb-10">
+        <div className="md:max-w-screen-sm">
+          <ProductDetails
+            direction="column"
+            product={resource}              
+            enableGradient={enableGradient}
+            enableOverlay={enableOverlay}
+            enableFavorites={enableFavorites}
+            enableLikes={enableLikes}
+            enableRatings={enableRatings}
+          />
+        </div>
+      </div>
+		</Drawer>
 	)
 }
 

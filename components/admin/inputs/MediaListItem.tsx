@@ -40,7 +40,7 @@ const MediaItem: React.FC<MediaItemProps> = ({
 	return (
 		<Card
 			className={cn(
-				'rounded-md bg-background p-0 min-w-[120px] h-[208px] border border-transparent',
+				'rounded-md bg-background p-0 min-w-[160px] h-[208px] border border-transparent',
 				selected && 'border-primary'
 			)}
 		>
@@ -61,7 +61,7 @@ const MediaItem: React.FC<MediaItemProps> = ({
 			</CardHeader>
 			{contentType === 'image' || contentType === 'video' ? (
 				<TouchableOpacity handleClick={() => handleClick && handleClick(item)}>
-					<div className="h-[160px] w-[180px] flex items-center justify-center overflow-hidden">
+					<div className="h-[160px] w-[205px] flex items-center justify-center overflow-hidden">
 						<Image
 							disableBorderRadius
 							aspectRatio={4 / 3}

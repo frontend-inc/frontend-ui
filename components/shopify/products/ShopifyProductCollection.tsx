@@ -14,7 +14,6 @@ import {
 import { PriceOptionType, SearchFilterOptionType } from 'frontend-shopify'
 
 export type ShopifyProductCollectionProps = {
-	href?: string
 	handle: string
 	options?: SearchFilterOptionType[]
 	priceOptions?: PriceOptionType[]
@@ -31,7 +30,6 @@ const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (
 ) => {
 	const {
 		handle,
-		href,
 		options = [],
 		priceOptions = [],
 		enableFilters = false,
@@ -42,7 +40,6 @@ const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (
 		enableQuantity = false,
 	} = props
 
-	const [query, setQuery] = useState<Record<string, any>>({})
 	const [sortKey, setSortKey] =
 		useState<ProductSortKeyType>('COLLECTION_DEFAULT')
 	const [reverse, setReverse] = useState(false)
@@ -58,16 +55,9 @@ const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (
 	}
 
 	useEffect(() => {
-		if (query) {
-			findCollection(handle, query)
-		}
-	}, [query])
-
-	useEffect(() => {
 		if (handle) {
 			let productFilters = formatProductFilters(filters)
 			findCollection(handle, {
-				...query,
 				sortKey,
 				reverse,
 				filters: productFilters,
@@ -96,7 +86,6 @@ const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (
 				)}
 			</div>
 			<ShopifyProducts
-				href={String(href)}
 				loading={loading}
 				products={products}
 				enableBorder={enableBorder}

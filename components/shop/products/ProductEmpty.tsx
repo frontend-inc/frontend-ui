@@ -13,7 +13,7 @@ type ProductEmptyProps = {
 const ProductEmpty: React.FC<ProductEmptyProps> = (props) => {
 	const { resources } = useResourceContext()
 	const {
-		icon = 'ShoppingCart',
+		icon = 'Search',
 		title = 'No products',
 		description = 'No products available.',
 	} = props || {}

@@ -56,7 +56,7 @@ const UnsplashList: React.FC<UnsplashProps> = ({ onComplete }) => {
 
 	return (
 		<div className="w-full flex flex-col justify-center items-center">
-			<div className="space-y-4">
+			<div className="space-y-4 w-full flex justify-center items-center">
 				<SearchInput
 					name="keywords"
 					value={keywords}
@@ -64,7 +64,6 @@ const UnsplashList: React.FC<UnsplashProps> = ({ onComplete }) => {
 					handleChange={handleChange}
 					handleSearch={handleSearch}
 				/>
-				<PoweredByUnsplash />
 			</div>
 			<div className="mt-4 grid grid-cols-2 gap-4">
 				{images?.map((image, i) => (

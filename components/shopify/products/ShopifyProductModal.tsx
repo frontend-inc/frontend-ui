@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Modal } from '../../../components'
+import { Drawer } from '../../../components'
 import { ShopifyProductCard } from '../../../components/shopify'
 import { ShopifyProductType } from 'frontend-shopify'
 
@@ -23,13 +23,13 @@ const ShopifyProductModal: React.FC<ShopifyProductModalProps> = (props) => {
 	} = props
 
 	return (
-		<Modal open={open} handleClose={handleClose} maxWidth={'md'}>
+		<Drawer open={open} handleClose={handleClose}>
 			<ShopifyProductCard
 				product={shopifyProduct}
 				enableQuantity={enableQuantity}
 				buttonText={buttonText}
 			/>
-		</Modal>
+		</Drawer>
 	)
 }
 

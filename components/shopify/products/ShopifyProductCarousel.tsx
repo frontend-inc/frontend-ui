@@ -42,12 +42,6 @@ const ShopifyProductCarousel: React.FC<ShopifyProductCarouselProps> = (
 		enableQuantity = false,
 	} = props
 
-	const { trackProductClicked } = useSegment()
-
-	const handleClick = (product) => {
-    console.log("Product clicked", product)
-	}
-
 	return (
 		<div
 			className={cn(
@@ -62,7 +56,6 @@ const ShopifyProductCarousel: React.FC<ShopifyProductCarouselProps> = (
               <div className='p-1'>              
                 <ShopifyProductCard
                   product={product}
-                  handleClick={() => handleClick(product)}
                   buttonText={buttonText}
                   enableBorder={enableBorder}
                   enableAddToCart={enableAddToCart}
