@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { useAdminCollections } from 'frontend-shopify'
+import { useCollections } from 'frontend-shopify'
 import { ShopifyProductCarousel } from '../../../components/shopify'
 
 export type ShopifyProductCollectionCarouselProps = {
@@ -29,7 +29,7 @@ const ShopifyProductCollectionCarousel: React.FC<
 		enableQuantity = false,
 	} = props
 
-	const { loading, products, findCollection } = useAdminCollections()
+	const { loading, products, findCollection } = useCollections()
 
 	useEffect(() => {
 		if (handle) {

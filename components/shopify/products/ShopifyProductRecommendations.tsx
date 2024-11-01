@@ -9,7 +9,6 @@ import {
 
 export type ShopifyProductRecommendationsProps = {
 	handle?: string
-	href: string
 	layout?: 'grid' | 'carousel'
 	perPage?: string
 	enableBorder?: boolean
@@ -25,7 +24,6 @@ const ShopifyProductRecommendations: React.FC<
 > = (props) => {
 	const {
 		handle,
-		href,
 		layout = 'grid',
 		perPage = 12,
 		enableBorder = false,
@@ -73,7 +71,6 @@ const ShopifyProductRecommendations: React.FC<
 		<div className="w-full">
 			{layout == 'grid' && (
 				<ShopifyProducts
-					href={href}
 					loading={loading}
 					products={similarProducts}
 					enableBorder={enableBorder}

@@ -3,11 +3,8 @@
 import React, { useEffect } from 'react'
 import { useProducts } from 'frontend-shopify'
 import { ShopifyProductCard } from '..'
-import { useRouter } from 'next/navigation'
-import { useApp } from '../../../hooks'
 
 type ProductArrayProps = {
-	href?: string
 	handles: string[]
 	enableBorder?: boolean
 	enableAddToCart?: boolean
@@ -17,7 +14,6 @@ type ProductArrayProps = {
 }
 
 const ProductArray: React.FC<ProductArrayProps> = ({
-	href,
 	handles,
 	enableBorder = false,
 	enableAddToCart = false,
@@ -25,15 +21,6 @@ const ProductArray: React.FC<ProductArrayProps> = ({
 	enableQuantity = false,
 	buttonText,
 }) => {
-	const router = useRouter()
-	const { clientUrl } = useApp()
-
-	const handleClick = (product) => {
-		if (href) {
-			const url = `${clientUrl}${href}/${product?.handle}`
-			router.push(url)
-		}
-	}
 
 	return (
 		<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-full">
@@ -48,7 +35,6 @@ const ProductArray: React.FC<ProductArrayProps> = ({
 					<div key={product?.id} className="p-1">
 						<ShopifyProductCard
 							product={product}
-							handleClick={() => handleClick(product)}
 							enableBorder={enableBorder}
 							enableAddToCart={enableAddToCart}
 							enableQuickShop={enableQuickShop}

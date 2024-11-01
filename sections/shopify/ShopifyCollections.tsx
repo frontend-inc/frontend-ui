@@ -20,7 +20,6 @@ const ShopifyCollections: React.FC<ShopifyCollectionsProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		requirePaid,
 		...rest
 	} = props

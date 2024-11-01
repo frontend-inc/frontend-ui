@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { AccordionItem } from '../../../components'
-import { Typography } from '../../core'
 import { ShopifyProductType } from 'frontend-shopify'
 
 type ShopifyProductDescriptionProps = {

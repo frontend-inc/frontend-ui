@@ -48,7 +48,6 @@ const AdminShopifyPage: React.FC<AdminShopifyPageProps> = (props) => {
 		enableDelete,
 		handleEdit,
 		handleDelete,
-		disablePadding = false,
 		children,
 	} = props || {}
 
@@ -65,7 +64,7 @@ const AdminShopifyPage: React.FC<AdminShopifyPageProps> = (props) => {
 	}, [appId])
 
 	if (loading) {
-		return <CircularLoader size={64} />
+		return <CircularLoader />
 	}
 	if (!app?.shopify_domain || !app?.shopify_storefront_access_token) {
 		return (

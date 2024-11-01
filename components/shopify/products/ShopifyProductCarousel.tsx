@@ -1,11 +1,8 @@
 'use client'
 
 import React from 'react'
-import { useSegment } from '../../../hooks/addons'
 import { ShopifyProductCard } from '..'
-import { useRouter, useParams } from 'next/navigation'
 import { ShopifyProductType } from 'frontend-shopify'
-import { useApp } from '../../../hooks'
 import { cn } from 'frontend-shadcn'
 import { 
   Carousel, 

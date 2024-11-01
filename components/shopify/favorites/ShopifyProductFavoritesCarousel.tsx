@@ -6,7 +6,6 @@ import { ShopifyProductCarousel } from '..'
 import { useFavorites } from 'frontend-shopify'
 
 type ShopifyProductFavoritesCarouselProps = {
-	href: string
 	title?: string
 	perPage?: string
 	enableBorder?: boolean
@@ -14,25 +13,18 @@ type ShopifyProductFavoritesCarouselProps = {
 	enableQuantity?: boolean
 	enableQuickShop?: boolean
 	buttonText?: string
-	enableAutoPlay?: boolean
-	enableArrows?: boolean
-	enableDots?: boolean
 }
 
 const ShopifyProductFavoritesCarousel: React.FC<
 	ShopifyProductFavoritesCarouselProps
 > = (props) => {
 	const {
-		href,
 		enableBorder = false,
 		buttonText = 'Add to cart',
 		enableAddToCart,
 		enableQuantity,
 		enableQuickShop,
-
 		enableAutoPlay = false,
-		enableArrows = false,
-		enableDots = true,
 	} = props || {}
 
 	const { favorites } = useFavorites()
@@ -40,7 +32,6 @@ const ShopifyProductFavoritesCarousel: React.FC<
 	return (
 		<div className="w-full">
 			<ShopifyProductCarousel
-				href={href}
 				products={favorites}
 				enableBorder={enableBorder}
 				enableAddToCart={enableAddToCart}
@@ -48,8 +39,6 @@ const ShopifyProductFavoritesCarousel: React.FC<
 				enableQuickShop={enableQuickShop}
 				buttonText={buttonText}
 				enableAutoPlay={enableAutoPlay}
-				enableArrows={enableArrows}
-				enableDots={enableDots}
 			/>
 			{favorites?.length === 0 && (
 				<Placeholder

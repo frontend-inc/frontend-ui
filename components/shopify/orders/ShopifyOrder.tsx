@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect } from 'react'
 import { AuthScreen, Loader } from '../..'
-import { useAdminOrders } from 'frontend-shopify'
+import { useOrders } from 'frontend-shopify'
 import { ShopifyOrderDetails } from '..'
 import { useParams } from 'next/navigation'
 import moment from 'moment'
@@ -23,7 +23,7 @@ const ShopifyCustomerOrder: React.FC<ShopifyCustomerOrderProps> = (props) => {
 		orderId = null
 	}
 
-	const { loading, order, findCustomerOrder } = useAdminOrders()
+	const { loading, order, findCustomerOrder } = useOrders()
 
 	useEffect(() => {
 		if (orderId) {

@@ -8,8 +8,7 @@ import {
 	useSearchFilters,
 } from 'frontend-shopify'
 import { ProductSortKeyType } from 'frontend-shopify'
-import { useSegment } from '../../../hooks/addons'
-import { useRouter, useParams } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import { SearchInput, Placeholder } from '../..'
 import {
 	ShopifyProductSortButton,
@@ -48,7 +47,7 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
 	let { handle } = useParams() as any
 	if (handle == 'index' || handle == undefined) handle = ''
 
-	const [keywords, setKeywords] = useState(String(query).toLowerCase())
+	const [keywords, setKeywords] = useState('')
 	const first = PER_PAGE
 
 	const {

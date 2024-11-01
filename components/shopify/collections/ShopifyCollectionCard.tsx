@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Typography } from '../../core'
 import { Card } from 'frontend-shadcn'
@@ -17,7 +17,6 @@ export type ShopifyCardProps = {
 			url: string
 		}
 	}
-	href?: string
 	buttonText?: string
 	handleClick?: () => void
 	enableGradient?: boolean
@@ -26,22 +25,21 @@ export type ShopifyCardProps = {
 
 export default function ShopifyCollectionCard({
 	collection,
-	href,
 	handleClick,
 	buttonText,
 	enableGradient = false,
 	enableOverlay = false,
 }: ShopifyCardProps) {
-	const { clientUrl } = useApp()
-	const router = useRouter()
 
 	const { label, title, image } = collection || {}
+
+  const [open, setOpen] = useState(false)
 
 	const handleItemClick = () => {
 		if (handleClick) {
 			handleClick()
-		} else if (href) {
-			router.push(`${clientUrl}${href}`)
+		} else {
+			setOpen(true)
 		}
 	}
 

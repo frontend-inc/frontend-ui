@@ -15,8 +15,6 @@ type ShopifyProductCardProps = {
 	product: ShopifyProductType
 	handleClick?: () => void
 	buttonText?: string
-	height?: number
-	width?: number
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
@@ -28,7 +26,6 @@ type ShopifyProductCardProps = {
 export default function ShopifyProductCard({
 	product,
 	handleClick,
-	height = 320,
 	enableBorder = false,
 	enableAddToCart = false,
 	enableQuantity = false,
@@ -63,7 +60,7 @@ export default function ShopifyProductCard({
 		>
 			<SwipeableShopifyProductImages
 				product={product}
-				height={height}
+				height={320}
 				handleClick={handleItemClick}
 				disableBorderRadius={enableBorder}
 			/>
