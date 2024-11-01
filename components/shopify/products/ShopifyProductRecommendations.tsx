@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { useAdminProducts } from 'frontend-shopify'
+import { useProducts } from 'frontend-shopify'
 import {
 	ShopifyProducts,
 	ShopifyProductCarousel,
@@ -43,7 +43,7 @@ const ShopifyProductRecommendations: React.FC<
 		product,
 		products,
 		findProductRecommendations,
-	} = useAdminProducts()
+	} = useProducts()
 
 	useEffect(() => {
 		if (product) {

@@ -4,7 +4,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import { AutocompleteInput } from '../../../../components'
 import { Image, Placeholder } from '../../../../components'
 import { SyntheticEventType } from '../../../../types'
-import { useAdminProducts } from 'frontend-shopify'
+import { useProducts } from 'frontend-shopify'
 import { ShopifyContext } from 'frontend-shopify'
 import { cn } from 'frontend-shadcn'
 import { Collapse } from '../../../core'
@@ -33,7 +33,7 @@ const ShopifyProductInput: React.FC<AutosuggestProps> = (props) => {
 	const { domain, storefrontAccessToken } = useContext(ShopifyContext) as any
 
 	const { loading, product, products, setProduct, findProduct, findProducts } =
-		useAdminProducts()
+  useProducts()
 
 	const [options, setOptions] = useState([])
 
