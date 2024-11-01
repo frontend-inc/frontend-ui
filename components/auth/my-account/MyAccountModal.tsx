@@ -9,15 +9,13 @@ import {
 	ShopifyCustomerPortal,
 } from '../../../components'
 import MyAccountTabs from './MyAccountTabs'
-import { MetafieldType } from '../../../types'
 
 type MyAccountModalProps = {
 	enableStripe?: boolean
-	metafields?: MetafieldType[]
 }
 
 const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
-	const { enableStripe, metafields } = props || {}
+	const { enableStripe } = props || {}
 	const { myAccountOpen, setMyAccountOpen } = useApp()
 
 	const {
@@ -71,7 +69,6 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           handleDeleteAvatar={handleDeleteAvatar}
-          metafields={metafields}
         />
       )}
       {currentTab == 2 && <StripeCustomerPortal />}

@@ -3,15 +3,9 @@
 import React from 'react'
 import { ResourceForm } from '../../../components'
 import { ResourceFormProps } from '../../../components/cms/resources/ResourceForm'
-import { useAdmin } from '../../../hooks'
-import { MetafieldType } from '../../../types'
 
-type AdminUserFormProps = ResourceFormProps & {
-	metafields?: MetafieldType[]
-}
 
-const AdminUserForm: React.FC<AdminUserFormProps> = (props) => {
-	const { apiUrl } = useAdmin()
+const AdminUserForm: React.FC<ResourceFormProps> = (props) => {
 
 	const fields = [
 		{

@@ -2,14 +2,12 @@
 
 import React from 'react'
 import { Form } from '../../../components'
-import { MetafieldType } from '../../../types'
 import { ACCOUNT_FORM_FIELDS } from '../../../constants'
 
 type MyAccountFormProps = {
 	loading?: boolean
 	errors?: any
 	user: any
-	metafields?: MetafieldType[]
 	handleChange: (ev: any) => void
 	handleSubmit: () => void
 	handleDeleteAvatar: () => void

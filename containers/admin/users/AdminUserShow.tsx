@@ -5,17 +5,12 @@ import { UserAvatar, ResourceModal, ResourceDetails } from '../../../components'
 import { ResourceShowProps } from '../../../components/cms/resources/ResourceShow'
 import { DisplayFieldType } from '../../../types'
 
-type AdminUserShowProps = ResourceShowProps & {
-	metafields?: DisplayFieldType[]
-}
-
-const AdminUserShow: React.FC<AdminUserShowProps> = (props) => {
+const AdminUserShow: React.FC<ResourceShowProps> = (props) => {
 	const {
 		resource,
 		loading,
 		open,
 		handleClose,
-		metafields = [],
 		enableEdit,
 		enableDelete,
 		handleDelete,
@@ -26,7 +21,6 @@ const AdminUserShow: React.FC<AdminUserShowProps> = (props) => {
 		{ label: 'First name', name: 'first_name', variant: 'string' },
 		{ label: 'Last name', name: 'last_name', variant: 'string' },
 		{ label: 'Email', name: 'email', variant: 'string' },
-		...metafields,
 	]
 
 	return (

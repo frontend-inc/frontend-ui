@@ -9,9 +9,3 @@ export type MetafieldVariantType =
 	| 'url'
 	| 'rating'
 
-export type MetafieldType = {
-	label: string
-	name: string
-	variant: MetafieldVariantType
-	options: string[]
-}

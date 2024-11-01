@@ -5,17 +5,13 @@ import { ResourceModal, ResourceDetails } from '../../../components'
 import { ResourceShowProps } from '../../../components/cms/resources/ResourceShow'
 import { DisplayFieldType } from '../../../types'
 
-type AdminProductShowProps = ResourceShowProps & {
-	metafields?: DisplayFieldType[]
-}
 
-const AdminProductShow: React.FC<AdminProductShowProps> = (props) => {
+const AdminProductShow: React.FC<ResourceShowProps> = (props) => {
 	const {
 		resource,
 		loading,
 		open,
 		handleClose,
-		metafields = [],
 		enableEdit,
 		enableDelete,
 		handleDelete,
@@ -26,7 +22,6 @@ const AdminProductShow: React.FC<AdminProductShowProps> = (props) => {
 		{ label: 'Price', name: 'price', variant: 'number' },
 		{ label: 'Compare at price', name: 'compare_at_price', variant: 'number' },
 		{ label: 'SKU', name: 'sku', variant: 'string' },
-		...metafields,
 	]
 
 	return (

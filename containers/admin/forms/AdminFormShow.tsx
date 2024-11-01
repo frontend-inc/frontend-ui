@@ -3,13 +3,8 @@
 import React from 'react'
 import { ResourceModal, ResourceDetails } from '../../../components'
 import { ResourceShowProps } from '../../../components/cms/resources/ResourceShow'
-import { DisplayFieldType } from '../../../types'
 
-type AdminFormShowProps = ResourceShowProps & {
-	metafields?: DisplayFieldType[]
-}
-
-const AdminFormShow: React.FC<AdminFormShowProps> = (props) => {
+const AdminFormShow: React.FC<ResourceShowProps> = (props) => {
 	const {
 		resource,
 		loading,

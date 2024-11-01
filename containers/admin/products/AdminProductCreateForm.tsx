@@ -3,16 +3,10 @@
 import React from 'react'
 import { ResourceForm } from '../../../components'
 import { ResourceFormProps } from '../../../components/cms/resources/ResourceForm'
-import { MetafieldType } from '../../../types'
 
-type AdminProductCreateFormProps = ResourceFormProps & {
-	metafields: MetafieldType[]
-}
-
-const AdminProductCreateForm: React.FC<AdminProductCreateFormProps> = (
+const AdminProductCreateForm: React.FC<ResourceFormProps> = (
 	props
 ) => {
-	const { metafields = [] } = props || {}
 
 	let fields = [
 		{ label: 'Image', name: 'image', variant: 'image' },
@@ -23,7 +17,6 @@ const AdminProductCreateForm: React.FC<AdminProductCreateFormProps> = (
 		{ label: 'Price', name: 'price', variant: 'number' },
 		{ label: 'Compare at price', name: 'compare_at_price', variant: 'number' },
 		{ label: 'SKU', name: 'sku', variant: 'string' },
-		...metafields,
 	]
 
 	return <ResourceForm {...props} fields={fields} />

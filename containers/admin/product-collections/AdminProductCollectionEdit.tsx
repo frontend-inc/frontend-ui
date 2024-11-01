@@ -6,15 +6,9 @@ import { ResourceFormProps } from '../../../components/cms/resources/ResourceFor
 import { FormFieldType } from '../../../types'
 import { MediaInput } from '../../../components/'
 
-// Todo: Type error if we use MetafieldType
-type AdminProductCollectionFormProps = ResourceFormProps & {
-	metafields?: FormFieldType[]
-}
-
-const AdminProductCollectionForm: React.FC<AdminProductCollectionFormProps> = (
+const AdminProductCollectionForm: React.FC<ResourceFormProps> = (
 	props
 ) => {
-	const { metafields = [] } = props || {}
 
 	let fields = [
 		{ label: 'Media', name: 'image', variant: 'media' },
@@ -22,7 +16,6 @@ const AdminProductCollectionForm: React.FC<AdminProductCollectionFormProps> = (
 		{ label: 'Title', name: 'title', variant: 'string' },
 		{ label: 'Description', name: 'description', variant: 'text' },
 		{ label: 'Label', name: 'label', variant: 'string' },
-		...metafields,
 	]
 
 	const inputOptions = {

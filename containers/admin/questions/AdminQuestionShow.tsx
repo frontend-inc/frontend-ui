@@ -5,17 +5,12 @@ import { Typography } from '../../../components/core'
 import {
 	ResourceModal,
 	ResourceDetails,
-	DividerInput,
 } from '../../../components'
 import { ResourceShowProps } from '../../../components/cms/resources/ResourceShow'
-import { DisplayFieldType } from '../../../types'
 import { AdminAnswerList } from '../../../containers'
 
-type AdminQuestionShowProps = ResourceShowProps & {
-	metafields?: DisplayFieldType[]
-}
 
-const AdminQuestionShow: React.FC<AdminQuestionShowProps> = (props) => {
+const AdminQuestionShow: React.FC<ResourceShowProps> = (props) => {
 	const {
 		open,
 		handleClose,

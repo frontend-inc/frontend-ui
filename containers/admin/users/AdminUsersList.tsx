@@ -7,15 +7,10 @@ import AdminUserItem from './AdminUserItem'
 import AdminUserForm from './AdminUserForm'
 import AdminUserEditForm from './AdminUserEditForm'
 import AdminUserShow from './AdminUserShow'
-import { MetafieldType } from '../../../types'
 
-type AdminUserListProps = {
-	metafields?: MetafieldType[]
-}
 
-const AdminUsersList: React.FC<AdminUserListProps> = (props) => {
+const AdminUsersList: React.FC = () => {
 	const { apiUrl } = useAdmin()
-	const { metafields = [] } = props
 
 	return (
 		<ResourceList
@@ -40,14 +35,6 @@ const AdminUsersList: React.FC<AdminUserListProps> = (props) => {
 			edit={AdminUserEditForm}
 			show={AdminUserShow}
 			component={AdminUserItem}
-			slots={{
-				edit: {
-					metafields,
-				},
-				show: {
-					metafields,
-				},
-			}}
 		/>
 	)
 }

@@ -6,12 +6,7 @@ import { ResourceFormProps } from '../../../components/cms/resources/ResourceFor
 import { FormFieldType } from '../../../types'
 import { MediaInput } from '../../../components'
 
-type AdminProductEditFormProps = ResourceFormProps & {
-	metafields?: FormFieldType[]
-}
-
-const AdminProductEditForm: React.FC<AdminProductEditFormProps> = (props) => {
-	const { metafields = [] } = props || {}
+const AdminProductEditForm: React.FC<ResourceFormProps> = (props) => {
 
 	let fields = [
 		{ label: 'Image', name: 'image', variant: 'media' },
@@ -22,7 +17,6 @@ const AdminProductEditForm: React.FC<AdminProductEditFormProps> = (props) => {
 		{ label: 'Price', name: 'price', variant: 'number' },
 		{ label: 'Compare at price', name: 'compare_at_price', variant: 'number' },
 		{ label: 'SKU', name: 'sku', variant: 'string' },
-		...metafields,
 	]
 
 	const inputOptions = {
