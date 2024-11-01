@@ -6,7 +6,6 @@ import { ShopifyProductArray } from '..'
 import { UserType } from 'frontend-js'
 
 export type ShopifyProductFavoritesProps = {
-	href: string
 	user: UserType
 	perPage?: string
 	enableBorder?: boolean
@@ -20,7 +19,6 @@ const ShopifyProductFavorites: React.FC<ShopifyProductFavoritesProps> = (
 	props
 ) => {
 	const {
-		href,
 		user,
 		enableBorder = false,
 		buttonText = 'Add to cart',
@@ -34,7 +32,6 @@ const ShopifyProductFavorites: React.FC<ShopifyProductFavoritesProps> = (
 	return (
 		<div className="w-full">
 			<ShopifyProductArray
-				href={href}
 				handles={favorites || []}
 				enableBorder={enableBorder}
 				enableAddToCart={enableAddToCart}

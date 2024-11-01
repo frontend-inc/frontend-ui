@@ -17,8 +17,6 @@ type ShopifyProductCarouselProps = {
 	products: ShopifyProductType[]
 	buttonText?: string
 	enableAutoPlay?: boolean
-	enableArrows?: boolean
-	enableDots?: boolean
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 	enableBorder?: boolean
 	enableAddToCart?: boolean

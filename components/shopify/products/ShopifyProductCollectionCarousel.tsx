@@ -7,8 +7,6 @@ import { ShopifyProductCarousel } from '../../../components/shopify'
 export type ShopifyProductCollectionCarouselProps = {
 	handle: string
 	enableAutoPlay?: boolean
-	enableArrows?: boolean
-	enableDots?: boolean
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuickShop?: boolean
@@ -21,8 +19,6 @@ const ShopifyProductCollectionCarousel: React.FC<
 	const {
 		handle,
 		enableAutoPlay = false,
-		enableArrows = false,
-		enableDots = false,
 		enableBorder = false,
 		enableAddToCart = false,
 		enableQuickShop = false,
@@ -42,8 +38,6 @@ const ShopifyProductCollectionCarousel: React.FC<
 			loading={loading}
 			products={products}
 			enableAutoPlay={enableAutoPlay}
-			enableArrows={enableArrows}
-			enableDots={enableDots}
 			enableBorder={enableBorder}
 			enableAddToCart={enableAddToCart}
 			enableQuickShop={enableQuickShop}

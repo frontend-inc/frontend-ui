@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react'
 import { useAuth } from 'frontend-js'
 import { AuthScreen, MyAccountForm } from '../..'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 type MyAccountProps = {
 	redirectUrl: string
@@ -32,11 +32,6 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 		await updateMe(user)
 	}
 
-	const handleLogout = async () => {
-		await logout()
-		router.push(redirectUrl)
-	}
-
 	useEffect(() => {
 		if (!currentUser?.id) {
 			fetchMe()
@@ -60,7 +55,6 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 						handleChange={handleChange}
 						handleSubmit={handleSubmit}
 						handleDeleteAvatar={handleDeleteAvatar}
-						handleLogout={handleLogout}
 					/>
 				</AuthScreen>
 			)}

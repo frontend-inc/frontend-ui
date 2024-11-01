@@ -5,7 +5,7 @@ import {
 	TouchableOpacity,
 	Image,
 	AttachmentImage,
-	Label,
+	Badge,
 } from '../../../components'
 import { Button } from '../../../components'
 import { Card, CardHeader } from 'frontend-shadcn'
@@ -45,7 +45,7 @@ const MediaItem: React.FC<MediaItemProps> = ({
 			)}
 		>
 			<CardHeader className="py-1 px-1 flex flex-row justify-between items-center">
-				<Label variant="outline" label={item?.content_type?.split('/')[1]} />
+				<Badge>{ item?.content_type?.split('/')[1]}</Badge>
 				{handleRemove && (
 					<DropdownMenu>
 						<DropdownMenuTrigger asChild>

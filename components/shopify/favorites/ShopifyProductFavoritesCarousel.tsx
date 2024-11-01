@@ -12,6 +12,7 @@ type ShopifyProductFavoritesCarouselProps = {
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
 	enableQuickShop?: boolean
+  enableAutoPlay?: boolean
 	buttonText?: string
 }
 
