@@ -7,7 +7,6 @@ import { useApp } from '../../../hooks'
 
 export type CollectionProductsCarouselProps = ProductListProps & {
 	productCollectionId: string
-	enableArrows?: boolean
 	enableAutoplay?: boolean
 }
 
@@ -15,11 +14,9 @@ const CollectionProductsCarousel: React.FC<CollectionProductsCarouselProps> = (
 	props
 ) => {
 
-
   const { apiUrl } = useApp()
 	const {
 		productCollectionId,
-		enableArrows,
 		enableAutoplay,
 		...rest
 	} = props
@@ -27,7 +24,6 @@ const CollectionProductsCarousel: React.FC<CollectionProductsCarouselProps> = (
 
 	const slots = {
 		list: {
-			enableArrows,
 			enableAutoplay,
 		},
 	}
@@ -36,8 +32,7 @@ const CollectionProductsCarousel: React.FC<CollectionProductsCarouselProps> = (
 
 	return (
 		<ProductList
-			{...rest}
-			
+			{...rest}			
       url={ url }
 			list={ProductCarouselListItems}
 			slots={slots}

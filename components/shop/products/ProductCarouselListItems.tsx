@@ -22,7 +22,7 @@ const ProductCarouselListItems: React.FC<ProductCarouselListItemsProps> = (
 ) => {
   
 	const {
-		displayFields,
+    handleClick,
 		enableGradient = false,
 		enableOverlay = false,
 		enableRatings = false,
@@ -32,14 +32,15 @@ const ProductCarouselListItems: React.FC<ProductCarouselListItemsProps> = (
 
 	const { setOpenShow, loading, resources, setResource } = useResourceContext()
 
-	const handleClick = (resource) => {
-		if (handleClick) {
-			handleClick(resource)
-		} else {
-			setResource(resource)
-			setOpenShow(true)
-		}
-	}
+  const handleShowClick = (product: any) => {
+    if(handleClick) {
+      handleClick(product)
+      return
+    }else{
+      setResource(product)
+      setOpenShow(true)
+    }    
+  }
 
 	return (
 		<div
@@ -55,8 +56,7 @@ const ProductCarouselListItems: React.FC<ProductCarouselListItemsProps> = (
             <div className='p-1'>        
               <ProductListItem
                 resource={resource}
-                displayFields={displayFields}
-                handleClick={() => handleClick(resource)}
+                handleClick={() => handleShowClick(resource)}
                 enableGradient={enableGradient}
                 enableOverlay={enableOverlay}
                 enableFavorites={enableFavorites}

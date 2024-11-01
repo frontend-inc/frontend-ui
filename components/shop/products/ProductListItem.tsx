@@ -2,12 +2,10 @@
 
 import React from 'react'
 import { ProductCard } from '../..'
-import { DisplayFields, SocialButtons } from '../..'
-import { ButtonType, DisplayFieldType } from '../../../types'
+import { SocialButtons } from '../..'
 import { AddToCartButton } from '../../../components'
 
 type ProductListItemProps = {
-	displayFields: DisplayFieldType[]
 	resource: any
 	buttonText?: string
 	handleClick: () => void
@@ -23,7 +21,6 @@ type ProductListItemProps = {
 const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 	const {
 		resource,
-		displayFields = [],
 		handleClick,
 		enableGradient = false,
 		enableOverlay = false,
@@ -41,14 +38,6 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 			price={resource?.display_price}
 			compareAtPrice={resource?.display_compare_at_price}
 			handleClick={handleClick}
-			secondary={
-        <DisplayFields 
-          disableBorder
-          disableLabel
-          fields={displayFields} 
-          resource={resource} 
-        />				
-			}
 			actions={
 				<div>
 					<SocialButtons

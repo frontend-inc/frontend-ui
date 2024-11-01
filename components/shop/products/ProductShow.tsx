@@ -28,7 +28,8 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 
 	if (!resource) return null
 	return (
-		<Drawer open={openShow} handleClose={() => setOpenShow(false)}>
+		<Drawer 
+      open={openShow} handleClose={() => setOpenShow(false)}>
       <div className="w-full flex flex-row justify-center pb-10">
         <div className="md:max-w-screen-sm flex flex-col space-y-[20px]">
           <ProductDetails
