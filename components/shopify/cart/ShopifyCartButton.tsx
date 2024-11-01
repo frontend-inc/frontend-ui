@@ -4,7 +4,8 @@ import React, { useContext } from 'react'
 import { ShopifyContext } from 'frontend-shopify'
 import { AppContext } from '../../../context'
 import { Icon } from '../../../components'
-import { IconButton, Badge } from '../../core'
+import { IconButton } from '../../core'
+import { Badge } from 'frontend-shadcn'
 
 type ShopifyCartButtonProps = {
 	icon?: string
@@ -21,10 +22,13 @@ export default function ShopifyCartButton({
 		toggleCart()
 	}
 	return (
-		<IconButton onClick={handleCartClick}>
-			<Badge badgeContent={cart?.totalQuantity}>
-				<Icon name={icon} size={24} />
-			</Badge>
-		</IconButton>
+    <div className="relative">
+      <IconButton onClick={handleCartClick}>
+        <Icon name={icon} size={24} />
+      </IconButton>
+      <Badge className="py-0 px-1 rounded-full absolute top-0 right-0 transform translate-x-[3px] -translate-y-[3px]">
+        { cart?.totalQuantity }
+      </Badge>
+    </div>
 	)
 }

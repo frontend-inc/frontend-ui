@@ -1,9 +1,10 @@
 'use client'
 
 import React from 'react'
-import { Badge, IconButton } from '../../core'
+import { IconButton } from '../../core'
 import { useCart } from '../../../hooks'
 import { Icon } from '../../../components'
+import { Badge } from 'frontend-shadcn'
 
 type CartButtonProps = {
 	icon?: string
@@ -14,11 +15,14 @@ const CartButton: React.FC<CartButtonProps> = (props) => {
 	const { cart, cartOpen, setCartOpen } = useCart()
 
 	return (
-		<IconButton onClick={() => setCartOpen(!cartOpen)}>
-			<Badge badgeContent={cart?.total_items}>
-				<Icon name={icon} size={24} />
-			</Badge>
-		</IconButton>
+    <div className="relative">
+      <IconButton onClick={() => setCartOpen(!cartOpen)}>			
+        <Icon name={icon} size={24} />
+      </IconButton>
+      <Badge className="py-0 px-1 rounded-full absolute top-0 right-0 transform translate-x-[3px] -translate-y-[3px]">
+        { cart?.total_items }
+      </Badge>
+    </div>
 	)
 }
 

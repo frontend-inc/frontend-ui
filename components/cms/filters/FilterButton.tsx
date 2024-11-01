@@ -1,12 +1,11 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Icon, Sheet, IconLoading } from '../..'
+import { Icon, Sheet } from '../..'
 import FilterList from './FilterList'
 import { Hidden } from '../../core'
 import { FilterOptionType, SearchFilterOptionType } from '../../..'
 import { Button } from '../../../components'
-import { Badge } from 'frontend-shadcn'
 import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
 
