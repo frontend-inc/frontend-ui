@@ -2,10 +2,7 @@
 
 import React from 'react'
 import { DataList } from '../../../components'
-import { buildSearchQuery } from '../../../helpers'
 import {
-	ButtonType,
-	DisplayFieldType,
 	FormFieldType,
 	SearchFilterOptionType,
 	SortOptionType,
@@ -87,10 +84,12 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		},
 	} = props || {}
 
-	const searchQuery = buildSearchQuery({
-		query,
-		perPage,
-	})
+	const searchQuery = {
+		sort_by: 'position',
+    sort_direction: 'asc',
+		per_page: perPage,
+    ...query
+	}
 
 	const slots = {
 		list: {
