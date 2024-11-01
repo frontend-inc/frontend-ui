@@ -6,7 +6,6 @@ import { Button } from '../../../components/core'
 import { MenuListItem } from '../../../components'
 import { useAdminCollections } from '../../../hooks'
 import AdminCollectionEdit from './AdminCollectionEdit'
-import { ApiQuery } from 'frontend-js'
 import { useRouter, useParams } from 'next/navigation'
 import { Plus } from 'lucide-react'
 
@@ -18,11 +17,7 @@ const AdminCollectionMenu: React.FC = () => {
 		collection_id: collectionId,
 	} = useParams() as any
 
-	const apiQuery = new ApiQuery()
-
 	const [showDeleteModal, setShowDeleteModal] = useState(false)
-	const [showViewModal, setShowViewModal] = useState(false)
-	const [showDeleteViewModal, setShowDeleteViewModal] = useState(false)
 
 	const {
 		loading,
@@ -86,15 +81,21 @@ const AdminCollectionMenu: React.FC = () => {
 	const handleDeleteCollection = async () => {
 		try {
 			setCollection({})
+      if(activeCollection){
+      //@ts-ignore
 			await deleteCollection(activeCollection.id)
+      //@ts-ignore
 			setCollections(collections.filter((c) => c.id !== activeCollection.id))
+      //@ts-ignore
 			if (collectionId == activeCollection.name) {
 				let nextCollection = collections.filter(
+          //@ts-ignore
 					(c) => c.name !== activeCollection.name
 				)[0]
 				router.push(`/dashboard/${appId}/collections/${nextCollection?.name}`)
-			}
+			}      
 			setShowDeleteModal(false)
+      }
 		} catch (e) {
 			console.log(e)
 		}
@@ -109,62 +110,11 @@ const AdminCollectionMenu: React.FC = () => {
 		})
 	}
 
-	const handleViewClick = async (view) => {
-		apiQuery.where(view?.query)
-		router.push(
-			`/dashboard/${appId}/collections/${
-				view?.collection?.name
-			}?${apiQuery.url()}&view_id=${view?.id}`
-		)
-	}
-
-	const handleEditView = (view) => {
-		setView(view)
-		setShowViewModal(true)
-	}
-
-	const handleUpdateView = async () => {
-		try {
-			let resp = await updateView(view)
-			if (resp?.id) {
-				setShowViewModal(false)
-				findViews()
-				setView({})
-			}
-		} catch (e) {
-			console.log(e)
-		}
-	}
-
-	const handleDeleteViewClick = (view) => {
-		setView(view)
-		setShowDeleteViewModal(true)
-	}
-
-	const handleDeleteView = async () => {
-		try {
-			await deleteView(view.id)
-			setShowDeleteViewModal(false)
-			setView({})
-			findViews()
-		} catch (e) {
-			console.log(e)
-		}
-	}
-
 	useEffect(() => {
 		if (appId) {
 			findCollections()
-			findViews()
 		}
 	}, [appId])
-
-	useEffect(() => {
-		// Reload views after creating a new view
-		if (viewId) {
-			findViews()
-		}
-	}, [viewId])
 
 	return (
 		<div className="flex flex-col">
@@ -194,21 +144,6 @@ const AdminCollectionMenu: React.FC = () => {
 					Collection
 				</Button>
 			</div>
-			{views.length > 0 && (
-				<MenuList label="Views" enableBorder>
-					{views?.map((view) => (
-						<MenuListItem
-							key={view.id}
-							title={view?.name}
-							selected={viewId == view?.id}
-							icon="Search"
-							handleClick={() => handleViewClick(view)}
-							handleDelete={() => handleDeleteViewClick(view)}
-							handleEdit={() => handleEditView(view)}
-						/>
-					))}
-				</MenuList>
-			)}
 			<AdminCollectionEdit
 				errors={errors}
 				loading={loading}

@@ -3,10 +3,10 @@
 import React from 'react'
 import { Section, Heading } from '../../components'
 import { ProductSimilarList } from '../../components/shop'
-import { ProductListProps } from '../../components/shop/products/ProductList'
+import { ProductSimilarListProps } from '../../components/shop/products/ProductSimilarList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type ShopProductRecommendationsProps = ProductListProps &
+type ShopProductRecommendationsProps = ProductSimilarListProps &
 	SectionProps &
 	HeadingProps
 
@@ -24,7 +24,6 @@ const ShopProductRecommendations: React.FC<ShopProductRecommendationsProps> = (
 		px,
 		maxWidth,
 		requireAuth,
-
 		requirePaid,
 		...rest
 	} = props
