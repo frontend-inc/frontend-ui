@@ -12,6 +12,9 @@ export { default as DataLayout } from '../data/DataLayout'
 export { default as DataToolbar } from './DataToolbar'
 export { default as SortableDataListItems } from './SortableDataListItems'
 
+// Buttons 
+export { default as ShowButton } from './buttons/ShowButton'
+
 // Toolbar Modal
 export { default as ToolbarModal } from './toolbar/ToolbarModal'
 export { default as ToolbarDeleteButton } from './toolbar/ToolbarDeleteButton'

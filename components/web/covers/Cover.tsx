@@ -23,6 +23,7 @@ export type CoverProps = {
 	enableOverlay?: boolean
 	opacity?: number
 	path?: string
+  actions?: React.ReactNode
 }
 
 const Cover: React.FC<CoverProps> = (props) => {
@@ -39,6 +40,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 		enableOverlay = false,
 		alignItems = 'center',
 		buttonText,
+    actions,
 		path,
 	} = props
 
@@ -102,6 +104,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 							{description}
 						</Typography>
 					)}
+          {actions}
 					{buttonText && (
 						<div className="py-2">
 							<Button size="lg" onClick={() => onClick(path)} variant="default">

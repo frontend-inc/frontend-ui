@@ -1,8 +1,9 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { Cover } from '../..'
+import { Cover, ShowButton, ProductCollectionShow } from '../..'
 import { useProductCollections } from '../../../hooks'
+import { ResourceProvider } from 'frontend-js'
 
 export type ProductCollectionCoverProps = {
 	height?: number
@@ -42,18 +43,30 @@ const ProductCollectionCover: React.FC<ProductCollectionCoverProps> = (
 
 	if (!productCollection) return null
 	return (
-		<Cover
-			height={height}
-			title={productCollection?.title}
-			description={productCollection?.description}
-			//@ts-ignore
-			image={productCollection?.image?.url}
-			alt={alt}
-			alignItems={alignItems}
-			handleClick={handleClick}
-      enableOverlay={enableOverlay}
-			enableGradient={enableGradient}
-		/>
+    <ResourceProvider 
+      name='product_collection'
+      url={`/shop/product_collections/${productCollectionId}`}
+      resource={productCollection}
+    >
+      <Cover
+        height={height}
+        title={productCollection?.title}
+        description={productCollection?.description}
+        //@ts-ignore
+        image={productCollection?.image?.url}
+        alt={alt}
+        alignItems={alignItems}
+        handleClick={handleClick}
+        enableOverlay={enableOverlay}
+        enableGradient={enableGradient}
+        actions={
+          <ShowButton>
+            Browse 
+          </ShowButton>
+        }
+      />
+      <ProductCollectionShow />
+    </ResourceProvider>
 	)
 }
 

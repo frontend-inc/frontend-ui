@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
-import { Drawer, Image, Typography, CollectionProducts } from '../..'
+import { Drawer, Typography, CollectionProducts } from '../..'
 import { useResourceContext } from 'frontend-js'
 
-export type ShowModalProps = {
+export type ProductCollectionShowProps = {
 	handle?: string
 	enableFavorites?: boolean
 	enableLikes?: boolean
@@ -13,8 +13,9 @@ export type ShowModalProps = {
 	enableOverlay?: boolean
 }
 
-const ShowModal: React.FC<ShowModalProps> = (props) => {
-	const { openShow, setOpenShow, resource } = useResourceContext()
+const ProductCollectionShow: React.FC<ProductCollectionShowProps> = (props) => {
+	
+  const { openShow, setOpenShow, resource } = useResourceContext()
 
 	const {
 		enableLikes,
@@ -50,4 +51,4 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 	)
 }
 
-export default ShowModal
+export default ProductCollectionShow
