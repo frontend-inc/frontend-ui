@@ -1,8 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Badge, ResourceGridItem } from '../../../components'
+import { ResourceGridItem } from '../../../components'
 import { resizeCloudinaryImage } from '../../../helpers'
+import { Badge } from 'frontend-shadcn'
 
 type AdminMediaItemProps = {
 	resource: any

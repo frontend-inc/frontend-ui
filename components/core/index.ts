@@ -1,7 +1,6 @@
 export * from './alert-button'
 export * from './autocomplete'
 export * from './backdrop'
-export * from './badge'
 export * from './button'
 export * from './checkbox'
 export * from './collapse'
