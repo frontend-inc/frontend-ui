@@ -8,7 +8,6 @@ export { default as ShopifyProductCollectionCarousel } from './ShopifyProductCol
 export { default as ShopifyProductInfo } from './ShopifyProductInfo'
 export { default as ShopifyProductDetails } from './ShopifyProductDetails'
 export { default as ShopifyProductDescription } from './ShopifyProductDescription'
-export { default as ShopifyProductFeatured } from './ShopifyProductFeatured'
 export { default as ShopifyProducts } from './ShopifyProducts'
 export { default as ShopifyProductModal } from './ShopifyProductModal'
 export { default as ShopifyProductRecommendations } from './ShopifyProductRecommendations'

@@ -8,7 +8,17 @@ import GeoListItems from './GeoListItems'
 export type GeoListProps = CollectionListProps
 
 const GeoList: React.FC<GeoListProps> = (props) => {
-	return <CollectionList {...props} header={GeoHeader} list={GeoListItems} />
+  let { url, ...rest } = props
+  const geosearchUrl = `${url}/geosearch`
+
+	return(
+    <CollectionList 
+      {...rest} 
+      url={ geosearchUrl } 
+      header={GeoHeader} 
+      list={GeoListItems} 
+    />
+  )
 }
 
 export default GeoList

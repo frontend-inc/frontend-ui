@@ -4,7 +4,6 @@ import React from 'react'
 import { DataList } from '../../../components'
 import { 
   buildDisplayFields, 
-  buildSearchQuery,
   buildSortFields,
   buildFilterFields 
 } from '../../../helpers'
@@ -90,11 +89,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 	const {
 		url,
 		query,
-		resource,
 		perPage = 12,
-		filterSimilar,
-		filterGeo,
-
     displaySubtitle,
     displayCategory,
     displayLocation,
@@ -145,13 +140,12 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		},
 	} = props || {}
 
-	const searchQuery = buildSearchQuery({
-		query,
-		resource,
-		perPage,
-		filterSimilar,
-		filterGeo,
-	})
+	const searchQuery = {
+    sort_by: 'position',
+    sort_direction: 'asc',
+    per_page: perPage,
+    ...query,
+  }
 
   const displayFields = buildDisplayFields({
     displaySubtitle,
@@ -239,8 +233,8 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
       layout={layout}
 			url={url}
 			name="document"
-			query={searchQuery}
 			fields={fields}
+      query={searchQuery}
 			enableShow={enableShow}
 			enableSearch={enableSearch}
 			enableFilters={enableFilters}

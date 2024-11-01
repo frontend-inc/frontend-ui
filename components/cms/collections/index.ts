@@ -12,9 +12,6 @@ export { default as SimilarList } from './SimilarList'
 export { default as VideoList } from './VideoList'
 export { default as VideoListItems } from './VideoListItems'
 
-// Products
-export { default as ProductReferenceList } from './ProductReferenceList'
-export { default as ProductReferenceListItems } from './ProductReferenceListItems'
 
 // Collections
 export { default as CollectionEmpty } from './CollectionEmpty'
@@ -24,9 +21,6 @@ export { default as CollectionListItems } from './CollectionListItems'
 export { default as CollectionShow } from './CollectionShow'
 export { default as CollectionDelete } from './CollectionDelete'
 export { default as CollectionHeader } from './CollectionHeader'
-
-export { default as ReferenceCollectionList } from './ReferenceCollectionList'
-export { default as ReferenceCollectionListItems } from './ReferenceCollectionListItems'
 
 // Media
 export { default as ShowImageModal } from '../modals/ShowImageModal'

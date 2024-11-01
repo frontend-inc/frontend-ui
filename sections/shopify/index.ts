@@ -1,7 +1,6 @@
 export { default as ShopifyCollectionCover } from './ShopifyCollectionCover'
 export { default as ShopifyCollections } from './ShopifyCollections'
 export { default as ShopifyFavorites } from './ShopifyFavorites'
-export { default as ShopifyProductFeatured } from './ShopifyProductFeatured'
 export { default as ShopifyRecentlyViewed } from './ShopifyRecentlyViewed'
 export { default as ShopifyProducts } from './ShopifyProducts'
 export { default as ShopifyProductsCarousel } from './ShopifyProductsCarousel'
