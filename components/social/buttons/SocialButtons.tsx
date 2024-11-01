@@ -24,7 +24,6 @@ type SocialButtonsProps = {
 	enableProductFavorites?: boolean
 	justifyContent?: 'flex-start' | 'center' | 'flex-end'
 	size?: 'small' | 'large'
-	color?: string
 }
 
 const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
@@ -40,7 +39,6 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 		enableProductFavorites,
 		size = 'small',
 		justifyContent = 'flex-start',
-		color,
 	} = props
 
 	const currentPageUrl = usePathname()
@@ -69,10 +67,10 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 			)}
 
 			{enableProductLikes == true && (
-				<ProductLikeButton size={size} product={product} color={color} />
+				<ProductLikeButton size={size} product={product} />
 			)}
 			{enableProductFavorites == true && (
-				<ProductFavoriteButton size={size} product={product} color={color} />
+				<ProductFavoriteButton size={size} product={product} />
 			)}
 
 			{enableComments == true && <CommentButton resource={resource} />}

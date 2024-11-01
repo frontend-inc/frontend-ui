@@ -11,9 +11,9 @@ export type ProductSimilarListProps = ProductListProps & {
 
 const ProductSimilarList: React.FC<ProductSimilarListProps> = (props) => {
   const { apiUrl } = useApp()
-  const { productId } = props || {}
+  const { productId, ...rest } = props || {}
   const url = `${apiUrl}/shop/products/${productId}/similar_products`
-	return <ProductList {...props} url={url} />
+	return <ProductList {...rest} url={url} />
 }
 
 export default ProductSimilarList

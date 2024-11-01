@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import {
 	PriceOptionType,
 	SearchFilterOptionType,
-	useAdminProducts,
+	useProducts,
 	useSearchFilters,
 } from 'frontend-shopify'
 import { ProductSortKeyType } from 'frontend-shopify'
@@ -17,7 +17,6 @@ import {
 	ShopifyProductSearchFilters,
 } from '..'
 import LoadMore from '../search/LoadMore'
-import { useApp } from '../../../hooks'
 import { cn } from 'frontend-shadcn'
 
 const PER_PAGE = 48
@@ -45,9 +44,8 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
 	enableQuickShop = false,
 	enableQuantity = false,
 }) => {
-	const router = useRouter()
 
-	let { page_id: pageId, handle } = useParams() as any
+	let { handle } = useParams() as any
 	if (handle == 'index' || handle == undefined) handle = ''
 
 	const [keywords, setKeywords] = useState(String(query).toLowerCase())
@@ -60,7 +58,7 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
 		products,
 		findProducts,
 		searchProducts,
-	} = useAdminProducts()
+	} = useProducts()
 
 	const [sortKey, setSortKey] =
 		useState<ProductSortKeyType>('COLLECTION_DEFAULT')

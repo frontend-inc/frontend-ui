@@ -4,11 +4,9 @@ import React, { useEffect, useState } from 'react'
 import { MenuList, AlertModal } from '../../../components'
 import { Button } from '../../../components/core'
 import { MenuListItem } from '../../../components'
-import { useAdminCollections, useViews } from '../../../hooks'
+import { useAdminCollections } from '../../../hooks'
 import AdminCollectionEdit from './AdminCollectionEdit'
-import AdminViewEdit from '../views/AdminViewEdit'
 import { ApiQuery } from 'frontend-js'
-import { RouterParams } from '../../../types'
 import { useRouter, useParams } from 'next/navigation'
 import { Plus } from 'lucide-react'
 
@@ -40,18 +38,6 @@ const AdminCollectionMenu: React.FC = () => {
 		createCollection,
 		reloadCollections,
 	} = useAdminCollections()
-
-	const {
-		loading: viewLoading,
-		errors: viewErrors,
-		view,
-		views,
-		findViews,
-		updateView,
-		deleteView,
-		handleChange: handleChangeView,
-		setView,
-	} = useViews()
 
 	useEffect(() => {
 		if (collectionId == 'index' && collections.length > 0) {
@@ -232,23 +218,6 @@ const AdminCollectionMenu: React.FC = () => {
 				handleChange={handleChange}
 				handleSubmit={handleSubmitCollection}
 				handleTemplateClick={handleTemplateClick}
-			/>
-			<AdminViewEdit
-				loading={viewLoading}
-				errors={viewErrors}
-				open={showViewModal}
-				handleClose={() => setShowViewModal(false)}
-				view={view}
-				handleSubmit={handleUpdateView}
-				handleChange={handleChangeView}
-			/>
-			<AlertModal
-				loading={viewLoading}
-				open={showDeleteViewModal}
-				title="Delete view"
-				description="Are you sure you want to delete this view?"
-				handleClose={() => setShowDeleteViewModal(false)}
-				handleConfirm={handleDeleteView}
 			/>
 			<AlertModal
 				loading={loading}

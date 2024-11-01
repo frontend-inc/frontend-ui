@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Label, ResourceGridItem } from '../../../components'
+import { Badge, ResourceGridItem } from '../../../components'
 import { resizeCloudinaryImage } from '../../../helpers'
 
 type AdminMediaItemProps = {
@@ -21,7 +21,7 @@ const AdminMediaItem: React.FC<AdminMediaItemProps> = (props) => {
 			//@ts-ignore
 			image={resource?.url}
 			secondaryAction={
-				<Label variant="secondary" label={resource?.content_type} />
+				<Badge>{resource?.content_type}</Badge>
 			}
 			handleClick={handleClick}
 			handleDelete={handleDelete}

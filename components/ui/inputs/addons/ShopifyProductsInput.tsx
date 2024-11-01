@@ -73,7 +73,7 @@ const ShopifyProductsInput: React.FC<AutosuggestProps> = ({
 	const [shopifyProducts, setShopifyProducts] = useState<string[]>(value)
 	const { domain, storefrontAccessToken } = useContext(ShopifyContext) as any
 
-	const { products, setProduct, findProducts } = useAdminProducts()
+	const { products, setProduct, findProducts } = useProducts()
 
 	const [options, setOptions] = useState<
 		{ label: string; value: string; image: string }[]

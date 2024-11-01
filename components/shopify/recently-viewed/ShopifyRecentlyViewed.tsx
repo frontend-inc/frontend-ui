@@ -6,7 +6,6 @@ import { ShopifyProducts, ShopifyProductCarousel } from '..'
 import { useRecentlyViewed } from 'frontend-shopify'
 
 export type ShopifyRecentlyViewedProps = {
-	href: string
 	layout?: 'grid' | 'carousel'
 	perPage?: string
 	enableBorder?: boolean
@@ -21,7 +20,6 @@ export type ShopifyRecentlyViewedProps = {
 
 const ShopifyRecentlyViewed: React.FC<ShopifyRecentlyViewedProps> = (props) => {
 	const {
-		href,
 		layout = 'grid',
 		enableBorder = false,
 		buttonText = 'Add to cart',
@@ -36,7 +34,6 @@ const ShopifyRecentlyViewed: React.FC<ShopifyRecentlyViewedProps> = (props) => {
 		<div className="w-full">
 			{layout == 'grid' && (
 				<ShopifyProducts
-					href={href}
 					products={products}
 					enableBorder={enableBorder}
 					enableAddToCart={enableAddToCart}
@@ -47,7 +44,6 @@ const ShopifyRecentlyViewed: React.FC<ShopifyRecentlyViewedProps> = (props) => {
 			)}
 			{layout == 'carousel' && (
 				<ShopifyProductCarousel
-					href={href}
 					products={products}
 					enableBorder={enableBorder}
 					buttonText={buttonText}
