@@ -34,16 +34,8 @@ const AlertModal: React.FC<AlertModalProps> = ({
 	handleConfirm,
 }) => {
 	return (
-		<AlertDialog open={open} onOpenChange={handleClose}>
-      <AlertDialogOverlay className="bg-black/50" />
-			<AlertDialogContent
-        className={cn(
-          'max-w-screen-md bg-background rounded-md overflow-hidden',
-          'fixed transform -translate-x-[50%] -translate-y-[50%] top-1/2 left-1/2',
-          'fade-in duration-300 scale-in',
-          'data-[state=closed]:opacity-0 duration-0'
-        )}
-      >
+		<AlertDialog open={open} onOpenChange={handleClose}>      
+			<AlertDialogContent>
 				<AlertDialogHeader>
 					<AlertDialogTitle>{title}</AlertDialogTitle>
 					<AlertDialogDescription>{description}</AlertDialogDescription>

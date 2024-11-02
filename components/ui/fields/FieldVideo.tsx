@@ -10,7 +10,7 @@ const FieldVideo: React.FC<FieldElementProps> = (props) => {
 		<FieldWrapper label={label}>
 			{value?.url ? 
         <video src={value?.url} controls muted autoPlay className='w-full' /> : 
-        <NoImage />
+        <NoImage height={240} />
       }
 		</FieldWrapper>
 	)

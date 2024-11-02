@@ -66,18 +66,17 @@ const DisplayField: React.FC<DisplayFieldProps> = (props) => {
       className: 'px-[40px] sm:px-[100px] py-1 text-sm font-medium',
     },
     email: {
-      className: 'w-full italic text-center text-xs',
+      className: 'w-full text-center text-xs',
     },
     string: {
       className: 'uppercase w-full text-center text-xs font-medium tracking-widest',
     },    
 		text: {
-			className: 'px-[40px] sm:px-[100px] py-[40px] text-md',
+			className: 'px-[40px] sm:px-[100px] italic text-lg',
 		},	
     image: {      
       label,
       height: 400,
-      className: "py-6",
     },
     video: {
       height: 450,
