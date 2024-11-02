@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Label, DisplayFields, ResourceListItem } from '../../../components'
+import { Label, ListFields, ResourceListItem } from '../../../components'
 import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
 
 const AdminOrderItem: React.FC<ResourceItemProps> = (props) => {
@@ -25,7 +25,7 @@ const AdminOrderItem: React.FC<ResourceItemProps> = (props) => {
 			image={product?.image?.url}
 			primary={`Order ${order.display_number}`}
 			secondary={
-				<DisplayFields
+				<ListFields
 					resource={order}
 					fields={[{ label: 'Name', name: 'customer_name', variant: 'string' }]}
 				/>

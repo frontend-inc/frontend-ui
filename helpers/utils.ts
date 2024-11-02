@@ -94,6 +94,10 @@ export const resizeCloudinaryImage = (
 	return transformedUrl
 }
 
+export const cloudinaryConvertToJpeg = (url) => {
+  return url.replace(/\.\w+$/, '.jpg');
+}
+
 export const cloudinaryImageFromVideoUrl = (url) => {
 	if (!url) return null
 	return url?.replace(/mp4|mpeg|ogg|mkv|mov/i, 'jpg')

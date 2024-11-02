@@ -6,9 +6,9 @@ import { FieldElementProps } from './Field'
 import Link from 'next/link'
 
 const FieldFile: React.FC<FieldElementProps> = (props) => {
-	const { value, label, color = 'text.secondary', disableLabel } = props
+	const { value, label } = props
 	return (
-		<FieldWrapper label={label} color={color} disableLabel={disableLabel}>
+		<FieldWrapper label={label}>
 			<div className="flex flex-row space-x-2">
 				<Icon name="File" />
 				{value?.content_type && (

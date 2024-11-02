@@ -16,7 +16,7 @@ import {
 	FieldText,
 	FieldVideo,
 } from '../../../components'
-import { DisplayFieldType, TypographyVariantsType } from '../../../types'
+import { ShowFieldType, TypographyVariantsType } from '../../../types'
 import { get } from 'lodash'
 import moment from 'moment'
 
@@ -28,13 +28,12 @@ export type FieldElementProps = {
 	variant?: TypographyVariantsType
 	alignItems?: 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline'
 	placeholder?: string
-	disableLabel?: boolean
 	dateFormat?: string
 	className?: string
 }
 
 type FieldProps = {
-	field: DisplayFieldType
+	field: ShowFieldType
 	resource?: any
 	label?: string | null
 	color?: string
@@ -44,7 +43,6 @@ type FieldProps = {
 	enableBorder?: boolean
 	disablePadding?: boolean
 	dateFormat?: string
-	disableLabel?: boolean
 }
 
 const Field: React.FC<FieldProps> = (props) => {

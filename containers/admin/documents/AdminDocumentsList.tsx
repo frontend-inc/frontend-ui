@@ -3,17 +3,17 @@
 import React from 'react'
 import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
-import AdminDocumentItem from './AdminDocumentItem'
+import AdminDocumentItem from './AdminDocumentListItem'
 import AdminDocumentCreateForm from './AdminDocumentCreateForm'
 import AdminDocumentEditForm from './AdminDocumentEditForm'
 import AdminDocumentShow from './AdminDocumentShow'
 import AdminDocumentToolbar from './AdminDocumentToolbar'
 import AdminDocumentHeader from './AdminDocumentHeader'
-import { DisplayFieldType } from '../../../types'
+import { ShowFieldType } from '../../../types'
 
 type AdminDocumentListProps = {
   collectionId: string
-	fields?: DisplayFieldType[]
+	fields?: ShowFieldType[]
 }
 
 const AdminDocumentsList: React.FC<AdminDocumentListProps> = (props) => {

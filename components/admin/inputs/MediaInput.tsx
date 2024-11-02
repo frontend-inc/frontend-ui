@@ -50,7 +50,7 @@ const MediaInput: React.FC<MediaInputProps> = ({
 				<div className="w-[140px] h-[140px]">
 					<Image
 						alt={label}
-						src={value?.url}
+						src={value?.thumbnail_url}
 						aspectRatio={1.0}
 						objectFit={objectFit}
 					/>

@@ -5,11 +5,13 @@ import { NoImage, FieldWrapper } from '../../../components'
 import { FieldElementProps } from './Field'
 
 const FieldVideo: React.FC<FieldElementProps> = (props) => {
-	const { value, label, color, disableLabel } = props
-
+	const { value, label } = props
 	return (
-		<FieldWrapper label={label} color={color} disableLabel={disableLabel}>
-			{value ? <video src={value} controls muted autoPlay /> : <NoImage />}
+		<FieldWrapper label={label}>
+			{value?.url ? 
+        <video src={value?.url} controls muted autoPlay className='w-full' /> : 
+        <NoImage />
+      }
 		</FieldWrapper>
 	)
 }

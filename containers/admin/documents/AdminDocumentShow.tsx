@@ -3,10 +3,10 @@
 import React from 'react'
 import { ResourceModal, ResourceDetails } from '../../../components'
 import { ResourceShowProps } from '../../../components/cms/resources/ResourceShow'
-import { DisplayFieldType } from '../../../types'
+import { ShowFieldType } from '../../../types'
 
 type AdminDocumentShowProps = ResourceShowProps & {
-	fields?: DisplayFieldType[]
+	fields?: ShowFieldType[]
 }
 
 const AdminDocumentShow: React.FC<AdminDocumentShowProps> = (props) => {
@@ -23,7 +23,7 @@ const AdminDocumentShow: React.FC<AdminDocumentShowProps> = (props) => {
 	} = props || {}
 
   const filteredFields = fields.filter(
-    (field) => !field?.name?.includes(["title","image","description"])
+    (f) => !["label", "title","image","description","handle"].includes(f.name)
   )
 
 	return (

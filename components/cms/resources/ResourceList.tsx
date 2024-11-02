@@ -9,7 +9,7 @@ import {
 	FilterOptionType,
 	SearchFilterOptionType,
 	TableHeaderType,
-	DisplayFieldType,
+	ShowFieldType,
 } from '../../../types'
 import { SortOptionType, SyntheticEventType } from '../../../types'
 import ResourceForm from './ResourceForm'
@@ -46,7 +46,7 @@ export type ResourceListProps = {
 	fields?: FormFieldType[]
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
-	displayFields?: DisplayFieldType[]
+	displayFields?: ShowFieldType[]
 	enableSearch?: boolean
 	buttonText?: string
 	enableShow?: boolean

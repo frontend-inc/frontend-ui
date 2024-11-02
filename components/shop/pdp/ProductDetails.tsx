@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { PDP } from '../..'
-import { useResourceContext } from 'frontend-js'
 import {
 	ProductRating,
 	SocialButtons,

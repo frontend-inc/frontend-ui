@@ -3,30 +3,35 @@
 import React from 'react'
 import { Image, FieldWrapper } from '../../../components'
 import { FieldElementProps } from './Field'
+import { cn } from 'frontend-shadcn'
 
 type FieldImageProps = FieldElementProps & {
-	height?: number
-	width?: number
+	height?: number	
+  enableGradient?: boolean
+  enableOverlay?: boolean
+  className?: string
 }
 
 const FieldImage: React.FC<FieldImageProps> = (props) => {
-	const { label, value, height = 140, width, color, disableLabel } = props
-	if (!value) return null
+	const { label, value, className, enableGradient, enableOverlay, height = 140 } = props	  
 	return (
-		<FieldWrapper color={color} label={label} disableLabel={disableLabel}>
-			<div
-				style={{
-					height: `${height}px`,
-					width: width ? `${width}px` : 'auto',
-				}}
-			>
-				<Image
-					aspectRatio={1.0}
-					alt={label || 'Image'}
-					src={value?.url || value}
-					height={height}
-				/>
-			</div>
+		<FieldWrapper>
+      <div 
+        className={cn("w-full max-w-screen-md", className)}
+        style={{
+          width: '100%',
+          height: height 
+        }}
+      >
+        <Image
+          label={label}
+          alt={label}
+          src={value?.url}
+          height={height}
+          enableGradient={enableGradient}
+          enableOverlay={enableOverlay}
+        />
+      </div>
 		</FieldWrapper>
 	)
 }

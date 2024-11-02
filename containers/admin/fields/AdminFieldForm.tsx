@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Sheet, ButtonTabs, IconLoading, FormFields } from '../../../components'
 import { ResourceFormProps } from '../../../components/cms/resources/ResourceForm'
 import { Button } from '../../../components/core'
@@ -37,6 +37,12 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
 		{ label: 'Settings', value: 'settings' },
 		{ label: 'Validate', value: 'validate' },
 	]
+
+  useEffect(() => {
+    if(open){
+      setTab('field')
+    }
+  }, [open])
 
 	return (
 		<Sheet

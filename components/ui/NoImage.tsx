@@ -2,8 +2,10 @@
 
 import React from 'react'
 import { cn } from 'frontend-shadcn'
+import { AspectRatio } from 'frontend-shadcn'
 
 type NoImageProps = {
+  aspectRatio?: number
 	height?: number
 	width?: number
 	disableBorder?: boolean
@@ -11,18 +13,17 @@ type NoImageProps = {
 }
 
 const NoImage: React.FC<NoImageProps> = (props) => {
-	const { height = 100, width, disableBorder, disableBorderRadius } = props
+	const { height = 100, aspectRatio=1.0, width, disableBorder, disableBorderRadius } = props
 
 	return (
+    <AspectRatio ratio={aspectRatio}>
 		<div
-			className={cn(
-				'flex items-center justify-center border border-divider rounded bg-gradient-to-br from-gray-600 to-black',
-				height ? `h-[${height}px]` : 'h-full',
-				width ? `w-[${width}px]` : 'w-full',
-				disableBorder && 'border-0',
-				disableBorderRadius && 'rounded-none'
-			)}
-		></div>
+      className={cn(
+        !disableBorderRadius && 'rounded-lg',
+        'h-full w-full bg-gradient-to-br from-black to-gray-600'
+      )}
+    />
+    </AspectRatio>
 	)
 }
 

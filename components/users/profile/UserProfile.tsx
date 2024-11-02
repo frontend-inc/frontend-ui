@@ -6,15 +6,15 @@ import {
 	ButtonActions,
 	UserAvatar,
 	ExpandableText,
-	DisplayFields,
+	ListFields,
 	SocialFields,
 } from '../..'
-import { SocialFieldType, DisplayFieldType, ButtonType } from '../../../types'
+import { SocialFieldType, ShowFieldType, ButtonType } from '../../../types'
 import { UserType } from 'frontend-js'
 
 export type UserProfileProps = {
 	user: UserType
-	displayFields?: DisplayFieldType[]
+	displayFields?: ShowFieldType[]
 	socialFields?: SocialFieldType[]
 	buttons?: ButtonType[]
 }
@@ -51,7 +51,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 						{name}
 					</Typography>
 					<div className="flex flex-col space-y-1">
-						<DisplayFields resource={user} fields={displayFields} />
+						<ListFields resource={user} fields={displayFields} />
 						{about_me && (
 							<ExpandableText
 								text={about_me}

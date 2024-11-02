@@ -2,7 +2,7 @@
 
 import React, { useContext } from 'react'
 import { ResourceContext } from 'frontend-js'
-import { GoogleMap, CollectionListItems } from '../..'
+import { GoogleMaps, CollectionListItems } from '../..'
 import { CollectionListItemsProps } from './CollectionListItems'
 
 export type GeoListListProps = CollectionListItemsProps & {
@@ -27,7 +27,7 @@ export default function GeoListItems({
 			</div>
 			<div className="w-full md:w-5/12 px-2">
 				<div className="hidden md:block">
-					<GoogleMap
+					<GoogleMaps
 						enableBorder
 						zoom={15}
 						height={380}

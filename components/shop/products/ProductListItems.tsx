@@ -4,12 +4,12 @@ import React from 'react'
 import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { ProductListItem, DataLayout } from '../..'
-import { ButtonType, DisplayFieldType } from '../../../types'
+import { ButtonType, ShowFieldType } from '../../../types'
 
 export type ProductListItemsProps = {
 	style?: 'list' | 'card' | 'avatar' | 'cover' | 'text'
 	buttons: ButtonType[]
-	displayFields: DisplayFieldType[]
+	displayFields: ShowFieldType[]
 	handleClick: (resource: any) => void
 	enableGradient?: boolean
 	enableOverlay?: boolean

@@ -5,6 +5,7 @@ import { Typography } from '../../core'
 import { FieldWrapper } from '../../../components'
 import { FieldElementProps } from './Field'
 import { truncate } from '../../../helpers'
+import { cn } from 'frontend-shadcn'
 
 const FieldString: React.FC<FieldElementProps> = (props) => {
 	const {
@@ -12,7 +13,6 @@ const FieldString: React.FC<FieldElementProps> = (props) => {
 		label,
 		placeholder,
 		alignItems,
-		disableLabel = false,
 		className,
 		...rest
 	} = props
@@ -21,10 +21,9 @@ const FieldString: React.FC<FieldElementProps> = (props) => {
 		<FieldWrapper
 			alignItems={alignItems}
 			label={label}			
-			disableLabel={disableLabel}
 			{...rest}
 		>
-			<Typography variant="body1" className={className}>
+			<Typography variant="body1" className={cn(className)}>
 				{truncate(value || placeholder, 50)}
 			</Typography>
 		</FieldWrapper>

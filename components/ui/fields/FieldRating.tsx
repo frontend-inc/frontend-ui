@@ -10,9 +10,9 @@ type FieldRatingProps = FieldElementProps & {
 }
 
 const FieldRating: React.FC<FieldRatingProps> = (props) => {
-	const { value, label, size = 'md', color, disableLabel } = props
+	const { value, label, size = 'md' } = props
 	return (
-		<FieldWrapper label={label} color={color} disableLabel={disableLabel}>
+		<FieldWrapper label={label}>
 			<Rating size={size} readOnly value={value} />
 		</FieldWrapper>
 	)

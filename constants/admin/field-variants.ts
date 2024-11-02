@@ -232,7 +232,7 @@ export const SHOPIFY_PRODUCT_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const YOUTUBE_VIDEO_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Video',
+	icon: 'Youtube',
 	category: 'Addon',
 	variant: 'youtube_video',
 	label: 'YouTube Video',
@@ -243,7 +243,7 @@ export const YOUTUBE_VIDEO_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const VIMEO_VIDEO_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Video',
+	icon: 'PlayCircle',
 	category: 'Addon',
 	variant: 'vimeo_video',
 	label: 'Vimeo Video',
@@ -254,7 +254,7 @@ export const VIMEO_VIDEO_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const SOUNDCLOUND_AUDIO_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Song',
+	icon: 'AudioLines',
 	category: 'Addon',
 	variant: 'soundcloud_audio',
 	label: 'Soundcloud Audio',

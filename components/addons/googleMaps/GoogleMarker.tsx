@@ -8,25 +8,31 @@ import {
 	useAdvancedMarkerRef,
 	InfoWindow,
 } from '@vis.gl/react-google-maps'
-import { GoogleMarkerType, DisplayFieldType } from '../../../types'
-import { Image, DisplayFields } from '../../../components'
+import { Image } from '../../../components'
 
-export type GoogleMarkerProps = {
-	marker: GoogleMarkerType
-	displayFields: DisplayFieldType[]
+export type GoogleMarkerType = {
+  label?: string
+  image?: string
+  lat: number
+  lng: number
 }
+
+const NYC_LAT = 40.7128
+const NYC_LNG = -74.006
 
 // https://visgl.github.io/react-google-maps/docs/api-reference/components/map
 // https://visgl.github.io/react-google-maps/docs/api-reference/components/advanced-marker
-const GoogleMarker: React.FC<GoogleMarkerProps> = (props) => {
-	const { marker, displayFields } = props
-
-	const NYC_LAT = 40.7128
-	const NYC_LNG = -74.006
-
+const GoogleMarker: React.FC<GoogleMarkerType> = (props) => {
+	const { 
+    label, 
+    image,
+    lat=NYC_LAT,
+    lng=NYC_LNG 
+  } = props
+	
 	const position = {
-		lat: marker?.lat || NYC_LAT,
-		lng: marker?.lng || NYC_LNG,
+		lat,
+		lng
 	}
 
 	const [markerRef, setMarkerRef] = useAdvancedMarkerRef()
@@ -40,7 +46,6 @@ const GoogleMarker: React.FC<GoogleMarkerProps> = (props) => {
 		setInfoWindowShown(false)
 	}
 
-	const { resource } = marker || {}
 	return (
 		<>
 			<AdvancedMarker
@@ -53,19 +58,18 @@ const GoogleMarker: React.FC<GoogleMarkerProps> = (props) => {
 			{infoWindowShown && (
 				<InfoWindow anchor={setMarkerRef} onClose={handleClose}>
 					<div className="flex flex-col space-y-2 min-w-[160px]">
-						{resource?.image?.url && (
+						{image && (
 							<div className="w-[64px] h-[64px]">
 								<Image
-									alt={resource?.title}
+									alt={label}
 									aspectRatio={1.0}
-									src={resource?.image?.url}
+									src={image}
 								/>
 							</div>
 						)}
 						<Typography variant="subtitle2" className="text-gray-900">
-							{marker?.label}
-						</Typography>
-						<DisplayFields fields={displayFields} resource={resource} />
+							{label}
+						</Typography>						
 					</div>
 				</InfoWindow>
 			)}

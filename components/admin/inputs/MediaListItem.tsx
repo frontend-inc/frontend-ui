@@ -5,10 +5,10 @@ import {
 	TouchableOpacity,
 	Image,
 	AttachmentImage,
-	Badge,
 } from '../../../components'
 import { Button } from '../../../components'
 import { Card, CardHeader } from 'frontend-shadcn'
+import { Badge } from 'frontend-shadcn'
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -31,11 +31,6 @@ const MediaItem: React.FC<MediaItemProps> = ({
 	handleClick,
 	handleRemove,
 }) => {
-	const [contentType, setContentType] = useState('')
-
-	useEffect(() => {
-		setContentType(item?.content_type?.split('/')[0])
-	}, [item])
 
 	return (
 		<Card
@@ -45,7 +40,7 @@ const MediaItem: React.FC<MediaItemProps> = ({
 			)}
 		>
 			<CardHeader className="py-1 px-1 flex flex-row justify-between items-center">
-				<Badge>{ item?.content_type?.split('/')[1]}</Badge>
+				<Badge className="px-3 py-1">{ item?.resource_type}</Badge>
 				{handleRemove && (
 					<DropdownMenu>
 						<DropdownMenuTrigger asChild>
@@ -59,13 +54,13 @@ const MediaItem: React.FC<MediaItemProps> = ({
 					</DropdownMenu>
 				)}
 			</CardHeader>
-			{contentType === 'image' || contentType === 'video' ? (
+			{item.resource_type === 'image' || item.resource_type === 'video' ? (
 				<TouchableOpacity handleClick={() => handleClick && handleClick(item)}>
 					<div className="h-[160px] w-[205px] flex items-center justify-center overflow-hidden">
 						<Image
 							disableBorderRadius
 							aspectRatio={4 / 3}
-							src={item?.url}
+							src={item?.thumbnail_url}
 							alt={item?.content_type}
 						/>
 					</div>

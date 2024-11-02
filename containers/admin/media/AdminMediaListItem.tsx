@@ -5,7 +5,7 @@ import { ResourceGridItem } from '../../../components'
 import { resizeCloudinaryImage } from '../../../helpers'
 import { Badge } from 'frontend-shadcn'
 
-type AdminMediaItemProps = {
+type AdminMediaListItemProps = {
 	resource: any
 	sortable?: boolean
 	handleClick: () => void
@@ -13,14 +13,14 @@ type AdminMediaItemProps = {
 	handleDelete: () => void
 }
 
-const AdminMediaItem: React.FC<AdminMediaItemProps> = (props) => {
+const AdminMediaListItem: React.FC<AdminMediaListItemProps> = (props) => {
 	const { resource, sortable, handleClick, handleDelete } = props
 	return (
 		<ResourceGridItem
 			enableBorder
 			sortable={sortable}
 			//@ts-ignore
-			image={resource?.url}
+			image={resource?.thumbnail_url}
 			secondaryAction={
 				<Badge>{resource?.content_type}</Badge>
 			}
@@ -37,4 +37,4 @@ const AdminMediaItem: React.FC<AdminMediaItemProps> = (props) => {
 	)
 }
 
-export default AdminMediaItem
+export default AdminMediaListItem

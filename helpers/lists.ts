@@ -7,7 +7,7 @@ type DisplayFieldParams = {
   displayTags?: boolean
 }
 
-export const buildDisplayFields = (params: DisplayFieldParams) => {
+export const buildListFields = (params: DisplayFieldParams) => {
   
   const { 
     displaySubtitle,

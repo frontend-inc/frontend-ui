@@ -3,12 +3,13 @@
 import React from 'react'
 import { DataList } from '../../../components'
 import { 
-  buildDisplayFields, 
+  buildListFields, 
   buildSortFields,
   buildFilterFields 
 } from '../../../helpers'
 import {
 	ButtonType,
+	ShowFieldType,
 	FormFieldType,
 } from '../../../types'
 import {
@@ -20,9 +21,8 @@ import {
 } from '../..'
 
 export type CollectionListProps = {
-	grid?: boolean
+	layout?: 'list' | 'grid' | 'slider'
 	style: string
-	href?: string
 
   enableSearch?: boolean
 	enableFilters?: boolean
@@ -51,6 +51,7 @@ export type CollectionListProps = {
 	enableShow?: boolean
 	fields?: FormFieldType[]
 	buttons?: ButtonType[]
+  displayFields?: ShowFieldType[]
 	headers?: {
 		label: string
 		value: string
@@ -110,7 +111,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		enableOverlay,
 
 		style = 'card',
-		href,
 		buttons = [],
 		circular,
 		disableImage,
@@ -120,6 +120,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		enableSearch,
 		enableFilters,
 		enableSorting,
+    displayFields=[],
 		filterChoices = [],
 		headers = [], // Used by KanBan
 		header: Header = CollectionHeader,
@@ -147,7 +148,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
     ...query,
   }
 
-  const displayFields = buildDisplayFields({
+  const listFields = buildListFields({
     displaySubtitle,
     displayCategory,
     displayLocation,
@@ -172,7 +173,6 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			...defaultSlots.list,
 			headers,
 			style,
-			href,
 			enableLikes,
 			enableFavorites,
 			enableComments,
@@ -205,12 +205,11 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		empty: defaultSlots.empty,
 		item: {
 			...defaultSlots.item,
-			href,
 			circular,
 			disableImage,
 			style,
 			buttons,
-			displayFields,
+			listFields,
 			enableLikes,
 			enableFavorites,
 			enableComments,

@@ -6,7 +6,7 @@ import { useResourceContext } from 'frontend-js'
 import { useApp } from '../../../hooks'
 import { useRouter } from 'next/navigation'
 import { CollectionListItem, DataLayout } from '../..'
-import { ButtonType, DisplayFieldType } from '../../../types'
+import { ButtonType, ShowFieldType } from '../../../types'
 
 export type CollectionListItemsProps = {
 	layout?: 'list' | 'grid' | 'slider'
@@ -14,7 +14,7 @@ export type CollectionListItemsProps = {
 	href?: string
 	style?: 'list' | 'card' | 'avatar' | 'cover' | 'text'
 	buttons: ButtonType[]
-	displayFields: DisplayFieldType[]
+	displayFields: ShowFieldType[]
 	handleClick?: (resource: any) => void
 	enableGradient?: boolean
 	enableOverlay?: boolean

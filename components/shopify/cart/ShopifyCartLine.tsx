@@ -6,12 +6,13 @@ import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
 import { Button } from '../../../components'
 import Image from 'next/image'
-import { Badge, Typography } from '../../core'
+import { Typography } from '../../core'
 import { Icon } from '../../../components'
 import { formatCurrency } from 'frontend-shopify'
 import { useRouter } from 'next/navigation'
 import { CartLineType } from 'frontend-shopify'
 import { cn } from 'frontend-shadcn'
+import { Badge } from 'frontend-shadcn'
 
 type ShopifyCartQuantityInputProps = {
 	quantity: number
@@ -124,7 +125,7 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = ({ line }) => {
 		<div
 			className={cn('flex items-start space-x-4 py-4', loading && 'opacity-30')}
 		>
-			<Badge badgeContent={quantity}>
+			<div className="relative">
 				<Image
 					alt={line?.merchandise?.product?.title || ''}
 					src={url}
@@ -133,7 +134,8 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = ({ line }) => {
 					className="rounded-md"
 					onClick={handleClick}
 				/>
-			</Badge>
+        
+			</div>
 			<div className="flex-grow">
 				<Typography variant="body1">
 					{line?.merchandise?.product?.title}

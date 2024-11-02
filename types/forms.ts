@@ -1,6 +1,6 @@
 import { OptionType } from 'frontend-js'
 
-export type DisplayFieldType = {
+export type ShowFieldType = {
 	name: string
 	variant: string
 	icon?: string

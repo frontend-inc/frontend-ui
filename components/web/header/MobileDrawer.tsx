@@ -3,8 +3,6 @@
 import React, { useContext } from 'react'
 import { List } from '../../core'
 import { Sheet } from '../..'
-import { CartButton, AuthButton } from '../..'
-import { ShopifyCartButton } from '../../shopify'
 import { AppContext } from '../../../context'
 import MobileDrawerLink from './MobileDrawerLink'
 import { MenuLinkType } from '../../..'
@@ -12,15 +10,12 @@ import { MenuLinkType } from '../../..'
 type MobileDrawerProps = {
 	links: MenuLinkType[]
 	handleClick: (path: string) => void
-	enableAuth?: boolean
-	enableStripe?: boolean
-	enableShopify?: boolean
 }
 
 const MobileDrawer = (props: MobileDrawerProps) => {
 	const { menuOpen, setMenuOpen } = useContext(AppContext)
 
-	const { links, handleClick, enableAuth, enableStripe, enableShopify } = props
+	const { links, handleClick } = props
 
 	const handleMenuClick = (path: string) => {
 		setMenuOpen(false)
@@ -43,17 +38,6 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 						/>
 					))}
 				</List>
-				{(enableAuth || enableShopify) && (
-					<div className="flex flex-col space-y-3">
-						{enableStripe && <CartButton />}
-						{enableShopify && <ShopifyCartButton />}
-						{enableAuth && (
-							<div className="w-full border-t border-divider pt-1.5">
-								<AuthButton showLabel />
-							</div>
-						)}
-					</div>
-				)}
 			</div>
 		</Sheet>
 	)

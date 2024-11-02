@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Badge } from '../../../components'
+import { Badge } from 'frontend-shadcn'
 
 type CellBooleanProps = {
 	value: boolean
@@ -10,7 +10,7 @@ type CellBooleanProps = {
 const CellBoolean: React.FC<CellBooleanProps> = (props) => {
 	const { value } = props
 	return(
-    <Badge>
+    <Badge className="px-3 py-1">
       {value ? 'True' : 'False'}
     </Badge>
   )

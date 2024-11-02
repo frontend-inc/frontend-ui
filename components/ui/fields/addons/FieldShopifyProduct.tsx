@@ -3,16 +3,13 @@
 import React, { useEffect } from 'react'
 import { ShopifyProductDetails } from '../../../shopify'
 import { useProducts } from 'frontend-shopify'
-import { get } from 'lodash'
 
 export type FieldShopifyProductProps = {
-	fieldName: string
-	resource: any
+	value: string 
 }
 
 const FieldShopifyProduct: React.FC<FieldShopifyProductProps> = (props) => {
-	const { resource, fieldName, ...rest } = props || {}
-	const shopifyHandle = get(resource, fieldName)
+	const { value: shopifyHandle, ...rest } = props || {}
 
 	const { loading, product, findProduct } = useProducts()
 

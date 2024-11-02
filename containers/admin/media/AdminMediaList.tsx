@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { ResourceList } from '../../../components'
-import { AdminMediaForm, AdminMediaItem, AdminMediaShow } from '../..'
+import { AdminMediaForm, AdminMediaListItem, AdminMediaShow } from '../..'
 import { useAdmin } from '../../../hooks'
 
 const AdminMediaList: React.FC = (props) => {
@@ -22,7 +22,7 @@ const AdminMediaList: React.FC = (props) => {
 			}}
 			edit={AdminMediaForm}
 			create={AdminMediaForm}
-			component={AdminMediaItem}
+			component={AdminMediaListItem}
 			show={AdminMediaShow}
 			emptyIcon="Image"
 			emptyTitle="No uploads"

@@ -1,16 +1,21 @@
 'use client'
 
 import React from 'react'
-import { CommentList, Drawer, ShowItem } from '../..'
+import { 
+  CommentList, 
+  Drawer, 
+  DisplayFields,
+  SocialButtons
+} from '../..'
 import { useResourceContext } from 'frontend-js'
-import { ButtonType, FormFieldType, DisplayFieldType } from '../../../types'
+import { ButtonType, FormFieldType, ShowFieldType } from '../../../types'
 
 export type ShowModalProps = {
 	handle?: string
 	enableBorder?: boolean
 	enableOverlay?: boolean
 	buttons: ButtonType[]
-	displayFields: DisplayFieldType[]
+	displayFields: ShowFieldType[]
 	fields?: FormFieldType[]
 	fieldName?: string
 	enableFavorites?: boolean
@@ -39,20 +44,27 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 			handleClose={() => setOpenShow(false)}
 			title={resource?.title}
 		>
-			<ShowItem
-				style="snippet"
-				resource={resource}
-				buttons={buttons}
-				displayFields={displayFields}
-				enableLikes={enableLikes}
-				enableFavorites={enableFavorites}
-				enableSharing={enableSharing}				
-			/>
-			{enableComments && (
-				<div className="px-2">
-					<CommentList url={url} handle={resource?.handle} />
-				</div>
-			)}
+      <div className="flex flex-col space-y-6 pb-[40px] w-full">
+        <SocialButtons
+          size="large"
+          justifyContent={'center'}
+          resource={resource}
+          enableLikes={enableLikes}
+          enableFavorites={enableFavorites}
+          enableSharing={enableSharing}
+        />
+        {displayFields?.length > 0 && (
+          <DisplayFields
+            fields={displayFields}
+            resource={resource}
+          />
+        )}  
+        {enableComments && (
+          <div className="px-2">
+            <CommentList url={url} handle={resource?.handle} />
+          </div>
+        )}
+      </div>
 		</Drawer>
 	)
 }

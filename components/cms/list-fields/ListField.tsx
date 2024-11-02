@@ -6,17 +6,13 @@ import {
 	FieldBoolean,
 	FieldDate,
 	FieldFile,
-	FieldLocation,
-	FieldImage,
-	FieldJSON,
 	FieldURL,
 	FieldPrice,
 	FieldRating,
 	FieldString,
 	FieldText,
-	FieldVideo,
 } from '../..'
-import { DisplayFieldType } from '../../../types'
+import { ShowFieldType } from '../../../types'
 import { get } from 'lodash'
 import { truncate } from '../../../helpers'
 import { cn } from 'frontend-shadcn'
@@ -26,20 +22,15 @@ type FieldProps = {
 	color?: string
 	direction?: 'row' | 'column'
 	placeholder?: string
-	field: DisplayFieldType
+	field: ShowFieldType
 	resource?: any
-	disableBorder?: boolean
-	disableLabel?: boolean
 }
 
-const DisplayField: React.FC<FieldProps> = (props) => {
+const ListField: React.FC<FieldProps> = (props) => {
 	const {
 		field,
 		resource,
-		disableBorder = false,
-		disableLabel = false,
 		color = 'text.secondary',
-
 		...rest
 	} = props
 	const { name, label, variant: fieldVariant, icon } = field
@@ -51,10 +42,9 @@ const DisplayField: React.FC<FieldProps> = (props) => {
 		date: FieldDate,
 		datetime: FieldDate,
 		file: FieldFile,
-		location: FieldLocation,
-		image: FieldImage,
-		video: FieldVideo,
-		json: FieldJSON,
+		location: FieldString,
+		image: FieldURL,
+		video: FieldURL,		
 		url: FieldURL,
 		rating: FieldRating,
 		text: FieldText,
@@ -65,8 +55,10 @@ const DisplayField: React.FC<FieldProps> = (props) => {
 		price: FieldPrice,
 		email: FieldString,
 		phone: FieldString,
-		single_choice: FieldString,
-		multiple_choice: FieldArray,
+    youtube_video: FieldURL,
+    vimeo_video: FieldURL,
+    soundcloud_audio: FieldURL,
+    shopify_product: FieldString,
 	}
 
 	const variantProps = {
@@ -74,6 +66,7 @@ const DisplayField: React.FC<FieldProps> = (props) => {
 			value: truncate(value),
 		},
 		text: {
+      expandable: true,
 			variant: 'body2',
 		},
 		image: {
@@ -87,21 +80,15 @@ const DisplayField: React.FC<FieldProps> = (props) => {
 
 	if (!value || value == '') return null
 	return (
-		<div
-			className={cn(!disableBorder && 'border border-border p-2 rounded-md')}
-		>
-			<Component
-				label={label}
-				icon={icon}
-				variant="caption"
-				color={color}
-				value={value}
-				disableLabel={disableLabel}
-				{...componentProps}
-				{...rest}
-			/>
-		</div>
+    <Component
+      icon={icon}
+      variant="caption"
+      color={color}
+      value={value}				
+      {...componentProps}
+      {...rest}
+    />
 	)
 }
 
-export default DisplayField
+export default ListField

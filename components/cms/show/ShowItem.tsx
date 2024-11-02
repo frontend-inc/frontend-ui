@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { ButtonType, DisplayFieldType } from '../../../types'
+import { ButtonType, ShowFieldType } from '../../../types'
 import {
 	HeroList,
 	HeroAvatar,
@@ -11,7 +11,7 @@ import {
 } from '../../../components'
 import { useResourceContext } from 'frontend-js'
 import {
-	DisplayFields,
+	ListFields,
 	ButtonActions,
 	SocialButtons,
 	ExpandableText,
@@ -20,7 +20,7 @@ import {
 export type ShowProps = {
 	handle?: string
 	buttons: ButtonType[]
-	displayFields: DisplayFieldType[]
+	displayFields: ShowFieldType[]
 	resource: any
 	enableFavorites?: boolean
 	enableLikes?: boolean
@@ -129,20 +129,13 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 			image={resource?.image?.url}
 			primary={resource?.title}
 			secondary={
-				<div className="w-full flex flex-col space-y-6">
-					<div className="w-full h-full flex flex-col space-y-2">
-						{displayFields?.length > 0 && (
-							<DisplayFields
-								disableLabel
-								disableBorder
-								direction="column"
-								fields={displayFields}
-								resource={resource}
-							/>
-						)}
-					</div>
-					<ExpandableText text={resource?.description} />
-				</div>
+				displayFields?.length > 0 && (
+          <ListFields
+            direction="column"
+            fields={displayFields}
+            resource={resource}
+          />
+        )
 			}
 			actions={
 				<SocialButtons

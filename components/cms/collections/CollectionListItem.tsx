@@ -8,9 +8,10 @@ import {
 	AvatarCard,
 	ChipCard,
 	TextCard,
+  Typography
 } from '../..'
-import { DisplayFields, SocialButtons } from '../..'
-import { ButtonType, DisplayFieldType } from '../../../types'
+import { ListFields, SocialButtons } from '../..'
+import { ButtonType, ShowFieldType } from '../../../types'
 import { resizeCloudinaryImage } from '../../../helpers'
 
 type CardStyleTypes = 'list' | 'avatar' | 'card' | 'cover' | 'text'
@@ -18,7 +19,7 @@ type CardStyleTypes = 'list' | 'avatar' | 'card' | 'cover' | 'text'
 type CollectionListItemProps = {
 	buttons: ButtonType[]
 	style: CardStyleTypes
-	displayFields: DisplayFieldType[]
+	listFields: ShowFieldType[]
 	resource: any
 	buttonText?: string
 	href?: string
@@ -35,7 +36,7 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 	const {
 		buttons,
 		resource,
-		displayFields = [],
+		listFields = [],
 		handleClick,
 		enableGradient = false,
 		enableOverlay = false,
@@ -57,13 +58,13 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 
 	let Component = COMPONENTS[style] || Card
 
-  let typographyClasses = {
-    card: 'text-sm',
-		avatar: 'text-sm',
-		cover: 'text-sm',
-		chip: 'text-sm',
-		text: 'text-lg font-semibold',
-		list: 'text-sm'
+  let typographyVariants = {
+    card: 'body1',
+		avatar: 'body1',
+		cover: 'body1',
+		chip: 'body1',
+		text: 'h5',
+		list: 'body1'
   }
 
 	return (
@@ -71,17 +72,15 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 			label={resource?.label}
 			image={resource?.image?.url}
 			primary={
-        <div className={ typographyClasses[style] }>
+        <Typography variant={ typographyVariants[style] }>
           { resource?.title }
-        </div>
+        </Typography>
       }
 			handleClick={handleClick}
 			// @ts-ignore
 			secondary={
-				<DisplayFields
-					disableBorder
-					disableLabel
-					fields={displayFields}
+				<ListFields
+					fields={listFields}
 					resource={resource}
 				/>
 			}

@@ -5,7 +5,7 @@ import { SearchInput } from '../../../components'
 import { IconButton, Hidden } from '../../core'
 import { Edit, Filter, Trash } from 'lucide-react'
 import { Button } from '../../../components'
-import { Badge } from '../../core'
+import { Badge } from 'frontend-shadcn'
 import TableFilterButton from './filters/TableFilterButton'
 
 type TableToolbarProps = {
@@ -121,11 +121,14 @@ const TableToolbar: React.FC<TableToolbarProps> = (props) => {
 					</Hidden>
 					<Hidden mdUp>
 						<div className="flex flex-row justify-start items-center">
-							<Badge badgeContent={badgeCount}>
+							<div className="relative">
 								<IconButton onClick={handleFilter}>
 									<Filter className="w-5 h-5 text-foreground" />
 								</IconButton>
-							</Badge>
+                <Badge className="py-0 px-1 rounded-full absolute top-0 right-0 transform translate-x-[3px] -translate-y-[3px]">
+                  {badgeCount}
+                </Badge>
+              </div>
 							{selected?.length > 0 && (
 								<>
 									{enableDelete && (

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef } from 'react'
 import { useGooglePlaces } from '../../../../hooks'
-import { TextInput, GoogleMap, Icon } from '../../..'
+import { TextInput, GoogleMaps, Icon } from '../../..'
 import { TextInputPropsType } from '../../../../types'
 import { useDebounce } from 'use-debounce'
 import { cn } from 'frontend-shadcn'
@@ -74,7 +74,7 @@ export default function LocationInput({
 		>
 			{enablePosition && lat && lng && (
 				<div className="overflow-hidden" style={{ height, width }}>
-					<GoogleMap
+					<GoogleMaps
 						enableBorder
 						darkTheme={darkTheme}
 						height={height}

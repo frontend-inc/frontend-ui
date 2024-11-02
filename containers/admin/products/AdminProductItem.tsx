@@ -3,7 +3,7 @@
 import React from 'react'
 import {
 	PublishLabel,
-	DisplayFields,
+	ListFields,
 	ResourceListItem,
 } from '../../../components'
 import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
@@ -28,9 +28,7 @@ const AdminProductItem: React.FC<ResourceItemProps> = (props) => {
 			image={product?.image?.url}
 			primary={product?.title}
 			secondary={
-				<DisplayFields
-					disableBorder
-          disableLabel
+				<ListFields
 					resource={product}
 					fields={[{ label: 'Price', name: 'price', variant: 'price' }]}
 				/>

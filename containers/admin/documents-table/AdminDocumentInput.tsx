@@ -12,7 +12,7 @@ import {
 	TextArea,
 	StateInput,
 	CountryInput,
-	ShopifyProductsInput,
+	ShopifyProductInput,
 } from '../../../components'
 import ReferenceInput from './references/ReferenceInput'
 import ProductsInput from './products/ProductsInput'
@@ -70,12 +70,16 @@ const AdminDocumentInput: React.FC<DocumentInputProps> = (props) => {
 		boolean: CheckboxInput,
 		select: Autosuggest,
 		rating: RatingInput,
-		products: ProductsInput,
-		shopify_products: ShopifyProductsInput,
+		products: ProductsInput,		
 		file: MediaInput,
 		image: MediaInput,
 		video: MediaInput,
 		habtm: ReferenceInput,
+    youtube_video: TextInput,
+    vimeo_video: TextInput,
+    soundcloud_audio: TextInput,
+    calendly_url: TextInput,
+    shopify_product: ShopifyProductInput,
 	}
 
 	const Component = componentMapper[variant] || TextInput

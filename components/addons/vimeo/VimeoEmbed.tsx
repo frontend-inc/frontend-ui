@@ -1,26 +1,23 @@
 'use client'
 
 import React from 'react'
-import { AspectRatio } from 'frontend-shadcn'
 
 type VimeoEmbedProps = {
 	src: string
-	aspectRatio?: number
 }
 
 const VimeoEmbed: React.FC<VimeoEmbedProps> = (props) => {
-	const { src, aspectRatio = 16 / 9 } = props
+	const { src } = props
 
 	return (
-		<AspectRatio ratio={aspectRatio}>
+    <div className="relative overflow-hidden pb-[56.25%] w-full max-w-full">
 			<iframe
-				src={src}
-				width="800px"
-				height="450px"
-				className="w-full h-full absolute top-0 left-0"
-				frameBorder="0"
+				src={src}				
+				className="absolute top-0 left-0 w-full h-full"
+        //@ts-ignore
+				frameborder="0"
 			></iframe>
-		</AspectRatio>
+		</div>
 	)
 }
 

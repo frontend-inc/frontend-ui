@@ -3,9 +3,9 @@ export * from './data'
 export * from './forms'
 export * from './show'
 export * from './resources'
-
-export { default as DisplayField } from './displayFields/DisplayField'
-export { default as DisplayFields } from './displayFields/DisplayFields'
+export * from './list-fields'
+export * from './display-fields'
+export * from './show-fields'
 
 export { default as EmailSubscribe } from './newsletter/EmailSubscribe'
 export { default as ContactForm } from './leads/ContactForm'

@@ -3,28 +3,28 @@
 import React from 'react'
 import { Badge } from 'frontend-shadcn'
 import { FieldWrapper } from '../../../components'
+import { cn } from 'frontend-shadcn'
 
 type FieldArrayProps = {
 	value?: any[]
 	label?: string
-	disableLabel?: boolean
 	direction?: 'row' | 'column'
+  className?: string
 }
 
 const FieldArray: React.FC<FieldArrayProps> = (props) => {
-	const { value: values, disableLabel, label, direction } = props
+	const { value: values, label, className, direction } = props
 	return (
 		<FieldWrapper
-			disableLabel={disableLabel}
 			label={label}
 			direction={direction}
 		>
-			<div className="flex flex-row gap-2">
+			<div className={cn("flex flex-row gap-2", className)}>
 				{Array.isArray(values) &&
 					values?.map((value, index) => (
 						<Badge
 							variant="secondary"
-							className="px-2 rounded-full whitespace-nowrap truncate"
+							className="px-3 py-1 text-sm font-medium rounded-full whitespace-nowrap truncate"
 							key={index}
 						>
 							{value}

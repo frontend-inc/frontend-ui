@@ -1,3 +1,5 @@
+export * from './googleMaps'
+
 //Scripts
 export { default as GoogleAnalyticsScript } from './google/GoogleAnalyticsScript'
 export { default as GoogleTagManagerScript } from './google/GoogleTagManagerScript'
@@ -15,7 +17,6 @@ export { default as VisualWebsiteOptimizerScript } from './visual-website-optimi
 //Embeds
 export { default as Calendly } from './calendly/Calendly'
 export { default as GiftUp } from './giftup/GiftUp'
-export { default as GoogleMap } from './googleMaps/GoogleMap'
 export { default as GorgiasChat } from './gorgias/GorgiasChat'
 export { default as MailchimpSubscribe } from './mailchimp/MailchimpSubscribe'
 export { default as Typeform } from './typeform/Typeform'

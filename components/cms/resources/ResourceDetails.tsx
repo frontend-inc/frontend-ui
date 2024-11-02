@@ -1,9 +1,9 @@
 'use client'
 
 import React from 'react'
-import { DisplayFields, Image, Field } from '../../../components'
+import { ShowFields, Image } from '../../../components'
 import { Typography } from '../../core'
-import { DisplayFieldType } from '../../../types'
+import { ShowFieldType } from '../../../types'
 
 type ResourceDetailsProps = {
 	avatar?: React.ReactNode
@@ -12,12 +12,13 @@ type ResourceDetailsProps = {
 	secondary?: string
 	label?: string
 	image?: string
-	fields: DisplayFieldType[]
+	fields: ShowFieldType[]
 	direction?: 'row' | 'column'
 }
 
 const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
-	const {
+	
+  const {
 		avatar,
 		resource,
 		primary,
@@ -25,27 +26,24 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 		label,
 		image,
 		fields = [],
-		direction = 'column',
 	} = props || {}
   
 	return (
-		<div className="w-full flex flex-col space-y-3">
+		<div className="w-full flex flex-col space-y-6">
 			{image && (
-				<div className="w-full h-[200px]">
+				<div className="w-full h-[240px]">
 					<Image alt={label} src={image} label={label} />
 				</div>
 			)}
-			{avatar && avatar}
-			<Typography variant="h5">{primary}</Typography>
+			{ primary && <Typography variant="h4" className="px-2">{primary}</Typography> }
 			{secondary && (
-				<Typography variant="body2" className="text-muted-foreground">
+				<Typography variant="body1" className="px-2 text-lg italic text-muted-foreground">
 					{secondary}
 				</Typography>
 			)}
-			<DisplayFields
+			<ShowFields
 				fields={fields}
 				resource={resource}
-				direction={direction}
 			/>
 		</div>
 	)

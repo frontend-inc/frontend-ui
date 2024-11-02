@@ -4,12 +4,12 @@ import React from 'react'
 import {
   Image,
 	PublishLabel,
-	DisplayFields,
+	ListFields,
 	ResourceListItem,
 } from '../../../components'
 import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
 
-const AdminDocumentItem: React.FC<ResourceItemProps> = (props) => {
+const AdminDocumentListItem: React.FC<ResourceItemProps> = (props) => {
 	const {
 		resource,
 		selectable,
@@ -37,9 +37,7 @@ const AdminDocumentItem: React.FC<ResourceItemProps> = (props) => {
       }			
 			primary={resource?.title}
 			secondary={
-				<DisplayFields
-					disableBorder
-          disableLabel
+				<ListFields
 					resource={resource}
 					fields={[{ label: 'Handle', name: 'handle', variant: 'string' }]}
 				/>
@@ -54,4 +52,4 @@ const AdminDocumentItem: React.FC<ResourceItemProps> = (props) => {
 	)
 }
 
-export default AdminDocumentItem
+export default AdminDocumentListItem

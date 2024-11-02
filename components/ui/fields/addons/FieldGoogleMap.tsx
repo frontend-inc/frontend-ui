@@ -2,31 +2,40 @@
 
 import React from 'react'
 import { GoogleMap } from '../../../'
-import { DisplayFieldType } from '../../../../types'
 
 export type FieldGoogleMapProps = {
-	fieldName: string
-	resource: any
-	zoom?: number
-	displayFields?: DisplayFieldType[]
-	darkTheme?: boolean
+  value: string  
+  lat: number
+  lng: number 
+  label: string 
+  image?: string  
+  zoom?: number
 }
 
 const FieldGoogleMap: React.FC<FieldGoogleMapProps> = (props) => {
-	const {
-		resource,
-		zoom = 16,
-		darkTheme = false,
-		displayFields = [],
+	
+  const {
+    value,
+    lat, 
+    lng, 
+    label, 
+    image,
+    zoom = 16,
 	} = props || {}
 
 	return (
-		<GoogleMap
-			darkTheme={darkTheme}
-			zoom={zoom}
-			resources={[resource]}
-			displayFields={displayFields}
-		/>
+    <div className="flex flex-col space-y-3 w-full">
+      <GoogleMap
+        zoom={zoom}
+        lat={lat}
+        lng={lng}
+        label={label}			
+        image={image}
+      />
+      <div className="text-sm text-foreground">
+        { value }
+      </div>
+    </div>
 	)
 }
 

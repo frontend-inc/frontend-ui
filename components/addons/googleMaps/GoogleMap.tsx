@@ -2,76 +2,57 @@
 
 import React, { useEffect, useState } from 'react'
 import { Map, useMap } from '@vis.gl/react-google-maps'
-import { GoogleMarkerType, DisplayFieldType } from '../../../types'
+import { GoogleMarkerType, ShowFieldType } from '../../../types'
 import { MAP_CONFIGS, MapConfig } from './styles/mapConfigs'
 import GoogleMarker from './GoogleMarker'
 import { cn } from 'frontend-shadcn'
 
 export type GoogleMapProps = {
 	darkTheme?: boolean
-	resources: any[]
-	height?: number
+  lat: number
+  lng: number
+  label: string
+  image?: string
+  height?: number
 	width?: number | string
 	zoom?: number
 	enableBorder?: boolean
-	displayFields?: DisplayFieldType[]
 }
+
+
+const NYC_LAT = 40.7128
+const NYC_LNG = -73.935242
 
 export default function GoogleMap({
 	darkTheme = false,
 	height = 300,
 	width,
-	resources,
+	lat=NYC_LAT,
+  lng=NYC_LNG,
+  label,
+  image,
 	zoom = 16,
 	enableBorder = false,
-	displayFields = [],
 }: GoogleMapProps) {
-	const [mapConfig, setMapConfig] = useState<MapConfig>(MAP_CONFIGS[0])
-
-	const NYC_LAT = 40.7128
-	const NYC_LNG = -73.935242
-	const [center, setCenter] = useState({ lat: NYC_LAT, lng: NYC_LNG })
+	
+  const [mapConfig, setMapConfig] = useState<MapConfig>(MAP_CONFIGS[0])
 
 	useEffect(() => {
 		setMapConfig(darkTheme ? MAP_CONFIGS[1] : MAP_CONFIGS[0])
 	}, [darkTheme])
 
-	const [googleMarkers, setGoogleMarkers] = useState<GoogleMarkerType[]>([])
+  const center = {
+    lat,
+    lng
+  }
 
-	const handleSetMarkers = (resources) => {
-		let markers = resources?.map((res) => ({
-			lat: res?.lat,
-			lng: res?.lng,
-			label: res?.title,
-			resource: res,
-		}))
-		setGoogleMarkers(markers?.length ? markers : [])
-	}
-
-	const map = useMap()
+  const map = useMap()
 
 	useEffect(() => {
 		if (map) {
 			map.setCenter(center)
 		}
 	}, [center, map])
-
-	useEffect(() => {
-		if (googleMarkers?.length > 0) {
-			setCenter({
-				lat: googleMarkers[0]?.lat,
-				lng: googleMarkers[0]?.lng,
-			})
-		}
-	}, [googleMarkers])
-
-	useEffect(() => {
-		if (resources) {
-			handleSetMarkers(resources)
-		}
-	}, [resources])
-
-	if (googleMarkers?.length <= 0) return null
 
 	return (
 		<div
@@ -95,13 +76,12 @@ export default function GoogleMap({
 				defaultZoom={zoom}
 				defaultCenter={center}
 			>
-				{googleMarkers.map((marker: any, index: number) => (
-					<GoogleMarker
-						key={index}
-						marker={marker}
-						displayFields={displayFields}
-					/>
-				))}
+        <GoogleMarker
+          lat={lat}
+          lng={lng}
+          image={image}
+          label={label}
+        />
 			</Map>
 		</div>
 	)

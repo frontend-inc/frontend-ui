@@ -19,7 +19,7 @@ const MediaUploader: React.FC<MediaUploaderProps> = (props) => {
 	const handleUpload = async (file) => {
 		try {
 			if (file?.size > MAX_FILE_SIZE) {
-				showAlertError('File size must be less than 5MB.')
+				showAlertError('File size must be less than 10MB.')
 				return
 			}
 			let resp = await uploadFile(file)

@@ -2,11 +2,11 @@
 
 import React from 'react'
 import { Field } from '../..'
-import { DisplayFieldType } from '../../../types'
+import { ShowFieldType } from '../../../types'
 import { cn } from 'frontend-shadcn'
 
 export type DetailsProps = {
-	displayFields: DisplayFieldType[]
+	displayFields: ShowFieldType[]
 	url: string
 	resource: any
 	enableBorder?: boolean
