@@ -21,8 +21,8 @@ export default function DataLayout({
       loading && 'opacity-50'
     )}>
     { layout == 'grid' && (
-    <div className='w-full grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 pb-1'>      
-      {children}
+      <div className='w-full grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 pb-1'>      
+        {children}
       </div>  
     )}
     { layout == 'list' && (

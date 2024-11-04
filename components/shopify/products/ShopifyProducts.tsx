@@ -24,7 +24,7 @@ const ShopifyProducts: React.FC<ShopifyProductsProps> = ({
 }) => {
 
   return (
-		<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-full">
+		<div className='w-full grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 pb-1'>
 			{products?.map((product) => (
 				<div className="p-1" key={product?.id}>
 					<ShopifyProductCard

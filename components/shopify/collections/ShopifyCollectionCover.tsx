@@ -7,7 +7,6 @@ import { ShopifyProductCollectionModal } from '../../../components'
 
 export type ShopifyCollectionCoverProps = {
 	shopifyCollection: string
-	editing?: boolean
 	alignItems?: 'flex-start' | 'center' | 'flex-end'
 	alt?: string
 	handleClick?: () => void
@@ -15,6 +14,8 @@ export type ShopifyCollectionCoverProps = {
 	enableOverlay?: boolean
 	overlayColor?: string
 	buttonText?: string
+  enableQuantity?: boolean
+  enableAddToCart?: boolean
 }
 
 const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
@@ -27,8 +28,10 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
     handleClick,
 		enableGradient = false,
 		enableOverlay = false,
-		alignItems = 'center',
+		alignItems = 'center',    
 		buttonText,
+    enableQuantity,
+    enableAddToCart,
 	} = props
 
   const [open, setOpen] = useState(false)
@@ -67,6 +70,8 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
       collection={ collection }
       open={ open }
       handleClose={() => setOpen(false)}
+      enableQuantity={enableQuantity}
+      enableAddToCart={enableAddToCart}
     />
     </>
 	)

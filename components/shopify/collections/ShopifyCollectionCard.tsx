@@ -14,6 +14,9 @@ export type ShopifyCollectionCardProps = {
 	buttonText?: string
 	enableGradient?: boolean
 	enableOverlay?: boolean
+  enableAddToCart?: boolean
+  enableQuantity?: boolean
+  enableSorting?: boolean
 }
 
 export default function ShopifyCollectionCard({
@@ -21,6 +24,9 @@ export default function ShopifyCollectionCard({
 	buttonText,
 	enableGradient = false,
 	enableOverlay = false,
+  enableAddToCart = false,
+  enableQuantity = false,
+  enableSorting = false,
 }: ShopifyCollectionCardProps) {
 
 	const { handle, title, image } = collection || {}
@@ -43,6 +49,7 @@ export default function ShopifyCollectionCard({
             objectFit="cover"
             enableGradient={enableGradient}
             enableOverlay={enableOverlay}
+            handleClick={ handleShowClick }
           />
         </div>
         <div className="dark absolute bottom-0 left-0 w-full p-4 z-10">
@@ -68,7 +75,10 @@ export default function ShopifyCollectionCard({
       <ShopifyProductCollectionModal 
         open={open}
         handleClose={() => setOpen(false)}
-        collection={ collection }    
+        collection={ collection }  
+        enableAddToCart={enableAddToCart}  
+        enableQuantity={enableQuantity}
+        enableSort={enableSorting}
       />
     </>
 	)

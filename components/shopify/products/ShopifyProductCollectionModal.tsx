@@ -31,10 +31,15 @@ const ShopifyProductCollectionModal: React.FC<ShopifyProductCollectionModalProps
       open={open} 
       handleClose={handleClose}
     >
-			<ShopifyProductCollection 
-				{ ...rest }
-        shopifyCollection={ collection?.handle }
-			/>
+      <div className="w-full flex flex-col space-y-6">
+        <div className='px-[40px] text-base text-muted-foreground'>
+          { collection?.description }
+        </div>
+        <ShopifyProductCollection 
+          { ...rest }
+          shopifyCollection={ collection?.handle }
+        />
+      </div>
 		</Drawer>
 	)
 }
