@@ -11,7 +11,6 @@ export type ShopifyRecentlyViewedProps = {
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
-	buttonText?: string
 	emptyIcon?: string
 	emptyTitle?: string
 	emptyDescription?: string
@@ -22,7 +21,6 @@ const ShopifyRecentlyViewed: React.FC<ShopifyRecentlyViewedProps> = (props) => {
   const {
 		layout = 'grid',
 		enableBorder = false,
-		buttonText = 'Add to cart',
 		enableAddToCart,
 		enableQuantity,
 	} = props || {}
@@ -37,14 +35,12 @@ const ShopifyRecentlyViewed: React.FC<ShopifyRecentlyViewedProps> = (props) => {
 					enableBorder={enableBorder}
 					enableAddToCart={enableAddToCart}
 					enableQuantity={enableQuantity}
-					buttonText={buttonText}
 				/>
 			)}
 			{layout == 'carousel' && (
 				<ShopifyProductCarousel
 					products={products}
 					enableBorder={enableBorder}
-					buttonText={buttonText}
 				/>
 			)}
 			{products?.length === 0 && (

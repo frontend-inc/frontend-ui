@@ -14,7 +14,6 @@ export type ShopifyProductRecommendationsProps = {
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
-	buttonText?: string
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 }
 
@@ -26,7 +25,6 @@ const ShopifyProductRecommendations: React.FC<
 		layout = 'grid',
 		perPage = 12,
 		enableBorder = false,
-		buttonText = 'Add to cart',
 		enableAddToCart,
 		enableQuantity,
 	} = props || {}
@@ -74,7 +72,6 @@ const ShopifyProductRecommendations: React.FC<
 					enableBorder={enableBorder}
 					enableAddToCart={enableAddToCart}
 					enableQuantity={enableQuantity}
-					buttonText={buttonText}
 				/>
 			)}
 			{layout == 'carousel' && (
@@ -84,7 +81,6 @@ const ShopifyProductRecommendations: React.FC<
 					enableBorder={enableBorder}
 					enableAddToCart={enableAddToCart}
 					enableQuantity={enableQuantity}
-					buttonText={buttonText}
 				/>
 			)}
 		</div>

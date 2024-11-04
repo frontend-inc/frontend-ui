@@ -29,7 +29,6 @@ const ShopifyProductCarousel: React.FC<ShopifyProductCarouselProps> = (
 	const {
     loading,
 		products,
-		buttonText = 'Add to cart',
 		enableBorder = false,
 		enableAddToCart,
 		enableQuantity = false,

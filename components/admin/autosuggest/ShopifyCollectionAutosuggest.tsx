@@ -19,7 +19,6 @@ const ShopifyCollectionAutosuggest: React.FC<ShopifyAutosuggestProps> = (props) 
 	const {
 		value,
 		label,
-		name = 'shopify_collection',
 		placeholder,
 		handleChange,		
 	} = props
@@ -46,7 +45,7 @@ const ShopifyCollectionAutosuggest: React.FC<ShopifyAutosuggestProps> = (props) 
 	return (
 		<Autosuggest
 			label={label}
-			name={name}
+			name={'shopify_collection'}
 			value={value}
 			options={options}
 			placeholder={placeholder}

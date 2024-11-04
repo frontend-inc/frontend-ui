@@ -19,6 +19,7 @@ const ShopProvider = (props: ShopProviderProps) => {
   } = props || {}
 
 	const [cartOpen, setCartOpen] = useState(false)
+  const [subscribeOpen, setSubscribeOpen] = useState(false)
 	const [cart, setCart] = useState<CartType | {}>({})
 
 	const value = {
@@ -27,6 +28,8 @@ const ShopProvider = (props: ShopProviderProps) => {
 		cartOpen,
 		setCartOpen,
 		cartCookie,   
+    subscribeOpen,
+    setSubscribeOpen,
     subscriptionPrice 
 	}
 

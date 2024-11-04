@@ -7,7 +7,6 @@ import { useProducts } from 'frontend-shopify'
 
 type AutosuggestProps = {
 	value?: any
-	name?: string
 	label?: string
 	placeholder?: string
 	handleChange: (e: SyntheticEventType) => void
@@ -19,7 +18,6 @@ const ShopifyProductAutosuggest: React.FC<AutosuggestProps> = (props) => {
 		value,
 		label,
 		placeholder,
-		name = 'shopify_product',
 		handleChange,
 	} = props
 
@@ -52,7 +50,7 @@ const ShopifyProductAutosuggest: React.FC<AutosuggestProps> = (props) => {
 	return (
 		<Autosuggest
 			label={label}
-			name={name}
+			name={'shopify_product'}
 			value={value}
 			options={options}
 			placeholder={placeholder}

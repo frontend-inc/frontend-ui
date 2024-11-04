@@ -10,10 +10,9 @@ const useShop = () => {
     setCart, 
     cartOpen, 
     setCartOpen,
-    subscriptionOpen,
-    setSubscriptionOpen,
+    subscribeOpen,
+    setSubscribeOpen,
     subscriptionPrice,
-    subscriptionInterval 
   } = useContext(
 		ShopContext
 	) as any
@@ -24,10 +23,9 @@ const useShop = () => {
 		cartOpen,
 		setCartOpen,
 		cartCookie,
-    subscriptionOpen,
-    setSubscriptionOpen,
+    subscribeOpen,
+    setSubscribeOpen,
     subscriptionPrice,
-    subscriptionInterval 
 	}
 }
 

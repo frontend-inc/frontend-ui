@@ -6,8 +6,7 @@ import { ShopifyProductType } from 'frontend-shopify'
 
 type ShopifyProductsProps = {
 	loading?: boolean
-	products: ShopifyProductType[]
-	buttonText?: string
+	products: ShopifyProductType[]	
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
@@ -15,7 +14,6 @@ type ShopifyProductsProps = {
 
 const ShopifyProducts: React.FC<ShopifyProductsProps> = ({
 	products,
-	buttonText = 'Add to cart',
 	enableBorder = false,
 	enableAddToCart,
 	enableQuantity,
@@ -29,8 +27,7 @@ const ShopifyProducts: React.FC<ShopifyProductsProps> = ({
 						product={product}
 						enableBorder={enableBorder}
 						enableAddToCart={enableAddToCart}
-						enableQuantity={enableQuantity}
-						buttonText={buttonText}
+						enableQuantity={enableQuantity}						
 					/>
 				</div>
 			))}

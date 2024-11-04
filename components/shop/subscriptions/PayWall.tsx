@@ -1,19 +1,38 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { Button, Drawer } from '../../../components'
 import { Heading, SubscriptionTable } from '../../../components'
+import { useShop } from '../../../hooks'
 
 const PayWall: React.FC = () => {
+
+  const [open, setOpen] = useState(false)
+
+  const { subscriptionPrice } = useShop()
+
 	return (
 		<div className="flex flex-col space-y-4">
 			<Heading
 				title="Subscription required"
 				description="Please subscribe below to continue"
-				textAlign="center"
+  
 			/>
-			<div className="w-full">
-				<SubscriptionTable />
-			</div>
+      <Button 
+        label="Subscribe"
+        onClick={() => setOpen(true)}
+      >
+        Subscribe {subscriptionPrice}
+      </Button>
+      <Drawer 
+        title="Subscribe"
+        open={open}
+        handleClose={() => setOpen(false)}
+      >
+        <div className="w-full">
+          <SubscriptionTable />
+        </div>
+      </Drawer>
 		</div>
 	)
 }
