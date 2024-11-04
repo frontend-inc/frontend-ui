@@ -1,11 +1,12 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Cover } from '../..'
-import { ShopifyCollectionType } from 'frontend-shopify'
+import { useCollections } from 'frontend-shopify'
+import { ShopifyProductCollectionModal } from '../../../components'
 
 export type ShopifyCollectionCoverProps = {
-	shopifyCollection: ShopifyCollectionType
+	shopifyCollection: string
 	editing?: boolean
 	alignItems?: 'flex-start' | 'center' | 'flex-end'
 	alt?: string
@@ -19,29 +20,55 @@ export type ShopifyCollectionCoverProps = {
 const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 	props
 ) => {
+
 	const {
 		shopifyCollection,
-		handleClick,
 		alt = 'image',
+    handleClick,
 		enableGradient = false,
 		enableOverlay = false,
 		alignItems = 'center',
 		buttonText,
 	} = props
 
+  const [open, setOpen] = useState(false)
+
+  const { collection, findCollection } = useCollections()
+
+  const handleShowClick = () => {
+    if(handleClick){
+      handleClick()
+    }else{
+      setOpen(true)
+    }    
+  }
+
+  useEffect(() => {
+    if(shopifyCollection){
+      findCollection(shopifyCollection)
+    }
+  }, [shopifyCollection])
+
 	if (!shopifyCollection) return null
 	return (
+    <>
 		<Cover
 			enableOverlay={enableOverlay}
 			enableGradient={enableGradient}
-			title={shopifyCollection?.title}
+			title={collection?.title}
 			// @ts-ignore
-			image={shopifyCollection?.image?.url}
+			image={collection?.image?.url}
 			alt={alt}
 			alignItems={alignItems}
-			handleClick={handleClick}
+			handleClick={handleShowClick}
 			buttonText={buttonText}
 		/>
+    <ShopifyProductCollectionModal 
+      collection={ collection }
+      open={ open }
+      handleClose={() => setOpen(false)}
+    />
+    </>
 	)
 }
 

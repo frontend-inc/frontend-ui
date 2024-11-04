@@ -11,13 +11,13 @@ export type DataFetcherProps = {
 const DataFetcher: React.FC<DataFetcherProps> = (props) => {
 	const { children, query } = props
 
-	const { findMany } = useResourceContext()
+	const { url, findMany } = useResourceContext()
 
 	useEffect(() => {
-		if (query) {
+		if (query && url) {
 			findMany(query)
 		}
-	}, [query])
+	}, [query, url])
 
 	return children
 }

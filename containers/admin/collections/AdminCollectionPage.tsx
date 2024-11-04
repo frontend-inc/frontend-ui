@@ -9,7 +9,6 @@ import {
 import { Placeholder } from '../../../components'
 import { useTabs, useAdminCollections } from '../../../hooks'
 import { useParams } from 'next/navigation'
-import CollectionSchemaToggle from './CollectionSchemaToggle'
 import AdminCollectionMenu from './AdminCollectionMenu'
 import { AdminDocumentsList } from '../documents'
 import { ScrollArea } from 'frontend-shadcn'
@@ -34,19 +33,13 @@ const AdminCollectionPage: React.FC = () => {
 				<AdminCollectionMenu />
 			</AdminLayoutLeft>
 			<AdminLayoutCenter>
-				<AdminHeader
-					enableExpandLeftPanel
-					primaryActions={
-						collectionId && (
-							<CollectionSchemaToggle tab="content" />
-						)
-					}
-				/>
+				<AdminHeader enableExpandLeftPanel />
         <ScrollArea>
         <div className="w-full p-4">
 				{ collection ? (
 					<AdminDocumentsList
-            fields={ collection?.fields }
+            documentType={collection?.document_type}
+            metafields={ collection?.fields }
 						collectionId={collectionId}
 					/>
 				) : (

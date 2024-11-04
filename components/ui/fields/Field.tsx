@@ -16,7 +16,7 @@ import {
 	FieldText,
 	FieldVideo,
 } from '../../../components'
-import { ShowFieldType, TypographyVariantsType } from '../../../types'
+import { MetafieldType, TypographyVariantsType } from '../../../types'
 import { get } from 'lodash'
 import moment from 'moment'
 
@@ -33,7 +33,7 @@ export type FieldElementProps = {
 }
 
 type FieldProps = {
-	field: ShowFieldType
+	field: MetafieldType
 	resource?: any
 	label?: string | null
 	color?: string

@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Icon } from '../../../components'
+import { Avatar, AvatarFallback } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
 
 type AttachmentImageProps = {
@@ -18,16 +19,17 @@ const AttachmentImage: React.FC<AttachmentImageProps> = ({
 	className,
 }) => {
 	return (
-		<div
-			className={cn(
-				'flex items-center justify-center bg-primary',
-				height ? `h-[${height}px]` : 'h-auto',
-				width ? `w-[${width}px]` : 'w-full',
-				className
-			)}
+		<Avatar
+      className={cn('rounded-md', className)} 
+      style={{
+        height: `${height}px`,
+        width: `${width}px`,
+      }}
 		>
-			<Icon name={icon} size={24} />
-		</div>
+      <AvatarFallback className="bg-primary">
+			  <Icon name={icon} size={24} className="bg-primary-foreground" />      
+      </AvatarFallback>
+		</Avatar>
 	)
 }
 

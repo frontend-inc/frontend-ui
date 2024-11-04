@@ -19,6 +19,7 @@ export { default as ExpandableText } from './typography/ExpandableText'
 export { default as GeoSearchInput } from './inputs/GeoSearchInput'
 export { default as Heading } from './typography/Heading'
 export { default as Sheet } from './modals/Sheet'
+export { default as SquareButton } from './SquareButton'
 
 export { default as Icon } from './Icon'
 export { default as IconLoading } from './loaders/IconLoading'

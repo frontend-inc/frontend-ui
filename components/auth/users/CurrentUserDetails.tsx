@@ -4,10 +4,10 @@ import React from 'react'
 import { DetailsProps } from '../../cms/details/Details'
 import { AuthGuard, Details } from '../..'
 import { useAuth } from 'frontend-js'
-import { ShowFieldType } from '../../../types'
+import { MetafieldType } from '../../../types'
 
 export type CurrentUserDetailsProps = DetailsProps & {
-	displayFields: ShowFieldType[]
+	displayFields: MetafieldType[]
 	url: string
 	enableBorder?: boolean
 }

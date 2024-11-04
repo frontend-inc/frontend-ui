@@ -3,18 +3,17 @@
 import React from 'react'
 import { COLLECTION_TEMPLATES } from '../../../constants'
 import { FormFields, ErrorText } from '../../../components'
-import { MenuListItem } from '../../../components'
-import { MenuList } from '../../../components'
+import { SquareButton } from '../../../components'
 
 type AdminCollectionFormProps = {
 	collection: any
 	handleChange: (e: any) => void
-	handleTemplateClick: (template: any) => void
+	handleClick: (template: any) => void
 	errors: any
 }
 
 const AdminCollectionForm: React.FC<AdminCollectionFormProps> = (props) => {
-	const { errors, collection, handleTemplateClick, handleChange } = props
+	const { errors, collection, handleClick, handleChange } = props
 
 	return (
 		<div className="flex flex-col space-y-2">
@@ -34,32 +33,24 @@ const AdminCollectionForm: React.FC<AdminCollectionFormProps> = (props) => {
 							label: 'API name',
 							name: 'name',
 							placeholder: 'API name',
-							variant: 'snake_case',
-						},
-						{
-							label: 'Description',
-							name: 'description',
-							placeholder: 'Description',
-							variant: 'text',
-						},
+							variant: 'slug',
+						}
 					]}
 				/>
 			</div>
 			{!collection?.id && (
-				<MenuList enableBorder label="Templates">
-					<ul>
-						{COLLECTION_TEMPLATES.map((template) => (
-							<MenuListItem
-								selected={collection.template == template}
-								title={template.label}
-								description={template.description}
-								icon={template.icon}
-								color={template.color}
-								handleClick={() => handleTemplateClick(template)}
-							/>
-						))}
-					</ul>
-				</MenuList>
+				<div className="px-4 grid grid-cols-2 md:grid-cols-3 gap-4">
+          {COLLECTION_TEMPLATES.map((template, index) => (
+            <SquareButton 
+              key={index}
+              selected={collection.document_type == template.document_type}
+              label={template.label}								
+              icon={template.icon}
+              color={template.color}
+              handleClick={() => handleClick(template)}
+            />
+          ))}
+				</div>
 			)}
 			<ErrorText
 				error={

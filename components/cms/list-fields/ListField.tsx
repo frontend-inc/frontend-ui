@@ -12,7 +12,7 @@ import {
 	FieldString,
 	FieldText,
 } from '../..'
-import { ShowFieldType } from '../../../types'
+import { MetafieldType } from '../../../types'
 import { get } from 'lodash'
 import { truncate } from '../../../helpers'
 import { cn } from 'frontend-shadcn'
@@ -22,7 +22,7 @@ type FieldProps = {
 	color?: string
 	direction?: 'row' | 'column'
 	placeholder?: string
-	field: ShowFieldType
+	field: MetafieldType
 	resource?: any
 }
 
@@ -63,7 +63,9 @@ const ListField: React.FC<FieldProps> = (props) => {
 
 	const variantProps = {
 		string: {
+      variant: 'body2',
 			value: truncate(value),
+      className: 'text-xs text-muted-foreground'
 		},
 		text: {
       expandable: true,

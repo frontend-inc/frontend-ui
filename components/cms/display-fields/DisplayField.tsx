@@ -15,9 +15,10 @@ import {
 	FieldText,
 	FieldVideo,
   FieldVimeo,
-  FieldYouTube
+  FieldYouTube,
+  FieldShopify
 } from '../..'
-import { ShowFieldType } from '../../../types'
+import { MetafieldType } from '../../../types'
 import { get } from 'lodash'
 import { cn } from 'frontend-shadcn'
 
@@ -25,7 +26,7 @@ type DisplayFieldProps = {
 	label?: string
 	direction?: 'row' | 'column'
 	placeholder?: string
-	field: ShowFieldType
+	field: MetafieldType
 	resource?: any
 }
 
@@ -57,6 +58,7 @@ const DisplayField: React.FC<DisplayFieldProps> = (props) => {
 		price: FieldPrice,
 		email: FieldString,
 		phone: FieldString,
+    shopify_product: FieldShopify,
     vimeo_video: FieldVimeo,
     youtube_video: FieldYouTube
 	}
@@ -76,7 +78,6 @@ const DisplayField: React.FC<DisplayFieldProps> = (props) => {
 		},	
     image: {      
       label,
-      height: 400,
     },
     video: {
       height: 450,

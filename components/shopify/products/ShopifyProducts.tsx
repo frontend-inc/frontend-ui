@@ -2,19 +2,11 @@
 
 import React from 'react'
 import { ShopifyProductCard } from '..'
-import { useRouter, useParams } from 'next/navigation'
-import { useSegment } from '../../../hooks/addons'
 import { ShopifyProductType } from 'frontend-shopify'
-import { useApp } from '../../../hooks'
 
 type ShopifyProductsProps = {
 	loading?: boolean
 	products: ShopifyProductType[]
-	xs?: number
-	sm?: number
-	md?: number
-	lg?: number
-	xl?: number
 	buttonText?: string
 	enableBorder?: boolean
 	enableAddToCart?: boolean

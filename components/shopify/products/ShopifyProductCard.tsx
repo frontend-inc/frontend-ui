@@ -64,16 +64,16 @@ export default function ShopifyProductCard({
 				handleClick={handleItemClick}
 				disableBorderRadius={enableBorder}
 			/>
-			<CardContent>
-				<div className="flex flex-col py-1">
-					<Typography variant="subtitle2">
+			<CardContent className="p-3">
+				<div className="flex flex-col space-y-2">
+          <div className="flex flex-col space-y-2 min-h-[80px]">
+					<Typography variant="body1">
 						{truncate(product?.title)}
 					</Typography>
 					<Typography className="text-muted-foreground" variant="body2">
 						{formatCurrency(product?.priceRange?.minVariantPrice?.amount)}
 					</Typography>
-				</div>
-				<div className="flex flex-col space-y-2">
+          </div>
 					{enableAddToCart && (
 						<ShopifyAddToCartButton
 							product={product}
@@ -83,7 +83,6 @@ export default function ShopifyProductCard({
 							enableQuantity={enableQuantity}
 							buttonVariant={buttonVariant}
 							size="small"
-							enableFavorites
 						/>
 					)}
 					{enableQuickShop && (
@@ -100,7 +99,7 @@ export default function ShopifyProductCard({
 			<ShopifyProductModal
 				open={open}
 				handleClose={() => setOpen(false)}
-				shopifyProduct={product}
+				shopifyProduct={product?.handle}
 				enableQuantity={enableQuantity}
 				buttonText={buttonText}
 			/>

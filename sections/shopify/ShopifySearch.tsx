@@ -20,7 +20,6 @@ const ShopifySearch: React.FC<ShopifySearchProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		requirePaid,
 		...rest
 	} = props

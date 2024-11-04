@@ -3,11 +3,11 @@
 import React, { useEffect, useState } from 'react'
 import { MenuList, AlertModal } from '../../../components'
 import { Button } from '../../../components/core'
-import { MenuListItem } from '../../../components'
+import { MenuListItem, IconButton } from '../../../components'
 import { useAdminCollections } from '../../../hooks'
 import AdminCollectionEdit from './AdminCollectionEdit'
 import { useRouter, useParams } from 'next/navigation'
-import { Plus } from 'lucide-react'
+import { Plus, Settings } from 'lucide-react'
 
 const AdminCollectionMenu: React.FC = () => {
 	const router = useRouter()
@@ -34,6 +34,7 @@ const AdminCollectionMenu: React.FC = () => {
 		reloadCollections,
 	} = useAdminCollections()
 
+  
 	useEffect(() => {
 		if (collectionId == 'index' && collections.length > 0) {
 			handleClick(collections[0])
@@ -47,6 +48,10 @@ const AdminCollectionMenu: React.FC = () => {
 	const handleClick = async (collection) => {
 		router.push(`/dashboard/${appId}/collections/${collection?.name}`)
 	}
+
+  const handleSettingsClick = (collection) => {
+    router.push(`/dashboard/${appId}/schema/${collection?.name}`)
+  }
 
 	const handleEditCollectionClick = (collection) => {
 		setCollection(collection)
@@ -106,6 +111,7 @@ const AdminCollectionMenu: React.FC = () => {
 			...collection,
 			name: collection.name || template.name,
 			label: collection.label || template.label,
+      document_type: template.document_type,
 			template,
 		})
 	}
@@ -127,6 +133,13 @@ const AdminCollectionMenu: React.FC = () => {
 						handleClick={() => handleClick(collection)}
 						handleEdit={() => handleEditCollectionClick(collection)}
 						handleDelete={() => handleDeleteCollectionClick(collection)}
+            secondaryAction={
+              <IconButton 
+                onClick={() => handleSettingsClick(collection)}
+              >
+                <Settings className="h-5 w-4" />
+              </IconButton>
+            }
 					/>
 				))}
 			</MenuList>
@@ -152,7 +165,7 @@ const AdminCollectionMenu: React.FC = () => {
 				handleClose={() => setShowModal(false)}
 				handleChange={handleChange}
 				handleSubmit={handleSubmitCollection}
-				handleTemplateClick={handleTemplateClick}
+				handleClick={handleTemplateClick}
 			/>
 			<AlertModal
 				loading={loading}

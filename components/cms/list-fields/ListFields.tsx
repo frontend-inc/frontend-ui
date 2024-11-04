@@ -2,11 +2,11 @@
 
 import React from 'react'
 import { ListField } from '../..'
-import { ShowFieldType } from '../../../types'
+import { MetafieldType } from '../../../types'
 import { cn } from 'frontend-shadcn'
 
 type ListFieldsProps = {
-	fields: ShowFieldType[]
+	fields: MetafieldType[]
 	resource: any
 	direction?: 'row' | 'column'
 	className?: string

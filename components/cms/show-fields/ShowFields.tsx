@@ -2,11 +2,11 @@
 
 import React from 'react'
 import ShowField from './ShowField'
-import { ShowFieldType } from '../../../types'
+import { MetafieldType } from '../../../types'
 import { cn } from 'frontend-shadcn'
 
 type ShowFieldsProps = {
-	fields: ShowFieldType[]
+	fields: MetafieldType[]
 	resource: any
 	className?: string
 }

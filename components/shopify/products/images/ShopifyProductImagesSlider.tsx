@@ -6,6 +6,7 @@ import { Button } from '../../../../components'
 import Zoom from 'react-medium-image-zoom'
 import { ShopifyImageType } from 'frontend-shopify'
 import Image from 'next/image'
+import { cn } from 'frontend-shadcn'
 
 type ThumbnailProps = {
 	image: ShopifyImageType
@@ -16,11 +17,13 @@ type ThumbnailProps = {
 const Thumbnail: React.FC<ThumbnailProps> = (props) => {
 	const { image, active, handleClick } = props
 	return (
-		<Button
-			variant="ghost"
-			className={`p-0 w-24 h-24 overflow-hidden rounded ${
-				active ? 'ring-2 ring-primary' : 'ring-2 ring-transparent'
-			}`}
+		<button
+			className={cn(
+        "p-0 m-2 w-[96px] h-[96px] overflow-hidden rounded hover:bg-muted/20",
+				active ? 
+          'ring-2 ring-offset-2 ring-primary' : 
+          'ring-2 ring-transparent'
+      )}
 			onClick={() => handleClick(image)}
 		>
 			<Image
@@ -28,9 +31,9 @@ const Thumbnail: React.FC<ThumbnailProps> = (props) => {
 				width={96}
 				height={96}
 				alt={image?.altText || ''}
-				className="object-cover w-full h-full"
+				className="object-cover"
 			/>
-		</Button>
+		</button>
 	)
 }
 

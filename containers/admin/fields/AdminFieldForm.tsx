@@ -101,7 +101,7 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
 									{
 										label: 'API name',
 										name: 'name',
-										variant: 'snake_case',
+										variant: 'slug',
 										conditions: [
 											{
 												name: 'variant',

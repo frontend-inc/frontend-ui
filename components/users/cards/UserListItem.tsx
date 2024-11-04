@@ -3,12 +3,12 @@
 import React from 'react'
 import { Typography } from '../../core'
 import { ResourceListItem, UserAvatar, ListFields } from '../..'
-import { ShowFieldType, UserType } from '../../../types'
+import { MetafieldType, UserType } from '../../../types'
 
 type UserListItemProps = {
 	size?: number
 	resource: UserType
-	displayFields: ShowFieldType[]
+	displayFields: MetafieldType[]
 	handleClick?: () => void
 }
 

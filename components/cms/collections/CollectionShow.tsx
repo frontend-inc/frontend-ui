@@ -4,18 +4,18 @@ import React from 'react'
 import { 
   CommentList, 
   Drawer, 
-  DisplayFields,
+  CollectionDetails,
   SocialButtons
 } from '../..'
 import { useResourceContext } from 'frontend-js'
-import { ButtonType, FormFieldType, ShowFieldType } from '../../../types'
+import { ButtonType, FormFieldType, MetafieldType } from '../../../types'
 
 export type ShowModalProps = {
 	handle?: string
 	enableBorder?: boolean
 	enableOverlay?: boolean
 	buttons: ButtonType[]
-	displayFields: ShowFieldType[]
+	metafields: MetafieldType[]
 	fields?: FormFieldType[]
 	fieldName?: string
 	enableFavorites?: boolean
@@ -29,12 +29,13 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 
 	const {
 		buttons = [],
-		displayFields = [],
+		metafields = [],
 		enableComments,
 		enableLikes,
 		enableFavorites,
 		enableSharing,
 	} = props || {}
+
 
 	if (!resource) return null
 	return (
@@ -44,21 +45,21 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 			handleClose={() => setOpenShow(false)}
 			title={resource?.title}
 		>
-      <div className="flex flex-col space-y-6 pb-[40px] w-full">
-        <SocialButtons
-          size="large"
-          justifyContent={'center'}
-          resource={resource}
-          enableLikes={enableLikes}
-          enableFavorites={enableFavorites}
-          enableSharing={enableSharing}
-        />
-        {displayFields?.length > 0 && (
-          <DisplayFields
-            fields={displayFields}
+    <div className="flex flex-col space-y-6 pb-[40px] w-full">
+      <CollectionDetails  
+        resource={ resource }  
+        metafields={metafields}
+        actions={
+          <SocialButtons
+            size="large"
+            justifyContent={'center'}
             resource={resource}
+            enableLikes={enableLikes}
+            enableFavorites={enableFavorites}
+            enableSharing={enableSharing}
           />
-        )}  
+        }      
+      />
         {enableComments && (
           <div className="px-2">
             <CommentList url={url} handle={resource?.handle} />

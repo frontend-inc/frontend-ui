@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { IconLoading, Sheet } from '../../../components'
+import { IconLoading, Drawer } from '../../../components'
 import { Button } from '../../../components/core'
 import AdminCollectionForm from './AdminCollectionForm'
 
@@ -13,7 +13,7 @@ type AdminCollectionEditProps = {
 	handleClose: () => void
 	handleChange: (e: any) => void
 	handleSubmit: (collection: any) => void
-	handleTemplateClick: (template: any) => void
+	handleClick: (template: any) => void
 }
 
 const AdminCollectionEdit: React.FC<AdminCollectionEditProps> = (props) => {
@@ -25,11 +25,11 @@ const AdminCollectionEdit: React.FC<AdminCollectionEditProps> = (props) => {
 		handleClose,
 		handleChange,
 		handleSubmit,
-		handleTemplateClick,
+		handleClick,
 	} = props
 
 	return (
-		<Sheet
+		<Drawer
 			loading={loading}
 			open={open}
 			handleClose={handleClose}
@@ -49,9 +49,9 @@ const AdminCollectionEdit: React.FC<AdminCollectionEditProps> = (props) => {
 				errors={errors}
 				collection={collection}
 				handleChange={handleChange}
-				handleTemplateClick={handleTemplateClick}
+				handleClick={handleClick}
 			/>
-		</Sheet>
+		</Drawer>
 	)
 }
 

@@ -28,6 +28,7 @@ export default function TextInput({
 	debounceDelay = 350,
 	disableDebounce = false,
 }: TextInputProps) {
+
 	const [text, setText] = useState(value)
 	const [debouncedText] = useDebounce(text, debounceDelay)
 
@@ -70,7 +71,7 @@ export default function TextInput({
 			<div className="relative w-full">
 				<Input
 					className={cn(
-            'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
 						error && 'border-2 border-destructive',
 						className
 					)}

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { ButtonType, ShowFieldType } from '../../../types'
+import { ButtonType, MetafieldType } from '../../../types'
 import {
 	HeroList,
 	HeroAvatar,
@@ -20,7 +20,7 @@ import {
 export type ShowProps = {
 	handle?: string
 	buttons: ButtonType[]
-	displayFields: ShowFieldType[]
+	displayFields: MetafieldType[]
 	resource: any
 	enableFavorites?: boolean
 	enableLikes?: boolean

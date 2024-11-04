@@ -40,7 +40,7 @@ const MediaItem: React.FC<MediaItemProps> = ({
 			)}
 		>
 			<CardHeader className="py-1 px-1 flex flex-row justify-between items-center">
-				<Badge className="px-3 py-1">{ item?.resource_type}</Badge>
+				<Badge className="px-3 py-1">{ item?.content_type}</Badge>
 				{handleRemove && (
 					<DropdownMenu>
 						<DropdownMenuTrigger asChild>
@@ -54,19 +54,18 @@ const MediaItem: React.FC<MediaItemProps> = ({
 					</DropdownMenu>
 				)}
 			</CardHeader>
-			{item.resource_type === 'image' || item.resource_type === 'video' ? (
-				<TouchableOpacity handleClick={() => handleClick && handleClick(item)}>
-					<div className="h-[160px] w-[205px] flex items-center justify-center overflow-hidden">
-						<Image
-							disableBorderRadius
-							aspectRatio={4 / 3}
-							src={item?.thumbnail_url}
-							alt={item?.content_type}
-						/>
-					</div>
-				</TouchableOpacity>
-			) : (
-				<AttachmentImage icon="File" width={64} height={64} />
+			  {item.resource_type === 'file' ? (
+					<AttachmentImage icon="File" width={64} height={64} />
+			  ) : (
+        <div className="h-[160px] w-[205px] flex items-center justify-center overflow-hidden">
+          <Image
+            disableBorderRadius
+            aspectRatio={4 / 3}
+            src={item?.thumbnail_url}
+            alt={item?.content_type}
+            handleClick={handleClick ? () => handleClick(item) : undefined} 
+          />
+        </div>				
 			)}
 		</Card>
 	)

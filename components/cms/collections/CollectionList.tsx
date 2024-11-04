@@ -9,7 +9,7 @@ import {
 } from '../../../helpers'
 import {
 	ButtonType,
-	ShowFieldType,
+	MetafieldType,
 	FormFieldType,
 } from '../../../types'
 import {
@@ -19,6 +19,7 @@ import {
 	CollectionShow,
 	CollectionEmpty,
 } from '../..'
+import { DOCUMENT_SHOW_FIELDS } from '@/constants'
 
 export type CollectionListProps = {
 	layout?: 'list' | 'grid' | 'slider'
@@ -51,7 +52,7 @@ export type CollectionListProps = {
 	enableShow?: boolean
 	fields?: FormFieldType[]
 	buttons?: ButtonType[]
-  displayFields?: ShowFieldType[]
+  displayFields?: MetafieldType[]
 	headers?: {
 		label: string
 		value: string

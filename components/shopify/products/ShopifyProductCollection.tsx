@@ -14,7 +14,7 @@ import {
 import { PriceOptionType, SearchFilterOptionType } from 'frontend-shopify'
 
 export type ShopifyProductCollectionProps = {
-	handle: string
+	shopifyCollection: string
 	options?: SearchFilterOptionType[]
 	priceOptions?: PriceOptionType[]
 	enableFilters?: boolean
@@ -29,7 +29,7 @@ const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (
 	props
 ) => {
 	const {
-		handle,
+		shopifyCollection,
 		options = [],
 		priceOptions = [],
 		enableFilters = false,
@@ -55,15 +55,15 @@ const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (
 	}
 
 	useEffect(() => {
-		if (handle) {
+		if (shopifyCollection) {
 			let productFilters = formatProductFilters(filters)
-			findCollection(handle, {
+			findCollection(shopifyCollection, {
 				sortKey,
 				reverse,
 				filters: productFilters,
 			})
 		}
-	}, [handle, filters, sortKey, reverse])
+	}, [shopifyCollection, filters, sortKey, reverse])
 
 	return (
 		<div className="flex flex-col space-y-2">

@@ -16,7 +16,7 @@ const BooleanInput: React.FC<BooleanInputProps> = (props) => {
 	const { name, value, handleChange, label, info } = props
 
 	const handleTabChange = (ev) => {
-		const newValue = ev.target.value == 'yes' ? true : false
+		const newValue = ev.target.value == 'true' ? true : false
 		handleChange({
 			target: {
 				name,
@@ -31,10 +31,10 @@ const BooleanInput: React.FC<BooleanInputProps> = (props) => {
 			label={label}
 			info={info}
 			options={[
-				{ label: 'No', value: 'no' },
-				{ label: 'Yes', value: 'yes' },
+				{ label: 'No', value: 'false' },
+				{ label: 'Yes', value: 'true' },
 			]}
-			value={value == true ? 'yes' : 'no'}
+			value={value == true ? 'true' : 'false'}
 			handleChange={handleTabChange}
 		/>
 	)

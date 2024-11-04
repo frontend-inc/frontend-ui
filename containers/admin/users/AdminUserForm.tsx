@@ -21,7 +21,7 @@ const AdminUserForm: React.FC<ResourceFormProps> = (props) => {
 		{
 			label: 'Username',
 			name: 'username',
-			variant: 'snake_cases',
+			variant: 'slugs',
 		},
 		{
 			label: 'Email',

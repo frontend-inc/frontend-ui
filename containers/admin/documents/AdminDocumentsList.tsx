@@ -1,6 +1,7 @@
 'use client'
 
-import React from 'react'
+import React, { useContext } from 'react'
+import { ShopifyContext } from 'frontend-shopify'
 import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import AdminDocumentItem from './AdminDocumentListItem'
@@ -9,17 +10,32 @@ import AdminDocumentEditForm from './AdminDocumentEditForm'
 import AdminDocumentShow from './AdminDocumentShow'
 import AdminDocumentToolbar from './AdminDocumentToolbar'
 import AdminDocumentHeader from './AdminDocumentHeader'
-import { ShowFieldType } from '../../../types'
+import { DocumentTypes, MetafieldType } from '../../../types'
+import { 
+  DOCUMENT_FORM_FIELDS,
+  DOCUMENT_SHOW_FIELDS 
+} from '../../../constants'
 
 type AdminDocumentListProps = {
+  documentType: DocumentTypes
   collectionId: string
-	fields?: ShowFieldType[]
+	metafields?: MetafieldType[]
 }
 
 const AdminDocumentsList: React.FC<AdminDocumentListProps> = (props) => {
 	const { apiUrl } = useAdmin()
-	const { collectionId, fields = [] } = props
+	const { collectionId, documentType='post', metafields = [] } = props
 
+  const formFields = [
+    ...DOCUMENT_FORM_FIELDS[documentType],
+    ...metafields
+  ]
+
+  const showFields = [
+    ...DOCUMENT_SHOW_FIELDS[documentType],
+    ...metafields
+  ]
+    
 	return (
 		<ResourceList
 			selectable
@@ -47,15 +63,16 @@ const AdminDocumentsList: React.FC<AdminDocumentListProps> = (props) => {
 			component={AdminDocumentItem}
 			slots={{
         create: {
-          fields,
+          fields: formFields,
           collectionId
         },
 				edit: {
-					fields,
+					fields: formFields,
           collectionId
 				},
 				show: {
-					fields,
+					fields: showFields,
+          documentType,
           collectionId
 				},
         header: {

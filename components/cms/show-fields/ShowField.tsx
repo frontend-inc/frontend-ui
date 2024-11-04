@@ -6,7 +6,6 @@ import {
 	FieldBoolean,
 	FieldDate,
 	FieldFile,
-	FieldLocation,
 	FieldImage,
 	FieldURL,
 	FieldPrice,
@@ -14,10 +13,8 @@ import {
 	FieldString,
 	FieldText,
 	FieldVideo,
-  FieldVimeo,
-  FieldYouTube
 } from '../..'
-import { ShowFieldType } from '../../../types'
+import { MetafieldType } from '../../../types'
 import { get } from 'lodash'
 import { cn } from 'frontend-shadcn'
 
@@ -25,7 +22,7 @@ type ShowFieldProps = {
 	label?: string
 	direction?: 'row' | 'column'
 	placeholder?: string
-	field: ShowFieldType
+	field: MetafieldType
 	resource?: any
 }
 
@@ -78,8 +75,6 @@ const ShowField: React.FC<ShowFieldProps> = (props) => {
 		},	
     image: {      
       label,
-      height: 400,
-      className: "py-6",
     },
     video: {
       height: 450,

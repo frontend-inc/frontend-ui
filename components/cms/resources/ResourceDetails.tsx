@@ -3,38 +3,46 @@
 import React from 'react'
 import { ShowFields, Image } from '../../../components'
 import { Typography } from '../../core'
-import { ShowFieldType } from '../../../types'
+import { MetafieldType } from '../../../types'
 
 type ResourceDetailsProps = {
-	avatar?: React.ReactNode
+  hero?: React.ReactNode
+  actions?: React.ReactNode
 	resource: any
 	primary: string
 	secondary?: string
 	label?: string
-	image?: string
-	fields: ShowFieldType[]
+	image: string
+	fields: MetafieldType[]
 	direction?: 'row' | 'column'
 }
 
 const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 	
-  const {
-		avatar,
+  const {		
 		resource,
 		primary,
 		secondary,
+    actions,
 		label,
 		image,
 		fields = [],
 	} = props || {}
   
+  const imageField = fields.find(field => field.variant === 'image')
+
 	return (
 		<div className="w-full flex flex-col space-y-6">
-			{image && (
-				<div className="w-full h-[240px]">
-					<Image alt={label} src={image} label={label} />
-				</div>
-			)}
+      { imageField && (
+        <div className="w-full h-[240px]">
+          <Image alt={label} src={image} label={label} />
+        </div>
+      )}
+      { actions && (
+        <div className="flex flex-row items-center justify-center w-full">
+          { actions }
+        </div>
+      )}
 			{ primary && <Typography variant="h4" className="px-2">{primary}</Typography> }
 			{secondary && (
 				<Typography variant="body1" className="px-2 text-lg italic text-muted-foreground">

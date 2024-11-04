@@ -20,7 +20,7 @@ export type MenuLinkType = {
 	icon?: string
 	link_type?: MenuLinkTypes
 	position: number
-	shopify_handle?: string
+	shopify_product?: string
 	children: MenuLinkType[] | []
 }
 

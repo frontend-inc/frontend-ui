@@ -23,15 +23,16 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = (props) => {
 	return (
 		<div className="flex flex-col space-y-2">
 			<Typography variant="h4">{product.title}</Typography>
-			<div className="flex flex-row space-x-2">
-				<Typography variant="h6">{price && formatCurrency(price)}</Typography>
+			<div className="flex flex-row space-x-2 items-center">
+				<div className='text-lg font-normal'>
+          {price && formatCurrency(price)}
+        </div>
 				{compareAtPrice && (
-					<Typography
-						variant="subtitle2"
-						className="text-muted-foreground line-through"
+					<div 						
+						className="text-md text-muted-foreground line-through"
 					>
 						{formatCurrency(compareAtPrice)}
-					</Typography>
+					</div>
 				)}
 			</div>
 		</div>

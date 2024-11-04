@@ -26,7 +26,7 @@ export type DocumentType = {
 	position?: number
 	published: boolean
 	content_type?: string
-	shopify_handle?: string
+	shopify_product?: string
 	created_at: string
 	updated_at: string
 	references: ReferenceType[]

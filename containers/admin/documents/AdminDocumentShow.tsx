@@ -3,10 +3,10 @@
 import React from 'react'
 import { ResourceModal, ResourceDetails } from '../../../components'
 import { ResourceShowProps } from '../../../components/cms/resources/ResourceShow'
-import { ShowFieldType } from '../../../types'
+import { MetafieldType } from '../../../types'
 
 type AdminDocumentShowProps = ResourceShowProps & {
-	fields?: ShowFieldType[]
+	fields?: MetafieldType[]
 }
 
 const AdminDocumentShow: React.FC<AdminDocumentShowProps> = (props) => {

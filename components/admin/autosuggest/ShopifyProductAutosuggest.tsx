@@ -19,7 +19,7 @@ const ShopifyProductAutosuggest: React.FC<AutosuggestProps> = (props) => {
 		value,
 		label,
 		placeholder,
-		name = 'shopify_handle',
+		name = 'shopify_product',
 		handleChange,
 	} = props
 

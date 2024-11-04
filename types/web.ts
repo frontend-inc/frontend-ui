@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { ButtonType } from './buttons'
-import { ShowFieldType, FormFieldType } from './forms'
+import { MetafieldType, FormFieldType } from './forms'
 
 export type HeadingProps = {
 	label?: string
@@ -32,7 +32,7 @@ export type FormProps = {
 export type CardProps = {
 	ref?: any
 	buttons: ButtonType[]
-	displayFields: ShowFieldType[]
+	displayFields: MetafieldType[]
 	enableUsers?: boolean
 	enableComments?: boolean
 	enableFavorites?: boolean

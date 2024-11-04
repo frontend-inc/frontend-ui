@@ -11,7 +11,7 @@ import {
   Typography
 } from '../..'
 import { ListFields, SocialButtons } from '../..'
-import { ButtonType, ShowFieldType } from '../../../types'
+import { ButtonType, MetafieldType } from '../../../types'
 import { resizeCloudinaryImage } from '../../../helpers'
 
 type CardStyleTypes = 'list' | 'avatar' | 'card' | 'cover' | 'text'
@@ -19,7 +19,7 @@ type CardStyleTypes = 'list' | 'avatar' | 'card' | 'cover' | 'text'
 type CollectionListItemProps = {
 	buttons: ButtonType[]
 	style: CardStyleTypes
-	listFields: ShowFieldType[]
+	listFields: MetafieldType[]
 	resource: any
 	buttonText?: string
 	href?: string
@@ -72,6 +72,7 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 			label={resource?.label}
 			image={resource?.image?.url}
 			primary={
+        //@ts-ignore
         <Typography variant={ typographyVariants[style] }>
           { resource?.title }
         </Typography>

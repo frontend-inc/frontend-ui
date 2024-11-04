@@ -4,14 +4,13 @@ import React from 'react'
 import { TextInput } from '../..'
 import { InputPropsType } from '../../../types'
 
-type SnakeCaseInputPropsType = InputPropsType & {
+type SlugInputPropsType = InputPropsType & {
 	joinChar?: string
 }
 
-const SnakeCaseInput: React.FC<SnakeCaseInputPropsType> = (props) => {
+const SlugInput: React.FC<SlugInputPropsType> = (props) => {
 	const {
-		errors,
-		joinChar = '_',
+		errors,		
 		direction = 'column',
 		value,
 		name,
@@ -24,7 +23,7 @@ const SnakeCaseInput: React.FC<SnakeCaseInputPropsType> = (props) => {
 
 	const handleInputChange = (ev) => {
 		let { value } = ev.target
-		value = value.replace(' ', joinChar)
+		value = value.replace(' ', '-')
 		value = value.toLowerCase()
 		handleChange({
 			target: {
@@ -50,4 +49,4 @@ const SnakeCaseInput: React.FC<SnakeCaseInputPropsType> = (props) => {
 	)
 }
 
-export default SnakeCaseInput
+export default SlugInput

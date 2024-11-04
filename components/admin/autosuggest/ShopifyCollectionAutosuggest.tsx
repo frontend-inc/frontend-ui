@@ -5,7 +5,7 @@ import { Autosuggest } from '../../../components'
 import { SyntheticEventType } from '../../../types'
 import { useCollections } from 'frontend-shopify'
 
-type AutosuggestProps = {
+type ShopifyAutosuggestProps = {
 	value?: any
 	name?: string
 	label?: string
@@ -15,14 +15,13 @@ type AutosuggestProps = {
 	direction?: 'row' | 'column'
 }
 
-const CollectionAutosuggest: React.FC<AutosuggestProps> = (props) => {
+const ShopifyCollectionAutosuggest: React.FC<ShopifyAutosuggestProps> = (props) => {
 	const {
 		value,
 		label,
-		name = 'shopify_handle',
+		name = 'shopify_collection',
 		placeholder,
-		handleChange,
-		direction = 'column',
+		handleChange,		
 	} = props
 
 	const [options, setOptions] = useState([])
@@ -57,4 +56,4 @@ const CollectionAutosuggest: React.FC<AutosuggestProps> = (props) => {
 	)
 }
 
-export default CollectionAutosuggest
+export default ShopifyCollectionAutosuggest

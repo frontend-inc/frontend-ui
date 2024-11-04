@@ -19,7 +19,7 @@ interface SidebarMenuItemProps {
 	color?: string
 	selected?: boolean
 	description?: string
-	secondaryActions?: React.ReactNode
+	secondaryAction?: React.ReactNode
 	handleClick: () => void
 	handleEdit?: () => void
 	handleDelete?: () => void
@@ -30,7 +30,7 @@ export default function SidebarMenuItem({
 	title,
 	color = 'bg-transparent',
 	icon,
-	secondaryActions,
+	secondaryAction,
 	handleClick,
 	handleEdit,
 	handleDelete,
@@ -38,13 +38,13 @@ export default function SidebarMenuItem({
 	return (
 		<div
 			className={cn(
-				'flex items-center justify-between py-2 pl-4 px-2 hover:bg-muted rounded-md group',
+				'group flex items-center rounded-md justify-between hover:bg-muted',
 				selected && 'bg-muted text-foreground'
 			)}
 		>
 			<button
 				onClick={handleClick}
-				className="w-full flex gap-2 items-center focus:outline-none"
+				className="w-full flex gap-2 py-3 pl-4 px-2 rounded-md group items-center focus:outline-none"
 			>
 				{icon && (
 					<div
@@ -56,8 +56,9 @@ export default function SidebarMenuItem({
 						<Icon name={icon} className="w-5 h-5 text-foreground" />
 					</div>
 				)}
-				<Typography variant="body2">{title}</Typography>
-			</button>
+				<Typography variant="body2">{title}</Typography>        
+			</button>      
+      {(selected && secondaryAction) ? secondaryAction : null }
 			{(handleEdit || handleDelete) && (
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
@@ -66,8 +67,7 @@ export default function SidebarMenuItem({
 							<MoreVertical className="h-4 w-4 text-foreground" />
 						</Button>
 					</DropdownMenuTrigger>
-					<DropdownMenuContent align="end" className="w-[160px]">
-						{secondaryActions}
+					<DropdownMenuContent align="end" className="w-[160px]">            
 						{handleEdit && (
 							<DropdownMenuItem onClick={handleEdit}>
 								<Pencil className="mr-2 h-4 w-4" />

@@ -64,7 +64,7 @@ const ShopifyProductsInput: React.FC<AutosuggestProps> = ({
 	label,
 	direction = 'column',
 	placeholder,
-	name = 'shopify_handle',
+	name = 'shopify_products',
 	handleChange,
 	height,
 	width,

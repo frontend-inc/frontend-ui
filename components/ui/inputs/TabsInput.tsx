@@ -43,7 +43,7 @@ export default function TabsInput({
 		>
 			<InputLabel label={label} info={info} />
 			<Tabs
-				defaultValue={value.toString()}
+				value={value.toString()}
 				onValueChange={handleInputChange}
 				className="rounded-md"
 			>

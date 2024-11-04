@@ -6,6 +6,7 @@ import { useAlerts } from '../../../hooks'
 import MediaList from './MediaList'
 import {
 	Modal,
+  Drawer,
 	ButtonTabs,
 	MediaUploader,
 	UnsplashList,
@@ -67,7 +68,7 @@ const MediaBrowser: React.FC<MediaBrowserProps> = ({
 	]
 
 	return (
-		<Modal
+		<Drawer
 			open={open}
 			handleClose={handleClose}
 			title={'Browse Media'}
@@ -86,17 +87,17 @@ const MediaBrowser: React.FC<MediaBrowserProps> = ({
             value={tab}
           />					
 				</div>
-					{tab === '0' && (
-						<MediaList
-							selectedIds={[selected?.id]}
-							handleSelect={handleSelect}
-						/>
-					)}
-					{tab === '1' && <MediaUploader onComplete={handleComplete} />}
-					{tab === '2' && <UnsplashList onComplete={handleComplete} />}
-					{tab === '3' && <BrandfetchInput onComplete={handleComplete} />}
-				</div>
-		</Modal>
+        {tab === '0' && (
+          <MediaList
+            selectedIds={[selected?.id]}
+            handleSelect={handleSelect}
+          />
+        )}
+        {tab === '1' && <MediaUploader onComplete={handleComplete} />}
+        {tab === '2' && <UnsplashList onComplete={handleComplete} />}
+        {tab === '3' && <BrandfetchInput onComplete={handleComplete} />}
+      </div>
+		</Drawer>
 	)
 }
 

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { Map, useMap } from '@vis.gl/react-google-maps'
-import { GoogleMarkerType, ShowFieldType } from '../../../types'
+import { GoogleMarkerType, MetafieldType } from '../../../types'
 import { MAP_CONFIGS, MapConfig } from './styles/mapConfigs'
 import GoogleMarker from './GoogleMarker'
 import { cn } from 'frontend-shadcn'

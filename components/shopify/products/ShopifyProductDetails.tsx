@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
 	ShopifyAddToCartButton,
 	ShopifyProductDescription,
@@ -10,13 +10,13 @@ import {
 	ShopifyTrackRecentlyViewed,
 } from '..'
 import {
+  useProducts,
 	useProductDetails,
-	ShopifyProductType,
 } from 'frontend-shopify'
 import { cn } from 'frontend-shadcn'
 
 export type ShopifyProductDetailsProps = {
-	shopifyProduct: ShopifyProductType
+	shopifyProduct: string
 	buttonText?: string
 	enableQuantity?: boolean
 	enableFavorites?: boolean
@@ -24,12 +24,15 @@ export type ShopifyProductDetailsProps = {
 }
 
 const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = ({
-	shopifyProduct: product,
+	shopifyProduct,
 	buttonText,
 	enableQuantity = true,
 	enableSubscription = true,
 	enableFavorites,
 }) => {
+
+  const { product, findProduct } = useProducts()
+
 	const {
 		price,
 		compareAtPrice,
@@ -42,6 +45,13 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = ({
 	} = useProductDetails({
 		product,
 	})
+
+
+  useEffect(() => {
+    if(shopifyProduct) {
+      findProduct(shopifyProduct)
+    }
+  }, [shopifyProduct])
 
 	return (
 		<div className={cn('flex flex-col sm:flex-row', 'w-full')}>

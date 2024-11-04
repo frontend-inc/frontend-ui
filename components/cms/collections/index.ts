@@ -14,6 +14,7 @@ export { default as VideoListItems } from './VideoListItems'
 
 
 // Collections
+export { default as CollectionDetails } from './CollectionDetails'
 export { default as CollectionEmpty } from './CollectionEmpty'
 export { default as CollectionList } from './CollectionList'
 export { default as CollectionListItem } from './CollectionListItem'

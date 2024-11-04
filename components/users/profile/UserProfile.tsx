@@ -9,12 +9,12 @@ import {
 	ListFields,
 	SocialFields,
 } from '../..'
-import { SocialFieldType, ShowFieldType, ButtonType } from '../../../types'
+import { SocialFieldType, MetafieldType, ButtonType } from '../../../types'
 import { UserType } from 'frontend-js'
 
 export type UserProfileProps = {
 	user: UserType
-	displayFields?: ShowFieldType[]
+	displayFields?: MetafieldType[]
 	socialFields?: SocialFieldType[]
 	buttons?: ButtonType[]
 }

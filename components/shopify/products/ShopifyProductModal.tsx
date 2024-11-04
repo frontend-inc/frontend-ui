@@ -2,11 +2,10 @@
 
 import React from 'react'
 import { Drawer } from '../../../components'
-import { ShopifyProductCard } from '../../../components/shopify'
-import { ShopifyProductType } from 'frontend-shopify'
+import { ShopifyProductDetails } from '../../../components/shopify'
 
 type ShopifyProductModalProps = {
-	shopifyProduct: ShopifyProductType
+	shopifyProduct: string 
 	enableQuantity?: boolean
 	open?: boolean
 	buttonText?: string
@@ -24,8 +23,8 @@ const ShopifyProductModal: React.FC<ShopifyProductModalProps> = (props) => {
 
 	return (
 		<Drawer open={open} handleClose={handleClose}>
-			<ShopifyProductCard
-				product={shopifyProduct}
+			<ShopifyProductDetails
+				shopifyProduct={shopifyProduct}
 				enableQuantity={enableQuantity}
 				buttonText={buttonText}
 			/>
