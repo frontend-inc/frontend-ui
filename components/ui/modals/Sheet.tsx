@@ -44,7 +44,7 @@ const Sheet: React.FC<SheetProps> = ({
 				side={side}
 				className={cn(
 					mode,
-          'w-full sm:w-[300px]',
+          'w-full sm:w-[360px]',
 					disablePadding && 'px-0',
 					className
 				)}

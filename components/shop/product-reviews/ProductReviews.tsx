@@ -6,7 +6,7 @@ import { DataList } from '../..'
 import ProductReviewsList from './ProductReviewsList'
 
 export type ProductReviewsProps = {
-	productId: string
+	productId: string | number 
   enableSearch?: boolean
   enableSorting?: boolean
   enableFilters?: boolean

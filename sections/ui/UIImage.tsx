@@ -21,7 +21,7 @@ const UIImage: React.FC<UIImageProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-		>
+		>      
 			<Image {...rest} />
 		</Section>
 	)

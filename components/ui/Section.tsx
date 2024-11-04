@@ -5,10 +5,9 @@ import { AuthGuard } from '../../components'
 import { SectionProps } from '../../types'
 import { cn } from 'frontend-shadcn'
 
-type ContainerMaxWidth = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+type ContainerMaxWidth = 'sm' | 'md' | 'lg' | 'xl'
 
 const maxWidthClasses: Record<ContainerMaxWidth, string> = {
-	xs: 'container mx-auto max-w-screen-xs',
 	sm: 'container mx-auto max-w-screen-sm',
 	md: 'container mx-auto max-w-screen-md',
 	lg: 'container mx-auto max-w-screen-lg',

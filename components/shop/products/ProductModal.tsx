@@ -1,11 +1,13 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Drawer, ProductDetails, ProductReviews } from '../..'
-import { useResourceContext } from 'frontend-js'
+import { useProducts } from '../../../hooks'
 
-export type ShowModalProps = {
-	handle?: string
+export type ProductModalProps = {
+	open: boolean
+  handleClose: () => void
+  productId: string | number 
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
@@ -14,10 +16,13 @@ export type ShowModalProps = {
 	enableOverlay?: boolean
 }
 
-const ShowModal: React.FC<ShowModalProps> = (props) => {
-	const { openShow, setOpenShow, resource } = useResourceContext()
+const Product: React.FC<ProductModalProps> = (props) => {
+	const {  } = props || {}
 
 	const {
+    open, 
+    handleClose, 
+    productId,
 		enableRatings,
 		enableLikes,
 		enableFavorites,
@@ -25,15 +30,28 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 		enableOverlay,
 	} = props || {}
 
-	if (!resource) return null
+  const { 
+    loading,
+    product,
+    findProduct
+  } = useProducts()
+
+  useEffect(() => {
+    if(productId) {
+      findProduct(productId)
+    }
+  }, [productId])
+	
 	return (
 		<Drawer 
-      open={openShow} handleClose={() => setOpenShow(false)}>
+      open={open} 
+      handleClose={handleClose}
+    >
       <div className="w-full flex flex-row justify-center pb-10">
         <div className="md:max-w-screen-sm flex flex-col space-y-[20px]">
           <ProductDetails
             direction="column"
-            product={resource}              
+            product={product}              
             enableGradient={enableGradient}
             enableOverlay={enableOverlay}
             enableFavorites={enableFavorites}
@@ -42,7 +60,7 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
           />
           { enableRatings && (
             <ProductReviews
-              productId={resource?.id}
+              productId={productId}
             />
           )}
         </div>
@@ -51,4 +69,4 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 	)
 }
 
-export default ShowModal
+export default Product

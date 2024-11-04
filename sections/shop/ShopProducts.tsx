@@ -20,7 +20,6 @@ const ShopProducts: React.FC<ShopProductsProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		requirePaid,
 		...rest
 	} = props
