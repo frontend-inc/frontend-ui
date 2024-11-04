@@ -11,7 +11,6 @@ export type ShopifyRecentlyViewedProps = {
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
-	enableQuickShop?: boolean
 	buttonText?: string
 	emptyIcon?: string
 	emptyTitle?: string
@@ -19,13 +18,13 @@ export type ShopifyRecentlyViewedProps = {
 }
 
 const ShopifyRecentlyViewed: React.FC<ShopifyRecentlyViewedProps> = (props) => {
-	const {
+	
+  const {
 		layout = 'grid',
 		enableBorder = false,
 		buttonText = 'Add to cart',
 		enableAddToCart,
 		enableQuantity,
-		enableQuickShop,
 	} = props || {}
 
 	const { products } = useRecentlyViewed()
@@ -38,7 +37,6 @@ const ShopifyRecentlyViewed: React.FC<ShopifyRecentlyViewedProps> = (props) => {
 					enableBorder={enableBorder}
 					enableAddToCart={enableAddToCart}
 					enableQuantity={enableQuantity}
-					enableQuickShop={enableQuickShop}
 					buttonText={buttonText}
 				/>
 			)}

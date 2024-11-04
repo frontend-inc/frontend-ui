@@ -9,7 +9,6 @@ export type ShopifyProductCollectionCarouselProps = {
 	enableAutoPlay?: boolean
 	enableBorder?: boolean
 	enableAddToCart?: boolean
-	enableQuickShop?: boolean
 	enableQuantity?: boolean
 }
 
@@ -21,7 +20,6 @@ const ShopifyProductCollectionCarousel: React.FC<
 		enableAutoPlay = false,
 		enableBorder = false,
 		enableAddToCart = false,
-		enableQuickShop = false,
 		enableQuantity = false,
 	} = props
 
@@ -40,7 +38,6 @@ const ShopifyProductCollectionCarousel: React.FC<
 			enableAutoPlay={enableAutoPlay}
 			enableBorder={enableBorder}
 			enableAddToCart={enableAddToCart}
-			enableQuickShop={enableQuickShop}
 			enableQuantity={enableQuantity}
 		/>
 	)

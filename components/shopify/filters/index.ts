@@ -1,3 +1,4 @@
+export { default as ShopifyCollectionSortButton } from './ShopifyCollectionSortButton'
 export { default as ShopifyProductSortButton } from './ShopifyProductSortButton'
 export { default as ShopifyProductFilterButton } from './ShopifyProductFilterButton'
 export { default as ShopifyProductFiltersList } from './ShopifyProductFiltersList'

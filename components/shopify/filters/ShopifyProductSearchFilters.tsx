@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from '../../../components'
 import { Sheet, SheetContent, SheetTrigger } from 'frontend-shadcn'
 import ProductFiltersList from './ShopifyProductFiltersList'
@@ -10,7 +10,6 @@ import {
 	PriceOptionType,
 } from 'frontend-shopify'
 import { SlidersHorizontal } from 'lucide-react'
-import { useMenu } from '../../../hooks'
 
 type ShopifyProductSearchFiltersProps = {
 	filters: SearchFilterType[]
@@ -29,44 +28,26 @@ const ShopifyProductSearchFilters: React.FC<
 		priceOptions = [],
 		handleFilter,
 		handleFilterArray,
-	} = props
-
-	const { open, toggleMenu } = useMenu()
+	} = props  
 
 	return (
-		<>
-			{/* Desktop view */}
-			<div className="hidden sm:block">
-				<ProductFiltersList
-					filters={filters}
-					options={options}
-					priceOptions={priceOptions}
-					handleFilter={handleFilter}
-					handleFilterArray={handleFilterArray}
-				/>
-			</div>
-
-			{/* Mobile view */}
-			<div className="sm:hidden">
-				<Sheet open={open} onOpenChange={toggleMenu}>
-					<SheetTrigger asChild>
-						<Button variant="secondary" className="w-full" onClick={toggleMenu}>
-							<SlidersHorizontal className="mr-2 h-4 w-4" />
-							Filters
-						</Button>
-					</SheetTrigger>
-					<SheetContent side="right">
-						<ProductFiltersList
-							filters={filters}
-							options={options}
-							priceOptions={priceOptions}
-							handleFilter={handleFilter}
-							handleFilterArray={handleFilterArray}
-						/>
-					</SheetContent>
-				</Sheet>
-			</div>
-		</>
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button variant="secondary" className="w-full">
+          <SlidersHorizontal className="mr-2 h-4 w-4" />
+          Filters
+        </Button>
+      </SheetTrigger>
+      <SheetContent side="right">
+        <ProductFiltersList
+          filters={filters}
+          options={options}
+          priceOptions={priceOptions}
+          handleFilter={handleFilter}
+          handleFilterArray={handleFilterArray}
+        />
+      </SheetContent>
+    </Sheet>
 	)
 }
 

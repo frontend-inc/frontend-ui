@@ -8,7 +8,6 @@ type ProductArrayProps = {
 	handles: string[]
 	enableBorder?: boolean
 	enableAddToCart?: boolean
-	enableQuickShop?: boolean
 	enableQuantity?: boolean
 	buttonText?: string
 }
@@ -17,7 +16,6 @@ const ProductArray: React.FC<ProductArrayProps> = ({
 	handles,
 	enableBorder = false,
 	enableAddToCart = false,
-	enableQuickShop = false,
 	enableQuantity = false,
 	buttonText,
 }) => {
@@ -37,7 +35,6 @@ const ProductArray: React.FC<ProductArrayProps> = ({
 							product={product}
 							enableBorder={enableBorder}
 							enableAddToCart={enableAddToCart}
-							enableQuickShop={enableQuickShop}
 							enableQuantity={enableQuantity}
 							buttonText={buttonText}
 						/>

@@ -10,7 +10,6 @@ type ShopifyProductsProps = {
 	buttonText?: string
 	enableBorder?: boolean
 	enableAddToCart?: boolean
-	enableQuickShop?: boolean
 	enableQuantity?: boolean
 }
 
@@ -19,7 +18,6 @@ const ShopifyProducts: React.FC<ShopifyProductsProps> = ({
 	buttonText = 'Add to cart',
 	enableBorder = false,
 	enableAddToCart,
-	enableQuickShop,
 	enableQuantity,
 }) => {
 
@@ -31,7 +29,6 @@ const ShopifyProducts: React.FC<ShopifyProductsProps> = ({
 						product={product}
 						enableBorder={enableBorder}
 						enableAddToCart={enableAddToCart}
-						enableQuickShop={enableQuickShop}
 						enableQuantity={enableQuantity}
 						buttonText={buttonText}
 					/>

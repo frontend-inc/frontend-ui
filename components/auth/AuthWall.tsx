@@ -13,7 +13,7 @@ const AuthWall: React.FC = () => {
 	}
 
 	return (
-		<div className="container mx-auto max-w-screen-md">
+		<div className="container mx-auto max-w-screen-md">      
 			<Placeholder
 				title="Sign in to view content"
 				description="You are not logged in."

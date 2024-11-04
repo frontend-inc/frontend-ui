@@ -19,15 +19,17 @@ export type ShopifyCollectionCardProps = {
   enableSorting?: boolean
 }
 
-export default function ShopifyCollectionCard({
-	collection,
-	buttonText,
-	enableGradient = false,
-	enableOverlay = false,
-  enableAddToCart = false,
-  enableQuantity = false,
-  enableSorting = false,
-}: ShopifyCollectionCardProps) {
+export default function ShopifyCollectionCard(props: ShopifyCollectionCardProps) {
+
+  const {
+    collection,
+    buttonText,
+    enableGradient = false,
+    enableOverlay = false,
+    enableAddToCart = false,
+    enableQuantity = false,
+    enableSorting = false,
+  } = props 
 
 	const { handle, title, image } = collection || {}
 

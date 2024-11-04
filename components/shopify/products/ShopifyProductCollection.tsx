@@ -8,7 +8,7 @@ import {
 } from 'frontend-shopify'
 import {
 	ShopifyProducts,
-	ShopifyProductSortButton,
+	ShopifyCollectionSortButton,
 	ShopifyProductFilterButton,
 } from '..'
 import { PriceOptionType, SearchFilterOptionType } from 'frontend-shopify'
@@ -21,7 +21,6 @@ export type ShopifyProductCollectionProps = {
 	enableSort?: boolean
 	enableBorder?: boolean
 	enableAddToCart?: boolean
-	enableQuickShop?: boolean
 	enableQuantity?: boolean
 }
 
@@ -36,7 +35,6 @@ const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (
 		enableSort = false,
 		enableBorder = false,
 		enableAddToCart = false,
-		enableQuickShop = false,
 		enableQuantity = false,
 	} = props
 
@@ -78,7 +76,7 @@ const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (
 					/>
 				)}
 				{enableSort && (
-					<ShopifyProductSortButton
+					<ShopifyCollectionSortButton
 						sortKey={sortKey}
 						reverse={reverse}
 						handleClick={handleSortClick}
@@ -90,7 +88,6 @@ const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (
 				products={products}
 				enableBorder={enableBorder}
 				enableAddToCart={enableAddToCart}
-				enableQuickShop={enableQuickShop}
 				enableQuantity={enableQuantity}
 			/>
 		</div>

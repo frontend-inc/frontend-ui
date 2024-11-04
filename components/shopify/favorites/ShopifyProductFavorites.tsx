@@ -11,7 +11,6 @@ export type ShopifyProductFavoritesProps = {
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
-	enableQuickShop?: boolean
 	buttonText?: string
 }
 
@@ -24,7 +23,6 @@ const ShopifyProductFavorites: React.FC<ShopifyProductFavoritesProps> = (
 		buttonText = 'Add to cart',
 		enableAddToCart,
 		enableQuantity,
-		enableQuickShop,
 	} = props || {}
 
 	const { shopify_favorites: favorites } = user || {}
@@ -36,7 +34,6 @@ const ShopifyProductFavorites: React.FC<ShopifyProductFavoritesProps> = (
 				enableBorder={enableBorder}
 				enableAddToCart={enableAddToCart}
 				enableQuantity={enableQuantity}
-				enableQuickShop={enableQuickShop}
 				buttonText={buttonText}
 			/>
 			{favorites?.length === 0 && (

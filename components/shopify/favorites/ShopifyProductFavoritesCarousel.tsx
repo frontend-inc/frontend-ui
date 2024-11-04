@@ -11,7 +11,6 @@ type ShopifyProductFavoritesCarouselProps = {
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
-	enableQuickShop?: boolean
   enableAutoPlay?: boolean
 	buttonText?: string
 }
@@ -24,7 +23,6 @@ const ShopifyProductFavoritesCarousel: React.FC<
 		buttonText = 'Add to cart',
 		enableAddToCart,
 		enableQuantity,
-		enableQuickShop,
 		enableAutoPlay = false,
 	} = props || {}
 
@@ -37,7 +35,6 @@ const ShopifyProductFavoritesCarousel: React.FC<
 				enableBorder={enableBorder}
 				enableAddToCart={enableAddToCart}
 				enableQuantity={enableQuantity}
-				enableQuickShop={enableQuickShop}
 				buttonText={buttonText}
 				enableAutoPlay={enableAutoPlay}
 			/>

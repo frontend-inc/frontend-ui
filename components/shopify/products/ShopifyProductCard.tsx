@@ -18,7 +18,6 @@ type ShopifyProductCardProps = {
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
-	enableQuickShop?: boolean
 	disableBorder?: boolean
 	buttonVariant?: 'default' | 'secondary' | 'ghost'
 }
@@ -29,7 +28,6 @@ export default function ShopifyProductCard({
 	enableBorder = false,
 	enableAddToCart = false,
 	enableQuantity = false,
-	enableQuickShop = false,
 	buttonVariant = 'default',
 	buttonText,
 	disableBorder = false,
@@ -58,12 +56,14 @@ export default function ShopifyProductCard({
 				'w-full overflow-hidden rounded-lg transition-shadow duration-300 bg-background'
 			)}
 		>
-			<SwipeableShopifyProductImages
-				product={product}
-				height={320}
-				handleClick={handleItemClick}
-				disableBorderRadius={enableBorder}
-			/>
+      <div className="w-full h-full min-h-[320px]">
+        <SwipeableShopifyProductImages
+          product={product}
+          height={320}
+          handleClick={handleItemClick}
+          disableBorderRadius={enableBorder}
+        />
+      </div>
 			<CardContent className="p-3">
 				<div className="flex flex-col space-y-2">
           <div className="flex flex-col space-y-2 min-h-[80px]">
@@ -84,15 +84,6 @@ export default function ShopifyProductCard({
 							buttonVariant={buttonVariant}
 							size="small"
 						/>
-					)}
-					{enableQuickShop && (
-						<Button
-							color="secondary"
-							onClick={handleQuickShop}
-							className="w-full"
-						>
-							Quick Shop
-						</Button>
 					)}
 				</div>
 			</CardContent>

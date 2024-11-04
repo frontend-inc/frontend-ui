@@ -20,7 +20,6 @@ type ShopifyProductCarouselProps = {
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 	enableBorder?: boolean
 	enableAddToCart?: boolean
-	enableQuickShop?: boolean
 	enableQuantity?: boolean
 }
 
@@ -33,7 +32,6 @@ const ShopifyProductCarousel: React.FC<ShopifyProductCarouselProps> = (
 		buttonText = 'Add to cart',
 		enableBorder = false,
 		enableAddToCart,
-		enableQuickShop,
 		enableQuantity = false,
 	} = props
 
@@ -54,13 +52,12 @@ const ShopifyProductCarousel: React.FC<ShopifyProductCarouselProps> = (
                   buttonText={buttonText}
                   enableBorder={enableBorder}
                   enableAddToCart={enableAddToCart}
-                  enableQuickShop={enableQuickShop}
                   enableQuantity={enableQuantity}
                 />
               </div>
             </CarouselItem>
-			  ))}
-      </CarouselContent>
+			    ))}
+        </CarouselContent>
       <CarouselPrevious className="hidden sm:flex" />
       <CarouselNext className="hidden sm:flex" />
 	  </Carousel>

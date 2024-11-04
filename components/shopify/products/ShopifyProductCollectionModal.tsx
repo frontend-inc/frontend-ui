@@ -13,17 +13,19 @@ type ShopifyProductCollectionModalProps = {
 	enableSort?: boolean
 	enableBorder?: boolean
 	enableAddToCart?: boolean
-	enableQuickShop?: boolean
 	enableQuantity?: boolean  
 }
 
 const ShopifyProductCollectionModal: React.FC<ShopifyProductCollectionModalProps> = (props) => {
-	const {
+	
+  const {
     collection,
 		open = false,		
 		handleClose,
     ...rest		
 	} = props
+
+  console.log('collection', collection)
 
 	return (
 		<Drawer 
