@@ -37,7 +37,7 @@ const Logo: React.FC<LogoProps> = ({
 					priority
 				/>
 			) : (
-				<EmptyImage width={width} height={height} />
+				<EmptyImage height={height} />
 			)}
 		</Button>
 	)

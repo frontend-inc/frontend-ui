@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { SoundcloudEmbed } from '../../..'
+import { SoundcloudEmbed } from '../../../../components'
 
 export type FieldSoundcloudProps = {
 	value: string	

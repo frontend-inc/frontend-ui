@@ -150,10 +150,6 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
 						<ShopifyProducts
 							loading={loading}
 							products={products}
-							xs={12}
-							sm={6}
-							md={enableFilters ? 6 : 4}
-							lg={4}
 							enableBorder={enableBorder}
 							enableAddToCart={enableAddToCart}
 							enableQuickShop={enableQuickShop}

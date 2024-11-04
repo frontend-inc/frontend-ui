@@ -11,7 +11,7 @@ export { default as KlaviyoScript } from './klaviyo/KlaviyoScript'
 export { default as KlaviyoSubscribe } from './klaviyo/KlaviyoSubscribe'
 export { default as OkendoScript } from './okendo/OkendoScript'
 export { default as RedditScript } from './reddit/RedditScript'
-//export { default as SwirlVideos } from './swirl/SwirlVideos'
+export { default as SoundcloudEmbed } from './soundcloud/SoundcloudEmbed'
 export { default as VisualWebsiteOptimizerScript } from './visual-website-optimizer/VisualWebsiteOptimizerScript'
 
 //Embeds

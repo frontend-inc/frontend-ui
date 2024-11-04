@@ -26,7 +26,7 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 	const {
 		buttons,
 		href,
-		displayFields,
+		metafields,
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
@@ -68,7 +68,7 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
                 buttons={buttons}
                 style="card"
                 resource={resource}
-                displayFields={displayFields}
+                metafields={metafields}
                 handleClick={() => handleClick(resource)}
                 enableGradient={enableGradient}
                 enableOverlay={enableOverlay}

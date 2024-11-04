@@ -11,7 +11,7 @@ export type GeoListListProps = CollectionListItemsProps & {
 
 export default function GeoListItems({
 	url,
-	displayFields,
+	metafields,
 	...rest
 }: GeoListListProps) {
 	const { resources } = useContext(ResourceContext) as any
@@ -21,7 +21,7 @@ export default function GeoListItems({
 			<div className="w-full md:w-7/12 px-2 mb-4 md:mb-0">
 				<CollectionListItems
 					{...rest}
-					displayFields={displayFields}
+					metafields={metafields}
 					style="list"
 				/>
 			</div>
@@ -32,7 +32,6 @@ export default function GeoListItems({
 						zoom={15}
 						height={380}
 						resources={resources}
-						displayFields={displayFields}
 					/>
 				</div>
 			</div>

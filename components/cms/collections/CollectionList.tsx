@@ -19,7 +19,6 @@ import {
 	CollectionShow,
 	CollectionEmpty,
 } from '../..'
-import { DOCUMENT_SHOW_FIELDS } from '@/constants'
 
 export type CollectionListProps = {
 	layout?: 'list' | 'grid' | 'slider'

@@ -53,9 +53,6 @@ const Header: React.FC<HeaderProps> = (props) => {
 				handleClick={handleClick}
 			/>
 			<MobileDrawer
-				enableAuth={enableAuth}
-				enableStripe={enableStripe}
-				enableShopify={enableShopify}
 				links={links}
 				handleClick={handleClick}
 			/>

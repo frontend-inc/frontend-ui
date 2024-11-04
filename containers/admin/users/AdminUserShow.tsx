@@ -3,7 +3,6 @@
 import React from 'react'
 import { UserAvatar, ResourceModal, ResourceDetails } from '../../../components'
 import { ResourceShowProps } from '../../../components/cms/resources/ResourceShow'
-import { MetafieldType } from '../../../types'
 
 const AdminUserShow: React.FC<ResourceShowProps> = (props) => {
 	const {
@@ -34,7 +33,7 @@ const AdminUserShow: React.FC<ResourceShowProps> = (props) => {
 			handleDelete={handleDelete}
 		>
 			<ResourceDetails
-				avatar={<UserAvatar user={resource} size={96} />}
+        image={ resource?.avatar?.url }				
 				primary={resource?.name}
 				secondary={`@${resource?.username}`}
 				label={resource?.role}

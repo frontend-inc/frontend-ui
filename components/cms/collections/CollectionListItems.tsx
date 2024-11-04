@@ -3,8 +3,6 @@
 import React from 'react'
 import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
-import { useApp } from '../../../hooks'
-import { useRouter } from 'next/navigation'
 import { CollectionListItem, DataLayout } from '../..'
 import { ButtonType, MetafieldType } from '../../../types'
 
@@ -14,7 +12,7 @@ export type CollectionListItemsProps = {
 	href?: string
 	style?: 'list' | 'card' | 'avatar' | 'cover' | 'text'
 	buttons: ButtonType[]
-	displayFields: MetafieldType[]
+	metafields: MetafieldType[]
 	handleClick?: (resource: any) => void
 	enableGradient?: boolean
 	enableOverlay?: boolean
@@ -46,7 +44,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		buttons = [],
 		style = 'list',
 		handleClick,
-		displayFields = [],
+		metafields = [],
 		enableGradient = false,
 		enableOverlay = false,
 		enableFavorites = false,
@@ -79,7 +77,7 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 						style={style}
 						selectable={selectable}
 						resource={resource}
-						displayFields={displayFields}
+						metafields={metafields}
 						handleClick={() => handleShowClick(resource)}
 						buttons={buttons}
 						enableComments={enableComments}
