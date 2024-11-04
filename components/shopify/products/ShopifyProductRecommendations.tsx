@@ -8,7 +8,7 @@ import {
 } from '../../../components/shopify'
 
 export type ShopifyProductRecommendationsProps = {
-	handle?: string
+	shopifyProduct: string
 	layout?: 'grid' | 'carousel'
 	perPage?: string
 	enableBorder?: boolean
@@ -20,9 +20,10 @@ export type ShopifyProductRecommendationsProps = {
 const ShopifyProductRecommendations: React.FC<
 	ShopifyProductRecommendationsProps
 > = (props) => {
-	const {
-		handle,
-		layout = 'grid',
+	
+  const {
+    layout = 'grid',
+		shopifyProduct,	
 		perPage = 12,
 		enableBorder = false,
 		enableAddToCart,
@@ -51,17 +52,16 @@ const ShopifyProductRecommendations: React.FC<
 			setSimilarProducts(
 				products
 					.filter((p) => p.id != product?.id)
-					.filter((p) => !p.tags.includes('hidden'))
 					.filter((p, index) => index < Number(perPage))
 			)
 		}
 	}, [product, products])
 
 	useEffect(() => {
-		if (handle) {
-			findProduct(String(handle))
+		if (shopifyProduct) {
+			findProduct(shopifyProduct)
 		}
-	}, [handle])
+	}, [shopifyProduct])
 
 	return (
 		<div className="w-full">

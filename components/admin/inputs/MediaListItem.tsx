@@ -2,12 +2,11 @@
 
 import React, { useEffect, useState } from 'react'
 import {
-	TouchableOpacity,
-	Image,
+  Image,
 	AttachmentImage,
 } from '../../../components'
 import { Button } from '../../../components'
-import { Card, CardHeader } from 'frontend-shadcn'
+import { Card, CardContent, CardHeader } from 'frontend-shadcn'
 import { Badge } from 'frontend-shadcn'
 import {
 	DropdownMenu,
@@ -21,7 +20,7 @@ import { cn } from 'frontend-shadcn'
 type MediaItemProps = {
 	item?: any
 	selected?: boolean
-	handleClick?: (item: any) => void
+	handleClick: (item: any) => void
 	handleRemove?: () => void
 }
 
@@ -35,7 +34,7 @@ const MediaItem: React.FC<MediaItemProps> = ({
 	return (
 		<Card
 			className={cn(
-				'rounded-md bg-background p-0 min-w-[160px] h-[208px] border border-transparent',
+				'rounded-md bg-background p-0 min-w-[160px] h-[200px] border border-transparent',
 				selected && 'border-primary'
 			)}
 		>
@@ -54,19 +53,25 @@ const MediaItem: React.FC<MediaItemProps> = ({
 					</DropdownMenu>
 				)}
 			</CardHeader>
+      <CardContent className="p-0 overflow-hidden">
 			  {item.resource_type === 'file' ? (
 					<AttachmentImage icon="File" width={64} height={64} />
 			  ) : (
-        <div className="h-[160px] w-[205px] flex items-center justify-center overflow-hidden">
-          <Image
-            disableBorderRadius
-            aspectRatio={4 / 3}
-            src={item?.thumbnail_url}
-            alt={item?.content_type}
-            handleClick={handleClick ? () => handleClick(item) : undefined} 
-          />
+        <div className="h-[200px] w-[240px] overflow-hidden">
+          <button 
+            onClick={() => handleClick(item) }
+            className="w-full focus:outline-none p-0 overflow-hidden"
+          >
+            <Image
+              disableBorderRadius
+              src={item?.thumbnail_url}
+              alt={item?.content_type}
+              height={240}
+            />
+          </button>
         </div>				
 			)}
+      </CardContent>
 		</Card>
 	)
 }

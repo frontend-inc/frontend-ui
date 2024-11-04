@@ -73,7 +73,11 @@ const MediaBrowser: React.FC<MediaBrowserProps> = ({
 			handleClose={handleClose}
 			title={'Browse Media'}
 			buttons={
-				<Button variant="default" onClick={handleAttach}>
+				<Button 
+          fullWidth 
+          variant="default" 
+          onClick={handleAttach}
+        >
 					Save Media
 				</Button>
 			}

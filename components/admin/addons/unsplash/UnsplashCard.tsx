@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Image } from '../../../../components'
-import { Avatar, AvatarFallback, AvatarImage } from 'frontend-shadcn'
+import { Avatar, AvatarFallback, AvatarImage, CardContent } from 'frontend-shadcn'
 import { Button } from '../../../../components'
 import { Card, CardHeader } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
@@ -26,39 +26,37 @@ const UnplashCard: React.FC<UnplashCardProps> = ({
 	return (
 		<Card
 			className={cn(
-				'rounded bg-background border border-border p-0',
+				'cursor-pointer rounded bg-background border border-border p-0 min-w-[240px]',
 				selected && 'border-primary'
 			)}
-		>
-			<div
-				className="cursor-pointer"
-				onClick={() => handleClick && handleClick(image)}
-			>
-				<Image
-					height={120}
-					width={180}
-					src={image?.urls?.small}
+		>		
+			<CardContent className="p-0">
+        <Image
+					height={200}
+					width={200}
+					src={image?.urls?.regular}
 					alt={image?.alt_description}
 					objectFit="cover"
 					disableBorderRadius
-				/>
-			</div>
-			<CardHeader className="p-1">
-				<Button
-					variant="ghost"
-					className="text-xs text-muted-foreground hover:text-foreground flex items-center space-x-2 p-0"
-					onClick={() => handleProfileClick(image?.user)}
-				>
-					<Avatar className="h-6 w-6">
-						<AvatarImage
-							src={image?.user?.profile_image?.medium}
-							alt={image?.user?.name}
-						/>
-						<AvatarFallback>{image?.user?.name?.charAt(0)}</AvatarFallback>
-					</Avatar>
-					<span className="break-words">{image?.user?.name}</span>
-				</Button>
-			</CardHeader>
+          handleClick={() => handleClick && handleClick(image)}
+				/>			
+        <div className="p-3 w-full">
+          <Button
+            variant="ghost"
+            className="text-xs text-muted-foreground hover:text-foreground flex items-center space-x-2 p-0"
+            onClick={() => handleProfileClick(image?.user)}
+          >
+            <Avatar className="h-6 w-6">
+              <AvatarImage
+                src={image?.user?.profile_image?.medium}
+                alt={image?.user?.name}
+              />
+              <AvatarFallback>{image?.user?.name?.charAt(0)}</AvatarFallback>
+            </Avatar>
+            <span className="break-words">{image?.user?.name}</span>
+          </Button>
+        </div>
+			</CardContent>
 		</Card>
 	)
 }

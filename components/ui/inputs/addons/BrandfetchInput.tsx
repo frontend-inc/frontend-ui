@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import { useBrandfetch, useAdminMedia } from '../../../../hooks'
+import { Card, CardContent } from 'frontend-shadcn'
 import {
 	Image,
 	Label,
@@ -45,25 +46,26 @@ const BrandfetchInput: React.FC<BrandfetchInputProps> = (props) => {
       </div>
 			<PoweredByBrandfetch />
 			{loading && <CircularLoader />}
-			<div className="grid grid-cols-[repeat(auto-fill,minmax(164px,1fr))] gap-4">
+			<div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
 				{!loading &&
 					brand?.logos?.map((logo) => (
 						<React.Fragment key={logo.domain}>
 							{logo?.formats
 								?.filter((f) => f.format != 'svg')
 								.map((format, index) => (
-									<div
+									<Card
 										key={`${logo.domain}-${index}`}
-										className="flex flex-col space-y-4 bg-background p-4 rounded transition-shadow duration-300 hover:shadow-md"
+										className="flex flex-col space-y-4 bg-muted/20 hover:bg-muted/50 p-4 hover:border-primary overflow-hidden"
 									>
+                    <CardContent>
 										<TouchableOpacity
 											handleClick={() => handleClick(format, logo)}
 										>
-											<div className="relative rounded overflow-hidden h-[164px] w-[164px] flex items-center justify-center">
+											<div className="relative rounded overflow-hidden h-[160px] w-[200px] flex items-center justify-center">
 												<Image
 													src={format?.src}
-													height={164}
-													width={164}
+													height={220}
+													width={200}
 													alt={logo?.domain}
 													objectFit="contain"
 												/>
@@ -72,7 +74,8 @@ const BrandfetchInput: React.FC<BrandfetchInputProps> = (props) => {
 										<div>
 											<Label label={format.format} />
 										</div>
-									</div>
+                    </CardContent>
+                  </Card>
 								))}
 						</React.Fragment>
 					))}
