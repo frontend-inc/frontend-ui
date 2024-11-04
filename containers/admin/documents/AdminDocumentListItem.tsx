@@ -7,6 +7,7 @@ import {
 	ListFields,
 	ResourceListItem,
 } from '../../../components'
+import { Badge } from 'frontend-shadcn'
 import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
 
 const AdminDocumentListItem: React.FC<ResourceItemProps> = (props) => {
@@ -42,7 +43,14 @@ const AdminDocumentListItem: React.FC<ResourceItemProps> = (props) => {
 					fields={[{ label: 'Handle', name: 'handle', variant: 'string' }]}
 				/>
 			}
-			secondaryAction={<PublishLabel published={resource?.published} />}
+			secondaryAction={
+        <div className="flex flex-row space-x-2">
+          <PublishLabel published={resource?.published} />
+          { resource?.premium && (
+            <Badge className="px-3 py-1">Premium</Badge>
+          )}
+        </div> 
+      }
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}
 			handleClick={handleClick}

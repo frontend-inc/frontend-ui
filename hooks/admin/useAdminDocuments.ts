@@ -14,7 +14,7 @@ const useAdminDocuments = (props: UseDocumentProps) => {
 	const { collection } = props
 
 	const apiParams = {
-		url: `${apiUrl}/cms/${collection}`,
+		url: `${apiUrl}/${collection}`,
 		name: 'document',
 	}
 
@@ -61,7 +61,7 @@ const useAdminDocuments = (props: UseDocumentProps) => {
 		endIndex,
 		paginate,
 		loadingWrapper,
-	} = useResource(apiParams)
+	} = useResource(apiParams)  
 
 	const addReferences = async (sourceId: number, targetIds: number[]) => {
 		return await loadingWrapper(() =>

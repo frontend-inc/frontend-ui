@@ -5,6 +5,7 @@ import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { CollectionListItem, DataLayout } from '../..'
 import { ButtonType, MetafieldType } from '../../../types'
+import { useShop } from '../../../hooks'
 
 export type CollectionListItemsProps = {
 	layout?: 'list' | 'grid' | 'slider'
@@ -55,9 +56,13 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		},
 	} = props
 
+  const { setSubscribeOpen } = useShop()
+
 	const handleShowClick = (resource) => {
     if (handleClick) {
 			handleClick(resource)
+    } else if (resource?.premium) {					
+      setSubscribeOpen(true)
 		} else {					
 			setResource(resource)
 			setOpenShow(true)
