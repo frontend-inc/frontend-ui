@@ -22,8 +22,9 @@ const ShopifyProductModal: React.FC<ShopifyProductModalProps> = (props) => {
 	} = props
 
 	return (
-		<Drawer open={open} handleClose={handleClose}>
+		<Drawer open={open} handleClose={handleClose} maxWidth="lg">
 			<ShopifyProductDetails
+        disableZoom
 				shopifyProduct={shopifyProduct}
 				enableQuantity={enableQuantity}
 				buttonText={buttonText}

@@ -6,11 +6,17 @@ import { CartType } from '../types'
 
 type ShopProviderProps = {
 	cartCookie: string
+  subscriptionPrice?: number
 	children: React.ReactNode
 }
 
 const ShopProvider = (props: ShopProviderProps) => {
-	const { children, cartCookie } = props || {}
+	
+  const { 
+    children, 
+    cartCookie,
+    subscriptionPrice
+  } = props || {}
 
 	const [cartOpen, setCartOpen] = useState(false)
 	const [cart, setCart] = useState<CartType | {}>({})
@@ -20,7 +26,8 @@ const ShopProvider = (props: ShopProviderProps) => {
 		setCart,
 		cartOpen,
 		setCartOpen,
-		cartCookie,
+		cartCookie,   
+    subscriptionPrice 
 	}
 
 	return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>

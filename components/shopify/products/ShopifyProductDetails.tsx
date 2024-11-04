@@ -21,6 +21,7 @@ export type ShopifyProductDetailsProps = {
 	enableQuantity?: boolean
 	enableFavorites?: boolean
 	enableSubscription?: boolean
+  disableZoom?: boolean
 }
 
 const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = ({
@@ -29,6 +30,7 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = ({
 	enableQuantity = true,
 	enableSubscription = true,
 	enableFavorites,
+  disableZoom = false 
 }) => {
 
   const { product, findProduct } = useProducts()
@@ -46,7 +48,6 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = ({
 		product,
 	})
 
-
   useEffect(() => {
     if(shopifyProduct) {
       findProduct(shopifyProduct)
@@ -61,6 +62,7 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = ({
 					image={image}
 					images={images}
 					handleClick={handleImageClick}
+          disableZoom={disableZoom}
 				/>
 			</div>
 			<div className={cn('w-full sm:w-1/2', 'p-0 sm:p-1')}>

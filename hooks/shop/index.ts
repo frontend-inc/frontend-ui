@@ -1,5 +1,5 @@
 export { default as useCart } from './useCart'
-export { default as useSubscriptions } from './useSubscriptions'
+export { default as useSubscription } from './useSubscription'
 export { default as useShop } from './useShop'
 export { default as useProducts } from './useProducts'
 export { default as useProductCollections } from './useProductCollections'

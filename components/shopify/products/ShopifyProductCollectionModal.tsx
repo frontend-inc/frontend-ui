@@ -30,6 +30,7 @@ const ShopifyProductCollectionModal: React.FC<ShopifyProductCollectionModalProps
       title={ collection?.title }
       open={open} 
       handleClose={handleClose}
+      maxWidth='lg'
     >
       <div className="w-full flex flex-col space-y-6">
         <div className='px-[40px] text-base text-muted-foreground'>

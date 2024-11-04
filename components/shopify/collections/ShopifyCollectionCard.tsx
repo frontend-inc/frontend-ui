@@ -40,7 +40,7 @@ export default function ShopifyCollectionCard({
 	return (
     <>
       <Card className="relative w-full rounded-lg">
-        <div className="relative w-full h-full">
+        <div className="relative cursor-pointer w-full h-full">
           <Image
             // @ts-ignore
             src={image?.url}

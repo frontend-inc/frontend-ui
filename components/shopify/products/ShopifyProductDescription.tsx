@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { AccordionItem } from '../../../components'
+import { Typography } from '../../../components'
 import { ShopifyProductType } from 'frontend-shopify'
 
 type ShopifyProductDescriptionProps = {
@@ -16,7 +16,9 @@ const ShopifyProductDescription: React.FC<ShopifyProductDescriptionProps> = (
 
 	if (!product?.description || product?.description?.length == 0) return null
 	return (
-		<AccordionItem primary="Description" secondary={product?.description} />
+    <Typography variant="body1">
+      { product?.description }
+    </Typography>		
 	)
 }
 

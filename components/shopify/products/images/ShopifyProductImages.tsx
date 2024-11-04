@@ -12,10 +12,11 @@ type ShopifyProductImagesProps = {
 	image: ShopifyImageType
 	images: ShopifyImageType[]
 	handleClick: (img: ShopifyImageType) => void
+  disableZoom?: boolean
 }
 
 const ShopifyProductImages: React.FC<ShopifyProductImagesProps> = (props) => {
-	const { product, image, images, handleClick } = props
+	const { disableZoom, product, image, images, handleClick } = props
 
 	return (
 		<>
@@ -24,6 +25,7 @@ const ShopifyProductImages: React.FC<ShopifyProductImagesProps> = (props) => {
 					image={image}
 					images={images}
 					handleClick={handleClick}
+          disableZoom={disableZoom}
 				/>
 			</Hidden>
 			<Hidden smUp>

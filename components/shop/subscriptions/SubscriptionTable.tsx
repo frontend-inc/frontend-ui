@@ -1,40 +1,44 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useAuth } from 'frontend-js'
 import { Placeholder } from '../..'
 import SubscriptionTableCard from './SubscriptionTableCard'
-import { useSubscriptions, useApp } from '../../../hooks'
-import { useRouter, useParams } from 'next/navigation'
+import { useSubscription, useShop, useApp } from '../../../hooks'
+import { useRouter } from 'next/navigation'
 import { cn } from 'frontend-shadcn'
 
 export default function SubscriptionTable() {
 	const router = useRouter()
-	const {
+
+  const {
 		delayedLoading: loading,
 		subscribe,
-		subscriptions,
-		findSubscriptions,
-	} = useSubscriptions()
+	} = useSubscription()
 
 	const { currentUser } = useAuth()
-	const { setAuthOpen } = useApp()
+	const { 
+    name,
+    description,
+    enableSubscription,
+    setAuthOpen 
+  } = useApp()
 
-	const handleSubscribe = async (subscription: any) => {
+  const {    
+    subscriptionPrice,
+  } = useShop()
+
+	const handleSubscribe = async () => {
 		if (!currentUser?.id) return setAuthOpen(true)
 		let currentUrl = window.location.href
-		let resp = (await subscribe(subscription?.id, {
+		let resp = await subscribe({
 			success_url: currentUrl,
 			cancel_url: currentUrl,
-		})) as any
+		})
 		if (resp?.url) {
 			router.push(resp.url)
 		}
 	}
-
-	useEffect(() => {
-		findSubscriptions()
-	}, [])
 
 	return (
 		<>
@@ -45,19 +49,18 @@ export default function SubscriptionTable() {
 					loading && 'opacity-50'
 				)}
 			>
-				{subscriptions?.map((subscription) => {
-					const selected = currentUser?.subscription_id === subscription.id
-					return (
-						<SubscriptionTableCard
-							key={subscription.id}
-							selected={selected}
-							subscription={subscription}
-							handleClick={() => handleSubscribe(subscription)}
-						/>
-					)
-				})}
+        <SubscriptionTableCard
+          selected={currentUser?.paid}
+          label="Membership"
+          title={`${name} Membership`}
+          subtitle="Subscribe to our membership plan to get access to exclusive content."
+          price={ subscriptionPrice }  
+          description={ description }        
+          buttonText="Subscribe"
+          handleClick={ handleSubscribe }
+        />
 			</div>
-			{!loading && !subscriptions?.length && (
+			{!loading && !enableSubscription && (
 				<Placeholder
 					icon="CreditCard"
 					title="No subscription plans"

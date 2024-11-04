@@ -1,26 +1,31 @@
 'use client'
 
 import React from 'react'
-import { Check } from 'lucide-react'
 import { cn } from 'frontend-shadcn'
 import { Button } from '../../../components'
 import { Card, CardContent, CardFooter, CardHeader } from 'frontend-shadcn'
 import { Badge } from 'frontend-shadcn'
-import { SubscriptionType } from '../../../types'
 import { Typography } from '../../core'
 
 type SubscriptionTableCardProps = {
 	selected?: boolean
+  label?: string
+  title: string
+  subtitle: string
+  price: string
+  description: string 
 	buttonText?: string
 	handleClick: () => void
-	subscription: SubscriptionType
 }
 
 export default function SubscriptionTableCard({
+  label,
+  price,
+  title,  
+  subtitle,
+  description,
 	buttonText = 'Subscribe',
-	selected,
 	handleClick,
-	subscription,
 }: SubscriptionTableCardProps) {
 	return (
 		<Card
@@ -32,24 +37,24 @@ export default function SubscriptionTableCard({
 		>
 			<CardHeader>
 				<div className="flex justify-between items-center">
-					{subscription?.label && (
-						<Badge variant="secondary">{subscription.label}</Badge>
+					{label && (
+						<Badge variant="secondary">{label}</Badge>
 					)}
 				</div>
 				<Typography className="text-muted-foreground" variant="subtitle1">
-					{subscription?.name}
+					{title}
 				</Typography>
-				<Typography variant="h4">{subscription.display_price}</Typography>
+				<Typography variant="h4">{price}</Typography>
 			</CardHeader>
 			<CardContent>
-				<div className="mt-2 space-y-4  min-h-[150px]">
-					{subscription?.features?.map((feature, i) => (
-						<div key={i} className="flex items-start">
-							<Check className="w-5 h-5 mx-2 text-primary" />
-							<span className="text-sm">{feature}</span>
-						</div>
-					))}
-				</div>
+        <div className="flex flex-col space-y-4">
+        <Typography className="text-muted-foreground" variant="body1">
+					{subtitle}
+				</Typography>
+        <Typography className="text-muted-foreground" variant="body2">
+          { description }
+        </Typography>
+        </div>
 			</CardContent>
 			<CardFooter>
 				<Button onClick={handleClick} className="w-full">

@@ -55,24 +55,24 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 	if (!shopifyCollection) return null
 	return (
     <>
-		<Cover
-			enableOverlay={enableOverlay}
-			enableGradient={enableGradient}
-			title={collection?.title}
-			// @ts-ignore
-			image={collection?.image?.url}
-			alt={alt}
-			alignItems={alignItems}
-			handleClick={handleShowClick}
-			buttonText={buttonText}
-		/>
-    <ShopifyProductCollectionModal 
-      collection={ collection }
-      open={ open }
-      handleClose={() => setOpen(false)}
-      enableQuantity={enableQuantity}
-      enableAddToCart={enableAddToCart}
-    />
+      <Cover
+        enableOverlay={enableOverlay}
+        enableGradient={enableGradient}
+        title={collection?.title}
+        // @ts-ignore
+        image={collection?.image?.url}
+        alt={alt}
+        alignItems={alignItems}
+        handleClick={handleShowClick}
+        buttonText={buttonText}
+      />
+      <ShopifyProductCollectionModal 
+        collection={ collection }
+        open={ open }
+        handleClose={() => setOpen(false)}
+        enableQuantity={enableQuantity}
+        enableAddToCart={enableAddToCart}
+      />
     </>
 	)
 }

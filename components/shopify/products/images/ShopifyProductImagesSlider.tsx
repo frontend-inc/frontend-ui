@@ -38,23 +38,27 @@ const Thumbnail: React.FC<ThumbnailProps> = (props) => {
 }
 
 type ShopifyProductImageSliderProps = {
+  disableZoom?: boolean
 	image: ShopifyImageType
 	images: ShopifyImageType[]
 	handleClick: (img: ShopifyImageType) => void
-	height?: number
-	width?: number
-	thumbnailSize?: number
 }
 
 const ShopifyProductImageSlider: React.FC<ShopifyProductImageSliderProps> = (
 	props
 ) => {
-	const { image, images, handleClick, thumbnailSize = 80 } = props
+	const { disableZoom = false, image, images, handleClick } = props
 
 	return (
 		<div className="flex flex-col space-y-4">
 			<div className="flex justify-center items-start">
 				{image?.url && (
+          disableZoom ? 
+            <img
+							src={image?.url}
+							alt={image?.altText || ''}
+							className="h-full w-full object-contain"
+						/> :
 					<Zoom>
 						<img
 							src={image?.url}

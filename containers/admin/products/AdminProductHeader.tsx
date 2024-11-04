@@ -4,8 +4,9 @@ import React, { useState } from 'react'
 import { ResourceHeader } from '../../../components'
 import { ResourceHeaderProps } from '../../../components/cms/resources/ResourceHeader'
 import { useAdminProducts } from '../../../hooks'
-import { Form, Modal, Icon } from '../../../components'
-import { IconButton } from '../../../components/core'
+import { Form, Modal } from '../../../components'
+import { Button } from '../../../components/core'
+import { Zap } from 'lucide-react'
 
 type AdminProductHeaderProps = ResourceHeaderProps
 
@@ -36,9 +37,15 @@ const AdminProductHeader: React.FC<AdminProductHeaderProps> = (props) => {
 			{...props}
 			secondaryAction={
 				<>
-					<IconButton onClick={() => setOpen(true)}>
-						<Icon name="Wand" />
-					</IconButton>
+					<Button 
+            className="bg-sky-500 hover:bg-sky-700 text-white"
+            onClick={() => setOpen(true)}
+            startIcon={
+              <Zap className="h-4 w-4" />
+            }
+          >
+            Generate 
+					</Button>
 					<Modal
 						icon="Wand"
 						title="Generate Products"

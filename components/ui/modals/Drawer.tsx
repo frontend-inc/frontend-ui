@@ -26,8 +26,7 @@ type CustomDrawerProps = {
   description?: string
   buttons?: React.ReactNode
   children: React.ReactNode
-  footer?: React.ReactNode
-  disablePadding?: boolean
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl'
 }
 
 export default function CustomDrawer({
@@ -38,7 +37,16 @@ export default function CustomDrawer({
   description,
   children,
   buttons,
+  maxWidth = 'md',
 }: CustomDrawerProps) {
+
+  const maxWidthClasses = {
+    sm: 'max-w-screen-sm',
+    md: 'max-w-screen-md',
+    lg: 'max-w-screen-lg',
+    xl: 'max-w-screen-xl',    
+  }  
+
   const { mode } = useTheme()
 
   return (
@@ -73,7 +81,7 @@ export default function CustomDrawer({
             {description && (
               <DrawerDescription>
                 <div className="flex flex-row justify-center w-full">
-                  <div className="flex flex-row max-w-screen-md w-full">
+                  <div className={cn(maxWidthClasses[maxWidth], "w-full")}>
                     <div className="text-lg text-primary">{description}</div>
                   </div>
                 </div>
@@ -82,12 +90,14 @@ export default function CustomDrawer({
           </DrawerHeader>          
           <ScrollArea>
             <div className="flex justify-center w-full py-6 px-6 sm:px-0">
-              <div className="max-w-screen-md w-full min-h-[50vh] max-h-[75vh]">{children}</div>
+              <div className={cn(maxWidthClasses[maxWidth], "w-full min-h-[50vh] max-h-[75vh]")}>
+                {children}
+              </div>
             </div>
           </ScrollArea>          
           {!loading && buttons && (
             <DrawerFooter className='w-full flex items-center justify-center'>
-              <div className='w-full max-w-screen-md'>
+              <div className={cn(maxWidthClasses[maxWidth], 'w-full')}>
                 {buttons}
               </div>
             </DrawerFooter>
