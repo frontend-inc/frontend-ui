@@ -70,6 +70,16 @@ export const DOCUMENT_FORM_FIELDS = {
     LOCATION,
     TAGS,
   ],
+  person: [
+    IMAGE,
+    HANDLE,
+    NAME,
+    ABOUT,
+    SUBTITLE,
+    CATEGORY,
+    DESCRIPTION,
+    TAGS,    
+  ],
   product: [
     IMAGE,
     HANDLE,
@@ -195,8 +205,16 @@ export const DOCUMENT_SHOW_FIELDS = {
     CATEGORY,
     DESCRIPTION,
     TAGS,
-    LOCATION,
-    
+    LOCATION,    
+  ],
+  person: [
+    IMAGE,
+    LABEL,
+    NAME,
+    CATEGORY,
+    SUBTITLE,
+    ABOUT,    
+    TAGS,
   ],
   event: [
     IMAGE,
