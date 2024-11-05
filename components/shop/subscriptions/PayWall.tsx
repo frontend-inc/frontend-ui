@@ -19,7 +19,6 @@ const PayWall: React.FC = () => {
   
 			/>
       <Button 
-        label="Subscribe"
         onClick={() => setOpen(true)}
       >
         Subscribe {subscriptionPrice}
@@ -29,7 +28,7 @@ const PayWall: React.FC = () => {
         open={open}
         handleClose={() => setOpen(false)}
       >
-        <div className="w-full">
+        <div className="w-full flex items-center justify-center">
           <SubscribeCard />
         </div>
       </Drawer>

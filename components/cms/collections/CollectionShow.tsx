@@ -40,7 +40,6 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 	if (!resource) return null
 	return (
 		<Drawer
-			disablePadding
 			open={openShow}
 			handleClose={() => setOpenShow(false)}
 			title={resource?.title}

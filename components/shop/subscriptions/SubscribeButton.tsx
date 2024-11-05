@@ -14,7 +14,6 @@ const SubscribeButton: React.FC = () => {
 
 	return (
     <Button 
-      label="Subscribe"
       onClick={handleClick}
     >
       Subscribe {subscriptionPrice}

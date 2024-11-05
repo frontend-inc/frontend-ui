@@ -3,7 +3,7 @@
 import React from 'react'
 import { Drawer } from '../..'
 import { SubscribeCard } from '../..'
-import { useApp, useShop } from '../../../hooks'
+import { useShop } from '../../../hooks'
 
 type SubcribeModalProps = {
   title?: string
@@ -12,13 +12,7 @@ type SubcribeModalProps = {
 
 const SubcribeModal: React.FC<SubcribeModalProps> = (props) => {
 
-  const {
-    name,
-    description 
-  } = useApp()
-
   const { 
-    subscriptionPrice,
     subscribeOpen, 
     setSubscribeOpen 
   } = useShop()
@@ -30,12 +24,7 @@ const SubcribeModal: React.FC<SubcribeModalProps> = (props) => {
       handleClose={() => setSubscribeOpen(false)}
     >
       <div className="w-full">
-        <SubscribeCard 
-          price={ subscriptionPrice }
-          label="Subscribe"
-          title="Upgrade to premium"
-          subtitle="To continue please subscribe to our premium plan"                    
-        />
+        <SubscribeCard />
       </div>
     </Drawer>
 	)

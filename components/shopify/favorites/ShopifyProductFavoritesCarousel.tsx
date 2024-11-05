@@ -33,7 +33,6 @@ const ShopifyProductFavoritesCarousel: React.FC<
 				enableBorder={enableBorder}
 				enableAddToCart={enableAddToCart}
 				enableQuantity={enableQuantity}
-				buttonText={buttonText}
 				enableAutoPlay={enableAutoPlay}
 			/>
 			{favorites?.length === 0 && (

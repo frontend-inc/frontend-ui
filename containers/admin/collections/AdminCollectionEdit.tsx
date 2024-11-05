@@ -33,8 +33,7 @@ const AdminCollectionEdit: React.FC<AdminCollectionEditProps> = (props) => {
 			loading={loading}
 			open={open}
 			handleClose={handleClose}
-			title={collection?.id ? 'Edit Collection' : 'Add Collection'}
-			disablePadding
+			title={collection?.id ? 'Edit Collection' : 'Add Collection'}			
 			buttons={
 				<Button
 					fullWidth

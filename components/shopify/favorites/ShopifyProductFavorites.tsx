@@ -32,7 +32,6 @@ const ShopifyProductFavorites: React.FC<ShopifyProductFavoritesProps> = (
 				enableBorder={enableBorder}
 				enableAddToCart={enableAddToCart}
 				enableQuantity={enableQuantity}
-				buttonText={buttonText}
 			/>
 			{favorites?.length === 0 && (
 				<Placeholder

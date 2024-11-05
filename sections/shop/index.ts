@@ -1,6 +1,5 @@
 export { default as ShopProductDetails } from './ShopProductDetails'
 export { default as ShopProducts } from './ShopProducts'
-export { default as ShopSubscriptionTable } from './ShopSubscriptionTable'
 
 export { default as ShopProductFavorites } from './ShopProductFavorites'
 export { default as ShopProductReviews } from './ShopProductReviews'

@@ -48,7 +48,6 @@ const ShopifyProductCarousel: React.FC<ShopifyProductCarouselProps> = (
               <div className='p-1'>              
                 <ShopifyProductCard
                   product={product}
-                  buttonText={buttonText}
                   enableBorder={enableBorder}
                   enableAddToCart={enableAddToCart}
                   enableQuantity={enableQuantity}
