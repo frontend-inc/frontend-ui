@@ -8,21 +8,21 @@
 export const mergeFilters = (filters, newFilters) => {
 	if (!filters) return newFilters
 	if (!newFilters) return filters
-	let mergedFilters = {
-		AND: [...(filters?.AND || []), ...(newFilters?.AND || [])],
-		OR: [...(filters.OR || []), ...(newFilters.OR || [])],
-	}
+	let mergedFilters = [
+    ...(filters || []), 
+    ...(newFilters || [])
+  ]	
 	return mergedFilters
 }
 
 export const mergeAllFilters = (filters) => {
 	if (filters.length === 0) {
-		return {}
+		return []
 	}
 
 	return filters.reduce((mergedFilter, currentFilter) => {
 		return mergeFilters(mergedFilter, currentFilter)
-	}, {})
+	}, [])
 }
 
 // Convert the query object into an array of filter options

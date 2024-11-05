@@ -41,24 +41,16 @@ export type FilterType = {
 	}
 }
 
-export type FiltersType = {
-	AND?: FilterType[]
-	OR?: FilterType[]
-}
+export type FiltersType = FilterType[]
 
 /* This is the JSON formatted query
    Example: 
   {     
     keywords: 'harry potter', 
-    filters: {
-      AND: [
-        { category: { in: ['books', 'movies'] },      
-        { price: { gt: 20 } }
-      ],
-      OR: [
-        { rating: { gte: 4 } }        
-      ]
-    },
+    filters: [
+      { category: { in: ['books', 'movies'] },      
+      { price: { gt: 20 } }
+    ],
     sort_by: 'rating', 
     sort_direction: 'desc' 
   }
