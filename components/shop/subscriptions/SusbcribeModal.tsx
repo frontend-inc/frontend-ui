@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { Drawer } from '../..'
-import { Heading, SubscriptionTable } from '../..'
-import { useShop } from '../../../hooks'
+import { SubscribeCard } from '../..'
+import { useApp, useShop } from '../../../hooks'
 
 type SubcribeModalProps = {
   title?: string
@@ -12,25 +12,30 @@ type SubcribeModalProps = {
 
 const SubcribeModal: React.FC<SubcribeModalProps> = (props) => {
 
-  const { subscribeOpen, setSubscribeOpen } = useShop()
+  const {
+    name,
+    description 
+  } = useApp()
 
   const { 
-    title="Become a Member",
-    description="Please subscribe below to continue" 
-  } = props || {}
-	
+    subscriptionPrice,
+    subscribeOpen, 
+    setSubscribeOpen 
+  } = useShop()
+
   return (
     <Drawer 
-      title="Subscribe"
+      title="Subscribe to continue"
       open={subscribeOpen}
       handleClose={() => setSubscribeOpen(false)}
     >
       <div className="w-full">
-        <Heading
-          title={title }
-          description={ description}      
+        <SubscribeCard 
+          price={ subscriptionPrice }
+          label="Subscribe"
+          title="Upgrade to premium"
+          subtitle="To continue please subscribe to our premium plan"                    
         />
-        <SubscriptionTable />
       </div>
     </Drawer>
 	)

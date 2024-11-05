@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { Button, Drawer } from '../../../components'
-import { Heading, SubscriptionTable } from '../../../components'
+import { Heading, SubscribeCard } from '../../../components'
 import { useShop } from '../../../hooks'
 
 const PayWall: React.FC = () => {
@@ -30,7 +30,7 @@ const PayWall: React.FC = () => {
         handleClose={() => setOpen(false)}
       >
         <div className="w-full">
-          <SubscriptionTable />
+          <SubscribeCard />
         </div>
       </Drawer>
 		</div>

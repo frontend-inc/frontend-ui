@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { useApi, useLoadingWrapper } from 'frontend-js'
-import { SubscriptionType } from '../../types'
 
 const useSubscription = () => {
 	const { api } = useApi()
@@ -25,9 +24,9 @@ const useSubscription = () => {
 	}
 
 	const subscribe = async (options: SubscriptionOptionsType) => {
-		return await loadingWrapper(() =>
-			api.subscribe(options, apiParams)
-		)
+		return await loadingWrapper(
+      () => api.subscribe(options, apiParams)		
+    )
 	}
 
 	const unsubscribe = async () => {

@@ -4,26 +4,27 @@ import React from 'react'
 import { Button } from '../../core'
 import { useCart } from '../../../hooks'
 import { useAlerts } from '../../../hooks'
-import { useRouter, useParams } from 'next/navigation'
 
 const CheckoutButton = () => {
 	const { loading, cart, checkout } = useCart()
-
-	const router = useRouter()
 
 	const { showAlertError } = useAlerts()
 
 	const handleClick = async () => {
 		let currentUrl = window.location.href
-		let resp = await checkout({
+		const stripe = await checkout({
 			success_url: currentUrl,
 			cancel_url: currentUrl,
 		})
-		if (resp?.errors) {
-			showAlertError(resp.errors)
+		if (stripe?.errors) {
+			showAlertError(stripe.errors)
 		} else {
-			let url = resp?.data?.url
-			router.push(url)
+			const url = stripe?.data?.url
+      if (window.parent === window) {     
+        window.open(url, '_blank')
+      }else{
+        parent.window.open(url, '_blank')
+      }
 		}
 	}
 
