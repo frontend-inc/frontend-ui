@@ -9,10 +9,10 @@ type AppProviderProps = {
 	children: React.ReactNode
 	logo?: any	
 	name: string
-  description: string
+  description?: string
   enableShopify?: boolean
 	enableStripe?: boolean
-  enableSubscription: boolean
+  enableSubscription?: boolean
 }
 
 const AppProvider = (props: AppProviderProps) => {
