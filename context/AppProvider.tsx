@@ -9,22 +9,18 @@ type AppProviderProps = {
 	children: React.ReactNode
 	logo?: any	
 	name: string
-  description?: string
   enableShopify?: boolean
 	enableStripe?: boolean
-  enableSubscription?: boolean
 }
 
 const AppProvider = (props: AppProviderProps) => {
 	const {
     name,
-    description,
 		logo,
 		apiUrl,
 		clientUrl,
 		enableShopify,
 		enableStripe,
-    enableSubscription,
     children,
 	} = props || {}
 
@@ -40,7 +36,6 @@ const AppProvider = (props: AppProviderProps) => {
 
 	const value = {
 		name,
-    description,
 
 		app,
 		setApp,
@@ -63,7 +58,6 @@ const AppProvider = (props: AppProviderProps) => {
 
 		enableShopify,
 		enableStripe,
-    enableSubscription,
 
 		loading,
 		loaded,
