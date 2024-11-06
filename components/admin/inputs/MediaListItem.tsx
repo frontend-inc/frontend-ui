@@ -38,8 +38,7 @@ const MediaItem: React.FC<MediaItemProps> = ({
 				selected && 'border-primary'
 			)}
 		>
-			<CardHeader className="py-1 px-1 flex flex-row justify-between items-center">
-				<Badge className="px-3 py-1">{ item?.content_type}</Badge>
+			<CardHeader className="py-1 px-1 flex flex-row justify-end items-center">
 				{handleRemove && (
 					<DropdownMenu>
 						<DropdownMenuTrigger asChild>
@@ -57,7 +56,7 @@ const MediaItem: React.FC<MediaItemProps> = ({
 			  {item.resource_type === 'file' ? (
 					<AttachmentImage icon="File" width={64} height={64} />
 			  ) : (
-        <div className="h-[200px] w-[240px] overflow-hidden">
+        <div className="h-[180px] w-[240px] overflow-hidden">
           <button 
             onClick={() => handleClick(item) }
             className="w-full focus:outline-none p-0 overflow-hidden"

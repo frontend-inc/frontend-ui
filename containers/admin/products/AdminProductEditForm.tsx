@@ -3,14 +3,12 @@
 import React from 'react'
 import { ResourceForm } from '../../../components'
 import { ResourceFormProps } from '../../../components/cms/resources/ResourceForm'
-import { FormFieldType } from '../../../types'
 import { MediaInput } from '../../../components'
 
 const AdminProductEditForm: React.FC<ResourceFormProps> = (props) => {
 
 	let fields = [
 		{ label: 'Image', name: 'image', variant: 'media' },
-		{ label: 'Handle', name: 'handle', variant: 'string' },
 		{ label: 'Title', name: 'title', variant: 'string' },
 		{ label: 'Description', name: 'description', variant: 'text' },
 		{ label: 'Label', name: 'label', variant: 'string' },

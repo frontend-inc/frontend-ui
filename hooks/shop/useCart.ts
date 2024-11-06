@@ -67,6 +67,13 @@ const useCart = () => {
 		}
 	}
 
+
+  const subscribe = async (productId, options) => {		
+		return await loadingWrapper(() =>
+			api.subscribe(productId, options, apiParams)
+    )		
+	}
+
 	const loadingWrapper = async (fn) => {
 		try {
 			setErrors(null)
@@ -107,6 +114,7 @@ const useCart = () => {
 		addQuantity,
 		removeQuantity,
 		checkout,
+    subscribe
 	}
 }
 

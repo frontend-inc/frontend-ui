@@ -109,7 +109,7 @@ export default function AttachmentInput({
 	}
 
 	return (
-		<div className="flex flex-col w-full">
+		<div className="flex flex-col space-y-3 w-full">
 			<InputLabel label={label} info={info} />
 			{attachment?.url && (
 				<RenderAttachment
