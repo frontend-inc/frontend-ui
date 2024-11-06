@@ -5,12 +5,10 @@
 // The app uses syntax like this to pass filters in the URL:
 // ?filters=()
 
-export const mergeFilters = (filters, newFilters) => {
-	if (!filters) return newFilters
-	if (!newFilters) return filters
+export const mergeFilters = (filters=[], newFilters=[]) => {
 	let mergedFilters = [
-    ...(filters || []), 
-    ...(newFilters || [])
+    ...filters, 
+    ...newFilters
   ]	
 	return mergedFilters
 }
@@ -28,21 +26,18 @@ export const mergeAllFilters = (filters) => {
 // Convert the query object into an array of filter options
 export const formatFilterArray = (filters) => {
 	let formattedFilters = []
-	if (typeof filters === 'object') {
-		Object.keys(filters).forEach((where) => {
-			filters[where].forEach((filter) => {
-				let field = Object.keys(filter)[0]
-				let operator = Object.keys(filter[field])[0]
-				let value = filter[field][operator]
-				//@ts-ignore
-				formattedFilters.push({
-					where,
-					field,
-					operator,
-					value,
-				})
-			})
-		})
+	if (Array.isArray(filters)) {
+    filters.forEach((filter) => {
+      let name = Object.keys(filter)[0]
+      let operator = Object.keys(filter[name])[0]
+      let value = filter[name][operator]
+      //@ts-ignore
+      formattedFilters.push({					
+        name,
+        operator,
+        value,
+      })
+    })
 	}
 	return formattedFilters
 }

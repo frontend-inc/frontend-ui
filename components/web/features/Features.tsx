@@ -17,7 +17,7 @@ const Features: React.FC<FeaturesProps> = (props) => {
 
 	return (
 		<div className="container mx-auto max-w-screen-lg">
-			<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+			<div className="grid grid-cols-1 md:grid-cols-3 gap-10">
 				{items?.map((item, i) => (
 					<Feature
 						key={i}

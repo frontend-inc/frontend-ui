@@ -13,7 +13,6 @@ export { default as LoadMore } from './collections/LoadMore'
 export { default as FilterButton } from './filters/FilterButton'
 export { default as KanBanBoard } from '../cms/kanban/KanBanBoard'
 export { default as SortButton } from './sorts/SortButton'
-export { default as SearchFilters } from '../cms/filters/SearchFilters'
 
 // Details
 export { default as Details } from './details/Details'

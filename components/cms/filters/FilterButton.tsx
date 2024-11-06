@@ -2,20 +2,54 @@
 
 import React, { useState } from 'react'
 import { Icon, Sheet } from '../..'
-import FilterList from './FilterList'
 import { Hidden } from '../../core'
 import { FilterOptionType, SearchFilterOptionType } from '../../..'
+import { Typography } from '../../../components'
 import { Button } from '../../../components'
 import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
+
+type FilterGroupProps = {
+  filters?: FilterOptionType[]
+  filterOption: SearchFilterOptionType
+  handleFilter: (name: string, value: string | number | boolean) => void
+}
+
+export const FilterGroup: React.FC<FilterGroupProps> = (props) => {
+
+  const { 
+    filters,
+    filterOption,
+    handleFilter
+  } = props || {}
+
+  return(
+    <div className="w-full p-4 rounded-lg">
+      <Typography variant="body1" className="font-medium text-muted-foreground">
+        { filterOption?.label }
+      </Typography>
+      { filterOption?.options?.map((option, index) => (
+        <li className="list-none">
+          <button
+            className="flex flex-row justify-between items-center rounded-md w-full p-2 hover:bg-accent hover:bg-background-muted"
+            onClick={() => handleFilter(filterOption?.name, option?.value)}
+          >
+            { option?.label }
+            { filters?.find((f) => f?.name === filterOption?.name && f?.value === option?.value) && (
+              <Icon name="Check" className="ml-2" />
+            )}
+          </button>
+        </li>
+      ))}
+    </div>
+  )
+}
 
 export type FilterButtonProps = {
 	filters?: FilterOptionType[]
 	loading?: boolean
 	filterOptions?: SearchFilterOptionType[]
-	disableFilterCount?: boolean
-	handleFilter: (filter: FilterOptionType) => void
-	handleClear: () => void
+	handleFilter: (name: string, value: string | number | boolean) => void
 }
 
 const FilterButton: React.FC<FilterButtonProps> = (props) => {
@@ -24,7 +58,6 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 		filters = [],
 		filterOptions = [],
 		handleFilter,
-		disableFilterCount = false,
 	} = props || {}
 
 	const [open, setOpen] = useState(false)
@@ -51,11 +84,16 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 					</Button>
 				</PopoverTrigger>
 				<PopoverContent className="w-80 p-0">
-					<FilterList
-						filters={filters}
-						filterOptions={filterOptions}
-						handleFilter={handleFilter}
-					/>
+          <ul className="w-full p-0">
+            { filterOptions.map((filterOption, index) => (
+              <FilterGroup
+                key={index}
+                filters={filters}
+                filterOption={filterOption}
+                handleFilter={handleFilter}
+              />
+            ))}
+          </ul>
 				</PopoverContent>
 			</Popover>
 			<Hidden smUp>
@@ -63,13 +101,17 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 					open={open}
 					handleClose={() => setOpen(false)}
 					title="Search"
-					disablePadding
 				>
-					<FilterList
-						filters={filters}
-						filterOptions={filterOptions}
-						handleFilter={handleFilter}
-					/>
+					<ul className="w-full p-0">
+            { filterOptions.map((filterOption, index) => (
+              <FilterGroup
+                key={index}
+                filters={filters}
+                filterOption={filterOption}
+                handleFilter={handleFilter}
+              />
+            ))}
+          </ul>
 				</Sheet>
 			</Hidden>
 		</div>

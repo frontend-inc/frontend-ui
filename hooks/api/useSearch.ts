@@ -1,13 +1,12 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useResourceContext } from 'frontend-js'
-import { useFilters } from '..'
 import {
 	SortOptionType,
-	FilterOptionType,
 	SyntheticEventType,
 } from '../../types'
+import { formatFilterArray } from '../../helpers'
 
 const useSearch = (props) => {
 	const { query: defaultQuery = {} } = props
@@ -25,8 +24,70 @@ const useSearch = (props) => {
 		loadMore,
 	} = useResourceContext()
 
+  const [filter, setFilter] = useState()
+	const [queryFilters, setQueryFilters] = useState([])
+	const [activeFilters, setActiveFilters] = useState([])
 	const [keywords, setKeywords] = useState('')
 	const [location, setLocation] = useState('')
+
+  const findFilter = (fieldName, filters) => {
+		let foundFilter = filters.find((f) => f.name == fieldName)
+		setFilter(foundFilter)
+		return foundFilter
+	}
+
+	const compareValues = (a, b) => {
+		if (Array.isArray(a) && Array.isArray(b)) {
+			return a.sort().join(',') === b.sort().join(',')
+		}
+		return a === b
+	}
+
+  // Compare only the name and operator and override
+	const findDuplicateFilterIndex = (filters, filter) => {
+		return filters.findIndex(
+			(f) => f.name === filter.name && f.operator === filter.operator
+    )
+	}
+
+	const handleAddFilter = (filter) => {
+		let updatedFilters = [...activeFilters]
+		let duplicateIndex = findDuplicateFilterIndex(activeFilters, filter)
+		if (duplicateIndex > -1) {
+			updatedFilters = updatedFilters?.filter(
+				(f, index) => index !== duplicateIndex
+			)
+		} else {
+			//@ts-ignore
+			updatedFilters = [...updatedFilters, filter]
+		}
+		setActiveFilters(updatedFilters)
+		return updatedFilters
+	}
+
+	const isBlank = (value) => {
+		return (
+			value === '' ||
+			value == undefined ||
+			value == null ||
+			(Array.isArray(value) && value.length === 0)
+		)
+	}
+
+	const buildQueryFilters = (activeFilters) => {
+		let filters = []
+		activeFilters
+			.filter((filter) => !isBlank(filter?.value))
+			.forEach((filter) => {
+				let { name, operator, value } = filter
+				filters = [
+					...filters,
+          { [name]: { [operator]: value } }
+        ] as any
+			})
+		return filters
+	}
+
 
 	const handleKeywordChange = (ev: SyntheticEventType) => {
 		setKeywords(ev.target.value)
@@ -46,7 +107,6 @@ const useSearch = (props) => {
 		if (location?.length > 0) {
 			searchQuery = {
 				...searchQuery,
-				method: 'location',
 				location: location,
 			}
 		} else {
@@ -72,40 +132,35 @@ const useSearch = (props) => {
 		})
 	}
 
-	const {
-		mergeFilters,
-		buildQueryFilters,
-		activeFilters,
-		setActiveFilters,
-		handleAddFilter,
-	} = useFilters({
-		query,
-	})
-
 	// Filter methods
 	const handleClearFilters = () => {
-		setActiveFilters([])
-		findMany({
+		setActiveFilters([])		
+	}
+
+  useEffect(() => {
+    findMany({
 			...defaultQuery,
-			filters: defaultQuery?.filters,
+			filters: [
+        ...queryFilters,
+        ...(defaultQuery?.filters || [])
+      ],
 			sort_by: 'id',
 			sort_direction: 'desc',
 			keywords: '',
 			page: 1,
 		})
-	}
+  }, [queryFilters])
 
-	const handleFilter = (filter: FilterOptionType) => {
-		let newFilters = handleAddFilter(filter)
-		let queryFilter = buildQueryFilters(newFilters)
-		let mergedFilters = mergeFilters(defaultQuery?.filters, queryFilter)
-		findMany({
-			...defaultQuery,
-			...query,
-			filters: mergedFilters,
-			page: 1,
-		})
-	}
+	useEffect(() => {
+		setQueryFilters(buildQueryFilters(activeFilters))
+	}, [activeFilters])
+
+	useEffect(() => {
+		if (defaultQuery?.filters?.length >= 0) {
+			let filterArray = formatFilterArray(defaultQuery?.filters)
+			setActiveFilters(filterArray)
+		}
+	}, [defaultQuery?.filters?.length])
 
 	return {
 		loading,
@@ -127,7 +182,8 @@ const useSearch = (props) => {
 		handleSortBy,
 		handleSortDirection,
 		activeFilters,
-		handleFilter,
+    setActiveFilters,
+		handleAddFilter,
 		handleClearFilters,
 	}
 }

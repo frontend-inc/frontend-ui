@@ -63,14 +63,6 @@ export type QueryParamsType = {
 	filters?: FiltersType | Record<string, any>
 	page?: number | null
 	per_page?: number | null
-	current_user?: boolean
-	current_team?: boolean
-	belongs_to?: number
-	similar_to?: number
-	location?: string
-	radius?: number
-	method?: string
-	resource_id?: number | string
 	rest?: any
 }
 
@@ -104,20 +96,16 @@ export type FilterOperatorType =
 	| '90_days'
 	| 'next_year'
 
-export type FilterWhereType = 'AND' | 'OR'
-
 export type FilterOptionType = {
-	where: FilterWhereType
-	field: string
+	name: string
 	operator: FilterOperatorType
 	value: any
 }
 
 export type SearchFilterInputProps = {
 	filter?: FilterOptionType
-	field?: string
+	name?: string
 	label?: string
-	where?: FilterWhereType
 	operator?: FilterOperatorType
 	options?: OptionType[]
 	handleSubmit: (value: any) => void

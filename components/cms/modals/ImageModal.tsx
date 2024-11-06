@@ -2,21 +2,21 @@
 
 import React from 'react'
 import { Image, MediaModal } from '../..'
-import { useResourceContext } from 'frontend-js'
 import { cn } from 'frontend-shadcn'
 
-export type ShowImageModalProps = {
+export type ImageModalProps = {
+  open: boolean
+  handleClose: () => void
+  resource: any
 	enableGradient?: boolean
 }
 
-const ShowImageModal: React.FC<ShowImageModalProps> = (props) => {
-	const { openShow, setOpenShow, resource } = useResourceContext()
-
-	const { enableGradient } = props || {}
+const ImageModal: React.FC<ImageModalProps> = (props) => {
+	const { open, handleClose, resource, enableGradient } = props || {}
 
 	if (!resource) return null
 	return (
-		<MediaModal open={openShow} handleClose={() => setOpenShow(false)}>
+		<MediaModal open={open} handleClose={handleClose}>
 			<div className={cn('w-full min-w-[80vw]')}>
 				<Image
 					alt={resource?.title}
@@ -29,4 +29,4 @@ const ShowImageModal: React.FC<ShowImageModalProps> = (props) => {
 	)
 }
 
-export default ShowImageModal
+export default ImageModal

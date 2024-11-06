@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button } from '../../core'
 import { cn } from 'frontend-shadcn'
 import {
@@ -51,12 +51,20 @@ const CollectionHeader: React.FC<CollectionHeaderProps> = (props) => {
 		handleSortBy,
 		handleSortDirection,
 		activeFilters,
-		handleFilter,
-		handleClearFilters,
+    handleAddFilter,
 	} = useSearch({
 		url,
 		query: defaultQuery,
 	})
+
+
+  const handleFilterClick = (name: string, value: string | number | boolean) => {
+    handleAddFilter({
+      name,
+      value,
+      operator: 'eq',
+    })
+  }
 
 	const { handleAdd } = useCollectionForms()
 
@@ -89,8 +97,7 @@ const CollectionHeader: React.FC<CollectionHeaderProps> = (props) => {
 							<FilterButton
 								filterOptions={filterOptions}
 								filters={activeFilters}
-								handleFilter={handleFilter}
-								handleClear={handleClearFilters}
+								handleFilter={handleFilterClick}
 							/>
 						</div>
 					)}

@@ -24,5 +24,5 @@ export { default as CollectionDelete } from './CollectionDelete'
 export { default as CollectionHeader } from './CollectionHeader'
 
 // Media
-export { default as ShowImageModal } from '../modals/ShowImageModal'
-export { default as ShowVideoModal } from '../modals/ShowVideoModal'
+export { default as ShowImageModal } from '../modals/ImageModal'
+export { default as ShowVideoModal } from '../modals/VideoModal'

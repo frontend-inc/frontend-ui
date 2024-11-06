@@ -204,32 +204,32 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		})
 	}
 
-	const {
-		activeFilters,
-		setActiveFilters,
-		handleAddFilter,
-		buildQueryFilters,
-	} = useFilters({
-		query,
-	})
-
+  const [activeFilters, setActiveFilters] = useState([])
+  
+  const handleFilter = (name: string, value: string | number | boolean) => {
+    let newFilters = []
+    if(activeFilters.find(f => Object.keys(f)[0] == name)) {
+      newFilters = newFilters.filter(f => Object.keys(f)[0] != name)
+    }else{
+      // @ts-ignore
+      newFilters = [ ...activeFilters, { [name]: { eq: value } } ]
+    }    
+    setActiveFilters(newFilters)
+  }
+      
 	// Filter methods
 	const handleClearFilters = () => {
 		setActiveFilters([])
 		findMany({
-			filters: {
+			filters: [        
 				...defaultQuery?.filters,
-			},
+      ],
 			sort_by: 'id',
 			sort_direction: 'desc',
 			keywords: '',
 			page: 1,
 			per_page: perPage,
 		})
-	}
-
-	const handleFilter = (filter: FilterOptionType) => {
-		handleAddFilter(filter)
 	}
 
 	const handleAdd = () => {
@@ -323,11 +323,13 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		if (activeFilters) {
 			findMany({
 				...query,
-				filters: buildQueryFilters(activeFilters),
-				...defaultQuery,
+				filters: [
+          ...(activeFilters || []),
+          ...(defaultQuery?.filters || []), 
+        ]				
 			})
 		}
-	}, [activeFilters?.length])
+	}, [activeFilters])
 
 	useEffect(() => {
 		if (url && name && perPage) {
