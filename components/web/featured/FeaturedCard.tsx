@@ -52,7 +52,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 	return (
 		<div
 			className={cn(
-        'flex items-center gap-6 flex-wrap md:flex-nowrap',
+        'flex items-center gap-10 flex-wrap md:flex-nowrap',
         flexDirection === 'row-reverse' ? 'flex-row-reverse' : 'flex-row'
       )}
 		>
@@ -61,6 +61,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 					label={label}
 					src={image}
 					height={320}
+          aspectRatio={1.5}
 					objectFit={objectFit}
 					alt={title}
 					enableOverlay={enableOverlay}
@@ -69,8 +70,10 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 				/>
 			</div>
 			<div className="flex flex-col gap-4 w-full md:w-1/2">
-				<Typography variant='h6'>{title}</Typography>
-				{description && <ExpandableText text={description} />}
+				<Typography variant='h3'>{title}</Typography>
+        <Typography variant='subtitle2' className="text-muted-foreground">
+          {description}
+        </Typography>				
 				{buttonText && (
 					<div className="flex flex-row gap-4">
 						<Button size="lg" onClick={handleItemClick}>

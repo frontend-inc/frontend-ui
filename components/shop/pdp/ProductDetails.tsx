@@ -87,18 +87,18 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 			}
 			addToCart={
         product.recurring ? 
-        <SubscribeButton 
-          availableForSale 
-          size="lg" 
-          productId={product?.id} 
-          className="max-w-[360px]"
-        /> :
-				<AddToCartButton 
-          availableForSale 
-          size="lg" 
-          productId={product?.id} 
-          className="max-w-[360px]"
-        />					
+          <SubscribeButton 
+            availableForSale 
+            size="lg" 
+            productId={product?.id} 
+            className="max-w-[360px]"
+          /> :
+          <AddToCartButton 
+            availableForSale 
+            size="lg" 
+            productId={product?.id} 
+            className="max-w-[360px]"
+          />					
 			}
 			slots={slots}
 		/>

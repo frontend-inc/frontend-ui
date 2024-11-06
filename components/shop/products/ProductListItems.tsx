@@ -5,6 +5,7 @@ import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { ProductListItem, DataLayout } from '../..'
 import { ButtonType, MetafieldType } from '../../../types'
+import { BlurFade } from '../../../components'
 
 export type ProductListItemsProps = {
 	style?: 'list' | 'card' | 'avatar' | 'cover' | 'text'
@@ -50,7 +51,6 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 		},
 	} = props
 
-
   const handleShowClick = (product: any) => {
     if(handleClick) {
       handleClick(product)
@@ -68,21 +68,22 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 	return (
 		<div className="flex flex-col space-y-2 w-full">
 			<DataLayout {...slots.list} layout='grid' loading={loading}>
-				{resources?.map((resource, index) => (
-					<ProductListItem
-						key={resource?.id}
-						style={style}
-						resource={resource}
-						displayFields={displayFields}
-						handleClick={() => handleShowClick(resource)}
-						buttons={buttons}
-						enableFavorites={enableFavorites}
-						enableLikes={enableLikes}
-						enableRatings={enableRatings}
-						enableGradient={enableGradient}
-						enableOverlay={enableOverlay}
-						{...slots.item}
-					/>
+				{resources?.map((resource, idx) => (
+          <BlurFade delay={0.25 + idx * 0.05} inView key={resource?.id}>
+            <ProductListItem					
+              style={style}
+              resource={resource}
+              displayFields={displayFields}
+              handleClick={() => handleShowClick(resource)}
+              buttons={buttons}
+              enableFavorites={enableFavorites}
+              enableLikes={enableLikes}
+              enableRatings={enableRatings}
+              enableGradient={enableGradient}
+              enableOverlay={enableOverlay}
+              {...slots.item}
+            />
+          </BlurFade>
 				))}
 			</DataLayout>
 			<LoadMore

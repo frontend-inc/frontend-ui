@@ -3,6 +3,7 @@
 import React from 'react'
 import Feature from './Feature'
 import { Placeholder } from '../../../components'
+import { BlurFade } from '../../../components'
 
 export type FeaturesProps = {
 	items: {
@@ -18,13 +19,14 @@ const Features: React.FC<FeaturesProps> = (props) => {
 	return (
 		<div className="container mx-auto max-w-screen-lg">
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-				{items?.map((item, i) => (
-					<Feature
-						key={i}
-						icon={item?.icon}
-						title={item?.title}
-						description={item?.description}
-					/>
+				{items?.map((item, idx) => (
+          <BlurFade delay={0.25 + idx * 0.05} inView key={idx}>
+            <Feature     
+              icon={item?.icon}
+              title={item?.title}
+              description={item?.description}
+            />
+          </BlurFade>
 				))}
 			</div>
 			{items?.length == 0 && (

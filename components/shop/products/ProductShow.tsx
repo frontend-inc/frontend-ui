@@ -3,6 +3,7 @@
 import React from 'react'
 import { Drawer, ProductDetails, ProductReviews } from '../..'
 import { useResourceContext } from 'frontend-js'
+import { BlurFade } from '../../../components'
 
 export type ShowModalProps = {
 	handle?: string
@@ -30,22 +31,24 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 		<Drawer 
       open={openShow} handleClose={() => setOpenShow(false)}>
       <div className="w-full flex flex-row justify-center pb-10">
-        <div className="md:w-screen-sm w-full flex flex-col space-y-[20px]">
-          <ProductDetails
-            direction="column"
-            product={resource}              
-            enableGradient={enableGradient}
-            enableOverlay={enableOverlay}
-            enableFavorites={enableFavorites}
-            enableLikes={enableLikes}
-            enableRatings={enableRatings}
-          />
-          { enableRatings && (
-            <ProductReviews
-              productId={resource?.id}
+        <BlurFade delay={0.25} inView className='w-full'>
+          <div className="w-full flex flex-col space-y-[20px]">
+            <ProductDetails
+              direction="column"
+              product={resource}              
+              enableGradient={enableGradient}
+              enableOverlay={enableOverlay}
+              enableFavorites={enableFavorites}
+              enableLikes={enableLikes}
+              enableRatings={enableRatings}
             />
-          )}
-        </div>
+            { enableRatings && (
+              <ProductReviews
+                productId={resource?.id}
+              />
+            )}
+          </div>
+        </BlurFade>
       </div>
 		</Drawer>
 	)
