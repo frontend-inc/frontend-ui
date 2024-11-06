@@ -35,13 +35,15 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Heading
-				label={label}
-				title={title}
-				description={description}
-				textAlign={'center'}
-			/>
-			<Features {...rest} />
+      <div className="flex flex-col space-y-6 w-full">
+        <Heading
+          label={label}
+          title={title}
+          description={description}
+          textAlign={'center'}
+        />
+        <Features {...rest} />
+      </div>
 		</Section>
 	)
 }

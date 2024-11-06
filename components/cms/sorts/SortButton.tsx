@@ -29,34 +29,32 @@ export default function SortButton({
 	const toggleOpen = () => setIsOpen(!isOpen)
 
 	return (
-		<>
-			<div className="hidden sm:block">
-				<Popover open={isOpen} onOpenChange={setIsOpen}>
-					<PopoverTrigger asChild>
-						<Button
-							variant="secondary"
-							className={cn('w-full sm:w-auto border-r-0', 'hover:border-r-0')}
-							onClick={toggleOpen}
-						>
-							Sort
-							{sortDirection === 'asc' ? (
-								<ArrowUp className="ml-2 h-4 w-4" />
-							) : (
-								<ArrowDown className="ml-2 h-4 w-4" />
-							)}
-						</Button>
-					</PopoverTrigger>
-					<PopoverContent className="bg-background w-80 p-0">
-						<SortList
-							sortOptions={sortOptions}
-							sortBy={sortBy}
-							sortDirection={sortDirection}
-							handleSortBy={handleSortBy}
-							handleSortDirection={handleSortDirection}
-						/>
-					</PopoverContent>
-				</Popover>
-			</div>
+		<>			
+      <Popover open={isOpen} onOpenChange={setIsOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            variant="secondary"
+            className={cn('w-full sm:w-auto border-r-0', 'hover:border-r-0')}
+            onClick={toggleOpen}
+          >
+            Sort
+            {sortDirection === 'asc' ? (
+              <ArrowUp className="ml-2 h-4 w-4" />
+            ) : (
+              <ArrowDown className="ml-2 h-4 w-4" />
+            )}
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="bg-background w-80 p-0">
+          <SortList
+            sortOptions={sortOptions}
+            sortBy={sortBy}
+            sortDirection={sortDirection}
+            handleSortBy={handleSortBy}
+            handleSortDirection={handleSortDirection}
+          />
+        </PopoverContent>
+      </Popover>			
 		</>
 	)
 }

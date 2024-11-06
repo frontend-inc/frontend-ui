@@ -15,7 +15,7 @@ type FeatureProps = {
 const Feature: React.FC<FeatureProps> = (props) => {
 	const { icon, title, description } = props || {}
 	return (
-		<div className="flex flex-col space-y-3 justify-center">
+		<div className="flex flex-col space-y-3 justify-center items-center">
 			{icon && (
 				<Avatar 
           style={{
@@ -29,8 +29,8 @@ const Feature: React.FC<FeatureProps> = (props) => {
 				</Avatar>
 			)}
 			<div className="flex flex-col justify-center space-y-2">
-				<Typography variant="h6">{title}</Typography>
-				<Typography className="text-muted-foreground" variant="body1">
+				<Typography variant="h6" className="text-center">{title}</Typography>
+				<Typography className="text-muted-foreground text-center" variant="body1">
 					{description}
 				</Typography>
 			</div>

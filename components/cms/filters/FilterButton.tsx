@@ -25,22 +25,26 @@ export const FilterGroup: React.FC<FilterGroupProps> = (props) => {
 
   return(
     <div className="w-full p-4 rounded-lg">
-      <Typography variant="body1" className="font-medium text-muted-foreground">
+      <Typography variant="body1" className="font-medium">
         { filterOption?.label }
       </Typography>
-      { filterOption?.options?.map((option, index) => (
+      { filterOption?.options?.map((option, index) =>{
+        const selected = filters?.find((f) => f?.name === filterOption?.name && f?.value === option?.value)        
+        return(
         <li className="list-none">
-          <button
-            className="flex flex-row justify-between items-center rounded-md w-full p-2 hover:bg-accent hover:bg-background-muted"
+          <Button 
+            fullWidth
+            variant="ghost"
+            className="justify-between items-center"
             onClick={() => handleFilter(filterOption?.name, option?.value)}
+            endIcon={
+              selected && <Icon name="Check" className="ml-2" />              
+            }
           >
-            { option?.label }
-            { filters?.find((f) => f?.name === filterOption?.name && f?.value === option?.value) && (
-              <Icon name="Check" className="ml-2" />
-            )}
-          </button>
+            { option?.label }            
+          </Button>
         </li>
-      ))}
+      )})}
     </div>
   )
 }

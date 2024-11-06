@@ -1,22 +1,22 @@
 'use client'
 
 import React from 'react'
-import PriceTableCard from './PriceTableCard'
+import PricingCard from './PricingCard'
 import { PriceType } from '../../..'
 import { Placeholder } from '../..'
 
-export type PriceTableProps = {
+export type PricingProps = {
 	items: PriceType[]
 }
 
-const PriceTable: React.FC<PriceTableProps> = (props) => {
+const Pricing: React.FC<PricingProps> = (props) => {
 	const { items } = props
 
 	return (
 		<div className="flex flex-col space-y-2">
 			<div className="flex sm:flex-row flex-col space-y-1 sm:space-y-0 sm:space-x-1">
 				{items?.map((item, index) => (
-					<PriceTableCard
+					<PricingCard
 						key={index}
 						label={item.label}
 						title={item.title}
@@ -37,4 +37,4 @@ const PriceTable: React.FC<PriceTableProps> = (props) => {
 	)
 }
 
-export default PriceTable
+export default Pricing

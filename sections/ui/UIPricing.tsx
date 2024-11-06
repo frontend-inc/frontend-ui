@@ -2,13 +2,13 @@
 
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { PriceTable } from '../../components'
-import { PriceTableProps } from '../../components/web/prices/PriceTable'
+import { Pricing } from '../../components'
+import { PricingProps } from '../../components/web/prices/Pricing'
 import { SectionProps, HeadingProps } from '../../types'
 
-type UIPriceTableProps = SectionProps & HeadingProps & PriceTableProps
+type UIPricingProps = SectionProps & HeadingProps & PricingProps
 
-const UIPriceTable: React.FC<UIPriceTableProps> = (props) => {
+const UIPricing: React.FC<UIPricingProps> = (props) => {
 	const {
 		label,
 		title,
@@ -41,9 +41,9 @@ const UIPriceTable: React.FC<UIPriceTableProps> = (props) => {
 				description={description}
 				textAlign={'center'}
 			/>
-			<PriceTable {...rest} />
+			<Pricing {...rest} />
 		</Section>
 	)
 }
 
-export default UIPriceTable
+export default UIPricing

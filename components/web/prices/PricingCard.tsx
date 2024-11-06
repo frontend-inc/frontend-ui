@@ -1,13 +1,12 @@
 'use client'
 
-import React, { useContext } from 'react'
+import React from 'react'
 import { Button, Typography } from '../../core'
 import { useRouter } from 'next/navigation'
 import { Label } from '../..'
-import { AppContext } from '../../../context'
 import { Separator } from 'frontend-shadcn'
 
-type PriceCardProps = {
+type PricingCardProps = {
 	label?: string
 	title: string
 	description?: string
@@ -15,11 +14,12 @@ type PriceCardProps = {
 	price: string | number
 	buttonText?: string
 	url?: string
+  highlight?: boolean
 }
 
-const PriceCard: React.FC<PriceCardProps> = (props) => {
+const PricingCard: React.FC<PricingCardProps> = (props) => {
 	const router = useRouter()
-	const { label, title, features, buttonText, price, url } = props
+	const { highlight, label, title, features, buttonText, price, url } = props
 
 	const handleClick = () => {
 		if (url) {
@@ -51,4 +51,4 @@ const PriceCard: React.FC<PriceCardProps> = (props) => {
 	)
 }
 
-export default PriceCard
+export default PricingCard
