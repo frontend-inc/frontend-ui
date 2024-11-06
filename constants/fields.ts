@@ -184,7 +184,6 @@ export const DOCUMENT_SHOW_FIELDS = {
   post: [
     IMAGE,
     TITLE,
-    LABEL,
     CATEGORY,
     SUBTITLE,
     DESCRIPTION,
@@ -192,7 +191,6 @@ export const DOCUMENT_SHOW_FIELDS = {
   ],
   article: [
     IMAGE,
-    LABEL,
     TITLE,
     PUBLISHED_AT,    
     CATEGORY,
@@ -203,16 +201,14 @@ export const DOCUMENT_SHOW_FIELDS = {
   place: [
     IMAGE,
     TITLE,
-    LABEL,
     CATEGORY,
     SUBTITLE,
     DESCRIPTION,
-    TAGS,
     LOCATION,    
+    TAGS,
   ],
   person: [
     IMAGE,
-    LABEL,
     NAME,
     CATEGORY,
     SUBTITLE,
@@ -221,19 +217,17 @@ export const DOCUMENT_SHOW_FIELDS = {
   ],
   event: [
     IMAGE,
-    LABEL,
     TITLE,
     CATEGORY,
     SUBTITLE,
     DESCRIPTION,
-    TAGS,
     START_DATE,
     END_DATE,
     LOCATION,
+    TAGS,
   ],
   product: [
     IMAGE,
-    LABEL,
     TITLE,
     PRICE,
     CATEGORY,
@@ -243,25 +237,26 @@ export const DOCUMENT_SHOW_FIELDS = {
   ],
   image: [
     IMAGE,
-    LABEL,
     TITLE,
-    SUBTITLE,
-    DESCRIPTION,
+    SUBTITLE,   
+    DESCRIPTION, 
+    TAGS,
   ],
   video: [
     VIDEO,            
     TITLE,
     CATEGORY,
     SUBTITLE,
-    DESCRIPTION
+    DESCRIPTION,
+    TAGS
   ],
   audio: [
-    IMAGE,
     AUDIO,
     TITLE,
     CATEGORY,
     SUBTITLE,
-    DESCRIPTION
+    DESCRIPTION,
+    TAGS
   ],
   file: [    
     FILE,
@@ -269,24 +264,17 @@ export const DOCUMENT_SHOW_FIELDS = {
     SUBTITLE,
     CATEGORY,
     DESCRIPTION,
-    TAGS,
   ],
   youtube: [
     YOUTUBE_VIDEO,
-    TITLE,
-    SUBTITLE,
-    CATEGORY,
-    DESCRIPTION,
     TAGS,
   ],
   vimeo: [
     VIMEO_VIDEO,
-    TITLE,
     TAGS,
   ],
   soundcloud: [
     SOUNDCLOUD_AUDIO,
-    DESCRIPTION,
     TAGS,
   ],
   shopify: [

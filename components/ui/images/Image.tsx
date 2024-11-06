@@ -27,10 +27,10 @@ export interface ResponsiveImageProps {
 export default function ResponsiveImage({
 	src,
 	alt,
-	width = 800,
-	height = 450,
+	width = 600,
+	height = 600,
 	objectFit = 'cover',
-	aspectRatio = 16 / 9,
+	aspectRatio = 1.0,
 	enableOverlay = false,
 	enableGradient = false,
 	disableBorderRadius = false,

@@ -7,6 +7,7 @@ export * from './list-fields'
 export * from './display-fields'
 export * from './show-fields'
 
+export { default as PolicyLink } from './policies/PolicyLink'
 export { default as EmailSubscribe } from './newsletter/EmailSubscribe'
 export { default as ContactForm } from './leads/ContactForm'
 export { default as LoadMore } from './collections/LoadMore'

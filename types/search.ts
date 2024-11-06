@@ -3,7 +3,7 @@ export type SearchFilterOptionType = {
 	name: string
 	options: {
     label: string
-    value: string | number
+    value: string | number | boolean
   }[]		
 }
 

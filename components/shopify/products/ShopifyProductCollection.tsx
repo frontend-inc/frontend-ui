@@ -63,10 +63,6 @@ const ShopifyProductCollection: React.FC<ShopifyProductCollectionProps> = (
 		}
 	}, [shopifyCollection, filters, sortKey, reverse])
 
-  useEffect(() => {
-    console.log("PROPS", props)
-  }, [props])
-
 	return (
 		<div className="flex flex-col space-y-2">
 			<div className="flex flex-row space-x-2">

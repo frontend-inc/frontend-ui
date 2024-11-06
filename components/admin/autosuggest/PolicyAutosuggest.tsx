@@ -9,9 +9,9 @@ type PolicyAutosuggestProps = {
 	value: any
 	name?: string
 	label?: string
+  valueParam?: string
 	handleChange: any
 	query?: any
-	valueParam?: string
 	direction?: 'row' | 'column'
 	placeholder?: string
 }
@@ -22,13 +22,12 @@ const PolicyAutosuggest: React.FC<PolicyAutosuggestProps> = (props) => {
 	const {
 		errors,
 		value,
-		name = 'path',
+    name='policy',
 		direction = 'column',
 		label,
-		valueParam = 'path',
+    valueParam='handle',
 		handleChange,
 		placeholder = 'Select action',
-		query: defaultQuery = {},
 	} = props
 
 	if (!apiUrl) return null
@@ -45,7 +44,6 @@ const PolicyAutosuggest: React.FC<PolicyAutosuggestProps> = (props) => {
 			url={`${apiUrl}/policies`}
 			placeholder={placeholder}
 			handleChange={handleChange}
-			defaultQuery={defaultQuery}
 		/>
 	)
 }

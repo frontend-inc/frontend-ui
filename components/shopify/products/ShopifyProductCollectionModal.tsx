@@ -25,8 +25,6 @@ const ShopifyProductCollectionModal: React.FC<ShopifyProductCollectionModalProps
     ...rest		
 	} = props
 
-  console.log('collection', collection)
-
 	return (
 		<Drawer 
       title={ collection?.title }

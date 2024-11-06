@@ -36,9 +36,11 @@ const CollectionDetails: React.FC<CollectionHeroProps> = (props) => {
 	return (
 		<div className="w-full flex flex-col space-y-6">
 			{imageField && (
-				<div className="w-full h-[240px]">
-					<Image alt={resource?.label} src={resource?.image?.url} label={resource?.label} />
-				</div>
+        <div className="w-full flex flex-row justify-center">        
+          <div className="w-full h-[320px] max-w-screen-sm">
+            <Image alt={resource?.label} src={resource?.image?.url} label={resource?.label} />
+          </div>
+        </div>
 			)}
       { actions && (
         <div className="flex flex-row items-center justify-center w-full">
