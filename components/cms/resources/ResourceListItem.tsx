@@ -23,7 +23,7 @@ export type ResourceListItemProps = {
 	avatar?: React.ReactNode
 	icon?: string
 	color?: string
-	image?: string
+	image: string
 	handleClick?: (resource: any) => void
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
@@ -74,7 +74,7 @@ export default function ResourceListItem({
 						onCheckedChange={handleSelect}
 					/>
 				)}
-				{avatar && (
+				{avatar ? (
           <div className="mr-2">
             <button
 							className="w-full h-full focus:outline-none focus:ring-2"
@@ -83,17 +83,16 @@ export default function ResourceListItem({
               {avatar}
             </button>
           </div>
+        ):(
+          <div className="mr-2 w-[72px] h-[72px]">
+            <button
+              className="w-full h-full focus:outline-none focus:ring-2"
+              onClick={handleClick}
+            >
+              <Image src={image} aspectRatio={1.0} alt={image} />
+            </button>
+          </div>
         )}
-				{image && (
-					<div className="mr-2 w-[72px] h-[72px]">
-						<button
-							className="w-full h-full focus:outline-none focus:ring-2"
-							onClick={handleClick}
-						>
-							<Image src={image} aspectRatio={1.0} alt={image} />
-						</button>
-					</div>
-				)}
 				{icon && (
 					<button
 						className="focus:outline-none focus:ring-2"

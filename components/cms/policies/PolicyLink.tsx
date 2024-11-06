@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Drawer, Button } from '../../../components'
 import { usePolicies } from '../../../hooks'
+import Link from 'next/link'
 
 type PolicyLinkProps = {
   label: string
@@ -26,9 +27,9 @@ const PolicyLink: React.FC<PolicyLinkProps> = (props) => {
 
   return(
       <>
-        <Button variant="link" className="text-foreground" onClick={ handleClick }>
+        <Link href="#" className="text-sm text-muted-foreground" onClick={ handleClick }>
           { label }
-        </Button>
+        </Link>
         <Drawer 
           loading={ loading }
           title={ policy?.title }
