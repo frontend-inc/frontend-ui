@@ -53,7 +53,7 @@ const AdminDocumentHeader: React.FC<AdminDocumentHeaderProps> = (props) => {
 					</Button>
 					<Modal
 						icon="Zap"
-						title="Generate Data"						
+						title="Generate Content"						
 						open={open}
 						handleClose={() => setOpen(false)}
             loading={collectionLoading}

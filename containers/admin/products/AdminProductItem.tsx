@@ -30,7 +30,13 @@ const AdminProductItem: React.FC<ResourceItemProps> = (props) => {
 			secondary={
 				<ListFields
 					resource={product}
-					fields={[{ label: 'Price', name: 'display_price', variant: 'string' }]}
+					fields={[
+            { 
+              label: 'Price', 
+              name: 'display_price', 
+              variant: 'string' 
+            }
+          ]}
 				/>
 			}
 			secondaryAction={<PublishLabel published={product?.published} />}

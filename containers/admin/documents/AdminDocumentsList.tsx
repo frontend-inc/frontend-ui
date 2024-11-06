@@ -32,7 +32,7 @@ const AdminDocumentsList: React.FC<AdminDocumentListProps> = (props) => {
   ]
 
   const showFields = [
-    ...DOCUMENT_SHOW_FIELDS[documentType],
+    ...DOCUMENT_FORM_FIELDS[documentType],
     ...metafields
   ]
     

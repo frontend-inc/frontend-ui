@@ -9,7 +9,7 @@ type ResourceDetailsProps = {
   hero?: React.ReactNode
   actions?: React.ReactNode
 	resource: any
-	primary: string
+	primary?: string
 	secondary?: string
 	label?: string
 	image: string

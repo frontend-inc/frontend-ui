@@ -34,8 +34,7 @@ const ShowField: React.FC<ShowFieldProps> = (props) => {
 	} = props
 	const { name, label, variant: fieldVariant, icon } = field
 	let value = get(resource, name)
-	if (!value || value?.length == 0) return null
-
+	  
 	const components = {
 		boolean: FieldBoolean,
 		date: FieldDate,

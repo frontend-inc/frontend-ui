@@ -23,13 +23,14 @@ const AdminDocumentShow: React.FC<AdminDocumentShowProps> = (props) => {
 	} = props || {}
 
   const filteredFields = fields.filter(
-    (f) => !["label", "title","image","description","handle"].includes(f.name)
+    (f) => !["label", "title","image"].includes(f.name)
   )
 
 	return (
 		<ResourceModal
 			loading={loading}
 			open={open}
+      title={ resource?.title }
 			handleClose={handleClose}
 			enableEdit={enableEdit}
 			enableDelete={enableDelete}
@@ -39,8 +40,6 @@ const AdminDocumentShow: React.FC<AdminDocumentShowProps> = (props) => {
 			<ResourceDetails
 				label={resource?.label}
 				image={resource?.image?.url}
-				primary={resource?.title}
-				secondary={resource?.description}
 				resource={resource}
 				fields={filteredFields}
 				direction="column"
