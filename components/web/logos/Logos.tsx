@@ -1,22 +1,47 @@
 'use client'
 
 import React from 'react'
-import { Placeholder, BrandLogos } from '../..'
+import { Placeholder } from '../..'
+import { Marquee } from '../../../components'
+import Image from 'next/image'
 
 export type LogosProps = {
-	title?: string
 	logos: {
 		image: string
 		title: string
 	}[]
+  height?: number
+  width?: number
 }
 
 const Logos: React.FC<LogosProps> = (props) => {
-	const { logos = [] } = props
+	const { logos = [], height = 48, width = 128 } = props
 
 	return (
-		<div className="flex flex-col w-full">
-			<BrandLogos logos={logos} width={128} height={48} />
+		<div className="flex flex-col w-full">			
+      <div className='relative flex flex-wrap w-full justify-center items-center gap-4 sm:flex-nowrap'>
+        <Marquee pauseOnHover className="[--duration:20s]">
+          {logos.map((logo, i) => (
+            <div className={'p-4 max-h-[50px] max-w-[140px] rounded-lg w-full flex items-center justify-center'}>
+              <Image
+                key={i}
+                src={logo?.image}
+                height={height}
+                width={width}
+                style={{
+                  objectFit: 'contain',
+                  height,
+                  width,
+                }}
+                layout="responsive"
+                alt={logo?.title}
+              />
+            </div>
+          ))}
+          </Marquee>
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
+        </div>
 			{logos?.length === 0 && (
 				<Placeholder
 					icon="Image"

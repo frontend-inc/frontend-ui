@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Typography } from '../../core'
-import { Label, Image, BrandLogos } from '../..'
+import { Label, Image, Logos } from '../..'
 import { SpotlightListProps } from './SpotlightList'
 
 const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
@@ -33,7 +33,7 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
 						</Typography>
 						{secondary && secondary}
 						{actions && actions}
-						{logos?.length > 0 && <BrandLogos logos={logos} />}
+						{logos?.length > 0 && <Logos logos={logos} />}
 					</div>
 					<div className="md:w-1/2 w-full p-2 flex flex-col justify-center">
 						<Image

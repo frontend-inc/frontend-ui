@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Typography } from '../../core'
-import { BrandLogos, Label, Image } from '../..'
+import { Logos, Label, Image } from '../..'
 
 export type SpotlightListProps = {
 	label?: string
@@ -56,7 +56,7 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 
 						{secondary && secondary}
 						{actions && actions}
-						{logos?.length > 0 && <BrandLogos logos={logos} />}
+						{logos?.length > 0 && <Logos logos={logos} />}
 						<div className="relative shadow-xl rounded-lg overflow-hidden">
 							<Image
 								src={image}
