@@ -44,12 +44,7 @@ const AdminDocumentListItem: React.FC<ResourceItemProps> = (props) => {
 				/>
 			}
 			secondaryAction={
-        <div className="flex flex-row space-x-2">
-          <PublishLabel published={resource?.published} />
-          { resource?.premium && (
-            <Badge className="px-3 py-1">Premium</Badge>
-          )}
-        </div> 
+        <PublishLabel published={resource?.published} />          
       }
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}

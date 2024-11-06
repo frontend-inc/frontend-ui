@@ -23,14 +23,10 @@ const useSubscription = () => {
 		cancel_url: string
 	}
 
-	const subscribe = async (options: SubscriptionOptionsType) => {
+	const subscribe = async (productId, stripeOptions: SubscriptionOptionsType) => {
 		return await loadingWrapper(
-      () => api.subscribe(options, apiParams)		
+      () => api.subscribe(productId, stripeOptions, apiParams)		
     )
-	}
-
-	const unsubscribe = async () => {
-		return await loadingWrapper(() => api.unsubscribe(apiParams))
 	}
 
 	return {
@@ -38,7 +34,6 @@ const useSubscription = () => {
 		delayedLoading,
 		errors,
 		subscribe,
-		unsubscribe,
 	}
 }
 

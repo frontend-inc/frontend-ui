@@ -52,8 +52,6 @@ const AdminDocumentToolbar = (props) => {
 			<div className="flex flex-row justify-center items-center space-x-2">
 				<Button onClick={handlePublish}>Publish</Button>
 				<Button variant="secondary" onClick={handleUnpublish}>Unpublish</Button>
-        <Button variant="secondary" onClick={handlePremium}>Premium</Button>
-        <Button variant="secondary" onClick={handleFree}>Free</Button>
 				<AlertButton variant="secondary" onClick={handleDelete}>
 					Delete
 				</AlertButton>

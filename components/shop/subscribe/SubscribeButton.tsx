@@ -1,8 +1,8 @@
 'use client'
 
-import React, { use } from 'react'
+import React from 'react'
 import { Button } from '../../core'
-import { useCart } from '../../../hooks'
+import { useAlerts, useSubscribe } from '../../../hooks'
 import { cn } from 'frontend-shadcn'
 
 type SusbcribeButtonProps = {
@@ -11,6 +11,7 @@ type SusbcribeButtonProps = {
 	fullWidth?: boolean
   buttonText?: string
 	availableForSale?: boolean
+  price?: string
   className?: string
 }
 
@@ -22,17 +23,18 @@ const SusbcribeButton = (props: SusbcribeButtonProps) => {
     size = 'default', 
     fullWidth,     
     availableForSale,
+    price,
   } = props
   
   const { showAlertError } = useAlerts()
-	const { loading, subscribe } = useCart()
+	const { loading, subscribe } = useSubscribe()
 
 	const handleClick = async () => {
     let currentUrl = window.location.href 
     let stripe = await subscribe(productId, {
       success_url: currentUrl,
       cancel_url: currentUrl, 
-    })
+    }) as any
     if(stripe?.error){
       showAlertError(stripe?.error)
     }else if(stripe?.data?.url){

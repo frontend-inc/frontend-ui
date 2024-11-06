@@ -5,6 +5,7 @@ import { PDP } from '../..'
 import {
 	ProductRating,
 	SocialButtons,
+  SubscribeButton,
 	AddToCartButton,
 } from '../..'
 import { ProductType } from '../../../types'
@@ -85,6 +86,13 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 				/>
 			}
 			addToCart={
+        product.recurring ? 
+        <SubscribeButton 
+          availableForSale 
+          size="lg" 
+          productId={product?.id} 
+          className="max-w-[360px]"
+        /> :
 				<AddToCartButton 
           availableForSale 
           size="lg" 

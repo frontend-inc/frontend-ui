@@ -31,6 +31,14 @@ const AdminProductCreateForm: React.FC<ResourceFormProps> = (
           { name: 'recurring', operator: 'eq', value: true },
         ]
      },
+     { 
+      label: 'Free trial days', 
+      name: 'free_trial_days', 
+      variant: 'number', 
+      conditions: [
+        { name: 'recurring', operator: 'eq', value: true },
+      ]
+   },
 	]
 
 	return <ResourceForm {...props} fields={fields} />

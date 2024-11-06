@@ -30,7 +30,7 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 		<Drawer 
       open={openShow} handleClose={() => setOpenShow(false)}>
       <div className="w-full flex flex-row justify-center pb-10">
-        <div className="md:max-w-screen-sm flex flex-col space-y-[20px]">
+        <div className="md:w-screen-sm w-full flex flex-col space-y-[20px]">
           <ProductDetails
             direction="column"
             product={resource}              

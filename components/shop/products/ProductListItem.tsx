@@ -3,7 +3,7 @@
 import React from 'react'
 import { ProductCard } from '../..'
 import { SocialButtons } from '../..'
-import { AddToCartButton } from '../../../components'
+import { SubscribeButton, AddToCartButton } from '../../../components'
 
 type ProductListItemProps = {
 	resource: any
@@ -51,11 +51,20 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 				</div>
 			}
 			addToCart={
+        resource?.recurring ? 
+        <SubscribeButton 
+          availableForSale
+          fullWidth
+          productId={resource?.id}
+          size="lg"
+          price={resource?.display_price}
+        /> :        
 				<AddToCartButton
 					availableForSale
 					fullWidth
 					productId={resource?.id}
 					size="lg"
+          price={resource?.display_price}
 				/>
 			}
 			disableBorder={disableBorder}
