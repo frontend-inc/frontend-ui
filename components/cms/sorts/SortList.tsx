@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { cn } from 'frontend-shadcn'
-import { Button } from '../../../components'
+import { Typography, Button } from '../../../components'
 import { Check } from 'lucide-react'
 import { SortOptionType } from '../../../types'
 import { MenuList } from '../../../components'
@@ -29,49 +29,54 @@ export default function SortList({
 	handleSortDirection,
 }: SortListProps) {
 	return (
-		<ul>
-			<MenuList label="Sort By">
-				<ul className="space-y-2">
+		<div className="flex flex-col space-y-3 w-full p-4">
+      <Typography variant="body1" className="text-primary font-medium">
+        Sort by 
+      </Typography>			
+				<ul className="space-y-1">
 					{sortOptions?.map((sortOption) => (
 						<Button
 							key={sortOption.name}
-							variant="outline"
+							variant="ghost"
 							className={cn(
-								'w-full justify-start hover:bg-primary/10',
-								sortBy === sortOption.name &&
-									'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground'
+								'w-full justify-between',
+                sortBy === sortOption.name && 'bg-muted'
 							)}
 							onClick={() => handleSortBy(sortOption)}
+              endIcon={
+                sortBy === sortOption.name && <Check className="w-4 h-4" />
+              }
 						>
-							<span className="flex-1 text-left">{sortOption.label}</span>
-							{sortBy === sortOption.name && <Check className="w-4 h-4 ml-2" />}
+							{sortOption.label}
 						</Button>
 					))}
 				</ul>
-			</MenuList>
-			<MenuList label="Direction" enableBorder>
-				<ul className="space-y-2">
+      <Typography variant="body1" className="text-primary font-medium">
+        Direction  
+      </Typography>			
+				<ul className="space-y-1">
 					{SORT_DIRECTIONS.map((direction) => (
 						<Button
 							key={direction.value}
-							variant="outline"
-							className={cn(
-								'w-full justify-start hover:bg-primary hover:text-primary-foreground',
-								sortDirection === direction.value &&
-									'bg-primary text-primary-foreground'
-							)}
+							variant="ghost"
+							fullWidth 
 							onClick={() =>
 								handleSortDirection(direction.value as 'asc' | 'desc')
 							}
+              className={cn(
+                "justify-between",
+                sortDirection === direction.value && 'bg-muted'
+              )}
+              endIcon={
+                sortDirection === direction.value && (
+                  <Check className="w-4 h-4 ml-2" />
+                )
+              }
 						>
-							<span className="flex-1 text-left">{direction.label}</span>
-							{sortDirection === direction.value && (
-								<Check className="w-4 h-4 ml-2" />
-							)}
+							{direction.label}							
 						</Button>
 					))}
-				</ul>
-			</MenuList>
-		</ul>
+				</ul>			
+		</div>
 	)
 }
