@@ -40,6 +40,7 @@ const UIPricing: React.FC<UIPricingProps> = (props) => {
 				title={title}
 				description={description}
 				textAlign={'center'}
+        textVariant="h2"
 			/>
 			<Pricing {...rest} />
 		</Section>

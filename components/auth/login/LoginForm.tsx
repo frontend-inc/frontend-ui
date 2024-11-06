@@ -56,7 +56,12 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 				/>
 			</div>
 			<div className="flex flex-col space-y-2">
-				<Button fullWidth onClick={handleSubmit} loading={loading}>
+				<Button 
+          size="lg"
+          fullWidth 
+          onClick={handleSubmit} 
+          loading={loading}
+        >
 					Sign In
 				</Button>
 				{handleSignup && (

@@ -3,6 +3,7 @@
 import React from 'react'
 import { Drawer } from '../../../components'
 import { ShopifyProductDetails } from '../../../components/shopify'
+import { BlurFade } from '../../../components'
 
 type ShopifyProductModalProps = {
 	shopifyProduct: string 
@@ -23,12 +24,14 @@ const ShopifyProductModal: React.FC<ShopifyProductModalProps> = (props) => {
 
 	return (
 		<Drawer open={open} handleClose={handleClose} maxWidth="lg">
-			<ShopifyProductDetails
-        disableZoom
-				shopifyProduct={shopifyProduct}
-				enableQuantity={enableQuantity}
-				buttonText={buttonText}
-			/>
+      <BlurFade delay={0.25} inView>
+        <ShopifyProductDetails
+          disableZoom
+          shopifyProduct={shopifyProduct}
+          enableQuantity={enableQuantity}
+          buttonText={buttonText}
+        />
+      </BlurFade>
 		</Drawer>
 	)
 }

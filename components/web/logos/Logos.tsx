@@ -20,7 +20,7 @@ const Logos: React.FC<LogosProps> = (props) => {
 	return (
 		<div className="flex flex-col w-full">			
       <div className='relative flex flex-wrap w-full justify-center items-center gap-4 sm:flex-nowrap'>
-        <Marquee pauseOnHover className="[--duration:20s]">
+        <Marquee className="[--duration:20s]">
           {logos.map((logo, i) => (
             <div className={'p-4 max-h-[50px] max-w-[140px] rounded-lg w-full flex items-center justify-center'}>
               <Image

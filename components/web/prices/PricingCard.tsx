@@ -3,8 +3,10 @@
 import React from 'react'
 import { Button, Typography } from '../../core'
 import { useRouter } from 'next/navigation'
-import { Label } from '../..'
+import { Badge } from 'frontend-shadcn'
 import { Separator } from 'frontend-shadcn'
+import { Check } from 'lucide-react'
+import { cn } from 'frontend-shadcn'
 
 type PricingCardProps = {
 	label?: string
@@ -14,39 +16,68 @@ type PricingCardProps = {
 	price: string | number
 	buttonText?: string
 	url?: string
-  highlight?: boolean
+  path?: string
+  interval?: string
+  popular?: boolean
 }
 
 const PricingCard: React.FC<PricingCardProps> = (props) => {
 	const router = useRouter()
-	const { highlight, label, title, features, buttonText, price, url } = props
+	const { 
+    popular, 
+    label, 
+    title, 
+    features, 
+    interval, 
+    buttonText="Subscribe", 
+    price, 
+    path,
+    url 
+  } = props
 
 	const handleClick = () => {
 		if (url) {
-			router.push(url)
-		}
+			window.open(url, '_blank')
+		}else if(path){
+      router.push(path)
+    }
 	}
 
 	return (
-		<div className="w-full border border-divider rounded p-2 flex flex-col justify-between">
+		<div className={cn(
+      "w-full border bg-background shadow-lg border-divider rounded-xl p-6 flex flex-col justify-between",
+      popular && "border-2 z-10 border-primary shadow-3xl transition duration-200 scale-105",
+    )}>
 			<div className="flex flex-col space-y-3 min-h-[300px]">
 				{label && (
 					<div>
-						<Label label={label} />
+            <Badge className="px-3 py-1" variant="outline">
+						 { label }
+            </Badge>
 					</div>
 				)}
 				<Typography variant="body1">{title}</Typography>
-				<Typography variant="h5">{price}</Typography>
+				<div className="flex flex-row items-end">
+          <Typography variant="h1">${price}</Typography>
+          { interval && (<Typography variant="h4">/{interval}</Typography>)}
+        </div>
 				<Separator />
-				<ul>
+        <Typography variant="body1" className="text-muted-foreground">
+          What's included:
+        </Typography>
+				<ul className="flex flex-col space-y-3">
 					{features?.map((feature, i) => (
-						<li key={i}>
+						<li className="flex flex-row space-x-2" key={i}>
+              <Check 
+                className="h-5 w-5 text-foreground bg-background"                
+              />
 							<Typography variant="body1">{feature}</Typography>
 						</li>
 					))}
 				</ul>
+        <Button onClick={handleClick}>{buttonText}</Button>
 			</div>
-			{buttonText && <Button onClick={handleClick}>{buttonText}</Button>}
+			
 		</div>
 	)
 }

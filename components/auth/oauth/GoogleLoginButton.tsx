@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import { Button } from '../../core'
 import { useGoogleLogin } from '@react-oauth/google'
 import { useAuth } from 'frontend-js'
-import { IconLoading } from '../..'
 
 type OAuthCredentialsType = {
 	access_token: string
