@@ -27,7 +27,7 @@ const PolicyLink: React.FC<PolicyLinkProps> = (props) => {
 
   return(
       <>
-        <Link href="#" className="text-sm text-muted-foreground" onClick={ handleClick }>
+        <Link href="#" className="p-2 text-sm text-muted-foreground hover:underline" onClick={ handleClick }>
           { label }
         </Link>
         <Drawer 
