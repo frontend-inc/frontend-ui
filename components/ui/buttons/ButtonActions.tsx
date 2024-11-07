@@ -35,6 +35,7 @@ const ButtonActions: React.FC<ButtonActionsProps> = ({
 					{buttons.map((button, index) => (
 						<ButtonAction
 							key={index}
+              variant={ button?.variant }
 							icon={button?.icon}
 							path={button?.path}
 							url={button?.url}

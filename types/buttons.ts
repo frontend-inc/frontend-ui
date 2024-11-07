@@ -1,24 +1,20 @@
 export type ActionType =
-	| 'action'
-	| 'click'
-	| 'navigate'
-	| 'navigate_cms'
-	| 'navigate_user'
-	| 'url'
 	| 'page'
+	| 'url'	
 	| 'email'
 	| 'sms'
 	| 'phone'
 	| 'copy'
-	| 'download'
-	| 'link'
-	| 'stripe_payment_link'
+	| 'download'	
 
 export type ButtonType = {
 	icon?: string
 	label: string
-	color?: 'primary' | 'secondary'
-	variant?: 'contained' | 'outlined' | 'text'
+	variant?: 'default' | 
+    'secondary' | 
+    'outlined' | 
+    'link' | 
+    'ghost'
 	url?: string
 	path?: string
 	onClick?: (ev: any) => void

@@ -12,5 +12,6 @@ export { default as NumberTicker } from './number-ticker'
 export { RainbowButton } from './rainbow-button'
 export { default as ShimmerButton } from './shimmer-button'
 export { default as ShineBorder } from './shine-border'
+export { default as SparklesText } from './sparkles-text'
 
 

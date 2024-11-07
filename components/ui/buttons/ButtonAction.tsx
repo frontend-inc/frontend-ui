@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 
 type ButtonActionProps = {
 	icon?: string
-	variant?: 'default' | 'secondary' | 'ghost'
+	variant?: 'default' | 'secondary' | 'outlined' | 'ghost' | 'link'
   size?: 'sm' | 'default' | 'lg'
 	url?: string
 	path?: string
@@ -15,7 +15,8 @@ type ButtonActionProps = {
 }
 
 const ButtonAction: React.FC<ButtonActionProps> = (props) => {
-	const {
+	
+  const {
 		children,
 		icon,
 		url,
