@@ -70,7 +70,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 				/>
 			</div>
 			<div className="flex flex-col gap-4 w-full md:w-1/2">
-				<Typography variant='h3'>{title}</Typography>
+				<Typography variant='h5'>{title}</Typography>
         <Typography variant='subtitle2' className="text-muted-foreground">
           {description}
         </Typography>				
