@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
-import { UploadCloud, DownloadCloud } from 'lucide-react'
+import { Loader2, UploadCloud, DownloadCloud } from 'lucide-react'
 
 type DropZoneProps = {
 	onDrop: (file: File, preview: any) => Promise<void>
@@ -54,7 +54,7 @@ const DropZone: React.FC<DropZoneProps> = ({
 		>
 			<input {...getInputProps()} />
 			{loading ? (
-				<div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+				<Loader2 className="text-foreground w-5 h-5" />
 			) : (
 				<>
 					{isDragActive ? (
