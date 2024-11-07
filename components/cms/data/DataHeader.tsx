@@ -50,7 +50,7 @@ const DataHeader: React.FC<DataHeaderProps> = (props) => {
 		handleSortBy,
 		handleSortDirection,
 		activeFilters,
-		handleFilter,
+		handleAddFilter,
 		handleClearFilters,
 	} = useSearch({
 		url,
@@ -80,8 +80,7 @@ const DataHeader: React.FC<DataHeaderProps> = (props) => {
 							<FilterButton
 								filterOptions={filterOptions}
 								filters={activeFilters}
-								handleFilter={handleFilter}
-								handleClear={handleClearFilters}
+								handleFilter={handleAddFilter}
 							/>
 						</div>
 					)}

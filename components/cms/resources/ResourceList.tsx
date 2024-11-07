@@ -1,12 +1,10 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { useFilters } from '../../../hooks'
 import { useResource } from 'frontend-js'
 import { SortableListItems, AlertModal, Placeholder } from '../..'
 import {
 	FormFieldType,
-	FilterOptionType,
 	SearchFilterOptionType,
 	TableHeaderType,
 	MetafieldType,

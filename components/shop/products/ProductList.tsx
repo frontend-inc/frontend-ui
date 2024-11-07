@@ -125,10 +125,16 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 	}
 
 	const filterOptions = [
-		{
-			field: 'average_rating',
+		{			
 			label: 'Rating',
-			variant: 'ratings_scale',
+      name: 'average_rating',
+			options: [
+        { label: '1 Star', value: 1 },
+        { label: '2 Stars', value: 2 },
+        { label: '3 Stars', value: 3 },
+        { label: '4 Stars', value: 4 },
+        { label: '5 Stars', value: 5 }
+      ]
 		},
 	]
 

@@ -23,7 +23,7 @@ export type ResourceListItemProps = {
 	avatar?: React.ReactNode
 	icon?: string
 	color?: string
-	image: string
+	image?: string
 	handleClick?: (resource: any) => void
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
@@ -89,7 +89,7 @@ export default function ResourceListItem({
               className="w-full h-full focus:outline-none focus:ring-2"
               onClick={handleClick}
             >
-              <Image src={image} aspectRatio={1.0} alt={image} />
+              <Image src={image || null} aspectRatio={1.0} alt={image} />
             </button>
           </div>
         )}

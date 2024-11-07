@@ -36,8 +36,7 @@ const AdminOrdersList: React.FC = (props) => {
 			filterOptions={[
 				{
 					label: 'Status',
-					field: 'status',
-					variant: 'multiple_choice',
+					name: 'status',
 					options: ORDER_STATES,
 				},
 			]}

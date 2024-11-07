@@ -63,6 +63,7 @@ export type PriceType = {
   popular?: boolean
 	buttonText: string
 	url?: string
+  path?: string
 }
 
 export type TestimonialType = {

@@ -48,7 +48,7 @@ const Section: React.FC<SectionProps> = (props) => {
 						'transition-all duration-300 ease-in-out'
 					)}
 				>
-					<AuthGuard requireAuth={requireAuth} requirePaid={requirePaid}>
+					<AuthGuard requireAuth={requireAuth}>
 						{children}
 					</AuthGuard>
 				</div>

@@ -21,9 +21,8 @@ const AdminContactList: React.FC = () => {
 			enableDelete
 			filterOptions={[
 				{
-					field: 'source',
+					name: 'source',
 					label: 'Source',
-					variant: 'multiple_choice',
 					options: [
 						{ label: 'Newsletter', value: 'newsletter' },
 						{ label: 'Contact Us', value: 'contact' },

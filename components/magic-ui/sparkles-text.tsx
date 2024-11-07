@@ -1,6 +1,6 @@
 "use client";
 
-import { CSSProperties, ReactElement, useEffect, useState } from "react";
+import React, { CSSProperties, ReactElement, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import { cn } from "frontend-shadcn";

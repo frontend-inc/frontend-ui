@@ -1,9 +1,9 @@
 "use client";
-
+import React from "react"
 import { motion } from "framer-motion";
 
 import { cn } from "frontend-shadcn";
-import React from "react";
+
 
 interface BlurIntProps {
   children: React.ReactNode

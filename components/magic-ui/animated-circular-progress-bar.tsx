@@ -1,4 +1,5 @@
-import { cn } from "frontend-shadcn";
+import React from "react"
+import { cn } from "frontend-shadcn"
 
 interface Props {
   max: number;

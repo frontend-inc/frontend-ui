@@ -36,8 +36,7 @@ const AdminFieldsList: React.FC<AdminFieldsListProps> = (props) => {
 			filterOptions={[
 				{
 					label: 'Type',
-					field: 'variant',
-					variant: 'multiple_choice',
+					name: 'variant',
 					options: [
 						{ label: 'String', value: 'string' },
 						{ label: 'Text', value: 'text' },

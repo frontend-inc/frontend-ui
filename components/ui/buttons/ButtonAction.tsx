@@ -32,8 +32,6 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
     path 
   })
 
-  console.log('ButtonAction', props)
-
 	return (
 		<Button
 			fullWidth

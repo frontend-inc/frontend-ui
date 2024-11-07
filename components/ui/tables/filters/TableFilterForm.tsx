@@ -33,7 +33,6 @@ export default function TableFilterForm({
 	const [activeFilters, setActiveFilters] = useState<Record<string, any>[]>([])
 
 	const defaultFilter = {
-		where: 'AND',
 		field: 'id',
 		operator: 'eq',
 		value: '',

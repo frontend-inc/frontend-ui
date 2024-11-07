@@ -17,7 +17,7 @@ const useNavigate = (params?: UseNavigateParams) => {
 
   const router = useRouter()
 
-  const onClick = (path: string) => {
+  const onClick = (path?: string) => {
     if(handleClick){
       handleClick()
     }else if(url){

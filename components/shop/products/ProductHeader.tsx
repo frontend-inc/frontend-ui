@@ -34,7 +34,7 @@ const ProductHeader: React.FC<ProductHeaderProps> = (props) => {
 		handleSortBy,
 		handleSortDirection,
 		activeFilters,
-		handleFilter,
+		handleAddFilter,
 		handleClearFilters,
 	} = useSearch({
 		url,
@@ -60,8 +60,7 @@ const ProductHeader: React.FC<ProductHeaderProps> = (props) => {
 							<FilterButton
 								filterOptions={filterOptions}
 								filters={activeFilters}
-								handleFilter={handleFilter}
-								handleClear={handleClearFilters}
+								handleFilter={handleAddFilter}
 							/>
 						</div>
 					)}

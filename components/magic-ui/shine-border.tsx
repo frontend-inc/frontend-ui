@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react"
 import { cn } from "frontend-shadcn";
 
 type TColorProp = string | string[];

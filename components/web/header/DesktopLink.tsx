@@ -3,6 +3,7 @@
 import React from 'react'
 import { Button } from '../../core'
 import { MenuLinkType } from '../../..'
+import { useNavigate } from '../../../hooks'
 
 type DesktopLinkProps = {
 	menuItem: MenuLinkType
@@ -12,16 +13,14 @@ type DesktopLinkProps = {
 const DesktopLink: React.FC<DesktopLinkProps> = (props) => {
 	const { menuItem, handleClick } = props
 
-	const handleMenuClick = () => {
-		if (menuItem?.link_type == 'url') {
-			window.open(menuItem.url, '_blank')
-		} else {
-			handleClick(menuItem.path)
-		}
-	}
+  const onClick = useNavigate({
+    url: menuItem.url,
+    path: menuItem.path,
+    handleClick
+  })
 
 	return (
-		<Button variant="ghost" className='text-foreground' onClick={handleMenuClick}>
+		<Button variant="ghost" className='text-foreground' onClick={onClick}>
 			{menuItem.label}
 		</Button>
 	)

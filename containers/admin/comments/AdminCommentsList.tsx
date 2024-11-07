@@ -17,7 +17,14 @@ const AdminCommentsList: React.FC = () => {
 			enableDelete
 			enableShow
 			filterOptions={[
-				{ field: 'flagged', label: 'Flagged', variant: 'boolean' },
+				{ 
+          name: 'flagged', 
+          label: 'Flagged', 
+          options: [
+            { label: 'Flagged', value: true },
+            { label: 'Not Flagged', value: false },
+          ] 
+        },
 			]}
 			component={AdminCommentItem}
 			show={AdminCommentShow}
