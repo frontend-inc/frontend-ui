@@ -1,2 +1,2 @@
 export { default as AdminEmailList } from './AdminEmailList'
-export { default as AdminEmailItem } from './AdminEmailItem'
+export { default as AdminEmailListItem } from './AdminEmailListItem'
