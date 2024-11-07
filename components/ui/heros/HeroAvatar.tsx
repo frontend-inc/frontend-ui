@@ -19,7 +19,7 @@ const HeroAvatar: React.FC<HeroCardProps> = (props) => {
 
 	return (
     <div className="w-full flex flex-row justify-center">
-		<div className="border border-red-500 container mx-auto w-full max-w-screen-lg flex flex-col space-y-2 justify-center overflow-hidden">
+		<div className="container mx-auto w-full max-w-screen-lg flex flex-col space-y-2 justify-center overflow-hidden">
 			<div className="w-full flex flex-col sm:flex-row space-y-1 sm:space-y-0 sm:space-x-1 justify-center sm:justify-end">
 				{secondaryAction}
 			</div>
