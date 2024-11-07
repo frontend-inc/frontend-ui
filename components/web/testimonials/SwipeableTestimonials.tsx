@@ -16,6 +16,7 @@ const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
 
 	return (
     <div className="w-full flex justify-center">
+      <div className="container max-w-screen-md mx-auto">
 			<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
 				{items?.map((testimonial, i) => (
 					<div
@@ -34,6 +35,7 @@ const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
 				))}
 			</Swipeable>
       </div>
+		</div>
 	)
 }
 
