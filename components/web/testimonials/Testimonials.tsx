@@ -10,11 +10,10 @@ export type TestimonialsProps = {
 	layout?: 'grid' | 'carousel'
 	items: TestimonialType[]
 	enableAutoPlay?: boolean
-	enableArrows?: boolean
 }
 
 const Testimonials: React.FC<TestimonialsProps> = (props) => {
-	const { layout = 'grid', enableArrows, enableAutoPlay, items = [] } = props
+	const { layout = 'grid', enableAutoPlay, items = [] } = props
 
 	return (
 		<div className="flex flex-col w-full">
@@ -22,7 +21,6 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 				<SwipeableTestimonials
 					items={items}
 					enableAutoPlay={enableAutoPlay}
-					enableArrows={enableArrows}
 				/>
 			) : (
 				<TestimonialCards items={items} />

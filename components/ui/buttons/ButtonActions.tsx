@@ -16,6 +16,7 @@ const ButtonActions: React.FC<ButtonActionsProps> = ({
 	size,
 	justifyContent = 'start',
 }) => {
+
 	return (
 		<div
 			className={cn('flex flex-row', {
@@ -26,11 +27,13 @@ const ButtonActions: React.FC<ButtonActionsProps> = ({
 		>
 			{buttons?.length > 0 && (
 				<div
-					className={cn('w-full flex flex-col sm:flex-row gap-1', {
+					className={
+            cn('w-full flex flex-col sm:flex-row sm:space-x-3', {
 						'justify-start': justifyContent === 'start',
 						'justify-center': justifyContent === 'center',
 						'justify-end': justifyContent === 'end',
-					})}
+					  }
+          )}
 				>
 					{buttons.map((button, index) => (
 						<ButtonAction

@@ -3,7 +3,7 @@
 import React from 'react'
 import { Button } from '../../core'
 import { Icon } from '../..'
-import { useRouter } from 'next/navigation'
+import { useNavigate } from '../../../hooks'
 
 type ButtonActionProps = {
 	icon?: string
@@ -26,15 +26,11 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 		...rest
 	} = props
 
-	const router = useRouter()
 
-	const handleClick = () => {
-		if (url) {
-			window.open(url, '_blank')
-		} else if (path) {
-			router.push(path)
-		}
-	}
+  const onClick = useNavigate({
+    url,
+    path 
+  })
 
 	return (
 		<Button
@@ -52,7 +48,7 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 					/>
 				)
 			}
-			onClick={handleClick}
+			onClick={onClick}
 			variant={variant}
 			{...rest}
 		>
