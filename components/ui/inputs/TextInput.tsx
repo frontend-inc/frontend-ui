@@ -70,7 +70,8 @@ export default function TextInput({
 			<InputLabel label={label} info={info} />
 			<div className="relative w-full">
 				<Input
-					className={cn(            
+					className={cn(
+            'focus:ring-2 focus:ring-offset-3',            
 						error && 'border-2 border-destructive',
 						className
 					)}

@@ -26,7 +26,7 @@ const UIPageHeader: React.FC<UIPageHeaderProps> = (props) => {
 			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
-			py={2}
+			py={4}
 			px={px}
 			maxWidth={maxWidth}
 		>

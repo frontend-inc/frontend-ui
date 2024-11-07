@@ -14,6 +14,7 @@ type HeadingProps = {
 	textVariant?: TypographyVariantsType
 	enableBorder?: boolean
 	secondaryAction?: React.ReactNode
+  className?: string
 }
 
 const Heading: React.FC<HeadingProps> = (props) => {
@@ -24,11 +25,12 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		textAlign = 'left',
 		textVariant = 'h4',
 		secondaryAction,
+    className
 	} = props || {}
 
 	if (!title && !description && !label) return null
 	return (
-		<div className="py-4 px-2 w-full flex justify-between items-center flex-col sm:flex-row">
+		<div className={ cn("py-4 px-2 w-full flex justify-between items-center flex-col sm:flex-row", className)}>
 			<div className="w-full flex flex-col justify-between">
 				<div className="flex flex-col space-y-2">
 					{label && (
