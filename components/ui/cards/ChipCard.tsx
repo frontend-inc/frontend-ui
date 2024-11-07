@@ -24,7 +24,7 @@ const ChipCard: React.FC<CardProps> = (props) => {
 					onClick={handleClick}
 				>
 					<div className="mr-2 h-12 w-12">
-						<AvatarImage image={image} alt={primary} />
+						<AvatarImage src={image} alt={primary} />
 					</div>
 					<div className="flex flex-col items-start">
 						<span className="text-sm font-medium">{primary}</span>

@@ -72,6 +72,7 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
 					))}
 				</ul>
 			</div>
+      {/** @ts-ignore */}
       <Button onClick={onClick}>{buttonText}</Button>
 		</div>
 	)

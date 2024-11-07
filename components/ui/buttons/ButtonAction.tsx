@@ -7,7 +7,7 @@ import { useNavigate } from '../../../hooks'
 
 type ButtonActionProps = {
 	icon?: string
-	variant?: 'default' | 'secondary' | 'outlined' | 'ghost' | 'link'
+	variant?: 'default' | 'secondary' | 'outline' | 'ghost' | 'link'
   size?: 'sm' | 'default' | 'lg'
 	url?: string
 	path?: string
@@ -48,6 +48,7 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 					/>
 				)
 			}
+      /* @ts-ignore */
 			onClick={onClick}
 			variant={variant}
 			{...rest}

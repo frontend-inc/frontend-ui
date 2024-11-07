@@ -11,8 +11,7 @@ type LayoutContainerProps = {
 	children: React.ReactNode
 	header?: React.ReactNode
 	footer?: React.ReactNode
-	notifications: NotificationType[]
-	roles?: string[]
+	notifications: NotificationType[]	
 	requireAuth?: boolean
 	requirePaid?: boolean
 }
@@ -21,8 +20,7 @@ export default function LayoutContainer({
 	children,
 	notifications,
 	requireAuth,
-	requirePaid,
-	roles = [],
+	requirePaid,	
 }: LayoutContainerProps) {
 	return (
 		<div className="w-full min-h-screen">
@@ -34,11 +32,7 @@ export default function LayoutContainer({
 				)}
 			>
 				<div className="flex flex-col w-full">
-					<AuthGuard
-						roles={roles}
-						requireAuth={requireAuth}
-						requirePaid={requirePaid}
-					>
+					<AuthGuard requireAuth={requireAuth}>
 						<Notifications notifications={notifications} />
 						{children}
 					</AuthGuard>

@@ -2,7 +2,6 @@
 
 import React from 'react'
 import {
-	WHERE_OPTIONS,
 	BOOLEAN_OPTIONS,
 	BOOLEAN_FIELDS,
 	DATE_FIELDS,
@@ -18,19 +17,17 @@ import {
 	SelectInput,
 	Autosuggest,
 	ArrayInput,
-	TabsInput,
 } from '../../../../components'
 import { Separator } from 'frontend-shadcn'
 import { IconButton } from '../../../core'
 import {
-	OptionType,
 	FilterOptionType,
 	SyntheticEventType,
 } from '../../../../types'
 import TableWhereInput from './TableWhereInput'
 
 
-type FilterFieldProps = {
+type FilternameProps = {
 	index: number
 	filter: FilterOptionType
 	fieldOptions: {
@@ -41,20 +38,20 @@ type FilterFieldProps = {
 	handleRemove: (index: number) => void
 }
 
-const FilterFieldWrapper: React.FC<FilterFieldProps> = ({
+const FilternameWrapper: React.FC<FilternameProps> = ({
 	index,
 	filter,
 	fieldOptions,
 	handleChange,
 	handleRemove,
 }) => {
-	let field
+	let name
 	let operatorOptions: { value: string; label: string }[] = []
 
-	if (filter.field) {
-		field = fieldOptions.find((f) => f.value == filter.field)
+	if (filter.name) {
+		name = fieldOptions.find((f) => f.value == filter.name)
 		//@ts-ignore
-		operatorOptions = FILTER_OPERATORS[field?.db_type || 'integer']
+		operatorOptions = FILTER_OPERATORS[name?.db_type || 'integer']
 	}
 
 	return (
@@ -62,23 +59,16 @@ const FilterFieldWrapper: React.FC<FilterFieldProps> = ({
 			<Separator />
 			<div className="flex flex-row justify-start items-start">
 				<div>
-          <div className="w-full pt-1">
-            <TableWhereInput 
-              name="where"
-              value={ filter?.where || 'AND' }
-              handleChange={ (ev) => handleChange(ev, index) }
-            />					
-          </div>
 					<div className="flex flex-col space-y-2">
 						<div className="flex flex-row space-x-2">
 							<SelectInput
-								name="field"
+								name="name"
 								options={fieldOptions}
-								placeholder="field"
-								value={filter?.field || ''}
+								placeholder="name"
+								value={filter?.name || ''}
 								handleChange={(ev) => handleChange(ev, index)}
 							/>
-							{filter?.field && (
+							{filter?.name && (
 								<SelectInput
 									name="operator"
 									placeholder="…"
@@ -88,7 +78,7 @@ const FilterFieldWrapper: React.FC<FilterFieldProps> = ({
 								/>
 							)}
 						</div>
-						{BOOLEAN_FIELDS.includes(field?.db_type) && (
+						{BOOLEAN_FIELDS.includes(name?.db_type) && (
 							<SelectInput
 								name="value"
 								placeholder="true or false"
@@ -98,7 +88,7 @@ const FilterFieldWrapper: React.FC<FilterFieldProps> = ({
 							/>
 						)}
 
-						{DATE_FIELDS.includes(field?.variant) && (
+						{DATE_FIELDS.includes(name?.variant) && (
 							<>
 								{['gte', 'lte'].includes(filter?.operator) ? (
 									<SelectInput
@@ -120,7 +110,7 @@ const FilterFieldWrapper: React.FC<FilterFieldProps> = ({
 							</>
 						)}
 
-						{NUMBER_FIELDS.includes(field?.variant) && (
+						{NUMBER_FIELDS.includes(name?.variant) && (
 							<>
 								{['in', 'nin'].includes(filter?.operator) ? (
 									<ArrayInput
@@ -141,7 +131,7 @@ const FilterFieldWrapper: React.FC<FilterFieldProps> = ({
 							</>
 						)}
 
-						{STRING_FIELDS.includes(field?.variant) && (
+						{STRING_FIELDS.includes(name?.variant) && (
 							<TextInput
 								name="value"
 								placeholder="value"
@@ -150,11 +140,11 @@ const FilterFieldWrapper: React.FC<FilterFieldProps> = ({
 							/>
 						)}
 
-						{SELECT_FIELDS.includes(field?.variant) && (
+						{SELECT_FIELDS.includes(name?.variant) && (
 							<Autosuggest
 								name="value"
 								placeholder="Select..."
-								options={field?.options?.map((opt) => ({
+								options={name?.options?.map((opt) => ({
 									label: opt,
 									value: opt,
 								}))}
@@ -174,4 +164,4 @@ const FilterFieldWrapper: React.FC<FilterFieldProps> = ({
 	)
 }
 
-export default FilterFieldWrapper
+export default FilternameWrapper

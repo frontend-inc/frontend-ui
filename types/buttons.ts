@@ -12,7 +12,7 @@ export type ButtonType = {
 	label: string
 	variant?: 'default' | 
     'secondary' | 
-    'outlined' | 
+    'outline' | 
     'link' | 
     'ghost'
 	url?: string
