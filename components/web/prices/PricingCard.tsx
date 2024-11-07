@@ -18,6 +18,7 @@ type PricingCardProps = {
 	url?: string
   path?: string
   interval?: string
+  recurring?: boolean
   popular?: boolean
 }
 
@@ -26,8 +27,9 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
     popular, 
     label, 
     title, 
-    features, 
-    interval, 
+    features,     
+    recurring = false,
+    interval="month", 
     buttonText="Subscribe", 
     price, 
     path,
@@ -55,7 +57,7 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
 				<Typography variant="body1">{title}</Typography>
 				<div className="flex flex-row items-end">
           <Typography variant="h1">${price}</Typography>
-          { interval && (<Typography variant="h4">/{interval}</Typography>)}
+          { recurring && (<Typography variant="h4">/{interval}</Typography>)}
         </div>
 				<Separator />
         <Typography variant="body1" className="text-muted-foreground">

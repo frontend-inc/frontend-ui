@@ -59,6 +59,7 @@ export type PriceType = {
 	price: number
 	features: string[]	
 	interval?: string
+  recurring?: boolean
   popular?: boolean
 	buttonText: string
 	url?: string
