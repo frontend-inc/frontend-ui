@@ -36,7 +36,7 @@ const Typography: React.FC<TypographyProps> = ({
 		h3: 'text-4xl font-semibold tracking-tight',
 		h4: 'text-3xl font-semibold tracking-tight',
 		h5: 'text-2xl font-medium tracking-tight',
-		h6: 'text-1xl font-medium tracking-tight',
+		h6: 'text-xl font-medium tracking-tight',
 		subtitle1: 'text-xl font-normal tracking-tight leading-8',
 		subtitle2: 'text-lg leading-8',
 		button: 'text-base',

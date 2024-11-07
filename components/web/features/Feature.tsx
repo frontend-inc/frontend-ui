@@ -17,12 +17,7 @@ const Feature: React.FC<FeatureProps> = (props) => {
 	return (
 		<div className="flex flex-col space-y-3 justify-center items-center">
 			{icon && (
-				<Avatar 
-          style={{
-            height: '48px',
-            width: '48px',
-          }}
-        >
+				<Avatar className="h-[48px] w-[48px]">
 					<AvatarFallback className="bg-primary">
 						<Icon name={icon} color="text-primary-foreground" />
 					</AvatarFallback>
