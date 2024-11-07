@@ -13,31 +13,21 @@ export type Breadcrumb = {
 
 export type BreadcrumbsProps = {
 	links: Breadcrumb[]
-	maxLinks?: number
 	className?: string
 }
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 	links = [],
-	maxLinks = 2,
 	className,
 }) => {
 	const { clientUrl } = useApp()
 
 	if (links.length === 0) return null
 
-	const visibleLinks = links.slice(-maxLinks)
-
 	return (
 		<nav aria-label="breadcrumb" className={cn('py-0', className)}>
 			<ol className="flex items-center space-x-2">
-				{links.length > maxLinks && (
-					<li className="flex items-center">
-						<span className="text-sm text-muted-foreground">...</span>
-						<ChevronRight className="h-4 w-4 text-muted-foreground mx-1" />
-					</li>
-				)}
-				{visibleLinks.map((link, index) => (
+				{links.map((link, index) => (
 					<li key={index} className="flex items-center">
 						<Link
 							href={`${clientUrl}${link?.path}`}
@@ -45,7 +35,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 						>
 							{link?.label}
 						</Link>
-						{index < visibleLinks.length - 1 && (
+						{index < links.length - 1 && (
 							<ChevronRight className="h-4 w-4 text-muted-foreground mx-1" />
 						)}
 					</li>

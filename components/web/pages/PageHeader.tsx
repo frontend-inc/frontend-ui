@@ -8,23 +8,21 @@ export type PageHeaderProps = {
 	label?: string
 	title?: string
 	description?: string
-	links: {
+	breadcrumbs: {
 		label: string
 		path: string
 	}[]
-	maxLinks?: number
 	buttons: ButtonType[]
-	resource?: any
 	enableBorder?: boolean
 }
 
 const PageHeader: React.FC<PageHeaderProps> = (props) => {
-	const { label, title, description, links, buttons } = props
+	const { label, title, description, breadcrumbs, buttons } = props
 
 	return (
 		<div className="w-full flex flex-col space-y-1">
-			<Breadcrumbs links={links} />
-			<div className="flex flex-col space-y-1 justify-between w-full border-b border-divider pb-1">
+			<Breadcrumbs links={breadcrumbs} />
+			<div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-3 justify-left items-center sm:justify-between w-full border-b border-divider pb-1">
 				<Heading
 					label={label}
 					title={title}
@@ -32,7 +30,7 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 					textAlign="left"
 				/>
 				{buttons?.length > 0 && (
-					<div className="flex items-start justify-end sm:pb-0 xs:pb-1">
+					<div className="w-full flex justify-center sm:justify-end pb-2 sm:pb-0">
 						<ButtonActions buttons={buttons} />
 					</div>
 				)}

@@ -16,7 +16,6 @@ const UIPageHeader: React.FC<UIPageHeaderProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		requirePaid,
 		...rest
 	} = props
