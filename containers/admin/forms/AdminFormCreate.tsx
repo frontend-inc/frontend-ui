@@ -7,7 +7,6 @@ import { ResourceFormProps } from '../../../components/cms/resources/ResourceFor
 const AdminFormCreate: React.FC<ResourceFormProps> = (props) => {
 	let fields = [
 		{ label: 'Image', name: 'image', variant: 'image' },
-		{ label: 'Handle', name: 'handle', variant: 'slug' },
 		{ label: 'Label', name: 'label', variant: 'string' },
 		{ label: 'Title', name: 'title', variant: 'string' },
 		{ label: 'Description', name: 'description', variant: 'text' },

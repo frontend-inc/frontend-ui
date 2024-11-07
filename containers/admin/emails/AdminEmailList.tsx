@@ -3,7 +3,7 @@
 import React from 'react'
 import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
-import { AdminEmailItem } from '../../../containers'
+import AdminEmailListItem from './AdminEmailListItem'
 import AdminEmailForm from './AdminEmailForm'
 
 const AdminEmailsList = () => {
@@ -23,7 +23,7 @@ const AdminEmailsList = () => {
 			}}
 			edit={AdminEmailForm}
 			create={AdminEmailForm}
-			component={AdminEmailItem}
+			component={AdminEmailListItem}
 			emptyIcon="MessageSquare"
 			emptyTitle="No email templates"
 			emptyDescription="No email templates yet."
