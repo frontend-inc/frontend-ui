@@ -14,7 +14,7 @@ const Label: React.FC<LabelProps> = (props) => {
 	if (!label) return null
 	return (
 		<div className={cn(
-      'text-xs font-medium uppercase tracking-widest',
+      'text-xs text-foreground font-medium uppercase tracking-widest',
       className
     )}>
 			{label}

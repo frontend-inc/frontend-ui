@@ -4,7 +4,7 @@ import React from 'react'
 import { ResourceList } from '../../../components'
 
 import { useAdmin } from '../../../hooks'
-import { AdminTokenItem } from '../../../containers'
+import { AdminTokenListItem } from '../../../containers'
 import AdminTokenForm from './AdminTokenForm'
 
 const AdminTokenList: React.FC = () => {
@@ -30,7 +30,7 @@ const AdminTokenList: React.FC = () => {
 			]}
 			edit={AdminTokenForm}
 			create={AdminTokenForm}
-			component={AdminTokenItem}
+			component={AdminTokenListItem}
 			emptyIcon="Key"
 			emptyTitle="No API Keys"
 			emptyDescription="No API keys yet."

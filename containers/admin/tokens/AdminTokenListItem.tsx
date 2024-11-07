@@ -2,17 +2,18 @@
 
 import React from 'react'
 import { useAlerts } from '../../../hooks'
-import { Label, ResourceListItem } from '../../../components'
+import { ResourceListItem } from '../../../components'
 import copy from 'copy-to-clipboard'
 import { truncate } from '../../../helpers'
+import { Badge } from 'frontend-shadcn'
 
-type TokenItemProps = {
+type AdminTokenListItemProps = {
 	resource: any
 	handleEdit: (token: any) => void
 	handleDelete: (token: any) => void
 }
 
-const TokenItem: React.FC<TokenItemProps> = (props) => {
+const AdminTokenListItem: React.FC<AdminTokenListItemProps> = (props) => {
 	const { resource: token, handleEdit, handleDelete } = props
 
 	const { showAlertSuccess } = useAlerts()
@@ -25,6 +26,7 @@ const TokenItem: React.FC<TokenItemProps> = (props) => {
 	return (
 		<ResourceListItem
 			enableBorder
+      disableImage
 			primary={token?.name}
 			secondary={truncate(token?.api_key, 20)}
 			icon="Key"
@@ -34,12 +36,16 @@ const TokenItem: React.FC<TokenItemProps> = (props) => {
 			handleDelete={!token?.internal ? () => handleDelete(token) : undefined}
 			secondaryAction={
 				<>
-					<Label label={token?.admin ? 'Admin' : 'Public'} />
-					{token.internal && <Label label={'system'} />}
+					<Badge>
+            {token?.admin ? 'Admin' : 'Public'}
+          </Badge>
+					{token.internal && (
+            <Badge>system</Badge>
+            )}
 				</>
 			}
 		/>
 	)
 }
 
-export default TokenItem
+export default AdminTokenListItem

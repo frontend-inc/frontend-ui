@@ -5,6 +5,7 @@ import { useResource } from 'frontend-js'
 import { SortableListItems, AlertModal, Placeholder } from '../..'
 import {
 	FormFieldType,
+  FilterOptionType,
 	SearchFilterOptionType,
 	TableHeaderType,
 	MetafieldType,
@@ -202,17 +203,15 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		})
 	}
 
-  const [activeFilters, setActiveFilters] = useState([])
+  const [activeFilters, setActiveFilters] = useState<any[]>([])
+  const [queryFilters, setQueryFilters] = useState<any[]>([])
   
-  const handleFilter = (name: string, value: string | number | boolean) => {
-    let newFilters = []
-    if(activeFilters.find(f => Object.keys(f)[0] == name)) {
-      newFilters = newFilters.filter(f => Object.keys(f)[0] != name)
+  const handleFilter = (name: string, value: string | number | boolean) => {            
+    if(activeFilters?.find(f => f.name === name && f.value === value)){
+      setActiveFilters([])
     }else{
-      // @ts-ignore
-      newFilters = [ ...activeFilters, { [name]: { eq: value } } ]
+      setActiveFilters([{ name, operator: 'eq', value }])
     }    
-    setActiveFilters(newFilters)
   }
       
 	// Filter methods
@@ -318,14 +317,22 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	}
 
 	useEffect(() => {
-		if (activeFilters) {
+		if (queryFilters) {
 			findMany({
 				...query,
 				filters: [
-          ...(activeFilters || []),
+          ...(queryFilters || []),
           ...(defaultQuery?.filters || []), 
         ]				
 			})
+		}
+	}, [queryFilters])
+
+  useEffect(() => {
+		if (activeFilters) {      
+			setQueryFilters(activeFilters.map(f => ({
+        [f.name]: { [f.operator]: f.value }
+      }))) as any 
 		}
 	}, [activeFilters])
 

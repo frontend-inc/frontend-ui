@@ -29,16 +29,16 @@ export const FilterGroup: React.FC<FilterGroupProps> = (props) => {
         { filterOption?.label }
       </Typography>
       { filterOption?.options?.map((option, index) =>{
-        const selected = filters?.find((f) => f?.name === filterOption?.name && f?.value === option?.value)        
+        const selected = filters?.find((f) => f?.name === filterOption?.name && f?.value === option?.value)                
         return(
-        <li className="list-none">
+        <li key={index} className="list-none">
           <Button 
             fullWidth
             variant="ghost"
             className="justify-between items-center"
             onClick={() => handleFilter(filterOption?.name, option?.value)}
             endIcon={
-              selected && <Icon name="Check" className="ml-2" />              
+              selected && <Icon name="Check" className="text-foreground ml-2" />              
             }
           >
             { option?.label }            
@@ -87,7 +87,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 						Filters						
 					</Button>
 				</PopoverTrigger>
-				<PopoverContent className="w-80 p-0">
+				<PopoverContent className="bg-background w-80 p-0">
           <ul className="w-full p-0">
             { filterOptions.map((filterOption, index) => (
               <FilterGroup
