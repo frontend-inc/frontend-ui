@@ -7,8 +7,8 @@ import { Typography } from '../../core'
 
 export type HeroCardProps = {
 	label?: string
-	image?: string
-	primary?: string | React.ReactNode
+	image: string
+	primary: string | React.ReactNode
 	secondary?: React.ReactNode
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
@@ -48,7 +48,7 @@ const HeroCard: React.FC<HeroCardProps> = (props) => {
 						{actions}
 					</div>
 					<div className="w-full md:w-1/2 max-w-full md:max-w-[500px] flex flex-col space-y-2">
-						<Typography variant="h4">{primary}</Typography>
+						<Typography variant="h3">{primary}</Typography>
 						{secondary}
 					</div>
 				</div>

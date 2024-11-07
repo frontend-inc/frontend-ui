@@ -1,14 +1,14 @@
 'use client'
 
 import React from 'react'
-import { Image, Label, ExpandableText, SocialLink } from '../..'
+import { AvatarImage, Label, ExpandableText, SocialLink } from '../..'
 import { Typography } from '../../core'
 import { cn } from 'frontend-shadcn'
 
 export type ProfileProps = {
 	image: string
 	label?: string
-	title?: string
+	title: string
 	description?: string
 	socialLinks?: {
 		provider: string
@@ -21,10 +21,14 @@ const Profile: React.FC<ProfileProps> = (props) => {
 
 	return (
 		<div className="w-full flex flex-col items-center justify-center rounded">
-			<div className="w-full max-w-[600px] flex flex-col sm:flex-row items-start sm:space-x-4 space-y-4 sm:space-y-0">
+			<div className="w-full max-w-[600px] flex flex-col space-y-4 items-start  sm:flex-row sm:space-x-6 sm:space-y-0">
 				<div className="flex flex-col items-center space-y-1">
 					<div className="h-[200px] w-[200px]">
-						<Image alt={title} src={image} aspectRatio={1.0} />
+						<AvatarImage
+              alt={title} 
+              src={image}               
+              size={200}             
+            />
 					</div>
 					<div className="flex flex-row">
 						{socialLinks?.map((link, index) => (
@@ -36,7 +40,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
 				</div>
 				<div className="flex flex-col space-y-1 w-full sm:w-auto">
 					<Label label={label} />
-					<Typography variant="h5">{title}</Typography>
+					<Typography variant="h3">{title}</Typography>
 					{description && <ExpandableText text={description} />}
 				</div>
 			</div>

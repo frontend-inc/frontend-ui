@@ -53,7 +53,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 									<AvatarImage
 										label={label}
 										src={image}
-										height={size}
+										size={size}
 										alt={primary}
 										onClick={handleClick}
 										{...slots.image}

@@ -34,7 +34,7 @@ const MediaItem: React.FC<MediaItemProps> = ({
 	return (
 		<Card
 			className={cn(
-				'rounded-md bg-background p-0 min-w-[160px] h-[200px] border border-transparent',
+				'rounded-md bg-muted/20 hover:bg-muted/50 p-0 min-w-[160px] h-[200px] border border-transparent overflow-hidden',
 				selected && 'border-primary'
 			)}
 		>
@@ -52,16 +52,17 @@ const MediaItem: React.FC<MediaItemProps> = ({
 					</DropdownMenu>
 				)}
 			</CardHeader>
-      <CardContent className="p-0 overflow-hidden">
+      <CardContent className="p-0">
 			  {item.resource_type === 'file' ? (
 					<AttachmentImage icon="File" width={64} height={64} />
 			  ) : (
-        <div className="h-[180px] w-[240px] overflow-hidden">
+        <div className="min-h-[180px] w-[242px]">
           <button 
             onClick={() => handleClick(item) }
-            className="w-full focus:outline-none p-0 overflow-hidden"
+            className="w-full focus:outline-none p-0"
           >
             <Image
+              aspectRatio={1.5}
               disableBorderRadius
               src={item?.thumbnail_url}
               alt={item?.content_type}

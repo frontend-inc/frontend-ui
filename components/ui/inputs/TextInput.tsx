@@ -71,7 +71,7 @@ export default function TextInput({
 			<div className="relative w-full">
 				<Input
 					className={cn(
-            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+            'focus-visible:outline-none focus-visible:ring-0',
 						error && 'border-2 border-destructive',
 						className
 					)}

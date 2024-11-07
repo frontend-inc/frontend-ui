@@ -24,8 +24,9 @@ const HeroList: React.FC<HeroCardProps> = (props) => {
 			<div className="flex flex-col w-full justify-start items-center space-y-6">
 				{secondaryAction}
 				<Typography variant="h3">{primary}</Typography>
-				<div className="w-full rounded py-10">
+				<div className="w-full rounded py-10">          
 					<Image
+            aspectRatio={2.0}
 						src={image}
 						alt={primary}
 						height={400}

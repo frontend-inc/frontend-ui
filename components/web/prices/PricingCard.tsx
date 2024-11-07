@@ -2,11 +2,11 @@
 
 import React from 'react'
 import { Button, Typography } from '../../core'
-import { useRouter } from 'next/navigation'
 import { Badge } from 'frontend-shadcn'
 import { Separator } from 'frontend-shadcn'
 import { Check } from 'lucide-react'
 import { cn } from 'frontend-shadcn'
+import { useNavigate } from '../../../hooks'
 
 type PricingCardProps = {
 	label?: string
@@ -22,7 +22,6 @@ type PricingCardProps = {
 }
 
 const PricingCard: React.FC<PricingCardProps> = (props) => {
-	const router = useRouter()
 	const { 
     popular, 
     label, 
@@ -35,17 +34,14 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
     url 
   } = props
 
-	const handleClick = () => {
-		if (url) {
-			window.open(url, '_blank')
-		}else if(path){
-      router.push(path)
-    }
-	}
+  const onClick = useNavigate({
+    path,
+    url, 
+  })
 
 	return (
 		<div className={cn(
-      "w-full border bg-background shadow-lg border-divider rounded-xl p-6 flex flex-col justify-between",
+      "w-full border bg-background shadow-lg border-divider rounded-xl p-6 flex flex-col space-y-4 justify-between",
       popular && "border-2 z-10 border-primary shadow-3xl transition duration-200 scale-105",
     )}>
 			<div className="flex flex-col space-y-3 min-h-[300px]">
@@ -75,9 +71,8 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
 						</li>
 					))}
 				</ul>
-        <Button onClick={handleClick}>{buttonText}</Button>
 			</div>
-			
+      <Button onClick={onClick}>{buttonText}</Button>
 		</div>
 	)
 }

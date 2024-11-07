@@ -40,7 +40,7 @@ export default function HeroSnippet({
 							<AvatarImage
 								label={label}
 								src={image}
-								height={180}
+								size={180}
 								alt={primary}
 								{...slots.image}
 							/>

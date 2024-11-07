@@ -35,14 +35,16 @@ const UIPricing: React.FC<UIPricingProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Heading
-				label={label}
-				title={title}
-				description={description}
-				textAlign={'center'}
-        textVariant="h2"
-			/>
-			<Pricing {...rest} />
+      <div className="flex flex-col space-y-4 w-full">
+        <Heading
+          label={label}
+          title={title}
+          description={description}
+          textAlign={'center'}
+          textVariant="h2"
+        />
+        <Pricing {...rest} />
+      </div>
 		</Section>
 	)
 }

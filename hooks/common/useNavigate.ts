@@ -5,19 +5,29 @@ import { useRouter } from 'next/navigation'
 import { useApp } from '..'
 
 type UseNavigateParams = {
+  url?: string
+  path?: string
   handleClick?: (ev?: any) => void
 }
 
 const useNavigate = (params?: UseNavigateParams) => {
-  const { handleClick } = params || {}
+  const { handleClick, path: _path, url } = params || {}
 
   const { clientUrl } = useApp()
 
   const router = useRouter()
 
-  const onClick = (path?: string) => {
+  const onClick = (path: string) => {
     if(handleClick){
       handleClick()
+    }else if(url){
+      window.open(url, '_blank')
+    }else if(_path){
+      window.scrollTo({
+				top: 0,
+				behavior: 'smooth',
+			})
+      router.push(`${clientUrl}${_path}`)
     }else if(path){
       window.scrollTo({
 				top: 0,

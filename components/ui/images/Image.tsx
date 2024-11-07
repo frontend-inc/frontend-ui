@@ -39,7 +39,6 @@ export default function ResponsiveImage({
 	className,
 	label,
 }: ResponsiveImageProps) {
-	const [isHovered, setIsHovered] = useState(false)
 
 	return (
 		<div
@@ -50,8 +49,6 @@ export default function ResponsiveImage({
 				className
 			)}
 			onClick={handleClick ? handleClick : undefined}
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
 		>
 			<AspectRatio ratio={aspectRatio}>
 				{src ? (
@@ -62,8 +59,8 @@ export default function ResponsiveImage({
 						height={height}
 						className={cn(
 							objectFit == 'cover' ? 'object-cover' : 'object-contain',
-							'w-full h-full transition-transform duration-3000 ease-in-out',
-							!disableZoom && isHovered && 'scale-105'
+							'w-full h-full transition-transform duration-300 ease-in-out',
+							!disableZoom && 'hover:scale-105'
 						)}
 					/>
 				) : (

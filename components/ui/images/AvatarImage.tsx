@@ -4,18 +4,18 @@ import React from 'react'
 import { cn } from 'frontend-shadcn'
 
 export type AvatarImageProps = {
-	image: string
+	src: string
 	alt: string
-	height?: number
+	size?: number
 	enableGradient?: boolean
 	enableOverlay?: boolean
 }
 
 const AvatarImage: React.FC<AvatarImageProps> = (props) => {
 	const {
-		image,
+		src,
 		alt,
-		height = 64,
+		size = 64,
 		enableGradient = false,
 		enableOverlay = false,
 	} = props
@@ -24,15 +24,19 @@ const AvatarImage: React.FC<AvatarImageProps> = (props) => {
 		<div
 			className={cn(
 				'relative h-[64px] rounded-full overflow-hidden',
-				`h-[${height}px] w-[${height}px]`
+				`h-[${size}px] w-[${size}px]`
 			)}
 		>
-			{image ? (
-				<img src={image} alt={alt} className="w-full h-full object-cover" />
+			{src ? (
+				<img 
+          src={src} 
+          alt={alt}           
+          className="w-full h-full object-cover" 
+        />
 			) : (
 				<div
 					className={`rounded-full bg-gradient-to-br from-black to-gray-600`}
-					style={{ width: `${height}px`, height: `${height}px` }}
+					style={{ width: `${size}px`, height: `${size}px` }}
 				></div>
 			)}
 			{enableGradient && (

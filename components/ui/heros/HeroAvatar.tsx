@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { HeroCardProps } from './HeroCard'
-import { AvatarImage } from '../..'
+import { Typography, AvatarImage } from '../..'
 import { cn } from 'frontend-shadcn'
 
 const HeroAvatar: React.FC<HeroCardProps> = (props) => {
@@ -18,7 +18,8 @@ const HeroAvatar: React.FC<HeroCardProps> = (props) => {
 	} = props || {}
 
 	return (
-		<div className="flex flex-col space-y-2 justify-center overflow-hidden">
+    <div className="w-full flex flex-row justify-center">
+		<div className="border border-red-500 container mx-auto w-full max-w-screen-lg flex flex-col space-y-2 justify-center overflow-hidden">
 			<div className="w-full flex flex-col sm:flex-row space-y-1 sm:space-y-0 sm:space-x-1 justify-center sm:justify-end">
 				{secondaryAction}
 			</div>
@@ -27,21 +28,22 @@ const HeroAvatar: React.FC<HeroCardProps> = (props) => {
 					<div className="w-full sm:w-[200px] flex flex-col space-y-4">
 						<div className="w-full h-full rounded flex justify-center items-center">
 							<AvatarImage
-								image={image}
+								src={image}
 								alt={typeof primary === 'string' ? primary : 'Avatar'}
-								height={200}
+								size={200}
 								{...slots.image}
 							/>
 						</div>
 						{actions}
 					</div>
 					<div className="w-full flex flex-col space-y-1">
-						<h4 className="text-foreground text-2xl font-bold">{primary}</h4>
+						<Typography variant="h3">{primary}</Typography>
 						{secondary}
 					</div>
 				</div>
 			</div>
 		</div>
+    </div>
 	)
 }
 

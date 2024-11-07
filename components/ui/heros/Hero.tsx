@@ -17,6 +17,9 @@ export type HeroProps = {
 	image?: string
 	style?: 'card' | 'cover' | 'list' | 'avatar' | 'spotlight'
 	buttons?: ButtonType[]
+  enableGradient?: boolean
+  enableOverlay?: boolean
+  objectFit?: 'cover' | 'contain'
 }
 
 const Hero: React.FC<HeroProps> = (props) => {
@@ -26,6 +29,9 @@ const Hero: React.FC<HeroProps> = (props) => {
 		image,
 		style = 'card',
 		buttons = [],
+    enableGradient = false,
+    enableOverlay = false,
+    objectFit = 'cover',
 	} = props || {}
 
 	const Component =
@@ -35,6 +41,14 @@ const Hero: React.FC<HeroProps> = (props) => {
 			list: HeroList,
 			avatar: HeroAvatar,
 		}[style] || HeroList
+
+  const slots = {
+    image: {
+      enableGradient,
+      enableOverlay,
+      objectFit
+    }
+  }
 
 	return (
 		<Component
@@ -46,6 +60,7 @@ const Hero: React.FC<HeroProps> = (props) => {
 			}
 			image={image}
 			secondaryAction={buttons && <ButtonActions buttons={buttons} />}
+      slots={slots}
 		/>
 	)
 }

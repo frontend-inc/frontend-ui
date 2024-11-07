@@ -39,12 +39,13 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<div className="flex flex-col space-y-2 w-full">
+			<div className="flex flex-col space-y-4 w-full">
 				<Heading
 					label={label}
 					title={title}
 					description={description}
-					textAlign={'center'}
+					textAlign='center'
+          textVariant="h2"
 				/>
 				<Testimonials {...rest} layout="carousel" />
 			</div>
