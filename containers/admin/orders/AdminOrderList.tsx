@@ -3,7 +3,7 @@
 import React from 'react'
 import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
-import AdminOrderItem from './AdminOrderItem'
+import AdminOrderListItem from './AdminOrderListItem'
 import AdminOrderForm from './AdminOrderForm'
 import AdminOrderShow from './AdminOrderShow'
 import AdminOrderToolbar from './AdminOrderToolbar'
@@ -42,7 +42,7 @@ const AdminOrdersList: React.FC = (props) => {
 			]}
 			edit={AdminOrderForm}
 			toolbar={AdminOrderToolbar}
-			component={AdminOrderItem}
+			component={AdminOrderListItem}
 			emptyIcon="ShoppingCart"
 			emptyTitle="No orders"
 			emptyDescription="No orders added yet."

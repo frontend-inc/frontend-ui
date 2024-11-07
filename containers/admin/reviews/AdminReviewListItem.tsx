@@ -10,18 +10,19 @@ import {
 import { truncate } from '../../../helpers'
 import { Typography } from '../../../components/core'
 
-type AdminReviewItemProps = {
+type AdminReviewListItemProps = {
 	resource: any
 	handleClick: () => void
 	handleEdit: () => void
 	handleDelete: () => void
 }
 
-const AdminReviewItem: React.FC<AdminReviewItemProps> = (props) => {
+const AdminReviewListItem: React.FC<AdminReviewListItemProps> = (props) => {
 	const { resource: review, handleClick, handleEdit, handleDelete } = props
 
 	return (
 		<ResourceListItem
+      disableImage 
 			primary={<FieldRating size="sm" value={review?.rating} />}
 			secondary={
 				<Typography variant="body2" className="text-muted-foreground">
@@ -37,4 +38,4 @@ const AdminReviewItem: React.FC<AdminReviewItemProps> = (props) => {
 	)
 }
 
-export default AdminReviewItem
+export default AdminReviewListItem

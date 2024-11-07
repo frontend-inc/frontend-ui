@@ -1,2 +1,2 @@
 export { default as AdminSubscriptionsList } from './AdminSubscriptionsList'
-export { default as AdminSubscriptionItem } from './AdminSubscriptionItem'
+export { default as AdminSubscriptionItem } from './AdminSubscriptionListItem'

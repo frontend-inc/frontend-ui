@@ -3,13 +3,13 @@
 import React from 'react'
 import { ResourceListItem, Label } from '../../../components'
 
-type EmailItemProps = {
+type AdminEmailListItemProps = {
 	resource: any
 	handleEdit: (resource: any) => void
 	handleDelete: (resource: any) => void
 }
 
-const EmailItem: React.FC<EmailItemProps> = (props) => {
+const AdminEmailListItem: React.FC<AdminEmailListItemProps> = (props) => {
 	const { resource: email, handleEdit, handleDelete } = props
 
 	return (
@@ -28,4 +28,4 @@ const EmailItem: React.FC<EmailItemProps> = (props) => {
 	)
 }
 
-export default EmailItem
+export default AdminEmailListItem

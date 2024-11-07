@@ -3,8 +3,8 @@
 import React from 'react'
 import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
-import AdminSubscriptionItem from './AdminSubscriptionItem'
 import AdminSubscriptionForm from './AdminSubscriptionForm'
+import AdminSubscriptionListItem from './AdminSubscriptionListItem'
 
 const AdminSubscriptionsList: React.FC = () => {
 	const { apiUrl } = useAdmin()
@@ -23,7 +23,7 @@ const AdminSubscriptionsList: React.FC = () => {
 			]}
 			edit={AdminSubscriptionForm}
 			create={AdminSubscriptionForm}
-			component={AdminSubscriptionItem}
+			component={AdminSubscriptionListItem}
 		/>
 	)
 }

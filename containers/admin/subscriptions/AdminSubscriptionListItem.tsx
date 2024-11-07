@@ -1,16 +1,17 @@
 'use client'
 
 import React from 'react'
-import { Label, ResourceListItem } from '../../../components'
+import { ResourceListItem } from '../../../components'
+import { Badge } from 'frontend-shadcn'
 
-type AdminSubscriptionItemProps = {
+type AdminSubscriptionListItemProps = {
 	resource: any
 	handleClick: () => void
 	handleEdit: () => void
 	handleDelete: () => void
 }
 
-const AdminSubscriptionItem: React.FC<AdminSubscriptionItemProps> = (props) => {
+const AdminSubscriptionListItem: React.FC<AdminSubscriptionListItemProps> = (props) => {
 	const {
 		resource: subscription,
 		handleClick,
@@ -20,11 +21,14 @@ const AdminSubscriptionItem: React.FC<AdminSubscriptionItemProps> = (props) => {
 
 	return (
 		<ResourceListItem
+      disableImage
 			icon="CreditCard"
 			primary={subscription?.name}
 			secondary={subscription?.display_price}
 			secondaryAction={
-				subscription?.label && <Label label={subscription?.label} />
+				subscription?.label && (
+        <Badge>{subscription?.label}</Badge>
+        )
 			}
 			color={'bg-amber-500'}
 			handleClick={handleClick}
@@ -34,4 +38,4 @@ const AdminSubscriptionItem: React.FC<AdminSubscriptionItemProps> = (props) => {
 	)
 }
 
-export default AdminSubscriptionItem
+export default AdminSubscriptionListItem

@@ -3,7 +3,7 @@
 import React from 'react'
 import { ResourceListItem } from '../../../components'
 
-type AdminPolicyItemProps = {
+type AdminPolicyListItemProps = {
 	resource: any
 	enableBorder?: boolean
 	sortable?: boolean
@@ -12,7 +12,7 @@ type AdminPolicyItemProps = {
 	handleDelete: () => void
 }
 
-const AdminPolicyItem: React.FC<AdminPolicyItemProps> = (props) => {
+const AdminPolicyListItem: React.FC<AdminPolicyListItemProps> = (props) => {
 	const {
 		resource: policy,
 		enableBorder,
@@ -23,6 +23,7 @@ const AdminPolicyItem: React.FC<AdminPolicyItemProps> = (props) => {
 	return (
 		<ResourceListItem
 			sortable
+      disableImage
 			enableBorder={enableBorder}
 			icon="StickyNote"
 			
@@ -34,4 +35,4 @@ const AdminPolicyItem: React.FC<AdminPolicyItemProps> = (props) => {
 	)
 }
 
-export default AdminPolicyItem
+export default AdminPolicyListItem

@@ -3,7 +3,7 @@
 import React from 'react'
 import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
-import { AdminPolicyItem } from '../..'
+import { AdminPolicyListItem } from '../..'
 import AdminPolicyForm from './AdminPolicyForm'
 
 const AdminPolicysList: React.FC = () => {
@@ -25,7 +25,7 @@ const AdminPolicysList: React.FC = () => {
 			}}
 			create={AdminPolicyForm}
 			edit={AdminPolicyForm}
-			component={AdminPolicyItem}
+			component={AdminPolicyListItem}
 			emptyIcon="FileText"
 			emptyTitle="No policies"
 			emptyDescription="No policies yet."

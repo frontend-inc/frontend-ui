@@ -18,7 +18,7 @@ const AdminOrderLineItemsList: React.FC<AdminOrderLineItemsListProps> = (
 
 	return (
 		<ResourceList
-			selectable
+			selectable      
 			url={`${apiUrl}/orders/${orderId}/order_line_items`}
 			name={'order'}
 			enableSearch

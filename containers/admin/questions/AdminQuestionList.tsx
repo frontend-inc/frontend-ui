@@ -3,7 +3,7 @@
 import React from 'react'
 import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
-import AdminQuestionItem from './AdminQuestionItem'
+import AdminQuestionListItem from './AdminQuestionListItem'
 import AdminQuestionCreate from './AdminQuestionCreate'
 import AdminQuestionEdit from './AdminQuestionEdit'
 import AdminQuestionShow from './AdminQuestionShow'
@@ -31,7 +31,7 @@ const AdminQuestionsList: React.FC = () => {
 			edit={AdminQuestionEdit}
 			show={AdminQuestionShow}
 			toolbar={AdminQuestionToolbar}
-			component={AdminQuestionItem}
+			component={AdminQuestionListItem}
 			emptyIcon="Text"
 			emptyTitle="No questions"
 			emptyDescription="No questions added yet."

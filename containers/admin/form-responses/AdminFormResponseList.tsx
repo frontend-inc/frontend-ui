@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { ResourceTable } from '../../../components'
 import { useAdmin, useAdminForms } from '../../../hooks'
-import AdminFormResponseItem from './AdminFormResponseItem'
+import AdminFormResponseListItem from './AdminFormResponseListItem'
 import AdminFormResponseToolbar from './AdminFormResponseToolbar'
 import AdminFormResponseShow from './AdminFormResponseShow'
 import AdminFormResponseEdit from './AdminFormResponseEdit'
@@ -54,7 +54,7 @@ const AdminFormResponsesList: React.FC<AdminFormResponsesListProps> = (
 			enableEdit
 			enableDelete
 			toolbar={AdminFormResponseToolbar}
-			component={AdminFormResponseItem}
+			component={AdminFormResponseListItem}
 			show={AdminFormResponseShow}
 			edit={AdminFormResponseEdit}
 			sortOptions={[

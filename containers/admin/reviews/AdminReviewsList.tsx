@@ -2,10 +2,9 @@
 
 import React from 'react'
 import { ResourceList } from '../../../components'
-
-import { useAdmin } from '../../../hooks'
-import { AdminReviewItem } from '../../../containers'
+import AdminReviewListItem from './AdminReviewListItem'
 import AdminReviewShow from './AdminReviewShow'
+import { useAdmin } from '../../../hooks'
 
 const AdminReviewsList: React.FC = () => {
 	const { apiUrl } = useAdmin()
@@ -47,7 +46,7 @@ const AdminReviewsList: React.FC = () => {
 				{ name: 'rating', label: 'Rating', variant: 'rating' },
 				{ name: 'body', label: 'Review', variant: 'text' },
 			]}
-			component={AdminReviewItem}
+			component={AdminReviewListItem}
 			show={AdminReviewShow}
 			emptyIcon="Star"
 			emptyTitle="No reviews found"

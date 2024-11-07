@@ -1,3 +1,3 @@
 export { default as AdminPolicyList } from './AdminPolicyList'
-export { default as AdminPolicyItem } from './AdminPolicyItem'
+export { default as AdminPolicyListItem } from './AdminPolicyListItem'
 export { default as AdminPolicyForm } from './AdminPolicyForm'

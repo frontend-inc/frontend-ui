@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { PublishLabel, ResourceListItem } from '../../../components'
+import { ResourceListItem } from '../../../components'
 import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
 import QuestionIcon from './QuestionIcon'
 
@@ -20,6 +20,7 @@ const AdminQuestionItem: React.FC<ResourceItemProps> = (props) => {
 
 	return (
 		<ResourceListItem
+      disableImage
 			sortable={sortable}
 			selectable={selectable}
 			selected={selected}
