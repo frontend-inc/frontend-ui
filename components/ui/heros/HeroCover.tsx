@@ -9,7 +9,7 @@ const HeroCover: React.FC<HeroCardProps> = (props) => {
 
 	return(
     <Cover 
-      textVariant="h3"
+      textVariant="h4"
       image={image} 
       height={400} 
       title={primary} 

@@ -36,7 +36,7 @@ const HeroList: React.FC<HeroCardProps> = (props) => {
 				</div>
 				{actions}
 				<div className="w-full max-w-[500px] sm:max-w-screen-sm">
-          {secondary}
+          <Typography variant="subtitle2" className="text-muted-foreground">{ secondary }</Typography>
         </div>
 				{children}
 			</div>

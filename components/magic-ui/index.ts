@@ -1,5 +1,6 @@
 export { default as AnimatedCircularProgressBar } from './animated-circular-progress-bar'
 export { default as AnimatedGradientText } from './animated-gradient-text'
+export { default as AnimatedShinyText } from './animated-shiny-text'
 export { AnimatedSubscribeButton } from './animated-subscribe-button'
 export { BentoCard, BentoGrid } from './bento-grid'
 export { default as BlurFade } from './blur-fade'

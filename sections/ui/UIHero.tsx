@@ -14,7 +14,7 @@ const UIHero: React.FC<UIHeroProps> = (props) => {
 		mode,
 		py,
 		px,
-		maxWidth,
+		maxWidth="xl",
 		requireAuth,
 		requirePaid,
 		style,

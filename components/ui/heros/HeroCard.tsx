@@ -49,7 +49,7 @@ const HeroCard: React.FC<HeroCardProps> = (props) => {
 					</div>
 					<div className="w-full md:w-1/2 max-w-full md:max-w-[500px] flex flex-col space-y-2">
 						<Typography variant="h3">{primary}</Typography>
-						{secondary}
+						<Typography variant="body1">{ secondary }</Typography>
 					</div>
 				</div>
 			</div>

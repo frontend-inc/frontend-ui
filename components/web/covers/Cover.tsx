@@ -12,7 +12,7 @@ export type CoverProps = {
 	title?: string | React.ReactNode
 	description?: string
 	buttonText?: string
-	textVariant?: 'h1' | 'h2' | 'h3'
+	textVariant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 	image: string
 	height?: number
 	width?: number

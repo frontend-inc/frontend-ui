@@ -22,9 +22,8 @@ const Logos: React.FC<LogosProps> = (props) => {
       <div className='relative flex flex-wrap w-full justify-center items-center gap-4 sm:flex-nowrap'>
         <Marquee className="[--duration:20s]">
           {logos.map((logo, i) => (
-            <div className={'p-4 max-h-[50px] max-w-[140px] rounded-lg w-full flex items-center justify-center'}>
+            <div key={i} className={'p-4 max-h-[50px] max-w-[140px] rounded-lg w-full flex items-center justify-center'}>
               <Image
-                key={i}
                 src={logo?.image}
                 height={height}
                 width={width}

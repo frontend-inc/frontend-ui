@@ -20,7 +20,7 @@ const SwipeableTestimonialCard: React.FC<SwipeableTestimonialCardProps> = (
 	return (
 			<div className="flex flex-col space-y-[40px] p-6 w-full h-full justify-start items-center">
         {text && (
-          <Typography variant="h5" className="italic text-center leading-9 text-muted-foreground">
+          <Typography variant="subtitle1" className="italic text-center leading-9 text-muted-foreground">
             { text }
           </Typography>						
         )}
@@ -30,7 +30,6 @@ const SwipeableTestimonialCard: React.FC<SwipeableTestimonialCardProps> = (
           >
             <AvatarImage src={avatar} alt={author} />
             <AvatarFallback>
-              { author }
             </AvatarFallback>
           </Avatar>
 					<Typography variant="body1" className="leading-8 text-muted-foreground">

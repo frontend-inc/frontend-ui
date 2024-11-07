@@ -18,3 +18,11 @@ export { default as UITabs } from './UITabs'
 export { default as UITestimonials } from './UITestimonials'
 export { default as UISwipeableTestimonials } from './UISwipeableTestimonials'
 export { default as UIText } from './UIText'
+
+import SwipeableTestimonials from './UISwipeableTestimonials'
+import UIText from './UIText'
+
+export const UI = {
+  Text: UIText,
+  SwipeableTestimonials: SwipeableTestimonials
+}

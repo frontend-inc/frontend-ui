@@ -53,11 +53,7 @@ const Hero: React.FC<HeroProps> = (props) => {
 	return (
 		<Component
 			primary={title}
-			secondary={
-				<Typography variant="body1" className="text-muted-foreground">
-					{description}
-				</Typography>
-			}
+			secondary={description}
 			image={image}
 			secondaryAction={buttons && <ButtonActions buttons={buttons} />}
       slots={slots}

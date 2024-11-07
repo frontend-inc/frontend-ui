@@ -8,23 +8,17 @@ import { cn } from 'frontend-shadcn'
 type SwipeableTestimonialsProps = {
 	items: Record<string, any>[]
 	enableAutoPlay?: boolean
-	enableArrows?: boolean
 }
 
 const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
-	const { enableAutoPlay = false, enableArrows = false, items = [] } = props
+	const { enableAutoPlay = false, items = [] } = props
 
 	return (
-    <div className="w-full flex justify-center">
-      <div className="container max-w-screen-md mx-auto">
-			<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
+			<Swipeable enableArrows enableAutoPlay={enableAutoPlay}>
 				{items?.map((testimonial, i) => (
 					<div
-						className={cn(
-							'flex items-center justify-center p-2',
-							enableArrows && 'px-6'
-						)}
-						key={i}
+            key={i}
+						className='flex items-center justify-center p-2 px-6'						
 					>
 						<SwipeableTestimonialCard
 							avatar={testimonial.avatar}
@@ -34,8 +28,6 @@ const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
 					</div>
 				))}
 			</Swipeable>
-      </div>
-		</div>
 	)
 }
 

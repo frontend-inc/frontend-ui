@@ -18,9 +18,8 @@ const UIPricing: React.FC<UIPricingProps> = (props) => {
 		mode,
 		py,
 		px,
-		maxWidth,
+		maxWidth="xl",
 		requireAuth,
-
 		requirePaid,
 		...rest
 	} = props
@@ -41,7 +40,7 @@ const UIPricing: React.FC<UIPricingProps> = (props) => {
           title={title}
           description={description}
           textAlign={'center'}
-          textVariant="h2"
+          textVariant="h3"
         />
         <Pricing {...rest} />
       </div>
