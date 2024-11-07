@@ -30,7 +30,7 @@ const UILogos: React.FC<UILogosProps> = (props) => {
 			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
-			py={3}
+			py={py}
 			px={px}
 			maxWidth={maxWidth}
 		>

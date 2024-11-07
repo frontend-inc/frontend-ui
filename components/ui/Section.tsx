@@ -17,7 +17,6 @@ const maxWidthClasses: Record<ContainerMaxWidth, string> = {
 const Section: React.FC<SectionProps> = (props) => {
 	const {
 		requireAuth = false,
-		requirePaid = false,
 		children,
 		bgColor,
 		mode,
@@ -29,7 +28,7 @@ const Section: React.FC<SectionProps> = (props) => {
 	return (
 		<section
 			className={cn(
-				mode == 'dark' && 'dark',
+				mode,
 				'w-full bg-background',
 				`py-${py}`,
 				px && `px-${px}`
