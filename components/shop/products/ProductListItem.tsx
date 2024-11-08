@@ -56,14 +56,14 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
           availableForSale
           fullWidth
           productId={resource?.id}
-          size="lg"
+          size="default"
           price={resource?.display_price}
         /> :        
 				<AddToCartButton
 					availableForSale
 					fullWidth
 					productId={resource?.id}
-					size="lg"
+					size="default"
           price={resource?.display_price}
 				/>
 			}

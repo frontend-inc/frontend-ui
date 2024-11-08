@@ -21,7 +21,7 @@ type ShopifyAddToCartButtonProps = {
 	enableQuantity?: boolean
 	enableSubscription?: boolean
 	enableFavorites?: boolean
-	size?: 'small' | 'medium' | 'large'
+	size?: 'sm' | 'default' | 'lg'
 }
 
 const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
@@ -40,6 +40,7 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 		enableQuantity = false,
 		enableSubscription = false,
 		enableFavorites = false,
+    size = 'default',
 	} = props
 
 	const [quantity, setQuantity] = useState<number>(1)
@@ -109,6 +110,7 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 					onClick={handleAddToCart}
 					variant={buttonVariant}
 					loading={loading}
+          size={size}
 				>
 					{label}
 				</Button>

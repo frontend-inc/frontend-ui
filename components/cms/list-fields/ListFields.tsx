@@ -13,21 +13,15 @@ type ListFieldsProps = {
 }
 
 const ListFields: React.FC<ListFieldsProps> = (props) => {
-	const {
+	
+  const {
 		className,
 		fields,
-		direction = 'column',
 		resource,
 	} = props || {}
 
 	return (
-		<div
-			className={cn(
-				'flex',
-				direction == 'row' ? 'flex-row space-x-2' : 'flex-col space-y-2',
-				className
-			)}
-		>
+		<div className={cn("flex flex-col space-y-2", className)}>
 			{fields?.map((field, index) => (
 				<ListField          
 					key={index}

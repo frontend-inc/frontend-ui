@@ -14,30 +14,25 @@ import { cn } from 'frontend-shadcn'
 type ShopifyProductCardProps = {
 	product: ShopifyProductType
 	handleClick?: () => void
-	buttonText?: string
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
-	disableBorder?: boolean
-	buttonVariant?: 'default' | 'secondary' | 'ghost'
+  className?: string
 }
 
-export default function ShopifyProductCard({
-	product,
-	handleClick,
-	enableBorder = false,
-	enableAddToCart = false,
-	enableQuantity = false,
-	buttonVariant = 'default',
-	buttonText,
-	disableBorder = false,
-}: ShopifyProductCardProps) {
+export default function ShopifyProductCard(props: ShopifyProductCardProps) {
+
+  const {
+    product,
+    handleClick,
+    enableBorder = false,
+    enableAddToCart = false,
+    enableQuantity = false,
+    className
+  } = props || {}
+
 	const [open, setOpen] = useState(false)
 	const { setSearchOpen } = useContext(ShopifyContext) as any
-
-	const handleQuickShop = () => {
-		setOpen(true)
-	}
 
 	const handleItemClick = () => {
 		if (handleClick) {
@@ -52,37 +47,35 @@ export default function ShopifyProductCard({
 	return (
 		<div
 			className={cn(
-				!disableBorder && 'border border-border hover:shadow-md',
-				'w-full overflow-hidden rounded-lg transition-shadow duration-300 bg-background'
+				'w-full overflow-hidden bg-background',
+        className
 			)}
 		>
-      <div className="w-full h-full min-h-[320px]">
+      <div className="w-full h-full min-h-[300px]">
         <SwipeableShopifyProductImages
           product={product}
-          height={320}
+          height={300}
           handleClick={handleItemClick}
           disableBorderRadius={enableBorder}
         />
       </div>
 			<CardContent className="p-3">
 				<div className="flex flex-col space-y-2">
-          <div className="flex flex-col space-y-2 min-h-[80px]">
-					<Typography variant="body1">
-						{truncate(product?.title)}
-					</Typography>
-					<Typography className="text-muted-foreground" variant="body2">
-						{formatCurrency(product?.priceRange?.minVariantPrice?.amount)}
-					</Typography>
+          <div className="flex flex-col space-y-0 min-h-[80px]">
+            <Typography variant="subtitle2">
+              {truncate(product?.title)}
+            </Typography>
+            <Typography variant="body2">
+              {formatCurrency(product?.priceRange?.minVariantPrice?.amount)}
+            </Typography>
           </div>
 					{enableAddToCart && (
 						<ShopifyAddToCartButton
 							product={product}
 							/* @ts-ignore */
 							variant={product?.variants?.edges[0]?.node}
-							label={buttonText}
-							enableQuantity={enableQuantity}
-							buttonVariant={buttonVariant}
-							size="small"
+							enableQuantity={enableQuantity}							
+							size="default"
 						/>
 					)}
 				</div>
@@ -92,7 +85,6 @@ export default function ShopifyProductCard({
 				handleClose={() => setOpen(false)}
 				shopifyProduct={product?.handle}
 				enableQuantity={enableQuantity}
-				buttonText={buttonText}
 			/>
 		</div>
 	)

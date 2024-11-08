@@ -65,7 +65,7 @@ const ListField: React.FC<FieldProps> = (props) => {
 		string: {
       variant: 'body2',
 			value: truncate(value),
-      className: 'text-xs text-muted-foreground'
+      className: 'text-sm text-muted-foreground'
 		},
 		text: {
       expandable: true,

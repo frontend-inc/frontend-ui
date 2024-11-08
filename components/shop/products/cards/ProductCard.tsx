@@ -19,7 +19,6 @@ export type ProductCardProps = {
 	handleClick?: () => void
 	height?: number
 	addToCart?: React.ReactNode
-	disableBorder?: boolean
 	slots?: {
 		item?: any
 		image?: any
@@ -38,9 +37,8 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 			secondaryAction,
 			handleClick,
 			image,
-			height = 240,
+			height = 300,
 			addToCart,
-			disableBorder,
 			slots = {
 				item: {},
 				image: {},
@@ -50,25 +48,23 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 		return (
 			<div
 				ref={ref}
-				className={cn(
-					!disableBorder && 'border border-border hover:shadow-md',
-					'w-full overflow-hidden rounded-lg transition-shadow duration-300 bg-background'
+				className={cn(					
+					'w-full overflow-hidden bg-background'
 				)}
 			>
-				<div className="min-h-[240px] w-full relative overflow-hidden">
+				<div className="min-h-[250px] w-full relative overflow-hidden">
 					<Image
 						src={image}
 						height={height}
 						alt={primary}
 						label={label}
-						aspectRatio={4 / 3}
+						aspectRatio={1.0}
 						handleClick={handleClick}
-						disableBorderRadius={!disableBorder}
 						{...slots.image}
 					/>
 				</div>
-				<div className="px-4 py-1 flex flex-col space-y-4 w-full justify-between items-between">
-					<div>
+				<div className="py-2 flex flex-col space-y-4 w-full justify-between items-between">
+					<div className="w-full px-2 flex flex-col space-y-1">
 						<Typography variant="subtitle2">{primary}</Typography>
 						<div className="flex flex-row space-x-2">
 							<Typography className="text-sm text-foreground" variant="caption">

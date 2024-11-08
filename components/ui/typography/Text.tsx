@@ -10,7 +10,7 @@ export type TextProps = {
 	description: string
 	label?: string
 	textAlign?: 'center' | 'left'
-	textVariant?: TypographyVariantsType
+	size?: 'sm' | 'md' | 'lg' | 'xl'
 	html?: boolean
 }
 
@@ -21,7 +21,7 @@ const Text: React.FC<TextProps> = (props) => {
 		title,
 		description,
 		textAlign,
-		textVariant,
+		size="lg",
 		html = false,
 	} = props || {}
 
@@ -32,7 +32,7 @@ const Text: React.FC<TextProps> = (props) => {
 					label={label}
 					title={title}
 					textAlign={textAlign}
-					textVariant={textVariant}
+					size={size}
 				/>
 				{html ? (
 					<Typography variant="body1">

@@ -12,7 +12,6 @@ export type EmailSubscribeProps = {
 	title: string
 	description: string
 	buttonText?: string
-	textVariant?: TypographyVariantsType
 	href?: string
 	handleClick?: () => void
 	direction?: string
@@ -25,7 +24,6 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 		label,
 		title,
 		description,
-		textVariant,
 		buttonText = 'Subscribe',
 	} = props || {}
 
@@ -60,7 +58,7 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 					label={label}
 					title={title}
 					description={description}
-					textVariant={textVariant}
+					size="lg"
 					textAlign="center"
 				/>
 				<div className="flex flex-row justify-center items-center">

@@ -11,9 +11,9 @@ type HeadingProps = {
 	title?: string
 	description?: string
 	textAlign?: 'left' | 'center' | 'right'
-	textVariant?: TypographyVariantsType
 	enableBorder?: boolean
 	secondaryAction?: React.ReactNode
+  size?: 'sm' | 'md' | 'lg' | 'xl'
   className?: string
 }
 
@@ -23,10 +23,24 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		title,
 		description,
 		textAlign = 'left',
-		textVariant = 'h4',
 		secondaryAction,
+    size="sm",
     className
 	} = props || {}
+
+  const titleVariants = {
+    sm: 'h4',
+    md: 'h3',
+    lg: 'h2',
+    xl: 'h1'
+  }
+
+  const descriptionVariants = {
+    sm: 'body1',
+    md: 'body1',
+    lg: 'subtitle2',
+    xl: 'subtitle1'
+  }
 
 	if (!title && !description && !label) return null
 	return (
@@ -44,13 +58,13 @@ const Heading: React.FC<HeadingProps> = (props) => {
 						</div>
 					)}
 					{title && (
-						<Typography variant={textVariant} textAlign={textAlign}>
+						<Typography variant={titleVariants[size]} textAlign={textAlign}>
 							{title}
 						</Typography>
 					)}
 					{description && (
 						<Typography
-							variant="body1"
+							variant={ descriptionVariants[size] }
 							className="text-muted-foreground"
 							textAlign={textAlign}
 						>

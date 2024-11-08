@@ -28,23 +28,25 @@ export const FilterGroup: React.FC<FilterGroupProps> = (props) => {
       <Typography variant="body1" className="font-medium">
         { filterOption?.label }
       </Typography>
-      { filterOption?.options?.map((option, index) =>{
-        const selected = filters?.find((f) => f?.name === filterOption?.name && f?.value === option?.value)                
-        return(
-        <li key={index} className="list-none">
-          <Button 
-            fullWidth
-            variant="ghost"
-            className="justify-between items-center"
-            onClick={() => handleFilter(filterOption?.name, option?.value)}
-            endIcon={
-              selected && <Icon name="Check" className="text-foreground ml-2" />              
-            }
-          >
-            { option?.label }            
-          </Button>
-        </li>
-      )})}
+      <ul className="list-none w-full p-0 flex flex-col space-y-2">
+        { filterOption?.options?.map((option, index) =>{
+          const selected = filters?.find((f) => f?.name === filterOption?.name && f?.value === option?.value)                
+          return(
+          <li key={index} className="list-none">
+            <Button 
+              fullWidth
+              variant="ghost"
+              className="justify-between items-center"
+              onClick={() => handleFilter(filterOption?.name, option?.value)}
+              endIcon={
+                selected && <Icon name="Check" className="text-foreground ml-2" />              
+              }
+            >
+              { option?.label }            
+            </Button>
+          </li>
+        )})}
+      </ul>
     </div>
   )
 }

@@ -60,7 +60,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 					label={label}
 					title={title}
 					description={description}
-					textVariant={textVariant}
+					size="lg"
 					textAlign="center"
 				/>
 				<Form

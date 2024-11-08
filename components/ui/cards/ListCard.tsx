@@ -48,7 +48,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 				<div className="flex flex-row justify-start items-start space-x-4 flex-grow">
 					{!disableImage && (
 						<div className="flex-shrink-0 w-[180px]">
-							<div className="w-full pr-2 h-full flex justify-center sm:justify-start items-center">
+							<div className="w-full pr-2 h-full flex flex-row justify-center items-center">
 								{circular ? (
 									<AvatarImage
 										label={label}
@@ -72,7 +72,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 							</div>
 						</div>
 					)}
-					<div className="flex flex-col justify-between h-[140px] flex-grow">
+					<div className="flex flex-col justify-between min-h-[120px] flex-grow">
 						<div className="flex flex-col space-y-1">
 							<Link
 								href="#"

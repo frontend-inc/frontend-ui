@@ -40,7 +40,7 @@ const UIFeatured: React.FC<UIFeaturedProps> = (props) => {
 					title={title}
 					description={description}
 					textAlign={'center'}
-          textVariant="h3"
+          size="lg"
 				/>
 				<Featured {...rest} />
 			</div>

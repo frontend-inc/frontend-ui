@@ -44,7 +44,7 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 					title={title}
 					description={description}
 					textAlign='center'
-          textVariant="h3"
+          size="lg"
 				/>
 				<Testimonials {...rest} layout="carousel" />
 			</div>

@@ -48,7 +48,7 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 		} = props
 
 		return (
-			<ShadcnCard
+			<div
 				ref={ref}
 				className={cn('w-full overflow-hidden')}
 				{...slots.item}
@@ -61,12 +61,11 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 						label={label}
 						handleClick={handleClick}
 						aspectRatio={4 / 3}
-						disableBorderRadius
 						{...slots.image}
 					/>
 				</div>
-				<CardContent className='mx-3 pt-3 flex flex-col space-y-2 overflow-hidden'>
-					<Typography variant="body1">{primary}</Typography>
+				<div className='mx-2 pt-3 flex flex-col space-y-2 overflow-hidden'>
+					<Typography variant="subtitle2">{primary}</Typography>
 					{secondary && (
 						<Typography variant="body2" className="text-muted-foreground">
 							{secondary}
@@ -77,12 +76,12 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 							{tertiary}
 						</Typography>
 					)}
-				</CardContent>
+				</div>
 				<CardFooter className="flex justify-between">
 					{actions}
 					{secondaryAction}
 				</CardFooter>
-			</ShadcnCard>
+			</div>
 		)
 	}
 )

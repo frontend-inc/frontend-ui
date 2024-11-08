@@ -29,6 +29,7 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 					label={label}
 					title={title}
 					description={description}
+          size='sm'
 					textAlign="left"
           className="py-4"
 				/>

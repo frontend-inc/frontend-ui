@@ -21,7 +21,7 @@ const DisplayFields: React.FC<DisplayFieldsProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				'w-full flex flex-col space-y-6 justify-center items-center',
+				'w-full flex flex-col space-y-4 justify-center items-center',
 				className
 			)}
 		>
