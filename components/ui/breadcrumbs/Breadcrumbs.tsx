@@ -2,17 +2,23 @@
 
 import React from 'react'
 import { useApp } from '../../../hooks'
-import { ChevronRight } from 'lucide-react'
-import Link from 'next/link'
-import { cn } from 'frontend-shadcn'
+import { Icon } from '../../../components'
+import { 
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator
+} from 'frontend-shadcn'
 
-export type Breadcrumb = {
+export type BreadcrumbType = {
+  icon?: string 
 	label: string
 	path: string
 }
 
 export type BreadcrumbsProps = {
-	links: Breadcrumb[]
+	links: BreadcrumbType[]
 	className?: string
 }
 
@@ -23,25 +29,21 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 	const { clientUrl } = useApp()
 
 	if (links.length === 0) return null
-
 	return (
-		<nav aria-label="breadcrumb" className={cn('py-0', className)}>
-			<ol className="flex items-center space-x-2">
+    <Breadcrumb>
+      <BreadcrumbList>
 				{links.map((link, index) => (
-					<li key={index} className="flex items-center">
-						<Link
-							href={`${clientUrl}${link?.path}`}
-							className="text-sm text-muted-foreground hover:underline"
-						>
+					<BreadcrumbItem key={index}>
+            <BreadcrumbLink href={`${clientUrl}${link?.path}`}>						
 							{link?.label}
-						</Link>
+						</BreadcrumbLink>
 						{index < links.length - 1 && (
-							<ChevronRight className="h-4 w-4 text-muted-foreground mx-1" />
+              <BreadcrumbSeparator />
 						)}
-					</li>
+					</BreadcrumbItem>
 				))}
-			</ol>
-		</nav>
+			</BreadcrumbList>
+		</Breadcrumb>
 	)
 }
 
