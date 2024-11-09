@@ -56,7 +56,8 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		},
 	} = props
 
-	const handleShowClick = (resource) => {
+	const handleShowClick = (resource) => {  
+    console.log('handleShowClick', resource)  
     if (handleClick) {
 			handleClick(resource)
     } else {					

@@ -22,7 +22,7 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 		mode,
 		py,
 		px,
-		maxWidth="md",
+		maxWidth="xl",
 		requireAuth,
 		requirePaid,
 		...rest

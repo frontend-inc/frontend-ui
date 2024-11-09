@@ -16,7 +16,6 @@ const UICallToAction: React.FC<UICallToActionProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		requirePaid,
 		...rest
 	} = props

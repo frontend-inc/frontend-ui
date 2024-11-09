@@ -66,10 +66,10 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
 			{enableArrows && (
 				<div className="absolute top-1/2 transform -translate-y-1/2 flex justify-between w-full z-10">
 					<IconButton color="ghost" onClick={handlePrev} className="ml-2">
-						<Icon name="ChevronLeft" size={32} />
+						<Icon name="ChevronLeft" size='xl' />
 					</IconButton>
 					<IconButton color="ghost" onClick={handleNext} className="mr-2">
-						<Icon name="ChevronRight" size={32} />
+						<Icon name="ChevronRight" size='xl' />
 					</IconButton>
 				</div>
 			)}

@@ -40,7 +40,7 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 				icon && (
 					<Icon
 						name={icon}
-						color={
+						className={
 							variant == 'default'
 								? 'text-primary-foreground'
 								: 'text-secondary-foreground'

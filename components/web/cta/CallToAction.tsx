@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Typography } from '../../core'
+import { Heading } from '../../../components'
 import { ButtonType } from '../../../types'
 import { ButtonActions } from '../..'
 
@@ -32,15 +32,14 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
           title={title}
           description={description}
           size={size}
+          textAlign='center'
         />
 				{buttons?.length > 0 && (
-					<div>
-						<ButtonActions
-							buttons={buttons}
-							size="lg"
-							justifyContent="center"
-						/>
-					</div>
+          <ButtonActions
+            buttons={buttons}
+            size="lg"
+            justifyContent="center"
+          />
 				)}
 			</div>
 		</div>

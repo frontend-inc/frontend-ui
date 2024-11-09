@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import Link from 'next/link'
 import { Checkbox } from 'frontend-shadcn'
 import { Icon, Image, AvatarImage } from '../..'
 import { CardProps } from './Card'
@@ -35,7 +34,9 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 	} = props || {}
 
 	return (
-		<div className="p-4 border-b border-border last:border-b-0 hover:bg-muted/50 transition-colors duration-200">
+		<button 
+      onClick={ handleClick }
+      className="p-4 w-full border-b border-border last:border-b-0 hover:bg-muted/50">
 			<div className="flex flex-row items-center w-full">
 				{selectable && (
 					<div className="mr-2">
@@ -55,7 +56,6 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 										src={image}
 										size={size}
 										alt={primary}
-										onClick={handleClick}
 										{...slots.image}
 									/>
 								) : (
@@ -65,7 +65,6 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 										height={size}
 										alt={primary}
 										aspectRatio={1.0}
-										onClick={handleClick}
 										{...slots.image}
 									/>
 								)}
@@ -73,14 +72,8 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 						</div>
 					)}
 					<div className="flex flex-col justify-between min-h-[120px] flex-grow">
-						<div className="flex flex-col space-y-1">
-							<Link
-								href="#"
-								onClick={handleClick}
-								className="text-foreground no-underline"
-							>
-								<Typography variant="subtitle1">{primary}</Typography>
-							</Link>
+						<div className="flex flex-col space-y-1">							
+							<Typography variant="subtitle1">{primary}</Typography>							
 							<Typography variant="body2" className="text-muted-foreground">
 								{secondary}
 							</Typography>
@@ -92,7 +85,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</button>
 	)
 }
 

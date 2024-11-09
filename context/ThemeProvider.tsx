@@ -5,7 +5,8 @@ import ThemeContext from './ThemeContext'
 import { cn } from 'frontend-shadcn'
 
 type ThemeProviderProps = {
-	mode?: string
+	mode?: 'light' | 'dark'
+  theme?: string
 	primaryColor?: string
 	headerFont?: string
 	bodyFont?: string
@@ -14,11 +15,13 @@ type ThemeProviderProps = {
 }
 
 const ThemeProvider = (props: ThemeProviderProps) => {
-	const { mode, primaryColor, headerFont, bodyFont, borderRadius, children } =
+	
+  const { mode='light', theme='light', primaryColor, headerFont, bodyFont, borderRadius, children } =
 		props || {}
 
 	const value = {
 		mode,
+    theme,
 		primaryColor,
 		headerFont,
 		bodyFont,
@@ -41,7 +44,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 
 	return (
 		<ThemeContext.Provider value={value}>
-			<div className={cn(mode, 'w-full')}>{children}</div>
+			<div className={cn(mode, theme, 'w-full')}>{children}</div>
 		</ThemeContext.Provider>
 	)
 }

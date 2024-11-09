@@ -2,17 +2,17 @@
 
 import React from 'react'
 import { useClickOrDrag } from '../../../hooks'
+import { cn } from 'frontend-shadcn'
 
 type TouchableOpacityProps = {
 	children: any
 	handleClick?: () => void
-	disableRipple?: boolean
-	disableBorderRadius?: boolean
-	justifyContent?: string
+  className?: string
 }
 
 const TouchableOpacity: React.FC<TouchableOpacityProps> = (props) => {
-	const { children, handleClick } = props
+	
+  const { children, className, handleClick } = props
 
 	const { onMouseDown, onMouseUp } = useClickOrDrag({
 		onClick: handleClick,
@@ -22,7 +22,7 @@ const TouchableOpacity: React.FC<TouchableOpacityProps> = (props) => {
 		<button
 			onMouseDown={onMouseDown}
 			onMouseUp={onMouseUp}
-			className="focus:outline-none focus:ring-2 rounded-lg"
+			className={cn("focus:outline-none", className)}
 		>
 			{children}
 		</button>
