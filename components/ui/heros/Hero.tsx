@@ -8,11 +8,12 @@ import {
 	HeroList,
 	ButtonActions,
 } from '../../../components'
-import { Typography } from '../../core'
 import { ButtonType } from '../../../types'
 
 export type HeroProps = {
+  label?: string
 	title?: string
+  subtitle?: string
 	description?: string
 	image?: string
 	style?: 'card' | 'cover' | 'list' | 'avatar' | 'spotlight'
@@ -24,7 +25,9 @@ export type HeroProps = {
 
 const Hero: React.FC<HeroProps> = (props) => {
 	const {
+    label,
 		title,
+    subtitle,
 		description,
 		image,
 		style = 'card',
@@ -52,8 +55,10 @@ const Hero: React.FC<HeroProps> = (props) => {
 
 	return (
 		<Component
+      label={label}
 			primary={title}
 			secondary={description}
+      tertiary={subtitle}
 			image={image}
 			secondaryAction={buttons && <ButtonActions buttons={buttons} />}
       slots={slots}

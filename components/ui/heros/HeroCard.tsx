@@ -8,8 +8,9 @@ import { Typography } from '../../core'
 export type HeroCardProps = {
 	label?: string
 	image: string
-	primary: string | React.ReactNode
-	secondary?: React.ReactNode
+	primary: string 
+	secondary?: string
+  tertiary?: string 
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
 	children?: React.ReactNode

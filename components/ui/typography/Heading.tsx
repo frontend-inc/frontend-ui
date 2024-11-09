@@ -28,19 +28,19 @@ const Heading: React.FC<HeadingProps> = (props) => {
     className
 	} = props || {}
 
-  const titleVariants = {
+  const titleVariant = {
     sm: 'h4',
     md: 'h3',
     lg: 'h2',
     xl: 'h1'
-  }
+  }[size] as TypographyVariantsType
 
-  const descriptionVariants = {
+  const descriptionVariant = {
     sm: 'body1',
     md: 'body1',
     lg: 'subtitle2',
     xl: 'subtitle1'
-  }
+  }[size] as TypographyVariantsType
 
 	if (!title && !description && !label) return null
 	return (
@@ -58,14 +58,14 @@ const Heading: React.FC<HeadingProps> = (props) => {
 						</div>
 					)}
 					{title && (
-						<Typography variant={titleVariants[size]} textAlign={textAlign}>
+						<Typography variant={titleVariant} textAlign={textAlign}>
 							{title}
 						</Typography>
-					)}
+					)}          
 					{description && (
 						<Typography
-							variant={ descriptionVariants[size] }
-							className="text-muted-foreground"
+							variant={ descriptionVariant }              
+							className="text-foreground/80"
 							textAlign={textAlign}
 						>
 							{description}

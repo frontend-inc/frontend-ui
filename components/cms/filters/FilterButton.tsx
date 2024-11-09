@@ -24,7 +24,7 @@ export const FilterGroup: React.FC<FilterGroupProps> = (props) => {
   } = props || {}
 
   return(
-    <div className="w-full p-4 rounded-lg">
+    <div className="w-full flex flex-col space-y-3 p-4 rounded-lg">
       <Typography variant="body1" className="font-medium">
         { filterOption?.label }
       </Typography>
