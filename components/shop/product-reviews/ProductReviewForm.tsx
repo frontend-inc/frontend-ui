@@ -64,33 +64,33 @@ const ProductReviewForm: React.FC<ProductReviewFormProps> = () => {
 				</Button>
 			}
 		>
-      <div className="p-4">
-        <div className="flex flex-col space-y-4 w-full items-start">
-          <RatingInput
-            errors={errors}
-            name="rating"
-            value={resource?.rating}
-            /* @ts-ignore */
-            handleChange={handleChange}
-          />
-          <TextInput
-            errors={errors}
-            name="title"
-            value={resource?.title}
-            /* @ts-ignore */
-            handleChange={handleChange}
-            placeholder="Review summary..."
-          />
-          <TextArea
-            errors={errors}
-            name="body"
-            value={resource?.body}
-            /* @ts-ignore */
-            handleChange={handleChange}
-            placeholder="Leave a review..."
-          />
-        </div>
-      </div>
+			<div className="p-4">
+				<div className="flex flex-col space-y-4 w-full items-start">
+					<RatingInput
+						errors={errors}
+						name="rating"
+						value={resource?.rating}
+						/* @ts-ignore */
+						handleChange={handleChange}
+					/>
+					<TextInput
+						errors={errors}
+						name="title"
+						value={resource?.title}
+						/* @ts-ignore */
+						handleChange={handleChange}
+						placeholder="Review summary..."
+					/>
+					<TextArea
+						errors={errors}
+						name="body"
+						value={resource?.body}
+						/* @ts-ignore */
+						handleChange={handleChange}
+						placeholder="Leave a review..."
+					/>
+				</div>
+			</div>
 		</Drawer>
 	)
 }

@@ -27,12 +27,7 @@ const Section: React.FC<SectionProps> = (props) => {
 
 	return (
 		<section
-			className={cn(
-				mode,
-				'w-full bg-background',
-				`py-${py}`,
-				px && `px-${px}`
-			)}
+			className={cn(mode, 'w-full bg-background', `py-${py}`, px && `px-${px}`)}
 			style={{ backgroundColor: bgColor }}
 		>
 			<div
@@ -47,9 +42,7 @@ const Section: React.FC<SectionProps> = (props) => {
 						'transition-all duration-300 ease-in-out'
 					)}
 				>
-					<AuthGuard requireAuth={requireAuth}>
-						{children}
-					</AuthGuard>
+					<AuthGuard requireAuth={requireAuth}>{children}</AuthGuard>
 				</div>
 			</div>
 		</section>

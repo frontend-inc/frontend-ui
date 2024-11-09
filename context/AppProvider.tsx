@@ -7,21 +7,21 @@ type AppProviderProps = {
 	apiUrl: string
 	clientUrl: string
 	children: React.ReactNode
-	logo?: any	
+	logo?: any
 	name: string
-  enableShopify?: boolean
+	enableShopify?: boolean
 	enableStripe?: boolean
 }
 
 const AppProvider = (props: AppProviderProps) => {
 	const {
-    name,
+		name,
 		logo,
 		apiUrl,
 		clientUrl,
 		enableShopify,
 		enableStripe,
-    children,
+		children,
 	} = props || {}
 
 	const [alert, setAlert] = useState()

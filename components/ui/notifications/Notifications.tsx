@@ -31,7 +31,7 @@ export default function Notifications({ notifications }: NotificationsProps) {
 	if (!notifications?.length) return null
 
 	return (
-		<div className="bg-primary w-full relative top-0 left-0 p-0 h-11 px-[48px]">      
+		<div className="bg-primary w-full relative top-0 left-0 p-0 h-11 px-[48px]">
 			<SwipeableViews
 				axis={'x'}
 				index={activeStep}
@@ -42,8 +42,8 @@ export default function Notifications({ notifications }: NotificationsProps) {
 				}}
 				className="w-full h-full"
 			>
-				{notifications.map((notification, i) => (					
-					<Notification key={i} notification={notification} />					
+				{notifications.map((notification, i) => (
+					<Notification key={i} notification={notification} />
 				))}
 			</SwipeableViews>
 			{notifications?.length > 1 && (

@@ -16,7 +16,7 @@ export type CardProps = {
 	label?: string
 	primary: string | React.ReactNode
 	secondary?: string | React.ReactNode
-  tertiary?: string | React.ReactNode
+	tertiary?: string | React.ReactNode
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
 	handleClick?: () => void
@@ -35,7 +35,7 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 			label,
 			primary,
 			secondary,
-      tertiary,
+			tertiary,
 			actions,
 			secondaryAction,
 			handleClick,
@@ -48,12 +48,8 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 		} = props
 
 		return (
-			<div
-				ref={ref}
-				className={cn('w-full overflow-hidden')}
-				{...slots.item}
-			>
-				<div className='w-full relative overflow-hidden'>
+			<div ref={ref} className={cn('w-full overflow-hidden')} {...slots.item}>
+				<div className="w-full relative overflow-hidden">
 					<Image
 						src={image}
 						height={size}
@@ -64,14 +60,14 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 						{...slots.image}
 					/>
 				</div>
-				<div className='mx-2 pt-3 flex flex-col space-y-2 overflow-hidden'>
+				<div className="mx-2 pt-3 flex flex-col space-y-2 overflow-hidden">
 					<Typography variant="subtitle2">{primary}</Typography>
 					{secondary && (
 						<Typography variant="body2" className="text-muted-foreground">
 							{secondary}
 						</Typography>
 					)}
-          {tertiary && (
+					{tertiary && (
 						<Typography variant="body2" className="text-muted-foreground">
 							{tertiary}
 						</Typography>

@@ -12,7 +12,7 @@ const ShopProducts: React.FC<ShopProductsProps> = (props) => {
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		textAlign,
 		bgColor,
 		mode,
@@ -20,7 +20,7 @@ const ShopProducts: React.FC<ShopProductsProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		requirePaid,
+
 		...rest
 	} = props
 
@@ -32,13 +32,12 @@ const ShopProducts: React.FC<ShopProductsProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 		>
 			<div className="flex flex-col space-y-2">
 				<Heading
 					label={label}
 					title={title}
-					description={description}
+					subtitle={subtitle}
 					textAlign={textAlign}
 				/>
 				<ProductList {...rest} />

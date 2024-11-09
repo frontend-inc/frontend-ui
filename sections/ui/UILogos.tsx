@@ -12,7 +12,7 @@ const UILogos: React.FC<UILogosProps> = (props) => {
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		textAlign,
 		bgColor,
 		mode,
@@ -20,14 +20,13 @@ const UILogos: React.FC<UILogosProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		requirePaid,
+
 		...rest
 	} = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
 			py={py}
@@ -38,7 +37,7 @@ const UILogos: React.FC<UILogosProps> = (props) => {
 				<Heading
 					label={label}
 					title={title}
-					description={description}
+					subtitle={subtitle}
 					textAlign={'center'}
 				/>
 				<Logos {...rest} />

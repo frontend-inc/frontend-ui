@@ -6,10 +6,7 @@ import { ResourceFormProps } from '../../../components/cms/resources/ResourceFor
 import { FormFieldType } from '../../../types'
 import { MediaInput } from '../../../components/'
 
-const AdminProductCollectionForm: React.FC<ResourceFormProps> = (
-	props
-) => {
-
+const AdminProductCollectionForm: React.FC<ResourceFormProps> = (props) => {
 	let fields = [
 		{ label: 'Media', name: 'image', variant: 'media' },
 		{ label: 'Handle', name: 'handle', variant: 'string' },

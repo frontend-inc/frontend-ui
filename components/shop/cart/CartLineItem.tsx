@@ -61,7 +61,7 @@ type CartLineItemProps = {
 const CartLineItem: React.FC<CartLineItemProps> = (props) => {
 	const { lineItem } = props
 
-  const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(false)
 	const { loading, addQuantity, removeQuantity, removeFromCart } = useCart()
 
 	const { setCartOpen } = useCart()
@@ -81,67 +81,67 @@ const CartLineItem: React.FC<CartLineItemProps> = (props) => {
 	}
 
 	const handleClick = () => {
-    setOpen(true)
+		setOpen(true)
 		//setCartOpen(false)
 	}
 
 	return (
-    <>
-      <div
-        className={cn(
-          'flex items-center justify-between py-2',
-          loading && 'opacity-30'
-        )}
-      >
-        <div className="flex items-center pt-1">
-          <div className="relative mr-4 w-24 h-24">
-            <span className="absolute bg-primary text-primary-foreground top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none z-50 transform translate-x-1/2 -translate-y-1/2 rounded-full">
-              {quantity}
-            </span>
-            <div className="rounded-lg flex items-center justify-center min-w-[96px] h-[96px] overflow-hidden">
-              <button 
-                className="p-0" 
-                onClick={ handleClick }
-              >
-              <Image
-                alt={product?.title || ''}
-                // @ts-ignore
-                src={product?.image?.url}
-                height={72}
-                width={72}
-                style={{                  
-                  objectFit: 'cover'
-                }}
-                className="w-full cursor-pointer object-cover"
-              />
-              </button>
-            </div>
-          </div>
-          <div className="flex flex-col space-y-2">
-            <Typography variant="body1">{product?.title}</Typography>
-            <Typography className="text-muted-foreground" variant="body2">
-              {product?.display_price}
-            </Typography>
-            <CartQuantityInput
-              quantity={quantity}
-              handleAddQuantity={handleAddQuantity}
-              handleRemoveQuantity={handleRemoveQuantity}
-            />
-          </div>
-        </div>
-        <button
-          onClick={handleRemoveFromCart}
-          className='focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-sm p-1 mr-1'
-        >
-          <Icon name="X" className="h-4 w-4 text-muted-foreground hover:text-foreground" />
-        </button>
-      </div>
-      <ProductModal 
-        open={open}
-        handleClose={() => setOpen(false)}
-        productId={product?.handle}
-      />
-    </>
+		<>
+			<div
+				className={cn(
+					'flex items-center justify-between py-2',
+					loading && 'opacity-30'
+				)}
+			>
+				<div className="flex items-center pt-1">
+					<div className="relative mr-4 w-24 h-24">
+						<span className="absolute bg-primary text-primary-foreground top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none z-50 transform translate-x-1/2 -translate-y-1/2 rounded-full">
+							{quantity}
+						</span>
+						<div className="rounded-lg flex items-center justify-center min-w-[96px] h-[96px] overflow-hidden">
+							<button className="p-0" onClick={handleClick}>
+								<Image
+									alt={product?.title || ''}
+									// @ts-ignore
+									src={product?.image?.url}
+									height={72}
+									width={72}
+									style={{
+										objectFit: 'cover',
+									}}
+									className="w-full cursor-pointer object-cover"
+								/>
+							</button>
+						</div>
+					</div>
+					<div className="flex flex-col space-y-2">
+						<Typography variant="body1">{product?.title}</Typography>
+						<Typography className="text-muted-foreground" variant="body2">
+							{product?.display_price}
+						</Typography>
+						<CartQuantityInput
+							quantity={quantity}
+							handleAddQuantity={handleAddQuantity}
+							handleRemoveQuantity={handleRemoveQuantity}
+						/>
+					</div>
+				</div>
+				<button
+					onClick={handleRemoveFromCart}
+					className="focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-sm p-1 mr-1"
+				>
+					<Icon
+						name="X"
+						className="h-4 w-4 text-muted-foreground hover:text-foreground"
+					/>
+				</button>
+			</div>
+			<ProductModal
+				open={open}
+				handleClose={() => setOpen(false)}
+				productId={product?.handle}
+			/>
+		</>
 	)
 }
 

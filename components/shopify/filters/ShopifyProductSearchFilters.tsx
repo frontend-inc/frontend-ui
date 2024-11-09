@@ -28,26 +28,26 @@ const ShopifyProductSearchFilters: React.FC<
 		priceOptions = [],
 		handleFilter,
 		handleFilterArray,
-	} = props  
+	} = props
 
 	return (
-    <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="secondary" className="w-full">
-          <SlidersHorizontal className="mr-2 h-4 w-4" />
-          Filters
-        </Button>
-      </SheetTrigger>
-      <SheetContent side="right">
-        <ProductFiltersList
-          filters={filters}
-          options={options}
-          priceOptions={priceOptions}
-          handleFilter={handleFilter}
-          handleFilterArray={handleFilterArray}
-        />
-      </SheetContent>
-    </Sheet>
+		<Sheet>
+			<SheetTrigger asChild>
+				<Button variant="secondary" className="w-full">
+					<SlidersHorizontal className="mr-2 h-4 w-4" />
+					Filters
+				</Button>
+			</SheetTrigger>
+			<SheetContent side="right">
+				<ProductFiltersList
+					filters={filters}
+					options={options}
+					priceOptions={priceOptions}
+					handleFilter={handleFilter}
+					handleFilterArray={handleFilterArray}
+				/>
+			</SheetContent>
+		</Sheet>
 	)
 }
 

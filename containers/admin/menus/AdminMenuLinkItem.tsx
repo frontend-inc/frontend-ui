@@ -19,7 +19,6 @@ const AdminMenuLinkItem: React.FC<ResourceItemProps> = (props) => {
 			sortable={sortable}
 			enableBorder={enableBorder}
 			icon="Link"
-			
 			primary={link?.label}
 			handleClick={handleClick}
 			handleEdit={handleEdit}

@@ -33,31 +33,30 @@ export type ResourceListItemProps = {
 	menuActions?: React.ReactNode
 	sortable?: boolean
 	isDragging?: boolean
-  disableImage?: boolean 
+	disableImage?: boolean
 	enableBorder?: boolean
 }
 
 export default function ResourceListItem(props: ResourceListItemProps) {
-
-  const {
-    icon,
-    avatar,
-    color,
-    primary,
-    secondary,
-    image,
-    handleClick,
-    handleEdit,
-    handleDelete,
-    handleSelect,
-    secondaryAction,
-    menuActions,
-    sortable,
-    selectable,
-    selected,
-    disableImage = false,
-    enableBorder = true,
-  } = props
+	const {
+		icon,
+		avatar,
+		color,
+		primary,
+		secondary,
+		image,
+		handleClick,
+		handleEdit,
+		handleDelete,
+		handleSelect,
+		secondaryAction,
+		menuActions,
+		sortable,
+		selectable,
+		selected,
+		disableImage = false,
+		enableBorder = true,
+	} = props
 
 	return (
 		<div
@@ -80,25 +79,25 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 					/>
 				)}
 				{avatar && (
-          <div className="mr-2">
-            <button
+					<div className="mr-2">
+						<button
 							className="w-full h-full focus:outline-none focus:ring-2"
 							onClick={handleClick}
 						>
-              {avatar}
-            </button>
-          </div>
-        )}
-        {!disableImage && (
-          <div className="mr-2 w-[72px] h-[72px]">
-            <button
-              className="w-full h-full focus:outline-none focus:ring-2"
-              onClick={handleClick}
-            >
-              <Image src={image || null} aspectRatio={1.0} alt={image} />
-            </button>
-          </div>
-        )}
+							{avatar}
+						</button>
+					</div>
+				)}
+				{!disableImage && (
+					<div className="mr-2 w-[72px] h-[72px]">
+						<button
+							className="w-full h-full focus:outline-none focus:ring-2"
+							onClick={handleClick}
+						>
+							<Image src={image || null} aspectRatio={1.0} alt={image} />
+						</button>
+					</div>
+				)}
 				{icon && (
 					<button
 						className="focus:outline-none focus:ring-2"

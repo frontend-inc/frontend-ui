@@ -27,14 +27,12 @@ const AdminProductItem: React.FC<ResourceItemProps> = (props) => {
 			image={product?.image?.url}
 			primary={product?.title}
 			secondary={
-        <ListFields
-          resource={product}
-          fields={[{ label: 'Price', name: 'price', variant: 'price' }]}
-        />					
+				<ListFields
+					resource={product}
+					fields={[{ label: 'Price', name: 'price', variant: 'price' }]}
+				/>
 			}
-      secondaryAction={
-        <PublishLabel published={product?.published} />
-      }
+			secondaryAction={<PublishLabel published={product?.published} />}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}
 			handleClick={handleClick}

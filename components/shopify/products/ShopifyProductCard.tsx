@@ -17,19 +17,18 @@ type ShopifyProductCardProps = {
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
-  className?: string
+	className?: string
 }
 
 export default function ShopifyProductCard(props: ShopifyProductCardProps) {
-
-  const {
-    product,
-    handleClick,
-    enableBorder = false,
-    enableAddToCart = false,
-    enableQuantity = false,
-    className
-  } = props || {}
+	const {
+		product,
+		handleClick,
+		enableBorder = false,
+		enableAddToCart = false,
+		enableQuantity = false,
+		className,
+	} = props || {}
 
 	const [open, setOpen] = useState(false)
 	const { setSearchOpen } = useContext(ShopifyContext) as any
@@ -39,42 +38,37 @@ export default function ShopifyProductCard(props: ShopifyProductCardProps) {
 			window.scrollTo({ top: 0, behavior: 'smooth' })
 			setSearchOpen(false)
 			handleClick()
-		}else{
-      setOpen(true)
-    }
+		} else {
+			setOpen(true)
+		}
 	}
 
 	return (
-		<div
-			className={cn(
-				'w-full overflow-hidden bg-background',
-        className
-			)}
-		>
-      <div className="w-full h-full min-h-[300px]">
-        <SwipeableShopifyProductImages
-          product={product}
-          height={300}
-          handleClick={handleItemClick}
-          disableBorderRadius={enableBorder}
-        />
-      </div>
+		<div className={cn('w-full overflow-hidden bg-background', className)}>
+			<div className="w-full h-full min-h-[300px]">
+				<SwipeableShopifyProductImages
+					product={product}
+					height={300}
+					handleClick={handleItemClick}
+					disableBorderRadius={enableBorder}
+				/>
+			</div>
 			<CardContent className="p-3">
 				<div className="flex flex-col space-y-2">
-          <div className="flex flex-col space-y-0 min-h-[80px]">
-            <Typography variant="subtitle2">
-              {truncate(product?.title)}
-            </Typography>
-            <Typography variant="body2">
-              {formatCurrency(product?.priceRange?.minVariantPrice?.amount)}
-            </Typography>
-          </div>
+					<div className="flex flex-col space-y-0 min-h-[80px]">
+						<Typography variant="subtitle2">
+							{truncate(product?.title)}
+						</Typography>
+						<Typography variant="body2">
+							{formatCurrency(product?.priceRange?.minVariantPrice?.amount)}
+						</Typography>
+					</div>
 					{enableAddToCart && (
 						<ShopifyAddToCartButton
 							product={product}
 							/* @ts-ignore */
 							variant={product?.variants?.edges[0]?.node}
-							enableQuantity={enableQuantity}							
+							enableQuantity={enableQuantity}
 							size="default"
 						/>
 					)}

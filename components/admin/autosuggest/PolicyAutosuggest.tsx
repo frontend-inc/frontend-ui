@@ -9,7 +9,7 @@ type PolicyAutosuggestProps = {
 	value: any
 	name?: string
 	label?: string
-  valueParam?: string
+	valueParam?: string
 	handleChange: any
 	query?: any
 	direction?: 'row' | 'column'
@@ -22,10 +22,10 @@ const PolicyAutosuggest: React.FC<PolicyAutosuggestProps> = (props) => {
 	const {
 		errors,
 		value,
-    name='policy',
+		name = 'policy',
 		direction = 'column',
 		label,
-    valueParam='handle',
+		valueParam = 'handle',
 		handleChange,
 		placeholder = 'Select action',
 	} = props

@@ -9,22 +9,11 @@ import { SectionProps } from '../../types'
 type CmsDetailsProps = SectionProps & DetailsProps
 
 const CmsDetails: React.FC<CmsDetailsProps> = (props) => {
-	const {
-		bgColor,
-		mode,
-		py,
-		px,
-		maxWidth,
-		requireAuth,
-
-		requirePaid,
-		...rest
-	} = props
+	const { bgColor, mode, py, px, maxWidth, requireAuth, ...rest } = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
 			py={py}

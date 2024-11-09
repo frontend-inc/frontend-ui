@@ -56,7 +56,9 @@ const ProductsInput: React.FC<ProductsInputProps> = (props) => {
 				)}
 			/>
 			<div>
-				<Button variant="secondary" onClick={handleAddClick}>Add Products</Button>
+				<Button variant="secondary" onClick={handleAddClick}>
+					Add Products
+				</Button>
 			</div>
 			<Sheet open={open} handleClose={() => setOpen(false)}>
 				<ResourceList

@@ -12,7 +12,7 @@ const ShopifySearch: React.FC<ShopifySearchProps> = (props) => {
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		textAlign,
 		bgColor,
 		mode,
@@ -20,14 +20,13 @@ const ShopifySearch: React.FC<ShopifySearchProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		requirePaid,
+
 		...rest
 	} = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
 			py={py}
@@ -37,7 +36,7 @@ const ShopifySearch: React.FC<ShopifySearchProps> = (props) => {
 			<Heading
 				label={label}
 				title={title}
-				description={description}
+				subtitle={subtitle}
 				textAlign={textAlign}
 			/>
 			<ProductSearch {...rest} />

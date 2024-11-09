@@ -2,10 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { useResourceContext } from 'frontend-js'
-import {
-	SortOptionType,
-	SyntheticEventType,
-} from '../../types'
+import { SortOptionType, SyntheticEventType } from '../../types'
 import { formatFilterArray } from '../../helpers'
 
 const useSearch = (props) => {
@@ -24,13 +21,13 @@ const useSearch = (props) => {
 		loadMore,
 	} = useResourceContext()
 
-  const [filter, setFilter] = useState()
+	const [filter, setFilter] = useState()
 	const [queryFilters, setQueryFilters] = useState([])
 	const [activeFilters, setActiveFilters] = useState([])
 	const [keywords, setKeywords] = useState('')
 	const [location, setLocation] = useState('')
 
-  const findFilter = (fieldName, filters) => {
+	const findFilter = (fieldName, filters) => {
 		let foundFilter = filters.find((f) => f.name == fieldName)
 		setFilter(foundFilter)
 		return foundFilter
@@ -43,11 +40,11 @@ const useSearch = (props) => {
 		return a === b
 	}
 
-  // Compare only the name and operator and override
+	// Compare only the name and operator and override
 	const findDuplicateFilterIndex = (filters, filter) => {
 		return filters.findIndex(
 			(f) => f.name === filter.name && f.operator === filter.operator
-    )
+		)
 	}
 
 	const handleAddFilter = (filter) => {
@@ -80,14 +77,10 @@ const useSearch = (props) => {
 			.filter((filter) => !isBlank(filter?.value))
 			.forEach((filter) => {
 				let { name, operator, value } = filter
-				filters = [
-					...filters,
-          { [name]: { [operator]: value } }
-        ] as any
+				filters = [...filters, { [name]: { [operator]: value } }] as any
 			})
 		return filters
 	}
-
 
 	const handleKeywordChange = (ev: SyntheticEventType) => {
 		setKeywords(ev.target.value)
@@ -134,22 +127,19 @@ const useSearch = (props) => {
 
 	// Filter methods
 	const handleClearFilters = () => {
-		setActiveFilters([])		
+		setActiveFilters([])
 	}
 
-  useEffect(() => {
-    findMany({
+	useEffect(() => {
+		findMany({
 			...defaultQuery,
-			filters: [
-        ...queryFilters,
-        ...(defaultQuery?.filters || [])
-      ],
+			filters: [...queryFilters, ...(defaultQuery?.filters || [])],
 			sort_by: 'id',
 			sort_direction: 'desc',
 			keywords: '',
 			page: 1,
 		})
-  }, [queryFilters])
+	}, [queryFilters])
 
 	useEffect(() => {
 		setQueryFilters(buildQueryFilters(activeFilters))
@@ -182,7 +172,7 @@ const useSearch = (props) => {
 		handleSortBy,
 		handleSortDirection,
 		activeFilters,
-    setActiveFilters,
+		setActiveFilters,
 		handleAddFilter,
 		handleClearFilters,
 	}

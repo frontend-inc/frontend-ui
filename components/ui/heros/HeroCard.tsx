@@ -1,36 +1,34 @@
 'use client'
 
 import React from 'react'
-import { cn } from 'frontend-shadcn'
 import { Image } from '../..'
-import { Typography } from '../../core'
+import { Heading, Typography } from '../../../components'
+import { cn } from 'frontend-shadcn'
 
 export type HeroCardProps = {
 	label?: string
 	image: string
-	primary: string 
-	secondary?: string
-  tertiary?: string 
+	title: string
+	subtitle?: string
+	description?: string
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
 	children?: React.ReactNode
-	slots?: {
-		image?: any
-		content?: any
-	}
+	enableGradient?: boolean
+	enableOverlay?: boolean
 }
 
 const HeroCard: React.FC<HeroCardProps> = (props) => {
 	const {
 		label,
 		image,
-		primary,
-		secondary,
+		title,
+		subtitle,
+		description,
 		actions,
 		secondaryAction,
-		slots = {
-			image: {},
-		},
+		enableOverlay,
+		enableGradient,
 	} = props || {}
 
 	return (
@@ -41,16 +39,23 @@ const HeroCard: React.FC<HeroCardProps> = (props) => {
 					<div className="w-full md:w-1/2 flex flex-col gap-2">
 						<Image
 							src={image}
-							alt={typeof primary === 'string' ? primary : 'Hero image'}
+							alt={title}
 							label={label}
 							aspectRatio={4 / 3}
-							{...slots.image}
+							enableGradient={enableGradient}
+							enableOverlay={enableOverlay}
 						/>
 						{actions}
 					</div>
 					<div className="w-full md:w-1/2 max-w-full md:max-w-[500px] flex flex-col space-y-2">
-						<Typography variant="h3">{primary}</Typography>
-						<Typography variant="body1">{ secondary }</Typography>
+						<Heading
+							label={label}
+							title={title}
+							subtitle={subtitle}
+							textAlign="left"
+							size="lg"
+						/>
+						<Typography variant="body1">{description}</Typography>
 					</div>
 				</div>
 			</div>

@@ -16,7 +16,7 @@ const ShopCollectionProductsCarousel: React.FC<
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		textAlign,
 		bgColor,
 		mode,
@@ -24,14 +24,13 @@ const ShopCollectionProductsCarousel: React.FC<
 		px,
 		maxWidth,
 		requireAuth,
-		requirePaid,
+
 		...rest
 	} = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
 			py={py}
@@ -42,7 +41,7 @@ const ShopCollectionProductsCarousel: React.FC<
 				<Heading
 					label={label}
 					title={title}
-					description={description}
+					subtitle={subtitle}
 					textAlign={textAlign}
 				/>
 				<CollectionProductsCarousel {...rest} />

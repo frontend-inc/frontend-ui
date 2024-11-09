@@ -12,7 +12,7 @@ export { default as DataLayout } from '../data/DataLayout'
 export { default as DataToolbar } from './DataToolbar'
 export { default as SortableDataListItems } from './SortableDataListItems'
 
-// Buttons 
+// Buttons
 export { default as ShowButton } from './buttons/ShowButton'
 
 // Toolbar Modal

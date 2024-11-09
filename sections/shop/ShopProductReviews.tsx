@@ -12,7 +12,7 @@ const ShopProductReviews: React.FC<ShopProductReviewsProps> = (props) => {
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		textAlign,
 		bgColor,
 		mode,
@@ -21,14 +21,12 @@ const ShopProductReviews: React.FC<ShopProductReviewsProps> = (props) => {
 		maxWidth,
 		requireAuth,
 
-		requirePaid,
 		...rest
 	} = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
 			py={py}
@@ -38,7 +36,7 @@ const ShopProductReviews: React.FC<ShopProductReviewsProps> = (props) => {
 			<Heading
 				label={label}
 				title={title}
-				description={description}
+				subtitle={subtitle}
 				textAlign={textAlign}
 			/>
 			<ProductReviews {...rest} />

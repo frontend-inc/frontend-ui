@@ -18,7 +18,7 @@ const AdminFormResponseItem: React.FC<ResourceItemProps> = (props) => {
 
 	return (
 		<ResourceListItem
-      disableImage
+			disableImage
 			selectable={selectable}
 			selected={selected}
 			image={resource?.image?.url}

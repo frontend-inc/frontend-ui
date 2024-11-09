@@ -12,11 +12,7 @@ type DisplayFieldsProps = {
 }
 
 const DisplayFields: React.FC<DisplayFieldsProps> = (props) => {
-	const {
-		className,
-		fields,
-		resource,
-	} = props || {}
+	const { className, fields, resource } = props || {}
 
 	return (
 		<div
@@ -26,11 +22,7 @@ const DisplayFields: React.FC<DisplayFieldsProps> = (props) => {
 			)}
 		>
 			{fields?.map((field, index) => (
-				<DisplayField
-					key={index}
-					field={field}
-					resource={resource}
-				/>
+				<DisplayField key={index} field={field} resource={resource} />
 			))}
 		</div>
 	)

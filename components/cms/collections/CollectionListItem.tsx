@@ -8,7 +8,7 @@ import {
 	AvatarCard,
 	ChipCard,
 	TextCard,
-  Typography
+	Typography,
 } from '../..'
 import { ListFields, SocialButtons } from '../..'
 import { ButtonType, MetafieldType } from '../../../types'
@@ -58,33 +58,28 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 
 	let Component = COMPONENTS[style] || Card
 
-  let typographyVariants = {
-    card: 'body1',
+	let typographyVariants = {
+		card: 'body1',
 		avatar: 'body1',
 		cover: 'body1',
 		chip: 'body1',
 		text: 'h5',
-		list: 'body1'
-  }
+		list: 'body1',
+	}
 
 	return (
 		<Component
 			label={resource?.label}
 			image={resource?.image?.url}
 			primary={
-        //@ts-ignore
-        <Typography variant={ typographyVariants[style] }>
-          { resource?.title }
-        </Typography>
-      }
+				//@ts-ignore
+				<Typography variant={typographyVariants[style]}>
+					{resource?.title}
+				</Typography>
+			}
 			handleClick={handleClick}
 			// @ts-ignore
-			secondary={
-				<ListFields
-					fields={listFields}
-					resource={resource}
-				/>
-			}
+			secondary={<ListFields fields={listFields} resource={resource} />}
 			actions={
 				<SocialButtons
 					size="small"

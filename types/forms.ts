@@ -1,20 +1,20 @@
 import { OptionType } from 'frontend-js'
 
-export type DocumentTypes = 
-  'post' | 
-  'article' | 
-  'place' | 
-  'event' | 
-  'person' | 
-  'product' | 
-  'image' | 
-  'video' |
-  'audio' | 
-  'file' |
-  'youtube' | 
-  'vimeo' |
-  'soundcloud' |
-  'shopify'
+export type DocumentTypes =
+	| 'post'
+	| 'article'
+	| 'place'
+	| 'event'
+	| 'person'
+	| 'product'
+	| 'image'
+	| 'video'
+	| 'audio'
+	| 'file'
+	| 'youtube'
+	| 'vimeo'
+	| 'soundcloud'
+	| 'shopify'
 
 export type MetafieldType = {
 	name: string

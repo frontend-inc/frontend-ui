@@ -24,63 +24,62 @@ export const COLLECTION_PLACE = {
 	document_type: 'place',
 	label: 'Place',
 	color: 'bg-blue-500',
-	
 }
 
 export const COLLECTION_EVENT = {
 	icon: 'Calendar',
 	document_type: 'event',
 	label: 'Event',
-	color: 'bg-amber-500'		
+	color: 'bg-amber-500',
 }
 
 export const COLLECTION_VIDEO = {
 	icon: 'Video',
 	document_type: 'video',
 	label: 'Video',
-	color: 'bg-purple-500',	
+	color: 'bg-purple-500',
 }
 
 export const COLLECTION_IMAGE = {
 	icon: 'Image',
 	document_type: 'image',
 	label: 'Image',
-	color: 'bg-purple-500',	
+	color: 'bg-purple-500',
 }
 
 export const COLLECTION_FILE = {
 	icon: 'File',
 	document_type: 'file',
 	label: 'File',
-	color: 'bg-purple-500',	
+	color: 'bg-purple-500',
 }
 
 export const COLLECTION_YOUTUBE = {
 	icon: 'Youtube',
 	document_type: 'youtube',
 	label: 'YouTube Videos',
-	color: 'bg-red-500',	
+	color: 'bg-red-500',
 }
 
 export const COLLECTION_VIMEO = {
 	icon: 'Play',
 	document_type: 'vimeo',
 	label: 'Vimeo Videos',
-	color: 'bg-sky-500',	
+	color: 'bg-sky-500',
 }
 
 export const COLLECTION_SOUNDCLOUD = {
 	icon: 'AudioLines',
 	document_type: 'soundcloud',
 	label: 'Soundcloud Audio',
-	color: 'bg-amber-500',	
+	color: 'bg-amber-500',
 }
 
 export const COLLECTION_SHOPIFY = {
 	icon: 'ShoppingCart',
 	document_type: 'shopify',
 	label: 'Shopify Products',
-	color: 'bg-lime-500',	
+	color: 'bg-lime-500',
 }
 
 export const COLLECTION_TEMPLATES = [
@@ -91,9 +90,9 @@ export const COLLECTION_TEMPLATES = [
 	COLLECTION_PLACE,
 	COLLECTION_VIDEO,
 	COLLECTION_IMAGE,
-  COLLECTION_FILE,
-  COLLECTION_YOUTUBE,
-  COLLECTION_VIMEO,
-  COLLECTION_SOUNDCLOUD,
-  COLLECTION_SHOPIFY  
+	COLLECTION_FILE,
+	COLLECTION_YOUTUBE,
+	COLLECTION_VIMEO,
+	COLLECTION_SOUNDCLOUD,
+	COLLECTION_SHOPIFY,
 ]

@@ -87,7 +87,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 		}
 	}
 
-  const handleLoginClick = () => {
+	const handleLoginClick = () => {
 		setTab(0)
 	}
 

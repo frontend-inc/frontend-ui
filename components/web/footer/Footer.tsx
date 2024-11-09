@@ -79,11 +79,7 @@ const Footer: React.FC<FooterProps> = (props) => {
 				</div>
 				<div className="flex flex-row space-x-3 w-full items-center">
 					{policies?.map((policy, i) => (
-            <PolicyLink
-              key={i}
-              label={policy?.label}
-              handle={policy?.handle}
-            />						
+						<PolicyLink key={i} label={policy?.label} handle={policy?.handle} />
 					))}
 				</div>
 			</div>

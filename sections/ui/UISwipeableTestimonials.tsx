@@ -16,22 +16,20 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		textAlign,
 		bgColor,
 		mode,
 		py,
 		px,
-		maxWidth="xl",
+		maxWidth = 'xl',
 		requireAuth,
-		requirePaid,
 		...rest
 	} = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
 			py={py}
@@ -42,9 +40,9 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 				<Heading
 					label={label}
 					title={title}
-					description={description}
-					textAlign='center'
-          size="lg"
+					subtitle={subtitle}
+					textAlign="center"
+					size="lg"
 				/>
 				<Testimonials {...rest} layout="carousel" />
 			</div>

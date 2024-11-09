@@ -20,12 +20,7 @@ export type EmailSubscribeProps = {
 // Call To Action
 const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 	const { showAlertSuccess } = useAlerts()
-	const {
-		label,
-		title,
-		description,
-		buttonText = 'Subscribe',
-	} = props || {}
+	const { label, title, description, buttonText = 'Subscribe' } = props || {}
 
 	const {
 		errors,

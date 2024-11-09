@@ -146,14 +146,8 @@ const DataList: React.FC<DataListProps> = (props) => {
 							item: slots.item,
 						}}
 					/>
-					<Edit 
-            fields={fields} 
-            {...slots.edit} 
-          />
-					<Create 
-            fields={fields} 
-            {...slots.create} 
-          />
+					<Edit fields={fields} {...slots.edit} />
+					<Create fields={fields} {...slots.create} />
 					<Empty
 						icon={emptyIcon}
 						title={emptyTitle}

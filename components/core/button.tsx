@@ -26,8 +26,8 @@ interface ButtonProps extends ShadcnButtonProps {
 	className?: string
 	children?: React.ReactNode
 	disabled?: boolean
-	loading?: boolean  
-  displayAlertWarning?: boolean
+	loading?: boolean
+	displayAlertWarning?: boolean
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -42,29 +42,28 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			endIcon,
 			loading = false,
 			disabled,
-      displayAlertWarning,
+			displayAlertWarning,
 			...props
 		},
 		ref
 	) => {
-
 		return (
-      <ShadcnButton
-        ref={ref}
-        size={size}
-        variant={variant}
-        className={cn(fullWidth && 'w-full', className)}
-        disabled={disabled || loading}
-        {...props}
-      >
-        {loading ? (
-          <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-        ) : (
-          startIcon && <span className="mr-2">{startIcon}</span>
-        )}
-        {children}
-        {!loading && endIcon && <span className="ml-2">{endIcon}</span>}
-      </ShadcnButton>
+			<ShadcnButton
+				ref={ref}
+				size={size}
+				variant={variant}
+				className={cn(fullWidth && 'w-full', className)}
+				disabled={disabled || loading}
+				{...props}
+			>
+				{loading ? (
+					<Loader2 className="h-4 w-4 mr-2 animate-spin" />
+				) : (
+					startIcon && <span className="mr-2">{startIcon}</span>
+				)}
+				{children}
+				{!loading && endIcon && <span className="ml-2">{endIcon}</span>}
+			</ShadcnButton>
 		)
 	}
 )

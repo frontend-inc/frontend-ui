@@ -28,7 +28,6 @@ export type CollectionListItemsProps = {
 }
 
 const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
-
 	const {
 		setResource,
 		loading,
@@ -56,11 +55,11 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		},
 	} = props
 
-	const handleShowClick = (resource) => {  
-    console.log('handleShowClick', resource)  
-    if (handleClick) {
+	const handleShowClick = (resource) => {
+		console.log('handleShowClick', resource)
+		if (handleClick) {
 			handleClick(resource)
-    } else {					
+		} else {
 			setResource(resource)
 			setOpenShow(true)
 		}
@@ -74,23 +73,23 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 		<div className="flex flex-col w-full space-y-2">
 			<DataLayout {...slots.list} layout={layout} loading={loading}>
 				{resources?.map((resource, idx) => (
-          <BlurFade delay={0.25 + idx * 0.05} inView key={resource?.id}>
-            <CollectionListItem
-              key={idx}
-              style={style}
-              selectable={selectable}
-              resource={resource}
-              metafields={metafields}
-              handleClick={() => handleShowClick(resource)}
-              buttons={buttons}
-              enableComments={enableComments}
-              enableFavorites={enableFavorites}
-              enableLikes={enableLikes}
-              enableGradient={enableGradient}
-              enableOverlay={enableOverlay}
-              {...slots.item}
-            />
-          </BlurFade>
+					<BlurFade delay={0.25 + idx * 0.05} inView key={resource?.id}>
+						<CollectionListItem
+							key={idx}
+							style={style}
+							selectable={selectable}
+							resource={resource}
+							metafields={metafields}
+							handleClick={() => handleShowClick(resource)}
+							buttons={buttons}
+							enableComments={enableComments}
+							enableFavorites={enableFavorites}
+							enableLikes={enableLikes}
+							enableGradient={enableGradient}
+							enableOverlay={enableOverlay}
+							{...slots.item}
+						/>
+					</BlurFade>
 				))}
 			</DataLayout>
 			<LoadMore

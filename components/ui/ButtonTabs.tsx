@@ -34,17 +34,14 @@ export default function ButtonTabs({
 						<TabsTrigger
 							key={i}
 							value={tab.value.toString()}
-							className='w-full'
+							className="w-full"
 						>
 							{tab.icon && (
-                <Icon 
-                  name={tab.icon} 
-                  className={cn(
-                    "h-5 w-5",
-                    tab.label && "mr-2"
-                  )} 
-                />
-              )}
+								<Icon
+									name={tab.icon}
+									className={cn('h-5 w-5', tab.label && 'mr-2')}
+								/>
+							)}
 							{tab.label && <span className="text-sm">{tab.label}</span>}
 						</TabsTrigger>
 					)

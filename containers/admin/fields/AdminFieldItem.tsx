@@ -63,9 +63,7 @@ const AdminFieldItem: React.FC<AdminFieldItemProps> = (props) => {
 			sortable={sortable}
 			avatar={<FieldIcon variant={field?.variant} />}
 			primary={field?.label}
-			secondaryAction={
-        <Label label={field.variant} />
-			}
+			secondaryAction={<Label label={field.variant} />}
 			handleClick={handleClick}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}

@@ -12,13 +12,12 @@ export type ProductCollectionCoverProps = {
 	handleClick?: () => void
 	enableGradient?: boolean
 	enableOverlay?: boolean
-  productCollectionId: string | number 
+	productCollectionId: string | number
 }
 
 const ProductCollectionCover: React.FC<ProductCollectionCoverProps> = (
 	props
 ) => {
-
 	const {
 		handleClick,
 		height = 400,
@@ -26,47 +25,39 @@ const ProductCollectionCover: React.FC<ProductCollectionCoverProps> = (
 		enableGradient = false,
 		enableOverlay = true,
 		alignItems = 'center',
-    productCollectionId,
+		productCollectionId,
 	} = props
 
-  const { 
-    productCollection,
-    findProductCollection,
-  } = useProductCollections()
+	const { productCollection, findProductCollection } = useProductCollections()
 
-  useEffect(() => {
-    if(productCollectionId){
-      findProductCollection(productCollectionId)
-    }
-  }, [productCollectionId])
-
+	useEffect(() => {
+		if (productCollectionId) {
+			findProductCollection(productCollectionId)
+		}
+	}, [productCollectionId])
 
 	if (!productCollection) return null
 	return (
-    <ResourceProvider 
-      name='product_collection'
-      url={`/shop/product_collections/${productCollectionId}`}
-      resource={productCollection}
-    >
-      <Cover
-        height={height}
-        title={productCollection?.title}
-        description={productCollection?.description}
-        //@ts-ignore
-        image={productCollection?.image?.url}
-        alt={alt}
-        alignItems={alignItems}
-        handleClick={handleClick}
-        enableOverlay={enableOverlay}
-        enableGradient={enableGradient}
-        actions={
-          <ShowButton>
-            Browse 
-          </ShowButton>
-        }
-      />
-      <ProductCollectionShow />
-    </ResourceProvider>
+		<ResourceProvider
+			name="product_collection"
+			url={`/shop/product_collections/${productCollectionId}`}
+			resource={productCollection}
+		>
+			<Cover
+				height={height}
+				title={productCollection?.title}
+				description={productCollection?.description}
+				//@ts-ignore
+				image={productCollection?.image?.url}
+				alt={alt}
+				alignItems={alignItems}
+				handleClick={handleClick}
+				enableOverlay={enableOverlay}
+				enableGradient={enableGradient}
+				actions={<ShowButton>Browse</ShowButton>}
+			/>
+			<ProductCollectionShow />
+		</ResourceProvider>
 	)
 }
 

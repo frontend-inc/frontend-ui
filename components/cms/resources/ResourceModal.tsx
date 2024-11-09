@@ -54,10 +54,12 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 			}
 		>
 			{loading == true ? (
-        <div className="min-h-[400px] flex flex-col items-center justify-center">
-          <CircularLoader size='lg' />
-        </div>
-      ) : children}
+				<div className="min-h-[400px] flex flex-col items-center justify-center">
+					<CircularLoader size="lg" />
+				</div>
+			) : (
+				children
+			)}
 		</Drawer>
 	)
 }

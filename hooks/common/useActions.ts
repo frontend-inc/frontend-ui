@@ -27,7 +27,7 @@ const useButtons = (params: UseButtonParams) => {
 
 	const handleClick = async (ev) => {
 		switch (action) {
-			case 'page':				
+			case 'page':
 				router.push(`${clientUrl}${path}`)
 				break
 			case 'copy':

@@ -53,7 +53,7 @@ const AdminOrderDetails: React.FC<AdminOrderDetailsProps> = (props) => {
 						</Button>
 					</div>
 					<Typography
-						variant="overline"						
+						variant="overline"
 						className="text-muted-foreground whitespace-pre-line"
 					>
 						{order.shipping_address}

@@ -82,18 +82,23 @@ export default function ArrayInput({
 						error && 'border-red-500'
 					)}
 				>
-					{Array.isArray(value) && value?.map((tag) => (
-						<Badge key={tag} variant="secondary" className="px-2 py-1 text-sm">
-							{tag}
-							<button
-								type="button"
-								className="ml-1 hover:bg-secondary rounded-full"
-								onClick={() => removeTag(tag)}
+					{Array.isArray(value) &&
+						value?.map((tag) => (
+							<Badge
+								key={tag}
+								variant="secondary"
+								className="px-2 py-1 text-sm"
 							>
-								<X className="h-4 w-4" />
-							</button>
-						</Badge>
-					))}
+								{tag}
+								<button
+									type="button"
+									className="ml-1 hover:bg-secondary rounded-full"
+									onClick={() => removeTag(tag)}
+								>
+									<X className="h-4 w-4" />
+								</button>
+							</Badge>
+						))}
 					<Input
 						type="text"
 						placeholder={placeholder}

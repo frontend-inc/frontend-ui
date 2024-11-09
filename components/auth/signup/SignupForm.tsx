@@ -75,7 +75,7 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 			</div>
 			<div className="flex flex-col space-y-3 w-full">
 				<Button
-          size="lg"
+					size="lg"
 					fullWidth
 					onClick={handleSubmit}
 					startIcon={loading && <IconLoading />}

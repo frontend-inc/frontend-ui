@@ -8,17 +8,17 @@ import { Form, Modal, Icon } from '../../../components'
 import { Button } from '../../../components/core'
 
 type AdminDocumentHeaderProps = ResourceHeaderProps & {
-  collectionId: string 
+	collectionId: string
 }
 
 const AdminDocumentHeader: React.FC<AdminDocumentHeaderProps> = (props) => {
 	const { handleReload, collectionId } = props || {}
 
 	const { loading } = useAdminDocuments({
-    collection: collectionId
-  })
-  
-  const { loading: collectionLoading, aiGenerate } = useAdminCollections()
+		collection: collectionId,
+	})
+
+	const { loading: collectionLoading, aiGenerate } = useAdminCollections()
 
 	const [open, setOpen] = useState(false)
 
@@ -31,7 +31,7 @@ const AdminDocumentHeader: React.FC<AdminDocumentHeaderProps> = (props) => {
 
 	const handleGenerateAiDocuments = async () => {
 		await aiGenerate(collectionId, prompt.text)
-    setOpen(false)
+		setOpen(false)
 		if (handleReload) {
 			handleReload()
 		}
@@ -42,21 +42,19 @@ const AdminDocumentHeader: React.FC<AdminDocumentHeaderProps> = (props) => {
 			{...props}
 			secondaryAction={
 				<>
-					<Button             
-            className="bg-blue-500 text-white hover:bg-blue-700 hover:text-white" 
-            onClick={() => setOpen(true)}
-            startIcon={
-              <Icon name="Zap" />
-            }
-          >						
-            Generate 
+					<Button
+						className="bg-blue-500 text-white hover:bg-blue-700 hover:text-white"
+						onClick={() => setOpen(true)}
+						startIcon={<Icon name="Zap" />}
+					>
+						Generate
 					</Button>
 					<Modal
 						icon="Zap"
-						title="Generate Content"						
+						title="Generate Content"
 						open={open}
 						handleClose={() => setOpen(false)}
-            loading={collectionLoading}
+						loading={collectionLoading}
 					>
 						<Form
 							errors={{}}

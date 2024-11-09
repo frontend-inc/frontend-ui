@@ -14,7 +14,7 @@ export const GOOGLE_FONTS = [
 	{
 		name: 'Hedvig',
 		url: 'https://fonts.googleapis.com/css2?family=Hedvig&display=swap',
-	}, 
+	},
 	{
 		name: 'IBM Plex Sans',
 		url: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap',
@@ -27,7 +27,7 @@ export const GOOGLE_FONTS = [
 		name: 'Inter',
 		url: 'https://fonts.googleapis.com/css2?family=Inter&display=swap',
 	},
-  {
+	{
 		name: 'Jakarta',
 		url: 'https://fonts.googleapis.com/css2?family=Jakarta&display=swap',
 	},
@@ -43,7 +43,7 @@ export const GOOGLE_FONTS = [
 		name: 'Manrope',
 		url: 'https://fonts.googleapis.com/css2?family=Manrope&display=swap',
 	},
-  {
+	{
 		name: 'Outfit',
 		url: 'https://fonts.googleapis.com/css2?family=Outfit&display=swap',
 	},

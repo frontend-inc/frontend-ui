@@ -46,12 +46,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 		} = props
 
 		return (
-			<div
-				ref={ref}
-				className={cn(					
-					'w-full overflow-hidden bg-background'
-				)}
-			>
+			<div ref={ref} className={cn('w-full overflow-hidden bg-background')}>
 				<div className="min-h-[250px] w-full relative overflow-hidden">
 					<Image
 						src={image}

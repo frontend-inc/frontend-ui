@@ -61,10 +61,7 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 	}
 
 	return (
-		<button 
-      className="p-1 rounded-full hover:bg-muted" 
-      onClick={handleClick}
-    >
+		<button className="p-1 rounded-full hover:bg-muted" onClick={handleClick}>
 			<SocialIcon
 				network={provider}
 				style={{

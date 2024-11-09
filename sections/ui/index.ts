@@ -23,6 +23,6 @@ import SwipeableTestimonials from './UISwipeableTestimonials'
 import UIText from './UIText'
 
 export const UI = {
-  Text: UIText,
-  SwipeableTestimonials: SwipeableTestimonials
+	Text: UIText,
+	SwipeableTestimonials: SwipeableTestimonials,
 }

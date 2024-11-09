@@ -18,11 +18,11 @@ const HeroAvatar: React.FC<HeroCardProps> = (props) => {
 	} = props || {}
 
 	return (
-    <div className="w-full flex flex-row justify-center">
-		<div className="container mx-auto w-full max-w-screen-sm flex flex-col space-y-2 justify-center overflow-hidden">
-			<div className="w-full flex flex-col space-y-1 justify-center">
-				{secondaryAction}
-			</div>
+		<div className="w-full flex flex-row justify-center">
+			<div className="container mx-auto w-full max-w-screen-sm flex flex-col space-y-2 justify-center overflow-hidden">
+				<div className="w-full flex flex-col space-y-1 justify-center">
+					{secondaryAction}
+				</div>
 				<div className="w-full flex flex-col space-y-6 justify-start items-center">
 					<div className="w-full sm:w-[160px] flex flex-col space-y-3">
 						<div className="w-full h-full rounded flex justify-center items-center">
@@ -36,8 +36,12 @@ const HeroAvatar: React.FC<HeroCardProps> = (props) => {
 						{actions}
 					</div>
 					<div className="w-full flex flex-col space-y-1">
-						<Typography variant="h3" className="text-center">{primary}</Typography>
-						<Typography variant="body1" className="text-center">{ secondary }</Typography>
+						<Typography variant="h3" className="text-center">
+							{primary}
+						</Typography>
+						<Typography variant="body1" className="text-center">
+							{secondary}
+						</Typography>
 					</div>
 				</div>
 			</div>

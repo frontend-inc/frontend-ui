@@ -5,14 +5,14 @@ import { PDP } from '../..'
 import {
 	ProductRating,
 	SocialButtons,
-  SubscribeButton,
+	SubscribeButton,
 	AddToCartButton,
 } from '../..'
 import { ProductType } from '../../../types'
 
 export type ProductDetailsProps = {
-	handle?: string	
-  direction?: 'row' | 'column'
+	handle?: string
+	direction?: 'row' | 'column'
 	product: ProductType
 	enableFavorites?: boolean
 	enableLikes?: boolean
@@ -32,8 +32,8 @@ export type ProductProps = ProductDetailsProps & {
 
 const ProductDetails: React.FC<ProductProps> = (props) => {
 	const {
-    direction,
-    product,
+		direction,
+		product,
 		enableFavorites,
 		enableLikes,
 		enableSharing,
@@ -45,7 +45,6 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 			content: {},
 		},
 	} = props || {}
-
 
 	let slots = {
 		image: {
@@ -61,7 +60,7 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 	if (!product?.id) return null
 	return (
 		<PDP
-      direction={direction}
+			direction={direction}
 			image={product?.image?.url}
 			primary={product?.title}
 			price={product?.display_price}
@@ -76,7 +75,7 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 			}
 			actions={
 				<SocialButtons
-          size="large"
+					size="large"
 					justifyContent={'center'}
 					resource={product}
 					product={product}
@@ -86,19 +85,21 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 				/>
 			}
 			addToCart={
-        product.recurring ? 
-          <SubscribeButton 
-            availableForSale 
-            size="lg" 
-            productId={product?.id} 
-            className="max-w-[360px]"
-          /> :
-          <AddToCartButton 
-            availableForSale 
-            size="lg" 
-            productId={product?.id} 
-            className="max-w-[360px]"
-          />					
+				product.recurring ? (
+					<SubscribeButton
+						availableForSale
+						size="lg"
+						productId={product?.id}
+						className="max-w-[360px]"
+					/>
+				) : (
+					<AddToCartButton
+						availableForSale
+						size="lg"
+						productId={product?.id}
+						className="max-w-[360px]"
+					/>
+				)
 			}
 			slots={slots}
 		/>

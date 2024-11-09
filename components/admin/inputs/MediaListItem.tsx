@@ -1,10 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import {
-  Image,
-	AttachmentImage,
-} from '../../../components'
+import { Image, AttachmentImage } from '../../../components'
 import { Button } from '../../../components'
 import { Card, CardContent, CardHeader } from 'frontend-shadcn'
 import { Badge } from 'frontend-shadcn'
@@ -30,7 +27,6 @@ const MediaItem: React.FC<MediaItemProps> = ({
 	handleClick,
 	handleRemove,
 }) => {
-
 	return (
 		<Card
 			className={cn(
@@ -52,26 +48,26 @@ const MediaItem: React.FC<MediaItemProps> = ({
 					</DropdownMenu>
 				)}
 			</CardHeader>
-      <CardContent className="p-0">
-			  {item.resource_type === 'file' ? (
+			<CardContent className="p-0">
+				{item.resource_type === 'file' ? (
 					<AttachmentImage icon="File" width={64} height={64} />
-			  ) : (
-        <div className="min-h-[180px] w-[242px]">
-          <button 
-            onClick={() => handleClick(item) }
-            className="w-full focus:outline-none p-0"
-          >
-            <Image
-              aspectRatio={1.5}
-              disableBorderRadius
-              src={item?.thumbnail_url}
-              alt={item?.content_type}
-              height={240}
-            />
-          </button>
-        </div>				
-			)}
-      </CardContent>
+				) : (
+					<div className="min-h-[180px] w-[242px]">
+						<button
+							onClick={() => handleClick(item)}
+							className="w-full focus:outline-none p-0"
+						>
+							<Image
+								aspectRatio={1.5}
+								disableBorderRadius
+								src={item?.thumbnail_url}
+								alt={item?.content_type}
+								height={240}
+							/>
+						</button>
+					</div>
+				)}
+			</CardContent>
 		</Card>
 	)
 }

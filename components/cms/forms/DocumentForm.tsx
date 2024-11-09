@@ -26,8 +26,8 @@ const DocumentForm: React.FC<DocumentFormProps> = (props) => {
 	const { clientUrl } = useApp()
 
 	const { href } = props || {}
-	
-  const onSuccess = () => {
+
+	const onSuccess = () => {
 		if (href) {
 			router.push(`${clientUrl}${href}`)
 		}

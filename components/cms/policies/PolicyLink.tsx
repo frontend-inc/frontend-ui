@@ -4,45 +4,44 @@ import { usePolicies } from '../../../hooks'
 import Link from 'next/link'
 
 type PolicyLinkProps = {
-  label: string
-  handle: string
+	label: string
+	handle: string
 }
 
 const PolicyLink: React.FC<PolicyLinkProps> = (props) => {
+	const { label, handle } = props || {}
 
-  const { label, handle } = props || {}
+	const { loading, policy, findPolicy } = usePolicies()
 
-  const { 
-    loading,
-    policy,
-    findPolicy
-  } = usePolicies()
+	const [open, setOpen] = useState(false)
 
-  const [open, setOpen] = useState(false)
+	const handleClick = async () => {
+		setOpen(true)
+		await findPolicy(handle)
+	}
 
-  const handleClick = async () => {    
-    setOpen(true)
-    await findPolicy(handle)
-  }
-
-  return(
-      <>
-        <Link href="#" className="p-2 text-sm text-muted-foreground hover:underline" onClick={ handleClick }>
-          { label }
-        </Link>
-        <Drawer 
-          loading={ loading }
-          title={ policy?.title }
-          open={ open }
-          handleClose={ () => setOpen(false) }
-          maxWidth="sm"
-        >
-        <div className="p-6 text-foreground text-medium whitespace-pre-line">
-          { policy?.body }
-        </div>
-      </Drawer>
-    </>
-  )
+	return (
+		<>
+			<Link
+				href="#"
+				className="p-2 text-sm text-muted-foreground hover:underline"
+				onClick={handleClick}
+			>
+				{label}
+			</Link>
+			<Drawer
+				loading={loading}
+				title={policy?.title}
+				open={open}
+				handleClose={() => setOpen(false)}
+				maxWidth="sm"
+			>
+				<div className="p-6 text-foreground text-medium whitespace-pre-line">
+					{policy?.body}
+				</div>
+			</Drawer>
+		</>
+	)
 }
 
 export default PolicyLink

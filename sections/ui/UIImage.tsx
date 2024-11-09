@@ -9,19 +9,17 @@ import { SectionProps } from '../../types'
 type UIImageProps = SectionProps & ResponsiveImageProps
 
 const UIImage: React.FC<UIImageProps> = (props) => {
-	const { bgColor, mode, py, px, maxWidth, requireAuth, requirePaid, ...rest } =
-		props
+	const { bgColor, mode, py, px, maxWidth, requireAuth, ...rest } = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-		>      
+		>
 			<Image {...rest} />
 		</Section>
 	)

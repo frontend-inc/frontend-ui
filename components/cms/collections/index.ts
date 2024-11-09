@@ -12,7 +12,6 @@ export { default as SimilarList } from './SimilarList'
 export { default as VideoList } from './VideoList'
 export { default as VideoListItems } from './VideoListItems'
 
-
 // Collections
 export { default as CollectionDetails } from './CollectionDetails'
 export { default as CollectionEmpty } from './CollectionEmpty'

@@ -1,20 +1,16 @@
 export type ActionType =
 	| 'page'
-	| 'url'	
+	| 'url'
 	| 'email'
 	| 'sms'
 	| 'phone'
 	| 'copy'
-	| 'download'	
+	| 'download'
 
 export type ButtonType = {
 	icon?: string
 	label: string
-	variant?: 'default' | 
-    'secondary' | 
-    'outline' | 
-    'link' | 
-    'ghost'
+	variant?: 'default' | 'secondary' | 'outline' | 'link' | 'ghost'
 	url?: string
 	path?: string
 	onClick?: (ev: any) => void

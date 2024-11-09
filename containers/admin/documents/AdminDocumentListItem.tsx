@@ -2,7 +2,7 @@
 
 import React from 'react'
 import {
-  Image,
+	Image,
 	PublishLabel,
 	ListFields,
 	ResourceListItem,
@@ -24,18 +24,18 @@ const AdminDocumentListItem: React.FC<ResourceItemProps> = (props) => {
 
 	return (
 		<ResourceListItem
-      sortable
+			sortable
 			selectable={selectable}
 			selected={selected}
-      avatar={
-        <div className="h-[72px] w-[72px]">
-          <Image 
-            src={resource?.image?.url} 
-            aspectRatio={1.0} 
-            alt={resource?.title} 
-          />
-        </div>
-      }			
+			avatar={
+				<div className="h-[72px] w-[72px]">
+					<Image
+						src={resource?.image?.url}
+						aspectRatio={1.0}
+						alt={resource?.title}
+					/>
+				</div>
+			}
 			primary={resource?.title}
 			secondary={
 				<ListFields
@@ -43,9 +43,7 @@ const AdminDocumentListItem: React.FC<ResourceItemProps> = (props) => {
 					fields={[{ label: 'Handle', name: 'handle', variant: 'string' }]}
 				/>
 			}
-			secondaryAction={
-        <PublishLabel published={resource?.published} />          
-      }
+			secondaryAction={<PublishLabel published={resource?.published} />}
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}
 			handleClick={handleClick}

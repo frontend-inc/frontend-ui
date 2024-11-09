@@ -12,7 +12,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		textAlign,
 		bgColor,
 		mode,
@@ -21,14 +21,12 @@ const UICards: React.FC<UICardsProps> = (props) => {
 		maxWidth,
 		requireAuth,
 
-		requirePaid,
 		...rest
 	} = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
 			py={py}
@@ -39,7 +37,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 				<Heading
 					label={label}
 					title={title}
-					description={description}
+					subtitle={subtitle}
 					textAlign={'center'}
 				/>
 				<Cards {...rest} />

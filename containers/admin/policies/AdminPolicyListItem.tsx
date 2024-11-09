@@ -23,10 +23,9 @@ const AdminPolicyListItem: React.FC<AdminPolicyListItemProps> = (props) => {
 	return (
 		<ResourceListItem
 			sortable
-      disableImage
+			disableImage
 			enableBorder={enableBorder}
 			icon="StickyNote"
-			
 			primary={policy?.title}
 			secondary={`/policies/${policy?.handle}`}
 			handleEdit={handleEdit}

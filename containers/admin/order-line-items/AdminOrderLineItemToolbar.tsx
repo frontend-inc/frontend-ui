@@ -1,11 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import {
-	FormModal,
-	ResourceToolbarModal,
-	Button,
-} from '../../../components'
+import { FormModal, ResourceToolbarModal, Button } from '../../../components'
 import { useAdminOrders, useAdmin } from '../../../hooks'
 
 const AdminOrderLineItemToolbar = (props) => {
@@ -13,7 +9,8 @@ const AdminOrderLineItemToolbar = (props) => {
 
 	const [openModal, setOpenModal] = useState(false)
 
-	const { loading, errors, order, handleChange, updateOrders } = useAdminOrders()
+	const { loading, errors, order, handleChange, updateOrders } =
+		useAdminOrders()
 
 	const handleUpdateClick = async () => {}
 

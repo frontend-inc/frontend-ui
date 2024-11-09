@@ -24,8 +24,13 @@ const Feature: React.FC<FeatureProps> = (props) => {
 				</Avatar>
 			)}
 			<div className="flex flex-col justify-center space-y-2">
-				<Typography variant="h6" className="text-center">{title}</Typography>
-				<Typography className="text-muted-foreground text-center" variant="body1">
+				<Typography variant="h6" className="text-center">
+					{title}
+				</Typography>
+				<Typography
+					className="text-muted-foreground text-center"
+					variant="body1"
+				>
 					{description}
 				</Typography>
 			</div>

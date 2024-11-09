@@ -9,10 +9,7 @@ import {
 	ShopifyProductVariantSelector,
 	ShopifyTrackRecentlyViewed,
 } from '..'
-import {
-  useProducts,
-	useProductDetails,
-} from 'frontend-shopify'
+import { useProducts, useProductDetails } from 'frontend-shopify'
 import { cn } from 'frontend-shadcn'
 
 export type ShopifyProductDetailsProps = {
@@ -21,7 +18,7 @@ export type ShopifyProductDetailsProps = {
 	enableQuantity?: boolean
 	enableFavorites?: boolean
 	enableSubscription?: boolean
-  disableZoom?: boolean
+	disableZoom?: boolean
 }
 
 const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = ({
@@ -30,10 +27,9 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = ({
 	enableQuantity = true,
 	enableSubscription = true,
 	enableFavorites,
-  disableZoom = false 
+	disableZoom = false,
 }) => {
-
-  const { product, findProduct } = useProducts()
+	const { product, findProduct } = useProducts()
 
 	const {
 		price,
@@ -48,11 +44,11 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = ({
 		product,
 	})
 
-  useEffect(() => {
-    if(shopifyProduct) {
-      findProduct(shopifyProduct)
-    }
-  }, [shopifyProduct])
+	useEffect(() => {
+		if (shopifyProduct) {
+			findProduct(shopifyProduct)
+		}
+	}, [shopifyProduct])
 
 	return (
 		<div className={cn('flex flex-col sm:flex-row', 'w-full')}>
@@ -62,7 +58,7 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = ({
 					image={image}
 					images={images}
 					handleClick={handleImageClick}
-          disableZoom={disableZoom}
+					disableZoom={disableZoom}
 				/>
 			</div>
 			<div className={cn('w-full sm:w-1/2', 'p-0 sm:p-1')}>

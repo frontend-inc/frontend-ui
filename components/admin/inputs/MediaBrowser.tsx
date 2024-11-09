@@ -6,7 +6,7 @@ import { useAlerts } from '../../../hooks'
 import MediaList from './MediaList'
 import {
 	Modal,
-  Drawer,
+	Drawer,
 	ButtonTabs,
 	MediaUploader,
 	UnsplashList,
@@ -73,34 +73,27 @@ const MediaBrowser: React.FC<MediaBrowserProps> = ({
 			handleClose={handleClose}
 			title={'Browse Media'}
 			buttons={
-				<Button 
-          fullWidth 
-          variant="default" 
-          onClick={handleAttach}
-        >
+				<Button fullWidth variant="default" onClick={handleAttach}>
 					Save Media
 				</Button>
 			}
 		>
 			<div className="w-full flex flex-col items-center space-y-3 h-full min-h-[420px]">
-				<div className="w-full">					
-          <ButtonTabs
-            fullWidth
-            options={OPTIONS}
-            handleChange={handleTabChange}
-            value={tab}
-          />					
+				<div className="w-full">
+					<ButtonTabs
+						fullWidth
+						options={OPTIONS}
+						handleChange={handleTabChange}
+						value={tab}
+					/>
 				</div>
-        {tab === '0' && (
-          <MediaList
-            selectedIds={[selected?.id]}
-            handleSelect={handleSelect}
-          />
-        )}
-        {tab === '1' && <MediaUploader onComplete={handleComplete} />}
-        {tab === '2' && <UnsplashList onComplete={handleComplete} />}
-        {tab === '3' && <BrandfetchInput onComplete={handleComplete} />}
-      </div>
+				{tab === '0' && (
+					<MediaList selectedIds={[selected?.id]} handleSelect={handleSelect} />
+				)}
+				{tab === '1' && <MediaUploader onComplete={handleComplete} />}
+				{tab === '2' && <UnsplashList onComplete={handleComplete} />}
+				{tab === '3' && <BrandfetchInput onComplete={handleComplete} />}
+			</div>
 		</Drawer>
 	)
 }

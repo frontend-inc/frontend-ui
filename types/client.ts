@@ -102,7 +102,6 @@ export type FilterOptionType = {
 	value: any
 }
 
-
 export type SearchFilterInputProps = {
 	filter?: FilterOptionType
 	name?: string

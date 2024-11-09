@@ -11,30 +11,30 @@ import {
 import { ButtonType } from '../../../types'
 
 export type HeroProps = {
-  label?: string
+	label?: string
 	title?: string
-  subtitle?: string
+	subtitle?: string
 	description?: string
 	image?: string
 	style?: 'card' | 'cover' | 'list' | 'avatar' | 'spotlight'
 	buttons?: ButtonType[]
-  enableGradient?: boolean
-  enableOverlay?: boolean
-  objectFit?: 'cover' | 'contain'
+	enableGradient?: boolean
+	enableOverlay?: boolean
+	objectFit?: 'cover' | 'contain'
 }
 
 const Hero: React.FC<HeroProps> = (props) => {
 	const {
-    label,
+		label,
 		title,
-    subtitle,
+		subtitle,
 		description,
 		image,
 		style = 'card',
 		buttons = [],
-    enableGradient = false,
-    enableOverlay = false,
-    objectFit = 'cover',
+		enableGradient = false,
+		enableOverlay = false,
+		objectFit = 'cover',
 	} = props || {}
 
 	const Component =
@@ -45,23 +45,23 @@ const Hero: React.FC<HeroProps> = (props) => {
 			avatar: HeroAvatar,
 		}[style] || HeroList
 
-  const slots = {
-    image: {
-      enableGradient,
-      enableOverlay,
-      objectFit
-    }
-  }
+	const slots = {
+		image: {
+			enableGradient,
+			enableOverlay,
+			objectFit,
+		},
+	}
 
 	return (
 		<Component
-      label={label}
+			label={label}
 			primary={title}
 			secondary={description}
-      tertiary={subtitle}
+			tertiary={subtitle}
 			image={image}
 			secondaryAction={buttons && <ButtonActions buttons={buttons} />}
-      slots={slots}
+			slots={slots}
 		/>
 	)
 }

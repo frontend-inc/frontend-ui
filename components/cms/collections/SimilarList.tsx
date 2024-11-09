@@ -5,12 +5,12 @@ import CollectionList from '../collections/CollectionList'
 import { CollectionListProps } from '../collections/CollectionList'
 
 export type SimilarListProps = CollectionListProps & {
-  documentId: string
+	documentId: string
 }
 
 const SimilarList: React.FC<SimilarListProps> = (props) => {
-  const { url, documentId, ...rest } = props 
-  const similarUrl = `${url}/${documentId}/similar`
+	const { url, documentId, ...rest } = props
+	const similarUrl = `${url}/${documentId}/similar`
 	return <CollectionList {...rest} url={similarUrl} />
 }
 

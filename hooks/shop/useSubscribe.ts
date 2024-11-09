@@ -6,12 +6,8 @@ import { useApi, useLoadingWrapper } from 'frontend-js'
 const useSubscription = () => {
 	const { api } = useApi()
 
-  const { 
-    errors, 
-    loading, 
-    delayedLoading,   
-    loadingWrapper 
-  } = useLoadingWrapper()
+	const { errors, loading, delayedLoading, loadingWrapper } =
+		useLoadingWrapper()
 
 	const apiParams = {
 		name: 'subscription',
@@ -23,10 +19,13 @@ const useSubscription = () => {
 		cancel_url: string
 	}
 
-	const subscribe = async (productId, stripeOptions: SubscriptionOptionsType) => {
-		return await loadingWrapper(
-      () => api.subscribe(productId, stripeOptions, apiParams)		
-    )
+	const subscribe = async (
+		productId,
+		stripeOptions: SubscriptionOptionsType
+	) => {
+		return await loadingWrapper(() =>
+			api.subscribe(productId, stripeOptions, apiParams)
+		)
 	}
 
 	return {

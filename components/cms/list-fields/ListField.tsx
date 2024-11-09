@@ -27,12 +27,7 @@ type FieldProps = {
 }
 
 const ListField: React.FC<FieldProps> = (props) => {
-	const {
-		field,
-		resource,
-		color = 'text.secondary',
-		...rest
-	} = props
+	const { field, resource, color = 'text.secondary', ...rest } = props
 	const { name, label, variant: fieldVariant, icon } = field
 	let value = get(resource, name)
 	if (!value || value?.length == 0) return null
@@ -44,7 +39,7 @@ const ListField: React.FC<FieldProps> = (props) => {
 		file: FieldFile,
 		location: FieldString,
 		image: FieldURL,
-		video: FieldURL,		
+		video: FieldURL,
 		url: FieldURL,
 		rating: FieldRating,
 		text: FieldText,
@@ -55,20 +50,20 @@ const ListField: React.FC<FieldProps> = (props) => {
 		price: FieldPrice,
 		email: FieldString,
 		phone: FieldString,
-    youtube_video: FieldURL,
-    vimeo_video: FieldURL,
-    soundcloud_audio: FieldURL,
-    shopify_product: FieldString,
+		youtube_video: FieldURL,
+		vimeo_video: FieldURL,
+		soundcloud_audio: FieldURL,
+		shopify_product: FieldString,
 	}
 
 	const variantProps = {
 		string: {
-      variant: 'body2',
+			variant: 'body2',
 			value: truncate(value),
-      className: 'text-sm text-muted-foreground'
+			className: 'text-sm text-muted-foreground',
 		},
 		text: {
-      expandable: true,
+			expandable: true,
 			variant: 'body2',
 		},
 		image: {
@@ -82,14 +77,14 @@ const ListField: React.FC<FieldProps> = (props) => {
 
 	if (!value || value == '') return null
 	return (
-    <Component
-      icon={icon}
-      variant="caption"
-      color={color}
-      value={value}				
-      {...componentProps}
-      {...rest}
-    />
+		<Component
+			icon={icon}
+			variant="caption"
+			color={color}
+			value={value}
+			{...componentProps}
+			{...rest}
+		/>
 	)
 }
 

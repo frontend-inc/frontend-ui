@@ -2,13 +2,9 @@
 
 import React from 'react'
 import { Typography } from '../../../components/core'
-import {
-	ResourceModal,
-	ResourceDetails,
-} from '../../../components'
+import { ResourceModal, ResourceDetails } from '../../../components'
 import { ResourceShowProps } from '../../../components/cms/resources/ResourceShow'
 import { AdminAnswerList } from '../../../containers'
-
 
 const AdminQuestionShow: React.FC<ResourceShowProps> = (props) => {
 	const {

@@ -2,9 +2,9 @@ export type SearchFilterOptionType = {
 	label: string
 	name: string
 	options: {
-    label: string
-    value: string | number | boolean
-  }[]		
+		label: string
+		value: string | number | boolean
+	}[]
 }
 
 export type SortOptionType = {

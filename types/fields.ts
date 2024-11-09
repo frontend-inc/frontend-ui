@@ -1,5 +1,5 @@
 export type FieldVariantTypes =
-  | 'avatar'
+	| 'avatar'
 	| 'array'
 	| 'audio'
 	| 'email'
@@ -23,13 +23,13 @@ export type FieldVariantTypes =
 	| 'state'
 	| 'country'
 	| 'location'
-	| 'select'	
-  | 'youtube_video'
-  | 'vimeo_video'
-  | 'soundcloud_audio'
-  | 'calendly_url'
+	| 'select'
+	| 'youtube_video'
+	| 'vimeo_video'
+	| 'soundcloud_audio'
+	| 'calendly_url'
 	| 'shopify_product'
-	| 'user'	
+	| 'user'
 
 export type FieldDbType =
 	| 'string'
@@ -52,9 +52,9 @@ export type FieldCategoryType =
 	| 'Data'
 	| 'Boolean'
 	| 'Reference'
-	| 'Shop'	
-  | 'Shopify'
-  | 'Addon'
+	| 'Shop'
+	| 'Shopify'
+	| 'Addon'
 
 export type FieldVariantType = {
 	icon: string

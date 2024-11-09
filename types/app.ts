@@ -16,7 +16,7 @@ export type MenuLinkType = {
 
 export type PolicyLinkType = {
 	label: string
-  title: string 
+	title: string
 	handle: string
 	position?: number
 }

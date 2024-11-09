@@ -1,11 +1,7 @@
 'use client'
 
 import React from 'react'
-import {
-	ToolbarModal,
-	ToolbarUpdateButton,
-	ToolbarDeleteButton,
-} from '../..'
+import { ToolbarModal, ToolbarUpdateButton, ToolbarDeleteButton } from '../..'
 import { ToolbarButtonType } from '../../../types'
 
 type ToolbarToolbarProps = {

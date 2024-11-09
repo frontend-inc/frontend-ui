@@ -27,14 +27,10 @@ type ShowFieldProps = {
 }
 
 const ShowField: React.FC<ShowFieldProps> = (props) => {
-	const {
-		field,
-		resource,		
-		...rest
-	} = props
+	const { field, resource, ...rest } = props
 	const { name, label, variant: fieldVariant, icon } = field
 	let value = get(resource, name)
-	  
+
 	const components = {
 		boolean: FieldBoolean,
 		date: FieldDate,
@@ -53,48 +49,48 @@ const ShowField: React.FC<ShowFieldProps> = (props) => {
 		price: FieldPrice,
 		email: FieldURL,
 		phone: FieldURL,
-    calendly_url: FieldURL,
-    soundcloud_audio: FieldURL,
-    vimeo_video: FieldURL,
-    youtube_video: FieldURL
+		calendly_url: FieldURL,
+		soundcloud_audio: FieldURL,
+		vimeo_video: FieldURL,
+		youtube_video: FieldURL,
 	}
 
 	const variantProps = {
-    array: {
-      className: '',
-    },
-    email: {
-      className: 'italic text-sm',
-    },
-    string: {
-      className: 'text-sm',
-    },    
+		array: {
+			className: '',
+		},
+		email: {
+			className: 'italic text-sm',
+		},
+		string: {
+			className: 'text-sm',
+		},
 		text: {
 			className: 'text-md',
-		},	
-    image: {      
-      label,
-    },
-    video: {
-      height: 450,
-      width: 800
-    },
-    youtube_video: {
-      height: 450,
-      width: 800
-    },
-    vimeo_video: {
-      height: 450,
-      width: 800
-    },
-    location: {
-      lat: resource?.lat,
-      lng: resource?.lng,
-      label: resource?.title,
-      image: resource?.image?.url,
-      zoom: 16,
-      darkTheme: false 
-    }	
+		},
+		image: {
+			label,
+		},
+		video: {
+			height: 450,
+			width: 800,
+		},
+		youtube_video: {
+			height: 450,
+			width: 800,
+		},
+		vimeo_video: {
+			height: 450,
+			width: 800,
+		},
+		location: {
+			lat: resource?.lat,
+			lng: resource?.lng,
+			label: resource?.title,
+			image: resource?.image?.url,
+			zoom: 16,
+			darkTheme: false,
+		},
 	}
 
 	const Component = components[fieldVariant] || FieldString
@@ -102,15 +98,15 @@ const ShowField: React.FC<ShowFieldProps> = (props) => {
 
 	if (!value || value == '') return null
 	return (
-    <div className='w-full p-3 rounded-lg bg-muted/40 hover:bg-muted/60'>
-      <Component        
-        icon={icon}
-        variant="caption"				
-        value={value}
-        label={label}
-        {...componentProps}
-      />
-    </div>
+		<div className="w-full p-3 rounded-lg bg-muted/40 hover:bg-muted/60">
+			<Component
+				icon={icon}
+				variant="caption"
+				value={value}
+				label={label}
+				{...componentProps}
+			/>
+		</div>
 	)
 }
 

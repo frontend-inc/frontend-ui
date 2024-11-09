@@ -22,11 +22,11 @@ const ShopifyCheckoutButton: React.FC<ShopifyCheckoutButtonProps> = (props) => {
 
 	const redirectToWebUrl = () => {
 		trackCheckoutStarted(cart)
-    if(window.parent === window) {
-		  window.location = cart?.checkoutUrl
-    }else{
-      parent.window.location = cart?.checkoutUrl
-    }
+		if (window.parent === window) {
+			window.location = cart?.checkoutUrl
+		} else {
+			parent.window.location = cart?.checkoutUrl
+		}
 		setLoading(false)
 	}
 

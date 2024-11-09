@@ -61,7 +61,7 @@ const useAdminDocuments = (props: UseDocumentProps) => {
 		endIndex,
 		paginate,
 		loadingWrapper,
-	} = useResource(apiParams)  
+	} = useResource(apiParams)
 
 	const addReferences = async (sourceId: number, targetIds: number[]) => {
 		return await loadingWrapper(() =>

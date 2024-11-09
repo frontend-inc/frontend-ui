@@ -9,17 +9,17 @@ export type ShopifyCollectionsProps = {
 	href: string
 	enableGradient?: boolean
 	enableOverlay?: boolean
-  enableAddToCart?: boolean
-  enableQuantity?: boolean
+	enableAddToCart?: boolean
+	enableQuantity?: boolean
 }
 
 const ShopifyCollections: React.FC<ShopifyCollectionsProps> = (props) => {
-	const { 
-    enableAddToCart = false,
-    enableQuantity = false,
-    enableGradient = false, 
-    enableOverlay = false 
-  } = props
+	const {
+		enableAddToCart = false,
+		enableQuantity = false,
+		enableGradient = false,
+		enableOverlay = false,
+	} = props
 
 	const { loading, collections, findCollections } = useCollections()
 
@@ -40,8 +40,8 @@ const ShopifyCollections: React.FC<ShopifyCollectionsProps> = (props) => {
 					collection={collection}
 					enableGradient={enableGradient}
 					enableOverlay={enableOverlay}
-          enableAddToCart={enableAddToCart}
-          enableQuantity={enableQuantity}          
+					enableAddToCart={enableAddToCart}
+					enableQuantity={enableQuantity}
 				/>
 			))}
 		</div>

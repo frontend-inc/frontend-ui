@@ -11,13 +11,11 @@ type ShopifyCollectionCoverProps = SectionProps & CollectionCoverProps
 const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 	props
 ) => {
-	const { bgColor, mode, py, px, maxWidth, requireAuth, requirePaid, ...rest } =
-		props
+	const { bgColor, mode, py, px, maxWidth, requireAuth, ...rest } = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 			mode="dark"
 			py={0}
 			px={0}

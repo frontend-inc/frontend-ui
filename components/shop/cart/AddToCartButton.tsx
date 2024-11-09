@@ -9,23 +9,22 @@ type AddToCartButtonProps = {
 	size?: 'sm' | 'default' | 'lg'
 	productId: string | number
 	fullWidth?: boolean
-  buttonText?: string
+	buttonText?: string
 	availableForSale?: boolean
-  price?: string
-  className?: string  
+	price?: string
+	className?: string
 }
 
 const AddToCartButton = (props: AddToCartButtonProps) => {
-	
-  const { 
-    productId, 
-    buttonText='Add to Cart', 
-    size = 'default', 
-    fullWidth,     
-    availableForSale,
-    price,
-  } = props
-  
+	const {
+		productId,
+		buttonText = 'Add to Cart',
+		size = 'default',
+		fullWidth,
+		availableForSale,
+		price,
+	} = props
+
 	const { loading, setCartOpen, addToCart } = useCart()
 
 	const handleClick = async () => {
@@ -40,9 +39,9 @@ const AddToCartButton = (props: AddToCartButtonProps) => {
 			onClick={handleClick}
 			disabled={!availableForSale}
 			size={size}
-      className={"w-full min-w-[160px]"}
+			className={'w-full min-w-[160px]'}
 		>
-			{ buttonText }
+			{buttonText}
 		</Button>
 	)
 }

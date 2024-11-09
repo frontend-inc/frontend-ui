@@ -9,17 +9,14 @@ type FieldArrayProps = {
 	value?: any[]
 	label?: string
 	direction?: 'row' | 'column'
-  className?: string
+	className?: string
 }
 
 const FieldArray: React.FC<FieldArrayProps> = (props) => {
 	const { value: values, label, className, direction } = props
 	return (
-		<FieldWrapper
-			label={label}
-			direction={direction}
-		>
-			<div className={cn("flex flex-row gap-2", className)}>
+		<FieldWrapper label={label} direction={direction}>
+			<div className={cn('flex flex-row gap-2', className)}>
 				{Array.isArray(values) &&
 					values?.map((value, index) => (
 						<Badge

@@ -21,17 +21,17 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 
 	return (
 		<div className="w-full">
-      <div className="px-2 w-full">
-			  <Breadcrumbs links={breadcrumbs} />
-      </div>
+			<div className="px-2 w-full">
+				<Breadcrumbs links={breadcrumbs} />
+			</div>
 			<div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-3 justify-left items-center sm:justify-between w-full border-b border-divider pb-2">
-				<Heading          
+				<Heading
 					label={label}
 					title={title}
 					description={description}
-          size='sm'
+					size="sm"
 					textAlign="left"
-          className="py-4"
+					className="py-4"
 				/>
 				{buttons?.length > 0 && (
 					<div className="w-full flex justify-center sm:justify-end pb-2 sm:pb-0">

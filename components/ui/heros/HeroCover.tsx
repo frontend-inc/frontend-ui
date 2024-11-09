@@ -5,17 +5,19 @@ import { Cover } from '../..'
 import { HeroCardProps } from './HeroCard'
 
 const HeroCover: React.FC<HeroCardProps> = (props) => {
-	const { image, primary } = props || {}
+	const { label, image, title, description } = props || {}
 
-	return(
-    <Cover 
-      textVariant="h4"
-      image={image} 
-      height={400} 
-      title={primary} 
-      enableOverlay 
-    />
-  )
+	return (
+		<Cover
+			textVariant="h4"
+			image={image}
+			height={400}
+			label={label}
+			title={title}
+			description={description}
+			enableOverlay
+		/>
+	)
 }
 
 export default HeroCover

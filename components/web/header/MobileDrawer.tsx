@@ -23,11 +23,7 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 	}
 
 	return (
-		<Sheet 
-      open={menuOpen} 
-      handleClose={() => setMenuOpen(false)} 
-      side="left"
-    >
+		<Sheet open={menuOpen} handleClose={() => setMenuOpen(false)} side="left">
 			<div>
 				<List className={'space-y-2'}>
 					{links?.map((menuItem, index) => (

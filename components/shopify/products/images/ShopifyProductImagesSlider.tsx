@@ -19,11 +19,9 @@ const Thumbnail: React.FC<ThumbnailProps> = (props) => {
 	return (
 		<button
 			className={cn(
-        "p-0 m-2 w-[96px] h-[96px] overflow-hidden rounded hover:bg-muted/20",
-				active ? 
-          'ring-2 ring-offset-2 ring-primary' : 
-          'ring-2 ring-transparent'
-      )}
+				'p-0 m-2 w-[96px] h-[96px] overflow-hidden rounded hover:bg-muted/20',
+				active ? 'ring-2 ring-offset-2 ring-primary' : 'ring-2 ring-transparent'
+			)}
 			onClick={() => handleClick(image)}
 		>
 			<Image
@@ -38,7 +36,7 @@ const Thumbnail: React.FC<ThumbnailProps> = (props) => {
 }
 
 type ShopifyProductImageSliderProps = {
-  disableZoom?: boolean
+	disableZoom?: boolean
 	image: ShopifyImageType
 	images: ShopifyImageType[]
 	handleClick: (img: ShopifyImageType) => void
@@ -52,21 +50,22 @@ const ShopifyProductImageSlider: React.FC<ShopifyProductImageSliderProps> = (
 	return (
 		<div className="flex flex-col space-y-4">
 			<div className="flex justify-center items-start">
-				{image?.url && (
-          disableZoom ? 
-            <img
-							src={image?.url}
-							alt={image?.altText || ''}
-							className="h-full w-full object-contain"
-						/> :
-					<Zoom>
+				{image?.url &&
+					(disableZoom ? (
 						<img
 							src={image?.url}
 							alt={image?.altText || ''}
 							className="h-full w-full object-contain"
 						/>
-					</Zoom>
-				)}
+					) : (
+						<Zoom>
+							<img
+								src={image?.url}
+								alt={image?.altText || ''}
+								className="h-full w-full object-contain"
+							/>
+						</Zoom>
+					))}
 			</div>
 			<div className="flex flex-row space-x-2 overflow-x-auto scrollbar-hide">
 				{images?.map((img) => (

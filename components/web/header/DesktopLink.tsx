@@ -13,15 +13,15 @@ type DesktopLinkProps = {
 const DesktopLink: React.FC<DesktopLinkProps> = (props) => {
 	const { menuItem, handleClick } = props
 
-  const onClick = useNavigate({
-    url: menuItem.url,
-    path: menuItem.path,
-    handleClick
-  })
+	const onClick = useNavigate({
+		url: menuItem.url,
+		path: menuItem.path,
+		handleClick,
+	})
 
 	return (
-    //@ts-ignore 
-		<Button variant="ghost" className='text-foreground' onClick={onClick}>
+		//@ts-ignore
+		<Button variant="ghost" className="text-foreground" onClick={onClick}>
 			{menuItem.label}
 		</Button>
 	)

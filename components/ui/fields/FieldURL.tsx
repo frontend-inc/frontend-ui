@@ -6,7 +6,7 @@ import { FieldWrapper } from '../../../components'
 import { FieldElementProps } from './Field'
 
 type FieldURLProps = FieldElementProps & {
-  buttonText?: string
+	buttonText?: string
 }
 
 const FieldURL: React.FC<FieldURLProps> = (props) => {

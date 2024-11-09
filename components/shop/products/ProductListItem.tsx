@@ -51,21 +51,23 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 				</div>
 			}
 			addToCart={
-        resource?.recurring ? 
-        <SubscribeButton 
-          availableForSale
-          fullWidth
-          productId={resource?.id}
-          size="default"
-          price={resource?.display_price}
-        /> :        
-				<AddToCartButton
-					availableForSale
-					fullWidth
-					productId={resource?.id}
-					size="default"
-          price={resource?.display_price}
-				/>
+				resource?.recurring ? (
+					<SubscribeButton
+						availableForSale
+						fullWidth
+						productId={resource?.id}
+						size="default"
+						price={resource?.display_price}
+					/>
+				) : (
+					<AddToCartButton
+						availableForSale
+						fullWidth
+						productId={resource?.id}
+						size="default"
+						price={resource?.display_price}
+					/>
+				)
 			}
 			disableBorder={disableBorder}
 			slots={{

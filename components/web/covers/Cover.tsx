@@ -1,18 +1,16 @@
 'use client'
 
 import React from 'react'
-import { Typography, Button } from '../../../components'
+import { Heading, Button } from '../../../components'
 import { Image } from '../..'
-import { useRouter } from 'next/navigation'
-import { useApp, useNavigate } from '../../../hooks'
+import { useNavigate } from '../../../hooks'
 import { cn } from 'frontend-shadcn'
 
 export type CoverProps = {
-	editing?: boolean
-	title?: string | React.ReactNode
-	description?: string
+	label?: string
+	title: string | React.ReactNode
+	subtitle?: string
 	buttonText?: string
-	textVariant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 	image: string
 	height?: number
 	width?: number
@@ -23,15 +21,14 @@ export type CoverProps = {
 	enableOverlay?: boolean
 	opacity?: number
 	path?: string
-  actions?: React.ReactNode
+	actions?: React.ReactNode
 }
 
 const Cover: React.FC<CoverProps> = (props) => {
-
 	const {
+		label,
 		title,
-		description,
-		textVariant = 'h3',
+		subtitle,
 		handleClick,
 		image,
 		height = 400,
@@ -40,13 +37,13 @@ const Cover: React.FC<CoverProps> = (props) => {
 		enableOverlay = false,
 		alignItems = 'center',
 		buttonText,
-    actions,
+		actions,
 		path,
 	} = props
 
-  const onClick = useNavigate({
-    handleClick 
-  })
+	const onClick = useNavigate({
+		handleClick,
+	})
 
 	return (
 		<div className={cn('dark relative w-full')}>
@@ -86,25 +83,14 @@ const Cover: React.FC<CoverProps> = (props) => {
 						'space-y-4'
 					)}
 				>
-					{title && (
-						<Typography
-              className="text-foreground"
-							variant={textVariant}
-							textAlign={alignItems === 'center' ? 'center' : 'left'}
-						>
-							{title}
-						</Typography>
-					)}
-					{description && (
-						<Typography
-              className="text-foreground"
-							variant="subtitle2"
-							textAlign={alignItems === 'center' ? 'center' : 'left'}
-						>
-							{description}
-						</Typography>
-					)}
-          {actions}
+					<Heading
+						label={label}
+						title={title}
+						subtitle={subtitle}
+						textAlign={alignItems === 'center' ? 'center' : 'left'}
+						size="lg"
+					/>
+					{actions}
 					{buttonText && (
 						<div className="py-2">
 							<Button size="lg" onClick={() => onClick(path)} variant="default">

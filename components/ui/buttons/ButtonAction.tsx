@@ -8,15 +8,14 @@ import { useNavigate } from '../../../hooks'
 type ButtonActionProps = {
 	icon?: string
 	variant?: 'default' | 'secondary' | 'outline' | 'ghost' | 'link'
-  size?: 'sm' | 'default' | 'lg'
+	size?: 'sm' | 'default' | 'lg'
 	url?: string
 	path?: string
 	children: React.ReactNode
 }
 
 const ButtonAction: React.FC<ButtonActionProps> = (props) => {
-	
-  const {
+	const {
 		children,
 		icon,
 		url,
@@ -26,11 +25,10 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 		...rest
 	} = props
 
-
-  const onClick = useNavigate({
-    url,
-    path 
-  })
+	const onClick = useNavigate({
+		url,
+		path,
+	})
 
 	return (
 		<Button
@@ -48,7 +46,7 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 					/>
 				)
 			}
-      /* @ts-ignore */
+			/* @ts-ignore */
 			onClick={onClick}
 			variant={variant}
 			{...rest}

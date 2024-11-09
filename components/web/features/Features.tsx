@@ -20,13 +20,13 @@ const Features: React.FC<FeaturesProps> = (props) => {
 		<div className="container mx-auto max-w-screen-lg p-2">
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-10">
 				{items?.map((item, idx) => (
-          <BlurFade delay={0.25 + idx * 0.05} inView key={idx}>
-            <Feature     
-              icon={item?.icon}
-              title={item?.title}
-              description={item?.description}
-            />
-          </BlurFade>
+					<BlurFade delay={0.25 + idx * 0.05} inView key={idx}>
+						<Feature
+							icon={item?.icon}
+							title={item?.title}
+							description={item?.description}
+						/>
+					</BlurFade>
 				))}
 			</div>
 			{items?.length == 0 && (

@@ -51,20 +51,22 @@ const CollectionHeader: React.FC<CollectionHeaderProps> = (props) => {
 		handleSortBy,
 		handleSortDirection,
 		activeFilters,
-    handleAddFilter,
+		handleAddFilter,
 	} = useSearch({
 		url,
 		query: defaultQuery,
 	})
 
-
-  const handleFilterClick = (name: string, value: string | number | boolean) => {
-    handleAddFilter({
-      name,
-      value,
-      operator: 'eq',
-    })
-  }
+	const handleFilterClick = (
+		name: string,
+		value: string | number | boolean
+	) => {
+		handleAddFilter({
+			name,
+			value,
+			operator: 'eq',
+		})
+	}
 
 	const { handleAdd } = useCollectionForms()
 

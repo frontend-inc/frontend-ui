@@ -52,7 +52,7 @@ export default function ProductLikeButton({
 				className={cn(
 					size === 'large' && 'border border-divider',
 					'transition-transform duration-200',
-          liked && 'text-primary hover:text-primary-dark',
+					liked && 'text-primary hover:text-primary-dark'
 				)}
 			>
 				<Heart

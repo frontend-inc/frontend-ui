@@ -11,8 +11,7 @@ function useDelayedLoading({
 	loading,
 	delay = 500,
 }: UseDelayedLoadingProps): Record<any, boolean> {
-	
-  const [debouncedLoading] = useDebounce(loading, delay)
+	const [debouncedLoading] = useDebounce(loading, delay)
 
 	return {
 		loading: debouncedLoading,

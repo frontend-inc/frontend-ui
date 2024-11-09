@@ -5,9 +5,9 @@ import { Image, MediaModal } from '../..'
 import { cn } from 'frontend-shadcn'
 
 export type ImageModalProps = {
-  open: boolean
-  handleClose: () => void
-  resource: any
+	open: boolean
+	handleClose: () => void
+	resource: any
 	enableGradient?: boolean
 }
 

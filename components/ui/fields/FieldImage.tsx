@@ -6,32 +6,39 @@ import { FieldElementProps } from './Field'
 import { cn } from 'frontend-shadcn'
 
 type FieldImageProps = FieldElementProps & {
-	height?: number	
-  enableGradient?: boolean
-  enableOverlay?: boolean
-  className?: string
+	height?: number
+	enableGradient?: boolean
+	enableOverlay?: boolean
+	className?: string
 }
 
 const FieldImage: React.FC<FieldImageProps> = (props) => {
-	const { label, value, className, enableGradient, enableOverlay, height = 140 } = props	  
+	const {
+		label,
+		value,
+		className,
+		enableGradient,
+		enableOverlay,
+		height = 140,
+	} = props
 	return (
 		<FieldWrapper>
-      <div 
-        className={cn("w-full max-w-screen-md", className)}
-        style={{
-          width: '100%',
-          height: height 
-        }}
-      >
-        <Image
-          label={label}
-          alt={label}
-          src={value?.url}
-          height={height}
-          enableGradient={enableGradient}
-          enableOverlay={enableOverlay}
-        />
-      </div>
+			<div
+				className={cn('w-full max-w-screen-md', className)}
+				style={{
+					width: '100%',
+					height: height,
+				}}
+			>
+				<Image
+					label={label}
+					alt={label}
+					src={value?.url}
+					height={height}
+					enableGradient={enableGradient}
+					enableOverlay={enableOverlay}
+				/>
+			</div>
 		</FieldWrapper>
 	)
 }

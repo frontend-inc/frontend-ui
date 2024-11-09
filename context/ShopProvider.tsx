@@ -10,11 +10,7 @@ type ShopProviderProps = {
 }
 
 const ShopProvider = (props: ShopProviderProps) => {
-	
-  const { 
-    children, 
-    cartCookie,
-  } = props || {}
+	const { children, cartCookie } = props || {}
 
 	const [cartOpen, setCartOpen] = useState(false)
 	const [cart, setCart] = useState<CartType | {}>({})
@@ -24,7 +20,7 @@ const ShopProvider = (props: ShopProviderProps) => {
 		setCart,
 		cartOpen,
 		setCartOpen,
-		cartCookie,   
+		cartCookie,
 	}
 
 	return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>

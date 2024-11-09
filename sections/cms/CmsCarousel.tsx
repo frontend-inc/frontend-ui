@@ -12,7 +12,7 @@ const CmsCarousel: React.FC<CmsCarouselProps> = (props) => {
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		textAlign,
 		bgColor,
 		mode,
@@ -20,7 +20,7 @@ const CmsCarousel: React.FC<CmsCarouselProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		requirePaid,
+
 		...rest
 	} = props
 
@@ -32,12 +32,11 @@ const CmsCarousel: React.FC<CmsCarouselProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 		>
 			<Heading
 				label={label}
 				title={title}
-				description={description}
+				subtitle={subtitle}
 				textAlign={textAlign}
 			/>
 			<CarouselList {...rest} />

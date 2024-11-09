@@ -7,7 +7,7 @@ import { useNavigate } from '../../../hooks'
 type CardType = {
 	label?: string
 	title: string
-  subtitle?: string
+	subtitle?: string
 	description: string
 	image: string
 	buttonText?: string
@@ -24,7 +24,6 @@ export type CardsProps = {
 }
 
 const Cards: React.FC<CardsProps> = (props) => {
-
 	const { items, enableGradient, enableOverlay } = props || {}
 
 	const onClick = useNavigate()
@@ -36,19 +35,16 @@ const Cards: React.FC<CardsProps> = (props) => {
 					<div key={i}>
 						<Card
 							image={item?.image}
-							primary={item?.title}              
+							primary={item?.title}
 							secondary={item?.subtitle}
-              tertiary={item?.description}
-              actions={ 
-                item?.buttonText && (
-                  <Button 
-                    fullWidth
-                    onClick={() => onClick(item?.path)}
-                  >
-                    {item?.buttonText}
-                  </Button>
-                )
-              }
+							tertiary={item?.description}
+							actions={
+								item?.buttonText && (
+									<Button fullWidth onClick={() => onClick(item?.path)}>
+										{item?.buttonText}
+									</Button>
+								)
+							}
 							handleClick={() => onClick(item?.path)}
 							slots={{
 								image: {

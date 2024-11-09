@@ -12,14 +12,14 @@ type AdminDocumentEditFormProps = ResourceFormProps & {
 
 const AdminDocumentEditForm: React.FC<AdminDocumentEditFormProps> = (props) => {
 	const { fields = [] } = props || {}
-	
+
 	const inputOptions = {
 		image: MediaInput,
-    video: MediaInput,
-    youtube_video: TextInput,
-    vimeo_video: TextInput,
-    soundcloud_audio: TextInput,
-    calendly_url: TextInput,
+		video: MediaInput,
+		youtube_video: TextInput,
+		vimeo_video: TextInput,
+		soundcloud_audio: TextInput,
+		calendly_url: TextInput,
 	}
 
 	return <ResourceForm {...props} fields={fields} inputOptions={inputOptions} />

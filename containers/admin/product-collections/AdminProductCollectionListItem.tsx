@@ -1,11 +1,7 @@
 'use client'
 
 import React from 'react'
-import {
-	PublishLabel,
-	ShowFields,
-	ResourceListItem,
-} from '../../../components'
+import { PublishLabel, ShowFields, ResourceListItem } from '../../../components'
 import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
 
 const AdminProductItem: React.FC<ResourceItemProps> = (props) => {

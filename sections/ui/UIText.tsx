@@ -11,22 +11,11 @@ type UITextProps = SectionProps &
 	}
 
 const UIText: React.FC<UITextProps> = (props) => {
-	const {
-		bgColor,
-		mode,
-		py,
-		px,
-		maxWidth,
-		requireAuth,
-		requirePaid,
-		text,
-		...rest
-	} = props
+	const { bgColor, mode, py, px, maxWidth, requireAuth, text, ...rest } = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
 			py={py}

@@ -56,9 +56,9 @@ export default function SidebarMenuItem({
 						<Icon name={icon} className="w-5 h-5 text-foreground" />
 					</div>
 				)}
-				<Typography variant="body2">{title}</Typography>        
-			</button>      
-      {(selected && secondaryAction) ? secondaryAction : null }
+				<Typography variant="body2">{title}</Typography>
+			</button>
+			{selected && secondaryAction ? secondaryAction : null}
 			{(handleEdit || handleDelete) && (
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
@@ -67,7 +67,7 @@ export default function SidebarMenuItem({
 							<MoreVertical className="h-4 w-4 text-foreground" />
 						</Button>
 					</DropdownMenuTrigger>
-					<DropdownMenuContent align="end" className="w-[160px]">            
+					<DropdownMenuContent align="end" className="w-[160px]">
 						{handleEdit && (
 							<DropdownMenuItem onClick={handleEdit}>
 								<Pencil className="mr-2 h-4 w-4" />

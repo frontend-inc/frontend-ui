@@ -28,11 +28,7 @@ const AvatarImage: React.FC<AvatarImageProps> = (props) => {
 			)}
 		>
 			{src ? (
-				<img 
-          src={src} 
-          alt={alt}           
-          className="w-full h-full object-cover" 
-        />
+				<img src={src} alt={alt} className="w-full h-full object-cover" />
 			) : (
 				<div
 					className={`rounded-full bg-gradient-to-br from-black to-gray-600`}

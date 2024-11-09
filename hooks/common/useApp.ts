@@ -7,14 +7,14 @@ const useApp = () => {
 	const {
 		app,
 		setApp,
-    name,
-    description,
+		name,
+		description,
 		logo,
 		apiUrl,
 		clientUrl,
 		enableShopify,
 		enableStripe,
-    enableSubscription,
+		enableSubscription,
 		alert,
 		setAlert,
 		authOpen,
@@ -30,8 +30,8 @@ const useApp = () => {
 	} = useContext(AppContext)
 
 	return {
-    name,
-    description,
+		name,
+		description,
 		app,
 		setApp,
 		logo,
@@ -39,7 +39,7 @@ const useApp = () => {
 		clientUrl,
 		enableShopify,
 		enableStripe,
-    enableSubscription,
+		enableSubscription,
 		alert,
 		setAlert,
 		authOpen,

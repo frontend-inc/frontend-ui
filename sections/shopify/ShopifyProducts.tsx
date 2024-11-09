@@ -12,7 +12,7 @@ const ShopifyProducts: React.FC<ShopifyProductsProps> = (props) => {
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		textAlign,
 		bgColor,
 		mode,
@@ -21,14 +21,12 @@ const ShopifyProducts: React.FC<ShopifyProductsProps> = (props) => {
 		maxWidth,
 		requireAuth,
 
-		requirePaid,
 		...rest
 	} = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
 			py={py}
@@ -38,7 +36,7 @@ const ShopifyProducts: React.FC<ShopifyProductsProps> = (props) => {
 			<Heading
 				label={label}
 				title={title}
-				description={description}
+				subtitle={subtitle}
 				textAlign={textAlign}
 			/>
 			<ProductCollection {...rest} />

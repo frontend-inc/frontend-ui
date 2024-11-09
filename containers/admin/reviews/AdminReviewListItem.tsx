@@ -22,7 +22,7 @@ const AdminReviewListItem: React.FC<AdminReviewListItemProps> = (props) => {
 
 	return (
 		<ResourceListItem
-      disableImage 
+			disableImage
 			primary={<FieldRating size="sm" value={review?.rating} />}
 			secondary={
 				<Typography variant="body2" className="text-muted-foreground">

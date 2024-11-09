@@ -16,7 +16,7 @@ const ShopCollectionProducts: React.FC<ShopCollectionProductsProps> = (
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		textAlign,
 		bgColor,
 		mode,
@@ -24,14 +24,12 @@ const ShopCollectionProducts: React.FC<ShopCollectionProductsProps> = (
 		px,
 		maxWidth,
 		requireAuth,
-		requirePaid,
 		...rest
 	} = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
 			py={py}
@@ -42,7 +40,7 @@ const ShopCollectionProducts: React.FC<ShopCollectionProductsProps> = (
 				<Heading
 					label={label}
 					title={title}
-					description={description}
+					subtitle={subtitle}
 					textAlign={textAlign}
 				/>
 				<CollectionProducts {...rest} />

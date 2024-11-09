@@ -15,7 +15,7 @@ type SheetProps = {
 	open: boolean
 	loading?: boolean
 	title?: string
-	side?: 'left' | 'right' 
+	side?: 'left' | 'right'
 	handleClose: () => void
 	buttons?: React.ReactNode
 	children: React.ReactNode
@@ -35,16 +35,15 @@ const Sheet: React.FC<SheetProps> = ({
 	disablePadding = false,
 	className,
 }) => {
-  
 	const { mode } = useTheme()
-	
+
 	return (
 		<ShadcnSheet open={open} onOpenChange={handleClose}>
 			<SheetContent
 				side={side}
 				className={cn(
 					mode,
-          'w-full sm:w-[360px]',
+					'w-full sm:w-[360px]',
 					disablePadding && 'px-0',
 					className
 				)}
@@ -54,16 +53,12 @@ const Sheet: React.FC<SheetProps> = ({
 						{title}
 					</SheetTitle>
 				</SheetHeader>
-        <div className="h-full max-h-[calc(100vh-150px)] overflow-y-auto">
-          {children}
-        </div>
-        <SheetFooter className={cn(
-          'py-4',
-          disablePadding && 'px-4'
-          )}
-        >
-          {buttons}
-        </SheetFooter>
+				<div className="h-full max-h-[calc(100vh-150px)] overflow-y-auto">
+					{children}
+				</div>
+				<SheetFooter className={cn('py-4', disablePadding && 'px-4')}>
+					{buttons}
+				</SheetFooter>
 			</SheetContent>
 		</ShadcnSheet>
 	)

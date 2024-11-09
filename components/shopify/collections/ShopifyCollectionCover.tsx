@@ -14,66 +14,65 @@ export type ShopifyCollectionCoverProps = {
 	enableOverlay?: boolean
 	overlayColor?: string
 	buttonText?: string
-  enableQuantity?: boolean
-  enableAddToCart?: boolean
+	enableQuantity?: boolean
+	enableAddToCart?: boolean
 }
 
 const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 	props
 ) => {
-
 	const {
 		shopifyCollection,
 		alt = 'image',
-    handleClick,
+		handleClick,
 		enableGradient = false,
 		enableOverlay = false,
-		alignItems = 'center',    
+		alignItems = 'center',
 		buttonText,
-    enableQuantity,
-    enableAddToCart,
+		enableQuantity,
+		enableAddToCart,
 	} = props
 
-  const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(false)
 
-  const { collection, findCollection } = useCollections()
+	const { collection, findCollection } = useCollections()
 
-  const handleShowClick = () => {
-    if(handleClick){
-      handleClick()
-    }else{
-      setOpen(true)
-    }    
-  }
+	const handleShowClick = () => {
+		if (handleClick) {
+			handleClick()
+		} else {
+			setOpen(true)
+		}
+	}
 
-  useEffect(() => {
-    if(shopifyCollection){
-      findCollection(shopifyCollection)
-    }
-  }, [shopifyCollection])
+	useEffect(() => {
+		if (shopifyCollection) {
+			findCollection(shopifyCollection)
+		}
+	}, [shopifyCollection])
 
 	if (!shopifyCollection) return null
 	return (
-    <>
-      <Cover
-        enableOverlay={enableOverlay}
-        enableGradient={enableGradient}
-        title={collection?.title}
-        // @ts-ignore
-        image={collection?.image?.url}
-        alt={alt}
-        alignItems={alignItems}
-        handleClick={handleShowClick}
-        buttonText={buttonText}
-      />
-      <ShopifyProductCollectionModal 
-        collection={ collection }
-        open={ open }
-        handleClose={() => setOpen(false)}
-        enableQuantity={enableQuantity}
-        enableAddToCart={enableAddToCart}
-      />
-    </>
+		<>
+			<Cover
+				enableOverlay={enableOverlay}
+				enableGradient={enableGradient}
+				title={collection?.title}
+				// @ts-ignore
+				image={collection?.image?.url}
+				alt={alt}
+				alignItems={alignItems}
+				handleClick={handleShowClick}
+				buttonText={buttonText}
+			/>
+			<ShopifyProductCollectionModal
+				collection={collection}
+				open={open}
+				handleClose={() => setOpen(false)}
+				enableQuantity={enableQuantity}
+				enableAddToCart={enableAddToCart}
+			/>
+		</>
 	)
 }
 

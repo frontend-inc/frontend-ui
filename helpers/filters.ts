@@ -5,11 +5,8 @@
 // The app uses syntax like this to pass filters in the URL:
 // ?filters=()
 
-export const mergeFilters = (filters=[], newFilters=[]) => {
-	let mergedFilters = [
-    ...filters, 
-    ...newFilters
-  ]	
+export const mergeFilters = (filters = [], newFilters = []) => {
+	let mergedFilters = [...filters, ...newFilters]
 	return mergedFilters
 }
 
@@ -27,17 +24,17 @@ export const mergeAllFilters = (filters) => {
 export const formatFilterArray = (filters) => {
 	let formattedFilters = []
 	if (Array.isArray(filters)) {
-    filters.forEach((filter) => {
-      let name = Object.keys(filter)[0]
-      let operator = Object.keys(filter[name])[0]
-      let value = filter[name][operator]
-      //@ts-ignore
-      formattedFilters.push({					
-        name,
-        operator,
-        value,
-      })
-    })
+		filters.forEach((filter) => {
+			let name = Object.keys(filter)[0]
+			let operator = Object.keys(filter[name])[0]
+			let value = filter[name][operator]
+			//@ts-ignore
+			formattedFilters.push({
+				name,
+				operator,
+				value,
+			})
+		})
 	}
 	return formattedFilters
 }

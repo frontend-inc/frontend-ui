@@ -19,7 +19,7 @@ export type StorageType = {
 export type AttachmentType = {
 	id: number
 	filename?: string
-	url: string  
+	url: string
 	content_type: ImageContentType | VideoContentType
 	thumbnail_url?: string
 	height?: number

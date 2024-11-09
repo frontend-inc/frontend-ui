@@ -6,7 +6,7 @@ import { FieldElementProps } from './Field'
 
 type FieldTextProps = FieldElementProps & {
 	maxChars?: number
-  expandable?: boolean
+	expandable?: boolean
 }
 
 const FieldText: React.FC<FieldTextProps> = (props) => {
@@ -14,23 +14,23 @@ const FieldText: React.FC<FieldTextProps> = (props) => {
 		value,
 		label,
 		placeholder,
-    expandable,
+		expandable,
 		maxChars = 80,
-    className,
+		className,
 	} = props
 	return (
 		<FieldWrapper label={label}>
-      { expandable ? (
-			  <ExpandableText 
-          text={value} 
-          className={className} 
-          maxChars={maxChars} 
-        />
-      ):(
-        <Typography variant='body1' className={className}>
-          {value}
-        </Typography>
-      )}
+			{expandable ? (
+				<ExpandableText
+					text={value}
+					className={className}
+					maxChars={maxChars}
+				/>
+			) : (
+				<Typography variant="body1" className={className}>
+					{value}
+				</Typography>
+			)}
 		</FieldWrapper>
 	)
 }

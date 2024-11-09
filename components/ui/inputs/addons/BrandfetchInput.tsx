@@ -41,9 +41,9 @@ const BrandfetchInput: React.FC<BrandfetchInputProps> = (props) => {
 
 	return (
 		<div className="flex flex-col space-y-4 w-full">
-      <div className="w-full flex flex-row justify-center items-center">
-			  <BrandfetchAutosuggest handleChange={handleBrandChange} />
-      </div>
+			<div className="w-full flex flex-row justify-center items-center">
+				<BrandfetchAutosuggest handleChange={handleBrandChange} />
+			</div>
 			<PoweredByBrandfetch />
 			{loading && <CircularLoader />}
 			<div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -57,25 +57,25 @@ const BrandfetchInput: React.FC<BrandfetchInputProps> = (props) => {
 										key={`${logo.domain}-${index}`}
 										className="flex flex-col space-y-4 bg-muted/20 hover:bg-muted/50 p-4 hover:border-primary overflow-hidden"
 									>
-                    <CardContent>
-										<TouchableOpacity
-											handleClick={() => handleClick(format, logo)}
-										>
-											<div className="relative rounded overflow-hidden h-[160px] w-[200px] flex items-center justify-center">
-												<Image
-													src={format?.src}
-													height={220}
-													width={200}
-													alt={logo?.domain}
-													objectFit="contain"
-												/>
+										<CardContent>
+											<TouchableOpacity
+												handleClick={() => handleClick(format, logo)}
+											>
+												<div className="relative rounded overflow-hidden h-[160px] w-[200px] flex items-center justify-center">
+													<Image
+														src={format?.src}
+														height={220}
+														width={200}
+														alt={logo?.domain}
+														objectFit="contain"
+													/>
+												</div>
+											</TouchableOpacity>
+											<div>
+												<Label label={format.format} />
 											</div>
-										</TouchableOpacity>
-										<div>
-											<Label label={format.format} />
-										</div>
-                    </CardContent>
-                  </Card>
+										</CardContent>
+									</Card>
 								))}
 						</React.Fragment>
 					))}

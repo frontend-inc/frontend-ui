@@ -20,12 +20,8 @@ import {
 } from '../../../../components'
 import { Separator } from 'frontend-shadcn'
 import { IconButton } from '../../../core'
-import {
-	FilterOptionType,
-	SyntheticEventType,
-} from '../../../../types'
+import { FilterOptionType, SyntheticEventType } from '../../../../types'
 import TableWhereInput from './TableWhereInput'
-
 
 type FilternameProps = {
 	index: number

@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import { Button, Typography, IconButton } from '../../core'
 import { useMenu, useApp } from '../../../hooks'
 import { useAuth } from 'frontend-js'
-import { useRouter,  } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { Icon, UserAvatar, AuthMenu } from '../..'
 
 type AuthButtonProps = {

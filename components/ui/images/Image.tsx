@@ -39,7 +39,6 @@ export default function ResponsiveImage({
 	className,
 	label,
 }: ResponsiveImageProps) {
-
 	return (
 		<div
 			className={cn(

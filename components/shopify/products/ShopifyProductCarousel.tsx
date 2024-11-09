@@ -4,12 +4,12 @@ import React from 'react'
 import { ShopifyProductCard } from '..'
 import { ShopifyProductType } from 'frontend-shopify'
 import { cn } from 'frontend-shadcn'
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem, 
-  CarouselNext, 
-  CarouselPrevious, 
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselNext,
+	CarouselPrevious,
 } from 'frontend-shadcn'
 
 type ShopifyProductCarouselProps = {
@@ -27,7 +27,7 @@ const ShopifyProductCarousel: React.FC<ShopifyProductCarouselProps> = (
 	props
 ) => {
 	const {
-    loading,
+		loading,
 		products,
 		enableBorder = false,
 		enableAddToCart,
@@ -35,31 +35,26 @@ const ShopifyProductCarousel: React.FC<ShopifyProductCarouselProps> = (
 	} = props
 
 	return (
-		<div
-			className={cn(
-				'w-full',
-				loading && 'opacity-50'
-			)}
-		>
+		<div className={cn('w-full', loading && 'opacity-50')}>
 			<Carousel>
-        <CarouselContent>
-			    {products?.map((product, index) => (
-				    <CarouselItem className="sm:basis-1/2 lg:basis-1/3" key={index}>
-              <div className='p-1'>              
-                <ShopifyProductCard
-                  product={product}
-                  enableBorder={enableBorder}
-                  enableAddToCart={enableAddToCart}
-                  enableQuantity={enableQuantity}
-                />
-              </div>
-            </CarouselItem>
-			    ))}
-        </CarouselContent>
-      <CarouselPrevious className="hidden sm:flex" />
-      <CarouselNext className="hidden sm:flex" />
-	  </Carousel>
-  </div>
+				<CarouselContent>
+					{products?.map((product, index) => (
+						<CarouselItem className="sm:basis-1/2 lg:basis-1/3" key={index}>
+							<div className="p-1">
+								<ShopifyProductCard
+									product={product}
+									enableBorder={enableBorder}
+									enableAddToCart={enableAddToCart}
+									enableQuantity={enableQuantity}
+								/>
+							</div>
+						</CarouselItem>
+					))}
+				</CarouselContent>
+				<CarouselPrevious className="hidden sm:flex" />
+				<CarouselNext className="hidden sm:flex" />
+			</Carousel>
+		</div>
 	)
 }
 

@@ -34,7 +34,6 @@ const AdminCollectionMenu: React.FC = () => {
 		reloadCollections,
 	} = useAdminCollections()
 
-  
 	useEffect(() => {
 		if (collectionId == 'index' && collections.length > 0) {
 			handleClick(collections[0])
@@ -49,9 +48,9 @@ const AdminCollectionMenu: React.FC = () => {
 		router.push(`/dashboard/${appId}/collections/${collection?.name}`)
 	}
 
-  const handleSettingsClick = (collection) => {
-    router.push(`/dashboard/${appId}/schema/${collection?.name}`)
-  }
+	const handleSettingsClick = (collection) => {
+		router.push(`/dashboard/${appId}/schema/${collection?.name}`)
+	}
 
 	const handleEditCollectionClick = (collection) => {
 		setCollection(collection)
@@ -86,21 +85,21 @@ const AdminCollectionMenu: React.FC = () => {
 	const handleDeleteCollection = async () => {
 		try {
 			setCollection({})
-      if(activeCollection){
-      //@ts-ignore
-			await deleteCollection(activeCollection.id)
-      //@ts-ignore
-			setCollections(collections.filter((c) => c.id !== activeCollection.id))
-      //@ts-ignore
-			if (collectionId == activeCollection.name) {
-				let nextCollection = collections.filter(
-          //@ts-ignore
-					(c) => c.name !== activeCollection.name
-				)[0]
-				router.push(`/dashboard/${appId}/collections/${nextCollection?.name}`)
-			}      
-			setShowDeleteModal(false)
-      }
+			if (activeCollection) {
+				//@ts-ignore
+				await deleteCollection(activeCollection.id)
+				//@ts-ignore
+				setCollections(collections.filter((c) => c.id !== activeCollection.id))
+				//@ts-ignore
+				if (collectionId == activeCollection.name) {
+					let nextCollection = collections.filter(
+						//@ts-ignore
+						(c) => c.name !== activeCollection.name
+					)[0]
+					router.push(`/dashboard/${appId}/collections/${nextCollection?.name}`)
+				}
+				setShowDeleteModal(false)
+			}
 		} catch (e) {
 			console.log(e)
 		}
@@ -111,7 +110,7 @@ const AdminCollectionMenu: React.FC = () => {
 			...collection,
 			name: collection.name || template.name,
 			label: collection.label || template.label,
-      document_type: template.document_type,
+			document_type: template.document_type,
 			template,
 		})
 	}
@@ -133,21 +132,19 @@ const AdminCollectionMenu: React.FC = () => {
 						handleClick={() => handleClick(collection)}
 						handleEdit={() => handleEditCollectionClick(collection)}
 						handleDelete={() => handleDeleteCollectionClick(collection)}
-            secondaryAction={
-              <IconButton 
-                onClick={() => handleSettingsClick(collection)}
-              >
-                <Settings className="h-5 w-4" />
-              </IconButton>
-            }
+						secondaryAction={
+							<IconButton onClick={() => handleSettingsClick(collection)}>
+								<Settings className="h-5 w-4" />
+							</IconButton>
+						}
 					/>
 				))}
 			</MenuList>
 			<div className="px-4">
 				<Button
 					color="secondary"
-					onClick={handleCreateCollectionClick}					
-          className="group"
+					onClick={handleCreateCollectionClick}
+					className="group"
 					startIcon={
 						<div className="group-hover:rotate-180 transition-transform duration-300 ease-in-out">
 							<Plus className="text-primary-foreground h-5 w-5" />

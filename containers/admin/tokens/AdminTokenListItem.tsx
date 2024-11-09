@@ -26,7 +26,7 @@ const AdminTokenListItem: React.FC<AdminTokenListItemProps> = (props) => {
 	return (
 		<ResourceListItem
 			enableBorder
-      disableImage
+			disableImage
 			primary={token?.name}
 			secondary={truncate(token?.api_key, 20)}
 			icon="Key"
@@ -36,12 +36,8 @@ const AdminTokenListItem: React.FC<AdminTokenListItemProps> = (props) => {
 			handleDelete={!token?.internal ? () => handleDelete(token) : undefined}
 			secondaryAction={
 				<>
-					<Badge>
-            {token?.admin ? 'Admin' : 'Public'}
-          </Badge>
-					{token.internal && (
-            <Badge>system</Badge>
-            )}
+					<Badge>{token?.admin ? 'Admin' : 'Public'}</Badge>
+					{token.internal && <Badge>system</Badge>}
 				</>
 			}
 		/>

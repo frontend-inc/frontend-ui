@@ -28,31 +28,27 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 
 	if (!resource) return null
 	return (
-		<Drawer 
-      open={openShow} 
-      handleClose={() => setOpenShow(false)}
-      maxWidth="lg"
-    >
-      <div className="w-full flex flex-row justify-center pb-10">
-        <BlurFade delay={0.25} inView className='w-full'>
-          <div className="w-full flex flex-col space-y-[20px]">
-            <ProductDetails
-              direction="row"
-              product={resource}              
-              enableGradient={enableGradient}
-              enableOverlay={enableOverlay}
-              enableFavorites={enableFavorites}
-              enableLikes={enableLikes}
-              enableRatings={enableRatings}
-            />
-            { enableRatings && (
-              <ProductReviews
-                productId={resource?.id}
-              />
-            )}
-          </div>
-        </BlurFade>
-      </div>
+		<Drawer
+			open={openShow}
+			handleClose={() => setOpenShow(false)}
+			maxWidth="lg"
+		>
+			<div className="w-full flex flex-row justify-center pb-10">
+				<BlurFade delay={0.25} inView className="w-full">
+					<div className="w-full flex flex-col space-y-[20px]">
+						<ProductDetails
+							direction="row"
+							product={resource}
+							enableGradient={enableGradient}
+							enableOverlay={enableOverlay}
+							enableFavorites={enableFavorites}
+							enableLikes={enableLikes}
+							enableRatings={enableRatings}
+						/>
+						{enableRatings && <ProductReviews productId={resource?.id} />}
+					</div>
+				</BlurFade>
+			</div>
 		</Drawer>
 	)
 }

@@ -10,12 +10,7 @@ import {
 	HeroSnippet,
 } from '../../../components'
 import { useResourceContext } from 'frontend-js'
-import {
-	ListFields,
-	ButtonActions,
-	SocialButtons,
-	ExpandableText,
-} from '../..'
+import { ListFields, ButtonActions, SocialButtons, ExpandableText } from '../..'
 
 export type ShowProps = {
 	handle?: string
@@ -130,12 +125,12 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 			primary={resource?.title}
 			secondary={
 				displayFields?.length > 0 && (
-          <ListFields
-            direction="column"
-            fields={displayFields}
-            resource={resource}
-          />
-        )
+					<ListFields
+						direction="column"
+						fields={displayFields}
+						resource={resource}
+					/>
+				)
 			}
 			actions={
 				<SocialButtons

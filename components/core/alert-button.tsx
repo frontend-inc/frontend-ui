@@ -28,14 +28,14 @@ interface AlertButtonProps extends ShadcnButtonProps {
 	children?: React.ReactNode
 	disabled?: boolean
 	loading?: boolean
-  onClick?: () => void
-  displayAlertWarning?: boolean
+	onClick?: () => void
+	displayAlertWarning?: boolean
 }
 
 const AlertButton = forwardRef<HTMLButtonElement, AlertButtonProps>(
 	(
 		{
-      onClick,
+			onClick,
 			size = 'default',
 			variant = 'default',
 			fullWidth,
@@ -49,39 +49,42 @@ const AlertButton = forwardRef<HTMLButtonElement, AlertButtonProps>(
 		},
 		ref
 	) => {
+		const [open, setOpen] = useState(false)
 
-    const [open, setOpen] = useState(false)
-
-    const handleConfirm = () => {
-      setOpen(false)
-      onClick()
-    }
+		const handleConfirm = () => {
+			setOpen(false)
+			onClick()
+		}
 
 		return (
-      <>
-        <ShadcnButton
-          ref={ref}
-          size={size}
-          variant={variant}
-          className={cn(fullWidth && 'w-full', className)}
-          disabled={disabled || loading}
-          onClick={() => setOpen(true)}
-          {...props}
-        >
-          {loading ? (
-            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-          ) : (
-            startIcon && <span className="mr-2">{startIcon}</span>
-          )}
-          {children}
-          {!loading && endIcon && <span className="w-full flex flex-row justify-end ml-2">{endIcon}</span>}
-        </ShadcnButton>
-        <AlertModal 
-          open={ open }
-          handleClose={ () => setOpen(false) }
-          handleConfirm={ handleConfirm }
-        />
-      </>
+			<>
+				<ShadcnButton
+					ref={ref}
+					size={size}
+					variant={variant}
+					className={cn(fullWidth && 'w-full', className)}
+					disabled={disabled || loading}
+					onClick={() => setOpen(true)}
+					{...props}
+				>
+					{loading ? (
+						<Loader2 className="h-4 w-4 mr-2 animate-spin" />
+					) : (
+						startIcon && <span className="mr-2">{startIcon}</span>
+					)}
+					{children}
+					{!loading && endIcon && (
+						<span className="w-full flex flex-row justify-end ml-2">
+							{endIcon}
+						</span>
+					)}
+				</ShadcnButton>
+				<AlertModal
+					open={open}
+					handleClose={() => setOpen(false)}
+					handleConfirm={handleConfirm}
+				/>
+			</>
 		)
 	}
 )

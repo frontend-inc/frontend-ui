@@ -64,7 +64,7 @@ const UnsplashList: React.FC<UnsplashProps> = ({ onComplete }) => {
 					handleChange={handleChange}
 					handleSearch={handleSearch}
 				/>
-        <PoweredByUnsplash />
+				<PoweredByUnsplash />
 			</div>
 			<div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4">
 				{images?.map((image, i) => (

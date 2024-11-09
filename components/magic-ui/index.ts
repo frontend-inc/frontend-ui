@@ -14,5 +14,3 @@ export { default as Safari } from './safari'
 export { default as ShimmerButton } from './shimmer-button'
 export { default as ShineBorder } from './shine-border'
 export { default as SparklesText } from './sparkles-text'
-
-

@@ -13,11 +13,7 @@ export type KlaviyoButtonProps = {
 }
 
 const KlaviyoButton: React.FC<KlaviyoButtonProps> = (props) => {
-	const {
-		formId,
-		variant = 'default',
-		buttonText = 'Subscribe',
-	} = props || {}
+	const { formId, variant = 'default', buttonText = 'Subscribe' } = props || {}
 
 	const handleClick = () => {
 		// @ts-ignore

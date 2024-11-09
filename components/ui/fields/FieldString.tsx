@@ -8,21 +8,10 @@ import { truncate } from '../../../helpers'
 import { cn } from 'frontend-shadcn'
 
 const FieldString: React.FC<FieldElementProps> = (props) => {
-	const {
-		value,
-		label,
-		placeholder,
-		alignItems,
-		className,
-		...rest
-	} = props
+	const { value, label, placeholder, alignItems, className, ...rest } = props
 
 	return (
-		<FieldWrapper
-			alignItems={alignItems}
-			label={label}			
-			{...rest}
-		>
+		<FieldWrapper alignItems={alignItems} label={label} {...rest}>
 			<Typography variant="body1" className={cn(className)}>
 				{truncate(value || placeholder, 50)}
 			</Typography>

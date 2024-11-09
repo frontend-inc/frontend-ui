@@ -41,7 +41,7 @@ export default function GoogleMap({
 			lat: res?.lat,
 			lng: res?.lng,
 			label: res?.title,
-			image: res?.image?.url 
+			image: res?.image?.url,
 		}))
 		setGoogleMarkers(markers?.length ? markers : [])
 	}
@@ -94,10 +94,7 @@ export default function GoogleMap({
 				defaultCenter={center}
 			>
 				{googleMarkers.map((marker: any, index: number) => (
-					<GoogleMarker
-						key={index}
-						{ ...marker }						
-					/>
+					<GoogleMarker key={index} {...marker} />
 				))}
 			</Map>
 		</div>

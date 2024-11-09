@@ -8,7 +8,7 @@ type LoaderProps = {
 }
 
 const Loader: React.FC<LoaderProps> = (props) => {
-  const { size = 'sm' } = props || {}
+	const { size = 'sm' } = props || {}
 	return (
 		<div className="w-full h-full flex justify-center items-center">
 			<CircularProgress size={size} />

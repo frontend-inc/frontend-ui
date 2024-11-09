@@ -12,7 +12,7 @@ const CmsForm: React.FC<CmsFormProps> = (props) => {
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		textAlign,
 		bgColor,
 		mode,
@@ -20,14 +20,12 @@ const CmsForm: React.FC<CmsFormProps> = (props) => {
 		px,
 		maxWidth,
 
-		requirePaid,
 		...rest
 	} = props
 
 	return (
 		<Section
 			requireAuth
-			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
 			py={py}
@@ -37,7 +35,7 @@ const CmsForm: React.FC<CmsFormProps> = (props) => {
 			<Heading
 				label={label}
 				title={title}
-				description={description}
+				subtitle={subtitle}
 				textAlign={textAlign}
 			/>
 			<DocumentForm {...rest} />

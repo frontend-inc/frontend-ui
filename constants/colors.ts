@@ -245,7 +245,6 @@ export const TAILWIND_COLOR_PICKER_MAP = {
 
 export const TAILWIND_COLORS = [
 	'light',
-	'dark',
 	'slate',
 	'gray',
 	'zinc',
@@ -272,7 +271,6 @@ export const TAILWIND_COLORS = [
 
 export const TAILWIND_COLOR_MAP = {
 	light: '#ffffff',
-	dark: '#000000',
 	slate: '#64748b',
 	gray: '#6b7280',
 	zinc: '#71717a',

@@ -11,7 +11,7 @@ const CmsSimilar: React.FC<CmsListProps> = (props) => {
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		textAlign,
 		bgColor,
 		mode,
@@ -20,7 +20,6 @@ const CmsSimilar: React.FC<CmsListProps> = (props) => {
 		maxWidth,
 		requireAuth,
 
-		requirePaid,
 		...rest
 	} = props
 
@@ -32,12 +31,11 @@ const CmsSimilar: React.FC<CmsListProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 		>
 			<Heading
 				label={label}
 				title={title}
-				description={description}
+				subtitle={subtitle}
 				textAlign={textAlign}
 			/>
 			<SimilarList {...rest} />

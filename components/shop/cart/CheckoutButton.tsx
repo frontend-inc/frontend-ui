@@ -20,11 +20,11 @@ const CheckoutButton = () => {
 			showAlertError(stripe.errors)
 		} else {
 			const url = stripe?.data?.url
-      if (window.parent === window) {     
-        window.open(url, '_blank')
-      }else{
-        parent.window.open(url, '_blank')
-      }
+			if (window.parent === window) {
+				window.open(url, '_blank')
+			} else {
+				parent.window.open(url, '_blank')
+			}
 		}
 	}
 

@@ -6,8 +6,8 @@ import { useProducts } from '../../../hooks'
 
 export type ProductModalProps = {
 	open: boolean
-  handleClose: () => void
-  productId: string | number 
+	handleClose: () => void
+	productId: string | number
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
@@ -17,12 +17,12 @@ export type ProductModalProps = {
 }
 
 const Product: React.FC<ProductModalProps> = (props) => {
-	const {  } = props || {}
+	const {} = props || {}
 
 	const {
-    open, 
-    handleClose, 
-    productId,
+		open,
+		handleClose,
+		productId,
 		enableRatings,
 		enableLikes,
 		enableFavorites,
@@ -30,41 +30,30 @@ const Product: React.FC<ProductModalProps> = (props) => {
 		enableOverlay,
 	} = props || {}
 
-  const { 
-    loading,
-    product,
-    findProduct
-  } = useProducts()
+	const { loading, product, findProduct } = useProducts()
 
-  useEffect(() => {
-    if(productId) {
-      findProduct(productId)
-    }
-  }, [productId])
-	
+	useEffect(() => {
+		if (productId) {
+			findProduct(productId)
+		}
+	}, [productId])
+
 	return (
-		<Drawer 
-      open={open} 
-      handleClose={handleClose}
-    >
-      <div className="w-full flex flex-row justify-center pb-10">
-        <div className="md:max-w-screen-sm flex flex-col space-y-[20px]">
-          <ProductDetails
-            direction="column"
-            product={product}              
-            enableGradient={enableGradient}
-            enableOverlay={enableOverlay}
-            enableFavorites={enableFavorites}
-            enableLikes={enableLikes}
-            enableRatings={enableRatings}
-          />
-          { enableRatings && (
-            <ProductReviews
-              productId={productId}
-            />
-          )}
-        </div>
-      </div>
+		<Drawer open={open} handleClose={handleClose}>
+			<div className="w-full flex flex-row justify-center pb-10">
+				<div className="md:max-w-screen-sm flex flex-col space-y-[20px]">
+					<ProductDetails
+						direction="column"
+						product={product}
+						enableGradient={enableGradient}
+						enableOverlay={enableOverlay}
+						enableFavorites={enableFavorites}
+						enableLikes={enableLikes}
+						enableRatings={enableRatings}
+					/>
+					{enableRatings && <ProductReviews productId={productId} />}
+				</div>
+			</div>
 		</Drawer>
 	)
 }

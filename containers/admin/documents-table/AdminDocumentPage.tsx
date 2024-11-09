@@ -12,7 +12,11 @@ import AdminDocumentForm from './AdminDocumentForm'
 import AdminDocumentRightPanel from './AdminDocumentRightPanel'
 import { ChevronLeft } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useAdmin, useAdminDocuments, useAdminCollections } from '../../../hooks'
+import {
+	useAdmin,
+	useAdminDocuments,
+	useAdminCollections,
+} from '../../../hooks'
 import { truncate } from '../../../helpers'
 import { ScrollArea } from 'frontend-shadcn'
 

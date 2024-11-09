@@ -54,17 +54,17 @@ export default function FavoriteButton({
 				className={cn(
 					variant == 'circular' ? 'rounded-full' : 'rounded-lg',
 					size === 'large' && 'border border-divider',
-					'transition-transform duration-200',
+					'transition-transform duration-200'
 				)}
 			>
 				<Bookmark
-          className={cn(
-            'w-5 h-5',
-            isFavorite
-              ? 'fill-primary stroke-primary'
-              : 'stroke-current fill-none'
-          )}
-        />
+					className={cn(
+						'w-5 h-5',
+						isFavorite
+							? 'fill-primary stroke-primary'
+							: 'stroke-current fill-none'
+					)}
+				/>
 			</IconButton>
 		</div>
 	)

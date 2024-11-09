@@ -6,13 +6,13 @@ import { ProductListProps } from '../products/ProductList'
 import { useApp } from '../../../hooks'
 
 export type ProductSimilarListProps = ProductListProps & {
-  productId: string | number
+	productId: string | number
 }
 
 const ProductSimilarList: React.FC<ProductSimilarListProps> = (props) => {
-  const { apiUrl } = useApp()
-  const { productId, ...rest } = props || {}
-  const url = `${apiUrl}/shop/products/${productId}/similar_products`
+	const { apiUrl } = useApp()
+	const { productId, ...rest } = props || {}
+	const url = `${apiUrl}/shop/products/${productId}/similar_products`
 	return <ProductList {...rest} url={url} />
 }
 

@@ -23,8 +23,7 @@ type DesktopHeaderProps = {
 const MAX_LINKS = 5
 
 const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
-	
-  const {
+	const {
 		logo,
 		links,
 		buttons,

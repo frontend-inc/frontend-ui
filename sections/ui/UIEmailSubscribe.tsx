@@ -17,14 +17,12 @@ const UIEmailSubscribe: React.FC<UIEmailSubscribeProps> = (props) => {
 		maxWidth,
 		requireAuth,
 
-		requirePaid,
 		...rest
 	} = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
 			py={py}

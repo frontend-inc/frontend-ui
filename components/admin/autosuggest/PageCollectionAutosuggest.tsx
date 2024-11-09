@@ -48,11 +48,11 @@ const PageCollectionAutosuggest: React.FC<PageCollectionAutosuggestProps> = (
 			handleChange={handleChange}
 			defaultQuery={{
 				filters: [
-						{ collection_id: { eq: collectionId } },
-						{
-							page_type: { eq: 'cms' },
-						},
-					],
+					{ collection_id: { eq: collectionId } },
+					{
+						page_type: { eq: 'cms' },
+					},
+				],
 			}}
 			enableClear
 		/>

@@ -25,10 +25,9 @@ export type ProductListItemsProps = {
 }
 
 const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
-
 	const {
 		loading,
-    setResource,
+		setResource,
 		resources,
 		page,
 		numPages,
@@ -51,15 +50,15 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 		},
 	} = props
 
-  const handleShowClick = (product: any) => {
-    if(handleClick) {
-      handleClick(product)
-      return
-    }else{
-      setResource(product)
-      setOpenShow(true)
-    }    
-  }
+	const handleShowClick = (product: any) => {
+		if (handleClick) {
+			handleClick(product)
+			return
+		} else {
+			setResource(product)
+			setOpenShow(true)
+		}
+	}
 
 	const handlePaginate = async () => {
 		await loadMore()
@@ -67,23 +66,23 @@ const ProductListItems: React.FC<ProductListItemsProps> = (props) => {
 
 	return (
 		<div className="flex flex-col space-y-2 w-full">
-			<DataLayout {...slots.list} layout='grid' loading={loading}>
+			<DataLayout {...slots.list} layout="grid" loading={loading}>
 				{resources?.map((resource, idx) => (
-          <BlurFade delay={0.25 + idx * 0.05} inView key={resource?.id}>
-            <ProductListItem					
-              style={style}
-              resource={resource}
-              displayFields={displayFields}
-              handleClick={() => handleShowClick(resource)}
-              buttons={buttons}
-              enableFavorites={enableFavorites}
-              enableLikes={enableLikes}
-              enableRatings={enableRatings}
-              enableGradient={enableGradient}
-              enableOverlay={enableOverlay}
-              {...slots.item}
-            />
-          </BlurFade>
+					<BlurFade delay={0.25 + idx * 0.05} inView key={resource?.id}>
+						<ProductListItem
+							style={style}
+							resource={resource}
+							displayFields={displayFields}
+							handleClick={() => handleShowClick(resource)}
+							buttons={buttons}
+							enableFavorites={enableFavorites}
+							enableLikes={enableLikes}
+							enableRatings={enableRatings}
+							enableGradient={enableGradient}
+							enableOverlay={enableOverlay}
+							{...slots.item}
+						/>
+					</BlurFade>
 				))}
 			</DataLayout>
 			<LoadMore

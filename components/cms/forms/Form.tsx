@@ -50,11 +50,7 @@ const Form: React.FC<FormProps> = (props) => {
 				inputParams={inputParams}
 			/>
 			{handleSubmit && (
-				<Button	
-					onClick={handleSubmit}
-					disabled={loading}
-          loading={ loading }					
-				>
+				<Button onClick={handleSubmit} disabled={loading} loading={loading}>
 					{buttonText}
 				</Button>
 			)}

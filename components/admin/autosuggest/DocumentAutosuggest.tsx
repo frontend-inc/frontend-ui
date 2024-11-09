@@ -42,7 +42,7 @@ const DocumentAutosuggest: React.FC<DocumentAutosuggestProps> = (props) => {
 		}
 	}, [collectionId])
 
-	if (!collection?.name || !apiUrl) return null;
+	if (!collection?.name || !apiUrl) return null
 	return (
 		<RemoteAutosuggest
 			enableClear

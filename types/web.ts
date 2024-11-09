@@ -7,20 +7,18 @@ import { MetafieldType, FormFieldType } from './forms'
 export type HeadingProps = {
 	label?: string
 	title?: string
-	description?: string
+	subtitle?: string
 	textAlign?: 'left' | 'center'
 }
 
 export type SectionProps = {
 	children?: React.ReactNode
-	enableTransitions?: boolean
 	bgColor?: string
 	mode?: 'dark' | 'light'
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
 	py?: number
 	px?: number
 	requireAuth?: boolean
-	requirePaid?: boolean
 }
 
 export type FormProps = {
@@ -57,13 +55,13 @@ export type PriceType = {
 	title: string
 	description?: string
 	price: number
-	features: string[]	
+	features: string[]
 	interval?: string
-  recurring?: boolean
-  popular?: boolean
+	recurring?: boolean
+	popular?: boolean
 	buttonText: string
 	url?: string
-  path?: string
+	path?: string
 }
 
 export type TestimonialType = {

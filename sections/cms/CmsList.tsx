@@ -12,7 +12,7 @@ const CmsList: React.FC<CmsListProps> = (props) => {
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		textAlign,
 		bgColor,
 		mode,
@@ -20,7 +20,7 @@ const CmsList: React.FC<CmsListProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		requirePaid,
+
 		...rest
 	} = props
 
@@ -32,12 +32,11 @@ const CmsList: React.FC<CmsListProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 		>
 			<Heading
 				label={label}
 				title={title}
-				description={description}
+				subtitle={subtitle}
 				textAlign={textAlign}
 			/>
 			<CollectionList {...rest} />

@@ -17,7 +17,7 @@ interface TypographyProps {
 		| 'body2'
 		| 'button'
 		| 'caption'
-		| 'overline'	
+		| 'overline'
 	textAlign?: 'left' | 'center' | 'right'
 	className?: string
 	children: React.ReactNode
@@ -29,7 +29,6 @@ const Typography: React.FC<TypographyProps> = ({
 	className,
 	children,
 }) => {
-
 	const variantClasses = {
 		h1: 'text-6xl font-semibold tracking-tight',
 		h2: 'text-5xl font-semibold tracking-tight',
@@ -71,7 +70,7 @@ const Typography: React.FC<TypographyProps> = ({
 	return (
 		<div
 			className={cn(
-        'text-foreground',
+				'text-foreground',
 				fontFamily[variant],
 				variantClasses[variant],
 				alignmentClasses[textAlign],

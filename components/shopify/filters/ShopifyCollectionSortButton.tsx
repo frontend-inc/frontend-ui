@@ -14,7 +14,9 @@ type ShopifyCollectionSortButtonProps = {
 	handleClick: (sortKey: ProductSortKeyType, reverse: boolean) => void
 }
 
-const ShopifyCollectionSortButton: React.FC<ShopifyCollectionSortButtonProps> = (props) => {
+const ShopifyCollectionSortButton: React.FC<
+	ShopifyCollectionSortButtonProps
+> = (props) => {
 	const { sortKey = 'COLLECTION_DEFAULT', reverse, handleClick } = props
 
 	const [open, setOpen] = useState(false)
@@ -31,23 +33,23 @@ const ShopifyCollectionSortButton: React.FC<ShopifyCollectionSortButtonProps> = 
 	)?.label
 
 	return (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger asChild>
-        <Button variant="secondary" className="w-full" onClick={handleOpen}>
-          {currentSortLabel}
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      </SheetTrigger>
-      <SheetContent side="right">
-        <SortList
-          enableIcons
-          value={sortKey}
-          reverse={reverse}
-          options={COLLECTION_SORT_OPTIONS}
-          handleClick={handleSortClick}
-        />
-      </SheetContent>
-    </Sheet>
+		<Sheet open={open} onOpenChange={setOpen}>
+			<SheetTrigger asChild>
+				<Button variant="secondary" className="w-full" onClick={handleOpen}>
+					{currentSortLabel}
+					<ArrowUpDown className="ml-2 h-4 w-4" />
+				</Button>
+			</SheetTrigger>
+			<SheetContent side="right">
+				<SortList
+					enableIcons
+					value={sortKey}
+					reverse={reverse}
+					options={COLLECTION_SORT_OPTIONS}
+					handleClick={handleSortClick}
+				/>
+			</SheetContent>
+		</Sheet>
 	)
 }
 

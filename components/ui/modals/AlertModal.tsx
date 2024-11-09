@@ -3,7 +3,7 @@
 import React from 'react'
 import {
 	AlertDialog,
-  AlertDialogOverlay,
+	AlertDialogOverlay,
 	AlertDialogAction,
 	AlertDialogCancel,
 	AlertDialogContent,
@@ -34,17 +34,17 @@ const AlertModal: React.FC<AlertModalProps> = ({
 	handleConfirm,
 }) => {
 	return (
-		<AlertDialog open={open} onOpenChange={handleClose}>      
+		<AlertDialog open={open} onOpenChange={handleClose}>
 			<AlertDialogContent>
 				<AlertDialogHeader>
 					<AlertDialogTitle>{title}</AlertDialogTitle>
 					<AlertDialogDescription>{description}</AlertDialogDescription>
 				</AlertDialogHeader>
-        {loading && (
-          <div className="flex flex-col items-center justify-center">
-            <CircularLoader size='lg' />
-          </div>
-        )}
+				{loading && (
+					<div className="flex flex-col items-center justify-center">
+						<CircularLoader size="lg" />
+					</div>
+				)}
 				<AlertDialogFooter>
 					<AlertDialogCancel asChild>
 						<Button variant="secondary" onClick={handleClose}>
@@ -57,8 +57,8 @@ const AlertModal: React.FC<AlertModalProps> = ({
 							onClick={handleConfirm}
 							className={cn(loading && 'cursor-not-allowed opacity-50')}
 							disabled={loading}
-              loading={ loading }
-						>							
+							loading={loading}
+						>
 							Confirm
 						</Button>
 					</AlertDialogAction>

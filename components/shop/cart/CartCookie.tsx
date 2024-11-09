@@ -9,8 +9,7 @@ type CartCookieProps = {
 }
 
 const CartCookie: React.FC<CartCookieProps> = () => {
-
-  const mounted = useRef(false)
+	const mounted = useRef(false)
 
 	const { cart, fetchCart, createCart, cartCookie } = useCart()
 
@@ -36,8 +35,8 @@ const CartCookie: React.FC<CartCookieProps> = () => {
 	}
 
 	useEffect(() => {
-    if(!mounted.current) {
-      mounted.current = true    
+		if (!mounted.current) {
+			mounted.current = true
 			handleFindOrCreateCart()
 		}
 	}, [])

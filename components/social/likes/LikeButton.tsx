@@ -51,7 +51,7 @@ export default function LikeButton({
 				onClick={handleClick}
 				className={cn(
 					variant == 'circular' ? 'rounded-full' : 'rounded-lg',
-					size === 'large' && 'border border-divider',
+					size === 'large' && 'border border-divider'
 				)}
 			>
 				<Heart

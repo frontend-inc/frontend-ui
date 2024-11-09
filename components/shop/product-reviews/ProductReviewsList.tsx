@@ -6,14 +6,8 @@ import { LoadMore, DataLayout } from '../..'
 import { useResourceContext } from 'frontend-js'
 
 const ProductReviewsList = (props) => {
-	const { 
-    loading, 
-    resources, 
-    query, 
-    setQuery, 
-    page, 
-    numPages 
-  } =useResourceContext()
+	const { loading, resources, query, setQuery, page, numPages } =
+		useResourceContext()
 
 	const handleLoadMore = () => {
 		let perPage = (query?.per_page || 12) + 12
@@ -23,7 +17,7 @@ const ProductReviewsList = (props) => {
 		})
 	}
 
-	return (    
+	return (
 		<DataLayout layout="list" loading={loading}>
 			{!loading &&
 				resources?.map((resource, index) => (

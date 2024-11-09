@@ -57,7 +57,7 @@ export default function SelectInput({
 				<SelectContent className="bg-background min-w-[165px]">
 					{options?.map((option, idx) => (
 						<SelectItem
-							key={idx}              
+							key={idx}
 							// @ts-ignore
 							value={option.value}
 						>

@@ -12,25 +12,12 @@ type ShowFieldsProps = {
 }
 
 const ShowFields: React.FC<ShowFieldsProps> = (props) => {
-	const {
-		className,
-		fields,
-		resource,
-	} = props || {}
+	const { className, fields, resource } = props || {}
 
 	return (
-		<div
-			className={cn(
-				'w-full flex flex-col space-y-4',
-				className
-			)}
-		>
+		<div className={cn('w-full flex flex-col space-y-4', className)}>
 			{fields?.map((field, index) => (
-				<ShowField
-					key={index}
-					field={field}
-					resource={resource}
-				/>
+				<ShowField key={index} field={field} resource={resource} />
 			))}
 		</div>
 	)

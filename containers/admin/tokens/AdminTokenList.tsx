@@ -23,9 +23,9 @@ const AdminTokenList: React.FC = () => {
 					label: 'Admin API Key',
 					name: 'admin',
 					options: [
-            { label: 'Admin Key', value: true },
-            { label: 'Public Key', value: false },
-          ]
+						{ label: 'Admin Key', value: true },
+						{ label: 'Public Key', value: false },
+					],
 				},
 			]}
 			edit={AdminTokenForm}

@@ -8,7 +8,6 @@ import AdminUserForm from './AdminUserForm'
 import AdminUserEditForm from './AdminUserEditForm'
 import AdminUserShow from './AdminUserShow'
 
-
 const AdminUsersList: React.FC = () => {
 	const { apiUrl } = useAdmin()
 

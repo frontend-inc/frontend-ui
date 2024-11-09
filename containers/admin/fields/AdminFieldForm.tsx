@@ -38,11 +38,11 @@ const AdminFieldForm: React.FC<ResourceFormProps> = (props) => {
 		{ label: 'Validate', value: 'validate' },
 	]
 
-  useEffect(() => {
-    if(open){
-      setTab('field')
-    }
-  }, [open])
+	useEffect(() => {
+		if (open) {
+			setTab('field')
+		}
+	}, [open])
 
 	return (
 		<Sheet

@@ -2,16 +2,12 @@
 
 import React from 'react'
 import { DataList } from '../../../components'
-import { 
-  buildListFields, 
-  buildSortFields,
-  buildFilterFields 
-} from '../../../helpers'
 import {
-	ButtonType,
-	MetafieldType,
-	FormFieldType,
-} from '../../../types'
+	buildListFields,
+	buildSortFields,
+	buildFilterFields,
+} from '../../../helpers'
+import { ButtonType, MetafieldType, FormFieldType } from '../../../types'
 import {
 	CollectionListItem,
 	CollectionListItems,
@@ -24,11 +20,11 @@ export type CollectionListProps = {
 	layout?: 'list' | 'grid' | 'slider'
 	style: string
 
-  enableSearch?: boolean
+	enableSearch?: boolean
 	enableFilters?: boolean
 	enableSorting?: boolean
 
-  filterChoices?: string[]
+	filterChoices?: string[]
 
 	enableLikes?: boolean
 	enableFavorites?: boolean
@@ -36,22 +32,22 @@ export type CollectionListProps = {
 	enableGradient?: boolean
 	enableOverlay?: boolean
 
-  displaySubtitle?: boolean
-  displayCategory?: boolean
-  displayLocation?: boolean
-  displayDescription?: boolean
-  displayTags?: boolean
+	displaySubtitle?: boolean
+	displayCategory?: boolean
+	displayLocation?: boolean
+	displayDescription?: boolean
+	displayTags?: boolean
 
-  sortTitle?: boolean 
-  sortPosition?: boolean
-  sortDate?: boolean
-  sortPublished?: boolean
-  sortPrice?: boolean
+	sortTitle?: boolean
+	sortPosition?: boolean
+	sortDate?: boolean
+	sortPublished?: boolean
+	sortPrice?: boolean
 
 	enableShow?: boolean
 	fields?: FormFieldType[]
 	buttons?: ButtonType[]
-  displayFields?: MetafieldType[]
+	displayFields?: MetafieldType[]
 	headers?: {
 		label: string
 		value: string
@@ -91,23 +87,23 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		url,
 		query,
 		perPage = 12,
-    displaySubtitle,
-    displayCategory,
-    displayLocation,
-    displayDescription,
-    displayTags,
+		displaySubtitle,
+		displayCategory,
+		displayLocation,
+		displayDescription,
+		displayTags,
 
 		enableLikes,
 		enableFavorites,
 		enableComments,
 
-    sortTitle,
-    sortPosition,
-    sortDate,
-    sortPublished,
-    sortPrice,   
-    
-    enableGradient,
+		sortTitle,
+		sortPosition,
+		sortDate,
+		sortPublished,
+		sortPrice,
+
+		enableGradient,
 		enableOverlay,
 
 		style = 'card',
@@ -120,7 +116,7 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		enableSearch,
 		enableFilters,
 		enableSorting,
-    displayFields=[],
+		displayFields = [],
 		filterChoices = [],
 		headers = [], // Used by KanBan
 		header: Header = CollectionHeader,
@@ -142,31 +138,31 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 	} = props || {}
 
 	const searchQuery = {
-    sort_by: 'position',
-    sort_direction: 'asc',
-    per_page: perPage,
-    ...query,
-  }
+		sort_by: 'position',
+		sort_direction: 'asc',
+		per_page: perPage,
+		...query,
+	}
 
-  const listFields = buildListFields({
-    displaySubtitle,
-    displayCategory,
-    displayLocation,
-    displayDescription,
-    displayTags,
-  })
+	const listFields = buildListFields({
+		displaySubtitle,
+		displayCategory,
+		displayLocation,
+		displayDescription,
+		displayTags,
+	})
 
-  const sortOptions = buildSortFields({
-    sortTitle,
-    sortPosition,
-    sortDate,
-    sortPublished,
-    sortPrice,      
-  })
+	const sortOptions = buildSortFields({
+		sortTitle,
+		sortPosition,
+		sortDate,
+		sortPublished,
+		sortPrice,
+	})
 
-  const filterOptions = buildFilterFields({
-    filterChoices,
-  })
+	const filterOptions = buildFilterFields({
+		filterChoices,
+	})
 
 	const slots = {
 		list: {
@@ -218,7 +214,8 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 		},
 	}
 
-	const layout = {
+	const layout =
+		{
 			avatar: 'list',
 			list: 'list',
 			text: 'list',
@@ -228,17 +225,17 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 
 	return (
 		<DataList
-      //@ts-ignore
-      layout={layout}
+			//@ts-ignore
+			layout={layout}
 			url={url}
 			name="document"
 			fields={fields}
-      query={searchQuery}
+			query={searchQuery}
 			enableShow={enableShow}
 			enableSearch={enableSearch}
 			enableFilters={enableFilters}
 			enableSorting={enableSorting}
-      //@ts-ignore
+			//@ts-ignore
 			filterOptions={filterOptions}
 			sortOptions={sortOptions}
 			header={Header}

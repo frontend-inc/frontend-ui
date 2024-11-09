@@ -20,7 +20,7 @@ const AdminQuestionItem: React.FC<ResourceItemProps> = (props) => {
 
 	return (
 		<ResourceListItem
-      disableImage
+			disableImage
 			sortable={sortable}
 			selectable={selectable}
 			selected={selected}

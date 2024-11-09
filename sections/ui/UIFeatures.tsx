@@ -12,7 +12,7 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		textAlign,
 		bgColor,
 		mode,
@@ -21,29 +21,27 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 		maxWidth,
 		requireAuth,
 
-		requirePaid,
 		...rest
 	} = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <div className="flex flex-col space-y-6 w-full">
-        <Heading
-          label={label}
-          title={title}
-          description={description}
-          textAlign={'center'}
-        />
-        <Features {...rest} />
-      </div>
+			<div className="flex flex-col space-y-6 w-full">
+				<Heading
+					label={label}
+					title={title}
+					subtitle={subtitle}
+					textAlign={'center'}
+				/>
+				<Features {...rest} />
+			</div>
 		</Section>
 	)
 }

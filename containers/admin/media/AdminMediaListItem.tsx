@@ -21,9 +21,7 @@ const AdminMediaListItem: React.FC<AdminMediaListItemProps> = (props) => {
 			sortable={sortable}
 			//@ts-ignore
 			image={resource?.thumbnail_url}
-			secondaryAction={
-				<Badge>{resource?.content_type}</Badge>
-			}
+			secondaryAction={<Badge>{resource?.content_type}</Badge>}
 			handleClick={handleClick}
 			handleDelete={handleDelete}
 			slots={{

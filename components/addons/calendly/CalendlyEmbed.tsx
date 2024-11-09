@@ -30,19 +30,19 @@ const CalendlyEmbed: React.FC<CalendlyEmbedProps> = (props) => {
 	if (!calendlyUrl) return null
 	return (
 		<div className="flex flex-col items-center justify-center">
-      <div className="w-full sm:w-[640px] md:w-[768px]">
-        <InlineWidget
-          styles={{
-            width: '100%',
-            overflow: 'none',
-            height: '1000px',
-          }}
-          url={calendlyUrl}
-          prefill={prefill}
-          data-resize="true"
-        />
-      </div>
-    </div>
+			<div className="w-full sm:w-[640px] md:w-[768px]">
+				<InlineWidget
+					styles={{
+						width: '100%',
+						overflow: 'none',
+						height: '1000px',
+					}}
+					url={calendlyUrl}
+					prefill={prefill}
+					data-resize="true"
+				/>
+			</div>
+		</div>
 	)
 }
 

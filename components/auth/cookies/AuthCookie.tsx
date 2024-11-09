@@ -7,16 +7,16 @@ import { getCookie } from 'cookies-next'
 const AuthCookie: React.FC = () => {
 	const { authCookie, authenticateFromToken } = useAuth()
 
-  const mounted = useRef(false)
+	const mounted = useRef(false)
 
 	useEffect(() => {
-    if(!mounted.current) {
-      mounted.current = true
-      let authToken = getCookie(authCookie)
-      if (authToken) {
-        authenticateFromToken(String(authToken))
-      }
-    }
+		if (!mounted.current) {
+			mounted.current = true
+			let authToken = getCookie(authCookie)
+			if (authToken) {
+				authenticateFromToken(String(authToken))
+			}
+		}
 	}, [])
 
 	return null

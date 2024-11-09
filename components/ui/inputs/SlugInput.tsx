@@ -10,7 +10,7 @@ type SlugInputPropsType = InputPropsType & {
 
 const SlugInput: React.FC<SlugInputPropsType> = (props) => {
 	const {
-		errors,		
+		errors,
 		direction = 'column',
 		value,
 		name,

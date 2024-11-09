@@ -67,11 +67,10 @@ const useCart = () => {
 		}
 	}
 
-
-  const subscribe = async (productId, options) => {		
+	const subscribe = async (productId, options) => {
 		return await loadingWrapper(() =>
 			api.subscribe(productId, options, apiParams)
-    )		
+		)
 	}
 
 	const loadingWrapper = async (fn) => {
@@ -114,7 +113,7 @@ const useCart = () => {
 		addQuantity,
 		removeQuantity,
 		checkout,
-    subscribe
+		subscribe,
 	}
 }
 

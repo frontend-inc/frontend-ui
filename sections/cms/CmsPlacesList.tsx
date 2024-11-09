@@ -12,7 +12,7 @@ const CmsPlacesList: React.FC<CmsPlacesListProps> = (props) => {
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		textAlign,
 		bgColor,
 		mode,
@@ -21,7 +21,6 @@ const CmsPlacesList: React.FC<CmsPlacesListProps> = (props) => {
 		maxWidth,
 		requireAuth,
 
-		requirePaid,
 		...rest
 	} = props
 
@@ -33,12 +32,11 @@ const CmsPlacesList: React.FC<CmsPlacesListProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 		>
 			<Heading
 				label={label}
 				title={title}
-				description={description}
+				subtitle={subtitle}
 				textAlign={textAlign}
 			/>
 			<GeoList {...rest} />

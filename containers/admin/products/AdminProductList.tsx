@@ -10,13 +10,12 @@ import AdminProductShow from './AdminProductShow'
 import AdminProductToolbar from './AdminProductToolbar'
 import AdminProductHeader from './AdminProductHeader'
 
-
 const AdminProductsList: React.FC = () => {
-	const { apiUrl } = useAdmin()	
+	const { apiUrl } = useAdmin()
 
 	return (
 		<ResourceList
-      sortable
+			sortable
 			selectable
 			url={`${apiUrl}/products`}
 			name={'product'}
@@ -26,21 +25,21 @@ const AdminProductsList: React.FC = () => {
 			enableDelete
 			enableCreate
 			sortOptions={[
-        { name: 'position', label: 'Default' },
+				{ name: 'position', label: 'Default' },
 				{ name: 'price', label: 'Price' },
 				{ name: 'title', label: 'Title' },
 				{ name: 'created_at', label: 'Date' },
 			]}
-      query={{
-        sort_by: 'position',
-        sort_direction: 'asc'
-      }}
+			query={{
+				sort_by: 'position',
+				sort_direction: 'asc',
+			}}
 			create={AdminProductCreateForm}
 			edit={AdminProductEditForm}
 			show={AdminProductShow}
 			header={AdminProductHeader}
 			toolbar={AdminProductToolbar}
-			component={AdminProductItem}			
+			component={AdminProductItem}
 			emptyIcon="Shirt"
 			emptyTitle="No products"
 			emptyDescription="No products added yet."

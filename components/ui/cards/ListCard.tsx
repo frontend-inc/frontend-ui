@@ -34,9 +34,10 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 	} = props || {}
 
 	return (
-		<button 
-      onClick={ handleClick }
-      className="p-4 w-full border-b border-border last:border-b-0 hover:bg-muted/50">
+		<button
+			onClick={handleClick}
+			className="p-4 w-full border-b border-border last:border-b-0 hover:bg-muted/50"
+		>
 			<div className="flex flex-row items-center w-full">
 				{selectable && (
 					<div className="mr-2">
@@ -72,8 +73,8 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 						</div>
 					)}
 					<div className="flex flex-col justify-between min-h-[120px] flex-grow">
-						<div className="flex flex-col space-y-1">							
-							<Typography variant="subtitle1">{primary}</Typography>							
+						<div className="flex flex-col space-y-1">
+							<Typography variant="subtitle1">{primary}</Typography>
 							<Typography variant="body2" className="text-muted-foreground">
 								{secondary}
 							</Typography>

@@ -51,9 +51,9 @@ const useAdminCollections = () => {
 
 	const aiGenerate = async (collectionId, prompt) => {
 		return await loadingWrapper(() =>
-			api.post(`${apiUrl}/collections/${collectionId}/ai_generate`, { 
-        prompt
-      })
+			api.post(`${apiUrl}/collections/${collectionId}/ai_generate`, {
+				prompt,
+			})
 		)
 	}
 

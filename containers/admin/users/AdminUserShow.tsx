@@ -33,7 +33,7 @@ const AdminUserShow: React.FC<ResourceShowProps> = (props) => {
 			handleDelete={handleDelete}
 		>
 			<ResourceDetails
-        image={ resource?.avatar?.url }				
+				image={resource?.avatar?.url}
 				primary={resource?.name}
 				secondary={`@${resource?.username}`}
 				label={resource?.role}

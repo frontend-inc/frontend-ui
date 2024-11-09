@@ -5,7 +5,6 @@ import { ResourceModal, ResourceDetails } from '../../../components'
 import { ResourceShowProps } from '../../../components/cms/resources/ResourceShow'
 import { MetafieldType } from '../../../types'
 
-
 const AdminQuestionShow: React.FC<ResourceShowProps> = (props) => {
 	const {
 		resource,

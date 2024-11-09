@@ -19,7 +19,6 @@ const AdminMenuItem: React.FC<ResourceItemProps> = (props) => {
 			sortable={sortable}
 			enableBorder={enableBorder}
 			icon="FolderTree"
-			
 			primary={menu?.label}
 			secondaryAction={<>{menu?.internal && <Label label="System" />}</>}
 			handleClick={handleClick}

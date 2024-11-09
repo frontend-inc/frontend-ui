@@ -4,7 +4,7 @@ import React from 'react'
 import { VimeoEmbed } from '../../..'
 
 export type FieldVimeoProps = {
-	value: string	
+	value: string
 }
 
 const FieldVimeo: React.FC<FieldVimeoProps> = (props) => {

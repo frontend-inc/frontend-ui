@@ -4,14 +4,13 @@ import React from 'react'
 import { MediaModal } from '../..'
 
 export type VideoModalProps = {
-  open: boolean
-  handleClose: () => void
-  resource: any
+	open: boolean
+	handleClose: () => void
+	resource: any
 }
 
 const VideoModal: React.FC<VideoModalProps> = (props) => {
-  const { open, handleClose, resource } = props || {}
-
+	const { open, handleClose, resource } = props || {}
 
 	if (!resource) return null
 	return (

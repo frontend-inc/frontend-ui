@@ -20,15 +20,15 @@ const AttachmentImage: React.FC<AttachmentImageProps> = ({
 }) => {
 	return (
 		<Avatar
-      className={cn('rounded-md', className)} 
-      style={{
-        height: `${height}px`,
-        width: `${width}px`,
-      }}
+			className={cn('rounded-md', className)}
+			style={{
+				height: `${height}px`,
+				width: `${width}px`,
+			}}
 		>
-      <AvatarFallback className="bg-primary">
-			  <Icon name={icon} size={24} className="bg-primary-foreground" />      
-      </AvatarFallback>
+			<AvatarFallback className="bg-primary">
+				<Icon name={icon} size={24} className="bg-primary-foreground" />
+			</AvatarFallback>
 		</Avatar>
 	)
 }

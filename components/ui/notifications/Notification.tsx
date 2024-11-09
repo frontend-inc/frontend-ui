@@ -11,14 +11,13 @@ type NotificationProps = {
 }
 
 export default function Notification({ notification }: NotificationProps) {
-
 	const { text } = notification || {}
 
 	return (
 		<li className="cursor-pointer p-0 h-[44px] w-full flex justify-center items-center bg-primary overflow-x-auto scrollbar-hide">
-      <span className="text-sm whitespace-nowrap flex flex-row items-center justify-center text-center overflow-x-auto scrollbar-hide text-primary-foreground">
-        {text}
-      </span>
+			<span className="text-sm whitespace-nowrap flex flex-row items-center justify-center text-center overflow-x-auto scrollbar-hide text-primary-foreground">
+				{text}
+			</span>
 		</li>
 	)
 }

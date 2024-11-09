@@ -6,7 +6,7 @@ import { cn } from 'frontend-shadcn'
 
 type ThemeProviderProps = {
 	mode?: 'light' | 'dark'
-  theme?: string
+	theme?: string
 	primaryColor?: string
 	headerFont?: string
 	bodyFont?: string
@@ -15,13 +15,19 @@ type ThemeProviderProps = {
 }
 
 const ThemeProvider = (props: ThemeProviderProps) => {
-	
-  const { mode='light', theme='light', primaryColor, headerFont, bodyFont, borderRadius, children } =
-		props || {}
+	const {
+		mode = 'light',
+		theme = 'light',
+		primaryColor,
+		headerFont,
+		bodyFont,
+		borderRadius,
+		children,
+	} = props || {}
 
 	const value = {
 		mode,
-    theme,
+		theme,
 		primaryColor,
 		headerFont,
 		bodyFont,
@@ -37,7 +43,8 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 		}
 		if (borderRadius >= 0) {
 			document.documentElement.style.setProperty(
-				'--radius', `${borderRadius}px`
+				'--radius',
+				`${borderRadius}px`
 			)
 		}
 	}, [headerFont, bodyFont, borderRadius])

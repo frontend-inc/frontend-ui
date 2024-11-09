@@ -52,10 +52,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 				buttons={buttons}
 				handleClick={handleClick}
 			/>
-			<MobileDrawer
-				links={links}
-				handleClick={handleClick}
-			/>
+			<MobileDrawer links={links} handleClick={handleClick} />
 		</header>
 	)
 }

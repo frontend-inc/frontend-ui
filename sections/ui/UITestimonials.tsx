@@ -12,7 +12,7 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		textAlign,
 		bgColor,
 		mode,
@@ -20,14 +20,12 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		requirePaid,
 		...rest
 	} = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
 			py={py}
@@ -38,7 +36,7 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 				<Heading
 					label={label}
 					title={title}
-					description={description}
+					subtitle={subtitle}
 					textAlign={'center'}
 				/>
 				<Testimonials {...rest} layout="grid" />

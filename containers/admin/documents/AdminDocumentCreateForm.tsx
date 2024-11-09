@@ -12,13 +12,13 @@ type AdminDocumentCreateFormProps = ResourceFormProps & {
 const AdminDocumentCreateForm: React.FC<AdminDocumentCreateFormProps> = (
 	props
 ) => {
-	const { fields = [] } = props || {}	
-  
-  const inputOptions = {	
-    youtube_video: TextInput,
-    vimeo_video: TextInput,
-    soundcloud_audio: TextInput,
-    calendly_url: TextInput,
+	const { fields = [] } = props || {}
+
+	const inputOptions = {
+		youtube_video: TextInput,
+		vimeo_video: TextInput,
+		soundcloud_audio: TextInput,
+		calendly_url: TextInput,
 	}
 	return <ResourceForm {...props} inputOptions={inputOptions} fields={fields} />
 }

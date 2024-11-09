@@ -4,7 +4,7 @@ import React from 'react'
 import { Calendly } from '../../..'
 
 export type FieldCalendlyProps = {
-	value: string	
+	value: string
 	label?: string
 }
 

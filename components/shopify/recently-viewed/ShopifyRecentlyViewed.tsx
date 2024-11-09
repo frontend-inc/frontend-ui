@@ -17,8 +17,7 @@ export type ShopifyRecentlyViewedProps = {
 }
 
 const ShopifyRecentlyViewed: React.FC<ShopifyRecentlyViewedProps> = (props) => {
-	
-  const {
+	const {
 		layout = 'grid',
 		enableBorder = false,
 		enableAddToCart,

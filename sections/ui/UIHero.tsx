@@ -14,9 +14,9 @@ const UIHero: React.FC<UIHeroProps> = (props) => {
 		mode,
 		py,
 		px,
-		maxWidth="xl",
+		maxWidth = 'xl',
 		requireAuth,
-		requirePaid,
+
 		style,
 		...rest
 	} = props
@@ -26,7 +26,6 @@ const UIHero: React.FC<UIHeroProps> = (props) => {
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
 			py={fullWidth ? 0 : py}

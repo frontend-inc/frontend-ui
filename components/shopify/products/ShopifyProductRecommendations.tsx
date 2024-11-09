@@ -20,10 +20,9 @@ export type ShopifyProductRecommendationsProps = {
 const ShopifyProductRecommendations: React.FC<
 	ShopifyProductRecommendationsProps
 > = (props) => {
-	
-  const {
-    layout = 'grid',
-		shopifyProduct,	
+	const {
+		layout = 'grid',
+		shopifyProduct,
 		perPage = 12,
 		enableBorder = false,
 		enableAddToCart,

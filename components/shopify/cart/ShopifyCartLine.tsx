@@ -134,7 +134,6 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = ({ line }) => {
 					className="rounded-md"
 					onClick={handleClick}
 				/>
-        
 			</div>
 			<div className="flex-grow">
 				<Typography variant="body1">

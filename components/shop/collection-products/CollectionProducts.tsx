@@ -11,14 +11,10 @@ export type CollectionProductsProps = ProductListProps & {
 
 const CollectionProducts: React.FC<CollectionProductsProps> = (props) => {
 	let { productCollectionId, ...rest } = props
-  const { apiUrl } = useApp()
-  const url = `${apiUrl}/shop/product_collections/${productCollectionId}/products`
+	const { apiUrl } = useApp()
+	const url = `${apiUrl}/shop/product_collections/${productCollectionId}/products`
 
-	return(
-    <ProductList 
-      {...props} 
-      url={url} />
-    )
+	return <ProductList {...props} url={url} />
 }
 
 export default CollectionProducts

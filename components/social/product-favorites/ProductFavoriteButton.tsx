@@ -52,7 +52,7 @@ export default function ProductFavoriteButton({
 				className={cn(
 					size === 'large' &&
 						'border border-divider bg-background text-secondary hover:bg-background hover:text-secondary',
-					isFavorite && 'text-primary hover:text-primary-dark',
+					isFavorite && 'text-primary hover:text-primary-dark'
 				)}
 			>
 				<Bookmark

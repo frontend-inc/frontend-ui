@@ -9,16 +9,15 @@ import { cn } from 'frontend-shadcn'
 
 export type GoogleMapProps = {
 	darkTheme?: boolean
-  lat: number
-  lng: number
-  label: string
-  image?: string
-  height?: number
+	lat: number
+	lng: number
+	label: string
+	image?: string
+	height?: number
 	width?: number | string
 	zoom?: number
 	enableBorder?: boolean
 }
-
 
 const NYC_LAT = 40.7128
 const NYC_LNG = -73.935242
@@ -27,26 +26,25 @@ export default function GoogleMap({
 	darkTheme = false,
 	height = 300,
 	width,
-	lat=NYC_LAT,
-  lng=NYC_LNG,
-  label,
-  image,
+	lat = NYC_LAT,
+	lng = NYC_LNG,
+	label,
+	image,
 	zoom = 16,
 	enableBorder = false,
 }: GoogleMapProps) {
-	
-  const [mapConfig, setMapConfig] = useState<MapConfig>(MAP_CONFIGS[0])
+	const [mapConfig, setMapConfig] = useState<MapConfig>(MAP_CONFIGS[0])
 
 	useEffect(() => {
 		setMapConfig(darkTheme ? MAP_CONFIGS[1] : MAP_CONFIGS[0])
 	}, [darkTheme])
 
-  const center = {
-    lat,
-    lng
-  }
+	const center = {
+		lat,
+		lng,
+	}
 
-  const map = useMap()
+	const map = useMap()
 
 	useEffect(() => {
 		if (map) {
@@ -76,12 +74,7 @@ export default function GoogleMap({
 				defaultZoom={zoom}
 				defaultCenter={center}
 			>
-        <GoogleMarker
-          lat={lat}
-          lng={lng}
-          image={image}
-          label={label}
-        />
+				<GoogleMarker lat={lat} lng={lng} image={image} label={label} />
 			</Map>
 		</div>
 	)

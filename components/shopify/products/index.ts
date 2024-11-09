@@ -13,4 +13,3 @@ export { default as ShopifyProducts } from './ShopifyProducts'
 export { default as ShopifyProductModal } from './ShopifyProductModal'
 export { default as ShopifyProductRecommendations } from './ShopifyProductRecommendations'
 export { default as ShopifyProductSearch } from './ShopifyProductSearch'
-

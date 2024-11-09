@@ -11,7 +11,7 @@ type LayoutContainerProps = {
 	children: React.ReactNode
 	header?: React.ReactNode
 	footer?: React.ReactNode
-	notifications: NotificationType[]	
+	notifications: NotificationType[]
 	requireAuth?: boolean
 	requirePaid?: boolean
 }
@@ -20,7 +20,6 @@ export default function LayoutContainer({
 	children,
 	notifications,
 	requireAuth,
-	requirePaid,	
 }: LayoutContainerProps) {
 	return (
 		<div className="w-full min-h-screen">

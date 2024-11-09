@@ -9,11 +9,7 @@ type CellBooleanProps = {
 
 const CellBoolean: React.FC<CellBooleanProps> = (props) => {
 	const { value } = props
-	return(
-    <Badge className="px-3 py-1">
-      {value ? 'True' : 'False'}
-    </Badge>
-  )
+	return <Badge className="px-3 py-1">{value ? 'True' : 'False'}</Badge>
 }
 
 export default CellBoolean

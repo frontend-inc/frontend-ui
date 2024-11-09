@@ -22,15 +22,15 @@ const AdminDocumentShow: React.FC<AdminDocumentShowProps> = (props) => {
 		handleEdit,
 	} = props || {}
 
-  const filteredFields = fields.filter(
-    (f) => !["label", "title","image"].includes(f.name)
-  )
+	const filteredFields = fields.filter(
+		(f) => !['label', 'title', 'image'].includes(f.name)
+	)
 
 	return (
 		<ResourceModal
 			loading={loading}
 			open={open}
-      title={ resource?.title }
+			title={resource?.title}
 			handleClose={handleClose}
 			enableEdit={enableEdit}
 			enableDelete={enableDelete}

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useAlerts } from '../../../../hooks'
-import { Icon,Modal } from '../../../../components'
+import { Icon, Modal } from '../../../../components'
 import UnsplashLogo from './UnsplashLogo'
 import { AspectRatio } from 'frontend-shadcn'
 import { Button, Typography, CircularProgress } from '../../../../components'
@@ -63,17 +63,17 @@ const UnsplashModal: React.FC<UnsplashViewerModalProps> = ({
 			buttons={
 				<>
 					<Button
-            variant="secondary"
+						variant="secondary"
 						onClick={handleUnsplashClick}
 						className="flex items-center"
-            endIcon={ 
-              <Icon name="ExternalLink" className="text-secondary-foreground" />
-            }
+						endIcon={
+							<Icon name="ExternalLink" className="text-secondary-foreground" />
+						}
 					>
-						<UnsplashLogo className='fill-white' />						
+						<UnsplashLogo className="fill-white" />
 					</Button>
 					<Button
-            variant="secondary"
+						variant="secondary"
 						onClick={handleCopyUrlClick}
 						className="flex items-center"
 					>
@@ -89,25 +89,27 @@ const UnsplashModal: React.FC<UnsplashViewerModalProps> = ({
 		>
 			{!loading ? (
 				<div className="flex flex-col w-full">
-          
 					<Image
 						alt={image?.alt_description}
 						src={image?.urls?.regular}
 						height={250}
-            width={500}  
-            className="object-cover max-h-[250px] w-full rounded-lg"          
+						width={500}
+						className="object-cover max-h-[250px] w-full rounded-lg"
 					/>
-          
+
 					<div className="py-2 w-full flex flex-row justify-between items-start">
 						<div className="w-full">
 							<div className="flex items-center">
-								<button className="relative w-[32px] h-[32px] rounded-full mr-2" onClick={handleUserClick}>
+								<button
+									className="relative w-[32px] h-[32px] rounded-full mr-2"
+									onClick={handleUserClick}
+								>
 									<Image
 										// @ts-ignore
 										src={image?.user?.profile_image?.small}
 										alt={image?.user?.name}
-                    layout="fill"
-                    className='object-cover rounded-full'
+										layout="fill"
+										className="object-cover rounded-full"
 									/>
 								</button>
 								<div>

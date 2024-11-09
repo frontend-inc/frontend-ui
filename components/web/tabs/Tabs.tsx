@@ -13,7 +13,6 @@ export type TabsProps = {
 		description: string
 		image?: string
 	}[]
-	editing?: boolean
 }
 
 const CustomTabs: React.FC<TabsProps> = ({ items = [] }) => {

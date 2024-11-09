@@ -125,10 +125,10 @@ const TableToolbar: React.FC<TableToolbarProps> = (props) => {
 								<IconButton onClick={handleFilter}>
 									<Filter className="w-5 h-5 text-foreground" />
 								</IconButton>
-                <Badge className="py-0 px-1 rounded-full absolute top-0 right-0 transform translate-x-[3px] -translate-y-[3px]">
-                  {badgeCount}
-                </Badge>
-              </div>
+								<Badge className="py-0 px-1 rounded-full absolute top-0 right-0 transform translate-x-[3px] -translate-y-[3px]">
+									{badgeCount}
+								</Badge>
+							</div>
 							{selected?.length > 0 && (
 								<>
 									{enableDelete && (

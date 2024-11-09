@@ -31,7 +31,9 @@ const AdminFormQuestionToolbar: React.FC<AdminFormQuestionToolbarProps> = (
 
 	return (
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
-			<Button variant="secondary" onClick={handleDelete}>Delete</Button>
+			<Button variant="secondary" onClick={handleDelete}>
+				Delete
+			</Button>
 		</ResourceToolbarModal>
 	)
 }

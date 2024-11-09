@@ -14,13 +14,7 @@ type FieldWrapperProps = {
 }
 
 const FieldWrapper: React.FC<FieldWrapperProps> = (props) => {
-	const {
-		direction = 'column',
-		label,
-		icon,
-		children,
-		className,
-	} = props || {}
+	const { direction = 'column', label, icon, children, className } = props || {}
 
 	const wrapperClasses = cn(
 		'flex w-full',
@@ -32,10 +26,12 @@ const FieldWrapper: React.FC<FieldWrapperProps> = (props) => {
 	return (
 		<div className={wrapperClasses}>
 			{label && (
-				<div className={cn(
-          "min-w-[100px] pr-1",
-          direction == "row" && "w-[100px] pr-1"
-        )}>
+				<div
+					className={cn(
+						'min-w-[100px] pr-1',
+						direction == 'row' && 'w-[100px] pr-1'
+					)}
+				>
 					<label className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
 						{label}
 					</label>

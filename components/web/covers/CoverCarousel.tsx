@@ -11,7 +11,6 @@ export type CoverCarouselProps = {
 		buttonText?: string
 		path?: string
 	}[]
-	editing?: boolean
 	enableAutoPlay?: boolean
 	showDots?: boolean
 	enableOverlay?: boolean
@@ -23,7 +22,6 @@ export type CoverCarouselProps = {
 }
 
 const CoverCarousel: React.FC<CoverCarouselProps> = (props) => {
-
 	const {
 		items = [],
 		enableOverlay = false,
@@ -43,7 +41,7 @@ const CoverCarousel: React.FC<CoverCarouselProps> = (props) => {
 						description={item?.description}
 						image={item?.image}
 						buttonText={item?.buttonText}
-            path={item?.path}
+						path={item?.path}
 						enableOverlay={enableOverlay}
 						enableGradient={enableGradient}
 						alignItems={alignItems}

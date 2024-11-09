@@ -21,7 +21,7 @@ const Text: React.FC<TextProps> = (props) => {
 		title,
 		description,
 		textAlign,
-		size="lg",
+		size = 'lg',
 		html = false,
 	} = props || {}
 

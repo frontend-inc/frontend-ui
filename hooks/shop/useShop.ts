@@ -4,13 +4,7 @@ import React, { useContext } from 'react'
 import { ShopContext } from '../../context'
 
 const useShop = () => {
-	const { 
-    cartCookie, 
-    cart, 
-    setCart, 
-    cartOpen, 
-    setCartOpen,
-  } = useContext(
+	const { cartCookie, cart, setCart, cartOpen, setCartOpen } = useContext(
 		ShopContext
 	) as any
 

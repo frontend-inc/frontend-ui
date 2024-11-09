@@ -50,19 +50,15 @@ const AiChatModal: React.FC<AiChatModalProps> = (props) => {
 			<TooltipProvider>
 				<Tooltip>
 					<TooltipTrigger asChild>
-						<Button 
-              className="bg-blue-500 text-white hover:bg-blue-700"
-              startIcon={
-                <Icon name="Zap" />
-              }
-              onClick={() => setOpen(!open)}
-            >
-              Generate 
+						<Button
+							className="bg-blue-500 text-white hover:bg-blue-700"
+							startIcon={<Icon name="Zap" />}
+							onClick={() => setOpen(!open)}
+						>
+							Generate
 						</Button>
 					</TooltipTrigger>
-					<TooltipContent>
-						Use AI to generate text
-					</TooltipContent>
+					<TooltipContent>Use AI to generate text</TooltipContent>
 				</Tooltip>
 			</TooltipProvider>
 			<Sheet
@@ -72,7 +68,7 @@ const AiChatModal: React.FC<AiChatModalProps> = (props) => {
 				buttons={
 					<Button
 						fullWidth
-            className="bg-blue-500 text-white hover:bg-blue-700"
+						className="bg-blue-500 text-white hover:bg-blue-700"
 						onClick={handleChatSubmit}
 						loading={loading}
 						startIcon={<Icon name="Zap" className="text-white" />}

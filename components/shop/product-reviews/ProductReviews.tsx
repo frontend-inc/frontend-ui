@@ -6,17 +6,23 @@ import { DataList } from '../..'
 import ProductReviewsList from './ProductReviewsList'
 
 export type ProductReviewsProps = {
-	productId: string | number 
-  enableSearch?: boolean
-  enableSorting?: boolean
-  enableFilters?: boolean
-  enableCreate?: boolean
+	productId: string | number
+	enableSearch?: boolean
+	enableSorting?: boolean
+	enableFilters?: boolean
+	enableCreate?: boolean
 }
 
 const ProductReviews: React.FC<ProductReviewsProps> = (props) => {
-	const { productId, enableSearch, enableFilters, enableSorting, enableCreate } = props
+	const {
+		productId,
+		enableSearch,
+		enableFilters,
+		enableSorting,
+		enableCreate,
+	} = props
 
-  if(!productId) return null
+	if (!productId) return null
 	return (
 		<DataList
 			url={`/api/v1/shop/products/${productId}/reviews`}
@@ -24,7 +30,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = (props) => {
 			enableSearch={enableSearch}
 			enableSorting={enableSorting}
 			enableFilters={enableFilters}
-      enableCreate={enableCreate}
+			enableCreate={enableCreate}
 			fields={[]}
 			sortOptions={[
 				{
@@ -41,12 +47,12 @@ const ProductReviews: React.FC<ProductReviewsProps> = (props) => {
 					label: 'Rating',
 					name: 'rating',
 					options: [
-            { label: '1 Star', value: 1 },
-            { label: '2 Stars', value: 2 },
-            { label: '3 Stars', value: 3 },
-            { label: '4 Stars', value: 4 },
-            { label: '5 Stars', value: 5 }
-          ]
+						{ label: '1 Star', value: 1 },
+						{ label: '2 Stars', value: 2 },
+						{ label: '3 Stars', value: 3 },
+						{ label: '4 Stars', value: 4 },
+						{ label: '5 Stars', value: 5 },
+					],
 				},
 			]}
 			list={ProductReviewsList}

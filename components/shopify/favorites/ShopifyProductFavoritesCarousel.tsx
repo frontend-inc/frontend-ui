@@ -11,7 +11,7 @@ type ShopifyProductFavoritesCarouselProps = {
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
-  enableAutoPlay?: boolean
+	enableAutoPlay?: boolean
 }
 
 const ShopifyProductFavoritesCarousel: React.FC<

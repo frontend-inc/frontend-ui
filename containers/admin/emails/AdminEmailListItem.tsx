@@ -15,7 +15,7 @@ const AdminEmailListItem: React.FC<AdminEmailListItemProps> = (props) => {
 	return (
 		<ResourceListItem
 			enableBorder
-      disableImage
+			disableImage
 			primary={email.name}
 			secondary={email.subject}
 			icon="Mail"

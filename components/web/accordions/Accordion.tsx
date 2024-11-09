@@ -9,7 +9,6 @@ export type AccordionProps = {
 		description: string
 		image?: string
 	}[]
-	editing?: boolean
 }
 
 const Accordion: React.FC<AccordionProps> = (props) => {

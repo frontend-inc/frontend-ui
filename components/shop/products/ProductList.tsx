@@ -64,7 +64,7 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 		enableUsers,
 		enableGradient,
 		enableOverlay,
-    url,
+		url,
 		enableShow,
 		fields = [],
 		enableSearch,
@@ -86,9 +86,9 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 
 	const searchQuery = {
 		sort_by: 'position',
-    sort_direction: 'asc',
+		sort_direction: 'asc',
 		per_page: perPage,
-    ...query
+		...query,
 	}
 
 	const slots = {
@@ -125,16 +125,16 @@ const ProductList: React.FC<ProductListProps> = (props) => {
 	}
 
 	const filterOptions = [
-		{			
+		{
 			label: 'Rating',
-      name: 'average_rating',
+			name: 'average_rating',
 			options: [
-        { label: '1 Star', value: 1 },
-        { label: '2 Stars', value: 2 },
-        { label: '3 Stars', value: 3 },
-        { label: '4 Stars', value: 4 },
-        { label: '5 Stars', value: 5 }
-      ]
+				{ label: '1 Star', value: 1 },
+				{ label: '2 Stars', value: 2 },
+				{ label: '3 Stars', value: 3 },
+				{ label: '4 Stars', value: 4 },
+				{ label: '5 Stars', value: 5 },
+			],
 		},
 	]
 

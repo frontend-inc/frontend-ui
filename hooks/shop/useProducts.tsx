@@ -37,7 +37,7 @@ const useProducts = () => {
 		setResources: setProducts,
 		startIndex,
 		endIndex,
-		paginate
+		paginate,
 	} = useResource({
 		url: `${apiUrl}/shop/products`,
 		name: 'product',

@@ -17,9 +17,9 @@ const AdminCollectionPage: React.FC = () => {
 	useTabs('collections')
 
 	let { collection_id: collectionId } = useParams() as any
-	if (collectionId == 'index') collectionId = undefined;
+	if (collectionId == 'index') collectionId = undefined
 
-  const { collection, findCollection } = useAdminCollections()
+	const { collection, findCollection } = useAdminCollections()
 
 	useEffect(() => {
 		if (collectionId) {
@@ -34,23 +34,23 @@ const AdminCollectionPage: React.FC = () => {
 			</AdminLayoutLeft>
 			<AdminLayoutCenter>
 				<AdminHeader enableExpandLeftPanel />
-        <ScrollArea>
-        <div className="w-full p-4">
-				{ collection ? (
-					<AdminDocumentsList
-            documentType={collection?.document_type}
-            metafields={ collection?.fields }
-						collectionId={collectionId}
-					/>
-				) : (
-					<Placeholder
-						icon="Database"
-						title="No collection."
-						description="Select or create a CMS collection."
-					/>
-				)}
-        </div>
-        </ScrollArea>
+				<ScrollArea>
+					<div className="w-full p-4">
+						{collection ? (
+							<AdminDocumentsList
+								documentType={collection?.document_type}
+								metafields={collection?.fields}
+								collectionId={collectionId}
+							/>
+						) : (
+							<Placeholder
+								icon="Database"
+								title="No collection."
+								description="Select or create a CMS collection."
+							/>
+						)}
+					</div>
+				</ScrollArea>
 			</AdminLayoutCenter>
 		</>
 	)

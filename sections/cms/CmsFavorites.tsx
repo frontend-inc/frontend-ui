@@ -12,7 +12,7 @@ const CmsFavorites: React.FC<CmsFavoritesProps> = (props) => {
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		textAlign,
 		bgColor,
 		mode,
@@ -20,15 +20,12 @@ const CmsFavorites: React.FC<CmsFavoritesProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
-		requirePaid,
 		...rest
 	} = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
-			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
 			py={py}
@@ -38,7 +35,7 @@ const CmsFavorites: React.FC<CmsFavoritesProps> = (props) => {
 			<Heading
 				label={label}
 				title={title}
-				description={description}
+				subtitle={subtitle}
 				textAlign={textAlign}
 			/>
 			<FavoritesList {...rest} />

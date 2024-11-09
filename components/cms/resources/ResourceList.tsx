@@ -5,7 +5,7 @@ import { useResource } from 'frontend-js'
 import { SortableListItems, AlertModal, Placeholder } from '../..'
 import {
 	FormFieldType,
-  FilterOptionType,
+	FilterOptionType,
 	SearchFilterOptionType,
 	TableHeaderType,
 	MetafieldType,
@@ -203,24 +203,22 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		})
 	}
 
-  const [activeFilters, setActiveFilters] = useState<any[]>([])
-  const [queryFilters, setQueryFilters] = useState<any[]>([])
-  
-  const handleFilter = (name: string, value: string | number | boolean) => {            
-    if(activeFilters?.find(f => f.name === name && f.value === value)){
-      setActiveFilters([])
-    }else{
-      setActiveFilters([{ name, operator: 'eq', value }])
-    }    
-  }
-      
+	const [activeFilters, setActiveFilters] = useState<any[]>([])
+	const [queryFilters, setQueryFilters] = useState<any[]>([])
+
+	const handleFilter = (name: string, value: string | number | boolean) => {
+		if (activeFilters?.find((f) => f.name === name && f.value === value)) {
+			setActiveFilters([])
+		} else {
+			setActiveFilters([{ name, operator: 'eq', value }])
+		}
+	}
+
 	// Filter methods
 	const handleClearFilters = () => {
 		setActiveFilters([])
 		findMany({
-			filters: [        
-				...defaultQuery?.filters,
-      ],
+			filters: [...defaultQuery?.filters],
 			sort_by: 'id',
 			sort_direction: 'desc',
 			keywords: '',
@@ -320,19 +318,18 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		if (queryFilters) {
 			findMany({
 				...query,
-				filters: [
-          ...(queryFilters || []),
-          ...(defaultQuery?.filters || []), 
-        ]				
+				filters: [...(queryFilters || []), ...(defaultQuery?.filters || [])],
 			})
 		}
 	}, [queryFilters])
 
-  useEffect(() => {
-		if (activeFilters) {      
-			setQueryFilters(activeFilters.map(f => ({
-        [f.name]: { [f.operator]: f.value }
-      }))) as any 
+	useEffect(() => {
+		if (activeFilters) {
+			setQueryFilters(
+				activeFilters.map((f) => ({
+					[f.name]: { [f.operator]: f.value },
+				}))
+			) as any
 		}
 	}, [activeFilters])
 

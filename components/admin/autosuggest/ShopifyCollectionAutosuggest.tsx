@@ -15,13 +15,10 @@ type ShopifyAutosuggestProps = {
 	direction?: 'row' | 'column'
 }
 
-const ShopifyCollectionAutosuggest: React.FC<ShopifyAutosuggestProps> = (props) => {
-	const {
-		value,
-		label,
-		placeholder,
-		handleChange,		
-	} = props
+const ShopifyCollectionAutosuggest: React.FC<ShopifyAutosuggestProps> = (
+	props
+) => {
+	const { value, label, placeholder, handleChange } = props
 
 	const [options, setOptions] = useState([])
 	const { collections, findCollections } = useCollections()

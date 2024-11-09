@@ -33,33 +33,33 @@ export default function HeroSnippet({
 	},
 }: HeroSnippetProps) {
 	return (
-			<div className="flex flex-col w-full">
-				{!disableImage && (
-					<div className="w-full overflow-hidden rounded-t-[inherit]">
-						{circular ? (
-							<AvatarImage
-								label={label}
-								src={image}
-								size={180}
-								alt={primary}
-								{...slots.image}
-							/>
-						) : (
-							<Image
-								label={label}
-								src={image}
-								height={220}
-								alt={primary}
-								{...slots.image}
-							/>
-						)}
-					</div>
-				)}
-				<div className="flex flex-col space-y-2 p-4 w-full">
-					{actions}
-					<Typography variant="subtitle1">{primary}</Typography>
-					{secondary}
+		<div className="flex flex-col w-full">
+			{!disableImage && (
+				<div className="w-full overflow-hidden rounded-t-[inherit]">
+					{circular ? (
+						<AvatarImage
+							label={label}
+							src={image}
+							size={180}
+							alt={primary}
+							{...slots.image}
+						/>
+					) : (
+						<Image
+							label={label}
+							src={image}
+							height={220}
+							alt={primary}
+							{...slots.image}
+						/>
+					)}
 				</div>
+			)}
+			<div className="flex flex-col space-y-2 p-4 w-full">
+				{actions}
+				<Typography variant="subtitle1">{primary}</Typography>
+				{secondary}
 			</div>
+		</div>
 	)
 }

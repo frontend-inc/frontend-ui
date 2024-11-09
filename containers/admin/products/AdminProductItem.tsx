@@ -1,11 +1,7 @@
 'use client'
 
 import React from 'react'
-import {
-	PublishLabel,
-	ListFields,
-	ResourceListItem,
-} from '../../../components'
+import { PublishLabel, ListFields, ResourceListItem } from '../../../components'
 import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
 
 const AdminProductItem: React.FC<ResourceItemProps> = (props) => {
@@ -22,7 +18,7 @@ const AdminProductItem: React.FC<ResourceItemProps> = (props) => {
 
 	return (
 		<ResourceListItem
-      sortable
+			sortable
 			selectable={selectable}
 			selected={selected}
 			image={product?.image?.url}
@@ -31,12 +27,12 @@ const AdminProductItem: React.FC<ResourceItemProps> = (props) => {
 				<ListFields
 					resource={product}
 					fields={[
-            { 
-              label: 'Price', 
-              name: 'display_price', 
-              variant: 'string' 
-            }
-          ]}
+						{
+							label: 'Price',
+							name: 'display_price',
+							variant: 'string',
+						},
+					]}
 				/>
 			}
 			secondaryAction={<PublishLabel published={product?.published} />}

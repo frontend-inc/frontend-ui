@@ -14,12 +14,7 @@ type AutosuggestProps = {
 }
 
 const ShopifyProductAutosuggest: React.FC<AutosuggestProps> = (props) => {
-	const {
-		value,
-		label,
-		placeholder,
-		handleChange,
-	} = props
+	const { value, label, placeholder, handleChange } = props
 
 	const { products, findProducts } = useProducts()
 

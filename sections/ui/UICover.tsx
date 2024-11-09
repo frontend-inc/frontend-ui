@@ -10,25 +10,18 @@ type UICoverProps = SectionProps & CoverProps
 
 const UICover: React.FC<UICoverProps> = (props) => {
 	const {
-		enableTransitions,
 		bgColor,
 		mode,
 		px,
 		py,
 		maxWidth,
 		requireAuth,
-		requirePaid,
+
 		...rest
 	} = props
 
 	return (
-		<Section
-			enableTransitions={enableTransitions}
-			mode="dark"
-			py={0}
-			px={0}
-			maxWidth={maxWidth}
-		>
+		<Section mode="dark" py={0} px={0} maxWidth={maxWidth}>
 			<Cover {...rest} />
 		</Section>
 	)

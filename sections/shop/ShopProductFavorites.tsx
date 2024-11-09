@@ -16,7 +16,7 @@ const ShopProductFavoritesList: React.FC<ShopProductFavoritesListProps> = (
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		textAlign,
 		bgColor,
 		mode,
@@ -25,14 +25,12 @@ const ShopProductFavoritesList: React.FC<ShopProductFavoritesListProps> = (
 		maxWidth,
 		requireAuth,
 
-		requirePaid,
 		...rest
 	} = props
 
 	return (
 		<Section
 			requireAuth
-			requirePaid={requirePaid}
 			bgColor={bgColor}
 			mode={mode}
 			py={py}
@@ -42,7 +40,7 @@ const ShopProductFavoritesList: React.FC<ShopProductFavoritesListProps> = (
 			<Heading
 				label={label}
 				title={title}
-				description={description}
+				subtitle={subtitle}
 				textAlign={textAlign}
 			/>
 			<ProductFavorites {...rest} />

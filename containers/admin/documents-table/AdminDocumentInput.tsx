@@ -70,16 +70,16 @@ const AdminDocumentInput: React.FC<DocumentInputProps> = (props) => {
 		boolean: CheckboxInput,
 		select: Autosuggest,
 		rating: RatingInput,
-		products: ProductsInput,		
+		products: ProductsInput,
 		file: MediaInput,
 		image: MediaInput,
 		video: MediaInput,
 		habtm: ReferenceInput,
-    youtube_video: TextInput,
-    vimeo_video: TextInput,
-    soundcloud_audio: TextInput,
-    calendly_url: TextInput,
-    shopify_product: ShopifyProductInput,
+		youtube_video: TextInput,
+		vimeo_video: TextInput,
+		soundcloud_audio: TextInput,
+		calendly_url: TextInput,
+		shopify_product: ShopifyProductInput,
 	}
 
 	const Component = componentMapper[variant] || TextInput

@@ -29,10 +29,7 @@ export default function ProductReviewItem({
 				<div className="space-y-3">
 					<Typography variant="body1">{resource?.title}</Typography>
 					<Typography variant="body1">{resource.body}</Typography>
-					<Typography
-						variant="body2"
-						className="text-muted-foreground text-sm"
-					>
+					<Typography variant="body2" className="text-muted-foreground text-sm">
 						{`@${resource?.user?.username}`} reviewed{' '}
 						{moment(resource?.created_at).fromNow()}
 					</Typography>
