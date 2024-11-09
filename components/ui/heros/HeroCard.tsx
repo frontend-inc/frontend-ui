@@ -3,7 +3,6 @@
 import React from 'react'
 import { Image } from '../..'
 import { Heading, Typography } from '../../../components'
-import { cn } from 'frontend-shadcn'
 
 export type HeroCardProps = {
 	label?: string

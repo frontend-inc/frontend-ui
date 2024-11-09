@@ -2,18 +2,12 @@
 
 import React from 'react'
 import { DisplayFields, Image } from '../..'
-import { Typography } from '../../core'
 import { MetafieldType } from '../../../types'
 import { DOCUMENT_SHOW_FIELDS } from '../../../constants'
 
 type CollectionHeroProps = {
 	resource: any
-	primary?: string
-	secondary?: string
-	hero?: React.ReactNode
 	actions?: React.ReactNode
-	label?: string
-	image?: string
 	metafields?: MetafieldType[]
 }
 

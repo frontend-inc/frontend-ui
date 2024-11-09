@@ -9,15 +9,14 @@ const HeroList: React.FC<HeroCardProps> = (props) => {
 	const {
 		image,
 		label,
-		primary,
-		secondary,
-		tertiary,
+		title,
+		subtitle,
+		description,
 		actions,
 		secondaryAction,
 		children,
-		slots = {
-			image: {},
-		},
+    enableGradient,
+    enableOverlay,    
 	} = props || {}
 
 	return (
@@ -25,8 +24,8 @@ const HeroList: React.FC<HeroCardProps> = (props) => {
 			<div className="flex flex-col w-full justify-start items-center space-y-6">
 				<Heading
 					label={label}
-					title={primary}
-					description={tertiary}
+					title={title}
+					subtitle={subtitle}
 					textAlign="center"
 					size="lg"
 				/>
@@ -35,16 +34,17 @@ const HeroList: React.FC<HeroCardProps> = (props) => {
 					<Image
 						aspectRatio={2.0}
 						src={image}
-						alt={primary}
+						alt={title}
 						height={400}
 						label={label}
-						{...slots.image}
+						enableGradient={enableGradient}
+            enableOverlay={enableOverlay}
 					/>
 				</div>
 				{actions}
 				<div className="w-full max-w-[500px] sm:max-w-screen-sm">
 					<Typography variant="subtitle2" className="text-muted-foreground">
-						{secondary}
+						{description}
 					</Typography>
 				</div>
 				{children}

@@ -45,23 +45,17 @@ const Hero: React.FC<HeroProps> = (props) => {
 			avatar: HeroAvatar,
 		}[style] || HeroList
 
-	const slots = {
-		image: {
-			enableGradient,
-			enableOverlay,
-			objectFit,
-		},
-	}
-
 	return (
 		<Component
 			label={label}
-			primary={title}
-			secondary={description}
-			tertiary={subtitle}
+			title={title}
+      subtitle={subtitle}
+			description={description}			
 			image={image}
 			secondaryAction={buttons && <ButtonActions buttons={buttons} />}
-			slots={slots}
+			enableGradient={enableGradient}
+      enableOverlay={enableOverlay}    
+      objectFit={objectFit}  
 		/>
 	)
 }

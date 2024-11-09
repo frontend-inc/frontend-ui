@@ -5,16 +5,15 @@ import { Cover } from '../..'
 import { HeroCardProps } from './HeroCard'
 
 const HeroCover: React.FC<HeroCardProps> = (props) => {
-	const { label, image, title, description } = props || {}
+	const { label, image, title, subtitle } = props || {}
 
 	return (
 		<Cover
-			textVariant="h4"
 			image={image}
 			height={400}
 			label={label}
 			title={title}
-			description={description}
+			subtitle={subtitle}
 			enableOverlay
 		/>
 	)
