@@ -71,11 +71,9 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 							{description}
 						</Typography>
 					)}
-				</div>
-				<CardFooter className="flex justify-between">
-					{actions}
+          {actions}
 					{secondaryAction}
-				</CardFooter>
+				</div>				
 			</div>
 		)
 	}

@@ -69,7 +69,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 					{subtitle && (
 						<Typography
 							variant={subtitleVariant}
-							className="text-foreground/80"
+							className="container mx-auto text-foreground/70 max-w-screen-md"
 							textAlign={textAlign}
 						>
 							{subtitle}

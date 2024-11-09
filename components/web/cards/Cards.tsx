@@ -3,6 +3,8 @@
 import React from 'react'
 import { Card, Placeholder, Button } from '../..'
 import { useNavigate } from '../../../hooks'
+import { BlurFade } from '../../../components'
+import { cn } from 'frontend-shadcn'
 
 type CardType = {
 	label?: string
@@ -28,10 +30,14 @@ const Cards: React.FC<CardsProps> = (props) => {
 	const onClick = useNavigate()
 
 	return (
-		<div>
-			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-				{items?.map((item, i) => (
-					<div key={i}>
+		<div className="w-full justify-center flex flow-row">
+      <div className="container mx-auto max-w-screen-2xl">
+			<div 
+        className={           
+          "w-full justify-center grid gap-6 grid-cols-[repeat(auto-fill,minmax(240px,480px))]"
+        }>
+				{items?.map((item, idx) => (
+					<BlurFade delay={0.25 + idx * 0.05} key={idx}>
 						<Card
 							image={item?.image}
 							title={item?.title}
@@ -47,7 +53,7 @@ const Cards: React.FC<CardsProps> = (props) => {
               enableGradient={enableGradient}
               enableOverlay={enableOverlay}							
 						/>
-					</div>
+					</BlurFade>
 				))}
 			</div>
 			{items?.length == 0 && (
@@ -58,6 +64,7 @@ const Cards: React.FC<CardsProps> = (props) => {
 				/>
 			)}
 		</div>
+    </div>
 	)
 }
 
