@@ -31,6 +31,7 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 		<Drawer 
       open={openShow} 
       handleClose={() => setOpenShow(false)}
+      maxWidth="lg"
     >
       <div className="w-full flex flex-row justify-center pb-10">
         <BlurFade delay={0.25} inView className='w-full'>
