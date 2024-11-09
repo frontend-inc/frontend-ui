@@ -30,7 +30,7 @@ const HeroList: React.FC<HeroCardProps> = (props) => {
           textAlign='center'
           size="lg"
         />
-        {secondaryAction}
+        {secondaryAction && secondaryAction}
 				<div className="w-full rounded py-10">          
 					<Image
             aspectRatio={2.0}
