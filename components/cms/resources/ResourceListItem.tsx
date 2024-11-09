@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { cn } from 'frontend-shadcn'
-import { Avatar, AvatarFallback, AvatarImage } from 'frontend-shadcn'
+import { Avatar, AvatarFallback } from 'frontend-shadcn'
 import { Checkbox } from 'frontend-shadcn'
 import { Button } from '../../../components'
 import {
