@@ -29,6 +29,7 @@ const Typography: React.FC<TypographyProps> = ({
 	className,
 	children,
 }) => {
+  
 	const variantClasses = {
 		h1: 'text-5xl sm:text-6xl font-semibold tracking-tight',
 		h2: 'text-4xl sm:text-5xl font-semibold tracking-tight',
