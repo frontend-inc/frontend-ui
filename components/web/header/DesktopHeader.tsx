@@ -42,7 +42,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 					{links?.length > MAX_LINKS && (
 						<div className="pl-1 flex items-center justify-center h-[60px]">
 							<IconButton color="ghost" onClick={() => setMenuOpen(true)}>
-								<Icon name="Menu" size={24} />
+								<Icon name="Menu" />
 							</IconButton>
 						</div>
 					)}

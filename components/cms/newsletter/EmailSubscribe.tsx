@@ -10,7 +10,7 @@ import { useAlerts } from '../../../hooks'
 export type EmailSubscribeProps = {
 	label?: string
 	title: string
-	description: string
+	subtitle: string
 	buttonText?: string
 	href?: string
 	handleClick?: () => void
@@ -20,7 +20,7 @@ export type EmailSubscribeProps = {
 // Call To Action
 const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 	const { showAlertSuccess } = useAlerts()
-	const { label, title, description, buttonText = 'Subscribe' } = props || {}
+	const { label, title, subtitle, buttonText = 'Subscribe' } = props || {}
 
 	const {
 		errors,
@@ -52,7 +52,7 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 				<Heading
 					label={label}
 					title={title}
-					description={description}
+					subtitle={subtitle}
 					size="lg"
 					textAlign="center"
 				/>
@@ -62,6 +62,7 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 							errors={errors}
 							name="email"
 							value={contact?.email}
+              //@ts-ignore
 							handleChange={handleChange}
 							placeholder="Enter your email"
 							type="email"

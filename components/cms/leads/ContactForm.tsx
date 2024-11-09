@@ -9,9 +9,8 @@ import { useAlerts } from '../../../hooks'
 export type ContactFormProps = {
 	label?: string
 	title: string
-	description: string
+	subtitle: string
 	buttonText?: string
-	textVariant?: TypographyVariantsType
 	href?: string
 	metafields?: FormFieldType[]
 	handleClick?: () => void
@@ -23,8 +22,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 	const {
 		label,
 		title,
-		description,
-		textVariant,
+		subtitle,
 		metafields = [],
 		buttonText = 'Send Message',
 	} = props || {}
@@ -59,7 +57,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 				<Heading
 					label={label}
 					title={title}
-					description={description}
+					subtitle={subtitle}
 					size="lg"
 					textAlign="center"
 				/>

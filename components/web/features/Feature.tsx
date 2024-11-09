@@ -8,18 +8,18 @@ import { Avatar, AvatarFallback } from 'frontend-shadcn'
 type FeatureProps = {
 	icon?: string
 	title?: string
-	description?: string
+	subtitle?: string
 	enableBorder?: boolean
 }
 
 const Feature: React.FC<FeatureProps> = (props) => {
-	const { icon, title, description } = props || {}
+	const { icon, title, subtitle } = props || {}
 	return (
 		<div className="flex flex-col space-y-3 justify-center items-center">
 			{icon && (
 				<Avatar className="h-[48px] w-[48px]">
 					<AvatarFallback className="bg-primary">
-						<Icon name={icon} color="text-primary-foreground" />
+						<Icon name={icon} className="text-primary-foreground" />
 					</AvatarFallback>
 				</Avatar>
 			)}
@@ -31,7 +31,7 @@ const Feature: React.FC<FeatureProps> = (props) => {
 					className="text-muted-foreground text-center"
 					variant="body1"
 				>
-					{description}
+					{subtitle}
 				</Typography>
 			</div>
 		</div>

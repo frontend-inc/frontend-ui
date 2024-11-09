@@ -33,7 +33,7 @@ const ShopifyCartQuantityInput: React.FC<ShopifyCartQuantityInputProps> = ({
 				className="px-2 rounded-r-none"
 				onClick={handleRemoveQuantity}
 			>
-				<Icon name="Minus" size={16} />
+				<Icon name="Minus" size="sm" />
 			</Button>
 			<Button variant="secondary" size="sm" className="px-2 rounded-none">
 				{quantity}
@@ -44,7 +44,7 @@ const ShopifyCartQuantityInput: React.FC<ShopifyCartQuantityInputProps> = ({
 				className="px-2 rounded-l-none"
 				onClick={handleAddQuantity}
 			>
-				<Icon name="Plus" size={16} />
+				<Icon name="Plus" size="sm" />
 			</Button>
 		</div>
 	)

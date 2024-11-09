@@ -49,7 +49,7 @@ const AdminOrderDetails: React.FC<AdminOrderDetailsProps> = (props) => {
 							className="mt-1 p-0.5 text-foreground"
 							onClick={handleCopyEmail}
 						>
-							<Icon name="Mail" size={20} className="mr-2" />
+							<Icon name="Mail" size="sm" className="mr-2" />
 							{order.customer_name}
 						</Button>
 					</div>

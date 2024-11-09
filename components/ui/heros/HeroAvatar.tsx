@@ -3,18 +3,16 @@
 import React from 'react'
 import { HeroCardProps } from './HeroCard'
 import { Typography, AvatarImage } from '../..'
-import { cn } from 'frontend-shadcn'
 
 const HeroAvatar: React.FC<HeroCardProps> = (props) => {
 	const {
 		image,
-		primary,
-		secondary,
+		title,
+		subtitle,
 		actions,
 		secondaryAction,
-		slots = {
-			image: {},
-		},
+    enableGradient,
+    enableOverlay,		
 	} = props || {}
 
 	return (
@@ -28,19 +26,20 @@ const HeroAvatar: React.FC<HeroCardProps> = (props) => {
 						<div className="w-full h-full rounded flex justify-center items-center">
 							<AvatarImage
 								src={image}
-								alt={typeof primary === 'string' ? primary : 'Avatar'}
+								alt={title}
 								size={160}
-								{...slots.image}
+								enableGradient={enableGradient}
+                enableOverlay={enableOverlay}
 							/>
 						</div>
 						{actions}
 					</div>
 					<div className="w-full flex flex-col space-y-1">
 						<Typography variant="h3" className="text-center">
-							{primary}
+							{title}
 						</Typography>
 						<Typography variant="body1" className="text-center">
-							{secondary}
+							{subtitle}
 						</Typography>
 					</div>
 				</div>

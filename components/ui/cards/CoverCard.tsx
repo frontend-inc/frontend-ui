@@ -9,16 +9,14 @@ import { CardProps } from './Card'
 const CoverCard: React.FC<CardProps> = (props) => {
 	const {
 		label,
-		primary,
-		secondary,
+		title,
+		subtitle,
 		actions,
 		secondaryAction,
 		handleClick,
 		image,
-		slots = {
-			item: {},
-			image: {},
-		},
+		enableGradient,
+    enableOverlay,
 	} = props || {}
 
 	return (
@@ -31,17 +29,18 @@ const CoverCard: React.FC<CardProps> = (props) => {
 						label={label}
 						src={image}
 						height={340}
-						alt={primary}
+						alt={title}
 						aspectRatio={4 / 5}
-						className={cn('w-full', slots.image.className)}
-						{...slots.image}
+						className={'w-full'}
+						enableGradient={enableGradient}
+            enableOverlay={enableOverlay}
 					/>
 				</TouchableOpacity>
 				<div className="absolute bottom-0 left-0 z-10 w-full p-3">
 					<div className="flex flex-col justify-between items-end w-full">
 						<div className="w-full">
-							<Typography variant="subtitle1">{primary}</Typography>
-							<Typography variant="body2">{secondary}</Typography>
+							<Typography variant="subtitle1">{title}</Typography>
+							<Typography variant="body2">{subtitle}</Typography>
 							<div className="flex flex-row justify-between">
 								{actions}
 								{secondaryAction}

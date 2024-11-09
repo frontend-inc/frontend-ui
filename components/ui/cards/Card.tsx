@@ -14,18 +14,17 @@ export type CardProps = {
 	avatar?: React.ReactNode
 	image?: string
 	label?: string
-	primary: string | React.ReactNode
-	secondary?: string | React.ReactNode
-	tertiary?: string | React.ReactNode
+	title: string
+	subtitle?: string
+	description?: string
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
 	handleClick?: () => void
 	handleSelect?: () => void
 	size?: number
-	slots?: {
-		item?: any
-		image?: any
-	}
+  enableOverlay?: boolean
+  enableGradient?: boolean	
+  classNames?: string
 }
 
 // @ts-ignore
@@ -33,43 +32,43 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 	(props, ref) => {
 		const {
 			label,
-			primary,
-			secondary,
-			tertiary,
+			title,
+			subtitle,
+			description,
 			actions,
 			secondaryAction,
 			handleClick,
 			image,
 			size = 240,
-			slots = {
-				item: {},
-				image: {},
-			},
+			enableGradient,
+      enableOverlay,
+      classNames
 		} = props
 
 		return (
-			<div ref={ref} className={cn('w-full overflow-hidden')} {...slots.item}>
+			<div ref={ref} className={cn('w-full overflow-hidden', classNames)}>
 				<div className="w-full relative overflow-hidden">
 					<Image
 						src={image}
 						height={size}
-						alt={primary}
+						alt={title}
 						label={label}
 						handleClick={handleClick}
 						aspectRatio={4 / 3}
-						{...slots.image}
+						enableGradient={enableGradient}
+            enableOverlay={enableOverlay}
 					/>
 				</div>
 				<div className="mx-2 pt-3 flex flex-col space-y-2 overflow-hidden">
-					<Typography variant="subtitle2">{primary}</Typography>
-					{secondary && (
+					<Typography variant="subtitle2">{title}</Typography>
+					{subtitle && (
 						<Typography variant="body2" className="text-muted-foreground">
-							{secondary}
+							{subtitle}
 						</Typography>
 					)}
-					{tertiary && (
+					{description && (
 						<Typography variant="body2" className="text-muted-foreground">
-							{tertiary}
+							{description}
 						</Typography>
 					)}
 				</div>

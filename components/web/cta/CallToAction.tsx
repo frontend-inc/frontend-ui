@@ -8,7 +8,7 @@ import { ButtonActions } from '../..'
 export type CallToActionProps = {
 	label?: string
 	title: string
-	description: string
+	subtitle: string
 	size?: 'sm' | 'md' | 'lg' | 'xl'
 	buttons: ButtonType[]
 	direction?: string
@@ -16,7 +16,7 @@ export type CallToActionProps = {
 
 // Call To Action
 const CallToAction: React.FC<CallToActionProps> = (props) => {
-	const { label, title, description, size = 'lg', buttons = [] } = props || {}
+	const { label, title, subtitle, size = 'lg', buttons = [] } = props || {}
 
 	return (
 		<div className="w-full">
@@ -24,7 +24,7 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 				<Heading
 					label={label}
 					title={title}
-					description={description}
+					subtitle={subtitle}
 					size={size}
 					textAlign="center"
 				/>

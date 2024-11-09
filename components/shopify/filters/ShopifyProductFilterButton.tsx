@@ -1,10 +1,9 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from '../../../components'
 import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
 import { Sheet, SheetContent, SheetTrigger } from 'frontend-shadcn'
-import { useMenu } from '../../../hooks'
 import { ListFilter } from 'lucide-react'
 import ProductFiltersList from './ShopifyProductFiltersList'
 import {
@@ -24,7 +23,9 @@ type ShopifyProductFilterButtonProps = {
 const ShopifyProductFilterButton: React.FC<ShopifyProductFilterButtonProps> = (
 	props
 ) => {
-	const { open, toggleMenu, closeMenu } = useMenu()
+	
+  const [open, setOpen] = useState(false)
+  const toggleMenu = () => setOpen(!open)
 
 	const {
 		filters = [],

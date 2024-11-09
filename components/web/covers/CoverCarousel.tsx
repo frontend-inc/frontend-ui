@@ -6,7 +6,7 @@ import { Swipeable, Cover, Placeholder } from '../..'
 export type CoverCarouselProps = {
 	items: {
 		title?: string
-		description?: string
+		subtitle?: string
 		image: string
 		buttonText?: string
 		path?: string
@@ -38,7 +38,7 @@ const CoverCarousel: React.FC<CoverCarouselProps> = (props) => {
 					<Cover
 						key={index}
 						title={item?.title}
-						description={item?.description}
+						subtitle={item?.subtitle}
 						image={item?.image}
 						buttonText={item?.buttonText}
 						path={item?.path}

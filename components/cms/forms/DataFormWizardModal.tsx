@@ -80,7 +80,7 @@ const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
 					<FormCard
 						image={form?.image?.url}
 						title={form?.title}
-						description={form?.description}
+						subtitle={form?.description}
 						buttonText={form?.button_text || 'Get Started'}
 						handleClick={() => setOpen(true)}
 					/>
@@ -88,7 +88,7 @@ const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
 					<FormCard
 						checkMark
 						title={form?.end_title}
-						description={form?.end_description}
+						subtitle={form?.end_description}
 						buttonText={form?.end_button_text}
 						handleClick={handleResetForm}
 					/>
@@ -99,6 +99,7 @@ const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
 					loading={loading || responseLoading}
 					resource={contact}
 					setResource={setContact}
+          //@ts-ignore
 					handleChange={handleChange}
 					handleSubmit={handleSubmit}
 					fields={form?.questions}

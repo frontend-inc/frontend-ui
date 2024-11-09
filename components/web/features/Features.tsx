@@ -9,7 +9,7 @@ export type FeaturesProps = {
 	items: {
 		icon?: any
 		title?: string
-		description?: string
+		subtitle?: string
 	}[]
 }
 
@@ -24,7 +24,7 @@ const Features: React.FC<FeaturesProps> = (props) => {
 						<Feature
 							icon={item?.icon}
 							title={item?.title}
-							description={item?.description}
+							subtitle={item?.subtitle}
 						/>
 					</BlurFade>
 				))}

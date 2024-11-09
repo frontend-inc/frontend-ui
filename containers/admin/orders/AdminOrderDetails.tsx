@@ -45,7 +45,7 @@ const AdminOrderDetails: React.FC<AdminOrderDetailsProps> = (props) => {
 					</div>
 					<div>
 						<Button
-							startIcon={<Icon name="Mail" size={20} />}
+							startIcon={<Icon name="Mail" />}
 							className="mt-1 p-0.5 text-primary"
 							onClick={handleCopyEmail}
 						>

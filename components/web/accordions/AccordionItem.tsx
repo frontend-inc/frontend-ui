@@ -8,25 +8,24 @@ import {
 	AccordionTrigger,
 } from 'frontend-shadcn'
 import { Typography } from '../../core'
-import { ChevronDown } from 'lucide-react'
 
 type AccordionItemProps = {
-	primary: string
-	secondary: React.ReactNode
+	title: string
+	subtitle: string
 }
 
 const AccordionItemComponent: React.FC<AccordionItemProps> = (props) => {
-	const { primary, secondary } = props
+	const {title, subtitle } = props
 
 	return (
 		<Accordion type="single" collapsible className="w-full">
 			<AccordionItem value="item hover:underline-none hover:bg-muted/50">
 				<AccordionTrigger>
-					<Typography variant="subtitle1">{primary}</Typography>
+					<Typography variant="subtitle1">{title}</Typography>
 				</AccordionTrigger>
 				<AccordionContent>
 					<Typography variant="body1" className="text-muted-foreground">
-						{secondary}
+						{subtitle}
 					</Typography>
 				</AccordionContent>
 			</AccordionItem>

@@ -5,7 +5,7 @@ import { useApp } from '../../../hooks'
 import { useResource } from 'frontend-js'
 import FormWizardModal from './FormWizardModal'
 import FormCard from './wizard/FormCard'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 export type DocumentFormWizardModalProps = {
 	handle: string
@@ -128,7 +128,7 @@ const DocumentFormWizardModal: React.FC<DocumentFormWizardModalProps> = (
 			{!submitted ? (
 				<FormCard
 					title={startTitle}
-					description={startDescription}
+					subtitle={startDescription}
 					image={startImage}
 					buttonText={startButtonText}
 					handleClick={handleStartClick}
@@ -136,7 +136,7 @@ const DocumentFormWizardModal: React.FC<DocumentFormWizardModalProps> = (
 			) : (
 				<FormCard
 					title={endTitle}
-					description={endDescription}
+					subtitle={endDescription}
 					image={endImage}
 					buttonText={endButtonText}
 					handleClick={handleSuccess}
@@ -148,6 +148,7 @@ const DocumentFormWizardModal: React.FC<DocumentFormWizardModalProps> = (
 				resource={resource}
 				setResource={setResource}
 				fields={fields}
+        // @ts-ignore
 				handleChange={handleChange}
 				handleRemove={handleRemove}
 				handleSubmit={handleSubmit}

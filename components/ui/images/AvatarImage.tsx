@@ -4,7 +4,7 @@ import React from 'react'
 import { cn } from 'frontend-shadcn'
 
 export type AvatarImageProps = {
-	src: string
+	src?: string
 	alt: string
 	size?: number
 	enableGradient?: boolean

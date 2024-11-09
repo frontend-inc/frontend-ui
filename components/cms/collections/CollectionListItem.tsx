@@ -71,7 +71,8 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 		<Component
 			label={resource?.label}
 			image={resource?.image?.url}
-			primary={
+      // @ts-ignore
+			title={
 				//@ts-ignore
 				<Typography variant={typographyVariants[style]}>
 					{resource?.title}
@@ -79,7 +80,7 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 			}
 			handleClick={handleClick}
 			// @ts-ignore
-			secondary={<ListFields fields={listFields} resource={resource} />}
+			subtitle={<ListFields fields={listFields} resource={resource} />}
 			actions={
 				<SocialButtons
 					size="small"
@@ -90,12 +91,8 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 					enableComments={enableComments}
 				/>
 			}
-			slots={{
-				image: {
-					enableGradient,
-					enableOverlay,
-				},
-			}}
+      enableGradient={enableGradient}
+      enableOverlay={enableOverlay}			
 		/>
 	)
 }

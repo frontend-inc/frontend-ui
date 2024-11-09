@@ -16,7 +16,7 @@ type FormCardProps = HeadingProps & {
 const FormCard: React.FC<FormCardProps> = (props) => {
 	const {
 		title,
-		description,
+		subtitle,
 		image,
 		checkMark,
 		handleClick,
@@ -38,7 +38,7 @@ const FormCard: React.FC<FormCardProps> = (props) => {
 					className="w-full object-cover"
 				/>
 			)}
-			<Heading title={title} description={description} textAlign="center" />
+			<Heading title={title} subtitle={subtitle} textAlign="center" />
 			<div>
 				<Button onClick={handleClick} variant="default">
 					{buttonText}

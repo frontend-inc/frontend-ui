@@ -27,7 +27,7 @@ const AttachmentImage: React.FC<AttachmentImageProps> = ({
 			}}
 		>
 			<AvatarFallback className="bg-primary">
-				<Icon name={icon} size={24} className="bg-primary-foreground" />
+				<Icon name={icon} className="bg-primary-foreground" />
 			</AvatarFallback>
 		</Avatar>
 	)

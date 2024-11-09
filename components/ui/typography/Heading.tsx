@@ -11,10 +11,9 @@ type HeadingProps = {
 	title?: string
 	subtitle?: string
 	textAlign?: 'left' | 'center' | 'right'
-	enableBorder?: boolean
-	secondaryAction?: React.ReactNode
 	size?: 'sm' | 'md' | 'lg' | 'xl'
 	className?: string
+  secondaryAction?: React.ReactNode
 }
 
 const Heading: React.FC<HeadingProps> = (props) => {
@@ -42,7 +41,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		xl: 'subtitle1',
 	}[size] as TypographyVariantsType
 
-	if (!title && !description && !label) return null
+	if (!title && !subtitle && !label) return null
 	return (
 		<div
 			className={cn(

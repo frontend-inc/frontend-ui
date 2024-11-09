@@ -10,7 +10,7 @@ export type FeaturedProps = {
 		icon?: string
 		label?: string
 		title?: string
-		description?: string
+		subtitle?: string
 		image?: string
 		buttonText?: string
 		path?: string
@@ -37,7 +37,7 @@ const Featured: React.FC<FeaturedProps> = (props) => {
 						<FeaturedCard
 							label={item?.label}
 							title={item?.title}
-							description={item?.description}
+							subtitle={item?.subtitle}
 							image={item?.image}
 							buttonText={item?.buttonText}
 							href={item?.path}

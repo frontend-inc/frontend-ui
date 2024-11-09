@@ -6,7 +6,7 @@ import { AccordionItem, Placeholder } from '../../../components'
 export type AccordionProps = {
 	items?: {
 		title: string
-		description: string
+		subtitle: string
 		image?: string
 	}[]
 }
@@ -20,8 +20,8 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 				{items?.map((item, i) => (
 					<AccordionItem
 						key={i}
-						primary={item?.title}
-						secondary={item?.description}
+						title={item?.title}
+						subtitle={item?.subtitle}
 					/>
 				))}
 				{items?.length == 0 && (

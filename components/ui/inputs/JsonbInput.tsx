@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import { Button } from '../../core'
 import { InputPropsType } from '../../../types'
 import { Plus } from 'lucide-react'
-import { useMenu } from '../../../hooks'
 import { SortableList, InputLabel, Sheet } from '../..'
 import {
 	Icon,
@@ -122,7 +121,12 @@ const JsonbInput: React.FC<JsonbInputProps> = (props) => {
 		info,
 	} = props
 
-	const { open, openMenu, closeMenu } = useMenu()
+	
+  const [open, setOpen] = useState(false)
+
+  const openMenu = () => setOpen(true)
+  const closeMenu = () => setOpen(false)
+
 	const [activeItem, setActiveItem] = useState({})
 	const [currentIndex, setCurrentIndex] = useState(0)
 	const [titleField, setTitleField] = useState('title')
@@ -136,7 +140,7 @@ const JsonbInput: React.FC<JsonbInputProps> = (props) => {
 	}
 
 	const handleEditClick = (ev, value, index) => {
-		openMenu(ev)
+		openMenu()
 		setActiveItem(value)
 		setCurrentIndex(index)
 	}
@@ -144,7 +148,7 @@ const JsonbInput: React.FC<JsonbInputProps> = (props) => {
 	const handleAddClick = (ev) => {
 		setActiveItem(buildEmptyItem(fields))
 		setCurrentIndex(-1)
-		openMenu(ev)
+		openMenu()
 	}
 
 	const handleSubmit = () => {

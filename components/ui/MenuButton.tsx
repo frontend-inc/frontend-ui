@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { useMenu } from '../../hooks'
 import {
 	DropdownMenu,
 	DropdownMenuContent,

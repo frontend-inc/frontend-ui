@@ -2,9 +2,8 @@
 
 import React, { useEffect } from 'react'
 import { Button, Typography, IconButton } from '../../core'
-import { useMenu, useApp } from '../../../hooks'
+import { useApp } from '../../../hooks'
 import { useAuth } from 'frontend-js'
-import { useRouter } from 'next/navigation'
 import { Icon, UserAvatar, AuthMenu } from '../..'
 
 type AuthButtonProps = {
@@ -15,25 +14,15 @@ type AuthButtonProps = {
 const AuthButton: React.FC<AuthButtonProps> = (props) => {
 	const { showLabel = false, showIcon = true } = props || {}
 
-	const router = useRouter()
-	const { logout, fetchMe, currentUser } = useAuth()
-	const { open, anchorEl, closeMenu, toggleMenu } = useMenu()
+	const { fetchMe, currentUser } = useAuth()
 
-	const { clientUrl, setAuthOpen, setMyAccountOpen } = useApp()
+	const { setAuthOpen, setMyAccountOpen } = useApp()
 
 	const handleLogin = () => {
 		setAuthOpen(true)
-		closeMenu()
 	}
-
-	const handleAuthenticate = () => {
-		setAuthOpen(true)
-		closeMenu()
-	}
-
 	const handleMyAccount = () => {
 		setMyAccountOpen(true)
-		closeMenu()
 	}
 
 	useEffect(() => {
@@ -52,7 +41,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 						</IconButton>
 					) : (
 						<IconButton onClick={handleLogin}>
-							<Icon name="User" size={24} />
+							<Icon name="User" size='md' />
 						</IconButton>
 					)}
 				</>
@@ -73,7 +62,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 					) : (
 						<Button
 							onClick={handleLogin}
-							startIcon={showIcon && <Icon name="User" size={24} />}
+							startIcon={showIcon && <Icon name="User" />}
 						>
 							Sign In
 						</Button>

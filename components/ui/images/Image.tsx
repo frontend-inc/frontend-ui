@@ -9,7 +9,7 @@ import { cn } from 'frontend-shadcn'
 import { truncate } from '../../../helpers'
 
 export interface ResponsiveImageProps {
-	src: string | null
+	src?: string | null
 	alt?: string
 	width?: number
 	height?: number

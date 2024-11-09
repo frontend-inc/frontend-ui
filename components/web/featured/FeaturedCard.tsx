@@ -10,7 +10,7 @@ import { cn } from 'frontend-shadcn'
 export type FeaturedCardProps = {
 	label?: string
 	title?: string
-	description?: string
+	subtitle?: string
 	image?: string
 	buttonText?: string
 	href?: string
@@ -27,7 +27,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 	const {
 		label,
 		title,
-		description,
+		subtitle,
 		image = '',
 		href,
 		buttonText,
@@ -72,7 +72,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 			<div className="flex flex-col gap-4 w-full md:w-1/2">
 				<Typography variant="h5">{title}</Typography>
 				<Typography variant="subtitle2" className="text-muted-foreground">
-					{description}
+					{subtitle}
 				</Typography>
 				{buttonText && (
 					<div className="flex flex-row gap-4">

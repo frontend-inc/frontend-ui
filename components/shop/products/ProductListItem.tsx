@@ -15,7 +15,6 @@ type ProductListItemProps = {
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableRatings?: boolean
-	disableBorder?: boolean
 }
 
 const ProductListItem: React.FC<ProductListItemProps> = (props) => {
@@ -27,14 +26,14 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 		enableFavorites = false,
 		enableLikes = false,
 		enableRatings = false,
-		disableBorder = false,
 	} = props
 
 	return (
 		<ProductCard
 			label={resource?.label}
 			image={resource?.image?.url}
-			primary={resource?.title}
+			title={resource?.title}
+      subtitle={resource?.subtitle}
 			price={resource?.display_price}
 			compareAtPrice={resource?.display_compare_at_price}
 			handleClick={handleClick}
@@ -69,13 +68,8 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 					/>
 				)
 			}
-			disableBorder={disableBorder}
-			slots={{
-				image: {
-					enableGradient,
-					enableOverlay,
-				},
-			}}
+      enableGradient={enableGradient}
+      enableOverlay={enableOverlay}			
 		/>
 	)
 }

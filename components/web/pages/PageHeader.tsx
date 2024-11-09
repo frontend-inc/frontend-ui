@@ -7,7 +7,7 @@ import { Heading, ButtonActions, Breadcrumbs } from '../../../components'
 export type PageHeaderProps = {
 	label?: string
 	title?: string
-	description?: string
+  subtitle?: string
 	breadcrumbs: {
 		label: string
 		path: string
@@ -17,7 +17,7 @@ export type PageHeaderProps = {
 }
 
 const PageHeader: React.FC<PageHeaderProps> = (props) => {
-	const { label, title, description, breadcrumbs, buttons } = props
+	const { label, title, subtitle, breadcrumbs, buttons } = props
 
 	return (
 		<div className="w-full">
@@ -28,7 +28,7 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 				<Heading
 					label={label}
 					title={title}
-					description={description}
+					subtitle={subtitle}
 					size="sm"
 					textAlign="left"
 					className="py-4"

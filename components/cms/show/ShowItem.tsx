@@ -7,38 +7,31 @@ import {
 	HeroAvatar,
 	HeroCard,
 	HeroCover,
-	HeroSnippet,
 } from '../../../components'
 import { useResourceContext } from 'frontend-js'
-import { ListFields, ButtonActions, SocialButtons, ExpandableText } from '../..'
+import { ListFields, ButtonActions, SocialButtons } from '../..'
 
 export type ShowProps = {
-	handle?: string
-	buttons: ButtonType[]
+  resource: any
 	displayFields: MetafieldType[]
-	resource: any
+  buttons: ButtonType[]
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
-	enableUsers?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
 }
 
-type ShowStyleTypes = 'card' | 'cover' | 'list' | 'avatar' | 'snippet'
+type ShowStyleTypes = 'card' | 'cover' | 'list' | 'avatar' 
 
 export type ShowItemProps = ShowProps & {
 	url?: string
 	style: ShowStyleTypes
-	slots?: {
-		image?: any
-		content?: any
-	}
 }
 
 const ShowItem: React.FC<ShowItemProps> = (props) => {
 	const {
-		style = 'article',
+		style = 'list',
 		displayFields = [],
 		buttons,
 		enableFavorites,
@@ -46,10 +39,6 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 		enableSharing,
 		enableGradient,
 		enableOverlay,
-		slots: defaultSlots = {
-			image: {},
-			content: {},
-		},
 	} = props || {}
 
 	const { resource } = useResourceContext()
@@ -59,71 +48,25 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 		cover: HeroCover,
 		card: HeroCard,
 		avatar: HeroAvatar,
-		snippet: HeroSnippet,
 	}
 
 	const Component = components[style] || HeroList
 
-	let slots = {
-		image: {
-			enableGradient,
-			enableOverlay,
-			...defaultSlots.image,
-		},
-		content: {
-			...defaultSlots.content,
-		},
-	}
-
-	let slotProps = {
-		list: {
-			secondary: {
-				alignItems: 'center',
-			},
-			secondaryAction: {
-				justifyContent: 'center',
-			},
-		},
-		cover: {
-			secondary: {
-				alignItems: 'center',
-			},
-			secondaryAction: {
-				justifyContent: 'center',
-			},
-		},
-		card: {
-			secondary: {
-				alignItems: 'flex-start',
-			},
-			secondaryAction: {
-				justifyContent: 'flex-end',
-			},
-		},
-		avatar: {
-			secondary: {
-				alignItems: 'flex-start',
-			},
-			secondaryAction: {
-				justifyContent: 'flex-end',
-			},
-		},
-		snippet: {
-			secondary: {
-				alignItems: 'flex-start',
-			},
-			secondaryAction: {
-				justifyContent: 'flex-end',
-			},
-		},
-	}[style]
+  const buttonAlignClasses = {
+    list: 'center',
+    cover: 'center',
+    card: 'end',
+    avatar: 'end',
+  }[style] as 'start' | 'center' | 'end'
 
 	if (!resource?.id) return null
 	return (
 		<Component
+      label={resource?.label}
 			image={resource?.image?.url}
-			primary={resource?.title}
-			secondary={
+			title={resource?.title}
+      // @ts-ignore
+			description={
 				displayFields?.length > 0 && (
 					<ListFields
 						direction="column"
@@ -146,13 +89,14 @@ const ShowItem: React.FC<ShowItemProps> = (props) => {
 				buttons && (
 					<div className="w-full">
 						<ButtonActions
-							justifyContent={slotProps?.secondaryAction?.justifyContent}
+							justifyContent={buttonAlignClasses}
 							buttons={buttons}
 						/>
 					</div>
 				)
 			}
-			slots={slots}
+      enableGradient={enableGradient}
+      enableOverlay={enableOverlay}
 		/>
 	)
 }

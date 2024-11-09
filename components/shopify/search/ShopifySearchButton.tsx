@@ -17,7 +17,7 @@ const ShopifySearchButton: React.FC = () => {
 
 	return (
 		<IconButton onClick={handleToggleSearch}>
-			<Icon name="Search" size={24} />
+			<Icon name="Search"  />
 		</IconButton>
 	)
 }

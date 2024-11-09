@@ -9,16 +9,17 @@ type ProductArrayProps = {
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
-	buttonText?: string
 }
 
-const ProductArray: React.FC<ProductArrayProps> = ({
-	handles,
-	enableBorder = false,
-	enableAddToCart = false,
-	enableQuantity = false,
-	buttonText,
-}) => {
+const ProductArray: React.FC<ProductArrayProps> = (props) => {
+
+  const {
+    handles,
+    enableBorder = false,
+    enableAddToCart = false,
+    enableQuantity = false,
+  } = props
+  
 	return (
 		<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-full">
 			{handles?.map((handle) => {
@@ -35,7 +36,6 @@ const ProductArray: React.FC<ProductArrayProps> = ({
 							enableBorder={enableBorder}
 							enableAddToCart={enableAddToCart}
 							enableQuantity={enableQuantity}
-							buttonText={buttonText}
 						/>
 					</div>
 				)

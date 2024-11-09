@@ -8,7 +8,6 @@ type CardType = {
 	label?: string
 	title: string
 	subtitle?: string
-	description: string
 	image: string
 	buttonText?: string
 	path: string
@@ -35,9 +34,8 @@ const Cards: React.FC<CardsProps> = (props) => {
 					<div key={i}>
 						<Card
 							image={item?.image}
-							primary={item?.title}
-							secondary={item?.subtitle}
-							tertiary={item?.description}
+							title={item?.title}
+							subtitle={item?.subtitle}
 							actions={
 								item?.buttonText && (
 									<Button fullWidth onClick={() => onClick(item?.path)}>
@@ -46,12 +44,8 @@ const Cards: React.FC<CardsProps> = (props) => {
 								)
 							}
 							handleClick={() => onClick(item?.path)}
-							slots={{
-								image: {
-									enableGradient,
-									enableOverlay,
-								},
-							}}
+              enableGradient={enableGradient}
+              enableOverlay={enableOverlay}							
 						/>
 					</div>
 				))}

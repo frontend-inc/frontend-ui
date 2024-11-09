@@ -24,7 +24,7 @@ export default function ShopifyCartButton({
 	return (
 		<div className="relative">
 			<IconButton onClick={handleCartClick}>
-				<Icon name={icon} size={24} />
+				<Icon name={icon} />
 			</IconButton>
 			<Badge className="py-0 px-1 rounded-full absolute top-0 right-0 transform translate-x-[3px] -translate-y-[3px]">
 				{cart?.totalQuantity}

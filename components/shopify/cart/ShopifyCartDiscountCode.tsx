@@ -37,7 +37,7 @@ export default function ShopifyCartDiscountCode({
 			<div className="flex flex-row items-center space-x-2">
 				<Label label={discountCode.code} />
 				<IconButton onClick={handleDelete}>
-					<Icon name="Trash" size={20} />
+					<Icon name="Trash" size="sm" />
 				</IconButton>
 			</div>
 		</div>

@@ -8,7 +8,7 @@ import { cn } from 'frontend-shadcn'
 
 export type CoverProps = {
 	label?: string
-	title: string | React.ReactNode
+	title: string
 	subtitle?: string
 	buttonText?: string
 	image: string
@@ -19,7 +19,6 @@ export type CoverProps = {
 	handleClick?: () => void
 	enableGradient?: boolean
 	enableOverlay?: boolean
-	opacity?: number
 	path?: string
 	actions?: React.ReactNode
 }

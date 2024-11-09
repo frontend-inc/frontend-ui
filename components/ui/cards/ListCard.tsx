@@ -18,8 +18,8 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 		selectable = false,
 		selected = false,
 		label,
-		primary,
-		secondary,
+		title,
+		subtitle,
 		actions,
 		secondaryAction,
 		handleClick,
@@ -27,10 +27,8 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 		image,
 		size = 140,
 		disableImage,
-		slots = {
-			item: {},
-			image: {},
-		},
+		enableGradient,
+    enableOverlay,
 	} = props || {}
 
 	return (
@@ -53,20 +51,21 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 							<div className="w-full pr-2 h-full flex flex-row justify-center items-center">
 								{circular ? (
 									<AvatarImage
-										label={label}
 										src={image}
 										size={size}
-										alt={primary}
-										{...slots.image}
+										alt={title}
+										enableGradient={enableGradient}
+                    enableOverlay={enableOverlay}
 									/>
 								) : (
 									<Image
 										label={label}
 										src={image}
 										height={size}
-										alt={primary}
+										alt={title}
 										aspectRatio={1.0}
-										{...slots.image}
+										enableGradient={enableGradient}
+                    enableOverlay={enableOverlay}                    
 									/>
 								)}
 							</div>
@@ -74,9 +73,9 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 					)}
 					<div className="flex flex-col justify-between min-h-[120px] flex-grow">
 						<div className="flex flex-col space-y-1">
-							<Typography variant="subtitle1">{primary}</Typography>
+							<Typography variant="subtitle1">{title}</Typography>
 							<Typography variant="body2" className="text-muted-foreground">
-								{secondary}
+								{subtitle}
 							</Typography>
 						</div>
 						<div className="flex flex-row justify-between items-center w-full">

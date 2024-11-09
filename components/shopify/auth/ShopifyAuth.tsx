@@ -6,7 +6,7 @@ import { Button } from '../../../components'
 import { Typography } from '../../core'
 import { useShop } from 'frontend-shopify'
 import { Icon } from '../../../components'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 type DesktopAuthButtonProps = {
 	handleClick: () => void
@@ -18,7 +18,7 @@ const DesktopAuthButton: React.FC<DesktopAuthButtonProps> = (props) => {
 
 	return (
 		<Button variant="ghost" size="icon" onClick={handleClick} className="p-0">
-			<Icon name={icon} size={24} />
+			<Icon name={icon} />
 		</Button>
 	)
 }
