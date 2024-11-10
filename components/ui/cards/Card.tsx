@@ -47,18 +47,16 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 
 		return (
 			<div ref={ref} className={cn('w-full overflow-hidden', classNames)}>
-				<div className="w-full relative overflow-hidden">
-					<Image
-						src={image}
-						height={size}
-						alt={title}
-						label={label}
-						handleClick={handleClick}
-						aspectRatio={4 / 3}
-						enableGradient={enableGradient}
-            enableOverlay={enableOverlay}
-					/>
-				</div>
+        <Image
+          src={image}
+          height={size}
+          alt={title}
+          label={label}
+          handleClick={handleClick}
+          aspectRatio={4 / 3}
+          enableGradient={enableGradient}
+          enableOverlay={enableOverlay}
+        />
 				<div className="mx-2 pt-3 flex flex-col space-y-2 overflow-hidden">
 					<Typography variant="subtitle2">{title}</Typography>
 					{subtitle && (

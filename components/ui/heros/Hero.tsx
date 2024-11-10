@@ -12,12 +12,14 @@ import { ButtonType } from '../../../types'
 
 export type HeroProps = {
 	label?: string
-	title?: string
+	title: string
 	subtitle?: string
 	description?: string
-	image?: string
+	image: string
 	style?: 'card' | 'cover' | 'list' | 'avatar' | 'spotlight'
 	buttons?: ButtonType[]
+  actions?: React.ReactNode
+  secondaryAction?: React.ReactNode
 	enableGradient?: boolean
 	enableOverlay?: boolean
 	objectFit?: 'cover' | 'contain'

@@ -3,22 +3,11 @@
 import React from 'react'
 import { Image } from '../..'
 import { Heading, Typography } from '../../../components'
+import { HeroProps } from './Hero'
 
-export type HeroCardProps = {
-	label?: string
-	image: string
-	title: string
-	subtitle?: string
-	description?: string
-	actions?: React.ReactNode
-	secondaryAction?: React.ReactNode
-	children?: React.ReactNode
-	enableGradient?: boolean
-	enableOverlay?: boolean
-}
-
-const HeroCard: React.FC<HeroCardProps> = (props) => {
-	const {
+const HeroCard: React.FC<HeroProps> = (props) => {
+	
+  const {
 		label,
 		image,
 		title,

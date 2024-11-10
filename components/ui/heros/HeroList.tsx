@@ -3,9 +3,9 @@
 import React from 'react'
 import { Heading, Typography } from '../../../components'
 import { Image } from '../..'
-import { HeroCardProps } from './HeroCard'
+import { HeroProps } from './Hero'
 
-const HeroList: React.FC<HeroCardProps> = (props) => {
+const HeroList: React.FC<HeroProps> = (props) => {
 	const {
 		image,
 		label,
@@ -14,7 +14,6 @@ const HeroList: React.FC<HeroCardProps> = (props) => {
 		description,
 		actions,
 		secondaryAction,
-		children,
     enableGradient,
     enableOverlay,    
 	} = props || {}
@@ -47,7 +46,6 @@ const HeroList: React.FC<HeroCardProps> = (props) => {
 						{description}
 					</Typography>
 				</div>
-				{children}
 			</div>
 		</div>
 	)

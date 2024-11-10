@@ -55,14 +55,8 @@ export default function CustomDrawer({
 					<DrawerHeader>
 						<div className="flex w-full justify-end">
 							<DrawerClose>
-								<Button
-									variant="ghost"
-									size="icon"
-									className="focus:ring-2 focus:ring-ring focus:ring-offset-2"
-								>
-									<X className="h-5 w-5" />
-									<span className="sr-only">Close</span>
-								</Button>
+                <X className="h-5 w-5" />
+                <span className="sr-only">Close</span>
 							</DrawerClose>
 						</div>
 

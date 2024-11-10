@@ -2,9 +2,9 @@
 
 import React from 'react'
 import { Cover } from '../..'
-import { HeroCardProps } from './HeroCard'
+import { HeroProps } from './Hero'
 
-const HeroCover: React.FC<HeroCardProps> = (props) => {
+const HeroCover: React.FC<HeroProps> = (props) => {
 	const { label, image, title, subtitle } = props || {}
 
 	return (

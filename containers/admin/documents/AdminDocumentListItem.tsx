@@ -7,7 +7,6 @@ import {
 	ListFields,
 	ResourceListItem,
 } from '../../../components'
-import { Badge } from 'frontend-shadcn'
 import { ResourceItemProps } from '../../../components/cms/resources/ResourceItem'
 
 const AdminDocumentListItem: React.FC<ResourceItemProps> = (props) => {
@@ -27,15 +26,7 @@ const AdminDocumentListItem: React.FC<ResourceItemProps> = (props) => {
 			sortable
 			selectable={selectable}
 			selected={selected}
-			avatar={
-				<div className="h-[72px] w-[72px]">
-					<Image
-						src={resource?.image?.url}
-						aspectRatio={1.0}
-						alt={resource?.title}
-					/>
-				</div>
-			}
+      image={resource?.image?.url}			
 			primary={resource?.title}
 			secondary={
 				<ListFields
