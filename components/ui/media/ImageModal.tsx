@@ -7,21 +7,21 @@ import { cn } from 'frontend-shadcn'
 export type ImageModalProps = {
 	open: boolean
 	handleClose: () => void
-	resource: any
+	title?: string
+  src: string
 	enableGradient?: boolean
 }
 
 const ImageModal: React.FC<ImageModalProps> = (props) => {
-	const { open, handleClose, resource, enableGradient } = props || {}
+	const { open, handleClose, title, src, enableGradient } = props || {}
 
-	if (!resource) return null
 	return (
 		<MediaModal open={open} handleClose={handleClose}>
 			<div className={cn('w-full min-w-[80vw]')}>
 				<Image
-					alt={resource?.title}
+					alt={title || 'Image'}
 					aspectRatio={16 / 9}
-					src={resource?.image?.url}
+					src={src}
 					enableGradient={enableGradient}
 				/>
 			</div>

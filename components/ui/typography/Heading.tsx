@@ -50,7 +50,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 			)}
 		>
 			<div className="w-full flex flex-col justify-between">
-				<div className="flex flex-col space-y-4">
+				<div className="flex flex-col space-y-5">
 					{label && (
 						<div
 							className={cn(
@@ -69,7 +69,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 					{subtitle && (
 						<Typography
 							variant={subtitleVariant}
-							className="container mx-auto text-foreground/70 max-w-screen-md"
+							className="container mx-auto leading-8 text-foreground/70 max-w-screen-md"
 							textAlign={textAlign}
 						>
 							{subtitle}

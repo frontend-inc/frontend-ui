@@ -33,7 +33,16 @@ const ButtonActions: React.FC<ButtonActionsProps> = ({
 					})}
 				>
 					{buttons.map((button, index) => (
-						<ButtonAction key={index} size={size} {...button}>
+						<ButtonAction 
+              key={index} 
+              size={size} 
+              icon={button?.icon}
+              path={button?.path}
+              url={button?.url}
+              src={button?.src}
+              action={button?.action_type}
+              variant={button?.variant}              
+            >
 							{button?.label}
 						</ButtonAction>
 					))}

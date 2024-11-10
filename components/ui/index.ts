@@ -42,6 +42,9 @@ export { default as SocialIcon } from './social/SocialIcon'
 export { default as UserAvatar } from './avatars/UserAvatar'
 export { default as UserMenu } from './UserMenu'
 
+export { default as ImageModal } from './media/ImageModal'
+export { default as VideoModal } from './media/VideoModal'
+
 // Layouts
 export { default as LayoutContainer } from './layouts/LayoutContainer'
 export { default as Loader } from './loaders/Loader'
