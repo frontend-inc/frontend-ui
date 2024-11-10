@@ -28,7 +28,8 @@ export type CollectionListItemsProps = {
 }
 
 const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
-	const {
+	
+  const {
 		setResource,
 		loading,
 		resources,
@@ -56,7 +57,6 @@ const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
 	} = props
 
 	const handleShowClick = (resource) => {
-		console.log('handleShowClick', resource)
 		if (handleClick) {
 			handleClick(resource)
 		} else {

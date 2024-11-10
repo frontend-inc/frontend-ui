@@ -14,7 +14,7 @@ export type CoverProps = {
 	image: string
 	height?: number
 	width?: number
-	alignItems?: 'flex-start' | 'center' | 'flex-end'
+	alignItems?: 'items-start' | 'center' | 'items-end'
 	alt?: string
 	handleClick?: () => void
 	enableGradient?: boolean
@@ -75,11 +75,8 @@ const Cover: React.FC<CoverProps> = (props) => {
 			>
 				<div
 					className={cn(
-						'flex flex-col',
-						alignItems === 'flex-start' && 'items-start',
-						alignItems === 'center' && 'items-center',
-						alignItems === 'flex-end' && 'items-end',
-						'space-y-4'
+						'flex flex-col space-y-4',
+            alignItems 
 					)}
 				>
 					<Heading

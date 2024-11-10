@@ -11,6 +11,7 @@ import {
 	DataShow,
 	DataEmpty,
 	DataToolbar,
+  Typography
 } from '../..'
 import { ResourceProvider } from 'frontend-js'
 import {
@@ -21,6 +22,7 @@ import {
 	SortOptionType,
 	ButtonType,
 } from '../../../types'
+import { WithResources } from 'frontend-js'
 
 export type DataListProps = {
 	layout?: 'grid' | 'list' | 'slider'
