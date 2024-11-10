@@ -58,7 +58,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
 					handleSearch(text)
 				}}
 				className={cn(
-					'flex items-center w-full border border-input rounded-md transition-shadow hover:shadow-md',
+					'bg-background flex items-center w-full border border-input rounded-md transition-shadow hover:shadow-md',
 					fullWidth ? 'w-full' : 'max-w-[400px] min-w-[280px] sm:min-w-full'
 				)}
 			>

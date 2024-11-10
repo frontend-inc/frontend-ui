@@ -12,11 +12,10 @@ const UICallToAction: React.FC<UICallToActionProps> = (props) => {
 	const {
 		bgColor,
 		mode,
-		py,
+		py = 12,
 		px,
 		maxWidth,
 		requireAuth,
-
 		...rest
 	} = props
 

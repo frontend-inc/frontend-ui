@@ -12,7 +12,6 @@ import {
 } from '../..'
 import { ListFields, SocialButtons } from '../..'
 import { ButtonType, MetafieldType } from '../../../types'
-import { resizeCloudinaryImage } from '../../../helpers'
 
 type CardStyleTypes = 'list' | 'avatar' | 'card' | 'cover' | 'text'
 

@@ -20,7 +20,7 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 		textAlign,
 		bgColor,
 		mode,
-		py,
+		py=12,
 		px,
 		maxWidth = 'xl',
 		requireAuth,

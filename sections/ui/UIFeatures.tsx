@@ -16,11 +16,10 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 		textAlign,
 		bgColor,
 		mode,
-		py,
+		py=12,
 		px,
 		maxWidth,
 		requireAuth,
-
 		...rest
 	} = props
 

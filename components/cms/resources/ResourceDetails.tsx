@@ -6,7 +6,7 @@ import { Typography } from '../../core'
 import { MetafieldType } from '../../../types'
 
 type ResourceDetailsProps = {
-	hero?: React.ReactNode
+	disableImage?: boolean
 	actions?: React.ReactNode
 	resource: any
 	primary?: string
@@ -19,6 +19,7 @@ type ResourceDetailsProps = {
 
 const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 	const {
+    disableImage,
 		resource,
 		primary,
 		secondary,
@@ -28,11 +29,9 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 		fields = [],
 	} = props || {}
 
-	const imageField = fields.find((field) => field.variant === 'image')
-
 	return (
 		<div className="w-full flex flex-col space-y-6">
-			{imageField && (
+			{!disableImage && (
 				<div className="w-full h-[240px]">
 					<Image alt={label} src={image} label={label} />
 				</div>

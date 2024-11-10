@@ -12,7 +12,7 @@ const UIContactForm: React.FC<UIContactFormProps> = (props) => {
 	const {
 		bgColor,
 		mode,
-		py,
+		py=12,
 		px,
 		maxWidth,
 		requireAuth,

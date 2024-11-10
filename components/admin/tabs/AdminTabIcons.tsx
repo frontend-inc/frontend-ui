@@ -5,9 +5,10 @@ import { AdminContext } from '../../../context'
 import { IconButton } from '../../core'
 import { Separator } from 'frontend-shadcn'
 import AdminAuthButton from './AdminAuthButton'
+import { LightDarkIconButton } from '../../../components'
 import AdminTabIcon from './AdminTabIcon'
 import Image from 'next/image'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 type AdminTabIconsProps = {
 	logo?: string
@@ -57,6 +58,7 @@ export default function AdminTabIcons({
 					))}
 			</div>
 			<div className="flex flex-col space-y-3 pb-4 mb-2">
+        <LightDarkIconButton />
 				{secondaryAction && (
 					<>
 						{secondaryAction}

@@ -16,11 +16,10 @@ const UIAccordion: React.FC<UIAccordionProps> = (props) => {
 		textAlign,
 		bgColor,
 		mode,
-		py,
+		py = 12,
 		px,
 		maxWidth,
 		requireAuth,
-
 		...rest
 	} = props
 

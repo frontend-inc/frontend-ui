@@ -16,7 +16,7 @@ const UITabs: React.FC<UITabsProps> = (props) => {
 		textAlign,
 		bgColor,
 		mode,
-		py,
+		py=12,
 		px,
 		maxWidth,
 		requireAuth,

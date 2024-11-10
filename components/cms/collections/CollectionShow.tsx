@@ -4,20 +4,18 @@ import React from 'react'
 import { CommentList, Drawer, CollectionDetails, SocialButtons } from '../..'
 import { BlurFade } from '../../../components'
 import { useResourceContext } from 'frontend-js'
-import { ButtonType, FormFieldType, MetafieldType } from '../../../types'
+import { ButtonType, MetafieldType } from '../../../types'
 
 export type ShowModalProps = {
-	handle?: string
-	enableBorder?: boolean
-	enableOverlay?: boolean
 	buttons: ButtonType[]
 	metafields: MetafieldType[]
-	fields?: FormFieldType[]
-	fieldName?: string
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
 	enableComments?: boolean
+  disableImage?: boolean
+	enableBorder?: boolean
+	enableOverlay?: boolean
 }
 
 const ShowModal: React.FC<ShowModalProps> = (props) => {
@@ -31,6 +29,18 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 		enableSharing,
 	} = props || {}
 
+  let disableImage = false 
+  switch(resource?.documentType){
+    case 'youtube':
+    case 'vimeo':
+    case 'soundcloud':
+    case 'video':
+      disableImage = true
+      break
+    default: 
+      disableImage = false
+  }
+
 	if (!resource) return null
 	return (
 		<Drawer
@@ -42,6 +52,7 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 				<BlurFade delay={0.25} inView className="w-full">
 					<div className="w-full">
 						<CollectionDetails
+              disableImage={ disableImage }
 							resource={resource}
 							metafields={metafields}
 							actions={

@@ -132,11 +132,6 @@ const AdminCollectionMenu: React.FC = () => {
 						handleClick={() => handleClick(collection)}
 						handleEdit={() => handleEditCollectionClick(collection)}
 						handleDelete={() => handleDeleteCollectionClick(collection)}
-						secondaryAction={
-							<IconButton onClick={() => handleSettingsClick(collection)}>
-								<Settings className="h-5 w-4" />
-							</IconButton>
-						}
 					/>
 				))}
 			</MenuList>

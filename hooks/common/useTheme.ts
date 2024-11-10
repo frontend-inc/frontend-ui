@@ -2,8 +2,14 @@ import React, { useContext } from 'react'
 import { ThemeContext } from '../../context'
 
 const useTheme = () => {
-	const { mode, primaryColor, headerFont, bodyFont, borderRadius } =
-		useContext(ThemeContext)
+	
+  const { 
+    mode, 
+    primaryColor, 
+    headerFont, 
+    bodyFont, 
+    borderRadius 
+  } = useContext(ThemeContext)
 
 	return {
 		mode,

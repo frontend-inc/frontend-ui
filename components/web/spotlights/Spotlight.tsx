@@ -8,6 +8,7 @@ import { ButtonType } from '../../../types'
 export type SpotlightProps = {
 	label?: string
 	title?: string
+  subtitle?: string
 	description?: string
 	image?: string
 	logos: {
@@ -24,6 +25,7 @@ const Spotlight: React.FC<SpotlightProps> = (props) => {
 		image,
 		label,
 		title,
+    subtitle,
 		description,
 		logos = [],
 		buttons = [],
@@ -38,14 +40,9 @@ const Spotlight: React.FC<SpotlightProps> = (props) => {
 	return (
 		<Component
 			label={label}
-			primary={title}
-			secondary={
-				description && (
-					<Typography variant="subtitle1" className="text-muted-foreground">
-						{description}
-					</Typography>
-				)
-			}
+			title={title}
+      subtitle={subtitle}
+			description={description}
 			actions={buttons?.length > 0 && <ButtonActions buttons={buttons} />}
 			logos={logos}
 			image={image}

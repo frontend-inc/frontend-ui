@@ -12,11 +12,10 @@ const UIEmailSubscribe: React.FC<UIEmailSubscribeProps> = (props) => {
 	const {
 		bgColor,
 		mode,
-		py,
+		py=12,
 		px,
 		maxWidth,
 		requireAuth,
-
 		...rest
 	} = props
 

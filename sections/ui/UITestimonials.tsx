@@ -16,7 +16,7 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 		textAlign,
 		bgColor,
 		mode,
-		py,
+		py=12,
 		px,
 		maxWidth,
 		requireAuth,

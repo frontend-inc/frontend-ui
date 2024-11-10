@@ -7,18 +7,15 @@ import { cn } from 'frontend-shadcn'
 type AdminLayoutProps = {
 	logo?: string
 	handleClick: (item: any) => void
-	menuItems?: any[]
+	menuItems: any[]
 	secondaryAction?: React.ReactNode
 	children: React.ReactNode
 }
 
-export default function AdminLayout({
-	logo,
-	children,
-	handleClick,
-	menuItems = [],
-	secondaryAction,
-}: AdminLayoutProps) {
+export default function AdminLayout(props: AdminLayoutProps) {
+
+  const { logo, handleClick, menuItems, secondaryAction, children } = props
+
 	return (
 		<div className="editor w-full">
 			<div

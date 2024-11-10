@@ -50,7 +50,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 			)}
 		>
 			<div className="w-full flex flex-col justify-between">
-				<div className="flex flex-col space-y-2">
+				<div className="flex flex-col space-y-4">
 					{label && (
 						<div
 							className={cn(
@@ -58,7 +58,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 								textAlign === 'right' && 'text-right'
 							)}
 						>
-							<Label label={label} />
+							<Label label={label} className='text-primary' />
 						</div>
 					)}
 					{title && (

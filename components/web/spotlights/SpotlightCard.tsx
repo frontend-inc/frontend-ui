@@ -9,13 +9,14 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
 	const {
 		image,
 		label,
-		primary,
-		secondary,
+		title,
+		subtitle,
+    description,
 		actions,
 		logos = [],
-		slots = {
-			image: {},
-		},
+		enableGradient,
+    enableOverlay,
+    objectFit = 'cover',
 	} = props || {}
 
 	return (
@@ -29,19 +30,30 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
 							</div>
 						)}
 						<Typography variant="h2" className="md:text-left xs:text-center">
-							{primary}
+							{title}
 						</Typography>
-						{secondary && secondary}
+            { subtitle && (
+              <Typography variant="subtitle1" className="md:text-left xs:text-center text-foreground/70">
+                {subtitle}
+              </Typography>
+            )}
+            { description && (
+              <Typography variant="body1" className="md:text-left xs:text-center text-foreground/70">
+							  {description}
+						  </Typography>
+            )}
 						{actions && actions}
 						{logos?.length > 0 && <Logos logos={logos} />}
 					</div>
 					<div className="md:w-1/2 w-full p-2 flex flex-col justify-center">
 						<Image
 							src={image}
-							alt={typeof primary === 'string' ? primary : 'Spotlight image'}
+							alt={title}
 							height={400}
 							aspectRatio={3 / 2}
-							objectFit="cover"
+							objectFit={objectFit}
+              enableGradient={enableGradient}
+              enableOverlay={enableOverlay}
 						/>
 					</div>
 				</div>

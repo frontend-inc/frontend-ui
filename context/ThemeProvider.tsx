@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import ThemeContext from './ThemeContext'
 import { cn } from 'frontend-shadcn'
 
@@ -15,8 +15,8 @@ type ThemeProviderProps = {
 }
 
 const ThemeProvider = (props: ThemeProviderProps) => {
-	const {
-		mode = 'light',
+	
+  const {
 		theme = 'light',
 		primaryColor,
 		headerFont,
@@ -26,7 +26,6 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 	} = props || {}
 
 	const value = {
-		mode,
 		theme,
 		primaryColor,
 		headerFont,
@@ -49,9 +48,10 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 		}
 	}, [headerFont, bodyFont, borderRadius])
 
+
 	return (
-		<ThemeContext.Provider value={value}>
-			<div className={cn(mode, theme, 'w-full')}>{children}</div>
+		<ThemeContext.Provider value={value}>      
+			<div className={cn(theme, 'w-full')}>{children}</div>
 		</ThemeContext.Provider>
 	)
 }

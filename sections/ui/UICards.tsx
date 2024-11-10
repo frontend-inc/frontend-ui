@@ -16,7 +16,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 		textAlign,
 		bgColor,
 		mode,
-		py,
+		py=12,
 		px,
 		maxWidth,
 		requireAuth,
@@ -32,7 +32,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<div className="flex flex-col space-y-4 w-full">
+			<div className="flex flex-col space-y-[40px] w-full">
 				<Heading
 					label={label}
 					title={title}

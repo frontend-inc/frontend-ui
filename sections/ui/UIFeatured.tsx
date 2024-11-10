@@ -16,11 +16,10 @@ const UIFeatured: React.FC<UIFeaturedProps> = (props) => {
 		textAlign,
 		bgColor,
 		mode,
-		py,
+		py=12,
 		px,
 		maxWidth,
 		requireAuth,
-
 		...rest
 	} = props
 

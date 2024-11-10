@@ -11,29 +11,28 @@ export type SpotlightListProps = {
 		image: string
 		title: string
 	}[]
-	primary?: string | React.ReactNode
-	secondary?: React.ReactNode
+	title?: string 
+	subtitle?: string 
+  description?: string
 	actions?: React.ReactNode
-	secondaryAction?: React.ReactNode
-	styles?: any
-	slots?: {
-		image?: any
-		content?: any
-	}
+	secondaryAction?: React.ReactNode	
+	enableGradient?: boolean
+  enableOverlay?: boolean
+  objectFit?: 'cover' | 'contain'
 }
 
 const Spotlight: React.FC<SpotlightListProps> = (props) => {
 	const {
 		image,
 		label,
-		primary,
-		secondary,
+		title,
+		subtitle,
+    description,
 		actions,
 		logos = [],
-		styles = {},
-		slots = {
-			image: {},
-		},
+		enableGradient,
+    enableOverlay,
+    objectFit = 'cover',
 	} = props || {}
 
 	return (
@@ -51,19 +50,28 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 							textAlign="center"
 							className="tracking-tight"
 						>
-							{primary}
+							{title}
 						</Typography>
-
-						{secondary && secondary}
+            { subtitle && (
+              <Typography variant="subtitle1" className="md:text-left xs:text-center text-foreground/70">
+                {subtitle}
+              </Typography>
+            )}
+            { description && (
+              <Typography variant="body1" className="md:text-left xs:text-center text-foreground/70">
+							  {description}
+						  </Typography>
+            )}
 						{actions && actions}
 						{logos?.length > 0 && <Logos logos={logos} />}
 						<div className="relative shadow-xl rounded-lg overflow-hidden">
 							<Image
 								src={image}
-								alt={primary}
+								alt={title}
 								height={600}
 								objectFit="cover"
-								{...slots.image}
+								enableGradient={enableGradient}
+                enableOverlay={enableOverlay}
 							/>
 						</div>
 					</div>

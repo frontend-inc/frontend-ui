@@ -6,6 +6,7 @@ import { MetafieldType } from '../../../types'
 import { DOCUMENT_SHOW_FIELDS } from '../../../constants'
 
 type CollectionHeroProps = {
+  disableImage?: boolean
 	resource: any
 	actions?: React.ReactNode
 	metafields?: MetafieldType[]
@@ -20,11 +21,9 @@ const CollectionDetails: React.FC<CollectionHeroProps> = (props) => {
 		(field) => !['image', 'label', 'title'].includes(field.name)
 	)
 
-	const imageField = fields.find((field) => field.name === 'image')
-
 	return (
 		<div className="w-full flex flex-col space-y-6">
-			{imageField && (
+			{!disableImage && (
 				<div className="w-full flex flex-row justify-center">
 					<div className="w-full h-[320px] max-w-screen-sm">
 						<Image

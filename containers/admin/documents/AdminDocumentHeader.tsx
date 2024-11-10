@@ -14,10 +14,6 @@ type AdminDocumentHeaderProps = ResourceHeaderProps & {
 const AdminDocumentHeader: React.FC<AdminDocumentHeaderProps> = (props) => {
 	const { handleReload, collectionId } = props || {}
 
-	const { loading } = useAdminDocuments({
-		collection: collectionId,
-	})
-
 	const { loading: collectionLoading, aiGenerate } = useAdminCollections()
 
 	const [open, setOpen] = useState(false)
@@ -45,7 +41,7 @@ const AdminDocumentHeader: React.FC<AdminDocumentHeaderProps> = (props) => {
 					<Button
 						className="bg-blue-500 text-white hover:bg-blue-700 hover:text-white"
 						onClick={() => setOpen(true)}
-						startIcon={<Icon name="Zap" />}
+						startIcon={<Icon name="Zap" className="text-white" />}
 					>
 						Generate
 					</Button>
