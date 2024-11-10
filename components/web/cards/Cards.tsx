@@ -34,7 +34,7 @@ const Cards: React.FC<CardsProps> = (props) => {
       <div className="container mx-auto max-w-screen-2xl">
 			<div 
         className={           
-          "w-full justify-center grid gap-6 grid-cols-[repeat(auto-fill,minmax(240px,480px))]"
+          "w-full justify-center grid grid-cols-1 sm:grid-cols-3 gap-6"
         }>
 				{items?.map((item, idx) => (
 					<BlurFade delay={0.25 + idx * 0.05} key={idx}>
