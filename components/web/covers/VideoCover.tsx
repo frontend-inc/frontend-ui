@@ -11,7 +11,7 @@ export type VideoCoverProps = {
   subtitle?: string
   path?: string
   handleClick?: () => void
-  alignItems?: 'center' | 'items-start' | 'items-end'
+  alignItems?: 'items-center' | 'items-start' | 'items-end'
   buttonText?: string
   actions?: React.ReactNode
   enableOverlay?: boolean  
@@ -27,7 +27,7 @@ const VideoCover: React.FC<VideoCoverProps> = (props) => {
     buttonText,
     handleClick,
     path,
-    alignItems = 'center',
+    alignItems = 'items-center',
     actions,    
     height = 400, 
     enableOverlay,      
@@ -55,8 +55,8 @@ const VideoCover: React.FC<VideoCoverProps> = (props) => {
       />
       <div 
         className={cn(
-          "relative z-10 flex items-center justify-center w-full h-full",
-          enableOverlay && "bg-black bg-opacity-50"
+          "relative flex items-center justify-center w-full h-full",
+          enableOverlay && "bg-black bg-opacity-50",
         )}>
         <div
 					className={cn(
@@ -68,16 +68,16 @@ const VideoCover: React.FC<VideoCoverProps> = (props) => {
 						label={label}
 						title={title}
 						subtitle={subtitle}
-						textAlign={alignItems === 'center' ? 'center' : 'left'}
+						textAlign={alignItems === 'items-center' ? 'center' : 'left'}
 						size="lg"
 					/>
 					{actions}
 					{buttonText && (
-						<div className="py-2">
-							<Button size="lg" onClick={onClick} variant="default">
-								{buttonText}
-							</Button>
-						</div>
+            <div>
+              <Button size="lg" onClick={onClick} variant="default">
+                {buttonText}
+              </Button>
+            </div>
 					)}
 				</div>
       </div>
