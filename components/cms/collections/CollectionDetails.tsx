@@ -13,7 +13,7 @@ type CollectionHeroProps = {
 }
 
 const CollectionDetails: React.FC<CollectionHeroProps> = (props) => {
-	const { actions, resource, metafields = [] } = props || {}
+	const { actions, resource, disableImage, metafields = [] } = props || {}
 
 	const fields = DOCUMENT_SHOW_FIELDS[resource?.documentType]
 
