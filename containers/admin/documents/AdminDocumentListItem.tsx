@@ -31,7 +31,7 @@ const AdminDocumentListItem: React.FC<ResourceItemProps> = (props) => {
 			secondary={
 				<ListFields
 					resource={resource}
-					fields={[{ label: 'Handle', name: 'handle', variant: 'string' }]}
+					fields={[{ label: 'Subtitle', name: 'subtitle', variant: 'string' }]}
 				/>
 			}
 			secondaryAction={<PublishLabel published={resource?.published} />}
