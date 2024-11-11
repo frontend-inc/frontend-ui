@@ -23,7 +23,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		subtitle,
 		textAlign = 'left',
 		secondaryAction,
-		size = 'sm',
+		size = 'md',
 		className,
 	} = props || {}
 

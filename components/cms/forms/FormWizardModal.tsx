@@ -2,7 +2,7 @@
 
 import React from 'react'
 import FormWizard from './FormWizard'
-import { Modal } from '../..'
+import { Drawer } from '../..'
 import { FormWizardProps } from './FormWizard'
 
 export type FormWizardModalProps = FormWizardProps & {
@@ -14,9 +14,9 @@ const FormWizardModal: React.FC<FormWizardModalProps> = (props) => {
 	const { open, handleClose } = props || {}
 
 	return (
-		<Modal open={open} handleClose={handleClose}>
+		<Drawer open={open} handleClose={handleClose}>
 			<FormWizard {...props} />
-		</Modal>
+		</Drawer>
 	)
 }
 

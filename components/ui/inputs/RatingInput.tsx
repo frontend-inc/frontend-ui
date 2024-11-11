@@ -1,9 +1,10 @@
 'use client'
 
 import React from 'react'
-import { Rating } from '../../core'
+import { Rating } from '../../../components'
 import { InputPropsType, SyntheticEventType } from '../../../types'
 import { InputLabel } from '../../../components'
+import { cn } from 'frontend-shadcn'
 
 type RatingInputProps = InputPropsType & {
 	name?: string
@@ -39,11 +40,10 @@ const RatingInput: React.FC<RatingInputProps> = (props) => {
 		<div className="w-full flex flex-col items-start space-y-4">
 			<InputLabel label={label} info={info} />
 			<div
-				className={`w-full text-[15px] focus-within:shadow-md ${
-					!disableBorder
-						? 'p-4 pb-2 bg-white rounded border border-gray-200 shadow-sm'
-						: ''
-				}`}
+				className={cn(
+          `w-full text-[15px] focus-within:shadow-md`, 
+					!disableBorder && 'p-4 pb-2 bg-white rounded border border-gray-200 shadow-sm'						
+        )}
 			>
 				<Rating
 					name={name}

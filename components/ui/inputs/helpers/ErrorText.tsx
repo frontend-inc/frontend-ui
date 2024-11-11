@@ -12,7 +12,7 @@ const ErrorText: React.FC<ErrorTextProps> = (props) => {
 
 	if (!error) return null
 	return (
-		<Typography variant="overline" className="text-destructive">
+		<Typography variant="destructive">
 			{error}
 		</Typography>
 	)

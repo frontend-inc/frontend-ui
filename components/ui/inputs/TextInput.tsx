@@ -67,11 +67,11 @@ export default function TextInput({
 			)}
 		>
 			<InputLabel label={label} info={info} />
-			<div className="relative w-full">
+			<div className="relative w-full flex flex-col space-y-2">
 				<Input
 					className={cn(
 						'focus:ring-2 focus:ring-offset-3',
-						error && 'border-2 border-destructive',
+						error && 'ring-2 ring-destructive ring-offset-3',
 						className
 					)}
 					type={type}

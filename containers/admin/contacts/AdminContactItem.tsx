@@ -17,10 +17,8 @@ const AdminContactItem: React.FC<AdminContactItemProps> = (props) => {
 	return (
 		<ResourceListItem
 			primary={
-				<div className="flex flex-row space-x-1 items-center">
-					{contact?.name && (
-						<Typography variant="body1">{contact?.name}</Typography>
-					)}
+				<div className="flex flex-row space-x-1 items-center">					
+					<Typography variant="body1">{contact?.name || 'Anonymous'}</Typography>					
 					<Label label={contact?.source} />
 				</div>
 			}
@@ -29,7 +27,7 @@ const AdminContactItem: React.FC<AdminContactItemProps> = (props) => {
 				<UserAvatar
 					user={{
 						...contact,
-						name: contact?.name || contact?.email,
+						name: contact?.name || contact?.email || 'NA',
 					}}
 				/>
 			}

@@ -6,9 +6,9 @@ import { FormDataWizard } from '../../components'
 import { FormDataWizardProps } from '../../components/cms/forms/FormDataWizard'
 import { SectionProps } from '../../types'
 
-type CmsFormWizardProps = SectionProps & FormDataWizardProps
+type FormWizardProps = SectionProps & FormDataWizardProps
 
-const CmsFormWizard: React.FC<CmsFormWizardProps> = (props) => {
+const FormWizard: React.FC<FormWizardProps> = (props) => {
 	const { bgColor, mode, py, px, maxWidth, requireAuth, ...rest } = props
 
 	return (
@@ -25,4 +25,4 @@ const CmsFormWizard: React.FC<CmsFormWizardProps> = (props) => {
 	)
 }
 
-export default CmsFormWizard
+export default FormWizard

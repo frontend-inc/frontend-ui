@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Form } from '../..'
+import { Form, Heading } from '../..'
 import { useAlerts, useForms, useContacts } from '../../../hooks'
 import { HeadingProps } from '../../../types'
 
@@ -25,6 +25,7 @@ const FormData: React.FC<FormDataProps> = (props) => {
     errors,
 		loading: responseLoading,
 		contact,
+    setContact,
 		handleChange,
 		updateContact,
 		removeAttachment,
@@ -45,6 +46,7 @@ const FormData: React.FC<FormDataProps> = (props) => {
 			resp = await submitForm(contact)
 		}
 		if (resp?.id) {
+      setContact({})
 			showAlertSuccess('Form submitted successfully')
 		}
 	}
@@ -62,21 +64,29 @@ const FormData: React.FC<FormDataProps> = (props) => {
 			findForm(formId)
 		}
 	}, [formId])
-
+  
 	return (		
-    <Form
-      errors={ errors }
-      loading={loading || responseLoading}
-      resource={contact}
-      //@ts-ignore
-      handleChange={handleChange}
-      handleSubmit={handleSubmit}
-      fields={form?.questions}
-      handleRemove={handleRemove}
-      handleRemoveAttachment={handleRemove}
-      handleAddAttachment={handleAddAttachment}
-      buttonText={buttonText}
-    />
+    <div className="w-full flex flex-col space-y-4">
+      <Heading         
+        title={ form?.title}
+        subtitle={ form?.description }
+        size="lg"
+        textAlign='center'
+      />
+      <Form
+        errors={ errors }
+        loading={loading || responseLoading}
+        resource={contact}
+        //@ts-ignore
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        fields={form?.questions}
+        handleRemove={handleRemove}
+        handleRemoveAttachment={handleRemove}
+        handleAddAttachment={handleAddAttachment}
+        buttonText={buttonText}
+      />
+    </div>
 	)
 }
 

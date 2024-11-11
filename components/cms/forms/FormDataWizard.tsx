@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { FormCard, FormWizardModal } from '../..'
-import { useForms, useContacts } from '../../../hooks'
+import { useAlerts, useForms, useContacts } from '../../../hooks'
 import { HeadingProps } from '../../../types'
 
 export type FormDataWizardProps = HeadingProps & {
@@ -16,14 +16,11 @@ export type FormDataWizardProps = HeadingProps & {
 
 const FormDataWizard: React.FC<FormDataWizardProps> = (props) => {
 	const [open, setOpen] = useState(false)
-	const [submitted, setSubmitted] = useState(false)
-
+  const [submitted, setSubmitted] = useState(false)
+  
 	const { 
     formId, 
     buttonText,
-    endButtonText,
-    title,
-    description 
   } = props || {}
 
 	const { loading, form, findForm } = useForms()
@@ -41,10 +38,7 @@ const FormDataWizard: React.FC<FormDataWizardProps> = (props) => {
 		formId,
 	})
 
-	const handleSuccess = () => {
-		setOpen(false)
-		setSubmitted(true)
-	}
+  const { showAlertSuccess } = useAlerts()
 
 	const handleSubmit = async () => {
 		let resp
@@ -57,9 +51,9 @@ const FormDataWizard: React.FC<FormDataWizardProps> = (props) => {
 			resp = await submitForm(contact)
 		}
 		if (resp?.id) {
-			handleSuccess()
-			setOpen(false)
-			setSubmitted(true)
+      setSubmitted(true)
+      showAlertSuccess('Form submitted successfully')
+      handleResetForm()			
 		}
 	}
 
@@ -74,7 +68,6 @@ const FormDataWizard: React.FC<FormDataWizardProps> = (props) => {
 	const handleResetForm = () => {
 		setContact({})
 		setOpen(false)
-		setSubmitted(false)
 	}
 
 	useEffect(() => {
@@ -86,23 +79,14 @@ const FormDataWizard: React.FC<FormDataWizardProps> = (props) => {
 	return (
 		<div className="container max-auto max-w-screen-lg">
 			<div className="flex flex-col space-y-2">
-				{!submitted ? (
-					<FormCard
-						image={form?.image?.url}
-						title={form?.title}
-						subtitle={form?.description}
-						buttonText={buttonText}
-						handleClick={() => setOpen(true)}
-					/>
-				) : (
-					<FormCard
-						checkMark
-						title={title}
-						subtitle={description}
-						buttonText={endButtonText}
-						handleClick={handleResetForm}
-					/>
-				)}
+        <FormCard
+          checkMark={submitted}
+          image={form?.image?.url}
+          title={form?.title}
+          subtitle={form?.description}
+          buttonText={buttonText}
+          handleClick={() => setOpen(true)}
+        />				
 				<FormWizardModal
 					open={open}
 					handleClose={() => setOpen(false)}

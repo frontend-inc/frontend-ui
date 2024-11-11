@@ -8,6 +8,7 @@ export { default as FormInput } from './FormInput'
 export { default as FormField } from './FormField'
 
 // Data Forms
+export { default as FormData } from './FormData'
 export { default as FormDataWizard } from './FormDataWizard'
 
 // Document forms

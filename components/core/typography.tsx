@@ -18,6 +18,7 @@ interface TypographyProps {
 		| 'button'
 		| 'caption'
 		| 'overline'
+    | 'destructive'
 	textAlign?: 'left' | 'center' | 'right'
 	className?: string
 	children: React.ReactNode
@@ -44,6 +45,7 @@ const Typography: React.FC<TypographyProps> = ({
 		body2: 'text-sm leading-normal',
 		caption: 'text-xs',
 		overline: 'text-xs uppercase tracking-widest',
+    destructive: 'text-destructive text-sm italic',
 	}
 
 	const fontFamily = {
@@ -60,6 +62,7 @@ const Typography: React.FC<TypographyProps> = ({
 		body2: 'font-body',
 		caption: 'font-body',
 		overline: 'font-body',
+    destructive: 'font-body',
 	}
 
 	const alignmentClasses = {

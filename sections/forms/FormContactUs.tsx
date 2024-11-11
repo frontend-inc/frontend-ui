@@ -16,7 +16,6 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		...rest
 	} = props
 
