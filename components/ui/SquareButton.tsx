@@ -5,8 +5,8 @@ import { cn } from 'frontend-shadcn'
 
 type SquareButtonProps = {
 	label: string
-	color: string
-	icon: string
+	color?: string
+	icon?: string
 	selected: boolean
 	handleClick?: () => void
 }
