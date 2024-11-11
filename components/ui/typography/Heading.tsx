@@ -49,7 +49,10 @@ const Heading: React.FC<HeadingProps> = (props) => {
 				className
 			)}
 		>
-			<div className="w-full flex flex-col justify-between">
+			<div className={cn(
+        "w-full container max-w-screen-md flex flex-col justify-between",
+        textAlign === 'center' && 'mx-auto',
+        )}>
 				<div className="flex flex-col space-y-5">
 					{label && (
 						<div
