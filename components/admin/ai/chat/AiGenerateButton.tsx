@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Icon, Sheet } from '../../..'
 import { TextInputPropsType } from '../../../../types'
 import AiChatForm from './AiChatForm'
@@ -19,16 +19,36 @@ type AiGenerateButtonProps = TextInputPropsType & {
 }
 
 const AiGenerateButton: React.FC<AiGenerateButtonProps> = (props) => {
-	const { id = 'openai-chat', label, name, handleChange, prompt = '' } = props
+	const { id = 'openai-chat', label, name, handleChange } = props
 
 	const [open, setOpen] = useState(false)
 	const [loading, setLoading] = useState(false)
 
-	const { messages, setMessages, handleSubmit, input, handleInputChange } =
-		useChat({
-			id,
-			onFinish: (resp) => setLoading(false),
-		})
+  /*
+  const [input, setInput] = useState('')  
+  const handleInputChange = (ev) => {
+    const { name, value } = ev.target
+    setInput(value)
+  }*/
+
+	const { 
+    input,
+    handleInputChange,
+    handleSubmit,
+    messages, 
+    setMessages, 
+  } = useChat({
+		id,
+		onFinish: (resp) => setLoading(false),
+    onError: (error) => {
+      console.error(error)
+      setLoading(false)
+    }
+	})
+
+  useEffect(() => {
+    console.log("Messages", messages)    
+  }, [input, messages])
 
 	const handleClick = (text: string) => {
 		setOpen(false)
@@ -40,7 +60,7 @@ const AiGenerateButton: React.FC<AiGenerateButtonProps> = (props) => {
 		})
 	}
 
-	const handleChatSubmit = (ev) => {
+	const handleChatSubmit = async (ev) => {
 		setLoading(true)
 		handleSubmit(ev)
 	}
@@ -65,27 +85,25 @@ const AiGenerateButton: React.FC<AiGenerateButtonProps> = (props) => {
 				title={label}
 				open={open}
 				handleClose={() => setOpen(false)}
-				buttons={
-					<Button
+			>
+          <AiChatForm
+            open={open}
+            handleClick={handleClick}
+            messages={messages}
+            setMessages={setMessages}
+            input={input}
+            handleInputChange={handleInputChange}
+          />
+          <Button
+            type="submit"
 						fullWidth
-						className="bg-blue-500 text-white hover:bg-blue-700"
-						onClick={handleChatSubmit}
+						className="bg-blue-500 text-white hover:bg-blue-700"					
 						loading={loading}
+            onClick={handleChatSubmit}
 						startIcon={<Icon name="Zap" className="text-white" />}
 					>
 						Generate
 					</Button>
-				}
-			>
-				<AiChatForm
-					open={open}
-					prompt={prompt}
-					handleClick={handleClick}
-					messages={messages}
-					setMessages={setMessages}
-					input={input}
-					handleInputChange={handleInputChange}
-				/>
 			</Sheet>
 		</>
 	)

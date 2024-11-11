@@ -13,7 +13,6 @@ type OpenaiMessageType = {
 type AiChatFormProps = {
 	id?: string
 	open: boolean
-	prompt: string
 	handleClick: (text: string) => void
 	messages: OpenaiMessageType[]
 	setMessages: React.Dispatch<React.SetStateAction<any[]>>
@@ -25,7 +24,6 @@ const AiChatForm: React.FC<AiChatFormProps> = (props) => {
 
   const {
     open,
-    prompt,
     handleClick,
     messages,
     setMessages,
@@ -35,15 +33,9 @@ const AiChatForm: React.FC<AiChatFormProps> = (props) => {
 
 	useEffect(() => {
 		if (open) {
-			setMessages([
-				{
-					id: 'openai-chat',
-					role: 'system',
-					content: prompt,
-				},
-			])
+			setMessages([])
 		}
-	}, [open, prompt, setMessages])
+	}, [open, setMessages])
 
 	return (
 		<div className="flex p-2 flex-col space-y-4">
