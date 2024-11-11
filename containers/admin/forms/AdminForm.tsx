@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { Typography } from '../../../components/core'
 import { useAdminForms } from '../../../hooks'
-import { AdminFormEdit, AdminFormDetails, AdminFormQuestionList } from '../..'
+import { AdminFormEdit, AdminFormDetails, AdminQuestionList } from '../..'
 
 type AdminFormProps = {
 	formId: string
@@ -54,10 +54,12 @@ const AdminForm: React.FC<AdminFormProps> = (props) => {
 	}, [formId])
 
 	return (
-		<div className="flex flex-col space-y-2">
+		<div className="flex flex-col space-y-2 p-2">
 			<AdminFormDetails form={form} handleEdit={handleEdit} />
 			<Typography variant="subtitle1">Questions</Typography>
-			<AdminFormQuestionList formId={form?.id} />
+			<AdminQuestionList 
+        formId={formId} 
+      />
 			<AdminFormEdit
 				open={open}
 				handleClose={() => setOpen(false)}

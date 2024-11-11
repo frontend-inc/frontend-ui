@@ -1,4 +1,3 @@
-export { default as AdminQuestion } from './AdminQuestion'
 export { default as AdminQuestionDetails } from './AdminQuestionDetails'
 export { default as AdminQuestionCreate } from './AdminQuestionCreate'
 export { default as AdminQuestionEdit } from './AdminQuestionEdit'

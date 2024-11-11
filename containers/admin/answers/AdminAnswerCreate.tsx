@@ -6,10 +6,9 @@ import { ResourceFormProps } from '../../../components/cms/resources/ResourceFor
 
 const AdminAnswerCreate: React.FC<ResourceFormProps> = (props) => {
 	let fields = [
-		{ label: 'Answer Choice', name: 'title', variant: 'string' },
+		{ label: 'Title', name: 'title', variant: 'string' },
 		{ label: 'Value', name: 'value', variant: 'string' },
-		{ label: 'Image', name: 'image', variant: 'image' },
-		{ label: 'Points', name: 'points', variant: 'number' },
+    { label: 'Image', name: 'image', variant: 'image' },
 	]
 
 	return <ResourceForm title="Add Answer" {...props} fields={fields} />

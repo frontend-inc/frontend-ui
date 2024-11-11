@@ -9,8 +9,7 @@ const AdminFormCreate: React.FC<ResourceFormProps> = (props) => {
 		{ label: 'Image', name: 'image', variant: 'image' },
 		{ label: 'Label', name: 'label', variant: 'string' },
 		{ label: 'Title', name: 'title', variant: 'string' },
-		{ label: 'Description', name: 'description', variant: 'text' },
-		{ label: 'Button Text', name: 'button_text', variant: 'string' },
+		{ label: 'Description', name: 'description', variant: 'text' },		
 	]
 
 	return <ResourceForm {...props} fields={fields} />

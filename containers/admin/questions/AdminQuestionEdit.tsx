@@ -6,7 +6,6 @@ import { ResourceFormProps } from '../../../components/cms/resources/ResourceFor
 
 const AdminQuestionEdit: React.FC<ResourceFormProps> = (props) => {
 	let fields = [
-		{ label: 'Image', name: 'image', variant: 'image' },
 		{ label: 'Question', name: 'title', variant: 'string' },
 		{ label: 'Description', name: 'description', variant: 'text' },
 		{ label: 'API name', name: 'name', variant: 'slug' },
@@ -37,7 +36,7 @@ const AdminQuestionEdit: React.FC<ResourceFormProps> = (props) => {
 		},
 		{
 			label: 'Options',
-			name: 'optoins',
+			name: 'options',
 			variant: 'array',
 		},
 	]

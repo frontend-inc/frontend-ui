@@ -8,25 +8,32 @@ import AdminQuestionCreate from './AdminQuestionCreate'
 import AdminQuestionEdit from './AdminQuestionEdit'
 import AdminQuestionShow from './AdminQuestionShow'
 import AdminQuestionToolbar from './AdminQuestionToolbar'
-import { useRouter, useParams } from 'next/navigation'
 
-const AdminQuestionsList: React.FC = () => {
+type AdminQuestionListProps = {
+  formId: string
+}
+
+const AdminQuestionsList: React.FC<AdminQuestionListProps> = (props) => {
+
+  const { formId } = props 
+ 
 	const { apiUrl } = useAdmin()
 
 	return (
 		<ResourceList
 			selectable
-			url={`${apiUrl}/questions`}
-			name={'question'}
+      sortable
+			url={`${apiUrl}/forms/${formId}/questions`}
+			name='question'
 			enableSearch
 			enableEdit
 			enableDelete
 			enableCreate
-			enableShow
-			sortOptions={[
-				{ name: 'title', label: 'Title' },
-				{ name: 'created_at', label: 'Date' },
-			]}
+			enableShow			
+      query={{
+        sort_by: 'position',
+        sort_direction: 'asc'
+      }}
 			create={AdminQuestionCreate}
 			edit={AdminQuestionEdit}
 			show={AdminQuestionShow}
@@ -35,6 +42,11 @@ const AdminQuestionsList: React.FC = () => {
 			emptyIcon="Text"
 			emptyTitle="No questions"
 			emptyDescription="No questions added yet."
+      slots={{
+        toolbar: {
+          formId
+        }
+      }}
 		/>
 	)
 }

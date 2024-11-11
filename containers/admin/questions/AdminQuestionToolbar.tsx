@@ -2,21 +2,27 @@
 
 import React from 'react'
 import { ResourceToolbarModal, AlertButton } from '../../../components'
-import { useResource } from 'frontend-js'
-import { useAdmin } from '../../../hooks'
+import { useAdminQuestions } from '../../../hooks'
 
-const AdminQuestionToolbar = (props) => {
-	const { apiUrl } = useAdmin()
+type AdminQuestionToolbarProps = {
+  formId: string
+  open: boolean
+  handleClose: () => void
+  selectedIds: string[]
+  handleReload: () => void  
+}
 
-	const { open, handleClose, selectedIds, handleReload } = props || {}
+const AdminQuestionToolbar: React.FC<AdminQuestionToolbarProps> = (props) => {
+	
+	const { formId, open, handleClose, selectedIds, handleReload } = props || {}
 
-	const { deleteMany } = useResource({
-		url: `${apiUrl}/questions`,
-		name: 'question',
-	})
+	const { deleteQuestions } = useAdminQuestions({
+    formId
+  })
+  
 
 	const handleDelete = async () => {
-		await deleteMany(selectedIds)
+		await deleteQuestions(selectedIds)
 		handleReload()
 		handleClose()
 	}

@@ -60,7 +60,7 @@ const ShowField: React.FC<ShowFieldProps> = (props) => {
 			className: '',
 		},
 		email: {
-			className: 'italic text-sm',
+			className: 'text-sm',
 		},
 		string: {
 			className: 'text-sm',
