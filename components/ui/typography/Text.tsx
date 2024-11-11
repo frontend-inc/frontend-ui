@@ -3,15 +3,15 @@
 import React from 'react'
 import { Typography } from '../../core'
 import { Heading } from '../..'
-import { TypographyVariantsType } from '../../../types'
+import { cn } from 'frontend-shadcn'
 
 export type TextProps = {
+  label?: string
 	title: string
-	description: string
-	label?: string
+  subtitle?: string
+	description: string	
 	textAlign?: 'center' | 'left'
-	size?: 'sm' | 'md' | 'lg' | 'xl'
-	html?: boolean
+	size?: 'sm' | 'md' | 'lg' | 'xl'	
 }
 
 // Call To Action
@@ -19,28 +19,30 @@ const Text: React.FC<TextProps> = (props) => {
 	const {
 		label,
 		title,
+    subtitle,
 		description,
-		textAlign,
+		textAlign='center',
 		size = 'lg',
-		html = false,
 	} = props || {}
 
 	return (
-		<div className="container max-w-screen-lg mx-auto">
-			<div className="flex flex-col space-y-2">
+		<div className="container max-w-screen-md mx-auto">
+			<div className="flex flex-col space-y-6">
 				<Heading
 					label={label}
 					title={title}
+          subtitle={subtitle}
 					textAlign={textAlign}
 					size={size}
-				/>
-				{html ? (
-					<Typography variant="body1">
-						<div dangerouslySetInnerHTML={{ __html: description }} />
-					</Typography>
-				) : (
-					<Typography variant="body1">{description}</Typography>
-				)}
+				/>        				
+        <Typography 
+          variant="body1" 
+          className={cn(
+            "text-md leading-10 text-muted-foreground",
+          )}
+        >
+          {description}
+        </Typography>
 			</div>
 		</div>
 	)

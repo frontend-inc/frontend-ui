@@ -23,21 +23,24 @@ export interface ResponsiveImageProps {
 	label?: string
 }
 
-export default function ResponsiveImage({
-	src,
-	alt,
-	width = 600,
-	height = 600,
-	objectFit = 'cover',
-	aspectRatio = 1.0,
-	enableOverlay = false,
-	enableGradient = false,
-	disableBorderRadius = false,
-	disableZoom = false,
-	handleClick,
-	className,
-	label,
-}: ResponsiveImageProps) {
+export default function ResponsiveImage(props: ResponsiveImageProps) {
+
+  const {
+    src,
+    alt,
+    width = 600,
+    height = 600,
+    objectFit = 'cover',
+    aspectRatio = 1.0,
+    enableOverlay = false,
+    enableGradient = false,
+    disableBorderRadius = false,
+    disableZoom = false,
+    handleClick,
+    className,
+    label,
+  } = props
+
 	return (
 		<div
 			className={cn(
