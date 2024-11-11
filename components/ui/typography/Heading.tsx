@@ -28,9 +28,9 @@ const Heading: React.FC<HeadingProps> = (props) => {
 	} = props || {}
 
 	const titleVariant = {
-		sm: 'h4',
-		md: 'h3',
-		lg: 'h2',
+		sm: 'h5',
+		md: 'h4',
+		lg: 'h3',
 		xl: 'h1',
 	}[size] as TypographyVariantsType
 

@@ -7,7 +7,7 @@ import { ActionType } from '../../types'
 import { useLoadingWrapper } from '.'
 import copy from 'copy-to-clipboard'
 import { useAlerts } from '..'
-import { ImageModal, VideoModal } from '../../components'
+import { useMediaQuery } from 'react-responsive'
 
 type UseButtonParams = {
 	action: ActionType
@@ -19,12 +19,15 @@ type UseButtonParams = {
 const useButtons = (params: UseButtonParams) => {
 	const { action, src, path, url } = params || {}
 
+  const isMobile = useMediaQuery({ maxWidth: 640 })
+
 	const { loading, data, errors } = useLoadingWrapper()
 
   const [openVideo, setOpenVideo] = useState(false)
   const [openImage, setOpenImage] = useState(false)
+  const [openShare, setOpenShare] = useState(false)
 
-	const { openAlertSuccess } = useAlerts()
+	const { showAlertSuccess } = useAlerts()
 
 	const router = useRouter()
 	const { clientUrl } = useApp()
@@ -42,7 +45,7 @@ const useButtons = (params: UseButtonParams) => {
 			case 'copy':
 				if (src) {
 					copy(src)
-					openAlertSuccess('Copied to clipboard')
+					showAlertSuccess('Copied to clipboard')
 				}
 				break
 			case 'email':
@@ -79,7 +82,20 @@ const useButtons = (params: UseButtonParams) => {
         if (src) {
           setOpenImage(true)
         }
-        break      
+        break  
+      case 'share':
+        if(isMobile){
+          const title = window.document.title
+          const description = window.document.querySelector('meta[name="description"]')
+          navigator.share({
+            title: title,
+            text: `Check this out: ${description}`,
+            url: window.location.href,
+          })
+        }else{
+          setOpenShare(true)
+        }                 
+        break    
 			default:
 				break
 		}
@@ -91,8 +107,10 @@ const useButtons = (params: UseButtonParams) => {
 		errors,
     openVideo,
     openImage,
+    openShare,
     setOpenVideo,
     setOpenImage,
+    setOpenShare,
 		handleClick,
 	}
 }

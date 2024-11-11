@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import { Button } from '../../core'
-import { Icon, ImageModal, VideoModal } from '../..'
+import { Icon, ImageModal, VideoModal, ShareModal } from '../..'
 import { useButton } from '../../../hooks'
 import { ActionType } from '../../../types'
 
@@ -31,8 +31,12 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 	} = props
 
 	const {
+    openShare,
+    setOpenShare,
     openVideo,
+    setOpenVideo,
     openImage,
+    setOpenImage,
     handleClick 
   } = useButton({
     action,
@@ -65,16 +69,26 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 		>
 			{children}
 		</Button>
-    <VideoModal 
-      open={ openVideo }
-      handleClose={() => setVideoOpen(false) }
-      src={ src }
-    />
-    <ImageModal 
-      open={ openImage }
-      handleClose={() => setImageOpen(false) }
-      src={ src }
-    />
+    { src && (
+      <>
+        <VideoModal 
+          open={ openVideo }
+          handleClose={() => setOpenVideo(false) }
+          src={ src }
+        />
+        <ImageModal 
+          open={ openImage }
+          handleClose={() => setOpenImage(false) }
+          src={ src }
+        />        
+        <ShareModal 
+          open={ openShare }
+          handleClose={() => setOpenShare(false) }
+          //@ts-ignore
+          url={ url }
+        />
+    </>
+    )}
   </>
 	)
 }
