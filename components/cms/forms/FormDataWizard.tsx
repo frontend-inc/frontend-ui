@@ -5,16 +5,26 @@ import { FormCard, FormWizardModal } from '../..'
 import { useForms, useContacts } from '../../../hooks'
 import { HeadingProps } from '../../../types'
 
-export type DataFormWizardProps = HeadingProps & {
+export type FormDataWizardProps = HeadingProps & {
 	formId: number
+  title?: string
+  description?: string  
+  buttonText: string
+  endButtonText: string
 	handleSuccess?: (resource: any) => void
 }
 
-const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
+const FormDataWizard: React.FC<FormDataWizardProps> = (props) => {
 	const [open, setOpen] = useState(false)
 	const [submitted, setSubmitted] = useState(false)
 
-	const { formId } = props || {}
+	const { 
+    formId, 
+    buttonText,
+    endButtonText,
+    title,
+    description 
+  } = props || {}
 
 	const { loading, form, findForm } = useForms()
 
@@ -81,15 +91,15 @@ const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
 						image={form?.image?.url}
 						title={form?.title}
 						subtitle={form?.description}
-						buttonText={form?.button_text || 'Get Started'}
+						buttonText={buttonText}
 						handleClick={() => setOpen(true)}
 					/>
 				) : (
 					<FormCard
 						checkMark
-						title={form?.end_title}
-						subtitle={form?.end_description}
-						buttonText={form?.end_button_text}
+						title={title}
+						subtitle={description}
+						buttonText={endButtonText}
 						handleClick={handleResetForm}
 					/>
 				)}
@@ -112,4 +122,4 @@ const DataFormWizard: React.FC<DataFormWizardProps> = (props) => {
 	)
 }
 
-export default DataFormWizard
+export default FormDataWizard

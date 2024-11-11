@@ -6,9 +6,9 @@ import { EmailSubscribe } from '../../components'
 import { EmailSubscribeProps } from '../../components/cms/newsletter/EmailSubscribe'
 import { SectionProps } from '../../types'
 
-type UIEmailSubscribeProps = SectionProps & EmailSubscribeProps
+type FormEmailSubscribeProps = SectionProps & EmailSubscribeProps
 
-const UIEmailSubscribe: React.FC<UIEmailSubscribeProps> = (props) => {
+const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 	const {
 		bgColor,
 		mode,
@@ -33,4 +33,4 @@ const UIEmailSubscribe: React.FC<UIEmailSubscribeProps> = (props) => {
 	)
 }
 
-export default UIEmailSubscribe
+export default FormEmailSubscribe

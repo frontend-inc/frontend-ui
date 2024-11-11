@@ -53,6 +53,7 @@ export type PriceType = {
 	id?: number
 	label: string
 	title: string
+  subtitle?: string
 	description?: string
 	price: number
 	features: string[]
@@ -67,7 +68,7 @@ export type PriceType = {
 export type TestimonialType = {
 	rating: number
 	title: string
-	description: string
+	subtitle: string
 	image: string
 	size?: 'small' | 'large'
 }

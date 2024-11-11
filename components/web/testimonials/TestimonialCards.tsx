@@ -22,7 +22,7 @@ const TestimonialCards: React.FC<TestimonialCardsProps> = (props) => {
 						image={testimonial.image}
 						author={testimonial.title}
 						rating={testimonial.rating}
-						text={testimonial.description}
+						text={testimonial.subtitle}
 					/>
 				))}
 			</div>

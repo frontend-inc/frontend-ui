@@ -6,9 +6,9 @@ import { ContactForm } from '../../components'
 import { ContactFormProps } from '../../components/cms/leads/ContactForm'
 import { SectionProps } from '../../types'
 
-type UIContactFormProps = SectionProps & ContactFormProps
+type FormContactUsProps = SectionProps & ContactFormProps
 
-const UIContactForm: React.FC<UIContactFormProps> = (props) => {
+const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 	const {
 		bgColor,
 		mode,
@@ -34,4 +34,4 @@ const UIContactForm: React.FC<UIContactFormProps> = (props) => {
 	)
 }
 
-export default UIContactForm
+export default FormContactUs

@@ -2,11 +2,11 @@
 
 import React from 'react'
 import { Section } from '../../components'
-import { DataFormWizard } from '../../components'
-import { DataFormWizardProps } from '../../components/cms/forms/DataFormWizardModal'
+import { FormDataWizard } from '../../components'
+import { FormDataWizardProps } from '../../components/cms/forms/FormDataWizard'
 import { SectionProps } from '../../types'
 
-type CmsFormWizardProps = SectionProps & DataFormWizardProps
+type CmsFormWizardProps = SectionProps & FormDataWizardProps
 
 const CmsFormWizard: React.FC<CmsFormWizardProps> = (props) => {
 	const { bgColor, mode, py, px, maxWidth, requireAuth, ...rest } = props
@@ -20,7 +20,7 @@ const CmsFormWizard: React.FC<CmsFormWizardProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<DataFormWizard {...rest} />
+			<FormDataWizard {...rest} />
 		</Section>
 	)
 }
