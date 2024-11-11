@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { Image, VideoModal, Placeholder } from '../..'
 import { BlurFade } from '../..'
 import { cloudinaryImageFromVideoUrl } from '../../../helpers'
+import { PlayCircle } from 'lucide-react'
 
 type VideoType = {
 	label?: string
@@ -41,13 +42,21 @@ const Videos: React.FC<VideosProps> = (props) => {
           }>
           {items?.map((item, idx) => (
             <BlurFade delay={0.25 + idx * 0.05} key={idx}>
+              <div className="relative group">
               <Image
                 src={ cloudinaryImageFromVideoUrl(item?.video)}
                 handleClick={() => handleClick(item)}
                 enableGradient={enableGradient}
                 enableOverlay={enableOverlay}		
                 height={height}					
-              />
+              />              
+                <div className="absolute bottom-4 left-4 flex flex-row space-x-2 items-center w-full">                  
+                  <PlayCircle size={24} className="text-white/60 group-hover:text-white" />
+                  <div className="text-white/60 text-sm font-semibold group-hover:text-white">
+                    {item?.title}
+                  </div>
+                </div>
+              </div>
             </BlurFade>
           ))}
         </div>
