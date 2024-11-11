@@ -17,6 +17,7 @@ type ThemeProviderProps = {
 const ThemeProvider = (props: ThemeProviderProps) => {
 	
   const {
+    mode = 'light',
 		theme = 'light',
 		primaryColor,
 		headerFont,
@@ -26,6 +27,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 	} = props || {}
 
 	const value = {
+    mode,
 		theme,
 		primaryColor,
 		headerFont,
@@ -51,7 +53,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 
 	return (
 		<ThemeContext.Provider value={value}>      
-			<div className={cn(theme, 'w-full')}>{children}</div>
+			<div className={cn(mode, theme, 'w-full')}>{children}</div>
 		</ThemeContext.Provider>
 	)
 }

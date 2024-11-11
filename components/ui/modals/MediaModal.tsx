@@ -33,7 +33,7 @@ export default function MediaModal({
 			<button
 				className={cn(
 					'absolute top-5 right-5 p-2 rounded-full',
-					'bg-black bg-opacity-50 hover:bg-opacity-75',
+					'bg-black/50 hover:bg-black/75',
 					'transition-colors duration-200'
 				)}
 				onClick={handleClose}

@@ -18,8 +18,8 @@ type ButtonActionProps = {
 }
 
 const ButtonAction: React.FC<ButtonActionProps> = (props) => {
-	const {
-		children,
+	
+  const {
 		icon,
     action,
 		url,
@@ -27,6 +27,7 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
     src,
 		variant = 'secondary',
 		size = 'default',
+    children,
 		...rest
 	} = props
 

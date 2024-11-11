@@ -99,7 +99,7 @@ export const cloudinaryConvertToJpeg = (url) => {
 }
 
 export const cloudinaryImageFromVideoUrl = (url) => {
-	if (!url) return null
+	if (!url || url?.length <= 3 ) return null;
 	return url?.replace(/mp4|mpeg|ogg|mkv|mov/i, 'jpg')
 }
 

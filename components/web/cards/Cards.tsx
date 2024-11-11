@@ -4,7 +4,6 @@ import React from 'react'
 import { Card, Placeholder, Button } from '../..'
 import { useNavigate } from '../../../hooks'
 import { BlurFade } from '../../../components'
-import { cn } from 'frontend-shadcn'
 
 type CardType = {
 	label?: string

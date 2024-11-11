@@ -66,7 +66,7 @@ const ImageInput: React.FC<ImageInputProps> = (props) => {
 						aspectRatio={1.0}
 						height={120}
 						width={120}
-						src={cloudinaryImageFromVideoUrl(value)}
+						src={ cloudinaryImageFromVideoUrl(value)}
 						objectFit={objectFit}
 					/>
 				</div>

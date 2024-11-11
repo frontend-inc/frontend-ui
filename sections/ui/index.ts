@@ -6,6 +6,7 @@ export { default as UICallToAction } from './UICallToAction'
 export { default as UIContactForm } from './UIContactForm'
 export { default as UIEmailSubscribe } from './UIEmailSubscribe'
 export { default as UIImage } from './UIImage'
+export { default as UIImages } from './UIImages'
 export { default as UIFeatured } from './UIFeatured'
 export { default as UIFeatures } from './UIFeatures'
 export { default as UIHero } from './UIHero'
@@ -19,11 +20,4 @@ export { default as UITestimonials } from './UITestimonials'
 export { default as UISwipeableTestimonials } from './UISwipeableTestimonials'
 export { default as UIText } from './UIText'
 export { default as UIVideoCover } from './UIVideoCover'
-
-import SwipeableTestimonials from './UISwipeableTestimonials'
-import UIText from './UIText'
-
-export const UI = {
-	Text: UIText,
-	SwipeableTestimonials: SwipeableTestimonials,
-}
+export { default as UIVideos } from './UIVideos'

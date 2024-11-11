@@ -12,6 +12,7 @@ export type VideoModalProps = {
 const VideoModal: React.FC<VideoModalProps> = (props) => {
 	const { open, handleClose, src } = props || {}
 
+  if(!src) return null;
 	return (
 		<MediaModal open={open} handleClose={handleClose}>
 			<div className="w-full min-w-[80vw]">

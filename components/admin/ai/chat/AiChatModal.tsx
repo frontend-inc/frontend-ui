@@ -52,7 +52,7 @@ const AiChatModal: React.FC<AiChatModalProps> = (props) => {
 					<TooltipTrigger asChild>
 						<Button
 							className="bg-blue-500 text-white hover:bg-blue-700"
-							startIcon={<Icon name="Zap" />}
+							startIcon={<Icon name="Zap" className='text-white' />}
 							onClick={() => setOpen(!open)}
 						>
 							Generate
