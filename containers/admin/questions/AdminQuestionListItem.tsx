@@ -18,16 +18,25 @@ const AdminQuestionItem: React.FC<ResourceItemProps> = (props) => {
 		...rest
 	} = props
 
+  const deleteable = [
+    'name',
+    'email'
+  ].includes(question?.name) ? false : true
+
 	return (
 		<ResourceListItem
 			disableImage
 			sortable={sortable}
 			selectable={selectable}
 			selected={selected}
-			avatar={<QuestionIcon variant={question?.variant} />}
+			avatar={
+        <QuestionIcon 
+          variant={question?.variant} 
+        />
+      }
 			primary={question?.title}
 			handleEdit={handleEdit}
-			handleDelete={handleDelete}
+			handleDelete={deleteable ? handleDelete : undefined}
 			handleClick={handleClick}
 			handleSelect={handleSelect}
 			{...rest}
