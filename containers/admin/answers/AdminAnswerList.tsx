@@ -8,7 +8,6 @@ import AdminAnswerCreate from './AdminAnswerCreate'
 import AdminAnswerEdit from './AdminAnswerEdit'
 import AdminAnswerShow from './AdminAnswerShow'
 import AdminAnswerToolbar from './AdminAnswerToolbar'
-import { ResourceListProps } from '../../../components/cms/resources/ResourceList'
 
 type AdminAnswerListProps = {
 	questionId: string | number

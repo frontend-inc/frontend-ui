@@ -29,25 +29,26 @@ const AdminQuestionShow: React.FC<ResourceShowProps> = (props) => {
 			handleDelete={handleDelete}
 		>
 			<ResourceDetails
-				direction="row"
-				label={resource?.question?.variant}
-				image={resource?.question?.image?.url}
-				primary={resource?.question?.title}
-				secondary={resource?.question?.description}
-				resource={resource?.question}
+        disableImage				
+				label={resource?.variant}				
+				title={resource?.title}
+				subtitle={resource?.description}
+				resource={resource}
 				fields={[]}
 			/>
-			<div className="flex flex-col space-y-3">
-				<div className="w-full h-[1px] border-top-1 border-border" />
-				<Typography variant="subtitle1">Answer Choices</Typography>
-				<Typography variant="body2" className="text-muted-foreground">
-					For single choice and multiple choice questions
-				</Typography>
-				<AdminAnswerList
-					direction="column"
-					questionId={resource?.question_id}
-				/>
-			</div>
+      { resource?.variant == "multiple_choice" || resource?.variant == "single_choice" && (
+        <div className="flex flex-col space-y-3">
+          <div className="w-full h-[1px] border-top-1 border-border" />
+          <Typography variant="subtitle1">Answer Choices</Typography>
+          <Typography variant="body2" className="text-muted-foreground">
+            For single choice and multiple choice questions
+          </Typography>
+          <AdminAnswerList
+            direction="column"
+            questionId={resource?.id}
+          />
+        </div>
+      )}
 		</ResourceModal>
 	)
 }

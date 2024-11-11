@@ -9,10 +9,10 @@ type ResourceDetailsProps = {
 	disableImage?: boolean
 	actions?: React.ReactNode
 	resource: any
-	primary?: string
-	secondary?: string
+	title?: string
+	subtitle?: string
 	label?: string
-	image: string
+	image?: string
 	fields: MetafieldType[]
 	direction?: 'row' | 'column'
 }
@@ -21,8 +21,8 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 	const {
     disableImage,
 		resource,
-		primary,
-		secondary,
+		title,
+		subtitle,
 		actions,
 		label,
 		image,
@@ -41,17 +41,17 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 					{actions}
 				</div>
 			)}
-			{primary && (
+			{title && (
 				<Typography variant="h4" className="px-2">
-					{primary}
+					{title}
 				</Typography>
 			)}
-			{secondary && (
+			{subtitle && (
 				<Typography
 					variant="body1"
 					className="px-2 text-lg italic text-muted-foreground"
 				>
-					{secondary}
+					{subtitle}
 				</Typography>
 			)}
 			<ShowFields fields={fields} resource={resource} />
