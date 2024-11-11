@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { AspectRatio } from 'frontend-shadcn'
 import { Badge } from 'frontend-shadcn'
@@ -41,6 +41,8 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
     label,
   } = props
 
+  const [isHovered, setIsHovered] = useState(false)
+
 	return (
 		<div
 			className={cn(
@@ -49,6 +51,8 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
 				!disableBorderRadius && 'rounded-lg',
 				className
 			)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
 			onClick={handleClick ? handleClick : undefined}
 		>
 			<AspectRatio ratio={aspectRatio}>
@@ -61,7 +65,7 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
 						className={cn(
 							objectFit == 'cover' ? 'object-cover' : 'object-contain',
 							'w-full h-full transition-transform duration-300 ease-in-out',
-							!disableZoom && 'hover:scale-105'
+							!disableZoom && isHovered && 'hover:scale-105'
 						)}
 					/>
 				) : (
