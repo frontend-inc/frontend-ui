@@ -16,7 +16,7 @@ import {
 } from '../../../components'
 import ReferenceInput from './references/ReferenceInput'
 import ProductsInput from './products/ProductsInput'
-import { MediaInput, AiChatModal } from '../../../components'
+import { MediaInput, AiGenerateButton } from '../../../components'
 import { ProductType } from '../../../types'
 
 type DocumentInputProps = {
@@ -166,7 +166,7 @@ const AdminDocumentInput: React.FC<DocumentInputProps> = (props) => {
 			/>
 			{variant == 'text' && (
 				<div className="mt-6">
-					<AiChatModal name={name} value={value} handleChange={handleChange} />
+					<AiGenerateButton name={name} value={value} handleChange={handleChange} />
 				</div>
 			)}
 		</div>

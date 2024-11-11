@@ -3,7 +3,7 @@
 import React from 'react'
 import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
-import AdminUserItem from './AdminUserItem'
+import AdminUserListItem from './AdminUserListItem'
 import AdminUserForm from './AdminUserForm'
 import AdminUserEditForm from './AdminUserEditForm'
 import AdminUserShow from './AdminUserShow'
@@ -33,7 +33,7 @@ const AdminUsersList: React.FC = () => {
 			create={AdminUserForm}
 			edit={AdminUserEditForm}
 			show={AdminUserShow}
-			component={AdminUserItem}
+			component={AdminUserListItem}
 		/>
 	)
 }

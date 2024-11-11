@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { TextArea } from '../../../../components'
+import { TextArea } from '../../..'
 import { ScrollArea } from 'frontend-shadcn'
 
 type OpenaiMessageType = {
@@ -25,7 +25,6 @@ const AiChatForm: React.FC<AiChatFormProps> = (props) => {
 
   const {
     open,
-    prompt,
     handleClick,
     messages,
     setMessages,
@@ -35,22 +34,16 @@ const AiChatForm: React.FC<AiChatFormProps> = (props) => {
 
 	useEffect(() => {
 		if (open) {
-			setMessages([
-				{
-					id: 'openai-chat',
-					role: 'system',
-					content: prompt,
-				},
-			])
+			setMessages([])
 		}
-	}, [open, prompt, setMessages])
+	}, [open, setMessages])
 
 	return (
 		<div className="flex p-2 flex-col space-y-4">
 			<TextArea
-				label="Write a sentence about ..."
+				label="Generate a page about ..."
 				name="prompt"
-				placeholder="Enter text..."
+				placeholder="Enter page description..."
 				value={input}
 				handleChange={handleInputChange}
 			/>

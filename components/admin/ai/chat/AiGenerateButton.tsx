@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Icon, Sheet } from '../../../../components'
+import { Icon, Sheet } from '../../..'
 import { TextInputPropsType } from '../../../../types'
 import AiChatForm from './AiChatForm'
 import { useChat } from 'ai/react'
@@ -13,12 +13,12 @@ import {
 	TooltipTrigger,
 } from 'frontend-shadcn'
 
-type AiChatModalProps = TextInputPropsType & {
+type AiGenerateButtonProps = TextInputPropsType & {
 	prompt?: string
 	id?: string
 }
 
-const AiChatModal: React.FC<AiChatModalProps> = (props) => {
+const AiGenerateButton: React.FC<AiGenerateButtonProps> = (props) => {
 	const { id = 'openai-chat', label, name, handleChange, prompt = '' } = props
 
 	const [open, setOpen] = useState(false)
@@ -91,4 +91,4 @@ const AiChatModal: React.FC<AiChatModalProps> = (props) => {
 	)
 }
 
-export default AiChatModal
+export default AiGenerateButton

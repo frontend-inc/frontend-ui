@@ -31,8 +31,10 @@ export default function FormWizardButtons({
 				variant="outline"
 				onClick={handlePrevStep}
 				className={'w-full sm:w-[260px] bg-background'}
-			>
-				<ChevronLeft className="mr-2 h-4 w-4" />
+        startIcon={
+          <ChevronLeft className="h-4 w-4" />
+        }
+			>				
 				Prev
 			</Button>
 			{currentStep !== totalSteps ? (
@@ -41,13 +43,12 @@ export default function FormWizardButtons({
 					onClick={handleNextStep}
 					disabled={currentStep === totalSteps}
 					className="w-full sm:w-[260px]"
+          loading={ loading }
+          endIcon={
+            <ChevronRight className="h-4 w-4" />
+          }
 				>
 					Next
-					{loading ? (
-						<Loader2 className="ml-2 h-4 w-4 animate-spin" />
-					) : (
-						<ChevronRight className="ml-2 h-4 w-4" />
-					)}
 				</Button>
 			) : (
 				<Button
@@ -55,9 +56,9 @@ export default function FormWizardButtons({
 					onClick={handleSubmit}
 					disabled={currentStep !== totalSteps}
 					className="w-full sm:w-[260px]"
+          loading={ loading } 
 				>
-					{buttonText}
-					{loading && <Loader2 className="ml-2 h-4 w-4 animate-spin" />}
+					{buttonText}					
 				</Button>
 			)}
 		</div>

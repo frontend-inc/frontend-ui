@@ -1,11 +1,11 @@
 'use client'
 
 import React from 'react'
-import Feature from './Feature'
-import { Placeholder } from '../../../components'
-import { BlurFade } from '../../../components'
+import FeatureIcon from './FeatureIcon'
+import { Placeholder } from '../..'
+import { BlurFade } from '../..'
 
-export type FeaturesProps = {
+export type FeatureIconsProps = {
 	items: {
 		icon?: any
 		title?: string
@@ -13,7 +13,7 @@ export type FeaturesProps = {
 	}[]
 }
 
-const Features: React.FC<FeaturesProps> = (props) => {
+const FeatureIcons: React.FC<FeatureIconsProps> = (props) => {
 	const { items = [] } = props || {}
 
 	return (
@@ -21,7 +21,7 @@ const Features: React.FC<FeaturesProps> = (props) => {
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-10">
 				{items?.map((item, idx) => (
 					<BlurFade delay={0.25 + idx * 0.05} inView key={idx}>
-						<Feature
+						<FeatureIcon
 							icon={item?.icon}
 							title={item?.title}
 							subtitle={item?.subtitle}
@@ -40,4 +40,4 @@ const Features: React.FC<FeaturesProps> = (props) => {
 	)
 }
 
-export default Features
+export default FeatureIcons

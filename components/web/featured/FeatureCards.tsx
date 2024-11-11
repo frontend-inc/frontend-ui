@@ -1,11 +1,11 @@
 'use client'
 
 import React from 'react'
-import { Placeholder } from '../../../components'
-import FeaturedCard from './FeaturedCard'
-import { BlurFade } from '../../../components'
+import { Placeholder } from '../..'
+import FeaturedCard from './FeatureCard'
+import { BlurFade } from '../..'
 
-export type FeaturedProps = {
+export type FeatureCardsProps = {
 	items: {
 		icon?: string
 		label?: string
@@ -21,7 +21,7 @@ export type FeaturedProps = {
 	enableBorder?: boolean
 }
 
-const Featured: React.FC<FeaturedProps> = (props) => {
+const FeatureCards: React.FC<FeatureCardsProps> = (props) => {
 	const {
 		items = [],
 		enableBorder,
@@ -60,4 +60,4 @@ const Featured: React.FC<FeaturedProps> = (props) => {
 	)
 }
 
-export default Featured
+export default FeatureCards

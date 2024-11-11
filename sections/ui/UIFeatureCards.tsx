@@ -2,13 +2,13 @@
 
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { Featured } from '../../components'
-import { FeaturedProps } from '../../components/web/featured/Featured'
+import { FeatureCards } from '../../components'
+import { FeatureCardsProps } from '../../components/web/featured/FeatureCards'
 import { SectionProps, HeadingProps } from '../../types'
 
-type UIFeaturedProps = SectionProps & HeadingProps & FeaturedProps
+type UIFeatureCardsProps = SectionProps & HeadingProps & FeatureCardsProps
 
-const UIFeatured: React.FC<UIFeaturedProps> = (props) => {
+const UIFeatureCards: React.FC<UIFeatureCardsProps> = (props) => {
 	const {
 		label,
 		title,
@@ -40,10 +40,10 @@ const UIFeatured: React.FC<UIFeaturedProps> = (props) => {
 					textAlign={'center'}
 					size="lg"
 				/>
-				<Featured {...rest} />
+				<FeatureCards {...rest} />
 			</div>
 		</Section>
 	)
 }
 
-export default UIFeatured
+export default UIFeatureCards

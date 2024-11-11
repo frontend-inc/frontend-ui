@@ -2,11 +2,11 @@
 
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { Features } from '../../components'
-import { FeaturesProps } from '../../components/web/features/Features'
+import { FeatureIcons } from '../../components'
+import { FeatureIconsProps } from '../../components/web/features/FeatureIcons'
 import { SectionProps, HeadingProps } from '../../types'
 
-type UIFeaturesProps = SectionProps & HeadingProps & FeaturesProps
+type UIFeaturesProps = SectionProps & HeadingProps & FeatureIconsProps
 
 const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 	const {
@@ -39,7 +39,7 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 					subtitle={subtitle}
 					textAlign={'center'}
 				/>
-				<Features {...rest} />
+				<FeatureIcons {...rest} />
 			</div>
 		</Section>
 	)
