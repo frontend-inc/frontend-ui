@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Button } from '../../../../components'
-import { Avatar } from 'frontend-shadcn'
+import { Avatar, AvatarFallback } from 'frontend-shadcn'
 import { Icon, Heading, Image } from '../../../../components'
 import { HeadingProps } from '../../../../types'
 
@@ -26,8 +26,10 @@ const FormCard: React.FC<FormCardProps> = (props) => {
 	return (
 		<div className="flex flex-col items-center space-y-4">
 			{checkMark && (
-				<Avatar className="h-12 w-12 bg-primary text-primary-foreground">
-					<Icon name="Check" className="h-6 w-6" />
+				<Avatar>
+          <AvatarFallback className="bg-primary">
+					  <Icon name="Check" className="h-8 w-8 text-primary-foreground" />
+          </AvatarFallback>
 				</Avatar>
 			)}
 			{image && (

@@ -75,7 +75,7 @@ const FormWizard: React.FC<FormWizardProps> = (props) => {
 		<div className="w-full flex flex-col justify-between items-center">
 			<FormWizardProgress currentStep={currentStep} totalSteps={totalSteps} />
 			<div className="flex flex-col justify-center items-center w-full h-full">
-				<div className="px-2 py-4 w-full">
+				<div className="container mx-auto max-w-screen-sm p-2 w-full">
 					{currentField && (
 						<FormWizardField
 							fadeIn={fadeIn}
