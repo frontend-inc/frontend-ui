@@ -39,6 +39,7 @@ export default function CustomDrawer({
 	buttons,
 	maxWidth = 'md',
 }: CustomDrawerProps) {
+  
 	const maxWidthClasses = {
 		sm: 'max-w-screen-sm',
 		md: 'max-w-screen-md',

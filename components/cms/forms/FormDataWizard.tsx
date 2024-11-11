@@ -76,8 +76,7 @@ const FormDataWizard: React.FC<FormDataWizardProps> = (props) => {
 		}
 	}, [formId])
 
-	return (
-		<div className="container max-auto max-w-screen-lg">
+	return (  		
 			<div className="flex flex-col space-y-2">
         <FormCard
           checkMark={submitted}
@@ -101,8 +100,7 @@ const FormDataWizard: React.FC<FormDataWizardProps> = (props) => {
 					handleRemoveAttachment={handleRemove}
 					handleAddAttachment={handleAddAttachment}
 				/>
-			</div>
-		</div>
+			</div>		
 	)
 }
 

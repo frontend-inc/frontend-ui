@@ -14,7 +14,11 @@ const FormWizardModal: React.FC<FormWizardModalProps> = (props) => {
 	const { open, handleClose } = props || {}
 
 	return (
-		<Drawer open={open} handleClose={handleClose}>
+		<Drawer 
+      open={open} 
+      handleClose={handleClose}
+      maxWidth='xl'
+    >
 			<FormWizard {...props} />
 		</Drawer>
 	)
