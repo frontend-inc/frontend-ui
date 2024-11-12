@@ -56,16 +56,6 @@ const useAdminProducts = () => {
 		name: 'product',
 	})
 
-	const aiGenerate = async (prompt) => {
-		return loadingWrapper(() =>
-			api.post(`${apiUrl}/products/ai_generate`, {
-				ai: {
-					prompt: prompt,
-				},
-			})
-		)
-	}
-
 	return {
 		paginate,
 		loading,
@@ -85,9 +75,6 @@ const useAdminProducts = () => {
 		createProduct,
 		deleteProduct,
 		deleteProducts,
-
-		aiGenerate,
-
 		loadMore,
 		publish,
 		unpublish,

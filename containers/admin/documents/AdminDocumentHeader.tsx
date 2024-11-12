@@ -3,9 +3,8 @@
 import React, { useState } from 'react'
 import { ResourceHeader } from '../../../components'
 import { ResourceHeaderProps } from '../../../components/cms/resources/ResourceHeader'
-import { useAdminDocuments, useAdminCollections } from '../../../hooks'
-import { Form, Modal, Icon } from '../../../components'
-import { Button } from '../../../components/core'
+import { useAdminDocuments } from '../../../hooks'
+import { AiGenerateDocumentsButton } from '../../../components'
 
 type AdminDocumentHeaderProps = ResourceHeaderProps & {
 	collectionId: string
@@ -14,63 +13,25 @@ type AdminDocumentHeaderProps = ResourceHeaderProps & {
 const AdminDocumentHeader: React.FC<AdminDocumentHeaderProps> = (props) => {
 	const { handleReload, collectionId } = props || {}
 
-	const { loading: collectionLoading, aiGenerate } = useAdminCollections()
+	const { loading, createDocuments } = useAdminDocuments({
+    collection: collectionId,
+  })
 
-	const [open, setOpen] = useState(false)
-
-	const [prompt, setPrompt] = useState({ text: '' })
-	const handleChange = (ev) => {
-		setPrompt({
-			text: ev.target.value,
-		})
-	}
-
-	const handleGenerateAiDocuments = async () => {
-		await aiGenerate(collectionId, prompt.text)
-		setOpen(false)
-		if (handleReload) {
-			handleReload()
-		}
-	}
+  const handleSuccess = async (documents: any) => {
+    console.log("Documents", documents)
+    //await createDocuments(documents)
+    handleReload()
+  }
 
 	return (
 		<ResourceHeader
-			{...props}
-			secondaryAction={
-				<>
-					<Button
-						className="bg-blue-500 text-white hover:bg-blue-700 hover:text-white"
-						onClick={() => setOpen(true)}
-						startIcon={<Icon name="Zap" className="text-white" />}
-					>
-						Generate
-					</Button>
-					<Modal
-						icon="Zap"
-						title="Generate Content"
-						open={open}
-						handleClose={() => setOpen(false)}
-						loading={collectionLoading}
-					>
-						<Form
-							errors={{}}
-							resource={prompt}
-							handleChange={handleChange}
-							fields={[
-								{
-									name: 'prompt',
-									label: 'Describe the products to generate',
-									variant: 'text',
-									placeholder: '',
-									default: '',
-								},
-							]}
-							handleSubmit={handleGenerateAiDocuments}
-							buttonText="Generate"
-						/>
-					</Modal>
-				</>
-			}
+			{...props}			
+      secondaryAction={
+        <AiGenerateDocumentsButton
+          loading={ loading }
+          handleSuccess={handleSuccess}
+        />
+      }
 		/>
 	)
 }

@@ -25,7 +25,7 @@ export type ResourceHeaderProps = {
 	handleSort: (field: any) => void
 	handleSortDirection: (sortDirection: 'asc' | 'desc') => void
 	handleAdd: () => void
-	handleReload?: () => void
+	handleReload: () => void
 	keywords: string
 	activeFilters: FilterOptionType[]
 	filterOptions: SearchFilterOptionType[]

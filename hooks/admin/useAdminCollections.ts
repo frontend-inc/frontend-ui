@@ -49,13 +49,6 @@ const useAdminCollections = () => {
 		)
 	}
 
-	const aiGenerate = async (collectionId, prompt) => {
-		return await loadingWrapper(() =>
-			api.post(`${apiUrl}/collections/${collectionId}/ai_generate`, {
-				prompt,
-			})
-		)
-	}
 
 	return {
 		loading,
@@ -86,8 +79,7 @@ const useAdminCollections = () => {
 		handleSort,
 		setCollection,
 		setCollections,
-		exportCSV,
-		aiGenerate,
+		exportCSV,		
 	}
 }
 

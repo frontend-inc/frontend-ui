@@ -83,16 +83,6 @@ const useAdminProductCollections = () => {
 		)
 	}
 
-	const aiGenerate = async (prompt) => {
-		return loadingWrapper(() =>
-			api.post(`${apiUrl}/product_collections/ai_generate`, {
-				ai: {
-					prompt: prompt,
-				},
-			})
-		)
-	}
-
 	return {
 		paginate,
 		loading,
@@ -139,8 +129,6 @@ const useAdminProductCollections = () => {
 		setProductCollections,
 		startIndex,
 		endIndex,
-
-		aiGenerate,
 	}
 }
 

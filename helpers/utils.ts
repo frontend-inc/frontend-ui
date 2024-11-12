@@ -99,9 +99,13 @@ export const cloudinaryConvertToJpeg = (url) => {
 }
 
 export const cloudinaryImageFromVideoUrl = (url) => {
-	if (!url || url?.length <= 3 ) return null;
-	return url?.replace(/mp4|mpeg|ogg|mkv|mov/i, 'jpg')
-}
+  if (!url || url.length <= 3) return null;
+  const videoExtensions = /\.(mp4|mpeg|ogg|mkv|mov)$/i
+  if (!videoExtensions.test(url)) {
+    return url;
+  }  
+  return url.replace(videoExtensions, '.jpg');
+};
 
 export const scrollTo = (domId) => {
 	const elem = document.getElementById(domId)
