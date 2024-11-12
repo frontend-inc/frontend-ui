@@ -9,7 +9,8 @@ import { SectionProps } from '../../types'
 type UIProfileProps = SectionProps & ProfileProps
 
 const UIProfile: React.FC<UIProfileProps> = (props) => {
-	const { 
+	
+  const { 
     bgColor, 
     mode, 
     py, 
