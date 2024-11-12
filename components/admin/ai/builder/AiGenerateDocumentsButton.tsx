@@ -48,13 +48,7 @@ const AiGenerateCollectionButton: React.FC<AiGenerateCollectionButtonProps> = (p
       image: await getImage(document?.title) 
 		})))
     
-		handleSuccess({
-      ...object,
-			template: {
-        ...object,
-        documents
-      }           
-		})
+		handleSuccess(documents)
 	}
 
 	const handleChatSubmit = () => submit(input)
