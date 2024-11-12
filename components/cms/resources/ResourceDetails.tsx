@@ -28,8 +28,7 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 		actions,
 		label,
 		image,
-		fields = [],
-    height=450,
+		fields = [],    
 	} = props || {}
 
 	return (
