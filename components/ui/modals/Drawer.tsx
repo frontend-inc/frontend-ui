@@ -15,6 +15,7 @@ import {
 } from 'frontend-shadcn'
 import { useTheme } from '../../../hooks'
 import { Button } from '../../../components'
+import { Loader2 } from 'lucide-react'
 import { X } from 'lucide-react'
 import { cn } from 'frontend-shadcn'
 
@@ -27,6 +28,7 @@ type CustomDrawerProps = {
 	buttons?: React.ReactNode
 	children: React.ReactNode
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl'
+  className?: string
 }
 
 export default function CustomDrawer({
@@ -38,6 +40,7 @@ export default function CustomDrawer({
 	children,
 	buttons,
 	maxWidth = 'md',
+  className
 }: CustomDrawerProps) {
   
 	const maxWidthClasses = {
@@ -52,7 +55,7 @@ export default function CustomDrawer({
 	return (
 		<Drawer shouldScaleBackground open={open} onOpenChange={handleClose}>
 			<DrawerPortal>
-				<DrawerContent shouldScaleBackground className={cn(mode)}>
+				<DrawerContent shouldScaleBackground className={cn(mode, className)}>
 					<DrawerHeader>
 						<div className="flex w-full justify-end">
 							<DrawerClose>
@@ -86,11 +89,16 @@ export default function CustomDrawer({
 									'w-full min-h-[50vh] max-h-[75vh]'
 								)}
 							>
-								{children}
+                { !loading ? 
+                  children : 
+                  <div className="flex justify-center items-center w-full">
+                    <Loader2 className="animate-spin h-12 w-12 text-foreground" /> 
+                  </div>
+                } 
 							</div>
 						</div>
 					</ScrollArea>
-					{!loading && buttons && (
+					{buttons && (
 						<DrawerFooter className="w-full flex items-center justify-center">
 							<div className={cn(maxWidthClasses[maxWidth], 'w-full')}>
 								{buttons}

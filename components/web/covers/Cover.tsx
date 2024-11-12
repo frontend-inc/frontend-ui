@@ -33,7 +33,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 		height = 400,
 		alt = 'image',
 		enableGradient = false,
-		enableOverlay = false,
+		enableOverlay = true,
 		alignItems = 'center',
 		buttonText,
 		actions,

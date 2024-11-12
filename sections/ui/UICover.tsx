@@ -15,8 +15,7 @@ const UICover: React.FC<UICoverProps> = (props) => {
 		px,
 		py,
 		maxWidth,
-		requireAuth,
-
+		requireAuth,        
 		...rest
 	} = props
 
