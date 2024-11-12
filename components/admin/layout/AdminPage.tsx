@@ -24,6 +24,7 @@ export type AdminPageProps = {
 	handleEdit?: (menuItem: AdminMenuType) => void
 	handleDelete?: (menuItem: AdminMenuType) => void
 	disablePadding?: boolean
+  enableExpandLeftPanel?: boolean
 	leftPanel?: React.FC
 	children: React.ReactNode
 }
@@ -43,6 +44,7 @@ const AdminPage: React.FC<AdminPageProps> = (props) => {
 		handleEdit,
 		handleDelete,
 		disablePadding = false,
+    enableExpandLeftPanel = true,
 		children,
 	} = props || {}
 
@@ -68,7 +70,7 @@ const AdminPage: React.FC<AdminPageProps> = (props) => {
 				</AdminLayoutLeft>
 			)}
 			<AdminLayoutCenter>
-				<AdminHeader title={title} buttons={actions} enableExpandLeftPanel />
+				<AdminHeader title={title} buttons={actions} enableExpandLeftPanel={enableExpandLeftPanel} />
 				<AdminLayoutScroll>
 					<div className={cn(disablePadding ? 'p-0' : 'p-4')}>{children}</div>
 				</AdminLayoutScroll>
