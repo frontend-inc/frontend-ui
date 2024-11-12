@@ -70,6 +70,7 @@ const ShowField: React.FC<ShowFieldProps> = (props) => {
 		},
 		image: {
 			label,
+      height: 450,
 		},
 		video: {
 			height: 450,
