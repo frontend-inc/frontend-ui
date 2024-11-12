@@ -86,24 +86,24 @@ const AiGenerateButton: React.FC<AiGenerateButtonProps> = (props) => {
 				open={open}
 				handleClose={() => setOpen(false)}
 			>
-          <AiChatForm
-            open={open}
-            handleClick={handleClick}
-            messages={messages}
-            setMessages={setMessages}
-            input={input}
-            handleInputChange={handleInputChange}
-          />
-          <Button
-            type="submit"
-						fullWidth
-						className="bg-blue-500 text-white hover:bg-blue-700"					
-						loading={loading}
-            onClick={handleChatSubmit}
-						startIcon={<Icon name="Zap" className="text-white" />}
-					>
-						Generate
-					</Button>
+        <AiChatForm
+          open={open}
+          handleClick={handleClick}
+          messages={messages}
+          setMessages={setMessages}
+          input={input}
+          handleInputChange={handleInputChange}
+        />
+        <Button
+          type="submit"
+          fullWidth
+          className="bg-blue-500 text-white hover:bg-blue-700"					
+          loading={loading}
+          onClick={handleChatSubmit}
+          startIcon={<Icon name="Zap" className="text-white" />}
+        >
+          Generate
+        </Button>
 			</Sheet>
 		</>
 	)

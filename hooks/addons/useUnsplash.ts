@@ -12,10 +12,10 @@ const useUnsplash = () => {
 	const [page, setPage] = useState(1)
 	const [images, setImages] = useState<UnsplashImageType[]>([])
 
-	const handleSearch = async (keywords, page) => {
+	const handleSearch = async (keywords, page, perPage=20) => {
 		let resp = await loadingWrapper(() =>
 			fetch(
-				`https://api.unsplash.com/search/photos?query=${keywords}&page=${page}&client_id=${apiKey}`
+				`https://api.unsplash.com/search/photos?query=${keywords}&page=${page}&per_page=${perPage}&client_id=${apiKey}`
 			)
 		)
 		return resp?.json()
@@ -28,9 +28,9 @@ const useUnsplash = () => {
 		return data?.url
 	}
 
-	const search = async (keywords, page = 1) => {
+	const search = async (keywords, page = 1, perPage = 20) => {
 		setPage(page)
-		let resp = await handleSearch(keywords, page)
+		let resp = await handleSearch(keywords, page, perPage)
 		if (resp?.results) {
 			setImages(resp.results)
 		}
@@ -54,6 +54,7 @@ const useUnsplash = () => {
 		images,
 		search,
 		loadMore,
+    handleSearch,
 		fetchDownloadLocation,
 	}
 }

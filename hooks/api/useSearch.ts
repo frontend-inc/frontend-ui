@@ -21,24 +21,10 @@ const useSearch = (props) => {
 		loadMore,
 	} = useResourceContext()
 
-	const [filter, setFilter] = useState()
 	const [queryFilters, setQueryFilters] = useState([])
 	const [activeFilters, setActiveFilters] = useState([])
 	const [keywords, setKeywords] = useState('')
 	const [location, setLocation] = useState('')
-
-	const findFilter = (fieldName, filters) => {
-		let foundFilter = filters.find((f) => f.name == fieldName)
-		setFilter(foundFilter)
-		return foundFilter
-	}
-
-	const compareValues = (a, b) => {
-		if (Array.isArray(a) && Array.isArray(b)) {
-			return a.sort().join(',') === b.sort().join(',')
-		}
-		return a === b
-	}
 
 	// Compare only the name and operator and override
 	const findDuplicateFilterIndex = (filters, filter) => {

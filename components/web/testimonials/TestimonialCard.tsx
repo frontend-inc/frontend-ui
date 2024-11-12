@@ -16,21 +16,21 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 	const { author, text, image = '' } = props || {}
 
 	return (
-		<div className={'p-4 h-[320px] border border-zinc-200 rounded-lg'}>
+		<div className={'p-4 min-h-[240px]'}>
 			<div className="flex flex-col space-y-3 justify-between h-full">
 				<div>
 					{text && (
 						<ExpandableText
 							variant="subtitle1"
-							className="text-muted-foreground"
-							text={`"${text}"`}
+							className="font-normal italic leading-loose"
+							text={text}
 						/>
 					)}
 				</div>
-				<div className="flex flex-row space-x-2">
-					<Avatar src={image} />
+				<div className="flex flex-row space-x-2 items-center">
+					<Avatar src={image} variant="circular" />
 					<Typography variant="body2" className="text-muted-foreground">
-						&mdash; {author}
+						- {author}
 					</Typography>
 				</div>
 			</div>
