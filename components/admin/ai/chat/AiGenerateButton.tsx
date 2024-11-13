@@ -97,7 +97,7 @@ const AiGenerateButton: React.FC<AiGenerateButtonProps> = (props) => {
         <Button
           type="submit"
           fullWidth
-          className="bg-blue-500 text-white hover:bg-blue-700"					
+          className="bg-accent text-white hover:bg-accent/80"					
           loading={loading}
           onClick={handleChatSubmit}
           startIcon={<Icon name="Zap" className="text-white" />}

@@ -41,8 +41,8 @@ export default function SidebarMenuItem(props: SidebarMenuItemProps) {
 	return (
 		<div
 			className={cn(
-				'group flex items-center rounded-md justify-between hover:bg-muted',
-				selected && 'bg-muted'
+				'group flex items-center rounded-md justify-between hover:bg-accent/20',
+        selected && 'bg-accent/20'
 			)}
 		>
 			<button
@@ -62,8 +62,8 @@ export default function SidebarMenuItem(props: SidebarMenuItemProps) {
 						<Icon 
               name={icon} 
               className={cn(
-                "w-4 h-4 text-muted-foreground",
-                selected && 'text-foreground'
+                "w-4 h-4 text-muted-foreground group-hover:text-accent",
+                selected && 'text-accent'
               )} 
               />
 					</div>
@@ -71,8 +71,8 @@ export default function SidebarMenuItem(props: SidebarMenuItemProps) {
 				<Typography 
           variant="body2"
           className={cn(
-            "font-normal text-muted-foreground",
-            selected && 'text-foreground'
+            "font-normal text-muted-foreground group-hover:text-accent",
+            selected && 'text-accent'
           )}
         >{title}</Typography>
 			</button>
@@ -82,7 +82,11 @@ export default function SidebarMenuItem(props: SidebarMenuItemProps) {
 					<DropdownMenuTrigger asChild>
 						<Button variant="ghost" className="h-8 w-8 p-0">
 							<span className="sr-only">Open menu</span>
-							<MoreVertical className="h-4 w-4 text-foreground" />
+							<MoreVertical className={cn(
+                  "h-4 w-4 text-foreground group-hover:text-accent",
+                  selected && 'text-accent'
+                )} 
+              />
 						</Button>
 					</DropdownMenuTrigger>
 					<DropdownMenuContent align="end" className="w-[160px]">

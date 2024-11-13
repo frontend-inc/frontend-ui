@@ -21,15 +21,18 @@ export default function LayoutTabIcon(props: LayoutTabIconProps) {
 
   return (
 		<IconButton
-			className={cn(selected && 'bg-primary hover:bg-primary')}
+			className={cn(
+        'group hover:bg-accent',
+        selected && 'bg-accent'
+      )}
 			onClick={handleClick}
 		>
 			<Icon
 				name={icon}
 				className={
-          cn('w-4 h-4 text-muted-foreground', 
-          selected && 'text-primary-foreground'
-      )}
+          cn('w-4 h-4 text-muted-foreground group-hover:text-accent-foreground/80', 
+          selected && 'text-accent-foreground'
+        )}
 			/>
 		</IconButton>
 	)
