@@ -84,7 +84,7 @@ const AiGenerateProductsButton: React.FC<AiGenerateProductsButtonProps> = (props
 				buttons={
 					<Button
 						fullWidth
-						className="bg-blue-500 text-white hover:bg-blue-700"
+						className="bg-accent hover:bg-accent/80 text-white"
 						onClick={handleChatSubmit}
 						loading={isLoading}
 						startIcon={<Icon name="Zap" className="text-white" />}

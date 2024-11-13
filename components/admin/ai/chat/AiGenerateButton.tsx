@@ -71,7 +71,7 @@ const AiGenerateButton: React.FC<AiGenerateButtonProps> = (props) => {
 				<Tooltip>
 					<TooltipTrigger asChild>
 						<Button
-							className="bg-blue-500 text-white hover:bg-blue-700"
+							className="bg-accent hover:bg-accent/80 text-white"
 							startIcon={<Icon name="Zap" className='text-white' />}
 							onClick={() => setOpen(!open)}
 						>

@@ -56,7 +56,7 @@ const AiGenerateCollectionButton: React.FC<AiGenerateCollectionButtonProps> = (p
 	return (
 		<>			
       <Button
-        className="bg-blue-500 text-white hover:bg-blue-700"        
+        className="bg-accent hover:bg-accent-hover"        
         onClick={() => setOpen(!open)}
         startIcon={<Icon name="Zap" className="text-white" />}
         loading={loading}
@@ -71,7 +71,7 @@ const AiGenerateCollectionButton: React.FC<AiGenerateCollectionButtonProps> = (p
 				buttons={
 					<Button
 						fullWidth
-						className="bg-blue-500 text-white hover:bg-blue-700"
+						className="bg-accent hover:bg-accent/80 text-white"
 						onClick={handleChatSubmit}
 						loading={isLoading}
 						startIcon={<Icon name="Zap" className="text-white" />}
