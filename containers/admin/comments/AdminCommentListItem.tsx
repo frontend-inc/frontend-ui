@@ -4,14 +4,14 @@ import React from 'react'
 import { UserAvatar, Label, ResourceListItem } from '../../../components'
 import { truncate } from '../../../helpers'
 
-type AdminCommentItemProps = {
+type AdminCommentListItemProps = {
 	resource: any
 	handleClick: () => void
 	handleEdit: () => void
 	handleDelete: () => void
 }
 
-const AdminCommentItem: React.FC<AdminCommentItemProps> = (props) => {
+const AdminCommentListItem: React.FC<AdminCommentListItemProps> = (props) => {
 	const { resource: comment, handleClick, handleEdit, handleDelete } = props
 
 	const getCommentUserName = (comment) => {
@@ -20,6 +20,7 @@ const AdminCommentItem: React.FC<AdminCommentItemProps> = (props) => {
 
 	return (
 		<ResourceListItem
+      disableImage
 			primary={getCommentUserName(comment)}
 			secondary={truncate(comment?.body, 40)}
 			avatar={<UserAvatar user={comment?.user} />}
@@ -31,4 +32,4 @@ const AdminCommentItem: React.FC<AdminCommentItemProps> = (props) => {
 	)
 }
 
-export default AdminCommentItem
+export default AdminCommentListItem
