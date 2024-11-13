@@ -16,6 +16,7 @@ const AdminMenuItem: React.FC<ResourceItemProps> = (props) => {
 
 	return (
 		<ResourceListItem
+      disableImage
 			sortable={sortable}
 			enableBorder={enableBorder}
 			icon="FolderTree"

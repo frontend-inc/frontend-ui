@@ -38,13 +38,13 @@ export default function AdminHeader(props: AdminHeaderProps) {
 			)}
 		>
 			<div className="grid grid-cols-3 gap-1 w-full">
-				<div className="flex flex-row items-center h-full px-2">
+				<div className="flex flex-row items-center h-full">
 					{enableExpandLeftPanel && !openLayoutLeft && <ExpandLeftButton />}
 					{primaryActions}
 					{title && (
 						<Typography
 							variant="body1"
-							className="leading-none break-keep text-foreground"
+							className="px-2 leading-none break-keep text-foreground"
 						>
 							{title}
 						</Typography>
