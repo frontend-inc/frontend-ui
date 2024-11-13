@@ -12,11 +12,14 @@ type AdminLayoutLeftProps = {
 	disableBorder?: boolean
 }
 
-export default function AdminLayoutLeft({
-	title,
-	children,
-}: AdminLayoutLeftProps) {
-	const { openLayoutLeft, setOpenLayoutLeft } = useAdmin()
+export default function AdminLayoutLeft(props: AdminLayoutLeftProps) {
+
+  const {
+    title,
+    children,
+  } = props
+	
+  const { openLayoutLeft, setOpenLayoutLeft } = useAdmin()
 
 	return (
 		<>
@@ -24,7 +27,7 @@ export default function AdminLayoutLeft({
 				{openLayoutLeft && (
 					<div
 						className={cn(
-							'bg-background p-0 overflow-y-scroll overflow-x-hidden scrollbar-hide',
+							'bg-background px-3 overflow-y-scroll overflow-x-hidden scrollbar-hide',
 							'h-screen sm:min-w-[320px] ml-auto',
 							'border-r border-border'
 						)}

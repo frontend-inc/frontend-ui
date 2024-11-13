@@ -25,38 +25,56 @@ interface SidebarMenuItemProps {
 	handleDelete?: () => void
 }
 
-export default function SidebarMenuItem({
-	selected = false,
-	title,
-	color = 'bg-transparent',
-	icon,
-	secondaryAction,
-	handleClick,
-	handleEdit,
-	handleDelete,
-}: SidebarMenuItemProps) {
+export default function SidebarMenuItem(props: SidebarMenuItemProps) {
+
+  const {
+    selected = false,
+    title,
+    color = 'bg-transparent',
+    icon,
+    secondaryAction,
+    handleClick,
+    handleEdit,
+    handleDelete,
+  } = props
+
 	return (
 		<div
 			className={cn(
 				'group flex items-center rounded-md justify-between hover:bg-muted',
-				selected && 'bg-muted text-foreground'
+				selected && 'bg-muted'
 			)}
 		>
 			<button
 				onClick={handleClick}
-				className="w-full flex gap-2 py-3 pl-4 px-2 rounded-md group items-center focus:outline-none"
+				className={
+          cn(
+            "w-full flex gap-2 h-[38px] pl-4 px-2 rounded-md group items-center focus:outline-none",
+          )}
 			>
 				{icon && (
 					<div
 						className={cn(
 							color,
-							'h-8 w-8 rounded-md flex items-center justify-center'
+							'h-8 w-8 rounded-md flex items-center justify-center',
 						)}
 					>
-						<Icon name={icon} className="w-5 h-5 text-foreground" />
+						<Icon 
+              name={icon} 
+              className={cn(
+                "w-4 h-4 text-muted-foreground",
+                selected && 'text-foreground'
+              )} 
+              />
 					</div>
 				)}
-				<Typography variant="body2">{title}</Typography>
+				<Typography 
+          variant="body2"
+          className={cn(
+            "font-normal text-muted-foreground",
+            selected && 'text-foreground'
+          )}
+        >{title}</Typography>
 			</button>
 			{selected && secondaryAction ? secondaryAction : null}
 			{(handleEdit || handleDelete) && (

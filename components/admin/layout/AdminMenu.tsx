@@ -29,7 +29,7 @@ const AdminMenu: React.FC<AdminMenuProps> = (props) => {
 	return (
 		<>
 			{Object.keys(menuItems).map((key, index) => (
-				<MenuList key={index} label={key} enableBorder={index !== 0}>
+				<MenuList key={index} label={key}>
 					{menuItems[key]?.map((menuItem) => (
 						<MenuListItem
 							key={menuItem.value}

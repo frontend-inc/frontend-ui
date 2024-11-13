@@ -13,7 +13,7 @@ type LucideIconProps = {
 const LucideIcon: React.FC<LucideIconProps> = ({
 	name,
 	className,
-	size = 'md',
+	size = 'sm',
 }) => {
 	const Icon = icons[name]
 	if (!Icon) return null

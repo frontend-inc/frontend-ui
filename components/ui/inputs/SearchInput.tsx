@@ -69,9 +69,9 @@ const SearchInput: React.FC<SearchInputProps> = ({
 					onChange={handleInputChange}
 					className="text-foreground flex-grow border-none focus-visible:ring-0 focus-visible:ring-offset-0"
 				/>
-				<div className="h-7 border-l border-input" />
+				<div className="h-6 border-l border-input" />
 				<IconButton className="m-1" onClick={() => handleSearch(text)}>
-					<Search className="h-5 w-5 text-foreground" />
+					<Search className="h-4 w-4 text-foreground" />
 					<span className="sr-only">Search</span>
 				</IconButton>
 			</form>

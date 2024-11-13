@@ -37,7 +37,7 @@ export default function AdminTabIcons({
 	return (
 		<div className="w-full h-full flex flex-col items-center justify-between border-r border-border">
 			<div className="w-full flex flex-col items-center justify-center space-y-3 pt-0">
-				<div className="h-[50px] p-2 w-full flex flex-col items-center justify-center border-b border-border">
+				<div className="h-[50px] p-2 w-full flex flex-col items-center justify-center">
 					{logo && (
 						<IconButton
 							className="w-[36px] h-[36px] rounded-md"

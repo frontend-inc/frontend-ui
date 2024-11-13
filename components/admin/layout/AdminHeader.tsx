@@ -16,26 +16,29 @@ type AdminHeaderProps = {
 	enableExpandRightPanel?: boolean
 }
 
-export default function AdminHeader({
-	title,
-	buttons,
-	primaryActions,
-	secondaryActions,
-	enableExpandLeftPanel = false,
-	enableExpandRightPanel = false,
-	disableBorder = false,
-}: AdminHeaderProps) {
+export default function AdminHeader(props: AdminHeaderProps) {
+
+  const {
+    title,
+    buttons,
+    primaryActions,
+    secondaryActions,
+    enableExpandLeftPanel = false,
+    enableExpandRightPanel = false,
+    disableBorder = false,
+  } = props
+
 	const { openLayoutLeft } = useAdmin()
 
-	return (
+	return (    
 		<div
 			className={cn(
-				'w-full flex flex-row items-center h-[50px] min-h-[50px] px-2 bg-background',
-				!disableBorder && 'border-b border-border'
+				'w-full flex flex-row items-center h-[50px] min-h-[50px]',
+				!disableBorder && 'border-b border-border',
 			)}
 		>
 			<div className="grid grid-cols-3 gap-1 w-full">
-				<div className="flex flex-row items-center h-full">
+				<div className="flex flex-row items-center h-full px-2">
 					{enableExpandLeftPanel && !openLayoutLeft && <ExpandLeftButton />}
 					{primaryActions}
 					{title && (

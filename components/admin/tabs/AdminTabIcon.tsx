@@ -11,19 +11,25 @@ type LayoutTabIconProps = {
 	handleClick?: () => void
 }
 
-export default function LayoutTabIcon({
-	icon,
-	selected = false,
-	handleClick,
-}: LayoutTabIconProps) {
-	return (
+export default function LayoutTabIcon(props: LayoutTabIconProps) {
+	
+  const {
+    icon,
+    selected = false,
+    handleClick,
+  } = props
+
+  return (
 		<IconButton
 			className={cn(selected && 'bg-primary hover:bg-primary')}
 			onClick={handleClick}
 		>
 			<Icon
 				name={icon}
-				className={cn('w-5 h-5', selected && 'text-primary-foreground')}
+				className={
+          cn('w-4 h-4 text-muted-foreground', 
+          selected && 'text-primary-foreground'
+      )}
 			/>
 		</IconButton>
 	)

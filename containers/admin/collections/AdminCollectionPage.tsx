@@ -33,9 +33,10 @@ const AdminCollectionPage: React.FC = () => {
 				<AdminCollectionMenu />
 			</AdminLayoutLeft>
 			<AdminLayoutCenter>
-				<AdminHeader enableExpandLeftPanel />
-				<ScrollArea>
-					<div className="w-full p-4">
+				<AdminHeader 
+          enableExpandLeftPanel           
+        />
+				  <ScrollArea className='mt-4'>
 						{collection ? (
 							<AdminDocumentsList
 								documentType={collection?.document_type}
@@ -49,7 +50,6 @@ const AdminCollectionPage: React.FC = () => {
 								description="Select or create a CMS collection."
 							/>
 						)}
-					</div>
 				</ScrollArea>
 			</AdminLayoutCenter>
 		</>

@@ -39,7 +39,7 @@ export default function ButtonTabs({
 							{tab.icon && (
 								<Icon
 									name={tab.icon}
-									className={cn('h-5 w-5', tab.label && 'mr-2')}
+									className={cn('h-4 w-4', tab.label && 'mr-2')}
 								/>
 							)}
 							{tab.label && <span className="text-sm">{tab.label}</span>}

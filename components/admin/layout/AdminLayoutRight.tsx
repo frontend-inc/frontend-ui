@@ -18,7 +18,7 @@ const AdminLayoutRight: React.FC<AdminLayoutRightProps> = (props) => {
 		<div>
 			<Hidden smDown>
 				{openLayoutRight && (
-					<div className="border-l border-border w-[300px] min-w-[300px] h-screen">
+					<div className="px-3 w-[300px] min-w-[300px] h-screen">
 						{children}
 					</div>
 				)}

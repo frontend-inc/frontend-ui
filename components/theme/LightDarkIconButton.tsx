@@ -15,8 +15,8 @@ const LightDarkIconButton: React.FC = () => {
       onClick={handleClick}
     >
       {theme === 'light' ? 
-        <Sun className="w-5 h-5 text-foreground" /> : 
-        <Moon className="w-5 h-5 text-foreground" />
+        <Sun className="w-4 h-4 text-foreground" /> : 
+        <Moon className="w-4 h-4 text-foreground" />
       }
     </IconButton>
   )

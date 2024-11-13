@@ -5,14 +5,13 @@ import { ScrollArea } from 'frontend-shadcn'
 
 type AdminLayoutScrollProps = {
 	children: React.ReactNode
-	ref?: any
-	pb?: number
+	className?: string
 }
 
 const AdminLayoutScroll: React.FC<AdminLayoutScrollProps> = (props) => {
-	const { children } = props || {}
+	const { children, className } = props || {}
 
-	return <ScrollArea>{children}</ScrollArea>
+	return <ScrollArea className={className}>{children}</ScrollArea>
 }
 
 export default AdminLayoutScroll
