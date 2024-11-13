@@ -56,7 +56,7 @@ export default function SidebarMenuItem(props: SidebarMenuItemProps) {
 					<div
 						className={cn(
 							color,
-							'h-8 w-8 rounded-md flex items-center justify-center',
+							'rounded-md flex items-center justify-center',
 						)}
 					>
 						<RemixIcon 

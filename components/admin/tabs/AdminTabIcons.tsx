@@ -7,7 +7,7 @@ import { Separator } from 'frontend-shadcn'
 import AdminAuthButton from './AdminAuthButton'
 import { LightDarkIconButton } from '../../../components'
 import AdminTabIcon from './AdminTabIcon'
-import Image from 'next/image'
+import { RiShining2Fill } from '@remixicon/react'
 import { useRouter } from 'next/navigation'
 
 type AdminTabIconsProps = {
@@ -40,10 +40,13 @@ export default function AdminTabIcons({
 				<div className="h-[50px] p-2 w-full flex flex-col items-center justify-center">
 					{logo && (
 						<IconButton
-							className="w-[36px] h-[36px] rounded-md"
+							className="rounded-md"
 							onClick={handleHomeClick}
 						>
-              <i className="ri-shining-2-fill text-accent h-8 w-8" />							
+              <RiShining2Fill 
+                size={20}
+                className="text-accent" 
+              />							
 						</IconButton>
 					)}
 				</div>

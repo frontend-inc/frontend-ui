@@ -28,7 +28,7 @@ export default function LayoutTabIcon(props: LayoutTabIconProps) {
 		>
       <RemixIcon 
         name={ icon } 
-        className={cn(selected && 'bg-accent')} 
+        className={cn(selected && 'text-accent')} 
       />
 		</IconButton>
 	)

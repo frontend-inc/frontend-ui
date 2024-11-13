@@ -41,6 +41,13 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		xl: 'subtitle1',
 	}[size] as TypographyVariantsType
 
+  const spacingClass = {
+		sm: 'space-y-3',
+		md: 'space-y-4',
+		lg: 'space-y-6',
+		xl: 'space-y-8',
+	}[size] as TypographyVariantsType
+
 	if (!title && !subtitle && !label) return null
 	return (
 		<div
@@ -53,7 +60,10 @@ const Heading: React.FC<HeadingProps> = (props) => {
         "w-full container max-w-screen-md flex flex-col justify-between",
         textAlign === 'center' && 'mx-auto',
         )}>
-				<div className="flex flex-col space-y-5">
+				<div className={cn(
+          "flex flex-col",
+          spacingClass 
+        )}>
 					{label && (
 						<div
 							className={cn(
