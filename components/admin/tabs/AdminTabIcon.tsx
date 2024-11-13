@@ -26,7 +26,10 @@ export default function LayoutTabIcon(props: LayoutTabIconProps) {
       )}
 			onClick={handleClick}
 		>
-      <RemixIcon name={ icon } />
+      <RemixIcon 
+        name={ icon } 
+        className={cn(selected && 'bg-accent')} 
+      />
 		</IconButton>
 	)
 }

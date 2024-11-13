@@ -43,7 +43,7 @@ export default function AdminTabIcons({
 							className="w-[36px] h-[36px] rounded-md"
 							onClick={handleHomeClick}
 						>
-							<i className="ri-sparkling-2-fill h-5 w-5 text-accent transition duration-200 hover:rotate-6" />
+              <i className="ri-shining-2-fill text-accent h-8 w-8" />							
 						</IconButton>
 					)}
 				</div>

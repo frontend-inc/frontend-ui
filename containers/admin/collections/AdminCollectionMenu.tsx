@@ -137,12 +137,11 @@ const AdminCollectionMenu: React.FC = () => {
 			</MenuList>
 			<div className="px-4">
 				<Button
-					color="secondary"
 					onClick={handleCreateCollectionClick}
-					className="group"
+					className="group bg-accent text-accent-foreground hover:bg-accent/80"
 					startIcon={
-						<div className="group-hover:rotate-180 transition-transform duration-300 ease-in-out">
-							<Plus className="text-primary-foreground h-5 w-5" />
+						<div className="group-hover:rotate-180 group-hover:text-accent transition-transform duration-300 ease-in-out">
+							<Plus className="text-accent-foreground h-5 w-5" />
 						</div>
 					}
 				>

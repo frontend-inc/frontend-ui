@@ -71,7 +71,7 @@ export default function SidebarMenuItem(props: SidebarMenuItemProps) {
 				<Typography 
           variant="body2"
           className={cn(
-            "font-normal text-muted-foreground group-hover:text-accent",
+            "front-medium tracking-wide text-muted-foreground group-hover:text-accent",
             selected && 'text-accent'
           )}
         >{title}</Typography>
