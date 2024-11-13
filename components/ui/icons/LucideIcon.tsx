@@ -10,11 +10,14 @@ type LucideIconProps = {
 	className?: string
 }
 
-const LucideIcon: React.FC<LucideIconProps> = ({
-	name,
-	className,
-	size = 'sm',
-}) => {
+const LucideIcon: React.FC<LucideIconProps> = (props) => {
+
+  const {
+    name,
+    className,
+    size = 'sm',
+  } = props
+  
 	const Icon = icons[name]
 	if (!Icon) return null
 
@@ -26,11 +29,7 @@ const LucideIcon: React.FC<LucideIconProps> = ({
 	}
 
 	return (
-		//@ts-ignore
-		<Icon
-			className={cn('text-foreground', sizeClasses[size], className)}
-			size={size}
-		/>
+		<Icon className={cn('text-foreground', sizeClasses[size], className)} />
 	)
 }
 

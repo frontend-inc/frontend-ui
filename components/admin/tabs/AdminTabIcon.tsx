@@ -1,9 +1,8 @@
 'use client'
 
 import React from 'react'
-import { IconButton } from '../../core'
+import { RemixIcon, IconButton } from '../../../components'
 import { cn } from 'frontend-shadcn'
-import { Icon } from '../../../components'
 
 type LayoutTabIconProps = {
 	icon: string
@@ -27,13 +26,7 @@ export default function LayoutTabIcon(props: LayoutTabIconProps) {
       )}
 			onClick={handleClick}
 		>
-			<Icon
-				name={icon}
-				className={
-          cn('w-4 h-4 text-muted-foreground group-hover:text-accent', 
-          selected && 'text-accent'
-        )}
-			/>
+      <RemixIcon name={ icon } />
 		</IconButton>
 	)
 }

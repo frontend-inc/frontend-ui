@@ -2,6 +2,7 @@ import React from 'react'
 import { IconButton } from '../../components'
 import { useTheme } from 'next-themes'
 import { Moon, Sun } from 'lucide-react'
+import { RiMoonFill, RiSunFill } from '@remixicon/react'
 
 const LightDarkIconButton: React.FC = () => {
   const { theme, setTheme } = useTheme()
@@ -13,10 +14,11 @@ const LightDarkIconButton: React.FC = () => {
   return (
     <IconButton    
       onClick={handleClick}
+      className="flex items-center justify-center"
     >
       {theme === 'light' ? 
-        <Sun className="w-4 h-4 text-foreground" /> : 
-        <Moon className="w-4 h-4 text-foreground" />
+        <i className="ri-sun-fill w-4 h-4 text-foreground transition duration-200 hover:scale-110" /> : 
+        <i className="ri-moon-fill w-4 h-4 text-foreground transition duration-200 hover:scale-110" />
       }
     </IconButton>
   )

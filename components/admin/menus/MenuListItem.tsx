@@ -11,7 +11,7 @@ import {
 	DropdownMenuTrigger,
 } from 'frontend-shadcn'
 import { MoreVertical, Pencil, Trash } from 'lucide-react'
-import { Icon } from '../../../components'
+import { RemixIcon } from '../../../components'
 
 interface SidebarMenuItemProps {
 	title: string
@@ -59,7 +59,7 @@ export default function SidebarMenuItem(props: SidebarMenuItemProps) {
 							'h-8 w-8 rounded-md flex items-center justify-center',
 						)}
 					>
-						<Icon 
+						<RemixIcon 
               name={icon} 
               className={cn(
                 "w-4 h-4 text-muted-foreground group-hover:text-accent",

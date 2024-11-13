@@ -1,3 +1,4 @@
+export * from './icons'
 export * from './buttons'
 export * from './inputs'
 export * from './images'
@@ -22,7 +23,6 @@ export { default as Heading } from './typography/Heading'
 export { default as Sheet } from './modals/Sheet'
 export { default as SquareButton } from './SquareButton'
 
-export { default as Icon } from './Icon'
 export { default as IconLoading } from './loaders/IconLoading'
 export { default as Label } from './Label'
 export { default as MenuButton } from './MenuButton'

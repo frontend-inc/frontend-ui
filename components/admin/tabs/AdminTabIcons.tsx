@@ -43,7 +43,7 @@ export default function AdminTabIcons({
 							className="w-[36px] h-[36px] rounded-md"
 							onClick={handleHomeClick}
 						>
-							<Image src={logo} height={24} width={24} alt="logo" />
+							<i className="ri-sparkling-2-fill h-5 w-5 text-accent transition duration-200 hover:rotate-6" />
 						</IconButton>
 					)}
 				</div>
