@@ -18,14 +18,17 @@ type SearchInputProps = {
 	handleSearch: (keywords: string) => void
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({
-	name = 'keywords',
-	fullWidth = false,
-	value,
-	placeholder = 'Search...',
-	handleChange,
-	handleSearch,
-}) => {
+const SearchInput: React.FC<SearchInputProps> = (props) => {
+
+  const {
+    name = 'keywords',
+    fullWidth = false,
+    value,
+    placeholder = 'Search...',
+    handleChange,
+    handleSearch,
+  } = props
+
 	const [text, setText] = useState(value)
 	const [debouncedValue] = useDebounce(text, 500)
 
@@ -58,7 +61,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
 					handleSearch(text)
 				}}
 				className={cn(
-					'bg-background flex items-center w-full border border-input rounded-md transition-shadow hover:shadow-md',
+					'bg-background flex items-center w-full border border-input rounded-md transition-shadow hover:shadow-md overflow-hidden',
 					fullWidth ? 'w-full' : 'max-w-[400px] min-w-[280px] sm:min-w-full'
 				)}
 			>
@@ -70,7 +73,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
 					className="text-foreground flex-grow border-none focus-visible:ring-0 focus-visible:ring-offset-0"
 				/>
 				<div className="h-6 border-l border-input" />
-				<IconButton className="m-1" onClick={() => handleSearch(text)}>
+				<IconButton className="rounded-none" onClick={() => handleSearch(text)}>
 					<Search className="h-4 w-4 text-foreground" />
 					<span className="sr-only">Search</span>
 				</IconButton>
