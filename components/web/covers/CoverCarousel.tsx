@@ -50,7 +50,7 @@ const CoverCarousel: React.FC<CoverCarouselProps> = (props) => {
 			</Swipeable>
 			{items?.length === 0 && (
 				<Placeholder
-					icon="Image"
+					icon="ri-carousel-view"
 					title="No cover images"
 					description="Cover images will appear here."
 				/>

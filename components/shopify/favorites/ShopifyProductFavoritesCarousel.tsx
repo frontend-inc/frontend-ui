@@ -37,9 +37,9 @@ const ShopifyProductFavoritesCarousel: React.FC<
 			/>
 			{favorites?.length === 0 && (
 				<Placeholder
-					icon={'Heart'}
-					title={'No favorites'}
-					description={'You have no favorites yet'}
+					icon='ri-heart-2-fill'
+					title='No favorites'
+					description='You have no favorites yet'
 				/>
 			)}
 		</div>

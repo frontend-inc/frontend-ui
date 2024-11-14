@@ -48,7 +48,7 @@ const Logos: React.FC<LogosProps> = (props) => {
 			</div>
 			{logos?.length === 0 && (
 				<Placeholder
-					icon="Image"
+					icon="ri-image-circle-fill"
 					title="No logos"
 					description="Logos will appear here"
 				/>

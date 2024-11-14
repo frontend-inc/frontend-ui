@@ -136,7 +136,7 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
 			)}
 			{!loading && (!products || products?.length == 0) && (
 				<Placeholder
-					icon="Search"
+					icon="ri-search-fill"
 					title="No search results"
 					description="Try another search term"
 				/>

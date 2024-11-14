@@ -57,7 +57,7 @@ const Cards: React.FC<CardsProps> = (props) => {
 			</div>
 			{items?.length == 0 && (
 				<Placeholder
-					icon="Search"
+					icon="ri-stack-fill"
 					title="No content yet."
 					description="Your content will appear here."
 				/>

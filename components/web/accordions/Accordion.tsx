@@ -26,7 +26,7 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 				))}
 				{items?.length == 0 && (
 					<Placeholder
-						icon="Search"
+						icon="ri-search-fill"
 						title="No content"
 						description="Your content will appear here."
 					/>

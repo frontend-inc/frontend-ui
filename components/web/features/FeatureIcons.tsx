@@ -31,7 +31,7 @@ const FeatureIcons: React.FC<FeatureIconsProps> = (props) => {
 			</div>
 			{items?.length == 0 && (
 				<Placeholder
-					icon="Zap"
+					icon="ri-stack-fill"
 					title="No features"
 					description="No features to display."
 				/>

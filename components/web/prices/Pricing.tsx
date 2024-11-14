@@ -33,7 +33,7 @@ const Pricing: React.FC<PricingProps> = (props) => {
 			</div>
 			{items?.length === 0 && (
 				<Placeholder
-					icon="CreditCard"
+					icon="ri-bank-card-fill"
 					title="No subscription plans"
 					description="Subscription plans will appear here."
 				/>

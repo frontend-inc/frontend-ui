@@ -68,7 +68,7 @@ const ShopifySearchModal: React.FC<ShopifySearchModalProps> = (props) => {
 			<ShopifyProducts loading={loading} products={products} />
 			{keywords?.length > 0 && !loading && products?.length == 0 && (
 				<Placeholder
-					icon={'search'}
+					icon='ri-search-fill'
 					title="No search results"
 					description="Try another search term"
 				/>

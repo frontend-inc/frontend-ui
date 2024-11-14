@@ -62,7 +62,7 @@ const Videos: React.FC<VideosProps> = (props) => {
         </div>
 			{items?.length == 0 && (
 				<Placeholder
-					icon="PlayCircle"
+					icon="ri-video-fill"
 					title="No videos yet."
 					description="Videos will appear here."
 				/>

@@ -24,7 +24,7 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 			)}
 			{items?.length == 0 && (
 				<Placeholder
-					icon="Star"
+					icon="ri-double-quotes-l-line"
 					title="No testimonials yet."
 					description="Your testimonials will appear here."
 				/>

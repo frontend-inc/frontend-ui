@@ -39,7 +39,7 @@ const LinkList: React.FC<LinkListProps> = (props) => {
 			</ul>
 			{items?.length == 0 && (
 				<Placeholder
-					icon="Link"
+					icon="ri-list-unordered-line"
 					title="No links yet."
 					description="Your links will appear here."
 				/>

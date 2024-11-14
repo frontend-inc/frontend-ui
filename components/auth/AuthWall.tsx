@@ -14,7 +14,7 @@ const AuthWall: React.FC = () => {
 
 	return (
 		<div className="container mx-auto max-w-screen-md">
-			<Placeholder
+			<Placeholder      
 				title="Sign in to view content"
 				description="You are not logged in."
 				buttons={<Button onClick={handleLoginClick}> Sign in</Button>}

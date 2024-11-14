@@ -45,7 +45,7 @@ const AdminCollectionPage: React.FC = () => {
 							/>
 						) : (
 							<Placeholder
-								icon="Database"
+								icon="ri-database-2-fill"
 								title="No collection."
 								description="Select or create a CMS collection."
 							/>

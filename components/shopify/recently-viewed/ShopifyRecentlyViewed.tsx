@@ -44,7 +44,7 @@ const ShopifyRecentlyViewed: React.FC<ShopifyRecentlyViewedProps> = (props) => {
 			)}
 			{products?.length === 0 && (
 				<Placeholder
-					icon={'ShoppingCart'}
+					icon='ri-shopping-cart-2-fill'
 					title={'No recently viewed'}
 					description={'You have no recently viewed products.'}
 				/>

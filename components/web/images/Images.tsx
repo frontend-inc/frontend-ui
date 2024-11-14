@@ -50,7 +50,7 @@ const Images: React.FC<ImagesProps> = (props) => {
         </div>
 			{items?.length == 0 && (
 				<Placeholder
-					icon="Image"
+					icon="ri-collage-fill"
 					title="No images yet."
 					description="Images will appear here."
 				/>

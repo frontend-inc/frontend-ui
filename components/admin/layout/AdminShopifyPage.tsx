@@ -69,6 +69,7 @@ const AdminShopifyPage: React.FC<AdminShopifyPageProps> = (props) => {
 	if (!app?.shopify_domain || !app?.shopify_storefront_access_token) {
 		return (
 			<Placeholder
+        icon="ri-shopping-cart-2-fill"
 				title="Please connect your Shopify store"
 				description="You need to connect your Shopify store to use this feature"
 			/>

@@ -37,7 +37,7 @@ const PriceList: React.FC<PriceListProps> = (props) => {
 			</ul>
 			{items?.length == 0 && (
 				<Placeholder
-					icon="Search"
+					icon="ri-list-unordered-line"
 					title="No items yet."
 					description="Your items will appear here."
 				/>

@@ -18,7 +18,7 @@ const ShopifyCustomerPortal = () => {
 
 	return (
 		<Placeholder
-			icon="ShoppingCart"
+			icon="ri-shopping-cart-2-fill"
 			title="Shopify Customer Portal"
 			description="Manage your order history and returns."
 			buttons={

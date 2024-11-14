@@ -54,7 +54,7 @@ const MediaList: React.FC<MediaListProps> = ({ selectedIds, handleSelect }) => {
 			</div>
 			{resources?.length === 0 && (
 				<Placeholder
-					icon={'Image'}
+					icon='ri-layout-masonry-fill'
 					title="No media"
 					description="Upload or import media."
 				/>

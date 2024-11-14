@@ -7,6 +7,7 @@ const NoSearchResults: React.FC = () => {
 	return (
 		<div className="flex flex-row w-full justify-center">
 			<Placeholder
+        icon="ri-search-fill"
 				title="No search results"
 				description="Please try another query."
 			/>
