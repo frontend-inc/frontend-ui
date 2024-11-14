@@ -11,4 +11,6 @@ export { default as AdminShopifyPage } from './AdminShopifyPage'
 
 // Expand buttons
 export { default as ExpandLeftButton } from './ExpandLeftButton'
+export { default as ExpandMobileLeftButton } from './ExpandMobileLeftButton'
 export { default as ExpandRightButton } from './ExpandRightButton'
+export { default as ExpandMobileRightButton } from './ExpandMobileRightButton'

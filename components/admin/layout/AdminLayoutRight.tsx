@@ -12,7 +12,11 @@ type AdminLayoutRightProps = {
 
 const AdminLayoutRight: React.FC<AdminLayoutRightProps> = (props) => {
 	const { children, title } = props
-	const { openLayoutRight, setOpenLayoutRight } = useAdmin()
+	const { 
+    openLayoutRight, 
+    openMobileRight, 
+    setOpenMobileRight 
+  } = useAdmin()
 
 	return (
 		<div>
@@ -26,8 +30,8 @@ const AdminLayoutRight: React.FC<AdminLayoutRightProps> = (props) => {
 			<Hidden smUp>
 				<Sheet
 					title={title}
-					open={openLayoutRight}
-					handleClose={() => setOpenLayoutRight(false)}
+					open={openMobileRight}
+					handleClose={() => setOpenMobileRight(false)}
 				>
 					{children}
 				</Sheet>

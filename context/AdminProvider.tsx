@@ -18,6 +18,8 @@ const AdminProvider: React.FC<AdminProviderProps> = (props) => {
 
 	const [openLayoutLeft, setOpenLayoutLeft] = useState(true)
 	const [openLayoutRight, setOpenLayoutRight] = useState(true)
+  const [openMobileLeft, setOpenMobileLeft] = useState(false)
+  const [openMobileRight, setOpenMobileRight] = useState(false)
 
 	const [activeTab, setActiveTab] = useState(false)
 	const [leftTab, setLeftTab] = useState(0)
@@ -50,6 +52,13 @@ const AdminProvider: React.FC<AdminProviderProps> = (props) => {
 
 		openLayoutLeft,
 		setOpenLayoutLeft,
+    
+    openMobileLeft,
+    setOpenMobileLeft,
+
+    openMobileRight,
+    setOpenMobileRight,
+
 		toggleLayoutLeft,
 
 		openLayoutRight,

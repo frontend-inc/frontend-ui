@@ -35,12 +35,12 @@ const ImageModal: React.FC<ImageModalProps> = (props) => {
 			title={title}
 			maxWidth="md"
 			buttons={
-				<>
+				<div className="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:sspace-x-2">
 					<Button color="secondary" onClick={handleCopyUrlClick}>
 						Copy URL
 					</Button>
 					<Button onClick={handleDownloadClick}>Download</Button>
-				</>
+				</div>
 			}
 		>
 			<Image

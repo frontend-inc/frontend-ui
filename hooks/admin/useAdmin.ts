@@ -13,10 +13,18 @@ const useAdmin = () => {
 		setLeftTab,
 		rightTab,
 		setRightTab,
-		openLayoutLeft,
+		openLayoutLeft,    
 		setOpenLayoutLeft,
+    
+    openMobileLeft,
+    setOpenMobileLeft,
+
 		openLayoutRight,
 		setOpenLayoutRight,
+
+    openMobileRight,
+    setOpenMobileRight,
+
 		toggleLayoutRight,
 	} = useContext(AdminContext)
 
@@ -34,6 +42,10 @@ const useAdmin = () => {
 		openLayoutRight,
 		setOpenLayoutRight,
 		toggleLayoutRight,
+    openMobileLeft,
+    setOpenMobileLeft,
+    openMobileRight,
+    setOpenMobileRight,
 	}
 }
 

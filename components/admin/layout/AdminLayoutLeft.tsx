@@ -19,7 +19,11 @@ export default function AdminLayoutLeft(props: AdminLayoutLeftProps) {
     children,
   } = props
 	
-  const { openLayoutLeft, setOpenLayoutLeft } = useAdmin()
+  const { 
+    openLayoutLeft, 
+    openMobileLeft, 
+    setOpenMobileLeft 
+  } = useAdmin()
 
 	return (
 		<>
@@ -41,8 +45,8 @@ export default function AdminLayoutLeft(props: AdminLayoutLeftProps) {
 				<Sheet
 					disablePadding
 					side="left"
-					open={openLayoutLeft}
-					handleClose={() => setOpenLayoutLeft(false)}
+					open={openMobileLeft}
+					handleClose={() => setOpenMobileLeft(false)}
 				>
 					{children}
 				</Sheet>

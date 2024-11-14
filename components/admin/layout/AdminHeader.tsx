@@ -3,7 +3,11 @@
 import React from 'react'
 import { cn } from 'frontend-shadcn'
 import { Typography } from '../../core'
-import { ExpandLeftButton, ExpandRightButton } from '../../../components'
+import { 
+  ExpandLeftButton,   
+  ExpandRightButton,
+  ExpandMobileLeftButton, 
+} from '../../../components'
 import { useAdmin } from '../../../hooks'
 
 type AdminHeaderProps = {
@@ -40,6 +44,7 @@ export default function AdminHeader(props: AdminHeaderProps) {
 			<div className="grid grid-cols-3 gap-1 w-full">
 				<div className="flex flex-row items-center h-full">
 					{enableExpandLeftPanel && !openLayoutLeft && <ExpandLeftButton />}
+          { enableExpandLeftPanel && <ExpandMobileLeftButton /> }
 					{primaryActions}
 					{title && (
 						<Typography
