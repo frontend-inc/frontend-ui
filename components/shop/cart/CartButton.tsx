@@ -3,7 +3,7 @@
 import React from 'react'
 import { IconButton } from '../../core'
 import { useCart } from '../../../hooks'
-import { Icon } from '../../../components'
+import { RemixIcon } from '../../../components'
 import { Badge } from 'frontend-shadcn'
 
 type CartButtonProps = {
@@ -11,13 +11,13 @@ type CartButtonProps = {
 }
 
 const CartButton: React.FC<CartButtonProps> = (props) => {
-	const { icon = 'ShoppingBag' } = props
+	const { icon = 'ri-shopping-bag-2-fill' } = props
 	const { cart, cartOpen, setCartOpen } = useCart()
 
 	return (
 		<div className="relative">
 			<IconButton onClick={() => setCartOpen(!cartOpen)}>
-				<Icon name={icon} />
+				<RemixIcon name={icon} />
 			</IconButton>
 			<Badge className="py-0 px-1 rounded-full absolute top-0 right-0 transform translate-x-[3px] -translate-y-[3px]">
 				{cart?.total_items}
