@@ -18,14 +18,13 @@ const AdminDocumentHeader: React.FC<AdminDocumentHeaderProps> = (props) => {
   })
 
   const handleSuccess = async (documents: any) => {
-    console.log("Documents", documents)
     let resp = await createDocuments(documents)
-    console.log("RESP", resp)
     if (resp?.id){
       handleReload()
     }    
   }
 
+  if(!collectionId) return null;
 	return (
 		<ResourceHeader
 			{...props}			

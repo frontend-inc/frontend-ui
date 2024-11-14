@@ -1,7 +1,6 @@
 'use client'
 
-import React, { useContext } from 'react'
-import { ShopifyContext } from 'frontend-shopify'
+import React from 'react'
 import { ResourceList } from '../../../components'
 import { useAdmin } from '../../../hooks'
 import AdminDocumentItem from './AdminDocumentListItem'
@@ -11,7 +10,7 @@ import AdminDocumentShow from './AdminDocumentShow'
 import AdminDocumentToolbar from './AdminDocumentToolbar'
 import AdminDocumentHeader from './AdminDocumentHeader'
 import { DocumentTypes, MetafieldType } from '../../../types'
-import { DOCUMENT_FORM_FIELDS, DOCUMENT_SHOW_FIELDS } from '../../../constants'
+import { DOCUMENT_FORM_FIELDS } from '../../../constants'
 
 type AdminDocumentListProps = {
 	documentType: DocumentTypes
@@ -73,7 +72,7 @@ const AdminDocumentsList: React.FC<AdminDocumentListProps> = (props) => {
 					collectionId,
 				},
 			}}
-			emptyIcon="Box"
+			emptyIcon="ri-box-3-fill"
 			emptyTitle="No content"
 			emptyDescription="No content added yet."
 		/>

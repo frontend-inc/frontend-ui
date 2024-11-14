@@ -5,14 +5,14 @@ import { COLLECTION_TEMPLATES } from '../../../constants'
 import { FormFields, ErrorText } from '../../../components'
 import { SquareButton } from '../../../components'
 
-type AdminCollectionFormProps = {
+type AdminCollectionCreateProps = {
 	collection: any
 	handleChange: (e: any) => void
 	handleClick: (template: any) => void
 	errors: any
 }
 
-const AdminCollectionForm: React.FC<AdminCollectionFormProps> = (props) => {
+const AdminCollectionCreate: React.FC<AdminCollectionCreateProps> = (props) => {
 	const { errors, collection, handleClick, handleChange } = props
 
 	return (
@@ -61,4 +61,4 @@ const AdminCollectionForm: React.FC<AdminCollectionFormProps> = (props) => {
 	)
 }
 
-export default AdminCollectionForm
+export default AdminCollectionCreate

@@ -1,82 +1,82 @@
 export const COLLECTION_POST = {
-	icon: 'LayoutPanelTop',
+	icon: 'ri-layout-top-line',
 	document_type: 'post',
 	label: 'Post',
 	color: 'bg-purple-500',
 }
 
 export const COLLECTION_ARTICLE = {
-	icon: 'FileText',
+	icon: 'ri-file-text-fill',
 	document_type: 'article',
 	label: 'Article',
 	color: 'bg-orange-500',
 }
 
 export const COLLECTION_PERSON = {
-	icon: 'User',
+	icon: 'ri-user-fill',
 	document_type: 'person',
 	label: 'Person',
 	color: 'bg-pink-500',
 }
 
 export const COLLECTION_PLACE = {
-	icon: 'MapPin',
+	icon: 'ri-map-pin-fill',
 	document_type: 'place',
 	label: 'Place',
 	color: 'bg-blue-500',
 }
 
 export const COLLECTION_EVENT = {
-	icon: 'Calendar',
+	icon: 'ri-calendar-fill',
 	document_type: 'event',
 	label: 'Event',
 	color: 'bg-amber-500',
 }
 
 export const COLLECTION_VIDEO = {
-	icon: 'Video',
+	icon: 'ri-video-fill',
 	document_type: 'video',
 	label: 'Video',
 	color: 'bg-purple-500',
 }
 
 export const COLLECTION_IMAGE = {
-	icon: 'Image',
+	icon: 'ri-image-fill',
 	document_type: 'image',
 	label: 'Image',
 	color: 'bg-purple-500',
 }
 
 export const COLLECTION_FILE = {
-	icon: 'File',
+	icon: 'ri-file-fill',
 	document_type: 'file',
 	label: 'File',
 	color: 'bg-purple-500',
 }
 
 export const COLLECTION_YOUTUBE = {
-	icon: 'Youtube',
+	icon: 'ri-youtube-fill',
 	document_type: 'youtube',
 	label: 'YouTube Videos',
 	color: 'bg-red-500',
 }
 
 export const COLLECTION_VIMEO = {
-	icon: 'Play',
+	icon: 'ri-play-circle-fill',
 	document_type: 'vimeo',
 	label: 'Vimeo Videos',
 	color: 'bg-sky-500',
 }
 
 export const COLLECTION_SOUNDCLOUD = {
-	icon: 'AudioLines',
+	icon: 'ri-sound-module-fill',
 	document_type: 'soundcloud',
 	label: 'Soundcloud Audio',
 	color: 'bg-amber-500',
 }
 
 export const COLLECTION_SHOPIFY = {
-	icon: 'ShoppingCart',
+	icon: 'ri-shopping-cart-fill',
 	document_type: 'shopify',
 	label: 'Shopify Products',
 	color: 'bg-lime-500',

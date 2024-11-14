@@ -3,7 +3,7 @@
 import React from 'react'
 import { IconLoading, Drawer } from '../../../components'
 import { Button } from '../../../components/core'
-import AdminCollectionForm from './AdminCollectionForm'
+import AdminCollectionForm from './AdminCollectionCreate'
 
 type AdminCollectionEditProps = {
 	loading: boolean

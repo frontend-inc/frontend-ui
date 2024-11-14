@@ -11,7 +11,6 @@ import {
 	DataShow,
 	DataEmpty,
 	DataToolbar,
-  Typography
 } from '../..'
 import { ResourceProvider } from 'frontend-js'
 import {
