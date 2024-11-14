@@ -1,5 +1,4 @@
 export { default as CmsCarousel } from './CmsCarousel'
-export { default as CmsDetails } from './CmsDetails'
 export { default as CmsForm } from './CmsForm'
 export { default as CmsPlacesList } from './CmsPlacesList'
 export { default as CmsList } from './CmsList'
