@@ -9,6 +9,7 @@ export type HeadingProps = {
 	title?: string
 	subtitle?: string
 	textAlign?: 'left' | 'center'
+  fontSize?: 'sm' | 'md' | 'lg' | 'xl'
 }
 
 export type SectionProps = {

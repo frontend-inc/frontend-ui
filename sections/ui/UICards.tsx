@@ -18,6 +18,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 		mode,
 		py,
 		px,
+    fontSize="md",
 		maxWidth,
 		requireAuth,
 		...rest
@@ -38,7 +39,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 					title={title}
 					subtitle={subtitle}
 					textAlign={'center'}
-          size="md"
+          size={fontSize}
 				/>
 				<Cards {...rest} />
 			</div>

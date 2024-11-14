@@ -9,7 +9,8 @@ export type ProfileProps = {
 	image: string
 	label?: string
 	title: string
-	description?: string
+	subtitle?: string
+  description?: string
 	socialLinks?: {
 		provider: string
 		url: string
@@ -17,7 +18,7 @@ export type ProfileProps = {
 }
 
 const Profile: React.FC<ProfileProps> = (props) => {
-	const { label, title, image, description, socialLinks = [] } = props || {}
+	const { label, title, subtitle, image, description, socialLinks = [] } = props || {}
 
 	return (
 		<div className="w-full flex flex-col items-center justify-center rounded">
@@ -36,7 +37,8 @@ const Profile: React.FC<ProfileProps> = (props) => {
 				</div>
 				<div className="flex flex-col space-y-1 w-full sm:w-auto">
 					<Label label={label} />
-					<Typography variant="h3">{title}</Typography>
+					<Typography variant="h4">{title}</Typography>
+          <Typography variant="subtitle2">{subtitle}</Typography>
 					{description && <ExpandableText text={description} />}
 				</div>
 			</div>
