@@ -30,7 +30,7 @@ const AdminShipmentsList: React.FC<AdminShipmentsListProps> = (props) => {
 			edit={AdminShipmentForm}
 			create={AdminShipmentForm}
 			toolbar={AdminShipmentToolbar}
-			emptyIcon="Package"
+			emptyIcon="ri-box-2-fill"
 			emptyTitle="No shipments"
 			emptyDescription="No shipments yet."
 		/>

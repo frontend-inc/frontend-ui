@@ -35,7 +35,7 @@ const AdminAnswersList: React.FC<AdminAnswerListProps> = (props) => {
 			show={AdminAnswerShow}
 			toolbar={AdminAnswerToolbar}
 			component={AdminAnswerItem}
-			emptyIcon="CircleCheck"
+			emptyIcon="ri-checkbox-circle-fill"
 			emptyTitle="No answer choices"
 			emptyDescription="Add answer choices here."
 		/>

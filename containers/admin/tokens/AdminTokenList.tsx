@@ -31,7 +31,7 @@ const AdminTokenList: React.FC = () => {
 			edit={AdminTokenForm}
 			create={AdminTokenForm}
 			component={AdminTokenListItem}
-			emptyIcon="Key"
+			emptyIcon="ri-key-fill"
 			emptyTitle="No API Keys"
 			emptyDescription="No API keys yet."
 		/>

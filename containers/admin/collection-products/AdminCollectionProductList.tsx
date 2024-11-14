@@ -29,7 +29,7 @@ const AdminCollectionProductsList: React.FC<
 			toolbar={AdminProductToolbar}
 			component={AdminProductItem}
 			create={AdminCollectionProductsAdd}
-			emptyIcon="Shirt"
+			emptyIcon="t-shopping-bag-2-fill"
 			emptyTitle="No products"
 			emptyDescription="No products added yet."
 			slots={{

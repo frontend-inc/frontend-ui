@@ -36,7 +36,7 @@ const AdminMenuLinkList: React.FC<AdminMenuListProps> = (props) => {
 			edit={AdminMenuLinkForm}
 			create={AdminMenuLinkForm}
 			component={AdminMenuLinkItem}
-			emptyIcon="Link"
+			emptyIcon="ri-link-fill"
 			emptyTitle="No links"
 			emptyDescription="No links yet."
 		/>

@@ -36,7 +36,7 @@ const AdminMenuList = () => {
 				edit={AdminMenuForm}
 				create={AdminMenuForm}
 				component={AdminMenuItem}
-				emptyIcon="FolderTree"
+				emptyIcon="ri-node-tree-line"
 				emptyTitle="No menus"
 				emptyDescription="No menus yet."
 			/>

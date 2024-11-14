@@ -28,7 +28,7 @@ const AdminCommentsList: React.FC = () => {
 			]}
 			component={AdminCommentItem}
 			show={AdminCommentShow}
-			emptyIcon="MessageSquare"
+			emptyIcon="ri-message-2-fill"
 			emptyTitle="No comments"
 			emptyDescription="No comments yet."
 		/>

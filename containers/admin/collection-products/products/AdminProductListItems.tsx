@@ -27,7 +27,7 @@ const AdminProductListItems: React.FC<AdminProductListItemsProps> = (props) => {
 			name={'product'}
 			toolbar={AdminProductListToolbar}
 			component={AdminProductListItem}
-			emptyIcon="Search"
+			emptyIcon="ri-search-fill"
 			emptyTitle="No products"
 			emptyDescription="No products yet."
 			slots={{

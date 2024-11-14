@@ -43,7 +43,7 @@ const AdminProductCollectionsList: React.FC = () => {
 			header={AdminProductCollectionHeader}
 			toolbar={AdminProductCollectionToolbar}
 			component={AdminProductCollectionItem}
-			emptyIcon="ShoppingCard"
+			emptyIcon="ri-bank-card-2-fill"
 			emptyTitle="No product collections"
 			emptyDescription="No products collections added yet."
 		/>

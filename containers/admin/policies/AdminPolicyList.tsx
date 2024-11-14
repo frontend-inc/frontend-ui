@@ -26,7 +26,7 @@ const AdminPolicysList: React.FC = () => {
 			create={AdminPolicyForm}
 			edit={AdminPolicyForm}
 			component={AdminPolicyListItem}
-			emptyIcon="FileText"
+			emptyIcon="ri-text-snippet-fill"
 			emptyTitle="No policies"
 			emptyDescription="No policies yet."
 			slots={{

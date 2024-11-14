@@ -43,7 +43,7 @@ const AdminOrdersList: React.FC = (props) => {
 			edit={AdminOrderForm}
 			toolbar={AdminOrderToolbar}
 			component={AdminOrderListItem}
-			emptyIcon="ShoppingCart"
+			emptyIcon="ri-shopping-cart-fill"
 			emptyTitle="No orders"
 			emptyDescription="No orders added yet."
 		/>

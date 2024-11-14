@@ -24,7 +24,7 @@ const AdminEmailsList = () => {
 			edit={AdminEmailForm}
 			create={AdminEmailForm}
 			component={AdminEmailListItem}
-			emptyIcon="MessageSquare"
+			emptyIcon="ri-message-2-fill"
 			emptyTitle="No email templates"
 			emptyDescription="No email templates yet."
 		/>

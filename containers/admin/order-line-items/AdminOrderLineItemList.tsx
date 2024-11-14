@@ -29,7 +29,7 @@ const AdminOrderLineItemsList: React.FC<AdminOrderLineItemsListProps> = (
 			}}
 			component={AdminOrderLineItem}
 			toolbar={AdminOrderLineItemToolbar}
-			emptyIcon="Shirt"
+			emptyIcon="ri-shopping-cart-fill"
 			emptyTitle="No order line items"
 			emptyDescription="No order line items."
 		/>

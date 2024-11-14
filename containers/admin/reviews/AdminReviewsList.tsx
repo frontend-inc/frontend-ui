@@ -48,7 +48,7 @@ const AdminReviewsList: React.FC = () => {
 			]}
 			component={AdminReviewListItem}
 			show={AdminReviewShow}
-			emptyIcon="Star"
+			emptyIcon="ri-star-fill"
 			emptyTitle="No reviews found"
 			emptyDescription="No reviews found for this app"
 		/>

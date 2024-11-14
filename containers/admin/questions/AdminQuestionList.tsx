@@ -39,7 +39,7 @@ const AdminQuestionsList: React.FC<AdminQuestionListProps> = (props) => {
 			show={AdminQuestionShow}
 			toolbar={AdminQuestionToolbar}
 			component={AdminQuestionListItem}
-			emptyIcon="Text"
+			emptyIcon="ri-text-snippet-fill"
 			emptyTitle="No questions"
 			emptyDescription="No questions added yet."
       slots={{

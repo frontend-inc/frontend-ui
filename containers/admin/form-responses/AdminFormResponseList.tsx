@@ -61,7 +61,7 @@ const AdminFormResponsesList: React.FC<AdminFormResponsesListProps> = (
 				{ name: 'name', label: 'Name' },
 				{ name: 'email', label: 'Email' },
 			]}
-			emptyIcon="ListCheck"
+			emptyIcon="ri-list-unordered-line"
 			emptyTitle="No responses"
 			emptyDescription="No forms have been submitted yet."
 			slots={{

@@ -40,7 +40,7 @@ const AdminProductsList: React.FC = () => {
 			header={AdminProductHeader}
 			toolbar={AdminProductToolbar}
 			component={AdminProductItem}
-			emptyIcon="Shirt"
+			emptyIcon="ri-shopping-bag-2-fill"
 			emptyTitle="No products"
 			emptyDescription="No products added yet."
 		/>

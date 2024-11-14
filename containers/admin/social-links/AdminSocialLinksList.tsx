@@ -25,7 +25,7 @@ const AdminSocialLinksList: React.FC = () => {
 			create={AdminSocialLinkForm}
 			edit={AdminSocialLinkForm}
 			component={AdminSocialLinkItem}
-			emptyIcon="Instagram"
+			emptyIcon="ri-instagram-fill"
 			emptyTitle="No social media"
 			emptyDescription="No social media yet."
 		/>

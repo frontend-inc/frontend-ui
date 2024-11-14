@@ -38,7 +38,7 @@ const AdminFormsList: React.FC = () => {
 			show={AdminFormShow}
 			toolbar={AdminFormToolbar}
 			component={AdminFormItem}
-			emptyIcon="Text"
+			emptyIcon="ri-text-snippet-fill"
 			emptyTitle="No forms"
 			emptyDescription="No forms added yet."
 		/>

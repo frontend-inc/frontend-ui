@@ -24,7 +24,7 @@ const AdminMediaList: React.FC = (props) => {
 			create={AdminMediaForm}
 			component={AdminMediaListItem}
 			show={AdminMediaShow}
-			emptyIcon="Image"
+			emptyIcon="ri-image-2-fill"
 			emptyTitle="No uploads"
 			emptyDescription="No uploads yet."
 		/>
