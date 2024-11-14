@@ -20,7 +20,7 @@ const UICover: React.FC<UICoverProps> = (props) => {
 	} = props
 
 	return (
-		<Section mode="dark" py={0} px={0} maxWidth={maxWidth}>
+		<Section mode="dark" py='none' px={0} maxWidth={maxWidth}>
 			<Cover {...rest} />
 		</Section>
 	)

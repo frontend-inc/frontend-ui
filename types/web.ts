@@ -18,7 +18,7 @@ export type SectionProps = {
 	mode?: 'dark' | 'light'
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
   fill?: boolean
-	py?: 'sm' | 'md' | 'lg' | 'xl'
+	py?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 	px?: number
 	requireAuth?: boolean
 }

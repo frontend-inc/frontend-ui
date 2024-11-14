@@ -15,7 +15,7 @@ const UICoverCarousel: React.FC<UICoverCarouselProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			mode={'dark'}
-			py={0}
+			py='none'
 			px={0}
 			maxWidth={maxWidth}
 		>
