@@ -23,7 +23,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
 	return (
 		<div className="w-full flex flex-col items-center justify-center rounded">
 			<div className="w-full max-w-screen-md flex flex-col space-y-4 items-start sm:flex-row sm:space-x-[40px] sm:space-y-0">
-				<div className="flex flex-col items-center space-y-1">
+				<div className="flex flex-col w-full items-center justify-center space-y-1">
 					<div className="h-[200px] w-[200px]">
 						<AvatarImage alt={title} src={image} size={200} />
 					</div>
@@ -41,6 +41,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
             title={ title }
             subtitle={ subtitle }
             description={ description }
+            textAlign='left'
           />          
 				</div>
 			</div>
