@@ -28,6 +28,7 @@ export default function LayoutTabIcon(props: LayoutTabIconProps) {
 		>
       <RemixIcon 
         name={ icon } 
+        size="lg"
         className={cn(selected && 'text-accent')} 
       />
 		</IconButton>

@@ -52,7 +52,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				'py-4 px-2 w-full flex justify-between items-center flex-col sm:flex-row',
+				'py-4 w-full flex justify-between items-center flex-col sm:flex-row',
 				className
 			)}
 		>

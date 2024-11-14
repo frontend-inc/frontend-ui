@@ -16,7 +16,7 @@ const UIPricing: React.FC<UIPricingProps> = (props) => {
 		textAlign,
 		bgColor,
 		mode,
-		py=12,
+		py,
 		px,
 		maxWidth = 'xl',
 		requireAuth,

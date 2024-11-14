@@ -16,7 +16,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 		textAlign,
 		bgColor,
 		mode,
-		py=12,
+		py,
 		px,
 		maxWidth,
 		requireAuth,

@@ -16,7 +16,7 @@ const UIText: React.FC<UITextProps> = (props) => {
 			requireAuth={requireAuth}
 			bgColor={bgColor}
 			mode={mode}
-			py={20}
+			py={py}
 			px={px}
 			maxWidth={maxWidth}
 		>

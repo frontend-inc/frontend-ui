@@ -15,23 +15,38 @@ const maxWidthClasses: Record<ContainerMaxWidth, string> = {
 }
 
 const Section: React.FC<SectionProps> = (props) => {
-	const {
+	
+  const {
 		requireAuth = false,
 		children,
 		bgColor,
 		mode,
 		maxWidth,
-		py = 12,
+    fill = false,
+		py = 'md',
 		px = 6,
 	} = props
 
+  const pyClasses = {
+    sm: 'py-[24px]',
+    md: 'py-[48px]',
+    lg: 'py-[96px]',
+    xl: 'py-[144px]',
+  }
+
 	return (
 		<section
-			className={cn(mode, 'w-full bg-background', `py-${py}`, px && `px-${px}`)}
+			className={cn(
+        mode, 
+        'w-full bg-background', 
+        pyClasses[py] || 'py-[64px]',
+        px && `px-${px}`
+      )}
 			style={{ backgroundColor: bgColor }}
 		>
 			<div
 				className={cn(
+          fill && 'p-6 rounded-xl bg-muted/50',
 					maxWidth && maxWidthClasses[maxWidth],
 					'w-full mx-auto min-h-[60px] flex flex-row justify-center items-center'
 				)}

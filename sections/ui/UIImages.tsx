@@ -16,7 +16,7 @@ const UIImages: React.FC<UIImagesProps> = (props) => {
 		textAlign,
 		bgColor,
 		mode,
-		py=12,
+		py,
 		px,
 		maxWidth,
 		requireAuth,

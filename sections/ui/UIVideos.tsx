@@ -16,7 +16,7 @@ const UIVideos: React.FC<UIVideosProps> = (props) => {
 		textAlign,
 		bgColor,
 		mode,
-		py=12,
+		py,
 		px,
 		maxWidth,
 		requireAuth,

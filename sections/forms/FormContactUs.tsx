@@ -12,7 +12,7 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 	const {
 		bgColor,
 		mode,
-		py=12,
+		py,
 		px,
 		maxWidth,
 		requireAuth,

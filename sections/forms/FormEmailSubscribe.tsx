@@ -12,7 +12,7 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 	const {
 		bgColor,
 		mode,
-		py=12,
+		py,
 		px,
 		maxWidth,
 		requireAuth,

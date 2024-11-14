@@ -2,13 +2,13 @@
 
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { InstagramPosts } from '../../components'
-import { InstagramPostProps } from '../../components/web/instagram/InstagramPosts'
+import { LinkList } from '../../components'
+import { LinkListProps } from '../../components/web/links/LinkList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type UIInstagramProps = SectionProps & HeadingProps & InstagramPostProps
+type UILinkListProps = SectionProps & HeadingProps & LinkListProps
 
-const UIInstagram: React.FC<UIInstagramProps> = (props) => {
+const UILinkList: React.FC<UILinkListProps> = (props) => {
 	const {
 		label,
 		title,
@@ -18,7 +18,7 @@ const UIInstagram: React.FC<UIInstagramProps> = (props) => {
 		mode,
 		py,
 		px,
-		maxWidth,
+		maxWidth='sm',
 		requireAuth,
 		...rest
 	} = props
@@ -40,10 +40,10 @@ const UIInstagram: React.FC<UIInstagramProps> = (props) => {
 					textAlign={'center'}
           size="md"
 				/>
-				<InstagramPosts {...rest} />
+				<LinkList {...rest} />
 			</div>
 		</Section>
 	)
 }
 
-export default UIInstagram
+export default UILinkList
