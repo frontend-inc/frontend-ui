@@ -1,12 +1,4 @@
-export const GOOGLE_FONTS = [
-	{
-		name: 'Anton',
-		url: 'https://fonts.googleapis.com/css2?family=Anton&display=swap',
-	},
-	{
-		name: 'Cormorant',
-		url: 'https://fonts.googleapis.com/css2?family=Cormorant&display=swap',
-	},
+export const GOOGLE_FONTS = [	
 	{
 		name: 'DM Sans',
 		url: 'https://fonts.googleapis.com/css2?family=DM+Sans&display=swap',
@@ -34,26 +26,14 @@ export const GOOGLE_FONTS = [
 	{
 		name: 'Lato',
 		url: 'https://fonts.googleapis.com/css2?family=Lato&display=swap',
-	},
-	{
-		name: 'Libre Franklin',
-		url: 'https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap',
-	},
+	},	
 	{
 		name: 'Manrope',
 		url: 'https://fonts.googleapis.com/css2?family=Manrope&display=swap',
 	},
 	{
-		name: 'Outfit',
-		url: 'https://fonts.googleapis.com/css2?family=Outfit&display=swap',
-	},
-	{
 		name: 'Open Sans',
 		url: 'https://fonts.googleapis.com/css2?family=Open+Sans&display=swap',
-	},
-	{
-		name: 'Pacifico',
-		url: 'https://fonts.googleapis.com/css2?family=Pacifico&display=swap',
 	},
 	{
 		name: 'Playfair Display',

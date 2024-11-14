@@ -1,25 +1,24 @@
 import React from 'react'
-import { IconButton, RemixIcon, Typography } from '../../../components'
-import { Avatar, AvatarFallback } from 'frontend-shadcn'
+import { Image, Typography } from '../..'
 import { useButton } from '../../../hooks'
 import { ActionType } from '../../../types'
 
-export type LinkListItemProps = {
-  color: string
-  icon: string
+export type PriceListItemProps = {  
+  image: string
   title: string
   subtitle: string
+  price?: string
   action: ActionType
   path?: string
   url?: string
   src?: string
 }
 
-const LinkListItem: React.FC<LinkListItemProps> = (props) => {
+const PriceListItem: React.FC<PriceListItemProps> = (props) => {
   
   const {
-    color,
-    icon,
+    image,
+    price,
     title,
     subtitle,
     action,
@@ -42,27 +41,26 @@ const LinkListItem: React.FC<LinkListItemProps> = (props) => {
         className="w-full flex justify-between items-center rounded-xl p-4 focus:outline-none hover:bg-muted"
       >
         <div className=" flex flex-row space-x-6 items-center">
-          <Avatar>
-            <AvatarFallback 
-              className="rounded-lg bg-primary-500"
-              style={{
-                backgroundColor: color,
-              }}
-            >
-              <RemixIcon name={icon} className="text-white" />
-            </AvatarFallback>
-          </Avatar>
+          { image && (
+            <div className="h-12 w-12">
+              <Image 
+                src={ image }
+                alt={ title }
+                height={72}
+              />
+            </div>
+          )}
           <div className="flex flex-col space-y-0">          
             <Typography variant="subtitle1" className="font-medium">{title}</Typography>
             <Typography variant="body2" className="text-muted-foreground">{subtitle}</Typography>
           </div>
         </div>
-        <IconButton>
-          <i className="ri-arrow-right-up-line text-xl rotate-[45] text-muted-foreground" />
-        </IconButton>
+        <Typography variant="body2" className="text-muted-foreground">
+          {price}
+        </Typography>
       </button>
     </li>
   )
 }
 
-export default LinkListItem
+export default PriceListItem

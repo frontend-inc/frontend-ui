@@ -1,7 +1,7 @@
 import { FieldVariantType } from '../../types'
 
 export const AUDIO_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Headphones',
+	icon: 'ri-headphone-fill',
 	category: 'Media',
 	variant: 'audio',
 	db_type: 'string',
@@ -12,7 +12,7 @@ export const AUDIO_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const EMAIL_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Mail',
+	icon: 'ri-mail-fill',
 	category: 'Text',
 	variant: 'email',
 	db_type: 'string',
@@ -23,7 +23,7 @@ export const EMAIL_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const PHONE_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Phone',
+	icon: 'ri-phone-fill',
 	category: 'Text',
 	variant: 'phone',
 	db_type: 'string',
@@ -34,7 +34,7 @@ export const PHONE_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const URL_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Link',
+	icon: 'ri-link-m',
 	category: 'Text',
 	variant: 'url',
 	db_type: 'string',
@@ -45,7 +45,7 @@ export const URL_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const TAG_ARRAY_FIELD_VARIANT: FieldVariantType = {
-	icon: 'List',
+	icon: 'ri-list-unordered',
 	category: 'Text',
 	variant: 'array',
 	label: 'Tags',
@@ -56,7 +56,7 @@ export const TAG_ARRAY_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const BOOLEAN_FIELD_VARIANT: FieldVariantType = {
-	icon: 'ToggleLeft',
+	icon: 'ri-toggle-fill',
 	category: 'Boolean',
 	variant: 'boolean',
 	db_type: 'boolean',
@@ -67,7 +67,7 @@ export const BOOLEAN_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const DATE_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Calendar',
+	icon: 'ri-calendar-fill',
 	category: 'Date',
 	variant: 'date',
 	db_type: 'datetime',
@@ -78,7 +78,7 @@ export const DATE_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const DATETIME_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Clock',
+	icon: 'ri-time-fill',
 	category: 'Date',
 	variant: 'datetime',
 	db_type: 'datetime',
@@ -89,7 +89,7 @@ export const DATETIME_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const SELECT_FIELD_VARIANT: FieldVariantType = {
-	icon: 'ChevronDownSquare',
+	icon: 'ri-arrow-down-s-fill',
 	category: 'Text',
 	variant: 'select',
 	label: 'Select',
@@ -100,7 +100,7 @@ export const SELECT_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const FLOAT_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Hash',
+	icon: 'ri-hashtag',
 	category: 'Numbers',
 	variant: 'float',
 	db_type: 'float',
@@ -111,7 +111,7 @@ export const FLOAT_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const JSON_FIELD_VARIANT: FieldVariantType = {
-	icon: 'FileJson',
+	icon: 'ri-code-s-slash-fill',
 	category: 'Data',
 	variant: 'json',
 	db_type: 'jsonb',
@@ -122,7 +122,7 @@ export const JSON_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const IMAGE_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Image',
+	icon: 'ri-image-fill',
 	category: 'Media',
 	variant: 'image',
 	db_type: 'string',
@@ -133,7 +133,7 @@ export const IMAGE_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const PRICE_FIELD_VARIANT: FieldVariantType = {
-	icon: 'DollarSign',
+	icon: 'ri-money-dollar-box-fill',
 	category: 'Numbers',
 	variant: 'price',
 	db_type: 'float',
@@ -144,7 +144,7 @@ export const PRICE_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const LOCATION_FIELD_VARIANT: FieldVariantType = {
-	icon: 'MapPin',
+	icon: 'ri-map-pin-fill',
 	category: 'Geographic',
 	variant: 'location',
 	db_type: 'string',
@@ -155,7 +155,7 @@ export const LOCATION_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const NUMBER_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Hash',
+	icon: 'ri-hashtag',
 	category: 'Numbers',
 	variant: 'number',
 	db_type: 'integer',
@@ -166,7 +166,7 @@ export const NUMBER_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const RATING_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Star',
+	icon: 'ri-star-fill',
 	category: 'Numbers',
 	variant: 'rating',
 	db_type: 'integer',
@@ -177,7 +177,7 @@ export const RATING_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const STRING_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Type',
+	icon: 'ri-text',
 	category: 'Text',
 	variant: 'string',
 	db_type: 'string',
@@ -188,7 +188,7 @@ export const STRING_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const TEXT_FIELD_VARIANT: FieldVariantType = {
-	icon: 'FileText',
+	icon: 'ri-file-text-fill',
 	category: 'Text',
 	variant: 'text',
 	db_type: 'text',
@@ -199,7 +199,7 @@ export const TEXT_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const VIDEO_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Video',
+	icon: 'ri-video-fill',
 	category: 'Media',
 	variant: 'video',
 	label: 'Video',
@@ -210,7 +210,7 @@ export const VIDEO_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const FILE_FIELD_VARIANT: FieldVariantType = {
-	icon: 'File',
+	icon: 'ri-file-fill',
 	category: 'Media',
 	variant: 'file',
 	label: 'File',
@@ -221,7 +221,7 @@ export const FILE_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const SHOPIFY_PRODUCT_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Shirt',
+	icon: 'ri-t-shirt-fill',
 	category: 'Shopify',
 	variant: 'shopify_product',
 	label: 'Shopify Product',
@@ -232,7 +232,7 @@ export const SHOPIFY_PRODUCT_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const YOUTUBE_VIDEO_FIELD_VARIANT: FieldVariantType = {
-	icon: 'Youtube',
+	icon: 'ri-youtube-fill',
 	category: 'Addon',
 	variant: 'youtube_video',
 	label: 'YouTube Video',
@@ -243,7 +243,7 @@ export const YOUTUBE_VIDEO_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const VIMEO_VIDEO_FIELD_VARIANT: FieldVariantType = {
-	icon: 'PlayCircle',
+	icon: 'ri-play-circle-fill',
 	category: 'Addon',
 	variant: 'vimeo_video',
 	label: 'Vimeo Video',
@@ -254,7 +254,7 @@ export const VIMEO_VIDEO_FIELD_VARIANT: FieldVariantType = {
 }
 
 export const SOUNDCLOUND_AUDIO_FIELD_VARIANT: FieldVariantType = {
-	icon: 'AudioLines',
+	icon: 'ri-sound-module-fill',
 	category: 'Addon',
 	variant: 'soundcloud_audio',
 	label: 'Soundcloud Audio',

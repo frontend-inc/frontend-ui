@@ -3,7 +3,6 @@
 import React from 'react'
 import { AvatarImage, SocialLink } from '../..'
 import { Text } from '../../../components'
-import { cn } from 'frontend-shadcn'
 
 export type ProfileProps = {
 	image: string

@@ -77,10 +77,17 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
 					/>
 				)}
 				{enableOverlay && (
-					<div className="absolute inset-0 bg-black bg-opacity-40" />
+					<div 
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}    
+            className="absolute inset-0 bg-black bg-opacity-40" />
 				)}
 				{enableGradient && (
-					<div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" />
+					<div 
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}    
+            className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" 
+          />
 				)}
 				{label && (
 					<Badge

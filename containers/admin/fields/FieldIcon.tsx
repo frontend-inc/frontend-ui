@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Icon } from '../../../components'
+import { RemixIcon } from '../../../components'
 import { FIELD_VARIANTS } from '../../../constants'
 import { cn } from 'frontend-shadcn'
 
@@ -24,7 +24,7 @@ const FieldIcon: React.FC<FieldIconProps> = ({ variant, size = 36 }) => {
 				height: `${size}px`,
 			}}
 		>
-			<Icon name={field?.icon} />
+			<RemixIcon name={field?.icon} />
 		</div>
 	)
 }

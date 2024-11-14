@@ -17,8 +17,8 @@ const LightDarkIconButton: React.FC = () => {
       className="flex items-center justify-center"
     >
       {theme === 'light' ? 
-        <i className="ri-sun-fill w-4 h-4 text-foreground transition duration-200 hover:scale-110" /> : 
-        <i className="ri-moon-fill w-4 h-4 text-foreground transition duration-200 hover:scale-110" />
+        <i className="ri-sun-fill text-md text-foreground transition duration-200 hover:scale-110" /> : 
+        <i className="ri-moon-fill text-md text-foreground transition duration-200 hover:scale-110" />
       }
     </IconButton>
   )

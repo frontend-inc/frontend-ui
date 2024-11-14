@@ -26,11 +26,13 @@ export default function LayoutTabIcon(props: LayoutTabIconProps) {
       )}
 			onClick={handleClick}
 		>
-      <RemixIcon 
-        name={ icon } 
-        size="lg"
-        className={cn(selected && 'text-accent')} 
-      />
+      <div className="w-[36px] h-[36px] flex items-center justify-center">
+        <RemixIcon 
+          name={ icon } 
+          size="lg"
+          className={cn(selected && 'text-accent')} 
+        />
+      </div>
 		</IconButton>
 	)
 }

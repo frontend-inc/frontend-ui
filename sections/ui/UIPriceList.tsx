@@ -2,13 +2,13 @@
 
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { LinkList } from '../../components'
-import { LinkListProps } from '../../components/web/links/LinkList'
+import { PriceList } from '../../components'
+import { PriceListProps } from '../../components/web/price-list/PriceList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type UILinkListProps = SectionProps & HeadingProps & LinkListProps
+type UIPriceListProps = SectionProps & HeadingProps & PriceListProps
 
-const UILinkList: React.FC<UILinkListProps> = (props) => {
+const UIPriceList: React.FC<UIPriceListProps> = (props) => {
 	const {
 		label,
 		title,
@@ -19,11 +19,10 @@ const UILinkList: React.FC<UILinkListProps> = (props) => {
 		py,
 		px,
 		maxWidth='sm',
+    fontSize='md',
 		requireAuth,
 		...rest
 	} = props
-
-  console.log("MaxWidth", maxWidth)
 
 	return (
 		<Section
@@ -40,12 +39,12 @@ const UILinkList: React.FC<UILinkListProps> = (props) => {
 					title={title}
 					subtitle={subtitle}
 					textAlign={'center'}
-          size="md"
+          size={ fontSize }
 				/>
-				<LinkList {...rest} />
+				<PriceList {...rest} />
 			</div>
 		</Section>
 	)
 }
 
-export default UILinkList
+export default UIPriceList

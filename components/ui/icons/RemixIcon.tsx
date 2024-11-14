@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { cn } from 'frontend-shadcn'
 
 // <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.min.css" rel="stylesheet" />
@@ -10,22 +10,25 @@ type RemixIconProps = {
 	className?: string
 }
 
-const RemixIcon: React.FC<RemixIconProps> = ({
-	name,
-	className,
-	size = 'md',
-}) => {
+const RemixIcon = forwardRef<HTMLElement, RemixIconProps>((props, ref) => {
+	const {
+		name,
+		className,
+		size = 'md',
+	} = props
 
 	const sizeClasses = {
-		sm: 'w-4 h-4',
-		md: 'w-5 h-5',
-		lg: 'w-6 h-6',
-		xl: 'w-8 h-8',
+		sm: 'text-sm',
+		md: 'text-md',
+		lg: 'text-lg',
+		xl: 'text-xl',
 	}
 
 	return (
-		<i className={cn(name, 'text-foreground', sizeClasses[size], className)} />
+		<i ref={ref} className={cn(name, 'text-foreground', sizeClasses[size], className)} />
 	)
-}
+})
+
+RemixIcon.displayName = 'RemixIcon'
 
 export default RemixIcon

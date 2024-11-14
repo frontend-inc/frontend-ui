@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Typography } from '../core'
-import { Icon } from '../../components'
+import { RemixIcon } from '../../components'
 import { cn } from 'frontend-shadcn'
 
 type PlaceholderProps = {
@@ -18,7 +18,7 @@ const Placeholder: React.FC<PlaceholderProps> = (props) => {
 
 	return (
 		<div className="w-full rounded-lg p-6 flex flex-col space-y-6 justify-center items-center">
-			{icon && <Icon name={icon} className={cn(color, 'w-5 h-5')} />}
+			{icon && <RemixIcon name={icon} className={cn(color, 'w-5 h-5')} />}
 			<div className="w-full flex flex-col space-y-2 items-center">
 				<Typography variant="body1">{title}</Typography>
 				<Typography variant="body2" className="text-muted-foreground">

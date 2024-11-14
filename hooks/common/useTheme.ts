@@ -5,6 +5,7 @@ const useTheme = () => {
 	
   const { 
     mode, 
+    theme,
     primaryColor, 
     headerFont, 
     bodyFont, 
@@ -13,6 +14,7 @@ const useTheme = () => {
 
 	return {
 		mode,
+    theme,
 		primaryColor,
 		headerFont,
 		bodyFont,

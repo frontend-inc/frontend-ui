@@ -62,10 +62,10 @@ export default function SidebarMenuItem(props: SidebarMenuItemProps) {
 						<RemixIcon 
               name={icon} 
               className={cn(
-                "w-4 h-4 text-muted-foreground group-hover:text-accent",
+                "text-muted-foreground group-hover:text-accent",
                 selected && 'text-accent'
               )} 
-              />
+            />
 					</div>
 				)}
 				<Typography 

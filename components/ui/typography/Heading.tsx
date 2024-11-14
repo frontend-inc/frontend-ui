@@ -46,7 +46,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		md: 'space-y-4',
 		lg: 'space-y-6',
 		xl: 'space-y-8',
-	}[size] as TypographyVariantsType
+	}[size] 
 
 	if (!title && !subtitle && !label) return null
 	return (

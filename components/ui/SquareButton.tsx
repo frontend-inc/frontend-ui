@@ -1,12 +1,12 @@
 import React from 'react'
 import { Avatar, AvatarFallback } from 'frontend-shadcn'
-import { Icon } from '../../components'
+import { RemixIcon } from '../../components'
 import { cn } from 'frontend-shadcn'
 
 type SquareButtonProps = {
 	label: string
 	color?: string
-	icon?: string
+	icon: string
 	selected: boolean
 	handleClick?: () => void
 }
@@ -30,7 +30,7 @@ const SquareButton: React.FC<SquareButtonProps> = (props) => {
 				}}
 			>
 				<AvatarFallback className={color}>
-					<Icon name={icon} className="text-white" />
+					<RemixIcon name={icon} className="text-white" />
 				</AvatarFallback>
 			</Avatar>
 			<div className="text-sm text-left font-medium text-foreground">

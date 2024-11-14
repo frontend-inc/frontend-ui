@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Hidden } from '../../core'
 import { useAdmin } from '../../../hooks'
 import { Sheet } from '../../../components'
@@ -25,7 +25,6 @@ const AdminLayoutRight: React.FC<AdminLayoutRightProps> = (props) => {
 			</Hidden>
 			<Hidden smUp>
 				<Sheet
-					disablePadding
 					title={title}
 					open={openLayoutRight}
 					handleClose={() => setOpenLayoutRight(false)}
