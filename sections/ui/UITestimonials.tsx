@@ -13,7 +13,8 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 		label,
 		title,
 		subtitle,
-		textAlign,
+		textAlign='center',
+    fontSize='lg',
 		bgColor,
 		mode,
 		py,
@@ -37,7 +38,8 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 					label={label}
 					title={title}
 					subtitle={subtitle}
-					textAlign={'center'}
+					textAlign={textAlign}
+          size={fontSize}
 				/>
 				<Testimonials {...rest} layout="grid" />
 			</div>

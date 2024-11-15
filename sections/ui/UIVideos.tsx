@@ -14,6 +14,7 @@ const UIVideos: React.FC<UIVideosProps> = (props) => {
 		title,
 		subtitle,
 		textAlign,
+    fontSize,
 		bgColor,
 		mode,
 		py,
@@ -37,8 +38,8 @@ const UIVideos: React.FC<UIVideosProps> = (props) => {
 					label={label}
 					title={title}
 					subtitle={subtitle}
-					textAlign={'center'}
-          size="md"
+					textAlign={textAlign}
+          size={fontSize}
 				/>
 				<Videos {...rest} />
 			</div>
