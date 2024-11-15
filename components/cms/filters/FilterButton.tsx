@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Icon, Sheet } from '../..'
+import { RemixIcon, Sheet } from '../..'
 import { Hidden } from '../../core'
 import { FilterOptionType, SearchFilterOptionType } from '../../..'
 import { Typography } from '../../../components'
@@ -37,7 +37,7 @@ export const FilterGroup: React.FC<FilterGroupProps> = (props) => {
 								onClick={() => handleFilter(filterOption?.name, option?.value)}
 								endIcon={
 									selected && (
-										<Icon name="Check" className="text-foreground ml-2" />
+										<RemixIcon name="ri-check-fill" className="text-foreground ml-2" />
 									)
 								}
 							>
@@ -80,8 +80,8 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 							filters?.length > 0 && 'border-r-0'
 						)}
 						startIcon={
-							<Icon
-								name="SlidersHorizontal"
+							<RemixIcon
+								name="ri-equilizer-2-fill"
 								className="text-secondary-foreground"
 							/>
 						}

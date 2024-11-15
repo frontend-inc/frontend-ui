@@ -1,10 +1,10 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { Button, Typography, IconButton } from '../../core'
+import { Button, Typography, IconButton } from '../../../components'
 import { useApp } from '../../../hooks'
 import { useAuth } from 'frontend-js'
-import { Icon, UserAvatar, AuthMenu } from '../..'
+import { RemixIcon, UserAvatar } from '../..'
 
 type AuthButtonProps = {
 	showLabel?: boolean
@@ -41,7 +41,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 						</IconButton>
 					) : (
 						<IconButton onClick={handleLogin}>
-							<Icon name="User" size='md' />
+							<RemixIcon name="ri-user-6-fill" size='md' />
 						</IconButton>
 					)}
 				</>
@@ -52,9 +52,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 							onClick={handleMyAccount}
 							startIcon={showIcon && <UserAvatar user={currentUser} />}
 							endIcon={
-								<div>
-									<Icon name="MoreVertical" />
-								</div>
+								<RemixIcon name="ri-arrow-down-s-line" />
 							}
 						>
 							<Typography variant="body1">{currentUser?.username}</Typography>
@@ -62,7 +60,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 					) : (
 						<Button
 							onClick={handleLogin}
-							startIcon={showIcon && <Icon name="User" />}
+							startIcon={showIcon && <RemixIcon name="ri-user-6-fill" />}
 						>
 							Sign In
 						</Button>

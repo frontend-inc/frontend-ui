@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Button } from '../../core'
-import { Icon, ImageModal, VideoModal, ShareModal } from '../..'
+import { RemixIcon, ImageModal, VideoModal, ShareModal } from '../..'
 import { useButton } from '../../../hooks'
 import { ActionType } from '../../../types'
 
@@ -53,7 +53,7 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 			size={size}
 			startIcon={
 				icon && (
-					<Icon
+					<RemixIcon
 						name={icon}
 						className={
 							variant == 'default'

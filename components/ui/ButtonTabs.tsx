@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Tabs, TabsList, TabsTrigger } from 'frontend-shadcn'
-import { Icon } from '..'
+import { RemixIcon } from '..'
 import { cn } from 'frontend-shadcn'
 
 type ButtonTabsProps = {
@@ -17,13 +17,16 @@ type ButtonTabsProps = {
 	value: string | number
 }
 
-export default function ButtonTabs({
-	handleChange,
-	options,
-	value,
-	className,
-	fullWidth,
-}: ButtonTabsProps) {
+export default function ButtonTabs(props: ButtonTabsProps) {
+
+  const {
+    handleChange,
+    options,
+    value,
+    className,
+    fullWidth,
+  } = props
+
 	return (
 		<Tabs value={value.toString()} onValueChange={handleChange}>
 			<TabsList
@@ -37,9 +40,10 @@ export default function ButtonTabs({
 							className="w-full"
 						>
 							{tab.icon && (
-								<Icon
+								<RemixIcon
+                  size="lg"
 									name={tab.icon}
-									className={cn('h-4 w-4', tab.label && 'mr-2')}
+									className={cn(tab.label && 'mr-2')}
 								/>
 							)}
 							{tab.label && <span className="text-sm">{tab.label}</span>}

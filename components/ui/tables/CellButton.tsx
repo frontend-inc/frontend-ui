@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Button } from '../../core'
-import { Icon } from '../../../components'
+import { RemixIcon } from '../../../components'
 
 type CellButtonProps = {
 	children: string | number
@@ -18,7 +18,7 @@ const CellButton: React.FC<CellButtonProps> = (props) => {
 			fullWidth
 			size="sm"
 			variant="secondary"
-			startIcon={<Icon name={icon} />}
+			startIcon={<RemixIcon name={icon} />}
 			onClick={handleClick && handleClick}
 		>
 			{children}

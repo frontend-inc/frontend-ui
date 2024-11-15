@@ -4,6 +4,7 @@ import React from 'react'
 import { Button } from '../../../../components'
 import { ChevronLeft, ChevronRight, Loader2 } from 'lucide-react'
 import { cn } from 'frontend-shadcn'
+import { RiArrowLeftLine, RiArrowRightLine } from '@remixicon/react'
 
 type FormWizardButtonsProps = {
 	loading?: boolean
@@ -32,7 +33,7 @@ export default function FormWizardButtons({
 				onClick={handlePrevStep}
 				className={'w-full sm:w-[260px] bg-background'}
         startIcon={
-          <ChevronLeft className="h-4 w-4" />
+          <RiArrowLeftLine className="h-4 w-4" />
         }
 			>				
 				Prev
@@ -45,7 +46,7 @@ export default function FormWizardButtons({
 					className="w-full sm:w-[260px]"
           loading={ loading }
           endIcon={
-            <ChevronRight className="h-4 w-4" />
+            <RiArrowRightLine className="h-4 w-4" />
           }
 				>
 					Next

@@ -10,6 +10,7 @@ import {
 	SyntheticEventType,
 } from '../../../types'
 import { cn } from 'frontend-shadcn'
+import { RiAddFill } from '@remixicon/react'
 
 export type ResourceHeaderProps = {
 	buttonText?: string
@@ -106,7 +107,7 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 						size="default"
 						className="w-full sm:w-auto"
 						onClick={handleAdd}
-						startIcon={<Icon name="Plus" className="text-primary-foreground" />}
+						startIcon={<RiAddFill className="text-primary-foreground" />}
 					>
 						{buttonText}
 					</Button>

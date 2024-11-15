@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { Button } from '../../core'
-import { ExternalLink } from 'lucide-react'
 import { truncate } from '../../../helpers'
+import { RiExternalLinkFill } from '@remixicon/react'
 
 type CellLinkProps = {
 	value: string
@@ -18,7 +18,7 @@ const CellLink: React.FC<CellLinkProps> = (props) => {
 				<Button
 					size="sm"
 					variant="secondary"
-					startIcon={<ExternalLink />}
+					startIcon={<RiExternalLinkFill />}
 					onClick={handleClick}
 				>
 					{truncate(value, 20)}

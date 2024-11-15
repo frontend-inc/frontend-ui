@@ -78,7 +78,7 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 					size="lg"
 					fullWidth
 					onClick={handleSubmit}
-					startIcon={loading && <IconLoading />}
+          loading={loading}					
 				>
 					Register
 				</Button>

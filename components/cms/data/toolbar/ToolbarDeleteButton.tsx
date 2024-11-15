@@ -1,11 +1,12 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Icon, AlertModal } from '../../..'
+import { AlertModal } from '../../..'
 import { useResourceContext } from 'frontend-js'
 import { useApp } from '../../../../hooks'
 import { useAuth } from 'frontend-js'
 import { Button } from '../../../core'
+import { RiDeleteBin7Fill } from '@remixicon/react'
 
 const ToolbarDeleteButton: React.FC<any> = () => {
 	const { currentUser } = useAuth()
@@ -31,7 +32,7 @@ const ToolbarDeleteButton: React.FC<any> = () => {
 			<Button
 				onClick={handleDeleteClick}
 				color="secondary"
-				startIcon={<Icon name="Trash" />}
+				startIcon={<RiDeleteBin7Fill />}
 			>
 				Delete
 			</Button>

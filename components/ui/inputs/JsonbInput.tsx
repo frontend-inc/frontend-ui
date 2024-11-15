@@ -13,6 +13,7 @@ import {
 	RatingInput,
 	TextInput,
 } from '../..'
+import { RiAddFill } from '@remixicon/react'
 
 type JsonbFieldProps = {
 	index: number
@@ -224,7 +225,7 @@ const JsonbInput: React.FC<JsonbInputProps> = (props) => {
 				<Button
 					color="secondary"
 					onClick={handleAddClick}
-					startIcon={<Plus size={24} />}
+					startIcon={<RiAddFill size={24} />}
 				>
 					Add
 				</Button>

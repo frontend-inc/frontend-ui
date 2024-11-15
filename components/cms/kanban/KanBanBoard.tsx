@@ -19,6 +19,7 @@ import {
 import { Button, Typography } from '../../core'
 import Droppable from './Droppable'
 import { Icon, KanBanCard } from '../..'
+import { RiAddFill } from '@remixicon/react'
 
 type KanBanBoardProps = {
 	loading?: boolean
@@ -130,7 +131,7 @@ const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 								fullWidth
 								color="secondary"
 								onClick={() => handleAdd(header.value)}
-								startIcon={<Icon name="Plus" className="text-secondary-foreground" />}
+								startIcon={<RiAddFill  className="text-secondary-foreground" />}
 							>
 								Add
 							</Button>

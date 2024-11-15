@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { Button } from '../../../core'
-import { Icon, Form, Modal } from '../../..'
+import { RemixIcon, Form, Modal } from '../../..'
 import { useResourceContext } from 'frontend-js'
 import { FormFieldType } from '../../../../types'
 
@@ -41,7 +41,7 @@ const ToolbarUpdateButton: React.FC<ToolbarUpdateProps> = (props) => {
 			<Button
 				color="secondary"
 				onClick={() => setOpen(true)}
-				startIcon={icon && <Icon name={icon} />}
+				startIcon={icon && <RemixIcon name={icon} />}
 			>
 				{buttonText}
 			</Button>

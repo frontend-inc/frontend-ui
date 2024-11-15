@@ -30,7 +30,7 @@ const SendPinForm: React.FC<SendPinFormProps> = (props) => {
 			<Button
 				fullWidth
 				onClick={handleSubmit}
-				startIcon={loading && <IconLoading />}
+        loading={loading}				
 			>
 				Verify Pin
 			</Button>

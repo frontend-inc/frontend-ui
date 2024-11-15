@@ -9,6 +9,7 @@ import { ShopifyAddressList } from '../../../components/shopify'
 import { useApp } from '../../../hooks'
 import { useRouter, useParams } from 'next/navigation'
 import { getShopifyIdFromGid } from 'frontend-shopify'
+import { RiAddFill } from '@remixicon/react'
 
 type AddressesProps = {
 	title?: string
@@ -77,7 +78,7 @@ const Addresses: React.FC<AddressesProps> = (props) => {
 					fullWidth
 					variant="ghost"
 					onClick={handleAddAddress}
-					startIcon={<Plus />}
+					startIcon={<RiAddFill />}
 				>
 					Add Address
 				</Button>

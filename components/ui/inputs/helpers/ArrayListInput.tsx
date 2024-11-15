@@ -5,6 +5,7 @@ import { Typography, IconButton, Button } from '../../../core'
 import { InputPropsType } from '../../../../types'
 import { X, Plus } from 'lucide-react'
 import { TextInput } from '../../..'
+import { RiAddFill } from '@remixicon/react'
 
 type ArrayItemInputProps = {
 	index: number
@@ -98,7 +99,7 @@ const ArrayListInput: React.FC<InputPropsType> = (props) => {
 				<Button
 					color="secondary"
 					onClick={handleAddClick}
-					startIcon={<Plus className="w-5 h-5 text-foreground" />}
+					startIcon={<RiAddFill className="text-foreground" />}
 				>
 					Add
 				</Button>

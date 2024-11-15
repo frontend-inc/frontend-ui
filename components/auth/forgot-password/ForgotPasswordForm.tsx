@@ -30,7 +30,7 @@ const ForgotPasswordForm: React.FC<ForgotPasswordFormProps> = (props) => {
 			<Button
 				fullWidth
 				onClick={handleSubmit}
-				startIcon={loading && <IconLoading />}
+        loading={loading}				
 			>
 				Send Instructions
 			</Button>
