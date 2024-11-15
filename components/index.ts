@@ -1,5 +1,4 @@
 export * from './addons'
-export * from './admin'
 export * from './auth'
 export * from './ai'
 export * from './cms'
