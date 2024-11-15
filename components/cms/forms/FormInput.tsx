@@ -4,7 +4,7 @@ import React from 'react'
 import {
 	AttachmentInput,
 	Autosuggest,
-	ArrayInput,
+  ArrayInput,
 	CountryInput,
 	DateInput,
 	DividerInput,
@@ -22,7 +22,6 @@ import {
 	ShopifyProductInput,
 	ShopifyProductsInput,
 	RemoteAutosuggest,
-	MediaInput,
 } from '../../../components'
 import { OptionType, SyntheticEventType } from '../../../types'
 
@@ -88,7 +87,6 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 		state: StateInput,
 		rating: RatingInput,
 		image: ImageInput,
-		media: MediaInput,
 		divider: DividerInput,
 		shopify_product: ShopifyProductInput,
 		shopify_products: ShopifyProductsInput,

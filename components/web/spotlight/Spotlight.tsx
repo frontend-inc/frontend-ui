@@ -1,9 +1,11 @@
 'use client'
 
 import React from 'react'
-import { Typography } from '../../core'
-import { ButtonActions, SpotlightList, SpotlightCard } from '../..'
+import { Typography } from '../..'
+import { ButtonActions } from '../..'
 import { ButtonType } from '../../../types'
+import SpotlightList from './SpotlightList'
+import SpotlightCard from './SpotlightCard'
 
 export type SpotlightProps = {
 	label?: string
