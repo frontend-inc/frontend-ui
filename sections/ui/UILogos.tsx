@@ -17,11 +17,10 @@ const UILogos: React.FC<UILogosProps> = (props) => {
     fontSize,
 		bgColor,
 		mode,
-		py,
+		py='sm',
 		px,
 		maxWidth,
 		requireAuth,
-
 		...rest
 	} = props
 
