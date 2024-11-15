@@ -38,6 +38,7 @@ const Cards: React.FC<CardsProps> = (props) => {
 				{items?.map((item, idx) => (
 					<BlurFade delay={0.25 + idx * 0.05} key={idx}>
 						<Card
+              label={ item?.label }
 							image={item?.image}
 							title={item?.title}
 							subtitle={item?.subtitle}
