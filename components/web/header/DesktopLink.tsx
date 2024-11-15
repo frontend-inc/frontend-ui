@@ -21,7 +21,11 @@ const DesktopLink: React.FC<DesktopLinkProps> = (props) => {
 
 	return (
 		//@ts-ignore
-		<Button variant="ghost" className="text-foreground" onClick={onClick}>
+		<Button 
+      variant="ghost" 
+      className='text-muted-foreground hover:text-foreground hover:bg-transparent'      
+      onClick={onClick}
+    >
 			{menuItem.label}
 		</Button>
 	)
