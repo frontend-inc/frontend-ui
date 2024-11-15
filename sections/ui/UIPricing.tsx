@@ -13,7 +13,8 @@ const UIPricing: React.FC<UIPricingProps> = (props) => {
 		label,
 		title,
 		subtitle,
-		textAlign,
+		textAlign='center',
+    fontSize='lg',
 		bgColor,
 		mode,
 		py,
@@ -37,8 +38,8 @@ const UIPricing: React.FC<UIPricingProps> = (props) => {
 					label={label}
 					title={title}
 					subtitle={subtitle}
-					textAlign={'center'}
-					size="lg"
+					textAlign={textAlign}
+					size={fontSize}
 				/>
 				<Pricing {...rest} />
 			</div>

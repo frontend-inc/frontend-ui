@@ -13,7 +13,8 @@ const UILinkList: React.FC<UILinkListProps> = (props) => {
 		label,
 		title,
 		subtitle,
-		textAlign,
+		textAlign='center',
+    fontSize,
 		bgColor,
 		mode,
 		py,
@@ -37,8 +38,8 @@ const UILinkList: React.FC<UILinkListProps> = (props) => {
 					label={label}
 					title={title}
 					subtitle={subtitle}
-					textAlign={'center'}
-          size="md"
+					textAlign={textAlign}
+          size={fontSize}
 				/>
 				<LinkList {...rest} />
 			</div>

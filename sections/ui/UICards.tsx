@@ -13,12 +13,12 @@ const UICards: React.FC<UICardsProps> = (props) => {
 		label,
 		title,
 		subtitle,
-		textAlign,
+		textAlign='center',
 		bgColor,
 		mode,
 		py,
 		px,
-    fontSize="md",
+    fontSize,
 		maxWidth,
 		requireAuth,
 		...rest
@@ -38,7 +38,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 					label={label}
 					title={title}
 					subtitle={subtitle}
-					textAlign={'center'}
+					textAlign={textAlign}
           size={fontSize}
 				/>
 				<Cards {...rest} />

@@ -13,12 +13,13 @@ const UIAccordion: React.FC<UIAccordionProps> = (props) => {
 		label,
 		title,
 		subtitle,
-		textAlign,
+		textAlign='center',
+    fontSize='lg',
 		bgColor,
 		mode,
-		py = 12,
+		py,
 		px,
-		maxWidth,
+		maxWidth='sm',
 		requireAuth,
 		...rest
 	} = props
@@ -36,7 +37,8 @@ const UIAccordion: React.FC<UIAccordionProps> = (props) => {
 				label={label}
 				title={title}
 				subtitle={subtitle}
-				textAlign={'center'}
+				textAlign={textAlign}
+        size={fontSize}
 			/>
 			<Accordion {...rest} />
 		</Section>

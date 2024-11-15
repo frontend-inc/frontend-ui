@@ -16,7 +16,6 @@ const UIHero: React.FC<UIHeroProps> = (props) => {
 		px,
 		maxWidth = 'xl',
 		requireAuth,
-
 		style,
 		...rest
 	} = props
@@ -28,7 +27,7 @@ const UIHero: React.FC<UIHeroProps> = (props) => {
 			requireAuth={requireAuth}
 			bgColor={bgColor}
 			mode={mode}
-			py={fullWidth ? 0 : py}
+			py={fullWidth ? 'none' : py}
 			px={fullWidth ? 0 : px}
 			maxWidth={maxWidth}
 		>

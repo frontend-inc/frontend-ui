@@ -14,6 +14,7 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 		title,
 		subtitle,
 		textAlign,
+    fontSize,
 		bgColor,
 		mode,
 		py,
@@ -37,7 +38,8 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 					label={label}
 					title={title}
 					subtitle={subtitle}
-					textAlign={'center'}
+					textAlign={textAlign}
+          size={fontSize}
 				/>
 				<FeatureIcons {...rest} />
 			</div>

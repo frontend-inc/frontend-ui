@@ -13,7 +13,8 @@ const UILogos: React.FC<UILogosProps> = (props) => {
 		label,
 		title,
 		subtitle,
-		textAlign,
+		textAlign='center',
+    fontSize,
 		bgColor,
 		mode,
 		py,
@@ -38,7 +39,8 @@ const UILogos: React.FC<UILogosProps> = (props) => {
 					label={label}
 					title={title}
 					subtitle={subtitle}
-					textAlign={'center'}
+					textAlign={textAlign}
+          size={fontSize}
 				/>
 				<Logos {...rest} />
 			</div>

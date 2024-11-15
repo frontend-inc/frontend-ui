@@ -14,6 +14,7 @@ const UIInstagram: React.FC<UIInstagramProps> = (props) => {
 		title,
 		subtitle,
 		textAlign,
+    fontSize,
 		bgColor,
 		mode,
 		py,
@@ -37,8 +38,8 @@ const UIInstagram: React.FC<UIInstagramProps> = (props) => {
 					label={label}
 					title={title}
 					subtitle={subtitle}
-					textAlign={'center'}
-          size="md"
+					textAlign={textAlign}
+          size={fontSize}
 				/>
 				<InstagramPosts {...rest} />
 			</div>

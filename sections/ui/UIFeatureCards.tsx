@@ -13,7 +13,8 @@ const UIFeatureCards: React.FC<UIFeatureCardsProps> = (props) => {
 		label,
 		title,
 		subtitle,
-		textAlign,
+		textAlign='center',
+    fontSize='lg',
 		bgColor,
 		mode,
 		py,
@@ -37,8 +38,8 @@ const UIFeatureCards: React.FC<UIFeatureCardsProps> = (props) => {
 					label={label}
 					title={title}
 					subtitle={subtitle}
-					textAlign={'center'}
-					size="lg"
+					textAlign={textAlign}
+					size={fontSize}
 				/>
 				<FeatureCards {...rest} />
 			</div>

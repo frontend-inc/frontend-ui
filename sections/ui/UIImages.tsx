@@ -13,7 +13,8 @@ const UIImages: React.FC<UIImagesProps> = (props) => {
 		label,
 		title,
 		subtitle,
-		textAlign,
+		textAlign='center',
+    fontSize='md',
 		bgColor,
 		mode,
 		py,
@@ -37,8 +38,8 @@ const UIImages: React.FC<UIImagesProps> = (props) => {
 					label={label}
 					title={title}
 					subtitle={subtitle}
-					textAlign={'center'}
-          size="md"
+					textAlign={textAlign}
+          size={fontSize}
 				/>
 				<Images {...rest} />
 			</div>

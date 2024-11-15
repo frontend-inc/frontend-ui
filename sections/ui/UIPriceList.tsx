@@ -13,13 +13,13 @@ const UIPriceList: React.FC<UIPriceListProps> = (props) => {
 		label,
 		title,
 		subtitle,
-		textAlign,
+		textAlign='center',
+    fontSize='md',
 		bgColor,
 		mode,
 		py,
 		px,
-		maxWidth='sm',
-    fontSize='md',
+		maxWidth='sm',    
 		requireAuth,
 		...rest
 	} = props
@@ -38,7 +38,7 @@ const UIPriceList: React.FC<UIPriceListProps> = (props) => {
 					label={label}
 					title={title}
 					subtitle={subtitle}
-					textAlign={'center'}
+					textAlign={textAlign}
           size={ fontSize }
 				/>
 				<PriceList {...rest} />
