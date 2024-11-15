@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useAlerts } from '../../../../hooks'
+import { useToast } from '../../../../hooks'
 import { Icon, Modal } from '../../../../components'
 import UnsplashLogo from './UnsplashLogo'
 import { AspectRatio } from 'frontend-shadcn'
@@ -28,7 +28,7 @@ const UnsplashModal: React.FC<UnsplashViewerModalProps> = ({
 	handleClose,
 	handleUpload,
 }) => {
-	const { showAlertSuccess } = useAlerts()
+	const { showAlertSuccess } = useToast()
 	const { fetchDownloadLocation } = useUnsplash()
 
 	const handleCopyUrlClick = () => {

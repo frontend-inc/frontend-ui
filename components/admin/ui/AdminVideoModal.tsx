@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useAlerts } from '../../../hooks'
+import { useToast } from '../../../hooks'
 import { Modal } from '../..'
 import { Button } from '../../core'
 import { Link, Download } from 'lucide-react'
@@ -26,7 +26,7 @@ const VideoModal: React.FC<VideoModalProps> = (props) => {
 		enableDownload = false,
 	} = props
 
-	const { showAlertSuccess } = useAlerts()
+	const { showAlertSuccess } = useToast()
 
 	const handleCopyUrlClick = () => {
 		copy(src)

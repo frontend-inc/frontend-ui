@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { FormCard, FormWizardModal } from '../..'
-import { useAlerts, useForms, useContacts } from '../../../hooks'
+import { useToast, useForms, useContacts } from '../../../hooks'
 import { HeadingProps } from '../../../types'
 
 export type FormDataWizardProps = HeadingProps & {
@@ -38,7 +38,7 @@ const FormDataWizard: React.FC<FormDataWizardProps> = (props) => {
 		formId,
 	})
 
-  const { showAlertSuccess } = useAlerts()
+  const { showAlertSuccess } = useToast()
 
 	const handleSubmit = async () => {
 		let resp

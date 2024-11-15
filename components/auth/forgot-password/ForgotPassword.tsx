@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { ForgotPasswordForm, AuthScreen, Loader } from '../..'
-import { useAlerts } from '../../../hooks'
+import { useToast } from '../../../hooks'
 import { useAuth } from 'frontend-js'
 import { useRouter, useParams } from 'next/navigation'
 
@@ -15,7 +15,7 @@ type ForgotPasswordProps = {
 const ForgotPassword: React.FC<ForgotPasswordProps> = (props) => {
 	const { title, subtitle, loginUrl } = props || {}
 
-	const { showAlertSuccess } = useAlerts()
+	const { showAlertSuccess } = useToast()
 	const { loading, errors, user, handleChange, forgotPassword } = useAuth()
 
 	const router = useRouter()

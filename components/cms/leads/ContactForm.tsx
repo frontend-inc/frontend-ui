@@ -4,7 +4,7 @@ import React from 'react'
 import { FormFieldType, TypographyVariantsType } from '../../../types'
 import { Heading, Form } from '../..'
 import { useResource } from 'frontend-js'
-import { useAlerts } from '../../../hooks'
+import { useToast } from '../../../hooks'
 
 export type ContactFormProps = {
 	label?: string
@@ -18,7 +18,7 @@ export type ContactFormProps = {
 
 // Call To Action
 const ContactForm: React.FC<ContactFormProps> = (props) => {
-	const { showAlertSuccess } = useAlerts()
+	const { showAlertSuccess } = useToast()
 	const {
 		label,
 		title,

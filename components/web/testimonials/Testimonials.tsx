@@ -3,7 +3,7 @@
 import React from 'react'
 import TestimonialCards from './TestimonialCards'
 import SwipeableTestimonials from './SwipeableTestimonials'
-import { Placeholder } from '../..'
+import { Alert } from '../..'
 import { TestimonialType } from '../../../types'
 
 export type TestimonialsProps = {
@@ -23,7 +23,7 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 				<TestimonialCards items={items} />
 			)}
 			{items?.length == 0 && (
-				<Placeholder
+				<Alert
 					icon="ri-double-quotes-l-line"
 					title="No testimonials yet."
 					description="Your testimonials will appear here."

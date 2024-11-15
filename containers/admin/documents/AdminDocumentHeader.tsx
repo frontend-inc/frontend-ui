@@ -24,7 +24,10 @@ const AdminDocumentHeader: React.FC<AdminDocumentHeaderProps> = (props) => {
     }    
   }
 
-  if(!collectionId) return null;
+  if(!collectionId || 
+    collectionId == 'undefined' || 
+    collectionId == 'index'
+  ) return null;
 	return (
 		<ResourceHeader
 			{...props}			

@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { Button } from '../../core'
 import { TextInput, IconLoading } from '../..'
-import { useAlerts, useKlaviyo } from '../../../hooks'
+import { useToast, useKlaviyo } from '../../../hooks'
 
 export type KlaviyoSubscribeProps = {
 	listId: string
@@ -14,7 +14,7 @@ export type KlaviyoSubscribeProps = {
 const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
 	const { listId, apiKey, buttonText = 'Subscribe' } = props || {}
 
-	const { showAlertError, showAlertSuccess } = useAlerts()
+	const { showAlertError, showAlertSuccess } = useToast()
 
 	const { loading, handleSubmit } = useKlaviyo({
 		apiKey,

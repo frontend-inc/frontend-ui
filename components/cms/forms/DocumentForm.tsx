@@ -4,7 +4,7 @@ import React, { useEffect, useContext } from 'react'
 import { useApp } from '../../../hooks'
 import { useResource } from 'frontend-js'
 import { Form } from '../..'
-import { useAlerts } from '../../../hooks'
+import { useToast } from '../../../hooks'
 import { useRouter } from 'next/navigation'
 import { Card } from 'frontend-shadcn'
 
@@ -44,7 +44,7 @@ const DocumentForm: React.FC<DocumentFormProps> = (props) => {
 		inputParams,
 	} = props
 
-	const { showAlertSuccess } = useAlerts()
+	const { showAlertSuccess } = useToast()
 
 	const {
 		delayedLoading: loading,

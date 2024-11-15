@@ -5,7 +5,7 @@ import { Typography } from '../../../components/core'
 import { Icon, UserChip, Label, Button } from '../../../components'
 import { OrderType } from '../../../types'
 import copy from 'copy-to-clipboard'
-import { useAlerts } from '../../../hooks'
+import { useToast } from '../../../hooks'
 
 type AdminOrderDetailsProps = {
 	loading?: boolean
@@ -16,7 +16,7 @@ type AdminOrderDetailsProps = {
 const AdminOrderDetails: React.FC<AdminOrderDetailsProps> = (props) => {
 	const { order, handleEdit, loading } = props || {}
 
-	const { showAlertSuccess, showAlertError } = useAlerts()
+	const { showAlertSuccess, showAlertError } = useToast()
 
 	const handleCopyEmail = () => {
 		if (order.customer_email) {

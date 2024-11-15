@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { AccordionItem, Placeholder } from '../../../components'
+import { AccordionItem, Alert } from '../../../components'
 
 export type AccordionProps = {
 	items?: {
@@ -25,7 +25,7 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 					/>
 				))}
 				{items?.length == 0 && (
-					<Placeholder
+					<Alert
 						icon="ri-search-fill"
 						title="No content"
 						description="Your content will appear here."

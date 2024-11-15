@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Placeholder } from '../..'
+import { Alert } from '../..'
 import { ShopifyProductCarousel } from '..'
 import { useFavorites } from 'frontend-shopify'
 
@@ -36,7 +36,7 @@ const ShopifyProductFavoritesCarousel: React.FC<
 				enableAutoPlay={enableAutoPlay}
 			/>
 			{favorites?.length === 0 && (
-				<Placeholder
+				<Alert
 					icon='ri-heart-2-fill'
 					title='No favorites'
 					description='You have no favorites yet'

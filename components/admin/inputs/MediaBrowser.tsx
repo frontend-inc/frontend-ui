@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { useAdminMedia } from '../../../hooks'
-import { useAlerts } from '../../../hooks'
+import { useToast } from '../../../hooks'
 import MediaList from './MediaList'
 import {
 	Modal,
@@ -29,7 +29,7 @@ const MediaBrowser: React.FC<MediaBrowserProps> = ({
 	const [selected, setSelected] = useState<any>(null)
 	const [uploaded, setUploaded] = useState<any>(null)
 
-	const { showAlertError } = useAlerts()
+	const { showAlertError } = useToast()
 	const { deleteResource } = useAdminMedia()
 
 	const handleTabChange = (value: string) => {

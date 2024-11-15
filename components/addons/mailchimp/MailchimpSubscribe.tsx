@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { Button } from '../../core'
 import { TextInput, IconLoading } from '../..'
 import { useMailChimpForm } from 'use-mailchimp-form'
-import { useAlerts } from '../../../hooks'
+import { useToast } from '../../../hooks'
 
 export type MailchimpSubscribeProps = {
 	formId: string
@@ -17,7 +17,7 @@ const MailchimpSubscribe: React.FC<MailchimpSubscribeProps> = (props) => {
 	const { loading, error, success, message, handleSubmit } =
 		useMailChimpForm(formId)
 
-	const { showAlertSuccess } = useAlerts()
+	const { showAlertSuccess } = useToast()
 
 	const [email, setEmail] = useState('')
 

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useContext, useState } from 'react'
-import { SearchInput, Placeholder } from '../../../components'
+import { SearchInput, Alert } from '../../../components'
 import { ShopifyProducts } from '../../../components/shopify'
 import { Drawer } from '../../../components'
 import { ShopifyContext } from 'frontend-shopify'
@@ -67,7 +67,7 @@ const ShopifySearchModal: React.FC<ShopifySearchModalProps> = (props) => {
 			</div>
 			<ShopifyProducts loading={loading} products={products} />
 			{keywords?.length > 0 && !loading && products?.length == 0 && (
-				<Placeholder
+				<Alert
 					icon='ri-search-fill'
 					title="No search results"
 					description="Try another search term"

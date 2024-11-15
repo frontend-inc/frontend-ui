@@ -1,29 +1,67 @@
 'use client'
 
-import React, { useEffect, useContext } from 'react'
-import { AppContext } from '../../context'
-import { toast, Toaster } from 'sonner'
+import React from 'react'
+import { RemixIcon } from '..'
+import { Alert as ShadcnAlert, AlertTitle, AlertDescription } from 'frontend-shadcn'
+import { cn } from 'frontend-shadcn'
 
-export type AlertProps = {
-	anchorBottom?: boolean
+type AlertProps = {
+	icon?: string
+	title?: string
+	description?: string
+	buttons?: any
+	variant?: 'accent' | 'default' | 'primary' | 'secondary' | 'destructive'
+  className?: string
 }
 
 const Alert: React.FC<AlertProps> = (props) => {
-	const { alert, setAlert } = useContext(AppContext)
+	const { icon, title, description, variant, className } = props
 
-	useEffect(() => {
-		if (alert && alert?.message) {
-			toast(alert?.status, {
-				description: alert?.message,
-				action: {
-					label: 'Close',
-					onClick: () => setAlert(null),
-				},
-			})
-		}
-	}, [alert])
+  const textClasses = {
+    accent: 'text-accent',
+    default: 'text-foreground',
+    primary: 'text-primary',
+    secondary: 'text-secondary',
+    destructive: 'text-destructive',
+  }
 
-	return <Toaster />
+	return (
+		<ShadcnAlert
+      className={cn(
+        "flex space-x-3",
+        variant == 'destructive' && 'bg-destructive/10',
+        variant == 'accent' && 'bg-accent/10',
+        className
+      )}
+    >
+      {icon && (
+        <RemixIcon 
+          name={icon} 
+          size='lg' 
+          className={cn(
+            variant && textClasses[variant]
+          )} 
+        />
+      )}			
+      <div className="flex flex-col">
+        <AlertTitle 
+          className={cn(
+            "text-md text-bold",            
+            variant && textClasses[variant]            
+          )}
+        >
+          {title}
+        </AlertTitle>
+        <AlertDescription 
+          className={cn(
+            'text-sm font-normal',
+            variant && textClasses[variant]
+          )}
+        >
+          {description}
+        </AlertDescription>			
+      </div>
+		</ShadcnAlert>
+	)
 }
-
 export default Alert

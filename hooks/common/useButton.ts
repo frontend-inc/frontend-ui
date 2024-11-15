@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { ActionType } from '../../types'
 import { useLoadingWrapper } from '.'
 import copy from 'copy-to-clipboard'
-import { useAlerts } from '..'
+import { useToast } from '..'
 import { useMediaQuery } from 'react-responsive'
 
 type UseButtonParams = {
@@ -27,7 +27,7 @@ const useButtons = (params: UseButtonParams) => {
   const [openImage, setOpenImage] = useState(false)
   const [openShare, setOpenShare] = useState(false)
 
-	const { showAlertSuccess } = useAlerts()
+	const { showAlertSuccess } = useToast()
 
 	const router = useRouter()
 	const { clientUrl } = useApp()

@@ -3,7 +3,7 @@
 import React from 'react'
 import PricingCard from './PricingCard'
 import { PriceType } from '../../..'
-import { Placeholder } from '../..'
+import { Alert } from '../..'
 
 export type PricingProps = {
 	items: PriceType[]
@@ -32,7 +32,7 @@ const Pricing: React.FC<PricingProps> = (props) => {
 				))}
 			</div>
 			{items?.length === 0 && (
-				<Placeholder
+				<Alert
 					icon="ri-bank-card-fill"
 					title="No subscription plans"
 					description="Subscription plans will appear here."

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useAlerts } from '../../../hooks'
+import { useToast } from '../../../hooks'
 import { Image, Modal } from '../../../components'
 import { Button } from '../../../components/core'
 import copy from 'copy-to-clipboard'
@@ -14,7 +14,7 @@ type AdminMediaShowProps = {
 
 const AdminMediaShow: React.FC<AdminMediaShowProps> = (props) => {
 	const { open, resource, handleClose } = props
-	const { showAlertSuccess } = useAlerts()
+	const { showAlertSuccess } = useToast()
 
 	const handleCopyUrlClick = () => {
 		copy(resource.url)

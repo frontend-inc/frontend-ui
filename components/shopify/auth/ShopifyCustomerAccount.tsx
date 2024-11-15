@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Button } from '../../../components'
-import { AuthScreen, Placeholder } from '../..'
+import { AuthScreen, Alert } from '../..'
 import { useAuth } from 'frontend-shopify'
 import { useRouter } from 'next/navigation'
 import { User, ShoppingCart, MapPin, LogOut } from 'lucide-react'
@@ -93,7 +93,7 @@ const ShopifyCustomerAccount: React.FC<ShopifyCustomerAccountProps> = (
 					))}
 				</ul>
 			) : (
-				<Placeholder
+				<Alert
 					title="Please sign in."
 					description="You must be signed in to manage your account."
 					buttons={<Button onClick={handleLogin}>Sign In</Button>}

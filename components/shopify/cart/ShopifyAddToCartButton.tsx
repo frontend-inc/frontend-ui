@@ -3,7 +3,7 @@
 import React, { useState, useContext } from 'react'
 import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
-import { useAlerts } from '../../../hooks'
+import { useToast } from '../../../hooks'
 import { Button } from '../../core'
 import {
 	ShopifyProductFavoriteButton,
@@ -27,7 +27,7 @@ type ShopifyAddToCartButtonProps = {
 const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 	props
 ) => {
-	const { showAlertError } = useAlerts()
+	const { showAlertError } = useToast()
 	const { trackAddToCart } = useSegment()
 	const { toggleCart } = useContext(ShopifyContext) as any
 	const { loading, cartLineAdd } = useCart()

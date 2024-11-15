@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Placeholder } from '../..'
+import { Alert } from '../..'
 import { BlurFade } from '../..'
 import PriceListItem from './PriceListItem'
 import { ActionType } from '../../../types'
@@ -36,7 +36,7 @@ const PriceList: React.FC<PriceListProps> = (props) => {
 				))}
 			</ul>
 			{items?.length == 0 && (
-				<Placeholder
+				<Alert
 					icon="ri-list-unordered-line"
 					title="No items yet."
 					description="Your items will appear here."

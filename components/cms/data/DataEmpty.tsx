@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Placeholder } from '../../../components'
+import { Alert } from '../../../components'
 import { useResourceContext } from 'frontend-js'
 
 type DataEmptyProps = {
@@ -17,7 +17,7 @@ const DataEmpty: React.FC<DataEmptyProps> = (props) => {
 	if (resources?.length > 0) return null
 	return (
 		<div className="flex justify-center items-center px-2">
-			<Placeholder icon={icon} title={title} description={description} />
+			<Alert icon={icon} title={title} description={description} />
 		</div>
 	)
 }

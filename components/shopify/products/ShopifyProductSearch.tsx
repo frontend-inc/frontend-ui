@@ -8,7 +8,7 @@ import {
 } from 'frontend-shopify'
 import { ProductSortKeyType } from 'frontend-shopify'
 import { useParams } from 'next/navigation'
-import { SearchInput, Placeholder } from '../..'
+import { SearchInput, Alert } from '../..'
 import {
 	ShopifyProductSortButton,
 	ShopifyProducts,
@@ -135,7 +135,7 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
 				/>
 			)}
 			{!loading && (!products || products?.length == 0) && (
-				<Placeholder
+				<Alert
 					icon="ri-search-fill"
 					title="No search results"
 					description="Try another search term"

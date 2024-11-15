@@ -1,12 +1,12 @@
 'use client'
 
 import React from 'react'
-import { Placeholder, Button } from '../../../components'
-import { useAlerts, useApp } from '../../../hooks'
+import { Alert, Button } from '../../../components'
+import { useToast, useApp } from '../../../hooks'
 
 const ShopifyCustomerPortal = () => {
 	const { app } = useApp()
-	const { showAlertError } = useAlerts()
+	const { showAlertError } = useToast()
 
 	const handleClick = () => {
 		if (app?.shopify_customer_portal_url) {
@@ -17,7 +17,7 @@ const ShopifyCustomerPortal = () => {
 	}
 
 	return (
-		<Placeholder
+		<Alert
 			icon="ri-shopping-cart-2-fill"
 			title="Shopify Customer Portal"
 			description="Manage your order history and returns."

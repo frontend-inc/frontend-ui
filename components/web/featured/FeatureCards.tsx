@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Placeholder } from '../..'
+import { Alert } from '../..'
 import FeaturedCard from './FeatureCard'
 import { BlurFade } from '../..'
 
@@ -50,7 +50,7 @@ const FeatureCards: React.FC<FeatureCardsProps> = (props) => {
 				))}
 			</div>
 			{items?.length == 0 && (
-				<Placeholder
+				<Alert
 					icon="ri-list-check-line"
 					title="No featured content."
 					description="Your featured content will appear here."

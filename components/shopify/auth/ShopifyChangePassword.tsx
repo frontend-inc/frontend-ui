@@ -4,7 +4,7 @@ import React from 'react'
 import { AuthScreen, Loader } from '../..'
 import { ShopifyChangePasswordForm } from '..'
 import { useAuth } from 'frontend-shopify'
-import { useAlerts } from '../../../hooks'
+import { useToast } from '../../../hooks'
 import { useRouter, useParams } from 'next/navigation'
 
 type ShopifyChangePasswordProps = {
@@ -16,7 +16,7 @@ type ShopifyChangePasswordProps = {
 const ShopifyChangePassword: React.FC<ShopifyChangePasswordProps> = (props) => {
 	const { title, subtitle, loginUrl } = props || {}
 
-	const { showAlertSuccess } = useAlerts()
+	const { showAlertSuccess } = useToast()
 
 	const {
 		loading,

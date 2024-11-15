@@ -1,10 +1,11 @@
 'use client'
 
 import React from 'react'
-import { AuthGuard, Alert } from '../../../components'
+import { AuthGuard } from '../../../components'
 import { Notifications } from '../../../components'
 import { NotificationType } from '../../../types'
 import { cn } from 'frontend-shadcn'
+import { Toaster } from 'frontend-shadcn'
 
 type LayoutContainerProps = {
 	handleClick: (item: any) => void
@@ -23,7 +24,7 @@ export default function LayoutContainer({
 }: LayoutContainerProps) {
 	return (
 		<div className="w-full min-h-screen">
-			<Alert />
+			<Toaster />
 			<div
 				className={cn(
 					'w-full h-full overflow-y-scroll scrollbar-hide',

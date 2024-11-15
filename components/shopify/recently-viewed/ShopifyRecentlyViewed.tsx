@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Placeholder } from '../..'
+import { Alert } from '../..'
 import { ShopifyProducts, ShopifyProductCarousel } from '..'
 import { useRecentlyViewed } from 'frontend-shopify'
 
@@ -43,7 +43,7 @@ const ShopifyRecentlyViewed: React.FC<ShopifyRecentlyViewedProps> = (props) => {
 				/>
 			)}
 			{products?.length === 0 && (
-				<Placeholder
+				<Alert
 					icon='ri-shopping-cart-2-fill'
 					title={'No recently viewed'}
 					description={'You have no recently viewed products.'}

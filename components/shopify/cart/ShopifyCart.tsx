@@ -4,7 +4,7 @@ import React, { useEffect, useContext } from 'react'
 import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
 import { ShopifyContext } from 'frontend-shopify'
-import { Sheet, Placeholder } from '../..'
+import { Sheet, Alert } from '../..'
 import {
 	ShopifyCartDiscounts,
 	ShopifyCartLines,
@@ -48,7 +48,7 @@ const ShopifyCart: React.FC<ShopifyCartProps> = (props) => {
 				</div>
 			) : (
 				<div className="h-1/2 flex flex-col justify-center items-center">
-					<Placeholder
+					<Alert
 						icon='ri-shopping-cart-2-fill'
 						title="Your cart is empty"
 						description="Continue shopping to add items to your cart"

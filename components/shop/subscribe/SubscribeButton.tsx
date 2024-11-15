@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Button } from '../../core'
-import { useAlerts, useSubscribe } from '../../../hooks'
+import { useToast, useSubscribe } from '../../../hooks'
 import { cn } from 'frontend-shadcn'
 
 type SusbcribeButtonProps = {
@@ -25,7 +25,7 @@ const SusbcribeButton = (props: SusbcribeButtonProps) => {
 		price,
 	} = props
 
-	const { showAlertError } = useAlerts()
+	const { showAlertError } = useToast()
 	const { loading, subscribe } = useSubscribe()
 
 	const handleClick = async () => {

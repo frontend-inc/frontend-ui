@@ -2,12 +2,12 @@
 
 import React, { useEffect, useState } from 'react'
 import { MenuList, AlertModal } from '../../../components'
-import { Button } from '../../../components/core'
-import { MenuListItem, IconButton } from '../../../components'
+import { Button } from '../../../components'
+import { Alert, MenuListItem } from '../../../components'
 import { useAdminCollections } from '../../../hooks'
 import AdminCollectionEdit from './AdminCollectionEdit'
 import { useRouter, useParams } from 'next/navigation'
-import { Plus, Settings } from 'lucide-react'
+import { Plus } from 'lucide-react'
 
 const AdminCollectionMenu: React.FC = () => {
 	const router = useRouter()
@@ -122,7 +122,8 @@ const AdminCollectionMenu: React.FC = () => {
 	}, [appId])
 
 	return (
-		<div className="flex flex-col">
+		<div className="flex flex-col space-y-2">
+    { collections.length > 0 ? (
 			<MenuList label={'Collections'}>
 				{collections.map((collection) => (
 					<MenuListItem
@@ -134,8 +135,16 @@ const AdminCollectionMenu: React.FC = () => {
 						handleDelete={() => handleDeleteCollectionClick(collection)}
 					/>
 				))}
-			</MenuList>
-			<div className="px-4">
+        </MenuList>
+      ):(        			
+       <Alert 
+          variant="accent"
+          title="No collections yet."
+          description="Create a collection to get started."
+          className="mt-2"
+        /> 
+      )}
+			<div className="px-2">
 				<Button
 					onClick={handleCreateCollectionClick}
 					className="group bg-accent text-accent-foreground hover:bg-accent/80"

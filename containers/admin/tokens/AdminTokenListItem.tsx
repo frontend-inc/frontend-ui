@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useAlerts } from '../../../hooks'
+import { useToast } from '../../../hooks'
 import { ResourceListItem } from '../../../components'
 import copy from 'copy-to-clipboard'
 import { truncate } from '../../../helpers'
@@ -16,7 +16,7 @@ type AdminTokenListItemProps = {
 const AdminTokenListItem: React.FC<AdminTokenListItemProps> = (props) => {
 	const { resource: token, handleEdit, handleDelete } = props
 
-	const { showAlertSuccess } = useAlerts()
+	const { showAlertSuccess } = useToast()
 
 	const handleCopyToken = () => {
 		copy(token.api_key)

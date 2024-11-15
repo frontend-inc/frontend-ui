@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import { useAdminMedia } from '../../../hooks'
 import { ChevronDown } from 'lucide-react'
 import MediaListItem from './MediaListItem'
-import { Placeholder, IconLoading } from '../../../components'
+import { Alert, IconLoading } from '../../../components'
 import { Button } from '../../../components'
 
 type MediaListProps = {
@@ -53,7 +53,7 @@ const MediaList: React.FC<MediaListProps> = ({ selectedIds, handleSelect }) => {
 				))}
 			</div>
 			{resources?.length === 0 && (
-				<Placeholder
+				<Alert
 					icon='ri-layout-masonry-fill'
 					title="No media"
 					description="Upload or import media."

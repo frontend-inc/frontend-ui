@@ -3,7 +3,7 @@
 import React from 'react'
 import { Button } from '../../../components'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
-import { useAlerts } from '../../../hooks'
+import { useToast } from '../../../hooks'
 import { Icon } from '../..'
 
 type StripeCreditCardElementProps = {
@@ -18,7 +18,7 @@ const StripeCreditCardElement: React.FC<StripeCreditCardElementProps> = (
 	const stripe = useStripe()
 	const elements = useElements()
 
-	const { showAlertError } = useAlerts()
+	const { showAlertError } = useToast()
 
 	const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault()

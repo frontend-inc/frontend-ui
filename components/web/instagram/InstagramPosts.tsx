@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Placeholder } from '../..'
+import { Alert } from '../..'
 import { BlurFade } from '../..'
 
 type InstagramPostType = {
@@ -29,7 +29,7 @@ const InstagramPosts: React.FC<InstagramPostProps> = (props) => {
           ))}
         </div>
 			{items?.length == 0 && (
-				<Placeholder
+				<Alert
 					icon="Instagram"
 					title="No instagram posts."
 					description="Instagram posts will appear here."

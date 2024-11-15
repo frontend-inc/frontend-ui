@@ -33,18 +33,6 @@ const AdminDocumentToolbar = (props) => {
 		handleClose()
 	}
 
-	const handlePremium = async () => {
-		await updateDocuments(selectedIds, { premium: true })
-		handleReload()
-		handleClose()
-	}
-
-	const handleFree = async () => {
-		await updateDocuments(selectedIds, { premium: false })
-		handleReload()
-		handleClose()
-	}
-
 	return (
 		<ResourceToolbarModal open={open} handleClose={handleClose}>
 			<div className="flex flex-row justify-center items-center space-x-2">

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import FeatureIcon from './FeatureIcon'
-import { Placeholder } from '../..'
+import { Alert } from '../..'
 import { BlurFade } from '../..'
 
 export type FeatureIconsProps = {
@@ -30,7 +30,7 @@ const FeatureIcons: React.FC<FeatureIconsProps> = (props) => {
 				))}
 			</div>
 			{items?.length == 0 && (
-				<Placeholder
+				<Alert
 					icon="ri-stack-fill"
 					title="No features"
 					description="No features to display."

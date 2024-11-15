@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Image, VideoModal, Placeholder } from '../..'
+import { Image, VideoModal, Alert } from '../..'
 import { BlurFade } from '../..'
 import { cloudinaryImageFromVideoUrl } from '../../../helpers'
 import { PlayCircle } from 'lucide-react'
@@ -61,7 +61,7 @@ const Videos: React.FC<VideosProps> = (props) => {
           ))}
         </div>
 			{items?.length == 0 && (
-				<Placeholder
+				<Alert
 					icon="ri-video-fill"
 					title="No videos yet."
 					description="Videos will appear here."

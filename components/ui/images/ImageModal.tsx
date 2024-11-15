@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useAlerts } from '../../../hooks'
+import { useToast } from '../../../hooks'
 import { Modal } from '../../../components'
 import { Button } from '../../core'
 import copy from 'copy-to-clipboard'
@@ -17,7 +17,7 @@ type ImageModalProps = {
 const ImageModal: React.FC<ImageModalProps> = (props) => {
 	const { open, image, title = '', handleClose } = props
 
-	const { showAlertSuccess } = useAlerts()
+	const { showAlertSuccess } = useToast()
 
 	const handleCopyUrlClick = () => {
 		copy(image?.url)

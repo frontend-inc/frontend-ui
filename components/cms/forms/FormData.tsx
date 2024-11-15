@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { Form, Heading } from '../..'
-import { useAlerts, useForms, useContacts } from '../../../hooks'
+import { useToast, useForms, useContacts } from '../../../hooks'
 import { HeadingProps } from '../../../types'
 
 export type FormDataProps = HeadingProps & {
@@ -19,7 +19,7 @@ const FormData: React.FC<FormDataProps> = (props) => {
 
 	const { loading, form, findForm } = useForms()
 
-  const { showAlertSuccess } = useAlerts()
+  const { showAlertSuccess } = useToast()
 
 	const {
     errors,

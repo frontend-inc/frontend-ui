@@ -6,7 +6,7 @@ import {
 	TableHeaders,
 	TableRow,
 	Pagination,
-	Placeholder,
+	Alert,
 } from '../../../components'
 import { Table, TableHeader, TableBody } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
@@ -126,7 +126,7 @@ const TableList: React.FC<TableProps> = (props) => {
 			</Table>
 			{!loading && resources?.length == 0 && (
 				<div className="py-12 px-4 w-full h-full flex flex-row items-center justify-center">
-					<Placeholder
+					<Alert
 						icon={emptyIcon}
 						title={emptyTitle}
 						description={emptyDescription}

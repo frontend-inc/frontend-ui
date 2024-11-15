@@ -6,7 +6,7 @@ import {
 	AdminLayoutLeft,
 	AdminLayoutCenter,
 } from '../../../components'
-import { Placeholder } from '../../../components'
+import { Alert } from '../../../components'
 import { useTabs, useAdminCollections } from '../../../hooks'
 import { useParams } from 'next/navigation'
 import AdminCollectionMenu from './AdminCollectionMenu'
@@ -44,7 +44,7 @@ const AdminCollectionPage: React.FC = () => {
 								collectionId={collectionId}
 							/>
 						) : (
-							<Placeholder
+							<Alert
 								icon="ri-database-2-fill"
 								title="No collection."
 								description="Select or create a CMS collection."

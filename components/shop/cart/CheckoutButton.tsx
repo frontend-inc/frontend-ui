@@ -3,12 +3,12 @@
 import React from 'react'
 import { Button } from '../../core'
 import { useCart } from '../../../hooks'
-import { useAlerts } from '../../../hooks'
+import { useToast } from '../../../hooks'
 
 const CheckoutButton = () => {
 	const { loading, cart, checkout } = useCart()
 
-	const { showAlertError } = useAlerts()
+	const { showAlertError } = useToast()
 
 	const handleClick = async () => {
 		let currentUrl = window.location.href

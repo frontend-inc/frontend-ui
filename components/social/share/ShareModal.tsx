@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useAlerts } from '../../../hooks'
+import { useToast } from '../../../hooks'
 import { Modal, SocialIcon } from '../..'
 import { Typography } from '../../core'
 
@@ -25,7 +25,7 @@ export default function ShareButton({
 	url,  	
 }: ShareButtonProps) {
 
-	const { showAlertSuccess } = useAlerts()
+	const { showAlertSuccess } = useToast()
 
 
 	const handleShareClick = (platform: string) => {		

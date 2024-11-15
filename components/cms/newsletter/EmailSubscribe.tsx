@@ -5,7 +5,7 @@ import { Button } from '../../core'
 import { TypographyVariantsType } from '../../../types'
 import { Heading, InputBase } from '../..'
 import { useResource } from 'frontend-js'
-import { useAlerts } from '../../../hooks'
+import { useToast } from '../../../hooks'
 
 export type EmailSubscribeProps = {
 	label?: string
@@ -19,7 +19,7 @@ export type EmailSubscribeProps = {
 
 // Call To Action
 const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
-	const { showAlertSuccess } = useAlerts()
+	const { showAlertSuccess } = useToast()
 	const { label, title, subtitle, buttonText = 'Subscribe' } = props || {}
 
 	const {

@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react'
 import { useAuth } from 'frontend-js'
 import { Form } from '../..'
-import { useAlerts } from '../../../hooks'
+import { useToast } from '../../../hooks'
 import { useRouter, useParams } from 'next/navigation'
 import { FormFieldType } from '../../../types'
 import { useApp } from '../../../hooks'
@@ -35,7 +35,7 @@ const UserForm: React.FC<CurrentUserFormProps> = (props) => {
 		handleSuccess = onSuccess,
 	} = props
 
-	const { showAlertSuccess } = useAlerts()
+	const { showAlertSuccess } = useToast()
 
 	const {
 		delayedLoading,

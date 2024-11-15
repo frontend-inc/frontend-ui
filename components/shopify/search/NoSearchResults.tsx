@@ -1,12 +1,12 @@
 'use client'
 
 import React from 'react'
-import { Placeholder } from '../../../components'
+import { Alert } from '../../../components'
 
 const NoSearchResults: React.FC = () => {
 	return (
 		<div className="flex flex-row w-full justify-center">
-			<Placeholder
+			<Alert
         icon="ri-search-fill"
 				title="No search results"
 				description="Please try another query."
