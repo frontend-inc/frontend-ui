@@ -18,7 +18,7 @@ export default function AdminLayoutCenter(props: AdminLayoutCenterProps) {
 	return (
 		<div
 			className={cn(
-				'bg-muted/20 w-full h-screen overflow-hidden',
+				'bg-background w-full h-screen overflow-hidden',
 				'flex flex-col justify-between',
         !disablePadding && 'px-3'
 			)}

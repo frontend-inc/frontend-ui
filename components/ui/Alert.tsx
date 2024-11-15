@@ -29,8 +29,8 @@ const Alert: React.FC<AlertProps> = (props) => {
 		<ShadcnAlert
       className={cn(
         "flex space-x-3",
-        variant == 'destructive' && 'bg-destructive/10',
-        variant == 'accent' && 'bg-accent/10',
+        variant == 'destructive' && 'bg-destructive/10 border-destructive',
+        variant == 'accent' && 'bg-accent/10 border-accent',
         className
       )}
     >

@@ -34,6 +34,7 @@ const AdminUsersList: React.FC = () => {
 			edit={AdminUserEditForm}
 			show={AdminUserShow}
 			component={AdminUserListItem}
+      emptyIcon='ri-user-6-fill'
 		/>
 	)
 }

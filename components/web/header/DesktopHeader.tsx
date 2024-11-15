@@ -36,7 +36,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 	const { setMenuOpen } = useApp()
 
 	return (
-		<div className="w-full h-16 bg-background">
+		<div className="hidden md:block w-full h-16 bg-background">
 			<div className="w-full">
 				<div className="w-full flex flex-row">
 					{links?.length > MAX_LINKS && (

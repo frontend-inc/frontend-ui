@@ -74,7 +74,7 @@ const AdminDocumentsList: React.FC<AdminDocumentListProps> = (props) => {
 			}}
 			emptyIcon="ri-box-3-fill"
 			emptyTitle="No content"
-			emptyDescription="No content added yet."
+			emptyDescription="No content added yet"
 		/>
 	)
 }

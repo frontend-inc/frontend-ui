@@ -34,7 +34,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = ({
 	const { setMenuOpen } = useApp()
 
 	return (
-		<div className="md:hidden w-full h-16 bg-background">
+		<div className="block md:hidden w-full h-16 bg-background">
 			<div className="flex justify-between items-center h-full px-4">
 				<div className="flex items-center">
 					<Button
