@@ -1,20 +1,26 @@
 'use client'
 
 import React from 'react'
-import { Section } from '../../components'
+import { Section, Heading } from '../../components'
 import { EmailSubscribe } from '../../components'
 import { EmailSubscribeProps } from '../../components/cms/newsletter/EmailSubscribe'
-import { SectionProps } from '../../types'
+import { SectionProps, HeadingProps } from '../../types'
 
-type FormEmailSubscribeProps = SectionProps & EmailSubscribeProps
+type FormEmailSubscribeProps = SectionProps & HeadingProps & 
+  EmailSubscribeProps
 
 const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 	const {
+    label,
+		title,
+		subtitle,
+		textAlign='center',
+    fontSize='lg',    
 		bgColor,
 		mode,
 		py,
 		px,
-		maxWidth,
+		maxWidth='sm',
 		requireAuth,
 		...rest
 	} = props
@@ -28,6 +34,13 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
+      <Heading
+        label={label}
+        title={title}
+        subtitle={subtitle}
+        size={fontSize}
+        textAlign={textAlign}
+      />
 			<EmailSubscribe {...rest} />
 		</Section>
 	)

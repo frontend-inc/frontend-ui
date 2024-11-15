@@ -1,15 +1,12 @@
 'use client'
 
 import React from 'react'
-import { FormFieldType, TypographyVariantsType } from '../../../types'
-import { Heading, Form } from '../..'
+import { FormFieldType } from '../../../types'
+import { Form } from '../..'
 import { useResource } from 'frontend-js'
 import { useToast } from '../../../hooks'
 
 export type ContactFormProps = {
-	label?: string
-	title: string
-	subtitle: string
 	buttonText?: string
 	href?: string
 	metafields?: FormFieldType[]
@@ -20,9 +17,6 @@ export type ContactFormProps = {
 const ContactForm: React.FC<ContactFormProps> = (props) => {
 	const { showAlertSuccess } = useToast()
 	const {
-		label,
-		title,
-		subtitle,
 		metafields = [],
 		buttonText = 'Send Message',
 	} = props || {}
@@ -52,51 +46,40 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 	}
 
 	return (
-		<div className="w-full">
-			<div className="container mx-auto max-w-screen-md">
-				<Heading
-					label={label}
-					title={title}
-					subtitle={subtitle}
-					size="lg"
-					textAlign="center"
-				/>
-				<Form
-					loading={delayedLoading}
-					fields={[
-						{
-							label: 'Name',
-							name: 'name',
-							placeholder: 'Full name',
-							variant: 'string',
-						},
-						{
-							label: 'Email',
-							name: 'email',
-							placeholder: 'Email',
-							variant: 'string',
-						},
-						...metafields,
-						{
-							label: 'Message',
-							name: 'message',
-							placeholder: 'Leave a message',
-							variant: 'text',
-						},
-						{
-							label: 'Join our newsletter',
-							name: 'accepts_marketing',
-							variant: 'boolean',
-						},
-					]}
-					resource={contact}
-					handleChange={handleChange}
-					errors={errors}
-					handleSubmit={handleSubmit}
-					buttonText={buttonText}
-				/>
-			</div>
-		</div>
+    <Form
+      loading={delayedLoading}
+      fields={[
+        {
+          label: 'Name',
+          name: 'name',
+          placeholder: 'Full name',
+          variant: 'string',
+        },
+        {
+          label: 'Email',
+          name: 'email',
+          placeholder: 'Email',
+          variant: 'string',
+        },
+        ...metafields,
+        {
+          label: 'Message',
+          name: 'message',
+          placeholder: 'Leave a message',
+          variant: 'text',
+        },
+        {
+          label: 'Join our newsletter',
+          name: 'accepts_marketing',
+          variant: 'boolean',
+        },
+      ]}
+      resource={contact}
+      handleChange={handleChange}
+      errors={errors}
+      handleSubmit={handleSubmit}
+      buttonText={buttonText}
+    />
 	)
 }
 

@@ -53,7 +53,7 @@ const LinkListItem: React.FC<LinkListItemProps> = (props) => {
             </AvatarFallback>
           </Avatar>
           <div className="flex flex-col space-y-0">          
-            <Typography variant="subtitle1" className="font-medium">{title}</Typography>
+            <Typography variant="subtitle2">{title}</Typography>
             <Typography variant="body2" className="text-muted-foreground">{subtitle}</Typography>
           </div>
         </div>

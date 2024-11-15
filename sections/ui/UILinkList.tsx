@@ -23,8 +23,6 @@ const UILinkList: React.FC<UILinkListProps> = (props) => {
 		...rest
 	} = props
 
-  console.log("MaxWidth", maxWidth)
-
 	return (
 		<Section
 			requireAuth={requireAuth}

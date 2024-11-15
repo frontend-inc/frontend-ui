@@ -8,9 +8,6 @@ import { useResource } from 'frontend-js'
 import { useToast } from '../../../hooks'
 
 export type EmailSubscribeProps = {
-	label?: string
-	title: string
-	subtitle: string
 	buttonText?: string
 	href?: string
 	handleClick?: () => void
@@ -20,7 +17,7 @@ export type EmailSubscribeProps = {
 // Call To Action
 const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 	const { showAlertSuccess } = useToast()
-	const { label, title, subtitle, buttonText = 'Subscribe' } = props || {}
+	const { buttonText = 'Subscribe' } = props || {}
 
 	const {
 		errors,
@@ -47,38 +44,27 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 	}
 
 	return (
-		<div className="container mx-auto max-w-screen-md">
-			<div className="flex flex-col space-y-1">
-				<Heading
-					label={label}
-					title={title}
-					subtitle={subtitle}
-					size="lg"
-					textAlign="center"
-				/>
-				<div className="flex flex-row justify-center items-center">
-					<div className="max-w-[360px] w-full p-1 flex flex-row justify-center items-center">
-						<InputBase
-							errors={errors}
-							name="email"
-							value={contact?.email}
-              //@ts-ignore
-							handleChange={handleChange}
-							placeholder="Enter your email"
-							type="email"
-							className="rounded-l-md rounded-r-none border-r-0"
-						/>
-						<Button
-							onClick={handleSubmit}
-							className="rounded-l-none rounded-r-md"
-							loading={delayedLoading}
-						>
-							{buttonText}
-						</Button>
-					</div>
-				</div>
-			</div>
-		</div>
+    <div className="flex flex-row justify-center items-center">
+      <div className="max-w-[360px] w-full p-1 flex flex-row justify-center items-center">
+        <InputBase
+          errors={errors}
+          name="email"
+          value={contact?.email}
+          //@ts-ignore
+          handleChange={handleChange}
+          placeholder="Enter your email"
+          type="email"
+          className="rounded-l-md rounded-r-none border-r-0"
+        />
+        <Button
+          onClick={handleSubmit}
+          className="rounded-l-none rounded-r-md"
+          loading={delayedLoading}
+        >
+          {buttonText}
+        </Button>
+      </div>
+    </div>
 	)
 }
 

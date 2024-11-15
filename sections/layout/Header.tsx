@@ -3,8 +3,9 @@
 import React from 'react'
 import { Header } from '../../components'
 import { HeaderProps } from '../../components/web/header/Header'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useApp } from '../../hooks'
+import { cn } from 'frontend-shadcn'
 
 type LayoutHeaderProps = HeaderProps & {
 	bgColor: string
@@ -26,7 +27,11 @@ const AppHeader: React.FC<LayoutHeaderProps> = (props) => {
 	}
 
 	return (
-		<div className={mode}>
+		<div 
+      className={cn(mode, 'w-full')} 
+      style={{
+        backgroundColor: bgColor,
+      }}>
 			<Header {...rest} handleClick={handleClick} />
 		</div>
 	)

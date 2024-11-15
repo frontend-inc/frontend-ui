@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Icon } from '../..'
+import { RemixIcon } from '../..'
 import { Typography } from '../../core'
 import { Avatar, AvatarFallback } from 'frontend-shadcn'
 
@@ -19,7 +19,7 @@ const Feature: React.FC<FeatureProps> = (props) => {
 			{icon && (
 				<Avatar className="h-[48px] w-[48px]">
 					<AvatarFallback className="bg-primary">
-						<Icon name={icon} className="text-primary-foreground" />
+						<RemixIcon name={icon} size="lg" className="text-primary-foreground" />
 					</AvatarFallback>
 				</Avatar>
 			)}
