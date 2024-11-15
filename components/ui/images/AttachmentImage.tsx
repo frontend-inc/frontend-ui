@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Icon } from '../../../components'
+import { RemixIcon } from '../../../components'
 import { Avatar, AvatarFallback } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
 
@@ -27,7 +27,7 @@ const AttachmentImage: React.FC<AttachmentImageProps> = ({
 			}}
 		>
 			<AvatarFallback className="bg-primary">
-				<Icon name={icon} className="bg-primary-foreground" />
+				<RemixIcon name={icon} className="bg-primary-foreground" />
 			</AvatarFallback>
 		</Avatar>
 	)

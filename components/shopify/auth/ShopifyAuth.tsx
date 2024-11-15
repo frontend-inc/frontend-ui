@@ -5,7 +5,7 @@ import { ShopifyContext } from 'frontend-shopify'
 import { Button } from '../../../components'
 import { Typography } from '../../core'
 import { useShop } from 'frontend-shopify'
-import { Icon } from '../../../components'
+import { RemixIcon } from '../../../components'
 import { useRouter } from 'next/navigation'
 
 type DesktopAuthButtonProps = {
@@ -18,7 +18,7 @@ const DesktopAuthButton: React.FC<DesktopAuthButtonProps> = (props) => {
 
 	return (
 		<Button variant="ghost" size="icon" onClick={handleClick} className="p-0">
-			<Icon name={icon} />
+			<RemixIcon name={icon} />
 		</Button>
 	)
 }
@@ -41,7 +41,7 @@ const MobileShopifyAuthButton: React.FC<MobileShopifyAuthButtonProps> = (
 		>
 			<div className="flex items-center">
 				<div className="mr-4">
-					<Icon name={icon} />
+					<RemixIcon name={icon} />
 				</div>
 				<div>
 					<Typography variant="button">Orders</Typography>

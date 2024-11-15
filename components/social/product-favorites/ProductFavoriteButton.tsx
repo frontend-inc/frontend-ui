@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { isProductFavorited } from '../../../helpers'
 import { useAuth } from 'frontend-js'
 import { useSocial, useApp } from '../../../hooks'
-import { Bookmark } from 'lucide-react'
+import { RiBookmarkFill, RiBookmarkLine } from '@remixicon/react'
 import { IconButton } from '../../core'
 import { cn } from 'frontend-shadcn'
 
@@ -55,12 +55,8 @@ export default function ProductFavoriteButton({
 					isFavorite && 'text-primary hover:text-primary-dark'
 				)}
 			>
-				<Bookmark
-					className={cn(
-						'w-5 h-5 text-foreground',
-						isFavorite ? 'fill-primary' : 'fill-none '
-					)}
-				/>
+        { isFavorite && <RiBookmarkFill className="fill-primary" /> }
+        { !isFavorite && <RiBookmarkLine /> }								
 			</IconButton>
 		</div>
 	)

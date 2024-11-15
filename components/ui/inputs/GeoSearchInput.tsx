@@ -3,11 +3,11 @@
 import React, { useEffect, useState } from 'react'
 import { useDebounce } from 'use-debounce'
 import { SyntheticEventType } from '../../../types'
-import { Icon } from '../..'
 import { useGooglePlaces } from '../../../hooks'
 import { Input } from 'frontend-shadcn'
 import { Button } from '../../../components'
 import { cn } from 'frontend-shadcn'
+import { RiSearch2Fill } from '@remixicon/react'
 
 type GeoSearchInputProps = {
 	name?: string
@@ -132,7 +132,7 @@ export default function GeoSearchInput({
 				size="icon"
 				className="mr-1"
 			>
-				<Icon name="Search" className="h-4 w-4 text-muted-foreground" />
+				<RiSearch2Fill className="h-4 w-4 text-muted-foreground" />
 			</Button>
 		</div>
 	)

@@ -4,6 +4,7 @@ import React from 'react'
 import { Typography } from '../../core'
 import { Icon, Image, MenuButton, TouchableOpacity } from '../..'
 import { Checkbox } from 'frontend-shadcn'
+import { GripVertical } from 'lucide-react'
 
 type DataListItemProps = {
 	sortable?: boolean
@@ -66,7 +67,7 @@ const DataListItem: React.FC<DataListItemProps> = (props) => {
 						/>
 					)}
 					{sortable && (
-						<Icon name="GripVertical" className="text-muted-foreground" />
+						<GripVertical className="text-muted-foreground" />
 					)}
 					<div className="pr-0 sm:pr-2 mr-0 sm:mr-2 w-full sm:w-[220px] sm:min-w-[220px] h-full">
 						<TouchableOpacity handleClick={handleClick}>

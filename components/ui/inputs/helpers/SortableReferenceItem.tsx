@@ -4,6 +4,7 @@ import React from 'react'
 import { Icon, Image, MenuButton } from '../../..'
 import { cn } from 'frontend-shadcn'
 import { Typography } from '../../../core'
+import { GripVertical } from 'lucide-react'
 
 type SortableReferenceItemProps = {
 	image: string
@@ -35,7 +36,7 @@ export default function SortableReferenceItem({
 		>
 			<div className="flex items-center">
 				<div className="mr-2 cursor-grab">
-					<Icon name="GripVertical" />
+					<GripVertical />
 				</div>
 				<div className="mr-2 w-8 h-8">
 					<Image alt="image" src={image} height={32} width={32} />

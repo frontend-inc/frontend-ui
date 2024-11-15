@@ -5,6 +5,7 @@ import { IconButton } from '../../core'
 import { ShopifyContext } from 'frontend-shopify'
 import { AppContext } from '../../../context'
 import { Icon } from '../..'
+import { RiSearch2Fill } from '@remixicon/react'
 
 const ShopifySearchButton: React.FC = () => {
 	const { toggleSearch } = useContext(ShopifyContext) as any
@@ -17,7 +18,7 @@ const ShopifySearchButton: React.FC = () => {
 
 	return (
 		<IconButton onClick={handleToggleSearch}>
-			<Icon name="Search"  />
+			<RiSearch2Fill />
 		</IconButton>
 	)
 }

@@ -50,7 +50,7 @@ const ShopifyCustomerForm: React.FC<ShopifyCustomerFormProps> = (props) => {
 			/>
 			<Button
 				color="secondary"
-				endIcon={loading && <IconLoading />}
+        loading={loading}				
 				onClick={handleSubmit}
 			>
 				Update Account

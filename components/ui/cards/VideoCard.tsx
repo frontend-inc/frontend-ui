@@ -3,6 +3,7 @@
 import React from 'react'
 import { Image, TouchableOpacity, Icon } from '../..'
 import { cn } from 'frontend-shadcn'
+import { RiPlayCircleFill } from '@remixicon/react'
 
 export type CardProps = {
 	avatar?: React.ReactNode
@@ -55,7 +56,7 @@ export default function VideoCard({
 					)}
 					onClick={handleClick}
 				>
-					<Icon name="Play" className="text-white" />
+					<RiPlayCircleFill className="text-white" />
 				</button>
 				<div className="absolute top-2.5 right-2.5 flex flex-row justify-end">
 					{secondaryAction}

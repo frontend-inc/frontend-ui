@@ -38,7 +38,7 @@ const NewPasswordForm: React.FC<NewPasswordFormProps> = (props) => {
 			<Button
 				fullWidth
 				onClick={handleSubmit}
-				endIcon={loading && <IconLoading />}
+        loading={loading}				
 			>
 				Save and Continue
 			</Button>

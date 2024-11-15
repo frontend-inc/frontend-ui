@@ -7,6 +7,7 @@ import { useApp } from '../../../hooks'
 import { ButtonType, MenuLinkType } from '../../..'
 import Logo from './Logo'
 import { Button } from '../../../components'
+import { RiMenu2Fill } from '@remixicon/react'
 
 type MobileHeaderProps = {
 	logo: string
@@ -43,7 +44,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = ({
 						className="mr-2"
 						onClick={() => setMenuOpen(true)}
 					>
-						<Icon name="Menu" />
+						<RiMenu2Fill />
 					</Button>
 					<Logo
 						handleClick={() => handleClick('/')}

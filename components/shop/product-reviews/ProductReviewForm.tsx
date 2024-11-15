@@ -58,8 +58,8 @@ const ProductReviewForm: React.FC<ProductReviewFormProps> = () => {
 					variant="default"
 					onClick={handleSubmit}
 					disabled={loading}
-				>
-					{loading && <IconLoading className="mr-2 h-4 w-4" />}
+          loading={loading}
+				>					
 					Submit
 				</Button>
 			}

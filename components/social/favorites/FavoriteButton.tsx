@@ -4,9 +4,9 @@ import React, { useEffect, useState } from 'react'
 import { isFavorited } from '../../../helpers'
 import { useAuth } from 'frontend-js'
 import { useSocial, useApp } from '../../../hooks'
-import { Bookmark } from 'lucide-react'
 import { IconButton } from '../../core'
 import { cn } from 'frontend-shadcn'
+import { RiBookmarkLine, RiBookmarkFill } from '@remixicon/react'
 
 type FavoriteButtonProps = {
 	resource: any
@@ -57,14 +57,8 @@ export default function FavoriteButton({
 					'transition-transform duration-200'
 				)}
 			>
-				<Bookmark
-					className={cn(
-						'w-5 h-5',
-						isFavorite
-							? 'fill-primary stroke-primary'
-							: 'stroke-current fill-none'
-					)}
-				/>
+        { isFavorite && <RiBookmarkFill className="fill-primary" /> }
+        { !isFavorite && <RiBookmarkLine /> }				
 			</IconButton>
 		</div>
 	)

@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Icon } from '../../../components'
-import { useRouter, useParams } from 'next/navigation'
+import { RemixIcon } from '../../../components'
+import { useRouter } from 'next/navigation'
 import { DropdownMenuItem } from 'frontend-shadcn'
 
 type ButtonMenuProps = {
@@ -34,7 +34,7 @@ const ButtonMenu: React.FC<ButtonMenuProps> = (props) => {
 		<DropdownMenuItem onClick={handleClick} className="cursor-pointer">
 			{icon && (
 				<span className="mr-2">
-					<Icon name={icon} />
+					<RemixIcon name={icon} />
 				</span>
 			)}
 			{label}

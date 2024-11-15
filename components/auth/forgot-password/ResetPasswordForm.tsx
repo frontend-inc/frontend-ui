@@ -38,7 +38,7 @@ const ResetPasswordForm: React.FC<ResetPasswordFormProps> = (props) => {
 			<Button
 				fullWidth
 				onClick={handleSubmit}
-				endIcon={loading && <IconLoading />}
+        loading={ loading }				
 			>
 				Save and Continue
 			</Button>

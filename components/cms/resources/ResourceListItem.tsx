@@ -13,7 +13,7 @@ import {
 } from 'frontend-shadcn'
 import { GripVertical, MoreVertical } from 'lucide-react'
 import { Typography } from '../../core'
-import { Image, Icon } from '../../../components'
+import { Image, RemixIcon } from '../../../components'
 
 export type ResourceListItemProps = {
 	selectable?: boolean
@@ -105,7 +105,7 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 					>
 						<Avatar className="mr-2 rounded">
 							<AvatarFallback className={color}>
-								<Icon name={icon} />
+								<RemixIcon name={icon} />
 							</AvatarFallback>
 						</Avatar>
 					</button>

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Button } from '../../core'
-import { Icon } from '../../../components'
+import { RemixIcon } from '../../../components'
 
 type LoadMoreProps = {
 	page: number
@@ -20,7 +20,7 @@ const LoadMore: React.FC<LoadMoreProps> = (props) => {
 			<Button
 				color="secondary"
 				onClick={handlePaginate}
-				endIcon={<Icon name="ChevronDown" />}
+				endIcon={<RemixIcon name="ri-arrow-down-line" />}
 			>
 				Load More
 			</Button>

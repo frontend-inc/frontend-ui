@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { isProductLiked } from '../../../helpers'
 import { useSocial, useApp } from '../../../hooks'
 import { useAuth } from 'frontend-js'
-import { Heart } from 'lucide-react'
+import { RiHeartFill, RiHeartLine } from '@remixicon/react'
 import { IconButton } from '../../core'
 import { cn } from 'frontend-shadcn'
 
@@ -15,10 +15,13 @@ type ProductLikeButtonProps = {
 	numLikes?: number
 }
 
-export default function ProductLikeButton({
-	product,
-	size = 'small',
-}: ProductLikeButtonProps) {
+export default function ProductLikeButton(props: ProductLikeButtonProps) {
+
+  const {
+    product,
+    size = 'small',
+  } = props
+
 	const { currentUser } = useAuth()
 	const { setAuthOpen } = useApp()
 
@@ -55,12 +58,8 @@ export default function ProductLikeButton({
 					liked && 'text-primary hover:text-primary-dark'
 				)}
 			>
-				<Heart
-					className={cn(
-						'w-5 h-5 text-foreground',
-						liked ? 'fill-primary stroke-primary' : 'fill-none stroke-current'
-					)}
-				/>
+        { liked && <RiHeartFill className="fill-primary" /> }
+        { !liked && <RiHeartLine /> }								
 			</IconButton>
 		</div>
 	)

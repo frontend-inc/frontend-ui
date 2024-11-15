@@ -3,8 +3,9 @@
 import React from 'react'
 import { Button } from '../../../../components'
 import { Avatar, AvatarFallback } from 'frontend-shadcn'
-import { Icon, Heading, Image } from '../../../../components'
+import { Heading, Image } from '../../../../components'
 import { HeadingProps } from '../../../../types'
+import { RiCheckLine } from '@remixicon/react'
 
 type FormCardProps = HeadingProps & {
 	image?: string
@@ -28,7 +29,7 @@ const FormCard: React.FC<FormCardProps> = (props) => {
 			{checkMark && (
 				<Avatar>
           <AvatarFallback className="bg-primary">
-					  <Icon name="Check" className="h-8 w-8 text-primary-foreground" />
+					  <RiCheckLine size={28} className="text-primary-foreground" />
           </AvatarFallback>
 				</Avatar>
 			)}

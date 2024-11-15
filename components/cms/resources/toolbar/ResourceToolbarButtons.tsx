@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Button } from '../../../../components'
-import { Icon } from '../../../../components'
+import { RemixIcon } from '../../../../components'
 
 type ResourceToolbarButtonsProps = {
 	selected: any[]
@@ -33,7 +33,7 @@ const ResourceToolbarButtons: React.FC<ResourceToolbarButtonsProps> = (
 					}
 				>
 					{button?.icon && (
-						<Icon name={button?.icon} className="mr-2 h-4 w-4" />
+						<RemixIcon name={button?.icon} className="mr-2" />
 					)}
 					{button?.label}
 				</Button>

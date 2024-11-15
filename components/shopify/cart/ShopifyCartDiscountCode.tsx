@@ -1,12 +1,12 @@
 'use client'
 
 import React from 'react'
-import { Icon } from '../../../components'
 import { IconButton, Typography } from '../../core'
 import { Label } from '../../../components'
 import { useCart } from 'frontend-shopify'
 import { useLoaders } from '../../../hooks'
 import { cn } from 'frontend-shadcn'
+import { RiDeleteBin7Fill } from '@remixicon/react'
 
 type ShopifyCartDiscountCodeProps = {
 	discountCode: {
@@ -37,7 +37,7 @@ export default function ShopifyCartDiscountCode({
 			<div className="flex flex-row items-center space-x-2">
 				<Label label={discountCode.code} />
 				<IconButton onClick={handleDelete}>
-					<Icon name="Trash" size="sm" />
+					<RiDeleteBin7Fill />
 				</IconButton>
 			</div>
 		</div>

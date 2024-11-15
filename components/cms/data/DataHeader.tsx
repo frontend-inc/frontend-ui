@@ -5,6 +5,7 @@ import { Button } from '../../core'
 import { Icon, FilterButton, SortButton, SearchInput } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch, useCollectionForms } from '../../../hooks'
+import { RiAddFill } from '@remixicon/react'
 
 export type DataHeaderProps = {
 	query: any
@@ -98,8 +99,13 @@ const DataHeader: React.FC<DataHeaderProps> = (props) => {
 				</div>
 				{(enableCreate || secondaryAction) && (
 					<div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-1">
-						<Button className="sm:w-auto" onClick={handleAdd}>
-							<Icon name="Plus" className="mr-2 text-primary-foreground" />
+						<Button 
+              className="sm:w-auto" 
+              startIcon={
+                <RiAddFill className="text-primary-foreground" />
+              }
+              onClick={handleAdd}
+            >							
 							{buttonText}
 						</Button>
 						{secondaryAction}

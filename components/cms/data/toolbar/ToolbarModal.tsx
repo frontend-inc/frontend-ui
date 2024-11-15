@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { Collapse, IconButton } from '../../../core'
-import { Icon } from '../../..'
 import { useResourceContext } from 'frontend-js'
+import { RiCloseFill } from '@remixicon/react'
 
 type ToolbarModalProps = {
 	children: React.ReactNode
@@ -25,7 +25,7 @@ const ToolbarModal: React.FC<ToolbarModalProps> = (props) => {
 				<div className="flex flex-row justify-between items-center w-full">
 					<div className="flex flex-row space-x-1 items-center">
 						<IconButton onClick={handleClose}>
-							<Icon name="X" />
+							<RiCloseFill />
 						</IconButton>
 						{children}
 					</div>

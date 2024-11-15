@@ -2,8 +2,9 @@
 
 import React from 'react'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from 'frontend-shadcn'
-import { Icon } from '../../../components'
+import { RemixIcon } from '../../../components'
 import TabContent from './TabContent'
+import { RiSearch2Fill } from '@remixicon/react'
 
 export type TabsProps = {
 	items?: {
@@ -26,7 +27,7 @@ const CustomTabs: React.FC<TabsProps> = ({ items = [] }) => {
 						className="flex items-center justify-center"
 					>
 						{item.icon && (
-							<Icon name={item.icon} className="w-5 h-5 mr-2 text-current" />
+							<RemixIcon name={item.icon} className="w-5 h-5 mr-2 text-current" />
 						)}
 						{item.label}
 					</TabsTrigger>
@@ -44,7 +45,7 @@ const CustomTabs: React.FC<TabsProps> = ({ items = [] }) => {
 			))}
 			{items.length === 0 && (
 				<div className="flex flex-col items-center justify-center p-8 text-center">
-					<Icon name="Search" className="w-12 h-12 text-gray-400 mb-4" />
+					<RiSearch2Fill className="w-12 h-12 text-gray-400 mb-4" />
 					<h2 className="text-xl font-semibold mb-2">No content</h2>
 					<p className="text-gray-600">Your content will appear here.</p>
 				</div>

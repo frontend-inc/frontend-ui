@@ -7,12 +7,12 @@ import { useSegment } from '../../../hooks/addons'
 import { Button } from '../../../components'
 import Image from 'next/image'
 import { Typography } from '../../core'
-import { Icon } from '../../../components'
 import { formatCurrency } from 'frontend-shopify'
 import { useRouter } from 'next/navigation'
 import { CartLineType } from 'frontend-shopify'
 import { cn } from 'frontend-shadcn'
 import { Badge } from 'frontend-shadcn'
+import { RiAddLine, RiCloseFill, RiSubtractLine } from '@remixicon/react'
 
 type ShopifyCartQuantityInputProps = {
 	quantity: number
@@ -33,7 +33,7 @@ const ShopifyCartQuantityInput: React.FC<ShopifyCartQuantityInputProps> = ({
 				className="px-2 rounded-r-none"
 				onClick={handleRemoveQuantity}
 			>
-				<Icon name="Minus" size="sm" />
+				<RiSubtractLine />
 			</Button>
 			<Button variant="secondary" size="sm" className="px-2 rounded-none">
 				{quantity}
@@ -44,7 +44,7 @@ const ShopifyCartQuantityInput: React.FC<ShopifyCartQuantityInputProps> = ({
 				className="px-2 rounded-l-none"
 				onClick={handleAddQuantity}
 			>
-				<Icon name="Plus" size="sm" />
+				<RiAddLine />
 			</Button>
 		</div>
 	)
@@ -167,7 +167,7 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = ({ line }) => {
 				className="text-muted-foreground"
 				onClick={handleRemoveLineItem}
 			>
-				<Icon name="X" />
+				<RiCloseFill />
 			</Button>
 		</div>
 	)

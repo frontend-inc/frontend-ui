@@ -3,17 +3,17 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from '../../core'
 import { InputPropsType } from '../../../types'
-import { Plus } from 'lucide-react'
+import { GripVertical, Plus } from 'lucide-react'
 import { SortableList, InputLabel, Sheet } from '../..'
 import {
-	Icon,
+	RemixIcon,
 	ArrayInput,
 	Autosuggest,
 	BooleanInput,
 	RatingInput,
 	TextInput,
 } from '../..'
-import { RiAddFill } from '@remixicon/react'
+import { RiAddFill, RiCloseLine } from '@remixicon/react'
 
 type JsonbFieldProps = {
 	index: number
@@ -81,11 +81,11 @@ function JsonbItem({
 					onClick={(ev) => handleClick(ev, item, index)}
 				>
 					<span className="mr-2 cursor-grab">
-						<Icon name="GripVertical" />
+						<GripVertical />
 					</span>
 					{item?.icon && (
 						<span className="mr-2">
-							<Icon name={item.icon} />
+							<RemixIcon name={item.icon} />
 						</span>
 					)}
 					<span className="text-gray-900">{item[titleField]}</span>
@@ -94,7 +94,7 @@ function JsonbItem({
 					className="p-2 text-gray-400 hover:text-gray-600 focus:outline-none"
 					onClick={() => handleRemove(index)}
 				>
-					<Icon name="X" />
+					<RiCloseLine />
 				</button>
 			</div>
 		</li>

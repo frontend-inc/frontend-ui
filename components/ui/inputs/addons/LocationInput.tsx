@@ -2,11 +2,12 @@
 
 import React, { useEffect, useState, useRef } from 'react'
 import { useGooglePlaces } from '../../../../hooks'
-import { TextInput, GoogleMaps, Icon } from '../../..'
+import { TextInput, GoogleMaps } from '../../..'
 import { TextInputPropsType } from '../../../../types'
 import { useDebounce } from 'use-debounce'
 import { cn } from 'frontend-shadcn'
 import { useClickOutside } from '@raddix/use-click-outside'
+import { RiMapPin2Fill } from '@remixicon/react'
 
 type LocationInputProps = TextInputPropsType & {
 	enablePosition?: boolean
@@ -18,21 +19,24 @@ type LocationInputProps = TextInputPropsType & {
 	darkTheme?: boolean
 }
 
-export default function LocationInput({
-	name = 'location',
-	value = '',
-	label,
-	placeholder = 'Search location',
-	handleChange,
-	direction = 'column',
-	height = 240,
-	width = 320,
-	zoom = 15,
-	darkTheme = false,
-	enablePosition = false,
-	lat,
-	lng,
-}: LocationInputProps) {
+export default function LocationInput(props: LocationInputProps) {
+
+  const {
+    name = 'location',
+    value = '',
+    label,
+    placeholder = 'Search location',
+    handleChange,
+    direction = 'column',
+    height = 240,
+    width = 320,
+    zoom = 15,
+    darkTheme = false,
+    enablePosition = false,
+    lat,
+    lng,
+  } = props
+  
 	const { placeOptions, fetchPlaces } = useGooglePlaces()
 
 	const [keywords, setKeywords] = useState(value)
@@ -103,7 +107,7 @@ export default function LocationInput({
 										className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center"
 										onClick={() => handleClick(option)}
 									>
-										<Icon name="map-pin" className="mr-2 h-4 w-4" />
+										<RiMapPin2Fill className="mr-2 h-4 w-4" />
 										<span>{option.value}</span>
 									</li>
 								))}

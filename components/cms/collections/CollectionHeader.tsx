@@ -12,6 +12,7 @@ import {
 } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch, useCollectionForms } from '../../../hooks'
+import { RiAddFill } from '@remixicon/react'
 
 export type CollectionHeaderProps = {
 	query: any
@@ -123,8 +124,11 @@ const CollectionHeader: React.FC<CollectionHeaderProps> = (props) => {
 								'bg-primary text-primary-foreground hover:bg-primary/90'
 							)}
 							onClick={handleAdd}
+              startIcon={
+                <RiAddFill />
+              }
 						>
-							<Icon name="Plus" className="mr-2 h-4 w-4" />
+							
 							{buttonText}
 						</Button>
 					</div>

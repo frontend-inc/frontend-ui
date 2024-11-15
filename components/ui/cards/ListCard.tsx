@@ -5,6 +5,7 @@ import { Checkbox } from 'frontend-shadcn'
 import { Icon, Image, AvatarImage } from '../..'
 import { CardProps } from './Card'
 import { Typography } from '../../core'
+import { GripVertical } from 'lucide-react'
 
 export type ListCardProps = CardProps & {
 	circular?: boolean
@@ -43,7 +44,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 					</div>
 				)}
 				{sortable && (
-					<Icon name="GripVertical" className="text-muted-foreground" />
+					<GripVertical className="text-muted-foreground" />
 				)}
 				<div className="flex flex-row justify-start items-start space-x-4 flex-grow">
 					{!disableImage && (

@@ -28,8 +28,8 @@ const OneTimePasswordForm: React.FC<OneTimePasswordFormProps> = (props) => {
 			/>
 			<Button
 				fullWidth
-				onClick={handleSubmit}
-				endIcon={loading && <IconLoading />}
+				onClick={handleSubmit}				
+        loading={loading}
 			>
 				Send One-Time Password
 			</Button>

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useAuth } from 'frontend-js'
-import { UserAvatar, Icon } from '../../../components'
+import { UserAvatar, RemixIcon } from '../../../components'
 import { Button } from '../../../components'
 import {
 	DropdownMenu,
@@ -53,24 +53,24 @@ const AuthMenu: React.FC<AuthMenuProps> = ({
 						<DropdownMenuSeparator />
 						<DropdownMenuGroup>
 							<DropdownMenuItem onClick={handleMyAccount}>
-								<Icon name="User" className="mr-2 h-4 w-4" />
+								<RemixIcon name="ri-user-6-fill" className="mr-2" />
 								<span>My Account</span>
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
 						<DropdownMenuItem onClick={handleLogout}>
-							<Icon name="LogOut" className="mr-2 h-4 w-4" />
+							<RemixIcon name="ri-logout-circle-line" className="mr-2" />
 							<span>Log out</span>
 						</DropdownMenuItem>
 					</>
 				) : (
 					<>
 						<DropdownMenuItem onClick={handleLogin}>
-							<Icon name="LogIn" className="mr-2 h-4 w-4" />
+							<RemixIcon name="ri-login-circle-line" className="mr-2" />
 							<span>Sign In</span>
 						</DropdownMenuItem>
 						<DropdownMenuItem onClick={handleSignup}>
-							<Icon name="UserPlus" className="mr-2 h-4 w-4" />
+							<RemixIcon name="ri-user-add-plus-line" className="mr-2" />
 							<span>Sign Up</span>
 						</DropdownMenuItem>
 					</>

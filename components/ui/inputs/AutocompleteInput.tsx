@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useRef } from 'react'
-import { TextInput, Icon } from '../..'
+import { TextInput, RemixIcon } from '../..'
 import { TextInputPropsType } from '../../../types'
 import { Avatar, AvatarFallback, AvatarImage } from 'frontend-shadcn'
 import { useClickOutside } from '@raddix/use-click-outside'
@@ -10,17 +10,20 @@ type AutocompleteInput = TextInputPropsType & {
 	handleInputChange: (keywords: string) => void
 }
 
-export default function AutocompleteInput({
-	name = 'title',
-	value = '',
-	label,
-	placeholder = 'Search',
-	handleChange,
-	handleInputChange,
-	options = [],
-	direction = 'column',
-	info,
-}: AutocompleteInput) {
+export default function AutocompleteInput(props: AutocompleteInput) {
+
+  const {
+    name = 'title',
+    value = '',
+    label,
+    placeholder = 'Search',
+    handleChange,
+    handleInputChange,
+    options = [],
+    direction = 'column',
+    info,
+  } = props
+  
 	const [open, setOpen] = useState(false)
 	const wrapperRef = useRef<HTMLDivElement>(null)
 
@@ -73,7 +76,7 @@ export default function AutocompleteInput({
 									</Avatar>
 								)}
 								{option?.icon && (
-									<Icon name={option.icon} className="h-5 w-5" />
+									<RemixIcon name={option.icon} className="h-5 w-5" />
 								)}
 							</div>
 							<span className="flex-grow text-sm">{option.label}</span>

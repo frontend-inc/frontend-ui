@@ -4,9 +4,9 @@ import React, { useEffect, useState } from 'react'
 import { isLiked } from '../../../helpers'
 import { useSocial, useApp } from '../../../hooks'
 import { useAuth } from 'frontend-js'
-import { Heart } from 'lucide-react'
 import { IconButton } from '../../core'
 import { cn } from 'frontend-shadcn'
+import { RiHeartFill, RiHeartLine } from '@remixicon/react'
 
 type LikeButtonProps = {
 	resource: any
@@ -14,11 +14,14 @@ type LikeButtonProps = {
 	variant?: 'rounded' | 'circular'
 }
 
-export default function LikeButton({
-	resource,
-	size = 'small',
-	variant = 'rounded',
-}: LikeButtonProps) {
+export default function LikeButton(props: LikeButtonProps) {
+
+  const {
+    resource,
+    size = 'small',
+    variant = 'rounded',
+  } = props
+  
 	const { currentUser } = useAuth()
 	const { setAuthOpen } = useApp()
 
@@ -54,12 +57,8 @@ export default function LikeButton({
 					size === 'large' && 'border border-divider'
 				)}
 			>
-				<Heart
-					className={cn(
-						'w-5 h-5 text-foreground',
-						liked ? 'fill-primary stroke-primary' : 'fill-none stroke-current'
-					)}
-				/>
+        { liked && <RiHeartFill className="fill-primary" /> }
+        { !liked && <RiHeartLine /> }				
 			</IconButton>
 		</div>
 	)

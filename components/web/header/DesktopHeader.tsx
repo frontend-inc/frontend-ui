@@ -9,6 +9,7 @@ import { ShopifyCartButton } from '../../shopify'
 import { useApp } from '../../../hooks'
 import { ButtonType, MenuLinkType } from '../../..'
 import DesktopLink from './DesktopLink'
+import { RiMenu2Fill } from '@remixicon/react'
 
 type DesktopHeaderProps = {
 	logo: string
@@ -42,7 +43,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 					{links?.length > MAX_LINKS && (
 						<div className="pl-1 flex items-center justify-center h-[60px]">
 							<IconButton color="ghost" onClick={() => setMenuOpen(true)}>
-								<Icon name="Menu" />
+								<RiMenu2Fill />
 							</IconButton>
 						</div>
 					)}

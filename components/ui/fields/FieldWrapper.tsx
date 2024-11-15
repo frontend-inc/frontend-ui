@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Icon } from '../../../components'
+import { RemixIcon } from '../../../components'
 import { cn } from 'frontend-shadcn'
 
 type FieldWrapperProps = {
@@ -38,7 +38,7 @@ const FieldWrapper: React.FC<FieldWrapperProps> = (props) => {
 				</div>
 			)}
 			<div className="w-full flex flex-row space-x-1">
-				{icon && <Icon name={icon} />}
+				{icon && <RemixIcon name={icon} />}
 				{children}
 			</div>
 		</div>

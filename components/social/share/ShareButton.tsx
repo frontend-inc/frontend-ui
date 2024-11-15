@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { Share } from 'lucide-react'
 import { ShareModal, IconButton } from '../../../components'
 import { cn } from 'frontend-shadcn'
+import { RiShare2Fill } from '@remixicon/react'
 
 type ShareButtonProps = {
 	url: string
@@ -11,11 +12,14 @@ type ShareButtonProps = {
 	variant?: 'rounded' | 'circular'
 }
 
-export default function ShareButton({
-	url,
-	variant = 'rounded',
-	size = 'small',
-}: ShareButtonProps) {
+export default function ShareButton(props: ShareButtonProps) {
+
+  const {
+    url,
+    variant = 'rounded',
+    size = 'small',
+  } = props
+  
 	const [open, setOpen] = useState(false)
 
 	const handleClick = () => {
@@ -32,7 +36,7 @@ export default function ShareButton({
 					size === 'large' && 'border border-divider'
 				)}
 			>
-				<Share className="w-4 h-4" />
+				<RiShare2Fill />
 			</IconButton>
       <ShareModal 
         open={open}

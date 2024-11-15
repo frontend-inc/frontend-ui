@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { IconButton, Tooltip } from '../../../core'
-import { Icon } from '../../../../components'
+import { RiInformation2Line } from '@remixicon/react'
 
 type InputLabelProps = {
 	label?: string
@@ -20,7 +20,7 @@ const InputLabel: React.FC<InputLabelProps> = (props) => {
 			{info && (
 				<Tooltip title={info}>
 					<IconButton>
-						<Icon name="Info" size='sm' className="text-muted-foreground" />
+						<RiInformation2Line name="Info" size='sm' className="text-muted-foreground" />
 					</IconButton>
 				</Tooltip>
 			)}

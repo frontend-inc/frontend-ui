@@ -32,8 +32,8 @@ const CommentForm: React.FC<CommentFormProps> = (props) => {
 						onClick={handleSubmit}
 						disabled={loading}
 						className="flex items-center"
-					>
-						{loading && <IconLoading className="mr-2 h-4 w-4 animate-spin" />}
+            loading={loading}
+					>						
 						Submit
 					</Button>
 				</div>

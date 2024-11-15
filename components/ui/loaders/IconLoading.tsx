@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Loader2 } from 'lucide-react'
+import { RiLoader4Line } from '@remixicon/react'
 import { cn } from 'frontend-shadcn'
 
 type IconLoadingProps = {
@@ -10,12 +10,15 @@ type IconLoadingProps = {
 	className?: string
 }
 
-export default function IconLoading({
-	size = 20,
-	color = 'text-secondary',
-	className,
-}: IconLoadingProps) {
+export default function IconLoading(props: IconLoadingProps) {
+
+  const {
+    size = 20,
+    color = 'text-secondary',
+    className,
+  } = props
+  
 	return (
-		<Loader2 className={cn('animate-spin', color, className)} size={size} />
+		<RiLoader4Line className={cn('animate-spin', color, className)} size={size} />
 	)
 }

@@ -5,6 +5,7 @@ import { useResourceContext } from 'frontend-js'
 import { MessageSquare } from 'lucide-react'
 import { IconButton } from '../../core'
 import { cn } from 'frontend-shadcn'
+import { RiMessage2Fill } from '@remixicon/react'
 
 type CommentButtonProps = {
 	resource: any
@@ -28,7 +29,7 @@ export default function CommentButton({
 				onClick={handleClick}
 				className={cn(size === 'large' && 'border border-divider')}
 			>
-				<MessageSquare className="text-foreground w-5 h-5" />
+				<RiMessage2Fill className="text-foreground" />
 			</IconButton>
 		</div>
 	)
