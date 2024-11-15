@@ -41,7 +41,6 @@ export default function ButtonTabs(props: ButtonTabsProps) {
 						>
 							{tab.icon && (
 								<RemixIcon
-                  size="lg"
 									name={tab.icon}
 									className={cn(tab.label && 'mr-2')}
 								/>

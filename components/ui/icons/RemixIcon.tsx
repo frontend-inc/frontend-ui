@@ -11,7 +11,8 @@ type RemixIconProps = {
 }
 
 const RemixIcon = forwardRef<HTMLElement, RemixIconProps>((props, ref) => {
-	const {
+	
+  const {
 		name,
 		className,
 		size = 'md',
