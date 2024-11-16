@@ -13,7 +13,7 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 		label,
 		title,
 		subtitle,
-		textAlign,
+		textAlign='center',
     fontSize,
 		bgColor,
 		mode,
