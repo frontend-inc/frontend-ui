@@ -1,3 +1,4 @@
+export { default as Blog } from './Blog'
 export { default as Code } from './Code'
 export { default as ExpandableText } from './ExpandableText'
 export { default as Heading } from './Heading'

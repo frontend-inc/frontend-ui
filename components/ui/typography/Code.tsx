@@ -15,7 +15,7 @@ const Code: React.FC<CodeProps> = (props) => {
 	} = props || {}
 
 	return (
-    <pre className="p-6 rounded-lg bg-muted/50 overflow-x-auto">
+    <pre className="p-4 rounded-lg bg-muted/50 overflow-x-auto">
       <code className="text-sm font-mono text-foreground whitespace-pre-wrap break-words">
         {text}
       </code>

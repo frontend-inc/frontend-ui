@@ -12,7 +12,7 @@ const UIQuote: React.FC<UIQuoteProps> = (props) => {
 	const { 
     bgColor, 
     mode, 
-    py, 
+    py='sm', 
     px, 
     maxWidth='sm', 
     requireAuth, 

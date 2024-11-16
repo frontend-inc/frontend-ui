@@ -2,13 +2,13 @@
 
 import React from 'react'
 import { Section } from '../../components'
-import { Text } from '../../components'
-import { TextProps } from '../../components/ui/typography/Text'
+import { Blog } from '../../components'
+import { BlogProps } from '../../components/ui/typography/Blog'
 import { SectionProps } from '../../types'
 
-type UITextProps = SectionProps & TextProps
+type UIBlogProps = SectionProps & BlogProps
 
-const UIText: React.FC<UITextProps> = (props) => {
+const UIBlog: React.FC<UIBlogProps> = (props) => {
 	const { 
     bgColor, 
     mode, 
@@ -28,9 +28,9 @@ const UIText: React.FC<UITextProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Text {...rest} />
+      <Blog {...rest} />
 		</Section>
 	)
 }
 
-export default UIText
+export default UIBlog

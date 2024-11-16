@@ -2,29 +2,43 @@
 
 import React from 'react'
 import { Typography } from '../../core'
-import { cn } from 'frontend-shadcn'
 import { TypographyVariantsType } from '@/types'
+import { cn } from 'frontend-shadcn'
 
 export type TextProps = {  
-	description: string	
+  title?: string
+	text: string	
+  textAlign?: 'left' | 'center' | 'right'
   variant?: TypographyVariantsType
 }
 
 const Text: React.FC<TextProps> = (props) => {
-	const {
-    variant='body1',
-		description,
+	
+  const {
+    variant='h6',
+    title,
+		text,
+    textAlign='left'
 	} = props || {}
 
 	return (
-    <Typography 
-      variant={variant}
-      className={cn(
-        "text-md leading-10 text-muted-foreground",
+    <div className="flex flex-col space-y-3">
+      { title && (
+      <Typography 
+        variant={variant}
+        textAlign={textAlign}
+        className='text-foreground'
+      >
+        {title}
+      </Typography>
       )}
-    >
-      {description}
-    </Typography>
+      <Typography 
+        variant='body1'
+        className='text-muted-foreground'        
+      >
+        {text}
+      </Typography>
+    </div>
 	)
 }
 

@@ -2,17 +2,16 @@
 
 import React from 'react'
 import { Section } from '../../components'
-import { Text } from '../../components'
-import { TextProps } from '../../components/ui/typography/Text'
-import { SectionProps } from '../../types'
+import { Heading } from '../../components'
+import { SectionProps, HeadingProps } from '../../types'
 
-type UITextProps = SectionProps & TextProps
+type UITextProps = SectionProps & HeadingProps
 
-const UIText: React.FC<UITextProps> = (props) => {
+const UIHeading: React.FC<UITextProps> = (props) => {
 	const { 
     bgColor, 
     mode, 
-    py='sm', 
+    py, 
     px, 
     maxWidth='sm', 
     requireAuth, 
@@ -28,9 +27,9 @@ const UIText: React.FC<UITextProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Text {...rest} />
+      <Heading {...rest} />
 		</Section>
 	)
 }
 
-export default UIText
+export default UIHeading
