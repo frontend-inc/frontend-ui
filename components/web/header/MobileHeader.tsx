@@ -10,6 +10,7 @@ import { Button } from '../../../components'
 import { RiMenuFill } from '@remixicon/react'
 
 type MobileHeaderProps = {
+  bgColor?: string
 	logo: string
 	logoWidth?: number
 	logoHeight?: number
@@ -22,20 +23,29 @@ type MobileHeaderProps = {
 	handleClick: (path: string) => void
 }
 
-const MobileHeader: React.FC<MobileHeaderProps> = ({
-	logo,
-	logoWidth = 120,
-	logoHeight = 50,
-	handleClick,
-	buttons,
-	enableAuth = false,
-	enableStripe = false,
-	enableShopify = false,
-}) => {
+const MobileHeader: React.FC<MobileHeaderProps> = (props) => {
+
+  const {
+    bgColor,
+    logo,
+    logoWidth = 120,
+    logoHeight = 50,
+    handleClick,
+    buttons,
+    enableAuth = false,
+    enableStripe = false,
+    enableShopify = false,
+  } = props
+
 	const { setMenuOpen } = useApp()
 
 	return (
-		<div className="block md:hidden w-full h-16 bg-background">
+		<div 
+      className="block md:hidden w-full h-16 bg-background"
+      style={{
+        backgroundColor: bgColor,
+      }}
+    >
 			<div className="flex justify-between items-center h-full px-4">
 				<div className="flex items-center">
 					<Button

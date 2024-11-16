@@ -15,6 +15,7 @@ type DesktopHeaderProps = {
 	logo: string
 	links: MenuLinkType[]
 	buttons: ButtonType[]
+  bgColor?: string
 	enableAuth?: boolean
 	enableShopify?: boolean
 	enableStripe?: boolean
@@ -28,6 +29,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 		logo,
 		links,
 		buttons,
+    bgColor,
 		handleClick,
 		enableAuth = false,
 		enableStripe = false,
@@ -37,7 +39,12 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 	const { setMenuOpen } = useApp()
 
 	return (
-		<div className="hidden md:block w-full h-16 bg-background">
+		<div 
+      className="hidden md:block w-full h-16 bg-background"
+      style={{
+        backgroundColor: bgColor
+      }}
+    >
 			<div className="w-full">
 				<div className="w-full flex flex-row">
 					{links?.length > MAX_LINKS && (

@@ -14,7 +14,7 @@ type LayoutHeaderProps = HeaderProps & {
 
 const AppHeader: React.FC<LayoutHeaderProps> = (props) => {
 	const router = useRouter()
-	const { bgColor, mode, ...rest } = props || {}
+	const { mode, ...rest } = props || {}
 
 	const { clientUrl } = useApp()
 
@@ -27,11 +27,7 @@ const AppHeader: React.FC<LayoutHeaderProps> = (props) => {
 	}
 
 	return (
-		<div 
-      className={cn(mode, 'w-full')} 
-      style={{
-        backgroundColor: bgColor,
-      }}>
+		<div className={cn(mode, 'w-full')}>
 			<Header {...rest} handleClick={handleClick} />
 		</div>
 	)
