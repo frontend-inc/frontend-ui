@@ -2,14 +2,27 @@
 
 import React from 'react'
 import { Section } from '../../components'
-import { Text } from '../../components'
+import { Text, Heading } from '../../components'
 import { TextProps } from '../../components/ui/typography/Text'
-import { SectionProps } from '../../types'
+import { SectionProps, HeadingProps } from '../../types'
 
-type UITextProps = SectionProps & TextProps
+type UITextProps = SectionProps & HeadingProps & TextProps
 
 const UIText: React.FC<UITextProps> = (props) => {
-	const { bgColor, mode, py, px, maxWidth, requireAuth, ...rest } = props
+	const { 
+    label,
+		title,
+		subtitle,
+		textAlign='center',
+    fontSize='lg',
+    bgColor, 
+    mode, 
+    py, 
+    px, 
+    maxWidth='sm', 
+    requireAuth, 
+    ...rest 
+  } = props
 
 	return (
 		<Section
@@ -20,7 +33,16 @@ const UIText: React.FC<UITextProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Text {...rest} />
+      <div className="flex flex-col space-y-4">
+        <Heading 
+          label={label} 
+          title={title} 
+          subtitle={subtitle} 
+          textAlign={textAlign} 
+          size={fontSize}
+        />
+        <Text {...rest} />
+      </div>
 		</Section>
 	)
 }

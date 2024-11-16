@@ -12,7 +12,7 @@ type UIFooterProps = FooterProps & {
 	mode: 'light' | 'dark'
 }
 
-const UIFooter: React.FC<LayoutFooterProps> = (props) => {
+const UIFooter: React.FC<UIFooterProps> = (props) => {
 	const router = useRouter()
 	const { bgColor, mode, links = [], ...rest } = props || {}
 
