@@ -20,10 +20,7 @@ const Quote: React.FC<QuoteProps> = (props) => {
 
 	return (
     <figure className={cn("flex space-x-4", className)}>
-      <div className="w-[36px] h-[36px] flex items-center justify-center">      
-        <RiDoubleQuotesL size={36} className="text-muted-foreground" />    
-      </div>
-    <div className="flex flex-col space-y-4">
+    <div className="flex flex-col space-y-4 pl-6 border-l-4 border-border">
       <blockquote>
         <p className="text-lg italic font-medium text-muted-foreground leading-loose">
           {text}
