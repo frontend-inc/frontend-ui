@@ -24,8 +24,6 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 		...rest
 	} = props
 
-  console.log('FormContactUs', maxWidth, props)
-
 	return (
 		<Section
 			requireAuth={requireAuth}

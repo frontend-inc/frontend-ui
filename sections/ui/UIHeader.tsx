@@ -7,12 +7,12 @@ import { useRouter } from 'next/navigation'
 import { useApp } from '../../hooks'
 import { cn } from 'frontend-shadcn'
 
-type LayoutHeaderProps = HeaderProps & {
+type UIHeaderProps = HeaderProps & {
 	bgColor: string
 	mode: 'light' | 'dark'
 }
 
-const AppHeader: React.FC<LayoutHeaderProps> = (props) => {
+const UIHeader: React.FC<UIHeaderProps> = (props) => {
 	const router = useRouter()
 	const { mode, ...rest } = props || {}
 
@@ -33,4 +33,4 @@ const AppHeader: React.FC<LayoutHeaderProps> = (props) => {
 	)
 }
 
-export default AppHeader
+export default UIHeader

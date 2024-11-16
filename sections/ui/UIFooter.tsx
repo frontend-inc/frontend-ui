@@ -7,12 +7,12 @@ import { useRouter } from 'next/navigation'
 import { useApp } from '../../hooks'
 import { cn } from 'frontend-shadcn'
 
-type LayoutFooterProps = FooterProps & {
+type UIFooterProps = FooterProps & {
 	bgColor: string
 	mode: 'light' | 'dark'
 }
 
-const AppFooter: React.FC<LayoutFooterProps> = (props) => {
+const UIFooter: React.FC<LayoutFooterProps> = (props) => {
 	const router = useRouter()
 	const { bgColor, mode, links = [], ...rest } = props || {}
 
@@ -38,4 +38,4 @@ const AppFooter: React.FC<LayoutFooterProps> = (props) => {
 	)
 }
 
-export default AppFooter
+export default UIFooter
