@@ -72,7 +72,7 @@ const Blog: React.FC<BlogProps> = (props) => {
       { tags.length > 0 && (
         <div className="flex space-x-2 py-2">
           { tags.map((tag, index) => (
-            <Badge className="px-3 py-1" key={index}>{ tag }</Badge>
+            <Badge className="px-3 py-1" variant='outline' key={index}>{ tag }</Badge>
           ))}
         </div>
       )}
