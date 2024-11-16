@@ -38,7 +38,7 @@ const Blog: React.FC<BlogProps> = (props) => {
 	} = props || {}
 
 	return (
-    <div className="flex flex-col space-y-3">
+    <div className="flex flex-col space-y-6">
       { label && (
         <Label label={ label } textAlign={textAlign} />        
       )}
@@ -46,7 +46,7 @@ const Blog: React.FC<BlogProps> = (props) => {
         <Typography 
           variant={variant}
           textAlign={textAlign}
-          className='text-foreground'
+          className='text-foreground tracking-tight font-semibold'
         >
           {title}
         </Typography>
@@ -59,8 +59,8 @@ const Blog: React.FC<BlogProps> = (props) => {
               {author[0]}
             </AvatarFallback>
           </Avatar>
-          <div className="flex flex-col space-y-1">
-            <Typography variant="body2" className="text-muted-foreground">
+          <div className="flex flex-col space-y-0">
+            <Typography variant="body2" className="font-medium text-foreground">
               {author}
             </Typography>
             <Typography variant="body2" className="text-muted-foreground">
@@ -78,7 +78,7 @@ const Blog: React.FC<BlogProps> = (props) => {
       )}
       <Typography 
         variant='body1'
-        className='text-muted-foreground'        
+        className='text-muted-foreground leading-relaxed'        
       >
         {text}
       </Typography>
