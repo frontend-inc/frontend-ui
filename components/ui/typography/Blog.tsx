@@ -78,7 +78,7 @@ const Blog: React.FC<BlogProps> = (props) => {
       )}
       <Typography 
         variant='body1'
-        className='text-muted-foreground leading-relaxed'        
+        className='text-muted-foreground leading-relaxed whitespace-pre-line'        
       >
         {text}
       </Typography>
