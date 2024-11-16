@@ -25,7 +25,7 @@ const Quote: React.FC<QuoteProps> = (props) => {
       </div>
     <div className="flex flex-col space-y-4">
       <blockquote>
-        <p className="text-xl italic font-medium text-muted-foreground leading-loose">
+        <p className="text-lg italic font-medium text-muted-foreground leading-loose">
           {text}
         </p>
       </blockquote>
