@@ -80,7 +80,8 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
 					<div 
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}    
-            className="absolute inset-0 bg-black bg-opacity-40" />
+            className="absolute inset-0 bg-black bg-opacity-60" 
+          />
 				)}
 				{enableGradient && (
 					<div 
