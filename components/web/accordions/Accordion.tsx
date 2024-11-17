@@ -26,7 +26,7 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 				))}
 				{items?.length == 0 && (
 					<Alert
-						icon="ri-search-fill"
+						icon="ri-search-line"
 						title="No content"
 						description="Your content will appear here."
 					/>
