@@ -1,9 +1,9 @@
 'use client'
 
 import React from 'react'
-import { UserAvatar } from '../../components'
+import { UserAvatar } from '../..'
 import { useAuth } from 'frontend-js'
-import { Button } from '../../components'
+import { Button } from '../..'
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -19,11 +19,14 @@ type UserMenuProps = {
 	handleClick: () => void
 }
 
-const UserMenu: React.FC<UserMenuProps> = ({
-	handleLogoutClick,
-	handleClick,
-	children,
-}) => {
+const UserMenu: React.FC<UserMenuProps> = (props) => {
+
+  const {
+    handleLogoutClick,
+    handleClick,
+    children,
+  } = props || {}
+
 	const { currentUser } = useAuth()
 
 	return (
@@ -41,7 +44,9 @@ const UserMenu: React.FC<UserMenuProps> = ({
 				>
 					<DropdownMenuItem onClick={handleClick}>
 						<div className="flex items-center">
-							<span className="text-sm font-medium">{currentUser?.name}</span>
+							<span className="text-sm font-medium">
+                {currentUser?.name}
+              </span>
 						</div>
 					</DropdownMenuItem>
 					<DropdownMenuSeparator />

@@ -38,7 +38,6 @@ export { default as Section } from './Section'
 export { default as SocialLink } from './social/SocialLink'
 export { default as SocialIcon } from './social/SocialIcon'
 export { default as UserAvatar } from './avatars/UserAvatar'
-export { default as UserMenu } from './UserMenu'
 
 export { default as ImageModal } from './media/ImageModal'
 export { default as VideoModal } from './media/VideoModal'

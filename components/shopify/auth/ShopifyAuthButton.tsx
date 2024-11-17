@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useAuth } from 'frontend-shopify'
-import { UserMenu } from '../..'
+import { AuthUserMenu } from '../..'
 import { useRouter, useParams } from 'next/navigation'
 import { useApp } from '../../../hooks'
 
@@ -23,7 +23,7 @@ const ShopifyAuthButton: React.FC = () => {
 
 	if (!customer) return null
 	return (
-		<UserMenu handleLogoutClick={handleLogoutClick} handleClick={handleClick} />
+		<AuthUserMenu handleLogoutClick={handleLogoutClick} handleClick={handleClick} />
 	)
 }
 

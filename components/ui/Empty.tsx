@@ -28,23 +28,24 @@ const Empty: React.FC<EmptyProps> = (props) => {
 	return (
 		<div
       className={cn(
-        "h-full w-full flex flex-col space-y-3 items-center justify-center",
-        variant == 'destructive' && 'bg-destructive/10 border-destructive',
-        variant == 'accent' && 'bg-accent/10 border-accent',
+        "p-4 rounded-lg bg-muted/50 h-full w-full flex flex-col space-y-2 items-center justify-center",
+        variant == 'destructive' && 'bg-destructive/10 border border-destructive',
+        variant == 'accent' && 'bg-accent/10 border border-accent',
         className
       )}
     >
       {icon && (
         <RemixIcon 
           name={icon} 
-          size='lg' 
+          size='xl' 
           className={cn(
             variant && textClasses[variant]
           )} 
         />
-      )}			
+      )}	
+      <div className='flex flex-col space-y-0 w-full items-center justify-center'>
         <Typography 
-          variant="body1" 
+          variant="subtitle2" 
           className={cn(
             "text-md text-bold",            
             variant && textClasses[variant]            
@@ -53,15 +54,16 @@ const Empty: React.FC<EmptyProps> = (props) => {
           {title}
         </Typography>
         <Typography 
-          variant="body2"
+          variant="body1"
           className={cn(
-            'text-sm font-normal',
+            'text-sm text-muted-foreground font-normal',
             variant && textClasses[variant]
           )}
         >
           {description}
         </Typography>			
       </div>
+    </div>		
 	)
 }
 export default Empty
