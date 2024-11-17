@@ -54,7 +54,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props) => {
 						className="mr-2"
 						onClick={() => setMenuOpen(true)}
 					>
-						<RiMenuFill />
+						<RiMenuFill size={24} />
 					</Button>
 					<Logo
 						handleClick={() => handleClick('/')}

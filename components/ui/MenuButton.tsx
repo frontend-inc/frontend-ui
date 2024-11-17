@@ -8,7 +8,7 @@ import {
 	DropdownMenuTrigger,
 } from 'frontend-shadcn'
 import { Button } from '../../components'
-import { MoreVertical } from 'lucide-react'
+import { RemixIcon } from '../../components'
 
 type MenuButtonProps = {
 	children?: React.ReactNode
@@ -28,7 +28,7 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
 			<DropdownMenuTrigger asChild>
 				<Button variant="ghost" className="h-8 w-8 p-0">
 					<span className="sr-only">Open menu</span>
-					<MoreVertical className="h-4 w-4 text-foreground" />
+					<RemixIcon name="more-2-line" className="text-foreground" />
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="end" className="bg-background w-[100px]">
