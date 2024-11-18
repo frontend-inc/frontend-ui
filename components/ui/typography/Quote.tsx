@@ -27,8 +27,8 @@ const Quote: React.FC<QuoteProps> = (props) => {
         </p>
       </blockquote>
       {author && (
-        <figcaption className="flex items-center justify-center mt-6 space-x-3">
-          <div className="flex items-center divide-x-2 divide-border">
+        <figcaption className="flex justify-center mt-6 space-x-3">
+          <div className="flex divide-x-2 divide-border">
             <cite className="pr-3 font-medium text-muted-foreground">
               &mdash; {author}
             </cite>
