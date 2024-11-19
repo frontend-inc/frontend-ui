@@ -21,14 +21,12 @@ const MenuBar = (props) => {
   const buttons = [
     { action: () => editor.chain().focus().setParagraph().run(), isActive: editor.isActive('paragraph'), icon: 'ri-text', label: 'Paragraph' },
     { action: () => editor.chain().focus().toggleBold().run(), isActive: editor.isActive('bold'), icon: 'ri-bold', label: 'Bold' },
-    { action: () => editor.chain().focus().toggleItalic().run(), isActive: editor.isActive('italic'), icon: 'ri-italic', label: 'Italic' },
-    { action: () => editor.chain().focus().toggleStrike().run(), isActive: editor.isActive('strike'), icon: 'ri-strikethrough', label: 'Strike' },    
+    { action: () => editor.chain().focus().toggleItalic().run(), isActive: editor.isActive('italic'), icon: 'ri-italic', label: 'Italic' },    
     { action: () => editor.chain().focus().toggleHeading({ level: 3 }).run(), isActive: editor.isActive('heading', { level: 3 }), icon: 'ri-h-1', label: 'H1' },
     { action: () => editor.chain().focus().toggleBulletList().run(), isActive: editor.isActive('bulletList'), icon: 'ri-list-unordered', label: 'Bullet list' },
     { action: () => editor.chain().focus().toggleOrderedList().run(), isActive: editor.isActive('orderedList'), icon: 'ri-list-ordered', label: 'Ordered list' },
     { action: () => editor.chain().focus().toggleCodeBlock().run(), isActive: editor.isActive('codeBlock'), icon: 'ri-code-box-line', label: 'Code block' },
-    { action: () => editor.chain().focus().toggleBlockquote().run(), isActive: editor.isActive('blockquote'), icon: 'ri-double-quotes-l', label: 'Blockquote' },
-    
+    { action: () => editor.chain().focus().toggleBlockquote().run(), isActive: editor.isActive('blockquote'), icon: 'ri-double-quotes-l', label: 'Blockquote' },    
     { action: () => editor.chain().focus().undo().run(), isActive: false, icon: 'ri-arrow-go-back-line', label: 'Undo' },
     { action: () => editor.chain().focus().redo().run(), isActive: false, icon: 'ri-arrow-go-forward-line', label: 'Redo' },
   ]
@@ -60,16 +58,14 @@ const HTMLInput: React.FC<TextInputPropsType> = (props) => {
 
   const extensions = [
     StarterKit.configure({
-    paragraph: { HTMLAttributes: { class: 'my-2 text-sm text-foreground leading-relaxed' } },
-    bold: { HTMLAttributes: { class: 'text-foreground font-semibold' } },
-    strong: { HTMLAttributes: { class: 'text-sm italic text-foreground font-bold' } },
-    italic: { HTMLAttributes: { class: 'text-sm text-foreground italic' } },
-    bulletList: { HTMLAttributes: { class: 'text-sm text-foreground list-disc pl-4' } },
-    orderedList: { HTMLAttributes: { class: 'text-sm text-foreground list-decimal pl-4' } },
-    codeBlock: { HTMLAttributes: { class: 'text-sm text-muted-foreground font-mono p-3 my-2 bg-border rounded-lg' } },
-    blockquote: { HTMLAttributes: { class: 'text-lg text-muted-foreground italic border-l-4 border-border pl-4' } },
-    heading: { HTMLAttributes: { class: `text-xl font-semibold text-foreground` } },    
-    h1: { HTMLAttributes: { class: 'text-3xl font-semibold text-foreground' } }
+    paragraph: { HTMLAttributes: { class: 'py-[20px] text-lg text-muted-foreground leading-relaxed' } },
+    strong: { HTMLAttributes: { class: 'font-bold' } },
+    italic: { HTMLAttributes: { class: 'italic' } },
+    bulletList: { HTMLAttributes: { class: 'text-md text-muted-foreground list-disc pl-4' } },
+    orderedList: { HTMLAttributes: { class: 'text-md text-muted-foreground list-decimal pl-4' } },
+    codeBlock: { HTMLAttributes: { class: 'my-4 text-sm text-muted-foreground font-mono p-6 rounded-lg' } },
+    blockquote: { HTMLAttributes: { class: 'my-4 text-lg text-muted-foreground italic border-l-4 border-border pl-4' } },
+    heading: { HTMLAttributes: { class: `pt-[20px] text-2xl font-semibold text-muted-foreground` } },    
     })
   ]
 
