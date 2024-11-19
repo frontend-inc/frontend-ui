@@ -4,7 +4,6 @@ import React from 'react'
 import { Typography } from '../../core'
 import { FieldWrapper } from '../../../components'
 import { FieldElementProps } from './Field'
-import { truncate } from '../../../helpers'
 import { cn } from 'frontend-shadcn'
 
 const FieldString: React.FC<FieldElementProps> = (props) => {
@@ -13,7 +12,7 @@ const FieldString: React.FC<FieldElementProps> = (props) => {
 	return (
 		<FieldWrapper alignItems={alignItems} label={label} {...rest}>
 			<Typography variant="body1" className={cn(className)}>
-				{truncate(value || placeholder, 50)}
+				{value}
 			</Typography>
 		</FieldWrapper>
 	)

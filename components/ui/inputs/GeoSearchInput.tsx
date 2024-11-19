@@ -5,9 +5,9 @@ import { useDebounce } from 'use-debounce'
 import { SyntheticEventType } from '../../../types'
 import { useGooglePlaces } from '../../../hooks'
 import { Input } from 'frontend-shadcn'
-import { Button } from '../../../components'
+import { RemixIcon, Button } from '../../../components'
 import { cn } from 'frontend-shadcn'
-import { RiSearch2Fill } from '@remixicon/react'
+
 
 type GeoSearchInputProps = {
 	name?: string
@@ -132,7 +132,7 @@ export default function GeoSearchInput({
 				size="icon"
 				className="mr-1"
 			>
-				<RiSearch2Fill className="h-4 w-4 text-muted-foreground" />
+				<RemixIcon name='ri-search-line' className="text-muted-foreground" />
 			</Button>
 		</div>
 	)

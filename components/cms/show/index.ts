@@ -1,2 +1,3 @@
 export { default as Show } from './Show'
-export { default as ShowItem } from './ShowItem'
+export { default as ShowContainer } from './ShowContainer'
+

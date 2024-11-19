@@ -72,7 +72,7 @@ const DisplayField: React.FC<DisplayFieldProps> = (props) => {
 			className: 'w-full text-center text-md font-normal tracking-wide',
 		},
 		text: {
-			className: 'px-[40px] sm:px-[100px] italic text-lg',
+			className: 'px-[40px] sm:px-[100px] leading-relaxed text-muted-foreground italic text-lg',
 		},
     html: {
       className: 'prose'

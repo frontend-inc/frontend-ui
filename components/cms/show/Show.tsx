@@ -1,34 +1,111 @@
 'use client'
 
-import React, { useEffect } from 'react'
-import { ShowItem } from '../..'
-import { ShowItemProps } from './ShowItem'
-import { ResourceProvider, useResource } from 'frontend-js'
+import React from 'react'
+import { ButtonType, MetafieldType } from '../../../types'
+import {
+	HeroList,
+	HeroAvatar,
+	HeroCard,
+	HeroCover,
+  CollectionDetails
+} from '../..'
+import { useResourceContext } from 'frontend-js'
+import { ListFields, ButtonActions, SocialButtons } from '../..'
+import { DOCUMENT_SHOW_FIELDS } from '../../../constants'
 
-export type ShowProps = ShowItemProps & {
-	documentId?: string
-	url: string
-	resource?: any
+export type ShowContainerProps = {
+  resource: any
+	metafields: MetafieldType[]
+  buttons: ButtonType[]
+	enableFavorites?: boolean
+	enableLikes?: boolean
+	enableSharing?: boolean
+	enableGradient?: boolean
+	enableOverlay?: boolean
+}
+
+type ShowStyleTypes = 'card' | 'cover' | 'list' | 'avatar' 
+
+export type ShowProps = ShowContainerProps & {
+	url?: string
+	style: ShowStyleTypes
 }
 
 const Show: React.FC<ShowProps> = (props) => {
-	const { documentId, url } = props || {}
+	
+  const {
+		style = 'list',
+		metafields = [],
+		buttons,
+		enableFavorites,
+		enableLikes,
+		enableSharing,
+		enableGradient,
+		enableOverlay,
+	} = props || {}
 
-	const { loading, resource, findOne } = useResource({
-		url,
-		name: 'document',
-	})
+	const { resource } = useResourceContext()
 
-	useEffect(() => {
-		if (documentId) {
-			findOne(documentId)
-		}
-	}, [documentId])
+  let disableImage = false 
+  switch(resource?.documentType){
+    case 'youtube':
+    case 'vimeo':
+    case 'soundcloud':
+    case 'video':
+      disableImage = true
+      break
+    default: 
+      disableImage = false
+  }
 
+  const buttonAlignClasses = {
+    list: 'center',
+    cover: 'center',
+    card: 'end',
+    avatar: 'end',
+  }[style] as 'start' | 'center' | 'end'
+	
+  if(!resource?.id) return null;
 	return (
-		<ResourceProvider name="document" url={url} resource={resource}>
-			<ShowItem {...props} url={url} />
-		</ResourceProvider>
+		<HeroList
+      variant='circular'
+      disableImage={ disableImage }
+      label={resource?.label}
+			image={resource?.image?.url}
+			title={resource?.title}
+      description={ resource?.description }
+      category={ resource?.category }
+      tags={ resource?.tags }
+      html={ resource?.html }
+      startsAt={ resource?.start_date }
+      endsAt={ resource?.end_date }
+      publishedAt={ resource?.published_at }	      
+      youtubeSrc={ resource?.youtube_video }		      
+      vimeoSrc={ resource?.vimeo_video }
+      soundcloudSrc={ resource?.soundcloud_audio }
+			actions={
+				<SocialButtons
+					size="large"
+					justifyContent={'center'}
+					resource={resource}
+					enableLikes={enableLikes}
+					enableFavorites={enableFavorites}
+					enableSharing={enableSharing}
+				/>
+			}
+			secondaryAction={
+				buttons && (
+					<div className="w-full">
+						<ButtonActions
+							justifyContent={buttonAlignClasses}
+							buttons={buttons}
+						/>
+					</div>
+				)
+			}
+      enableGradient={enableGradient}
+      enableOverlay={enableOverlay}
+		/>
 	)
 }
 

@@ -6,7 +6,7 @@ import { BlurFade } from '../../../components'
 import { useResourceContext } from 'frontend-js'
 import { ButtonType, MetafieldType } from '../../../types'
 
-export type ShowModalProps = {
+export type CollectionShowProps = {
 	buttons: ButtonType[]
 	metafields: MetafieldType[]
 	enableFavorites?: boolean
@@ -18,7 +18,7 @@ export type ShowModalProps = {
 	enableOverlay?: boolean
 }
 
-const ShowModal: React.FC<ShowModalProps> = (props) => {
+const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 	const { openShow, setOpenShow, resource, url } = useResourceContext()
 
 	const {
@@ -78,4 +78,4 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 	)
 }
 
-export default ShowModal
+export default CollectionShow

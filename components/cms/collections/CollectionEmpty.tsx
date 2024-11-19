@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Alert } from '../..'
+import { Empty } from '../..'
 import { useResourceContext } from 'frontend-js'
 
 type CollectionEmptyProps = {
@@ -17,7 +17,7 @@ const CollectionEmpty: React.FC<CollectionEmptyProps> = (props) => {
 	if (resources?.length > 0) return null
 	return (
 		<div className="p-2 w-full flex justify-center items-center">
-			<Alert icon={icon} title={title} description={description} />
+			<Empty icon={icon} title={title} description={description} />
 		</div>
 	)
 }

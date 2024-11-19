@@ -2,11 +2,11 @@
 
 import React from 'react'
 import { Section } from '../../components'
-import { Show } from '../../components'
-import { ShowProps } from '../../components/cms/show/Show'
+import { ShowContainer } from '../../components'
+import { ShowContainerProps } from '../../components/cms/show/ShowContainer'
 import { SectionProps } from '../../types'
 
-type CmsShowProps = SectionProps & ShowProps
+type CmsShowProps = SectionProps & ShowContainerProps
 
 const CmsShow: React.FC<CmsShowProps> = (props) => {
 	const {
@@ -30,7 +30,7 @@ const CmsShow: React.FC<CmsShowProps> = (props) => {
 			px={style == 'cover' ? 0 : px}
 			maxWidth={maxWidth}
 		>
-			<Show {...rest} style={style} />
+			<ShowContainer {...rest} style={style} />
 		</Section>
 	)
 }

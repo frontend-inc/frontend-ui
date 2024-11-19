@@ -2,13 +2,12 @@
 
 import React, { useEffect, useState } from 'react'
 import { Map, useMap } from '@vis.gl/react-google-maps'
-import { GoogleMarkerType } from './GoogleMarker'
 import { MAP_CONFIGS, MapConfig } from './styles/mapConfigs'
 import GoogleMarker from './GoogleMarker'
 import { cn } from 'frontend-shadcn'
 
 export type GoogleMapProps = {
-	darkTheme?: boolean
+  darkTheme?: boolean
 	lat: number
 	lng: number
 	label: string
@@ -22,17 +21,20 @@ export type GoogleMapProps = {
 const NYC_LAT = 40.7128
 const NYC_LNG = -73.935242
 
-export default function GoogleMap({
-	darkTheme = false,
-	height = 300,
-	width,
-	lat = NYC_LAT,
-	lng = NYC_LNG,
-	label,
-	image,
-	zoom = 16,
-	enableBorder = false,
-}: GoogleMapProps) {
+export default function GoogleMap(props: GoogleMapProps) {
+
+  const {	
+    darkTheme,
+    height = 300,
+    width,
+    lat = NYC_LAT,
+    lng = NYC_LNG,
+    label,
+    image,
+    zoom = 16,
+    enableBorder = false,
+  } = props
+
 	const [mapConfig, setMapConfig] = useState<MapConfig>(MAP_CONFIGS[0])
 
 	useEffect(() => {
