@@ -14,7 +14,7 @@ export type CoverProps = {
 	image: string
 	height?: number
 	width?: number
-	alignItems?: 'items-start' | 'center' | 'items-end'
+	alignItems?: 'items-start' | 'items-center' | 'items-end'
 	alt?: string
 	handleClick?: () => void
 	enableGradient?: boolean
@@ -34,7 +34,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 		alt = 'image',
 		enableGradient = false,
 		enableOverlay = true,
-		alignItems = 'center',
+		alignItems = 'items-center',
 		buttonText,
 		actions,
 		path,
@@ -83,7 +83,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 						label={label}
 						title={title}
 						subtitle={subtitle}
-						textAlign={alignItems === 'center' ? 'center' : 'left'}
+						textAlign={alignItems === 'items-center' ? 'center' : 'left'}
 						size="lg"
 					/>
 					{actions}
