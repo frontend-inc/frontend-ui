@@ -4,7 +4,8 @@ import React from 'react'
 import { Rating, Typography } from '../../core'
 
 type ProductRatingProps = {
-	resource: any
+	rating: number
+  numReviews?: number
 	enableTotal?: boolean
 	size?: 'small' | 'medium' | 'large'
 	justifyContent?:
@@ -17,12 +18,13 @@ type ProductRatingProps = {
 }
 
 const ProductRating: React.FC<ProductRatingProps> = (props) => {
-	const {
-		resource,
-		justifyContent = 'flex-start',
+	
+  const {
+		rating,
+    numReviews,
 		enableTotal = false,
 	} = props || {}
-	const { avg_rating: rating, num_reviews: numReviews } = resource || {}
+	
 	return (
 		<div className="flex flex-row space-x-2 items-center w-full">
 			{rating > 0 ? (

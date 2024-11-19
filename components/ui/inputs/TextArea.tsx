@@ -14,20 +14,23 @@ type TextAreaProps = Omit<TextInputPropsType, 'type'> & {
 	rows?: number
 }
 
-export default function TextArea({
-	label,
-	name,
-	value = '',
-	handleChange,
-	placeholder,
-	disabled,
-	errors,
-	direction = 'column',
-	info,
-	debounceDelay = 350,
-	disableDebounce = false,
-	rows = 3,
-}: TextAreaProps) {
+export default function TextArea(props: TextAreaProps) {
+
+  const {
+    label,
+    name,
+    value = '',
+    handleChange,
+    placeholder,
+    disabled,
+    errors,
+    direction = 'column',
+    info,
+    debounceDelay = 350,
+    disableDebounce = false,
+    rows = 3,
+  } = props
+  
 	const [text, setText] = useState(value)
 	const [debouncedText] = useDebounce(text, debounceDelay)
 

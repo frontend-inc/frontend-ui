@@ -23,12 +23,13 @@ export type ProductType = {
 	label?: string
 	handle?: string
 	title?: string
-	description?: string
+	description: string
 	price?: number
 	compare_at_price?: number
 	display_price?: string
 	display_compare_at_price?: string
 	available_for_sale?: boolean
+  average_rating: number
 	image: {
 		url: string
 	}

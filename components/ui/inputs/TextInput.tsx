@@ -13,21 +13,24 @@ type TextInputProps = TextInputPropsType & {
 	disableDebounce?: boolean
 }
 
-export default function TextInput({
-	label,
-	type,
-	name,
-	value = '',
-	handleChange,
-	placeholder,
-	disabled,
-	errors,
-	direction = 'column',
-	info,
-	className,
-	debounceDelay = 350,
-	disableDebounce = false,
-}: TextInputProps) {
+export default function TextInput(props: TextInputProps) {
+
+  const {
+    label,
+    type,
+    name,
+    value = '',
+    handleChange,
+    placeholder,
+    disabled,
+    errors,
+    direction = 'column',
+    info,
+    className,
+    debounceDelay = 350,
+    disableDebounce = false,
+  } = props
+
 	const [text, setText] = useState(value)
 	const [debouncedText] = useDebounce(text, debounceDelay)
 

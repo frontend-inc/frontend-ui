@@ -8,7 +8,7 @@ import { cn } from 'frontend-shadcn'
 
 export type CoverProps = {
 	label?: string
-	title: string
+	title?: string
 	subtitle?: string
 	buttonText?: string
 	image: string

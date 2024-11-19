@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Typography } from '../../core'
-import { Image, ExpandableText } from '../..'
+import { Image, ProductRating } from '../..'
 import { cn } from 'frontend-shadcn'
 
 export type PDPProps = {
@@ -11,17 +11,16 @@ export type PDPProps = {
 	image?: string
 	price?: string
 	compareAtPrice?: string
-	description?: string
-	primary?: string
-	secondary?: React.ReactNode
+  rating?: number
+	description: string,
+	title?: string	
 	actions?: React.ReactNode
 	addToCart?: React.ReactNode
 	secondaryAction?: React.ReactNode
-	children?: React.ReactNode
-	slots?: {
-		image?: any
-		content?: any
-	}
+  enableGradient?: boolean
+  enableOverlay?: boolean
+  enableRatings?: boolean  
+	children?: React.ReactNode	
 }
 
 const PDP: React.FC<PDPProps> = (props) => {
@@ -29,18 +28,16 @@ const PDP: React.FC<PDPProps> = (props) => {
 		direction = 'row',
 		label,
 		image,
-		primary,
-		secondary,
+    title,		
 		addToCart,
 		price,
+    rating,
 		compareAtPrice,
 		description,
+    enableGradient,
+    enableOverlay,
 		actions,
-		secondaryAction,
-		slots = {
-			image: {},
-			content: {},
-		},
+		secondaryAction
 	} = props || {}
 
 	return (
@@ -62,11 +59,12 @@ const PDP: React.FC<PDPProps> = (props) => {
 						<div className="rounded-lg w-full">
 							<Image
 								src={image}
-								alt={primary}
+								alt={title}
 								height={400}
 								aspectRatio={4 / 3}
 								label={label}
-								{...slots.image}
+								enableGradient={enableGradient}
+                enableOverlay={enableOverlay}
 							/>
 						</div>
 						{actions}
@@ -77,7 +75,7 @@ const PDP: React.FC<PDPProps> = (props) => {
 							direction == 'row' && 'md:w-1/2'
 						)}
 					>
-						<Typography variant="h3">{primary}</Typography>
+						<Typography variant="h3">{title}</Typography>
 						<div className="flex flex-row space-x-2">
 							<Typography variant="h6">{price}</Typography>
 							{compareAtPrice && (
@@ -88,10 +86,12 @@ const PDP: React.FC<PDPProps> = (props) => {
 									{compareAtPrice}
 								</Typography>
 							)}
-						</div>
-						{secondary}
+						</div>            
+            {enableRatings == true && (
+              <ProductRating rating={rating} />
+            )}            
 						{addToCart}
-						<ExpandableText text={description || ''} />
+            <div dangerouslySetInnerHTML={{ __html: description }} />						
 					</div>
 				</div>
 			</div>

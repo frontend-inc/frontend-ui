@@ -2,10 +2,9 @@
 
 import React, { useEffect, useState } from 'react'
 import { useResource } from 'frontend-js'
-import { SortableListItems, AlertModal, Alert } from '../..'
+import { SortableListItems, AlertModal, Empty } from '../..'
 import {
-	FormFieldType,
-	FilterOptionType,
+	FormFieldType,	
 	SearchFilterOptionType,
 	TableHeaderType,
 	MetafieldType,
@@ -460,7 +459,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 						/>
 					)}
 					{!loading && resources?.length == 0 && (
-						<Alert
+						<Empty
 							icon={emptyIcon}
 							title={emptyTitle}
 							description={emptyDescription}

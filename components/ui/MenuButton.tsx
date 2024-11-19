@@ -28,7 +28,7 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
 			<DropdownMenuTrigger asChild>
 				<Button variant="ghost" className="h-8 w-8 p-0">
 					<span className="sr-only">Open menu</span>
-					<RemixIcon name="more-2-line" className="text-foreground" />
+					<RemixIcon name="ri-more-2-line" className="text-foreground" />
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="end" className="bg-background w-[100px]">

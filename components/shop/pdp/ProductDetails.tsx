@@ -23,14 +23,7 @@ export type ProductDetailsProps = {
 	handleEdit?: (res: any) => void
 }
 
-export type ProductProps = ProductDetailsProps & {
-	slots?: {
-		image?: any
-		content?: any
-	}
-}
-
-const ProductDetails: React.FC<ProductProps> = (props) => {
+const ProductDetails: React.FC<ProductDetailsProps> = (props) => {
 	const {
 		direction,
 		product,
@@ -39,40 +32,22 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 		enableSharing,
 		enableRatings,
 		enableGradient,
-		enableOverlay,
-		slots: defaultSlots = {
-			image: {},
-			content: {},
-		},
+		enableOverlay,		
 	} = props || {}
-
-	let slots = {
-		image: {
-			enableGradient,
-			enableOverlay,
-			...defaultSlots.image,
-		},
-		content: {
-			...defaultSlots.content,
-		},
-	}
 
 	if (!product?.id) return null
 	return (
 		<PDP
 			direction={direction}
 			image={product?.image?.url}
-			primary={product?.title}
+			title={product?.title}
 			price={product?.display_price}
 			compareAtPrice={product?.display_compare_at_price}
 			description={product?.description}
-			secondary={
-				<div className="w-full">
-					{enableRatings == true && (
-						<ProductRating resource={product} enableTotal />
-					)}
-				</div>
-			}
+      enableGradient={enableGradient}
+      enableOverlay={enableOverlay}
+      enableRatings={enableRatings}
+      rating={ product?.average_rating }
 			actions={
 				<SocialButtons
 					size="large"
@@ -100,8 +75,7 @@ const ProductDetails: React.FC<ProductProps> = (props) => {
 						className="max-w-[360px]"
 					/>
 				)
-			}
-			slots={slots}
+			}			
 		/>
 	)
 }
