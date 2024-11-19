@@ -78,7 +78,7 @@ const Blog: React.FC<BlogProps> = (props) => {
           </Typography>
         </div>
       )}        
-      <div className='w-full py-0'>
+      <div className='w-full prose py-0'>
         <div              
           dangerouslySetInnerHTML={{ __html: html }}
         />

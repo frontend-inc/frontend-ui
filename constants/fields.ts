@@ -5,11 +5,19 @@ export const SUBTITLE = {
 	name: 'subtitle',
 	variant: 'string',
 }
+
 export const DESCRIPTION = {
 	label: 'Description',
 	name: 'description',
-	variant: 'string',
+	variant: 'text',
 }
+
+export const HTML = {
+	label: 'HTML content',
+	name: 'html',
+	variant: 'html',
+}
+
 export const NAME = { label: 'Name', name: 'name', variant: 'string' }
 export const ABOUT = { label: 'About', name: 'about', variant: 'text' }
 export const LABEL = { label: 'Label', name: 'label', variant: 'string' }
@@ -75,10 +83,10 @@ export const DOCUMENT_FORM_FIELDS = {
 		IMAGE,		
 		TITLE,   
     SUBTITLE, 
+    PUBLISHED_AT,
 		LABEL,
 		CATEGORY,    
-		DESCRIPTION,
-		PUBLISHED_AT,
+		HTML,		
 		TAGS,
 	],
 	place: [
@@ -181,7 +189,7 @@ export const DOCUMENT_FORM_FIELDS = {
 
 export const DOCUMENT_SHOW_FIELDS = {
 	post: [IMAGE, TITLE, SUBTITLE, CATEGORY, DESCRIPTION, TAGS],
-	article: [IMAGE, TITLE, SUBTITLE, PUBLISHED_AT, CATEGORY, DESCRIPTION, TAGS],
+	article: [IMAGE, TITLE, SUBTITLE, PUBLISHED_AT, CATEGORY, HTML, TAGS],
 	place: [IMAGE, TITLE, SUBTITLE, CATEGORY, DESCRIPTION, LOCATION, TAGS],
 	person: [IMAGE, NAME,SUBTITLE, CATEGORY, ABOUT, TAGS],
 	event: [

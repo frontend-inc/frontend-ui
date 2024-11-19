@@ -74,6 +74,9 @@ const DisplayField: React.FC<DisplayFieldProps> = (props) => {
 		text: {
 			className: 'px-[40px] sm:px-[100px] italic text-lg',
 		},
+    html: {
+      className: 'prose'
+    },
 		image: {
 			label,
 		},

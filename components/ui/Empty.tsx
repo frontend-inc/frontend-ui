@@ -11,11 +11,12 @@ type EmptyProps = {
 	description?: string
 	buttons?: any
 	variant?: 'accent' | 'default' | 'primary' | 'secondary' | 'destructive'
+  fill?: boolean
   className?: string
 }
 
 const Empty: React.FC<EmptyProps> = (props) => {
-	const { icon, title, description, variant, className } = props
+	const { icon, fill, title, description, variant, className } = props
 
   const textClasses = {
     accent: 'text-accent',
@@ -28,7 +29,8 @@ const Empty: React.FC<EmptyProps> = (props) => {
 	return (
 		<div
       className={cn(
-        "p-4 rounded-lg bg-muted/50 h-full w-full flex flex-col space-y-2 items-center justify-center",
+        fill && 'bg-muted/50',
+        "p-4 rounded-lg h-full w-full flex flex-col space-y-2 items-center justify-center",
         variant == 'destructive' && 'bg-destructive/10 border border-destructive',
         variant == 'accent' && 'bg-accent/10 border border-accent',
         className

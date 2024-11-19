@@ -58,19 +58,19 @@ const HTMLInput: React.FC<TextInputPropsType> = (props) => {
 
   const extensions = [
     StarterKit.configure({
-    paragraph: { HTMLAttributes: { class: 'py-[20px] text-lg text-muted-foreground leading-relaxed' } },
-    strong: { HTMLAttributes: { class: 'font-bold' } },
-    italic: { HTMLAttributes: { class: 'italic' } },
-    bulletList: { HTMLAttributes: { class: 'text-md text-muted-foreground list-disc pl-4' } },
-    orderedList: { HTMLAttributes: { class: 'text-md text-muted-foreground list-decimal pl-4' } },
-    codeBlock: { HTMLAttributes: { class: 'my-4 text-sm text-muted-foreground font-mono p-6 rounded-lg' } },
-    blockquote: { HTMLAttributes: { class: 'my-4 text-lg text-muted-foreground italic border-l-4 border-border pl-4' } },
-    heading: { HTMLAttributes: { class: `pt-[20px] text-2xl font-semibold text-muted-foreground` } },    
+      paragraph: { HTMLAttributes: { class: 'py-4 text-lg text-muted-foreground leading-relaxed' } },
+      strong: { HTMLAttributes: { class: 'font-bold' } },
+      italic: { HTMLAttributes: { class: 'italic' } },
+      bulletList: { HTMLAttributes: { class: 'text-sm text-muted-foreground list-disc pl-4' } },
+      orderedList: { HTMLAttributes: { class: 'text-sm text-muted-foreground list-decimal pl-4' } },
+      codeBlock: { HTMLAttributes: { class: 'py-4 text-sm text-muted-foreground font-mono p-6 rounded-lg' } },
+      blockquote: { HTMLAttributes: { class: 'py-4 text-lg text-muted-foreground italic border-l-4 border-border pl-4' } },
+      heading: { HTMLAttributes: { class: `pt-8 pb-4 text-2xl font-semibold text-muted-foreground` } },    
     })
   ]
 
   const editor = useEditor({
-    extensions,
+    extensions: [StarterKit],
     content: value || '<p></p>', // Set initial content to the value prop
     onUpdate: ({ editor }) => {
       // Trigger handleChange whenever the editor content changes
@@ -79,7 +79,7 @@ const HTMLInput: React.FC<TextInputPropsType> = (props) => {
     editorProps: {
       attributes: {
         class:
-          'w-full focus:outline-none p-2 border border-border rounded-lg border-1 border-border focus:ring-2 focus:ring-ring focus:ring-offset-3',
+          'w-full prose prose-sm focus:outline-none p-2 border border-border rounded-lg border-1 border-border focus:ring-2 focus:ring-ring focus:ring-offset-3',
       },
     },
   })

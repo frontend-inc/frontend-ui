@@ -70,6 +70,9 @@ const ShowField: React.FC<ShowFieldProps> = (props) => {
 		text: {
 			className: 'text-md',
 		},
+    html: {
+      className: 'prose prose-sm'
+    },
 		image: {
 			label,
       height: 450,
