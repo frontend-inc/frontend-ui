@@ -1,7 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Cover, Image, Label, Typography } from '../../../components'
+import { Image, Label, Typography } from '../../../components'
+import { UICover } from '../../../sections'
 import { TypographyVariantsType } from '@/types'
 import { cn } from 'frontend-shadcn'
 import { 
@@ -41,46 +42,45 @@ const Blog: React.FC<BlogProps> = (props) => {
     textAlign='left'
 	} = props || {}
   
-	return (
-  <div className="w-full flex flex-col items-center space-y-6">
-    <div className="container mx-auto max-w-screen-md">
-    <div className="flex flex-col space-y-6">
-      { label && (
-        <Label label={ label } textAlign={textAlign} />        
-      )}
-      { title && (
-        <Typography 
-          variant={variant}
-          textAlign={textAlign}
-          className='text-foreground tracking-tight font-semibold'
-        >
-          {title}
-        </Typography>
-      )}            
-      { author && (
-        <div className="flex my-3 space-x-3">
-          <Avatar>
-            { avatar && <AvatarImage src={avatar} alt={author} /> }
-            <AvatarFallback className="bg-primary">
-              {author}
-            </AvatarFallback>
-          </Avatar>
-          <div className="flex flex-col space-y-0">
-            <Typography variant="body2" className="font-medium text-foreground">
-              {author}
-            </Typography>
-            <Typography variant="body2" className="text-muted-foreground">
-              { publishedAt }
-            </Typography>
-          </div>
-        </div>            
-      )}    
-      </div>  
-      { image && (
-        <Cover image={image} alt={title} />        
-      )} 
-
-      <div className='my-10 container mx-auto max-w-screen-md flex flex-col space-y-6'>
+	return (  
+    <div className="w-full flex flex-col space-y-6">
+        { label && (
+          <Label label={ label } textAlign={textAlign} />        
+        )}
+        { title && (
+          <Typography 
+            variant={variant}
+            textAlign={textAlign}
+            className='text-foreground tracking-tight font-semibold'
+          >
+            {title}
+          </Typography>
+        )}            
+        { author && (
+          <div className="flex my-3 space-x-3">
+            <Avatar>
+              { avatar && <AvatarImage src={avatar} alt={author} /> }
+              <AvatarFallback className="bg-primary">
+                {author}
+              </AvatarFallback>
+            </Avatar>
+            <div className="flex flex-col space-y-0">
+              <Typography variant="body2" className="font-medium text-foreground">
+                {author}
+              </Typography>
+              <Typography variant="body2" className="text-muted-foreground">
+                { publishedAt }
+              </Typography>
+            </div>
+          </div>            
+        )}          
+        { image && (
+          <Image 
+            height={320}
+            src={image}
+            alt={title}             
+          />        
+        )} 
         <div          
           dangerouslySetInnerHTML={{ __html: html }}
         />
@@ -90,10 +90,8 @@ const Blog: React.FC<BlogProps> = (props) => {
               <Badge className="px-3 py-1" variant='outline' key={index}>{ tag }</Badge>
             ))}
           </div>
-        )}     
-      </div>
+        )}           
     </div>
-  </div>
 	)
 }
 
