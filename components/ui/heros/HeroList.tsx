@@ -127,7 +127,6 @@ const HeroList: React.FC<HeroProps> = (props) => {
                   aspectRatio={2.0}
                   src={image}
                   alt={title}
-                  height={400}
                   label={label}
                   enableGradient={enableGradient}
                   enableOverlay={enableOverlay}
