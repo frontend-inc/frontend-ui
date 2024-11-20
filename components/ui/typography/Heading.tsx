@@ -11,7 +11,7 @@ type HeadingProps = {
 	title?: string
 	subtitle?: string
 	textAlign?: 'left' | 'center' | 'right'
-	size?: 'sm' | 'md' | 'lg' | 'xl'
+	size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 	className?: string
   secondaryAction?: React.ReactNode
 }
@@ -31,7 +31,8 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		sm: 'h5',
 		md: 'h4',
 		lg: 'h3',
-		xl: 'h1',
+		xl: 'h2',
+    '2xl': 'h1',
 	}[size] as TypographyVariantsType
 
 	const subtitleVariant = {
@@ -39,13 +40,15 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		md: 'body1',
 		lg: 'subtitle2',
 		xl: 'subtitle1',
+    '2xl': 'subtitle1'
 	}[size] as TypographyVariantsType
 
   const spacingClass = {
-		sm: 'space-y-3',
+		sm: 'space-y-2',
 		md: 'space-y-4',
-		lg: 'space-y-6',
-		xl: 'space-y-8',
+		lg: 'space-y-4',
+		xl: 'space-y-5',
+    '2xl': 'space-y-6'
 	}[size] 
 
 	if (!title && !subtitle && !label) return null
@@ -83,7 +86,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 						<Typography
 							variant={subtitleVariant}
 							className="leading-8 text-foreground/70"
-							textAlign={textAlign}
+							textAlign={ textAlign }
 						>
 							{subtitle}
 						</Typography>

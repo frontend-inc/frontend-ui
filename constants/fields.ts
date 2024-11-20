@@ -1,9 +1,16 @@
 export const HANDLE = { label: 'Handle', name: 'handle', variant: 'slug' }
 export const TITLE = { label: 'Title', name: 'title', variant: 'string' }
+
 export const SUBTITLE = {
 	label: 'Subtitle',
 	name: 'subtitle',
 	variant: 'string',
+}
+
+export const SUBTITLE_TEXT = {
+  label: 'Subtitle',
+  name: 'subtitle',
+  variant: 'text',
 }
 
 export const DESCRIPTION = {
@@ -36,8 +43,9 @@ export const FILE = { label: 'File', name: 'file', variant: 'file' }
 export const PUBLISHED_AT = {
 	label: 'Published At',
 	name: 'published_at',
-	variant: 'date',
+	variant: 'string',
 }
+
 export const START_DATE = {
 	label: 'Start Date',
 	name: 'start_date',
@@ -82,7 +90,7 @@ export const DOCUMENT_FORM_FIELDS = {
 	article: [
 		IMAGE,		
 		TITLE,   
-    SUBTITLE, 
+    SUBTITLE_TEXT, 
     PUBLISHED_AT,
 		LABEL,
 		CATEGORY,    
@@ -190,7 +198,7 @@ export const DOCUMENT_FORM_FIELDS = {
 export const DOCUMENT_SHOW_FIELDS = {
 	post: [IMAGE, TITLE, SUBTITLE, CATEGORY, DESCRIPTION, TAGS],
 	article: [IMAGE, TITLE, SUBTITLE, PUBLISHED_AT, CATEGORY, HTML, TAGS],
-	place: [IMAGE, TITLE, SUBTITLE, LOCATION, CATEGORY, DESCRIPTION, TAGS],
+	place: [IMAGE, TITLE, SUBTITLE, LOCATION, CATEGORY, DESCRIPTION, LOCATION, TAGS],
 	person: [IMAGE, NAME,SUBTITLE, CATEGORY, ABOUT, TAGS],
 	event: [
 		IMAGE,

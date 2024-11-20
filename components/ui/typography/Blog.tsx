@@ -58,7 +58,7 @@ const Blog: React.FC<BlogProps> = (props) => {
           <Avatar>
             { avatar && <AvatarImage src={avatar} alt={author} /> }
             <AvatarFallback className="bg-primary">
-              {author}
+              {author?.slice(0, 1)}
             </AvatarFallback>
           </Avatar>
           <div className="flex flex-col space-y-0">

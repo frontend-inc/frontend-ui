@@ -12,6 +12,7 @@ import { ButtonType } from '../../../types'
 
 export type HeroProps = {
   variant?: 'circular' | 'square'
+  textAlign?: 'left' | 'center'
   image: string
 	label?: string
   category?: string

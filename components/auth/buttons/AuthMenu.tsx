@@ -100,12 +100,10 @@ const AuthMenu: React.FC<AuthMenuProps> = (props) => {
 				) : (
 					<>
 						<DropdownMenuItem onClick={handleLogin}>
-							<RemixIcon name="ri-login-circle-line" className="mr-2" />
-							<span>Sign In</span>
+							Sign In
 						</DropdownMenuItem>
 						<DropdownMenuItem onClick={handleSignup}>
-							<RemixIcon name="ri-user-add-plus-line" className="mr-2" />
-							<span>Sign Up</span>
+							Sign Up
 						</DropdownMenuItem>
 					</>
 				)}

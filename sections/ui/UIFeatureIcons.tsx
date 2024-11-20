@@ -14,7 +14,7 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 		title,
 		subtitle,
 		textAlign='center',
-    fontSize,
+    fontSize='lg',
 		bgColor,
 		mode,
 		py,

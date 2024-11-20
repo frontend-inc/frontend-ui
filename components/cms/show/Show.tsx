@@ -67,14 +67,17 @@ const Show: React.FC<ShowProps> = (props) => {
 	
   if(!resource?.id) return null;
 	return (
-		<HeroList
-      variant='circular'
+		<HeroList      
       disableImage={ disableImage }
       label={resource?.label}
 			image={resource?.image?.url}
 			title={resource?.title}
+      subtitle={ resource?.subtitle }
       description={ resource?.description }
       category={ resource?.category }
+      location={ resource?.location }
+      lat={ resource?.lat }
+      lng={ resource?.lng }
       tags={ resource?.tags }
       html={ resource?.html }
       startsAt={ resource?.start_date }

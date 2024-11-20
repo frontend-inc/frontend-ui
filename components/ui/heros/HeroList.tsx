@@ -11,8 +11,45 @@ import {
   VimeoEmbed,
   GoogleMap  
 } from '../../../components'
-import { HeroProps } from './Hero'
+import { ButtonType } from '../../../types'
 import { Badge } from 'frontend-shadcn'
+
+export type HeroProps = {
+  variant?: 'circular' | 'square'
+  textAlign?: 'left' | 'center'
+  image: string
+	label?: string
+  category?: string
+	title: string
+	subtitle?: string
+	description?: string
+  html?: string	
+  startsAt?: string
+  endsAt?: string
+  publishedAt?: string
+  location?: string
+  lat?: number
+  lng?: number
+  tags?: string[]
+  youtubeSrc?: string
+  vimeoSrc?: string
+  soundcloudSrc?: string
+  shopifyProduct?: string
+  user?: {
+    name: string
+    avatar: {
+      url: string
+    }
+  }
+	style?: 'card' | 'cover' | 'list' | 'avatar' | 'spotlight'
+	buttons?: ButtonType[]
+  actions?: React.ReactNode
+  secondaryAction?: React.ReactNode
+  disableImage?: boolean
+	enableGradient?: boolean
+	enableOverlay?: boolean
+	objectFit?: 'cover' | 'contain'
+}
 
 const HeroList: React.FC<HeroProps> = (props) => {
 	
@@ -22,6 +59,7 @@ const HeroList: React.FC<HeroProps> = (props) => {
 		label,
 		title,
 		subtitle,
+    textAlign='center',
     location,
     lat,
     lng,
@@ -44,33 +82,47 @@ const HeroList: React.FC<HeroProps> = (props) => {
 	return (
 		<div className="container mx-auto max-w-screen-lg">
 			<div className="flex flex-col w-full justify-start items-center space-y-6">
-				<Heading
-					label={label}
-					title={title}
-					subtitle={subtitle}
-					textAlign="center"
-					size="lg"
-				/>
-        {(startsAt || endsAt) && (
-          <Typography variant="subtitle2" className="text-muted-foreground">
-            { startsAt } - { endsAt }
-          </Typography>
-        )}
-        { publishedAt && (
-          <Typography variant="subtitle2" className="text-muted-foreground">
-           { publishedAt }
-          </Typography>
-        )}
-        { location && (
-          <Typography variant="subtitle2" className="text-muted-foreground">
-            { location }
-          </Typography>
-        )}
-				{secondaryAction && secondaryAction}
+        <div className="w-full max-w-screen-md justify-start items-center space-y-3">
+          <Heading
+            label={label}
+            title={title}
+            subtitle={subtitle}
+            textAlign={textAlign}
+            size="xl"
+          />
+          {(startsAt || endsAt) && (
+            <Typography 
+              variant="subtitle2" 
+              className="text-muted-foreground"
+              textAlign={textAlign}
+            >
+              { startsAt } - { endsAt }
+            </Typography>
+          )}
+          { publishedAt && (
+            <Typography 
+              variant="subtitle2" 
+              className="text-muted-foreground"
+              textAlign={textAlign}
+            >
+            { publishedAt }
+            </Typography>
+          )}
+          { location && (
+            <Typography   
+              variant="subtitle2" 
+              className="text-muted-foreground"
+              textAlign={textAlign}
+            >
+              { location }
+            </Typography>
+          )}
+          {secondaryAction && secondaryAction}
+        </div>
         {!disableImage && (
-          <div className="w-full flex items-center justify-center rounded ">            
-            { variant !== 'circular' && (
-              <div className='py-10'>
+          <div className="w-full flex items-center justify-center rounded-lg">            
+            { variant !== 'circular' ? (
+              <div className='w-full py-10'>
                 <Image
                   aspectRatio={2.0}
                   src={image}
@@ -81,8 +133,7 @@ const HeroList: React.FC<HeroProps> = (props) => {
                   enableOverlay={enableOverlay}
                 />
               </div>
-            )}
-            { variant == 'circular' && (
+            ):(
               <AvatarImage
                 src={image}
                 alt={title}
@@ -102,15 +153,8 @@ const HeroList: React.FC<HeroProps> = (props) => {
         { vimeoSrc && (
           <VimeoEmbed src={vimeoSrc} /> 
         )}
-        {(lat && lng) && (
-          <GoogleMap 
-            label={ title }
-            lat={ lat }
-            lng={ lng }
-          />
-        )}
 				{actions}
-				<div className="w-full max-w-[500px] sm:max-w-screen-sm">
+				<div className="w-full sm:max-w-screen-md flex flex-col space-y-6">
           { description && (
             <Typography variant="subtitle2" className="text-muted-foreground">
               {description}
@@ -121,6 +165,18 @@ const HeroList: React.FC<HeroProps> = (props) => {
               <div dangerouslySetInnerHTML={{ __html: html }} />
             </div>
           )}
+          {(lat && lng) && (
+            <div className='w-full py-4 flex flex-col space-y-2'>
+              <GoogleMap 
+                label={ title }
+                lat={ lat }
+                lng={ lng }
+              />
+              <span className="text-sm text-muted-foreground italic">
+                <strong>Location: </strong> { location }
+              </span>
+            </div>
+          )}
           {(tags?.length > 0 && (
             <div className='w-full flex flex-wrap gap-3'>
               {tags.map((tag, index) => (
@@ -129,7 +185,7 @@ const HeroList: React.FC<HeroProps> = (props) => {
                 </Badge>
               ))}
             </div>
-          ))}
+          ))}        
 				</div>
 			</div>
 		</div>
