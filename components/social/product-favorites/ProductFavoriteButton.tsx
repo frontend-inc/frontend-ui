@@ -4,8 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { isProductFavorited } from '../../../helpers'
 import { useAuth } from 'frontend-js'
 import { useSocial, useApp } from '../../../hooks'
-import { RiBookmarkFill, RiBookmarkLine } from '@remixicon/react'
-import { IconButton } from '../../core'
+import { RemixIcon, IconButton } from '../../../components'
 import { cn } from 'frontend-shadcn'
 
 type ProductFavoriteButtonProps = {
@@ -55,8 +54,8 @@ export default function ProductFavoriteButton({
 					isFavorite && 'text-primary hover:text-primary-dark'
 				)}
 			>
-        { isFavorite && <RiBookmarkFill className="fill-primary" /> }
-        { !isFavorite && <RiBookmarkLine /> }								
+        { isFavorite && <RemixIcon name='ri-bookmark-fill' className="fill-primary" /> }
+        { !isFavorite && <RemixIcon name='ri-bookmark-line' /> }								
 			</IconButton>
 		</div>
 	)

@@ -4,9 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { isFavorited } from '../../../helpers'
 import { useAuth } from 'frontend-js'
 import { useSocial, useApp } from '../../../hooks'
-import { IconButton } from '../../core'
+import { RemixIcon, IconButton } from '../../../components'
 import { cn } from 'frontend-shadcn'
-import { RiBookmarkLine, RiBookmarkFill } from '@remixicon/react'
 
 type FavoriteButtonProps = {
 	resource: any
@@ -14,11 +13,14 @@ type FavoriteButtonProps = {
 	variant?: 'rounded' | 'circular'
 }
 
-export default function FavoriteButton({
-	resource,
-	size = 'small',
-	variant = 'rounded',
-}: FavoriteButtonProps) {
+export default function FavoriteButton(props: FavoriteButtonProps) {
+
+  const {
+    resource,
+    size = 'small',
+    variant = 'rounded',
+  } = props
+
 	const { fetchMe, currentUser } = useAuth()
 	const { setAuthOpen } = useApp()
 
@@ -57,8 +59,8 @@ export default function FavoriteButton({
 					'transition-transform duration-200'
 				)}
 			>
-        { isFavorite && <RiBookmarkFill className="fill-primary" /> }
-        { !isFavorite && <RiBookmarkLine /> }				
+        { isFavorite && <RemixIcon name='ri-bookmark-fill' className="fill-primary" /> }
+        { !isFavorite && <RemixIcon name='ri-bookmark-line' /> }				
 			</IconButton>
 		</div>
 	)

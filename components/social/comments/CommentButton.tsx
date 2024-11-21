@@ -3,9 +3,8 @@
 import React from 'react'
 import { useResourceContext } from 'frontend-js'
 import { MessageSquare } from 'lucide-react'
-import { IconButton } from '../../core'
+import { RemixIcon, IconButton } from '../../../components'
 import { cn } from 'frontend-shadcn'
-import { RiMessage2Fill } from '@remixicon/react'
 
 type CommentButtonProps = {
 	resource: any
@@ -29,7 +28,7 @@ export default function CommentButton({
 				onClick={handleClick}
 				className={cn(size === 'large' && 'border border-divider')}
 			>
-				<RiMessage2Fill className="text-foreground" />
+				<RemixIcon name='ri-message-2-fill' className="text-foreground" />
 			</IconButton>
 		</div>
 	)

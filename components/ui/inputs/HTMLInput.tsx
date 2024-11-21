@@ -130,12 +130,7 @@ const HTMLInput: React.FC<TextInputPropsType> = (props) => {
   return (
     <div className="w-full prose prose-sm flex flex-col space-y-2">
         { label && <InputLabel label={label} /> }
-       <MenuBar editor={editor} />
-        {editor && (
-          <BubbleMenu editor={editor}>
-            <MenuBar editor={editor} />
-          </BubbleMenu>
-        )}
+       <MenuBar editor={editor} />        
        <EditorContent editor={editor} />
     </div>
   )

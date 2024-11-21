@@ -4,9 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { isLiked } from '../../../helpers'
 import { useSocial, useApp } from '../../../hooks'
 import { useAuth } from 'frontend-js'
-import { IconButton } from '../../core'
+import { RemixIcon, IconButton } from '../../../components'
 import { cn } from 'frontend-shadcn'
-import { RiHeartFill, RiHeartLine } from '@remixicon/react'
 
 type LikeButtonProps = {
 	resource: any
@@ -57,8 +56,8 @@ export default function LikeButton(props: LikeButtonProps) {
 					size === 'large' && 'border border-divider'
 				)}
 			>
-        { liked && <RiHeartFill className="fill-primary" /> }
-        { !liked && <RiHeartLine /> }				
+        { liked && <RemixIcon name='ri-heart-fill' className="fill-primary" /> }
+        { !liked && <RemixIcon name='ri-heart-line' /> }				
 			</IconButton>
 		</div>
 	)

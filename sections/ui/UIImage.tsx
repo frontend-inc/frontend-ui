@@ -9,7 +9,8 @@ import { SectionProps } from '../../types'
 type UIImageProps = SectionProps & ResponsiveImageProps
 
 const UIImage: React.FC<UIImageProps> = (props) => {
-	const { 
+
+  const { 
     bgColor, 
     mode, 
     py, 

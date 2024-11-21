@@ -1,10 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Share } from 'lucide-react'
-import { ShareModal, IconButton } from '../../../components'
+import { RemixIcon, ShareModal, IconButton } from '../../../components'
 import { cn } from 'frontend-shadcn'
-import { RiShare2Fill } from '@remixicon/react'
 
 type ShareButtonProps = {
 	url: string
@@ -36,7 +34,7 @@ export default function ShareButton(props: ShareButtonProps) {
 					size === 'large' && 'border border-divider'
 				)}
 			>
-				<RiShare2Fill />
+				<RemixIcon name='ri-share-2-fill' />
 			</IconButton>
       <ShareModal 
         open={open}

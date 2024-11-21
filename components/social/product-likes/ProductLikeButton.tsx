@@ -5,7 +5,7 @@ import { isProductLiked } from '../../../helpers'
 import { useSocial, useApp } from '../../../hooks'
 import { useAuth } from 'frontend-js'
 import { RiHeartFill, RiHeartLine } from '@remixicon/react'
-import { IconButton } from '../../core'
+import { RemixIcon, IconButton } from '../../../components'
 import { cn } from 'frontend-shadcn'
 
 type ProductLikeButtonProps = {
@@ -58,8 +58,8 @@ export default function ProductLikeButton(props: ProductLikeButtonProps) {
 					liked && 'text-primary hover:text-primary-dark'
 				)}
 			>
-        { liked && <RiHeartFill className="fill-primary" /> }
-        { !liked && <RiHeartLine /> }								
+        { liked && <RemixIcon name='ri-heart-fill' className="fill-primary" /> }
+        { !liked && <RemixIcon name='ri-heart-line' /> }								
 			</IconButton>
 		</div>
 	)
