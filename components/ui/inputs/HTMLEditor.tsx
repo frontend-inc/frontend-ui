@@ -1,8 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuItem, DropdownMenuSeparator } from 'frontend-shadcn';
-import { BubbleMenu, useEditor, EditorProvider, EditorContent, useCurrentEditor } from '@tiptap/react'
-import { IconButton, InputLabel, RemixIcon } from '../..'
-import { Separator } from 'frontend-shadcn'
+import { BubbleMenu, useEditor, EditorContent, useCurrentEditor } from '@tiptap/react'
+import { IconButton, RemixIcon } from '../..'
 import StarterKit from '@tiptap/starter-kit'
 import TextAlign from '@tiptap/extension-text-align'
 import Link from '@tiptap/extension-link'
@@ -33,7 +31,7 @@ const MenuBar = ({ editor }) => {
     { label: 'Paragraph', action: () => editor.chain().focus().setParagraph().run(), isActive: editor.isActive('paragraph'), icon: 'ri-text' },
     { label: 'Bold', action: () => editor.chain().focus().toggleBold().run(), isActive: editor.isActive('bold'), icon: 'ri-bold' },
     { label: 'Italic', action: () => editor.chain().focus().toggleItalic().run(), isActive: editor.isActive('italic'), icon: 'ri-italic' },
-    { label: 'Code Block', action: () => editor.chain().focus().toggleCodeBlock().run(), isActive: editor.isActive('codeBlock'), icon: 'ri-code-box-line' },
+    { label: 'Code Block', action: () => editor.chain().focus().toggleCodeBlock().run(), isActive: editor.isActive('codeBlock'), icon: 'ri-code-box-line' },        
   ];
 
   const listOptions = [
@@ -118,7 +116,7 @@ const MenuBar = ({ editor }) => {
   );
 };
 
-const HTMLInput: React.FC<TextInputPropsType> = (props) => {
+const HTMLEditor: React.FC<TextInputPropsType> = (props) => {
   const { label, name, value, handleChange } = props || {}
 
   const [text, setText] = useState(value || '')
@@ -129,66 +127,7 @@ const HTMLInput: React.FC<TextInputPropsType> = (props) => {
     TextAlign.configure({
       types: ['heading','paragraph'],
       alignments: ['left', 'center', 'right', 'justify'],
-    }),
-    Link.configure({
-      openOnClick: false,
-      autolink: true,
-      defaultProtocol: 'https',
-      protocols: ['http', 'https'],
-      isAllowedUri: (url, ctx) => {
-        try {
-          // construct URL
-          const parsedUrl = url.includes(':') ? new URL(url) : new URL(`${ctx.defaultProtocol}://${url}`)
-
-          // use default validation
-          if (!ctx.defaultValidate(parsedUrl.href)) {
-            return false
-          }
-
-          // disallowed protocols
-          const disallowedProtocols = ['ftp', 'file', 'mailto']
-          const protocol = parsedUrl.protocol.replace(':', '')
-
-          if (disallowedProtocols.includes(protocol)) {
-            return false
-          }
-
-          // only allow protocols specified in ctx.protocols
-          const allowedProtocols = ctx.protocols.map(p => (typeof p === 'string' ? p : p.scheme))
-
-          if (!allowedProtocols.includes(protocol)) {
-            return false
-          }
-
-          // disallowed domains
-          const disallowedDomains = ['example-phishing.com', 'malicious-site.net']
-          const domain = parsedUrl.hostname
-
-          if (disallowedDomains.includes(domain)) {
-            return false
-          }
-
-          // all checks have passed
-          return true
-        } catch (error) {
-          return false
-        }
-      },
-      shouldAutoLink: url => {
-        try {
-          // construct URL
-          const parsedUrl = url.includes(':') ? new URL(url) : new URL(`https://${url}`)
-
-          // only auto-link if the domain is not in the disallowed list
-          const disallowedDomains = ['example-no-autolink.com', 'another-no-autolink.com']
-          const domain = parsedUrl.hostname
-
-          return !disallowedDomains.includes(domain)
-        } catch (error) {
-          return false
-        }
-      },
-    }),
+    }),  
   ]  
   
   const editor = useEditor({
@@ -245,5 +184,5 @@ const HTMLInput: React.FC<TextInputPropsType> = (props) => {
   )
 }
 
-export default HTMLInput
+export default HTMLEditor
 

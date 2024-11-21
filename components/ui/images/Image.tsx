@@ -44,7 +44,7 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
   const [isHovered, setIsHovered] = useState(false)
 
 	return (
-		<div
+		<figure
 			className={cn(
 				'w-full h-full',
 				'relative overflow-hidden',
@@ -99,6 +99,6 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
 					</Badge>
 				)}
 			</AspectRatio>
-		</div>
+		</figure>
 	)
 }

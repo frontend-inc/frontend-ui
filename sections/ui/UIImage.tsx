@@ -6,11 +6,14 @@ import { Image } from '../../components'
 import { ResponsiveImageProps } from '../../components/ui/images/Image'
 import { SectionProps } from '../../types'
 
-type UIImageProps = SectionProps & ResponsiveImageProps
+type UIImageProps = SectionProps & ResponsiveImageProps & {
+  title?: string
+}
 
 const UIImage: React.FC<UIImageProps> = (props) => {
 
   const { 
+    title,
     bgColor, 
     mode, 
     py, 
@@ -30,10 +33,17 @@ const UIImage: React.FC<UIImageProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Image 
-        {...rest} 
-        aspectRatio={aspectRatio}
-      />
+      <figure className='w-full flex flex-col space-y-2'>
+        <Image 
+          {...rest} 
+          aspectRatio={aspectRatio}
+        />
+        { title && (
+          <figcaption className='text-sm text-muted-foreground text-center'>
+            { title }
+          </figcaption>
+        )}
+      </figure>
 		</Section>
 	)
 }

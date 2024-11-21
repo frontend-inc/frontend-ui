@@ -37,7 +37,7 @@ const useDragDrop = (props: UseDragDropProps) => {
 		// moving to same list
 		if (source.droppableId === destination.droppableId) {
 			const sorted = reorder(current.children, source.index, destination.index)
-			const updatedColumns = columns.map((col) => {
+			const updatedColumns = columns?.map((col) => {
 				if (String(col.id) == source.droppableId) {
 					return {
 						...col,
@@ -54,7 +54,7 @@ const useDragDrop = (props: UseDragDropProps) => {
 			current.children.splice(source.index, 1)
 			// insert into next
 			next.children.splice(destination.index, 0, target)
-			const updatedColumns = columns.map((col) => {
+			const updatedColumns = columns?.map((col) => {
 				if (String(col.id) == source.droppableId) {
 					return current
 				} else if (String(col.id) == destination.droppableId) {
