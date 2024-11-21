@@ -20,11 +20,11 @@ const AccordionItemComponent: React.FC<AccordionItemProps> = (props) => {
 	return (
 		<Accordion type="single" collapsible className="w-full">
 			<AccordionItem value="item">
-				<AccordionTrigger className="hover:no-underline hover:bg-muted/50 p-1">
+				<AccordionTrigger className="hover:no-underline hover:bg-muted/50 px-3">
 					<Typography variant="subtitle1">{title}</Typography>
 				</AccordionTrigger>
 				<AccordionContent>
-					<Typography variant="body1" className="text-muted-foreground">
+					<Typography variant="body1" className="px-3 text-muted-foreground">
 						{subtitle}
 					</Typography>
 				</AccordionContent>

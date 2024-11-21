@@ -22,7 +22,7 @@ const Label: React.FC<LabelProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				'text-xs text-foreground font-medium uppercase tracking-widest',
+				'text-xs text-foreground font-semibold uppercase tracking-wider',
         textAlign && textAlignClasses[textAlign],
 				className
 			)}

@@ -51,7 +51,7 @@ const LinkListItem: React.FC<LinkListItemProps> = (props) => {
         )}
       >
         <div className=" flex flex-row space-x-6 items-center">
-          <Avatar>
+          <Avatar className='rounded-lg'>
             <AvatarFallback 
               className="rounded-lg bg-primary-500"
               style={{
