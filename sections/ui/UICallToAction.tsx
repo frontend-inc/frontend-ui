@@ -10,6 +10,8 @@ type UICallToActionProps = SectionProps & CallToActionProps
 
 const UICallToAction: React.FC<UICallToActionProps> = (props) => {
 	const {
+    fill,
+    border,
 		bgColor,
 		mode,
 		py,
@@ -27,6 +29,8 @@ const UICallToAction: React.FC<UICallToActionProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
+      fill={fill}
+      border={border}
 		>
 			<CallToAction {...rest} />
 		</Section>

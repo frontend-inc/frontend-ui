@@ -18,7 +18,9 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 		title,
 		subtitle,
 		textAlign='center',
-    fontSize='lg',    
+    fontSize='lg',   
+    fill,
+    border, 
 		bgColor,
 		mode,
 		py,
@@ -30,6 +32,8 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 
 	return (
 		<Section
+      fill={fill}
+      border={border}
 			requireAuth={requireAuth}
 			bgColor={bgColor}
 			mode={mode}

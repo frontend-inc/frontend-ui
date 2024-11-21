@@ -48,8 +48,8 @@ const Section: React.FC<SectionProps> = (props) => {
 		>
 			<div
 				className={cn(
-          border && 'border border-border rounded-xl',
-          fill && 'p-6 rounded-xl bg-muted/50',
+          border && 'p-8 border border-border rounded-xl',
+          fill && 'p-8 rounded-xl bg-muted/70',
 					maxWidth && maxWidthClasses[maxWidth],
 					'w-full mx-auto min-h-[60px] flex flex-row justify-center items-center'
 				)}

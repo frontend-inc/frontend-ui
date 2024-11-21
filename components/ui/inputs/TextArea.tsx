@@ -73,7 +73,7 @@ export default function TextArea(props: TextAreaProps) {
 			<div className="relative w-full flex flex-col space-y-2">
 				<Textarea
 					className={cn(
-						'focus:ring-2 focus:ring-offset-3',
+						'bg-background focus:ring-2 focus:ring-offset-3',
 						'w-full resize-none min-w-[230px]',
 						error && 'ring-2 ring-destructive ring-offset-3',
 					)}

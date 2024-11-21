@@ -61,7 +61,7 @@ export default function InputBase({
 			<Input
 				className={cn(
 					className,
-					'w-full text-foreground',
+					'w-full bg-background text-foreground',
 					error && 'border border-destructive'
 				)}
 				type={type}

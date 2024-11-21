@@ -11,12 +11,14 @@ type UIAccordionProps = SectionProps & HeadingProps & StackProps & AccordionProp
 const UIAccordion: React.FC<UIAccordionProps> = (props) => {
 	const {
     direction='column',
-    split='1/3',
+    split='1/3',    
 		label,
 		title,
 		subtitle,
 		textAlign='center',
     fontSize='lg',
+    fill,
+    border,
 		bgColor,
 		mode,
 		py,
@@ -34,6 +36,8 @@ const UIAccordion: React.FC<UIAccordionProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
+      fill={fill}
+      border={border}
 		>
       <Stack direction={direction} split={split}>
         <Heading

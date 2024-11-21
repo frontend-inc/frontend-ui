@@ -14,6 +14,8 @@ const UICards: React.FC<UICardsProps> = (props) => {
 		title,
 		subtitle,
 		textAlign='center',
+    fill,
+    border,
 		bgColor,
 		mode,
 		py,
@@ -32,6 +34,8 @@ const UICards: React.FC<UICardsProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
+      fill={fill}
+      border={border}
 		>
 			<div className="flex flex-col space-y-[40px] w-full">
 				<Heading
