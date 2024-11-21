@@ -1,15 +1,17 @@
 'use client'
 
 import React from 'react'
-import { Section, Heading } from '../../components'
+import { Section, Stack, Heading } from '../../components'
 import { Accordion } from '../../components'
 import { AccordionProps } from '../../components/web/accordions/Accordion'
-import { SectionProps, HeadingProps } from '../../types'
+import { SectionProps, StackProps, HeadingProps } from '../../types'
 
-type UIAccordionProps = SectionProps & HeadingProps & AccordionProps
+type UIAccordionProps = SectionProps & HeadingProps & StackProps & AccordionProps
 
 const UIAccordion: React.FC<UIAccordionProps> = (props) => {
 	const {
+    direction='column',
+    split='1/3',
 		label,
 		title,
 		subtitle,
@@ -19,7 +21,7 @@ const UIAccordion: React.FC<UIAccordionProps> = (props) => {
 		mode,
 		py,
 		px,
-		maxWidth='sm',
+		maxWidth='lg',
 		requireAuth,
 		...rest
 	} = props
@@ -33,14 +35,16 @@ const UIAccordion: React.FC<UIAccordionProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Heading
-				label={label}
-				title={title}
-				subtitle={subtitle}
-				textAlign={textAlign}
-        size={fontSize}
-			/>
-			<Accordion {...rest} />
+      <Stack direction={direction} split={split}>
+        <Heading
+          label={label}
+          title={title}
+          subtitle={subtitle}
+          textAlign={direction =='row' ? 'left' : 'center'}
+          size={fontSize}
+        />
+        <Accordion {...rest} />
+      </Stack>       
 		</Section>
 	)
 }

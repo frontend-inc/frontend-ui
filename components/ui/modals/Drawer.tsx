@@ -53,9 +53,9 @@ export default function CustomDrawer({
 	const { mode } = useTheme()
 
 	return (
-		<Drawer shouldScaleBackground open={open} onOpenChange={handleClose}>
+		<Drawer open={open} onOpenChange={handleClose}>
 			<DrawerPortal>
-				<DrawerContent shouldScaleBackground className={cn(mode, className)}>
+				<DrawerContent className={cn(mode, className)}>
 					<DrawerHeader>
 						<div className="flex w-full justify-end">
 							<DrawerClose>

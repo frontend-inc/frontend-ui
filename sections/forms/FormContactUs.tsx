@@ -1,15 +1,17 @@
 'use client'
 
 import React from 'react'
-import { Section, Heading } from '../../components'
+import { Section, Heading, Stack } from '../../components'
 import { ContactForm } from '../../components'
 import { ContactFormProps } from '../../components/cms/leads/ContactForm'
-import { SectionProps, HeadingProps } from '../../types'
+import { SectionProps, StackProps, HeadingProps } from '../../types'
 
-type FormContactUsProps = SectionProps & HeadingProps & ContactFormProps
+type FormContactUsProps = SectionProps & HeadingProps & StackProps & ContactFormProps
 
 const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 	const {
+    split='1/3',
+    direction='column',
     label,
 		title,
 		subtitle,
@@ -33,14 +35,16 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Heading
-        label={label}
-        title={title}
-        subtitle={subtitle}
-        size={fontSize}
-        textAlign={textAlign}
-      />
-			<ContactForm {...rest} />
+      <Stack direction={direction} split={split}>
+        <Heading
+          label={label}
+          title={title}
+          subtitle={subtitle}
+          size={fontSize}
+          textAlign={direction == 'row' ? 'left' : 'center'}
+        />
+        <ContactForm {...rest} />
+      </Stack>
 		</Section>
 	)
 }

@@ -1,15 +1,18 @@
 'use client'
 
 import React from 'react'
-import { Section, Heading } from '../../components'
+import { Section, Stack, Heading } from '../../components'
 import { FeatureIcons } from '../../components'
 import { FeatureIconsProps } from '../../components/web/features/FeatureIcons'
-import { SectionProps, HeadingProps } from '../../types'
+import { SectionProps, StackProps, HeadingProps } from '../../types'
 
-type UIFeaturesProps = SectionProps & HeadingProps & FeatureIconsProps
+type UIFeaturesProps = SectionProps & HeadingProps & 
+  StackProps & FeatureIconsProps
 
 const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 	const {
+    direction='column',
+    split='1/3',
 		label,
 		title,
 		subtitle,
@@ -33,16 +36,16 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<div className="flex flex-col space-y-6 w-full">
+			<Stack direction={direction} split={split}>
 				<Heading
 					label={label}
 					title={title}
 					subtitle={subtitle}
-					textAlign={textAlign}
+					textAlign={direction == 'row' ? 'left' : 'center'}
           size={fontSize}
 				/>
 				<FeatureIcons {...rest} />
-			</div>
+			</Stack>
 		</Section>
 	)
 }

@@ -12,12 +12,18 @@ export type HeadingProps = {
   fontSize?: 'sm' | 'md' | 'lg' | 'xl'
 }
 
+export type StackProps = {
+  direction?: 'row' | 'column'
+  split?: '1/4' | '1/3' | '1/2'
+} 
+
 export type SectionProps = {
 	children?: React.ReactNode
 	bgColor?: string
 	mode?: 'dark' | 'light'
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
   fill?: boolean
+  border?: boolean
 	py?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 	px?: number
 	requireAuth?: boolean
