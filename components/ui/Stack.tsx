@@ -5,11 +5,12 @@ interface StackProps {
   direction: 'row' | 'column';
   split?: '1/2' | '1/3' | '1/4'
   children: [React.ReactNode, React.ReactNode];
+  className?: string;
 }
 
 const Stack: React.FC<StackProps> = (props) => {
 
-  const { direction, split = '1/3', children } = props
+  const { direction, split = '1/3', className, children } = props
   const isRow = direction === 'row'
 
   const widthFirst =
@@ -27,6 +28,7 @@ const Stack: React.FC<StackProps> = (props) => {
       className={cn(
         'flex flex-col items-start',
         isRow ? 'md:flex-row md:space-x-3' : 'space-y-3',
+        className
       )}
     >
       <div
@@ -39,7 +41,7 @@ const Stack: React.FC<StackProps> = (props) => {
       </div>
       <div
         className={cn(
-          'w-full flex justify-start md:justify-center',
+          'w-full',
           isRow && widthSecond
         )}
       >

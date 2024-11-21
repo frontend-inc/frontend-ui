@@ -3,8 +3,11 @@ import { IconButton, RemixIcon, Typography } from '../../../components'
 import { Avatar, AvatarFallback } from 'frontend-shadcn'
 import { useButton } from '../../../hooks'
 import { ActionType } from '../../../types'
+import { cn } from 'frontend-shadcn'
 
 export type LinkListItemProps = {
+  fill?: boolean
+  border?: boolean
   color: string
   icon: string
   title: string
@@ -18,6 +21,8 @@ export type LinkListItemProps = {
 const LinkListItem: React.FC<LinkListItemProps> = (props) => {
   
   const {
+    fill,
+    border,
     color,
     icon,
     title,
@@ -36,10 +41,14 @@ const LinkListItem: React.FC<LinkListItemProps> = (props) => {
   })
 
   return(
-    <li className={"w-full overflow-hidden"}>
+    <li className="w-full">
       <button
         onClick={ handleClick }
-        className="w-full flex justify-between items-center rounded-xl p-4 focus:outline-none hover:bg-muted"
+        className={cn(
+          "w-full flex justify-between items-center rounded-xl p-4 focus:outline-none hover:bg-muted",
+          fill && "bg-muted p-6",
+          border && "border border-border rounded-lg"    
+        )}
       >
         <div className=" flex flex-row space-x-6 items-center">
           <Avatar>

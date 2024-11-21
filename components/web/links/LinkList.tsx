@@ -8,6 +8,8 @@ import LinkListItem from './LinkListItem'
 import { ActionType } from '../../../types'
 
 type LinkListType = {
+  fill?: boolean
+  border?: boolean
   color: string
   icon: string
   title: string
@@ -19,11 +21,13 @@ type LinkListType = {
 }
 
 export type LinkListProps = {
+  fill?: boolean
+  border?: boolean
 	items: LinkListType[]
 }
 
 const LinkList: React.FC<LinkListProps> = (props) => {
-	const { items } = props || {}
+	const { fill, border, items } = props || {}
 
 	return (
 		<div className="w-full justify-center flex flow-row">
@@ -32,7 +36,9 @@ const LinkList: React.FC<LinkListProps> = (props) => {
 				{items?.map((item, idx) => (
 					<BlurFade delay={0.25 + idx * 0.05} key={idx}>
 						<LinkListItem
-              { ...item }									
+              { ...item }		
+              fill={fill}							
+              border={border}
 						/>
 					</BlurFade>
 				))}

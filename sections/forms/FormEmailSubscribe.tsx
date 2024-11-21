@@ -41,7 +41,7 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}      
 		>
-      <Stack direction={direction} split={split}>      
+      <Stack direction={direction} split={split} className='items-center'>      
         <Heading
           label={label}
           title={title}

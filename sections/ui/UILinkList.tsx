@@ -17,12 +17,14 @@ const UILinkList: React.FC<UILinkListProps> = (props) => {
 		title,
 		subtitle,
 		textAlign='center',
-    fontSize,
+    fontSize='lg',
+    fill,
+    border,
 		bgColor,
 		mode,
 		py,
 		px,
-		maxWidth='sm',
+		maxWidth='lg',
 		requireAuth,
 		...rest
 	} = props
@@ -41,10 +43,10 @@ const UILinkList: React.FC<UILinkListProps> = (props) => {
 					label={label}
 					title={title}
 					subtitle={subtitle}
-					textAlign={textAlign}
+					textAlign={direction == 'row' ? 'left' : 'center'}
           size={fontSize}
 				/>
-				<LinkList {...rest} />
+				<LinkList {...rest} fill={fill} border={border} />
 			</Stack>
 		</Section>
 	)
