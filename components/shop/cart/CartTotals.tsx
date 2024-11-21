@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 import { useCart } from '../../../hooks'
 
 const CartTotals: React.FC = () => {

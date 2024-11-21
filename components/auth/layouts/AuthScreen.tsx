@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Card, CardContent } from 'frontend-shadcn'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 
 type AuthScreenProps = {
 	title: string

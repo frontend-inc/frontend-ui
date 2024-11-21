@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Rating, Typography } from '../../core'
+import { Rating, Typography } from '../../../components'
 
 type ProductRatingProps = {
 	rating: number

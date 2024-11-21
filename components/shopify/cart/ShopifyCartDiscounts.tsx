@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { useCart } from 'frontend-shopify'
-import { Button, TextField } from '../../core'
+import { Button, TextField } from '../../../components'
 
 const ShopifyCartDiscountCodeInput: React.FC = () => {
 	const [discountCode='', setDiscountCode] = useState<string | null>(null)

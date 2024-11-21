@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button, Typography } from '../../core'
+import { Button, Typography } from '../../../components'
 import { Badge } from 'frontend-shadcn'
 import { Separator } from 'frontend-shadcn'
 import { Check } from 'lucide-react'

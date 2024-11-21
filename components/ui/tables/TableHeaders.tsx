@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Checkbox } from '../../core'
+import { Checkbox } from '../../../components'
 import { CellHeader, TableCell } from '../../../components'
 import { TableRow } from 'frontend-shadcn'
 

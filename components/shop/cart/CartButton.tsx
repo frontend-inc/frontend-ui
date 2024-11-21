@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { IconButton } from '../../core'
+import { IconButton } from '../../../components'
 import { useCart } from '../../../hooks'
 import { RemixIcon } from '../../../components'
 import { Badge } from 'frontend-shadcn'

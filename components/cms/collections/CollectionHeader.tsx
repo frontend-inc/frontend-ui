@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 import { cn } from 'frontend-shadcn'
 import {
 	Icon,

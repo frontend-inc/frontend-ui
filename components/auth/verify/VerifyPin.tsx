@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 import { VerifyPinForm, VerifySendPinForm, AuthScreen, Loader } from '../..'
 import { useAuth } from 'frontend-js'
 

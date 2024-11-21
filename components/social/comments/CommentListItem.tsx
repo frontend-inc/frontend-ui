@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Collapse, Typography } from '../../core'
+import { Collapse, Typography } from '../../../components'
 import { Button } from '../../../components'
 import { UserAvatar } from '../../../components'
 import { useComments } from '../../../hooks'

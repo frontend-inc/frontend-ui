@@ -4,7 +4,7 @@ import React, { useContext } from 'react'
 import { ShopifyContext } from 'frontend-shopify'
 import { AppContext } from '../../../context'
 import { RemixIcon } from '../../../components'
-import { IconButton } from '../../core'
+import { IconButton } from '../../../components'
 import { Badge } from 'frontend-shadcn'
 
 type ShopifyCartButtonProps = {

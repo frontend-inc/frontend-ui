@@ -2,8 +2,11 @@ import React from 'react'
 import { Image, Typography } from '../..'
 import { useButton } from '../../../hooks'
 import { ActionType } from '../../../types'
+import { cn } from 'frontend-shadcn'
 
 export type PriceListItemProps = {  
+  fill?: boolean
+  border?: boolean
   image: string
   title: string
   subtitle: string
@@ -17,6 +20,8 @@ export type PriceListItemProps = {
 const PriceListItem: React.FC<PriceListItemProps> = (props) => {
   
   const {
+    fill,
+    border,
     image,
     price,
     title,
@@ -35,10 +40,14 @@ const PriceListItem: React.FC<PriceListItemProps> = (props) => {
   })
 
   return(
-    <li className={"w-full overflow-hidden"}>
+    <li className={"w-full"}>
       <button
         onClick={ handleClick }
-        className="w-full flex justify-between items-center rounded-xl p-4 focus:outline-none hover:bg-muted"
+        className={cn(
+          "w-full flex justify-between items-center rounded-xl p-4 focus:outline-none hover:bg-muted",
+          fill && "bg-muted p-6 rounded-lg",
+          border && "border border-border p-6 rounded-lg",
+        )}
       >
         <div className=" flex flex-row space-x-6 items-center">
           { image && (

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { ShowFields, Image } from '../../../components'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 import { MetafieldType } from '../../../types'
 import { cn } from 'frontend-shadcn'
 

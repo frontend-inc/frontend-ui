@@ -4,7 +4,7 @@ import React from 'react'
 import { Checkbox } from 'frontend-shadcn'
 import { Icon, Image, AvatarImage } from '../..'
 import { CardProps } from './Card'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 import { GripVertical } from 'lucide-react'
 
 export type ListCardProps = CardProps & {

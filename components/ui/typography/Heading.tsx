@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Label } from '../../../components'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 import { SyntheticEventType, TypographyVariantsType } from '../../../types'
 import { cn } from 'frontend-shadcn'
 

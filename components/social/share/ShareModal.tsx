@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { useToast } from '../../../hooks'
 import { Modal, SocialIcon } from '../..'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 
 type ShareButtonProps = {
 	url: string

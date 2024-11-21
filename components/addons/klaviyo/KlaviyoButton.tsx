@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 
 // Reference:
 // https://help.klaviyo.com/hc/en-us/articles/4418052317339

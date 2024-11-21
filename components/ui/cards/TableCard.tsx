@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Image } from '../..'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 import { cn } from 'frontend-shadcn'
 
 export type CardProps = {

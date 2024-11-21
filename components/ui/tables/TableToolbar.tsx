@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { SearchInput } from '../../../components'
-import { IconButton, Hidden } from '../../core'
+import { IconButton, Hidden } from '../../../components'
 import { Edit, Filter, Trash } from 'lucide-react'
 import { Button } from '../../../components'
 import { Badge } from 'frontend-shadcn'

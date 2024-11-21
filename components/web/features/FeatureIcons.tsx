@@ -4,7 +4,7 @@ import React from 'react'
 import { Alert } from '../..'
 import { BlurFade } from '../..'
 import { RemixIcon } from '../..'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 import { Avatar, AvatarFallback, cn } from 'frontend-shadcn'
 
 type FeatureIconProps = {
@@ -25,7 +25,7 @@ const FeatureIcon: React.FC<FeatureIconProps> = (props) => {
 				direction === 'column' ? 
           'flex-col items-center space-y-3' : 
           'flex-row items-start space-x-3',
-        border && 'border border-border rounded-lg p-6',
+        border && 'border-2 border-border rounded-lg p-6',
         fill && 'bg-muted rounded-lg p-6'
 			)}
 		>

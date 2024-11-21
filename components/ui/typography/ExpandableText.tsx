@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { TypographyVariantsType } from '../../../types'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 import Link from 'next/link'
 
 const MAX_CHARS = 200

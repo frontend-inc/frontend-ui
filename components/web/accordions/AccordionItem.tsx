@@ -7,7 +7,7 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from 'frontend-shadcn'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 
 type AccordionItemProps = {
 	title: string

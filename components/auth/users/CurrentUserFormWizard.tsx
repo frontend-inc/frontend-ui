@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { useApp } from '../../../hooks'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 import FormWizardProgress from '../../cms/forms/wizard/FormWizardProgress'
 import FormWizardField from '../../cms/forms/wizard/FormWizardField'
 import FormWizardButtons from '../../cms/forms/wizard/FormWizardButtons'

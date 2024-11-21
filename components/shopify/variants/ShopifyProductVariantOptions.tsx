@@ -2,7 +2,7 @@
 
 import React from 'react'
 import OptionButton from './ShopifyOptionButton'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 
 type ProductVariantOptionsProps = {
 	name: string

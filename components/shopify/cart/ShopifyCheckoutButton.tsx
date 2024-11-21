@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 
 type ShopifyCheckoutButtonProps = {
 	size?: 'small' | 'medium' | 'large'

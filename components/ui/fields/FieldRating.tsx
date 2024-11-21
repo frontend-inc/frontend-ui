@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Rating } from '../../core'
+import { Rating } from '../../../components'
 import { FieldWrapper } from '../../../components'
 import { FieldElementProps } from './Field'
 

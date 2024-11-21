@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useContext } from 'react'
-import { IconButton } from '../../core'
+import { IconButton } from '../../../components'
 import { ShopifyContext } from 'frontend-shopify'
 import { AppContext } from '../../../context'
 import { Icon } from '../..'

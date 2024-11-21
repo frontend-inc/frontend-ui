@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 import { TextInput, IconLoading } from '../..'
 import { useToast, useKlaviyo } from '../../../hooks'
 

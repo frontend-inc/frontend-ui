@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 import { TextInput } from '../..'
 import { ShopifyCustomerType } from 'frontend-shopify'
 

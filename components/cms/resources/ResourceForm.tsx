@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Drawer, Sheet, FormFields } from '../../../components'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 
 export type ResourceFormProps = {
 	title?: string

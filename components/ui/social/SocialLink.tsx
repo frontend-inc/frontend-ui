@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { IconButton } from '../../core'
+import { IconButton } from '../../../components'
 //@ts-ignore
 import { SocialIcon } from 'react-social-icons'
 

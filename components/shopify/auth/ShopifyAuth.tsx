@@ -3,7 +3,7 @@
 import React, { useContext } from 'react'
 import { ShopifyContext } from 'frontend-shopify'
 import { Button } from '../../../components'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 import { useShop } from 'frontend-shopify'
 import { RemixIcon } from '../../../components'
 import { useRouter } from 'next/navigation'

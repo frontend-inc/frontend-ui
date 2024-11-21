@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useContext } from 'react'
-import { Typography, Button } from '../../core'
+import { Typography, Button } from '../../../components'
 import { truncate } from '../../../helpers'
 import { ShopifyProductType } from 'frontend-shopify'
 import { ShopifyContext } from 'frontend-shopify'

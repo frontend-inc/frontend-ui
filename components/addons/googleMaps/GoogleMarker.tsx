@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 import {
 	AdvancedMarker,
 	Pin,

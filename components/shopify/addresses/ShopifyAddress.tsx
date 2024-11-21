@@ -2,7 +2,7 @@
 
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthScreen, AlertModal, Loader } from '../..'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 import { useAddresses } from 'frontend-shopify'
 import { ShopifyAddressForm } from '..'
 import { useApp } from '../../../hooks'

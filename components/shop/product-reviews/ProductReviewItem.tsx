@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Typography, Rating } from '../../core'
+import { Typography, Rating } from '../../../components'
 import { UserAvatar } from '../..'
 import moment from 'moment'
 import { cn } from 'frontend-shadcn'

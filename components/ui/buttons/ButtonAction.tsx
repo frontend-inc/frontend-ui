@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 import { RemixIcon, ImageModal, VideoModal, ShareModal } from '../..'
 import { useButton } from '../../../hooks'
 import { ActionType } from '../../../types'

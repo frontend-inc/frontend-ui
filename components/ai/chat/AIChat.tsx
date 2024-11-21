@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 import { TextInputPropsType } from '../../../types'
 import AIChatForm from './AIChatForm'
 import AIChatMessages from './AIChatMessages'

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Drawer, CircularLoader } from '../..'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 
 export type ResourceModalProps = {
 	title?: string

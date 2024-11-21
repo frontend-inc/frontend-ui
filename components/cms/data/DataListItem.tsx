@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 import { Icon, Image, MenuButton, TouchableOpacity } from '../..'
 import { Checkbox } from 'frontend-shadcn'
 import { GripVertical } from 'lucide-react'

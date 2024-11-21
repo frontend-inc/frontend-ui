@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { List } from '../../core'
+import { List } from '../../../components'
 import CartLineItem from './CartLineItem'
 import { Alert } from '../../../components'
 import { useCart } from '../../../hooks'

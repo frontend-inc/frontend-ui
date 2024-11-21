@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useStripeCustomerPortal } from '../../../hooks'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 
 const StripeCustomerPortalButton: React.FC = () => {
 	const { loading, stripeCustomerPortal } = useStripeCustomerPortal()

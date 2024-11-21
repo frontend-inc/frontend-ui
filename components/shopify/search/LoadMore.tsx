@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { ChevronDown } from 'lucide-react'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 
 type LoadMoreProps = {
 	loading?: boolean

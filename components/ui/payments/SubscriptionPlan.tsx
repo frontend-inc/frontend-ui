@@ -5,7 +5,7 @@ import { cn } from 'frontend-shadcn'
 import { Button } from '../..'
 import { Card, CardContent, CardFooter, CardHeader } from 'frontend-shadcn'
 import { Badge } from 'frontend-shadcn'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 
 type SubscriptionCardProps = {
 	loading?: boolean

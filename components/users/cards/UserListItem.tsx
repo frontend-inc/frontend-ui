@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 import { ResourceListItem, UserAvatar, ListFields } from '../..'
 import { MetafieldType, UserType } from '../../../types'
 

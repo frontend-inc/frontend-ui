@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 import { InputPropsType } from '../../../types'
 import { GripVertical, Plus } from 'lucide-react'
 import { SortableList, InputLabel, Sheet } from '../..'

@@ -12,7 +12,7 @@ import {
 	DropdownMenuTrigger,
 } from 'frontend-shadcn'
 import { GripVertical, MoreVertical } from 'lucide-react'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 import { Image, RemixIcon } from '../../../components'
 
 export type ResourceListItemProps = {

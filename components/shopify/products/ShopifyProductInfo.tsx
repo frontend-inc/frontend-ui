@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { ShopifyProductType } from 'frontend-shopify'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 import { formatCurrency } from 'frontend-shopify'
 import { OkendoStarRating } from '../../../components/addons'
 

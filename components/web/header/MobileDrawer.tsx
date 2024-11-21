@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useContext } from 'react'
-import { List } from '../../core'
+import { List } from '../../../components'
 import { Sheet } from '../..'
 import { AppContext } from '../../../context'
 import MobileDrawerLink from './MobileDrawerLink'

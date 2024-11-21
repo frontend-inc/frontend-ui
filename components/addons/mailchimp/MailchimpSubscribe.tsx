@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 import { TextInput, IconLoading } from '../..'
 import { useMailChimpForm } from 'use-mailchimp-form'
 import { useToast } from '../../../hooks'

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Cell, TableCell } from '../../../components'
-import { Button, Checkbox } from '../../core'
+import { Button, Checkbox } from '../../../components'
 import { get } from 'lodash'
 import { TableRow as ShadcnTableRow } from 'frontend-shadcn'
 

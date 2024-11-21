@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useContext } from 'react'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 import { useAuth } from 'frontend-js'
 import { AppContext } from '../../../context'
 

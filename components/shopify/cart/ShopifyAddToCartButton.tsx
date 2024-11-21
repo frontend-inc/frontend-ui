@@ -4,7 +4,7 @@ import React, { useState, useContext } from 'react'
 import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
 import { useToast } from '../../../hooks'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 import {
 	ShopifyProductFavoriteButton,
 	ShopifyQuantitySelector,

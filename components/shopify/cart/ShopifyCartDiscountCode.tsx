@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { IconButton, Typography } from '../../core'
+import { IconButton, Typography } from '../../../components'
 import { Label } from '../../../components'
 import { useCart } from 'frontend-shopify'
 import { useLoaders } from '../../../hooks'

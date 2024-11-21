@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 import { Card } from 'frontend-shadcn'
 import { Button } from '../../../components'
 import { ShopifyProductCollectionModal } from '../../../components'

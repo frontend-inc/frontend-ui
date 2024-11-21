@@ -5,7 +5,7 @@ import { RadioGroup, RadioGroupItem } from 'frontend-shadcn'
 import { Label } from 'frontend-shadcn'
 import { InputLabel } from '../../../components'
 import { FormControl } from 'frontend-shadcn'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 
 type Option = {
 	value: string | number

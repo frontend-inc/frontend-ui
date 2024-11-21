@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { Heart } from 'lucide-react'
-import { IconButton } from '../../core'
+import { IconButton } from '../../../components'
 import { useAuth } from 'frontend-js'
 import { ShopifyProductType } from 'frontend-shopify'
 import { useApp, useSocial } from '../../../hooks'

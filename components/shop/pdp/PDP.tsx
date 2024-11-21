@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 import { Image, ProductRating } from '../..'
 import { cn } from 'frontend-shadcn'
 

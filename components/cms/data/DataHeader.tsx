@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 import { Icon, FilterButton, SortButton, SearchInput } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch, useCollectionForms } from '../../../hooks'

@@ -45,7 +45,13 @@ const Spotlight: React.FC<SpotlightProps> = (props) => {
 			title={title}
       subtitle={subtitle}
 			description={description}
-			actions={buttons?.length > 0 && <ButtonActions buttons={buttons} />}
+			actions={buttons?.length > 0 && (
+        <ButtonActions 
+          size="lg" 
+          buttons={buttons} 
+          
+        />
+      )}
 			logos={logos}
 			image={image}
 		/>

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { IconButton } from '../../core'
+import { IconButton } from '../../../components'
 import { ButtonActions, AuthButton, Icon } from '../..'
 import Logo from './Logo'
 import { CartButton } from '../..'

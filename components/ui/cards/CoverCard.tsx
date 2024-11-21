@@ -3,7 +3,7 @@
 import React from 'react'
 import { cn } from 'frontend-shadcn'
 import { Image, TouchableOpacity } from '../..'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 import { CardProps } from './Card'
 
 const CoverCard: React.FC<CardProps> = (props) => {

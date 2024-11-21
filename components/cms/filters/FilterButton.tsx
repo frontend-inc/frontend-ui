@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { RemixIcon, Sheet } from '../..'
-import { Hidden } from '../../core'
+import { Hidden } from '../../../components'
 import { FilterOptionType, SearchFilterOptionType } from '../../..'
 import { Typography } from '../../../components'
 import { Button } from '../../../components'

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Sheet, FormFields } from '../..'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 import { useResourceContext } from 'frontend-js'
 
 export type DataFormProps = {

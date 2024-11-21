@@ -16,7 +16,7 @@ import {
 	sortableKeyboardCoordinates,
 	verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
-import { Button, Typography } from '../../core'
+import { Button, Typography } from '../../../components'
 import Droppable from './Droppable'
 import { Icon, KanBanCard } from '../..'
 import { RiAddFill } from '@remixicon/react'

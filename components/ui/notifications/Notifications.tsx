@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { NotificationType } from '../../../types'
 import { Notification } from '../../../components'
 import SwipeableViews from 'react-swipeable-views'
-import { IconButton } from '../../core'
+import { IconButton } from '../../../components'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 type NotificationsProps = {

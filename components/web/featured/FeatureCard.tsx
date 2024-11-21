@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useApp } from '../../../hooks'
-import { Button, Typography } from '../../core'
+import { Button, Typography } from '../../../components'
 import { ExpandableText, Image } from '../..'
 import { useRouter } from 'next/navigation'
 import { cn } from 'frontend-shadcn'

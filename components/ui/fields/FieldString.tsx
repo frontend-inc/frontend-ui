@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Typography } from '../../core'
+import { Typography } from '../../../components'
 import { FieldWrapper } from '../../../components'
 import { FieldElementProps } from './Field'
 import { cn } from 'frontend-shadcn'

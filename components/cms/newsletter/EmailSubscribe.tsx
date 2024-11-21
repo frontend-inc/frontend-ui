@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../core'
+import { Button } from '../../../components'
 import { TypographyVariantsType } from '../../../types'
 import { Heading, InputBase } from '../..'
 import { useResource } from 'frontend-js'
