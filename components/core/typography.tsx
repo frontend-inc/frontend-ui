@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { cn } from 'frontend-shadcn'
+import { SyntheticEventType } from '../../types'
 
 interface TypographyProps {
 	variant:
@@ -21,15 +22,25 @@ interface TypographyProps {
     | 'destructive'
 	textAlign?: 'left' | 'center' | 'right'
 	className?: string
+  editable?: boolean
+  name?: string
+  handleChange?: (ev: SyntheticEventType) => void
 	children: React.ReactNode
 }
 
-const Typography: React.FC<TypographyProps> = ({
-	variant,
-	textAlign = 'left',
-	className,
-	children,
-}) => {
+const Typography: React.FC<TypographyProps> = (props) => {
+
+  const {
+    variant,
+    textAlign = 'left',
+    className,
+    children,
+
+    name,
+    editable,
+    handleChange,
+
+  } = props
   
 	const variantClasses = {
 		h1: 'text-5xl sm:text-7xl font-font-semibold tracking-tight',
@@ -71,10 +82,26 @@ const Typography: React.FC<TypographyProps> = ({
 		right: 'text-right',
 	}
 
+  const handleInputChange = (ev: SyntheticEventType) => {
+    if(!handleChange) return null;
+    handleChange({
+      target: {
+        name: name || '',
+        value: ev.target.value,
+      }
+    })
+  
+  }
+
 	return (
 		<div
+      contentEditable={editable}
+      // @ts-ignore
+      onBlur={handleInputChange}
+      suppressContentEditableWarning
 			className={cn(
-				'text-foreground',
+				'text-foreground outline-none focus:outline-none focus:ring-0',        
+        editable && 'cursor-text',
 				fontFamily[variant],
 				variantClasses[variant],
 				alignmentClasses[textAlign],

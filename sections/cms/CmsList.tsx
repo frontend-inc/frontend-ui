@@ -6,7 +6,7 @@ import { CollectionList } from '../../components'
 import { CollectionListProps } from '../../components/cms/collections/CollectionList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsListProps = SectionProps & HeadingProps & CollectionListProps
+type CmsListProps = SectionProps & HeadingProps & CollectionListProps 
 
 const CmsList: React.FC<CmsListProps> = (props) => {
 	const {

@@ -3,21 +3,24 @@
 import React from 'react'
 import { Label } from '../../../components'
 import { Typography } from '../../core'
-import { TypographyVariantsType } from '../../../types'
+import { SyntheticEventType, TypographyVariantsType } from '../../../types'
 import { cn } from 'frontend-shadcn'
 
 type HeadingProps = {
+  editable?: boolean
 	label?: string
 	title?: string
 	subtitle?: string
 	textAlign?: 'left' | 'center' | 'right'
 	size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 	className?: string
+  handleChange?: (ev: SyntheticEventType) => void
   secondaryAction?: React.ReactNode
 }
 
 const Heading: React.FC<HeadingProps> = (props) => {
 	const {
+    editable,
 		label,
 		title,
 		subtitle,
@@ -25,6 +28,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		secondaryAction,
 		size = 'md',
 		className,
+    handleChange,
 	} = props || {}
 
 	const titleVariant = {
@@ -63,10 +67,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
         "w-full container max-w-screen-md flex flex-col justify-between",
         textAlign === 'center' && 'mx-auto',
         )}>
-				<div className={cn(
-          "flex flex-col",
-          spacingClass 
-        )}>
+				<div className={cn("flex flex-col", spacingClass )}>
 					{label && (
 						<div
 							className={cn(
@@ -78,7 +79,13 @@ const Heading: React.FC<HeadingProps> = (props) => {
 						</div>
 					)}
 					{title && (
-						<Typography variant={titleVariant} textAlign={textAlign}>
+						<Typography 
+              editable={editable}
+              variant={titleVariant} 
+              textAlign={textAlign}
+              name='title'
+              handleChange={handleChange}
+            >
 							{title}
 						</Typography>
 					)}
