@@ -25,7 +25,7 @@ const Stack: React.FC<StackProps> = (props) => {
   return (
     <div
       className={cn(
-        'flex flex-col items-center',
+        'flex flex-col items-start',
         isRow ? 'md:flex-row md:space-x-3' : 'space-y-3',
       )}
     >

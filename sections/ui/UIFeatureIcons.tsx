@@ -18,11 +18,13 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 		subtitle,
 		textAlign='center',
     fontSize='lg',
+    fill,
+    border,
 		bgColor,
 		mode,
 		py,
 		px,
-		maxWidth,
+		maxWidth='lg',
 		requireAuth,
 		...rest
 	} = props
@@ -44,7 +46,12 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 					textAlign={direction == 'row' ? 'left' : 'center'}
           size={fontSize}
 				/>
-				<FeatureIcons {...rest} />
+				<FeatureIcons 
+          {...rest} 
+          direction={direction}
+          fill={fill}
+          border={border}
+        />
 			</Stack>
 		</Section>
 	)

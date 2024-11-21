@@ -54,11 +54,12 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
           handleChange={handleChange}
           placeholder="Enter your email"
           type="email"
-          className="rounded-l-md rounded-r-none border-r-0"
+          className="rounded-l-md text-base h-[48px] min-w-[280px] rounded-r-none border-r-0"
         />
         <Button
+          size='lg'
           onClick={handleSubmit}
-          className="rounded-l-none rounded-r-md"
+          className="rounded-l-none rounded-r-md text-base"
           loading={delayedLoading}
         >
           {buttonText}

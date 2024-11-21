@@ -14,6 +14,8 @@ const UIImage: React.FC<UIImageProps> = (props) => {
 
   const { 
     title,
+    fill,
+    border,
     bgColor, 
     mode, 
     py, 
@@ -32,6 +34,8 @@ const UIImage: React.FC<UIImageProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
+      fill={fill}
+      border={border}
 		>
       <figure className='w-full flex flex-col space-y-2'>
         <Image 

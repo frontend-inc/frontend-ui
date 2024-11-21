@@ -15,6 +15,8 @@ const UIFeatureCards: React.FC<UIFeatureCardsProps> = (props) => {
 		subtitle,
 		textAlign='center',
     fontSize='lg',
+    fill,
+    border,
 		bgColor,
 		mode,
 		py,
@@ -32,6 +34,8 @@ const UIFeatureCards: React.FC<UIFeatureCardsProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
+      fill={fill}
+      border={border}
 		>
 			<div className="flex flex-col space-y-2">
 				<Heading
