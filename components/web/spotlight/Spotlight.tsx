@@ -11,49 +11,51 @@ export type SpotlightProps = {
 	label?: string
 	title?: string
   subtitle?: string
-	description?: string
 	image?: string
-	logos: {
-		image: string
-		title: string
-	}[]
-	style?: 'card' | 'list'
+	direction?: 'column' | 'row'
 	buttons?: ButtonType[]
+  enableGradient?: boolean
+  enableOverlay?: boolean
 }
 
 const Spotlight: React.FC<SpotlightProps> = (props) => {
 	const {
-		style = 'list',
+		direction = 'column',
 		image,
 		label,
 		title,
     subtitle,
-		description,
-		logos = [],
 		buttons = [],
+    enableGradient,
+    enableOverlay,
 	} = props || {}
 
-	const Component =
-		{
-			list: SpotlightList,
-			card: SpotlightCard,
-		}[style] || SpotlightList
+	const Component = {
+      column: SpotlightList,
+      row: SpotlightCard,
+		}[direction] || SpotlightList
+
+    const justifyContent = {
+      column: 'justify-center',
+      row: 'justify-left'
+    }[direction] || 'justify-center'
 
 	return (
 		<Component
 			label={label}
 			title={title}
       subtitle={subtitle}
-			description={description}
 			actions={buttons?.length > 0 && (
         <ButtonActions 
           size="lg" 
           buttons={buttons} 
-          
+          // @ts-ignore 
+          justifyContent={justifyContent}
         />
       )}
-			logos={logos}
 			image={image}
+      enableGradient={enableGradient}
+      enableOverlay={enableOverlay}
 		/>
 	)
 }

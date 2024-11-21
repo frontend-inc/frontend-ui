@@ -54,7 +54,7 @@ const DropZone: React.FC<DropZoneProps> = ({
 		>
 			<input {...getInputProps()} />
 			{loading ? (
-				<Loader2 className="text-foreground w-5 h-5" />
+				<Loader2 className="text-foreground w-5 h-5 animate-spin" />
 			) : (
 				<>
 					{isDragActive ? (

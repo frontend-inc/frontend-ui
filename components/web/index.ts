@@ -4,7 +4,6 @@ export * from './testimonials'
 
 // Web
 export { default as Accordion } from './accordions/Accordion'
-export { default as AccordionItem } from './accordions/AccordionItem'
 export { default as Cards } from './cards/Cards'
 export { default as CallToAction } from './cta/CallToAction'
 export { default as Cover } from './covers/Cover'

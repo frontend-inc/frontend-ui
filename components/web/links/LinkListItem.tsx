@@ -47,7 +47,7 @@ const LinkListItem: React.FC<LinkListItemProps> = (props) => {
         className={cn(
           "w-full flex justify-between items-center rounded-xl p-4 focus:outline-none hover:bg-muted",
           fill && "bg-muted p-6",
-          border && "border border-border rounded-lg"    
+          border && "border border-border rounded-lg"      
         )}
       >
         <div className=" flex flex-row space-x-6 items-center">
@@ -66,9 +66,7 @@ const LinkListItem: React.FC<LinkListItemProps> = (props) => {
             <Typography variant="body2" className="text-muted-foreground">{subtitle}</Typography>
           </div>
         </div>
-        <IconButton>
-          <i className="ri-arrow-right-up-line text-xl rotate-[45] text-muted-foreground" />
-        </IconButton>
+        <i className="ri-arrow-right-up-line text-xl rotate-[45] text-muted-foreground" />
       </button>
     </li>
   )

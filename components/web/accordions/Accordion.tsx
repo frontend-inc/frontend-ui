@@ -1,7 +1,8 @@
 'use client'
 
 import React from 'react'
-import { AccordionItem, Alert } from '../../../components'
+import { Alert } from '../../../components'
+import AccordionItem from './AccordionItem'
 
 export type AccordionProps = {
 	items?: {

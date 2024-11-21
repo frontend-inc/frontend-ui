@@ -4,6 +4,7 @@ import React from 'react'
 import { AuthGuard } from '../../components'
 import { SectionProps } from '../../types'
 import { cn } from 'frontend-shadcn'
+import { useTheme } from '../../hooks'
 
 type ContainerMaxWidth = 'sm' | 'md' | 'lg' | 'xl'
 
@@ -16,6 +17,8 @@ const maxWidthClasses: Record<ContainerMaxWidth, string> = {
 
 const Section: React.FC<SectionProps> = (props) => {
 	
+  const { theme } = useTheme()
+
   const {
 		requireAuth = false,
 		children,
@@ -40,6 +43,7 @@ const Section: React.FC<SectionProps> = (props) => {
 		<section
 			className={cn(
         mode, 
+        theme,
         'w-full bg-background', 
         py ? pyClasses[py] : 'py-[48px]',
         px && `px-${px}`
@@ -50,7 +54,7 @@ const Section: React.FC<SectionProps> = (props) => {
 				className={cn(
           border && 'p-8 border-2 border-border rounded-xl',
           fill && 'p-8 rounded-xl bg-muted/60',
-					maxWidth && maxWidthClasses[maxWidth],
+					maxWidth && maxWidthClasses[maxWidth],          
 					'w-full mx-auto min-h-[60px] flex flex-row justify-center items-center'
 				)}
 			>

@@ -84,7 +84,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 						title={title}
 						subtitle={subtitle}
 						textAlign={alignItems === 'items-center' ? 'center' : 'left'}
-						size="lg"
+						size="xl"
 					/>
 					{actions}
 					{buttonText && (

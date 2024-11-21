@@ -28,8 +28,8 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
   const {
     src,
     alt,
-    width = 600,
-    height = 600,
+    width = 1600,
+    height = 1600,
     objectFit = 'cover',
     aspectRatio = 1.0,
     enableOverlay = false,

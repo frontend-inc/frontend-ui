@@ -15,7 +15,7 @@ const UISpotlight: React.FC<UISpotlightProps> = (props) => {
     mode, 
     py, 
     px, 
-    maxWidth='lg', 
+    maxWidth, 
     requireAuth, 
     ...rest 
   } = props

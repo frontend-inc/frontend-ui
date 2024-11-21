@@ -1,20 +1,15 @@
 'use client'
 
 import React from 'react'
-import { Section, Heading } from '../../components'
+import { Section } from '../../components'
 import { Logos } from '../../components'
 import { LogosProps } from '../../components/web/logos/Logos'
-import { SectionProps, HeadingProps } from '../../types'
+import { SectionProps } from '../../types'
 
-type UILogosProps = SectionProps & HeadingProps & LogosProps
+type UILogosProps = SectionProps & LogosProps
 
 const UILogos: React.FC<UILogosProps> = (props) => {
 	const {
-		label,
-		title,
-		subtitle,
-		textAlign='center',
-    fontSize,
 		bgColor,
 		mode,
 		py='sm',
@@ -33,16 +28,7 @@ const UILogos: React.FC<UILogosProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<div className="flex flex-col space-y-2">
-				<Heading
-					label={label}
-					title={title}
-					subtitle={subtitle}
-					textAlign={textAlign}
-          size={fontSize}
-				/>
-				<Logos {...rest} />
-			</div>
+			<Logos {...rest} />
 		</Section>
 	)
 }
