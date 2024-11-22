@@ -41,7 +41,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
 		<Container maxWidth="lg">
 			<Stack direction={direction}>
 				<Row size={isRow ? '1/4' : 'full'}>
-					<Stack>
+					<Stack className={ isRow ? "items-start" : "items-center"}>
 						<div className="h-[160px] w-[160px]">
 							<AvatarImage alt={title} src={image} size={160} />
 						</div>
