@@ -43,8 +43,8 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Stack direction={direction} spacing={10}>
-				<Stack direction={direction} size="1/3" className="items-center">
+			<Stack direction={direction} spacing={10} className="items-center">
+				<Stack direction={direction} size="1/3">
 					<Heading
 						label={label}
 						title={title}
@@ -55,7 +55,7 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 						handleChange={handleChange}
 					/>
 				</Stack>
-				<Stack direction={direction} size="2/3">
+				<Stack direction={direction} size="2/3" className="items-center h-full justify-center">
 					<EmailSubscribe {...rest} />
 				</Stack>
 			</Stack>
