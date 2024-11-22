@@ -24,7 +24,7 @@ export type SectionProps = {
 	fill?: boolean
 	border?: boolean
 	py?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
-	px?: number
+	px?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 	requireAuth?: boolean
 }
 

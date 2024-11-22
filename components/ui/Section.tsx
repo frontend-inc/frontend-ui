@@ -26,8 +26,8 @@ const Section: React.FC<SectionProps> = (props) => {
 		maxWidth,
 		fill = false,
 		border,
-		py,
-		px = 6,
+		py = 'md',
+		px = 'sm',
 	} = props
 
 	const pyClasses = {
@@ -38,14 +38,22 @@ const Section: React.FC<SectionProps> = (props) => {
 		xl: 'py-[144px]',
 	}
 
+  const pxClasses = {
+    none: 'px-0',
+    sm: 'px-6',
+    md: 'px-12',
+    lg: 'px-24', 
+    xl: 'px-48',
+  }
+  
 	return (
 		<section
 			className={cn(
 				mode,
 				theme,
 				'w-full bg-background',
-				py ? pyClasses[py] : 'py-[48px]',
-				px && `px-${px}`
+				pyClasses[py],
+				pxClasses[px]
 			)}
 			style={{ backgroundColor: bgColor }}
 		>

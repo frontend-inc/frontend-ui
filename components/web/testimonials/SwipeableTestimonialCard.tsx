@@ -32,8 +32,8 @@ const SwipeableTestimonialCard: React.FC<SwipeableTestimonialCardProps> = (
             <AvatarImage src={avatar} alt={author} />
             <AvatarFallback></AvatarFallback>
           </Avatar>
-          <Typography variant="body1" className="leading-8 text-muted-foreground">
-            - {author}
+          <Typography variant="body2" className="text-muted-foreground">
+            {author}
           </Typography>
         </div>
       </div>

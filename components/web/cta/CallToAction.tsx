@@ -33,7 +33,7 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 					title={title}
 					subtitle={subtitle}
 					size={size}
-					textAlign="center"
+					textAlign={ direction == 'row' ? 'left' : 'center' }
 				/>
 			</Stack>
 			<Stack direction={direction} size="2/3">

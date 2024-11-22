@@ -27,8 +27,6 @@ const UICards: React.FC<UICardsProps> = (props) => {
 		...rest
 	} = props
 
-	
-
 	return (
 		<Section
 			requireAuth={requireAuth}
