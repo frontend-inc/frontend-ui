@@ -85,6 +85,7 @@ const Typography: React.FC<TypographyProps> = (props) => {
 		handleChange({
 			target: {
 				name: name || '',
+        // @ts-ignore
 				value: ev.target.innerText,
 			},
 		})

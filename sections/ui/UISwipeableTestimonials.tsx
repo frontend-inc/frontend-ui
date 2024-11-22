@@ -28,6 +28,8 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 		px,
 		maxWidth = 'lg',
 		requireAuth,
+    editable,
+    handleChange,
 		...rest
 	} = props
 
@@ -49,6 +51,8 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
           subtitle={subtitle}
           textAlign='center'
           size={fontSize}
+          editable={editable}
+          handleChange={handleChange}
         />
         <Testimonials {...rest} layout="carousel" />
 			</Stack>

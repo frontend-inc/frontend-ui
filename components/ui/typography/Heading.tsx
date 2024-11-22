@@ -80,7 +80,11 @@ const Heading: React.FC<HeadingProps> = (props) => {
 							<Typography 
                 editable={editable}
                 variant="caption"
-                className="text-primary" 
+                className={cn(
+                  "text-primary uppercase",
+                  textAlign === 'center' && 'text-center',
+                  textAlign === 'right' && 'text-right'
+                )}
                 name="label"
                 handleChange={handleChange}
               >
