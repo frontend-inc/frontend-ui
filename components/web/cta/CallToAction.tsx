@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Heading, Row, Stack } from '../../../components'
+import { Heading, Stack } from '../../../components'
 import { ButtonType } from '../../../types'
 import { ButtonActions } from '../..'
 
@@ -25,11 +25,9 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 		buttons = [],
 	} = props || {}
 
-	const isRow = direction == 'row'
-
 	return (
 		<Stack direction={direction}>
-			<Row size={isRow ? '1/3' : 'full'}>
+			<Stack direction={direction} size="1/3">
 				<Heading
 					label={label}
 					title={title}
@@ -37,8 +35,8 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 					size={size}
 					textAlign="center"
 				/>
-			</Row>
-			<Row size={isRow ? '2/3' : 'full'}>
+			</Stack>
+			<Stack direction={direction} size="2/3">
 				{buttons?.length > 0 && (
 					<ButtonActions
 						buttons={buttons}
@@ -46,7 +44,7 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 						justifyContent="justify-center"
 					/>
 				)}
-			</Row>
+			</Stack>
 		</Stack>
 	)
 }

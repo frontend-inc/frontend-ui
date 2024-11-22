@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Section, Stack, Row, Heading } from '../../components'
+import { Section, Stack, Heading } from '../../components'
 import { FeatureIcons } from '../../components'
 import { FeatureIconsProps } from '../../components/web/features/FeatureIcons'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
@@ -30,7 +30,7 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 		...rest
 	} = props
 
-	const isRow = direction == 'row'
+	
 
 	return (
 		<Section
@@ -42,7 +42,7 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 			maxWidth={maxWidth}
 		>
 			<Stack direction={direction}>
-				<Row size={isRow ? '1/3' : 'full'}>
+				<Stack direction={direction} size="1/3">
 					<Heading
 						label={label}
 						title={title}
@@ -50,15 +50,15 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 						textAlign={direction == 'row' ? 'left' : 'center'}
 						size={fontSize}
 					/>
-				</Row>
-				<Row size={isRow ? '2/3' : 'full'}>
+				</Stack>
+				<Stack direction={direction} size="2/3">
 					<FeatureIcons
 						{...rest}
 						direction={direction}
 						fill={fill}
 						border={border}
 					/>
-				</Row>
+				</Stack>
 			</Stack>
 		</Section>
 	)

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Section, Heading, Row, Stack } from '../../components'
+import { Section, Heading, Stack } from '../../components'
 import { EmailSubscribe } from '../../components'
 import { EmailSubscribeProps } from '../../components/cms/newsletter/EmailSubscribe'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
@@ -30,7 +30,7 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 		...rest
 	} = props
 
-  const isRow = direction == 'row'
+  
 
 	return (
 		<Section
@@ -44,7 +44,7 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 			maxWidth={maxWidth}
 		>
 			<Stack direction={direction}>
-        <Row size={ isRow ? "1/3" : "full" } className="items-center">
+        <Stack direction={direction} size="1/3" className="items-center">
           <Heading
             label={label}
             title={title}
@@ -52,10 +52,10 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
             size={fontSize}
             textAlign={direction == 'row' ? 'left' : 'center'}
           />
-        </Row>
-        <Row size={ isRow ? "2/3" : "full" }>
+        </Stack>
+        <Stack direction={direction} size="2/3">
 				  <EmailSubscribe {...rest} />
-        </Row>
+        </Stack>
 			</Stack>
 		</Section>
 	)

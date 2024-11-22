@@ -4,7 +4,6 @@ import React from 'react'
 import {
 	Container,
 	Stack,
-	Row,
 	AvatarImage,
 	Typography,
 	SocialLink,
@@ -35,13 +34,13 @@ const Profile: React.FC<ProfileProps> = (props) => {
 		socialLinks = [],
 	} = props || {}
 
-	const isRow = direction == 'row'
+	
 
 	return (
 		<Container maxWidth="lg">
 			<Stack direction={direction}>
-				<Row size={isRow ? '1/4' : 'full'}>
-					<Stack className={ isRow ? "items-start" : "items-center"}>
+				<Stack direction={direction} size="1/4">
+					<Stack className={ direction == 'row' ? "items-start" : "items-center"}>
 						<div className="h-[160px] w-[160px]">
 							<AvatarImage alt={title} src={image} size={160} />
 						</div>
@@ -57,8 +56,8 @@ const Profile: React.FC<ProfileProps> = (props) => {
 							))}
 						</div>
 					</Stack>
-				</Row>
-				<Row size={isRow ? '3/4' : 'full'}>
+				</Stack>
+				<Stack direction={direction} size="3/4">
 					<Stack spacing={4}>
 						<Heading
 							label={label}
@@ -74,7 +73,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
 							{description}
 						</Typography>
 					</Stack>
-				</Row>
+				</Stack>
 			</Stack>
 		</Container>
 	)

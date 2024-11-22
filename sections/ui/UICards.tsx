@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Section, Stack, Row, Heading } from '../../components'
+import { Section, Stack, Heading } from '../../components'
 import { Cards } from '../../components'
 import { CardsProps } from '../../components/web/cards/Cards'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
@@ -27,7 +27,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 		...rest
 	} = props
 
-	const isRow = direction == 'row'
+	
 
 	return (
 		<Section
@@ -41,7 +41,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 			border={border}
 		>
 			<Stack direction={direction}>
-				<Row size={isRow ? '1/3' : 'full'}>
+				<Stack direction={direction} size="1/3">
 					<Heading
 						label={label}
 						title={title}
@@ -49,10 +49,10 @@ const UICards: React.FC<UICardsProps> = (props) => {
 						textAlign={direction == 'row' ? 'left' : 'center'}
 						size={fontSize}
 					/>
-				</Row>
-				<Row size={isRow ? '2/3' : 'full'}>
+				</Stack>
+				<Stack direction={direction} size="2/3">
 					<Cards {...rest} />
-				</Row>
+				</Stack>
 			</Stack>
 		</Section>
 	)

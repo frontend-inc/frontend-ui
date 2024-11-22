@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Section, Stack, Row, Heading } from '../../components'
+import { Section, Stack, Heading } from '../../components'
 import { LinkList } from '../../components'
 import { LinkListProps } from '../../components/web/links/LinkList'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
@@ -27,7 +27,7 @@ const UILinkList: React.FC<UILinkListProps> = (props) => {
 		...rest
 	} = props
 
-	const isRow = direction == 'row'
+	
 
 	return (
 		<Section
@@ -39,7 +39,7 @@ const UILinkList: React.FC<UILinkListProps> = (props) => {
 			maxWidth={maxWidth}
 		>
 			<Stack direction={direction}>
-				<Row size={isRow ? '1/3' : 'full'}>
+				<Stack direction={direction} size="1/3">
 					<Heading
 						label={label}
 						title={title}
@@ -47,10 +47,10 @@ const UILinkList: React.FC<UILinkListProps> = (props) => {
 						textAlign={direction == 'row' ? 'left' : 'center'}
 						size={fontSize}
 					/>
-				</Row>
-				<Row size={isRow ? '2/3' : 'full'}>
+				</Stack>
+				<Stack direction={direction} size="2/3">
 					<LinkList {...rest} fill={fill} border={border} />
-				</Row>
+				</Stack>
 			</Stack>
 		</Section>
 	)
