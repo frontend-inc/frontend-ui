@@ -14,7 +14,6 @@ export type HeadingProps = {
 
 export type StackProps = {
   direction?: 'row' | 'column'
-  split?: '1/4' | '1/3' | '1/2'
 } 
 
 export type SectionProps = {

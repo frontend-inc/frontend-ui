@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Section, Stack, Heading } from '../../components'
+import { Section, Stack, Row, Heading } from '../../components'
 import { Testimonials } from '../../components'
 import { TestimonialsProps } from '../../components/web/testimonials/Testimonials'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
@@ -12,7 +12,6 @@ type UITestimonialsProps = SectionProps & HeadingProps
 const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 	const {
     direction='column',
-    split='1/3',
 		label,
 		title,
 		subtitle,
@@ -36,15 +35,19 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Stack direction={direction} split={split}>
-				<Heading
-					label={label}
-					title={title}
-					subtitle={subtitle}
-					textAlign={textAlign}
-          size={fontSize}
-				/>
-				<Testimonials {...rest} layout="grid" />
+			<Stack direction={direction}>
+        <Row size="1/3">
+          <Heading
+            label={label}
+            title={title}
+            subtitle={subtitle}
+            textAlign={direction == 'row' ? 'left' : 'center'}
+            size={fontSize}
+          />
+        </Row>
+        <Row size="2/3">
+				  <Testimonials {...rest} layout="grid" />
+        </Row>
 			</Stack>
 		</Section>
 	)

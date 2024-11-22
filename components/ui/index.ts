@@ -22,6 +22,7 @@ export { default as GeoSearchInput } from './inputs/GeoSearchInput'
 export { default as Sheet } from './modals/Sheet'
 export { default as SquareButton } from './SquareButton'
 export { default as Stack } from './Stack'
+export { default as Row } from './Row'
 
 export { default as IconLoading } from './loaders/IconLoading'
 export { default as Label } from './Label'

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Section, Stack, Heading } from '../../components'
+import { Section, Stack, Row, Heading } from '../../components'
 import { PriceList } from '../../components'
 import { PriceListProps } from '../../components/web/price-list/PriceList'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
@@ -12,7 +12,6 @@ type UIPriceListProps = SectionProps & HeadingProps
 const UIPriceList: React.FC<UIPriceListProps> = (props) => {
 	const {
     direction='column',
-    split='1/3',
 		label,
 		title,
 		subtitle,
@@ -36,15 +35,19 @@ const UIPriceList: React.FC<UIPriceListProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Stack direction={direction} split={split}>
-				<Heading
-					label={label}
-					title={title}
-					subtitle={subtitle}
-					textAlign={textAlign}
-          size={ fontSize }
-				/>
-				<PriceList {...rest} />
+			<Stack direction={direction}>
+        <Row size='1/3'>
+          <Heading
+            label={label}
+            title={title}
+            subtitle={subtitle}
+            textAlign={direction == 'row' ? 'left' : 'center'}
+            size={ fontSize }
+          />
+        </Row>
+        <Row size='2/3'>
+				  <PriceList {...rest} />
+        </Row>
 			</Stack>
 		</Section>
 	)

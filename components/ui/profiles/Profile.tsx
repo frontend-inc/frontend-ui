@@ -4,6 +4,7 @@ import React from 'react'
 import { 
   Container, 
   Stack, 
+  Row,
   AvatarImage, 
   Typography,
   SocialLink 
@@ -36,20 +37,23 @@ const Profile: React.FC<ProfileProps> = (props) => {
 
 	return (
     <Container maxWidth='lg'>
-      <Stack direction={direction} split="1/3">
-        <div className="flex flex-col w-full items-center justify-center space-y-1">
-					<div className="h-[160px] w-[160px]">
-						<AvatarImage alt={title} src={image} size={160} />
-					</div>
-					<div className="flex flex-row">
-						{socialLinks?.map((link, index) => (
-							<div className="p-[2px]" key={index}>
-								<SocialLink url={link.url} size={28} provider={link.provider} />
-							</div>
-						))}
-					</div>
-				</div>
-        <Stack>
+      <Stack direction={direction}>
+        <Row size="1/4">
+          <Stack>
+            <div className="h-[160px] w-[160px]">
+              <AvatarImage alt={title} src={image} size={160} />
+            </div>
+            <div className="flex flex-row">
+              {socialLinks?.map((link, index) => (
+                <div className="p-[2px]" key={index}>
+                  <SocialLink url={link.url} size={28} provider={link.provider} />
+                </div>
+              ))}
+            </div>
+				</Stack>
+      </Row>
+      <Row size="3/4">
+        <Stack spacing={4}>
           <Heading 
             label={ label }
             title={ title }
@@ -60,7 +64,8 @@ const Profile: React.FC<ProfileProps> = (props) => {
           <Typography variant="subtitle2" className="text-muted-foreground italic leading-loose">
             { description }
           </Typography>
-        </Stack>     
+        </Stack>  
+        </Row>   
       </Stack>
     </Container>		
 	)

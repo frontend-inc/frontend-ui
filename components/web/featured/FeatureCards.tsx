@@ -18,13 +18,18 @@ export type FeatureCardsProps = {
 	}[]
 	enableGradient?: boolean
 	enableOverlay?: boolean
-	enableBorder?: boolean
+	border?: boolean
+  fill?: boolean
+  direction?: 'row' | 'column'
 }
 
 const FeatureCards: React.FC<FeatureCardsProps> = (props) => {
-	const {
+	
+  const {
+    direction = 'column',
 		items = [],
-		enableBorder,
+		border,
+    fill,
 		enableGradient,
 		enableOverlay,
 	} = props || {}
@@ -41,10 +46,11 @@ const FeatureCards: React.FC<FeatureCardsProps> = (props) => {
 							image={item?.image}
 							buttonText={item?.buttonText}
 							href={item?.path}
-							flexDirection={i % 2 === 0 ? 'row' : 'row-reverse'}
-							enableBorder={enableBorder}
+							flexDirection={ direction == 'row' ? 'row' : i % 2 === 0 ? 'row' : 'row-reverse'}							
 							enableGradient={enableGradient}
 							enableOverlay={enableOverlay}
+              border={border}
+              fill={fill}
 						/>
 					</BlurFade>
 				))}

@@ -18,7 +18,6 @@ type CardType = {
 export type CardsProps = {
 	style?: 'card' | 'cover'
 	items: CardType[]
-	enableBorder?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Section, Stack, Heading } from '../../components'
+import { Section, Stack, Row, Heading } from '../../components'
 import { FeatureIcons } from '../../components'
 import { FeatureIconsProps } from '../../components/web/features/FeatureIcons'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
@@ -12,7 +12,6 @@ type UIFeaturesProps = SectionProps & HeadingProps &
 const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 	const {
     direction='column',
-    split='1/3',
 		label,
 		title,
 		subtitle,
@@ -38,20 +37,24 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Stack direction={direction} split={split}>
-				<Heading
-					label={label}
-					title={title}
-					subtitle={subtitle}
-					textAlign={direction == 'row' ? 'left' : 'center'}
-          size={fontSize}
-				/>
-				<FeatureIcons 
-          {...rest} 
-          direction={direction}
-          fill={fill}
-          border={border}
-        />
+			<Stack direction={direction}>
+        <Row size="1/3">
+          <Heading
+            label={label}
+            title={title}
+            subtitle={subtitle}
+            textAlign={direction == 'row' ? 'left' : 'center'}
+            size={fontSize}
+          />
+        </Row>
+        <Row size="2/3">
+          <FeatureIcons 
+            {...rest} 
+            direction={direction}
+            fill={fill}
+            border={border}
+          />
+        </Row>
 			</Stack>
 		</Section>
 	)
