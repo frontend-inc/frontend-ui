@@ -40,7 +40,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 			fill={fill}
 			border={border}
 		>
-			<Stack direction={direction}>
+			<Stack direction={direction} spacing={10}>
 				<Stack direction={direction} size="1/3">
 					<Heading
 						label={label}

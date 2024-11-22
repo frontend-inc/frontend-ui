@@ -39,7 +39,7 @@ const UIFeatureCards: React.FC<UIFeatureCardsProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Stack direction={direction}>
+			<Stack direction={direction} spacing={10}>
 				<Stack direction={direction} size="1/3">
 					<Heading
 						label={label}

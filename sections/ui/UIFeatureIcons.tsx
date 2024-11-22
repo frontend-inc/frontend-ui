@@ -42,7 +42,7 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 			maxWidth={maxWidth}
 		>
 			<Stack direction={direction}>
-				<Stack direction={direction} size="1/3">
+				<Stack direction={direction} size="1/3" spacing={10}>
 					<Heading
 						label={label}
 						title={title}
