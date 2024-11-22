@@ -1,19 +1,20 @@
 'use client'
 
 import React from 'react'
-import { Section, Heading } from '../../components'
+import { Section, Heading, Stack } from '../../components'
 import { Testimonials } from '../../components'
 import { TestimonialsProps } from '../../components/web/testimonials/Testimonials'
-import { SectionProps, HeadingProps } from '../../types'
+import { SectionProps, StackProps, HeadingProps } from '../../types'
 
 type UISwipeableTestimonialsProps = SectionProps &
-	HeadingProps &
+	HeadingProps & StackProps & 
 	TestimonialsProps
 
 const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 	props
 ) => {
-	const {
+	
+  const {    
 		label,
 		title,
 		subtitle,
@@ -41,16 +42,16 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 			fill={fill}
 			border={border}
 		>
-			<div className="flex flex-col space-y-4 w-full">
-				<Heading
-					label={label}
-					title={title}
-					subtitle={subtitle}
-					textAlign={textAlign}
-					size={fontSize}
-				/>
-				<Testimonials {...rest} layout="carousel" />
-			</div>
+			<Stack spacing={10}>
+        <Heading
+          label={label}
+          title={title}
+          subtitle={subtitle}
+          textAlign='center'
+          size={fontSize}
+        />
+        <Testimonials {...rest} layout="carousel" />
+			</Stack>
 		</Section>
 	)
 }
