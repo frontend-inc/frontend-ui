@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { FormFieldType } from '../../../types'
-import { Form } from '../..'
+import { Container, Form } from '../../../components'
 import { useResource } from 'frontend-js'
 import { useToast } from '../../../hooks'
 
@@ -43,7 +43,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 	}
 
 	return (
-    <div className="w-full">
+    <Container maxWidth="md">
       <Form
         loading={delayedLoading}
         fields={[
@@ -78,7 +78,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
         handleSubmit={handleSubmit}
         buttonText={buttonText}
       />
-    </div>
+    </Container>
 	)
 }
 
