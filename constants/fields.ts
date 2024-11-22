@@ -7,6 +7,12 @@ export const SUBTITLE = {
 	variant: 'string',
 }
 
+export const HEADLINE = {
+	label: 'Headline',
+	name: 'subtitle',
+	variant: 'string',
+}
+
 export const SUBTITLE_TEXT = {
 	label: 'Subtitle',
 	name: 'subtitle',
@@ -25,8 +31,8 @@ export const HTML = {
 	variant: 'html',
 }
 
-export const NAME = { label: 'Name', name: 'name', variant: 'string' }
-export const ABOUT = { label: 'About', name: 'about', variant: 'text' }
+export const NAME = { label: 'Name', name: 'title', variant: 'string' }
+export const ABOUT = { label: 'About', name: 'description', variant: 'text' }
 export const LABEL = { label: 'Label', name: 'label', variant: 'string' }
 export const CATEGORY = {
 	label: 'Category',
@@ -110,7 +116,7 @@ export const DOCUMENT_FORM_FIELDS = {
 		LOCATION,
 		TAGS,
 	],
-	person: [IMAGE, NAME, ABOUT, SUBTITLE, CATEGORY, DESCRIPTION, TAGS],
+	person: [IMAGE, NAME, ABOUT, HEADLINE, TAGS],
 	product: [IMAGE, TITLE, SUBTITLE, LABEL, CATEGORY, DESCRIPTION, PRICE, TAGS],
 	image: [IMAGE, TITLE, SUBTITLE, LABEL, CATEGORY, TAGS],
 	video: [IMAGE, VIDEO, TITLE, SUBTITLE, LABEL, CATEGORY, DESCRIPTION, TAGS],
@@ -172,7 +178,7 @@ export const DOCUMENT_SHOW_FIELDS = {
 		LOCATION,
 		TAGS,
 	],
-	person: [IMAGE, NAME, SUBTITLE, CATEGORY, ABOUT, TAGS],
+	person: [IMAGE, NAME, HEADLINE, CATEGORY, ABOUT, TAGS],
 	event: [
 		IMAGE,
 		TITLE,
