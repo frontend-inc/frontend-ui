@@ -73,12 +73,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 					`absolute top-0 left-0 w-full h-full px-3 sm:px-0`
 				)}
 			>
-				<div
-					className={cn(
-						'flex flex-col space-y-4',
-            alignItems 
-					)}
-				>
+				<div className={cn('flex flex-col space-y-4', alignItems)}>
 					<Heading
 						label={label}
 						title={title}

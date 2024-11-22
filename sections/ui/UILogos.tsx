@@ -9,15 +9,7 @@ import { SectionProps } from '../../types'
 type UILogosProps = SectionProps & LogosProps
 
 const UILogos: React.FC<UILogosProps> = (props) => {
-	const {
-		bgColor,
-		mode,
-		py='sm',
-		px,
-		maxWidth,
-		requireAuth,
-		...rest
-	} = props
+	const { bgColor, mode, py = 'sm', px, maxWidth, requireAuth, ...rest } = props
 
 	return (
 		<Section

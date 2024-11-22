@@ -48,11 +48,7 @@ const ShopifyCustomerForm: React.FC<ShopifyCustomerFormProps> = (props) => {
 				value={customer?.password || ''}
 				handleChange={handleChange}
 			/>
-			<Button
-				color="secondary"
-        loading={loading}				
-				onClick={handleSubmit}
-			>
+			<Button color="secondary" loading={loading} onClick={handleSubmit}>
 				Update Account
 			</Button>
 		</div>

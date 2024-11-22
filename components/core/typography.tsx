@@ -19,29 +19,27 @@ interface TypographyProps {
 		| 'button'
 		| 'caption'
 		| 'overline'
-    | 'destructive'
+		| 'destructive'
 	textAlign?: 'left' | 'center' | 'right'
 	className?: string
-  editable?: boolean
-  name?: string
-  handleChange?: (ev: SyntheticEventType) => void
+	editable?: boolean
+	name?: string
+	handleChange?: (ev: SyntheticEventType) => void
 	children: React.ReactNode
 }
 
 const Typography: React.FC<TypographyProps> = (props) => {
+	const {
+		variant,
+		textAlign = 'left',
+		className,
+		children,
 
-  const {
-    variant,
-    textAlign = 'left',
-    className,
-    children,
+		name,
+		editable,
+		handleChange,
+	} = props
 
-    name,
-    editable,
-    handleChange,
-
-  } = props
-  
 	const variantClasses = {
 		h1: 'text-5xl sm:text-7xl font-semibold tracking-tight',
 		h2: 'text-4xl sm:text-5xl font-semibold tracking-tight',
@@ -56,7 +54,7 @@ const Typography: React.FC<TypographyProps> = (props) => {
 		body2: 'text-sm leading-normal',
 		caption: 'text-xs',
 		overline: 'text-xs uppercase tracking-widest',
-    destructive: 'text-destructive text-sm italic',
+		destructive: 'text-destructive text-sm italic',
 	}
 
 	const fontFamily = {
@@ -73,7 +71,7 @@ const Typography: React.FC<TypographyProps> = (props) => {
 		body2: 'font-body',
 		caption: 'font-body',
 		overline: 'font-body',
-    destructive: 'font-body',
+		destructive: 'font-body',
 	}
 
 	const alignmentClasses = {
@@ -82,26 +80,25 @@ const Typography: React.FC<TypographyProps> = (props) => {
 		right: 'text-right',
 	}
 
-  const handleInputChange = (ev: SyntheticEventType) => {
-    if(!handleChange) return null;
-    handleChange({
-      target: {
-        name: name || '',
-        value: ev.target.value,
-      }
-    })
-  
-  }
+	const handleInputChange = (ev: SyntheticEventType) => {
+		if (!handleChange) return null
+		handleChange({
+			target: {
+				name: name || '',
+				value: ev.target.value,
+			},
+		})
+	}
 
 	return (
 		<div
-      contentEditable={editable}
-      // @ts-ignore
-      onBlur={handleInputChange}
-      suppressContentEditableWarning
+			contentEditable={editable}
+			// @ts-ignore
+			onBlur={handleInputChange}
+			suppressContentEditableWarning
 			className={cn(
-				'text-foreground outline-none focus:outline-none focus:ring-0',        
-        editable && 'cursor-text',
+				'text-foreground outline-none focus:outline-none focus:ring-0',
+				editable && 'cursor-text',
 				fontFamily[variant],
 				variantClasses[variant],
 				alignmentClasses[textAlign],

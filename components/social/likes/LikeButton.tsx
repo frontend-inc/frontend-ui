@@ -14,13 +14,8 @@ type LikeButtonProps = {
 }
 
 export default function LikeButton(props: LikeButtonProps) {
+	const { resource, size = 'small', variant = 'rounded' } = props
 
-  const {
-    resource,
-    size = 'small',
-    variant = 'rounded',
-  } = props
-  
 	const { currentUser } = useAuth()
 	const { setAuthOpen } = useApp()
 
@@ -56,8 +51,8 @@ export default function LikeButton(props: LikeButtonProps) {
 					size === 'large' && 'border border-divider'
 				)}
 			>
-        { liked && <RemixIcon name='ri-heart-fill' className="fill-primary" /> }
-        { !liked && <RemixIcon name='ri-heart-line' /> }				
+				{liked && <RemixIcon name="ri-heart-fill" className="fill-primary" />}
+				{!liked && <RemixIcon name="ri-heart-line" />}
 			</IconButton>
 		</div>
 	)

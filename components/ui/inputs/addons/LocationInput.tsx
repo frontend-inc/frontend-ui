@@ -20,23 +20,22 @@ type LocationInputProps = TextInputPropsType & {
 }
 
 export default function LocationInput(props: LocationInputProps) {
+	const {
+		name = 'location',
+		value = '',
+		label,
+		placeholder = 'Search location',
+		handleChange,
+		direction = 'column',
+		height = 240,
+		width = 320,
+		zoom = 15,
+		darkTheme = false,
+		enablePosition = false,
+		lat,
+		lng,
+	} = props
 
-  const {
-    name = 'location',
-    value = '',
-    label,
-    placeholder = 'Search location',
-    handleChange,
-    direction = 'column',
-    height = 240,
-    width = 320,
-    zoom = 15,
-    darkTheme = false,
-    enablePosition = false,
-    lat,
-    lng,
-  } = props
-  
 	const { placeOptions, fetchPlaces } = useGooglePlaces()
 
 	const [keywords, setKeywords] = useState(value)

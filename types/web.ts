@@ -9,20 +9,20 @@ export type HeadingProps = {
 	title?: string
 	subtitle?: string
 	textAlign?: 'left' | 'center'
-  fontSize?: 'sm' | 'md' | 'lg' | 'xl'
+	fontSize?: 'sm' | 'md' | 'lg' | 'xl'
 }
 
 export type StackProps = {
-  direction?: 'row' | 'column'
-} 
+	direction?: 'row' | 'column'
+}
 
 export type SectionProps = {
 	children?: React.ReactNode
 	bgColor?: string
 	mode?: 'dark' | 'light'
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
-  fill?: boolean
-  border?: boolean
+	fill?: boolean
+	border?: boolean
 	py?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 	px?: number
 	requireAuth?: boolean
@@ -60,7 +60,7 @@ export type PriceType = {
 	id?: number
 	label: string
 	title: string
-  subtitle?: string
+	subtitle?: string
 	description?: string
 	price: number
 	features: string[]

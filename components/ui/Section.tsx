@@ -16,45 +16,44 @@ const maxWidthClasses: Record<ContainerMaxWidth, string> = {
 }
 
 const Section: React.FC<SectionProps> = (props) => {
-	
-  const { theme } = useTheme()
+	const { theme } = useTheme()
 
-  const {
+	const {
 		requireAuth = false,
 		children,
 		bgColor,
 		mode,
 		maxWidth,
-    fill = false,
-    border,
+		fill = false,
+		border,
 		py,
 		px = 6,
 	} = props
 
-  const pyClasses = {
-    none: 'py-0',
-    sm: 'py-[24px]',
-    md: 'py-[48px]',
-    lg: 'py-[96px]',
-    xl: 'py-[144px]',
-  }
+	const pyClasses = {
+		none: 'py-0',
+		sm: 'py-[24px]',
+		md: 'py-[48px]',
+		lg: 'py-[96px]',
+		xl: 'py-[144px]',
+	}
 
 	return (
 		<section
 			className={cn(
-        mode, 
-        theme,
-        'w-full bg-background', 
-        py ? pyClasses[py] : 'py-[48px]',
-        px && `px-${px}`
-      )}
+				mode,
+				theme,
+				'w-full bg-background',
+				py ? pyClasses[py] : 'py-[48px]',
+				px && `px-${px}`
+			)}
 			style={{ backgroundColor: bgColor }}
 		>
 			<div
 				className={cn(
-          border && 'p-8 border-2 border-border rounded-xl',
-          fill && 'p-8 rounded-xl bg-muted/60',
-					maxWidth && maxWidthClasses[maxWidth],          
+					border && 'p-8 border-2 border-border rounded-xl',
+					fill && 'p-8 rounded-xl bg-muted/60',
+					maxWidth && maxWidthClasses[maxWidth],
 					'w-full mx-auto min-h-[60px] flex flex-row justify-center items-center'
 				)}
 			>

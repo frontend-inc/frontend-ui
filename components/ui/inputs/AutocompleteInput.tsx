@@ -11,19 +11,18 @@ type AutocompleteInput = TextInputPropsType & {
 }
 
 export default function AutocompleteInput(props: AutocompleteInput) {
+	const {
+		name = 'title',
+		value = '',
+		label,
+		placeholder = 'Search',
+		handleChange,
+		handleInputChange,
+		options = [],
+		direction = 'column',
+		info,
+	} = props
 
-  const {
-    name = 'title',
-    value = '',
-    label,
-    placeholder = 'Search',
-    handleChange,
-    handleInputChange,
-    options = [],
-    direction = 'column',
-    info,
-  } = props
-  
 	const [open, setOpen] = useState(false)
 	const wrapperRef = useRef<HTMLDivElement>(null)
 

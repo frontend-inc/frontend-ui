@@ -24,24 +24,23 @@ export interface ResponsiveImageProps {
 }
 
 export default function ResponsiveImage(props: ResponsiveImageProps) {
+	const {
+		src,
+		alt,
+		width = 1600,
+		height = 1600,
+		objectFit = 'cover',
+		aspectRatio = 1.0,
+		enableOverlay = false,
+		enableGradient = false,
+		disableBorderRadius = false,
+		disableZoom = false,
+		handleClick,
+		className,
+		label,
+	} = props
 
-  const {
-    src,
-    alt,
-    width = 1600,
-    height = 1600,
-    objectFit = 'cover',
-    aspectRatio = 1.0,
-    enableOverlay = false,
-    enableGradient = false,
-    disableBorderRadius = false,
-    disableZoom = false,
-    handleClick,
-    className,
-    label,
-  } = props
-
-  const [isHovered, setIsHovered] = useState(false)
+	const [isHovered, setIsHovered] = useState(false)
 
 	return (
 		<figure
@@ -51,8 +50,8 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
 				!disableBorderRadius && 'rounded-lg',
 				className
 			)}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+			onMouseEnter={() => setIsHovered(true)}
+			onMouseLeave={() => setIsHovered(false)}
 			onClick={handleClick ? handleClick : undefined}
 		>
 			<AspectRatio ratio={aspectRatio}>
@@ -77,18 +76,18 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
 					/>
 				)}
 				{enableOverlay && (
-					<div 
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}    
-            className="absolute inset-0 bg-black bg-opacity-60" 
-          />
+					<div
+						onMouseEnter={() => setIsHovered(true)}
+						onMouseLeave={() => setIsHovered(false)}
+						className="absolute inset-0 bg-black bg-opacity-60"
+					/>
 				)}
 				{enableGradient && (
-					<div 
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}    
-            className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" 
-          />
+					<div
+						onMouseEnter={() => setIsHovered(true)}
+						onMouseLeave={() => setIsHovered(false)}
+						className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"
+					/>
 				)}
 				{label && (
 					<Badge

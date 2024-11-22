@@ -18,14 +18,7 @@ type ButtonTabsProps = {
 }
 
 export default function ButtonTabs(props: ButtonTabsProps) {
-
-  const {
-    handleChange,
-    options,
-    value,
-    className,
-    fullWidth,
-  } = props
+	const { handleChange, options, value, className, fullWidth } = props
 
 	return (
 		<Tabs value={value.toString()} onValueChange={handleChange}>

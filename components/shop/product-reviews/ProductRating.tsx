@@ -5,7 +5,7 @@ import { Rating, Typography } from '../../../components'
 
 type ProductRatingProps = {
 	rating: number
-  numReviews?: number
+	numReviews?: number
 	enableTotal?: boolean
 	size?: 'small' | 'medium' | 'large'
 	justifyContent?:
@@ -18,13 +18,8 @@ type ProductRatingProps = {
 }
 
 const ProductRating: React.FC<ProductRatingProps> = (props) => {
-	
-  const {
-		rating,
-    numReviews,
-		enableTotal = false,
-	} = props || {}
-	
+	const { rating, numReviews, enableTotal = false } = props || {}
+
 	return (
 		<div className="flex flex-row space-x-2 items-center w-full">
 			{rating > 0 ? (

@@ -29,7 +29,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 		size = 140,
 		disableImage,
 		enableGradient,
-    enableOverlay,
+		enableOverlay,
 	} = props || {}
 
 	return (
@@ -43,9 +43,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 						<Checkbox checked={selected} onCheckedChange={handleSelect} />
 					</div>
 				)}
-				{sortable && (
-					<GripVertical className="text-muted-foreground" />
-				)}
+				{sortable && <GripVertical className="text-muted-foreground" />}
 				<div className="flex flex-row justify-start items-start space-x-4 flex-grow">
 					{!disableImage && (
 						<div className="flex-shrink-0 w-[180px]">
@@ -56,7 +54,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 										size={size}
 										alt={title}
 										enableGradient={enableGradient}
-                    enableOverlay={enableOverlay}
+										enableOverlay={enableOverlay}
 									/>
 								) : (
 									<Image
@@ -66,7 +64,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 										alt={title}
 										aspectRatio={1.0}
 										enableGradient={enableGradient}
-                    enableOverlay={enableOverlay}                    
+										enableOverlay={enableOverlay}
 									/>
 								)}
 							</div>

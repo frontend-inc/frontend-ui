@@ -28,8 +28,7 @@ export type CollectionListItemsProps = {
 }
 
 const CollectionListItems: React.FC<CollectionListItemsProps> = (props) => {
-	
-  const {
+	const {
 		setResource,
 		loading,
 		resources,

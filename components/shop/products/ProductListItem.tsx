@@ -33,7 +33,7 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 			label={resource?.label}
 			image={resource?.image?.url}
 			title={resource?.title}
-      subtitle={resource?.subtitle}
+			subtitle={resource?.subtitle}
 			price={resource?.display_price}
 			compareAtPrice={resource?.display_compare_at_price}
 			handleClick={handleClick}
@@ -68,8 +68,8 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 					/>
 				)
 			}
-      enableGradient={enableGradient}
-      enableOverlay={enableOverlay}			
+			enableGradient={enableGradient}
+			enableOverlay={enableOverlay}
 		/>
 	)
 }

@@ -6,25 +6,24 @@ import { LinkList } from '../../components'
 import { LinkListProps } from '../../components/web/links/LinkList'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
 
-type UILinkListProps = SectionProps & HeadingProps 
-  & StackProps & LinkListProps
+type UILinkListProps = SectionProps & HeadingProps & StackProps & LinkListProps
 
 const UILinkList: React.FC<UILinkListProps> = (props) => {
 	const {
-    direction='column',
-    split='1/3',
+		direction = 'column',
+		split = '1/3',
 		label,
 		title,
 		subtitle,
-		textAlign='center',
-    fontSize='lg',
-    fill,
-    border,
+		textAlign = 'center',
+		fontSize = 'lg',
+		fill,
+		border,
 		bgColor,
 		mode,
 		py,
 		px,
-		maxWidth='lg',
+		maxWidth = 'lg',
 		requireAuth,
 		...rest
 	} = props
@@ -44,7 +43,7 @@ const UILinkList: React.FC<UILinkListProps> = (props) => {
 					title={title}
 					subtitle={subtitle}
 					textAlign={direction == 'row' ? 'left' : 'center'}
-          size={fontSize}
+					size={fontSize}
 				/>
 				<LinkList {...rest} fill={fill} border={border} />
 			</Stack>

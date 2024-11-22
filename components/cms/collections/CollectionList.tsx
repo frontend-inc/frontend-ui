@@ -199,11 +199,11 @@ const CollectionList: React.FC<CollectionListProps> = (props) => {
 			...defaultSlots.toolbar,
 		},
 		empty: {
-      ...defaultSlots.empty,
-      icon: 'ri-search-line',
-      title: 'No items found',      
-      description: 'Try to adjust your filters or search query',      
-    },
+			...defaultSlots.empty,
+			icon: 'ri-search-line',
+			title: 'No items found',
+			description: 'Try to adjust your filters or search query',
+		},
 		item: {
 			...defaultSlots.item,
 			circular,

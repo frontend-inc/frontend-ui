@@ -9,7 +9,7 @@ import { SectionProps } from '../../types'
 type FormProps = SectionProps & FormDataProps
 
 const Form: React.FC<FormProps> = (props) => {
-	const { bgColor, mode, py, px, maxWidth='md', requireAuth, ...rest } = props
+	const { bgColor, mode, py, px, maxWidth = 'md', requireAuth, ...rest } = props
 
 	return (
 		<Section

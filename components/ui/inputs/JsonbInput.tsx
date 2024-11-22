@@ -122,11 +122,10 @@ const JsonbInput: React.FC<JsonbInputProps> = (props) => {
 		info,
 	} = props
 
-	
-  const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(false)
 
-  const openMenu = () => setOpen(true)
-  const closeMenu = () => setOpen(false)
+	const openMenu = () => setOpen(true)
+	const closeMenu = () => setOpen(false)
 
 	const [activeItem, setActiveItem] = useState({})
 	const [currentIndex, setCurrentIndex] = useState(0)

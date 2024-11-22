@@ -12,10 +12,7 @@ type ShopifyCartButtonProps = {
 }
 
 export default function ShopifyCartButton(props: ShopifyCartButtonProps) {
-
-  const {
-    icon = 'ri-shopping-cart-2-fill',
-  } = props || {}
+	const { icon = 'ri-shopping-cart-2-fill' } = props || {}
 	const { cart, toggleCart } = useContext(ShopifyContext) as any
 	const { setMenuOpen } = useContext(AppContext)
 

@@ -27,12 +27,12 @@ const UIFooter: React.FC<UIFooterProps> = (props) => {
 	}
 
 	return (
-		<div 
-      className={cn(mode, 'w-full')} 
-      style={{
-        backgroundColor: bgColor
-      }}
-    >
+		<div
+			className={cn(mode, 'w-full')}
+			style={{
+				backgroundColor: bgColor,
+			}}
+		>
 			<Footer {...rest} links={links} handleClick={handleClick} />
 		</div>
 	)

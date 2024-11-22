@@ -29,41 +29,42 @@ const Cards: React.FC<CardsProps> = (props) => {
 
 	return (
 		<div className="w-full justify-center flex flow-row">
-      <div className="container mx-auto max-w-screen-2xl">
-			<div 
-        className={           
-          "w-full justify-center grid grid-cols-1 sm:grid-cols-3 gap-6"
-        }>
-				{items?.map((item, idx) => (
-					<BlurFade delay={0.25 + idx * 0.05} key={idx}>
-						<Card
-              label={ item?.label }
-							image={item?.image}
-							title={item?.title}
-							subtitle={item?.subtitle}
-							actions={
-								item?.buttonText && (
-									<Button fullWidth onClick={() => onClick(item?.path)}>
-										{item?.buttonText}
-									</Button>
-								)
-							}
-							handleClick={() => onClick(item?.path)}
-              enableGradient={enableGradient}
-              enableOverlay={enableOverlay}							
-						/>
-					</BlurFade>
-				))}
+			<div className="container mx-auto max-w-screen-2xl">
+				<div
+					className={
+						'w-full justify-center grid grid-cols-1 sm:grid-cols-3 gap-6'
+					}
+				>
+					{items?.map((item, idx) => (
+						<BlurFade delay={0.25 + idx * 0.05} key={idx}>
+							<Card
+								label={item?.label}
+								image={item?.image}
+								title={item?.title}
+								subtitle={item?.subtitle}
+								actions={
+									item?.buttonText && (
+										<Button fullWidth onClick={() => onClick(item?.path)}>
+											{item?.buttonText}
+										</Button>
+									)
+								}
+								handleClick={() => onClick(item?.path)}
+								enableGradient={enableGradient}
+								enableOverlay={enableOverlay}
+							/>
+						</BlurFade>
+					))}
+				</div>
+				{items?.length == 0 && (
+					<Alert
+						icon="ri-stack-fill"
+						title="No content yet."
+						description="Your content will appear here."
+					/>
+				)}
 			</div>
-			{items?.length == 0 && (
-				<Alert
-					icon="ri-stack-fill"
-					title="No content yet."
-					description="Your content will appear here."
-				/>
-			)}
 		</div>
-    </div>
 	)
 }
 

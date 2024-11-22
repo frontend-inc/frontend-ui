@@ -16,7 +16,7 @@ const CoverCard: React.FC<CardProps> = (props) => {
 		handleClick,
 		image,
 		enableGradient,
-    enableOverlay,
+		enableOverlay,
 	} = props || {}
 
 	return (
@@ -33,7 +33,7 @@ const CoverCard: React.FC<CardProps> = (props) => {
 						aspectRatio={4 / 5}
 						className={'w-full'}
 						enableGradient={enableGradient}
-            enableOverlay={enableOverlay}
+						enableOverlay={enableOverlay}
 					/>
 				</TouchableOpacity>
 				<div className="absolute bottom-0 left-0 z-10 w-full p-3">

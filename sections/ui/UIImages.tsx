@@ -13,10 +13,10 @@ const UIImages: React.FC<UIImagesProps> = (props) => {
 		label,
 		title,
 		subtitle,
-		textAlign='center',
-    fontSize='md',
-    fill,
-    border,
+		textAlign = 'center',
+		fontSize = 'md',
+		fill,
+		border,
 		bgColor,
 		mode,
 		py,
@@ -34,8 +34,8 @@ const UIImages: React.FC<UIImagesProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-      fill={fill}
-      border={border}
+			fill={fill}
+			border={border}
 		>
 			<div className="flex flex-col space-y-[40px] w-full">
 				<Heading
@@ -43,7 +43,7 @@ const UIImages: React.FC<UIImagesProps> = (props) => {
 					title={title}
 					subtitle={subtitle}
 					textAlign={textAlign}
-          size={fontSize}
+					size={fontSize}
 				/>
 				<Images {...rest} />
 			</div>

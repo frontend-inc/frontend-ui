@@ -13,7 +13,7 @@ export type CollectionShowProps = {
 	enableLikes?: boolean
 	enableSharing?: boolean
 	enableComments?: boolean
-  disableImage?: boolean
+	disableImage?: boolean
 	enableBorder?: boolean
 	enableOverlay?: boolean
 }
@@ -29,17 +29,17 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 		enableSharing,
 	} = props || {}
 
-  let disableImage = false 
-  switch(resource?.documentType){
-    case 'youtube':
-    case 'vimeo':
-    case 'soundcloud':
-    case 'video':
-      disableImage = true
-      break
-    default: 
-      disableImage = false
-  }
+	let disableImage = false
+	switch (resource?.documentType) {
+		case 'youtube':
+		case 'vimeo':
+		case 'soundcloud':
+		case 'video':
+			disableImage = true
+			break
+		default:
+			disableImage = false
+	}
 
 	if (!resource) return null
 	return (
@@ -52,7 +52,7 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 				<BlurFade delay={0.25} inView className="w-full">
 					<div className="w-full">
 						<CollectionDetails
-              disableImage={ disableImage }
+							disableImage={disableImage}
 							resource={resource}
 							metafields={metafields}
 							actions={

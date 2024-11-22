@@ -8,7 +8,6 @@ import { Input } from 'frontend-shadcn'
 import { RemixIcon, Button } from '../../../components'
 import { cn } from 'frontend-shadcn'
 
-
 type GeoSearchInputProps = {
 	name?: string
 	label?: string
@@ -132,7 +131,7 @@ export default function GeoSearchInput({
 				size="icon"
 				className="mr-1"
 			>
-				<RemixIcon name='ri-search-line' className="text-muted-foreground" />
+				<RemixIcon name="ri-search-line" className="text-muted-foreground" />
 			</Button>
 		</div>
 	)

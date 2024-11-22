@@ -66,9 +66,7 @@ const DataListItem: React.FC<DataListItemProps> = (props) => {
 							className="mr-2"
 						/>
 					)}
-					{sortable && (
-						<GripVertical className="text-muted-foreground" />
-					)}
+					{sortable && <GripVertical className="text-muted-foreground" />}
 					<div className="pr-0 sm:pr-2 mr-0 sm:mr-2 w-full sm:w-[220px] sm:min-w-[220px] h-full">
 						<TouchableOpacity handleClick={handleClick}>
 							<Image

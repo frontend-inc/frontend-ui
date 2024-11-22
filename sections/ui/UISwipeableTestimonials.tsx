@@ -17,10 +17,10 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 		label,
 		title,
 		subtitle,
-		textAlign='center',
-    fontSize='lg',
-    fill,
-    border,
+		textAlign = 'center',
+		fontSize = 'lg',
+		fill,
+		border,
 		bgColor,
 		mode,
 		py,
@@ -38,8 +38,8 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-      fill={fill}
-      border={border}
+			fill={fill}
+			border={border}
 		>
 			<div className="flex flex-col space-y-4 w-full">
 				<Heading

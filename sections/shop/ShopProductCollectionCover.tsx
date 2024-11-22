@@ -19,7 +19,7 @@ const ShopProductCollectionCover: React.FC<ShopProductCollectionCoverProps> = (
 			requireAuth={requireAuth}
 			bgColor={bgColor}
 			mode={mode}
-			py='none'
+			py="none"
 			px={0}
 			maxWidth={maxWidth}
 		>

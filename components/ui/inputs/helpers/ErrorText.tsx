@@ -11,11 +11,7 @@ const ErrorText: React.FC<ErrorTextProps> = (props) => {
 	const { error } = props
 
 	if (!error) return null
-	return (
-		<Typography variant="destructive">
-			{error}
-		</Typography>
-	)
+	return <Typography variant="destructive">{error}</Typography>
 }
 
 export default ErrorText

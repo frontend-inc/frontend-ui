@@ -20,7 +20,11 @@ const InputLabel: React.FC<InputLabelProps> = (props) => {
 			{info && (
 				<Tooltip title={info}>
 					<IconButton>
-						<RiInformation2Line name="Info" size='sm' className="text-muted-foreground" />
+						<RiInformation2Line
+							name="Info"
+							size="sm"
+							className="text-muted-foreground"
+						/>
 					</IconButton>
 				</Tooltip>
 			)}

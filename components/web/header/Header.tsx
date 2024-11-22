@@ -9,7 +9,7 @@ import { useApp } from '../../../hooks'
 
 export type HeaderProps = {
 	logo?: string
-  bgColor?: string
+	bgColor?: string
 	buttons?: ButtonType[]
 	enableAuth?: boolean
 	enableStripe?: boolean
@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
 	const {
 		logo,
-    bgColor,
+		bgColor,
 		links = [],
 		buttons = [],
 		handleClick,
@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 	return (
 		<header className="h-[64px] w-full">
 			<DesktopHeader
-        bgColor={bgColor}
+				bgColor={bgColor}
 				logo={logo || appLogo}
 				enableAuth={enableAuth}
 				enableStripe={enableStripe}
@@ -46,7 +46,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 				handleClick={handleClick}
 			/>
 			<MobileHeader
-        bgColor={bgColor}
+				bgColor={bgColor}
 				logo={logo || appLogo}
 				enableAuth={enableAuth}
 				enableStripe={enableStripe}

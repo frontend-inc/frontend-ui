@@ -6,22 +6,24 @@ import { PriceList } from '../../components'
 import { PriceListProps } from '../../components/web/price-list/PriceList'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
 
-type UIPriceListProps = SectionProps & HeadingProps 
-  & StackProps & PriceListProps
+type UIPriceListProps = SectionProps &
+	HeadingProps &
+	StackProps &
+	PriceListProps
 
 const UIPriceList: React.FC<UIPriceListProps> = (props) => {
 	const {
-    direction='column',
+		direction = 'column',
 		label,
 		title,
 		subtitle,
-		textAlign='center',
-    fontSize='md',
+		textAlign = 'center',
+		fontSize = 'md',
 		bgColor,
 		mode,
 		py,
 		px,
-		maxWidth='sm',    
+		maxWidth = 'sm',
 		requireAuth,
 		...rest
 	} = props
@@ -36,18 +38,18 @@ const UIPriceList: React.FC<UIPriceListProps> = (props) => {
 			maxWidth={maxWidth}
 		>
 			<Stack direction={direction}>
-        <Row size='1/3'>
-          <Heading
-            label={label}
-            title={title}
-            subtitle={subtitle}
-            textAlign={direction == 'row' ? 'left' : 'center'}
-            size={ fontSize }
-          />
-        </Row>
-        <Row size='2/3'>
-				  <PriceList {...rest} />
-        </Row>
+				<Row size="1/3">
+					<Heading
+						label={label}
+						title={title}
+						subtitle={subtitle}
+						textAlign={direction == 'row' ? 'left' : 'center'}
+						size={fontSize}
+					/>
+				</Row>
+				<Row size="2/3">
+					<PriceList {...rest} />
+				</Row>
 			</Stack>
 		</Section>
 	)

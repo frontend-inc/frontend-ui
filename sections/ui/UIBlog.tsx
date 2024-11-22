@@ -9,15 +9,15 @@ import { SectionProps } from '../../types'
 type UIBlogProps = SectionProps & BlogProps
 
 const UIBlog: React.FC<UIBlogProps> = (props) => {
-	const { 
-    bgColor, 
-    mode, 
-    py='sm', 
-    px, 
-    maxWidth='md', 
-    requireAuth, 
-    ...rest 
-  } = props
+	const {
+		bgColor,
+		mode,
+		py = 'sm',
+		px,
+		maxWidth = 'md',
+		requireAuth,
+		...rest
+	} = props
 
 	return (
 		<Section
@@ -28,7 +28,7 @@ const UIBlog: React.FC<UIBlogProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Blog {...rest} />
+			<Blog {...rest} />
 		</Section>
 	)
 }

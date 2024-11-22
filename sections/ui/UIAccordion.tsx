@@ -6,23 +6,26 @@ import { Accordion } from '../../components'
 import { AccordionProps } from '../../components/web/accordions/Accordion'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
 
-type UIAccordionProps = SectionProps & HeadingProps & StackProps & AccordionProps
+type UIAccordionProps = SectionProps &
+	HeadingProps &
+	StackProps &
+	AccordionProps
 
 const UIAccordion: React.FC<UIAccordionProps> = (props) => {
 	const {
-    direction='column',
+		direction = 'column',
 		label,
 		title,
 		subtitle,
-		textAlign='center',
-    fontSize='lg',
-    fill,
-    border,
+		textAlign = 'center',
+		fontSize = 'lg',
+		fill,
+		border,
 		bgColor,
 		mode,
 		py,
 		px,
-		maxWidth='lg',
+		maxWidth = 'lg',
 		requireAuth,
 		...rest
 	} = props
@@ -35,23 +38,23 @@ const UIAccordion: React.FC<UIAccordionProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-      fill={fill}
-      border={border}
+			fill={fill}
+			border={border}
 		>
-      <Stack direction={direction}>
-        <Row size="1/3">
-          <Heading
-            label={label}
-            title={title}
-            subtitle={subtitle}
-            textAlign={direction =='row' ? 'left' : 'center'}
-            size={fontSize}
-          />
-        </Row>
-        <Row size="2/3">
-          <Accordion {...rest} />
-        </Row>
-      </Stack>       
+			<Stack direction={direction}>
+				<Row size="1/3">
+					<Heading
+						label={label}
+						title={title}
+						subtitle={subtitle}
+						textAlign={direction == 'row' ? 'left' : 'center'}
+						size={fontSize}
+					/>
+				</Row>
+				<Row size="2/3">
+					<Accordion {...rest} />
+				</Row>
+			</Stack>
 		</Section>
 	)
 }

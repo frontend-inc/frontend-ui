@@ -8,89 +8,88 @@ import { ActionType } from '../../../types'
 
 type ButtonActionProps = {
 	icon?: string
-  action: ActionType
+	action: ActionType
 	variant?: 'default' | 'secondary' | 'outline' | 'ghost' | 'link'
 	size?: 'sm' | 'default' | 'lg'
 	url?: string
 	path?: string
-  src?: string
+	src?: string
 	children: React.ReactNode
 }
 
 const ButtonAction: React.FC<ButtonActionProps> = (props) => {
-	
-  const {
+	const {
 		icon,
-    action,
+		action,
 		url,
 		path,
-    src,
+		src,
 		variant = 'secondary',
 		size = 'default',
-    children,
+		children,
 		...rest
 	} = props
 
 	const {
-    openShare,
-    setOpenShare,
-    openVideo,
-    setOpenVideo,
-    openImage,
-    setOpenImage,
-    handleClick 
-  } = useButton({
-    action,
+		openShare,
+		setOpenShare,
+		openVideo,
+		setOpenVideo,
+		openImage,
+		setOpenImage,
+		handleClick,
+	} = useButton({
+		action,
 		url,
 		path,
-    src,
+		src,
 	})
-  
+
 	return (
-    <>
-		<Button
-			fullWidth
-			size={size}
-			startIcon={
-				icon && (
-					<RemixIcon
-						name={icon}
-						className={
-							variant == 'default'
-								? 'text-primary-foreground'
-								: 'text-secondary-foreground'
-						}
+		<>
+			<Button
+				fullWidth
+				size={size}
+				startIcon={
+					icon && (
+						<RemixIcon
+							name={icon}
+							className={
+								variant == 'default'
+									? 'text-primary-foreground'
+									: 'text-secondary-foreground'
+							}
+						/>
+					)
+				}
+				/* @ts-ignore */
+				onClick={handleClick}
+				variant={variant}
+				{...rest}
+			>
+				{children}
+			</Button>
+			{src && (
+				<>
+					<VideoModal
+						open={openVideo}
+						handleClose={() => setOpenVideo(false)}
+						src={src}
 					/>
-				)
-			}
-			/* @ts-ignore */
-			onClick={handleClick}
-			variant={variant}
-			{...rest}
-		>
-			{children}
-		</Button>
-    { src && (
-      <>
-        <VideoModal 
-          open={ openVideo }
-          handleClose={() => setOpenVideo(false) }
-          src={ src }
-        />
-        <ImageModal 
-          open={ openImage }
-          handleClose={() => setOpenImage(false) }
-          src={ src }
-        />        
-        <ShareModal 
-          open={ openShare }
-          handleClose={() => setOpenShare(false) }
-          //@ts-ignore
-          url={ url }
-        />
-    </>
-    )}
-  </>
+					<ImageModal
+						open={openImage}
+						handleClose={() => setOpenImage(false)}
+						src={src}
+					/>
+					<ShareModal
+						open={openShare}
+						handleClose={() => setOpenShare(false)}
+						//@ts-ignore
+						url={url}
+					/>
+				</>
+			)}
+		</>
 	)
 }
 

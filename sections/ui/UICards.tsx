@@ -10,18 +10,18 @@ type UICardsProps = SectionProps & HeadingProps & StackProps & CardsProps
 
 const UICards: React.FC<UICardsProps> = (props) => {
 	const {
-    direction,
+		direction,
 		label,
 		title,
 		subtitle,
-		textAlign='center',
-    fill,
-    border,
+		textAlign = 'center',
+		fill,
+		border,
 		bgColor,
 		mode,
 		py,
 		px,
-    fontSize='lg',
+		fontSize = 'lg',
 		maxWidth,
 		requireAuth,
 		...rest
@@ -35,22 +35,22 @@ const UICards: React.FC<UICardsProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-      fill={fill}
-      border={border}
+			fill={fill}
+			border={border}
 		>
 			<Stack direction={direction}>
-        <Row size="1/3">
-          <Heading
-            label={label}
-            title={title}
-            subtitle={subtitle}
-            textAlign={direction == 'row' ? 'left' : 'center'}
-            size={fontSize}
-          />
-        </Row>
-        <Row size="2/3">
-				  <Cards {...rest} />
-        </Row>
+				<Row size="1/3">
+					<Heading
+						label={label}
+						title={title}
+						subtitle={subtitle}
+						textAlign={direction == 'row' ? 'left' : 'center'}
+						size={fontSize}
+					/>
+				</Row>
+				<Row size="2/3">
+					<Cards {...rest} />
+				</Row>
 			</Stack>
 		</Section>
 	)

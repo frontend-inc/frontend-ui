@@ -32,7 +32,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = (props) => {
 		enableSharing,
 		enableRatings,
 		enableGradient,
-		enableOverlay,		
+		enableOverlay,
 	} = props || {}
 
 	if (!product?.id) return null
@@ -44,10 +44,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = (props) => {
 			price={product?.display_price}
 			compareAtPrice={product?.display_compare_at_price}
 			description={product?.description}
-      enableGradient={enableGradient}
-      enableOverlay={enableOverlay}
-      enableRatings={enableRatings}
-      rating={ product?.average_rating }
+			enableGradient={enableGradient}
+			enableOverlay={enableOverlay}
+			enableRatings={enableRatings}
+			rating={product?.average_rating}
 			actions={
 				<SocialButtons
 					size="large"
@@ -75,7 +75,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = (props) => {
 						className="max-w-[360px]"
 					/>
 				)
-			}			
+			}
 		/>
 	)
 }

@@ -35,11 +35,7 @@ const NewPasswordForm: React.FC<NewPasswordFormProps> = (props) => {
 				type="password"
 				placeholder="Confirm password"
 			/>
-			<Button
-				fullWidth
-				onClick={handleSubmit}
-        loading={loading}				
-			>
+			<Button fullWidth onClick={handleSubmit} loading={loading}>
 				Save and Continue
 			</Button>
 			{handleLogin && (

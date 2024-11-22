@@ -6,25 +6,25 @@ import { Image } from '../../components'
 import { ResponsiveImageProps } from '../../components/ui/images/Image'
 import { SectionProps } from '../../types'
 
-type UIImageProps = SectionProps & ResponsiveImageProps & {
-  title?: string
-}
+type UIImageProps = SectionProps &
+	ResponsiveImageProps & {
+		title?: string
+	}
 
 const UIImage: React.FC<UIImageProps> = (props) => {
-
-  const { 
-    title,
-    fill,
-    border,
-    bgColor, 
-    mode, 
-    py, 
-    px, 
-    maxWidth='sm', 
-    aspectRatio=1.5,
-    requireAuth, 
-    ...rest 
-  } = props
+	const {
+		title,
+		fill,
+		border,
+		bgColor,
+		mode,
+		py,
+		px,
+		maxWidth = 'sm',
+		aspectRatio = 1.5,
+		requireAuth,
+		...rest
+	} = props
 
 	return (
 		<Section
@@ -34,20 +34,17 @@ const UIImage: React.FC<UIImageProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-      fill={fill}
-      border={border}
+			fill={fill}
+			border={border}
 		>
-      <figure className='w-full flex flex-col space-y-2'>
-        <Image 
-          {...rest} 
-          aspectRatio={aspectRatio}
-        />
-        { title && (
-          <figcaption className='text-sm text-muted-foreground text-center'>
-            { title }
-          </figcaption>
-        )}
-      </figure>
+			<figure className="w-full flex flex-col space-y-2">
+				<Image {...rest} aspectRatio={aspectRatio} />
+				{title && (
+					<figcaption className="text-sm text-muted-foreground text-center">
+						{title}
+					</figcaption>
+				)}
+			</figure>
 		</Section>
 	)
 }

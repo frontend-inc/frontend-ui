@@ -9,15 +9,15 @@ import { SectionProps, HeadingProps } from '../../types'
 type UIQuoteProps = SectionProps & HeadingProps & QuoteProps
 
 const UIQuote: React.FC<UIQuoteProps> = (props) => {
-	const { 
-    bgColor, 
-    mode, 
-    py='sm', 
-    px, 
-    maxWidth='sm', 
-    requireAuth, 
-    ...rest 
-  } = props
+	const {
+		bgColor,
+		mode,
+		py = 'sm',
+		px,
+		maxWidth = 'sm',
+		requireAuth,
+		...rest
+	} = props
 
 	return (
 		<Section
@@ -28,7 +28,7 @@ const UIQuote: React.FC<UIQuoteProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <Quote {...rest} />
+			<Quote {...rest} />
 		</Section>
 	)
 }

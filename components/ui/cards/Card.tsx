@@ -22,9 +22,9 @@ export type CardProps = {
 	handleClick?: () => void
 	handleSelect?: () => void
 	size?: number
-  enableOverlay?: boolean
-  enableGradient?: boolean	
-  classNames?: string
+	enableOverlay?: boolean
+	enableGradient?: boolean
+	classNames?: string
 }
 
 // @ts-ignore
@@ -41,22 +41,22 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 			image,
 			size = 240,
 			enableGradient,
-      enableOverlay,
-      classNames
+			enableOverlay,
+			classNames,
 		} = props
 
 		return (
 			<div ref={ref} className={cn('w-full overflow-hidden', classNames)}>
-        <Image
-          src={image}
-          height={size}
-          alt={title}
-          label={label}
-          handleClick={handleClick}
-          aspectRatio={4/3}
-          enableGradient={enableGradient}
-          enableOverlay={enableOverlay}
-        />
+				<Image
+					src={image}
+					height={size}
+					alt={title}
+					label={label}
+					handleClick={handleClick}
+					aspectRatio={4 / 3}
+					enableGradient={enableGradient}
+					enableOverlay={enableOverlay}
+				/>
 				<div className="mx-2 pt-3 flex flex-col space-y-2 overflow-hidden">
 					<Typography variant="subtitle2">{title}</Typography>
 					{subtitle && (
@@ -69,9 +69,9 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 							{description}
 						</Typography>
 					)}
-          {actions}
+					{actions}
 					{secondaryAction}
-				</div>				
+				</div>
 			</div>
 		)
 	}

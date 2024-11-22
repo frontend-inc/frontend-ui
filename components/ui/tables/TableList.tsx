@@ -2,12 +2,7 @@
 
 import React from 'react'
 import { Typography } from '../../../components'
-import {
-	TableHeaders,
-	TableRow,
-	Pagination,
-	Alert,
-} from '../../../components'
+import { TableHeaders, TableRow, Pagination, Alert } from '../../../components'
 import { Table, TableHeader, TableBody } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
 

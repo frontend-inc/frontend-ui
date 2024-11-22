@@ -12,14 +12,13 @@ type ProductArrayProps = {
 }
 
 const ProductArray: React.FC<ProductArrayProps> = (props) => {
+	const {
+		handles,
+		enableBorder = false,
+		enableAddToCart = false,
+		enableQuantity = false,
+	} = props
 
-  const {
-    handles,
-    enableBorder = false,
-    enableAddToCart = false,
-    enableQuantity = false,
-  } = props
-  
 	return (
 		<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-full">
 			{handles?.map((handle) => {

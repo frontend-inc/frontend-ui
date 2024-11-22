@@ -28,9 +28,9 @@ const FormCard: React.FC<FormCardProps> = (props) => {
 		<div className="flex flex-col items-center space-y-4">
 			{checkMark && (
 				<Avatar>
-          <AvatarFallback className="bg-primary">
-					  <RiCheckLine size={28} className="text-primary-foreground" />
-          </AvatarFallback>
+					<AvatarFallback className="bg-primary">
+						<RiCheckLine size={28} className="text-primary-foreground" />
+					</AvatarFallback>
 				</Avatar>
 			)}
 			{image && (

@@ -54,8 +54,10 @@ export default function ProductFavoriteButton({
 					isFavorite && 'text-primary hover:text-primary-dark'
 				)}
 			>
-        { isFavorite && <RemixIcon name='ri-bookmark-fill' className="fill-primary" /> }
-        { !isFavorite && <RemixIcon name='ri-bookmark-line' /> }								
+				{isFavorite && (
+					<RemixIcon name="ri-bookmark-fill" className="fill-primary" />
+				)}
+				{!isFavorite && <RemixIcon name="ri-bookmark-line" />}
 			</IconButton>
 		</div>
 	)

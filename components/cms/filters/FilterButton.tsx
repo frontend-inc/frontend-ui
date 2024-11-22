@@ -37,7 +37,10 @@ export const FilterGroup: React.FC<FilterGroupProps> = (props) => {
 								onClick={() => handleFilter(filterOption?.name, option?.value)}
 								endIcon={
 									selected && (
-										<RemixIcon name="ri-check-fill" className="text-foreground ml-2" />
+										<RemixIcon
+											name="ri-check-fill"
+											className="text-foreground ml-2"
+										/>
 									)
 								}
 							>

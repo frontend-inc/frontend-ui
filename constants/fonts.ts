@@ -1,4 +1,4 @@
-export const GOOGLE_FONTS = [	
+export const GOOGLE_FONTS = [
 	{
 		name: 'DM Sans',
 		url: 'https://fonts.googleapis.com/css2?family=DM+Sans&display=swap',
@@ -26,7 +26,7 @@ export const GOOGLE_FONTS = [
 	{
 		name: 'Lato',
 		url: 'https://fonts.googleapis.com/css2?family=Lato&display=swap',
-	},	
+	},
 	{
 		name: 'Manrope',
 		url: 'https://fonts.googleapis.com/css2?family=Manrope&display=swap',

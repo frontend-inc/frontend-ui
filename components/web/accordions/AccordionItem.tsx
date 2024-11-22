@@ -15,7 +15,7 @@ type AccordionItemProps = {
 }
 
 const AccordionItemComponent: React.FC<AccordionItemProps> = (props) => {
-	const {title, subtitle } = props
+	const { title, subtitle } = props
 
 	return (
 		<Accordion type="single" collapsible className="w-full">

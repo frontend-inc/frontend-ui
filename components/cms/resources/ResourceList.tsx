@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useResource } from 'frontend-js'
 import { SortableListItems, AlertModal, Empty } from '../..'
 import {
-	FormFieldType,	
+	FormFieldType,
 	SearchFilterOptionType,
 	TableHeaderType,
 	MetafieldType,

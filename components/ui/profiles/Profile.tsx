@@ -1,23 +1,23 @@
 'use client'
 
 import React from 'react'
-import { 
-  Container, 
-  Stack, 
-  Row,
-  AvatarImage, 
-  Typography,
-  SocialLink 
+import {
+	Container,
+	Stack,
+	Row,
+	AvatarImage,
+	Typography,
+	SocialLink,
 } from '../..'
 import { Heading } from '../../../components'
 
 export type ProfileProps = {
-  direction?: 'row' | 'column'
+	direction?: 'row' | 'column'
 	image: string
 	label?: string
 	title: string
 	subtitle: string
-  description: string
+	description: string
 	socialLinks?: {
 		provider: string
 		url: string
@@ -25,49 +25,56 @@ export type ProfileProps = {
 }
 
 const Profile: React.FC<ProfileProps> = (props) => {
-	const { 
-    direction,
-    label, 
-    title, 
-    subtitle, 
-    image, 
-    description, 
-    socialLinks = [] 
-  } = props || {}
+	const {
+		direction,
+		label,
+		title,
+		subtitle,
+		image,
+		description,
+		socialLinks = [],
+	} = props || {}
 
 	return (
-    <Container maxWidth='lg'>
-      <Stack direction={direction}>
-        <Row size="1/4">
-          <Stack>
-            <div className="h-[160px] w-[160px]">
-              <AvatarImage alt={title} src={image} size={160} />
-            </div>
-            <div className="flex flex-row">
-              {socialLinks?.map((link, index) => (
-                <div className="p-[2px]" key={index}>
-                  <SocialLink url={link.url} size={28} provider={link.provider} />
-                </div>
-              ))}
-            </div>
-				</Stack>
-      </Row>
-      <Row size="3/4">
-        <Stack spacing={4}>
-          <Heading 
-            label={ label }
-            title={ title }
-            subtitle={ subtitle }
-            size='xl'
-            textAlign={direction == 'row' ? 'left' : 'center'}
-          />     
-          <Typography variant="subtitle2" className="text-muted-foreground italic leading-loose">
-            { description }
-          </Typography>
-        </Stack>  
-        </Row>   
-      </Stack>
-    </Container>		
+		<Container maxWidth="lg">
+			<Stack direction={direction}>
+				<Row size="1/4">
+					<Stack>
+						<div className="h-[160px] w-[160px]">
+							<AvatarImage alt={title} src={image} size={160} />
+						</div>
+						<div className="flex flex-row">
+							{socialLinks?.map((link, index) => (
+								<div className="p-[2px]" key={index}>
+									<SocialLink
+										url={link.url}
+										size={28}
+										provider={link.provider}
+									/>
+								</div>
+							))}
+						</div>
+					</Stack>
+				</Row>
+				<Row size="3/4">
+					<Stack spacing={4}>
+						<Heading
+							label={label}
+							title={title}
+							subtitle={subtitle}
+							size="xl"
+							textAlign={direction == 'row' ? 'left' : 'center'}
+						/>
+						<Typography
+							variant="subtitle2"
+							className="text-muted-foreground italic leading-loose"
+						>
+							{description}
+						</Typography>
+					</Stack>
+				</Row>
+			</Stack>
+		</Container>
 	)
 }
 

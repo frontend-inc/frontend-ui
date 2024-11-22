@@ -20,12 +20,7 @@ type UserMenuProps = {
 }
 
 const UserMenu: React.FC<UserMenuProps> = (props) => {
-
-  const {
-    handleLogoutClick,
-    handleClick,
-    children,
-  } = props || {}
+	const { handleLogoutClick, handleClick, children } = props || {}
 
 	const { currentUser } = useAuth()
 
@@ -44,9 +39,7 @@ const UserMenu: React.FC<UserMenuProps> = (props) => {
 				>
 					<DropdownMenuItem onClick={handleClick}>
 						<div className="flex items-center">
-							<span className="text-sm font-medium">
-                {currentUser?.name}
-              </span>
+							<span className="text-sm font-medium">{currentUser?.name}</span>
 						</div>
 					</DropdownMenuItem>
 					<DropdownMenuSeparator />

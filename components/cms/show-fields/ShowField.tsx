@@ -6,7 +6,7 @@ import {
 	FieldBoolean,
 	FieldDate,
 	FieldFile,
-  FieldHTML,
+	FieldHTML,
 	FieldImage,
 	FieldURL,
 	FieldPrice,
@@ -37,7 +37,7 @@ const ShowField: React.FC<ShowFieldProps> = (props) => {
 		date: FieldDate,
 		datetime: FieldDate,
 		file: FieldFile,
-    html: FieldHTML,
+		html: FieldHTML,
 		location: FieldString,
 		image: FieldImage,
 		video: FieldVideo,
@@ -70,12 +70,12 @@ const ShowField: React.FC<ShowFieldProps> = (props) => {
 		text: {
 			className: 'text-md',
 		},
-    html: {
-      className: 'prose prose-sm'
-    },
+		html: {
+			className: 'prose prose-sm',
+		},
 		image: {
 			label,
-      height: 450,
+			height: 450,
 		},
 		video: {
 			height: 450,

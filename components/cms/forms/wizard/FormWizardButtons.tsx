@@ -32,10 +32,8 @@ export default function FormWizardButtons({
 				variant="outline"
 				onClick={handlePrevStep}
 				className={'w-full sm:w-[260px] bg-background'}
-        startIcon={
-          <RiArrowLeftLine className="h-4 w-4" />
-        }
-			>				
+				startIcon={<RiArrowLeftLine className="h-4 w-4" />}
+			>
 				Prev
 			</Button>
 			{currentStep !== totalSteps ? (
@@ -44,10 +42,8 @@ export default function FormWizardButtons({
 					onClick={handleNextStep}
 					disabled={currentStep === totalSteps}
 					className="w-full sm:w-[260px]"
-          loading={ loading }
-          endIcon={
-            <RiArrowRightLine className="h-4 w-4" />
-          }
+					loading={loading}
+					endIcon={<RiArrowRightLine className="h-4 w-4" />}
 				>
 					Next
 				</Button>
@@ -57,9 +53,9 @@ export default function FormWizardButtons({
 					onClick={handleSubmit}
 					disabled={currentStep !== totalSteps}
 					className="w-full sm:w-[260px]"
-          loading={ loading } 
+					loading={loading}
 				>
-					{buttonText}					
+					{buttonText}
 				</Button>
 			)}
 		</div>

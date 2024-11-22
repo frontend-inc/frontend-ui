@@ -11,13 +11,8 @@ type ShareButtonProps = {
 }
 
 export default function ShareButton(props: ShareButtonProps) {
+	const { url, variant = 'rounded', size = 'small' } = props
 
-  const {
-    url,
-    variant = 'rounded',
-    size = 'small',
-  } = props
-  
 	const [open, setOpen] = useState(false)
 
 	const handleClick = () => {
@@ -34,13 +29,9 @@ export default function ShareButton(props: ShareButtonProps) {
 					size === 'large' && 'border border-divider'
 				)}
 			>
-				<RemixIcon name='ri-share-2-fill' />
+				<RemixIcon name="ri-share-2-fill" />
 			</IconButton>
-      <ShareModal 
-        open={open}
-        handleClose={ () => setOpen(false) }
-        url={ url }
-      />
+			<ShareModal open={open} handleClose={() => setOpen(false)} url={url} />
 		</div>
 	)
 }

@@ -7,21 +7,18 @@ import { HeadingProps } from '../../../types'
 
 export type FormDataWizardProps = HeadingProps & {
 	formId: number
-  title?: string
-  description?: string  
-  buttonText: string
-  endButtonText: string
+	title?: string
+	description?: string
+	buttonText: string
+	endButtonText: string
 	handleSuccess?: (resource: any) => void
 }
 
 const FormDataWizard: React.FC<FormDataWizardProps> = (props) => {
 	const [open, setOpen] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
-  
-	const { 
-    formId, 
-    buttonText,
-  } = props || {}
+	const [submitted, setSubmitted] = useState(false)
+
+	const { formId, buttonText } = props || {}
 
 	const { loading, form, findForm } = useForms()
 
@@ -38,7 +35,7 @@ const FormDataWizard: React.FC<FormDataWizardProps> = (props) => {
 		formId,
 	})
 
-  const { showAlertSuccess } = useToast()
+	const { showAlertSuccess } = useToast()
 
 	const handleSubmit = async () => {
 		let resp
@@ -51,9 +48,9 @@ const FormDataWizard: React.FC<FormDataWizardProps> = (props) => {
 			resp = await submitForm(contact)
 		}
 		if (resp?.id) {
-      setSubmitted(true)
-      showAlertSuccess('Form submitted successfully')
-      handleResetForm()			
+			setSubmitted(true)
+			showAlertSuccess('Form submitted successfully')
+			handleResetForm()
 		}
 	}
 
@@ -76,31 +73,31 @@ const FormDataWizard: React.FC<FormDataWizardProps> = (props) => {
 		}
 	}, [formId])
 
-	return (  		
-			<div className="flex flex-col space-y-2">
-        <FormCard
-          checkMark={submitted}
-          image={form?.image?.url}
-          title={form?.title}
-          subtitle={form?.description}
-          buttonText={buttonText}
-          handleClick={() => setOpen(true)}
-        />				
-				<FormWizardModal
-					open={open}
-					handleClose={() => setOpen(false)}
-					loading={loading || responseLoading}
-					resource={contact}
-					setResource={setContact}
-          //@ts-ignore
-					handleChange={handleChange}
-					handleSubmit={handleSubmit}
-					fields={form?.questions}
-					handleRemove={handleRemove}
-					handleRemoveAttachment={handleRemove}
-					handleAddAttachment={handleAddAttachment}
-				/>
-			</div>		
+	return (
+		<div className="flex flex-col space-y-2">
+			<FormCard
+				checkMark={submitted}
+				image={form?.image?.url}
+				title={form?.title}
+				subtitle={form?.description}
+				buttonText={buttonText}
+				handleClick={() => setOpen(true)}
+			/>
+			<FormWizardModal
+				open={open}
+				handleClose={() => setOpen(false)}
+				loading={loading || responseLoading}
+				resource={contact}
+				setResource={setContact}
+				//@ts-ignore
+				handleChange={handleChange}
+				handleSubmit={handleSubmit}
+				fields={form?.questions}
+				handleRemove={handleRemove}
+				handleRemoveAttachment={handleRemove}
+				handleAddAttachment={handleAddAttachment}
+			/>
+		</div>
 	)
 }
 

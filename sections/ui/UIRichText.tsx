@@ -9,15 +9,15 @@ import { SectionProps } from '../../types'
 type UIRichTextProps = SectionProps & RichTextProps
 
 const UIRichText: React.FC<UIRichTextProps> = (props) => {
-	const { 
-    bgColor, 
-    mode, 
-    py='sm', 
-    px, 
-    maxWidth='lg', 
-    requireAuth, 
-    ...rest 
-  } = props
+	const {
+		bgColor,
+		mode,
+		py = 'sm',
+		px,
+		maxWidth = 'lg',
+		requireAuth,
+		...rest
+	} = props
 
 	return (
 		<Section
@@ -28,7 +28,7 @@ const UIRichText: React.FC<UIRichTextProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-      <RichText {...rest} />
+			<RichText {...rest} />
 		</Section>
 	)
 }

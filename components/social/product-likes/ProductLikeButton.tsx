@@ -16,11 +16,7 @@ type ProductLikeButtonProps = {
 }
 
 export default function ProductLikeButton(props: ProductLikeButtonProps) {
-
-  const {
-    product,
-    size = 'small',
-  } = props
+	const { product, size = 'small' } = props
 
 	const { currentUser } = useAuth()
 	const { setAuthOpen } = useApp()
@@ -58,8 +54,8 @@ export default function ProductLikeButton(props: ProductLikeButtonProps) {
 					liked && 'text-primary hover:text-primary-dark'
 				)}
 			>
-        { liked && <RemixIcon name='ri-heart-fill' className="fill-primary" /> }
-        { !liked && <RemixIcon name='ri-heart-line' /> }								
+				{liked && <RemixIcon name="ri-heart-fill" className="fill-primary" />}
+				{!liked && <RemixIcon name="ri-heart-line" />}
 			</IconButton>
 		</div>
 	)

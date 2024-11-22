@@ -94,7 +94,7 @@ const ShopifyProductInput: React.FC<AutosuggestProps> = (props) => {
 	if (!enabled) {
 		return (
 			<Alert
-        icon="ri-shopping-cart-2-fill"
+				icon="ri-shopping-cart-2-fill"
 				title="Shopify setup required"
 				description="Shopify provider is not setup"
 			/>

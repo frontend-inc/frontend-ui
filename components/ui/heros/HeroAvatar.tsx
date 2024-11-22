@@ -11,8 +11,8 @@ const HeroAvatar: React.FC<HeroCardProps> = (props) => {
 		subtitle,
 		actions,
 		secondaryAction,
-    enableGradient,
-    enableOverlay,		
+		enableGradient,
+		enableOverlay,
 	} = props || {}
 
 	return (
@@ -29,7 +29,7 @@ const HeroAvatar: React.FC<HeroCardProps> = (props) => {
 								alt={title}
 								size={160}
 								enableGradient={enableGradient}
-                enableOverlay={enableOverlay}
+								enableOverlay={enableOverlay}
 							/>
 						</div>
 						{actions}

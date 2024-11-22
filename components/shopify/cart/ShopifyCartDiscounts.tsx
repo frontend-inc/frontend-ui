@@ -5,7 +5,7 @@ import { useCart } from 'frontend-shopify'
 import { Button, TextField } from '../../../components'
 
 const ShopifyCartDiscountCodeInput: React.FC = () => {
-	const [discountCode='', setDiscountCode] = useState<string | null>(null)
+	const [discountCode = '', setDiscountCode] = useState<string | null>(null)
 
 	const { loading, cartApplyDiscountCode } = useCart()
 

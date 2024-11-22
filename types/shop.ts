@@ -29,7 +29,7 @@ export type ProductType = {
 	display_price?: string
 	display_compare_at_price?: string
 	available_for_sale?: boolean
-  average_rating: number
+	average_rating: number
 	image: {
 		url: string
 	}

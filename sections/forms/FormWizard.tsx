@@ -9,7 +9,7 @@ import { SectionProps } from '../../types'
 type FormWizardProps = SectionProps & FormDataWizardProps
 
 const FormWizard: React.FC<FormWizardProps> = (props) => {
-	const { bgColor, mode, py, px, maxWidth="md", requireAuth, ...rest } = props
+	const { bgColor, mode, py, px, maxWidth = 'md', requireAuth, ...rest } = props
 
 	return (
 		<Section

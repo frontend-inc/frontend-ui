@@ -36,7 +36,7 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 			open={open}
 			handleClose={handleClose}
 			title={title}
-      maxWidth="lg"
+			maxWidth="lg"
 			buttons={
 				(enableEdit || enableDelete) && (
 					<div className="w-fill flex flex-row space-x-2">

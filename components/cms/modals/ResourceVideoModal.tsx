@@ -12,13 +12,13 @@ export type VideoModalProps = {
 const ResourceVideoModal: React.FC<VideoModalProps> = (props) => {
 	const { open, handleClose, resource } = props || {}
 
-  if(!resource?.video?.url) return null
+	if (!resource?.video?.url) return null
 	return (
-		<VideoModal 
-      open={open} 
-      handleClose={handleClose}
-      src={resource?.video?.url}
-    />
+		<VideoModal
+			open={open}
+			handleClose={handleClose}
+			src={resource?.video?.url}
+		/>
 	)
 }
 

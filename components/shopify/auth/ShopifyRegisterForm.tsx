@@ -56,12 +56,12 @@ const ShopifyRegisterForm: React.FC<ShopifyRegisterFormProps> = (props) => {
 				placeholder="Accept marketing communication"
 				handleChange={handleChange}
 			/>
-			<Button 
-        loading={loading}
-        className="w-full" 
-        onClick={handleSubmit} 
-        disabled={loading}
-      >				
+			<Button
+				loading={loading}
+				className="w-full"
+				onClick={handleSubmit}
+				disabled={loading}
+			>
 				Register
 			</Button>
 			<Button className="w-full" variant="ghost" onClick={handleLogin}>

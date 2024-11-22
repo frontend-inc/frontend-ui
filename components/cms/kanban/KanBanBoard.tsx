@@ -131,7 +131,7 @@ const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 								fullWidth
 								color="secondary"
 								onClick={() => handleAdd(header.value)}
-								startIcon={<RiAddFill  className="text-secondary-foreground" />}
+								startIcon={<RiAddFill className="text-secondary-foreground" />}
 							>
 								Add
 							</Button>

@@ -6,24 +6,27 @@ import { ContactForm } from '../../components'
 import { ContactFormProps } from '../../components/cms/leads/ContactForm'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
 
-type FormContactUsProps = SectionProps & HeadingProps & StackProps & ContactFormProps
+type FormContactUsProps = SectionProps &
+	HeadingProps &
+	StackProps &
+	ContactFormProps
 
 const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 	const {
-    split='1/3',
-    direction='column',
-    label,
+		split = '1/3',
+		direction = 'column',
+		label,
 		title,
 		subtitle,
-		textAlign='center',
-    fontSize='lg', 
-    fill,
-    border,   
+		textAlign = 'center',
+		fontSize = 'lg',
+		fill,
+		border,
 		bgColor,
 		mode,
 		py,
 		px,
-		maxWidth='lg',
+		maxWidth = 'lg',
 		requireAuth,
 		...rest
 	} = props
@@ -36,19 +39,19 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-      fill={fill}
-      border={border}
+			fill={fill}
+			border={border}
 		>
-      <Stack direction={direction} split={split}>
-        <Heading
-          label={label}
-          title={title}
-          subtitle={subtitle}
-          size={fontSize}
-          textAlign={direction == 'row' ? 'left' : 'center'}
-        />
-        <ContactForm {...rest} />
-      </Stack>
+			<Stack direction={direction} split={split}>
+				<Heading
+					label={label}
+					title={title}
+					subtitle={subtitle}
+					size={fontSize}
+					textAlign={direction == 'row' ? 'left' : 'center'}
+				/>
+				<ContactForm {...rest} />
+			</Stack>
 		</Section>
 	)
 }

@@ -35,9 +35,9 @@ const ShopifyProductFavorites: React.FC<ShopifyProductFavoritesProps> = (
 			/>
 			{favorites?.length === 0 && (
 				<Alert
-					icon='ri-heart-2-fill'
-					title='No favorites'
-					description='You have no favorites yet.'
+					icon="ri-heart-2-fill"
+					title="No favorites"
+					description="You have no favorites yet."
 				/>
 			)}
 		</div>

@@ -11,14 +11,12 @@ type IconLoadingProps = {
 }
 
 export default function IconLoading(props: IconLoadingProps) {
+	const { size = 20, color = 'text-secondary', className } = props
 
-  const {
-    size = 20,
-    color = 'text-secondary',
-    className,
-  } = props
-  
 	return (
-		<RiLoader4Line className={cn('animate-spin', color, className)} size={size} />
+		<RiLoader4Line
+			className={cn('animate-spin', color, className)}
+			size={size}
+		/>
 	)
 }

@@ -14,12 +14,7 @@ type FavoriteButtonProps = {
 }
 
 export default function FavoriteButton(props: FavoriteButtonProps) {
-
-  const {
-    resource,
-    size = 'small',
-    variant = 'rounded',
-  } = props
+	const { resource, size = 'small', variant = 'rounded' } = props
 
 	const { fetchMe, currentUser } = useAuth()
 	const { setAuthOpen } = useApp()
@@ -59,8 +54,10 @@ export default function FavoriteButton(props: FavoriteButtonProps) {
 					'transition-transform duration-200'
 				)}
 			>
-        { isFavorite && <RemixIcon name='ri-bookmark-fill' className="fill-primary" /> }
-        { !isFavorite && <RemixIcon name='ri-bookmark-line' /> }				
+				{isFavorite && (
+					<RemixIcon name="ri-bookmark-fill" className="fill-primary" />
+				)}
+				{!isFavorite && <RemixIcon name="ri-bookmark-line" />}
 			</IconButton>
 		</div>
 	)

@@ -12,37 +12,51 @@ type FeatureIconProps = {
 	title?: string
 	subtitle?: string
 	border?: boolean
-  fill?: boolean
+	fill?: boolean
 	direction?: 'column' | 'row'
 }
 
 const FeatureIcon: React.FC<FeatureIconProps> = (props) => {
-	const { fill, border, icon, title, subtitle, direction = 'column' } = props || {}
+	const {
+		fill,
+		border,
+		icon,
+		title,
+		subtitle,
+		direction = 'column',
+	} = props || {}
 	return (
 		<div
 			className={cn(
 				'flex justify-start py-6',
-				direction === 'column' ? 
-          'flex-col items-center space-y-3' : 
-          'flex-row items-start space-x-3',
-        border && 'border-2 border-border rounded-lg p-6',
-        fill && 'bg-muted rounded-lg p-6'
+				direction === 'column'
+					? 'flex-col items-center space-y-3'
+					: 'flex-row items-start space-x-3',
+				border && 'border-2 border-border rounded-lg p-6',
+				fill && 'bg-muted rounded-lg p-6'
 			)}
 		>
 			{icon && (
 				<Avatar className="h-[48px] w-[48px] rounded-lg">
 					<AvatarFallback className="bg-primary rounded-lg">
-						<RemixIcon name={icon} size="lg" className="text-primary-foreground" />
+						<RemixIcon
+							name={icon}
+							size="lg"
+							className="text-primary-foreground"
+						/>
 					</AvatarFallback>
 				</Avatar>
 			)}
 			<div
 				className={cn(
-					'flex flex-col justify-center space-y-2',          
+					'flex flex-col justify-center space-y-2',
 					direction === 'row' && 'text-left'
 				)}
 			>
-				<Typography variant="h6" className={direction === 'column' ? 'text-center' : ''}>
+				<Typography
+					variant="h6"
+					className={direction === 'column' ? 'text-center' : ''}
+				>
 					{title}
 				</Typography>
 				<Typography
@@ -60,8 +74,8 @@ const FeatureIcon: React.FC<FeatureIconProps> = (props) => {
 }
 
 export type FeatureIconsProps = {
-  fill?: boolean
-  border?: boolean
+	fill?: boolean
+	border?: boolean
 	items: {
 		icon?: any
 		title?: string
@@ -86,8 +100,8 @@ const FeatureIcons: React.FC<FeatureIconsProps> = (props) => {
 				{items?.map((item, idx) => (
 					<BlurFade delay={0.25 + idx * 0.05} inView key={idx}>
 						<FeatureIcon
-              fill={fill}
-              border={border}
+							fill={fill}
+							border={border}
 							icon={item?.icon}
 							title={item?.title}
 							subtitle={item?.subtitle}

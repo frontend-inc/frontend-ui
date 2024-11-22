@@ -8,17 +8,17 @@ import { SectionProps, HeadingProps } from '../../types'
 type UITextProps = SectionProps & HeadingProps
 
 const UIHeading: React.FC<UITextProps> = (props) => {
-	const { 
-    fill,
-    border,
-    bgColor, 
-    mode, 
-    py, 
-    px, 
-    maxWidth='sm', 
-    requireAuth, 
-    ...rest 
-  } = props
+	const {
+		fill,
+		border,
+		bgColor,
+		mode,
+		py,
+		px,
+		maxWidth = 'sm',
+		requireAuth,
+		...rest
+	} = props
 
 	return (
 		<Section
@@ -28,10 +28,10 @@ const UIHeading: React.FC<UITextProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-      fill={fill}
-      border={border}
+			fill={fill}
+			border={border}
 		>
-      <Heading {...rest} />
+			<Heading {...rest} />
 		</Section>
 	)
 }

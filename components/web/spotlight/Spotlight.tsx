@@ -10,12 +10,12 @@ import SpotlightCard from './SpotlightCard'
 export type SpotlightProps = {
 	label?: string
 	title?: string
-  subtitle?: string
+	subtitle?: string
 	image?: string
 	direction?: 'column' | 'row'
 	buttons?: ButtonType[]
-  enableGradient?: boolean
-  enableOverlay?: boolean
+	enableGradient?: boolean
+	enableOverlay?: boolean
 }
 
 const Spotlight: React.FC<SpotlightProps> = (props) => {
@@ -24,38 +24,42 @@ const Spotlight: React.FC<SpotlightProps> = (props) => {
 		image,
 		label,
 		title,
-    subtitle,
+		subtitle,
 		buttons = [],
-    enableGradient,
-    enableOverlay,
+		enableGradient,
+		enableOverlay,
 	} = props || {}
 
-	const Component = {
-      column: SpotlightList,
-      row: SpotlightCard,
+	const Component =
+		{
+			column: SpotlightList,
+			row: SpotlightCard,
 		}[direction] || SpotlightList
 
-    const justifyContent = {
-      column: 'justify-center',
-      row: 'justify-left'
-    }[direction] || 'justify-center'
+	const justifyContent =
+		{
+			column: 'justify-center',
+			row: 'justify-left',
+		}[direction] || 'justify-center'
 
 	return (
 		<Component
 			label={label}
 			title={title}
-      subtitle={subtitle}
-			actions={buttons?.length > 0 && (
-        <ButtonActions 
-          size="lg" 
-          buttons={buttons} 
-          // @ts-ignore 
-          justifyContent={justifyContent}
-        />
-      )}
+			subtitle={subtitle}
+			actions={
+				buttons?.length > 0 && (
+					<ButtonActions
+						size="lg"
+						buttons={buttons}
+						// @ts-ignore
+						justifyContent={justifyContent}
+					/>
+				)
+			}
 			image={image}
-      enableGradient={enableGradient}
-      enableOverlay={enableOverlay}
+			enableGradient={enableGradient}
+			enableOverlay={enableOverlay}
 		/>
 	)
 }

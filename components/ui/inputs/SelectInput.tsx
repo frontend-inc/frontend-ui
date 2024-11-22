@@ -13,7 +13,7 @@ import { cn } from 'frontend-shadcn'
 import { SyntheticEventType } from 'frontend-js'
 
 type SelectInputPropsType = {
-  errors?: any
+	errors?: any
 	label?: string
 	direction?: 'column' | 'row'
 	name: string

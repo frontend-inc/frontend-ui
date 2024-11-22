@@ -27,7 +27,10 @@ const CustomTabs: React.FC<TabsProps> = ({ items = [] }) => {
 						className="flex items-center justify-center"
 					>
 						{item.icon && (
-							<RemixIcon name={item.icon} className="w-5 h-5 mr-2 text-current" />
+							<RemixIcon
+								name={item.icon}
+								className="w-5 h-5 mr-2 text-current"
+							/>
 						)}
 						{item.label}
 					</TabsTrigger>

@@ -6,7 +6,7 @@ import { MetafieldType } from '../../../types'
 import { DOCUMENT_SHOW_FIELDS } from '../../../constants'
 
 type CollectionHeroProps = {
-  disableImage?: boolean
+	disableImage?: boolean
 	resource: any
 	actions?: React.ReactNode
 	metafields?: MetafieldType[]

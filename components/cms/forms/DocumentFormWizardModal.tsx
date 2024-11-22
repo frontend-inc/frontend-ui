@@ -148,7 +148,7 @@ const DocumentFormWizardModal: React.FC<DocumentFormWizardModalProps> = (
 				resource={resource}
 				setResource={setResource}
 				fields={fields}
-        // @ts-ignore
+				// @ts-ignore
 				handleChange={handleChange}
 				handleRemove={handleRemove}
 				handleSubmit={handleSubmit}

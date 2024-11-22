@@ -14,7 +14,6 @@ type NoImageProps = {
 }
 
 const NoImage: React.FC<NoImageProps> = (props) => {
-  
 	const {
 		height = 240,
 		icon = 'Play',

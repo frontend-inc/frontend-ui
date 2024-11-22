@@ -1,7 +1,6 @@
 export * from './links'
 export * from './testimonials'
 
-
 // Web
 export { default as Accordion } from './accordions/Accordion'
 export { default as Cards } from './cards/Cards'

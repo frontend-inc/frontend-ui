@@ -23,7 +23,10 @@ const ShopifyAuthButton: React.FC = () => {
 
 	if (!customer) return null
 	return (
-		<AuthUserMenu handleLogoutClick={handleLogoutClick} handleClick={handleClick} />
+		<AuthUserMenu
+			handleLogoutClick={handleLogoutClick}
+			handleClick={handleClick}
+		/>
 	)
 }
 

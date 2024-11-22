@@ -17,41 +17,40 @@ import { useRouter } from 'next/navigation'
 
 type AuthMenuProps = {
 	handleLogin: () => void
-	handleSignup: () => void	
-  handleMyAccount: () => void
+	handleSignup: () => void
+	handleMyAccount: () => void
 	menuItems?: {
-    icon?: string
-    label: string 
-    path: string
-    onClick?: () => void
-  }[]
+		icon?: string
+		label: string
+		path: string
+		onClick?: () => void
+	}[]
 }
 
 const AuthMenu: React.FC<AuthMenuProps> = (props) => {
-
-  const {
-    handleLogin,
-    handleSignup,
-    handleMyAccount,
-    menuItems=[]
-  } = props || {}
+	const {
+		handleLogin,
+		handleSignup,
+		handleMyAccount,
+		menuItems = [],
+	} = props || {}
 
 	const { currentUser, logout } = useAuth()
 
-  const router = useRouter()
+	const router = useRouter()
 
-  const handleClick = (menuItem) => {
-    if(menuItem.onClick){
-      menuItem.onClick()
-    }else{
-      router.push(menuItem?.path)
-    }
-  }
+	const handleClick = (menuItem) => {
+		if (menuItem.onClick) {
+			menuItem.onClick()
+		} else {
+			router.push(menuItem?.path)
+		}
+	}
 
-  const handleLogout = () => {
-    logout()
-    router.push('/')
-  }
+	const handleLogout = () => {
+		logout()
+		router.push('/')
+	}
 
 	return (
 		<DropdownMenu>
@@ -63,34 +62,34 @@ const AuthMenu: React.FC<AuthMenuProps> = (props) => {
 			<DropdownMenuContent className="w-56" align="end" forceMount>
 				{currentUser ? (
 					<>
-            <DropdownMenuGroup>
-              <DropdownMenuItem 
-                className="font-normal"
-                onClick={ handleMyAccount }
-              >              
-                <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">
-                    {currentUser.name}
-                  </p>
-                  <p className="text-xs leading-none text-muted-foreground">
-                    {currentUser.email}
-                  </p>
-                </div>
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
+						<DropdownMenuGroup>
+							<DropdownMenuItem
+								className="font-normal"
+								onClick={handleMyAccount}
+							>
+								<div className="flex flex-col space-y-1">
+									<p className="text-sm font-medium leading-none">
+										{currentUser.name}
+									</p>
+									<p className="text-xs leading-none text-muted-foreground">
+										{currentUser.email}
+									</p>
+								</div>
+							</DropdownMenuItem>
+						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
 						<DropdownMenuGroup>
-              { menuItems?.map((menuItem, idx) => (
-                <DropdownMenuItem 
-                  key={idx} 
-                  onClick={() => handleClick(menuItem)}
-                >
-								  { menuItem?.icon && (
-                    <RemixIcon name={ menuItem?.icon } className="mr-2" /> 
-                  )}
-								  { menuItem?.label }
-							  </DropdownMenuItem>
-              ))}							
+							{menuItems?.map((menuItem, idx) => (
+								<DropdownMenuItem
+									key={idx}
+									onClick={() => handleClick(menuItem)}
+								>
+									{menuItem?.icon && (
+										<RemixIcon name={menuItem?.icon} className="mr-2" />
+									)}
+									{menuItem?.label}
+								</DropdownMenuItem>
+							))}
 						</DropdownMenuGroup>
 						<DropdownMenuItem onClick={handleLogout}>
 							<RemixIcon name="ri-logout-circle-line" className="mr-2" />
@@ -99,12 +98,8 @@ const AuthMenu: React.FC<AuthMenuProps> = (props) => {
 					</>
 				) : (
 					<>
-						<DropdownMenuItem onClick={handleLogin}>
-							Sign In
-						</DropdownMenuItem>
-						<DropdownMenuItem onClick={handleSignup}>
-							Sign Up
-						</DropdownMenuItem>
+						<DropdownMenuItem onClick={handleLogin}>Sign In</DropdownMenuItem>
+						<DropdownMenuItem onClick={handleSignup}>Sign Up</DropdownMenuItem>
 					</>
 				)}
 			</DropdownMenuContent>

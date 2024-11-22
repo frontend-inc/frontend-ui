@@ -7,30 +7,26 @@ import { cn } from 'frontend-shadcn'
 type DataLayoutProps = {
 	loading?: boolean
 	layout?: 'grid' | 'list' | 'slider'
-  size?: 'sm' | 'md' | 'lg'
+	size?: 'sm' | 'md' | 'lg'
 	children: React.ReactNode
 }
 
 export default function DataLayout({
 	loading,
 	layout = 'grid',
-  size = 'md',
+	size = 'md',
 	children,
 }: DataLayoutProps) {
-
-  const gridSize = {
-    sm: 'grid-cols-[repeat(auto-fill,minmax(250px,1fr))]',
-    md: 'grid-cols-[repeat(auto-fill,minmax(300px,1fr))]',
-    lg: 'grid-cols-[repeat(auto-fill,minmax(350px,1fr))]',
-  }
+	const gridSize = {
+		sm: 'grid-cols-[repeat(auto-fill,minmax(250px,1fr))]',
+		md: 'grid-cols-[repeat(auto-fill,minmax(300px,1fr))]',
+		lg: 'grid-cols-[repeat(auto-fill,minmax(350px,1fr))]',
+	}
 
 	return (
 		<div className={cn('w-full', loading && 'opacity-50')}>
 			{layout == 'grid' && (
-				<div className={cn(
-            "w-full gap-4 pb-1 grid",
-            gridSize[size]
-          )}>
+				<div className={cn('w-full gap-4 pb-1 grid', gridSize[size])}>
 					{children}
 				</div>
 			)}

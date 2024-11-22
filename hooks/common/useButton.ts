@@ -13,19 +13,19 @@ type UseButtonParams = {
 	action: ActionType
 	path?: string
 	url?: string
-  src?: string
+	src?: string
 }
 
 const useButtons = (params: UseButtonParams) => {
 	const { action, src, path, url } = params || {}
 
-  const isMobile = useMediaQuery({ maxWidth: 640 })
+	const isMobile = useMediaQuery({ maxWidth: 640 })
 
 	const { loading, data, errors } = useLoadingWrapper()
 
-  const [openVideo, setOpenVideo] = useState(false)
-  const [openImage, setOpenImage] = useState(false)
-  const [openShare, setOpenShare] = useState(false)
+	const [openVideo, setOpenVideo] = useState(false)
+	const [openImage, setOpenImage] = useState(false)
+	const [openShare, setOpenShare] = useState(false)
 
 	const { showAlertSuccess } = useToast()
 
@@ -37,11 +37,11 @@ const useButtons = (params: UseButtonParams) => {
 			case 'page':
 				router.push(`${clientUrl}${path}`)
 				break
-      case 'url':
-        if (url) {
-          window.open(url, '_blank')
-        }
-        break  
+			case 'url':
+				if (url) {
+					window.open(url, '_blank')
+				}
+				break
 			case 'copy':
 				if (src) {
 					copy(src)
@@ -63,39 +63,41 @@ const useButtons = (params: UseButtonParams) => {
 					window.location.href = `sms:${src}`
 				}
 				break
-      case 'whatsapp':
-        if (src) {
-          window.open(`https://wa.me/${src}`, '_blank')
-        }
-        break
-			case 'download':
-				if(src){
-          window.open(src, '_blank')
-        }
+			case 'whatsapp':
+				if (src) {
+					window.open(`https://wa.me/${src}`, '_blank')
+				}
 				break
-      case 'video':
-        if (src) {
-          setOpenVideo(true)
-        }
-        break
-      case 'image':
-        if (src) {
-          setOpenImage(true)
-        }
-        break  
-      case 'share':
-        if(isMobile){
-          const title = window.document.title
-          const description = window.document.querySelector('meta[name="description"]')
-          navigator.share({
-            title: title,
-            text: `Check this out: ${description}`,
-            url: window.location.href,
-          })
-        }else{
-          setOpenShare(true)
-        }                 
-        break    
+			case 'download':
+				if (src) {
+					window.open(src, '_blank')
+				}
+				break
+			case 'video':
+				if (src) {
+					setOpenVideo(true)
+				}
+				break
+			case 'image':
+				if (src) {
+					setOpenImage(true)
+				}
+				break
+			case 'share':
+				if (isMobile) {
+					const title = window.document.title
+					const description = window.document.querySelector(
+						'meta[name="description"]'
+					)
+					navigator.share({
+						title: title,
+						text: `Check this out: ${description}`,
+						url: window.location.href,
+					})
+				} else {
+					setOpenShare(true)
+				}
+				break
 			default:
 				break
 		}
@@ -105,12 +107,12 @@ const useButtons = (params: UseButtonParams) => {
 		loading,
 		data,
 		errors,
-    openVideo,
-    openImage,
-    openShare,
-    setOpenVideo,
-    setOpenImage,
-    setOpenShare,
+		openVideo,
+		openImage,
+		openShare,
+		setOpenVideo,
+		setOpenImage,
+		setOpenShare,
 		handleClick,
 	}
 }

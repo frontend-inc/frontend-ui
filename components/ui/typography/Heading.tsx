@@ -7,20 +7,20 @@ import { SyntheticEventType, TypographyVariantsType } from '../../../types'
 import { cn } from 'frontend-shadcn'
 
 type HeadingProps = {
-  editable?: boolean
+	editable?: boolean
 	label?: string
 	title?: string
 	subtitle?: string
 	textAlign?: 'left' | 'center' | 'right'
 	size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 	className?: string
-  handleChange?: (ev: SyntheticEventType) => void
-  secondaryAction?: React.ReactNode
+	handleChange?: (ev: SyntheticEventType) => void
+	secondaryAction?: React.ReactNode
 }
 
 const Heading: React.FC<HeadingProps> = (props) => {
 	const {
-    editable,
+		editable,
 		label,
 		title,
 		subtitle,
@@ -28,7 +28,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		secondaryAction,
 		size = 'md',
 		className,
-    handleChange,
+		handleChange,
 	} = props || {}
 
 	const titleVariant = {
@@ -36,7 +36,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		md: 'h4',
 		lg: 'h3',
 		xl: 'h2',
-    '2xl': 'h1',
+		'2xl': 'h1',
 	}[size] as TypographyVariantsType
 
 	const subtitleVariant = {
@@ -44,16 +44,16 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		md: 'body1',
 		lg: 'subtitle2',
 		xl: 'subtitle1',
-    '2xl': 'subtitle1'
+		'2xl': 'subtitle1',
 	}[size] as TypographyVariantsType
 
-  const spacingClass = {
+	const spacingClass = {
 		sm: 'space-y-2',
 		md: 'space-y-4',
 		lg: 'space-y-4',
 		xl: 'space-y-5',
-    '2xl': 'space-y-6'
-	}[size] 
+		'2xl': 'space-y-6',
+	}[size]
 
 	if (!title && !subtitle && !label) return null
 	return (
@@ -63,11 +63,13 @@ const Heading: React.FC<HeadingProps> = (props) => {
 				className
 			)}
 		>
-			<div className={cn(
-        "w-full container max-w-screen-md flex flex-col justify-between",
-        textAlign === 'center' && 'mx-auto',
-        )}>
-				<div className={cn("flex flex-col", spacingClass )}>
+			<div
+				className={cn(
+					'w-full container max-w-screen-md flex flex-col justify-between',
+					textAlign === 'center' && 'mx-auto'
+				)}
+			>
+				<div className={cn('flex flex-col', spacingClass)}>
 					{label && (
 						<div
 							className={cn(
@@ -75,17 +77,17 @@ const Heading: React.FC<HeadingProps> = (props) => {
 								textAlign === 'right' && 'text-right'
 							)}
 						>
-							<Label label={label} className='text-primary' />
+							<Label label={label} className="text-primary" />
 						</div>
 					)}
 					{title && (
-						<Typography 
-              editable={editable}
-              variant={titleVariant} 
-              textAlign={textAlign}
-              name='title'
-              handleChange={handleChange}
-            >
+						<Typography
+							editable={editable}
+							variant={titleVariant}
+							textAlign={textAlign}
+							name="title"
+							handleChange={handleChange}
+						>
 							{title}
 						</Typography>
 					)}
@@ -93,7 +95,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 						<Typography
 							variant={subtitleVariant}
 							className="leading-8 text-foreground/70"
-							textAlign={ textAlign }
+							textAlign={textAlign}
 						>
 							{subtitle}
 						</Typography>

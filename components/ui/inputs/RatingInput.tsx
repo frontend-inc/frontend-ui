@@ -41,9 +41,10 @@ const RatingInput: React.FC<RatingInputProps> = (props) => {
 			<InputLabel label={label} info={info} />
 			<div
 				className={cn(
-          `w-full text-[15px] focus-within:shadow-md`, 
-					!disableBorder && 'p-4 pb-2 bg-white rounded border border-gray-200 shadow-sm'						
-        )}
+					`w-full text-[15px] focus-within:shadow-md`,
+					!disableBorder &&
+						'p-4 pb-2 bg-white rounded border border-gray-200 shadow-sm'
+				)}
 			>
 				<Rating
 					name={name}

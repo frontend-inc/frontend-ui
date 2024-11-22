@@ -11,16 +11,16 @@ export type PDPProps = {
 	image?: string
 	price?: string
 	compareAtPrice?: string
-  rating?: number
-	description: string,
-	title?: string	
+	rating?: number
+	description: string
+	title?: string
 	actions?: React.ReactNode
 	addToCart?: React.ReactNode
 	secondaryAction?: React.ReactNode
-  enableGradient?: boolean
-  enableOverlay?: boolean
-  enableRatings?: boolean  
-	children?: React.ReactNode	
+	enableGradient?: boolean
+	enableOverlay?: boolean
+	enableRatings?: boolean
+	children?: React.ReactNode
 }
 
 const PDP: React.FC<PDPProps> = (props) => {
@@ -28,16 +28,16 @@ const PDP: React.FC<PDPProps> = (props) => {
 		direction = 'row',
 		label,
 		image,
-    title,		
+		title,
 		addToCart,
 		price,
-    rating,
+		rating,
 		compareAtPrice,
 		description,
-    enableGradient,
-    enableOverlay,
+		enableGradient,
+		enableOverlay,
 		actions,
-		secondaryAction
+		secondaryAction,
 	} = props || {}
 
 	return (
@@ -64,7 +64,7 @@ const PDP: React.FC<PDPProps> = (props) => {
 								aspectRatio={4 / 3}
 								label={label}
 								enableGradient={enableGradient}
-                enableOverlay={enableOverlay}
+								enableOverlay={enableOverlay}
 							/>
 						</div>
 						{actions}
@@ -86,12 +86,10 @@ const PDP: React.FC<PDPProps> = (props) => {
 									{compareAtPrice}
 								</Typography>
 							)}
-						</div>            
-            {enableRatings == true && (
-              <ProductRating rating={rating} />
-            )}            
+						</div>
+						{enableRatings == true && <ProductRating rating={rating} />}
 						{addToCart}
-            <div dangerouslySetInnerHTML={{ __html: description }} />						
+						<div dangerouslySetInnerHTML={{ __html: description }} />
 					</div>
 				</div>
 			</div>

@@ -70,7 +70,7 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 		<Component
 			label={resource?.label}
 			image={resource?.image?.url}
-      // @ts-ignore
+			// @ts-ignore
 			title={
 				//@ts-ignore
 				<Typography variant={typographyVariants[style]}>
@@ -90,8 +90,8 @@ const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 					enableComments={enableComments}
 				/>
 			}
-      enableGradient={enableGradient}
-      enableOverlay={enableOverlay}			
+			enableGradient={enableGradient}
+			enableOverlay={enableOverlay}
 		/>
 	)
 }

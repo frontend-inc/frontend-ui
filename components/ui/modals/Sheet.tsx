@@ -35,8 +35,7 @@ const Sheet: React.FC<SheetProps> = ({
 	disablePadding = false,
 	className,
 }) => {
-	
-  const { mode, theme } = useTheme()
+	const { mode, theme } = useTheme()
 
 	return (
 		<ShadcnSheet open={open} onOpenChange={handleClose}>
@@ -44,7 +43,7 @@ const Sheet: React.FC<SheetProps> = ({
 				side={side}
 				className={cn(
 					mode,
-          theme,
+					theme,
 					'w-full sm:w-[360px]',
 					disablePadding && 'px-0',
 					className

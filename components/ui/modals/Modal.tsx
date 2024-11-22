@@ -25,21 +25,20 @@ type ModalProps = {
 	children?: React.ReactNode
 	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 	secondaryActions?: React.ReactNode
-  className?: string
+	className?: string
 }
 
 export default function Modal(props: ModalProps) {
-
-  const {
-    open,
-    loading = false,
-    handleClose,
-    title,
-    buttons,
-    children,
-    description,
-    className
-  } = props
+	const {
+		open,
+		loading = false,
+		handleClose,
+		title,
+		buttons,
+		children,
+		description,
+		className,
+	} = props
 	const { mode } = useTheme()
 
 	return (

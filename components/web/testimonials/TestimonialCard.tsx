@@ -19,12 +19,12 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 			<div className="flex flex-col space-y-3 justify-between h-full">
 				<div>
 					{text && (
-						<Typography 
+						<Typography
 							variant="subtitle1"
 							className="font-normal italic leading-loose"
 						>
-              { text }
-            </Typography>
+							{text}
+						</Typography>
 					)}
 				</div>
 				<div className="flex flex-row space-x-2 items-center">

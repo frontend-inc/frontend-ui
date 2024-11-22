@@ -7,16 +7,16 @@ import {
 	HeroAvatar,
 	HeroCard,
 	HeroCover,
-  CollectionDetails
+	CollectionDetails,
 } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { ListFields, ButtonActions, SocialButtons } from '../..'
 import { DOCUMENT_SHOW_FIELDS } from '../../../constants'
 
 export type ShowContainerProps = {
-  resource: any
+	resource: any
 	metafields: MetafieldType[]
-  buttons: ButtonType[]
+	buttons: ButtonType[]
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
@@ -24,7 +24,7 @@ export type ShowContainerProps = {
 	enableOverlay?: boolean
 }
 
-type ShowStyleTypes = 'card' | 'cover' | 'list' | 'avatar' 
+type ShowStyleTypes = 'card' | 'cover' | 'list' | 'avatar'
 
 export type ShowProps = ShowContainerProps & {
 	url?: string
@@ -32,8 +32,7 @@ export type ShowProps = ShowContainerProps & {
 }
 
 const Show: React.FC<ShowProps> = (props) => {
-	
-  const {
+	const {
 		style = 'list',
 		metafields = [],
 		buttons,
@@ -46,46 +45,46 @@ const Show: React.FC<ShowProps> = (props) => {
 
 	const { resource } = useResourceContext()
 
-  let disableImage = false 
-  switch(resource?.documentType){
-    case 'youtube':
-    case 'vimeo':
-    case 'soundcloud':
-    case 'video':
-      disableImage = true
-      break
-    default: 
-      disableImage = false
-  }
+	let disableImage = false
+	switch (resource?.documentType) {
+		case 'youtube':
+		case 'vimeo':
+		case 'soundcloud':
+		case 'video':
+			disableImage = true
+			break
+		default:
+			disableImage = false
+	}
 
-  const buttonAlignClasses = {
-    list: 'center',
-    cover: 'center',
-    card: 'end',
-    avatar: 'end',
-  }[style] as 'start' | 'center' | 'end'
-	
-  if(!resource?.id) return null;
+	const buttonAlignClasses = {
+		list: 'center',
+		cover: 'center',
+		card: 'end',
+		avatar: 'end',
+	}[style] as 'start' | 'center' | 'end'
+
+	if (!resource?.id) return null
 	return (
-		<HeroList      
-      disableImage={ disableImage }
-      label={resource?.label}
+		<HeroList
+			disableImage={disableImage}
+			label={resource?.label}
 			image={resource?.image?.url}
 			title={resource?.title}
-      subtitle={ resource?.subtitle }
-      description={ resource?.description }
-      category={ resource?.category }
-      location={ resource?.location }
-      lat={ resource?.lat }
-      lng={ resource?.lng }
-      tags={ resource?.tags }
-      html={ resource?.html }
-      startsAt={ resource?.start_date }
-      endsAt={ resource?.end_date }
-      publishedAt={ resource?.published_at }	      
-      youtubeSrc={ resource?.youtube_video }		      
-      vimeoSrc={ resource?.vimeo_video }
-      soundcloudSrc={ resource?.soundcloud_audio }
+			subtitle={resource?.subtitle}
+			description={resource?.description}
+			category={resource?.category}
+			location={resource?.location}
+			lat={resource?.lat}
+			lng={resource?.lng}
+			tags={resource?.tags}
+			html={resource?.html}
+			startsAt={resource?.start_date}
+			endsAt={resource?.end_date}
+			publishedAt={resource?.published_at}
+			youtubeSrc={resource?.youtube_video}
+			vimeoSrc={resource?.vimeo_video}
+			soundcloudSrc={resource?.soundcloud_audio}
 			actions={
 				<SocialButtons
 					size="large"
@@ -106,8 +105,8 @@ const Show: React.FC<ShowProps> = (props) => {
 					</div>
 				)
 			}
-      enableGradient={enableGradient}
-      enableOverlay={enableOverlay}
+			enableGradient={enableGradient}
+			enableOverlay={enableOverlay}
 		/>
 	)
 }

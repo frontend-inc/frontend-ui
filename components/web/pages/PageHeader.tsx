@@ -7,7 +7,7 @@ import { Heading, ButtonActions, Breadcrumbs } from '../../../components'
 export type PageHeaderProps = {
 	label?: string
 	title?: string
-  subtitle?: string
+	subtitle?: string
 	breadcrumbs: {
 		label: string
 		path: string

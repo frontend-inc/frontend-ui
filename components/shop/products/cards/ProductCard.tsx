@@ -19,8 +19,8 @@ export type ProductCardProps = {
 	handleClick?: () => void
 	height?: number
 	addToCart?: React.ReactNode
-  enableGradient?: boolean
-  enableOverlay?: boolean
+	enableGradient?: boolean
+	enableOverlay?: boolean
 }
 
 const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
@@ -37,8 +37,8 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 			image,
 			height = 300,
 			addToCart,
-      enableGradient = false,
-      enableOverlay = false,			
+			enableGradient = false,
+			enableOverlay = false,
 		} = props
 
 		return (
@@ -52,7 +52,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 						aspectRatio={1.0}
 						handleClick={handleClick}
 						enableGradient={enableGradient}
-            enableOverlay={enableOverlay}
+						enableOverlay={enableOverlay}
 					/>
 				</div>
 				<div className="py-2 flex flex-col space-y-4 w-full justify-between items-between">

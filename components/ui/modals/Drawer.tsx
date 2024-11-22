@@ -28,7 +28,7 @@ type CustomDrawerProps = {
 	buttons?: React.ReactNode
 	children: React.ReactNode
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl'
-  className?: string
+	className?: string
 }
 
 export default function CustomDrawer({
@@ -40,9 +40,8 @@ export default function CustomDrawer({
 	children,
 	buttons,
 	maxWidth = 'md',
-  className
+	className,
 }: CustomDrawerProps) {
-  
 	const maxWidthClasses = {
 		sm: 'max-w-screen-sm',
 		md: 'max-w-screen-md',
@@ -59,8 +58,8 @@ export default function CustomDrawer({
 					<DrawerHeader>
 						<div className="flex w-full justify-end">
 							<DrawerClose>
-                <X className="h-5 w-5" />
-                <span className="sr-only">Close</span>
+								<X className="h-5 w-5" />
+								<span className="sr-only">Close</span>
 							</DrawerClose>
 						</div>
 
@@ -89,12 +88,13 @@ export default function CustomDrawer({
 									'w-full min-h-[50vh] max-h-[75vh]'
 								)}
 							>
-                { !loading ? 
-                  children : 
-                  <div className="flex justify-center items-center w-full">
-                    <Loader2 className="animate-spin h-12 w-12 text-foreground" /> 
-                  </div>
-                } 
+								{!loading ? (
+									children
+								) : (
+									<div className="flex justify-center items-center w-full">
+										<Loader2 className="animate-spin h-12 w-12 text-foreground" />
+									</div>
+								)}
 							</div>
 						</div>
 					</ScrollArea>

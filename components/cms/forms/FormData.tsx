@@ -7,25 +7,21 @@ import { HeadingProps } from '../../../types'
 
 export type FormDataProps = HeadingProps & {
 	formId: number
-  buttonText?: string 
+	buttonText?: string
 }
 
 const FormData: React.FC<FormDataProps> = (props) => {
-
-	const { 
-    buttonText,
-    formId, 
-  } = props || {}
+	const { buttonText, formId } = props || {}
 
 	const { loading, form, findForm } = useForms()
 
-  const { showAlertSuccess } = useToast()
+	const { showAlertSuccess } = useToast()
 
 	const {
-    errors,
+		errors,
 		loading: responseLoading,
 		contact,
-    setContact,
+		setContact,
 		handleChange,
 		updateContact,
 		removeAttachment,
@@ -46,7 +42,7 @@ const FormData: React.FC<FormDataProps> = (props) => {
 			resp = await submitForm(contact)
 		}
 		if (resp?.id) {
-      setContact({})
+			setContact({})
 			showAlertSuccess('Form submitted successfully')
 		}
 	}
@@ -64,29 +60,29 @@ const FormData: React.FC<FormDataProps> = (props) => {
 			findForm(formId)
 		}
 	}, [formId])
-  
-	return (		
-    <div className="w-full flex flex-col space-y-4">
-      <Heading         
-        title={ form?.title}
-        subtitle={ form?.description }
-        size="lg"
-        textAlign='center'
-      />
-      <Form
-        errors={ errors }
-        loading={loading || responseLoading}
-        resource={contact}
-        //@ts-ignore
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-        fields={form?.questions}
-        handleRemove={handleRemove}
-        handleRemoveAttachment={handleRemove}
-        handleAddAttachment={handleAddAttachment}
-        buttonText={buttonText}
-      />
-    </div>
+
+	return (
+		<div className="w-full flex flex-col space-y-4">
+			<Heading
+				title={form?.title}
+				subtitle={form?.description}
+				size="lg"
+				textAlign="center"
+			/>
+			<Form
+				errors={errors}
+				loading={loading || responseLoading}
+				resource={contact}
+				//@ts-ignore
+				handleChange={handleChange}
+				handleSubmit={handleSubmit}
+				fields={form?.questions}
+				handleRemove={handleRemove}
+				handleRemoveAttachment={handleRemove}
+				handleAddAttachment={handleAddAttachment}
+				buttonText={buttonText}
+			/>
+		</div>
 	)
 }
 

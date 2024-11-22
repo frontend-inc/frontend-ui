@@ -32,9 +32,7 @@ const ResourceToolbarButtons: React.FC<ResourceToolbarButtonsProps> = (
 							: undefined
 					}
 				>
-					{button?.icon && (
-						<RemixIcon name={button?.icon} className="mr-2" />
-					)}
+					{button?.icon && <RemixIcon name={button?.icon} className="mr-2" />}
 					{button?.label}
 				</Button>
 			))}

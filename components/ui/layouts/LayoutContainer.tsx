@@ -18,13 +18,8 @@ type LayoutContainerProps = {
 }
 
 export default function LayoutContainer(props: LayoutContainerProps) {
+	const { children, notifications, requireAuth } = props
 
-  const {
-    children,
-    notifications,
-    requireAuth,
-  } = props
-  
 	return (
 		<div className="w-full min-h-screen">
 			<Toaster />

@@ -6,24 +6,26 @@ import { FeatureIcons } from '../../components'
 import { FeatureIconsProps } from '../../components/web/features/FeatureIcons'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
 
-type UIFeaturesProps = SectionProps & HeadingProps & 
-  StackProps & FeatureIconsProps
+type UIFeaturesProps = SectionProps &
+	HeadingProps &
+	StackProps &
+	FeatureIconsProps
 
 const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 	const {
-    direction='column',
+		direction = 'column',
 		label,
 		title,
 		subtitle,
-		textAlign='center',
-    fontSize='lg',
-    fill,
-    border,
+		textAlign = 'center',
+		fontSize = 'lg',
+		fill,
+		border,
 		bgColor,
 		mode,
 		py,
 		px,
-		maxWidth='lg',
+		maxWidth = 'lg',
 		requireAuth,
 		...rest
 	} = props
@@ -38,23 +40,23 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 			maxWidth={maxWidth}
 		>
 			<Stack direction={direction}>
-        <Row size="1/3">
-          <Heading
-            label={label}
-            title={title}
-            subtitle={subtitle}
-            textAlign={direction == 'row' ? 'left' : 'center'}
-            size={fontSize}
-          />
-        </Row>
-        <Row size="2/3">
-          <FeatureIcons 
-            {...rest} 
-            direction={direction}
-            fill={fill}
-            border={border}
-          />
-        </Row>
+				<Row size="1/3">
+					<Heading
+						label={label}
+						title={title}
+						subtitle={subtitle}
+						textAlign={direction == 'row' ? 'left' : 'center'}
+						size={fontSize}
+					/>
+				</Row>
+				<Row size="2/3">
+					<FeatureIcons
+						{...rest}
+						direction={direction}
+						fill={fill}
+						border={border}
+					/>
+				</Row>
 			</Stack>
 		</Section>
 	)

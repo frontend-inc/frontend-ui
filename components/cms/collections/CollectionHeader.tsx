@@ -124,11 +124,8 @@ const CollectionHeader: React.FC<CollectionHeaderProps> = (props) => {
 								'bg-primary text-primary-foreground hover:bg-primary/90'
 							)}
 							onClick={handleAdd}
-              startIcon={
-                <RiAddFill />
-              }
+							startIcon={<RiAddFill />}
 						>
-							
 							{buttonText}
 						</Button>
 					</div>

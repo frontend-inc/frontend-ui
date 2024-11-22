@@ -8,14 +8,14 @@ export type ImageModalProps = {
 	open: boolean
 	handleClose: () => void
 	title?: string
-  src: string
+	src: string
 	enableGradient?: boolean
 }
 
 const ImageModal: React.FC<ImageModalProps> = (props) => {
 	const { open, handleClose, title, src, enableGradient } = props || {}
-  
-  if(!src) return null;
+
+	if (!src) return null
 	return (
 		<MediaModal open={open} handleClose={handleClose}>
 			<div className={cn('w-full min-w-[80vw]')}>

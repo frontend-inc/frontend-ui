@@ -8,7 +8,7 @@ import { Typography } from '../../../components'
 type ShareButtonProps = {
 	url: string
 	open: boolean
-  handleClose: () => void
+	handleClose: () => void
 }
 
 const SOCIAL_PROVIDERS = [
@@ -20,22 +20,20 @@ const SOCIAL_PROVIDERS = [
 ]
 
 export default function ShareButton({
-  open,
-  handleClose,
-	url,  	
+	open,
+	handleClose,
+	url,
 }: ShareButtonProps) {
-
 	const { showAlertSuccess } = useToast()
 
-
-	const handleShareClick = (platform: string) => {		
+	const handleShareClick = (platform: string) => {
 		const shareUrl = getShareUrl(platform, url)
 		if (platform === 'copy') {
 			showAlertSuccess('Share link copied to clipboard')
 		} else {
 			window.open(shareUrl, '_blank')
 		}
-    handleClose()
+		handleClose()
 	}
 
 	const getShareUrl = (platform: string, url: string) => {
@@ -58,29 +56,29 @@ export default function ShareButton({
 	}
 
 	return (
-    <Modal open={open} handleClose={ handleClose }>
-      <div className="p-4">
-        <div className="space-y-6">
-          <div className="w-full">
-            <Typography variant="subtitle1" textAlign="center">
-              Share to social media
-            </Typography>
-            <Typography variant="body2" textAlign="center">
-              Select your social media platform
-            </Typography>
-          </div>
-          <div className="flex justify-center items-center space-x-2">
-            {SOCIAL_PROVIDERS.map((provider, index) => (
-              <SocialIcon
-                key={index}
-                provider={provider.value}
-                handleClick={() => handleShareClick(provider.value)}
-                size={36}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    </Modal>
+		<Modal open={open} handleClose={handleClose}>
+			<div className="p-4">
+				<div className="space-y-6">
+					<div className="w-full">
+						<Typography variant="subtitle1" textAlign="center">
+							Share to social media
+						</Typography>
+						<Typography variant="body2" textAlign="center">
+							Select your social media platform
+						</Typography>
+					</div>
+					<div className="flex justify-center items-center space-x-2">
+						{SOCIAL_PROVIDERS.map((provider, index) => (
+							<SocialIcon
+								key={index}
+								provider={provider.value}
+								handleClick={() => handleShareClick(provider.value)}
+								size={36}
+							/>
+						))}
+					</div>
+				</div>
+			</div>
+		</Modal>
 	)
 }

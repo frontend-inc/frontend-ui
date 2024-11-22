@@ -23,9 +23,8 @@ type ShopifyProductFilterButtonProps = {
 const ShopifyProductFilterButton: React.FC<ShopifyProductFilterButtonProps> = (
 	props
 ) => {
-	
-  const [open, setOpen] = useState(false)
-  const toggleMenu = () => setOpen(!open)
+	const [open, setOpen] = useState(false)
+	const toggleMenu = () => setOpen(!open)
 
 	const {
 		filters = [],
