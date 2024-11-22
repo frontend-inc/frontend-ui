@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { Typography } from '../../../components'
-import { TableHeaders, TablePagination, Empty } from '../../../components'
-import { Table, TableHeader, TableBody } from 'frontend-shadcn'
+import { TableHeaders, Empty } from '../../../components'
+import { Table, TableRow, TableHeader, TableBody } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
 
 type TableProps = {
@@ -128,14 +128,6 @@ const TableList: React.FC<TableProps> = (props) => {
 					/>
 				</div>
 			)}
-			<Pagination
-				loading={loading}
-				page={page}
-				perPage={perPage}
-				numPages={numPages}
-				totalCount={totalCount}
-				handlePaginate={handlePaginate}
-			/>
 		</div>
 	)
 }

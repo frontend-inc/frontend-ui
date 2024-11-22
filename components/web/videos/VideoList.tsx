@@ -82,7 +82,6 @@ const Videos: React.FC<VideosProps> = (props) => {
 				handleClose={() => setOpen(false)}
 				//@ts-ignore
 				src={activeVideo?.video}
-				title={activeVideo?.title}
 			/>
 		</div>
 	)

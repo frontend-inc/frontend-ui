@@ -8,7 +8,7 @@ export type VideoCoverProps = HeadingProps & {
 	src: string
 	height?: number
 	path?: string
-	handleClick?: () => void
+	handleClick?: (ev: any) => void
 	alignItems?: 'items-center' | 'items-start' | 'items-end'
 	buttonText?: string
 	actions?: React.ReactNode
@@ -72,7 +72,12 @@ const VideoCover: React.FC<VideoCoverProps> = (props) => {
 					{actions}
 					{buttonText && (
 						<div>
-							<Button size="lg" onClick={onClick} variant="default">
+							<Button 
+                size="lg" 
+                //@ts-ignore
+                onClick={onClick} 
+                variant="default"
+              >
 								{buttonText}
 							</Button>
 						</div>

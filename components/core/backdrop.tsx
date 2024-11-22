@@ -16,7 +16,7 @@ export function Backdrop(props: BackdropProps) {
     open,
     onClick,
     className,
-    ...props
+    ...rest
   } = props
   
 	return (

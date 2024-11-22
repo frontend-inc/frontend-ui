@@ -18,7 +18,7 @@ export type CoverCarouselProps = {
 	enableBorder?: boolean
 	enableArrows?: boolean
 	opacity?: number
-	alignItems?: 'flex-start' | 'center' | 'flex-end'
+	alignItems?: 'items-center' | 'items-start' | 'items-end'
 }
 
 const CoverCarousel: React.FC<CoverCarouselProps> = (props) => {
@@ -28,7 +28,7 @@ const CoverCarousel: React.FC<CoverCarouselProps> = (props) => {
 		enableGradient = false,
 		enableArrows = false,
 		enableAutoPlay = false,
-		alignItems = 'center',
+		alignItems = 'items-center',
 	} = props
 
 	return (
