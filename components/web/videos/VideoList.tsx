@@ -72,8 +72,8 @@ const Videos: React.FC<VideosProps> = (props) => {
 				{items?.length == 0 && (
 					<Empty
 						icon="ri-video-fill"
-						title="No videos yet."
-						description="Videos will appear here."
+						title="No videos"
+						description="Videos will display here."
 					/>
 				)}
 			</div>

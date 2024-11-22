@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Label, Typography } from '../../../components'
-import { TypographyVariantsType } from '@/types'
+import { TypographyVariantsType } from '../../../types'
 import { Avatar, AvatarImage, AvatarFallback, Badge } from 'frontend-shadcn'
 
 export type BlogProps = {

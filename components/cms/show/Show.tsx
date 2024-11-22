@@ -58,11 +58,11 @@ const Show: React.FC<ShowProps> = (props) => {
 	}
 
 	const buttonAlignClasses = {
-		list: 'center',
-		cover: 'center',
-		card: 'end',
-		avatar: 'end',
-	}[style] as 'start' | 'center' | 'end'
+		list: 'justify-center',
+		cover: 'justify-center',
+		card: 'justify-end',
+		avatar: 'justify-end',
+	}[style] as 'justify-start' | 'justify-center' | 'justify-end'
 
 	if (!resource?.id) return null
 	return (

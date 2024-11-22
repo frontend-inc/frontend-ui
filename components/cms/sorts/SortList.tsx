@@ -5,7 +5,6 @@ import { cn } from 'frontend-shadcn'
 import { Typography, Button } from '../../../components'
 import { Check } from 'lucide-react'
 import { SortOptionType } from '../../../types'
-import { MenuList } from '../../../components'
 
 // Assuming SORT_DIRECTIONS is imported from a constants file
 const SORT_DIRECTIONS = [
@@ -21,13 +20,16 @@ type SortListProps = {
 	handleSortDirection: (sortDirection: 'asc' | 'desc') => void
 }
 
-export default function SortList({
-	sortOptions,
-	sortBy,
-	sortDirection,
-	handleSortBy,
-	handleSortDirection,
-}: SortListProps) {
+export default function SortList(props: SortListProps) {
+
+  const {
+    sortOptions,
+    sortBy,
+    sortDirection,
+    handleSortBy,
+    handleSortDirection,
+  } = props
+  
 	return (
 		<div className="flex flex-col space-y-3 w-full p-4">
 			<Typography variant="body1" className="text-primary font-medium">

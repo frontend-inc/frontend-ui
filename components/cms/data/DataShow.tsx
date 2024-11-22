@@ -48,8 +48,8 @@ const DataShow: React.FC<DataShowProps> = (props) => {
 			<ResourceDetails
 				label={resource?.label}
 				image={resource?.image?.url}
-				primary={resource?.title}
-				secondary={resource?.description}
+				title={resource?.title}
+				subtitle={resource?.subtitle}
 				resource={resource}
 				fields={fields}
 			/>

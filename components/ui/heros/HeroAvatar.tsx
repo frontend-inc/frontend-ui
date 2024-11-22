@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
-import { HeroCardProps } from './HeroCard'
+import { HeroProps } from './HeroList'
 import { Typography, AvatarImage } from '../..'
 
-const HeroAvatar: React.FC<HeroCardProps> = (props) => {
+const HeroAvatar: React.FC<HeroProps> = (props) => {
 	const {
 		image,
 		title,

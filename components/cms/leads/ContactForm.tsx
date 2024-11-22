@@ -11,8 +11,6 @@ export type ContactFormProps = {
 	href?: string
 	metafields?: FormFieldType[]
 	handleClick?: () => void
-	editable?: boolean
-	handleChange?: (ev: SyntheticEventType) => void
 }
 
 // Call To Action

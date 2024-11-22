@@ -16,7 +16,6 @@ const CmsShow: React.FC<CmsShowProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		style,
 		...rest
 	} = props
@@ -26,8 +25,8 @@ const CmsShow: React.FC<CmsShowProps> = (props) => {
 			requireAuth={requireAuth}
 			bgColor={bgColor}
 			mode={mode}
-			py={style == 'cover' ? 0 : py}
-			px={style == 'cover' ? 0 : px}
+			py={style == 'cover' ? 'none' : py}
+			px={style == 'cover' ? 'none' : px}
 			maxWidth={maxWidth}
 		>
 			<ShowContainer {...rest} style={style} />

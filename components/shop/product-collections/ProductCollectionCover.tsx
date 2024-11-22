@@ -7,7 +7,7 @@ import { ResourceProvider } from 'frontend-js'
 
 export type ProductCollectionCoverProps = {
 	height?: number
-	alignItems?: 'flex-start' | 'center' | 'flex-end'
+	alignItems?: 'items-center' | 'items-start' | 'items-end'
 	alt?: string
 	handleClick?: () => void
 	enableGradient?: boolean
@@ -18,13 +18,14 @@ export type ProductCollectionCoverProps = {
 const ProductCollectionCover: React.FC<ProductCollectionCoverProps> = (
 	props
 ) => {
+  
 	const {
 		handleClick,
 		height = 400,
 		alt = 'image',
 		enableGradient = false,
 		enableOverlay = true,
-		alignItems = 'center',
+		alignItems = 'items-center',
 		productCollectionId,
 	} = props
 

@@ -7,7 +7,7 @@ import { ShopifyProductCollectionModal } from '../../../components'
 
 export type ShopifyCollectionCoverProps = {
 	shopifyCollection: string
-	alignItems?: 'flex-start' | 'center' | 'flex-end'
+	alignItems?: 'items-center' | 'items-start' | 'items-end'
 	alt?: string
 	handleClick?: () => void
 	enableGradient?: boolean
@@ -27,7 +27,7 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 		handleClick,
 		enableGradient = false,
 		enableOverlay = false,
-		alignItems = 'center',
+		alignItems = 'items-center',
 		buttonText,
 		enableQuantity,
 		enableAddToCart,

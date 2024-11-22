@@ -25,7 +25,6 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 		resource,
 		title,
 		subtitle,
-		actions,
 		label,
 		image,
 		fields = [],

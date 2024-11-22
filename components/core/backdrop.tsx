@@ -9,16 +9,20 @@ interface BackdropProps extends React.HTMLAttributes<HTMLDivElement> {
 	onClick?: () => void
 }
 
-export function Backdrop({
-	children,
-	open,
-	onClick,
-	className,
-	...props
-}: BackdropProps) {
+export function Backdrop(props: BackdropProps) {
+
+  const {
+    children,
+    open,
+    onClick,
+    className,
+    ...props
+  } = props
+  
 	return (
 		<AnimatePresence>
 			{open && (
+        //@ts-ignore
 				<motion.div
 					initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
 					animate={{

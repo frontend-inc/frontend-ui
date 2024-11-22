@@ -36,6 +36,7 @@ const PDP: React.FC<PDPProps> = (props) => {
 		description,
 		enableGradient,
 		enableOverlay,
+    enableRatings,
 		actions,
 		secondaryAction,
 	} = props || {}
@@ -87,7 +88,7 @@ const PDP: React.FC<PDPProps> = (props) => {
 								</Typography>
 							)}
 						</div>
-						{enableRatings == true && <ProductRating rating={rating} />}
+						{enableRatings == true && <ProductRating rating={rating || 0} />}
 						{addToCart}
 						<div dangerouslySetInnerHTML={{ __html: description }} />
 					</div>

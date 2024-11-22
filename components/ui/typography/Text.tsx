@@ -2,8 +2,7 @@
 
 import React from 'react'
 import { Typography } from '../../../components'
-import { TypographyVariantsType } from '@/types'
-import { cn } from 'frontend-shadcn'
+import { TypographyVariantsType } from '../../../types'
 
 export type TextProps = {
 	title?: string

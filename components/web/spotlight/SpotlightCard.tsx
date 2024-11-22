@@ -18,26 +18,30 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
 	} = props || {}
 
 	return (
-		<div className={'pt-16 py-6 h-auto w-full'}>
+		<div className='pt-16 py-6 h-auto w-full'>
 			<Container maxWidth="xl">
-				<Stack direction="row" split="1/2" className="items-center">
-					<div className="w-full flex flex-col space-y-6">
-						<Heading
-							label={label}
-							title={title}
-							subtitle={subtitle}
-							size="2xl"
-						/>
-						{actions && actions}
-					</div>
-					<Image
-						src={image}
-						alt={title}
-						aspectRatio={1.5}
-						objectFit={objectFit}
-						enableGradient={enableGradient}
-						enableOverlay={enableOverlay}
-					/>
+				<Stack direction="row" className="items-center">
+          <Stack direction="row" size="1/2">
+            <Stack spacing={6}>
+              <Heading
+                label={label}
+                title={title}
+                subtitle={subtitle}
+                size="2xl"
+              />
+              {actions && actions}
+            </Stack>
+          </Stack>
+          <Stack direction="row" size="1/2">
+            <Image
+              src={image}
+              alt={title}
+              aspectRatio={1.5}
+              objectFit={objectFit}
+              enableGradient={enableGradient}
+              enableOverlay={enableOverlay}
+            />
+          </Stack>
 				</Stack>
 			</Container>
 		</div>
