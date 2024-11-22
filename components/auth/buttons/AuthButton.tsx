@@ -41,7 +41,7 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 						</IconButton>
 					) : (
 						<IconButton onClick={handleLogin}>
-							<RemixIcon name="ri-user-6-fill" size="md" />
+							<RemixIcon name="ri-user-6-line" size="lg" />
 						</IconButton>
 					)}
 				</>

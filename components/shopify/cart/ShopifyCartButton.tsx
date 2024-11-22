@@ -12,7 +12,7 @@ type ShopifyCartButtonProps = {
 }
 
 export default function ShopifyCartButton(props: ShopifyCartButtonProps) {
-	const { icon = 'ri-shopping-cart-2-fill' } = props || {}
+	const { icon = 'ri-shopping-cart-2-line' } = props || {}
 	const { cart, toggleCart } = useContext(ShopifyContext) as any
 	const { setMenuOpen } = useContext(AppContext)
 
@@ -23,7 +23,7 @@ export default function ShopifyCartButton(props: ShopifyCartButtonProps) {
 	return (
 		<div className="relative">
 			<IconButton onClick={handleCartClick}>
-				<RemixIcon name={icon} />
+				<RemixIcon name={icon} size='lg' />
 			</IconButton>
 			<Badge className="py-0 px-1 rounded-full absolute top-0 right-0 transform translate-x-[3px] -translate-y-[3px]">
 				{cart?.totalQuantity}

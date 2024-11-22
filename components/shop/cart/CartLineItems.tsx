@@ -3,7 +3,7 @@
 import React from 'react'
 import { List } from '../../../components'
 import CartLineItem from './CartLineItem'
-import { Alert } from '../../../components'
+import { Empty } from '../../../components'
 import { useCart } from '../../../hooks'
 
 const CartLineItems: React.FC = () => {
@@ -12,7 +12,7 @@ const CartLineItems: React.FC = () => {
 	if (!cart?.uid) return null
 	if (cart?.line_items.length === 0) {
 		return (
-			<Alert
+			<Empty
 				icon="ri-shopping-bag-2-fill"
 				title="Your cart is empty"
 				description="There are no products in the cart."
