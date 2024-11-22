@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Section, Heading, Stack } from '../../components'
+import { Section, Row, Heading, Stack } from '../../components'
 import { ContactForm } from '../../components'
 import { ContactFormProps } from '../../components/cms/leads/ContactForm'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
@@ -13,7 +13,6 @@ type FormContactUsProps = SectionProps &
 
 const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 	const {
-		split = '1/3',
 		direction = 'column',
 		label,
 		title,
@@ -31,6 +30,8 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 		...rest
 	} = props
 
+  const isRow = direction == 'row'
+
 	return (
 		<Section
 			requireAuth={requireAuth}
@@ -42,15 +43,19 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 			fill={fill}
 			border={border}
 		>
-			<Stack direction={direction} split={split}>
-				<Heading
-					label={label}
-					title={title}
-					subtitle={subtitle}
-					size={fontSize}
-					textAlign={direction == 'row' ? 'left' : 'center'}
-				/>
-				<ContactForm {...rest} />
+			<Stack direction={direction}>
+        <Row size={ isRow ? "1/3" : "full" }>
+          <Heading
+            label={label}
+            title={title}
+            subtitle={subtitle}
+            size={fontSize}
+            textAlign={direction == 'row' ? 'left' : 'center'}
+          />
+        </Row>
+        <Row size={ isRow ? "2/3" : "full" }>
+				  <ContactForm {...rest} />
+        </Row>
 			</Stack>
 		</Section>
 	)
