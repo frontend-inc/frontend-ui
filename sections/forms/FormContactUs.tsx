@@ -27,8 +27,8 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 		px,
 		maxWidth = 'lg',
 		requireAuth,
-    editable,
-    handleChange,
+		editable,
+		handleChange,
 		...rest
 	} = props
 
@@ -44,20 +44,20 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 			border={border}
 		>
 			<Stack direction={direction} spacing={10}>
-        <Stack direction={direction} size="1/3">
-          <Heading
-            label={label}
-            title={title}
-            subtitle={subtitle}
-            size={fontSize}
-            textAlign={direction == 'row' ? 'left' : 'center'}
-            editable={editable}
-            handleChange={handleChange}
-          />
-        </Stack>
-        <Stack direction={direction} size="2/3">
-				  <ContactForm {...rest} />
-        </Stack>
+				<Stack direction={direction} size="1/3">
+					<Heading
+						label={label}
+						title={title}
+						subtitle={subtitle}
+						size={fontSize}
+						textAlign={direction == 'row' ? 'left' : 'center'}
+						editable={editable}
+						handleChange={handleChange}
+					/>
+				</Stack>
+				<Stack direction={direction} size="2/3">
+					<ContactForm {...rest} />
+				</Stack>
 			</Stack>
 		</Section>
 	)

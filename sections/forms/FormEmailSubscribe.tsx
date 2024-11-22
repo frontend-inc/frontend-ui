@@ -27,8 +27,8 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 		px,
 		maxWidth = 'lg',
 		requireAuth,
-    editable,
-    handleChange,
+		editable,
+		handleChange,
 		...rest
 	} = props
 
@@ -44,20 +44,20 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 			maxWidth={maxWidth}
 		>
 			<Stack direction={direction} spacing={10}>
-        <Stack direction={direction} size="1/3" className="items-center">
-          <Heading
-            label={label}
-            title={title}
-            subtitle={subtitle}
-            size={fontSize}
-            textAlign={direction == 'row' ? 'left' : 'center'}
-            editable={editable}
-            handleChange={handleChange}
-          />
-        </Stack>
-        <Stack direction={direction} size="2/3">
-				  <EmailSubscribe {...rest} />
-        </Stack>
+				<Stack direction={direction} size="1/3" className="items-center">
+					<Heading
+						label={label}
+						title={title}
+						subtitle={subtitle}
+						size={fontSize}
+						textAlign={direction == 'row' ? 'left' : 'center'}
+						editable={editable}
+						handleChange={handleChange}
+					/>
+				</Stack>
+				<Stack direction={direction} size="2/3">
+					<EmailSubscribe {...rest} />
+				</Stack>
 			</Stack>
 		</Section>
 	)

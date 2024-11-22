@@ -17,7 +17,7 @@ const Row: React.FC<RowProps> = (props) => {
 		'1/4': 'md:w-1/4',
 		'2/3': 'md:w-2/3',
 		'3/4': 'md:w-3/4',
-		'full': 'md:w-full',
+		full: 'md:w-full',
 	}
 
 	return (

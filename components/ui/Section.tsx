@@ -38,14 +38,14 @@ const Section: React.FC<SectionProps> = (props) => {
 		xl: 'py-[144px]',
 	}
 
-  const pxClasses = {
-    none: 'px-0',
-    sm: 'px-6',
-    md: 'px-12',
-    lg: 'px-24', 
-    xl: 'px-48',
-  }
-  
+	const pxClasses = {
+		none: 'px-0',
+		sm: 'px-6',
+		md: 'px-12',
+		lg: 'px-24',
+		xl: 'px-48',
+	}
+
 	return (
 		<section
 			className={cn(

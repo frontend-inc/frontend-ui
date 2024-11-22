@@ -28,9 +28,9 @@ const VideoCover: React.FC<VideoCoverProps> = (props) => {
 		actions,
 		height = 400,
 		enableOverlay,
-    fontSize = 'lg',
-    editable,
-    handleChange
+		fontSize = 'lg',
+		editable,
+		handleChange,
 	} = props
 
 	const onClick = useNavigate({
@@ -66,8 +66,8 @@ const VideoCover: React.FC<VideoCoverProps> = (props) => {
 						subtitle={subtitle}
 						textAlign={alignItems === 'items-center' ? 'center' : 'left'}
 						size={fontSize}
-            editable={editable}
-            handleChange={handleChange}
+						editable={editable}
+						handleChange={handleChange}
 					/>
 					{actions}
 					{buttonText && (

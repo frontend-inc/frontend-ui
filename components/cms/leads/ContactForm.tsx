@@ -11,17 +11,14 @@ export type ContactFormProps = {
 	href?: string
 	metafields?: FormFieldType[]
 	handleClick?: () => void
-  editable?: boolean
-  handleChange?: (ev: SyntheticEventType) => void
+	editable?: boolean
+	handleChange?: (ev: SyntheticEventType) => void
 }
 
 // Call To Action
 const ContactForm: React.FC<ContactFormProps> = (props) => {
 	const { showAlertSuccess } = useToast()
-	const {
-    metafields = [], 
-    buttonText = 'Send Message' 
-  } = props || {}
+	const { metafields = [], buttonText = 'Send Message' } = props || {}
 
 	const {
 		errors,
@@ -48,42 +45,42 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 	}
 
 	return (
-    <Container maxWidth="md">
-      <Form
-        loading={delayedLoading}
-        fields={[
-          {
-            label: 'Name',
-            name: 'name',
-            placeholder: 'Full name',
-            variant: 'string',
-          },
-          {
-            label: 'Email',
-            name: 'email',
-            placeholder: 'Email',
-            variant: 'string',
-          },
-          ...metafields,
-          {
-            label: 'Message',
-            name: 'message',
-            placeholder: 'Leave a message',
-            variant: 'text',
-          },
-          {
-            label: 'Join our newsletter',
-            name: 'accepts_marketing',
-            variant: 'boolean',
-          },
-        ]}
-        resource={contact}
-        handleChange={handleChange}
-        errors={errors}
-        handleSubmit={handleSubmit}
-        buttonText={buttonText}
-      />
-    </Container>
+		<Container maxWidth="md">
+			<Form
+				loading={delayedLoading}
+				fields={[
+					{
+						label: 'Name',
+						name: 'name',
+						placeholder: 'Full name',
+						variant: 'string',
+					},
+					{
+						label: 'Email',
+						name: 'email',
+						placeholder: 'Email',
+						variant: 'string',
+					},
+					...metafields,
+					{
+						label: 'Message',
+						name: 'message',
+						placeholder: 'Leave a message',
+						variant: 'text',
+					},
+					{
+						label: 'Join our newsletter',
+						name: 'accepts_marketing',
+						variant: 'boolean',
+					},
+				]}
+				resource={contact}
+				handleChange={handleChange}
+				errors={errors}
+				handleSubmit={handleSubmit}
+				buttonText={buttonText}
+			/>
+		</Container>
 	)
 }
 

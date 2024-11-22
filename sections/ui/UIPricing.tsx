@@ -21,8 +21,8 @@ const UIPricing: React.FC<UIPricingProps> = (props) => {
 		px,
 		maxWidth = 'xl',
 		requireAuth,
-    editable,
-    handleChange,
+		editable,
+		handleChange,
 		...rest
 	} = props
 
@@ -42,8 +42,8 @@ const UIPricing: React.FC<UIPricingProps> = (props) => {
 					subtitle={subtitle}
 					textAlign={textAlign}
 					size={fontSize}
-          editable={editable}
-          handleChange={handleChange}
+					editable={editable}
+					handleChange={handleChange}
 				/>
 				<Pricing {...rest} />
 			</div>

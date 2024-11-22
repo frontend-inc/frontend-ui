@@ -7,14 +7,14 @@ import { TestimonialsProps } from '../../components/web/testimonials/Testimonial
 import { SectionProps, StackProps, HeadingProps } from '../../types'
 
 type UISwipeableTestimonialsProps = SectionProps &
-	HeadingProps & StackProps & 
+	HeadingProps &
+	StackProps &
 	TestimonialsProps
 
 const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 	props
 ) => {
-	
-  const {    
+	const {
 		label,
 		title,
 		subtitle,
@@ -28,8 +28,8 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 		px,
 		maxWidth = 'lg',
 		requireAuth,
-    editable,
-    handleChange,
+		editable,
+		handleChange,
 		...rest
 	} = props
 
@@ -45,16 +45,16 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 			border={border}
 		>
 			<Stack spacing={10}>
-        <Heading
-          label={label}
-          title={title}
-          subtitle={subtitle}
-          textAlign='center'
-          size={fontSize}
-          editable={editable}
-          handleChange={handleChange}
-        />
-        <Testimonials {...rest} layout="carousel" />
+				<Heading
+					label={label}
+					title={title}
+					subtitle={subtitle}
+					textAlign="center"
+					size={fontSize}
+					editable={editable}
+					handleChange={handleChange}
+				/>
+				<Testimonials {...rest} layout="carousel" />
 			</Stack>
 		</Section>
 	)

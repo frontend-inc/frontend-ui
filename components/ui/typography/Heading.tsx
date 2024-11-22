@@ -14,8 +14,8 @@ type HeadingProps = {
 	size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 	className?: string
 	secondaryAction?: React.ReactNode
-  editable?: boolean
-  handleChange?: (ev: SyntheticEventType) => void
+	editable?: boolean
+	handleChange?: (ev: SyntheticEventType) => void
 }
 
 const Heading: React.FC<HeadingProps> = (props) => {
@@ -77,19 +77,19 @@ const Heading: React.FC<HeadingProps> = (props) => {
 								textAlign === 'right' && 'text-right'
 							)}
 						>
-							<Typography 
-                editable={editable}
-                variant="caption"
-                className={cn(
-                  "text-primary uppercase",
-                  textAlign === 'center' && 'text-center',
-                  textAlign === 'right' && 'text-right'
-                )}
-                name="label"
-                handleChange={handleChange}
-              >
-                {label}
-              </Typography>
+							<Typography
+								editable={editable}
+								variant="caption"
+								className={cn(
+									'text-primary uppercase',
+									textAlign === 'center' && 'text-center',
+									textAlign === 'right' && 'text-right'
+								)}
+								name="label"
+								handleChange={handleChange}
+							>
+								{label}
+							</Typography>
 						</div>
 					)}
 					{title && (
@@ -104,13 +104,13 @@ const Heading: React.FC<HeadingProps> = (props) => {
 						</Typography>
 					)}
 					{subtitle && (
-						<Typography              
+						<Typography
 							variant={subtitleVariant}
 							className="leading-8 text-foreground/70"
 							textAlign={textAlign}
-              editable={editable}
-              name="subtitle"
-              handleChange={handleChange}
+							editable={editable}
+							name="subtitle"
+							handleChange={handleChange}
 						>
 							{subtitle}
 						</Typography>

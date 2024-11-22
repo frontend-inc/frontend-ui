@@ -24,8 +24,8 @@ const UILinkList: React.FC<UILinkListProps> = (props) => {
 		px,
 		maxWidth = 'lg',
 		requireAuth,
-    editable,
-    handleChange,
+		editable,
+		handleChange,
 		...rest
 	} = props
 
@@ -46,8 +46,8 @@ const UILinkList: React.FC<UILinkListProps> = (props) => {
 						subtitle={subtitle}
 						textAlign={direction == 'row' ? 'left' : 'center'}
 						size={fontSize}
-            editable={editable}
-            handleChange={handleChange}
+						editable={editable}
+						handleChange={handleChange}
 					/>
 				</Stack>
 				<Stack direction={direction} size="2/3">

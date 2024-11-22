@@ -11,8 +11,8 @@ export type HeadingProps = {
 	subtitle?: string
 	textAlign?: 'left' | 'center'
 	fontSize?: 'sm' | 'md' | 'lg' | 'xl'
-  editable?: boolean
-  handleChange?: (ev: SyntheticEventType) => void
+	editable?: boolean
+	handleChange?: (ev: SyntheticEventType) => void
 }
 
 export type StackProps = {

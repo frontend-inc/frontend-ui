@@ -12,7 +12,7 @@ type TextAreaProps = Omit<TextInputPropsType, 'type'> & {
 	debounceDelay?: number
 	disableDebounce?: boolean
 	rows?: number
-  className?: string
+	className?: string
 }
 
 export default function TextArea(props: TextAreaProps) {
@@ -29,7 +29,7 @@ export default function TextArea(props: TextAreaProps) {
 		debounceDelay = 350,
 		disableDebounce = false,
 		rows = 3,
-    className
+		className,
 	} = props
 
 	const [text, setText] = useState(value)
@@ -77,7 +77,7 @@ export default function TextArea(props: TextAreaProps) {
 						'bg-background focus:ring-2 focus:ring-offset-3',
 						'w-full resize-none min-w-[230px]',
 						error && 'ring-2 ring-destructive ring-offset-3',
-            className
+						className
 					)}
 					name={name}
 					disabled={disabled}

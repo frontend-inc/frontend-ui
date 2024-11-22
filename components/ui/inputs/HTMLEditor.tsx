@@ -116,99 +116,78 @@ const MenuBar = ({ editor }) => {
 					onClick={btn.action}
 					disabled={!editor.can().chain().focus().run()}
 					className={cn(
-            'hover:bg-zinc-200',
-            btn.isActive && 'bg-zinc-900 text-white')
-          }
+						'hover:bg-zinc-200',
+						btn.isActive && 'bg-zinc-900 text-white'
+					)}
 					aria-label={btn.label}
 				>
-					<RemixIcon 
-            name={btn.icon} 
-            className={cn(
-              'text-zinc-900',
-              btn.isActive && 'text-white'
-            )}
-          />
+					<RemixIcon
+						name={btn.icon}
+						className={cn('text-zinc-900', btn.isActive && 'text-white')}
+					/>
 				</IconButton>
 			))}
 			{headingOptions.map((btn, index) => (
 				<IconButton
-          key={index}
-          onClick={btn.action}
-          disabled={!editor.can().chain().focus().run()}
-          className={cn(
-            'hover:bg-zinc-200',
-            btn.isActive && 'bg-zinc-900 text-white')
-          }
-          aria-label={btn.label}
-        >
-          <RemixIcon 
-            name={btn.icon} 
-            className={cn(
-              'text-zinc-900',
-              btn.isActive && 'text-white'
-            )}
-          />
-        </IconButton>
+					key={index}
+					onClick={btn.action}
+					disabled={!editor.can().chain().focus().run()}
+					className={cn(
+						'hover:bg-zinc-200',
+						btn.isActive && 'bg-zinc-900 text-white'
+					)}
+					aria-label={btn.label}
+				>
+					<RemixIcon
+						name={btn.icon}
+						className={cn('text-zinc-900', btn.isActive && 'text-white')}
+					/>
+				</IconButton>
 			))}
 			{listOptions.map((btn, index) => (
 				<IconButton
-          key={index}
-          onClick={btn.action}
-          disabled={!editor.can().chain().focus().run()}
-          className={cn(
-            'hover:bg-zinc-200',
-            btn.isActive && 'bg-zinc-900')
-          }
-          aria-label={btn.label}
-        >
-          <RemixIcon 
-            name={btn.icon} 
-            className={cn(
-              'text-zinc-900',
-              btn.isActive && 'text-white'
-            )}
-          />
-        </IconButton>
+					key={index}
+					onClick={btn.action}
+					disabled={!editor.can().chain().focus().run()}
+					className={cn('hover:bg-zinc-200', btn.isActive && 'bg-zinc-900')}
+					aria-label={btn.label}
+				>
+					<RemixIcon
+						name={btn.icon}
+						className={cn('text-zinc-900', btn.isActive && 'text-white')}
+					/>
+				</IconButton>
 			))}
 			{textAlignOptions.map((btn, index) => (
 				<IconButton
-          key={index}
-          onClick={btn.action}
-          disabled={!editor.can().chain().focus().run()}
-          className={cn(
-            'hover:bg-zinc-200',
-            btn.isActive && 'bg-zinc-900')
-          }
-          aria-label={btn.label}
-        >
-          <RemixIcon 
-            name={btn.icon} 
-            className={cn(
-              'text-zinc-900',
-              btn.isActive && 'text-white'
-            )}
-          />
-        </IconButton>
+					key={index}
+					onClick={btn.action}
+					disabled={!editor.can().chain().focus().run()}
+					className={cn('hover:bg-zinc-200', btn.isActive && 'bg-zinc-900')}
+					aria-label={btn.label}
+				>
+					<RemixIcon
+						name={btn.icon}
+						className={cn('text-zinc-900', btn.isActive && 'text-white')}
+					/>
+				</IconButton>
 			))}
 			{redoButtons.map((btn, index) => (
 				<IconButton
-          key={index}
-          onClick={btn.action}
-          disabled={!editor.can().chain().focus().run()}
-          className={cn(
-            'hover:bg-zinc-200',
-            btn.isActive && 'bg-zinc-900')
-          }
-          aria-label={btn.label}
-        >
-          <RemixIcon 
-            name={btn.icon} 
-            className={cn(
-              'text-zinc-900',
-              btn.isActive && 'bg-zinc-900 text-white'
-            )}
-          />
-        </IconButton>
+					key={index}
+					onClick={btn.action}
+					disabled={!editor.can().chain().focus().run()}
+					className={cn('hover:bg-zinc-200', btn.isActive && 'bg-zinc-900')}
+					aria-label={btn.label}
+				>
+					<RemixIcon
+						name={btn.icon}
+						className={cn(
+							'text-zinc-900',
+							btn.isActive && 'bg-zinc-900 text-white'
+						)}
+					/>
+				</IconButton>
 			))}
 		</div>
 	)

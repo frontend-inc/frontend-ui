@@ -12,7 +12,7 @@ const UIVideoCover: React.FC<UIVideoCoverProps> = (props) => {
 	const { bgColor, mode, px, py, maxWidth, requireAuth, ...rest } = props
 
 	return (
-		<Section mode="dark" py="none" px='none' maxWidth={maxWidth}>
+		<Section mode="dark" py="none" px="none" maxWidth={maxWidth}>
 			<VideoCover {...rest} />
 		</Section>
 	)

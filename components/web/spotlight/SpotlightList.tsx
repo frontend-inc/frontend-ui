@@ -26,8 +26,8 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 		enableGradient,
 		enableOverlay,
 		editable,
-    handleChange,
-    fontSize= '2xl'
+		handleChange,
+		fontSize = '2xl',
 	} = props || {}
 
 	return (
@@ -39,8 +39,8 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 					subtitle={subtitle}
 					textAlign="center"
 					size={fontSize}
-          editable={editable}
-          handleChange={handleChange}
+					editable={editable}
+					handleChange={handleChange}
 				/>
 				{actions && actions}
 				<Container maxWidth="lg">
