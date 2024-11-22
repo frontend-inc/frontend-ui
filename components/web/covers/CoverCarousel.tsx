@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Swipeable, Cover, Alert } from '../..'
+import { Swipeable, Cover, Empty } from '../..'
 
 export type CoverCarouselProps = {
 	items: {
@@ -49,7 +49,7 @@ const CoverCarousel: React.FC<CoverCarouselProps> = (props) => {
 				))}
 			</Swipeable>
 			{items?.length === 0 && (
-				<Alert
+				<Empty
 					icon="ri-carousel-view"
 					title="No cover images"
 					description="Cover images will appear here."

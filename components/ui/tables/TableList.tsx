@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Typography } from '../../../components'
-import { TableHeaders, TableRow, Pagination, Alert } from '../../../components'
+import { TableHeaders, TableRow, Pagination, Empty } from '../../../components'
 import { Table, TableHeader, TableBody } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
 
@@ -121,7 +121,7 @@ const TableList: React.FC<TableProps> = (props) => {
 			</Table>
 			{!loading && resources?.length == 0 && (
 				<div className="py-12 px-4 w-full h-full flex flex-row items-center justify-center">
-					<Alert
+					<Empty
 						icon={emptyIcon}
 						title={emptyTitle}
 						description={emptyDescription}

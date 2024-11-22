@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Alert } from '../..'
+import { Empty } from '../..'
 import { useResourceContext } from 'frontend-js'
 
 type ProductEmptyProps = {
@@ -19,7 +19,7 @@ const ProductEmpty: React.FC<ProductEmptyProps> = (props) => {
 	} = props || {}
 
 	if (resources?.length > 0) return null
-	return <Alert icon={icon} title={title} description={description} />
+	return <Empty icon={icon} title={title} description={description} />
 }
 
 export default ProductEmpty

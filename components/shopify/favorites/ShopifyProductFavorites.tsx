@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Alert } from '../..'
+import { Empty } from '../..'
 import { ShopifyProductArray } from '..'
 import { UserType } from 'frontend-js'
 
@@ -34,7 +34,7 @@ const ShopifyProductFavorites: React.FC<ShopifyProductFavoritesProps> = (
 				enableQuantity={enableQuantity}
 			/>
 			{favorites?.length === 0 && (
-				<Alert
+				<Empty
 					icon="ri-heart-2-fill"
 					title="No favorites"
 					description="You have no favorites yet."

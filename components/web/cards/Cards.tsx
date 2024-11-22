@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Card, Alert, Button } from '../..'
+import { Card, Empty, Button } from '../..'
 import { useNavigate } from '../../../hooks'
 import { BlurFade } from '../../../components'
 
@@ -57,7 +57,7 @@ const Cards: React.FC<CardsProps> = (props) => {
 					))}
 				</div>
 				{items?.length == 0 && (
-					<Alert
+					<Empty
 						icon="ri-stack-fill"
 						title="No content yet."
 						description="Your content will appear here."

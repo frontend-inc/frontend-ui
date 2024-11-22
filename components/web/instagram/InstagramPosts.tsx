@@ -1,8 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Alert } from '../..'
-import { BlurFade } from '../..'
+import { Empty } from '../..'
 
 type InstagramPostType = {
 	embed?: any
@@ -28,7 +27,7 @@ const InstagramPosts: React.FC<InstagramPostProps> = (props) => {
 					))}
 				</div>
 				{items?.length == 0 && (
-					<Alert
+					<Empty
 						icon="Instagram"
 						title="No instagram posts."
 						description="Instagram posts will appear here."

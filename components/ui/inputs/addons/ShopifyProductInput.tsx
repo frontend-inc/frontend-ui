@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useContext } from 'react'
 import { AutocompleteInput } from '../../../../components'
-import { Alert } from '../../../../components'
+import { Empty } from '../../../../components'
 import { SyntheticEventType } from '../../../../types'
 import { useProducts } from 'frontend-shopify'
 import { ShopifyContext } from 'frontend-shopify'
@@ -93,7 +93,7 @@ const ShopifyProductInput: React.FC<AutosuggestProps> = (props) => {
 
 	if (!enabled) {
 		return (
-			<Alert
+			<Empty
 				icon="ri-shopping-cart-2-fill"
 				title="Shopify setup required"
 				description="Shopify provider is not setup"

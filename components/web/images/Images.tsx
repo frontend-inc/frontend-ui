@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Image, ImageModal, Alert } from '../..'
+import { Image, ImageModal, Empty } from '../..'
 import { BlurFade } from '../..'
 
 type ImageType = {
@@ -50,7 +50,7 @@ const Images: React.FC<ImagesProps> = (props) => {
 					))}
 				</div>
 				{items?.length == 0 && (
-					<Alert
+					<Empty
 						icon="ri-collage-fill"
 						title="No images yet."
 						description="Images will appear here."

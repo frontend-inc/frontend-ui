@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Alert } from '../..'
+import { Empty } from '../..'
 import { BlurFade } from '../..'
 import { RemixIcon } from '../..'
 import { Typography } from '../../../components'
@@ -111,7 +111,7 @@ const FeatureIcons: React.FC<FeatureIconsProps> = (props) => {
 				))}
 			</div>
 			{items?.length === 0 && (
-				<Alert
+				<Empty
 					icon="ri-stack-fill"
 					title="No features"
 					description="No features to display."

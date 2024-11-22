@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Alert } from '../../../components'
+import { Empty } from '../../../components'
 import AccordionItem from './AccordionItem'
 
 export type AccordionProps = {
@@ -26,7 +26,7 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 					/>
 				))}
 				{items?.length == 0 && (
-					<Alert
+					<Empty
 						icon="ri-search-line"
 						title="No content"
 						description="Your content will appear here."

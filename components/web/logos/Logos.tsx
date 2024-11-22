@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Alert } from '../..'
+import { Empty } from '../../../components'
 import { Marquee } from '../../../components'
 import Image from 'next/image'
 
@@ -47,7 +47,7 @@ const Logos: React.FC<LogosProps> = (props) => {
 				<div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
 			</div>
 			{logos?.length === 0 && (
-				<Alert
+				<Empty
 					icon="ri-image-circle-fill"
 					title="No logos"
 					description="Logos will appear here"

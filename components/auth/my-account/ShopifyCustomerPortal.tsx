@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Alert, Button } from '../../../components'
+import { Empty, Button } from '../../../components'
 import { useToast, useApp } from '../../../hooks'
 
 const ShopifyCustomerPortal = () => {
@@ -17,7 +17,7 @@ const ShopifyCustomerPortal = () => {
 	}
 
 	return (
-		<Alert
+		<Empty
 			icon="ri-shopping-cart-2-fill"
 			title="Shopify Customer Portal"
 			description="Manage your order history and returns."

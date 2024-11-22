@@ -1,8 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Card, Alert, Button } from '../..'
-import { useNavigate } from '../../../hooks'
+import { Empty } from '../..'
 import { BlurFade } from '../..'
 import LinkListItem from './LinkListItem'
 import { ActionType } from '../../../types'
@@ -40,7 +39,7 @@ const LinkList: React.FC<LinkListProps> = (props) => {
 					))}
 				</ul>
 				{items?.length == 0 && (
-					<Alert
+					<Empty
 						icon="ri-list-unordered-line"
 						title="No links yet."
 						description="Your links will appear here."
