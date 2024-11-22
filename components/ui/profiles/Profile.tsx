@@ -1,10 +1,17 @@
 'use client'
 
 import React from 'react'
-import { AvatarImage, SocialLink } from '../..'
-import { Text } from '../../../components'
+import { 
+  Container, 
+  Stack, 
+  AvatarImage, 
+  Typography,
+  SocialLink 
+} from '../..'
+import { Heading } from '../../../components'
 
 export type ProfileProps = {
+  direction?: 'row' | 'column'
 	image: string
 	label?: string
 	title: string
@@ -17,12 +24,20 @@ export type ProfileProps = {
 }
 
 const Profile: React.FC<ProfileProps> = (props) => {
-	const { label, title, subtitle, image, description, socialLinks = [] } = props || {}
+	const { 
+    direction,
+    label, 
+    title, 
+    subtitle, 
+    image, 
+    description, 
+    socialLinks = [] 
+  } = props || {}
 
 	return (
-		<div className="w-full flex flex-col items-center justify-center rounded">
-			<div className="w-full max-w-screen-md flex flex-col space-y-4 items-start">
-				<div className="flex flex-col w-full items-center justify-center space-y-1">
+    <Container maxWidth='md'>
+      <Stack direction={direction} split="1/4">
+        <div className="flex flex-col w-full items-center justify-center space-y-1">
 					<div className="h-[160px] w-[160px]">
 						<AvatarImage alt={title} src={image} size={160} />
 					</div>
@@ -34,16 +49,19 @@ const Profile: React.FC<ProfileProps> = (props) => {
 						))}
 					</div>
 				</div>
-				<div className="flex flex-col space-y-1 w-full sm:w-auto">
-          <Text 
+        <Stack>
+          <Heading 
             label={ label }
             title={ title }
             subtitle={ subtitle }
-            description={ description }
-          />          
-				</div>
-			</div>
-		</div>
+            size='xl'
+          />     
+          <Typography variant="subtitle2" className="text-muted-foreground italic leading-loose">
+            { description }
+          </Typography>
+        </Stack>     
+      </Stack>
+    </Container>		
 	)
 }
 

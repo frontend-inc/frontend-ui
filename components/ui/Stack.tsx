@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from 'frontend-shadcn'
 
 interface StackProps {
-  direction: 'row' | 'column';
+  direction?: 'row' | 'column';
   split?: '1/2' | '1/3' | '1/4'
   children: [React.ReactNode, React.ReactNode];
   className?: string;
@@ -10,7 +10,7 @@ interface StackProps {
 
 const Stack: React.FC<StackProps> = (props) => {
 
-  const { direction, split = '1/3', className, children } = props
+  const { direction='column', split = '1/3', className, children } = props
   const isRow = direction === 'row'
 
   const widthFirst =
