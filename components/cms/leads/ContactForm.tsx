@@ -43,6 +43,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 	}
 
 	return (
+    <div className="w-full">
       <Form
         loading={delayedLoading}
         fields={[
@@ -77,6 +78,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
         handleSubmit={handleSubmit}
         buttonText={buttonText}
       />
+    </div>
 	)
 }
 
