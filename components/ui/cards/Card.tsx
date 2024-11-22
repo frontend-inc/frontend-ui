@@ -53,7 +53,7 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
           alt={title}
           label={label}
           handleClick={handleClick}
-          aspectRatio={4 / 3}
+          aspectRatio={4/3}
           enableGradient={enableGradient}
           enableOverlay={enableOverlay}
         />
@@ -65,7 +65,7 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 						</Typography>
 					)}
 					{description && (
-						<Typography variant="body2" className="text-muted-foreground">
+						<Typography variant="body1" className="text-muted-foreground">
 							{description}
 						</Typography>
 					)}

@@ -5,7 +5,7 @@ import SwipeableViews from 'react-swipeable-views'
 import { autoPlay } from 'react-swipeable-views-utils'
 import { IconButton } from '../core'
 import { cn } from 'frontend-shadcn'
-import { RiArrowLeftLine, RiArrowRightLine } from '@remixicon/react'
+import { RiArrowLeftSLine, RiArrowRightSLine } from '@remixicon/react'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
@@ -66,10 +66,10 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
 			{enableArrows && (
 				<div className="absolute top-1/2 transform -translate-y-1/2 flex justify-between w-full z-10">
 					<IconButton color="ghost" onClick={handlePrev} className="ml-2">
-						<RiArrowLeftLine size={26} />
+						<RiArrowLeftSLine size={32} />
 					</IconButton>
 					<IconButton color="ghost" onClick={handleNext} className="mr-2">
-						<RiArrowRightLine size={26} />
+						<RiArrowRightSLine size={32} />
 					</IconButton>
 				</div>
 			)}

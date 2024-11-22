@@ -16,12 +16,14 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 		title,
 		subtitle,
 		textAlign='center',
-    fontSize='lg',    
+    fontSize='lg', 
+    fill,
+    border,   
 		bgColor,
 		mode,
 		py,
 		px,
-		maxWidth='sm',
+		maxWidth='lg',
 		requireAuth,
 		...rest
 	} = props
@@ -34,6 +36,8 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
+      fill={fill}
+      border={border}
 		>
       <Stack direction={direction} split={split}>
         <Heading

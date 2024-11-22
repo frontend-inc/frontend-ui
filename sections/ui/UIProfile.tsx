@@ -11,6 +11,8 @@ type UIProfileProps = SectionProps & ProfileProps
 const UIProfile: React.FC<UIProfileProps> = (props) => {
 	
   const { 
+    fill,
+    border,
     bgColor, 
     mode, 
     py, 
@@ -28,6 +30,8 @@ const UIProfile: React.FC<UIProfileProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
+      fill={fill}
+      border={border}
 		>
 			<Profile {...rest} />
 		</Section>

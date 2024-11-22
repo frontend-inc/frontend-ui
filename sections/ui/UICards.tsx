@@ -1,15 +1,17 @@
 'use client'
 
 import React from 'react'
-import { Section, Heading } from '../../components'
+import { Section, Stack, Heading } from '../../components'
 import { Cards } from '../../components'
 import { CardsProps } from '../../components/web/cards/Cards'
-import { SectionProps, HeadingProps } from '../../types'
+import { SectionProps, StackProps, HeadingProps } from '../../types'
 
-type UICardsProps = SectionProps & HeadingProps & CardsProps
+type UICardsProps = SectionProps & HeadingProps & StackProps & CardsProps
 
 const UICards: React.FC<UICardsProps> = (props) => {
 	const {
+    direction,
+    split,
 		label,
 		title,
 		subtitle,
@@ -20,7 +22,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 		mode,
 		py,
 		px,
-    fontSize,
+    fontSize='lg',
 		maxWidth,
 		requireAuth,
 		...rest
@@ -37,7 +39,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
       fill={fill}
       border={border}
 		>
-			<div className="flex flex-col space-y-[40px] w-full">
+			<Stack direction={direction} split={split}>
 				<Heading
 					label={label}
 					title={title}
@@ -46,7 +48,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
           size={fontSize}
 				/>
 				<Cards {...rest} />
-			</div>
+			</Stack>
 		</Section>
 	)
 }

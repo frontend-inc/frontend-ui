@@ -35,8 +35,8 @@ const Profile: React.FC<ProfileProps> = (props) => {
   } = props || {}
 
 	return (
-    <Container maxWidth='md'>
-      <Stack direction={direction} split="1/4">
+    <Container maxWidth='lg'>
+      <Stack direction={direction} split="1/3">
         <div className="flex flex-col w-full items-center justify-center space-y-1">
 					<div className="h-[160px] w-[160px]">
 						<AvatarImage alt={title} src={image} size={160} />
@@ -55,6 +55,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
             title={ title }
             subtitle={ subtitle }
             size='xl'
+            textAlign={direction == 'row' ? 'left' : 'center'}
           />     
           <Typography variant="subtitle2" className="text-muted-foreground italic leading-loose">
             { description }

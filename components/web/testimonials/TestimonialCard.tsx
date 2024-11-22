@@ -2,29 +2,29 @@
 
 import React from 'react'
 import { Typography } from '../../../components'
-import { Avatar, ExpandableText } from '../../../components'
+import { Avatar } from '../../../components'
 
 type TestimonialProps = {
-	author: string
 	text: string
-	rating?: number
+	author: string
 	image?: string
 	size?: 'small' | 'large'
 }
 
 const TestimonialCard: React.FC<TestimonialProps> = (props) => {
-	const { author, text, image = '' } = props || {}
+	const { text, author, image = '' } = props || {}
 
 	return (
 		<div className={'p-4 min-h-[240px]'}>
 			<div className="flex flex-col space-y-3 justify-between h-full">
 				<div>
 					{text && (
-						<ExpandableText
+						<Typography 
 							variant="subtitle1"
 							className="font-normal italic leading-loose"
-							text={text}
-						/>
+						>
+              { text }
+            </Typography>
 					)}
 				</div>
 				<div className="flex flex-row space-x-2 items-center">

@@ -74,7 +74,6 @@ export type PriceType = {
 }
 
 export type TestimonialType = {
-	rating: number
 	title: string
 	subtitle: string
 	image: string

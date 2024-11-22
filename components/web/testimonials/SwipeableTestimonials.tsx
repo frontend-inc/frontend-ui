@@ -20,7 +20,7 @@ const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
 					<SwipeableTestimonialCard
 						avatar={testimonial.avatar}
 						author={testimonial.title}
-						text={testimonial.description}
+						text={testimonial.subtitle}
 					/>
 				</div>
 			))}
