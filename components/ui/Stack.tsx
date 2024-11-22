@@ -15,7 +15,7 @@ const Stack: React.FC<StackProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				'flex flex-col items-start',
+				'flex flex-col items-start w-full',
 				!isRow && `space-y-${spacing}`,
 				isRow && `md:flex-row md:space-x-${spacing}`,
 				className

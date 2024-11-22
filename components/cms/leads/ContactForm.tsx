@@ -43,40 +43,42 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 	}
 
 	return (
-		<Form
-			loading={delayedLoading}
-			fields={[
-				{
-					label: 'Name',
-					name: 'name',
-					placeholder: 'Full name',
-					variant: 'string',
-				},
-				{
-					label: 'Email',
-					name: 'email',
-					placeholder: 'Email',
-					variant: 'string',
-				},
-				...metafields,
-				{
-					label: 'Message',
-					name: 'message',
-					placeholder: 'Leave a message',
-					variant: 'text',
-				},
-				{
-					label: 'Join our newsletter',
-					name: 'accepts_marketing',
-					variant: 'boolean',
-				},
-			]}
-			resource={contact}
-			handleChange={handleChange}
-			errors={errors}
-			handleSubmit={handleSubmit}
-			buttonText={buttonText}
-		/>
+    <div className="w-full border border-red-500">
+      <Form
+        loading={delayedLoading}
+        fields={[
+          {
+            label: 'Name',
+            name: 'name',
+            placeholder: 'Full name',
+            variant: 'string',
+          },
+          {
+            label: 'Email',
+            name: 'email',
+            placeholder: 'Email',
+            variant: 'string',
+          },
+          ...metafields,
+          {
+            label: 'Message',
+            name: 'message',
+            placeholder: 'Leave a message',
+            variant: 'text',
+          },
+          {
+            label: 'Join our newsletter',
+            name: 'accepts_marketing',
+            variant: 'boolean',
+          },
+        ]}
+        resource={contact}
+        handleChange={handleChange}
+        errors={errors}
+        handleSubmit={handleSubmit}
+        buttonText={buttonText}
+      />
+    </div>
 	)
 }
 
