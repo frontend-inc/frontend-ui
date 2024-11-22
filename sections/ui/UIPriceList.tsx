@@ -28,6 +28,8 @@ const UIPriceList: React.FC<UIPriceListProps> = (props) => {
 		...rest
 	} = props
 
+	const isRow = direction == 'row'
+
 	return (
 		<Section
 			requireAuth={requireAuth}
@@ -38,7 +40,7 @@ const UIPriceList: React.FC<UIPriceListProps> = (props) => {
 			maxWidth={maxWidth}
 		>
 			<Stack direction={direction}>
-				<Row size="1/3">
+				<Row size={isRow ? '1/3' : 'full'}>
 					<Heading
 						label={label}
 						title={title}
@@ -47,7 +49,7 @@ const UIPriceList: React.FC<UIPriceListProps> = (props) => {
 						size={fontSize}
 					/>
 				</Row>
-				<Row size="2/3">
+				<Row size={isRow ? '2/3' : 'full'}>
 					<PriceList {...rest} />
 				</Row>
 			</Stack>

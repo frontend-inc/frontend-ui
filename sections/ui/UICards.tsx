@@ -27,6 +27,8 @@ const UICards: React.FC<UICardsProps> = (props) => {
 		...rest
 	} = props
 
+	const isRow = direction == 'row'
+
 	return (
 		<Section
 			requireAuth={requireAuth}
@@ -39,7 +41,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 			border={border}
 		>
 			<Stack direction={direction}>
-				<Row size="1/3">
+				<Row size={isRow ? '1/3' : 'full'}>
 					<Heading
 						label={label}
 						title={title}
@@ -48,7 +50,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 						size={fontSize}
 					/>
 				</Row>
-				<Row size="2/3">
+				<Row size={isRow ? '2/3' : 'full'}>
 					<Cards {...rest} />
 				</Row>
 			</Stack>

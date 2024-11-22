@@ -30,6 +30,8 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 		...rest
 	} = props
 
+	const isRow = direction == 'row'
+
 	return (
 		<Section
 			requireAuth={requireAuth}
@@ -40,7 +42,7 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 			maxWidth={maxWidth}
 		>
 			<Stack direction={direction}>
-				<Row size="1/3">
+				<Row size={isRow ? '1/3' : 'full'}>
 					<Heading
 						label={label}
 						title={title}
@@ -49,7 +51,7 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 						size={fontSize}
 					/>
 				</Row>
-				<Row size="2/3">
+				<Row size={isRow ? '2/3' : 'full'}>
 					<FeatureIcons
 						{...rest}
 						direction={direction}

@@ -25,9 +25,11 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 		buttons = [],
 	} = props || {}
 
+	const isRow = direction == 'row'
+
 	return (
 		<Stack direction={direction}>
-			<Row size="1/3">
+			<Row size={isRow ? '1/3' : 'full'}>
 				<Heading
 					label={label}
 					title={title}
@@ -36,7 +38,7 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 					textAlign="center"
 				/>
 			</Row>
-			<Row size="2/3">
+			<Row size={isRow ? '2/3' : 'full'}>
 				{buttons?.length > 0 && (
 					<ButtonActions
 						buttons={buttons}

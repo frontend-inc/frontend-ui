@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Section, Stack, Heading } from '../../components'
+import { Section, Stack, Row, Heading } from '../../components'
 import { LinkList } from '../../components'
 import { LinkListProps } from '../../components/web/links/LinkList'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
@@ -11,7 +11,6 @@ type UILinkListProps = SectionProps & HeadingProps & StackProps & LinkListProps
 const UILinkList: React.FC<UILinkListProps> = (props) => {
 	const {
 		direction = 'column',
-		split = '1/3',
 		label,
 		title,
 		subtitle,
@@ -28,6 +27,8 @@ const UILinkList: React.FC<UILinkListProps> = (props) => {
 		...rest
 	} = props
 
+	const isRow = direction == 'row'
+
 	return (
 		<Section
 			requireAuth={requireAuth}
@@ -37,15 +38,19 @@ const UILinkList: React.FC<UILinkListProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Stack direction={direction} split={split}>
-				<Heading
-					label={label}
-					title={title}
-					subtitle={subtitle}
-					textAlign={direction == 'row' ? 'left' : 'center'}
-					size={fontSize}
-				/>
-				<LinkList {...rest} fill={fill} border={border} />
+			<Stack direction={direction}>
+				<Row size={isRow ? '1/3' : 'full'}>
+					<Heading
+						label={label}
+						title={title}
+						subtitle={subtitle}
+						textAlign={direction == 'row' ? 'left' : 'center'}
+						size={fontSize}
+					/>
+				</Row>
+				<Row size={isRow ? '2/3' : 'full'}>
+					<LinkList {...rest} fill={fill} border={border} />
+				</Row>
 			</Stack>
 		</Section>
 	)

@@ -35,10 +35,12 @@ const Profile: React.FC<ProfileProps> = (props) => {
 		socialLinks = [],
 	} = props || {}
 
+	const isRow = direction == 'row'
+
 	return (
 		<Container maxWidth="lg">
 			<Stack direction={direction}>
-				<Row size="1/4">
+				<Row size={isRow ? '1/4' : 'full'}>
 					<Stack>
 						<div className="h-[160px] w-[160px]">
 							<AvatarImage alt={title} src={image} size={160} />
@@ -56,7 +58,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
 						</div>
 					</Stack>
 				</Row>
-				<Row size="3/4">
+				<Row size={isRow ? '3/4' : 'full'}>
 					<Stack spacing={4}>
 						<Heading
 							label={label}
