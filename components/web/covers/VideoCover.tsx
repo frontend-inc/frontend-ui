@@ -1,14 +1,12 @@
 import React from 'react'
 import { Heading, Button } from '../../../components'
 import { useNavigate } from '../../../hooks'
+import { HeadingProps } from '../../../types'
 import { cn } from 'frontend-shadcn'
 
-export type VideoCoverProps = {
+export type VideoCoverProps = HeadingProps & {
 	src: string
 	height?: number
-	label?: string
-	title?: string
-	subtitle?: string
 	path?: string
 	handleClick?: () => void
 	alignItems?: 'items-center' | 'items-start' | 'items-end'
@@ -30,6 +28,9 @@ const VideoCover: React.FC<VideoCoverProps> = (props) => {
 		actions,
 		height = 400,
 		enableOverlay,
+    fontSize = 'lg',
+    editable,
+    handleChange
 	} = props
 
 	const onClick = useNavigate({
@@ -64,7 +65,9 @@ const VideoCover: React.FC<VideoCoverProps> = (props) => {
 						title={title}
 						subtitle={subtitle}
 						textAlign={alignItems === 'items-center' ? 'center' : 'left'}
-						size="lg"
+						size={fontSize}
+            editable={editable}
+            handleChange={handleChange}
 					/>
 					{actions}
 					{buttonText && (

@@ -25,10 +25,10 @@ const UIPriceList: React.FC<UIPriceListProps> = (props) => {
 		px,
 		maxWidth = 'sm',
 		requireAuth,
+    editable,
+    handleChange,
 		...rest
 	} = props
-
-	
 
 	return (
 		<Section
@@ -47,6 +47,8 @@ const UIPriceList: React.FC<UIPriceListProps> = (props) => {
 						subtitle={subtitle}
 						textAlign={direction == 'row' ? 'left' : 'center'}
 						size={fontSize}
+            editable={editable}
+            handleChange={handleChange}
 					/>
 				</Stack>
 				<Stack direction={direction} size="2/3">

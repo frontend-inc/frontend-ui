@@ -7,15 +7,15 @@ import { SyntheticEventType, TypographyVariantsType } from '../../../types'
 import { cn } from 'frontend-shadcn'
 
 type HeadingProps = {
-	editable?: boolean
 	label?: string
 	title?: string
 	subtitle?: string
 	textAlign?: 'left' | 'center' | 'right'
 	size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 	className?: string
-	handleChange?: (ev: SyntheticEventType) => void
 	secondaryAction?: React.ReactNode
+  editable?: boolean
+  handleChange?: (ev: SyntheticEventType) => void
 }
 
 const Heading: React.FC<HeadingProps> = (props) => {
@@ -77,7 +77,15 @@ const Heading: React.FC<HeadingProps> = (props) => {
 								textAlign === 'right' && 'text-right'
 							)}
 						>
-							<Label label={label} className="text-primary" />
+							<Typography 
+                editable={editable}
+                variant="caption"
+                className="text-primary" 
+                name="label"
+                handleChange={handleChange}
+              >
+                {label}
+              </Typography>
 						</div>
 					)}
 					{title && (
@@ -92,10 +100,13 @@ const Heading: React.FC<HeadingProps> = (props) => {
 						</Typography>
 					)}
 					{subtitle && (
-						<Typography
+						<Typography              
 							variant={subtitleVariant}
 							className="leading-8 text-foreground/70"
 							textAlign={textAlign}
+              editable={editable}
+              name="subtitle"
+              handleChange={handleChange}
 						>
 							{subtitle}
 						</Typography>

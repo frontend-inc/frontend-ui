@@ -11,12 +11,17 @@ export type ContactFormProps = {
 	href?: string
 	metafields?: FormFieldType[]
 	handleClick?: () => void
+  editable?: boolean
+  handleChange?: (ev: SyntheticEventType) => void
 }
 
 // Call To Action
 const ContactForm: React.FC<ContactFormProps> = (props) => {
 	const { showAlertSuccess } = useToast()
-	const { metafields = [], buttonText = 'Send Message' } = props || {}
+	const {
+    metafields = [], 
+    buttonText = 'Send Message' 
+  } = props || {}
 
 	const {
 		errors,

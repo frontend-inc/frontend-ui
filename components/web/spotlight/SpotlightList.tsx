@@ -4,14 +4,11 @@ import React from 'react'
 import { Container, Heading } from '../../../components'
 import { Image } from '../..'
 import { TypographyVariantsType } from '../../../types'
-import { cn } from 'frontend-shadcn'
+import { HeadingProps } from '../../../types'
 
-export type SpotlightListProps = {
-	label?: string
+export type SpotlightListProps = HeadingProps & {
 	image?: string
 	textVariant?: TypographyVariantsType
-	title?: string
-	subtitle?: string
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
 	enableGradient?: boolean
@@ -28,7 +25,9 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 		actions,
 		enableGradient,
 		enableOverlay,
-		objectFit = 'cover',
+		editable,
+    handleChange,
+    fontSize= '2xl'
 	} = props || {}
 
 	return (
@@ -39,7 +38,9 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 					title={title}
 					subtitle={subtitle}
 					textAlign="center"
-					size="2xl"
+					size={fontSize}
+          editable={editable}
+          handleChange={handleChange}
 				/>
 				{actions && actions}
 				<Container maxWidth="lg">

@@ -4,25 +4,25 @@ import React from 'react'
 import { Heading, Stack } from '../../../components'
 import { ButtonType } from '../../../types'
 import { ButtonActions } from '../..'
+import { HeadingProps } from '../../../types'
 
-export type CallToActionProps = {
-	direction?: 'row' | 'column'
-	label?: string
-	title: string
-	subtitle: string
-	size?: 'sm' | 'md' | 'lg' | 'xl'
+export type CallToActionProps = HeadingProps & {	
+  direction?: 'row' | 'column'
 	buttons: ButtonType[]
 }
 
 // Call To Action
 const CallToAction: React.FC<CallToActionProps> = (props) => {
-	const {
+	
+  const {
 		direction = 'column',
 		label,
 		title,
 		subtitle,
-		size = 'lg',
+		fontSize = 'lg',
 		buttons = [],
+    editable,
+    handleChange
 	} = props || {}
 
 	return (
@@ -32,8 +32,10 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 					label={label}
 					title={title}
 					subtitle={subtitle}
-					size={size}
+					size={fontSize}
 					textAlign={ direction == 'row' ? 'left' : 'center' }
+          editable={editable}
+          handleChange={handleChange}
 				/>
 			</Stack>
 			<Stack direction={direction} size="2/3">

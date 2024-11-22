@@ -20,7 +20,7 @@ const ShopProductCollectionCover: React.FC<ShopProductCollectionCoverProps> = (
 			bgColor={bgColor}
 			mode={mode}
 			py="none"
-			px={0}
+			px='none'
 			maxWidth={maxWidth}
 		>
 			<ProductCollectionCover {...rest} />

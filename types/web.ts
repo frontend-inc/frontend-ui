@@ -3,6 +3,7 @@
 import React from 'react'
 import { ButtonType } from './buttons'
 import { MetafieldType, FormFieldType } from './forms'
+import { SyntheticEventType } from 'frontend-js'
 
 export type HeadingProps = {
 	label?: string
@@ -10,6 +11,8 @@ export type HeadingProps = {
 	subtitle?: string
 	textAlign?: 'left' | 'center'
 	fontSize?: 'sm' | 'md' | 'lg' | 'xl'
+  editable?: boolean
+  handleChange?: (ev: SyntheticEventType) => void
 }
 
 export type StackProps = {

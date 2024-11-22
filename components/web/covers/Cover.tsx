@@ -5,11 +5,9 @@ import { Heading, Button } from '../../../components'
 import { Image } from '../..'
 import { useNavigate } from '../../../hooks'
 import { cn } from 'frontend-shadcn'
+import { HeadingProps } from '../../../types'
 
-export type CoverProps = {
-	label?: string
-	title?: string
-	subtitle?: string
+export type CoverProps = HeadingProps & {  
 	buttonText?: string
 	image: string
 	height?: number
@@ -38,6 +36,9 @@ const Cover: React.FC<CoverProps> = (props) => {
 		buttonText,
 		actions,
 		path,
+
+    editable,
+    handleChange
 	} = props
 
 	const onClick = useNavigate({
@@ -80,6 +81,8 @@ const Cover: React.FC<CoverProps> = (props) => {
 						subtitle={subtitle}
 						textAlign={alignItems === 'items-center' ? 'center' : 'left'}
 						size="xl"
+            editable={editable}
+            handleChange={handleChange}
 					/>
 					{actions}
 					{buttonText && (

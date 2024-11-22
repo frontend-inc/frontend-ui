@@ -17,7 +17,7 @@ const UISpotlight: React.FC<UISpotlightProps> = (props) => {
 			bgColor={bgColor}
 			mode={mode}
 			py={py}
-			px={0}
+			px='none'
 			maxWidth={maxWidth}
 		>
 			<Spotlight {...rest} />

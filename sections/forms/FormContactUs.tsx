@@ -27,10 +27,10 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 		px,
 		maxWidth = 'lg',
 		requireAuth,
+    editable,
+    handleChange,
 		...rest
 	} = props
-
-  
 
 	return (
 		<Section
@@ -51,6 +51,8 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
             subtitle={subtitle}
             size={fontSize}
             textAlign={direction == 'row' ? 'left' : 'center'}
+            editable={editable}
+            handleChange={handleChange}
           />
         </Stack>
         <Stack direction={direction} size="2/3">

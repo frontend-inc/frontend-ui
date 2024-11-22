@@ -18,7 +18,7 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 			requireAuth={requireAuth}
 			mode="dark"
 			py="none"
-			px={0}
+			px='none'
 			maxWidth={maxWidth}
 		>
 			<CollectionCover {...rest} />

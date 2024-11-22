@@ -9,13 +9,11 @@ import {
 	SocialLink,
 } from '../..'
 import { Heading } from '../../../components'
+import { HeadingProps } from '../../../types'
 
-export type ProfileProps = {
+export type ProfileProps = HeadingProps & {
 	direction?: 'row' | 'column'
 	image: string
-	label?: string
-	title: string
-	subtitle: string
 	description: string
 	socialLinks?: {
 		provider: string
@@ -32,9 +30,10 @@ const Profile: React.FC<ProfileProps> = (props) => {
 		image,
 		description,
 		socialLinks = [],
+    fontSize='xl',
+    editable,
+    handleChange 
 	} = props || {}
-
-	
 
 	return (
 		<Container maxWidth="lg">
@@ -42,7 +41,12 @@ const Profile: React.FC<ProfileProps> = (props) => {
 				<Stack direction={direction} size="1/4">
 					<Stack className={ direction == 'row' ? "items-start" : "items-center"}>
 						<div className="h-[160px] w-[160px]">
-							<AvatarImage alt={title} src={image} size={160} />
+							<AvatarImage 
+                //@ts-ignore
+                alt={title} 
+                src={image} 
+                size={160} 
+              />
 						</div>
 						<div className="flex flex-row">
 							{socialLinks?.map((link, index) => (
@@ -63,8 +67,10 @@ const Profile: React.FC<ProfileProps> = (props) => {
 							label={label}
 							title={title}
 							subtitle={subtitle}
-							size="xl"
+							size={fontSize}
 							textAlign={direction == 'row' ? 'left' : 'center'}
+              editable={editable}
+              handleChange={handleChange}
 						/>
 						<Typography
 							variant="subtitle2"

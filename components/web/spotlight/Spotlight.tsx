@@ -6,11 +6,9 @@ import { ButtonActions } from '../..'
 import { ButtonType } from '../../../types'
 import SpotlightList from './SpotlightList'
 import SpotlightCard from './SpotlightCard'
+import { HeadingProps } from '../../../types'
 
-export type SpotlightProps = {
-	label?: string
-	title?: string
-	subtitle?: string
+export type SpotlightProps = HeadingProps & {
 	image?: string
 	direction?: 'column' | 'row'
 	buttons?: ButtonType[]
@@ -28,6 +26,8 @@ const Spotlight: React.FC<SpotlightProps> = (props) => {
 		buttons = [],
 		enableGradient,
 		enableOverlay,
+    editable,
+    handleChange,
 	} = props || {}
 
 	const Component =
@@ -47,6 +47,8 @@ const Spotlight: React.FC<SpotlightProps> = (props) => {
 			label={label}
 			title={title}
 			subtitle={subtitle}
+      editable={editable}
+      handleChange={handleChange}
 			actions={
 				buttons?.length > 0 && (
 					<ButtonActions

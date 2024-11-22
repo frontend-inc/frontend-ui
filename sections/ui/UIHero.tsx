@@ -30,7 +30,7 @@ const UIHero: React.FC<UIHeroProps> = (props) => {
 			bgColor={bgColor}
 			mode={mode}
 			py={fullWidth ? 'none' : py}
-			px={fullWidth ? 0 : px}
+			px={fullWidth ? 'none' : px}
 			maxWidth={maxWidth}
 			fill={fill}
 			border={border}

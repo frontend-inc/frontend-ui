@@ -6,12 +6,12 @@ import { FeatureIcons } from '../../components'
 import { FeatureIconsProps } from '../../components/web/features/FeatureIcons'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
 
-type UIFeaturesProps = SectionProps &
+type UIFeatureIconsProps = SectionProps &
 	HeadingProps &
 	StackProps &
 	FeatureIconsProps
 
-const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
+const UIFeatureIcons: React.FC<UIFeatureIconsProps> = (props) => {
 	const {
 		direction = 'column',
 		label,
@@ -27,10 +27,10 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 		px,
 		maxWidth = 'lg',
 		requireAuth,
+    editable,
+    handleChange,
 		...rest
 	} = props
-
-	
 
 	return (
 		<Section
@@ -49,6 +49,8 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 						subtitle={subtitle}
 						textAlign={direction == 'row' ? 'left' : 'center'}
 						size={fontSize}
+            editable={editable}
+            handleChange={handleChange}
 					/>
 				</Stack>
 				<Stack direction={direction} size="2/3">
@@ -64,4 +66,4 @@ const UIFeatures: React.FC<UIFeaturesProps> = (props) => {
 	)
 }
 
-export default UIFeatures
+export default UIFeatureIcons

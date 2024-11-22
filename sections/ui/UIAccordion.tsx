@@ -27,6 +27,8 @@ const UIAccordion: React.FC<UIAccordionProps> = (props) => {
 		px,
 		maxWidth = 'lg',
 		requireAuth,
+    editable,
+    handleChange,
 		...rest
 	} = props
 
@@ -44,11 +46,13 @@ const UIAccordion: React.FC<UIAccordionProps> = (props) => {
 			<Stack direction={direction} spacing={10}>
 				<Stack direction={direction} size="1/3">
 					<Heading
-						label={label}
+						label={label}            
 						title={title}
 						subtitle={subtitle}
 						textAlign={direction == 'row' ? 'left' : 'center'}
 						size={fontSize}
+            editable={editable}
+            handleChange={handleChange}
 					/>
 				</Stack>
 				<Stack direction={direction} size="2/3">
