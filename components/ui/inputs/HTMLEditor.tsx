@@ -222,15 +222,13 @@ const HTMLEditor: React.FC<TextInputPropsType> = (props) => {
 	})
 
 	useEffect(() => {
-		if (handleChange) {
-			handleChange({
-				target: {
-					name,
-					value: debouncedText,
-				},
-			})
-		}
-	}, [handleChange, debouncedText])
+    handleChange({
+      target: {
+        name,
+        value: debouncedText,
+      },
+    })
+	}, [debouncedText])
 
 	const isInitialMount = useRef(true)
 
