@@ -2,8 +2,7 @@
 
 import React from 'react'
 import { Button } from '../../../components'
-import { TypographyVariantsType } from '../../../types'
-import { Heading, InputBase } from '../..'
+import { InputBase } from '../..'
 import { useResource } from 'frontend-js'
 import { useToast } from '../../../hooks'
 
@@ -45,7 +44,7 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 
 	return (
 		<div className="flex flex-row justify-center items-center">
-			<div className="max-w-[360px] w-full p-1 flex flex-row justify-center items-center">
+			<div className="md:max-w-[360px] w-full p-1 flex flex-row justify-center items-center">
 				<InputBase
 					errors={errors}
 					name="email"
@@ -54,7 +53,7 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 					handleChange={handleChange}
 					placeholder="Enter your email"
 					type="email"
-					className="rounded-l-md text-base h-[48px] min-w-[280px] rounded-r-none border-r-0"
+					className="rounded-l-md text-base h-[48px] md:min-w-[280px] rounded-r-none border-r-0"
 				/>
 				<Button
 					size="lg"
