@@ -31,17 +31,20 @@ type CustomDrawerProps = {
 	className?: string
 }
 
-export default function CustomDrawer({
-	open,
-	handleClose,
-	loading,
-	title,
-	description,
-	children,
-	buttons,
-	maxWidth = 'md',
-	className,
-}: CustomDrawerProps) {
+export default function CustomDrawer(props: CustomDrawerProps) {
+
+  const {
+    open,
+    handleClose,
+    loading,
+    title,
+    description,
+    children,
+    buttons,
+    maxWidth = 'md',
+    className,
+  } = props 
+  
 	const maxWidthClasses = {
 		sm: 'max-w-screen-sm',
 		md: 'max-w-screen-md',
