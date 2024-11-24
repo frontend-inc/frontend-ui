@@ -34,6 +34,33 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 		borderRadius,
 	}
 
+  // We force tailwind to compile all the theme options
+  const themeClassNames = {
+    frontend: "frontend",
+    slate: "slate",
+    gray: "gray",
+    zinc: "zinc",
+    neutral: "neutral",
+    stone: "stone",
+    red: "red",
+    orange: "orange",
+    amber: "amber",
+    yellow: "yellow",
+    lime: "lime",
+    green: "green",
+    emerald: "emerald",
+    teal: "teal",
+    cyan: "cyan",
+    sky: "sky",
+    blue: "blue",
+    indigo: "indigo",
+    violet: "violet",
+    purple: "purple",
+    fuchsia: "fuchsia",
+    pink: "pink",
+    rose: "rose",
+  }
+
 	useEffect(() => {
 		if (headerFont) {
 			document.documentElement.style.setProperty('--font-header', headerFont)
@@ -51,7 +78,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 
 	return (
 		<ThemeContext.Provider value={value}>
-			<div className={cn(mode, theme, 'w-full')}>{children}</div>
+			<div className={cn(mode, themeClassNames[theme], 'w-full')}>{children}</div>
 		</ThemeContext.Provider>
 	)
 }
