@@ -27,11 +27,11 @@ const AIChatMessages: React.FC<AIChatMessagesProps> = (props) => {
 									</Avatar>
 								)}
 							</div>
-							<button className="flex-grow p-1 rounded text-left hover:bg-accent">
+							<div className="flex flex-grow p-1 rounded-lg text-left hover:bg-accent">
 								<p className="text-foreground whitespace-pre-line">
 									{message.content}
 								</p>
-							</button>
+							</div>
 						</li>
 					))}
 			</ul>
