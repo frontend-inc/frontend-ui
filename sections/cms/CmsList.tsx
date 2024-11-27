@@ -20,7 +20,6 @@ const CmsList: React.FC<CmsListProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		...rest
 	} = props
 
