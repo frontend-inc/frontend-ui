@@ -13,7 +13,7 @@ type FormContactUsProps = SectionProps &
 
 const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 	const {
-		direction = 'column',
+		direction = 'row',
 		label,
 		title,
 		subtitle,
