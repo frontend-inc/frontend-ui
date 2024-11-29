@@ -16,7 +16,7 @@ import { useDebounce } from 'use-debounce'
 const MenuBar = ({ editor }) => {
 	if (!editor) return null
 
-	const headingLevels = [1, 2, 3]
+	const headingLevels = [1,2,3,4,5,6]
 
 	const textAlignOptions = [
 		{
