@@ -2,27 +2,28 @@
 
 import React from 'react'
 import { Section, Stack, Heading } from '../../components'
-import { LinkList } from '../../components'
-import { LinkListProps } from '../../components/web/links/LinkList'
+import { PriceList } from '../../components'
+import { PriceListProps } from '../../components/web/price-list/PriceList'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
 
-type UILinkListProps = SectionProps & HeadingProps & StackProps & LinkListProps
+type UIPricesProps = SectionProps &
+	HeadingProps &
+	StackProps &
+	PriceListProps
 
-const UILinkList: React.FC<UILinkListProps> = (props) => {
+const UIPrices: React.FC<UIPricesProps> = (props) => {
 	const {
 		direction = 'column',
 		label,
 		title,
 		subtitle,
 		textAlign = 'center',
-		fontSize = 'lg',
-		fill,
-		border,
+		fontSize = 'md',
 		bgColor,
 		mode,
 		py,
 		px,
-		maxWidth = 'lg',
+		maxWidth = 'sm',
 		requireAuth,
 		editable,
 		handleChange,
@@ -51,11 +52,11 @@ const UILinkList: React.FC<UILinkListProps> = (props) => {
 					/>
 				</Stack>
 				<Stack direction={direction} size="2/3">
-					<LinkList {...rest} fill={fill} border={border} />
+					<PriceList {...rest} />
 				</Stack>
 			</Stack>
 		</Section>
 	)
 }
 
-export default UILinkList
+export default UIPrices

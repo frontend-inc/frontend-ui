@@ -109,7 +109,7 @@ const MenuBar = ({ editor }) => {
 	]
 
 	return (
-		<div className="w-full md:min-w-[670px] p-2 bg-white rounded-xl shadow-lg flex flex-wrap space-x-2">
+		<div className="w-full md:min-w-[720px] p-2 bg-white rounded-xl shadow-lg flex flex-wrap space-x-2">
 			{formattingOptions.map((btn, index) => (
 				<IconButton
 					key={index}

@@ -5,7 +5,7 @@ import ButtonAction from './ButtonAction'
 import { ButtonType } from '../../../types'
 import { cn } from 'frontend-shadcn'
 
-type ButtonActionsProps = {
+export type ButtonActionsProps = {
 	buttons: ButtonType[]
 	size?: 'sm' | 'default' | 'lg'
 	justifyContent?: 'justify-start' | 'justify-center' | 'justify-end'
