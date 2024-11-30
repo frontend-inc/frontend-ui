@@ -19,8 +19,7 @@ export type FeaturedCardProps = {
 	objectFit?: 'cover' | 'contain'
 	enableOverlay?: boolean
 	enableGradient?: boolean
-	border?: boolean
-	fill?: boolean
+  variant?: 'default' | 'fill' | 'outline'	
 }
 
 const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
@@ -37,8 +36,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 		objectFit = 'cover',
 		enableOverlay = false,
 		enableGradient = false,
-		border = false,
-		fill = false,
+		variant,
 	} = props || {}
 
 	const router = useRouter()
@@ -56,8 +54,8 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 			className={cn(
 				'flex items-center gap-10 flex-wrap md:flex-nowrap',
 				flexDirection === 'row-reverse' ? 'flex-row-reverse' : 'flex-row',
-				border && 'p-6 border-2 border-border rounded-lg',
-				fill && 'p-6 bg-muted/50 rounded-lg'
+				variant == 'outline' && 'p-6 border-2 border-border rounded-lg',
+				variant == 'fill' && 'p-6 bg-muted/50 rounded-lg'
 			)}
 		>
 			<div className="w-full md:w-1/2">
@@ -70,7 +68,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 					alt={title}
 					enableOverlay={enableOverlay}
 					enableGradient={enableGradient}
-					disableBorderRadius={border}
+					disableBorderRadius={variant == 'outline' ? true : false}
 				/>
 			</div>
 			<div className="flex flex-col gap-4 w-full md:w-1/2">

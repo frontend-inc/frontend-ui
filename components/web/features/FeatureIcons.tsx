@@ -11,15 +11,13 @@ type FeatureIconProps = {
 	icon?: string
 	title?: string
 	subtitle?: string
-	border?: boolean
-	fill?: boolean
+	variant?: 'fill' | 'outline' | 'default' 
 	direction?: 'column' | 'row'
 }
 
 const FeatureIcon: React.FC<FeatureIconProps> = (props) => {
 	const {
-		fill,
-		border,
+		variant,
 		icon,
 		title,
 		subtitle,
@@ -28,12 +26,12 @@ const FeatureIcon: React.FC<FeatureIconProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				'flex justify-start py-6',
+				'flex justify-start py-6 min-h-[200px] w-full',
 				direction === 'column'
 					? 'flex-col items-center space-y-3'
 					: 'flex-row items-start space-x-3',
-				border && 'border-2 border-border rounded-lg p-6',
-				fill && 'bg-muted rounded-lg p-6'
+				variant == 'outline' && 'border-2 border-border rounded-lg p-6',
+				variant == 'fill' && 'bg-muted rounded-lg p-6'
 			)}
 		>
 			{icon && (
@@ -74,8 +72,7 @@ const FeatureIcon: React.FC<FeatureIconProps> = (props) => {
 }
 
 export type FeatureIconsProps = {
-	fill?: boolean
-	border?: boolean
+	variant?: 'fill' | 'outline' | 'default'
 	items: {
 		icon?: any
 		title?: string
@@ -85,7 +82,7 @@ export type FeatureIconsProps = {
 }
 
 const FeatureIcons: React.FC<FeatureIconsProps> = (props) => {
-	const { fill, border, items = [], direction = 'column' } = props || {}
+	const { variant, items = [], direction = 'column' } = props || {}
 
 	return (
 		<div className="container mx-auto max-w-screen-lg p-2">
@@ -99,13 +96,12 @@ const FeatureIcons: React.FC<FeatureIconsProps> = (props) => {
 			>
 				{items?.map((item, idx) => (
 					<BlurFade delay={0.25 + idx * 0.05} inView key={idx}>
-						<FeatureIcon
-							fill={fill}
-							border={border}
+						<FeatureIcon							
 							icon={item?.icon}
 							title={item?.title}
 							subtitle={item?.subtitle}
 							direction={direction}
+              variant={variant}
 						/>
 					</BlurFade>
 				))}

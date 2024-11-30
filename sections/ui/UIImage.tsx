@@ -14,8 +14,7 @@ type UIImageProps = SectionProps &
 const UIImage: React.FC<UIImageProps> = (props) => {
 	const {
 		title,
-		fill,
-		border,
+		variant,
 		bgColor,
 		mode,
 		py,
@@ -34,8 +33,7 @@ const UIImage: React.FC<UIImageProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-			fill={fill}
-			border={border}
+			variant={variant}
 		>
 			<figure className="w-full flex flex-col space-y-2">
 				<Image {...rest} aspectRatio={aspectRatio} />

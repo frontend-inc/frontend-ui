@@ -19,8 +19,7 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 		subtitle,
 		textAlign = 'center',
 		fontSize = 'lg',
-		fill,
-		border,
+		variant,
 		bgColor,
 		mode,
 		py,
@@ -34,14 +33,13 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 
 	return (
 		<Section
-			fill={fill}
-			border={border}
 			requireAuth={requireAuth}
 			bgColor={bgColor}
 			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
+      variant={variant}
 		>
 			<Stack direction={direction} spacing={10} className="items-center">
 				<Stack direction={direction} size="1/3">

@@ -9,8 +9,7 @@ type UITextProps = SectionProps & HeadingProps
 
 const UIHeading: React.FC<UITextProps> = (props) => {
 	const {
-		fill,
-		border,
+		variant,
 		bgColor,
 		mode,
 		py,
@@ -28,8 +27,7 @@ const UIHeading: React.FC<UITextProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-			fill={fill}
-			border={border}
+			variant={variant}
 		>
 			<Heading {...rest} />
 		</Section>

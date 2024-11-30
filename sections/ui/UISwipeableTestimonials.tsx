@@ -20,8 +20,7 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 		subtitle,
 		textAlign = 'center',
 		fontSize = 'lg',
-		fill,
-		border,
+		variant,
 		bgColor,
 		mode,
 		py,
@@ -41,8 +40,7 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-			fill={fill}
-			border={border}
+			variant={variant}
 		>
 			<Stack spacing={10}>
 				<Heading

@@ -24,8 +24,7 @@ export type SectionProps = {
 	bgColor?: string
 	mode?: 'dark' | 'light'
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
-	fill?: boolean
-	border?: boolean
+  variant?: 'fill' | 'outline' | 'default' 	
 	py?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 	px?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 	requireAuth?: boolean

@@ -19,8 +19,7 @@ const UIFeatureIcons: React.FC<UIFeatureIconsProps> = (props) => {
 		subtitle,
 		textAlign = 'center',
 		fontSize = 'lg',
-		fill,
-		border,
+		variant,
 		bgColor,
 		mode,
 		py,
@@ -39,7 +38,7 @@ const UIFeatureIcons: React.FC<UIFeatureIconsProps> = (props) => {
 			mode={mode}
 			py={py}
 			px={px}
-			maxWidth={maxWidth}
+			maxWidth={maxWidth}      
 		>
 			<Stack direction={direction}>
 				<Stack direction={direction} size="1/3" spacing={10}>
@@ -57,8 +56,7 @@ const UIFeatureIcons: React.FC<UIFeatureIconsProps> = (props) => {
 					<FeatureIcons
 						{...rest}
 						direction={direction}
-						fill={fill}
-						border={border}
+            variant={variant}						
 					/>
 				</Stack>
 			</Stack>

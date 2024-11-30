@@ -18,6 +18,7 @@ const UIButtons: React.FC<UIButtonsProps> = (props) => {
 		requireAuth,
 		editable,
 		handleChange,
+    variant,
 		...rest
 	} = props
 
@@ -29,6 +30,7 @@ const UIButtons: React.FC<UIButtonsProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
+      variant={variant}
 		>
 			<ButtonActions {...rest} />
 		</Section>

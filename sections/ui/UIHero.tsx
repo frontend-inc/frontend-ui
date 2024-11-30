@@ -10,8 +10,7 @@ type UIHeroProps = SectionProps & HeroProps
 
 const UIHero: React.FC<UIHeroProps> = (props) => {
 	const {
-		fill,
-		border,
+		variant,
 		bgColor,
 		mode,
 		py,
@@ -32,8 +31,7 @@ const UIHero: React.FC<UIHeroProps> = (props) => {
 			py={fullWidth ? 'none' : py}
 			px={fullWidth ? 'none' : px}
 			maxWidth={maxWidth}
-			fill={fill}
-			border={border}
+			variant={variant}
 		>
 			<Hero {...rest} style={style} />
 		</Section>

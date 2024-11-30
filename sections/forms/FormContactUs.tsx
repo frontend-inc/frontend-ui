@@ -19,8 +19,7 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 		subtitle,
 		textAlign = 'center',
 		fontSize = 'lg',
-		fill,
-		border,
+		variant,
 		bgColor,
 		mode,
 		py,
@@ -40,8 +39,7 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-			fill={fill}
-			border={border}
+			variant={variant}
 		>
 			<Stack direction={direction} spacing={10}>
 				<Stack direction={direction} size="1/3">

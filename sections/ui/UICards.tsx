@@ -15,8 +15,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 		title,
 		subtitle,
 		textAlign = 'center',
-		fill,
-		border,
+		variant,
 		bgColor,
 		mode,
 		py,
@@ -37,8 +36,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-			fill={fill}
-			border={border}
+			variant={variant}
 		>
 			<Stack direction={direction} spacing={10}>
 				<Stack direction={direction} size="1/3">

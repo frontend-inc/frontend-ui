@@ -19,8 +19,7 @@ export type PriceListItemProps = {
 
 const PriceListItem: React.FC<PriceListItemProps> = (props) => {
 	const {
-		fill,
-		border,
+		variant,
 		image,
 		price,
 		title,
