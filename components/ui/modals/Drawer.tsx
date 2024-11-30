@@ -13,7 +13,7 @@ import {
 	DrawerOverlay,
 	ScrollArea,
 } from 'frontend-shadcn'
-import { useTheme } from '../../../hooks'
+import { useTheme } from 'next-themes'
 import { Button } from '../../../components'
 import { Loader2 } from 'lucide-react'
 import { X } from 'lucide-react'
@@ -52,12 +52,12 @@ export default function CustomDrawer(props: CustomDrawerProps) {
 		xl: 'max-w-screen-xl',
 	}
 
-	const { mode } = useTheme()
+	const { theme } = useTheme()
 
 	return (
 		<Drawer open={open} onOpenChange={handleClose}>
 			<DrawerPortal>
-				<DrawerContent className={cn(mode, className)}>
+				<DrawerContent className={cn(theme, className)}>
 					<DrawerHeader>
 						<div className="flex w-full justify-end">
 							<DrawerClose>

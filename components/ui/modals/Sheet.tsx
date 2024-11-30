@@ -3,6 +3,7 @@
 import React from 'react'
 import { cn } from 'frontend-shadcn'
 import { useTheme } from '../../../hooks'
+import { useTheme as useNextTheme } from 'next-themes'
 import {
 	Sheet as ShadcnSheet,
 	SheetContent,
@@ -35,7 +36,9 @@ const Sheet: React.FC<SheetProps> = ({
 	disablePadding = false,
 	className,
 }) => {
-	const { mode, theme } = useTheme()
+  
+	const { theme } = useTheme()
+  const { theme: mode } = useNextTheme()
 
 	return (
 		<ShadcnSheet open={open} onOpenChange={handleClose}>
