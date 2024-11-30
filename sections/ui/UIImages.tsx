@@ -14,7 +14,7 @@ const UIImages: React.FC<UIImagesProps> = (props) => {
 		title,
 		subtitle,
 		textAlign = 'center',
-		fontSize = 'lg',
+		fontSize = 'md',
 		variant,
 		bgColor,
 		mode,

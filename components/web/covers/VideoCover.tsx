@@ -28,7 +28,7 @@ const VideoCover: React.FC<VideoCoverProps> = (props) => {
 		actions,
 		height = 400,
 		enableOverlay,
-		fontSize = 'lg',
+		fontSize = 'md',
 		editable,
 		handleChange,
 	} = props

@@ -18,7 +18,7 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 		title,
 		subtitle,
 		textAlign = 'center',
-		fontSize = 'lg',
+		fontSize = 'md',
 		bgColor,
 		mode,
 		py,

@@ -19,7 +19,7 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 		title,
 		subtitle,
 		textAlign = 'center',
-		fontSize = 'lg',
+		fontSize = 'md',
 		variant,
 		bgColor,
 		mode,

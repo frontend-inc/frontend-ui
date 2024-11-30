@@ -18,7 +18,7 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 		title,
 		subtitle,
 		textAlign = 'center',
-		fontSize = 'lg',
+		fontSize = 'md',
 		variant,
 		bgColor,
 		mode,

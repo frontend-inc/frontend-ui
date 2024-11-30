@@ -20,7 +20,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 		mode,
 		py,
 		px,
-		fontSize = 'lg',
+		fontSize = 'md',
 		maxWidth,
 		requireAuth,
 		editable,

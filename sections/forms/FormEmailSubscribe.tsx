@@ -18,7 +18,7 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 		title,
 		subtitle,
 		textAlign = 'center',
-		fontSize = 'lg',
+		fontSize = 'md',
 		variant,
 		bgColor,
 		mode,

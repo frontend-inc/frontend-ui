@@ -19,7 +19,7 @@ const UILinks: React.FC<UILinksProps> = (props) => {
 		title,
 		subtitle,
 		textAlign = 'center',
-		fontSize = 'lg',
+		fontSize = 'md',
 		variant,
 		bgColor,
 		mode,

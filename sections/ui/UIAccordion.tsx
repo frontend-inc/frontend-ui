@@ -18,7 +18,7 @@ const UIAccordion: React.FC<UIAccordionProps> = (props) => {
 		title,
 		subtitle,
 		textAlign = 'center',
-		fontSize = 'lg',
+		fontSize = 'md',
     variant,
 		bgColor,
 		mode,

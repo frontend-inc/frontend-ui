@@ -14,7 +14,7 @@ const UIVideos: React.FC<UIVideosProps> = (props) => {
 		title,
 		subtitle,
 		textAlign,
-		fontSize = 'lg',
+		fontSize = 'md',
 		bgColor,
 		mode,
 		py,

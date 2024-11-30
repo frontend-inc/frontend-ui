@@ -18,7 +18,7 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 		label,
 		title,
 		subtitle,
-		fontSize = 'lg',
+		fontSize = 'md',
 		buttons = [],
 		editable,
 		handleChange,
