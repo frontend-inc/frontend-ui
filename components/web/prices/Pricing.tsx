@@ -3,7 +3,7 @@
 import React from 'react'
 import PricingCard from './PricingCard'
 import { PriceType } from '../../..'
-import { Empty } from '../..'
+import { Stack, Empty } from '../..'
 
 export type PricingProps = {
 	items: PriceType[]
@@ -14,7 +14,7 @@ const Pricing: React.FC<PricingProps> = (props) => {
 
 	return (
 		<div className="flex flex-col space-y-2 p-3">
-			<div className="flex sm:flex-row flex-col space-y-1 sm:space-y-0 sm:space-x-1">
+      <Stack direction="row" spacing={4}>
 				{items?.map((item, index) => (
 					<PricingCard
 						key={index}
@@ -30,7 +30,7 @@ const Pricing: React.FC<PricingProps> = (props) => {
 						buttonText={item.buttonText}
 					/>
 				))}
-			</div>
+			</Stack>
 			{items?.length === 0 && (
 				<Empty
 					icon="ri-bank-card-fill"
