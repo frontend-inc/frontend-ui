@@ -26,10 +26,10 @@ const FeatureIcon: React.FC<FeatureIconProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				'flex justify-start py-6 min-h-[200px] w-full',
+				'flex justify-start py-6 w-full items-center h-full',        
 				direction === 'column'
-					? 'flex-col items-center space-y-3'
-					: 'flex-row items-start space-x-3',
+					? 'flex-col items-center space-y-3 min-h-[230px]'
+					: 'flex-row items-start space-x-3 min-h-[165px]',
 				variant == 'outline' && 'border-2 border-border rounded-lg p-6',
 				variant == 'fill' && 'bg-muted rounded-lg p-6'
 			)}
