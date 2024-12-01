@@ -6,8 +6,7 @@ import { ActionType } from '../../../types'
 import { cn } from 'frontend-shadcn'
 
 export type LinkListItemProps = {
-	fill?: boolean
-	border?: boolean
+  variant?: 'fill' | 'outline' | 'default'
 	color: string
 	icon: string
 	title: string
@@ -19,7 +18,7 @@ export type LinkListItemProps = {
 }
 
 const LinkListItem: React.FC<LinkListItemProps> = (props) => {
-	const { fill, border, color, icon, title, subtitle, action, path, url, src } =
+	const { variant, color, icon, title, subtitle, action, path, url, src } =
 		props
 
 	const { handleClick } = useButton({
@@ -35,8 +34,8 @@ const LinkListItem: React.FC<LinkListItemProps> = (props) => {
 				onClick={handleClick}
 				className={cn(
 					'w-full flex justify-between items-center rounded-xl p-4 focus:outline-none hover:bg-muted',
-					fill && 'bg-muted p-6',
-					border && 'border border-border rounded-lg'
+					variant === 'fill' && 'bg-muted p-6',
+					variant === 'outline' && 'border border-border rounded-lg'
 				)}
 			>
 				<div className=" flex flex-row space-x-6 items-center">

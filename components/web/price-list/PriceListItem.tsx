@@ -5,8 +5,7 @@ import { ActionType } from '../../../types'
 import { cn } from 'frontend-shadcn'
 
 export type PriceListItemProps = {
-	fill?: boolean
-	border?: boolean
+	variant?: 'fill' | 'outline' | 'default'
 	image: string
 	title: string
 	subtitle: string
@@ -43,8 +42,8 @@ const PriceListItem: React.FC<PriceListItemProps> = (props) => {
 				onClick={handleClick}
 				className={cn(
 					'w-full flex justify-between items-center rounded-xl p-4 focus:outline-none hover:bg-muted',
-					fill && 'bg-muted p-6 rounded-lg',
-					border && 'border border-border p-6 rounded-lg'
+					variant == 'fill' && 'bg-muted p-6 rounded-lg',
+					variant == 'outline' && 'border border-border p-6 rounded-lg'
 				)}
 			>
 				<div className=" flex flex-row space-x-6 items-center">

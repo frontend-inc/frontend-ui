@@ -20,13 +20,12 @@ type LinkListType = {
 }
 
 export type LinkListProps = {
-	fill?: boolean
-	border?: boolean
+	variant?: 'fill' | 'outline' | 'default'
 	items: LinkListType[]
 }
 
 const LinkList: React.FC<LinkListProps> = (props) => {
-	const { fill, border, items } = props || {}
+	const { variant, items } = props || {}
 
 	return (
 		<div className="w-full justify-center flex flow-row py-1">
@@ -34,7 +33,7 @@ const LinkList: React.FC<LinkListProps> = (props) => {
 				<ul className="list-none w-full flex flex-col space-y-2">
 					{items?.map((item, idx) => (
 						<BlurFade delay={0.25 + idx * 0.05} key={idx}>
-							<LinkListItem {...item} fill={fill} border={border} />
+							<LinkListItem {...item} variant={variant} />
 						</BlurFade>
 					))}
 				</ul>

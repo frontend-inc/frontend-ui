@@ -7,8 +7,7 @@ import PriceListItem from './PriceListItem'
 import { ActionType } from '../../../types'
 
 type PriceListType = {
-	fill?: boolean
-	border?: boolean
+	variant?: 'fill' | 'outline' | 'default'
 	image: string
 	title: string
 	subtitle: string
@@ -19,13 +18,12 @@ type PriceListType = {
 }
 
 export type PriceListProps = {
-	fill?: boolean
-	border?: boolean
+	variant?: 'fill' | 'outline' | 'default'
 	items: PriceListType[]
 }
 
 const PriceList: React.FC<PriceListProps> = (props) => {
-	const { fill, border, items } = props || {}
+	const { variant, items } = props || {}
 
 	return (
 		<div className="w-full justify-center flex flow-row">
@@ -33,7 +31,7 @@ const PriceList: React.FC<PriceListProps> = (props) => {
 				<ul className="list-none w-full flex flex-col space-y-2">
 					{items?.map((item, idx) => (
 						<BlurFade delay={0.25 + idx * 0.05} key={idx}>
-							<PriceListItem {...item} fill={fill} border={border} />
+							<PriceListItem {...item} variant={variant} />
 						</BlurFade>
 					))}
 				</ul>
