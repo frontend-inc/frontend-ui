@@ -13,7 +13,7 @@ const CartLineItems: React.FC = () => {
 	if (cart?.line_items.length === 0) {
 		return (
 			<Empty
-				icon="ri-shopping-bag-2-fill"
+				icon="ri-shopping-bag-2-line"
 				title="Your cart is empty"
 				description="There are no products in the cart."
 			/>

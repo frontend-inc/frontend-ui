@@ -6,8 +6,7 @@ import { ShopifyCartButton } from '../../shopify'
 import { useApp } from '../../../hooks'
 import { ButtonType, MenuLinkType } from '../../..'
 import Logo from './Logo'
-import { Button } from '../../../components'
-import { RiMenuFill } from '@remixicon/react'
+import { RemixIcon, Button } from '../../../components'
 
 type MobileHeaderProps = {
 	bgColor?: string
@@ -53,7 +52,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props) => {
 						className="mr-2"
 						onClick={() => setMenuOpen(true)}
 					>
-						<RiMenuFill size={24} />
+						<RemixIcon name="ri-menu-fill" />
 					</Button>
 					<Logo
 						handleClick={() => handleClick('/')}

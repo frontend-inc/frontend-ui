@@ -49,7 +49,7 @@ const ShopifyCart: React.FC<ShopifyCartProps> = (props) => {
 			) : (
 				<div className="h-1/2 flex flex-col justify-center items-center">
 					<Empty
-						icon="ri-shopping-cart-2-fill"
+						icon="ri-shopping-cart-2-line"
 						title="Your cart is empty"
 						description="Continue shopping to add items to your cart"
 					/>

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { IconButton } from '../../../components'
-import { ButtonActions, AuthButton, Icon } from '../..'
+import { RemixIcon, ButtonActions, AuthButton, Icon } from '../..'
 import Logo from './Logo'
 import { CartButton } from '../..'
 import { ShopifyCartButton } from '../../shopify'
@@ -50,7 +50,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 					{links?.length > MAX_LINKS && (
 						<div className="pl-1 flex items-center justify-center h-[60px]">
 							<IconButton color="ghost" onClick={() => setMenuOpen(true)}>
-								<RiMenuFill size={24} />
+								<RemixIcon name='ri-menu-fill' />
 							</IconButton>
 						</div>
 					)}
