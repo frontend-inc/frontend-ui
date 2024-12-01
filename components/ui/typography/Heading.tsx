@@ -81,7 +81,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 								editable={editable}
 								variant="caption"
 								className={cn(
-									'text-primary uppercase',
+									'text-primary uppercase tracking-widest font-semibold opacity-90',
 									textAlign === 'center' && 'text-center',
 									textAlign === 'right' && 'text-right'
 								)}

@@ -30,7 +30,7 @@ const Empty: React.FC<EmptyProps> = (props) => {
 		<div
 			className={cn(
 				fill && 'bg-muted/50',
-				'p-4 rounded-lg h-full w-full flex flex-col space-y-2 items-center justify-center',
+				'rounded-lg py-10 w-full flex flex-col space-y-2 items-center justify-center',
 				variant == 'destructive' &&
 					'bg-destructive/10 border border-destructive',
 				variant == 'accent' && 'bg-accent/10 border border-accent',
