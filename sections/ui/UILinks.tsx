@@ -54,7 +54,7 @@ const UILinks: React.FC<UILinksProps> = (props) => {
 					/>
 				</Stack>
 				<Stack direction={direction} size="2/3">
-					<LinkList {...rest} fill={fill} border={border} />
+					<LinkList {...rest} variant={variant} />
 				</Stack>
 			</Stack>
 		</Section>
