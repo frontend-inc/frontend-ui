@@ -4,7 +4,7 @@ import React, { useContext } from 'react'
 import { AppContext } from '../../context'
 import { useAuth, useResourceContext } from 'frontend-js'
 
-const useCollectionForms = () => {
+const useDocumentForms = () => {
 	const { currentUser } = useAuth()
 
 	const { setAuthOpen } = useContext(AppContext)
@@ -120,4 +120,4 @@ const useCollectionForms = () => {
 	}
 }
 
-export default useCollectionForms
+export default useDocumentForms

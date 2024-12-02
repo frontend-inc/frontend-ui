@@ -2,13 +2,13 @@
 
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { GeoList } from '../../components'
-import { GeoListProps } from '../../components/cms/collections/GeoList'
+import { PlacesList } from '../../components'
+import { PlacesListProps } from '../../components/cms/documents/PlacesList'
 import { SectionProps, HeadingProps, FormProps } from '../../types'
 
-type CmsPlacesListProps = SectionProps & HeadingProps & GeoListProps & FormProps
+type CmsPlacesProps = SectionProps & HeadingProps & PlacesListProps & FormProps
 
-const CmsPlacesList: React.FC<CmsPlacesListProps> = (props) => {
+const CmsPlaces: React.FC<CmsPlacesProps> = (props) => {
 	const {
 		label,
 		title,
@@ -39,9 +39,9 @@ const CmsPlacesList: React.FC<CmsPlacesListProps> = (props) => {
 				subtitle={subtitle}
 				textAlign={textAlign}
 			/>
-			<GeoList {...rest} />
+			<PlacesList {...rest} />
 		</Section>
 	)
 }
 
-export default CmsPlacesList
+export default CmsPlaces

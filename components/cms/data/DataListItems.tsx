@@ -4,7 +4,7 @@ import React from 'react'
 import { LoadMore } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { DataItem, DataLayout } from '../..'
-import { useCollectionForms } from '../../../hooks'
+import { useDocumentForms } from '../../../hooks'
 
 export type DataListItemsProps = {
 	layout?: 'list' | 'grid' | 'slider'
@@ -51,7 +51,7 @@ const DataListItems: React.FC<DataListItemsProps> = (props) => {
 		},
 	} = props
 
-	const { handleShow, handleEdit, handleDeleteClick } = useCollectionForms()
+	const { handleShow, handleEdit, handleDeleteClick } = useDocumentForms()
 
 	const handleShowClick = (resource: any) => {
 		if (handleClick) {

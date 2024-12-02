@@ -4,9 +4,9 @@ import React from 'react'
 import { Section, Heading } from '../../components'
 import { FavoritesList } from '../../components'
 import { SectionProps, HeadingProps } from '../../types'
-import { CollectionListProps } from '../../components/cms/collections/CollectionList'
+import { DocumentListProps } from '../../components/cms/documents/DocumentList'
 
-type CmsFavoritesProps = SectionProps & HeadingProps & CollectionListProps
+type CmsFavoritesProps = SectionProps & HeadingProps & DocumentListProps
 
 const CmsFavorites: React.FC<CmsFavoritesProps> = (props) => {
 	const {

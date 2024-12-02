@@ -1,6 +1,6 @@
 import { ImageType, VideoType, UserType } from '../types'
 
-export type DocumentTypes =
+export type ContentTypes =
 	| 'post'
 	| 'article'
 	| 'place'
@@ -45,10 +45,24 @@ export type DocumentType = {
 	tags?: string[]
 	position?: number
 	published: boolean
-	content_type?: string
-	document_type: DocumentTypes
+	content_type: ContentTypes
 	shopify_product?: string
 	references: ReferenceType[]
 	created_at: string
 	updated_at: string
+}
+
+
+export type CollectionType = {
+	id?: number
+	label?: string
+	handle?: string
+	title?: string
+	description?: string
+	image?: {
+		url: string
+	}
+	tags?: string[]
+	published?: boolean	
+	documents?: DocumentType[]
 }

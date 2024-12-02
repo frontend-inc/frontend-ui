@@ -1,3 +1,25 @@
+export const CONTENT_TYPE = {
+  label: 'Content Type',
+  name: 'content_type',
+  variant: 'select',
+  options: [
+    { label: 'Post', value: 'post', icon: 'ri-file-text-fill' },
+    { label: 'Article', value: 'article', icon: 'ri-file-text-fill' },
+    { label: 'Place', value: 'place', icon: 'ri-map-pin-line' },
+    { label: 'Event', value: 'event', icon: 'ri-calendar-event-fill' },
+    { label: 'Person', value: 'person', icon: 'ri-user-fill' },
+    { label: 'Product', value: 'product', icon: 'ri-shopping-cart-fill' },
+    { label: 'Image', value: 'image', icon: 'ri-image-fill' },
+    { label: 'Video', value: 'video', icon: 'ri-video-fill' },
+    { label: 'Audio', value: 'audio', icon: 'ri-music-fill' },
+    { label: 'File', value: 'file', icon: 'ri-file-fill' },
+    { label: 'Youtube', value: 'youtube', icon: 'ri-youtube-fill' },
+    { label: 'Vimeo', value: 'vimeo', icon: 'ri-vimeo-fill' },
+    { label: 'Soundcloud', value: 'soundcloud', icon: 'ri-soundcloud-fill' },
+    { label: 'Shopify', value: 'shopify', icon: 'ri-shopping-cart-fill' },
+  ]
+}
+
 export const HANDLE = { label: 'Handle', name: 'handle', variant: 'slug' }
 export const TITLE = { label: 'Title', name: 'title', variant: 'string' }
 
@@ -92,8 +114,9 @@ export const SOUNDCLOUD_AUDIO = {
 }
 
 export const DOCUMENT_FORM_FIELDS = {
-	post: [IMAGE, TITLE, LABEL, CATEGORY, SUBTITLE, DESCRIPTION, TAGS],
+	post: [CONTENT_TYPE, IMAGE, TITLE, LABEL, CATEGORY, SUBTITLE, DESCRIPTION, TAGS],
 	article: [
+    CONTENT_TYPE,
 		IMAGE,
 		TITLE,
 		SUBTITLE_TEXT,
@@ -103,8 +126,9 @@ export const DOCUMENT_FORM_FIELDS = {
 		HTML,
 		TAGS,
 	],
-	place: [IMAGE, TITLE, SUBTITLE, LABEL, CATEGORY, DESCRIPTION, LOCATION, TAGS],
+	place: [CONTENT_TYPE, IMAGE, TITLE, SUBTITLE, LABEL, CATEGORY, DESCRIPTION, LOCATION, TAGS],
 	event: [
+    CONTENT_TYPE,
 		IMAGE,
 		TITLE,
 		SUBTITLE,
@@ -116,13 +140,14 @@ export const DOCUMENT_FORM_FIELDS = {
 		LOCATION,
 		TAGS,
 	],
-	person: [IMAGE, NAME, ABOUT, HEADLINE, TAGS],
-	product: [IMAGE, TITLE, SUBTITLE, LABEL, CATEGORY, DESCRIPTION, PRICE, TAGS],
-	image: [IMAGE, TITLE, SUBTITLE, LABEL, CATEGORY, TAGS],
-	video: [IMAGE, VIDEO, TITLE, SUBTITLE, LABEL, CATEGORY, DESCRIPTION, TAGS],
-	audio: [IMAGE, AUDIO, TITLE, SUBTITLE, LABEL, CATEGORY, DESCRIPTION, TAGS],
-	file: [FILE, TITLE, SUBTITLE, LABEL, CATEGORY, DESCRIPTION, TAGS],
+	person: [CONTENT_TYPE, IMAGE, NAME, ABOUT, HEADLINE, TAGS],
+	product: [CONTENT_TYPE, IMAGE, TITLE, SUBTITLE, LABEL, CATEGORY, DESCRIPTION, PRICE, TAGS],
+	image: [CONTENT_TYPE, IMAGE, TITLE, SUBTITLE, LABEL, CATEGORY, TAGS],
+	video: [CONTENT_TYPE, IMAGE, VIDEO, TITLE, SUBTITLE, LABEL, CATEGORY, DESCRIPTION, TAGS],
+	audio: [CONTENT_TYPE, IMAGE, AUDIO, TITLE, SUBTITLE, LABEL, CATEGORY, DESCRIPTION, TAGS],
+	file: [CONTENT_TYPE, FILE, TITLE, SUBTITLE, LABEL, CATEGORY, DESCRIPTION, TAGS],
 	youtube: [
+    CONTENT_TYPE,
 		IMAGE,
 		YOUTUBE_VIDEO,
 		TITLE,
@@ -133,6 +158,7 @@ export const DOCUMENT_FORM_FIELDS = {
 		TAGS,
 	],
 	vimeo: [
+    CONTENT_TYPE,
 		IMAGE,
 		VIMEO_VIDEO,
 		TITLE,
@@ -143,6 +169,7 @@ export const DOCUMENT_FORM_FIELDS = {
 		TAGS,
 	],
 	soundcloud: [
+    CONTENT_TYPE,
 		IMAGE,
 		SOUNDCLOUD_AUDIO,
 		TITLE,
@@ -153,6 +180,7 @@ export const DOCUMENT_FORM_FIELDS = {
 		TAGS,
 	],
 	shopify: [
+    CONTENT_TYPE,
 		IMAGE,
 		SHOPIFY_PRODUCT,
 		TITLE,

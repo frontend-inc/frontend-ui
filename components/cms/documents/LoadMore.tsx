@@ -10,11 +10,14 @@ type LoadMoreProps = {
 	handlePaginate: () => void
 }
 
-export default function LoadMore({
-	page,
-	numPages,
-	handlePaginate,
-}: LoadMoreProps) {
+export default function LoadMore(props: LoadMoreProps) {
+
+  const {
+    page,
+    numPages,
+    handlePaginate,
+  } = props
+  
 	return (
 		<div className="w-full flex justify-center items-center">
 			{page < numPages && (

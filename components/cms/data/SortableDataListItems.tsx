@@ -4,7 +4,7 @@ import React from 'react'
 import { LoadMore, SortableList } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { DataItem, DataLayout } from '../..'
-import { useCollectionForms } from '../../../hooks'
+import { useDocumentForms } from '../../../hooks'
 
 export type SortableDataListItemsProps = {
 	enableShow?: boolean
@@ -46,7 +46,7 @@ const SortableDataListItems: React.FC<SortableDataListItemsProps> = (props) => {
 		},
 	} = props
 
-	const { handleShow, handleEdit, handleDeleteClick } = useCollectionForms()
+	const { handleShow, handleEdit, handleDeleteClick } = useDocumentForms()
 
 	const handleShowClick = (resource: any) => {
 		if (handleClick) {

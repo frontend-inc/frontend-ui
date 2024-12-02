@@ -28,9 +28,9 @@ const LinkList: React.FC<LinkListProps> = (props) => {
 	const { variant, items } = props || {}
 
 	return (
-		<div className="w-full justify-center flex flow-row py-1">
+		<div className="w-full justify-center flex flow-row">
 			<div className="container mx-auto max-w-screen-2xl">
-				<ul className="list-none w-full flex flex-col space-y-2">
+				<ul className="list-none w-full flex flex-col space-y-2 py-2">
 					{items?.map((item, idx) => (
 						<BlurFade delay={0.25 + idx * 0.05} key={idx}>
 							<LinkListItem {...item} variant={variant} />
@@ -40,7 +40,7 @@ const LinkList: React.FC<LinkListProps> = (props) => {
 				{items?.length == 0 && (
 					<Empty
 						icon="ri-list-unordered-line"
-						title="No links yet."
+						title="No links"
 						description="Your links will appear here."
 					/>
 				)}

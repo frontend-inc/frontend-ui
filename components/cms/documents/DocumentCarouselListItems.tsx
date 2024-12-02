@@ -2,9 +2,9 @@
 
 import React from 'react'
 import { useApp } from '../../../hooks'
-import { useRouter, useParams } from 'next/navigation'
-import CollectionListItem from './CollectionListItem'
-import { CollectionListItemsProps } from '../collections/CollectionListItems'
+import { useRouter } from 'next/navigation'
+import DocumentListItem from './DocumentListItem'
+import { DocumentListItemsProps } from './DocumentListItems'
 import { useResourceContext } from 'frontend-js'
 import { cn } from 'frontend-shadcn'
 import {
@@ -15,11 +15,11 @@ import {
 	CarouselPrevious,
 } from 'frontend-shadcn'
 
-export type CarouselListItemsProps = CollectionListItemsProps & {
+export type DocumentCarouselListItemsProps = DocumentListItemsProps & {
 	enableAutoPlay?: boolean
 }
 
-const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
+const DocumentCarouselListItems: React.FC<DocumentCarouselListItemsProps> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useApp()
 
@@ -59,7 +59,7 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 					{resources?.map((resource, index) => (
 						<CarouselItem className="sm:basis-1/2 lg:basis-1/3" key={index}>
 							<div className="p-1">
-								<CollectionListItem
+								<DocumentListItem
 									buttons={buttons}
 									style="card"
 									resource={resource}
@@ -82,4 +82,4 @@ const CarouselListItems: React.FC<CarouselListItemsProps> = (props) => {
 	)
 }
 
-export default CarouselListItems
+export default DocumentCarouselListItems

@@ -2,11 +2,11 @@
 
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { CarouselList } from '../../components'
-import { CarouselListProps } from '../../components/cms/collections/CarouselList'
+import { DocumentCarouselList } from '../../components'
+import { DocumentCarouselListProps } from '../../components/cms/documents/DocumentCarouselList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsCarouselProps = SectionProps & HeadingProps & CarouselListProps
+type CmsCarouselProps = SectionProps & HeadingProps & DocumentCarouselListProps
 
 const CmsCarousel: React.FC<CmsCarouselProps> = (props) => {
 	const {
@@ -39,7 +39,7 @@ const CmsCarousel: React.FC<CmsCarouselProps> = (props) => {
 				subtitle={subtitle}
 				textAlign={textAlign}
 			/>
-			<CarouselList {...rest} />
+			<DocumentCarouselList {...rest} />
 		</Section>
 	)
 }

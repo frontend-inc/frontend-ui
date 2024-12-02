@@ -5,17 +5,17 @@ import { DisplayFields, Image } from '../..'
 import { MetafieldType } from '../../../types'
 import { DOCUMENT_SHOW_FIELDS } from '../../../constants'
 
-type CollectionHeroProps = {
+type DocumentHeroProps = {
 	disableImage?: boolean
 	resource: any
 	actions?: React.ReactNode
 	metafields?: MetafieldType[]
 }
 
-const CollectionDetails: React.FC<CollectionHeroProps> = (props) => {
+const DocumentDetails: React.FC<DocumentHeroProps> = (props) => {
 	const { actions, resource, disableImage, metafields = [] } = props || {}
 
-	const fields = DOCUMENT_SHOW_FIELDS[resource?.documentType]
+	const fields = DOCUMENT_SHOW_FIELDS[resource?.content_type || 'post'] 
 
 	const filteredFields = fields.filter(
 		(field) => !['image', 'label', 'title'].includes(field.name)
@@ -47,4 +47,4 @@ const CollectionDetails: React.FC<CollectionHeroProps> = (props) => {
 	)
 }
 
-export default CollectionDetails
+export default DocumentDetails

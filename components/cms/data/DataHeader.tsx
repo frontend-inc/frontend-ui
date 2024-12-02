@@ -4,7 +4,7 @@ import React from 'react'
 import { Button } from '../../../components'
 import { Icon, FilterButton, SortButton, SearchInput } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
-import { useSearch, useCollectionForms } from '../../../hooks'
+import { useSearch, useDocumentForms } from '../../../hooks'
 import { RiAddFill } from '@remixicon/react'
 
 export type DataHeaderProps = {
@@ -58,7 +58,7 @@ const DataHeader: React.FC<DataHeaderProps> = (props) => {
 		query: defaultQuery,
 	})
 
-	const { handleAdd } = useCollectionForms()
+	const { handleAdd } = useDocumentForms()
 
 	if (!enableSearch && !enableFilters && !enableSorting && !enableCreate) {
 		return null

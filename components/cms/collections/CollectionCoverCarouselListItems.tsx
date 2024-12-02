@@ -3,12 +3,12 @@
 import React from 'react'
 import { Swipeable, Cover } from '../..'
 import { useApp } from '../../../hooks'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useResourceContext } from 'frontend-js'
-import { CoverProps } from '../../../components/web/covers/Cover'
+import { CoverProps } from '../../web/covers/Cover'
 import { cn } from 'frontend-shadcn'
 
-export type CarouselCoverListItemsProps = CoverProps & {
+export type CollectionCoverCarouselListItemsProps = CoverProps & {
 	href?: string
 	height?: number
 	enableAutoPlay?: boolean
@@ -17,9 +17,9 @@ export type CarouselCoverListItemsProps = CoverProps & {
 	enableOverlay?: boolean
 }
 
-const CarouselCoverListItems: React.FC<CarouselCoverListItemsProps> = (
-	props
-) => {
+const CollectionCoverCarouselListItems: React.FC<
+	CollectionCoverCarouselListItemsProps
+> = (props) => {
 	const router = useRouter()
 	const { clientUrl } = useApp()
 
@@ -42,18 +42,13 @@ const CarouselCoverListItems: React.FC<CarouselCoverListItemsProps> = (
 	}
 
 	return (
-		<div
-			className={cn(
-				'w-full',
-				loading && 'opacity-50',
-				height && `h-[${height}px]`
-			)}
-		>
+		<div className={cn('w-full', loading && 'opacity-50')}>
 			<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
 				{resources?.map((resource, index) => (
 					<Cover
 						key={index}
 						image={resource?.image?.url}
+						height={height}
 						title={resource?.title}
 						handleClick={() => handleClick(resource)}
 						enableGradient={enableGradient}
@@ -66,4 +61,4 @@ const CarouselCoverListItems: React.FC<CarouselCoverListItemsProps> = (
 	)
 }
 
-export default CarouselCoverListItems
+export default CollectionCoverCarouselListItems

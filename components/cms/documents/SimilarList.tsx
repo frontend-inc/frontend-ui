@@ -1,17 +1,17 @@
 'use client'
 
 import React from 'react'
-import CollectionList from '../collections/CollectionList'
-import { CollectionListProps } from '../collections/CollectionList'
+import DocumentList from '../documents/DocumentList'
+import { DocumentListProps } from '../documents/DocumentList'
 
-export type SimilarListProps = CollectionListProps & {
+export type SimilarListProps = DocumentListProps & {
 	documentId: string
 }
 
 const SimilarList: React.FC<SimilarListProps> = (props) => {
 	const { url, documentId, ...rest } = props
 	const similarUrl = `${url}/${documentId}/similar`
-	return <CollectionList {...rest} url={similarUrl} />
+	return <DocumentList {...rest} url={similarUrl} />
 }
 
 export default SimilarList

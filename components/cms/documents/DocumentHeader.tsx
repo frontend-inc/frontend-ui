@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { Button } from '../../../components'
+import { Button } from '../..'
 import { cn } from 'frontend-shadcn'
 import {
 	Icon,
@@ -11,10 +11,10 @@ import {
 	GeoSearchInput,
 } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
-import { useSearch, useCollectionForms } from '../../../hooks'
+import { useSearch, useDocumentForms } from '../../../hooks'
 import { RiAddFill } from '@remixicon/react'
 
-export type CollectionHeaderProps = {
+export type DocumentHeaderProps = {
 	query: any
 	url: string
 	enableSearch?: boolean
@@ -28,7 +28,7 @@ export type CollectionHeaderProps = {
 	handleAdd?: () => void
 }
 
-const CollectionHeader: React.FC<CollectionHeaderProps> = (props) => {
+const DocumentHeader: React.FC<DocumentHeaderProps> = (props) => {
 	const {
 		url,
 		query: defaultQuery = {},
@@ -69,7 +69,7 @@ const CollectionHeader: React.FC<CollectionHeaderProps> = (props) => {
 		})
 	}
 
-	const { handleAdd } = useCollectionForms()
+	const { handleAdd } = useDocumentForms()
 
 	if (!enableSearch && !enableFilters && !enableSorting && !enableCreate) {
 		return null
@@ -135,4 +135,4 @@ const CollectionHeader: React.FC<CollectionHeaderProps> = (props) => {
 	)
 }
 
-export default CollectionHeader
+export default DocumentHeader

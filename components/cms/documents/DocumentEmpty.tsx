@@ -4,13 +4,13 @@ import React from 'react'
 import { Empty } from '../..'
 import { useResourceContext } from 'frontend-js'
 
-type CollectionEmptyProps = {
+type DocumentEmptyProps = {
 	icon?: any
 	title?: string
 	description?: string
 }
 
-const CollectionEmpty: React.FC<CollectionEmptyProps> = (props) => {
+const DocumentEmpty: React.FC<DocumentEmptyProps> = (props) => {
 	const { resources } = useResourceContext()
 	const { icon, title, description } = props || {}
 
@@ -22,4 +22,4 @@ const CollectionEmpty: React.FC<CollectionEmptyProps> = (props) => {
 	)
 }
 
-export default CollectionEmpty
+export default DocumentEmpty

@@ -1,78 +1,48 @@
 'use client'
 
 import React from 'react'
-import { CommentList, Drawer, CollectionDetails, SocialButtons } from '../..'
-import { BlurFade } from '../../../components'
+import { Drawer, Typography, CollectionDocuments } from '../..'
 import { useResourceContext } from 'frontend-js'
-import { ButtonType, MetafieldType } from '../../../types'
 
 export type CollectionShowProps = {
-	buttons: ButtonType[]
-	metafields: MetafieldType[]
+	handle?: string
 	enableFavorites?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
-	enableComments?: boolean
-	disableImage?: boolean
-	enableBorder?: boolean
+	enableGradient?: boolean
 	enableOverlay?: boolean
 }
 
 const CollectionShow: React.FC<CollectionShowProps> = (props) => {
-	const { openShow, setOpenShow, resource, url } = useResourceContext()
+	const { openShow, setOpenShow, resource } = useResourceContext()
 
-	const {
-		metafields = [],
-		enableComments,
-		enableLikes,
-		enableFavorites,
-		enableSharing,
-	} = props || {}
-
-	let disableImage = false
-	switch (resource?.documentType) {
-		case 'youtube':
-		case 'vimeo':
-		case 'soundcloud':
-		case 'video':
-			disableImage = true
-			break
-		default:
-			disableImage = false
-	}
+	const { enableLikes, enableFavorites, enableGradient, enableOverlay } =
+		props || {}
 
 	if (!resource) return null
 	return (
 		<Drawer
+			title={resource?.title}
 			open={openShow}
 			handleClose={() => setOpenShow(false)}
-			title={resource?.title}
 		>
-			<div className="flex flex-col space-y-6 pb-[40px] w-full">
-				<BlurFade delay={0.25} inView className="w-full">
-					<div className="w-full">
-						<CollectionDetails
-							disableImage={disableImage}
-							resource={resource}
-							metafields={metafields}
-							actions={
-								<SocialButtons
-									size="large"
-									justifyContent={'center'}
-									resource={resource}
-									enableLikes={enableLikes}
-									enableFavorites={enableFavorites}
-									enableSharing={enableSharing}
-								/>
-							}
-						/>
-						{enableComments && (
-							<div className="px-2">
-								<CommentList url={url} handle={resource?.handle} />
-							</div>
-						)}
+			<div className="w-full flex flex-row justify-center pb-10">
+				<div className="w-full md:max-w-screen-sm flex flex-col space-y-[40px]">
+					<div className="w-full flex flex-col space-y-3">
+						<Typography variant="body1" className="text-muted-foreground">
+							{resource?.description}
+						</Typography>
 					</div>
-				</BlurFade>
+          {/* @ts-ignore */}
+					<CollectionDocuments
+            resource={resource}
+						enableGradient={enableGradient}
+						enableOverlay={enableOverlay}
+						enableLikes={enableLikes}
+						enableFavorites={enableFavorites}
+						collectionId={resource.id}
+					/>
+				</div>
 			</div>
 		</Drawer>
 	)

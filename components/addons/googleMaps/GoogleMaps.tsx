@@ -37,12 +37,14 @@ export default function GoogleMap({
 	const [googleMarkers, setGoogleMarkers] = useState<GoogleMarkerType[]>([])
 
 	const handleSetMarkers = (resources) => {
-		let markers = resources?.map((res) => ({
-			lat: res?.lat,
-			lng: res?.lng,
-			label: res?.title,
-			image: res?.image?.url,
-		}))
+		let markers = resources
+      ?.filter((res) => res?.lat && res?.lng)
+      ?.map((res) => ({
+        lat: res?.lat,
+        lng: res?.lng,
+        label: res?.title,
+        image: res?.image?.url,
+      }))
 		setGoogleMarkers(markers?.length ? markers : [])
 	}
 
