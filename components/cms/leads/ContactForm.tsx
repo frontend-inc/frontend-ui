@@ -3,7 +3,7 @@
 import React from 'react'
 import { FormFieldType } from '../../../types'
 import { Container, Form } from '../../../components'
-import { useResource } from 'frontend-js'
+import { useContacts } from '../../../hooks'
 import { toast } from 'sonner'
 
 export type ContactFormProps = {
@@ -21,21 +21,21 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 	const {
 		errors,
 		delayedLoading,
-		resource: contact,
-		setResource: setContact,
+		contact,
+		setContact,
 		handleChange,
-		create,
-	} = useResource({
-		name: 'contact',
-		url: `/api/v1/contacts`,
-	})
+		createContact,
+	} = useContacts()
 
 	const handleSubmit = async () => {
-		let resp = await create({
+    if(!contact?.email || !contact?.name || !contact?.message) {
+      toast('Please fill out all required fields')
+      return
+    }
+		let resp = await createContact({
 			...contact,
 			source: 'contact',
 		})
-		toast('Thank you for contacting us!')
 		if (resp?.id) {
 			setContact({})
 			toast('Thank you for contacting us!')

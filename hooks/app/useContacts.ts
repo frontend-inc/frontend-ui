@@ -9,7 +9,7 @@ type UseContactParams = {
 	formId?: number | string
 }
 
-const useContacts = (params: UseContactParams) => {
+const useContacts = (params?: UseContactParams) => {
 	const { formId } = params || {}
 	const { apiUrl } = useApp()
 
