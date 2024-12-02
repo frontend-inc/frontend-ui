@@ -4,7 +4,7 @@ import React from 'react'
 import { Button } from '../../../components'
 import { InputBase } from '../..'
 import { useResource } from 'frontend-js'
-import { useToast } from '../../../hooks'
+import { toast } from 'sonner'
 
 export type EmailSubscribeProps = {
 	buttonText?: string
@@ -15,7 +15,7 @@ export type EmailSubscribeProps = {
 
 // Call To Action
 const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
-	const { showAlertSuccess } = useToast()
+	
 	const { buttonText = 'Subscribe' } = props || {}
 
 	const {
@@ -38,7 +38,7 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 		})
 		if (resp?.id) {
 			setContact({})
-			showAlertSuccess('Thank you for subscribing!')
+			toast('Thank you for subscribing!')
 		}
 	}
 

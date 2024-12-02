@@ -4,8 +4,8 @@ import React from 'react'
 import { AuthScreen, Loader } from '../..'
 import { ShopifyChangePasswordForm } from '..'
 import { useAuth } from 'frontend-shopify'
-import { useToast } from '../../../hooks'
-import { useRouter, useParams } from 'next/navigation'
+import { toast } from 'sonner'
+import { useRouter } from 'next/navigation'
 
 type ShopifyChangePasswordProps = {
 	title: string
@@ -16,7 +16,7 @@ type ShopifyChangePasswordProps = {
 const ShopifyChangePassword: React.FC<ShopifyChangePasswordProps> = (props) => {
 	const { title, subtitle, loginUrl } = props || {}
 
-	const { showAlertSuccess } = useToast()
+	
 
 	const {
 		loading,
@@ -33,7 +33,7 @@ const ShopifyChangePassword: React.FC<ShopifyChangePasswordProps> = (props) => {
 		let resp = await forgotPassword(customer?.email)
 		if (resp?.id) {
 			setCustomer({ emal: '' })
-			showAlertSuccess('Password reset instructions sent')
+			toast('Password reset instructions sent')
 		}
 	}
 

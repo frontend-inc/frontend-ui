@@ -2,8 +2,9 @@
 
 import React from 'react'
 import { Button } from '../../../components'
-import { useToast, useSubscribe } from '../../../hooks'
+import { useSubscribe } from '../../../hooks'
 import { cn } from 'frontend-shadcn'
+import { toast } from 'sonner'
 
 type SusbcribeButtonProps = {
 	size?: 'sm' | 'default' | 'lg'
@@ -25,7 +26,7 @@ const SusbcribeButton = (props: SusbcribeButtonProps) => {
 		price,
 	} = props
 
-	const { showAlertError } = useToast()
+	
 	const { loading, subscribe } = useSubscribe()
 
 	const handleClick = async () => {
@@ -35,7 +36,7 @@ const SusbcribeButton = (props: SusbcribeButtonProps) => {
 			cancel_url: currentUrl,
 		})) as any
 		if (stripe?.error) {
-			showAlertError(stripe?.error)
+			toast.error(stripe?.error)
 		} else if (stripe?.data?.url) {
 			if (window.parent === window) {
 				window.open(stripe?.data?.url, '_blank')

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useToast } from '../../../hooks'
+import { toast } from 'sonner'
 import { Modal, SocialIcon } from '../..'
 import { Typography } from '../../../components'
 
@@ -24,12 +24,12 @@ export default function ShareButton({
 	handleClose,
 	url,
 }: ShareButtonProps) {
-	const { showAlertSuccess } = useToast()
+	
 
 	const handleShareClick = (platform: string) => {
 		const shareUrl = getShareUrl(platform, url)
 		if (platform === 'copy') {
-			showAlertSuccess('Share link copied to clipboard')
+			toast('Share link copied to clipboard')
 		} else {
 			window.open(shareUrl, '_blank')
 		}

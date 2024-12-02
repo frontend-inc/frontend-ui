@@ -1,13 +1,13 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useApp } from '..'
 import { useRouter } from 'next/navigation'
 import { ActionType } from '../../types'
 import { useLoadingWrapper } from '.'
 import copy from 'copy-to-clipboard'
-import { useToast } from '..'
 import { useMediaQuery } from 'react-responsive'
+import { toast } from 'sonner'
 
 type UseButtonParams = {
 	action: ActionType
@@ -27,7 +27,7 @@ const useButtons = (params: UseButtonParams) => {
 	const [openImage, setOpenImage] = useState(false)
 	const [openShare, setOpenShare] = useState(false)
 
-	const { showAlertSuccess } = useToast()
+	
 
 	const router = useRouter()
 	const { clientUrl } = useApp()
@@ -45,7 +45,7 @@ const useButtons = (params: UseButtonParams) => {
 			case 'copy':
 				if (src) {
 					copy(src)
-					showAlertSuccess('Copied to clipboard')
+					toast('Copied to clipboard')
 				}
 				break
 			case 'email':

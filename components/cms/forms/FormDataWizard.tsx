@@ -2,8 +2,9 @@
 
 import React, { useEffect, useState } from 'react'
 import { FormCard, FormWizardModal } from '../..'
-import { useToast, useForms, useContacts } from '../../../hooks'
+import { useForms, useContacts } from '../../../hooks'
 import { HeadingProps } from '../../../types'
+import { toast } from 'sonner'
 
 export type FormDataWizardProps = HeadingProps & {
 	formId: number
@@ -35,7 +36,7 @@ const FormDataWizard: React.FC<FormDataWizardProps> = (props) => {
 		formId,
 	})
 
-	const { showAlertSuccess } = useToast()
+	
 
 	const handleSubmit = async () => {
 		let resp
@@ -49,7 +50,7 @@ const FormDataWizard: React.FC<FormDataWizardProps> = (props) => {
 		}
 		if (resp?.id) {
 			setSubmitted(true)
-			showAlertSuccess('Form submitted successfully')
+			toast('Form submitted successfully')
 			handleResetForm()
 		}
 	}

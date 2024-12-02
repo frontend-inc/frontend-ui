@@ -4,7 +4,7 @@ import React, { useEffect, useContext } from 'react'
 import { useApp } from '../../../hooks'
 import { useResource } from 'frontend-js'
 import { Form } from '../..'
-import { useToast } from '../../../hooks'
+import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
 import { Card } from 'frontend-shadcn'
 
@@ -44,7 +44,7 @@ const DocumentForm: React.FC<DocumentFormProps> = (props) => {
 		inputParams,
 	} = props
 
-	const { showAlertSuccess } = useToast()
+	
 
 	const {
 		delayedLoading: loading,
@@ -74,7 +74,7 @@ const DocumentForm: React.FC<DocumentFormProps> = (props) => {
 			}
 			if (resp?.id) {
 				if (onSuccessMessage) {
-					showAlertSuccess(onSuccessMessage)
+					toast(onSuccessMessage)
 				}
 				if (handleSuccess) {
 					handleSuccess(resp)

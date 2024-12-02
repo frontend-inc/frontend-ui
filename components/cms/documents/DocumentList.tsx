@@ -95,11 +95,11 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
 	const {	
     contentType='',
 		query=DEFAULT_QUERY,
-		displaySubtitle,
-		displayCategory,
-		displayLocation,
+		displaySubtitle=true,
+    displayTags=true,
+    displayLocation=true,
+		displayCategory=true,
 		displayDescription,
-		displayTags,
 
 		enableLikes,
 		enableFavorites,

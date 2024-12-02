@@ -73,7 +73,7 @@ const DisplayField: React.FC<DisplayFieldProps> = (props) => {
 		},
 		text: {
 			className:
-				'px-[40px] sm:px-[100px] leading-relaxed text-muted-foreground italic text-lg',
+				'px-[40px] sm:px-[100px] leading-relaxed text-muted-foreground text-lg',
 		},
 		html: {
 			className: 'prose',

@@ -3,7 +3,7 @@
 import React, { useState, useContext } from 'react'
 import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
-import { useToast } from '../../../hooks'
+import { toast } from 'sonner'
 import { Button } from '../../../components'
 import {
 	ShopifyProductFavoriteButton,
@@ -27,7 +27,7 @@ type ShopifyAddToCartButtonProps = {
 const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 	props
 ) => {
-	const { showAlertError } = useToast()
+	
 	const { trackAddToCart } = useSegment()
 	const { toggleCart } = useContext(ShopifyContext) as any
 	const { loading, cartLineAdd } = useCart()
@@ -62,7 +62,7 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 
 	const handleAddToCart = async () => {
 		if (!product?.availableForSale) {
-			showAlertError('Please select all options')
+			toast.error('Please select all options')
 			return
 		}
 		if (variant?.id) {
@@ -80,10 +80,10 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 				})
 				setTimeout(() => toggleCart(), 500)
 			} else {
-				showAlertError('This product is not available for sale')
+				toast.error('This product is not available for sale')
 			}
 		} else {
-			showAlertError('Please select all options')
+			toast.error('Please select all options')
 		}
 	}
 

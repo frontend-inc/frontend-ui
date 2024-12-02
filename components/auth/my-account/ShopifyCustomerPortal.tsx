@@ -2,17 +2,19 @@
 
 import React from 'react'
 import { Empty, Button } from '../../../components'
-import { useToast, useApp } from '../../../hooks'
+import { useApp } from '../../../hooks'
+import { toast } from 'sonner'
+
 
 const ShopifyCustomerPortal = () => {
 	const { app } = useApp()
-	const { showAlertError } = useToast()
+	
 
 	const handleClick = () => {
 		if (app?.shopify_customer_portal_url) {
 			window.open(app.shopify_customer_portal_url, '_blank')
 		} else {
-			showAlertError('Shopify Customer Portal not enabled.')
+			toast.error('Shopify Customer Portal not enabled.')
 		}
 	}
 

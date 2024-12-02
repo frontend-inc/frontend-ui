@@ -22,7 +22,6 @@ export default function LayoutContainer(props: LayoutContainerProps) {
 
 	return (
 		<div className="w-full min-h-screen">
-			<Toaster />
 			<div
 				className={cn(
 					'w-full h-full overflow-y-scroll scrollbar-hide',

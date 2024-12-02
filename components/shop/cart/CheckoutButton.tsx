@@ -3,12 +3,12 @@
 import React from 'react'
 import { Button } from '../../../components'
 import { useCart } from '../../../hooks'
-import { useToast } from '../../../hooks'
+import { toast } from 'sonner'
 
 const CheckoutButton = () => {
 	const { loading, cart, checkout } = useCart()
 
-	const { showAlertError } = useToast()
+	
 
 	const handleClick = async () => {
 		let currentUrl = window.location.href
@@ -17,7 +17,7 @@ const CheckoutButton = () => {
 			cancel_url: currentUrl,
 		})
 		if (stripe?.errors) {
-			showAlertError(stripe.errors)
+			toast.error(stripe.errors)
 		} else {
 			const url = stripe?.data?.url
 			if (window.parent === window) {

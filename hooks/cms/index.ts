@@ -1,1 +1,1 @@
-export * from './useCollections'
+export { default as useCollections } from './useCollections'

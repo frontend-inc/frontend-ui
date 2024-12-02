@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { ForgotPasswordForm, AuthScreen, Loader } from '../..'
-import { useToast } from '../../../hooks'
+import { toast } from 'sonner'
 import { useAuth } from 'frontend-js'
 import { useRouter, useParams } from 'next/navigation'
 
@@ -15,7 +15,7 @@ type ForgotPasswordProps = {
 const ForgotPassword: React.FC<ForgotPasswordProps> = (props) => {
 	const { title, subtitle, loginUrl } = props || {}
 
-	const { showAlertSuccess } = useToast()
+	
 	const { loading, errors, user, handleChange, forgotPassword } = useAuth()
 
 	const router = useRouter()
@@ -23,7 +23,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (props) => {
 	const handleSubmit = async () => {
 		let resp = await forgotPassword(user)
 		if (resp?.id) {
-			showAlertSuccess('Password reset instructions sent')
+			toast('Password reset instructions sent')
 		}
 	}
 

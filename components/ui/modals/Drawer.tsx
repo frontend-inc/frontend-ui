@@ -10,11 +10,9 @@ import {
 	DrawerHeader,
 	DrawerTitle,
 	DrawerPortal,
-	DrawerOverlay,
 	ScrollArea,
 } from 'frontend-shadcn'
 import { useTheme } from 'next-themes'
-import { Button } from '../../../components'
 import { Loader2 } from 'lucide-react'
 import { X } from 'lucide-react'
 import { cn } from 'frontend-shadcn'
@@ -68,7 +66,7 @@ export default function CustomDrawer(props: CustomDrawerProps) {
 
 						{title && (
 							<DrawerTitle>
-								<span className="flex font-semibold justify-center w-full text-3xl text-foreground">
+								<span className="flex font-semibold justify-center w-full text-2xl text-foreground">
 									{title}
 								</span>
 							</DrawerTitle>

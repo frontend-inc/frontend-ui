@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react'
 import { Button } from '../../../components'
-import { TextInput, IconLoading } from '../..'
-import { useToast, useKlaviyo } from '../../../hooks'
+import { TextInput } from '../..'
+import { useKlaviyo } from '../../../hooks'
 
 export type KlaviyoSubscribeProps = {
 	listId: string
@@ -14,8 +14,6 @@ export type KlaviyoSubscribeProps = {
 const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
 	const { listId, apiKey, buttonText = 'Subscribe' } = props || {}
 
-	const { showAlertError, showAlertSuccess } = useToast()
-
 	const { loading, handleSubmit } = useKlaviyo({
 		apiKey,
 	})
@@ -24,20 +22,20 @@ const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
 
 	const handleFormSubmit = async () => {
 		if (!email || !email?.includes('@')) {
-			return showAlertError('Please enter a valid email')
+			return toast.error('Please enter a valid email')
 		}
 		if (!listId) {
-			return showAlertError('Please enter a klaviyo list ID')
+			return toast.error('Please enter a klaviyo list ID')
 		}
 		if (!apiKey) {
-			return showAlertError('Please enter your public klaviyo API key')
+			return toast.error('Please enter your public klaviyo API key')
 		}
 		try {
 			await handleSubmit({
 				email,
 				listId,
 			})
-			showAlertSuccess('You have been subscribed to our newsletter!')
+			toast('You have been subscribed to our newsletter!')
 		} catch (e) {
 			console.log('Error', e)
 		}

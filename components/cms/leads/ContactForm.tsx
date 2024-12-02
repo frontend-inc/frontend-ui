@@ -4,7 +4,7 @@ import React from 'react'
 import { FormFieldType } from '../../../types'
 import { Container, Form } from '../../../components'
 import { useResource } from 'frontend-js'
-import { useToast } from '../../../hooks'
+import { toast } from 'sonner'
 
 export type ContactFormProps = {
 	buttonText?: string
@@ -15,7 +15,7 @@ export type ContactFormProps = {
 
 // Call To Action
 const ContactForm: React.FC<ContactFormProps> = (props) => {
-	const { showAlertSuccess } = useToast()
+	
 	const { metafields = [], buttonText = 'Send Message' } = props || {}
 
 	const {
@@ -35,10 +35,10 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 			...contact,
 			source: 'contact',
 		})
-		showAlertSuccess('Thank you for contacting us!')
+		toast('Thank you for contacting us!')
 		if (resp?.id) {
 			setContact({})
-			showAlertSuccess('Thank you for contacting us!')
+			toast('Thank you for contacting us!')
 		}
 	}
 

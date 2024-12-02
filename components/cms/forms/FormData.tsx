@@ -1,9 +1,10 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Form, Heading } from '../..'
-import { useToast, useForms, useContacts } from '../../../hooks'
+import { useForms, useContacts } from '../../../hooks'
 import { HeadingProps } from '../../../types'
+import { toast } from 'sonner'
 
 export type FormDataProps = HeadingProps & {
 	formId: number
@@ -15,7 +16,7 @@ const FormData: React.FC<FormDataProps> = (props) => {
 
 	const { loading, form, findForm } = useForms()
 
-	const { showAlertSuccess } = useToast()
+	
 
 	const {
 		errors,
@@ -43,7 +44,7 @@ const FormData: React.FC<FormDataProps> = (props) => {
 		}
 		if (resp?.id) {
 			setContact({})
-			showAlertSuccess('Form submitted successfully')
+			toast('Form submitted successfully')
 		}
 	}
 

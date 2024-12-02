@@ -40,9 +40,9 @@ const DocumentListItems: React.FC<DocumentListItemsProps> = (props) => {
 
 	const {
 		selectable,
-		layout = 'list',
+		layout = 'grid',
 		buttons = [],
-		style = 'list',
+		style = 'card',
 		handleClick,
 		metafields = [],
 		enableGradient = false,
