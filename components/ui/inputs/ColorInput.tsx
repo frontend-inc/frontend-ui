@@ -104,7 +104,7 @@ export default function ColorInput({
 				<PopoverTrigger asChild>
 					<Button
 						variant="outline"
-						className="text-foreground w-full justify-between"
+						className="bg-input text-foreground w-full justify-between"
 					>
 						{placeholder}
 						<div className="flex items-center space-x-2">

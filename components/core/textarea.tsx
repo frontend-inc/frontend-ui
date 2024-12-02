@@ -19,18 +19,21 @@ interface TextAreaProps
 	onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
 }
 
-function TextArea({
-	label,
-	helperText,
-	error = false,
-	fullWidth = false,
-	className,
-	id,
-	name,
-	value,
-	onChange,
-	...props
-}: TextAreaProps) {
+function TextArea(props: TextAreaProps) {
+
+  const {
+    label,
+    helperText,
+    error = false,
+    fullWidth = false,
+    className,
+    id,
+    name,
+    value,
+    onChange,
+    ...rest
+  } = props || {}
+
 	const textareaId = id || name || label?.toLowerCase().replace(/\s+/g, '-')
 
 	return (
@@ -57,7 +60,7 @@ function TextArea({
 					fullWidth && 'w-full',
 					className
 				)}
-				{...props}
+				{...rest}
 			/>
 			{helperText && (
 				<p

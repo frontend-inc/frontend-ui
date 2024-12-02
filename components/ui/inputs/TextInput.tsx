@@ -72,7 +72,7 @@ export default function TextInput(props: TextInputProps) {
 			<div className="relative w-full flex flex-col space-y-2">
 				<Input
 					className={cn(
-						'bg-background focus:ring-2 focus:ring-offset-3',
+						'bg-input focus:ring-2 focus:ring-offset-3',
 						error && 'ring-2 ring-destructive ring-offset-3',
 						className
 					)}

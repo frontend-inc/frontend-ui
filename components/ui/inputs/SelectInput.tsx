@@ -52,7 +52,7 @@ export default function SelectInput({
 					handleChange({ target: { name, value: newValue } })
 				}
 			>
-				<SelectTrigger className="w-full min-w-[165px] h-10 bg-background border border-input shadow-none rounded text-foreground">
+				<SelectTrigger className="w-full min-w-[165px] h-10 bg-input border border-input shadow-none rounded text-foreground">
 					<SelectValue placeholder="Select an option" />
 				</SelectTrigger>
 				<SelectContent className="bg-background min-w-[165px]">
