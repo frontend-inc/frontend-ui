@@ -51,7 +51,11 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 
 	return (
 		<ThemeContext.Provider value={value}>
-			<div className={cn(mode, theme, 'w-full')}>{children}</div>
+			<div className={cn(
+        mode == 'dark' ? 'dark-theme' : 'light', 
+        theme, 
+        'w-full'
+      )}>{children}</div>
 		</ThemeContext.Provider>
 	)
 }

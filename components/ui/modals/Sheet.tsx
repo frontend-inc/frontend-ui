@@ -26,16 +26,18 @@ type SheetProps = {
 	fullWidth?: boolean
 }
 
-const Sheet: React.FC<SheetProps> = ({
-	open,
-	title,
-	side = 'right',
-	handleClose,
-	children,
-	buttons,
-	disablePadding = false,
-	className,
-}) => {
+const Sheet: React.FC<SheetProps> = (props) => {
+
+  const {
+    open,
+    title,
+    side = 'right',
+    handleClose,
+    children,
+    buttons,
+    disablePadding = false,
+    className,
+  } = props
   
 	const { theme } = useTheme()
   const { theme: mode } = useNextTheme()

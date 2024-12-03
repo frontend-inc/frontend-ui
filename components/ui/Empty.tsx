@@ -47,14 +47,14 @@ const Empty: React.FC<EmptyProps> = (props) => {
 			<div className="flex flex-col space-y-0 w-full items-center justify-center">
 				<Typography
 					variant="subtitle2"
-					className={cn('text-md text-bold', variant && textClasses[variant])}
+					className={cn('text-md text-bold text-foreground', variant && textClasses[variant])}
 				>
 					{title}
 				</Typography>
 				<Typography
 					variant="body1"
 					className={cn(
-						'text-sm text-muted-foreground font-normal',
+						'text-sm text-foreground/70 font-normal',
 						variant && textClasses[variant]
 					)}
 				>

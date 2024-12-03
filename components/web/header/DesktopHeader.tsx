@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { IconButton } from '../../../components'
 import { RemixIcon, ButtonActions, AuthButton, Icon } from '../..'
 import Logo from './Logo'
@@ -9,7 +9,7 @@ import { ShopifyCartButton } from '../../shopify'
 import { useApp } from '../../../hooks'
 import { ButtonType, MenuLinkType } from '../../..'
 import DesktopLink from './DesktopLink'
-import { RiMenuFill } from '@remixicon/react'
+import { cn } from 'frontend-shadcn'
 
 type DesktopHeaderProps = {
 	logo: string
@@ -36,11 +36,31 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 		enableShopify = false,
 	} = props
 
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
 	const { setMenuOpen } = useApp()
 
 	return (
 		<div
-			className="hidden md:block w-full h-16 bg-background"
+			className={cn(
+        "hidden md:block w-full h-16 bg-background"
+      )}
 			style={{
 				backgroundColor: bgColor,
 			}}

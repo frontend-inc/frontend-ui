@@ -20,6 +20,11 @@ const AccordionItemComponent: React.FC<AccordionItemProps> = (props) => {
 	const { title, subtitle, variant } = props
 
 	return (
+    <Accordion 
+      type="multiple"
+      collapsible 
+      className="w-full"
+    >
 			<AccordionItem value="item">
 				<AccordionTrigger 
           className={cn(
@@ -35,6 +40,7 @@ const AccordionItemComponent: React.FC<AccordionItemProps> = (props) => {
 					</Typography>
 				</AccordionContent>
 			</AccordionItem>
+    </Accordion>
 	)
 }
 

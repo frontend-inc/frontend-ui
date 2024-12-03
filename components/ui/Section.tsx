@@ -48,7 +48,7 @@ const Section: React.FC<SectionProps> = (props) => {
 	return (
 		<section
 			className={cn(
-				mode,
+				mode == 'dark' ? 'dark-theme' : 'light',
 				theme,
 				'w-full bg-background',
 				pyClasses[py],

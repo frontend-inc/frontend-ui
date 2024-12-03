@@ -22,12 +22,6 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 	return (
 		<div className="container mx-auto max-w-screen-lg">
 			<div className="flex flex-col">
-      <ShadcnAccordion 
-        type="multiple"
-        collapsible 
-        className="w-full"
-      >
-
 				{items?.map((item, i) => (
 					<AccordionItem
 						key={i}
@@ -36,7 +30,6 @@ const Accordion: React.FC<AccordionProps> = (props) => {
             variant={variant}
 					/>
 				))}
-        </ShadcnAccordion>
 				{items?.length == 0 && (
 					<Empty
 						icon="ri-search-line"
