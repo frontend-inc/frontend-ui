@@ -1,5 +1,5 @@
-import React from 'react'
-import { Image, Typography } from '../..'
+import React, { useState } from 'react'
+import { Image, Typography, ImageModal } from '../..'
 import { useButton } from '../../../hooks'
 import { ActionType } from '../../../types'
 import { cn } from 'frontend-shadcn'
@@ -14,10 +14,12 @@ export type PriceListItemProps = {
 	path?: string
 	url?: string
 	src?: string
+  handleImageClick: () => void
 }
 
 const PriceListItem: React.FC<PriceListItemProps> = (props) => {
-	const {
+	
+  const {    
 		variant,
 		image,
 		price,
@@ -27,7 +29,8 @@ const PriceListItem: React.FC<PriceListItemProps> = (props) => {
 		path,
 		url,
 		src,
-	} = props
+    handleImageClick
+	} = props || {}
 
 	const { handleClick } = useButton({
 		action,
@@ -49,7 +52,12 @@ const PriceListItem: React.FC<PriceListItemProps> = (props) => {
 				<div className=" flex flex-row space-x-6 items-center">
 					{image && (
 						<div className="h-12 w-12">
-							<Image src={image} alt={title} height={72} />
+							<Image 
+                src={image}
+                alt={title} 
+                height={72} 
+                handleClick={ handleImageClick } 
+              />
 						</div>
 					)}
 					<div className="flex flex-col space-y-0">
@@ -61,7 +69,7 @@ const PriceListItem: React.FC<PriceListItemProps> = (props) => {
 						</Typography>
 					</div>
 				</div>
-				<Typography variant="body2" className="text-muted-foreground">
+				<Typography variant="body1" className="text-foreground">
 					{price}
 				</Typography>
 			</button>

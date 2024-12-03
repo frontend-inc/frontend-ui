@@ -10,17 +10,18 @@ export type TestimonialsProps = {
 	layout?: 'grid' | 'carousel'
 	items: TestimonialType[]
 	enableAutoPlay?: boolean
+  variant?: 'fill' | 'outline' | 'default'
 }
 
 const Testimonials: React.FC<TestimonialsProps> = (props) => {
-	const { layout = 'grid', enableAutoPlay, items = [] } = props
+	const { layout = 'grid', variant, enableAutoPlay, items = [] } = props
 
 	return (
 		<div className="flex flex-col w-full">
 			{layout == 'carousel' ? (
-				<SwipeableTestimonials items={items} enableAutoPlay={enableAutoPlay} />
+				<SwipeableTestimonials variant={variant} items={items} enableAutoPlay={enableAutoPlay} />
 			) : (
-				<TestimonialCards items={items} />
+				<TestimonialCards variant={variant} items={items} />
 			)}
 			{items?.length == 0 && (
 				<Empty
