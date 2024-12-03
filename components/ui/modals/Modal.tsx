@@ -9,10 +9,11 @@ import {
 	DialogTitle,
 	DialogFooter,
 } from 'frontend-shadcn'
-import { useTheme } from 'next-themes'
+import { useTheme as useNextTheme } from 'next-themes'
 import { cn } from 'frontend-shadcn'
 import { ScrollArea } from 'frontend-shadcn'
 import { Loader } from '../../../components'
+import { useTheme } from '../../../hooks'
 
 type ModalProps = {
 	open: boolean
@@ -40,11 +41,16 @@ export default function Modal(props: ModalProps) {
 		className,
 	} = props
 
-	const { theme } = useTheme()
+	const { theme: mode } = useNextTheme()
+  const { theme } = useTheme()
 
 	return (
 		<Dialog open={open} onOpenChange={handleClose}>
-			<DialogContent className={cn(theme, className)}>
+			<DialogContent className={cn(
+          mode == 'dark' ? 'dark-theme' : 'light', 
+          theme, 
+          className
+        )}>
 				<DialogHeader className="mt-4">
 					<DialogTitle>
 						<span className="text-foreground">{title}</span>
