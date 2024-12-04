@@ -1,18 +1,22 @@
 'use client'
 
-import React, { useState } from 'react'
-import SwipeableViews from 'react-swipeable-views'
-import { autoPlay } from 'react-swipeable-views-utils'
-import { IconButton } from '../core'
+import React, { useEffect, useState } from 'react'
+import { 
+  Button,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
+} from 'frontend-shadcn'
+import { type CarouselApi } from "frontend-shadcn"
 import { cn } from 'frontend-shadcn'
-import { RiArrowLeftSLine, RiArrowRightSLine } from '@remixicon/react'
-
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
 type SwipeableProps = {
 	children: React.ReactNode[]
+  enableDots?: boolean
+  enableArrows?: boolean
 	enableAutoPlay?: boolean
-	enableArrows?: boolean
 	interval?: number
 	className?: string
 }
@@ -20,60 +24,62 @@ type SwipeableProps = {
 const Swipeable: React.FC<SwipeableProps> = (props) => {
 	const {
 		children = [],
-		interval = 5000,
-		enableArrows = false,
-		enableAutoPlay = false,
+    enableDots,
+		enableArrows,
 		className,
 	} = props
 
-	const [activeStep, setActiveStep] = useState(0)
 
-	const handleStepChange = (step: number) => {
-		setActiveStep(step)
-	}
+	const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
+  const [count, setCount] = useState(0)
+ 
+  const handleSlide = (index: number) => {
+    api?.scrollTo(index)
+  }
 
-	const handlePrev = () => {
-		if (activeStep === 0) {
-			setActiveStep(children?.length - 1)
-		} else {
-			setActiveStep((prevActiveStep) => prevActiveStep - 1)
-		}
-	}
-
-	const handleNext = () => {
-		if (activeStep === children?.length - 1) {
-			setActiveStep(0)
-		} else {
-			setActiveStep((prevActiveStep) => prevActiveStep + 1)
-		}
-	}
-
-	const SwipeableComponent = enableAutoPlay
-		? AutoPlaySwipeableViews
-		: SwipeableViews
+  useEffect(() => {
+    if (!api) return;     
+    setCount(api.scrollSnapList().length)
+    setCurrent(api.selectedScrollSnap()) 
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() || 0)
+    })
+  }, [api])
 
 	return (
-		<div className={cn('w-full relative', className)}>
-			<SwipeableComponent
-				axis={'x'}
-				index={activeStep}
-				onChangeIndex={handleStepChange}
-				enableMouseEvents
-				interval={interval}
-			>
-				{children}
-			</SwipeableComponent>
-			{enableArrows && (
-				<div className="absolute top-1/2 transform -translate-y-1/2 flex justify-between w-full z-10">
-					<IconButton color="ghost" onClick={handlePrev} className="ml-2">
-						<RiArrowLeftSLine size={32} />
-					</IconButton>
-					<IconButton color="ghost" onClick={handleNext} className="mr-2">
-						<RiArrowRightSLine size={32} />
-					</IconButton>
-				</div>
-			)}
-		</div>
+		<Carousel setApi={setApi} className={cn('w-full', className)}>
+      <CarouselContent>  
+				{children?.map((child, index) => (
+          <CarouselItem key={index}>
+            {child}
+          </CarouselItem> 
+        ))}
+			</CarouselContent>
+      { enableArrows && (
+        <>
+          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 bg-transparent text-foreground/70 hover:text-foreground border-0" />
+          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 bg-transparent text-foreground/70 hover:text-foreground border-0" />      
+        </>
+      )}
+      {(enableDots && count > 1) && (
+        <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 backdrop-blur-md bg-black/30 py-2 px-4 rounded-full mx-auto w-fit">
+          {children.map((_, index) => (
+            <Button
+              key={index}
+              variant="ghost"
+              size="sm"
+              className={cn(
+                'w-2 h-2 rounded-full p-0',                
+                index === current ? 'bg-white' : 'bg-white/50'
+                )
+              }
+              onClick={() => handleSlide(index)}
+            />
+          ))}
+        </div>
+      )}
+    </Carousel> 
 	)
 }
 

@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Swipeable, Cover, Empty } from '../..'
+import { CarouselItem } from 'frontend-shadcn'
 
 export type CoverCarouselProps = {
 	items: {
@@ -26,26 +27,25 @@ const CoverCarousel: React.FC<CoverCarouselProps> = (props) => {
 		items = [],
 		enableOverlay = false,
 		enableGradient = false,
-		enableArrows = false,
 		enableAutoPlay = false,
 		alignItems = 'items-center',
 	} = props
 
 	return (
 		<>
-			<Swipeable enableAutoPlay={enableAutoPlay} enableArrows={enableArrows}>
+			<Swipeable enableArrows enableAutoPlay={enableAutoPlay}>
 				{items?.map((item, index) => (
-					<Cover
-						key={index}
-						title={item?.title}
-						subtitle={item?.subtitle}
-						image={item?.image}
-						buttonText={item?.buttonText}
-						path={item?.path}
-						enableOverlay={enableOverlay}
-						enableGradient={enableGradient}
-						alignItems={alignItems}
-					/>
+          <Cover
+            key={index}
+            title={item?.title}
+            subtitle={item?.subtitle}
+            image={item?.image}
+            buttonText={item?.buttonText}
+            path={item?.path}
+            enableOverlay={enableOverlay}
+            enableGradient={enableGradient}
+            alignItems={alignItems}
+          />
 				))}
 			</Swipeable>
 			{items?.length === 0 && (

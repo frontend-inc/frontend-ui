@@ -46,7 +46,8 @@ export default function Modal(props: ModalProps) {
 
 	return (
 		<Dialog open={open} onOpenChange={handleClose}>
-			<DialogContent className={cn(
+			<DialogContent 
+        className={cn(
           mode == 'dark' ? 'dark-theme' : 'light', 
           theme, 
           className

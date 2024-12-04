@@ -3,6 +3,7 @@
 import React from 'react'
 import { Swipeable } from '../../../components'
 import SwipeableTestimonialCard from './SwipeableTestimonialCard'
+import { CarouselItem } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
 
 type SwipeableTestimonialsProps = {
@@ -14,7 +15,7 @@ const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
 	const { enableAutoPlay = false, items = [] } = props
 
 	return (
-		<Swipeable enableArrows enableAutoPlay={enableAutoPlay}>
+		<Swipeable enableDots enableAutoPlay={enableAutoPlay}>
 			{items?.map((testimonial, i) => (
 				<div key={i} className="flex items-center justify-center p-4">
 					<SwipeableTestimonialCard
