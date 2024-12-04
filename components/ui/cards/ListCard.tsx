@@ -1,11 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Checkbox } from 'frontend-shadcn'
-import { Icon, Image, AvatarImage } from '../..'
+import { Image, AvatarImage } from '../..'
 import { CardProps } from './Card'
 import { Typography } from '../../../components'
-import { GripVertical } from 'lucide-react'
 
 export type ListCardProps = CardProps & {
 	circular?: boolean
@@ -15,16 +13,12 @@ export type ListCardProps = CardProps & {
 const ListCard: React.FC<ListCardProps> = (props) => {
 	const {
 		circular = false,
-		sortable = false,
-		selectable = false,
-		selected = false,
 		label,
 		title,
 		subtitle,
 		actions,
 		secondaryAction,
 		handleClick,
-		handleSelect,
 		image,
 		size = 140,
 		disableImage,
@@ -35,18 +29,12 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 	return (
 		<button
 			onClick={handleClick}
-			className="p-4 w-full border-b border-border last:border-b-0 hover:bg-muted/50"
+			className="p-2 w-full border-b border-border last:border-b-0 hover:bg-muted/50"
 		>
 			<div className="flex flex-row items-center w-full">
-				{selectable && (
-					<div className="mr-2">
-						<Checkbox checked={selected} onCheckedChange={handleSelect} />
-					</div>
-				)}
-				{sortable && <GripVertical className="text-muted-foreground" />}
-				<div className="flex flex-row justify-start items-start space-x-4 flex-grow">
+				<div className="flex flex-col space-y-4 md:space-y-0 md:space-x-4 md:flex-row justify-start items-start flex-grow">
 					{!disableImage && (
-						<div className="flex-shrink-0 w-[180px]">
+						<div className="flex-shrink-0 w-full md:w-[220px]">
 							<div className="w-full pr-2 h-full flex flex-row justify-center items-center">
 								{circular ? (
 									<AvatarImage
@@ -62,7 +50,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 										src={image}
 										height={size}
 										alt={title}
-										aspectRatio={1.0}
+										aspectRatio={4/3}
 										enableGradient={enableGradient}
 										enableOverlay={enableOverlay}
 									/>

@@ -8,9 +8,6 @@ import { Image } from '../..'
 
 export type CardProps = {
 	ref?: React.Ref<HTMLDivElement>
-	sortable?: boolean
-	selectable?: boolean
-	selected?: boolean
 	avatar?: React.ReactNode
 	image?: string
 	label?: string
