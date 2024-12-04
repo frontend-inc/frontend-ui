@@ -24,12 +24,18 @@ export default function Notifications({ notifications }: NotificationsProps) {
         <CarouselContent>
 				{notifications.map((notification, i) => (
           <CarouselItem key={i}>
-					  <Notification key={i} notification={notification} />
+					  <Notification 
+              notification={notification} 
+            />
           </CarouselItem>
 				))}
         </CarouselContent>
-        <CarouselPrevious className="h-8 w-8 ml-2 border-0 bg-primary hover:bg-black/10 text-primary-foreground hover:text-primary-foreground" />
-        <CarouselNext className="h-8 w-8 mr-2 border-0 bg-primary hover:bg-black/10 text-primary-foreground hover:text-primary-foreground" />
+        { notifications?.length > 1 && (
+          <>
+            <CarouselPrevious className="h-8 w-8 ml-2 border-0 bg-primary hover:bg-black/10 text-primary-foreground hover:text-primary-foreground" />
+            <CarouselNext className="h-8 w-8 mr-2 border-0 bg-primary hover:bg-black/10 text-primary-foreground hover:text-primary-foreground" />
+          </>
+        )}
 			</Carousel>			
 		</div>
 	)
