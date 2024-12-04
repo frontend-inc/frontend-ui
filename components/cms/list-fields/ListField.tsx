@@ -15,7 +15,6 @@ import {
 import { MetafieldType } from '../../../types'
 import { get } from 'lodash'
 import { truncate } from '../../../helpers'
-import { cn } from 'frontend-shadcn'
 
 type FieldProps = {
 	label?: string
@@ -60,7 +59,7 @@ const ListField: React.FC<FieldProps> = (props) => {
 		string: {
 			variant: 'body2',
 			value: truncate(value),
-			className: 'text-sm text-muted-foreground',
+			className: 'text-sm text-foreground/80',
 		},
 		text: {
 			expandable: true,
