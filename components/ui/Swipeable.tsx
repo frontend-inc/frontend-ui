@@ -63,15 +63,15 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
         </>
       )}
       {(enableDots && count > 1) && (
-        <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 backdrop-blur-md bg-black/30 py-2 px-4 rounded-full mx-auto w-fit">
+        <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-1 backdrop-blur-md bg-black/30 py-2 px-4 rounded-full mx-auto w-fit">
           {children.map((_, index) => (
             <Button
               key={index}
               variant="ghost"
               size="sm"
               className={cn(
-                'w-2 h-2 rounded-full p-0',                
-                index === current ? 'bg-white' : 'bg-white/50'
+                'w-2 h-2 rounded-full p-0 transition-all duration-300 ease-in-out hover:bg-white',                
+                index === current ? 'bg-white w-5' : 'bg-white/50'
                 )
               }
               onClick={() => handleSlide(index)}
