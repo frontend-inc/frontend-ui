@@ -58,8 +58,8 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
 			</CarouselContent>
       { enableArrows && (
         <>
-          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 bg-transparent text-foreground/70 hover:text-foreground border-0" />
-          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 bg-transparent text-foreground/70 hover:text-foreground border-0" />      
+          <CarouselPrevious className="absolute h-9 w-9 left-4 top-1/2 -translate-y-1/2 bg-transparent text-foreground/70 hover:bg-background/50 hover:text-foreground border-0" />
+          <CarouselNext className="absolute h-9 w-9 right-4 top-1/2 -translate-y-1/2 bg-transparent text-foreground/70 hover:text-foreground hover:bg-background/50 border-0" />      
         </>
       )}
       {(enableDots && count > 1) && (
