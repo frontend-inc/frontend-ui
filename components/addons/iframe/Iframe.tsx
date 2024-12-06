@@ -29,6 +29,7 @@ const Iframe: React.FC<IframeProps> = (props) => {
       src={src}      
       height={iframeHeight}
       style={{
+        height: `${iframeHeight}px`,
         width: '100%',
         border: 'none',
         overflow: 'hidden'
