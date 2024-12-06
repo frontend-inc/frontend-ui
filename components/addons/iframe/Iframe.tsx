@@ -33,7 +33,7 @@ const Iframe: React.FC<IframeProps> = (props) => {
         border: 'none',
         overflow: 'hidden'
       }}
-      className={cn('w-full border-0', className)}
+      className={cn('w-full border-0 overflow-hidden', className)}
     />
   )
 }
