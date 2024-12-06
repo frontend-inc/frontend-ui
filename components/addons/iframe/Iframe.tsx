@@ -24,10 +24,10 @@ const Iframe: React.FC<IframeProps> = (props) => {
 
   return(
     <iframe
-      src={src}
-      width={width}
+      src={src}      
       height={height}
       style={{
+        width: '100%',
         border: 'none',
         overflow: 'hidden'
       }}
