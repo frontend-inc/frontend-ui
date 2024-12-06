@@ -17,7 +17,7 @@ const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
 	return (
 		<Swipeable enableDots enableAutoPlay={enableAutoPlay}>
 			{items?.map((testimonial, i) => (
-				<div key={i} className="flex items-center justify-center p-4">
+				<div key={i} className="flex items-center justify-center p-4 pb-[60px]">
 					<SwipeableTestimonialCard
 						avatar={testimonial.avatar}
 						author={testimonial.title}

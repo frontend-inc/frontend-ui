@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Container, Typography } from '../../../components'
+import { Stack, Container, Typography } from '../../../components'
 import { Avatar, AvatarImage, AvatarFallback } from 'frontend-shadcn'
 
 type SwipeableTestimonialCardProps = {
@@ -9,34 +9,39 @@ type SwipeableTestimonialCardProps = {
 	text: string
 	avatar: string
 	size?: 'small' | 'large'
+  direction?: 'row' | 'column'
 }
 
 const SwipeableTestimonialCard: React.FC<SwipeableTestimonialCardProps> = (
 	props
 ) => {
-	const { author, avatar, text } = props
+	const { direction, author, avatar, text } = props
 
 	return (
-		<Container maxWidth="sm">
-			<div className="flex flex-col space-y-[40px] p-6 px-[40px] w-full h-full justify-start items-center">
-				{text && (
-					<Typography
-						variant="body1"
-						className="italic text-lg font-normal text-center leading-loose text-muted-foreground"
-					>
-						{text}
-					</Typography>
-				)}
-				<div className="flex flex-row items-center space-x-2">
-					<Avatar className="h-[64px] w-[64px] rounded-full">
-						<AvatarImage src={avatar} alt={author} />
-						<AvatarFallback></AvatarFallback>
-					</Avatar>
-					<Typography variant="body2" className="text-muted-foreground">
-						{author}
-					</Typography>
-				</div>
-			</div>
+		<Container maxWidth="lg">
+			<Stack direction={ direction }>      
+        <Stack>
+          {text && (
+            <Typography
+              variant="body1"
+              className="italic text-xl text-center font-medium leading-loose text-muted-foreground"
+            >
+              {text}
+            </Typography>
+          )}				
+        </Stack>
+        <Stack>
+          <div className="flex flex-col space-y-4 items-center justify-center w-full">
+            <Avatar className="h-[96px] w-[96px] rounded-full">
+              <AvatarImage src={avatar} alt={author} />
+              <AvatarFallback></AvatarFallback>
+            </Avatar>
+            <Typography variant="body2" className="text-muted-foreground">
+              {author}
+            </Typography>
+          </div>
+        </Stack> 
+      </Stack>
 		</Container>
 	)
 }
