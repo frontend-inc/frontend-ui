@@ -19,13 +19,15 @@ const Iframe: React.FC<IframeProps> = (props) => {
   useEffect(() => {
     if (isMobile) {
       setIframeHeight(mobileHeight)
+    }else{
+      setIframeHeight(height)
     }
   }, [isMobile])
 
   return(
     <iframe
       src={src}      
-      height={height}
+      height={iframeHeight}
       style={{
         width: '100%',
         border: 'none',
