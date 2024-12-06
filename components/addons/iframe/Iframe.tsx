@@ -24,12 +24,12 @@ const Iframe: React.FC<IframeProps> = (props) => {
     }
   }, [isMobile])
 
+  if(!iframeHeight) return null
   return(
     <iframe
       src={src}      
       style={{
-        height: '100%',
-        minHeight: `${iframeHeight}px`,
+        height: `${iframeHeight}px`,        
         width: '100%',
         border: 'none',
         overflow: 'hidden'
