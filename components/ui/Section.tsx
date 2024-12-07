@@ -59,7 +59,7 @@ const Section: React.FC<SectionProps> = (props) => {
 				pyClasses[py],
 				pxClasses[px],
 				!bgImage && bgColor,
-				bgOverlay &&
+				bgImage && bgOverlay &&
 					"after:content-[''] after:absolute after:inset-0 after:bg-black/50"
 			)}
 			style={backgroundStyle}
@@ -68,7 +68,8 @@ const Section: React.FC<SectionProps> = (props) => {
 				className={cn(
           'relative z-10',
 					variant == 'outline' && 'p-8 border-2 border-border rounded-xl',
-					variant == 'fill' && 'p-8 rounded-xl bg-muted',
+					variant == 'fill' && bgImage && 'p-8 rounded-xl bg-black/50',
+          variant == 'fill' && !bgImage && 'p-8 rounded-xl bg-muted',
 					maxWidth && maxWidthClasses[maxWidth],
 					'w-full mx-auto min-h-[60px] flex flex-row justify-center items-center'
 				)}

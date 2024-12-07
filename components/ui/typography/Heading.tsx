@@ -81,7 +81,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 								editable={editable}
 								variant="caption"
 								className={cn(
-									'text-primary uppercase tracking-widest font-semibold opacity-90',
+									'text-primary/90 uppercase tracking-widest font-semibold',
 									textAlign === 'center' && 'text-center',
 									textAlign === 'right' && 'text-right'
 								)}
@@ -106,7 +106,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 					{subtitle && (
 						<Typography
 							variant={subtitleVariant}
-							className="leading-8 text-foreground/70"
+							className="leading-8 text-foreground/80"
 							textAlign={textAlign}
 							editable={editable}
 							name="subtitle"

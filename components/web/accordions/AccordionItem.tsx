@@ -25,7 +25,6 @@ const AccordionItemComponent: React.FC<AccordionItemProps> = (props) => {
 				<AccordionTrigger
 					className={cn(
 						'hover:no-underline hover:bg-muted/50 px-3',
-						variant === 'outline' && 'border border-muted rounded-lg',
 						variant === 'fill' && 'bg-muted/50 hover:bg-muted rounded-lg'
 					)}
 				>

@@ -34,7 +34,7 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 				</div>
 				<div className="flex flex-row space-x-2 items-center">
 					<Avatar src={image} variant="circular" />
-					<Typography variant="body2" className="text-muted-foreground">
+					<Typography variant="body2" className="text-foreground/70">
 						{author}
 					</Typography>
 				</div>

@@ -24,7 +24,7 @@ const SwipeableTestimonialCard: React.FC<SwipeableTestimonialCardProps> = (
 					{text && (
 						<Typography
 							variant="body1"
-							className="italic text-xl text-center font-medium leading-loose text-muted-foreground"
+							className="italic text-xl text-center font-medium leading-loose text-foreground/80"
 						>
 							{text}
 						</Typography>
@@ -36,7 +36,7 @@ const SwipeableTestimonialCard: React.FC<SwipeableTestimonialCardProps> = (
 							<AvatarImage src={avatar} alt={author} />
 							<AvatarFallback></AvatarFallback>
 						</Avatar>
-						<Typography variant="body2" className="text-muted-foreground">
+						<Typography variant="body2" className="text-foreground/80">
 							{author}
 						</Typography>
 					</div>
