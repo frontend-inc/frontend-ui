@@ -18,8 +18,6 @@ const StripeCreditCardElement: React.FC<StripeCreditCardElementProps> = (
 	const stripe = useStripe()
 	const elements = useElements()
 
-	
-
 	const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault()
 		if (!stripe || !elements) {

@@ -15,6 +15,8 @@ const CmsForm: React.FC<CmsFormProps> = (props) => {
 		subtitle,
 		textAlign,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -27,6 +29,8 @@ const CmsForm: React.FC<CmsFormProps> = (props) => {
 		<Section
 			requireAuth
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

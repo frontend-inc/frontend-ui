@@ -3,12 +3,10 @@
 import React from 'react'
 import { Empty } from '../../../components'
 import AccordionItem from './AccordionItem'
-import {
-	Accordion as ShadcnAccordion,
-} from 'frontend-shadcn'
+import { Accordion as ShadcnAccordion } from 'frontend-shadcn'
 
 export type AccordionProps = {
-  variant?: 'default' | 'fill' | 'outline'  
+	variant?: 'default' | 'fill' | 'outline'
 	items?: {
 		title: string
 		subtitle: string
@@ -27,7 +25,7 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 						key={i}
 						title={item?.title}
 						subtitle={item?.subtitle}
-            variant={variant}
+						variant={variant}
 					/>
 				))}
 				{items?.length == 0 && (

@@ -4,11 +4,7 @@ import React from 'react'
 import { Section, Stack, Heading } from '../../components'
 import { LinkList } from '../../components'
 import { LinkListProps } from '../../components/web/links/LinkList'
-import { 
-  SectionProps, 
-  StackProps, 
-  HeadingProps 
-} from '../../types'
+import { SectionProps, StackProps, HeadingProps } from '../../types'
 
 type UILinksProps = SectionProps & HeadingProps & StackProps & LinkListProps
 
@@ -22,6 +18,8 @@ const UILinks: React.FC<UILinksProps> = (props) => {
 		fontSize = 'md',
 		variant,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -36,6 +34,8 @@ const UILinks: React.FC<UILinksProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

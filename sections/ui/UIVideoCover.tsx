@@ -9,7 +9,17 @@ import { SectionProps } from '../../types'
 type UIVideoCoverProps = SectionProps & VideoCoverProps
 
 const UIVideoCover: React.FC<UIVideoCoverProps> = (props) => {
-	const { bgColor, mode, px, py, maxWidth, requireAuth, ...rest } = props
+	const {
+		bgColor,
+		bgImage,
+		bgOverlay,
+		mode,
+		px,
+		py,
+		maxWidth,
+		requireAuth,
+		...rest
+	} = props
 
 	return (
 		<Section mode="dark" py="none" px="none" maxWidth={maxWidth}>

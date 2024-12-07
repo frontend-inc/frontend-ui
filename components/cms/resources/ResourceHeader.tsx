@@ -19,8 +19,8 @@ export type ResourceHeaderProps = {
 	enableFilters: boolean
 	enableSorting: boolean
 	enableCreate?: boolean
-  enableExport?: boolean
-  handleExport?: () => void
+	enableExport?: boolean
+	handleExport?: () => void
 	handleSearch: (keywords: string) => void
 	handleKeywordChange: (ev: SyntheticEventType) => void
 	handleFilter: (name: string, value: string | number | boolean) => void
@@ -45,8 +45,8 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 		enableFilters,
 		enableSorting,
 		enableCreate,
-    enableExport,
-    handleExport,
+		enableExport,
+		handleExport,
 		handleSearch,
 		handleKeywordChange,
 		handleFilter,
@@ -105,13 +105,18 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 				)}
 			>
 				{secondaryAction}
-        {enableExport && (
+				{enableExport && (
 					<Button
 						size="default"
-            variant="secondary"
+						variant="secondary"
 						className="w-full sm:w-auto"
 						onClick={handleExport}
-						startIcon={<RemixIcon name="ri-download-fill" className="text-secondary-foreground" />}
+						startIcon={
+							<RemixIcon
+								name="ri-download-fill"
+								className="text-secondary-foreground"
+							/>
+						}
 					>
 						Export
 					</Button>

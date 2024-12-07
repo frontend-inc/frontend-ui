@@ -14,7 +14,7 @@ const Pricing: React.FC<PricingProps> = (props) => {
 
 	return (
 		<div className="flex flex-col space-y-2 p-3">
-      <Stack direction="row" spacing={4}>
+			<Stack direction="row" spacing={4}>
 				{items?.map((item, index) => (
 					<PricingCard
 						key={index}

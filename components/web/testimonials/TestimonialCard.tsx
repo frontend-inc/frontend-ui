@@ -10,26 +10,24 @@ type TestimonialProps = {
 	author: string
 	image?: string
 	size?: 'small' | 'large'
-  variant?: 'fill' | 'outline' | 'default'
+	variant?: 'fill' | 'outline' | 'default'
 }
 
 const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 	const { text, author, image = '', variant } = props || {}
 
 	return (
-		<div 
-      className={cn(
-        'p-3 rounded-lg min-h-[240px]',
-        variant === 'fill' && 'p-6 bg-muted',
-        variant === 'outline' && 'p-6 border-2 border-border',
-      )}>
+		<div
+			className={cn(
+				'p-3 rounded-lg min-h-[240px]',
+				variant === 'fill' && 'p-6 bg-muted',
+				variant === 'outline' && 'p-6 border-2 border-border'
+			)}
+		>
 			<div className="flex flex-col space-y-3 justify-between h-full">
 				<div>
 					{text && (
-						<Typography
-							variant="subtitle2"
-							className="font-normal"
-						>
+						<Typography variant="subtitle2" className="font-normal">
 							{text}
 						</Typography>
 					)}

@@ -6,19 +6,17 @@ import { CollectionList } from '../../components'
 import { CollectionListProps } from '../../components/cms/collections/CollectionList'
 import { SectionProps, HeadingProps } from '../../types'
 
-type CmsCollectionsProps = SectionProps &
-	HeadingProps &
-	CollectionListProps
+type CmsCollectionsProps = SectionProps & HeadingProps & CollectionListProps
 
-const CmsCollections: React.FC<CmsCollectionsProps> = (
-	props
-) => {
+const CmsCollections: React.FC<CmsCollectionsProps> = (props) => {
 	const {
 		label,
 		title,
 		subtitle,
 		textAlign,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -30,6 +28,8 @@ const CmsCollections: React.FC<CmsCollectionsProps> = (
 	return (
 		<Section
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

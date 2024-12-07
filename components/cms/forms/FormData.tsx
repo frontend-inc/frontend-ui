@@ -16,8 +16,6 @@ const FormData: React.FC<FormDataProps> = (props) => {
 
 	const { loading, form, findForm } = useForms()
 
-	
-
 	const {
 		errors,
 		loading: responseLoading,

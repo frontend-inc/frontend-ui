@@ -19,7 +19,9 @@ export type DocumentCarouselListItemsProps = DocumentListItemsProps & {
 	enableAutoPlay?: boolean
 }
 
-const DocumentCarouselListItems: React.FC<DocumentCarouselListItemsProps> = (props) => {
+const DocumentCarouselListItems: React.FC<DocumentCarouselListItemsProps> = (
+	props
+) => {
 	const router = useRouter()
 	const { clientUrl } = useApp()
 
@@ -75,8 +77,8 @@ const DocumentCarouselListItems: React.FC<DocumentCarouselListItemsProps> = (pro
 						</CarouselItem>
 					))}
 				</CarouselContent>
-        <CarouselPrevious className="hidden sm:flex absolute left-4 top-1/3 -translate-y-1/3 bg-foreground/70 text-background/70 hover:text-foreground border-0" />
-        <CarouselNext className="hidden sm:flex absolute right-4 top-1/3 -translate-y-1/3 bg-foreground/70 text-background/70 hover:text-foreground border-0" />      				
+				<CarouselPrevious className="hidden sm:flex absolute left-4 top-1/3 -translate-y-1/3 bg-foreground/70 text-background/70 hover:text-foreground border-0" />
+				<CarouselNext className="hidden sm:flex absolute right-4 top-1/3 -translate-y-1/3 bg-foreground/70 text-background/70 hover:text-foreground border-0" />
 			</Carousel>
 		</div>
 	)

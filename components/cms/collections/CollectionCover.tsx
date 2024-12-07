@@ -15,10 +15,7 @@ export type CollectionCoverProps = {
 	collectionId: string | number
 }
 
-const CollectionCover: React.FC<CollectionCoverProps> = (
-	props
-) => {
-  
+const CollectionCover: React.FC<CollectionCoverProps> = (props) => {
 	const {
 		handleClick,
 		height = 400,

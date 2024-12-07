@@ -21,6 +21,8 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 		fontSize = 'md',
 		variant,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -35,11 +37,13 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-      variant={variant}
+			variant={variant}
 		>
 			<Stack direction={direction} spacing={10} className="items-center">
 				<Stack direction={direction} size="1/3">
@@ -53,7 +57,11 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 						handleChange={handleChange}
 					/>
 				</Stack>
-				<Stack direction={direction} size="2/3" className="items-center h-full justify-center">
+				<Stack
+					direction={direction}
+					size="2/3"
+					className="items-center h-full justify-center"
+				>
 					<EmailSubscribe {...rest} />
 				</Stack>
 			</Stack>

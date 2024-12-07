@@ -11,6 +11,8 @@ export type AddonIframeProps = SectionProps & IframeProps
 const AddonIframe: React.FC<AddonIframeProps> = (props) => {
 	const {
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -24,6 +26,8 @@ const AddonIframe: React.FC<AddonIframeProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

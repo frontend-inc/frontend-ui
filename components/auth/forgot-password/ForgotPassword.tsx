@@ -15,7 +15,6 @@ type ForgotPasswordProps = {
 const ForgotPassword: React.FC<ForgotPasswordProps> = (props) => {
 	const { title, subtitle, loginUrl } = props || {}
 
-	
 	const { loading, errors, user, handleChange, forgotPassword } = useAuth()
 
 	const router = useRouter()

@@ -20,19 +20,18 @@ interface TextAreaProps
 }
 
 function TextArea(props: TextAreaProps) {
-
-  const {
-    label,
-    helperText,
-    error = false,
-    fullWidth = false,
-    className,
-    id,
-    name,
-    value,
-    onChange,
-    ...rest
-  } = props || {}
+	const {
+		label,
+		helperText,
+		error = false,
+		fullWidth = false,
+		className,
+		id,
+		name,
+		value,
+		onChange,
+		...rest
+	} = props || {}
 
 	const textareaId = id || name || label?.toLowerCase().replace(/\s+/g, '-')
 

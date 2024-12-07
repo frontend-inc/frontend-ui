@@ -12,6 +12,8 @@ const UIHero: React.FC<UIHeroProps> = (props) => {
 	const {
 		variant,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -27,6 +29,8 @@ const UIHero: React.FC<UIHeroProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={fullWidth ? 'none' : py}
 			px={fullWidth ? 'none' : px}

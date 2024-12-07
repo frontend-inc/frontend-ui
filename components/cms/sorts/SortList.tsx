@@ -21,15 +21,14 @@ type SortListProps = {
 }
 
 export default function SortList(props: SortListProps) {
+	const {
+		sortOptions,
+		sortBy,
+		sortDirection,
+		handleSortBy,
+		handleSortDirection,
+	} = props
 
-  const {
-    sortOptions,
-    sortBy,
-    sortDirection,
-    handleSortBy,
-    handleSortDirection,
-  } = props
-  
 	return (
 		<div className="flex flex-col space-y-3 w-full p-4">
 			<Typography variant="body1" className="text-primary font-medium">

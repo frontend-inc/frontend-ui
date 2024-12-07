@@ -11,6 +11,8 @@ type CmsUserDetailsProps = SectionProps & UserDetailsProps
 const CmsUserDetails: React.FC<CmsUserDetailsProps> = (props) => {
 	const {
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -24,6 +26,8 @@ const CmsUserDetails: React.FC<CmsUserDetailsProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

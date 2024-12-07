@@ -6,7 +6,7 @@ import { ActionType } from '../../../types'
 import { cn } from 'frontend-shadcn'
 
 export type LinkListItemProps = {
-  variant?: 'fill' | 'outline' | 'default'
+	variant?: 'fill' | 'outline' | 'default'
 	color: string
 	icon: string
 	title: string

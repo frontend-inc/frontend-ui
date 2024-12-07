@@ -9,7 +9,17 @@ import { SectionProps } from '../../types'
 type UICoverCarouselProps = SectionProps & CoverCarouselProps
 
 const UICoverCarousel: React.FC<UICoverCarouselProps> = (props) => {
-	const { bgColor, mode='dark', px, py, maxWidth, requireAuth, ...rest } = props
+	const {
+		bgColor,
+		bgImage,
+		bgOverlay,
+		mode = 'dark',
+		px,
+		py,
+		maxWidth,
+		requireAuth,
+		...rest
+	} = props
 
 	return (
 		<Section

@@ -6,11 +6,16 @@ import { ButtonActions } from '../../components'
 import { ButtonActionsProps } from '../../components/ui/buttons/ButtonActions'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
 
-type UIButtonsProps = SectionProps & HeadingProps & StackProps & ButtonActionsProps
+type UIButtonsProps = SectionProps &
+	HeadingProps &
+	StackProps &
+	ButtonActionsProps
 
 const UIButtons: React.FC<UIButtonsProps> = (props) => {
 	const {
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -18,7 +23,7 @@ const UIButtons: React.FC<UIButtonsProps> = (props) => {
 		requireAuth,
 		editable,
 		handleChange,
-    variant,
+		variant,
 		...rest
 	} = props
 
@@ -26,11 +31,13 @@ const UIButtons: React.FC<UIButtonsProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-      variant={variant}
+			variant={variant}
 		>
 			<ButtonActions {...rest} />
 		</Section>

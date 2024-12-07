@@ -21,6 +21,8 @@ const UIFeatureIcons: React.FC<UIFeatureIconsProps> = (props) => {
 		fontSize = 'md',
 		variant,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -35,10 +37,12 @@ const UIFeatureIcons: React.FC<UIFeatureIconsProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}
-			maxWidth={maxWidth}      
+			maxWidth={maxWidth}
 		>
 			<Stack direction={direction}>
 				<Stack direction={direction} size="1/3" spacing={10}>
@@ -53,11 +57,7 @@ const UIFeatureIcons: React.FC<UIFeatureIconsProps> = (props) => {
 					/>
 				</Stack>
 				<Stack direction={direction} size="2/3">
-					<FeatureIcons
-						{...rest}
-						direction={direction}
-            variant={variant}						
-					/>
+					<FeatureIcons {...rest} direction={direction} variant={variant} />
 				</Stack>
 			</Stack>
 		</Section>

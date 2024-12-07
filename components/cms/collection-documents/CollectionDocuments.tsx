@@ -5,7 +5,10 @@ import { DocumentList } from '../..'
 import { DocumentListProps } from '../documents/DocumentList'
 import { useApp } from '../../../hooks'
 
-export type CollectionDocumentsProps = Omit<DocumentListProps, 'style' | 'url'> & {
+export type CollectionDocumentsProps = Omit<
+	DocumentListProps,
+	'style' | 'url'
+> & {
 	collectionId: string
 }
 
@@ -14,7 +17,7 @@ const CollectionDocuments: React.FC<CollectionDocumentsProps> = (props) => {
 	const { apiUrl } = useApp()
 	const url = `${apiUrl}/cms/collections/${collectionId}/documents`
 
-	return <DocumentList {...props} style='card' url={url}  />
+	return <DocumentList {...props} style="card" url={url} />
 }
 
 export default CollectionDocuments

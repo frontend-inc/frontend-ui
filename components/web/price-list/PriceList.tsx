@@ -25,25 +25,25 @@ export type PriceListProps = {
 const PriceList: React.FC<PriceListProps> = (props) => {
 	const { variant, items } = props || {}
 
-  const [open, setOpen] = useState(false)
-  const [activeItem, setActiveItem] = useState<PriceListType | null>(null)
+	const [open, setOpen] = useState(false)
+	const [activeItem, setActiveItem] = useState<PriceListType | null>(null)
 
-  const handleImageClick = (item) => {
-    setActiveItem(item)
-    setOpen(true)
-  }
+	const handleImageClick = (item) => {
+		setActiveItem(item)
+		setOpen(true)
+	}
 
-  return (
+	return (
 		<div className="w-full justify-center flex flow-row">
 			<div className="container mx-auto max-w-screen-2xl">
 				<ul className="list-none w-full flex flex-col space-y-2">
 					{items?.map((item, idx) => (
 						<BlurFade delay={0.25 + idx * 0.05} key={idx}>
-							<PriceListItem 
-                {...item} 
-                variant={variant} 
-                handleImageClick={() => handleImageClick(item) }
-              />
+							<PriceListItem
+								{...item}
+								variant={variant}
+								handleImageClick={() => handleImageClick(item)}
+							/>
 						</BlurFade>
 					))}
 				</ul>
@@ -55,13 +55,13 @@ const PriceList: React.FC<PriceListProps> = (props) => {
 					/>
 				)}
 			</div>
-      <ImageModal
-        open={open}
-        handleClose={() => setOpen(false)}
-        //@ts-ignore
-        src={activeItem?.image}
-        title={activeItem?.title}
-      />
+			<ImageModal
+				open={open}
+				handleClose={() => setOpen(false)}
+				//@ts-ignore
+				src={activeItem?.image}
+				title={activeItem?.title}
+			/>
 		</div>
 	)
 }

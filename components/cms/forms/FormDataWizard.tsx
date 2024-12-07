@@ -36,8 +36,6 @@ const FormDataWizard: React.FC<FormDataWizardProps> = (props) => {
 		formId,
 	})
 
-	
-
 	const handleSubmit = async () => {
 		let resp
 		if (contact?.id) {

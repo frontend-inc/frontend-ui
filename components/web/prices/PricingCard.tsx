@@ -69,7 +69,10 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
 				<ul className="flex flex-col space-y-3">
 					{features?.map((feature, i) => (
 						<li className="flex flex-row space-x-2" key={i}>
-							<RemixIcon name='ri-check-fill' className="text-foreground bg-background" />
+							<RemixIcon
+								name="ri-check-fill"
+								className="text-foreground bg-background"
+							/>
 							<Typography variant="body1">{feature}</Typography>
 						</li>
 					))}

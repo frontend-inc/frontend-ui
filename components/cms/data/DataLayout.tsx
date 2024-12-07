@@ -12,29 +12,25 @@ type DataLayoutProps = {
 }
 
 export default function DataLayout(props: DataLayoutProps) {
+	const { loading, layout = 'grid', size = 'lg', children } = props
 
-  const {
-    loading,
-    layout = 'grid',
-    size = 'lg',
-    children,
-  } = props
-	
-  const gridSize = {
+	const gridSize = {
 		sm: 'md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]',
 		md: 'md:grid-cols-[repeat(auto-fill,minmax(360px,1fr))]',
 		lg: 'md:grid-cols-[repeat(auto-fill,minmax(420px,1fr))]',
-    xl: 'md:grid-cols-[repeat(auto-fill,minmax(480px,1fr))]',
+		xl: 'md:grid-cols-[repeat(auto-fill,minmax(480px,1fr))]',
 	}
 
 	return (
 		<div className={cn('w-full', loading && 'opacity-50')}>
 			{layout == 'grid' && (
-				<div className={cn(
-          'w-full gap-6 pb-1 grid', 
-          'grid-cols-[repeat(auto-fill,minmax(240px,1fr))]',
-          gridSize[size])
-          }>
+				<div
+					className={cn(
+						'w-full gap-6 pb-1 grid',
+						'grid-cols-[repeat(auto-fill,minmax(240px,1fr))]',
+						gridSize[size]
+					)}
+				>
 					{children}
 				</div>
 			)}

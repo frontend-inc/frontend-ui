@@ -24,8 +24,6 @@ export default function ShareButton({
 	handleClose,
 	url,
 }: ShareButtonProps) {
-	
-
 	const handleShareClick = (platform: string) => {
 		const shareUrl = getShareUrl(platform, url)
 		if (platform === 'copy') {

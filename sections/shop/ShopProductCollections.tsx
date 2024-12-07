@@ -19,6 +19,8 @@ const ShopProductCollections: React.FC<ShopProductCollectionsProps> = (
 		subtitle,
 		textAlign,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -31,6 +33,8 @@ const ShopProductCollections: React.FC<ShopProductCollectionsProps> = (
 	return (
 		<Section
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

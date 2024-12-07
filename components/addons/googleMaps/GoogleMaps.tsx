@@ -38,13 +38,13 @@ export default function GoogleMap({
 
 	const handleSetMarkers = (resources) => {
 		let markers = resources
-      ?.filter((res) => res?.lat && res?.lng)
-      ?.map((res) => ({
-        lat: res?.lat,
-        lng: res?.lng,
-        label: res?.title,
-        image: res?.image?.url,
-      }))
+			?.filter((res) => res?.lat && res?.lng)
+			?.map((res) => ({
+				lat: res?.lat,
+				lng: res?.lng,
+				label: res?.title,
+				image: res?.image?.url,
+			}))
 		setGoogleMarkers(markers?.length ? markers : [])
 	}
 

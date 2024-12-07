@@ -36,31 +36,29 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 		enableShopify = false,
 	} = props
 
-  const [isScrolled, setIsScrolled] = useState(false)
+	const [isScrolled, setIsScrolled] = useState(false)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
-    }
+	useEffect(() => {
+		const handleScroll = () => {
+			if (window.scrollY > 0) {
+				setIsScrolled(true)
+			} else {
+				setIsScrolled(false)
+			}
+		}
 
-    window.addEventListener('scroll', handleScroll)
+		window.addEventListener('scroll', handleScroll)
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+		return () => {
+			window.removeEventListener('scroll', handleScroll)
+		}
+	}, [])
 
 	const { setMenuOpen } = useApp()
 
 	return (
 		<div
-			className={cn(
-        "hidden md:block w-full h-16 bg-background"
-      )}
+			className={cn('hidden md:block w-full h-16 bg-background')}
 			style={{
 				backgroundColor: bgColor,
 			}}
@@ -70,7 +68,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 					{links?.length > MAX_LINKS && (
 						<div className="pl-1 flex items-center justify-center h-[60px]">
 							<IconButton color="ghost" onClick={() => setMenuOpen(true)}>
-								<RemixIcon name='ri-menu-fill' />
+								<RemixIcon name="ri-menu-fill" />
 							</IconButton>
 						</div>
 					)}

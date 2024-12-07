@@ -2,15 +2,8 @@
 
 import React from 'react'
 import { DataList } from '../..'
-import {
-	SearchFilterOptionType,
-	SortOptionType,
-} from '../../../types'
-import {
-	CollectionShow,
-	CollectionListItem,
-	CollectionListItems,
-} from '../..'
+import { SearchFilterOptionType, SortOptionType } from '../../../types'
+import { CollectionShow, CollectionListItem, CollectionListItems } from '../..'
 import { useApp } from '../../../hooks'
 
 export type CollectionListProps = {

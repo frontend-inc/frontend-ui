@@ -9,7 +9,17 @@ import { SectionProps } from '../../types'
 type UICoverProps = SectionProps & CoverProps
 
 const UICover: React.FC<UICoverProps> = (props) => {
-	const { bgColor, mode='dark', px, py, maxWidth, requireAuth, ...rest } = props
+	const {
+		bgColor,
+		bgImage,
+		bgOverlay,
+		mode = 'dark',
+		px,
+		py,
+		maxWidth,
+		requireAuth,
+		...rest
+	} = props
 
 	return (
 		<Section mode={mode} py="none" px="none" maxWidth={maxWidth}>

@@ -19,6 +19,8 @@ const ShopCollectionProducts: React.FC<ShopCollectionProductsProps> = (
 		subtitle,
 		textAlign,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -31,6 +33,8 @@ const ShopCollectionProducts: React.FC<ShopCollectionProductsProps> = (
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

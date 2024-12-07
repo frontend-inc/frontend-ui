@@ -10,9 +10,9 @@ export type CollectionDocumentsCarouselProps = DocumentListProps & {
 	enableAutoplay?: boolean
 }
 
-const CollectionDocumentsCarousel: React.FC<CollectionDocumentsCarouselProps> = (
-	props
-) => {
+const CollectionDocumentsCarousel: React.FC<
+	CollectionDocumentsCarouselProps
+> = (props) => {
 	const { apiUrl } = useApp()
 	const { collectionId, enableAutoplay, ...rest } = props
 

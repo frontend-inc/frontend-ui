@@ -6,10 +6,7 @@ import { PriceList } from '../../components'
 import { PriceListProps } from '../../components/web/price-list/PriceList'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
 
-type UIPricesProps = SectionProps &
-	HeadingProps &
-	StackProps &
-	PriceListProps
+type UIPricesProps = SectionProps & HeadingProps & StackProps & PriceListProps
 
 const UIPrices: React.FC<UIPricesProps> = (props) => {
 	const {
@@ -20,6 +17,8 @@ const UIPrices: React.FC<UIPricesProps> = (props) => {
 		textAlign = 'center',
 		fontSize = 'md',
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -34,6 +33,8 @@ const UIPrices: React.FC<UIPricesProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

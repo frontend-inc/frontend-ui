@@ -14,7 +14,7 @@ type UIFooterProps = FooterProps & {
 
 const UIFooter: React.FC<UIFooterProps> = (props) => {
 	const router = useRouter()
-	const { bgColor, mode, links = [], ...rest } = props || {}
+	const { bgColor, bgImage, bgOverlay, mode, links = [], ...rest } = props || {}
 
 	const { clientUrl } = useApp()
 
@@ -31,6 +31,8 @@ const UIFooter: React.FC<UIFooterProps> = (props) => {
 			className={cn(mode, 'w-full')}
 			style={{
 				backgroundColor: bgColor,
+				bgImage,
+				bgOverlay,
 			}}
 		>
 			<Footer {...rest} links={links} handleClick={handleClick} />

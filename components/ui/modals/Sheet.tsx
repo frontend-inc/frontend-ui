@@ -27,20 +27,19 @@ type SheetProps = {
 }
 
 const Sheet: React.FC<SheetProps> = (props) => {
+	const {
+		open,
+		title,
+		side = 'right',
+		handleClose,
+		children,
+		buttons,
+		disablePadding = false,
+		className,
+	} = props
 
-  const {
-    open,
-    title,
-    side = 'right',
-    handleClose,
-    children,
-    buttons,
-    disablePadding = false,
-    className,
-  } = props
-  
 	const { theme } = useTheme()
-  const { theme: mode } = useNextTheme()
+	const { theme: mode } = useNextTheme()
 
 	return (
 		<ShadcnSheet open={open} onOpenChange={handleClose}>

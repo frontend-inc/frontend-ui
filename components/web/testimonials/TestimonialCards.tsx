@@ -7,7 +7,7 @@ import { TestimonialType } from '../../../types'
 type TestimonialCardsProps = {
 	size?: 'small' | 'large'
 	items: TestimonialType[]
-  variant?: 'fill' | 'outline' | 'default'
+	variant?: 'fill' | 'outline' | 'default'
 }
 
 const TestimonialCards: React.FC<TestimonialCardsProps> = (props) => {
@@ -23,7 +23,7 @@ const TestimonialCards: React.FC<TestimonialCardsProps> = (props) => {
 						image={testimonial.image}
 						author={testimonial.title}
 						text={testimonial.subtitle}
-            variant={ variant }            
+						variant={variant}
 					/>
 				))}
 			</div>

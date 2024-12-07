@@ -11,6 +11,8 @@ type ShopProductDetailsProps = ProductProps & SectionProps
 const ShopProductDetails: React.FC<ShopProductDetailsProps> = (props) => {
 	const {
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -24,6 +26,8 @@ const ShopProductDetails: React.FC<ShopProductDetailsProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

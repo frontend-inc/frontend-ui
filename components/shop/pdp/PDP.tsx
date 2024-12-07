@@ -36,7 +36,7 @@ const PDP: React.FC<PDPProps> = (props) => {
 		description,
 		enableGradient,
 		enableOverlay,
-    enableRatings,
+		enableRatings,
 		actions,
 		secondaryAction,
 	} = props || {}

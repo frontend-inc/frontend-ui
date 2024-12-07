@@ -15,6 +15,8 @@ const CmsComments: React.FC<CmsCommentsProps> = (props) => {
 		subtitle,
 		textAlign,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -28,6 +30,8 @@ const CmsComments: React.FC<CmsCommentsProps> = (props) => {
 		<Section
 			requireAuth
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

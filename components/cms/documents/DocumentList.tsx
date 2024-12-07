@@ -3,7 +3,7 @@
 import React from 'react'
 import { DataList } from '../..'
 import {
-  buildSearchQuery,
+	buildSearchQuery,
 	buildListFields,
 	buildSortFields,
 	buildFilterFields,
@@ -19,7 +19,7 @@ import {
 
 export type DocumentListProps = {
 	layout?: 'list' | 'grid' | 'slider'
-  contentType?: ContentTypes
+	contentType?: ContentTypes
 	style: string
 	enableSearch?: boolean
 	enableFilters?: boolean
@@ -82,23 +82,22 @@ export type DocumentListProps = {
 }
 
 const DocumentList: React.FC<DocumentListProps> = (props) => {
+	let { url } = props
+	url = url || '/api/v1/cms/documents'
 
-  let { url } = props
-  url = url || '/api/v1/cms/documents'
-
-  const DEFAULT_QUERY = {
+	const DEFAULT_QUERY = {
 		sort_by: 'position',
 		sort_direction: 'asc',
-		per_page: 12 
-	} as any 
+		per_page: 12,
+	} as any
 
-	const {	
-    contentType='',
-		query=DEFAULT_QUERY,
-		displaySubtitle=true,
-    displayTags=true,
-    displayLocation=true,
-		displayCategory=true,
+	const {
+		contentType = '',
+		query = DEFAULT_QUERY,
+		displaySubtitle = true,
+		displayTags = true,
+		displayLocation = true,
+		displayCategory = true,
 		displayDescription,
 
 		enableLikes,
@@ -144,10 +143,7 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
 		},
 	} = props || {}
 
-	let searchQuery = buildSearchQuery(
-    contentType, 
-    query
-  )
+	let searchQuery = buildSearchQuery(contentType, query)
 
 	const listFields = buildListFields({
 		displaySubtitle,

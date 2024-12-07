@@ -31,19 +31,18 @@ type CustomDrawerProps = {
 }
 
 export default function CustomDrawer(props: CustomDrawerProps) {
+	const {
+		open,
+		handleClose,
+		loading,
+		title,
+		description,
+		children,
+		buttons,
+		maxWidth = 'md',
+		className,
+	} = props
 
-  const {
-    open,
-    handleClose,
-    loading,
-    title,
-    description,
-    children,
-    buttons,
-    maxWidth = 'md',
-    className,
-  } = props 
-  
 	const maxWidthClasses = {
 		sm: 'max-w-screen-sm',
 		md: 'max-w-screen-md',
@@ -52,19 +51,18 @@ export default function CustomDrawer(props: CustomDrawerProps) {
 	}
 
 	const { theme: mode } = useNextTheme()
-  const { theme } = useTheme()
-
+	const { theme } = useTheme()
 
 	return (
 		<Drawer open={open} onOpenChange={handleClose}>
 			<DrawerPortal>
-				<DrawerContent className={
-          cn(
-            mode == 'dark' ? 'dark-theme' : 'light', 
-            theme, 
-            className
-          )
-          }>
+				<DrawerContent
+					className={cn(
+						mode == 'dark' ? 'dark-theme' : 'light',
+						theme,
+						className
+					)}
+				>
 					<DrawerHeader>
 						<div className="flex w-full justify-end">
 							<DrawerClose>

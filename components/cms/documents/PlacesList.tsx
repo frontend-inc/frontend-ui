@@ -10,12 +10,7 @@ export type PlacesListProps = DocumentListProps
 const PlacesList: React.FC<PlacesListProps> = (props) => {
 	let { ...rest } = props
 
-	return (
-		<DocumentList
-			{...rest}
-			list={PlacesListItems}
-		/>
-	)
+	return <DocumentList {...rest} list={PlacesListItems} />
 }
 
 export default PlacesList

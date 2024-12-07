@@ -15,6 +15,8 @@ const CmsCarousel: React.FC<CmsCarouselProps> = (props) => {
 		subtitle,
 		textAlign,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -27,6 +29,8 @@ const CmsCarousel: React.FC<CmsCarouselProps> = (props) => {
 	return (
 		<Section
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

@@ -52,7 +52,6 @@ export type DocumentType = {
 	updated_at: string
 }
 
-
 export type CollectionType = {
 	id?: number
 	label?: string
@@ -63,6 +62,6 @@ export type CollectionType = {
 		url: string
 	}
 	tags?: string[]
-	published?: boolean	
+	published?: boolean
 	documents?: DocumentType[]
 }

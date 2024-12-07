@@ -26,7 +26,6 @@ const SusbcribeButton = (props: SusbcribeButtonProps) => {
 		price,
 	} = props
 
-	
 	const { loading, subscribe } = useSubscribe()
 
 	const handleClick = async () => {

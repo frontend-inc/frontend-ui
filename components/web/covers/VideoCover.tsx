@@ -72,12 +72,12 @@ const VideoCover: React.FC<VideoCoverProps> = (props) => {
 					{actions}
 					{buttonText && (
 						<div>
-							<Button 
-                size="lg" 
-                //@ts-ignore
-                onClick={onClick} 
-                variant="default"
-              >
+							<Button
+								size="lg"
+								//@ts-ignore
+								onClick={onClick}
+								variant="default"
+							>
 								{buttonText}
 							</Button>
 						</div>

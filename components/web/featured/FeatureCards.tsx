@@ -48,7 +48,7 @@ const FeatureCards: React.FC<FeatureCardsProps> = (props) => {
 							}
 							enableGradient={enableGradient}
 							enableOverlay={enableOverlay}
-              variant={variant}
+							variant={variant}
 						/>
 					</BlurFade>
 				))}

@@ -11,6 +11,8 @@ type UIRichTextProps = SectionProps & RichTextProps
 const UIRichText: React.FC<UIRichTextProps> = (props) => {
 	const {
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py = 'sm',
 		px,
@@ -23,6 +25,8 @@ const UIRichText: React.FC<UIRichTextProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

@@ -11,22 +11,16 @@ type FeatureIconProps = {
 	icon?: string
 	title?: string
 	subtitle?: string
-	variant?: 'fill' | 'outline' | 'default' 
+	variant?: 'fill' | 'outline' | 'default'
 	direction?: 'column' | 'row'
 }
 
 const FeatureIcon: React.FC<FeatureIconProps> = (props) => {
-	const {
-		variant,
-		icon,
-		title,
-		subtitle,
-		direction = 'column',
-	} = props || {}
+	const { variant, icon, title, subtitle, direction = 'column' } = props || {}
 	return (
 		<div
 			className={cn(
-				'flex justify-start py-6 w-full items-center h-full',        
+				'flex justify-start py-6 w-full items-center h-full',
 				direction === 'column'
 					? 'flex-col items-center space-y-3 min-h-[230px]'
 					: 'flex-row items-start space-x-3 min-h-[165px]',
@@ -96,12 +90,12 @@ const FeatureIcons: React.FC<FeatureIconsProps> = (props) => {
 			>
 				{items?.map((item, idx) => (
 					<BlurFade delay={0.25 + idx * 0.05} inView key={idx}>
-						<FeatureIcon							
+						<FeatureIcon
 							icon={item?.icon}
 							title={item?.title}
 							subtitle={item?.subtitle}
 							direction={direction}
-              variant={variant}
+							variant={variant}
 						/>
 					</BlurFade>
 				))}

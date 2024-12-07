@@ -21,6 +21,8 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 		fontSize = 'md',
 		variant,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -35,6 +37,8 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

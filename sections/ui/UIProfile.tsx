@@ -12,6 +12,8 @@ const UIProfile: React.FC<UIProfileProps> = (props) => {
 	const {
 		variant,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -24,6 +26,8 @@ const UIProfile: React.FC<UIProfileProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

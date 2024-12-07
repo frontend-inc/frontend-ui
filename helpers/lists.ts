@@ -6,18 +6,18 @@ type DisplayFieldParams = {
 	displayTags?: boolean
 }
 
-export const buildSearchQuery = (contentType: string, query={}) => {
-  let searchQuery = query
-  if(contentType?.length > 0){
-    searchQuery = {
-      ...searchQuery,
-      filters: [
-        ...(searchQuery.filters || []),
-        { content_type: { eq: contentType } }
-      ]
-    }
-  }
-  return searchQuery
+export const buildSearchQuery = (contentType: string, query = {}) => {
+	let searchQuery = query
+	if (contentType?.length > 0) {
+		searchQuery = {
+			...searchQuery,
+			filters: [
+				...(searchQuery.filters || []),
+				{ content_type: { eq: contentType } },
+			],
+		}
+	}
+	return searchQuery
 }
 
 export const buildListFields = (params: DisplayFieldParams) => {

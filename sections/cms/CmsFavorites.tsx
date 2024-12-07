@@ -15,6 +15,8 @@ const CmsFavorites: React.FC<CmsFavoritesProps> = (props) => {
 		subtitle,
 		textAlign,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -27,6 +29,8 @@ const CmsFavorites: React.FC<CmsFavoritesProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

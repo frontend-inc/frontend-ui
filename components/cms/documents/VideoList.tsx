@@ -7,9 +7,7 @@ import { DocumentListProps } from './DocumentList'
 export type VideoListProps = DocumentListProps
 
 const VideoList: React.FC<VideoListProps> = (props) => {
-	return (
-		<DocumentList {...props} list={VideoListItems} show={ShowVideoModal} />
-	)
+	return <DocumentList {...props} list={VideoListItems} show={ShowVideoModal} />
 }
 
 export default VideoList

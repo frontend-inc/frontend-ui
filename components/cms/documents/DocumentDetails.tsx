@@ -15,7 +15,7 @@ type DocumentHeroProps = {
 const DocumentDetails: React.FC<DocumentHeroProps> = (props) => {
 	const { actions, resource, disableImage, metafields = [] } = props || {}
 
-	const fields = DOCUMENT_SHOW_FIELDS[resource?.content_type || 'post'] 
+	const fields = DOCUMENT_SHOW_FIELDS[resource?.content_type || 'post']
 
 	const filteredFields = fields.filter(
 		(field) => !['image', 'label', 'title'].includes(field.name)
@@ -30,7 +30,7 @@ const DocumentDetails: React.FC<DocumentHeroProps> = (props) => {
 							alt={resource?.label}
 							src={resource?.image?.url}
 							label={resource?.label}
-              aspectRatio={1.5}
+							aspectRatio={1.5}
 						/>
 					</div>
 				</div>

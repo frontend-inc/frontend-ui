@@ -22,6 +22,8 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 		fontSize = 'md',
 		variant,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -36,6 +38,8 @@ const UISwipeableTestimonials: React.FC<UISwipeableTestimonialsProps> = (
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

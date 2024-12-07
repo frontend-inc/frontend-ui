@@ -5,10 +5,8 @@ import { Empty, Button } from '../../../components'
 import { useApp } from '../../../hooks'
 import { toast } from 'sonner'
 
-
 const ShopifyCustomerPortal = () => {
 	const { app } = useApp()
-	
 
 	const handleClick = () => {
 		if (app?.shopify_customer_portal_url) {

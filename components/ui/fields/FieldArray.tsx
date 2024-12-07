@@ -16,7 +16,12 @@ const FieldArray: React.FC<FieldArrayProps> = (props) => {
 	const { value: values, label, className, direction } = props
 	return (
 		<FieldWrapper label={label} direction={direction}>
-			<div className={cn('flex flex-row gap-2 overflow-x-scroll flex-nowrap', className)}>
+			<div
+				className={cn(
+					'flex flex-row gap-2 overflow-x-scroll flex-nowrap',
+					className
+				)}
+			>
 				{Array.isArray(values) &&
 					values?.map((value, index) => (
 						<Badge

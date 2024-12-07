@@ -8,8 +8,6 @@ import { toast } from 'sonner'
 const CheckoutButton = () => {
 	const { loading, cart, checkout } = useCart()
 
-	
-
 	const handleClick = async () => {
 		let currentUrl = window.location.href
 		const stripe = await checkout({

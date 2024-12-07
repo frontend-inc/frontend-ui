@@ -11,6 +11,8 @@ type UIBlogProps = SectionProps & BlogProps
 const UIBlog: React.FC<UIBlogProps> = (props) => {
 	const {
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py = 'sm',
 		px,
@@ -23,6 +25,8 @@ const UIBlog: React.FC<UIBlogProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

@@ -44,8 +44,6 @@ const DocumentForm: React.FC<DocumentFormProps> = (props) => {
 		inputParams,
 	} = props
 
-	
-
 	const {
 		delayedLoading: loading,
 		errors,

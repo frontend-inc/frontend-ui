@@ -16,6 +16,8 @@ const UIPricing: React.FC<UIPricingProps> = (props) => {
 		textAlign = 'center',
 		fontSize = 'md',
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -30,6 +32,8 @@ const UIPricing: React.FC<UIPricingProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

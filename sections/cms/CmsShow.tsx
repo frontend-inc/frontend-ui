@@ -11,6 +11,8 @@ type CmsShowProps = SectionProps & ShowContainerProps
 const CmsShow: React.FC<CmsShowProps> = (props) => {
 	const {
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -24,6 +26,8 @@ const CmsShow: React.FC<CmsShowProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={style == 'cover' ? 'none' : py}
 			px={style == 'cover' ? 'none' : px}

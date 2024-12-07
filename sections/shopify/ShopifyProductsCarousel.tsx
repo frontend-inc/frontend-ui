@@ -19,6 +19,8 @@ const ShopifyProductsCarousel: React.FC<ShopifyProductsCarouselProps> = (
 		subtitle,
 		textAlign,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -32,6 +34,8 @@ const ShopifyProductsCarousel: React.FC<ShopifyProductsCarouselProps> = (
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

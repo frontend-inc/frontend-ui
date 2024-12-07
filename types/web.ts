@@ -22,9 +22,11 @@ export type StackProps = {
 export type SectionProps = {
 	children?: React.ReactNode
 	bgColor?: string
+	bgImage?: string
+	bgOverlay?: boolean
 	mode?: 'dark' | 'light'
 	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
-  variant?: 'fill' | 'outline' | 'default' 	
+	variant?: 'fill' | 'outline' | 'default'
 	py?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 	px?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 	requireAuth?: boolean

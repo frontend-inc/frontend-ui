@@ -17,6 +17,8 @@ const UICards: React.FC<UICardsProps> = (props) => {
 		textAlign = 'center',
 		variant,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -32,6 +34,8 @@ const UICards: React.FC<UICardsProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

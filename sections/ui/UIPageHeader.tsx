@@ -9,12 +9,24 @@ import { SectionProps } from '../../types'
 type UIPageHeaderProps = SectionProps & PageHeaderProps
 
 const UIPageHeader: React.FC<UIPageHeaderProps> = (props) => {
-	const { bgColor, mode, py = 'sm', px, maxWidth, requireAuth, ...rest } = props
+	const {
+		bgColor,
+		bgImage,
+		bgOverlay,
+		mode,
+		py = 'sm',
+		px,
+		maxWidth,
+		requireAuth,
+		...rest
+	} = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

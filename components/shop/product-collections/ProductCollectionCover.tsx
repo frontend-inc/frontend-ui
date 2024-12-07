@@ -18,7 +18,6 @@ export type ProductCollectionCoverProps = {
 const ProductCollectionCover: React.FC<ProductCollectionCoverProps> = (
 	props
 ) => {
-  
 	const {
 		handleClick,
 		height = 400,

@@ -27,4 +27,3 @@ export { default as StripeBuyButton } from './stripe/StripeBuyButton'
 export { default as YouTubeEmbed } from './youtube/YouTubeEmbed'
 export { default as VimeoEmbed } from './vimeo/VimeoEmbed'
 export { default as Iframe } from './iframe/Iframe'
-

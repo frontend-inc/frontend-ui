@@ -33,9 +33,9 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 							{resource?.description}
 						</Typography>
 					</div>
-          {/* @ts-ignore */}
+					{/* @ts-ignore */}
 					<CollectionDocuments
-            resource={resource}
+						resource={resource}
 						enableGradient={enableGradient}
 						enableOverlay={enableOverlay}
 						enableLikes={enableLikes}

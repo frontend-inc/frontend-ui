@@ -15,7 +15,6 @@ export type ContactFormProps = {
 
 // Call To Action
 const ContactForm: React.FC<ContactFormProps> = (props) => {
-	
 	const { metafields = [], buttonText = 'Send Message' } = props || {}
 
 	const {
@@ -28,10 +27,10 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 	} = useContacts()
 
 	const handleSubmit = async () => {
-    if(!contact?.email || !contact?.name || !contact?.message) {
-      toast('Please fill out all required fields')
-      return
-    }
+		if (!contact?.email || !contact?.name || !contact?.message) {
+			toast('Please fill out all required fields')
+			return
+		}
 		let resp = await createContact({
 			...contact,
 			source: 'contact',

@@ -21,31 +21,30 @@ export default function SwipeableShopifyProductImages({
 	handleClick,
 	disableBorderRadius = false,
 }: SwipeableShopifyProductImagesProps) {
-	
-  // @ts-ignore
-  const images = product?.images?.edges?.map((edge) => edge?.node) || []
+	// @ts-ignore
+	const images = product?.images?.edges?.map((edge) => edge?.node) || []
 
 	const { onMouseDown, onMouseUp } = useClickOrDrag({
 		onClick: handleClick,
 	})
 
 	return (
-    <Swipeable enableDots>
-      {images.map((image, index) => (
-        <div
-          className="w-full overflow-hidden"
-          onMouseDown={onMouseDown}
-          onMouseUp={onMouseUp}
-        >
-          <Image
-            src={image?.url}
-            alt={product?.title}
-            height={height}
-            disableBorderRadius={disableBorderRadius}
-            aspectRatio={1.0}
-          />
-        </div>
-        ))}
-      </Swipeable>      
+		<Swipeable enableDots>
+			{images.map((image, index) => (
+				<div
+					className="w-full overflow-hidden"
+					onMouseDown={onMouseDown}
+					onMouseUp={onMouseUp}
+				>
+					<Image
+						src={image?.url}
+						alt={product?.title}
+						height={height}
+						disableBorderRadius={disableBorderRadius}
+						aspectRatio={1.0}
+					/>
+				</div>
+			))}
+		</Swipeable>
 	)
 }

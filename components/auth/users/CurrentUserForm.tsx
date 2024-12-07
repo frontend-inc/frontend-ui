@@ -35,8 +35,6 @@ const UserForm: React.FC<CurrentUserFormProps> = (props) => {
 		handleSuccess = onSuccess,
 	} = props
 
-	
-
 	const {
 		delayedLoading,
 		errors,

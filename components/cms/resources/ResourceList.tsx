@@ -46,14 +46,14 @@ export type ResourceListProps = {
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
 	displayFields?: MetafieldType[]
-  exportHeaders?: string[]
+	exportHeaders?: string[]
 	enableSearch?: boolean
 	buttonText?: string
 	enableShow?: boolean
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
-  enableExport?: boolean
+	enableExport?: boolean
 	enableBorder?: boolean
 	direction?: 'row' | 'column'
 	emptyIcon?: string
@@ -102,7 +102,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		url,
 		name,
 		headers = [],
-    exportHeaders = ['id'],
+		exportHeaders = ['id'],
 		fields = [],
 		filterOptions = [],
 		sortOptions = [],
@@ -113,9 +113,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		enableSearch = false,
 		enableEdit,
 		enableDelete,
-		enableCreate,    
+		enableCreate,
 		enableShow,
-    enableExport,
+		enableExport,
 		handleClick,
 		slots = SLOT_PROPS,
 		enableBorder = false,
@@ -130,7 +130,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	const [openCreate, setOpenCreate] = useState(false)
 	const [openEdit, setOpenEdit] = useState(false)
 	const [openDelete, setOpenDelete] = useState(false)
-  const [openExport, setOpenExport] = useState(false)
+	const [openExport, setOpenExport] = useState(false)
 
 	const {
 		delayedLoading: loading,
@@ -153,8 +153,8 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		totalCount,
 		loadMore,
 		paginate,
-    getMany,
-    getOne,
+		getMany,
+		getOne,
 		reloadOne,
 		selected,
 		selectedIds,
@@ -320,14 +320,14 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		handleClear()
 	}
 
-  const handleExport = async () => {
-    let data = await getMany(query);
-    exportJsonToCSV(exportHeaders, data)
-  }
+	const handleExport = async () => {
+		let data = await getMany(query)
+		exportJsonToCSV(exportHeaders, data)
+	}
 
-  const handleExportClick = async () => {
-    setOpenExport(true)
-  }
+	const handleExportClick = async () => {
+		setOpenExport(true)
+	}
 
 	useEffect(() => {
 		if (queryFilters) {
@@ -380,8 +380,8 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					enableFilters={enableFilters}
 					enableSorting={enableSorting}
 					enableCreate={enableCreate}
-          enableExport={enableExport}
-          handleExport={handleExportClick}
+					enableExport={enableExport}
+					handleExport={handleExportClick}
 					handleSearch={handleSearch}
 					handleKeywordChange={handleKeywordChange}
 					handleFilter={handleFilter}
@@ -537,7 +537,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					description="This action cannot be reversed."
 					handleConfirm={handleDelete}
 				/>
-        <AlertModal
+				<AlertModal
 					open={openExport}
 					handleClose={() => setOpenExport(false)}
 					title="Are you sure you want to export?"

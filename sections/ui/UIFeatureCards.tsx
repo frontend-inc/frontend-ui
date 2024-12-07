@@ -20,6 +20,8 @@ const UIFeatureCards: React.FC<UIFeatureCardsProps> = (props) => {
 		textAlign = 'center',
 		fontSize = 'md',
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -34,6 +36,8 @@ const UIFeatureCards: React.FC<UIFeatureCardsProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

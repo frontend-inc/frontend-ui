@@ -13,6 +13,8 @@ const AddonGorgiasContactForm: React.FC<AddonGorgiasContactFormProps> = (
 ) => {
 	const {
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -26,6 +28,8 @@ const AddonGorgiasContactForm: React.FC<AddonGorgiasContactFormProps> = (
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

@@ -27,8 +27,6 @@ const useButtons = (params: UseButtonParams) => {
 	const [openImage, setOpenImage] = useState(false)
 	const [openShare, setOpenShare] = useState(false)
 
-	
-
 	const router = useRouter()
 	const { clientUrl } = useApp()
 

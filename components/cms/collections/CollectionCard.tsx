@@ -24,48 +24,47 @@ export type CollectionCardProps = {
 	}
 }
 
-const CollectionCard = React.forwardRef<
-	HTMLDivElement,
-	CollectionCardProps
->((props, ref) => {
-	const {
-		label,
-		primary,
-		handleClick,
-		image,
-		disableBorder,
-		slots = {
-			item: {},
-			image: {},
-		},
-	} = props
+const CollectionCard = React.forwardRef<HTMLDivElement, CollectionCardProps>(
+	(props, ref) => {
+		const {
+			label,
+			primary,
+			handleClick,
+			image,
+			disableBorder,
+			slots = {
+				item: {},
+				image: {},
+			},
+		} = props
 
-	return (
-		<div
-			ref={ref}
-			className={cn(
-				!disableBorder && 'border border-border hover:shadow-md',
-				'w-full overflow-hidden rounded-lg transition-shadow duration-300 bg-background'
-			)}
-		>
-			<div className="min-h-[240px] w-full relative overflow-hidden">
-				<Image
-					src={image}
-					height={240}
-					alt={primary}
-					label={label}
-					aspectRatio={4 / 3}
-					handleClick={handleClick}
-					disableBorderRadius={!disableBorder}
-					{...slots.image}
-				/>
+		return (
+			<div
+				ref={ref}
+				className={cn(
+					!disableBorder && 'border border-border hover:shadow-md',
+					'w-full overflow-hidden rounded-lg transition-shadow duration-300 bg-background'
+				)}
+			>
+				<div className="min-h-[240px] w-full relative overflow-hidden">
+					<Image
+						src={image}
+						height={240}
+						alt={primary}
+						label={label}
+						aspectRatio={4 / 3}
+						handleClick={handleClick}
+						disableBorderRadius={!disableBorder}
+						{...slots.image}
+					/>
+				</div>
+				<div className="px-4 pt-2 pb-4 w-full">
+					<Typography variant="subtitle1">{primary}</Typography>
+				</div>
 			</div>
-			<div className="px-4 pt-2 pb-4 w-full">
-				<Typography variant="subtitle1">{primary}</Typography>
-			</div>
-		</div>
-	)
-})
+		)
+	}
+)
 
 CollectionCard.displayName = 'CollectionCard'
 

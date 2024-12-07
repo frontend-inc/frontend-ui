@@ -15,6 +15,8 @@ const ShopifyProducts: React.FC<ShopifyProductsProps> = (props) => {
 		subtitle,
 		textAlign,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -28,6 +30,8 @@ const ShopifyProducts: React.FC<ShopifyProductsProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

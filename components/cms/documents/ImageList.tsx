@@ -7,9 +7,7 @@ import { DocumentListProps } from './DocumentList'
 export type ImageListProps = DocumentListProps
 
 const ImageList: React.FC<ImageListProps> = (props) => {
-	return (
-		<DocumentList {...props} list={ImageListItems} show={ShowImageModal} />
-	)
+	return <DocumentList {...props} list={ImageListItems} show={ShowImageModal} />
 }
 
 export default ImageList

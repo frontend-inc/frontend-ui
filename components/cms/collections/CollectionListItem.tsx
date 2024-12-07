@@ -11,9 +11,7 @@ type CollectionListItemProps = {
 	enableOverlay?: boolean
 }
 
-const CollectionListItem: React.FC<CollectionListItemProps> = (
-	props
-) => {
+const CollectionListItem: React.FC<CollectionListItemProps> = (props) => {
 	const {
 		resource,
 		handleClick,

@@ -17,8 +17,6 @@ type ImageModalProps = {
 const ImageModal: React.FC<ImageModalProps> = (props) => {
 	const { open, image, title = '', handleClose } = props
 
-	
-
 	const handleCopyUrlClick = () => {
 		copy(image?.url)
 		toast('Asset URL copied to clipboard')

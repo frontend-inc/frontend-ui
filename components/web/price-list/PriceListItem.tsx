@@ -14,12 +14,11 @@ export type PriceListItemProps = {
 	path?: string
 	url?: string
 	src?: string
-  handleImageClick: () => void
+	handleImageClick: () => void
 }
 
 const PriceListItem: React.FC<PriceListItemProps> = (props) => {
-	
-  const {    
+	const {
 		variant,
 		image,
 		price,
@@ -29,7 +28,7 @@ const PriceListItem: React.FC<PriceListItemProps> = (props) => {
 		path,
 		url,
 		src,
-    handleImageClick
+		handleImageClick,
 	} = props || {}
 
 	const { handleClick } = useButton({
@@ -52,12 +51,12 @@ const PriceListItem: React.FC<PriceListItemProps> = (props) => {
 				<div className=" flex flex-row space-x-6 items-center">
 					{image && (
 						<div className="h-12 w-12">
-							<Image 
-                src={image}
-                alt={title} 
-                height={72} 
-                handleClick={ handleImageClick } 
-              />
+							<Image
+								src={image}
+								alt={title}
+								height={72}
+								handleClick={handleImageClick}
+							/>
 						</div>
 					)}
 					<div className="flex flex-col space-y-0">

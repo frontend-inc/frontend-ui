@@ -5,7 +5,7 @@ import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
-	AccordionTrigger,  
+	AccordionTrigger,
 } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
 import { Typography } from '../../../components'
@@ -13,25 +13,22 @@ import { Typography } from '../../../components'
 type AccordionItemProps = {
 	title: string
 	subtitle: string
-  variant?: 'default' | 'fill' | 'outline'
+	variant?: 'default' | 'fill' | 'outline'
 }
 
 const AccordionItemComponent: React.FC<AccordionItemProps> = (props) => {
 	const { title, subtitle, variant } = props
 
 	return (
-    <Accordion 
-      type="multiple"
-      collapsible 
-      className="w-full"
-    >
+		<Accordion type="multiple" collapsible className="w-full">
 			<AccordionItem value="item">
-				<AccordionTrigger 
-          className={cn(
-            "hover:no-underline hover:bg-muted/50 px-3",
-            variant === 'outline' && 'border border-muted rounded-lg',
-            variant === 'fill' && 'bg-muted/50 hover:bg-muted rounded-lg',
-          )}>
+				<AccordionTrigger
+					className={cn(
+						'hover:no-underline hover:bg-muted/50 px-3',
+						variant === 'outline' && 'border border-muted rounded-lg',
+						variant === 'fill' && 'bg-muted/50 hover:bg-muted rounded-lg'
+					)}
+				>
 					<Typography variant="subtitle1">{title}</Typography>
 				</AccordionTrigger>
 				<AccordionContent>
@@ -40,7 +37,7 @@ const AccordionItemComponent: React.FC<AccordionItemProps> = (props) => {
 					</Typography>
 				</AccordionContent>
 			</AccordionItem>
-    </Accordion>
+		</Accordion>
 	)
 }
 

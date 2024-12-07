@@ -12,12 +12,24 @@ type ShopProductCollectionCoverProps = SectionProps &
 const ShopProductCollectionCover: React.FC<ShopProductCollectionCoverProps> = (
 	props
 ) => {
-	const { bgColor, mode, py, px, maxWidth, requireAuth, ...rest } = props
+	const {
+		bgColor,
+		bgImage,
+		bgOverlay,
+		mode,
+		py,
+		px,
+		maxWidth,
+		requireAuth,
+		...rest
+	} = props
 
 	return (
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py="none"
 			px="none"

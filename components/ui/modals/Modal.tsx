@@ -42,16 +42,17 @@ export default function Modal(props: ModalProps) {
 	} = props
 
 	const { theme: mode } = useNextTheme()
-  const { theme } = useTheme()
+	const { theme } = useTheme()
 
 	return (
 		<Dialog open={open} onOpenChange={handleClose}>
-			<DialogContent 
-        className={cn(
-          mode == 'dark' ? 'dark-theme' : 'light', 
-          theme, 
-          className
-        )}>
+			<DialogContent
+				className={cn(
+					mode == 'dark' ? 'dark-theme' : 'light',
+					theme,
+					className
+				)}
+			>
 				<DialogHeader className="mt-4">
 					<DialogTitle>
 						<span className="text-foreground">{title}</span>

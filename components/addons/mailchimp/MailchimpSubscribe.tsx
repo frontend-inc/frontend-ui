@@ -17,8 +17,6 @@ const MailchimpSubscribe: React.FC<MailchimpSubscribeProps> = (props) => {
 	const { loading, error, success, message, handleSubmit } =
 		useMailChimpForm(formId)
 
-	
-
 	const [email, setEmail] = useState('')
 
 	const handleFormSubmit = async () => {

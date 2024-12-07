@@ -11,6 +11,8 @@ type OpenAIChatProps = SectionProps & AIChatProps
 const OpenAIChat: React.FC<OpenAIChatProps> = (props) => {
 	const {
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -24,6 +26,8 @@ const OpenAIChat: React.FC<OpenAIChatProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

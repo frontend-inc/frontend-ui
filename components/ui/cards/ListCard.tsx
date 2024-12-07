@@ -50,7 +50,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 										src={image}
 										height={size}
 										alt={title}
-										aspectRatio={4/3}
+										aspectRatio={4 / 3}
 										enableGradient={enableGradient}
 										enableOverlay={enableOverlay}
 									/>

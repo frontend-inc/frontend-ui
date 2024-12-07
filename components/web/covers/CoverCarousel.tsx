@@ -35,17 +35,17 @@ const CoverCarousel: React.FC<CoverCarouselProps> = (props) => {
 		<>
 			<Swipeable enableArrows enableAutoPlay={enableAutoPlay}>
 				{items?.map((item, index) => (
-          <Cover
-            key={index}
-            title={item?.title}
-            subtitle={item?.subtitle}
-            image={item?.image}
-            buttonText={item?.buttonText}
-            path={item?.path}
-            enableOverlay={enableOverlay}
-            enableGradient={enableGradient}
-            alignItems={alignItems}
-          />
+					<Cover
+						key={index}
+						title={item?.title}
+						subtitle={item?.subtitle}
+						image={item?.image}
+						buttonText={item?.buttonText}
+						path={item?.path}
+						enableOverlay={enableOverlay}
+						enableGradient={enableGradient}
+						alignItems={alignItems}
+					/>
 				))}
 			</Swipeable>
 			{items?.length === 0 && (

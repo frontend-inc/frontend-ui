@@ -11,6 +11,8 @@ type UIQuoteProps = SectionProps & HeadingProps & QuoteProps
 const UIQuote: React.FC<UIQuoteProps> = (props) => {
 	const {
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py = 'sm',
 		px,
@@ -23,6 +25,8 @@ const UIQuote: React.FC<UIQuoteProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}

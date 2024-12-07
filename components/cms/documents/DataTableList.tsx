@@ -10,9 +10,7 @@ export type DataTableListProps = DocumentListProps & {
 }
 
 const DataTableList: React.FC<DataTableListProps> = (props) => {
-	return (
-		<DocumentList {...props} list={DataTableListItems} loadMore={false} />
-	)
+	return <DocumentList {...props} list={DataTableListItems} loadMore={false} />
 }
 
 export default DataTableList

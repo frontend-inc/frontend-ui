@@ -16,8 +16,6 @@ type ShopifyChangePasswordProps = {
 const ShopifyChangePassword: React.FC<ShopifyChangePasswordProps> = (props) => {
 	const { title, subtitle, loginUrl } = props || {}
 
-	
-
 	const {
 		loading,
 		errors,

@@ -22,6 +22,8 @@ const Section: React.FC<SectionProps> = (props) => {
 		requireAuth = false,
 		children,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		maxWidth,
 		variant,
@@ -45,16 +47,22 @@ const Section: React.FC<SectionProps> = (props) => {
 		xl: 'px-48',
 	}
 
+	const backgroundStyle = bgImage ? { backgroundImage: `url(${bgImage})` } : {}
+
 	return (
 		<section
 			className={cn(
 				mode == 'dark' ? 'dark-theme' : 'light',
 				theme,
+				'relative bg-cover bg-center bg-no-repeat',
 				'w-full bg-background',
 				pyClasses[py],
-				pxClasses[px]
+				pxClasses[px],
+				!bgImage && bgColor,
+				bgOverlay &&
+					"after:content-[''] after:absolute after:inset-0 after:bg-black/50"
 			)}
-			style={{ backgroundColor: bgColor }}
+			style={backgroundStyle}
 		>
 			<div
 				className={cn(

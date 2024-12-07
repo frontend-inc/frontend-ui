@@ -17,6 +17,8 @@ const UIImages: React.FC<UIImagesProps> = (props) => {
 		fontSize = 'md',
 		variant,
 		bgColor,
+		bgImage,
+		bgOverlay,
 		mode,
 		py,
 		px,
@@ -29,6 +31,8 @@ const UIImages: React.FC<UIImagesProps> = (props) => {
 		<Section
 			requireAuth={requireAuth}
 			bgColor={bgColor}
+			bgImage={bgImage}
+			bgOverlay={bgOverlay}
 			mode={mode}
 			py={py}
 			px={px}
