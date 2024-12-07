@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { useResource } from 'frontend-js'
-import { toast } from 'sonner'
+import { exportJsonToCSV } from '../../../helpers'
 import { SortableListItems, AlertModal, Empty } from '../..'
 import {
 	FormFieldType,
@@ -18,7 +18,6 @@ import ResourceListItems from './ResourceListItems'
 import ResourceHeader from './ResourceHeader'
 import ResourceToolbar from './ResourceToolbar'
 import { ToolbarButtonType } from '../../../types'
-import { get } from 'lodash'
 import { cn } from 'frontend-shadcn'
 
 export type ResourceListProps = {
@@ -131,6 +130,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	const [openCreate, setOpenCreate] = useState(false)
 	const [openEdit, setOpenEdit] = useState(false)
 	const [openDelete, setOpenDelete] = useState(false)
+  const [openExport, setOpenExport] = useState(false)
 
 	const {
 		delayedLoading: loading,
@@ -321,40 +321,12 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	}
 
   const handleExport = async () => {
-    let data = await getMany({
-      ...query,
-      page: 1,
-      per_page: 10000
-    })
+    let data = await getMany(query);
+    exportJsonToCSV(exportHeaders, data)
+  }
 
-      // Extract rows (values for each object)
-      const rows = data.map((obj) =>
-        exportHeaders.map((header) => {
-          const value = get(obj, header);          
-          if (value === null || value === undefined || typeof value === 'object') {
-            return '';
-          }                    
-        })
-      );
-
-      // Create CSV content
-      const csvContent = [
-        headers.join(','), // Header row
-        ...rows.map((row) => row.join(',')), // Data rows
-      ].join('\n');
-
-      const date = new Date();
-      const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-
-      // Create a Blob object and trigger the download
-      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', `export-${formattedDate}.csv`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+  const handleExportClick = async () => {
+    setOpenExport(true)
   }
 
 	useEffect(() => {
@@ -409,7 +381,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					enableSorting={enableSorting}
 					enableCreate={enableCreate}
           enableExport={enableExport}
-          handleExport={handleExport}
+          handleExport={handleExportClick}
 					handleSearch={handleSearch}
 					handleKeywordChange={handleKeywordChange}
 					handleFilter={handleFilter}
@@ -564,6 +536,13 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					title="Are you sure you want to delete this item?"
 					description="This action cannot be reversed."
 					handleConfirm={handleDelete}
+				/>
+        <AlertModal
+					open={openExport}
+					handleClose={() => setOpenExport(false)}
+					title="Are you sure you want to export?"
+					description="There is currently a limit of 10k rows of data."
+					handleConfirm={handleExport}
 				/>
 			</div>
 		</>
