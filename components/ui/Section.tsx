@@ -47,7 +47,10 @@ const Section: React.FC<SectionProps> = (props) => {
 		xl: 'px-48',
 	}
 
-	const backgroundStyle = bgImage ? { backgroundImage: `url(${bgImage})` } : {}
+	const backgroundStyle = bgImage ? { 
+    backgroundImage: `url(${bgImage})` } : {
+    backgroundColor: bgColor,
+    }
 
 	return (
 		<section
