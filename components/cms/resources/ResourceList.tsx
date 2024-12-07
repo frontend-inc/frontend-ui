@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { useResource } from 'frontend-js'
+import { toast } from 'sonner'
 import { SortableListItems, AlertModal, Empty } from '../..'
 import {
 	FormFieldType,
@@ -17,6 +18,7 @@ import ResourceListItems from './ResourceListItems'
 import ResourceHeader from './ResourceHeader'
 import ResourceToolbar from './ResourceToolbar'
 import { ToolbarButtonType } from '../../../types'
+import { get } from 'lodash'
 import { cn } from 'frontend-shadcn'
 
 export type ResourceListProps = {
@@ -45,12 +47,14 @@ export type ResourceListProps = {
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
 	displayFields?: MetafieldType[]
+  exportHeaders?: string[]
 	enableSearch?: boolean
 	buttonText?: string
 	enableShow?: boolean
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
+  enableExport?: boolean
 	enableBorder?: boolean
 	direction?: 'row' | 'column'
 	emptyIcon?: string
@@ -99,6 +103,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		url,
 		name,
 		headers = [],
+    exportHeaders = ['id'],
 		fields = [],
 		filterOptions = [],
 		sortOptions = [],
@@ -109,8 +114,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		enableSearch = false,
 		enableEdit,
 		enableDelete,
-		enableCreate,
+		enableCreate,    
 		enableShow,
+    enableExport,
 		handleClick,
 		slots = SLOT_PROPS,
 		enableBorder = false,
@@ -147,7 +153,8 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		totalCount,
 		loadMore,
 		paginate,
-
+    getMany,
+    getOne,
 		reloadOne,
 		selected,
 		selectedIds,
@@ -313,6 +320,39 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		handleClear()
 	}
 
+  const handleExport = async () => {
+    let data = await getMany(query)
+
+      // Extract rows (values for each object)
+      const rows = data.map((obj) =>
+        exportHeaders.map((header) => {
+          const value = get(obj, header);          
+          if (value === null || value === undefined || typeof value === 'object') {
+            return '';
+          }                    
+        })
+      );
+
+      // Create CSV content
+      const csvContent = [
+        headers.join(','), // Header row
+        ...rows.map((row) => row.join(',')), // Data rows
+      ].join('\n');
+
+      const date = new Date();
+      const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+
+      // Create a Blob object and trigger the download
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `export-${formattedDate}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+  }
+
 	useEffect(() => {
 		if (queryFilters) {
 			findMany({
@@ -364,6 +404,8 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					enableFilters={enableFilters}
 					enableSorting={enableSorting}
 					enableCreate={enableCreate}
+          enableExport={enableExport}
+          handleExport={handleExport}
 					handleSearch={handleSearch}
 					handleKeywordChange={handleKeywordChange}
 					handleFilter={handleFilter}

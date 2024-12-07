@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Button } from '../../../components'
-import { Icon, SearchInput, FilterButton, SortButton } from '../..'
+import { RemixIcon, SearchInput, FilterButton, SortButton } from '../..'
 import {
 	SortOptionType,
 	SearchFilterOptionType,
@@ -19,6 +19,8 @@ export type ResourceHeaderProps = {
 	enableFilters: boolean
 	enableSorting: boolean
 	enableCreate?: boolean
+  enableExport?: boolean
+  handleExport?: () => void
 	handleSearch: (keywords: string) => void
 	handleKeywordChange: (ev: SyntheticEventType) => void
 	handleFilter: (name: string, value: string | number | boolean) => void
@@ -43,10 +45,11 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 		enableFilters,
 		enableSorting,
 		enableCreate,
+    enableExport,
+    handleExport,
 		handleSearch,
 		handleKeywordChange,
 		handleFilter,
-		handleClearFilters,
 		handleSort,
 		handleSortDirection,
 		handleAdd,
@@ -102,6 +105,17 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 				)}
 			>
 				{secondaryAction}
+        {enableExport && (
+					<Button
+						size="default"
+            variant="secondary"
+						className="w-full sm:w-auto"
+						onClick={handleExport}
+						startIcon={<RemixIcon name="ri-download-fill" className="text-secondary-foreground" />}
+					>
+						Export
+					</Button>
+				)}
 				{(enableCreate || secondaryAction) && (
 					<Button
 						size="default"
