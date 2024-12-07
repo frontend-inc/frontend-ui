@@ -321,7 +321,11 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	}
 
   const handleExport = async () => {
-    let data = await getMany(query)
+    let data = await getMany({
+      ...query,
+      page: 1,
+      per_page: 10000
+    })
 
       // Extract rows (values for each object)
       const rows = data.map((obj) =>
