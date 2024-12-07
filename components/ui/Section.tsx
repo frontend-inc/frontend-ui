@@ -66,6 +66,7 @@ const Section: React.FC<SectionProps> = (props) => {
 		>
 			<div
 				className={cn(
+          'relative z-10',
 					variant == 'outline' && 'p-8 border-2 border-border rounded-xl',
 					variant == 'fill' && 'p-8 rounded-xl bg-muted',
 					maxWidth && maxWidthClasses[maxWidth],
