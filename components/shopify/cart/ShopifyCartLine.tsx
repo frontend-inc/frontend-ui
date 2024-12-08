@@ -4,7 +4,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import { ShopifyContext } from 'frontend-shopify'
 import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
-import { Button } from '../../../components'
+import { RemixIcon, IconButton, Button } from '../../../components'
 import Image from 'next/image'
 import { Typography } from '../../../components'
 import { formatCurrency } from 'frontend-shopify'
@@ -12,7 +12,7 @@ import { useRouter } from 'next/navigation'
 import { CartLineType } from 'frontend-shopify'
 import { cn } from 'frontend-shadcn'
 import { Badge } from 'frontend-shadcn'
-import { RiAddLine, RiCloseFill, RiSubtractLine } from '@remixicon/react'
+import { RiAddLine, RiSubtractLine } from '@remixicon/react'
 
 type ShopifyCartQuantityInputProps = {
 	quantity: number
@@ -20,11 +20,14 @@ type ShopifyCartQuantityInputProps = {
 	handleRemoveQuantity: (event: React.MouseEvent) => void
 }
 
-const ShopifyCartQuantityInput: React.FC<ShopifyCartQuantityInputProps> = ({
-	quantity,
-	handleAddQuantity,
-	handleRemoveQuantity,
-}) => {
+const ShopifyCartQuantityInput: React.FC<ShopifyCartQuantityInputProps> = (props) => {
+
+  const {
+    quantity,
+    handleAddQuantity,
+    handleRemoveQuantity,
+  } = props
+
 	return (
 		<div className="inline-flex rounded-md shadow-sm" role="group">
 			<Button
@@ -33,7 +36,7 @@ const ShopifyCartQuantityInput: React.FC<ShopifyCartQuantityInputProps> = ({
 				className="px-2 rounded-r-none"
 				onClick={handleRemoveQuantity}
 			>
-				<RiSubtractLine />
+				<RemixIcon name="ri-subtract-line" />
 			</Button>
 			<Button variant="secondary" size="sm" className="px-2 rounded-none">
 				{quantity}
@@ -44,7 +47,7 @@ const ShopifyCartQuantityInput: React.FC<ShopifyCartQuantityInputProps> = ({
 				className="px-2 rounded-l-none"
 				onClick={handleAddQuantity}
 			>
-				<RiAddLine />
+				<RemixIcon name="ri-add-line" />
 			</Button>
 		</div>
 	)
@@ -131,7 +134,7 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = ({ line }) => {
 					src={url}
 					height={96}
 					width={96}
-					className="rounded-md"
+					className="rounded-md min-h-[96px] min-w-[96px]"
 					onClick={handleClick}
 				/>
 			</div>
@@ -161,14 +164,14 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = ({ line }) => {
 					/>
 				</div>
 			</div>
-			<Button
+			<IconButton
 				variant="ghost"
 				size="icon"
 				className="text-muted-foreground"
 				onClick={handleRemoveLineItem}
 			>
-				<RiCloseFill />
-			</Button>
+				<RemixIcon name='ri-close-fill' />
+			</IconButton>
 		</div>
 	)
 }

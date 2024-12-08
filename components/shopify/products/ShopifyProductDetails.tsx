@@ -53,6 +53,12 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = (props) => {
 		}
 	}, [shopifyProduct])
 
+  useEffect(() => {
+		if (product) {
+			console.log('Product:', product)
+		}
+	}, [product])
+
 	return (
 		<div className={cn('flex flex-col sm:flex-row', 'w-full')}>
 			<div className={cn('w-full sm:w-1/2', 'p-0 sm:p-1')}>

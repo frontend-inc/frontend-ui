@@ -20,7 +20,7 @@ const ShopifyProductVariantSelector: React.FC<
 		return product?.options?.find((option) => option?.name == optionName)
 	}
 
-	const SORTED_OPTIONS = ['Color', 'Size', 'Style', 'Material', 'Denominations']
+	const SORTED_OPTIONS = ['Title', 'Color', 'Size', 'Style', 'Material', 'Denominations']
 
 	return (
 		<>

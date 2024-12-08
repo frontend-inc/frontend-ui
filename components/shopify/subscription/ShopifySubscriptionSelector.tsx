@@ -17,10 +17,13 @@ type ShopifySubscriptionSelectorProps = {
 	activeSellingPlanId?: string
 }
 
-const ShopifySubscriptionSelector: React.FC<
-	ShopifySubscriptionSelectorProps
-> = (props) => {
-	const { product, activeSellingPlanId = '', handleChange } = props
+const ShopifySubscriptionSelector: React.FC<ShopifySubscriptionSelectorProps> = (props) => {
+
+	const { 
+    product, 
+    activeSellingPlanId = '', 
+    handleChange 
+  } = props || {}
 	const [sellingPlans, setSellingPlans] = useState<any[]>([])
 
 	useEffect(() => {
@@ -35,7 +38,6 @@ const ShopifySubscriptionSelector: React.FC<
 	}, [product])
 
 	if (!sellingPlans || sellingPlans.length === 0) return null
-
 	return (
 		<div className="w-full">
 			<Select onValueChange={handleChange} value={activeSellingPlanId}>
@@ -43,10 +45,10 @@ const ShopifySubscriptionSelector: React.FC<
 					<SelectValue placeholder="Select a subscription" />
 				</SelectTrigger>
 				<SelectContent>
-					<SelectItem value="">
+					<SelectItem value={null}>
 						<span className="text-foreground italic">No subscription</span>
 					</SelectItem>
-					{sellingPlans.map((sellingPlan) => (
+					{sellingPlans?.map((sellingPlan) => (
 						<SelectItem key={sellingPlan.id} value={sellingPlan.id}>
 							{sellingPlan?.name} - {getSellingPlanDescription(sellingPlan)}
 						</SelectItem>
