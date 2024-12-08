@@ -25,14 +25,17 @@ type AlertModalProps = {
 	handleConfirm: () => void
 }
 
-const AlertModal: React.FC<AlertModalProps> = ({
-	loading = false,
-	title = 'Please confirm or cancel this action.',
-	description = 'This action is not reversable.',
-	open,
-	handleClose,
-	handleConfirm,
-}) => {
+const AlertModal: React.FC<AlertModalProps> = (props) => {
+
+  const {
+    loading = false,
+    title = 'Please confirm or cancel this action.',
+    description = 'This action is not reversable.',
+    open,
+    handleClose,
+    handleConfirm,
+  } = props
+  
 	return (
 		<AlertDialog open={open} onOpenChange={handleClose}>
 			<AlertDialogContent>

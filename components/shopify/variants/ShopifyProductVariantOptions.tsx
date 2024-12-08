@@ -4,19 +4,22 @@ import React from 'react'
 import OptionButton from './ShopifyOptionButton'
 import { Typography } from '../../../components'
 
-type ProductVariantOptionsProps = {
+type ShopifyProductVariantOptionsProps = {
 	name: string
 	values: string[]
 	selected: string
 	handleChange: (name: string, value: string) => void
 }
 
-const ProductVariantOptions: React.FC<ProductVariantOptionsProps> = ({
-	name,
-	values,
-	selected,
-	handleChange,
-}) => {
+const ShopifyProductVariantOptions: React.FC<ShopifyProductVariantOptionsProps> = (props) => {
+
+  const {
+    name,
+    values,
+    selected,
+    handleChange,
+  } = props
+
 	return (
 		<div className="flex flex-col items-start justify-center space-y-2">
 			<Typography variant="body1">Select {name}</Typography>
@@ -37,4 +40,4 @@ const ProductVariantOptions: React.FC<ProductVariantOptionsProps> = ({
 	)
 }
 
-export default ProductVariantOptions
+export default ShopifyProductVariantOptions

@@ -21,7 +21,7 @@ const ShopifyProductModal: React.FC<ShopifyProductModalProps> = (props) => {
 		handleClose,
 		buttonText,
 	} = props
-
+  
 	return (
 		<Drawer open={open} handleClose={handleClose} maxWidth="lg">
 			<BlurFade delay={0.25} inView>

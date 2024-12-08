@@ -21,14 +21,17 @@ export type ShopifyProductDetailsProps = {
 	disableZoom?: boolean
 }
 
-const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = ({
-	shopifyProduct,
-	buttonText,
-	enableQuantity = true,
-	enableSubscription = true,
-	enableFavorites,
-	disableZoom = false,
-}) => {
+const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = (props) => {
+
+  const {
+    shopifyProduct,
+    buttonText,
+    enableQuantity = true,
+    enableSubscription = true,
+    enableFavorites,
+    disableZoom = false,
+  } = props 
+
 	const { product, findProduct } = useProducts()
 
 	const {

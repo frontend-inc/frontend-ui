@@ -14,15 +14,18 @@ type ShopifyOptionButtonProps = {
 	justifyContent?: string
 }
 
-const ShopifyOptionButton: React.FC<ShopifyOptionButtonProps> = ({
-	value,
-	name,
-	active,
-	handleClick,
-	children,
-	width,
-	justifyContent,
-}) => {
+const ShopifyOptionButton: React.FC<ShopifyOptionButtonProps> = (props) => {
+
+  const {
+    value,
+    name,
+    active,
+    handleClick,
+    children,
+    width,
+    justifyContent,
+  } = props
+  
 	return (
 		<Button
 			className={cn(
