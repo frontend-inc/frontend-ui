@@ -1,3 +1,4 @@
+export { default as ShopifyAssistant } from './ShopifyAssistant'
 export { default as ShopifyCollectionCover } from './ShopifyCollectionCover'
 export { default as ShopifyCollections } from './ShopifyCollections'
 export { default as ShopifyFavorites } from './ShopifyFavorites'

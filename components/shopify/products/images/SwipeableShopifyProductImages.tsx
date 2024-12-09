@@ -32,6 +32,7 @@ export default function SwipeableShopifyProductImages({
 		<Swipeable enableDots>
 			{images.map((image, index) => (
 				<div
+          key={index}
 					className="w-full overflow-hidden"
 					onMouseDown={onMouseDown}
 					onMouseUp={onMouseUp}

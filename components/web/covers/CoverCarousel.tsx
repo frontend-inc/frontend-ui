@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { Swipeable, Cover, Empty } from '../..'
-import { CarouselItem } from 'frontend-shadcn'
 
 export type CoverCarouselProps = {
 	items: {

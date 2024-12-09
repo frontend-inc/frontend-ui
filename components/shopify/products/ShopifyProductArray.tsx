@@ -4,28 +4,31 @@ import React, { useEffect } from 'react'
 import { useProducts } from 'frontend-shopify'
 import { ShopifyProductCard } from '..'
 
-type ProductArrayProps = {
+export type ShopifyProductArrayProps = {
 	handles: string[]
 	enableBorder?: boolean
 	enableAddToCart?: boolean
 	enableQuantity?: boolean
 }
 
-const ProductArray: React.FC<ProductArrayProps> = (props) => {
-	const {
+const ShopifyProductArray: React.FC<ShopifyProductArrayProps> = (props) => {
+	
+  const {
 		handles,
 		enableBorder = false,
 		enableAddToCart = false,
 		enableQuantity = false,
-	} = props
+	} = props || {}
 
 	return (
 		<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-full">
 			{handles?.map((handle) => {
 				const { product, findProduct } = useProducts()
 				useEffect(() => {
-					findProduct(handle)
-				}, [handle, findProduct])
+          if(handle){          
+					  findProduct(handle)
+          }
+				}, [handle])
 
 				if (!product) return null
 				return (
@@ -43,4 +46,4 @@ const ProductArray: React.FC<ProductArrayProps> = (props) => {
 	)
 }
 
-export default ProductArray
+export default ShopifyProductArray
