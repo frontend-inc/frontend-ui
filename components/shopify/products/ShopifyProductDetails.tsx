@@ -6,7 +6,7 @@ import {
 	ShopifyProductDescription,
 	ShopifyProductInfo,
 	ShopifyProductImages,
-	ShopifyProductVariantSelector,
+	ShopifyVariantSelector,
 	ShopifyTrackRecentlyViewed,
 } from '..'
 import { useProducts, useProductDetails } from 'frontend-shopify'
@@ -53,14 +53,8 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = (props) => {
 		}
 	}, [shopifyProduct])
 
-  useEffect(() => {
-		if (product) {
-			console.log('Product:', product)
-		}
-	}, [product])
-
 	return (
-		<div className={cn('flex flex-col sm:flex-row', 'w-full')}>
+		<div className='flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 w-full pb-[60px]'>
 			<div className={cn('w-full sm:w-1/2', 'p-0 sm:p-1')}>
 				<ShopifyProductImages
 					product={product}
@@ -78,7 +72,7 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = (props) => {
 							price={price}
 							compareAtPrice={compareAtPrice}
 						/>
-						<ShopifyProductVariantSelector
+						<ShopifyVariantSelector
 							product={product}
 							selectedOptions={selectedOptions}
 							handleOptionChange={handleOptionChange}

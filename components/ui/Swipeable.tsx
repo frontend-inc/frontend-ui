@@ -18,15 +18,24 @@ type SwipeableProps = {
 	enableArrows?: boolean
 	enableAutoPlay?: boolean
 	interval?: number
+  itemsPerSlide?: 1 | 2 | 3 | 4 | 5 | 6
 	className?: string
 }
 
 const Swipeable: React.FC<SwipeableProps> = (props) => {
-	const { children = [], enableDots, enableArrows, className } = props
+	const { children = [], itemsPerSlide=1, enableDots, enableArrows, className } = props
 
 	const [api, setApi] = useState<CarouselApi>()
 	const [current, setCurrent] = useState(0)
 	const [count, setCount] = useState(0)
+
+  const basisClasses = {
+    2: 'basis-1/2',
+    3: 'basis-1/3',
+    4: 'basis-1/4',
+    5: 'basis-1/5',
+    6: 'basis-1/6',
+  }
 
 	const handleSlide = (index: number) => {
 		api?.scrollTo(index)
@@ -42,10 +51,15 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
 	}, [api])
 
 	return (
-		<Carousel setApi={setApi} className={cn('w-full', className)}>
+		<Carousel setApi={setApi} className={'w-full'}>
 			<CarouselContent>
 				{children?.map((child, index) => (
-					<CarouselItem key={index}>{child}</CarouselItem>
+					<CarouselItem 
+            key={index}
+            className={cn(
+              itemsPerSlide > 1 && basisClasses[itemsPerSlide]
+            )}
+          >{child}</CarouselItem>
 				))}
 			</CarouselContent>
 			{enableArrows && (

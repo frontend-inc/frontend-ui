@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import ShopifyProductVariantOptions from './ShopifyProductVariantOptions'
+import ShopifyVariantOptions from './ShopifyVariantOptions'
 import ShopifyColorVariantOptions from './ShopifyColorVariantOptions'
 import { ShopifyProductType } from 'frontend-shopify'
 
@@ -27,6 +27,7 @@ const ShopifyProductVariantSelector: React.FC<
 			{SORTED_OPTIONS.map((optionName) => {
 				let option = productOption(optionName)
 				if (!option) return null
+        if(optionName === 'Title' && option?.values.length === 1) return null;
 				return optionName == 'Color' ? (
 					<ShopifyColorVariantOptions
 						key={optionName}
@@ -37,7 +38,7 @@ const ShopifyProductVariantSelector: React.FC<
 						handleChange={handleOptionChange}
 					/>
 				) : (
-					<ShopifyProductVariantOptions
+					<ShopifyVariantOptions
 						key={optionName}
 						name={option?.name}
 						values={option?.values}

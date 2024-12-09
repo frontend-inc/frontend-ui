@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../../components'
 // @ts-ignore
 import Zoom from 'react-medium-image-zoom'
 import { ShopifyImageType } from 'frontend-shopify'
@@ -19,7 +18,7 @@ const Thumbnail: React.FC<ThumbnailProps> = (props) => {
 	return (
 		<button
 			className={cn(
-				'p-0 m-2 w-[96px] h-[96px] overflow-hidden rounded hover:bg-muted/20',
+				'p-0 w-[96px] h-[96px] overflow-hidden rounded hover:bg-muted/20',
 				active ? 'ring-2 ring-offset-2 ring-primary' : 'ring-2 ring-transparent'
 			)}
 			onClick={() => handleClick(image)}
@@ -67,7 +66,7 @@ const ShopifyProductImageSlider: React.FC<ShopifyProductImageSliderProps> = (
 						</Zoom>
 					))}
 			</div>
-			<div className="flex flex-row space-x-2 overflow-x-auto scrollbar-hide">
+      <div className="flex flex-row flex-wrap gap-2">			
 				{images?.map((img) => (
 					<Thumbnail
 						key={img?.id}

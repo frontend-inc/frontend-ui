@@ -106,20 +106,20 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 								)}
 							>
                 <div className="min-w-[64px]">
-                {message?.role === 'assistant' ? (
-                   <Avatar>
-                    <AvatarImage src={ avatar } alt="avatar" />
-                    <AvatarFallback>
-                      <RemixIcon name="ri-gemini-fill" className="text-primary" />
-                    </AvatarFallback>
-                   </Avatar>                      
-                ):(
-                  <Avatar>                    
-                    <AvatarFallback>
-                      <RemixIcon name="ri-user-3-fill" className="text-primary" />
-                    </AvatarFallback>
-                   </Avatar>                      
-                )}  
+                  {message?.role === 'assistant' ? (
+                    <Avatar>
+                      <AvatarImage src={ avatar } alt="avatar" />
+                      <AvatarFallback>
+                        <RemixIcon name="ri-gemini-fill" className="text-primary" />
+                      </AvatarFallback>
+                    </Avatar>                      
+                  ):(
+                    <Avatar>                    
+                      <AvatarFallback>
+                        <RemixIcon name="ri-user-3-fill" className="text-primary" />
+                      </AvatarFallback>
+                    </Avatar>                      
+                  )}  
                 </div> 
 								{message?.role === 'assistant' ? (
 									<div className="prose prose-sm text-left text-primary">
@@ -147,14 +147,13 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 												className="flex flex-col space-y-2 text-primary"
 												key={toolInvocation.toolCallId}
 											>
-												<span className="text-sm text-primary text-left">
-													{args.message}
-												</span>
                         {(Array.isArray(args?.shopifyHandles) && args?.shopifyHandles?.length > 0) && (
-                          <ShopifyProductArray
-                            enableAddToCart
-                            handles={args.shopifyHandles}                            
-                          />
+                          <div className="flex flex-col space-y-2 w-full">
+                            <ShopifyProductArray
+                              enableAddToCart
+                              handles={args.shopifyHandles}                            
+                            />
+                          </div> 
                         )}                          
                         { args.reason && (
                           <span className="text-sm text-primary text-left">
@@ -214,7 +213,7 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 						onClick={handleChatSubmit}
 						loading={isLoading}
 						disabled={isLoading}
-						className="w-full bg-gradient-to-r from-violet-500 via-purple-500 to-pink-500 text-white"
+						className="w-full bg-primary text-primary-foreground"
 						startIcon={
 							<RemixIcon name="ri-gemini-fill" className="text-white" />
 						}
@@ -223,9 +222,9 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 					</Button>
 					<IconButton
 						onClick={stop}
-						className="bg-gradient-to-r from-violet-500 to-purple-500"
+						className="bg-primary hover:bg-primary/80"
 					>
-						<RemixIcon name="ri-stop-fill" className="text-white" />
+						<RemixIcon name="ri-stop-fill" className="text-primary-foreground" />
 					</IconButton>
 				</div>
 			</div>
