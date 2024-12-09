@@ -54,14 +54,14 @@ const ShopifyProductImageSlider: React.FC<ShopifyProductImageSliderProps> = (
 						<img
 							src={image?.url}
 							alt={image?.altText || ''}
-							className="h-full w-full object-contain"
+							className="h-full w-full object-contain rounded-lg"
 						/>
 					) : (
 						<Zoom>
 							<img
 								src={image?.url}
 								alt={image?.altText || ''}
-								className="h-full w-full object-contain"
+								className="h-full w-full object-contain rounded-lg"
 							/>
 						</Zoom>
 					))}

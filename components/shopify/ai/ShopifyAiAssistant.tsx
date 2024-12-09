@@ -105,7 +105,7 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 									'flex flex-row space-x-2 text-sm border-2 border-border/50 hover:border-accent p-3 rounded-lg whitespace-pre-line'
 								)}
 							>
-                <div className="min-w-[64px]">
+                <div className="min-w-[64px] flex flex-row justify-center">
                   {message?.role === 'assistant' ? (
                     <Avatar>
                       <AvatarImage src={ avatar } alt="avatar" />
@@ -116,7 +116,7 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
                   ):(
                     <Avatar>                    
                       <AvatarFallback>
-                        <RemixIcon name="ri-user-3-fill" className="text-primary" />
+                        <RemixIcon name="ri-user-6-line" className="text-primary" />
                       </AvatarFallback>
                     </Avatar>                      
                   )}  
@@ -126,7 +126,7 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 										<Markdown>{message.content}</Markdown>
 									</div>
 								) : (
-									<Typography variant="body2">{message?.content}</Typography>
+									<Typography variant="body2"><strong>You:</strong>{message?.content}</Typography>
 								)}                
 								{message.toolInvocations?.map(
 									(toolInvocation: ToolInvocation) => {
@@ -135,8 +135,11 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 										let toolMessage
 
 										switch (toolName) {
+                      case 'showProducts':
+												toolMessage = 'Do you want more information?'
+												break
 											case 'recommendProducts':
-												toolMessage = 'How did I do?'
+												toolMessage = 'Do you like these products?'
 												break
 											default:
 												break
