@@ -9,6 +9,7 @@ import {
 import { cn } from 'frontend-shadcn'
 
 type AvatarProps = {
+  alt?: string
 	src?: string
 	variant?: 'circular' | 'rounded'
 	label?: string
@@ -19,13 +20,17 @@ type AvatarProps = {
 	enableOverlay?: boolean
 }
 
-export default function Avatar({
-	src,
-	label,
-	variant = 'rounded',
-	size = 40,
-	className,
-}: AvatarProps) {
+export default function Avatar(props: AvatarProps) {
+
+  const {
+    src,
+    alt,
+    label,
+    variant = 'rounded',
+    size = 40,
+    className,
+  } = props || {}
+
 	const avatarClasses = cn(
 		variant === 'circular' ? 'rounded-full' : 'rounded-lg'
 	)
@@ -37,6 +42,7 @@ export default function Avatar({
 				width: size,
 				height: size,
 			}}
+      alt={alt}
 		>
 			<AvatarImage src={src} alt="Avatar" className="object-cover" />
 			<AvatarFallback

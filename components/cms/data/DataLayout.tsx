@@ -26,8 +26,7 @@ export default function DataLayout(props: DataLayoutProps) {
 			{layout == 'grid' && (
 				<div
 					className={cn(
-						'w-full gap-6 pb-1 grid',
-						'grid-cols-[repeat(auto-fill,minmax(240px,1fr))]',
+						'w-full gap-6 pb-1 grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))]',
 						gridSize[size]
 					)}
 				>

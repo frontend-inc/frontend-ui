@@ -15,7 +15,6 @@ import {
 	ShopifyProductSearchFilters,
 } from '..'
 import LoadMore from '../search/LoadMore'
-import { cn } from 'frontend-shadcn'
 
 export type ShopifyProductSearchProps = {
 	handle: string
@@ -27,14 +26,17 @@ export type ShopifyProductSearchProps = {
 	enableQuantity?: boolean
 }
 
-const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
-	options,
-	enableSearch = false,
-	enableFilters = false,
-	enableSorting = false,
-	enableAddToCart = false,
-	enableQuantity = false,
-}) => {
+const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = (props) => {
+
+  const {
+    options,
+    enableSearch = false,
+    enableFilters = false,
+    enableSorting = false,
+    enableAddToCart = false,
+    enableQuantity = false,
+  } = props || {}
+
 	let { handle } = useParams() as any
 	if (handle == 'index' || handle == undefined) handle = ''
 
@@ -45,16 +47,14 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
 		cursor,
 		hasNextPage,
 		products,
-		findProducts,
-		searchProducts,
+		findProducts,		
 	} = useProducts()
 
-	const [sortKey, setSortKey] = useState<ProductSortKeyType>('RELEVANCE')
+	const [sortKey, setSortKey] = useState<ProductSortKeyType>('BEST_SELLING')
 
 	const [reverse, setReverse] = useState(false)
 
-	const { filters, handleFilter, handleFilterArray, formatQueryFilters } =
-		useSearchFilters()
+	const { filters, handleFilter, handleFilterArray } = useSearchFilters()
 
 	const handleChange = (ev) => {
 		setKeywords(ev.target.value)
@@ -68,12 +68,12 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
 		})
 	}
 
-	const handleLoadMore = (after) => {
-		searchProducts({
+	const handleLoadMore = (cursor) => {
+		findProducts({
 			query: keywords,
 			sortKey,
 			reverse,
-			after,
+			after: cursor
 		})
 	}
 
@@ -88,7 +88,7 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = ({
 	}
 
 	useEffect(() => {
-		findProducts({
+		findProducts({      
 			sortKey: sortKey,
 			reverse: reverse,
 		})

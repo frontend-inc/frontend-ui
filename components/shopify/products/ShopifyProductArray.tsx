@@ -21,7 +21,7 @@ const ShopifyProductArray: React.FC<ShopifyProductArrayProps> = (props) => {
 	} = props || {}
 
 	return (
-		<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-full">
+		<div className="w-full gap-6 pb-1 grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))]">
 			{handles?.map((handle) => {
 				const { product, findProduct } = useProducts()
 				useEffect(() => {

@@ -3,17 +3,20 @@ import { useChat, experimental_useObject as useObject } from 'ai/react'
 import { ToolInvocation } from 'ai'
 import { IconButton, RemixIcon, Typography, Button } from '../../../components'
 import { TextArea } from '../../../components'
-import { ShopifyProductArray } from '../../../components'
-import { AvatarImage, cn } from 'frontend-shadcn'
+import { Avatar, ShopifyProductCollection, ShopifyProductArray } from '../../../components'
+import { cn } from 'frontend-shadcn'
 import { toast } from 'sonner'
+import { Container } from '../../../components'
 import { Loader2 } from 'lucide-react'
 import { useParams } from 'next/navigation'
+import { 
+  Card,
+  CardContent,
+  Avatar as ShadcnAvatar,
+  AvatarFallback 
+} from 'frontend-shadcn'
 //@ts-ignore
 import Markdown from 'react-markdown'
-import { 
-  Avatar,
-  AvatarFallback
-} from 'frontend-shadcn'
 
 export type ShopifyAiAssistantProps = {
   avatar: string
@@ -33,21 +36,17 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
     if (result === 'No') {
 			addToolResult({
 				toolCallId: toolInvocation.toolCallId,
-				result: 'Cancelled',
+				result: 'No, thanks.',
 			})
 			return
-		}
+		}else{
+      addToolResult({
+        toolCallId: toolInvocation.toolCallId,
+        result: 'Yes, please.',
+      })
+    }
 
-		setLoading(true)
-		const toolCallId = toolInvocation.toolCallId
-		const toolName = toolInvocation.toolName
-
-		addToolResult({
-			toolCallId,
-			result,
-		})
-    
-    setLoading(false)
+		setLoading(false)
 	}
 
 	const {
@@ -61,6 +60,9 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 		stop,
 	} = useChat({
 		api: '/api/ai/shopify_assistant',
+    async onToolCall({ toolCall }: { toolCall: any }) {
+      console.log("TOOL CALL", toolCall)    
+    },    
 		onError: (error) => {
 			setLoading(false)
 			console.log('Error', error)
@@ -75,23 +77,30 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 			},
 		})
 	}
-	// Scroll down to the latest message by dom ID
-	useEffect(() => {
-		const latestMessage = document.getElementById('latest-message')
-		if (latestMessage) {
-			latestMessage.scrollIntoView({ behavior: 'smooth' })
-		}
-	}, [messages])
 
 	return (
+    <Container maxWidth='md'>
 		<div
 			className={cn(
 				'p-4 relative flex flex-col justify-between w-full',
 				loading && 'opacity-50'
 			)}
 		>
-			<div className="w-full overflow-y-scroll">        
-				<ul className="list-none py-2 space-y-2">
+			<div className="w-full overflow-y-scroll"> 
+        <ul className="list-none py-2 space-y-2">               
+          <li>
+            <Card className="w-full">
+              <CardContent className="w-full flex items-center space-x-4">
+                <Avatar                  
+                  src={ avatar } 
+                  alt="avatar"            
+                />          
+                <Typography variant="body1" className="text-muted-foreground">
+                  Hi! I'm your shopping assistant. Ask me anything about our products.
+                </Typography>
+              </CardContent>
+            </Card>
+          </li>
 					{messages?.map((message, index) => {
 						return (
 							<li
@@ -102,32 +111,35 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 								}
 								key={'message-' + index}
 								className={cn(
-									'flex flex-row space-x-2 text-sm border-2 border-border/50 hover:border-accent p-3 rounded-lg whitespace-pre-line'
+									'flex flex-col space-y-2 w-full',
 								)}
 							>
-                <div className="min-w-[64px] flex flex-row justify-center">
-                  {message?.role === 'assistant' ? (
-                    <Avatar>
-                      <AvatarImage src={ avatar } alt="avatar" />
-                      <AvatarFallback>
-                        <RemixIcon name="ri-gemini-fill" className="text-primary" />
-                      </AvatarFallback>
-                    </Avatar>                      
-                  ):(
-                    <Avatar>                    
-                      <AvatarFallback>
-                        <RemixIcon name="ri-user-6-line" className="text-primary" />
-                      </AvatarFallback>
-                    </Avatar>                      
-                  )}  
-                </div> 
-								{message?.role === 'assistant' ? (
-									<div className="prose prose-sm text-left text-primary">
-										<Markdown>{message.content}</Markdown>
-									</div>
-								) : (
-									<Typography variant="body2"><strong>You:</strong>{message?.content}</Typography>
-								)}                
+                <Card className='w-full'>
+                  <CardContent className="flex flex-col space-y-2">
+                  <div className="flex flex-row space-x-4">
+                    <div className="flex flex-row justify-center">
+                      {message?.role === 'assistant' ? (
+                        <Avatar src={ avatar } alt="avatar" />                    
+                      ):(
+                        <ShadcnAvatar className="rounded-lg">                    
+                          <AvatarFallback className="rounded-lg">
+                            <RemixIcon name="ri-user-6-line" className="text-primary" />
+                          </AvatarFallback>
+                        </ShadcnAvatar>                      
+                      )}  
+                    </div> 
+                    {message?.role === 'assistant' ? (
+                      <div className="prose prose-sm text-left text-primary flex flex-col">
+                        <Typography variant="body1" className="font-bold">Assistant:</Typography>
+                        <Markdown>{message.content}</Markdown>
+                      </div>
+                    ) : (
+                      <div className="flex flex-col">
+                        <Typography variant="body2" className="font-bold">You:</Typography>
+                        <Typography variant="body2">{message?.content}</Typography>
+                      </div>
+                    )}      
+                </div>
 								{message.toolInvocations?.map(
 									(toolInvocation: ToolInvocation) => {
 										const { toolName, args } = toolInvocation
@@ -135,11 +147,8 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 										let toolMessage
 
 										switch (toolName) {
-                      case 'showProducts':
-												toolMessage = 'Do you want more information?'
-												break
-											case 'recommendProducts':
-												toolMessage = 'Do you like these products?'
+											case 'shopifyProducts':
+												toolMessage = 'Do you need more help?'
 												break
 											default:
 												break
@@ -147,25 +156,32 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 
 										return (
 											<div
-												className="flex flex-col space-y-2 text-primary"
+												className="flex flex-col space-y-2 text-foreground"
 												key={toolInvocation.toolCallId}
 											>
-                        {(Array.isArray(args?.shopifyHandles) && args?.shopifyHandles?.length > 0) && (
+                        
+                        <Markdown>{args?.reason}</Markdown>
+
+                        {(toolName == 'shopifyProducts' && 
+                          Array.isArray(args?.shopifyHandles) && 
+                          args?.shopifyHandles?.length > 0) && (
                           <div className="flex flex-col space-y-2 w-full">
                             <ShopifyProductArray
                               enableAddToCart
                               handles={args.shopifyHandles}                            
                             />
                           </div> 
-                        )}                          
-                        { args.reason && (
-                          <span className="text-sm text-primary text-left">
-                            <b>Reason:</b> {toolInvocation.args.reason}
-                          </span>
                         )}
-												{'result' in toolInvocation ? (
-													toolInvocation.result
-												) : (
+
+                        {(toolName == 'shopifyCollection' && args?.collectionHandle) && (
+                          <div className="flex flex-col space-y-2 w-full">
+                            <ShopifyProductCollection 
+                              shopifyCollection={args.collectionHandle}
+                              enableAddToCart
+                            />
+                          </div> 
+                        )}                          
+												{!('result' in toolInvocation) && (
 													<div className="w-full flex flex-row space-x-2 justify-between items-center">
 														<Typography
 															variant="body2"
@@ -180,14 +196,14 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 																		dispatchTool(toolInvocation, 'Yes')
 																	}
 																>
-																	Yes
+																	Sure!
 																</Button>
 																<Button
 																	onClick={() =>
 																		dispatchTool(toolInvocation, 'No')
 																	}
 																>
-																	No
+																	No thanks
 																</Button>
 															</div>
 														)}
@@ -197,7 +213,9 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 										)
 									}
 								)}
-							</li>
+                </CardContent>          
+              </Card>
+						</li>
 						)
 					})}
 				</ul>
@@ -205,7 +223,7 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 			<div className="flex flex-col space-y-2 w-full">
 				<TextArea
 					name="prompt"
-					placeholder="Describe the website to build..."
+					placeholder="Ask a question about our products..."
 					value={input}
 					handleChange={handleInputChange}
 					disableDebounce
@@ -237,6 +255,7 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 				</div>
 			)}
 		</div>
+    </Container>
 	)
 }
 

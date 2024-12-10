@@ -1,0 +1,9 @@
+# Query: ShopifyVariantSelector
+# Flags: CaseSensitive
+# ContextLines: 1
+
+2 results - 1 file
+
+src/frontend-ui/components/shopify/variants/index.ts:
+  1: export { default as ShopifyVariantSelector } from './ShopifyVariantSelector'
+  2  export { default as ShopifyColorSelector } from './ShopifyVariantOptions'
