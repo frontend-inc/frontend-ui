@@ -10,11 +10,14 @@ type DropZoneProps = {
 	dropLabel?: string
 }
 
-const DropZone: React.FC<DropZoneProps> = ({
-	onDrop,
-	label = 'Upload file',
-	dropLabel = 'Drop file here',
-}) => {
+const DropZone: React.FC<DropZoneProps> = (props) => {
+
+  const {
+    onDrop,
+    label = 'Upload file',
+    dropLabel = 'Drop file here',
+  } = props || {}
+
 	const [loading, setLoading] = useState(false)
 
 	const handleOnDrop = useCallback(
@@ -50,7 +53,7 @@ const DropZone: React.FC<DropZoneProps> = ({
 	return (
 		<div
 			{...getRootProps()}
-			className="w-full bg-background m-px p-4 flex flex-col justify-center items-center rounded border-2 border-border text-center hover:border-2 hover:border-primary hover:cursor-pointer transition-all duration-300"
+			className="h-[120px] w-full bg-background m-px p-4 flex flex-col justify-center items-center rounded border-2 border-border text-center hover:border-2 hover:border-primary hover:cursor-pointer transition-all duration-300"
 		>
 			<input {...getInputProps()} />
 			{loading ? (
