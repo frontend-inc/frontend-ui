@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { Typography } from '../..'
 import { ButtonActions } from '../..'
 import { ButtonType } from '../../../types'
 import SpotlightList from './SpotlightList'

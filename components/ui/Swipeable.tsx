@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import {
 	Button,
 	Carousel,
@@ -8,64 +8,87 @@ import {
 	CarouselItem,
 	CarouselNext,
 	CarouselPrevious,
-} from 'frontend-shadcn'
-import { type CarouselApi } from 'frontend-shadcn'
-import { cn } from 'frontend-shadcn'
+} from 'frontend-shadcn';
+import { type CarouselApi } from 'frontend-shadcn';
+import { cn } from 'frontend-shadcn';
 
 type SwipeableProps = {
-	children: React.ReactNode[]
-	enableDots?: boolean
-	enableArrows?: boolean
-	enableAutoPlay?: boolean
-	interval?: number
-  itemsPerSlide?: 1 | 2 | 3 | 4 | 5 | 6
-	className?: string
-}
+	children: React.ReactNode[];
+	enableDots?: boolean;
+	enableArrows?: boolean;
+	enableAutoPlay?: boolean;
+	interval?: number;
+	itemsPerSlide?: 1 | 2 | 3 | 4 | 5 | 6;
+	arrowHeight?: 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100; // Arrow height in percentage
+	className?: string;
+};
 
 const Swipeable: React.FC<SwipeableProps> = (props) => {
-	const { children = [], itemsPerSlide=1, enableDots, enableArrows, className } = props
+	const {
+		children = [],
+		itemsPerSlide = 1,
+		enableDots,
+		enableArrows,
+		arrowHeight = 50, // Default arrow height is 50% (middle)
+		className,
+	} = props;
 
-	const [api, setApi] = useState<CarouselApi>()
-	const [current, setCurrent] = useState(0)
-	const [count, setCount] = useState(0)
+	const [api, setApi] = useState<CarouselApi>();
+	const [current, setCurrent] = useState(0);
+	const [count, setCount] = useState(0);
 
-  const basisClasses = {
-    2: 'basis-1/2',
-    3: 'basis-1/3',
-    4: 'basis-1/4',
-    5: 'basis-1/5',
-    6: 'basis-1/6',
-  }
+	const basisClasses = {
+		2: 'basis-1/2',
+		3: 'basis-1/3',
+		4: 'basis-1/4',
+		5: 'basis-1/5',
+		6: 'basis-1/6',
+	};
 
 	const handleSlide = (index: number) => {
-		api?.scrollTo(index)
-	}
+		api?.scrollTo(index);
+	};
 
 	useEffect(() => {
-		if (!api) return
-		setCount(api.scrollSnapList().length)
-		setCurrent(api.selectedScrollSnap())
+		if (!api) return;
+		setCount(api.scrollSnapList().length - itemsPerSlide);
+		setCurrent(api.selectedScrollSnap());
 		api.on('select', () => {
-			setCurrent(api.selectedScrollSnap() || 0)
-		})
-	}, [api])
+			setCurrent(api.selectedScrollSnap() || 0);
+		});
+	}, [api]);
+
+	// Generate dynamic top style for arrows based on arrowHeight prop
+	const dynamicArrowHeight = `top-[${arrowHeight}%]`;
 
 	return (
-		<Carousel setApi={setApi} className={'w-full'}>
+		<Carousel setApi={setApi} className={cn('w-full', className)}>
 			<CarouselContent>
 				{children?.map((child, index) => (
-					<CarouselItem 
-            key={index}
-            className={cn(
-              itemsPerSlide > 1 && basisClasses[itemsPerSlide]
-            )}
-          >{child}</CarouselItem>
+					<CarouselItem
+						key={index}
+						className={cn(
+							itemsPerSlide > 1 && basisClasses[itemsPerSlide]
+						)}
+					>
+						{child}
+					</CarouselItem>
 				))}
 			</CarouselContent>
 			{enableArrows && (
 				<>
-					<CarouselPrevious className="absolute h-9 w-9 left-4 top-1/2 -translate-y-1/2 bg-transparent text-foreground/70 hover:bg-background/50 hover:text-foreground border-0" />
-					<CarouselNext className="absolute h-9 w-9 right-4 top-1/2 -translate-y-1/2 bg-transparent text-foreground/70 hover:text-foreground hover:bg-background/50 border-0" />
+					<CarouselPrevious
+						className={cn(
+							'absolute h-9 w-9 left-4 -translate-y-1/2 bg-background/20 text-foreground/70 hover:bg-background/70 hover:text-foreground border-0',
+							dynamicArrowHeight
+						)}
+					/>
+					<CarouselNext
+						className={cn(
+							'absolute h-9 w-9 right-4 -translate-y-1/2 bg-background/20 text-foreground/70 hover:bg-background/70 hover:text-foreground border-0',
+							dynamicArrowHeight
+						)}
+					/>
 				</>
 			)}
 			{enableDots && count > 1 && (
@@ -85,7 +108,7 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
 				</div>
 			)}
 		</Carousel>
-	)
-}
+	);
+};
 
-export default Swipeable
+export default Swipeable;

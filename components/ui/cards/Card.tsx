@@ -3,7 +3,6 @@
 import React from 'react'
 import { cn } from 'frontend-shadcn'
 import { Typography } from '../../../components'
-import { Card as ShadcnCard, CardContent, CardFooter } from 'frontend-shadcn'
 import { Image } from '../..'
 
 export type CardProps = {
@@ -50,7 +49,7 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 					alt={title}
 					label={label}
 					handleClick={handleClick}
-					aspectRatio={4 / 3}
+					aspectRatio={4/3}
 					enableGradient={enableGradient}
 					enableOverlay={enableOverlay}
 				/>

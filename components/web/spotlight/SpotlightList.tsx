@@ -27,7 +27,7 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 		enableOverlay,
 		editable,
 		handleChange,
-		fontSize = '2xl',
+		fontSize = 'xl',
 	} = props || {}
 
 	return (

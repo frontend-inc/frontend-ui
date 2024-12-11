@@ -6,6 +6,7 @@ import { BlurFade } from '../..'
 import { HeadingProps } from '../../../types'
 
 export type FeatureItemProps = HeadingProps & {
+  direction?: 'row' | 'row-reverse'
 	items: {
 		icon?: string
 		title?: string
@@ -22,6 +23,7 @@ export type FeatureItemProps = HeadingProps & {
 const FeatureItem: React.FC<FeatureItemProps> = (props) => {
 	
   const {
+    direction='row',
     label,
     title,
     subtitle,
@@ -34,7 +36,7 @@ const FeatureItem: React.FC<FeatureItemProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Stack direction="row" spacing={10} className="items-center">
+		<Stack direction={ direction } spacing={10} className="items-center">
       <Stack direction="row" size="1/2">
         <Image 
           src={image}

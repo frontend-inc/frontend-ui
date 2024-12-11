@@ -27,7 +27,7 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
 								label={label}
 								title={title}
 								subtitle={subtitle}
-								size="2xl"
+								size="xl"
 							/>
 							{actions && actions}
 						</Stack>
