@@ -34,7 +34,7 @@ const FeatureItem: React.FC<FeatureItemProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Stack direction="row" className="items-center">
+		<Stack direction="row" spacing={10} className="items-center">
       <Stack direction="row" size="1/2">
         <Image 
           src={image}
@@ -44,7 +44,7 @@ const FeatureItem: React.FC<FeatureItemProps> = (props) => {
         />
       </Stack>
       <Stack direction="row" size="1/2" className="h-full">
-        <div className="flex flex-col space-y-4 h-full justify-center">
+        <div className="flex flex-col space-y-4 h-full justify-center w-full">
           <Heading 
             label={label}
             title={ title }
@@ -52,11 +52,11 @@ const FeatureItem: React.FC<FeatureItemProps> = (props) => {
             editable={editable}
             handleChange={handleChange}
           />
-          <ul className="flex flex-col space-y-6 p-0">
+          <ul className="flex flex-col space-y-2 w-full p-0">
             { items?.map((item, idx) => (
-              <li key={idx} className="flex flex-row items-center space-x-2 h-[60px]">
+              <li key={idx} className="flex flex-row w-full items-center space-x-2 h-[60px]">
                 { item?.icon && (
-                  <RemixIcon name={item.icon} size="lg" />
+                  <RemixIcon name={item.icon} className='text-primary' size="xl" />
                 )}
                 <div className="flex flex-col justify-center space-y-0">
                   <Typography variant="body1">{ item.title }</Typography>
