@@ -34,7 +34,7 @@ const FeatureItem: React.FC<FeatureItemProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Stack direction="row">
+		<Stack direction="row" className="items-center">
       <Stack direction="row" size="1/2">
         <Image 
           src={image}
@@ -43,29 +43,29 @@ const FeatureItem: React.FC<FeatureItemProps> = (props) => {
           enableGradient={enableGradient} 
         />
       </Stack>
-      <Stack direction="row" size="1/2">
-        <Heading 
-          label={label}
-          title={ title }
-          subtitle={ subtitle }
-          editable={editable}
-          handleChange={handleChange}
-        />
-        <ul>
-          { items?.map((item, idx) => (
-            <li key={idx}>
-              <BlurFade delay={0.25 + idx * 0.05} inView>
+      <Stack direction="row" size="1/2" className="h-full">
+        <div className="flex flex-col space-y-4 h-full justify-center">
+          <Heading 
+            label={label}
+            title={ title }
+            subtitle={ subtitle }
+            editable={editable}
+            handleChange={handleChange}
+          />
+          <ul className="flex flex-col space-y-6 p-0">
+            { items?.map((item, idx) => (
+              <li key={idx} className="flex flex-row items-center space-x-2 h-[60px]">
                 { item?.icon && (
-                  <RemixIcon name={item.icon} size="lg" className="text-primary-foreground mr-2" />
+                  <RemixIcon name={item.icon} size="lg" />
                 )}
-                <div className="flex flex-col justify-center space-y-2">
+                <div className="flex flex-col justify-center space-y-0">
                   <Typography variant="body1">{ item.title }</Typography>
                   <Typography variant="body2" className="text-muted-foreground">{ item.subtitle }</Typography>
                 </div>
-              </BlurFade>
-            </li>
-          ))}
-        </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
       </Stack>
     </Stack>
 	)
