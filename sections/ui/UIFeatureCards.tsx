@@ -3,7 +3,7 @@
 import React from 'react'
 import { Section, Stack, Heading } from '../../components'
 import { FeatureCards } from '../../components'
-import { FeatureCardsProps } from '../../components/web/featured/FeatureCards'
+import { FeatureCardsProps } from '../../components/web/feature-cards/FeatureCards'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
 
 type UIFeatureCardsProps = SectionProps &

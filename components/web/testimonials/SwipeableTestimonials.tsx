@@ -7,6 +7,7 @@ import { CarouselItem } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
 
 type SwipeableTestimonialsProps = {
+  variant?: 'default' | 'fill' | 'outline'
 	items: Record<string, any>[]
 	enableAutoPlay?: boolean
 }

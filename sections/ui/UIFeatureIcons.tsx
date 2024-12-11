@@ -3,7 +3,7 @@
 import React from 'react'
 import { Section, Stack, Heading } from '../../components'
 import { FeatureIcons } from '../../components'
-import { FeatureIconsProps } from '../../components/web/features/FeatureIcons'
+import { FeatureIconsProps } from '../../components/web/feature-icons/FeatureIcons'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
 
 type UIFeatureIconsProps = SectionProps &
