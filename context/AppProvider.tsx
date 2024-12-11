@@ -15,7 +15,8 @@ type AppProviderProps = {
 }
 
 const AppProvider = (props: AppProviderProps) => {
-	const {
+	
+  const {
 		name,
 		logo,
 		apiUrl,

@@ -60,12 +60,12 @@ export default function AutocompleteInput(props: AutocompleteInput) {
 				info={info}
 			/>
 			{open && options.length > 0 && (
-				<div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
+				<div className="absolute z-10 w-full mt-1 bg-background border border-border rounded-md shadow-lg max-h-60 overflow-auto">
 					{options.map((option, index) => (
 						<div
 							key={index}
 							onClick={() => handleClick(option)}
-							className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100"
+							className="flex items-center px-4 py-2 cursor-pointer bg-background hover:bg-muted-background"
 						>
 							<div className="mr-2 flex-shrink-0">
 								{option?.image && (
@@ -78,7 +78,7 @@ export default function AutocompleteInput(props: AutocompleteInput) {
 									<RemixIcon name={option.icon} className="h-5 w-5" />
 								)}
 							</div>
-							<span className="flex-grow text-sm">{option.label}</span>
+							<span className="flex-grow text-sm text-foreground">{option.label}</span>
 						</div>
 					))}
 				</div>

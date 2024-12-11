@@ -25,7 +25,8 @@ type DesktopHeaderProps = {
 const MAX_LINKS = 5
 
 const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
-	const {
+	
+  const {
 		logo,
 		links,
 		buttons,
@@ -72,11 +73,11 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 							</IconButton>
 						</div>
 					)}
-					<div className="w-[200px] h-[60px] mx-4 flex flex-row items-center justify-start">
+					<div className="w-[180px] h-[62px] mx-4 flex flex-row items-center justify-start">
 						<Logo
 							src={logo}
-							width={120}
-							height={40}
+							width={180}
+							height={56}
 							handleClick={() => handleClick('/')}
 						/>
 					</div>
