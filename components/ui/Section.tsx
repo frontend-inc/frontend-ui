@@ -72,7 +72,7 @@ const Section: React.FC<SectionProps> = (props) => {
           'relative z-[1]',
 					variant == 'outline' && 'p-8 border-2 border-border rounded-xl',
 					variant == 'fill' && bgImage && 'p-8 rounded-xl bg-black/50',
-          variant == 'fill' && !bgImage && 'p-8 rounded-xl bg-muted',
+          variant == 'fill' && !bgImage && 'p-8 rounded-xl bg-muted/50',
 					maxWidth && maxWidthClasses[maxWidth],
 					'w-full mx-auto min-h-[60px] flex flex-row justify-center items-center'
 				)}

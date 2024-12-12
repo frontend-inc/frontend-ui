@@ -4,14 +4,9 @@ import React from 'react'
 import { ButtonType, MetafieldType } from '../../../types'
 import {
 	HeroList,
-	HeroAvatar,
-	HeroCard,
-	HeroCover,
-	CollectionDetails,
 } from '../..'
 import { useResourceContext } from 'frontend-js'
-import { ListFields, ButtonActions, SocialButtons } from '../..'
-import { DOCUMENT_SHOW_FIELDS } from '../../../constants'
+import { ButtonActions, SocialButtons } from '../..'
 
 export type ShowContainerProps = {
 	resource: any

@@ -3,7 +3,8 @@
 import React, { useEffect } from 'react'
 import { Show } from '../..'
 import { ShowProps } from './Show'
-import { ResourceProvider, useResource } from 'frontend-js'
+import { ResourceProvider } from 'frontend-js'
+import { useDocuments } from '../../../hooks'
 
 export type ShowContainerProps = ShowProps & {
 	documentId?: string
@@ -14,19 +15,18 @@ export type ShowContainerProps = ShowProps & {
 const ShowContainer: React.FC<ShowContainerProps> = (props) => {
 	const { documentId, url } = props || {}
 
-	const { loading, resource, findOne } = useResource({
-		url,
-		name: 'document',
-	})
+	const { loading, document, findDocument } = useDocuments()
 
 	useEffect(() => {
 		if (documentId) {
-			findOne(documentId)
+			findDocument(documentId)
 		}
 	}, [documentId])
 
+  console.log('ShowContainer', props, document)
+
 	return (
-		<ResourceProvider name="document" url={url} resource={resource}>
+		<ResourceProvider name="document" url={url} resource={document}>
 			<Show {...props} url={url} />
 		</ResourceProvider>
 	)
