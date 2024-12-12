@@ -74,17 +74,6 @@ export const PUBLISHED_AT = {
 	variant: 'string',
 }
 
-export const START_DATE = {
-	label: 'Start Date',
-	name: 'start_date',
-	variant: 'datetime',
-}
-export const END_DATE = {
-	label: 'End Date',
-	name: 'end_date',
-	variant: 'datetime',
-}
-
 export const PRICE = { label: 'Price', name: 'price', variant: 'number' }
 export const LOCATION = {
 	label: 'Location',
@@ -154,8 +143,6 @@ export const DOCUMENT_FORM_FIELDS = {
 		LABEL,
 		CATEGORY,
 		DESCRIPTION,
-		START_DATE,
-		END_DATE,
 		LOCATION,
 		TAGS,
 	],
@@ -272,8 +259,6 @@ export const DOCUMENT_SHOW_FIELDS = {
 		LOCATION,
 		CATEGORY,
 		DESCRIPTION,
-		START_DATE,
-		END_DATE,
 		TAGS,
 	],
 	product: [IMAGE, TITLE, SUBTITLE, PRICE, CATEGORY, DESCRIPTION, TAGS],
