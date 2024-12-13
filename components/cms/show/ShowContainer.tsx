@@ -23,8 +23,6 @@ const ShowContainer: React.FC<ShowContainerProps> = (props) => {
 		}
 	}, [documentId])
 
-  console.log('ShowContainer', props, document)
-
 	return (
 		<ResourceProvider name="document" url={url} resource={document}>
 			<Show {...props} url={url} />

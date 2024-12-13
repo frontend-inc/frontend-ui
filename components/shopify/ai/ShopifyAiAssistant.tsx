@@ -61,7 +61,6 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 	} = useChat({
 		api: '/api/ai/shopify_assistant',
     async onToolCall({ toolCall }: { toolCall: any }) {
-      console.log("TOOL CALL", toolCall)    
     },    
 		onError: (error) => {
 			setLoading(false)

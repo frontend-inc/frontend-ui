@@ -46,7 +46,6 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 	const [activeSellingPlanId, setActiveSellingPlanId] = useState<any>(null)
 
 	const handleSellingPlanChange = (value) => { 
-    console.log('Selling Plan Change:', value)   
 		setActiveSellingPlanId(value)
 	}
 

@@ -6,13 +6,14 @@ import { Image } from '../../components'
 import { ResponsiveImageProps } from '../../components/ui/images/Image'
 import { SectionProps } from '../../types'
 
-type UIImageProps = SectionProps &
-	ResponsiveImageProps & {
+type UIImageProps = SectionProps & ResponsiveImageProps & {
 		title?: string
+    image: string
 	}
 
 const UIImage: React.FC<UIImageProps> = (props) => {
 	const {
+    image,
 		title,
 		variant,
 		bgColor,
@@ -20,7 +21,7 @@ const UIImage: React.FC<UIImageProps> = (props) => {
 		bgOverlay,
 		mode,
 		py,
-		px,
+		px,    
 		maxWidth = 'sm',
 		aspectRatio = 1.5,
 		requireAuth,
@@ -40,7 +41,7 @@ const UIImage: React.FC<UIImageProps> = (props) => {
 			variant={variant}
 		>
 			<figure className="w-full flex flex-col space-y-2">
-				<Image {...rest} aspectRatio={aspectRatio} />
+				<Image {...rest} src={image} aspectRatio={aspectRatio} />
 				{title && (
 					<figcaption className="text-sm text-muted-foreground text-center">
 						{title}
