@@ -109,7 +109,7 @@ const MenuBar = ({ editor }) => {
 	]
 
 	return (
-		<div className="w-full md:min-w-[720px] p-2 bg-white rounded-xl shadow-lg flex flex-wrap space-x-2">
+		<div className="w-full md:min-w-[800px] p-2 bg-white rounded-xl shadow-lg flex flex-wrap space-x-2 z-30">
 			{formattingOptions.map((btn, index) => (
 				<IconButton
 					key={index}
@@ -117,7 +117,7 @@ const MenuBar = ({ editor }) => {
 					disabled={!editor.can().chain().focus().run()}
 					className={cn(
 						'hover:bg-zinc-200',
-						btn.isActive && 'bg-zinc-900 text-white'
+						btn.isActive && 'bg-zinc-900 text-white hover:bg-zinc-900'
 					)}
 					aria-label={btn.label}
 				>
