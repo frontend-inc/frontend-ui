@@ -4,7 +4,6 @@ import React from 'react'
 import { Button } from '../../../components'
 import { MenuLinkType, PolicyLinkType } from '../../../types'
 import { SocialLink, PolicyLink } from '../..'
-import Logo from '../header/Logo'
 import { useApp } from '../../../hooks'
 
 export type FooterProps = {
@@ -21,32 +20,18 @@ export type FooterProps = {
 }
 
 const Footer: React.FC<FooterProps> = (props) => {
-	const {
-		logo,
+
+  const {
 		handleClick,
 		links = [],
 		socialLinks = [],
 		policies = [],
 	} = props
 
-	const { logo: appLogo } = useApp()
-
-	const handleLogoClick = () => {
-		handleClick('/')
-	}
-
 	return (
 		<div className="flex flex-col space-y-2 py-2 w-full bg-background min-h-[80px]">
 			<div className="flex flex-row space-x-10 w-full items-center justify-between border-b border-divider">
 				<div className="flex flex-row space-x-4 p-6 w-full items-start">
-					<div className="w-full sm:w-[160px] flex justify-start">
-						<Logo
-							handleClick={handleLogoClick}
-							src={logo || appLogo}
-							width={100}
-							height={50}
-						/>
-					</div>
 					<div className="w-full flex justify-start sm:justify-center sm:pl-3">
 						<div className="flex flex-wrap flex-col sm:flex-row gap-4 sm:pl-3">
 							{links?.map((menuLink, i) => (

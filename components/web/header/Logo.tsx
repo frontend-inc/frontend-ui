@@ -41,7 +41,7 @@ export default function Logo(props: LogoProps) {
 					className="object-contain"
 				/>
 			) : (
-				<span className="text-2xl tracking-tight font-semibold text-foreground">
+				<span className="text-2xl tracking-tight font-semibold text-primary">
           {name}
         </span>
 			)}
