@@ -20,9 +20,9 @@ export type BlogProps = HeadingProps & {
 
 const Blog: React.FC<BlogProps> = (props) => {
 	const {
-    image,
     editable,
     handleChange,
+    image,
 		variant = 'h2',
 		label,
 		title,
@@ -81,7 +81,9 @@ const Blog: React.FC<BlogProps> = (props) => {
               name='description'
               editable={editable}
               handleChange={handleChange}
-              variant="body2" className="text-foreground/70">
+              variant="body2" 
+              className="text-foreground/70"
+            >
 							{description}
 						</Typography>
 					</div>

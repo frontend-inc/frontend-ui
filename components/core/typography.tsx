@@ -1,8 +1,9 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { cn } from 'frontend-shadcn'
 import { SyntheticEventType } from '../../types'
+import { useDebounce } from 'use-debounce'
 
 interface TypographyProps {
 	variant:
@@ -34,11 +35,13 @@ const Typography: React.FC<TypographyProps> = (props) => {
 		textAlign = 'left',
 		className,
 		children,
-
-		name,
+		name='text',
 		editable,
 		handleChange,
 	} = props
+
+  const [text, setText] = useState(children)
+  const [debouncedText] = useDebounce(text, 350)
 
 	const variantClasses = {
 		h1: 'text-5xl sm:text-7xl font-semibold tracking-tight',
@@ -82,20 +85,21 @@ const Typography: React.FC<TypographyProps> = (props) => {
 
 	const handleInputChange = (ev: SyntheticEventType) => {
 		if (!handleChange) return null
-		handleChange({
-			target: {
-				name: name || '',
-				// @ts-ignore
-				value: ev.target.innerText,
-			},
-		})
+    //@ts-ignore
+    setText(ev.target.innerText)		
 	}
+
+  useEffect(() => {
+    if(handleChange && debouncedText !== children) {
+      handleChange({ target: { name, value: debouncedText } })
+    }
+  }, [debouncedText])
 
 	return (
 		<div
 			contentEditable={editable}
 			// @ts-ignore
-			onBlur={handleInputChange}
+			onInput={handleInputChange}
 			suppressContentEditableWarning
 			className={cn(
 				'text-foreground outline-none focus:outline-none focus:ring-0',
