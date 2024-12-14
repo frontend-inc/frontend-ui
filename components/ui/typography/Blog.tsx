@@ -46,7 +46,7 @@ const Blog: React.FC<BlogProps> = (props) => {
               textAlign={textAlign}
               name='label'
               editable={editable}
-              handleChange={handleChange}
+              handleChange={handleChange}              
             >
               { label }
             </Typography>
