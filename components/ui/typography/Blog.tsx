@@ -1,15 +1,14 @@
 'use client'
 
 import React from 'react'
-import { Label, Typography } from '../../../components'
+import { RichText, Typography } from '../../../components'
 import { TypographyVariantsType } from '../../../types'
 import { Avatar, AvatarImage, AvatarFallback, Badge } from 'frontend-shadcn'
+import { HeadingProps } from '../../../types'
 
-export type BlogProps = {
+export type BlogProps = HeadingProps & {
 	image?: string
-	label?: string
-	title?: string
-	subtitle?: string
+  description?: string
 	publishedAt?: string
 	author?: string
 	avatar?: string
@@ -21,11 +20,14 @@ export type BlogProps = {
 
 const Blog: React.FC<BlogProps> = (props) => {
 	const {
+    editable,
+    handleChange,
 		variant = 'h2',
 		label,
 		title,
 		subtitle,
-		publishedAt,
+		description,
+    publishedAt,
 		html,
 		author,
 		avatar,
@@ -35,17 +37,29 @@ const Blog: React.FC<BlogProps> = (props) => {
 
 	return (
 		<div className="w-full flex flex-col space-y-6">
-			{label && <Label label={label} textAlign={textAlign} />}
+			{label && (
+        <Typography 
+          variant="caption" 
+          textAlign={textAlign}
+          name='label'
+          editable={editable}
+          handleChange={handleChange}
+        >
+          { label }
+        </Typography>
+      )}
 			{title && (
 				<Typography
 					variant={variant}
 					textAlign={textAlign}
 					className="text-foreground tracking-tight font-semibold"
+          name='title'
+          editable={editable}
+          handleChange={handleChange}
 				>
 					{title}
 				</Typography>
 			)}
-			{author && (
 				<div className="flex my-3 space-x-3">
 					<Avatar>
 						{avatar && <AvatarImage src={avatar} alt={author} />}
@@ -54,28 +68,38 @@ const Blog: React.FC<BlogProps> = (props) => {
 						</AvatarFallback>
 					</Avatar>
 					<div className="flex flex-col space-y-0">
-						<Typography variant="body2" className="font-medium text-foreground">
+						<Typography 
+              name='author'
+              editable={editable}
+              handleChange={handleChange}
+              variant="body2" className="font-medium text-foreground">
 							{author}
 						</Typography>
-						<Typography variant="body2" className="text-muted-foreground">
-							{publishedAt}
+						<Typography 
+              name='description'
+              editable={editable}
+              handleChange={handleChange}
+              variant="body2" className="text-foreground/70">
+							{description}
 						</Typography>
 					</div>
 				</div>
-			)}
 			{subtitle && (
-				<div className="w-full py-2 border-l-4 pl-6 border-border">
 					<Typography
 						variant="subtitle2"
-						className="text-lg italic text-muted-foreground"
+						className="text-lg text-foreground/70"
+            name='subtitle'
+            editable={editable}
+            handleChange={handleChange}
 					>
 						{subtitle}
 					</Typography>
-				</div>
 			)}
-			<div className="w-full prose py-0">
-				<div dangerouslySetInnerHTML={{ __html: html }} />
-			</div>
+      <RichText 
+        html={html}
+        editable={editable}
+        handleChange={handleChange}
+      />			
 			{tags.length > 0 && (
 				<div className="flex space-x-2 py-2">
 					{tags.map((tag, index) => (
