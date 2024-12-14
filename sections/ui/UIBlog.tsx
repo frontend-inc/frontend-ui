@@ -16,7 +16,7 @@ const UIBlog: React.FC<UIBlogProps> = (props) => {
 		mode,
 		py = 'sm',
 		px,
-		maxWidth = 'md',
+		maxWidth = 'lg',
 		requireAuth,
 		...rest
 	} = props

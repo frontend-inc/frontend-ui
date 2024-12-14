@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { RichText, Typography } from '../../../components'
+import { Container, Image, RichText, Typography } from '../../../components'
 import { TypographyVariantsType } from '../../../types'
 import { Avatar, AvatarImage, AvatarFallback, Badge } from 'frontend-shadcn'
 import { HeadingProps } from '../../../types'
@@ -20,6 +20,7 @@ export type BlogProps = HeadingProps & {
 
 const Blog: React.FC<BlogProps> = (props) => {
 	const {
+    image,
     editable,
     handleChange,
 		variant = 'h2',
@@ -37,6 +38,7 @@ const Blog: React.FC<BlogProps> = (props) => {
 
 	return (
 		<div className="w-full flex flex-col space-y-6">
+      <Container maxWidth='md'>
 			{label && (
         <Typography 
           variant="caption" 
@@ -85,30 +87,42 @@ const Blog: React.FC<BlogProps> = (props) => {
 					</div>
 				</div>
 			{subtitle && (
-					<Typography
-						variant="subtitle2"
-						className="text-lg text-foreground/70"
-            name='subtitle'
+        <Typography
+          variant="subtitle2"
+          className="text-lg text-foreground/70"
+          name='subtitle'
+          editable={editable}
+          handleChange={handleChange}
+        >
+          {subtitle}
+        </Typography>
+			)}
+      </Container>
+      { image && (
+        <Image 
+          src={image}
+          alt={title}
+          aspectRatio={1.5}          
+        />
+      )}
+      <Container maxWidth='md'>
+        <div className='flex flex-col space-y-10'>
+          <RichText 
+            html={html}
             editable={editable}
             handleChange={handleChange}
-					>
-						{subtitle}
-					</Typography>
-			)}
-      <RichText 
-        html={html}
-        editable={editable}
-        handleChange={handleChange}
-      />			
-			{tags.length > 0 && (
-				<div className="flex space-x-2 py-2">
-					{tags.map((tag, index) => (
-						<Badge className="px-3 py-1" variant="outline" key={index}>
-							{tag}
-						</Badge>
-					))}
-				</div>
-			)}
+          />			
+          {tags.length > 0 && (
+            <div className="flex space-x-2 py-2">
+              {tags.map((tag, index) => (
+                <Badge className="px-3 py-1" variant="outline" key={index}>
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+          )}
+        </div>
+      </Container>
 		</div>
 	)
 }
