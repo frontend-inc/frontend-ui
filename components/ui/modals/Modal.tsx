@@ -38,8 +38,16 @@ export default function Modal(props: ModalProps) {
 		buttons,
 		children,
 		description,
+    maxWidth = 'md',
 		className,
 	} = props
+
+  const maxWidthClasses = {
+    sm: 'md:max-w-screen-sm',
+    md: 'md:max-w-screen-md',
+    lg: 'md:max-w-screen-lg',
+    xl: 'md:max-w-screen-xl',
+  }
 
 	const { theme: mode } = useNextTheme()
 	const { theme } = useTheme()
@@ -47,10 +55,11 @@ export default function Modal(props: ModalProps) {
 	return (
 		<Dialog open={open} onOpenChange={handleClose}>
 			<DialogContent
-				className={cn(
-					mode == 'dark' ? 'dark-theme' : 'light',
-					theme,
-					className
+				className={cn(					
+          maxWidthClasses[maxWidth],          
+          mode == 'dark' ? 'dark-theme' : 'light',
+          theme,
+					className,
 				)}
 			>
 				<DialogHeader className="mt-4">
