@@ -25,7 +25,7 @@ const UIFeatureCards: React.FC<UIFeatureCardsProps> = (props) => {
 		mode,
 		py,
 		px,
-		maxWidth,
+		maxWidth='lg',
 		requireAuth,
 		editable,
 		handleChange,

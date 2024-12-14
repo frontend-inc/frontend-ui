@@ -3,18 +3,18 @@
 import React from 'react'
 import { useApp } from '../../../hooks'
 import { Button, Typography } from '../../../components'
-import { ExpandableText, Image } from '../..'
+import { Image } from '../..'
 import { useRouter } from 'next/navigation'
 import { cn } from 'frontend-shadcn'
 
 export type FeaturedCardProps = {
+  direction?: 'column' | 'row' | 'row-reverse'
 	label?: string
 	title?: string
 	subtitle?: string
 	image?: string
 	buttonText?: string
-	href?: string
-	flexDirection?: 'row' | 'row-reverse'
+	href?: string	
 	handleClick?: () => void
 	objectFit?: 'cover' | 'contain'
 	enableOverlay?: boolean
@@ -24,20 +24,27 @@ export type FeaturedCardProps = {
 
 const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 	const { clientUrl } = useApp()
-	const {
+	
+  const {
 		label,
 		title,
 		subtitle,
 		image = '',
 		href,
 		buttonText,
-		flexDirection = 'row',
+		direction = 'row',
 		handleClick,
 		objectFit = 'cover',
 		enableOverlay = false,
 		enableGradient = false,
 		variant,
 	} = props || {}
+
+  const flexDirectionClass = {
+    'row': 'flex-row',
+    'column': 'flex-col',
+    'row-reverse': 'flex-row-reverse',
+  }
 
 	const router = useRouter()
 
@@ -53,12 +60,15 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 		<div
 			className={cn(
 				'flex items-center gap-10 flex-wrap md:flex-nowrap',
-				flexDirection === 'row-reverse' ? 'flex-row-reverse' : 'flex-row',
+				direction && flexDirectionClass[direction],
 				variant == 'outline' && 'p-6 border-2 border-border rounded-lg',
 				variant == 'fill' && 'p-6 bg-muted/50 rounded-lg'
 			)}
 		>
-			<div className="w-full md:w-1/2">
+			<div className={cn(
+        "w-full",
+        direction != 'column' && "md:w-1/2"
+      )}>
 				<Image
 					label={label}
 					src={image}
@@ -71,7 +81,11 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 					disableBorderRadius={variant == 'outline' ? true : false}
 				/>
 			</div>
-			<div className="flex flex-col gap-4 w-full md:w-1/2">
+			<div 
+        className={cn(
+          "flex flex-col gap-4 w-full",
+          direction != 'column' && "md:w-1/2"
+        )}>
 				<Typography variant="h5">{title}</Typography>
 				<Typography variant="subtitle2" className="text-muted-foreground">
 					{subtitle}

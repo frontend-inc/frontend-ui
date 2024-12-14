@@ -44,7 +44,7 @@ const FeatureCards: React.FC<FeatureCardsProps> = (props) => {
 							image={item?.image}
 							buttonText={item?.buttonText}
 							href={item?.path}
-							flexDirection={i % 2 === 0 ? 'row' : 'row-reverse'}
+							direction={i % 2 === 0 ? 'row' : 'row-reverse'}
 							enableGradient={enableGradient}
 							enableOverlay={enableOverlay}
 							variant={variant}
@@ -55,17 +55,18 @@ const FeatureCards: React.FC<FeatureCardsProps> = (props) => {
       ):(
         <Swipeable enableArrows>
           {items?.map((item, i) => (
-              <FeaturedCard
-                label={item?.label}
-                title={item?.title}
-                subtitle={item?.subtitle}
-                image={item?.image}
-                buttonText={item?.buttonText}
-                href={item?.path}
-                enableGradient={enableGradient}
-                enableOverlay={enableOverlay}
-                variant={variant}
-              />
+            <FeaturedCard
+              label={item?.label}
+              title={item?.title}
+              subtitle={item?.subtitle}
+              image={item?.image}
+              buttonText={item?.buttonText}
+              href={item?.path}
+              enableGradient={enableGradient}
+              enableOverlay={enableOverlay}
+              variant={variant}
+              direction="column"
+            />
           ))}
         </Swipeable>
       )}

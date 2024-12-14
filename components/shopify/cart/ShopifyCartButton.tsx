@@ -25,9 +25,11 @@ export default function ShopifyCartButton(props: ShopifyCartButtonProps) {
 			<IconButton onClick={handleCartClick}>
 				<RemixIcon name={icon} size="lg" />
 			</IconButton>
+      { cart?.totalQuantity > 0 && (
 			<Badge className="py-0 px-1 rounded-full absolute top-0 right-0 transform translate-x-[3px] -translate-y-[3px]">
 				{cart?.totalQuantity}
 			</Badge>
+      )}
 		</div>
 	)
 }

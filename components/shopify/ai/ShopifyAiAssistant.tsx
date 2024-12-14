@@ -59,7 +59,7 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 		addToolResult,
 		stop,
 	} = useChat({
-		api: '/api/ai/shopify_assistant',
+		api: '/api/v1/ai/shopify_assistant',
     async onToolCall({ toolCall }: { toolCall: any }) {
     },    
 		onError: (error) => {

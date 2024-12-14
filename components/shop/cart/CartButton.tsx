@@ -19,9 +19,11 @@ const CartButton: React.FC<CartButtonProps> = (props) => {
 			<IconButton onClick={() => setCartOpen(!cartOpen)}>
 				<RemixIcon name={icon} size="lg" />
 			</IconButton>
-			<Badge className="py-0 px-1 rounded-full absolute top-0 right-0 transform translate-x-[3px] -translate-y-[3px]">
-				{cart?.total_items}
-			</Badge>
+      { cart?.total_items > 0 && (
+        <Badge className="py-0 px-1 rounded-full absolute top-0 right-0 transform translate-x-[3px] -translate-y-[3px]">
+          {cart?.total_items}
+        </Badge>
+      )}
 		</div>
 	)
 }
