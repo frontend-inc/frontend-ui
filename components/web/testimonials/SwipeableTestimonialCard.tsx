@@ -19,29 +19,24 @@ const SwipeableTestimonialCard: React.FC<SwipeableTestimonialCardProps> = (
 
 	return (
 		<Container maxWidth="lg">
-			<Stack direction={direction}>
-				<Stack>
-					{text && (
-						<Typography
-							variant="body1"
-							className="italic text-xl text-center font-medium leading-loose text-foreground/80"
-						>
-							{text}
-						</Typography>
-					)}
-				</Stack>
-				<Stack>
-					<div className="flex flex-col space-y-4 items-center justify-center w-full">
-						<Avatar className="h-[96px] w-[96px] rounded-full">
-							<AvatarImage src={avatar} alt={author} />
-							<AvatarFallback></AvatarFallback>
-						</Avatar>
-						<Typography variant="body2" className="text-foreground/80">
-							{author}
-						</Typography>
-					</div>
-				</Stack>
-			</Stack>
+      <div className="flex flex-col space-y-4 items-center justify-center w-full">
+        {text && (
+          <Typography
+            variant="body1"
+            textAlign='center'
+            className="italic text-xl font-medium leading-loose text-foreground/80"
+          >
+            {text}
+          </Typography>
+        )}
+        <Avatar className="h-[96px] w-[96px] rounded-full">
+          <AvatarImage src={avatar} alt={author} />
+          <AvatarFallback></AvatarFallback>
+        </Avatar>
+        <Typography variant="body2" className="text-foreground/80">
+          {author}
+        </Typography>
+			</div>
 		</Container>
 	)
 }
