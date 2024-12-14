@@ -18,7 +18,7 @@ const SquareButton: React.FC<SquareButtonProps> = (props) => {
 			className={cn(
 				'w-full flex flex-row space-x-3 items-center rounded-lg hover:border-primary p-4 transition duration-200',
 				selected
-					? 'border-2 border-primary scale-105 shadow-lg'
+					? 'border-2 border-primary shadow-lg'
 					: 'border-2 border-border'
 			)}
 			onClick={handleClick ? handleClick : undefined}
