@@ -11,8 +11,6 @@ import { formatCurrency } from 'frontend-shopify'
 import { useRouter } from 'next/navigation'
 import { CartLineType } from 'frontend-shopify'
 import { cn } from 'frontend-shadcn'
-import { Badge } from 'frontend-shadcn'
-import { RiAddLine, RiSubtractLine } from '@remixicon/react'
 
 type ShopifyCartQuantityInputProps = {
 	quantity: number
@@ -164,9 +162,7 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = ({ line }) => {
 					/>
 				</div>
 			</div>
-			<IconButton
-				variant="ghost"
-				size="icon"
+			<IconButton								
 				className="text-muted-foreground"
 				onClick={handleRemoveLineItem}
 			>

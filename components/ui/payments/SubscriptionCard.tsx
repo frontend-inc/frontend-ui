@@ -5,7 +5,7 @@ import { cn } from 'frontend-shadcn'
 import { Button } from '../..'
 import { Card, CardContent, CardFooter, CardHeader } from 'frontend-shadcn'
 import { Badge } from 'frontend-shadcn'
-import { Typography } from '../../../components'
+import { Typography } from '../..'
 
 type SubscriptionCardProps = {
 	loading?: boolean
@@ -71,7 +71,12 @@ export default function SubscriptionCard(props: SubscriptionCardProps) {
 				</div>
 			</CardContent>
 			<CardFooter>
-				<Button loading={loading} onClick={handleClick} className="w-full">
+				<Button 
+          loading={loading} 
+          //@ts-ignore 
+          onClick={handleClick} 
+          className="w-full"
+        >
 					{buttonText} {price}
 				</Button>
 			</CardFooter>

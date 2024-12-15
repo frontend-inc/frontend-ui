@@ -48,7 +48,9 @@ const CardItems: React.FC<CardItemsProps> = (props) => {
         subtitle={item?.subtitle}
         actions={
           item?.buttonText && (
-            <Button fullWidth onClick={handleClick}>
+            <Button 
+              fullWidth 
+              onClick={() => handleClick(item?.path)}>
               {item?.buttonText}
             </Button>
           )

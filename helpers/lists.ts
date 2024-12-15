@@ -7,7 +7,7 @@ type DisplayFieldParams = {
 }
 
 export const buildSearchQuery = (contentType: string, query = {}) => {
-	let searchQuery = query
+	let searchQuery = query as any 
 	if (contentType?.length > 0) {
 		searchQuery = {
 			...searchQuery,

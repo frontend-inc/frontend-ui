@@ -78,6 +78,7 @@ const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
           </div>
           <Button 
             size='lg' 
+            //@ts-ignore
             onClick={onClick}
           >
             {buttonText}
