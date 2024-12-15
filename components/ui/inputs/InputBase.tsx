@@ -8,7 +8,7 @@ import { TextInputPropsType } from '../../../types'
 import { useDebounce } from 'use-debounce'
 import { cn } from 'frontend-shadcn'
 
-type InputBaseProps = TextInputPropsType & {
+export type InputBaseProps = TextInputPropsType & {
 	debounceDelay?: number
 	disableDebounce?: boolean
 }

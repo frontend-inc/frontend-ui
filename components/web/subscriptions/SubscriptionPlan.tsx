@@ -48,12 +48,12 @@ const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
     handleClick
 	})
 
-	return (
+return (
 		<div
 			className={cn(
 				'w-full p-2 bg-background rounded-xl transition duration-200 flex flex-col space-y-4 justify-between',				
         variant == 'outline' && 'border border-divider p-6',
-        variant == 'fill' && 'bg-muted-background/50 p-6',
+        variant == 'fill' && 'bg-muted/50 p-6',
         popular && 'border-2 z-10 border-primary p-6',
 			)}
 		>

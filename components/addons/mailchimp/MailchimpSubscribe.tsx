@@ -1,8 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Button } from '../../../components'
-import { TextInput } from '../..'
+import { EmailSubscribeInput } from '../../../components'
 import { useMailChimpForm } from 'use-mailchimp-form'
 import { toast } from 'sonner'
 import { SyntheticEventType } from '../../../types'
@@ -43,26 +42,15 @@ const MailchimpSubscribe: React.FC<MailchimpSubscribeProps> = (props) => {
 	}, [message])
 
 	return (
-		<div className="py-2 w-full flex flex-col items-center justify-center">
-			<div className="flex flex-row max-w-[400px]">
-				<TextInput
-					direction="row"
-					placeholder="Enter email..."
-					name="EMAIL"
-					value={email}
-					handleChange={handleChange}
-					className="rounded-r-none"
-				/>
-				<Button
-					color="secondary"
-					onClick={handleFormSubmit}
-					loading={loading}
-					className="min-w-[120px] rounded-l-none"
-				>
-					{buttonText}
-				</Button>
-			</div>
-		</div>
+    <EmailSubscribeInput 
+      name="EMAIL"
+      value={email}
+      placeholder='Enter your email'
+      handleChange={handleChange}
+      buttonText={buttonText}
+      handleSubmit={handleFormSubmit}
+      loading={loading}
+    />		
 	)
 }
 

@@ -1,8 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Button } from '../../../components'
-import { TextInput } from '../..'
+import { EmailSubscribeInput } from '../../../components'
 import { useKlaviyo } from '../../../hooks'
 import { toast } from 'sonner'
 import { SyntheticEventType } from '../../../types'
@@ -48,26 +47,16 @@ const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
 	}
 
 	return (
-		<div className="py-2 w-full flex flex-col items-center justify-center">
-			<div className="flex flex-row max-w-[400px]">
-				<TextInput
-					direction="row"
-					placeholder={'Enter email...'}
-					name="email"
-					value={email}
-					handleChange={handleChange}
-					className="rounded-r-none"
-				/>
-				<Button
-					color="secondary"
-					onClick={handleFormSubmit}
-					className="min-w-[120px] rounded-l-none"
-					loading={loading}
-				>
-					{buttonText}
-				</Button>
-			</div>
-		</div>
+    <EmailSubscribeInput
+      loading={loading}
+      errors={[]}
+      name='email'
+      value={email}
+      placeholder='Enter your email'
+      handleChange={handleChange}
+      handleSubmit={handleFormSubmit}
+      buttonText={buttonText}
+    />
 	)
 }
 
