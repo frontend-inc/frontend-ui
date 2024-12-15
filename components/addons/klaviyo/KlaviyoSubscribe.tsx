@@ -4,6 +4,8 @@ import React, { useState } from 'react'
 import { Button } from '../../../components'
 import { TextInput } from '../..'
 import { useKlaviyo } from '../../../hooks'
+import { toast } from 'sonner'
+import { SyntheticEventType } from '../../../types'
 
 export type KlaviyoSubscribeProps = {
 	listId: string
@@ -41,7 +43,7 @@ const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
 		}
 	}
 
-	const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (ev: SyntheticEventType) => {
 		setEmail(ev.target.value)
 	}
 

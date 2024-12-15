@@ -18,7 +18,6 @@ const AddonOkendoReviews: React.FC<AddonOkendoReviewsProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		...rest
 	} = props
 

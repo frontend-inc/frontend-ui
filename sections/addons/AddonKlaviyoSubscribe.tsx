@@ -1,30 +1,35 @@
 'use client'
 
 import React from 'react'
-import { Section, Heading } from '../../components'
+import { Stack, Section, Heading } from '../../components'
 import { KlaviyoSubscribe } from '../../components'
 import { KlaviyoSubscribeProps } from '../../components/addons/klaviyo/KlaviyoSubscribe'
-import { SectionProps, HeadingProps } from '../../types'
+import { SectionProps, StackProps, HeadingProps } from '../../types'
 
 type AddonKlaviyoSubscribeProps = SectionProps &
+  StackProps & 
 	HeadingProps &
 	KlaviyoSubscribeProps
 
 const AddonKlaviyoSubscribe: React.FC<AddonKlaviyoSubscribeProps> = (props) => {
 	const {
+		direction = 'row',
 		label,
 		title,
 		subtitle,
-		textAlign,
+		textAlign = 'center',
+		fontSize = 'md',
+		variant,
 		bgColor,
 		bgImage,
 		bgOverlay,
 		mode,
 		py,
 		px,
-		maxWidth,
+		maxWidth = 'lg',
 		requireAuth,
-
+		editable,
+		handleChange,
 		...rest
 	} = props
 
@@ -39,13 +44,26 @@ const AddonKlaviyoSubscribe: React.FC<AddonKlaviyoSubscribeProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Heading
-				label={label}
-				title={title}
-				subtitle={subtitle}
-				textAlign={textAlign}
-			/>
-			<KlaviyoSubscribe {...rest} />
+			<Stack direction={direction} spacing={10} className="items-center">
+				<Stack direction={direction} size="1/3">
+					<Heading
+						label={label}
+						title={title}
+						subtitle={subtitle}
+						size={fontSize}
+						textAlign={direction == 'row' ? 'left' : 'center'}
+						editable={editable}
+						handleChange={handleChange}
+					/>
+				</Stack>
+				<Stack
+					direction={direction}
+					size="2/3"
+					className="items-center h-full justify-center"
+				>
+			    <KlaviyoSubscribe {...rest} />
+        </Stack>
+      </Stack>
 		</Section>
 	)
 }

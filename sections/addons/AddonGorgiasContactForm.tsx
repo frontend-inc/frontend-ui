@@ -11,6 +11,7 @@ type AddonGorgiasContactFormProps = SectionProps & GorgiasContactFormProps
 const AddonGorgiasContactForm: React.FC<AddonGorgiasContactFormProps> = (
 	props
 ) => {
+
 	const {
 		bgColor,
 		bgImage,
@@ -20,7 +21,6 @@ const AddonGorgiasContactForm: React.FC<AddonGorgiasContactFormProps> = (
 		px,
 		maxWidth,
 		requireAuth,
-
 		...rest
 	} = props
 

@@ -18,7 +18,6 @@ const AddonCalendly: React.FC<AddonCalendlyProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		...rest
 	} = props
 

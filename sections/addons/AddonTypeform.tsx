@@ -18,7 +18,6 @@ const AddonTypeform: React.FC<AddonTypeformProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		...rest
 	} = props
 

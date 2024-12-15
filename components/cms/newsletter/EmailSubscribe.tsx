@@ -4,7 +4,7 @@ import React from 'react'
 import { Button } from '../../../components'
 import { InputBase } from '../..'
 import { useContacts } from '../../../hooks'
-import { Toaster, toast } from 'sonner'
+import { toast } from 'sonner'
 
 export type EmailSubscribeProps = {
 	buttonText?: string

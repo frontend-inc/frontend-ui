@@ -2,9 +2,10 @@
 
 import React, { useEffect, useState } from 'react'
 import { Button } from '../../../components'
-import { TextInput, IconLoading } from '../..'
+import { TextInput } from '../..'
 import { useMailChimpForm } from 'use-mailchimp-form'
 import { toast } from 'sonner'
+import { SyntheticEventType } from '../../../types'
 
 export type MailchimpSubscribeProps = {
 	formId: string
@@ -31,7 +32,7 @@ const MailchimpSubscribe: React.FC<MailchimpSubscribeProps> = (props) => {
 		})
 	}
 
-	const handleChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (ev: SyntheticEventType) => {
 		setEmail(ev.target.value)
 	}
 
@@ -39,7 +40,7 @@ const MailchimpSubscribe: React.FC<MailchimpSubscribeProps> = (props) => {
 		if (message) {
 			toast(message)
 		}
-	}, [message, showAlertSuccess])
+	}, [message])
 
 	return (
 		<div className="py-2 w-full flex flex-col items-center justify-center">

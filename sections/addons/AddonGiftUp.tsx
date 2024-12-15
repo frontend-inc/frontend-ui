@@ -18,7 +18,6 @@ const AddonGiftUp: React.FC<AddonGiftUpProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		...rest
 	} = props
 

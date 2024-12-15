@@ -1,32 +1,37 @@
 'use client'
 
 import React from 'react'
-import { Section, Heading } from '../../components'
+import { Stack, Section, Heading } from '../../components'
 import { MailchimpSubscribe } from '../../components'
 import { MailchimpSubscribeProps } from '../../components/addons/mailchimp/MailchimpSubscribe'
-import { SectionProps, HeadingProps } from '../../types'
+import { SectionProps, StackProps, HeadingProps } from '../../types'
 
 type AddonMailchimpSubscribeProps = SectionProps &
 	HeadingProps &
+  StackProps &
 	MailchimpSubscribeProps
 
 const AddonMailchimpSubscribe: React.FC<AddonMailchimpSubscribeProps> = (
 	props
 ) => {
 	const {
+		direction = 'row',
 		label,
 		title,
 		subtitle,
-		textAlign,
+		textAlign = 'center',
+		fontSize = 'md',
+		variant,
 		bgColor,
 		bgImage,
 		bgOverlay,
 		mode,
 		py,
 		px,
-		maxWidth,
+		maxWidth = 'lg',
 		requireAuth,
-
+		editable,
+		handleChange,
 		...rest
 	} = props
 
@@ -41,13 +46,26 @@ const AddonMailchimpSubscribe: React.FC<AddonMailchimpSubscribeProps> = (
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Heading
-				label={label}
-				title={title}
-				subtitle={subtitle}
-				textAlign={textAlign}
-			/>
-			<MailchimpSubscribe {...rest} />
+			<Stack direction={direction} spacing={10} className="items-center">
+				<Stack direction={direction} size="1/3">
+					<Heading
+						label={label}
+						title={title}
+						subtitle={subtitle}
+						size={fontSize}
+						textAlign={direction == 'row' ? 'left' : 'center'}
+						editable={editable}
+						handleChange={handleChange}
+					/>
+				</Stack>
+				<Stack
+					direction={direction}
+					size="2/3"
+					className="items-center h-full justify-center"
+				>
+			    <MailchimpSubscribe {...rest} />
+        </Stack>
+      </Stack>
 		</Section>
 	)
 }
