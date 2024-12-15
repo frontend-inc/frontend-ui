@@ -65,13 +65,13 @@ export type PriceType = {
 	label: string
 	title: string
 	subtitle?: string
-	description?: string
 	price: number
+  compareAtPrice?: number
 	features: string[]
 	interval?: string
 	recurring?: boolean
 	popular?: boolean
-	buttonText: string
+	buttonText?: string
 	url?: string
 	path?: string
 }

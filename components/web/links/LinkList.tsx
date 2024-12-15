@@ -4,7 +4,6 @@ import React from 'react'
 import { Empty } from '../..'
 import { BlurFade } from '../..'
 import LinkListItem from './LinkListItem'
-import { ActionType } from '../../../types'
 
 type LinkListType = {
 	fill?: boolean
@@ -13,10 +12,8 @@ type LinkListType = {
 	icon: string
 	title: string
 	subtitle: string
-	action: ActionType
 	path?: string
 	url?: string
-	src?: string
 }
 
 export type LinkListProps = {

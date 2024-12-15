@@ -105,6 +105,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 
 	return (
 		<Modal
+      maxWidth='sm'
 			title={
 				tab == 0
 					? 'Login'

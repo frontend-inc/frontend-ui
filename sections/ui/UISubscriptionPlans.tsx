@@ -2,13 +2,13 @@
 
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { Pricing } from '../../components'
-import { PricingProps } from '../../components/web/prices/Pricing'
+import { SubscriptionPlans } from '../../components'
+import { SubscriptionPlansProps } from '../../components/web/subscriptions/SubscriptionPlans'
 import { SectionProps, HeadingProps } from '../../types'
 
-type UIPricingProps = SectionProps & HeadingProps & PricingProps
+type UISubscriptionPlansProps = SectionProps & HeadingProps & SubscriptionPlansProps
 
-const UIPricing: React.FC<UIPricingProps> = (props) => {
+const UISubscriptionPlans: React.FC<UISubscriptionPlansProps> = (props) => {
 	const {
 		label,
 		title,
@@ -49,10 +49,10 @@ const UIPricing: React.FC<UIPricingProps> = (props) => {
 					editable={editable}
 					handleChange={handleChange}
 				/>
-				<Pricing {...rest} />
+				<SubscriptionPlans {...rest} />
 			</div>
 		</Section>
 	)
 }
 
-export default UIPricing
+export default UISubscriptionPlans

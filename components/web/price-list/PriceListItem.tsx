@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { Image, Typography, ImageModal } from '../..'
-import { useButton } from '../../../hooks'
-import { ActionType } from '../../../types'
+import React from 'react'
+import { Image, Typography } from '../..'
+import { useNavigate } from '../../../hooks'
 import { cn } from 'frontend-shadcn'
+import { formatCurrency } from '../../../helpers'
 
 export type PriceListItemProps = {
 	variant?: 'fill' | 'outline' | 'default'
@@ -10,10 +10,9 @@ export type PriceListItemProps = {
 	title: string
 	subtitle: string
 	price?: string
-	action: ActionType
+  precision?: number
 	path?: string
 	url?: string
-	src?: string
 	handleImageClick: () => void
 }
 
@@ -22,26 +21,24 @@ const PriceListItem: React.FC<PriceListItemProps> = (props) => {
 		variant,
 		image,
 		price,
+    precision=0,
 		title,
 		subtitle,
-		action,
 		path,
 		url,
-		src,
 		handleImageClick,
 	} = props || {}
 
-	const { handleClick } = useButton({
-		action,
+	const onClick = useNavigate({		
 		path,
-		url,
-		src,
+		url		
 	})
 
 	return (
 		<li className={'w-full'}>
 			<button
-				onClick={handleClick}
+        //@ts-ignore
+				onClick={onClick}
 				className={cn(
 					'w-full flex justify-between items-center rounded-xl p-4 focus:outline-none hover:bg-muted',
 					variant == 'fill' && 'bg-muted p-6 rounded-lg',
@@ -69,7 +66,7 @@ const PriceListItem: React.FC<PriceListItemProps> = (props) => {
 					</div>
 				</div>
 				<Typography variant="body1" className="text-foreground">
-					{price}
+					{formatCurrency(price, precision)}
 				</Typography>
 			</button>
 		</li>

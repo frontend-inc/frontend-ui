@@ -1,33 +1,33 @@
 'use client'
 
 import React from 'react'
-import PricingCard from './PricingCard'
+import SubscriptionPlan from './SubscriptionPlan'
 import { PriceType } from '../../..'
 import { Stack, Empty } from '../..'
 
-export type PricingProps = {
+export type SubscriptionPlansProps = {
 	items: PriceType[]
+  precision?: number
+  variant?: 'outline' | 'fill' | 'default'
 }
 
-const Pricing: React.FC<PricingProps> = (props) => {
-	const { items } = props
+const SubscriptionPlans: React.FC<SubscriptionPlansProps> = (props) => {
+
+	const { 
+    items, 
+    precision,
+    variant
+  } = props || {}
 
 	return (
 		<div className="flex flex-col space-y-2 p-3">
 			<Stack direction="row" spacing={4}>
 				{items?.map((item, index) => (
-					<PricingCard
+					<SubscriptionPlan
 						key={index}
-						label={item.label}
-						title={item.title}
-						price={item.price}
-						popular={item.popular}
-						interval={item.interval}
-						recurring={item.recurring}
-						features={item.features || []}
-						path={item.path}
-						url={item.url}
-						buttonText={item.buttonText}
+            precision={precision}
+            variant={variant}
+            { ...item }	
 					/>
 				))}
 			</Stack>
@@ -42,4 +42,4 @@ const Pricing: React.FC<PricingProps> = (props) => {
 	)
 }
 
-export default Pricing
+export default SubscriptionPlans

@@ -12,7 +12,7 @@ type DataLayoutProps = {
 }
 
 export default function DataLayout(props: DataLayoutProps) {
-	const { loading, layout = 'grid', size = 'lg', children } = props
+	const { loading, layout = 'grid', size = 'md', children } = props
 
 	const gridSize = {
 		sm: 'md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]',

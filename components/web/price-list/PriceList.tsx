@@ -4,17 +4,14 @@ import React, { useState } from 'react'
 import { Empty } from '../..'
 import { BlurFade, ImageModal } from '../..'
 import PriceListItem from './PriceListItem'
-import { ActionType } from '../../../types'
 
 type PriceListType = {
 	variant?: 'fill' | 'outline' | 'default'
 	image: string
 	title: string
 	subtitle: string
-	action: ActionType
 	path?: string
 	url?: string
-	src?: string
 }
 
 export type PriceListProps = {
@@ -50,8 +47,8 @@ const PriceList: React.FC<PriceListProps> = (props) => {
 				{items?.length == 0 && (
 					<Empty
 						icon="ri-list-unordered-line"
-						title="No items yet."
-						description="Your items will appear here."
+						title="No prices yet"
+						description="Your prices will appear here."
 					/>
 				)}
 			</div>

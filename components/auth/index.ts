@@ -1,5 +1,6 @@
 export * from './my-account'
 
+export { default as AuthRedirect } from './AuthRedirect'
 export { default as AuthGuard } from './AuthGuard'
 export { default as AuthWall } from './AuthWall'
 export { default as AuthButton } from './buttons/AuthButton'

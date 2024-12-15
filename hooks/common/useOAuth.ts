@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 
 type UseOAuthProps = {

@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useAuth } from 'frontend-js'
 import { UserAvatar, RemixIcon } from '../../../components'
 import { Button } from '../../../components'
@@ -9,7 +9,6 @@ import {
 	DropdownMenuContent,
 	DropdownMenuGroup,
 	DropdownMenuItem,
-	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from 'frontend-shadcn'
@@ -50,7 +49,7 @@ const AuthMenu: React.FC<AuthMenuProps> = (props) => {
 	const handleLogout = () => {
 		logout()
 		router.push('/')
-	}
+	}  
 
 	return (
 		<DropdownMenu>

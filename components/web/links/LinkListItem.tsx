@@ -1,8 +1,7 @@
 import React from 'react'
-import { IconButton, RemixIcon, Typography } from '../../../components'
+import { RemixIcon, Typography } from '../../../components'
 import { Avatar, AvatarFallback } from 'frontend-shadcn'
-import { useButton } from '../../../hooks'
-import { ActionType } from '../../../types'
+import { useNavigate } from '../../../hooks'
 import { cn } from 'frontend-shadcn'
 
 export type LinkListItemProps = {
@@ -11,27 +10,25 @@ export type LinkListItemProps = {
 	icon: string
 	title: string
 	subtitle: string
-	action: ActionType
 	path?: string
 	url?: string
-	src?: string
 }
 
 const LinkListItem: React.FC<LinkListItemProps> = (props) => {
-	const { variant, color, icon, title, subtitle, action, path, url, src } =
+	
+  const { variant, color, icon, title, subtitle, path, url } =
 		props
 
-	const { handleClick } = useButton({
-		action,
+	const onClick = useNavigate({
 		path,
 		url,
-		src,
 	})
 
 	return (
 		<li className="w-full">
 			<button
-				onClick={handleClick}
+        //@ts-ignore
+				onClick={onClick}
 				className={cn(
 					'w-full flex justify-between items-center rounded-xl p-4 focus:outline-none hover:bg-muted',
 					variant === 'fill' && 'bg-muted p-6',

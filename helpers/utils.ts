@@ -112,9 +112,11 @@ export const scrollTo = (domId) => {
 	elem?.scrollIntoView({ behavior: 'smooth' })
 }
 
-export const formatCurrency = (amount, currency = 'USD') => {
+export const formatCurrency = (amount, precision=2, currency = 'USD') => {
+  // Specify the decimal and thousands separator
 	return new Intl.NumberFormat('en-US', {
-		style: 'currency',
+		style: 'currency',  
 		currency,
+    minimumFractionDigits: precision,
 	}).format(amount)
 }
