@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Typography } from '../..'
 import { RemixIcon } from '../..'
 import { cn } from 'frontend-shadcn'
@@ -8,6 +8,7 @@ import { useNavigate } from '../../../hooks'
 import { formatCurrency } from '../../../helpers'
 
 type SubscriptionPlanProps = {
+  id?: string | number
 	label?: string
 	title: string
 	subtitle?: string
@@ -42,13 +43,22 @@ const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
     variant='outline'
 	} = props
 
+  const [loading, setLoading] = useState(false)
+
 	const onClick = useNavigate({
 		path,
 		url,
     handleClick
 	})
 
-return (
+
+  const handleSubscribe = () => {
+    setLoading(true)
+    onClick()
+    setTimeout(() => setLoading(false), 5000)
+  }
+
+  return (
 		<div
 			className={cn(
 				'w-full p-2 bg-background rounded-xl transition duration-200 flex flex-col space-y-4 justify-between',				
@@ -78,8 +88,8 @@ return (
           </div>
           <Button 
             size='lg' 
-            //@ts-ignore
-            onClick={onClick}
+            loading={loading}
+            onClick={handleSubscribe}
           >
             {buttonText}
           </Button>

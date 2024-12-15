@@ -9,6 +9,7 @@ export type SubscriptionPlansProps = {
 	items: PriceType[]
   precision?: number
   variant?: 'outline' | 'fill' | 'default'
+  handleClick: (item: PriceType) => void
 }
 
 const SubscriptionPlans: React.FC<SubscriptionPlansProps> = (props) => {
@@ -16,7 +17,8 @@ const SubscriptionPlans: React.FC<SubscriptionPlansProps> = (props) => {
 	const { 
     items, 
     precision,
-    variant
+    variant,
+    handleClick
   } = props || {}
 
 	return (
@@ -27,6 +29,9 @@ const SubscriptionPlans: React.FC<SubscriptionPlansProps> = (props) => {
 						key={index}
             precision={precision}
             variant={variant}
+            handleClick={
+              handleClick ? () => handleClick(item) : undefined
+            }
             { ...item }	
 					/>
 				))}
