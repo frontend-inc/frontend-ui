@@ -45,6 +45,7 @@ const AddonMailchimpSubscribe: React.FC<AddonMailchimpSubscribeProps> = (
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
+      variant={variant}
 		>
 			<Stack direction={direction} spacing={10} className="items-center">
 				<Stack direction={direction} size="1/3">
