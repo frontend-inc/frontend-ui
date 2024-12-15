@@ -25,7 +25,8 @@ type SubscriptionPlanProps = {
 }
 
 const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
-	const {
+	
+  const {
 		popular,
 		title,
     subtitle,
@@ -50,10 +51,10 @@ const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				'w-full p-2 bg-background rounded-xl flex flex-col space-y-4 justify-between',
-				popular && 'border-2 z-10 border-primary shadow-3xl transition duration-200',
+				'w-full p-2 bg-background rounded-xl transition duration-200 flex flex-col space-y-4 justify-between',				
         variant == 'outline' && 'border border-divider p-6',
         variant == 'fill' && 'bg-muted-background/50 p-6',
+        popular && 'border-2 z-10 border-primary p-6',
 			)}
 		>
 			<div className="flex flex-col space-y-8 min-h-[300px]">
