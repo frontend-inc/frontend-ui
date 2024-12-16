@@ -9,7 +9,7 @@ type CellLabelProps = {
 
 const CellLabel: React.FC<CellLabelProps> = (props) => {
 	const { value } = props
-	return <Label label={value} />
+	return <Label>{ value }</Label>
 }
 
 export default CellLabel

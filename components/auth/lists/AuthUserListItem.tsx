@@ -53,7 +53,7 @@ const AuthUserListItem: React.FC<AuthUserListItemProps> = ({
 					<div className="flex-grow">
 						<div className="flex items-center space-x-2">
 							<span className="text-sm font-medium">{user.name}</span>
-							{user?.role && <Label label={user?.role} />}
+							{user?.role && <Label>{user?.role}</Label>}
 						</div>
 						<span className="text-xs text-muted-foreground">{user.email}</span>
 					</div>

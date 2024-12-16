@@ -8,7 +8,7 @@ const FieldBoolean: React.FC<FieldElementProps> = (props) => {
 	const { value, label } = props
 	return (
 		<FieldWrapper label={label}>
-			<Label label={value ? 'true' : 'false'} />
+			<Label>{value ? 'true' : 'false'}</Label>
 		</FieldWrapper>
 	)
 }

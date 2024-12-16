@@ -55,7 +55,7 @@ const MyAccountUserItem: React.FC<MyAccountUserItemProps> = ({
 							<span className="text-sm font-medium text-foreground">
 								{user?.name}
 							</span>
-							{user?.role && <Label label={user?.role} />}
+							{user?.role && <Label>{user?.role}</Label>}
 						</div>
 						<span className="text-xs text-muted-foreground">{user?.email}</span>
 					</div>

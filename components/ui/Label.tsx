@@ -5,13 +5,13 @@ import { Badge } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
 
 type LabelProps = {
-	label?: string
+	children?: string
 	textAlign?: 'left' | 'center' | 'right'
 	className?: string
 }
 
 const Label: React.FC<LabelProps> = (props) => {
-	const { label, textAlign, className } = props
+	const { children, textAlign, className } = props
 
 	const textAlignClasses = {
 		left: 'text-left',
@@ -19,7 +19,7 @@ const Label: React.FC<LabelProps> = (props) => {
 		right: 'text-right',
 	}
 
-	if (!label) return null
+	if (!children) return null
 	return (
 		<Badge
       variant='outline'
@@ -29,7 +29,7 @@ const Label: React.FC<LabelProps> = (props) => {
 				className
 			)}
 		>
-			{label}
+			{children}
 		</Badge>
 	)
 }

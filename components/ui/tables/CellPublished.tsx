@@ -9,7 +9,7 @@ type CellPublishedProps = {
 
 const CellPublished: React.FC<CellPublishedProps> = (props) => {
 	const { value } = props
-	return <Label label={value == true ? 'published' : 'unpublished'} />
+	return <Label>{value == true ? 'published' : 'unpublished'}</Label>
 }
 
 export default CellPublished
