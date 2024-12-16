@@ -6,18 +6,21 @@ import { Typography } from '../../../components'
 type SimplePageProps = {
 	title: string
 	body: string
-	publishedAt?: string
+	subtitle?: string
 	html?: boolean
 	disablePadding?: boolean
 }
 
-const SimplePage: React.FC<SimplePageProps> = ({
-	title,
-	body,
-	publishedAt,
-	html = false,
-	disablePadding = false,
-}) => {
+const SimplePage: React.FC<SimplePageProps> = (props) => {
+
+  const {
+    title,
+    subtitle,
+    body,
+    html = false,
+    disablePadding = false,
+  } = props || {}
+
 	return (
 		<div
 			className={`w-full flex justify-center items-start ${
@@ -29,12 +32,12 @@ const SimplePage: React.FC<SimplePageProps> = ({
 					{title}
 				</Typography>
 				<Typography variant="caption" className="block text-center">
-					Last updated {publishedAt}
+					{ subtitle }
 				</Typography>
-				{html ? (
-					<Typography variant="body1" className="whitespace-pre-line">
-						<div dangerouslySetInnerHTML={{ __html: body }} />
-					</Typography>
+				{html ? (					
+					<div 
+            className="prose"
+            dangerouslySetInnerHTML={{ __html: body }} />					
 				) : (
 					<Typography variant="body1" className="whitespace-pre-line">
 						{body}

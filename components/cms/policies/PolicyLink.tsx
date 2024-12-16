@@ -35,8 +35,8 @@ const PolicyLink: React.FC<PolicyLinkProps> = (props) => {
 				handleClose={() => setOpen(false)}
 				maxWidth="sm"
 			>
-				<div className="p-6 text-foreground text-medium whitespace-pre-line">
-					{policy?.body}
+				<div className="w-full p-6 prose">
+					<div dangerouslySetInnerHTML={{ __html: policy?.body }} />
 				</div>
 			</Drawer>
 		</>
