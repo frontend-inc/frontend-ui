@@ -54,3 +54,5 @@ export { default as SortableListItem } from './lists/SortableListItem'
 export { default as Pagination } from './Pagination'
 // Media
 export { default as Swipeable } from './Swipeable'
+
+export { default as Typography } from './typography'
