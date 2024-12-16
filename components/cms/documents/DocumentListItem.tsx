@@ -58,12 +58,12 @@ const DocumentListItem: React.FC<DocumentListItemProps> = (props) => {
 	let Component = COMPONENTS[style] || Card
 
 	let typographyVariants = {
-		card: 'body1',
-		avatar: 'body1',
-		cover: 'body1',
-		chip: 'body1',
+		card: 'subtitle1',
+		avatar: 'subtitle1',
+		cover: 'subtitle1',
+		chip: 'subtitle1',
 		text: 'h5',
-		list: 'body1',
+		list: 'h6',
 	}
 
 	return (
