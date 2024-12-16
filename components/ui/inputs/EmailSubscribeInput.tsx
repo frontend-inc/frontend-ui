@@ -15,6 +15,7 @@ const EmailSubscribeInput: React.FC<EmailSubscribeInputProps> = (props) => {
 	
   const { 
     loading,
+    placeholder='Enter your email',
     buttonText = 'Subscribe',
     handleSubmit,
     ...rest 
@@ -24,6 +25,7 @@ const EmailSubscribeInput: React.FC<EmailSubscribeInputProps> = (props) => {
     <div className="flex flex-row justify-center items-center">
       <div className="md:max-w-[360px] w-full p-1 flex flex-row justify-center items-center">
         <InputBase
+          placeholder={placeholder}
           { ...rest }
           type="email"
           className="rounded-l-md text-base h-[48px] md:min-w-[280px] rounded-r-none border-r-0"

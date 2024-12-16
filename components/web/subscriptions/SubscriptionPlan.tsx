@@ -101,7 +101,7 @@ const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
               <li className="flex flex-row space-x-2" key={i}>
                 <RemixIcon
                   name="ri-checkbox-circle-fill"
-                  className="text-foreground bg-background"
+                  className="text-foreground"
                 />
                 <Typography variant="body2">{feature}</Typography>
               </li>
