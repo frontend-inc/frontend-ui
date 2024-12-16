@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useAuth } from 'frontend-js'
 import { UserAvatar, RemixIcon } from '../../../components'
 import { Button } from '../../../components'
@@ -54,8 +54,8 @@ const AuthMenu: React.FC<AuthMenuProps> = (props) => {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<Button variant="ghost" className="h-8 w-8 rounded-full">
-					<UserAvatar size={32} user={currentUser} />
+				<Button variant="ghost" className="rounded-full">
+					<UserAvatar size={36} user={currentUser} />
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="w-56" align="end" forceMount>
