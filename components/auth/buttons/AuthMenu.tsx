@@ -55,7 +55,7 @@ const AuthMenu: React.FC<AuthMenuProps> = (props) => {
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<Button variant="ghost" className="rounded-full">
-					<UserAvatar size={36} user={currentUser} />
+					<UserAvatar size={34} user={currentUser} />
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="w-56" align="end" forceMount>
