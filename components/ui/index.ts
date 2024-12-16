@@ -8,6 +8,7 @@ export * from './typography'
 export * from './cards'
 export * from './heros'
 export * from './profiles'
+export * from './tabs'
 
 export { default as Alert } from './Alert'
 export { default as Avatar } from './avatars/Avatar'
@@ -54,4 +55,6 @@ export { default as SortableListItem } from './lists/SortableListItem'
 export { default as Pagination } from './Pagination'
 // Media
 export { default as Swipeable } from './Swipeable'
+
+
 
