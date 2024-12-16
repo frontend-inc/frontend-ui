@@ -11,7 +11,7 @@ type HeadingProps = {
 	title?: string
 	subtitle?: string
 	textAlign?: 'left' | 'center' | 'right'
-	size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+	size?: 'sm' | 'md' | 'lg' | 'xl'
 	className?: string
 	secondaryAction?: React.ReactNode
 	editable?: boolean
@@ -32,16 +32,15 @@ const Heading: React.FC<HeadingProps> = (props) => {
 	} = props || {}
 
 	const titleVariant = {
-		sm: 'h5',
-		md: 'h4',
-		lg: 'h3',
-		xl: 'h2',
-		'2xl': 'h1',
+		sm: 'h4',
+		md: 'h3',
+		lg: 'h2',
+		xl: 'h1'		
 	}[size] as TypographyVariantsType
 
 	const subtitleVariant = {
 		sm: 'body1',
-		md: 'body1',
+		md: 'subtitle2',
 		lg: 'subtitle2',
 		xl: 'subtitle1',
 		'2xl': 'subtitle1',
@@ -49,7 +48,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 
 	const spacingClass = {
 		sm: 'space-y-2',
-		md: 'space-y-4',
+		md: 'space-y-3',
 		lg: 'space-y-4',
 		xl: 'space-y-5',
 		'2xl': 'space-y-6',
