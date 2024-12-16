@@ -2,14 +2,12 @@
 
 import React from 'react'
 import { Button } from '../../../components'
-import { MenuLinkType, PolicyLinkType } from '../../../types'
-import { SocialLink, PolicyLink } from '../..'
-import { useApp } from '../../../hooks'
+import { MenuLinkType } from '../../../types'
+import { SocialLink } from '../..'
 
 export type FooterProps = {
 	logo?: string
 	links?: MenuLinkType[]
-	policies?: PolicyLinkType[]
 	socialLinks?: {
 		label: string
 		provider: string
@@ -25,7 +23,6 @@ const Footer: React.FC<FooterProps> = (props) => {
 		handleClick,
 		links = [],
 		socialLinks = [],
-		policies = [],
 	} = props
 
 	return (
@@ -61,11 +58,6 @@ const Footer: React.FC<FooterProps> = (props) => {
 								color="common.black"
 							/>
 						))}
-				</div>
-				<div className="flex flex-row space-x-3 w-full items-center">
-					{policies?.map((policy, i) => (
-						<PolicyLink key={i} label={policy?.label} handle={policy?.handle} />
-					))}
 				</div>
 			</div>
 		</div>

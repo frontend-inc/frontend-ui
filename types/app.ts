@@ -14,13 +14,6 @@ export type MenuLinkType = {
 	children: MenuLinkType[] | []
 }
 
-export type PolicyLinkType = {
-	label: string
-	title: string
-	handle: string
-	position?: number
-}
-
 export type NotificationTypes =
 	| 'text'
 	| 'page'
