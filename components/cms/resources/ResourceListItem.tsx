@@ -61,7 +61,7 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 	return (
 		<div
 			className={cn(
-				'bg-muted/50 hover:bg-muted p-1 py-2 overflow-hidden rounded-xl',
+				'hover:bg-muted p-1 py-2 overflow-hidden rounded-xl',
 				enableBorder &&
 					'border-border hover:shadow-md mb-1 transition-shadow duration-200',
 				selected && 'border-primary'

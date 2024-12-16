@@ -45,7 +45,8 @@ export const Tabs: React.FC<TabsProps> = ({
 	className,
 	onChange,
 }) => {
-	const [activeTab, setActiveTab] = useState(
+	
+  const [activeTab, setActiveTab] = useState(
 		defaultValue || children[0].props.value
 	)
 
