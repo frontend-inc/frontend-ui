@@ -53,7 +53,7 @@ const Typography: React.FC<TypographyProps> = (props) => {
 		subtitle1: 'text-xl tracking-tight leading-relaxed',
 		subtitle2: 'text-lg leading-relaxed',
 		button: 'text-base',
-		body1: 'text-md font-medium leading-normal',
+		body1: 'text-sm font-medium leading-normal',
 		body2: 'text-sm font-medium leading-normal',
 		caption: 'text-xs text-foreground font-semibold uppercase tracking-wider',
 		overline: 'text-xs uppercase tracking-widest',
