@@ -89,7 +89,7 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 					</div>
 				)}
 				{!disableImage && (
-					<div className="mr-2 min-w-[72px] min-h-[72px]">
+					<div className="mr-2 min-w-[64px] min-h-[64px]">
 						<button
 							className="w-full h-full focus:outline-none focus:ring-2"
 							onClick={handleClick}
