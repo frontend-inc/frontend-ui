@@ -3,28 +3,20 @@
 import React, { useEffect, useState } from 'react'
 import ScriptContext from './ScriptContext'
 import {
-	GorgiasChat,
 	GoogleAnalyticsScript,
 	GoogleTagManagerScript,
 	HotJarScript,
-	KlaviyoScript,
-	OkendoScript,
 	RedditScript,
 	VisualWebsiteOptimizerScript,
 } from '../components/addons'
 import { GTMProvider } from '@elgorditosalsero/react-gtm-hook'
 import { useFacebookPixel, useTikTok } from '../hooks/addons'
-import Script from 'next/script'
 import { AnalyticsBrowser } from '@segment/analytics-next'
 
 type ScriptProviderProps = {
 	disableAnalytics?: boolean
-	disableChat?: boolean
-	okendoSubscriberId?: string
 	googleTagManagerId?: string
 	googleAnalyticsId?: string
-	gorgiasChatId?: string
-	gorgiasContactFormSrc?: string
 	gtmId?: string
 	hotJarId?: string
 	redditPixelId?: string
@@ -39,12 +31,8 @@ type ScriptProviderProps = {
 const ScriptProvider = (props: ScriptProviderProps) => {
 	const {
 		disableAnalytics = false,
-		disableChat = false,
-		okendoSubscriberId,
 		googleTagManagerId,
 		googleAnalyticsId,
-		gorgiasChatId,
-		gorgiasContactFormSrc,
 		gtmId,
 		facebookPixelId,
 		hotJarId,
@@ -52,7 +40,6 @@ const ScriptProvider = (props: ScriptProviderProps) => {
 		segmentWriteKey,
 		tikTokPixelId,
 		visualWebsiteOptimizerId,
-		klaviyoCompanyId,
 		children,
 	} = props || {}
 
@@ -74,10 +61,8 @@ const ScriptProvider = (props: ScriptProviderProps) => {
 	const value = {
 		segment,
 		disableAnalytics,
-		okendoSubscriberId,
 		googleTagManagerId,
 		googleAnalyticsId,
-		gorgiasChatId,
 		redditPixelId,
 		segmentWriteKey,
 	}
@@ -106,15 +91,7 @@ const ScriptProvider = (props: ScriptProviderProps) => {
 						<VisualWebsiteOptimizerScript id={visualWebsiteOptimizerId} />
 					)}
 				</>
-			)}
-			{!disableChat && (
-				<>{gorgiasChatId && <GorgiasChat id={gorgiasChatId} />}</>
-			)}
-			{klaviyoCompanyId && <KlaviyoScript id={klaviyoCompanyId} />}
-			{gorgiasContactFormSrc && (
-				<Script strategy="beforeInteractive" src={gorgiasContactFormSrc} />
-			)}
-			{okendoSubscriberId && <OkendoScript subscriberId={okendoSubscriberId} />}
+			)}			
 			{wrapGTMProvider(gtmId, children)}
 		</ScriptContext.Provider>
 	)

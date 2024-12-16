@@ -73,7 +73,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 							</IconButton>
 						</div>
 					)}
-					<div className="w-[180px] h-[62px] mx-4 flex flex-row items-center justify-start">
+					<div className="h-[62px] mx-4 flex flex-row items-center justify-start">
 						<Logo
 							src={logo}
 							width={180}
@@ -91,7 +91,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 								/>
 							))}
 					</div>
-					<div className="w-[200px] flex flex-row items-center justify-end h-[60px] pr-1">
+					<div className="w-[240px] flex flex-row items-center justify-end h-[60px] pr-1">
 						{buttons?.length > 0 && (
 							<div className="pr-1">
 								<ButtonActions size="sm" buttons={buttons} />
