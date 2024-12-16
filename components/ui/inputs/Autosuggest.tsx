@@ -80,11 +80,11 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 				<InputLabel label={label} info={info} />
 				<PopoverTrigger asChild>
 					<Button
-						variant="outline"
+						variant="secondary"
 						role="combobox"
 						aria-expanded={open}
 						className={cn(
-							'min-w-[220px] w-full text-foreground justify-between font-normal'
+							'min-w-[220px] bg-input hover:bg-input/50 hover:shadow-sm w-full text-foreground justify-between font-normal'
 						)}
 					>
 						{selectedOption?.label || 'Select...'}

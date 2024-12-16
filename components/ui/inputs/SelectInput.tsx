@@ -27,15 +27,17 @@ type SelectInputPropsType = {
 	info?: string
 }
 
-export default function SelectInput({
-	label,
-	direction = 'column',
-	name,
-	value,
-	options,
-	handleChange,
-	info,
-}: SelectInputPropsType) {
+export default function SelectInput(props: SelectInputPropsType) {
+
+  const {
+    label,
+    direction = 'column',
+    name,
+    value,
+    options,
+    handleChange,
+    info,
+  } = props
 	return (
 		<div
 			className={cn(

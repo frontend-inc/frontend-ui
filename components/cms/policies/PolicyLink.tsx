@@ -33,7 +33,7 @@ const PolicyLink: React.FC<PolicyLinkProps> = (props) => {
 				title={policy?.title}
 				open={open}
 				handleClose={() => setOpen(false)}
-				maxWidth="sm"
+        maxWidth="sm" 
 			>
 				<div className="w-full p-6 prose">
 					<div dangerouslySetInnerHTML={{ __html: policy?.body }} />
