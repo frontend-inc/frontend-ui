@@ -80,7 +80,7 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 				{avatar && (
 					<div className="mr-2">
 						<button
-							className="w-full h-full focus:outline-none focus:ring-2"
+							className="w-full h-full focus:outline-none focus:ring-2 items-center justify-center"
 							onClick={handleClick}
 						>
 							{avatar}
@@ -90,7 +90,7 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 				{!disableImage && (
 					<div className="mr-2 min-w-[64px] min-h-[64px]">
 						<button
-							className="w-full h-full focus:outline-none focus:ring-2"
+							className="w-full h-full focus:outline-none focus:ring-2 items-center justify-center"
 							onClick={handleClick}
 						>
 							<Image src={image || null} aspectRatio={1.0} alt={image} />
@@ -99,7 +99,7 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 				)}
 				{icon && (
 					<button
-						className="focus:outline-none focus:ring-2"
+						className="focus:outline-none focus:ring-2 items-center justify-center"
 						onClick={handleClick}
 					>
 						<Avatar className="mr-2 rounded">

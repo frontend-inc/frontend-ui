@@ -78,7 +78,9 @@ const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
           <div className="flex flex-row space-x-4 w-full items-end">
             <div className="flex flex-row items-center space-x-1">
               <Typography variant="h2" className='font-bold'>{ price == 0 ? 'FREE' : formatCurrency(price, precision)}</Typography>
-              <Typography variant="body2" className='text-xs text-foreground/70'>per<br />{interval}</Typography>
+              { price > 0 && (
+                <Typography variant="body2" className='text-xs text-foreground/70'>per<br />{interval}</Typography>
+              )}
             </div>
             { compareAtPrice && (
               <Typography variant="subtitle2" className='line-through text-foreground/70'>
@@ -86,13 +88,15 @@ const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
               </Typography>
             )}
           </div>
-          <Button 
-            size='lg' 
-            loading={loading}
-            onClick={handleSubscribe}
-          >
-            {buttonText}
-          </Button>
+          { price > 0 && (
+            <Button 
+              size='lg' 
+              loading={loading}
+              onClick={handleSubscribe}
+            >
+              {buttonText}
+            </Button>
+          )}
           <Typography variant="body2" className="text-foreground/70">
             This includes:
           </Typography>
