@@ -77,7 +77,7 @@ const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
         <div className="flex flex-col space-y-4 w-full">
           <div className="flex flex-row space-x-4 w-full items-end">
             <div className="flex flex-row items-center space-x-1">
-              <Typography variant="h3" className='font-bold'>{ price == 0 ? 'FREE' : formatCurrency(price, precision)}</Typography>
+              <Typography variant="h2" className='font-bold'>{ price == 0 ? 'FREE' : formatCurrency(price, precision)}</Typography>
               <Typography variant="body2" className='text-xs text-foreground/70'>per<br />{interval}</Typography>
             </div>
             { compareAtPrice && (

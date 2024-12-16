@@ -41,7 +41,7 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 	const {
 		icon,
 		avatar,
-		color,
+		color='bg-accent',
 		primary,
 		secondary,
 		image,
@@ -63,7 +63,6 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 			className={cn(
         'group',
 				'hover:bg-muted transition-all duration-200 p-1 py-2 overflow-hidden rounded-xl',
-				enableBorder && 'border-border hover:shadow-md mb-1 transition-shadow duration-200',
 				selected && 'border-primary'
 			)}
 		>
@@ -105,7 +104,7 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 					>
 						<Avatar className="mr-2 rounded">
 							<AvatarFallback className={color}>
-								<RemixIcon name={icon} />
+								<RemixIcon name={icon} className='text-white' />
 							</AvatarFallback>
 						</Avatar>
 					</button>

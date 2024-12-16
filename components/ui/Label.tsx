@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import { Badge } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
 
 type LabelProps = {
@@ -20,15 +21,16 @@ const Label: React.FC<LabelProps> = (props) => {
 
 	if (!label) return null
 	return (
-		<div
+		<Badge
+      variant='outline'
 			className={cn(
-				'text-xs text-foreground font-semibold uppercase tracking-wider',
+				'px-3 py-1 text-xs font-semibold uppercase tracking-wider',
 				textAlign && textAlignClasses[textAlign],
 				className
 			)}
 		>
 			{label}
-		</div>
+		</Badge>
 	)
 }
 

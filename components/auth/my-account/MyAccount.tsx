@@ -10,8 +10,6 @@ type MyAccountProps = {
 }
 
 const MyAccount: React.FC<MyAccountProps> = (props) => {
-	const router = useRouter()
-	const { redirectUrl } = props || {}
 
 	const {
 		loading,

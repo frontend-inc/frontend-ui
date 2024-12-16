@@ -73,7 +73,7 @@ export default function CustomDrawer(props: CustomDrawerProps) {
 
 						{title && (
 							<DrawerTitle>
-								<span className="flex font-semibold justify-center w-full text-2xl text-foreground">
+								<span className="flex font-semibold justify-center w-full text-3xl text-foreground">
 									{title}
 								</span>
 							</DrawerTitle>
