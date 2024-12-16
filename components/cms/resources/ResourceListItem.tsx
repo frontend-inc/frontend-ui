@@ -61,15 +61,15 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 	return (
 		<div
 			className={cn(
-				'hover:bg-muted p-1 py-2 overflow-hidden rounded-xl',
-				enableBorder &&
-					'border-border hover:shadow-md mb-1 transition-shadow duration-200',
+        'group',
+				'hover:bg-muted transition-all duration-200 p-1 py-2 overflow-hidden rounded-xl',
+				enableBorder && 'border-border hover:shadow-md mb-1 transition-shadow duration-200',
 				selected && 'border-primary'
 			)}
 		>
 			<div className="flex items-center p-1 rounded space-x-4">
 				{sortable && (
-					<GripVertical className="w-5 h-5 text-muted-foreground cursor-grab active:cursor-grabbing" />
+					<GripVertical className="w-4 h-4 opacity-0 group-hover:opacity-100 text-foreground cursor-grab active:cursor-grabbing" />
 				)}
 				{selectable && (
 					<Checkbox

@@ -5,4 +5,3 @@ export type AdminMenuType = {
 	value: string
 }
 
-export type AdminMenusType = Record<string, AdminMenuType[]>

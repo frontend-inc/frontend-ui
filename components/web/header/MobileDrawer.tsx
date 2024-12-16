@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useContext } from 'react'
-import { List } from '../../../components'
 import { Sheet } from '../..'
 import { AppContext } from '../../../context'
 import MobileDrawerLink from './MobileDrawerLink'
@@ -24,17 +23,15 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 
 	return (
 		<Sheet open={menuOpen} handleClose={() => setMenuOpen(false)} side="left">
-			<div>
-				<List className={'space-y-2'}>
-					{links?.map((menuItem, index) => (
-						<MobileDrawerLink
-							key={index}
-							menuItem={menuItem}
-							handleClick={handleMenuClick}
-						/>
-					))}
-				</List>
-			</div>
+      <ul className='space-y-2'>
+        {links?.map((menuItem, index) => (
+          <MobileDrawerLink
+            key={index}
+            menuItem={menuItem}
+            handleClick={handleMenuClick}
+          />
+        ))}
+      </ul>
 		</Sheet>
 	)
 }
