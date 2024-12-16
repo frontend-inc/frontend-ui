@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { List } from '../../../components'
 import CartLineItem from './CartLineItem'
 import { Empty } from '../../../components'
 import { useCart } from '../../../hooks'
@@ -20,11 +19,11 @@ const CartLineItems: React.FC = () => {
 		)
 	}
 	return (
-		<List>
+		<ul className="py-2">
 			{cart?.line_items.map((lineItem) => (
 				<CartLineItem key={lineItem.id} lineItem={lineItem} />
 			))}
-		</List>
+		</ul>
 	)
 }
 
