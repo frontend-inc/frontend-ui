@@ -7,29 +7,20 @@ import { cn } from 'frontend-shadcn'
 
 type AttachmentImageProps = {
 	icon?: string
-	height: number
-	width?: number
-	className?: string
 }
 
-const AttachmentImage: React.FC<AttachmentImageProps> = ({
-	height = 64,
-	width = 64,
-	icon = 'File',
-	className,
-}) => {
+const AttachmentImage: React.FC<AttachmentImageProps> = (props) => {
+
+  const {
+    icon = 'ri-file-2-fill',
+  } = props
+
 	return (
-		<Avatar
-			className={cn('rounded-md', className)}
-			style={{
-				height: `${height}px`,
-				width: `${width}px`,
-			}}
-		>
-			<AvatarFallback className="bg-primary">
-				<RemixIcon name={icon} className="bg-primary-foreground" />
-			</AvatarFallback>
-		</Avatar>
+    <Avatar className="rounded-lg">
+      <AvatarFallback className="bg-accent rounded-lg">
+        <RemixIcon name={ icon } size="lg" className="text-accent-foreground" />
+      </AvatarFallback>
+    </Avatar>    
 	)
 }
 
