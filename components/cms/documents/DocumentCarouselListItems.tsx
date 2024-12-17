@@ -59,7 +59,7 @@ const DocumentCarouselListItems: React.FC<DocumentCarouselListItemsProps> = (
 			<Carousel>
 				<CarouselContent>
 					{resources?.map((resource, index) => (
-						<CarouselItem className="sm:basis-1/2 lg:basis-1/3" key={index}>
+						<CarouselItem className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4" key={index}>
 							<div className="p-1">
 								<DocumentListItem
 									buttons={buttons}
