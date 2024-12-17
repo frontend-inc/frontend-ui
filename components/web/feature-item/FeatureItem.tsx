@@ -53,6 +53,7 @@ const FeatureItem: React.FC<FeatureItemProps> = (props) => {
             subtitle={ subtitle }
             editable={editable}
             handleChange={handleChange}
+            size="lg"
           />
           <ul className="flex flex-col space-y-2 w-full p-0">
             { items?.map((item, idx) => (
@@ -61,8 +62,8 @@ const FeatureItem: React.FC<FeatureItemProps> = (props) => {
                   <RemixIcon name={item.icon} className='text-primary' size="xl" />
                 )}
                 <div className="flex flex-col justify-center space-y-0">
-                  <Typography variant="body1">{ item.title }</Typography>
-                  <Typography variant="body2" className="text-muted-foreground">{ item.subtitle }</Typography>
+                  <Typography variant="subtitle2">{ item.title }</Typography>
+                  <Typography variant="body1" className="text-muted-foreground">{ item.subtitle }</Typography>
                 </div>
               </li>
             ))}
