@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import ThemeContext from './ThemeContext'
+import { FontLoader } from '../components'
 import { cn } from 'frontend-shadcn'
 
 type ThemeProviderProps = {
@@ -19,8 +20,8 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 		mode = 'light',
 		theme = 'light',
 		primaryColor,
-		headerFont,
-		bodyFont,
+		headerFont='Inter',
+		bodyFont='Inter',
 		borderRadius,
 		children,
 	} = props || {}
@@ -51,6 +52,10 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 
 	return (
 		<ThemeContext.Provider value={value}>
+      <FontLoader 
+        headerFont={headerFont} 
+        bodyFont={bodyFont} 
+      />
 			<div
 				className={cn(mode == 'dark' ? 'dark-theme' : 'light', theme, 'w-full')}
 			>
