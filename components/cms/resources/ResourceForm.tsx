@@ -46,7 +46,6 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 
 	return (
 		<Sheet
-      maxWidth="md"
 			open={open}
 			handleClose={handleClose}
 			title={title ? title : resource?.id ? 'Edit' : 'Add'}

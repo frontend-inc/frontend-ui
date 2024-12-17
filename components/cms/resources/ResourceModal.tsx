@@ -14,6 +14,7 @@ export type ResourceModalProps = {
 	handleEdit?: () => void
 	handleDelete?: () => void
 	disablePadding?: boolean
+  maxWidth?:'xs' | 'sm' | 'md' | 'lg' | 'xl'
 	children?: any
 }
 
@@ -28,7 +29,7 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 		enableDelete,
 		handleEdit,
 		handleDelete,
-		disablePadding,
+		maxWidth = 'xs',
 	} = props || {}
 
 	return (
@@ -36,10 +37,10 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 			open={open}
 			handleClose={handleClose}
 			title={title}
-			maxWidth="lg"
+			maxWidth={maxWidth}
 			buttons={
 				(enableEdit || enableDelete) && (
-					<div className="w-fill flex flex-row space-x-2">
+					<div className="w-full flex flex-row space-x-2">
 						{enableEdit && (
 							<Button fullWidth onClick={handleEdit}>
 								Edit

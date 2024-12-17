@@ -31,10 +31,10 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 	} = props || {}
 
 	return (
-		<div className="w-full">
-			<div className="w-full flex flex-col space-y-6 sm:flex-row sm:space-y-0 sm:space-x-6">
+		<div className="w-full py-4">
+			<div className="w-full flex flex-col space-y-6">
 				{!disableImage && (
-					<div className="flex flex-col space-y-6 w-full sm:w-1/3">
+					<div className="flex flex-col space-y-6 w-full">
 						<div className="w-full h-full">
 							<Image alt={label} src={image} label={label} />
 						</div>
@@ -43,7 +43,6 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 				<div
 					className={cn(
 						'w-full flex flex-col space-y-6',
-						!disableImage && 'sm:w-2/3'
 					)}
 				>
 					{title && (

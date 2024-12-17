@@ -24,7 +24,7 @@ type SheetProps = {
 	mode?: string
 	className?: string
 	fullWidth?: boolean
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl'
+  maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 }
 
 const Sheet: React.FC<SheetProps> = (props) => {
@@ -37,17 +37,18 @@ const Sheet: React.FC<SheetProps> = (props) => {
 		buttons,
 		disablePadding = false,
 		className,
-    maxWidth = 'sm',
+    maxWidth = 'xs',
 	} = props
 
 	const { theme } = useTheme()
 	const { theme: mode } = useNextTheme()
 
   const maxWidthClasses = {
-    sm: 'sm:w-[360px]',
-    md: 'md:max-w-screen-sm',
-    lg: 'md:max-w-screen-md',
-    xl: 'md:max-w-screen-lg',
+    xs: 'sm:w-[360px]',
+    sm: 'md:max-w-screen-sm',
+    md: 'md:max-w-screen-md',
+    lg: 'md:max-w-screen-lg',
+    xl: 'md:max-w-screen-xl',
   }
 
 	return (
