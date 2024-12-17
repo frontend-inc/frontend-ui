@@ -15,10 +15,11 @@ export type ButtonActionsProps = {
 const ButtonActions: React.FC<ButtonActionsProps> = (props) => {
 	const {
 		buttons,
-		size,
+		size='default',
 		justifyContent = 'justify-center',
 		className,
 	} = props || {}
+
 
 	return (
 		<div

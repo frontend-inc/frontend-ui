@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
 import { RemixIcon, ImageModal, VideoModal, ShareModal } from '../..'
 import { useButton } from '../../../hooks'
 import { ActionType } from '../../../types'
+import { Button } from '../../../components'
 
 type ButtonActionProps = {
 	icon?: string
@@ -49,6 +49,7 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 		<>
 			<Button
 				fullWidth
+        {...rest}
 				size={size}
 				startIcon={
 					icon && (
@@ -65,7 +66,6 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 				/* @ts-ignore */
 				onClick={handleClick}
 				variant={variant}
-				{...rest}
 			>
 				{children}
 			</Button>
