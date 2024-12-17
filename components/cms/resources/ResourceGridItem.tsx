@@ -78,7 +78,6 @@ export default function ResourceGridItem(props: ResourceGridItemProps) {
               onCheckedChange={handleSelect}
             />
           )}
-          {avatar}
           {secondaryAction}
         </div>
         {(menuActions || handleEdit || handleDelete) && (
@@ -109,7 +108,8 @@ export default function ResourceGridItem(props: ResourceGridItemProps) {
 				className="overflow-hidden h-40 flex items-center justify-center cursor-pointer"
 				onClick={handleClick}
 			>
-				{image && (
+        { avatar && avatar }
+				{ image && (
 					<Image
 						src={image}
 						alt={label || 'Resource image'}
