@@ -24,7 +24,7 @@ const ButtonActions: React.FC<ButtonActionsProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				'flex flex-row',
+				'flex flex-row w-full',
 				justifyContent && `justify-center md:${justifyContent}`,
 				className
 			)}

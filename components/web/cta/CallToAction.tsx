@@ -5,6 +5,7 @@ import { Heading, Stack } from '../../../components'
 import { ButtonType } from '../../../types'
 import { ButtonActions } from '../..'
 import { HeadingProps } from '../../../types'
+import { cn } from 'frontend-shadcn'
 
 export type CallToActionProps = HeadingProps & {
 	direction?: 'row' | 'column'
@@ -25,7 +26,11 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Stack direction={direction}>
+		<Stack 
+      direction={direction} 
+      className={cn(
+        direction == 'row' && 'items-center justify-center',
+      )}>
 			<Stack direction={direction} size="1/3">
 				<Heading
 					label={label}
@@ -37,7 +42,14 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 					handleChange={handleChange}
 				/>
 			</Stack>
-			<Stack direction={direction} size="2/3">
+			<Stack 
+        direction={direction} 
+        size="2/3"
+        className={cn(
+          'w-full',
+          direction == 'row' && 'items-center justify-center',
+        )}
+      >
 				{buttons?.length > 0 && (
 					<ButtonActions
 						buttons={buttons}
