@@ -1,5 +1,5 @@
 export { default as UIAccordion } from './UIAccordion'
-export { default as UIBlog } from './UIBlog'
+export { default as UIBlogPost } from './UIBlogPost'
 export { default as UIButtons } from './UIButtons'
 export { default as UICards } from './UICards'
 export { default as UICover } from './UICover'

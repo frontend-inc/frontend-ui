@@ -6,9 +6,9 @@ import { Blog } from '../../components'
 import { BlogProps } from '../../components/ui/typography/Blog'
 import { SectionProps } from '../../types'
 
-type UIBlogProps = SectionProps & BlogProps
+type UIBlogPostProps = SectionProps & BlogProps
 
-const UIBlog: React.FC<UIBlogProps> = (props) => {
+const UIBlogPost: React.FC<UIBlogPostProps> = (props) => {
 	
   const {
 		bgColor,
@@ -38,4 +38,4 @@ const UIBlog: React.FC<UIBlogProps> = (props) => {
 	)
 }
 
-export default UIBlog
+export default UIBlogPost
