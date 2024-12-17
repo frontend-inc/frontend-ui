@@ -1,4 +1,8 @@
 export const GOOGLE_FONTS = [
+  {
+    name: 'Barlow',
+    url: 'https://fonts.googleapis.com/css2?family=Barlow&display=swap',
+  },
 	{
 		name: 'DM Sans',
 		url: 'https://fonts.googleapis.com/css2?family=DM+Sans&display=swap',
