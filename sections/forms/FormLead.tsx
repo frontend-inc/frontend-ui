@@ -2,16 +2,16 @@
 
 import React from 'react'
 import { Section, Heading, Stack } from '../../components'
-import { ContactForm } from '../../components'
-import { ContactFormProps } from '../../components/cms/leads/ContactForm'
+import { LeadForm } from '../../components'
+import { LeadFormProps } from '../../components/cms/leads/LeadForm'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
 
 type FormContactUsProps = SectionProps &
 	HeadingProps &
 	StackProps &
-	ContactFormProps
+	LeadFormProps
 
-const FormContactUs: React.FC<FormContactUsProps> = (props) => {
+const FormLead: React.FC<FormContactUsProps> = (props) => {
 	const {
 		direction = 'row',
 		label,
@@ -58,11 +58,11 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 					/>
 				</Stack>
 				<Stack direction={direction} size="2/3">
-					<ContactForm {...rest} />
+					<LeadForm {...rest} />
 				</Stack>
 			</Stack>
 		</Section>
 	)
 }
 
-export default FormContactUs
+export default FormLead

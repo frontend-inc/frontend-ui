@@ -8,9 +8,10 @@ export * from './resources'
 export * from './list-fields'
 export * from './display-fields'
 export * from './show-fields'
+export * from './leads'
 
 export { default as EmailSubscribe } from './newsletter/EmailSubscribe'
-export { default as ContactForm } from './leads/ContactForm'
+
 export { default as LoadMore } from './documents/LoadMore'
 export { default as FilterButton } from './filters/FilterButton'
 export { default as KanBanBoard } from '../cms/kanban/KanBanBoard'

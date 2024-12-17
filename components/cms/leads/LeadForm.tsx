@@ -1,31 +1,42 @@
 'use client'
 
 import React from 'react'
-import { FormFieldType } from '../../../types'
 import { Container, Form } from '../../../components'
-import { useContacts } from '../../../hooks'
+import { useContacts, useNavigate } from '../../../hooks'
 import { toast } from 'sonner'
 import { buildFormMetafields } from '../../../helpers'
 
-export type ContactFormProps = {
+export type LeadFormProps = {
+	buttonText?: string
+	href?: string
+  url?: string
+  path?: string
+	handleClick?: () => void
   enablePhone?: boolean
   enableCompany?: boolean
   enableReason?: boolean
+  enableMessage?: boolean
   reasonOptions?: string[]
-	buttonText?: string
-	href?: string
-	handleClick?: () => void
 }
 
-// Call To Action
-const ContactForm: React.FC<ContactFormProps> = (props) => {
+const LeadForm: React.FC<LeadFormProps> = (props) => {
 	const { 
     enablePhone,
     enableCompany,
-    enableReason,
+    enableReason,    
     reasonOptions=[],
-    buttonText = 'Send Message',
+    enableMessage,
+    buttonText = 'Submit',
+    url,
+    path 
   } = props || {}
+
+  const metafields = buildFormMetafields({
+    enablePhone,
+    enableCompany,
+    enableReason,
+    reasonOptions,
+  })
 
 	const {
 		errors,
@@ -36,25 +47,26 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 		createContact,
 	} = useContacts()
 
-  const metafields = buildFormMetafields({
-    enablePhone,
-    enableCompany,
-    enableReason,
-    reasonOptions,
+  const onClick = useNavigate({
+    url,
+    path 
   })
 
 	const handleSubmit = async () => {
-		if (!contact?.email || !contact?.name || !contact?.message) {
+		if (!contact?.email || !contact?.name) {
 			toast('Please fill out all required fields')
 			return
 		}
 		let resp = await createContact({
 			...contact,
-			source: 'contact',
+			source: 'lead',
 		})
 		if (resp?.id) {
-			setContact({})
-			toast('Thank you for contacting us!')
+			setContact({})      
+			toast('Thank you for submitting your information!')      
+      if(onClick){
+        onClick()      
+      }
 		}
 	}
 
@@ -77,12 +89,6 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 					},
 					...metafields,
 					{
-						label: 'Message',
-						name: 'message',
-						placeholder: 'Leave a message',
-						variant: 'text',
-					},
-					{
 						label: 'Join our newsletter',
 						name: 'accepts_marketing',
 						variant: 'boolean',
@@ -98,4 +104,4 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 	)
 }
 
-export default ContactForm
+export default LeadForm
