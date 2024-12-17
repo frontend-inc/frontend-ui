@@ -11,16 +11,19 @@ interface ResourceToolbarModalProps {
 	children: React.ReactNode
 }
 
-export default function ResourceToolbarModal({
-	open,
-	handleClose,
-	children,
-}: ResourceToolbarModalProps) {
+export default function ResourceToolbarModal(props: ResourceToolbarModalProps) {
+
+  const {
+    open,
+    handleClose,
+    children,
+  } = props || {}
+  
 	return (
 		<div
 			className={cn(
 				!open && 'hidden',
-				'fixed bg-background top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out '
+				'fixed bg-muted top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out '
 			)}
 		>
 			<div className="text-secondary-foreground shadow-md">

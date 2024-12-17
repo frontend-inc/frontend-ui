@@ -42,11 +42,14 @@ const DropZone: React.FC<DropZoneProps> = (props) => {
 				}
 			}
 			reader.readAsDataURL(file)
-		},
-		[onDrop]
+		}, [onDrop]
 	)
 
-	const { getRootProps, getInputProps, isDragActive } = useDropzone({
+	const { 
+    getRootProps, 
+    getInputProps, 
+    isDragActive 
+  } = useDropzone({
 		onDrop: handleOnDrop,
 	})
 

@@ -414,6 +414,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 							handleEdit={handleEdit}
 							handleShow={handleShowClick}
 							handleDelete={handleDeleteClick}
+              handleSelect={handleSelect}
 							resources={resources}
 							renderItem={(resource, props) => (
 								<Component
@@ -424,16 +425,17 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 										//@ts-ignore
 										selectedIds?.includes(resource?.id)
 									}
-									enableSelect={selectable}
 									enableBorder={enableBorder}
-									enableEdit={enableEdit}
-									enableDelete={enableDelete}
-									handleClick={() => handleShowClick(resource)}
+									handleClick={
+										handleClick
+											? () => handleClick(resource)
+											: () => handleShowClick(resource)
+                  }
 									handleEdit={() => handleEdit(resource)}
+                  handleSelect={() => handleSelect(resource)}
 									handleDelete={() => handleDeleteClick(resource)}
-									handleSelect={() => handleSelect(resource)}
 									handleReload={reloadMany}
-									{...slots.item}
+                  {...slots.item}
 								/>
 							)}
 							{...slots.list}

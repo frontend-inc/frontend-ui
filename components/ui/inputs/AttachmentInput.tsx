@@ -21,14 +21,17 @@ type RenderAttachmentProps = {
 	alt?: string
 }
 
-function RenderAttachment({
-	src,
-	objectFit = 'cover',
-	size = IMAGE_WIDTH,
-	onDelete,
-	variant = 'file',
-	alt = '',
-}: RenderAttachmentProps) {
+function RenderAttachment(props: RenderAttachmentProps) {
+
+  const {
+    src,
+    objectFit = 'cover',
+    size = IMAGE_WIDTH,
+    onDelete,
+    variant = 'file',
+    alt = '',
+  } = props || {}
+
 	return (
 		<div className="relative">
 			{variant === 'image' && (
@@ -67,18 +70,20 @@ function RenderAttachment({
 	)
 }
 
-export default function AttachmentInput({
-	name,
-	label,
-	handleChange,
-	value: attachment,
-	handleRemove,
-	variant = 'file',
-	size = IMAGE_WIDTH,
-	objectFit = 'cover',
-	placeholder = 'Upload file',
-	info,
-}: AttachmentInputProps) {
+export default function AttachmentInput(props: AttachmentInputProps) {
+
+  const {
+    name,
+    label,
+    handleChange,
+    value: attachment,
+    handleRemove,
+    variant = 'file',
+    size = IMAGE_WIDTH,
+    objectFit = 'cover',  
+    info,
+  } = props || {}
+
 	const [src, setSrc] = useState<string | null>(null)
 
 	const onDrop = async (file: File, preview: { src: string }) => {

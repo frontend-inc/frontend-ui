@@ -24,7 +24,7 @@ const Label: React.FC<LabelProps> = (props) => {
 		<Badge
       variant='outline'
 			className={cn(
-				'px-3 py-1 text-xs font-semibold uppercase tracking-wider',
+				'px-3 py-1 text-xs tracking-wider',
 				textAlign && textAlignClasses[textAlign],
 				className
 			)}

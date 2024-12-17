@@ -39,23 +39,26 @@ export type ResourceGridItemProps = {
 	}
 }
 
-export default function ResourceGridItem({
-	selectable,
-	selected,
-	primary,
-	secondary,
-	avatar,
-	label,
-	image,
-	handleClick,
-	handleEdit,
-	handleDelete,
-	handleSelect,
-	secondaryAction,
-	menuActions,
-	enableBorder = false,
-	slots = {},
-}: ResourceGridItemProps) {
+export default function ResourceGridItem(props: ResourceGridItemProps) {
+
+  const {
+    selectable,
+    selected,
+    primary,
+    secondary,
+    avatar,
+    label,
+    image,
+    handleClick,
+    handleEdit,
+    handleDelete,
+    handleSelect,
+    secondaryAction,
+    menuActions,
+    enableBorder = false,
+    slots = {},
+  } = props || {}  
+
 	return (
 		<Card
 			className={cn(
@@ -66,37 +69,41 @@ export default function ResourceGridItem({
 				selected && 'border-primary'
 			)}
 		>
-			<CardHeader className="h-[50px] p-2 flex justify-between items-center">
-				{selectable && (
-					<Checkbox checked={selected} onCheckedChange={handleSelect} />
-				)}
-				{avatar}
-				<div className="flex flex-row justify-between w-full space-x-1">
-					{secondaryAction}
-					{(menuActions || handleEdit || handleDelete) && (
-						<DropdownMenu>
-							<DropdownMenuTrigger asChild>
-								<Button variant="ghost" className="h-8 w-8 p-0">
-									<span className="sr-only">Open menu</span>
-									<MoreVertical className="h-4 w-4" />
-								</Button>
-							</DropdownMenuTrigger>
-							<DropdownMenuContent align="end">
-								{menuActions}
-								{handleEdit && (
-									<DropdownMenuItem onClick={() => handleEdit({})}>
-										Edit
-									</DropdownMenuItem>
-								)}
-								{handleDelete && (
-									<DropdownMenuItem onClick={() => handleDelete({})}>
-										Delete
-									</DropdownMenuItem>
-								)}
-							</DropdownMenuContent>
-						</DropdownMenu>
-					)}
-				</div>
+			<CardHeader className="w-full p-2 flex flex-row space-x-2 justify-between items-center">
+        <div className="flex flex-row space-x-2 items-center">
+          {selectable && (
+            <Checkbox
+              className="text-foreground"
+              checked={selected}
+              onCheckedChange={handleSelect}
+            />
+          )}
+          {avatar}
+          {secondaryAction}
+        </div>
+        {(menuActions || handleEdit || handleDelete) && (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0">
+                <span className="sr-only">Open menu</span>
+                <MoreVertical className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {menuActions}
+              {handleEdit && (
+                <DropdownMenuItem onClick={() => handleEdit({})}>
+                  Edit
+                </DropdownMenuItem>
+              )}
+              {handleDelete && (
+                <DropdownMenuItem onClick={() => handleDelete({})}>
+                  Delete
+                </DropdownMenuItem>
+              )}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
 			</CardHeader>
 			<div
 				className="overflow-hidden h-40 flex items-center justify-center cursor-pointer"

@@ -46,7 +46,7 @@ const ResourceListItems: React.FC<ResourceListItemsProps> = (props) => {
 					{resources?.map((resource) => renderItem(resource, props))}
 				</ul>
 			) : (
-				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+				<div className="w-full gap-6 pb-1 grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))]">
 					{resources?.map((resource) => renderItem(resource, props))}
 				</div>
 			)}

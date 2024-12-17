@@ -34,7 +34,6 @@ export type ResourceListItemProps = {
 	sortable?: boolean
 	isDragging?: boolean
 	disableImage?: boolean
-	enableBorder?: boolean
 }
 
 export default function ResourceListItem(props: ResourceListItemProps) {
@@ -55,7 +54,6 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 		selectable,
 		selected,
 		disableImage = false,
-		enableBorder = true,
 	} = props
 
 	return (
