@@ -123,7 +123,10 @@ const MenuBar = ({ editor }) => {
 				>
 					<RemixIcon
 						name={btn.icon}
-						className={cn('text-zinc-900', btn.isActive && 'text-white')}
+						className={cn(
+              'text-foreground', 
+              btn.isActive && 'text-primary-foreground'
+            )}
 					/>
 				</IconButton>
 			))}
@@ -140,7 +143,10 @@ const MenuBar = ({ editor }) => {
 				>
 					<RemixIcon
 						name={btn.icon}
-						className={cn('text-zinc-900', btn.isActive && 'text-white')}
+						className={cn(
+              'text-foreground', 
+              btn.isActive && 'text-primary-foreground'
+            )}
 					/>
 				</IconButton>
 			))}
@@ -154,7 +160,10 @@ const MenuBar = ({ editor }) => {
 				>
 					<RemixIcon
 						name={btn.icon}
-						className={cn('text-zinc-900', btn.isActive && 'text-white')}
+						className={cn(
+              'text-foreground', 
+              btn.isActive && 'text-primary-foreground'
+            )}
 					/>
 				</IconButton>
 			))}
@@ -168,7 +177,10 @@ const MenuBar = ({ editor }) => {
 				>
 					<RemixIcon
 						name={btn.icon}
-						className={cn('text-zinc-900', btn.isActive && 'text-white')}
+						className={cn(
+              'text-foreground', 
+              btn.isActive && 'text-primary-foreground'
+            )}
 					/>
 				</IconButton>
 			))}
@@ -183,9 +195,9 @@ const MenuBar = ({ editor }) => {
 					<RemixIcon
 						name={btn.icon}
 						className={cn(
-							'text-zinc-900',
-							btn.isActive && 'bg-zinc-900 text-white'
-						)}
+              'text-foreground', 
+              btn.isActive && 'text-primary-foreground'
+            )}
 					/>
 				</IconButton>
 			))}

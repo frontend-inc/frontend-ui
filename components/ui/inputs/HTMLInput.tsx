@@ -121,7 +121,13 @@ const MenuBar = (props) => {
           )}
 					aria-label={btn.label}
 				>
-					<RemixIcon name={btn.icon} />
+					<RemixIcon
+            name={btn.icon}
+            className={cn(
+              'text-foreground', 
+              btn.isActive && 'text-primary-foreground'
+            )}
+          />
 				</IconButton>
 			))}
 		</div>

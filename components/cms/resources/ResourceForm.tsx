@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Modal, FormFields } from '../../../components'
+import { Sheet, FormFields } from '../../../components'
 import { Button } from '../../../components'
 
 export type ResourceFormProps = {
@@ -45,7 +45,7 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Modal
+		<Sheet
       maxWidth="md"
 			open={open}
 			handleClose={handleClose}
@@ -68,7 +68,7 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 				inputOptions={inputOptions}
 				inputParams={inputParams}
 			/>
-		</Modal>
+		</Sheet>
 	)
 }
 

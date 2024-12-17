@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Modal, CircularLoader } from '../..'
+import { Sheet, CircularLoader } from '../..'
 import { Button } from '../../../components'
 
 export type ResourceModalProps = {
@@ -32,7 +32,7 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Modal
+		<Sheet
 			open={open}
 			handleClose={handleClose}
 			title={title}
@@ -61,7 +61,7 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 			) : (
 				children
 			)}
-		</Modal>
+		</Sheet>
 	)
 }
 

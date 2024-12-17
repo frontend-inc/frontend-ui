@@ -24,6 +24,7 @@ type SheetProps = {
 	mode?: string
 	className?: string
 	fullWidth?: boolean
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl'
 }
 
 const Sheet: React.FC<SheetProps> = (props) => {
@@ -36,20 +37,29 @@ const Sheet: React.FC<SheetProps> = (props) => {
 		buttons,
 		disablePadding = false,
 		className,
+    maxWidth = 'sm',
 	} = props
 
 	const { theme } = useTheme()
 	const { theme: mode } = useNextTheme()
+
+  const maxWidthClasses = {
+    sm: 'sm:w-[360px]',
+    md: 'md:max-w-screen-sm',
+    lg: 'md:max-w-screen-md',
+    xl: 'md:max-w-screen-lg',
+  }
 
 	return (
 		<ShadcnSheet open={open} onOpenChange={handleClose}>
 			<SheetContent
 				side={side}
 				className={cn(
+          'w-full',
 					mode,
-					theme,
-					'w-full sm:w-[360px]',
+					theme,					
 					disablePadding && 'px-0',
+          maxWidthClasses[maxWidth],
 					className
 				)}
 			>
