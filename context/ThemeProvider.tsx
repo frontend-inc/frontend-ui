@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import ThemeContext from './ThemeContext'
-import { FontLoader } from '../components'
+import GoogleFontLoader from 'react-google-font-loader'
 import { cn } from 'frontend-shadcn'
 
 type ThemeProviderProps = {
@@ -15,8 +15,16 @@ type ThemeProviderProps = {
 	children: React.ReactNode
 }
 
+type GoogleFont = {
+  font: string
+  weights: number[]
+}
+
 const ThemeProvider = (props: ThemeProviderProps) => {
-	const {
+	
+  const [googleFonts, setGoogleFonts] = useState<any>()
+
+  const {
 		mode = 'light',
 		theme = 'light',
 		primaryColor,
@@ -49,13 +57,32 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 			)
 		}
 	}, [headerFont, bodyFont, borderRadius])
+  
+  
+    useEffect(() => {
+      if (headerFont || bodyFont) {
+        let fonts: GoogleFont[] = [] 
+        if (headerFont) {
+          fonts.push({
+            font: headerFont,
+            weights: [400, 600, 700, 800, 900],
+          })
+        }
+        if (bodyFont) {
+          fonts.push({
+            font: bodyFont,
+            weights: [400, 600, 700, 800, 900],
+          })
+        }
+        setGoogleFonts(fonts)
+      }
+    }, [headerFont, bodyFont])
 
 	return (
 		<ThemeContext.Provider value={value}>
-      <FontLoader 
-        headerFont={headerFont} 
-        bodyFont={bodyFont} 
-      />
+      { googleFonts?.length > 0 && (
+        <GoogleFontLoader fonts={googleFonts} />
+      )}
 			<div
 				className={cn(mode == 'dark' ? 'dark-theme' : 'light', theme, 'w-full')}
 			>
