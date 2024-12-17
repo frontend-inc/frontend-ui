@@ -33,7 +33,6 @@ export type ResourceGridItemProps = {
 	menuActions?: React.ReactNode
 	sortable?: boolean
 	isDragging?: boolean
-	enableBorder?: boolean
 	slots?: {
 		image?: any
 	}
@@ -55,7 +54,6 @@ export default function ResourceGridItem(props: ResourceGridItemProps) {
     handleSelect,
     secondaryAction,
     menuActions,
-    enableBorder = false,
     slots = {},
   } = props || {}  
 
@@ -64,8 +62,7 @@ export default function ResourceGridItem(props: ResourceGridItemProps) {
 			className={cn(
 				'overflow-hidden bg-background',
 				'border border-transparent',
-				enableBorder &&
-					'border-border hover:shadow-md transition-shadow duration-200',
+				'border-border hover:shadow-md transition-shadow duration-200',
 				selected && 'border-primary'
 			)}
 		>
