@@ -153,8 +153,6 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		totalCount,
 		loadMore,
 		paginate,
-		getMany,
-		getOne,
 		reloadOne,
 		selected,
 		selectedIds,
@@ -321,7 +319,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	}
 
 	const handleExport = async () => {
-		let data = await getMany(query)
+		let data = await findMany(query)
 		exportJsonToCSV(exportHeaders, data)
 	}
 
