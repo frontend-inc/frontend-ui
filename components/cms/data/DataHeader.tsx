@@ -52,7 +52,6 @@ const DataHeader: React.FC<DataHeaderProps> = (props) => {
 		handleSortDirection,
 		activeFilters,
 		handleAddFilter,
-		handleClearFilters,
 	} = useSearch({
 		url,
 		query: defaultQuery,

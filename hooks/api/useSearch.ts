@@ -27,19 +27,28 @@ const useSearch = (props) => {
 	const [location, setLocation] = useState('')
 
 	// Compare only the name and operator and override
-	const findDuplicateFilterIndex = (filters, filter) => {
+  const findDuplicateFilterIndex = (filters, filter) => {
+    const { name, operator } = filter || {}
 		return filters.findIndex(
-			(f) => f.name === filter.name && f.operator === filter.operator
+			  (f) => f.name === name && 
+        f.operator === operator && 
+        f.value === filter.value
 		)
 	}
 
+  const removeDuplicateFilters = (filters, filter) => {
+    return filters.filter((f) => {
+      return f.name !== filter.name || f.operator !== filter.operator
+    })
+  }
+
 	const handleAddFilter = (filter) => {
 		let updatedFilters = [...activeFilters]
+    updatedFilters = removeDuplicateFilters(updatedFilters, filter)
+
 		let duplicateIndex = findDuplicateFilterIndex(activeFilters, filter)
 		if (duplicateIndex > -1) {
-			updatedFilters = updatedFilters?.filter(
-				(f, index) => index !== duplicateIndex
-			)
+			updatedFilters = updatedFilters?.filter((f, index) => index !== duplicateIndex)
 		} else {
 			//@ts-ignore
 			updatedFilters = [...updatedFilters, filter]
