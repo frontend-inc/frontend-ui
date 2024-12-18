@@ -145,8 +145,6 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
 
 	let searchQuery = buildSearchQuery(contentType, query)
 
-  console.log("SearchQuery", searchQuery)
-
 	const listFields = buildListFields({
 		displaySubtitle,
 		displayCategory,
