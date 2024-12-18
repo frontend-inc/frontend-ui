@@ -223,8 +223,6 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		setActiveFilters([])
 		findMany({
 			filters: [...defaultQuery?.filters],
-			sort_by: 'id',
-			sort_direction: 'desc',
 			keywords: '',
 			page: 1,
 			per_page: perPage,
@@ -332,6 +330,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 			findMany({
 				...query,
 				filters: [...(queryFilters || []), ...(defaultQuery?.filters || [])],
+        page: 1
 			})
 		}
 	}, [queryFilters])
