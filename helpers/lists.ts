@@ -95,7 +95,7 @@ export const buildSortFields = (params: SortFieldParams) => {
 	} = params || {}
 
 	const positionField = {
-		label: 'Default',
+		label: 'Sorted',
 		name: 'position',
 		position: 1,
 	}
