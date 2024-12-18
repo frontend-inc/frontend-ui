@@ -96,7 +96,7 @@ const DataList: React.FC<DataListProps> = (props) => {
 		enableSorting,
 		url,
 		name,
-		query = {},
+		query,
 		fields = [],
 		filterOptions = [],
 		sortOptions = [],
