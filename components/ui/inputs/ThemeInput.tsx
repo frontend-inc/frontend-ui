@@ -61,7 +61,7 @@ export default function ThemePicker({
 					<ChevronDown className="h-4 w-4 opacity-50" />
 				</Button>
 			</PopoverTrigger>
-			<PopoverContent className="bg-background w-[200px] p-0">
+			<PopoverContent className="bg-background z-50 w-[200px] p-0">
 				<div className="grid grid-cols-5 gap-1 p-2">
 					{TAILWIND_COLORS.map((color) => (
 						<TooltipProvider key={color}>
