@@ -144,6 +144,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		updatePositions,
 		handleChange,
 		query,
+    findOne,
 		findMany,
 		reloadMany,
 		addAttachment,
@@ -152,8 +153,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		numPages,
 		totalCount,
 		loadMore,
-		paginate,
-		reloadOne,
+		paginate,		
 		selected,
 		selectedIds,
 		handleSelect,
@@ -239,7 +239,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	}
 
 	const handleEdit = async (resource) => {
-		let resp = await reloadOne(resource?.id)
+		let resp = await findOne(resource?.id)
 		setResource(resp)
 		setOpenShow(false)
 		setOpenCreate(false)
@@ -273,7 +273,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		if (handleClick) {
 			handleClick(resource)
 		} else if (enableShow) {
-			let resp = await reloadOne(resource?.id)
+			let resp = await findOne(resource?.id)
 			setResource(resp)
 			setOpenShow(true)
 			setOpenEdit(false)
@@ -513,7 +513,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					handleRemoveAttachment={handleRemoveAttachment}
 					handleSubmit={handleSubmit}
 					handleReload={reloadMany}
-					handleReloadOne={reloadOne}
+					handleReloadOne={findOne}
 					fields={fields}
 					{...slots.edit}
 				/>
