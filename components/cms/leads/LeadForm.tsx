@@ -35,6 +35,7 @@ const LeadForm: React.FC<LeadFormProps> = (props) => {
     enablePhone,
     enableCompany,
     enableReason,
+    enableMessage,
     reasonOptions,
   })
 
@@ -66,7 +67,7 @@ const LeadForm: React.FC<LeadFormProps> = (props) => {
 			toast('Thank you for submitting your information!')      
       if(onClick){
         onClick()      
-      }
+      }      
 		}
 	}
 
