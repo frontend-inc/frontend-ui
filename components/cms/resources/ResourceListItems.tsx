@@ -30,7 +30,8 @@ export type ResourceListItemsProps = {
 }
 
 const ResourceListItems: React.FC<ResourceListItemsProps> = (props) => {
-	const {
+	
+  const {
 		page,
 		grid = false,
 		numPages,
