@@ -2,10 +2,9 @@
 
 import React from 'react'
 import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
 } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
 
@@ -24,12 +23,13 @@ interface MenuItemProps {
 
 const Menu: React.FC<MenuProps> = ({ children, trigger, className }) => {
 	return (
-		<DropdownMenu>
-			<DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger>
-			<DropdownMenuContent className={cn('min-w-[200px]', className)}>
+		<Popover>
+			<PopoverTrigger asChild>{trigger}</PopoverTrigger>
+			<PopoverContent 
+        className={cn('p-0 min-w-[200px]', className)}>
 				{children}
-			</DropdownMenuContent>
-		</DropdownMenu>
+			</PopoverContent>
+		</Popover>
 	)
 }
 
@@ -40,13 +40,17 @@ const MenuItem: React.FC<MenuItemProps> = ({
 	className,
 }) => {
 	return (
-		<DropdownMenuItem
+		<button
 			onClick={onClick}
 			disabled={disabled}
-			className={cn('cursor-pointer', className)}
+			className={cn(
+        "flex w-full items-center px-2 py-2 text-sm rounded-md hover:bg-accent hover:text-accent-foreground focus:outline-none",
+				disabled && 'opacity-50 cursor-not-allowed',
+				className
+			)}
 		>
 			{children}
-		</DropdownMenuItem>
+		</button>
 	)
 }
 
