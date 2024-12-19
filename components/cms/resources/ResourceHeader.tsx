@@ -126,7 +126,8 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 						size="default"
 						className="w-full sm:w-auto"
 						onClick={handleAdd}
-						startIcon={<RiAddFill className="text-primary-foreground" />}
+						startIcon={
+              <RiAddFill className="text-primary-foreground" />}
 					>
 						{buttonText}
 					</Button>

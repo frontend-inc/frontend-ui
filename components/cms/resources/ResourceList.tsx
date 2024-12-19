@@ -53,8 +53,7 @@ export type ResourceListProps = {
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
-	enableExport?: boolean
-	enableBorder?: boolean
+	enableExport?: boolean	
 	direction?: 'row' | 'column'
 	emptyIcon?: string
 	emptyTitle?: string
@@ -117,8 +116,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		enableShow,
 		enableExport,
 		handleClick,
-		slots = SLOT_PROPS,
-		enableBorder = false,
+		slots = SLOT_PROPS,		
 		direction = 'row',
 		emptyIcon = 'Search',
 		emptyTitle = 'No results found',
@@ -416,7 +414,6 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 										//@ts-ignore
 										selectedIds?.includes(resource?.id)
 									}
-									enableBorder={enableBorder}
 									handleClick={
 										handleClick
 											? () => handleClick(resource)
@@ -450,8 +447,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 										// @ts-ignore
 										selectedIds?.includes(resource?.id)
 									}
-									resource={resource}
-									enableBorder={enableBorder}
+									resource={resource}									
 									enableEdit={enableEdit}
 									enableDelete={enableDelete}
 									handleClick={

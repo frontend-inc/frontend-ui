@@ -11,12 +11,15 @@ type SortableListProps = {
 	handleDrop: (items: any[]) => void
 }
 
-export default function SortableList({
-	items,
-	droppableId = 'sortable-list',
-	renderItem,
-	handleDrop,
-}: SortableListProps) {
+export default function SortableList(props: SortableListProps) {
+
+  const {
+    items,
+    droppableId = 'sortable-list',
+    renderItem,
+    handleDrop,
+  } = props || {}
+
 	const [sorted, setSorted] = useState(items)
 
 	const reorder = (items: any[], startIndex: number, endIndex: number) => {
