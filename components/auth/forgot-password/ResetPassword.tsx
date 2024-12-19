@@ -21,10 +21,10 @@ const ResetPassword: React.FC<ResetPasswordProps> = (props) => {
 	const { token: resetPasswordToken } = useParams() as any
 
 	const {
-		title = 'Reset Password',
-		subtitle = 'Enter your new password',
+		title = 'Create a password',
+		subtitle = 'Enter a new password for your account',
 		redirectUrl = '/login',
-		loginUrl,
+		loginUrl='/login',
 	} = props || {}
 
 	const { loading, errors, user, handleChange, resetPassword } = useAuth()

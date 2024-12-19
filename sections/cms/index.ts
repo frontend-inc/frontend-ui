@@ -1,3 +1,4 @@
+export { default as CmsBlog } from './CmsBlog'
 export { default as CmsCarousel } from './CmsCarousel'
 export { default as CmsForm } from './CmsForm'
 export { default as CmsPlaces } from './CmsPlaces'

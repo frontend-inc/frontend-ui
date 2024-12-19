@@ -19,6 +19,7 @@ type MobileHeaderProps = {
 	enableShopify?: boolean
 	enableStripe?: boolean
 	enableNotifications?: boolean
+  disableMenu?: boolean
 	handleClick: (path: string) => void
 }
 
@@ -30,6 +31,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props) => {
 		logoHeight = 50,
 		handleClick,
 		buttons,
+    disableMenu,
 		enableAuth = false,
 		enableStripe = false,
 		enableShopify = false,
@@ -46,14 +48,16 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props) => {
 		>
 			<div className="flex justify-between items-center h-full px-4">
 				<div className="flex items-center">
-					<Button
-						variant="ghost"
-						size="icon"
-						className="mr-2"
-						onClick={() => setMenuOpen(true)}
-					>
-						<RemixIcon name="ri-menu-fill" />
-					</Button>
+          { !disableMenu && (
+            <Button
+              variant="ghost"
+              size="icon"
+              className="mr-2"
+              onClick={() => setMenuOpen(true)}
+            >
+              <RemixIcon name="ri-menu-fill" />
+            </Button>
+          )}
 					<Logo
 						handleClick={() => handleClick('/')}
 						src={logo}

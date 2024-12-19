@@ -2,8 +2,8 @@
 
 import React from 'react'
 import {
+  Card,
 	ListCard,
-	Card,
 	CoverCard,
 	AvatarCard,
 	ChipCard,

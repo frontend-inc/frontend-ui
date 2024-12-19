@@ -1,3 +1,5 @@
+export { default as BlogList } from './BlogList'
+export { default as BlogListItems } from './BlogListItems'
 export { default as DataTableList } from './DataTableList'
 export { default as DataTableListItems } from './DataTableListItems'
 export { default as FavoritesList } from './FavoritesList'
