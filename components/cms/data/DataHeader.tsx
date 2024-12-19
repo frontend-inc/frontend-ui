@@ -51,7 +51,7 @@ const DataHeader: React.FC<DataHeaderProps> = (props) => {
 		handleSortBy,
 		handleSortDirection,
 		activeFilters,
-		handleAddFilter,
+		handleToggleFilter,
 	} = useSearch({
 		url,
 		query: defaultQuery,
@@ -80,7 +80,7 @@ const DataHeader: React.FC<DataHeaderProps> = (props) => {
 							<FilterButton
 								filterOptions={filterOptions}
 								filters={activeFilters}
-								handleFilter={handleAddFilter}
+								handleFilter={handleToggleFilter}
 							/>
 						</div>
 					)}
@@ -88,8 +88,8 @@ const DataHeader: React.FC<DataHeaderProps> = (props) => {
 						<div className="w-full sm:w-auto">
 							<SortButton
 								sortOptions={sortOptions}
-								sortBy={query?.sort_by || 'id'}
-								sortDirection={query?.sort_direction || 'desc'}
+								sortBy={query?.sort_by || 'position'}
+								sortDirection={query?.sort_direction || 'asc'}
 								handleSortBy={handleSortBy}
 								handleSortDirection={handleSortDirection}
 							/>

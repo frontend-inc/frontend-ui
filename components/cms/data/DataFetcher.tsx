@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { useResourceContext } from 'frontend-js'
 
 export type DataFetcherProps = {
@@ -11,11 +11,17 @@ export type DataFetcherProps = {
 const DataFetcher: React.FC<DataFetcherProps> = (props) => {
 	const { children, query } = props
 
-	const { url, findMany } = useResourceContext()
+	const { 
+    url, 
+    findMany 
+  } = useResourceContext()
 
-	useEffect(() => {
-		if (query && url) {
-			findMany(query)
+  const mounted = useRef(false)
+
+	useEffect(() => {        
+		if (query && url && !mounted.current) {
+      mounted.current = true
+			findMany(query || {})
 		}
 	}, [query, url])
 

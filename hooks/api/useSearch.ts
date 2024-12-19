@@ -6,7 +6,7 @@ import { SortOptionType, SyntheticEventType } from '../../types'
 import { formatFilterArray } from '../../helpers'
 
 const useSearch = (props) => {
-	const { query: defaultQuery = {} } = props
+	const { query: defaultQuery = { filters: []} } = props
 
 	const {
 		loading,
@@ -21,41 +21,50 @@ const useSearch = (props) => {
 		loadMore,
 	} = useResourceContext()
 
-	const [queryFilters, setQueryFilters] = useState([])
 	const [activeFilters, setActiveFilters] = useState([])
 	const [keywords, setKeywords] = useState('')
 	const [location, setLocation] = useState('')
 
-	// Compare only the name and operator and override
-  const findDuplicateFilterIndex = (filters, filter) => {
-    const { name, operator } = filter || {}
-		return filters.findIndex(
-			  (f) => f.name === name && 
-        f.operator === operator && 
-        f.value === filter.value
-		)
-	}
-
-  const removeDuplicateFilters = (filters, filter) => {
-    return filters.filter((f) => {
-      return f.name !== filter.name || f.operator !== filter.operator
-    })
+// Finds the index of a filter that has the exact same name, operator, and value.
+const findExactFilterIndex = (filters, filter) => {
+    const { name, operator, value } = filter || {}
+    return filters.findIndex(
+      (f) => f.name == name && f.operator == operator && f.value == value
+    )
   }
 
-	const handleAddFilter = (filter) => {
-		let updatedFilters = [...activeFilters]
-    updatedFilters = removeDuplicateFilters(updatedFilters, filter)
+  // Removes all filters that share the same name and operator (regardless of value)
+  const removeDuplicateNameOperatorFilters = (filters, filter) => {
+    return filters.filter((f) => f.name !== filter.name || f.operator !== filter.operator)
+  }
 
-		let duplicateIndex = findDuplicateFilterIndex(activeFilters, filter)
-		if (duplicateIndex > -1) {
-			updatedFilters = updatedFilters?.filter((f, index) => index !== duplicateIndex)
-		} else {
-			//@ts-ignore
-			updatedFilters = [...updatedFilters, filter]
-		}
-		setActiveFilters(updatedFilters)
-		return updatedFilters
-	}
+  const handleToggleFilter = (filter) => {
+    let currentFilters = buildQueryFilters(activeFilters || [])
+    let exactIndex = findExactFilterIndex(activeFilters, filter)
+    let updatedFilters;
+    if (exactIndex > -1) {
+      // The exact filter is present, so we remove it (toggling off)
+      updatedFilters = currentFilters.filter((f, index) => index !== exactIndex)
+    } else {
+      // No exact match. We need to ensure only one filter with the same name/operator.
+      // Remove any existing filters with the same name & operator.
+      updatedFilters = removeDuplicateNameOperatorFilters(currentFilters, filter)
+      // Add the new filter
+      updatedFilters = [...updatedFilters, filter]
+    }
+    // Convert back to the desired query format (assuming buildQueryFilters works both ways)
+    let queryFilters = buildQueryFilters(updatedFilters)
+
+    findMany({
+      ...defaultQuery,
+      filters: [
+        ...defaultQuery?.filters,
+        ...queryFilters, 
+      ],
+      keywords: '',
+      page: 1,
+    })
+  }
 
 	const isBlank = (value) => {
 		return (
@@ -66,15 +75,13 @@ const useSearch = (props) => {
 		)
 	}
 
-	const buildQueryFilters = (activeFilters) => {
-		let filters = []
-		activeFilters
-			.filter((filter) => !isBlank(filter?.value))
-			.forEach((filter) => {
-				let { name, operator, value } = filter
-				filters = [...filters, { [name]: { [operator]: value } }] as any
-			})
+	const buildQueryFilters = (filters) => {		
 		return filters
+			.filter((filter) => !isBlank(filter?.value))
+			.map((filter) => {
+				let { name, operator, value } = filter
+				return { [name]: { [operator]: value } }
+			})		
 	}
 
 	const handleKeywordChange = (ev: SyntheticEventType) => {
@@ -89,6 +96,10 @@ const useSearch = (props) => {
 		let searchQuery = {
 			...query,
 			...defaultQuery,
+      filters: [
+        ...(query.filters || []),
+        ...(defaultQuery.filters || [])
+      ],
 			keywords: keywords,
 			page: 1,
 		}
@@ -125,27 +136,9 @@ const useSearch = (props) => {
 		setActiveFilters([])
 	}
 
-	useEffect(() => {
-		findMany({
-			...defaultQuery,
-			filters: [...queryFilters, ...(defaultQuery?.filters || [])],
-			sort_by: 'id',
-			sort_direction: 'desc',
-			keywords: '',
-			page: 1,
-		})
-	}, [queryFilters])
-
-	useEffect(() => {
-		setQueryFilters(buildQueryFilters(activeFilters))
-	}, [activeFilters])
-
-	useEffect(() => {
-		if (defaultQuery?.filters?.length >= 0) {
-			let filterArray = formatFilterArray(defaultQuery?.filters)
-			setActiveFilters(filterArray)
-		}
-	}, [defaultQuery?.filters?.length])
+  useEffect(() => {
+    setActiveFilters(formatFilterArray(query?.filters))
+  }, [query?.filters])
 
 	return {
 		loading,
@@ -168,7 +161,7 @@ const useSearch = (props) => {
 		handleSortDirection,
 		activeFilters,
 		setActiveFilters,
-		handleAddFilter,
+		handleToggleFilter,
 		handleClearFilters,
 	}
 }
