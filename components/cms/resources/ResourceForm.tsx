@@ -20,6 +20,7 @@ export type ResourceFormProps = {
 	handleReload: () => void
 	inputOptions?: any
 	inputParams?: any
+  maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 }
 
 export type FormProps = ResourceFormProps & {
@@ -42,6 +43,7 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 		fields = [],
 		inputOptions,
 		inputParams,
+    maxWidth="xs"
 	} = props || {}
 
 	return (
@@ -49,6 +51,7 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 			open={open}
 			handleClose={handleClose}
 			title={title ? title : resource?.id ? 'Edit' : 'Add'}
+      maxWidth={maxWidth}
 			buttons={
 				<Button fullWidth onClick={handleSubmit} loading={loading}>
 					{resource?.id ? 'Update' : 'Save'}

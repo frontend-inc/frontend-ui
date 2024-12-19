@@ -134,7 +134,7 @@ export const LOCATION_FIELD_TEMPLATE = {
 export const PUBLISHED_AT_FIELD_TEMPLATE = {
 	...BASE_FIELD_TEMPLATE,
 	name: 'published_at',
-	label: 'Published At',
+	label: 'Published on',
 	db_type: 'datetime',
 	variant: 'datetime',
 }

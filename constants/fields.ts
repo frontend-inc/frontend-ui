@@ -48,7 +48,7 @@ export const DESCRIPTION = {
 }
 
 export const HTML = {
-	label: 'HTML content',
+	label: 'HTML',
 	name: 'html',
 	variant: 'html',
 }
@@ -69,7 +69,7 @@ export const AUDIO = { label: 'Audio', name: 'audio', variant: 'audio' }
 export const FILE = { label: 'File', name: 'file', variant: 'file' }
 
 export const PUBLISHED_AT = {
-	label: 'Published At',
+	label: 'Published on',
 	name: 'published_at',
 	variant: 'string',
 }
@@ -114,14 +114,12 @@ export const DOCUMENT_FORM_FIELDS = {
 		TAGS,
 	],
 	article: [
-		CONTENT_TYPE,
 		IMAGE,
 		TITLE,
-		SUBTITLE_TEXT,
+    HTML,
 		PUBLISHED_AT,
 		LABEL,
 		CATEGORY,
-		HTML,
 		TAGS,
 	],
 	place: [
@@ -240,7 +238,7 @@ export const DOCUMENT_FORM_FIELDS = {
 
 export const DOCUMENT_SHOW_FIELDS = {
 	post: [IMAGE, TITLE, SUBTITLE, CATEGORY, DESCRIPTION, TAGS],
-	article: [IMAGE, TITLE, SUBTITLE, PUBLISHED_AT, CATEGORY, HTML, TAGS],
+	article: [IMAGE, TITLE, PUBLISHED_AT, CATEGORY, HTML, TAGS],
 	place: [
 		IMAGE,
 		TITLE,

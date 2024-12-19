@@ -56,10 +56,10 @@ const Sheet: React.FC<SheetProps> = (props) => {
 			<SheetContent
 				side={side}
 				className={cn(
-          'w-full',
+          'w-full py-2',
 					mode,
 					theme,					
-					disablePadding && 'px-0',
+					disablePadding && 'px-0 py-0',
           maxWidthClasses[maxWidth],
 					className
 				)}
@@ -69,10 +69,10 @@ const Sheet: React.FC<SheetProps> = (props) => {
 						{title}
 					</SheetTitle>
 				</SheetHeader>
-				<div className="h-full max-h-[calc(100vh-150px)] overflow-y-auto">
+				<div className="h-full max-h-[calc(100vh-120px)] overflow-y-auto py-2">
 					{children}
 				</div>
-				<SheetFooter className={cn('py-4', disablePadding && 'px-4')}>
+				<SheetFooter className={cn('py-4 items-center', disablePadding && 'px-4')}>
 					{buttons}
 				</SheetFooter>
 			</SheetContent>
