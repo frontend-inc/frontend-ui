@@ -52,7 +52,7 @@ const DocumentHeader: React.FC<DocumentHeaderProps> = (props) => {
 		handleSortBy,
 		handleSortDirection,
 		activeFilters,
-		handleAddFilter,
+		handleToggleFilter,
 	} = useSearch({
 		url,
 		query: defaultQuery,
@@ -62,7 +62,7 @@ const DocumentHeader: React.FC<DocumentHeaderProps> = (props) => {
 		name: string,
 		value: string | number | boolean
 	) => {
-		handleAddFilter({
+		handleToggleFilter({
 			name,
 			value,
 			operator: 'eq',

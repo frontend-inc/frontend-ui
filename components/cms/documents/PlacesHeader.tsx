@@ -36,7 +36,7 @@ const GeoHeader: React.FC<GeoHeaderProps> = (props) => {
 		handleSortBy,
 		handleSortDirection,
 		activeFilters,
-		handleAddFilter,
+		handleToggleFilter,
 		handleClearFilters,
 	} = useSearch({
 		url,
@@ -65,7 +65,7 @@ const GeoHeader: React.FC<GeoHeaderProps> = (props) => {
 							<FilterButton
 								filterOptions={filterOptions}
 								filters={activeFilters}
-								handleFilter={handleAddFilter}
+								handleFilter={handleToggleFilter}
 							/>
 						</div>
 					)}

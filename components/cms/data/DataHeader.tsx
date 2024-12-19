@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Button } from '../../../components'
-import { Icon, FilterButton, SortButton, SearchInput } from '../..'
+import { FilterButton, SortButton, SearchInput } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch, useDocumentForms } from '../../../hooks'
 import { RiAddFill } from '@remixicon/react'
