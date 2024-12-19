@@ -28,7 +28,8 @@ export type BlogListItemsProps = {
 }
 
 const BlogListItems: React.FC<BlogListItemsProps> = (props) => {
-	const {
+	
+  const {
 		setResource,
 		loading,
 		resources,
@@ -68,32 +69,38 @@ const BlogListItems: React.FC<BlogListItemsProps> = (props) => {
 		await loadMore()
 	}
 
-	const firstResource = resources?.[0]
-	const remainingResources = resources?.slice(1) || []
+	const firstPost = resources?.[0]
+	const remainingPosts = resources?.slice(1) || []  
+
+  const firstPostStyle = {
+    card: 'card',
+    cover: 'cover',
+    list: 'card'
+  }
 
 	return (
-    <Container maxWidth="md">
+    <Container maxWidth="lg">
       <div className="flex flex-col w-full space-y-2">
-        {firstResource && (
-          <BlurFade delay={0.25} inView key={firstResource.id}>
+        {firstPost && (
+          <BlurFade delay={0.25} inView key={firstPost.id}>
             <DocumentListItem
-              style={'card'}
+              {...slots.item}
+              style={firstPostStyle[style]}
               selectable={selectable}
-              resource={firstResource}
+              resource={firstPost}
               metafields={metafields}
-              handleClick={() => handleShowClick(firstResource)}
+              handleClick={() => handleShowClick(firstPost)}
               buttons={buttons}
               enableComments={enableComments}
               enableFavorites={enableFavorites}
               enableLikes={enableLikes}
               enableGradient={enableGradient}
               enableOverlay={enableOverlay}
-              {...slots.item}
             />
           </BlurFade>
         )}
         <DataLayout {...slots.list} layout={layout} loading={loading}>
-          {remainingResources?.map((resource, idx) => (
+          {remainingPosts?.map((resource, idx) => (
             <BlurFade delay={0.25 + idx * 0.05} inView key={resource?.id}>
               <DocumentListItem
                 style={style}
