@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { useResource } from 'frontend-js'
 import { exportJsonToCSV } from '../../../helpers'
 import { SortableListItems, AlertModal, Empty } from '../..'
@@ -208,15 +208,27 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	}
 
 	const [activeFilters, setActiveFilters] = useState<any[]>([])
-	const [queryFilters, setQueryFilters] = useState<any[]>([])
 
 	const handleFilter = (name: string, value: string | number | boolean) => {
+    let currentFilters = [] as any 
 		if (activeFilters?.find((f) => f.name === name && f.value === value)) {
-			setActiveFilters([])
+			currentFilters = []
 		} else {
-			setActiveFilters([{ name, operator: 'eq', value }])
+			currentFilters = [{ name, operator: 'eq', value }]
 		}
+    setActiveFilters(currentFilters)
+    findMany({
+      ...query,
+      ...defaultQuery,
+      filters: buildQueryFilters(currentFilters),
+    })
 	}
+
+  const buildQueryFilters = (filters) => {
+    return filters.map((f) => ({
+      [f.name]: { [f.operator]: f.value },
+    }))
+  }
 
 	// Filter methods
 	const handleClearFilters = () => {
@@ -325,34 +337,16 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		setOpenExport(true)
 	}
 
-	useEffect(() => {
-		if (queryFilters) {
-			findMany({
-				...query,
-				filters: [...(queryFilters || []), ...(defaultQuery?.filters || [])],
-        page: 1
-			})
-		}
-	}, [queryFilters])
+  const mounted = useRef(false)
 
 	useEffect(() => {
-		if (activeFilters) {
-			setQueryFilters(
-				activeFilters.map((f) => ({
-					[f.name]: { [f.operator]: f.value },
-				}))
-			) as any
-		}
-	}, [activeFilters])
-
-	useEffect(() => {
-		if (url && name && perPage) {
+		if (url && name && !mounted.current) {
+      mounted.current = true
 			findMany({
-				...defaultQuery,
-				per_page: perPage,
+				...defaultQuery
 			})
 		}
-	}, [url, name, perPage])
+	}, [url, name])
 
 	const enableFilters = filterOptions?.length > 0
 	const enableSorting = sortOptions?.length > 0
