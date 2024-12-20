@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const FrontendBadge: React.FC = () => {
   return (
-    <div className="absolute bottom-0 right-0 w-full flex flex-row justify-end pb-2 pr-2 bg-background">
+    <div className="absolute bottom-0 right-0 w-full flex flex-row justify-end pb-2 pr-2">
       <Link 
         href="https://www.frontend.co" 
         target="_blank" 
