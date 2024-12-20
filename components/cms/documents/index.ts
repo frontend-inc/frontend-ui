@@ -24,5 +24,5 @@ export { default as DocumentDelete } from './DocumentDelete'
 export { default as DocumentHeader } from './DocumentHeader'
 
 // Media
-export { default as ShowImageModal } from '../modals/ResourceImageModal'
-export { default as ShowVideoModal } from '../modals/ResourceVideoModal'
+export { default as ShowImageModal } from '../modals/ShowImageModal'
+export { default as ShowVideoModal } from '../modals/ShowVideoModal'

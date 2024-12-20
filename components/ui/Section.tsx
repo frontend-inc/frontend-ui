@@ -55,6 +55,7 @@ const Section: React.FC<SectionProps> = (props) => {
 	return (
 		<section
 			className={cn(
+        'z-0',
 				mode == 'dark' ? 'dark-theme' : 'light',
 				theme,
 				'relative bg-cover bg-center bg-no-repeat',
@@ -79,7 +80,7 @@ const Section: React.FC<SectionProps> = (props) => {
 			>
 				<div
 					className={cn(
-						'w-full overflow-x-hidden',
+						'w-full',
 						'transition-all duration-300 ease-in-out'
 					)}
 				>

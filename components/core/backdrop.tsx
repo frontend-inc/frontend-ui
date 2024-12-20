@@ -30,7 +30,7 @@ export function Backdrop(props: BackdropProps) {
 					}}
 					onClick={onClick}
 					className={cn(
-						'fixed inset-0 z-40 flex items-center justify-center bg-black/60',
+						'fixed inset-0 z-50 flex items-center justify-center bg-black/60',
 						className
 					)}
 					{...props}

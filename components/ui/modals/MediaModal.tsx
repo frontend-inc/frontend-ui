@@ -24,7 +24,6 @@ export default function MediaModal({
 				className={cn(
 					'relative rounded overflow-hidden',
 					'max-w-[calc(100vw-50px)] max-h-[calc(100vh-50px)]',
-					'z-[50]'
 				)}
 				onClick={(e) => e.stopPropagation()}
 			>
