@@ -10,6 +10,7 @@ import { useApp } from '../../../hooks'
 import { ButtonType, MenuLinkType } from '../../..'
 import DesktopLink from './DesktopLink'
 import { cn } from 'frontend-shadcn'
+import { NavigationMenuDemo } from './NavigationMenu'
 
 type DesktopHeaderProps = {
 	logo: string
@@ -89,7 +90,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 									menuItem={menuItem}
 									handleClick={handleClick}
 								/>
-							))}
+							))}              
 					</div>
 					<div className="w-[240px] flex flex-row items-center justify-end h-[60px] pr-1">
 						{buttons?.length > 0 && (
