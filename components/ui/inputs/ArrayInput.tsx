@@ -20,16 +20,19 @@ type ArrayInputProps = {
 	info?: string
 }
 
-export default function ArrayInput({
-	errors,
-	label,
-	name,
-	placeholder,
-	handleChange,
-	direction = 'column',
-	info,
-	value = [],
-}: ArrayInputProps) {
+export default function ArrayInput(props: ArrayInputProps) {
+
+  const {
+    errors,
+    label,
+    name,
+    placeholder,
+    handleChange,
+    direction = 'column',
+    info,
+    value = [],
+  } = props || {}
+
 	const { error, clearError } = useError({ errors, name })
 	const [inputValue, setInputValue] = useState('')
 
@@ -78,16 +81,16 @@ export default function ArrayInput({
 			<div className="relative w-full">
 				<div
 					className={cn(
-						'flex flex-wrap gap-2 p-1 border rounded-md min-h-[42px]',
-						error && 'border-red-500'
+						'bg-input flex flex-wrap gap-2 p-1 border rounded-md min-h-[42px]',
+						error && 'border-destructive'
 					)}
 				>
 					{Array.isArray(value) &&
 						value?.map((tag) => (
 							<Badge
 								key={tag}
-								variant="secondary"
-								className="px-2 py-1 text-sm"
+								variant="outline"
+								className="px-2 py-1 text-sm bg-muted border-2 border-border shadow-sm"
 							>
 								{tag}
 								<button

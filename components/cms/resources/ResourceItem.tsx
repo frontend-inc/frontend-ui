@@ -63,7 +63,6 @@ const ResourceItem: React.FC<ResourceItemProps> = (props) => {
 			selectable={selectable}
 			selected={selected}
 			isDragging={isDragging}
-			enableBorder={enableBorder}
 		/>
 	)
 }
