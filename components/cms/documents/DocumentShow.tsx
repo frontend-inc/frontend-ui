@@ -10,6 +10,7 @@ export type DocumentShowProps = {
 	buttons: ButtonType[]
 	metafields: MetafieldType[]
 	enableFavorites?: boolean
+  enableDownload?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
 	enableComments?: boolean
@@ -26,6 +27,7 @@ const DocumentShow: React.FC<DocumentShowProps> = (props) => {
 	const {
 		metafields = [],
     disableTitle = false,
+    enableDownload,
 		enableComments,
 		enableLikes,
 		enableFavorites,
@@ -63,6 +65,7 @@ const DocumentShow: React.FC<DocumentShowProps> = (props) => {
 									size="large"
 									justifyContent={'center'}
 									resource={resource}
+                  enableDownload={enableDownload}
 									enableLikes={enableLikes}
 									enableFavorites={enableFavorites}
 									enableSharing={enableSharing}

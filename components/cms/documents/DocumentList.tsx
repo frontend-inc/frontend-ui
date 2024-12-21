@@ -27,6 +27,7 @@ export type DocumentListProps = {
 
 	filterChoices?: string[]
 
+  enableDownload?: boolean
 	enableLikes?: boolean
 	enableFavorites?: boolean
 	enableComments?: boolean
@@ -102,6 +103,7 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
 		displayCategory = false,
 		displayDescription,
 
+    enableDownload,
 		enableLikes,
 		enableFavorites,
 		enableComments,
@@ -183,6 +185,7 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
       disableTitle: !displayTitle,
 			displayFields,
 			buttons,
+      enableDownload,
 			enableLikes,
 			enableFavorites,
 			enableComments,
@@ -215,6 +218,7 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
 			buttons,
 			listFields,
 			enableLikes,
+      enableDownload,
 			enableFavorites,
 			enableComments,
 			enableGradient,

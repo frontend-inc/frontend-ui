@@ -3,6 +3,7 @@
 import React from 'react'
 import { cn } from 'frontend-shadcn'
 import {
+  DownloadButton,
 	CommentButton,
 	LikeButton,
 	FavoriteButton,
@@ -16,6 +17,7 @@ type SocialButtonsProps = {
 	resource: any
 	product?: any
 	direction?: 'row' | 'column'
+  enableDownload?: boolean
 	enableComments?: boolean
 	enableLikes?: boolean
 	enableFavorites?: boolean
@@ -31,6 +33,7 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 		resource,
 		product,
 		direction = 'row',
+    enableDownload,
 		enableComments,
 		enableLikes,
 		enableFavorites,
@@ -44,6 +47,7 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 	const currentPageUrl = usePathname()
 
 	if (
+    !enableDownload &&
 		!enableLikes &&
 		!enableFavorites &&
 		!enableSharing &&
@@ -61,6 +65,7 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 				justifyContent == 'center' && 'justify-center'
 			)}
 		>
+      { enableDownload == true && <DownloadButton size={size} resource={resource} /> }
 			{enableLikes == true && <LikeButton size={size} resource={resource} />}
 			{enableFavorites == true && (
 				<FavoriteButton size={size} resource={resource} />
