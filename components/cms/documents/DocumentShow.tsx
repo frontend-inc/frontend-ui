@@ -13,16 +13,19 @@ export type DocumentShowProps = {
 	enableLikes?: boolean
 	enableSharing?: boolean
 	enableComments?: boolean
+  disableTitle?: boolean
 	disableImage?: boolean
 	enableBorder?: boolean
 	enableOverlay?: boolean
 }
 
 const DocumentShow: React.FC<DocumentShowProps> = (props) => {
+  
 	const { openShow, setOpenShow, resource, url } = useResourceContext()
 
 	const {
 		metafields = [],
+    disableTitle = false,
 		enableComments,
 		enableLikes,
 		enableFavorites,
@@ -46,7 +49,7 @@ const DocumentShow: React.FC<DocumentShowProps> = (props) => {
 		<Drawer
 			open={openShow}
 			handleClose={() => setOpenShow(false)}
-			title={resource?.title}
+			title={!disableTitle ? resource?.title : ''}
 		>
 			<div className="flex flex-col space-y-6 pb-[40px] w-full">
 				<BlurFade delay={0.25} inView className="w-full">

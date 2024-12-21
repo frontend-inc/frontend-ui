@@ -23,6 +23,7 @@ type DocumentListItemProps = {
 	buttonText?: string
 	href?: string
 	handleClick: () => void
+  disableTitle?: boolean
 	enableBorder?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
@@ -37,6 +38,7 @@ const DocumentListItem: React.FC<DocumentListItemProps> = (props) => {
 		resource,
 		listFields = [],
 		handleClick,
+    disableTitle = false,
 		enableGradient = false,
 		enableOverlay = false,
 		enableComments = false,
@@ -72,6 +74,7 @@ const DocumentListItem: React.FC<DocumentListItemProps> = (props) => {
 			image={resource?.image?.url}
 			// @ts-ignore
 			title={
+        !disableTitle && 
 				//@ts-ignore
 				<Typography variant={typographyVariants[style]}>
 					{resource?.title}

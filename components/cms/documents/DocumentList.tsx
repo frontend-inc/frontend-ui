@@ -33,6 +33,7 @@ export type DocumentListProps = {
 	enableGradient?: boolean
 	enableOverlay?: boolean
 
+  displayTitle?: boolean
 	displaySubtitle?: boolean
 	displayCategory?: boolean
 	displayLocation?: boolean
@@ -94,7 +95,8 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
 	const {
 		contentType = '',
 		query = DEFAULT_QUERY,
-		displaySubtitle = false,
+    displayTitle = true,
+		displaySubtitle = true,
 		displayTags = false,
 		displayLocation = false,
 		displayCategory = false,
@@ -178,6 +180,7 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
 		},
 		show: {
 			...defaultSlots.show,
+      disableTitle: !displayTitle,
 			displayFields,
 			buttons,
 			enableLikes,
@@ -206,6 +209,7 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
 		item: {
 			...defaultSlots.item,
 			circular,
+      disableTitle: !displayTitle,
 			disableImage,
 			style,
 			buttons,
