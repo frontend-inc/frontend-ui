@@ -12,6 +12,7 @@ export interface Link {
   position: number
   link_type: string
   path: string
+  children?: Link[]
 }
 
 export interface NestedLink extends Link {
@@ -112,12 +113,11 @@ interface NestedSidebarMenuProps {
 }
 
 export default function NestedSidebarMenu({ links, handleClick }: NestedSidebarMenuProps) {
-  const nestedLinks = organizeLinks(links)
 
   return (
     <nav className="w-full py-2">
       <ul className="flex flex-col space-y-2 w-full">
-        {nestedLinks.map((link) => (
+        {links.map((link) => (
           <RenderLink key={link.id} link={link} handleClick={handleClick} />
         ))}
       </ul>

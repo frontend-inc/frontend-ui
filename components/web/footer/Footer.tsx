@@ -46,7 +46,7 @@ export default function Footer({ links, handleClick }: FooterProps) {
         <div className="w-full md:justify-end flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0 ">
           <div className="w-full gap-6 pb-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
             {links.map((topLevelLink) => {
-              const hasChildren = topLevelLink.children.length > 0 || topLevelLink.link_type == 'dropdown'
+              const hasChildren = topLevelLink?.children?.length > 0 || topLevelLink.link_type == 'dropdown'
 
               return (
                 <div key={topLevelLink.id} className="min-w-[150px] flex-1">
