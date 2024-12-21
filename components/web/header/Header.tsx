@@ -57,7 +57,10 @@ const Header: React.FC<HeaderProps> = (props) => {
 				handleClick={handleClick}
         disableMenu={ links.length === 0 }
 			/>
-			<MobileDrawer links={links} handleClick={handleClick} />
+			<MobileDrawer 
+        links={links} 
+        handleClick={handleClick} 
+      />
 		</header>
 	)
 }

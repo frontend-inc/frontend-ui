@@ -5,7 +5,7 @@ import { useResource } from 'frontend-js'
 import { Autosuggest } from '../..'
 import { useError } from '../../../hooks'
 import { OptionType, QueryParamsType, SyntheticEventType } from '../../../types'
-import { get } from 'lodash'
+import { uniq, get } from 'lodash'
 
 export type RemoteAutosuggestProps = {
 	errors?: any
@@ -38,7 +38,6 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		name,
 		url,
 		displayField,
-		imageField,
 		handleChange,
 		valueParam = 'id',
 		placeholder = 'Search',
@@ -54,12 +53,10 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		name: name,
 	})
 
-	const { loading, resources, findOne, findMany } = useResource({
+  const { loading, resources, findOne, findMany } = useResource({
 		url: url,
 		name: name,
 	})
-
-	const [options, setOptions] = useState<OptionType[]>([])
 
 	const handleInputChange = (newValue) => {
 		if (error) clearError()
@@ -77,22 +74,12 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		return resources.map((resource) => ({
 			label: get(resource, displayField),
 			value: get(resource, valueParam),
-			image: imageField ? get(resource, imageField) : null,
 		}))
 	}
 
 	const findOption = async (value) => {
 		if (!value) return null
-		let resource = await findOne(value)
-		if (resource?.id) {
-			setOptions([
-				...options,
-				{
-					label: get(resource, displayField),
-					value: get(resource, valueParam),
-				},
-			])
-		}
+		await findOne(value)		
 	}
 
 	useEffect(() => {
@@ -101,11 +88,6 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		}
 	}, [value, url])
 
-	useEffect(() => {
-		if (resources) {
-			setOptions([...formatResources(resources), ...defaultOptions])
-		}
-	}, [resources])
 
 	useEffect(() => {
 		if (url) {
@@ -117,13 +99,15 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		}
 	}, [url])
 
+  const options = formatResources(resources)  
+
 	if (!displayField) return null
 	return (
 		<Autosuggest
 			label={label}
 			name={name}
 			value={value}
-			options={options}
+			options={uniq(options, 'value')}
 			placeholder={placeholder}
 			handleChange={handleChange}
 			handleInputChange={handleInputChange}
