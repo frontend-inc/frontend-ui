@@ -55,7 +55,7 @@ export default function Footer(props: FooterProps) {
   } = props || {}
 
   return (
-    <footer className="w-full bg-background py-10 px-4">
+    <footer className="w-full py-10 px-4">
         <Stack direction="row" className="gap-6">
           <Stack direction="row" size="1/3">
           <div className="min-w-[150px] flex-1 flex-col space-y-6">
