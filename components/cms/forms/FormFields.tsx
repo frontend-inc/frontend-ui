@@ -36,7 +36,7 @@ const FormFields: React.FC<FormFieldsProps> = (props) => {
 	} = props
 
 	return (
-		<div className="flex flex-col space-y-4 w-full px-2">
+		<div className="flex flex-col space-y-4 w-full p-1">
 			{fields?.map((field, index) => {
 				if (!validateFieldConditions(field?.conditions || [], resource)) {
 					return null

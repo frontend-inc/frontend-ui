@@ -3,8 +3,8 @@
 import React, { useContext } from 'react'
 import { Sheet } from '../..'
 import { AppContext } from '../../../context'
-import MobileDrawerLink from './MobileDrawerLink'
 import { MenuLinkType } from '../../..'
+import NestedSidebarMenu from './NestedSidebarMenu'
 
 type MobileDrawerProps = {
 	links: MenuLinkType[]
@@ -16,22 +16,17 @@ const MobileDrawer = (props: MobileDrawerProps) => {
 
 	const { links, handleClick } = props
 
-	const handleMenuClick = (path: string) => {
+	const handleMenuClick = (link: any) => {    
 		setMenuOpen(false)
-		handleClick(path)
+		handleClick(link?.path)
 	}
 
 	return (
 		<Sheet open={menuOpen} handleClose={() => setMenuOpen(false)} side="left">
-      <ul className='space-y-2'>
-        {links?.map((menuItem, index) => (
-          <MobileDrawerLink
-            key={index}
-            menuItem={menuItem}
-            handleClick={handleMenuClick}
-          />
-        ))}
-      </ul>
+      <NestedSidebarMenu 
+        links={ links } 
+        handleClick={ handleMenuClick } 
+      />                    
 		</Sheet>
 	)
 }

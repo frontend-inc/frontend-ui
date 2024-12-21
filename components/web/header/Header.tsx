@@ -16,7 +16,7 @@ export type HeaderProps = {
 	enableShopify?: boolean
 	enableNotifications?: boolean
 	links?: MenuLinkType[]
-	handleClick: (path: string) => void
+	handleClick: (link: any) => void
 }
 
 const Header: React.FC<HeaderProps> = (props) => {

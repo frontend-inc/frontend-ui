@@ -11,10 +11,6 @@ import { RemixIcon } from '../../components'
 
 type MenuButtonProps = {
   children?: React.ReactNode
-  icon?: string
-  color?: string
-  size?: 'small' | 'medium' | 'large'
-  enableIcons?: boolean
   handleEdit?: false | ((item: any) => void)
   handleDelete?: false | ((item: any) => void)
 }

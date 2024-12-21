@@ -10,7 +10,7 @@ import { useApp } from '../../../hooks'
 import { ButtonType, MenuLinkType } from '../../..'
 import DesktopLink from './DesktopLink'
 import { cn } from 'frontend-shadcn'
-import { NavigationMenuDemo } from './NavigationMenu'
+import { NavigationMenu } from './NavigationMenu'
 
 type DesktopHeaderProps = {
 	logo: string
@@ -20,7 +20,7 @@ type DesktopHeaderProps = {
 	enableAuth?: boolean
 	enableShopify?: boolean
 	enableStripe?: boolean
-	handleClick: (path: string) => void
+	handleClick: (link: MenuLinkType) => void
 }
 
 const MAX_LINKS = 5
@@ -37,6 +37,10 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 		enableStripe = false,
 		enableShopify = false,
 	} = props
+
+  const handleLogoClick = () => {
+    handleClick({ path: '/' })
+  }
 
 	const [isScrolled, setIsScrolled] = useState(false)
 
@@ -58,15 +62,18 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 
 	const { setMenuOpen } = useApp()
 
+
 	return (
       <div
-        className={cn('hidden md:block w-full h-16 bg-background')}
+        className={cn(
+          'hidden md:block w-full h-16 bg-background'
+        )}
         style={{
           backgroundColor: bgColor,
         }}
       >
 			  <div className="w-full flex flex-row justify-between">
-          <div className="flex flex-row">
+          <div className="flex flex-row basis-1/3">
             {links?.length > MAX_LINKS && (
               <div className="pl-1 flex items-center justify-center h-[60px]">
                 <IconButton color="ghost" onClick={() => setMenuOpen(true)}>
@@ -79,19 +86,19 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
                 src={logo}
                 width={180}
                 height={56}
-                handleClick={() => handleClick('/')}
+                handleClick={ handleLogoClick }
               />
             </div>
 					</div>
-					<div className="flex flex-row items-center justify-end h-[60px] pr-1">
-            {links?.length <= MAX_LINKS &&
-							links?.map((menuItem, index) => (
-								<DesktopLink
-									key={index}
-									menuItem={menuItem}
-									handleClick={handleClick}
-								/>
-							))}              
+          <div className="basis-1/3 flex flex-row justify-center items-center">
+            { links?.length <= MAX_LINKS && (
+              <NavigationMenu 
+                links={ links } 
+                handleClick={ handleClick }
+              />
+            )}
+          </div>
+					<div className="flex flex-row items-center justify-end h-[60px] pr-1 basis-1/3">
 						{buttons?.length > 0 && (
 							<div className="pr-1">
 								<ButtonActions size="sm" buttons={buttons} />

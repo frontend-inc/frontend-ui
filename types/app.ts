@@ -6,11 +6,13 @@ export type MenuType = {
 }
 
 export type MenuLinkType = {
-	label: string
-	path: string
-	url?: string
-	icon?: string
-	position: number
+  id: string
+  parent_id: string | null
+  label: string
+  description?: string
+  position: number
+  link_type: string
+  path: string
 	children: MenuLinkType[] | []
 }
 
