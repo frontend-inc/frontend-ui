@@ -10,11 +10,12 @@ export type EmailSubscribeProps = {
 	href?: string
 	handleClick?: () => void
 	direction?: string
+  size?: 'sm' | 'default' | 'lg'
 }
 
 // Call To Action
 const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
-	const { buttonText = 'Subscribe' } = props || {}
+	const { size='lg', buttonText = 'Subscribe' } = props || {}
 
 	const {
 		errors,
@@ -39,6 +40,7 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
 
 	return (
     <EmailSubscribeInput 
+      size={size}
       loading={delayedLoading}      
       errors={errors}
       name='email'

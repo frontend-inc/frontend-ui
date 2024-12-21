@@ -5,6 +5,11 @@ export type MenuType = {
 	links: MenuLinkType[]
 }
 
+export type SocialLinkType = {
+  url: string
+  provider: string
+}
+
 export type MenuLinkType = {
   id: string
   parent_id: string | null
