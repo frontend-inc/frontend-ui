@@ -56,76 +56,80 @@ export default function Footer(props: FooterProps) {
 
   return (
     <footer className="w-full py-10 px-4">
-        <Stack direction="row" className="gap-6">
-          <Stack direction="row" size="1/3">
-          <div className="min-w-[150px] flex-1 flex-col space-y-6">
-              { logo && (
-               <Image 
-                  src={ logo } 
-                  alt="logo" 
-                  width={ 150 } 
-                  height={ 150 } 
-                  style={{ objectFit: 'contain' }} 
-                /> 
-              )}
-              { enableNewsletter && (
-                <EmailSubscribe size='default' />
-              )}
+      {(enableNewsletter || logo) && (
+      <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4 justify-between items-center pb-6">
+        { logo && (
+          <Image 
+            src={ logo } 
+            alt="logo" 
+            width={ 150 } 
+            height={ 150 } 
+            style={{ objectFit: 'contain' }} 
+          /> 
+        )}
 
-              { socialLinks?.length > 0 && (
-                <div className="flex flex-row space-x-1">
-                  { socialLinks?.map((socialLink, index) => (
-                    <SocialLink 
-                      key={ index }
-                      url={ socialLink.url }
-                      provider={ socialLink.provider }
-                    />
-                  ))}
-                </div>
-              )}  
-
-              <div className="flex flex-row space-x-2">        
-                { iOSUrl && <AppStoreButton url={ iOSUrl } /> }
-                { androidUrl && <GooglePlayButton url={ androidUrl } /> }
-              </div> 
-            </div>
-          </Stack>
-          <Stack direction="row" size="2/3" className='justify-end'>        
-            <div className="w-full gap-6 pb-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">        
-              {links.map((topLevelLink) => {
-                const hasChildren = topLevelLink?.children?.length > 0 || topLevelLink.link_type == 'dropdown'
-                return (                
-                  <div key={topLevelLink.id} className="min-w-[150px] flex-1">
-                    {hasChildren ? (
-                      <>
-                        <Typography variant="caption" className="ml-2 text- text-muted-foreground">
-                          {topLevelLink.label}
-                        </Typography>
-                        <ul className="flex flex-col space-y-2 py-2">                        
-                          {topLevelLink?.children.map((child) => (
-                            <li key={child.id}>
-                              <FooterLink 
-                                link={child}
-                                handleClick={() => handleClick(child)}
-                              />
-                            </li>
-                          ))}
-                        </ul>
-                      </>
-                    ) : (
-                      <div className="w-full mt-6" key={topLevelLink?.id}>
+        { enableNewsletter && (
+          <EmailSubscribe 
+            size='default'             
+          />
+        )}
+      </div>
+      )}
+      <div className="w-full gap-6 py-6 grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))]">        
+        {links.map((topLevelLink) => {
+          const hasChildren = topLevelLink?.children?.length > 0 || topLevelLink.link_type == 'dropdown'
+          return (                
+            <div key={topLevelLink.id} className="min-w-[150px] flex-1">
+              {hasChildren ? (
+                <>
+                  <Typography variant="caption" className="ml-2 text- text-muted-foreground">
+                    {topLevelLink.label}
+                  </Typography>
+                  <ul className="flex flex-col space-y-2 py-2">                        
+                    {topLevelLink?.children.map((child) => (
+                      <li key={child.id}>
                         <FooterLink 
-                          link={topLevelLink}
-                          handleClick={() => handleClick(topLevelLink)}
+                          link={child}
+                          handleClick={() => handleClick(child)}
                         />
-                      </div>
-                    )}
-                  </div>
-                )
-              })}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <div className="w-full mt-6" key={topLevelLink?.id}>
+                  <FooterLink 
+                    link={topLevelLink}
+                    handleClick={() => handleClick(topLevelLink)}
+                  />
+                </div>
+              )}
             </div>
-          </Stack>
-        </Stack>
+          )
+        })}
+      </div>
+      {(socialLinks?.length > 0 || iOSUrl || androidUrl) && (
+        <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4 items-center justify-between border-t border-border py-4">
+          { socialLinks?.length > 0 && (
+            <div className="flex flex-row space-x-1">
+              { socialLinks?.map((socialLink, index) => (
+                <div key={index}>
+                  <SocialLink 
+                    key={ index }
+                    url={ socialLink.url }
+                    provider={ socialLink.provider }
+                  />
+                </div>
+              ))}
+            </div>
+          )}  
+
+          <div className="flex flex-row space-x-2">        
+            { iOSUrl && <AppStoreButton url={ iOSUrl } /> }
+            { androidUrl && <GooglePlayButton url={ androidUrl } /> }
+          </div> 
+        </div>
+      )}
     </footer>
   )
 }
