@@ -13,7 +13,6 @@ const FieldText: React.FC<FieldTextProps> = (props) => {
 	const {
 		value,
 		label,
-		placeholder,
 		expandable,
 		maxChars = 80,
 		className,

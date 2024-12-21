@@ -1,17 +1,11 @@
 'use client'
 
 import React from 'react'
-import { 
-  Link, 
-  NestedLink, 
-  HandleClickFunction, 
-  organizeLinks 
-} from '../../../components/web/header/NestedSidebarMenu'
 import { Container, Typography } from '../../../components'
-import { Button } from 'frontend-shadcn'
+import { MenuLinkType } from '../../../types'
 
 type FooterLinkProps = {
-  link: NestedLink
+  link: MenuLinkType
   handleClick: () => void
 }
 
@@ -34,11 +28,13 @@ const FooterLink: React.FC<FooterLinkProps> = (props) => {
 }
 
 interface FooterProps {
-  links: Link[]
-  handleClick: HandleClickFunction
+  links: MenuLinkType[]
+  handleClick: (link: MenuLinkType) => void
 }
 
-export default function Footer({ links, handleClick }: FooterProps) {
+export default function Footer(props: FooterProps) {
+
+  const { links, handleClick } = props || {}
 
   return (
     <footer className="w-full bg-background py-10">
@@ -47,7 +43,6 @@ export default function Footer({ links, handleClick }: FooterProps) {
           <div className="w-full gap-6 pb-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
             {links.map((topLevelLink) => {
               const hasChildren = topLevelLink?.children?.length > 0 || topLevelLink.link_type == 'dropdown'
-
               return (
                 <div key={topLevelLink.id} className="min-w-[150px] flex-1">
                   {hasChildren ? (
@@ -55,8 +50,8 @@ export default function Footer({ links, handleClick }: FooterProps) {
                       <Typography variant="caption" className="ml-2 text- text-muted-foreground">
                         {topLevelLink.label}
                       </Typography>
-                      <ul className="flex flex-col space-y-2 py-2">
-                        {topLevelLink.children.map((child) => (
+                      <ul className="flex flex-col space-y-2 py-2">                        
+                        {topLevelLink?.children.map((child) => (
                           <li key={child.id}>
                             <FooterLink 
                               link={child}
