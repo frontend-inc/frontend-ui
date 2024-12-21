@@ -46,12 +46,15 @@ const DocumentShow: React.FC<DocumentShowProps> = (props) => {
 			disableImage = false
 	}
 
+  const maxWidth = resource?.content_type == 'image' ? 'lg' : 'md'
+
 	if (!resource) return null
 	return (
-		<Drawer
+		<Drawer      
 			open={openShow}
 			handleClose={() => setOpenShow(false)}
 			title={!disableTitle ? resource?.title : ''}
+      maxWidth={maxWidth}
 		>
 			<div className="flex flex-col space-y-6 pb-[40px] w-full">
 				<BlurFade delay={0.25} inView className="w-full">
