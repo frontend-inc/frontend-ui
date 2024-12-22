@@ -1,8 +1,8 @@
 'use client'
 
-import React from 'react'
-import Head from 'next/head'
-import Script from 'next/script'
+import React, { useEffect, useState, useRef } from 'react'
+import ReactGA from 'react-ga4'
+import { usePathname } from 'next/navigation'
 
 type GoogleAnalyticsProps = {
 	id?: string
@@ -10,20 +10,34 @@ type GoogleAnalyticsProps = {
 
 const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = (props) => {
 	const { id } = props || {}
-	if (!id) return null
-	return (
-		<Head>
-			<Script id="google-analytics" strategy="lazyOnload">
-				{`window.dataLayer = window.dataLayer || []
-        function gtag() {
-          dataLayer.push(arguments)
+
+  const mounted = useRef(false)
+  const pageView = useRef(false)
+
+  const pathname = usePathname()
+
+  useEffect(() => {
+    if(id && !mounted.current) {
+      mounted.current = true
+      ReactGA.initialize([
+        { 
+          trackingId: id
         }
-        gtag('js', new Date())
-        gtag('config', '${id}')
-      `}
-			</Script>
-		</Head>
-	)
+      ])
+    }
+  }, [id])
+
+  useEffect(() => {
+    if (id && !pageView.current) {
+      pageView.current = true
+      ReactGA.send({ 
+        hitType: 'pageview', 
+        page: pathname 
+      })
+    }
+  }, [pathname])
+  	
+	return null	
 }
 
 export default GoogleAnalytics
