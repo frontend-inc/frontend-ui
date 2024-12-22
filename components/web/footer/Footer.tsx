@@ -25,7 +25,7 @@ const FooterLink: React.FC<FooterLinkProps> = (props) => {
       <Typography variant="body1" className='text-foreground'>
         {link.label}
       </Typography>
-      <Typography variant="body2" className='text-muted-foreground'>
+      <Typography variant="body2" className='text-foreground/70'>
         {link.description}
       </Typography>
     </button>
@@ -82,7 +82,7 @@ export default function Footer(props: FooterProps) {
             <div key={topLevelLink.id} className="min-w-[150px] flex-1">
               {hasChildren ? (
                 <>
-                  <Typography variant="caption" className="ml-2 text- text-muted-foreground">
+                  <Typography variant="caption" className="ml-2 text-foreground/70">
                     {topLevelLink.label}
                   </Typography>
                   <ul className="flex flex-col space-y-2 py-2">                        
