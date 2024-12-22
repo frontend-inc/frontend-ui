@@ -19,7 +19,6 @@ const AppProvider = (props: AppProviderProps) => {
   const {
 		name,
 		logo,
-		apiUrl,
 		clientUrl,
 		enableShopify,
 		enableStripe,
@@ -44,7 +43,6 @@ const AppProvider = (props: AppProviderProps) => {
 		setApp,
 
 		logo,
-		apiUrl,
 		clientUrl,
 
 		alert,

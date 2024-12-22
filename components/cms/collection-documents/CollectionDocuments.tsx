@@ -3,7 +3,7 @@
 import React from 'react'
 import { DocumentList } from '../..'
 import { DocumentListProps } from '../documents/DocumentList'
-import { useApp } from '../../../hooks'
+import { useApi } from 'frontend-js'
 
 export type CollectionDocumentsProps = Omit<
 	DocumentListProps,
@@ -14,7 +14,7 @@ export type CollectionDocumentsProps = Omit<
 
 const CollectionDocuments: React.FC<CollectionDocumentsProps> = (props) => {
 	let { collectionId } = props
-	const { apiUrl } = useApp()
+	const { apiUrl } = useApi()
 	const url = `${apiUrl}/cms/collections/${collectionId}/documents`
 
 	return <DocumentList {...props} style="card" url={url} />
