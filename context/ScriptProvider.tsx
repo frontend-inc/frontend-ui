@@ -45,12 +45,13 @@ const ScriptProvider = (props: ScriptProviderProps) => {
 
 	const [segment, setSegment] = useState(null)
 
-	useTikTok({ tikTokPixelId: !disableAnalytics && tikTokPixelId })
-	useFacebookPixel({ facebookPixelId: !disableAnalytics && facebookPixelId })
+	useTikTok({ tikTokPixelId: !disableAnalytics && tikTokPixelId ? tikTokPixelId : '' })
+	useFacebookPixel({ facebookPixelId: !disableAnalytics && facebookPixelId ? facebookPixelId : '' })
 
 	useEffect(() => {
 		if (!disableAnalytics && segmentWriteKey) {
 			setSegment(
+        //@ts-ignore
 				AnalyticsBrowser.load({
 					writeKey: segmentWriteKey,
 				})

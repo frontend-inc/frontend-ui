@@ -15,8 +15,6 @@ const useContacts = (params?: UseContactParams) => {
 
 	const { api, apiKey } = useApi()
 
-  console.log("API KEY", apiKey)
-
 	const url = `${apiUrl}/cms/contacts`
 	const apiParams = {
 		url,
