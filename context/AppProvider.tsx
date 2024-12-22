@@ -1,3 +1,4 @@
+
 'use client'
 
 import React, { useState } from 'react'
@@ -19,6 +20,7 @@ const AppProvider = (props: AppProviderProps) => {
   const {
 		name,
 		logo,
+    apiUrl,
 		clientUrl,
 		enableShopify,
 		enableStripe,
@@ -38,7 +40,8 @@ const AppProvider = (props: AppProviderProps) => {
 
 	const value = {
 		name,
-
+    apiUrl,
+    
 		app,
 		setApp,
 
