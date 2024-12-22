@@ -21,7 +21,7 @@ const FeatureIcon: React.FC<FeatureIconProps> = (props) => {
 		<div
 			className={cn(
 				'flex justify-start py-6 w-full items-start h-full',
-        'flex-row items-start space-x-3 min-h-[165px]',
+        'flex-row items-start space-x-3 min-h-[90px]',
 				variant == 'outline' && 'border-2 border-border rounded-lg p-6',
 				variant == 'fill' && 'bg-muted rounded-lg p-6'
 			)}
@@ -73,12 +73,7 @@ const FeatureIcons: React.FC<FeatureIconsProps> = (props) => {
 	return (
 		<div className="container mx-auto max-w-screen-lg p-2">
 			<div
-				className={cn(
-					'grid',
-					direction === 'column'
-						? 'grid-cols-1 md:grid-cols-3 gap-10'
-						: 'grid-cols-1 md:grid-cols-2 gap-6'
-				)}
+				className={'grid grid-cols-1 md:grid-cols-2 gap-6'}
 			>
 				{items?.map((item, idx) => (
 					<BlurFade delay={0.25 + idx * 0.05} inView key={idx}>
