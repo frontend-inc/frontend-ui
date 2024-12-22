@@ -44,22 +44,22 @@ const Stack: React.FC<StackProps> = (props) => {
 	}
 
 	// @ts-ignore
-	const sizeClasses: Record<StackProps['size'], string> = {
-		'1/2': 'md:w-1/2',
-		'1/3': 'md:w-1/3',
-		'1/4': 'md:w-1/4',
-		'2/3': 'md:w-2/3',
-		'3/4': 'md:w-3/4',
-		full: 'md:w-full',
+	const rowClasses: Record<StackProps['size'], string> = {
+		'1/2': 'md:flex-row md:w-1/2 md:space-y-0',
+		'1/3': 'md:flex-row md:w-1/3 md:space-y-0',
+		'1/4': 'md:flex-row md:w-1/4 md:space-y-0',
+		'2/3': 'md:flex-row md:w-2/3 md:space-y-0',
+		'3/4': 'md:flex-row md:w-3/4 md:space-y-0',
+		'full': 'md:flex-row md:w-full md:space-y-0',
 	}
 
 	return (
 		<div
 			className={cn(
 				'flex flex-col items-start w-full',
-				isRow && `md:flex-row`,
-				isRow ? spaceXClasses[spacing] : spaceYClasses[spacing],
-				isRow && sizeClasses[size],
+        spaceYClasses[spacing],
+        isRow && spaceXClasses[spacing],
+				isRow && rowClasses[size],
 				className
 			)}
 		>
