@@ -13,7 +13,7 @@ const useContacts = (params?: UseContactParams) => {
 	const { formId } = params || {}
 	const { apiUrl } = useApp()
 
-	const { api, apiKey } = useApi()
+	const { api } = useApi()
 
 	const url = `${apiUrl}/cms/contacts`
 	const apiParams = {
