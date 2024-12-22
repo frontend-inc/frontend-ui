@@ -12,8 +12,6 @@ const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = (props) => {
 	const { id } = props || {}
 
   const mounted = useRef(false)
-  const pageView = useRef(false)
-
   const pathname = usePathname()
 
   useEffect(() => {
@@ -28,8 +26,7 @@ const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = (props) => {
   }, [id])
 
   useEffect(() => {
-    if (id && !pageView.current) {
-      pageView.current = true
+    if (id) {
       ReactGA.send({ 
         hitType: 'pageview', 
         page: pathname 
