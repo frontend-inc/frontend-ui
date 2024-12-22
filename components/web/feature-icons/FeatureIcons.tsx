@@ -20,41 +20,33 @@ const FeatureIcon: React.FC<FeatureIconProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				'flex justify-start py-6 w-full items-center h-full',
-				direction === 'column'
-					? 'flex-col items-center space-y-3 min-h-[230px]'
-					: 'flex-row items-start space-x-3 min-h-[165px]',
+				'flex justify-start py-6 w-full items-start h-full',
+        'flex-row items-start space-x-3 min-h-[165px]',
 				variant == 'outline' && 'border-2 border-border rounded-lg p-6',
 				variant == 'fill' && 'bg-muted rounded-lg p-6'
 			)}
 		>
 			{icon && (
-				<Avatar className="h-[48px] w-[48px] rounded-lg">
-					<AvatarFallback className="bg-primary rounded-lg">
-						<RemixIcon
-							name={icon}
-							size="lg"
-							className="text-primary-foreground"
-						/>
-					</AvatarFallback>
-				</Avatar>
+        <RemixIcon
+          name={icon}
+          size="lg"
+          className="text-primary"
+        />
 			)}
 			<div
 				className={cn(
-					'flex flex-col justify-center space-y-2',
+					'flex flex-col space-y-2',
 					direction === 'row' && 'text-left'
 				)}
 			>
 				<Typography
 					variant="h6"
-					className={direction === 'column' ? 'text-center' : ''}
 				>
 					{title}
 				</Typography>
 				<Typography
 					className={cn(
 						'text-muted-foreground',
-						direction === 'column' ? 'text-center' : 'text-left'
 					)}
 					variant="body1"
 				>

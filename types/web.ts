@@ -61,8 +61,8 @@ export type CardProps = {
 }
 
 export type PriceType = {
-	id?: number
-	label: string
+	id?: number | string
+	label?: string
 	title: string
 	subtitle?: string
 	price: number
