@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { SyntheticEventType, useResource } from 'frontend-js'
+import { useResource } from 'frontend-js'
 import { useApp } from '..'
 import { useApi } from 'frontend-js'
 
@@ -13,7 +13,10 @@ const useContacts = (params?: UseContactParams) => {
 	const { formId } = params || {}
 	const { apiUrl } = useApp()
 
-	const { api } = useApi()
+	const { api, apiKey } = useApi()
+
+  console.log("API KEY", apiKey)
+
 	const url = `${apiUrl}/cms/contacts`
 	const apiParams = {
 		url,
