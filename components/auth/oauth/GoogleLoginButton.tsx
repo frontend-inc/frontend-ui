@@ -42,10 +42,11 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = (props) => {
 	return (
 		//@ts-ignore
 		<Button
-			color="secondary"
+			variant="secondary"
 			//@ts-ignore
 			onClick={handleLogin}
 			loading={loading}
+      className='py-3'
 		>
 			<div className="mr-2">
 				<svg
