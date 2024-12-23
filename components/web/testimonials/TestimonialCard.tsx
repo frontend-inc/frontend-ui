@@ -27,7 +27,7 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 			<div className="flex flex-col space-y-3 justify-between h-full">
 				<div>
 					{text && (
-						<Typography variant="body1" className="font-normal leading-loose">
+						<Typography variant="subtitle1" className="font-normal leading-loose">
 							{text}
 						</Typography>
 					)}
