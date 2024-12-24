@@ -23,7 +23,7 @@ export default function ButtonTabs(props: ButtonTabsProps) {
 	return (
 		<Tabs value={value.toString()} onValueChange={handleChange}>
 			<TabsList
-				className={cn('bg-muted p-1', className, fullWidth && 'w-full')}
+				className={cn('bg-input p-1', className, fullWidth && 'w-full')}
 			>
 				{options.map((tab, i) => {
 					return (
