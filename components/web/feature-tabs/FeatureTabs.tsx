@@ -40,7 +40,10 @@ const FeatureTab: React.FC<FeatureIconProps> = (props) => {
           <RemixIcon
             name={icon}
             size="lg"
-            className="text-primary"
+            className={cn(
+              'text-foreground',
+              isActive && "text-primary"
+            )}
           />
         )}
         <div className={cn(
@@ -112,12 +115,14 @@ const FeatureTabs: React.FC<FeatureTabsProps> = (props) => {
       direction == 'row' && "md:flex-row md:space-x-4 md:space-y-0",        
     )}>
       <div className={cn(
-        'w-full flex flex-row space-x-4 overflow-x-auto py-2',
-        direction == 'row' && "md:basis-1/3 md:flex-col md:space-y-0 md:space-x-0",          
+        'flex flex-col space-y-4 space-x-0',
+        'w-full flex sm:flex-row sm:space-y-0 sm:space-x-4 sm:overflow-x-auto py-2',
+        direction == 'row' && "sm:basis-1/3 sm:flex-col sm:space-y-0 sm:space-x-0",          
       )}>
         {items?.map((item, i) => (
           <BlurFade delay={0.25} inView key={i} className="w-full">
             <FeatureTab
+              icon={item?.icon}
               title={item?.title}
               subtitle={item?.subtitle}							
               handleClick={() => handleSlide(i)}
