@@ -4,7 +4,7 @@ import React from 'react'
 import { Section } from '../../components'
 import { FeatureItem } from '../../components'
 import { FeatureItemProps } from '../../components/web/feature-item/FeatureItem'
-import { SectionProps, StackProps, HeadingProps } from '../../types'
+import { SectionProps, StackProps } from '../../types'
 
 type UIFeatureItemProps = SectionProps &
 	StackProps &

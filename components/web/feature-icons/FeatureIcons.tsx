@@ -5,7 +5,7 @@ import { Empty } from '../..'
 import { BlurFade } from '../..'
 import { RemixIcon } from '../..'
 import { Typography } from '../../../components'
-import { Avatar, AvatarFallback, cn } from 'frontend-shadcn'
+import { cn } from 'frontend-shadcn'
 
 type FeatureIconProps = {
 	icon?: string

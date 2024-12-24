@@ -1,7 +1,7 @@
 export * from './links'
 export * from './testimonials'
 
-// Web
+// Web Components
 export { default as Accordion } from './accordions/Accordion'
 export { default as Cards } from './cards/Cards'
 export { default as CallToAction } from './cta/CallToAction'
@@ -11,6 +11,7 @@ export { default as FeatureIcons } from './feature-icons/FeatureIcons'
 export { default as FeatureCards } from './feature-cards/FeatureCards'
 export { default as FeatureCard } from './feature-cards/FeatureCard'
 export { default as FeatureItem } from './feature-item/FeatureItem'
+export { default as FeatureTabs } from './feature-tabs/FeatureTabs'
 export { default as Footer } from './footer/Footer'
 export { default as Header } from './header/Header'
 export { default as Logos } from './logos/Logos'

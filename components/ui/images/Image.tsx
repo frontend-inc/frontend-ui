@@ -43,25 +43,25 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
 	const [isHovered, setIsHovered] = useState(false)
 
 	return (
+    <AspectRatio ratio={aspectRatio}>
 		<figure
 			className={cn(
 				'w-full h-full',
 				'relative overflow-hidden',
-				!disableBorderRadius && 'rounded-lg',
+        !disableBorderRadius && 'rounded-lg',
 				className
 			)}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
 			onClick={handleClick ? handleClick : undefined}
 		>
-			<AspectRatio ratio={aspectRatio}>
 				{src ? (
 					<Image
 						src={src}
 						alt={alt ? alt : 'image'}
 						width={width}
 						height={height}
-						className={cn(
+						className={cn(              
 							objectFit == 'cover' ? 'object-cover' : 'object-contain',
 							'w-full h-full transition-transform duration-300 ease-in-out',
 							!disableZoom && isHovered && 'hover:scale-105'
@@ -97,7 +97,7 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
 						{truncate(label, 14)}
 					</Badge>
 				)}
-			</AspectRatio>
 		</figure>
+    </AspectRatio>
 	)
 }
