@@ -8,6 +8,7 @@ import { Button, Carousel, CarouselContent, CarouselItem, CarouselNext, Carousel
 import { type CarouselApi } from 'frontend-shadcn'
 
 type ItemType = {
+  icon?: string
   label?: string
   title?: string
   subtitle?: string
@@ -28,9 +29,9 @@ const FeatureTab: React.FC<FeatureIconProps> = (props) => {
   return (
     <button 
       onClick={handleClick}
-      className={cn(
-        'rounded-lg hover:bg-muted cursor-pointer',
-        'p-4 w-full transition-all duration-200',        
+      className={cn(     
+        'hover:bg-muted rounded-lg',   
+        'cursor-pointer p-4 w-full transition-all duration-200',        
       )}
     >
       <div className={cn(
@@ -40,9 +41,8 @@ const FeatureTab: React.FC<FeatureIconProps> = (props) => {
           <RemixIcon
             name={icon}
             size="lg"
-            className={cn(
-              'text-foreground',
-              isActive && "text-primary"
+            className={cn(              
+              isActive ? "text-primary" : "text-muted-foreground"
             )}
           />
         )}
@@ -53,12 +53,20 @@ const FeatureTab: React.FC<FeatureIconProps> = (props) => {
           <Typography 
             variant="subtitle1" 
             className={cn(
-              isActive && 'text-primary'
+              isActive ? "text-primary" : "text-muted-foreground"
             )}
           >
             {title}
           </Typography>
-          <Typography className="text-muted-foreground" variant="body1">{subtitle}</Typography>
+          <Typography 
+            className={cn(
+              'text-muted-foreground',
+              isActive ? "text-primary" : "text-muted-foreground"
+            )}
+            variant="body1"
+          >
+            {subtitle}
+          </Typography>
         </div>
       </div>
     </button>
