@@ -29,9 +29,9 @@ const FeatureTab: React.FC<FeatureIconProps> = (props) => {
   return (
     <button 
       onClick={handleClick}
-      className={cn(     
-        'hover:bg-muted rounded-lg',   
-        'cursor-pointer p-4 w-full transition-all duration-200',        
+      className={cn( 
+        "rounded-lg",
+        'hover:bg-muted cursor-pointer p-3 w-full transition-all duration-200',        
       )}
     >
       <div className={cn(
@@ -42,7 +42,7 @@ const FeatureTab: React.FC<FeatureIconProps> = (props) => {
             name={icon}
             size="lg"
             className={cn(              
-              isActive ? "text-primary" : "text-muted-foreground"
+              isActive ? "text-foreground" : "text-muted-foreground"
             )}
           />
         )}
@@ -53,15 +53,14 @@ const FeatureTab: React.FC<FeatureIconProps> = (props) => {
           <Typography 
             variant="subtitle1" 
             className={cn(
-              isActive ? "text-primary" : "text-muted-foreground"
+              isActive ? "text-foreground" : "text-muted-foreground"
             )}
           >
             {title}
           </Typography>
           <Typography 
-            className={cn(
-              'text-muted-foreground',
-              isActive ? "text-primary" : "text-muted-foreground"
+            className={cn(              
+              isActive ? "text-foreground" : "text-muted-foreground"
             )}
             variant="body1"
           >
@@ -69,6 +68,12 @@ const FeatureTab: React.FC<FeatureIconProps> = (props) => {
           </Typography>
         </div>
       </div>
+      <div 
+        className={cn(
+          'h-1 mt-2 rounded-full w-full',          
+          isActive ? 'bg-primary' : 'bg-transparent',        
+        )}
+      />
     </button>
   )
 }
@@ -123,7 +128,7 @@ const FeatureTabs: React.FC<FeatureTabsProps> = (props) => {
       direction == 'row' && "md:flex-row md:space-x-4 md:space-y-0",        
     )}>
       <div className={cn(
-        'flex flex-col space-y-4 space-x-0',
+        'flex flex-col space-y-4 space-x-0 px-1',
         'w-full flex sm:flex-row sm:space-y-0 sm:space-x-4 sm:overflow-x-auto py-2',
         direction == 'row' && "sm:basis-1/3 sm:flex-col sm:space-y-0 sm:space-x-0",          
       )}>
