@@ -30,7 +30,8 @@ const FeatureTab: React.FC<FeatureIconProps> = (props) => {
     <button 
       onClick={handleClick}
       className={cn( 
-        "rounded-lg",
+        "rounded-md",
+        isActive && 'bg-muted',
         'hover:bg-muted cursor-pointer p-3 w-full transition-all duration-200',        
       )}
     >
@@ -68,12 +69,6 @@ const FeatureTab: React.FC<FeatureIconProps> = (props) => {
           </Typography>
         </div>
       </div>
-      <div 
-        className={cn(
-          'h-1 mt-2 rounded-full w-full',          
-          isActive ? 'bg-primary' : 'bg-transparent',        
-        )}
-      />
     </button>
   )
 }

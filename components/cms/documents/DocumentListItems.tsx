@@ -6,12 +6,13 @@ import { useResourceContext } from 'frontend-js'
 import { DocumentListItem, DataLayout } from '../..'
 import { ButtonType, MetafieldType } from '../../../types'
 import { BlurFade } from '../..'
+import { DocumentStyleTypes } from './DocumentList'
 
 export type DocumentListItemsProps = {
 	layout?: 'list' | 'grid' | 'slider'
 	selectable?: boolean
 	href?: string
-	style?: 'list' | 'card' | 'avatar' | 'cover' | 'text'
+	style?: DocumentStyleTypes
 	buttons: ButtonType[]
 	metafields: MetafieldType[]
 	handleClick?: (resource: any) => void

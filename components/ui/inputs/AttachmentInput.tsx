@@ -2,13 +2,13 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { File, Trash2 } from 'lucide-react'
+import { Trash2 } from 'lucide-react'
 import { InputLabel } from '../../../components'
 import { AttachmentInputProps } from '../../../types'
 import { cn } from 'frontend-shadcn'
 import { Button } from '../../../components'
 import { Avatar, AvatarFallback } from 'frontend-shadcn'
-import { DropZone } from '../../../components'
+import { RemixIcon, DropZone } from '../../../components'
 
 const IMAGE_WIDTH = 140
 
@@ -49,9 +49,9 @@ function RenderAttachment(props: RenderAttachmentProps) {
 				</div>
 			)}
 			{variant === 'file' && (
-				<Avatar className="h-16 w-16 bg-primary">
-					<AvatarFallback>
-						<File className="h-6 w-6" />
+				<Avatar className="rounded-lg h-16 w-16">
+					<AvatarFallback className="rounded-lg">
+						<RemixIcon name='ri-file-2-line' size='lg' />
 					</AvatarFallback>
 				</Avatar>
 			)}

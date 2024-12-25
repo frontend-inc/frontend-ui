@@ -6,10 +6,8 @@ export { default as FavoritesList } from './FavoritesList'
 export { default as PlacesList } from './PlacesList'
 export { default as PlacesHeader } from './PlacesHeader'
 export { default as ImageList } from './ImageList'
-export { default as ImageListItems } from './ImageListItems'
 export { default as SimilarList } from './SimilarList'
 export { default as VideoList } from './VideoList'
-export { default as VideoListItems } from './VideoListItems'
 
 // Documents
 export { default as DocumentCarouselList } from './DocumentCarouselList'

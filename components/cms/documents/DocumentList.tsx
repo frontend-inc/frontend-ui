@@ -17,10 +17,20 @@ import {
 	DocumentEmpty,
 } from '../..'
 
+export type DocumentStyleTypes = 
+   'card' | 
+   'cover'| 
+   'avatar' | 
+   'list' | 
+   'text' | 
+   'video' | 
+   'file' | 
+   'image' 
+
 export type DocumentListProps = {
 	layout?: 'list' | 'grid' | 'slider'
 	contentType?: ContentTypes
-	style: string
+	style: DocumentStyleTypes
 	enableSearch?: boolean
 	enableFilters?: boolean
 	enableSorting?: boolean
@@ -233,6 +243,9 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
 			text: 'list',
 			card: 'grid',
 			cover: 'grid',
+      video: 'grid',
+      image: 'grid',
+      file: 'list'
 		}[style] || 'list'
 
 	return (

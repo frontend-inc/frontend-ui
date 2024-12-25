@@ -3,21 +3,23 @@
 import React from 'react'
 import {
   Card,
+  FileCard,
 	ListCard,
 	CoverCard,
 	AvatarCard,
 	ChipCard,
 	TextCard,
 	Typography,
+  VideoCard,
+  ImageCard
 } from '../..'
 import { ListFields, SocialButtons } from '../..'
 import { ButtonType, MetafieldType } from '../../../types'
-
-type CardStyleTypes = 'list' | 'avatar' | 'card' | 'cover' | 'text'
+import { DocumentStyleTypes } from './DocumentList'
 
 type DocumentListItemProps = {
 	buttons: ButtonType[]
-	style: CardStyleTypes
+	style: DocumentStyleTypes
 	listFields: MetafieldType[]
 	resource: any
 	buttonText?: string
@@ -27,6 +29,7 @@ type DocumentListItemProps = {
 	enableBorder?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
+  enableDownload?: boolean
 	enableComments?: boolean
 	enableFavorites?: boolean
 	enableLikes?: boolean
@@ -41,6 +44,7 @@ const DocumentListItem: React.FC<DocumentListItemProps> = (props) => {
     disableTitle = false,
 		enableGradient = false,
 		enableOverlay = false,
+    enableDownload = false,
 		enableComments = false,
 		enableFavorites = false,
 		enableLikes = false,
@@ -55,6 +59,9 @@ const DocumentListItem: React.FC<DocumentListItemProps> = (props) => {
 		chip: ChipCard,
 		text: TextCard,
 		list: ListCard,
+    image: ImageCard,
+    file: FileCard,
+    video: VideoCard
 	}
 
 	let Component = COMPONENTS[style] || Card
@@ -82,12 +89,18 @@ const DocumentListItem: React.FC<DocumentListItemProps> = (props) => {
 			}
 			handleClick={handleClick}
 			// @ts-ignore
-			subtitle={<ListFields fields={listFields} resource={resource} />}
+			subtitle={
+        <ListFields 
+          fields={listFields} 
+          resource={resource} 
+        />
+      }
 			actions={
 				<SocialButtons
 					size="small"
 					justifyContent="flex-start"
 					resource={resource}
+          enableDownload={enableDownload}
 					enableLikes={enableLikes}
 					enableFavorites={enableFavorites}
 					enableComments={enableComments}

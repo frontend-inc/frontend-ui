@@ -70,6 +70,9 @@ const DisplayField: React.FC<DisplayFieldProps> = (props) => {
 		email: {
 			className: 'w-full text-center text-sm italic',
 		},
+    file: {
+      className: 'w-full justify-center'
+    },
 		string: {
 			className: 'w-full text-center text-md font-normal tracking-wide',
 		},

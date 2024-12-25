@@ -120,3 +120,34 @@ export const formatCurrency = (amount, precision=2, currency = 'USD') => {
     minimumFractionDigits: precision,
 	}).format(amount)
 }
+
+export function downloadFile(remoteUrl) {
+  const link = document.createElement('a');
+  link.href = remoteUrl;  
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+export function cloudinaryDownloadUrl(url, filename) {
+  if(!url || !filename) return url;
+  try{
+    const urlObj = new URL(url);
+    const pathSegments = urlObj.pathname.split('/');
+    const uploadIndex = pathSegments.findIndex(seg => seg === 'upload');
+    if (uploadIndex === -1) return url;
+    const basename = filename.replace(/\.[^/.]+$/, '');
+    const newAttachmentSegment = `fl_attachment:${basename}`;
+    const nextSegment = pathSegments[uploadIndex + 1] || '';
+    if (nextSegment.startsWith('fl_attachment:')) {
+      pathSegments[uploadIndex + 1] = newAttachmentSegment;
+    } else {
+      pathSegments.splice(uploadIndex + 1, 0, newAttachmentSegment);
+    }
+    urlObj.pathname = pathSegments.join('/');
+    return urlObj.toString();
+  }catch(e){
+    console.error(e);
+    return url;
+  }
+}

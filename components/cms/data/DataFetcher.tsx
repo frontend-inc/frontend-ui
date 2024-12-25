@@ -9,21 +9,21 @@ export type DataFetcherProps = {
 }
 
 const DataFetcher: React.FC<DataFetcherProps> = (props) => {
-	const { children, query } = props
+	const { children, query: defaultQuery } = props
 
 	const { 
     url, 
+    query,
     findMany 
   } = useResourceContext()
 
   const mounted = useRef(false)
 
 	useEffect(() => {        
-		if (query && url && !mounted.current) {
-      mounted.current = true
-			findMany(query || {})
+		if (JSON.stringify(defaultQuery) !== JSON.stringify(query)) {
+			findMany(defaultQuery || {})
 		}
-	}, [query, url])
+	}, [defaultQuery])
 
 	return children
 }

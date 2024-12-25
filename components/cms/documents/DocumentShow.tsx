@@ -39,6 +39,7 @@ const DocumentShow: React.FC<DocumentShowProps> = (props) => {
 		case 'youtube':
 		case 'vimeo':
 		case 'soundcloud':
+    case 'file':     
 		case 'video':
 			disableImage = true
 			break
