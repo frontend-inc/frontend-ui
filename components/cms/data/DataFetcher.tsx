@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect } from 'react'
 import { useResourceContext } from 'frontend-js'
+import { ApiQuery } from 'frontend-js'
 
 export type DataFetcherProps = {
 	query?: any
@@ -20,7 +21,7 @@ const DataFetcher: React.FC<DataFetcherProps> = (props) => {
   const mounted = useRef(false)
 
 	useEffect(() => {        
-		if (defaultQuery && url){
+		if (defaultQuery && url && mounted.current == false) {
       mounted.current = true 
 			findMany(defaultQuery || {})
 		}
