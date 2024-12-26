@@ -30,7 +30,7 @@ const FileCard: React.FC<FileCardProps> = (props) => {
         <div className="w-[64px] pr-2 flex flex-row justify-center">
           {icon && (
             <Avatar className='rounded-lg'>
-              <AvatarFallback className='bg-primary'>
+              <AvatarFallback className='rounded-lg bg-primary'>
                 <RemixIcon name={ icon } className='text-primary-foreground' />
               </AvatarFallback>
             </Avatar>									

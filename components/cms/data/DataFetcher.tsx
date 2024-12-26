@@ -20,10 +20,11 @@ const DataFetcher: React.FC<DataFetcherProps> = (props) => {
   const mounted = useRef(false)
 
 	useEffect(() => {        
-		if (JSON.stringify(defaultQuery) !== JSON.stringify(query)) {
+		if (defaultQuery && url){
+      mounted.current = true 
 			findMany(defaultQuery || {})
 		}
-	}, [defaultQuery])
+	}, [defaultQuery, url])
 
 	return children
 }

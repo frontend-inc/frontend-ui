@@ -14,10 +14,11 @@ type DownloadButtonProps = {
 export default function DownloadButton(props: DownloadButtonProps) {
 	const { resource, size = 'small', variant = 'rounded' } = props
 
-  let { filename, image, file, video } = resource || {}
+  let { image, file, video } = resource || {}
 
   let downloadUrl = file?.url || video?.url || image?.url || '#'
-  downloadUrl = cloudinaryDownloadUrl(downloadUrl, filename)
+  let fileName = file?.filename || video?.filename || image?.filename || 'download'
+  downloadUrl = cloudinaryDownloadUrl(downloadUrl,  fileName)
 
 	return (
 		<div>

@@ -65,7 +65,7 @@ const SocialButtons: React.FC<SocialButtonsProps> = (props) => {
 				justifyContent == 'center' && 'justify-center'
 			)}
 		>
-      { enableDownload == true && <DownloadButton size={size} resource={resource} /> }
+      {enableDownload == true && <DownloadButton size={size} resource={resource} /> }
 			{enableLikes == true && <LikeButton size={size} resource={resource} />}
 			{enableFavorites == true && (
 				<FavoriteButton size={size} resource={resource} />

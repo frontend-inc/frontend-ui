@@ -12,6 +12,7 @@ export * from './tabs'
 
 export { default as Alert } from './Alert'
 export { default as Avatar } from './avatars/Avatar'
+export { default as AvatarIcon } from './avatars/AvatarIcon'
 export { default as AlertModal } from './modals/AlertModal'
 export { default as ButtonTabs } from './ButtonTabs'
 export { default as Breadcrumbs } from './breadcrumbs/Breadcrumbs'
