@@ -20,7 +20,7 @@ type DesktopHeaderProps = {
 	enableAuth?: boolean
 	enableShopify?: boolean
 	enableStripe?: boolean
-	handleClick: (link: MenuLinkType) => void
+	handleClick: (path: string) => void
 }
 
 const MAX_LINKS = 5
@@ -39,7 +39,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 	} = props
 
   const handleLogoClick = () => {
-    handleClick({ path: '/' })
+    handleClick('/')
   }
 
 	const [isScrolled, setIsScrolled] = useState(false)

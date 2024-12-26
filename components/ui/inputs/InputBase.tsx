@@ -4,27 +4,25 @@ import React, { useEffect, useState } from 'react'
 import { Input } from 'frontend-shadcn'
 import { ErrorText } from '../../../components'
 import { useError } from '../../../hooks'
-import { TextInputPropsType } from '../../../types'
+import { TextInputProps } from '../../../types'
 import { useDebounce } from 'use-debounce'
 import { cn } from 'frontend-shadcn'
 
-export type InputBaseProps = TextInputPropsType & {
-	debounceDelay?: number
-	disableDebounce?: boolean
-}
+export default function InputBase(props: TextInputProps) {
 
-export default function InputBase({
-	type,
-	name,
-	value = '',
-	handleChange,
-	placeholder,
-	disabled,
-	errors,
-	className,
-	debounceDelay = 350,
-	disableDebounce = false,
-}: InputBaseProps) {
+  const {
+    type,
+    name,
+    value = '',
+    handleChange,
+    placeholder,
+    disabled,
+    errors,
+    className,
+    debounceDelay = 350,
+    disableDebounce = false,
+  } = props || {}
+
 	const [text, setText] = useState(value)
 	const [debouncedText] = useDebounce(text, debounceDelay)
 

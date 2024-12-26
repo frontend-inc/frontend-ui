@@ -97,6 +97,7 @@ const findExactFilterIndex = (filters, filter) => {
 			...query,
 			...defaultQuery,
       filters: [
+        //@ts-ignore
         ...(query.filters || []),
         ...(defaultQuery.filters || [])
       ],

@@ -18,6 +18,7 @@ export type MenuLinkType = {
   position: number
   link_type: string
   path: string
+  url?: string
 	children: MenuLinkType[] | []
 }
 

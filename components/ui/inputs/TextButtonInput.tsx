@@ -5,9 +5,9 @@ import { Input } from 'frontend-shadcn'
 import { Button } from '../../../components'
 import { Loader2 } from 'lucide-react'
 import { cn } from 'frontend-shadcn'
-import { TextInputPropsType } from '../../../types'
+import { TextInputProps } from '../../../types'
 
-type TextButtonInputProps = TextInputPropsType & {
+type TextButtonInputProps = TextInputProps & {
 	loading?: boolean
 	onClick: () => void
 	color?: 'primary' | 'secondary'

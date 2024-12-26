@@ -2,11 +2,11 @@
 
 import React, { useState, useRef } from 'react'
 import { TextInput, RemixIcon } from '../..'
-import { TextInputPropsType } from '../../../types'
+import { TextInputProps } from '../../../types'
 import { Avatar, AvatarFallback, AvatarImage } from 'frontend-shadcn'
 import { useClickOutside } from '@raddix/use-click-outside'
 
-type AutocompleteInput = TextInputPropsType & {
+type AutocompleteInput = TextInputProps & {
 	handleInputChange: (keywords: string) => void
 }
 

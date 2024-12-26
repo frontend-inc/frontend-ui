@@ -327,8 +327,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	}
 
 	const handleExport = async () => {
-		let data = await findMany(query)
-		exportJsonToCSV(exportHeaders, data)
+		let resources = await findMany(query)
+    //@ts-ignore 
+		exportJsonToCSV(exportHeaders, resources)
 	}
 
 	const handleExportClick = async () => {

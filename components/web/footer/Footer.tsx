@@ -32,14 +32,14 @@ const FooterLink: React.FC<FooterLinkProps> = (props) => {
   )
 }
 
-interface FooterProps {
-  logo: string
-  iOSUrl: string
-  androidUrl: string  
+export type FooterProps = {
+  logo?: string
+  iOSUrl?: string
+  androidUrl?: string  
   enableNewsletter?: boolean
   links: MenuLinkType[]
-  socialLinks: SocialLinkType[]
-  handleClick: (link: MenuLinkType) => void
+  socialLinks?: SocialLinkType[]
+  handleClick: (path: string) => void
 }
 
 export default function Footer(props: FooterProps) {
@@ -90,7 +90,7 @@ export default function Footer(props: FooterProps) {
                       <li key={child.id}>
                         <FooterLink 
                           link={child}
-                          handleClick={() => handleClick(child)}
+                          handleClick={() => handleClick(child?.url || child?.path)}
                         />
                       </li>
                     ))}
@@ -100,7 +100,7 @@ export default function Footer(props: FooterProps) {
                 <div className="w-full mt-6" key={topLevelLink?.id}>
                   <FooterLink 
                     link={topLevelLink}
-                    handleClick={() => handleClick(topLevelLink)}
+                    handleClick={() => handleClick(topLevelLink?.url || topLevelLink?.path)}
                   />
                 </div>
               )}

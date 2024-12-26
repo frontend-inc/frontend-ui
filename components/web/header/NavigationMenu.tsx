@@ -46,7 +46,7 @@ function MenuNode({ node, handleClick }) {
                   key={child.id}
                   href={child.url}
                   title={child.label}
-                  onClick={() => handleClick?.(child)}
+                  onClick={() => handleClick?.(child?.url || child?.path)}
                 >
                   {child.description}
                 </ListItem>
@@ -57,7 +57,7 @@ function MenuNode({ node, handleClick }) {
       ) : (
           <NavigationMenuLink
             className={navigationMenuTriggerStyle()}
-            onClick={() => handleClick?.(node)}
+            onClick={() => handleClick?.(node?.url || node?.path)}
           >
             <span className="text-md font-medium text-primary">
               {node.label}

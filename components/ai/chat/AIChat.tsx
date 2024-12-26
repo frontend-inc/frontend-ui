@@ -2,12 +2,12 @@
 
 import React, { useState } from 'react'
 import { Button } from '../../../components'
-import { TextInputPropsType } from '../../../types'
+import { TextInputProps } from '../../../types'
 import AIChatForm from './AIChatForm'
 import AIChatMessages from './AIChatMessages'
 import { useChat } from 'ai/react'
 
-export type AIChatProps = TextInputPropsType & {
+export type AIChatProps = TextInputProps & {
 	avatar?: string
 	id?: string
 	label: string

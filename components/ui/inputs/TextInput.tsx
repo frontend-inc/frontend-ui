@@ -4,14 +4,9 @@ import React, { useEffect, useState } from 'react'
 import { Input } from 'frontend-shadcn'
 import { InputLabel, ErrorText } from '../../../components'
 import { useError } from '../../../hooks'
-import { TextInputPropsType } from '../../../types'
+import { TextInputProps } from '../../../types'
 import { useDebounce } from 'use-debounce'
 import { cn } from 'frontend-shadcn'
-
-type TextInputProps = TextInputPropsType & {
-	debounceDelay?: number
-	disableDebounce?: boolean
-}
 
 export default function TextInput(props: TextInputProps) {
 	const {

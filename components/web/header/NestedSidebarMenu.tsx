@@ -3,27 +3,12 @@
 import React, { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { cn } from 'frontend-shadcn'
+import { MenuLinkType } from '../../../types'
 
-export interface Link {
-  id: string
-  parent_id: string | null
-  label: string
-  description?: string
-  position: number
-  link_type: string
-  path: string
-  children?: Link[]
-}
 
-export interface NestedLink extends Link {
-  children: NestedLink[]
-}
-
-export type HandleClickFunction = (link: Link) => void
-
-export function organizeLinks(links: Link[]): NestedLink[] {
-  const linkMap = new Map<string, NestedLink>()
-  const rootLinks: NestedLink[] = []
+export function organizeLinks(links: MenuLinkType[]): MenuLinkType[] {
+  const linkMap = new Map<string, MenuLinkType>()
+  const rootLinks: MenuLinkType[] = []
 
   // First pass: create NestedLink objects
   links.forEach((link) => {
@@ -32,19 +17,20 @@ export function organizeLinks(links: Link[]): NestedLink[] {
 
   // Second pass: organize into a tree structure
   links.forEach((link) => {
-    const nestedLink = linkMap.get(link.id)!
+    const nestedLink = linkMap.get(link.id)! 
     if (link.parent_id === null) {
       rootLinks.push(nestedLink)
     } else {
       const parent = linkMap.get(link.parent_id)
       if (parent) {
+        //@ts-ignore
         parent.children.push(nestedLink)
       }
     }
   })
 
   // Sort root links and their children recursively
-  const sortLinks = (links: NestedLink[]) => {
+  const sortLinks = (links: MenuLinkType[]) => {
     links.sort((a, b) => a.position - b.position)
     links.forEach((link) => sortLinks(link.children))
   }
@@ -54,8 +40,8 @@ export function organizeLinks(links: Link[]): NestedLink[] {
 }
 
 interface RenderLinkProps {
-  link: NestedLink
-  handleClick: HandleClickFunction
+  link: MenuLinkType
+  handleClick: (path: string) => void
 }
 
 function RenderLink({ link, handleClick }: RenderLinkProps) {
@@ -69,7 +55,7 @@ function RenderLink({ link, handleClick }: RenderLinkProps) {
       event.preventDefault()
       setIsOpen(!isOpen)
     } else {
-      handleClick(link)
+      handleClick(link?.url || link?.path)
     }
   }
 
@@ -108,8 +94,8 @@ function RenderLink({ link, handleClick }: RenderLinkProps) {
 
 // NestedSidebarMenu
 interface NestedSidebarMenuProps {
-  links: Link[]
-  handleClick: HandleClickFunction
+  links: MenuLinkType[]
+  handleClick: (path: string) => void
 }
 
 export default function NestedSidebarMenu({ links, handleClick }: NestedSidebarMenuProps) {

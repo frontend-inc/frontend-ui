@@ -61,10 +61,12 @@ export type InputPropsType = {
 	info?: string
 }
 
-export type TextInputPropsType = InputPropsType & {
+export type TextInputProps = InputPropsType & {
 	direction?: 'row' | 'column'
 	type?: string
 	className?: string
+  debounceDelay?: number
+	disableDebounce?: boolean
 }
 
 export type SelectInputPropsType = InputPropsType & {

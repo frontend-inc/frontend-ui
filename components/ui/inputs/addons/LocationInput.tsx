@@ -3,13 +3,13 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useGooglePlaces } from '../../../../hooks'
 import { TextInput, GoogleMaps } from '../../..'
-import { TextInputPropsType } from '../../../../types'
+import { TextInputProps } from '../../../../types'
 import { useDebounce } from 'use-debounce'
 import { cn } from 'frontend-shadcn'
 import { useClickOutside } from '@raddix/use-click-outside'
 import { RiMapPin2Fill } from '@remixicon/react'
 
-type LocationInputProps = TextInputPropsType & {
+type LocationInputProps = TextInputProps & {
 	enablePosition?: boolean
 	lat?: number
 	lng?: number

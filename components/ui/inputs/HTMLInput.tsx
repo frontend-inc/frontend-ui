@@ -18,7 +18,7 @@ import BulletList from '@tiptap/extension-bullet-list'
 import OrderedList from '@tiptap/extension-ordered-list'
 import Blockquote from '@tiptap/extension-blockquote'
 import BubbleMenu from '@tiptap/extension-bubble-menu'
-import { TextInputPropsType } from '../../../types'
+import { TextInputProps } from '../../../types'
 import { cn } from 'frontend-shadcn'
 import { useDebounce } from 'use-debounce'
 
@@ -134,7 +134,7 @@ const MenuBar = (props) => {
 	)
 }
 
-const HTMLInput: React.FC<TextInputPropsType> = (props) => {
+const HTMLInput: React.FC<TextInputProps> = (props) => {
 	const { label, name, value, handleChange } = props || {}
 
 	const [text, setText] = useState(value || '')

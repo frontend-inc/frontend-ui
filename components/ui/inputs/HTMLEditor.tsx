@@ -9,7 +9,7 @@ import { IconButton, RemixIcon } from '../..'
 import StarterKit from '@tiptap/starter-kit'
 import TextAlign from '@tiptap/extension-text-align'
 import Link from '@tiptap/extension-link'
-import { TextInputPropsType } from '../../../types'
+import { TextInputProps } from '../../../types'
 import { cn } from 'frontend-shadcn'
 import { useDebounce } from 'use-debounce'
 
@@ -205,7 +205,7 @@ const MenuBar = ({ editor }) => {
 	)
 }
 
-const HTMLEditor: React.FC<TextInputPropsType> = (props) => {
+const HTMLEditor: React.FC<TextInputProps> = (props) => {
 	const { label, name, value, handleChange } = props || {}
 
 	const [text, setText] = useState(value || '')

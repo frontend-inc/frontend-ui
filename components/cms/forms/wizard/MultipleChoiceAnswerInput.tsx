@@ -62,7 +62,6 @@ const MultipleChoiceAnswerInput: React.FC<MultipleChoiceAnswerInputProps> = (
 					{answers?.map((answer, i) => (
 						<ResourceListItem
 							key={i}
-							enableBorder
 							selected={selected?.includes(answer.value)}
 							image={answer?.image?.url}
 							primary={answer.title}
@@ -77,7 +76,6 @@ const MultipleChoiceAnswerInput: React.FC<MultipleChoiceAnswerInputProps> = (
 					{answers?.map((answer, idx) => (
 						<div key={idx}>
 							<ResourceGridItem
-								enableBorder
 								selected={selected?.includes(answer.value)}
 								image={answer?.image?.url}
 								primary={answer.title}

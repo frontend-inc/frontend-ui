@@ -4,11 +4,11 @@ import React, { useEffect, useState } from 'react'
 import { Textarea } from 'frontend-shadcn'
 import { InputLabel, ErrorText } from '../..'
 import { useError } from '../../../hooks'
-import { TextInputPropsType } from '../../../types'
+import { TextInputProps } from '../../../types'
 import { useDebounce } from 'use-debounce'
 import { cn } from 'frontend-shadcn'
 
-type TextAreaProps = Omit<TextInputPropsType, 'type'> & {
+type TextAreaProps = Omit<TextInputProps, 'type'> & {
 	debounceDelay?: number
 	disableDebounce?: boolean
 	rows?: number

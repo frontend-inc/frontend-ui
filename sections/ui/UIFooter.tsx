@@ -6,7 +6,6 @@ import { FooterProps } from '../../components/web/footer/Footer'
 import { useRouter } from 'next/navigation'
 import { useApp } from '../../hooks'
 import { SectionProps } from '../../types'
-import { cn } from 'frontend-shadcn'
 
 type UIFooterProps = FooterProps & SectionProps 
 
