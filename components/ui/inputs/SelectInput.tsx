@@ -1,21 +1,12 @@
 'use client'
 
-import React from 'react'
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from 'frontend-shadcn'
-import { InputLabel } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import React, { useState } from 'react'
+import {Select, SelectItem} from "@nextui-org/select";
 import { SyntheticEventType } from 'frontend-js'
 
 type SelectInputPropsType = {
 	errors?: any
 	label?: string
-	direction?: 'column' | 'row'
 	name: string
 	value: string
 	placeholder?: string
@@ -30,45 +21,29 @@ type SelectInputPropsType = {
 export default function SelectInput(props: SelectInputPropsType) {
 
   const {
-    label,
-    direction = 'column',
+    label,    
+    placeholder,
     name,
     value,
     options,
     handleChange,
-    info,
   } = props
+
 	return (
-		<div
-			className={cn(
-				'w-full',
-				direction === 'row'
-					? 'flex items-center space-x-4'
-					: 'flex flex-col space-y-2'
-			)}
-		>
-			<InputLabel label={label} info={info} />
 			<Select
-				value={value}
-				onValueChange={(newValue) =>
-					handleChange({ target: { name, value: newValue } })
-				}
+        label={ label }
+        placeholder={ placeholder || 'Select an option' }
+        items={options}
+				selectedKeys={[value]} 
+        onChange={ handleChange }       				
 			>
-				<SelectTrigger className="w-full min-w-[165px] h-10 bg-input border border-input shadow-none rounded text-foreground">
-					<SelectValue placeholder="Select an option" />
-				</SelectTrigger>
-				<SelectContent className="bg-background min-w-[165px]">
-					{options?.map((option, idx) => (
-						<SelectItem
-							key={idx}
-							// @ts-ignore
-							value={option.value}
-						>
-							{option.label}
-						</SelectItem>
-					))}
-				</SelectContent>
+        {(option) => (
+				<SelectItem 
+          key={option?.value}           
+        >
+					{option.label}
+				</SelectItem>
+        )}
 			</Select>
-		</div>
 	)
 }

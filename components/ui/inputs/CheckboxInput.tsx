@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { SyntheticEventType } from '../../../types'
-import { Checkbox } from 'frontend-shadcn'
+import { Checkbox } from '@nextui-org/react'
 import { InputLabel } from '../../../components'
 import { cn } from 'frontend-shadcn'
 
@@ -35,28 +35,12 @@ export default function CheckboxInput({
 	}
 
 	return (
-		<div className="w-full">
-			<InputLabel label={label} info={info} />
-			<div
-				className={cn(
-					'flex flex-col text-sm',
-					!disableBorder && 'border border-input shadow-sm rounded-md p-2'
-				)}
-			>
-				<div className="flex items-center space-x-2">
-					<Checkbox
-						id={name}
-						checked={value}
-						onCheckedChange={handleCheckboxChange}
-					/>
-					<label
-						htmlFor={name}
-						className="text-sm text-muted-foreground leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-					>
-						{placeholder}
-					</label>
-				</div>
-			</div>
-		</div>
+    <Checkbox
+      id={name}
+      isSelected={value}
+      onValueChange={handleCheckboxChange}
+    >
+      { label }
+    </Checkbox>
 	)
 }

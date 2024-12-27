@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { RemixIcon, SearchInput, FilterButton, SortButton } from '../..'
 import {
 	SortOptionType,
@@ -123,10 +123,11 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 				)}
 				{(enableCreate || secondaryAction) && (
 					<Button
-						size="default"
-						className="w-full sm:w-auto"
-						onClick={handleAdd}
-						startIcon={
+            color="primary"
+            variant="solid"
+						onPress={handleAdd}
+            className="w-full sm:w-auto"
+						startContent={
               <RiAddFill className="text-primary-foreground" />}
 					>
 						{buttonText}

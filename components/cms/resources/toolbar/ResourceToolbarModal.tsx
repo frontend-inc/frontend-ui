@@ -32,12 +32,12 @@ export default function ResourceToolbarModal(props: ResourceToolbarModalProps) {
 						<div className="w-10 h-10"></div>
 						{children}
 						<Button
-							variant="ghost"
-							size="icon"
-							className="w-8 h-8 hover:bg-gray-100"
+              isIconOnly 
+							variant="ghost"							
+							className="min-w-8 w-8 h-8"
 							onClick={handleClose}
 						>
-							<X className="h-5 w-5 text-secondary-foreground" />
+							<X className="h-5 w-5 text-muted-foreground" />
 						</Button>
 					</div>
 				</div>

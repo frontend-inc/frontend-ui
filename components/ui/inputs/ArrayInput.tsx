@@ -2,12 +2,11 @@
 
 import React, { useState } from 'react'
 import { useError } from '../../../hooks'
-import { InputLabel, ErrorText } from '../../../components'
-import { X } from 'lucide-react'
+import { RemixIcon, InputLabel, ErrorText } from '../../../components'
 import { SyntheticEventType } from '../../../types'
 import { cn } from 'frontend-shadcn'
 import { Input } from 'frontend-shadcn'
-import { Badge } from 'frontend-shadcn'
+import { ButtonGroup, Button } from '@nextui-org/react'
 
 type ArrayInputProps = {
 	errors?: any
@@ -81,26 +80,24 @@ export default function ArrayInput(props: ArrayInputProps) {
 			<div className="relative w-full">
 				<div
 					className={cn(
-						'bg-input flex flex-wrap gap-2 p-1 border rounded-md min-h-[42px]',
+						'bg-input flex flex-wrap gap-2 p-1 border-2 rounded-lg min-h-[42px]',
 						error && 'border-destructive'
 					)}
 				>
 					{Array.isArray(value) &&
 						value?.map((tag) => (
-							<Badge
-								key={tag}
-								variant="outline"
-								className="px-2 py-1 text-sm bg-muted border-2 border-border shadow-sm"
-							>
-								{tag}
-								<button
-									type="button"
-									className="ml-1 hover:bg-secondary rounded-full"
-									onClick={() => removeTag(tag)}
-								>
-									<X className="h-4 w-4" />
-								</button>
-							</Badge>
+            <ButtonGroup variant="solid" key={tag}>                
+              <Button className='min-w-[70px] pl-4 pr-0' size="sm">
+                { tag }
+              </Button>							
+              <Button 
+                size="sm"
+                isIconOnly
+                onPress={() => removeTag(tag) }                
+              >
+                <RemixIcon name="ri-close-line" />
+              </Button>							
+            </ButtonGroup>
 						))}
 					<Input
 						type="text"

@@ -3,14 +3,8 @@
 import React from 'react'
 import { cn } from 'frontend-shadcn'
 import { Avatar, AvatarFallback } from 'frontend-shadcn'
-import { Checkbox } from 'frontend-shadcn'
-import { Button } from '../../../components'
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
-} from 'frontend-shadcn'
+import { Checkbox } from '@nextui-org/react'
+import { MenuButton } from '../../../components'
 import { GripVertical, MoreVertical } from 'lucide-react'
 import { Typography } from '../../../components'
 import { Image, RemixIcon } from '../../../components'
@@ -70,9 +64,8 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 				)}
 				{selectable && (
 					<Checkbox
-						className="text-foreground"
-						checked={selected}
-						onCheckedChange={handleSelect}
+						isSelected={selected}
+						onValueChange={handleSelect}
 					/>
 				)}
 				{avatar && (
@@ -118,27 +111,12 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 				<div className="flex items-center space-x-1">
 					{secondaryAction}
 					{(menuActions || handleEdit || handleDelete) && (
-						<DropdownMenu>
-							<DropdownMenuTrigger asChild>
-								<Button variant="ghost" className="h-8 w-8 p-0">
-									<span className="sr-only">Open menu</span>
-									<MoreVertical className="h-4 w-4 text-foreground" />
-								</Button>
-							</DropdownMenuTrigger>
-							<DropdownMenuContent className="bg-background" align="end">
-								{menuActions}
-								{handleEdit && (
-									<DropdownMenuItem onClick={() => handleEdit({})}>
-										Edit
-									</DropdownMenuItem>
-								)}
-								{handleDelete && (
-									<DropdownMenuItem onClick={() => handleDelete({})}>
-										Delete
-									</DropdownMenuItem>
-								)}
-							</DropdownMenuContent>
-						</DropdownMenu>
+            <MenuButton 
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
+            >
+              {menuActions}
+            </MenuButton>            						
 					)}
 				</div>
 			</div>

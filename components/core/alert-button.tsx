@@ -2,12 +2,10 @@
 
 import React, { useState, forwardRef } from 'react'
 import {
-	Button as ShadcnButton,
-	ButtonProps as ShadcnButtonProps,
-} from 'frontend-shadcn'
+	Button, 
+  ButtonProps 
+} from '@nextui-org/react'
 import { AlertModal } from '..'
-import { cn } from 'frontend-shadcn'
-import { Loader2 } from 'lucide-react'
 
 type ButtonSize = 'sm' | 'default' | 'lg' | 'icon'
 type ButtonVariant =
@@ -18,7 +16,7 @@ type ButtonVariant =
 	| 'ghost'
 	| 'link'
 
-interface AlertButtonProps extends ShadcnButtonProps {
+interface AlertButtonProps extends ButtonProps {
 	size?: ButtonSize
 	fullWidth?: boolean
 	variant?: ButtonVariant
@@ -58,27 +56,26 @@ const AlertButton = forwardRef<HTMLButtonElement, AlertButtonProps>(
 
 		return (
 			<>
-				<ShadcnButton
+				<Button
 					ref={ref}
+          color="danger"
 					size={size}
 					variant={variant}
-					className={cn(fullWidth && 'w-full', className)}
+          fullWidth={ fullWidth }
+					className={className}
 					disabled={disabled || loading}
-					onClick={() => setOpen(true)}
+					onPress={() => setOpen(true)}
+          isLoading={ loading }
+          startContent={ 
+            startIcon
+          }
+          endIcon={ 
+            endIcon
+          }
 					{...props}
 				>
-					{loading ? (
-						<Loader2 className="h-4 w-4 mr-2 animate-spin" />
-					) : (
-						startIcon && <span className="mr-2">{startIcon}</span>
-					)}
 					{children}
-					{!loading && endIcon && (
-						<span className="w-full flex flex-row justify-end ml-2">
-							{endIcon}
-						</span>
-					)}
-				</ShadcnButton>
+				</Button>
 				<AlertModal
 					open={open}
 					handleClose={() => setOpen(false)}
