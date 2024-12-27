@@ -34,7 +34,7 @@ const ShopifyProductSortButton: React.FC<ShopifyProductSortButtonProps> = (
 
 	return (
 		<>
-			<Button variant="secondary" className="w-full" onClick={handleOpen}>
+			<Button variant="ghost" className="w-full" onClick={handleOpen}>
 				{currentSortLabel}
 				<ArrowUpDown className="ml-2 h-4 w-4" />
 			</Button>

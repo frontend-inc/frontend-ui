@@ -25,7 +25,7 @@ const FieldArray: React.FC<FieldArrayProps> = (props) => {
 				{Array.isArray(values) &&
 					values?.map((value, index) => (
 						<Badge
-							variant="secondary"
+							variant="ghost"
 							className="px-3 py-1 text-sm font-medium rounded-full whitespace-nowrap"
 							key={index}
 						>

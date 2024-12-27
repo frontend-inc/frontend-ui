@@ -17,7 +17,7 @@ const CellLink: React.FC<CellLinkProps> = (props) => {
 			{value && (
 				<Button
 					size="sm"
-					variant="secondary"
+					variant="ghost"
 					startIcon={<RiExternalLinkFill />}
 					onClick={handleClick}
 				>

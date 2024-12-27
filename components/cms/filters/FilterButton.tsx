@@ -76,7 +76,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 			<Popover>
 				<PopoverTrigger asChild>
 					<Button
-						variant="secondary"
+						variant="ghost"
 						loading={loading}
 						className={cn(
 							'relative w-full sm:w-auto',

@@ -68,7 +68,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 						{enableEdit && (
 							<Button
 								size="sm"
-								variant="secondary"
+								variant="ghost"
 								onClick={handleEdit ? () => handleEdit(row) : undefined}
 							>
 								Edit
@@ -77,7 +77,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 						{enableDelete && (
 							<Button
 								size="sm"
-								variant="secondary"
+								variant="ghost"
 								onClick={handleDelete ? () => handleDelete(row) : undefined}
 							>
 								Delete

@@ -24,20 +24,20 @@ export default function ShopifyQuantitySelector({
 	return (
 		<div className="inline-flex min-w-[96px] rounded-md shadow-sm" role="group">
 			<Button
-				variant="secondary"
+				variant="ghost"
 				className={cn(buttonClasses, 'rounded-r-none border-r-0')}
 				onClick={handleRemoveQuantity}
 			>
 				<Minus className="h-5 w-5" />
 			</Button>
 			<Button
-				variant="secondary"
+				variant="ghost"
 				className={cn(buttonClasses, 'rounded-none border-x')}
 			>
 				{quantity}
 			</Button>
 			<Button
-				variant="secondary"
+				variant="ghost"
 				className={cn(buttonClasses, 'rounded-l-none border-l-0')}
 				onClick={handleAddQuantity}
 			>

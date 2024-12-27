@@ -29,7 +29,7 @@ const CartQuantityInput: React.FC<CartQuantityInputProps> = (props) => {
 		<div className="inline-flex rounded-md" role="group">
 			<Button
 				size="sm"
-				variant="secondary"
+				variant="ghost"
 				className={cn(buttonClasses, 'rounded-r-none border-none')}
 				onClick={handleRemoveQuantity}
 			>
@@ -37,14 +37,14 @@ const CartQuantityInput: React.FC<CartQuantityInputProps> = (props) => {
 			</Button>
 			<Button
 				size="sm"
-				variant="secondary"
+				variant="ghost"
 				className={cn(buttonClasses, 'rounded-none border-none')}
 			>
 				{quantity}
 			</Button>
 			<Button
 				size="sm"
-				variant="secondary"
+				variant="ghost"
 				className={cn(buttonClasses, 'rounded-l-none border-none')}
 				onClick={handleAddQuantity}
 			>

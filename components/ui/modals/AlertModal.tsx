@@ -50,7 +50,7 @@ const AlertModal: React.FC<AlertModalProps> = (props) => {
 				)}
 				<AlertDialogFooter>
 					<AlertDialogCancel asChild>
-						<Button variant="secondary" onClick={handleClose}>
+						<Button variant="ghost" onClick={handleClose}>
 							Cancel
 						</Button>
 					</AlertDialogCancel>

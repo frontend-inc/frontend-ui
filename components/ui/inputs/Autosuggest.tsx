@@ -80,7 +80,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 				<InputLabel label={label} info={info} />
 				<PopoverTrigger asChild>
 					<Button
-						variant="secondary"
+						variant="ghost"
 						role="combobox"
 						aria-expanded={open}
 						className={cn(

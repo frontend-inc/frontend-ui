@@ -17,7 +17,7 @@ export default function LoadMore(props: LoadMoreProps) {
 		<div className="w-full flex justify-center items-center p-2">
 			{page < numPages && (
 				<Button
-					variant="secondary"
+					variant="ghost"
 					onClick={handlePaginate}
 					className="flex items-center"
 				>

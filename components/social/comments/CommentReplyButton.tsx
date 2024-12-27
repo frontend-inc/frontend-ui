@@ -13,7 +13,7 @@ const CommentReplyButton: React.FC<CommentReplyButtonProps> = (props) => {
 
 	return (
 		<Button
-			variant="secondary"
+			variant="ghost"
 			onClick={handleClick}
 			className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
 		>

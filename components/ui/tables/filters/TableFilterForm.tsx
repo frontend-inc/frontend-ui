@@ -157,7 +157,7 @@ export default function TableFilterForm({
 				handleRemove={handleRemoveFilter}
 			/>
 			<Button
-				variant="secondary"
+				variant="ghost"
 				className="text-foreground"
 				onClick={handleAddFilter}
 			>

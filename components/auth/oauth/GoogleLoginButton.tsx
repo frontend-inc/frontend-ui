@@ -42,7 +42,7 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = (props) => {
 	return (
 		//@ts-ignore
 		<Button
-			variant="secondary"
+			variant="ghost"
 			//@ts-ignore
 			onClick={handleLogin}
 			loading={loading}      

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Input } from 'frontend-shadcn'
+import { Input } from '@nextui-org/react'
 import { InputLabel, ErrorText } from '../../../components'
 import { useError } from '../../../hooks'
 import { TextInputProps } from '../../../types'
@@ -19,7 +19,6 @@ export default function TextInput(props: TextInputProps) {
 		disabled,
 		errors,
 		direction = 'column',
-		info,
 		className,
 		debounceDelay = 350,
 		disableDebounce = false,
@@ -33,11 +32,16 @@ export default function TextInput(props: TextInputProps) {
 		name,
 	})
 
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleInputChange = (value) => {
 		clearError()
-		setText(e.target.value)
+		setText(value)
 		if (disableDebounce) {
-			handleChange(e)
+			handleChange({ 
+        target: {
+          name, 
+          value
+        }
+      })
 		}
 	}
 
@@ -57,30 +61,19 @@ export default function TextInput(props: TextInputProps) {
 	}, [value])
 
 	return (
-		<div
-			className={cn(
-				'flex flex-col w-full space-y-2',
-				direction === 'row' && 'sm:flex-row sm:items-center'
-			)}
-		>
-			<InputLabel label={label} info={info} />
-			<div className="relative w-full flex flex-col space-y-2">
-				<Input
-					className={cn(
-						'bg-input focus:ring-2 focus:ring-offset-3',
-						error && 'ring-2 ring-destructive ring-offset-3',
-						className
-					)}
-					type={type}
-					name={name}
-					disabled={disabled}
-					placeholder={placeholder}
-					onChange={handleInputChange}
-					value={text}
-					autoComplete="off"
-				/>
-				<ErrorText error={error} />
-			</div>
-		</div>
+    <Input
+      label={ label }
+      className={cn(									
+        className
+      )}
+      type={type}
+      name={name}
+      disabled={disabled}
+      placeholder={placeholder || `Enter ${label}`}
+      onValueChange={handleInputChange}
+      value={text}
+      autoComplete="off"
+      errorMessage={error}
+    />
 	)
 }

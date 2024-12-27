@@ -33,7 +33,7 @@ export default function SortButton({
 			<Popover open={isOpen} onOpenChange={setIsOpen}>
 				<PopoverTrigger asChild>
 					<Button
-						variant="secondary"
+						variant="ghost"
 						className={cn('w-full sm:w-auto border-r-0', 'hover:border-r-0')}
 						onClick={toggleOpen}
 					>

@@ -17,7 +17,7 @@ const CellButton: React.FC<CellButtonProps> = (props) => {
 		<Button
 			fullWidth
 			size="sm"
-			variant="secondary"
+			variant="ghost"
 			startIcon={<RemixIcon name={icon} />}
 			onClick={handleClick && handleClick}
 		>

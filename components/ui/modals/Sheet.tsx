@@ -15,6 +15,17 @@ type SheetProps = {
 	title?: string
 	side?: 'left' | 'right'
 	handleClose: () => void
+  size?: 
+    'xs' |
+    'sm' | 
+    'md' | 
+    'lg' | 
+    'xl' | 
+    '2xl' | 
+    '3xl' | 
+    '4xl' | 
+    '5xl' | 
+    'full'
 	buttons?: React.ReactNode
 	children: React.ReactNode
 }
@@ -25,11 +36,16 @@ const Sheet: React.FC<SheetProps> = (props) => {
 		title,
 		handleClose,
 		children,
+    size='sm',
 		buttons,
 	} = props
 
 	return (
-		<Drawer isOpen={open} onOpenChange={handleClose}>
+		<Drawer 
+      size={size}
+      isOpen={open} 
+      onOpenChange={handleClose}
+    >
 			<DrawerContent>			
 				<DrawerHeader className="mt-4">
 					{title}

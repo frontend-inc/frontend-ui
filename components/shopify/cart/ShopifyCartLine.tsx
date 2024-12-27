@@ -29,18 +29,18 @@ const ShopifyCartQuantityInput: React.FC<ShopifyCartQuantityInputProps> = (props
 	return (
 		<div className="inline-flex rounded-md shadow-sm" role="group">
 			<Button
-				variant="secondary"
+				variant="ghost"
 				size="sm"
 				className="px-2 rounded-r-none"
 				onClick={handleRemoveQuantity}
 			>
 				<RemixIcon name="ri-subtract-line" />
 			</Button>
-			<Button variant="secondary" size="sm" className="px-2 rounded-none">
+			<Button variant="ghost" size="sm" className="px-2 rounded-none">
 				{quantity}
 			</Button>
 			<Button
-				variant="secondary"
+				variant="ghost"
 				size="sm"
 				className="px-2 rounded-l-none"
 				onClick={handleAddQuantity}

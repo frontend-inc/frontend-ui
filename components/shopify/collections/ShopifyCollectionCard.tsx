@@ -64,7 +64,7 @@ export default function ShopifyCollectionCard(
 						</div>
 						{buttonText && (
 							<Button
-								variant="secondary"
+								variant="ghost"
 								size="sm"
 								onClick={handleShowClick}
 								className="bg-white text-black hover:bg-white/90"

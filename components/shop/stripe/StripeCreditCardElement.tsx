@@ -46,7 +46,7 @@ const StripeCreditCardElement: React.FC<StripeCreditCardElementProps> = (
 					<Icon name="CreditCard" className="mr-2 h-4 w-4" />
 					Add Credit Card
 				</Button>
-				<Button variant="secondary" onClick={handleCancel}>
+				<Button variant="ghost" onClick={handleCancel}>
 					Cancel
 				</Button>
 			</div>

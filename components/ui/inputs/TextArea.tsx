@@ -1,12 +1,12 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Textarea } from 'frontend-shadcn'
 import { InputLabel, ErrorText } from '../..'
 import { useError } from '../../../hooks'
 import { TextInputProps } from '../../../types'
 import { useDebounce } from 'use-debounce'
 import { cn } from 'frontend-shadcn'
+import { Textarea } from '@nextui-org/react'
 
 type TextAreaProps = Omit<TextInputProps, 'type'> & {
 	debounceDelay?: number
@@ -64,30 +64,18 @@ export default function TextArea(props: TextAreaProps) {
 	}, [value])
 
 	return (
-		<div
-			className={cn(
-				'flex flex-col space-y-2 w-full',
-				direction === 'row' && 'sm:flex-row sm:items-start'
-			)}
-		>
-			<InputLabel label={label} info={info} />
-			<div className="relative w-full flex flex-col space-y-2">
-				<Textarea
-					className={cn(
-						'bg-input focus:ring-2 focus:ring-offset-3',
-						'w-full resize-none min-w-[230px]',
-						error && 'ring-2 ring-destructive ring-offset-3',
-						className
-					)}
-					name={name}
-					disabled={disabled}
-					placeholder={placeholder}
-					onChange={handleTextAreaChange}
-					value={text}
-					rows={rows}
-				/>
-				<ErrorText error={error} />
-			</div>
-		</div>
+    <Textarea
+      label={label}          
+      className={cn(
+        className
+      )}
+      name={name}
+      disabled={disabled}
+      placeholder={placeholder || `Enter ${label}`}
+      onChange={handleTextAreaChange}
+      value={text}
+      rows={rows}
+      errorMessage={error}
+    />
 	)
 }

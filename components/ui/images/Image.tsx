@@ -91,7 +91,7 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
 				)}
 				{label && (
 					<Badge
-						variant="secondary"
+						variant="ghost"
 						className="absolute font-medium px-2 py-1 uppercase text-xs tracking-wider top-3 left-3 bg-opacity-20 backdrop-blur-md text-foreground border-none"
 					>
 						{truncate(label, 14)}

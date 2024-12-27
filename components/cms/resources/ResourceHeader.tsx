@@ -108,7 +108,7 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 				{enableExport && (
 					<Button
 						size="default"
-						variant="secondary"
+						variant="ghost"
 						className="w-full sm:w-auto"
 						onClick={handleExport}
 						startIcon={

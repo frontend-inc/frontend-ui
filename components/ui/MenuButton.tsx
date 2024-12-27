@@ -2,10 +2,11 @@
 
 import React from 'react'
 import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from 'frontend-shadcn'
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem
+} from '@nextui-org/react'
 import { Button } from '../../components'
 import { RemixIcon } from '../../components'
 
@@ -18,34 +19,49 @@ type MenuButtonProps = {
 const MenuButton: React.FC<MenuButtonProps> = (props) => {
   const { children, handleEdit, handleDelete } = props
 
+  const handleAction = (action: string) => {
+    switch(action){
+      case 'edit':
+        //@ts-ignore
+        handleEdit()
+        break
+      case 'delete':
+        //@ts-ignore
+        handleDelete()
+        break
+    }  
+  }
+
   return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button variant="ghost" className="h-8 w-8 p-0">
-          <span className="sr-only">Open menu</span>
-          <RemixIcon name="ri-more-2-line" className="text-foreground" />
+    <Dropdown>
+      <DropdownTrigger>
+        <Button 
+          isIconOnly 
+          aria-label='More options'
+          variant="light"
+          className="min-w-8 w-8 h-8"          
+        >
+          <RemixIcon name="ri-more-2-line" />
         </Button>
-      </PopoverTrigger>
-      <PopoverContent className="p-0 bg-background w-[100px]">
+      </DropdownTrigger>
+      <DropdownMenu onAction={handleAction}>
         {children}
         {handleEdit && (
-          <button
-            className="flex w-full items-center px-2 py-2 text-sm rounded-md hover:bg-accent hover:text-accent-foreground focus:outline-none"
-            onClick={handleEdit}
+          <DropdownItem
+            key='edit'
           >
             Edit
-          </button>
+          </DropdownItem>
         )}
         {handleDelete && (
-          <button
-            className="flex w-full items-center px-2 py-2 text-sm rounded-md hover:bg-accent hover:text-accent-foreground focus:outline-none"
-            onClick={handleDelete}
+          <DropdownItem
+            key='delete'
           >
             Delete
-          </button>
+          </DropdownItem>
         )}
-      </PopoverContent>
-    </Popover>
+      </DropdownMenu>
+    </Dropdown>
   )
 }
 

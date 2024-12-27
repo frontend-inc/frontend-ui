@@ -90,7 +90,7 @@ const KanBanCard: React.FC<CardProps> = (props) => {
 				<Button
 					onClick={handleClick}
 					size="sm"
-					variant="secondary"
+					variant="ghost"
 					className="uppercase"
 				>
 					Details

@@ -33,7 +33,7 @@ const ShopifyProductSearchFilters: React.FC<
 	return (
 		<Sheet>
 			<SheetTrigger asChild>
-				<Button variant="secondary" className="w-full">
+				<Button variant="ghost" className="w-full">
 					<SlidersHorizontal className="mr-2 h-4 w-4" />
 					Filters
 				</Button>

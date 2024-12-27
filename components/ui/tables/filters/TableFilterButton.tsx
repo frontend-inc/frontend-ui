@@ -33,7 +33,7 @@ const FilterButtonInput: React.FC<FilterButtonProps> = ({
 			<PopoverTrigger asChild>
 				<Button
 					className={cn('text-secondary-foreground', badgeCount > 0 && 'pr-2')}
-					variant="secondary"
+					variant="ghost"
 				>
 					<ListFilter className="mr-2 h-4 w-4" />
 					Filter
