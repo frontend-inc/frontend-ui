@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { useApp } from '../../../hooks'
 
 const LOGO_WIDTH = 180
@@ -28,9 +28,8 @@ export default function Logo(props: LogoProps) {
 
 	return (
 		<Button
-			variant="ghost"
-			className="p-0 rounded-none h-[56px] min-w-0 hover:bg-transparent focus-visible:bg-transparent overflow-hidden"
-			onClick={() => handleClick('/')}
+			variant="light"
+			onPress={() => handleClick('/')}
 		>
 			{src ? (
 				<Image

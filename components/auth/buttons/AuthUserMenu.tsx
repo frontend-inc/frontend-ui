@@ -3,14 +3,14 @@
 import React from 'react'
 import { UserAvatar } from '../..'
 import { useAuth } from 'frontend-js'
-import { Button } from '../..'
 import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-} from 'frontend-shadcn'
+  Avatar,
+  Button,
+  Dropdown,
+	DropdownMenu,	
+	DropdownItem,	
+	DropdownTrigger,
+} from '@nextui-org/react'
 import { LogOut } from 'lucide-react'
 
 type UserMenuProps = {
@@ -24,33 +24,41 @@ const UserMenu: React.FC<UserMenuProps> = (props) => {
 
 	const { currentUser } = useAuth()
 
+  const handleAction = (key) => {
+    switch(key) {
+      case 'logout':
+        handleLogoutClick()
+        break
+      case 'user':
+        handleClick()
+        break
+    }
+  }
+
 	return (
-		<div className="flex w-full justify-center">
-			<DropdownMenu>
-				<DropdownMenuTrigger asChild>
-					<Button variant="ghost" className="h-8 w-8 rounded-full">
-						<UserAvatar size={36} user={currentUser} />
-					</Button>
-				</DropdownMenuTrigger>
-				<DropdownMenuContent
-					className="bg-background w-56"
-					align="end"
-					forceMount
-				>
-					<DropdownMenuItem onClick={handleClick}>
-						<div className="flex items-center">
-							<span className="text-sm font-medium">{currentUser?.name}</span>
-						</div>
-					</DropdownMenuItem>
-					<DropdownMenuSeparator />
-					<DropdownMenuItem onClick={handleLogoutClick}>
-						<LogOut className="mr-2 h-4 w-4" />
-						<span>Sign Out</span>
-					</DropdownMenuItem>
-					{children}
-				</DropdownMenuContent>
-			</DropdownMenu>
-		</div>
+			<Dropdown>
+				<DropdownTrigger asChild>
+          <Button isIconOnly>
+            <Avatar isBordered 
+              className='transition-transform'
+              src={ currentUser?.avatar?.url } 
+            />
+          </Button>
+					<UserAvatar size={36} user={currentUser} />
+				</DropdownTrigger>
+        <DropdownMenu onAction={ handleAction}>
+        <DropdownItem key='user'>
+          <div className="flex items-center">
+            <span className="text-sm font-medium">{currentUser?.name}</span>
+          </div>
+        </DropdownItem>
+        <DropdownItem key='logout'>
+          <LogOut className="mr-2 h-4 w-4" />
+          <span>Sign Out</span>
+        </DropdownItem>
+        {children}
+      </DropdownMenu>
+		</Dropdown>
 	)
 }
 

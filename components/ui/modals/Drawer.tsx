@@ -58,7 +58,7 @@ export default function CustomDrawer(props: CustomDrawerProps) {
 			<DrawerPortal>
 				<DrawerContent
 					className={cn(
-						mode == 'dark' ? 'dark-theme' : 'light',
+						mode,
 						theme,
 						className
 					)}

@@ -56,7 +56,7 @@ const Section: React.FC<SectionProps> = (props) => {
 		<section
 			className={cn(
         'z-0',
-				mode == 'dark' ? 'dark-theme' : 'light',
+				mode,
 				theme,
 				'relative bg-cover bg-center bg-no-repeat',
 				'w-full bg-background',

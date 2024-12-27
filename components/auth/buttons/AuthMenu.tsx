@@ -3,18 +3,17 @@
 import React from 'react'
 import { useAuth } from 'frontend-js'
 import { UserAvatar, RemixIcon } from '../../../components'
-import { Button } from '../../../components'
 import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuGroup,
-	DropdownMenuItem,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-} from 'frontend-shadcn'
+  Button,
+	Dropdown,
+  DropdownMenu,
+	DropdownTrigger,
+	DropdownItem,	
+  DropdownSection	
+} from '@nextui-org/react'
 import { useRouter } from 'next/navigation'
 
-type AuthMenuProps = {
+type AuthProps = {
 	handleLogin: () => void
 	handleSignup: () => void
 	handleMyAccount: () => void
@@ -26,7 +25,8 @@ type AuthMenuProps = {
 	}[]
 }
 
-const AuthMenu: React.FC<AuthMenuProps> = (props) => {
+const Auth: React.FC<AuthProps> = (props) => {
+
 	const {
 		handleLogin,
 		handleSignup,
@@ -37,6 +37,7 @@ const AuthMenu: React.FC<AuthMenuProps> = (props) => {
 	const { currentUser, logout } = useAuth()
 
 	const router = useRouter()
+
 
 	const handleClick = (menuItem) => {
 		if (menuItem.onClick) {
@@ -49,22 +50,43 @@ const AuthMenu: React.FC<AuthMenuProps> = (props) => {
 	const handleLogout = () => {
 		logout()
 		router.push('/')
-	}  
+	} 
+
+  const handleAction = (action) => {
+    switch(action){
+      case 'logout':
+        handleLogout()
+        break
+      case 'login':
+        handleLogin()
+        break
+      case 'signup':
+        handleSignup()
+        break
+      case 'my-account':
+        handleMyAccount()
+        break
+    }
+  }
+ 
 
 	return (
-		<DropdownMenu>
-			<DropdownMenuTrigger asChild>
-				<Button variant="ghost" className="rounded-full h-8 w-8">
+		<Dropdown>
+			<DropdownTrigger asChild>
+				<Button 
+          isIconOnly 
+          variant="ghost"           
+        >
 					<UserAvatar size={34} user={currentUser} />
 				</Button>
-			</DropdownMenuTrigger>
-			<DropdownMenuContent className="w-56" align="end" forceMount>
-				{currentUser ? (
-					<>
-						<DropdownMenuGroup>
-							<DropdownMenuItem
+			</DropdownTrigger>
+			<DropdownMenu onAction={ handleAction }>
+				  {currentUser ? (
+					  <>
+            <DropdownSection showDivider>
+							<DropdownItem
 								className="font-normal"
-								onClick={handleMyAccount}
+								key='my-account'
 							>
 								<div className="flex flex-col space-y-1">
 									<p className="text-sm font-medium leading-none">
@@ -74,12 +96,11 @@ const AuthMenu: React.FC<AuthMenuProps> = (props) => {
 										{currentUser.email}
 									</p>
 								</div>
-							</DropdownMenuItem>
-						</DropdownMenuGroup>
-						<DropdownMenuSeparator />
-						<DropdownMenuGroup>
+							</DropdownItem>
+            </DropdownSection>
+						<DropdownSection showDivider>
 							{menuItems?.map((menuItem, idx) => (
-								<DropdownMenuItem
+								<DropdownItem
 									key={idx}
 									onClick={() => handleClick(menuItem)}
 								>
@@ -87,23 +108,23 @@ const AuthMenu: React.FC<AuthMenuProps> = (props) => {
 										<RemixIcon name={menuItem?.icon} className="mr-2" />
 									)}
 									{menuItem?.label}
-								</DropdownMenuItem>
+								</DropdownItem>
 							))}
-						</DropdownMenuGroup>
-						<DropdownMenuItem onClick={handleLogout}>
+						</DropdownSection>
+						<DropdownItem key='logout'>
 							<RemixIcon name="ri-logout-circle-line" className="mr-2" />
 							Log out
-						</DropdownMenuItem>
+						</DropdownItem>
 					</>
 				) : (
 					<>
-						<DropdownMenuItem onClick={handleLogin}>Sign In</DropdownMenuItem>
-						<DropdownMenuItem onClick={handleSignup}>Sign Up</DropdownMenuItem>
+						<DropdownItem key='login'>Sign In</DropdownItem>
+						<DropdownItem key='signup'>Sign Up</DropdownItem>
 					</>
 				)}
-			</DropdownMenuContent>
-		</DropdownMenu>
+			</DropdownMenu>
+		</Dropdown>
 	)
 }
 
-export default AuthMenu
+export default Auth

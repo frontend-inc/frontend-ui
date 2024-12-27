@@ -1,9 +1,10 @@
 'use client'
 
 import React from 'react'
-import { Tabs, TabsList, TabsTrigger } from 'frontend-shadcn'
 import { RemixIcon } from '..'
 import { cn } from 'frontend-shadcn'
+import {Tabs, Tab } from "@nextui-org/react";
+import { NextUIProvider } from '@nextui-org/react';
 
 type ButtonTabsProps = {
 	handleChange: (value: string | number) => void
@@ -21,28 +22,29 @@ export default function ButtonTabs(props: ButtonTabsProps) {
 	const { handleChange, options, value, className, fullWidth } = props
 
 	return (
-		<Tabs value={value.toString()} onValueChange={handleChange}>
-			<TabsList
-				className={cn('bg-input p-1', className, fullWidth && 'w-full')}
-			>
-				{options.map((tab, i) => {
-					return (
-						<TabsTrigger
-							key={i}
-							value={tab.value.toString()}
-							className="w-full"
-						>
-							{tab.icon && (
-								<RemixIcon
-									name={tab.icon}
-									className={cn(tab.label && 'mr-2')}
-								/>
-							)}
-							{tab.label && <span className="text-sm">{tab.label}</span>}
-						</TabsTrigger>
-					)
-				})}
-			</TabsList>
+    //@ts-ignore 
+		<Tabs 
+      fullWidth={fullWidth}
+      selectedKey={value.toString()} 
+      onSelectionChange={handleChange}
+      className={className}
+    >			
+      {options.map((tab, i) => (
+          <Tab							
+            key={tab.value}
+            title={
+              <>
+              {tab.icon && (
+                <RemixIcon
+                  name={tab.icon}
+                  className={cn(tab.label && 'mr-2')}
+                />
+              )}
+              {tab.label && <span className="text-sm">{tab.label}</span>}
+              </>
+            }              
+          />						
+        ))}
 		</Tabs>
 	)
 }

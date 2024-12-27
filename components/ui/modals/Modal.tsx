@@ -57,7 +57,7 @@ export default function Modal(props: ModalProps) {
 			<DialogContent
 				className={cn(					
           maxWidthClasses[maxWidth],          
-          mode == 'dark' ? 'dark-theme' : 'light',
+          mode,
           theme,
 					className,
 				)}

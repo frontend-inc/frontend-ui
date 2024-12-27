@@ -11,6 +11,7 @@ import { ButtonType, MenuLinkType } from '../../..'
 import DesktopLink from './DesktopLink'
 import { cn } from 'frontend-shadcn'
 import { NavigationMenu } from './NavigationMenu'
+import { Button } from '@nextui-org/react'
 
 type DesktopHeaderProps = {
 	logo: string

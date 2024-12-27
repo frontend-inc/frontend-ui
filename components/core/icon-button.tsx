@@ -1,46 +1,28 @@
 'use client'
 
 import React, { forwardRef } from 'react'
-import {
-	Button as ShadcnButton,
-	ButtonProps as ShadcnButtonProps,
-} from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
+import { Button, ButtonProps } from '@nextui-org/react'
 
-type IconButtonColor = 'primary' | 'secondary' | 'ghost'
-type IconButtonVariant = 'rounded' | 'circular'
-
-interface IconButtonProps extends Omit<ShadcnButtonProps, 'size' | 'variant'> {
-	color?: IconButtonColor
-	variant?: IconButtonVariant
-	children: React.ReactNode
-}
-
-const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-	(
-		{ color = 'ghost', variant = 'rounded', className, children, ...props },
-		ref
-	) => {
-		const variantClasses: Record<IconButtonVariant, string> = {
-			rounded: 'rounded-md',
-			circular: 'rounded-full',
-		}
+const IconButton = forwardRef<HTMLButtonElement, ButtonProps>(({ 
+  className, 
+  variant='light',
+  children, 
+  ...props 
+}, ref) => {
 
 		return (
-			<ShadcnButton
+			<Button
 				ref={ref}
-				size="icon"
-				variant="ghost"
+				isIconOnly			
+        variant={variant}	
 				className={cn(
-					'w-[36px] h-[36px] min-w-[36px] min-h-[36px] text-foreground bg-transparent hover:bg-foreground/10',
-					'flex items-center justify-center',
-					variantClasses[variant],
 					className
 				)}
 				{...props}
 			>
 				{children}
-			</ShadcnButton>
+			</Button>
 		)
 	}
 )

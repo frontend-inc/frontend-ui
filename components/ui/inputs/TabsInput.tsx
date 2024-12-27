@@ -3,8 +3,8 @@
 import React from 'react'
 import { SyntheticEventType } from '../../../types'
 import { InputLabel } from '../../../components'
-import { Tabs, TabsList, TabsTrigger } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
+import { Tab, Tabs } from '@nextui-org/react'
 
 type TabsInputProps = {
 	name: string
@@ -42,24 +42,23 @@ export default function TabsInput({
 		>
 			<InputLabel label={label} info={info} />
 			<Tabs
-				value={value.toString()}
-				onValueChange={handleInputChange}
-				className="rounded-md"
-			>
-				<TabsList className={cn('w-full')}>
-					{options.map((option) => (
-						<TabsTrigger
-							key={option.value}
-							value={option.value.toString()}
-							className={cn('flex items-center text-sm')}
-						>
-							{option.icon && (
-								<span className={'inline-block mr-2'}>{option.icon}</span>
-							)}
-							{option.label}
-						</TabsTrigger>
-					))}
-				</TabsList>
+				selectedKey={value.toString()}
+				onSelectionChange={handleInputChange}
+			>				
+        {options.map((option) => (
+          <Tab
+            key={option.value}
+            value={option.value.toString()}
+            title={
+              <div className='flex flex-row'>
+                {option.icon && (
+                  <span className={'inline-block mr-2'}>{option.icon}</span>
+                )}
+                { option.label }
+              </div>
+            }
+          />                      
+        ))}
 			</Tabs>
 		</div>
 	)
