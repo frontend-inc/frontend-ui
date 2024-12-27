@@ -56,7 +56,7 @@ const Typography: React.FC<TypographyProps> = (props) => {
 		body1: 'text-sm font-normal leading-normal',
 		body2: 'text-sm font-normal leading-normal',
 		caption: 'text-xs text-foreground font-semibold uppercase tracking-wider',
-		overline: 'text-xs uppercase tracking-widest',
+		overline: 'text-xs',
 		destructive: 'text-destructive text-sm italic',
 	}
 

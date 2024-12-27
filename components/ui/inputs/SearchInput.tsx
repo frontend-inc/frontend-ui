@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDebounce } from 'use-debounce'
 import { SyntheticEventType } from '../../../types'
-import { Search } from 'lucide-react'
+import { RemixIcon } from '../../../components'
 import { cn } from 'frontend-shadcn'
-import { Input } from 'frontend-shadcn'
+import { Input } from '@nextui-org/react'
 import { IconButton } from '../../../components'
 
 type SearchInputProps = {
@@ -20,6 +20,7 @@ type SearchInputProps = {
 
 const SearchInput: React.FC<SearchInputProps> = (props) => {
 	const {
+    label='Search',
 		name = 'keywords',
 		fullWidth = false,
 		value,
@@ -29,28 +30,20 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
 	} = props
 
 	const [text, setText] = useState(value)
-	const [debouncedValue] = useDebounce(text, 500)
+	const [debouncedValue] = useDebounce(text, 350)
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setText(e.target.value)
 	}
 
 	useEffect(() => {
-		if (debouncedValue !== value) {
-			handleChange({
-				target: {
-					name,
-					value: debouncedValue,
-				},
-			} as SyntheticEventType)
-		}
-	}, [debouncedValue, handleChange, name, value])
-
-	useEffect(() => {
-		if (value !== text) {
-			setText(value)
-		}
-	}, [value])
+    handleChange({
+      target: {
+        name,
+        value: debouncedValue,
+      },
+    })		
+	}, [debouncedValue])
 
 	return (
 		<div className={cn(fullWidth ? 'w-full' : 'max-w-[400px] w-full')}>
@@ -59,25 +52,17 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
 					e.preventDefault()
 					handleSearch(text)
 				}}
-				className={cn(
-					'bg-background flex items-center w-full border border-input rounded-md transition-shadow hover:shadow-md',
-					fullWidth
-						? 'w-full min-w-full'
-						: 'max-w-[400px] min-w-[280px] sm:min-w-full'
-				)}
 			>
 				<Input
 					type="text"
+          fullWidth={ fullWidth }
 					placeholder={placeholder}
 					value={text}
 					onChange={handleInputChange}
-					className="text-foreground flex-grow border-none focus-visible:ring-0 focus-visible:ring-offset-0"
+					endContent={
+            <RemixIcon name='ri-search-line' className='text-foreground' />
+          }
 				/>
-				<div className="h-6 border-l border-input" />
-				<IconButton className="rounded-none" onClick={() => handleSearch(text)}>
-					<Search className="h-4 w-4 text-foreground" />
-					<span className="sr-only">Search</span>
-				</IconButton>
 			</form>
 		</div>
 	)

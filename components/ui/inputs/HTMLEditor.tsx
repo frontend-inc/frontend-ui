@@ -113,12 +113,9 @@ const MenuBar = ({ editor }) => {
 			{formattingOptions.map((btn, index) => (
 				<IconButton
 					key={index}
+          variant={ btn.isActive ? 'solid' : 'ghost' }
 					onClick={btn.action}
-					disabled={!editor.can().chain().focus().run()}
-					className={cn(
-						'hover:bg-zinc-200',
-						btn.isActive && 'bg-zinc-900 text-white hover:bg-zinc-900'
-					)}
+					disabled={!editor.can().chain().focus().run()}					
 					aria-label={btn.label}
 				>
 					<RemixIcon
@@ -134,11 +131,8 @@ const MenuBar = ({ editor }) => {
 				<IconButton
 					key={index}
 					onClick={btn.action}
-					disabled={!editor.can().chain().focus().run()}
-					className={cn(
-						'hover:bg-zinc-200',
-						btn.isActive && 'bg-zinc-900 text-white'
-					)}
+          variant={ btn.isActive ? 'solid' : 'ghost' }
+					disabled={!editor.can().chain().focus().run()}					
 					aria-label={btn.label}
 				>
 					<RemixIcon
@@ -155,7 +149,7 @@ const MenuBar = ({ editor }) => {
 					key={index}
 					onClick={btn.action}
 					disabled={!editor.can().chain().focus().run()}
-					className={cn('hover:bg-zinc-200', btn.isActive && 'bg-zinc-900')}
+					variant={ btn.isActive ? 'solid' : 'ghost' }
 					aria-label={btn.label}
 				>
 					<RemixIcon
@@ -172,7 +166,7 @@ const MenuBar = ({ editor }) => {
 					key={index}
 					onClick={btn.action}
 					disabled={!editor.can().chain().focus().run()}
-					className={cn('hover:bg-zinc-200', btn.isActive && 'bg-zinc-900')}
+					variant={ btn.isActive ? 'solid' : 'ghost' }
 					aria-label={btn.label}
 				>
 					<RemixIcon
@@ -189,7 +183,7 @@ const MenuBar = ({ editor }) => {
 					key={index}
 					onClick={btn.action}
 					disabled={!editor.can().chain().focus().run()}
-					className={cn('hover:bg-zinc-200', btn.isActive && 'bg-zinc-900')}
+					variant={ btn.isActive ? 'solid' : 'ghost' }
 					aria-label={btn.label}
 				>
 					<RemixIcon

@@ -2,11 +2,11 @@
 
 import React, { useState } from 'react'
 import { useError } from '../../../hooks'
-import { RemixIcon, InputLabel, ErrorText } from '../../../components'
+import { RemixIcon, InputLabel, ErrorText, Typography } from '../../../components'
 import { SyntheticEventType } from '../../../types'
 import { cn } from 'frontend-shadcn'
 import { Input } from 'frontend-shadcn'
-import { ButtonGroup, Button } from '@nextui-org/react'
+import { Chip } from '@nextui-org/react'
 
 type ArrayInputProps = {
 	errors?: any
@@ -76,38 +76,36 @@ export default function ArrayInput(props: ArrayInputProps) {
 				direction === 'row' ? 'flex-row items-center' : 'flex-col'
 			)}
 		>
-			<InputLabel label={label} info={info} />
 			<div className="relative w-full">
 				<div
 					className={cn(
-						'bg-input flex flex-wrap gap-2 p-1 border-2 rounded-lg min-h-[42px]',
+						'bg-muted px-3 py-2 flex flex-col space-y-0 rounded-xl',
 						error && 'border-destructive'
 					)}
-				>
-					{Array.isArray(value) &&
-						value?.map((tag) => (
-            <ButtonGroup variant="solid" key={tag}>                
-              <Button className='min-w-[70px] pl-4 pr-0' size="sm">
-                { tag }
-              </Button>							
-              <Button 
-                size="sm"
-                isIconOnly
-                onPress={() => removeTag(tag) }                
-              >
-                <RemixIcon name="ri-close-line" />
-              </Button>							
-            </ButtonGroup>
-						))}
-					<Input
-						type="text"
-						placeholder={placeholder}
-						value={inputValue}
-						onChange={(e) => setInputValue(e.target.value)}
-						onKeyDown={handleKeyDown}
-						onBlur={() => addTag(inputValue)}
-						className="text-foreground flex-1 px-0 py-0 text-sm border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-					/>
+				>   
+          <Typography variant="overline">
+            { label }  
+          </Typography>       
+          <div className=" flex flex-wrap gap-2">
+            {Array.isArray(value) &&
+              value?.map((tag) => (
+                <Chip     
+                  size="lg"                            
+                  onClose={() => removeTag(tag) }                
+                >
+                  { tag }                
+                </Chip>							            
+              ))}
+            <Input
+              type="text"
+              placeholder={placeholder || `Add ${label?.toLowerCase()}`}
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyDown={handleKeyDown}
+              onBlur={() => addTag(inputValue)}
+              className="text-foreground flex-1 px-0 py-0 text-sm border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+            />
+            </div>
 				</div>
 				<ErrorText error={error} />
 			</div>

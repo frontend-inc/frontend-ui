@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Sheet, FormFields } from '../../../components'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 
 export type ResourceFormProps = {
 	title?: string
@@ -53,7 +53,13 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 			title={title ? title : resource?.id ? 'Edit' : 'Add'}
       maxWidth={maxWidth}
 			buttons={
-				<Button fullWidth onClick={handleSubmit} loading={loading}>
+				<Button 
+          fullWidth 
+          variant="solid"
+          color="primary"
+          onPress={handleSubmit} 
+          loading={loading}
+        >
 					{resource?.id ? 'Update' : 'Save'}
 				</Button>
 			}
