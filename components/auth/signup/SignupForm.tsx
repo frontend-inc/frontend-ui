@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { IconLoading, TextInput, GoogleLoginButton } from '../..'
 
 type SignupFormProps = {
@@ -74,15 +74,14 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 				/>
 			</div>
 			<div className="flex flex-col space-y-3 w-full">
-				<Button fullWidth onClick={handleSubmit} loading={loading}>
+				<Button variant="solid" fullWidth onPress={handleSubmit} loading={loading}>
 					Register
 				</Button>
 				{handleLogin && (
 					<Button
 						fullWidth
-						color="secondary"
 						variant="ghost"
-						onClick={handleLogin}
+						onPress={handleLogin}
 					>
 						Already have an account? Sign in
 					</Button>

@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
-import { IconLoading, TextInput } from '../../../components'
+import { Button } from '@nextui-org/react'
+import { TextInput } from '../../../components'
 
 type ResetPasswordFormProps = {
 	loading: boolean
@@ -35,11 +35,11 @@ const ResetPasswordForm: React.FC<ResetPasswordFormProps> = (props) => {
 				type="password"
 				placeholder="Confirm password"
 			/>
-			<Button fullWidth onClick={handleSubmit} loading={loading}>
+			<Button variant="solid" fullWidth onPress={handleSubmit} loading={loading}>
 				Save and Continue
 			</Button>
 			{handleLogin && (
-				<Button fullWidth onClick={handleLogin}>
+				<Button fullWidth onPress={handleLogin}>
 					Back to login
 				</Button>
 			)}

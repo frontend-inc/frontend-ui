@@ -26,28 +26,27 @@ const EmailSubscribeInput: React.FC<EmailSubscribeInputProps> = (props) => {
   } = props || {}
 
 	return (
-    <div className="flex flex-row items-center">
-      <div className="md:max-w-[360px] w-full p-1 flex flex-col justify-center items-center">
-        <Input
-          label="Email"
-          name={ name }
-          placeholder={placeholder}
-          type="email"
-          size={size}
-          classNames={{
-            base: "rounded-r-none text-base"                          
-          }}
-          { ...rest }
-        />
-        <Button
-          size={size}
-          onPress={handleSubmit}
-          className="rounded-l-none"
-          loading={loading}
-        >
-          {buttonText}
-        </Button>
-      </div>
+    <div className="flex flex-row space-x-2 items-center w-full max-m-[260px]">      
+      <Input
+        label="Email"
+        name={ name }
+        placeholder={placeholder}
+        type="email"
+        size={size}          
+        classNames={{
+          base: "rounded-r-none text-base",                          
+        }}
+        { ...rest }
+      />
+      <Button 
+        size='lg'
+        variant="solid"
+        color="primary"
+        onPress={handleSubmit}
+        loading={loading}
+      >
+        {buttonText}
+      </Button>        
     </div>
 	)
 }

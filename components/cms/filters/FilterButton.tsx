@@ -84,7 +84,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 						Filters
 					</Button>
 				</PopoverTrigger>
-				<PopoverContent className="min-w-[220px]">
+				<PopoverContent className="w-full md:min-w-[220px]">
           {filterOptions.map((filterOption, index) => (
             <FilterGroup
               key={index}

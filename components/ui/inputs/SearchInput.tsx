@@ -4,9 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useDebounce } from 'use-debounce'
 import { SyntheticEventType } from '../../../types'
 import { RemixIcon } from '../../../components'
-import { cn } from 'frontend-shadcn'
 import { Input } from '@nextui-org/react'
-import { IconButton } from '../../../components'
 
 type SearchInputProps = {
 	name?: string
@@ -47,15 +45,15 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
 
 	return (		
     <form
+      className='w-full'
       onSubmit={(e) => {
         e.preventDefault()
         handleSearch(text)
       }}
     >
       <Input
-        className={ fullWidth ? 'w-full' : '' }
-        type="text"
-        fullWidth={ fullWidth }
+        fullWidth 
+        className={ fullWidth ? 'w-full' : 'max-w-[360px]' }
         placeholder={placeholder}
         value={text}
         onChange={handleInputChange}

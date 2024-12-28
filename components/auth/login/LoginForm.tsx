@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { GoogleLoginButton, TextInput } from '../..'
 
 type LoginFormProps = {
@@ -56,20 +56,24 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 				/>
 			</div>
 			<div className="flex flex-col space-y-2">
-				<Button fullWidth onClick={handleSubmit} loading={loading}>
+				<Button 
+          variant="solid" 
+          fullWidth 
+          onPress={handleSubmit} 
+          isLoading={loading}
+        >
 					Sign In
 				</Button>
 				{handleSignup && (
-					<Button fullWidth variant="ghost" onClick={handleSignup}>
+					<Button fullWidth variant="ghost" onPress={handleSignup}>
 						No account? Sign up
 					</Button>
 				)}
 				{handleForgotPassword && (
 					<Button
 						fullWidth
-						color="secondary"
 						variant="ghost"
-						onClick={handleForgotPassword}
+						onPress={handleForgotPassword}
 					>
 						Forgot password?
 					</Button>
@@ -77,9 +81,8 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 				{handleOneTimePassword && (
 					<Button
 						fullWidth
-						color="secondary"
 						variant="ghost"
-						onClick={handleOneTimePassword}
+						onPress={handleOneTimePassword}
 					>
 						One-time password
 					</Button>

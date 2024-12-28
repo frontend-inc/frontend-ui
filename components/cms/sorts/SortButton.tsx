@@ -57,6 +57,7 @@ export default function SortButton(props: SortButtonProps) {
         <Button
           variant="ghost"
           onPress={toggleOpen}
+          className="w-full md:w-auto"
           endContent={
             sortDirection === 'asc' ? (
               <ArrowUp className="h-4 w-4" />
@@ -67,7 +68,7 @@ export default function SortButton(props: SortButtonProps) {
           Sort						
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="min-w-[220px]">
+      <PopoverContent className="w-full md:min-w-[220px]">
       <Listbox
         disallowEmptySelection
         selectedKeys={[sortBy]}

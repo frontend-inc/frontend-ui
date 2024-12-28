@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react'
 import { AuthScreen, Loader, OneTimePasswordVerifyMessage } from '../..'
 import { useAuth } from 'frontend-js'
-
 import { useRouter, useParams } from 'next/navigation'
 
 type OneTimePasswordVerifyProps = {

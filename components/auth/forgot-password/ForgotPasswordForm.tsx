@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
-import { IconLoading, TextInput } from '../..'
+import { Button } from '@nextui-org/react'
+import { TextInput } from '../..'
 
 type ForgotPasswordFormProps = {
 	errors: any
@@ -27,11 +27,11 @@ const ForgotPasswordForm: React.FC<ForgotPasswordFormProps> = (props) => {
 				placeholder="Enter your email"
 				handleChange={handleChange}
 			/>
-			<Button fullWidth onClick={handleSubmit} loading={loading}>
+			<Button variant="solid" fullWidth onPress={handleSubmit} loading={loading}>
 				Send Instructions
 			</Button>
 			{handleLogin && (
-				<Button fullWidth variant="ghost" onClick={handleLogin}>
+				<Button fullWidth variant="ghost" onPress={handleLogin}>
 					Back to Login
 				</Button>
 			)}

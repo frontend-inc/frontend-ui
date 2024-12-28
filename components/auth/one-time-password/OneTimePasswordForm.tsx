@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
-import { IconLoading, TextInput } from '../..'
+import { Button } from '@nextui-org/react'
+import { TextInput } from '../..'
 
 type OneTimePasswordFormProps = {
 	loading: boolean
@@ -26,11 +26,11 @@ const OneTimePasswordForm: React.FC<OneTimePasswordFormProps> = (props) => {
 				handleChange={handleChange}
 				placeholder="Enter your email"
 			/>
-			<Button fullWidth onClick={handleSubmit} loading={loading}>
+			<Button variant="solid" fullWidth onPress={handleSubmit} loading={loading}>
 				Send One-Time Password
 			</Button>
 			{handleLogin && (
-				<Button fullWidth onClick={handleLogin}>
+				<Button fullWidth onPress={handleLogin}>
 					Back to Login
 				</Button>
 			)}

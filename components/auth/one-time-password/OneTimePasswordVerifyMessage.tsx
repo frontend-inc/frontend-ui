@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 
 type OneTimePasswordVerifyFormProps = {
 	verified: boolean
@@ -17,11 +17,11 @@ const OneTimePasswordVerifyForm: React.FC<OneTimePasswordVerifyFormProps> = (
 	return (
 		<div className="flex flex-col space-y-3">
 			{verified ? (
-				<Button fullWidth onClick={handleRedirect}>
+				<Button variant="solid" fullWidth onPress={handleRedirect}>
 					Success! You can now continue
 				</Button>
 			) : (
-				<Button fullWidth onClick={handleLogin}>
+				<Button variant="ghost" fullWidth onPress={handleLogin}>
 					Back to Login
 				</Button>
 			)}
