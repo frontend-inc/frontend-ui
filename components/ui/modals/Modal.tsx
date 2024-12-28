@@ -9,6 +9,15 @@ import {
 	DialogTitle,
 	DialogFooter,
 } from 'frontend-shadcn'
+import {
+  Modal as NextModal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  useDisclosure,
+} from "@nextui-org/react";
 import { useTheme as useNextTheme } from 'next-themes'
 import { cn } from 'frontend-shadcn'
 import { ScrollArea } from 'frontend-shadcn'
@@ -37,48 +46,30 @@ export default function Modal(props: ModalProps) {
 		title,
 		buttons,
 		children,
-		description,
-    maxWidth = 'md',
-		className,
+    maxWidth = 'md',		
 	} = props
 
-  const maxWidthClasses = {
-    sm: 'md:max-w-screen-sm',
-    md: 'md:max-w-screen-md',
-    lg: 'md:max-w-screen-lg',
-    xl: 'md:max-w-screen-xl',
-  }
-
-	const { theme: mode } = useNextTheme()
-	const { theme } = useTheme()
-
 	return (
-		<Dialog open={open} onOpenChange={handleClose}>
-			<DialogContent
-				className={cn(					
-          maxWidthClasses[maxWidth],          
-          mode,
-          theme,
-					className,
-				)}
-			>
-				<DialogHeader className="mt-4">
-					<DialogTitle>
-						<span className="text-foreground">{title}</span>
-					</DialogTitle>
-					{description && <DialogDescription>{description}</DialogDescription>}
-				</DialogHeader>
-				<ScrollArea className="max-h-[440px]">
-					<div className="space-y-4 p-4">
-						{loading ? (
-							<Loader loading={loading} />
-						) : (
-							<div className="w-full">{children}</div>
-						)}
-					</div>
-				</ScrollArea>
-				{!loading && buttons && <DialogFooter>{buttons}</DialogFooter>}
-			</DialogContent>
-		</Dialog>
+		<NextModal size={ maxWidth } isOpen={open} onOpenChange={handleClose}>
+			<ModalContent>
+        {(onClose) => (
+          <>
+          <ModalHeader className="mt-4">
+            {title}					
+          </ModalHeader>
+          <ModalBody>        
+              {loading ? (
+                <Loader loading={loading} />
+              ) : (
+                <div className="w-full">{children}</div>
+              )}
+          </ModalBody>        
+          {!loading && buttons && (
+            <ModalFooter>{buttons}</ModalFooter>
+          )}
+          </>
+        )}
+			</ModalContent>
+		</NextModal>
 	)
 }

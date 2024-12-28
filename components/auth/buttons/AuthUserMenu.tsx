@@ -24,7 +24,7 @@ const UserMenu: React.FC<UserMenuProps> = (props) => {
 
 	const { currentUser } = useAuth()
 
-  const handleAction = (key) => {
+  const handleAction = (key: string) => {
     switch(key) {
       case 'logout':
         handleLogoutClick()
@@ -35,28 +35,24 @@ const UserMenu: React.FC<UserMenuProps> = (props) => {
     }
   }
 
+  if(!currentUser?.id) return null;
 	return (
 			<Dropdown>
-				<DropdownTrigger asChild>
-          <Button isIconOnly>
-            <Avatar isBordered 
-              className='transition-transform'
-              src={ currentUser?.avatar?.url } 
-            />
+				<DropdownTrigger>
+          <Button isIconOnly> 
+            <UserAvatar size={36} user={currentUser} />           
           </Button>
-					<UserAvatar size={36} user={currentUser} />
 				</DropdownTrigger>
         <DropdownMenu onAction={ handleAction}>
-        <DropdownItem key='user'>
-          <div className="flex items-center">
-            <span className="text-sm font-medium">{currentUser?.name}</span>
-          </div>
-        </DropdownItem>
-        <DropdownItem key='logout'>
-          <LogOut className="mr-2 h-4 w-4" />
-          <span>Sign Out</span>
-        </DropdownItem>
-        {children}
+          <DropdownItem key='user'>
+            {currentUser?.name || "User"}          
+          </DropdownItem>
+          <DropdownItem key='logout' 
+            endContent={
+              <LogOut className="h-4 w-4" />
+            }>          
+            Sign Out
+          </DropdownItem>       
       </DropdownMenu>
 		</Dropdown>
 	)
