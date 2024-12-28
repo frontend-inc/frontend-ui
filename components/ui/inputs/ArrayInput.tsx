@@ -90,6 +90,7 @@ export default function ArrayInput(props: ArrayInputProps) {
             {Array.isArray(value) &&
               value?.map((tag) => (
                 <Chip     
+                  key={tag}
                   size="lg"                            
                   onClose={() => removeTag(tag) }                
                 >

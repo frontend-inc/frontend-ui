@@ -1,60 +1,106 @@
 'use client'
 
 import React, { useState } from 'react'
-import { cn } from 'frontend-shadcn'
-import { Button } from '../../../components'
-import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
+import { 
+  Button,
+  Popover, 
+  PopoverContent, 
+  PopoverTrigger 
+} from '@nextui-org/react'
 import { ArrowUp, ArrowDown } from 'lucide-react'
-import SortList from './SortList'
 import { SortOptionType } from '../../../types'
+import { 
+  Listbox, 
+  ListboxSection, 
+  ListboxItem 
+}  from '@nextui-org/react'
 
 type SortButtonProps = {
 	loading?: boolean
 	sortOptions: SortOptionType[]
 	sortBy: string
 	sortDirection: 'asc' | 'desc'
-	handleSortBy: (field: SortOptionType) => void
+	handleSortBy: (sortBy: string) => void
 	handleSortDirection: (sortDirection: 'asc' | 'desc') => void
 }
 
-export default function SortButton({
-	sortOptions,
-	sortBy,
-	sortDirection,
-	handleSortBy,
-	handleSortDirection,
-}: SortButtonProps) {
+const SORT_DIRECTIONS = [
+	{ value: 'asc', label: 'Ascending' },
+	{ value: 'desc', label: 'Descending' },
+]
+
+export default function SortButton(props: SortButtonProps) {
+
+  const {
+    sortOptions,
+    sortBy,
+    sortDirection,
+    handleSortBy,
+    handleSortDirection,
+  } = props || {}
+
 	const [isOpen, setIsOpen] = useState(false)
 
 	const toggleOpen = () => setIsOpen(!isOpen)
 
+  const handleSortByKeys = (keys: string[]) => {
+    handleSortBy(keys?.currentKey)
+  }
+
+  const handleSortDirectionKeys = (keys: string[]) => {
+    handleSortDirection(keys?.currentKey)
+  }
+
 	return (
-		<>
-			<Popover open={isOpen} onOpenChange={setIsOpen}>
-				<PopoverTrigger asChild>
-					<Button
-						variant="ghost"
-						className={cn('w-full sm:w-auto border-r-0', 'hover:border-r-0')}
-						onClick={toggleOpen}
-					>
-						Sort
-						{sortDirection === 'asc' ? (
-							<ArrowUp className="ml-2 h-4 w-4" />
-						) : (
-							<ArrowDown className="ml-2 h-4 w-4" />
-						)}
-					</Button>
-				</PopoverTrigger>
-				<PopoverContent className="bg-background w-80 p-0">
-					<SortList
-						sortOptions={sortOptions}
-						sortBy={sortBy}
-						sortDirection={sortDirection}
-						handleSortBy={handleSortBy}
-						handleSortDirection={handleSortDirection}
-					/>
-				</PopoverContent>
-			</Popover>
-		</>
+    <Popover isOpen={isOpen} onOpenChange={setIsOpen}>
+      <PopoverTrigger>
+        <Button
+          variant="ghost"
+          onPress={toggleOpen}
+          endContent={
+            sortDirection === 'asc' ? (
+              <ArrowUp className="h-4 w-4" />
+            ):(
+              <ArrowDown className="h-4 w-4" />
+            )}            
+        >
+          Sort						
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="min-w-[220px]">
+      <Listbox
+        disallowEmptySelection
+        selectedKeys={[sortBy]}
+        selectionMode="single"
+        onSelectionChange={handleSortByKeys}
+      >
+        <ListboxSection title="Sort by">
+          {sortOptions?.map((sortOption) => (
+            <ListboxItem 
+              key={sortOption.name}						
+            >
+              {sortOption.label}
+            </ListboxItem>
+          ))}
+        </ListboxSection>
+      </Listbox>
+      <Listbox 
+        disallowEmptySelection
+        selectedKeys={[sortDirection]}
+        selectionMode="single"
+        onSelectionChange={handleSortDirectionKeys}
+      >
+        <ListboxSection title="Sort direction">
+          {SORT_DIRECTIONS.map((direction) => (
+            <ListboxItem 
+              key={direction.value}
+            >
+              {direction.label}
+            </ListboxItem>
+          ))}
+			  </ListboxSection>
+      </Listbox>
+    </PopoverContent>
+  </Popover>
 	)
 }

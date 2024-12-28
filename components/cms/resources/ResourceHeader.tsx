@@ -25,7 +25,7 @@ export type ResourceHeaderProps = {
 	handleKeywordChange: (ev: SyntheticEventType) => void
 	handleFilter: (name: string, value: string | number | boolean) => void
 	handleClearFilters: () => void
-	handleSort: (field: any) => void
+	handleSortBy: (sortBy: string) => void
 	handleSortDirection: (sortDirection: 'asc' | 'desc') => void
 	handleAdd: () => void
 	handleReload: () => void
@@ -50,7 +50,7 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 		handleSearch,
 		handleKeywordChange,
 		handleFilter,
-		handleSort,
+		handleSortBy,
 		handleSortDirection,
 		handleAdd,
 		keywords,
@@ -93,7 +93,7 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 						sortBy={query?.sort_by || 'id'}
 						sortDirection={query?.sort_direction || 'desc'}
 						sortOptions={sortOptions}
-						handleSortBy={handleSort}
+						handleSortBy={handleSortBy}
 						handleSortDirection={handleSortDirection}
 					/>
 				)}
@@ -110,7 +110,7 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 						size="default"
 						variant="ghost"
 						className="w-full sm:w-auto"
-						onClick={handleExport}
+						onPress={handleExport}
 						startIcon={
 							<RemixIcon
 								name="ri-download-fill"

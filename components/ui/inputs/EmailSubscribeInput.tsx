@@ -2,8 +2,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
-import { InputBase } from '../..'
+import { Button, Input } from '@nextui-org/react'
 import { SyntheticEventType, TextInputProps } from '../../../types'
 import { cn } from 'frontend-shadcn'
 
@@ -11,7 +10,7 @@ export type EmailSubscribeInputProps = TextInputProps & {
   loading?: boolean
 	buttonText?: string
 	handleSubmit?: () => void
-  size?: 'sm' | 'default' | 'lg'
+  size?: 'sm' | 'md' | 'lg'
 }
 
 const EmailSubscribeInput: React.FC<EmailSubscribeInputProps> = (props) => {
@@ -22,33 +21,28 @@ const EmailSubscribeInput: React.FC<EmailSubscribeInputProps> = (props) => {
     placeholder='Enter your email',
     buttonText = 'Subscribe',
     handleSubmit,
-    size='default',
+    size='md',
     ...rest 
   } = props || {}
 
-  const sizeClasses = {
-    sm: 'h-[38px] md:min-w-[160px]',
-    default: 'h-[38px] md:min-w-[220px]',
-    lg: 'h-[48px] md:min-w-[280px]',
-  }
-
 	return (
     <div className="flex flex-row items-center">
-      <div className="md:max-w-[360px] w-full p-1 flex flex-row justify-center items-center">
-        <InputBase
+      <div className="md:max-w-[360px] w-full p-1 flex flex-col justify-center items-center">
+        <Input
+          label="Email"
           name={ name }
           placeholder={placeholder}
           type="email"
-          className={cn(
-            "rounded-l-md text-base rounded-r-none border-r-0",
-            sizeClasses[size]
-          )}
+          size={size}
+          classNames={{
+            base: "rounded-r-none text-base"                          
+          }}
           { ...rest }
         />
         <Button
           size={size}
-          onClick={handleSubmit}
-          className="rounded-l-none rounded-r-md text-base"
+          onPress={handleSubmit}
+          className="rounded-l-none"
           loading={loading}
         >
           {buttonText}

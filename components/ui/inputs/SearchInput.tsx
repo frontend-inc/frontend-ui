@@ -45,26 +45,25 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
     })		
 	}, [debouncedValue])
 
-	return (
-		<div className={cn(fullWidth ? 'w-full' : 'max-w-[400px] w-full')}>
-			<form
-				onSubmit={(e) => {
-					e.preventDefault()
-					handleSearch(text)
-				}}
-			>
-				<Input
-					type="text"
-          fullWidth={ fullWidth }
-					placeholder={placeholder}
-					value={text}
-					onChange={handleInputChange}
-					endContent={
-            <RemixIcon name='ri-search-line' className='text-foreground' />
-          }
-				/>
-			</form>
-		</div>
+	return (		
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+        handleSearch(text)
+      }}
+    >
+      <Input
+        className={ fullWidth ? 'w-full' : '' }
+        type="text"
+        fullWidth={ fullWidth }
+        placeholder={placeholder}
+        value={text}
+        onChange={handleInputChange}
+        endContent={
+          <RemixIcon name='ri-search-line' className='text-foreground' />
+        }
+      />
+    </form>
 	)
 }
 

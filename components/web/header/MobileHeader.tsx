@@ -6,7 +6,8 @@ import { ShopifyCartButton } from '../../shopify'
 import { useApp } from '../../../hooks'
 import { ButtonType, MenuLinkType } from '../../..'
 import Logo from './Logo'
-import { RemixIcon, Button } from '../../../components'
+import { RemixIcon } from '../../../components'
+import { Button } from '@nextui-org/react'
 
 type MobileHeaderProps = {
 	bgColor?: string
@@ -50,10 +51,9 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props) => {
 				<div className="flex items-center">
           { !disableMenu && (
             <Button
-              variant="ghost"
-              size="icon"
-              className="mr-2"
-              onClick={() => setMenuOpen(true)}
+              isIconOnly 
+              variant="light"                            
+              onPress={() => setMenuOpen(true)}
             >
               <RemixIcon name="ri-menu-fill" />
             </Button>

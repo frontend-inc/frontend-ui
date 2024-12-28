@@ -17,6 +17,7 @@ const IconButton = forwardRef<HTMLButtonElement, ButtonProps>(({
 				isIconOnly			
         variant={variant}	
 				className={cn(
+          'min-w-8 w-8 h-8',
 					className
 				)}
 				{...props}

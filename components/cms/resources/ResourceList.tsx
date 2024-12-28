@@ -198,6 +198,13 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		})
 	}
 
+  const handleSortBy = (sortBy: string) => {
+    findMany({
+      ...query,
+      sort_by: sortBy,
+    })
+  }
+
 	const handleSortDirection = (sortDirection: 'asc' | 'desc') => {
 		findMany({
 			...query,
@@ -376,7 +383,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					handleKeywordChange={handleKeywordChange}
 					handleFilter={handleFilter}
 					handleClearFilters={handleClearFilters}
-					handleSort={handleSort}
+					handleSortBy={handleSortBy}
 					handleSortDirection={handleSortDirection}
 					handleAdd={handleAdd}
 					keywords={keywords}

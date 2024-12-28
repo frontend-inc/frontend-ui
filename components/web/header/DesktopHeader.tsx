@@ -1,14 +1,12 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { IconButton } from '../../../components'
 import { RemixIcon, ButtonActions, AuthButton, Icon } from '../..'
 import Logo from './Logo'
 import { CartButton } from '../..'
 import { ShopifyCartButton } from '../../shopify'
 import { useApp } from '../../../hooks'
 import { ButtonType, MenuLinkType } from '../../..'
-import DesktopLink from './DesktopLink'
 import { cn } from 'frontend-shadcn'
 import { NavigationMenu } from './NavigationMenu'
 import { Button } from '@nextui-org/react'
@@ -77,9 +75,9 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
           <div className="flex flex-row basis-1/3">
             {links?.length > MAX_LINKS && (
               <div className="pl-1 flex items-center justify-center h-[60px]">
-                <IconButton color="ghost" onClick={() => setMenuOpen(true)}>
+                <Button isIconOnly variant="light" onPress={() => setMenuOpen(true)}>
                   <RemixIcon name="ri-menu-fill" />
-                </IconButton>
+                </Button>
               </div>
             )}
             <div className="h-[62px] mx-4 flex flex-row items-center justify-start">

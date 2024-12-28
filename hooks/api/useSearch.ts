@@ -118,10 +118,10 @@ const findExactFilterIndex = (filters, filter) => {
 		findMany(searchQuery)
 	}
 
-	const handleSortBy = (field: SortOptionType) => {
+	const handleSortBy = (sortBy: string) => {
 		findMany({
 			...query,
-			sort_by: field?.name,
+			sort_by: sortBy,
 		})
 	}
 
