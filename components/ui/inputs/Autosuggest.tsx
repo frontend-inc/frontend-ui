@@ -1,20 +1,10 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { InputLabel } from '../../../components'
-import { Check, ChevronsUpDown } from 'lucide-react'
-
-import { cn } from 'frontend-shadcn'
-import { Button } from '../../../components'
 import {
-	Command,
-	CommandEmpty,
-	CommandGroup,
-	CommandInput,
-	CommandItem,
-	CommandList,
-} from 'frontend-shadcn'
-import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
+	Select,
+  SelectItem  
+} from '@nextui-org/react'
 import { OptionType, SyntheticEventType } from 'frontend-js'
 
 type AutosuggestProps = {
@@ -74,53 +64,31 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 		}
 	}, [value, options])
 
-	return (
-		<Popover open={open} onOpenChange={setOpen}>
-			<div className="flex flex-col space-y-2 w-full">
-				<InputLabel label={label} info={info} />
-				<PopoverTrigger asChild>
-					<Button
-						variant="ghost"
-						role="combobox"
-						aria-expanded={open}
-						className={cn(
-							'min-w-[220px] bg-input hover:bg-input/50 hover:shadow-sm w-full text-foreground justify-between font-normal'
-						)}
-					>
-						{selectedOption?.label || 'Select...'}
-						<ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-					</Button>
-				</PopoverTrigger>
-			</div>
-			<PopoverContent className="bg-input w-[240px] p-0">
-				<Command>
-					<CommandInput
-						onValueChange={handleCommandChange}
-						placeholder={placeholder}
-					/>
-					<CommandList>
-						<CommandEmpty>No option found.</CommandEmpty>
-						<CommandGroup>
-							{options.map((option) => (
-								<CommandItem
-									key={option.value}
-									value={option.label}
-									onSelect={handleSelect}
-								>
-									<Check
-										className={cn(
-											'mr-2 h-4 w-4',
-											value === option.value ? 'opacity-100' : 'opacity-0'
-										)}
-									/>
-									{option.label}
-								</CommandItem>
-							))}
-						</CommandGroup>
-					</CommandList>
-				</Command>
-			</PopoverContent>
-		</Popover>
+  const handleSelection = (keys) => {
+    const value = keys.currentKey 
+    handleChange({
+      target: {
+        name,
+        value,
+      }
+    })
+  }
+
+  return (
+    <Select 
+      aria-label={ label }
+      label={ label }
+      selectionMode="single"
+      selectedKeys={[value]}
+      onSelectionChange={handleSelection}
+      items={options}
+    >
+      {(option) => (
+        <SelectItem key={option.value}>
+          {option.label}
+        </SelectItem>
+      )}
+    </Select>
 	)
 }
 

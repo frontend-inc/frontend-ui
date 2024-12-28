@@ -101,13 +101,13 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 
   const options = formatResources(resources)  
 
-	if (!displayField) return null
+	if (!options || options?.length == 0) return null
 	return (
 		<Autosuggest
 			label={label}
 			name={name}
 			value={value}
-			options={uniq(options, 'value')}
+			options={options}
 			placeholder={placeholder}
 			handleChange={handleChange}
 			handleInputChange={handleInputChange}

@@ -4,7 +4,6 @@ import React from 'react'
 import { RemixIcon } from '..'
 import { cn } from 'frontend-shadcn'
 import {Tabs, Tab } from "@nextui-org/react";
-import { NextUIProvider } from '@nextui-org/react';
 
 type ButtonTabsProps = {
 	handleChange: (value: string | number) => void
@@ -33,15 +32,15 @@ export default function ButtonTabs(props: ButtonTabsProps) {
           <Tab							
             key={tab.value}
             title={
-              <>
-              {tab.icon && (
-                <RemixIcon
-                  name={tab.icon}
-                  className={cn(tab.label && 'mr-2')}
-                />
-              )}
-              {tab.label && <span className="text-sm">{tab.label}</span>}
-              </>
+              <div className="flex space-x-2 items-center">
+                {tab.icon && (
+                  <RemixIcon
+                    size='lg'
+                    name={tab.icon}                  
+                  />
+                )}
+                {tab.label && <span className="text-sm">{tab.label}</span>}
+              </div>
             }              
           />						
         ))}

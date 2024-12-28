@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { RemixIcon, ButtonActions, AuthButton, Icon } from '../..'
+import { RemixIcon, ButtonActions, AuthButton } from '../..'
 import Logo from './Logo'
 import { CartButton } from '../..'
 import { ShopifyCartButton } from '../../shopify'
@@ -9,7 +9,21 @@ import { useApp } from '../../../hooks'
 import { ButtonType, MenuLinkType } from '../../..'
 import { cn } from 'frontend-shadcn'
 import { NavigationMenu } from './NavigationMenu'
-import { Button } from '@nextui-org/react'
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  NavbarMenu,
+  NavbarMenuItem,
+  NavbarMenuToggle,
+  Link,
+  Button,
+  DropdownItem,
+  DropdownTrigger,
+  Dropdown,
+  DropdownMenu,
+} from "@nextui-org/react";
 
 type DesktopHeaderProps = {
 	logo: string
@@ -37,78 +51,120 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = (props) => {
 		enableShopify = false,
 	} = props
 
-  const handleLogoClick = () => {
-    handleClick('/')
+  const handlePress = (path: string) => {
+    setIsMenuOpen(false)
+    handleClick(path)
   }
 
-	const [isScrolled, setIsScrolled] = useState(false)
-
-	useEffect(() => {
-		const handleScroll = () => {
-			if (window.scrollY > 0) {
-				setIsScrolled(true)
-			} else {
-				setIsScrolled(false)
-			}
-		}
-
-		window.addEventListener('scroll', handleScroll)
-
-		return () => {
-			window.removeEventListener('scroll', handleScroll)
-		}
-	}, [])
-
-	const { setMenuOpen } = useApp()
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
 	return (
-      <div
-        className={cn(
-          'hidden md:block w-full h-16 bg-background'
-        )}
-        style={{
-          backgroundColor: bgColor,
-        }}
-      >
-			  <div className="w-full flex flex-row justify-between">
-          <div className="flex flex-row basis-1/3">
-            {links?.length > MAX_LINKS && (
-              <div className="pl-1 flex items-center justify-center h-[60px]">
-                <Button isIconOnly variant="light" onPress={() => setMenuOpen(true)}>
-                  <RemixIcon name="ri-menu-fill" />
+    <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+      <NavbarContent className="sm:hidden" justify="start">
+        <NavbarMenuToggle />
+      </NavbarContent>      
+      <NavbarContent justify="start">
+        <NavbarBrand>
+          <Logo 
+            src={ logo } 
+            handleClick={() => handlePress('/')}
+          />
+        </NavbarBrand>
+      </NavbarContent>
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        { links?.map((link, index) => (
+          link?.children?.length == 0 ? (
+            <NavbarItem key={ index }>
+              <Button 
+                className='text-foreground'
+                variant="link" 
+                onPress={() => handlePress(link?.path)}
+              >
+                { link?.label }
+              </Button>            
+            </NavbarItem>  
+          ) : (
+            <Dropdown key={index}>
+              <DropdownTrigger>
+                <Button 
+                  variant="light"
+                  className='text-foreground'
+                  endContent={
+                    <RemixIcon 
+                      size='lg'
+                      name="ri-arrow-down-s-line" 
+                      className='text-foreground' 
+                    />
+                  }
+                >
+                  { link?.label }
                 </Button>
-              </div>
+              </DropdownTrigger>
+              <DropdownMenu
+                onAction={ handlePress }                
+              >
+                { link?.children?.map((child) => (
+                  <DropdownItem key={child?.path}>                    
+                    { child?.label }                    
+                  </DropdownItem>
+                ))}
+              </DropdownMenu>
+            </Dropdown>
+          )
+        ))}
+      </NavbarContent>        
+      <NavbarContent justify="end">
+        {buttons?.length > 0 && (
+          <ButtonActions size="sm" buttons={buttons} />
+        )}
+        {enableAuth && <AuthButton />}
+        {enableStripe && <CartButton />}
+        {enableShopify && <ShopifyCartButton />}
+      </NavbarContent>
+      <NavbarMenu>
+        {links.map((link, index) => (
+          <NavbarMenuItem key={`${link}-${index}`}>
+            { link?.children?.length == 0 ? (
+            <Button 
+              variant="link"
+              className="w-full"
+              onPress={() => handlePress(link?.path)}
+              size="lg"
+            >
+              {link?.label}
+            </Button>
+            ):(
+              <Dropdown>
+                <DropdownTrigger>
+                  <Button 
+                    size='lg'
+                    variant="light"
+                    className="w-full"
+                    endContent={
+                      <RemixIcon 
+                        name="ri-arrow-down-s-line" 
+                        className="text-foreground" 
+                      />
+                    }
+                  >
+                    {link?.label}
+                  </Button>
+                </DropdownTrigger>
+                <DropdownMenu                  
+                  onAction={handlePress}
+                >
+                  {link?.children?.map((child) => (
+                    <DropdownItem key={child?.path}>
+                      {child?.label}
+                    </DropdownItem>
+                  ))}
+                </DropdownMenu>
+              </Dropdown>
             )}
-            <div className="h-[62px] mx-4 flex flex-row items-center justify-start">
-              <Logo
-                src={logo}
-                width={180}
-                height={56}
-                handleClick={ handleLogoClick }
-              />
-            </div>
-					</div>
-          <div className="basis-1/3 flex flex-row justify-center items-center">
-            { links?.length <= MAX_LINKS && (
-              <NavigationMenu 
-                links={ links } 
-                handleClick={ handleClick }
-              />
-            )}
-          </div>
-					<div className="flex flex-row items-center justify-end h-[60px] pr-1 basis-1/3">
-						{buttons?.length > 0 && (
-							<div className="pr-1">
-								<ButtonActions size="sm" buttons={buttons} />
-							</div>
-						)}
-						{enableAuth && <AuthButton />}
-						{enableStripe && <CartButton />}
-						{enableShopify && <ShopifyCartButton />}
-					</div>
-				</div>
-			</div>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
+    </Navbar>
 	)
 }
 

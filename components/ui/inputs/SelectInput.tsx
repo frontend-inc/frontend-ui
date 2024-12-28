@@ -29,13 +29,24 @@ export default function SelectInput(props: SelectInputPropsType) {
     handleChange,
   } = props
 
+  const handleSelect = (keys) => {
+    const value = keys.currentKey 
+    handleChange({
+      target: {
+        name,
+        value 
+      }
+    })
+  }
+
 	return (
 			<Select
         label={ label }
         placeholder={ placeholder || 'Select an option' }
         items={options}
+        selectionMode="single"
 				selectedKeys={[value]} 
-        onChange={ handleChange }       				
+        onSelectionChange={ handleSelect }       				
 			>
         {(option) => (
 				<SelectItem 

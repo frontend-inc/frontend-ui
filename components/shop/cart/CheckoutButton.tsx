@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { useCart } from '../../../hooks'
 import { toast } from 'sonner'
 
@@ -29,7 +29,12 @@ const CheckoutButton = () => {
 	const cartDisabled = cart?.total_items === 0 ? true : false
 
 	return (
-		<Button fullWidth loading={loading} onClick={handleClick} size="lg">
+		<Button     
+      fullWidth 
+      isLoading={loading} 
+      onPress={handleClick} 
+      size="lg"
+    >
 			Checkout {!cartDisabled && cart?.display_subtotal}
 		</Button>
 	)

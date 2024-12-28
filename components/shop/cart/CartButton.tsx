@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { IconButton } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { useCart } from '../../../hooks'
 import { RemixIcon } from '../../../components'
 import { Badge } from 'frontend-shadcn'
@@ -16,9 +16,13 @@ const CartButton: React.FC<CartButtonProps> = (props) => {
 
 	return (
 		<div className="relative">
-			<IconButton onClick={() => setCartOpen(!cartOpen)}>
+			<Button 
+        isIconOnly 
+        variant='light'
+        onPress={() => setCartOpen(!cartOpen)}
+      >
 				<RemixIcon name={icon} size="lg" />
-			</IconButton>
+			</Button>
       { cart?.total_items > 0 && (
         <Badge className="py-0 px-1 rounded-full absolute top-0 right-0 transform translate-x-[3px] -translate-y-[3px]">
           {cart?.total_items}
