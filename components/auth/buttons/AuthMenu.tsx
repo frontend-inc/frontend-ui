@@ -4,6 +4,7 @@ import React from 'react'
 import { useAuth } from 'frontend-js'
 import { UserAvatar, RemixIcon } from '../../../components'
 import {
+  User,
   Button,
 	Dropdown,
   DropdownMenu,
@@ -12,6 +13,7 @@ import {
   DropdownSection	
 } from '@nextui-org/react'
 import { useRouter } from 'next/navigation'
+import { getInitials } from '../../../helpers'
 
 type AuthProps = {
 	handleLogin: () => void
@@ -88,21 +90,21 @@ const Auth: React.FC<AuthProps> = (props) => {
 								className="font-normal"
 								key='my-account'
 							>
-								<div className="flex flex-col space-y-1">
-									<p className="text-sm font-medium leading-none">
-										{currentUser.name}
-									</p>
-									<p className="text-xs leading-none text-muted-foreground">
-										{currentUser.email}
-									</p>
-								</div>
+                <User 
+                  avatarProps={{
+                    src: currentUser?.avatar?.url,
+                    name: getInitials(currentUser?.name),
+                    radius: 'lg',
+                  }}
+                  name={ currentUser?.name }
+                  description={ currentUser?.email }
+                />								
 							</DropdownItem>
             </DropdownSection>
 						<DropdownSection showDivider>
 							{menuItems?.map((menuItem, idx) => (
 								<DropdownItem
-									key={idx}
-									onClick={() => handleClick(menuItem)}
+									key={menuItem?.path}									
 								>
 									{menuItem?.icon && (
 										<RemixIcon name={menuItem?.icon} className="mr-2" />

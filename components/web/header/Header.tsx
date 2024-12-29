@@ -56,9 +56,7 @@ const Header: React.FC<DesktopHeaderProps> = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
 	return (
-    <Navbar       
-      isBordered
-      position="sticky"
+    <Navbar                   
       isMenuOpen={isMenuOpen} 
       onMenuOpenChange={setIsMenuOpen}
     >

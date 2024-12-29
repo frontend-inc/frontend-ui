@@ -7,7 +7,7 @@ import { SocialLinkType, MenuLinkType } from '../../../types'
 import Image from 'next/image'
 import AppStoreButton from './AppStoreButton'
 import GooglePlayButton from './GooglePlayButton'
-import { EmailSubscribe } from '../../../components'
+import { Logo, EmailSubscribe } from '../../../components'
 
 type FooterLinkProps = {
   link: MenuLinkType
@@ -58,15 +58,10 @@ export default function Footer(props: FooterProps) {
     <footer className="w-full py-10 px-4">
       {(enableNewsletter || logo) && (
       <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4 justify-between items-center pb-6">
-        { logo && (
-          <Image 
-            src={ logo } 
-            alt="logo" 
-            width={ 150 } 
-            height={ 150 } 
-            style={{ objectFit: 'contain' }} 
-          /> 
-        )}
+        <Logo 
+          src={ logo } 
+          handleClick={() => handleClick('/')}
+        />          
 
         { enableNewsletter && (
           <div className="w-[260px]">

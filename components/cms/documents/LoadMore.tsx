@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { ChevronDown } from 'lucide-react'
 
 type LoadMoreProps = {
@@ -18,11 +18,13 @@ export default function LoadMore(props: LoadMoreProps) {
 			{page < numPages && (
 				<Button
 					variant="ghost"
-					onClick={handlePaginate}
+					onPress={handlePaginate}
 					className="flex items-center"
+          endContent={
+            <ChevronDown className="h-5 w-5" />
+          }
 				>
-					Load More
-					<ChevronDown className="ml-2 h-4 w-4" />
+					Load More					
 				</Button>
 			)}
 		</div>
