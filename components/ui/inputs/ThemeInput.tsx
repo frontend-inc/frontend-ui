@@ -1,14 +1,12 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
-import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipProvider,
-	TooltipTrigger,
-} from 'frontend-shadcn'
+import { Button } from '@nextui-org/react'
+import { 
+  Popover, 
+  PopoverContent, 
+  PopoverTrigger 
+} from '@nextui-org/react'
 import { ChevronDown } from 'lucide-react'
 import { cn } from 'frontend-shadcn'
 import { TAILWIND_COLORS, TAILWIND_COLOR_MAP } from '../../../constants'
@@ -20,12 +18,15 @@ type ThemePickerProps = {
 	placeholder?: string
 }
 
-export default function ThemePicker({
-	name,
-	value,
-	handleChange,
-	placeholder = 'Select a theme',
-}: ThemePickerProps) {
+export default function ThemePicker(props: ThemePickerProps) {
+
+  const {
+    name,
+    value,
+    handleChange,
+    placeholder = 'Select a theme',
+  } = props || {}
+
 	const handleColorChange = (color: string) => {
 		handleChange({
 			target: {
@@ -37,56 +38,46 @@ export default function ThemePicker({
 
 	return (
 		<Popover>
-			<PopoverTrigger asChild>
+			<PopoverTrigger>
 				<Button
-					variant="outline"
-					className="w-[200px] text-foreground justify-between"
+          fullWidth          
+					variant="ghost"
+					className="text-foreground justify-between"
+          startContent={value && (
+            <div
+              className="h-5 w-5 rounded-lg"
+              style={{
+                backgroundColor:
+                  TAILWIND_COLOR_MAP[
+                    value as keyof typeof TAILWIND_COLOR_MAP
+                  ],
+              }}
+            />
+          )}
+          endContent={
+            <ChevronDown className="h-4 w-4" />
+          }
 				>
-					{value ? (
-						<div className="flex items-center gap-2">
-							<div
-								className="h-4 w-4 rounded-full"
-								style={{
-									backgroundColor:
-										TAILWIND_COLOR_MAP[
-											value as keyof typeof TAILWIND_COLOR_MAP
-										],
-								}}
-							/>
-							{value}
-						</div>
-					) : (
-						placeholder
-					)}
-					<ChevronDown className="h-4 w-4 opacity-50" />
+          { value || placeholder }					
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className="bg-background z-50 w-[200px] p-0">
 				<div className="grid grid-cols-5 gap-1 p-2">
 					{TAILWIND_COLORS.map((color) => (
-						<TooltipProvider key={color}>
-							<Tooltip>
-								<TooltipTrigger asChild>
-									<button
-										className={cn(
-											'h-8 w-8 rounded-md border',
-											value === color &&
-												'ring-2 ring-offset-2 ring-offset-background'
-										)}
-										style={{
-											backgroundColor:
-												TAILWIND_COLOR_MAP[
-													color as keyof typeof TAILWIND_COLOR_MAP
-												],
-										}}
-										onClick={() => handleColorChange(color)}
-									/>
-								</TooltipTrigger>
-								<TooltipContent>
-									<p>{color}</p>
-								</TooltipContent>
-							</Tooltip>
-						</TooltipProvider>
+            <button
+              className={cn(
+                'h-8 w-8 rounded-md border',
+                value === color &&
+                  'ring-2 ring-offset-2 ring-offset-background'
+              )}
+              style={{
+                backgroundColor:
+                  TAILWIND_COLOR_MAP[
+                    color as keyof typeof TAILWIND_COLOR_MAP
+                  ],
+              }}
+              onClick={() => handleColorChange(color)}
+            />
 					))}
 				</div>
 			</PopoverContent>

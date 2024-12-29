@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Heading, Button } from '../../../components'
-import { NextImage } from '../..'
+import { Image } from '../..'
 import { useNavigate } from '../../../hooks'
 import { cn } from 'frontend-shadcn'
 import { HeadingProps } from '../../../types'
@@ -36,7 +36,6 @@ const Cover: React.FC<CoverProps> = (props) => {
 		buttonText,
 		actions,
 		path,
-
 		editable,
 		handleChange,
 	} = props
@@ -47,28 +46,29 @@ const Cover: React.FC<CoverProps> = (props) => {
 
 	return (
 		<div className={cn('dark relative w-full')}>
-				<NextImage
-          height={height}
-					radius='none'
-					src={image}
-					alt={alt}					
-					enableGradient={enableGradient}
-					enableOverlay={enableOverlay}
-				/>
+      <Image
+        disableZoom
+        disableBorderRadius
+        src={image}
+        alt={alt}	   
+        height={height}       
+        enableGradient={enableGradient}
+        enableOverlay={enableOverlay}
+      />
 			<div
 				className={cn(
-					'flex flex-col items-center justify-center',
+					'flex flex-col items-center justify-center z-20',
 					height && `h-[${height}px]`,
 					`absolute top-0 left-0 w-full h-full px-3 sm:px-0`
 				)}
 			>
-				<div className={cn('flex flex-col space-y-4', alignItems)}>
+				<div className={cn('flex flex-col space-y-4 px-4', alignItems)}>
 					<Heading
 						label={label}
 						title={title}
 						subtitle={subtitle}
 						textAlign={alignItems === 'items-center' ? 'center' : 'left'}
-						size="xl"
+						size="lg"
 						editable={editable}
 						handleChange={handleChange}
 					/>

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { cn } from 'frontend-shadcn'
-import { NextImage } from '../..'
+import { Image } from '../..'
 import { Typography } from '../../../components'
 import { CardProps } from './Card'
 
@@ -24,7 +24,7 @@ const CoverCard: React.FC<CardProps> = (props) => {
 			<div
 				className={cn('relative flex flex-col overflow-hidden w-full rounded')}
 			>				
-        <NextImage
+        <Image
           label={label}
           src={image}
           alt={title}

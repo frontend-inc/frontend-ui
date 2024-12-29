@@ -3,7 +3,7 @@
 import React from 'react'
 import { cn } from 'frontend-shadcn'
 import { Typography } from '../../../components'
-import { NextImage } from '../..'
+import { Image } from '../..'
 
 export type CardProps = {
 	ref?: React.Ref<HTMLDivElement>
@@ -17,7 +17,7 @@ export type CardProps = {
 	secondaryAction?: React.ReactNode
 	handleClick?: () => void
 	handleSelect?: () => void
-	size?: number
+	height?: number
 	enableOverlay?: boolean
 	enableGradient?: boolean
 	classNames?: string
@@ -35,7 +35,7 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 			secondaryAction,
 			handleClick,
 			image,
-			size = 240,
+			height,
 			enableGradient,
 			enableOverlay,
 			classNames,
@@ -43,9 +43,9 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 
 		return (
 			<div ref={ref} className={cn('w-full overflow-hidden', classNames)}>
-				<NextImage        
+				<Image        
 					src={image}
-					height={size}
+					height={height}
 					alt={title}
 					label={label}
 					handleClick={handleClick}

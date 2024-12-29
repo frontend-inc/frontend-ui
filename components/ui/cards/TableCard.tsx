@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { NextImage } from '../..'
+import { Image } from '../..'
 import { Typography } from '../../../components'
 import { cn } from 'frontend-shadcn'
 
@@ -48,7 +48,7 @@ const TableCard: React.FC<CardProps> = (props) => {
 							className="w-full h-full focus:outline-none"
 							onClick={handleClick}
 						>
-							<NextImage
+							<Image
 								src={image}
 								height={height}
 								alt={primary}

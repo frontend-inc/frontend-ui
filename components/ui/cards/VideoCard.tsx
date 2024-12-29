@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { NextImage } from '../..'
+import { Image } from '../..'
 import { cn } from 'frontend-shadcn'
 import { RiPlayCircleFill } from '@remixicon/react'
 
@@ -39,7 +39,7 @@ export default function VideoCard({
 				)}
 				{...slots.item}
 			>
-        <NextImage
+        <Image
           src={image}
           height={360}
           alt={primary}

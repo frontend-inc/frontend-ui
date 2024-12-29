@@ -1,103 +1,111 @@
-'use client'
-
-import React, { useState } from 'react'
-import Image from 'next/image'
+import React from 'react'
+import { Card, CardFooter, Image } from '@nextui-org/react'
+import { cn } from '@nextui-org/react'
 import { AspectRatio } from 'frontend-shadcn'
-import { Badge } from 'frontend-shadcn'
-import { cn } from 'frontend-shadcn'
-import { truncate } from '../../../helpers'
+import NoImage from './NoImage'
 
-export interface ResponsiveImageProps {
-	src?: string | null
-	alt?: string
-	width?: number
-	height?: number
-	objectFit?: 'cover' | 'contain'
-	aspectRatio?: number
-	enableOverlay?: boolean
-	enableGradient?: boolean
-	disableBorderRadius?: boolean
-	disableZoom?: boolean
-	className?: string
-	handleClick?: () => void
-	label?: string
+
+type ImageCardProps = {
+  src: string
+  label?: string
+  aspectRatio?: number  
+  handleClick?: () => void
+  height?: number
+  isBlurred?: boolean
+  disableZoom?: boolean
+  disableBorderRadius?: boolean
+  enableGradient?: boolean
+  enableOverlay?: boolean
+  className?: string
 }
 
-export default function ResponsiveImage(props: ResponsiveImageProps) {
-	const {
-		src,
-		alt,
-		width = 1600,
-		height = 1600,
-		objectFit = 'cover',
-		aspectRatio = 1.0,
-		enableOverlay = false,
-		enableGradient = false,
-		disableBorderRadius = false,
-		disableZoom = false,
-		handleClick,
-		className,
-		label,
-	} = props
+const ImageCard: React.FC<ImageCardProps> = (props) => {
 
-	const [isHovered, setIsHovered] = useState(false)
+  const { 
+    src, 
+    label,
+    handleClick,    
+    isBlurred,
+    disableZoom=false,
+    disableBorderRadius=false,
+    height,
+    enableGradient, 
+    enableOverlay,
+    className
+  } = props || {}
 
-	return (
+  return(
+    <Card      
+      isFooterBlurred
+      isPressable={ handleClick ? true : false } 
+      onPress={ handleClick } 
+      className={ cn(
+        disableBorderRadius ? 'rounded-none' : 'rounded-large',
+        'relative w-full h-full'
+      )}     
+    >
+      <Image   
+        removeWrapper
+        height={ height }
+        radius='none'
+        isBlurred={isBlurred}
+        isZoomed={!disableZoom}
+        src={src}
+        alt={label}
+        className={cn(
+          "w-full h-full object-cover", 
+          className
+        )}
+      /> 
+      { enableGradient && <div className="z-20 absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black to-transparent" /> }
+      { enableOverlay && <div className="z-20 absolute top-0 left-0 w-full h-full bg-black bg-opacity-50" /> }
+      { label && (
+        <CardFooter className="z-20 w-[calc(100%_-_8px)] justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 ml-1 mt-1">
+          <p className="text-xs text-white">{ label }</p>
+        </CardFooter>
+      )}
+    </Card>
+  )
+}
+
+
+type NextImageProps = ImageCardProps & {
+  aspectRatio?: number
+}
+  
+const NextImage: React.FC<NextImageProps> = (props) => {
+
+  const { 
+    src,     
+    height,
+    aspectRatio=16/9,
+    disableBorderRadius,
+    ...rest 
+  } = props || {}
+
+  if(!src) return (
+    <NoImage 
+      disableBorderRadius={disableBorderRadius}
+      aspectRatio={aspectRatio}
+      height={height}
+    />
+  )
+  return (
+   aspectRatio ? 
     <AspectRatio ratio={aspectRatio}>
-		<figure
-			className={cn(
-				'w-full h-full',
-				'relative overflow-hidden',
-        !disableBorderRadius && 'rounded-lg',
-				className
-			)}
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
-			onClick={handleClick ? handleClick : undefined}
-		>
-				{src ? (
-					<Image
-						src={src}
-						alt={alt ? alt : 'image'}
-						width={width}
-						height={height}
-						className={cn(              
-							objectFit == 'cover' ? 'object-cover' : 'object-contain',
-							'w-full h-full transition-transform duration-300 ease-in-out',
-							!disableZoom && isHovered && 'hover:scale-105'
-						)}
-					/>
-				) : (
-					<div
-						className={cn(
-							!disableBorderRadius && 'rounded-lg',
-							'h-full w-full bg-gradient-to-br from-black to-gray-600'
-						)}
-					/>
-				)}
-				{enableOverlay && (
-					<div
-						onMouseEnter={() => setIsHovered(true)}
-						onMouseLeave={() => setIsHovered(false)}
-						className="absolute inset-0 bg-black bg-opacity-60"
-					/>
-				)}
-				{enableGradient && (
-					<div
-						onMouseEnter={() => setIsHovered(true)}
-						onMouseLeave={() => setIsHovered(false)}
-						className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"
-					/>
-				)}
-				{label && (
-					<Badge
-						variant="ghost"
-						className="absolute font-medium px-2 py-1 uppercase text-xs tracking-wider top-3 left-3 bg-opacity-20 backdrop-blur-md text-foreground border-none"
-					>
-						{truncate(label, 14)}
-					</Badge>
-				)}
-		</figure>
-    </AspectRatio>
-	)
+      <ImageCard 
+        src={src}
+        disableBorderRadius={disableBorderRadius}
+        { ...rest }
+      /> 
+    </AspectRatio> : 
+    <ImageCard 
+      src={src}
+      height={ height }
+      disableBorderRadius={disableBorderRadius}
+      { ...rest }      
+    /> 
+  )
 }
+
+export default NextImage

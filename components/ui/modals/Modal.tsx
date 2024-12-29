@@ -47,7 +47,7 @@ export default function Modal(props: ModalProps) {
             {title}					
           </ModalHeader>
           <ModalBody>    
-            <ScrollShadow className="w-full h-[400px]">
+            <ScrollShadow className="w-full max-h-[400px]">
               {loading ? (
                 <Loader loading={loading} />
               ) : (

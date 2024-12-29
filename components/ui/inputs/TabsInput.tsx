@@ -2,31 +2,29 @@
 
 import React from 'react'
 import { SyntheticEventType } from '../../../types'
-import { InputLabel } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import { RemixIcon, } from '../../../components'
 import { Tab, Tabs } from '@nextui-org/react'
 
 type TabsInputProps = {
-	name: string
-	label?: string
+  name: string
+  value?: string  
 	handleChange: (ev: SyntheticEventType) => void
 	options: {
 		icon?: string
 		label?: string
 		value: string
 	}[]
-	value: string
-	info?: string
 }
 
-export default function TabsInput({
-	name,
-	label,
-	handleChange,
-	options,
-	value,
-	info,
-}: TabsInputProps) {
+export default function TabsInput(props: TabsInputProps) {
+
+  const {
+    name,
+    handleChange,
+    options,
+    value='',
+  } = props || {}
+
 	const handleInputChange = (value: string) => {
 		handleChange({
 			target: {
@@ -37,29 +35,25 @@ export default function TabsInput({
 	}
 
 	return (
-		<div
-			className={'flex flex-row items-center justify-between w-full space-y-1'}
-		>
-			<InputLabel label={label} info={info} />
-			<Tabs
-				selectedKey={value.toString()}
-				onSelectionChange={handleInputChange}
-			>				
-        {options.map((option) => (
-          <Tab
-            key={option.value}
-            value={option.value.toString()}
-            title={
-              <div className='flex flex-row'>
-                {option.icon && (
-                  <span className={'inline-block mr-2'}>{option.icon}</span>
-                )}
-                { option.label }
-              </div>
-            }
-          />                      
-        ))}
-			</Tabs>
-		</div>
+    <Tabs
+      fullWidth
+      selectedKey={value.toString()}
+      onSelectionChange={handleInputChange}
+    >				
+      {options.map((option) => (
+        <Tab
+          key={option.value}
+          value={option.value.toString()}
+          title={
+            <div className='flex flex-row items-center'>
+              {option.icon && (
+                <RemixIcon size='lg' name={ option.icon } className="mr-2" />
+              )}
+              { option.label }
+            </div>
+          }
+        />                      
+      ))}
+    </Tabs>
 	)
 }

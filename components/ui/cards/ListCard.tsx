@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { NextImage } from '../../../components'
+import { Image } from '../../../components'
 import { CardProps } from './Card'
 import { Typography } from '../../../components'
 
@@ -36,8 +36,8 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 					{!disableImage && (
 						<div className="flex-shrink-0 w-full md:w-[260px]">
 							<div className="w-full pr-2 h-full flex flex-row justify-center items-center">								
-                <NextImage
-                  radius={ circular ? 'full' : 'md' }
+                <Image
+                  circular={circular}
                   label={label}
                   src={image}
                   height={size}

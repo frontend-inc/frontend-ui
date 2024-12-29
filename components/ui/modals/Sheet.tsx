@@ -47,11 +47,10 @@ const Sheet: React.FC<SheetProps> = (props) => {
       onOpenChange={handleClose}
     >
 			<DrawerContent>			
-				<DrawerHeader className="mt-4">
+				<DrawerHeader>
 					{title}
 				</DrawerHeader>
-				<DrawerBody>
-				
+				<DrawerBody>			
 					{children}
 				</DrawerBody>
         <DrawerFooter>

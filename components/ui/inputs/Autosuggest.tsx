@@ -78,7 +78,6 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
     <Autocomplete 
       aria-label={ label }
       label={ label }
-      selectionMode="single"
       selectedKeys={[value]}
       onSelectionChange={handleSelection}
       defaultItems={options}

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { NextImage } from '../../../components'
+import { Image } from '../../../components'
 import { cn } from 'frontend-shadcn'
 
 export type CardProps = {
@@ -36,7 +36,7 @@ export default function ImageCard(props: CardProps) {
 					'transition-shadow duration-300 hover:shadow-md'
 				)}
 			>
-        <NextImage
+        <Image
           src={image}
           height={height}
           alt={primary}
