@@ -48,7 +48,7 @@ const NextImage: React.FC<NextImageProps> = (props) => {
         isZoomed={!disableZoom}
         src={src}
         alt={label}
-        className="z-0 w-full h-full object-cover"
+        className="w-full h-full object-cover"
       /> 
       { enableGradient && <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black to-transparent" /> }
       { enableOverlay && <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50" /> }
