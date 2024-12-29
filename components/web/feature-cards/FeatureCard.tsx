@@ -3,7 +3,7 @@
 import React from 'react'
 import { useApp } from '../../../hooks'
 import { Button, Typography } from '../../../components'
-import { Image } from '../..'
+import { NextImage } from '../..'
 import { useRouter } from 'next/navigation'
 import { cn } from 'frontend-shadcn'
 
@@ -69,7 +69,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
         "w-full",
         direction != 'column' && "md:w-1/2"
       )}>
-				<Image
+				<NextImage
 					label={label}
 					src={image}
 					height={320}

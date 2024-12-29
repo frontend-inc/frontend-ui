@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Badge } from 'frontend-shadcn'
+import { Badge } from '@nextui-org/react'
 import { cn } from 'frontend-shadcn'
 
 type LabelProps = {
@@ -24,7 +24,7 @@ const Label: React.FC<LabelProps> = (props) => {
 		<Badge
       variant='outline'
 			className={cn(
-				'px-3 py-1 text-xs tracking-wider',
+				'px-3 py-1 text-xs tracking-wider text-foreground',
 				textAlign && textAlignClasses[textAlign],
 				className
 			)}

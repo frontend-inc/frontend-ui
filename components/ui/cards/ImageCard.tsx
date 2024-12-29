@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Image, TouchableOpacity } from '../../../components'
+import { NextImage } from '../../../components'
 import { cn } from 'frontend-shadcn'
 
 export type CardProps = {
@@ -15,16 +15,19 @@ export type CardProps = {
 	}
 }
 
-export default function ImageCard({
-	primary,
-	secondaryAction,
-	handleClick,
-	image,
-	height = 260,
-	slots = {
-		image: {},
-	},
-}: CardProps) {
+export default function ImageCard(props: CardProps) {
+
+  const {
+    primary,
+    secondaryAction,
+    handleClick,
+    image,
+    height = 260,
+    slots = {
+      image: {},
+    },
+  } = props || {}
+
 	return (
 		<div className="dark">
 			<div
@@ -33,15 +36,14 @@ export default function ImageCard({
 					'transition-shadow duration-300 hover:shadow-md'
 				)}
 			>
-				<TouchableOpacity handleClick={handleClick}>
-					<Image
-						src={image}
-						height={height}
-						alt={primary}
-						className="w-full h-auto object-cover"
-						{...slots.image}
-					/>
-				</TouchableOpacity>
+        <NextImage
+          src={image}
+          height={height}
+          alt={primary}
+          handleClick={handleClick}
+          className="w-full h-auto object-cover"
+          { ...slots.image }
+        />
 				<div className="absolute top-2.5 right-2.5 flex flex-row justify-end">
 					{secondaryAction}
 				</div>

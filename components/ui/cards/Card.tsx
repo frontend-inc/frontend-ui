@@ -3,7 +3,7 @@
 import React from 'react'
 import { cn } from 'frontend-shadcn'
 import { Typography } from '../../../components'
-import { Image } from '../..'
+import { NextImage } from '../..'
 
 export type CardProps = {
 	ref?: React.Ref<HTMLDivElement>
@@ -43,13 +43,12 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 
 		return (
 			<div ref={ref} className={cn('w-full overflow-hidden', classNames)}>
-				<Image
+				<NextImage        
 					src={image}
 					height={size}
 					alt={title}
 					label={label}
 					handleClick={handleClick}
-					aspectRatio={4/3}
 					enableGradient={enableGradient}
 					enableOverlay={enableOverlay}
 				/>

@@ -105,7 +105,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 
 	return (
 		<Modal
-      maxWidth='sm'
+      maxWidth='md'
 			title={
 				tab == 0
 					? 'Login'
@@ -123,7 +123,7 @@ const AuthModal: React.FC<AuthModalProps> = (props) => {
 			open={authOpen}
 			handleClose={() => setAuthOpen(false)}
 		>
-			<div className="flex flex-col space-y-3">
+			<div className="flex flex-col space-y-3 pb-2">
 				{tab === 0 && (
 					<LoginForm
 						errors={errors}

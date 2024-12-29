@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Image, AvatarImage } from '../..'
+import { NextImage } from '../../../components'
 import { CardProps } from './Card'
 import { Typography } from '../../../components'
 
@@ -35,26 +35,16 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 				<div className="flex flex-col space-y-4 md:space-y-0 md:space-x-4 md:flex-row justify-start items-start flex-grow">
 					{!disableImage && (
 						<div className="flex-shrink-0 w-full md:w-[260px]">
-							<div className="w-full pr-2 h-full flex flex-row justify-center items-center">
-								{circular ? (
-									<AvatarImage
-										src={image}
-										size={size}
-										alt={title}
-										enableGradient={enableGradient}
-										enableOverlay={enableOverlay}
-									/>
-								) : (
-									<Image
-										label={label}
-										src={image}
-										height={size}
-										alt={title}
-										aspectRatio={4 / 3}
-										enableGradient={enableGradient}
-										enableOverlay={enableOverlay}
-									/>
-								)}
+							<div className="w-full pr-2 h-full flex flex-row justify-center items-center">								
+                <NextImage
+                  radius={ circular ? 'full' : 'md' }
+                  label={label}
+                  src={image}
+                  height={size}
+                  alt={title}                  
+                  enableGradient={enableGradient}
+                  enableOverlay={enableOverlay}
+                />								
 							</div>
 						</div>
 					)}

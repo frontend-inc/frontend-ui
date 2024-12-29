@@ -53,7 +53,7 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
     >
       <Input
         fullWidth 
-        className={ fullWidth ? 'w-full' : 'max-w-[360px]' }
+        className={ fullWidth ? 'w-full' : 'max-w-[520px]' }
         placeholder={placeholder}
         value={text}
         onChange={handleInputChange}

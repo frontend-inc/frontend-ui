@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { cn } from 'frontend-shadcn'
-import { Image, TouchableOpacity } from '../..'
+import { NextImage } from '../..'
 import { Typography } from '../../../components'
 import { CardProps } from './Card'
 
@@ -23,19 +23,16 @@ const CoverCard: React.FC<CardProps> = (props) => {
 		<div className="dark">
 			<div
 				className={cn('relative flex flex-col overflow-hidden w-full rounded')}
-			>
-				<TouchableOpacity handleClick={handleClick}>
-					<Image
-						label={label}
-						src={image}
-						height={340}
-						alt={title}
-						aspectRatio={4 / 5}
-						className={'w-full'}
-						enableGradient={enableGradient}
-						enableOverlay={enableOverlay}
-					/>
-				</TouchableOpacity>
+			>				
+        <NextImage
+          label={label}
+          src={image}
+          alt={title}
+          handleClick={handleClick}
+          className={'w-full'}
+          enableGradient={enableGradient}
+          enableOverlay={enableOverlay}
+        />				
 				<div className="absolute bottom-0 left-0 z-10 w-full p-3">
 					<div className="flex flex-col justify-between items-end w-full">
 						<div className="w-full">

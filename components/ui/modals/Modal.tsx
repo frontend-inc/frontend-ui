@@ -2,14 +2,6 @@
 
 import React from 'react'
 import {
-	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogHeader,
-	DialogTitle,
-	DialogFooter,
-} from 'frontend-shadcn'
-import {
   Modal as NextModal,
   ModalContent,
   ModalHeader,
@@ -18,11 +10,8 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
-import { useTheme as useNextTheme } from 'next-themes'
-import { cn } from 'frontend-shadcn'
-import { ScrollArea } from 'frontend-shadcn'
+import {ScrollShadow} from "@nextui-org/scroll-shadow";
 import { Loader } from '../../../components'
-import { useTheme } from '../../../hooks'
 
 type ModalProps = {
 	open: boolean
@@ -57,12 +46,14 @@ export default function Modal(props: ModalProps) {
           <ModalHeader className="mt-4">
             {title}					
           </ModalHeader>
-          <ModalBody>        
+          <ModalBody>    
+            <ScrollShadow className="w-full h-[400px]">
               {loading ? (
                 <Loader loading={loading} />
               ) : (
                 <div className="w-full">{children}</div>
               )}
+            </ScrollShadow>    
           </ModalBody>        
           {!loading && buttons && (
             <ModalFooter>{buttons}</ModalFooter>

@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from 'react'
 import {
-	Select,
-  SelectItem  
+	Autocomplete,
+  AutocompleteItem  
 } from '@nextui-org/react'
 import { OptionType, SyntheticEventType } from 'frontend-js'
 
@@ -75,20 +75,20 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
   }
 
   return (
-    <Select 
+    <Autocomplete 
       aria-label={ label }
       label={ label }
       selectionMode="single"
       selectedKeys={[value]}
       onSelectionChange={handleSelection}
-      items={options}
+      defaultItems={options}
     >
       {(option) => (
-        <SelectItem key={option.value}>
+        <AutocompleteItem key={option.value}>
           {option.label}
-        </SelectItem>
+        </AutocompleteItem>
       )}
-    </Select>
+    </Autocomplete>
 	)
 }
 

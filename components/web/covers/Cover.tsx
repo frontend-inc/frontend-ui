@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Heading, Button } from '../../../components'
-import { Image } from '../..'
+import { NextImage } from '../..'
 import { useNavigate } from '../../../hooks'
 import { cn } from 'frontend-shadcn'
 import { HeadingProps } from '../../../types'
@@ -47,26 +47,14 @@ const Cover: React.FC<CoverProps> = (props) => {
 
 	return (
 		<div className={cn('dark relative w-full')}>
-			<div className="hidden sm:block">
-				<Image
-					disableBorderRadius
+				<NextImage
+          height={height}
+					radius='none'
 					src={image}
-					alt={alt}
-					aspectRatio={2.5}
+					alt={alt}					
 					enableGradient={enableGradient}
 					enableOverlay={enableOverlay}
 				/>
-			</div>
-			<div className="block sm:hidden">
-				<Image
-					disableBorderRadius
-					src={image}
-					alt={alt}
-					aspectRatio={1.0}
-					enableGradient={enableGradient}
-					enableOverlay={enableOverlay}
-				/>
-			</div>
 			<div
 				className={cn(
 					'flex flex-col items-center justify-center',

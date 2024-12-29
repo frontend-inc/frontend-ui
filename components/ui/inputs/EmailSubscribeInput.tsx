@@ -20,12 +20,19 @@ const EmailSubscribeInput: React.FC<EmailSubscribeInputProps> = (props) => {
     loading,
     label,
     name,
+    value,
+    handleChange,
     placeholder='Enter your email',
     buttonText = 'Subscribe',
     handleSubmit,
     size='md',
     ...rest 
   } = props || {}
+
+  const handleValueChange = (ev: SyntheticEventType) => {
+    console.log("EV", ev)
+    handleChange(ev.target.value)
+  }
 
 	return (
     <div className="flex flex-row space-x-2 items-center w-full max-w-[280px]">      
@@ -35,6 +42,8 @@ const EmailSubscribeInput: React.FC<EmailSubscribeInputProps> = (props) => {
         placeholder={placeholder}
         type="email"
         size={size}   
+        value={ value }
+        onValueChange={handleValueChange}
         startContent={
           <RemixIcon name="ri-mail-fill" />
         }       
@@ -48,7 +57,7 @@ const EmailSubscribeInput: React.FC<EmailSubscribeInputProps> = (props) => {
         variant="solid"
         color="primary"
         onPress={handleSubmit}
-        loading={loading}
+        isLoading={loading}
       >
         {buttonText}
       </Button>        
