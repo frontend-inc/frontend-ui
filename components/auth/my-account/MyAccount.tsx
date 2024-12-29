@@ -37,7 +37,7 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 	}, [currentUser?.id])
 
 	return (
-		<>
+		<div className="max-w-screen-md">
 			{currentUser && (
 				<AuthScreen
 					title={`${currentUser?.first_name} ${currentUser?.last_name}`}
@@ -56,7 +56,7 @@ const MyAccount: React.FC<MyAccountProps> = (props) => {
 					/>
 				</AuthScreen>
 			)}
-		</>
+		</div>
 	)
 }
 

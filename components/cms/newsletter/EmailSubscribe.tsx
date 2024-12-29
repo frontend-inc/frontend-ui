@@ -6,16 +6,17 @@ import { useContacts } from '../../../hooks'
 import { toast } from 'sonner'
 
 export type EmailSubscribeProps = {
+  label?: string
 	buttonText?: string
 	href?: string
 	handleClick?: () => void
 	direction?: string
-  size?: 'sm' | 'default' | 'lg'
+  size?: 'sm' | 'md' | 'lg'
 }
 
 // Call To Action
 const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
-	const { size='lg', buttonText = 'Subscribe' } = props || {}
+	const { size='lg', label, buttonText = 'Subscribe' } = props || {}
 
 	const {
 		errors,
@@ -43,6 +44,7 @@ const EmailSubscribe: React.FC<EmailSubscribeProps> = (props) => {
       size={size}
       loading={delayedLoading}      
       errors={errors}
+      label={ label }
       name='email'
       value={contact.email}
       handleChange={handleChange}

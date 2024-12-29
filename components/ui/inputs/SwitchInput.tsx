@@ -2,24 +2,23 @@
 
 import React from 'react'
 import { InputPropsType } from '../../../types'
-import { InputLabel } from '../../../components'
-import { Label } from 'frontend-shadcn'
-import { cn } from 'frontend-shadcn'
 import { Switch } from '@nextui-org/react'
 
 type SwitchInputProps = InputPropsType & {
-	disableBorder?: boolean
+  value: boolean | undefined
 }
 
-export default function SwitchInput({
-	name,
-	value,
-	disableBorder = false,
-	label,
-	placeholder,
-	handleChange,
-	info,
-}: SwitchInputProps) {
+export default function SwitchInput(props: SwitchInputProps) {
+
+  const {
+    name,
+    value,
+    label,
+    placeholder,
+    handleChange,
+  } = props
+
+
 	const onCheckedChange = (checked: boolean) => {
 		handleChange({
 			target: {
@@ -29,22 +28,9 @@ export default function SwitchInput({
 		})
 	}
 
-	return (
-		<div className="w-full">
-			<InputLabel label={label} info={info} />
-			<div
-				className={cn(
-					'w-full flex flex-col rounded-md py-1 text-sm',
-					!disableBorder && 'focus-within:border-primary'
-				)}
-			>
-				<div className="flex items-center space-x-2">
-					<Switch id={name} isSelected={value} onValueChange={onCheckedChange} />
-					<Label htmlFor={name} className="text-base text-muted-foreground">
-						{placeholder}
-					</Label>
-				</div>
-			</div>
-		</div>
+	return (				
+		<Switch isSelected={value} onValueChange={onCheckedChange}>
+      { label }
+    </Switch>
 	)
 }

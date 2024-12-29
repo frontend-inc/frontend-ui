@@ -7,7 +7,7 @@ const FrontendBadge: React.FC = () => {
       <Link 
         href="https://www.frontend.co" 
         target="_blank" 
-        className="relative p-[2px] rounded-full shadow-lg hover:scale-105 transition-transform cursor-pointer overflow-hidden"
+        className="relative p-[2px] rounded-full hover:scale-105 transition-transform cursor-pointer overflow-hidden"
       >
         <div className="inline-block p-[2px] rounded-full bg-gradient-to-r from-purple-500 via-violet-500 to-blue-500">
           <div className="px-3 py-1 rounded-full bg-background">

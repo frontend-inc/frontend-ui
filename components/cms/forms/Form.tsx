@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import FormFields from './FormFields'
 import { FormFieldType } from '../../../types'
 
@@ -50,7 +50,14 @@ const Form: React.FC<FormProps> = (props) => {
 				inputParams={inputParams}
 			/>
 			{handleSubmit && (
-				<Button onClick={handleSubmit} disabled={loading} loading={loading}>
+				<Button 
+          variant="solid"
+          color="primary"
+          isLoading={loading}
+          onPress={handleSubmit} 
+          disabled={loading} 
+          loading={loading}
+        >
 					{buttonText}
 				</Button>
 			)}

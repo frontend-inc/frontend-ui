@@ -69,7 +69,7 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
 				)}
 				{src ? (
 					<NextUIImage
-          removeWrapper
+            removeWrapper
             isZoomed={ !disableZoom } 
             as={ NextImage }
 						src={src}
@@ -82,7 +82,7 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
 					/>
 				) : (
 					<div
-						className={cn(
+						className={cn(              
 							!disableBorderRadius && 'rounded-lg',
 							'h-full w-full bg-gradient-to-br from-black to-gray-600'
 						)}

@@ -2,12 +2,8 @@
 
 import React, { useEffect, useState } from 'react'
 import moment from 'moment'
-import { Calendar } from 'frontend-shadcn'
-import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
-import { Button } from '../../../components'
-import { cn } from 'frontend-shadcn'
-import { CalendarIcon } from 'lucide-react'
-import { InputLabel } from '../../../components'
+import {DatePicker} from "@nextui-org/react";
+import {DateValue, parseDate, getLocalTimeZone} from "@internationalized/date";
 import { SyntheticEventType } from '../../../types'
 
 type DateInputProps = {
@@ -16,83 +12,35 @@ type DateInputProps = {
 	required?: boolean
 	label?: string
 	name: string
-	value?: string | Date
+	value?: DateValue 
 	placeholder?: string
 	info?: string
 	handleChange: (ev: SyntheticEventType) => void
 }
 
-export default function DateInput({
-	errors,
-	direction = 'column',
-	required,
-	label,
-	info,
-	name,
-	value,
-	handleChange,
-	placeholder,
-}: DateInputProps) {
-	const [date, setDate] = useState<Date | undefined>(undefined)
-	const [error, setError] = useState(false)
+export default function DateInput(props: DateInputProps) {
 
-	useEffect(() => {
-		if (value) {
-			const parsedDate = moment(value)
-			if (parsedDate.isValid()) {
-				setDate(parsedDate.toDate())
-			} else {
-				setDate(undefined)
-				console.error('Invalid date provided:', value)
-			}
-		} else {
-			setDate(undefined)
-		}
-	}, [value])
+  const {
+    errors,
+    label,
+    name,
+    value,
+    placeholder,
+    handleChange,
+  } = props || {}
 
-	const handleDateSelect = (selectedDate: Date | undefined) => {
-		setDate(selectedDate)
-		handleChange({
-			target: {
-				name,
-				value: selectedDate,
-			},
-		})
-	}
+  const handleDateChange = (date: DateValue) => {
+    console.log('date', date)
+  }
 
 	return (
-		<div
-			className={cn(
-				'flex',
-				direction === 'column'
-					? 'flex-col space-y-2'
-					: 'flex-row items-center space-x-2'
-			)}
-		>
-			<InputLabel label={label} info={info} />
-			<Popover>
-				<PopoverTrigger asChild>
-					<Button
-						variant="outline"
-						className={cn(
-							'min-w-[200px] text-foreground w-full justify-start text-left font-normal',
-							!date && 'text-muted-foreground',
-							error && 'border-red-500'
-						)}
-					>
-						<CalendarIcon className="mr-2 h-4 w-4" />
-						{date ? (
-							moment(date).format('MMMM D, YYYY')
-						) : (
-							<span>{placeholder || 'Pick a date'}</span>
-						)}
-					</Button>
-				</PopoverTrigger>
-				<PopoverContent className="w-auto p-0">
-					<Calendar mode="single" selected={date} onSelect={handleDateSelect} />
-				</PopoverContent>
-			</Popover>
-			{error && <p className="text-sm text-red-500">This field is required</p>}
-		</div>
+		<DatePicker      
+      label={ label }
+      value={value}
+      name={name}
+      placeholder={placeholder}
+      className="max-w-[284px]"
+      onChange={handleDateChange}
+    />
 	)
 }

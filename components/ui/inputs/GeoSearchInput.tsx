@@ -21,17 +21,20 @@ type GeoSearchInputProps = {
 	className?: string
 }
 
-export default function GeoSearchInput({
-	name = 'keywords',
-	fullWidth = false,
-	value,
-	location = '',
-	placeholder = 'Search...',
-	handleChange,
-	handleLocationChange,
-	handleSearch,
-	className,
-}: GeoSearchInputProps) {
+export default function GeoSearchInput(props: GeoSearchInputProps) {
+
+  const {
+    name = 'keywords',
+    fullWidth = false,
+    value,
+    location = '',
+    placeholder = 'Search...',
+    handleChange,
+    handleLocationChange,
+    handleSearch,
+    className,
+  } = props || {}
+
 	const { loading, placeOptions, fetchPlaces } = useGooglePlaces()
 
 	const [open, setOpen] = useState(false)

@@ -69,9 +69,9 @@ export default function Footer(props: FooterProps) {
         )}
 
         { enableNewsletter && (
-          <EmailSubscribe 
-            size='default'             
-          />
+          <div className="w-[260px]">
+            <EmailSubscribe size='md' />
+          </div>
         )}
       </div>
       )}
