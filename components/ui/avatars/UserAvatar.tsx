@@ -18,6 +18,7 @@ const UserAvatar: React.FC<UserAvatarProps> = (props) => {
 		size = 36,
 		className,
 	} = props
+  
 	return (
 		<Avatar
       radius='md'

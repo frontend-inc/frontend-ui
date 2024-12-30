@@ -1,12 +1,11 @@
 'use client'
 
 import React from 'react'
-import { Empty } from '../../../components'
-import AccordionItem from './AccordionItem'
-import { cn, Accordion as ShadcnAccordion } from 'frontend-shadcn'
+import { Empty, Typography } from '../../../components'
+import { Accordion as NextAccordion, AccordionItem } from '@nextui-org/react'
 
 export type AccordionProps = {
-	variant?: 'default' | 'fill' | 'outline'
+	variant?: 'light' | 'shadow' | 'bordered' | 'splitted'
 	items?: {
 		title: string
 		subtitle: string
@@ -18,26 +17,31 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 	const { variant, items = [] } = props
 
 	return (
-		<div className={cn(
-      "container mx-auto max-w-screen-lg",
-      )}>
-			<div className="flex flex-col">
+		<>
+			<NextAccordion
+        variant={ variant }
+        selectionMode="multiple"
+      >
 				{items?.map((item, i) => (
 					<AccordionItem
 						key={i}
+            aria-label={item?.title}
 						title={item?.title}
-						subtitle={item?.subtitle}
-					/>
+					>
+            <Typography variant="subtitle2" className='pb-2'>
+              { item?.subtitle }
+            </Typography>
+          </AccordionItem>
 				))}
-				{items?.length == 0 && (
-					<Empty
-						icon="ri-search-line"
-						title="No content"
-						description="Your content will appear here."
-					/>
-				)}
-			</div>
-		</div>
+      </NextAccordion>
+      {items?.length == 0 && (
+        <Empty
+          icon="ri-search-line"
+          title="No content"
+          description="Your content will appear here."
+        />
+      )}
+		</>
 	)
 }
 
