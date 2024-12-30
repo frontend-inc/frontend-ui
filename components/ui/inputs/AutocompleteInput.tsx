@@ -1,10 +1,13 @@
 'use client'
 
 import React, { useState, useRef } from 'react'
-import { TextInput, RemixIcon } from '../..'
 import { TextInputProps } from '../../../types'
-import { Avatar, AvatarFallback, AvatarImage } from 'frontend-shadcn'
-import { useClickOutside } from '@raddix/use-click-outside'
+import { 
+  Image,
+  Avatar,
+  Autocomplete, 
+  AutocompleteItem 
+} from '@nextui-org/react'
 
 type AutocompleteInput = TextInputProps & {
 	handleInputChange: (keywords: string) => void
@@ -13,76 +16,54 @@ type AutocompleteInput = TextInputProps & {
 export default function AutocompleteInput(props: AutocompleteInput) {
 	const {
 		name = 'title',
-		value = '',
+    value='',
 		label,
 		placeholder = 'Search',
 		handleChange,
 		handleInputChange,
 		options = [],
-		direction = 'column',
-		info,
 	} = props
 
-	const [open, setOpen] = useState(false)
-	const wrapperRef = useRef<HTMLDivElement>(null)
+  const [keywords, setKeywords] = useState(value)
 
-	const handleClick = (option: any) => {
-		setOpen(false)
-		handleChange({
+  const handleKeywordsChange = (text: string) => {
+    if(text){
+      handleInputChange(text)
+    }    
+  }
+
+	const handleSelectionChange = (value: any) => {
+    handleChange({
 			target: {
-				name: name,
-				value: option?.value,
+				name,
+				value
 			},
-		})
-	}
-
-	const handleKeywordChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-		let { value } = ev.target
-		handleInputChange(value)
-		if (options?.length > 0) setOpen(true)
-		if (value == '') {
-			setOpen(false)
-		}
-	}
-
-	useClickOutside(wrapperRef, () => setOpen(false))
+		}) 
+  }
 
 	return (
-		<div className="w-full relative" ref={wrapperRef}>
-			<TextInput
-				name={name}
-				label={label}
-				value={value}
-				options={options}
-				handleChange={handleKeywordChange}
-				direction={direction}
-				placeholder={placeholder}
-				info={info}
-			/>
-			{open && options.length > 0 && (
-				<div className="absolute z-10 w-full mt-1 bg-background border border-border rounded-md shadow-lg max-h-60 overflow-auto">
-					{options.map((option, index) => (
-						<div
-							key={index}
-							onClick={() => handleClick(option)}
-							className="flex items-center px-4 py-2 cursor-pointer bg-background hover:bg-muted-background"
-						>
-							<div className="mr-2 flex-shrink-0">
-								{option?.image && (
-									<Avatar className="h-8 w-8">
-										<AvatarImage src={option.image} alt={option.label} />
-										<AvatarFallback>{option.label[0]}</AvatarFallback>
-									</Avatar>
-								)}
-								{option?.icon && (
-									<RemixIcon name={option.icon} className="h-5 w-5" />
-								)}
-							</div>
-							<span className="flex-grow text-sm text-foreground">{option.label}</span>
-						</div>
-					))}
-				</div>
-			)}
-		</div>
+    <Autocomplete 
+      name={name}
+      label={ label }
+      placeholder={ placeholder }
+      onInputChange={ handleKeywordsChange}
+      items={ options }
+      onSelectionChange={ handleSelectionChange }
+    >
+      {((option) => (
+        <AutocompleteItem 
+          key={ option.value }
+          startContent={
+            <Avatar 
+              alt="Argentina" 
+              src={ option?.image } 
+              radius="sm"              
+            />
+          }
+        > 
+          { option.label }
+        </AutocompleteItem>
+      ))}
+    </Autocomplete>
 	)
 }
