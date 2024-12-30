@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Heading, Stack, Container } from '../../../components'
-import { Image } from '../..'
+import { Image } from '@nextui-org/react'
 import { SpotlightListProps } from './SpotlightList'
 
 const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
@@ -36,10 +36,6 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
 						<Image
 							src={image}
 							alt={title}
-							aspectRatio={1.5}
-							objectFit={objectFit}
-							enableGradient={enableGradient}
-							enableOverlay={enableOverlay}
 						/>
 					</Stack>
 				</Stack>

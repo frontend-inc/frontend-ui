@@ -43,21 +43,17 @@ const UIFeatureCards: React.FC<UIFeatureCardsProps> = (props) => {
 			px={px}
 			maxWidth={maxWidth}
 		>
-			<Stack direction={direction} spacing={10}>
-				<Stack direction={direction} size="1/3">
-					<Heading
-						label={label}
-						title={title}
-						subtitle={subtitle}
-						textAlign={direction == 'row' ? 'left' : 'center'}
-						size={fontSize}
-						editable={editable}
-						handleChange={handleChange}
-					/>
-				</Stack>
-				<Stack direction={direction} size="2/3">
-					<FeatureCards {...rest} />
-				</Stack>
+			<Stack spacing={4}>
+        <Heading
+          label={label}
+          title={title}
+          subtitle={subtitle}
+          textAlign='center'
+          size={fontSize}
+          editable={editable}
+          handleChange={handleChange}
+        />
+        <FeatureCards {...rest} />
 			</Stack>
 		</Section>
 	)

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Container, Heading } from '../../../components'
-import { Image } from '../..'
+import { Image } from '@nextui-org/react'
 import { TypographyVariantsType } from '../../../types'
 import { HeadingProps } from '../../../types'
 
@@ -47,10 +47,6 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 					<Image
 						src={image}
 						alt={title}
-						aspectRatio={1.5}
-						objectFit="contain"
-						enableGradient={enableGradient}
-						enableOverlay={enableOverlay}
 					/>
 				</Container>
 			</div>

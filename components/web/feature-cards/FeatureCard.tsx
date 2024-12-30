@@ -66,10 +66,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 				variant == 'fill' && 'p-6 bg-muted/50 rounded-lg'
 			)}
 		>
-			<div className={cn(
-        "w-full",
-        direction != 'column' && "md:w-1/2"
-      )}>
+			<div className="w-full md:w-1/2">
 				<Image
 					label={label}
 					src={image}
@@ -83,7 +80,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 			<div 
         className={cn(
           "flex flex-col gap-4 w-full",
-          direction != 'column' && "md:w-1/2"
+          "md:w-1/2"
         )}>
 				<Typography variant="h5">{title}</Typography>
 				<Typography variant="subtitle2" className="text-muted-foreground">

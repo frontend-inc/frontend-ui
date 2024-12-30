@@ -38,11 +38,11 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
 	const [count, setCount] = useState(0);
 
 	const basisClasses = {
-		2: 'basis-1/2',
-		3: 'basis-1/3',
-		4: 'basis-1/4',
-		5: 'basis-1/5',
-		6: 'basis-1/6',
+		2: 'md:basis-1/2',
+		3: 'md:basis-1/3',
+		5: 'md:basis-1/5',
+		4: 'md:basis-1/4',
+		6: 'md:basis-1/6',
 	};
 
 	const handleSlide = (index: number) => {
@@ -67,6 +67,7 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
 					<CarouselItem
 						key={index}
 						className={cn(
+              'basis-1/1',
 							itemsPerSlide > 1 && basisClasses[itemsPerSlide]
 						)}
 					>
