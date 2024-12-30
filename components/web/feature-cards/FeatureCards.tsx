@@ -53,7 +53,7 @@ const FeatureCards: React.FC<FeatureCardsProps> = (props) => {
 				))}
 			</div>
       ):(
-        <Swipeable enableArrows>
+        <Swipeable itemsPerSlide={2} enableArrows>
           {items?.map((item, i) => (
             <FeaturedCard
               label={item?.label}

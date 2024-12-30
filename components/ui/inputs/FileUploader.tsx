@@ -169,7 +169,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
       <div
         {...getRootProps()}
         className={cn(
-          'h-[120px] w-full bg-background m-px p-4 flex flex-col justify-center items-center rounded border-2 border-border text-center hover:border-2 hover:border-primary hover:cursor-pointer transition-all duration-300',
+          'h-[120px] w-full bg-background m-px p-4 flex flex-col justify-center items-center rounded-xl border-2 border-border text-center hover:border-2 hover:border-primary hover:cursor-pointer transition-all duration-300',
           isDragActive ? 'border-primary bg-opacity-50' : ''
         )}
       >

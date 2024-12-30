@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useDebounce } from 'use-debounce'
 import { SyntheticEventType } from '../../../types'
 import { RemixIcon } from '../../../components'
-import { Input } from '@nextui-org/react'
+import { Button, Input } from '@nextui-org/react'
 
 type SearchInputProps = {
 	name?: string
@@ -58,7 +58,13 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
         value={text}
         onChange={handleInputChange}
         endContent={
-          <RemixIcon name='ri-search-line' className='text-foreground' />
+          <Button 
+            variant="light"
+            isIconOnly 
+            onPress={() => handleSearch(text) }
+          >
+            <RemixIcon name='ri-search-line' className='text-foreground' />
+          </Button>
         }
       />
     </form>

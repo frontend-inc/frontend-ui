@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { RemixIcon, ButtonActions, AuthButton } from '../..'
-import Logo from './Logo'
+import NavLogo from './NavLogo'
 import { CartButton } from '../..'
 import { ShopifyCartButton } from '../../shopify'
 import { ButtonType, MenuLinkType } from '../../..'
@@ -71,7 +71,7 @@ const Header: React.FC<DesktopHeaderProps> = (props) => {
       )}      
       <NavbarContent justify="start">
         <NavbarBrand>
-          <Logo 
+          <NavLogo 
             src={ logo } 
             handleClick={() => handlePress('/')}
           />

@@ -15,6 +15,7 @@ export type FeaturedCardProps = {
 	image?: string
 	buttonText?: string
 	href?: string	
+  height?: number
 	handleClick?: () => void
 	objectFit?: 'cover' | 'contain'
 	enableOverlay?: boolean
@@ -34,7 +35,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 		buttonText,
 		direction = 'row',
 		handleClick,
-		objectFit = 'cover',
+		height = 360,
 		enableOverlay = false,
 		enableGradient = false,
 		variant,
@@ -72,10 +73,8 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 				<Image
 					label={label}
 					src={image}
-					height={320}
-					aspectRatio={1.5}
-					objectFit={objectFit}
-					alt={title}
+					height={height}
+					alt={title || 'Image'}
 					enableOverlay={enableOverlay}
 					enableGradient={enableGradient}
 					disableBorderRadius={variant == 'outline' ? true : false}

@@ -1,17 +1,16 @@
 'use client'
 
-import React, { useState, useMemo, useEffect } from 'react'
+import React, { useState, useMemo } from 'react'
 import { InputLabel } from '../../../components'
-import { Button } from '../../../components'
-import { Input } from 'frontend-shadcn'
-import { Slider } from 'frontend-shadcn'
-import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipProvider,
-	TooltipTrigger,
-} from 'frontend-shadcn'
+import { Button } from '@nextui-org/react'
+import { 
+  Input,
+  Slider,
+  Tooltip,
+  Popover, 
+  PopoverContent, 
+  PopoverTrigger 
+} from '@nextui-org/react'
 import { ChevronDown } from 'lucide-react'
 import { cn } from 'frontend-shadcn'
 import {
@@ -30,22 +29,25 @@ type ColorInputProps = {
 	info?: string
 }
 
-export default function ColorInput({
-	label,
-	name,
-	value,
-	placeholder = 'Color',
-	disableTone = false,
-	handleChange,
-	info,
-}: ColorInputProps) {
+export default function ColorInput(props: ColorInputProps) {
+
+  const {
+    label,
+    name,
+    value,
+    placeholder = 'Color',
+    disableTone = false,
+    handleChange,
+    info,
+  } = props || {}
+
 	const [tone, setTone] = useState(500)
 	const [selectedColor, setSelectedColor] = useState('slate')
 
-	const handleToneChange = (newTone: number[]) => {
-		setTone(newTone[0])
+	const handleToneChange = (newTone: number) => {
+		setTone(newTone)
 		if (selectedColor) {
-			handleColorChange(selectedColor, newTone[0])
+			handleColorChange(selectedColor, newTone)
 		}
 	}
 
@@ -101,7 +103,7 @@ export default function ColorInput({
 		<div className="w-full space-y-2">
 			<InputLabel label={label} info={info} />
 			<Popover>
-				<PopoverTrigger asChild>
+				<PopoverTrigger>
 					<Button
 						variant="outline"
 						className="bg-input text-foreground w-full justify-between"
@@ -118,9 +120,7 @@ export default function ColorInput({
 				</PopoverTrigger>
 				<PopoverContent className="bg-background w-64">
 					<div className="bg-background grid grid-cols-7 gap-3 mb-2">
-						<TooltipProvider>
-							<Tooltip>
-								<TooltipTrigger asChild>
+							<Tooltip content="Remove color">
 									<button
 										className={cn(
 											'relative bg-white h-8 w-8 rounded-md overflow-hidden',
@@ -134,15 +134,8 @@ export default function ColorInput({
 											<div className="w-[1px] h-[140%] bg-gray-300 rotate-45 transform origin-center"></div>
 										</div>
 									</button>
-								</TooltipTrigger>
-								<TooltipContent>
-									<p>Remove color</p>
-								</TooltipContent>
-							</Tooltip>
-						</TooltipProvider>
-						<TooltipProvider>
-							<Tooltip>
-								<TooltipTrigger asChild>
+						</Tooltip>
+						<Tooltip content="White">
 									<button
 										className={cn(
 											'h-8 w-8 rounded-md border',
@@ -152,15 +145,8 @@ export default function ColorInput({
 										style={{ backgroundColor: '#FFFFFF' }}
 										onClick={() => handleColorChange('white')}
 									/>
-								</TooltipTrigger>
-								<TooltipContent>
-									<p>White</p>
-								</TooltipContent>
-							</Tooltip>
-						</TooltipProvider>
-						<TooltipProvider>
-							<Tooltip>
-								<TooltipTrigger asChild>
+              </Tooltip>
+							<Tooltip content="Black">
 									<button
 										className={cn(
 											'h-8 w-8 rounded-md border',
@@ -170,56 +156,41 @@ export default function ColorInput({
 										style={{ backgroundColor: '#000000' }}
 										onClick={() => handleColorChange('black')}
 									/>
-								</TooltipTrigger>
-								<TooltipContent>
-									<p>Black</p>
-								</TooltipContent>
 							</Tooltip>
-						</TooltipProvider>
 						{Object.keys(TAILWIND_COLOR_PICKER_MAP).map((color) => (
-							<TooltipProvider key={color}>
-								<Tooltip>
-									<TooltipTrigger asChild>
-										<button
-											className={cn(
-												'h-8 w-8 rounded-md border',
-												value === TAILWIND_COLOR_PICKER_MAP[color][tone] &&
-													'ring-2 ring-offset-2 ring-offset-background'
-											)}
-											style={{
-												backgroundColor: TAILWIND_COLOR_PICKER_MAP[color][tone],
-											}}
-											onClick={() => handleColorChange(color)}
-										/>
-									</TooltipTrigger>
-									<TooltipContent>
-										<p>{color}</p>
-									</TooltipContent>
-								</Tooltip>
-							</TooltipProvider>
+							<Tooltip content={color} key={color}>
+                  <button
+                    className={cn(
+                      'h-8 w-8 rounded-md border',
+                      value === TAILWIND_COLOR_PICKER_MAP[color][tone] &&
+                        'ring-2 ring-offset-2 ring-offset-background'
+                    )}
+                    style={{
+                      backgroundColor: TAILWIND_COLOR_PICKER_MAP[color][tone],
+                    }}
+                    onClick={() => handleColorChange(color)}
+                  />
+							</Tooltip>
 						))}
 					</div>
+          <div className="w-full space-y-4">
 					{!disableTone && (
-						<div className="space-y-2">
-							<label className="text-sm font-medium leading-none">
-								Color tone
-							</label>
 							<Slider
-								min={100}
-								max={900}
+								minValue={100}
+								maxValue={900}
 								step={100}
-								value={[tone]}
-								onValueChange={handleToneChange}
+                value={tone}
+                onChange={handleToneChange}
 							/>
-						</div>
 					)}
-					<div className="mt-2">
 						<Input
+              fullWidth
+              label='Color'
 							placeholder="#RRGGBB"
 							value={value?.startsWith('#') ? value : ''}
 							onChange={handleHexColorChange}
 						/>
-					</div>
+          </div>
 				</PopoverContent>
 			</Popover>
 		</div>

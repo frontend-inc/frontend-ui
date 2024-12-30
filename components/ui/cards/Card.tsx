@@ -46,6 +46,7 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 				<Image        
 					src={image}
 					height={height}
+          aspectRatio={1.0}
 					alt={title}
 					label={label}
 					handleClick={handleClick}

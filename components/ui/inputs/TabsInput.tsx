@@ -2,10 +2,11 @@
 
 import React from 'react'
 import { SyntheticEventType } from '../../../types'
-import { RemixIcon, } from '../../../components'
+import { RemixIcon, InputLabel } from '../../../components'
 import { Tab, Tabs } from '@nextui-org/react'
 
 type TabsInputProps = {
+  label?: string
   name: string
   value?: string  
 	handleChange: (ev: SyntheticEventType) => void
@@ -19,6 +20,7 @@ type TabsInputProps = {
 export default function TabsInput(props: TabsInputProps) {
 
   const {
+    label,
     name,
     handleChange,
     options,
@@ -35,6 +37,10 @@ export default function TabsInput(props: TabsInputProps) {
 	}
 
 	return (
+    <div className="flex flex-row space-x-6 items-center justify-between w-full">
+      { label && (
+        <InputLabel label={ label } />         
+      )}
     <Tabs
       fullWidth
       selectedKey={value.toString()}
@@ -55,5 +61,6 @@ export default function TabsInput(props: TabsInputProps) {
         />                      
       ))}
     </Tabs>
+    </div>
 	)
 }

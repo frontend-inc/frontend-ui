@@ -1,8 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Loader2 } from 'lucide-react'
-import { cn } from 'frontend-shadcn'
+import { cn, Spinner } from '@nextui-org/react'
 
 type LoaderProps = {
 	loading?: boolean
@@ -19,7 +18,7 @@ export default function Loader({ loading }: LoaderProps) {
 				'w-full h-full min-h-[200px]'
 			)}
 		>
-			<Loader2 className="w-12 h-12 animate-spin text-primary" />
+			<Spinner />
 		</div>
 	)
 }

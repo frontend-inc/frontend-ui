@@ -41,24 +41,25 @@ const CardItems: React.FC<CardItemsProps> = (props) => {
   } = props || {}
   
   return(
-      <Card
-        label={item?.label}
-        image={item?.image}
-        title={item?.title}
-        subtitle={item?.subtitle}
-        actions={
-          item?.buttonText && (
-            <Button 
-              fullWidth 
-              onClick={() => handleClick(item?.path)}>
-              {item?.buttonText}
-            </Button>
-          )
-        }
-        handleClick={() => handleClick(item?.path)}
-        enableGradient={enableGradient}
-        enableOverlay={enableOverlay}
-      />
+    <Card
+      height={240}      
+      label={item?.label}
+      image={item?.image}
+      title={item?.title}
+      subtitle={item?.subtitle}
+      actions={
+        item?.buttonText && (
+          <Button 
+            fullWidth 
+            onClick={() => handleClick(item?.path)}>
+            {item?.buttonText}
+          </Button>
+        )
+      }
+      handleClick={() => handleClick(item?.path)}
+      enableGradient={enableGradient}
+      enableOverlay={enableOverlay}
+    />
   )
 }
 

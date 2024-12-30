@@ -52,7 +52,6 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
 	useEffect(() => {
 		if (!api) return;
 		setCount(api.scrollSnapList().length - itemsPerSlide);
-		setCurrent(api.selectedScrollSnap());
 		api.on('select', () => {
 			setCurrent(api.selectedScrollSnap() || 0);
 		});

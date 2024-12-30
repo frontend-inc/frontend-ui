@@ -2,16 +2,14 @@
 
 import React from 'react'
 import {
+  Spinner,
   Modal as NextModal,
   ModalContent,
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Button,
-  useDisclosure,
 } from "@nextui-org/react";
 import {ScrollShadow} from "@nextui-org/scroll-shadow";
-import { Loader } from '../../../components'
 
 type ModalProps = {
 	open: boolean
@@ -28,7 +26,8 @@ type ModalProps = {
 }
 
 export default function Modal(props: ModalProps) {
-	const {
+	
+  const {
 		open,
 		loading = false,
 		handleClose,
@@ -47,9 +46,14 @@ export default function Modal(props: ModalProps) {
             {title}					
           </ModalHeader>
           <ModalBody>    
-            <ScrollShadow className="w-full max-h-[400px]">
+            <ScrollShadow 
+              style={{ maxHeight: '600px' }} 
+              className="w-full"
+            >
               {loading ? (
-                <Loader loading={loading} />
+                <div className="w-full flex items-center justify-center h-[160px]">
+                  <Spinner />
+                </div>
               ) : (
                 <div className="w-full">{children}</div>
               )}

@@ -78,7 +78,7 @@ const NextImage: React.FC<NextImageProps> = (props) => {
   const { 
     src,     
     height,
-    aspectRatio=16/9,
+    aspectRatio,
     disableBorderRadius,
     ...rest 
   } = props || {}

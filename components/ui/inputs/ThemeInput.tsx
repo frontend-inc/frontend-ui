@@ -65,6 +65,7 @@ export default function ThemePicker(props: ThemePickerProps) {
 				<div className="grid grid-cols-5 gap-1 p-2">
 					{TAILWIND_COLORS.map((color) => (
             <button
+              key={color}
               className={cn(
                 'h-8 w-8 rounded-md border',
                 value === color &&
