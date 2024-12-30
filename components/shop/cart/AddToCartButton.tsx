@@ -1,9 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { useCart } from '../../../hooks'
-import { cn } from 'frontend-shadcn'
 
 type AddToCartButtonProps = {
 	size?: 'sm' | 'default' | 'lg'
@@ -33,10 +32,12 @@ const AddToCartButton = (props: AddToCartButtonProps) => {
 	}
 
 	return (
-		<Button
+		<Button      
+      variant="solid"
+      color="primary"
 			fullWidth={fullWidth}
-			loading={loading}
-			onClick={handleClick}
+			isLoading={loading}
+			onPress={handleClick}
 			disabled={!availableForSale}
 			size={size}
 			className={'w-full min-w-[160px]'}

@@ -3,10 +3,11 @@
 import React, { useState } from 'react'
 import { useCart } from '../../../hooks'
 import { Icon } from '../../../components'
-import Image from 'next/image'
+import { Badge, Image } from '@nextui-org/react'
 import { Typography } from '../../../components'
 import { LineItemType } from '../../../types'
-import { Button, ProductModal } from '../../../components'
+import { ProductModal } from '../../../components'
+import { Button, ButtonGroup } from '@nextui-org/react'
 import { cn } from 'frontend-shadcn'
 import { Plus, Minus } from 'lucide-react'
 
@@ -19,38 +20,34 @@ type CartQuantityInputProps = {
 
 const CartQuantityInput: React.FC<CartQuantityInputProps> = (props) => {
 	const {
-		buttonClasses = 'w-[32px] p-0',
 		quantity,
 		handleAddQuantity,
 		handleRemoveQuantity,
 	} = props
 
 	return (
-		<div className="inline-flex rounded-md" role="group">
+		<ButtonGroup size='sm'>
 			<Button
-				size="sm"
-				variant="ghost"
-				className={cn(buttonClasses, 'rounded-r-none border-none')}
-				onClick={handleRemoveQuantity}
+				isIconOnly								
+        size='sm'
+				onPress={handleRemoveQuantity}
 			>
 				<Minus size={20} />
 			</Button>
 			<Button
-				size="sm"
-				variant="ghost"
-				className={cn(buttonClasses, 'rounded-none border-none')}
+        size='sm'
+				isIconOnly				
 			>
 				{quantity}
 			</Button>
 			<Button
-				size="sm"
-				variant="ghost"
-				className={cn(buttonClasses, 'rounded-l-none border-none')}
-				onClick={handleAddQuantity}
+        size='sm'
+				isIconOnly				
+				onPress={handleAddQuantity}
 			>
 				<Plus size={20} />
 			</Button>
-		</div>
+		</ButtonGroup>
 	)
 }
 
@@ -93,28 +90,20 @@ const CartLineItem: React.FC<CartLineItemProps> = (props) => {
 					loading && 'opacity-30'
 				)}
 			>
-				<div className="flex items-center pt-1">
-					<div className="relative mr-4 w-24 h-24">
-						<span className="absolute bg-primary text-primary-foreground top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none z-50 transform translate-x-1/2 -translate-y-1/2 rounded-full">
-							{quantity}
-						</span>
-						<div className="rounded-lg flex items-center justify-center min-w-[96px] h-[96px] overflow-hidden">
-							<button className="p-0" onClick={handleClick}>
-								<Image
-									alt={product?.title || ''}
-									// @ts-ignore
-									src={product?.image?.url}
-									height={72}
-									width={72}
-									style={{
-										objectFit: 'cover',
-									}}
-									className="w-full cursor-pointer object-cover"
-								/>
-							</button>
-						</div>
-					</div>
-					<div className="flex flex-col space-y-2">
+				<div className="flex space-x-4 items-center pt-1">					
+          <Badge content={ quantity}>
+            <button className="p-0" onClick={handleClick}>
+              <Image
+                alt={product?.title || ''}
+                // @ts-ignore
+                src={product?.image?.url}
+                height={72}
+                width={72}									
+                className="w-full cursor-pointer object-cover"
+              />
+            </button>
+            </Badge>
+					<div className="flex flex-col space-y-1">
 						<Typography variant="body1">{product?.title}</Typography>
 						<Typography className="text-muted-foreground" variant="body2">
 							{product?.display_price}
@@ -126,15 +115,18 @@ const CartLineItem: React.FC<CartLineItemProps> = (props) => {
 						/>
 					</div>
 				</div>
-				<button
-					onClick={handleRemoveFromCart}
-					className="focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-sm p-1 mr-1"
-				>
+        <Button 
+          isIconOnly
+          size="sm"
+          variant="light"
+          radius="full"
+          onPress={handleRemoveFromCart}
+        >
 					<Icon
 						name="X"
 						className="h-4 w-4 text-muted-foreground hover:text-foreground"
 					/>
-				</button>
+        </Button>				
 			</div>
 			<ProductModal
 				open={open}

@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Button, Typography } from '../..'
+import { Typography } from '../..'
+import { Card, CardHeader, CardBody, CardFooter, Button } from '@nextui-org/react'
 import { RemixIcon } from '../..'
 import { cn } from 'frontend-shadcn'
 import { useNavigate } from '../../../hooks'
@@ -40,7 +41,6 @@ const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
 		url,
     handleClick,
     precision = 0,
-    variant='outline'
 	} = props
 
   const [loading, setLoading] = useState(false)
@@ -59,22 +59,19 @@ const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
   }
 
   return (
-		<div
+		<Card
+      shadow="sm" 
 			className={cn(
-				'w-full p-2 bg-background rounded-xl transition duration-200 flex flex-col space-y-4 justify-between',				
-        variant == 'outline' && 'border border-divider p-6',
-        variant == 'fill' && 'bg-muted/50 p-6',
-        popular && 'border-2 z-10 border-primary p-6',
+				'w-full bg-background',				
 			)}
 		>
-			<div className="flex flex-col space-y-8 min-h-[300px]">
-        <div className="flex flex-col space-y-1">
+        <CardHeader className="flex flex-col p-6 justify-start items-start space-y-1">
           <Typography variant="subtitle2">{title}</Typography>
           <Typography variant="body2" className='text-foreground/70'>
             {subtitle}
           </Typography>
-        </div>
-        <div className="flex flex-col space-y-4 w-full">
+        </CardHeader>        
+        <CardBody className="flex flex-col space-y-4 p-6 w-full min-h-[300px]">
           <div className="flex flex-row space-x-4 w-full items-end">
             <div className="flex flex-row items-center space-x-1">
               <Typography variant="h2" className='font-bold'>{ price == 0 ? 'FREE' : formatCurrency(price, precision)}</Typography>
@@ -90,9 +87,10 @@ const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
           </div>
           { price > 0 && (
             <Button 
-              size='lg' 
-              loading={loading}
-              onClick={handleSubscribe}
+              variant="solid"
+              color="primary"
+              isLoading={loading}
+              onPress={ handleSubscribe }
             >
               {buttonText}
             </Button>
@@ -111,9 +109,8 @@ const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
               </li>
             ))}
           </ul>
-        </div>
-      </div>
-		</div>
+        </CardBody>
+      </Card>		
 	)
 }
 

@@ -7,13 +7,13 @@ import { CarouselItem } from 'frontend-shadcn'
 import { cn } from 'frontend-shadcn'
 
 type SwipeableTestimonialsProps = {
-  variant?: 'default' | 'fill' | 'outline'
 	items: Record<string, any>[]
 	enableAutoPlay?: boolean
+  variant?: 'outline' | 'fill' | 'default'
 }
 
 const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
-	const { enableAutoPlay = false, items = [] } = props
+	const { enableAutoPlay = false, items = [], variant } = props || {}
 
 	return (
 		<Swipeable enableDots enableAutoPlay={enableAutoPlay}>
@@ -23,6 +23,7 @@ const SwipeableTestimonials: React.FC<SwipeableTestimonialsProps> = (props) => {
 						avatar={testimonial.image}
 						author={testimonial.title}
 						text={testimonial.subtitle}
+            variant={ variant }
 					/>
 				</div>
 			))}

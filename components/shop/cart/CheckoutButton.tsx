@@ -30,6 +30,8 @@ const CheckoutButton = () => {
 
 	return (
 		<Button     
+      variant="solid"
+      color="primary"
       fullWidth 
       isLoading={loading} 
       onPress={handleClick} 

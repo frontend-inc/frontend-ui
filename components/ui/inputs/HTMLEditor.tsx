@@ -109,11 +109,12 @@ const MenuBar = ({ editor }) => {
 	]
 
 	return (
-		<div className="w-full md:min-w-[800px] p-2 bg-white rounded-xl shadow-lg flex flex-wrap space-x-2 z-30">
+		<div className="w-full md:min-w-[800px] p-2 bg-white rounded-2xl shadow-lg flex flex-wrap gap-2 z-50">
 			{formattingOptions.map((btn, index) => (
 				<IconButton
 					key={index}
-          variant={ btn.isActive ? 'solid' : 'ghost' }
+          variant="solid"
+          color={ btn.isActive ? 'primary' : 'secondary' }
 					onClick={btn.action}
 					disabled={!editor.can().chain().focus().run()}					
 					aria-label={btn.label}
@@ -131,7 +132,8 @@ const MenuBar = ({ editor }) => {
 				<IconButton
 					key={index}
 					onClick={btn.action}
-          variant={ btn.isActive ? 'solid' : 'ghost' }
+          variant="solid"
+          color={ btn.isActive ? 'primary' : 'secondary' }
 					disabled={!editor.can().chain().focus().run()}					
 					aria-label={btn.label}
 				>
@@ -149,7 +151,8 @@ const MenuBar = ({ editor }) => {
 					key={index}
 					onClick={btn.action}
 					disabled={!editor.can().chain().focus().run()}
-					variant={ btn.isActive ? 'solid' : 'ghost' }
+					variant="solid"
+          color={ btn.isActive ? 'primary' : 'secondary' }
 					aria-label={btn.label}
 				>
 					<RemixIcon
@@ -166,7 +169,8 @@ const MenuBar = ({ editor }) => {
 					key={index}
 					onClick={btn.action}
 					disabled={!editor.can().chain().focus().run()}
-					variant={ btn.isActive ? 'solid' : 'ghost' }
+					variant="solid"
+          color={ btn.isActive ? 'primary' : 'secondary' }
 					aria-label={btn.label}
 				>
 					<RemixIcon
@@ -183,7 +187,8 @@ const MenuBar = ({ editor }) => {
 					key={index}
 					onClick={btn.action}
 					disabled={!editor.can().chain().focus().run()}
-					variant={ btn.isActive ? 'solid' : 'ghost' }
+					variant="solid"
+          color={ btn.isActive ? 'primary' : 'secondary' }
 					aria-label={btn.label}
 				>
 					<RemixIcon
