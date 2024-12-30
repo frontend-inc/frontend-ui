@@ -34,6 +34,7 @@ export default function ResourceToolbarModal(props: ResourceToolbarModalProps) {
 						<Button
               isIconOnly 
 							variant="ghost"							
+              radius='full'
 							className="min-w-8 w-8 h-8"
 							onClick={handleClose}
 						>

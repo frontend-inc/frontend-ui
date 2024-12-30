@@ -2,17 +2,15 @@
 
 import React from 'react'
 import {
-	AlertDialog,
-	AlertDialogOverlay,
-	AlertDialogAction,
-	AlertDialogCancel,
-	AlertDialogContent,
-	AlertDialogDescription,
-	AlertDialogFooter,
-	AlertDialogHeader,
-	AlertDialogTitle,
-} from 'frontend-shadcn'
-import { Button, CircularLoader } from '../../../components'
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  Spinner,  
+} from "@nextui-org/react";
+import { Typography } from '@/components/core';
 import { cn } from 'frontend-shadcn'
 
 type AlertModalProps = {
@@ -37,37 +35,44 @@ const AlertModal: React.FC<AlertModalProps> = (props) => {
   } = props
   
 	return (
-		<AlertDialog open={open} onOpenChange={handleClose}>
-			<AlertDialogContent>
-				<AlertDialogHeader>
-					<AlertDialogTitle>{title}</AlertDialogTitle>
-					<AlertDialogDescription>{description}</AlertDialogDescription>
-				</AlertDialogHeader>
-				{loading && (
-					<div className="flex flex-col items-center justify-center">
-						<CircularLoader size="lg" />
-					</div>
-				)}
-				<AlertDialogFooter>
-					<AlertDialogCancel asChild>
-						<Button variant="ghost" onClick={handleClose}>
-							Cancel
-						</Button>
-					</AlertDialogCancel>
-					<AlertDialogAction asChild>
-						<Button
-							variant="default"
-							onClick={handleConfirm}
-							className={cn(loading && 'cursor-not-allowed opacity-50')}
-							disabled={loading}
-							loading={loading}
-						>
-							Confirm
-						</Button>
-					</AlertDialogAction>
-				</AlertDialogFooter>
-			</AlertDialogContent>
-		</AlertDialog>
+		<Modal isOpen={open} onOpenChange={handleClose}>
+			<ModalContent>				
+        {((onClose) => (
+          <>
+            <ModalHeader></ModalHeader>
+      			<ModalBody className="flex flex-col items-center justify-center py-6">
+              { loading ? (
+                  <Spinner />
+				      ):(
+                <>
+                  <Typography variant="subtitle2">
+                    { title }
+                  </Typography>
+                  <Typography variant="body1" className='text-muted-foreground'>
+                    { description }
+                  </Typography>
+                </>
+              )}
+            </ModalBody>							
+				    <ModalFooter>
+              <Button variant="ghost" onPress={onClose}>
+                Cancel
+              </Button>
+              <Button
+                color="danger"
+                variant="solid"
+                onPress={handleConfirm}
+                className={cn(loading && 'cursor-not-allowed opacity-50')}
+                disabled={loading}
+                loading={loading}
+              >
+                Confirm
+              </Button>
+            </ModalFooter>
+          </>
+        ))}			
+      </ModalContent>
+		</Modal>
 	)
 }
 
