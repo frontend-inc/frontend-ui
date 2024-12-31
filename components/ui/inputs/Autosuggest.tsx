@@ -10,7 +10,6 @@ import { OptionType, SyntheticEventType } from 'frontend-js'
 type AutosuggestProps = {
 	errors?: any
 	label?: string
-	info?: string
 	name: string
 	value: string | number
 	placeholder?: string
@@ -23,7 +22,6 @@ type AutosuggestProps = {
 const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 	const {
 		label,
-		info,
 		name,
 		value,
 		placeholder = 'Search...',
@@ -32,40 +30,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 		options = [],
 	} = props
 
-	const [selectedOption, setSelectedOption] = useState<OptionType | null>(null)
-	const [open, setOpen] = useState(false)
-
-	const handleCommandChange = (ev) => {
-		if (handleInputChange) {
-			handleInputChange(ev)
-		}
-	}
-
-	const handleSelect = (currentValue: string) => {
-		const selectedOption = options.find(
-			(option) => option.label === currentValue
-		)
-		const value = selectedOption?.value || null
-		if (value) {
-			handleChange({
-				target: {
-					name,
-					value,
-				},
-			})
-		}
-		setOpen(false)
-	}
-
-	useEffect(() => {
-		if (value && options?.length > 0) {
-			const selectedOption = options.find((option) => option.value === value)
-			setSelectedOption(selectedOption || null)
-		}
-	}, [value, options])
-
-  const handleSelection = (keys) => {
-    const value = keys.currentKey 
+  const handleSelection = (value: string) => {        
     handleChange({
       target: {
         name,
@@ -81,6 +46,8 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
       selectedKeys={[value]}
       onSelectionChange={handleSelection}
       defaultItems={options}
+      onInputChange={handleInputChange}
+      placeholder={placeholder}
     >
       {(option) => (
         <AutocompleteItem key={option.value}>
