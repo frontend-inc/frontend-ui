@@ -48,8 +48,10 @@ export default function Modal(props: ModalProps) {
           </ModalHeader>
           <ModalBody>    
             <ScrollShadow 
-              style={{ maxHeight: '600px' }} 
-              className="w-full"
+              style={{ 
+                maxHeight: maxWidth == 'full' ? 'calc(100vh - 100px)' : '600px' 
+              }} 
+              className="w-full overflow-y-scroll"
             >
               {loading ? (
                 <div className="w-full flex items-center justify-center h-[160px]">

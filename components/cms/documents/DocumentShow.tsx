@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { CommentList, Drawer, DocumentDetails, SocialButtons } from '../..'
+import { CommentList, Modal, DocumentDetails, SocialButtons } from '../..'
 import { BlurFade } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { ButtonType, MetafieldType } from '../../../types'
@@ -51,7 +51,7 @@ const DocumentShow: React.FC<DocumentShowProps> = (props) => {
 
 	if (!resource) return null
 	return (
-		<Drawer      
+		<Modal      
 			open={openShow}
 			handleClose={() => setOpenShow(false)}
 			title={!disableTitle ? resource?.title : ''}
@@ -84,7 +84,7 @@ const DocumentShow: React.FC<DocumentShowProps> = (props) => {
 					</div>
 				</BlurFade>
 			</div>
-		</Drawer>
+		</Modal>
 	)
 }
 

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Modal } from '../..'
+import { Heading, Modal } from '../..'
 import { ShopifyProductCollection } from '..'
 import { ShopifyCollectionType } from 'frontend-shopify'
 
@@ -23,15 +23,17 @@ const ShopifyProductCollectionModal: React.FC<
 
 	return (
 		<Modal
-			title={collection?.title}
 			open={open}
 			handleClose={handleClose}
 			maxWidth="full"
 		>
 			<div className="w-full flex flex-col space-y-6">
-				<div className="px-[40px] text-base text-muted-foreground">
-					{collection?.description}
-				</div>
+        <Heading 
+          size='sm'
+          textAlign="center"
+          title={collection?.title}
+          subtitle={collection?.description}
+        />        
 				<ShopifyProductCollection
 					{...rest}
 					shopifyCollection={collection?.handle}
