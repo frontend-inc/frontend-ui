@@ -38,7 +38,8 @@ export default function Modal(props: ModalProps) {
 	} = props
 
 	return (
-		<NextModal size={ maxWidth } isOpen={open} onOpenChange={handleClose}>
+		<NextModal 
+      size={ maxWidth } isOpen={open} onOpenChange={handleClose}>
 			<ModalContent>
         {(onClose) => (
           <>

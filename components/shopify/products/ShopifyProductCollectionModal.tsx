@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Drawer } from '../..'
+import { Modal } from '../..'
 import { ShopifyProductCollection } from '..'
 import { ShopifyCollectionType } from 'frontend-shopify'
 
@@ -22,11 +22,11 @@ const ShopifyProductCollectionModal: React.FC<
 	const { collection, open = false, handleClose, ...rest } = props
 
 	return (
-		<Drawer
+		<Modal
 			title={collection?.title}
 			open={open}
 			handleClose={handleClose}
-			maxWidth="lg"
+			maxWidth="full"
 		>
 			<div className="w-full flex flex-col space-y-6">
 				<div className="px-[40px] text-base text-muted-foreground">
@@ -37,7 +37,7 @@ const ShopifyProductCollectionModal: React.FC<
 					shopifyCollection={collection?.handle}
 				/>
 			</div>
-		</Drawer>
+		</Modal>
 	)
 }
 
