@@ -98,12 +98,15 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = (props) => {
 		<div className="flex flex-col space-y-4 w-full">
 			<div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-3 w-full items-center">
 				{enableSearch && (
-					<SearchInput
-						value={keywords}
-						handleChange={handleChange}
-						handleSearch={handleSearch}
-						placeholder={'Search'}
-					/>
+          <div className="w-full sm:max-w-screen-sm">
+            <SearchInput
+              label="Search"
+              value={keywords}
+              handleChange={handleChange}
+              handleSearch={handleSearch}
+              placeholder={'Enter keywords...'}
+            />
+          </div>
 				)}
 
 				{enableFilters && (
