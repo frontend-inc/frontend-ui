@@ -27,6 +27,8 @@ const AlertButton = forwardRef<HTMLButtonElement, ButtonProps>(
 				<Button
 					ref={ref}
           onPress={() => setOpen(true)}
+          variant="ghost"
+          color="danger"
           { ...rest }
         />
 				<AlertModal

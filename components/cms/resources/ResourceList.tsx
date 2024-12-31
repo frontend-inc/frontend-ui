@@ -130,6 +130,15 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	const [openDelete, setOpenDelete] = useState(false)
 	const [openExport, setOpenExport] = useState(false)
 
+  const {
+		loading: isPublishLoading,
+		update: updatePublish,
+		create: createPublish,
+	} = useResource({
+		name,
+		url,
+	})
+
 	const {
 		delayedLoading: loading,
 		errors,
@@ -260,7 +269,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		setOpenCreate(false)
 		setOpenEdit(true)
 	}
-
+  
 	const handleSubmit = async () => {
 		try {
 			let resp
@@ -274,6 +283,33 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 			}
 			if (resp?.id) {
 				setResource({})
+				setOpenShow(false)
+				setOpenCreate(false)
+				setOpenEdit(false)
+				reloadMany()
+			}
+		} catch (err) {
+			console.log('Error', err)
+		}
+	}
+
+  const handlePublish = async () => {
+		try {
+			let resp
+			if (resource?.id) {
+				resp = await updatePublish({ 
+          ...resource,
+          published: true 
+        })
+			} else {
+				resp = await createPublish({
+					...defaultValue,
+					...resource,
+          published: true
+				})
+			}
+			if (resp?.id) {
+				setResource({})        
 				setOpenShow(false)
 				setOpenCreate(false)
 				setOpenEdit(false)
@@ -485,6 +521,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					open={openCreate}
 					handleClose={() => setOpenCreate(false)}
 					loading={loading}
+          isPublishLoading={isPublishLoading}
 					errors={errors}
 					resource={resource}
 					setResource={setResource}
@@ -493,6 +530,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					handleAddAttachment={handleAddAttachment}
 					handleRemoveAttachment={handleRemoveAttachment}
 					handleSubmit={handleSubmit}
+          handlePublish={handlePublish}          
 					handleReload={reloadMany}
 					fields={fields}
 					{...slots.create}
@@ -501,6 +539,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					open={openEdit}
 					handleClose={() => setOpenEdit(false)}
 					loading={loading}
+          isPublishLoading={isPublishLoading}
 					errors={errors}
 					resource={resource}
 					setResource={setResource}
@@ -509,6 +548,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					handleAddAttachment={handleAddAttachment}
 					handleRemoveAttachment={handleRemoveAttachment}
 					handleSubmit={handleSubmit}
+          handlePublish={handlePublish}
 					handleReload={reloadMany}
 					handleReloadOne={findOne}
 					fields={fields}

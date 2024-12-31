@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { cn } from 'frontend-shadcn'
+import { cn, Image } from '@nextui-org/react'
 
 export type AvatarImageProps = {
 	src?: string
@@ -20,21 +20,25 @@ const AvatarImage: React.FC<AvatarImageProps> = (props) => {
 		enableOverlay = false,
 	} = props
 
+  if(!src)return(
+    <div
+      className="rounded-full bg-gradient-to-br from-black to-gray-600"
+      style={{ 
+        width: `${size}px`, 
+        height: `${size}px` 
+      }}
+    />
+  )
 	return (
-		<div
-			className={cn(
-				'relative h-[64px] rounded-full overflow-hidden',
-				`h-[${size}px] w-[${size}px]`
-			)}
-		>
-			{src ? (
-				<img src={src} alt={alt} className="w-full h-full object-cover" />
-			) : (
-				<div
-					className={`rounded-full bg-gradient-to-br from-black to-gray-600`}
-					style={{ width: `${size}px`, height: `${size}px` }}
-				></div>
-			)}
+		<div className='relative rounded-full overflow-hidden'>			
+      <Image 
+        src={src} 
+        alt={alt} 
+        height={size}
+        width={size}
+        radius="full"
+        className="object-cover"
+      />			
 			{enableGradient && (
 				<div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-full" />
 			)}

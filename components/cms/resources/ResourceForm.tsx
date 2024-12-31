@@ -9,6 +9,7 @@ export type ResourceFormProps = {
 	open: boolean
 	handleClose: () => void
 	loading: boolean
+  isPublishLoading: boolean
 	errors: any
 	resource: any
 	setResource: (resource: any) => void
@@ -17,6 +18,7 @@ export type ResourceFormProps = {
 	handleAddAttachment?: (name: string, attachmentId: number) => void
 	handleRemoveAttachment?: (name: string) => void
 	handleSubmit: () => void
+  handlePublish: () => void
 	handleReload: () => void
 	inputOptions?: any
 	inputParams?: any
@@ -30,6 +32,7 @@ export type FormProps = ResourceFormProps & {
 const ResourceForm: React.FC<FormProps> = (props) => {
 	const {
 		loading,
+    isPublishLoading,
 		errors,
 		title,
 		open,
@@ -38,6 +41,7 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 		handleChange,
 		handleRemove,
 		handleSubmit,
+    handlePublish,
 		handleAddAttachment,
 		handleRemoveAttachment,
 		fields = [],
@@ -53,15 +57,26 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 			title={title ? title : resource?.id ? 'Edit' : 'Add'}
       maxWidth={maxWidth}
 			buttons={
-				<Button 
-          fullWidth 
-          variant="solid"
-          color="primary"
-          onPress={handleSubmit} 
-          loading={loading}
-        >
-					{resource?.id ? 'Update' : 'Save'}
-				</Button>
+        <div className="flex flex-row space-x-4 justify-between">
+          <Button 
+            fullWidth 
+            variant="solid"
+            color="primary"
+            onPress={handleSubmit} 
+            isLoading={loading}
+          >
+            {resource?.id ? 'Update' : 'Save'}
+          </Button>
+          <Button 
+            fullWidth 
+            variant="solid"
+            color="success"
+            onPress={handlePublish} 
+            isLoading={isPublishLoading}
+          >
+            Publish 
+          </Button>
+        </div>
 			}
 		>
 			<FormFields

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Sheet, CircularLoader } from '../..'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 
 export type ResourceModalProps = {
 	title?: string
@@ -42,12 +42,19 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 				(enableEdit || enableDelete) && (
 					<div className="w-full flex flex-row space-x-2">
 						{enableEdit && (
-							<Button fullWidth onClick={handleEdit}>
+							<Button                 
+                variant="ghost"
+                fullWidth 
+                onPress={handleEdit}>
 								Edit
 							</Button>
 						)}
 						{enableDelete && (
-							<Button fullWidth color="secondary" onClick={handleDelete}>
+							<Button 
+                variant="ghost"
+                fullWidth 
+                onPress={handleDelete}
+              >
 								Delete
 							</Button>
 						)}

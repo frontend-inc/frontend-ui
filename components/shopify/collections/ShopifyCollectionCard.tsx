@@ -55,13 +55,11 @@ export default function ShopifyCollectionCard(
 						enableGradient={enableGradient}
 						enableOverlay={enableOverlay}
 					/>
-				<CardFooter className='dark absolute bottom-0 left-0 w-full p-4 z-10'>				
+				<CardFooter className='dark absolute bottom-0 left-0 w-full p-4 z-20'>				
 					<div className="flex items-center justify-between w-full">
-						<div className="flex flex-col items-start justify-center">
-							<Typography variant="body1" className="text-white">
-								{truncate(title || '', 60)}
-							</Typography>
-						</div>
+            <Typography variant="body1" className="text-white text-ellipsis">
+              { title }
+            </Typography>
 						{buttonText && (
 							<Button
 								variant="ghost"								
