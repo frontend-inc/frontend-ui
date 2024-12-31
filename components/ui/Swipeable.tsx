@@ -67,7 +67,7 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
 					<CarouselItem
 						key={index}
 						className={cn(
-              'basis-1/1',
+              'basis-1/1 w-full h-full',
 							itemsPerSlide > 1 && basisClasses[itemsPerSlide]
 						)}
 					>

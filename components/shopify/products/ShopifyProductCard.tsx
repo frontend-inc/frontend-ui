@@ -1,15 +1,15 @@
 'use client'
 
 import React, { useState, useContext } from 'react'
-import { Typography, Button } from '../../../components'
+import { Typography } from '../../../components'
 import { truncate } from '../../../helpers'
 import { ShopifyProductType } from 'frontend-shopify'
 import { ShopifyContext } from 'frontend-shopify'
 import { formatCurrency } from 'frontend-shopify'
-import { CardContent } from 'frontend-shadcn'
 import SwipeableShopifyProductImages from './images/SwipeableShopifyProductImages'
 import { ShopifyProductModal, ShopifyAddToCartButton } from '..'
-import { cn } from 'frontend-shadcn'
+import { cn, Card, CardBody, CardFooter } from '@nextui-org/react'
+import { AspectRatio, CardContent } from 'frontend-shadcn'
 
 type ShopifyProductCardProps = {
 	product: ShopifyProductType
@@ -44,36 +44,40 @@ export default function ShopifyProductCard(props: ShopifyProductCardProps) {
 	}
 
 	return (
-		<div className={cn('w-full overflow-hidden bg-background', className)}>
-			<div className="w-full h-full min-h-[300px]">
-				<SwipeableShopifyProductImages
-					product={product}
-					height={300}
-					handleClick={handleItemClick}
-					disableBorderRadius={enableBorder}
-				/>
-			</div>
-			<CardContent className="p-3">
-				<div className="flex flex-col space-y-2">
-					<div className="flex flex-col space-y-0 min-h-[80px]">
-						<Typography variant="subtitle2">
-							{truncate(product?.title)}
-						</Typography>
-						<Typography variant="body2">
-							{formatCurrency(product?.priceRange?.minVariantPrice?.amount)}
-						</Typography>
-					</div>
-					{enableAddToCart && (
-						<ShopifyAddToCartButton
-							product={product}
-							/* @ts-ignore */
-							variant={product?.variants?.edges[0]?.node}
-							enableQuantity={enableQuantity}
-							size="default"
-						/>
-					)}
-				</div>
-			</CardContent>
+
+    <div className="w-full">
+      <Card        
+        className={cn('bg-background', className)}
+      >			
+        <CardContent className="p-0">
+          <SwipeableShopifyProductImages
+            product={product}
+            handleClick={handleItemClick}
+            disableBorderRadius={enableBorder}
+          />			
+        </CardContent>
+        <CardFooter className='w-full'>
+          <div className="flex flex-col space-y-2 w-full">
+            <div className="flex flex-col space-y-0 min-h-[50px]">
+              <Typography variant="subtitle2">
+                {truncate(product?.title)}
+              </Typography>
+              <Typography variant="body2">
+                {formatCurrency(product?.priceRange?.minVariantPrice?.amount)}
+              </Typography>
+            </div>
+            {enableAddToCart && (
+              <ShopifyAddToCartButton
+                product={product}
+                /* @ts-ignore */
+                variant={product?.variants?.edges[0]?.node}
+                enableQuantity={enableQuantity}
+                size="default"
+              />
+            )}
+          </div>
+        </CardFooter>
+      </Card>
 			<ShopifyProductModal
 				open={open}
 				handleClose={() => setOpen(false)}

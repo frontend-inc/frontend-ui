@@ -2,8 +2,11 @@
 
 import React from 'react'
 import { ShopifyProductType } from 'frontend-shopify'
-import { Swipeable, Image } from '../../../../components'
+import { Swipeable } from '../../../../components'
 import { useClickOrDrag } from '../../../../hooks'
+import { Card, Image } from '@nextui-org/react'
+import { AspectRatio } from 'frontend-shadcn'
+import NextImage from 'next/image'
 
 type SwipeableShopifyProductImagesProps = {
 	product: ShopifyProductType
@@ -15,12 +18,15 @@ type SwipeableShopifyProductImagesProps = {
 	disableBorderRadius?: boolean
 }
 
-export default function SwipeableShopifyProductImages({
-	product,
-	height = 320,
-	handleClick,
-	disableBorderRadius = false,
-}: SwipeableShopifyProductImagesProps) {
+export default function SwipeableShopifyProductImages(props: SwipeableShopifyProductImagesProps) {
+
+  const {
+    product,
+    height = 320,
+    handleClick,
+    disableBorderRadius = false,
+  } = props || {}
+  
 	// @ts-ignore
 	const images = product?.images?.edges?.map((edge) => edge?.node) || []
 
@@ -30,21 +36,25 @@ export default function SwipeableShopifyProductImages({
 
 	return (
 		<Swipeable enableDots>
-			{images.map((image, index) => (
-				<div
+			{images.map((image, index) => (		
+        <div  
+          className="relative"
           key={index}
-					className="w-full overflow-hidden"
-					onMouseDown={onMouseDown}
-					onMouseUp={onMouseUp}
-				>
-					<Image
-						src={image?.url}
-						alt={product?.title}
-						height={height}
-						disableBorderRadius={disableBorderRadius}
-						aspectRatio={1.0}
-					/>
-				</div>
+          onMouseDown={onMouseDown}
+          onMouseUp={onMouseUp}  
+          
+        >
+          <AspectRatio ratio={1.0}>            
+            <Image   
+              radius='none'                  
+              removeWrapper
+              key={index}          
+              src={image?.url}
+              alt={product?.title}                
+              className='object-cover'
+            />
+          </AspectRatio>
+        </div>
 			))}
 		</Swipeable>
 	)

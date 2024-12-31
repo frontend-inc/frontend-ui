@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Drawer } from '../../../components'
+import { Drawer, Modal } from '../../../components'
 import { ShopifyProductDetails } from '../../../components/shopify'
 import { BlurFade } from '../../../components'
 
@@ -23,11 +23,10 @@ const ShopifyProductModal: React.FC<ShopifyProductModalProps> = (props) => {
 	} = props
 
 	return (
-		<Drawer 
+		<Modal 
       open={open} 
       handleClose={handleClose} 
-      maxWidth="xl" 
-      className="md:p-6"
+      maxWidth="5xl" 
     >
 			<BlurFade delay={0.25} inView>
 				<ShopifyProductDetails
@@ -37,7 +36,7 @@ const ShopifyProductModal: React.FC<ShopifyProductModalProps> = (props) => {
 					buttonText={buttonText}
 				/>
 			</BlurFade>
-		</Drawer>
+		</Modal>
 	)
 }
 

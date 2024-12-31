@@ -3,9 +3,8 @@
 import React, { useEffect, useState } from 'react'
 import { getSellingPlanDescription } from 'frontend-shopify'
 import { ShopifyProductType } from 'frontend-shopify'
-import { Button } from "../../../components"
+import { cn, Button } from "@nextui-org/react"
 import { ChevronRight } from 'lucide-react'
-import { cn } from "frontend-shadcn"
 
 type ShopifySubscriptionSelectorProps = {
   product: ShopifyProductType
@@ -19,6 +18,7 @@ const ShopifySubscriptionSelector: React.FC<ShopifySubscriptionSelectorProps> = 
     activeSellingPlanId = null, 
     handleChange 
   } = props || {}
+
   const [sellingPlans, setSellingPlans] = useState<any[]>([])
   const [isOpen, setIsOpen] = useState(false)
 
@@ -43,36 +43,42 @@ const ShopifySubscriptionSelector: React.FC<ShopifySubscriptionSelectorProps> = 
   if (!sellingPlans || sellingPlans.length === 0) return null
 
   const activePlan = sellingPlans.find(plan => plan.id === activeSellingPlanId)
-  const buttonText = activePlan ? `${activePlan.name} - ${getSellingPlanDescription(activePlan)}` : "Select subscription"
+  const buttonText = activePlan ? 
+    `${activePlan.name} - ${getSellingPlanDescription(activePlan)}` : 
+    "Select subscription"
 
   return (
     <div className="w-full relative">
       <Button
-        variant="outline"
-        onClick={toggleOpen}
+        color="primary"
+        variant="bordered"
+        onPress={toggleOpen}
         className="w-full justify-between"
+        endContent={
+          <ChevronRight className={cn(
+            "h-4 w-4 shrink-0 transition-transform duration-200",
+            isOpen && "rotate-90"
+            )} 
+          />
+        }
       >
-        <span className="truncate">{buttonText}</span>
-        <ChevronRight className={cn(
-          "ml-2 h-4 w-4 shrink-0 transition-transform duration-200",
-          isOpen && "rotate-90"
-        )} />
+        <span className="truncate">{buttonText}</span>        
       </Button>
       {isOpen && (
-        <div className="absolute z-10 w-full mt-1 bg-background border rounded-md shadow-lg">
+        <div className="absolute z-10 w-full mt-1 bg-background border rounded-xl shadow-lg overflow-hidden">
           <Button
-            variant="ghost"
-            onClick={() => handleSelectPlan(null)}
-            className="w-full justify-start font-normal"
+            variant="light"
+            onPress={() => handleSelectPlan(null)}
+            className="w-full justify-start font-normal rounded-none"
           >
-            <span className="text-muted-foreground italic">No subscription</span>
+            No subscription
           </Button>
           {sellingPlans?.map((sellingPlan) => (
             <Button
               key={sellingPlan.id}
-              variant="ghost"
-              onClick={() => handleSelectPlan(sellingPlan.id)}
-              className="w-full justify-start font-normal"
+              variant="light"
+              onPress={() => handleSelectPlan(sellingPlan.id)}
+              className="w-full justify-start rounded-none"
             >
               {sellingPlan?.name} - {getSellingPlanDescription(sellingPlan)}
             </Button>

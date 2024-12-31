@@ -4,7 +4,7 @@ import React, { useState, useContext } from 'react'
 import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
 import { toast } from 'sonner'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import {
 	ShopifyProductFavoriteButton,
 	ShopifyQuantitySelector,
@@ -65,6 +65,7 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 		}
 		if (variant?.id) {
 			if (variant?.availableForSale) {
+        console.log("Active Selling Plan ID", activeSellingPlanId)
 				let line = {
 					merchandiseId: variant?.id,
 					quantity,
@@ -87,7 +88,7 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 
 	if (!product) return null
 	return (
-		<div className="flex flex-col space-y-2">
+		<div className="flex flex-col space-y-2 w-full">
 			{enableSubscription && (
 				<ShopifySubscriptionSelector
 					product={product}
@@ -95,7 +96,7 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 					handleChange={handleSellingPlanChange}
 				/>
 			)}
-			<div className="flex flex-row space-x-2 justify-content items-center">
+			<div className="flex w-full flex-row space-x-2 justify-content items-center">
 				{enableQuantity == true && (
 					<ShopifyQuantitySelector
 						quantity={quantity}
@@ -105,10 +106,11 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 				)}
 				<Button
 					fullWidth
-					onClick={handleAddToCart}
-					variant={buttonVariant}
-					loading={loading}
-					size={size}
+					onPress={handleAddToCart}
+					variant='solid'
+          color="primary"
+					isLoading={loading}
+					size={size}                  
 				>
 					{label}
 				</Button>

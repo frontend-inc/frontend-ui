@@ -1,9 +1,8 @@
 'use client'
 
-import React, { useState, useRef } from 'react'
+import React from 'react'
 import { TextInputProps } from '../../../types'
 import { 
-  Image,
   Avatar,
   Autocomplete, 
   AutocompleteItem 
@@ -24,11 +23,9 @@ export default function AutocompleteInput(props: AutocompleteInput) {
 		options = [],
 	} = props
 
-  const [keywords, setKeywords] = useState(value)
-
-  const handleKeywordsChange = (text: string) => {
-    if(text){
-      handleInputChange(text)
+  const handleKeywordsChange = (input: string) => {
+    if(input){
+      handleInputChange(input)
     }    
   }
 

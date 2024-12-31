@@ -68,12 +68,14 @@ const DataHeader: React.FC<DataHeaderProps> = (props) => {
 			<div className="flex flex-col sm:flex-row justify-between space-y-1 sm:space-y-0 sm:space-x-1">
 				<div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-1">
 					{enableSearch && (
-						<SearchComponent
-							value={keywords}
-							handleChange={handleKeywordChange}
-							handleSearch={handleSearch}
-							{...slots.search}
-						/>
+            <div className='w-full max-w-[320px]'>
+              <SearchComponent
+                value={keywords}
+                handleChange={handleKeywordChange}
+                handleSearch={handleSearch}
+                {...slots.search}
+              />
+            </div>
 					)}
 					{enableFilters && (
 						<div className="w-full sm:w-auto">

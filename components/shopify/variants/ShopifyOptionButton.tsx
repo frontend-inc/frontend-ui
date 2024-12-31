@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { cn } from 'frontend-shadcn'
 
 type ShopifyOptionButtonProps = {
@@ -28,14 +28,9 @@ const ShopifyOptionButton: React.FC<ShopifyOptionButtonProps> = (props) => {
   
 	return (
 		<Button
-			className={cn(
-				'whitespace-nowrap',
-				active ? 'opacity-100' : 'opacity-80',
-				width && `w-${width}`,
-				justifyContent && `justify-${justifyContent}`
-			)}
-			variant={active ? 'default' : 'secondary'}
-			onClick={() => handleClick(name, value)}
+      color='primary'
+			variant={active ? 'solid' : 'ghost'}
+			onPress={() => handleClick(name, value)}
 		>
 			{children}
 		</Button>

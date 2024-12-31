@@ -10,7 +10,6 @@ type AddToCartButtonProps = {
 	fullWidth?: boolean
 	buttonText?: string
 	availableForSale?: boolean
-	price?: string
 	className?: string
 }
 
@@ -21,7 +20,6 @@ const AddToCartButton = (props: AddToCartButtonProps) => {
 		size = 'default',
 		fullWidth,
 		availableForSale,
-		price,
 	} = props
 
 	const { loading, setCartOpen, addToCart } = useCart()
