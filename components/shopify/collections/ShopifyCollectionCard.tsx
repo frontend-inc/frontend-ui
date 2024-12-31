@@ -2,8 +2,7 @@
 
 import React, { useState } from 'react'
 import { Typography } from '../../../components'
-import { Card } from 'frontend-shadcn'
-import { Button } from '../../../components'
+import { Button, Card, CardFooter } from '@nextui-org/react'
 import { ShopifyProductCollectionModal } from '../../../components'
 import { truncate } from '../../../helpers'
 import { Image } from '../../../components'
@@ -42,9 +41,12 @@ export default function ShopifyCollectionCard(
 
 	return (
 		<>
-			<Card className="relative w-full rounded-lg">
-				<div className="relative cursor-pointer w-full h-full">
+			<Card
+        isFooterBlurred      
+      >				
 					<Image
+            handleClick={ handleShowClick }
+            disableBorderRadius
 						// @ts-ignore
 						src={image?.url}
 						alt={title || 'Collection image'}
@@ -52,28 +54,25 @@ export default function ShopifyCollectionCard(
 						objectFit="cover"
 						enableGradient={enableGradient}
 						enableOverlay={enableOverlay}
-						handleClick={handleShowClick}
 					/>
-				</div>
-				<div className="dark absolute bottom-0 left-0 w-full p-4 z-10">
+				<CardFooter className='dark absolute bottom-0 left-0 w-full p-4 z-10'>				
 					<div className="flex items-center justify-between w-full">
 						<div className="flex flex-col items-start justify-center">
-							<Typography variant="body1" className="font-bold">
+							<Typography variant="body1" className="text-white">
 								{truncate(title || '', 60)}
 							</Typography>
 						</div>
 						{buttonText && (
 							<Button
-								variant="ghost"
-								size="sm"
-								onClick={handleShowClick}
+								variant="ghost"								
+								onPress={handleShowClick}
 								className="bg-white text-black hover:bg-white/90"
 							>
 								Browse
 							</Button>
 						)}
 					</div>
-				</div>
+        </CardFooter>
 			</Card>
 			<ShopifyProductCollectionModal
 				open={open}

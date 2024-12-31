@@ -27,7 +27,7 @@ const ShopifyCartQuantityInput: React.FC<ShopifyCartQuantityInputProps> = (props
   } = props
 
 	return (
-		<ButtonGroup variant="light" className="border-2 border-border rounded-lg" size='sm'>
+		<ButtonGroup variant="light" className="border-1 border-border rounded-xl" size='sm'>
 			<Button
         isIconOnly
 				className="px-2 rounded-r-none"

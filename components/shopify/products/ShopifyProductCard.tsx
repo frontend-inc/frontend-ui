@@ -44,9 +44,9 @@ export default function ShopifyProductCard(props: ShopifyProductCardProps) {
 	}
 
 	return (
-
-    <div className="w-full">
+    <>
       <Card        
+        shadow="sm"
         className={cn('bg-background', className)}
       >			
         <CardContent className="p-0">
@@ -72,7 +72,7 @@ export default function ShopifyProductCard(props: ShopifyProductCardProps) {
                 /* @ts-ignore */
                 variant={product?.variants?.edges[0]?.node}
                 enableQuantity={enableQuantity}
-                size="default"
+                size="md"
               />
             )}
           </div>
@@ -84,6 +84,6 @@ export default function ShopifyProductCard(props: ShopifyProductCardProps) {
 				shopifyProduct={product?.handle}
 				enableQuantity={enableQuantity}
 			/>
-		</div>
+		</>
 	)
 }

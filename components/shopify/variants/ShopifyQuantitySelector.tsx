@@ -1,48 +1,44 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button, ButtonGroup } from '@nextui-org/react'
 import { Plus, Minus } from 'lucide-react'
-import { cn } from 'frontend-shadcn'
 
 type ShopifyQuantitySelectorProps = {
+  size?: 'sm' | 'md' | 'lg'
 	quantity: number
 	handleAddQuantity: () => void
 	handleRemoveQuantity: () => void
 }
 
-export default function ShopifyQuantitySelector({
-	quantity,
-	handleAddQuantity,
-	handleRemoveQuantity,
-}: ShopifyQuantitySelectorProps) {
-	const buttonClasses = cn(
-		'w-[32px] p-0 min-w-[32px]',
-		'w-full text-secondary-foreground border-secondary'
-	)
+export default function ShopifyQuantitySelector(props: ShopifyQuantitySelectorProps) {	
+
+  const {
+    size = 'md',
+    quantity,
+    handleAddQuantity,
+    handleRemoveQuantity,
+  } = props || {}
 
 	return (
-		<div className="inline-flex min-w-[96px] rounded-md shadow-sm" role="group">
+		<ButtonGroup variant="light" className="border-1 border-border rounded-xl" size={ size }>
 			<Button
-				variant="ghost"
-				className={cn(buttonClasses, 'rounded-r-none border-r-0')}
-				onClick={handleRemoveQuantity}
+        isIconOnly
+				onPress={handleRemoveQuantity}
 			>
 				<Minus className="h-5 w-5" />
 			</Button>
 			<Button
-				variant="ghost"
-				className={cn(buttonClasses, 'rounded-none border-x')}
+        isIconOnly								
 			>
 				{quantity}
 			</Button>
 			<Button
-				variant="ghost"
-				className={cn(buttonClasses, 'rounded-l-none border-l-0')}
-				onClick={handleAddQuantity}
+        isIconOnly
+				onPress={handleAddQuantity}
 			>
 				<Plus className="h-5 w-5" />
 			</Button>
-		</div>
+		</ButtonGroup>
 	)
 }
