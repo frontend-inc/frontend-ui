@@ -26,7 +26,7 @@ const CartQuantityInput: React.FC<CartQuantityInputProps> = (props) => {
 	} = props
 
 	return (
-		<ButtonGroup size='sm'>
+		<ButtonGroup variant="light" className="border-2 border-border rounded-lg" size='sm'>
 			<Button
 				isIconOnly								
         size='sm'

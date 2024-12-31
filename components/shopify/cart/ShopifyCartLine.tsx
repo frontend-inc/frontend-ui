@@ -4,8 +4,8 @@ import React, { useEffect, useState, useContext } from 'react'
 import { ShopifyContext } from 'frontend-shopify'
 import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
-import { RemixIcon, IconButton, Button } from '../../../components'
-import Image from 'next/image'
+import { RemixIcon } from '../../../components'
+import { Badge, Card, Image, ButtonGroup, Button } from '@nextui-org/react'
 import { Typography } from '../../../components'
 import { formatCurrency } from 'frontend-shopify'
 import { useRouter } from 'next/navigation'
@@ -27,27 +27,26 @@ const ShopifyCartQuantityInput: React.FC<ShopifyCartQuantityInputProps> = (props
   } = props
 
 	return (
-		<div className="inline-flex rounded-md shadow-sm" role="group">
+		<ButtonGroup variant="light" className="border-2 border-border rounded-lg" size='sm'>
 			<Button
-				variant="ghost"
-				size="sm"
+        isIconOnly
 				className="px-2 rounded-r-none"
-				onClick={handleRemoveQuantity}
+				onPress={handleRemoveQuantity}
 			>
 				<RemixIcon name="ri-subtract-line" />
 			</Button>
-			<Button variant="ghost" size="sm" className="px-2 rounded-none">
+			<Button 
+        isIconOnly
+      >
 				{quantity}
 			</Button>
 			<Button
-				variant="ghost"
-				size="sm"
-				className="px-2 rounded-l-none"
-				onClick={handleAddQuantity}
+        isIconOnly
+				onPress={handleAddQuantity}
 			>
 				<RemixIcon name="ri-add-line" />
 			</Button>
-		</div>
+		</ButtonGroup>
 	)
 }
 
@@ -84,16 +83,15 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = ({ line }) => {
 		handleUpdateQuantity(quantity + 1)
 	}
 
-	const handleRemoveQuantity = (ev: React.MouseEvent) => {
+	const handleRemoveQuantity = () => {
 		if (quantity === 1) {
-			handleRemoveLineItem(ev)
+			handleRemoveLineItem()
 		} else {
 			handleUpdateQuantity(quantity - 1)
 		}
 	}
 
-	const handleRemoveLineItem = async (event: React.MouseEvent) => {
-		event.stopPropagation()
+	const handleRemoveLineItem = async () => {		
 		await cartLineRemove(id)
 		trackRemoveFromCart({
 			quantity,
@@ -127,7 +125,14 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = ({ line }) => {
 			className={cn('flex items-start space-x-4 py-4', loading && 'opacity-30')}
 		>
 			<div className="relative">
+        <Card 
+          shadow='none'
+          isPressable 
+          onPress={handleClick}
+        >
 				<Image
+          removeWrapper 
+          radius="none"
 					alt={line?.merchandise?.product?.title || ''}
 					src={url}
 					height={96}
@@ -135,6 +140,7 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = ({ line }) => {
 					className="rounded-md min-h-[96px] min-w-[96px]"
 					onClick={handleClick}
 				/>
+        </Card>
 			</div>
 			<div className="flex-grow">
 				<Typography variant="body1">
@@ -162,12 +168,15 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = ({ line }) => {
 					/>
 				</div>
 			</div>
-			<IconButton								
+			<Button								
+        isIconOnly
+        variant="light"
+        radius="full"
 				className="text-muted-foreground"
-				onClick={handleRemoveLineItem}
+				onPress={handleRemoveLineItem}
 			>
 				<RemixIcon name='ri-close-fill' />
-			</IconButton>
+			</Button>
 		</div>
 	)
 }

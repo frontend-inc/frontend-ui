@@ -65,19 +65,23 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 		}
 		if (variant?.id) {
 			if (variant?.availableForSale) {
-        console.log("Active Selling Plan ID", activeSellingPlanId)
 				let line = {
 					merchandiseId: variant?.id,
 					quantity,
 					sellingPlanId: activeSellingPlanId,
 				}
-				cartLineAdd(line)
+				const resp = await cartLineAdd(line)
 				trackAddToCart({
 					quantity: quantity,
 					variant: variant,
 					product: product,
 				})
-				setTimeout(() => toggleCart(), 500)
+        if(resp?.id){
+          setActiveSellingPlanId(null)
+          toggleCart()
+        }else{
+          toast.error('Oops! There was an error adding to cart')
+        }				
 			} else {
 				toast.error('This product is not available for sale')
 			}

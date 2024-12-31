@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react'
 import { useCart } from 'frontend-shopify'
-import { Button, TextField } from '../../../components'
+import { TextInput } from '../../../components'
+import { Button } from '@nextui-org/react'
 
 const ShopifyCartDiscountCodeInput: React.FC = () => {
 	const [discountCode = '', setDiscountCode] = useState<string | null>(null)
@@ -20,18 +21,15 @@ const ShopifyCartDiscountCodeInput: React.FC = () => {
 
 	return (
 		<div className="px-1 flex flex-row justify-center items center space-x-1">
-			<TextField
-				fullWidth
+			<TextInput
 				name="discountCode"
 				value={discountCode}
 				handleChange={handleChange}
 				placeholder="Enter discount code"
-				className="rounded-l-md rounded-r-none border-r-0"
 			/>
 			<Button
-				onClick={handleSubmit}
-				color="secondary"
-				className="rounded-l-none rounded-r-md"
+				onPress={handleSubmit}
+				variant="ghost"
 				loading={loading}
 			>
 				Apply

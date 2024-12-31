@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 
 type ShopifyCheckoutButtonProps = {
 	size?: 'small' | 'medium' | 'large'
@@ -31,7 +31,14 @@ const ShopifyCheckoutButton: React.FC<ShopifyCheckoutButtonProps> = (props) => {
 	}
 
 	return (
-		<Button fullWidth onClick={handleCheckoutClick} size="lg" loading={loading}>
+		<Button 
+      fullWidth 
+      variant="solid"
+      color="primary"
+      onPress={handleCheckoutClick} 
+      size="lg" 
+      isLoading={loading}
+    >
 			Checkout
 		</Button>
 	)
